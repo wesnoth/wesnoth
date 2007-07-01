@@ -23,7 +23,7 @@
 
 namespace image {
 
-surface getMinimap(int w, int h, const basemap& map, const viewpoint* vw)
+surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 {
 	const int scale = 8;
 
@@ -53,7 +53,7 @@ surface getMinimap(int w, int h, const basemap& map, const viewpoint* vw)
 
 			surface surf(NULL);
 
-			const basemap::location loc(x,y);
+			const gamemap::location loc(x,y);
 			if(map.on_board(loc)) {
 				const bool shrouded = vw != NULL && vw->shrouded(x,y);
 				const bool fogged = vw != NULL && vw->fogged(x,y) && !shrouded;

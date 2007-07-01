@@ -121,7 +121,7 @@ void terrain_builder::tilemap::reset()
 		it->clear();
 }
 
-bool terrain_builder::tilemap::on_map(const basemap::location &loc) const
+bool terrain_builder::tilemap::on_map(const gamemap::location &loc) const
 {
 	if(loc.x < -1 || loc.y < -1 || loc.x > x_ || loc.y > y_)
 		return false;
@@ -129,30 +129,30 @@ bool terrain_builder::tilemap::on_map(const basemap::location &loc) const
 	return true;
 }
 
-terrain_builder::tile& terrain_builder::tilemap::operator[](const basemap::location &loc)
+terrain_builder::tile& terrain_builder::tilemap::operator[](const gamemap::location &loc)
 {
 	wassert(on_map(loc));
 
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
 
-const terrain_builder::tile& terrain_builder::tilemap::operator[] (const basemap::location &loc) const
+const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap::location &loc) const
 {
 	wassert(on_map(loc));
 
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
 
-terrain_builder::terrain_builder(const config& cfg, const config& level, const basemap& gmap) :
+terrain_builder::terrain_builder(const config& cfg, const config& level, const gamemap& gmap) :
 	map_(gmap), tile_map_(gmap.x(), gmap.y())
 {
 	parse_config(cfg);
 	parse_config(level);
 	build_terrains();
-	//rebuild_terrain(basemap::location(0,0));
+	//rebuild_terrain(gamemap::location(0,0));
 }
 
-const terrain_builder::imagelist *terrain_builder::get_terrain_at(const basemap::location &loc,
+const terrain_builder::imagelist *terrain_builder::get_terrain_at(const gamemap::location &loc,
 		const std::string &tod, const ADJACENT_TERRAIN_TYPE terrain_type)
 {
 	if(!tile_map_.on_map(loc))
@@ -178,7 +178,7 @@ const terrain_builder::imagelist *terrain_builder::get_terrain_at(const basemap:
 	return NULL;
 }
 
-bool terrain_builder::update_animation(const basemap::location &loc)
+bool terrain_builder::update_animation(const gamemap::location &loc)
 {
 	if(!tile_map_.on_map(loc))
 		return false;
@@ -205,7 +205,7 @@ bool terrain_builder::update_animation(const basemap::location &loc)
 }
 
 // TODO: rename this function
-void terrain_builder::rebuild_terrain(const basemap::location &loc)
+void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
 	if (tile_map_.on_map(loc)) {
 		tile& btile = tile_map_[loc];
@@ -483,7 +483,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 
 	for(cons2 = tmp_cons.begin(); cons2 != tmp_cons.end(); ++cons2) {
 		//Adjusts positions
-		cons2->second.loc += basemap::location(-minx, -((miny-1)/2));
+		cons2->second.loc += gamemap::location(-minx, -((miny-1)/2));
 		ret.constraints[cons2->second.loc] = cons2->second;
 	}
 
@@ -542,7 +542,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 void terrain_builder::add_constraints(
 		terrain_builder::constraint_set& constraints,
-		const basemap::location& loc,
+		const gamemap::location& loc,
 		const t_translation::t_match& type, const config& global_images)
 {
 	if(constraints.find(loc) == constraints.end()) {
@@ -560,7 +560,7 @@ void terrain_builder::add_constraints(
 }
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, 
-		const basemap::location& loc, const config& cfg, const config& global_images)
+		const gamemap::location& loc, const config& cfg, const config& global_images)
 
 {
 	add_constraints(constraints, loc, t_translation::t_match(cfg["type"], t_translation::WILDCARD), global_images);
@@ -608,9 +608,9 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 				// Dots are simple placeholders, which do not
 				// represent actual terrains.
 			} else if (terrain.overlay != 0 ) {
-				anchors.insert(std::pair<int, basemap::location>(terrain.overlay, basemap::location(x, y)));
+				anchors.insert(std::pair<int, gamemap::location>(terrain.overlay, gamemap::location(x, y)));
 			} else if (terrain.base == t_translation::TB_STAR) {
-				add_constraints(br.constraints, basemap::location(x, y), builder_letter(t_translation::STAR), global_images);
+				add_constraints(br.constraints, gamemap::location(x, y), builder_letter(t_translation::STAR), global_images);
 			} else {
 					ERR_NG << "Invalid terrain (" << t_translation::write_letter(terrain) << ") in builder map\n";
 					wassert(false);
@@ -665,7 +665,7 @@ void terrain_builder::parse_config(const config &cfg)
 		// add_images_from_config(pbr.images, **br);
 
 		if(!((**br)["x"].empty() || (**br)["y"].empty()))
-			pbr.location_constraints = basemap::location(atoi((**br)["x"].c_str()), atoi((**br)["y"].c_str()));
+			pbr.location_constraints = gamemap::location(atoi((**br)["x"].c_str()), atoi((**br)["y"].c_str()));
 
 		pbr.probability = (**br)["probability"].empty() ? -1 : atoi((**br)["probability"].c_str());
 		pbr.precedence = (**br)["precedence"].empty() ? 0 : atoi((**br)["precedence"].c_str());
@@ -683,7 +683,7 @@ void terrain_builder::parse_config(const config &cfg)
 			//Adds the terrain constraint to the current built
 			//terrain's list of terrain constraints, if it does not
 			//exist.
-			basemap::location loc;
+			gamemap::location loc;
 			if((**tc)["x"].size()) {
 				loc.x = atoi((**tc)["x"].c_str());
 			}
@@ -772,7 +772,7 @@ void terrain_builder::parse_config(const config &cfg)
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, 
-		const basemap::location &loc, const int rule_index, const bool check_loc) const
+		const gamemap::location &loc, const int rule_index, const bool check_loc) const
 {
 	if(rule.location_constraints.valid() && rule.location_constraints != loc) {
 		return false;
@@ -783,7 +783,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 				cons != rule.constraints.end(); ++cons) {
 
 			// translated location
-			const basemap::location tloc = loc + cons->second.loc;
+			const gamemap::location tloc = loc + cons->second.loc;
 
 			if(!tile_map_.on_map(tloc)) {
 				return false;
@@ -811,7 +811,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 	for(constraint_set::const_iterator cons = rule.constraints.begin();
 			cons != rule.constraints.end(); ++cons) {
 
-		const basemap::location tloc = loc + cons->second.loc;
+		const gamemap::location tloc = loc + cons->second.loc;
 
 		if(!tile_map_.on_map(tloc)) {
 			return false;
@@ -838,13 +838,13 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 	return true;
 }
 
-void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, const basemap::location &loc)
+void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, const gamemap::location &loc)
 {
 	for(constraint_set::const_iterator constraint = rule.constraints.begin();
 			constraint != rule.constraints.end(); ++constraint) {
 
 		rule_imagelist::const_iterator img;
-		const basemap::location tloc = loc + constraint->second.loc;
+		const gamemap::location tloc = loc + constraint->second.loc;
 		if(!tile_map_.on_map(tloc))
 			return;
 
@@ -867,11 +867,11 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	}
 }
 
-int terrain_builder::get_constraint_adjacents(const building_rule& rule, const basemap::location& loc)
+int terrain_builder::get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc)
 {
 	int res = 0;
 
-	basemap::location adj[6];
+	gamemap::location adj[6];
 	int i;
 	get_adjacent_tiles(loc, adj);
 
@@ -905,7 +905,7 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 		return INT_MAX;
 	}
 
-	basemap::location adj[6];
+	gamemap::location adj[6];
 	get_adjacent_tiles(constraint.loc, adj);
 
 	border = false;
@@ -952,11 +952,11 @@ void terrain_builder::build_terrains()
 	//builds the terrain_by_type_ cache
 	for(int x = -1; x <= map_.x(); ++x) {
 		for(int y = -1; y <= map_.y(); ++y) {
-			const basemap::location loc(x,y);
+			const gamemap::location loc(x,y);
 			const t_translation::t_letter t = builder_letter(map_.get_terrain(loc));
 
 			terrain_by_type_[t].push_back(loc);
-			basemap::location adj[6];
+			gamemap::location adj[6];
 			int i;
 			bool border = false;
 
@@ -1018,7 +1018,7 @@ void terrain_builder::build_terrains()
 		util::array<t_translation::t_list, 7> adjacent_types;
 
 		if(biggest_constraint_adjacent > 0) {
-			basemap::location loc[7];
+			gamemap::location loc[7];
 			loc[0] = constraint_most_adjacents->second.loc;
 			get_adjacent_tiles(loc[0], loc+1);
 			for(int i = 0; i < 7; ++i) {
@@ -1033,24 +1033,24 @@ void terrain_builder::build_terrains()
 		}
 		if(smallest_constraint_size != INT_MAX) {
 			const t_translation::t_list& types = smallest_constraint->second.terrain_types_match.terrain;
-			const basemap::location loc = smallest_constraint->second.loc;
-			const basemap::location aloc = constraint_most_adjacents->second.loc;
+			const gamemap::location loc = smallest_constraint->second.loc;
+			const gamemap::location aloc = constraint_most_adjacents->second.loc;
 
 			for(t_translation::t_list::const_iterator c = types.begin(); 
 					c != types.end(); ++c) {
 
-				const std::vector<basemap::location>* locations;
+				const std::vector<gamemap::location>* locations;
 				if(smallest_constraint_border) {
 					locations = &terrain_by_type_border_[*c];
 				} else {
 					locations = &terrain_by_type_[*c];
 				}
 
-				for(std::vector<basemap::location>::const_iterator itor = locations->begin();
+				for(std::vector<gamemap::location>::const_iterator itor = locations->begin();
 						itor != locations->end(); ++itor) {
 
 					if(biggest_constraint_adjacent > 0) {
-						const basemap::location pos = (*itor - loc) + aloc;
+						const gamemap::location pos = (*itor - loc) + aloc;
 						if(!tile_map_.on_map(pos))
 							continue;
 
@@ -1079,7 +1079,7 @@ void terrain_builder::build_terrains()
 			// a hack, so still need to figure out the best number -- Mordante
 			for(int x = -2; x <= map_.x(); ++x) {
 				for(int y = -2; y <= map_.y(); ++y) {
-					const basemap::location loc(x,y);
+					const gamemap::location loc(x,y);
 					if(rule_matches(rule->second, loc, rule_index, true))
 						apply_rule(rule->second, loc);
 				}

@@ -34,14 +34,14 @@
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
 
-std::ostream &operator<<(std::ostream &s, basemap::location const &l) {
+std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 	s << (l.x + 1) << ',' << (l.y + 1);
 	return s;
 }
 
-basemap::location basemap::location::null_location;
+gamemap::location gamemap::location::null_location;
 
-const t_translation::t_list& basemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
+const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
 {
 	const std::map<t_translation::t_letter,terrain_type>::const_iterator i = 
 		letterToTerrain_.find(terrain);
@@ -55,7 +55,7 @@ const t_translation::t_list& basemap::underlying_mvt_terrain(t_translation::t_le
 	}
 }
 
-const t_translation::t_list& basemap::underlying_def_terrain(t_translation::t_letter terrain) const
+const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_letter terrain) const
 {
 	const std::map<t_translation::t_letter, terrain_type>::const_iterator i = 
 		letterToTerrain_.find(terrain);
@@ -69,7 +69,7 @@ const t_translation::t_list& basemap::underlying_def_terrain(t_translation::t_le
 	} 
 }
 
-const t_translation::t_list& basemap::underlying_union_terrain(t_translation::t_letter terrain) const
+const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_letter terrain) const
 {
 	const std::map<t_translation::t_letter,terrain_type>::const_iterator i = 
 		letterToTerrain_.find(terrain);
@@ -83,12 +83,12 @@ const t_translation::t_list& basemap::underlying_union_terrain(t_translation::t_
 	}
 }
 
-void basemap::write_terrain(const basemap::location &loc, config& cfg) const
+void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 {
 	cfg["terrain"] = t_translation::write_letter(get_terrain(loc));
 }
 
-basemap::location::DIRECTION basemap::location::parse_direction(const std::string& str)
+gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
 {
 	if(str == "n") {
 		return NORTH;
@@ -107,7 +107,7 @@ basemap::location::DIRECTION basemap::location::parse_direction(const std::strin
 	}
 }
 
-std::string basemap::location::write_direction(basemap::location::DIRECTION dir)
+std::string gamemap::location::write_direction(gamemap::location::DIRECTION dir)
 {
 	switch(dir) {
 		case NORTH:
@@ -128,7 +128,7 @@ std::string basemap::location::write_direction(basemap::location::DIRECTION dir)
 	}
 }
 
-void basemap::location::init(const std::string &xstr, const std::string &ystr)
+void gamemap::location::init(const std::string &xstr, const std::string &ystr)
 {
 	std::string xs = xstr, ys = ystr;
 	if (game_events::get_state_of_game())
@@ -145,12 +145,17 @@ void basemap::location::init(const std::string &xstr, const std::string &ystr)
 		y = atoi(ys.c_str()) - 1;
 }
 
-basemap::location::location(const config& cfg) : x(-1), y(-1)
+gamemap::location::location(const config& cfg) : x(-1), y(-1)
 {
 	init(cfg["x"], cfg["y"]);
 }
 
-void basemap::location::write(config& cfg) const
+gamemap::location::location(const vconfig& cfg) : x(-1), y(-1)
+{
+	init(cfg["x"], cfg["y"]);
+}
+
+void gamemap::location::write(config& cfg) const
 {
 	char buf[50];
 	snprintf(buf,sizeof(buf),"%d",x+1);
@@ -159,7 +164,7 @@ void basemap::location::write(config& cfg) const
 	cfg["y"] = buf;
 }
 
-basemap::location basemap::location::operator-() const
+gamemap::location gamemap::location::operator-() const
 {
 	location ret;
 	ret.x = -x;
@@ -168,14 +173,14 @@ basemap::location basemap::location::operator-() const
 	return ret;
 }
 
-basemap::location basemap::location::operator+(const basemap::location& a) const
+gamemap::location gamemap::location::operator+(const gamemap::location& a) const
 {
-	basemap::location ret = *this;
+	gamemap::location ret = *this;
 	ret += a;
 	return ret;
 }
 
-basemap::location& basemap::location::operator+=(const basemap::location &a)
+gamemap::location& gamemap::location::operator+=(const gamemap::location &a)
 {
 	bool parity = (x & 1) != 0;
 
@@ -190,33 +195,33 @@ basemap::location& basemap::location::operator+=(const basemap::location &a)
 	return *this;
 }
 
-basemap::location basemap::location::operator-(const basemap::location &a) const
+gamemap::location gamemap::location::operator-(const gamemap::location &a) const
 {
 	return operator+(-a);
 }
 
-basemap::location& basemap::location::operator-=(const basemap::location &a)
+gamemap::location& gamemap::location::operator-=(const gamemap::location &a)
 {
 	return operator+=(-a);
 }
 
-basemap::location basemap::location::get_direction(
-                                     basemap::location::DIRECTION dir) const
+gamemap::location gamemap::location::get_direction(
+                                     gamemap::location::DIRECTION dir) const
 {
 	switch(dir) {
-		case NORTH:      return basemap::location(x,y-1);
-		case NORTH_EAST: return basemap::location(x+1,y-is_even(x));
-		case SOUTH_EAST: return basemap::location(x+1,y+is_odd(x));
-		case SOUTH:      return basemap::location(x,y+1);
-		case SOUTH_WEST: return basemap::location(x-1,y+is_odd(x));
-		case NORTH_WEST: return basemap::location(x-1,y-is_even(x));
+		case NORTH:      return gamemap::location(x,y-1);
+		case NORTH_EAST: return gamemap::location(x+1,y-is_even(x));
+		case SOUTH_EAST: return gamemap::location(x+1,y+is_odd(x));
+		case SOUTH:      return gamemap::location(x,y+1);
+		case SOUTH_WEST: return gamemap::location(x-1,y+is_odd(x));
+		case NORTH_WEST: return gamemap::location(x-1,y-is_even(x));
 		default:
 			wassert(false);
-			return basemap::location();
+			return gamemap::location();
 	}
 }
 
-basemap::location::DIRECTION basemap::location::get_relative_dir(basemap::location loc) const {
+gamemap::location::DIRECTION gamemap::location::get_relative_dir(gamemap::location loc) const {
 	location diff = loc -*this;
 	if(diff == location(0,0)) return NDIRECTIONS;
 	if( diff.y < 0 && diff.x >= 0 && abs(diff.x) >= abs(diff.y)) return NORTH_EAST;
@@ -233,7 +238,7 @@ basemap::location::DIRECTION basemap::location::get_relative_dir(basemap::locati
 
 
 }
-basemap::location::DIRECTION basemap::location::get_opposite_dir(basemap::location::DIRECTION d) const {
+gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::location::DIRECTION d) const {
 	switch (d) {
 		case NORTH:
 			return SOUTH;
@@ -253,7 +258,7 @@ basemap::location::DIRECTION basemap::location::get_opposite_dir(basemap::locati
 	}
 }
 
-basemap::basemap(const config& cfg, const std::string& data) : tiles_(1), x_(-1), y_(-1)
+gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1), x_(-1), y_(-1)
 {
 	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
@@ -262,7 +267,7 @@ basemap::basemap(const config& cfg, const std::string& data) : tiles_(1), x_(-1)
 	read(data);
 }
 
-void basemap::read(const std::string& data)
+void gamemap::read(const std::string& data)
 {
 	tiles_.clear();
 	villages_.clear();
@@ -317,7 +322,7 @@ void basemap::read(const std::string& data)
 	}
 }
 
-std::string basemap::write() const
+std::string gamemap::write() const
 {
 	std::map<int, t_translation::coordinate> starting_positions = std::map<int, t_translation::coordinate>();
 
@@ -335,7 +340,7 @@ std::string basemap::write() const
 	return t_translation::write_game_map(tiles_, starting_positions);
 }
 
-void basemap::overlay(const basemap& m, const config& rules_cfg, const int xpos, const int ypos)
+void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos, const int ypos)
 {
 	const config::child_list& rules = rules_cfg.get_children("rule");
 
@@ -420,7 +425,7 @@ void basemap::overlay(const basemap& m, const config& rules_cfg, const int xpos,
 // loc the location
 // w the width of the map in hexes
 // h the height of the map in hexes
-static t_translation::t_letter get_border_terrain(const basemap::location& loc, 
+static t_translation::t_letter get_border_terrain(const gamemap::location& loc, 
 		const int w, const int h)
 {
 	if(loc.x == 0) {
@@ -441,7 +446,7 @@ static t_translation::t_letter get_border_terrain(const basemap::location& loc,
 	return t_translation::OFF_MAP;
 }
 
-t_translation::t_letter basemap::get_terrain(const basemap::location& loc) const
+t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 {
 	if(on_board(loc)) {
 		return tiles_[loc.x][loc.y];
@@ -495,42 +500,42 @@ t_translation::t_letter basemap::get_terrain(const basemap::location& loc) const
 #endif	
 }
 
-const basemap::location& basemap::starting_position(int n) const
+const gamemap::location& gamemap::starting_position(int n) const
 {
 	if(size_t(n) < sizeof(startingPositions_)/sizeof(*startingPositions_)) {
 		return startingPositions_[n];
 	} else {
-		static const basemap::location null_loc;
+		static const gamemap::location null_loc;
 		return null_loc;
 	}
 }
 
-int basemap::num_valid_starting_positions() const
+int gamemap::num_valid_starting_positions() const
 {
-	const int res = is_starting_position(basemap::location());
+	const int res = is_starting_position(gamemap::location());
 	if(res == -1)
 		return num_starting_positions()-1;
 	else
 		return res;
 }
 
-int basemap::is_starting_position(const basemap::location& loc) const
+int gamemap::is_starting_position(const gamemap::location& loc) const
 {
-	const basemap::location* const beg = startingPositions_+1;
-	const basemap::location* const end = startingPositions_+num_starting_positions();
-	const basemap::location* const pos = std::find(beg,end,loc);
+	const gamemap::location* const beg = startingPositions_+1;
+	const gamemap::location* const end = startingPositions_+num_starting_positions();
+	const gamemap::location* const pos = std::find(beg,end,loc);
 
 	return pos == end ? -1 : pos - beg;
 }
 
-void basemap::set_starting_position(int side, const basemap::location& loc)
+void gamemap::set_starting_position(int side, const gamemap::location& loc)
 {
 	if(side >= 0 && side < num_starting_positions()) {
 		startingPositions_[side] = loc;
 	}
 }
 
-const terrain_type& basemap::get_terrain_info(const t_translation::t_letter terrain) const
+const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terrain) const
 {
 	static const terrain_type default_terrain;
 	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
@@ -542,7 +547,7 @@ const terrain_type& basemap::get_terrain_info(const t_translation::t_letter terr
 		return default_terrain;
 }
 
-bool basemap::location::matches_range(const std::string& xloc, const std::string &yloc) const
+bool gamemap::location::matches_range(const std::string& xloc, const std::string &yloc) const
 {
 	if(std::find(xloc.begin(),xloc.end(),',') != xloc.end()) {
 		std::vector<std::string> xlocs = utils::split(xloc);
@@ -611,20 +616,20 @@ namespace {
 
 } //end anonymous namespace
 
-bool gamemap::terrain_matches_filter(const basemap::location& loc, const vconfig& cfg, 
+bool gamemap::terrain_matches_filter(const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop) const
 {
 	//handle radius
 	const size_t radius = minimum<size_t>(max_loop,
 		lexical_cast_default<size_t>(cfg["radius"], 0));
-	std::set<basemap::location> hexes;
-	std::vector<basemap::location> loc_vec(1, loc);
+	std::set<gamemap::location> hexes;
+	std::vector<gamemap::location> loc_vec(1, loc);
 	get_tiles_radius(*this, loc_vec, radius, hexes);
 
 	size_t loop_count = 0;
 	bool matches = false;
-	std::set<basemap::location>::const_iterator i;
+	std::set<gamemap::location>::const_iterator i;
 	terrain_cache_manager tcm;
 	for(i = hexes.begin(); i != hexes.end() && loop_count <= max_loop && !matches; ++i) {
 		matches = terrain_matches_internal(*i, cfg, game_status, units, flat_tod, false, tcm.ptr);
@@ -671,7 +676,7 @@ bool gamemap::terrain_matches_filter(const basemap::location& loc, const vconfig
 	return matches;
 }
 
-bool gamemap::terrain_matches_internal(const basemap::location& loc, const vconfig& cfg, 
+bool gamemap::terrain_matches_internal(const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
 		const bool ignore_xy, t_translation::t_match*& parsed_terrain) const
 {
@@ -765,7 +770,7 @@ bool gamemap::terrain_matches_internal(const basemap::location& loc, const vconf
 	return true; 
 }
 
-void basemap::set_terrain(const basemap::location& loc, const t_translation::t_letter terrain)
+void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_letter terrain)
 {
 	if(!on_board(loc))
 		return;
@@ -788,10 +793,10 @@ void basemap::set_terrain(const basemap::location& loc, const t_translation::t_l
 		remove_from_border_cache(adj[n]);
 }
 
-std::vector<basemap::location> parse_location_range(const std::string& x, const std::string& y,
-													const basemap *const map)
+std::vector<gamemap::location> parse_location_range(const std::string& x, const std::string& y,
+													const gamemap *const map)
 {
-	std::vector<basemap::location> res;
+	std::vector<gamemap::location> res;
 	const std::vector<std::string> xvals = utils::split(x);
 	const std::vector<std::string> yvals = utils::split(y);
 
@@ -820,14 +825,14 @@ std::vector<basemap::location> parse_location_range(const std::string& x, const 
 
 		for(int x = xrange.first; x <= xrange.second; ++x) {
 			for(int y = yrange.first; y <= yrange.second; ++y) {
-				res.push_back(basemap::location(x-1,y-1));
+				res.push_back(gamemap::location(x-1,y-1));
 			}
 		}
 	}
 	return res;
 }
 
-const std::map<t_translation::t_letter, size_t>& basemap::get_weighted_terrain_frequencies() const
+const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_frequencies() const
 {
 	if(terrainFrequencyCache_.empty() == false) {
 		return terrainFrequencyCache_;
@@ -850,11 +855,11 @@ const std::map<t_translation::t_letter, size_t>& basemap::get_weighted_terrain_f
 	return terrainFrequencyCache_;
 }
 
-void gamemap::get_locations(std::set<basemap::location>& locs, const vconfig& filter,
+void gamemap::get_locations(std::set<gamemap::location>& locs, const vconfig& filter,
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop) const
 {
-	std::vector<basemap::location> xy_locs = parse_location_range(filter["x"],filter["y"],this);
+	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"],this);
 	if(xy_locs.empty()) {
 		//consider all locations on the map
 		for(int x=0; x < x_; x++) {
@@ -866,7 +871,7 @@ void gamemap::get_locations(std::set<basemap::location>& locs, const vconfig& fi
 
 	//handle location filter
 	terrain_cache_manager tcm;
-	std::vector<basemap::location>::iterator loc_itor = xy_locs.begin();
+	std::vector<gamemap::location>::iterator loc_itor = xy_locs.begin();
 	while(loc_itor != xy_locs.end()) {
 		if(terrain_matches_internal(*loc_itor, filter, game_status, units, flat_tod, true, tcm.ptr)) {
 			++loc_itor;
@@ -896,9 +901,9 @@ void gamemap::get_locations(std::set<basemap::location>& locs, const vconfig& fi
 
 		//handle [and]
 		if(cond_name == "and") {
-			std::set<basemap::location> intersect_hexes;
+			std::set<gamemap::location> intersect_hexes;
 			get_locations(intersect_hexes, cond_filter, game_status, units, flat_tod, max_loop);
-			std::set<basemap::location>::iterator intersect_itor = locs.begin();
+			std::set<gamemap::location>::iterator intersect_itor = locs.begin();
 			while(intersect_itor != locs.end()) {
 				if(intersect_hexes.find(*intersect_itor) == locs.end()) {
 					locs.erase(*intersect_itor++);
@@ -909,10 +914,10 @@ void gamemap::get_locations(std::set<basemap::location>& locs, const vconfig& fi
 		}
 		//handle [or]
 		else if(cond_name == "or") {
-			std::set<basemap::location> union_hexes;
+			std::set<gamemap::location> union_hexes;
 			get_locations(union_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			//locs.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
-			std::set<basemap::location>::iterator insert_itor = union_hexes.begin();
+			std::set<gamemap::location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
 				locs.insert(*insert_itor++);
 			}
@@ -920,9 +925,9 @@ void gamemap::get_locations(std::set<basemap::location>& locs, const vconfig& fi
 		}
 		//handle [not]
 		else if(cond_name == "not") {
-			std::set<basemap::location> removal_hexes;
+			std::set<gamemap::location> removal_hexes;
 			get_locations(removal_hexes, cond_filter, game_status, units, flat_tod, max_loop);
-			std::set<basemap::location>::iterator erase_itor = removal_hexes.begin();
+			std::set<gamemap::location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				locs.erase(*erase_itor++);
 			}
@@ -933,7 +938,7 @@ void gamemap::get_locations(std::set<basemap::location>& locs, const vconfig& fi
 
 	//restrict the potential number of locations to be returned
 	if(locs.size() > max_loop + 1) {
-		std::set<basemap::location>::iterator erase_itor = locs.begin();
+		std::set<gamemap::location>::iterator erase_itor = locs.begin();
 		for(unsigned i=0; i < max_loop + 1; ++i) {
 			++erase_itor;
 		}
