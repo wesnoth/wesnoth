@@ -1424,7 +1424,7 @@ void map_editor::left_button_func_changed(const LEFT_BUTTON_FUNC func) {
 	if (func != l_button_func_) {
 		reset_mouseover_overlay();
 		l_button_func_ = func;
-		reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
+		gui_.set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
 				hotkey::get_hotkey(get_action_name(func)).get_description());
 		gui_.invalidate_game_status();
 		l_button_palette_dirty_ = true;

@@ -188,6 +188,7 @@ wesnoth_editor_SOURCES = \
 	game_display.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
+	generate_report.cpp \
 	generic_event.cpp \
 	halo.cpp \
 	help.cpp \
@@ -221,6 +222,7 @@ wesnoth_editor_SOURCES = \
 	statistics.cpp \
 	team.cpp \
 	theme.cpp \
+	terrain_filter.cpp \
 	tooltips.cpp \
 	unit.cpp \
 	unit_abilities.cpp \

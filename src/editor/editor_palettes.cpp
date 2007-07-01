@@ -424,7 +424,7 @@ void terrain_palette::update_report() {
 		+ get_terrain_string(selected_fg_terrain()) + "\n"
 		+ std::string(_("BG")) +
 		": " + get_terrain_string(selected_bg_terrain());
-	reports::set_report_content(reports::SELECTED_TERRAIN, msg);
+	gui_.set_report_content(reports::SELECTED_TERRAIN, msg);
 }
 
 void terrain_palette::load_tooltips()
