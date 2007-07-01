@@ -401,14 +401,15 @@ void game_display::draw(bool update,bool force)
 
 		// Units can overlap multiple hexes, so we need to
 		// redraw them last and in the good sequence.
-		for(it = unit_invals.begin(); it != unit_invals.end(); ++it) {
-			unit_map::iterator u_it = units_.find(*it);
+		std::set<gamemap::location, struct display::ordered_draw>::const_iterator it2;
+		for(it2 = unit_invals.begin(); it2 != unit_invals.end(); ++it2) {
+			unit_map::iterator u_it = units_.find(*it2);
 			if (u_it != units_.end()) {
-				u_it->second.redraw_unit(*this, *it);
+				u_it->second.redraw_unit(*this, *it2);
 				//simulate_delay += 1;
 			}
 
-			if (temp_unit_ && temp_unit_loc_ == *it) {
+			if (temp_unit_ && temp_unit_loc_ == *it2) {
 				temp_unit_->redraw_unit(*this, temp_unit_loc_);
 				//simulate_delay += 1;
 			}
