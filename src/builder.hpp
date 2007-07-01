@@ -54,10 +54,10 @@ public:
 	 *              [terrain_graphics] rule reside.
 	 * @param level A level (scenario)-specific configuration file,
 	 *              containing scenario-specific [terrain_graphics] rules.
-	 * @param gmap  A properly-initialized gamemap object representing the
+	 * @param gmap  A properly-initialized basemap object representing the
 	 *              current terrain map.
 	 */
-	terrain_builder(const config& cfg, const config &level, const gamemap& gmap);
+	terrain_builder(const config& cfg, const config &level, const basemap& gmap);
 
 	/** Returns a vector of strings representing the images to load & blit
 	 * together to get the built content for this tile.
@@ -74,7 +74,7 @@ public:
 	 * @return      Returns a pointer list of animated images corresponding
 	 *              to the parameters, or NULL if there is none.
 	 */
-	const imagelist *get_terrain_at(const gamemap::location &loc,
+	const imagelist *get_terrain_at(const basemap::location &loc,
 			const std::string &tod, ADJACENT_TERRAIN_TYPE const terrain_type);
 
 	/** Updates the animation at a given tile. returns true if something has
@@ -84,7 +84,7 @@ public:
 	 *
 	 * @return      true: this tile must be redrawn.
 	 */
-	bool update_animation(const gamemap::location &loc);
+	bool update_animation(const basemap::location &loc);
 
 	/** Performs a "quick-rebuild" of the terrain in a given location. The
 	 * "quick-rebuild" is no proper rebuild: it only clears the terrain
@@ -93,7 +93,7 @@ public:
 	 *
 	 * @param loc   the location where to rebuild terrains
 	 */
-	void rebuild_terrain(const gamemap::location &loc);
+	void rebuild_terrain(const basemap::location &loc);
 
 	/** Performs a complete rebuild of the list of terrain graphics
 	 * attached to a map. Should be called when a terrain is changed in the
@@ -186,9 +186,9 @@ public:
 	{
 		terrain_constraint() : loc() {};
 
-		terrain_constraint(gamemap::location loc) : loc(loc) {};
+		terrain_constraint(basemap::location loc) : loc(loc) {};
 
-		gamemap::location loc;
+		basemap::location loc;
 		t_translation::t_match terrain_types_match;
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
@@ -267,7 +267,7 @@ private:
 	/**
 	 * The list of constraints attached to a terrain_graphics WML rule.
 	 */
-	typedef std::map<gamemap::location, terrain_constraint> constraint_set;
+	typedef std::map<basemap::location, terrain_constraint> constraint_set;
 
 	/**
 	 * The in-memory representation of a [terrain_graphics] WML rule.
@@ -281,10 +281,10 @@ private:
 
 		/**
 		 * The location on which this map may match. Set to a valid
-		 * gamemap::location if the "x" and "y" parameters of the
+		 * basemap::location if the "x" and "y" parameters of the
 		 * [terrain_graphics] rule are set.
 		 */
-		gamemap::location location_constraints;
+		basemap::location location_constraints;
 
 		/**
 		 * The probability of this rule to match, when all conditions
@@ -321,11 +321,11 @@ private:
 		 *
 		 * @return A reference to the tile at this location.
 		 */
-		tile &operator[](const gamemap::location &loc);
+		tile &operator[](const basemap::location &loc);
 		/**
 		 * a const variant of operator[]
 		 */
-		const tile &operator[] (const gamemap::location &loc) const;
+		const tile &operator[] (const basemap::location &loc) const;
 
 		/**
 		 * Tests if a location is on the map
@@ -334,7 +334,7 @@ private:
 		 *
 		 * @return true if loc is on the map, false otherwise.
 		 */
-		bool on_map(const gamemap::location &loc) const;
+		bool on_map(const basemap::location &loc) const;
 
 		/**
 		 * Resets the whole tile map
@@ -517,7 +517,7 @@ private:
 	 *                    describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const t_translation::t_match& type,
+			const basemap::location &loc, const t_translation::t_match& type,
 			const config& global_images);
 
 	/**
@@ -533,10 +533,10 @@ private:
 	 *                    describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
-			const gamemap::location &loc, const config &cfg,
+			const basemap::location &loc, const config &cfg,
 			const config& global_images);
 
-	typedef std::multimap<int, gamemap::location> anchormap;
+	typedef std::multimap<int, basemap::location> anchormap;
 
 	/**
 	 * Parses a map string (the map= element of a [terrain_graphics] rule,
@@ -622,7 +622,7 @@ private:
 	 *                  already checked, only flags and probability will be
 	 *                  checked.
 	 */
-	bool rule_matches(const building_rule &rule, const gamemap::location &loc,
+	bool rule_matches(const building_rule &rule, const basemap::location &loc,
 			const int rule_index, const bool check_loc) const;
 
 	/**
@@ -633,7 +633,7 @@ private:
 	 * @param rule      The rule to apply
 	 * @param loc       The location to which to apply the rule.
 	 */
-	void apply_rule(const building_rule &rule, const gamemap::location &loc);
+	void apply_rule(const building_rule &rule, const basemap::location &loc);
 
 	/**
 	 * Returns the number of constraints adjacent to a given constraint in
@@ -651,7 +651,7 @@ private:
 	 *
 	 * @return the number of constraints adjacent to the location loc
 	 */
-	int get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc);
+	int get_constraint_adjacents(const building_rule& rule, const basemap::location& loc);
 
 	/**
 	 * Returns the "size" of a constraint, that is, the number of tiles, in
@@ -675,14 +675,14 @@ private:
 
 	/**
 	 * Calculates the list of terrains, and fills the tile_map_ member,
-	 * from the gamemap and the building_rules_.
+	 * from the basemap and the building_rules_.
 	 */
 	void build_terrains();
 
 	/**
-	 * A reference to the gamemap class used in the current level.
+	 * A reference to the basemap class used in the current level.
 	 */
-	const gamemap& map_;
+	const basemap& map_;
 	/**
 	 * The tile_map_ for the current level, which is filled by the
 	 * build_terrains_ method to contain "tiles" representing images
@@ -693,7 +693,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<t_translation::t_letter, std::vector<gamemap::location> > terrain_by_type_map;
+	typedef std::map<t_translation::t_letter, std::vector<basemap::location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.

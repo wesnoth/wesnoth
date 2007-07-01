@@ -40,7 +40,7 @@ terrain_group::terrain_group(const config& cfg, display& gui):
 }
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
-								 const gamemap &map, const config& cfg)
+								 const basemap &map, const config& cfg)
 	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0), 
 	  checked_group_btn_(0), map_(map),
 	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
