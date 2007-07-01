@@ -216,7 +216,7 @@ void game_display::scroll_to_leader(unit_map& units, int side)
 void game_display::draw(bool update,bool force)
 {
 	if (screen_.update_locked()) {
-		return
+		return;
 	}
 
 	//log_scope("Drawing");
