@@ -1,4 +1,4 @@
-/* $Id: map.hpp 18589 2007-07-01 04:41:00Z esr $ */
+/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@verizon.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
