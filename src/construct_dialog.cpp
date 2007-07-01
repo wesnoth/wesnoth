@@ -11,6 +11,9 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "construct_dialog.hpp"
 #include "display.hpp"
 #include "gettext.hpp"
