@@ -15,10 +15,6 @@
 #define MAP_H_INCLUDED
 
 class config;
-class gamestatus;
-class unit;
-class vconfig;
-class unit_map;
 
 #include "terrain.hpp"
 
@@ -32,7 +28,7 @@ class unit_map;
 
 //class which encapsulates the map of the game. Although the game is hexagonal,
 //the map is stored as a grid. Each type of terrain is represented by a letter.
-class gamemap
+class basemap
 {
 public:
 
@@ -62,7 +58,7 @@ public:
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}
 		explicit location(const config& cfg);
-		explicit location(const vconfig& cfg);
+	  	//explicit location(const vconfig& cfg);
 
 		void write(config& cfg) const;
 
@@ -125,13 +121,13 @@ public:
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
 	//and will be of type keep.
-	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
+	basemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
 	void read(const std::string& data);
 
 	std::string write() const;
 
 	//overlays another map onto this one at the given position.
-	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
+	void overlay(const basemap& m, const config& rules, int x=0, int y=0);
 
 	//dimensions of the map.
 	int x() const { return x_; }
@@ -147,7 +143,7 @@ public:
 	t_translation::t_letter get_terrain(const location& loc) const;
 
 	//writes the terrain at loc to cfg
-	void write_terrain(const gamemap::location &loc, config& cfg) const;
+	void write_terrain(const basemap::location &loc, config& cfg) const;
 
 
 	//functions to manipulate starting positions of the different sides.
@@ -181,16 +177,6 @@ public:
 	const terrain_type& get_terrain_info(const location &loc) const
 		{ return get_terrain_info(get_terrain(loc)); }
 
-	//the terrain filter, also known as "standard location filter" or SLF
-	bool terrain_matches_filter(const location& loc, const vconfig& cfg, 
-			const gamestatus& game_status, const unit_map& units,
-			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
-
-	//gets all locations that match a given terrain filter
-	void get_locations(std::set<location>& locs, const vconfig& filter, 
-			const gamestatus& game_status, const unit_map& units,
-			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
-
 	//gets the list of terrains
 	const t_translation::t_list& get_terrain_list() const
 		{ return terrainList_; }
@@ -216,23 +202,47 @@ protected:
 	t_translation::t_map tiles_;
 	location startingPositions_[STARTING_POSITIONS];
 	
-private:
-	bool terrain_matches_internal(const location& loc, const vconfig& cfg, 
-			const gamestatus& game_status, const unit_map& units, 
-			const bool flat_tod, const bool ignore_xy,
-			t_translation::t_match*& parsed_terrain) const;
-	int num_starting_positions() const
-		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
-
 	t_translation::t_list terrainList_;
 	std::map<t_translation::t_letter, terrain_type> letterToTerrain_;
 	std::vector<location> villages_;
 
 	mutable std::map<location, t_translation::t_letter> borderCache_;
 	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
+	int x_;
+	int y_;
 
-    int x_;
-    int y_;
+private:
+	int num_starting_positions() const
+		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }	
+
+};
+
+class gamestatus;
+class unit;
+class vconfig;
+class unit_map;
+
+class gamemap : public basemap
+{
+public:
+	gamemap(const config& terrain_cfg, const std::string& data) 
+			: basemap(terrain_cfg, data)
+  	{};
+
+	//the terrain filter, also known as "standard location filter" or SLF
+	bool terrain_matches_filter(const location& loc, const vconfig& cfg, 
+			const gamestatus& game_status, const unit_map& units,
+			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
+
+	//gets all locations that match a given terrain filter
+	void get_locations(std::set<location>& locs, const vconfig& filter, 
+			const gamestatus& game_status, const unit_map& units,
+			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
+private:
+	bool terrain_matches_internal(const location& loc, const vconfig& cfg, 
+			const gamestatus& game_status, const unit_map& units, 
+			const bool flat_tod, const bool ignore_xy,
+			t_translation::t_match*& parsed_terrain) const;
 };
 
 class viewpoint
@@ -245,11 +255,11 @@ public:
 
 //a utility function which parses ranges of locations
 //into a vector of locations
-std::vector<gamemap::location> parse_location_range(const std::string& xvals,
+std::vector<basemap::location> parse_location_range(const std::string& xvals,
 													const std::string& yvals,
-													const gamemap *const map=NULL);
+													const basemap *const map=NULL);
 
 //dump a position on a stream for debug purposes
-std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
+std::ostream &operator<<(std::ostream &s, basemap::location const &l);
 
 #endif
