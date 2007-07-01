@@ -83,7 +83,7 @@ namespace {
 
 	bool campaign_server::fire(const std::string& hook)
 	{
-		out_.clear();
+		out_.resize(0);
 		
 		const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
 		if(itor == hooks_.end()) return true;
@@ -170,8 +170,8 @@ namespace {
 		}
 
 		// load the hooks
-		hooks_.insert(std::make_pair("hook_pre_upload", cfg_["hook_pre_upload"]));
-		hooks_.insert(std::make_pair("hook_post_upload", cfg_["hook_post_upload"]));
+		hooks_.insert(std::make_pair(std::string("hook_pre_upload"), cfg_["hook_pre_upload"]));
+		hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
 	}
 
 	void find_translations(const config& cfg, config& campaign)
