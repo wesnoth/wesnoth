@@ -212,6 +212,9 @@ public:
 	//1. Thus max_starting positions is
 	//STARTING_POSITIONS - 1
 	enum { STARTING_POSITIONS = 10 };
+
+	int xsize() const {return x_;};
+	int ysize() const {return y_;};
 protected:
 	t_translation::t_map tiles_;
 	location startingPositions_[STARTING_POSITIONS];

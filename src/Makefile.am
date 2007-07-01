@@ -116,6 +116,7 @@ wesnoth_SOURCES = \
 	soundsource.cpp \
 	statistics.cpp \
 	team.cpp \
+	terrain_filter.cpp \
 	theme.cpp \
 	titlescreen.cpp \
 	tooltips.cpp \
@@ -422,6 +423,7 @@ noinst_HEADERS = \
 	playturn.hpp \
 	log.hpp \
 	key.hpp \
+	terrain_filter.hpp \
 	tstring.hpp \
 	multiplayer_create.hpp \
 	intro.hpp \
