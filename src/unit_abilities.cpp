@@ -16,6 +16,7 @@
 
 #include "log.hpp"
 #include "pathutils.hpp"
+#include "terrain_filter.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
 
@@ -337,7 +338,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 				gamemap::location::parse_direction(*j);
 			if (index == gamemap::location::NDIRECTIONS)
 				continue;
-			if(!map_->terrain_matches_filter(adjacent[index],vconfig(*i),*gamestatus_,*units_,cache_illuminates(illuminates, ability),0))
+			if(!terrain_matches_filter(map_, adjacent[index],vconfig(*i),*gamestatus_,*units_,cache_illuminates(illuminates, ability),0))
 				return false;
 		}
 	}
@@ -731,7 +732,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				gamemap::location::parse_direction(*j);
 			if (index == gamemap::location::NDIRECTIONS)
 				continue;
-			if (!map_->terrain_matches_filter(adjacent[index], vconfig(*i),
+			if (!terrain_matches_filter(map_, adjacent[index], vconfig(*i),
 				*game_status_, *unitmap_,false,0))
 				return false;
 		}

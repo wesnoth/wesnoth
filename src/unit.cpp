@@ -33,6 +33,7 @@
 #include "game_events.hpp"
 #include "sound.hpp"
 #include "sdl_utils.hpp"
+#include "terrain_filter.hpp"
 #include "variable.hpp"
 
 #include <ctime>
@@ -763,7 +764,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		wassert(map_ != NULL);
 		wassert(gamestatus_ != NULL);
 		wassert(units_ != NULL);
-		bool res = map_->terrain_matches_filter(loc, cfg.child("filter_location"), *gamestatus_, *units_, use_flat_tod);
+		bool res = terrain_matches_filter(map_, loc, cfg.child("filter_location"), *gamestatus_, *units_, use_flat_tod);
 		if(res == false) {
 			return false;
 		}

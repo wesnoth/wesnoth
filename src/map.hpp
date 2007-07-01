@@ -181,16 +181,6 @@ public:
 	const terrain_type& get_terrain_info(const location &loc) const
 		{ return get_terrain_info(get_terrain(loc)); }
 
-	//the terrain filter, also known as "standard location filter" or SLF
-	bool terrain_matches_filter(const location& loc, const vconfig& cfg, 
-			const gamestatus& game_status, const unit_map& units,
-			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
-
-	//gets all locations that match a given terrain filter
-	void get_locations(std::set<location>& locs, const vconfig& filter, 
-			const gamestatus& game_status, const unit_map& units,
-			const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA) const;
-
 	//gets the list of terrains
 	const t_translation::t_list& get_terrain_list() const
 		{ return terrainList_; }
@@ -220,10 +210,6 @@ protected:
 	location startingPositions_[STARTING_POSITIONS];
 	
 private:
-	bool terrain_matches_internal(const location& loc, const vconfig& cfg, 
-			const gamestatus& game_status, const unit_map& units, 
-			const bool flat_tod, const bool ignore_xy,
-			t_translation::t_match*& parsed_terrain) const;
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 
