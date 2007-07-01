@@ -19,12 +19,7 @@
 #include <vector>
 
 #include "image.hpp"
-#include "map.hpp"
 #include "team.hpp"
-
-class gamestatus;
-class unit_map;
-
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
@@ -89,17 +84,13 @@ namespace reports {
 		void add_image(std::stringstream& image, std::stringstream& tooltip);
 	};
 
-	report generate_report(TYPE type, const gamemap& map, unit_map& units,
+	report generate_report(TYPE type,
+			       std::map<reports::TYPE, std::string> report_contents, 
+			       const gamemap& map, unit_map& units,
 	                       const std::vector<team>& teams, const team& current_team,
 	                       unsigned int current_side, int unsigned active_side,
 	                       const gamemap::location& loc, const gamemap::location& mouseover,
 	                       const gamestatus& status, const std::set<std::string>& observers);
-	// Set what will be shown for the report with type
-	// which_report. Note that this only works for some reports,
-	// i.e. reports that can not be deducted from the supplied arguments
-	// to generate_report.
-	// Currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
-	void set_report_content(const TYPE which_report, const std::string &content);
 }
 
 #endif

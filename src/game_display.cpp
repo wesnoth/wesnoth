@@ -447,7 +447,7 @@ void game_display::draw_report(reports::TYPE report_num)
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
 
-		reports::report report = reports::generate_report(report_num,map_,
+		reports::report report = reports::generate_report(report_num,report_,map_,
 				units_, teams_,
 		      teams_[viewing_team()],
 				size_t(currentTeam_+1),size_t(activeTeam_+1),

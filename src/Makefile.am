@@ -72,6 +72,7 @@ wesnoth_SOURCES = \
 	game_display.cpp \
 	game_events.cpp \
 	gamestatus.cpp \
+	generate_report.cpp \
 	generic_event.cpp \
 	halo.cpp \
 	help.cpp \

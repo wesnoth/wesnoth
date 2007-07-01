@@ -317,6 +317,14 @@ public:
 	//have moved about on the map
 	void redraw_minimap() { redrawMinimap_ = true; }
 
+	// Set what will be shown for the report with type
+	// which_report. Note that this only works for some reports,
+	// i.e. reports that can not be deducted from the supplied arguments
+	// to generate_report.
+	// Currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
+	void set_report_content(const reports::TYPE which_report, const std::string &content);
+	std::map<reports::TYPE, std::string> get_report_contents() {return report_;};
+
 protected:
 	void draw_minimap(int x, int y, int w, int h);
 
@@ -356,11 +364,12 @@ protected:
 	// holds the tick count for when the next drawing event is scheduled
 	// drawing shouldn't occur before this time
 	int nextDraw_;
+
+  	// Not set by the initializer
 	SDL_Rect reportRects_[reports::NUM_REPORTS];
 	surface reportSurfaces_[reports::NUM_REPORTS];
 	reports::report reports_[reports::NUM_REPORTS];
-
-  	// Not set by the initializer
+	std::map<reports::TYPE, std::string> report_;
 	std::vector<gui::button> buttons_;
 	std::set<gamemap::location> invalidated_;
 	std::map<gamemap::location, surface> hex_overlay_;

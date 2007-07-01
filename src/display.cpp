@@ -1437,3 +1437,7 @@ void display::recalculate_minimap()
 	// remove unit after invalidating...
 }
 
+void display:: set_report_content(const reports::TYPE which_report, const std::string &content) {
+	report_[which_report] = content;
+}
+
