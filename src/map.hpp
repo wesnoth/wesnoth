@@ -62,7 +62,6 @@ public:
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}
 		explicit location(const config& cfg);
-		explicit location(const vconfig& cfg);
 
 		void write(config& cfg) const;
 

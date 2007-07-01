@@ -150,11 +150,6 @@ gamemap::location::location(const config& cfg) : x(-1), y(-1)
 	init(cfg["x"], cfg["y"]);
 }
 
-gamemap::location::location(const vconfig& cfg) : x(-1), y(-1)
-{
-	init(cfg["x"], cfg["y"]);
-}
-
 void gamemap::location::write(config& cfg) const
 {
 	char buf[50];
