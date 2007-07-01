@@ -32,28 +32,28 @@ class map_undo_action {
 public:
 	map_undo_action();
 
-	const std::map<gamemap::location, t_translation::t_letter>& undo_terrains() const;
-	const std::map<gamemap::location, t_translation::t_letter>& redo_terrains() const;
+	const std::map<basemap::location, t_translation::t_letter>& undo_terrains() const;
+	const std::map<basemap::location, t_translation::t_letter>& redo_terrains() const;
 
-	const std::set<gamemap::location> undo_selection() const;
-	const std::set<gamemap::location> redo_selection() const;
+	const std::set<basemap::location> undo_selection() const;
+	const std::set<basemap::location> redo_selection() const;
 
 	std::string new_map_data() const;
 	std::string old_map_data() const;
 
-	const std::map<gamemap::location, int>& undo_starting_locations() const;
-	const std::map<gamemap::location, int>& redo_starting_locations() const;
+	const std::map<basemap::location, int>& undo_starting_locations() const;
+	const std::map<basemap::location, int>& redo_starting_locations() const;
 
 	void add_terrain(const t_translation::t_letter& old_tr,
 					 const t_translation::t_letter& new_tr,
-					 const gamemap::location& lc);
+					 const basemap::location& lc);
 
 	/// Return true if a terrain change has been saved in this undo
 	/// action.
 	bool terrain_set() const;
 
-	void set_selection(const std::set<gamemap::location> &old_selection,
-					   const std::set<gamemap::location> &new_selection);
+	void set_selection(const std::set<basemap::location> &old_selection,
+					   const std::set<basemap::location> &new_selection);
 
 	/// Return true if a selection change has been saved in this undo
 	/// action.
@@ -67,25 +67,25 @@ public:
 	bool map_data_set() const;
 
 	void add_starting_location(const int old_side, const int new_side,
-							   const gamemap::location &old_loc,
-							   const gamemap::location &new_loc);
+							   const basemap::location &old_loc,
+							   const basemap::location &new_loc);
 
 	/// Return true if starting locations have been saved in this undo
 	/// action.
 	bool starting_location_set() const;
 
 private:
-	std::map<gamemap::location, t_translation::t_letter> old_terrain_;
-	std::map<gamemap::location, t_translation::t_letter> new_terrain_;
+	std::map<basemap::location, t_translation::t_letter> old_terrain_;
+	std::map<basemap::location, t_translation::t_letter> new_terrain_;
 	bool terrain_set_;
-	std::set<gamemap::location> old_selection_;
-	std::set<gamemap::location> new_selection_;
+	std::set<basemap::location> old_selection_;
+	std::set<basemap::location> new_selection_;
 	bool selection_set_;
 	std::string old_map_data_;
 	std::string new_map_data_;
 	bool map_data_set_;
-	std::map<gamemap::location,int> old_starting_locations_;
-	std::map<gamemap::location,int> new_starting_locations_;
+	std::map<basemap::location,int> old_starting_locations_;
+	std::map<basemap::location,int> new_starting_locations_;
 	bool starting_locations_set_;
 };
 

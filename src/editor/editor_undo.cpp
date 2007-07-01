@@ -29,21 +29,21 @@ map_undo_action::map_undo_action() {
 	starting_locations_set_ = false;
 }
 
-const std::map<gamemap::location, t_translation::t_letter>& map_undo_action::undo_terrains() const 
+const std::map<basemap::location, t_translation::t_letter>& map_undo_action::undo_terrains() const 
 {
 	return old_terrain_;
 }
 
-const std::map<gamemap::location, t_translation::t_letter>& map_undo_action::redo_terrains() const 
+const std::map<basemap::location, t_translation::t_letter>& map_undo_action::redo_terrains() const 
 {
 	return new_terrain_;
 }
 
-const std::set<gamemap::location> map_undo_action::undo_selection() const {
+const std::set<basemap::location> map_undo_action::undo_selection() const {
 	return old_selection_;
 }
 
-const std::set<gamemap::location> map_undo_action::redo_selection() const {
+const std::set<basemap::location> map_undo_action::redo_selection() const {
 	return new_selection_;
 }
 
@@ -55,17 +55,17 @@ std::string map_undo_action::new_map_data() const {
 	return new_map_data_;
 }
 
-const std::map<gamemap::location, int>& map_undo_action::undo_starting_locations() const {
+const std::map<basemap::location, int>& map_undo_action::undo_starting_locations() const {
 	return old_starting_locations_;
 }
 
-const std::map<gamemap::location, int>& map_undo_action::redo_starting_locations() const {
+const std::map<basemap::location, int>& map_undo_action::redo_starting_locations() const {
 	return new_starting_locations_;
 }
 
 void map_undo_action::add_terrain(const t_translation::t_letter& old_tr,
 								  const t_translation::t_letter& new_tr,
-								  const gamemap::location& lc) 
+								  const basemap::location& lc) 
 {
 	old_terrain_[lc] = old_tr;
 	new_terrain_[lc] = new_tr;
@@ -76,8 +76,8 @@ bool map_undo_action::terrain_set() const {
 	return terrain_set_;
 }
 
-void map_undo_action::set_selection(const std::set<gamemap::location> &old_selection,
-									const std::set<gamemap::location> &new_selection) {
+void map_undo_action::set_selection(const std::set<basemap::location> &old_selection,
+									const std::set<basemap::location> &new_selection) {
 	old_selection_ = old_selection;
 	new_selection_ = new_selection;
 	selection_set_ = true;
@@ -99,8 +99,8 @@ bool map_undo_action::map_data_set() const {
 }
 
 void map_undo_action::add_starting_location(const int old_side, const int new_side,
-											const gamemap::location &old_loc,
-											const gamemap::location &new_loc) {
+											const basemap::location &old_loc,
+											const basemap::location &new_loc) {
 	old_starting_locations_[old_loc] = old_side;
 	new_starting_locations_[new_loc] = new_side;
 	starting_locations_set_ = true;
