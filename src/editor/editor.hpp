@@ -134,6 +134,9 @@ public:
 	void perform_set_starting_pos();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int) const;
+	//Does the action control a toggle switch? If so, return the state of the action (on or off)
+	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
+
 
 	/// Exception thrown when new map is to be loaded.
 	struct new_map_exception {

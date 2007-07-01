@@ -252,7 +252,7 @@ void map_editor::load_tooltips()
 			else if(menu_items.back() == "editupdate")
 				text = _("Update transitions");
 			else if(menu_items.back() == "editautoupdate")
-				text = _("Delay transitions update");
+				text = _("Delay transition updates");
 		}
 
 		if(text != "")
@@ -763,6 +763,13 @@ void map_editor::edit_update() {
 
 void map_editor::edit_auto_update() {
 	auto_update_ = !auto_update_;
+}
+
+hotkey::ACTION_STATE map_editor::get_action_state(hotkey::HOTKEY_COMMAND command) const {
+	if(command == hotkey::HOTKEY_EDIT_AUTO_UPDATE) {
+		return (auto_update_) ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+	}
+	return command_executor::get_action_state(command);
 }
 
 void map_editor::insert_selection_in_clipboard() {
@@ -1331,29 +1338,17 @@ bool map_editor::verify_filename(const std::string& filename, bool show_error) c
 
 	return true;
 }
-void map_editor::show_menu(const std::vector<std::string>& items_arg, const int xloc,
+void map_editor::show_menu(const std::vector<std::string>& items, const int xloc,
 						   const int yloc, const bool /*context_menu*/) {
-	std::vector<std::string> items = items_arg;
 	// menu is what to display in the menu.
-	std::vector<std::string> menu;
 	if(items.size() == 1) {
 		execute_command(hotkey::get_hotkey(items.front()).get_id());
 		return;
 	}
-	for(std::vector<std::string>::const_iterator i = items.begin();
-		i != items.end(); ++i) {
-
-		const hotkey::hotkey_item hk = hotkey::get_hotkey(*i);
-		std::stringstream str;
-		// Try to translate it to nicer format.
-		str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
-
-		menu.push_back(str.str());
-	}
 	static const std::string style = "menu2";
 	gui::basic_dialog kmenu = gui::basic_dialog(gui_, "", "", gui::MESSAGE,
 						    &gui::basic_dialog::hotkeys_style);
-	kmenu.set_menu(menu);
+	kmenu.set_menu(get_menu_images(items));
 	const int res = kmenu.show(xloc, yloc);
 	if(res < 0 || (unsigned)res >= items.size())
 		return;
