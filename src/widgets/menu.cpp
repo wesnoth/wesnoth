@@ -1005,14 +1005,16 @@ int menu::hit_column(int x) const
 {
 	std::vector<int> const &widths = column_widths();
 	x -= location().x;
-	for(int j = 0, j_end = widths.size(); j != j_end; ++j) {
-		x -= widths[j];
+	int j = -1, j_end = widths.size();
+	while(true) {
 		if (x < 0) {
 			return j;
 		}
+		if(++j == j_end) {
+			return -1;
+		}
+		x -= widths[j];
 	}
-
-	return -1;
 }
 
 std::pair<int,int> menu::hit_cell(int x, int y) const
