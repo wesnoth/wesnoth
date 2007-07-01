@@ -215,6 +215,10 @@ void game_display::scroll_to_leader(unit_map& units, int side)
 
 void game_display::draw(bool update,bool force)
 {
+	if (screen_.update_locked()) {
+		return
+	}
+
 	//log_scope("Drawing");
 	invalidate_animations();
 
@@ -223,7 +227,7 @@ void game_display::draw(bool update,bool force)
 	bool changed = display::draw_init();
 
 	//int simulate_delay = 0;
-	if(!map_.empty() && !invalidated_.empty() && !screen_.update_locked()) {
+	if(!map_.empty() && !invalidated_.empty()) {
 		changed = true;
 		
 		halo::unrender(invalidated_);
@@ -416,6 +420,7 @@ void game_display::draw(bool update,bool force)
 	} else if (!map_.empty()) {
 		// if no hexes are invalidated we still need to update the
 		// haloes since there might be animated or expired haloes
+		wassert(invalidated_.empty());
 		halo::unrender(invalidated_);
 		halo::render();
 	}
