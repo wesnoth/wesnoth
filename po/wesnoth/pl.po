@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-29 12:20+0200\n"
-"PO-Revision-Date: 2007-06-17 16:43+0100\n"
+"PO-Revision-Date: 2007-06-22 16:07+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -6262,7 +6262,6 @@ msgid "Fencer"
 msgstr "Szermierz"
 
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -6280,7 +6279,7 @@ msgstr ""
 "Szermierze uważają, że noszony przez większość żołnierzy pancerz jest w "
 "walce największym wrogiem noszącego. Choć pancerz może często osłabić cios, "
 "to tylko unik pozwala całkowicie uniknąć obrażeń. Tylko ci, którzy przeszli "
-"rygorystyczny trening i cieszą się wyjątkową sprawnością fizyczną mogą "
+"rygorystyczny trening i cieszą się wyjątkową sprawnością fizyczną, mogą "
 "skutecznie unikać dowolnych ataków.\n"
 "\n"
 "Szermierze są uzbrojeni jedynie w sztylet i rapier, dzięki czemu szybko się "
@@ -11360,32 +11359,28 @@ msgid "Server: "
 msgstr "Serwer:"
 
 #: src/game.cpp:899 src/game.cpp:946
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Pobierz dodatki"
+msgstr "Usuń dodatki"
 
 #: src/game.cpp:934
-#, fuzzy
 msgid "You have no Add-ons installed."
-msgstr "Dodatek został zainstalowany."
+msgstr "Nie są zainstalowane żadne dodatki."
 
 #: src/game.cpp:946
-#, fuzzy
 msgid "Choose the add-on to remove."
-msgstr "Wybierz dodatek do pobrania."
+msgstr "Wybierz dodatek do usunięcia."
 
 #: src/game.cpp:964
 msgid "Confirm"
-msgstr ""
+msgstr "Potwiedź"
 
 #: src/game.cpp:995
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "Dodatek zainstalowany"
+msgstr "Dodatek usunięty"
 
 #: src/game.cpp:1000
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr ""
+msgstr "Nie można usunąć dodatku - nie znaleziono pliku."
 
 #: src/game.cpp:1000 src/menu_events.cpp:487 src/menu_events.cpp:500
 #: src/multiplayer_create.cpp:494
@@ -12919,9 +12914,8 @@ msgid "TitleScreen button^Load"
 msgstr "Zapisane gry"
 
 #: src/titlescreen.cpp:260
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
-msgstr "Pobierz dodatki"
+msgstr "Dodatki"
 
 #: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"

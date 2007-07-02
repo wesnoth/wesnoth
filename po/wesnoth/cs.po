@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-29 12:20+0200\n"
-"PO-Revision-Date: 2007-06-08 23:30+0100\n"
+"PO-Revision-Date: 2007-07-02 17:27+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -72,11 +72,11 @@ msgstr "krátký meč"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
 msgid "magic_blast"
-msgstr ""
+msgstr "magická vlna"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
 msgid "magic blast"
-msgstr ""
+msgstr "magická vlna"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
 #: data/core/units/boats/Galleon.cfg:22
@@ -1660,13 +1660,12 @@ msgid "Healthy"
 msgstr "Zdravý"
 
 #: data/core/help.cfg:339
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 "Někteří z trpaslíků, známých svou vitalitou, jsou ještě houževnatější než "
-"ostatní a léčí se při odpočinku rychleji."
+"ostatní a léčí se i při pohybu."
 
 #: data/core/help.cfg:345 data/core/terrain.cfg:433 data/core/terrain.cfg:441
 msgid "Grassland"
@@ -2648,7 +2647,6 @@ msgstr ""
 "jednotek umístěných ve vesnicích.)"
 
 #: data/core/macros/abilities.cfg:481
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2656,9 +2654,9 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Zamoření morem:\n"
-"Když je jednotka zabita morovou ranou, je nahrazena stejnou jednotkou avšak "
-"patřící na stranu jednotky, která jí zabila (Toto nefunguje u nemrtvých či "
-"jednotek umístěných ve vesnicích.)"
+"Když je jednotka zabita morovou ranou, je nahrazena Chodící mrtvolou, avšak "
+"patřící na stranu jednotky, která ji zabila. Toto nefunguje u nemrtvých či "
+"jednotek umístěných ve vesnicích."
 
 #: data/core/macros/abilities.cfg:491
 msgid "slows"
@@ -4078,7 +4076,7 @@ msgstr "zdravá"
 
 #: data/core/macros/traits.cfg:113
 msgid "Can rest while moving"
-msgstr ""
+msgstr "Odpočívá i při pohybu"
 
 #: data/core/macros/traits.cfg:125
 msgid "fearless"
@@ -6199,7 +6197,6 @@ msgid "Fencer"
 msgstr "Šermíř"
 
 #: data/core/units/humans/Loyalist_Fencer.cfg:21
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -8031,6 +8028,7 @@ msgstr ""
 msgid "Orcish Slurbow"
 msgstr "Skřetí ostrostřelec"
 
+# faktografická revize?
 #: data/core/units/orcs/Slurbow.cfg:20
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
@@ -8043,6 +8041,13 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"Základní formu kuše je možno podstatně vylepšit; výsledkem je podstatně "
+"složitější a účinnější zbraň, využívající pro natahování mocného, dřevěného "
+"či kostěného lučiště malý vrátek. Tento přístroj je sice mnohem snadnější k "
+"použití, ale také zcela mimo skřetí možnosti výroby.\n"
+"\n"
+"Skřeti si těchto zbraní nesmírně cení, a když se jim je povede někde náhodou "
+"ukořistit, skončí v rukou jejich nejsilnějších a nejšikovnějších střelců."
 
 #: data/core/units/orcs/Sovereign.cfg:3
 msgid "Orcish Sovereign"
@@ -10526,10 +10531,12 @@ msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
+"Mapa o rozměrech 28x28 se dvěma tvrzemi navíc pro opravdu velkou bitvu v "
+"centru."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:3
 msgid "5p - Auction-X"
-msgstr ""
+msgstr "5p - Aukce X"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 msgid ""
@@ -10538,6 +10545,11 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins.  It "
 "is a very small map so 75 gold is recommended for the other players."
 msgstr ""
+"Čtyři hráči obklopují centrální tvrz při hře na přežití proti AI, nebo volné "
+"hře 4 proti 1. Hráč uprostřed potřebuje více peněz, pokud proti němu stojí "
+"všichni ostatní. A nezapomínejte, že nejlepším způsobem jak zjistit, jak "
+"vysoká je sázka, je vsadit co nejméně! Tato mapa je velmi malá, pro ostatní "
+"hráče je doporučeno 75 zlatých."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:19
 msgid "teamname^Northeast"
@@ -11273,32 +11285,28 @@ msgid "Server: "
 msgstr "Server: "
 
 #: src/game.cpp:899 src/game.cpp:946
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Získat rozšíření"
+msgstr "Odstranit rozšíření"
 
 #: src/game.cpp:934
-#, fuzzy
 msgid "You have no Add-ons installed."
-msgstr "Rozšíření bylo nainstalováno."
+msgstr "Nejsou nainstalována žádná rozšíření."
 
 #: src/game.cpp:946
-#, fuzzy
 msgid "Choose the add-on to remove."
-msgstr "Vyber si rozšíření ke stažení."
+msgstr "Vyber rozšíření k odebrání."
 
 #: src/game.cpp:964
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdit"
 
 #: src/game.cpp:995
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "Rozšíření nainstalováno"
+msgstr "Rozšíření smazáno"
 
 #: src/game.cpp:1000
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr ""
+msgstr "Rozšíření nebylo možno odstranit - soubor nebyl nalezen."
 
 #: src/game.cpp:1000 src/menu_events.cpp:487 src/menu_events.cpp:500
 #: src/multiplayer_create.cpp:494
@@ -11675,7 +11683,6 @@ msgid "Kills"
 msgstr "Zabito"
 
 #: src/menu_events.cpp:136
-#, fuzzy
 msgid "Details"
 msgstr "Detaily"
 
@@ -12840,9 +12847,8 @@ msgid "TitleScreen button^Load"
 msgstr "Načíst hru"
 
 #: src/titlescreen.cpp:260
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
-msgstr "Získat rozšíření"
+msgstr "Rozšíření"
 
 #: src/titlescreen.cpp:261
 msgid "TitleScreen button^Language"
@@ -12969,22 +12975,3 @@ msgstr "Povolit posílání souhrnů"
 
 #~ msgid "Heals faster if resting"
 #~ msgstr "Při odpočinku se rychleji uzdravuje"
-
-# alt.: "mobilní"
-#~ msgid ""
-#~ "Because units with the 'loyal' trait have no upkeep, they can be "
-#~ "especially good for stealing enemy villages to boost your income, "
-#~ "especially if they have high mobility."
-#~ msgstr ""
-#~ "Jednotky s vlastností „věrný“ nevyžadují peníze, hodí se obzvláště na "
-#~ "kradení nepřátelských vesnic pro zlepšaní příjmů, zejména pokud jsou "
-#~ "vysoce pohyblivé."
-
-#~ msgid "Autosaves"
-#~ msgstr "Automatická uložení"
-
-#~ msgid "Do you want to delete the autosaves of this scenario?"
-#~ msgstr "Chceš smazat všechna automatická uložení této hry?"
-
-#~ msgid "Do you want to save a replay of this scenario?"
-#~ msgstr "Chceš uložit záznam této hry?"
