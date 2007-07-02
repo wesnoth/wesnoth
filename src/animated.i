@@ -14,6 +14,8 @@
 
 #include "global.hpp"
 
+#include <climits>
+
 #include "SDL.h"
 #include "animated.hpp"
 #include "util.hpp"

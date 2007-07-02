@@ -17,6 +17,7 @@
 
 #include <new>
 #include <iostream>
+#include <memory>
 #include <vector>
 
 #define ERR_G LOG_STREAM(err, general)
