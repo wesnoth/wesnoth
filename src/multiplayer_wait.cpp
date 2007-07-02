@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "basic_dialog.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -337,7 +338,7 @@ void wait::process_network_data(const config& data, const network::connection so
 	ui::process_network_data(data, sock);
 
 	if(data["message"] != "") {
-		gui::show_dialog(disp(),NULL,_("Response"),data["message"],gui::OK_ONLY);
+		gui::basic_dialog(disp(),_("Response"),data["message"],gui::OK_ONLY).show();
 	}
 	if(data["failed"] == "yes") {
 		set_result(QUIT);

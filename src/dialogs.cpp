@@ -118,10 +118,7 @@ void advance_unit(const game_data& info,
 		                      _("What should our victorious unit become?"),
 		                      gui::OK_ONLY);
 		advances.set_menu(lang_options);
-		std::vector<gui::preview_pane*>::const_iterator itor;
-		for(itor = preview_panes.begin(); itor != preview_panes.end(); ++itor)
-
-			advances.add_pane(*itor);
+		advances.set_panes(preview_panes);
 		res = advances.show();
 	}
 
@@ -260,8 +257,8 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 		}
 		*fname = d.textbox_text();
 		if (res == 0 && save_game_exists(*fname)) {
-			overwrite = gui::show_dialog(disp,NULL,_("Overwrite?"),
-				_("Save already exists. Do you want to overwrite it ?"),gui::YES_NO);
+			overwrite = gui::basic_dialog(disp,_("Overwrite?"),
+				_("Save already exists. Do you want to overwrite it ?"),gui::YES_NO).show();
 		} else {
 			overwrite = 0;
 		}
@@ -551,11 +548,10 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	std::vector<save_info> games = get_saves_list();
 
 	if(games.empty()) {
-		gui::show_dialog(disp,NULL,
+		gui::basic_dialog(disp,
 		                 _("No Saved Games"),
-						 _("There are no saved games to load.\n\
-(Games are saved automatically when you complete a scenario)"),
-		                 gui::OK_ONLY);
+				 _("There are no saved games to load.\n\(Games are saved automatically when you complete a scenario)"),
+		                 gui::OK_ONLY).show();
 		return "";
 	}
 

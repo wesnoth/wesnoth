@@ -692,13 +692,13 @@ bool game_controller::load_game()
 
 		if(state_.version != game_config::version) {
 			if(state_.version < game_config::min_savegame_version) {
-				gui::show_dialog(disp(), NULL, "", _("This save is from a version too old to be loaded."), gui::OK_ONLY);
+				gui::message_dialog(disp(), "", _("This save is from a version too old to be loaded.")).show();
 				return false;
 			}
 
-			const int res = gui::show_dialog(disp(),NULL,"",
+			const int res = gui::basic_dialog(disp(),"",
 			                      _("This save is from a different version of the game. Do you want to try to load it?"),
-			                      gui::YES_NO);
+			                      gui::YES_NO).show();
 			if(res == 1) {
 				return false;
 			}
@@ -829,10 +829,11 @@ bool game_controller::new_campaign()
 			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 		}
 
-		const int res = gui::show_dialog(disp(),NULL,_("Difficulty"),
+		gui::basic_dialog dmenu(disp(),_("Difficulty"),
 		                            _("Select difficulty level:"),
-		                            gui::OK_CANCEL,&difficulty_options);
-		if(res == -1) {
+		                            gui::OK_CANCEL);
+		dmenu.set_menu(difficulty_options);
+		if(dmenu.show() == -1) {
 			return false;
 		}
 
@@ -958,12 +959,11 @@ namespace
 					"Are you sure you want to remove the add-on \'"
 					+ addons.at(index)
 					+ "?\'";
-				res = gui::show_dialog(
+				res = gui::basic_dialog(
 						disp(),
-						NULL,
 						_("Confirm"),
 						confirm_message,
-						gui::YES_NO);
+						gui::YES_NO).show();
 			} while (res != 0);
 
 			bool delete_success = true;
@@ -992,13 +992,13 @@ namespace
 
 				std::string success_message = "Add-on \'" + addons.at(index) + "\' deleted.";
 
-				gui::show_dialog(disp(), NULL, _("Add-on deleted"), success_message,
-						gui::OK_ONLY);
+				gui::basic_dialog(disp(), _("Add-on deleted"), success_message,
+						gui::OK_ONLY).show();
 			}
 			else
 			{
-				gui::show_dialog(disp(), NULL, _("Error"), _("Add-on could not be deleted -- a file was not found."),
-						gui::OK_ONLY);
+				gui::basic_dialog(disp(), _("Error"), _("Add-on could not be deleted -- a file was not found."),
+						gui::OK_ONLY).show();
 			}
 	}
 		else // Cancel or unexpected result
@@ -1166,12 +1166,14 @@ void game_controller::download_campaigns(std::string host)
 				}
 			}
 			// If there are any, display a message.
-			// TODO: Somehow offer to automatically download the missing dependencies.
+			// TODO: Somehow offer to automatically download
+			// the missing dependencies.
 			if (!missing.empty()) {
-				if (gui::show_dialog(disp(), NULL, _("Dependencies"),
-					std::string(_("This add-on requires the following additional dependencies:")) +
-					"\n" + missing +
-					"\n" + _("Do you still want to download it?"), gui::OK_CANCEL))
+				if (gui::basic_dialog(disp(), 
+						      _("Dependencies"),
+						      std::string(_("This add-on requires the following additional dependencies:")) +
+						      	"\n" + missing +
+						      	"\n" + _("Do you still want to download it?"), gui::OK_CANCEL).show())
 					return;
 			}
 		}
@@ -1264,7 +1266,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 		                        (*data.child("error"))["message"].str() + '"');
 		return;
 	} else if(data.child("message")) {
-		const int res = gui::show_dialog(disp(),NULL,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL);
+		const int res = gui::basic_dialog(disp(),_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL).show();
 		if(res != 0) {
 			return;
 		}
@@ -1413,12 +1415,12 @@ bool game_controller::play_multiplayer()
 	} catch(network::error& e) {
 		std::cerr << "caught network error...\n";
 		if(e.message != "") {
-			gui::show_dialog(disp(),NULL,"",e.message,gui::OK_ONLY);
+			gui::basic_dialog(disp(),"",e.message,gui::OK_ONLY).show();
 		}
 	} catch(config::error& e) {
 		std::cerr << "caught config::error...\n";
 		if(e.message != "") {
-			gui::show_dialog(disp(),NULL,"",e.message,gui::OK_ONLY);
+			gui::basic_dialog(disp(),"",e.message,gui::OK_ONLY).show();
 		}
 	} catch(gamemap::incorrect_format_exception& e) {
 		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
@@ -1445,9 +1447,11 @@ bool game_controller::change_language()
 		}
 	}
 
-	const int res = gui::show_dialog(disp(),NULL,_("Language"),
+	gui::basic_dialog lmenu(disp(),_("Language"),
 	                         _("Choose your preferred language:"),
-	                         gui::OK_CANCEL,&langs);
+	                         gui::OK_CANCEL);
+	lmenu.set_menu(langs);
+	const int res = lmenu.show();
 	if(size_t(res) < langs.size()) {
 		::set_language(languages[res]);
 		preferences::set_language(languages[res].localename);

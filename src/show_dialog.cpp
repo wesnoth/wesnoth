@@ -356,7 +356,7 @@ namespace gui
 void show_error_message(display &disp, std::string const &message)
 {
 	ERR_G << message << std::endl;
-	show_dialog(disp, NULL, _("Error"), message, OK_ONLY);
+	basic_dialog(disp, _("Error"), message, OK_ONLY).show();
 }
 
 int show_dialog(display& screen, surface image,

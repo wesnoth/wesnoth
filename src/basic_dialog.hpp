@@ -196,6 +196,8 @@ public:
 	//add_pane - preview panes are not currently memory managed (for backwards compat)
 
 	void add_pane(preview_pane *const pp) { preview_panes_.push_back(pp); }
+	void set_panes(std::vector<preview_pane*> panes) { preview_panes_ = panes; }
+
 	void set_textbox(dialog_textbox *const box) {
 		delete text_widget_;
 		text_widget_ = box;

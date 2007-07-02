@@ -390,7 +390,7 @@ bool play_controller::do_replay(const bool replaying){
 						          player_number_,status_,gamestate_);
 		} catch(replay::error&) {
 			//in next version after string freeze add to text ". continue playing?"
-			if(gui::show_dialog(*gui_,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_CANCEL))
+			if(gui::basic_dialog(*gui_,"",_("The file you have tried to load is corrupt"),gui::OK_CANCEL).show())
 				throw;
 
 			result = false;

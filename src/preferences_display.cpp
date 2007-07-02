@@ -1240,7 +1240,7 @@ bool show_video_mode_dialog(display& disp)
 		modes = scr_modes_list;
 	} else if(modes == NULL) {
 		std::cerr << "No modes supported\n";
-		gui::show_dialog(disp,NULL,"",_("There are no alternative video modes available"));
+		gui::message_dialog(disp,"",_("There are no alternative video modes available")).show();
 		return false;
 	}
 

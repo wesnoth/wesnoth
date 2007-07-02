@@ -219,7 +219,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 			do {
 				if(error != NULL) {
-					gui::show_dialog(disp,NULL,"",(*error)["message"],gui::OK_ONLY);
+					gui::basic_dialog(disp,"",(*error)["message"],gui::OK_ONLY).show();
 				}
 
 				std::string login = preferences::login();
