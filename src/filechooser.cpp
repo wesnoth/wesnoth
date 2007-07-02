@@ -17,7 +17,7 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
-#include "dialogs.hpp"
+#include "file_chooser.hpp"
 #include "video.hpp"
 #include "widgets/file_menu.hpp"
 #include "filesystem.hpp"
@@ -165,7 +165,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 	//handle "create item" requests
 	else if(result() == gui::CREATE_ITEM)
 	{
-		gui::dialog d(get_display(), _("New Folder"), "", gui::OK_CANCEL);
+		gui::basic_dialog d(get_display(), _("New Folder"), "", gui::OK_CANCEL);
 		d.set_textbox(_("Name: "));
 		d.show();
 		if(d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty())
