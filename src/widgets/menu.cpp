@@ -1005,7 +1005,8 @@ int menu::hit_column(int x) const
 {
 	std::vector<int> const &widths = column_widths();
 	x -= location().x;
-	for(int j = -1, j_end = widths.size(); x >= 0; x -= widths[j]) {
+	int j, j_end = widths.size();
+	for(j = -1; x >= 0; x -= widths[j]) {
 		if(++j == j_end) {
 			return -1;
 		}
