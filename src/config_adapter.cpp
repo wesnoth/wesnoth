@@ -107,7 +107,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 
 		//see if the side specifies its location. Otherwise start it at the map-given
 		//starting position
-		gamemap::location start_pos(cfg);
+		gamemap::location start_pos = read_location(cfg);
 
 		if(map.empty()) {
 			throw game::load_game_failed("Map not found");
@@ -163,7 +163,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 		const std::string& x = (**su)["x"];
 		const std::string& y = (**su)["y"];
 
-		gamemap::location loc(**su);
+		gamemap::location loc = read_location(**su);
 		if(x.empty() && y.empty()) {
 			if(player) {
 				player->available_units.push_back(new_unit);

@@ -356,7 +356,7 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 	//load in the villages the side controls at the start
 	const config::child_list& villages = cfg.get_children("village");
 	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-		villages_.insert(gamemap::location(**v));
+		villages_.insert(read_location(**v));
 	}
 
 	countdown_time_=lexical_cast_default<int>(cfg["countdown_time"],0);

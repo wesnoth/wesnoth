@@ -151,7 +151,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");
 	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
-		gui_->add_overlay(gamemap::location(**overlay),(**overlay)["image"], (**overlay)["halo"]);
+		gui_->add_overlay(read_location(**overlay),(**overlay)["image"], (**overlay)["halo"]);
 	}
 
 	victory_conditions::set_victory_when_enemies_defeated(

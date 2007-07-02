@@ -60,7 +60,7 @@ static void verify(const unit_map& units, const config& cfg)
 			std::set<gamemap::location> locs;
 			const config::child_list& items = cfg.get_children("unit");
 			for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-				const gamemap::location loc(**i);
+				const gamemap::location loc = read_location(**i);
 				locs.insert(loc);
 
 				if(units.count(loc) == 0) {
@@ -81,7 +81,7 @@ static void verify(const unit_map& units, const config& cfg)
 
 		const config::child_list& items = cfg.get_children("unit");
 		for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-			const gamemap::location loc(**i);
+			const gamemap::location loc = read_location(**i);
 			const unit_map::const_iterator u = units.find(loc);
 			if(u == units.end()) {
 				errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
@@ -578,7 +578,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 		return;
 	}
 	for(config::child_list::const_iterator ci = cfg.get_children("checksum").begin(); ci != cfg.get_children("checksum").end(); ++ci) {
-		gamemap::location loc(**ci);
+		gamemap::location loc = read_location(**ci);
 		unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			std::stringstream message;
@@ -706,7 +706,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 		}
 
 		else if((child = cfg->child("rename")) != NULL) {
-			const gamemap::location loc(*child);
+			const gamemap::location loc = read_location(*child);
 			const std::string& name = (*child)["name"];
 
 			unit_map::iterator u = units.find(loc);
@@ -739,7 +739,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			const std::string& recruit_num = (*child)["value"];
 			const int val = atoi(recruit_num.c_str());
 
-			gamemap::location loc(*child);
+			gamemap::location loc = read_location(*child);
 
 			const std::set<std::string>& recruits = current_team.recruits();
 
@@ -797,7 +797,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			const std::string& recall_num = (*child)["value"];
 			const int val = atoi(recall_num.c_str());
 
-			gamemap::location loc(*child);
+			gamemap::location loc = read_location(*child);
 
 			if(val >= 0 && val < int(player->available_units.size())) {
 				statistics::recall_unit(player->available_units[val]);
@@ -850,8 +850,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error("no destination/source found in movement\n");
 			}
 
-			const gamemap::location src(*source);
-			const gamemap::location dst(*destination);
+			const gamemap::location src = read_location(*source);
+			const gamemap::location dst = read_location(*destination);
 
 			unit_map::iterator u = units.find(dst);
 			if(u != units.end()) {
@@ -951,8 +951,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error("no destination/source found in attack\n");
 			}
 
-			const gamemap::location src(*source);
-			const gamemap::location dst(*destination);
+			const gamemap::location src = read_location(*source);
+			const gamemap::location dst = read_location(*destination);
 
 			const std::string& weapon = (*child)["weapon"];
 			const int weapon_num = atoi(weapon.c_str());
@@ -1016,7 +1016,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			if ((event != "side turn") && (event != "turn 1") && (event != "new_turn")){
 				const config* const source = child->child("source");
 				if(source != NULL) {
-					game_events::fire(event, gamemap::location(*source));
+					game_events::fire(event, read_location(*source));
 				} else {
 					game_events::fire(event);
 				}

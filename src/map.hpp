@@ -61,7 +61,6 @@ public:
 
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}
-		explicit location(const config& cfg);
 
 		void write(config& cfg) const;
 
@@ -92,8 +91,6 @@ public:
 		DIRECTION get_opposite_dir(DIRECTION d) const;
 
 		static location null_location;
-	private:
-		void init(const std::string &x, const std::string &y);
 	};
 	const t_translation::t_list& underlying_mvt_terrain(const location& loc) const
 		{ return underlying_mvt_terrain(get_terrain(loc)); }
@@ -236,6 +233,9 @@ public:
 std::vector<gamemap::location> parse_location_range(const std::string& xvals,
 													const std::string& yvals,
 													const gamemap *const map=NULL);
+
+// parse a WML location with variable interpolation
+gamemap::location read_location(const config& cfg);
 
 //dump a position on a stream for debug purposes
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
