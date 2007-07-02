@@ -15,6 +15,7 @@
 
 #include "global.hpp"
 
+#include <string>
 #include <vector>
 #include "SDL_types.h"
 

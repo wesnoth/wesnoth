@@ -16,6 +16,7 @@
 
 //#include <string>
 //#include <vector>
+#include <climits>
 #include "SDL.h"
 #include "animated.hpp"
 #include "util.hpp"

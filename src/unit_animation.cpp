@@ -24,6 +24,7 @@
 #include "color_range.hpp"
 
 #include <algorithm>
+#include <climits>
 #include <cstdlib>
 #include <iostream>
 

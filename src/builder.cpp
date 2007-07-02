@@ -22,6 +22,7 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+#include <climits>
 
 #define ERR_NG LOG_STREAM(err, engine)
 
