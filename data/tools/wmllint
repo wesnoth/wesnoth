@@ -223,9 +223,30 @@ filemoves = {
     	("sounds/dragonstick-hit.ogg", "sounds/dragonstick-hit-1.ogg"),
     	("sounds/dragonstick-miss.ogg", "sounds/dragonstick-miss.wav"),
     ),
+    "1.3.4" : (
+    	# This release changed from numeric to string palette IDs
+        ("RC(magenta>1)", "RC(magenta>red)"),
+        ("RC(magenta>2)", "RC(magenta>green)"),
+        ("RC(magenta>3)", "RC(magenta>blue)"),
+        ("RC(magenta>4)", "RC(magenta>purple)"),
+        ("RC(magenta>5)", "RC(magenta>black)"),
+        ("RC(magenta>6)", "RC(magenta>brown)"),
+        ("RC(magenta>7)", "RC(magenta>orange)"),
+        ("RC(magenta>8)", "RC(magenta>white)"),
+        ("RC(magenta>9)", "RC(magenta>teal)"),
+        ("colour=1", "colour=red"),
+        ("colour=2", "colour=green"),
+        ("colour=3", "colour=blue"),
+        ("colour=4", "colour=purple"),
+        ("colour=5", "colour=black"),
+        ("colour=6", "colour=brown"),
+        ("colour=7", "colour=orange"),
+        ("colour=8", "colour=white"),
+        ("colour=9", "colour=teal"),
+    )
     # An empty sentinel value at end is required.
     # Always have the current version here.
-    "1.3.4" : ()
+    "1.3.5" : ()
 }
 
 # Turn all the filemove string substition pairs into nearly equivalent
