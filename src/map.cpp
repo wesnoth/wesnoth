@@ -13,16 +13,12 @@
 
 #include "global.hpp"
 
-#include "actions.hpp"
 #include "config.hpp"
-#include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
-#include "variable.hpp"
 #include "wassert.hpp"
-#include "game_events.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
