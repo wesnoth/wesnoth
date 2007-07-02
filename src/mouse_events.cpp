@@ -28,6 +28,7 @@
 #include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "sdl_utils.hpp"
+#include "pathutils.hpp"
 
 #include <cstdlib>
 
@@ -1088,7 +1089,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	unit_map::iterator u = find_unit(selected_hex_);
 
 	//if the unit is selected and then itself clicked on,
-	//any goto command is cancelled
+	//any goto command is canceled
 	if(u != units_.end() && !browse && selected_hex_ == hex && u->second.side() == team_num_) {
 		u->second.set_goto(gamemap::location());
 	}
@@ -1114,7 +1115,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 				enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
 					enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-					//if shroud or fog is active, rememember nits a and after attack check if someone isn`t seen
+					//if shroud or fog is active, remember nits a and after attack check if someone isn`t seen
 					std::set<gamemap::location> known_units;
 
 					if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
@@ -1429,58 +1430,129 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 	}
 }
 
-bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
+bool mouse_handler::unit_is_cyclable(unit_map::const_iterator it)
 {
-	if(it->second.side() == team_num_ && unit_can_move(it->first,units_,map_,teams_) && it->second.user_end_turn() == false && !gui_->fogged(it->first)) {
+        if(it->second.side() == team_num_ && unit_can_move(it->first,units_,map_,teams_) && it->second.user_end_turn() == false && !gui_->fogged(it->first)) {
 		bool is_enemy = current_team().is_enemy(int(gui_->viewing_team()+1));
 		return is_enemy == false || it->second.invisible(it->first,units_,teams_) == false;
 	}
 
 	return false;
-
 }
 
-#define LOCAL_VARIABLES \
-unit_map::const_iterator it = units_.find(next_unit_);\
-const unit_map::const_iterator itx = it;\
-const unit_map::const_iterator begin = units_.begin();\
-const unit_map::const_iterator end = units_.end()
+// Assign a label to any unlabeled units on our team by incrementally labeling
+// the unlabeled units closest to the max labeled unit.
+void mouse_handler::put_uncycled_units_in_cycle() {
+        bool any_uncycled_units;
+	do {
+	        any_uncycled_units = false;
+		int max_cycle_number = 0;
+		unit_map::const_iterator max_labelled_unit = units_.begin();
+		unit_map::iterator some_unlabelled_unit;
+		
+		// See if any units are not in the cycle yet, and find one 
+		// of them, as well as the maximum currently labeled unit.
+		for (unit_map::iterator it = units_.begin(); it != units_.end(); ++it) {
+		        if (unit_is_cyclable(it)) {
+			        if (it->second.get_cycle_number() == 0) {
+				    any_uncycled_units = true;
+				    some_unlabelled_unit = it;
+				} else if (it->second.get_cycle_number() > max_cycle_number) {
+				        max_cycle_number = it->second.get_cycle_number();
+					max_labelled_unit = it;
+				}
+			} 
+		}
 
-void mouse_handler::cycle_units()
-{
-	LOCAL_VARIABLES;
-
-	if (it == end) {
-		for (it = begin; it != end && !unit_in_cycle(it); ++it);
-	} else {
-		do {
-			++it;
-			if (it == end) it = begin;
-		} while (it != itx && !unit_in_cycle(it));
-	}
-
-	select_unit(it, itx);
+		// Assign new max label to the unit closest to the currently 
+		// max labeled unit if such a unit exists, otherwise just
+		// label an arbitrary unlabeled unit.
+		if (any_uncycled_units) {
+		        unit_map::iterator next_to_label;
+			if (max_labelled_unit != units_.end()) {
+			        next_to_label = closest_friendly_unit(max_labelled_unit);
+			} else {
+			        next_to_label = some_unlabelled_unit;
+			}
+			next_to_label->second.set_cycle_number(max_cycle_number + 1);
+		}
+	} while (any_uncycled_units);
 }
 
-void mouse_handler::cycle_back_units()
-{
-	LOCAL_VARIABLES;
-
-	if (it == end) {
-		while (it != begin && !unit_in_cycle(--it));
-		if (!unit_in_cycle(it)) it = itx;
-	} else {
-		do {
-			if (it == begin) it = end;
-			--it;
-		} while (it != itx && !unit_in_cycle(it));
+unit_map::iterator mouse_handler::closest_friendly_unit(unit_map::const_iterator prev) {
+        int min_dist = 10000;
+	unit_map::iterator ret; 
+	for (unit_map::iterator it = units_.begin(); it != units_.end(); ++it) {
+	        if (unit_is_cyclable(it) && it->second.get_cycle_number() == 0) {
+		        int cur_dist = distance_between(prev->first, it->first);
+			if (cur_dist < min_dist) {
+			    min_dist = cur_dist;
+			    ret = it;
+			}
+		}
 	}
+	
+	return ret;
+}
 
-	select_unit(it, itx);
+// You can think of greater as using its intuitive meaning.  When greater is
+// actually referencing less_than, the logic is the same.  The direction
+// along the cycle that the selected unit is picked just moves the other way.
+// greater(extreme_val, y) should be true for all reasonable y.
+void mouse_handler::cycle_units_using_advance_func(int extreme_val, advances_func greater) {
+	put_uncycled_units_in_cycle();
+	unit_map::iterator itx = units_.find(next_unit_);
+	if (itx == units_.end()) {
+	        // Nothing selected before.
+	        itx = units_.begin();
+	}
+	unit_map::iterator next = units_.end();
+	int next_cyc_num = extreme_val;
+	int cur_cyc_num = itx->second.get_cycle_number();
+	// Find the next unit, that is probably going to be the unit that has 
+	// minimum label amongst all those greater than cur_cyc_num.
+	for (unit_map::iterator it = units_.begin(); it != units_.end(); ++it) {
+	        if (unit_is_cyclable(it) &&
+		    greater(it->second.get_cycle_number(), cur_cyc_num) &&
+		    greater(next_cyc_num, it->second.get_cycle_number())) {
+		        next = it;
+			next_cyc_num = next->second.get_cycle_number();
+		}
+	}
+	// Unless there are no units greater than cur_cyc_num, in which case the
+	// cycle should start from the minimum.
+	if (next == units_.end()) {
+	        for (unit_map::iterator it = units_.begin(); it != units_.end(); ++it) {
+		        if (unit_is_cyclable(it) &&
+			    greater(next_cyc_num, it->second.get_cycle_number())) {
+			        next = it;
+				next_cyc_num = next->second.get_cycle_number();
+			}
+		}
+	}
+	if (next != units_.end()) {
+	        select_unit(next, itx);
+	}
+}
+
+bool greater_than(int x, int y) {
+  return x > y;
+}
+
+void mouse_handler::cycle_units() {
+  cycle_units_using_advance_func(1000000, greater_than);
+}
+
+bool less_than(int x, int y) {
+  return x < y;
+}
+
+void mouse_handler::cycle_back_units() {
+  cycle_units_using_advance_func(0, less_than);
 }
 
 inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
-									   const unit_map::const_iterator &itx) {
+				       const unit_map::const_iterator &itx) {
 	if (it != itx && !gui_->fogged(it->first)) {
 		const bool teleport = it->second.get_ability_bool("teleport",it->first);
 		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,false,teleport,viewing_team(),path_turns_);

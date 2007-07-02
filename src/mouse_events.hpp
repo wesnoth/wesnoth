@@ -81,7 +81,12 @@ private:
 	gamemap::location current_unit_attacks_from(const gamemap::location& loc);
 	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
 	unit_map::iterator find_unit(const gamemap::location& hex);
-	bool unit_in_cycle(unit_map::const_iterator it);
+    	bool unit_is_cyclable(unit_map::const_iterator it);
+        unit_map::iterator closest_friendly_unit(unit_map::const_iterator prev);
+        void put_uncycled_units_in_cycle();
+        typedef bool (*advances_func)(int, int);
+
+        void cycle_units_using_advance_func(int extreme_val, advances_func greater);
 	void select_unit(const unit_map::const_iterator &it, const unit_map::const_iterator &bound);
 
 	game_display* gui_;

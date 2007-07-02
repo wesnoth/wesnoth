@@ -175,6 +175,7 @@ unit::unit(const unit& o):
 		draw_bars_(o.draw_bars_),
 
 		modifications_(o.modifications_),
+                cycle_number_(0),
 		gamedata_(o.gamedata_),
 		units_(o.units_),
 		map_(o.map_),
@@ -201,6 +202,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	refreshing_  = false;
 	hidden_ = false;
 	offset_ = 0;
+	cycle_number_ = 0;
 	if(race_->not_living()) {
 		set_state("not_living","yes");
 	}
@@ -220,6 +222,7 @@ unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 	refreshing_  = false;
 	hidden_ = false;
 	offset_ = 0;
+	cycle_number_ = 0;
 	if(race_->not_living()) {
 		set_state("not_living","yes");
 	}
@@ -332,6 +335,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	end_turn_ = false;
 	hold_position_ = false;
 	offset_ = 0;
+        cycle_number_ = 0;
 }
 
 unit::~unit()
