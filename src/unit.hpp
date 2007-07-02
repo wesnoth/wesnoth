@@ -296,9 +296,6 @@ class unit
 
 		unit_race::GENDER generate_gender(const unit_type& type, bool gen);
 		std::string image_mods() const;
-
-         	void set_cycle_number(int cyc_no) { cycle_number_ = cyc_no; }
-                int get_cycle_number() const { return cycle_number_; }
 		
 	private:
 
@@ -407,8 +404,6 @@ class unit
 		bool draw_bars_;
 
 		config modifications_;
-
-                int cycle_number_;
 
 		friend void attack_type::set_specials_context(const gamemap::location& loc,const unit& un) const;
 		const game_data* gamedata_;
