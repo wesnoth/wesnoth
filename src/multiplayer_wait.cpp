@@ -338,7 +338,9 @@ void wait::process_network_data(const config& data, const network::connection so
 	ui::process_network_data(data, sock);
 
 	if(data["message"] != "") {
-		gui::basic_dialog(disp(),_("Response"),data["message"],gui::OK_ONLY).show();
+		/* GCC-3.3 needs a temp var otherwise compilation fails */
+		gui::basic_dialog dlg(disp(),_("Response"),data["message"],gui::OK_ONLY);
+		dlg.show();
 	}
 	if(data["failed"] == "yes") {
 		set_result(QUIT);

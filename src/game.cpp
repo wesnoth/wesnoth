@@ -692,7 +692,9 @@ bool game_controller::load_game()
 
 		if(state_.version != game_config::version) {
 			if(state_.version < game_config::min_savegame_version) {
-				gui::message_dialog(disp(), "", _("This save is from a version too old to be loaded.")).show();
+				/* GCC-3.3 needs a temp var otherwise compilation fails */
+				gui::message_dialog dlg(disp(), "", _("This save is from a version too old to be loaded."));
+				dlg.show();
 				return false;
 			}
 
@@ -992,13 +994,17 @@ namespace
 
 				std::string success_message = "Add-on \'" + addons.at(index) + "\' deleted.";
 
-				gui::basic_dialog(disp(), _("Add-on deleted"), success_message,
-						gui::OK_ONLY).show();
+				/* GCC-3.3 needs a temp var otherwise compilation fails */
+				gui::basic_dialog dlg(disp(), _("Add-on deleted"), success_message,
+						gui::OK_ONLY);
+				dlg.show();
 			}
 			else
 			{
-				gui::basic_dialog(disp(), _("Error"), _("Add-on could not be deleted -- a file was not found."),
-						gui::OK_ONLY).show();
+				/* GCC-3.3 needs a temp var otherwise compilation fails */
+				gui::basic_dialog dlg2(disp(), _("Error"), _("Add-on could not be deleted -- a file was not found."),
+						gui::OK_ONLY);
+				dlg2.show();
 			}
 	}
 		else // Cancel or unexpected result
@@ -1415,12 +1421,16 @@ bool game_controller::play_multiplayer()
 	} catch(network::error& e) {
 		std::cerr << "caught network error...\n";
 		if(e.message != "") {
-			gui::basic_dialog(disp(),"",e.message,gui::OK_ONLY).show();
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::basic_dialog dlg(disp(),"",e.message,gui::OK_ONLY);
+			dlg.show();
 		}
 	} catch(config::error& e) {
 		std::cerr << "caught config::error...\n";
 		if(e.message != "") {
-			gui::basic_dialog(disp(),"",e.message,gui::OK_ONLY).show();
+			/* GCC-3.3 needs a temp var otherwise compilation fails */
+			gui::basic_dialog dlg2(disp(),"",e.message,gui::OK_ONLY);
+			dlg2.show();
 		}
 	} catch(gamemap::incorrect_format_exception& e) {
 		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
