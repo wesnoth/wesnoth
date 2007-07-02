@@ -23,6 +23,7 @@ typedef struct {
 	const unit* unit_;
 } wesnoth_unit;
 
+#define W(name) static PyObject *wrapper_##name(PyObject* self, PyObject* args)
 class python_ai : public ai_interface
 {
 public:
@@ -35,24 +36,25 @@ public:
     static PyObject* wrapper_unittype_movement_cost(wesnoth_unittype*, PyObject* args);
     static PyObject* wrapper_unittype_defense_modifier(wesnoth_unittype*, PyObject* args);
 
-	static PyObject* wrapper_get_units(PyObject* self, PyObject* args);
-	static PyObject* wrapper_log_message(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_location(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_map(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_teams(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_current_team(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_src_dst(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_dst_src(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_enemy_src_dst(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_enemy_dst_src(PyObject* self, PyObject* args);
-	static PyObject* wrapper_move_unit(PyObject* self, PyObject* args);
-	static PyObject* wrapper_attack_unit(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_adjacent_tiles(PyObject* self, PyObject* args);
-	static PyObject* wrapper_recruit_unit(PyObject* self, PyObject* args);
-	static PyObject* wrapper_get_gamestatus(PyObject* self, PyObject* args);
-	static PyObject* wrapper_set_variable(PyObject*, PyObject* args);
-	static PyObject* wrapper_get_variable(PyObject*, PyObject* args);
-	static PyObject* wrapper_get_version(PyObject*, PyObject* args);
+    W(team_targets);
+    W(get_units);
+    W(log_message);
+    W(get_location);
+    W(get_map);
+    W(get_teams);
+    W(get_current_team);
+    W(get_src_dst);
+    W(get_dst_src);
+    W(get_enemy_src_dst);
+    W(get_enemy_dst_src);
+    W(move_unit);
+    W(attack_unit);
+    W(get_adjacent_tiles);
+    W(recruit_unit);
+    W(get_gamestatus);
+    W(set_variable);
+    W(get_variable);
+    W(get_version);
 
 	static PyObject* unittype_advances_to( wesnoth_unittype* type, PyObject* args );
 	static PyObject* wrapper_team_recruits( wesnoth_team* team, PyObject* args );
@@ -77,5 +79,6 @@ private:
 	ai_interface::move_map enemy_dst_src_;
 	std::map<location,paths> enemy_possible_moves_;
 };
+#undef W
 
 #endif

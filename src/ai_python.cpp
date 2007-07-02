@@ -20,7 +20,7 @@
    API was changed so scripts are not supposed to catch exceptions anymore.
 
    This means, invalid positions or units will now only be indicated by things
-   like return	values, but are ignored otherwise.
+   like return values, but are ignored otherwise.
 
    Most API functions still will cause exceptions (like if the game ends, or
    the wrong number of parameters is passed to a function) - but those are not
@@ -746,6 +746,14 @@ static PyTypeObject wesnoth_location_type = {
 	NULL
 };
 
+static PyObject* wrap_location(const gamemap::location& loc)
+{
+	wesnoth_location* location;
+	location = (wesnoth_location*)PyObject_NEW(wesnoth_location, &wesnoth_location_type);
+	location->location_ = new gamemap::location(loc.x, loc.y);
+	return (PyObject*)location;
+}
+
 void recalculate_movemaps()
 {
     python_ai *ai = running_instance;
@@ -966,6 +974,34 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 	return list;
 }
 
+PyObject *python_ai::wrapper_team_targets(PyObject *, PyObject *args)
+{
+    if (!PyArg_ParseTuple(args, ""))
+        return NULL;
+
+    PyObject* dict = PyDict_New();
+
+    // FIXME: There should be a C++ method to return all targets instead, for
+    // now it's just copy&pasted.
+    std::vector<team::target>& team_targets =
+        running_instance->current_team().targets();
+
+    unit_map &units = running_instance->get_info().units;
+
+    for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
+        //explicit targets for this team
+        for(std::vector<team::target>::iterator j = team_targets.begin();
+            j != team_targets.end(); ++j) {
+            if(u->second.matches_filter(&(j->criteria), u->first)) {
+                PyDict_SetItem(dict, wrap_location(u->first),
+                    PyLong_FromLong((int)j->value));
+            }
+        }
+    }
+
+    return dict;
+}
+
 static PyMethodDef team_methods[] = {
 	{ "owns_village",		  (PyCFunction)wrapper_team_owns_village,		METH_VARARGS,
 		"Parameters: location\n"
@@ -974,6 +1010,10 @@ static PyMethodDef team_methods[] = {
 	{ "recruits",		  (PyCFunction)python_ai::wrapper_team_recruits,	   METH_VARARGS,
 		"Returns: recruits\n"
 		"Returns a list of wesnoth.unittype objects of all possible recruits for this team."},
+        { "targets",		  (PyCFunction)python_ai::wrapper_team_targets,	   METH_VARARGS,
+		"Returns: targets\n"
+		"Returns a dictionary containing all WML targets for the "
+		"team, mapping their locations to the scores in WML."},
 	{ NULL, NULL, 0, NULL }
 };
 
@@ -1072,14 +1112,6 @@ PyObject* python_ai::wrapper_unittype_defense_modifier( wesnoth_unittype* type, 
 		return NULL;
 	return Py_BuildValue("i",type->unit_type_->movement_type().defense_modifier(
 		map, map.get_terrain(*loc->location_)));
-}
-
-static PyObject* wrap_location(const gamemap::location& loc)
-{
-	wesnoth_location* location;
-	location = (wesnoth_location*)PyObject_NEW(wesnoth_location, &wesnoth_location_type);
-	location->location_ = new gamemap::location(loc.x, loc.y);
-	return (PyObject*)location;
 }
 
 typedef struct {
@@ -1634,6 +1666,9 @@ void python_ai::initialize_python()
 	Py_Register(wesnoth_gamestatus_type, "gamestatus");
 }
 
+/* Invoke the named python script using Wesnoth's builtin Python interpreter.
+ *
+ */
 void python_ai::invoke(std::string name)
 {
 	initialize_python();
@@ -1645,6 +1680,7 @@ void python_ai::invoke(std::string name)
 		"import sys\n"
 		"backup = sys.path[:]\n"
 		"sys.path.append(\"" + game_config::path + "/data/ais\")\n"
+		"sys.path.append(\"" + game_config::path + "/data/tools/wesnoth\")\n"
 		"try:\n"
 		"\timport " + name + "\n"
 		"finally:\n"
