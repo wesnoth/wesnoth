@@ -431,12 +431,12 @@ namespace events{
 #ifndef LOW_MEM
 				str << "~RC(" << leader->second.team_color() << ">" << team::get_side_colour_index(n+1) << ")";
 #endif
-				str << COLUMN_SEPARATOR	<< "\033[3" << lexical_cast<char, size_t>(n+1) << 'm';
+				str << COLUMN_SEPARATOR	<< team::get_side_highlight(n);
 				// Delete all tags before name
 				str << font::del_tags(teams_[n].current_player()) << COLUMN_SEPARATOR << data.teamname << COLUMN_SEPARATOR;
 
 			} else {
-				str << ' ' << COLUMN_SEPARATOR << "\033[3" << lexical_cast<char, size_t>(n+1) << "m-" << COLUMN_SEPARATOR;
+				str << ' ' << COLUMN_SEPARATOR << team::get_side_highlight(n) << "-" << COLUMN_SEPARATOR;
 			}
 
 			if(!known && !game_config::debug) {

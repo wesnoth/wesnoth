@@ -1104,7 +1104,7 @@ void game_controller::download_campaigns(std::string host)
 			if(icon.find("units/") != std::string::npos
 			&& icon.find_first_of('~') == std::string::npos) {
 				//a hack to prevent magenta icons, because they look awful
-				icon.append("~TC(1,magenta)");
+				icon.append("~RC(magenta>red)");
 			}
 			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
 			                  title + COLUMN_SEPARATOR +

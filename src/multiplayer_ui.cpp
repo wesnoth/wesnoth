@@ -144,8 +144,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 
 std::string get_colour_string(int id)
 {
-	std::string prefix("\033[3 m");
-	prefix[3] = lexical_cast<char, int>(id + 1);
+	std::string prefix = team::get_side_highlight(id);
 	std::stringstream side_id;
 	side_id << (id + 1);
 	std::map<std::string, std::string>::iterator name = game_config::team_rgb_name.find(side_id.str());

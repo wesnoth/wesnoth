@@ -782,6 +782,11 @@ std::string team::get_side_colour_index(int side)
 	return id.str();
 }
 
+std::string team::get_side_highlight(int side)
+{
+	return rgb2highlight(get_side_color_range(side+1).rep());
+}
+
 void team::log_recruitable(){
 	LOG_NG << "Adding recruitable units: \n";
 	for (std::set<std::string>::const_iterator it = info_.can_recruit.begin();

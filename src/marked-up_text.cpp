@@ -65,27 +65,6 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 			break;
 		case NULL_MARKUP:
 			return i1+1;
-		// semi ANSI colour escape sequences at the start of the line for now only
-		case '\033':
-			if(i2 - i1 >= 4) {
-				++i1;
-				if(*i1 == '[') {
-					++i1;
-					if(*i1 == '3') {
-						++i1;
-						if(*i1 >= '0' && *i1 <= '9' && *(i1 + 1) == 'm')
-						{
-							if(*i1 != '0')
-							{
-								Uint32 rgb = team::get_side_rgb(lexical_cast<int, char>(*i1));
-								*colour = int_to_color(rgb);
-							}
-							++i1;
-						}
-					}
-				}
-			}
-			break;
 		case COLOR_TEXT:
 		  {
 		    //very primitive parsing for rgb value

@@ -62,4 +62,5 @@ private:
 
 std::vector<Uint32> palette(color_range cr); //return color palette from color range
 std::map<Uint32, Uint32> recolor_range(const color_range& new_rgb, const std::vector<Uint32>& old_rgb);
+std::string rgb2highlight(Uint32 rgb);
 #endif
