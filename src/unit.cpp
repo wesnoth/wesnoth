@@ -1761,9 +1761,9 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 
 		std::string tc=team::get_side_colour_index(side_);
 
-		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
+		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(%s>%s)",ellipse.c_str(),selected,"ellipse_red",tc.c_str());
 		ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM, image::NO_ADJUST_COLOUR));
-		snprintf(buf,sizeof(buf),"%s-%sbottom.png~RC(%s>%s)",ellipse.c_str(),selected,"red",tc.c_str());
+		snprintf(buf,sizeof(buf),"%s-%sbottom.png~RC(%s>%s)",ellipse.c_str(),selected,"ellipse_red",tc.c_str());
 		ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM, image::NO_ADJUST_COLOUR));
 	}
 
