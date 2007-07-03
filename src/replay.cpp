@@ -353,7 +353,7 @@ void replay::clear_labels(const std::string& team_name)
 void replay::add_rename(const std::string& name, const gamemap::location& loc)
 {
 	config* const cmd = add_command(false);
-	(*cmd)["undo"] = "no";
+	(*cmd)["async"] = "yes"; // Not undoable, but depends on moves/recruits that are
 	config val;
 	loc.write(val);
 	val["name"] = name;
@@ -442,15 +442,58 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 void replay::undo()
 {
 	config::child_itors cmd = cfg_.child_range("command");
-	while(cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no") {
+	std::vector<config::child_iterator> async_cmds; // Remember cmds not yet synced and skip over them
+	while(cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no" || (**(cmd.second-1))["async"] == "yes") {
+		if ((**(cmd.second-1))["async"] == "yes")
+			async_cmds.push_back(cmd.second-1);
 		--cmd.second;
 	}
 
 	if(cmd.first != cmd.second) {
-		cfg_.remove_child("command",cmd.second - cmd.first - 1);
-		current_ = NULL;
-		set_random(NULL);
+		config* child;
+		config& cmd_second = (**(cmd.second-1));
+		if ((child = cmd_second.child("move")) != NULL)
+		{
+			// A unit's move is being undone.
+			// Repair unsynced cmds whose locations depend on that unit's location.
+			gamemap::location dst = read_location(*(child->child("destination")));
+			gamemap::location src = read_location(*(child->child("source")));
+			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
+			{
+				config* async_child;
+				if ((async_child = (***async_cmd).child("rename")) != NULL) 
+				{
+					gamemap::location aloc = read_location(*async_child);
+					if (dst == aloc)
+					{
+						src.write(*async_child);
+					}
+				}
+			}
+		}
+		else if ((child = cmd_second.child("recruit")) != NULL || (child = cmd_second.child("recall")) != NULL)
+		{
+			// A unit is being un-recruited or un-recalled.
+			// Remove unsynced commands that would act on that unit.
+			gamemap::location src = read_location(*child);
+			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
+			{
+				config* async_child;
+				if ((async_child = (***async_cmd).child("rename")) != NULL) 
+				{
+					gamemap::location aloc = read_location(*async_child);
+					if (src == aloc)
+					{
+						cfg_.remove_child("command", *async_cmd - cmd.first);
+					}
+				}
+			}
+		}
 	}
+
+	cfg_.remove_child("command",cmd.second - cmd.first - 1);
+	current_ = NULL;
+	set_random(NULL);
 }
 
 const config::child_list& replay::commands() const
