@@ -175,7 +175,7 @@ namespace game_config
 
 		flag_rgb = v["flag_rgb"];
 		if( !flag_rgb.size()){
-			flag_rgb="green";
+			flag_rgb="flag_green";
 		}
 		defense_color_scale = string2rgb(v["defense_color_scale"]);
 		if (defense_color_scale.empty()) {
