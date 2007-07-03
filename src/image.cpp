@@ -19,7 +19,6 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
-#include "team.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 #include "wesconfig.h"
@@ -317,6 +316,7 @@ surface locator::load_image_sub_file() const
 					break;
 				}
 				std::string field = *j++;
+#if 0
 				if("TC" == function){//deprecated team coloring syntax
 					//replace with proper RC syntax
 					std::string::size_type pos = 0;
@@ -334,6 +334,7 @@ surface locator::load_image_sub_file() const
 						field= f2 + ">" + f1;
 					}						
 				}
+#endif
 				if("RC" == function){ //re-color function
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
