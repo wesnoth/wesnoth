@@ -1746,19 +1746,16 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
 	if(preferences::show_side_colours() && draw_bars_) {
-		const char* const selected = disp.selected_hex() == hex ? "selected-" : "";
-		std::vector<Uint32> temp_rgb;
-		//ellipse not pure red=255!
-		for(int i=255;i>100;i--){
-			temp_rgb.push_back((Uint32)(i<<16));
-		}
-		//selected ellipse not pure red at all!
-		char buf[100];
+
 		std::string ellipse=image_ellipse();
 		if(ellipse.empty()){
 			ellipse="misc/ellipse";
 		}
 
+		const char* const selected = disp.selected_hex() == hex ? "selected-" : "";
+
+		// load the ellipse parts recolored to match team color
+		char buf[100];
 		std::string tc=team::get_side_colour_index(side_);
 
 		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),selected,tc.c_str());
