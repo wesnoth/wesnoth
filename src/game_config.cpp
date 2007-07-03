@@ -58,7 +58,7 @@ namespace game_config
 	std::string ally_ball_image = "misc/ball-ally.png";
 	std::string flag_image = "flags/flag-1.png:150,flags/flag-2.png:150,flags/flag-3.png:150,flags/flag-4.png:150";
 	std::string flag_icon_image = "flags/flag_icon.png";
-  	std::string flag_rgb = "green";
+  	std::string flag_rgb = "flag_green";
 	std::vector<Uint32> defense_color_scale;
 
 	std::string cross_image = "misc/cross.png";
