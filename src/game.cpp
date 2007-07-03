@@ -831,11 +831,10 @@ bool game_controller::new_campaign()
 			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 		}
 
-		gui::basic_dialog dmenu(disp(),_("Difficulty"),
+		const int res = gui::show_dialog(disp(),NULL,_("Difficulty"),
 		                            _("Select difficulty level:"),
-		                            gui::OK_CANCEL);
-		dmenu.set_menu(difficulty_options);
-		if(dmenu.show() == -1) {
+		                            gui::OK_CANCEL,&difficulty_options);
+		if(res == -1) {
 			return false;
 		}
 
