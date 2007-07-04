@@ -1204,7 +1204,7 @@ void game_display::set_team(size_t teamindex, bool observe)
 {
 	wassert(teamindex < teams_.size());
 	currentTeam_ = teamindex;
-	if (!is_observer() && !observe)
+	if (!observe)
 	{
 		labels().set_team(&teams_[teamindex]);
 		viewpoint_ = &teams_[teamindex];
