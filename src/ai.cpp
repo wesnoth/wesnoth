@@ -783,7 +783,7 @@ void ai::find_threats()
 		items.push_back(protected_item(
 					lexical_cast_default<double>((**i)["value"], 1.0),
 					lexical_cast_default<int>((**i)["radius"], 20),
-					read_location(**i)));
+					gamemap::location(**i, &get_info().game_state_)));
 	}
 
 	//look for directions to protect a unit
@@ -1895,7 +1895,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 		return;
 	}
 
-	const gamemap::location dst = read_location(*goal);
+	const gamemap::location dst(*goal, &get_info().game_state_);
 	if (!dst.valid()) {
 		ERR_AI << "Invalid goal\n";
 		return;

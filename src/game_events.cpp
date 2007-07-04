@@ -50,27 +50,6 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
-// This is here to avoid creating a cross-dependency with the map class.
-
-gamemap::location read_location(const config& cfg)
-{
-	std::string xs = cfg["x"], ys = cfg["y"];
-	if (game_events::get_state_of_game())
-	{
-		xs = utils::interpolate_variables_into_string( xs, *game_events::get_state_of_game());
-		ys = utils::interpolate_variables_into_string( ys, *game_events::get_state_of_game());
-	}
-	//the co-ordinates in config files will be 1-based, while we
-	//want them as 0-based
-	int x = -1, y = -1; 
-	if(xs.empty() == false)
-		x = atoi(xs.c_str()) - 1;
-
-	if(ys.empty() == false)
-		y = atoi(ys.c_str()) - 1;
-	return gamemap::location::location(x, y);
-};
-
 namespace {
 
 game_display* screen = NULL;
@@ -1881,7 +1860,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var);
 
 			preferences::encountered_units().insert(u.id());
-			gamemap::location loc = read_location(var);
+			gamemap::location loc(var, game_events::get_state_of_game());
 			if(loc.valid()) {
 				if(utils::string_bool(cfg["find_vacant"])) {
 					loc = find_vacant_tile(*game_map,*units,loc);

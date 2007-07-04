@@ -124,6 +124,23 @@ std::string gamemap::location::write_direction(gamemap::location::DIRECTION dir)
 	}
 }
 
+gamemap::location::location(const config& cfg, const variable_set *variables)
+{
+	std::string xs = cfg["x"], ys = cfg["y"];
+	if (variables)
+	{
+		xs = utils::interpolate_variables_into_string( xs, *variables);
+		ys = utils::interpolate_variables_into_string( ys, *variables);
+	}
+	//the co-ordinates in config files will be 1-based, while we
+	//want them as 0-based
+	if(xs.empty() == false)
+		x = atoi(xs.c_str()) - 1;
+
+	if(ys.empty() == false)
+		y = atoi(ys.c_str()) - 1;
+}
+
 void gamemap::location::write(config& cfg) const
 {
 	char buf[50];

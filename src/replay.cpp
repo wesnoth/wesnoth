@@ -60,7 +60,7 @@ static void verify(const unit_map& units, const config& cfg)
 			std::set<gamemap::location> locs;
 			const config::child_list& items = cfg.get_children("unit");
 			for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-				const gamemap::location loc = read_location(**i);
+				const gamemap::location loc(**i, game_events::get_state_of_game());
 				locs.insert(loc);
 
 				if(units.count(loc) == 0) {
@@ -81,7 +81,7 @@ static void verify(const unit_map& units, const config& cfg)
 
 		const config::child_list& items = cfg.get_children("unit");
 		for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-			const gamemap::location loc = read_location(**i);
+			const gamemap::location loc(**i, game_events::get_state_of_game());
 			const unit_map::const_iterator u = units.find(loc);
 			if(u == units.end()) {
 				errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
@@ -456,14 +456,14 @@ void replay::undo()
 		{
 			// A unit's move is being undone.
 			// Repair unsynced cmds whose locations depend on that unit's location.
-			gamemap::location dst = read_location(*(child->child("destination")));
-			gamemap::location src = read_location(*(child->child("source")));
+			gamemap::location dst(*(child->child("destination")), game_events::get_state_of_game());
+			gamemap::location src(*(child->child("source")), game_events::get_state_of_game());
 			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
 				if ((async_child = (***async_cmd).child("rename")) != NULL) 
 				{
-					gamemap::location aloc = read_location(*async_child);
+					gamemap::location aloc(*async_child, game_events::get_state_of_game());
 					if (dst == aloc)
 					{
 						src.write(*async_child);
@@ -475,13 +475,13 @@ void replay::undo()
 		{
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
-			gamemap::location src = read_location(*child);
+			gamemap::location src(*child, game_events::get_state_of_game());
 			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
 				if ((async_child = (***async_cmd).child("rename")) != NULL) 
 				{
-					gamemap::location aloc = read_location(*async_child);
+					gamemap::location aloc(*async_child, game_events::get_state_of_game());
 					if (src == aloc)
 					{
 						cfg_.remove_child("command", *async_cmd - cmd.first);
@@ -621,7 +621,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 		return;
 	}
 	for(config::child_list::const_iterator ci = cfg.get_children("checksum").begin(); ci != cfg.get_children("checksum").end(); ++ci) {
-		gamemap::location loc = read_location(**ci);
+		gamemap::location loc(**ci, game_events::get_state_of_game());
 		unit_map::const_iterator u = units.find(loc);
 		if(u == units.end()) {
 			std::stringstream message;
@@ -749,7 +749,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 		}
 
 		else if((child = cfg->child("rename")) != NULL) {
-			const gamemap::location loc = read_location(*child);
+			const gamemap::location loc(*child, game_events::get_state_of_game());
 			const std::string& name = (*child)["name"];
 
 			unit_map::iterator u = units.find(loc);
@@ -782,7 +782,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			const std::string& recruit_num = (*child)["value"];
 			const int val = atoi(recruit_num.c_str());
 
-			gamemap::location loc = read_location(*child);
+			gamemap::location loc(*child, game_events::get_state_of_game());
 
 			const std::set<std::string>& recruits = current_team.recruits();
 
@@ -840,7 +840,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			const std::string& recall_num = (*child)["value"];
 			const int val = atoi(recall_num.c_str());
 
-			gamemap::location loc = read_location(*child);
+			gamemap::location loc(*child, game_events::get_state_of_game());
 
 			if(val >= 0 && val < int(player->available_units.size())) {
 				statistics::recall_unit(player->available_units[val]);
@@ -893,8 +893,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error("no destination/source found in movement\n");
 			}
 
-			const gamemap::location src = read_location(*source);
-			const gamemap::location dst = read_location(*destination);
+			const gamemap::location src(*source, game_events::get_state_of_game());
+			const gamemap::location dst(*destination, game_events::get_state_of_game());
 
 			unit_map::iterator u = units.find(dst);
 			if(u != units.end()) {
@@ -994,8 +994,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error("no destination/source found in attack\n");
 			}
 
-			const gamemap::location src = read_location(*source);
-			const gamemap::location dst = read_location(*destination);
+			const gamemap::location src(*source, game_events::get_state_of_game());
+			const gamemap::location dst(*destination, game_events::get_state_of_game());
 
 			const std::string& weapon = (*child)["weapon"];
 			const int weapon_num = atoi(weapon.c_str());
@@ -1059,7 +1059,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			if ((event != "side turn") && (event != "turn 1") && (event != "new_turn")){
 				const config* const source = child->child("source");
 				if(source != NULL) {
-					game_events::fire(event, read_location(*source));
+					game_events::fire(event, gamemap::location(*source, game_events::get_state_of_game()));
 				} else {
 					game_events::fire(event);
 				}

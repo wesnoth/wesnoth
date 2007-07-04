@@ -22,6 +22,8 @@ class unit_map;
 
 #include "terrain.hpp"
 
+#include "serialization/string_utils.hpp"
+
 #include <iostream>
 #include <map>
 #include <string>
@@ -61,6 +63,7 @@ public:
 
 		location() : x(-1), y(-1) {}
 		location(int x, int y) : x(x), y(y) {}
+		location(const config& cfg, const variable_set *variables);
 
 		void write(config& cfg) const;
 
@@ -233,9 +236,6 @@ public:
 std::vector<gamemap::location> parse_location_range(const std::string& xvals,
 													const std::string& yvals,
 													const gamemap *const map=NULL);
-
-// parse a WML location with variable interpolation
-gamemap::location read_location(const config& cfg);
 
 //dump a position on a stream for debug purposes
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l);

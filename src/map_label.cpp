@@ -80,7 +80,7 @@ void map_labels::read(const config& cfg, const variable_set *variables)
 
 	const config::child_list& items = cfg.get_children("label");
 	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const gamemap::location loc = read_location(**i);
+		const gamemap::location loc(**i, variables);
 		terrain_label* label = new terrain_label(*this, **i, variables);
 		add_label(loc, label);
 	}
@@ -349,7 +349,7 @@ terrain_label::~terrain_label()
 
 void terrain_label::read(const config& cfg, const variable_set *variables)
 {
-	loc_ = read_location(cfg);
+	loc_ = gamemap::location(cfg, variables);
 	SDL_Color colour = font::LABEL_COLOUR;
 	std::string tmp_colour = cfg["colour"]; 
 	
