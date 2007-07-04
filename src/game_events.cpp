@@ -2094,7 +2094,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	} else if(cmd == "label") {
 		
-		terrain_label label(screen->labels(),cfg.get_config());
+		terrain_label label(screen->labels(),
+				    cfg.get_config(),
+				    game_events::get_state_of_game());
 			
 		screen->labels().set_label(label.location(),
 					   label.text(),

@@ -736,7 +736,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			}
 		} else if((child = cfg->child("label")) != NULL) {
 
-			terrain_label label(disp.labels(),*child);
+			terrain_label label(disp.labels(),*child, game_events::get_state_of_game());
 			
 			disp.labels().set_label(label.location(),
 						label.text(),

@@ -146,7 +146,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			show_intro(*gui_,**story_i, level_);
 		}
 	}
-	gui_->labels().read(level_);
+	gui_->labels().read(level_, game_events::get_state_of_game());
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level_.get_children("item");

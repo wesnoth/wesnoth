@@ -20,7 +20,6 @@
 #include "language.hpp"
 #include "map_label.hpp"
 #include "wassert.hpp"
-#include "game_events.hpp"
 
 namespace {
 	const size_t max_label_size = 64;
@@ -45,14 +44,15 @@ map_labels::map_labels(const display& disp,
 }
 
 map_labels::map_labels(const display& disp, 
-					   const config& cfg, 
-					   const gamemap& map,
-					   const team* team) : 
+		       const config& cfg, 
+		       const gamemap& map,
+		       const team* team,
+		       const variable_set *variables) : 
 		disp_(disp), 
 		team_(team),
 		map_(map)
 {
-	read(cfg);
+	read(cfg, variables);
 }
 
 map_labels::~map_labels()
@@ -74,14 +74,14 @@ void map_labels::write(config& res) const
 	}
 }
 
-void map_labels::read(const config& cfg)
+void map_labels::read(const config& cfg, const variable_set *variables)
 {
 	clear_all();
 
 	const config::child_list& items = cfg.get_children("label");
 	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
 		const gamemap::location loc = read_location(**i);
-		terrain_label* label = new terrain_label(*this, **i);
+		terrain_label* label = new terrain_label(*this, **i, variables);
 		add_label(loc, label);
 	}
 	recalculate_labels();
@@ -332,11 +332,12 @@ terrain_label::terrain_label(const map_labels& parent)  :
 
 /// Load label from config
 terrain_label::terrain_label(const map_labels& parent,
-							 const config& cfg) :
+			     const config& cfg,
+			     const variable_set *variables) :
 		handle_(0),
 		parent_(&parent)
 {
-	read(cfg);
+	read(cfg, variables);
 	check_text_length();
 }
 
@@ -346,7 +347,7 @@ terrain_label::~terrain_label()
 	clear();
 }
 
-void terrain_label::read(const config& cfg)
+void terrain_label::read(const config& cfg, const variable_set *variables)
 {
 	loc_ = read_location(cfg);
 	SDL_Color colour = font::LABEL_COLOUR;
@@ -354,15 +355,15 @@ void terrain_label::read(const config& cfg)
 	
 	text_      = cfg["text"];
 	team_name_ = cfg["team_name"];
-	
-	if (game_events::get_state_of_game())
+
+	if (variables)
 	{
-		text_ = utils::interpolate_variables_into_string(text_,
-														 *game_events::get_state_of_game());
-		team_name_ = utils::interpolate_variables_into_string(team_name_,
-															  *game_events::get_state_of_game());
-		tmp_colour = utils::interpolate_variables_into_string(tmp_colour,
-															  *game_events::get_state_of_game());
+		text_ = utils::interpolate_variables_into_string(
+				text_, *variables);
+		team_name_ = utils::interpolate_variables_into_string(
+					team_name_, *variables);
+		tmp_colour = utils::interpolate_variables_into_string(
+				  tmp_colour, *variables);
 	}
 	
 	std::vector<std::string> tmp_c = utils::split(tmp_colour,',',
