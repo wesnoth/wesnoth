@@ -1157,7 +1157,7 @@ void game_display::remove_temporary_unit()
 
 	invalidate(temp_unit_loc_);
 	// redraw with no location to get rid of haloes
-	temp_unit_->redraw_unit(*this,gamemap::location());
+	temp_unit_->clear_haloes();
 	temp_unit_ = NULL;
 }
 void game_display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
