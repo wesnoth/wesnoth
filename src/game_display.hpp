@@ -138,7 +138,7 @@ public:
 	//set_team sets the team controlled by the player using the computer,
 	//and it is this team whose data is displayed in the game status.
 	//set_playing_team sets the team whose turn it currently is
-	void set_team(size_t team);
+	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
 	const std::vector<team>& get_teams() {return teams_;};
 

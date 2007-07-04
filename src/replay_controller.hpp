@@ -48,15 +48,15 @@ public:
 	void stop_replay();
 	void replay_next_turn();
 	void replay_next_side();
-	void replay_switch_fog();
-	void replay_switch_shroud();
+	void replay_show_everything();
+	void replay_show_each();
+	void replay_show_team1();
 	void replay_skip_animation();
 
 	std::vector<team> teams_start_;
 
 protected:
 	virtual void init_gui();
-	void init_shroudfog_controls(const std::vector<team>::iterator);
 
 private:
 	void init();
@@ -73,6 +73,9 @@ private:
 	unsigned int current_turn_;
 	int delay_;
 	bool is_playing_;
+
+	bool show_everything_;
+	unsigned int show_team_;
 };
 
 

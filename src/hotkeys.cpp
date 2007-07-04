@@ -91,8 +91,12 @@ const struct {
 	{ hotkey::HOTKEY_STOP_REPLAY, "stopreplay", N_("Stop"), false },
 	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false },
 	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false },
-	{ hotkey::HOTKEY_REPLAY_SHROUD, "replayswitchshroud", N_("Shroud"), false },
-	{ hotkey::HOTKEY_REPLAY_FOG, "replayswitchfog", N_("Fog"), false },
+	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything", 
+	  N_("Full map"), false },
+	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach", 
+	  N_("Each team"), false },
+	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1", 
+	  N_("Team 1"), false },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false },
 
 	{ hotkey::HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", N_("Set Terrain"),true },
@@ -707,11 +711,14 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		 case HOTKEY_REPLAY_NEXT_SIDE:
 			replay_next_side();
 			 break;
-		 case HOTKEY_REPLAY_SHROUD:
-			replay_switch_shroud();
+		 case HOTKEY_REPLAY_SHOW_EVERYTHING:
+			replay_show_everything();
 			 break;
-		 case HOTKEY_REPLAY_FOG:
-			replay_switch_fog();
+		 case HOTKEY_REPLAY_SHOW_EACH:
+			replay_show_each();
+			 break;
+		 case HOTKEY_REPLAY_SHOW_TEAM1:
+			replay_show_team1();
 			 break;
 		 case HOTKEY_REPLAY_SKIP_ANIMATION:
 			replay_skip_animation();

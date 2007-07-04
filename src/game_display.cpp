@@ -1200,11 +1200,11 @@ const std::string game_display::current_team_name() const
 	return std::string();
 }
 
-void game_display::set_team(size_t teamindex)
+void game_display::set_team(size_t teamindex, bool observe)
 {
 	wassert(teamindex < teams_.size());
 	currentTeam_ = teamindex;
-	if (!is_observer())
+	if (!is_observer() && !observe)
 	{
 		labels().set_team(&teams_[teamindex]);
 		viewpoint_ = &teams_[teamindex];
