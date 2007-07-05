@@ -64,8 +64,11 @@ Usage: change_textdomain {-h | campaign-name oldtextdomain newtextdomain}
 Options:
     -h, --help                   Emit this help message and quit.
     -d, --dryrun                 Echo shell actions without performing them.
+    -t                           Insrt "#textdomain wesnoth"
 Requires as first argument a campaign name.
 Requires as second and third arguments old and new text domain names. 
+Exceptiion: with no arguments, it inserts "#textdomain wesnoth" in files
+that do not already have it.
 Call from the top-level directory of mainline.
 EOF
 }
@@ -123,6 +126,21 @@ svnmove()
     fi
 }
 
+add_textdomain()
+# Add '#textdomain wesnoth' to files that don't have it. 
+{
+    for file in `find data -name "*.cfg" -print`
+    do
+	if grep '#textdomain' $file >/dev/null
+	then
+	    :
+	else
+	    # FIXME: The per-file transformation still needs to be implemented
+	    echo $file
+	fi
+    done
+}
+
 if [ "$1" = "-h" -o "$1" = "--help" ]
 then
     usage
@@ -131,6 +149,10 @@ elif [ "$1" = "-d" -o "$1" = "--dryrun" ]
 then
     do=echo
     shift
+elif [ "$1" = "-t" ]
+then
+    add_textdomain
+    exit 0
 fi
 
 campaign=$1
