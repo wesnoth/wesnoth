@@ -39,32 +39,6 @@ namespace preferences {
 	bool show_lobby_minimaps();
 	void save_show_lobby_minimaps(const bool show);
 
-	// don't rename it to sound() because of a gcc-3.3 branch bug
-	// which will cause it to conflict with the sound namespace
-	bool sound_on();
-	bool set_sound(bool ison);
-
-	unsigned int sample_rate();
-	void save_sample_rate(const unsigned int rate);
-
-	size_t sound_buffer_size();
-	void save_sound_buffer_size(const size_t size);
-
-	int sound_volume();
-	void set_sound_volume(int vol);
-
-	int bell_volume();
-	void set_bell_volume(int vol);
-
-	int UI_volume();
-	void set_UI_volume(int vol);
-
-	bool music_on();
-	bool set_music(bool ison);
-
-	int music_volume();
-	void set_music_volume(int vol);
-
 	bool adjust_gamma();
 	void _set_adjust_gamma(bool val);
 
@@ -95,14 +69,6 @@ namespace preferences {
 
 	bool mouse_scroll_enabled();
 	void enable_mouse_scroll(bool value);
-
-	bool turn_bell();
-	bool set_turn_bell(bool ison);
-
-	bool UI_sound_on();
-	bool set_UI_sound(bool ison);
-
-	bool message_bell();
 
 	const std::string turn_cmd();
 
@@ -169,9 +135,6 @@ namespace preferences {
 
 	void set_ask_delete_saves(bool value);
 	bool ask_delete_saves();
-
-	bool use_colour_cursors();
-	void _set_colour_cursors(bool value);
 
 	bool show_floating_labels();
 	void set_show_floating_labels(bool value);

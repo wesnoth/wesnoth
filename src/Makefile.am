@@ -157,8 +157,6 @@ wesnoth_DEPENDENCIES=libwesnoth-core.a
 #    Editor                                                                 #
 #############################################################################
 
-# FIXME: Presence of game_display.cpp in this list is temporary
-
 wesnoth_editor_SOURCES = \
 	editor/editor.cpp \
 	editor/editor_layout.cpp \
@@ -252,6 +250,64 @@ wesnoth_editor_SOURCES = \
 
 wesnoth_editor_LDADD = $(THELIBS)
 wesnoth_editor_DEPENDENCIES=libwesnoth-core.a
+
+# This is not presently used.  It documents the list we're trying to reduce to
+reduced_editor_sources = \
+	editor/editor.cpp \
+	editor/editor_layout.cpp \
+	editor/map_manip.cpp \
+	editor/editor_display.cpp \
+	editor/editor_palettes.cpp \
+	editor/editor_main.cpp \
+	editor/editor_dialogs.cpp \
+	editor/editor_undo.cpp \
+	animated_editor.cpp \
+	astarnode.cpp \
+	basic_dialog.cpp \
+	builder.cpp \
+	checksum.cpp \
+	clipboard.cpp \
+	color_range.cpp \
+	cursor.cpp \
+	display.cpp \
+	events.cpp \
+	filechooser.cpp \
+	font.cpp \
+	generic_event.cpp \
+	hotkeys.cpp \
+	image.cpp \
+	key.cpp \
+	language.cpp \
+	loadscreen.cpp \
+	map_create.cpp \
+	map_label.cpp \
+	mapgen.cpp \
+	marked-up_text.cpp \
+	minimap.cpp \
+	preferences.cpp \
+	reports.cpp \
+	sdl_utils.cpp \
+	show_dialog.cpp \
+	sound.cpp \
+	soundsource.cpp \
+	theme.cpp \
+	tooltips.cpp \
+	video.cpp \
+	serialization/binary_or_text.cpp \
+	serialization/parser.cpp \
+	widgets/button.cpp \
+	widgets/file_menu.cpp \
+	widgets/label.cpp \
+	widgets/menu.cpp \
+	widgets/menu_style.cpp \
+	widgets/progressbar.cpp \
+	widgets/textbox.cpp \
+	widgets/scrollarea.cpp \
+	widgets/scrollbar.cpp \
+	widgets/slider.cpp \
+	widgets/widget.cpp \
+	sdl_ttf/SDL_ttf.c
+
 
 #############################################################################
 #    Wesnothd Server                                                        #
@@ -352,114 +408,114 @@ noinst_HEADERS = \
 	editor/editor.hpp \
 	editor/editor_palettes.hpp \
 	editor/editor_dialogs.hpp \
-	statistics.hpp \
-	network.hpp \
-	ai2.hpp \
-	ai_python.hpp \
-	attack_prediction.hpp \
-	basic_dialog.hpp \
-	file_chooser.hpp \
-	cursor.hpp \
-	tooltips.hpp \
-	halo.hpp \
-	variable.hpp \
-	hotkeys.hpp \
-	unit_display.hpp \
-	theme.hpp \
-	pathutils.hpp \
-	mapgen.hpp \
-	cavegen.hpp \
-	race.hpp \
-	multiplayer_connect.hpp \
-	array.hpp \
-	wassert.hpp \
-	dialogs.hpp \
-	map.hpp \
-	global.hpp \
-	checksum.hpp \
-	video.hpp \
-	ai_interface.hpp \
-	multiplayer_wait.hpp \
-	gettext.hpp \
-	loadscreen.hpp \
-	builder.hpp \
-	publish_campaign.hpp \
-	game_config.hpp \
-	game_display.hpp \
-	terrain.hpp \
-	terrain_translation.hpp \
-	config.hpp \
-	network_worker.hpp \
-	util.hpp \
-	language.hpp \
-	multiplayer_lobby.hpp \
-	scoped_resource.hpp \
-	sound.hpp \
-	soundsource.hpp \
-	pathfind.hpp \
-	reports.hpp \
-	map_label.hpp \
-	random.hpp \
-	filesystem.hpp \
-	help.hpp \
-	ai.hpp \
-	replay.hpp \
-	wml_separators.hpp \
-	show_dialog.hpp \
-	construct_dialog.hpp \
-	map_create.hpp \
-	actions.hpp \
-	sdl_utils.hpp \
-	game_errors.hpp \
-	font.hpp \
-	astarnode.hpp \
-	multiplayer_ui.hpp \
-	titlescreen.hpp \
-	image.hpp \
-	team.hpp \
-	game_events.hpp \
-	clipboard.hpp \
-	color_range.hpp \
-	events.hpp \
-	playcampaign.hpp \
-	multiplayer.hpp \
-	thread.hpp \
-	gamestatus.hpp \
-	playturn.hpp \
-	log.hpp \
-	key.hpp \
-	terrain_filter.hpp \
-	tstring.hpp \
-	multiplayer_create.hpp \
-	intro.hpp \
-	preferences.hpp \
-	game_preferences.hpp \
-	unit_types.hpp \
-	unit_map.hpp \
-	unit_animation.hpp \
-	unit_abilities.hpp \
-	unit_frame.hpp \
-	upload_log.hpp \
-	display.hpp \
-	leader_list.hpp \
 	about.hpp \
-	unit.hpp \
+	actions.hpp \
+	ai.hpp \
+	ai2.hpp \
+	ai_dfool.hpp \
+	ai_interface.hpp \
+	ai_python.hpp \
 	animated.hpp \
 	animated.i \
+	array.hpp \
+	astarnode.hpp \
+	attack_prediction.hpp \
+	basic_dialog.hpp \
+	builder.hpp \
+	cavegen.hpp \
+	checksum.hpp \
+	clipboard.hpp \
+	color_range.hpp \
+	config.hpp \
+	config_adapter.hpp \
+	construct_dialog.hpp \
+	cursor.hpp \
+	dialogs.hpp \
+	display.hpp \
+	events.hpp \
+	file_chooser.hpp \
+	filesystem.hpp \
+	floating_textbox.hpp \
+	font.hpp \
+	game_config.hpp \
+	game_display.hpp \
+	game_errors.hpp \
+	game_events.hpp \
+	game_preferences.hpp \
+	gamestatus.hpp \
+	generic_event.hpp \
+	gettext.hpp \
+	global.hpp \
+	halo.hpp \
+	help.hpp \
+	hotkeys.hpp \
+	image.hpp \
+	intro.hpp \
+	key.hpp \
+	language.hpp \
+	leader_list.hpp \
+	loadscreen.hpp \
+	log.hpp \
+	map.hpp \
+	map_create.hpp \
+	map_label.hpp \
+	mapgen.hpp \
 	mapgen_dialog.hpp \
 	marked-up_text.hpp \
-	ai_dfool.hpp \
+	menu_events.hpp \
 	minimap.hpp \
 	mouse_events.hpp \
-	menu_events.hpp \
-	preferences_display.hpp \
-	replay_controller.hpp \
-	config_adapter.hpp \
-	floating_textbox.hpp \
+	multiplayer.hpp \
+	multiplayer_connect.hpp \
+	multiplayer_create.hpp \
+	multiplayer_lobby.hpp \
+	multiplayer_ui.hpp \
+	multiplayer_wait.hpp \
+	network.hpp \
+	network_worker.hpp \
+	pathfind.hpp \
+	pathutils.hpp \
 	play_controller.hpp \
+	playcampaign.hpp \
 	playmp_controller.hpp \
 	playsingle_controller.hpp \
-	generic_event.hpp \
+	playturn.hpp \
+	preferences.hpp \
+	preferences_display.hpp \
+	publish_campaign.hpp \
+	race.hpp \
+	random.hpp \
+	replay.hpp \
+	replay_controller.hpp \
+	reports.hpp \
+	scoped_resource.hpp \
+	sdl_utils.hpp \
+	show_dialog.hpp \
+	sound.hpp \
+	soundsource.hpp \
+	statistics.hpp \
+	team.hpp \
+	terrain.hpp \
+	terrain_filter.hpp \
+	terrain_translation.hpp \
+	theme.hpp \
+	thread.hpp \
+	titlescreen.hpp \
+	tooltips.hpp \
+	tstring.hpp \
+	unit.hpp \
+	unit_abilities.hpp \
+	unit_animation.hpp \
+	unit_display.hpp \
+	unit_frame.hpp \
+	unit_map.hpp \
+	unit_types.hpp \
+	upload_log.hpp \
+	util.hpp \
+	variable.hpp \
+	video.hpp \
+	wassert.hpp \
+	wml_separators.hpp \
 	sdl_ttf/SDL_ttf.h \
 	wesconfig.h
 

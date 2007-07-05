@@ -37,8 +37,6 @@
 
 namespace {
 
-bool colour_cursors = false;
-
 bool message_private_on = true;
 
 bool haloes = true;
@@ -101,98 +99,6 @@ void save_show_lobby_minimaps(bool show)
 	preferences::set("lobby_minimaps", (show ? "yes" : "no"));
 	lobby_minimaps = show;
 }
-
-unsigned int sample_rate()
-{
-	return lexical_cast_default<unsigned int>(preferences::get("sample_rate"), 44100);
-}
-
-void save_sample_rate(const unsigned int rate)
-{
-	const std::string new_rate = lexical_cast_default<std::string>(rate, "44100");
-	if (preferences::get("sample_rate") == new_rate)
-		return;
-
-	preferences::set("sample_rate", new_rate);
-
-	//if audio is open we have to re set sample rate
-	sound::reset_sound();
-}
-
-size_t sound_buffer_size()
-{
-	//sounds don't sound good on Windows unless the buffer size is 4k,
-	//but this seems to cause crashes on other systems...
-	#ifdef WIN32
-		const size_t buf_size = 4096;
-	#else
-		const size_t buf_size = 1024;
-	#endif
-
-	return lexical_cast_default<size_t>(preferences::get("sound_buffer_size"), buf_size);
-}
-
-void save_sound_buffer_size(const size_t size)
-{
-	#ifdef WIN32
-		const char* buf_size = "4096";
-	#else
-		const char* buf_size = "1024";
-	#endif
-
-	const std::string new_size = lexical_cast_default<std::string>(size, buf_size);
-	if (preferences::get("sound_buffer_size") == new_size)
-		return;
-
-	preferences::set("sound_buffer_size", new_size);
-
-	sound::reset_sound();
-}
-
-int music_volume()
-{
-	return lexical_cast_default<int>(preferences::get("music_volume"), 100);
-}
-
-void set_music_volume(int vol)
-{
-	preferences::set("music_volume", lexical_cast_default<std::string>(vol, "100"));
-	sound::set_music_volume(music_volume());
-}
-
-int sound_volume()
-{
-	return lexical_cast_default<int>(preferences::get("sound_volume"), 100);
-}
-
-void set_sound_volume(int vol)
-{
-	preferences::set("sound_volume", lexical_cast_default<std::string>(vol, "100"));
-	sound::set_sound_volume(sound_volume());
-}
-
-int bell_volume()
-{
-	return lexical_cast_default<int>(preferences::get("bell_volume"), 100);
-}
-
-void set_bell_volume(int vol)
-{
-	preferences::set("bell_volume", lexical_cast_default<std::string>(vol, "100"));
-	sound::set_bell_volume(bell_volume());
-}
-
-int UI_volume()
-{
-	return lexical_cast_default<int>(preferences::get("UI_volume"), 100);
-}
-
-void set_UI_volume(int vol)
-{
-	preferences::set("UI_volume", lexical_cast_default<std::string>(vol, "100"));
-	sound::set_UI_volume(UI_volume());
-}
-
 
 bool adjust_gamma()
 {
@@ -349,111 +255,6 @@ void set_login(const std::string& username)
 
 namespace {
 	double scroll = 0.2;
-}
-
-bool turn_bell()
-{
-	return preferences::get("turn_bell") == "yes";
-}
-
-bool set_turn_bell(bool ison)
-{
-	if(!turn_bell() && ison) {
-		preferences::set("turn_bell", "yes");
-		if(!music_on() && !sound_on() && !UI_sound_on()) {
-			if(!sound::init_sound()) {
-				preferences::set("turn_bell", "no");
-				return false;
-			}
-		}
-	} else if(turn_bell() && !ison) {
-		preferences::set("turn_bell", "no");
-		sound::stop_bell();
-		if(!music_on() && !sound_on() && !UI_sound_on())
-			sound::close_sound();
-	}
-	return true;
-}
-
-bool UI_sound_on()
-{
-	return preferences::get("UI_sound") != "no";
-}
-
-bool set_UI_sound(bool ison)
-{
-	if(!UI_sound_on() && ison) {
-		preferences::set("UI_sound", "yes");
-		if(!music_on() && !sound_on() && !turn_bell()) {
-			if(!sound::init_sound()) {
-				preferences::set("UI_sound", "no");
-				return false;
-			}
-		}
-	} else if(UI_sound_on() && !ison) {
-		preferences::set("UI_sound", "no");
-		sound::stop_UI_sound();
-		if(!music_on() && !sound_on() && !turn_bell())
-			sound::close_sound();
-	}
-	return true;
-}
-
-const std::string turn_cmd()
-{
-	return preferences::get("turn_cmd");
-}
-
-bool message_bell()
-{
-	return preferences::get("message_bell") != "no";
-}
-
-bool sound_on() {
-	return preferences::get("sound") != "no";
-}
-
-bool set_sound(bool ison) {
-	if(!sound_on() && ison) {
-		preferences::set("sound", "yes");
-		if(!music_on() && !turn_bell() && !UI_sound_on()) {
-			if(!sound::init_sound()) {
-				preferences::set("sound", "no");
-				return false;
-			}
-		}
-	} else if(sound_on() && !ison) {
-		preferences::set("sound", "no");
-		sound::stop_sound();
-		if(!music_on() && !turn_bell() && !UI_sound_on())
-			sound::close_sound();
-	}
-	return true;
-}
-
-bool music_on() {
-	return preferences::get("music") != "no";
-}
-
-bool set_music(bool ison) {
-	if(!music_on() && ison) {
-		preferences::set("music", "yes");
-		if(!sound_on() && !turn_bell() && !UI_sound_on()) {
-			if(!sound::init_sound()) {
-				preferences::set("music", "no");
-				return false;
-			}
-		}
-		else
-			sound::play_music();
-	} else if(music_on() && !ison) {
-		preferences::set("music", "no");
-		if(!sound_on() && !turn_bell() && !UI_sound_on())
-			sound::close_sound();
-		else
-			sound::stop_music();
-	}
-	return true;
 }
 
 bool turn_dialog()
@@ -813,30 +614,9 @@ void set_theme(const std::string& theme)
 	}
 }
 
-bool use_colour_cursors()
-{
-	return colour_cursors;
-}
-
-void _set_colour_cursors(bool value)
-{
-	preferences::set("colour_cursors", value ? "yes" : "no");
-	colour_cursors = value;
-}
-
 bool show_floating_labels()
 {
 	return preferences::get("floating_labels") != "no";
-}
-
-bool mouse_scroll_enabled()
-{
-	return preferences::get("mouse_scrolling") != "no";
-}
-
-void enable_mouse_scroll(bool value)
-{
-	preferences::set("mouse_scrolling", value ? "yes" : "no");
 }
 
 void set_show_floating_labels(bool value)
