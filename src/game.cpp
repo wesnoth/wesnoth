@@ -831,16 +831,16 @@ bool game_controller::new_campaign()
 			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 		}
 
-		const int res = gui::show_dialog(disp(),NULL,_("Difficulty"),
-		                            _("Select difficulty level:"),
-		                            gui::OK_CANCEL,&difficulty_options);
-		if(res == -1) {
+		gui::basic_dialog dlg(disp(), _("Difficulty"),
+			_("Select difficulty level:"), gui::OK_CANCEL);
+		dlg.set_menu(difficulty_options);
+		if(dlg.show() == -1) {
 			return false;
 		}
 
-		state_.difficulty = difficulties[res];
+		state_.difficulty = difficulties[dlg.result()];
 		defines_map_.clear();
-		defines_map_[difficulties[res]] = preproc_define();
+		defines_map_[difficulties[dlg.result()]] = preproc_define();
 	}
 #ifdef HAVE_PYTHON
 	defines_map_["PYTHON"] = preproc_define();
