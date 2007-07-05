@@ -254,11 +254,9 @@ void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gam
 {
 	// change the coordinates of the rect send to be relative 
 	// to the map area instead of the screen area
-	const SDL_Rect& map_rect = map_area();
+	const SDL_Rect& map_rect = map_outside_area();
 	rect.x -= map_rect.x;
 	rect.y -= map_rect.y;
-	rect.w += map_rect.x;
-	rect.h += map_rect.y;
 
 	const int tile_width = hex_width();
 
