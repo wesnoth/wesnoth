@@ -550,7 +550,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	if(games.empty()) {
 		gui::basic_dialog(disp,
 		                 _("No Saved Games"),
-				 _("There are no saved games to load.\n\(Games are saved automatically when you complete a scenario)"),
+				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"),
 		                 gui::OK_ONLY).show();
 		return "";
 	}

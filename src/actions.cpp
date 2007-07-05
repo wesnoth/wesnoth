@@ -398,7 +398,7 @@ unsigned battle_context::choose_attacker_weapon(const unit &attacker, const unit
 		return -1;
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], map, teams, units,
-												  status, gamedata, attacker_loc, defender_loc, prev_def);
+			status, gamedata, attacker_loc, defender_loc, prev_def);
 		return choices[0];
 	}
 

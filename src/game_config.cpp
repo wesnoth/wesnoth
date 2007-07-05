@@ -75,7 +75,7 @@ namespace game_config
 	std::string ellipsis_image;
 
 	std::map<std::string, color_range > team_rgb_range;
-	std::map<std::string, std::string > team_rgb_name;
+	std::map<std::string, t_string > team_rgb_name;
 	
 	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 
