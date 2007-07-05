@@ -15,8 +15,8 @@
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
 #include "random.hpp"
 #include "sound.hpp"
 #include "wassert.hpp"

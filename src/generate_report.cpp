@@ -21,7 +21,7 @@
 #include "marked-up_text.hpp"
 #include "reports.hpp"
 #include "wassert.hpp"
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 
 #include <ctime>
 #include <map>

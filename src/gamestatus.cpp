@@ -21,7 +21,7 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
 #include "variable.hpp"

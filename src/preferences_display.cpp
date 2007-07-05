@@ -16,6 +16,7 @@
 
 #include "cursor.hpp"
 #include "display.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "marked-up_text.hpp"

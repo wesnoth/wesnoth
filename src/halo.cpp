@@ -14,9 +14,9 @@
 #include "global.hpp"
 
 #include "display.hpp"
+#include "game_preferences.hpp"
 #include "halo.hpp"
 #include "image.hpp"
-#include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
 #include "video.hpp"

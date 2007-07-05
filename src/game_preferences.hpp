@@ -1,0 +1,233 @@
+/* $Id$ */
+/*
+   Copyright (C) 2003 by David White <davidnwhite@verizon.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+#ifndef GAME_PREFERENCES_HPP_INCLUDED
+#define GAME_PREFERENCES_HPP_INCLUDED
+
+class gamemap;
+class game_state;
+class team;
+class unit_map;
+
+#include "game_config.hpp"
+#include "preferences.hpp"
+#include "terrain_translation.hpp"
+
+#include <string>
+#include <utility>
+#include <set>
+
+namespace preferences {
+
+	struct manager
+	{
+		manager();
+		~manager();
+
+		base_manager base;
+	};
+
+	bool show_lobby_minimaps();
+	void save_show_lobby_minimaps(const bool show);
+
+	// don't rename it to sound() because of a gcc-3.3 branch bug
+	// which will cause it to conflict with the sound namespace
+	bool sound_on();
+	bool set_sound(bool ison);
+
+	unsigned int sample_rate();
+	void save_sample_rate(const unsigned int rate);
+
+	size_t sound_buffer_size();
+	void save_sound_buffer_size(const size_t size);
+
+	int sound_volume();
+	void set_sound_volume(int vol);
+
+	int bell_volume();
+	void set_bell_volume(int vol);
+
+	int UI_volume();
+	void set_UI_volume(int vol);
+
+	bool music_on();
+	bool set_music(bool ison);
+
+	int music_volume();
+	void set_music_volume(int vol);
+
+	bool adjust_gamma();
+	void _set_adjust_gamma(bool val);
+
+	int gamma();
+	void _set_gamma(int gamma);
+
+	int lobby_joins();
+	void _set_lobby_joins(int show);
+	enum { SHOW_NON, SHOW_FRIENDS, SHOW_ALL };
+	bool _set_relationship(std::string nick, std::string rela);
+
+	bool sort_list();
+	void _set_sort_list(bool show);
+
+	bool iconize_list();
+	void _set_iconize_list(bool show);
+
+	const std::vector<game_config::server_info>& server_list();
+
+	const std::string& network_host();
+	void set_network_host(const std::string& host);
+
+	const std::string campaign_server();
+	void set_campaign_server(const std::string& host);
+
+	const std::string login();
+	void set_login(const std::string& username);
+
+	bool mouse_scroll_enabled();
+	void enable_mouse_scroll(bool value);
+
+	bool turn_bell();
+	bool set_turn_bell(bool ison);
+
+	bool UI_sound_on();
+	bool set_UI_sound(bool ison);
+
+	bool message_bell();
+
+	const std::string turn_cmd();
+
+	bool turn_dialog();
+	void set_turn_dialog(bool ison);
+
+	bool show_combat();
+
+	bool allow_observers();
+	void set_allow_observers(bool value);
+
+	bool use_map_settings();
+	void set_use_map_settings(bool value);
+
+	bool random_start_time();
+	void set_random_start_time(bool value);
+
+	bool fog();
+	void set_fog(bool value);
+
+	bool shroud();
+	void set_shroud(bool value);
+
+	int turns();
+	void set_turns(int value);
+
+	bool skip_mp_replay();
+	void set_skip_mp_replay(bool value);
+
+	bool countdown();
+	void set_countdown(bool value);
+	int countdown_init_time();
+	void set_countdown_init_time(int value);
+	int countdown_turn_bonus();
+	void set_countdown_turn_bonus(int value);
+	int countdown_reservoir_time();
+	void set_countdown_reservoir_time(int value);
+	int countdown_action_bonus();
+	void set_countdown_action_bonus(int value);
+
+	int village_gold();
+	void set_village_gold(int value);
+
+	int xp_modifier();
+	void set_xp_modifier(int value);
+
+	int era();
+	void set_era(int value);
+
+	int map();
+	void set_map(int value);
+
+	bool show_ai_moves();
+	void set_show_ai_moves(bool value);
+
+	void set_show_side_colours(bool value);
+	bool show_side_colours();
+
+	bool save_replays();
+	void set_save_replays(bool value);
+
+	bool delete_autosaves();
+	void set_delete_autosaves(bool value);
+
+	void set_ask_delete_saves(bool value);
+	bool ask_delete_saves();
+
+	bool use_colour_cursors();
+	void _set_colour_cursors(bool value);
+
+	bool show_floating_labels();
+	void set_show_floating_labels(bool value);
+
+	bool message_private();
+	void set_message_private(bool value);
+
+	bool show_tip_of_day();
+
+	bool show_haloes();
+	void set_show_haloes(bool value);
+
+	bool flip_time();
+	void set_flip_time(bool value);
+
+	bool upload_log();
+	void set_upload_log(bool value);
+	const std::string upload_id();
+
+	// Multiplayer functions
+	bool chat_timestamp();
+	void set_chat_timestamp(bool value);
+
+	int chat_lines();
+	void set_chat_lines(int lines);
+
+	bool compress_saves();
+
+	std::set<std::string> &encountered_units();
+	std::set<t_translation::t_letter> &encountered_terrains();
+
+	std::string client_type();
+
+	std::string clock_format();
+
+	void set_theme(const std::string& theme);
+	const std::string theme();
+
+	bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs);
+
+	// Ask for end turn confirmation
+	bool yellow_confirm();
+	bool green_confirm();
+	bool confirm_no_moves();
+
+	// Add all recruitable units as encountered so that information
+	// about them are displayed to the user in the help system.
+	void encounter_recruitable_units(std::vector<team>& teams);
+	// Add all units that exist at the start to the encountered units so
+	// that information about them are displayed to the user in the help
+	// system.
+	void encounter_start_units(unit_map& units);
+	// Add all units that are recallable as encountred units.
+	void encounter_recallable_units(game_state& gamestate);
+	// Add all terrains on the map as encountered terrains.
+	void encounter_map_terrain(gamemap& map);
+}
+
+#endif

@@ -16,9 +16,9 @@
 
 #include "construct_dialog.hpp"
 #include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
-#include "preferences.hpp"
 #include "serialization/parser.hpp"
 #include "upload_log.hpp"
 #include "wesconfig.h"

@@ -23,7 +23,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "menu_events.hpp"
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 #include "replay.hpp"
 #include "SDL_timer.h"
 #include "sound.hpp"

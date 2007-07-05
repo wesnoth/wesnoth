@@ -13,7 +13,7 @@
 #ifndef PREFERENCES_DISPLAY_HPP_INCLUDED
 #define PREFERENCES_DISPLAY_HPP_INCLUDED
 
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 
 namespace preferences {
 

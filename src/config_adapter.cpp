@@ -17,9 +17,9 @@
 #include <sstream>
 #include "config_adapter.hpp"
 #include "game_errors.hpp"
-#include "log.hpp"
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 #include "gamestatus.hpp"
+#include "log.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)

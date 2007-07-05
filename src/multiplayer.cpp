@@ -26,7 +26,7 @@
 #include "playmp_controller.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 #include "preferences_display.hpp"
 #include "random.hpp"
 #include "replay.hpp"

@@ -16,6 +16,7 @@
 #include <memory>
 
 #include "game_display.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "construct_dialog.hpp"
@@ -25,7 +26,6 @@
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
 #include "video.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_separators.hpp"

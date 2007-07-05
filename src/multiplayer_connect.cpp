@@ -19,7 +19,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "multiplayer_connect.hpp"
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 #include "statistics.hpp"
 #include "show_dialog.hpp"
 #include "wassert.hpp"

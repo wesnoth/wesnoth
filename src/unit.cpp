@@ -15,10 +15,10 @@
 
 #include "game_config.hpp"
 #include "game_errors.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
-#include "preferences.hpp"
 #include "random.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"

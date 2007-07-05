@@ -15,7 +15,7 @@
 #include "floating_textbox.hpp"
 
 #include "font.hpp"
-#include "preferences.hpp"
+#include "game_preferences.hpp"
 
 namespace gui{
 	floating_textbox::floating_textbox() : box_(NULL), check_(NULL), mode_(TEXTBOX_NONE), label_(0)

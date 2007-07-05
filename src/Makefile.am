@@ -71,6 +71,7 @@ wesnoth_SOURCES = \
 	game.cpp \
 	game_display.cpp \
 	game_events.cpp \
+	game_preferences.cpp \
 	gamestatus.cpp \
 	generate_report.cpp \
 	generic_event.cpp \
@@ -187,6 +188,7 @@ wesnoth_editor_SOURCES = \
 	font.cpp \
 	game_display.cpp \
 	game_events.cpp \
+	game_preferences.cpp \
 	gamestatus.cpp \
 	generate_report.cpp \
 	generic_event.cpp \
@@ -431,6 +433,7 @@ noinst_HEADERS = \
 	multiplayer_create.hpp \
 	intro.hpp \
 	preferences.hpp \
+	game_preferences.hpp \
 	unit_types.hpp \
 	unit_map.hpp \
 	unit_animation.hpp \
