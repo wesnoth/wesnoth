@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 
+#include "construct_dialog.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_config.hpp"
@@ -749,10 +750,14 @@ namespace events{
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
-			recruit_res = gui::show_dialog(*gui_,NULL,_("Recruit"),
-					_("Select unit:") + std::string("\n"),
-					gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,-1,-1,
-					NULL,NULL,"recruit_and_recall");
+			gui::dialog rmenu(*gui_,_("Recruit"),
+					  _("Select unit:") + std::string("\n"),
+					  gui::OK_CANCEL, 
+					  &gui::dialog::default_style,
+					  "recruit_and_recall");
+			rmenu.set_menu(items);
+			rmenu.set_panes(preview_panes);
+			recruit_res = rmenu.show();
 		}
 
 		if(recruit_res != -1) {
@@ -889,21 +894,19 @@ namespace events{
 
 			delete_recall_unit recall_deleter(*gui_,recall_list);
 			gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
-			std::vector<gui::dialog_button_info> buttons;
-			buttons.push_back(delete_button);
-
 			int res = 0;
 
 			{
 				dialogs::unit_preview_pane unit_preview(*gui_,&map_,recall_list);
-				std::vector<gui::preview_pane*> preview_panes;
-				preview_panes.push_back(&unit_preview);
-
-				res = gui::show_dialog(*gui_,NULL,_("Recall"),
-						_("Select unit:") + std::string("\n"),
-						gui::OK_CANCEL,&options,
-						&preview_panes,"",NULL,-1,
-						NULL,-1,-1,NULL,&buttons,"",&sorter);
+				gui::dialog rmenu(*gui_,_("Recall"),
+						  _("Select unit:") + std::string("\n"),
+						  gui::OK_CANCEL, 
+						  &gui::dialog::default_style,
+						  "recruit_and_recall");
+				rmenu.set_menu(options, &sorter);
+				rmenu.add_pane(&unit_preview);
+				rmenu.add_button(delete_button);
+				res = rmenu.show();
 			}
 
 			if(res >= 0) {

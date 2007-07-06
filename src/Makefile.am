@@ -261,7 +261,6 @@ reduced_editor_sources = \
 	animated_editor.cpp \
 	astarnode.cpp \
 	astarsearch.cpp \
-	basic_dialog.cpp \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \
@@ -422,7 +421,6 @@ noinst_HEADERS = \
 	array.hpp \
 	astarnode.hpp \
 	attack_prediction.hpp \
-	basic_dialog.hpp \
 	builder.hpp \
 	cavegen.hpp \
 	checksum.hpp \

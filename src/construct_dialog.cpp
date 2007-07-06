@@ -242,10 +242,10 @@ void dialog::set_textbox(const std::string& text_widget_label,
 	text_widget_->set_wrap(!editable_textbox);
 }
 
-void dialog::set_menu(const std::vector<std::string> &menu_items)
+void dialog::set_menu(const std::vector<std::string> &menu_items, menu::sorter* sorter)
 {
 	set_menu(new gui::menu(disp_.video(), menu_items, (type_==MESSAGE),
-		-1, dialog::max_menu_width, NULL, &menu::default_style, false));
+		-1, dialog::max_menu_width, sorter, &menu::default_style, false));
 }
 
 menu& dialog::get_menu()
