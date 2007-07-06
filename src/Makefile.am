@@ -52,6 +52,7 @@ wesnoth_SOURCES = \
 	ai_python.cpp \
 	animated_game.cpp \
 	astarnode.cpp \
+	astarsearch.cpp \
 	attack_prediction.cpp \
 	basic_dialog.cpp \
 	builder.cpp \
@@ -170,6 +171,7 @@ wesnoth_editor_SOURCES = \
 	actions.cpp \
 	animated_editor.cpp \
 	astarnode.cpp \
+	astarsearch.cpp \
 	basic_dialog.cpp \
 	builder.cpp \
 	cavegen.cpp \
