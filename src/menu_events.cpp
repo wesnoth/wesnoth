@@ -371,7 +371,7 @@ namespace events{
 			umenu.set_menu(items, &sorter);
 			umenu.add_pane(&unit_preview);
 			selected = umenu.show();
-		}
+		} // this will kill the dialog before scrolling
 
 		if(selected >= 0 && selected < int(locations_list.size())) {
 			const gamemap::location& loc = locations_list[selected];
@@ -462,10 +462,14 @@ namespace events{
 			items.push_back(str.str());
 		}
 
-		gui::dialog slist(*gui_, "", "", gui::OK_ONLY);
-		slist.set_menu(items, &sorter);
-		const int res = slist.show();
-		gui_->scroll_to_leader(units_, res+1);
+		int selected = 0;
+		{
+			gui::dialog slist(*gui_, "", "", gui::OK_ONLY);
+			slist.set_menu(items, &sorter);
+			selected = slist.show();
+		} // this will kill the dialog before scrolling
+
+		gui_->scroll_to_leader(units_, selected+1);
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
