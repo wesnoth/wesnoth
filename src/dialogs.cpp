@@ -547,8 +547,6 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 
 	delete_save save_deleter(disp,games,summaries);
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
-	std::vector<gui::dialog_button_info> buttons;
-	buttons.push_back(delete_button);
 
 	const events::event_context context;
 
@@ -572,20 +570,19 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 
 	gamemap map_obj(game_config, "");
 
-	std::vector<gui::preview_pane*> preview_panes;
 	save_preview_pane save_preview(disp.video(),game_config,&map_obj,data,games,summaries);
-	preview_panes.push_back(&save_preview);
 
+	gui::dialog lmenu(disp,
+			  _("Load Game"),
+			  _("Choose the game to load"),
+			  gui::OK_CANCEL);
+	lmenu.set_menu(items, &sorter);
+	lmenu.add_pane(&save_preview);
 	//create an option for whether the replay should be shown or not
-	std::vector<gui::check_item> options;
-
 	if(show_replay != NULL)
-		options.push_back(gui::check_item(_("Show replay"),false));
-
-	const int res = gui::show_dialog(disp,NULL,
-					 _("Load Game"),
-					 _("Choose the game to load"),
-			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,&options,-1,-1,NULL,&buttons,"",&sorter);
+		lmenu.add_option(_("Show replay"), false);
+	lmenu.add_button(delete_button);	
+	const int res = lmenu.show();
 
 	write_save_index();
 
@@ -593,7 +590,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 		return "";
 
 	if(show_replay != NULL) {
-		*show_replay = options.front().checked;
+	  *show_replay = lmenu.option_checked();
 
 		const config& summary = *summaries[res];
 		if(summary["replay"] == "yes" && summary["snapshot"] == "no") {
