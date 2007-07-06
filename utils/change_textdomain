@@ -53,6 +53,9 @@
 # 
 # 7) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in configure.ac 
 #
+# Later, I added the -t option to insert a default textdomain in files that
+# don't have it.
+#
 # Note: This script is rather sensitive to the current directory layout --
 # the campaigns directory is required to be under data, po directly under
 # toplevel, etc. It will silently break if these assumptions stop being true.
@@ -129,14 +132,15 @@ svnmove()
 add_textdomain()
 # Add '#textdomain wesnoth' to files that don't have it. 
 {
-    for file in `find data -name "*.cfg" -print`
+    for file in `find data -name "*.cfg" -print | grep -v 'data/languages'`
     do
 	if grep '#textdomain' $file >/dev/null
 	then
 	    :
 	else
-	    # FIXME: The per-file transformation still needs to be implemented
-	    echo $file
+	    ${do} echo "#textdomain wesnoth" >/tmp/ctd$$.tmp
+	    ${do} cat $file >>/tmp/ctd$$.tmp
+	    ${do} cp /tmp/ctd$$.tmp $file
 	fi
     done
 }
