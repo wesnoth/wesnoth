@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 11:15+0200\n"
+"POT-Creation-Date: 2007-07-06 13:01+0200\n"
 "PO-Revision-Date: 2007-02-03 03:31+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -19,111 +19,111 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/basic_dialog.cpp:100 src/basic_dialog.cpp:107
-#: src/editor/editor_dialogs.cpp:412
+#: src/construct_dialog.cpp:135 src/construct_dialog.cpp:142
+#: src/editor/editor_dialogs.cpp:411
 msgid "OK"
 msgstr "У реду"
 
-#: src/basic_dialog.cpp:103
+#: src/construct_dialog.cpp:138
 msgid "Yes"
 msgstr "Да"
 
-#: src/basic_dialog.cpp:104
+#: src/construct_dialog.cpp:139
 msgid "No"
 msgstr "Не"
 
-#: src/basic_dialog.cpp:108 src/basic_dialog.cpp:111
-#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:411
+#: src/construct_dialog.cpp:143 src/construct_dialog.cpp:146
+#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
 msgid "Cancel"
 msgstr "Одустани"
 
-#: src/basic_dialog.cpp:114
+#: src/construct_dialog.cpp:149
 msgid "Close"
 msgstr "Затвори"
 
-#: src/construct_dialog.cpp:97 src/hotkeys.cpp:129
+#: src/construct_dialog.cpp:811 src/hotkeys.cpp:129
 msgid "Help"
 msgstr "Помоћ"
 
-#: src/editor/editor_dialogs.cpp:50
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Промене на мапи ће бити изгубљене. Наставити?"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:192
 msgid "Create New Map"
 msgstr "Направи нову мапу"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
+#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
 #: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Ширина:"
 
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:395
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
 #: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Висина:"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:98
 msgid "Generate New Map"
 msgstr "Створи нову мапу"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate Random Map"
 msgstr "Створи насумичну мапу"
 
-#: src/editor/editor_dialogs.cpp:101
+#: src/editor/editor_dialogs.cpp:100
 msgid "Random Generator Settings"
 msgstr "Поставке генератора насумичних мапа"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
 msgstr "Стварање мапе није успело."
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1301
 msgid "Close Window"
 msgstr "Затвори прозор"
 
-#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:79
+#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:79
 #: src/preferences_display.cpp:1187
 msgid "Preferences"
 msgstr "Подешавања"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:316
+#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:316
 msgid "Scroll Speed:"
 msgstr "Брзина клизања:"
 
-#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:60
+#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:60
 #: src/preferences_display.cpp:274
 msgid "Toggle Full Screen"
 msgstr "Преко целог екрана"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences_display.cpp:277
+#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:277
 msgid "Show Grid"
 msgstr "Прикажи мрежу"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences_display.cpp:297
+#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:297
 msgid "Video Mode"
 msgstr "Видео режим"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences_display.cpp:299
+#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:299
 msgid "Hotkeys"
 msgstr "Пречице"
 
-#: src/editor/editor_dialogs.cpp:392 src/editor/editor_dialogs.cpp:454
+#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
 #: src/hotkeys.cpp:115
 msgid "Resize Map"
 msgstr "Промени величину мапе"
 
-#: src/editor/editor_dialogs.cpp:497
+#: src/editor/editor_dialogs.cpp:496
 msgid "X-Axis"
 msgstr "X-оса"
 
-#: src/editor/editor_dialogs.cpp:498
+#: src/editor/editor_dialogs.cpp:497
 msgid "Y-Axis"
 msgstr "Y-оса"
 
-#: src/editor/editor_dialogs.cpp:499
+#: src/editor/editor_dialogs.cpp:498
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Преврни (може променити димензије мапе):"
 

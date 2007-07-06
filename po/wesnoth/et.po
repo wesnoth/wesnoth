@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 11:15+0200\n"
+"POT-Creation-Date: 2007-07-06 13:00+0200\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -18,26 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/_main.cfg:29
+#: data/_main.cfg:32
 msgid "Binary Saves"
 msgstr ""
 
-#: data/_main.cfg:36
+#: data/_main.cfg:39
 #, fuzzy
 msgid "Show Combat"
 msgstr "Võitlus"
 
-#: data/_main.cfg:43
+#: data/_main.cfg:46
 #, fuzzy
 msgid "Mouse Scrolling"
 msgstr "Ravimine"
 
-#: data/_main.cfg:50
+#: data/_main.cfg:53
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Ühendu ametliku serveriga"
 
-#: data/_main.cfg:54
+#: data/_main.cfg:57
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -66,7 +66,6 @@ msgstr "Praegune hooldaja"
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:25
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:24
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-#: data/core/units/orcs/Crossbowman.cfg:23 data/core/units/orcs/Slurbow.cfg:26
 msgid "short sword"
 msgstr "lühike mõõk"
 
@@ -81,68 +80,6 @@ msgid "magic blast"
 msgstr "maagiline"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
-#: data/core/units/boats/Galleon.cfg:23
-#: data/core/units/drakes/Enforcer.cfg:104
-#: data/core/units/drakes/Gladiator.cfg:156
-#: data/core/units/drakes/Glider.cfg:77
-#: data/core/units/drakes/Hurricane.cfg:94 data/core/units/drakes/Sky.cfg:93
-#: data/core/units/dwarves/Fighter.cfg:87 data/core/units/dwarves/Lord.cfg:68
-#: data/core/units/dwarves/Runemaster.cfg:24
-#: data/core/units/dwarves/Steelclad.cfg:67 data/core/units/elves/Druid.cfg:29
-#: data/core/units/elves/Druid.cfg:67 data/core/units/elves/Enchantress.cfg:27
-#: data/core/units/elves/Enchantress.cfg:71
-#: data/core/units/elves/Shaman.cfg:31 data/core/units/elves/Shaman.cfg:69
-#: data/core/units/elves/Shyde.cfg:30 data/core/units/elves/Shyde.cfg:58
-#: data/core/units/elves/Sorceress.cfg:29
-#: data/core/units/elves/Sorceress.cfg:78 data/core/units/elves/Sylph.cfg:30
-#: data/core/units/elves/Sylph.cfg:58 data/core/units/goblins/Pillager.cfg:74
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
-#: data/core/units/humans/Mage.cfg:58 data/core/units/humans/Mage_Arch.cfg:31
-#: data/core/units/humans/Mage_Great.cfg:32
-#: data/core/units/humans/Mage_Red.cfg:53
-#: data/core/units/humans/Mage_Silver.cfg:38
-#: data/core/units/humans/Mage_White.cfg:120
-#: data/core/units/humans/Mage_of_Light.cfg:100
-#: data/core/units/humans/Outlaw.cfg:24 data/core/units/humans/Outlaw.cfg:61
-#: data/core/units/humans/Outlaw_Bandit.cfg:36
-#: data/core/units/humans/Outlaw_Footpad.cfg:25
-#: data/core/units/humans/Outlaw_Footpad.cfg:72
-#: data/core/units/humans/Outlaw_Ruffian.cfg:25
-#: data/core/units/humans/Outlaw_Thug.cfg:24
-#: data/core/units/merfolk/Diviner.cfg:68
-#: data/core/units/merfolk/Enchantress.cfg:27
-#: data/core/units/merfolk/Enchantress.cfg:65
-#: data/core/units/merfolk/Entangler.cfg:58
-#: data/core/units/merfolk/Initiate.cfg:30
-#: data/core/units/merfolk/Initiate.cfg:68
-#: data/core/units/merfolk/Netcaster.cfg:57
-#: data/core/units/merfolk/Priestess.cfg:65
-#: data/core/units/merfolk/Siren.cfg:31 data/core/units/merfolk/Siren.cfg:76
-#: data/core/units/monsters/Cave_Spider.cfg:95
-#: data/core/units/monsters/Cuttle_Fish.cfg:36
-#: data/core/units/monsters/Fire_Dragon.cfg:77
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:48
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:86
-#: data/core/units/monsters/Giant_Scorpion.cfg:80
-#: data/core/units/monsters/Mudcrawler.cfg:47
-#: data/core/units/monsters/Tentacle.cfg:64
-#: data/core/units/monsters/Yeti.cfg:36 data/core/units/saurians/Augur.cfg:39
-#: data/core/units/saurians/Oracle.cfg:39
-#: data/core/units/saurians/Soothsayer.cfg:39
-#: data/core/units/trolls/Great.cfg:30 data/core/units/trolls/Hero.cfg:28
-#: data/core/units/trolls/Rocklobber.cfg:30
-#: data/core/units/trolls/Rocklobber.cfg:67
-#: data/core/units/trolls/Troll.cfg:28 data/core/units/trolls/Warrior.cfg:30
-#: data/core/units/trolls/Whelp.cfg:29
-#: data/core/units/undead/Corpse_Soulless.cfg:49
-#: data/core/units/undead/Corpse_Walking.cfg:51
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
-#: data/core/units/undead/Necromancer.cfg:28
-#: data/core/units/undead/Skeleton_Archer.cfg:34
-#: data/core/units/wose/Ancient.cfg:95 data/core/units/wose/Elder.cfg:94
-#: data/core/units/wose/Wose.cfg:33
 msgid "impact"
 msgstr "löök"
 
@@ -150,24 +87,11 @@ msgstr "löök"
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:58
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:61
-#: data/core/units/undead/Necromancer.cfg:67
 msgid "chill wave"
 msgstr "külmajudin"
 
 #: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:60
 #: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
-#: data/core/units/saurians/Augur.cfg:76
-#: data/core/units/saurians/Oracle.cfg:76
-#: data/core/units/saurians/Soothsayer.cfg:76
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:72
-#: data/core/units/undead/Necro_Dark_Adept.cfg:32
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:62
-#: data/core/units/undead/Necro_Lich.cfg:77
-#: data/core/units/undead/Necromancer.cfg:68
-#: data/core/units/undead/Spirit_Ghost.cfg:65
-#: data/core/units/undead/Spirit_Spectre.cfg:87
-#: data/core/units/undead/Spirit_Wraith.cfg:68
 msgid "cold"
 msgstr "külm"
 
@@ -3240,3643 +3164,6 @@ msgstr "Läbipääsmatu mäestik"
 msgid "Impassable Desert Mountains"
 msgstr "Läbipääsmatu mäestik"
 
-#: data/core/units/boats/Galleon.cfg:5
-msgid "Galleon"
-msgstr "Galeoon"
-
-#: data/core/units/boats/Galleon.cfg:20
-msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
-
-#: data/core/units/boats/Galleon.cfg:22
-msgid "dummy"
-msgstr "fiktiivne"
-
-#: data/core/units/boats/Pirate_Galleon.cfg:4
-msgid "Pirate Galleon"
-msgstr "Piraatite galeoon"
-
-#: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
-msgid ""
-"Pirate galleons are to transport ships what wolves are to sheep. Ships full "
-"of goods shouldn't be lonely, far away from any land, better to help them "
-"avoid sinking from overloading..."
-msgstr ""
-"Piraatide galeoonid on kaubalaevadele umbes sama, mis hundid lammastele. "
-"Kaupu täis laevad ei tohiks olla üksikuna kaugel maast. Parem aidata neid "
-"igaks juhuks, et nad liigse koormaga põhja ei läheks..."
-
-#: data/core/units/boats/Pirate_Galleon.cfg:20
-#: data/core/units/boats/Transport_Galleon.cfg:21
-msgid "ballista"
-msgstr "ballista"
-
-#: data/core/units/boats/Pirate_Galleon.cfg:22
-#: data/core/units/boats/Transport_Galleon.cfg:23
-#: data/core/units/drakes/Clasher.cfg:126
-#: data/core/units/drakes/Enforcer.cfg:137
-#: data/core/units/drakes/Gladiator.cfg:113
-#: data/core/units/drakes/Slasher.cfg:123
-#: data/core/units/drakes/Warden.cfg:129
-#: data/core/units/dwarves/Dragonguard.cfg:63
-#: data/core/units/dwarves/Guardsman.cfg:34
-#: data/core/units/dwarves/Guardsman.cfg:82
-#: data/core/units/dwarves/Sentinel.cfg:42
-#: data/core/units/dwarves/Sentinel.cfg:90
-#: data/core/units/dwarves/Stalwart.cfg:37
-#: data/core/units/dwarves/Stalwart.cfg:85
-#: data/core/units/dwarves/Thunderer.cfg:89
-#: data/core/units/dwarves/Thunderguard.cfg:73
-#: data/core/units/elves/Archer.cfg:78 data/core/units/elves/Avenger.cfg:112
-#: data/core/units/elves/Captain.cfg:86 data/core/units/elves/Champion.cfg:83
-#: data/core/units/elves/Druid.cfg:147 data/core/units/elves/Fighter.cfg:68
-#: data/core/units/elves/Hero.cfg:82 data/core/units/elves/Marksman.cfg:104
-#: data/core/units/elves/Marshal.cfg:80 data/core/units/elves/Outrider.cfg:82
-#: data/core/units/elves/Ranger.cfg:109 data/core/units/elves/Rider.cfg:84
-#: data/core/units/elves/Scout.cfg:83
-#: data/core/units/elves/Sharpshooter.cfg:98
-#: data/core/units/elves/Shyde.cfg:138 data/core/units/goblins/Impaler.cfg:26
-#: data/core/units/goblins/Impaler.cfg:205
-#: data/core/units/goblins/Rouser.cfg:44
-#: data/core/units/goblins/Spearman.cfg:25
-#: data/core/units/goblins/Spearman.cfg:159
-#: data/core/units/humans/Horse_Grand_Knight.cfg:65
-#: data/core/units/humans/Horse_Knight.cfg:64
-#: data/core/units/humans/Horse_Lancer.cfg:26
-#: data/core/units/humans/Horse_Paladin.cfg:79
-#: data/core/units/humans/Horseman.cfg:26
-#: data/core/units/humans/Loyalist_Bowman.cfg:63
-#: data/core/units/humans/Loyalist_Cavalier.cfg:87
-#: data/core/units/humans/Loyalist_Dragoon.cfg:86
-#: data/core/units/humans/Loyalist_Duelist.cfg:110
-#: data/core/units/humans/Loyalist_General.cfg:94
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:90
-#: data/core/units/humans/Loyalist_Halberdier.cfg:32
-#: data/core/units/humans/Loyalist_Javelineer.cfg:29
-#: data/core/units/humans/Loyalist_Javelineer.cfg:85
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:79
-#: data/core/units/humans/Loyalist_Longbowman.cfg:64
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:64
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:189
-#: data/core/units/humans/Loyalist_Pikeman.cfg:55
-#: data/core/units/humans/Loyalist_Sergeant.cfg:83
-#: data/core/units/humans/Loyalist_Spearman.cfg:64
-#: data/core/units/humans/Loyalist_Spearman.cfg:205
-#: data/core/units/humans/Outlaw_Poacher.cfg:74
-#: data/core/units/humans/Outlaw_Trapper.cfg:139
-#: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:68
-#: data/core/units/humans/Woodsman.cfg:66
-#: data/core/units/merfolk/Entangler.cfg:26
-#: data/core/units/merfolk/Fighter.cfg:24
-#: data/core/units/merfolk/Hoplite.cfg:37
-#: data/core/units/merfolk/Hunter.cfg:24
-#: data/core/units/merfolk/Hunter.cfg:175
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:155
-#: data/core/units/merfolk/Netcaster.cfg:25
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:174
-#: data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/monsters/Cuttle_Fish.cfg:198
-#: data/core/units/monsters/Giant_Scorpion.cfg:26
-#: data/core/units/monsters/Sea_Serpent.cfg:26
-#: data/core/units/orcs/Archer.cfg:180 data/core/units/orcs/Crossbowman.cfg:63
-#: data/core/units/orcs/Leader.cfg:69 data/core/units/orcs/Ruler.cfg:67
-#: data/core/units/orcs/Slurbow.cfg:81 data/core/units/orcs/Sovereign.cfg:68
-#: data/core/units/orcs/Warlord.cfg:79
-#: data/core/units/saurians/Ambusher.cfg:30
-#: data/core/units/saurians/Ambusher.cfg:73
-#: data/core/units/saurians/Flanker.cfg:31
-#: data/core/units/saurians/Flanker.cfg:74
-#: data/core/units/saurians/Skirmisher.cfg:33
-#: data/core/units/saurians/Skirmisher.cfg:76
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:82
-#: data/core/units/undead/Skele_Chocobone.cfg:27
-#: data/core/units/undead/Skele_Death_Knight.cfg:90
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:71
-#: data/core/units/undead/Skeleton_Archer.cfg:72
-msgid "pierce"
-msgstr "torge"
-
-#: data/core/units/boats/Transport_Galleon.cfg:4
-msgid "Transport Galleon"
-msgstr "Transpordi galeoon"
-
-#: data/core/units/boats/Transport_Galleon.cfg:18
-msgid ""
-"Transport Galleons are well-armed ships that carry troops. If they reach the "
-"shore, they can deposit the troops to attack."
-msgstr ""
-
-#: data/core/units/drakes/Armageddon.cfg:4
-#, fuzzy
-msgid "Armageddon Drake"
-msgstr "Tulelohe"
-
-#: data/core/units/drakes/Armageddon.cfg:20
-msgid ""
-"The Armageddon Drakes truly are amongst the toughest of all drakes - so "
-"accustomed to living near fire as to be nearly immune to any fire based "
-"weapon. Their armour, like the armour of their lesser cousins the Inferno "
-"Drakes, is fashoned from refractory minerals and rocks found at the bottom "
-"of magma rivers."
-msgstr ""
-
-#: data/core/units/drakes/Armageddon.cfg:76
-#: data/core/units/drakes/Burner.cfg:62 data/core/units/drakes/Fire.cfg:69
-#: data/core/units/drakes/Inferno.cfg:70
-#: data/core/units/goblins/Direwolf_Rider.cfg:82
-#: data/core/units/monsters/Gryphon.cfg:26
-#: data/core/units/monsters/Gryphon_Master.cfg:28
-#: data/core/units/monsters/Gryphon_Rider.cfg:28
-#: data/core/units/monsters/Skeletal_Dragon.cfg:65
-#: data/core/units/monsters/Skeletal_Dragon.cfg:66
-#: data/core/units/undead/Corpse_Ghoul.cfg:67
-#: data/core/units/undead/Corpse_Necrophage.cfg:35
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:54
-#: data/core/units/undead/Spirit_Shadow.cfg:28
-msgid "claws"
-msgstr "küünised"
-
-#: data/core/units/drakes/Armageddon.cfg:78
-#: data/core/units/drakes/Blademaster.cfg:68
-#: data/core/units/drakes/Burner.cfg:64 data/core/units/drakes/Clasher.cfg:83
-#: data/core/units/drakes/Enforcer.cfg:71
-#: data/core/units/drakes/Fighter.cfg:65 data/core/units/drakes/Fire.cfg:71
-#: data/core/units/drakes/Flameheart.cfg:80
-#: data/core/units/drakes/Flare.cfg:84 data/core/units/drakes/Gladiator.cfg:70
-#: data/core/units/drakes/Inferno.cfg:72 data/core/units/drakes/Slasher.cfg:75
-#: data/core/units/drakes/Warden.cfg:81 data/core/units/drakes/Warrior.cfg:72
-#: data/core/units/dwarves/Berserker.cfg:34
-#: data/core/units/dwarves/Dragonguard.cfg:26
-#: data/core/units/dwarves/Fighter.cfg:35 data/core/units/dwarves/Lord.cfg:30
-#: data/core/units/dwarves/Lord.cfg:105
-#: data/core/units/dwarves/Steelclad.cfg:30
-#: data/core/units/dwarves/Thunderer.cfg:42
-#: data/core/units/dwarves/Thunderguard.cfg:26
-#: data/core/units/dwarves/Ulfserker.cfg:34
-#: data/core/units/elves/Archer.cfg:25 data/core/units/elves/Avenger.cfg:64
-#: data/core/units/elves/Captain.cfg:38 data/core/units/elves/Champion.cfg:25
-#: data/core/units/elves/Fighter.cfg:25 data/core/units/elves/Hero.cfg:24
-#: data/core/units/elves/Marksman.cfg:56 data/core/units/elves/Marshal.cfg:37
-#: data/core/units/elves/Outrider.cfg:33 data/core/units/elves/Ranger.cfg:61
-#: data/core/units/elves/Rider.cfg:35 data/core/units/elves/Scout.cfg:34
-#: data/core/units/elves/Sharpshooter.cfg:50
-#: data/core/units/goblins/Direwolf_Rider.cfg:36
-#: data/core/units/goblins/Direwolf_Rider.cfg:84
-#: data/core/units/goblins/Knight.cfg:36
-#: data/core/units/goblins/Wolf_Rider.cfg:52
-#: data/core/units/humans/Horse_Grand_Knight.cfg:27
-#: data/core/units/humans/Horse_Knight.cfg:26
-#: data/core/units/humans/Loyalist_Bowman.cfg:26
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Dragoon.cfg:37
-#: data/core/units/humans/Loyalist_Duelist.cfg:72
-#: data/core/units/humans/Loyalist_Fencer.cfg:127
-#: data/core/units/humans/Loyalist_General.cfg:46
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:42
-#: data/core/units/humans/Loyalist_Halberdier.cfg:216
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:36
-#: data/core/units/humans/Loyalist_Longbowman.cfg:27
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:27
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:29
-#: data/core/units/humans/Loyalist_Sergeant.cfg:35
-#: data/core/units/humans/Loyalist_Swordsman.cfg:28
-#: data/core/units/humans/Outlaw_Assassin.cfg:31
-#: data/core/units/humans/Outlaw_Assassin.cfg:112
-#: data/core/units/humans/Outlaw_Poacher.cfg:37
-#: data/core/units/humans/Outlaw_Rogue.cfg:30
-#: data/core/units/humans/Outlaw_Rogue.cfg:71
-#: data/core/units/humans/Outlaw_Thief.cfg:179
-#: data/core/units/humans/Outlaw_Trapper.cfg:72
-#: data/core/units/humans/Woodsman.cfg:29
-#: data/core/units/merfolk/Triton.cfg:71
-#: data/core/units/monsters/Cave_Spider.cfg:37
-#: data/core/units/monsters/Fire_Dragon.cfg:27
-#: data/core/units/monsters/Gryphon.cfg:28
-#: data/core/units/monsters/Gryphon_Master.cfg:30
-#: data/core/units/monsters/Gryphon_Rider.cfg:30
-#: data/core/units/monsters/Skeletal_Dragon.cfg:31
-#: data/core/units/monsters/Skeletal_Dragon.cfg:67
-#: data/core/units/monsters/Wolf.cfg:49 data/core/units/nagas/Fighter.cfg:26
-#: data/core/units/nagas/Myrmidon.cfg:30 data/core/units/nagas/Warrior.cfg:29
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:25
-#: data/core/units/orcs/Archer.cfg:72 data/core/units/orcs/Assassin.cfg:73
-#: data/core/units/orcs/Assassin.cfg:100
-#: data/core/units/orcs/Crossbowman.cfg:25 data/core/units/orcs/Grunt.cfg:60
-#: data/core/units/orcs/Leader.cfg:31 data/core/units/orcs/Ruler.cfg:29
-#: data/core/units/orcs/Slayer.cfg:30 data/core/units/orcs/Slayer.cfg:121
-#: data/core/units/orcs/Slurbow.cfg:28 data/core/units/orcs/Sovereign.cfg:30
-#: data/core/units/orcs/Warlord.cfg:26 data/core/units/orcs/Warrior.cfg:24
-#: data/core/units/undead/Bat_Blood.cfg:54
-#: data/core/units/undead/Bat_Vampire.cfg:68
-#: data/core/units/undead/Corpse_Ghoul.cfg:69
-#: data/core/units/undead/Corpse_Necrophage.cfg:37
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:44
-#: data/core/units/undead/Skele_Death_Knight.cfg:47
-#: data/core/units/undead/Skele_Deathblade.cfg:45
-#: data/core/units/undead/Skele_Draug.cfg:33
-#: data/core/units/undead/Skele_Revenant.cfg:32
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:33
-#: data/core/units/undead/Skeleton.cfg:109
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:55
-#: data/core/units/undead/Spirit_Shadow.cfg:29
-msgid "blade"
-msgstr "tera"
-
-#: data/core/units/drakes/Armageddon.cfg:122
-#: data/core/units/drakes/Blademaster.cfg:115
-#: data/core/units/drakes/Burner.cfg:110
-#: data/core/units/drakes/Fighter.cfg:112 data/core/units/drakes/Fire.cfg:117
-#: data/core/units/drakes/Flameheart.cfg:155
-#: data/core/units/drakes/Flare.cfg:136 data/core/units/drakes/Glider.cfg:129
-#: data/core/units/drakes/Hurricane.cfg:151
-#: data/core/units/drakes/Inferno.cfg:118 data/core/units/drakes/Sky.cfg:178
-#: data/core/units/drakes/Warrior.cfg:119
-#: data/core/units/monsters/Fire_Dragon.cfg:113
-#: data/core/units/monsters/Fire_Dragon.cfg:114
-msgid "fire breath"
-msgstr "tulehingus"
-
-#: data/core/units/drakes/Armageddon.cfg:124
-#: data/core/units/drakes/Blademaster.cfg:117
-#: data/core/units/drakes/Burner.cfg:112
-#: data/core/units/drakes/Fighter.cfg:114 data/core/units/drakes/Fire.cfg:119
-#: data/core/units/drakes/Flameheart.cfg:157
-#: data/core/units/drakes/Flare.cfg:138 data/core/units/drakes/Glider.cfg:131
-#: data/core/units/drakes/Hurricane.cfg:153
-#: data/core/units/drakes/Inferno.cfg:120 data/core/units/drakes/Sky.cfg:180
-#: data/core/units/drakes/Warrior.cfg:121
-#: data/core/units/dwarves/Runemaster.cfg:64
-#: data/core/units/goblins/Pillager.cfg:37 data/core/units/humans/Mage.cfg:106
-#: data/core/units/humans/Mage_Arch.cfg:78
-#: data/core/units/humans/Mage_Great.cfg:79
-#: data/core/units/humans/Mage_Red.cfg:100
-#: data/core/units/humans/Mage_Silver.cfg:86
-#: data/core/units/monsters/Fire_Dragon.cfg:116
-#: data/core/units/orcs/Archer.cfg:239
-#: data/core/units/orcs/Crossbowman.cfg:102
-#: data/core/units/orcs/Slurbow.cfg:125
-msgid "fire"
-msgstr "tuli"
-
-#: data/core/units/drakes/Blademaster.cfg:4
-#, fuzzy
-msgid "Drake Blademaster"
-msgstr "Gladiaator lohe"
-
-#: data/core/units/drakes/Blademaster.cfg:19
-msgid ""
-"The drakes who master the use of a sword are sworn into a special order. The "
-"mark of their initiation is the black-and-white warpaint they display in "
-"battle."
-msgstr ""
-
-#: data/core/units/drakes/Blademaster.cfg:67
-#: data/core/units/drakes/Clasher.cfg:82
-#: data/core/units/drakes/Enforcer.cfg:70
-#: data/core/units/drakes/Flameheart.cfg:79
-#: data/core/units/drakes/Flare.cfg:83 data/core/units/drakes/Gladiator.cfg:69
-#: data/core/units/drakes/Warrior.cfg:71 data/core/units/elves/Archer.cfg:23
-#: data/core/units/elves/Avenger.cfg:62 data/core/units/elves/Captain.cfg:36
-#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:23
-#: data/core/units/elves/Hero.cfg:22 data/core/units/elves/Marksman.cfg:54
-#: data/core/units/elves/Marshal.cfg:35 data/core/units/elves/Outrider.cfg:31
-#: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Rider.cfg:33
-#: data/core/units/elves/Scout.cfg:32
-#: data/core/units/elves/Sharpshooter.cfg:48
-#: data/core/units/humans/Horse_Grand_Knight.cfg:25
-#: data/core/units/humans/Horse_Knight.cfg:24
-#: data/core/units/humans/Horse_Paladin.cfg:39
-#: data/core/units/humans/Loyalist_Bowman.cfg:24
-#: data/core/units/humans/Loyalist_Cavalier.cfg:36
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:50
-#: data/core/units/humans/Loyalist_Dragoon.cfg:35
-#: data/core/units/humans/Loyalist_General.cfg:44
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:34
-#: data/core/units/humans/Loyalist_Longbowman.cfg:25
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:25
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:27
-#: data/core/units/humans/Loyalist_Sergeant.cfg:33
-#: data/core/units/humans/Loyalist_Swordsman.cfg:26
-#: data/core/units/nagas/Fighter.cfg:24 data/core/units/nagas/Myrmidon.cfg:28
-#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:58
-#: data/core/units/orcs/Leader.cfg:29
-msgid "sword"
-msgstr "mõõk"
-
-#: data/core/units/drakes/Burner.cfg:4
-msgid "Drake Burner"
-msgstr "Tuld purskav lohe"
-
-#: data/core/units/drakes/Burner.cfg:19
-msgid ""
-"Drake Burners are the proud few in whom the blood and strength of their "
-"remote ancestors runs truest, giving them the ability to breathe fire. This, "
-"coupled with their sheer size and fearsome claws, makes them deadly foes in "
-"combat."
-msgstr ""
-
-#: data/core/units/drakes/Clasher.cfg:4
-msgid "Drake Clasher"
-msgstr "Lahmija lohe"
-
-#: data/core/units/drakes/Clasher.cfg:27
-msgid ""
-"A Drake Clasher is incapable of either flight and fire-breathing, and most "
-"assume their relegation to melee combat is because of disability - an "
-"attempt to garner use from what otherwise would be a liability. It is "
-"possible that they have some mild deficiency in those skills, but those who "
-"support this theory have failed to consider how uniquely well-suited they "
-"are to combat a fellow drake.\n"
-"\n"
-"They are, in fact, the Judicators of the Drake Hierarchy, and though their "
-"armament is now largely ceremonial, it is none the less effective. In their "
-"encounters with lesser races, they discovered that their natural size and "
-"strength were themselves powerful weapons, and when combined with the "
-"armament worn by this caste, the resulting warriors lack some of the typical "
-"weaknesses of their kind, such as the strong vulnerability to spears and "
-"arrows.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Clasher.cfg:125
-#: data/core/units/drakes/Enforcer.cfg:136
-#: data/core/units/drakes/Gladiator.cfg:112
-#: data/core/units/dwarves/Guardsman.cfg:32
-#: data/core/units/dwarves/Sentinel.cfg:40
-#: data/core/units/dwarves/Stalwart.cfg:35
-#: data/core/units/goblins/Impaler.cfg:25
-#: data/core/units/goblins/Impaler.cfg:204
-#: data/core/units/goblins/Rouser.cfg:42
-#: data/core/units/goblins/Spearman.cfg:24
-#: data/core/units/goblins/Spearman.cfg:158
-#: data/core/units/humans/Horseman.cfg:25
-#: data/core/units/humans/Loyalist_Javelineer.cfg:28
-#: data/core/units/humans/Loyalist_Spearman.cfg:63
-#: data/core/units/merfolk/Entangler.cfg:25
-#: data/core/units/merfolk/Hunter.cfg:23
-#: data/core/units/merfolk/Hunter.cfg:174
-#: data/core/units/merfolk/Javelineer.cfg:23
-#: data/core/units/merfolk/Javelineer.cfg:154
-#: data/core/units/merfolk/Netcaster.cfg:24
-#: data/core/units/merfolk/Spearman.cfg:22
-#: data/core/units/merfolk/Spearman.cfg:173
-#: data/core/units/saurians/Ambusher.cfg:28
-#: data/core/units/saurians/Ambusher.cfg:71
-#: data/core/units/saurians/Flanker.cfg:29
-#: data/core/units/saurians/Flanker.cfg:72
-#: data/core/units/saurians/Skirmisher.cfg:31
-#: data/core/units/saurians/Skirmisher.cfg:74
-#: data/core/units/undead/Skele_Chocobone.cfg:26
-msgid "spear"
-msgstr "oda"
-
-#: data/core/units/drakes/Enforcer.cfg:4
-#, fuzzy
-msgid "Drake Enforcer"
-msgstr "Tuld purskav lohe"
-
-#: data/core/units/drakes/Enforcer.cfg:25
-msgid ""
-"The great Drake Enforcers epitomize the raw strength of their kind. Long "
-"hours at the forge have equipped them with a bristling array of weaponry, "
-"and they are clad them head to toe in shining armor of proof."
-msgstr ""
-
-#: data/core/units/drakes/Enforcer.cfg:103
-#: data/core/units/drakes/Gladiator.cfg:155
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:22
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:24
-#: data/core/units/humans/Outlaw.cfg:23
-#: data/core/units/humans/Outlaw_Bandit.cfg:35
-msgid "mace"
-msgstr "oganui"
-
-#: data/core/units/drakes/Fighter.cfg:4
-msgid "Drake Fighter"
-msgstr "Lohesõdalane"
-
-#: data/core/units/drakes/Fighter.cfg:19
-msgid ""
-"Drake Fighters wield curved scimitars with deadly skill, and possess the "
-"fire breathing skills of their ancestors. The most skilled Fighters go on to "
-"join the ranks of the elite Drake Warriors."
-msgstr ""
-
-#: data/core/units/drakes/Fighter.cfg:64
-msgid "scimitar"
-msgstr "skimitar"
-
-#: data/core/units/drakes/Fire.cfg:4
-msgid "Fire Drake"
-msgstr "Tulelohe"
-
-#: data/core/units/drakes/Fire.cfg:18
-msgid ""
-"The great fire-drakes are masters of their internal fire. Clad in shining "
-"armor, they belch columns of flame at any who oppose them, a testament to "
-"the strength and majesty of their kind."
-msgstr ""
-
-#: data/core/units/drakes/Flameheart.cfg:4
-msgid "Drake Flameheart"
-msgstr "Leegitseva südamega lohe"
-
-#: data/core/units/drakes/Flameheart.cfg:28
-msgid ""
-"It is said that the eldest lines of drakes - the direct descendants of the "
-"dragons themselves - have veins which course with fire rather than blood. "
-"That they can breathe fire as they do lends credence to this belief, though, "
-"for some reason, no one has tried cutting one open to find out.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Flare.cfg:4
-msgid "Drake Flare"
-msgstr "Tu"
-
-#: data/core/units/drakes/Flare.cfg:27
-msgid ""
-"Drakes are an old race, wise enough to hearken to their own natural leaders. "
-"Those who are called 'flares' by their enemies are the drakes who aspire to "
-"be such leaders, both in war and in peace.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Gladiator.cfg:4
-msgid "Drake Gladiator"
-msgstr "Gladiaator lohe"
-
-#: data/core/units/drakes/Gladiator.cfg:23
-msgid ""
-"The Gladiator has taken a completely different path from the Slashers. "
-"Rather than emphasize training, they have chosen to focus on the craft of "
-"their weaponry. They are the smiths of Drake society, and it follows that "
-"they possess the best weaponry - the sharpest blades and spears, and the "
-"maces which complement their already impressive array. Their intense focus "
-"on their weapons confers offensive capability at the cost of a slight "
-"reduction in their defensive abilities."
-msgstr ""
-
-#: data/core/units/drakes/Glider.cfg:4
-msgid "Drake Glider"
-msgstr "Hõljuja lohe"
-
-#: data/core/units/drakes/Glider.cfg:22
-msgid ""
-"Drake Gliders wear as little armor as possible so they can quickly escape "
-"their foes when they leave their caves. These Drakes are competent fighters, "
-"possessing the internal fire common to many of their kin. Gliders can also "
-"effectively use their speed to viciously slam their opponents into "
-"submission. The best gliders can look forward to being accepted into the "
-"ranks of the high flying Sky Drakes. From their aerial vantage point, these "
-"drakes can see past most defensive cover. Their skill at flying allows them "
-"the precision to target enemies under such cover.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Glider.cfg:76
-#: data/core/units/drakes/Hurricane.cfg:93 data/core/units/drakes/Sky.cfg:92
-msgid "slam"
-msgstr "obadus"
-
-#: data/core/units/drakes/Hurricane.cfg:4
-#, fuzzy
-msgid "Hurricane Drake"
-msgstr "Tulelohe"
-
-#: data/core/units/drakes/Hurricane.cfg:31
-msgid ""
-"Masters of the aerial realm, the Hurricane Drakes are the elite among those "
-"drakes which are gifted with flight. Soaring high in the air, they can see "
-"past most defensive cover and spit fire at their foes with impunity.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Inferno.cfg:4
-msgid "Inferno Drake"
-msgstr "Põrgulik lohe"
-
-#: data/core/units/drakes/Inferno.cfg:19
-msgid ""
-"The flying conflagrations known as Drake Infernos are the masters of the "
-"fire they breathe, and rival their predecessors the Dragons in their ability "
-"to use it. This natural ability renders them nearly immune to fire. Their "
-"shining, flame-colored armor is a mark of their proud and powerful caste, "
-"the ideal to which their brethren aspire."
-msgstr ""
-
-#: data/core/units/drakes/Sky.cfg:4
-msgid "Sky Drake"
-msgstr "Taevalik lohe"
-
-#: data/core/units/drakes/Sky.cfg:30
-msgid ""
-"Sky drakes are truly the kings of the sky. The momentum of their terrible "
-"stooping dive and and their fire breath combine into a terrible weapon. By "
-"attacking from the air, they can spit fire with great precision into "
-"positions which would otherwise afford a great defensive advantage to their "
-"foes.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Slasher.cfg:4
-msgid "Drake Slasher"
-msgstr "Raiuja lohe"
-
-#: data/core/units/drakes/Slasher.cfg:25
-msgid ""
-"Slashers are Clashers who have chosen to master the use of a halberd instead "
-"of carrying a sword and the spear. Their great size allows them to use a "
-"weapon of matching scale, large enough to skewer a horse as a man would a "
-"boar. Their training has also enhanced their stamina and defensive skills, "
-"which is a major advantage over their close cousins the Gladiators.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Slasher.cfg:74
-#: data/core/units/drakes/Slasher.cfg:122 data/core/units/drakes/Warden.cfg:80
-#: data/core/units/drakes/Warden.cfg:128
-#: data/core/units/humans/Loyalist_Halberdier.cfg:30
-#: data/core/units/humans/Loyalist_Halberdier.cfg:214
-msgid "halberd"
-msgstr "hellebard"
-
-#: data/core/units/drakes/Warden.cfg:4
-#, fuzzy
-msgid "Drake Warden"
-msgstr "Tu"
-
-#: data/core/units/drakes/Warden.cfg:26
-msgid ""
-"The Warden represents the pinnacle of the clasher caste, being picked from "
-"the most able Slashers. They have forged their might such that few warriors "
-"on this earth would dare stand against them. The Wardens' weapon of choice "
-"is the halberd, which they use to great effect.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/drakes/Warrior.cfg:4
-msgid "Drake Warrior"
-msgstr "Lohesõdalane"
-
-#: data/core/units/drakes/Warrior.cfg:18
-msgid ""
-"Drake Warriors wield swords with great skill, and possess the fire breathing "
-"skills of their ancestors. The great strength of their kind allows them to "
-"strike devastating blows, and to withstand punishment in equal measure."
-msgstr ""
-
-#: data/core/units/dwarves/Berserker.cfg:4
-msgid "Dwarvish Berserker"
-msgstr "Hullunud kääbus"
-
-#: data/core/units/dwarves/Berserker.cfg:21
-#, fuzzy
-msgid ""
-"Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
-"all defense in exchange for massive damage against their enemies.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Kääbused on iidne võimsate sõjameeste rass. Hulludes unustavad nad enda "
-"pärast muretsemise ja tekitavad vaenlastele tohutut kahju. Kui lahing on "
-"kord juba alanud, siis ründavad hullunud kääbused raevukalt, kuni kas nemad "
-"või nende vastased lebavad surnult."
-
-#: data/core/units/dwarves/Berserker.cfg:32
-#: data/core/units/dwarves/Ulfserker.cfg:32
-msgid "berserker frenzy"
-msgstr "hullunud märatsemine"
-
-#: data/core/units/dwarves/Dragonguard.cfg:4
-msgid "Dwarvish Dragonguard"
-msgstr "Kääbuste draakonivalvur"
-
-#: data/core/units/dwarves/Dragonguard.cfg:19
-msgid ""
-"It is not clear why the Dragonguards are called what they are, a name given "
-"by their dwarven brethren. Some speculate that the name comes from their "
-"weapon of choice, these strange staves that belch fire and death. Others "
-"have surmised that it is because such weapons would be a threat against even "
-"a true Dragon, should such a thing be seen again in the known world. "
-"Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
-"mightiest of warriors in a single blow."
-msgstr ""
-
-#: data/core/units/dwarves/Dragonguard.cfg:24
-#: data/core/units/dwarves/Thunderer.cfg:40
-#: data/core/units/dwarves/Thunderguard.cfg:24
-#: data/core/units/humans/Outlaw_Assassin.cfg:29
-#: data/core/units/humans/Outlaw_Poacher.cfg:35
-#: data/core/units/humans/Outlaw_Rogue.cfg:28
-#: data/core/units/humans/Outlaw_Thief.cfg:177
-#: data/core/units/humans/Outlaw_Trapper.cfg:70
-#: data/core/units/humans/Woodsman.cfg:27 data/core/units/orcs/Archer.cfg:70
-#: data/core/units/orcs/Assassin.cfg:71 data/core/units/orcs/Slayer.cfg:28
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:42
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:31
-msgid "dagger"
-msgstr "pistoda"
-
-#: data/core/units/dwarves/Dragonguard.cfg:62
-msgid "dragonstaff"
-msgstr "draakonisau"
-
-#: data/core/units/dwarves/Fighter.cfg:4
-msgid "Dwarvish Fighter"
-msgstr "Kääbuste võitleja"
-
-#: data/core/units/dwarves/Fighter.cfg:20
-msgid ""
-"Dwarvish Fighters wield mighty battle axes and hammers, which make them "
-"feared opponents in close range combat. They are excellent in mountainous "
-"terrain or underground. Though not swift, their power and endurance more "
-"than compensate."
-msgstr ""
-
-#: data/core/units/dwarves/Fighter.cfg:34
-#: data/core/units/undead/Skele_Deathblade.cfg:43
-#: data/core/units/undead/Skele_Draug.cfg:31
-#: data/core/units/undead/Skele_Revenant.cfg:30
-#: data/core/units/undead/Skeleton.cfg:107
-msgid "axe"
-msgstr "kirves"
-
-#: data/core/units/dwarves/Fighter.cfg:86 data/core/units/dwarves/Lord.cfg:67
-#: data/core/units/dwarves/Steelclad.cfg:66
-#: data/core/units/trolls/Great.cfg:28 data/core/units/trolls/Warrior.cfg:28
-msgid "hammer"
-msgstr "vasar"
-
-#: data/core/units/dwarves/Guardsman.cfg:4
-msgid "Dwarvish Guardsman"
-msgstr "Kääbuste valvur"
-
-#: data/core/units/dwarves/Guardsman.cfg:22
-msgid ""
-"The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
-"Slow and without a strong attack, they guard the Army's flank,  hurling "
-"heavy spears for defense and frequently soaking up the enemy's most "
-"punishing attacks without harm.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/dwarves/Guardsman.cfg:80
-#: data/core/units/dwarves/Sentinel.cfg:88
-#: data/core/units/dwarves/Stalwart.cfg:83
-#: data/core/units/humans/Loyalist_Javelineer.cfg:83
-#: data/core/units/humans/Loyalist_Spearman.cfg:203
-msgid "javelin"
-msgstr "oda"
-
-#: data/core/units/dwarves/Lord.cfg:4
-msgid "Dwarvish Lord"
-msgstr "Kääbuste isand"
-
-#: data/core/units/dwarves/Lord.cfg:20
-msgid ""
-"Clad in shining armor, these dwarves look like kings from under the "
-"mountains. They wield axe and hammer with masterful skill, and can hit a "
-"target with a thrown hand axe at several paces. Though slow on their feet, "
-"these dwarves are a testament to the prowess of their kin."
-msgstr ""
-
-#: data/core/units/dwarves/Lord.cfg:29
-#: data/core/units/dwarves/Steelclad.cfg:28
-#: data/core/units/undead/Skele_Death_Knight.cfg:45
-msgid "battle axe"
-msgstr "sõjakirves"
-
-#: data/core/units/dwarves/Lord.cfg:104
-msgid "hatchet"
-msgstr "väike kirves"
-
-#: data/core/units/dwarves/Runemaster.cfg:4
-msgid "Dwarvish Runemaster"
-msgstr "Kääbuste ruunimeister"
-
-#: data/core/units/dwarves/Runemaster.cfg:19
-msgid ""
-"Dwarven magic most often manifests itself by the inscription of runes in the "
-"surface of an object, which by their mere presence somehow imbue it with "
-"power. Though rarely seen in combat, a master of these runes can put them to "
-"terrifying use."
-msgstr ""
-
-#: data/core/units/dwarves/Runemaster.cfg:23
-msgid "runic hammer"
-msgstr "ruunidega vasar"
-
-#: data/core/units/dwarves/Runemaster.cfg:62
-msgid "Lightning bolt"
-msgstr "Välgunool"
-
-#: data/core/units/dwarves/Sentinel.cfg:4
-msgid "Dwarvish Sentinel"
-msgstr "Kääbuste vahimees"
-
-#: data/core/units/dwarves/Sentinel.cfg:22
-#, fuzzy
-msgid ""
-"The Sentinel, with his tower shield and great courage, refuses to yield "
-"under even the strongest of enemy attacks.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Vapper torn-kilbiga  varustatud vahimees ei anna alla ka kõige võimsamate "
-"rünnakute surve all."
-
-#: data/core/units/dwarves/Stalwart.cfg:4
-#, fuzzy
-msgid "Dwarvish Stalwart"
-msgstr "Kääbuste vahimees"
-
-#: data/core/units/dwarves/Stalwart.cfg:21
-msgid ""
-"Stalwarts, after years in battle, have fashioned new shields and strong "
-"armor from the ruins of their enemies. While slow, they are feared for their "
-"resilience and strength.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/dwarves/Steelclad.cfg:4
-#, fuzzy
-msgid "Dwarvish Steelclad"
-msgstr "Kääbuste vahimees"
-
-#: data/core/units/dwarves/Steelclad.cfg:19
-msgid ""
-"The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
-"plate armor, for which they are rightly famous."
-msgstr ""
-
-#: data/core/units/dwarves/Thunderer.cfg:4
-msgid "Dwarvish Thunderer"
-msgstr "Kääbuste kõmistaja"
-
-#: data/core/units/dwarves/Thunderer.cfg:19
-msgid ""
-"When the men of Wesnoth first encountered the dwarves, they were mystified "
-"by the power of the Dwarvish Thunderers, who were able to hurl death from "
-"afar through the apparatus of these strange ... 'wands' they carried into "
-"battle. After the peace instituted by the Ka'lian came into effect, "
-"Haldric's people, not understanding these weapons, and certainly unable to "
-"make any of their own, realized they were lucky to no longer be fighting the "
-"dwarves, and vowed never to do so again."
-msgstr ""
-
-#: data/core/units/dwarves/Thunderer.cfg:88
-#: data/core/units/dwarves/Thunderguard.cfg:72
-msgid "thunderstick"
-msgstr "kõuekepp"
-
-#: data/core/units/dwarves/Thunderguard.cfg:4
-msgid "Dwarvish Thunderguard"
-msgstr "Hullunud kõuevalvur"
-
-#: data/core/units/dwarves/Thunderguard.cfg:20
-msgid ""
-"The Dwarven Thunderguards are famed for their curious weaponry, these "
-"strange staves of wood and iron that make a thunderous noise in their anger. "
-"The machinations behind this weaponry are a mystery, a secret taken to the "
-"grave by the dwarves of Knalga who wield them, and are assumed to have even "
-"forged them. The most that is known are reports of dwarves pouring a strange "
-"black dust into the mouth of their weapons, which some say is a food to fuel "
-"the beast imprisoned within.\n"
-"\n"
-"Though a single shot from these 'thundersticks' can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
-msgstr ""
-
-#: data/core/units/dwarves/Ulfserker.cfg:4
-msgid "Dwarvish Ulfserker"
-msgstr "Märatsev kääbus"
-
-#: data/core/units/dwarves/Ulfserker.cfg:21
-msgid ""
-"Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
-"ferocious of these in battle: they persist until either their enemy is dead "
-"or they themselves perish, paying little heed to how many wounds they may "
-"receive.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Archer.cfg:4
-msgid "Elvish Archer"
-msgstr "Haldjate vibukütt"
-
-#: data/core/units/elves/Archer.cfg:20
-msgid ""
-"Elves have always had a reputation for archery, a skill that, for many "
-"reasons, comes naturally to them. Even the frail of body can be deadly with "
-"a bow in hand, and in times of war, many will take up this weapon. Though "
-"their relative inexperience with combat leaves them somewhat vulnerable, "
-"their natural grace ensures that they can best any of humanity's fresh "
-"recruits."
-msgstr ""
-
-#: data/core/units/elves/Archer.cfg:76 data/core/units/elves/Avenger.cfg:110
-#: data/core/units/elves/Captain.cfg:84 data/core/units/elves/Champion.cfg:81
-#: data/core/units/elves/Fighter.cfg:66 data/core/units/elves/Hero.cfg:80
-#: data/core/units/elves/Marshal.cfg:78 data/core/units/elves/Outrider.cfg:80
-#: data/core/units/elves/Ranger.cfg:107 data/core/units/elves/Rider.cfg:82
-#: data/core/units/elves/Scout.cfg:81
-#: data/core/units/humans/Loyalist_Bowman.cfg:62
-#: data/core/units/humans/Loyalist_Longbowman.cfg:63
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:63
-#: data/core/units/humans/Outlaw_Poacher.cfg:73
-#: data/core/units/humans/Outlaw_Trapper.cfg:138
-#: data/core/units/humans/Woodsman.cfg:65 data/core/units/orcs/Archer.cfg:178
-#: data/core/units/orcs/Archer.cfg:237 data/core/units/orcs/Leader.cfg:67
-#: data/core/units/orcs/Ruler.cfg:65 data/core/units/orcs/Sovereign.cfg:66
-#: data/core/units/orcs/Warlord.cfg:77
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:80
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:69
-#: data/core/units/undead/Skeleton_Archer.cfg:70
-msgid "bow"
-msgstr "vibu"
-
-#: data/core/units/elves/Archer.cfg:159
-msgid "female^Elvish Archer"
-msgstr "Haldjate vibukütt"
-
-#: data/core/units/elves/Avenger.cfg:4
-msgid "Elvish Avenger"
-msgstr "Tasuja Haldjas"
-
-#: data/core/units/elves/Avenger.cfg:25
-msgid ""
-"The curious name of the elvish 'Avengers' comes from a tactic often employed "
-"by these master rangers. The enemy is allowed to break through a feint "
-"defense, and when the vulnerable troops behind the front line follow, these "
-"archers break cover and attack, cutting the supply lines and surrounding the "
-"enemy in one fell stroke.\n"
-"\n"
-"This has, at times, been interpreted as a form of vengeance for their "
-"brethren lost earlier in the battle. Although not so base in design, it is "
-"not at all inaccurate.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Avenger.cfg:171
-msgid "female^Elvish Avenger"
-msgstr "Tasuja Haldjas"
-
-#: data/core/units/elves/Captain.cfg:4
-msgid "Elvish Captain"
-msgstr "Haldjakapten"
-
-#: data/core/units/elves/Captain.cfg:28
-msgid ""
-"Elves, unlike many other races, will quickly acknowledge and follow any of "
-"their peers who have experience in combat. In this they differ greatly from "
-"humanity, for whom leadership is often a matter of coercion and "
-"intimidation. The combination of their willingness to accept the wisdom of "
-"their leaders, and the tendency to choose leaders of merit is one of the "
-"quiet strengths of the elves.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Champion.cfg:4
-msgid "Elvish Champion"
-msgstr "Haldjate ratsutaja"
-
-#: data/core/units/elves/Champion.cfg:19
-msgid ""
-"Those few elves who deliberately hone themselves into weapons of war become "
-"something which belies the rather docile reputation of their race. "
-"Dedication and skill are matched with purity of form, and the result is a "
-"mastery of swordsmanship to which few can compare. Even archery, treated as "
-"a secondary pursuit, is executed with a skill that most of humanity can only "
-"stare at with wonder."
-msgstr ""
-
-#: data/core/units/elves/Druid.cfg:4
-msgid "female^Elvish Druid"
-msgstr "Haldjadruiid"
-
-#: data/core/units/elves/Druid.cfg:22
-msgid ""
-"The magic of the wood-elves is poorly suited for combat, but effective "
-"nonetheless. The forests in which they live can be quickened by a word of "
-"command, and will lash out at those who threaten their peace.\n"
-"\n"
-"Their chief ability lies in healing, and it is for this skill that the "
-"elvish druids are revered by their people.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Druid.cfg:28 data/core/units/elves/Enchantress.cfg:26
-#: data/core/units/elves/Shaman.cfg:30 data/core/units/elves/Sorceress.cfg:28
-#: data/core/units/humans/Mage.cfg:56 data/core/units/humans/Mage_Arch.cfg:29
-#: data/core/units/humans/Mage_Great.cfg:30
-#: data/core/units/humans/Mage_Red.cfg:51
-#: data/core/units/humans/Mage_Silver.cfg:36
-#: data/core/units/humans/Mage_White.cfg:118
-#: data/core/units/merfolk/Diviner.cfg:66
-#: data/core/units/merfolk/Enchantress.cfg:25
-#: data/core/units/merfolk/Initiate.cfg:28
-#: data/core/units/merfolk/Priestess.cfg:63
-#: data/core/units/saurians/Augur.cfg:37
-#: data/core/units/saurians/Oracle.cfg:37
-#: data/core/units/saurians/Soothsayer.cfg:37
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:23
-msgid "staff"
-msgstr "sau"
-
-#: data/core/units/elves/Druid.cfg:66 data/core/units/elves/Shyde.cfg:57
-msgid "ensnare"
-msgstr "lõksu meelitama"
-
-#: data/core/units/elves/Druid.cfg:146 data/core/units/elves/Shyde.cfg:137
-msgid "thorns"
-msgstr "okkad"
-
-#: data/core/units/elves/Enchantress.cfg:4
-msgid "female^Elvish Enchantress"
-msgstr "Haldjate loitsija"
-
-#: data/core/units/elves/Enchantress.cfg:20
-msgid ""
-"The magic of the elves is wholly unlike that of humanity, so much so that "
-"humans are almost universally incapable of understanding it, let alone using "
-"it. Likewise, those who are masters of it are equally enigmatic; though it "
-"can be said that they are revered by their people, very little can be said "
-"about their actual function or purpose within that society.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Enchantress.cfg:70
-#: data/core/units/elves/Shaman.cfg:68 data/core/units/elves/Sorceress.cfg:77
-msgid "entangle"
-msgstr "köitmine"
-
-#: data/core/units/elves/Enchantress.cfg:149
-#: data/core/units/elves/Sorceress.cfg:157 data/core/units/elves/Sylph.cfg:129
-msgid "faerie fire"
-msgstr "haldjatuli"
-
-#: data/core/units/elves/Enchantress.cfg:150
-#: data/core/units/elves/Sorceress.cfg:158 data/core/units/elves/Sylph.cfg:130
-#: data/core/units/humans/Horse_Paladin.cfg:41
-#: data/core/units/humans/Mage_White.cfg:177
-#: data/core/units/humans/Mage_of_Light.cfg:148
-#: data/core/units/merfolk/Diviner.cfg:105
-#: data/core/units/merfolk/Priestess.cfg:91
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:32
-#: data/core/units/undead/Necro_Lich.cfg:37
-#: data/core/units/undead/Spirit_Ghost.cfg:27
-#: data/core/units/undead/Spirit_Spectre.cfg:47
-#: data/core/units/undead/Spirit_Wraith.cfg:23
-#, fuzzy
-msgid "arcane"
-msgstr "kauge"
-
-#: data/core/units/elves/Fighter.cfg:4
-msgid "Elvish Fighter"
-msgstr "Haldjasõdalane"
-
-#: data/core/units/elves/Fighter.cfg:20
-msgid ""
-"Elves are not warlike by nature, but in times of need, their natural grace "
-"and agility serve them well, as does their skillful craftsmanship. An elf "
-"can grasp the basics of swordsmanship and archery in an uncannily short "
-"time, and put them to effective use on the battlefield."
-msgstr ""
-
-#: data/core/units/elves/Hero.cfg:4
-msgid "Elvish Hero"
-msgstr "Haldjakangelane"
-
-#: data/core/units/elves/Hero.cfg:19
-msgid ""
-"A relatively small amount of experience will turn an elf from a competent "
-"fighter into a master of combat. Those who are honored as heroes are strong "
-"with both sword and bow, and their skill once acquired does not fade for "
-"lack of practice."
-msgstr ""
-
-#: data/core/units/elves/Marksman.cfg:4
-msgid "Elvish Marksman"
-msgstr "Haldjate täpsuskütt"
-
-#: data/core/units/elves/Marksman.cfg:24
-msgid ""
-"One of the things which contributes to their skill with the bow is the "
-"unusually clear vision of elves. An elf practiced at archery can hit targets "
-"that a man couldn't even see, even at night, and can nock a second arrow "
-"almost as soon as the first is let fly.\n"
-"\n"
-"This prodigious skill does come with one cost, that being a lack of practice "
-"with the sword.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Marksman.cfg:102
-#: data/core/units/elves/Sharpshooter.cfg:96
-msgid "longbow"
-msgstr "pikkvibu"
-
-#: data/core/units/elves/Marksman.cfg:166
-msgid "female^Elvish Marksman"
-msgstr "Haldjate täpsuskütt"
-
-#: data/core/units/elves/Marshal.cfg:4
-msgid "Elvish Marshal"
-msgstr "Haldjate väejuht"
-
-#: data/core/units/elves/Marshal.cfg:29
-msgid ""
-"The longevity and natural intelligence of elves make them apt for military "
-"matters, enough even to counter their general distaste for such things. "
-"Elves remember things much more clearly than humankind, and can often intuit "
-"what others can only be trained to do. Certainly, on those rare occasions "
-"when an elf sets his mind to war, the strategy that results is the work of a "
-"master.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Outrider.cfg:4
-msgid "Elvish Outrider"
-msgstr "Haldjate teejuht"
-
-#: data/core/units/elves/Outrider.cfg:22
-msgid ""
-"Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
-"Despite the peaceful nature of their people, their experience makes them "
-"quite deadly in combat. No human has ever come close to their skill in using "
-"a bow on horseback - in fact, most would be hard pressed to equal it "
-"standing on solid ground.\n"
-"\n"
-"The speed of these soldiers allows the elves to strike when and where they "
-"choose when fighting on their home ground, a fact that has saved many of "
-"their number from death."
-msgstr ""
-
-#: data/core/units/elves/Ranger.cfg:3
-msgid "Elvish Ranger"
-msgstr "Haldjate metsavaht"
-
-#: data/core/units/elves/Ranger.cfg:22
-msgid ""
-"Though a man might spend years in the forest, he will never shake the "
-"feeling that he is a guest in a place he is not truly a part of. With elves, "
-"this is quite reversed. Any elf that studies the lore of the woods becomes a "
-"fitting master of them, and when combined with a considerable skill at "
-"archery and swordsmanship, the result is a powerful tool of war.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Ranger.cfg:168
-msgid "female^Elvish Ranger"
-msgstr "Haldjate metsavaht"
-
-#: data/core/units/elves/Rider.cfg:4
-msgid "Elvish Rider"
-msgstr "Haldjate ratsanik"
-
-#: data/core/units/elves/Rider.cfg:23
-msgid ""
-"The master horsemen of the elves are able to move through forests at a speed "
-"which would be suicidal for any human. Awe of the rider is quite justified "
-"-  but questions have also been raised about the stock of the horses, for "
-"the feats they perform seem almost supernatural.\n"
-"\n"
-"This combination of incredible mobility and potent combat strength is one of "
-"the greatest assets the elves possess in warfare."
-msgstr ""
-
-#: data/core/units/elves/Scout.cfg:4
-msgid "Elvish Scout"
-msgstr "Haldjate luuraja"
-
-#: data/core/units/elves/Scout.cfg:22
-msgid ""
-"The horsemen of the wood elves have some skill with bow and sword, but their "
-"true skill lies in their horsemanship. Even other elves are impressed by "
-"their uncanny speed in the woods, and their ability to dart through the "
-"thick of the forest with nary a scratch. They may be the only cavalry in "
-"existence that fares better in the woods than on open ground."
-msgstr ""
-
-#: data/core/units/elves/Shaman.cfg:4
-msgid "female^Elvish Shaman"
-msgstr "Haldjate šamaan"
-
-#: data/core/units/elves/Shaman.cfg:24
-msgid ""
-"Being partly faerie in nature, elves have an inherent capability for magic. "
-"This is realized in their affinity with the natural world, which they can "
-"call upon as an ally in combat. Enemies wandering in their forests may soon "
-"find themselves entangled by roots and hindered by the very ground they "
-"stand on.\n"
-"\n"
-"The healing abilities of the elves are also remarkable, and of capital use "
-"in battle.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Sharpshooter.cfg:4
-msgid "Elvish Sharpshooter"
-msgstr "Haldjate täpsuskütt"
-
-#: data/core/units/elves/Sharpshooter.cfg:23
-msgid ""
-"There was a legend of an elf who stopped an arrow by shooting it out of the "
-"air with one of his own. It is a testament to the skill of the elves that "
-"such a story could be taken seriously. The sharpshooters of the elves have, "
-"quite simply, mastered the art of archery.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Sharpshooter.cfg:148
-msgid "female^Elvish Sharpshooter"
-msgstr "Haldjate täpsuskütt"
-
-#: data/core/units/elves/Shyde.cfg:4
-#, fuzzy
-msgid "female^Elvish Shyde"
-msgstr "Haldjate sülf"
-
-#: data/core/units/elves/Shyde.cfg:22
-msgid ""
-"Devotion to her faerie side will eventually transform an elf maiden into a "
-"creature of both worlds. Guided by a nature which is little understood, "
-"these beautiful stewards of the elven forests epitomize the grace and "
-"mystery of their people.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Shyde.cfg:28 data/core/units/elves/Sylph.cfg:28
-msgid "faerie touch"
-msgstr "haldja puudutus"
-
-#: data/core/units/elves/Sorceress.cfg:4
-msgid "female^Elvish Sorceress"
-msgstr "Haldjate manaja"
-
-#: data/core/units/elves/Sorceress.cfg:22
-msgid ""
-"The world of faerie is far more potent than the corporeal world. Simply "
-"bringing some of this world into our own can have violent results. This is "
-"well-understood by the elves, although rarely used with malicious intent; "
-"doing so is no easy task, and is a very ill-regarded use of their strength.\n"
-"\n"
-"Those able to do so are roughly titled as 'sorceresses' by other races; and "
-"certainly are capable of acting the part.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Sylph.cfg:4
-msgid "female^Elvish Sylph"
-msgstr "Haldjate sülf"
-
-#: data/core/units/elves/Sylph.cfg:22
-msgid ""
-"Rarely seen, the sage-like Sylphs are masters of both their faerie and "
-"mundane natures. They are possessed of wondrous, and sometimes terrifying "
-"powers. Legends concerning these have given other races a healthy fear of "
-"the elves.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/elves/Sylph.cfg:57
-msgid "gossamer"
-msgstr ""
-
-#: data/core/units/goblins/Direwolf_Rider.cfg:4
-msgid "Direwolf Rider"
-msgstr "Maruhundi ratsanik"
-
-#: data/core/units/goblins/Direwolf_Rider.cfg:23
-msgid ""
-"'Dire wolves' differ from the common variety only in size and color. They "
-"typically stand taller than a horse at the shoulder, and have an appetite to "
-"match. Only a madman would willingly encounter them; the goblins, at great "
-"cost to themselves, have managed to tame and ride them.\n"
-"\n"
-"The claws of a wolf are not generally regarded as being the more dangerous "
-"parts, but on a beast this large, they are thicker and longer than iron "
-"nails. Their riders smear a poison on the front set, not unlike that used by "
-"the orcish assassins, making a swipe from these beasts' paws into a most "
-"deadly stroke.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/goblins/Direwolf_Rider.cfg:34
-#: data/core/units/goblins/Knight.cfg:34
-#: data/core/units/goblins/Wolf_Rider.cfg:50
-#: data/core/units/monsters/Cave_Spider.cfg:35
-#: data/core/units/monsters/Sea_Serpent.cfg:24
-#: data/core/units/monsters/Wolf.cfg:47
-#: data/core/units/undead/Bat_Blood.cfg:52
-#: data/core/units/undead/Bat_Vampire.cfg:66
-msgid "fangs"
-msgstr "kihvad"
-
-#: data/core/units/goblins/Impaler.cfg:4
-msgid "Goblin Impaler"
-msgstr "Vardasse ajav goblin"
-
-#: data/core/units/goblins/Impaler.cfg:21
-msgid ""
-"Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
-"line. Those who manage to survive their first few battles equip themselves "
-"with a long spear to compensate for their short reach, and better armor to "
-"guard their diminuitive frames.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/goblins/Knight.cfg:4
-msgid "Goblin Knight"
-msgstr "Goblinite rüütel"
-
-#: data/core/units/goblins/Knight.cfg:20
-msgid ""
-"The Goblin 'Knights' have little in common with the men who share that "
-"title, and the title is bestowed in mockery by their enemies. The similarity "
-"is simply that they are the elite of the wolf riders, likely promoted to "
-"their position by their success in some temerarious raid.\n"
-"\n"
-"The wolves they are given are bred for speed and strength, making them quite "
-"dangerous in combat."
-msgstr ""
-
-#: data/core/units/goblins/Pillager.cfg:4
-msgid "Goblin Pillager"
-msgstr "Goblinite rüüstaja"
-
-#: data/core/units/goblins/Pillager.cfg:21
-msgid ""
-"Some Goblins train their wolves to overcome their fear of fire. In raids, "
-"these goblins take a supporting role; they will torch the homes and crops of "
-"their foes, and also carry nets to wreak havoc against those attempting to "
-"rally for defense or reprisal.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/goblins/Pillager.cfg:35
-msgid "torch"
-msgstr "tõrvik"
-
-#: data/core/units/goblins/Pillager.cfg:73
-#: data/core/units/merfolk/Entangler.cfg:57
-#: data/core/units/merfolk/Netcaster.cfg:56
-msgid "net"
-msgstr "võrk"
-
-#: data/core/units/goblins/Rouser.cfg:4
-#, fuzzy
-msgid "Goblin Rouser"
-msgstr "Vardasse ajav goblin"
-
-#: data/core/units/goblins/Rouser.cfg:28
-msgid ""
-"Standard-bearers are an oddity amongst goblins. A goblin who has survived "
-"enough battles to be considered a veteran is rare enough, and it is rarer "
-"still for the other goblins to recognize and respect his veteran status. "
-"Nonetheless, a rouser's frenzied goading effectively steels the younger at "
-"arms to fight harder and longer before they die.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/goblins/Spearman.cfg:4
-msgid "Goblin Spearman"
-msgstr "Goblinite odamees"
-
-#: data/core/units/goblins/Spearman.cfg:20
-msgid ""
-"In any litter of orcs, several are born much smaller and weaker than the "
-"rest. These runts are called 'Goblins' and are looked down on by the rest of "
-"their kin. In battle, these are given the most meager of equipment, and are "
-"used as a soak-off force to give the Warlords time to prepare the real "
-"assault.\n"
-"\n"
-"Some speculate that the existence of these creatures is the beginning of a "
-"failure of the orcish bloodline, though no one knows enough of their history "
-"to state anything conclusive."
-msgstr ""
-
-#: data/core/units/goblins/Wolf_Rider.cfg:4
-msgid "Wolf Rider"
-msgstr "Hundiratsanik"
-
-#: data/core/units/goblins/Wolf_Rider.cfg:36
-msgid ""
-"No one is quite sure how the practice of taming and riding wolves came into "
-"being. Goblins are smaller and much weaker than orcs. Any who can manage to "
-"win themselves a mount have a much safer, and daresay, more amusing role in "
-"combat.\n"
-"\n"
-"Wolves, likely, could never support the weight of a man in plate, but a "
-"goblin in leather armor is a simple load to bear. Quite unlike horses, these "
-"mounts have a rather easy time traversing the mountains, though water and "
-"woods will still slow them down."
-msgstr ""
-
-#: data/core/units/humans/Horse_Grand_Knight.cfg:4
-msgid "Grand Knight"
-msgstr "Suur-rüütel"
-
-#: data/core/units/humans/Horse_Grand_Knight.cfg:20
-msgid ""
-"Grand Knights have reached the acme of skill with sword and lance. Wearing "
-"full plate, and riding steeds bred more for power than for speed, these "
-"warriors form the core of any serious cavalry force. A grand knight at the "
-"head of a charge is a terrifying sight for infantry, and is often enough to "
-"break right through a defensive line."
-msgstr ""
-
-#: data/core/units/humans/Horse_Grand_Knight.cfg:22
-#: data/core/units/humans/Horse_Knight.cfg:21
-#: data/core/units/humans/Horse_Lancer.cfg:22
-#: data/core/units/humans/Horseman.cfg:22
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Special Notes:"
-msgstr "Eriline"
-
-#: data/core/units/humans/Horse_Grand_Knight.cfg:64
-#: data/core/units/humans/Horse_Knight.cfg:63
-#: data/core/units/humans/Horse_Lancer.cfg:25
-#: data/core/units/humans/Horse_Paladin.cfg:78
-msgid "lance"
-msgstr "piik"
-
-#: data/core/units/humans/Horse_Knight.cfg:4
-msgid "Knight"
-msgstr "Rüütel"
-
-#: data/core/units/humans/Horse_Knight.cfg:19
-msgid ""
-"Horsemen of skill and discipline are promoted to Knights. Veterans of "
-"combat, they have seen the often-fatal results of a failed charge, and have "
-"learnt discretion in its use. Knights, therefore, carry swords in their "
-"armament, and practice tactics which, although requiring of much more "
-"patience, are less risky than a charge. Their lances are still at the ready, "
-"however, and growing experience with these weapons makes them deadlier at "
-"the tilt."
-msgstr ""
-
-#: data/core/units/humans/Horse_Lancer.cfg:4
-msgid "Lancer"
-msgstr "Piigimees"
-
-#: data/core/units/humans/Horse_Lancer.cfg:20
-msgid ""
-"Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
-"in minimal armor, they free themselves to ride swiftly, faster than any of "
-"their peers. The daring tactics they employ use a lance and double-edged "
-"slashiing sword, often winning either glory or a swift death. Lancers excel "
-"in hunting down infantrymen who have made the mistake of breaking formation, "
-"and in piercing defensive lines. However, they have limited use in defense."
-msgstr ""
-
-#: data/core/units/humans/Horse_Paladin.cfg:4
-msgid "Paladin"
-msgstr ""
-
-#: data/core/units/humans/Horse_Paladin.cfg:22
-msgid ""
-"Knights of the highest virtue, Paladins have sworn themselves to semi-"
-"monastic vows, pledging their might to the cause of righteousness. Though "
-"not as imposing on the battlefield as a Grand Knight, a Paladin is a "
-"powerful force in combat, and their piety grants them other gifts. A Paladin "
-"is a bane to the unworldly, and has trained in ministering to the wounds of "
-"his comrades.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Horseman.cfg:4
-msgid "Horseman"
-msgstr "Hobusemees"
-
-#: data/core/units/humans/Horseman.cfg:20
-msgid ""
-"Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
-"trained from childhood to ride and to follow a strict code of honor. A "
-"charge made by a horseman is a powerful though risky tactic, the worth of "
-"which has been proven time and time again on the battlefield. Horsemen excel "
-"against most infantry, especially those who have fallen out of line, but "
-"must take care against both spearmen and archers for whom their large size "
-"provide inviting targets."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Bowman.cfg:4
-msgid "Bowman"
-msgstr "Vibumees"
-
-#: data/core/units/humans/Loyalist_Bowman.cfg:21
-msgid ""
-"The use of archery in shooting something other than game was seen from its "
-"inception, and archers have been indispensable in warfare since time "
-"immemorial. Usually of humble origins, hailing from the peasantry or "
-"woodsmen, bowmen are competent with both a bow and a short sword, and are "
-"very common on the battlefield."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Cavalier.cfg:4
-msgid "Cavalier"
-msgstr "Ratsutaja"
-
-#: data/core/units/humans/Loyalist_Cavalier.cfg:20
-msgid ""
-"A triumphant sight on the battlefield, cavaliers are masters at the use of "
-"both sword and crossbow from horseback. This is fearsome when combined with "
-"their mobility, and their exploits are the subject of many a tale and song."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Cavalier.cfg:85
-#: data/core/units/humans/Loyalist_Dragoon.cfg:84
-#: data/core/units/humans/Loyalist_Duelist.cfg:108
-#: data/core/units/humans/Loyalist_General.cfg:92
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:88
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:77
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:187
-#: data/core/units/humans/Loyalist_Sergeant.cfg:81
-#: data/core/units/orcs/Crossbowman.cfg:61
-#: data/core/units/orcs/Crossbowman.cfg:100
-#: data/core/units/orcs/Slurbow.cfg:79 data/core/units/orcs/Slurbow.cfg:123
-#: data/core/units/undead/Skele_Death_Knight.cfg:88
-msgid "crossbow"
-msgstr "amb"
-
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:4
-msgid "Cavalryman"
-msgstr "Ratsamees"
-
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:22
-msgid ""
-"Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
-"cavalryman wears heavier armor, and carries a sword and shield, rather than "
-"a lance. Their tactics do not include charging; instead they maneuver to "
-"slash with a sword, using both horse and rider as an effective tool of "
-"melee.\n"
-"\n"
-"Cavalrymen are very useful for taking and holding positions on open ground, "
-"for screening friendly soldiers, and also for scoutwork."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Dragoon.cfg:4
-msgid "Dragoon"
-msgstr "Dragun"
-
-#: data/core/units/humans/Loyalist_Dragoon.cfg:19
-msgid ""
-"The more talented cavalrymen in the armies of Wesnoth are trained in the use "
-"of the crossbow, and outfitted with much more powerful steeds. Well-armored, "
-"and skilled in the use of their swords, these soldiers can drive forward and "
-"hold the ground they take. Their mobility and resilience make them of great "
-"value on the battlefield."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Duelist.cfg:4
-msgid "Duelist"
-msgstr "Duellant"
-
-#: data/core/units/humans/Loyalist_Duelist.cfg:21
-msgid ""
-"It is a peculiar custom of Wesnoth's nobility that they typically enroll "
-"their sons into one of two orders of armigers, training them either in the "
-"art of horsemanship or fencing. Duelists are so named for an unfortunately "
-"common practice of young aristocrats, for whom the sting of real or fancied "
-"insult can sometimes incite a rash demonstration of their natural right.\n"
-"\n"
-"Experienced fencers, who often look the part of nobility even if not always "
-"actually of noble birth, carry with them a small crossbow that is easily "
-"concealed under a coat or cape. Slow to load and often thought dishonorable "
-"to use, it is in fact very useful, and those of their ranks who live long "
-"enough to be veterans typically do so by making such concessions to utility "
-"and survival.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Duelist.cfg:70
-#: data/core/units/humans/Loyalist_Fencer.cfg:125
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:29
-msgid "sabre"
-msgstr "saabel"
-
-#: data/core/units/humans/Loyalist_Fencer.cfg:4
-msgid "Fencer"
-msgstr "Vehkleja"
-
-#: data/core/units/humans/Loyalist_Fencer.cfg:22
-msgid ""
-"Fencers belong to a school of thought that considers the armor most soldiers "
-"wear in combat to be their own worst enemy. While armor can only soften a "
-"blow, evading it leaves the defender completely unharmed. Being able to "
-"reliably dodge any offensive move is a luxury only afforded to the fit of "
-"body, and then only to those who endure rigorous training.\n"
-"\n"
-"Outfitted with only a dagger and sabre, fencers are light on their feet and "
-"useful in many situations where their armor-bound peers are at a "
-"disadvantage. They take relish in dancing circles around troops like heavy "
-"infantry, mocking the price in reduced mobility paid for full armor.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_General.cfg:4
-msgid "General"
-msgstr "Üldine"
-
-#: data/core/units/humans/Loyalist_General.cfg:31
-msgid ""
-"As the leaders of their armies, Generals are responsible for the protection "
-"of large or important areas in the kingdoms to which they have sworn "
-"fealty.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
-msgid "Grand Marshal"
-msgstr "Suue väejuht"
-
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:27
-msgid ""
-"The rank of Grand Marshal is one of the most esteemed in the armies of "
-"humanity, and those who bear its title have survived many trials by fire to "
-"prove both their leadership ability and their considerable mettle at "
-"personal combat.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Halberdier.cfg:4
-msgid "Halberdier"
-msgstr "Hellebardiga sõdur"
-
-#: data/core/units/humans/Loyalist_Halberdier.cfg:23
-msgid ""
-"A halberd is a difficult and very heavy weapon to use, but powerful in the "
-"hands of an expert. It is also much more flexible than the spear from which "
-"it descended. As any halberdier can tell you, the weapon possesses 4 primary "
-"striking points, 2 more than a spear or pike; these are the tip, the blade, "
-"the spike at the base of the shaft, and the inner point on the blade, which "
-"can be used in a motion pulling back towards the wielder. All this makes for "
-"a very versatile weapon in melee, especially against cavalry.\n"
-"\n"
-"However, a halberd is notably more expensive to craft than a spear, and in "
-"the hands of a novice, much less effective. In the armies of Wesnoth, it is "
-"customary only to grant these weapons to veteran pikemen, who have proven "
-"that they have the skill to employ them properly on the field of war.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
-msgid "Heavy Infantryman"
-msgstr "Raskejalaväelane"
-
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
-msgid ""
-"Heavy infantry are an unusual choice for outfitting troops. They are very "
-"difficult to send afield in war, and are typically useful only in the "
-"defense of the city or castle in which they are stationed. Clad head to toe "
-"in full plate, and armed with large maces, heavy infantry excel at their "
-"sole purpose of melee combat. A few of them in the center of a line will "
-"shore up its strength considerably. The downsides to this are obvious, both "
-"in the weight of the metal, and the great care that must be taken of it, but "
-"in certain situations, these troops are well worth the trade-offs."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
-#, fuzzy
-msgid "Iron Mauler"
-msgstr "Grifooni-isand"
-
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
-msgid ""
-"Iron Maulers are given their name for reasons which are all too obvious to "
-"their foes. The men within these suits of armor can match ogres in contests "
-"of strength, and are marked as the champions of the castle guards in which "
-"they serve. They are, however, expensive to maintain, and cannot be sent to "
-"distant battles without a full convoy of servants to support them.\n"
-"\n"
-"Though staggering in melee combat, there are many drawbacks to being "
-"outfitted in this way; Iron Maulers tire easily, and know all too well that "
-"they cannot run on the battlefield. Too often have they seen a distant "
-"comrade fall, yet were powerless to reach the scene in time to help."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Javelineer.cfg:4
-msgid "Javelineer"
-msgstr "Odaloopija"
-
-#: data/core/units/humans/Loyalist_Javelineer.cfg:21
-msgid ""
-"Spearmen almost always equip themselves with a few javelins, to harry, if "
-"not kill, enemies at range. Some, however, take to them rather well, finding "
-"that they have a natural talent in their use. Javelineers are a valuable "
-"asset to an army, being able to supplement their skill in melee combat with "
-"an ability to handle distant foes. They can hurl javelins into enemy ranks "
-"from a distance, often without retribution, and still hold their ground in "
-"melee.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:4
-msgid "Lieutenant"
-msgstr "Leitnant"
-
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:26
-msgid ""
-"Trained at swords and crossbows, Lieutenants lead small groups of human "
-"soldiers, coordinating their attacks.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Longbowman.cfg:4
-msgid "Longbowman"
-msgstr "Pikkvibumehed"
-
-#: data/core/units/humans/Loyalist_Longbowman.cfg:20
-msgid ""
-"Longbows are fearsome weapons, but too difficult for beginning archers to "
-"wield. It takes great strength to draw one, and the added range and power it "
-"confers remain useless unless one has good aim with the weapon. Longbowmen "
-"carry their weapons as a badge of pride, and most bowmen look forward to the "
-"day they can begin using one."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
-msgid "Master Bowman"
-msgstr "Osav vibumees"
-
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:20
-msgid ""
-"Master bowmen have reached the zenith of their art, inasmuch as any human is "
-"capable. Armed with both a sword, and a great yew bow, these warriors crown "
-"battalions of archers with their presence, bringing down many a foe with "
-"their well-aimed shots. Their skill with the sword is also not to be "
-"discounted; they are easily as good with it as any novice swordsman. Of the "
-"many races in the world, only the elves surpass humanity in archery, and "
-"their human counterparts have speculated, perhaps in envy, that this is only "
-"by dint of age."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
-msgid "Master at Arms"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:22
-msgid ""
-"Master fencers have an envied place in life. Though the journey to their "
-"station was a dangerous way of life, they have reached the time wherein they "
-"reap its rewards. Famed for their skill and dashing manner, these gentlemen "
-"have the bearing of natural aristocrats, and are followed by the eyes of "
-"many a high born lady.\n"
-"\n"
-"They usually have the luxury of choosing their appointments, and are free to "
-"roam the land should they so choose. Often, they will be found as the "
-"captains of a castle guard, or as the master of a military academy, "
-"positions in which their flamboyant nature is not only accepted, but is "
-"perhaps even useful.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Pikeman.cfg:4
-msgid "Pikeman"
-msgstr "Odamees"
-
-#: data/core/units/humans/Loyalist_Pikeman.cfg:20
-msgid ""
-"Promising spearmen in the armies of Wesnoth are often graduated to wielding "
-"pikes, and are outfitted with something far superior to the motley "
-"collection of leather armor they wore as recruits. A pike is a much longer "
-"weapon than a spear, and thus facilitates different combat tactics. A wall "
-"of pikemen is the bane of any cavalry charge, and with proper discipline and "
-"tactics, pikemen can also hold most other infantry at bay.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Pikeman.cfg:54
-msgid "pike"
-msgstr "oda"
-
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
-msgid "Royal Guard"
-msgstr "Kuninglik Valvur"
-
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:19
-msgid ""
-"Royal Guards are picked from the best swordsmen in Wesnoth. Serving under "
-"any of the higher nobility, they function as bodyguards, and partly as a "
-"badge of office for their employers. A special force of Royal Guards is "
-"stationed at the capitol, guarding the palace grounds and the royal family. "
-"Because of their trusted relationship to their superiors, they, rather than "
-"mercenaries, are often deployed on missions of crucial import. Their "
-"reliability and mastery of close combat are their best assets, for which "
-"they are well-renowned."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Sergeant.cfg:4
-msgid "Sergeant"
-msgstr "Seersant"
-
-#: data/core/units/humans/Loyalist_Sergeant.cfg:25
-msgid ""
-"The Sergeant is an officer in the ranks of the Royal Army. Though "
-"academically trained, he will need some experience in the field before his "
-"leadership is sound and acknowledged."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
-msgid "Shock Trooper"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
-msgid ""
-"Shock troopers are the elite of the heavy infantry, and a significant part "
-"of their use in war is to intimidate the enemy. The only men who can enter "
-"their ranks are prodigiously well-built, and when clad in black plate "
-"brimming with spikes, they are a fearsome sight to behold. The sight of "
-"Shock Troopers breaking an enemy often does the same to the morale of any "
-"opposition, who sometimes wonder if such armor covers monsters, rather than "
-"men. The drawback of such heavy armor is, of course, the time it takes to "
-"move into and out of combat."
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:21
-#: data/core/units/humans/Mage_of_Light.cfg:99
-msgid "morning star"
-msgstr "koidutäht"
-
-#: data/core/units/humans/Loyalist_Spearman.cfg:4
-msgid "Spearman"
-msgstr "Odamees"
-
-#: data/core/units/humans/Loyalist_Spearman.cfg:21
-msgid ""
-"Swords are, for many, an expensive luxury, and one which peasants can ill "
-"afford. Spears are much easier to make and will do well even without a "
-"spearhead, though most can afford one. Clad in leather armor, and often "
-"armed with a shield and a few javelins, spearmen are the staple of most "
-"armies, often thrown into the front lines with only the most basic "
-"training.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Loyalist_Swordsman.cfg:4
-msgid "Swordsman"
-msgstr "Mõõgamees"
-
-#: data/core/units/humans/Loyalist_Swordsman.cfg:18
-msgid ""
-"An experienced soldier will often save enough to equip himseld with a suit "
-"of scale or chain armor, and a sturdy broadsword. Though trading their "
-"spears for swords can be a jarring change, most spearmen will leap at the "
-"chance, knowing all too well the limitations of the weapon they are leaving "
-"behind. A sword is not without its own drawbacks, but is more versatile than "
-"a spear, and much better in close quarters."
-msgstr ""
-
-#: data/core/units/humans/Mage.cfg:4
-msgid "Mage"
-msgstr "Maag"
-
-#: data/core/units/humans/Mage.cfg:30
-msgid ""
-"Humans have often pondered the workings of the world in which they live. "
-"Some endeavor to take this beyond idle musing, to set it as the primary "
-"enterprise of their lives. Any magi worthy of the title have spent at least "
-"a decade in study, amassing a sum of knowledge which sets them apart from "
-"other people. These men and women, who have committed themselves fully to "
-"the pursuit of wisdom, stand in stark contrast to a world where few can even "
-"read and write. Their ranks are filled with the children of hopeful "
-"nobility, or those who sought an escape from the intellectual void that is a "
-"life of manual labor.\n"
-"\n"
-"It is an irony that, with all their knowledge, and their unassuming monopoly "
-"thereof, the collective community of magi could likely rule society, were "
-"they ever to try. However, their true love is neither money, nor power, and "
-"those who see the study of magic as a means to such ends often lack the very "
-"conviction required for true mastery.\n"
-"\n"
-"Physically frail, and lacking familiarity with combat, magi do possess "
-"certain arts which are of great utility in battle.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Mage.cfg:104
-#: data/core/units/humans/Mage_Silver.cfg:84
-msgid "missile"
-msgstr "rakett"
-
-#: data/core/units/humans/Mage.cfg:162
-msgid "female^Mage"
-msgstr "Maag"
-
-#: data/core/units/humans/Mage_Arch.cfg:4
-msgid "Arch Mage"
-msgstr "Arhimaag"
-
-#: data/core/units/humans/Mage_Arch.cfg:22
-msgid ""
-"The title of Arch Mage is traditionally conferred only after a lifetime of "
-"study and achievement to match. Arch Magi are often employed in positions of "
-"education, or as advisors to those sensible enough to seek the fruits of "
-"their wisdom. Many tend to wealthy patrons, a profitable enterprise for both "
-"as, outside of the occasional thaumaturgy or word of advice, it gives the "
-"mage leave to pursue their research undisturbed. From this flows the greater "
-"body of human knowledge; the sciences, the philosophies, and the arts which "
-"give beauty to the world at large.\n"
-"\n"
-"Though not trained for any sort of combat, if need arises an Arch Mage can "
-"unleash the full power of their art, something which is not to be taken "
-"lightly.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Mage_Arch.cfg:77
-#: data/core/units/humans/Mage_Great.cfg:78
-#: data/core/units/humans/Mage_Red.cfg:99
-msgid "fireball"
-msgstr "tulekera"
-
-#: data/core/units/humans/Mage_Arch.cfg:117
-msgid "female^Arch Mage"
-msgstr "Arhimaag"
-
-#: data/core/units/humans/Mage_Great.cfg:4
-msgid "Great Mage"
-msgstr "Suur Maag"
-
-#: data/core/units/humans/Mage_Great.cfg:23
-msgid ""
-"Any person who is even considered for the title of Great Mage is quite "
-"nearly a legend in their own time, and town criers have forcibly learnt "
-"discretion in applying the title. Merit for the title is carefully "
-"considered by a council of the leading magi of the age, and the conferment "
-"of the title is given only by a majority vote. Regardless, anyone who is "
-"seriously nominated for the honor of being called a Great Mage is, without "
-"question, a master of their art, and has surpassed almost any of their peers "
-"in skill.\n"
-"\n"
-"Though they are not warriors, by any means, the application of their art to "
-"combat is something that often causes other soldiers to stand aside in awe.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Mage_Great.cfg:118
-msgid "female^Great Mage"
-msgstr "Suur maag"
-
-#: data/core/units/humans/Mage_Red.cfg:4
-msgid "Red Mage"
-msgstr "Punane Maag"
-
-#: data/core/units/humans/Mage_Red.cfg:22
-msgid ""
-"Upon the successful culmination of their apprenticeship, a mage is stripped "
-"of the brown robes of an apprentice and given the ruddy cloak of a master. "
-"The significance of this change is often lost on the peasantry, who "
-"mistakenly title Master Magi as 'Red Magi'. Likewise, the symbolism of the "
-"change in colors is often mistaken to signify the mage's ability to "
-"seemingly conjure fire from nothing but thin air, a trick which, although "
-"undeniably useful, is viewed by the magi themselves as a crass application "
-"of their hard-won knowledge.\n"
-"\n"
-"Though physically frail, and untrained as warriors, the 'Red Magi' have a "
-"number of tricks up their sleeves, including the gouts of fire which may "
-"have cemented their colloquial name.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Mage_Red.cfg:139
-msgid "female^Red Mage"
-msgstr "Punamaag"
-
-#: data/core/units/humans/Mage_Silver.cfg:4
-msgid "Silver Mage"
-msgstr "Hõbemaag"
-
-#: data/core/units/humans/Mage_Silver.cfg:25
-msgid ""
-"The many paths that a mage can take in study lead to strikingly different "
-"ends. Often viewed as sages, or wandering mystics, silver magi act under an "
-"agenda which is obscure even to their own colleagues. Though helpful to the "
-"magisteriums which often employ them in the field, they remain somewhat "
-"aloof.\n"
-"\n"
-"They have, in fact, their own order amongst the ranks of magi, an order "
-"which withholds certain secrets from their peers. One of these is an "
-"apparent ability to cross great distances, faster than one could possibly "
-"travel on foot. Members of the silver order ardently refuse to discuss the "
-"workings of this with any of their fellow magi, and on those rare occasions "
-"when others have pried into their work, they have abandoned the endeavor, "
-"never to speak of it again.\n"
-"\n"
-"Silver magi are often more physically adept than other magi, and their "
-"skills are of undeniable use on the battlefield, if one can manage to induce "
-"the mage to apply them.\n"
-"\n"
-"Special Notes: Silver Magi are well-attuned to their magical natures and are "
-"highly resistant to non-physical damage."
-msgstr ""
-
-#: data/core/units/humans/Mage_Silver.cfg:143
-msgid "female^Silver Mage"
-msgstr "Hõbemaag"
-
-#: data/core/units/humans/Mage_White.cfg:4
-msgid "White Mage"
-msgstr "Valge Maag"
-
-#: data/core/units/humans/Mage_White.cfg:22
-msgid ""
-"Some magi, as they learn about the world around them, and learn the truth of "
-"the suffering and squalor in which humanity too often lives, find that they "
-"cannot bring themselves to be cloistered into a life of study. These men and "
-"women give up the life of a mage, and join monastic orders, dedicating the "
-"skills they have been given to the good of all. After their ordination, they "
-"often travel the world, ministering to sickness and injury.\n"
-"\n"
-"Though not trained for combat, there is one enemy against which they are a "
-"potent ally. If need arises, they can call on the power of the Light to "
-"banish undead and spectral beings from the mortal plane.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Mage_White.cfg:176
-#: data/core/units/humans/Mage_of_Light.cfg:147
-#: data/core/units/merfolk/Diviner.cfg:104
-#: data/core/units/merfolk/Priestess.cfg:90
-msgid "lightbeam"
-msgstr "valguskiir"
-
-#: data/core/units/humans/Mage_White.cfg:261
-msgid "female^White Mage"
-msgstr "Valge maag"
-
-#: data/core/units/humans/Mage_of_Light.cfg:4
-msgid "Mage of Light"
-msgstr "Valguse Maag"
-
-#: data/core/units/humans/Mage_of_Light.cfg:24
-msgid ""
-"After years of experience, the most devout of white magi develop vast "
-"spiritual powers. By strict devotion to the path of the light, they can call "
-"upon its aid to chase away the shadows of the night.\n"
-"\n"
-"Following a strict code of piety and honor, these men and women work "
-"tirelessly to bring life and order to the troubled world in which they "
-"live.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Mage_of_Light.cfg:232
-msgid "female^Mage of Light"
-msgstr "Valguse maag"
-
-#: data/core/units/humans/Outlaw.cfg:4
-msgid "Outlaw"
-msgstr "Lindprii"
-
-#: data/core/units/humans/Outlaw.cfg:19
-msgid ""
-"After some years of service, former 'footpads' rise up in the ranks of their "
-"fellow outlaws. Having proven themselves in combat, they are given more "
-"dangerous tasks, and a greater share of the spoils. Though many opponents "
-"would mock their choice of weaponry, the outlaws are well aware of its "
-"deadly capacity, and also of the ready availability of ammunition. Outlaws "
-"are somewhat ill at ease fighting during the day, preferring the cover of "
-"nightfall."
-msgstr ""
-
-#: data/core/units/humans/Outlaw.cfg:60
-#: data/core/units/humans/Outlaw_Footpad.cfg:71
-#: data/core/units/trolls/Rocklobber.cfg:66
-msgid "sling"
-msgstr "ling"
-
-#: data/core/units/humans/Outlaw.cfg:98
-msgid "female^Outlaw"
-msgstr "Lindprii"
-
-#: data/core/units/humans/Outlaw_Assassin.cfg:4
-msgid "Assassin"
-msgstr "Palgamõrvar"
-
-#: data/core/units/humans/Outlaw_Assassin.cfg:22
-msgid ""
-"The greatest of thieves are sometimes tasked to take far more than their "
-"victim's belongings. Masters of knife-fighting and uncannily light on their "
-"feet, these menacing figures will employ any means to dispatch their "
-"victims, be it poisoned knives thrown from afar, or a dagger planted in the "
-"back. Deadly at night, assassins are less able fighting under the open sun.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Assassin.cfg:110
-#: data/core/units/humans/Outlaw_Rogue.cfg:69
-msgid "knife"
-msgstr "nuga"
-
-#: data/core/units/humans/Outlaw_Assassin.cfg:160
-msgid "female^Assassin"
-msgstr "Palgamõrvar"
-
-#: data/core/units/humans/Outlaw_Bandit.cfg:4
-msgid "Bandit"
-msgstr "Bandiit"
-
-#: data/core/units/humans/Outlaw_Bandit.cfg:19
-msgid ""
-"Bandits are a motley collection of men, most of dubious background. They are "
-"the strong arm of any organized group of criminals, and though they may lack "
-"in finesse, or intelligence, they excel at their preferred task of pummeling "
-"victims into submission. Like any sort of outlaw, they're not comfortable "
-"fighting in broad daylight, being used to working at night."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Footpad.cfg:4
-msgid "Footpad"
-msgstr "Kannupoiss"
-
-#: data/core/units/humans/Outlaw_Footpad.cfg:19
-msgid ""
-"These petty criminals are often derisively called 'footpads' by their "
-"superiors, for they are tasked with any job that requires a great deal of "
-"running around, often being employed as couriers, or scouts. The endurance "
-"and agility they gain from this serves them well in combat, and despite "
-"their inferior weaponry they are quite good at harrying their enemies, "
-"especially under cover of darkness."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Footpad.cfg:23
-#: data/core/units/humans/Outlaw_Ruffian.cfg:22
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
-#: data/core/units/humans/Outlaw_Thug.cfg:23
-#: data/core/units/trolls/Hero.cfg:27 data/core/units/trolls/Troll.cfg:27
-msgid "club"
-msgstr "nui"
-
-#: data/core/units/humans/Outlaw_Footpad.cfg:109
-msgid "female^Footpad"
-msgstr "Kannupoiss"
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:4
-msgid "Poacher"
-msgstr "Salakütt"
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:22
-msgid ""
-"Though not trained as warriors, the skills possessed by a hunter (especially "
-"those of archery) are useful in battle. Any group of bandits will need a few "
-"poachers in their employ, not merely for hunting but for lending a hand in "
-"any serious fight.\n"
-"\n"
-"Because of their experience, these hunters are unusually capable at night, "
-"and in forests and swamps."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Rogue.cfg:4
-msgid "Rogue"
-msgstr "Hulkur"
-
-#: data/core/units/humans/Outlaw_Rogue.cfg:21
-msgid ""
-"The ringleaders of any group of thieves earn their positions by skill. These "
-"rogues have spent many an unpleasant moment darting through crowds and "
-"dodging away from those who wish them ill, a set of skills which is very "
-"handy in a fight. Masters of knifework, they can also throw knives with "
-"reliable accuracy, and their long hours of prowling around at night leave "
-"them more comfortable fighting in the dark.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Rogue.cfg:108
-msgid "female^Rogue"
-msgstr "Hulkur"
-
-#: data/core/units/humans/Outlaw_Ruffian.cfg:4
-#, fuzzy
-msgid "Ruffian"
-msgstr "Varemed"
-
-#: data/core/units/humans/Outlaw_Ruffian.cfg:18
-msgid ""
-"Some men without particular skills cannot or will not make an honest living. "
-"Those that attempt to make their way through life by the heavy end of a "
-"stick, are known as 'Ruffians'.  With enough experience they can learn to "
-"swing a bigger club or throw things, but not both."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Thief.cfg:4
-msgid "Thief"
-msgstr "Varas"
-
-#: data/core/units/humans/Outlaw_Thief.cfg:22
-msgid ""
-"For as long as anyone can remember, the members of the various 'guilds' of "
-"rat-catchers that spring up in any larger city have had a curious practice "
-"of bleaching their hair with lime till it becomes a pale shade of blue. It "
-"is a bold thing to do, as their profession often delves into less-than-legal "
-"enterprises. Thieves have many skills, and by necessity are both light on "
-"their feet, and good with knives. They happily employ less-than-honorable "
-"tactics in combat, seeing little merit in a 'fair fight'.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Thief.cfg:218
-msgid "female^Thief"
-msgstr "Varas"
-
-#: data/core/units/humans/Outlaw_Thug.cfg:4
-msgid "Thug"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Thug.cfg:19
-msgid ""
-"Thugs come from a wide variety of sources; while a few are born into "
-"thuggery, many are former soldiers deemed unfit to serve in the army or "
-"peasants thrown off their lands. They become thugs as a means of sustenance. "
-"Regardless of their background, they all share a penchant for beating their "
-"victims with large clubs."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Trapper.cfg:4
-msgid "Trapper"
-msgstr "Kütt"
-
-#: data/core/units/humans/Outlaw_Trapper.cfg:22
-msgid ""
-"Master woodsmen are useful allies to any army, and indispensable for any "
-"sizable group of bandits. They can track both man and beast, notice things "
-"most others would overlook, and are often the only ones who can find food "
-"for the table, be it animal or vegetable.\n"
-"\n"
-"Their skill at hunting is very useful in combat, and also leaves them "
-"unusually competent at night, and in forests and swamps."
-msgstr ""
-
-#: data/core/units/humans/Peasant.cfg:4
-msgid "Peasant"
-msgstr "Talumees"
-
-#: data/core/units/humans/Peasant.cfg:20
-msgid ""
-"Peasants are the backbone of the rural economy, and the soldiers of last "
-"resort. While not warlike by nature, they will stubbornly defend their "
-"homes. However, if you're hurling peasants at your foes, you're clearly out "
-"of superior forces."
-msgstr ""
-
-#: data/core/units/humans/Peasant.cfg:24 data/core/units/humans/Peasant.cfg:67
-msgid "pitchfork"
-msgstr "sitahark"
-
-#: data/core/units/humans/Woodsman.cfg:4
-#, fuzzy
-msgid "Woodsman"
-msgstr "Mõõgamees"
-
-#: data/core/units/humans/Woodsman.cfg:19
-msgid ""
-"Woodsmen are hunters, woodcutters, charcoalburners, and others who eke out a "
-"living where the human world verges on the wilderness. Wits and woodcraft "
-"often support them where weapons will not."
-msgstr ""
-
-#: data/core/units/merfolk/Diviner.cfg:4
-msgid "female^Mermaid Diviner"
-msgstr "Merinetiside ennustaja"
-
-#: data/core/units/merfolk/Diviner.cfg:26
-msgid ""
-"Mermaid Priestesses pursue their calling with a fervor that leaves their "
-"human counterparts somewhat taken aback. This may have its roots in a legend "
-"they recite, telling of a nameless, shadowy horror which was once the bane "
-"of their people. Though little is told about it, it is clear that it was the "
-"power of the light in the hands of Priesteses which defeated it and made "
-"their people safe.  They carry forward that trust to this day.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/merfolk/Enchantress.cfg:4
-msgid "female^Mermaid Enchantress"
-msgstr "Merinetiside loitsija"
-
-#: data/core/units/merfolk/Enchantress.cfg:21
-msgid ""
-"Mermaids, like elves, have a powerful and native ability in magic, though "
-"theirs is considerably different than that of the elves. Those who master "
-"this ability are held in high regard, and their skill is used in a multitude "
-"of crafts, many of which humanity would never dream. The obvious use in war "
-"is forbidden against their own race - this power is the greater part of what "
-"protects their people from the monsters that wander out of the abyss.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/merfolk/Enchantress.cfg:63
-#: data/core/units/merfolk/Initiate.cfg:66
-#: data/core/units/merfolk/Siren.cfg:74
-msgid "water spray"
-msgstr "veepritse"
-
-#: data/core/units/merfolk/Entangler.cfg:4
-msgid "Merman Entangler"
-msgstr "Merimeeste mässija"
-
-#: data/core/units/merfolk/Entangler.cfg:21
-msgid ""
-"The weighted nets used by mermen in warfare are a difficult weapon to use "
-"well; those who master it are valued and revered by their comrades. This "
-"weapon helps to cement the utter superiority of a merman in his own element, "
-"and makes their race a threat even to enemies who merely approach the "
-"water.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/merfolk/Fighter.cfg:4
-msgid "Merman Fighter"
-msgstr "Merimeeste võitleja"
-
-#: data/core/units/merfolk/Fighter.cfg:19
-msgid ""
-"Skilled creatures of the sea, Mermen are powerful and quick in any watery "
-"environment, but lose most of their mobility on land."
-msgstr ""
-
-#: data/core/units/merfolk/Fighter.cfg:23
-#: data/core/units/merfolk/Hoplite.cfg:36
-#: data/core/units/merfolk/Triton.cfg:23 data/core/units/merfolk/Triton.cfg:70
-#: data/core/units/merfolk/Warrior.cfg:22
-msgid "trident"
-msgstr "kolmhark"
-
-#: data/core/units/merfolk/Hoplite.cfg:4
-msgid "Merman Hoplite"
-msgstr "Merimeeste suurvalvur"
-
-#: data/core/units/merfolk/Hoplite.cfg:22
-msgid ""
-"With their towering shields, the Merman Hoplites form the elite guard of the "
-"watery realm. Their powerful armor and rigid discipline allow them to hold a "
-"steadfast line in the maelstrom of battle. In times of desperation, they can "
-"even do so on land, though not nearly as well as a creature with legs.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/merfolk/Hunter.cfg:4
-msgid "Merman Hunter"
-msgstr "Merimeeste kütt"
-
-#: data/core/units/merfolk/Hunter.cfg:19
-msgid ""
-"The skills employed by mermen in spear-fishing are easily translated into "
-"warfare, especially against those who are not at home in the water. In times "
-"of need, many mermen of that occupation will volunteer to swell the ranks of "
-"their military."
-msgstr ""
-
-#: data/core/units/merfolk/Initiate.cfg:4
-msgid "female^Mermaid Initiate"
-msgstr "Merinetiside noviits"
-
-#: data/core/units/merfolk/Initiate.cfg:24
-msgid ""
-"Young Mermaids are often initiated into the water magics native to their "
-"people. The wondrous abilities this grants are inimitable by any other race, "
-"a mark of the faerie side of these creatures.\n"
-"\n"
-"Despite their frailty, this makes them quite formidable in combat, as they "
-"can call upon the very water about them to smite their enemies.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/merfolk/Javelineer.cfg:4
-msgid "Merman Javelineer"
-msgstr "Merimeeste odaloopija"
-
-#: data/core/units/merfolk/Javelineer.cfg:19
-msgid ""
-"Those mermen who master the art of javelinry can become nearly as effective "
-"as an archer - though the heft of their weapons impedes their range, the "
-"impact of one is considerably greater. In the water, the mobility of the "
-"mermen more than makes up for this when facing foes who cannot swim."
-msgstr ""
-
-#: data/core/units/merfolk/Netcaster.cfg:4
-msgid "Merman Netcaster"
-msgstr "Merimeeste võrguheitja"
-
-#: data/core/units/merfolk/Netcaster.cfg:20
-msgid ""
-"Fishing, as practiced by mermen, is largely a matter of chasing schools of "
-"fish into waiting nets. These are not very damaging in themselves, but they "
-"can be used to great effect against troops attempting to ford a river. "
-"Smaller, weighted nets can be cast through the air; though these are not "
-"designed for peacetime use, they are especially effective in warfare. Mermen "
-"use such weapons both to immobilize troops in water, and more importantly, "
-"to level the playing field against troops on land, who would otherwise be at "
-"a great advantage.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/merfolk/Priestess.cfg:4
-msgid "female^Mermaid Priestess"
-msgstr "Merineitside preestrinna"
-
-#: data/core/units/merfolk/Priestess.cfg:24
-msgid ""
-"Among mermen traffic with the Gods is generally left to the mermaids. It is "
-"they who dedicate themselves to the ideal of bringing peace and life to the "
-"world, and they who study the arts of battling sickness and injury. Their "
-"diligence and piety also grant them certain spiritual powers, allowing them "
-"to guard their people against undead and spectral beings.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/merfolk/Siren.cfg:4
-#, fuzzy
-msgid "Mermaid Siren"
-msgstr "Merimeeste odamees"
-
-#: data/core/units/merfolk/Siren.cfg:24
-msgid ""
-"The faerie nature of the mermaids is strongest in the Sirens, whose "
-"connection to naia often causes them to be mistaken for naiads themselves. "
-"Though certainly far from the truth, the mistake is understandable, as true "
-"naiads are rarely seen even by mermaids. The manifestation of their magic is "
-"certainly very similar; the water about a siren can be commanded at whim, "
-"like an extension of herself.\n"
-"\n"
-"The myriad applications of this rarely occur to land dwellers, who simply "
-"regard it with wonder.\n"
-"\n"
-"Special Notes: the attacks of a siren are magical in nature, and always have "
-"a high chance of hitting their opponents."
-msgstr ""
-
-#: data/core/units/merfolk/Siren.cfg:29
-#, fuzzy
-msgid "naia touch"
-msgstr "nümfi puudutus"
-
-#: data/core/units/merfolk/Spearman.cfg:4
-msgid "Merman Spearman"
-msgstr "Merimeeste odamees"
-
-#: data/core/units/merfolk/Spearman.cfg:18
-msgid ""
-"Archery is little favored by the mermen, for whom javelinry serves a similar "
-"function. Though thrown javelins are of little use under the water, they are "
-"extremely effective at the surface, where their weight allows them to plunge "
-"several feet below the water while retaining enough momentum to reak damage. "
-"They are also useful in melee, even deep under the surface, which is "
-"something that certainly cannot be said of arrows."
-msgstr ""
-
-#: data/core/units/merfolk/Triton.cfg:4
-msgid "Merman Triton"
-msgstr "Merimeeste triiton"
-
-#: data/core/units/merfolk/Triton.cfg:19
-msgid ""
-"Tritons are combat masters of the sea. Skilled in use of the trident, "
-"Tritons easily defeat any enemy foolish enough to wander into their "
-"preferred environment."
-msgstr ""
-
-#: data/core/units/merfolk/Warrior.cfg:4
-msgid "Merman Warrior"
-msgstr "Merimeeste sõdalane"
-
-#: data/core/units/merfolk/Warrior.cfg:18
-msgid ""
-"The Mermen Warriors form the core of the mermen armies. Wielding powerful "
-"tridents, they are a bane to any who dare enter their waters."
-msgstr ""
-
-#: data/core/units/monsters/Cave_Spider.cfg:4
-msgid "Giant Spider"
-msgstr "Hiiglaslik ämblik"
-
-#: data/core/units/monsters/Cave_Spider.cfg:19
-msgid ""
-"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
-"They can bite at close range, thereby poisoning their enemies, and also can "
-"attack with a web at long range, slowing their foes down.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/monsters/Cave_Spider.cfg:94
-msgid "web"
-msgstr "võrk"
-
-#: data/core/units/monsters/Cuttle_Fish.cfg:4
-msgid "Cuttle Fish"
-msgstr ""
-
-#: data/core/units/monsters/Cuttle_Fish.cfg:19
-msgid ""
-"Cuttle Fish are gigantic creatures of the seas. They can grab their "
-"opponents with strong tentacles, or spit a poisonous black ink from a "
-"distance. The best way to survive an encounter with these monsters is to "
-"remain ashore.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/monsters/Cuttle_Fish.cfg:35
-#: data/core/units/monsters/Tentacle.cfg:62
-msgid "tentacle"
-msgstr "kombits"
-
-#: data/core/units/monsters/Cuttle_Fish.cfg:197
-msgid "ink"
-msgstr "tint"
-
-#: data/core/units/monsters/Fire_Dragon.cfg:4
-msgid "Fire Dragon"
-msgstr "Tuledraakon"
-
-#: data/core/units/monsters/Fire_Dragon.cfg:21
-msgid ""
-"A fire dragon is an ancient and horrifying being that normally lives only in "
-"hushed rumor and fantastic stories. It is normal for centuries to pass "
-"without a dragon being seen in Wesnoth, and usually it is only as a shadowy "
-"form flying in the distance. Legends are very specific about the ravages of "
-"fire dragons: hideously swift in flight, leathery wings spread over one "
-"hundred feet in width, they swoop in and blast their prey with inferno jets "
-"of flame. Anything escaping the dragon's fire breath must beware its "
-"ferocious bite and crushing tail. Fire dragons are cunning and cruel and "
-"often take underlings whom they lead to victory."
-msgstr ""
-
-#: data/core/units/monsters/Fire_Dragon.cfg:24
-#: data/core/units/monsters/Fire_Dragon.cfg:25
-msgid "bite"
-msgstr "hammustus"
-
-#: data/core/units/monsters/Fire_Dragon.cfg:73
-#: data/core/units/monsters/Fire_Dragon.cfg:74
-msgid "tail"
-msgstr "saba"
-
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:4
-msgid "Giant Mudcrawler"
-msgstr "Hiiglaslik mudaelukas"
-
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:18
-#, fuzzy
-msgid ""
-"Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
-"constructs of soil and water. They attack by belching lumps of mud at their "
-"foes, or by striking them with their fists."
-msgstr ""
-"Mudaelukad on maagilised pinnase ja vee ühendid. Nad ründavad vastaste pihta "
-"keeva vett pritsides."
-
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:46
-#: data/core/units/monsters/Yeti.cfg:34
-#: data/core/units/trolls/Rocklobber.cfg:28
-#: data/core/units/trolls/Whelp.cfg:27
-#: data/core/units/undead/Skeleton_Archer.cfg:32
-msgid "fist"
-msgstr "rusikas"
-
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:84
-#: data/core/units/monsters/Mudcrawler.cfg:45
-msgid "mud glob"
-msgstr ""
-
-#: data/core/units/monsters/Giant_Scorpion.cfg:4
-msgid "Giant Scorpion"
-msgstr "Hiiglaslik skorpion"
-
-#: data/core/units/monsters/Giant_Scorpion.cfg:21
-msgid ""
-"A normal scorpion is dangerous enough - the deadlliness of one the size of a "
-"man need little explanation.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/monsters/Giant_Scorpion.cfg:25
-msgid "sting"
-msgstr "nõel"
-
-#: data/core/units/monsters/Giant_Scorpion.cfg:79
-msgid "pincers"
-msgstr "näpitsad"
-
-#: data/core/units/monsters/Gryphon.cfg:4
-msgid "Gryphon"
-msgstr "Grifoon"
-
-#: data/core/units/monsters/Gryphon.cfg:17
-#, fuzzy
-msgid ""
-"These majestic and powerful creatures are masters of the sky. Gryphons are "
-"both dangerous and wary of other intelligent creatures, and thus should not "
-"be disturbed without a good reason."
-msgstr ""
-"Pooleldi lõvid, pooleldi linnud - need majesteetlikud olendid valitsevad "
-"maailma taevaid. Kuna nad suhtuvad teistesse intelligentsetesse rassidesse "
-"suure ettevaatusega ei tasu grifoone ilma hea põhjuseta segada."
-
-#: data/core/units/monsters/Gryphon_Master.cfg:4
-msgid "Gryphon Master"
-msgstr "Grifooni-isand"
-
-#: data/core/units/monsters/Gryphon_Master.cfg:19
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:4
-msgid "Gryphon Rider"
-msgstr "Grifooniratsanik"
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:19
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"Väga vähesed oskavad grifoonidega ringi käia. Neist, kellel see õnnestub, "
-"saavad grifooniratsanikud ja nad võivad uurida taevaseid maailmu nende "
-"lendavate elukate seljas."
-
-#: data/core/units/monsters/Mudcrawler.cfg:4
-msgid "Mudcrawler"
-msgstr "Mudaelukas"
-
-#: data/core/units/monsters/Mudcrawler.cfg:19
-#, fuzzy
-msgid ""
-"Mudcrawlers are magical constructs of soil and water. They attack by "
-"belching lumps of mud at their foes."
-msgstr ""
-"Mudaelukad on maagilised pinnase ja vee ühendid. Nad ründavad vastaste pihta "
-"keeva vett pritsides."
-
-#: data/core/units/monsters/Sea_Serpent.cfg:4
-msgid "Sea Serpent"
-msgstr "Meremadu"
-
-#: data/core/units/monsters/Sea_Serpent.cfg:20
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-
-#: data/core/units/monsters/Skeletal_Dragon.cfg:4
-msgid "Skeletal Dragon"
-msgstr "Kondidraakon"
-
-#: data/core/units/monsters/Skeletal_Dragon.cfg:26
-msgid ""
-"Long ago one of the mightiest living creatures, the feared Dragon has become "
-"only bones and dark sinew. Long after its death, it was raised through the "
-"dark powers of necromancy, which it now serves. The Skeletal Dragon may look "
-"like nothing more than a pile of bones, but few people who thought that way "
-"lived long enough to change their minds."
-msgstr ""
-
-#: data/core/units/monsters/Skeletal_Dragon.cfg:29
-msgid "jaw"
-msgstr "lõug"
-
-#: data/core/units/monsters/Tentacle.cfg:4
-msgid "Tentacle of the Deep"
-msgstr "Kombits Sügavusest"
-
-#: data/core/units/monsters/Tentacle.cfg:23
-msgid ""
-"Tentacles of the Deep are the appendages of some greater monster that lurks "
-"below the waves.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/monsters/Wolf.cfg:4
-msgid "Wolf"
-msgstr ""
-
-#: data/core/units/monsters/Yeti.cfg:4
-msgid "Yeti"
-msgstr "Lumeinimene"
-
-#: data/core/units/monsters/Yeti.cfg:17
-msgid ""
-"Little is known about Yetis, ape-like creatures said to live in remote and "
-"snow-covered mountains. Few profess to have seen one, and their existence is "
-"doubted by many."
-msgstr ""
-
-#: data/core/units/nagas/Fighter.cfg:4
-msgid "Naga Fighter"
-msgstr "Naga võitleja"
-
-#: data/core/units/nagas/Fighter.cfg:20
-msgid ""
-"The serpentine naga are one of the few races capable of any meaningful "
-"mobility in water, giving them a whole world forbidden to land dwellers. "
-"Still, they are not true creatures of the sea, and their inability to "
-"breathe water leaves them in trepidation of the abyss. They are small, and "
-"somewhat frail in form, but often much more nimble than their opponents."
-msgstr ""
-
-#: data/core/units/nagas/Fighter.cfg:62
-msgid "Nagini Fighter"
-msgstr "Nagini võitleja"
-
-#: data/core/units/nagas/Myrmidon.cfg:4
-msgid "Naga Myrmidon"
-msgstr "Naga Myrmidon"
-
-#: data/core/units/nagas/Myrmidon.cfg:20
-msgid ""
-"The most practiced of the naga blademasters are initiated into the caste of "
-"the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
-"snakes which they resemble, and dance away from attacks with grace. Not only "
-"are they potent enemies on any open terrain, but their ability to swim "
-"allows them deadly mobility in water."
-msgstr ""
-
-#: data/core/units/nagas/Myrmidon.cfg:66
-msgid "Nagini Myrmidon"
-msgstr "Nagini Myrmidon"
-
-#: data/core/units/nagas/Myrmidon.cfg:69
-msgid ""
-"The most practiced of the nagini blademasters are initiated into the caste "
-"of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
-"the snakes which they resemble, and dance away from attacks with grace. Not "
-"only are they potent enemies on any open terrain, but their ability to swim "
-"allows them a deadly mobility."
-msgstr ""
-
-#: data/core/units/nagas/Warrior.cfg:4
-msgid "Naga Warrior"
-msgstr "Naga sõdalane"
-
-#: data/core/units/nagas/Warrior.cfg:19
-msgid ""
-"The young warriors of the naga aspire to the day when they merit their "
-"second blade. Their martial practice of using twin blades is wholly unlike "
-"that of the Orcs and other races, for they have begun to learn the art of "
-"using their serpentine form to best effect, twisting and turning to dodge "
-"from blows. This makes them potent on land, but the friction of water "
-"greatly impedes the technique."
-msgstr ""
-
-#: data/core/units/nagas/Warrior.cfg:65
-msgid "Nagini Warrior"
-msgstr "Nagini sõdalane"
-
-#: data/core/units/nagas/Warrior.cfg:68
-msgid ""
-"Many of the young warriors of the nagini aspire for the day when they merit "
-"their second blade. Their martial practice of using twin blades is wholly "
-"unlike that of the Orcs and other races, for they have begun to learn the "
-"art of using their serpentine form to best effect, twisting and turning to "
-"dodge from blows. This makes them potent on land, but the friction of water "
-"greatly impedes their ability to do this."
-msgstr ""
-
-#: data/core/units/ogres/Ogre.cfg:4
-msgid "Ogre"
-msgstr "Sookoll"
-
-#: data/core/units/ogres/Ogre.cfg:21
-msgid ""
-"Ogres are giant creatures that usually live alone in the wilderness, "
-"remarkably similar to humans in form, though large and misshapen. While they "
-"can be easily outrun or outsmarted, their strength is not to be "
-"underestimated."
-msgstr ""
-
-#: data/core/units/ogres/Ogre.cfg:24 data/core/units/ogres/Young_Ogre.cfg:24
-msgid "cleaver"
-msgstr "lihakirves"
-
-#: data/core/units/ogres/Young_Ogre.cfg:4
-msgid "Young Ogre"
-msgstr "Noor sookoll"
-
-#: data/core/units/ogres/Young_Ogre.cfg:21
-msgid ""
-"When still young, Ogres are sometimes captured and taken into armies to be "
-"trained. They cannot manage weapons skillfully, but they compensate for that "
-"lack with great strength."
-msgstr ""
-
-#: data/core/units/orcs/Archer.cfg:4
-msgid "Orcish Archer"
-msgstr "Mäekollide vibukütt"
-
-#: data/core/units/orcs/Archer.cfg:19
-msgid ""
-"Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
-"especially youths and and those of slight build, are pragmatic enough to use "
-"them in spite of this.  Orcish archers are seldom well equipped, and have no "
-"semblance of training.  Even as poorly handled as they are, however, their "
-"weapons can still be quite deadly, and the wielders thereof rarely march "
-"alone."
-msgstr ""
-
-#: data/core/units/orcs/Assassin.cfg:4
-msgid "Orcish Assassin"
-msgstr "Mäekollide palgamõrvar"
-
-#: data/core/units/orcs/Assassin.cfg:24
-msgid ""
-"Though some consider it cowardly to use, poison is a weapon favored by orcs, "
-"especially those weak of frame. Orcish assassins, who use it on throwing "
-"knives, are typically frail by orcish standards, although surprisingly "
-"nimble. Though rarely the ones who deal the killing blow, their tactics are "
-"a considerable aid to their larger and more brutal kin.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/orcs/Assassin.cfg:98 data/core/units/orcs/Slayer.cfg:119
-msgid "throwing knives"
-msgstr ""
-
-#: data/core/units/orcs/Crossbowman.cfg:4
-msgid "Orcish Crossbowman"
-msgstr "Mäekollide ammumees"
-
-#: data/core/units/orcs/Crossbowman.cfg:18
-msgid ""
-"Orcish crossbows are crude imitations of human or dwarvish design; a "
-"crossbow of any make, though, is a fairly potent device.  The orcs "
-"privileged enough to wield them are capable warriors, and what they lack in "
-"finesse, they make up for in numbers."
-msgstr ""
-
-#: data/core/units/orcs/Grunt.cfg:4
-msgid "Orcish Grunt"
-msgstr "Mäekollide reamees"
-
-#: data/core/units/orcs/Grunt.cfg:19
-msgid ""
-"Orcish Grunts form the core of the orcish forces. Although slower than human "
-"or elven fighters, Grunts can deliver much more powerful blows, and take "
-"more hits before falling."
-msgstr ""
-"Mäekollide reamehed moodustavad mäekollide sõjaväe tuumiku. Kuigi "
-"aeglasemad, kui inimeste või haldjate sõjamehed, löövad reamehed võimsamalt "
-"ja peavad enne langemist kauem vastu."
-
-#: data/core/units/orcs/Leader.cfg:4
-msgid "Orcish Leader"
-msgstr "Mäekollide juht"
-
-#: data/core/units/orcs/Leader.cfg:21
-msgid ""
-"Orcish Leaders are the leaders of orcish warrior bands. They carry a bow out "
-"of necessity, but are much more skilled with the sword; all in all, they are "
-"powerful fighters. Their natural leadership skills make them very precious "
-"in battle: if the Leader is lost, so usually is the battle.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/orcs/Ruler.cfg:4
-msgid "Orcish Ruler"
-msgstr "Mäekollide valitseja"
-
-#: data/core/units/orcs/Ruler.cfg:20
-msgid ""
-"Orcish Rulers are the chieftains of their tribes. They make the important "
-"decisions and lead their people into battle. They carry a bow out of "
-"necessity, but are much more skilled with the sword; all in all, they are "
-"powerful fighters. Their natural leadership skills make them very precious "
-"in battle: if the Ruler is lost, so usually is the battle.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:22
-msgid "greatsword"
-msgstr "suur mõõk"
-
-#: data/core/units/orcs/Slayer.cfg:4
-msgid "Orcish Slayer"
-msgstr "Mäekollide kütt"
-
-#: data/core/units/orcs/Slayer.cfg:24
-msgid ""
-"The larger or more skilled orcish assassins are called 'Slayers' by their "
-"enemies. Slayers are fast on their feet, and quite nimble in combat, "
-"although they achieve that end by forgoing armor. Their weapon of choice, "
-"poison, is a vicious tool, and its common use on the battlefield is often "
-"the real cause of orcish supremacy.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/orcs/Slurbow.cfg:4
-#, fuzzy
-msgid "Orcish Slurbow"
-msgstr "Mäekollide kütt"
-
-#: data/core/units/orcs/Slurbow.cfg:21
-msgid ""
-"The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
-"much more intricate device, complete with a hand-turned cranequin to recock "
-"the weapon, and often with a multi-ply arc, of laminate wood or bone, "
-"driving the projectile.  Such a device is much easier to work with, and much "
-"more powerful than simpler crossbows; it is also completely beyond orcish "
-"manufacture.\n"
-"\n"
-"Orcs prize any such weapons they can manage to plunder, and they invariably "
-"end up in the hands of their strongest and most cunning archers."
-msgstr ""
-
-#: data/core/units/orcs/Sovereign.cfg:4
-msgid "Orcish Sovereign"
-msgstr "Mäekollide maavalitseja"
-
-#: data/core/units/orcs/Sovereign.cfg:21
-msgid ""
-"Orcish Sovereigns are the chieftains of the largest and most powerful "
-"tribes. They make the important decisions and lead their people into battle. "
-"They carry a bow out of necessity, but are much more skilled with the sword; "
-"all in all, they are powerful fighters. Their natural leadership skills make "
-"them very precious in battle: if the Sovereign is lost, so usually is the "
-"battle.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/orcs/Warlord.cfg:4
-msgid "Orcish Warlord"
-msgstr "Mäekollide sõjapealik"
-
-#: data/core/units/orcs/Warlord.cfg:19
-msgid ""
-"Only orcs with both great cunning and unsurpassed strength can become "
-"Warlords. Masters of the sword, and even possessing some skill with the bow, "
-"these beast-warriors lead their brethren with an iron hand."
-msgstr ""
-
-#: data/core/units/orcs/Warrior.cfg:4
-msgid "Orcish Warrior"
-msgstr "Mäekollide sõdalane"
-
-#: data/core/units/orcs/Warrior.cfg:18
-msgid ""
-"Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
-"respected among the Orcs, and highly feared by their foes. Their only "
-"weakness is their inability to wield the bow."
-msgstr ""
-
-#: data/core/units/saurians/Ambusher.cfg:4
-msgid "Saurian Ambusher"
-msgstr "Sauri varitseja"
-
-#: data/core/units/saurians/Ambusher.cfg:21
-msgid ""
-"Saurians are light on their feet, and able at navigating terrain that often "
-"confounds their enemies. When this is combined with experience, strength, "
-"and equipment, one of their warriors can become particularly threatening in "
-"battle, largely because they are so much more difficult to confine than "
-"other foes. Even in armor, saurian warriors can take advantage of the "
-"smallest gap in an enemy line, and have the prowess to make the enemy regret "
-"tactical mistakes.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/saurians/Augur.cfg:4
-#, fuzzy
-msgid "Saurian Augur"
-msgstr "Sauri varitseja"
-
-#: data/core/units/saurians/Augur.cfg:23
-msgid ""
-"Saurians have some ability in what men call magic, but one which reeks of "
-"augury and all the unpleasantry of dark shamanism. As little as it may be "
-"understood, it is rightly regarded with fear by those against whom it is "
-"used.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/saurians/Augur.cfg:75
-#: data/core/units/saurians/Oracle.cfg:75
-#: data/core/units/saurians/Soothsayer.cfg:75
-msgid "curse"
-msgstr "needus"
-
-#: data/core/units/saurians/Flanker.cfg:4
-msgid "Saurian Flanker"
-msgstr "Sauri ründaja"
-
-#: data/core/units/saurians/Flanker.cfg:22
-msgid ""
-"Saurian warriors are generally weaker in frame than their elven, or human "
-"counterparts. This is of course a relative term, and they can still become "
-"considerably powerful, whilst losing none of their natural mobility. This is "
-"very dangerous in combat, as a careless enemy can soon find their support "
-"troops flanked by these creatures.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/saurians/Oracle.cfg:4
-#, fuzzy
-msgid "Saurian Oracle"
-msgstr "Sauri hõimlane"
-
-#: data/core/units/saurians/Oracle.cfg:23
-msgid ""
-"Certain saurians are seen dressed in arcane regalia and covered head to toe "
-"in horrifing, esoteric shapes and markings, both with paint and tattoo. Some "
-"suspect them to be visionaries, or oracles amongst their ilk. But whatever "
-"'societal' function they may have, they are undeniably powerful in the "
-"strange magics their kind possess, and are beings to be wary of if ever "
-"seen.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/saurians/Skirmisher.cfg:4
-msgid "Saurian Skirmisher"
-msgstr "Sauri kähmleja"
-
-#: data/core/units/saurians/Skirmisher.cfg:24
-msgid ""
-"Saurians are very small of frame, and though they are somewhat frail because "
-"of this, they are very, very agile. In combat, their size allows them to "
-"dart past defenses that would hold any grown man at bay, making them a "
-"tricky foe to deal with.\n"
-"\n"
-"Spears are their preferred weapon, as their powerful hind legs can drive a "
-"spear with enough force to do considerable damage, either in hand or "
-"thrown.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/saurians/Soothsayer.cfg:4
-msgid "Saurian Soothsayer"
-msgstr "Sauri soolapuhuja"
-
-#: data/core/units/saurians/Soothsayer.cfg:23
-msgid ""
-"Saurians are known to have some strange skills, arts bordering on the "
-"magical and mysterious. It is clear that some of them are particularly "
-"skilled at a sort of medicine, which is of great benefit whenever battle is "
-"brought against them.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/trolls/Great.cfg:4
-msgid "Great Troll"
-msgstr "Suur Kivihiid"
-
-#: data/core/units/trolls/Great.cfg:21
-msgid ""
-"When a troll, gifted with abnormal strength of life, matches that with age "
-"and wisdom, it becomes something extraordinary, a beast remembered for "
-"generations. Their feats of strength and cunning are the source of most "
-"tales about trolls, and to see the stories made flesh does nothing to "
-"diminish their grandeur.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/trolls/Hero.cfg:4
-msgid "Troll Hero"
-msgstr "Kivihiiuvägilane"
-
-#: data/core/units/trolls/Hero.cfg:20
-msgid ""
-"Some trolls are born with an exceptional share of the strength and vitality "
-"that characterizes their race. In a society where might makes right, those "
-"of their ilk revere them as heroes.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/trolls/Rocklobber.cfg:4
-msgid "Troll Rocklobber"
-msgstr "Kiviheitja hiid"
-
-#: data/core/units/trolls/Rocklobber.cfg:22
-msgid ""
-"The thought of throwing a boulder in combat has certainly occurred to many "
-"trolls, and some have taken to them as a weapon of choice. Because such "
-"stones are not always easy to find, Rocklobbers have taken to carrying them "
-"in sacks slung over their shoulders. The same leather out of which the sack "
-"is formed is easily adapted to a crude sling.\n"
-"\n"
-"Special Notes: though unwieldy, a stone thrown by one of these monsters is "
-"much more deadly than any arrow, if it manages to hit."
-msgstr ""
-
-#: data/core/units/trolls/Troll.cfg:4
-msgid "Troll"
-msgstr "Kivihiid"
-
-#: data/core/units/trolls/Troll.cfg:20
-msgid ""
-"Trolls have long trouble the thoughts of humanity and dwarf-kind. Sages "
-"remain baffled at the origins of these creatures and the driving force "
-"behind their unnatural vitality and strength. A fully-grown troll towers "
-"above a man, and, even unarmed, would be a great threat in combat. The large "
-"clubs typically favored in fighting act as extensions of their arms, used "
-"for the same purpose of mauling their prey into submission.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/trolls/Warrior.cfg:4
-msgid "Troll Warrior"
-msgstr "Trollisõdalane"
-
-#: data/core/units/trolls/Warrior.cfg:22
-msgid ""
-"Trolls typically neither need nor prefer to use any proper armament in "
-"combat, as large 'sticks and stones' serve them all too well. However, "
-"trolls have been seen on numerous occasions clad in rough-shod armor and "
-"bearing metal hammers. It is speculated that orcish allies are the source "
-"and crafters of these; expeditions into several forcibly-vacated troll holes "
-"have shown little evidence of tool use, and certainly no metalworking of any "
-"kind. Given how dangerous a troll is in combat, the thought of a troll in "
-"full armor is entirely unsettling.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/trolls/Whelp.cfg:4
-msgid "Troll Whelp"
-msgstr "Trollinäss"
-
-#: data/core/units/trolls/Whelp.cfg:21
-msgid ""
-"Describing a troll as a whelp is something of an oxymoron, given that their "
-"bodies are already much hardier than that of a grown man. They are clumsy "
-"and not yet capable of walking properly, forced instead to shamble about on "
-"all fours, but any difficulty this causes them is more than made up for by "
-"the raw strength of their race.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Bat_Blood.cfg:4
-msgid "Blood Bat"
-msgstr "Verejanuline nahkhiir"
-
-#: data/core/units/undead/Bat_Blood.cfg:20
-msgid ""
-"Blood Bats are fast and can drain the blood of those they attack, thereby "
-"gaining some of the health lost by their victims. Such is their fury that "
-"the pelts of these undead flying beasts are often tainted red with the blood "
-"of their victims.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Bat_Vampire.cfg:4
-msgid "Vampire Bat"
-msgstr "Vampiir-nahkhiir"
-
-#: data/core/units/undead/Bat_Vampire.cfg:19
-msgid ""
-"Vampire Bats are undead flying beasts that attack by biting their victims. "
-"While their fangs are not very powerful, the health of victims is drained "
-"away along with their blood, and given to the Bats.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Corpse_Ghoul.cfg:4
-msgid "Ghoul"
-msgstr "Kodukäija"
-
-#: data/core/units/undead/Corpse_Ghoul.cfg:22
-msgid ""
-"Only those with an dreadful knowledge of necromancy know what must be done "
-"to turn a person into a ghoul, and it is a secret they are not telling. "
-"Whatever unspeakable rites they have performed, the result is a beast that "
-"knows nothing of its days as a human being, a creature that shambles about "
-"as naked as the day it was born, and gorges itself on the flesh of the "
-"dead.\n"
-"\n"
-"It is because of such things that necromancy is condemned with an almost "
-"primal hatred in all civilized lands.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Corpse_Necrophage.cfg:4
-msgid "Necrophage"
-msgstr "Surnusööja"
-
-#: data/core/units/undead/Corpse_Necrophage.cfg:21
-msgid ""
-"Driven ravenous by an unholy hunger for dead flesh, Necrophages attack their "
-"hoped-for food with beast-like ferocity. When they are sated with the flesh "
-"of their victims, they simply shrug off all damage sustained as if they had "
-"been freshly summoned, to begin their search for flesh again.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Corpse_Soulless.cfg:5
-msgid "Soulless"
-msgstr "Hingetu"
-
-#: data/core/units/undead/Corpse_Soulless.cfg:23
-msgid ""
-"The technique of animating a dead body is unfortunately well-known to the "
-"dark arts; practicioners often use it to raise servants and soldiers from "
-"unwilling corpses.  These shamblers are often numerous, but fragile; a touch "
-"of combat can waken them, though, making them far more formidable.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Corpse_Soulless.cfg:47
-#: data/core/units/undead/Corpse_Walking.cfg:49
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:30
-#: data/core/units/undead/Necro_Lich.cfg:35
-#: data/core/units/undead/Spirit_Ghost.cfg:25
-msgid "touch"
-msgstr "puudutus"
-
-#: data/core/units/undead/Corpse_Walking.cfg:5
-msgid "Walking Corpse"
-msgstr "Kõndiv laip"
-
-#: data/core/units/undead/Corpse_Walking.cfg:23
-msgid ""
-"Walking Corpses are the bodies of the dead, re-animated by dark magic. "
-"Though not especially dangerous to a trained soldier, the sight of one's "
-"former comrades amongst their number is frightening to say the least.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:4
-msgid "Ancient Lich"
-msgstr "Iidne kooljas"
-
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:20
-msgid ""
-"A being of this order is a revenant of ages long past. Anyone who encounters "
-"an Ancient Lich likely has far worse things to worry about than death.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:71
-#: data/core/units/undead/Necro_Lich.cfg:76
-#, fuzzy
-msgid "chill tempest"
-msgstr "külmajudin"
-
-#: data/core/units/undead/Necro_Dark_Adept.cfg:5
-msgid "Dark Adept"
-msgstr "Pimeduse arbuja"
-
-#: data/core/units/undead/Necro_Dark_Adept.cfg:27
-msgid ""
-"To attract any practitioners, the lure of black magic must be a great prize "
-"indeed, for anyone caught practicing the art in the civilized world is "
-"subject to a death sentence. And yet there are those who pursue this art, "
-"for the prize offered is nothing less than immortality. Hidden away in "
-"secret cults, or initiated into the dark orders of the underworld, the "
-"training which these fanatics must endure often drives them to exhaustion "
-"and enfeeblement.\n"
-"\n"
-"In such condition, their only weapon is the craft they have so committed "
-"themselves to learning.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Necro_Dark_Adept.cfg:31
-#, fuzzy
-msgid "shadow wave"
-msgstr "labidas"
-
-#: data/core/units/undead/Necro_Dark_Adept.cfg:131
-#, fuzzy
-msgid "female^Dark Adept"
-msgstr "Pimeduse kuninganna"
-
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
-#, fuzzy
-msgid "Dark Sorcerer"
-msgstr "Tuld purskav lohe"
-
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:19
-msgid ""
-"The dread inspired by black magic comes chiefly from how little is known "
-"about it by the common man. Dark sorcerers have begun to unlock the secrets "
-"of life and death, and it is all too easy to turn this knowledge towards "
-"violent ends.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Necro_Lich.cfg:4
-msgid "Lich"
-msgstr "Kooljas"
-
-#: data/core/units/undead/Necro_Lich.cfg:25
-msgid ""
-"A lich is the physical embodiment of black magic's first goal: the quest to "
-"achieve immortality. Though a great deal is sacrificed in the rebirth, in "
-"becoming a lich one cheats death of that which truly gives it terror. For it "
-"is the mind that is retained, and the spirit which follows, though the body "
-"may wither away.\n"
-"\n"
-"It is not known, save perhaps by the inner circles of necromancy, whether "
-"life is prolonged indefinitely or simply extended. But the fact that this "
-"question can be raised testifies to the magnitude of what these dark adepts "
-"have already achieved.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Necromancer.cfg:4
-msgid "Necromancer"
-msgstr "Surnumanaja"
-
-#: data/core/units/undead/Necromancer.cfg:22
-msgid ""
-"One of the pinnacles of what is considered 'black magic' is the art of "
-"necromancy, the terrible ability to awaken the dead with false life. This "
-"discovery alone caused humanity's condemnation of black magic, for the "
-"nightmarish things it has made real have given fear a vast new arsenal.\n"
-"\n"
-"This ability, in all aspects, is the first step towards cheating death of "
-"its ultimate prize.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Necromancer.cfg:26
-msgid "plague staff"
-msgstr "katkusau"
-
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:4
-msgid "Bone Shooter"
-msgstr "Konditulistaja"
-
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:18
-msgid ""
-"Of a dark sorcerer's creations, some take more strongly to the false life "
-"given them. The potency of their un-life is given equipment to match; "
-"archers, in particular, are often outfitted with a truly vile arsenal. Their "
-"quivers are filled with shafts made not of wood, but of the bones of their "
-"victims. It follows that they are dubbed simply 'Bone-Shooters' by their "
-"unfortunate enemies.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skele_Chocobone.cfg:4
-msgid "Chocobone"
-msgstr ""
-
-#: data/core/units/undead/Skele_Chocobone.cfg:22
-msgid ""
-"Riding the bones of ostrich-like large birds once used as mounts by a lost "
-"civilization, the skeletal Chocobones can move faster than most cavalry "
-"units.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skele_Death_Knight.cfg:4
-msgid "Death Knight"
-msgstr "Surmarüütel"
-
-#: data/core/units/undead/Skele_Death_Knight.cfg:27
-msgid ""
-"Tales are told of the mightiest warriors and generals, who, cursed with hate "
-"and stung by betrayal, have come back to this world as Death Knights. "
-"Wielding the same weapons as in life, they command the Undead in their quest "
-"for revenge.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skele_Deathblade.cfg:4
-msgid "Deathblade"
-msgstr "Surnumõõk"
-
-#: data/core/units/undead/Skele_Deathblade.cfg:20
-msgid ""
-"In life, the abominations known as 'Deathblades' were masters of combat, "
-"soldiers who were both lithe and deadly. Their new masters, recognizing "
-"this, outfit them to match the skills they once had. Though frail, these "
-"monsters are much faster than the rest of their kind, both on foot and with "
-"their blades.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skele_Draug.cfg:4
-#, fuzzy
-msgid "Draug"
-msgstr "Dragun"
-
-#: data/core/units/undead/Skele_Draug.cfg:20
-msgid ""
-"There is little left, in these towering ruins, of the men they once were.  "
-"Warriors at heart, they are now lost in the dream of unlife; wandering "
-"through the battles of their memory and fighting desperately for release, "
-"for a peace bought only by strength of arms.  And so they struggle; both "
-"unthinking, and unrelenting.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skele_Revenant.cfg:4
-msgid "Revenant"
-msgstr "Viirastus"
-
-#: data/core/units/undead/Skele_Revenant.cfg:19
-msgid ""
-"Given false life to do battle once more, the creatures known as Revenants "
-"were clearly great warriors in their time, though the memory of that time is "
-"now long gone. Even the sorcerers who raised them can only speculate on "
-"their past. Such questions aside, a Revenant is a powerful tool in combat: a "
-"fearless warrior that feels no pain, and which will fight to the bitter "
-"end.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:4
-msgid "Soul Shooter"
-msgstr "Hingetulistaja"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:19
-msgid ""
-"The most powerful of the undead archers invariably end up being those who "
-"were themselves archers in their previous life. They wander the fields of "
-"battle, guided by the fading memory of their former skill, neither knowing, "
-"nor caring what their purpose, or foes be. They are driven only by a malice "
-"borne of their empty and tortured existence.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skeleton.cfg:4
-msgid "Skeleton"
-msgstr "Kondikubu"
-
-#: data/core/units/undead/Skeleton.cfg:20
-msgid ""
-"Skeletons are warriors who have been slain in battle and brought back by "
-"dark magics. Nearly mindless, and unwavering in their purpose, they fear "
-"neither pain, nor death, and their mere presence will often frighten away "
-"any who would challenge their master.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Skeleton_Archer.cfg:4
-msgid "Skeleton Archer"
-msgstr "Kondikubu vibukütt"
-
-#: data/core/units/undead/Skeleton_Archer.cfg:19
-msgid ""
-"A skeleton archer is little different from the 'skeletons' which often "
-"accompany it - it is a sin against nature, a warrior raised from the dead to "
-"fight once again. In their masters' hands, these soldiers will do anything "
-"to achieve the tasks laid before them, for death holds no fear for one who "
-"is already dead.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Spirit_Ghost.cfg:4
-msgid "Ghost"
-msgstr "Vaim"
-
-#: data/core/units/undead/Spirit_Ghost.cfg:21
-msgid ""
-"It is one of the greater mercies of creation that a human soul is immutable, "
-"and cannot be destroyed. However, the many things a necromancer can do in "
-"spite of this are entirely horrifying.\n"
-"\n"
-"Enslaved within a shroud of enchantments, a trapped spirit may be likened to "
-"the wind in the sails of a ship. This damned vessel becomes an unfailing "
-"servant which can be bound to whatever task their master sees fit.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Spirit_Ghost.cfg:64
-#: data/core/units/undead/Spirit_Spectre.cfg:86
-#: data/core/units/undead/Spirit_Wraith.cfg:67
-msgid "wail"
-msgstr "ulgumine"
-
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:4
-msgid "Nightgaunt"
-msgstr ""
-
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:19
-msgid ""
-"The purpose of the masks that these creatures wear is unknown, as is the "
-"countenance that they obscure. These terrible forms are rarely seen by the "
-"living, and those who live to speak of them had no leisure to study their "
-"foe.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Spirit_Shadow.cfg:4
-msgid "Shadow"
-msgstr "Vari"
-
-#: data/core/units/undead/Spirit_Shadow.cfg:20
-msgid ""
-"When light came into the world and gave form to the unknown, fear was forced "
-"to retreat into darkness. Since that day, the shadows of the world have held "
-"terror for humanity, though it knows not why.\n"
-"\n"
-"That is a question which is easily answered by a necromancer.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Spirit_Spectre.cfg:4
-msgid "Spectre"
-msgstr "Spekter"
-
-#: data/core/units/undead/Spirit_Spectre.cfg:21
-msgid ""
-"Sometimes called the 'hollow men', spectres form the right arm of their "
-"masters' powers. They are an unholy terror to the living, for they are quite "
-"as deadly as their appearance suggests.\n"
-"\n"
-"The creation of these is no mean feat; the real danger in encountering one "
-"is that it is likely only the harbinger of a much more dangerous force that "
-"will follow in its wake.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Spirit_Spectre.cfg:46
-#: data/core/units/undead/Spirit_Wraith.cfg:22
-msgid "baneblade"
-msgstr ""
-
-#: data/core/units/undead/Spirit_Wraith.cfg:4
-msgid "Wraith"
-msgstr "Surnuvaim"
-
-#: data/core/units/undead/Spirit_Wraith.cfg:19
-msgid ""
-"These shades of what were once warriors are among the most terrifying things "
-"a necromancer can create, for a sword will cleave right through them without "
-"doing harm, as through air itself. What inspires such fear is the thought "
-"that these beasts are invincible, a belief that is fortunately far from the "
-"truth.\n"
-"\t\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/wose/Ancient.cfg:4
-msgid "Ancient Wose"
-msgstr "Iidne voos"
-
-#: data/core/units/wose/Ancient.cfg:22
-msgid ""
-"There is a curious story of a farmer who had a great oak in his lawn, a tree "
-"which had stood when his father first broke the soil on that land, and under "
-"which his family had many memories. It was thus a shock to him, one morning, "
-"when he awoke to find it somehow spirited away, with nothing but a bare "
-"patch of earth where it once stood. The poor farmer was never quite the "
-"same, afterwards.\n"
-"\n"
-"Such encounters are all that is known of what are presumably the most "
-"ancient of woses.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/wose/Ancient.cfg:93 data/core/units/wose/Elder.cfg:92
-#: data/core/units/wose/Wose.cfg:31
-msgid "crush"
-msgstr "lõmastus"
-
-#: data/core/units/wose/Elder.cfg:4
-msgid "Elder Wose"
-msgstr "Vana voos"
-
-#: data/core/units/wose/Elder.cfg:21
-msgid ""
-"Woses have been said to possess many shapes, all of them tree-like in form, "
-"and as they age, to increase in size. Tales tell of woses who resemble trees "
-"in this respect as well, towering over the creatures who walk beneath them. "
-"This is the greater part of why they are so rarely seen - standing in the "
-"slumber which they so often do, a wose of that stature appears to be nothing "
-"more than an oddly-shaped tree. Even a careless elf can sometimes be "
-"fooled.\n"
-"\n"
-"Woses are not warriors by any means, however the native strength they "
-"possess can make them capable of great violence should someone manage to "
-"raise the ire of these creatures.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/wose/Wose.cfg:4
-msgid "Wose"
-msgstr "Voos"
-
-#: data/core/units/wose/Wose.cfg:22
-msgid ""
-"Rarely seen even by elves, the Wose is an order of creature about which "
-"little is known. The elves are the source of most of this knowledge; they "
-"know that these beings are not descended from trees, despite the similarity "
-"in form, and they know that a wose is more closely tied to the faerie world "
-"than the elves themselves, though in a different way. The motives and "
-"workings of their kind are unknown, though most subscribe to the obvious "
-"theory that woses are dedicated wardens of the natural world.\n"
-"\n"
-"Woses are utterly unwarlike, but possess a great strength. They are, "
-"however, neither used to, nor quick at moving around.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Lihtne"
@@ -8368,13 +4655,13 @@ msgid "End Turn"
 msgstr "Lõpeta käik"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:315 src/unit.cpp:2412
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2412
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:181 data/themes/dfool.cfg:209
-#: data/themes/experimental.cfg:159 src/menu_events.cpp:316
-#: src/menu_events.cpp:860
+#: data/themes/experimental.cfg:159 src/menu_events.cpp:317
+#: src/menu_events.cpp:865
 msgid "XP"
 msgstr "XP"
 
@@ -8496,7 +4783,7 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:169 src/help.cpp:2620 src/menu_events.cpp:138
+#: src/about.cpp:169 src/help.cpp:2620 src/menu_events.cpp:139
 msgid "Close"
 msgstr "Sulge"
 
@@ -8629,7 +4916,7 @@ msgstr "Õpetus"
 msgid "replay"
 msgstr "kordus"
 
-#: src/dialogs.cpp:468 src/menu_events.cpp:473 src/multiplayer_lobby.cpp:412
+#: src/dialogs.cpp:468 src/menu_events.cpp:474 src/multiplayer_lobby.cpp:412
 msgid "Turn"
 msgstr "Käik"
 
@@ -8683,8 +4970,8 @@ msgstr "Kustuta salvestus"
 msgid "Date"
 msgstr "Kuupäev"
 
-#: src/dialogs.cpp:557 src/game.cpp:1060 src/menu_events.cpp:313
-#: src/menu_events.cpp:858 src/multiplayer.cpp:109
+#: src/dialogs.cpp:557 src/game.cpp:1060 src/menu_events.cpp:314
+#: src/menu_events.cpp:863 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "Nimi"
 
@@ -8826,7 +5113,7 @@ msgstr "Lisa paigaldatud"
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1005 src/menu_events.cpp:487 src/menu_events.cpp:500
+#: src/game.cpp:1005 src/menu_events.cpp:488 src/menu_events.cpp:501
 #: src/multiplayer_create.cpp:494
 msgid "Error"
 msgstr "Viga"
@@ -9171,7 +5458,7 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "Välju mängust"
 
-#: src/help.cpp:1190 src/menu_events.cpp:312 src/menu_events.cpp:857
+#: src/help.cpp:1190 src/menu_events.cpp:313 src/menu_events.cpp:862
 msgid "Type"
 msgstr "Liik"
 
@@ -9276,48 +5563,48 @@ msgstr ""
 msgid "Reading files and creating cache."
 msgstr ""
 
-#: src/menu_events.cpp:100 src/menu_events.cpp:149
+#: src/menu_events.cpp:101 src/menu_events.cpp:150
 msgid "Recruits"
 msgstr "Värbamisi"
 
-#: src/menu_events.cpp:104 src/menu_events.cpp:157
+#: src/menu_events.cpp:105 src/menu_events.cpp:158
 msgid "Recalls"
 msgstr "Tagasikutsumisi"
 
-#: src/menu_events.cpp:108 src/menu_events.cpp:165
+#: src/menu_events.cpp:109 src/menu_events.cpp:166
 msgid "Advancements"
 msgstr "Edutamisi"
 
-#: src/menu_events.cpp:112 src/menu_events.cpp:173
+#: src/menu_events.cpp:113 src/menu_events.cpp:174
 msgid "Losses"
 msgstr "Kaotusi"
 
-#: src/menu_events.cpp:117 src/menu_events.cpp:181
+#: src/menu_events.cpp:118 src/menu_events.cpp:182
 msgid "Kills"
 msgstr "Tapmisi"
 
-#: src/menu_events.cpp:136
+#: src/menu_events.cpp:137
 #, fuzzy
 msgid "Details"
 msgstr "saba"
 
-#: src/menu_events.cpp:187
+#: src/menu_events.cpp:188
 msgid "Damage Inflicted"
 msgstr "Kahju tekitatud"
 
-#: src/menu_events.cpp:193
+#: src/menu_events.cpp:194
 msgid "Damage Taken"
 msgstr "Kahju saadud"
 
-#: src/menu_events.cpp:199
+#: src/menu_events.cpp:200
 msgid "Damage Inflicted (EV)"
 msgstr "Kahju tekitatud (EV)"
 
-#: src/menu_events.cpp:206
+#: src/menu_events.cpp:207
 msgid "Damage Taken (EV)"
 msgstr "Kahju saadud (EV)"
 
-#: src/menu_events.cpp:242
+#: src/menu_events.cpp:243
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -9325,7 +5612,7 @@ msgstr ""
 "Mu käskija, see üksus on võrlemisi kogenud, ta on heal tasemel! Kas sa "
 "tõesti saata minema see $noun?"
 
-#: src/menu_events.cpp:244
+#: src/menu_events.cpp:245
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -9333,75 +5620,75 @@ msgstr ""
 "Mu käskija, see üksus jõuab varsti uuele tasemele! Kas sa tõesti saata "
 "minema see $noun?"
 
-#: src/menu_events.cpp:249
+#: src/menu_events.cpp:250
 msgid "her"
 msgstr "teda"
 
-#: src/menu_events.cpp:249
+#: src/menu_events.cpp:250
 msgid "him"
 msgstr "teda"
 
-#: src/menu_events.cpp:304
+#: src/menu_events.cpp:305
 msgid "Statistics"
 msgstr "Statistika"
 
-#: src/menu_events.cpp:314 src/menu_events.cpp:859
+#: src/menu_events.cpp:315 src/menu_events.cpp:864
 #, fuzzy
 msgid "Level"
 msgstr "tase"
 
-#: src/menu_events.cpp:317
+#: src/menu_events.cpp:318
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:318 src/unit.cpp:2443
+#: src/menu_events.cpp:319 src/unit.cpp:2443
 msgid "Moves"
 msgstr "Käigud"
 
-#: src/menu_events.cpp:319
+#: src/menu_events.cpp:320
 msgid "Location"
 msgstr "Asukoht"
 
-#: src/menu_events.cpp:372
+#: src/menu_events.cpp:373
 msgid "Unit List"
 msgstr "Üksuste nimekiri"
 
-#: src/menu_events.cpp:387
+#: src/menu_events.cpp:388
 msgid "Leader"
 msgstr "Juht"
 
-#: src/menu_events.cpp:388 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "Meeskond"
 
-#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:390 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:444
 msgid "Gold"
 msgstr "Kuld"
 
-#: src/menu_events.cpp:390
+#: src/menu_events.cpp:391
 msgid "Villages"
 msgstr "Külad"
 
-#: src/menu_events.cpp:391
+#: src/menu_events.cpp:392
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:392
+#: src/menu_events.cpp:393
 msgid "Upkeep"
 msgstr "Elatis"
 
-#: src/menu_events.cpp:393 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:394 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:448
 msgid "Income"
 msgstr "Sissetulek"
 
-#: src/menu_events.cpp:482 src/playcampaign.cpp:465
+#: src/menu_events.cpp:483 src/playcampaign.cpp:465
 msgid "Name:"
 msgstr "Nimi:"
 
-#: src/menu_events.cpp:487
+#: src/menu_events.cpp:488
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -9409,86 +5696,86 @@ msgstr ""
 "Salvestuse nimes ei tohi olla kooloneid ega kaldkriipse. Palun vali mõni "
 "teine nimi."
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:498
 msgid "Saved"
 msgstr "Salvestatud"
 
-#: src/menu_events.cpp:497
+#: src/menu_events.cpp:498
 msgid "The game has been saved"
 msgstr "Mäng on salvestatud"
 
-#: src/menu_events.cpp:500 src/playcampaign.cpp:473
+#: src/menu_events.cpp:501 src/playcampaign.cpp:473
 msgid "The game could not be saved"
 msgstr "Mängu salvestamine ebaõnnestus."
 
-#: src/menu_events.cpp:515
+#: src/menu_events.cpp:516
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Jaga kaarte"
 
-#: src/menu_events.cpp:520
+#: src/menu_events.cpp:521
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Salvestus on juba olemas. Kas sa tahad selle üle kirjutada?"
 
-#: src/menu_events.cpp:532
+#: src/menu_events.cpp:533
 msgid "Map saved."
 msgstr "Kaart salvestatud."
 
-#: src/menu_events.cpp:536
+#: src/menu_events.cpp:537
 msgid "Could not save the map: $msg"
 msgstr "Kaarti ei suudeta salvestada: $msg"
 
-#: src/menu_events.cpp:626 src/menu_events.cpp:628 src/play_controller.cpp:747
+#: src/menu_events.cpp:627 src/menu_events.cpp:629 src/play_controller.cpp:747
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "Automaatne salvestus"
 
-#: src/menu_events.cpp:631
+#: src/menu_events.cpp:632
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Mängu automaatne salvestamine ebaõnnestus. Palun salvesta mäng käsitsi."
 
-#: src/menu_events.cpp:655
+#: src/menu_events.cpp:656
 msgid "Chat Log"
 msgstr "Vestluslogi"
 
-#: src/menu_events.cpp:665
+#: src/menu_events.cpp:666
 msgid "Message:"
 msgstr "Teade:"
 
-#: src/menu_events.cpp:666
+#: src/menu_events.cpp:667
 msgid "Send to allies only"
 msgstr "Saada ainult liitlastele"
 
-#: src/menu_events.cpp:733
+#: src/menu_events.cpp:734
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Kuld"
 msgstr[1] "Kuld"
 
-#: src/menu_events.cpp:740
+#: src/menu_events.cpp:741
 msgid "You have no units available to recruit."
 msgstr "Paistab, et sul ei ole kedagi värvata."
 
-#: src/menu_events.cpp:752
+#: src/menu_events.cpp:753
 msgid "Recruit"
 msgstr "Värba"
 
-#: src/menu_events.cpp:753 src/menu_events.cpp:903
+#: src/menu_events.cpp:754 src/menu_events.cpp:902
 msgid "Select unit:"
 msgstr "Vali üksus:"
 
-#: src/menu_events.cpp:793
+#: src/menu_events.cpp:798
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Sul ei ole selle üksuse värbamiseks piisavalt kulda."
 
-#: src/menu_events.cpp:850
+#: src/menu_events.cpp:855
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Sa oled oma sõjameestest lahutatud ja ei saa neid tagasi kutsuda."
 
-#: src/menu_events.cpp:852
+#: src/menu_events.cpp:857
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
@@ -9497,22 +5784,22 @@ msgstr ""
 "Paistab et sa ei saa mitte kedagi tagasi kutsuda\n"
 "(Sul peab olema eelmistest stsenaariumitest ellujäänud üksusi)"
 
-#: src/menu_events.cpp:891
+#: src/menu_events.cpp:896
 msgid "Dismiss Unit"
 msgstr "Saada üksus erru"
 
-#: src/menu_events.cpp:902
+#: src/menu_events.cpp:901
 msgid "Recall"
 msgstr "Kutsu tagasi"
 
-#: src/menu_events.cpp:914
+#: src/menu_events.cpp:917
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
 msgstr[1] "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
 
-#: src/menu_events.cpp:1243
+#: src/menu_events.cpp:1246
 #, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
@@ -9520,70 +5807,70 @@ msgstr ""
 "Sa ei ole oma käiku veel alustanud. Kas sa tõesti tahad oma käigu juba "
 "lõpetada?"
 
-#: src/menu_events.cpp:1251 src/menu_events.cpp:1256
+#: src/menu_events.cpp:1254 src/menu_events.cpp:1259
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Osad üksused saavad veel liikuda? Kas sa tahad tõesti oma käigu lõpetada?"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1300
 msgid "Rename Unit"
 msgstr "Muuda üksuse nime"
 
-#: src/menu_events.cpp:1379
+#: src/menu_events.cpp:1382
 msgid "Place Label"
 msgstr "Paiguta silt"
 
-#: src/menu_events.cpp:1382 src/menu_events.cpp:1385
+#: src/menu_events.cpp:1385 src/menu_events.cpp:1388
 msgid "Label:"
 msgstr "Silt:"
 
-#: src/menu_events.cpp:1388
+#: src/menu_events.cpp:1391
 #, fuzzy
 msgid "Team only"
 msgstr "Meeskond"
 
-#: src/menu_events.cpp:1489
+#: src/menu_events.cpp:1492
 msgid "Search"
 msgstr "Otsi"
 
-#: src/menu_events.cpp:1532
+#: src/menu_events.cpp:1535
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1586
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1587
+#: src/menu_events.cpp:1590
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1589
+#: src/menu_events.cpp:1592
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1591
+#: src/menu_events.cpp:1594
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1593
+#: src/menu_events.cpp:1596
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1595
+#: src/menu_events.cpp:1598
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1597
+#: src/menu_events.cpp:1600
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "Tundmatu stsenaarium : '"
 
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1603
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -9591,52 +5878,52 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1603
+#: src/menu_events.cpp:1606
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1605
+#: src/menu_events.cpp:1608
 msgid "Unknown command"
 msgstr "Tundmatu käsk"
 
-#: src/menu_events.cpp:1617
+#: src/menu_events.cpp:1620
 msgid "Added to ignore list: "
 msgstr "Lisatud ignoreeritavate nimekirja:"
 
-#: src/menu_events.cpp:1619 src/menu_events.cpp:1626 src/menu_events.cpp:1633
+#: src/menu_events.cpp:1622 src/menu_events.cpp:1629 src/menu_events.cpp:1636
 msgid "Invalid username: "
 msgstr "Vigane kasutajanimi:"
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1627
 msgid "Added to friends list: "
 msgstr "Lisatud sõprade nimekirja:"
 
-#: src/menu_events.cpp:1631
+#: src/menu_events.cpp:1634
 msgid "Removed from list: "
 msgstr "Nimekirjast eemaldatud:"
 
-#: src/menu_events.cpp:1657
+#: src/menu_events.cpp:1660
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1667
+#: src/menu_events.cpp:1670
 msgid "Removed from ignore list: "
 msgstr "Eemaldatud ignoreeritavate nimekirjast:"
 
-#: src/menu_events.cpp:1670
+#: src/menu_events.cpp:1673
 msgid "Removed from friends list: "
 msgstr "Eemaldatud sõprade nimekrjast:"
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1680
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Tundmatu stsenaarium : '"
 
-#: src/menu_events.cpp:1787
+#: src/menu_events.cpp:1790
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Ei leindud silti ega üksust mille nimes sisalduks tekst '$search'."
 
-#: src/menu_events.cpp:1935
+#: src/menu_events.cpp:1938
 msgid "prompt^Command:"
 msgstr "Käsk:"
 
@@ -10493,6 +6780,923 @@ msgstr ""
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr ""
+
+#~ msgid "Galleon"
+#~ msgstr "Galeoon"
+
+#~ msgid "dummy"
+#~ msgstr "fiktiivne"
+
+#~ msgid "Pirate Galleon"
+#~ msgstr "Piraatite galeoon"
+
+#, fuzzy
+#~ msgid ""
+#~ "Pirate galleons are to transport ships what wolves are to sheep. Ships "
+#~ "full of goods shouldn't be lonely, far away from any land, better to help "
+#~ "them avoid sinking from overloading..."
+#~ msgstr ""
+#~ "Piraatide galeoonid on kaubalaevadele umbes sama, mis hundid lammastele. "
+#~ "Kaupu täis laevad ei tohiks olla üksikuna kaugel maast. Parem aidata neid "
+#~ "igaks juhuks, et nad liigse koormaga põhja ei läheks..."
+
+#~ msgid "ballista"
+#~ msgstr "ballista"
+
+#~ msgid "pierce"
+#~ msgstr "torge"
+
+#~ msgid "Transport Galleon"
+#~ msgstr "Transpordi galeoon"
+
+#, fuzzy
+#~ msgid "Armageddon Drake"
+#~ msgstr "Tulelohe"
+
+#~ msgid "claws"
+#~ msgstr "küünised"
+
+#~ msgid "blade"
+#~ msgstr "tera"
+
+#~ msgid "fire breath"
+#~ msgstr "tulehingus"
+
+#~ msgid "fire"
+#~ msgstr "tuli"
+
+#, fuzzy
+#~ msgid "Drake Blademaster"
+#~ msgstr "Gladiaator lohe"
+
+#~ msgid "sword"
+#~ msgstr "mõõk"
+
+#~ msgid "Drake Burner"
+#~ msgstr "Tuld purskav lohe"
+
+#~ msgid "Drake Clasher"
+#~ msgstr "Lahmija lohe"
+
+#~ msgid "spear"
+#~ msgstr "oda"
+
+#, fuzzy
+#~ msgid "Drake Enforcer"
+#~ msgstr "Tuld purskav lohe"
+
+#~ msgid "mace"
+#~ msgstr "oganui"
+
+#~ msgid "Drake Fighter"
+#~ msgstr "Lohesõdalane"
+
+#~ msgid "scimitar"
+#~ msgstr "skimitar"
+
+#~ msgid "Fire Drake"
+#~ msgstr "Tulelohe"
+
+#~ msgid "Drake Flameheart"
+#~ msgstr "Leegitseva südamega lohe"
+
+#~ msgid "Drake Flare"
+#~ msgstr "Tu"
+
+#~ msgid "Drake Gladiator"
+#~ msgstr "Gladiaator lohe"
+
+#~ msgid "Drake Glider"
+#~ msgstr "Hõljuja lohe"
+
+#~ msgid "slam"
+#~ msgstr "obadus"
+
+#, fuzzy
+#~ msgid "Hurricane Drake"
+#~ msgstr "Tulelohe"
+
+#~ msgid "Inferno Drake"
+#~ msgstr "Põrgulik lohe"
+
+#~ msgid "Sky Drake"
+#~ msgstr "Taevalik lohe"
+
+#~ msgid "Drake Slasher"
+#~ msgstr "Raiuja lohe"
+
+#~ msgid "halberd"
+#~ msgstr "hellebard"
+
+#, fuzzy
+#~ msgid "Drake Warden"
+#~ msgstr "Tu"
+
+#~ msgid "Drake Warrior"
+#~ msgstr "Lohesõdalane"
+
+#~ msgid "Dwarvish Berserker"
+#~ msgstr "Hullunud kääbus"
+
+#, fuzzy
+#~ msgid ""
+#~ "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
+#~ "all defense in exchange for massive damage against their enemies.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Kääbused on iidne võimsate sõjameeste rass. Hulludes unustavad nad enda "
+#~ "pärast muretsemise ja tekitavad vaenlastele tohutut kahju. Kui lahing on "
+#~ "kord juba alanud, siis ründavad hullunud kääbused raevukalt, kuni kas "
+#~ "nemad või nende vastased lebavad surnult."
+
+#~ msgid "berserker frenzy"
+#~ msgstr "hullunud märatsemine"
+
+#~ msgid "Dwarvish Dragonguard"
+#~ msgstr "Kääbuste draakonivalvur"
+
+#~ msgid "dagger"
+#~ msgstr "pistoda"
+
+#~ msgid "dragonstaff"
+#~ msgstr "draakonisau"
+
+#~ msgid "Dwarvish Fighter"
+#~ msgstr "Kääbuste võitleja"
+
+#~ msgid "axe"
+#~ msgstr "kirves"
+
+#~ msgid "hammer"
+#~ msgstr "vasar"
+
+#~ msgid "Dwarvish Guardsman"
+#~ msgstr "Kääbuste valvur"
+
+#~ msgid "javelin"
+#~ msgstr "oda"
+
+#~ msgid "Dwarvish Lord"
+#~ msgstr "Kääbuste isand"
+
+#~ msgid "battle axe"
+#~ msgstr "sõjakirves"
+
+#~ msgid "hatchet"
+#~ msgstr "väike kirves"
+
+#~ msgid "Dwarvish Runemaster"
+#~ msgstr "Kääbuste ruunimeister"
+
+#~ msgid "runic hammer"
+#~ msgstr "ruunidega vasar"
+
+#~ msgid "Lightning bolt"
+#~ msgstr "Välgunool"
+
+#~ msgid "Dwarvish Sentinel"
+#~ msgstr "Kääbuste vahimees"
+
+#, fuzzy
+#~ msgid ""
+#~ "The Sentinel, with his tower shield and great courage, refuses to yield "
+#~ "under even the strongest of enemy attacks.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Vapper torn-kilbiga  varustatud vahimees ei anna alla ka kõige võimsamate "
+#~ "rünnakute surve all."
+
+#, fuzzy
+#~ msgid "Dwarvish Stalwart"
+#~ msgstr "Kääbuste vahimees"
+
+#, fuzzy
+#~ msgid "Dwarvish Steelclad"
+#~ msgstr "Kääbuste vahimees"
+
+#~ msgid "Dwarvish Thunderer"
+#~ msgstr "Kääbuste kõmistaja"
+
+#~ msgid "thunderstick"
+#~ msgstr "kõuekepp"
+
+#~ msgid "Dwarvish Thunderguard"
+#~ msgstr "Hullunud kõuevalvur"
+
+#~ msgid "Dwarvish Ulfserker"
+#~ msgstr "Märatsev kääbus"
+
+#~ msgid "Elvish Archer"
+#~ msgstr "Haldjate vibukütt"
+
+#~ msgid "bow"
+#~ msgstr "vibu"
+
+#~ msgid "female^Elvish Archer"
+#~ msgstr "Haldjate vibukütt"
+
+#~ msgid "Elvish Avenger"
+#~ msgstr "Tasuja Haldjas"
+
+#~ msgid "female^Elvish Avenger"
+#~ msgstr "Tasuja Haldjas"
+
+#~ msgid "Elvish Captain"
+#~ msgstr "Haldjakapten"
+
+#~ msgid "Elvish Champion"
+#~ msgstr "Haldjate ratsutaja"
+
+#~ msgid "female^Elvish Druid"
+#~ msgstr "Haldjadruiid"
+
+#~ msgid "staff"
+#~ msgstr "sau"
+
+#~ msgid "ensnare"
+#~ msgstr "lõksu meelitama"
+
+#~ msgid "thorns"
+#~ msgstr "okkad"
+
+#~ msgid "female^Elvish Enchantress"
+#~ msgstr "Haldjate loitsija"
+
+#~ msgid "entangle"
+#~ msgstr "köitmine"
+
+#~ msgid "faerie fire"
+#~ msgstr "haldjatuli"
+
+#, fuzzy
+#~ msgid "arcane"
+#~ msgstr "kauge"
+
+#~ msgid "Elvish Fighter"
+#~ msgstr "Haldjasõdalane"
+
+#~ msgid "Elvish Hero"
+#~ msgstr "Haldjakangelane"
+
+#~ msgid "Elvish Marksman"
+#~ msgstr "Haldjate täpsuskütt"
+
+#~ msgid "longbow"
+#~ msgstr "pikkvibu"
+
+#~ msgid "female^Elvish Marksman"
+#~ msgstr "Haldjate täpsuskütt"
+
+#~ msgid "Elvish Marshal"
+#~ msgstr "Haldjate väejuht"
+
+#~ msgid "Elvish Outrider"
+#~ msgstr "Haldjate teejuht"
+
+#~ msgid "Elvish Ranger"
+#~ msgstr "Haldjate metsavaht"
+
+#~ msgid "female^Elvish Ranger"
+#~ msgstr "Haldjate metsavaht"
+
+#~ msgid "Elvish Rider"
+#~ msgstr "Haldjate ratsanik"
+
+#~ msgid "Elvish Scout"
+#~ msgstr "Haldjate luuraja"
+
+#~ msgid "female^Elvish Shaman"
+#~ msgstr "Haldjate šamaan"
+
+#~ msgid "Elvish Sharpshooter"
+#~ msgstr "Haldjate täpsuskütt"
+
+#~ msgid "female^Elvish Sharpshooter"
+#~ msgstr "Haldjate täpsuskütt"
+
+#, fuzzy
+#~ msgid "female^Elvish Shyde"
+#~ msgstr "Haldjate sülf"
+
+#~ msgid "faerie touch"
+#~ msgstr "haldja puudutus"
+
+#~ msgid "female^Elvish Sorceress"
+#~ msgstr "Haldjate manaja"
+
+#~ msgid "female^Elvish Sylph"
+#~ msgstr "Haldjate sülf"
+
+#~ msgid "Direwolf Rider"
+#~ msgstr "Maruhundi ratsanik"
+
+#~ msgid "fangs"
+#~ msgstr "kihvad"
+
+#~ msgid "Goblin Impaler"
+#~ msgstr "Vardasse ajav goblin"
+
+#~ msgid "Goblin Knight"
+#~ msgstr "Goblinite rüütel"
+
+#~ msgid "Goblin Pillager"
+#~ msgstr "Goblinite rüüstaja"
+
+#~ msgid "torch"
+#~ msgstr "tõrvik"
+
+#~ msgid "net"
+#~ msgstr "võrk"
+
+#, fuzzy
+#~ msgid "Goblin Rouser"
+#~ msgstr "Vardasse ajav goblin"
+
+#~ msgid "Goblin Spearman"
+#~ msgstr "Goblinite odamees"
+
+#~ msgid "Wolf Rider"
+#~ msgstr "Hundiratsanik"
+
+#~ msgid "Grand Knight"
+#~ msgstr "Suur-rüütel"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr "Eriline"
+
+#~ msgid "lance"
+#~ msgstr "piik"
+
+#~ msgid "Knight"
+#~ msgstr "Rüütel"
+
+#~ msgid "Lancer"
+#~ msgstr "Piigimees"
+
+#~ msgid "Horseman"
+#~ msgstr "Hobusemees"
+
+#~ msgid "Bowman"
+#~ msgstr "Vibumees"
+
+#~ msgid "Cavalier"
+#~ msgstr "Ratsutaja"
+
+#~ msgid "crossbow"
+#~ msgstr "amb"
+
+#~ msgid "Cavalryman"
+#~ msgstr "Ratsamees"
+
+#~ msgid "Dragoon"
+#~ msgstr "Dragun"
+
+#~ msgid "Duelist"
+#~ msgstr "Duellant"
+
+#~ msgid "sabre"
+#~ msgstr "saabel"
+
+#~ msgid "Fencer"
+#~ msgstr "Vehkleja"
+
+#~ msgid "General"
+#~ msgstr "Üldine"
+
+#~ msgid "Grand Marshal"
+#~ msgstr "Suue väejuht"
+
+#~ msgid "Halberdier"
+#~ msgstr "Hellebardiga sõdur"
+
+#~ msgid "Heavy Infantryman"
+#~ msgstr "Raskejalaväelane"
+
+#, fuzzy
+#~ msgid "Iron Mauler"
+#~ msgstr "Grifooni-isand"
+
+#~ msgid "Javelineer"
+#~ msgstr "Odaloopija"
+
+#~ msgid "Lieutenant"
+#~ msgstr "Leitnant"
+
+#~ msgid "Longbowman"
+#~ msgstr "Pikkvibumehed"
+
+#~ msgid "Master Bowman"
+#~ msgstr "Osav vibumees"
+
+#~ msgid "Pikeman"
+#~ msgstr "Odamees"
+
+#~ msgid "pike"
+#~ msgstr "oda"
+
+#~ msgid "Royal Guard"
+#~ msgstr "Kuninglik Valvur"
+
+#~ msgid "Sergeant"
+#~ msgstr "Seersant"
+
+#~ msgid "morning star"
+#~ msgstr "koidutäht"
+
+#~ msgid "Spearman"
+#~ msgstr "Odamees"
+
+#~ msgid "Swordsman"
+#~ msgstr "Mõõgamees"
+
+#~ msgid "Mage"
+#~ msgstr "Maag"
+
+#~ msgid "missile"
+#~ msgstr "rakett"
+
+#~ msgid "female^Mage"
+#~ msgstr "Maag"
+
+#~ msgid "Arch Mage"
+#~ msgstr "Arhimaag"
+
+#~ msgid "fireball"
+#~ msgstr "tulekera"
+
+#~ msgid "female^Arch Mage"
+#~ msgstr "Arhimaag"
+
+#~ msgid "Great Mage"
+#~ msgstr "Suur Maag"
+
+#~ msgid "female^Great Mage"
+#~ msgstr "Suur maag"
+
+#~ msgid "Red Mage"
+#~ msgstr "Punane Maag"
+
+#~ msgid "female^Red Mage"
+#~ msgstr "Punamaag"
+
+#~ msgid "Silver Mage"
+#~ msgstr "Hõbemaag"
+
+#~ msgid "female^Silver Mage"
+#~ msgstr "Hõbemaag"
+
+#~ msgid "White Mage"
+#~ msgstr "Valge Maag"
+
+#~ msgid "lightbeam"
+#~ msgstr "valguskiir"
+
+#~ msgid "female^White Mage"
+#~ msgstr "Valge maag"
+
+#~ msgid "Mage of Light"
+#~ msgstr "Valguse Maag"
+
+#~ msgid "female^Mage of Light"
+#~ msgstr "Valguse maag"
+
+#~ msgid "Outlaw"
+#~ msgstr "Lindprii"
+
+#~ msgid "sling"
+#~ msgstr "ling"
+
+#~ msgid "female^Outlaw"
+#~ msgstr "Lindprii"
+
+#~ msgid "Assassin"
+#~ msgstr "Palgamõrvar"
+
+#~ msgid "knife"
+#~ msgstr "nuga"
+
+#~ msgid "female^Assassin"
+#~ msgstr "Palgamõrvar"
+
+#~ msgid "Bandit"
+#~ msgstr "Bandiit"
+
+#~ msgid "Footpad"
+#~ msgstr "Kannupoiss"
+
+#~ msgid "club"
+#~ msgstr "nui"
+
+#~ msgid "female^Footpad"
+#~ msgstr "Kannupoiss"
+
+#~ msgid "Poacher"
+#~ msgstr "Salakütt"
+
+#~ msgid "Rogue"
+#~ msgstr "Hulkur"
+
+#~ msgid "female^Rogue"
+#~ msgstr "Hulkur"
+
+#, fuzzy
+#~ msgid "Ruffian"
+#~ msgstr "Varemed"
+
+#~ msgid "Thief"
+#~ msgstr "Varas"
+
+#~ msgid "female^Thief"
+#~ msgstr "Varas"
+
+#~ msgid "Trapper"
+#~ msgstr "Kütt"
+
+#~ msgid "Peasant"
+#~ msgstr "Talumees"
+
+#~ msgid "pitchfork"
+#~ msgstr "sitahark"
+
+#, fuzzy
+#~ msgid "Woodsman"
+#~ msgstr "Mõõgamees"
+
+#~ msgid "female^Mermaid Diviner"
+#~ msgstr "Merinetiside ennustaja"
+
+#~ msgid "female^Mermaid Enchantress"
+#~ msgstr "Merinetiside loitsija"
+
+#~ msgid "water spray"
+#~ msgstr "veepritse"
+
+#~ msgid "Merman Entangler"
+#~ msgstr "Merimeeste mässija"
+
+#~ msgid "Merman Fighter"
+#~ msgstr "Merimeeste võitleja"
+
+#~ msgid "trident"
+#~ msgstr "kolmhark"
+
+#~ msgid "Merman Hoplite"
+#~ msgstr "Merimeeste suurvalvur"
+
+#~ msgid "Merman Hunter"
+#~ msgstr "Merimeeste kütt"
+
+#~ msgid "female^Mermaid Initiate"
+#~ msgstr "Merinetiside noviits"
+
+#~ msgid "Merman Javelineer"
+#~ msgstr "Merimeeste odaloopija"
+
+#~ msgid "Merman Netcaster"
+#~ msgstr "Merimeeste võrguheitja"
+
+#~ msgid "female^Mermaid Priestess"
+#~ msgstr "Merineitside preestrinna"
+
+#, fuzzy
+#~ msgid "Mermaid Siren"
+#~ msgstr "Merimeeste odamees"
+
+#, fuzzy
+#~ msgid "naia touch"
+#~ msgstr "nümfi puudutus"
+
+#~ msgid "Merman Spearman"
+#~ msgstr "Merimeeste odamees"
+
+#~ msgid "Merman Triton"
+#~ msgstr "Merimeeste triiton"
+
+#~ msgid "Merman Warrior"
+#~ msgstr "Merimeeste sõdalane"
+
+#~ msgid "Giant Spider"
+#~ msgstr "Hiiglaslik ämblik"
+
+#~ msgid "web"
+#~ msgstr "võrk"
+
+#~ msgid "tentacle"
+#~ msgstr "kombits"
+
+#~ msgid "ink"
+#~ msgstr "tint"
+
+#~ msgid "Fire Dragon"
+#~ msgstr "Tuledraakon"
+
+#~ msgid "bite"
+#~ msgstr "hammustus"
+
+#~ msgid "tail"
+#~ msgstr "saba"
+
+#~ msgid "Giant Mudcrawler"
+#~ msgstr "Hiiglaslik mudaelukas"
+
+#, fuzzy
+#~ msgid ""
+#~ "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
+#~ "constructs of soil and water. They attack by belching lumps of mud at "
+#~ "their foes, or by striking them with their fists."
+#~ msgstr ""
+#~ "Mudaelukad on maagilised pinnase ja vee ühendid. Nad ründavad vastaste "
+#~ "pihta keeva vett pritsides."
+
+#~ msgid "fist"
+#~ msgstr "rusikas"
+
+#~ msgid "Giant Scorpion"
+#~ msgstr "Hiiglaslik skorpion"
+
+#~ msgid "sting"
+#~ msgstr "nõel"
+
+#~ msgid "pincers"
+#~ msgstr "näpitsad"
+
+#~ msgid "Gryphon"
+#~ msgstr "Grifoon"
+
+#, fuzzy
+#~ msgid ""
+#~ "These majestic and powerful creatures are masters of the sky. Gryphons "
+#~ "are both dangerous and wary of other intelligent creatures, and thus "
+#~ "should not be disturbed without a good reason."
+#~ msgstr ""
+#~ "Pooleldi lõvid, pooleldi linnud - need majesteetlikud olendid valitsevad "
+#~ "maailma taevaid. Kuna nad suhtuvad teistesse intelligentsetesse "
+#~ "rassidesse suure ettevaatusega ei tasu grifoone ilma hea põhjuseta segada."
+
+#~ msgid "Gryphon Master"
+#~ msgstr "Grifooni-isand"
+
+#~ msgid "Gryphon Rider"
+#~ msgstr "Grifooniratsanik"
+
+#~ msgid ""
+#~ "Only a few are able to bond with the mighty Gryphons. Those who do may "
+#~ "become Gryphon Riders, and discover the world of the skies upon the backs "
+#~ "of these flying beasts."
+#~ msgstr ""
+#~ "Väga vähesed oskavad grifoonidega ringi käia. Neist, kellel see õnnestub, "
+#~ "saavad grifooniratsanikud ja nad võivad uurida taevaseid maailmu nende "
+#~ "lendavate elukate seljas."
+
+#~ msgid "Mudcrawler"
+#~ msgstr "Mudaelukas"
+
+#, fuzzy
+#~ msgid ""
+#~ "Mudcrawlers are magical constructs of soil and water. They attack by "
+#~ "belching lumps of mud at their foes."
+#~ msgstr ""
+#~ "Mudaelukad on maagilised pinnase ja vee ühendid. Nad ründavad vastaste "
+#~ "pihta keeva vett pritsides."
+
+#~ msgid "Sea Serpent"
+#~ msgstr "Meremadu"
+
+#~ msgid "Skeletal Dragon"
+#~ msgstr "Kondidraakon"
+
+#~ msgid "jaw"
+#~ msgstr "lõug"
+
+#~ msgid "Tentacle of the Deep"
+#~ msgstr "Kombits Sügavusest"
+
+#~ msgid "Yeti"
+#~ msgstr "Lumeinimene"
+
+#~ msgid "Naga Fighter"
+#~ msgstr "Naga võitleja"
+
+#~ msgid "Nagini Fighter"
+#~ msgstr "Nagini võitleja"
+
+#~ msgid "Naga Myrmidon"
+#~ msgstr "Naga Myrmidon"
+
+#~ msgid "Nagini Myrmidon"
+#~ msgstr "Nagini Myrmidon"
+
+#~ msgid "Naga Warrior"
+#~ msgstr "Naga sõdalane"
+
+#~ msgid "Nagini Warrior"
+#~ msgstr "Nagini sõdalane"
+
+#~ msgid "Ogre"
+#~ msgstr "Sookoll"
+
+#~ msgid "cleaver"
+#~ msgstr "lihakirves"
+
+#~ msgid "Young Ogre"
+#~ msgstr "Noor sookoll"
+
+#~ msgid "Orcish Archer"
+#~ msgstr "Mäekollide vibukütt"
+
+#~ msgid "Orcish Assassin"
+#~ msgstr "Mäekollide palgamõrvar"
+
+#~ msgid "Orcish Crossbowman"
+#~ msgstr "Mäekollide ammumees"
+
+#~ msgid "Orcish Grunt"
+#~ msgstr "Mäekollide reamees"
+
+#~ msgid ""
+#~ "Orcish Grunts form the core of the orcish forces. Although slower than "
+#~ "human or elven fighters, Grunts can deliver much more powerful blows, and "
+#~ "take more hits before falling."
+#~ msgstr ""
+#~ "Mäekollide reamehed moodustavad mäekollide sõjaväe tuumiku. Kuigi "
+#~ "aeglasemad, kui inimeste või haldjate sõjamehed, löövad reamehed "
+#~ "võimsamalt ja peavad enne langemist kauem vastu."
+
+#~ msgid "Orcish Leader"
+#~ msgstr "Mäekollide juht"
+
+#~ msgid "Orcish Ruler"
+#~ msgstr "Mäekollide valitseja"
+
+#~ msgid "greatsword"
+#~ msgstr "suur mõõk"
+
+#~ msgid "Orcish Slayer"
+#~ msgstr "Mäekollide kütt"
+
+#, fuzzy
+#~ msgid "Orcish Slurbow"
+#~ msgstr "Mäekollide kütt"
+
+#~ msgid "Orcish Sovereign"
+#~ msgstr "Mäekollide maavalitseja"
+
+#~ msgid "Orcish Warlord"
+#~ msgstr "Mäekollide sõjapealik"
+
+#~ msgid "Orcish Warrior"
+#~ msgstr "Mäekollide sõdalane"
+
+#~ msgid "Saurian Ambusher"
+#~ msgstr "Sauri varitseja"
+
+#, fuzzy
+#~ msgid "Saurian Augur"
+#~ msgstr "Sauri varitseja"
+
+#~ msgid "curse"
+#~ msgstr "needus"
+
+#~ msgid "Saurian Flanker"
+#~ msgstr "Sauri ründaja"
+
+#, fuzzy
+#~ msgid "Saurian Oracle"
+#~ msgstr "Sauri hõimlane"
+
+#~ msgid "Saurian Skirmisher"
+#~ msgstr "Sauri kähmleja"
+
+#~ msgid "Saurian Soothsayer"
+#~ msgstr "Sauri soolapuhuja"
+
+#~ msgid "Great Troll"
+#~ msgstr "Suur Kivihiid"
+
+#~ msgid "Troll Hero"
+#~ msgstr "Kivihiiuvägilane"
+
+#~ msgid "Troll Rocklobber"
+#~ msgstr "Kiviheitja hiid"
+
+#~ msgid "Troll"
+#~ msgstr "Kivihiid"
+
+#~ msgid "Troll Warrior"
+#~ msgstr "Trollisõdalane"
+
+#~ msgid "Troll Whelp"
+#~ msgstr "Trollinäss"
+
+#~ msgid "Blood Bat"
+#~ msgstr "Verejanuline nahkhiir"
+
+#~ msgid "Vampire Bat"
+#~ msgstr "Vampiir-nahkhiir"
+
+#~ msgid "Ghoul"
+#~ msgstr "Kodukäija"
+
+#~ msgid "Necrophage"
+#~ msgstr "Surnusööja"
+
+#~ msgid "Soulless"
+#~ msgstr "Hingetu"
+
+#~ msgid "touch"
+#~ msgstr "puudutus"
+
+#~ msgid "Walking Corpse"
+#~ msgstr "Kõndiv laip"
+
+#~ msgid "Ancient Lich"
+#~ msgstr "Iidne kooljas"
+
+#, fuzzy
+#~ msgid "chill tempest"
+#~ msgstr "külmajudin"
+
+#~ msgid "Dark Adept"
+#~ msgstr "Pimeduse arbuja"
+
+#, fuzzy
+#~ msgid "shadow wave"
+#~ msgstr "labidas"
+
+#, fuzzy
+#~ msgid "female^Dark Adept"
+#~ msgstr "Pimeduse kuninganna"
+
+#, fuzzy
+#~ msgid "Dark Sorcerer"
+#~ msgstr "Tuld purskav lohe"
+
+#~ msgid "Lich"
+#~ msgstr "Kooljas"
+
+#~ msgid "Necromancer"
+#~ msgstr "Surnumanaja"
+
+#~ msgid "plague staff"
+#~ msgstr "katkusau"
+
+#~ msgid "Bone Shooter"
+#~ msgstr "Konditulistaja"
+
+#~ msgid "Death Knight"
+#~ msgstr "Surmarüütel"
+
+#~ msgid "Deathblade"
+#~ msgstr "Surnumõõk"
+
+#, fuzzy
+#~ msgid "Draug"
+#~ msgstr "Dragun"
+
+#~ msgid "Revenant"
+#~ msgstr "Viirastus"
+
+#~ msgid "Soul Shooter"
+#~ msgstr "Hingetulistaja"
+
+#~ msgid "Skeleton"
+#~ msgstr "Kondikubu"
+
+#~ msgid "Skeleton Archer"
+#~ msgstr "Kondikubu vibukütt"
+
+#~ msgid "Ghost"
+#~ msgstr "Vaim"
+
+#~ msgid "wail"
+#~ msgstr "ulgumine"
+
+#~ msgid "Shadow"
+#~ msgstr "Vari"
+
+#~ msgid "Spectre"
+#~ msgstr "Spekter"
+
+#~ msgid "Wraith"
+#~ msgstr "Surnuvaim"
+
+#~ msgid "Ancient Wose"
+#~ msgstr "Iidne voos"
+
+#~ msgid "crush"
+#~ msgstr "lõmastus"
+
+#~ msgid "Elder Wose"
+#~ msgstr "Vana voos"
+
+#~ msgid "Wose"
+#~ msgstr "Voos"
 
 #, fuzzy
 #~ msgid "Autosaves"

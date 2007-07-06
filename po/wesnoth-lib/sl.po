@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 11:15+0200\n"
+"POT-Creation-Date: 2007-07-06 13:01+0200\n"
 "PO-Revision-Date: 2006-07-11 20:34+0200\n"
 "Last-Translator: Matej Repinc <mrepinc@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -20,111 +20,111 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: src/basic_dialog.cpp:100 src/basic_dialog.cpp:107
-#: src/editor/editor_dialogs.cpp:412
+#: src/construct_dialog.cpp:135 src/construct_dialog.cpp:142
+#: src/editor/editor_dialogs.cpp:411
 msgid "OK"
 msgstr "V redu"
 
-#: src/basic_dialog.cpp:103
+#: src/construct_dialog.cpp:138
 msgid "Yes"
 msgstr "Da"
 
-#: src/basic_dialog.cpp:104
+#: src/construct_dialog.cpp:139
 msgid "No"
 msgstr "Ne"
 
-#: src/basic_dialog.cpp:108 src/basic_dialog.cpp:111
-#: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:411
+#: src/construct_dialog.cpp:143 src/construct_dialog.cpp:146
+#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/basic_dialog.cpp:114
+#: src/construct_dialog.cpp:149
 msgid "Close"
 msgstr "Zapri"
 
-#: src/construct_dialog.cpp:97 src/hotkeys.cpp:129
+#: src/construct_dialog.cpp:811 src/hotkeys.cpp:129
 msgid "Help"
 msgstr "Pomoč"
 
-#: src/editor/editor_dialogs.cpp:50
+#: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr "Vaše spremembe bodo izgubljene. Želite nadaljevati"
 
-#: src/editor/editor_dialogs.cpp:80 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:192
 msgid "Create New Map"
 msgstr "Ustvari novo karto"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
+#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
 #: src/mapgen_dialog.cpp:112
 msgid "Width:"
 msgstr "Širina:"
 
-#: src/editor/editor_dialogs.cpp:83 src/editor/editor_dialogs.cpp:395
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
 #: src/mapgen_dialog.cpp:113
 msgid "Height:"
 msgstr "Višina:"
 
-#: src/editor/editor_dialogs.cpp:99
+#: src/editor/editor_dialogs.cpp:98
 msgid "Generate New Map"
 msgstr "Generiraj novo karto"
 
-#: src/editor/editor_dialogs.cpp:100
+#: src/editor/editor_dialogs.cpp:99
 msgid "Generate Random Map"
 msgstr "Ustvari naključno karto"
 
-#: src/editor/editor_dialogs.cpp:101
+#: src/editor/editor_dialogs.cpp:100
 msgid "Random Generator Settings"
 msgstr "Nastavitve generatorja naključnih kart"
 
-#: src/editor/editor_dialogs.cpp:178
+#: src/editor/editor_dialogs.cpp:177
 msgid "Map creation failed."
 msgstr "Stvaritev karte ni uspela."
 
-#: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
 #: src/preferences_display.cpp:1301
 msgid "Close Window"
 msgstr "Zapri okno"
 
-#: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:79
+#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:79
 #: src/preferences_display.cpp:1187
 msgid "Preferences"
 msgstr "Nastavitve"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:316
+#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:316
 msgid "Scroll Speed:"
 msgstr "Hitrost drsenja:"
 
-#: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:60
+#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:60
 #: src/preferences_display.cpp:274
 msgid "Toggle Full Screen"
 msgstr "Celozaslonski način"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences_display.cpp:277
+#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:277
 msgid "Show Grid"
 msgstr "Prikaži mrežo"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences_display.cpp:297
+#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:297
 msgid "Video Mode"
 msgstr "Video način"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences_display.cpp:299
+#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:299
 msgid "Hotkeys"
 msgstr "Hitre tipke"
 
-#: src/editor/editor_dialogs.cpp:392 src/editor/editor_dialogs.cpp:454
+#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
 #: src/hotkeys.cpp:115
 msgid "Resize Map"
 msgstr "Spremeni velikost karte"
 
-#: src/editor/editor_dialogs.cpp:497
+#: src/editor/editor_dialogs.cpp:496
 msgid "X-Axis"
 msgstr "X os"
 
-#: src/editor/editor_dialogs.cpp:498
+#: src/editor/editor_dialogs.cpp:497
 msgid "Y-Axis"
 msgstr "Y os"
 
-#: src/editor/editor_dialogs.cpp:499
+#: src/editor/editor_dialogs.cpp:498
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Obrni okoli (to lahko spremeni kartine dimenzije):"
 
