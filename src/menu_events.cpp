@@ -249,7 +249,7 @@ namespace events{
 				symbols["noun"] = (u.gender() == unit_race::MALE ? _("him") : _("her"));
 				message = utils::interpolate_variables_into_string(message, &symbols);
 
-				const int res = gui::basic_dialog(disp_,"",message,gui::YES_NO).show();
+				const int res = gui::dialog(disp_,"",message,gui::YES_NO).show();
 				if(res != 0) {
 					return gui::CONTINUE_DIALOG;
 				}
@@ -516,7 +516,7 @@ namespace events{
 			if (res == 0) {
 
 				if (file_exists(input_name)) {
-					overwrite = gui::basic_dialog(*gui_, "",
+					overwrite = gui::dialog(*gui_, "",
 						_("The map already exists. Do you want to overwrite it?"),
 						gui::YES_NO).show();
 				}
@@ -915,7 +915,7 @@ namespace events{
 						"You must have at least $cost gold pieces to recall a unit",
 						game_config::recall_cost,
 						i18n_symbols);
-					gui::basic_dialog(*gui_,"",msg.str()).show();
+					gui::dialog(*gui_,"",msg.str()).show();
 				} else {
 					std::cerr << "recall index: " << res << "\n";
 					unit& un = recall_list[res];
@@ -925,7 +925,7 @@ namespace events{
 					const std::string err = recruit_unit(map_,team_num,units_,un,loc,(gui_!=NULL));
 					if(!err.empty()) {
 						recorder.undo();
-						gui::basic_dialog(*gui_,"",err,gui::OK_ONLY).show();
+						gui::dialog(*gui_,"",err,gui::OK_ONLY).show();
 					} else {
 						statistics::recall_unit(un);
 						current_team.spend_gold(game_config::recall_cost);
@@ -1088,7 +1088,7 @@ namespace events{
 					recorder.add_checksum_check(action.recall_loc);
 				} else {
 					recorder.undo();
-					gui::basic_dialog(*gui_,"",msg,gui::OK_ONLY).show();
+					gui::dialog(*gui_,"",msg,gui::OK_ONLY).show();
 				}
 			}
 		} else if(action.is_recruit()) {
@@ -1130,7 +1130,7 @@ namespace events{
 				recorder.add_checksum_check(loc);
 			} else {
 				recorder.undo();
-				gui::basic_dialog(*gui_,"",msg,gui::OK_ONLY).show();
+				gui::dialog(*gui_,"",msg,gui::OK_ONLY).show();
 			}
 		} else {
 			// Redo movement action
@@ -1240,7 +1240,7 @@ namespace events{
 
 		//Ask for confirmation if the player hasn't made any moves (other than gotos).
 		if(preferences::confirm_no_moves() && ! some_units_have_moved) {
-			const int res = gui::basic_dialog(*gui_,"",_("You have not started your turn yet. Do you really want to end your turn?"), gui::YES_NO).show();
+			const int res = gui::dialog(*gui_,"",_("You have not started your turn yet. Do you really want to end your turn?"), gui::YES_NO).show();
 			if(res != 0) {
 				return false;
 			}
@@ -1248,12 +1248,12 @@ namespace events{
 
 		// Ask for confirmation if units still have movement left
 		if(preferences::yellow_confirm() && partmoved_units) {
-			const int res = gui::basic_dialog(*gui_,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO).show();
+			const int res = gui::dialog(*gui_,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO).show();
 			if (res != 0) {
 				return false;
 			}
 		} else if (preferences::green_confirm() && unmoved_units) {
-			const int res = gui::basic_dialog(*gui_,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO).show();
+			const int res = gui::dialog(*gui_,"",_("Some units have movement left. Do you really want to end your turn?"),gui::YES_NO).show();
 			if (res != 0) {
 				return false;
 			}
@@ -1785,7 +1785,7 @@ namespace events{
 			symbols["search"] = last_search_;
 			const std::string msg = utils::interpolate_variables_into_string(
 				_("Couldn't find label or unit containing the string '$search'."),&symbols);
-			gui::basic_dialog(*gui_,"",msg).show();
+			gui::dialog(*gui_,"",msg).show();
 		}
 	}
 

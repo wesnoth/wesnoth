@@ -39,7 +39,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 }
 
 file_dialog::file_dialog(display &disp, const std::string& file_path, const std::string& title)
-: gui::basic_dialog(disp, title, file_path, gui::OK_CANCEL), files_list_(NULL), last_selection_(0)
+: gui::dialog(disp, title, file_path, gui::OK_CANCEL), files_list_(NULL), last_selection_(0)
 {
 	files_list_ = new gui::file_menu(disp.video(), file_path);
 	const unsigned file_list_height = (disp.h() / 2);
@@ -50,14 +50,14 @@ file_dialog::file_dialog(display &disp, const std::string& file_path, const std:
 	get_message().set_text(format_dirname(files_list_->get_directory()));
 	set_textbox(_("File: "), format_filename(file_path), 100);
 	add_button( new gui::dialog_button(disp.video(), _("Delete File"),
-		gui::button::TYPE_PRESS, gui::DELETE_ITEM), basic_dialog::BUTTON_EXTRA);
+		gui::button::TYPE_PRESS, gui::DELETE_ITEM), dialog::BUTTON_EXTRA);
 	add_button( new gui::dialog_button(disp.video(), _("New Folder"),
-		gui::button::TYPE_PRESS, gui::CREATE_ITEM), basic_dialog::BUTTON_EXTRA_LEFT);
+		gui::button::TYPE_PRESS, gui::CREATE_ITEM), dialog::BUTTON_EXTRA_LEFT);
 }
 
 gui::dialog::dimension_measurements file_dialog::layout(int xloc, int yloc)
 {
-	gui::dialog::dimension_measurements dim = basic_dialog::layout(xloc, yloc);
+	gui::dialog::dimension_measurements dim = dialog::layout(xloc, yloc);
 
 	//shift the menu up
 	unsigned y_shift = dim.menu_y - minimum<int>(dim.label_y, dim.textbox.y);
@@ -165,7 +165,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 	//handle "create item" requests
 	else if(result() == gui::CREATE_ITEM)
 	{
-		gui::basic_dialog d(get_display(), _("New Folder"), "", gui::OK_CANCEL);
+		gui::dialog d(get_display(), _("New Folder"), "", gui::OK_CANCEL);
 		d.set_textbox(_("Name: "));
 		d.show();
 		if(d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty())

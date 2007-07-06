@@ -698,7 +698,7 @@ bool game_controller::load_game()
 				return false;
 			}
 
-			const int res = gui::basic_dialog(disp(),"",
+			const int res = gui::dialog(disp(),"",
 			                      _("This save is from a different version of the game. Do you want to try to load it?"),
 			                      gui::YES_NO).show();
 			if(res == 1) {
@@ -804,7 +804,7 @@ bool game_controller::new_campaign()
 		return false;
 	}
 
-	gui::basic_dialog cmenu(disp(),_("Campaign"),
+	gui::dialog cmenu(disp(),_("Campaign"),
 				_("Choose the campaign you want to play:"),
 				gui::OK_CANCEL);
 	cmenu.set_menu(campaign_names);
@@ -830,7 +830,7 @@ bool game_controller::new_campaign()
 			std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 		}
 
-		gui::basic_dialog dlg(disp(), _("Difficulty"),
+		gui::dialog dlg(disp(), _("Difficulty"),
 			_("Select difficulty level:"), gui::OK_CANCEL);
 		dlg.set_menu(difficulty_options);
 		if(dlg.show() == -1) {
@@ -893,7 +893,7 @@ namespace
 	{
 		int res;
 
-		gui::basic_dialog d(disp(),
+		gui::dialog d(disp(),
 				    _("Connect to Server"),
 				    _("You will now connect to a server to download add-ons."),
 				    gui::OK_CANCEL);
@@ -945,7 +945,7 @@ namespace
 		 
 			do
 			{
-				gui::basic_dialog addon_dialog(disp(), 
+				gui::dialog addon_dialog(disp(), 
 							 _("Remove Add-ons"), _("Choose the add-on to remove."),
 							 gui::OK_CANCEL);
 				gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
@@ -961,7 +961,7 @@ namespace
 					"Are you sure you want to remove the add-on \'"
 					+ addons.at(index)
 					+ "?\'";
-				res = gui::basic_dialog(
+				res = gui::dialog(
 						disp(),
 						_("Confirm"),
 						confirm_message,
@@ -995,14 +995,14 @@ namespace
 				std::string success_message = "Add-on \'" + addons.at(index) + "\' deleted.";
 
 				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::basic_dialog dlg(disp(), _("Add-on deleted"), success_message,
+				gui::dialog dlg(disp(), _("Add-on deleted"), success_message,
 						gui::OK_ONLY);
 				dlg.show();
 			}
 			else
 			{
 				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::basic_dialog dlg2(disp(), _("Error"), _("Add-on could not be deleted -- a file was not found."),
+				gui::dialog dlg2(disp(), _("Error"), _("Add-on could not be deleted -- a file was not found."),
 						gui::OK_ONLY);
 				dlg2.show();
 			}
@@ -1133,7 +1133,7 @@ void game_controller::download_campaigns(std::string host)
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
-		gui::basic_dialog addon_dialog(disp(), _("Get Add-ons"), 
+		gui::dialog addon_dialog(disp(), _("Get Add-ons"), 
 					       _("Choose the add-on to download."),
 					       gui::OK_CANCEL);
 		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
@@ -1176,7 +1176,7 @@ void game_controller::download_campaigns(std::string host)
 			// TODO: Somehow offer to automatically download
 			// the missing dependencies.
 			if (!missing.empty()) {
-				if (gui::basic_dialog(disp(), 
+				if (gui::dialog(disp(), 
 						      _("Dependencies"),
 						      std::string(_("This add-on requires the following additional dependencies:")) +
 						      	"\n" + missing +
@@ -1273,7 +1273,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 		                        (*data.child("error"))["message"].str() + '"');
 		return;
 	} else if(data.child("message")) {
-		const int res = gui::basic_dialog(disp(),_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL).show();
+		const int res = gui::dialog(disp(),_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL).show();
 		if(res != 0) {
 			return;
 		}
@@ -1377,7 +1377,7 @@ bool game_controller::play_multiplayer()
 
 	int res;
 	{
-		gui::basic_dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
+		gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
 		d.set_menu(host_or_join);
 		d.set_textbox(_("Login: "), login, 18, font::relative_size(250));
 		res = d.show();
@@ -1423,14 +1423,14 @@ bool game_controller::play_multiplayer()
 		std::cerr << "caught network error...\n";
 		if(e.message != "") {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::basic_dialog dlg(disp(),"",e.message,gui::OK_ONLY);
+			gui::dialog dlg(disp(),"",e.message,gui::OK_ONLY);
 			dlg.show();
 		}
 	} catch(config::error& e) {
 		std::cerr << "caught config::error...\n";
 		if(e.message != "") {
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
-			gui::basic_dialog dlg2(disp(),"",e.message,gui::OK_ONLY);
+			gui::dialog dlg2(disp(),"",e.message,gui::OK_ONLY);
 			dlg2.show();
 		}
 	} catch(gamemap::incorrect_format_exception& e) {
@@ -1458,7 +1458,7 @@ bool game_controller::change_language()
 		}
 	}
 
-	gui::basic_dialog lmenu(disp(),_("Language"),
+	gui::dialog lmenu(disp(),_("Language"),
 	                         _("Choose your preferred language:"),
 	                         gui::OK_CANCEL);
 	lmenu.set_menu(langs);

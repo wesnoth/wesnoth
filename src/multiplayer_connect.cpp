@@ -1261,7 +1261,7 @@ void connect::load_game()
 				return;
 			}
 
-			const int res = gui::basic_dialog(disp(), "",
+			const int res = gui::dialog(disp(), "",
 					_("This save is from a different version of the game. Do you want to try to load it?"),
 					gui::YES_NO).show();
 			if(res == 1) {

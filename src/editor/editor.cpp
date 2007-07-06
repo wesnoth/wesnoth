@@ -15,7 +15,7 @@
 #include "SDL_keysym.h"
 
 #include "../config.hpp"
-#include "../basic_dialog.hpp"
+#include "../construct_dialog.hpp"
 #include "../cursor.hpp"
 #include "../file_chooser.hpp"
 #include "../filesystem.hpp"
@@ -460,7 +460,7 @@ void map_editor::change_language() {
 
 	const std::string language = _("Language");
 	const std::string preferred = _("Choose your preferred language:");
-	gui::basic_dialog lmenu = gui::basic_dialog(gui_, language, preferred,
+	gui::dialog lmenu = gui::dialog(gui_, language, preferred,
 					  gui::OK_CANCEL);
 	lmenu.set_menu(langs);
 	int res = lmenu.show();
@@ -510,7 +510,7 @@ void map_editor::edit_save_as() {
 				continue;
 			}
 			else if (file_exists(input_name)) {
-				overwrite = gui::basic_dialog(gui_, "",
+				overwrite = gui::dialog(gui_, "",
 					_("The map already exists. Do you want to overwrite it?"),
 					gui::YES_NO).show();
 			}
@@ -542,7 +542,7 @@ void map_editor::perform_set_starting_pos() {
 		str << _("Player") << " " << i + 1;
 		players.push_back(str.str());
 	}
-	gui::basic_dialog pmenu = gui::basic_dialog(gui_, 
+	gui::dialog pmenu = gui::dialog(gui_, 
 				       _("Which Player?"),
 				       _("Which player should start here?"),
 				       gui::OK_CANCEL);
@@ -1255,11 +1255,11 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 bool map_editor::confirm_exit_and_save() {
 	if (!changed_since_save())
 		return true;
-	if (gui::basic_dialog(gui_, "",
+	if (gui::dialog(gui_, "",
 	                     _("Quit Editor"), gui::YES_NO).show() != 0) {
 		return false;
 	}
-	if (gui::basic_dialog(gui_, "",
+	if (gui::dialog(gui_, "",
 		             _("Do you want to save the map before quitting?"), gui::YES_NO).show() == 0) {
 		if (!save_map("", false)) {
 			return false;
@@ -1346,8 +1346,8 @@ void map_editor::show_menu(const std::vector<std::string>& items, const int xloc
 		return;
 	}
 	static const std::string style = "menu2";
-	gui::basic_dialog kmenu = gui::basic_dialog(gui_, "", "", gui::MESSAGE,
-						    &gui::basic_dialog::hotkeys_style);
+	gui::dialog kmenu = gui::dialog(gui_, "", "", gui::MESSAGE,
+						    &gui::dialog::hotkeys_style);
 	kmenu.set_menu(get_menu_images(items));
 	const int res = kmenu.show(xloc, yloc);
 	if(res < 0 || (unsigned)res >= items.size())

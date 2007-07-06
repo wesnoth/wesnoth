@@ -54,7 +54,6 @@ wesnoth_SOURCES = \
 	astarnode.cpp \
 	astarsearch.cpp \
 	attack_prediction.cpp \
-	basic_dialog.cpp \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \
@@ -172,7 +171,6 @@ wesnoth_editor_SOURCES = \
 	animated_editor.cpp \
 	astarnode.cpp \
 	astarsearch.cpp \
-	basic_dialog.cpp \
 	builder.cpp \
 	cavegen.cpp \
 	checksum.cpp \

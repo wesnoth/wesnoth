@@ -98,7 +98,7 @@ void advance_unit(const game_data& info,
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
-		gui::basic_dialog advances = gui::basic_dialog(gui,
+		gui::dialog advances = gui::dialog(gui,
 				      _("Advance Unit"),
 		                      _("What should our victorious unit become?"),
 		                      gui::OK_ONLY);
@@ -217,7 +217,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
     int overwrite=0;
     int res=0;
     do {
-		gui::basic_dialog d(disp, tmp_title, message, dialog_type);
+		gui::dialog d(disp, tmp_title, message, dialog_type);
 		d.set_textbox(txt_label, *fname);
 		if(has_exit_button) {
 			d.add_button( new gui::dialog_button(disp.video(), _("Quit Game"),
@@ -242,7 +242,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 		}
 		*fname = d.textbox_text();
 		if (res == 0 && save_game_exists(*fname)) {
-			overwrite = gui::basic_dialog(disp,_("Overwrite?"),
+			overwrite = gui::dialog(disp,_("Overwrite?"),
 				_("Save already exists. Do you want to overwrite it ?"),gui::YES_NO).show();
 		} else {
 			overwrite = 0;
@@ -276,7 +276,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 
 		//see if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
-			gui::basic_dialog dmenu(disp_,"",
+			gui::dialog dmenu(disp_,"",
 					       _("Do you really want to delete this game?"),
 					       gui::YES_NO);
 			dmenu.add_option(_("Don't ask me again!"), true);
@@ -531,7 +531,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	std::vector<save_info> games = get_saves_list();
 
 	if(games.empty()) {
-		gui::basic_dialog(disp,
+		gui::dialog(disp,
 		                 _("No Saved Games"),
 				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"),
 		                 gui::OK_ONLY).show();

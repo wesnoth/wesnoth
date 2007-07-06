@@ -13,7 +13,7 @@
 
 #include "global.hpp"
 
-#include "basic_dialog.hpp"
+#include "construct_dialog.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
@@ -340,7 +340,7 @@ void wait::process_network_data(const config& data, const network::connection so
 
 	if(data["message"] != "") {
 		/* GCC-3.3 needs a temp var otherwise compilation fails */
-		gui::basic_dialog dlg(disp(),_("Response"),data["message"],gui::OK_ONLY);
+		gui::dialog dlg(disp(),_("Response"),data["message"],gui::OK_ONLY);
 		dlg.show();
 	}
 	if(data["failed"] == "yes") {
