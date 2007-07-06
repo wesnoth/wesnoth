@@ -183,20 +183,24 @@ public:
 	//Constructor & destructor
 	//dialog - throws button::error() if standard buttons fail to initialize
 	//         throws utils::invalid_utf8_exception() if message is invalid
-	dialog(display &disp, const std::string& title="", const std::string& message="",
-				const DIALOG_TYPE type=MESSAGE, 
-				const struct style *dialog_style=&default_style,
-				const std::string& help_topic=no_help);
+	dialog(display &disp, 
+	       const std::string& title="", 
+	       const std::string& message="",
+	       const DIALOG_TYPE type=MESSAGE, 
+	       const struct style *dialog_style=&default_style,
+	       const std::string& help_topic=no_help);
 	virtual ~dialog();
 
-	//Adding components - the dialog will manage the memory of these widgets,
-	//therefore do not attempt to reference its widgets after destroying it
+	//Adding components - the dialog will manage the memory of
+	//these widgets, therefore do not attempt to reference its
+	//widgets after destroying it
 	void set_image(dialog_image *const img) { delete image_; image_ = img; }
 	void set_image(surface surf, const std::string &caption="");
 	void set_menu(menu *const m) { if(menu_ != empty_menu) delete menu_; menu_ = m; }
 	void set_menu(const std::vector<std::string> & menu_items, menu::sorter* sorter=NULL);
-	//add_pane - preview panes are not currently memory managed (for backwards compat)
 
+	//add_pane - preview panes are not currently memory managed
+	//(for backwards compatibility)
 	void add_pane(preview_pane *const pp) { preview_panes_.push_back(pp); }
 	void set_panes(std::vector<preview_pane*> panes) { preview_panes_ = panes; }
 	void set_textbox(dialog_textbox *const box) {
@@ -273,6 +277,8 @@ private:
 	std::vector<dialog_button*> standard_buttons_;
 	std::vector<dialog_button*> extra_buttons_;
 	std::vector<button*> frame_buttons_;
+	const std::string topic_;
+	void (*help_hook_)(display &, const std::string);
 	help_button help_button_;
 	dialog_textbox *text_widget_;
 	dialog_frame *frame_;

@@ -83,14 +83,14 @@ std::vector<std::string> empty_string_vector;
 
 struct help_handler : public hotkey::command_executor
 {
-	help_handler(display& disp, const std::string& topic) : disp_(disp), topic_(topic)
+  help_handler(display& disp, const std::string& topic, void (*help_hook)(display &, const std::string) = NULL) : disp_(disp), topic_(topic), help_hook_(help_hook)
 	{}
 
 private:
 	void show_help()
 	{
 		if(topic_.empty() == false) {
-			help::show_help(disp_,topic_);
+			help_hook_(disp_,topic_);
 		}
 	}
 
@@ -101,6 +101,7 @@ private:
 
 	display& disp_;
 	std::string topic_;
+	void (*help_hook_)(display & display, const std::string topic);
 };
 
 } //end anonymous namespace
@@ -282,7 +283,7 @@ int dialog::show()
 	const dialog_manager manager;
 	const events::resize_lock prevent_resizing;
 
-	help_handler helper(disp_,help_button_.topic());
+	help_handler helper(disp_,help_button_.topic(), help::button_help);
 	hotkey::basic_handler help_dispatcher(&disp_,&helper);
 
 	//draw

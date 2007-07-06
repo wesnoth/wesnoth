@@ -2592,6 +2592,11 @@ void show_help(display &disp, std::string show_topic, int xloc, int yloc)
 	show_help(disp, toplevel, show_topic, xloc, yloc);
 }
 
+void button_help(display &disp, const std::string show_topic)
+{
+	show_help(disp, show_topic);
+}
+
 /// Open a help dialog using a toplevel other than the default.
 void show_help(display &disp, const section &toplevel_sec, const std::string show_topic,
 			   int xloc, int yloc)

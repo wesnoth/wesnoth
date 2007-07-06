@@ -40,6 +40,9 @@ void show_help(display &disp, const section &toplevel, const std::string show_to
 /// will be shown if show_topic is the empty string.
 void show_help(display &disp, const std::string show_topic="", int xloc=-1, int yloc=-1);
 
+// Exists to be passed into button handlers as a (resolved) function
+void button_help(display &disp, const std::string show_topic);
+
 } // End namespace help.
 
 #endif
