@@ -266,6 +266,7 @@ reduced_editor_sources = \
 	checksum.cpp \
 	clipboard.cpp \
 	color_range.cpp \
+	construct_dialog.cpp \
 	cursor.cpp \
 	display.cpp \
 	events.cpp \
