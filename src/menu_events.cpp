@@ -464,12 +464,12 @@ namespace events{
 
 		int selected = 0;
 		{
-			gui::dialog slist(*gui_, "", "", gui::OK_ONLY);
+			gui::dialog slist(*gui_, "", "", gui::OK_CANCEL);
 			slist.set_menu(items, &sorter);
 			selected = slist.show();
 		} // this will kill the dialog before scrolling
 
-		gui_->scroll_to_leader(units_, selected+1);
+		if (selected >= 0) gui_->scroll_to_leader(units_, selected+1);
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
