@@ -812,11 +812,14 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 		std::vector<std::string> menu = get_menu_images(items);
 
-		gui::dialog mmenu = gui::dialog(gui,"","",
-				gui::MESSAGE, &gui::dialog::hotkeys_style);
-		mmenu.set_menu(menu);
-		const int res = mmenu.show(xloc, yloc);
-		if (size_t(res) >= items.size())
+		int res = 0;
+		{
+			gui::dialog mmenu = gui::dialog(gui,"","",
+			gui::MESSAGE, &gui::dialog::hotkeys_style);
+			mmenu.set_menu(menu);
+			res = mmenu.show(xloc, yloc);
+		} // this will kill the dialog
+		if (res < 0 || size_t(res) >= items.size())
 			return;
 
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
