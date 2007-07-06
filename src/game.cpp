@@ -800,17 +800,16 @@ bool game_controller::new_campaign()
 	int res = 0;
 
 	dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
-	std::vector<gui::preview_pane*> preview_panes;
-	preview_panes.push_back(&campaign_preview);
-
 	if(campaign_names.size() <= 0) {
 		return false;
 	}
 
-	res = gui::show_dialog(disp(),NULL,_("Campaign"),
-			_("Choose the campaign you want to play:"),
-			gui::OK_CANCEL,&campaign_names,&preview_panes);
-
+	gui::basic_dialog cmenu(disp(),_("Campaign"),
+				_("Choose the campaign you want to play:"),
+				gui::OK_CANCEL);
+	cmenu.set_menu(campaign_names);
+	cmenu.add_pane(&campaign_preview);
+	res = cmenu.show();
 	if(res == -1) {
 		return false;
 	}
@@ -894,9 +893,10 @@ namespace
 	{
 		int res;
 
-		gui::dialog d(disp(),_("Connect to Server"),
-	        _("You will now connect to a server to download add-ons."),
-	        gui::OK_CANCEL);
+		gui::basic_dialog d(disp(),
+				    _("Connect to Server"),
+				    _("You will now connect to a server to download add-ons."),
+				    gui::OK_CANCEL);
 		d.set_textbox(_("Server: "), preferences::campaign_server());
 		d.add_button( new gui::dialog_button(disp().video(), _("Remove Add-ons"),
 			gui::button::TYPE_PRESS, 2), gui::dialog::BUTTON_EXTRA);
@@ -945,8 +945,9 @@ namespace
 		 
 			do
 			{
-				gui::dialog addon_dialog(disp(), _("Remove Add-ons"), _("Choose the add-on to remove."),
-						gui::OK_CANCEL);
+				gui::basic_dialog addon_dialog(disp(), 
+							 _("Remove Add-ons"), _("Choose the add-on to remove."),
+							 gui::OK_CANCEL);
 				gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
 
 				gui::menu *addon_menu = new gui::menu(disp().video(), addons, false, -1,
@@ -1132,8 +1133,9 @@ void game_controller::download_campaigns(std::string host)
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
-		gui::dialog addon_dialog(disp(), _("Get Add-ons"), _("Choose the add-on to download."),
-			gui::OK_CANCEL);
+		gui::basic_dialog addon_dialog(disp(), _("Get Add-ons"), 
+					       _("Choose the add-on to download."),
+					       gui::OK_CANCEL);
 		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
 
 		//make sure the icon isn't too big
@@ -1375,7 +1377,7 @@ bool game_controller::play_multiplayer()
 
 	int res;
 	{
-		gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
+		gui::basic_dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
 		d.set_menu(host_or_join);
 		d.set_textbox(_("Login: "), login, 18, font::relative_size(250));
 		res = d.show();

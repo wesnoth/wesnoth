@@ -217,7 +217,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
     int overwrite=0;
     int res=0;
     do {
-		gui::dialog d(disp, tmp_title, message, dialog_type);
+		gui::basic_dialog d(disp, tmp_title, message, dialog_type);
 		d.set_textbox(txt_label, *fname);
 		if(has_exit_button) {
 			d.add_button( new gui::dialog_button(disp.video(), _("Quit Game"),
