@@ -26,7 +26,7 @@ find src -name '*.cpp' -print | sort >/tmp/sschk$$_sources
 sort -u $potfiles >/tmp/sschk$$_potmembers
 # Figure out which sources are not listed but should be
 missing=`comm -23 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
-if [ $missing ]
+if [ "$missing" ]
 then
     echo "  Missing from the POTFILE.in files: $missing"
     problems=missing
