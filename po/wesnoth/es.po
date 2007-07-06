@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 13:13+0200\n"
+"POT-Creation-Date: 2007-07-06 13:24+0200\n"
 "PO-Revision-Date: 2007-06-11 05:24+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -27,23 +27,23 @@ msgstr ""
 "Generator: KBabel 1.11.4\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: data/_main.cfg:32
+#: data/_main.cfg:35
 msgid "Binary Saves"
 msgstr "Comprimir partidas"
 
-#: data/_main.cfg:39
+#: data/_main.cfg:42
 msgid "Show Combat"
 msgstr "Mostrar combate"
 
-#: data/_main.cfg:46
+#: data/_main.cfg:49
 msgid "Mouse Scrolling"
 msgstr "Desplazamiento con ratón"
 
-#: data/_main.cfg:53
+#: data/_main.cfg:56
 msgid "Official Wesnoth Server"
 msgstr "Servidor wesnoth oficial"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr "Servidor wesnoth alternativo"
 
@@ -67,36 +67,6 @@ msgstr "Diseñador de campañas"
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:37
 msgid "Current Maintainer"
 msgstr "Mantenedor actual"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:25
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:24
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-msgid "short sword"
-msgstr "espada corta"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-msgid "magic_blast"
-msgstr "explosión_mágica"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-msgid "magic blast"
-msgstr "explosión mágica"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
-msgid "impact"
-msgstr "de impacto"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:58
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
-msgid "chill wave"
-msgstr "ola de frío"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:60
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
-msgid "cold"
-msgstr "de frío"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:35
@@ -5114,55 +5084,55 @@ msgstr ""
 msgid "Delete Save"
 msgstr "Borrar partida"
 
-#: src/dialogs.cpp:557
+#: src/dialogs.cpp:555
 msgid "Date"
 msgstr "Fecha"
 
-#: src/dialogs.cpp:557 src/game.cpp:1060 src/menu_events.cpp:314
+#: src/dialogs.cpp:555 src/game.cpp:1060 src/menu_events.cpp:314
 #: src/menu_events.cpp:863 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "Nombre"
+
+#: src/dialogs.cpp:576 src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
+msgid "Load Game"
+msgstr "Cargar partida"
+
+#: src/dialogs.cpp:577
+msgid "Choose the game to load"
+msgstr "Escoja partida a cargar"
 
 #: src/dialogs.cpp:583
 msgid "Show replay"
 msgstr "Muestra repetición"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:89
-#: src/multiplayer_create.cpp:90
-msgid "Load Game"
-msgstr "Cargar partida"
-
-#: src/dialogs.cpp:587
-msgid "Choose the game to load"
-msgstr "Escoja partida a cargar"
-
-#: src/dialogs.cpp:613 src/dialogs.cpp:625
+#: src/dialogs.cpp:610 src/dialogs.cpp:622
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:711 src/help.cpp:1084
+#: src/dialogs.cpp:708 src/help.cpp:1084
 msgid "level"
 msgstr "nivel"
 
 # Aquí queda muy mal poner pv en minúscula.
-#: src/dialogs.cpp:733 src/help.cpp:1164
+#: src/dialogs.cpp:730 src/help.cpp:1164
 msgid "HP: "
 msgstr "PV: "
 
-#: src/dialogs.cpp:737 src/dialogs.cpp:745
+#: src/dialogs.cpp:734 src/dialogs.cpp:742
 msgid "XP: "
 msgstr "PX: "
 
-#: src/dialogs.cpp:750 src/help.cpp:1165
+#: src/dialogs.cpp:747 src/help.cpp:1165
 msgid "Moves: "
 msgstr "Movimientos: "
 
-#: src/dialogs.cpp:895 src/dialogs.cpp:997 src/multiplayer_connect.cpp:756
+#: src/dialogs.cpp:892 src/dialogs.cpp:994 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/dialogs.cpp:920 src/game.cpp:864
+#: src/dialogs.cpp:917 src/game.cpp:864
 msgid "KB"
 msgstr "KB"
 
@@ -6951,6 +6921,24 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
+
+#~ msgid "short sword"
+#~ msgstr "espada corta"
+
+#~ msgid "magic_blast"
+#~ msgstr "explosión_mágica"
+
+#~ msgid "magic blast"
+#~ msgstr "explosión mágica"
+
+#~ msgid "impact"
+#~ msgstr "de impacto"
+
+#~ msgid "chill wave"
+#~ msgstr "ola de frío"
+
+#~ msgid "cold"
+#~ msgstr "de frío"
 
 #~ msgid "User Map"
 #~ msgstr "Mapa del usuario"

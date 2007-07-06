@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 13:13+0200\n"
+"POT-Creation-Date: 2007-07-06 13:24+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -19,24 +19,24 @@ msgstr ""
 "X-Poedit-Bookmarks: 1407,1408,842,859,896,937,1003,1025,1091,1309\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 
-#: data/_main.cfg:32
+#: data/_main.cfg:35
 msgid "Binary Saves"
 msgstr "二进制存档"
 
-#: data/_main.cfg:39
+#: data/_main.cfg:42
 msgid "Show Combat"
 msgstr "显示战斗"
 
-#: data/_main.cfg:46
+#: data/_main.cfg:49
 msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
 
-#: data/_main.cfg:53
+#: data/_main.cfg:56
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "加入官方服务器"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -61,38 +61,6 @@ msgstr "战役设计"
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:37
 msgid "Current Maintainer"
 msgstr "当前维护者"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:25
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:24
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-msgid "short sword"
-msgstr "短剑"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-#, fuzzy
-msgid "magic_blast"
-msgstr "魔法"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-#, fuzzy
-msgid "magic blast"
-msgstr "魔法"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
-msgid "impact"
-msgstr "冲击"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:58
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
-msgid "chill wave"
-msgstr "冷冻波"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:60
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
-msgid "cold"
-msgstr "寒冷"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:35
@@ -4360,54 +4328,54 @@ msgstr ""
 msgid "Delete Save"
 msgstr "删除存档"
 
-#: src/dialogs.cpp:557
+#: src/dialogs.cpp:555
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:557 src/game.cpp:1060 src/menu_events.cpp:314
+#: src/dialogs.cpp:555 src/game.cpp:1060 src/menu_events.cpp:314
 #: src/menu_events.cpp:863 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "名称"
+
+#: src/dialogs.cpp:576 src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
+msgid "Load Game"
+msgstr "载入游戏"
+
+#: src/dialogs.cpp:577
+msgid "Choose the game to load"
+msgstr "选择要载入的游戏"
 
 #: src/dialogs.cpp:583
 msgid "Show replay"
 msgstr "显示游戏录像"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:89
-#: src/multiplayer_create.cpp:90
-msgid "Load Game"
-msgstr "载入游戏"
-
-#: src/dialogs.cpp:587
-msgid "Choose the game to load"
-msgstr "选择要载入的游戏"
-
-#: src/dialogs.cpp:613 src/dialogs.cpp:625
+#: src/dialogs.cpp:610 src/dialogs.cpp:622
 msgid "Profile"
 msgstr "资料"
 
-#: src/dialogs.cpp:711 src/help.cpp:1084
+#: src/dialogs.cpp:708 src/help.cpp:1084
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:733 src/help.cpp:1164
+#: src/dialogs.cpp:730 src/help.cpp:1164
 msgid "HP: "
 msgstr "生命值："
 
-#: src/dialogs.cpp:737 src/dialogs.cpp:745
+#: src/dialogs.cpp:734 src/dialogs.cpp:742
 msgid "XP: "
 msgstr "经验值："
 
-#: src/dialogs.cpp:750 src/help.cpp:1165
+#: src/dialogs.cpp:747 src/help.cpp:1165
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/dialogs.cpp:895 src/dialogs.cpp:997 src/multiplayer_connect.cpp:756
+#: src/dialogs.cpp:892 src/dialogs.cpp:994 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
 msgid "Cancel"
 msgstr "取消"
 
-#: src/dialogs.cpp:920 src/game.cpp:864
+#: src/dialogs.cpp:917 src/game.cpp:864
 msgid "KB"
 msgstr "KB"
 
@@ -6175,6 +6143,26 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid "short sword"
+#~ msgstr "短剑"
+
+#, fuzzy
+#~ msgid "magic_blast"
+#~ msgstr "魔法"
+
+#, fuzzy
+#~ msgid "magic blast"
+#~ msgstr "魔法"
+
+#~ msgid "impact"
+#~ msgstr "冲击"
+
+#~ msgid "chill wave"
+#~ msgstr "冷冻波"
+
+#~ msgid "cold"
+#~ msgstr "寒冷"
 
 #~ msgid "User Map"
 #~ msgstr "玩家地图"

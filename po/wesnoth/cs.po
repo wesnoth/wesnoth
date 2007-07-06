@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 13:13+0200\n"
+"POT-Creation-Date: 2007-07-06 13:24+0200\n"
 "PO-Revision-Date: 2007-07-02 17:27+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -22,23 +22,23 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
-#: data/_main.cfg:32
+#: data/_main.cfg:35
 msgid "Binary Saves"
 msgstr "Ukládat hry v binárním tvaru"
 
-#: data/_main.cfg:39
+#: data/_main.cfg:42
 msgid "Show Combat"
 msgstr "Ukazovat boj"
 
-#: data/_main.cfg:46
+#: data/_main.cfg:49
 msgid "Mouse Scrolling"
 msgstr "Posouvání pomocí myši"
 
-#: data/_main.cfg:53
+#: data/_main.cfg:56
 msgid "Official Wesnoth Server"
 msgstr "Oficiální server Wesnothu"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr "Alternativní server Wesnothu"
 
@@ -62,36 +62,6 @@ msgstr "Návrh tažení"
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:37
 msgid "Current Maintainer"
 msgstr "Současný správce"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:25
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:24
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-msgid "short sword"
-msgstr "krátký meč"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-msgid "magic_blast"
-msgstr "magická vlna"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-msgid "magic blast"
-msgstr "magická vlna"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
-msgid "impact"
-msgstr "úder"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:58
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
-msgid "chill wave"
-msgstr "vlna mrazu"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:60
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
-msgid "cold"
-msgstr "chlad"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:35
@@ -5020,54 +4990,54 @@ msgstr ""
 msgid "Delete Save"
 msgstr "Smaž pozici"
 
-#: src/dialogs.cpp:557
+#: src/dialogs.cpp:555
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:557 src/game.cpp:1060 src/menu_events.cpp:314
+#: src/dialogs.cpp:555 src/game.cpp:1060 src/menu_events.cpp:314
 #: src/menu_events.cpp:863 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "Jméno"
+
+#: src/dialogs.cpp:576 src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
+msgid "Load Game"
+msgstr "Načti hru"
+
+#: src/dialogs.cpp:577
+msgid "Choose the game to load"
+msgstr "Vyber si hru pro nahrání"
 
 #: src/dialogs.cpp:583
 msgid "Show replay"
 msgstr "Ukaž záznamy"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:89
-#: src/multiplayer_create.cpp:90
-msgid "Load Game"
-msgstr "Načti hru"
-
-#: src/dialogs.cpp:587
-msgid "Choose the game to load"
-msgstr "Vyber si hru pro nahrání"
-
-#: src/dialogs.cpp:613 src/dialogs.cpp:625
+#: src/dialogs.cpp:610 src/dialogs.cpp:622
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:711 src/help.cpp:1084
+#: src/dialogs.cpp:708 src/help.cpp:1084
 msgid "level"
 msgstr "úroveň"
 
-#: src/dialogs.cpp:733 src/help.cpp:1164
+#: src/dialogs.cpp:730 src/help.cpp:1164
 msgid "HP: "
 msgstr "životů: "
 
-#: src/dialogs.cpp:737 src/dialogs.cpp:745
+#: src/dialogs.cpp:734 src/dialogs.cpp:742
 msgid "XP: "
 msgstr "zkušeností: "
 
-#: src/dialogs.cpp:750 src/help.cpp:1165
+#: src/dialogs.cpp:747 src/help.cpp:1165
 msgid "Moves: "
 msgstr "kroků: "
 
-#: src/dialogs.cpp:895 src/dialogs.cpp:997 src/multiplayer_connect.cpp:756
+#: src/dialogs.cpp:892 src/dialogs.cpp:994 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/dialogs.cpp:920 src/game.cpp:864
+#: src/dialogs.cpp:917 src/game.cpp:864
 msgid "KB"
 msgstr "KB"
 
@@ -6837,6 +6807,24 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
+
+#~ msgid "short sword"
+#~ msgstr "krátký meč"
+
+#~ msgid "magic_blast"
+#~ msgstr "magická vlna"
+
+#~ msgid "magic blast"
+#~ msgstr "magická vlna"
+
+#~ msgid "impact"
+#~ msgstr "úder"
+
+#~ msgid "chill wave"
+#~ msgstr "vlna mrazu"
+
+#~ msgid "cold"
+#~ msgstr "chlad"
 
 #~ msgid "User Map"
 #~ msgstr "Uživatelská mapa"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 13:13+0200\n"
+"POT-Creation-Date: 2007-07-06 13:24+0200\n"
 "PO-Revision-Date: 2006-09-01 19:23+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -15,24 +15,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/_main.cfg:32
+#: data/_main.cfg:35
 msgid "Binary Saves"
 msgstr "Binääritallennukset"
 
-#: data/_main.cfg:39
+#: data/_main.cfg:42
 msgid "Show Combat"
 msgstr "Näytä taistelu"
 
-#: data/_main.cfg:46
+#: data/_main.cfg:49
 msgid "Mouse Scrolling"
 msgstr "Vieritys hiirellä"
 
-#: data/_main.cfg:53
+#: data/_main.cfg:56
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Ota yhteys viralliseen palvelimeen"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -57,38 +57,6 @@ msgstr "Kampanjasuunnittelijat"
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:37
 msgid "Current Maintainer"
 msgstr "Tämänhetkinen ylläpitäjä"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:25
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:24
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-msgid "short sword"
-msgstr "lyhytmiekka"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-#, fuzzy
-msgid "magic_blast"
-msgstr "maaginen"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-#, fuzzy
-msgid "magic blast"
-msgstr "maaginen"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
-msgid "impact"
-msgstr "murskaus"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:58
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
-msgid "chill wave"
-msgstr "jäätävä polte"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:60
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
-msgid "cold"
-msgstr "kylmä"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:35
@@ -4649,54 +4617,54 @@ msgstr ""
 msgid "Delete Save"
 msgstr "Tuhoa tallenne"
 
-#: src/dialogs.cpp:557
+#: src/dialogs.cpp:555
 msgid "Date"
 msgstr "Päivämäärä"
 
-#: src/dialogs.cpp:557 src/game.cpp:1060 src/menu_events.cpp:314
+#: src/dialogs.cpp:555 src/game.cpp:1060 src/menu_events.cpp:314
 #: src/menu_events.cpp:863 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "Nimi"
+
+#: src/dialogs.cpp:576 src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
+msgid "Load Game"
+msgstr "Lataa peli"
+
+#: src/dialogs.cpp:577
+msgid "Choose the game to load"
+msgstr "Valitse ladattava peli"
 
 #: src/dialogs.cpp:583
 msgid "Show replay"
 msgstr "Näytä uusinta"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:89
-#: src/multiplayer_create.cpp:90
-msgid "Load Game"
-msgstr "Lataa peli"
-
-#: src/dialogs.cpp:587
-msgid "Choose the game to load"
-msgstr "Valitse ladattava peli"
-
-#: src/dialogs.cpp:613 src/dialogs.cpp:625
+#: src/dialogs.cpp:610 src/dialogs.cpp:622
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/dialogs.cpp:711 src/help.cpp:1084
+#: src/dialogs.cpp:708 src/help.cpp:1084
 msgid "level"
 msgstr "taso"
 
-#: src/dialogs.cpp:733 src/help.cpp:1164
+#: src/dialogs.cpp:730 src/help.cpp:1164
 msgid "HP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:737 src/dialogs.cpp:745
+#: src/dialogs.cpp:734 src/dialogs.cpp:742
 msgid "XP: "
 msgstr "KP: "
 
-#: src/dialogs.cpp:750 src/help.cpp:1165
+#: src/dialogs.cpp:747 src/help.cpp:1165
 msgid "Moves: "
 msgstr "Liikepisteitä: "
 
-#: src/dialogs.cpp:895 src/dialogs.cpp:997 src/multiplayer_connect.cpp:756
+#: src/dialogs.cpp:892 src/dialogs.cpp:994 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/dialogs.cpp:920 src/game.cpp:864
+#: src/dialogs.cpp:917 src/game.cpp:864
 msgid "KB"
 msgstr "Kt"
 
@@ -6499,6 +6467,26 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lataaminen"
+
+#~ msgid "short sword"
+#~ msgstr "lyhytmiekka"
+
+#, fuzzy
+#~ msgid "magic_blast"
+#~ msgstr "maaginen"
+
+#, fuzzy
+#~ msgid "magic blast"
+#~ msgstr "maaginen"
+
+#~ msgid "impact"
+#~ msgstr "murskaus"
+
+#~ msgid "chill wave"
+#~ msgstr "jäätävä polte"
+
+#~ msgid "cold"
+#~ msgstr "kylmä"
 
 #~ msgid "User Map"
 #~ msgstr "Käyttäjän kartta"

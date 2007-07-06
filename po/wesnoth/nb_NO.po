@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 13:13+0200\n"
+"POT-Creation-Date: 2007-07-06 13:24+0200\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -16,24 +16,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: data/_main.cfg:32
+#: data/_main.cfg:35
 msgid "Binary Saves"
 msgstr "Binære lagringsfiler"
 
-#: data/_main.cfg:39
+#: data/_main.cfg:42
 msgid "Show Combat"
 msgstr "Animer kamphandlinger"
 
-#: data/_main.cfg:46
+#: data/_main.cfg:49
 msgid "Mouse Scrolling"
 msgstr "Kantrulling med mus"
 
-#: data/_main.cfg:53
+#: data/_main.cfg:56
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Koble til offisiell server"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr ""
 
@@ -58,38 +58,6 @@ msgstr "Felttogdesigner"
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:37
 msgid "Current Maintainer"
 msgstr "Nåværende koordinator"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:25
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:24
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:26
-msgid "short sword"
-msgstr "kortsverd"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:62
-#, fuzzy
-msgid "magic_blast"
-msgstr "magisk"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:63
-#, fuzzy
-msgid "magic blast"
-msgstr "magisk"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-mage.cfg:65
-msgid "impact"
-msgstr "slag"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:57
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:58
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:56
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:57
-msgid "chill wave"
-msgstr "frostbølge"
-
-#: data/campaigns/Descent_Into_Darkness/units/apprentice-necromancer.cfg:60
-#: data/campaigns/Descent_Into_Darkness/units/dark-mage.cfg:58
-msgid "cold"
-msgstr "frost"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:35
@@ -4624,54 +4592,54 @@ msgstr ""
 msgid "Delete Save"
 msgstr "Slett lagringsfil"
 
-#: src/dialogs.cpp:557
+#: src/dialogs.cpp:555
 msgid "Date"
 msgstr "Dato"
 
-#: src/dialogs.cpp:557 src/game.cpp:1060 src/menu_events.cpp:314
+#: src/dialogs.cpp:555 src/game.cpp:1060 src/menu_events.cpp:314
 #: src/menu_events.cpp:863 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "Navn"
+
+#: src/dialogs.cpp:576 src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:90
+msgid "Load Game"
+msgstr "Last spill"
+
+#: src/dialogs.cpp:577
+msgid "Choose the game to load"
+msgstr "Velg spill for innlasting"
 
 #: src/dialogs.cpp:583
 msgid "Show replay"
 msgstr "Vis reprise"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:89
-#: src/multiplayer_create.cpp:90
-msgid "Load Game"
-msgstr "Last spill"
-
-#: src/dialogs.cpp:587
-msgid "Choose the game to load"
-msgstr "Velg spill for innlasting"
-
-#: src/dialogs.cpp:613 src/dialogs.cpp:625
+#: src/dialogs.cpp:610 src/dialogs.cpp:622
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:711 src/help.cpp:1084
+#: src/dialogs.cpp:708 src/help.cpp:1084
 msgid "level"
 msgstr "grad"
 
-#: src/dialogs.cpp:733 src/help.cpp:1164
+#: src/dialogs.cpp:730 src/help.cpp:1164
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:737 src/dialogs.cpp:745
+#: src/dialogs.cpp:734 src/dialogs.cpp:742
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:750 src/help.cpp:1165
+#: src/dialogs.cpp:747 src/help.cpp:1165
 msgid "Moves: "
 msgstr "Flytt: "
 
-#: src/dialogs.cpp:895 src/dialogs.cpp:997 src/multiplayer_connect.cpp:756
+#: src/dialogs.cpp:892 src/dialogs.cpp:994 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/dialogs.cpp:920 src/game.cpp:864
+#: src/dialogs.cpp:917 src/game.cpp:864
 msgid "KB"
 msgstr "KB"
 
@@ -6483,6 +6451,26 @@ msgstr "Hjelp oss å gjøre Kampen om Wesnoth bedre for deg!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Tillat sammendragsopplasting"
+
+#~ msgid "short sword"
+#~ msgstr "kortsverd"
+
+#, fuzzy
+#~ msgid "magic_blast"
+#~ msgstr "magisk"
+
+#, fuzzy
+#~ msgid "magic blast"
+#~ msgstr "magisk"
+
+#~ msgid "impact"
+#~ msgstr "slag"
+
+#~ msgid "chill wave"
+#~ msgstr "frostbølge"
+
+#~ msgid "cold"
+#~ msgstr "frost"
 
 #~ msgid "User Map"
 #~ msgstr "Eget kart"
