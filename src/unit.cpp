@@ -1743,8 +1743,13 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
+	int ellipse_h_adjust = 0;
 	if(preferences::show_side_colours() && draw_bars_) {
-
+		// the division by 2 seems to have no real meaning,
+		// it just works fine with the current center of ellipse
+		// and prevent a too large adjust if submerge = 1.0
+		ellipse_h_adjust = height_adjust + static_cast<int>(submerge * disp.hex_size() / 2);
+		
 		std::string ellipse=image_ellipse();
 		if(ellipse.empty()){
 			ellipse="misc/ellipse";
@@ -1763,7 +1768,6 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	}
 
 
-
 	int tmp_x = x;
 	int tmp_y = y;
 
@@ -1773,21 +1777,15 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 		tmp_y += (disp.hex_size() - image.get()->h)/2;
 	}
 
-	// the division by 2 seems to have no real meaning,
-	// it just works fine with the current center of ellipse
-	// and prevent a too large adjust if submerge = 1.0
-	const int ellipse_ypos = ysrc - height_adjust
-		- static_cast<int>(submerge * disp.hex_size() / 2);
-
 	if (ellipse_back != NULL) {
-		disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_back);
+		disp.video().blit_surface(xsrc, ysrc-ellipse_h_adjust, ellipse_back);
 	}
 
 	disp.draw_unit(tmp_x, tmp_y -height_adjust, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge);
 
 	if (ellipse_front != NULL) {
-		disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_front);
+		disp.video().blit_surface(xsrc, ysrc-ellipse_h_adjust, ellipse_front);
 	}
 
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
