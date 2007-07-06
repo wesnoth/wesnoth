@@ -14,13 +14,13 @@
 """
 
 """
-This module is meant to test the svntools.py library.
+This module is meant to test the libsvn.py library.
 """
 
 import sys, os.path, optparse
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
-import wesnoth.svntools as svntools
+import wesnoth.libsvn as libsvn
 
 """
 Evaluates the result send from the library.
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     if(len(args) != 1):
         optionparser.error("incorrect number of arguments")
 
-    svn = svntools.SVN(args[0])
+    svn = libsvn.SVN(args[0])
 
 ### checkout
     if(options.checkout != None):
