@@ -1660,8 +1660,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 	if (is_flying() && height_adjust < 0) height_adjust = 0;
 
-	unit_frame current_frame;
-	current_frame = anim_->get_current_frame();
+	const unit_frame& current_frame = anim_->get_current_frame();
 
 	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
