@@ -1022,7 +1022,7 @@ void game_controller::download_campaigns(std::string host)
 
 	try {
 		const network::manager net_manager;
-		const network::connection sock = gui::network_connect_dialog(disp(), _("Connecting to Server..."),
+		const network::connection sock = dialogs::network_connect_dialog(disp(), _("Connecting to Server..."),
 										items.front(), lexical_cast_default<int>(items.back(),15003) );
 		if(!sock) {
 			gui::show_error_message(disp(), _("Could not connect to host."));
@@ -1034,7 +1034,7 @@ void game_controller::download_campaigns(std::string host)
 		cfg.add_child("request_campaign_list");
 		network::send_data(cfg,sock);
 
-		network::connection res = gui::network_receive_dialog(disp(),_("Asking for list of add-ons"),cfg,sock);
+		network::connection res = dialogs::network_receive_dialog(disp(),_("Asking for list of add-ons"),cfg,sock);
 		if(!res) {
 			return;
 		}
@@ -1187,7 +1187,7 @@ void game_controller::download_campaigns(std::string host)
 		request.add_child("request_campaign")["name"] = campaigns[index];
 		network::send_data(request,sock);
 
-		res = gui::network_receive_dialog(disp(),_("Downloading add-on..."),cfg,sock);
+		res = dialogs::network_receive_dialog(disp(),_("Downloading add-on..."),cfg,sock);
 		if(!res) {
 			return;
 		}
@@ -1301,7 +1301,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	std::cerr << "uploading campaign...\n";
 	network::send_data(data,sock);
 
-	sock = gui::network_send_dialog(disp(),_("Sending add-on"),data,sock);
+	sock = dialogs::network_send_dialog(disp(),_("Sending add-on"),data,sock);
 	if(!sock) {
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {

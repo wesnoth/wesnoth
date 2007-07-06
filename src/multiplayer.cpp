@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "construct_dialog.hpp"
+#include "dialogs.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -163,7 +164,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 	config::child_list redirects;
 	config data;
-	sock = gui::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
+	sock = dialogs::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
 
 	do {
 
@@ -172,7 +173,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 		}
 
 		data.clear();
-		network::connection data_res = gui::network_receive_dialog(
+		network::connection data_res = dialogs::network_receive_dialog(
 				disp,_("Reading from Server..."),data);
 		mp::check_response(data_res, data);
 
@@ -200,7 +201,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 			if(network::nconnections() > 0)
 				network::disconnect();
-			sock = gui::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
+			sock = dialogs::network_connect_dialog(disp,_("Connecting to Server..."),host,port);
 			continue;
 		}
 

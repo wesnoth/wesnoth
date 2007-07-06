@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "basic_dialog.hpp"
+#include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -181,7 +182,7 @@ void wait::process_event()
 void wait::join_game(bool observe)
 {
 	for(;;) {
-		network::connection data_res = gui::network_receive_dialog(disp(),
+		network::connection data_res = dialogs::network_receive_dialog(disp(),
 				_("Getting game data..."), level_);
 		check_response(data_res, level_);
 
