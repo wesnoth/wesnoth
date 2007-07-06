@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-29 12:08+0200\n"
+"POT-Creation-Date: 2007-07-06 11:15+0200\n"
 "PO-Revision-Date: 2007-06-11 22:11+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -20,30 +20,29 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.9\n"
 
-#: src/construct_dialog.cpp:135 src/construct_dialog.cpp:142
+#: src/basic_dialog.cpp:100 src/basic_dialog.cpp:107
 #: src/editor/editor_dialogs.cpp:412
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:138
+#: src/basic_dialog.cpp:103
 msgid "Yes"
 msgstr "はい"
 
-#: src/construct_dialog.cpp:139
+#: src/basic_dialog.cpp:104
 msgid "No"
 msgstr "いいえ"
 
-#: src/construct_dialog.cpp:143 src/construct_dialog.cpp:146
+#: src/basic_dialog.cpp:108 src/basic_dialog.cpp:111
 #: src/editor/editor_dialogs.cpp:102 src/editor/editor_dialogs.cpp:411
-#: src/show_dialog.cpp:442 src/show_dialog.cpp:539
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/construct_dialog.cpp:149
+#: src/basic_dialog.cpp:114
 msgid "Close"
 msgstr "閉じる"
 
-#: src/construct_dialog.cpp:811 src/hotkeys.cpp:125
+#: src/construct_dialog.cpp:97 src/hotkeys.cpp:129
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -82,38 +81,38 @@ msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
 #: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:1300
+#: src/preferences_display.cpp:1301
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
 #: src/editor/editor_dialogs.cpp:251 src/hotkeys.cpp:79
-#: src/preferences_display.cpp:1186
+#: src/preferences_display.cpp:1187
 msgid "Preferences"
 msgstr "設定"
 
-#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:315
+#: src/editor/editor_dialogs.cpp:255 src/preferences_display.cpp:316
 msgid "Scroll Speed:"
 msgstr "スクロール速度:"
 
 #: src/editor/editor_dialogs.cpp:282 src/hotkeys.cpp:60
-#: src/preferences_display.cpp:273
+#: src/preferences_display.cpp:274
 msgid "Toggle Full Screen"
 msgstr "フルスクリーン切り換え"
 
-#: src/editor/editor_dialogs.cpp:289 src/preferences_display.cpp:276
+#: src/editor/editor_dialogs.cpp:289 src/preferences_display.cpp:277
 msgid "Show Grid"
 msgstr "グリッド表示"
 
-#: src/editor/editor_dialogs.cpp:296 src/preferences_display.cpp:296
+#: src/editor/editor_dialogs.cpp:296 src/preferences_display.cpp:297
 msgid "Video Mode"
 msgstr "画面モード"
 
-#: src/editor/editor_dialogs.cpp:299 src/preferences_display.cpp:298
+#: src/editor/editor_dialogs.cpp:299 src/preferences_display.cpp:299
 msgid "Hotkeys"
 msgstr "ホットキー"
 
 #: src/editor/editor_dialogs.cpp:392 src/editor/editor_dialogs.cpp:454
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:115
 msgid "Resize Map"
 msgstr "マップのサイズ変更"
 
@@ -152,6 +151,10 @@ msgstr "名前:"
 #: src/filechooser.cpp:174
 msgid "Creation of the directory failed."
 msgstr "ディレクトリを作成できませんでした。"
+
+#: src/game_preferences.cpp:244
+msgid "player"
+msgstr "プレイヤー"
 
 #: src/hotkeys.cpp:50
 msgid "Next Unit"
@@ -321,135 +324,141 @@ msgstr "次のターン"
 msgid "Next Side"
 msgstr "次の陣営"
 
-#: src/hotkeys.cpp:94
-msgid "Shroud"
-msgstr "重なり"
-
 #: src/hotkeys.cpp:95
-msgid "Fog"
-msgstr "霧"
+#, fuzzy
+msgid "Full map"
+msgstr "マップを裏返す"
 
-#: src/hotkeys.cpp:96
+#: src/hotkeys.cpp:97
+msgid "Each team"
+msgstr ""
+
+#: src/hotkeys.cpp:99
+msgid "Team 1"
+msgstr ""
+
+#: src/hotkeys.cpp:100
 msgid "Skip animation"
 msgstr "アニメーションをスキップ"
 
-#: src/hotkeys.cpp:98
+#: src/hotkeys.cpp:102
 msgid "Set Terrain"
 msgstr "地形の設定"
 
-#: src/hotkeys.cpp:99
+#: src/hotkeys.cpp:103
 msgid "Quit Editor"
 msgstr "エディタの終了"
 
-#: src/hotkeys.cpp:100
+#: src/hotkeys.cpp:104
 msgid "New Map"
 msgstr "新規マップ"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:105
 msgid "Load Map"
 msgstr "マップ読み込み"
 
-#: src/hotkeys.cpp:102
+#: src/hotkeys.cpp:106
 msgid "Save Map"
 msgstr "マップの保存"
 
-#: src/hotkeys.cpp:103
+#: src/hotkeys.cpp:107
 msgid "Save As"
 msgstr "名前を付けて保存"
 
-#: src/hotkeys.cpp:104
+#: src/hotkeys.cpp:108
 msgid "Set Player's keep"
 msgstr "プレイヤーの主塔を設定"
 
-#: src/hotkeys.cpp:105
+#: src/hotkeys.cpp:109
 msgid "Flood Fill"
 msgstr "塗りつぶす"
 
-#: src/hotkeys.cpp:106
+#: src/hotkeys.cpp:110
 msgid "Fill Selection"
 msgstr "選択領域を塗りつぶす"
 
-#: src/hotkeys.cpp:107
+#: src/hotkeys.cpp:111
 msgid "Cut"
 msgstr "切り取り"
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:112
 msgid "Copy"
 msgstr "コピー"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:113
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:114
 msgid "Revert from Disk"
 msgstr "保存ディスクから復帰"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:116
 msgid "Flip Map"
 msgstr "マップを裏返す"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:117
 msgid "Select All"
 msgstr "全て選択"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:118
 msgid "Draw Terrain"
 msgstr "地形を描く"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:119
 msgid "Refresh Image Cache"
 msgstr "イメージキャッシュを更新"
 
-#: src/hotkeys.cpp:116
-msgid "Delay transitions updates"
+#: src/hotkeys.cpp:120
+#, fuzzy
+msgid "Delay transition updates"
 msgstr "変化の更新を遅らせる"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:121
 msgid "Update transitions"
 msgstr "変化を更新する"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:123
 msgid "Delay Shroud Updates"
 msgstr "幕の更新を遅らせる"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:124
 msgid "Update Shroud Now"
 msgstr "幕を今すぐ更新する"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:125
 msgid "Continue Move"
 msgstr "移動を続ける"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:126
 msgid "Find Label or Unit"
 msgstr "ラベルとユニットの検索"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:127
 msgid "Speak to Ally"
 msgstr "同盟軍に話す"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:128
 msgid "Speak to All"
 msgstr "全員に話す"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "チャットログ表示"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:131
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:133
 msgid "Enter user command"
 msgstr "ユーザーコマンドを入力してください"
 
-#: src/hotkeys.cpp:481 src/hotkeys.cpp:782
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:481 src/hotkeys.cpp:782
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
 msgid "Quit"
 msgstr "終了"
 
@@ -501,11 +510,7 @@ msgstr "内陸"
 msgid "Island"
 msgstr "島"
 
-#: src/preferences.cpp:459
-msgid "player"
-msgstr "プレイヤー"
-
-#: src/preferences_display.cpp:81 src/preferences_display.cpp:114
+#: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -515,427 +520,432 @@ msgstr ""
 "ウィンドウマネージャを16ビット／ピクセルに設定しなければなりません。フルスク"
 "リーンで実行するには1024x768x16の画面をサポートしなければなりません。"
 
-#: src/preferences_display.cpp:274
+#: src/preferences_display.cpp:275
 msgid "Accelerated Speed"
 msgstr "高速化"
 
-#: src/preferences_display.cpp:275
+#: src/preferences_display.cpp:276
 msgid "Skip AI Moves"
 msgstr "AI移動スキップ"
 
-#: src/preferences_display.cpp:277
+#: src/preferences_display.cpp:278
 msgid "Save Replays"
 msgstr "リプレイを保存"
 
-#: src/preferences_display.cpp:278
+#: src/preferences_display.cpp:279
 msgid "Delete Autosaves"
 msgstr "自動保存を削除"
 
-#: src/preferences_display.cpp:279
+#: src/preferences_display.cpp:280
 msgid "Show Lobby Minimaps"
 msgstr "ロビーの小マップを表示"
 
-#: src/preferences_display.cpp:280
+#: src/preferences_display.cpp:281
 msgid "Do Not Show Lobby Joins"
 msgstr "ロビーへの参加を表示しない"
 
-#: src/preferences_display.cpp:281
+#: src/preferences_display.cpp:282
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "ロビーへの参加を友人のみ表示"
 
-#: src/preferences_display.cpp:282
+#: src/preferences_display.cpp:283
 msgid "Show All Lobby Joins"
 msgstr "ロビーへの参加をすべて表示"
 
-#: src/preferences_display.cpp:283
+#: src/preferences_display.cpp:284
 msgid "Sort Lobby List"
 msgstr "ロビーリストを並び替える"
 
-#: src/preferences_display.cpp:284
+#: src/preferences_display.cpp:285
 msgid "Iconize Lobby List"
 msgstr "ロビーリストにアイコンを表示"
 
-#: src/preferences_display.cpp:285
+#: src/preferences_display.cpp:286
 msgid "Friends List"
 msgstr "友人リスト"
 
-#: src/preferences_display.cpp:286
+#: src/preferences_display.cpp:287
 msgid "Multiplayer Options"
 msgstr "マルチプレイヤーオプション"
 
-#: src/preferences_display.cpp:287
+#: src/preferences_display.cpp:288
 msgid "Add As Friend"
 msgstr "友人に追加"
 
-#: src/preferences_display.cpp:288
+#: src/preferences_display.cpp:289
 msgid "Add As Ignore"
 msgstr "無視に追加"
 
-#: src/preferences_display.cpp:289
+#: src/preferences_display.cpp:290
 msgid "Remove"
 msgstr "削除"
 
-#: src/preferences_display.cpp:290
+#: src/preferences_display.cpp:291
 msgid "Show Floating Labels"
 msgstr "ラベル表示"
 
-#: src/preferences_display.cpp:291
+#: src/preferences_display.cpp:292
 msgid "Turn Dialog"
 msgstr "ターンダイアログ"
 
-#: src/preferences_display.cpp:292
+#: src/preferences_display.cpp:293
 msgid "Turn Bell"
 msgstr "ターンベル"
 
-#: src/preferences_display.cpp:293
+#: src/preferences_display.cpp:294
 msgid "Show Team Colors"
 msgstr "チームカラー"
 
-#: src/preferences_display.cpp:294
+#: src/preferences_display.cpp:295
 msgid "Show Color Cursors"
 msgstr "カラーカーソル"
 
-#: src/preferences_display.cpp:295
+#: src/preferences_display.cpp:296
 msgid "Show Haloing Effects"
 msgstr "特殊効果表示"
 
-#: src/preferences_display.cpp:297
+#: src/preferences_display.cpp:298
 msgid "Theme"
 msgstr "テーマ"
 
-#: src/preferences_display.cpp:299
+#: src/preferences_display.cpp:300
 msgid "Adjust Gamma"
 msgstr "ガンマ補正"
 
-#: src/preferences_display.cpp:300
+#: src/preferences_display.cpp:301
 msgid "Reverse Time Graphics"
 msgstr "時間グラフィックを反転"
 
-#: src/preferences_display.cpp:302
+#: src/preferences_display.cpp:303
 msgid "Sound effects"
 msgstr "効果音"
 
-#: src/preferences_display.cpp:303
+#: src/preferences_display.cpp:304
 msgid "Music"
 msgstr "音楽"
 
-#: src/preferences_display.cpp:304
+#: src/preferences_display.cpp:305
 msgid "Chat Timestamping"
 msgstr "チャットの時刻表示"
 
-#: src/preferences_display.cpp:305
+#: src/preferences_display.cpp:306
 msgid "Advanced Mode"
 msgstr "上級者モード"
 
-#: src/preferences_display.cpp:306
+#: src/preferences_display.cpp:307
 msgid "Normal Mode"
 msgstr "通常モード"
 
-#: src/preferences_display.cpp:307
+#: src/preferences_display.cpp:308
 msgid "User Interface Sounds"
 msgstr "ユーザーインターフェースサウンド"
 
-#: src/preferences_display.cpp:310
+#: src/preferences_display.cpp:311
 msgid "Custom"
 msgstr "カスタム"
 
-#: src/preferences_display.cpp:311
+#: src/preferences_display.cpp:312
 msgid "Apply"
 msgstr "適用"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "Music Volume:"
 msgstr "音楽ボリューム:"
 
-#: src/preferences_display.cpp:313
+#: src/preferences_display.cpp:314
 msgid "SFX Volume:"
 msgstr "効果音ボリューム:"
 
-#: src/preferences_display.cpp:314
+#: src/preferences_display.cpp:315
 msgid "UI Sound Volume:"
 msgstr "UI サウンドボリューム:"
 
-#: src/preferences_display.cpp:315
+#: src/preferences_display.cpp:316
 msgid "Bell Volume:"
 msgstr "ベルボリューム:"
 
-#: src/preferences_display.cpp:316
+#: src/preferences_display.cpp:317
 msgid "Gamma:"
 msgstr "ガンマ値:"
 
-#: src/preferences_display.cpp:318
+#: src/preferences_display.cpp:319
 msgid "Sample Rate (Hz):"
 msgstr "サンプルレート(Hz):"
 
-#: src/preferences_display.cpp:341
+#: src/preferences_display.cpp:342
 msgid "Sound effects on/off"
 msgstr "効果音 入/切"
 
-#: src/preferences_display.cpp:345
+#: src/preferences_display.cpp:346
 msgid "Change the sound effects volume"
 msgstr "効果音の音の大きさを変更します"
 
-#: src/preferences_display.cpp:348
+#: src/preferences_display.cpp:349
 msgid "Music on/off"
 msgstr "音楽 入/切"
 
-#: src/preferences_display.cpp:352
+#: src/preferences_display.cpp:353
 msgid "Change the music volume"
 msgstr "音楽の音の大きさを変更します"
 
-#: src/preferences_display.cpp:358
+#: src/preferences_display.cpp:359
 msgid "Change the bell volume"
 msgstr "ベルの音の大きさを変更します"
 
-#: src/preferences_display.cpp:361
+#: src/preferences_display.cpp:362
 msgid "Turn menu and button sounds on/off"
 msgstr "メニューやボタンの音 入/切"
 
-#: src/preferences_display.cpp:365
+#: src/preferences_display.cpp:366
 msgid "Change the sound volume for button clicks, etc."
 msgstr "ボタンをクリックしたときなどの音の大きさを変更します"
 
-#: src/preferences_display.cpp:367
+#: src/preferences_display.cpp:368
 msgid "Change the sample rate"
 msgstr "サンプルレートを変更します"
 
-#: src/preferences_display.cpp:376
+#: src/preferences_display.cpp:377
 msgid "User defined sample rate"
 msgstr "ユーザー定義サンプルレート"
 
-#: src/preferences_display.cpp:385 src/preferences_display.cpp:389
+#: src/preferences_display.cpp:386 src/preferences_display.cpp:390
 msgid "Change the buffer size"
 msgstr "バッファサイズを変更します"
 
-#: src/preferences_display.cpp:387 src/preferences_display.cpp:887
+#: src/preferences_display.cpp:388 src/preferences_display.cpp:888
 msgid "Buffer Size: "
 msgstr "バッファサイズ: "
 
-#: src/preferences_display.cpp:394
+#: src/preferences_display.cpp:395
 msgid "Change the speed of scrolling around the map"
 msgstr "画面端のスクロールの速度を変更します"
 
-#: src/preferences_display.cpp:399 src/preferences_display.cpp:401
+#: src/preferences_display.cpp:400 src/preferences_display.cpp:402
 msgid "Set the amount of chat lines shown"
 msgstr "チャットの表示行数を設定する"
 
-#: src/preferences_display.cpp:404
+#: src/preferences_display.cpp:405
 msgid "Add a timestamp to chat messages"
 msgstr "チャットのメッセージに時刻をつける"
 
-#: src/preferences_display.cpp:407 src/preferences_display.cpp:412
+#: src/preferences_display.cpp:408 src/preferences_display.cpp:413
 msgid "Change the brightness of the display"
 msgstr "画面の明るさを変更します"
 
-#: src/preferences_display.cpp:415
+#: src/preferences_display.cpp:416
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "フルスクリーンモードかウィンドウモードかを選択します"
 
-#: src/preferences_display.cpp:418
+#: src/preferences_display.cpp:419
 msgid "Make units move and fight faster"
 msgstr "ユニットの移動と戦闘を高速に行います"
 
-#: src/preferences_display.cpp:433
+#: src/preferences_display.cpp:434
 msgid "Units move and fight speed"
 msgstr "ユニット移動と戦闘速度"
 
-#: src/preferences_display.cpp:436
+#: src/preferences_display.cpp:437
 msgid "Do not animate AI units moving"
 msgstr "AI移動時にアニメーションを行わないようにします"
 
-#: src/preferences_display.cpp:439
+#: src/preferences_display.cpp:440
 msgid "Save replays at scenario end."
 msgstr "シナリオの最後にリプレイを保存する。"
 
-#: src/preferences_display.cpp:442
+#: src/preferences_display.cpp:443
 msgid "Automatically delete autosaves at the end of a scenario"
 msgstr "シナリオの最後に自動保存を自動的に削除する"
 
-#: src/preferences_display.cpp:444
+#: src/preferences_display.cpp:445
 msgid "Overlay a grid onto the map"
 msgstr "マップのグリッドを表示します"
 
-#: src/preferences_display.cpp:447
+#: src/preferences_display.cpp:448
 msgid "Show minimaps in the multiplayer lobby"
 msgstr "マルチプレイヤーロビーで小さな地図を表示します"
 
-#: src/preferences_display.cpp:450
+#: src/preferences_display.cpp:451
 msgid "Sort the player list in the lobby by player groups"
 msgstr "ロビーのプレイヤーリストをプレイヤーのグループで並び替えます"
 
-#: src/preferences_display.cpp:453
+#: src/preferences_display.cpp:454
 msgid "Show icons in front of the player names in the lobby."
 msgstr "ロビーにいるプレイヤーの名前の前にアイコンを表示します"
 
-#: src/preferences_display.cpp:456
+#: src/preferences_display.cpp:457
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr ""
 "マルチプレイヤーロビーに参加したプレイヤーについてのメッセージを表示しません"
 
-#: src/preferences_display.cpp:458
+#: src/preferences_display.cpp:459
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "マルチプレイヤーロビーに参加した友人についてのメッセージを表示します"
 
-#: src/preferences_display.cpp:460
+#: src/preferences_display.cpp:461
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 "マルチプレイヤーロビーに参加したすべてのプレイヤーについてのメッセージを表示"
 "します"
 
-#: src/preferences_display.cpp:462
+#: src/preferences_display.cpp:463
 msgid "View and edit your friends and ignores list"
 msgstr "友人と無視のリストを表示、編集します"
 
-#: src/preferences_display.cpp:463
+#: src/preferences_display.cpp:464
 msgid "Back to the multiplayer options"
 msgstr "マルチプレイヤーオプションに戻ります"
 
-#: src/preferences_display.cpp:464
+#: src/preferences_display.cpp:465
 msgid "Add this username to your friends list"
 msgstr "このユーザ名を友人リストに追加します"
 
-#: src/preferences_display.cpp:465
+#: src/preferences_display.cpp:466
 msgid "Add this username to your ignores list"
 msgstr "このユーザ名を無視リストに追加します"
 
-#: src/preferences_display.cpp:466
+#: src/preferences_display.cpp:467
 msgid "Remove this username from your list"
 msgstr "このユーザ名をリストから削除します"
 
-#: src/preferences_display.cpp:469
+#: src/preferences_display.cpp:470
 msgid "Insert a username"
 msgstr "ユーザ名を入力します"
 
-#: src/preferences_display.cpp:472
+#: src/preferences_display.cpp:473
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "攻撃命中時、ユニットの上に受けたダメージを表示します"
 
-#: src/preferences_display.cpp:474
+#: src/preferences_display.cpp:475
 msgid "Change the resolution the game runs at"
 msgstr "解像度を変更します"
 
-#: src/preferences_display.cpp:475
+#: src/preferences_display.cpp:476
 msgid "Change the theme the game runs with"
 msgstr "ゲーム動作時のテーマを変更します"
 
-#: src/preferences_display.cpp:478
+#: src/preferences_display.cpp:479
 msgid "Display a dialog at the beginning of your turn"
 msgstr "プレイヤーのターン開始時にダイアログを表示します"
 
-#: src/preferences_display.cpp:481
+#: src/preferences_display.cpp:482
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "プレイヤーのターン開始時にベルを鳴らします"
 
-#: src/preferences_display.cpp:484
+#: src/preferences_display.cpp:485
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "ユニットがどの陣営に属しているかを色付きの円で表示します"
 
-#: src/preferences_display.cpp:487
+#: src/preferences_display.cpp:488
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "太陽の移動が、左から右なのか、右から左かを選択します"
 
-#: src/preferences_display.cpp:490
+#: src/preferences_display.cpp:491
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "色付きのマウスカーソルを使用します(遅くなります)"
 
-#: src/preferences_display.cpp:493
+#: src/preferences_display.cpp:494
 msgid "Use graphical special effects (may be slower)"
 msgstr "画像の特殊効果を使用します(遅くなります)"
 
-#: src/preferences_display.cpp:495
+#: src/preferences_display.cpp:496
 msgid "View and configure keyboard shortcuts"
 msgstr "キーボードショートカットの一覧表示と設定変更を行います"
 
-#: src/preferences_display.cpp:767
+#: src/preferences_display.cpp:768
 msgid "Speed: "
 msgstr "速度:"
 
-#: src/preferences_display.cpp:932
+#: src/preferences_display.cpp:933
 msgid "Chat Lines: "
 msgstr "チャット行数: "
 
-#: src/preferences_display.cpp:1028
+#: src/preferences_display.cpp:1029
 msgid "yes"
 msgstr "はい"
 
-#: src/preferences_display.cpp:1030
+#: src/preferences_display.cpp:1031
 msgid "no"
 msgstr "いいえ"
 
-#: src/preferences_display.cpp:1174
+#: src/preferences_display.cpp:1175
 msgid "Prefs section^General"
 msgstr "一般"
 
-#: src/preferences_display.cpp:1175
+#: src/preferences_display.cpp:1176
 msgid "Prefs section^Display"
 msgstr "表示"
 
-#: src/preferences_display.cpp:1176
+#: src/preferences_display.cpp:1177
 msgid "Prefs section^Sound"
 msgstr "音楽"
 
-#: src/preferences_display.cpp:1177
+#: src/preferences_display.cpp:1178
 msgid "Prefs section^Multiplayer"
 msgstr "マルチプレイヤー"
 
-#: src/preferences_display.cpp:1178
+#: src/preferences_display.cpp:1179
 msgid "Advanced section^Advanced"
 msgstr "上級者向け"
 
-#: src/preferences_display.cpp:1243
+#: src/preferences_display.cpp:1244
 msgid "There are no alternative video modes available"
 msgstr "変更可能な画面モードはありません"
 
-#: src/preferences_display.cpp:1272
+#: src/preferences_display.cpp:1273
 msgid "Choose Resolution"
 msgstr "解像度を選択して下さい"
 
-#: src/preferences_display.cpp:1305
+#: src/preferences_display.cpp:1306
 msgid "Hotkey Settings"
 msgstr "ホットキーの設定"
 
-#: src/preferences_display.cpp:1311 src/preferences_display.cpp:1367
+#: src/preferences_display.cpp:1312 src/preferences_display.cpp:1368
 msgid "Press desired Hotkey"
 msgstr "希望のホットキーを押して下さい"
 
-#: src/preferences_display.cpp:1329
+#: src/preferences_display.cpp:1330
 msgid "Action"
 msgstr "動作"
 
-#: src/preferences_display.cpp:1329
+#: src/preferences_display.cpp:1330
 msgid "Binding"
 msgstr "割り当て"
 
-#: src/preferences_display.cpp:1341
+#: src/preferences_display.cpp:1342
 msgid "Change Hotkey"
 msgstr "ホットキーの変更"
 
-#: src/preferences_display.cpp:1344
+#: src/preferences_display.cpp:1345
 msgid "Save Hotkeys"
 msgstr "ホットキーを保存"
 
-#: src/preferences_display.cpp:1394
+#: src/preferences_display.cpp:1395
 msgid "This Hotkey is already in use."
 msgstr "このホットキーは既に使用されています。"
 
-#: src/preferences_display.cpp:1427
+#: src/preferences_display.cpp:1428
 msgid "Saved Theme Preference: "
 msgstr "テーマ設定を保存しました: "
 
-#: src/preferences_display.cpp:1433
+#: src/preferences_display.cpp:1434
 msgid "New theme will take effect on next new or loaded game."
 msgstr "新しいテーマは次回の新規またはロードされるゲームから有効になります。"
 
-#: src/preferences_display.cpp:1437
+#: src/preferences_display.cpp:1438
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "テーマがありません。既存のゲーム内から変更してみて下さい。"
 
-#: src/show_dialog.cpp:359
+#: src/show_dialog.cpp:358
 msgid "Error"
 msgstr "エラー"
 
-#: src/show_dialog.cpp:467
-msgid "KB"
-msgstr "KB"
+#~ msgid "Shroud"
+#~ msgstr "重なり"
+
+#~ msgid "Fog"
+#~ msgstr "霧"
+
+#~ msgid "KB"
+#~ msgstr "KB"

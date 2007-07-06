@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-06-29 12:20+0200\n"
+"POT-Creation-Date: 2007-07-06 11:15+0200\n"
 "PO-Revision-Date: 2005-08-10 17:05+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -59,111 +59,111 @@ msgstr "Herrixkak:"
 msgid "castle"
 msgstr "Itsatsi"
 
-#: data/themes/editor.cfg:494
+#: data/themes/editor.cfg:492
 msgid "File"
 msgstr "Fitxategia"
 
-#: data/themes/editor.cfg:503
+#: data/themes/editor.cfg:501
 msgid "Edit"
 msgstr "Editatu"
 
-#: data/themes/editor.cfg:510
+#: data/themes/editor.cfg:508
 msgid "Settings"
 msgstr ""
 
-#: src/editor/editor.cpp:230
+#: src/editor/editor.cpp:231
 msgid "Draw tiles"
 msgstr "Margotu mosaikoak"
 
-#: src/editor/editor.cpp:232
+#: src/editor/editor.cpp:233
 msgid "Fill"
 msgstr "Bete"
 
-#: src/editor/editor.cpp:234
+#: src/editor/editor.cpp:235
 msgid "Set player's starting position"
 msgstr "Ezarri jokalariaren abio posizioa"
 
-#: src/editor/editor.cpp:236
+#: src/editor/editor.cpp:237
 msgid "Zoom in"
 msgstr "Handiagotu"
 
-#: src/editor/editor.cpp:238
+#: src/editor/editor.cpp:239
 msgid "Zoom out"
 msgstr "Txikiagotu"
 
-#: src/editor/editor.cpp:240
+#: src/editor/editor.cpp:241
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/editor/editor.cpp:242
+#: src/editor/editor.cpp:243
 msgid "Redo"
 msgstr "Berregin"
 
-#: src/editor/editor.cpp:244
+#: src/editor/editor.cpp:245
 msgid "Zoom to default view"
 msgstr "Zoom egin lehenetsitako bistara"
 
-#: src/editor/editor.cpp:246
+#: src/editor/editor.cpp:247
 msgid "Toggle grid"
 msgstr "Burdinesia erakutsi"
 
-#: src/editor/editor.cpp:248
+#: src/editor/editor.cpp:249
 msgid "Resize the map"
 msgstr "Maparen tamaina aldatu"
 
-#: src/editor/editor.cpp:250
+#: src/editor/editor.cpp:251
 msgid "Flip map"
 msgstr "Itzuli mapa"
 
-#: src/editor/editor.cpp:252
+#: src/editor/editor.cpp:253
 msgid "Update transitions"
 msgstr ""
 
-#: src/editor/editor.cpp:254
-msgid "Delay transitions update"
+#: src/editor/editor.cpp:255
+msgid "Delay transition updates"
 msgstr ""
 
-#: src/editor/editor.cpp:460
+#: src/editor/editor.cpp:461
 msgid "Language"
 msgstr "Hizkuntza"
 
-#: src/editor/editor.cpp:461
+#: src/editor/editor.cpp:462
 msgid "Choose your preferred language:"
 msgstr "Aukeratu zure lehentasunezko hizkuntza:"
 
-#: src/editor/editor.cpp:475 src/editor/editor_main.cpp:286
+#: src/editor/editor.cpp:479 src/editor/editor_main.cpp:286
 msgid "Battle for Wesnoth Map Editor"
 msgstr "Battle of Wesnoth-en mapa editorea"
 
-#: src/editor/editor.cpp:499
+#: src/editor/editor.cpp:503
 msgid "Save the Map As"
 msgstr "Gorde mapa honela"
 
-#: src/editor/editor.cpp:510
+#: src/editor/editor.cpp:514
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Mapa aurretik existitzen da. Gainidatzea nahi duzu?"
 
-#: src/editor/editor.cpp:533
+#: src/editor/editor.cpp:537
 msgid "None"
 msgstr ""
 
-#: src/editor/editor.cpp:538 src/editor/editor.cpp:1377
+#: src/editor/editor.cpp:542 src/editor/editor.cpp:1380
 msgid "Player"
 msgstr "Jokalaria"
 
-#: src/editor/editor.cpp:541
+#: src/editor/editor.cpp:546
 msgid "Which Player?"
 msgstr "Zein jokalaria?"
 
-#: src/editor/editor.cpp:542
+#: src/editor/editor.cpp:547
 msgid "Which player should start here?"
 msgstr "Zein jokalariak hasi beharko luke hemen?"
 
-#: src/editor/editor.cpp:602
+#: src/editor/editor.cpp:608
 msgid "Choose a Map to Load"
 msgstr "Hautatu kargatzeko mapa bat"
 
-#: src/editor/editor.cpp:606
+#: src/editor/editor.cpp:612
 #, fuzzy
 msgid ""
 "Warning: Illegal characters found in the map name. Please save under a "
@@ -172,27 +172,27 @@ msgstr ""
 "Kontuz: Erabili ezin den karaktere bat topatu da maparen izenean. Beste izen "
 "batekin gorde behar duzu."
 
-#: src/editor/editor.cpp:619 src/editor/editor.cpp:693
+#: src/editor/editor.cpp:625 src/editor/editor.cpp:699
 msgid "The file does not contain a valid map."
 msgstr "Fitxategiak ez du baliozko maparik"
 
-#: src/editor/editor.cpp:1246
+#: src/editor/editor.cpp:1259
 msgid "Quit Editor"
 msgstr "Irten editoretik"
 
-#: src/editor/editor.cpp:1250
+#: src/editor/editor.cpp:1263
 msgid "Do you want to save the map before quitting?"
 msgstr "Mapa gorde nahi duzu irten aurretik?"
 
-#: src/editor/editor.cpp:1298
+#: src/editor/editor.cpp:1311
 msgid "Map saved."
 msgstr "Mapa gordeta."
 
-#: src/editor/editor.cpp:1306
+#: src/editor/editor.cpp:1319
 msgid "Could not save the map: $msg"
 msgstr "Ezin izan da mapa gorde: $msg"
 
-#: src/editor/editor.cpp:1321
+#: src/editor/editor.cpp:1334
 msgid "Error: Illegal character in filename."
 msgstr "Errorea: Karaketere ilgeala fitxategi izenean."
 
