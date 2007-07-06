@@ -462,9 +462,10 @@ namespace events{
 			items.push_back(str.str());
 		}
 
-		gui::message_dialog slist(*gui_, "", "");
+		gui::dialog slist(*gui_, "", "", gui::OK_ONLY);
 		slist.set_menu(items, &sorter);
-		slist.show();
+		const int res = slist.show();
+		gui_->scroll_to_leader(units_, res+1);
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,

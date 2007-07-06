@@ -366,15 +366,18 @@ int show_dialog(display& screen, surface image,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
 				int text_widget_max_chars,
-				std::vector<check_item>* options, int xloc, int yloc,
-				const struct style* dialog_style, std::vector<dialog_button_info>* action_buttons,
-				const std::string& help_topic, const menu::sorter* sorter, menu::style* menu_style)
+				std::vector<check_item>* options, 
+				int xloc, int yloc,
+				const struct style* dialog_style, 
+				std::vector<dialog_button_info>* action_buttons,
+				const menu::sorter* sorter, 
+				menu::style* menu_style)
 {
 	const std::string& title = (image.null())? caption : "";
 	const struct style *style = (dialog_style)? dialog_style : &dialog::default_style;
 	CVideo &disp = screen.video();
 
-	gui::dialog d(screen, title, message, type, style, help_topic);
+	gui::dialog d(screen, title, message, type, style);
 
 	//add the components
 	if(!image.null()) {

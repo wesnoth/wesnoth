@@ -176,7 +176,6 @@ int show_dialog(display &screen, surface image,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
 				const struct style *dialog_style=NULL,
 				std::vector<dialog_button_info>* buttons=NULL,
-				const std::string& help_topic="",
 				const menu::sorter* sorter=NULL,
 				menu::style* menu_style=NULL
 			 );
