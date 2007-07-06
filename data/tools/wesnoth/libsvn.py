@@ -124,7 +124,7 @@ class SVN:
         return result(1, out)
 
 
-    """X syncs local files into a local checkout adds new files and removes files
+    """T syncs local files into a local checkout adds new files and removes files
     not in the local files and updates the others.
 
     sync_dir to with files to sync with
@@ -133,7 +133,160 @@ class SVN:
     returns a result object
     """
     def sync(self, sync_dir, exclude = None):
-        return result(-1, "", "not implanted")
+
+        # check whether the status of the repo is clean
+        out, err = self.execute("svn st " + self.checkout_path)
+
+        if(err != ""):
+            return result(-1, out, err)
+        elif(out != ""):
+            return result(-1, out, "checkout not clean:\n" + out)
+
+
+        # check for files in the checkout but not in the sync dir
+        # these files should be removed
+#        print "REMOVE"
+        out_result = ""
+        base_len = len(self.checkout_path)
+        for root, dirs, files in os.walk(self.checkout_path):
+            # ignore the .svn dirs
+            if '.svn' in dirs:
+                dirs.remove('.svn')  
+
+            # first remove directories, since files are handled recursively
+            for dir in dirs:
+#                print "walked into dir: " + dir
+
+                # is the directory in the exclude list? FIXME implant
+                if(False):
+                    continue
+
+
+                # if the directory doesn't exist remove it and don't
+                # walk further into it
+                if(not(os.path.isfile(sync_dir + dir))):
+#                    print "removing dir: " + root + "/" + dir
+                    res = self.remove(root + "/" + dir)
+                    out_result += res.out
+                    if(res.status == -1):
+                        return result(-1, out_result, res.err)
+                    dirs.remove(dir)
+
+            # now test the files
+            for file in files:
+
+                dir = root[base_len:]
+                if(dir != ""):
+                    dir += "/"
+
+#                print "walked into file: " + dir + " " + file
+
+                # is the file in the exclude list? FIXME implant
+                if(False):
+                    continue
+
+                # if the file doesn't exist remove it
+                if(not(os.path.isfile(sync_dir + dir + file))):
+#                    print "removing file: " + root + "/" + file
+                    out, err = self.remove(root + "/" + file)
+                    out_result += out
+                    if(err != ""):
+                        return result(-1, out_result, err)
+
+        # check for files in the sync dir but not in the checkout
+        # these files should be added
+#        print "ADD"
+        base_len = len(sync_dir)
+        add_list = []
+        for root, dirs, files in os.walk(sync_dir):
+            # ignore the .svn dirs
+            if '.svn' in dirs:
+                dirs.remove('.svn')  
+
+            # first add directories, since files are handled recursively
+            for dir in dirs:
+#                print "walked into dir: " + dir
+
+                # is the directory in the exclude list? FIXME implant
+                if(False):
+                    continue
+
+
+                # if the directory doesn't exist add it and don't
+                # walk further into it
+                if(not(os.path.isfile(self.checkout_path + dir))):
+#                    print "adding dir: " + root + "/" + dir
+                    add_list.append(self.checkout_path + dir)
+                    dirs.remove(dir)
+
+            # now test the files
+            for file in files:
+
+                dir = root[base_len:]
+                if(dir != ""):
+                    dir += "/"
+
+#                print "walked into file: " + dir + " " + file
+
+                # is the file in the exclude list? FIXME implant
+                if(False):
+                    continue
+
+                # if the file doesn't exist add it
+                if(not(os.path.isfile(self.checkout_path + dir + file))):
+#                    print "adding file: " + root + "/" + file
+                    add_list.append(self.checkout_path + dir + file)
+
+
+        # copy the files from the sync dir to the checkout
+#        print "COPY"
+        base_len = len(sync_dir)
+        for root, dirs, files in os.walk(sync_dir):
+            # ignore the .svn dirs
+            if '.svn' in dirs:
+                dirs.remove('.svn')  
+
+            # first add directories, since files are handled recursively
+            for dir in dirs:
+#                print "walked into dir: " + dir
+
+                # is the directory in the exclude list? FIXME implant
+                if(False):
+                    continue
+
+
+                # if the directory doesn't exist add it
+                if(not(os.path.isfile(self.checkout_path + dir))):
+#                    print "creating dir: " + root + "/" + dir
+                    os.mkdir(root + "/" + dir)
+                    
+
+            # now test the files
+            for file in files:
+
+                dir = root[base_len:]
+                if(dir != ""):
+                    dir += "/"
+
+#                print "walked into file: " + dir + " " + file
+
+                # is the file in the exclude list? FIXME implant
+                if(False):
+                    continue
+
+                # copy the file
+                shutil.copy(root + file, self.checkout_path + dir + file)
+
+#        print "ADD REALLY this time"
+        for file in add_list:
+            res = self.add(file)
+            out_result += res.out
+            if(res.status == -1):
+                return result(-1, out_result, res.err)
+
+#        print "DONE"
+        return result(1, out_result)
+
 
 
     """T adds a file to the repo
@@ -214,7 +367,6 @@ class SVN:
 
 
         return result(1, out, err)
-        
 
     """X Tests whether a file in the local checkout exists (private)
     
@@ -230,7 +382,7 @@ class SVN:
     def execute(self, command):
         
         #for debugging only
-        print command
+#        print command
 
         stdin, stdout, stderr =  os.popen3(command)
         stdin.close()
