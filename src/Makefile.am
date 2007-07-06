@@ -250,9 +250,6 @@ wesnoth_editor_SOURCES = \
 	widgets/widget.cpp \
 	sdl_ttf/SDL_ttf.c
 
-wesnoth_editor_LDADD = $(THELIBS)
-wesnoth_editor_DEPENDENCIES=libwesnoth-core.a
-
 # This is not presently used.  It documents the list we're trying to reduce to
 reduced_editor_sources = \
 	editor/editor.cpp \
@@ -265,8 +262,10 @@ reduced_editor_sources = \
 	editor/editor_undo.cpp \
 	animated_editor.cpp \
 	astarnode.cpp \
+	astarsearch.cpp \
 	basic_dialog.cpp \
 	builder.cpp \
+	cavegen.cpp \
 	checksum.cpp \
 	clipboard.cpp \
 	color_range.cpp \
@@ -284,6 +283,7 @@ reduced_editor_sources = \
 	map_create.cpp \
 	map_label.cpp \
 	mapgen.cpp \
+	mapgen_dialog.cpp \
 	marked-up_text.cpp \
 	minimap.cpp \
 	preferences.cpp \
@@ -310,6 +310,8 @@ reduced_editor_sources = \
 	widgets/widget.cpp \
 	sdl_ttf/SDL_ttf.c
 
+wesnoth_editor_LDADD = $(THELIBS)
+wesnoth_editor_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
 #    Wesnothd Server                                                        #
