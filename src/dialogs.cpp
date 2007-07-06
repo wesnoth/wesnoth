@@ -14,37 +14,21 @@
 #include "global.hpp"
 
 #include "dialogs.hpp"
-#include "events.hpp"
-#include "filesystem.hpp"
-#include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
 #include "language.hpp"
-#include "log.hpp"
-#include "map.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "minimap.hpp"
 #include "replay.hpp"
-#include "construct_dialog.hpp"
 #include "thread.hpp"
-#include "util.hpp"
-#include "video.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
-#include "serialization/string_utils.hpp"
-#include "widgets/menu.hpp"
 #include "widgets/progressbar.hpp"
 
-#include <cstdio>
-#include <map>
-#include <sstream>
-#include <string>
-#include <time.h>
-#include <vector>
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define LOG_DP LOG_STREAM(info, display)
@@ -292,15 +276,13 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 
 		//see if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
-			std::vector<gui::check_item> options;
-			options.push_back(gui::check_item(_("Don't ask me again!"),false));
-
-			const int res = gui::show_dialog(disp_,NULL,"",_("Do you really want to delete this game?"),gui::YES_NO,
-			                                 NULL,NULL,"",NULL,-1,&options);
-
+			gui::basic_dialog dmenu(disp_,"",
+					       _("Do you really want to delete this game?"),
+					       gui::YES_NO);
+			dmenu.add_option(_("Don't ask me again!"), true);
+			const int res = dmenu.show();
 			//see if the user doesn't want to be asked this again
-			wassert(options.empty() == false);
-			if(options.front().checked) {
+			if(dmenu.option_checked()) {
 				preferences::set_ask_delete_saves(false);
 			}
 
