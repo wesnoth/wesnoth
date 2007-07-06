@@ -367,12 +367,10 @@ namespace events{
 		{
 			dialogs::unit_preview_pane unit_preview(*gui_, &map_, units_list);
 			unit_preview.set_selection(selected);
-			std::vector<gui::preview_pane*> preview_panes;
-			preview_panes.push_back(&unit_preview);
-
-			selected = gui::show_dialog(*gui_,NULL,_("Unit List"),"",
-										gui::OK_CANCEL,&items,&preview_panes,
-										"",NULL,0,NULL,-1,-1,NULL,NULL,"",&sorter);
+			gui::dialog umenu(*gui_, _("Unit List"), "", gui::OK_CANCEL);
+			umenu.set_menu(items, &sorter);
+			umenu.add_pane(&unit_preview);
+			selected = umenu.show();
 		}
 
 		if(selected >= 0 && selected < int(locations_list.size())) {
@@ -402,10 +400,11 @@ namespace events{
 
 		const team& viewing_team = teams_[gui_->viewing_team()];
 
-		//if the player is under shroud or fog, they don't get to see
-		//details about the other sides, only their own side, allied sides and a ??? is
-		//shown to demonstrate lack of information about the other sides
-		// But he see all names with in colours
+		//if the player is under shroud or fog, they don't get
+		//to see details about the other sides, only their own
+		//side, allied sides and a ??? is shown to demonstrate
+		//lack of information about the other sides But he see
+		//all names with in colours
 		for(size_t n = 0; n != teams_.size(); ++n) {
 			if(teams_[n].is_empty()) {
 				continue;
@@ -422,7 +421,9 @@ namespace events{
 			//output the number of the side first, and this will
 			//cause it to be displayed in the correct colour
 			if(leader != units_.end()) {
-				// Add leader image, if it's used fog then it show only random leader image
+
+				// Add leader image. If it's fogged
+				// show only a random leader image.
 				if (known || game_config::debug) {
 					str << IMAGE_PREFIX << leader->second.absolute_image();
 				} else {
@@ -441,7 +442,8 @@ namespace events{
 			}
 
 			if(!known && !game_config::debug) {
-				// We don't spare more info (only name) so let's go on next side ...
+				// We don't spare more info (only name) 
+			  	// so let's go on next side ...
 				items.push_back(str.str());
 				continue;
 			}
@@ -460,8 +462,9 @@ namespace events{
 			items.push_back(str.str());
 		}
 
-		gui::show_dialog(*gui_,NULL,"","",gui::CLOSE_ONLY,&items,
-						 NULL,"",NULL,0,NULL,-1,-1,NULL,NULL,"",&sorter);
+		gui::message_dialog slist(*gui_, "", "");
+		slist.set_menu(items, &sorter);
+		slist.show();
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,
