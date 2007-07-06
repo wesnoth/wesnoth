@@ -1775,15 +1775,23 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 		tmp_y += (disp.hex_size() - image.get()->h)/2;
 	}
 
-	const int ellipse_ypos = ysrc - (ellipse_back != NULL && submerge > 0.0 ? int(double(ellipse_back->h)*submerge) : 0)/2- height_adjust;
-	disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_back);
+	// the division by 2 seems to have no real meaning,
+	// it just works fine with the current center of ellipse
+	// and prevent a too large adjust if submerge = 1.0
+	const int ellipse_ypos = ysrc - height_adjust
+		- static_cast<int>(submerge * disp.hex_size() / 2);
 
+	if (ellipse_back != NULL) {
+		disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_back);
+	}
 
 	disp.draw_unit(tmp_x, tmp_y -height_adjust, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge);
 
+	if (ellipse_front != NULL) {
+		disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_front);
+	}
 
-	disp.video().blit_surface(xsrc,ellipse_ypos,ellipse_front);
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
 		unit_halo_ = halo::add(0, 0, image_halo(), gamemap::location(-1, -1));
 	}
