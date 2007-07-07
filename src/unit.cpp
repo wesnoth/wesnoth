@@ -1664,8 +1664,8 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 
 	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
-	const int x = int(tmp_offset*((double)xdst) + (1.0-tmp_offset)*((double)xsrc));
-	const int y = int(tmp_offset*((double)ydst) + (1.0-tmp_offset)*((double)ysrc));
+	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc);
+	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc);
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
 		if(!current_frame.sound().empty()) {
@@ -1680,8 +1680,8 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	if(!current_frame.halo(anim_->get_current_frame_time()).empty()) {
 		int d = disp.hex_size() / 2;
 		int ft = anim_->get_current_frame_time();
-		int dx = int(current_frame.halo_x(ft) * disp.get_zoom_factor());
-		int hy = y + d - height_adjust + int(current_frame.halo_y(ft) * disp.get_zoom_factor());
+		int dx = static_cast<int>(current_frame.halo_x(ft) * disp.get_zoom_factor());
+		int hy = y + d - height_adjust + static_cast<int>(current_frame.halo_y(ft) * disp.get_zoom_factor());
 		if (facing_ == gamemap::location::NORTH_WEST ||
 		    facing_ == gamemap::location::SOUTH_WEST)
 			unit_anim_halo_ = halo::add(x + d - dx, hy,
