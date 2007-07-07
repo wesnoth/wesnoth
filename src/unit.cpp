@@ -1735,9 +1735,6 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 		image.assign(image::reverse_image(image));
 	}
 
-	Uint32 blend_with = current_frame.blend_with();
-	double blend_ratio = current_frame.blend_ratio(anim_->get_current_frame_time());
-	if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
 	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio(anim_->get_current_frame_time()));
 	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
 			highlight_ratio > ftofxp(0.5)) {
@@ -1747,6 +1744,9 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 		highlight_ratio = ftofxp(1.5);
 	}
 
+	Uint32 blend_with = current_frame.blend_with();
+	double blend_ratio = current_frame.blend_ratio(anim_->get_current_frame_time());
+	//if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
 	if (utils::string_bool(get_state("poisoned")) && blend_ratio == 0){
 		blend_with = disp.rgb(0,255,0);
 		blend_ratio = 0.25;
