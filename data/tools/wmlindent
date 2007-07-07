@@ -44,7 +44,8 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, getopt, filecmp, wmltools, re
+import sys, os, getopt, filecmp, re
+from wesnoth import wmltools
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
@@ -216,13 +217,14 @@ def convertor(linefilter, arglist):
                             os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "h:v",
+    (options, arguments) = getopt.getopt(sys.argv[1:], "d?v",
                                          ['dryrun', 'verbose'])
     verbose = 0
     dryrun = False
     for (opt, val) in options:
         if opt == "-?":
             print __doc__
+            sys.exit(0)
         elif opt in ('-d', '--dryrun'):
             dryrun = True
             verbose = max(1, verbose)
