@@ -333,12 +333,7 @@ void preferences_dialog(display &disp, config &prefs) {
 		}
 
 		if(resolution_button.pressed()) {
-			const bool mode_changed = preferences::show_video_mode_dialog(disp);
-			if(mode_changed) {
-				//the underlying frame buffer is changing,
-				//so we redraw the frame
-				frame.draw();
-			}
+			preferences::show_video_mode_dialog(disp);
 			break;
 		}
 
