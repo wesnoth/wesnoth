@@ -1659,13 +1659,14 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge();
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 	if (is_flying() && height_adjust < 0) height_adjust = 0;
-
+	const int ysrc_adjusted = ysrc - height_adjust; 
+	
 	const unit_frame& current_frame = anim_->get_current_frame();
 
 	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc);
-	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc);
+	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) - height_adjust;
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
 		if(!current_frame.sound().empty()) {
@@ -1681,14 +1682,14 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 		int d = disp.hex_size() / 2;
 		int ft = anim_->get_current_frame_time();
 		int dx = static_cast<int>(current_frame.halo_x(ft) * disp.get_zoom_factor());
-		int hy = y + d - height_adjust + static_cast<int>(current_frame.halo_y(ft) * disp.get_zoom_factor());
+		int dy = static_cast<int>(current_frame.halo_y(ft) * disp.get_zoom_factor());
 		if (facing_ == gamemap::location::NORTH_WEST ||
 		    facing_ == gamemap::location::SOUTH_WEST)
-			unit_anim_halo_ = halo::add(x + d - dx, hy,
+			unit_anim_halo_ = halo::add(x + d - dx, y + d + dy,
 				current_frame.halo(ft), gamemap::location(-1, -1),
 				halo::HREVERSE);
 		else
-			unit_anim_halo_ = halo::add(x + d + dx, hy,
+			unit_anim_halo_ = halo::add(x + d + dx, y + d + dy,
 				current_frame.halo(ft), gamemap::location(-1, -1));
 	}
 	image::locator loc;
@@ -1743,12 +1744,12 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
-	int ellipse_h_adjust = 0;
+	int ellipse_floating = 0;
 	if(preferences::show_side_colours() && draw_bars_) {
 		// the division by 2 seems to have no real meaning,
 		// it just works fine with the current center of ellipse
 		// and prevent a too large adjust if submerge = 1.0
-		ellipse_h_adjust = height_adjust + static_cast<int>(submerge * disp.hex_size() / 2);
+		ellipse_floating = static_cast<int>(submerge * disp.hex_size() / 2);
 		
 		std::string ellipse=image_ellipse();
 		if(ellipse.empty()){
@@ -1769,18 +1770,18 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 
 
 	if (ellipse_back != NULL) {
-		disp.video().blit_surface(xsrc, ysrc-ellipse_h_adjust, ellipse_back);
+		disp.video().blit_surface(xsrc, ysrc_adjusted-ellipse_floating, ellipse_back);
 	}
 
 	if (image != NULL) {
 		int tmp_x = x + (disp.hex_size() - image.get()->w)/2;
-		int tmp_y = y + (disp.hex_size() - image.get()->h)/2 - height_adjust;
+		int tmp_y = y + (disp.hex_size() - image.get()->h)/2;
 		disp.draw_unit(tmp_x, tmp_y, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge);
 	}
 
 	if (ellipse_front != NULL) {
-		disp.video().blit_surface(xsrc, ysrc-ellipse_h_adjust, ellipse_front);
+		disp.video().blit_surface(xsrc, ysrc_adjusted-ellipse_floating, ellipse_front);
 	}
 
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
@@ -1788,7 +1789,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	}
 	if(unit_halo_ != halo::NO_HALO) {
 		const int d = disp.hex_size() / 2;
-		halo::set_location(unit_halo_, x+ d, y -height_adjust+ d);
+		halo::set_location(unit_halo_, x + d, y + d);
 	}
 
 	if(draw_bars_) {
@@ -1816,7 +1817,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 
 		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM,image::NO_ADJUST_COLOUR));
 		if (orb != NULL) {
-			disp.video().blit_surface(xsrc,ysrc-height_adjust,orb);
+			disp.video().blit_surface(xsrc, ysrc_adjusted, orb);
 		}
 
 		double unit_energy = 0.0;
@@ -1828,14 +1829,14 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 #else
 		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
 #endif
-		disp.draw_bar(*energy_file,xsrc+bar_shift,ysrc-height_adjust,(max_hitpoints()*2)/3,unit_energy,hp_color(),bar_alpha);
+		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc_adjusted, (max_hitpoints()*2)/3, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
 			const int level = maximum<int>(level_,1);
 
 			SDL_Color colour=xp_color();
-			disp.draw_bar(*energy_file,xsrc,ysrc-height_adjust,max_experience()/(level*2),filled,colour,bar_alpha);
+			disp.draw_bar(*energy_file, xsrc, ysrc_adjusted, max_experience()/(level*2), filled, colour, bar_alpha);
 		}
 
 		if (can_recruit()) {
@@ -1851,7 +1852,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
 			const surface img(image::get_image(*ov));
 			if(img != NULL) {
-				disp.draw_unit(xsrc,ysrc-height_adjust,img);
+				disp.draw_unit(xsrc, ysrc_adjusted, img);
 			}
 		}
 	}
