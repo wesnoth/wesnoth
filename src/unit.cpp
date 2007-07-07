@@ -1875,24 +1875,23 @@ void unit::clear_haloes()
 std::set<gamemap::location> unit::overlaps(const game_display &disp, const gamemap::location &loc) const
 {
 	std::set<gamemap::location> over;
-
 	const gamemap & map = disp.get_map();
-	int height_adjust = map.get_terrain_info(map.get_terrain(loc)).unit_height_adjust();
-	if (is_flying() && height_adjust < 0) height_adjust = 0;
-
-	if (height_adjust > 0) {
-		over.insert(loc.get_direction(gamemap::location::NORTH));
-		over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
-		over.insert(loc.get_direction(gamemap::location::NORTH_EAST));
-	} else if (height_adjust < 0) {
-		over.insert(loc.get_direction(gamemap::location::SOUTH));
-		over.insert(loc.get_direction(gamemap::location::SOUTH_WEST));
-		over.insert(loc.get_direction(gamemap::location::SOUTH_EAST));
-	}
 
 	switch (state_) {
 	case STATE_STANDING:
-		// Standing units don't overlap anything.
+		// Standing units only overlaps if height is adjusted
+		int height_adjust = map.get_terrain_info(map.get_terrain(loc)).unit_height_adjust();
+		if (is_flying() && height_adjust < 0) height_adjust = 0;
+
+		if (height_adjust > 0) {
+			over.insert(loc.get_direction(gamemap::location::NORTH));
+			over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
+			over.insert(loc.get_direction(gamemap::location::NORTH_EAST));
+		} else if (height_adjust < 0) {
+			over.insert(loc.get_direction(gamemap::location::SOUTH));
+			over.insert(loc.get_direction(gamemap::location::SOUTH_WEST));
+			over.insert(loc.get_direction(gamemap::location::SOUTH_EAST));
+		}
 		break;
 	default:
 		gamemap::location arr[6];
