@@ -246,8 +246,7 @@ void preferences_dialog(display &disp, config &prefs) {
 	std::vector<gui::button*> buttons;
 	buttons.push_back(&close_button);
 
-	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),_("Preferences"),NULL,&buttons,&restorer);
+	gui::dialog_frame frame(disp.video(),_("Preferences"),gui::dialog_frame::default_style,true,&buttons);
 	frame.layout(xpos,ypos,width,height);
 	frame.draw();
 
@@ -307,15 +306,11 @@ void preferences_dialog(display &disp, config &prefs) {
 		}
 
 		if(fullscreen_button.pressed()) {
-			//the underlying frame buffer is changing, so cancel
-			//the surface restorer restoring the frame buffer state
-			restorer.cancel();
 			preferences::set_fullscreen(fullscreen_button.checked());
 			redraw_all = true;
 		}
 
 		if(redraw_all) {
-			restorer.cancel();
 			frame.draw();
 			fullscreen_button.set_dirty();
 			close_button.set_dirty();
@@ -340,9 +335,9 @@ void preferences_dialog(display &disp, config &prefs) {
 		if(resolution_button.pressed()) {
 			const bool mode_changed = preferences::show_video_mode_dialog(disp);
 			if(mode_changed) {
-				//the underlying frame buffer is changing, so cancel
-				//the surface restorer restoring the frame buffer state
-				restorer.cancel();
+				//the underlying frame buffer is changing,
+				//so we redraw the frame
+				frame.draw();
 			}
 			break;
 		}

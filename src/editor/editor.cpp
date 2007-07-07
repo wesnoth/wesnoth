@@ -1347,7 +1347,7 @@ void map_editor::show_menu(const std::vector<std::string>& items, const int xloc
 	}
 	static const std::string style = "menu2";
 	gui::dialog kmenu = gui::dialog(gui_, "", "", gui::MESSAGE,
-						    &gui::dialog::hotkeys_style);
+						    gui::dialog::hotkeys_style);
 	kmenu.set_menu(get_menu_images(items));
 	const int res = kmenu.show(xloc, yloc);
 	if(res < 0 || (unsigned)res >= items.size())
