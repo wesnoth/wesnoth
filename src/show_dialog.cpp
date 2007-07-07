@@ -57,7 +57,10 @@ namespace gui {
 const int ButtonHPadding = 10;
 const int ButtonVPadding = 10;
 
-static const struct style &default_style = dialog::default_style; //{"opaque", false}
+//note: style names are directly related to the panel image file names
+const dialog_frame::style dialog_frame::default_style("opaque", 0);
+const dialog_frame::style dialog_frame::message_style("translucent65", 3);
+const dialog_frame::style dialog_frame::titlescreen_style("translucent54", 0);
 
 const int dialog_frame::title_border_w = 10;
 const int dialog_frame::title_border_h = 5;
@@ -86,26 +89,27 @@ dialog_manager::~dialog_manager()
 	SDL_PushEvent(&pb_event);
 }
 
-dialog_frame::dialog_frame(CVideo &video, const std::string& title,
-	 const struct style *style, std::vector<button*>* buttons,
-	 surface_restorer* restorer, button* help_button) : title_(title), 
-	 video_(video), dialog_style_(style ? style : &default_style),
-	 buttons_(buttons), help_button_(help_button), restorer_(restorer),
-	 top_(image::get_image("dialogs/" + dialog_style_->panel + "-border-top.png",image::UNSCALED)),
-	 bot_(image::get_image("dialogs/" + dialog_style_->panel + "-border-bottom.png",image::UNSCALED)),
-	 left_(image::get_image("dialogs/" + dialog_style_->panel + "-border-left.png",image::UNSCALED)),
-	 right_(image::get_image("dialogs/" + dialog_style_->panel + "-border-right.png",image::UNSCALED)),
-	 top_left_(image::get_image("dialogs/" + dialog_style_->panel + "-border-topleft.png",image::UNSCALED)),
-	 bot_left_(image::get_image("dialogs/" + dialog_style_->panel + "-border-botleft.png",image::UNSCALED)),
-	 top_right_(image::get_image("dialogs/" + dialog_style_->panel + "-border-topright.png",image::UNSCALED)),
-	 bot_right_(image::get_image("dialogs/" + dialog_style_->panel + "-border-botright.png",image::UNSCALED)),
-	 bg_(image::get_image("dialogs/" + dialog_style_->panel + "-background.png",image::UNSCALED))
+dialog_frame::dialog_frame(CVideo &video, const std::string& title, const style& style,
+	bool auto_restore, std::vector<button*>* buttons, button* help_button)
+	:title_(title), video_(video), dialog_style_(style),
+	 buttons_(buttons), help_button_(help_button), restorer_(NULL), auto_restore_(auto_restore),
+	 top_(image::get_image("dialogs/" + dialog_style_.panel + "-border-top.png",image::UNSCALED)),
+	 bot_(image::get_image("dialogs/" + dialog_style_.panel + "-border-bottom.png",image::UNSCALED)),
+	 left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-left.png",image::UNSCALED)),
+	 right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-right.png",image::UNSCALED)),
+	 top_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topleft.png",image::UNSCALED)),
+	 bot_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botleft.png",image::UNSCALED)),
+	 top_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topright.png",image::UNSCALED)),
+	 bot_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botright.png",image::UNSCALED)),
+	 bg_(image::get_image("dialogs/" + dialog_style_.panel + "-background.png",image::UNSCALED))
 {
 	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
 }
 
 dialog_frame::~dialog_frame()
-{}
+{
+	delete restorer_;
+}
 
 dialog_frame::dimension_measurements::dimension_measurements() :
 	interior(empty_rect), exterior(empty_rect), title(empty_rect), button_row(empty_rect)
@@ -253,21 +257,27 @@ void dialog_frame::draw_border()
 	video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y + dim_.interior.h, bot_right_);
 }
 
+void dialog_frame::clear_background()
+{
+	delete restorer_;
+	restorer_ = NULL;
+}
+
 void dialog_frame::draw_background()
 {
-	if(restorer_ != NULL) {
-		*restorer_ = surface_restorer(&video_, dim_.exterior);
+	if(auto_restore_) {
+		clear_background();
+		restorer_ = new surface_restorer(&video_, dim_.exterior);
 	}
 
-
-	if (dialog_style_->blur_radius) {
+	if (dialog_style_.blur_radius) {
 		surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
-		surf = blur_surface(surf, dialog_style_->blur_radius);
+		surf = blur_surface(surf, dialog_style_.blur_radius);
 		SDL_BlitSurface(surf, NULL, video_.getSurface(), &dim_.exterior);
 	}
 
 	if(bg_ == NULL) {
-		ERR_DP << "could not find dialog background '" << dialog_style_->panel << "'\n";
+		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'\n";
 		return;
 	}
 	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
@@ -368,13 +378,13 @@ int show_dialog(display& screen, surface image,
 				int text_widget_max_chars,
 				std::vector<check_item>* options, 
 				int xloc, int yloc,
-				const struct style* dialog_style, 
+				const dialog_frame::style* dialog_style, 
 				std::vector<dialog_button_info>* action_buttons,
 				const menu::sorter* sorter, 
 				menu::style* menu_style)
 {
 	const std::string& title = (image.null())? caption : "";
-	const struct style *style = (dialog_style)? dialog_style : &dialog::default_style;
+	const dialog::style& style = (dialog_style)? *dialog_style : dialog::default_style;
 	CVideo &disp = screen.video();
 
 	gui::dialog d(screen, title, message, type, style);

@@ -228,7 +228,7 @@ void show_about(display &disp, std::string campaign)
 			map_rect.w * 13 / 16,
 			map_rect.h - top_margin - bottom_margin 
 		};
-		gui::dialog_frame f(disp.video(), "", &gui::dialog::titlescreen_style);
+		gui::dialog_frame f(disp.video(), "", gui::dialog_frame::titlescreen_style, false);
 		f.layout(frame_area);
         f.draw_background();
 

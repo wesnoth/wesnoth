@@ -815,7 +815,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 		int res = 0;
 		{
 			gui::dialog mmenu = gui::dialog(gui,"","",
-			gui::MESSAGE, &gui::dialog::hotkeys_style);
+			gui::MESSAGE, gui::dialog::hotkeys_style);
 			mmenu.set_menu(menu);
 			res = mmenu.show(xloc, yloc);
 		} // this will kill the dialog

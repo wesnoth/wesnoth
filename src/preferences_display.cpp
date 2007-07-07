@@ -1302,8 +1302,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	std::vector<gui::button*> buttons;
 	buttons.push_back(&close_button);
 
-	surface_restorer restorer;
-	gui::dialog_frame f(disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
+	gui::dialog_frame f(disp.video(),_("Hotkey Settings"),gui::dialog_frame::default_style,false,&buttons);
 	f.layout(xpos,ypos,width,height);
 	f.draw();
 

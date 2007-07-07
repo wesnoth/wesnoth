@@ -2624,10 +2624,9 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	std::vector<gui::button*> buttons_ptr;
 	gui::button close_button_(disp.video(), _("Close"));
 	buttons_ptr.push_back(&close_button_);
-	surface_restorer restorer;
 
-	gui::dialog_frame f(disp.video(), _("The Battle for Wesnoth Help"),
-					 NULL, &buttons_ptr, &restorer);
+	gui::dialog_frame f(disp.video(), _("The Battle for Wesnoth Help"), gui::dialog_frame::default_style,
+					 false, &buttons_ptr);
 	f.layout(xloc, yloc, width, height);
 	f.draw();
 	

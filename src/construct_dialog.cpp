@@ -52,14 +52,11 @@
 
 namespace gui {
 
-// This is where the connections between styles and the panel images
-// in the data tree gets made.
-const struct style dialog::default_style("opaque", 0);
-const struct style dialog::message_style("translucent65", 3);
-const struct style dialog::titlescreen_style("translucent54", 0);
-const struct style dialog::hotkeys_style("menu2", 0);
-
 //static initialization
+//note: style names are directly related to the panel image file names
+const dialog::style& dialog::default_style = dialog_frame::default_style;
+const dialog::style& dialog::message_style = dialog_frame::message_style;
+const dialog::style dialog::hotkeys_style("menu2", 0);
 const std::string dialog::no_help("");
 const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
@@ -68,6 +65,7 @@ const size_t dialog::right_padding = font::relative_size(10);
 const size_t dialog::image_h_pad = font::relative_size(/*image_ == NULL ? 0 :*/ 10);
 const size_t dialog::top_padding = font::relative_size(10);
 const size_t dialog::bottom_padding = font::relative_size(10);
+
 
 #ifdef USE_TINY_GUI
 	const int dialog::max_menu_width = 300;
@@ -117,12 +115,12 @@ dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior
 } 
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
-				const DIALOG_TYPE type, const struct style* dialog_style,
+				const DIALOG_TYPE type, const style& dialog_style,
 				const std::string& help_topic) : disp_(disp), image_(NULL),
 				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
 				type_(type), menu_(NULL),
 				help_button_(disp, help_topic),  text_widget_(NULL),
-				frame_(NULL), bg_restore_(NULL), result_(CONTINUE_DIALOG)
+				frame_(NULL), result_(CONTINUE_DIALOG)
 {
 	CVideo& screen = disp_.video();
 
@@ -182,7 +180,6 @@ dialog::~dialog()
 //	for (p = preview_panes_.begin(); p != preview_panes_.end(); ++p) {
 //		delete (*p);
 //	}
-	delete bg_restore_;
 }
 
 const bool dialog::option_checked(unsigned int option_index)
@@ -304,6 +301,7 @@ int dialog::show()
 		dp_info.cycle();
 	} while(!done());
 
+	clear_background();
 	return result();
 }
 
@@ -334,12 +332,15 @@ dialog_frame& dialog::get_frame()
 		{
 			frame_buttons_.push_back(*b);
 		}
-		delete bg_restore_;
-		bg_restore_ = new surface_restorer;
-		frame_ = new dialog_frame(screen, title_, style_, &frame_buttons_, bg_restore_, 
+		frame_ = new dialog_frame(screen, title_, style_,  true, &frame_buttons_,
 			help_button_.topic().empty() ? NULL : &help_button_);
 	}
 	return *frame_;
+}
+
+void dialog::clear_background() {
+	delete frame_;
+	frame_ = NULL;
 }
 
 void dialog::draw_frame()

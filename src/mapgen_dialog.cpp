@@ -96,12 +96,10 @@ void default_map_generator::user_config(display& disp)
 	const int xpos = screen.getx()/2 - width/2;
 	int ypos = screen.gety()/2 - height/2;
 
-	surface_restorer restorer;
-
 	gui::button close_button(screen,_("Close Window"));
 	std::vector<gui::button*> buttons(1,&close_button);
 
-	gui::dialog_frame f(screen,_("Map Generator"),NULL,&buttons,&restorer);
+	gui::dialog_frame f(screen,_("Map Generator"),gui::dialog_frame::default_style,false,&buttons);
 	f.layout(xpos,ypos,width,height);
 	f.draw();
 

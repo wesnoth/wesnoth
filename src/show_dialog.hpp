@@ -56,26 +56,36 @@ private:
 
 class dialog_frame {
 public:
-	//Static members
-	static const int title_border_w, title_border_h;
-
-	int top_padding() const;
-	int bottom_padding() const;
-
 	struct dimension_measurements {
 		dimension_measurements();
 		SDL_Rect interior, exterior, title, button_row;
 	};
+	class style {
+	public:
+		style(std::string const& p, int br) : panel(p), blur_radius(br) {}
+		std::string	panel;
+		int	blur_radius;
+	};
+
+	//Static members
+	static const int title_border_w, title_border_h;
+	static const style default_style;
+	static const style message_style;
+	static const style titlescreen_style;
+
 	dialog_frame(CVideo &video, const std::string& title="",
-                 const struct style *dialog_style=NULL, 
-		 std::vector<button*>* buttons=NULL,
-                 surface_restorer* restorer=NULL, button* help_button=NULL);
+		const style& dialog_style=default_style,
+		bool auto_restore=true, std::vector<button*>* buttons=NULL,
+		button* help_button=NULL);
 	~dialog_frame();
 
 	dimension_measurements layout(int x, int y, int w, int h);
 	dimension_measurements layout(SDL_Rect const& frame_area);
 	void set_layout(dimension_measurements &new_dim) { dim_ = new_dim; }
 	dimension_measurements get_layout() const { return dim_; }
+
+	int top_padding() const;
+	int bottom_padding() const;
 
 	void draw();
 
@@ -87,12 +97,15 @@ public:
 	SDL_Rect draw_title(CVideo *video);
 
 private:
+	void clear_background();
+
 	std::string title_;
 	CVideo &video_;
-	const struct style *dialog_style_;
+	const style& dialog_style_;
 	std::vector<button*>* buttons_;
 	button* help_button_;
 	surface_restorer* restorer_;
+	bool auto_restore_;
 	dimension_measurements dim_;
 	surface top_, bot_, left_, right_, top_left_, bot_left_, top_right_, bot_right_, bg_;
 	bool have_border_;
@@ -174,7 +187,7 @@ int show_dialog(display &screen, surface image,
 				std::string* text_widget_text=NULL,
 				const int text_widget_max_chars = 256,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
-				const struct style *dialog_style=NULL,
+				const dialog_frame::style* dialog_style=NULL,
 				std::vector<dialog_button_info>* buttons=NULL,
 				const menu::sorter* sorter=NULL,
 				menu::style* menu_style=NULL

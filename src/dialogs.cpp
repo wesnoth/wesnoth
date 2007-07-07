@@ -837,7 +837,7 @@ void campaign_preview_pane::draw_contents()
 		location().h-campaign_preview_border*6 };
 
 	/* background frame */
-	gui::dialog_frame f(video(), "", &gui::dialog::message_style);
+	gui::dialog_frame f(video(), "", gui::dialog_frame::message_style, false);
 	f.layout(area);
 	f.draw_background();
 	f.draw_border();
@@ -892,8 +892,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	gui::button cancel_button(disp.video(),_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, false, &buttons_ptr);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
@@ -994,8 +993,7 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	gui::button cancel_button(disp.video(),_("Cancel"));
 	std::vector<gui::button*> buttons_ptr(1,&cancel_button);
 
-	surface_restorer restorer;
-	gui::dialog_frame frame(disp.video(),msg,NULL,&buttons_ptr,&restorer);
+	gui::dialog_frame frame(disp.video(), msg, gui::dialog_frame::default_style, false, &buttons_ptr);
 	frame.layout(left,top,width,height);
 	frame.draw();
 
