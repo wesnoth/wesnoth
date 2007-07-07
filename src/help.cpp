@@ -2626,7 +2626,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	buttons_ptr.push_back(&close_button_);
 
 	gui::dialog_frame f(disp.video(), _("The Battle for Wesnoth Help"), gui::dialog_frame::default_style,
-					 false, &buttons_ptr);
+					 true, &buttons_ptr);
 	f.layout(xloc, yloc, width, height);
 	f.draw();
 	
