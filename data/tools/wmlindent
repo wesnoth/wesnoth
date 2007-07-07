@@ -217,12 +217,12 @@ def convertor(linefilter, arglist):
                             os.rename(filename + ".out", filename)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "d?v",
-                                         ['dryrun', 'verbose'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "h?dv",
+                                         ['help', 'dryrun', 'verbose'])
     verbose = 0
     dryrun = False
     for (opt, val) in options:
-        if opt == "-?":
+        if opt in ('-?', '-h', '--help'):
             print __doc__
             sys.exit(0)
         elif opt in ('-d', '--dryrun'):
