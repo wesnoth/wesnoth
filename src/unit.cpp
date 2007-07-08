@@ -1876,7 +1876,7 @@ void unit::clear_haloes()
 	}
 }
 
-std::set<gamemap::location> unit::overlaps(const game_display &disp, const gamemap::location &loc) const
+std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 {
 	std::set<gamemap::location> over;
 
@@ -1884,8 +1884,7 @@ std::set<gamemap::location> unit::overlaps(const game_display &disp, const gamem
 	case STATE_STANDING:
 		// Standing units only overlaps if height is adjusted
 		{
-			const gamemap & map = disp.get_map();
-			int height_adjust = map.get_terrain_info(map.get_terrain(loc)).unit_height_adjust();
+			int height_adjust = map_->get_terrain_info(map_->get_terrain(loc)).unit_height_adjust();
 			if (is_flying() && height_adjust < 0) height_adjust = 0;
 
 			if (height_adjust > 0) {

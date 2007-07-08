@@ -196,7 +196,7 @@ class unit
 		void set_facing(gamemap::location::DIRECTION dir);
 		gamemap::location::DIRECTION facing() const { return facing_; }
 
-		std::set<gamemap::location> overlaps(const game_display &disp, const gamemap::location &loc) const;
+		std::set<gamemap::location> overlaps(const gamemap::location &loc) const;
 		const t_string& traits_description() const { return traits_description_; }
 
 		int value() const { return unit_value_; }
