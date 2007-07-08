@@ -1646,7 +1646,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if(refreshing_) return;
 	refreshing_ = true;
 
-	const gamemap::location dst = loc.get_direction(facing());
+	bool facing_west = facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST;
+	const gamemap::location dst = loc.get_direction(facing_);
 	const int xsrc = disp.get_location_x(loc);
 	const int ysrc = disp.get_location_y(loc);
 	const int xdst = disp.get_location_x(dst);
@@ -1667,21 +1668,20 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		if(!current_frame.sound().empty()) {
 			sound::play_sound(current_frame.sound());
 		}
-
 	}
 
 	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
-	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc);
-	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) - height_adjust;
+	int d2 = disp.hex_size() / 2;
+	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
+	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2 - height_adjust;
 
 
-	int d = disp.hex_size() / 2;
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
 		unit_halo_ = halo::add(0, 0, image_halo(), gamemap::location(-1, -1));
 	}
 	if(unit_halo_ != halo::NO_HALO) {
-		halo::set_location(unit_halo_, x + d, y + d);
+		halo::set_location(unit_halo_, x, y);
 	}
 	
 	if(unit_anim_halo_ != halo::NO_HALO) {
@@ -1692,14 +1692,10 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		int ft = anim_->get_current_frame_time();
 		int dx = static_cast<int>(current_frame.halo_x(ft) * disp.get_zoom_factor());
 		int dy = static_cast<int>(current_frame.halo_y(ft) * disp.get_zoom_factor());
-		if (facing_ == gamemap::location::NORTH_WEST ||
-		    facing_ == gamemap::location::SOUTH_WEST)
-			unit_anim_halo_ = halo::add(x + d - dx, y + d + dy,
+		if (facing_west) dx = -dx;
+		unit_anim_halo_ = halo::add(x + dx, y + dy,
 				current_frame.halo(ft), gamemap::location(-1, -1),
-				halo::HREVERSE);
-		else
-			unit_anim_halo_ = halo::add(x + d + dx, y + d + dy,
-				current_frame.halo(ft), gamemap::location(-1, -1));
+				facing_west ? halo::HREVERSE : halo::NORMAL);
 	}
 
 
@@ -1730,7 +1726,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if(utils::string_bool(get_state("stoned"))) {
 		image = greyscale_image(image);
 	}
-	if(facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST) {
+	if(facing_west) {
 		image.assign(image::reverse_image(image));
 	}
 
@@ -1784,8 +1780,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	}
 
 	if (image != NULL) {
-		int tmp_x = x + (disp.hex_size() - image.get()->w)/2;
-		int tmp_y = y + (disp.hex_size() - image.get()->h)/2;
+		int tmp_x = x - image->w/2;
+		int tmp_y = y - image->h/2;
 		disp.draw_unit(tmp_x, tmp_y, image, false, highlight_ratio,
 			blend_with, blend_ratio, submerge);
 	}
@@ -1847,7 +1843,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-				disp.video().blit_surface(xsrc,ysrc-height_adjust,crown);
+				disp.video().blit_surface(xsrc,ysrc_adjusted,crown);
 			}
 		}
 		
