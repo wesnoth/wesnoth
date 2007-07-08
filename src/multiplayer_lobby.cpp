@@ -310,13 +310,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
 	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
 
-	//if you change lobby_minimaps setting, content will be update on lobby update
-	minimaps_ = preferences::show_lobby_minimaps();
-	if (minimaps_) {
-		item_height_ = 100;
-	} else {
-		item_height_ = 75;
-	}
+	item_height_ = 100;
 
 	// don't throw the rendered minimaps away
 	std::vector<minimap_cache_item> minimap_cache;

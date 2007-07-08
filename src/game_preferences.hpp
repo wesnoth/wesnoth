@@ -36,9 +36,6 @@ namespace preferences {
 		base_manager base;
 	};
 
-	bool show_lobby_minimaps();
-	void save_show_lobby_minimaps(const bool show);
-
 	bool adjust_gamma();
 	void _set_adjust_gamma(bool val);
 

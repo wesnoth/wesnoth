@@ -43,8 +43,6 @@ bool haloes = true;
 
 bool unit_genders = true;
 
-bool lobby_minimaps = true;
-
 std::set<std::string> encountered_units_set;
 std::set<t_translation::t_letter> encountered_terrains_set;
 
@@ -87,17 +85,6 @@ manager::~manager()
 
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
-}
-
-bool show_lobby_minimaps()
-{
-	return lobby_minimaps;
-}
-
-void save_show_lobby_minimaps(bool show)
-{
-	preferences::set("lobby_minimaps", (show ? "yes" : "no"));
-	lobby_minimaps = show;
 }
 
 bool adjust_gamma()

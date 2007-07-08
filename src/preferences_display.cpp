@@ -55,7 +55,6 @@ display_manager::display_manager(display* d)
 	set_fullscreen(fullscreen());
 	set_gamma(gamma());
 	set_colour_cursors(preferences::get("colour_cursors") == "yes");
-	save_show_lobby_minimaps(preferences::get("lobby_minimaps") != "no");
 }
 
 display_manager::~display_manager()
@@ -229,8 +228,9 @@ private:
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, 
 	  		show_grid_button_, save_replays_button_, delete_autosaves_button_,
-			lobby_minimaps_button_, show_lobby_joins_button1_, 
-			show_lobby_joins_button2_, show_lobby_joins_button3_, 
+			show_lobby_joins_button1_, 
+			show_lobby_joins_button2_, 
+			show_lobby_joins_button3_, 
 			sort_list_by_group_button_, iconize_list_button_, 
 			friends_list_button_, friends_back_button_, 
 			friends_add_friend_button_, friends_add_ignore_button_,
@@ -277,7 +277,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
 	  save_replays_button_(disp.video(), _("Save Replays"), gui::button::TYPE_CHECK),
 	  delete_autosaves_button_(disp.video(), _("Delete Autosaves"), gui::button::TYPE_CHECK),
-	  lobby_minimaps_button_(disp.video(), _("Show Lobby Minimaps"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button1_(disp.video(), _("Do Not Show Lobby Joins"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button2_(disp.video(), _("Show Lobby Joins Of Friends Only"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
@@ -444,9 +443,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
-	lobby_minimaps_button_.set_check(show_lobby_minimaps());
-	lobby_minimaps_button_.set_help_string(_("Show minimaps in the multiplayer lobby"));
-
 	sort_list_by_group_button_.set_check(sort_list());
 	sort_list_by_group_button_.set_help_string(_("Sort the player list in the lobby by player groups"));
 
@@ -517,7 +513,6 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&save_replays_button_);
 	h.push_back(&delete_autosaves_button_);
 	h.push_back(&show_grid_button_);
-	h.push_back(&lobby_minimaps_button_);
 	h.push_back(&sort_list_by_group_button_);
 	h.push_back(&iconize_list_button_);
 	h.push_back(&show_lobby_joins_button1_);
@@ -696,7 +691,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 								rect.w - horizontal_padding - right_border, 0 };
 	chat_lines_slider_.set_location(chat_lines_rect);
 	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
-	ypos += item_interline; lobby_minimaps_button_.set_location(rect.x, ypos);
 	ypos += item_interline; sort_list_by_group_button_.set_location(rect.x, ypos);
 	ypos += item_interline; iconize_list_button_.set_location(rect.x, ypos);
 	
@@ -896,9 +890,6 @@ void preferences_dialog::process_event()
 	}
 
 	if (tab_ == MULTIPLAYER_TAB) {
-		if (lobby_minimaps_button_.pressed())
-			save_show_lobby_minimaps(lobby_minimaps_button_.checked());
-			
 		if (show_lobby_joins_button1_.pressed()) {
 			set_lobby_joins(SHOW_NON);
 			show_lobby_joins_button1_.set_check(true);
@@ -1143,7 +1134,6 @@ void preferences_dialog::set_selection(int index)
 	chat_lines_label_.hide(hide_multiplayer);
 	chat_lines_slider_.hide(hide_multiplayer);
 	chat_timestamp_button_.hide(hide_multiplayer);
-	lobby_minimaps_button_.hide(hide_multiplayer);
 	sort_list_by_group_button_.hide(hide_multiplayer);
 	iconize_list_button_.hide(hide_multiplayer);
 	show_lobby_joins_button1_.hide(hide_multiplayer);
