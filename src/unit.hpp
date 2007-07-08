@@ -169,7 +169,7 @@ class unit
 
 		// a sdl surface, ready for display for place where we need a fix image of the unit
 		const surface still_image(bool scaled = false) const;
-		void redraw_unit(game_display& disp,gamemap::location hex);
+		void redraw_unit(game_display& disp, const gamemap::location& loc);
 		// clear unit_halo_ and unit_anim_halo_
 		void clear_haloes();
 		

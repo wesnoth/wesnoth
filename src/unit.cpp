@@ -1462,21 +1462,20 @@ void unit::write(config& cfg) const
 
 const surface unit::still_image(bool scaled) const
 {
-	image::locator  loc;
-
+	image::locator image_loc;
 
 #ifdef LOW_MEM
-	loc = image::locator(absolute_image());
+	image_loc = image::locator(absolute_image());
 #else
 	std::string mods=image_mods();
 	if(mods.size()){
-		loc = image::locator(absolute_image(),mods);
+		image_loc = image::locator(absolute_image(),mods);
 	} else {
-		loc = image::locator(absolute_image());
+		image_loc = image::locator(absolute_image());
 	}
 #endif
 
-	surface unit_image(image::get_image(loc, scaled ? image::SCALED_TO_ZOOM : image::UNSCALED));
+	surface unit_image(image::get_image(image_loc, scaled ? image::SCALED_TO_ZOOM : image::UNSCALED));
 	return unit_image;
 }
 
@@ -1501,9 +1500,9 @@ void unit::set_defending(const game_display &disp,const gamemap::location& loc, 
 	start_animation(disp,loc,defend_animation(disp,loc,hit_type,attack,secondary_attack,swing_num,damage),true);
 
 	// add a blink on damage effect
-	const image::locator my_image = anim_->get_last_frame().image();
+	const image::locator image_loc = anim_->get_last_frame().image();
 	if(damage) {
-		anim_->add_frame(100,unit_frame(my_image,100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
+		anim_->add_frame(100,unit_frame(image_loc,100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
 	}
 }
 
@@ -1569,8 +1568,8 @@ void unit::set_dying(const game_display &disp,const gamemap::location& loc,const
 {
 	state_ = STATE_DYING;
 	start_animation(disp,loc,die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack),true);
-	image::locator tmp_image = anim_->get_last_frame().image();
-	anim_->add_frame(600,unit_frame(tmp_image,600,"1~0:600"));
+	image::locator image_loc = anim_->get_last_frame().image();
+	anim_->add_frame(600,unit_frame(image_loc,600,"1~0:600"));
 }
 void unit::set_healing(const game_display &disp,const gamemap::location& loc,int healing)
 {
@@ -1633,11 +1632,11 @@ void unit::set_facing(gamemap::location::DIRECTION dir) {
 	facing_ = dir;
 }
 
-void unit::redraw_unit(game_display& disp,gamemap::location hex)
+void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 {
 	const gamemap & map = disp.get_map();
-	if(!hex.valid() || hidden_ || disp.fogged(hex) ||
-			(invisible(hex,disp.get_units(),disp.get_teams()) &&
+	if(!loc.valid() || hidden_ || disp.fogged(loc) ||
+			(invisible(loc,disp.get_units(),disp.get_teams()) &&
 			disp.get_teams()[disp.viewing_team()].is_enemy(side())) ){
 
 		clear_haloes();
@@ -1647,20 +1646,20 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	if(refreshing_) return;
 	refreshing_ = true;
 
-	const gamemap::location dst= hex.get_direction(facing());
-	const int xsrc = disp.get_location_x(hex);
-	const int ysrc = disp.get_location_y(hex);
+	const gamemap::location dst = loc.get_direction(facing());
+	const int xsrc = disp.get_location_x(loc);
+	const int ysrc = disp.get_location_y(loc);
 	const int xdst = disp.get_location_x(dst);
 	const int ydst = disp.get_location_y(dst);
 
-	const t_translation::t_letter terrain = map.get_terrain(hex);
+	const t_translation::t_letter terrain = map.get_terrain(loc);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
 	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge();
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 	if (is_flying() && height_adjust < 0) height_adjust = 0;
 	const int ysrc_adjusted = ysrc - height_adjust; 
 	
-	if(!anim_) set_standing(disp,hex);
+	if(!anim_) set_standing(disp,loc);
 	const unit_frame& current_frame = anim_->get_current_frame();
 	
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
@@ -1704,19 +1703,19 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	}
 
 
-	image::locator loc;
-	loc = current_frame.image();
-	if(loc.is_void()) {
-		loc = absolute_image();
+	image::locator image_loc;
+	image_loc = current_frame.image();
+	if(image_loc.is_void()) {
+		image_loc = absolute_image();
 	}
 #ifndef LOW_MEM
 	std::string mod=image_mods();
 	if(mod.size()){
-		loc = image::locator(loc,mod);
+		image_loc = image::locator(image_loc,mod);
 	}
 #endif
 
-	surface image(image::get_image(loc,
+	surface image(image::get_image(image_loc,
 				image::SCALED_TO_ZOOM,image::ADJUST_COLOUR,
 #ifndef LOW_MEM
 				true
@@ -1736,11 +1735,11 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	}
 
 	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio(anim_->get_current_frame_time()));
-	if(invisible(hex,disp.get_units(),disp.get_teams()) &&
+	if(invisible(loc,disp.get_units(),disp.get_teams()) &&
 			highlight_ratio > ftofxp(0.5)) {
 		highlight_ratio = ftofxp(0.5);
 	}
-	if(hex == disp.selected_hex() && highlight_ratio == ftofxp(1.0)) {
+	if(loc == disp.selected_hex() && highlight_ratio == ftofxp(1.0)) {
 		highlight_ratio = ftofxp(1.5);
 	}
 
@@ -1767,7 +1766,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 			ellipse="misc/ellipse";
 		}
 
-		const char* const selected = disp.selected_hex() == hex ? "selected-" : "";
+		const char* const selected = disp.selected_hex() == loc ? "selected-" : "";
 
 		// load the ellipse parts recolored to match team color
 		char buf[100];
@@ -1798,7 +1797,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 	if(draw_bars_) {
 		const std::string* movement_file = NULL;
 		const std::string* energy_file = &game_config::energy_image;
-		const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (hex == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7));
+		const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7));
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
@@ -1812,7 +1811,7 @@ void unit::redraw_unit(game_display& disp,gamemap::location hex)
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
 					movement_file = &game_config::unmoved_ball_image;
-				} else if(unit_can_move(hex,disp.get_units(),map,disp.get_teams())) {
+				} else if(unit_can_move(loc,disp.get_units(),map,disp.get_teams())) {
 					movement_file = &game_config::partmoved_ball_image;
 				}
 			}
