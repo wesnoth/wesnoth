@@ -372,9 +372,8 @@ void game_display::draw(bool update,bool force)
 			// draw cross images for debug highlights 
 			if(game_config::debug && debugHighlights_.count(*it)) {
 				const surface cross(image::get_image(game_config::cross_image));
-				if(cross != NULL) {
-					draw_unit(xpos,ypos,cross,false,debugHighlights_[*it],0);
-				}
+				adjust_surface_alpha(cross, debugHighlights_[*it], true);
+				tile_stack_append(cross);
 			}
 
 			// Add the top layer overlay surfaces

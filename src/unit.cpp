@@ -1848,9 +1848,9 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		}
 		
 		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
-			const surface img(image::get_image(*ov));
-			if(img != NULL) {
-				disp.draw_unit(xsrc, ysrc_adjusted, img);
+			const surface ov_img(image::get_image(*ov));
+			if(ov_img != NULL) {
+				disp.video().blit_surface(xsrc, ysrc_adjusted, ov_img);
 			}
 		}
 	}
