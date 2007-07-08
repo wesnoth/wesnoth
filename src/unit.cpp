@@ -1880,55 +1880,44 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 {
 	std::set<gamemap::location> over;
 
-	switch (state_) {
-	case STATE_STANDING:
+	if (state_ == STATE_STANDING) {
 		// Standing units only overlaps if height is adjusted
-		{
-			int height_adjust = map_->get_terrain_info(map_->get_terrain(loc)).unit_height_adjust();
-			if (is_flying() && height_adjust < 0) height_adjust = 0;
+		int height_adjust = map_->get_terrain_info(map_->get_terrain(loc)).unit_height_adjust();
+		if (is_flying() && height_adjust < 0) height_adjust = 0;
 
-			if (height_adjust > 0) {
-				over.insert(loc.get_direction(gamemap::location::NORTH));
-				over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
-				over.insert(loc.get_direction(gamemap::location::NORTH_EAST));
-			} else if (height_adjust < 0) {
-				over.insert(loc.get_direction(gamemap::location::SOUTH));
-				over.insert(loc.get_direction(gamemap::location::SOUTH_WEST));
-				over.insert(loc.get_direction(gamemap::location::SOUTH_EAST));
-			}
+		if (height_adjust > 0) {
+			over.insert(loc.get_direction(gamemap::location::NORTH));
+			over.insert(loc.get_direction(gamemap::location::NORTH_WEST));
+			over.insert(loc.get_direction(gamemap::location::NORTH_EAST));
+		} else if (height_adjust < 0) {
+			over.insert(loc.get_direction(gamemap::location::SOUTH));
+			over.insert(loc.get_direction(gamemap::location::SOUTH_WEST));
+			over.insert(loc.get_direction(gamemap::location::SOUTH_EAST));
 		}
-		break;
-	default:
+	} else {
+		// animated units overlaps adjacent hexes
 		gamemap::location arr[6];
 		get_adjacent_tiles(loc, arr);
 		for (unsigned int i = 0; i < 6; i++) {
 			over.insert(arr[i]);
 		}
-		break;
 	}
+
 	//very early calls, anim not initialized yet
 	double tmp_offset=offset_;
 	if(anim_)tmp_offset= anim_->get_current_frame().offset(anim_->get_animation_time());
 	if(tmp_offset == -20.0) tmp_offset = offset_;
-	// invalidate adj neighbours
-	if(tmp_offset > 0) {
-		gamemap::location adj_loc = loc.get_direction(facing_);
+
+	// invalidate adjacent neighbours if we don't stay in our hex
+	if(tmp_offset != 0) {
+		gamemap::location::DIRECTION dir = (tmp_offset > 0) ? facing_ : loc.get_opposite_dir(facing_);
+		gamemap::location adj_loc =	loc.get_direction(dir);
 		over.insert(adj_loc);
 		gamemap::location arr[6];
 		get_adjacent_tiles(adj_loc, arr);
 		for (unsigned int i = 0; i < 6; i++) {
 			over.insert(arr[i]);
 		}
-	} else if(tmp_offset < 0) {
-		gamemap::location opp_loc = loc.get_direction(loc.get_opposite_dir(facing_));
-		over.insert(opp_loc);
-		gamemap::location arr[6];
-		get_adjacent_tiles(opp_loc, arr);
-		for (unsigned int i = 0; i < 6; i++) {
-			over.insert(arr[i]);
-		}
-	} else {
-	// we stay in our hex, do nothing
 	}
 
 	return over;
