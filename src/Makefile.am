@@ -72,6 +72,7 @@ wesnoth_SOURCES = \
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \
+	game_preferences_display.cpp \
 	gamestatus.cpp \
 	generate_report.cpp \
 	generic_event.cpp \
@@ -187,6 +188,7 @@ wesnoth_editor_SOURCES = \
 	game_display.cpp \
 	game_events.cpp \
 	game_preferences.cpp \
+	game_preferences_display.cpp \
 	gamestatus.cpp \
 	generate_report.cpp \
 	generic_event.cpp \

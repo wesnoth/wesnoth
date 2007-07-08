@@ -160,6 +160,33 @@ void set_language(const std::string& s)
 	prefs["locale"] = s;
 }
 
+bool adjust_gamma()
+{
+	return preferences::get("adjust_gamma") == "yes";
+}
+
+void _set_adjust_gamma(bool val)
+{
+	preferences::set("adjust_gamma", val ? "yes" : "no");
+}
+
+int gamma()
+{
+	static const int default_value = 100;
+	const string_map::const_iterator gamma = get_prefs()->values.find("gamma");
+	if(adjust_gamma() && gamma != get_prefs()->values.end() && gamma->second.empty() == false)
+		return atoi(gamma->second.c_str());
+	else
+		return default_value;
+}
+
+void _set_gamma(int gamma)
+{
+	std::stringstream stream;
+	stream << gamma;
+	preferences::set("gamma", stream.str());
+}
+
 bool grid()
 {
 	const string_map::const_iterator it = prefs.values.find("grid");
