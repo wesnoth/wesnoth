@@ -1,5 +1,5 @@
 # (Battle for Wesnoth) Danish translation of Battle for Wesnoth.
-# Copyright (C) 2005 Wesnoth development team
+# Copyright (C) 2005-2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Anders K. Madsen (madsen@lillesvin.linux.dk), 2005
 # Joe Hansen (joedalton2@yahoo.dk), 2007
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-09 19:53+0200\n"
-"PO-Revision-Date: 2007-06-25 13:44+0200\n"
+"PO-Revision-Date: 2007-07-06 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -242,9 +242,8 @@ msgid "Latin Translation"
 msgstr "Latinsk oversættelse"
 
 #: data/core/about.cfg:612
-#, fuzzy
 msgid "Lithuanian Translation"
-msgstr "Italiensk oversættelse"
+msgstr "Litauisk oversættelse"
 
 #: data/core/about.cfg:619
 msgid "Norwegian Translation"
@@ -1096,16 +1095,16 @@ msgstr ""
 "De fleste enheder har 3 niveauer, men der er undtagelser. Udvalgte enheder "
 "(så som <ref>dst=unit_Mage text=Magiske</ref>) kan have fire. Når en enhed "
 "har nået sit maksimale niveau, kan den have en efter maksimum opgradering "
-"(AMLA). AMLA vil ændre enheden hver gang den når et erfaringsniveau, men "
-"enheden vil blive på samme niveau. Den typiske AMLA effekt er at øge "
-"enhedens maksimale liv med 3.  Den første AMLA vil normalt blive nået med "
-"100 erfaringspoint (80 erfaringspoint for intelligente enheder). Muligheden "
-"for at opnå en ekstra AMLA øges dog proportionalt for hver AMLA der opnås, "
-"så det er ofte mere brugbart at forfremme sine enheder på lavere niveau.\n"
+"(MNF). MNF vil ændre enheden hver gang den når et erfaringsniveau, men "
+"enheden vil blive på samme niveau. Den typiske MNF effekt er at øge enhedens "
+"maksimale liv med 3.  Den første MNF vil normalt blive nået med 100 "
+"erfaringspoint (80 erfaringspoint for intelligente enheder). Muligheden for "
+"at opnå en ekstra MNF øges dog proportionalt for hver MNF der opnås, så det "
+"er ofte mere brugbart at forfremme sine enheder på lavere niveau.\n"
 "\n"
 "Bemærk at kun en lille gruppe af enheder, for eksempel nekrofagen vil kunne "
-"helbredes med AMLA effekter. De fleste enheder modtager kun bonusen til "
-"deres maksimale liv."
+"helbredes med MNF effekter. De fleste enheder modtager kun bonusen til deres "
+"maksimale liv."
 
 #: data/core/help.cfg:222
 msgid "Healing"
@@ -1364,7 +1363,7 @@ msgstr ""
 "\n"
 "Intelligente enheder kan være meget brugbare i begyndelsen af en kampagne da "
 "de avancerer hurtigere til højere niveauer. Senere i en kampagne er "
-"Intelligens ikke nær så brugbart da AMLA ikke er en så væsentlig ændring som "
+"Intelligens ikke nær så brugbart da MNF ikke er en så væsentlig ændring som "
 "at øges med et niveau. Hvis du har mange enheder på maksimalt niveau kan du "
 "eventuelt tilbagekalde enheder med mere egnede karaktertræk."
 
@@ -2548,7 +2547,6 @@ msgstr ""
 "pestangrebet. (Dette gælder ikke for udøde eller enheder i landsbyer.)"
 
 #: data/core/macros/abilities.cfg:479
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2556,9 +2554,9 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Pest:\n"
-"Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af en "
-"enhed der er identisk med og på den samme side som enheden der har "
-"pestangrebet. (Dette gælder ikke for udøde eller enheder i landsbyer.)"
+"Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af et "
+"gående lig på den samme side som enheden der har pestangrebet. (Dette gælder "
+"ikke for udøde eller enheder i landsbyer.)"
 
 #: data/core/macros/abilities.cfg:489
 msgid "slows"
@@ -2688,7 +2686,7 @@ msgstr ""
 
 #: data/core/macros/amla.cfg:10
 msgid ", MAX XP +25%"
-msgstr ", MAKS XP +25 %"
+msgstr ", MAKS EP +25 %"
 
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +"
@@ -4031,9 +4029,8 @@ msgid "Teal"
 msgstr "Grønblå"
 
 #: data/core/terrain.cfg:12
-#, fuzzy
 msgid "None"
-msgstr "ingen"
+msgstr "Ingen"
 
 #: data/core/terrain.cfg:19 src/multiplayer_create.cpp:70
 #: src/multiplayer_lobby.cpp:425 src/multiplayer_lobby.cpp:431
@@ -4372,6 +4369,11 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
+"Der er seks typer af angreb: Stik, klinge, slag, ild, kulde og magiske. "
+"Forskellige enheder har svagheder imod forskellige typer af angreb. "
+"Højreklik på en enhed, og vælg så »Enhedsbeskrivelse«. Klik på "
+"»Modstandsdygtighed« for at se hvor stor modstandskraft en enhed har imod "
+"forskellige angrebstyper."
 
 #: data/hardwired/tips.cfg:5
 msgid ""
@@ -4380,6 +4382,9 @@ msgid ""
 "selected unit in the currently selected terrain is displayed in the top "
 "right corner of the screen."
 msgstr ""
+"Terrænet dine enheder står på afgør hvor stor en chance dine modstandere har "
+"for at ramme dig under kamp. Forsvarsniveauet for den aktuelt valgte enhed i "
+"det aktuelt valgte terræn vises i toppen af det højre hjørne af skærmen."
 
 #: data/hardwired/tips.cfg:6
 msgid ""
@@ -4469,6 +4474,9 @@ msgid ""
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
+"At påføre det dræbende slag til en fjendtlig enhed er den bedste måde at "
+"opnå erfaring. Enheder, som dræber en fjende, modtager 8 erfaringspoint for "
+"hvert niveau den dræbte enhed har."
 
 #: data/hardwired/tips.cfg:15
 msgid ""
@@ -4629,6 +4637,10 @@ msgid ""
 "progressively harder for each AMLA the unit receives, however. Thus, it is "
 "often more useful to try to advance your lower level units."
 msgstr ""
+"Enheder kan opgraderes efter deres maksimale niveau forfremmelser (MNF), "
+"hvilket normalt øger enhedens maksimale liv med 3. At opnå en MNF bliver "
+"forholdsmæssigt sværere for hver MNF enheden opnår. Det er derfor ofte mere "
+"brugbart at forsøge at forfremme lavere rangerende enheder."
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4636,6 +4648,9 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"På kort hvor sløring eller krigståge er slået til er en enheds synsfelt "
+"begrænset af dens maksimale bevægelse. Husk det når du beslutter dig, for "
+"hvilken enhed der er bedst til at spejde i et bestemt terræn."
 
 #: data/hardwired/tips.cfg:36
 msgid ""
@@ -4663,6 +4678,10 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"For at forfremme enheder med lidt erfaring hurtigt, kan du sætte dem sammen "
+"med erfarne enheder. Herefter anvender du veteranenheden til at yde rigelige "
+"med skade på modstanderen til at den mindre erfarne enhed kan sætte det "
+"dræbende stød ind."
 
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
@@ -4785,9 +4804,8 @@ msgid "play side turn"
 msgstr "spil side runde"
 
 #: data/themes/macros.cfg:136
-#, fuzzy
 msgid "Point of view"
-msgstr "Forrådnelsesmikstur"
+msgstr "Synspunkt"
 
 #: data/themes/macros.cfg:148
 msgid "Skip animation"
@@ -4969,14 +4987,14 @@ msgid "No Saved Games"
 msgstr "Ingen gemte spil"
 
 #: src/dialogs.cpp:536
-#, fuzzy
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
-"Der er ingen gemte spil der kan indlæses.\n"
-"(Der gemmes automatisk når et scenario er ovre.)"
+"Der er ingen gemte spil der kan hentes.\n"
+"\n"
+"(Spil gemmes automatisk når et scenarie er ovre)"
 
 #: src/dialogs.cpp:549
 msgid "Delete Save"
@@ -5431,9 +5449,8 @@ msgid "Observers:"
 msgstr "Observatører:"
 
 #: src/help.cpp:1104
-#, fuzzy
 msgid "Advances from: "
-msgstr "Forfremmes fra:"
+msgstr "Forfremmes fra: "
 
 #: src/help.cpp:1126
 msgid "Advances to: "
