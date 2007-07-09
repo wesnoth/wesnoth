@@ -898,6 +898,7 @@ bool display::draw_init()
 		const surface outside_surf(screen_.getSurface());
 		clip_rect_setter set_clip_rect(outside_surf, clip_rect);
 		draw_background(outside_surf, clip_rect);
+		update_rect(clip_rect);
 
 		redraw_background_ = false;
 
