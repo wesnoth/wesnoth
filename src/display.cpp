@@ -791,6 +791,14 @@ void display::render_unit_image(int x, int y, surface image,
 		bool reverse, bool greyscale, fixed_t alpha,
 		Uint32 blendto, double blend_ratio, double submerged)
 {
+
+	if (image==NULL)
+		return;
+
+	SDL_Rect image_rect = {x, y, image->w, image->h};
+	if (!rects_overlap(image_rect, map_outside_area()))
+		return;
+
 	surface surf(image);
 
 	if(reverse) {

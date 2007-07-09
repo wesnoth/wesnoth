@@ -1743,11 +1743,18 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		blend_ratio = 0.25;
 	}
 
+	// we draw bars only if wanted and visible on the map view
+	bool draw_bars = draw_bars_;
+	if (draw_bars) {
+		const int d = disp.hex_size();
+		SDL_Rect unit_rect = {xsrc, ysrc_adjusted, d, d};
+		draw_bars = rects_overlap(unit_rect, disp.map_outside_area());
+	}
 
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
 	int ellipse_floating = 0;
-	if(preferences::show_side_colours() && draw_bars_) {
+	if(draw_bars && preferences::show_side_colours()) {
 		// the division by 2 seems to have no real meaning,
 		// it just works fine with the current center of ellipse
 		// and prevent a too large adjust if submerge = 1.0
@@ -1786,7 +1793,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		disp.video().blit_surface(xsrc, ysrc_adjusted-ellipse_floating, ellipse_front);
 	}
 
-	if(draw_bars_) {
+	if(draw_bars) {
 		const std::string* movement_file = NULL;
 		const std::string* energy_file = &game_config::energy_image;
 		const fixed_t bar_alpha = highlight_ratio < ftofxp(1.0) && blend_with == 0 ? highlight_ratio : (loc == disp.mouseover_hex() ? ftofxp(1.0): ftofxp(0.7));
