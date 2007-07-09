@@ -22,7 +22,7 @@
 
 static int calculate_volume(int x, int y, const display &disp)
 {
-	SDL_Rect area = disp.map_area();
+	SDL_Rect area = disp.map_outside_area();
 
 	int dx = area.w / 2 - x; dx *= dx;
 	int dy = area.h / 2 - y; dy *= dy;
@@ -133,7 +133,7 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 			return;
 		}
 
-//		SDL_Rect area = disp.map_area();
+//		SDL_Rect area = disp.map_outside_area();
 
 		int distance_volume = 256;
 		for(std::list<gamemap::location>::iterator i = _locations.begin(); i != _locations.end(); ++i) {
@@ -159,7 +159,7 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 void manager::positional_source::update_positions(unsigned int time, const display &disp)
 {
 	const bool was_visible = _visible;
-	SDL_Rect area = disp.map_area();
+	SDL_Rect area = disp.map_outside_area();
 
 	_visible = false;
 

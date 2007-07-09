@@ -43,7 +43,7 @@ namespace gui{
 		if (box_ == NULL)
 			return;
 
-		const SDL_Rect& area = gui.map_area();
+		const SDL_Rect& area = gui.map_outside_area();
 
 		const int border_size = 10;
 

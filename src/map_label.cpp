@@ -487,7 +487,7 @@ void terrain_label::draw()
 										   xloc, yloc,
 										   0,0,
 										   -1,
-										   parent_->disp().map_area());
+										   parent_->disp().map_outside_area());
 		
 		calculate_shroud();
 	}

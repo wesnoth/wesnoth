@@ -150,7 +150,7 @@ bool effect::render()
 
 	SDL_Rect rect = {xpos,ypos,surf_->w,surf_->h};
 	rect_ = rect;
-	SDL_Rect clip_rect = disp->map_area();
+	SDL_Rect clip_rect = disp->map_outside_area();
 
 	// if rendered the first time need to detemine the area affected, if a halo
 	// changes size it's not updated.
@@ -195,7 +195,7 @@ void effect::unrender()
 
 	surface const screen = disp->video().getSurface();
 
-	SDL_Rect clip_rect = disp->map_area();
+	SDL_Rect clip_rect = disp->map_outside_area();
 	const clip_rect_setter clip_setter(screen,clip_rect);
 
 	// due to scrolling the location of the rendered halo might have changed; recalculate

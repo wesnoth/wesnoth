@@ -356,7 +356,7 @@ void display::create_buttons()
 		if (!i->tooltip().empty()){
 			tooltips::add_tooltip(loc, i->tooltip());
 		}
-		if(rects_overlap(b.location(),map_area())) {
+		if(rects_overlap(b.location(),map_outside_area())) {
 			b.set_volatile(true);
 		}
 
@@ -568,7 +568,7 @@ void display::flip()
 	// this is just the debug function "sunset" to progressively darken the map area
 	if (sunset_delay && ++sunset_timer > sunset_delay) {
 		sunset_timer = 0;
-		SDL_Rect r = map_area(); //use frameBuffer to also test the UI
+		SDL_Rect r = map_outside_area(); //use frameBuffer to also test the UI
 		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
 		// adjust the alpha if you want to balance cpu-cost / smooth sunset
 		fill_rect_alpha(r, color, 1, frameBuffer);
@@ -767,7 +767,7 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 	const int y = get_location_y(loc) - text_area.h/2
 	              + static_cast<int>(y_in_hex* hex_size());
 
-	const SDL_Rect& rect = map_area();
+	const SDL_Rect& rect = map_outside_area();
 	for (int dy=-1; dy <= 1; dy++) {
 		for (int dx=-1; dx <= 1; dx++) {
 			if (dx!=0 || dy!=0)
@@ -827,7 +827,7 @@ void display::render_unit_image(int x, int y, surface image,
 
 	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,int(surf->h*(1.0-submerged))));
 
-	SDL_Rect clip_rect = map_area();
+	SDL_Rect clip_rect = map_outside_area();
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
 	video().blit_surface(x,y,surf,&srcrect,&clip_rect);
 
@@ -877,7 +877,7 @@ void display::set_diagnostic(const std::string& msg)
 	}
 
 	if(msg != "") {
-		diagnostic_label_ = font::add_floating_label(msg,font::SIZE_PLUS,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_area());
+		diagnostic_label_ = font::add_floating_label(msg,font::SIZE_PLUS,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_outside_area());
 	}
 }
 
@@ -1029,10 +1029,10 @@ void display::announce(const std::string message, const SDL_Color& colour)
 	font::add_floating_label(message,
 				 font::SIZE_XLARGE,
 				 colour,
-				 map_area().w/2,
-				 map_area().h/3,
+				 map_outside_area().w/2,
+				 map_outside_area().h/3,
 				 0.0,0.0,100,
-				 map_area(),
+				 map_outside_area(),
 				 font::CENTER_ALIGN);
 }
 

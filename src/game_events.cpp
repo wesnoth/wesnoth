@@ -1501,7 +1501,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		const std::string& msg = text;
 		if(msg != "") {
-			const SDL_Rect rect = screen->map_area();
+			const SDL_Rect rect = screen->map_outside_area();
 			floating_label = font::add_floating_label(msg,size,colour,
 									 rect.w/2,rect.h/2,
 			                         0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
@@ -1611,7 +1611,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const t_string msg = cfg["message"];
 			const std::string duration_str = cfg["duration"];
 			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-			const SDL_Rect& map_area = screen->map_area();
+			const SDL_Rect& map_area = screen->map_outside_area();
 
 			wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
 				msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));

@@ -237,7 +237,7 @@ void game_display::draw(bool update,bool force)
 
 		const time_of_day& tod = status_.get_time_of_day();
 		
-		SDL_Rect clip_rect = map_area();
+		SDL_Rect clip_rect = map_outside_area();
 		surface const dst(screen_.getSurface());
 		clip_rect_setter set_clip_rect(dst, clip_rect);
 
@@ -1272,7 +1272,7 @@ void game_display::add_chat_message(const std::string& speaker, int side, const 
 			msg = message;
 			action = false;
 		}
-		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_area().w*3/4);
+		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_outside_area().w*3/4);
 
 		int ypos = chat_message_x;
 		for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
@@ -1313,7 +1313,7 @@ void game_display::add_chat_message(const std::string& speaker, int side, const 
 		}
 		message_complete << str.str();
 
-		const SDL_Rect rect = map_area();
+		const SDL_Rect rect = map_outside_area();
 		const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
 			rect.x+chat_message_x,rect.y+ypos,
 			0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
