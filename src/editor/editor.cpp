@@ -358,7 +358,7 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			const int ydisp = mousey - centery;
 			gui_.scroll(xdisp, ydisp);
 		}
-		if (point_in_rect(mousex, mousey, gui_.map_area())) {
+		if (point_in_rect(mousex, mousey, gui_.map_outside_area())) {
 			if (event.button == SDL_BUTTON_WHEELUP) {
 				scrolly = - preferences::scroll_speed();
 			} else if (event.button == SDL_BUTTON_WHEELDOWN) {
