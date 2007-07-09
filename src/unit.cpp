@@ -1723,11 +1723,11 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if(image == NULL) {
 		image = still_image(true);
 	}
-	if(utils::string_bool(get_state("stoned"))) {
-		image = greyscale_image(image);
-	}
 	if(facing_west) {
 		image.assign(image::reverse_image(image));
+	}
+	if(utils::string_bool(get_state("stoned"))) {
+		image = greyscale_image(image);
 	}
 
 	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio(anim_->get_current_frame_time()));
