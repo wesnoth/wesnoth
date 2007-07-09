@@ -222,17 +222,16 @@ public:
 	//function to draw the image of a unit at a certain location
 	//x,y: pixel location on screen to draw the unit
 	//image: the image of the unit
-	//reverse: if the unit should be flipped across the y axis
-	//upside_down: if the unit should be flipped across the x axis
+	//reverse: if the unit should be flipped across the x axis
+	//greyscale: used when the unit is stoned
 	//alpha: the merging to use with the background
-	//blendto: if blendto is not 0, then the alpha parameter will be used
-	//         to blend to this colour, instead of the background
-	//submerged: the amount of the unit out of 1.0 that is submerged
+	//blendto: blend to this colour using blend_ratio
+ 	//submerged: the amount of the unit out of 1.0 that is submerged
 	//           (presumably under water) and thus shouldn't be drawn
-	void draw_unit(int x, int y, surface image,
-		        bool upside_down=false,fixed_t alpha=ftofxp(1.0),
-			Uint32 blendto=0, double blend_ratio=0,
-			double submerged=0.0);
+	void render_unit_image(int x, int y, surface image,
+			bool reverse=false, bool greyscale=false,
+			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
+			double blend_ratio=0, double submerged=0.0);
 
 	const theme::menu* menu_pressed();
 

@@ -1723,12 +1723,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if(image == NULL) {
 		image = still_image(true);
 	}
-	if(facing_west) {
-		image.assign(image::reverse_image(image));
-	}
-	if(utils::string_bool(get_state("stoned"))) {
-		image = greyscale_image(image);
-	}
+	
+	bool stoned = utils::string_bool(get_state("stoned"));
 
 	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio(anim_->get_current_frame_time()));
 	if(invisible(loc,disp.get_units(),disp.get_teams()) &&
@@ -1782,8 +1778,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if (image != NULL) {
 		int tmp_x = x - image->w/2;
 		int tmp_y = y - image->h/2;
-		disp.draw_unit(tmp_x, tmp_y, image, false, highlight_ratio,
-			blend_with, blend_ratio, submerge);
+		disp.render_unit_image(tmp_x, tmp_y, image, facing_west, stoned,
+				highlight_ratio, blend_with, blend_ratio, submerge);
 	}
 
 	if (ellipse_front != NULL) {

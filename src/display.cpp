@@ -787,15 +787,18 @@ void display::clear_hex_overlay(const gamemap::location& loc)
 	}
 }
 
-void display::draw_unit(int x, int y, surface image,
-		bool upside_down, fixed_t alpha, Uint32 blendto,
-		double blend_ratio, double submerged)
+void display::render_unit_image(int x, int y, surface image,
+		bool reverse, bool greyscale, fixed_t alpha,
+		Uint32 blendto, double blend_ratio, double submerged)
 {
-
 	surface surf(image);
 
-	if(upside_down) {
-		surf.assign(flop_surface(surf));
+	if(reverse) {
+		surf = image::reverse_image(surf);
+	}
+
+	if(greyscale) {
+		surf = greyscale_image(surf);
 	}
 
 	if(blend_ratio != 0) {
