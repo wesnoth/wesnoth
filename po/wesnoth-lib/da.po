@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 13:01+0200\n"
+"POT-Creation-Date: 2007-07-09 19:53+0200\n"
 "PO-Revision-Date: 2007-06-15 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -17,29 +17,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/construct_dialog.cpp:135 src/construct_dialog.cpp:142
-#: src/editor/editor_dialogs.cpp:411
+#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "O.k."
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:137
 msgid "Yes"
 msgstr "Ja"
 
-#: src/construct_dialog.cpp:139
+#: src/construct_dialog.cpp:138
 msgid "No"
 msgstr "Nej"
 
-#: src/construct_dialog.cpp:143 src/construct_dialog.cpp:146
-#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:410
+#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Annuller"
 
-#: src/construct_dialog.cpp:149
+#: src/construct_dialog.cpp:148
 msgid "Close"
 msgstr "Luk"
 
-#: src/construct_dialog.cpp:811 src/hotkeys.cpp:129
+#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
 msgid "Help"
 msgstr "Hjælp"
 
@@ -51,13 +51,13 @@ msgstr "Ønsker du at fortsætte? Dine ændringer til kortet vil blive tabt."
 msgid "Create New Map"
 msgstr "Opret nyt kort"
 
-#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:393
-#: src/mapgen_dialog.cpp:112
+#: src/editor/editor_dialogs.cpp:81 src/editor/editor_dialogs.cpp:383
+#: src/mapgen_dialog.cpp:110
 msgid "Width:"
 msgstr "Bredde:"
 
-#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:394
-#: src/mapgen_dialog.cpp:113
+#: src/editor/editor_dialogs.cpp:82 src/editor/editor_dialogs.cpp:384
+#: src/mapgen_dialog.cpp:111
 msgid "Height:"
 msgstr "Højde:"
 
@@ -77,52 +77,49 @@ msgstr "Tilfældige genereringsindstillinger"
 msgid "Map creation failed."
 msgstr "Oprettelse af kort mislykkedes."
 
-#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:101
-#: src/preferences_display.cpp:1301
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
 msgid "Close Window"
 msgstr "Luk vindue"
 
-#: src/editor/editor_dialogs.cpp:250 src/hotkeys.cpp:79
-#: src/preferences_display.cpp:1187
+#: src/editor/editor_dialogs.cpp:249 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Indstillinger"
 
 # Igen. Kan man det både hori or verti?
-#: src/editor/editor_dialogs.cpp:254 src/preferences_display.cpp:316
+#: src/editor/editor_dialogs.cpp:253
 msgid "Scroll Speed:"
 msgstr "Panoreringshastighed:"
 
-#: src/editor/editor_dialogs.cpp:281 src/hotkeys.cpp:60
-#: src/preferences_display.cpp:274
+#: src/editor/editor_dialogs.cpp:280 src/hotkeys.cpp:60
 msgid "Toggle Full Screen"
 msgstr "Skift til/fra fuldskærm"
 
-#: src/editor/editor_dialogs.cpp:288 src/preferences_display.cpp:277
+#: src/editor/editor_dialogs.cpp:287
 msgid "Show Grid"
 msgstr "Vis net"
 
-#: src/editor/editor_dialogs.cpp:295 src/preferences_display.cpp:297
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Videomode"
 
-#: src/editor/editor_dialogs.cpp:298 src/preferences_display.cpp:299
+#: src/editor/editor_dialogs.cpp:297
 msgid "Hotkeys"
 msgstr "Tastaturgenveje"
 
-#: src/editor/editor_dialogs.cpp:391 src/editor/editor_dialogs.cpp:453
+#: src/editor/editor_dialogs.cpp:381 src/editor/editor_dialogs.cpp:443
 #: src/hotkeys.cpp:115
 msgid "Resize Map"
 msgstr "Skift størrelse på kort"
 
-#: src/editor/editor_dialogs.cpp:496
+#: src/editor/editor_dialogs.cpp:486
 msgid "X-Axis"
 msgstr "X-akse"
 
-#: src/editor/editor_dialogs.cpp:497
+#: src/editor/editor_dialogs.cpp:487
 msgid "Y-Axis"
 msgstr "Y-akse"
 
-#: src/editor/editor_dialogs.cpp:498
+#: src/editor/editor_dialogs.cpp:488
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Vend rundt (dette kan ændre kortdimensionerne):"
 
@@ -150,7 +147,7 @@ msgstr "Navn: "
 msgid "Creation of the directory failed."
 msgstr "Oprettelse af katalog mislykkedes."
 
-#: src/game_preferences.cpp:244
+#: src/game_preferences.cpp:204
 msgid "player"
 msgstr "spiller"
 
@@ -461,55 +458,55 @@ msgstr "Er du sikker på at du vil afslutte?"
 msgid "Quit"
 msgstr "Afslut"
 
-#: src/mapgen_dialog.cpp:104
+#: src/mapgen_dialog.cpp:102
 msgid "Map Generator"
 msgstr "Kortgenerator"
 
-#: src/mapgen_dialog.cpp:111
+#: src/mapgen_dialog.cpp:109
 msgid "Players:"
 msgstr "Spillere:"
 
-#: src/mapgen_dialog.cpp:114
+#: src/mapgen_dialog.cpp:112
 msgid "Number of Hills:"
 msgstr "Antal bakker:"
 
-#: src/mapgen_dialog.cpp:115
+#: src/mapgen_dialog.cpp:113
 msgid "Max Hill Size:"
 msgstr "Max. størrelse på bakker:"
 
-#: src/mapgen_dialog.cpp:116
+#: src/mapgen_dialog.cpp:114
 msgid "Villages:"
 msgstr "Landsbyer:"
 
-#: src/mapgen_dialog.cpp:117
+#: src/mapgen_dialog.cpp:115
 msgid "Castle Size:"
 msgstr "Borgstørrelse:"
 
-#: src/mapgen_dialog.cpp:118
+#: src/mapgen_dialog.cpp:116
 msgid "Landform:"
 msgstr "Landskabsform:"
 
-#: src/mapgen_dialog.cpp:238
+#: src/mapgen_dialog.cpp:236
 msgid "Roads Between Castles"
 msgstr "Veje mellem borge"
 
-#: src/mapgen_dialog.cpp:298
+#: src/mapgen_dialog.cpp:296
 msgid "/1000 tiles"
 msgstr "/1000 felter"
 
-#: src/mapgen_dialog.cpp:308
+#: src/mapgen_dialog.cpp:306
 msgid "Coastal"
 msgstr "Kyst"
 
-#: src/mapgen_dialog.cpp:308
+#: src/mapgen_dialog.cpp:306
 msgid "Inland"
 msgstr "Indland"
 
-#: src/mapgen_dialog.cpp:308
+#: src/mapgen_dialog.cpp:306
 msgid "Island"
 msgstr "Ø"
 
-#: src/preferences_display.cpp:82 src/preferences_display.cpp:115
+#: src/preferences_display.cpp:77 src/preferences_display.cpp:110
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -519,432 +516,334 @@ msgstr ""
 "pixel for at afvikle spillet i et vindue. Din skærm skal understøtte "
 "1024x768x16 for at køre spillet i fuld skærm."
 
-# Der er kun en slags acceleration.
-#: src/preferences_display.cpp:275
-msgid "Accelerated Speed"
-msgstr "Accelereret hastighed"
-
-#: src/preferences_display.cpp:276
-msgid "Skip AI Moves"
-msgstr "Vis ikke computerens ryk"
-
-#: src/preferences_display.cpp:278
-msgid "Save Replays"
-msgstr "Gem spilresumeer"
-
-#: src/preferences_display.cpp:279
-msgid "Delete Autosaves"
-msgstr "Slet automatisk gemte spil"
-
-# hvad skal lobby oversættes med?
-#: src/preferences_display.cpp:280
-msgid "Show Lobby Minimaps"
-msgstr "Vis Lobby minikort"
-
-#: src/preferences_display.cpp:281
-msgid "Do Not Show Lobby Joins"
-msgstr "Vis ikke Lobby-sammenkædninger"
-
-#: src/preferences_display.cpp:282
-msgid "Show Lobby Joins Of Friends Only"
-msgstr "Vis kun Lobby-sammenkædninger for venner"
-
-#: src/preferences_display.cpp:283
-msgid "Show All Lobby Joins"
-msgstr "Vis alle Lobby-sammenkædninger"
-
-#: src/preferences_display.cpp:284
-msgid "Sort Lobby List"
-msgstr "sorter Lobby-listen"
-
-#: src/preferences_display.cpp:285
-msgid "Iconize Lobby List"
-msgstr "Vis Lobby-listen med ikoner"
-
-#: src/preferences_display.cpp:286
-msgid "Friends List"
-msgstr "Venneliste"
-
-#: src/preferences_display.cpp:287
-msgid "Multiplayer Options"
-msgstr "Flerspiller indstillinger"
-
-#: src/preferences_display.cpp:288
-msgid "Add As Friend"
-msgstr "Tilføj som ven"
-
-#: src/preferences_display.cpp:289
-msgid "Add As Ignore"
-msgstr "Tilføj under ignorer"
-
-#: src/preferences_display.cpp:290
-msgid "Remove"
-msgstr "Fjern"
-
-#: src/preferences_display.cpp:291
-msgid "Show Floating Labels"
-msgstr "Vis flydende mærkater"
-
-#: src/preferences_display.cpp:292
-msgid "Turn Dialog"
-msgstr "Rundedialog"
-
-#: src/preferences_display.cpp:293
-msgid "Turn Bell"
-msgstr "Rundeklokke"
-
-#: src/preferences_display.cpp:294
-msgid "Show Team Colors"
-msgstr "Vis holdfarver"
-
-#: src/preferences_display.cpp:295
-msgid "Show Color Cursors"
-msgstr "Vis farvet markør"
-
-#: src/preferences_display.cpp:296
-msgid "Show Haloing Effects"
-msgstr "Vis glorieeffekt"
-
-#: src/preferences_display.cpp:298
-msgid "Theme"
-msgstr "Tema"
-
-#: src/preferences_display.cpp:300
-msgid "Adjust Gamma"
-msgstr "Justér Gamma"
-
-#: src/preferences_display.cpp:301
-msgid "Reverse Time Graphics"
-msgstr "Omvendt tidsgrafik"
-
-#: src/preferences_display.cpp:303
-msgid "Sound effects"
-msgstr "Lydeffekter"
-
-#: src/preferences_display.cpp:304
-msgid "Music"
-msgstr "Musik"
-
-#: src/preferences_display.cpp:305
-msgid "Chat Timestamping"
-msgstr "Snakke tidsstempling"
-
-#: src/preferences_display.cpp:306
-msgid "Advanced Mode"
-msgstr "Avanceret tilstand"
-
-#: src/preferences_display.cpp:307
-msgid "Normal Mode"
-msgstr "Normal tilstand"
-
-#: src/preferences_display.cpp:308
-msgid "User Interface Sounds"
-msgstr "Brugergrænseflade lydsæt"
-
-#: src/preferences_display.cpp:311
-msgid "Custom"
-msgstr "Tilpasset"
-
-#: src/preferences_display.cpp:312
-msgid "Apply"
-msgstr "Anvende"
-
-#: src/preferences_display.cpp:314
-msgid "Music Volume:"
-msgstr "Musikstyrke:"
-
-#: src/preferences_display.cpp:314
-msgid "SFX Volume:"
-msgstr "Lydeffekter styrke:"
-
-#: src/preferences_display.cpp:315
-msgid "UI Sound Volume:"
-msgstr "UI-lydstyrke:"
-
-#: src/preferences_display.cpp:316
-msgid "Bell Volume:"
-msgstr "Klokkestyrke:"
-
-#: src/preferences_display.cpp:317
-msgid "Gamma:"
-msgstr "Gamma:"
-
-#: src/preferences_display.cpp:319
-msgid "Sample Rate (Hz):"
-msgstr "Sampel niveau (Hz):"
-
-#: src/preferences_display.cpp:342
-msgid "Sound effects on/off"
-msgstr "Lydeffekter til/fra"
-
-#: src/preferences_display.cpp:346
-msgid "Change the sound effects volume"
-msgstr "Skift lydeffekters styrke"
-
-#: src/preferences_display.cpp:349
-msgid "Music on/off"
-msgstr "Musik til/fra"
-
-#: src/preferences_display.cpp:353
-msgid "Change the music volume"
-msgstr "Indstil lydstyrke"
-
-#: src/preferences_display.cpp:359
-msgid "Change the bell volume"
-msgstr "Indstil klokkens lydstyrke"
-
-#: src/preferences_display.cpp:362
-msgid "Turn menu and button sounds on/off"
-msgstr "Sæt menu- og tastelyde til/fra"
-
-#: src/preferences_display.cpp:366
-msgid "Change the sound volume for button clicks, etc."
-msgstr "Ændre lydstyrken for tastetryk, etcetera"
-
-#: src/preferences_display.cpp:368
-msgid "Change the sample rate"
-msgstr "Indstil sampelniveauet"
-
-#: src/preferences_display.cpp:377
-msgid "User defined sample rate"
-msgstr "Brugerdefineret sampelniveau"
-
-#: src/preferences_display.cpp:386 src/preferences_display.cpp:390
-msgid "Change the buffer size"
-msgstr "Indstil bufferstørrelsen"
-
-#: src/preferences_display.cpp:388 src/preferences_display.cpp:888
-msgid "Buffer Size: "
-msgstr "Bufferstørrelse: "
-
-# Kan panorering være både horisontalt og vertikalt?
-#: src/preferences_display.cpp:395
-msgid "Change the speed of scrolling around the map"
-msgstr "Skift hastighed for panorering på kortet"
-
-#: src/preferences_display.cpp:400 src/preferences_display.cpp:402
-msgid "Set the amount of chat lines shown"
-msgstr "Indstil antallet af snakkelinjer der vises"
-
-#: src/preferences_display.cpp:405
-msgid "Add a timestamp to chat messages"
-msgstr "Tilføj et tidsstempel på snakkebeskeder"
-
-#: src/preferences_display.cpp:408 src/preferences_display.cpp:413
-msgid "Change the brightness of the display"
-msgstr "Skift skærmens lysstyrke"
-
-#: src/preferences_display.cpp:416
-msgid "Choose whether the game should run full screen or in a window"
-msgstr "Vælg om spillet skal afvikles i fuld skærm eller i et vindue"
-
-#: src/preferences_display.cpp:419
-msgid "Make units move and fight faster"
-msgstr "Få enheder til at bevæge sig, og kæmpe hurtigere"
-
-#: src/preferences_display.cpp:434
-msgid "Units move and fight speed"
-msgstr "Enhedernes bevægelses- og kampfart"
-
-#: src/preferences_display.cpp:437
-msgid "Do not animate AI units moving"
-msgstr "Animér ikke computerenhedernes bevægelse"
-
-#: src/preferences_display.cpp:440
-msgid "Save replays at scenario end."
-msgstr "Gem resumeer når scenariet slutter."
-
-#: src/preferences_display.cpp:443
-msgid "Automatically delete autosaves at the end of a scenario"
-msgstr "Slet de automatisk gemte spil når scenariet slutter"
-
-#: src/preferences_display.cpp:445
-msgid "Overlay a grid onto the map"
-msgstr "Vis et net over kortet"
-
-#: src/preferences_display.cpp:448
-msgid "Show minimaps in the multiplayer lobby"
-msgstr "Vis minikort i flerspiller lobbyen"
-
-#: src/preferences_display.cpp:451
-msgid "Sort the player list in the lobby by player groups"
-msgstr "Sorter spillerlisten i lobbyen via spillergrupper"
-
-#: src/preferences_display.cpp:454
-msgid "Show icons in front of the player names in the lobby."
-msgstr "Vis ikoner før spillernavne i lobbyen."
-
-#: src/preferences_display.cpp:457
-msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr ""
-"Vis ikke beskeder vedrørende spillere der tilslutter sig flerspillerlobbyen"
-
-#: src/preferences_display.cpp:459
-msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Vis beskeder vedrørende venner der tilslutter sig flerspillerlobbyen"
-
-#: src/preferences_display.cpp:461
-msgid "Show messages about all players joining the multiplayer lobby"
-msgstr ""
-"Vis beskeder vedrørende alle spillere som tilslutter sig flerspillerlobbyen"
-
-#: src/preferences_display.cpp:463
-msgid "View and edit your friends and ignores list"
-msgstr "Hvis og rediger dine venne- og ignorerlister"
-
-#: src/preferences_display.cpp:464
-msgid "Back to the multiplayer options"
-msgstr "Tilbage til flerspillerindstillinger"
-
-#: src/preferences_display.cpp:465
-msgid "Add this username to your friends list"
-msgstr "Tilføj dette brugernavn til din venneliste"
-
-#: src/preferences_display.cpp:466
-msgid "Add this username to your ignores list"
-msgstr "Tilføj dette brugernavn til din ignorerliste"
-
-#: src/preferences_display.cpp:467
-msgid "Remove this username from your list"
-msgstr "Fjern dette brugernavn fra din liste"
-
-#: src/preferences_display.cpp:470
-msgid "Insert a username"
-msgstr "Sæt et brugernavn ind"
-
-#: src/preferences_display.cpp:473
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-"Vis en tekst over en enhed for at angive hvor meget skade den har taget"
-
-#: src/preferences_display.cpp:475
-msgid "Change the resolution the game runs at"
-msgstr "Skift opløsningen spillet afvikles i"
-
-#: src/preferences_display.cpp:476
-msgid "Change the theme the game runs with"
-msgstr "Skift temaet spillet afvikles i"
-
-#: src/preferences_display.cpp:479
-msgid "Display a dialog at the beginning of your turn"
-msgstr "Vis en dialog i starten af din runde"
-
-#: src/preferences_display.cpp:482
-msgid "Play a bell sound at the beginning of your turn"
-msgstr "Ring en klokke i starten af din runde"
-
-#: src/preferences_display.cpp:485
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-"Vis en farvet cirkel omkring hver enhed for at angive hvilken side den er på"
-
-#: src/preferences_display.cpp:488
-msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
-"Vælg om solen bevæger sig fra højre mod venstre eller fra venstre mod højre"
-
-#: src/preferences_display.cpp:491
-msgid "Use colored mouse cursors (may be slower)"
-msgstr "Brug farvede musemarkører (kan være langsommere)"
-
-#: src/preferences_display.cpp:494
-msgid "Use graphical special effects (may be slower)"
-msgstr "Brug grafiske specialeffekter (kan være langsommere)"
-
-#: src/preferences_display.cpp:496
-msgid "View and configure keyboard shortcuts"
-msgstr "Vis og indstil tastaturgenveje"
-
-# Igen. Kan man det både hori or verti? (er panoreringshastighed ?)
-#: src/preferences_display.cpp:768
-msgid "Speed: "
-msgstr "Hastighed: "
-
-#: src/preferences_display.cpp:933
-msgid "Chat Lines: "
-msgstr "Snakkelinjer: "
-
-#: src/preferences_display.cpp:1029
-msgid "yes"
-msgstr "ja"
-
-#: src/preferences_display.cpp:1031
-msgid "no"
-msgstr "nej"
-
-#: src/preferences_display.cpp:1175
-msgid "Prefs section^General"
-msgstr "Prefs section^Generelt"
-
-#: src/preferences_display.cpp:1176
-msgid "Prefs section^Display"
-msgstr "Prefs section^Skærm"
-
-#: src/preferences_display.cpp:1177
-msgid "Prefs section^Sound"
-msgstr "Prefs section^Lyd"
-
-#: src/preferences_display.cpp:1178
-msgid "Prefs section^Multiplayer"
-msgstr "Prefs section^Flerspiller"
-
-#: src/preferences_display.cpp:1179
-msgid "Advanced section^Advanced"
-msgstr "Advanced section^Avanceret"
-
-#: src/preferences_display.cpp:1244
-msgid "There are no alternative video modes available"
-msgstr "Der er ingen alternative videomodes tilgængelige"
-
-#: src/preferences_display.cpp:1273
-msgid "Choose Resolution"
-msgstr "Vælg opløsning"
-
-#: src/preferences_display.cpp:1306
-msgid "Hotkey Settings"
-msgstr "Genvejsindstillinger"
-
-#: src/preferences_display.cpp:1312 src/preferences_display.cpp:1368
-msgid "Press desired Hotkey"
-msgstr "Tryk ønsket genvejstast"
-
-#: src/preferences_display.cpp:1330
-msgid "Action"
-msgstr "Aktion"
-
-#: src/preferences_display.cpp:1330
-msgid "Binding"
-msgstr "Sammenfæstning"
-
-#: src/preferences_display.cpp:1342
-msgid "Change Hotkey"
-msgstr "Skift genvejstast"
-
-#: src/preferences_display.cpp:1345
-msgid "Save Hotkeys"
-msgstr "Gem genvejstaster"
-
-#: src/preferences_display.cpp:1395
-msgid "This Hotkey is already in use."
-msgstr "Denne genvejstast er allerede i brug."
-
-#: src/preferences_display.cpp:1428
-msgid "Saved Theme Preference: "
-msgstr "Gem temapræference: "
-
-#: src/preferences_display.cpp:1434
-msgid "New theme will take effect on next new or loaded game."
-msgstr "Nyt tema vil være aktivt i næste nye eller hentede spil."
-
-#: src/preferences_display.cpp:1438
-msgid "No known themes.  Try changing from within an existing game."
-msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
-
-#: src/show_dialog.cpp:358
+#: src/show_dialog.cpp:368
 msgid "Error"
 msgstr "Fejl"
+
+# Der er kun en slags acceleration.
+#~ msgid "Accelerated Speed"
+#~ msgstr "Accelereret hastighed"
+
+#~ msgid "Skip AI Moves"
+#~ msgstr "Vis ikke computerens ryk"
+
+#~ msgid "Save Replays"
+#~ msgstr "Gem spilresumeer"
+
+#~ msgid "Delete Autosaves"
+#~ msgstr "Slet automatisk gemte spil"
+
+# hvad skal lobby oversættes med?
+#~ msgid "Show Lobby Minimaps"
+#~ msgstr "Vis Lobby minikort"
+
+#~ msgid "Do Not Show Lobby Joins"
+#~ msgstr "Vis ikke Lobby-sammenkædninger"
+
+#~ msgid "Show Lobby Joins Of Friends Only"
+#~ msgstr "Vis kun Lobby-sammenkædninger for venner"
+
+#~ msgid "Show All Lobby Joins"
+#~ msgstr "Vis alle Lobby-sammenkædninger"
+
+#~ msgid "Sort Lobby List"
+#~ msgstr "sorter Lobby-listen"
+
+#~ msgid "Iconize Lobby List"
+#~ msgstr "Vis Lobby-listen med ikoner"
+
+#~ msgid "Friends List"
+#~ msgstr "Venneliste"
+
+#~ msgid "Multiplayer Options"
+#~ msgstr "Flerspiller indstillinger"
+
+#~ msgid "Add As Friend"
+#~ msgstr "Tilføj som ven"
+
+#~ msgid "Add As Ignore"
+#~ msgstr "Tilføj under ignorer"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid "Show Floating Labels"
+#~ msgstr "Vis flydende mærkater"
+
+#~ msgid "Turn Dialog"
+#~ msgstr "Rundedialog"
+
+#~ msgid "Turn Bell"
+#~ msgstr "Rundeklokke"
+
+#~ msgid "Show Team Colors"
+#~ msgstr "Vis holdfarver"
+
+#~ msgid "Show Color Cursors"
+#~ msgstr "Vis farvet markør"
+
+#~ msgid "Show Haloing Effects"
+#~ msgstr "Vis glorieeffekt"
+
+#~ msgid "Theme"
+#~ msgstr "Tema"
+
+#~ msgid "Adjust Gamma"
+#~ msgstr "Justér Gamma"
+
+#~ msgid "Reverse Time Graphics"
+#~ msgstr "Omvendt tidsgrafik"
+
+#~ msgid "Sound effects"
+#~ msgstr "Lydeffekter"
+
+#~ msgid "Music"
+#~ msgstr "Musik"
+
+#~ msgid "Chat Timestamping"
+#~ msgstr "Snakke tidsstempling"
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Avanceret tilstand"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Normal tilstand"
+
+#~ msgid "User Interface Sounds"
+#~ msgstr "Brugergrænseflade lydsæt"
+
+#~ msgid "Custom"
+#~ msgstr "Tilpasset"
+
+#~ msgid "Apply"
+#~ msgstr "Anvende"
+
+#~ msgid "Music Volume:"
+#~ msgstr "Musikstyrke:"
+
+#~ msgid "SFX Volume:"
+#~ msgstr "Lydeffekter styrke:"
+
+#~ msgid "UI Sound Volume:"
+#~ msgstr "UI-lydstyrke:"
+
+#~ msgid "Bell Volume:"
+#~ msgstr "Klokkestyrke:"
+
+#~ msgid "Gamma:"
+#~ msgstr "Gamma:"
+
+#~ msgid "Sample Rate (Hz):"
+#~ msgstr "Sampel niveau (Hz):"
+
+#~ msgid "Sound effects on/off"
+#~ msgstr "Lydeffekter til/fra"
+
+#~ msgid "Change the sound effects volume"
+#~ msgstr "Skift lydeffekters styrke"
+
+#~ msgid "Music on/off"
+#~ msgstr "Musik til/fra"
+
+#~ msgid "Change the music volume"
+#~ msgstr "Indstil lydstyrke"
+
+#~ msgid "Change the bell volume"
+#~ msgstr "Indstil klokkens lydstyrke"
+
+#~ msgid "Turn menu and button sounds on/off"
+#~ msgstr "Sæt menu- og tastelyde til/fra"
+
+#~ msgid "Change the sound volume for button clicks, etc."
+#~ msgstr "Ændre lydstyrken for tastetryk, etcetera"
+
+#~ msgid "Change the sample rate"
+#~ msgstr "Indstil sampelniveauet"
+
+#~ msgid "User defined sample rate"
+#~ msgstr "Brugerdefineret sampelniveau"
+
+#~ msgid "Change the buffer size"
+#~ msgstr "Indstil bufferstørrelsen"
+
+#~ msgid "Buffer Size: "
+#~ msgstr "Bufferstørrelse: "
+
+# Kan panorering være både horisontalt og vertikalt?
+#~ msgid "Change the speed of scrolling around the map"
+#~ msgstr "Skift hastighed for panorering på kortet"
+
+#~ msgid "Set the amount of chat lines shown"
+#~ msgstr "Indstil antallet af snakkelinjer der vises"
+
+#~ msgid "Add a timestamp to chat messages"
+#~ msgstr "Tilføj et tidsstempel på snakkebeskeder"
+
+#~ msgid "Change the brightness of the display"
+#~ msgstr "Skift skærmens lysstyrke"
+
+#~ msgid "Choose whether the game should run full screen or in a window"
+#~ msgstr "Vælg om spillet skal afvikles i fuld skærm eller i et vindue"
+
+#~ msgid "Make units move and fight faster"
+#~ msgstr "Få enheder til at bevæge sig, og kæmpe hurtigere"
+
+#~ msgid "Units move and fight speed"
+#~ msgstr "Enhedernes bevægelses- og kampfart"
+
+#~ msgid "Do not animate AI units moving"
+#~ msgstr "Animér ikke computerenhedernes bevægelse"
+
+#~ msgid "Save replays at scenario end."
+#~ msgstr "Gem resumeer når scenariet slutter."
+
+#~ msgid "Automatically delete autosaves at the end of a scenario"
+#~ msgstr "Slet de automatisk gemte spil når scenariet slutter"
+
+#~ msgid "Overlay a grid onto the map"
+#~ msgstr "Vis et net over kortet"
+
+#~ msgid "Show minimaps in the multiplayer lobby"
+#~ msgstr "Vis minikort i flerspiller lobbyen"
+
+#~ msgid "Sort the player list in the lobby by player groups"
+#~ msgstr "Sorter spillerlisten i lobbyen via spillergrupper"
+
+#~ msgid "Show icons in front of the player names in the lobby."
+#~ msgstr "Vis ikoner før spillernavne i lobbyen."
+
+#~ msgid "Do not show messages about players joining the multiplayer lobby"
+#~ msgstr ""
+#~ "Vis ikke beskeder vedrørende spillere der tilslutter sig "
+#~ "flerspillerlobbyen"
+
+#~ msgid "Show messages about your friends joining the multiplayer lobby"
+#~ msgstr ""
+#~ "Vis beskeder vedrørende venner der tilslutter sig flerspillerlobbyen"
+
+#~ msgid "Show messages about all players joining the multiplayer lobby"
+#~ msgstr ""
+#~ "Vis beskeder vedrørende alle spillere som tilslutter sig "
+#~ "flerspillerlobbyen"
+
+#~ msgid "View and edit your friends and ignores list"
+#~ msgstr "Hvis og rediger dine venne- og ignorerlister"
+
+#~ msgid "Back to the multiplayer options"
+#~ msgstr "Tilbage til flerspillerindstillinger"
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Tilføj dette brugernavn til din venneliste"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Tilføj dette brugernavn til din ignorerliste"
+
+#~ msgid "Remove this username from your list"
+#~ msgstr "Fjern dette brugernavn fra din liste"
+
+#~ msgid "Insert a username"
+#~ msgstr "Sæt et brugernavn ind"
+
+#~ msgid "Show text above a unit when it is hit to display damage inflicted"
+#~ msgstr ""
+#~ "Vis en tekst over en enhed for at angive hvor meget skade den har taget"
+
+#~ msgid "Change the resolution the game runs at"
+#~ msgstr "Skift opløsningen spillet afvikles i"
+
+#~ msgid "Change the theme the game runs with"
+#~ msgstr "Skift temaet spillet afvikles i"
+
+#~ msgid "Display a dialog at the beginning of your turn"
+#~ msgstr "Vis en dialog i starten af din runde"
+
+#~ msgid "Play a bell sound at the beginning of your turn"
+#~ msgstr "Ring en klokke i starten af din runde"
+
+#~ msgid ""
+#~ "Show a colored circle around the base of each unit to show which side it "
+#~ "is on"
+#~ msgstr ""
+#~ "Vis en farvet cirkel omkring hver enhed for at angive hvilken side den er "
+#~ "på"
+
+#~ msgid "Choose whether the sun moves left-to-right or right-to-left"
+#~ msgstr ""
+#~ "Vælg om solen bevæger sig fra højre mod venstre eller fra venstre mod "
+#~ "højre"
+
+#~ msgid "Use colored mouse cursors (may be slower)"
+#~ msgstr "Brug farvede musemarkører (kan være langsommere)"
+
+#~ msgid "Use graphical special effects (may be slower)"
+#~ msgstr "Brug grafiske specialeffekter (kan være langsommere)"
+
+#~ msgid "View and configure keyboard shortcuts"
+#~ msgstr "Vis og indstil tastaturgenveje"
+
+# Igen. Kan man det både hori or verti? (er panoreringshastighed ?)
+#~ msgid "Speed: "
+#~ msgstr "Hastighed: "
+
+#~ msgid "Chat Lines: "
+#~ msgstr "Snakkelinjer: "
+
+#~ msgid "yes"
+#~ msgstr "ja"
+
+#~ msgid "no"
+#~ msgstr "nej"
+
+#~ msgid "Prefs section^General"
+#~ msgstr "Prefs section^Generelt"
+
+#~ msgid "Prefs section^Display"
+#~ msgstr "Prefs section^Skærm"
+
+#~ msgid "Prefs section^Sound"
+#~ msgstr "Prefs section^Lyd"
+
+#~ msgid "Prefs section^Multiplayer"
+#~ msgstr "Prefs section^Flerspiller"
+
+#~ msgid "Advanced section^Advanced"
+#~ msgstr "Advanced section^Avanceret"
+
+#~ msgid "There are no alternative video modes available"
+#~ msgstr "Der er ingen alternative videomodes tilgængelige"
+
+#~ msgid "Choose Resolution"
+#~ msgstr "Vælg opløsning"
+
+#~ msgid "Hotkey Settings"
+#~ msgstr "Genvejsindstillinger"
+
+#~ msgid "Press desired Hotkey"
+#~ msgstr "Tryk ønsket genvejstast"
+
+#~ msgid "Action"
+#~ msgstr "Aktion"
+
+#~ msgid "Binding"
+#~ msgstr "Sammenfæstning"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "Skift genvejstast"
+
+#~ msgid "Save Hotkeys"
+#~ msgstr "Gem genvejstaster"
+
+#~ msgid "This Hotkey is already in use."
+#~ msgstr "Denne genvejstast er allerede i brug."
+
+#~ msgid "Saved Theme Preference: "
+#~ msgstr "Gem temapræference: "
+
+#~ msgid "New theme will take effect on next new or loaded game."
+#~ msgstr "Nyt tema vil være aktivt i næste nye eller hentede spil."
+
+#~ msgid "No known themes.  Try changing from within an existing game."
+#~ msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
 
 #~ msgid "Shroud"
 #~ msgstr "Sløring"

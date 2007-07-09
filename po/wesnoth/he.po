@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 13:24+0200\n"
+"POT-Creation-Date: 2007-07-09 19:53+0200\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Artwork and Graphics Designers"
 msgstr "עיצוב אומנותי וגרפיקה"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:536
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
 msgstr "מתחת לאדמה"
@@ -3479,11 +3479,11 @@ msgid "None"
 msgstr "אין"
 
 #: data/core/terrain.cfg:19 src/multiplayer_create.cpp:70
-#: src/multiplayer_lobby.cpp:431 src/multiplayer_lobby.cpp:437
+#: src/multiplayer_lobby.cpp:425 src/multiplayer_lobby.cpp:431
 msgid "Shroud"
 msgstr "ממוסך"
 
-#: data/core/terrain.cfg:26 src/multiplayer_lobby.cpp:427
+#: data/core/terrain.cfg:26 src/multiplayer_lobby.cpp:421
 msgid "Fog"
 msgstr "ערפל"
 
@@ -4119,13 +4119,13 @@ msgid "End Turn"
 msgstr "סוף תור"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2412
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2405
 msgid "HP"
 msgstr "נק\"פ"
 
 #: data/themes/default.cfg:181 data/themes/dfool.cfg:209
 #: data/themes/experimental.cfg:159 src/menu_events.cpp:317
-#: src/menu_events.cpp:865
+#: src/menu_events.cpp:873
 msgid "XP"
 msgstr "נק\"ן"
 
@@ -4246,7 +4246,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:169 src/help.cpp:2620 src/menu_events.cpp:139
+#: src/about.cpp:169 src/help.cpp:2625 src/menu_events.cpp:139
 msgid "Close"
 msgstr "סגור"
 
@@ -4379,7 +4379,7 @@ msgstr "הדרכה"
 msgid "replay"
 msgstr "שחק מהתחלה"
 
-#: src/dialogs.cpp:468 src/menu_events.cpp:474 src/multiplayer_lobby.cpp:412
+#: src/dialogs.cpp:468 src/menu_events.cpp:482 src/multiplayer_lobby.cpp:406
 msgid "Turn"
 msgstr "תור"
 
@@ -4434,7 +4434,7 @@ msgid "Date"
 msgstr "תאריך"
 
 #: src/dialogs.cpp:555 src/game.cpp:1060 src/menu_events.cpp:314
-#: src/menu_events.cpp:863 src/multiplayer.cpp:109
+#: src/menu_events.cpp:871 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "שם"
 
@@ -4471,12 +4471,12 @@ msgstr "נק\"נ: "
 msgid "Moves: "
 msgstr "מהלכים: "
 
-#: src/dialogs.cpp:892 src/dialogs.cpp:994 src/multiplayer_connect.cpp:756
+#: src/dialogs.cpp:892 src/dialogs.cpp:993 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
 msgid "Cancel"
 msgstr "בטל"
 
-#: src/dialogs.cpp:917 src/game.cpp:864
+#: src/dialogs.cpp:916 src/game.cpp:864
 msgid "KB"
 msgstr "קילו-בייט"
 
@@ -4571,7 +4571,7 @@ msgstr "מערכה הותקנה"
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1005 src/menu_events.cpp:488 src/menu_events.cpp:501
+#: src/game.cpp:1005 src/menu_events.cpp:496 src/menu_events.cpp:509
 #: src/multiplayer_create.cpp:494
 msgid "Error"
 msgstr "שגיאה"
@@ -4704,7 +4704,7 @@ msgstr "הצטרף לשרת הרשמי"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "התחברות לשרת משחקי הרשת הרשמי של ווסנות'"
 
-#: src/game.cpp:1367 src/multiplayer_lobby.cpp:536
+#: src/game.cpp:1367 src/multiplayer_lobby.cpp:530
 msgid "Join Game"
 msgstr "הצטרף למשחק"
 
@@ -4924,7 +4924,7 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "צא מהמשחק"
 
-#: src/help.cpp:1190 src/menu_events.cpp:313 src/menu_events.cpp:862
+#: src/help.cpp:1190 src/menu_events.cpp:313 src/menu_events.cpp:870
 msgid "Type"
 msgstr "סוג"
 
@@ -4985,11 +4985,11 @@ msgstr "הפנייה לנושא לא ידוע: "
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2624
+#: src/help.cpp:2628
 msgid "The Battle for Wesnoth Help"
 msgstr "העזרה של הקרב של ווסנות'"
 
-#: src/help.cpp:2674
+#: src/help.cpp:2678
 msgid "Parse error when parsing help text: "
 msgstr "טעות ניתוח בניתוח טקסט העזרה: "
 
@@ -5102,7 +5102,7 @@ msgstr "אותו"
 msgid "Statistics"
 msgstr "סטטיסטיקות"
 
-#: src/menu_events.cpp:315 src/menu_events.cpp:864
+#: src/menu_events.cpp:315 src/menu_events.cpp:872
 msgid "Level"
 msgstr "רמה"
 
@@ -5110,7 +5110,7 @@ msgstr "רמה"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2443
+#: src/menu_events.cpp:319 src/unit.cpp:2436
 msgid "Moves"
 msgstr "מהלכים"
 
@@ -5118,130 +5118,130 @@ msgstr "מהלכים"
 msgid "Location"
 msgstr "מיקום"
 
-#: src/menu_events.cpp:373
+#: src/menu_events.cpp:370
 msgid "Unit List"
 msgstr "רשימת יחידות"
 
-#: src/menu_events.cpp:388
+#: src/menu_events.cpp:386
 msgid "Leader"
 msgstr "מנהיג"
 
-#: src/menu_events.cpp:389 src/multiplayer_connect.cpp:741
+#: src/menu_events.cpp:387 src/multiplayer_connect.cpp:741
 #: src/multiplayer_connect.cpp:750
 msgid "Team"
 msgstr "צוות"
 
-#: src/menu_events.cpp:390 src/multiplayer_connect.cpp:752
+#: src/menu_events.cpp:388 src/multiplayer_connect.cpp:752
 #: src/multiplayer_wait.cpp:444
 msgid "Gold"
 msgstr "זהב"
 
-#: src/menu_events.cpp:391
+#: src/menu_events.cpp:389
 msgid "Villages"
 msgstr "כפרים"
 
-#: src/menu_events.cpp:392
+#: src/menu_events.cpp:390
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:393
+#: src/menu_events.cpp:391
 msgid "Upkeep"
 msgstr "מחיר אחזקה"
 
-#: src/menu_events.cpp:394 src/multiplayer_connect.cpp:753
+#: src/menu_events.cpp:392 src/multiplayer_connect.cpp:753
 #: src/multiplayer_wait.cpp:448
 msgid "Income"
 msgstr "הכנסה"
 
-#: src/menu_events.cpp:483 src/playcampaign.cpp:465
+#: src/menu_events.cpp:491 src/playcampaign.cpp:465
 msgid "Name:"
 msgstr "שם:"
 
-#: src/menu_events.cpp:488
+#: src/menu_events.cpp:496
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr "אסור שהשם יכיל נקודותיים, לוכסנים או לוכסנים הפוכים. יש לבחור שם אחר."
 
-#: src/menu_events.cpp:498
+#: src/menu_events.cpp:506
 msgid "Saved"
 msgstr "נשמר"
 
-#: src/menu_events.cpp:498
+#: src/menu_events.cpp:506
 msgid "The game has been saved"
 msgstr "המשחק נשמר"
 
-#: src/menu_events.cpp:501 src/playcampaign.cpp:473
+#: src/menu_events.cpp:509 src/playcampaign.cpp:473
 msgid "The game could not be saved"
 msgstr "שמירת המשחק נכשלה"
 
-#: src/menu_events.cpp:516
+#: src/menu_events.cpp:524
 #, fuzzy
 msgid "Save the Map As"
 msgstr "שתף מפות"
 
-#: src/menu_events.cpp:521
+#: src/menu_events.cpp:529
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "המשחק השמור כבר קיים. האם לדרוס אותו?"
 
-#: src/menu_events.cpp:533
+#: src/menu_events.cpp:541
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:537
+#: src/menu_events.cpp:545
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:627 src/menu_events.cpp:629 src/play_controller.cpp:747
+#: src/menu_events.cpp:635 src/menu_events.cpp:637 src/play_controller.cpp:747
 #: src/playcampaign.cpp:101
 msgid "Auto-Save"
 msgstr "שמירה אוטומטית"
 
-#: src/menu_events.cpp:632
+#: src/menu_events.cpp:640
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "שמירת משחק אוטומטית נכשלה. יש לבצע שמירה ידנית."
 
-#: src/menu_events.cpp:656
+#: src/menu_events.cpp:664
 msgid "Chat Log"
 msgstr "יומן שיחות"
 
-#: src/menu_events.cpp:666
+#: src/menu_events.cpp:674
 msgid "Message:"
 msgstr "הודעה:"
 
-#: src/menu_events.cpp:667
+#: src/menu_events.cpp:675
 msgid "Send to allies only"
 msgstr "שלח לבעלי ברית בלבד"
 
-#: src/menu_events.cpp:734
+#: src/menu_events.cpp:742
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "זהב"
 msgstr[1] "זהב"
 
-#: src/menu_events.cpp:741
+#: src/menu_events.cpp:749
 msgid "You have no units available to recruit."
 msgstr "אין לך יחידות זמינות לגיוס."
 
-#: src/menu_events.cpp:753
+#: src/menu_events.cpp:761
 msgid "Recruit"
 msgstr "גיוס"
 
-#: src/menu_events.cpp:754 src/menu_events.cpp:902
+#: src/menu_events.cpp:762 src/menu_events.cpp:910
 msgid "Select unit:"
 msgstr "בחר יחידה:"
 
-#: src/menu_events.cpp:798
+#: src/menu_events.cpp:806
 msgid "You don't have enough gold to recruit that unit"
 msgstr "אין לך מספיק זהב לגיוס יחידה זו"
 
-#: src/menu_events.cpp:855
+#: src/menu_events.cpp:863
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "הופרדת מחיילך, ולכן אתה לא יכול להחזירם"
 
-#: src/menu_events.cpp:857
+#: src/menu_events.cpp:865
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
@@ -5250,89 +5250,89 @@ msgstr ""
 "אין יחידות זמינות להחזרה\n"
 "(חייבות להיות לך יחידות מנוסות ששרדו תרחיש קודם)"
 
-#: src/menu_events.cpp:896
+#: src/menu_events.cpp:904
 msgid "Dismiss Unit"
 msgstr "שחרר יחידה"
 
-#: src/menu_events.cpp:901
+#: src/menu_events.cpp:909
 msgid "Recall"
 msgstr "החזר"
 
-#: src/menu_events.cpp:917
+#: src/menu_events.cpp:925
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "אתה חייב לפחות $cost זהב כדי להחזיר יחידה"
 msgstr[1] "אתה חייב לפחות $cost זהב כדי להחזיר יחידה"
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1254
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "עדיין לא התחלת את תורך. האם באמת ברצונך לסיימו?"
 
-#: src/menu_events.cpp:1254 src/menu_events.cpp:1259
+#: src/menu_events.cpp:1262 src/menu_events.cpp:1267
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "לחלק מהיחידות נותרו מהלכים. האם באמת ברצונך לסיים את תורך?"
 
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1308
 msgid "Rename Unit"
 msgstr "שנה שם יחידה"
 
-#: src/menu_events.cpp:1382
+#: src/menu_events.cpp:1390
 msgid "Place Label"
 msgstr "מקם תגית"
 
-#: src/menu_events.cpp:1385 src/menu_events.cpp:1388
+#: src/menu_events.cpp:1393 src/menu_events.cpp:1396
 msgid "Label:"
 msgstr "תגית:"
 
-#: src/menu_events.cpp:1391
+#: src/menu_events.cpp:1399
 #, fuzzy
 msgid "Team only"
 msgstr "צוות"
 
-#: src/menu_events.cpp:1492
+#: src/menu_events.cpp:1500
 msgid "Search"
 msgstr "חיפוש"
 
-#: src/menu_events.cpp:1535
+#: src/menu_events.cpp:1543
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1586
+#: src/menu_events.cpp:1594
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1590
+#: src/menu_events.cpp:1598
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1592
+#: src/menu_events.cpp:1600
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1602
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1596
+#: src/menu_events.cpp:1604
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1598
+#: src/menu_events.cpp:1606
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1608
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "תרחיש לא ידוע"
 
-#: src/menu_events.cpp:1603
+#: src/menu_events.cpp:1611
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5340,54 +5340,54 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1606
+#: src/menu_events.cpp:1614
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1608
+#: src/menu_events.cpp:1616
 #, fuzzy
 msgid "Unknown command"
 msgstr "עידן לא ידוע: "
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1628
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1622 src/menu_events.cpp:1629 src/menu_events.cpp:1636
+#: src/menu_events.cpp:1630 src/menu_events.cpp:1637 src/menu_events.cpp:1644
 #, fuzzy
 msgid "Invalid username: "
 msgstr "שם תג לא חוקי "
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1635
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1634
+#: src/menu_events.cpp:1642
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1668
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1670
+#: src/menu_events.cpp:1678
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1673
+#: src/menu_events.cpp:1681
 msgid "Removed from friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1680
+#: src/menu_events.cpp:1688
 #, fuzzy
 msgid "Unknown command: "
 msgstr "תרחיש לא ידוע: "
 
-#: src/menu_events.cpp:1790
+#: src/menu_events.cpp:1798
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "לא ניתן למצוא תגית או יחידה שמכילים את המחרוזת '$search'."
 
-#: src/menu_events.cpp:1938
+#: src/menu_events.cpp:1946
 msgid "prompt^Command:"
 msgstr "פקודה:"
 
@@ -5525,12 +5525,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2546
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2539
 msgid "("
 msgstr ")"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2553
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2546
 msgid ")"
 msgstr "("
 
@@ -5563,7 +5563,7 @@ msgstr "אין צדדים לא אקראיים בתקופה הנוכחית"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "לא ניתן למצוא סוג מנהיג לסיעה $faction"
 
-#: src/multiplayer_connect.cpp:735 src/multiplayer_lobby.cpp:533
+#: src/multiplayer_connect.cpp:735 src/multiplayer_lobby.cpp:527
 #: src/multiplayer_wait.cpp:164
 msgid "Game Lobby"
 msgstr "לובי המשחק"
@@ -5625,7 +5625,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "ממתין להצטרפות שחקנים..."
 
-#: src/multiplayer_create.cpp:40 src/multiplayer_lobby.cpp:537
+#: src/multiplayer_create.cpp:40 src/multiplayer_lobby.cpp:531
 msgid "Create Game"
 msgstr "צור משחק"
 
@@ -5645,8 +5645,8 @@ msgstr "תקופה:"
 msgid "Map to play:"
 msgstr "מפת משחק:"
 
-#: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:420
-#: src/multiplayer_lobby.cpp:421
+#: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:414
+#: src/multiplayer_lobby.cpp:415
 msgid "Use map settings"
 msgstr "השתמש בהגדרות המפה"
 
@@ -5807,50 +5807,50 @@ msgstr "שחקנים:"
 msgid "--no games open--"
 msgstr "--אין משחקים פתוחים--"
 
-#: src/multiplayer_lobby.cpp:339 src/multiplayer_lobby.cpp:342
+#: src/multiplayer_lobby.cpp:333 src/multiplayer_lobby.cpp:336
 msgid "Unknown era"
 msgstr "עידן לא ידוע: "
 
-#: src/multiplayer_lobby.cpp:381 src/multiplayer_lobby.cpp:397
+#: src/multiplayer_lobby.cpp:375 src/multiplayer_lobby.cpp:391
 msgid "Unknown scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/multiplayer_lobby.cpp:393
+#: src/multiplayer_lobby.cpp:387
 #, fuzzy
 msgid "Remote scenario"
 msgstr "תרחיש לא ידוע"
 
-#: src/multiplayer_lobby.cpp:416
+#: src/multiplayer_lobby.cpp:410
 msgid "Vacant Slot:"
 msgstr "מקום פנוי:"
 
-#: src/multiplayer_lobby.cpp:416
+#: src/multiplayer_lobby.cpp:410
 msgid "Vacant Slots:"
 msgstr "מקומות פנויים:"
 
-#: src/multiplayer_lobby.cpp:441
+#: src/multiplayer_lobby.cpp:435
 msgid "none"
 msgstr "אין"
 
-#: src/multiplayer_lobby.cpp:535
+#: src/multiplayer_lobby.cpp:529
 msgid "Observe Game"
 msgstr "התבונן במשחק"
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:532
 #, fuzzy
 msgid "Quick Replays"
 msgstr " מהתחלה"
 
-#: src/multiplayer_lobby.cpp:540
+#: src/multiplayer_lobby.cpp:534
 #, fuzzy
 msgid "Preferences"
 msgstr "נסיכה"
 
-#: src/multiplayer_lobby.cpp:542
+#: src/multiplayer_lobby.cpp:536
 msgid "Quit"
 msgstr "צא"
 
-#: src/multiplayer_lobby.cpp:547
+#: src/multiplayer_lobby.cpp:541
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
@@ -6210,11 +6210,11 @@ msgstr ""
 msgid "Help Wesnoth by sending us information"
 msgstr "עזור לווסנות' על ידי שליחת מידע אלינו"
 
-#: src/unit.cpp:2378 src/unit.cpp:2551
+#: src/unit.cpp:2371 src/unit.cpp:2544
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2460
+#: src/unit.cpp:2453
 msgid "XP to advance"
 msgstr "נק\"נ לרמה הבאה"
 
