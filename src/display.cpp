@@ -54,6 +54,10 @@ namespace {
 	const int MaxZoom = 200;
 	size_t sunset_delay = 0;
 	size_t sunset_timer = 0;
+
+	// number of border hexes, the real size will be border 
+	// and border + 0.5 depending whether the x is odd or even 
+	double border = 0.25;
 }
 
 display::display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
@@ -88,9 +92,9 @@ const SDL_Rect& display::map_area() const
 	// hex_size() is always a multiple of 4 and hex_width() a multiple of
 	// 3 so there shouldn't be off by one errors due to rounding
 	// To display a hex fully on screen a little bit extra space is needed
-	// Also added 2 hexes for the border.
-	const int width = lexical_cast<int>((map_.x() + (7.0/3.0)) * hex_width()); 
-	const int height = lexical_cast<int>((map_.y() + 2.5) * hex_size());
+	// Also added the border two times.
+	const int width = static_cast<int>((map_.x() + 2 * border + 1.0/3.0) * hex_width()); 
+	const int height = static_cast<int>((map_.y() + 2 * border + 0.5) * hex_size());
 
 	if(width < res.w) {
 		// map is smaller, center
@@ -137,9 +141,9 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 		gamemap::location::DIRECTION* nearest_hex, 
 		gamemap::location::DIRECTION* second_nearest_hex) const
 {
-	// adjust for the 1 hex border
-	x -= hex_width() ;
-	y -= hex_size();
+	// adjust for the border
+	x -= static_cast<int>(border * hex_width());
+	y -= static_cast<int>(border * hex_size());
 	const int s = hex_size();
 	const int tesselation_x_size = hex_width() * 2;
 	const int tesselation_y_size = s;
@@ -260,12 +264,12 @@ void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gam
 
 	const int tile_width = hex_width();
 
-	// adjust for the 1 hex border
-	topleft.x  = -1 + (xpos_ + rect.x) / tile_width;
-	topleft.y  = -1 + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
+	// adjust for the border
+	topleft.x  = -static_cast<int>(border) + (xpos_ + rect.x) / tile_width;
+	topleft.y  = -static_cast<int>(border) + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
 
-	bottomright.x  = -1 + (xpos_ + rect.x + rect.w) / tile_width;
-	bottomright.y  = -1 + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
+	bottomright.x  = -static_cast<int>(border) + (xpos_ + rect.x + rect.w) / tile_width;
+	bottomright.y  = -static_cast<int>(border) + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
 
 	// This routine does a rough approximation so might be off by one
 	// to be sure enough tiles are incuded the boundries are increased
@@ -285,6 +289,16 @@ void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gam
 	if(bottomright.y <= map_.y()) {
 		bottomright.y++;
 	}
+}
+
+int display::get_location_x(const gamemap::location& loc) const
+{ 
+	return static_cast<int>(map_area().x + (loc.x + border) * hex_width() - xpos_); 
+}
+
+int display::get_location_y(const gamemap::location& loc) const
+{ 
+	return static_cast<int>(map_area().y + (loc.y + border) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0)); 
 }
 
 gamemap::location display::minimap_location_on(int x, int y)
@@ -1330,9 +1344,9 @@ void display::bounds_check_position(int& xpos, int& ypos)
 {
 	const int tile_width = hex_width();
 
-	// adjust for the border 2 times 1 hex
-	const int xend = tile_width * (map_.x() + 2) + tile_width/3;
-	const int yend = zoom_ * (map_.y() + 2) + zoom_/2;
+	// adjust for the border 2 times 
+	const int xend = static_cast<int>(tile_width * (map_.x() + 2 * border) + tile_width/3);
+	const int yend = static_cast<int>(zoom_ * (map_.y() + 2 * border) + zoom_/2);
 
 	if(xpos > xend - map_area().w) {
 		xpos = xend - map_area().w;

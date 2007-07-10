@@ -236,8 +236,8 @@ void game_display::draw(bool update,bool force)
 		std::set<gamemap::location, ordered_draw> unit_invals;
 
 		const time_of_day& tod = status_.get_time_of_day();
-		
-		SDL_Rect clip_rect = map_outside_area();
+	
+		SDL_Rect clip_rect = map_area();
 		surface const dst(screen_.getSurface());
 		clip_rect_setter set_clip_rect(dst, clip_rect);
 

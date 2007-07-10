@@ -139,11 +139,8 @@ public:
 	void get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const;
 
 	//functions to get the on-screen positions of hexes.
-	// we have a 1 hex border so need to offset the loction with 1
-	int get_location_x(const gamemap::location& loc) const
-		{ return map_area().x + (loc.x + 1) * hex_width() - xpos_; }
-	int get_location_y(const gamemap::location& loc) const
-		{ return map_area().y + (loc.y + 1) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0); }
+	int get_location_x(const gamemap::location& loc) const;
+	int get_location_y(const gamemap::location& loc) const;
 
 	//function which returns true if location (x,y) is covered in shroud.
 	bool shrouded(const gamemap::location& loc) const
