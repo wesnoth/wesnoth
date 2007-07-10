@@ -323,11 +323,11 @@ void game_display::draw(bool update,bool force)
 			}
 
 			// apply fogging
-			if(fogged(*it) && on_map && !is_shrouded) {
+			if(fogged(*it) /*&& on_map*/ && !is_shrouded) {
 				tile_stack_append(image::get_image(game_config::fog_image));
 			}
 
-			if(!is_shrouded && on_map) {
+			if(!is_shrouded /*&& on_map*/) {
 				tile_stack_terrains(*it,tod.id,image_type,ADJACENT_FOGSHROUD);
 			}
 
