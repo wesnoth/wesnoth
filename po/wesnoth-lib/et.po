@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-09 19:53+0200\n"
+"POT-Creation-Date: 2007-07-10 18:38+0200\n"
 "PO-Revision-Date: 2007-01-14 16:37+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -76,31 +76,34 @@ msgstr "Juhugeneraatori sätted"
 msgid "Map creation failed."
 msgstr "Kaardi loomine ebaõnnestus."
 
-#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
+#: src/mapgen_dialog.cpp:99
 msgid "Close Window"
 msgstr "Sulge aken"
 
-#: src/editor/editor_dialogs.cpp:249 src/hotkeys.cpp:79
+#: src/editor/editor_dialogs.cpp:249 src/game_preferences_display.cpp:1037
+#: src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Eelistused"
 
-#: src/editor/editor_dialogs.cpp:253
+#: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:175
 msgid "Scroll Speed:"
 msgstr "Kerimiskiirus:"
 
-#: src/editor/editor_dialogs.cpp:280 src/hotkeys.cpp:60
+#: src/editor/editor_dialogs.cpp:280 src/game_preferences_display.cpp:134
+#: src/hotkeys.cpp:60
 msgid "Toggle Full Screen"
 msgstr "Täisekraan"
 
-#: src/editor/editor_dialogs.cpp:287
+#: src/editor/editor_dialogs.cpp:287 src/game_preferences_display.cpp:137
 msgid "Show Grid"
 msgstr "Näita võret"
 
-#: src/editor/editor_dialogs.cpp:294
+#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:156
 msgid "Video Mode"
 msgstr "Video režiim"
 
-#: src/editor/editor_dialogs.cpp:297
+#: src/editor/editor_dialogs.cpp:297 src/game_preferences_display.cpp:158
 msgid "Hotkeys"
 msgstr "Kiirklahvid"
 
@@ -148,6 +151,415 @@ msgstr "Kataloogi loomine ebaõnnestus."
 #: src/game_preferences.cpp:204
 msgid "player"
 msgstr "mängija"
+
+#: src/game_preferences_display.cpp:135
+msgid "Accelerated Speed"
+msgstr "Kiirendatud kiirus"
+
+#: src/game_preferences_display.cpp:136
+msgid "Skip AI Moves"
+msgstr "Jäta AI käigud vahele"
+
+#: src/game_preferences_display.cpp:138
+#, fuzzy
+msgid "Save Replays"
+msgstr "Salvesta kiirvalikud"
+
+#: src/game_preferences_display.cpp:139
+msgid "Delete Autosaves"
+msgstr ""
+
+#: src/game_preferences_display.cpp:140
+msgid "Do Not Show Lobby Joins"
+msgstr "Ära näita fuajeesse sisenejaid"
+
+#: src/game_preferences_display.cpp:141
+msgid "Show Lobby Joins Of Friends Only"
+msgstr "Näita ainult sõprade sisenemist fuajeesse"
+
+#: src/game_preferences_display.cpp:142
+msgid "Show All Lobby Joins"
+msgstr "Näita kõiki fuajeesse sisenemisi"
+
+#: src/game_preferences_display.cpp:143
+msgid "Sort Lobby List"
+msgstr "Sorteeri fuajees olevate nimekirja"
+
+#: src/game_preferences_display.cpp:144
+msgid "Iconize Lobby List"
+msgstr "Minimeeri fuajees olevate nimekiri"
+
+#: src/game_preferences_display.cpp:145
+#, fuzzy
+msgid "Friends List"
+msgstr "Sinu sõprade nimekiri"
+
+#: src/game_preferences_display.cpp:146
+msgid "Multiplayer Options"
+msgstr ""
+
+#: src/game_preferences_display.cpp:147
+msgid "Add As Friend"
+msgstr "Lisa kui sõber"
+
+#: src/game_preferences_display.cpp:148
+msgid "Add As Ignore"
+msgstr "Lisa kui ignoreeritud"
+
+#: src/game_preferences_display.cpp:149
+msgid "Remove"
+msgstr "Eemalda"
+
+#: src/game_preferences_display.cpp:150
+msgid "Show Floating Labels"
+msgstr "Näita hõljuvaid silte"
+
+#: src/game_preferences_display.cpp:151
+msgid "Turn Dialog"
+msgstr "Käigu teade"
+
+#: src/game_preferences_display.cpp:152
+msgid "Turn Bell"
+msgstr "Käigu helin"
+
+#: src/game_preferences_display.cpp:153
+msgid "Show Team Colors"
+msgstr "Näita meeskondade värve"
+
+#: src/game_preferences_display.cpp:154
+msgid "Show Color Cursors"
+msgstr "Näita värvilisi kursoreid"
+
+#: src/game_preferences_display.cpp:155
+msgid "Show Haloing Effects"
+msgstr "Näita haloefekte"
+
+#: src/game_preferences_display.cpp:157
+msgid "Theme"
+msgstr "Teema"
+
+#: src/game_preferences_display.cpp:159
+msgid "Adjust Gamma"
+msgstr "Muuda gammat"
+
+#: src/game_preferences_display.cpp:160
+msgid "Reverse Time Graphics"
+msgstr "Graafika tagurpidises ajas"
+
+#: src/game_preferences_display.cpp:162
+msgid "Sound effects"
+msgstr "Heliefektid"
+
+#: src/game_preferences_display.cpp:163
+msgid "Music"
+msgstr "Muusika"
+
+#: src/game_preferences_display.cpp:164
+msgid "Chat Timestamping"
+msgstr "Näita vestlustes aega"
+
+#: src/game_preferences_display.cpp:165
+msgid "Advanced Mode"
+msgstr "Režiim edasijõudnutele"
+
+#: src/game_preferences_display.cpp:166
+msgid "Normal Mode"
+msgstr "Tavarežiim"
+
+#: src/game_preferences_display.cpp:167
+msgid "User Interface Sounds"
+msgstr ""
+
+#: src/game_preferences_display.cpp:170
+msgid "Custom"
+msgstr "Kohandatud"
+
+#: src/game_preferences_display.cpp:171
+msgid "Apply"
+msgstr "Rakenda"
+
+#: src/game_preferences_display.cpp:173
+msgid "Music Volume:"
+msgstr "Muusika valjus:"
+
+#: src/game_preferences_display.cpp:173
+msgid "SFX Volume:"
+msgstr "Efektide valjus:"
+
+#: src/game_preferences_display.cpp:174
+#, fuzzy
+msgid "UI Sound Volume:"
+msgstr "Efektide valjus:"
+
+#: src/game_preferences_display.cpp:175
+msgid "Bell Volume:"
+msgstr "Kellahelina valjus:"
+
+#: src/game_preferences_display.cpp:176
+msgid "Gamma:"
+msgstr "Gamma:"
+
+#: src/game_preferences_display.cpp:178
+msgid "Sample Rate (Hz):"
+msgstr "Sämplimissagedus (Hz):"
+
+#: src/game_preferences_display.cpp:201
+msgid "Sound effects on/off"
+msgstr "Heliefektid sees/väljas"
+
+#: src/game_preferences_display.cpp:205
+msgid "Change the sound effects volume"
+msgstr "Muuda heliefektide valjusust"
+
+#: src/game_preferences_display.cpp:208
+msgid "Music on/off"
+msgstr "Muusika sees/väljas"
+
+#: src/game_preferences_display.cpp:212
+msgid "Change the music volume"
+msgstr "Muuda muusika valjusust"
+
+#: src/game_preferences_display.cpp:218
+msgid "Change the bell volume"
+msgstr "Muuda kellahaleina valjusust"
+
+#: src/game_preferences_display.cpp:221
+msgid "Turn menu and button sounds on/off"
+msgstr ""
+
+#: src/game_preferences_display.cpp:225
+msgid "Change the sound volume for button clicks, etc."
+msgstr ""
+
+#: src/game_preferences_display.cpp:227
+msgid "Change the sample rate"
+msgstr "Muuda sämplimissagedust"
+
+#: src/game_preferences_display.cpp:236
+msgid "User defined sample rate"
+msgstr "Kasutajapoolse sämplimissageduse tarvitamine"
+
+#: src/game_preferences_display.cpp:245 src/game_preferences_display.cpp:249
+msgid "Change the buffer size"
+msgstr "Muuda puhvri suurust"
+
+#: src/game_preferences_display.cpp:247 src/game_preferences_display.cpp:742
+msgid "Buffer Size: "
+msgstr "Puhvri suurus:"
+
+#: src/game_preferences_display.cpp:254
+msgid "Change the speed of scrolling around the map"
+msgstr "Muuda kaardikerimise kiirust"
+
+#: src/game_preferences_display.cpp:259 src/game_preferences_display.cpp:261
+msgid "Set the amount of chat lines shown"
+msgstr ""
+
+#: src/game_preferences_display.cpp:264
+msgid "Add a timestamp to chat messages"
+msgstr "Lisa vestlussõnumitele ajatempel"
+
+#: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:272
+msgid "Change the brightness of the display"
+msgstr "Muuda ekraani erksust"
+
+#: src/game_preferences_display.cpp:275
+msgid "Choose whether the game should run full screen or in a window"
+msgstr "Vali, kas mäng peaks olema tervel ekraanil või aknas"
+
+#: src/game_preferences_display.cpp:278
+msgid "Make units move and fight faster"
+msgstr "Üksused liiguvad ja võitlevad kiiremini"
+
+#: src/game_preferences_display.cpp:293
+msgid "Units move and fight speed"
+msgstr "Üksuste liikumis- ja võitlemiskiirus"
+
+#: src/game_preferences_display.cpp:296
+msgid "Do not animate AI units moving"
+msgstr "Ära animeeri AI üksuste liikumist."
+
+#: src/game_preferences_display.cpp:299
+msgid "Save replays at scenario end."
+msgstr ""
+
+#: src/game_preferences_display.cpp:302
+msgid "Automatically delete autosaves at the end of a scenario"
+msgstr ""
+
+#: src/game_preferences_display.cpp:304
+msgid "Overlay a grid onto the map"
+msgstr "Kuva kaardi kohal võrgustikku."
+
+#: src/game_preferences_display.cpp:307
+msgid "Sort the player list in the lobby by player groups"
+msgstr ""
+
+#: src/game_preferences_display.cpp:310
+msgid "Show icons in front of the player names in the lobby."
+msgstr ""
+
+#: src/game_preferences_display.cpp:313
+msgid "Do not show messages about players joining the multiplayer lobby"
+msgstr ""
+
+#: src/game_preferences_display.cpp:315
+msgid "Show messages about your friends joining the multiplayer lobby"
+msgstr ""
+
+#: src/game_preferences_display.cpp:317
+msgid "Show messages about all players joining the multiplayer lobby"
+msgstr ""
+
+#: src/game_preferences_display.cpp:319
+msgid "View and edit your friends and ignores list"
+msgstr ""
+
+#: src/game_preferences_display.cpp:320
+msgid "Back to the multiplayer options"
+msgstr ""
+
+#: src/game_preferences_display.cpp:321
+msgid "Add this username to your friends list"
+msgstr ""
+
+#: src/game_preferences_display.cpp:322
+msgid "Add this username to your ignores list"
+msgstr ""
+
+#: src/game_preferences_display.cpp:323
+msgid "Remove this username from your list"
+msgstr ""
+
+#: src/game_preferences_display.cpp:326
+msgid "Insert a username"
+msgstr "Sisesta kasutajanimi"
+
+#: src/game_preferences_display.cpp:329
+msgid "Show text above a unit when it is hit to display damage inflicted"
+msgstr "Näita üksuse kohal kui palju kahju ta löögi tulemusena sai."
+
+#: src/game_preferences_display.cpp:331
+msgid "Change the resolution the game runs at"
+msgstr "Muuda mängu kasutatavad ekraani eraldusvõimet"
+
+#: src/game_preferences_display.cpp:332
+msgid "Change the theme the game runs with"
+msgstr "Muuda mängus kasutatavad teemat"
+
+#: src/game_preferences_display.cpp:335
+msgid "Display a dialog at the beginning of your turn"
+msgstr "Sinu käigu alguse kohta näidatakse teadet."
+
+#: src/game_preferences_display.cpp:338
+msgid "Play a bell sound at the beginning of your turn"
+msgstr "Sinu käigu alguses kostab kellahelin."
+
+#: src/game_preferences_display.cpp:341
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr "Näita üksuse ümber värvilist ringi, et näha, kelle poolel ta on."
+
+#: src/game_preferences_display.cpp:344
+msgid "Choose whether the sun moves left-to-right or right-to-left"
+msgstr "Vali kas päike liigub vasakult paremale või paremalt vasakule"
+
+#: src/game_preferences_display.cpp:347
+msgid "Use colored mouse cursors (may be slower)"
+msgstr "Kasuta värvilisi hiirekursoreid (võib olla aeglane)"
+
+#: src/game_preferences_display.cpp:350
+msgid "Use graphical special effects (may be slower)"
+msgstr "Kasuta graafilisi eriefekte (võib olla aeglane)"
+
+#: src/game_preferences_display.cpp:352
+msgid "View and configure keyboard shortcuts"
+msgstr "Vaata ja seadista klaviatuuri kiirvalikuid"
+
+#: src/game_preferences_display.cpp:622
+msgid "Speed: "
+msgstr "Kiirus:"
+
+#: src/game_preferences_display.cpp:784
+msgid "Chat Lines: "
+msgstr ""
+
+#: src/game_preferences_display.cpp:880
+msgid "yes"
+msgstr "jah"
+
+#: src/game_preferences_display.cpp:882
+msgid "no"
+msgstr "ei"
+
+#: src/game_preferences_display.cpp:1025
+msgid "Prefs section^General"
+msgstr "Üldine"
+
+#: src/game_preferences_display.cpp:1026
+msgid "Prefs section^Display"
+msgstr "Pilt"
+
+#: src/game_preferences_display.cpp:1027
+msgid "Prefs section^Sound"
+msgstr "Heli"
+
+#: src/game_preferences_display.cpp:1028
+msgid "Prefs section^Multiplayer"
+msgstr "Mitu mängijat"
+
+#: src/game_preferences_display.cpp:1029
+msgid "Advanced section^Advanced"
+msgstr "Edasijõudnutele"
+
+#: src/game_preferences_display.cpp:1094
+msgid "There are no alternative video modes available"
+msgstr "Alternatiivsed video režiimid puuduvad."
+
+#: src/game_preferences_display.cpp:1123
+msgid "Choose Resolution"
+msgstr "Vali eraldusvõime"
+
+#: src/game_preferences_display.cpp:1155
+msgid "Hotkey Settings"
+msgstr "Kiirvalikute seaded"
+
+#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
+msgid "Press desired Hotkey"
+msgstr "Vajuta soovitud kiirklahvi"
+
+#: src/game_preferences_display.cpp:1179
+msgid "Action"
+msgstr "Tegevus"
+
+#: src/game_preferences_display.cpp:1179
+msgid "Binding"
+msgstr "Klahv"
+
+#: src/game_preferences_display.cpp:1191
+msgid "Change Hotkey"
+msgstr "Muuda kiirvalikut"
+
+#: src/game_preferences_display.cpp:1194
+msgid "Save Hotkeys"
+msgstr "Salvesta kiirvalikud"
+
+#: src/game_preferences_display.cpp:1244
+msgid "This Hotkey is already in use."
+msgstr "See kiirklahv on juba kasutusel."
+
+#: src/game_preferences_display.cpp:1277
+msgid "Saved Theme Preference: "
+msgstr "Salvestatud teema eelistus:"
+
+#: src/game_preferences_display.cpp:1283
+msgid "New theme will take effect on next new or loaded game."
+msgstr "Uus teema ei rakendub kas uue mängu alustamisel või mängu laadimisel."
+
+#: src/game_preferences_display.cpp:1287
+msgid "No known themes.  Try changing from within an existing game."
+msgstr "Teemasid ei leitud. Proovi teemat muuta olemasolevast mängust."
 
 #: src/hotkeys.cpp:50
 msgid "Next Unit"
@@ -517,260 +929,8 @@ msgstr ""
 msgid "Error"
 msgstr "Viga"
 
-#~ msgid "Accelerated Speed"
-#~ msgstr "Kiirendatud kiirus"
-
-#~ msgid "Skip AI Moves"
-#~ msgstr "Jäta AI käigud vahele"
-
-#, fuzzy
-#~ msgid "Save Replays"
-#~ msgstr "Salvesta kiirvalikud"
-
 #~ msgid "Show Lobby Minimaps"
 #~ msgstr "Näita fuajees minikaarte"
-
-#~ msgid "Do Not Show Lobby Joins"
-#~ msgstr "Ära näita fuajeesse sisenejaid"
-
-#~ msgid "Show Lobby Joins Of Friends Only"
-#~ msgstr "Näita ainult sõprade sisenemist fuajeesse"
-
-#~ msgid "Show All Lobby Joins"
-#~ msgstr "Näita kõiki fuajeesse sisenemisi"
-
-#~ msgid "Sort Lobby List"
-#~ msgstr "Sorteeri fuajees olevate nimekirja"
-
-#~ msgid "Iconize Lobby List"
-#~ msgstr "Minimeeri fuajees olevate nimekiri"
-
-#, fuzzy
-#~ msgid "Friends List"
-#~ msgstr "Sinu sõprade nimekiri"
-
-#~ msgid "Add As Friend"
-#~ msgstr "Lisa kui sõber"
-
-#~ msgid "Add As Ignore"
-#~ msgstr "Lisa kui ignoreeritud"
-
-#~ msgid "Remove"
-#~ msgstr "Eemalda"
-
-#~ msgid "Show Floating Labels"
-#~ msgstr "Näita hõljuvaid silte"
-
-#~ msgid "Turn Dialog"
-#~ msgstr "Käigu teade"
-
-#~ msgid "Turn Bell"
-#~ msgstr "Käigu helin"
-
-#~ msgid "Show Team Colors"
-#~ msgstr "Näita meeskondade värve"
-
-#~ msgid "Show Color Cursors"
-#~ msgstr "Näita värvilisi kursoreid"
-
-#~ msgid "Show Haloing Effects"
-#~ msgstr "Näita haloefekte"
-
-#~ msgid "Theme"
-#~ msgstr "Teema"
-
-#~ msgid "Adjust Gamma"
-#~ msgstr "Muuda gammat"
-
-#~ msgid "Reverse Time Graphics"
-#~ msgstr "Graafika tagurpidises ajas"
-
-#~ msgid "Sound effects"
-#~ msgstr "Heliefektid"
-
-#~ msgid "Music"
-#~ msgstr "Muusika"
-
-#~ msgid "Chat Timestamping"
-#~ msgstr "Näita vestlustes aega"
-
-#~ msgid "Advanced Mode"
-#~ msgstr "Režiim edasijõudnutele"
-
-#~ msgid "Normal Mode"
-#~ msgstr "Tavarežiim"
-
-#~ msgid "Custom"
-#~ msgstr "Kohandatud"
-
-#~ msgid "Apply"
-#~ msgstr "Rakenda"
-
-#~ msgid "Music Volume:"
-#~ msgstr "Muusika valjus:"
-
-#~ msgid "SFX Volume:"
-#~ msgstr "Efektide valjus:"
-
-#, fuzzy
-#~ msgid "UI Sound Volume:"
-#~ msgstr "Efektide valjus:"
-
-#~ msgid "Bell Volume:"
-#~ msgstr "Kellahelina valjus:"
-
-#~ msgid "Gamma:"
-#~ msgstr "Gamma:"
-
-#~ msgid "Sample Rate (Hz):"
-#~ msgstr "Sämplimissagedus (Hz):"
-
-#~ msgid "Sound effects on/off"
-#~ msgstr "Heliefektid sees/väljas"
-
-#~ msgid "Change the sound effects volume"
-#~ msgstr "Muuda heliefektide valjusust"
-
-#~ msgid "Music on/off"
-#~ msgstr "Muusika sees/väljas"
-
-#~ msgid "Change the music volume"
-#~ msgstr "Muuda muusika valjusust"
-
-#~ msgid "Change the bell volume"
-#~ msgstr "Muuda kellahaleina valjusust"
-
-#~ msgid "Change the sample rate"
-#~ msgstr "Muuda sämplimissagedust"
-
-#~ msgid "User defined sample rate"
-#~ msgstr "Kasutajapoolse sämplimissageduse tarvitamine"
-
-#~ msgid "Change the buffer size"
-#~ msgstr "Muuda puhvri suurust"
-
-#~ msgid "Buffer Size: "
-#~ msgstr "Puhvri suurus:"
-
-#~ msgid "Change the speed of scrolling around the map"
-#~ msgstr "Muuda kaardikerimise kiirust"
-
-#~ msgid "Add a timestamp to chat messages"
-#~ msgstr "Lisa vestlussõnumitele ajatempel"
-
-#~ msgid "Change the brightness of the display"
-#~ msgstr "Muuda ekraani erksust"
-
-#~ msgid "Choose whether the game should run full screen or in a window"
-#~ msgstr "Vali, kas mäng peaks olema tervel ekraanil või aknas"
-
-#~ msgid "Make units move and fight faster"
-#~ msgstr "Üksused liiguvad ja võitlevad kiiremini"
-
-#~ msgid "Units move and fight speed"
-#~ msgstr "Üksuste liikumis- ja võitlemiskiirus"
-
-#~ msgid "Do not animate AI units moving"
-#~ msgstr "Ära animeeri AI üksuste liikumist."
-
-#~ msgid "Overlay a grid onto the map"
-#~ msgstr "Kuva kaardi kohal võrgustikku."
-
-#~ msgid "Insert a username"
-#~ msgstr "Sisesta kasutajanimi"
-
-#~ msgid "Show text above a unit when it is hit to display damage inflicted"
-#~ msgstr "Näita üksuse kohal kui palju kahju ta löögi tulemusena sai."
-
-#~ msgid "Change the resolution the game runs at"
-#~ msgstr "Muuda mängu kasutatavad ekraani eraldusvõimet"
-
-#~ msgid "Change the theme the game runs with"
-#~ msgstr "Muuda mängus kasutatavad teemat"
-
-#~ msgid "Display a dialog at the beginning of your turn"
-#~ msgstr "Sinu käigu alguse kohta näidatakse teadet."
-
-#~ msgid "Play a bell sound at the beginning of your turn"
-#~ msgstr "Sinu käigu alguses kostab kellahelin."
-
-#~ msgid ""
-#~ "Show a colored circle around the base of each unit to show which side it "
-#~ "is on"
-#~ msgstr "Näita üksuse ümber värvilist ringi, et näha, kelle poolel ta on."
-
-#~ msgid "Choose whether the sun moves left-to-right or right-to-left"
-#~ msgstr "Vali kas päike liigub vasakult paremale või paremalt vasakule"
-
-#~ msgid "Use colored mouse cursors (may be slower)"
-#~ msgstr "Kasuta värvilisi hiirekursoreid (võib olla aeglane)"
-
-#~ msgid "Use graphical special effects (may be slower)"
-#~ msgstr "Kasuta graafilisi eriefekte (võib olla aeglane)"
-
-#~ msgid "View and configure keyboard shortcuts"
-#~ msgstr "Vaata ja seadista klaviatuuri kiirvalikuid"
-
-#~ msgid "Speed: "
-#~ msgstr "Kiirus:"
-
-#~ msgid "yes"
-#~ msgstr "jah"
-
-#~ msgid "no"
-#~ msgstr "ei"
-
-#~ msgid "Prefs section^General"
-#~ msgstr "Üldine"
-
-#~ msgid "Prefs section^Display"
-#~ msgstr "Pilt"
-
-#~ msgid "Prefs section^Sound"
-#~ msgstr "Heli"
-
-#~ msgid "Prefs section^Multiplayer"
-#~ msgstr "Mitu mängijat"
-
-#~ msgid "Advanced section^Advanced"
-#~ msgstr "Edasijõudnutele"
-
-#~ msgid "There are no alternative video modes available"
-#~ msgstr "Alternatiivsed video režiimid puuduvad."
-
-#~ msgid "Choose Resolution"
-#~ msgstr "Vali eraldusvõime"
-
-#~ msgid "Hotkey Settings"
-#~ msgstr "Kiirvalikute seaded"
-
-#~ msgid "Press desired Hotkey"
-#~ msgstr "Vajuta soovitud kiirklahvi"
-
-#~ msgid "Action"
-#~ msgstr "Tegevus"
-
-#~ msgid "Binding"
-#~ msgstr "Klahv"
-
-#~ msgid "Change Hotkey"
-#~ msgstr "Muuda kiirvalikut"
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Salvesta kiirvalikud"
-
-#~ msgid "This Hotkey is already in use."
-#~ msgstr "See kiirklahv on juba kasutusel."
-
-#~ msgid "Saved Theme Preference: "
-#~ msgstr "Salvestatud teema eelistus:"
-
-#~ msgid "New theme will take effect on next new or loaded game."
-#~ msgstr ""
-#~ "Uus teema ei rakendub kas uue mängu alustamisel või mängu laadimisel."
-
-#~ msgid "No known themes.  Try changing from within an existing game."
-#~ msgstr "Teemasid ei leitud. Proovi teemat muuta olemasolevast mängust."
 
 #~ msgid "Fog"
 #~ msgstr "Udu"
