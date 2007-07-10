@@ -434,10 +434,12 @@ static t_translation::t_letter get_border_terrain(const gamemap::location& loc,
 
 t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 {
+
 	if(on_board(loc)) {
 		return tiles_[loc.x][loc.y];
 	}
 
+#if 0
 	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
 	if(itor != borderCache_.end()) {
 		return itor->second;
@@ -447,7 +449,7 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 	borderCache_.insert(std::pair<location, t_translation::t_letter>(loc, result));
 	return result;
 
-#if 0
+#else
 	// This code will be used for the editor to expand the map, thus keep it for now
 	
 	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
