@@ -269,7 +269,7 @@ void game_display::draw(bool update,bool force)
 
 			image::TYPE image_type = image::SCALED_TO_HEX;
 
-			if (*it == mouseoverHex_) {
+			if (on_map && *it == mouseoverHex_) {
 				image_type = image::BRIGHTENED;
 			} else if (on_map && *it == selectedHex_) {
 				unit_map::iterator un = find_visible_unit(units_, *it, map_,
