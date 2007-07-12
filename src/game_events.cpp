@@ -494,14 +494,21 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//remove units from being turned to stone
 	else if(cmd == "unstone") {
 		const vconfig filter = cfg.child("filter");
+		//store which side will need a shroud/fog update
+		std::vector<bool> clear_fog_side(teams->size(),false);
+
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
 			if(utils::string_bool(i->second.get_state("stoned"))) {
-				if(!filter.null()) {
-					if(game_events::unit_matches_filter(i, filter))
-						i->second.set_state("stoned","");
-				} else {
+				if(filter.null() || game_events::unit_matches_filter(i, filter)) {
 					i->second.set_state("stoned","");
+					clear_fog_side[i->second.side()-1] = true;
 				}
+			}
+		}
+
+		for (size_t side = 0; side != teams->size(); side++) {
+			if (clear_fog_side[side] && (*teams)[side].auto_shroud_updates()) {
+				recalculate_fog(*game_map,*status_ptr,*game_data_ptr,*units,*teams, side);
 			}
 		}
 	}
