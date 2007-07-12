@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -3991,19 +3991,44 @@ msgid "ranged"
 msgstr "távolsági harc"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "penge"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "páncéltörés"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "ütés"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "tűz"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "hideg"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "távolsági harc"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "buzogány"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Szintlépés után: "
@@ -5025,11 +5050,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr "Kezdőképernyő betöltése"
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
@@ -5106,7 +5131,7 @@ msgstr "fegyver hatósugara: "
 msgid "damage type: "
 msgstr "sebzés: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "kontra"
 
@@ -5691,15 +5716,15 @@ msgstr "Nincsen használható fegyver"
 msgid "Chance of being unscathed"
 msgstr "Sértetlenül maradás esélye"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
@@ -6524,14 +6549,8 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgid "magic blast"
 #~ msgstr "mágikus"
 
-#~ msgid "impact"
-#~ msgstr "ütés"
-
 #~ msgid "chill wave"
 #~ msgstr "fagyhullám"
-
-#~ msgid "cold"
-#~ msgstr "hideg"
 
 #~ msgid "User Map"
 #~ msgstr "Felhasználói térkép"
@@ -7150,9 +7169,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgid "ballista"
 #~ msgstr "dárdavető"
 
-#~ msgid "pierce"
-#~ msgstr "páncéltörés"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Szállítógálya"
 
@@ -7171,14 +7187,8 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgid "claws"
 #~ msgstr "karmok"
 
-#~ msgid "blade"
-#~ msgstr "penge"
-
 #~ msgid "fire breath"
 #~ msgstr "tűzokádás"
-
-#~ msgid "fire"
-#~ msgstr "tűz"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Perzsekény pengeforgató"
@@ -7837,10 +7847,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 
 #~ msgid "faerie fire"
 #~ msgstr "mesebeli tűz"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "távolsági harc"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Tünde harcos"

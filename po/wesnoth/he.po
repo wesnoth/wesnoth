@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-02-13 01:20+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -3777,20 +3777,45 @@ msgid "ranged"
 msgstr "טווח רחוק"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "להב"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "חודר"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "מכה"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "אש"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "קר"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "טווח רחוק"
+
+#: data/hardwired/english.cfg:61
 #, fuzzy
 msgid "Wesnoth unit list"
 msgstr "הדרכה"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "אלה"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "מתקדמת אל: "
@@ -4791,11 +4816,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "ניצחון:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "תבוסה:"
 
@@ -4869,7 +4894,7 @@ msgstr "טווח נשק: "
 msgid "damage type: "
 msgstr "סוג נשק: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "לעומת"
 
@@ -5442,15 +5467,15 @@ msgstr "בחירת נשק:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "חישובי נזק"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "יש לתקוף את האויב"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "בחירת נשק:"
 
@@ -6277,14 +6302,8 @@ msgstr ""
 #~ msgid "magic blast"
 #~ msgstr "קסום"
 
-#~ msgid "impact"
-#~ msgstr "מכה"
-
 #~ msgid "chill wave"
 #~ msgstr "גל קור"
-
-#~ msgid "cold"
-#~ msgstr "קר"
 
 #~ msgid "User Map"
 #~ msgstr "מפת משתמש"
@@ -6767,9 +6786,6 @@ msgstr ""
 #~ msgid "ballista"
 #~ msgstr "בליסטרה"
 
-#~ msgid "pierce"
-#~ msgstr "חודר"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "מפרשית תובלה"
 
@@ -6787,14 +6803,8 @@ msgstr ""
 #~ msgid "claws"
 #~ msgstr "ציפורניים"
 
-#~ msgid "blade"
-#~ msgstr "להב"
-
 #~ msgid "fire breath"
 #~ msgstr "נשיפת אש"
-
-#~ msgid "fire"
-#~ msgstr "אש"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "אשף חרב דרקודמי"
@@ -6983,10 +6993,6 @@ msgstr ""
 
 #~ msgid "faerie fire"
 #~ msgstr "אש פיות"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "טווח רחוק"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "לוחם אלפי"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -3296,18 +3296,43 @@ msgid "ranged"
 msgstr "kauge"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "tera"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "torge"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "löök"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "tuli"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "külm"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "kauge"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Wesnothi üksuste nimekiri"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Rass"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Edutatakse:"
@@ -4238,11 +4263,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Võit:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Kaotus:"
 
@@ -4318,7 +4343,7 @@ msgstr "relva ulatus: "
 msgid "damage type: "
 msgstr "kahjustuse liik: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "vs"
 
@@ -4890,15 +4915,15 @@ msgstr "Kasutatavat relva ei ole"
 msgid "Chance of being unscathed"
 msgstr "Terve nahaga pääsemise võimalus"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Kahju arvutamine"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Ründa vaenlast"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Vali relv:"
 
@@ -5718,14 +5743,8 @@ msgstr ""
 #~ msgid "magic blast"
 #~ msgstr "maagiline"
 
-#~ msgid "impact"
-#~ msgstr "löök"
-
 #~ msgid "chill wave"
 #~ msgstr "külmajudin"
-
-#~ msgid "cold"
-#~ msgstr "külm"
 
 #~ msgid "User Map"
 #~ msgstr "Kasutaja kaart"
@@ -5973,9 +5992,6 @@ msgstr ""
 #~ msgid "ballista"
 #~ msgstr "ballista"
 
-#~ msgid "pierce"
-#~ msgstr "torge"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Transpordi galeoon"
 
@@ -5986,14 +6002,8 @@ msgstr ""
 #~ msgid "claws"
 #~ msgstr "küünised"
 
-#~ msgid "blade"
-#~ msgstr "tera"
-
 #~ msgid "fire breath"
 #~ msgstr "tulehingus"
-
-#~ msgid "fire"
-#~ msgstr "tuli"
 
 #, fuzzy
 #~ msgid "Drake Blademaster"
@@ -6199,10 +6209,6 @@ msgstr ""
 
 #~ msgid "faerie fire"
 #~ msgstr "haldjatuli"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "kauge"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Haldjasõdalane"

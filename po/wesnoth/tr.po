@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -3876,19 +3876,44 @@ msgid "ranged"
 msgstr "menzilli"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "pala"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "delme"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "darbe"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "ateş"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "soğuk"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "menzilli"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "topuz"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Şuna terfi eder: "
@@ -4913,11 +4938,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Galibiyet:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Mağlubiyet:"
 
@@ -4991,7 +5016,7 @@ msgstr "Silah mesafesi:"
 msgid "damage type: "
 msgstr "hasar tipi:"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "karşı"
 
@@ -5566,15 +5591,15 @@ msgstr "Kullanılabilir Silah yok"
 msgid "Chance of being unscathed"
 msgstr "Yarasız kurtulma şansı"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Hasar hesaplamaları"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Düşmana saldır"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Silah seç:"
 
@@ -6397,14 +6422,8 @@ msgstr "Özet yüklemeyi aç"
 #~ msgid "magic blast"
 #~ msgstr "sihirli"
 
-#~ msgid "impact"
-#~ msgstr "darbe"
-
 #~ msgid "chill wave"
 #~ msgstr "soğuk dalga"
-
-#~ msgid "cold"
-#~ msgstr "soğuk"
 
 #~ msgid "User Map"
 #~ msgstr "Kullanıcı haritası"
@@ -7009,9 +7028,6 @@ msgstr "Özet yüklemeyi aç"
 #~ msgid "ballista"
 #~ msgstr "mancınık"
 
-#~ msgid "pierce"
-#~ msgstr "delme"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Yük Kalyonu"
 
@@ -7029,14 +7045,8 @@ msgstr "Özet yüklemeyi aç"
 #~ msgid "claws"
 #~ msgstr "tırmalar"
 
-#~ msgid "blade"
-#~ msgstr "pala"
-
 #~ msgid "fire breath"
 #~ msgstr "ateşli nefes"
-
-#~ msgid "fire"
-#~ msgstr "ateş"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Ejder kılıç ustası"
@@ -7717,10 +7727,6 @@ msgstr "Özet yüklemeyi aç"
 
 #~ msgid "faerie fire"
 #~ msgstr "peri ateşi"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "menzilli"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Elf savaşçı"

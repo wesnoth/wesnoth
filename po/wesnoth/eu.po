@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -3305,19 +3305,47 @@ msgstr "urrutira"
 
 #: data/hardwired/english.cfg:53
 #, fuzzy
+#| msgid "Deathblade"
+msgid "blade"
+msgstr "Heriotz ezpata"
+
+#: data/hardwired/english.cfg:54
+#, fuzzy
+msgid "pierce"
+msgstr "Tranpa jartzailea"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "kolpea"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "su"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "hotz"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "urrutira"
+
+#: data/hardwired/english.cfg:61
+#, fuzzy
 msgid "Wesnoth unit list"
 msgstr "Tutoriala"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "matrailu"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Hurrengo unitatea: "
@@ -4278,11 +4306,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Garaipena:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Gainditu:"
 
@@ -4359,7 +4387,7 @@ msgstr ""
 msgid "damage type: "
 msgstr "kaltea"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "vs"
 
@@ -4935,15 +4963,15 @@ msgstr "Arma aukeratu:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Kalte kalkuluak"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Etsaia Eraso"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Arma aukeratu:"
 
@@ -5781,15 +5809,9 @@ msgstr ""
 #~ msgid "magic blast"
 #~ msgstr "magikoa"
 
-#~ msgid "impact"
-#~ msgstr "kolpea"
-
 #, fuzzy
 #~ msgid "chill wave"
 #~ msgstr "New Wave musika"
-
-#~ msgid "cold"
-#~ msgstr "hotz"
 
 #~ msgid "User Map"
 #~ msgstr "Erabiltzailearen mapa"
@@ -6118,9 +6140,6 @@ msgstr ""
 #~ msgid "fire breath"
 #~ msgstr "suzko atsa"
 
-#~ msgid "fire"
-#~ msgstr "su"
-
 #~ msgid "Drake Blademaster"
 #~ msgstr "Draku ezpata maisua"
 
@@ -6290,10 +6309,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "faerie fire"
 #~ msgstr "Suaren Zetroa"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "urrutira"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Elfo borrokalaria"
@@ -6879,9 +6894,6 @@ msgstr ""
 #~ msgid "Death Knight"
 #~ msgstr "Heriotz gerlaria"
 
-#~ msgid "Deathblade"
-#~ msgstr "Heriotz ezpata"
-
 #~ msgid "Draug"
 #~ msgstr "Draug"
 
@@ -7460,10 +7472,6 @@ msgstr ""
 
 #~ msgid "Desert Hills"
 #~ msgstr "Basamortu Mendilerroa"
-
-#, fuzzy
-#~ msgid "rapier"
-#~ msgstr "Tranpa jartzailea"
 
 #~ msgid "Awaiting response from server"
 #~ msgstr "Zerbitzaritik erantzuna itxaroten"

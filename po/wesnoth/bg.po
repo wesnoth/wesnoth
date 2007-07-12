@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-05-15 02:45+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -4367,18 +4367,42 @@ msgid "ranged"
 msgstr "далечен "
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "острие"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "пробождане"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "сблъсък"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "огън"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "студ"
+
+#: data/hardwired/english.cfg:58
+msgid "arcane"
+msgstr "мистична"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Списък единици на Уеснот"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "Възоснова на версия"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Раса"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr "Повишения:"
 
@@ -5392,11 +5416,11 @@ msgstr "Обновяване на шрифтовете за текущият е�
 msgid "Loading title screen."
 msgstr "Зареждане на главният екран."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Победа:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Загуба:"
 
@@ -5471,7 +5495,7 @@ msgstr "обхват: "
 msgid "damage type: "
 msgstr "тип поражение: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "с/у "
 
@@ -6041,15 +6065,15 @@ msgstr "Няма използваемо оръжие"
 msgid "Chance of being unscathed"
 msgstr "Шанс да бъде невредим"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Пресмятания за щетите"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Атакувай противника"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Избор на оръжие:"
 
@@ -6870,14 +6894,8 @@ msgstr "Качване на обобщения"
 #~ msgid "magic blast"
 #~ msgstr "магическа"
 
-#~ msgid "impact"
-#~ msgstr "сблъсък"
-
 #~ msgid "chill wave"
 #~ msgstr "Смразяваща вълна"
-
-#~ msgid "cold"
-#~ msgstr "студ"
 
 #~ msgid "User Map"
 #~ msgstr "Потребителска карта"
@@ -7799,9 +7817,6 @@ msgstr "Качване на обобщения"
 #~ msgid "ballista"
 #~ msgstr "балиста"
 
-#~ msgid "pierce"
-#~ msgstr "пробождане"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Транспортен Галеон"
 
@@ -7835,14 +7850,8 @@ msgstr "Качване на обобщения"
 #~ msgid "claws"
 #~ msgstr "нокти"
 
-#~ msgid "blade"
-#~ msgstr "острие"
-
 #~ msgid "fire breath"
 #~ msgstr "огнен дъх"
-
-#~ msgid "fire"
-#~ msgstr "огън"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Дракон Майстор на меча"
@@ -8564,9 +8573,6 @@ msgstr "Качване на обобщения"
 
 #~ msgid "faerie fire"
 #~ msgstr "магически огън"
-
-#~ msgid "arcane"
-#~ msgstr "мистична"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Елф боец"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-02-23 22:37+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -4357,18 +4357,43 @@ msgid "ranged"
 msgstr "distància"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "talla"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "perfora"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "impacta"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "foc"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "fred"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "distància"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Llista d'unitats de Wesnoth"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "Basat en la versió"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Raça"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr "Avança de: "
 
@@ -5385,11 +5410,11 @@ msgstr "S'està tornant a inicialitzar la font per a l'idioma actual."
 msgid "Loading title screen."
 msgstr "S'està carregant la pantalla principal."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Victòria:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -5468,7 +5493,7 @@ msgstr "rang de l'arma: "
 msgid "damage type: "
 msgstr "tipus de mal: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "contra"
 
@@ -6038,15 +6063,15 @@ msgstr "No hi ha cap arma disponible"
 msgid "Chance of being unscathed"
 msgstr "Probabilitat d'acabar indemne"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Càlcul de mal"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Atac enemic"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Trieu l'arma:"
 
@@ -6866,14 +6891,8 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "magic blast"
 #~ msgstr "màgic"
 
-#~ msgid "impact"
-#~ msgstr "impacta"
-
 #~ msgid "chill wave"
 #~ msgstr "onada de fred"
-
-#~ msgid "cold"
-#~ msgstr "fred"
 
 #~ msgid "User Map"
 #~ msgstr "Mapa d'usuari"
@@ -7768,9 +7787,6 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "ballista"
 #~ msgstr "balista"
 
-#~ msgid "pierce"
-#~ msgstr "perfora"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Gal·leó de transport"
 
@@ -7804,14 +7820,8 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "claws"
 #~ msgstr "urpes"
 
-#~ msgid "blade"
-#~ msgstr "talla"
-
 #~ msgid "fire breath"
 #~ msgstr "alè de foc"
-
-#~ msgid "fire"
-#~ msgstr "foc"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Mestre espadatxí drac"
@@ -8513,10 +8523,6 @@ msgstr "Permetre la pujada de resums"
 
 #~ msgid "faerie fire"
 #~ msgstr "foc de fada"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "distància"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Lluitador elf"

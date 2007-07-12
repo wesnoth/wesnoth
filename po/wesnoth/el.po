@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-12-15 16:18+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -3708,20 +3708,45 @@ msgid "ranged"
 msgstr "εξ αποστάσεως"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "λεπίδα"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "τρύπημα"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "κρούση"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "φωτιά"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "κρύο"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "εξ αποστάσεως"
+
+#: data/hardwired/english.cfg:61
 #, fuzzy
 msgid "Wesnoth unit list"
 msgstr "Εκμάθηση"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "σφύρα"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Προαγωγή σε: "
@@ -4701,11 +4726,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr "Φορτώνεται το κεντρικό μενού"
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Νίκη:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Ηττα:"
 
@@ -4777,7 +4802,7 @@ msgstr "εμβέλεια όπλου:"
 msgid "damage type: "
 msgstr "τύπος ζημιάς:"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "εναντίων"
 
@@ -5339,15 +5364,15 @@ msgstr ""
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Υπολογισμοί Ζημιάς"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Επίθεση σε εχθρό"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Επιλέξτε όπλο:"
 
@@ -6165,12 +6190,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ msgid "magic blast"
 #~ msgstr "μαγική"
 
-#~ msgid "impact"
-#~ msgstr "κρούση"
-
-#~ msgid "cold"
-#~ msgstr "κρύο"
-
 #~ msgid "User Map"
 #~ msgstr " χάρτης Χρήστη"
 
@@ -6390,9 +6409,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ msgid "ballista"
 #~ msgstr "βαλλίστρα"
 
-#~ msgid "pierce"
-#~ msgstr "τρύπημα"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Γαλέρα Μεταφοράς"
 
@@ -6411,14 +6427,8 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ msgid "claws"
 #~ msgstr "νύχια"
 
-#~ msgid "blade"
-#~ msgstr "λεπίδα"
-
 #~ msgid "fire breath"
 #~ msgstr "ανάσα Φωτιάς"
-
-#~ msgid "fire"
-#~ msgstr "φωτιά"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Δρακοειδές Μάστορας του Σπαθιού"
@@ -6524,10 +6534,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 
 #~ msgid "thorns"
 #~ msgstr "αγκάθια"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "εξ αποστάσεως"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Ξωτικοπολεμιστής"

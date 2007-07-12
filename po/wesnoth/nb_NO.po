@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -3916,19 +3916,44 @@ msgid "ranged"
 msgstr "avstand"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "hugg"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "stikk"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "slag"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "ild"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "frost"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "avstand"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "stridskølle"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Forfremmes til: "
@@ -4955,11 +4980,11 @@ msgstr "Installer skrift for gjeldende språk på nytt."
 msgid "Loading title screen."
 msgstr "Laster hovedmeny."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Seier:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Nederlag:"
 
@@ -5038,7 +5063,7 @@ msgstr "våpenrekkevidde: "
 msgid "damage type: "
 msgstr "skadetype: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "mot"
 
@@ -5632,15 +5657,15 @@ msgstr "Ingen brukbare våpen"
 msgid "Chance of being unscathed"
 msgstr "Sjanse for å være uskadet"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Skadeberegninger"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Angrip fiende"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Velg våpen:"
 
@@ -6463,14 +6488,8 @@ msgstr "Tillat sammendragsopplasting"
 #~ msgid "magic blast"
 #~ msgstr "magisk"
 
-#~ msgid "impact"
-#~ msgstr "slag"
-
 #~ msgid "chill wave"
 #~ msgstr "frostbølge"
-
-#~ msgid "cold"
-#~ msgstr "frost"
 
 #~ msgid "User Map"
 #~ msgstr "Eget kart"
@@ -7233,9 +7252,6 @@ msgstr "Tillat sammendragsopplasting"
 #~ msgid "ballista"
 #~ msgstr "ballista"
 
-#~ msgid "pierce"
-#~ msgstr "stikk"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Transportskip"
 
@@ -7253,14 +7269,8 @@ msgstr "Tillat sammendragsopplasting"
 #~ msgid "claws"
 #~ msgstr "klør"
 
-#~ msgid "blade"
-#~ msgstr "hugg"
-
 #~ msgid "fire breath"
 #~ msgstr "ildpust"
-
-#~ msgid "fire"
-#~ msgstr "ild"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Sverdmester"
@@ -7903,10 +7913,6 @@ msgstr "Tillat sammendragsopplasting"
 
 #~ msgid "faerie fire"
 #~ msgstr "stjernestøv"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "avstand"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Alvekriger"

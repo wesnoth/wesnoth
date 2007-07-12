@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-09-01 19:23+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -3944,20 +3944,45 @@ msgid "ranged"
 msgstr "kaukotaistelu"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "viilto"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "lävistys"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "murskaus"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "tuli"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "kylmä"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "kaukotaistelu"
+
+#: data/hardwired/english.cfg:61
 #, fuzzy
 msgid "Wesnoth unit list"
 msgstr "Harjoittelu"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "helanuija"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Ylenee yksiköksi: "
@@ -4972,11 +4997,11 @@ msgstr "Uudelleenasenna merkistö tätä kieltä varten."
 msgid "Loading title screen."
 msgstr "Ladataan aloitusikkunaa."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Voitto:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Tappio:"
 
@@ -5053,7 +5078,7 @@ msgstr "aseen kantama: "
 msgid "damage type: "
 msgstr "vahinkotyyppi: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "vastaan"
 
@@ -5646,15 +5671,15 @@ msgstr "Ei käyttökelpoista asetta"
 msgid "Chance of being unscathed"
 msgstr "Mahdollisuus selvitä naarmutta:"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Vahinkolaskelmat"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Hyökkää vihollista vastaan"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Valitse ase:"
 
@@ -6479,14 +6504,8 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ msgid "magic blast"
 #~ msgstr "maaginen"
 
-#~ msgid "impact"
-#~ msgstr "murskaus"
-
 #~ msgid "chill wave"
 #~ msgstr "jäätävä polte"
-
-#~ msgid "cold"
-#~ msgstr "kylmä"
 
 #~ msgid "User Map"
 #~ msgstr "Käyttäjän kartta"
@@ -7364,9 +7383,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ msgid "ballista"
 #~ msgstr "ballista"
 
-#~ msgid "pierce"
-#~ msgstr "lävistys"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Kuljetuskaljuuna"
 
@@ -7384,14 +7400,8 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ msgid "claws"
 #~ msgstr "kynnet"
 
-#~ msgid "blade"
-#~ msgstr "viilto"
-
 #~ msgid "fire breath"
 #~ msgstr "tulihenkäys"
-
-#~ msgid "fire"
-#~ msgstr "tuli"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Draakkimestari"
@@ -8080,10 +8090,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 
 #~ msgid "faerie fire"
 #~ msgstr "keijutuli"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "kaukotaistelu"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Haltiasoturi"

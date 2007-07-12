@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-07-07 18:09+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -3541,18 +3541,48 @@ msgid "ranged"
 msgstr ""
 
 #: data/hardwired/english.cfg:53
+#, fuzzy
+#| msgid "lance"
+msgid "blade"
+msgstr "ietis"
+
+#: data/hardwired/english.cfg:54
+#, fuzzy
+#| msgid "fire"
+msgid "pierce"
+msgstr "ugnis"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "smūgis"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "ugnis"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "šaltis"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+#| msgid "Orange"
+msgid "arcane"
+msgstr "Oranžinė"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Wesnoth dalinių sąrašas"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Rasė"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr ""
 
@@ -4457,11 +4487,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Pergalė:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Pralaimėjimas:"
 
@@ -4531,7 +4561,7 @@ msgstr ""
 msgid "damage type: "
 msgstr ""
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "prieš"
 
@@ -5080,15 +5110,15 @@ msgstr "Nėra naudingo ginklo"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr ""
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Pulti priešą"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Pasirinkite ginklą:"
 
@@ -5877,14 +5907,8 @@ msgstr ""
 #~ msgid "short sword"
 #~ msgstr "trumpas kardas"
 
-#~ msgid "impact"
-#~ msgstr "smūgis"
-
 #~ msgid "chill wave"
 #~ msgstr "šalčio banga"
-
-#~ msgid "cold"
-#~ msgstr "šaltis"
 
 #~ msgid "dummy"
 #~ msgstr "manekenas"
@@ -5894,9 +5918,6 @@ msgstr ""
 
 #~ msgid "claws"
 #~ msgstr "nagai"
-
-#~ msgid "fire"
-#~ msgstr "ugnis"
 
 #~ msgid "sword"
 #~ msgstr "kardas"
@@ -5984,9 +6005,6 @@ msgstr ""
 
 #~ msgid "net"
 #~ msgstr "tinklas"
-
-#~ msgid "lance"
-#~ msgstr "ietis"
 
 #~ msgid "Knight"
 #~ msgstr "Riteris"

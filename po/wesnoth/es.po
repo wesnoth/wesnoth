@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-06-11 05:24+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -4409,18 +4409,42 @@ msgid "ranged"
 msgstr "a distancia"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "de corte"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "de penetración"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "de impacto"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "de fuego"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "de frío"
+
+#: data/hardwired/english.cfg:58
+msgid "arcane"
+msgstr "arcano"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Lista de unidades de Wesnoth"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "Basado en la versión"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Raza"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr "Procede de:"
 
@@ -5443,11 +5467,11 @@ msgstr "Reiniciando tipografías para el idioma actual."
 msgid "Loading title screen."
 msgstr "Cargando pantalla inicial."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -5524,7 +5548,7 @@ msgstr "alcance del arma: "
 msgid "damage type: "
 msgstr "tipo de daño: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "contra"
 
@@ -6102,15 +6126,15 @@ msgstr "Sin arma utilizable"
 msgid "Chance of being unscathed"
 msgstr "Posibilidad de salir ileso"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Cálculo del daño"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Atacar al enemigo"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Escoger arma:"
 
@@ -6931,14 +6955,8 @@ msgstr "Permitir envíos de resúmenes"
 #~ msgid "magic blast"
 #~ msgstr "explosión mágica"
 
-#~ msgid "impact"
-#~ msgstr "de impacto"
-
 #~ msgid "chill wave"
 #~ msgstr "ola de frío"
-
-#~ msgid "cold"
-#~ msgstr "de frío"
 
 #~ msgid "User Map"
 #~ msgstr "Mapa del usuario"
@@ -7896,9 +7914,6 @@ msgstr "Permitir envíos de resúmenes"
 #~ msgid "ballista"
 #~ msgstr "balista"
 
-#~ msgid "pierce"
-#~ msgstr "de penetración"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Galeón de transporte"
 
@@ -7929,14 +7944,8 @@ msgstr "Permitir envíos de resúmenes"
 #~ msgid "claws"
 #~ msgstr "garras"
 
-#~ msgid "blade"
-#~ msgstr "de corte"
-
 #~ msgid "fire breath"
 #~ msgstr "aliento de fuego"
-
-#~ msgid "fire"
-#~ msgstr "de fuego"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Maestro de esgrima draco"
@@ -8651,9 +8660,6 @@ msgstr "Permitir envíos de resúmenes"
 
 #~ msgid "faerie fire"
 #~ msgstr "fuego feérico"
-
-#~ msgid "arcane"
-#~ msgstr "arcano"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Luchador elfo"

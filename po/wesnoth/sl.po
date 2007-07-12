@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -3837,19 +3837,44 @@ msgid "ranged"
 msgstr "na daleč"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "oster"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "koničast"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "top"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "ognjen"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "mrzel"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "na daleč"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "buzdovan"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Napreduje v: "
@@ -4869,11 +4894,11 @@ msgstr "Ponastavi pisave za trenutni jezik."
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Zmaga:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Poraz:"
 
@@ -4951,7 +4976,7 @@ msgstr "doseg orožja: "
 msgid "damage type: "
 msgstr "tip škode: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "proti"
 
@@ -5533,15 +5558,15 @@ msgstr "Ni orožja"
 msgid "Chance of being unscathed"
 msgstr "Verjetnost da se ne poškuduje"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Napadi"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
@@ -6369,14 +6394,8 @@ msgstr "Omogoči pošiljanje povzetkov"
 #~ msgid "magic blast"
 #~ msgstr "čaroben"
 
-#~ msgid "impact"
-#~ msgstr "top"
-
 #~ msgid "chill wave"
 #~ msgstr "val mrazu"
-
-#~ msgid "cold"
-#~ msgstr "mrzel"
 
 #~ msgid "User Map"
 #~ msgstr "Uporabnikova karta"
@@ -6660,9 +6679,6 @@ msgstr "Omogoči pošiljanje povzetkov"
 #~ msgid "ballista"
 #~ msgstr "balista"
 
-#~ msgid "pierce"
-#~ msgstr "koničast"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Transportna galeja"
 
@@ -6680,14 +6696,8 @@ msgstr "Omogoči pošiljanje povzetkov"
 #~ msgid "claws"
 #~ msgstr "kremplji"
 
-#~ msgid "blade"
-#~ msgstr "oster"
-
 #~ msgid "fire breath"
 #~ msgstr "ognjeni dih"
-
-#~ msgid "fire"
-#~ msgstr "ognjen"
 
 #~ msgid "sword"
 #~ msgstr "meč"
@@ -6858,10 +6868,6 @@ msgstr "Omogoči pošiljanje povzetkov"
 
 #~ msgid "faerie fire"
 #~ msgstr "vilinji ogenj"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "na daleč"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Vilinski bojevnik"

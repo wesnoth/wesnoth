@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-06-17 13:05+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -4232,18 +4232,42 @@ msgid "ranged"
 msgstr "投射"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "斬撃"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "貫通"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "打撃"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "火炎"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "冷気"
+
+#: data/hardwired/english.cfg:58
+msgid "arcane"
+msgstr "神聖"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Wesnoth ユニットリスト"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "バージョン"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "種族"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr "クラスチェンジ元: "
 
@@ -5235,11 +5259,11 @@ msgstr "現在の言語でフォントを再初期化します。"
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "勝利条件:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "敗北条件:"
 
@@ -5313,7 +5337,7 @@ msgstr "武器の射程:"
 msgid "damage type: "
 msgstr "ダメージの種類:"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "対"
 
@@ -5878,15 +5902,15 @@ msgstr "使用できる武器がありません"
 msgid "Chance of being unscathed"
 msgstr "無傷でいられる可能性"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "敵を攻撃する"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
@@ -6700,14 +6724,8 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "magic blast"
 #~ msgstr "マジックブラスト"
 
-#~ msgid "impact"
-#~ msgstr "打撃"
-
 #~ msgid "chill wave"
 #~ msgstr "冷気の嵐"
-
-#~ msgid "cold"
-#~ msgstr "冷気"
 
 #~ msgid "User Map"
 #~ msgstr "ユーザーマップ"
@@ -7614,9 +7632,6 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "ballista"
 #~ msgstr "バリスタ"
 
-#~ msgid "pierce"
-#~ msgstr "貫通"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "輸送ガレオン船"
 
@@ -7633,14 +7648,8 @@ msgstr "サマリのアップロードを有効にする"
 #~ msgid "claws"
 #~ msgstr "かぎ爪"
 
-#~ msgid "blade"
-#~ msgstr "斬撃"
-
 #~ msgid "fire breath"
 #~ msgstr "火炎のブレス"
-
-#~ msgid "fire"
-#~ msgstr "火炎"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "ドレークの熟練剣士"
@@ -8325,9 +8334,6 @@ msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "faerie fire"
 #~ msgstr "妖精の炎"
-
-#~ msgid "arcane"
-#~ msgstr "神聖"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "エルフの戦士"

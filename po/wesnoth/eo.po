@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -4025,19 +4025,44 @@ msgid "ranged"
 msgstr "distance"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "klingo"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "piko"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "frapo"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "fajro"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "frosto"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "distance"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "madzo"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Avancu al: "
@@ -5067,11 +5092,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Vi venkos, se:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Malvenko, se:"
 
@@ -5150,7 +5175,7 @@ msgstr ""
 msgid "damage type: "
 msgstr "vundiĝoj"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "kontraŭ"
 
@@ -5723,15 +5748,15 @@ msgstr "Elektu armilojn:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Vundiĝelkalkulo"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Ataku malamikon"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Elektu armilojn:"
 
@@ -6562,14 +6587,8 @@ msgstr ""
 #~ msgid "magic blast"
 #~ msgstr "magia"
 
-#~ msgid "impact"
-#~ msgstr "frapo"
-
 #~ msgid "chill wave"
 #~ msgstr "frosta ondo"
-
-#~ msgid "cold"
-#~ msgstr "frosto"
 
 #~ msgid "User Map"
 #~ msgstr "Uzanta mapo"
@@ -7009,9 +7028,6 @@ msgstr ""
 #~ msgid "ballista"
 #~ msgstr "ŝtonĵetilo"
 
-#~ msgid "pierce"
-#~ msgstr "piko"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Transport ŝipo"
 
@@ -7029,14 +7045,8 @@ msgstr ""
 #~ msgid "claws"
 #~ msgstr "ungegoj"
 
-#~ msgid "blade"
-#~ msgstr "klingo"
-
 #~ msgid "fire breath"
 #~ msgstr "fajra spiro"
-
-#~ msgid "fire"
-#~ msgstr "fajro"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Draka glavmastro"
@@ -7714,10 +7724,6 @@ msgstr ""
 
 #~ msgid "faerie fire"
 #~ msgstr "feina fairo"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "distance"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Elfbatalanto"

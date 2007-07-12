@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-01-04 19:17+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -3932,18 +3932,43 @@ msgid "ranged"
 msgstr "ranged"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "blade"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "pierce"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "impact"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "fire"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "cold"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "ranged"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Wesnoth unit list"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "Based on version"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Race"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Advance from"
@@ -4959,11 +4984,11 @@ msgstr "Re-initialise fonts for the current language."
 msgid "Loading title screen."
 msgstr "Loading title screen."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Victory:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Defeat:"
 
@@ -5040,7 +5065,7 @@ msgstr "weapon range: "
 msgid "damage type: "
 msgstr "damage type: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "vs"
 
@@ -5618,15 +5643,15 @@ msgstr "No usable weapon"
 msgid "Chance of being unscathed"
 msgstr "Chance of being unscathed"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Damage Calculations"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Attack Enemy"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Choose weapon:"
 
@@ -6448,14 +6473,8 @@ msgstr "Enable summary uploads"
 #~ msgid "magic blast"
 #~ msgstr "magical"
 
-#~ msgid "impact"
-#~ msgstr "impact"
-
 #~ msgid "chill wave"
 #~ msgstr "chill wave"
-
-#~ msgid "cold"
-#~ msgstr "cold"
 
 #~ msgid "User Map"
 #~ msgstr "User Map"
@@ -7325,9 +7344,6 @@ msgstr "Enable summary uploads"
 #~ msgid "ballista"
 #~ msgstr "ballista"
 
-#~ msgid "pierce"
-#~ msgstr "pierce"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Transport Galleon"
 
@@ -7345,14 +7361,8 @@ msgstr "Enable summary uploads"
 #~ msgid "claws"
 #~ msgstr "claws"
 
-#~ msgid "blade"
-#~ msgstr "blade"
-
 #~ msgid "fire breath"
 #~ msgstr "fire breath"
-
-#~ msgid "fire"
-#~ msgstr "fire"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Drake Blademaster"
@@ -8047,10 +8057,6 @@ msgstr "Enable summary uploads"
 
 #~ msgid "faerie fire"
 #~ msgstr "faerie fire"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "ranged"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Elvish Fighter"

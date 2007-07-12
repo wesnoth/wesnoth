@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-09 19:53+0200\n"
+"POT-Creation-Date: 2007-07-12 18:56+0200\n"
 "PO-Revision-Date: 2007-06-23 16:33+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -242,8 +242,8 @@ msgstr ""
 "infernaux, leurs plus faibles cousins, est faite de minéraux très résistants "
 "et de pierres venant du fond des rivières de lave."
 
-#: data/core/units/monsters/Gryphon_Rider.cfg:28
-#: data/core/units/monsters/Gryphon_Master.cfg:28
+#: data/core/units/dwarves/Gryphon_Rider.cfg:28
+#: data/core/units/dwarves/Gryphon_Master.cfg:28
 #: data/core/units/monsters/Gryphon.cfg:26
 #: data/core/units/monsters/Skeletal_Dragon.cfg:65
 #: data/core/units/monsters/Skeletal_Dragon.cfg:66
@@ -275,19 +275,18 @@ msgstr "griffes"
 #: data/core/units/nagas/Warrior.cfg:29 data/core/units/nagas/Myrmidon.cfg:30
 #: data/core/units/nagas/Fighter.cfg:26 data/core/units/ogres/Ogre.cfg:25
 #: data/core/units/ogres/Young_Ogre.cfg:25
+#: data/core/units/dwarves/Gryphon_Rider.cfg:30
 #: data/core/units/dwarves/Berserker.cfg:34
 #: data/core/units/dwarves/Dragonguard.cfg:26
 #: data/core/units/dwarves/Thunderer.cfg:42
+#: data/core/units/dwarves/Gryphon_Master.cfg:30
 #: data/core/units/dwarves/Steelclad.cfg:30
 #: data/core/units/dwarves/Thunderguard.cfg:26
 #: data/core/units/dwarves/Lord.cfg:30 data/core/units/dwarves/Lord.cfg:105
 #: data/core/units/dwarves/Fighter.cfg:35
 #: data/core/units/dwarves/Ulfserker.cfg:34
-#: data/core/units/merfolk/Triton.cfg:71
-#: data/core/units/monsters/Gryphon_Rider.cfg:30
-#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/merfolk/Triton.cfg:71 data/core/units/monsters/Wolf.cfg:50
 #: data/core/units/monsters/Cave_Spider.cfg:37
-#: data/core/units/monsters/Gryphon_Master.cfg:30
 #: data/core/units/monsters/Gryphon.cfg:28
 #: data/core/units/monsters/Fire_Dragon.cfg:27
 #: data/core/units/monsters/Skeletal_Dragon.cfg:31
@@ -892,6 +891,35 @@ msgstr "hache"
 #: data/core/units/trolls/Warrior.cfg:28 data/core/units/trolls/Great.cfg:28
 msgid "hammer"
 msgstr "marteau"
+
+#: data/core/units/dwarves/Gryphon_Master.cfg:4
+msgid "Gryphon Master"
+msgstr "Maître des griffons"
+
+#: data/core/units/dwarves/Gryphon_Master.cfg:19
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty flyers may strike from anywhere."
+msgstr ""
+"Les maîtres des griffons ont tellement l'habitude de voler avec leurs "
+"montures que les griffons sont devenus une extension d'eux-mêmes. Cette "
+"relation spéciale fait trembler le cœur des terriens, car ces puissantes "
+"créatures peuvent surgir de nulle part à tout moment."
+
+#: data/core/units/dwarves/Gryphon_Rider.cfg:4
+msgid "Gryphon Rider"
+msgstr "Monteur de griffon"
+
+#: data/core/units/dwarves/Gryphon_Rider.cfg:19
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+"Seuls quelques élus peuvent tisser un lien d'amitié avec les puissants "
+"griffons. Ceux qui réussissent deviennent des monteurs de griffons et "
+"découvrent le monde des cieux sur le dos de ces créatures volantes."
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
@@ -1657,7 +1685,7 @@ msgstr ""
 "\n"
 "Remarque : "
 
-#: data/core/units/monsters/Wolf.cfg:47
+#: data/core/units/monsters/Wolf.cfg:48
 #: data/core/units/monsters/Cave_Spider.cfg:35
 #: data/core/units/monsters/Sea_Serpent.cfg:24
 #: data/core/units/goblins/Wolf_Rider.cfg:50
@@ -3567,35 +3595,6 @@ msgstr ""
 "griffons sont à la fois dangereux et prudents face aux autres créatures "
 "intelligentes, elles ne doivent pas être dérangées sans une bonne raison."
 
-#: data/core/units/monsters/Gryphon_Master.cfg:4
-msgid "Gryphon Master"
-msgstr "Maître des griffons"
-
-#: data/core/units/monsters/Gryphon_Master.cfg:19
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-"Les maîtres des griffons ont tellement l'habitude de voler avec leurs "
-"montures que les griffons sont devenus une extension d'eux-mêmes. Cette "
-"relation spéciale fait trembler le cœur des terriens, car ces puissantes "
-"créatures peuvent surgir de nulle part à tout moment."
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:4
-msgid "Gryphon Rider"
-msgstr "Monteur de griffon"
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:19
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"Seuls quelques élus peuvent tisser un lien d'amitié avec les puissants "
-"griffons. Ceux qui réussissent deviennent des monteurs de griffons et "
-"découvrent le monde des cieux sur le dos de ces créatures volantes."
-
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "Golem de boue"
@@ -4388,9 +4387,22 @@ msgid "Ghoul"
 msgstr "Goule"
 
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Only those with an dreadful knowledge of necromancy know what must be "
+#| "done to turn a person into a ghoul, and it is a secret they are not "
+#| "telling. Whatever unspeakable rites they have performed, the result is a "
+#| "beast that knows nothing of its days as a human being, a creature that "
+#| "shambles about as naked as the day it was born, and gorges itself on the "
+#| "flesh of the dead.\n"
+#| "\n"
+#| "It is because of such things that necromancy is condemned with an almost "
+#| "primal hatred in all civilized lands.\n"
+#| "\n"
+#| "Special Notes:"
 msgid ""
-"Only those with an dreadful knowledge of necromancy know what must be done "
-"to turn a person into a ghoul, and it is a secret they are not telling. "
+"Only those with a dreadful knowledge of necromancy know what must be done to "
+"turn a person into a ghoul, and it is a secret they are not telling. "
 "Whatever unspeakable rites they have performed, the result is a beast that "
 "knows nothing of its days as a human being, a creature that shambles about "
 "as naked as the day it was born, and gorges itself on the flesh of the "

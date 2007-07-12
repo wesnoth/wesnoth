@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-05-07 23:49+0100\n"
 "Last-Translator: Elestel <dadoverde@hotmail.com>\n"
 "Language-Team: none\n"
@@ -3279,19 +3279,44 @@ msgid "ranged"
 msgstr ""
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "espadón"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "perforar"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "impacto"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "lume"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "frío"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "Laranxa"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "maza"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr ""
 
@@ -4192,11 +4217,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr ""
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr ""
 
@@ -4264,7 +4289,7 @@ msgstr ""
 msgid "damage type: "
 msgstr ""
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "vs"
 
@@ -4811,15 +4836,15 @@ msgstr ""
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr ""
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr ""
 
@@ -5614,14 +5639,8 @@ msgstr ""
 #~ msgid "magic blast"
 #~ msgstr "máxico"
 
-#~ msgid "impact"
-#~ msgstr "impacto"
-
 #~ msgid "chill wave"
 #~ msgstr "Ola de frialdade"
-
-#~ msgid "cold"
-#~ msgstr "frío"
 
 #~ msgid "Alliance of Darkness"
 #~ msgstr "Alianza da Escuridade"
@@ -5645,20 +5664,11 @@ msgstr ""
 #~ msgid "Turn 8: Rebels"
 #~ msgstr "Rebeldes"
 
-#~ msgid "pierce"
-#~ msgstr "perforar"
-
 #~ msgid "claws"
 #~ msgstr "garras"
 
-#~ msgid "blade"
-#~ msgstr "espadón"
-
 #~ msgid "fire breath"
 #~ msgstr "alento de lume"
-
-#~ msgid "fire"
-#~ msgstr "lume"
 
 #~ msgid "sword"
 #~ msgstr "espada"
@@ -5677,10 +5687,6 @@ msgstr ""
 
 #~ msgid "faerie fire"
 #~ msgstr "fada de lume"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "Laranxa"
 
 #~ msgid "morning star"
 #~ msgstr "maza longa"

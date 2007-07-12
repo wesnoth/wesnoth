@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Romana 0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2006-04-10 20:02+0100\n"
 "Last-Translator: Dex Stewart\n"
 "Language-Team: \n"
@@ -3189,18 +3189,47 @@ msgid "ranged"
 msgstr "la distanta"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "lama"
+
+#: data/hardwired/english.cfg:54
+#, fuzzy
+#| msgid "fire"
+msgid "pierce"
+msgstr "foc"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "impact"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "foc"
+
+#: data/hardwired/english.cfg:57
+#, fuzzy
+#| msgid "gold"
+msgid "cold"
+msgstr "aur"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "la distanta"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr ""
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr ""
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Avansati unitatea"
@@ -4112,11 +4141,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr ""
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr ""
 
@@ -4195,7 +4224,7 @@ msgstr ""
 msgid "damage type: "
 msgstr "tip de daune:"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr ""
 
@@ -4750,15 +4779,15 @@ msgstr ""
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr ""
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr ""
 
@@ -5560,9 +5589,6 @@ msgstr ""
 #~ msgid "magic blast"
 #~ msgstr "magic"
 
-#~ msgid "impact"
-#~ msgstr "impact"
-
 #~ msgid "Alliance of Darkness"
 #~ msgstr "Alianta Intunericului"
 
@@ -5609,25 +5635,15 @@ msgstr ""
 #~ "Harta generata la nimereala. Atentie: Aceste harti sunt des neechilibrate "
 #~ "insa, daca aveti timp, puteti sa generati mai multe, pana aveti una buna."
 
-#~ msgid "blade"
-#~ msgstr "lama"
-
 #, fuzzy
 #~ msgid "fire breath"
 #~ msgstr "sfuflu de foc"
-
-#~ msgid "fire"
-#~ msgstr "foc"
 
 #~ msgid "sword"
 #~ msgstr "sabie"
 
 #~ msgid "bow"
 #~ msgstr "arc"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "la distanta"
 
 #~ msgid "missile"
 #~ msgstr "proiectil"

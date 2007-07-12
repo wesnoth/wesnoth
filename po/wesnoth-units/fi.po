@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-09 19:53+0200\n"
+"POT-Creation-Date: 2007-07-12 18:56+0200\n"
 "PO-Revision-Date: 2006-09-01 19:23+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -228,8 +228,8 @@ msgid ""
 "of magma rivers."
 msgstr ""
 
-#: data/core/units/monsters/Gryphon_Rider.cfg:28
-#: data/core/units/monsters/Gryphon_Master.cfg:28
+#: data/core/units/dwarves/Gryphon_Rider.cfg:28
+#: data/core/units/dwarves/Gryphon_Master.cfg:28
 #: data/core/units/monsters/Gryphon.cfg:26
 #: data/core/units/monsters/Skeletal_Dragon.cfg:65
 #: data/core/units/monsters/Skeletal_Dragon.cfg:66
@@ -261,19 +261,18 @@ msgstr "kynnet"
 #: data/core/units/nagas/Warrior.cfg:29 data/core/units/nagas/Myrmidon.cfg:30
 #: data/core/units/nagas/Fighter.cfg:26 data/core/units/ogres/Ogre.cfg:25
 #: data/core/units/ogres/Young_Ogre.cfg:25
+#: data/core/units/dwarves/Gryphon_Rider.cfg:30
 #: data/core/units/dwarves/Berserker.cfg:34
 #: data/core/units/dwarves/Dragonguard.cfg:26
 #: data/core/units/dwarves/Thunderer.cfg:42
+#: data/core/units/dwarves/Gryphon_Master.cfg:30
 #: data/core/units/dwarves/Steelclad.cfg:30
 #: data/core/units/dwarves/Thunderguard.cfg:26
 #: data/core/units/dwarves/Lord.cfg:30 data/core/units/dwarves/Lord.cfg:105
 #: data/core/units/dwarves/Fighter.cfg:35
 #: data/core/units/dwarves/Ulfserker.cfg:34
-#: data/core/units/merfolk/Triton.cfg:71
-#: data/core/units/monsters/Gryphon_Rider.cfg:30
-#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/merfolk/Triton.cfg:71 data/core/units/monsters/Wolf.cfg:50
 #: data/core/units/monsters/Cave_Spider.cfg:37
-#: data/core/units/monsters/Gryphon_Master.cfg:30
 #: data/core/units/monsters/Gryphon.cfg:28
 #: data/core/units/monsters/Fire_Dragon.cfg:27
 #: data/core/units/monsters/Skeletal_Dragon.cfg:31
@@ -879,6 +878,35 @@ msgstr "kirves"
 #: data/core/units/trolls/Warrior.cfg:28 data/core/units/trolls/Great.cfg:28
 msgid "hammer"
 msgstr "vasara"
+
+#: data/core/units/dwarves/Gryphon_Master.cfg:4
+msgid "Gryphon Master"
+msgstr "Aarnikotkamestari"
+
+#: data/core/units/dwarves/Gryphon_Master.cfg:19
+#, fuzzy
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty flyers may strike from anywhere."
+msgstr ""
+"Aarnikotkien mestarit ovat lentäneet aarnikotkilla pitkään ja pitävät "
+"aarnikotkia itsensä jatkeina. Tämä erikoinen suhde herättää kauhua niissä, "
+"jotka on maahan sidottu, sillä tämä mahtava pari voi iskeä missä tahansa."
+
+#: data/core/units/dwarves/Gryphon_Rider.cfg:4
+msgid "Gryphon Rider"
+msgstr "Aarnikotkaratsastaja"
+
+#: data/core/units/dwarves/Gryphon_Rider.cfg:19
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+"Vain harvat voivat ratsastaa mahtavia aarnikotkia. Ne jotka onnistuvat "
+"tulevat aarnikotkan ratsastajiksi ja löytävät taivaiden maailman näiden "
+"lentävien petojen selästä."
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
@@ -1623,7 +1651,7 @@ msgstr ""
 "\n"
 "Huomioita:"
 
-#: data/core/units/monsters/Wolf.cfg:47
+#: data/core/units/monsters/Wolf.cfg:48
 #: data/core/units/monsters/Cave_Spider.cfg:35
 #: data/core/units/monsters/Sea_Serpent.cfg:24
 #: data/core/units/goblins/Wolf_Rider.cfg:50
@@ -3510,35 +3538,6 @@ msgstr ""
 "olennot hallitsevat maailman taivaita. Ne suhtautuvat epäillen muihiln "
 "älykkäisiin rotuihin, joten aarnikotkia ei tulisi häiritä ilman hyvää syytä."
 
-#: data/core/units/monsters/Gryphon_Master.cfg:4
-msgid "Gryphon Master"
-msgstr "Aarnikotkamestari"
-
-#: data/core/units/monsters/Gryphon_Master.cfg:19
-#, fuzzy
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-"Aarnikotkien mestarit ovat lentäneet aarnikotkilla pitkään ja pitävät "
-"aarnikotkia itsensä jatkeina. Tämä erikoinen suhde herättää kauhua niissä, "
-"jotka on maahan sidottu, sillä tämä mahtava pari voi iskeä missä tahansa."
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:4
-msgid "Gryphon Rider"
-msgstr "Aarnikotkaratsastaja"
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:19
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"Vain harvat voivat ratsastaa mahtavia aarnikotkia. Ne jotka onnistuvat "
-"tulevat aarnikotkan ratsastajiksi ja löytävät taivaiden maailman näiden "
-"lentävien petojen selästä."
-
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "Mutapaakku"
@@ -4264,8 +4263,8 @@ msgstr "Kalmo"
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 #, fuzzy
 msgid ""
-"Only those with an dreadful knowledge of necromancy know what must be done "
-"to turn a person into a ghoul, and it is a secret they are not telling. "
+"Only those with a dreadful knowledge of necromancy know what must be done to "
+"turn a person into a ghoul, and it is a secret they are not telling. "
 "Whatever unspeakable rites they have performed, the result is a beast that "
 "knows nothing of its days as a human being, a creature that shambles about "
 "as naked as the day it was born, and gorges itself on the flesh of the "

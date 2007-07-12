@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -3710,18 +3710,43 @@ msgid "ranged"
 msgstr "远程"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "剑刃"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "穿刺"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "冲击"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "火焰"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "寒冷"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "远程"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "韦诺兵种列表"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "基于版本号"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "种族"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr "升级自："
 
@@ -4682,11 +4707,11 @@ msgstr "为当前语言重绘字体。"
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "胜利："
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "失败："
 
@@ -4758,7 +4783,7 @@ msgstr "武器攻击范围："
 msgid "damage type: "
 msgstr "伤害类型："
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "vs"
 
@@ -5327,15 +5352,15 @@ msgstr "无可用武器"
 msgid "Chance of being unscathed"
 msgstr "不受伤的几率"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "攻击计算"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "选择武器："
 
@@ -6155,14 +6180,8 @@ msgstr "开启摘要上传模式"
 #~ msgid "magic blast"
 #~ msgstr "魔法"
 
-#~ msgid "impact"
-#~ msgstr "冲击"
-
 #~ msgid "chill wave"
 #~ msgstr "冷冻波"
-
-#~ msgid "cold"
-#~ msgstr "寒冷"
 
 #~ msgid "User Map"
 #~ msgstr "玩家地图"
@@ -6775,9 +6794,6 @@ msgstr "开启摘要上传模式"
 #~ msgid "ballista"
 #~ msgstr "巨弩"
 
-#~ msgid "pierce"
-#~ msgstr "穿刺"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "大运输帆船"
 
@@ -6795,14 +6811,8 @@ msgstr "开启摘要上传模式"
 #~ msgid "claws"
 #~ msgstr "爪"
 
-#~ msgid "blade"
-#~ msgstr "剑刃"
-
 #~ msgid "fire breath"
 #~ msgstr "火焰呼吸"
-
-#~ msgid "fire"
-#~ msgstr "火焰"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "龙族剑圣"
@@ -7440,10 +7450,6 @@ msgstr "开启摘要上传模式"
 
 #~ msgid "faerie fire"
 #~ msgstr "仙境之火"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "远程"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "精灵战士"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-07-07 16:08+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -4436,18 +4436,46 @@ msgid "ranged"
 msgstr "Fernkampf"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr ""
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr ""
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr ""
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr ""
+
+#: data/hardwired/english.cfg:57
+#, fuzzy
+#| msgid "gold"
+msgid "cold"
+msgstr "Gold"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+#| msgid "Orange"
+msgid "arcane"
+msgstr "Orange"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Liste der Einheiten von Wesnoth"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "Basierend auf Version"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Rasse"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 msgid "Advance from:"
 msgstr "Vorherige Stufe"
 
@@ -5475,11 +5503,11 @@ msgstr "Setze Zeichensatz der verwendeten Sprache zurück."
 msgid "Loading title screen."
 msgstr "Laden des Startbildschirms."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Sieg:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Niederlage:"
 
@@ -5559,7 +5587,7 @@ msgstr "Reichweite:"
 msgid "damage type: "
 msgstr "Schadenstyp:"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "gegen"
 
@@ -6145,15 +6173,15 @@ msgstr "Keine verwendbare Waffe"
 msgid "Chance of being unscathed"
 msgstr "Chance, ungeschoren davonzukommen"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Schadensberechnung"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Gegner angreifen"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Waffe auswählen:"
 

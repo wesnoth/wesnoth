@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-09 19:53+0200\n"
+"POT-Creation-Date: 2007-07-12 18:56+0200\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -233,8 +233,8 @@ msgid ""
 "of magma rivers."
 msgstr ""
 
-#: data/core/units/monsters/Gryphon_Rider.cfg:28
-#: data/core/units/monsters/Gryphon_Master.cfg:28
+#: data/core/units/dwarves/Gryphon_Rider.cfg:28
+#: data/core/units/dwarves/Gryphon_Master.cfg:28
 #: data/core/units/monsters/Gryphon.cfg:26
 #: data/core/units/monsters/Skeletal_Dragon.cfg:65
 #: data/core/units/monsters/Skeletal_Dragon.cfg:66
@@ -266,19 +266,18 @@ msgstr "karmok"
 #: data/core/units/nagas/Warrior.cfg:29 data/core/units/nagas/Myrmidon.cfg:30
 #: data/core/units/nagas/Fighter.cfg:26 data/core/units/ogres/Ogre.cfg:25
 #: data/core/units/ogres/Young_Ogre.cfg:25
+#: data/core/units/dwarves/Gryphon_Rider.cfg:30
 #: data/core/units/dwarves/Berserker.cfg:34
 #: data/core/units/dwarves/Dragonguard.cfg:26
 #: data/core/units/dwarves/Thunderer.cfg:42
+#: data/core/units/dwarves/Gryphon_Master.cfg:30
 #: data/core/units/dwarves/Steelclad.cfg:30
 #: data/core/units/dwarves/Thunderguard.cfg:26
 #: data/core/units/dwarves/Lord.cfg:30 data/core/units/dwarves/Lord.cfg:105
 #: data/core/units/dwarves/Fighter.cfg:35
 #: data/core/units/dwarves/Ulfserker.cfg:34
-#: data/core/units/merfolk/Triton.cfg:71
-#: data/core/units/monsters/Gryphon_Rider.cfg:30
-#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/merfolk/Triton.cfg:71 data/core/units/monsters/Wolf.cfg:50
 #: data/core/units/monsters/Cave_Spider.cfg:37
-#: data/core/units/monsters/Gryphon_Master.cfg:30
 #: data/core/units/monsters/Gryphon.cfg:28
 #: data/core/units/monsters/Fire_Dragon.cfg:27
 #: data/core/units/monsters/Skeletal_Dragon.cfg:31
@@ -880,6 +879,36 @@ msgstr "csatabárd"
 #: data/core/units/trolls/Warrior.cfg:28 data/core/units/trolls/Great.cfg:28
 msgid "hammer"
 msgstr "kalapács"
+
+#: data/core/units/dwarves/Gryphon_Master.cfg:4
+msgid "Gryphon Master"
+msgstr "Griff úr"
+
+#: data/core/units/dwarves/Gryphon_Master.cfg:19
+#, fuzzy
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty flyers may strike from anywhere."
+msgstr ""
+"A griff uraknak nagy tapasztalatuk van a griffek megülésében, amik szinte "
+"már hozzájuk nőttek. Ez a különleges kapcsolat az, ami miatt a szívek "
+"világszerte reszketnek, mivel ezek a titokzatos párosok bárhonnan "
+"lecsaphatnak."
+
+#: data/core/units/dwarves/Gryphon_Rider.cfg:4
+msgid "Gryphon Rider"
+msgstr "Griff-lovas"
+
+#: data/core/units/dwarves/Gryphon_Rider.cfg:19
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+"Csak kevesen képesek összebarátkozni a titokzatos griffekkel. Akik erre "
+"képesek, griff-lovasok lesznek, és így a kék egek új világát fedezik fel a "
+"repülő szörnyek hátáról."
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
@@ -1568,7 +1597,7 @@ msgstr ""
 "\n"
 "Megjegyzés:"
 
-#: data/core/units/monsters/Wolf.cfg:47
+#: data/core/units/monsters/Wolf.cfg:48
 #: data/core/units/monsters/Cave_Spider.cfg:35
 #: data/core/units/monsters/Sea_Serpent.cfg:24
 #: data/core/units/goblins/Wolf_Rider.cfg:50
@@ -3295,36 +3324,6 @@ msgstr ""
 "Félig oroszlán és félig madár, ezek a fenséges lények uralják a világ egeit. "
 "Mivel más fajokkal nagyon óvatosak, csak jó okkal érdemes háborgatni őket"
 
-#: data/core/units/monsters/Gryphon_Master.cfg:4
-msgid "Gryphon Master"
-msgstr "Griff úr"
-
-#: data/core/units/monsters/Gryphon_Master.cfg:19
-#, fuzzy
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-"A griff uraknak nagy tapasztalatuk van a griffek megülésében, amik szinte "
-"már hozzájuk nőttek. Ez a különleges kapcsolat az, ami miatt a szívek "
-"világszerte reszketnek, mivel ezek a titokzatos párosok bárhonnan "
-"lecsaphatnak."
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:4
-msgid "Gryphon Rider"
-msgstr "Griff-lovas"
-
-#: data/core/units/monsters/Gryphon_Rider.cfg:19
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"Csak kevesen képesek összebarátkozni a titokzatos griffekkel. Akik erre "
-"képesek, griff-lovasok lesznek, és így a kék egek új világát fedezik fel a "
-"repülő szörnyek hátáról."
-
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "Sártipró"
@@ -4069,8 +4068,8 @@ msgstr "Hullazabáló"
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
 #, fuzzy
 msgid ""
-"Only those with an dreadful knowledge of necromancy know what must be done "
-"to turn a person into a ghoul, and it is a secret they are not telling. "
+"Only those with a dreadful knowledge of necromancy know what must be done to "
+"turn a person into a ghoul, and it is a secret they are not telling. "
 "Whatever unspeakable rites they have performed, the result is a beast that "
 "knows nothing of its days as a human being, a creature that shambles about "
 "as naked as the day it was born, and gorges itself on the flesh of the "

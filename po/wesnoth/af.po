@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -3925,20 +3925,45 @@ msgid "ranged"
 msgstr "afstandgeveg"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "lem"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "steek"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "impak"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "vuur"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "koue"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "afstandgeveg"
+
+#: data/hardwired/english.cfg:61
 #, fuzzy
 msgid "Wesnoth unit list"
 msgstr "Onderrig"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr ""
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 #, fuzzy
 msgid "Race"
 msgstr "knuppel"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Bevorder na: "
@@ -4975,11 +5000,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr ""
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Oorwinning:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Nederlaag:"
 
@@ -5057,7 +5082,7 @@ msgstr ""
 msgid "damage type: "
 msgstr "skade soort: "
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "teen"
 
@@ -5633,15 +5658,15 @@ msgstr "Kies wapen:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Skadeberekenings"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Val vyand aan"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Kies wapen:"
 
@@ -6477,14 +6502,8 @@ msgstr ""
 #~ msgid "magic blast"
 #~ msgstr "magies"
 
-#~ msgid "impact"
-#~ msgstr "impak"
-
 #~ msgid "chill wave"
 #~ msgstr "rillingsgolf"
-
-#~ msgid "cold"
-#~ msgstr "koue"
 
 #~ msgid "User Map"
 #~ msgstr "Spelerkaart"
@@ -6952,9 +6971,6 @@ msgstr ""
 #~ msgid "ballista"
 #~ msgstr "ballista"
 
-#~ msgid "pierce"
-#~ msgstr "steek"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Vervoer Seilskip"
 
@@ -6972,14 +6988,8 @@ msgstr ""
 #~ msgid "claws"
 #~ msgstr "kloue"
 
-#~ msgid "blade"
-#~ msgstr "lem"
-
 #~ msgid "fire breath"
 #~ msgstr "vuurasem"
-
-#~ msgid "fire"
-#~ msgstr "vuur"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Drake Lem-meester"
@@ -7670,10 +7680,6 @@ msgstr ""
 
 #~ msgid "faerie fire"
 #~ msgstr "feë vuur"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "afstandgeveg"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Elfse Vegter"

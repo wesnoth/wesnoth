@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-12 18:55+0200\n"
 "PO-Revision-Date: 2007-01-08 22:45+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -3919,18 +3919,43 @@ msgid "ranged"
 msgstr "na diaľku"
 
 #: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "sečný"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "strelný"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "tupý"
+
+#: data/hardwired/english.cfg:56
+msgid "fire"
+msgstr "oheň"
+
+#: data/hardwired/english.cfg:57
+msgid "cold"
+msgstr "mráz"
+
+#: data/hardwired/english.cfg:58
+#, fuzzy
+msgid "arcane"
+msgstr "na diaľku"
+
+#: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
 msgstr "Zoznam jednotiek Wesnothu"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:62
 msgid "Based on version"
 msgstr "Podľa verzie"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:63
 msgid "Race"
 msgstr "Rasa"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:64
 #, fuzzy
 msgid "Advance from:"
 msgstr "Povýšený z"
@@ -4946,11 +4971,11 @@ msgstr "Znovunačítaj písmo pre aktuálny jazyk"
 msgid "Loading title screen."
 msgstr "Načítava sa úvodná obrazovka."
 
-#: src/game_events.cpp:843
+#: src/game_events.cpp:850
 msgid "Victory:"
 msgstr "Vyhráš, ak:"
 
-#: src/game_events.cpp:846
+#: src/game_events.cpp:853
 msgid "Defeat:"
 msgstr "Prehráš, ak:"
 
@@ -5028,7 +5053,7 @@ msgstr "dosah zbrane: "
 msgid "damage type: "
 msgstr "typ zranenia:"
 
-#: src/generate_report.cpp:250 src/mouse_events.cpp:1333
+#: src/generate_report.cpp:250 src/mouse_events.cpp:1330
 msgid "vs"
 msgstr "proti"
 
@@ -5613,15 +5638,15 @@ msgstr "Žiadna vhodná zbraň"
 msgid "Chance of being unscathed"
 msgstr "Šanca vyviaznuť bez zranenia"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1350
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
 msgid "Damage Calculations"
 msgstr "Výpočet zranenia"
 
-#: src/mouse_events.cpp:1361
+#: src/mouse_events.cpp:1358
 msgid "Attack Enemy"
 msgstr "Zaútoč na súpera"
 
-#: src/mouse_events.cpp:1362
+#: src/mouse_events.cpp:1359
 msgid "Choose weapon:"
 msgstr "Vyber si zbraň:"
 
@@ -6439,14 +6464,8 @@ msgstr "Umožni posielanie štatistík"
 #~ msgid "magic blast"
 #~ msgstr "magický"
 
-#~ msgid "impact"
-#~ msgstr "tupý"
-
 #~ msgid "chill wave"
 #~ msgstr "vlna mrazu"
-
-#~ msgid "cold"
-#~ msgstr "mráz"
 
 #~ msgid "User Map"
 #~ msgstr "Užívateľská mapa"
@@ -7306,9 +7325,6 @@ msgstr "Umožni posielanie štatistík"
 #~ msgid "ballista"
 #~ msgstr "balista"
 
-#~ msgid "pierce"
-#~ msgstr "strelný"
-
 #~ msgid "Transport Galleon"
 #~ msgstr "Obchodná loď"
 
@@ -7326,14 +7342,8 @@ msgstr "Umožni posielanie štatistík"
 #~ msgid "claws"
 #~ msgstr "pazúry"
 
-#~ msgid "blade"
-#~ msgstr "sečný"
-
 #~ msgid "fire breath"
 #~ msgstr "ohnivý dych"
-
-#~ msgid "fire"
-#~ msgstr "oheň"
 
 #~ msgid "Drake Blademaster"
 #~ msgstr "Jašter šermiar"
@@ -8003,10 +8013,6 @@ msgstr "Umožni posielanie štatistík"
 
 #~ msgid "faerie fire"
 #~ msgstr "oheň víly"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "na diaľku"
 
 #~ msgid "Elvish Fighter"
 #~ msgstr "Elf vojak"
