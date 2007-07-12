@@ -731,9 +731,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		if(minimap_scrolling_) return;
 	}
 
-	gamemap::location::DIRECTION nearest_hex = gamemap::location::NDIRECTIONS;
-	gamemap::location::DIRECTION second_nearest_hex = gamemap::location::NDIRECTIONS;
-	const gamemap::location new_hex = (*gui_).hex_clicked_on(x,y,&nearest_hex,&second_nearest_hex);
+	const gamemap::location new_hex = (*gui_).hex_clicked_on(x,y,NULL,NULL);
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
@@ -1082,8 +1080,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		return;
 	}
 
-	gamemap::location::DIRECTION nearest_hex, second_nearest_hex;
-	gamemap::location hex = gui_->hex_clicked_on(event.x,event.y,&nearest_hex,&second_nearest_hex);
+	gamemap::location hex = gui_->hex_clicked_on(event.x,event.y,NULL,NULL);
 
 	unit_map::iterator u = find_unit(selected_hex_);
 
