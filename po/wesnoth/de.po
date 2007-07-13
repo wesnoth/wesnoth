@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-12 18:55+0200\n"
-"PO-Revision-Date: 2007-07-07 16:08+0100\n"
+"PO-Revision-Date: 2007-07-13 13:53+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -4437,31 +4437,27 @@ msgstr "Fernkampf"
 
 #: data/hardwired/english.cfg:53
 msgid "blade"
-msgstr ""
+msgstr "Klinge"
 
 #: data/hardwired/english.cfg:54
 msgid "pierce"
-msgstr ""
+msgstr "Stich"
 
 #: data/hardwired/english.cfg:55
 msgid "impact"
-msgstr ""
+msgstr "Wucht"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
-msgstr ""
+msgstr "Feuer"
 
 #: data/hardwired/english.cfg:57
-#, fuzzy
-#| msgid "gold"
 msgid "cold"
-msgstr "Gold"
+msgstr "Kälte"
 
 #: data/hardwired/english.cfg:58
-#, fuzzy
-#| msgid "Orange"
 msgid "arcane"
-msgstr "Orange"
+msgstr "Heilig"
 
 #: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
@@ -6344,7 +6340,6 @@ msgstr "Dies ist kein Mehrspieler-Spielstand"
 msgid "Cannot find era $era"
 msgstr "Kann die Ära $era nicht finden"
 
-# XXX - : in original missing!
 #: src/multiplayer_connect.cpp:1351
 msgid ""
 "Victory:\n"
@@ -6377,7 +6372,6 @@ msgstr "Epoche:"
 msgid "Map to play:"
 msgstr "Verfügbare Karten:"
 
-# Anm: Es war zwingend erforderlich diesen string zu kürzen. Er hat u.a. für richtig häßliche probleme in der mp-lobby gesorgt.
 #: src/multiplayer_create.cpp:67 src/multiplayer_lobby.cpp:414
 #: src/multiplayer_lobby.cpp:415
 msgid "Use map settings"
