@@ -23,11 +23,7 @@
 
 static const std::string& campaign_dir()
 {
-	#ifdef __amigaos4__
-	static const std::string res = "data/campaigns";
-	#else
 	static const std::string res = get_user_data_dir() + "/data/campaigns";
-	#endif
 	return res;
 }
 
