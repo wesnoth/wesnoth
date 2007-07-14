@@ -258,18 +258,22 @@ void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gam
 {
 	// change the coordinates of the rect send to be relative 
 	// to the map area instead of the screen area
-	const SDL_Rect& map_rect = map_outside_area();
+	const SDL_Rect& map_rect = map_area();
 	rect.x -= map_rect.x;
 	rect.y -= map_rect.y;
+	// only move the left side, the right side should remain
+	// at the same coordinates, so fix that
+	rect.w += map_rect.x;
+	rect.h += map_rect.y;
 
 	const int tile_width = hex_width();
 
 	// adjust for the border
-	topleft.x  = -static_cast<int>(border) + (xpos_ + rect.x) / tile_width;
-	topleft.y  = -static_cast<int>(border) + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_;
+	topleft.x = static_cast<int>(-border + (xpos_ + rect.x) / tile_width);
+	topleft.y = static_cast<int>(-border + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_);
 
-	bottomright.x  = -static_cast<int>(border) + (xpos_ + rect.x + rect.w) / tile_width;
-	bottomright.y  = -static_cast<int>(border) + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_;
+	bottomright.x = static_cast<int>(-border + (xpos_ + rect.x + rect.w) / tile_width);
+	bottomright.y = static_cast<int>(-border + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_);
 
 	// This routine does a rough approximation so might be off by one
 	// to be sure enough tiles are incuded the boundries are increased
@@ -319,8 +323,6 @@ gamemap::location display::minimap_location_on(int x, int y)
 void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
 {
 	SDL_Rect r = map_area();
-	r.x=0;
-	r.y=0;
 	get_rect_hex_bounds(r, topleft, bottomright);
 }
 
