@@ -764,7 +764,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		wassert(map_ != NULL);
 		wassert(gamestatus_ != NULL);
 		wassert(units_ != NULL);
-		bool res = terrain_matches_filter(map_, loc, cfg.child("filter_location"), *gamestatus_, *units_, use_flat_tod);
+		bool res = terrain_matches_filter(*map_, loc, cfg.child("filter_location"), *gamestatus_, *units_, use_flat_tod);
 		if(res == false) {
 			return false;
 		}

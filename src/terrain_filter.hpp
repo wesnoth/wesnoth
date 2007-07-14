@@ -29,13 +29,13 @@ class unit_map;
 // merge data from several peer classes. 
 
 //the terrain filter, also known as "standard location filter" or SLF
-bool terrain_matches_filter(const gamemap *gamemap,
+bool terrain_matches_filter(const gamemap& map,
 		const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units,
 		const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
 
 //gets all locations that match a given terrain filter
-void get_locations(const gamemap *gamemap,
+void get_locations(const gamemap& map,
 		std::set<gamemap::location>& locs, const vconfig& filter, 
 		const gamestatus& game_status, const unit_map& units,
 		const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);

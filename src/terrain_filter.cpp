@@ -47,7 +47,7 @@ namespace {
 
 } //end anonymous namespace
 
-static bool terrain_matches_internal(const gamemap *mundi, const gamemap::location& loc, const vconfig& cfg, 
+static bool terrain_matches_internal(const gamemap& map, const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
 		const bool ignore_xy, t_translation::t_match*& parsed_terrain)
 {
@@ -62,7 +62,7 @@ static bool terrain_matches_internal(const gamemap *mundi, const gamemap::locati
 			parsed_terrain = new t_translation::t_match(cfg["terrain"]);
 		}
 		if(!parsed_terrain->is_empty) {
-			const t_translation::t_letter letter = mundi->get_terrain_info(loc).number();
+			const t_translation::t_letter letter = map.get_terrain_info(loc).number();
 			if(!t_translation::terrain_matches(letter, *parsed_terrain)) {
 				return false;
 			}
@@ -94,8 +94,7 @@ static bool terrain_matches_internal(const gamemap *mundi, const gamemap::locati
 		if(flat_tod) {
 			tod = game_status.get_time_of_day(0,loc);
 		} else {
-			gamemap mapcopy = *mundi;
-			tod = timeofday_at(game_status,units,loc, mapcopy);
+			tod = timeofday_at(game_status,units,loc, map);
 		}
 	}
 	if(!tod_type.empty()) {
@@ -142,7 +141,7 @@ static bool terrain_matches_internal(const gamemap *mundi, const gamemap::locati
 	return true; 
 }
 
-bool terrain_matches_filter(const gamemap *mundi, const gamemap::location& loc, const vconfig& cfg, 
+bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
 {
@@ -151,15 +150,14 @@ bool terrain_matches_filter(const gamemap *mundi, const gamemap::location& loc, 
 		lexical_cast_default<size_t>(cfg["radius"], 0));
 	std::set<gamemap::location> hexes;
 	std::vector<gamemap::location> loc_vec(1, loc);
-	gamemap mapcopy = *mundi;
-	get_tiles_radius(mapcopy, loc_vec, radius, hexes);
+	get_tiles_radius(map, loc_vec, radius, hexes);
 
 	size_t loop_count = 0;
 	bool matches = false;
 	std::set<gamemap::location>::const_iterator i;
 	terrain_cache_manager tcm;
 	for(i = hexes.begin(); i != hexes.end() && loop_count <= max_loop && !matches; ++i) {
-		matches = terrain_matches_internal(mundi, *i, cfg, game_status, units, flat_tod, false, tcm.ptr);
+		matches = terrain_matches_internal(map, *i, cfg, game_status, units, flat_tod, false, tcm.ptr);
 		++loop_count;
 	}
 
@@ -181,20 +179,20 @@ bool terrain_matches_filter(const gamemap *mundi, const gamemap::location& loc, 
 		if(cond_name == "and")
 		{
 			matches = matches &&
-				terrain_matches_filter(mundi, loc, cond_filter, game_status, units, flat_tod, max_loop);
+				terrain_matches_filter(map, loc, cond_filter, game_status, units, flat_tod, max_loop);
 		}
 		//handle [or]
 		else if(cond_name == "or")
 		{
 			matches = matches ||
-				terrain_matches_filter(mundi, loc, cond_filter, game_status, units, flat_tod, max_loop);
+				terrain_matches_filter(map, loc, cond_filter, game_status, units, flat_tod, max_loop);
 			--ors_left;
 		}
 		//handle [not]
 		else if(cond_name == "not")
 		{
 			matches = matches &&
-				!terrain_matches_filter(mundi, loc, cond_filter, game_status, units, flat_tod, max_loop);
+				!terrain_matches_filter(map, loc, cond_filter, game_status, units, flat_tod, max_loop);
 		}
 
 		++cond;
@@ -203,15 +201,15 @@ bool terrain_matches_filter(const gamemap *mundi, const gamemap::location& loc, 
 	return matches;
 }
 
-void get_locations(const gamemap *mundi, std::set<gamemap::location>& locs, const vconfig& filter,
+void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const vconfig& filter,
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
 {
-	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"], mundi);
+	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"], &map);
 	if(xy_locs.empty()) {
 		//consider all locations on the map
-		for(int x=0; x < mundi->xsize(); x++) {
-			for(int y=0; y < mundi->ysize(); y++) {
+		for(int x=0; x < map.xsize(); x++) {
+			for(int y=0; y < map.ysize(); y++) {
 				xy_locs.push_back(gamemap::location(x,y));
 			}
 		}
@@ -221,7 +219,7 @@ void get_locations(const gamemap *mundi, std::set<gamemap::location>& locs, cons
 	terrain_cache_manager tcm;
 	std::vector<gamemap::location>::iterator loc_itor = xy_locs.begin();
 	while(loc_itor != xy_locs.end()) {
-		if(terrain_matches_internal(mundi, *loc_itor, filter, game_status, units, flat_tod, true, tcm.ptr)) {
+		if(terrain_matches_internal(map, *loc_itor, filter, game_status, units, flat_tod, true, tcm.ptr)) {
 			++loc_itor;
 		} else {
 			loc_itor = xy_locs.erase(loc_itor);
@@ -231,8 +229,7 @@ void get_locations(const gamemap *mundi, std::set<gamemap::location>& locs, cons
 	//handle radius
 	const size_t radius = minimum<size_t>(max_loop,
 		lexical_cast_default<size_t>(filter["radius"], 0));
-	const gamemap mapcopy = *mundi; 
-	get_tiles_radius(mapcopy, xy_locs, radius, locs);
+	get_tiles_radius(map, xy_locs, radius, locs);
 
 	//handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond = filter.get_config().ordered_begin();
@@ -251,7 +248,7 @@ void get_locations(const gamemap *mundi, std::set<gamemap::location>& locs, cons
 		//handle [and]
 		if(cond_name == "and") {
 			std::set<gamemap::location> intersect_hexes;
-			get_locations(mundi, intersect_hexes, cond_filter, game_status, units, flat_tod, max_loop);
+			get_locations(map, intersect_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			std::set<gamemap::location>::iterator intersect_itor = locs.begin();
 			while(intersect_itor != locs.end()) {
 				if(intersect_hexes.find(*intersect_itor) == locs.end()) {
@@ -264,7 +261,7 @@ void get_locations(const gamemap *mundi, std::set<gamemap::location>& locs, cons
 		//handle [or]
 		else if(cond_name == "or") {
 			std::set<gamemap::location> union_hexes;
-			get_locations(mundi, union_hexes, cond_filter, game_status, units, flat_tod, max_loop);
+			get_locations(map, union_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			//locs.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
 			std::set<gamemap::location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
@@ -275,7 +272,7 @@ void get_locations(const gamemap *mundi, std::set<gamemap::location>& locs, cons
 		//handle [not]
 		else if(cond_name == "not") {
 			std::set<gamemap::location> removal_hexes;
-			get_locations(mundi, removal_hexes, cond_filter, game_status, units, flat_tod, max_loop);
+			get_locations(map, removal_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			std::set<gamemap::location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
 				locs.erase(*erase_itor++);

@@ -205,7 +205,7 @@ bool conditional_passed(const unit_map* units,
 	for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 		std::set<gamemap::location> res;
 		wassert(game_map != NULL && units != NULL && status_ptr != NULL);
-		get_locations(game_map, res, *v, *status_ptr, *units);
+		get_locations(*game_map, res, *v, *status_ptr, *units);
 		if(res.empty()) {
 			return false;
 		}
@@ -1962,9 +1962,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				config temp_cfg(cfg.get_config());
 				temp_cfg["owner_side"] = temp_cfg["side"];
 				temp_cfg["side"] = "";
-				matches = terrain_matches_filter(game_map, *j, &temp_cfg, *status_ptr, *units);
+				matches = terrain_matches_filter(*game_map, *j, &temp_cfg, *status_ptr, *units);
 			} else {
-				matches = terrain_matches_filter(game_map, *j, cfg, *status_ptr, *units);
+				matches = terrain_matches_filter(*game_map, *j, cfg, *status_ptr, *units);
 			}
 			if(matches) {
 				config &loc_store = state_of_game->add_variable_cfg(variable);
@@ -1983,7 +1983,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		state_of_game->clear_variable_cfg(variable);
 
 		std::set<gamemap::location> res;
-		get_locations(game_map, res, cfg, *status_ptr, *units, false, MaxLoop);
+		get_locations(*game_map, res, cfg, *status_ptr, *units, false, MaxLoop);
 
 		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end(); ++j) {
 			config &loc_store = state_of_game->add_variable_cfg(variable);
