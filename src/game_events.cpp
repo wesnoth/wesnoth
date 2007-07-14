@@ -250,6 +250,8 @@ bool conditional_passed(const unit_map* units,
 		}
 	}
 	bool matches = true; //so far, so good
+	int or_count = 0;
+	int tag_count = 0;
 
 	//handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond_i = cond.get_config().ordered_begin();
@@ -268,6 +270,7 @@ bool conditional_passed(const unit_map* units,
 		else if(cond_name == "or")
 		{
 			matches = matches || conditional_passed(units, cond_filter);
+			++or_count;
 		}
 		//handle [not]
 		else if(cond_name == "not")
@@ -275,6 +278,21 @@ bool conditional_passed(const unit_map* units,
 			matches = matches && !conditional_passed(units, cond_filter);
 		}
 		++cond_i;
+		++tag_count;
+	}
+	//check for deprecated [or] syntax
+	if(matches && or_count > 1 && tag_count == or_count && cond.get_config().values.size() == 0)
+	{
+		lg::wml_error << "possible deprecated [or] syntax, re-interpretation warning\n";
+		//for now we will re-interpret it according to the old rules
+		//but this should be later to prevent re-interpretation errors
+		const vconfig::child_list& orcfgs = cond.get_children("or");
+		for(unsigned int i=0; i < orcfgs.size(); ++i) {
+			if(conditional_passed(units, orcfgs[i])) {
+				return true;
+			}
+		}
+		return false;
 	}
 	return matches;
 }

@@ -52,11 +52,6 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 		const bool ignore_xy, t_translation::t_match*& parsed_terrain)
 {
 
-	const int terrain_format = lexical_cast_default(cfg["terrain_format"], -1);
-	if(terrain_format != -1) {
-		lg::wml_error << "key terrain_format in filter_location is no longer used, this message will disappear in 1.3.5\n";
-	}
-
 	if(cfg.has_attribute("terrain")) {
 		if(parsed_terrain == NULL) {
 			parsed_terrain = new t_translation::t_match(cfg["terrain"]);
