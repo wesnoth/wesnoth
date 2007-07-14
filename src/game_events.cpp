@@ -161,7 +161,7 @@ bool conditional_passed(const unit_map* units,
 	//if the if statement requires we have a certain unit, then
 	//check for that.
 	const vconfig::child_list& have_unit = cond.get_children("have_unit");
-
+	int tag_count = have_unit.size();
 	for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
 
 		if(units == NULL)
@@ -182,7 +182,7 @@ bool conditional_passed(const unit_map* units,
 	//if the if statement requires we have a certain location, then
 	//check for that.
 	const vconfig::child_list& have_location = cond.get_children("have_location");
-
+	tag_count += have_location.size();
 	for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 		std::set<gamemap::location> res;
 		wassert(game_map != NULL && units != NULL && status_ptr != NULL);
@@ -195,6 +195,7 @@ bool conditional_passed(const unit_map* units,
 	//check against each variable statement to see if the variable
 	//matches the conditions or not
 	const vconfig::child_list& variables = cond.get_children("variable");
+	tag_count += variables.size();
 	for(vconfig::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
 		const vconfig& values = *var;
 
@@ -251,7 +252,6 @@ bool conditional_passed(const unit_map* units,
 	}
 	bool matches = true; //so far, so good
 	int or_count = 0;
-	int tag_count = 0;
 
 	//handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond_i = cond.get_config().ordered_begin();
