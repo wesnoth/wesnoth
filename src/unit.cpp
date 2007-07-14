@@ -871,15 +871,6 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		return false;
 	}
 
-	//if there are [not] tags below this tag, it means that the filter
-	//should not match if what is in the [not] tag does match
-	const vconfig::child_list& negatives = cfg.get_children("not");
-	for(vconfig::child_list::const_iterator not_it = negatives.begin(); not_it != negatives.end(); ++not_it) {
-		if(internal_matches_filter(*not_it,loc,use_flat_tod)) {
-			return false;
-		}
-	}
-
 	// now start with the new WML based comparison
 	// if a key is in the unit and in the filter, they should match
 	// filter only => not for us
@@ -895,7 +886,33 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			}
 		}
 	}
-	return true;
+	bool matches = true; //so far, so good
+
+	//handle [and], [or], and [not] with in-order precedence
+	config::all_children_iterator cond = cfg.get_config().ordered_begin();
+	config::all_children_iterator cond_end = cfg.get_config().ordered_end();
+	while(cond != cond_end)
+	{
+
+		const std::string& cond_name = *((*cond).first);
+		const vconfig cond_filter(&(*((*cond).second)));
+
+		//handle [and]
+		if(cond_name == "and") {
+			matches = matches && internal_matches_filter(cond_filter,loc,use_flat_tod);
+		}
+		//handle [or]
+		else if(cond_name == "or") {
+			matches = matches || internal_matches_filter(cond_filter,loc,use_flat_tod);
+		}
+		//handle [not]
+		else if(cond_name == "not") {
+			matches = matches && !internal_matches_filter(cond_filter,loc,use_flat_tod);
+		}
+
+		++cond;
+	}
+	return matches;
 }
 
 
