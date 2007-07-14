@@ -164,14 +164,8 @@ bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, co
 	//handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond = cfg.get_config().ordered_begin();
 	config::all_children_iterator cond_end = cfg.get_config().ordered_end();
-	int ors_left = std::count_if(cond, cond_end, cfg_isor());
 	while(cond != cond_end)
 	{
-		//if there are no matches or [or] conditions left, go ahead and return false
-		if(!matches && ors_left <= 0) {
-			return false;
-		}
-
 		const std::string& cond_name = *((*cond).first);
 		const vconfig cond_filter(&(*((*cond).second)));
 
@@ -186,7 +180,6 @@ bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, co
 		{
 			matches = matches ||
 				terrain_matches_filter(map, loc, cond_filter, game_status, units, flat_tod, max_loop);
-			--ors_left;
 		}
 		//handle [not]
 		else if(cond_name == "not")
