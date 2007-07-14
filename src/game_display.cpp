@@ -48,6 +48,120 @@
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
 
+/**
+ * New experimental function to give the border a fade to black effect
+ *
+ * based on the darken function
+ */
+static surface adjust_border(surface const &surf, const int direction)
+{
+	if(surf == NULL)
+		return NULL;
+
+	surface nsurf(make_neutral_surface(surf));
+	if(nsurf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(nsurf);
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w*surf->h;
+
+		const int top_down = 1;
+		const int left_right = 2;
+		const int bottom_up = 3;
+		const int right_left = 4;
+
+		// the lower the number the darker the colour
+		double upper = 255;
+		double lower = 64;
+
+		double step;
+		double amount; 
+
+		switch(direction) {
+			case top_down: 
+				amount = lower;
+				step = - ((upper - lower) / surf->h);
+				break;
+
+			case bottom_up:
+				amount = upper;
+				step = (upper - lower) / surf->h;
+				break;
+
+			case left_right:
+				amount = lower;
+				step = -((upper - lower) / surf->w);
+				break;
+
+			case right_left:
+				amount = upper;
+				step = (upper - lower) / surf->w;
+				break;
+
+		}
+
+		const int x_max = (direction%2 == 1 ? surf->w : surf->h);
+		const int y_max = (direction%2 == 0 ? surf->w : surf->h);
+		for(int x = 0; x < x_max; ++x) {
+			for(int y = 0; y < y_max; ++y, ++beg) {
+
+				Uint8 red, green, blue, alpha;
+				SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+
+				//use the correct formula for RGB to grayscale
+				//conversion. ok, this is no big deal :)
+				//the correct formula being:
+				//gray=0.299red+0.587green+0.114blue
+				const Uint8 avg = (Uint8)((77*(Uint16)red +
+										   150*(Uint16)green +
+										   29*(Uint16)blue) / 256);
+
+				// then tint 77%, 67%, 72%
+				unsigned r = static_cast<unsigned>(0.77 * avg * amount) >> 8;
+				unsigned g = static_cast<unsigned>(0.67 * avg * amount) >> 8;
+				unsigned b = static_cast<unsigned>(0.72 * avg * amount) >> 8;
+
+				// clip at maximum
+				if(r > 255) r = 255;
+				if(g > 255) g = 255;
+				if(b > 255) b = 255;
+
+				*beg = SDL_MapRGBA(nsurf->format,r,g,b,alpha);
+
+				switch(direction) {
+					case left_right:
+					case right_left:
+						amount -= step;
+						break;
+				}
+			}
+
+			// set next run
+			switch(direction) {
+				case top_down:
+				case bottom_up:
+					amount -= step;
+					break;
+
+				case left_right:
+					amount = lower;
+					break;
+
+				case right_left:
+					amount = upper;
+					break;
+			}
+
+		}
+	}
+
+	return create_optimized_surface(nsurf);
+}
+
 std::map<gamemap::location,fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
@@ -387,6 +501,86 @@ void game_display::draw(bool update,bool force)
 				draw_movement_info(*it);
 			}
 			//simulate_delay += 1;
+			
+			// if the tile is at the border we start to blend it
+			// leave the northern and southern border since they're tricky due
+			// to the hex shape of the tile
+			// note we assume a half time border!!!
+			if(!on_map) {
+				if(it->x == -1) {
+					// get the rendered part
+					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
+			
+					surface buffer(get_surface_portion(screen_.getSurface(), rect));
+
+					// apply the alpha
+					buffer = adjust_border(buffer, 2);
+
+					// put the image back
+					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
+
+				} else if(it->x == map_.x()) {
+					// get the rendered part
+					SDL_Rect rect = { xpos + 1 * zoom_/4 , ypos, zoom_/2, zoom_ } ;
+			
+					surface buffer(get_surface_portion(screen_.getSurface(), rect));
+
+					// apply the alpha
+					buffer = adjust_border(buffer, 4);
+
+					// put the image back
+					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
+
+#if 0
+				} else if(it->y == -1) {
+					// get the rendered part
+					SDL_Rect rect;// = { xpos, ypos + ((it->x%2 == 1) ? 0 : zoom_/2), zoom_, zoom_/2 } ;
+					if(it->x%2 == 1) {
+						rect.x = xpos;
+						rect.y = ypos;
+						rect.w = zoom_;
+						rect.h = zoom_/2;
+					} else {
+						rect.x = xpos + zoom_/4;
+						rect.y = ypos + zoom_/2;
+						rect.w = zoom_/2;
+						rect.h = zoom_/2;
+					}
+
+			
+					surface buffer(get_surface_portion(screen_.getSurface(), rect));
+
+					// apply the alpha
+					buffer = adjust_border(buffer, 1);
+
+					// put the image back
+					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
+
+				} else if(it->y == map_.y()) {
+					// get the rendered part
+					SDL_Rect rect;// = { xpos, ypos + ((it->x%2 == 1) ? 0 : zoom_/2), zoom_, zoom_/2 } ;
+					if(it->x%2 == 1) {
+						rect.x = xpos + zoom_/4;
+						rect.y = ypos;
+						rect.w = zoom_/2;
+						rect.h = zoom_/2;
+					} else {
+						rect.x = xpos;
+						rect.y = ypos + zoom_/2;
+						rect.w = zoom_;
+						rect.h = zoom_/2;
+					}
+			
+					surface buffer(get_surface_portion(screen_.getSurface(), rect));
+
+					// apply the alpha
+					buffer = adjust_border_alpha(buffer, 3);
+
+					// put the image back
+					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
+#endif
+				}
+			}
 		}
 
 		// Units can overlap multiple hexes, so we need to

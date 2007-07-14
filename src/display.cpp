@@ -57,7 +57,7 @@ namespace {
 
 	// number of border hexes, the real size will be border 
 	// and border + 0.5 depending whether the x is odd or even 
-	double border = 0.25;
+	double border = 0.5;
 }
 
 display::display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
