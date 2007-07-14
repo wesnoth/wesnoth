@@ -74,9 +74,14 @@ static surface adjust_border(surface const &surf, const int direction)
 		const int bottom_up = 3;
 		const int right_left = 4;
 
-		// the lower the number the darker the colour
-		double upper = 255;
-		double lower = 64;
+		// the higher the number the more the colour will be blended
+		double upper = 128;
+		double lower = 255;
+
+		// the new target colour
+		const unsigned r_ = 99;
+		const unsigned g_ = 84;
+		const unsigned b_ = 55;
 
 		double step;
 		double amount; 
@@ -112,18 +117,10 @@ static surface adjust_border(surface const &surf, const int direction)
 				Uint8 red, green, blue, alpha;
 				SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
-				//use the correct formula for RGB to grayscale
-				//conversion. ok, this is no big deal :)
-				//the correct formula being:
-				//gray=0.299red+0.587green+0.114blue
-				const Uint8 avg = (Uint8)((77*(Uint16)red +
-										   150*(Uint16)green +
-										   29*(Uint16)blue) / 256);
-
-				// then tint 77%, 67%, 72%
-				unsigned r = static_cast<unsigned>(0.77 * avg * amount) >> 8;
-				unsigned g = static_cast<unsigned>(0.67 * avg * amount) >> 8;
-				unsigned b = static_cast<unsigned>(0.72 * avg * amount) >> 8;
+				// blend to the new colour
+				unsigned r = static_cast<unsigned>(r_ * amount + red   * (255 - amount)) >> 8;
+				unsigned g = static_cast<unsigned>(g_ * amount + green * (255 - amount)) >> 8;
+				unsigned b = static_cast<unsigned>(b_ * amount + blue  * (255 - amount)) >> 8;
 
 				// clip at maximum
 				if(r > 255) r = 255;
