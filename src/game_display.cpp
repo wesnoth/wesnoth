@@ -503,7 +503,7 @@ void game_display::draw(bool update,bool force)
 			// leave the northern and southern border since they're tricky due
 			// to the hex shape of the tile
 			// note we assume a half time border!!!
-			if(!on_map) {
+			if(!on_map && map_.get_terrain(*it) != t_translation::OFF_MAP_USER) {
 				if(it->x == -1) {
 					// get the rendered part
 					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
