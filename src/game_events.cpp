@@ -157,25 +157,6 @@ game_state* get_state_of_game()
 bool conditional_passed(const unit_map* units,
                         const vconfig cond)
 {
-	//an 'and' statement means that if the contained statements are false,
-	//then it automatically fails
-	const vconfig::child_list& and_statements = cond.get_children("and");
-	for(vconfig::child_list::const_iterator and_it = and_statements.begin();
-			and_it != and_statements.end(); ++and_it) {
-		if(!conditional_passed(units,*and_it)) {
-			return false;
-		}
-	}
-
-	//an 'or' statement means that if the contained statements are true,
-	//then it automatically passes
-	const vconfig::child_list& or_statements = cond.get_children("or");
-	for(vconfig::child_list::const_iterator or_it = or_statements.begin();
-			or_it != or_statements.end(); ++or_it) {
-		if(conditional_passed(units,*or_it)) {
-			return true;
-		}
-	}
 
 	//if the if statement requires we have a certain unit, then
 	//check for that.
@@ -268,16 +249,34 @@ bool conditional_passed(const unit_map* units,
 			return false;
 		}
 	}
+	bool matches = true; //so far, so good
 
-	const vconfig::child_list& not_statements = cond.get_children("not");
-	for(vconfig::child_list::const_iterator not_it = not_statements.begin();
-			not_it != not_statements.end(); ++not_it) {
-		if(conditional_passed(units,*not_it)) {
-			return false;
+	//handle [and], [or], and [not] with in-order precedence
+	config::all_children_iterator cond_i = cond.get_config().ordered_begin();
+	config::all_children_iterator cond_end = cond.get_config().ordered_end();
+	while(cond_i != cond_end)
+	{
+		const std::string& cond_name = *((*cond_i).first);
+		const vconfig cond_filter(&(*((*cond_i).second)));
+
+		//handle [and]
+		if(cond_name == "and")
+		{
+			matches = matches && conditional_passed(units, cond_filter);
 		}
+		//handle [or]
+		else if(cond_name == "or")
+		{
+			matches = matches || conditional_passed(units, cond_filter);
+		}
+		//handle [not]
+		else if(cond_name == "not")
+		{
+			matches = matches && !conditional_passed(units, cond_filter);
+		}
+		++cond_i;
 	}
-
-	return !have_unit.empty() || !have_location.empty() || !variables.empty() || !not_statements.empty() || !and_statements.empty();
+	return matches;
 }
 
 } //end namespace game_events
