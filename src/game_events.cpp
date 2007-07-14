@@ -2284,6 +2284,9 @@ namespace game_events {
 
 bool matches_special_filter(const config* cfg, const vconfig filter)
 {
+	//FIXME: this filter should be deprecated and removed, 
+	//instead we should just auto-store $attacker_weapon and check it in a conditional
+
 	if(!cfg) {
 		return false;
 	}
@@ -2293,43 +2296,44 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 		}
 	}
 
-	const vconfig::child_list& nots = filter.get_children("not");
-	for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
-		if(matches_special_filter(cfg,*i)) {
-			return false;
+	bool matches = true; //so far, so good
+
+	//handle [and], [or], and [not] with in-order precedence
+	config::all_children_iterator cond_i = filter.get_config().ordered_begin();
+	config::all_children_iterator cond_end = filter.get_config().ordered_end();
+	while(cond_i != cond_end)
+	{
+		const std::string& cond_name = *((*cond_i).first);
+		const vconfig cond_filter(&(*((*cond_i).second)));
+
+		//handle [and]
+		if(cond_name == "and")
+		{
+			matches = matches && matches_special_filter(cfg, cond_filter);
 		}
+		//handle [or]
+		else if(cond_name == "or")
+		{
+			matches = matches || matches_special_filter(cfg, cond_filter);
+		}
+		//handle [not]
+		else if(cond_name == "not")
+		{
+			matches = matches && !matches_special_filter(cfg, cond_filter);
+		}
+		++cond_i;
 	}
-	return true;
+	return matches;
 }
 
 bool unit_matches_filter(const unit& u, const vconfig filter,const gamemap::location& loc)
 {
-	const bool res = u.matches_filter(filter,loc);
-	if(res == true) {
-		const vconfig::child_list& nots = filter.get_children("not");
-		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
-			if(unit_matches_filter(u,*i,loc)) {
-				return false;
-			}
-		}
-	}
-
-	return res;
+	return u.matches_filter(filter,loc);
 }
 
 bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 {
-	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter,itor->first);
-	if(res == true) {
-		const vconfig::child_list& nots = filter.get_children("not");
-		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
-			if(unit_matches_filter(itor,*i)) {
-				return false;
-			}
-		}
-	}
-
-	return res;
+	return itor->second.matches_filter(filter,itor->first);
 }
 
 static config::child_list unit_wml_configs;

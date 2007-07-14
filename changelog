@@ -27,6 +27,7 @@ Version 1.3.4+svn:
    * the syntax for logical OR-filters is now "cond1[or]cond2[/or]" 
      instead of "[or]cond1[/or][or]cond2[/or]"
    * fix a bug where empty conditionals returned false
+   * now [special_filter] supports [and],[or], and [not] (instead of just NOT)
  * miscellaneous and bug fixes
    * fix renames causing OOS when made after moves or recruits
    * fix a minor glitch when selecting the leftmost menu heading
