@@ -265,25 +265,27 @@ bool conditional_passed(const unit_map* units,
 		if(cond_name == "and")
 		{
 			matches = matches && conditional_passed(units, cond_filter);
+			++tag_count;
 		}
 		//handle [or]
 		else if(cond_name == "or")
 		{
 			matches = matches || conditional_passed(units, cond_filter);
 			++or_count;
+			++tag_count;
 		}
 		//handle [not]
 		else if(cond_name == "not")
 		{
 			matches = matches && !conditional_passed(units, cond_filter);
+			++tag_count;
 		}
 		++cond_i;
-		++tag_count;
 	}
 	//check for deprecated [or] syntax
 	if(matches && or_count > 1 && tag_count == or_count && cond.get_config().values.size() == 0)
 	{
-		lg::wml_error << "possible deprecated [or] syntax, re-interpretation warning\n";
+		lg::wml_error << "possible deprecated [or] syntax: now forcing re-interpretation\n";
 		//for now we will re-interpret it according to the old rules
 		//but this should be later to prevent re-interpretation errors
 		const vconfig::child_list& orcfgs = cond.get_children("or");
