@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-12 18:55+0200\n"
+"POT-Creation-Date: 2007-07-15 12:42+0200\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -1513,17 +1513,37 @@ msgstr ""
 "düşmanlarla savaşırken paha biçilmez yapar."
 
 #: data/core/help.cfg:331
+msgid "trait^Mechanical"
+msgstr ""
+
+#: data/core/help.cfg:332
+#, fuzzy
+msgid ""
+"Mechanical units are immune to poison, also drain and plague doesn't work on "
+"them."
+msgstr "Yarı ölüler zehire karşı bağışıklıdır."
+
+#: data/core/help.cfg:334
+msgid ""
+"\n"
+"\n"
+"Mechanical units generally have 'Mechanical' as their only trait. Since "
+"mechanical units don't really have life, drain, poison and plague has no "
+"effect upon them."
+msgstr ""
+
+#: data/core/help.cfg:339
 msgid "Dextrous"
 msgstr "Maharetli"
 
-#: data/core/help.cfg:332
+#: data/core/help.cfg:340
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Maharetli birimler menzilli dövüşte her isabet eden atışta 1 fazla hasar "
 "verirler."
 
-#: data/core/help.cfg:334
+#: data/core/help.cfg:342
 msgid ""
 "\n"
 "\n"
@@ -1539,21 +1559,21 @@ msgstr ""
 "diğerlerini çok aşan doğal bir yeteneğe sahiptir. Bu elfler her bir ok ile "
 "ek bir hasara sebebiyet verirler."
 
-#: data/core/help.cfg:339
+#: data/core/help.cfg:347
 msgid "Healthy"
 msgstr ""
 
-#: data/core/help.cfg:340
+#: data/core/help.cfg:348
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 
-#: data/core/help.cfg:345 data/core/terrain.cfg:429 data/core/terrain.cfg:437
+#: data/core/help.cfg:353 data/core/terrain.cfg:429 data/core/terrain.cfg:437
 msgid "Grassland"
 msgstr "Çayır"
 
-#: data/core/help.cfg:350
+#: data/core/help.cfg:358
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1570,11 +1590,11 @@ msgstr ""
 "\n"
 "Çayırda bir çok birim %30 ila %40 savunmaya sahiptir."
 
-#: data/core/help.cfg:355 data/core/terrain.cfg:552
+#: data/core/help.cfg:363 data/core/terrain.cfg:552
 msgid "Road"
 msgstr "Yol"
 
-#: data/core/help.cfg:358
+#: data/core/help.cfg:366
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1583,11 +1603,11 @@ msgstr ""
 "Yollar üzerinden geçen yolcular tarafından oluşturulmuş patikalardır. Oyun "
 "içinde, yollar <ref>dst=terrain_grassland text=çayır</ref>a denktir."
 
-#: data/core/help.cfg:363 data/core/terrain.cfg:408
+#: data/core/help.cfg:371 data/core/terrain.cfg:408
 msgid "Forest"
 msgstr "Orman"
 
-#: data/core/help.cfg:370
+#: data/core/help.cfg:378
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1618,11 +1638,11 @@ msgstr ""
 "sınırlanmış, bununla beraber elfler, atlı birimleri de dahil, %60 ile %70 "
 "arasıdır. Cüceler genellikle ormanda sadece %30 savunmaya sahiptirler."
 
-#: data/core/help.cfg:375 data/core/terrain.cfg:479
+#: data/core/help.cfg:383 data/core/terrain.cfg:479
 msgid "Hills"
 msgstr "Tepe"
 
-#: data/core/help.cfg:380
+#: data/core/help.cfg:388
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1643,11 +1663,11 @@ msgstr ""
 "Bir çok birim tepelerde %50 savunmaya sahiptir, ama süvari %40 ile "
 "sınırlanmıştır. Cüceler tepelerdeki %60 savunmanın tadını çıkarırlar. "
 
-#: data/core/help.cfg:385 data/core/terrain.cfg:491 data/core/terrain.cfg:500
+#: data/core/help.cfg:393 data/core/terrain.cfg:491 data/core/terrain.cfg:500
 msgid "Mountains"
 msgstr "Dağlar"
 
-#: data/core/help.cfg:390
+#: data/core/help.cfg:398
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1669,11 +1689,11 @@ msgstr ""
 "Bir çok birim dağlarda %60 savunmaya sahiptir, bununla beraber cüceler %70' "
 "e sahip olurlar."
 
-#: data/core/help.cfg:395 data/core/terrain.cfg:574
+#: data/core/help.cfg:403 data/core/terrain.cfg:574
 msgid "Swamp"
 msgstr "Bataklık"
 
-#: data/core/help.cfg:400
+#: data/core/help.cfg:408
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1693,11 +1713,11 @@ msgstr ""
 "Bir çok birim bataklıkta %30 savunma yapabilirler. Su adamı, naga ve "
 "sürüngenlerin hepsi genellikle %60'a sahip olurlar."
 
-#: data/core/help.cfg:405 data/core/terrain.cfg:851
+#: data/core/help.cfg:413 data/core/terrain.cfg:851
 msgid "Shallow Water"
 msgstr "Sığ su"
 
-#: data/core/help.cfg:410
+#: data/core/help.cfg:418
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1719,11 +1739,11 @@ msgstr ""
 "Bir çok birim sığ sularda %20 ila %30 arası savunma yapabilirler, ama naga "
 "ve su adamları %60'a sahip olurlar. "
 
-#: data/core/help.cfg:415 data/core/terrain.cfg:841
+#: data/core/help.cfg:423 data/core/terrain.cfg:841
 msgid "Deep Water"
 msgstr "Derin su"
 
-#: data/core/help.cfg:420
+#: data/core/help.cfg:428
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1736,11 +1756,11 @@ msgstr ""
 "\n"
 "Naga ve su adamlarının derin suda %50 savunması ve tam hızı olur."
 
-#: data/core/help.cfg:425 data/core/terrain.cfg:47
+#: data/core/help.cfg:433 data/core/terrain.cfg:47
 msgid "Snow"
 msgstr "Kar"
 
-#: data/core/help.cfg:430
+#: data/core/help.cfg:438
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1754,11 +1774,11 @@ msgstr ""
 "\n"
 "Bir çok birim karda %20 ila %40 savunmaya sahiptir."
 
-#: data/core/help.cfg:435 data/core/terrain.cfg:37
+#: data/core/help.cfg:443 data/core/terrain.cfg:37
 msgid "Ice"
 msgstr "Buz"
 
-#: data/core/help.cfg:438
+#: data/core/help.cfg:446
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1768,11 +1788,11 @@ msgstr ""
 "text=tundra</ref>ya denktir. Yüzebilen birimler her ne kadar su altında "
 "nefes alabilseler de, buz altında yüzemezler."
 
-#: data/core/help.cfg:443 data/core/terrain.cfg:158
+#: data/core/help.cfg:451 data/core/terrain.cfg:158
 msgid "Castle"
 msgstr "Kale"
 
-#: data/core/help.cfg:450
+#: data/core/help.cfg:458
 #, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -1794,11 +1814,11 @@ msgstr ""
 "\n"
 "Bir çok birim kalede %60 savunmaya sahiptir."
 
-#: data/core/help.cfg:455 data/core/terrain.cfg:366
+#: data/core/help.cfg:463 data/core/terrain.cfg:366
 msgid "Sand"
 msgstr "Kum"
 
-#: data/core/help.cfg:460
+#: data/core/help.cfg:468
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1812,11 +1832,11 @@ msgstr ""
 "\n"
 "Bir çok birim kumda %20 ila %40 savunma yapabilir."
 
-#: data/core/help.cfg:465 data/core/terrain.cfg:346
+#: data/core/help.cfg:473 data/core/terrain.cfg:346
 msgid "Desert"
 msgstr "Çöl"
 
-#: data/core/help.cfg:468
+#: data/core/help.cfg:476
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1825,11 +1845,11 @@ msgstr ""
 "Çöl aslında ince kumlardan ve kumsaldan farklı olmasına rağmen bu oyunda "
 "aynı değerdedir. <ref>dst=terrain_sand text=Kum</ref>a bak."
 
-#: data/core/help.cfg:473 data/core/terrain.cfg:588
+#: data/core/help.cfg:481 data/core/terrain.cfg:588
 msgid "Cave"
 msgstr "Mağara"
 
-#: data/core/help.cfg:478
+#: data/core/help.cfg:486
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1850,11 +1870,11 @@ msgstr ""
 "\n"
 "Bir çok birimin mağarada %20 ila 40% savunması varken cücelerin %50 vardır."
 
-#: data/core/help.cfg:483 data/core/terrain.cfg:634
+#: data/core/help.cfg:491 data/core/terrain.cfg:634
 msgid "Rockbound Cave"
 msgstr "Taşlık mağara"
 
-#: data/core/help.cfg:488
+#: data/core/help.cfg:496
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -1878,11 +1898,11 @@ msgstr ""
 "Taşlık mağaralarda çoğu birimin %50 savunması olur, atlılar ise %40ta "
 "kalırlar. Cüceler kayalık mağarada %60 savunmanın tadını çıkarırlar. "
 
-#: data/core/help.cfg:493
+#: data/core/help.cfg:501
 msgid "Illuminated Cave"
 msgstr "Aydınlatılmış Mağara"
 
-#: data/core/help.cfg:496
+#: data/core/help.cfg:504
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness.  This provides an attack "
@@ -1891,11 +1911,11 @@ msgid ""
 "terrains."
 msgstr ""
 
-#: data/core/help.cfg:501 data/core/terrain.cfg:606 data/core/terrain.cfg:614
+#: data/core/help.cfg:509 data/core/terrain.cfg:606 data/core/terrain.cfg:614
 msgid "Mushroom Grove"
 msgstr "Mantar korusu"
 
-#: data/core/help.cfg:506
+#: data/core/help.cfg:514
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -1917,11 +1937,11 @@ msgstr ""
 "Çoğu birim mantar ormanında %50 ila %60 savunma alır, süvariler ise sadece %"
 "20."
 
-#: data/core/help.cfg:511 data/core/terrain.cfg:446
+#: data/core/help.cfg:519 data/core/terrain.cfg:446
 msgid "Savanna"
 msgstr "Savan"
 
-#: data/core/help.cfg:514
+#: data/core/help.cfg:522
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1930,7 +1950,7 @@ msgstr ""
 "Savanlar dünyanın sıcak bölgelerinde bulunan uzun çalılık bölgeleridir. Bu "
 "oyunda <ref>dst=terrain_grassland text=çayır</ref>a denktirler."
 
-#: data/core/help.cfg:519 data/core/terrain.cfg:661 data/core/terrain.cfg:672
+#: data/core/help.cfg:527 data/core/terrain.cfg:661 data/core/terrain.cfg:672
 #: data/core/terrain.cfg:685 data/core/terrain.cfg:696
 #: data/core/terrain.cfg:709 data/core/terrain.cfg:720
 #: data/core/terrain.cfg:730 data/core/terrain.cfg:741
@@ -1941,7 +1961,7 @@ msgstr ""
 msgid "Village"
 msgstr "Kasaba"
 
-#: data/core/help.cfg:526
+#: data/core/help.cfg:534
 #, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -1964,12 +1984,12 @@ msgstr ""
 "Bir çok birim köyde %50 ila %60 savunmaya sahipken süvari sadece %40' ta "
 "kalır."
 
-#: data/core/help.cfg:531
+#: data/core/help.cfg:539
 #, fuzzy
 msgid "Submerged Village"
 msgstr "Sahipli köy"
 
-#: data/core/help.cfg:536
+#: data/core/help.cfg:544
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -1982,11 +2002,11 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#: data/core/help.cfg:541 data/core/terrain.cfg:512
+#: data/core/help.cfg:549 data/core/terrain.cfg:512
 msgid "Chasm"
 msgstr "Uçurum"
 
-#: data/core/help.cfg:544
+#: data/core/help.cfg:552
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -1997,11 +2017,11 @@ msgstr ""
 "etmesi günler alan dimdik duvarları ile dikkati çekerler. Oyunda sadece "
 "üzerlerinden uçabilen birimler bu araziden geçebilir."
 
-#: data/core/help.cfg:549 data/core/terrain.cfg:520
+#: data/core/help.cfg:557 data/core/terrain.cfg:520
 msgid "Lava"
 msgstr "Lav"
 
-#: data/core/help.cfg:552
+#: data/core/help.cfg:560
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2015,11 +2035,11 @@ msgstr ""
 "bölgeyi aydınlatır. Bu aydınlatma adaletli birimlere bir saldırı bonusu "
 "oluşturur, ve kaotik birimlerden de saldırı bonusunu kaldırır."
 
-#: data/core/help.cfg:557 data/core/terrain.cfg:861
+#: data/core/help.cfg:565 data/core/terrain.cfg:861
 msgid "River Ford"
 msgstr "Sığ geçit"
 
-#: data/core/help.cfg:560
+#: data/core/help.cfg:568
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2034,14 +2054,14 @@ msgstr ""
 "çayır ya da sığ su yerine geçer, hangisi üzerindeki birim için daha iyi "
 "hareket ve saldırı bonuslarına sahipse o olarak kabul edilir."
 
-#: data/core/help.cfg:565 data/core/terrain.cfg:60 data/core/terrain.cfg:69
+#: data/core/help.cfg:573 data/core/terrain.cfg:60 data/core/terrain.cfg:69
 #: data/core/terrain.cfg:78 data/core/terrain.cfg:88 data/core/terrain.cfg:97
 #: data/core/terrain.cfg:106 data/core/terrain.cfg:116
 #: data/core/terrain.cfg:125 data/core/terrain.cfg:134
 msgid "Bridge"
 msgstr "Köprü"
 
-#: data/core/help.cfg:570
+#: data/core/help.cfg:578
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2066,11 +2086,11 @@ msgstr ""
 "ve savunma bonuslarını sunuyor ise o olarak kabul edilir. Yüzen bir birim "
 "ile bir kara biriminin aynı anda bir köprü altıgeninde duramayacağını unutma."
 
-#: data/core/help.cfg:575 data/core/terrain.cfg:894
+#: data/core/help.cfg:583 data/core/terrain.cfg:894
 msgid "Cave Wall"
 msgstr "Mağara duvarı"
 
-#: data/core/help.cfg:578
+#: data/core/help.cfg:586
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2078,23 +2098,23 @@ msgstr ""
 "Mağara duvarları katı taştan yapılmıştır, en kararlı yolcuya bile mani "
 "olabilmesiyle ünlüdür."
 
-#: data/core/help.cfg:583
+#: data/core/help.cfg:591
 #, fuzzy
 msgid "Impassable Mountain"
 msgstr "Aşılmaz Dağlar"
 
-#: data/core/help.cfg:586
+#: data/core/help.cfg:594
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such moutains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
-#: data/core/help.cfg:591
+#: data/core/help.cfg:599
 msgid "General commands"
 msgstr "Genel Komutlar"
 
-#: data/core/help.cfg:595
+#: data/core/help.cfg:603
 #, fuzzy
 msgid ""
 "\n"
@@ -2104,7 +2124,7 @@ msgstr ""
 "\n"
 "Senaryadan çık (sormaksızın)."
 
-#: data/core/help.cfg:598
+#: data/core/help.cfg:606
 #, fuzzy
 msgid ""
 "\n"
@@ -2114,7 +2134,7 @@ msgstr ""
 "\n"
 "Oyunu kayıt et (sormaksızın)."
 
-#: data/core/help.cfg:601
+#: data/core/help.cfg:609
 #, fuzzy
 msgid ""
 "\n"
@@ -2124,7 +2144,7 @@ msgstr ""
 "\n"
 "Oyunu kayıt et ve senaryodan çık (sormaksızın)."
 
-#: data/core/help.cfg:604
+#: data/core/help.cfg:612
 #, fuzzy
 msgid ""
 "\n"
@@ -2134,7 +2154,7 @@ msgstr ""
 "\n"
 "Ekranı tekrar çiz."
 
-#: data/core/help.cfg:607
+#: data/core/help.cfg:615
 #, fuzzy
 msgid ""
 "\n"
@@ -2146,18 +2166,18 @@ msgstr ""
 "Hata ayıklama modunu aç  (çok ouyuncuda çalışmaz). Oyundan çıkınca hata "
 "ayıklama modu kapanır."
 
-#: data/core/help.cfg:608
+#: data/core/help.cfg:616
 #, fuzzy
 msgid "Bring up theme selection menu."
 msgstr ""
 "\n"
 "Tema seçme menüsünü getirir."
 
-#: data/core/help.cfg:613
+#: data/core/help.cfg:621
 msgid "Multiplayer commands"
 msgstr "Çokoyuncu komutları"
 
-#: data/core/help.cfg:617
+#: data/core/help.cfg:625
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2166,7 +2186,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:620
+#: data/core/help.cfg:628
 #, fuzzy
 msgid ""
 "\n"
@@ -2176,7 +2196,7 @@ msgstr ""
 "\n"
 "İzleyicileri sessizleştirme durumunu değiştir."
 
-#: data/core/help.cfg:623
+#: data/core/help.cfg:631
 #, fuzzy
 msgid ""
 "\n"
@@ -2188,7 +2208,7 @@ msgstr ""
 "Belli bir izleyiciyi sessizleştir. Eğer kullanıcı ismi verilmez ise "
 "sessizleştirilmiş kullanıcılar listelenir"
 
-#: data/core/help.cfg:626
+#: data/core/help.cfg:634
 #, fuzzy
 msgid ""
 "\n"
@@ -2202,7 +2222,7 @@ msgstr ""
 "işlem bağlantı veya buna benzer problem yaşayan oyuncuları kaldırmak için "
 "nazik bir yoldur."
 
-#: data/core/help.cfg:629
+#: data/core/help.cfg:637
 #, fuzzy
 msgid ""
 "\n"
@@ -2214,7 +2234,7 @@ msgstr ""
 "Çok oyunculuda bir oyuncuyu şutla, ve bu isimle eklenen kullanıcıya ve ona "
 "ait IP'yi de yasakla."
 
-#: data/core/help.cfg:632
+#: data/core/help.cfg:640
 #, fuzzy
 msgid ""
 "\n"
@@ -2226,7 +2246,7 @@ msgstr ""
 "Bir tarafı kontrol edeni  (buraya tarafın numarasını yaz) bunla ( buraya da "
 "kontrol edecek olan oyuncu veya izleyiciyi yaz)."
 
-#: data/core/help.cfg:633
+#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Clear chat messages."
@@ -3461,79 +3481,92 @@ msgstr "yarı ölü"
 msgid "female^undead"
 msgstr "Dolandırıcı"
 
-#: data/core/macros/traits.cfg:24
-msgid "Immune to poison"
+#: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:34
+#, fuzzy
+#| msgid "Immune to poison"
+msgid "Immune to drain, poison and plague"
 msgstr "zehire bağışıklı"
 
 #: data/core/macros/traits.cfg:32
+#, fuzzy
+#| msgid "magical"
+msgid "mechanical"
+msgstr "sihirli"
+
+#: data/core/macros/traits.cfg:33
+#, fuzzy
+msgid "female^mechanical"
+msgstr "Hırsız"
+
+#: data/core/macros/traits.cfg:42
 msgid "strong"
 msgstr "güçlü"
 
-#: data/core/macros/traits.cfg:33
+#: data/core/macros/traits.cfg:43
 #, fuzzy
 msgid "female^strong"
 msgstr "Dolandırıcı"
 
-#: data/core/macros/traits.cfg:50
+#: data/core/macros/traits.cfg:60
 msgid "dextrous"
 msgstr "maharetli"
 
-#: data/core/macros/traits.cfg:51
+#: data/core/macros/traits.cfg:61
 #, fuzzy
 msgid "female^dextrous"
 msgstr "maharetli"
 
-#: data/core/macros/traits.cfg:64
+#: data/core/macros/traits.cfg:74
 msgid "quick"
 msgstr "hızlı"
 
-#: data/core/macros/traits.cfg:65
+#: data/core/macros/traits.cfg:75
 #, fuzzy
 msgid "female^quick"
 msgstr "Prenses"
 
-#: data/core/macros/traits.cfg:81
+#: data/core/macros/traits.cfg:91
 msgid "intelligent"
 msgstr "zeki"
 
-#: data/core/macros/traits.cfg:82
+#: data/core/macros/traits.cfg:92
 #, fuzzy
 msgid "female^intelligent"
 msgstr "zeki"
 
-#: data/core/macros/traits.cfg:94
+#: data/core/macros/traits.cfg:104
 msgid "resilient"
 msgstr "dayanıklı"
 
-#: data/core/macros/traits.cfg:95
+#: data/core/macros/traits.cfg:105
 #, fuzzy
 msgid "female^resilient"
 msgstr "dayanıklı"
 
-#: data/core/macros/traits.cfg:111
+#: data/core/macros/traits.cfg:121
 msgid "healthy"
 msgstr ""
 
-#: data/core/macros/traits.cfg:112
+#: data/core/macros/traits.cfg:122
 #, fuzzy
 msgid "female^healthy"
 msgstr "Hırsız"
 
-#: data/core/macros/traits.cfg:113
+#: data/core/macros/traits.cfg:123
 msgid "Can rest while moving"
 msgstr ""
 
-#: data/core/macros/traits.cfg:125
+#: data/core/macros/traits.cfg:135
 #, fuzzy
 msgid "fearless"
 msgstr "Prenses"
 
-#: data/core/macros/traits.cfg:126
+#: data/core/macros/traits.cfg:136
 #, fuzzy
 msgid "female^fearless"
 msgstr "Prenses"
 
-#: data/core/macros/traits.cfg:127
+#: data/core/macros/traits.cfg:137
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
@@ -4268,7 +4301,7 @@ msgid "End Turn"
 msgstr "Eli bitir"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2405
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2422
 msgid "HP"
 msgstr "YP"
 
@@ -4466,108 +4499,108 @@ msgstr "Birim göründü! ($friends dostça, $enemies düşmanca)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey bas)"
 
-#: src/dialogs.cpp:102
+#: src/dialogs.cpp:104
 msgid "Advance Unit"
 msgstr "Birim terfisi"
 
-#: src/dialogs.cpp:103
+#: src/dialogs.cpp:105
 msgid "What should our victorious unit become?"
 msgstr "Birimimiz neye dönüşsün?"
 
-#: src/dialogs.cpp:202
+#: src/dialogs.cpp:208
 msgid "No objectives available"
 msgstr "Hedef yok"
 
-#: src/dialogs.cpp:215
+#: src/dialogs.cpp:221
 msgid "Save Game"
 msgstr "Oyunu kaydet"
 
-#: src/dialogs.cpp:223
+#: src/dialogs.cpp:229
 #, fuzzy
 msgid "Quit Game"
 msgstr "Oyundan çık"
 
-#: src/dialogs.cpp:228
+#: src/dialogs.cpp:234
 msgid "Ignore All"
 msgstr ""
 
-#: src/dialogs.cpp:245
+#: src/dialogs.cpp:251
 msgid "Overwrite?"
 msgstr "Üzerine yaz?"
 
-#: src/dialogs.cpp:246
+#: src/dialogs.cpp:252
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Kayıt zaten mevcut. Üzerine yazmak istiyor musun?"
 
-#: src/dialogs.cpp:280
+#: src/dialogs.cpp:286
 msgid "Do you really want to delete this game?"
 msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 
-#: src/dialogs.cpp:282
+#: src/dialogs.cpp:288
 msgid "Don't ask me again!"
 msgstr "Bir daha sorma!"
 
-#: src/dialogs.cpp:432
+#: src/dialogs.cpp:438
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:449
+#: src/dialogs.cpp:455
 msgid "#(Invalid)"
 msgstr "#(Geçersiz)"
 
-#: src/dialogs.cpp:454 src/game.cpp:807
+#: src/dialogs.cpp:460 src/game.cpp:807
 msgid "Campaign"
 msgstr "Kampanya"
 
-#: src/dialogs.cpp:456 src/game.cpp:1380
+#: src/dialogs.cpp:462 src/game.cpp:1380
 msgid "Multiplayer"
 msgstr "Çokoyuncu"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:464
 msgid "Tutorial"
 msgstr "Eğitim"
 
-#: src/dialogs.cpp:466
+#: src/dialogs.cpp:472
 msgid "replay"
 msgstr "tekrar"
 
-#: src/dialogs.cpp:468 src/menu_events.cpp:482 src/multiplayer_lobby.cpp:406
+#: src/dialogs.cpp:474 src/menu_events.cpp:482 src/multiplayer_lobby.cpp:406
 msgid "Turn"
 msgstr "El"
 
-#: src/dialogs.cpp:470
+#: src/dialogs.cpp:476
 msgid "Scenario Start"
 msgstr "Senaryo başlangıcı"
 
-#: src/dialogs.cpp:473
+#: src/dialogs.cpp:479
 msgid "Difficulty: "
 msgstr "Zorluk: "
 
-#: src/dialogs.cpp:475
+#: src/dialogs.cpp:481
 msgid "Version: "
 msgstr "Versiyon: "
 
-#: src/dialogs.cpp:499 src/dialogs.cpp:515
+#: src/dialogs.cpp:505 src/dialogs.cpp:521
 msgid "%b %d %y"
 msgstr "%d %b %y"
 
-#: src/dialogs.cpp:505
+#: src/dialogs.cpp:511
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:508
+#: src/dialogs.cpp:514
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:511
+#: src/dialogs.cpp:517
 msgid "%b %d"
 msgstr "%d %b"
 
-#: src/dialogs.cpp:535
+#: src/dialogs.cpp:541
 msgid "No Saved Games"
 msgstr "Kayıtlı oyun yok"
 
-#: src/dialogs.cpp:536
+#: src/dialogs.cpp:542
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -4577,62 +4610,62 @@ msgstr ""
 "Yüklemek için kayıtlı oyun yok. \n"
 "(Oyunlar bir senaryoyu bitirdiğiniz zaman otomatik olarak kayıt edilir)"
 
-#: src/dialogs.cpp:549
+#: src/dialogs.cpp:555
 msgid "Delete Save"
 msgstr "Kaydı sil"
 
-#: src/dialogs.cpp:555
+#: src/dialogs.cpp:561
 msgid "Date"
 msgstr "Tarih"
 
-#: src/dialogs.cpp:555 src/game.cpp:1060 src/menu_events.cpp:314
+#: src/dialogs.cpp:561 src/game.cpp:1060 src/menu_events.cpp:314
 #: src/menu_events.cpp:871 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "İsim"
 
-#: src/dialogs.cpp:576 src/multiplayer_create.cpp:89
+#: src/dialogs.cpp:582 src/multiplayer_create.cpp:89
 #: src/multiplayer_create.cpp:90
 msgid "Load Game"
 msgstr "Oyun yükle"
 
-#: src/dialogs.cpp:577
+#: src/dialogs.cpp:583
 msgid "Choose the game to load"
 msgstr "Yüklenecek oyunu seç"
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:589
 msgid "Show replay"
 msgstr "Tekrar göster"
 
-#: src/dialogs.cpp:610 src/dialogs.cpp:622
+#: src/dialogs.cpp:616 src/dialogs.cpp:628
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:708 src/help.cpp:1084
+#: src/dialogs.cpp:714 src/help.cpp:1084
 msgid "level"
 msgstr "seviye"
 
-#: src/dialogs.cpp:730 src/help.cpp:1164
+#: src/dialogs.cpp:736 src/help.cpp:1164
 msgid "HP: "
 msgstr "YP: "
 
-#: src/dialogs.cpp:734 src/dialogs.cpp:742
+#: src/dialogs.cpp:740 src/dialogs.cpp:748
 msgid "XP: "
 msgstr "TP: "
 
-#: src/dialogs.cpp:747 src/help.cpp:1165
+#: src/dialogs.cpp:753 src/help.cpp:1165
 msgid "Moves: "
 msgstr "Hareket: "
 
-#: src/dialogs.cpp:892 src/dialogs.cpp:993 src/multiplayer_connect.cpp:756
+#: src/dialogs.cpp:898 src/dialogs.cpp:999 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/dialogs.cpp:916 src/game.cpp:864
+#: src/dialogs.cpp:922 src/game.cpp:864
 msgid "KB"
 msgstr "KB"
 
-#: src/display.cpp:336
+#: src/display.cpp:338
 msgid "Screenshot"
 msgstr "Screenshot"
 
@@ -4938,11 +4971,11 @@ msgstr ""
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
-#: src/game_events.cpp:850
+#: src/game_events.cpp:869
 msgid "Victory:"
 msgstr "Galibiyet:"
 
-#: src/game_events.cpp:853
+#: src/game_events.cpp:872
 msgid "Defeat:"
 msgstr "Mağlubiyet:"
 
@@ -5255,7 +5288,7 @@ msgstr "Seviye"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2436
+#: src/menu_events.cpp:319 src/unit.cpp:2453
 msgid "Moves"
 msgstr "Hareketler"
 
@@ -5677,12 +5710,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2539
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2556
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2546
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2563
 msgid ")"
 msgstr ")"
 
@@ -6355,11 +6388,11 @@ msgstr "Yardım"
 msgid "Help Wesnoth by sending us information"
 msgstr "Bize bilgi göndererek Wesnoth'a yardım et"
 
-#: src/unit.cpp:2371 src/unit.cpp:2544
+#: src/unit.cpp:2388 src/unit.cpp:2561
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2453
+#: src/unit.cpp:2470
 msgid "XP to advance"
 msgstr "terfi için gerekli TP"
 
