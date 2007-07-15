@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-05 10:47+0200\n"
-"PO-Revision-Date: 2006-09-01 19:23+0200\n"
-"Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
+"PO-Revision-Date: 2007-07-14 23:09+0200\n"
+"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +80,6 @@ msgid "regenerates"
 msgstr "uusiutuu"
 
 #: data/abilities.cfg:59
-#, fuzzy
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
@@ -286,16 +285,14 @@ msgid "slows"
 msgstr "hidastaa"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled."
 msgstr ""
 "Hidastus:\n"
-"Hidastushyökkäys puolittaa uhrin tekemän vahingon ja liikkumisen "
-"(pyöristetään ylös). Hidastus kestää hidastetun yksikön oman vuoron loppuun "
-"asti."
+"Tämä hyökkäys hidastaa kohdetta vuoron loppuun. Hidastus puolittaa tehdyn "
+"vahingon ja liikkumispisteet."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -422,7 +419,7 @@ msgstr "Musiikki"
 
 #: data/about.cfg:75
 msgid "Sound effects"
-msgstr ""
+msgstr "Ääniefektit"
 
 #: data/about.cfg:84
 msgid "Scenario Designers"
@@ -587,9 +584,8 @@ msgid "Turkish Translation"
 msgstr "Turkinkielinen käännös"
 
 #: data/about.cfg:578
-#, fuzzy
 msgid "Valencian Translation"
-msgstr "Sloveniankielinen käännös"
+msgstr "Valenciankielinen käännös"
 
 #: data/about.cfg:585 data/help.cfg:252
 msgid "Contributors"
@@ -1956,18 +1952,16 @@ msgid "race^Undead"
 msgstr "Epäkuolleet"
 
 #: data/english.cfg:21
-#, fuzzy
 msgid "race^Dwarves"
 msgstr "Kääpiöt"
 
 #: data/english.cfg:22
 msgid "race^Goblins"
-msgstr ""
+msgstr "Goblinit"
 
 #: data/english.cfg:23
-#, fuzzy
 msgid "race^Lizards"
-msgstr "Epäkuolleet"
+msgstr "Liskot"
 
 #: data/english.cfg:24
 msgid "race^Mechanical"
@@ -1975,30 +1969,27 @@ msgstr ""
 
 #: data/english.cfg:25
 msgid "race^Mermen"
-msgstr ""
+msgstr "Merenmiehet"
 
 #: data/english.cfg:26
 msgid "race^Monsters"
-msgstr ""
+msgstr "Hirviöt"
 
 #: data/english.cfg:27
-#, fuzzy
 msgid "race^Nagas"
-msgstr "Naga"
+msgstr "Nagat"
 
 #: data/english.cfg:28
 msgid "race^Ogres"
-msgstr ""
+msgstr "Jätit"
 
 #: data/english.cfg:29
-#, fuzzy
 msgid "race^Trolls"
-msgstr "Peikko"
+msgstr "Peikot"
 
 #: data/english.cfg:30
-#, fuzzy
 msgid "race^Woses"
-msgstr "Kääpiöt"
+msgstr "Puupaimenet"
 
 #: data/english.cfg:33
 msgid "$name's Bridge,$name's Crossing"
@@ -2064,21 +2055,18 @@ msgid "ranged"
 msgstr "kaukotaistelu"
 
 #: data/english.cfg:52
-#, fuzzy
 msgid "Wesnoth unit list"
-msgstr "Harjoittelu"
+msgstr "Wesnothin yksikkölista"
 
 #: data/english.cfg:53
 msgid "Based on version"
-msgstr ""
+msgstr "Pohjautuu versioon "
 
 #: data/english.cfg:54
-#, fuzzy
 msgid "Race"
-msgstr "helanuija"
+msgstr "Laji"
 
 #: data/english.cfg:55
-#, fuzzy
 msgid "Advance from:"
 msgstr "Ylenee yksiköksi: "
 
@@ -2131,13 +2119,12 @@ msgid "Mouse Scrolling"
 msgstr "Vieritys hiirellä"
 
 #: data/game.cfg:58
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Ota yhteys viralliseen palvelimeen"
+msgstr "Wesnothin virallinen palvelin"
 
 #: data/game.cfg:62
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Vaihtoehtoinen Wesnoth-serveri"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -3110,7 +3097,6 @@ msgid "Wrap Up"
 msgstr "Yhteenveto"
 
 #: data/help.cfg:247
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarize yourself with <ref>dst=traits text=Traits</"
@@ -3326,7 +3312,6 @@ msgid "Undead units are immune to poison."
 msgstr "Epäkuolleet yksiköt ovat immuuneja myrkylle."
 
 #: data/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3338,8 +3323,8 @@ msgstr ""
 "\n"
 "\n"
 "Epäkuolleilla yksiköillä on yleensä 'epäkuollut' ainoana ominaisuutenaan. "
-"Koska epäkuolleet ovat taistelemaan kuolleista nostettu ruumiita, myrkyllä "
-"ei ole vaikutusta niihin. Tämä voi tehdä niistä erittäin hyödyllisiä, kun "
+"Koska epäkuolleet ovat kuolleista nostettuja ruumiita, myrkyllä ei ole "
+"vaikutusta niihin. Tämä voi tehdä niistä erittäin hyödyllisiä, kun "
 "vihollisesi käyttävät myrkkyä hyökkäyksissään."
 
 #: data/help.cfg:322
@@ -3763,7 +3748,6 @@ msgid "Village"
 msgstr "kylä"
 
 #: data/help.cfg:509
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have an easy time navigating villages, and most units "
@@ -4667,14 +4651,13 @@ msgstr "2p - Salamasota"
 #: data/scenarios/multiplayer/4p_Morituri.cfg:5
 #: data/scenarios/multiplayer/6p_Amohsad_Caldera.cfg:4
 #: data/scenarios/multiplayer/8p_Morituri.cfg:5
-#, fuzzy
 msgid " Recommended setting of 2 gold per village."
-msgstr "Pieni 2 vs 2 kartta. Suositeltu asetus 2 kultapalaa/kylä."
+msgstr "Suositeltu asetus 2 kultapalaa/kylä."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:9
 #: data/scenarios/multiplayer/2p_Charge.cfg:9
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Kaksinpelikartta erittäin nopeaan pelaamiseen."
 
 #: data/scenarios/multiplayer/2p_Blitz.cfg:22
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:46
@@ -4850,7 +4833,6 @@ msgstr ""
 "(kaivertanut Turin)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:136
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -4902,7 +4884,6 @@ msgstr ""
 "(kaivertanut Elvish Pillager)"
 
 #: data/scenarios/multiplayer/2p_Caves_of_the_Basilisk.cfg:156
-#, fuzzy
 msgid ""
 "This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
 "fabulous treasure that had been lost in these watery caves- a spear whose "
@@ -4970,32 +4951,28 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Cynsaun taistelukenttä"
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid " Recommended settings of 150 gold and 1 gold per village."
-msgstr "Pieni 2 vs 2 kartta. Suositeltu asetus 2 kultapalaa/kylä."
+msgstr "Suositellut asetukset: 150 kultapalaa ja 1 kultapala/kylä."
 
 #: data/scenarios/multiplayer/2p_Cynsaun_Battlefield.cfg:9
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
 "Tällä laajalla rintamalla on paljon tutkittavaa. Suunniteltu pelaajille, "
-"joita kiinnostaa eeppiset, laaja-mittaiset kaksintaistelut. Suositeltu "
-"asetus 150 aloituskultapalaa ja 1 kultapala/kylä."
+"joita kiinnostaa eeppiset, laaja-mittaiset kaksintaistelut."
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:3
 msgid "2p - Den of Onis"
 msgstr "2p - Pirujen pesä"
 
 #: data/scenarios/multiplayer/2p_Den_of_Onis.cfg:4
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where force and subterfuge meet."
 msgstr ""
 "Vaara piilee joka kulman takana tässä maanalaisessa kaksintaistelukentässä, "
-"jossa voima ja varovaisuus kohtaavaat. Suositeltu asetus 2 kultapalaa/kylä."
+"jossa voima ja varovaisuus kohtaavaat."
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:3
 msgid "2p - Hamlets"
@@ -5003,39 +4980,36 @@ msgstr "2p - Kyläset"
 
 #: data/scenarios/multiplayer/2p_Hamlets.cfg:4
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:4
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
-"Sota on tehnyt näistä kylistä ja farmeista taistelukentän. Suositeltu asetus "
-"2 kultapalaa/kylä."
+"Sota on muuttanut nämä yksinkertaiset maatilat ja kylät rauhallisesta "
+"seudusta vivahteikkaan taistelukentän."
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:3
 msgid "2p - Hornshark Island"
 msgstr "2p - Sarvihaisaari"
 
 #: data/scenarios/multiplayer/2p_Hornshark_Island.cfg:4
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
 "Pelaajien on löydettävä tiensä tämän pienen mutta monimuotoisen saaren "
-"maastoissa. Suositeltu asetus 2 kultapalaa/kylä."
+"hajanaisessa maastossa. "
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:3
 msgid "2p - Meteor Lake"
 msgstr "2p - Meteorijärvi"
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:4
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
 "Kauan sitten suuri meteori putosi taivaista jättäen jälkensä tälle muuten "
-"havupuita täynnä olevalle seudulle. Suositeltu asetus 2 kultapalaa/kylä."
+"havupuita täynnä olevalle seudulle."
 
 #: data/scenarios/multiplayer/2p_Meteor_Lake.cfg:18
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:18
@@ -5079,53 +5053,48 @@ msgid "2p - Sablestone Delta"
 msgstr "2p - Mustakiven suisto"
 
 #: data/scenarios/multiplayer/2p_Sablestone_Delta.cfg:4
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
 "Kaksi armeijaa kohtaavat tällä pienellä, vaikeakulkuisella, jokien ja "
-"luolien täyttämällä alueella. Suositeltu asetus 2 kultapalaa/kylä."
+"luolien täyttämällä alueella."
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:3
 msgid "2p - Silverhead Crossing"
 msgstr "2p - Hopeapään ylityspaikka"
 
 #: data/scenarios/multiplayer/2p_Silverhead_Crossing.cfg:4
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
 "Pelaajien pitää ylittää kaikenlaista maastoa voidakseen voittaa tällä "
-"monirintamaisella kaksintaistelukartalla. Suositeltu asetus 2 kultapalaa/"
-"kylä."
+"monirintamaisella kaksintaistelukartalla."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:18
-#, fuzzy
 msgid "statue"
-msgstr "Noviisi"
+msgstr "patsas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:19
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Tämä on kivestä tehty veistos."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:33
 msgid "2p - Sullas Ruins"
 msgstr "2p - Sullaksen rauniot"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:34
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
 "Tästä tulvien ja talven tuhoamasta, muinoin mahtavasta imperiumista on "
-"jäljellä enää raunioita, vettä ja jäätä. Suositeltu asetus 2 kultapalaa/kylä."
+"jäljellä enää raunioita, vettä ja jäätä."
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:72
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Sullan patsas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:74
 msgid ""
@@ -5134,11 +5103,11 @@ msgid ""
 "Lady of the Walking Glacier, Keeper of the Burning Wave, Queen of the "
 "Leveling Flame, Sulla the Incinerator, Sulla the Proud and Sulla the "
 "Righteous."
-msgstr ""
+msgstr "Kivestä veistetty vertailu "
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:77
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Lhun-dupin patsas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:78
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
@@ -5146,7 +5115,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "RI-nzenin patsas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
@@ -5154,7 +5123,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Ten-zinin patsas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
@@ -5162,7 +5131,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Lo-bsangin patsas"
 
 #: data/scenarios/multiplayer/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
@@ -5244,44 +5213,38 @@ msgid "3p - Island of the Horatii"
 msgstr "3p - Horatiisaari"
 
 #: data/scenarios/multiplayer/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
 "Keskussaaren hallitseminen on usein avain voittoon tässä 21x21 suuruisessa "
-"kolminpelikartassa. Suositeltu asetus 2 kultapalaa/kylä."
+"kolminpelikartassa."
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:3
 msgid "3p - Morituri"
 msgstr "3p - Morituri"
 
 #: data/scenarios/multiplayer/3p_Morituri.cfg:4
-#, fuzzy
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr ""
-"Vain yksi osapuoli voittaa tällä tiukasti rajatulla kolmen pelaajan "
-"kartalla. Suositeltu asetus 2 kultapalaa/kylä."
+"Vain yksi osapuoli voittaa tällä tiukasti rajatulla kolmen pelaajan kartalla."
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:3
 msgid "3p - Triple Blitz"
 msgstr "3p - Salamasota kolmelle"
 
 #: data/scenarios/multiplayer/3p_Triple_Blitz.cfg:4
-#, fuzzy
 msgid "Three players come head to head on this water-cut battlefield."
 msgstr ""
-"Kolme pelaajaa asettuu vastakkain tällä veden halkomalla taistelukentällä. "
-"Suositeltu asetus 2 kultapalaa/kylä."
+"Kolme pelaajaa asettuu vastakkain tällä veden halkomalla taistelukentällä."
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:3
 msgid "4p - Blue Water Province"
 msgstr "4p - Sinisen veden maa"
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:4
-#, fuzzy
 msgid ""
 "It has been said that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
@@ -5291,7 +5254,7 @@ msgstr ""
 "Kuulemma Sinisen veden maa on tuhottu ja rakennettu uudelleen "
 "parisenkymmentä kertaa. Nyt, kun armeijat jälleen kohtaavat kivisillä "
 "virroilla ja lumihuippuisten vuorten alla, kiviäkin kiinnostaa enemmän kuin "
-"kyläläisiä. Suositeltu asetus 2 kultapalaa/kylä."
+"kyläläisiä. "
 
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:18
 #: data/scenarios/multiplayer/4p_Blue_Water_Province.cfg:48
@@ -5328,11 +5291,8 @@ msgid "4p - Castle Hopping Isle"
 msgstr "4p - Linnahyppely"
 
 #: data/scenarios/multiplayer/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
-"Kaksi armeijaa kohtaavat tällä pienellä, vaikeakulkuisella, jokien ja "
-"luolien täyttämällä alueella. Suositeltu asetus 2 kultapalaa/kylä."
+msgstr "Hypi linnasta linnaan samalla taistellen keskussaarella."
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:3
 msgid "4p - Clash"
@@ -5340,12 +5300,11 @@ msgstr "4p - Yhteentörmäys"
 
 #: data/scenarios/multiplayer/4p_Clash.cfg:5
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Pieni kartta 2 vs 2 peliin."
 
 #: data/scenarios/multiplayer/4p_Hamlets.cfg:3
-#, fuzzy
 msgid "4p - Hamlets"
-msgstr "2p - Kyläset"
+msgstr "4p - Kyläset"
 
 #: data/scenarios/multiplayer/4p_Isars_Cross.cfg:5
 msgid "4p - Isar's Cross"
@@ -5566,7 +5525,7 @@ msgstr "2v2 tai 3v3 joukkupeli."
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:5
 msgid "6p - The Manzivan Traps"
-msgstr ""
+msgstr "6p - Manzivanin ansat"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
 #, fuzzy
@@ -7323,6 +7282,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Haltioiden taikuus on niin täysin erilaista kuin ihmisten, ettei "
+"jälkimmäinen kykene ymmärtämään sitä, puhumattakaan käytöstä. Samoin, ne "
+"jotka ovat sen mestareita, ovat yhtä arvoituksellisia; vaikka voidaan sanoa "
+"heidän olevan palvottuja väkensä keskuudessa, erittäin vähän voidaan sanoa "
+"heidän toimistaan ja aikeistaan yhteiskunnan kanssa.\n"
+"\n"
+"Huomautukset:"
 
 #: data/units/Elvish_Enchantress.cfg:69 data/units/Elvish_Shaman.cfg:67
 #: data/units/Elvish_Sorceress.cfg:76
@@ -10741,18 +10707,16 @@ msgid "Ambushed!"
 msgstr "Väijytys!"
 
 #: src/actions.cpp:2077
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Ystävä havaittu"
-msgstr[1] "Ystävä havaittu"
+msgstr[1] "$friends ystävällistä yksikköä havaittu"
 
 #: src/actions.cpp:2079
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vihollinen havaittu!"
-msgstr[1] "Vihollinen havaittu!"
+msgstr[1] "$enemies vihamielistä yksikköä havaittu!"
 
 #: src/actions.cpp:2083
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -10767,9 +10731,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/actions.cpp:2085
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Yksiköitä näköpiirissä! ($friends ystävää, $enemies vihollista)"
+msgstr "Yksiköitä näköpiirissä! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2093
 msgid "(press $hotkey to continue)"
@@ -11230,12 +11193,11 @@ msgstr "Vaadittu kokemus (KP): "
 
 #: src/help.cpp:1170
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "Hyökkäykset"
 
 #: src/help.cpp:1177
-#, fuzzy
 msgid "unit help^Name"
-msgstr "Poistu pelistä"
+msgstr "Nimi"
 
 #: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:708
 msgid "Type"
@@ -11442,7 +11404,7 @@ msgstr "Tilastot"
 
 #: src/menu_events.cpp:236
 msgid "unit list^Traits"
-msgstr ""
+msgstr "Ominaisuudet"
 
 #: src/menu_events.cpp:237 src/unit.cpp:2582
 msgid "Moves"
@@ -11476,7 +11438,7 @@ msgstr "Kyliä"
 
 #: src/menu_events.cpp:302
 msgid "status^Units"
-msgstr ""
+msgstr "Yksiköt"
 
 #: src/menu_events.cpp:303
 msgid "Upkeep"
@@ -11539,10 +11501,9 @@ msgid "Send to allies only"
 msgstr "Lähetä vain liittolaisille"
 
 #: src/menu_events.cpp:588
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "Kultapalaa"
+msgstr[0] "Kultapala"
 msgstr[1] "Kultapalaa"
 
 #: src/menu_events.cpp:594
@@ -11586,12 +11547,11 @@ msgid "Recall"
 msgstr "Kutsu veteraaniyksikkö"
 
 #: src/menu_events.cpp:760
-#, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
-"Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
-"takaisin palvelukseen."
+"Sinulla täytyy olla vähintään 1 kultapala voidaksesi kutsua yksikön takaisin "
+"palvelukseen."
 msgstr[1] ""
 "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
 "takaisin palvelukseen."
@@ -11713,9 +11673,8 @@ msgid "Defender"
 msgstr "Puolustaja"
 
 #: src/mouse_events.cpp:209
-#, fuzzy
 msgid "Expected Battle Result (HP)"
-msgstr "Todennäköinen taistelun tulos (EP)"
+msgstr "Odotettu taistelun tulos (EP)"
 
 #: src/mouse_events.cpp:301
 msgid " resistance vs "
@@ -11767,21 +11726,19 @@ msgstr "Valitse ase:"
 
 #: src/multiplayer.cpp:100
 msgid "Address"
-msgstr ""
+msgstr "Osoite"
 
 #: src/multiplayer.cpp:112
-#, fuzzy
 msgid "List of Servers"
-msgstr "Yhdistä palvelimeen"
+msgstr "Palvelinlista"
 
 #: src/multiplayer.cpp:113
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Valitse tunnettu palvelin listasta"
 
 #: src/multiplayer.cpp:140
-#, fuzzy
 msgid "View List"
-msgstr "Yksiköiden lista"
+msgstr "Katso listaa"
 
 #: src/multiplayer.cpp:143
 msgid "Connect to Host"
@@ -12215,14 +12172,12 @@ msgid "Back to turn "
 msgstr "Takaisin vuoron alkuun"
 
 #: src/playcampaign.cpp:112
-#, fuzzy
 msgid "Autosaves"
 msgstr "Automaattinen tallennus"
 
 #: src/playcampaign.cpp:113
-#, fuzzy
 msgid "Do you want to delete the autosaves of this scenario?"
-msgstr "Haluatko tallentaa uusinnan tästä taistelusta?"
+msgstr "Haluatko poistaa tämän skenaarion automaattiset tallennukset?"
 
 #: src/playcampaign.cpp:304
 msgid "Defeat"
@@ -12241,12 +12196,10 @@ msgid "Do you want to save a replay of this scenario?"
 msgstr "Haluatko tallentaa uusinnan tästä taistelusta?"
 
 #: src/playcampaign.cpp:377
-#, fuzzy
 msgid "Receiving data..."
 msgstr "Haetaan pelin tietoja..."
 
 #: src/playcampaign.cpp:379
-#, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Haetaan seuraavaa tasoa..."
 
@@ -12400,17 +12353,16 @@ msgid "stone: "
 msgstr "kivetetty: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "kokonaisvahinko"
-msgstr[1] "kokonaisvahinko"
+msgstr[1] "kokonaisvahinkoa"
 
 #: src/reports.cpp:256
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "hyökkäys"
+msgstr[1] "hyökkäykset"
 
 #: src/reports.cpp:266
 msgid "weapon range: "
