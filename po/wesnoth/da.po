@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-06-05 10:47+0200\n"
-"PO-Revision-Date: 2007-04-06 17:58+0200\n"
+"PO-Revision-Date: 2007-07-15 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgstr ""
 
 #: data/abilities.cfg:74
 msgid "steadfast"
-msgstr ""
+msgstr "fasthed"
 
 #: data/abilities.cfg:76
 msgid ""
@@ -95,6 +95,9 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"Fasthed:\n"
+"Denne enheds modstandskraft fordobles, op til et maksimum af 50 %, når den "
+"forsvarer. Sårbarheder påvirkes ikke."
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -131,6 +134,9 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"Stifinder:\n"
+"Denne enhed er uddannet i at bevæge sig forbi fjender hurtigt, og den "
+"ignorerer alle fjenders kontrolzoner."
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -188,7 +194,7 @@ msgstr ""
 
 #: data/abilities.cfg:357 data/abilities.cfg:362
 msgid "nightstalk"
-msgstr ""
+msgstr "natsløring"
 
 #: data/abilities.cfg:361 data/abilities.cfg:366
 msgid ""
@@ -199,6 +205,12 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
+"Natsløring:\n"
+"Denne enhed bliver usynlig om natten.\n"
+"\n"
+"Fjendtlige enheder kan ikke se denne enhed om natten, med mindre de har "
+"enheder ved siden af. Enhver fjendtlig enhed som opdager denne enhed mister "
+"straks alle tilbageværende bevægelsespoint."
 
 #: data/abilities.cfg:378 data/abilities.cfg:383
 msgid "submerge"
@@ -264,6 +276,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"Pest:\n"
+"Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af en "
+"enhed der er identisk med og på den samme side som enheden der har "
+"pestangrebet. (Dette gælder ikke for udøde eller enheder i landsbyer.)"
 
 #: data/abilities.cfg:443
 msgid "slows"
@@ -275,6 +291,10 @@ msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled."
 msgstr ""
+"Langsom:\n"
+"Dette angreb gør ofret langsomt indtil det afslutter en runde. Langsom "
+"halverer den skade der medfølger af et angreb og et offers "
+"bevægelsesomkostningfordobles."
 
 #: data/abilities.cfg:451
 msgid "stones"
@@ -1965,13 +1985,12 @@ msgid "Mouse Scrolling"
 msgstr "Musepanorering"
 
 #: data/game.cfg:58
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Tilslut dig den officielle server"
+msgstr "Officiel Wesnoth server"
 
 #: data/game.cfg:62
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Alternativ Wesnoth server"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -2976,6 +2995,14 @@ msgid ""
 "without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
+"\n"
+"\n"
+"Hurtig er det mest iøjnefaldende karaktertræk, specielt hos langsommere "
+"enheder så som trolde og tungt infanteri. Enheder med hurtig karaktertrækket "
+"har ofte stærkt forøget mobilitet i svært fremkommeligt terræn, hvilket kan "
+"være vigtigt at overveje når du placerer dine tropper. Hurtige enheder er "
+"ikke nær så modstandsdygtige som enheder uden dette karaktertræk, og er "
+"derfor ikke nær så gode til at holde stillinger."
 
 #: data/help.cfg:290
 msgid "Resilient"
@@ -2995,6 +3022,13 @@ msgid ""
 "defense, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 msgstr ""
+"\n"
+"\n"
+"Ukuelige enheder er brugbare på alle tidspunkter i en kampagne, og det er et "
+"nyttig karaktertræk for alle enheder. Ukuelig er ofte mest egnet som et "
+"karaktertræk når den indgår hos en enhed som har en kombination af få liv, "
+"godt forsvar, eller høj modstandskraft. Ukuelige enheder er specielt egnet "
+"til at holde strategiske positioner over for modstanderne."
 
 #: data/help.cfg:298
 msgid "Strong"
@@ -3017,6 +3051,12 @@ msgid ""
 "can be very useful when a tiny bit of extra damage is all that is needed to "
 "turn a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"Selv om dette karaktertræk er brugbart for alle nærkampsenheder, så er stærk "
+"mest effektiv for enheder som har mange angreb så som en elverkæmper. Stærke "
+"enheder kan være meget brugbare når en ekstra styrke er alt der skal bruges "
+"for at gøre et angreb dødeligt."
 
 # kan også være trofast
 #: data/help.cfg:306
@@ -3071,6 +3111,12 @@ msgid ""
 "them. This can make them invaluable in dealing with foes that use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"Udøde kroppe har normalt »udød« som deres eneste karaktertræk. Da udøde "
+"enheder er kroppen af døde, der er tilbagekaldt for at kæmpe igen har gift "
+"ingen effekt på dem. Det kan gøre dem uvurderlige når der skal håndteres "
+"fjender som bruger gift i forbindelse med deres angreb."
 
 #: data/help.cfg:322
 msgid "Dextrous"
@@ -3210,6 +3256,15 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"Bjerge er så stejle at enheder ofte må kravle over objekter for at kunne "
+"bevæge sig frem. Denne natur giver en naturlig forsvarsbonus for de fleste "
+"tropper, men de forhindrer også enhver passage igennem dem. De fleste "
+"kavaleri enheder kan ikke flytte igennem bjergterræn; dog er elverkavaleri "
+"en undtagelse til denne regel og det er goblin ulveryttere også. Både dværge "
+"og trolde er vant til bjergrigt terræn og kan nemt flytte sig rundt i dette "
+"terræn.\n"
+"\n"
+"De fleste enheder har en 60 % forsvarsbonus i bjerge, mens dværge har 70 %."
 
 #: data/help.cfg:379 data/terrain.cfg:43
 msgid "Swamp"
@@ -3251,6 +3306,14 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"Lavt vand dækker over alle vanddybder som når op til en mands talje. Dette "
+"er nok til at gøre næsten alle langsommere og åben for angreb. Dværge hvor "
+"vandet når næsten op til deres hovede, har det specielt svært i dette "
+"terræn. Undtagelsen er racer hvis kroppe naturligt kan svømme. Dette giver "
+"dem en betydelig forsvarsbonus og fuld bevægelse.\n"
+"\n"
+"De fleste enheder har 20 til 30 % forsvar i lavt vand, mens nagaer og "
+"havmænd har 60 %."
 
 #: data/help.cfg:399 data/terrain.cfg:25
 msgid "Deep Water"
@@ -3264,6 +3327,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"Dybt vand repræsenterer al slags vand, som er dybt nok til at dække en mands "
+"hoved. De fleste enheder kan ikke gå ud i dybt vand: Det er for enheder som "
+"enten kan flyve eller er specielt stærke svømmere.\n"
+"\n"
+"Havmænd og nagaer har begge en 50 % forsvarsbonus i dybt vand og fuld "
+"bevægelse."
 
 #: data/help.cfg:409 data/terrain.cfg:302
 msgid "Snow"
@@ -3293,6 +3362,9 @@ msgid ""
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
 "units, even those who can breathe underwater, cannot swim underneath ice."
 msgstr ""
+"Is repræsenterer enhver form for frossent vand. I spillet svarer det til "
+"<ref>dst=terrain_tundra text=Sne</ref>. Bemærk at svømmende enheder, selv "
+"dem som kan trække vejret under vand ikke kan svømme under is."
 
 #: data/help.cfg:427 data/terrain.cfg:455 data/terrain.cfg:542
 msgid "Castle"
@@ -3309,6 +3381,14 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"Borge er alle slags permanente fæstningsværker. Næsten alle enheder har en "
+"væsentlig forsvarsbonus når de er placeret i en borg. Alle enheder har fuld "
+"bevægelse i en borg. Placering af enheder i en borg repræsenterer dets "
+"forsvarsmuligheder. Uden en enhed i hvert felt kan en fjende nemt snige sig "
+"ind i borgen og opnå den samme forsvarsbonus som øvrige enheder i borgen "
+"har.\n"
+"\n"
+"De fleste enheder har en 60 % forsvarsbonus i en borg."
 
 #: data/help.cfg:439 data/terrain.cfg:89
 msgid "Sand"
@@ -3322,6 +3402,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Sand."
 msgstr ""
+"Sands ustabilitet gør det sværere for enheder at forcere dem og gør dem "
+"sårbare over for angreb. De brede fødder og slangeagtige kroppe gør enheder "
+"fra øglernes race i stand til at navigere i dette terræn.\n"
+"\n"
+"De fleste enheder har 20-40 % forsvar i sand."
 
 #: data/help.cfg:449 data/terrain.cfg:97
 msgid "Desert"
@@ -3333,6 +3418,8 @@ msgid ""
 "beaches, however for gameplay purposes they are identical. See "
 "<ref>dst=terrain_sand text=Sand</ref>."
 msgstr ""
+"Ørken har en noget andet sammensætning end sand eller strande, men i spillet "
+"er de identiske. Se <ref>dst=terrain_sand text=Sand</ref>."
 
 #: data/help.cfg:457 data/terrain.cfg:398
 msgid "Cave"
@@ -3349,10 +3436,19 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Huleterræn repræsenterer en underjordisk hule med tilpas plads til at en "
+"enhed kan passere. De fleste enheder er ikke tilpasset denne slags terræn, "
+"og de bliver derfor både langsommere og har et dårligere forsvar i dette "
+"terræn. Dværge og trolde som har deres hjem i huler, kan nemt navigere i "
+"dette terræn, specielt dværge som i kraft af deres mindre størrelse nemt kan "
+"omgå forhåndringer som andre racer ikke kan komme forbi. Undertiden er "
+"huler  <ref>dst=terrain_illuminated_cave text=oplyste</ref>.\n"
+"\n"
+"De fleste enheder har en 20-40 % forsvarsbonus i huler, mens dværge har 50 %."
 
 #: data/help.cfg:467 data/terrain.cfg:343
 msgid "Rockbound Cave"
-msgstr ""
+msgstr "Stenhule"
 
 #: data/help.cfg:472
 msgid ""
@@ -3366,6 +3462,16 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
+"Stenhuleterrænet er skabt af vand og vind der har bragt partikler hen over "
+"stenene og skabt dem igennem en nedbrydningsproces. Det ligner et arret "
+"området og stenhuleterræn reducerer derfor effektiviteten for de fleste "
+"enheder, men øger forsvarsevnen. Dværge og trolde som er de væsentligste "
+"indbyggere i hulerne kan nemt navigere igennem terrænet. Dværge som har "
+"fordel af deres lave højde i dette terræn har fulde navigationsmuligheder. "
+"Undertiden er hulerne <ref>dst=terrain_illuminated_cave text=Oplyst</ref>\n"
+"\n"
+"De fleste enheder har cirka 50 % forsvar i stenhuleterræn, mens kavaleri er "
+"begrænset til 40 %. Dværge har 60 %."
 
 #: data/help.cfg:477
 msgid "Illuminated Cave"
@@ -3380,10 +3486,16 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
+"Sjældne stier i den underjordiske verden er oplyst af lys fra overfladen der "
+"skinner ned i mørket.  Dette giver en angrebsbonus for hæderlige enheder og "
+"fjerner angrebsbonussen fra kaotiske enheder. I alle andre henseender "
+"opfører dette terræn sig på samme måde som normalt huleterræn.\n"
+"\n"
+"De fleste enheder modtager 20-40 % forsvar i huler, mens dværge har 50%."
 
 #: data/help.cfg:487 data/terrain.cfg:374
 msgid "Mushroom Grove"
-msgstr ""
+msgstr "Champignonskov"
 
 #: data/help.cfg:492
 msgid ""
@@ -3397,6 +3509,15 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"Champignonskove er store underjordiske skove af kæmpe store champignoner, "
+"som trives i det fugtige mørke. De fleste enheder har svært ved at navigere "
+"i dette svampemiljø, men har til gengæld stor nytte af skjulet bag de store "
+"champignoner. Beredne enheder har stor ulempe i dette terren og mangler den "
+"frie bevægelse i kamp. Udøde enheder har en naturlig præference for denne "
+"slags terræn og fungerer ganske godt i champignonskove.\n"
+"\n"
+"De fleste enheder har 50-60 % forsvar i champignonskove, mens kavaleri kun "
+"har 20 %."
 
 #: data/help.cfg:497 data/terrain.cfg:138
 msgid "Savanna"
@@ -3408,6 +3529,9 @@ msgid ""
 "world. For gameplay purposes, they are identical to "
 "<ref>dst=terrain_grassland text=Grassland</ref>."
 msgstr ""
+"Savanne er stepper af højt græs som kan ses i varmere områder af verden. I "
+"spillet er området identisk med <ref>dst=terrain_grassland text=Græseng</"
+"ref>."
 
 #: data/help.cfg:504 data/terrain.cfg:148 data/terrain.cfg:157
 #: data/terrain.cfg:169 data/terrain.cfg:179 data/terrain.cfg:190
@@ -3416,7 +3540,7 @@ msgstr ""
 #: data/terrain.cfg:270 data/terrain.cfg:280 data/terrain.cfg:290
 #: src/reports.cpp:384
 msgid "Village"
-msgstr "Landsy"
+msgstr "Landsby"
 
 #: data/help.cfg:509
 msgid ""
@@ -3430,10 +3554,19 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"Landsbyer repræsenterer en gruppe af bygninger under kontrol af mennesker "
+"eller andre. Næsten alle enheder, selv kavaleri kan nemt navigere i "
+"landsbyer og de fleste enheder opnår en forsvarsbonus når de er placeret i "
+"en landsby. Landsbyer gør det muligt for enheder at se til deres sår, og de "
+"kan derfor få helbredt 8 liv hver runde de er i en landsby, eller blive "
+"helbredt for gift.\n"
+"\n"
+"De fleste enheder har 50-60 % forsvarsbonus i landsbyer, mens kavaleri kun "
+"har 40 %."
 
 #: data/help.cfg:516 data/terrain.cfg:429
 msgid "Chasm"
-msgstr ""
+msgstr "Kløft"
 
 #: data/help.cfg:518
 msgid ""
@@ -3442,6 +3575,9 @@ msgid ""
 "is concerned, only units capable of flying over chasms can cross this "
 "terrain."
 msgstr ""
+"En kløft er en revne i jorden som fører til undergrunden nedenfor. Kløfter "
+"er kendt for stejle vægge, som det tager dage at forcere. I spillet kan kun "
+"enheder, som er i stand til at flyve forcere denne terræntype."
 
 #: data/help.cfg:523 data/terrain.cfg:436
 msgid "Lava"
@@ -3455,10 +3591,15 @@ msgid ""
 "illuminating the area immediately above it. This provides an attack bonus "
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
+"Faren ved at forsøge at gå på lave er indlysende. Dette terræn kan kun "
+"krydses af enheder der er i stand til at flyve højt over lavaen. Den "
+"smeltede magma producerer også en glød, som oplyser området over den. Dette "
+"giver en angrebsbonus til hæderlige enheder og fjerne angrebsbonusen fra "
+"kaotiske enhder."
 
 #: data/help.cfg:530 data/terrain.cfg:52
 msgid "River Ford"
-msgstr ""
+msgstr "Vadested"
 
 #: data/help.cfg:532
 msgid ""
@@ -3469,6 +3610,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Når en flod er ekstremt lavvandet er det nemt for landbaserede enheder at "
+"krydse den. Enhver skabning som er i stand til at svømme har fuld bevægelse "
+"selv på steder som i floden. I spillet håndteres et vadested som enten "
+"græsland eller lavvandet vand alt efter hvad der giver enheden dens bedste "
+"defensive- og bevægelsesbonus."
 
 #: data/help.cfg:537 data/terrain.cfg:62 data/terrain.cfg:70
 #: data/terrain.cfg:78
@@ -3489,6 +3635,16 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"For dem i stand til at bygge en bro udgør muligheden en befrielse fra "
+"afhængigheden af naturens luner, hvor vadesteder kommer og går med "
+"stigningen og faldet i vandstanden. For ikke at tale om luksusen ved tørre "
+"fødder, specielt i de kolde måneder af året.\n"
+"\n"
+"For enheder som rejser over land eller hav er broen det bedste fra hvert "
+"sted - i spillet, håndteres en bro som enten græsland eller det "
+"underliggende vand, enheden får den bedst mulige bevægelses- og "
+"forsvarsbonus af disse to muligheder. Bemærk at en svømmende enhed og en "
+"landenhed ikke kan være på et brofelt på samme tid."
 
 #: data/help.cfg:546 data/terrain.cfg:422
 msgid "Cave Wall"
@@ -3499,6 +3655,8 @@ msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
+"Hulemure er lavet af solide sten, kendt for deres evne til at modstå selv "
+"den mest ivrige rejsende."
 
 #: data/help.cfg:553
 msgid "General commands"
@@ -7991,10 +8149,19 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Efter års erfaring opnår de meste dedikerede hvide troldmænd mægtige "
+"spirituelle kræfter. Med ensidig fokusering på lysets vej kan de tilkalde "
+"lysets hjælp for at fjerne nattens skygger.\n"
+"\n"
+"Levende efter en streng kodeks for nøjsomhed og ære arbejder disse mænd og "
+"kvinder utrættelig for at skabe liv og orden til den urolige verden, de er "
+"en del af.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Human_Mage_of_Light.cfg:231
 msgid "female^Mage of Light"
-msgstr "feamle^Lysets troldkvinde"
+msgstr "Lysets troldkvinde"
 
 #: data/units/Human_Outlaw.cfg:3
 msgid "Outlaw"
@@ -8010,10 +8177,16 @@ msgid ""
 "are somewhat ill at ease fighting during the day, preferring the cover of "
 "nightfall."
 msgstr ""
+"Efter nogle års service stiger tidligere landevejstyve i rang blandt deres "
+"egne. Når de har bevidst deres værd i kamp får de farligere opgaver, og en "
+"større andel af byttet. Selv om mange modstandere ser ned på deres valg af "
+"våben er de fredløse helt klar over dets dødelige muligheder, og også om den "
+"nemt tilgængelige ammunition. Fredløse er noget kede af at kæmpe om dagen og "
+"foretrækker nattens dække."
 
 #: data/units/Human_Outlaw.cfg:114
 msgid "female^Outlaw"
-msgstr "female^Lovløs"
+msgstr "Lovløs"
 
 # > to assassin eller a assassin?
 # Det er "assassinate"... Det her er "an assassin". :-)
@@ -8032,6 +8205,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"De største tyve får undertiden opgaven at tage meget mere end ofrets "
+"ejendele. Mestre i knivkamp og utrolig hurtig på deres fødder gør at disse "
+"snigmordere kan bruge mange måder at ombringe deres ofre på; om det er "
+"forgiftede knive fra afstand eller en daggert i ryggen gør ingen forskel for "
+"ofret. Snigmordere er dødelige om natten ikke, men er ikke komfortable med "
+"at kæmpe under åben sol.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Human_Outlaw_Assassin.cfg:135
 #: data/units/Human_Outlaw_Rogue.cfg:76
@@ -8054,6 +8235,11 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they're not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"Banditter er en blandet samling af mænd, de fleste med tvivlsom baggrund. De "
+"er musklerne i enhver organiseret gruppe af kriminelle, og selv om de har "
+"mangler i finesse eller intelligens, er de fremragende i deres foretrukne "
+"erhverv med at tryne ofre til undertrykkelse. Som andre fredløse er de ikke "
+"glade for at kæmpe i dagslys, da de normalt arbejder om natten."
 
 #: data/units/Human_Outlaw_Footpad.cfg:3
 msgid "Footpad"
@@ -8068,6 +8254,11 @@ msgid ""
 "despite their pitiable weaponry, they are quite good at harrying their "
 "enemies, especially under cover of darkness."
 msgstr ""
+"Disse ynkelige kriminelle kaldes ofte for »landevejstyve« af deres "
+"overordnede, for de har jobbet med at løbe landevejene tynde. De bliver ofte "
+"anvendt som kurerer eller spejdere. Udholdenheden og evnerne til fods kommer "
+"dem ofte til gavn i kamp, og på trods af deres ynkelige våben er de ganske "
+"gode til at genere deres fjender, specielt i ly af natten."
 
 #: data/units/Human_Outlaw_Footpad.cfg:22 data/units/Human_Outlaw_Thug.cfg:22
 #: data/units/Troll.cfg:26 data/units/Troll_Hero.cfg:25
@@ -8076,11 +8267,11 @@ msgstr "kølle"
 
 #: data/units/Human_Outlaw_Footpad.cfg:134
 msgid "female^Footpad"
-msgstr "female^landevejstyv"
+msgstr "Landevejstyv"
 
 #: data/units/Human_Outlaw_Poacher.cfg:3
 msgid "Poacher"
-msgstr ""
+msgstr "Krybskytte"
 
 #: data/units/Human_Outlaw_Poacher.cfg:21
 msgid ""
@@ -8094,6 +8285,16 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"Selvom de ikke er trænet som krigere, er evnerne hos en jæger, specielt "
+"indenfor brugen af en bue brugbare i kamp. En anvendelse af disse evner mod "
+"andre mennesker kan ske af en række grunde, det være sig som lejesvend eller "
+"for anden vindings skyld. Enhver gruppe af banditter kan bruge et par "
+"krybskytter i deres sold der kan indsamle nattens måltid i det "
+"omkringliggende landskab og ofte også give en hånd med i de mere alvorlige "
+"kampe.\n"
+"\n"
+"Med baggrund i deres erfaring er disse krybskyttere effektive om natten i "
+"skove og sumpe."
 
 #: data/units/Human_Outlaw_Rogue.cfg:3
 msgid "Rogue"
@@ -8110,10 +8311,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Bandelederne i enhver gruppe af tyve opnår deres position via deres evner. "
+"Disse kæltringer har brugt mange ubehagelige øjeblikke med at gå igennem "
+"menneskemængder og undgå dem som ønsker dem ondt, en evne som er meget "
+"behændig i kamp. Mestre i brugen af knive, og de kan også kaste knive med "
+"stor præcision, og deres mange timer med at ligge på lur i natten gør, at de "
+"er komfortable med at kæmpe i mørke.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Human_Outlaw_Rogue.cfg:114
 msgid "female^Rogue"
-msgstr "female^Kæltring"
+msgstr "Kæltring"
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -8131,10 +8340,19 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"I så lang tid som nogen kan huske, har forskellige medlemmer af de "
+"»familier« af kriminelle som dukker op i alle større byer haft en mærkværdig "
+"praksis med at afblege deres hår med lime; indtil det får et lyst blåt skær. "
+"Det er en modig foranstaltning, da deres arbejde ofte befinder sig i den "
+"mere skyggefulde del af samfundet. Tyve har mange evner, og er af profession "
+"let på fødderne og gode med knive. De anvender uden anger mindre ærefuld "
+"kampteknikker og kender ikke til udtrykket en fair kamp.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Human_Outlaw_Thief.cfg:231
 msgid "female^Thief"
-msgstr "female^Tyv"
+msgstr "Tyv"
 
 #: data/units/Human_Outlaw_Thug.cfg:3
 msgid "Thug"
@@ -8168,6 +8386,13 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
+"På hjemmebane i skoven og gode allierede for enhver hær, samt uundværlige "
+"for enhver gruppe af fredløse. De kan finde både menneske og dyr, bemærker "
+"ting som andre overse og er ofte de eneste som kan finde mad til bordet; det "
+"værende dyr eller grøntsager.\n"
+"\n"
+"Deres jagtevner er særdeles velegnede i kamp og gør dem også meget "
+"kompetente om natten, i skove og i sumpe."
 
 #: data/units/Human_Peasant.cfg:3
 msgid "Peasant"
@@ -8180,6 +8405,10 @@ msgid ""
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
+"Bønder er rygraden i den landlige økonomi, og den sidste ressource for "
+"soldater. Selvom de ikke er krigsvante af natur, vil de stædigt forsvare "
+"deres hjem. Hvis du sender bønder mod dine fjender, så tyder det dog på, at "
+"du ikke har andre mere egnede styrker til rådighed."
 
 #: data/units/Human_Peasant.cfg:23 data/units/Human_Peasant.cfg:79
 msgid "pitchfork"
@@ -8187,7 +8416,7 @@ msgstr "høtyv"
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr "fenake^Havfrue troldkvinde"
+msgstr "Havfrue troldkvinde"
 
 #: data/units/Mermaid_Diviner.cfg:27
 msgid ""
@@ -8202,7 +8431,7 @@ msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
-msgstr "female^Havfrue fortryllerske"
+msgstr "Havfrue fortryllerske"
 
 #: data/units/Mermaid_Enchantress.cfg:20
 msgid ""
@@ -8215,6 +8444,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Havfruer har, som elver, en magtfuld og medført evne indenfor magi, selvom "
+"deres anses for at være markant anderledes. De havfruer som har denne evne "
+"regnes for noget særligt, og deres evner bruges på mange måder, herunder "
+"mange som menneskeheden aldrig ville have drømt om. Brugen i krig af disse "
+"evner er forbudt mod deres egen race - denne magt er den største del af "
+"beskyttelsen mod havfruerne fra de monstre som truer fra dybet.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Mermaid_Enchantress.cfg:70 data/units/Mermaid_Initiate.cfg:73
 #: data/units/Mermaid_Siren.cfg:73
@@ -8223,7 +8460,7 @@ msgstr "vandsprøjt"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr "female^Ung havfrue"
+msgstr "Ung havfrue"
 
 #: data/units/Mermaid_Initiate.cfg:23
 msgid ""
@@ -8239,7 +8476,7 @@ msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr "female^Havfrueprinsesse"
+msgstr "Havfrueprinsesse"
 
 #: data/units/Mermaid_Priestess.cfg:25
 msgid ""
@@ -8319,7 +8556,7 @@ msgstr "trefork"
 
 #: data/units/Merman_Hoplite.cfg:3
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "Havmandhoplit"
 
 #: data/units/Merman_Hoplite.cfg:21
 msgid ""
@@ -8330,10 +8567,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Med deres store skjolde er hopliten blandt elitevagtsoldaterne i havet. "
+"Deres stærke rustning og gode disciplin gør at de kan holde en linje i "
+"krigens tumult. I desperate tider kan de endog gøre dette på land, men dog "
+"ikke så godt som skabinger med ben.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
-msgstr "Havmand jager"
+msgstr "Havmandjæger"
 
 #: data/units/Merman_Hunter.cfg:18
 msgid ""
@@ -8342,10 +8585,14 @@ msgid ""
 "of need, many mermen of that occupation will volunteer to swell the ranks of "
 "their military."
 msgstr ""
+"Evnerne hos havmænd i spydfiskeri kan nemt overføres til en krigssituation, "
+"specielt mod dem som normalt ikke har hjemme i vandet. Når der er brug for "
+"det, vil mange havmænd derfor frivilligt indtage denne position i hærens "
+"rækker."
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Javelinhavmand"
 
 #: data/units/Merman_Javelineer.cfg:18
 msgid ""
@@ -8354,10 +8601,15 @@ msgid ""
 "impact of one is considerably greater. In the water, the mobility of the "
 "mermen more than makes up for this when facing foes who cannot swim."
 msgstr ""
+"De havmænd som har specialiseret sig i brugen af javelinen kan blive næsten "
+"lige så effektive som en bueskytte - dog har deres våben en begrænset "
+"rækkevidde, mens skaden er væsentlig større. I vand gør havmænds mobilitet "
+"at rækkevidden ikke har den store betydning når de kæmper mod en modstander "
+"som ikke kan svømme."
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "Nethavmand"
 
 #: data/units/Merman_Netcaster.cfg:19
 msgid ""
@@ -8372,10 +8624,20 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Fiskeri, som det praktiseres af havmænd, består væsentligt i at drive flokke "
+"af fisk ind i ventende net. Net er ikke specielt skadevoldende i sig selv, "
+"men de kan bruges til stor effekt mod tropper der forsøger at krydse en "
+"flod. Mindre net med påførte vægte kan kastes igennem luften; de ikke er "
+"skabt til fredstid, men er specielt effektive i krigstid. Havmænd anvender "
+"denne slags våben både til at immobilisere tropper i vand og mere "
+"væsentligt, til at udligne den ulempe de ellers har på land mod landbaserede "
+"tropper.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
-msgstr "Havmand spydmand"
+msgstr "Havspydmand"
 
 #: data/units/Merman_Spearman.cfg:17
 msgid ""
@@ -8386,6 +8648,12 @@ msgid ""
 "effective. They are also useful in melee, even deep under the surface, which "
 "is something that certainly cannot be said of arrows."
 msgstr ""
+"Buen er ikke foretrukket blandt havmænd da javelinen har en lignende "
+"funktion. Selvom kastede javeliner ikke har stor værdi under vandet, så er "
+"de særdeles effektive på overfladen, hvor deres vægt giver dem mulighed for "
+"at nå flere meter under vand og stadig have nok momentum til at forvolde "
+"skade. De er også brugbare i nærkamp, selv dybt under vandoverfladen, "
+"hvilket ikke kan siges om pile."
 
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
@@ -8524,6 +8792,8 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
 msgstr ""
+"Dyndspringere er magiske skabninger af ler og vand. De angriber ved at kaste "
+"store klumper af mudder mod deres fjender."
 
 #: data/units/Monster_Sea_Serpent.cfg:3
 msgid "Sea Serpent"
@@ -8546,6 +8816,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Tentakler i dybet er de synlige tegn, på et større monster som ligger på lur "
+"under vandoverfladen.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Monster_Yeti.cfg:3
 msgid "Yeti"
@@ -8573,6 +8847,11 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss. They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Den maritime naga er en af de få racer som har en godt fungerende mobilitet "
+"i vand, hvilket har givet dem en hel verden hvor landfolkene ikke har "
+"adgang. De er dog stadig ikke ægte vandskabninger og deres manglende evne "
+"til at ånde i vand gør, at de er afgrænset fra dybderne. De er små og noget "
+"skrøbelige i form men ofte mere behændige end deres modstandere."
 
 #: data/units/Naga_Fighter.cfg:69
 msgid "Nagini Fighter"
@@ -8590,6 +8869,10 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"De mest øvede af nagaerne bliver indlemmet i logen Myrmidon, mestre i deres "
+"våbenbrug. De angriber lige så hurtigt som de slanger de ligner og undviger "
+"fra angreb med stor behændighed. De er ikke kun farlige fjender på alle åbne "
+"terræner, men deres evne til at svømme giver dem en livsfarlig mobilitet."
 
 #: data/units/Naga_Myrmidon.cfg:73
 msgid "Nagini Myrmidon"
@@ -8603,6 +8886,11 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"De mest øvede af naginierne bliver indlemmet i logen Myrmidon, mestre i "
+"deres våbenbrug. De angriber lige så hurtigt som de slanger de ligner og "
+"undviger fra angreb med stor behændighed. De er ikke kun farlige fjender på "
+"alle åbne terræner, men deres evne til at svømme giver dem en livsfarlig "
+"mobilitet."
 
 #: data/units/Naga_Warrior.cfg:3
 msgid "Naga Warrior"
@@ -8617,6 +8905,12 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Mange af de unge krigere fra naga ser frem til den dag de får deres 2. "
+"klinge. Deres krigstræning med to klinger er meget forskellig fra metoden "
+"hos orker eller andre racer, for de er begyndt at lære kunsten at bruge "
+"deres kropsform til bedste evne, drejende og vendende for at undgå slag. "
+"Dette gør dem stærke på land, men friktionen fra vand øger væsentlig denne "
+"evne."
 
 #: data/units/Naga_Warrior.cfg:72
 msgid "Nagini Warrior"
@@ -8651,10 +8945,13 @@ msgid ""
 "trained. They cannot manage weapons skillfully, but that is of little "
 "concern given their strength."
 msgstr ""
+"Mens de stadig er små indfanges ogretrolde og bruges i hærens træning. De "
+"kan ikke anvende våben effektivt, men det betyder ikke så meget, når man "
+"tænker på deres styrke."
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
-msgstr "Orkerbueskytte"
+msgstr "Orkbueskytte"
 
 #: data/units/Orcish_Archer.cfg:18
 msgid ""
@@ -8663,12 +8960,17 @@ msgid ""
 "since most orcs won't learn how to handle a bow, he is an indispensable part "
 "of the orcish army."
 msgstr ""
+"Blandt orker bliver buen ofte anset som et kujonvåben; men selv orker, "
+"specielt unge og dem som er slankt bygget er pragmatiske nok til at anvende "
+"dem alligevel.  Orkbueskytter er sjældent veludrustet og har ikke modtaget "
+"nogen træning.  Selv så dårligt uddannet kan deres våben dog stadig være "
+"særdeles dødelig, og brugerne går derfor sjældent alene."
 
 # > to assassin eller a assassin?
 # Det er "assassinate"... Det her er "an assassin". :-)
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
-msgstr "Orkersnigmorder"
+msgstr "Orksnigmorder"
 
 #: data/units/Orcish_Assassin.cfg:20
 msgid ""
@@ -8680,6 +8982,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Selvom nogle anser det for kujonagtigt at bruge gift, er det et våben, som "
+"er velanset blandt orker, specielt blandt de svagere individer. "
+"Orksnigmordere som bruger giften på kasteknive, er typisk en smule svagelige "
+"i orksammenhænge, men overraskende behændige. Selv om det sjældent er dem "
+"som giver det dræbende slag, så er deres taktik en væsentlig hjælp for deres "
+"større og mere brutale artsfæller.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Orcish_Assassin.cfg:122 data/units/Orcish_Slayer.cfg:153
 msgid "throwing knives"
@@ -8687,7 +8997,7 @@ msgstr "kasteknive"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr "Orkerarmbrøstskytte"
+msgstr "Orkarmbrøstskytte"
 
 #: data/units/Orcish_Crossbowman.cfg:17
 msgid ""
@@ -8696,6 +9006,10 @@ msgid ""
 "Marksmen in long-range combat, they are sturdier and can handle themselves a "
 "little better than the Elves in close combat."
 msgstr ""
+"Orkarmbrøster er rå efterligninger af menneskenes og dværgenes armbrøster; "
+"uanset hvilket design en armbrøst er udarbejdet efter er det et kraftigt "
+"våben. Orker som bliver udnævnt til at bære en armbrøst er stærke krigere, "
+"og hvad de mangler i finesse udligner de i deres antal."
 
 #: data/units/Orcish_Crossbowman.cfg:21 data/units/Orcish_Slurbow.cfg:22
 msgid "short sword"
@@ -8703,7 +9017,7 @@ msgstr "kortsværd"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Orksoldat"
 
 #: data/units/Orcish_Grunt.cfg:18
 msgid ""
@@ -8711,10 +9025,13 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Orksoldater udgør kernen af orkernes styrke. Selvom de er langsommere end "
+"deres menneskelige og elviske modparter kan de alligevel yde kraftfulde "
+"angreb, og de kan modstå flere træffere før de falder."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr "Orkerleder"
+msgstr "Orkleder"
 
 #: data/units/Orcish_Leader.cfg:20
 msgid ""
@@ -8726,6 +9043,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Orkledere er stammeledere. De tager de vigtige beslutninger og anfører deres "
+"folk i kamp. De bærer en bue af nødvendighed, men har langt bedre evner med "
+"deres sværd; alt i alt er de magtfulde kæmpere. Deres naturlige "
+"lederskabsevner gør dem meget værdsat i kamp; hvis orklederen dør, tabes "
+"normalt også slaget.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
@@ -9169,7 +9493,7 @@ msgstr "Skyggebølge"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:170
 msgid "female^Dark Adept"
-msgstr "female^Troldkvinde"
+msgstr "Troldkvinde"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
@@ -10110,11 +10434,11 @@ msgstr "Nødvendig EP: "
 
 #: src/help.cpp:1170
 msgid "unit help^Attacks"
-msgstr "unit help^Angreb"
+msgstr "Angreb"
 
 #: src/help.cpp:1177
 msgid "unit help^Name"
-msgstr "unit help^Navn"
+msgstr "Navn"
 
 #: src/help.cpp:1178 src/menu_events.cpp:232 src/menu_events.cpp:708
 msgid "Type"
@@ -10317,7 +10641,7 @@ msgstr "Statistik"
 
 #: src/menu_events.cpp:236
 msgid "unit list^Traits"
-msgstr "unit list^Karaktertræk"
+msgstr "Karaktertræk"
 
 #: src/menu_events.cpp:237 src/unit.cpp:2582
 msgid "Moves"
@@ -10351,7 +10675,7 @@ msgstr "Landsbyer"
 
 #: src/menu_events.cpp:302
 msgid "status^Units"
-msgstr "status^Enheder"
+msgstr "Enheder"
 
 #: src/menu_events.cpp:303
 msgid "Upkeep"
@@ -10413,7 +10737,7 @@ msgstr "Send kun til allierede"
 #: src/menu_events.cpp:588
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "unit^Guld"
+msgstr[0] "Guld"
 msgstr[1] "Guld"
 
 #: src/menu_events.cpp:594
@@ -10560,7 +10884,7 @@ msgstr "Kunne ikke finde mærkat eller enhed med strengen '$search'."
 
 #: src/menu_events.cpp:1711
 msgid "prompt^Command:"
-msgstr "prompt^Kommando:"
+msgstr "Kommando:"
 
 #: src/mouse_events.cpp:190 src/mouse_events.cpp:300
 msgid "Attacker"
@@ -10624,21 +10948,19 @@ msgstr "Vælg våben:"
 
 #: src/multiplayer.cpp:100
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: src/multiplayer.cpp:112
-#, fuzzy
 msgid "List of Servers"
-msgstr "Tilslut server"
+msgstr "Serverliste"
 
 #: src/multiplayer.cpp:113
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Vælg en kendt server fra listen"
 
 #: src/multiplayer.cpp:140
-#, fuzzy
 msgid "View List"
-msgstr "Enhedsliste"
+msgstr "Vis liste"
 
 #: src/multiplayer.cpp:143
 msgid "Connect to Host"
@@ -11251,13 +11573,13 @@ msgstr "sten: "
 #: src/reports.cpp:255
 msgid "tooltip^damage"
 msgid_plural "damage"
-msgstr[0] "tooltip^skade"
+msgstr[0] "skade"
 msgstr[1] "skade"
 
 #: src/reports.cpp:256
 msgid "tooltip^attack"
 msgid_plural "attacks"
-msgstr[0] "tooltip^angreb"
+msgstr[0] "angreb"
 msgstr[1] "angreb"
 
 #: src/reports.cpp:266
@@ -11370,19 +11692,19 @@ msgstr "Flerspiller"
 
 #: src/titlescreen.cpp:257
 msgid "TitleScreen button^Load"
-msgstr "TitleScreen button^Indlæs"
+msgstr "Indlæs"
 
 #: src/titlescreen.cpp:258
 msgid "TitleScreen button^Get Add-ons"
-msgstr "TitleScreen button^hent ekstra ting"
+msgstr "Hent ekstra ting"
 
 #: src/titlescreen.cpp:259
 msgid "TitleScreen button^Language"
-msgstr "TitleScreen button^Sprog"
+msgstr "Sprog"
 
 #: src/titlescreen.cpp:260
 msgid "TitleScreen button^Preferences"
-msgstr "TitleScreen button^Indstillinger"
+msgstr "Indstillinger"
 
 #: src/titlescreen.cpp:261
 msgid "About"
