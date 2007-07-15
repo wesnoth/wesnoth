@@ -35,8 +35,11 @@ namespace dialogs {
 //
 //note that 'loc' is not a reference, because deleting an item from the units map
 //(when replacing the unit that is being advanced) will possibly invalidate the reference
+//
+// the game only expects an advancement to be triggered by a fight, it the cause for
+// advancement is different (eg unstore_unit) the add_replay_event should be set
 void advance_unit(const game_data& info, const gamemap& map,unit_map& units, gamemap::location loc,
-				  game_display& gui, bool random_choice=false);
+				  game_display& gui, bool random_choice=false, const bool add_replay_event=false);
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, game_display& gui, size_t choice);
 

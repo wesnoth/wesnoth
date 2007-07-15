@@ -61,6 +61,11 @@ public:
 		const gamemap::location& loc=gamemap::location::null_location);
 	void add_unit_checksum(const gamemap::location& loc,config* const cfg);
 	void add_checksum_check(const gamemap::location& loc);
+	/**
+	 * Adds an advancement to the replay, the following option command
+	 * determines which advancement option has been choosen
+	 */
+	void add_advancement(const gamemap::location& loc);
 
 	void speak(const config& cfg);
 	std::string build_chat_log(const std::string& team) const;

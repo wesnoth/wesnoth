@@ -1910,8 +1910,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						screen->float_label(loc,text,red,green,blue);
 					}
 				}
-				/*
-				if(utils::string_bool(cfg["advance"],true) && get_replay_source().at_end()) {
+
+				std::string advance = cfg["advance"];
+				std::cerr << "advance = " << advance << '\n';
+				
+				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
 					//Try to advance the unit
 
 					//FIXME: get player_number_ from the play_controller not from the WML vars
@@ -1922,10 +1925,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					const bool sel = (side == u.side() && (*teams)[side-1].is_human());
 
 					//The code in dialogs::advance_unit tests whether the unit can advance
-					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel);
-					recorder.add_advancement(); //FIXME: not yet implemented
+					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
 				}
-				*/
+			
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
 

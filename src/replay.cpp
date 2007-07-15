@@ -386,6 +386,17 @@ void replay::add_checksum_check(const gamemap::location& loc)
 	config* const cmd = add_command();
 	add_unit_checksum(loc,cmd);
 }
+
+void replay::add_advancement(const gamemap::location& loc)
+{
+	config* const cmd = add_command(false);
+
+	config val;
+	(*cmd)["undo"] = "no";
+	loc.write(val);
+	cmd->add_child("advance_unit",val);
+}
+
 void replay::speak(const config& cfg)
 {
 	config* const cmd = add_command(false);
@@ -1064,6 +1075,11 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 					game_events::fire(event);
 				}
 			}
+
+		} else if((child = cfg->child("advance_unit")) != NULL) {
+			const gamemap::location loc(*child, game_events::get_state_of_game());
+			advancing_units.push_back(loc);
+
 		} else {
 			if(! cfg->child("checksum")) {
 				replay::throw_error("unrecognized action\n");

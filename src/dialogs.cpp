@@ -39,10 +39,12 @@ namespace dialogs
 {
 
 void advance_unit(const game_data& info,
-				  const gamemap& map,
+		  const gamemap& map,
                   unit_map& units,
                   gamemap::location loc,
-                  game_display& gui, bool random_choice)
+                  game_display& gui, 
+		  bool random_choice, 
+		  const bool add_replay_event)
 {
 	unit_map::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false)
@@ -107,6 +109,10 @@ void advance_unit(const game_data& info,
 		res = advances.show();
 	}
 
+	if(add_replay_event) {
+		recorder.add_advancement(loc);
+	}
+
 	recorder.choose_option(res);
 
 	LOG_DP << "animating advancement...\n";
@@ -118,7 +124,7 @@ void advance_unit(const game_data& info,
 	if(u != units.end()) {
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if(u->second.experience() < 81) {
-			advance_unit(info, map, units, loc, gui,  random_choice);
+			advance_unit(info, map, units, loc, gui, random_choice, add_replay_event);
 		} else {
 			LOG_STREAM(err, config) << "Unit has an too high amount of " << u->second.experience() 
 				<< " XP left, cascade leveling disabled\n";
