@@ -120,6 +120,11 @@ void editor_display::draw(bool update,bool force)
 			str << ")";
 		}
 		refresh_report(reports::TERRAIN, reports::report(str.str()));
+
+
+		std::stringstream str2;
+		str2 << mouseoverHex_;
+		refresh_report(reports::POSITION, reports::report(str2.str()));
 	}
 
 	display::draw_wrap(update, force, changed);
