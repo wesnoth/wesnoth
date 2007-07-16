@@ -329,6 +329,14 @@ def resolve_unit_image(namespace, subdir, resource):
 #
 # Change these if we move away from Subversion
 
+if sys.platform.startswith("win"):
+    mv = "rename"
+    rm = "del"
+else:
+    mv = "mv"
+    rm = "rm"
+fi
+
 vcdir = ".svn"
 
 def vcmove(src, dst):
@@ -337,17 +345,17 @@ def vcmove(src, dst):
     if os.path.exists(os.path.join(dir, ".svn")):
         return "svn mv %s %s" % (src, dst)
     else:
-        return "mv %s %s" % (src, dst)
+        return mv + " " + src + " " + dst
 
 def vcunmove(src, dst):
     "Revert the result of a previous move (before commit)."
     (dir, base) = os.path.split(src)
     if os.path.exists(os.path.join(dir, ".svn")):
         return "svn revert %s" % dst	# Revert the add at the destination
-        return "rm %s" % dst		# Remove the moved copy
+        return rm + " " + dst		# Remove the moved copy
         return "svn revert %s" % src	# Revert the deletion
     else:
-        return "mv %s %s" % (dst, src)
+        return mv + " " + dst + " " + src
 
 def vcdelete(src):
     "Delete a file under version control."
@@ -355,7 +363,7 @@ def vcdelete(src):
     if os.path.exists(os.path.join(dir, ".svn")):
         return "svn rm %s" % src
     else:
-        return "rm %s" % src
+        return rm + " " + src
 
 def vcundelete(src):
     "Revert the result of a previous delete (before commit)."
