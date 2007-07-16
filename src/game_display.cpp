@@ -621,6 +621,8 @@ void game_display::draw(bool update,bool force)
 
 void game_display::draw_report(reports::TYPE report_num)
 {
+	bool brighten;
+
 	if(!team_valid()) {
 		return;
 	}
@@ -631,7 +633,19 @@ void game_display::draw_report(reports::TYPE report_num)
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
 							  selectedHex_,mouseoverHex_,status_,observers_);
 
-	refresh_report(report_num, report);
+	brighten = false;
+	if(report_num == reports::TIME_OF_DAY) {
+		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
+		// don't show illuminated time on fogged/shrouded tiles
+		if (teams_[viewing_team()].fogged(mouseoverHex_.x, mouseoverHex_.y) || 
+				teams_[viewing_team()].shrouded(mouseoverHex_.x, mouseoverHex_.y)) {
+
+			tod = status_.get_time_of_day(false,mouseoverHex_);
+		}
+		brighten = (tod.bonus_modified > 0);
+	}
+
+	refresh_report(report_num, report, brighten);
 }
 
 void game_display::draw_game_status()

@@ -169,7 +169,8 @@ public:
 	void create_buttons();
 	void invalidate_theme() { panelsDrawn_ = false; }
 
-	void refresh_report(reports::TYPE report_num, reports::report report);
+  void refresh_report(reports::TYPE report_num, reports::report report, 
+		      bool brightened = false);
 
 	// Will be overridden in the display subclass
 	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
