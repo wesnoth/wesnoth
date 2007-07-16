@@ -1,3 +1,4 @@
+# translation of es.po to Spanish
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -9,7 +10,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-10 18:38+0200\n"
-"PO-Revision-Date: 2007-04-29 11:49+0200\n"
+"PO-Revision-Date: 2007-07-16 03:07+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -161,16 +162,15 @@ msgstr "Velocidad acelerada"
 
 #: src/game_preferences_display.cpp:136
 msgid "Skip AI Moves"
-msgstr "Omitir los movimientos de la IA"
+msgstr "Omitir los movimientos de la inteligencia artificial"
 
 #: src/game_preferences_display.cpp:138
-#, fuzzy
 msgid "Save Replays"
-msgstr "Guardar accesos rápidos"
+msgstr "Guardar repeticiones"
 
 #: src/game_preferences_display.cpp:139
 msgid "Delete Autosaves"
-msgstr ""
+msgstr "Borrar guardados automáticos"
 
 #: src/game_preferences_display.cpp:140
 msgid "Do Not Show Lobby Joins"
@@ -379,15 +379,17 @@ msgstr "Velocidad de lucha y movimiento de las unidades"
 
 #: src/game_preferences_display.cpp:296
 msgid "Do not animate AI units moving"
-msgstr "No animar el movimiento de las unidades controladas por la IA"
+msgstr ""
+"No animar el movimiento de las unidades controladas por la inteligencia "
+"artificial"
 
 #: src/game_preferences_display.cpp:299
 msgid "Save replays at scenario end."
-msgstr ""
+msgstr "Guardar repeticiones al finalizar."
 
 #: src/game_preferences_display.cpp:302
 msgid "Automatically delete autosaves at the end of a scenario"
-msgstr ""
+msgstr "Borrar guardados automáticos al finalizar el escenario"
 
 #: src/game_preferences_display.cpp:304
 msgid "Overlay a grid onto the map"
@@ -400,7 +402,7 @@ msgstr "Ordena por grupos la lista de jugadores de la sala de juego"
 #: src/game_preferences_display.cpp:310
 msgid "Show icons in front of the player names in the lobby."
 msgstr ""
-"Muestra iconos delante de los nombres de jugadores en la sala de juego."
+"Muestra íconos delante de los nombres de jugadores en la sala de juego."
 
 #: src/game_preferences_display.cpp:313
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -746,17 +748,16 @@ msgid "Next Side"
 msgstr "Siguiente bando"
 
 #: src/hotkeys.cpp:95
-#, fuzzy
 msgid "Full map"
-msgstr "Voltear mapa"
+msgstr "Todo el mapa"
 
 #: src/hotkeys.cpp:97
 msgid "Each team"
-msgstr ""
+msgstr "Cada equipo"
 
 #: src/hotkeys.cpp:99
 msgid "Team 1"
-msgstr ""
+msgstr "Equipo 1"
 
 #: src/hotkeys.cpp:100
 msgid "Skip animation"
@@ -831,9 +832,8 @@ msgid "Refresh Image Cache"
 msgstr "Refrescar caché de imagen"
 
 #: src/hotkeys.cpp:120
-#, fuzzy
 msgid "Delay transition updates"
-msgstr "Retraso en las actualizaciones de transiciones"
+msgstr "Retraso entre las actualizaciones de la transición"
 
 #: src/hotkeys.cpp:121
 msgid "Update transitions"
@@ -944,18 +944,3 @@ msgstr ""
 #: src/show_dialog.cpp:368
 msgid "Error"
 msgstr "Error"
-
-#~ msgid "Show Lobby Minimaps"
-#~ msgstr "Mostrar minimapas en la sala de juego"
-
-#~ msgid "Show minimaps in the multiplayer lobby"
-#~ msgstr "Muestra minimapas en la sala de juego multijugador"
-
-#~ msgid "Shroud"
-#~ msgstr "Oscuro"
-
-#~ msgid "Fog"
-#~ msgstr "Niebla"
-
-#~ msgid "KB"
-#~ msgstr "KB"
