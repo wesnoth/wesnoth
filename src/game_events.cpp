@@ -154,14 +154,19 @@ game_state* get_state_of_game()
 	return state_of_game;
 }
 
-bool conditional_passed(const unit_map* units,
-                        const vconfig cond)
+bool internal_conditional_passed(const unit_map* units,
+                        const vconfig cond, bool& backwards_compat)
 {
+	const vconfig::child_list& have_unit = cond.get_children("have_unit");
+	const vconfig::child_list& have_location = cond.get_children("have_location");
+	const vconfig::child_list& variables = cond.get_children("variable");
+	backwards_compat = backwards_compat 
+		&& have_unit.size() == 0
+		&& have_location.size() == 0
+		&& variables.size() == 0;
 
 	//if the if statement requires we have a certain unit, then
 	//check for that.
-	const vconfig::child_list& have_unit = cond.get_children("have_unit");
-	int tag_count = have_unit.size();
 	for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
 
 		if(units == NULL)
@@ -181,8 +186,6 @@ bool conditional_passed(const unit_map* units,
 
 	//if the if statement requires we have a certain location, then
 	//check for that.
-	const vconfig::child_list& have_location = cond.get_children("have_location");
-	tag_count += have_location.size();
 	for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 		std::set<gamemap::location> res;
 		wassert(game_map != NULL && units != NULL && status_ptr != NULL);
@@ -194,8 +197,6 @@ bool conditional_passed(const unit_map* units,
 
 	//check against each variable statement to see if the variable
 	//matches the conditions or not
-	const vconfig::child_list& variables = cond.get_children("variable");
-	tag_count += variables.size();
 	for(vconfig::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
 		const vconfig& values = *var;
 
@@ -250,10 +251,17 @@ bool conditional_passed(const unit_map* units,
 			return false;
 		}
 	}
-	bool matches = true; //so far, so good
-	int or_count = 0;
+	return true;
+}
+
+bool conditional_passed(const unit_map* units,
+                        const vconfig cond)
+{
+	bool backwards_compat = utils::string_bool(cond["backwards_compat"],true);
+	bool matches = internal_conditional_passed(units, cond, backwards_compat);
 
 	//handle [and], [or], and [not] with in-order precedence
+	int or_count = 0;
 	config::all_children_iterator cond_i = cond.get_config().ordered_begin();
 	config::all_children_iterator cond_end = cond.get_config().ordered_end();
 	while(cond_i != cond_end)
@@ -265,25 +273,24 @@ bool conditional_passed(const unit_map* units,
 		if(cond_name == "and")
 		{
 			matches = matches && conditional_passed(units, cond_filter);
-			++tag_count;
+			backwards_compat = false;
 		}
 		//handle [or]
 		else if(cond_name == "or")
 		{
 			matches = matches || conditional_passed(units, cond_filter);
 			++or_count;
-			++tag_count;
 		}
 		//handle [not]
 		else if(cond_name == "not")
 		{
 			matches = matches && !conditional_passed(units, cond_filter);
-			++tag_count;
+			backwards_compat = false;
 		}
 		++cond_i;
 	}
 	//check for deprecated [or] syntax
-	if(matches && or_count > 1 && tag_count == or_count && cond.get_config().values.size() == 0)
+	if(matches && or_count > 1 && backwards_compat)
 	{
 		lg::wml_error << "possible deprecated [or] syntax: now forcing re-interpretation\n";
 		//for now we will re-interpret it according to the old rules
@@ -2312,13 +2319,12 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 	if(!cfg) {
 		return false;
 	}
+	bool matches = true;
 	if(filter["weapon"] != "") {
 		if(filter["weapon"] != (*cfg)["weapon"]) {
-			return false;
+			matches = false;
 		}
 	}
-
-	bool matches = true; //so far, so good
 
 	//handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond_i = filter.get_config().ordered_begin();

@@ -714,13 +714,42 @@ bool unit::has_ability_by_id(const std::string& ability) const
 
 bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
 {
+	bool matches = true;
+
 	if(loc.valid()) {
 		wassert(units_ != NULL);
 		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, *units_);
-		return internal_matches_filter(cfg, loc, use_flat_tod);
+		matches = internal_matches_filter(cfg, loc, use_flat_tod);
+	} else {
+		//if loc is invalid, then this is a recall list unit (already been scoped)
+		matches = internal_matches_filter(cfg, loc, use_flat_tod);
 	}
-	//if loc is invalid, then this is a recall list unit which should have already been scoped
-	return internal_matches_filter(cfg, loc, use_flat_tod);
+
+	//handle [and], [or], and [not] with in-order precedence
+	config::all_children_iterator cond = cfg.get_config().ordered_begin();
+	config::all_children_iterator cond_end = cfg.get_config().ordered_end();
+	while(cond != cond_end)
+	{
+
+		const std::string& cond_name = *((*cond).first);
+		const vconfig cond_filter(&(*((*cond).second)));
+
+		//handle [and]
+		if(cond_name == "and") {
+			matches = matches && matches_filter(cond_filter,loc,use_flat_tod);
+		}
+		//handle [or]
+		else if(cond_name == "or") {
+			matches = matches || matches_filter(cond_filter,loc,use_flat_tod);
+		}
+		//handle [not]
+		else if(cond_name == "not") {
+			matches = matches && !matches_filter(cond_filter,loc,use_flat_tod);
+		}
+
+		++cond;
+	}
+	return matches;
 }
 
 bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
@@ -886,33 +915,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			}
 		}
 	}
-	bool matches = true; //so far, so good
-
-	//handle [and], [or], and [not] with in-order precedence
-	config::all_children_iterator cond = cfg.get_config().ordered_begin();
-	config::all_children_iterator cond_end = cfg.get_config().ordered_end();
-	while(cond != cond_end)
-	{
-
-		const std::string& cond_name = *((*cond).first);
-		const vconfig cond_filter(&(*((*cond).second)));
-
-		//handle [and]
-		if(cond_name == "and") {
-			matches = matches && internal_matches_filter(cond_filter,loc,use_flat_tod);
-		}
-		//handle [or]
-		else if(cond_name == "or") {
-			matches = matches || internal_matches_filter(cond_filter,loc,use_flat_tod);
-		}
-		//handle [not]
-		else if(cond_name == "not") {
-			matches = matches && !internal_matches_filter(cond_filter,loc,use_flat_tod);
-		}
-
-		++cond;
-	}
-	return matches;
+	return true;
 }
 
 
