@@ -99,7 +99,7 @@ private:
 			show_team_colours_button_, show_colour_cursors_button_,
 			show_haloing_button_, video_mode_button_, 
 			theme_button_, hotkeys_button_, gamma_button_,
-			flip_time_button_, advanced_button_, sound_button_, 
+			advanced_button_, sound_button_, 
 			music_button_, chat_timestamp_button_,
 			advanced_sound_button_, normal_sound_button_, 
 			UI_sound_button_, sample_rate_button1_, 
@@ -157,7 +157,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  theme_button_(disp.video(), _("Theme")),
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
-	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
@@ -340,9 +339,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_team_colours_button_.set_check(show_side_colours());
 	show_team_colours_button_.set_help_string(_("Show a colored circle around the base of each unit to show which side it is on"));
 
-	flip_time_button_.set_check(flip_time());
-	flip_time_button_.set_help_string(_("Choose whether the sun moves left-to-right or right-to-left"));
-
 	show_colour_cursors_button_.set_check(use_colour_cursors());
 	show_colour_cursors_button_.set_help_string(_("Use colored mouse cursors (may be slower)"));
 
@@ -395,7 +391,6 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&theme_button_);
 	h.push_back(&hotkeys_button_);
 	h.push_back(&gamma_button_);
-	h.push_back(&flip_time_button_);
 	h.push_back(&advanced_button_);
 	h.push_back(&sound_button_);
 	h.push_back(&music_button_);
@@ -470,7 +465,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	SDL_Rect gamma_rect = { rect.x + gamma_label_.width(), ypos,
 							rect.w - gamma_label_.width() - right_border, 0 };
 	gamma_slider_.set_location(gamma_rect);
-	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
@@ -646,8 +640,6 @@ void preferences_dialog::process_event()
 			gamma_slider_.enable(enable_gamma);
 			gamma_label_.enable(enable_gamma);
 		}
-		if (flip_time_button_.pressed())
-			set_flip_time(flip_time_button_.checked());
 
 		set_gamma(gamma_slider_.value());
 
@@ -954,7 +946,6 @@ void preferences_dialog::set_selection(int index)
 	fullscreen_button_.hide(hide_display);
 	video_mode_button_.hide(hide_display);
 	theme_button_.hide(hide_display);
-	flip_time_button_.hide(hide_display);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
 	music_button_.hide(hide_sound);

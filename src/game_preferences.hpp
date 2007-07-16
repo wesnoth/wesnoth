@@ -144,9 +144,6 @@ namespace preferences {
 	bool show_haloes();
 	void set_show_haloes(bool value);
 
-	bool flip_time();
-	void set_flip_time(bool value);
-
 	bool upload_log();
 	void set_upload_log(bool value);
 	const std::string upload_id();
