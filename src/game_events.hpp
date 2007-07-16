@@ -85,7 +85,7 @@ void raise(const std::string& event,
 		  const config& data=config());
 
 bool conditional_passed(const unit_map* units,
-                        const vconfig cond);
+                        const vconfig cond, bool backwards_compat=true);
 bool pump();
 
 //the count of game event mutations to the unit_map
