@@ -99,6 +99,29 @@ void editor_display::draw(bool update,bool force)
 		wassert(invalidated_.empty());
 	}
 
+	// fill in the terrain report
+	if(map_.on_board(mouseoverHex_)) {
+		const t_translation::t_letter terrain = map_.get_terrain(mouseoverHex_);
+		const t_translation::t_list& underlying = map_.underlying_union_terrain(terrain);
+
+		std::stringstream str;
+		str << map_.get_terrain_info(terrain).name();
+		if(underlying.size() != 1 || underlying.front() != terrain) {
+			str << " (";
+
+			for(t_translation::t_list::const_iterator i = 
+					underlying.begin(); i != underlying.end(); ++i) {
+
+			str << map_.get_terrain_info(*i).name();
+				if(i+1 != underlying.end()) {
+					str << ",";
+				}
+			}
+			str << ")";
+		}
+		refresh_report(reports::TERRAIN, reports::report(str.str()));
+	}
+
 	display::draw_wrap(update, force, changed);
 }
 
