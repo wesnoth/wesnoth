@@ -620,21 +620,10 @@ void game_display::draw(bool update,bool force)
 	display::draw_wrap(update, force, changed);
 }
 
-void game_display::draw_report(reports::TYPE report_num)
+void game_display::refresh_report(reports::TYPE report_num, reports::report report)
 {
-	if(!team_valid()) {
-		return;
-	}
-
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
-
-		reports::report report = reports::generate_report(report_num,report_,map_,
-				units_, teams_,
-		      teams_[viewing_team()],
-				size_t(currentTeam_+1),size_t(activeTeam_+1),
-				selectedHex_,mouseoverHex_,status_,observers_);
-
 		SDL_Rect& rect = reportRects_[report_num];
 		const SDL_Rect& new_rect = item->location(screen_area());
 
@@ -756,26 +745,6 @@ void game_display::draw_report(reports::TYPE report_num)
 					area.h = minimum<int>(rect.h + rect.y - y, img->h);
 					draw_image_for_report(img, area);
 
-					// draw illuminated time
-					if(report_num == reports::TIME_OF_DAY && img != NULL) {
-						time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
-						// don't show illuminated time on fogged/shrouded tiles
-						if (teams_[viewing_team()].fogged(mouseoverHex_.x, mouseoverHex_.y) || 
-								teams_[viewing_team()].shrouded(mouseoverHex_.x, mouseoverHex_.y)) {
-
-							tod = status_.get_time_of_day(false,mouseoverHex_);
-						}
-						if(tod.bonus_modified > 0) {
-							surface tod_bright(image::get_image(game_config:: tod_bright_image,image::UNSCALED));
-							if(tod_bright != NULL) {
-								draw_image_for_report(tod_bright,area);
-//								std::stringstream mod_str;
-//								mod_str << "+" << tod.bonus_modified << "%";
-//								font::draw_text(&screen_,rect,item->font_size(),font::DARK_COLOUR,mod_str.str(),area.x+2,area.y+2);
-							}
-						}
-					}
-
 					image_count++;
 					if(area.h > tallest) {
 						tallest = area.h;
@@ -806,6 +775,21 @@ void game_display::draw_report(reports::TYPE report_num)
 	} else {
 		reportSurfaces_[report_num].assign(NULL);
 	}
+}
+
+void game_display::draw_report(reports::TYPE report_num)
+{
+	if(!team_valid()) {
+		return;
+	}
+
+	reports::report report = reports::generate_report(report_num,report_,map_,
+							  units_, teams_,
+							  teams_[viewing_team()],
+							  size_t(currentTeam_+1),size_t(activeTeam_+1),
+							  selectedHex_,mouseoverHex_,status_,observers_);
+
+	refresh_report(report_num, report);
 }
 
 void game_display::draw_game_status()
