@@ -29,7 +29,7 @@
 # Note: You can shut wmmlint up about custom terrains by havung a comment
 # on the same line that includes the string "wmllint: ignore".
 
-import sys, os, re, getopt, curses.ascii, string, copy
+import sys, os, re, getopt, string, copy
 from wesnoth.wmltools import *
 
 filemoves = {
