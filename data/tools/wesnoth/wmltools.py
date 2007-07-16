@@ -335,7 +335,6 @@ if sys.platform.startswith("win"):
 else:
     mv = "mv"
     rm = "rm"
-fi
 
 vcdir = ".svn"
 
