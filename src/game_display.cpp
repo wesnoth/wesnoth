@@ -67,7 +67,7 @@ static surface adjust_border(surface const &surf, const int direction)
 	{
 		surface_lock lock(nsurf);
 		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		//Uint32* end = beg + nsurf->w*surf->h;
 
 		const int top_down = 1;
 		const int left_right = 2;
