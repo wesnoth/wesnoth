@@ -55,7 +55,7 @@ namespace preferences {
 
 	const std::vector<game_config::server_info>& server_list();
 
-	const std::string& network_host();
+	const std::string network_host();
 	void set_network_host(const std::string& host);
 
 	const std::string campaign_server();

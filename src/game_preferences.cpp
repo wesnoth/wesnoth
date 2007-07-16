@@ -164,9 +164,9 @@ const std::vector<game_config::server_info>& server_list()
 	return pref_servers;
 }
 
-const std::string& network_host()
+const std::string network_host()
 {
-	const std::string& res = preferences::get("host");
+	const std::string res = preferences::get("host");
 	if(res.empty())
 		return server_list().front().address;
 	else
