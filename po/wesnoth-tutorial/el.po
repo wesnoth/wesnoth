@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-15 13:03+0200\n"
+"POT-Creation-Date: 2007-07-17 18:01+0200\n"
 "PO-Revision-Date: 2007-07-01 02:02+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <konsnos@hotmail.com>\n"
 "Language-Team: none\n"
@@ -1021,9 +1021,13 @@ msgstr ""
 "Όχι! Είπα ανακάλεσε $recall_name1, όχι $recall_name2|! Ξαναπροσπάθησε..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:760
+#, fuzzy
+#| msgid ""
+#| "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
+#| "$recruit.type|! Now try again..."
 msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
-"$recruit.type|! Now try again..."
+"$recruit.language_name|! Now try again..."
 msgstr ""
 "Όχι! Είπα ΑΝΑΚΑΛΕΣΕ $recall_name1 από την προηγούμενη μάχη, όχι να "
 "στρατολογήσεις $recruit.type|! Ξαναπροσπάθησε..."
@@ -1044,7 +1048,12 @@ msgstr ""
 "Ξωτικοπολεμιστή."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:798
-msgid "$recruit.type|? I said RECRUIT a new ELVISH FIGHTER. Now try again..."
+#, fuzzy
+#| msgid ""
+#| "$recruit.type|? I said RECRUIT a new ELVISH FIGHTER. Now try again..."
+msgid ""
+"$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
+"again..."
 msgstr ""
 "$recruit.type|? Είπα ΑΝΑΚΑΛΕΣΕ έναν νέο ΞΩΤΙΚΟΠΟΛΕΜΙΣΤΗ. Ξαναπροσπάθησε..."
 

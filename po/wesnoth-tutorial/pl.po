@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-15 13:03+0200\n"
+"POT-Creation-Date: 2007-07-17 18:01+0200\n"
 "PO-Revision-Date: 2007-06-17 19:05+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -1030,9 +1030,13 @@ msgstr ""
 "raz..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:760
+#, fuzzy
+#| msgid ""
+#| "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
+#| "$recruit.type|! Now try again..."
 msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
-"$recruit.type|! Now try again..."
+"$recruit.language_name|! Now try again..."
 msgstr ""
 "Nie! Powiedziałem PRZYWOŁAĆ $recall_name1 z poprzedniej bitwy, a nie "
 "rekrutować $recruit.type|! Spróbuj jeszcze raz..."
@@ -1055,7 +1059,12 @@ msgstr ""
 "elfickiego wojownika."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:798
-msgid "$recruit.type|? I said RECRUIT a new ELVISH FIGHTER. Now try again..."
+#, fuzzy
+#| msgid ""
+#| "$recruit.type|? I said RECRUIT a new ELVISH FIGHTER. Now try again..."
+msgid ""
+"$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
+"again..."
 msgstr "$recruit.type|? To miał być elficki WOJOWNIK! Spróbuj jeszcze raz..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:812
