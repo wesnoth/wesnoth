@@ -29,7 +29,7 @@
 # Note: You can shut wmmlint up about custom terrains by havung a comment
 # on the same line that includes the string "wmllint: ignore".
 
-import sys, os, re, getopt, string, copy
+import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
 
 filemoves = {
@@ -860,8 +860,13 @@ if __name__ == '__main__':
             elif diffs:
                 # Display diffs
                 if os.path.exists(backup):
-                    print fn
-                    os.system("diff -u %s %s" % (backup, fn))
+                    fromdate = time.ctime(os.stat(backup).st_mtime)
+                    todate = time.ctime(os.stat(fn).st_mtime)
+                    fromlines = open(backup, 'U').readlines()
+                    tolines = open(fn, 'U').readlines()
+                    diff = difflib.unified_diff(fromlines, tolines,
+                                         backup, fn, fromdate, todate, n=3)
+                    sys.stdout.writelines(diff)
             else:
                 # Do file conversions
                 try:
