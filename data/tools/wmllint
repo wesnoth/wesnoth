@@ -449,6 +449,34 @@ def validate_stack(stack, filename, lineno):
 def validate_on_pop(tagstack, closer, file, lineno):
     pass
 
+def hack_attacks(lines):
+    "Ensure that every attack has a translatable description."
+    modcount = 0
+    for i in range(len(lines)):
+        if "[attack]" in lines[i]:
+            j = i;
+            have_description = False
+            while '[/attack]' not in lines[j]:
+                if lines[j].strip().startswith("description"):
+                    have_description = True
+                j += 1
+            if not have_description:
+                j = i
+                while '[/attack]' not in lines[j]:
+                    if lines[j].strip().startswith("name"):
+                        description = lines[j].split("=")[1].strip()
+                        if not description.startswith('"'):
+                            description = '"' + description + '"\n'
+                        leader = lines[j][:lines[j].find("name")]
+                        new_line = leader + "description=_"+description
+                        if verbose:
+                            print "wmllint: inserting %s" % `new_line`
+                        lines.insert(j+1, new_line)
+                        j += 1
+                        modcount += 1
+                    j += 1
+    return modcount
+
 # Generic machinery starts here
 
 class maptransform_error:
@@ -593,8 +621,10 @@ def translator(filename, mapxforms, textxform):
     # which files get a .map extension.
     if "maps" in filename:
         modified_maps[filename] = modified
+    # OK, now perform WML rewrites
+    hacked = hack_attacks(newdata)
     # Return None if the transformation functions made no changes.
-    if modified:
+    if modified or hacked:
         return "".join(newdata)
     else:
         return None
