@@ -507,6 +507,7 @@ void game_display::draw(bool update,bool force)
 					// get the rendered part
 					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 			
+#if 0				
 					surface buffer(get_surface_portion(screen_.getSurface(), rect));
 
 					// apply the alpha
@@ -514,11 +515,15 @@ void game_display::draw(bool update,bool force)
 
 					// put the image back
 					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
-
+#else
+					const surface border(image::get_image("terrain/off-map/fade_border_left.png", image::SCALED_TO_ZOOM));
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+#endif
 				} else if(it->x == map_.x()) {
 					// get the rendered part
 					SDL_Rect rect = { xpos + 1 * zoom_/4 , ypos, zoom_/2, zoom_ } ;
 			
+#if 0				 
 					surface buffer(get_surface_portion(screen_.getSurface(), rect));
 
 					// apply the alpha
@@ -526,6 +531,10 @@ void game_display::draw(bool update,bool force)
 
 					// put the image back
 					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
+#else
+					const surface border(image::get_image("terrain/off-map/fade_border_right.png", image::SCALED_TO_ZOOM));
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+#endif
 
 #if 0
 				} else if(it->y == -1) {
