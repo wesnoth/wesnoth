@@ -287,6 +287,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		return report("",u->second.profile(),"");
 	case TIME_OF_DAY: {
 		time_of_day tod = timeofday_at(status,units,mouseover,map);
+		const std::string tod_image = tod.image + (preferences::flip_time() ? "~FL(horiz)" : "");
+		
 		// don't show illuminated time on fogged/shrouded tiles
 		if (current_team.fogged(mouseover.x,mouseover.y) || current_team.shrouded(mouseover.x,mouseover.y)) {
 			tod = status.get_time_of_day(false,mouseover);
@@ -300,7 +302,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				<< _("Chaotic units: ")
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
 
-		return report("",tod.image,tooltip.str());
+		return report("",tod_image,tooltip.str());
 	}
 	case TURN:
 		str << status.turn();
