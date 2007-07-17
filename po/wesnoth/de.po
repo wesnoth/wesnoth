@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-17 18:00+0200\n"
-"PO-Revision-Date: 2007-07-13 13:53+0100\n"
+"PO-Revision-Date: 2007-07-17 11:34+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -1573,22 +1573,16 @@ msgstr ""
 "wertvoll im Kampf gegen Feinde, die mit vergifteten Waffen angreifen."
 
 #: data/core/help.cfg:331
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "trait^Mechanical"
-msgstr "Kriegsgerät"
+msgstr "mechanisch"
 
 #: data/core/help.cfg:332
-#, fuzzy
-#| msgid ""
-#| "Undead units are immune to poison, also drain and plague doesn't work on "
-#| "them."
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Untote Einheiten sind immun gegen Gift. Lebensentzug und untote Plage haben "
-"ebenfalls keinen Einfluss auf sie."
+"Kriegsgeräte werden durch Gift, Lebensentzug und Untote Plage nicht "
+"beeinflusst."
 
 #: data/core/help.cfg:334
 msgid ""
@@ -1598,6 +1592,12 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Da Kriegsgeräte künstlich erschaffene Hilfsmittel sind, besitzen sie nur die "
+"Charakteristik »Mechanisch«. Da man nicht davon ausgehen kann, dass "
+"Kriegsgeräte in irgendeiner Form Leben beinhalten, sind sie gegen den "
+"Einfluss von Gift, Lebensentzug sowie Untote Plage immun."
 
 #: data/core/help.cfg:339
 msgid "Dextrous"
@@ -2223,12 +2223,6 @@ msgid "Impassable Mountain"
 msgstr "Unpassierbare Berge"
 
 #: data/core/help.cfg:594
-#, fuzzy
-#| msgid ""
-#| "Impassable mountains are so tall and steep that they are constantly "
-#| "wreathed in cloud.  To cross such moutains is practically impossible. "
-#| "Even flying creatures cannot navigate the jagged peaks at such rarified "
-#| "heights."
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
@@ -4076,20 +4070,14 @@ msgid "female^undead"
 msgstr "untot"
 
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:34
-#, fuzzy
-#| msgid "Immune to poison"
 msgid "Immune to drain, poison and plague"
-msgstr "Immun gegen Gift"
+msgstr "Immun gegen Lebensentzug, Gift und Untote Plage"
 
 #: data/core/macros/traits.cfg:32
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "mechanical"
 msgstr "Kriegsgerät"
 
 #: data/core/macros/traits.cfg:33
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "female^mechanical"
 msgstr "Kriegsgerät"
 
