@@ -684,11 +684,6 @@ std::set<t_translation::t_letter> &encountered_terrains() {
 	return encountered_terrains_set;
 }
 
-bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs)
-{
-	return lhs.first*lhs.second < rhs.first*rhs.second;
-}
-
 bool green_confirm()
 {
 	std::string confirmation = preferences::get("confirm_end_turn");

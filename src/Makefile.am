@@ -287,6 +287,7 @@ reduced_editor_sources = \
 	marked-up_text.cpp \
 	minimap.cpp \
 	preferences.cpp \
+	preferences_display.cpp \
 	reports.cpp \
 	sdl_utils.cpp \
 	show_dialog.cpp \
