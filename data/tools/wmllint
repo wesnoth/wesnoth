@@ -788,8 +788,8 @@ if __name__ == '__main__':
                         for (old, new) in conversion2.items():
                             transformed = old.sub(new, transformed)
 	# WML syntax changed in 1.3.5
-	transformed = re.sub(r"if\]\s*\[or\]", "if]", transformed);
-	transformed = re.sub(r"if\]([^[*]*)\[/or]", r"if]\1", transformed);
+	transformed = re.sub(r"if]\s*\[or]([\w\W]*?)\[/or]\s*",
+			r"if]\1", transformed);
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
