@@ -88,7 +88,7 @@ int main(int argc, char** argv)
 	CVideo video;
 
 	const font::manager font_manager;
-	const preferences::manager prefs_manager;
+	const preferences::base_manager prefs_manager;
 	const image::manager image_manager;
 	binary_paths_manager paths_manager;
 	std::string filename = "";
