@@ -173,6 +173,8 @@ public:
 	virtual void recruit() {}
 	virtual void repeat_recruit() {}
 	virtual void speak() {}
+	virtual void whisper() {}
+	virtual void shout() {}
 	virtual void create_unit() {}
 	virtual void change_unit_side() {}
 	virtual void preferences() {}

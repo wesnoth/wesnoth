@@ -81,6 +81,8 @@ public:
 	void show_chat_log();
 	void show_help();
 	void speak();
+	void whisper();
+	void shout();
 	void recruit(const bool browse, const unsigned int team_num, const gamemap::location& last_hex);
 	void repeat_recruit(const unsigned int team_num, const gamemap::location& last_hex);
 	void recall(const unsigned int team_num, const gamemap::location& last_hex);

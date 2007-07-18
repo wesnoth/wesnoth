@@ -54,6 +54,14 @@ void playmp_controller::speak(){
 	menu_handler_.speak();
 }
 
+void playmp_controller::whisper(){
+	menu_handler_.whisper();
+}
+
+void playmp_controller::shout(){
+	menu_handler_.shout();
+}
+
 void playmp_controller::play_side(const unsigned int team_index, bool save){
 	do {
 		player_type_changed_ = false;

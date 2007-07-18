@@ -572,12 +572,10 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			speak();
 			break;
 		case HOTKEY_SPEAK_ALLY:
-			preferences::set_message_private(true);
-			speak();
+			whisper();
 			break;
 		case HOTKEY_SPEAK_ALL:
-			preferences::set_message_private(false);
-			speak();
+			shout();
 			break;
 		case HOTKEY_CREATE_UNIT:
 			create_unit();

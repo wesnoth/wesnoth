@@ -675,6 +675,20 @@ namespace events{
 			has_friends() ? _("Send to allies only") : "", preferences::message_private(), *gui_);
 	}
 
+	void menu_handler::whisper()
+	{
+		preferences::set_message_private(true);
+		textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
+			has_friends() ? _("Send to allies only") : "", true, *gui_);
+	}
+
+	void menu_handler::shout()
+	{
+		preferences::set_message_private(false);
+		textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
+			has_friends() ? _("Send to allies only") : "", false, *gui_);
+	}
+
 	bool menu_handler::has_friends() const
 	{
 		if(is_observer()) {

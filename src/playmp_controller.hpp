@@ -35,6 +35,8 @@ protected:
 	virtual void handle_generic_event(const std::string& name);
 
 	virtual void speak();
+	virtual void whisper();
+	virtual void shout();
 	virtual void clear_labels();
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
 
