@@ -2397,8 +2397,10 @@ void unit::add_modification(const std::string& type, const config& mod,
 		} else if(apply_to == "hitpoints") {
 			LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
 			const std::string& increase_hp = (**i.first)["increase"];
+			const std::string& increase_hp_level = (**i.first)["increase_per_level"];
 			const std::string& heal_full = (**i.first)["heal_full"];
 			const std::string& increase_total = (**i.first)["increase_total"];
+			const std::string& increase_total_level = (**i.first)["increase_total_per_level"];
 			const std::string& set_hp = (**i.first)["set"];
 			const std::string& set_total = (**i.first)["set_total"];
 
@@ -2428,6 +2430,14 @@ void unit::add_modification(const std::string& type, const config& mod,
 				max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
 			}
 
+			if(increase_total_level.empty() == false) {
+				description += (increase_total_level[0] != '-' ? "+" : "") + increase_total_level +
+					" " + t_string(N_("HP/level"), "wesnoth");
+
+				//a percentage on the end means increase by that many percent
+				max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total_level, 0, level_);
+			}
+
 			if(max_hit_points_ < 1)
 				max_hit_points_ = 1;
 
@@ -2437,6 +2447,10 @@ void unit::add_modification(const std::string& type, const config& mod,
 
 			if(increase_hp.empty() == false) {
 				hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
+			}
+			
+			if(increase_hp_level.empty() == false) {
+				hit_points_ = utils::apply_modifier(hit_points_, increase_hp_level, 0, level_);
 			}
 
 			LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
@@ -2449,6 +2463,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 				hit_points_ = 1;
 		} else if(apply_to == "movement") {
 			const std::string& increase = (**i.first)["increase"];
+			const std::string& increase_level = (**i.first)["increase_per_level"];
 			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
@@ -2456,6 +2471,13 @@ void unit::add_modification(const std::string& type, const config& mod,
 					" " + t_string(N_("Moves"), "wesnoth");
 
 				max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
+			}
+
+			if(increase_level.empty() == false) {
+				description += (increase_level[0] != '-' ? "+" : "") + increase_level +
+					" " + t_string(N_("Moves/level"), "wesnoth");
+
+				max_movement_ = utils::apply_modifier(max_movement_, increase_level, 1, level_);
 			}
 
 			if(set_to.empty() == false) {

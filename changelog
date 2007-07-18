@@ -38,6 +38,9 @@ Version 1.3.4+svn:
    * now standard unit filter supports [and],[or], and [not] (was just [not])
    * [unstore_unit] can now try to level a unit and does so by default this
      time added for real, the replay can also handle it(bug #7426)
+   * [effect] can add an additionnal bonus per level for movement and hitpoints
+     (new keys for hitpoints: increase_per_level and increase_total_per_level
+      new key for movement: increase_per_level)
  * miscellaneous and bug fixes
    * fix renames causing OOS when made after moves or recruits
    * fix a minor glitch when selecting the leftmost menu heading
