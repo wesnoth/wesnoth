@@ -180,7 +180,7 @@ void set_network_host(const std::string& host)
 
 const std::string campaign_server()
 {
-	if(preferences::get("campaign_server").empty())
+	if(!preferences::get("campaign_server").empty())
 		return preferences::get("campaign_server");
 	else
 		return "campaigns.wesnoth.org";

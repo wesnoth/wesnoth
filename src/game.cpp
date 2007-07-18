@@ -22,7 +22,6 @@
 #include "cursor.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
-#include "game_preferences.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
