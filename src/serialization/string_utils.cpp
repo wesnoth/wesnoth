@@ -322,13 +322,12 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 }
 
 // modify a number by string representing integer difference, or optionally %
-int apply_modifier( const int number, const std::string &amount, const int minimum, const int times ) {
+int apply_modifier( const int number, const std::string &amount, const int minimum ) {
 	// wassert( amount.empty() == false );
 	int value = atoi(amount.c_str());
 	if(amount[amount.size()-1] == '%') {
 		value = div100rounded(number * value);
 	}
-	value *= times;
 	value += number;
 	if (( minimum > 0 ) && ( value < minimum ))
 	    value = minimum;

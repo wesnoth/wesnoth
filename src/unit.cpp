@@ -2344,10 +2344,18 @@ void unit::add_modification(const std::string& type, const config& mod,
 			}
 		}
 
-		t_string description;
 
 		const std::string& apply_to = (**i.first)["apply_to"];
+		const std::string& apply_times = (**i.first)["times"];
+		int times = 1;
+		if (apply_times == "per level")
+			times = level_;
 
+	   while (times > 0) {
+
+		t_string description;
+
+		times--;
 		//apply variations -- only apply if we are adding this
 		//for the first time.
 		if(apply_to == "variation" && no_add == false) {
@@ -2388,19 +2396,19 @@ void unit::add_modification(const std::string& type, const config& mod,
 					if(first_attack) {
 						first_attack = false;
 					} else {
-						description += t_string(N_("; "), "wesnoth");
+						if (!times)
+							description += t_string(N_("; "), "wesnoth");
 					}
 
-					description += t_string(a->name(), "wesnoth") + " " + desc;
+					if (!times)
+						description += t_string(a->name(), "wesnoth") + " " + desc;
 				}
 			}
 		} else if(apply_to == "hitpoints") {
 			LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
 			const std::string& increase_hp = (**i.first)["increase"];
-			const std::string& increase_hp_level = (**i.first)["increase_per_level"];
 			const std::string& heal_full = (**i.first)["heal_full"];
 			const std::string& increase_total = (**i.first)["increase_total"];
-			const std::string& increase_total_level = (**i.first)["increase_total_per_level"];
 			const std::string& set_hp = (**i.first)["set"];
 			const std::string& set_total = (**i.first)["set_total"];
 
@@ -2423,19 +2431,12 @@ void unit::add_modification(const std::string& type, const config& mod,
 			}
 
 			if(increase_total.empty() == false) {
-				description += (increase_total[0] != '-' ? "+" : "") + increase_total +
-					" " + t_string(N_("HP"), "wesnoth");
+				if (!times)
+					description += (increase_total[0] != '-' ? "+" : "") + increase_total +
+						" " + t_string(N_("HP"), "wesnoth");
 
 				//a percentage on the end means increase by that many percent
 				max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
-			}
-
-			if(increase_total_level.empty() == false) {
-				description += (increase_total_level[0] != '-' ? "+" : "") + increase_total_level +
-					" " + t_string(N_("HP/level"), "wesnoth");
-
-				//a percentage on the end means increase by that many percent
-				max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total_level, 0, level_);
 			}
 
 			if(max_hit_points_ < 1)
@@ -2449,10 +2450,6 @@ void unit::add_modification(const std::string& type, const config& mod,
 				hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
 			}
 			
-			if(increase_hp_level.empty() == false) {
-				hit_points_ = utils::apply_modifier(hit_points_, increase_hp_level, 0, level_);
-			}
-
 			LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
 			if(hit_points_ > max_hit_points_ && violate_max.empty()) {
 				LOG_UT << "resetting hp to max\n";
@@ -2463,21 +2460,14 @@ void unit::add_modification(const std::string& type, const config& mod,
 				hit_points_ = 1;
 		} else if(apply_to == "movement") {
 			const std::string& increase = (**i.first)["increase"];
-			const std::string& increase_level = (**i.first)["increase_per_level"];
 			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
-				description += (increase[0] != '-' ? "+" : "") + increase +
-					" " + t_string(N_("Moves"), "wesnoth");
+				if (!times)
+					description += (increase[0] != '-' ? "+" : "") + increase +
+						" " + t_string(N_("Moves"), "wesnoth");
 
 				max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
-			}
-
-			if(increase_level.empty() == false) {
-				description += (increase_level[0] != '-' ? "+" : "") + increase_level +
-					" " + t_string(N_("Moves/level"), "wesnoth");
-
-				max_movement_ = utils::apply_modifier(max_movement_, increase_level, 1, level_);
 			}
 
 			if(set_to.empty() == false) {
@@ -2489,10 +2479,11 @@ void unit::add_modification(const std::string& type, const config& mod,
 		} else if(apply_to == "max_experience") {
 			const std::string& increase = (**i.first)["increase"];
 
-			if(increase.empty() == false) {
-				description += (increase[0] != '-' ? "+" : "") +
-					increase + " " +
-					t_string(N_("XP to advance"), "wesnoth");
+			if(increase.empty() == false) {		
+				if (!times)
+					description += (increase[0] != '-' ? "+" : "") +
+						increase + " " +
+						t_string(N_("XP to advance"), "wesnoth");
 
 				max_experience_ = utils::apply_modifier(max_experience_, increase);
 			}
@@ -2565,8 +2556,13 @@ void unit::add_modification(const std::string& type, const config& mod,
 			LOG_UT << "applying image_mod \n";
 		}
 
+		if (apply_times == "per level" && !times)
+			description += t_string(N_("/level"), "wesnoth");
+
 		if(!description.empty())
 			effects_description.push_back(description);
+			
+	   } /* end while */
 	}
 
 	t_string& description = modification_descriptions_[type];
