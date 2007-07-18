@@ -544,21 +544,25 @@ void game_display::draw(bool update,bool force)
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 #endif
 
-#if 0
 				} else if(it->y == -1) {
 					// get the rendered part
 					SDL_Rect rect;// = { xpos, ypos + ((it->x%2 == 1) ? 0 : zoom_/2), zoom_, zoom_/2 } ;
+					surface border;
 					if(it->x%2 == 1) {
 						rect.x = xpos;
 						rect.y = ypos;
 						rect.w = zoom_;
 						rect.h = zoom_/2;
+						border = image::get_image("terrain/off-map/fade_border_top_odd.png", image::SCALED_TO_ZOOM);
 					} else {
-						rect.x = xpos + zoom_/4;
+						rect.x = xpos /*+ zoom_/4*/;
 						rect.y = ypos + zoom_/2;
-						rect.w = zoom_/2;
+						rect.w = zoom_/*/2*/;
 						rect.h = zoom_/2;
+						border = image::get_image("terrain/off-map/fade_border_top_even.png", image::SCALED_TO_ZOOM);
 					}
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+#if 0
 
 			
 					surface buffer(get_surface_portion(screen_.getSurface(), rect));
@@ -569,21 +573,27 @@ void game_display::draw(bool update,bool force)
 					// put the image back
 					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
 
+#endif				
 				} else if(it->y == map_.y()) {
 					// get the rendered part
 					SDL_Rect rect;// = { xpos, ypos + ((it->x%2 == 1) ? 0 : zoom_/2), zoom_, zoom_/2 } ;
+					surface border;
 					if(it->x%2 == 1) {
-						rect.x = xpos + zoom_/4;
+						rect.x = xpos /*+ zoom_/4*/;
 						rect.y = ypos;
-						rect.w = zoom_/2;
+						rect.w = zoom_/*/2*/;
 						rect.h = zoom_/2;
+						border = image::get_image("terrain/off-map/fade_border_bottom_odd.png", image::SCALED_TO_ZOOM);
 					} else {
 						rect.x = xpos;
 						rect.y = ypos + zoom_/2;
 						rect.w = zoom_;
 						rect.h = zoom_/2;
+						border = image::get_image("terrain/off-map/fade_border_bottom_even.png", image::SCALED_TO_ZOOM);
 					}
-			
+
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+#if 0
 					surface buffer(get_surface_portion(screen_.getSurface(), rect));
 
 					// apply the alpha
