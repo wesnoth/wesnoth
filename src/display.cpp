@@ -1593,7 +1593,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 					area.h = minimum<int>(rect.h + rect.y - y, img->h);
 					draw_image_for_report(img, area);
 
-					if(brighten > 0) {
+					if(brighten) {
 						surface tod_bright(image::get_image(game_config:: tod_bright_image,image::UNSCALED));
 						if(tod_bright != NULL) {
 							draw_image_for_report(tod_bright,area);
