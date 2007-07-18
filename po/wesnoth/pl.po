@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-17 23:31+0200\n"
-"PO-Revision-Date: 2007-06-22 16:07+0100\n"
+"PO-Revision-Date: 2007-07-16 12:21+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,6 @@ msgstr "Tłumaczenie francuskie"
 
 #: data/core/about.cfg:508
 #, fuzzy
-#| msgid "Valencian Translation"
 msgid "Galician Translation"
 msgstr "Tłumaczenie walenckie"
 
@@ -252,9 +251,8 @@ msgid "Latin Translation"
 msgstr "Tłumaczenie łacińskie"
 
 #: data/core/about.cfg:618
-#, fuzzy
 msgid "Lithuanian Translation"
-msgstr "Tłumaczenie włoskie"
+msgstr "Tłumaczenie litewskie"
 
 #: data/core/about.cfg:625
 msgid "Norwegian Translation"
@@ -1552,21 +1550,15 @@ msgstr ""
 "którzy używają w swoich atakach trucizny."
 
 #: data/core/help.cfg:331
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "trait^Mechanical"
 msgstr "Mechaniczne"
 
 #: data/core/help.cfg:332
-#, fuzzy
-#| msgid ""
-#| "Undead units are immune to poison, also drain and plague doesn't work on "
-#| "them."
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Jednostki nieumarłe są odporne na truciznę oraz ataki z wyssaniem życia i "
+"Jednostki mechaniczne są odporne na truciznę oraz ataki z wyssaniem życia i "
 "zarazą."
 
 #: data/core/help.cfg:334
@@ -1577,6 +1569,11 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Jedyną cechą jednostek mechanicznych jest na ogół \"mechaniczna\". Ponieważ "
+"jednostki mechaniczne nie są ożywione, są one odporne na wyssanie życia, "
+"truciznę i zarazę."
 
 #: data/core/help.cfg:339
 msgid "Dextrous"
@@ -2183,12 +2180,6 @@ msgid "Impassable Mountain"
 msgstr "Nieprzebyta góra"
 
 #: data/core/help.cfg:594
-#, fuzzy
-#| msgid ""
-#| "Impassable mountains are so tall and steep that they are constantly "
-#| "wreathed in cloud.  To cross such moutains is practically impossible. "
-#| "Even flying creatures cannot navigate the jagged peaks at such rarified "
-#| "heights."
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
@@ -2616,7 +2607,6 @@ msgstr ""
 "nieumarłych ani jednostek w wioskach)."
 
 #: data/core/macros/abilities.cfg:479
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2624,9 +2614,9 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Zaraza:\n"
-"Jednostka zabita atakiem z zarazą zostaje zastąpiona jednostką identyczną do "
-"tej, która ją zabiła, i stojącą po tej samej stronie. (Nie dotyczy to "
-"nieumarłych ani jednostek w wioskach)."
+"Jednostka zabita atakiem z zarazą zostaje zastąpiona chodzącym trupem "
+"stojącym po tej samej stronie, co jednostka atakująca. Zaraza nie działa na "
+"nieumarłych ani jednostki w wioskach."
 
 #: data/core/macros/abilities.cfg:489
 msgid "slows"
@@ -3996,22 +3986,16 @@ msgid "female^undead"
 msgstr "nieumarła"
 
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:34
-#, fuzzy
-#| msgid "Immune to poison"
 msgid "Immune to drain, poison and plague"
-msgstr "Odporny na truciznę"
+msgstr "Odporne na wyssanie życia, truciznę i zarazę"
 
 #: data/core/macros/traits.cfg:32
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "mechanical"
-msgstr "Mechaniczne"
+msgstr "mechaniczny"
 
 #: data/core/macros/traits.cfg:33
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "female^mechanical"
-msgstr "Mechaniczne"
+msgstr "mechaniczna"
 
 #: data/core/macros/traits.cfg:42
 msgid "strong"
@@ -4896,9 +4880,8 @@ msgid "play side turn"
 msgstr "rozegraj turę strony"
 
 #: data/themes/macros.cfg:136
-#, fuzzy
 msgid "Point of view"
-msgstr "Eliksir rozkładu"
+msgstr "Punkt widzenia"
 
 #: data/themes/macros.cfg:148
 msgid "Skip animation"
@@ -5084,14 +5067,14 @@ msgid "No Saved Games"
 msgstr "Brak zapisanych gier"
 
 #: src/dialogs.cpp:542
-#, fuzzy
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "Nie ma zapisanych gier do wczytania.\n"
-"(Gra jest zapisywana automatycznie na końcu scenariusza)"
+"\n"
+"(Gra jest zapisywana automatycznie pod koniec scenariusza)"
 
 #: src/dialogs.cpp:555
 msgid "Delete Save"
@@ -5554,9 +5537,8 @@ msgid "Observers:"
 msgstr "Obserwatorzy:"
 
 #: src/help.cpp:1104
-#, fuzzy
 msgid "Advances from: "
-msgstr "Awans z"
+msgstr "Awansuje z:"
 
 #: src/help.cpp:1126
 msgid "Advances to: "
