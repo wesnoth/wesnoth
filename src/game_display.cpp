@@ -48,117 +48,6 @@
 #define ERR_DP LOG_STREAM(err, display)
 #define INFO_DP LOG_STREAM(info, display)
 
-/**
- * New experimental function to give the border a fade to black effect
- *
- * based on the darken function
- */
-static surface adjust_border(surface const &surf, const int direction)
-{
-	if(surf == NULL)
-		return NULL;
-
-	surface nsurf(make_neutral_surface(surf));
-	if(nsurf == NULL) {
-		std::cerr << "failed to make neutral surface\n";
-		return NULL;
-	}
-
-	{
-		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		//Uint32* end = beg + nsurf->w*surf->h;
-
-		const int top_down = 1;
-		const int left_right = 2;
-		const int bottom_up = 3;
-		const int right_left = 4;
-
-		// the higher the number the more the colour will be blended
-		double upper = 128;
-		double lower = 255;
-
-		// the new target colour
-		const unsigned r_ = 99;
-		const unsigned g_ = 84;
-		const unsigned b_ = 55;
-
-		double step;
-		double amount; 
-
-		switch(direction) {
-			case top_down: 
-				amount = lower;
-				step = - ((upper - lower) / surf->h);
-				break;
-
-			case bottom_up:
-				amount = upper;
-				step = (upper - lower) / surf->h;
-				break;
-
-			case left_right:
-				amount = lower;
-				step = -((upper - lower) / surf->w);
-				break;
-
-			case right_left:
-				amount = upper;
-				step = (upper - lower) / surf->w;
-				break;
-
-		}
-
-		const int x_max = (direction%2 == 1 ? surf->w : surf->h);
-		const int y_max = (direction%2 == 0 ? surf->w : surf->h);
-		for(int x = 0; x < x_max; ++x) {
-			for(int y = 0; y < y_max; ++y, ++beg) {
-
-				Uint8 red, green, blue, alpha;
-				SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
-
-				// blend to the new colour
-				unsigned r = static_cast<unsigned>(r_ * amount + red   * (255 - amount)) >> 8;
-				unsigned g = static_cast<unsigned>(g_ * amount + green * (255 - amount)) >> 8;
-				unsigned b = static_cast<unsigned>(b_ * amount + blue  * (255 - amount)) >> 8;
-
-				// clip at maximum
-				if(r > 255) r = 255;
-				if(g > 255) g = 255;
-				if(b > 255) b = 255;
-
-				*beg = SDL_MapRGBA(nsurf->format,r,g,b,alpha);
-
-				switch(direction) {
-					case left_right:
-					case right_left:
-						amount -= step;
-						break;
-				}
-			}
-
-			// set next run
-			switch(direction) {
-				case top_down:
-				case bottom_up:
-					amount -= step;
-					break;
-
-				case left_right:
-					amount = lower;
-					break;
-
-				case right_left:
-					amount = upper;
-					break;
-			}
-
-		}
-	}
-
-	return create_optimized_surface(nsurf);
-}
-
 std::map<gamemap::location,fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
@@ -512,96 +401,48 @@ void game_display::draw(bool update,bool force)
 			// note we assume a half time border!!!
 			if(!on_map && map_.get_terrain(*it) != t_translation::OFF_MAP_USER) {
 				if(it->x == -1) {
-					// get the rendered part
 					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
-			
-#if 0				
-					surface buffer(get_surface_portion(screen_.getSurface(), rect));
-
-					// apply the alpha
-					buffer = adjust_border(buffer, 2);
-
-					// put the image back
-					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
-#else
 					const surface border(image::get_image("terrain/off-map/fade_border_left.png", image::SCALED_TO_ZOOM));
+
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
-#endif
+
 				} else if(it->x == map_.x()) {
-					// get the rendered part
 					SDL_Rect rect = { xpos + 1 * zoom_/4 , ypos, zoom_/2, zoom_ } ;
-			
-#if 0				 
-					surface buffer(get_surface_portion(screen_.getSurface(), rect));
-
-					// apply the alpha
-					buffer = adjust_border(buffer, 4);
-
-					// put the image back
-					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
-#else
 					const surface border(image::get_image("terrain/off-map/fade_border_right.png", image::SCALED_TO_ZOOM));
+
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
-#endif
 
 				} else if(it->y == -1) {
-					// get the rendered part
-					SDL_Rect rect;// = { xpos, ypos + ((it->x%2 == 1) ? 0 : zoom_/2), zoom_, zoom_/2 } ;
+					SDL_Rect rect = { xpos, -1 , zoom_, -1 } ;
 					surface border;
+
 					if(it->x%2 == 1) {
-						rect.x = xpos;
 						rect.y = ypos;
-						rect.w = zoom_;
 						rect.h = zoom_/2;
 						border = image::get_image("terrain/off-map/fade_border_top_odd.png", image::SCALED_TO_ZOOM);
 					} else {
-						rect.x = xpos /*+ zoom_/4*/;
 						rect.y = ypos + zoom_/2;
-						rect.w = zoom_/*/2*/;
 						rect.h = zoom_/2;
 						border = image::get_image("terrain/off-map/fade_border_top_even.png", image::SCALED_TO_ZOOM);
 					}
+
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
-#if 0
 
-			
-					surface buffer(get_surface_portion(screen_.getSurface(), rect));
-
-					// apply the alpha
-					buffer = adjust_border(buffer, 1);
-
-					// put the image back
-					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
-
-#endif				
 				} else if(it->y == map_.y()) {
-					// get the rendered part
-					SDL_Rect rect;// = { xpos, ypos + ((it->x%2 == 1) ? 0 : zoom_/2), zoom_, zoom_/2 } ;
+					SDL_Rect rect = { xpos, -1 , zoom_, -1 } ;
 					surface border;
+
 					if(it->x%2 == 1) {
-						rect.x = xpos /*+ zoom_/4*/;
 						rect.y = ypos;
-						rect.w = zoom_/*/2*/;
 						rect.h = zoom_/2;
 						border = image::get_image("terrain/off-map/fade_border_bottom_odd.png", image::SCALED_TO_ZOOM);
 					} else {
-						rect.x = xpos;
 						rect.y = ypos + zoom_/2;
-						rect.w = zoom_;
 						rect.h = zoom_/2;
 						border = image::get_image("terrain/off-map/fade_border_bottom_even.png", image::SCALED_TO_ZOOM);
 					}
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
-#if 0
-					surface buffer(get_surface_portion(screen_.getSurface(), rect));
-
-					// apply the alpha
-					buffer = adjust_border_alpha(buffer, 3);
-
-					// put the image back
-					SDL_BlitSurface( buffer, NULL, screen_.getSurface(), &rect);
-#endif
 				}
 			}
 		}
