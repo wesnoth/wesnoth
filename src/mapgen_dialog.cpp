@@ -99,7 +99,7 @@ void default_map_generator::user_config(display& disp)
 	gui::button close_button(screen,_("Close Window"));
 	std::vector<gui::button*> buttons(1,&close_button);
 
-	gui::dialog_frame f(screen,_("Map Generator"),gui::dialog_frame::default_style,false,&buttons);
+	gui::dialog_frame f(screen,_("Map Generator"),gui::dialog_frame::default_style,true,&buttons);
 	f.layout(xpos,ypos,width,height);
 	f.draw();
 
