@@ -400,14 +400,49 @@ void game_display::draw(bool update,bool force)
 			// to the hex shape of the tile
 			// note we assume a half time border!!!
 			if(!on_map && map_.get_terrain(*it) != t_translation::OFF_MAP_USER) {
-				if(it->x == -1) {
+				// first handle the corners 
+				if(it->x == -1 && it->y == -1) {
+					SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
+					const surface border(image::get_image("terrain/off-map/fade_corner_topleft.png", image::SCALED_TO_ZOOM));
+
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+
+				} else if(it->x == map_.x() && it->y == -1) {
+					SDL_Rect rect = { xpos - zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
+					const surface border(image::get_image("terrain/off-map/fade_corner_topright.png", image::SCALED_TO_ZOOM));
+
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+
+				} else if(it->x == -1 && it->y == map_.y()) {
+					SDL_Rect rect = { xpos + zoom_/4, -1, 3 * zoom_/4, zoom_ } ;
+					if(it->x%2 == 0) {
+						rect.y = ypos;
+					} else {
+						rect.y = ypos - zoom_/2;
+					}
+					const surface border(image::get_image("terrain/off-map/fade_corner_bottomleft.png", image::SCALED_TO_ZOOM));
+
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+				} else if(it->x == map_.x() && it->y == map_.y()) {
+					SDL_Rect rect = { xpos - zoom_/4, -1, 3 * zoom_/4, zoom_ } ;
+					if(it->x%2 == 0) {
+						rect.y = ypos;
+					} else {
+						rect.y = ypos - zoom_/2;
+					}
+
+					const surface border(image::get_image("terrain/off-map/fade_corner_bottomright.png", image::SCALED_TO_ZOOM));
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+
+				// now handle the sides
+				} else if(it->x == -1) {
 					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 					const surface border(image::get_image("terrain/off-map/fade_border_left.png", image::SCALED_TO_ZOOM));
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
 				} else if(it->x == map_.x()) {
-					SDL_Rect rect = { xpos + 1 * zoom_/4 , ypos, zoom_/2, zoom_ } ;
+					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 					const surface border(image::get_image("terrain/off-map/fade_border_right.png", image::SCALED_TO_ZOOM));
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
