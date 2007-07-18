@@ -177,12 +177,19 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 {
 	singleton_ = this;
 
-	//inits the flag list
+	//inits the flag list and the team colors used by ~TC
 	flags_.reserve(teams_.size());
+
+	std::vector<std::string> side_colors;
+	side_colors.reserve(teams_.size());
+
 	for(size_t i = 0; i != teams_.size(); ++i) {
+		std::string side_color = team::get_side_colour_index(i+1);
+		side_colors.push_back(side_color);
+
 		std::string flag = teams_[i].flag();
 		std::string old_rgb = game_config::flag_rgb;
-		std::string new_rgb = team::get_side_colour_index(i+1);
+		std::string new_rgb = side_color;
 
 		if(flag.empty()) {
 			flag = game_config::flag_image;
@@ -216,6 +223,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 
 		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
+	image::set_team_colors(side_colors);
 
 	//clear the screen contents
 	surface const disp(screen_.getSurface());

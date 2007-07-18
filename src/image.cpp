@@ -50,6 +50,9 @@ std::map<surface, surface> reversed_images_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
+// list of colors used by the TC image modification
+std::vector<std::string> team_colors;
+
 std::string image_mask;
 
 int zoom = image::tile_size;
@@ -316,7 +319,7 @@ surface locator::load_image_sub_file() const
 					break;
 				}
 				std::string field = *j++;
-#if 0
+
 				if("TC" == function){//deprecated team coloring syntax
 					//replace with proper RC syntax
 					std::string::size_type pos = 0;
@@ -325,16 +328,16 @@ surface locator::load_image_sub_file() const
 						break;
 					std::string f1,f2;
 					int side_n = lexical_cast_default<int>(field.substr(0,pos),-1);
-					if (side_n < 0)
+					if (side_n > static_cast<int>(team_colors.size()) || side_n < 1)
 						break;
-					f1 = team::get_side_colour_index(side_n);
+					f1 = team_colors[side_n-1];
 					f2 = field.substr(pos+1);
 					if(game_config::tc_info(f2).size()){
 						function="RC";
 						field= f2 + ">" + f1;
 					}						
 				}
-#endif
+
 				if("RC" == function){ //re-color function
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
@@ -447,6 +450,11 @@ void set_colour_adjustment(int r, int g, int b)
 		reset_cache(semi_brightened_images_);
 		reversed_images_.clear();
 	}
+}
+
+void set_team_colors(const std::vector<std::string>& colors)
+{
+	team_colors = colors;
 }
 
 void set_image_mask(const std::string& /*image*/)

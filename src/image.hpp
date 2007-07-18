@@ -168,6 +168,10 @@ namespace image {
 	///for representing day/night. Invalidates all scaled images.
 	void set_colour_adjustment(int r, int g, int b);
 
+	///set the team colors used by the TC image modification
+	///use a vector with one string for each team
+	void set_team_colors(const std::vector<std::string>& colors);
+
 	///function which sets a certain image as a 'mask' for all scaled images.
 	///the 'mask' is blitted onto all scaled images.
 	void set_image_mask(const std::string& image_name);
