@@ -1292,21 +1292,33 @@ public:
 			 dam_it != dam_end; ++dam_it) {
 			std::vector<item> row;
 			int resistance = 100 - atoi((*dam_it).second.c_str());
+			char resi[16];
+			snprintf(resi,sizeof(resi),"% 4d%%",resistance); 	// range: -100% .. +70%
+			//FIXME: "white" is currently not a supported color key
+			//so the default grey-white will be used
 			std::string color;
 			if (resistance < 0)
 				color = "red";
+			else if (resistance <= 20)
+				color = "yellow";
+			else if (resistance <= 40)
+				color = "white";
+			else
+				color = "green";
+
 			std::string lang_weapon = gettext(dam_it->first.c_str());
 			push_tab_pair(row, lang_weapon);
 			std::stringstream str;
-			str << "<format>color=" << color << " text='"<< resistance << "%'</format>";
+			str << "<format>color=" << color << " text='"<< resi << "'</format>";
 			const std::string markup = str.str();
 			str.str(clear_stringstream);
-			str << resistance << "%";
+			str << resi;
 			row.push_back(std::make_pair(markup,
 						     font::line_width(str.str(), normal_font_size)));
 			resistance_table.push_back(row);
 		}
 		ss << generate_table(resistance_table);
+
 		if (map != NULL) {
 			// Print the terrain modifier table of the unit.
 			ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
@@ -1339,19 +1351,44 @@ public:
 					row.push_back(std::make_pair(str.str(),
 						font::line_width(name, normal_font_size)));
 
-					//defense
+					//defense  -  range: +10 % .. +70 %
 					str.str(clear_stringstream);
 					const int defense =
 						100 - movement_type.defense_modifier(*map,terrain);
-					str << defense << "%";
-					push_tab_pair(row, str.str());
-
-					//movement
-					str.str(clear_stringstream);
-					if(moves < 100)
-						str << moves;
+					std::string color;
+					if (defense <= 10)
+						color = "red";
+					else if (defense <= 30)
+						color = "yellow";
+					else if (defense <= 50)
+					 	color = "white";
 					else
-						str << "--";
+						color = "green";
+					//if unit cannot move to this terrain, defense is relevant only
+					// when unit is put there via WML, so show defense in red:
+					if (moves >= 99)
+						color = "red";
+
+					str << "<format>color=" << color << " text='"<< defense << "%'</format>";
+					const std::string markup = str.str();
+					str.str(clear_stringstream);
+					str << defense << "%";
+					row.push_back(std::make_pair(markup,
+						     font::line_width(str.str(), normal_font_size)));
+
+					//movement  -  range: 1 .. 5, 99=impassable
+					str.str(clear_stringstream);
+					color = "white";
+					if (moves > type_.movement() ) 		// cannot move in this terrain
+						color = "red";
+					else if (moves > (type_.movement() / 2))	// only one step
+						color = "yellow";
+					else if (moves > 1)
+						color = "white";
+					else 
+						color = "green";
+
+					str << "<format>color=" << color << " text='"<< moves << "'</format>";
 					push_tab_pair(row, str.str());
 
 					table.push_back(row);
