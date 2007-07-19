@@ -975,8 +975,8 @@ attack::attack(game_display& gui, const gamemap& map,
 				fire_event("attack_end");
 				game_events::fire("die",death_loc,attacker_loc);
 
-				refresh_bc();
-
+				d_ = units_.find(death_loc);
+				a_ = units_.find(attacker_loc);
 				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)) {
 					//WML has invalidated the dying unit, abort
 					break;
@@ -988,7 +988,10 @@ attack::attack(game_display& gui, const gamemap& map,
 				if(a_ == units_.end() || !attacker_loc.matches_unit(a_->second)) {
 					//WML has invalidated the killing unit, abort
 					break;
-				} else if(a_stats_->plagues) {
+				}
+				refresh_bc();
+
+				if(a_stats_->plagues) {
 					//plague units make new units on the target hex
 					game_data::unit_type_map::const_iterator reanimitor;
 					LOG_NG<<"trying to reanimate "<<a_stats_->plague_type<<std::endl;
