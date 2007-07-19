@@ -397,84 +397,89 @@ void game_display::draw(bool update,bool force)
 			//simulate_delay += 1;
 			
 			// if the tile is at the border we start to blend it
-			// leave the northern and southern border since they're tricky due
-			// to the hex shape of the tile
-			// note we assume a half time border!!!
+			// NOTE we assume a half hex border!!!
+			// NOTE everything is hardcoded but it will be moved to the theme code
+			// in the near future and then also become a separate function
 			if(!on_map && map_.get_terrain(*it) != t_translation::OFF_MAP_USER) {
 				// first handle the corners 
-				if(it->x == -1 && it->y == -1) {
+				if(it->x == -1 && it->y == -1) { // top left corner
 					SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
-					const surface border(image::get_image("terrain/off-map/fade_corner_topleft.png", image::SCALED_TO_ZOOM));
+					const surface border(image::get_image("terrain/off-map/fade_corner_top_left.png", image::SCALED_TO_ZOOM));
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->x == map_.x() && it->y == -1) {
-					SDL_Rect rect = { xpos - zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
-					const surface border(image::get_image("terrain/off-map/fade_corner_topright.png", image::SCALED_TO_ZOOM));
-
-					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
-
-				} else if(it->x == -1 && it->y == map_.y()) {
-					SDL_Rect rect = { xpos + zoom_/4, -1, 3 * zoom_/4, zoom_ } ;
+				} else if(it->x == map_.x() && it->y == -1) { // top right corner
+					SDL_Rect rect = { xpos, -1, 3 * zoom_/4, zoom_ } ;
+					surface border;
 					if(it->x%2 == 0) {
-						rect.y = ypos;
+						rect.y = ypos + zoom_/2;
+						rect.h = zoom_/2;
+						// we use the map idea of odd and even and map coords are internal coords + 1
+						border = image::get_image("terrain/off-map/fade_corner_top_right_odd.png", image::SCALED_TO_ZOOM);
 					} else {
-						rect.y = ypos - zoom_/2;
-					}
-					const surface border(image::get_image("terrain/off-map/fade_corner_bottomleft.png", image::SCALED_TO_ZOOM));
-
-					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
-				} else if(it->x == map_.x() && it->y == map_.y()) {
-					SDL_Rect rect = { xpos - zoom_/4, -1, 3 * zoom_/4, zoom_ } ;
-					if(it->x%2 == 0) {
 						rect.y = ypos;
-					} else {
-						rect.y = ypos - zoom_/2;
+						border = image::get_image("terrain/off-map/fade_corner_top_right_even.png", image::SCALED_TO_ZOOM);
 					}
 
-					const surface border(image::get_image("terrain/off-map/fade_corner_bottomright.png", image::SCALED_TO_ZOOM));
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+
+				} else if(it->x == -1 && it->y == map_.y()) { // bottom left corner
+					SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_/2 } ;
+
+					const surface border(image::get_image("terrain/off-map/fade_corner_bottom_left.png", image::SCALED_TO_ZOOM));
+
+					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
+					
+				} else if(it->x == map_.x() && it->y == map_.y()) { // bottom right corner
+					SDL_Rect rect = { xpos, ypos, 3 * zoom_/4, zoom_/2 } ;
+					surface border;
+					if(it->x%2 == 1) {
+						// we use the map idea of odd and even and map coords are internal coords + 1
+						border = image::get_image("terrain/off-map/fade_corner_bottom_right_even.png", image::SCALED_TO_ZOOM);
+					} else {
+						border = image::get_image("terrain/off-map/fade_corner_bottom_right_odd.png", image::SCALED_TO_ZOOM);
+					}
+
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
 				// now handle the sides
-				} else if(it->x == -1) {
+				} else if(it->x == -1) { // left side
 					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 					const surface border(image::get_image("terrain/off-map/fade_border_left.png", image::SCALED_TO_ZOOM));
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->x == map_.x()) {
+				} else if(it->x == map_.x()) { // right side
 					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 					const surface border(image::get_image("terrain/off-map/fade_border_right.png", image::SCALED_TO_ZOOM));
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->y == -1) {
-					SDL_Rect rect = { xpos, -1 , zoom_, -1 } ;
+				} else if(it->y == -1) { // top side
+					SDL_Rect rect = { xpos, -1, zoom_, zoom_/2 } ;
 					surface border;
 
 					if(it->x%2 == 1) {
 						rect.y = ypos;
-						rect.h = zoom_/2;
+						// we use the map idea of odd and even and map coords are internal coords + 1
 						border = image::get_image("terrain/off-map/fade_border_top_odd.png", image::SCALED_TO_ZOOM);
 					} else {
 						rect.y = ypos + zoom_/2;
-						rect.h = zoom_/2;
 						border = image::get_image("terrain/off-map/fade_border_top_even.png", image::SCALED_TO_ZOOM);
 					}
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->y == map_.y()) {
-					SDL_Rect rect = { xpos, -1 , zoom_, -1 } ;
+				} else if(it->y == map_.y()) { // bottom side
+					SDL_Rect rect = { xpos, -1, zoom_, zoom_/2 } ;
 					surface border;
 
 					if(it->x%2 == 1) {
 						rect.y = ypos;
-						rect.h = zoom_/2;
+						// NOTE here is the internal idea off odd and even used
 						border = image::get_image("terrain/off-map/fade_border_bottom_odd.png", image::SCALED_TO_ZOOM);
 					} else {
 						rect.y = ypos + zoom_/2;
-						rect.h = zoom_/2;
 						border = image::get_image("terrain/off-map/fade_border_bottom_even.png", image::SCALED_TO_ZOOM);
 					}
 
