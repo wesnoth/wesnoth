@@ -8,8 +8,7 @@ use POSIX qw(strftime);
 use Getopt::Std;
 use Data::Dumper;
 
-my $usage = 'Usage: $0 [-e count] [-h host] [-p port] [username]';
-die "$usage\n" unless @ARGV > 1;
+#my $usage = "Usage: $0 [-e count] [-h host] [-p port] [username]";
 
 my %opts = ();
 getopts('e:h:p:',\%opts);
@@ -17,7 +16,7 @@ getopts('e:h:p:',\%opts);
 my $USERNAME = 'log';
 my $HOST = '127.0.0.1';
 my $PORT = '15000';
-if ($ARGV[1]) {$USERNAME = $ARGV[0];}
+if ($ARGV[0]) {$USERNAME = $ARGV[0];}
 if ($opts{'h'}) {$HOST = $opts{'h'};}
 if ($opts{'p'}) {$PORT = $opts{'p'};}
 my $LOGIN_RESPONSE = "[login]\nusername=\"$USERNAME\"\n[/login]";
@@ -102,14 +101,14 @@ sub login {
 		} elsif (my $error = &wml::has_child($response, 'error')) {
 			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 		} else {
-			print STDERR "Error: Server didn't ask us to log in and gave no error.\nDumper($response)" and die;
+			print STDERR "Error: Server didn't ask us to log in and gave no error.\n" . Dumper($response) and die;
 		}
 	} elsif (my $error = &wml::has_child($response, 'error')) {
 		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 	} elsif (&wml::has_child($response, 'mustlogin')) {
 		&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
 	} else {
-		print STDERR "Error: Server didn't ask for version or login and gave no error.\nDumper($response)" and die;
+		print STDERR "Error: Server didn't ask for version or login and gave no error.\n" . Dumper($response) and die;
 	}
 
 	# server sends the join lobby response
@@ -118,7 +117,7 @@ sub login {
 	} elsif (my $error = &wml::has_child($response, 'error')) {
 		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 	} else {
-		print STDERR "Error: Server didn't ask us to join the lobby and gave no error.\nDumper($response)" and die;
+		print STDERR "Error: Server didn't ask us to join the lobby and gave no error.\n" . Dumper($response) and die;
 	}
 
 	# server sends the initial list of games and players
@@ -133,7 +132,7 @@ sub login {
 	} elsif (my $error = &wml::has_child($response, 'error')) {
 		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 	} else {
-		print STDERR "Error: Server didn't send the initial gamelist and gave no error.\nDumper($response)" and die;
+		print STDERR "Error: Server didn't send the initial gamelist and gave no error.\n" . Dumper($response) and die;
 	}
 	print STDERR "usernames: @usernamelist\n";
 }
