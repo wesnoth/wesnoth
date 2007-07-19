@@ -19,4 +19,3 @@
 
 template class animated< image::locator >;
 template class animated< std::string >;
-template class animated< unit_frame >;
