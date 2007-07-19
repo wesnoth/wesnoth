@@ -124,7 +124,7 @@ std::string del_tags(std::string name){
 	std::string::const_iterator	it;
 	for (it = name.begin(); it != name.end(); it++){
 		// Start of RGB definition block, so stop react on numbers
-		if (not_name && *it == COLOR_TEXT){
+		if (not_name && *it == '<'){
 			not_colour = false;
 		}
 		// Ending of RGB block
@@ -135,7 +135,6 @@ std::string del_tags(std::string name){
 		// Number outside colour block
 		if (not_name && not_colour && isdigit(*it)){
 			not_name = false;
-			str 	<< *it;
 		}
 
 		// On the first analphabet character we stop react on specials characters
