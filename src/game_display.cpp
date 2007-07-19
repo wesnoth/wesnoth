@@ -614,7 +614,7 @@ void game_display::draw_minimap_units(int x, int y, int w, int h)
 		}
 
 		const int side = u->second.side();
-		const SDL_Color col = team::get_side_colour(side);
+		const SDL_Color col = team::get_minimap_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_Rect rect = { x + (u->first.x * w) / map_.x(),
 		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_.y(),

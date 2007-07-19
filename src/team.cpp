@@ -762,8 +762,9 @@ const color_range team::get_side_color_range(int side){
   return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
-const SDL_Color team::get_side_colour(int side)
+const SDL_Color team::get_minimap_colour(int side)
 {
+	//note: use mid() instead of rep() unless high contrast is needed over a map or minimap!
 	return int_to_color(get_side_color_range(side).rep());
 }
 
@@ -784,7 +785,7 @@ std::string team::get_side_colour_index(int side)
 
 std::string team::get_side_highlight(int side)
 {
-	return rgb2highlight(get_side_color_range(side+1).rep());
+	return rgb2highlight(get_side_color_range(side+1).mid());
 }
 
 void team::log_recruitable(){

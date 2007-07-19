@@ -44,6 +44,7 @@ public:
   Uint32 mid() const{return(mid_);};
   Uint32 max() const{return(max_);};
   Uint32 min() const{return(min_);};
+//note: use mid() instead of rep() unless high contrast is needed over a map or minimap!
   Uint32 rep() const{return(rep_);};
   bool operator<(const color_range& b) const
   {

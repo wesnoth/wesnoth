@@ -247,7 +247,7 @@ public:
 	static const Uint32 get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
 	static const Uint32 get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
 	static const Uint32 get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
-	static const SDL_Color get_side_colour(int side);
+	static const SDL_Color get_minimap_colour(int side);
 	static std::string get_side_colour_index(int side);
 	static std::string get_side_highlight(int side);
 

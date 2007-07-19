@@ -1424,7 +1424,7 @@ namespace events{
 				team_name = gui_->labels().team_name();
 			}
 			else {
-				colour = team::get_side_colour(gui_->viewing_team() + 1);
+				colour = team::get_minimap_colour(gui_->viewing_team() + 1);
 			}
 			const terrain_label *res = gui_->labels().set_label(mousehandler.get_last_hex(), d.textbox_text(), team_name, colour);
 			if (res)
