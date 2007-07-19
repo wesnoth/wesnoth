@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-17 18:01+0200\n"
-"PO-Revision-Date: 2006-06-16 22:18+0200\n"
-"Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
+"PO-Revision-Date: 2007-07-19 05:28+0200\n"
+"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Taistelija"
 
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:13
 msgid "(Beginner)"
-msgstr ""
+msgstr "(Aloittelija)"
 
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:14
 msgid "Hero"
@@ -36,18 +36,17 @@ msgstr "Sankari"
 
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:14
 msgid "(Easy)"
-msgstr ""
+msgstr "(Helppo)"
 
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:15
 msgid "(Normal)"
-msgstr ""
+msgstr "(Normaali)"
 
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:15
 msgid "Champion"
 msgstr "Mestari"
 
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:18
-#, fuzzy
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
 "heir.\n"
@@ -55,7 +54,9 @@ msgid ""
 "(Novice level, 25 scenarios.)"
 msgstr ""
 "Taistele valloittaaksesi takaisin Wesnothin valtaistuin, jonka laillinen "
-"perillinen olet."
+"perillinen olet.\n"
+"\n"
+"(Aloittelijatasoa, 25 skenaariota)"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:4
 msgid "The Elves Besieged"
@@ -356,9 +357,8 @@ msgid "Let me through, you rogue!"
 msgstr "Päästä minut läpi, roisto!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:456
-#, fuzzy
 msgid "Oh no! They are destroying our home!"
-msgstr "He tuhoavat kotimme!"
+msgstr "Voi ei! He tuhoavat kotimme!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:460
 msgid "There can be no looking back. We must go quickly!"
@@ -447,16 +447,16 @@ msgid "We will help you fight them off until the reinforcements arrive."
 msgstr "Autamme teitä pidättelemään örkkejä, kunnes lisäjoukot saapuvat."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:166
-#, fuzzy
 msgid ""
 "With your help, we have hope we can fend them off. But you must not tarry "
 "here long, for your survival is even more important to our cause than the "
 "strength of the port. A ship is due here in two days, surely it will be able "
 "to take you to safety."
 msgstr ""
-"Toivottavasti avullanne voimme torjua heidät. Mutta sinun ei tule viipyä "
-"täällä kauaa, sillä selviytymisesi on meille vielä tärkeämpää kuin tämä "
-"satama. Laiva saapuu kahdessa päivässä ja vie sinut turvaan."
+"Avullasi, voimme toivottavasti ajaa ne pois. Mutta nyt et saa viivytellä "
+"täällä kauan, niin kuin selviytymisesi on vielä tärkeämpää meille kuin "
+"satamamme vahvuus. Laiva on täällä kahdessa päivässä, varmasti se pystyy "
+"viemään sinut turvaan."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:170
 msgid "And the ship will take us to Anduin?"
@@ -469,7 +469,6 @@ msgid ""
 msgstr "Kyllä, purjehdimme Anduinin saarelle, minun ja monien velhojen kotiin."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:178
-#, fuzzy
 msgid ""
 "I will send one of my horsemen to serve under you. I offer you my support, "
 "Konrad, and the support of my men - from now on you will be able to recruit "
@@ -487,7 +486,6 @@ msgstr ""
 "eroavat haltioista?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:192
-#, fuzzy
 msgid ""
 "Elves are a powerful race, Konrad, more powerful than my own people usually "
 "acknowledge. But horsemen are powerful in a different way. They have no long "
@@ -502,7 +500,7 @@ msgstr ""
 "kaksinkertaisesti tuhoa, joskin kärsien itse samalla kaksinkertaisesti "
 "vahinkoa. He ovat myös lainkuuliaisia, joten he ovat voimakkaampia päivisin "
 "ja heikompia öisin. Hevosmiehet ovat voittamattomia aukealla maalla, mutta "
-"haltiat palvelevat sinua paremmin vaikeassa maastossa."
+"haltiat palvelevat sinua paremmin metsässä ja rosoisessa maastossa."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:197
 msgid ""
@@ -572,7 +570,6 @@ msgid "Simyr"
 msgstr "Simyr"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:302
-#, fuzzy
 msgid ""
 "Reinforcements have arrived! Forward, men! I expect each of you to bring me "
 "back the head of an orc!"
@@ -607,14 +604,13 @@ msgstr ""
 "kuningattaren joukoille."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:425
-#, fuzzy
 msgid ""
 "Reinforcements have arrived, but lo! Our allies have already destroyed the "
 "orcish army menacing our fair port. In honor, I must reward your valor."
 msgstr ""
 "Vahvistukset ovat saapuneet, mutta katso! Liittolaisemme ovat jo tuhonneet "
-"hienoa satamaamme uhkaavan örkkiarmeijan. Minulla ei ole muuta "
-"mahdollisuutta kuin palkita urheutenne."
+"hienoa satamaamme uhkaavan örkkiarmeijan. Kunniaksi, minun täytyy palkita "
+"urotyönne."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:429
 msgid ""
@@ -703,14 +699,13 @@ msgid "I found someone hiding in the village!"
 msgstr "Löysin jonkun, joka oli piiloutuneena tähän kylään!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Anduin.cfg:225
-#, fuzzy
 msgid ""
 "My lords, I have been hiding in the village from the orcs, like many of the "
 "other magi here. I pledge myself to your service; let us move swiftly to "
 "recapture the island!"
 msgstr ""
 "Herrani, olen piileskellyt örkeiltä tässä kylässä, kuten monet velhot "
-"täällä. Liityn palvelukseenne, jotta voisimme yhdessä vallata saaren "
+"täällä. Lupaan palvella teitä; liikutaan nopeasti valloittaaksemme saaren "
 "takaisin!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Anduin.cfg:229
@@ -908,9 +903,8 @@ msgid "Mriram"
 msgstr "Mriram"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:360
-#, fuzzy
 msgid "Free at last! Now, death to the orcs!"
-msgstr "Vihdoinkin vapaa! Nyt... kuolema örkeille!"
+msgstr "Vihdoinkin vapaa! Nyt, kuolema örkeille!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:381
 msgid "Mabooa"
@@ -1029,7 +1023,6 @@ msgid ""
 msgstr "Siellähän sinä olet! Onneksi olet kunnossa. Nyt voimme levätä hetken."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:694
-#, fuzzy
 msgid ""
 "I am afraid there is no time for rest, Konrad. Asheviere has laid siege to "
 "Elensefar, breaking the century-old treaty between Wesnoth and the Elense "
@@ -1141,7 +1134,6 @@ msgstr ""
 "viimeistellä sitä? Miksi meidän pitää lähteä?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:873
-#, fuzzy
 msgid ""
 "I bear ill tidings. Asheviere has laid siege to Elensefar, breaking the "
 "century-old treaty between Wesnoth and the Elense city-state. If the city "
@@ -1210,13 +1202,12 @@ msgid "Muff Malal"
 msgstr "Muff Malal"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:109
-#, fuzzy
 msgid ""
 "But the road to Elensefar was a treacherous one. Konrad and his men were set "
 "upon by a strong band of undead."
 msgstr ""
-"Mutta tie Elensefariin oli petollinen. Konrad miehineen törmäsi "
-"epäkuolleisiin."
+"Mutta tie Elensefariin oli petollinen. Konrad miehineen törmäsi vahvaan "
+"epäkuolleiden joukkioon."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:113
 msgid ""
@@ -1230,18 +1221,16 @@ msgid "My lord! On yonder peninsula there seems to be some movement!"
 msgstr "Herrani! Tuolla niemimaalla on jotain liikettä!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:121
-#, fuzzy
 msgid ""
 "It looks like an undead outpost! If we could defeat them, the locals would "
 "probably be grateful. But I do not know if we have the strength to defeat "
 "such a foe, or the time to spare."
 msgstr ""
-"Se näyttää epäkuolleiden etuvartiolta! Jos voitamma ne, paikalliset ovat "
+"Se näyttää epäkuolleiden etuvartiolta! Jos voitamme ne, paikalliset ovat "
 "varmasti tyytyväisiä. Mutta en tiedä, onko meillä aikaa ja voimaa moisen "
 "vihollisen voittamiseen."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:125
-#, fuzzy
 msgid ""
 "Cleansing this land of undead does not appear overly difficult. It could be "
 "good training for those yet untested in battle."
@@ -1308,13 +1297,12 @@ msgstr ""
 "purjetta..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:45
-#, fuzzy
 msgid ""
 "The mermen finally saved Konrad from the sea, but were unable to get him "
 "back to the ship. By dint of great effort they reached a nearby island..."
 msgstr ""
-"Merenmiehet pelastivat Konradin merestä, mutteivat saaneet häntä takaisin "
-"laivaan. Suuren vaivannäön jälkeen he saavuttivat läheisen saaren..."
+"Merenmiehet viimein pelastivat Konradin merestä, mutteivat saaneet häntä "
+"takaisin laivaan. Suuren vaivannäön jälkeen he saavuttivat läheisen saaren..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:70
 msgid "Haf-Mal"
@@ -1337,7 +1325,6 @@ msgid "Whew, I survived. But now where am I? Is this island inhabited?"
 msgstr "Huh, selvisin. Mutta missä olen? Onko tämä saari asuttu?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:177
-#, fuzzy
 msgid ""
 "We have heard only the worst things about this place, my lord. It is said "
 "that the legions of the undead have come here in great numbers and "
@@ -1396,9 +1383,8 @@ msgstr "Moremirmu"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:261
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:257
-#, fuzzy
 msgid "holy sword"
-msgstr "miekka"
+msgstr "pyhä miekka"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:273
 msgid ""
@@ -1516,7 +1502,6 @@ msgstr ""
 "Epäkuolleet ovat liittoutuneet örkkien kanssa!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:173
-#, fuzzy
 msgid ""
 "Here come the elves! Our newly forged alliance with the orcs will give us "
 "the power to crush them with ease!"
@@ -1721,7 +1706,6 @@ msgid "Delfador! So good to see you! Where have you been?"
 msgstr "Delfador! Hyvä nähdä sinua! Missä olet ollut?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:565
-#, fuzzy
 msgid ""
 "I have been meeting with the Great Elven Council. This is Kalenz, a lord of "
 "the Northern Elves who came to the Council to offer us the support of the "
@@ -1763,6 +1747,13 @@ msgid ""
 "Years have passed, and the fortunes of the dwarves have waxed and waned, but "
 "the Scepter has never been found."
 msgstr ""
+"Tulen valtikka on kaikkein muinaisin artifakti Wesnothin valtakunnassa. Se "
+"oli taottu Knalgan kääpiöiden toimesta kuningas Haldric II:sen pyynnöstä. "
+"Kääpiöiden parhailta sepiltä vei useita vuosia takoa se, ja pian sen jälkeen "
+"valtikan takojat metsästettiin haltioitten toimesta maan alle. Kukaan ei "
+"oikeastaan tiedä mitä tapahtui, mutta valtikka oli menetetty jossain "
+"suuressa luolastossa. Vuodet kuluivat, ja kääpiöitten onni oli ohentunut ja "
+"heikentynyt, eikä valtikkaa ikinä löytynyt."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:595
 msgid "But what has this to do with me?"
@@ -1857,7 +1848,6 @@ msgstr ""
 "Elensefarin pelastuksesta eivät olleet vielä saavuttaneet häntä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:46
-#, fuzzy
 msgid ""
 "Small as it was, Konrad's army avoided the notice of hostile eyes in the "
 "sparsely populated western countryside for a time. However, their luck did "
@@ -1987,7 +1977,6 @@ msgid ""
 msgstr "Matkalla Knalgaan, ryhmä kohtasi Ashevieren joukkoja."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:163
-#, fuzzy
 msgid "The Queen has sent me to stop you, impostor!"
 msgstr "Kuningatar on lähettänyt minut pysäyttämään sinut, teeskentelijä!"
 
@@ -2042,7 +2031,6 @@ msgid "Maybe I was not using enough forces..."
 msgstr "Ehkä en käyttänyt tarpeeksi joukkoja..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:214
-#, fuzzy
 msgid "I surrender! Don't hurt me, impostor."
 msgstr "Antaudun! Älä satuta minua, teeskentelijä."
 
@@ -2093,16 +2081,14 @@ msgid "Good day then, Princess. Come, men, to the northern road!"
 msgstr "Hyvää päivänjatkoa, prinsessa. Tulkaa, miehet, pohjoiselle tielle!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:247
-#, fuzzy
 msgid ""
 "(Ha ha, little do they know just how many undead have wandered the northern "
 "road of late. Surely they are doomed!)"
 msgstr ""
 "(Heh heh, vähänpä he tietävät epäkuolleiden laumoista, jotka vaeltavat "
-"pohjoisella tiellä näinä aikoina. He ovat varmasti tuhoon tuomittuja.)"
+"pohjoisella tiellä näinä aikoina. Varmasti he ovat tuhoon tuomittuja!)"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:304
-#, fuzzy
 msgid ""
 "I see that your forces draw near, impostor! I'll not be defeated in my own "
 "back yard so easily... Come forth and attack my loyal duelist!"
@@ -2128,7 +2114,6 @@ msgid "Owaryn"
 msgstr "Owaryn"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:334
-#, fuzzy
 msgid "I'll seize their keep, my Lady!"
 msgstr "Valtaan heidän linnoituksensa, milady!"
 
@@ -2141,9 +2126,8 @@ msgid "You've discovered my ploy! It doesn't matter, I'll still rout you!"
 msgstr "Olette paljastaneet juoneni! Sillä ei ole väliä, voitan teidät silti!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:393
-#, fuzzy
 msgid "The trap is foiled, but I'll still flush this rabble from their keep!"
-msgstr "Ansa on pilattu, mutta häädän tämän roskaväen linnoituksestaan!"
+msgstr "Ansa on pilattu, mutta häädän silti tämän roskaväen linnoituksestaan!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:4
 msgid "The Valley of Death - The Princess's Revenge"
@@ -2186,7 +2170,6 @@ msgid "To arms, men! The undead hordes approach!"
 msgstr "Aseisiin, miehet! Epäkuolleiden laumat lähestyvät!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:220
-#, fuzzy
 msgid ""
 "There can be no surrender to these foul beasts of the pit! We fight until "
 "victory, or until every one of us is slain!"
@@ -2283,16 +2266,15 @@ msgstr ""
 "Hän siis huijasi meidät tänne! Minnä voimme mennä nyt? Missä olemme turvassa?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:353
-#, fuzzy
 msgid ""
 "You must escape the clutches of that vile Queen, my lord. If you take a "
 "course bearing north-east, on past the mountain of gryphons, you will be "
 "able to ford the great river at Abez. Make haste though, for you will not be "
 "able to ford the river in winter!"
 msgstr ""
-"Sinun pitää päästä inhan kuningattaren lähettyviltä, herrani. Jos otatte "
-"kurssin koilliseen ja menette aarnikotkavuoren ohi, pystytte ylittämään "
-"suuren joen Abezilla. Teidän tulee kiirehtiä, sillä ette voi ylittää jokea "
+"Sinun täytyy paeta inhan kuningattaren otteesta, herrani. Jos otatte kurssin "
+"koiliseen ja menette aarnikotkien vuoren ohi, pystytte ylittämään suuren "
+"joen Abezin lähellä. Teidän tulee kiirehtiä, sillä ette voi ylittää jokea "
 "talvella!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:357
@@ -2457,20 +2439,21 @@ msgid ""
 "slaughter any gryphons. They are magnificent animals (looks back at the "
 "mountain). Still..."
 msgstr ""
+"On harmi, ettemme voisi saada noita aarnikotkan munia. Olen kuitenkin "
+"iloinen, ettemme teurastaneet yhtään aarnikotkaan. Ne ovat suurenmoisia "
+"eläimiä (katsoo takaisin vuorelle). Silti..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:256
 msgid "Woah!!"
-msgstr ""
+msgstr "Vauu!!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:310
-#, fuzzy
 msgid "Graik"
-msgstr "Graak"
+msgstr "Graik"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:311
-#, fuzzy
 msgid "Griak"
-msgstr "Graak"
+msgstr "Griak"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:318
 msgid ""
@@ -2478,19 +2461,23 @@ msgid ""
 "glared in Konrad's direction, their eagle eyes fixed on him at an incredible "
 "distance."
 msgstr ""
+"Kieltämättä, majesteettiset pedot ovat nyt kiertämässä vuoren huippua. "
+"Muutamat tuijottivat Kondarin suuntaan, heidän haukansilmät kiinnittyivät "
+"häneen uskomattomalta etäisyydeltä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:355
 msgid "Amazing! I have never before heard of such behavior in gryphons."
 msgstr ""
+"Hämmästyttävää! En ole ikinä ennen kuullut tälläisestä aarnikotkien "
+"käyttäytymisestä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:359
-#, fuzzy
 msgid "What does it mean?"
-msgstr "Mitä tarkoitat?"
+msgstr "Mitä tämä tarkoittaa?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:363
 msgid "I do not know. Come now, the show is over."
-msgstr ""
+msgstr "En tiedä. Tule nyt, näytös on loppu."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:369
 msgid ""
@@ -2754,7 +2741,6 @@ msgid "Northern Winter"
 msgstr "Pohjolan talvi"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:47
-#, fuzzy
 msgid ""
 "Across the river were lands few humans had ever visited. The occasional "
 "distant thutter of orcish signal drums made the abundant pine forests "
@@ -2901,28 +2887,24 @@ msgstr ""
 "kääpiöiden valtakuntaa..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:238
-#, fuzzy
 msgid ""
 "A camp was pitched in a secluded valley that protected its occupants from "
 "the worst of the winter weather and roving orc patrols."
 msgstr ""
-"He perustivat talvileirin kaukaiseen laaksoon. Leiri suojeli asukkaitaan "
-"talven pahimmilta myrskyiltä ja ryösteleviltä örkkipartioilta. Leirissä "
-"käyskentelevien aarnikotkanpoikasten iloinen piipitys kaikui laakson "
-"seinistä."
+"Leiri pystytettiin suojaiseen laaksoon, jota suojasi sen reunat pahimmalta "
+"talvisäältä ja kuljeskelevilta örkkipartioilta."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:243
-#, fuzzy
 msgid ""
 "Eventually Delfador's insistence that the scepter must be recovered proved "
 "too compelling, even when it meant dismantling the camp without the spring "
 "having yet fully arrived. And so after many days of rest, the party set out "
 "once again for the dwarven kingdom..."
 msgstr ""
-"Lopulta Konrad antoi periksi Delfadorin vaatimuksille, että valtikka olisi "
-"haettava mahdollisimman pian. Hän päätti jättää aarnikotkat vielä kasvamaan. "
-"Ja niin, pitkään levättyään, sankarimme lähtivät jälleen kulkemaan kohti "
-"kääpiöiden valtakuntaa..."
+"Lopulta Delfadorin vaatimus, että valtikka on pakko hakea takaisin, kasvoi "
+"liian pakottavaksi, jopa vaikka se tarkoitti leirin purkamista ennen kevään "
+"varsinaista saapumista. Ja niin, jälkeen monen levollisen päivän jälkeen, "
+"seurue lähti taas kerran kääpiövaltakuntaan..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
@@ -3252,7 +3234,6 @@ msgid "It's so dark in here I can hardly see!"
 msgstr "Täällä on varsin pimeää, näen tuskin eteeni!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:276
-#, fuzzy
 msgid ""
 "It is dark indeed. We shall have to light torches and tread slowly and "
 "carefully. It may be there are still dwarves down here who can aid us!"
@@ -3262,9 +3243,9 @@ msgstr ""
 "meitä!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:280
-#, fuzzy
 msgid "Indeed. We elves do not fare well in these dark pits."
-msgstr "Todella. Me haltiat emme ole kovin taitavia näissä pimeissä koloissa."
+msgstr ""
+"Todella. Me haltiat emme selviydy kovin hyvin näissä pimeissä koloissa."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:294
 msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
@@ -3284,22 +3265,20 @@ msgstr ""
 "voi asua rauhassa ilman että petolliset haltiat tulevat häiritsemään meitä?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:334
-#, fuzzy
 msgid "Why such harsh words, dwarf? Elves have never done you any harm."
 msgstr ""
 "Miksi nuo kovat sanat, kääpiö? Haltiat eivät ole koskaan vahingoittaneet "
 "teitä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:339
-#, fuzzy
 msgid ""
 "'Never done us any harm?' Why, I was there myself, when the elves refused to "
 "honor our alliance. Many dwarves were slaughtered, and you cowardly elves "
 "did nothing to help!"
 msgstr ""
-"'Eivät koskaan vahingoittaneet meitä?' Olin itse paikalla, kun "
-"haltialiittolaisemme eivät vastanneet kutsuumme. Monia kääpiöitä kuoli ja te "
-"raukkamaiset haltiat ette tehneet mitään auttaaksenne!"
+"'Eivät koskaan vahingoittaneet meitä?' Olin itse paikalla, kun haltiat eivät "
+"vastanneet kutsuumme. Monia kääpiöitä kuoli ja te raukkamaiset haltiat ette "
+"tehneet mitään auttaaksenne!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:344
 msgid ""
@@ -3353,12 +3332,11 @@ msgstr ""
 "ette!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:379
-#, fuzzy
 msgid ""
 "You speak foolishness. No one even knows if the Scepter of Fire still "
 "exists. And who is this heir, this king that you speak of?"
 msgstr ""
-"Puhut kuin typerys. Kukaan ei edes tiedä, onko Tulista valtikkaa olemassa. "
+"Puhut kuin typerästi. Kukaan ei edes tiedä, onko Tulen valtikkaa olemassa. "
 "Ja kuka on tämä perillinen, tämä kuningas josta puhut?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:384
@@ -3392,9 +3370,8 @@ msgstr ""
 "valehtelijat pois silmistäni. Delfador kuoli vuosia sitten."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:429
-#, fuzzy
 msgid "I am Delfador the Great! Tremble before my wrath!"
-msgstr "Olen Delfador suuri. Valmistaudu kuolemaan!"
+msgstr "Olen Delfador suuri. Vapise raivoni edessä!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
 msgid ""
@@ -3438,9 +3415,8 @@ msgid "Then to the eastern tunnels we shall go!"
 msgstr "Itäisiin tunneleihin siis menemme!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:524
-#, fuzzy
 msgid "Gryphon Tender"
-msgstr "Aarnikotkien vuori"
+msgstr "Aarnikotkien hoivaaja"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:537
 msgid ""
@@ -3470,7 +3446,6 @@ msgid "(looks miffed)"
 msgstr "(näyttää myrtyneeltä)"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:587
-#, fuzzy
 msgid ""
 "Well, if you must go on with this mad scheme, I shall supply you with my own "
 "troops as riders! A frail human - or worse, an elf - would never be able to "
@@ -3494,7 +3469,7 @@ msgstr "Nooh, niinpä kai..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:624
 msgid "Mounted Dwarf"
-msgstr ""
+msgstr "Ratsastava kääpiö"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:637
 msgid "Woah there... No need to be surly, now. Ok, easy... now GO!"
@@ -3542,9 +3517,8 @@ msgid "Lionel"
 msgstr "Lionel"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:106
-#, fuzzy
 msgid "We are now in the main dwarvish caverns."
-msgstr "Nämä ovat joitakin kääpiöiden tärkeimmistä luolista."
+msgstr "Olemme nyt kääpiöitten pääluolassa."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:110
 msgid ""
@@ -3568,27 +3542,28 @@ msgstr "Setäni perhe hukkui, kun örkit täyttivät luolan vedellä..."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:155
 msgid "A hidden whirlpool sucks you down into a subterranean current!"
-msgstr ""
+msgstr "Salainen vesipyörre imee sinut alas maanalaiseen tilaan!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:159
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:246
 msgid "Ulfdain"
-msgstr ""
+msgstr "Ulfdain"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:175
 msgid "What's this, more trolls? Aye, come to papa, little whelps."
-msgstr ""
+msgstr "Mikä se on, lisää peikkoa? Okei, tulkaa isän luokse, pikku pennut."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:179
-#, fuzzy
 msgid "Hello? Who is here?"
-msgstr "Seis! Ken käy siellä?"
+msgstr "Haloo? Kuka siellä?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:183
 msgid ""
 "What in the world are you? Some sort o' monster's appendage set tae lure me "
 "down to be yer watery meal, eh?"
 msgstr ""
+"Mistä maailmasta oikein olet? Jonkin sortin hirviön lisäke, jonka pitäisi "
+"houkutella minut alas hänen ateriakseen, vai?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:187
 msgid ""
@@ -3596,16 +3571,21 @@ msgid ""
 "a cave. My lord can be somewhat eccentric. We are fighting at the side of "
 "your fellow cave-dwellers to drive back the orcs."
 msgstr ""
+"Olen Merenmies, aavan meren asukkaita! Älä kysy, mitä olen tekemässä "
+"luolassa. Herrani voi olla jotenkuten eriskummallinen. Olemme taistelemassa "
+"luola-asukas -tovereittesi rinnalla ajaaksemme örkit takaisin."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:191
 msgid ""
 "(sniffs) A mer-mahn. Never heard of it. I doubt yer as tasty as my friends "
 "here."
 msgstr ""
+"(haistelee) Meren mies. Ikinä kuullutkaan siitä. Epäilen sinun maistuvan "
+"yhtä hyvältä kuin ystävämme täällä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:195
 msgid "Why are you down here? Are those... troll carcasses?"
-msgstr ""
+msgstr "Miksi olet täällä alhaalla? Ovatko nuo ... peikon ruhoja?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:199
 msgid ""
@@ -3613,10 +3593,13 @@ msgid ""
 "little carried away, fell in the water, and were sucked down inta this "
 "grotto."
 msgstr ""
+"Olin räyhäämässä näiden pikkuruisten pentujen kanssa täällä puolustamassa "
+"etuvartioasemaani. Me jouduimme temmatuksi hiukkasen liian kauaksi, "
+"putosimme veteen ja imeydyimme tähän luolaan."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:203
 msgid "How long have you been here?"
-msgstr ""
+msgstr "Kuinka kauan olet ollut täällä?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:207
 msgid ""
@@ -3624,26 +3607,33 @@ msgid ""
 "little ravenous, if ye catch my drift. Canna swim past that current, and not "
 "for lack o' tryin'."
 msgstr ""
+"Oi, muutamia päiviä vähintään. Peikonliha alkoi haista, ja oon hieman "
+"pahasti nälkäinen, jos tajuat. Tuosta virrasta kykene uimaan läpi, ja se ei "
+"oo yrityksen puutteesta. "
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:211
 msgid "I will rescue you. Hold onto my shoulders, sir dwarf."
-msgstr ""
+msgstr "Minä pelastan sinut. Tartu olkapäihini, herra kääpiö."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:215
 msgid "Thanks. No need to wait around here. Let's go."
-msgstr ""
+msgstr "Kiitos. Ei tarvetta odotella täällä. Lähdetään."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:233
 msgid ""
 "Better prepared this time to fight the current, you eventually manage to "
 "emerge from the whirlpool."
 msgstr ""
+"Paremmin valmistauduttua taistelemaan virrassa, onnistut lopulta "
+"ilmaantumaan pois vesipyörteestä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:257
 msgid ""
 "Well, mer-mahn, we made it. I will fight for yer lord. He sounds like a "
 "brave fellow."
 msgstr ""
+"Noniin, meren mies, me teimme sen. Taistelen herrallesi. Hän kuulostaa "
+"urhealta veikkoselta."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:270
 msgid "These passages seem to have been used recently."
@@ -3754,7 +3744,6 @@ msgid "The earth shakes."
 msgstr "Maa tärisee."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:522
-#, fuzzy
 msgid ""
 "Tall ones, I thank ye. Life has been nothing but a struggle recently. We are "
 "the last outpost o' civilization in these caves."
@@ -3773,13 +3762,12 @@ msgstr ""
 "veremme tulee matkamme olemaan hitaampaa."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:530
-#, fuzzy
 msgid ""
 "The Scepter? Ah, the Scepter ye seek. You surface dwellers are ambitious. "
 "Beyond my citadel the spawn of the darkness hold complete sway. You'll no' "
 "survive without assistance."
 msgstr ""
-"Valtikka? Ah, etsitte Valtikkaa. Te pinta-asujat olette kunnianhimoisia. "
+"Valtikka? Ah, te etsitte Valtikkaa. Te pinta-asujat olette kunnianhimoisia. "
 "Linnoitukseni takana hallitsee yksin pimeys. Ette selviä ilman apua."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:534
@@ -3787,7 +3775,6 @@ msgid "How will we make it?"
 msgstr "Kuinka me selviämme?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:538
-#, fuzzy
 msgid ""
 "Northeast o' my keep, young human, the tunnels converge towards the deepest "
 "reaches of the underground kingdom. The Scepter can only be there. Please "
@@ -3795,7 +3782,7 @@ msgid ""
 msgstr ""
 "Linnakkeestani koilliseen, nuori mies, tunnelit kulkevat kohti maanalaisen "
 "valtakunnan syvimpiä syövereitä. Valtikka voi olla vain siellä. Annan "
-"palvelukseesi vartiomiehiäni. Nämä valiosoturit suojelevat teitä."
+"palvelukseesi vartijoitani. Nämä valiosoturit suojelevat teitä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:548
 msgid ""
@@ -3858,7 +3845,6 @@ msgstr ""
 "olevan vaikeuksia tuottaa valoa riittävästi näkemiseen."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:52
-#, fuzzy
 msgid ""
 "A cavernous void stretched out ahead, across which no ceiling or walls were "
 "visible. Wind howled and whipped over narrow ledges bridging the depths, "
@@ -3866,7 +3852,7 @@ msgid ""
 msgstr ""
 "Edessä aukesi pimeä tyhjyys, jonka läpi ei nähnyt kattoa tai seiniä. Tuuli "
 "ulvoi ohuiden kallionkielekkeiden ympärillä, jotka olivat aivan kuin jonkin "
-"mahtavan taikuuden ylläpitämiä... ja heränneen pahuuden."
+"mahtavan taikuuden ylläpitämiä ... ja äskettäin heränneen pahuuden."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:94
 msgid "Haaf-Garga"
@@ -3996,13 +3982,12 @@ msgstr ""
 "halkeamista."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:20
-#, fuzzy
 msgid ""
 "Distant rumbles and earthquakes made it difficult to keep steady footing. "
 "The very earth had come alive, heaving, struggling to be relieved of its "
 "centuries-old burden..."
 msgstr ""
-"Kaukaisten maanjäristysten vuoksi ol ihankalaa säilyttää tasapainonsa. Maa "
+"Kaukaisten maanjäristysten vuoksi oli hankalaa säilyttää tasapainonsa. Maa "
 "itse oli herännyt henkiin, valmiina pääsemään eroon vuosisatoja vanhasta "
 "taakastaan..."
 
@@ -4032,7 +4017,6 @@ msgid "An earthquake! We'll be trapped!"
 msgstr "Maanjäristys! Jäämme jumiin!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:144
-#, fuzzy
 msgid ""
 "No, not an earthquake, Princess. I feel it too. Something is... aware... of "
 "us."
@@ -4077,7 +4061,6 @@ msgid "A Choice Must Be Made"
 msgstr "Valinta on tehtävä"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:18
-#, fuzzy
 msgid ""
 "The Scepter, initially dulled from decades of dust and debris, began to glow "
 "from the ruby's inner fire. Dwarvish runes on the golden handle lit up in "
@@ -4119,7 +4102,6 @@ msgid "Unan-Ka'tall"
 msgstr "Unan-Ka'tall"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:156
-#, fuzzy
 msgid ""
 "I thank you for helping me get back to the surface, but now I must take what "
 "is mine!"
@@ -4167,12 +4149,10 @@ msgid "Then let us devise a battle plan."
 msgstr "Tehkäämme siis taistelusuunnitelma."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:188
-#, fuzzy
 msgid "We have escaped."
-msgstr "No, me pakenimme."
+msgstr "Olemme paenneet."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:192
-#, fuzzy
 msgid ""
 "Yes, we have. Now I suppose you want to use the Scepter against me, Princess?"
 msgstr "Niinpä. Nyt halunnet käyttää valtikkaa minua vastaan, prinsessa?"
@@ -4328,7 +4308,6 @@ msgid "Who would discard such a wondrous artifact?"
 msgstr "Kuka heittäisi pois jotain näin hienoa?"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:112
-#, fuzzy
 msgid ""
 "I believe it belonged to Ila'alion, a mighty Marshal of the Wood. It was "
 "enchanted as a boon to him by your elvish friends in the south. He was "
@@ -4550,7 +4529,6 @@ msgstr ""
 "uudenveroisena vuosisatoja. Valitse viisaasti kuka kantaa sitä."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:247
-#, fuzzy
 msgid ""
 "As the last Death Knight falls, an ear-splitting screech escapes from the "
 "Lich. It is clear that controlling such powerful spirits has drained it "
@@ -4561,22 +4539,16 @@ msgstr ""
 "uuvuttanut sitä merkittävästi. Se kihisee raivosta sinulle."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:287
-#, fuzzy
-#| msgid ""
-#| "A final blow destroys the Lich, releasing a small shockwave of energy "
-#| "outwards. The Death Knights silently fall to the ground, inanimate. A "
-#| "giant cloud of dust bellows out as the remnants of the Lich's once-mortal "
-#| "skin and centuries of grime and gristle are lodged loose for the last "
-#| "time."
 msgid ""
 "A final blow destroys the Lich, releasing a small shockwave of energy "
 "outwards. The last Death Knight silently falls to the ground, inanimate. A "
 "giant cloud of dust bellows out as the remnants of the Lich's once-mortal "
 "skin and centuries of grime and gristle are lodged loose for the last time."
 msgstr ""
-"Viimeinen isku tuhoaa Kuolonherran. Hetken päästä Kuolonritarit kaatuvat "
-"maahan liikkumattomina. Valtava pilvi pölähtää ilmoille siitä, missä "
-"Kuolonherran enää vaivoin koossapysyneet jäänteet hajoavat tomuksi."
+"Viimeinen isku tuhoaa Kuolonherran, vapauttaen pienen energia-aallon. "
+"Viimeinen Kuolonherra äänettömästi kaatui maahan, liikkumatta. Jättimäinen "
+"pölypilvi pöllähti yhdestä Kuolonherran kerran epäkuolleen ihon palasesta ja "
+"vuosikausia vanhat luut ja rusto jäivät paikoilleen viimeisen kerran."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:294
 msgid ""
@@ -4590,22 +4562,16 @@ msgstr ""
 "Kuolonherran enää vaivoin koossapysyneet jäänteet hajoavat tomuksi."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:303
-#, fuzzy
-#| msgid ""
-#| "A final blow destroys the Lich, releasing a small shockwave of energy "
-#| "outwards. The Death Knights silently fall to the ground, inanimate. A "
-#| "giant cloud of dust bellows out as the remnants of the Lich's once-mortal "
-#| "skin and centuries of grime and gristle are lodged loose for the last "
-#| "time."
 msgid ""
 "A final blow destroys the Lich, releasing a small shockwave of energy "
 "outwards. A giant cloud of dust bellows out as the remnants of the Lich's "
 "once-mortal skin and centuries of grime and gristle are lodged loose for the "
 "last time."
 msgstr ""
-"Viimeinen isku tuhoaa Kuolonherran. Hetken päästä Kuolonritarit kaatuvat "
-"maahan liikkumattomina. Valtava pilvi pölähtää ilmoille siitä, missä "
-"Kuolonherran enää vaivoin koossapysyneet jäänteet hajoavat tomuksi."
+"Viimeinen isku tuhoaa Kuolonherran, vapauttaen pienen energia-aallon. "
+"Jättimäinen pölypilvi pöllähti yhdestä Kuolonherran kerran epäkuolleen ihon "
+"palasesta ja vuosikausia vanhat luut ja rusto jäivät paikoilleen viimeisen "
+"kerran."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:309
 msgid "Aimucasur's lordship over this cursed ground is broken."
@@ -4641,12 +4607,11 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:4
 msgid "The Cliffs of Thoria"
-msgstr ""
+msgstr "Thorian jyrkänteet"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:25
-#, fuzzy
 msgid "Make it to the end of the river"
-msgstr "Saata Konrad joen pohjoispuolelle"
+msgstr "Selviydy joen loppuun saakka"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20_North_Elves.cfg:4
 msgid "Home of the North Elves"
@@ -4657,11 +4622,12 @@ msgid "Your encampment will be dismantled after the first turn"
 msgstr "Leirisi on käyttökelvoton ensimmäisen vuoron jälkeen"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20_North_Elves.cfg:24
-#, fuzzy
 msgid ""
 "Konrad must reach the elvish forest and hold that position until the turn is "
 "over"
-msgstr "Konradin täytyy saavuttaa haltioiden metsä ja kestää vuorojen loppuun"
+msgstr ""
+"Konradin täytyy saavuttaa haltioitten metsä ja pysytellä siellä vuorojen "
+"loppuun saakka."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/20_North_Elves.cfg:44
 msgid "Turns run out before reaching the forest"
@@ -4984,17 +4950,16 @@ msgid "Parandra"
 msgstr "Parandra"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:78
-#, fuzzy
 msgid "Bellrok"
-msgstr "Reglok"
+msgstr "Bellrok"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:87
 msgid "Tindolean"
-msgstr ""
+msgstr "Tindolean"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:95
 msgid "Everlore"
-msgstr ""
+msgstr "Everlore"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:101
 msgid ""
@@ -5046,15 +5011,14 @@ msgstr ""
 "keskuudessa."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:125
-#, fuzzy
 msgid ""
 "How quickly does the race of men mature! Only seventeen winters have passed "
 "since I last laid eyes on you, Konrad, yet you are now a grown man. A proven "
 "warrior stands before me!"
 msgstr ""
 "Miten nopeasti ihmisten suku kypsyykään! Vain seitsemäntoista talvea sitten "
-"näin sinut viimeksi, Konrad, ja nyt olet jo aikuinen mies. Olet rohkea "
-"soturi!"
+"näin sinut viimeksi, Konrad, ja nyt olet jo kasvanut mies. Olet rohkea "
+"soturi! Vahva soturi seisoo edessäni!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:129
 msgid "Forgive me, Elf, but I'm afraid I do not recall meeting you before."
@@ -5555,7 +5519,6 @@ msgid "Lord Bayar"
 msgstr "Ylimys Bayar"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:173
-#, fuzzy
 msgid "Clan Member Defeated"
 msgstr "klaanin jäsentä kukistettu"
 
@@ -5706,7 +5669,6 @@ msgstr ""
 "Palvelemme sinua, herrani. Sinusta tulee valtaistuimen arvoinen kuningas."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:379
-#, fuzzy
 msgid ""
 "The mighty riders of the eastern plains, the Knights of the Clans, are now "
 "yours to command!"
@@ -5969,7 +5931,6 @@ msgid "Daughter, I built this kingdom for you. It has all been for you!"
 msgstr "Tyttäreni, rakensin tämän valtakunnan sinulle. Kaikki sinun vuoksesi!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:294
-#, fuzzy
 msgid ""
 "Even now, can you not tell the truth? Your greed has corrupted your soul. "
 "You are a monster! A murderess! It pains me to kill you, mother, but you "
@@ -6000,7 +5961,6 @@ msgstr ""
 "Karkotan sinu aave!"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:341
-#, fuzzy
 msgid ""
 "Oh, wretched lady, I am very real. The land has suffered from your greed and "
 "ambition. You will now be held to account for your misdeeds. For the young "
@@ -6125,13 +6085,12 @@ msgstr ""
 "Hänen valtakautensa oli pitkä, ja hän teki tyhjäksi äitinsä pahat teot."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:21
-#, fuzzy
 msgid ""
 "Delfador became Li'sar's High Counsellor, advising her in the most important "
 "matters of state. He lived until a ripe old age and was given a Royal "
 "Funeral, after which he was buried in the Royal Crypt in Weldyn."
 msgstr ""
-"Delfadorista tuli Li'sarin korkea neuvonantaja, ja hänen neuvojaan kuultiin "
+"Delfadorista tuli Li'sarin korkein neuvonantaja, ja hänen neuvojaan kuultiin "
 "valtion tärkeimmissä asioissa. Hän eli kypsään ikään, ja kuoltuaan hänet "
 "haudattiin kuninkaallisin menoin Weldynin kuninkaalliseen kryptaan."
 
@@ -6364,10 +6323,8 @@ msgstr "keijutuli"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:106
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lord.cfg:64
-#, fuzzy
-#| msgid "Tarcyn"
 msgid "arcane"
-msgstr "Tarcyn"
+msgstr "salatiede"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:5
 msgid "female^Elvish Lady"
@@ -6531,7 +6488,6 @@ msgid "Flaming Sword"
 msgstr "Liekehtivä miekka"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:42
-#, fuzzy
 msgid ""
 "This massive blade was created centuries ago by long-forgotten elvish "
 "forgemasters, who imbued the bluish steel with an inner magical fire. "
@@ -6597,9 +6553,8 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:159
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:161
-#, fuzzy
 msgid "void armor"
-msgstr "Mahtipanssari"
+msgstr "huokoinen panssari"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:168
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:174
@@ -6610,6 +6565,11 @@ msgid ""
 "impact: 60%\n"
 "fire:  +10%"
 msgstr ""
+"Huokoinen suojus antaa seuraavat puolustukset:\n"
+"viilto: 50%\n"
+"lävistys: 50%\n"
+"murskaus: 60%\n"
+"tuli: +10%"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:237
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:401
@@ -6661,14 +6621,12 @@ msgid "At last! I have the Scepter!"
 msgstr "Vihdoinkin minulla on valtikka!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:463
-#, fuzzy
 msgid ""
 "Indeed. You managed to reach it, Li'sar. I hope you shall use it wisely."
 msgstr ""
 "Todella. Onnistuit saamaan sen, Li'sar. Toivon, että käytät sitä viisaasti."
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:467
-#, fuzzy
 msgid ""
 "My first use for it is going to be to help us get out of this hole! I hope "
 "you consider that wise."
