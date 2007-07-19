@@ -53,7 +53,7 @@ namespace game_config
 	  flag_image, flag_icon_image, cross_image,
 	  terrain_mask_image, grid_image, unreachable_image, void_image, fog_image,
 	  observer_image, tod_bright_image,
-	  checked_menu_image, unchecked_menu_image, wml_menu_image, level_image, ellipsis_image;
+	  checked_menu_image, unchecked_menu_image, wml_menu_image, level_image, ellipsis_image, tome_title;
 
 	extern std::string flag_rgb;
 	extern std::vector<Uint32> defense_color_scale;
