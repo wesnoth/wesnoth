@@ -28,6 +28,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
+#include "marked-up_text.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -742,11 +743,11 @@ SDL_Rect line_size(const std::string& line, int font_size, int style)
 	return res;
 }
 
-std::string make_text_ellipsis(const std::string &text, int font_size, int max_width)
+std::string make_text_ellipsis(const std::string &text, int font_size, int max_width, bool with_tags)
 {
 	static const std::string ellipsis = "...";
 
-	if(line_width(text, font_size) <= max_width)
+	if(line_width(with_tags ? text : font::del_tags(text), font_size) <= max_width)
 		return text;
 	if(line_width(ellipsis, font_size) > max_width)
 		return "";
@@ -760,7 +761,7 @@ std::string make_text_ellipsis(const std::string &text, int font_size, int max_w
 		tmp.append(itor.substr().first, itor.substr().second);
 		tmp += ellipsis;
 
-		if (line_width(tmp, font_size) > max_width) {
+		if (line_width(with_tags ? tmp : del_tags(tmp), font_size) > max_width) {
 			return current_substring + ellipsis;
 		}
 

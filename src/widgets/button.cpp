@@ -110,7 +110,7 @@ void button::calculate_size()
 	if (!change_size) {
 		unsigned w = loc.w - (type_ == TYPE_PRESS ? horizontal_padding : checkbox_horizontal_padding + base_width_);
 		if (type_ != TYPE_IMAGE){
-			label_ = font::make_text_ellipsis(label_, font_size, w);
+			label_ = font::make_text_ellipsis(label_, font_size, w, false);
 		}
 	}
 
