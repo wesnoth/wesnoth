@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2005-11-04 01:03GMT Standard Time\n"
 "Last-Translator: Luis Passos Carvalho (lpcarvalho AT gmail DOT com)\n"
 "Language-Team: European Portuguese\n"
@@ -16,31 +16,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Ok"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Sim"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Não"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Fechar"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Ajuda"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -76,8 +72,8 @@ msgstr "Definições do Gerador Aleatório"
 msgid "Map creation failed."
 msgstr "A criação do mapa falhou."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Fechar Janela"
 
@@ -529,53 +525,15 @@ msgstr "Ecrã"
 msgid "Advanced section^Advanced"
 msgstr "Avançados"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Não estão disponíveis modos de vídeo alternativos"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Escolha a Resolução"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Definições de Atalhos"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-#, fuzzy
-msgid "Press desired Hotkey"
-msgstr "Prima o atalho desejado"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Acção"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Atalho"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Mudar o Atalho"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Gravar Atalhos"
-
-#: src/game_preferences_display.cpp:1244
-#, fuzzy
-msgid "This Hotkey is already in use."
-msgstr "Este atalho já é usado."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
@@ -873,6 +831,10 @@ msgstr "Falar com um Aliado"
 msgid "Speak to All"
 msgstr "Falar com Todos"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Ajuda"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Ver Registo da Conversa"
@@ -885,11 +847,11 @@ msgstr "Modificar a língua"
 msgid "Enter user command"
 msgstr "Introduzir comando"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Tem a certeza de que quer sair?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Sair"
 
@@ -951,6 +913,44 @@ msgstr ""
 "O modo de vídeo não pode ser alterado. O seu gestor de janelas deve estar "
 "num modo de 16 bits por pixel para correr o jogo dentro de uma janela. O seu "
 "ecrã deve suportar 1024x768x16 para correr o jogo em todo o ecrã."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Definições de Atalhos"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+#, fuzzy
+msgid "Press desired Hotkey"
+msgstr "Prima o atalho desejado"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Acção"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Atalho"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Mudar o Atalho"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Gravar Atalhos"
+
+#: src/preferences_display.cpp:287
+#, fuzzy
+msgid "This Hotkey is already in use."
+msgstr "Este atalho já é usado."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Não estão disponíveis modos de vídeo alternativos"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Escolha a Resolução"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

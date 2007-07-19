@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2006-06-12 14:28+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -22,31 +22,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.1\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Tamam"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Evet"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Hayır"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Kapat"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Yardım"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -82,8 +78,8 @@ msgstr "Rastgele üreteç ayarları"
 msgid "Map creation failed."
 msgstr "Harita oluşturma başarısız oldu."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Pencereyi kapat"
 
@@ -541,53 +537,17 @@ msgstr "Ayarlar section^Multiplayer"
 msgid "Advanced section^Advanced"
 msgstr "Gelişmiş"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Alternatif video modları mevcut değil"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Çözünürlüğü seç"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Klavye kısayolu ayarları"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Klavye kısayolunu gir"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Eylem"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Kısayol"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Kısayolu değiştir"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Kısayolları kaydet"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Bu kısayol zaten kullanımda"
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Kayıt edilen Tema Tercihleri"
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Yeni tema bir sonraki yeni oyunda yada yüklenen oyunda etkili olmaya "
 "başlayacak."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Bilinen tema yok. Var olan bir oyundan değiştirmeyi dene."
 
@@ -879,6 +839,10 @@ msgstr "Müttefikle konuş"
 msgid "Speak to All"
 msgstr "Herkesle konuş"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Yardım"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Sohbet kaydını gör"
@@ -891,11 +855,11 @@ msgstr "Dili değiştir"
 msgid "Enter user command"
 msgstr "Kullanıcı komutu gir"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Gerçekten çıkmak istiyor musun?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Çık"
 
@@ -957,6 +921,42 @@ msgstr ""
 "Video modu değiştirilemedi. Oyunu pencereli modda çalıştırmak için pencere "
 "yönetici pixel başına 16 bit olarak ayarlanmış olmalıdır. Oyunu tam ekran "
 "çalıştırmak için ekranın 1024x768x16 desteklemelidir."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Klavye kısayolu ayarları"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Klavye kısayolunu gir"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Eylem"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Kısayol"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Kısayolu değiştir"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Kısayolları kaydet"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Bu kısayol zaten kullanımda"
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Alternatif video modları mevcut değil"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Çözünürlüğü seç"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

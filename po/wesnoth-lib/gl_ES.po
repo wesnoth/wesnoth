@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-07-17 20:46+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: none\n"
@@ -15,31 +15,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Si"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Non"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Pechar"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Axuda"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -75,8 +71,8 @@ msgstr "Preferencias do Xerador Aleatorio"
 msgid "Map creation failed."
 msgstr "Fallou a creación do mapa."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Pechar Ventá"
 
@@ -521,51 +517,15 @@ msgstr "Multixogador"
 msgid "Advanced section^Advanced"
 msgstr "Avanzado"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Non hai dispoñibles modos de video alternativos"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Escoller Resolución"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Preferencias de Atallos de Teclado"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Prema as Teclas desexadas"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Acción"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Combinación"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Cambiar o Atallo de Teclado"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Gardar os Atallos de Teclado"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Este Atallo de Teclado xa se está usando."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "O novo tema terá efecto na próxima partida cargada ou nova."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
@@ -853,6 +813,10 @@ msgstr "Falarlle ós Aliados"
 msgid "Speak to All"
 msgstr "Falarlle a Todos"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Axuda"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Ver o Rexistro de Conversas"
@@ -865,11 +829,11 @@ msgstr "Cambiar a lingua"
 msgid "Enter user command"
 msgstr "Introducir comando de usuario"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Desexa saír?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Saír"
 
@@ -927,6 +891,42 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Preferencias de Atallos de Teclado"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Prema as Teclas desexadas"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Acción"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Combinación"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Cambiar o Atallo de Teclado"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Gardar os Atallos de Teclado"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Este Atallo de Teclado xa se está usando."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Non hai dispoñibles modos de video alternativos"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Escoller Resolución"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2005-12-14 12:29+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans <wesnothaf@gmail.com>\n"
@@ -17,31 +17,27 @@ msgstr ""
 "X-Poedit-Language: Afrikaans\n"
 "X-Poedit-Country: SOUTH AFRICA\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Goed"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Ja"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Nee"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Kanselleer"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Sluit"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Hulp"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -79,8 +75,8 @@ msgstr "Willekeurige Kaartskep verstellings"
 msgid "Map creation failed."
 msgstr "Maak van kaart onsuksesvol."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Sluit Venster"
 
@@ -530,51 +526,15 @@ msgstr "Veelspeler"
 msgid "Advanced section^Advanced"
 msgstr "Gevorderd"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Daar is geen alternatiewe video verstellings beskikbaar nie"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Kies Resolusie"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Sleutelbordstellings"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Druk verlangde Kortpadsleutel"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Aksie"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Koppeling"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Verander Sleutelbordstelling"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Stoor Sleutelbordstellings"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Hierdie Kortpadsleutel is reeds in gebruik"
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Gestoorde Tema Voorkeur: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
@@ -869,6 +829,10 @@ msgstr "Praat met Bondgenoot"
 msgid "Speak to All"
 msgstr "Praat met Almal"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Hulp"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Vertoon Kletsrekord"
@@ -881,11 +845,11 @@ msgstr "Verander die taal"
 msgid "Enter user command"
 msgstr "Voer gebruikerbevel in"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Wil jy regtig die spel verlaat?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Sluit"
 
@@ -948,6 +912,42 @@ msgstr ""
 "wees na 16 grepe per pixel om die spel in windowed modus te speel. Jou "
 "monitor moet 'n 1024x768x16 resolusie ondersteun om die spel met 'n volskerm "
 "te kan speel."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Sleutelbordstellings"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Druk verlangde Kortpadsleutel"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Aksie"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Koppeling"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Verander Sleutelbordstelling"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Stoor Sleutelbordstellings"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Hierdie Kortpadsleutel is reeds in gebruik"
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Daar is geen alternatiewe video verstellings beskikbaar nie"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Kies Resolusie"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -18,31 +18,27 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "ОК "
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Да"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Не"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Отказ"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Затваряне"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Помощ"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -78,8 +74,8 @@ msgstr "Настройки на генераторът"
 msgid "Map creation failed."
 msgstr "Създаването на картата се провали."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Затваряне"
 
@@ -519,51 +515,15 @@ msgstr "Мрежова игра"
 msgid "Advanced section^Advanced"
 msgstr "Допълнителни"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Няма други графични режими"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Избор на резолюция"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Настройка на горещите клавиши"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Натиснете желаният клавиш"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Действие"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Връзка"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Смяна на горещия клавиш"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Запис"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Горещият клавиш е вече в употреба."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Запазена предпочитана тема: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Новата тема ще влезе в действие в следващата нова или заредена игра."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Няма намерени теми. Пробвайте да смените тема в съществуваща игра."
 
@@ -853,6 +813,10 @@ msgstr "Говорене със съюзник"
 msgid "Speak to All"
 msgstr "Говорене на всички"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Помощ"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Преглед на дневника на разговорите"
@@ -865,11 +829,11 @@ msgstr "Смяна на езика"
 msgid "Enter user command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Изход"
 
@@ -931,6 +895,42 @@ msgstr ""
 "бъде настроен на 16 бита за пиксел, за да пуснете играта в прозорец. Екранът "
 "ви трябва да поддържа разделителна способност 1024х768 и 16 битов цвят, за "
 "да пуснете играта на пълен екран."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Настройка на горещите клавиши"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Натиснете желаният клавиш"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Действие"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Връзка"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Смяна на горещия клавиш"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Запис"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Горещият клавиш е вече в употреба."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Няма други графични режими"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Избор на резолюция"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

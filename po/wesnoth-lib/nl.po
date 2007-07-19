@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-03-22 13:03+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -18,31 +18,27 @@ msgstr ""
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-Country: NETHERLANDS\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Ok"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Ja"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Nee"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Sluiten"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Help"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -78,8 +74,8 @@ msgstr "Instellingen kaartgenerator"
 msgid "Map creation failed."
 msgstr "Kaart maken mislukt."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Venster sluiten"
 
@@ -526,51 +522,15 @@ msgstr "Multiplayer"
 msgid "Advanced section^Advanced"
 msgstr "Geavanceerd"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Er zijn geen andere video modes beschikbaar."
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Kies een resolutie"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Sneltoetsinstellingen"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Druk op de gewenste sneltoets"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Actie"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Binden"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Sneltoets veranderen"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Sneltoets bewaren"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Deze sneltoets is al in gebruik."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Bewaarde thema-instelling: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Het nieuwe thema wordt gebruikt zodra je een nieuw spel begint."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 "Er zijn geen thema's. Probeer het thema vanuit een bestaand spel te "
@@ -862,6 +822,10 @@ msgstr "Met bondgenoot praten"
 msgid "Speak to All"
 msgstr "Met iedereen praten"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Help"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Chat-log bekijken"
@@ -874,11 +838,11 @@ msgstr "De taal veranderen"
 msgid "Enter user command"
 msgstr "Typ gebruikerscommando in"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Weet je zeker dat je het spel wilt verlaten?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Verlaten"
 
@@ -940,6 +904,42 @@ msgstr ""
 "geconfigureerd zijn voor 16 bits per pixel indien je het spel in een venster "
 "wilt draaien. Je scherm moet 1024x768x16 ondersteunen om op het volledige "
 "scherm te draaien."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Sneltoetsinstellingen"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Druk op de gewenste sneltoets"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Actie"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Binden"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Sneltoets veranderen"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Sneltoets bewaren"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Deze sneltoets is al in gebruik."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Er zijn geen andere video modes beschikbaar."
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Kies een resolutie"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

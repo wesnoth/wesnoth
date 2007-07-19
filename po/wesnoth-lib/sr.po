@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-02-03 03:31+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -19,31 +19,27 @@ msgstr ""
 "Plural-Forms: Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "У реду"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Да"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Не"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Одустани"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Затвори"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Помоћ"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -79,8 +75,8 @@ msgstr "Поставке генератора насумичних мапа"
 msgid "Map creation failed."
 msgstr "Стварање мапе није успело."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Затвори прозор"
 
@@ -532,52 +528,16 @@ msgstr "Вишеиграчко"
 msgid "Advanced section^Advanced"
 msgstr "Напредно"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Нема алтернативних видео режима"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Изабери резолуцију"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Поставке пречица"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Притисни жељену пречицу"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "радња"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "везано"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Промени пречицу"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Сачувај пречице"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Пречица је већ у употреби."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Сачувана подешавања теме: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Нова тема ће се показати при следећем покретању нове или учитавању игре."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Нема познатих тема. Покушајте да промените у оквиру постојеће игре."
 
@@ -869,6 +829,10 @@ msgstr "Причај савезнику"
 msgid "Speak to All"
 msgstr "Причај свима"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Помоћ"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Прикажи дневник ћаскања"
@@ -881,11 +845,11 @@ msgstr "Промени језик"
 msgid "Enter user command"
 msgstr "Унеси корисничку наредбу"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Стварно би да отиђеш?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Напуштање"
 
@@ -947,6 +911,42 @@ msgstr ""
 "Промена видео режима није успела. Ваш менаџер прозора мора подржавати 16 "
 "бита по пикселу да би покренуо игру у прозору. Ваш приказ мора подржавати "
 "1024x768x16 да бисте покренули игру преко целог екрана."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Поставке пречица"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Притисни жељену пречицу"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "радња"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "везано"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Промени пречицу"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Сачувај пречице"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Пречица је већ у употреби."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Нема алтернативних видео режима"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Изабери резолуцију"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2006-06-15 17:19+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -17,31 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Sane"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Ita"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Non"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Abrogare"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Claudere"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Subsidium"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -77,8 +73,8 @@ msgstr "Impostationes Generatoris Fortuiti"
 msgid "Map creation failed."
 msgstr "Creatio chartae fefellit."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Fenestram Claudere"
 
@@ -541,52 +537,16 @@ msgstr "Plurum Lusorum"
 msgid "Advanced section^Advanced"
 msgstr "Provecta"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Carent alteris modis visivis"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Resolutionem Eligere"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Impostationes Clavium Notarum"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Premere Clavem Notarum volutam"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Actio"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Adligatio"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Clavem Notarum Mutare"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Claves Notarum Servare"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Haec Clavis Notarum iam usum habet."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Impostatio Modi Visivi Servata:"
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Novum modum visivum effectum habebit cum primum lusum restues vel incipies."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Nulli modi visivi noti.  Forsitan potes mutare inter lusum existens."
 
@@ -878,6 +838,10 @@ msgstr "Socio Loqui"
 msgid "Speak to All"
 msgstr "Omnibus Loqui"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Subsidium"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Acta Colloquii Aspicere"
@@ -890,11 +854,11 @@ msgstr "Linguam mutare"
 msgid "Enter user command"
 msgstr "Imperium utentis dare"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Visne vere relinquere?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Relinquere"
 
@@ -957,6 +921,42 @@ msgstr ""
 "debet ad XVI bitos per punctum si vis luso cum modo fenestrarum uti. Si vis "
 "luso cum scrinio toto uti, necesse est habere modum MXXIV x DCCLXVIII x XVI "
 "in scrinio."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Impostationes Clavium Notarum"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Premere Clavem Notarum volutam"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Actio"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Adligatio"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Clavem Notarum Mutare"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Claves Notarum Servare"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Haec Clavis Notarum iam usum habet."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Carent alteris modis visivis"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Resolutionem Eligere"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

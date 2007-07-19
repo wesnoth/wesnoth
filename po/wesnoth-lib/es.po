@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-07-16 03:07+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -19,31 +19,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Aceptar"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Sí"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "No"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Cerrar"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Ayuda"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -80,8 +76,8 @@ msgstr "Configuración del generador aleatorio"
 msgid "Map creation failed."
 msgstr "Ha fallado la creación del mapa."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Cerrar ventana"
 
@@ -529,53 +525,17 @@ msgstr "Multijugador"
 msgid "Advanced section^Advanced"
 msgstr "Avanzada"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "No tiene modos de vídeo alternativos disponibles"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Seleccione resolución"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Configuración de accesos rápidos"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Presione la tecla deseada"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Acción"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Tecla"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Cambiar acceso rápido"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Guardar accesos rápidos"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Este acceso rápido ya se está usando."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Preferencia de tema gráfico guardada: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El nuevo tema tendrá efecto la próxima vez que se inicie o cargue una "
 "partida."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "No hay temas conocidos.  Intente cambiarlos desde un juego existente."
 
@@ -863,6 +823,10 @@ msgstr "Hablar con aliados"
 msgid "Speak to All"
 msgstr "Hablar con todos"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Ayuda"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Ver el registro de conversaciones"
@@ -875,11 +839,11 @@ msgstr "Cambia el idioma"
 msgid "Enter user command"
 msgstr "Introduzca una orden"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "¿Está seguro de que quiere salir?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Salir"
 
@@ -940,6 +904,42 @@ msgstr ""
 "El modo de vídeo no ha podido cambiarse. Su escritorio debe estar en 16 bits "
 "para poder funcionar en modo ventana. Su pantalla debe soportar una "
 "resolución de 1024x768x16 para jugar a pantalla completa."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Configuración de accesos rápidos"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Presione la tecla deseada"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Acción"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Tecla"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Cambiar acceso rápido"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Guardar accesos rápidos"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Este acceso rápido ya se está usando."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "No tiene modos de vídeo alternativos disponibles"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Seleccione resolución"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

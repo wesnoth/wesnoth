@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2006-07-11 20:34+0200\n"
 "Last-Translator: Matej Repinc <mrepinc@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -20,31 +20,27 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "V redu"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Da"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Ne"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Zapri"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Pomoč"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -80,8 +76,8 @@ msgstr "Nastavitve generatorja naključnih kart"
 msgid "Map creation failed."
 msgstr "Stvaritev karte ni uspela."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Zapri okno"
 
@@ -536,52 +532,16 @@ msgstr "Večigralstvo"
 msgid "Advanced section^Advanced"
 msgstr "Napredno"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Na voljo ni nobenega drugega video načina"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Izberite resolucijo"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Nastavitve hitrih tipk"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Pritisnite željeno hitro tipko"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Dejanje"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Hitra tipka"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Spremeni hitro tipko"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Shrani hitro tipko"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Ta hitra tipka je že v rabi."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Shranjene nastavitve teme:"
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Nova tema bo prikazana, ko naslednjič zaženete novo ali shranjeno igro."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Ni poznanih tem. Poizkusite jo spremeniti iz obstoječe igre."
 
@@ -873,6 +833,10 @@ msgstr "Govori zaveznikom"
 msgid "Speak to All"
 msgstr "Govori vsem"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Pomoč"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Oglej si dnevnik pogovorov"
@@ -885,11 +849,11 @@ msgstr "Spremeni jezik (prevod)"
 msgid "Enter user command"
 msgstr "Vnesite svoj ukaz"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Ali res želite končati?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Izhod"
 
@@ -952,6 +916,42 @@ msgstr ""
 "biti vaš upravitelj oken nastavljen na 16-bitno globino. Za igranje v "
 "celozaslonskem načinu mora vaš zaslon podpirati resolucijo najmanj 1024x768 "
 "pri 16-bitni globini."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Nastavitve hitrih tipk"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Pritisnite željeno hitro tipko"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Dejanje"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Hitra tipka"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Spremeni hitro tipko"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Shrani hitro tipko"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Ta hitra tipka je že v rabi."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Na voljo ni nobenega drugega video načina"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Izberite resolucijo"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

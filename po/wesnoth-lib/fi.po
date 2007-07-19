@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-07-15 00:55+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -16,31 +16,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Kyllä"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Ei"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Sulje"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Apua"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -76,8 +72,8 @@ msgstr "Satunnaisgeneraattorin asetukset"
 msgid "Map creation failed."
 msgstr "Kartan luonti epäonnistui."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
@@ -510,51 +506,15 @@ msgstr "Moninpeli"
 msgid "Advanced section^Advanced"
 msgstr "Edistyneet asetukset"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä."
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Valitse näyttötarkkuus"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Pikanäppäinten asetukset"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Valitse pikanäppäin painamalla sitä"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Toiminto"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Valinta"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Vaihda pikanäppäintä"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Tallenna muutokset"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Tämä pikanäppäin on jo käytössä."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Käytössä oleva teema: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Uusi teema otetaan käyttöön seuraavassa uudessa tai ladatussa pelissä."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Ei teemoja. Yritä vaihtamista käynnissä olevasta pelistä."
 
@@ -842,6 +802,10 @@ msgstr "Puhu liittolaisille"
 msgid "Speak to All"
 msgstr "Puhu kaikille"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Apua"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Katso keskusteluhistoria"
@@ -854,11 +818,11 @@ msgstr "Vaihda käytettävää kieltä."
 msgid "Enter user command"
 msgstr "Komentorivi"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Haluatko todella lopettaa?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Lopeta"
 
@@ -920,6 +884,42 @@ msgstr ""
 "näyttämään 16 bittiä per pikseli, jotta peliä voidaan ajaa ikkunoituna. "
 "Näyttösi täytyy tukea 1024x768x16 -moodia, jotta peli voidaan ajaa koko "
 "ruudun kokoisena."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Pikanäppäinten asetukset"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Valitse pikanäppäin painamalla sitä"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Toiminto"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Valinta"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Vaihda pikanäppäintä"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Tallenna muutokset"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Tämä pikanäppäin on jo käytössä."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä."
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Valitse näyttötarkkuus"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

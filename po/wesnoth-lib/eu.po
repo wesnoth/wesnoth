@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2005-08-10 16:44+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -17,31 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Ados"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Bai"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Ez"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Utzi"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Itxi"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Laguntza"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -77,8 +73,8 @@ msgstr "Ausazko sortzailearen ezarpenak"
 msgid "Map creation failed."
 msgstr "Maparen sorrera hutsegin du."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Itxi leihoa"
 
@@ -532,53 +528,15 @@ msgstr "Pantaila"
 msgid "Advanced section^Advanced"
 msgstr "Sail aurreratua^Aurreratua"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Ez dago beste bideo modu erabilgarririk"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Aukeratu bereizmena"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Lasterbideen ezarpenak"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-#, fuzzy
-msgid "Press desired Hotkey"
-msgstr "Hautatutako lasterbidea sakatu"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Ekintza"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Tekla"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Aldatu lasterbidea"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Gorde lasterbideak"
-
-#: src/game_preferences_display.cpp:1244
-#, fuzzy
-msgid "This Hotkey is already in use."
-msgstr "Lasterbide hau aurretik erabiltzen ari da."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
@@ -876,6 +834,10 @@ msgstr "Lagunei hitzegin"
 msgid "Speak to All"
 msgstr "Deneri hitzegin"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Laguntza"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Berriketaren historikoa ikusi"
@@ -888,11 +850,11 @@ msgstr "Hizkuntza aldatu"
 msgid "Enter user command"
 msgstr "Erabiltzaile komandua sartu"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Benetan irten nahi duzu?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Irten"
 
@@ -954,6 +916,44 @@ msgstr ""
 "Ezin izan da bideo modua aldatu. Zure leiho kudeatzailea 16 bit pixel "
 "bakoitzeko sakonera izan behar du leiho moduan abiarazteko. Zure pantailak "
 "1024x768x16-ko bereizmena onartu behar du pantaila osoan abiarazteko."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Lasterbideen ezarpenak"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+#, fuzzy
+msgid "Press desired Hotkey"
+msgstr "Hautatutako lasterbidea sakatu"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Ekintza"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Tekla"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Aldatu lasterbidea"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Gorde lasterbideak"
+
+#: src/preferences_display.cpp:287
+#, fuzzy
+msgid "This Hotkey is already in use."
+msgstr "Lasterbide hau aurretik erabiltzen ari da."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Ez dago beste bideo modu erabilgarririk"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Aukeratu bereizmena"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

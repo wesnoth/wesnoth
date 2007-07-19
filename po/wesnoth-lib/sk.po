@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-01-08 22:55+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -18,31 +18,27 @@ msgstr ""
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Áno"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Nie"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Storno"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Zavri"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Pomoc"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -78,8 +74,8 @@ msgstr "Nastavenia náhodného generátora"
 msgid "Map creation failed."
 msgstr "Nepodarilo sa vytvoriť mapu."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Zavri okno"
 
@@ -532,51 +528,15 @@ msgstr "Zápas"
 msgid "Advanced section^Advanced"
 msgstr "Rozšírené"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Alternatívne režimy obrazovky nie sú k dispozícii"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Vyber si rozlíšenie"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Nastavenie kláves"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Stlač požadovanú klávesu"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Akcia"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Pripájanie"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Zmeň klávesu"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Ulož klávesy"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Táto klávesa sa už používa."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Uložená zvolená téma: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nová téma sa prejaví až pri najbližšom spustení alebo načítaní hry."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."
 
@@ -868,6 +828,10 @@ msgstr "Povedz spojencom"
 msgid "Speak to All"
 msgstr "Povedz všetkým"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Pomoc"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Ukáž záznam rozhovoru"
@@ -880,11 +844,11 @@ msgstr "Zmeň jazyk"
 msgid "Enter user command"
 msgstr "Zadaj užívateľský príkaz"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Chceš naozaj vypnúť?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Vypni"
 
@@ -946,6 +910,42 @@ msgstr ""
 "Nemôžem zmeniť režim obrazovky. Správca okien musí byť nastavený na 16 bitov "
 "na pixel, aby mohla hra bežať v okne. Obrazovka musí podporovať režim "
 "1024x768x16, aby mohla hra bežať na celej obrazovke."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Nastavenie kláves"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Stlač požadovanú klávesu"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Akcia"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Pripájanie"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Zmeň klávesu"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Ulož klávesy"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Táto klávesa sa už používa."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Alternatívne režimy obrazovky nie sú k dispozícii"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Vyber si rozlíšenie"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

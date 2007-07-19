@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-07-06 13:19+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -16,31 +16,27 @@ msgstr ""
 "100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "Gerai"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Taip"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Ne"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Užverti"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Pagalba"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -76,8 +72,8 @@ msgstr ""
 msgid "Map creation failed."
 msgstr "Žemėlapio kūrimas nepavyko"
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Užverti langą"
 
@@ -540,53 +536,15 @@ msgstr "Vaizdas"
 msgid "Advanced section^Advanced"
 msgstr "Išsamiau"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr ""
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Pasirinkite rezoliuciją"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr ""
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr ""
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Veiksmas"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr ""
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr ""
-
-#: src/game_preferences_display.cpp:1194
-#, fuzzy
-#| msgid "Save As"
-msgid "Save Hotkeys"
-msgstr "Išsaugoti kaip"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr ""
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
 
@@ -874,6 +832,10 @@ msgstr ""
 msgid "Speak to All"
 msgstr ""
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Pagalba"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr ""
@@ -886,11 +848,11 @@ msgstr "Keisti kalbą"
 msgid "Enter user command"
 msgstr ""
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Ar tikrai norite išjungti?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Išjungti"
 
@@ -948,6 +910,44 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr ""
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr ""
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Veiksmas"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr ""
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr ""
+
+#: src/preferences_display.cpp:237
+#, fuzzy
+#| msgid "Save As"
+msgid "Save Hotkeys"
+msgstr "Išsaugoti kaip"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr ""
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr ""
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Pasirinkite rezoliuciją"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

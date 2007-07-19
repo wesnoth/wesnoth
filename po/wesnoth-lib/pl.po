@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-07-16 11:04+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -19,31 +19,27 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Tak"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Nie"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Zamknij"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Pomoc"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -79,8 +75,8 @@ msgstr "Ustawienia generatora losowego"
 msgid "Map creation failed."
 msgstr "Tworzenie mapy nie powiodło się."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Zamknij okno"
 
@@ -521,52 +517,16 @@ msgstr "Gra wieloosobowa"
 msgid "Advanced section^Advanced"
 msgstr "Zaawansowane"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Inne tryby graficzne nie są dostępne"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Wybierz rozdzielczość"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Skróty"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Wciśnij wybrany skrót"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Akcja"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Przypisanie"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Zmień skrót"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Zapisz skróty"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Ten skrót jest już używany."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Zapisane preferencje motywu:"
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "Nowy motyw zostanie zastosowany po rozpoczęciu nowej gry lub załadowaniu gry."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Brak znanych motywów. Spróbuj zmienić motyw w trakcie gry."
 
@@ -854,6 +814,10 @@ msgstr "Mów do sojusznika"
 msgid "Speak to All"
 msgstr "Mów do wszystkich"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Pomoc"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Pokaż zapis rozmów"
@@ -866,11 +830,11 @@ msgstr "Zmień język gry"
 msgid "Enter user command"
 msgstr "Wprowadź komendę"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Czy na pewno wyjść?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Wyjdź"
 
@@ -932,6 +896,42 @@ msgstr ""
 "w oknie, używany menedżer okien musi być ustawiony w tryb koloru 16-"
 "bitowego. Do gry w trybie pełnoekranowym wymagana jest rozdzielczość co "
 "najmniej 1024x768x16."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Skróty"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Wciśnij wybrany skrót"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Akcja"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Przypisanie"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Zmień skrót"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Zapisz skróty"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Ten skrót jest już używany."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Inne tryby graficzne nie są dostępne"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Wybierz rozdzielczość"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

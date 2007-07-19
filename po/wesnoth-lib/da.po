@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-06-15 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -17,31 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "O.k."
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Ja"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Nej"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Annuller"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Luk"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Hjælp"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -77,8 +73,8 @@ msgstr "Tilfældige genereringsindstillinger"
 msgid "Map creation failed."
 msgstr "Oprettelse af kort mislykkedes."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Luk vindue"
 
@@ -520,51 +516,15 @@ msgstr "Prefs section^Flerspiller"
 msgid "Advanced section^Advanced"
 msgstr "Advanced section^Avanceret"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Der er ingen alternative videomodes tilgængelige"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Vælg opløsning"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Genvejsindstillinger"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Tryk ønsket genvejstast"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Aktion"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Sammenfæstning"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Skift genvejstast"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Gem genvejstaster"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Denne genvejstast er allerede i brug."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Gem temapræference: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nyt tema vil være aktivt i næste nye eller hentede spil."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Ingen kendte temaer. Prøv at ændre inde fra et eksisterende spil."
 
@@ -855,6 +815,10 @@ msgstr "Tal til allierede"
 msgid "Speak to All"
 msgstr "Tal til alle"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Hjælp"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Vis snakke-log"
@@ -867,11 +831,11 @@ msgstr "Skift sprog"
 msgid "Enter user command"
 msgstr "Indtast brugerkomando"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Er du sikker på at du vil afslutte?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Afslut"
 
@@ -932,6 +896,42 @@ msgstr ""
 "Videomode kunne ikke ændres. Din window-manager skal sættes til 16 bits per "
 "pixel for at afvikle spillet i et vindue. Din skærm skal understøtte "
 "1024x768x16 for at køre spillet i fuld skærm."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Genvejsindstillinger"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Tryk ønsket genvejstast"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Aktion"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Sammenfæstning"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Skift genvejstast"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Gem genvejstaster"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Denne genvejstast er allerede i brug."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Der er ingen alternative videomodes tilgængelige"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Vælg opløsning"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

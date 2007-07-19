@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2006-10-26 18:33+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -16,31 +16,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Esperanto\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "En ordo"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Jes"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Ne"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Nuligu"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Fermi"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Helpo"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -76,8 +72,8 @@ msgstr "Agordi Hazardan Generatoron"
 msgid "Map creation failed."
 msgstr "Kreado de mapo malsukcesis."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Fermu fenestron"
 
@@ -530,51 +526,15 @@ msgstr "Grupludo"
 msgid "Advanced section^Advanced"
 msgstr "Superaj agordoj"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Alterantivaj ekranmodusoj ne eblas"
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Elektu distingivon"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Klavkomandaj preferoj"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Premu klavon, kiun vi volas uzi"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Ago"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Ligado"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Ŝanĝu klavkomandon"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Konservi klavokomandon"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Tiu klavkomando jam estas uzata"
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Savi Preferencoj de la Temo"
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nova temo donos efekton en nova aŭ ŝargita ludo."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Temoj ne ekzistas. Provu shanĝi "
 
@@ -866,6 +826,10 @@ msgstr "Diri al la aliancano"
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Helpo"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Montri babil-protokolo"
@@ -878,11 +842,11 @@ msgstr "Ŝanghi lingvon"
 msgid "Enter user command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas fini ludon?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Finu ludon"
 
@@ -944,6 +908,42 @@ msgstr ""
 "Mi ne povas ŝangi ekranreĝimon. Via fenestra administrilo devas esti "
 "agordita je po 16 bitoj per rastrumero, por la ludo povus umi en fenestro. "
 "Ekrano devas subteni distingon 1024x768x16, por povi  umi tutekrane. "
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Klavkomandaj preferoj"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Premu klavon, kiun vi volas uzi"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Ago"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Ligado"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Ŝanĝu klavkomandon"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Konservi klavokomandon"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Tiu klavkomando jam estas uzata"
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Alterantivaj ekranmodusoj ne eblas"
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Elektu distingivon"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

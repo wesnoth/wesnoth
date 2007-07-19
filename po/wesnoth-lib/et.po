@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-01-14 16:37+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -16,31 +16,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Jah"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Ei"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Tühista"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Sulge"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Abi"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -76,8 +72,8 @@ msgstr "Juhugeneraatori sätted"
 msgid "Map creation failed."
 msgstr "Kaardi loomine ebaõnnestus."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Sulge aken"
 
@@ -513,51 +509,15 @@ msgstr "Mitu mängijat"
 msgid "Advanced section^Advanced"
 msgstr "Edasijõudnutele"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Alternatiivsed video režiimid puuduvad."
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Vali eraldusvõime"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Kiirvalikute seaded"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Vajuta soovitud kiirklahvi"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Tegevus"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Klahv"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Muuda kiirvalikut"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Salvesta kiirvalikud"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "See kiirklahv on juba kasutusel."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Salvestatud teema eelistus:"
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Uus teema ei rakendub kas uue mängu alustamisel või mängu laadimisel."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Teemasid ei leitud. Proovi teemat muuta olemasolevast mängust."
 
@@ -847,6 +807,10 @@ msgstr "Räägi liitlasega"
 msgid "Speak to All"
 msgstr "Räägi kõigiga"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Abi"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Vaata vestluslogi"
@@ -859,11 +823,11 @@ msgstr "Muuda kasutatavat keelt"
 msgid "Enter user command"
 msgstr "Sisesta kasutaja käsk"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Kas sa tahad tõesti lõpetada?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Lõpeta"
 
@@ -924,6 +888,42 @@ msgstr ""
 "Videorežiimi ei saam muuta. Sinu aknahaldur peab olema 16 värvibiti "
 "režiimis, et mängu aknas jooksutada. Sinu kuvar peab toetama 1024x768x16 "
 "režiimi, et mängu täisekraanil jooksutada."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Kiirvalikute seaded"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Vajuta soovitud kiirklahvi"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Tegevus"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Klahv"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Muuda kiirvalikut"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Salvesta kiirvalikud"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "See kiirklahv on juba kasutusel."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Alternatiivsed video režiimid puuduvad."
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Vali eraldusvõime"
 
 #: src/show_dialog.cpp:368
 msgid "Error"

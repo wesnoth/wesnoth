@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-17 23:31+0200\n"
+"POT-Creation-Date: 2007-07-19 11:49+0200\n"
 "PO-Revision-Date: 2006-12-15 16:18+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -353,106 +353,106 @@ msgstr "Φινλανδική Μετάφραση"
 msgid "Finnish Translation"
 msgstr "Φινλανδική Μετάφραση"
 
-#: data/core/about.cfg:472
+#: data/core/about.cfg:474
 msgid "French Translation"
 msgstr "Γαλλική Μετάφραση"
 
-#: data/core/about.cfg:508
+#: data/core/about.cfg:510
 #, fuzzy
 msgid "Galician Translation"
 msgstr "Σλοβενική Μετάφραση"
 
-#: data/core/about.cfg:514
+#: data/core/about.cfg:517
 msgid "German Translation"
 msgstr "Γερμανική Μετάφραση"
 
-#: data/core/about.cfg:533
+#: data/core/about.cfg:536
 msgid "Greek Translation"
 msgstr "Ελληνική Μετάφραση"
 
-#: data/core/about.cfg:545
+#: data/core/about.cfg:548
 msgid "Hebrew Translation"
 msgstr "Εβραϊκή Μετάφραση"
 
-#: data/core/about.cfg:553
+#: data/core/about.cfg:556
 msgid "Hungarian Translation"
 msgstr "Ουγγρική Μετάφραση"
 
-#: data/core/about.cfg:570
+#: data/core/about.cfg:573
 msgid "Indonesian Translation"
 msgstr "Ινδοσησιακή Μετάφραση"
 
-#: data/core/about.cfg:577
+#: data/core/about.cfg:580
 msgid "Italian Translation"
 msgstr "Ιταλική Μετάφραση"
 
-#: data/core/about.cfg:592
+#: data/core/about.cfg:595
 msgid "Japanese Translation"
 msgstr "Γιαπωνέζικη Μετάφραση"
 
-#: data/core/about.cfg:604
+#: data/core/about.cfg:607
 msgid "Korean Translation"
 msgstr "Κορεάτικη Μετάφραση"
 
-#: data/core/about.cfg:611
+#: data/core/about.cfg:614
 msgid "Latin Translation"
 msgstr "Λατινική Μετάφραση"
 
-#: data/core/about.cfg:618
+#: data/core/about.cfg:621
 #, fuzzy
 msgid "Lithuanian Translation"
 msgstr "Ιταλική Μετάφραση"
 
-#: data/core/about.cfg:625
+#: data/core/about.cfg:628
 msgid "Norwegian Translation"
 msgstr "Νορβηγική Μετάφραση"
 
-#: data/core/about.cfg:637
+#: data/core/about.cfg:640
 msgid "Polish Translation"
 msgstr "Πολωνική Μετάφραση"
 
-#: data/core/about.cfg:655
+#: data/core/about.cfg:658
 msgid "Portuguese Translation"
 msgstr "Πορτογαλλική Μετάφραση"
 
-#: data/core/about.cfg:662
+#: data/core/about.cfg:665
 msgid "Portuguese (Brazil) Translation"
 msgstr "Πορτογαλλική Μετάφραση (Βραζιλιάνικα)"
 
-#: data/core/about.cfg:678
+#: data/core/about.cfg:681
 msgid "Russian Translation"
 msgstr "Ρώσικη Μετάφραση"
 
-#: data/core/about.cfg:692
+#: data/core/about.cfg:695
 msgid "Serbian Translation"
 msgstr "Σερβική Μετάφραση"
 
-#: data/core/about.cfg:701
+#: data/core/about.cfg:704
 msgid "Slovak Translation"
 msgstr "Σλοβακική Μετάφραση"
 
-#: data/core/about.cfg:710
+#: data/core/about.cfg:713
 msgid "Slovenian Translation"
 msgstr "Σλοβενική Μετάφραση"
 
-#: data/core/about.cfg:718
+#: data/core/about.cfg:721
 msgid "Spanish Translation"
 msgstr "Ισπανική Μετάφραση"
 
-#: data/core/about.cfg:735
+#: data/core/about.cfg:738
 msgid "Swedish Translation"
 msgstr "Σουηδική Μετάφραση"
 
-#: data/core/about.cfg:748
+#: data/core/about.cfg:751
 msgid "Turkish Translation"
 msgstr "Τουρκική Μετάφραση"
 
-#: data/core/about.cfg:759
+#: data/core/about.cfg:762
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "Σλοβενική Μετάφραση"
 
-#: data/core/about.cfg:766
+#: data/core/about.cfg:769
 msgid "Bots"
 msgstr ""
 
@@ -1371,7 +1371,9 @@ msgid "Quick"
 msgstr "γρήγορος"
 
 #: data/core/help.cfg:286
-msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
+#, fuzzy
+#| msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
+msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Οι γρήγορες μονάδες έχουν 1 επιπλέον πόντο κίνησης, αλλά 10% λιγώτερους "
 "βαθμούς υγείας από τό κανονικό. "
@@ -1402,7 +1404,7 @@ msgid "Resilient"
 msgstr "ανθεκτικός"
 
 #: data/core/help.cfg:294
-msgid "Resilient units have 10% +3 more HP than usual."
+msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 
 #: data/core/help.cfg:296
@@ -1578,11 +1580,19 @@ msgid ""
 "rest even when travelling."
 msgstr ""
 
-#: data/core/help.cfg:353 data/core/terrain.cfg:429 data/core/terrain.cfg:437
+#: data/core/help.cfg:350
+msgid ""
+"\n"
+"\n"
+"Healthy units have 2 more HP than usual and rest heal 2 additional HP after "
+"each turn they did not fight."
+msgstr ""
+
+#: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
 msgid "Grassland"
 msgstr "Λιβάδι"
 
-#: data/core/help.cfg:358
+#: data/core/help.cfg:360
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1600,11 +1610,11 @@ msgstr ""
 "\n"
 " Οι περισσότερες μονάδες έχουν 30 μέ 40% άμυνα στά λειβάδια. "
 
-#: data/core/help.cfg:363 data/core/terrain.cfg:552
+#: data/core/help.cfg:365 data/core/terrain.cfg:552
 msgid "Road"
 msgstr "Δρόμος"
 
-#: data/core/help.cfg:366
+#: data/core/help.cfg:368
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1614,11 +1624,11 @@ msgstr ""
 "πέρασεαν από πάνω. Οσον αφορά το παιχνίδι, οι δρόμοι είναι τό ίδιο όπως τό "
 "<ref>dst=terrain_grassland text=Λειβαδι</ref>."
 
-#: data/core/help.cfg:371 data/core/terrain.cfg:408
+#: data/core/help.cfg:373 data/core/terrain.cfg:408
 msgid "Forest"
 msgstr "Δάσος"
 
-#: data/core/help.cfg:378
+#: data/core/help.cfg:380
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1636,11 +1646,11 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:383 data/core/terrain.cfg:479
+#: data/core/help.cfg:385 data/core/terrain.cfg:479
 msgid "Hills"
 msgstr "Λόφοι"
 
-#: data/core/help.cfg:388
+#: data/core/help.cfg:390
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1663,11 +1673,11 @@ msgstr ""
 "Οι περισσότερες μονάδες έχουν περίπου 50% άμυνα στούς λόφους, ενώ γιά τό "
 "ιππικό αυτό τό ποσοστό είναι μόνο 40%. Οι νάνοι έχουν άμυνα 60% στούς λόφους."
 
-#: data/core/help.cfg:393 data/core/terrain.cfg:491 data/core/terrain.cfg:500
+#: data/core/help.cfg:395 data/core/terrain.cfg:491 data/core/terrain.cfg:500
 msgid "Mountains"
 msgstr "Βουνά"
 
-#: data/core/help.cfg:398
+#: data/core/help.cfg:400
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1680,11 +1690,11 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
 
-#: data/core/help.cfg:403 data/core/terrain.cfg:574
+#: data/core/help.cfg:405 data/core/terrain.cfg:574
 msgid "Swamp"
 msgstr "Βάλτος"
 
-#: data/core/help.cfg:408
+#: data/core/help.cfg:410
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1705,11 +1715,11 @@ msgstr ""
 "Οι περισσότερες μονάδες έχουν άμυνα 30% στούς βάλτους. Οι θαλασσάνθρωποι, οι "
 "Νάγκα καί οι Σαυράνθρωπο έχουν γενικά 60%. "
 
-#: data/core/help.cfg:413 data/core/terrain.cfg:851
+#: data/core/help.cfg:415 data/core/terrain.cfg:851
 msgid "Shallow Water"
 msgstr "Ρηχά Νερά"
 
-#: data/core/help.cfg:418
+#: data/core/help.cfg:420
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1722,11 +1732,11 @@ msgid ""
 "Naga and Mermen enjoy 60%."
 msgstr ""
 
-#: data/core/help.cfg:423 data/core/terrain.cfg:841
+#: data/core/help.cfg:425 data/core/terrain.cfg:841
 msgid "Deep Water"
 msgstr "Βαθιά Νερά"
 
-#: data/core/help.cfg:428
+#: data/core/help.cfg:430
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1742,11 +1752,11 @@ msgstr ""
 "Οι θαλασσάνθρωποι καί οι νάγκα έχουν 50% άμυνα στά βαθιά νερά, μέ πλήρη "
 "κινητικότητα. "
 
-#: data/core/help.cfg:433 data/core/terrain.cfg:47
+#: data/core/help.cfg:435 data/core/terrain.cfg:47
 msgid "Snow"
 msgstr "Χιόνι"
 
-#: data/core/help.cfg:438
+#: data/core/help.cfg:440
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1761,11 +1771,11 @@ msgstr ""
 "\n"
 "Οι περισσότερες μονάδες έχουν άμυνα στό χιόνι 20 μέ 40%."
 
-#: data/core/help.cfg:443 data/core/terrain.cfg:37
+#: data/core/help.cfg:445 data/core/terrain.cfg:37
 msgid "Ice"
 msgstr "Πάγος"
 
-#: data/core/help.cfg:446
+#: data/core/help.cfg:448
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1776,11 +1786,11 @@ msgstr ""
 "Σημειωτέον ότι μονάδες πού μπορούν νά κολυμπούν, ακόμα καί όσες μπορούν να "
 "αναπνέουν κάτω από τό νερό, δέν μπορούν να κολυμπήσουν κάτω από πάγο. "
 
-#: data/core/help.cfg:451 data/core/terrain.cfg:158
+#: data/core/help.cfg:453 data/core/terrain.cfg:158
 msgid "Castle"
 msgstr "Κάστρο"
 
-#: data/core/help.cfg:458
+#: data/core/help.cfg:460
 #, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -1802,11 +1812,11 @@ msgstr ""
 "\n"
 "Οι περισσότερες μονάδες έχουν 60% άμυνα σέ ένα κάστρο."
 
-#: data/core/help.cfg:463 data/core/terrain.cfg:366
+#: data/core/help.cfg:465 data/core/terrain.cfg:366
 msgid "Sand"
 msgstr "Άμμος"
 
-#: data/core/help.cfg:468
+#: data/core/help.cfg:470
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1821,11 +1831,11 @@ msgstr ""
 "\n"
 "Οι περισσότερες μονάδες έχουν 20 μέ 40% άμυνα στην άμμο."
 
-#: data/core/help.cfg:473 data/core/terrain.cfg:346
+#: data/core/help.cfg:475 data/core/terrain.cfg:346
 msgid "Desert"
 msgstr "Ερημος"
 
-#: data/core/help.cfg:476
+#: data/core/help.cfg:478
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1835,11 +1845,11 @@ msgstr ""
 "παραλίες, όμως γιά τους σκοπούς του παιχνιδιού είναι τό ίδιο. Βλ. "
 "<ref>dst=terrain_sand text=Αμμος.</ref>."
 
-#: data/core/help.cfg:481 data/core/terrain.cfg:588
+#: data/core/help.cfg:483 data/core/terrain.cfg:588
 msgid "Cave"
 msgstr "Σπηλιά"
 
-#: data/core/help.cfg:486
+#: data/core/help.cfg:488
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1862,11 +1872,11 @@ msgstr ""
 "Οι περισσότερες μονάδες έχουν 20 μέχρι 40% άμυνα στίς σπηλιές, ενώ οι νάνοι "
 "έχουν 50%."
 
-#: data/core/help.cfg:491 data/core/terrain.cfg:634
+#: data/core/help.cfg:493 data/core/terrain.cfg:634
 msgid "Rockbound Cave"
 msgstr ""
 
-#: data/core/help.cfg:496
+#: data/core/help.cfg:498
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -1880,11 +1890,11 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in Rockbound caves."
 msgstr ""
 
-#: data/core/help.cfg:501
+#: data/core/help.cfg:503
 msgid "Illuminated Cave"
 msgstr ""
 
-#: data/core/help.cfg:504
+#: data/core/help.cfg:506
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness.  This provides an attack "
@@ -1893,11 +1903,11 @@ msgid ""
 "terrains."
 msgstr ""
 
-#: data/core/help.cfg:509 data/core/terrain.cfg:606 data/core/terrain.cfg:614
+#: data/core/help.cfg:511 data/core/terrain.cfg:606 data/core/terrain.cfg:614
 msgid "Mushroom Grove"
 msgstr ""
 
-#: data/core/help.cfg:514
+#: data/core/help.cfg:516
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -1910,11 +1920,11 @@ msgid ""
 "receive only 20%."
 msgstr ""
 
-#: data/core/help.cfg:519 data/core/terrain.cfg:446
+#: data/core/help.cfg:521 data/core/terrain.cfg:446
 msgid "Savanna"
 msgstr "Σαβάννα"
 
-#: data/core/help.cfg:522
+#: data/core/help.cfg:524
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1924,7 +1934,7 @@ msgstr ""
 "κλίματα του κόσμου.  Γιά τους σκοπούς του παιχνιδιού είναι σάν "
 "<ref>dst=terrain_grassland text=λειβάδι</ref>."
 
-#: data/core/help.cfg:527 data/core/terrain.cfg:661 data/core/terrain.cfg:672
+#: data/core/help.cfg:529 data/core/terrain.cfg:661 data/core/terrain.cfg:672
 #: data/core/terrain.cfg:685 data/core/terrain.cfg:696
 #: data/core/terrain.cfg:709 data/core/terrain.cfg:720
 #: data/core/terrain.cfg:730 data/core/terrain.cfg:741
@@ -1935,7 +1945,7 @@ msgstr ""
 msgid "Village"
 msgstr "Χωριό"
 
-#: data/core/help.cfg:534
+#: data/core/help.cfg:536
 #, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -1959,12 +1969,12 @@ msgstr ""
 "Οι περισσότερες μονάδες έχουν άμυνα 50 με 60% στά χωριά, ενώ τό ιππικό έχει "
 "μόνο 40%."
 
-#: data/core/help.cfg:539
+#: data/core/help.cfg:541
 #, fuzzy
 msgid "Submerged Village"
 msgstr "Κάστρο των Νάνων"
 
-#: data/core/help.cfg:544
+#: data/core/help.cfg:546
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -1977,11 +1987,11 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#: data/core/help.cfg:549 data/core/terrain.cfg:512
+#: data/core/help.cfg:551 data/core/terrain.cfg:512
 msgid "Chasm"
 msgstr ""
 
-#: data/core/help.cfg:552
+#: data/core/help.cfg:554
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -1989,11 +1999,11 @@ msgid ""
 "terrain."
 msgstr ""
 
-#: data/core/help.cfg:557 data/core/terrain.cfg:520
+#: data/core/help.cfg:559 data/core/terrain.cfg:520
 msgid "Lava"
 msgstr "Λάβα"
 
-#: data/core/help.cfg:560
+#: data/core/help.cfg:562
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2002,11 +2012,11 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 
-#: data/core/help.cfg:565 data/core/terrain.cfg:861
+#: data/core/help.cfg:567 data/core/terrain.cfg:861
 msgid "River Ford"
 msgstr "Πέρασμα Ποταμού"
 
-#: data/core/help.cfg:568
+#: data/core/help.cfg:570
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2022,14 +2032,14 @@ msgstr ""
 "είτε λειβάδι, είτε ρηχό νερό, καί επιλέγεται αυτό πού δίνει τά καλύτερα "
 "αμυντικά μπόνους καί μπόνους κίνησης γιά τη μονάδα πού είναι πάνω του."
 
-#: data/core/help.cfg:573 data/core/terrain.cfg:60 data/core/terrain.cfg:69
+#: data/core/help.cfg:575 data/core/terrain.cfg:60 data/core/terrain.cfg:69
 #: data/core/terrain.cfg:78 data/core/terrain.cfg:88 data/core/terrain.cfg:97
 #: data/core/terrain.cfg:106 data/core/terrain.cfg:116
 #: data/core/terrain.cfg:125 data/core/terrain.cfg:134
 msgid "Bridge"
 msgstr "Γέφυρα"
 
-#: data/core/help.cfg:578
+#: data/core/help.cfg:580
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2044,33 +2054,33 @@ msgid ""
 "capable of occupying a bridge hex at the same time."
 msgstr ""
 
-#: data/core/help.cfg:583 data/core/terrain.cfg:894
+#: data/core/help.cfg:585 data/core/terrain.cfg:894
 msgid "Cave Wall"
 msgstr "Τοίχωμα  σπηλιάς"
 
-#: data/core/help.cfg:586
+#: data/core/help.cfg:588
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr ""
 
-#: data/core/help.cfg:591
+#: data/core/help.cfg:593
 #, fuzzy
 msgid "Impassable Mountain"
 msgstr "Αδιάβατα Βουνά"
 
-#: data/core/help.cfg:594
+#: data/core/help.cfg:596
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
-#: data/core/help.cfg:599
+#: data/core/help.cfg:601
 msgid "General commands"
 msgstr "Γενικές διαταγές"
 
-#: data/core/help.cfg:603
+#: data/core/help.cfg:605
 #, fuzzy
 msgid ""
 "\n"
@@ -2080,7 +2090,7 @@ msgstr ""
 "\n"
 "Έξοδος από το σενάριο (χωρίς προειδοποίηση)."
 
-#: data/core/help.cfg:606
+#: data/core/help.cfg:608
 #, fuzzy
 msgid ""
 "\n"
@@ -2090,7 +2100,7 @@ msgstr ""
 "\n"
 "Αποθήκευση παιχνιδιού (χωρίς προειδοποίηση)."
 
-#: data/core/help.cfg:609
+#: data/core/help.cfg:611
 #, fuzzy
 msgid ""
 "\n"
@@ -2100,14 +2110,14 @@ msgstr ""
 "\n"
 "Αποθήκευση παιχνιδιού και έξοδος από το σενάριο (χωρίς προειδοποίηση)."
 
-#: data/core/help.cfg:612
+#: data/core/help.cfg:614
 msgid ""
 "\n"
 "Redraw the screen.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:615
+#: data/core/help.cfg:617
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2115,15 +2125,15 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:616
+#: data/core/help.cfg:618
 msgid "Bring up theme selection menu."
 msgstr ""
 
-#: data/core/help.cfg:621
+#: data/core/help.cfg:623
 msgid "Multiplayer commands"
 msgstr ""
 
-#: data/core/help.cfg:625
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2132,14 +2142,14 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:628
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:631
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2147,7 +2157,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:634
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2156,7 +2166,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:637
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -2164,7 +2174,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:640
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2172,7 +2182,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:641
+#: data/core/help.cfg:643
 msgid ""
 "\n"
 "Clear chat messages."
@@ -3380,30 +3390,30 @@ msgstr "ανθεκτικός"
 msgid "female^resilient"
 msgstr "ανθεκτικός"
 
-#: data/core/macros/traits.cfg:121
+#: data/core/macros/traits.cfg:122
 msgid "healthy"
 msgstr ""
 
-#: data/core/macros/traits.cfg:122
+#: data/core/macros/traits.cfg:123
 #, fuzzy
 msgid "female^healthy"
 msgstr " Κλέφτρα"
 
-#: data/core/macros/traits.cfg:123
+#: data/core/macros/traits.cfg:124
 msgid "Can rest while moving"
 msgstr ""
 
-#: data/core/macros/traits.cfg:135
+#: data/core/macros/traits.cfg:136
 #, fuzzy
 msgid "fearless"
 msgstr "Πριγκήπισσα"
 
-#: data/core/macros/traits.cfg:136
+#: data/core/macros/traits.cfg:137
 #, fuzzy
 msgid "female^fearless"
 msgstr "Πριγκήπισσα"
 
-#: data/core/macros/traits.cfg:137
+#: data/core/macros/traits.cfg:138
 msgid "Fights normally during unfavorable times of day/night"
 msgstr ""
 
@@ -4092,13 +4102,13 @@ msgid "End Turn"
 msgstr "Τέλος Γύρου"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2425
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2436
 msgid "HP"
 msgstr "Βαθμοί Υγείας"
 
 #: data/themes/default.cfg:181 data/themes/dfool.cfg:209
 #: data/themes/experimental.cfg:159 src/menu_events.cpp:317
-#: src/menu_events.cpp:873
+#: src/menu_events.cpp:888
 msgid "XP"
 msgstr "Εμπειρία"
 
@@ -4214,7 +4224,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:169 src/help.cpp:2625 src/menu_events.cpp:139
+#: src/about.cpp:169 src/help.cpp:2659 src/menu_events.cpp:139
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -4232,54 +4242,54 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Δέν υπάρχουν κενές θέσεις στό κάστρο γιά να στρατολογήσεις μονάδες"
 
-#: src/actions.cpp:883 src/actions.cpp:1111
+#: src/actions.cpp:883 src/actions.cpp:1114
 msgid "poisoned"
 msgstr "δηλητηριασμένος"
 
-#: src/actions.cpp:887 src/actions.cpp:1115
+#: src/actions.cpp:887 src/actions.cpp:1118
 msgid "slowed"
 msgstr "επιβραδυμένος"
 
-#: src/actions.cpp:893 src/actions.cpp:1121
+#: src/actions.cpp:893 src/actions.cpp:1124
 msgid "stone"
 msgstr "πέτρα"
 
-#: src/actions.cpp:2028
+#: src/actions.cpp:2031
 msgid "Ambushed!"
 msgstr "Επεσες σέ ενέδρα "
 
-#: src/actions.cpp:2066
+#: src/actions.cpp:2069
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Εθεάθη φιλική μονάδα"
 msgstr[1] "Εθεάθη φιλική μονάδα"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2072
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Εθεάθη εχθρική μονάδα!"
 msgstr[1] "Εθεάθη εχθρική μονάδα!"
 
-#: src/actions.cpp:2074
+#: src/actions.cpp:2077
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2075
+#: src/actions.cpp:2078
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2076
+#: src/actions.cpp:2079
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
 
-#: src/actions.cpp:2085
+#: src/actions.cpp:2088
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(πάτα  $hotkey γιά νά συνεχίσεις) "
@@ -4404,7 +4414,7 @@ msgid "Date"
 msgstr "ημερομηνία"
 
 #: src/dialogs.cpp:561 src/game.cpp:1060 src/menu_events.cpp:314
-#: src/menu_events.cpp:871 src/multiplayer.cpp:109
+#: src/menu_events.cpp:886 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "Όνομα"
 
@@ -4425,11 +4435,11 @@ msgstr "Δείτε το replay"
 msgid "Profile"
 msgstr "προφίλ"
 
-#: src/dialogs.cpp:714 src/help.cpp:1084
+#: src/dialogs.cpp:714 src/help.cpp:1123
 msgid "level"
 msgstr "επίπεδο"
 
-#: src/dialogs.cpp:736 src/help.cpp:1164
+#: src/dialogs.cpp:736 src/help.cpp:1203
 msgid "HP: "
 msgstr "βαθμοί υγείας"
 
@@ -4437,7 +4447,7 @@ msgstr "βαθμοί υγείας"
 msgid "XP: "
 msgstr "βαθμοί εμπειρίας"
 
-#: src/dialogs.cpp:753 src/help.cpp:1165
+#: src/dialogs.cpp:753 src/help.cpp:1204
 msgid "Moves: "
 msgstr "Κινήσεις: "
 
@@ -4860,105 +4870,109 @@ msgstr "χαοτικές μονάδες:"
 msgid "Observers:"
 msgstr "Παρατηρητές:"
 
-#: src/help.cpp:1104
+#: src/help.cpp:56 src/titlescreen.cpp:311
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: src/help.cpp:1143
 #, fuzzy
 msgid "Advances from: "
 msgstr "Προαγωγή σε: "
 
-#: src/help.cpp:1126
+#: src/help.cpp:1165
 msgid "Advances to: "
 msgstr "Προαγωγή σε: "
 
-#: src/help.cpp:1147
+#: src/help.cpp:1186
 msgid "Abilities: "
 msgstr "Ικανότητες: "
 
-#: src/help.cpp:1166
+#: src/help.cpp:1205
 msgid "Cost: "
 msgstr "Κόστος:"
 
-#: src/help.cpp:1167
+#: src/help.cpp:1206
 msgid "Alignment: "
 msgstr "Νοοτροπία: "
 
-#: src/help.cpp:1173
+#: src/help.cpp:1212
 msgid "Required XP: "
 msgstr "Απαιτούμενη εμπειρία: "
 
-#: src/help.cpp:1182
+#: src/help.cpp:1221
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1189
+#: src/help.cpp:1228
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Βγές από τό παιχνίδι"
 
-#: src/help.cpp:1190 src/menu_events.cpp:313 src/menu_events.cpp:870
+#: src/help.cpp:1229 src/menu_events.cpp:313 src/menu_events.cpp:885
 msgid "Type"
 msgstr "Τύπος"
 
-#: src/help.cpp:1191
+#: src/help.cpp:1230
 msgid "Strikes"
 msgstr "Χτυπήματα"
 
-#: src/help.cpp:1192
+#: src/help.cpp:1231
 msgid "Range"
 msgstr "απόσταση βολής"
 
-#: src/help.cpp:1193
+#: src/help.cpp:1232
 msgid "Special"
 msgstr "Ειδικά "
 
-#: src/help.cpp:1243
+#: src/help.cpp:1282
 msgid "Resistances"
 msgstr "Αντιστάσεις"
 
-#: src/help.cpp:1247
+#: src/help.cpp:1286
 msgid "Attack Type"
 msgstr "Τύπος Επίθεσης"
 
-#: src/help.cpp:1248
+#: src/help.cpp:1287
 msgid "Resistance"
 msgstr "Αντίσταση"
 
-#: src/help.cpp:1273
+#: src/help.cpp:1312
 msgid "Terrain Modifiers"
 msgstr "Συντελεστές Μορφολογίας Εδάφους"
 
-#: src/help.cpp:1277
+#: src/help.cpp:1316
 msgid "Terrain"
 msgstr "Μορφολογία Εδάφους"
 
-#: src/help.cpp:1278
+#: src/help.cpp:1317
 msgid "Defense"
 msgstr "Άμυνα"
 
-#: src/help.cpp:1279
+#: src/help.cpp:1318
 msgid "Movement Cost"
 msgstr "Κόστος κίνησης"
 
-#: src/help.cpp:2165
+#: src/help.cpp:2204
 msgid " < Back"
 msgstr "< Πίσω"
 
-#: src/help.cpp:2166
+#: src/help.cpp:2205
 msgid "Forward >"
 msgstr "Επόμενο >"
 
-#: src/help.cpp:2278
+#: src/help.cpp:2317
 msgid "Reference to unknown topic: "
 msgstr ""
 
-#: src/help.cpp:2538
+#: src/help.cpp:2577
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2628
+#: src/help.cpp:2662
 msgid "The Battle for Wesnoth Help"
 msgstr "Η Μάχη για το Γουέσνοθ Βοήθεια"
 
-#: src/help.cpp:2678
+#: src/help.cpp:2712
 msgid "Parse error when parsing help text: "
 msgstr ""
 
@@ -5067,7 +5081,7 @@ msgstr " αυτόν"
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/menu_events.cpp:315 src/menu_events.cpp:872
+#: src/menu_events.cpp:315 src/menu_events.cpp:887
 msgid "Level"
 msgstr "Επίπεδο"
 
@@ -5075,7 +5089,7 @@ msgstr "Επίπεδο"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2456
+#: src/menu_events.cpp:319 src/unit.cpp:2468
 msgid "Moves"
 msgstr "Κινήσεις"
 
@@ -5172,43 +5186,43 @@ msgstr ""
 msgid "Chat Log"
 msgstr "Αρχείο συζήτησης(chat)"
 
-#: src/menu_events.cpp:674
+#: src/menu_events.cpp:674 src/menu_events.cpp:681 src/menu_events.cpp:688
 msgid "Message:"
 msgstr "Μήνυμα:"
 
-#: src/menu_events.cpp:675
+#: src/menu_events.cpp:675 src/menu_events.cpp:682 src/menu_events.cpp:689
 msgid "Send to allies only"
 msgstr "Στείλε μόνο στούς συμμάχους"
 
-#: src/menu_events.cpp:742
+#: src/menu_events.cpp:756
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Χρυσά"
 msgstr[1] "Χρυσά"
 
-#: src/menu_events.cpp:749
+#: src/menu_events.cpp:763
 msgid "You have no units available to recruit."
 msgstr "Δέν έχεις διαθέσιμες μονάδες γιά στρατολόγηση "
 
-#: src/menu_events.cpp:761
+#: src/menu_events.cpp:775
 msgid "Recruit"
 msgstr "Στρατολόγηση"
 
-#: src/menu_events.cpp:762 src/menu_events.cpp:910
+#: src/menu_events.cpp:776 src/menu_events.cpp:925
 msgid "Select unit:"
 msgstr "Επιλέξτε μονάδα:"
 
-#: src/menu_events.cpp:806
+#: src/menu_events.cpp:821
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Δέν έχεις αρκετό χρυσό γιά να ανακαλέσεις αυτή τη μονάδα"
 
-#: src/menu_events.cpp:863
+#: src/menu_events.cpp:878
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 "Εχεις χωριστεί από τού στρατιώτες σου καί δέν μπορείς να τους ανακαλέσεις"
 
-#: src/menu_events.cpp:865
+#: src/menu_events.cpp:880
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -5216,15 +5230,15 @@ msgstr ""
 "Δεν υπάρχουν μονάδες γιά ανάκληση\n"
 " (Πρέπει νά έχεις βετεράνους πού επέζησαν από προηγούμενα σενάρια)"
 
-#: src/menu_events.cpp:904
+#: src/menu_events.cpp:919
 msgid "Dismiss Unit"
 msgstr "Απέλυσε την μονάδα "
 
-#: src/menu_events.cpp:909
+#: src/menu_events.cpp:924
 msgid "Recall"
 msgstr "Ανάκληση"
 
-#: src/menu_events.cpp:925
+#: src/menu_events.cpp:941
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -5235,73 +5249,73 @@ msgstr[1] ""
 "Πρέπει νά έχεις τόν αρχηγό σέ κάστρο η στρατόπεδο γιά να στρατολογήσεις η νά "
 "ανακαλέσεις μονάδες"
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1270
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1262 src/menu_events.cpp:1267
+#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1308
+#: src/menu_events.cpp:1324
 msgid "Rename Unit"
 msgstr "Μετονομασία Μονάδας"
 
-#: src/menu_events.cpp:1390
+#: src/menu_events.cpp:1406
 msgid "Place Label"
 msgstr "Δώσε Ονομα"
 
-#: src/menu_events.cpp:1393 src/menu_events.cpp:1396
+#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
 msgid "Label:"
 msgstr "Ονομα:"
 
-#: src/menu_events.cpp:1399
+#: src/menu_events.cpp:1415
 #, fuzzy
 msgid "Team only"
 msgstr "Ομάδα"
 
-#: src/menu_events.cpp:1500
+#: src/menu_events.cpp:1516
 msgid "Search"
 msgstr "Ερευνα"
 
-#: src/menu_events.cpp:1543
+#: src/menu_events.cpp:1559
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1594
+#: src/menu_events.cpp:1610
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1598
+#: src/menu_events.cpp:1614
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1616
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1602
+#: src/menu_events.cpp:1618
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1604
+#: src/menu_events.cpp:1620
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1606
+#: src/menu_events.cpp:1622
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1608
+#: src/menu_events.cpp:1624
 msgid "Unknown subcommand"
 msgstr ""
 
-#: src/menu_events.cpp:1611
+#: src/menu_events.cpp:1627
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5309,51 +5323,51 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1630
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1632
 msgid "Unknown command"
 msgstr "Άγνωστη ενέργεια"
 
-#: src/menu_events.cpp:1628
+#: src/menu_events.cpp:1644
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1630 src/menu_events.cpp:1637 src/menu_events.cpp:1644
+#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
 msgid "Invalid username: "
 msgstr "Μη έγκυρο όνομα:"
 
-#: src/menu_events.cpp:1635
+#: src/menu_events.cpp:1651
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1642
+#: src/menu_events.cpp:1658
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:1668
+#: src/menu_events.cpp:1684
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1678
+#: src/menu_events.cpp:1694
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1681
+#: src/menu_events.cpp:1697
 msgid "Removed from friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1688
+#: src/menu_events.cpp:1704
 msgid "Unknown command: "
 msgstr "Άγνωστη ενέργεια:"
 
-#: src/menu_events.cpp:1798
+#: src/menu_events.cpp:1814
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:1946
+#: src/menu_events.cpp:1962
 msgid "prompt^Command:"
 msgstr ""
 
@@ -5485,12 +5499,12 @@ msgid "Normal"
 msgstr "Κανονικό"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2559
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2577
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2566
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2584
 msgid ")"
 msgstr ")"
 
@@ -5910,7 +5924,7 @@ msgstr "Θέλετε να αποθηκεύσετε το παιχνίδι σας;
 msgid "Unknown scenario: '"
 msgstr "Άγνωστο σενάριο:'"
 
-#: src/playmp_controller.cpp:276
+#: src/playmp_controller.cpp:284
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6153,21 +6167,23 @@ msgstr "Βγές από τό παιχνίδι"
 msgid "More"
 msgstr "Περισσότερα"
 
-#: src/titlescreen.cpp:311
-msgid "Help"
-msgstr "Βοήθεια"
-
 #: src/titlescreen.cpp:314
 msgid "Help Wesnoth by sending us information"
 msgstr "Βοηθήστε μας στέλνοντάς μας πληροφορίες"
 
-#: src/unit.cpp:2391 src/unit.cpp:2564
+#: src/unit.cpp:2400 src/unit.cpp:2582
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2473
+#: src/unit.cpp:2486
 msgid "XP to advance"
 msgstr "απαιτούμενες μονάδες εμπειρίας γιά εξέλιξη"
+
+#: src/unit.cpp:2560
+#, fuzzy
+#| msgid "level"
+msgid "/level"
+msgstr "επίπεδο"
 
 #: src/unit_types.cpp:193
 msgid "damage"

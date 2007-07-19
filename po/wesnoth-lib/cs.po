@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-10 18:38+0200\n"
+"POT-Creation-Date: 2007-07-19 11:51+0200\n"
 "PO-Revision-Date: 2007-06-08 23:10+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -21,31 +21,27 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
-#: src/construct_dialog.cpp:134 src/construct_dialog.cpp:141
+#: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:137
+#: src/construct_dialog.cpp:109
 msgid "Yes"
 msgstr "Ano"
 
-#: src/construct_dialog.cpp:138
+#: src/construct_dialog.cpp:110
 msgid "No"
 msgstr "Ne"
 
-#: src/construct_dialog.cpp:142 src/construct_dialog.cpp:145
+#: src/construct_dialog.cpp:114 src/construct_dialog.cpp:117
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:400
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/construct_dialog.cpp:148
+#: src/construct_dialog.cpp:120
 msgid "Close"
 msgstr "Zavřít"
-
-#: src/construct_dialog.cpp:813 src/hotkeys.cpp:129
-msgid "Help"
-msgstr "Nápověda"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
@@ -81,8 +77,8 @@ msgstr "Nastavení generátoru"
 msgid "Map creation failed."
 msgstr "Mapu se nepodařilo vygenerovat."
 
-#: src/editor/editor_dialogs.cpp:244 src/game_preferences_display.cpp:1151
-#: src/mapgen_dialog.cpp:99
+#: src/editor/editor_dialogs.cpp:244 src/mapgen_dialog.cpp:99
+#: src/preferences_display.cpp:194
 msgid "Close Window"
 msgstr "Zavři okno"
 
@@ -523,51 +519,15 @@ msgstr "Multiplayer"
 msgid "Advanced section^Advanced"
 msgstr "Pokročilé nastavení"
 
-#: src/game_preferences_display.cpp:1094
-msgid "There are no alternative video modes available"
-msgstr "Žádné jiné grafické módy nejsou k dispozici."
-
-#: src/game_preferences_display.cpp:1123
-msgid "Choose Resolution"
-msgstr "Vyber si rozlišení"
-
-#: src/game_preferences_display.cpp:1155
-msgid "Hotkey Settings"
-msgstr "Nastavení klávesových zkratek"
-
-#: src/game_preferences_display.cpp:1161 src/game_preferences_display.cpp:1217
-msgid "Press desired Hotkey"
-msgstr "Stiskni klávesovou zkratku"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Action"
-msgstr "Akce"
-
-#: src/game_preferences_display.cpp:1179
-msgid "Binding"
-msgstr "Klavesova zkratka"
-
-#: src/game_preferences_display.cpp:1191
-msgid "Change Hotkey"
-msgstr "Změň klávesovou zkratku"
-
-#: src/game_preferences_display.cpp:1194
-msgid "Save Hotkeys"
-msgstr "Ulož klávesové zkratky"
-
-#: src/game_preferences_display.cpp:1244
-msgid "This Hotkey is already in use."
-msgstr "Tato zkratka je již použita pro jinou akci."
-
-#: src/game_preferences_display.cpp:1277
+#: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
 msgstr "Uložené nastavení tématu: "
 
-#: src/game_preferences_display.cpp:1283
+#: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nové téma se projeví na další nové, nebo načtené hře."
 
-#: src/game_preferences_display.cpp:1287
+#: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr "Žádná známá témata. Zkus změnit během existující hry."
 
@@ -857,6 +817,10 @@ msgstr "Mluv ke spojencům"
 msgid "Speak to All"
 msgstr "Mluv ke všem"
 
+#: src/hotkeys.cpp:129
+msgid "Help"
+msgstr "Nápověda"
+
 #: src/hotkeys.cpp:130
 msgid "View Chat Log"
 msgstr "Ukaž záznam rozhovoru"
@@ -869,11 +833,11 @@ msgstr "Změnit používaný jazyk"
 msgid "Enter user command"
 msgstr "Vlož uživatelský příkaz"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Do you really want to quit?"
 msgstr "Opravdu chceš skončit?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:789
+#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
 msgid "Quit"
 msgstr "Konec"
 
@@ -935,6 +899,42 @@ msgstr ""
 "bpp (bitů na pixel), aby mohla hra běžet v okenním módu. Obrazovka musí "
 "zvládat rozlišení alespoň 1024x768x16, aby mohla hra běžet v "
 "celoobrazovkovém módu."
+
+#: src/preferences_display.cpp:198
+msgid "Hotkey Settings"
+msgstr "Nastavení klávesových zkratek"
+
+#: src/preferences_display.cpp:204 src/preferences_display.cpp:260
+msgid "Press desired Hotkey"
+msgstr "Stiskni klávesovou zkratku"
+
+#: src/preferences_display.cpp:222
+msgid "Action"
+msgstr "Akce"
+
+#: src/preferences_display.cpp:222
+msgid "Binding"
+msgstr "Klavesova zkratka"
+
+#: src/preferences_display.cpp:234
+msgid "Change Hotkey"
+msgstr "Změň klávesovou zkratku"
+
+#: src/preferences_display.cpp:237
+msgid "Save Hotkeys"
+msgstr "Ulož klávesové zkratky"
+
+#: src/preferences_display.cpp:287
+msgid "This Hotkey is already in use."
+msgstr "Tato zkratka je již použita pro jinou akci."
+
+#: src/preferences_display.cpp:355
+msgid "There are no alternative video modes available"
+msgstr "Žádné jiné grafické módy nejsou k dispozici."
+
+#: src/preferences_display.cpp:384
+msgid "Choose Resolution"
+msgstr "Vyber si rozlišení"
 
 #: src/show_dialog.cpp:368
 msgid "Error"
