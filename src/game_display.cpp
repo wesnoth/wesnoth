@@ -314,8 +314,9 @@ void game_display::draw(bool update,bool force)
 
 					tile_stack_append(image::get_image(overlays.first->second.image,image_type));
 				}
-			} else if(on_map) {
-				// shrouded but on map
+			} else /*if(on_map)*/ {
+				// we apply void also on off-map tiles to
+				// shroud the half-hexes too
 				tile_stack_append(image::get_image(game_config::void_image));
 			}
 
