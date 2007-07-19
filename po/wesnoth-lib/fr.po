@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-19 11:51+0200\n"
-"PO-Revision-Date: 2007-07-19 20:11+0200\n"
+"PO-Revision-Date: 2007-07-19 22:43+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -151,7 +151,7 @@ msgstr "joueur"
 
 #: src/game_preferences_display.cpp:135
 msgid "Accelerated Speed"
-msgstr "Vitesse accélérée"
+msgstr "Turbo"
 
 #: src/game_preferences_display.cpp:136
 msgid "Skip AI Moves"
@@ -167,27 +167,27 @@ msgstr "Effacer les sauvegardes automatiques"
 
 #: src/game_preferences_display.cpp:140
 msgid "Do Not Show Lobby Joins"
-msgstr "N'affiche pas les arrivées dans le vestibule"
+msgstr "N'affiche pas les arrivées au vestibule"
 
 #: src/game_preferences_display.cpp:141
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Affiche seulement les arrivées dans le vestibule des amis"
+msgstr "Affiche seulement les arrivées des amis au vestibule"
 
 #: src/game_preferences_display.cpp:142
 msgid "Show All Lobby Joins"
-msgstr "Affiche toutes les arrivées dans le vestibule"
+msgstr "Affiche toutes les arrivées au vestibule"
 
 #: src/game_preferences_display.cpp:143
 msgid "Sort Lobby List"
-msgstr "Trier la liste"
+msgstr "Trier la liste des connectés au vestibule"
 
 #: src/game_preferences_display.cpp:144
 msgid "Iconize Lobby List"
-msgstr "Iconifier la liste du vestibule"
+msgstr "Iconifier la liste des connectés au vestibule"
 
 #: src/game_preferences_display.cpp:145
 msgid "Friends List"
-msgstr "Liste des amis"
+msgstr "Liste de vos amis"
 
 #: src/game_preferences_display.cpp:146
 msgid "Multiplayer Options"
@@ -211,23 +211,23 @@ msgstr "Affiche les étiquettes flottantes"
 
 #: src/game_preferences_display.cpp:151
 msgid "Turn Dialog"
-msgstr ""
+msgstr "Message en début de tour"
 
 #: src/game_preferences_display.cpp:152
 msgid "Turn Bell"
-msgstr "Cloche de tour"
+msgstr "Cloche en début de tour"
 
 #: src/game_preferences_display.cpp:153
 msgid "Show Team Colors"
-msgstr "Afficher les couleur des équipes"
+msgstr "Montrer les couleur des équipes"
 
 #: src/game_preferences_display.cpp:154
 msgid "Show Color Cursors"
-msgstr "Afficher les curseurs colorés"
+msgstr "Utiliser les curseurs colorés"
 
 #: src/game_preferences_display.cpp:155
 msgid "Show Haloing Effects"
-msgstr "Afficher les effets d'halo"
+msgstr "Afficher les effets de halo"
 
 #: src/game_preferences_display.cpp:157
 msgid "Theme"
@@ -251,7 +251,7 @@ msgstr "Musique"
 
 #: src/game_preferences_display.cpp:164
 msgid "Chat Timestamping"
-msgstr "Horodatage des discussions"
+msgstr "Heure sur les discussions"
 
 #: src/game_preferences_display.cpp:165
 msgid "Advanced Mode"
@@ -299,7 +299,7 @@ msgstr "Fréquence d'échantillonnage (Hz) :"
 
 #: src/game_preferences_display.cpp:201
 msgid "Sound effects on/off"
-msgstr "Effets sonores on/off"
+msgstr "Activer/désactiver les effets sonores"
 
 #: src/game_preferences_display.cpp:205
 msgid "Change the sound effects volume"
@@ -307,231 +307,220 @@ msgstr "Modifier le volume des effets sonores"
 
 #: src/game_preferences_display.cpp:208
 msgid "Music on/off"
-msgstr "Musique on/off"
+msgstr "Activer/désactiver la musique"
 
 #: src/game_preferences_display.cpp:212
-#, fuzzy
-#| msgid "Change the language"
 msgid "Change the music volume"
-msgstr "Changer de langue"
+msgstr "Modifier le volume de la musique"
 
 #: src/game_preferences_display.cpp:218
-#, fuzzy
-#| msgid "Change the language"
 msgid "Change the bell volume"
-msgstr "Changer de langue"
+msgstr "Modifier le volume de la cloche"
 
 #: src/game_preferences_display.cpp:221
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Activer/désactiver les sons des boutons et des menus"
 
 #: src/game_preferences_display.cpp:225
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Modifier le volume des sons de clics, etc."
 
 #: src/game_preferences_display.cpp:227
-#, fuzzy
-#| msgid "Change the language"
 msgid "Change the sample rate"
-msgstr "Changer de langue"
+msgstr "Changer la fréquence d'échantillonnage"
 
 #: src/game_preferences_display.cpp:236
 msgid "User defined sample rate"
-msgstr ""
+msgstr "Fréquence d'échantillonnage définie par l'utilisateur"
 
 #: src/game_preferences_display.cpp:245 src/game_preferences_display.cpp:249
-#, fuzzy
-#| msgid "Change the language"
 msgid "Change the buffer size"
-msgstr "Changer de langue"
+msgstr "Changer la taille du tampon"
 
 #: src/game_preferences_display.cpp:247 src/game_preferences_display.cpp:742
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Taille du tampon : "
 
 #: src/game_preferences_display.cpp:254
 msgid "Change the speed of scrolling around the map"
-msgstr ""
+msgstr "Modifier la vitesse de defilement de la carte"
 
 #: src/game_preferences_display.cpp:259 src/game_preferences_display.cpp:261
 msgid "Set the amount of chat lines shown"
-msgstr ""
+msgstr "Régler le nombre de lignes de discussion affichées"
 
 #: src/game_preferences_display.cpp:264
 msgid "Add a timestamp to chat messages"
-msgstr ""
+msgstr "Ajouter l'heure aux messages de discussion"
 
 #: src/game_preferences_display.cpp:267 src/game_preferences_display.cpp:272
 msgid "Change the brightness of the display"
-msgstr ""
+msgstr "Modifier la luminosité de l'écran"
 
 #: src/game_preferences_display.cpp:275
 msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
+msgstr "Choisir entre le mode plein écran et le mode fenêtré"
 
 #: src/game_preferences_display.cpp:278
 msgid "Make units move and fight faster"
-msgstr ""
+msgstr "Accélérer les mouvements et les combats"
 
 #: src/game_preferences_display.cpp:293
 msgid "Units move and fight speed"
-msgstr ""
+msgstr "Vitesse des déplacements et des combats"
 
 #: src/game_preferences_display.cpp:296
 msgid "Do not animate AI units moving"
-msgstr ""
+msgstr "Ne pas animer les déplacements des unités de l'ordinateur"
 
 #: src/game_preferences_display.cpp:299
 msgid "Save replays at scenario end."
-msgstr ""
+msgstr "Sauvegarder le film du scénario à la fin"
 
 #: src/game_preferences_display.cpp:302
 msgid "Automatically delete autosaves at the end of a scenario"
-msgstr ""
+msgstr "Supprimer les sauvegardes automatiques à la fin du scénario"
 
 #: src/game_preferences_display.cpp:304
 msgid "Overlay a grid onto the map"
-msgstr ""
+msgstr "Afficher une grille en surimpression sur la carte"
 
 #: src/game_preferences_display.cpp:307
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Trier la liste des joueurs du vestibule par groupe de joueurs"
 
 #: src/game_preferences_display.cpp:310
 msgid "Show icons in front of the player names in the lobby."
-msgstr ""
+msgstr "Afficher une icône devant le nom des joueurs connectés"
 
 #: src/game_preferences_display.cpp:313
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr ""
+msgstr "Ne pas afficher de messages quand un joueur rejoint le vestibule"
 
 #: src/game_preferences_display.cpp:315
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr ""
+msgstr "Afficher des messages quand un de vos amis rejoint le vestibule"
 
 #: src/game_preferences_display.cpp:317
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr ""
+msgstr "Afficher des messages quand tout joueur rejoint le vestibule"
 
 #: src/game_preferences_display.cpp:319
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Afficher et modifier la liste de vos amis et des ignorés"
 
 #: src/game_preferences_display.cpp:320
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Options multijoueurs"
 
 #: src/game_preferences_display.cpp:321
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Ajouter cet utilisateur dans la liste de vos amis"
 
 #: src/game_preferences_display.cpp:322
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Ajouter cet utilisateur dans la liste des ignorés"
 
 #: src/game_preferences_display.cpp:323
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Enlever cet utilisateur de la liste"
 
 #: src/game_preferences_display.cpp:326
 msgid "Insert a username"
-msgstr ""
+msgstr "Entrer un nom d'utilisateur"
 
 #: src/game_preferences_display.cpp:329
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
+msgstr "Afficher la quantité de dégats reçus au-dessus d'une unité touchée"
 
 #: src/game_preferences_display.cpp:331
 msgid "Change the resolution the game runs at"
-msgstr ""
+msgstr "Changer la résolution d'écran utilisée par le jeu"
 
 #: src/game_preferences_display.cpp:332
 msgid "Change the theme the game runs with"
-msgstr ""
+msgstr "Changer le thème utilisé par le jeu"
 
 #: src/game_preferences_display.cpp:335
 msgid "Display a dialog at the beginning of your turn"
-msgstr ""
+msgstr "Afficher un message au début de votre tour"
 
 #: src/game_preferences_display.cpp:338
 msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
+msgstr "Jouer un son de cloche au début de votre tour"
 
 #: src/game_preferences_display.cpp:341
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
-msgstr ""
+msgstr "Afficher sous l'unité un cercle de la couleur de son camp"
 
 #: src/game_preferences_display.cpp:344
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Choisir si le soleil évolue de droite à gauche ou de gauche à droite"
 
 #: src/game_preferences_display.cpp:347
 msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
+msgstr "Utiliser les curseurs de souris colorés (possible ralentissement)"
 
 #: src/game_preferences_display.cpp:350
 msgid "Use graphical special effects (may be slower)"
-msgstr ""
+msgstr "Utiliser les effets spéciaux graphiques (possible ralentissement)"
 
 #: src/game_preferences_display.cpp:352
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "Voir et configurer les raccourcis clavier"
 
 #: src/game_preferences_display.cpp:622
-#, fuzzy
-#| msgid "Scroll Speed:"
 msgid "Speed: "
-msgstr "Vitesse de défilement :"
+msgstr "Vitesse : "
 
 #: src/game_preferences_display.cpp:784
 msgid "Chat Lines: "
-msgstr ""
+msgstr "Nombre de lignes de discussion : "
 
 #: src/game_preferences_display.cpp:880
-#, fuzzy
-#| msgid "Yes"
 msgid "yes"
-msgstr "Oui"
+msgstr "oui"
 
 #: src/game_preferences_display.cpp:882
-#, fuzzy
-#| msgid "Undo"
 msgid "no"
-msgstr "Annuler"
+msgstr "non"
 
 #: src/game_preferences_display.cpp:1025
 msgid "Prefs section^General"
-msgstr ""
+msgstr "Général"
 
 #: src/game_preferences_display.cpp:1026
 msgid "Prefs section^Display"
-msgstr ""
+msgstr "Vidéo"
 
 #: src/game_preferences_display.cpp:1027
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "Audio"
 
 #: src/game_preferences_display.cpp:1028
 msgid "Prefs section^Multiplayer"
-msgstr ""
+msgstr "Multijoueur"
 
 #: src/game_preferences_display.cpp:1029
 msgid "Advanced section^Advanced"
-msgstr ""
+msgstr "Avancé"
 
 #: src/game_preferences_display.cpp:1064
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Préférence de thème sauvegardée : "
 
 #: src/game_preferences_display.cpp:1070
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Le nouveau thème sera disponible à la prochaine nouvelle partie ou au "
+"prochain chargement."
 
 #: src/game_preferences_display.cpp:1074
 msgid "No known themes.  Try changing from within an existing game."
 msgstr ""
+"Aucun thème connu. Essayez de le changer à partie d'une partie en cours."
 
 #: src/hotkeys.cpp:50
 msgid "Next Unit"
@@ -908,46 +897,40 @@ msgstr ""
 "en plein écran."
 
 #: src/preferences_display.cpp:198
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkey Settings"
-msgstr "Raccourcis clavier"
+msgstr "Configuration des raccourcis clavier"
 
 #: src/preferences_display.cpp:204 src/preferences_display.cpp:260
 msgid "Press desired Hotkey"
-msgstr ""
+msgstr "Pressez le raccourci désiré"
 
 #: src/preferences_display.cpp:222
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 #: src/preferences_display.cpp:222
 msgid "Binding"
-msgstr ""
+msgstr "Raccourci"
 
 #: src/preferences_display.cpp:234
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Change Hotkey"
-msgstr "Raccourcis clavier"
+msgstr "Modifier le raccourci"
 
 #: src/preferences_display.cpp:237
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Save Hotkeys"
-msgstr "Raccourcis clavier"
+msgstr "Sauver les raccourcis"
 
 #: src/preferences_display.cpp:287
 msgid "This Hotkey is already in use."
-msgstr ""
+msgstr "Ce raccourci est déja utilisé."
 
 #: src/preferences_display.cpp:355
 msgid "There are no alternative video modes available"
-msgstr ""
+msgstr "Il n'y a pas d'autres modes vidéo disponibles"
 
 #: src/preferences_display.cpp:384
 msgid "Choose Resolution"
-msgstr ""
+msgstr "Choisissez une résolution"
 
 #: src/show_dialog.cpp:368
 msgid "Error"
