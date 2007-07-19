@@ -1155,7 +1155,6 @@ void display::scroll(int xmove, int ymove)
 	_scroll_event.notify_observers();
 	update_rect(map_area());
 
-	redraw_background_ = true;
 	redrawMinimap_ = true;
 }
 
