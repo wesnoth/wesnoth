@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-19 11:49+0200\n"
-"PO-Revision-Date: 2007-07-10 00:35+0100\n"
-"Last-Translator: Damien <guydelatour@gloireetpouvoir.com>\n"
+"PO-Revision-Date: 2007-07-19 20:00+0200\n"
+"Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -211,10 +211,8 @@ msgid "French Translation"
 msgstr "Traduction française"
 
 #: data/core/about.cfg:510
-#, fuzzy
-#| msgid "Valencian Translation"
 msgid "Galician Translation"
-msgstr "Traduction valencienne"
+msgstr "Traduction galicienne"
 
 #: data/core/about.cfg:517
 msgid "German Translation"
@@ -1420,11 +1418,9 @@ msgid "Quick"
 msgstr "Rapide"
 
 #: data/core/help.cfg:286
-#, fuzzy
-#| msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Les unités rapides ont 1 point de mouvement supplémentaire, mais 10 % de PV "
+"Les unités rapides ont 1 point de mouvement supplémentaire, mais 5 % de PV "
 "en moins que la normale."
 
 #: data/core/help.cfg:288
@@ -1452,10 +1448,9 @@ msgid "Resilient"
 msgstr "Robuste"
 
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid "Resilient units have 10% +3 more HP than usual."
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Les unités robustes ont 10% +3 PV de plus que la normale."
+msgstr ""
+"Les unités robustes ont 4 PV plus 1 PV par niveau de plus que la normale."
 
 #: data/core/help.cfg:296
 msgid ""
@@ -1578,22 +1573,16 @@ msgstr ""
 "attaques."
 
 #: data/core/help.cfg:331
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "trait^Mechanical"
-msgstr "Mécaniques"
+msgstr "Mécanique"
 
 #: data/core/help.cfg:332
-#, fuzzy
-#| msgid ""
-#| "Undead units are immune to poison, also drain and plague doesn't work on "
-#| "them."
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Les unités mortes-vivantes sont insensibles au poison, à la peste et au "
-"drain de vie."
+"Les unités mécaniques sont insensibles au poison, à la peste et au drain de "
+"vie."
 
 #: data/core/help.cfg:334
 msgid ""
@@ -1603,6 +1592,11 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Les unités mécaniques ont généralement « Mécanique » comme seul trait. "
+"Commes ces unités n'ont pas vraiement de vie propre, le drain de vie, la "
+"peste et au poison n'ont aucun effet sur elles."
 
 #: data/core/help.cfg:339
 msgid "Dextrous"
@@ -1651,6 +1645,10 @@ msgid ""
 "Healthy units have 2 more HP than usual and rest heal 2 additional HP after "
 "each turn they did not fight."
 msgstr ""
+"\n"
+"\n"
+"Les unités vigoureuses ont 2 PV de plus que la normale et peuvent récuperer "
+"2 PV chaque tour où elles ne combattent pas."
 
 #: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
 msgid "Grassland"
@@ -2223,12 +2221,6 @@ msgid "Impassable Mountain"
 msgstr "Montagnes infranchissables"
 
 #: data/core/help.cfg:596
-#, fuzzy
-#| msgid ""
-#| "Impassable mountains are so tall and steep that they are constantly "
-#| "wreathed in cloud.  To cross such moutains is practically impossible. "
-#| "Even flying creatures cannot navigate the jagged peaks at such rarified "
-#| "heights."
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
@@ -4035,22 +4027,16 @@ msgid "female^undead"
 msgstr "morte-vivante"
 
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:34
-#, fuzzy
-#| msgid "Immune to poison"
 msgid "Immune to drain, poison and plague"
-msgstr "Immunisé contre le poison"
+msgstr "Immunisé contre le poison, la peste et le drain de vie"
 
 #: data/core/macros/traits.cfg:32
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "mechanical"
-msgstr "Mécaniques"
+msgstr "mécanique"
 
 #: data/core/macros/traits.cfg:33
-#, fuzzy
-#| msgid "race^Mechanical"
 msgid "female^mechanical"
-msgstr "Mécaniques"
+msgstr "mécanique"
 
 #: data/core/macros/traits.cfg:42
 msgid "strong"
@@ -4469,31 +4455,27 @@ msgstr "à distance"
 
 #: data/hardwired/english.cfg:53
 msgid "blade"
-msgstr ""
+msgstr "tranchant"
 
 #: data/hardwired/english.cfg:54
 msgid "pierce"
-msgstr ""
+msgstr "perforant"
 
 #: data/hardwired/english.cfg:55
 msgid "impact"
-msgstr ""
+msgstr "contondant"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
-msgstr ""
+msgstr "feu"
 
 #: data/hardwired/english.cfg:57
-#, fuzzy
-#| msgid "gold"
 msgid "cold"
-msgstr "or"
+msgstr "froid"
 
 #: data/hardwired/english.cfg:58
-#, fuzzy
-#| msgid "Orange"
 msgid "arcane"
-msgstr "Orange"
+msgstr "arcane"
 
 #: data/hardwired/english.cfg:61
 msgid "Wesnoth unit list"
@@ -6965,10 +6947,8 @@ msgid "XP to advance"
 msgstr "XP pour évoluer"
 
 #: src/unit.cpp:2560
-#, fuzzy
-#| msgid "level"
 msgid "/level"
-msgstr "niveau"
+msgstr "/niveau"
 
 #: src/unit_types.cpp:193
 msgid "damage"
