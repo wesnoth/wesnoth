@@ -136,7 +136,7 @@ private:
 
 class dialog {
 public:
-	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_EXTRA_LEFT, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT };
+	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_EXTRA_LEFT, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT, BUTTON_HELP };
 	struct dimension_measurements {
 		dimension_measurements();
 		int x, y;
@@ -165,7 +165,6 @@ public:
 	static const style& default_style;
 	static const style& message_style;
 	static const style hotkeys_style;
-	static const std::string no_help;
 	static const int message_font_size;
 	static const int caption_font_size;
 	static const int max_menu_width;
@@ -182,8 +181,7 @@ public:
 	       const std::string& title="", 
 	       const std::string& message="",
 	       const DIALOG_TYPE type=MESSAGE, 
-	       const style& dialog_style=default_style,
-	       const std::string& help_topic=no_help);
+	       const style& dialog_style=default_style);
 	virtual ~dialog();
 
 	//Adding components - the dialog will manage the memory of
@@ -250,16 +248,6 @@ private:
 	//process - execute a single dialog processing loop and return the result
 	int process(dialog_process_info &info);
 
-	class help_button : public dialog_button {
-	public:
-		help_button(display& disp, const std::string &help_topic);
-		int action(dialog_process_info &info);
-		const std::string topic() const { return topic_; }
-	private:
-		display &disp_;
-		const std::string topic_;
-	};
-
 	//Members
 	display &disp_;
 	dialog_image *image_;
@@ -274,8 +262,7 @@ private:
 	std::vector<dialog_button*> extra_buttons_;
 	std::vector<button*> frame_buttons_;
 	const std::string topic_;
-	void (*help_hook_)(display &, const std::string);
-	help_button help_button_;
+	dialog_button *help_button_;
 	dialog_textbox *text_widget_;
 	dialog_frame *frame_;
 	dimension_measurements dim_;

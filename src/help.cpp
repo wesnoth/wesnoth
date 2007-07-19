@@ -49,7 +49,46 @@
 #include <set>
 #include <sstream>
 
+
 namespace help {
+
+help_button::help_button(display& disp, const std::string &help_topic)
+	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic), help_hand_(NULL)
+{}
+
+int help_button::action(gui::dialog_process_info &info) {
+	if(!topic_.empty()) {
+		show_help();
+		info.clear_buttons();
+	}
+	return gui::CONTINUE_DIALOG;
+}
+
+void help_button::show_help()
+{
+	help::show_help(disp_, topic_);
+}
+
+bool help_button::can_execute_command(hotkey::HOTKEY_COMMAND cmd, int/*index*/) const
+{
+	return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
+}
+
+void help_button::join() {
+	dialog_button::join();
+
+	//wait until we join the event context to start a hotkey handler
+	delete help_hand_;
+	help_hand_ = new hotkey::basic_handler(&disp_, this);
+}
+
+void help_button::leave() {
+	dialog_button::leave();
+
+	//now kill the hotkey handler
+	delete help_hand_;
+	help_hand_ = NULL;
+}
 
 /// Generate the help contents from the configurations given to the
 /// manager.
@@ -2590,11 +2629,6 @@ std::string get_first_word(const std::string &s)
 void show_help(display &disp, std::string show_topic, int xloc, int yloc)
 {
 	show_help(disp, toplevel, show_topic, xloc, yloc);
-}
-
-void button_help(display &disp, const std::string show_topic)
-{
-	show_help(disp, show_topic);
 }
 
 /// Open a help dialog using a toplevel other than the default.

@@ -22,8 +22,6 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "gettext.hpp"
-#include "help.hpp"
-#include "hotkeys.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "sound.hpp"
@@ -57,7 +55,6 @@ namespace gui {
 const dialog::style& dialog::default_style = dialog_frame::default_style;
 const dialog::style& dialog::message_style = dialog_frame::message_style;
 const dialog::style dialog::hotkeys_style("menu2", 0);
-const std::string dialog::no_help("");
 const int dialog::message_font_size = font::SIZE_PLUS;
 const int dialog::caption_font_size = font::SIZE_LARGE;
 const size_t dialog::left_padding = font::relative_size(10);
@@ -79,29 +76,6 @@ namespace {
 
 std::vector<std::string> empty_string_vector;
 
-struct help_handler : public hotkey::command_executor
-{
-  help_handler(display& disp, const std::string& topic, void (*help_hook)(display &, const std::string) = NULL) : disp_(disp), topic_(topic), help_hook_(help_hook)
-	{}
-
-private:
-	void show_help()
-	{
-		if(topic_.empty() == false) {
-			help_hook_(disp_,topic_);
-		}
-	}
-
-	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int/*index*/ =-1) const
-	{
-		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
-	}
-
-	display& disp_;
-	std::string topic_;
-	void (*help_hook_)(display & display, const std::string topic);
-};
-
 } //end anonymous namespace
 
 namespace gui {
@@ -115,16 +89,14 @@ dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior
 } 
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
-				const DIALOG_TYPE type, const style& dialog_style,
-				const std::string& help_topic) : disp_(disp), image_(NULL),
+				const DIALOG_TYPE type, const style& dialog_style) : disp_(disp), image_(NULL),
 				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
 				type_(type), menu_(NULL),
-				help_button_(disp, help_topic),  text_widget_(NULL),
+				help_button_(NULL),  text_widget_(NULL),
 				frame_(NULL), result_(CONTINUE_DIALOG)
 {
 	CVideo& screen = disp_.video();
 
-	help_button_.set_parent(this);
 	switch(type)
 	{
 	case MESSAGE:
@@ -202,19 +174,23 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 	button_pool_.push_back(new_pair);
 	switch(loc)
 	{
+	case BUTTON_HELP:
+		delete help_button_;
+		help_button_ = btn;
+		break;
 	case BUTTON_EXTRA:
 	case BUTTON_EXTRA_LEFT:
 	case BUTTON_CHECKBOX:
 	case BUTTON_CHECKBOX_LEFT:
 		extra_buttons_.push_back(btn);
-		btn->set_parent(this);
 		break;
 	case BUTTON_STANDARD:
 		standard_buttons_.push_back(btn);
+		break;
 	default:
-		btn->set_parent(this);
 		break;
 	}
+	btn->set_parent(this);
 }
 
 void dialog::add_button(dialog_button_info btn_info, BUTTON_LOCATION loc)
@@ -280,9 +256,6 @@ int dialog::show()
 	const dialog_manager manager;
 	const events::resize_lock prevent_resizing;
 
-	help_handler helper(disp_,help_button_.topic(), help::button_help);
-	hotkey::basic_handler help_dispatcher(&disp_,&helper);
-
 	//draw
 	draw_frame();
 	update_widget_positions();
@@ -332,8 +305,7 @@ dialog_frame& dialog::get_frame()
 		{
 			frame_buttons_.push_back(*b);
 		}
-		frame_ = new dialog_frame(screen, title_, style_,  true, &frame_buttons_,
-			help_button_.topic().empty() ? NULL : &help_button_);
+		frame_ = new dialog_frame(screen, title_, style_,  true, &frame_buttons_, help_button_);
 	}
 	return *frame_;
 }
@@ -392,8 +364,9 @@ void dialog::update_widget_positions()
 		dialog_button *btn = *b;
 		btn->join();
 	}
-	help_button_.join();
-
+	if(help_button_) {
+		help_button_->join();
+	}
 	message_->set_location(dim_.message);
 	message_->join();
 }
@@ -754,9 +727,6 @@ int dialog::process(dialog_process_info &info)
 			return b->first->action(info);
 		}
 	}
-	if(help_button_.pressed()) {
-		return help_button_.action(info);
-	}
 
 	return CONTINUE_DIALOG;
 }
@@ -808,18 +778,6 @@ int standard_dialog_button::action(dialog_process_info &/*info*/) {
 	return CLOSE_DIALOG;
 }
 
-
-dialog::help_button::help_button(display& disp, const std::string &help_topic)
-	: dialog_button(disp.video(), _("Help")), disp_(disp), topic_(help_topic)
-{}
-
-int dialog::help_button::action(dialog_process_info &info) {
-	if(!topic_.empty()) {
-		help::show_help(disp_,topic_);
-		info.clear_buttons();
-	}
-	return CONTINUE_DIALOG;
-}
 void dialog::set_image(surface surf, const std::string &caption)
 {
 	label *label_ptr = NULL;

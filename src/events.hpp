@@ -51,8 +51,8 @@ public:
 
 	virtual void process_help_string(int /*mousex*/, int /*mousey*/) {}
 
-	void join(); /*joins the current event context*/
-	void leave(); /*leave the event context*/
+	virtual void join(); /*joins the current event context*/
+	virtual void leave(); /*leave the event context*/
 
 protected:
 	handler(const bool auto_join=true);

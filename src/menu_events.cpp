@@ -775,8 +775,9 @@ namespace events{
 			gui::dialog rmenu(*gui_,_("Recruit"),
 					  _("Select unit:") + std::string("\n"),
 					  gui::OK_CANCEL, 
-					  gui::dialog::default_style,
-					  "recruit_and_recall");
+					  gui::dialog::default_style);
+			rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
+				gui::dialog::BUTTON_HELP);
 			rmenu.set_menu(items);
 			rmenu.set_panes(preview_panes);
 			recruit_res = rmenu.show();
@@ -923,8 +924,9 @@ namespace events{
 				gui::dialog rmenu(*gui_,_("Recall"),
 						  _("Select unit:") + std::string("\n"),
 						  gui::OK_CANCEL, 
-						  gui::dialog::default_style,
-						  "recruit_and_recall");
+						  gui::dialog::default_style);
+				rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
+					gui::dialog::BUTTON_HELP);
 				rmenu.set_menu(options, &sorter);
 				rmenu.add_pane(&unit_preview);
 				rmenu.add_button(delete_button);

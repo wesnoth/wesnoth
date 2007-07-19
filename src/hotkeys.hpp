@@ -153,7 +153,6 @@ class command_executor
 protected:
 	virtual ~command_executor() {}
 public:
-
 	virtual void cycle_units() {}
 	virtual void cycle_back_units() {}
 	virtual void end_turn() {}
