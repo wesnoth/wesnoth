@@ -22,6 +22,7 @@ if ($opts{'p'}) {$PORT = $opts{'p'};}
 my $LOGIN_RESPONSE = "[login]\nusername=\"$USERNAME\"\n[/login]";
 my $VERSION_RESPONSE = "[version]\nversion=\"test\"\n[/version]";
 my @usernamelist = ();
+my @gamelist = ();
 my %outgoing_schemas = ();
 my %incoming_schemas = ();
 
@@ -125,7 +126,11 @@ sub login {
 	#print STDERR Dumper($response);
 	if (&wml::has_child($response, 'gamelist')) {
 		foreach (@ {$response->{'children'}}) {
-			if ($_->{'name'} eq 'user') {
+			if ($_->{'name'} eq 'gamelist') {
+				foreach (@ {$_->{'children'}}) {
+					$gamelist[@gamelist] = $_->{'attr'}->{'name'};
+				}
+			} elsif ($_->{'name'} eq 'user') {
 				$usernamelist[@usernamelist] = $_->{'attr'}->{'name'};
 			}
 		}
@@ -158,42 +163,98 @@ while (1) {
 	my $response = &read_packet($socket);
 	# print only chat messages
 	foreach (@ {$response->{'children'}}) {
+#		print STDERR strftime("%Y%m%d %T ", localtime());
 		if ($_->{'name'} eq 'message') {
-			print STDERR strftime "%Y%m%d %T ", localtime();
 			# /me actions
+			my $sender = $_->{'attr'}->{'sender'};
+			my $message = $_->{'attr'}->{'message'};
 			if ($_->{'attr'}->{'message'} =~ s,^/me,,) {
-				print STDERR "* " . $_->{'attr'}->{'sender'} . "" . $_->{'attr'}->{'message'} . "\n";
+				print STDERR strftime("%Y%m%d %T ", localtime()) . "* $sender $message\n";
 			} else {
-				print STDERR "<" . $_->{'attr'}->{'sender'} . "> " . $_->{'attr'}->{'message'} . "\n";
+				print STDERR strftime("%Y%m%d %T ", localtime()) . "<$sender> $message\n";
 			}
 		} elsif ($_->{'name'} eq 'whisper') {
-			print STDERR strftime "%Y%m%d %T ", localtime();
-			print STDERR "*" . $_->{'attr'}->{'sender'} . "* " . $_->{'attr'}->{'message'} . "\n";
+			my $sender = $_->{'attr'}->{'sender'};
+			my $message = $_->{'attr'}->{'message'};
+			print STDERR strftime("%Y%m%d %T ", localtime()) . "*$sender* $message\n";
 		} elsif ($_->{'name'} eq 'gamelist_diff') {
 			foreach (@ {$_->{'children'}}) {
 				my $index = $_->{'attr'}->{'index'};
 				if ($_->{'name'} eq 'insert_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
 						my $username = $user->{'attr'}->{'name'};
-						print STDERR strftime "%Y%m%d %T ", localtime();
-						print STDERR "--> $username has logged on. ($index)\n";
+						print STDERR strftime("%Y%m%d %T ", localtime()) . "--> $username has logged on. ($index)\n";
 						$usernamelist[@usernamelist] = $username;
 						#print STDERR "usernames: @usernamelist\n";
+					} else {
+						print STDERR "[gamelist_diff]:" . Dumper($_);
 					}
-					#print STDERR Dumper($_);
-				} elsif ($_->{'name'} eq 'delete_child' and &wml::has_child($_, 'user')) {
-					print STDERR strftime "%Y%m%d %T ", localtime();
-					print STDERR "<-- $usernamelist[$index] has logged off. ($index)\n";
-					splice(@usernamelist,$index,1);
-					#print STDERR "usernames: @usernamelist\n";
+				} elsif ($_->{'name'} eq 'delete_child') {
+					if (my $user = &wml::has_child($_, 'user')) {
+						print STDERR strftime("%Y%m%d %T ", localtime()) . "<-- $usernamelist[$index] has logged off. ($index)\n";
+						splice(@usernamelist,$index,1);
+						#print STDERR "usernames: @usernamelist\n";
+					} else {
+						print STDERR "[gamelist_diff]:" . Dumper($_);
+					}
+				} elsif ($_->{'name'} eq 'change_child') {
+					if (my $user = &wml::has_child($_, 'user')) {
+						foreach (@ {$user->{'children'}}) {
+							#my $userindex = $_->{'attr'}->{'index'};   #there's no index it seems, the gamelistindex would be nice..
+							if ($_->{'name'} eq 'insert') {
+								if ($_->{'attr'}->{'available'} eq "yes") {
+									print STDERR strftime("%Y%m%d %T ", localtime()) . "++> $usernamelist[$index] has left a game.\n";
+								} elsif ($_->{'attr'}->{'available'} eq "no") {
+									print STDERR strftime("%Y%m%d %T ", localtime()) . "<++ $usernamelist[$index] has joined a game.\n";
+								}
+							} elsif ($_->{'name'} eq 'delete') {
+							} else {
+								print STDERR "[gamelist_diff][change_child][user]:" . Dumper($_);
+							}
+						}
+						#print STDERR "[gamelist_diff][change_child]:" . Dumper($user);
+					} elsif (my $gamelist = &wml::has_child($_, 'gamelist')) {
+						foreach (@ {$gamelist->{'children'}}) {
+							my $gamelistindex = $_->{'attr'}->{'index'};
+							if ($_->{'name'} eq 'insert_child') {
+								if (my $game = &wml::has_child($_, 'game')) {
+									my $gamename = $game->{'attr'}->{'name'};
+									print STDERR strftime("%Y%m%d %T ", localtime()) . "+++ A new game has been created: \"$gamename\" ($gamelistindex).\n";
+									$gamelist[@gamelist] = $gamename;
+								} else {
+									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+								}
+							} elsif ($_->{'name'} eq 'delete_child') {
+								if (my $game = &wml::has_child($_, 'game')) {
+									print STDERR strftime("%Y%m%d %T ", localtime()) . "--- A game has ended: \"$gamelist[$gamelistindex]\". ($gamelistindex)\n";
+								} else {
+									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+								}
+							} elsif ($_->{'name'} eq 'change_child') {
+#								if (my $game = &wml::has_child($_, 'game')) {
+#									print STDERR strftime("%Y%m%d %T ", localtime()) . "Something changed in a game. ($gamelistindex)\n"
+#								} else {
+#									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+#								}
+							} else {
+								print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+							}
+						}
+					} else {
+						print STDERR "[gamelist_diff]:" . Dumper($_);
+					}
 				} else {
-					#print STDERR Dumper($_);
+					print STDERR "[gamelist_diff]:" . Dumper($_);
 				}
 			}
-		} elsif ($_->{'name'} eq 'create_game') {
-			#print STDERR Dumper($_);
+		} elsif ($_->{'name'} eq 'observer') {
+#			my $username = $_->{'attr'}->{'name'};
+#			print STDERR strftime("%Y%m%d %T ", localtime()) . "++> $username has joined the lobby.\n";
+		} elsif ($_->{'name'} eq 'observer_quit') {
+#			my $username = $_->{'attr'}->{'name'};
+#			print STDERR strftime("%Y%m%d %T ", localtime()) . "<++ $username has left the lobby.\n";
 		} else {
-			#print STDERR Dumper($_);
+			print STDERR Dumper($_);
 		}
 	}
 
