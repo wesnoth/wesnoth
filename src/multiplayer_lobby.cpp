@@ -39,7 +39,7 @@ namespace mp {
 	observer_icon_locator_("misc/eye.png"), map_hashes_(map_hashes),
 	item_height_(100), margin_(5), h_padding_(5),
 	header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
-	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
+	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false), minimaps_(true)
 {
 	set_numeric_keypress_selection(false);
 }
