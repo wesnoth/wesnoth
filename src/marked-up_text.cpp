@@ -118,33 +118,29 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 
 // Copy string but without tags at the begining
 std::string del_tags(std::string name){
-	std::stringstream					str;
-	bool									not_colour = true;
-	bool									not_name = true;
+	std::stringstream str;
+	bool color_block = false;
+	bool text_started = false;
 	std::string::const_iterator	it;
 	for (it = name.begin(); it != name.end(); it++){
-		// Start of RGB definition block, so stop react on numbers
-		if (not_name && *it == '<'){
-			not_colour = false;
+		if (!text_started) {
+			if (color_block) {
+				if (!isdigit(*it) && *it != ',' && *it != ' ') {
+					// '>' or bad RGB values, close the block
+					color_block = false;
+				}
+				continue;
+			} else if (*it == '<') {
+				// Start of RGB definition block
+				color_block = true;
+				continue;
+			} else if (is_format_char(*it)) {
+				//other format char
+				continue;
+			}
+			text_started = true;
 		}
-		// Ending of RGB block
-		if (*it == '>'){
-			not_colour = true;
-		}
-
-		// Number outside colour block
-		if (not_name && not_colour && isdigit(*it)){
-			not_name = false;
-		}
-
-		// On the first analphabet character we stop react on specials characters
-		if (not_name && isalpha(*it)){
-			not_name = false;
-		}
-
-		if (!not_name){
-			str << *it;
-		}
+		str << *it;
 	}
 	return str.str();
 }
