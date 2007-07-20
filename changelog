@@ -8,6 +8,8 @@ Version 1.3.4+svn:
      * The bugs in HttT's SoF scenario have been fixed 
    * fixed teamcolourless fake unit moves in TRoW, HttT, EI, SoF, NR, TSG and
      TB
+ * mad editor:
+   * new checkbox for the "delay transition update" option
  * graphics
    * new animations: elvish scout idle
    * fix bug #9398 (attacking units always above defending units)
@@ -39,6 +41,7 @@ Version 1.3.4+svn:
    * Help topics for units now have 'advances from' links
    * added experimental new transition between map and background
    * add colors to the statistics of units in help (Hajo's patch #764)
+   * now scroll to the selected leader in status table
  * WML engine:
    * now ConditionalWML handles [and], [or], and [not] with in-order precedence
      (this is part of an effort to standardize the behavior of several 
