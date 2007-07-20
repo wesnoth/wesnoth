@@ -8,17 +8,25 @@ use POSIX qw(strftime);
 use Getopt::Std;
 use Data::Dumper;
 
-#my $usage = "Usage: $0 [-e count] [-h host] [-p port] [username]";
+#my $usage = "Usage: $0 [-gj] [-e count] [-h [host]] [-p [port]] [-t [timestampformat]] [-u username]";
 
 my %opts = ();
-getopts('e:h:p:',\%opts);
+getopts('gje:h:p:t:u:',\%opts);
 
 my $USERNAME = 'log';
+$USERNAME = $opts{'u'} if $opts{'u'};
 my $HOST = '127.0.0.1';
+$HOST = 'server.wesnoth.org' if exists $opts{'h'};
+$HOST = $opts{'h'} if $opts{'h'};
 my $PORT = '15000';
-if ($ARGV[0]) {$USERNAME = $ARGV[0];}
-if ($opts{'h'}) {$HOST = $opts{'h'};}
-if ($opts{'p'}) {$PORT = $opts{'p'};}
+$PORT = '14999' if exists $opts{'p'};
+$PORT = $opts{'p'} if $opts{'p'};
+my $timestamp = "%Y%m%d %T ";
+$timestamp = $opts{'t'} if $opts{'t'};
+$timestamp = '' unless exists $opts{'t'};
+my $showjoins = $opts{'j'};
+my $showgames = $opts{'g'};
+
 my $LOGIN_RESPONSE = "[login]\nusername=\"$USERNAME\"\n[/login]";
 my $VERSION_RESPONSE = "[version]\nversion=\"test\"\n[/version]";
 my @usernamelist = ();
@@ -89,6 +97,12 @@ sub write_bad_packet {
 }
 
 
+sub timestamp {
+	if ($timestamp) {
+		return strftime($timestamp, localtime());
+	}
+}
+
 sub login {
 	my $sock = shift;
 	my $response = &read_packet($sock);
@@ -139,7 +153,8 @@ sub login {
 	} else {
 		print STDERR "Error: Server didn't send the initial gamelist and gave no error.\n" . Dumper($response) and die;
 	}
-	print STDERR "usernames: @usernamelist\n";
+	print "usernames: @usernamelist\n" if $showjoins;
+	print "games: \"" . join("\" \"",@gamelist) . "\"\n" if $showgames;
 }
 
 # make several connections and send packets with a wrong length then sleep indefinitely
@@ -161,39 +176,40 @@ login($socket);
 
 while (1) {
 	my $response = &read_packet($socket);
-	# print only chat messages
 	foreach (@ {$response->{'children'}}) {
-#		print STDERR strftime("%Y%m%d %T ", localtime());
 		if ($_->{'name'} eq 'message') {
-			# /me actions
 			my $sender = $_->{'attr'}->{'sender'};
 			my $message = $_->{'attr'}->{'message'};
-			if ($_->{'attr'}->{'message'} =~ s,^/me,,) {
-				print STDERR strftime("%Y%m%d %T ", localtime()) . "* $sender $message\n";
+			if ($message =~ s,^/me,,) {
+				print STDERR &timestamp . "* $sender$message\n";
 			} else {
-				print STDERR strftime("%Y%m%d %T ", localtime()) . "<$sender> $message\n";
+				print STDERR &timestamp . "<$sender> $message\n";
 			}
 		} elsif ($_->{'name'} eq 'whisper') {
 			my $sender = $_->{'attr'}->{'sender'};
 			my $message = $_->{'attr'}->{'message'};
-			print STDERR strftime("%Y%m%d %T ", localtime()) . "*$sender* $message\n";
+			if ($message =~ s,^/me,,) {
+				print STDERR &timestamp . "*$sender$message*\n";
+			} else {
+				print STDERR &timestamp . "*$sender* $message\n";
+			}
 		} elsif ($_->{'name'} eq 'gamelist_diff') {
 			foreach (@ {$_->{'children'}}) {
 				my $index = $_->{'attr'}->{'index'};
 				if ($_->{'name'} eq 'insert_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
 						my $username = $user->{'attr'}->{'name'};
-						print STDERR strftime("%Y%m%d %T ", localtime()) . "--> $username has logged on. ($index)\n";
+						print STDERR &timestamp . "--> $username has logged on. ($index)\n" if $showjoins;
 						$usernamelist[@usernamelist] = $username;
-						#print STDERR "usernames: @usernamelist\n";
+						#print "usernames: @usernamelist\n";
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_);
 					}
 				} elsif ($_->{'name'} eq 'delete_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
-						print STDERR strftime("%Y%m%d %T ", localtime()) . "<-- $usernamelist[$index] has logged off. ($index)\n";
+						print STDERR &timestamp . "<-- $usernamelist[$index] has logged off. ($index)\n" if $showjoins;
 						splice(@usernamelist,$index,1);
-						#print STDERR "usernames: @usernamelist\n";
+						#print "usernames: @usernamelist\n";
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_);
 					}
@@ -203,9 +219,9 @@ while (1) {
 							#my $userindex = $_->{'attr'}->{'index'};   #there's no index it seems, the gamelistindex would be nice..
 							if ($_->{'name'} eq 'insert') {
 								if ($_->{'attr'}->{'available'} eq "yes") {
-									print STDERR strftime("%Y%m%d %T ", localtime()) . "++> $usernamelist[$index] has left a game.\n";
+									print STDERR &timestamp . "++> $usernamelist[$index] has left a game.\n" if $showjoins and $showgames;
 								} elsif ($_->{'attr'}->{'available'} eq "no") {
-									print STDERR strftime("%Y%m%d %T ", localtime()) . "<++ $usernamelist[$index] has joined a game.\n";
+									print STDERR &timestamp . "<++ $usernamelist[$index] has joined a game.\n" if $showjoins and $showgames;
 								}
 							} elsif ($_->{'name'} eq 'delete') {
 							} else {
@@ -219,20 +235,20 @@ while (1) {
 							if ($_->{'name'} eq 'insert_child') {
 								if (my $game = &wml::has_child($_, 'game')) {
 									my $gamename = $game->{'attr'}->{'name'};
-									print STDERR strftime("%Y%m%d %T ", localtime()) . "+++ A new game has been created: \"$gamename\" ($gamelistindex).\n";
+									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex).\n" if $showgames;
 									$gamelist[@gamelist] = $gamename;
 								} else {
-									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+									print "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
 								}
 							} elsif ($_->{'name'} eq 'delete_child') {
 								if (my $game = &wml::has_child($_, 'game')) {
-									print STDERR strftime("%Y%m%d %T ", localtime()) . "--- A game has ended: \"$gamelist[$gamelistindex]\". ($gamelistindex)\n";
+									print STDERR &timestamp . "--- A game has ended: \"$gamelist[$gamelistindex]\". ($gamelistindex)\n" if $showgames;
 								} else {
 									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
 								}
 							} elsif ($_->{'name'} eq 'change_child') {
 #								if (my $game = &wml::has_child($_, 'game')) {
-#									print STDERR strftime("%Y%m%d %T ", localtime()) . "Something changed in a game. ($gamelistindex)\n"
+#									print STDERR &timestamp . "Something changed in a game. ($gamelistindex)\n" if $showgames;
 #								} else {
 #									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
 #								}
@@ -247,17 +263,18 @@ while (1) {
 					print STDERR "[gamelist_diff]:" . Dumper($_);
 				}
 			}
+		# [observer] and [observer_quit] should be deprecated they are redundant to parts of [gamelist_diff]
 		} elsif ($_->{'name'} eq 'observer') {
 #			my $username = $_->{'attr'}->{'name'};
-#			print STDERR strftime("%Y%m%d %T ", localtime()) . "++> $username has joined the lobby.\n";
+#			print &timestamp . "++> $username has joined the lobby.\n";
 		} elsif ($_->{'name'} eq 'observer_quit') {
 #			my $username = $_->{'attr'}->{'name'};
-#			print STDERR strftime("%Y%m%d %T ", localtime()) . "<++ $username has left the lobby.\n";
+#			print &timestamp . "<++ $username has left the lobby.\n";
 		} else {
 			print STDERR Dumper($_);
 		}
 	}
 
 }
-#print STDERR "Connection closed.\n\n"
+print "Connection closed.\n\n"
 
