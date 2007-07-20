@@ -163,7 +163,7 @@ static void draw_tip_of_day(game_display& screen, config& tips_of_day, int* ntip
         tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_NORMAL,
                                           (game_config::title_tip_width*screen.w())/1024);
 
-        const std::string& tome = font::word_wrap_text(_(game_config::tome_title.c_str()),
+        const std::string& tome = font::word_wrap_text(game_config::tome_title,
                 font::SIZE_NORMAL,
                 (game_config::title_tip_width*screen.w())/1024);
 
