@@ -1835,7 +1835,7 @@ namespace events{
 				teams_[index].make_ai();
 				textbox_info_.close(*gui_);
 				if(team_num == side) {
-					//if it is our turn at the moment, we have to indicate to the
+				//if it is our turn at the moment, we have to indicate to the
 					//play_controller, that we are no longer in control
 					throw end_turn_exception(side);
 				}
@@ -1953,6 +1953,9 @@ namespace events{
 			gui_->invalidate_unit();
 		} else if(game_config::debug && cmd == "gold") {
 			teams_[team_num - 1].spend_gold(-lexical_cast_default<int>(data,1000));
+			gui_->redraw_everything();
+		} else if(game_config::debug && cmd == "throw") {
+			game_events::fire(data);
 			gui_->redraw_everything();
 		}
 	}
