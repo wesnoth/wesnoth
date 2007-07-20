@@ -502,7 +502,8 @@ def translator(filename, mapxforms, textxform):
             line = line[:-1]
         if line.endswith("\r"):
             line = line[:-1]
-            terminator = '\r\n'
+            if not stripcr:
+                terminator = '\r\n'
         mfile.append(line)
         if "map_data" in line:
             map_only = False
@@ -666,19 +667,25 @@ Usage: wmllint [options]
     -c, --clean                Clean up -bak files.
     -D, --diff                 Display diffs between unconverted and unconverted files.
     -r, --revert               Revert the conversion from the -bak files.
+    -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
 """)
 
 if __name__ == '__main__':
-    (options, arguments) = getopt.getopt(sys.argv[1:], "cdfDho:rv", [
-	"help",
-        "oldversion=",
-	"dryrun",
-        "future",
-        "verbose",
-        "clean",
-        "revert",
-        "diffs",
-        ])
+    try:
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdfDho:rsv", [
+            "help",
+            "oldversion=",
+            "dryrun",
+            "future",
+            "verbose",
+            "clean",
+            "revert",
+            "diffs",
+            "stripcr",
+            ])
+    except getopt.GetoptError:
+        help()
+        sys.exit(1)
     oldversion = 'older'
     dryrun = False
     future = False
@@ -686,6 +693,7 @@ if __name__ == '__main__':
     clean = False
     diffs = False
     revert = False
+    stripcr = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -705,6 +713,8 @@ if __name__ == '__main__':
             diffs = True
         elif switch in ('-r', '--revert'):
             revert = True
+        elif switch in ('-s', '--stripcr'):
+            stripcr = True
 
     # Check to see if we're on Windows.  If so, shellouts to mv and rm
     # and the svn command-line client won't work, so we suppress the
