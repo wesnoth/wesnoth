@@ -149,9 +149,9 @@ std::string get_colour_string(int id)
 	side_id << (id + 1);
 	std::map<std::string, t_string>::iterator name = game_config::team_rgb_name.find(side_id.str());
 	if(name != game_config::team_rgb_name.end()){
-	  return prefix + name->second.c_str();
+		return prefix + name->second;
 	}else{
-	  return prefix + _("Invalid Color");
+		return prefix + _("Invalid Color");
 	}
 }
 
