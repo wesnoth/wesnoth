@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-20 11:04+0200\n"
-"PO-Revision-Date: 2007-07-19 11:50+0100\n"
+"PO-Revision-Date: 2007-07-20 12:02+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -1395,11 +1395,9 @@ msgid "Quick"
 msgstr "Szybka"
 
 #: data/core/help.cfg:286
-#, fuzzy
-#| msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Szybkie jednostki mają 1 dodatkowy punkt ruchu, ale 10% mniej PŻ niż "
+"Szybkie jednostki mają 1 dodatkowy punkt ruchu, ale 5% mniej PŻ niż "
 "normalnie."
 
 #: data/core/help.cfg:288
@@ -1426,10 +1424,10 @@ msgid "Resilient"
 msgstr "Wytrzymała"
 
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid "Resilient units have 10% +3 more HP than usual."
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Wytrzymałe jednostki mają 10% +3 więcej PŻ niż normalnie."
+msgstr ""
+"Wytrzymałe jednostki mają o 4 PŻ więcej niż normalnie, plus 1 PŻ za każdy "
+"poziom."
 
 #: data/core/help.cfg:296
 msgid ""
@@ -1623,6 +1621,10 @@ msgid ""
 "Healthy units have 2 more HP than usual and rest heal 2 additional HP after "
 "each turn they did not fight."
 msgstr ""
+"\n"
+"\n"
+"Zdrowe jednostki mają o 2 PŻ więcej, niż normalnie, a podczas odpoczynku "
+"(każdej tury, w której nie walczyły) odzyskują dodatkowe 2 PŻ."
 
 #: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
 msgid "Grassland"
@@ -6851,10 +6853,8 @@ msgid "XP to advance"
 msgstr "PD do awansu"
 
 #: src/unit.cpp:2560
-#, fuzzy
-#| msgid "level"
 msgid "/level"
-msgstr "poziom"
+msgstr "/poziom"
 
 #: src/unit_types.cpp:193
 msgid "damage"
