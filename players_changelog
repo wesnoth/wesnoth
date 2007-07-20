@@ -4,28 +4,30 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.3.4+svn:
   * Campaigns
-    * Northern Rebirth:
-      * New Scenario - Judgement
-      * Balancing for Scenarios: Infested Caves, To the Mines, Clearing the
-        Mines 
+    * Northern Rebirth
+      * New scenario - Judgement.
+      * Balancing for scenarios: Infested Caves, To the Mines, Clearing the
+        Mines.
     * Heir to the Throne
-      * The Elvish Lord's and Elvish High Lord's faerie fire attacks have been 
+      * The Elvish Lord's and Elvish High Lord's faerie fire attacks have been
         changed from cold to arcane and reduced from 8-3 and 8-5 to 7-3 and 7-5
         respectively
 
   * Graphics
     * New animations: elvish scout idle.
-    * Fix bug #9398 (attacking units always above defending units)
+    * Fixed bug #9398 (attacking units always drawn on top of defending units).
 
   * Language and translations
     * Updated translations: Czech, Danish, Finnish, French, Galician, German,
-      Greek, Indonesian, Lithuanian, Polish, Spanish, Swedish
+      Greek, Indonesian, Lithuanian, Polish, Spanish, Swedish.
 
   * Map editor
+    * New checkbox for the "delay transition updates" option.
 
   * Multiplayer
     * Revised maps: Blitz, Cynsaun Battlefield, Hamlets, Sablestone Delta,
       Silverhead Crossing, Sulla's Ruins, Blue Water Province, Clash.
+    * Fix renames causing OOS when made after moves or recruits.
 
   * Unit changes and balancing
     * Changed the 'resilient' trait from +3HP +10% to +4HP + 1HP * unit level.
@@ -39,7 +41,6 @@ Version 1.3.4+svn:
     * Increased the XP requirement of the Saurian Skirmisher and Augur by 2.
     * Increased the melee attack of the Ruffian from 4-2 to 5-2.
 
-
   * User interface
     * Bug in delete_autosave preference fixed (thank you to jimm for spotting
       this).
@@ -47,11 +48,7 @@ Version 1.3.4+svn:
     * Help now has an "advance from" entry for units.
     * Added experimental new transition between map and background. The
       scrolling speed penalty introduced in 1.3.4 is gone.
-    * add colors to the statistics of units in help (Hajo's patch #764)
-
-  * Unit changes and balancing
-
-  * Miscellaneous and bugfixes
+    * Added colors to the statistics of units in help (Hajo's patch #764).
 
 
 Version 1.3.4:
