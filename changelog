@@ -26,8 +26,9 @@ Version 1.3.5:
      * changed Haldric II a bit and gave him new a sprite and animations
    * fixed teamcolourless fake unit moves in TRoW, HttT, EI, SoF, NR, TSG and
      TB
- * mad editor:
+ * map editor:
    * new checkbox for the "delay transition update" option
+   * map code has been refactored and separated from the main game
  * graphics
    * new animations: elvish scout idle
    * fix bug #9398 (attacking units always above defending units)
@@ -41,6 +42,8 @@ Version 1.3.5:
    * revised maps: Blitz, Cynsaun Battlefield, Hamlets, Sablestone Delta,
      Silverhead Crossing, Sulla's Ruins, Blue Water Province, Clash
    * fix MP crash on next scenario, thanks to Rhuvaen
+   * option to suppress lobby minimaps is gone. its champion concluded it
+     was pointless.
  * units
    * new "mechanical" trait, meant to show mechanical unit are immune to poison
    * balancing changes:
