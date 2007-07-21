@@ -14,40 +14,6 @@
 #include "util.hpp"
 #include <cstdlib>
 
-// Remove tags from begining of string (it creates new string, so it's safe to call)
-std::string del_tags(std::string name){
-	std::stringstream str;
-	bool colour_def = false;
-	bool not_name = true;
-	std::string::const_iterator it;
-
-	for (it = name.begin(); it != name.end(); it++){
-		// On the first analphabet character we stop react on specials characters
-		if (not_name && isalpha(*it)){
-			not_name = false;
-			str 	<< *it;
-			continue;
-		}
-		// Start of RGB definition block, so stop react on numbers
-		if (not_name && *it == '<'){
-			colour_def = true;
-			continue;
-		}
-		// Ending of RGB block
-		if (*it == '>'){
-			colour_def = false;
-			continue;
-		}
-		// Number outside colour block
-		if (not_name && !colour_def && isdigit(*it)){
-			not_name = false;
-		} 
-						
-		str << *it;
-	}
-	return str.str();
-}
-
 template<>
 int lexical_cast<int, const std::string&>(const std::string& a)
 {
