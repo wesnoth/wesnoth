@@ -413,7 +413,9 @@ if test "x$python" = "xyes"; then
 				AC_SUBST([PYTHON_LIBS])
 
 				AC_SUBST(pkgpythondir)
-				pkgpythondir=$PYTHON_PREFIX"/lib/python"$PYTHON_VERSION"/site-packages/wesnoth"
+				if test "x$python_install" = "xyes"; then
+					pkgpythondir=$PYTHON_PREFIX"/lib/python"$PYTHON_VERSION"/site-packages/wesnoth"
+				fi
 
 			fi
 		fi
