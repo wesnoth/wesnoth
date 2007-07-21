@@ -7,6 +7,9 @@ Version 1.3.5+svn:
      variable (bug #9555)
    * the automatic unit description used a non-MP safe way, this has been
      fixed
+   * the unit name generation could with different locales call get_random() a
+     different number of times. This lead to different names and traits. 
+     Changed to call random a fixed number of times which fixes the traits.
  * miscellaneous and bug fixes
    * various code cleanups
    * proper handling of description autogeneration for per level [effect] on

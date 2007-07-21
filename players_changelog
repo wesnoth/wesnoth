@@ -16,6 +16,9 @@ Version 1.3.5+svn:
     * The random starting time of day setting is will now be remembered.
     * Fixed a bug which could lead to the map in the lobby to become invisible.
     * Fixed an OOS which happened when a unit was recruited.	
+    * Fixed an OOS which was caused by different traits. This only happened if 
+      the players use different languages. A related problem which causes the
+      names to differ and also cause OOS errors hasn't been fixed yet.  
 
   * Unit changes and balancing
 
