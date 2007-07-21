@@ -273,9 +273,9 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	if(underlying_description_.empty()){
 	  char buf[80];
 	  if(!custom_unit_description_.empty()){
-	    snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(),(SDL_GetTicks()), custom_unit_description_.c_str());
+	    snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
 	  }else{
-	    snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	    snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
 	  }
 	  underlying_description_ = buf;
 	}
@@ -317,9 +317,9 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	if(underlying_description_.empty()){
 	  char buf[80];
 	  if(!custom_unit_description_.empty()){
-	    snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(),(SDL_GetTicks()), custom_unit_description_.c_str());
+	    snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
 	  }else{
-	    snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(),(SDL_GetTicks()));
+	    snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
 	  }
 	  underlying_description_ = buf;
 	}
@@ -957,7 +957,7 @@ void unit::read(const config& cfg)
 	underlying_description_ = cfg["description"];
 	if(underlying_description_.empty()){
 	  char buf[80];
-	  snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(),(SDL_GetTicks()%1000000));
+	  snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), get_random());
 	  underlying_description_ = buf;
 	}
 	if(description_.empty()) {
