@@ -2205,14 +2205,6 @@ static bool filter_loc_impl(const gamemap::location& loc, const std::string& xlo
 	return loc.matches_range(xloc, yloc);
 }
 
-static bool filter_loc(const gamemap::location& loc, const vconfig cfg)
-{
-	const std::string xloc = cfg["x"];
-	const std::string yloc = cfg["y"];
-
-	return filter_loc_impl(loc,xloc,yloc);
-}
-
 static bool process_event(event_handler& handler, const queued_event& ev)
 {
 	if(handler.disabled())

@@ -56,7 +56,6 @@ std::vector<tooltip>::const_iterator current_tooltip = tips.end();
 
 int tooltip_handle = 0;
 
-SDL_Rect current_rect;
 surface current_background = NULL;
 
 }

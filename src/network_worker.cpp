@@ -79,7 +79,6 @@ struct _TCPsocket {
 	IPaddress localAddress;
 	int sflag;
 };
-unsigned int buf_id = 0;
 unsigned int waiting_threads = 0;
 size_t min_threads = 0;
 size_t max_threads = 0;

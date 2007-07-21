@@ -48,7 +48,6 @@ namespace {
 
 bool mix_ok = false;
 unsigned music_start_time = 0;
-unsigned bell_volume;
 
 const size_t n_of_channels = 16;	// number of allocated channels
 const size_t bell_channel = 0;
