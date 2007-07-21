@@ -168,6 +168,20 @@ void set(CURSOR_TYPE type)
 
 	const CURSOR_TYPE new_cursor = use_colour_cursors() && colour_ready ? cursor::NO_CURSOR : current_cursor;
 
+#ifdef __APPLE__
+	// we use the evil SDL_ShowCursor because, on this OS,
+	// the transparent cursor trick works outside the
+	// window too, but this is not wanted since our color
+	// cursors can't work there
+	
+	bool show = new_cursor != cursor::NO_CURSOR || preferences::fullscreen();
+		if (show != SDL_ShowCursor(SDL_QUERY))
+			SDL_ShowCursor(show);
+		if (!show)
+			return;
+	
+#endif
+
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
 	
 	// cause problem on mac:
