@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-21 02:01+0200\n"
+"POT-Creation-Date: 2007-07-21 15:03+0200\n"
 "PO-Revision-Date: 2007-05-15 02:45+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -4828,7 +4828,8 @@ msgid "End Turn"
 msgstr "Край на хода"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2436
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
+#: src/unit.cpp:2583
 msgid "HP"
 msgstr "Здраве"
 
@@ -5802,7 +5803,7 @@ msgstr "Ниво"
 msgid "unit list^Traits"
 msgstr "Качества"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2468
+#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
 msgid "Moves"
 msgstr "Ходове"
 
@@ -6224,12 +6225,12 @@ msgid "Normal"
 msgstr "Нормално"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2577
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2584
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
 msgid ")"
 msgstr ")"
 
@@ -6888,37 +6889,37 @@ msgstr "Още"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогнете на Уеснот, като ни пращате информация"
 
-#: src/unit.cpp:2400 src/unit.cpp:2582
+#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2488 src/unit.cpp:2599
 msgid "XP to advance"
 msgstr "Опит до повишение"
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2605
 #, fuzzy
 #| msgid "level"
 msgid "/level"
 msgstr "ниво"
 
-#: src/unit_types.cpp:193
+#: src/unit_types.cpp:193 src/unit_types.cpp:233
 msgid "damage"
 msgstr "поражение"
 
-#: src/unit_types.cpp:201
+#: src/unit_types.cpp:201 src/unit_types.cpp:239
 msgid "strikes"
 msgstr "удари"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "chaotic"
 msgstr "хаотичен"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "lawful"
 msgstr "праведен"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "neutral"
 msgstr "неутрален"
 

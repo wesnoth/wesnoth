@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-21 02:01+0200\n"
+"POT-Creation-Date: 2007-07-21 15:03+0200\n"
 "PO-Revision-Date: 2007-02-23 22:37+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -4806,7 +4806,8 @@ msgid "End Turn"
 msgstr "Fi del torn"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2436
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
+#: src/unit.cpp:2583
 msgid "HP"
 msgstr "HP"
 
@@ -5793,7 +5794,7 @@ msgstr "Nivell"
 msgid "unit list^Traits"
 msgstr "Trets"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2468
+#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
 msgid "Moves"
 msgstr "Moviments"
 
@@ -6213,12 +6214,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2577
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2584
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
 msgid ")"
 msgstr ")"
 
@@ -6879,37 +6880,37 @@ msgstr "Més"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ajudeu el Wesnoth i envieu-nos informació"
 
-#: src/unit.cpp:2400 src/unit.cpp:2582
+#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2488 src/unit.cpp:2599
 msgid "XP to advance"
 msgstr "punt d'experiència per avançar"
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2605
 #, fuzzy
 #| msgid "level"
 msgid "/level"
 msgstr "nivell"
 
-#: src/unit_types.cpp:193
+#: src/unit_types.cpp:193 src/unit_types.cpp:233
 msgid "damage"
 msgstr "mal"
 
-#: src/unit_types.cpp:201
+#: src/unit_types.cpp:201 src/unit_types.cpp:239
 msgid "strikes"
 msgstr "cops"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "chaotic"
 msgstr "caòtica"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "lawful"
 msgstr "legal"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "neutral"
 msgstr "neutral"
 

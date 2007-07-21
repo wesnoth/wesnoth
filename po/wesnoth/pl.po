@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-21 02:01+0200\n"
+"POT-Creation-Date: 2007-07-21 15:03+0200\n"
 "PO-Revision-Date: 2007-07-20 12:02+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -4788,7 +4788,8 @@ msgid "End Turn"
 msgstr "Zakończ turę"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2436
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
+#: src/unit.cpp:2583
 msgid "HP"
 msgstr "PŻ"
 
@@ -5767,7 +5768,7 @@ msgstr "Poziom"
 msgid "unit list^Traits"
 msgstr "Cechy"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2468
+#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
 msgid "Moves"
 msgstr "Liczba ruchów"
 
@@ -6179,12 +6180,12 @@ msgid "Normal"
 msgstr "Normalny"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2577
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2584
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
 msgid ")"
 msgstr ")"
 
@@ -6844,35 +6845,35 @@ msgstr "Więcej"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomóż Wesnoth, wysyłając nam informacje"
 
-#: src/unit.cpp:2400 src/unit.cpp:2582
+#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2488 src/unit.cpp:2599
 msgid "XP to advance"
 msgstr "PD do awansu"
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2605
 msgid "/level"
 msgstr "/poziom"
 
-#: src/unit_types.cpp:193
+#: src/unit_types.cpp:193 src/unit_types.cpp:233
 msgid "damage"
 msgstr "obrażenia"
 
-#: src/unit_types.cpp:201
+#: src/unit_types.cpp:201 src/unit_types.cpp:239
 msgid "strikes"
 msgstr "ciosy"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "chaotic"
 msgstr "chaotyczny"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "lawful"
 msgstr "praworządny"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "neutral"
 msgstr "neutralny"
 

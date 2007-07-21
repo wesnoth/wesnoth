@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-21 02:01+0200\n"
+"POT-Creation-Date: 2007-07-21 15:03+0200\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -4271,7 +4271,8 @@ msgid "End Turn"
 msgstr "Končaj potezo"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2436
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
+#: src/unit.cpp:2583
 msgid "HP"
 msgstr "HP"
 
@@ -5269,7 +5270,7 @@ msgstr "Stopnja"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2468
+#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
 msgid "Moves"
 msgstr "Premiki"
 
@@ -5698,12 +5699,12 @@ msgid "Normal"
 msgstr "Navadna"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2577
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2584
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
 msgid ")"
 msgstr ")"
 
@@ -6373,37 +6374,37 @@ msgstr "Več"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomagajte Wesnoth s pošiljanjem podatkov o igrah"
 
-#: src/unit.cpp:2400 src/unit.cpp:2582
+#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2486
+#: src/unit.cpp:2488 src/unit.cpp:2599
 msgid "XP to advance"
 msgstr "XP do napredovanja"
 
-#: src/unit.cpp:2560
+#: src/unit.cpp:2605
 #, fuzzy
 #| msgid "level"
 msgid "/level"
 msgstr "stopnja"
 
-#: src/unit_types.cpp:193
+#: src/unit_types.cpp:193 src/unit_types.cpp:233
 msgid "damage"
 msgstr "škoda"
 
-#: src/unit_types.cpp:201
+#: src/unit_types.cpp:201 src/unit_types.cpp:239
 msgid "strikes"
 msgstr "udarci"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "chaotic"
 msgstr "kaotičen"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "lawful"
 msgstr "zakonit"
 
-#: src/unit_types.cpp:890
+#: src/unit_types.cpp:920
 msgid "neutral"
 msgstr "nevtralen"
 
