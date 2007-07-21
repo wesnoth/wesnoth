@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-21 02:01+0200\n"
-"PO-Revision-Date: 2007-07-15 22:47+0200\n"
+"PO-Revision-Date: 2007-07-21 01:51+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -204,10 +204,8 @@ msgid "French Translation"
 msgstr "Ranskankielinen käännös"
 
 #: data/core/about.cfg:511
-#, fuzzy
-#| msgid "Valencian Translation"
 msgid "Galician Translation"
-msgstr "Valencian kielen käännös"
+msgstr "Galician kielen käännös"
 
 #: data/core/about.cfg:518
 msgid "German Translation"
@@ -1388,12 +1386,10 @@ msgid "Quick"
 msgstr "nopea"
 
 #: data/core/help.cfg:286
-#, fuzzy
-#| msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Nopeilla yksiköillä on 1 liikepiste enemmän, mutta 10% vähemmän "
-"elämäpisteitä kuin muilla."
+"Nopeilla yksiköillä on 1 liikepiste enemmän, mutta 5% vähemmän elämäpisteitä "
+"kuin muilla."
 
 #: data/core/help.cfg:288
 msgid ""
@@ -1420,10 +1416,10 @@ msgid "Resilient"
 msgstr "kestävä"
 
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid "Resilient units have 10% +3 more HP than usual."
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Kestävillä yksiköillä on 10% + 3 tavallista enemmän EP:tä."
+msgstr ""
+"Kestävillä yksiköillä on neljä ylimääräistä elämäpistettä ja 1 EP tasoa "
+"kohti."
 
 #: data/core/help.cfg:296
 msgid ""
@@ -1612,6 +1608,11 @@ msgid ""
 "Healthy units have 2 more HP than usual and rest heal 2 additional HP after "
 "each turn they did not fight."
 msgstr ""
+"\n"
+"\n"
+"Elinvoimaisilla yksiköillä on kaksi elämäpistettä enemmän kuin muilla ja "
+"lepääminen parantaa kaksi ylimääräistä elämäpistettä joka vuoro taistelun "
+"ulkopuolella."
 
 #: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
 msgid "Grassland"
@@ -2167,11 +2168,6 @@ msgstr "Ylitsepääsemätön vuoristo"
 
 #: data/core/help.cfg:596
 #, fuzzy
-#| msgid ""
-#| "Impassable mountains are so tall and steep that they are constantly "
-#| "wreathed in cloud.  To cross such moutains is practically impossible. "
-#| "Even flying creatures cannot navigate the jagged peaks at such rarified "
-#| "heights."
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
@@ -6815,10 +6811,8 @@ msgid "XP to advance"
 msgstr "KP:tä ylenemiseen:"
 
 #: src/unit.cpp:2560
-#, fuzzy
-#| msgid "level"
 msgid "/level"
-msgstr "taso"
+msgstr "/taso"
 
 #: src/unit_types.cpp:193
 msgid "damage"

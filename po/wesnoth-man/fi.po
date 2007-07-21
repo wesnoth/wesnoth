@@ -1,54 +1,55 @@
 # Finnish translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 # Automatically generated, 2006.
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
+"Project-Id-Version: wesnoth\n"
 "POT-Creation-Date: 2007-05-18 18:38+0200\n"
-"PO-Revision-Date: 2006-08-22 00:18+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-07-18 22:57+0300\n"
+"Last-Translator: Niklas Laxström\n"
+"Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "WESNOTH"
-msgstr ""
+msgstr "WESNOTH"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2006"
-msgstr ""
+msgstr "2006"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "wesnoth"
-msgstr ""
+msgstr "wesnoth"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr ""
+msgstr "Taistelu Wesnothista"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
 #: ../../doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
-msgstr ""
+msgstr "NIMI"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr ""
+msgstr "wesnoth - Taistelu Wesnothista, vuoropohjainen fantasiastrategiapeli"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
@@ -60,19 +61,19 @@ msgstr ""
 # type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr ""
+msgstr "B<wesnoth> [I<valitsimet>] [I<datakansio>]"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
 #: ../../doc/man/wesnothd.6:37
 #, no-wrap
 msgid "DESCRIPTION"
-msgstr ""
+msgstr "KUVAUS"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr ""
+msgstr "Taistelu B<Wesnothista> on vuoropohjainen fantasiastrategiapeli."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:42
@@ -92,24 +93,24 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:42
 #, no-wrap
 msgid "OPTIONS"
-msgstr ""
+msgstr "VALITSIMET"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--bpp>I<\\ number>"
-msgstr ""
+msgstr "B<--bpp>I<\\ luku>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:48 ../../doc/man/wesnoth_editor.6:54
 msgid "sets BitsPerPixel value. Example: --bpp 32"
-msgstr ""
+msgstr "asettaa värisyvyyden. Esimerkki: --bpp 32"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:48
 #, no-wrap
 msgid "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
-msgstr ""
+msgstr "B<--compress>I<\\ E<lt>syötetiedostoE<gt>>B<\\ >I<E<lt>kohde<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:51
@@ -117,12 +118,13 @@ msgid ""
 "compresses a savefile (infile) that is in text WML format into binary WML "
 "format (outfile)."
 msgstr ""
+"pakkaa WML-muotoisen syötetiedoston binääri-WML-muotoiseksi kohteeseen."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:51
 #, no-wrap
 msgid "B<-d>, B<--debug>"
-msgstr ""
+msgstr "B<-d>, B<--debug>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:56
@@ -149,48 +151,48 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:60
 #, no-wrap
 msgid "B<-f>, B<--fullscreen>"
-msgstr ""
+msgstr "B<-f>, B<--fullscreen>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:63
 msgid "runs the game in full screen mode."
-msgstr ""
+msgstr "käynnistää pelin kokoruututilassa."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:63
 #, no-wrap
 msgid "B<--fps>"
-msgstr ""
+msgstr "B<--fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:67
 msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
-msgstr ""
+msgstr "näyttää pelin fps-nopeuden ruudun kulmassa"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
 #, no-wrap
 msgid "B<-h>, B<--help>"
-msgstr ""
+msgstr "B<-h>, B<--help>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:70
 msgid ""
 "displays a summary of command line options to standard output, and exits."
-msgstr ""
+msgstr "näyttää koosteen komentorivivalitsimista ja poistuu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--load>I<\\ savegame>"
-msgstr ""
+msgstr "B<--load>I<\\ tallennus>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "loads the file savegame from the standard save game directory."
-msgstr ""
+msgstr "lataa pelitalennuksen oletustallennushakemistosta."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73 ../../doc/man/wesnoth_editor.6:62
@@ -210,7 +212,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:83 ../../doc/man/wesnoth_editor.6:72
 #, no-wrap
 msgid "B<--logdomains>"
-msgstr ""
+msgstr "B<--logdomains>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:86 ../../doc/man/wesnoth_editor.6:75
@@ -221,7 +223,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:86
 #, no-wrap
 msgid "B<--max-fps>"
-msgstr ""
+msgstr "B<--max-fps>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:90
@@ -229,12 +231,14 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is 50."
 msgstr ""
+"asettaa enimmäisarvon kuvapäivysten määrälle sekunnissa. Sopivia arvoja on "
+"1..10000. Oletus on 50."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:90
 #, no-wrap
 msgid "B<--multiplayer>"
-msgstr ""
+msgstr "B<--multiplayer>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:96
@@ -242,89 +246,91 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
+"käynnistää moninpelin. Tämän valitsimen kanssa voi käyttää myös alla olevia "
+"valitsimia."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:96
 #, no-wrap
 msgid "B<--nocache>"
-msgstr ""
+msgstr "B<--nocache>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:99
 msgid "disables caching of game data."
-msgstr ""
+msgstr "estää välimuistin luomisen pelidatasta."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:99
 #, no-wrap
 msgid "B<--nosound>"
-msgstr ""
+msgstr "B<--nosound>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:102
 msgid "runs the game without sounds and music."
-msgstr ""
+msgstr "käynnistää pelin ilman ääniä ja musiikkia."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:102 ../../doc/man/wesnoth_editor.6:43
 #, no-wrap
 msgid "B<--path>"
-msgstr ""
+msgstr "B<--path>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
-msgstr ""
+msgstr "tulostaa pelidatan polun ja lopettaa."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:105
 #, no-wrap
 msgid "B<-r>, B<--resolution>\\ I<XxY>"
-msgstr ""
+msgstr "B<-r>, B<--resolution>\\ I<XxY>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:108
 msgid "sets the screen resolution. Example: -r 800x600"
-msgstr ""
+msgstr "asettaa resoluution. Esimerkki: -r 800x600"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:108
 #, no-wrap
 msgid "B<-t>, B<--test>"
-msgstr ""
+msgstr "B<-t>, B<--test>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:111
 msgid "runs the game in a small test scenario."
-msgstr ""
+msgstr "käynnistää pelin pienessä testiskenaariossa."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:111
 #, no-wrap
 msgid "B<-v>, B<--version>"
-msgstr ""
+msgstr "B<-v>, B<--version>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:114
 msgid "shows the version number and exits."
-msgstr ""
+msgstr "tulostaa versiotiedot ja lopettaa."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:114
 #, no-wrap
 msgid "B<-w>, B<--windowed>"
-msgstr ""
+msgstr "B<-w>, B<--windowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:117
 msgid "runs the game in windowed mode."
-msgstr ""
+msgstr "käynnistää pelin sovellusikkunassa."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:117
 #, no-wrap
 msgid "B<--no-delay>"
-msgstr ""
+msgstr "B<--no-delay>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:120
@@ -337,7 +343,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:120
 #, no-wrap
 msgid "B<--exit-at-end>"
-msgstr ""
+msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:123
@@ -351,7 +357,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:124
 #, no-wrap
 msgid "Options for --multiplayer"
-msgstr ""
+msgstr "Valitsimen --multiplayer kanssa käytettävät valitsimet"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:129
@@ -365,7 +371,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:129
 #, no-wrap
 msgid "B<--algorithmE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--algorithmE<lt>pelaajaE<gt>=arvo>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:133
@@ -378,19 +384,19 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:133
 #, no-wrap
 msgid "B<--controllerE<lt>numberE<gt>=value>"
-msgstr ""
+msgstr "B<--controllerE<lt>pelaajaE<gt>=arvo>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:136
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
-msgstr ""
+msgstr "asettaa pelaajan ohjaajan. Sallittuja arvoja ovat human ja ai."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:136
 #, no-wrap
 msgid "B<--era=value>"
-msgstr ""
+msgstr "B<--era=arvo>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:141
@@ -404,7 +410,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:141
 #, no-wrap
 msgid "B<--nogui>"
-msgstr ""
+msgstr "B<--nogui>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:146
@@ -483,12 +489,12 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:139
 #, no-wrap
 msgid "AUTHOR"
-msgstr ""
+msgstr "TEKIJÄT"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:173
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
-msgstr ""
+msgstr "Kirjoittanut David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:175
@@ -496,6 +502,9 @@ msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
 msgstr ""
+"Editoinut Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> ja Soliton E<lt>soliton@sonnenkinder.orgE<gt>.\n"
+"Suomentanut Niklas Laxström <lt>niklas.laxstrom+wesnoth@gmail.com</gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:177
@@ -503,25 +512,28 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"Tämän manuaalin alkuperäisversion on kirjoittanut Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:82
 #: ../../doc/man/wesnothd.6:146
 msgid "Visit the official homepage: http://www.wesnoth.org/"
-msgstr ""
+msgstr "Käy virallisella sivustolla: http://www.wesnoth.org/"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:83
 #: ../../doc/man/wesnothd.6:147
 #, no-wrap
 msgid "COPYRIGHT"
-msgstr ""
+msgstr "TEKIJÄNOIKEUS"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:183 ../../doc/man/wesnoth_editor.6:85
 #: ../../doc/man/wesnothd.6:150
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
+"Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:186 ../../doc/man/wesnoth_editor.6:88
@@ -531,13 +543,16 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
+"This is Free Software; this software is licensed under the GPL version 2, as "
+"published by the Free Software Foundation.  There is NO warranty; not even "
+"for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:187 ../../doc/man/wesnoth_editor.6:89
 #: ../../doc/man/wesnothd.6:154
 #, no-wrap
 msgid "SEE ALSO"
-msgstr ""
+msgstr "KATSO MYÖS"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:190
@@ -626,7 +641,7 @@ msgstr ""
 #: ../../doc/man/wesnoth_editor.6:51
 #, no-wrap
 msgid "B<--bpp>"
-msgstr ""
+msgstr "B<--bpp>"
 
 # type: TP
 #: ../../doc/man/wesnoth_editor.6:55
