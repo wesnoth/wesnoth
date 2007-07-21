@@ -46,7 +46,7 @@
 #define LOG_UT LOG_STREAM(info, engine)
 
 namespace {
-	const std::string ModificationTypes[] = { "trait", "advance", "object" };
+	const std::string ModificationTypes[] = { "advance", "trait", "object" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
 	                                    sizeof(*ModificationTypes);
 
