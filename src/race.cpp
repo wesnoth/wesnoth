@@ -51,13 +51,28 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 
 	wide_string prefix, res;
 
+       // Since this function is called from several translation domains it can
+       // be a translation has a different markov_prefix_map which means
+       // get_random is called a different number of times. To avoid that problem
+       // we load a vector with those items. This is a kind of klugdge since when
+       // we bail out at 'if(c == 0)' the names of the units differ and thus we
+       // still have an OOS. The main difference with this change only the names
+       // differ and not the traits which causes real problems due to different
+       // stats.
+       std::vector<int> random(max_len);
+       size_t j = 0;
+       for(; j < max_len; ++j) {
+               random[j] = get_random();
+       }
+
+       j = 0;
 	while(res.size() < max_len) {
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
 		if(i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
 
-		const wchar_t c = i->second[get_random()%i->second.size()];
+		const wchar_t c = i->second[random[j++]%i->second.size()];
 		if(c == 0) {
 			return res;
 		}
