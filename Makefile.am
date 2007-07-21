@@ -12,8 +12,8 @@ if LITE
 findmoredata=;find images $(findfilterflags) -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" -o -print
 findmoredatadirs=find images -type d \! \( -name .svn -prune -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" \) -print
 else
-findmoredata=;find images music $(findfilterflags) -o -print
-findmoredatadirs=find images music -type d \! \( -name .svn -prune \) -print
+findmoredata=;find images $(findfilterflags) -o -print
+findmoredatadirs=find images -type d \! \( -name .svn -prune \) -print
 endif
 
 finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
