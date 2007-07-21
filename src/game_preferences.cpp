@@ -41,8 +41,6 @@ bool message_private_on = true;
 
 bool haloes = true;
 
-bool unit_genders = true;
-
 std::set<std::string> encountered_units_set;
 std::set<t_translation::t_letter> encountered_terrains_set;
 
@@ -211,10 +209,6 @@ const std::string login()
 void set_login(const std::string& username)
 {
 	preferences::set("login", username);
-}
-
-namespace {
-	double scroll = 0.2;
 }
 
 bool turn_dialog()
