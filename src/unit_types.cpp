@@ -216,6 +216,36 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 	return true;
 }
+
+/* same as above, except only update the descriptions */
+bool attack_type::describe_modification(const config& cfg,std::string* description)
+{
+	if(!matches_filter(cfg,0))
+		return false;
+
+	const std::string& increase_damage = cfg["increase_damage"];
+	const std::string& increase_attacks = cfg["increase_attacks"];
+
+	std::stringstream desc;
+
+	if(increase_damage.empty() == false) {
+		if(description != NULL) {
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << " " << _("damage");
+		}
+	}
+
+	if(increase_attacks.empty() == false) {
+		if(description != NULL) {
+			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks << " " << _("strikes");
+		}
+	}
+
+	if(description != NULL) {
+		*description = desc.str();
+	}
+
+	return true;
+}
 bool attack_type::has_special_by_id(const std::string& special) const
 {
 	const config* abil = cfg_.child("specials");

@@ -2348,212 +2348,257 @@ void unit::add_modification(const std::string& type, const config& mod,
 		const std::string& apply_to = (**i.first)["apply_to"];
 		const std::string& apply_times = (**i.first)["times"];
 		int times = 1;
+		t_string description;
+		
 		if (apply_times == "per level")
 			times = level_;
+		if (times) {
+			while (times > 0) {
+				times --;
 
-	   while (times > 0) {
-
-		t_string description;
-
-		times--;
-		//apply variations -- only apply if we are adding this
-		//for the first time.
-		if(apply_to == "variation" && no_add == false) {
-			variation_ = (**i.first)["name"];
-			wassert(gamedata_ != NULL);
-			const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
-			advance_to(&var->second.get_variation(variation_));
-		} else if(apply_to == "profile") {
-			const std::string& portrait = (**i.first)["portrait"];
-			const std::string& description = (**i.first)["description"];
-			if(!portrait.empty()) cfg_["profile"] = portrait;
-			if(!description.empty()) cfg_["unit_description"] = description;
-			//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
-		} else if(apply_to == "new_attack") {
-			attacks_.push_back(attack_type(**i.first,id(),image_fighting((**i.first)["range"]=="ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
-		} else if(apply_to == "remove_attacks") {
-			int num_attacks= attacks_.size();
-			for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
-				if (a->matches_filter(**i.first,false)) {
-					if (num_attacks > 1) {
-					    	attacks_.erase(a--);
-						num_attacks--;
-					} else {
-						// Don't remove the last attack
-						LOG_STREAM(err, config) << "[effect] tried to remove the last attack : ignored.\n";
+				//apply variations -- only apply if we are adding this
+				//for the first time.
+				if(apply_to == "variation" && no_add == false) {
+					variation_ = (**i.first)["name"];
+					wassert(gamedata_ != NULL);
+					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
+					advance_to(&var->second.get_variation(variation_));
+				} else if(apply_to == "profile") {
+					const std::string& portrait = (**i.first)["portrait"];
+					const std::string& description = (**i.first)["description"];
+					if(!portrait.empty()) cfg_["profile"] = portrait;
+					if(!description.empty()) cfg_["unit_description"] = description;
+					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
+				} else if(apply_to == "new_attack") {
+					attacks_.push_back(attack_type(**i.first,id(),image_fighting((**i.first)["range"]=="ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+				} else if(apply_to == "remove_attacks") {
+					int num_attacks= attacks_.size();
+					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
+						if (a->matches_filter(**i.first,false)) {
+							if (num_attacks > 1) {
+							    	attacks_.erase(a--);
+								num_attacks--;
+							} else {
+								// Don't remove the last attack
+								LOG_STREAM(err, config) << "[effect] tried to remove the last attack : ignored.\n";
+							}
+						}
 					}
-				}
-			}
-		} else if(apply_to == "attack") {
+				} else if(apply_to == "attack") {
 
-			bool first_attack = true;
+					bool first_attack = true;
 
-			for(std::vector<attack_type>::iterator a = attacks_.begin();
-			    a != attacks_.end(); ++a) {
-				std::string desc;
-				const bool affected = a->apply_modification(**i.first,&desc);
-				if(affected && desc != "") {
-					if(first_attack) {
-						first_attack = false;
-					} else {
+					for(std::vector<attack_type>::iterator a = attacks_.begin();
+					    a != attacks_.end(); ++a) {
+						std::string desc;
+						bool affected = a->apply_modification(**i.first,&desc);
+						if(affected && desc != "") {
+							if(first_attack) {
+								first_attack = false;
+							} else {
+								if (!times)
+									description += t_string(N_("; "), "wesnoth");
+							}
+
+							if (!times)
+								description += t_string(a->name(), "wesnoth") + " " + desc;
+						}
+					}
+				} else if(apply_to == "hitpoints") {
+					LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
+					const std::string& increase_hp = (**i.first)["increase"];
+					const std::string& heal_full = (**i.first)["heal_full"];
+					const std::string& increase_total = (**i.first)["increase_total"];
+					const std::string& set_hp = (**i.first)["set"];
+					const std::string& set_total = (**i.first)["set_total"];
+
+					//if the hitpoints are allowed to end up greater than max hitpoints
+					const std::string& violate_max = (**i.first)["violate_maximum"];
+
+					if(set_hp.empty() == false) {
+						if(set_hp[set_hp.size()-1] == '%') {
+							hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
+						} else {
+							hit_points_ = lexical_cast_default<int>(set_hp);
+						}
+					}
+					if(set_total.empty() == false) {
+						if(set_total[set_total.size()-1] == '%') {
+							max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
+						} else {
+							max_hit_points_ = lexical_cast_default<int>(set_total);
+						}
+					}
+
+					if(increase_total.empty() == false) {
 						if (!times)
-							description += t_string(N_("; "), "wesnoth");
+							description += (increase_total[0] != '-' ? "+" : "") +
+								increase_total + " " +
+								t_string(N_("HP"), "wesnoth");
+
+						//a percentage on the end means increase by that many percent
+						max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
 					}
 
-					if (!times)
-						description += t_string(a->name(), "wesnoth") + " " + desc;
-				}
-			}
-		} else if(apply_to == "hitpoints") {
-			LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
-			const std::string& increase_hp = (**i.first)["increase"];
-			const std::string& heal_full = (**i.first)["heal_full"];
-			const std::string& increase_total = (**i.first)["increase_total"];
-			const std::string& set_hp = (**i.first)["set"];
-			const std::string& set_total = (**i.first)["set_total"];
+					if(max_hit_points_ < 1)
+						max_hit_points_ = 1;
 
-			//if the hitpoints are allowed to end up greater than max hitpoints
-			const std::string& violate_max = (**i.first)["violate_maximum"];
+					if(heal_full.empty() == false && utils::string_bool(heal_full,true)) {
+						heal_all();
+					}
 
-			if(set_hp.empty() == false) {
-				if(set_hp[set_hp.size()-1] == '%') {
-					hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
-				} else {
-					hit_points_ = lexical_cast_default<int>(set_hp);
-				}
-			}
-			if(set_total.empty() == false) {
-				if(set_total[set_total.size()-1] == '%') {
-					max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
-				} else {
-					max_hit_points_ = lexical_cast_default<int>(set_total);
-				}
-			}
-
-			if(increase_total.empty() == false) {
-				if (!times)
-					description += (increase_total[0] != '-' ? "+" : "") + increase_total +
-						" " + t_string(N_("HP"), "wesnoth");
-
-				//a percentage on the end means increase by that many percent
-				max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
-			}
-
-			if(max_hit_points_ < 1)
-				max_hit_points_ = 1;
-
-			if(heal_full.empty() == false && utils::string_bool(heal_full,true)) {
-				heal_all();
-			}
-
-			if(increase_hp.empty() == false) {
-				hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
-			}
+					if(increase_hp.empty() == false) {
+						hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
+					}
 			
-			LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
-			if(hit_points_ > max_hit_points_ && violate_max.empty()) {
-				LOG_UT << "resetting hp to max\n";
-				hit_points_ = max_hit_points_;
-			}
+					LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
+					if(hit_points_ > max_hit_points_ && violate_max.empty()) {
+						LOG_UT << "resetting hp to max\n";
+						hit_points_ = max_hit_points_;
+					}
 
-			if(hit_points_ < 1)
-				hit_points_ = 1;
-		} else if(apply_to == "movement") {
-			const std::string& increase = (**i.first)["increase"];
-			const std::string& set_to = (**i.first)["set"];
+					if(hit_points_ < 1)
+						hit_points_ = 1;
+				} else if(apply_to == "movement") {
+					const std::string& increase = (**i.first)["increase"];
+					const std::string& set_to = (**i.first)["set"];
 
-			if(increase.empty() == false) {
-				if (!times)
-					description += (increase[0] != '-' ? "+" : "") + increase +
-						" " + t_string(N_("Moves"), "wesnoth");
+					if(increase.empty() == false) {
+						if (!times)
+							description += (increase[0] != '-' ? "+" : "") +
+								increase + " " +
+								t_string(N_("Moves"), "wesnoth");
 
-				max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
-			}
+						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
+					}
 
-			if(set_to.empty() == false) {
-				max_movement_ = atoi(set_to.c_str());
-			}
+					if(set_to.empty() == false) {
+						max_movement_ = atoi(set_to.c_str());
+					}
 
-			if(movement_ > max_movement_)
-				movement_ = max_movement_;
-		} else if(apply_to == "max_experience") {
-			const std::string& increase = (**i.first)["increase"];
+					if(movement_ > max_movement_)
+						movement_ = max_movement_;
+				} else if(apply_to == "max_experience") {
+					const std::string& increase = (**i.first)["increase"];
 
-			if(increase.empty() == false) {		
-				if (!times)
+					if(increase.empty() == false) {		
+						if (!times)
+							description += (increase[0] != '-' ? "+" : "") +
+								increase + " " +
+								t_string(N_("XP to advance"), "wesnoth");
+
+						max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
+					}
+
+				} else if(apply_to == "loyal") {
+					cfg_["upkeep"] = "loyal";
+				} else if(apply_to == "status") {
+					const std::string& add = (**i.first)["add"];
+					const std::string& remove = (**i.first)["remove"];
+
+					if(add.empty() == false) {
+						set_state(add,"yes");
+					}
+
+					if(remove.empty() == false) {
+						set_state(remove,"");
+					}
+				} else if (apply_to == "movement_costs") {
+					config *mv = cfg_.child("movement_costs");
+					config *ap = (**i.first).child("movement_costs");
+					const std::string& replace = (**i.first)["replace"];
+					if(!mv) {
+						mv = &cfg_.add_child("movement_costs");
+					}
+					if (ap) {
+						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+					}
+					movement_costs_.clear();
+				} else if (apply_to == "defense") {
+					config *mv = cfg_.child("defense");
+					config *ap = (**i.first).child("defense");
+					const std::string& replace = (**i.first)["replace"];
+					if(!mv) {
+						mv = &cfg_.add_child("defense");
+					}
+					if (ap) {
+						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+					}
+				} else if (apply_to == "resistance") {
+					config *mv = cfg_.child("resistance");
+					config *ap = (**i.first).child("resistance");
+					const std::string& replace = (**i.first)["replace"];
+					if(!mv) {
+						mv = &cfg_.add_child("resistance");
+					}
+					if (ap) {
+						mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
+					}
+				} else if (apply_to == "zoc") {
+					const std::string& zoc_value = (**i.first)["value"];
+					if(!zoc_value.empty()) {
+						emit_zoc_ = lexical_cast_default<int>(zoc_value);
+					}
+				} else if (apply_to == "image_mod") {
+					LOG_UT << "applying image_mod \n";
+					std::string mod = (**i.first)["replace"];
+					if (!mod.empty()){
+						image_mods_ = mod;
+					}
+					LOG_UT << "applying image_mod \n";
+					mod = (**i.first)["add"];
+					if (!mod.empty()){
+						image_mods_ += mod;
+					}
+
+					game_config::add_color_info(**i.first);
+					LOG_UT << "applying image_mod \n";
+				}
+			} /* end while */
+		} else { // for times = per level & level = 0 we still need to rebuild the descriptions 
+			if(apply_to == "attack") {
+
+				bool first_attack = true;
+
+				for(std::vector<attack_type>::iterator a = attacks_.begin();
+				    a != attacks_.end(); ++a) {
+					std::string desc;
+					bool affected = a->describe_modification(**i.first,&desc);
+					if(affected && desc != "") {
+						if(first_attack) {
+							first_attack = false;
+						} else {
+							description += t_string(N_("; "), "wesnoth");
+						}
+
+						description += t_string(a->name(), "wesnoth") + " " + desc;
+					}
+				}
+			} else if(apply_to == "hitpoints") {
+				const std::string& increase_total = (**i.first)["increase_total"];
+
+				if(increase_total.empty() == false) {
+					description += (increase_total[0] != '-' ? "+" : "") +
+						increase_total + " " +
+						t_string(N_("HP"), "wesnoth");
+				}
+			} else if(apply_to == "movement") {
+				const std::string& increase = (**i.first)["increase"];
+
+				if(increase.empty() == false) {
+					description += (increase[0] != '-' ? "+" : "") +
+						increase + " " +
+						t_string(N_("Moves"), "wesnoth");
+				}
+			} else if(apply_to == "max_experience") {
+				const std::string& increase = (**i.first)["increase"];
+
+				if(increase.empty() == false) {		
 					description += (increase[0] != '-' ? "+" : "") +
 						increase + " " +
 						t_string(N_("XP to advance"), "wesnoth");
-
-				max_experience_ = utils::apply_modifier(max_experience_, increase);
+				}
 			}
-
-			if(max_experience_ < 1) {
-				max_experience_ = 1;
-			}
-		} else if(apply_to == "loyal") {
-			cfg_["upkeep"] = "loyal";
-		} else if(apply_to == "status") {
-			const std::string& add = (**i.first)["add"];
-			const std::string& remove = (**i.first)["remove"];
-
-			if(add.empty() == false) {
-				set_state(add,"yes");
-			}
-
-			if(remove.empty() == false) {
-				set_state(remove,"");
-			}
-		} else if (apply_to == "movement_costs") {
-			config *mv = cfg_.child("movement_costs");
-			config *ap = (**i.first).child("movement_costs");
-			const std::string& replace = (**i.first)["replace"];
-			if(!mv) {
-				mv = &cfg_.add_child("movement_costs");
-			}
-			if (ap) {
-				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
-			}
-			movement_costs_.clear();
-		} else if (apply_to == "defense") {
-			config *mv = cfg_.child("defense");
-			config *ap = (**i.first).child("defense");
-			const std::string& replace = (**i.first)["replace"];
-			if(!mv) {
-				mv = &cfg_.add_child("defense");
-			}
-			if (ap) {
-				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
-			}
-		} else if (apply_to == "resistance") {
-			config *mv = cfg_.child("resistance");
-			config *ap = (**i.first).child("resistance");
-			const std::string& replace = (**i.first)["replace"];
-			if(!mv) {
-				mv = &cfg_.add_child("resistance");
-			}
-			if (ap) {
-				mod_mdr_merge(*mv, *ap, !utils::string_bool(replace));
-			}
-		} else if (apply_to == "zoc") {
-			const std::string& zoc_value = (**i.first)["value"];
-			if(!zoc_value.empty()) {
-				emit_zoc_ = lexical_cast_default<int>(zoc_value);
-			}
-		} else if (apply_to == "image_mod") {
-			LOG_UT << "applying image_mod \n";
-			std::string mod = (**i.first)["replace"];
-			if (!mod.empty()){
-				image_mods_ = mod;
-			}
-			LOG_UT << "applying image_mod \n";
-			mod = (**i.first)["add"];
-			if (!mod.empty()){
-				image_mods_ += mod;
-			}
-
-			game_config::add_color_info(**i.first);
-			LOG_UT << "applying image_mod \n";
 		}
 
 		if (apply_times == "per level" && !times)
@@ -2562,7 +2607,6 @@ void unit::add_modification(const std::string& type, const config& mod,
 		if(!description.empty())
 			effects_description.push_back(description);
 			
-	   } /* end while */
 	}
 
 	t_string& description = modification_descriptions_[type];

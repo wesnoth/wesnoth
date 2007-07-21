@@ -64,6 +64,7 @@ public:
 	//each time.
 	bool matches_filter(const config& cfg,bool self=false) const;
 	bool apply_modification(const config& cfg,std::string* description);
+	bool describe_modification(const config& cfg,std::string* description);
 
 	int movement_used() const { return cfg_["movement_used"] == "" ? 100000 : lexical_cast_default<int>(cfg_["movement_used"]); }
 
