@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n - Le Sceptre de Feu\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-06 11:18+0200\n"
+"POT-Creation-Date: 2007-07-21 02:03+0200\n"
 "PO-Revision-Date: 2007-07-10 00:57+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -3311,7 +3311,6 @@ msgstr "marteau"
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:27
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:28
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:30
-#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:22
 msgid "impact"
 msgstr "impact"
 
@@ -3384,8 +3383,15 @@ msgstr "Le roi de Wesnoth."
 
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:20
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
-msgid "punch"
-msgstr "coup de poing"
+#, fuzzy
+#| msgid "Lord"
+msgid "sword"
+msgstr "Seigneur"
+
+#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:55
+#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:22
+msgid "blade"
+msgstr "tranchant"
 
 #: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:4
 msgid "Wolf"
@@ -3401,6 +3407,5 @@ msgstr "morsure"
 msgid "claws"
 msgstr "griffes"
 
-#: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:55
-msgid "blade"
-msgstr "tranchant"
+#~ msgid "punch"
+#~ msgstr "coup de poing"
