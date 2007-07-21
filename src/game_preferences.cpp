@@ -259,7 +259,7 @@ bool random_start_time()
 
 void set_random_start_time(bool value)
 {
-	preferences::set("mp_random_Start_time", value ? "yes" : "no");
+	preferences::set("mp_random_start_time", value ? "yes" : "no");
 }
 
 
