@@ -99,7 +99,7 @@ SDL_Rect line_size(const std::string& line, int font_size, int style=TTF_STYLE_N
 
 ///
 /// If the text excedes the specified max width, end it with an ellipsis (...)
-/// The del_tags can probably always be set to false
+/// The with_tags can probably always be set to false
 ///
 std::string make_text_ellipsis(const std::string& text, int font_size, int max_width, bool with_tags = true);
 

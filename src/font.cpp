@@ -747,7 +747,7 @@ std::string make_text_ellipsis(const std::string &text, int font_size, int max_w
 {
 	static const std::string ellipsis = "...";
 
-	if(line_width(with_tags ? text : font::del_tags(text), font_size) <= max_width)
+	if(line_width(with_tags ? text : del_tags(text), font_size) <= max_width)
 		return text;
 	if(line_width(ellipsis, font_size) > max_width)
 		return "";
