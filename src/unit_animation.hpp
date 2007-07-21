@@ -1,10 +1,10 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2007 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License.
+   it under the terms of the GNU General Public License version 2.
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY.
 
