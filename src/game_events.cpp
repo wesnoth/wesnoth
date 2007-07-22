@@ -2199,12 +2199,6 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 
 }
 
-static bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
-                                                   const std::string& yloc)
-{
-	return loc.matches_range(xloc, yloc);
-}
-
 static bool process_event(event_handler& handler, const queued_event& ev)
 {
 	if(handler.disabled())
