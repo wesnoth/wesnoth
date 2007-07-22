@@ -18,6 +18,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <cstdlib>
+#include <iostream>
 
 namespace {
 
@@ -44,35 +45,34 @@ markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t 
 	return res;
 }
 
-wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain_size, size_t max_len)
+wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain_size, size_t max_len,
+				 bool use_game_rng, std::vector<int> & rng_results)
 {
 	if(chain_size == 0)
 		return wide_string();
 
 	wide_string prefix, res;
 
-       // Since this function is called from several translation domains it can
-       // be a translation has a different markov_prefix_map which means
-       // get_random is called a different number of times. To avoid that problem
-       // we load a vector with those items. This is a kind of klugdge since when
-       // we bail out at 'if(c == 0)' the names of the units differ and thus we
-       // still have an OOS. The main difference with this change only the names
-       // differ and not the traits which causes real problems due to different
-       // stats.
-       std::vector<int> random(max_len);
-       size_t j = 0;
-       for(; j < max_len; ++j) {
-               random[j] = get_random();
-       }
-
-       j = 0;
 	while(res.size() < max_len) {
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
 		if(i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
 
-		const wchar_t c = i->second[random[j++]%i->second.size()];
+		int randint;
+		if (use_game_rng) {
+			randint = get_random();
+			rng_results.push_back(randint);
+		} else {
+			if (rng_results.size() > 0) {
+				randint = rng_results[0];
+				rng_results.erase(rng_results.begin());
+			} else {
+				// use the local rng
+				randint = rand() & 0x7FFFFFFF;
+			}
+		}
+		const wchar_t c = i->second[randint%i->second.size()];
 		if(c == 0) {
 			return res;
 		}
@@ -133,6 +133,8 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 {
 	names_[MALE] = utils::split(cfg["male_names"]);
 	names_[FEMALE] = utils::split(cfg["female_names"]);
+	names_untranslated_[MALE] = utils::split(cfg["male_names"].value());
+	names_untranslated_[FEMALE] = utils::split(cfg["female_names"].value());
 
 	chain_size_ = atoi(cfg["markov_chain_size"].c_str());
 	if(chain_size_ <= 0)
@@ -140,13 +142,23 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 
 	next_[MALE] = markov_prefixes(names_[MALE],chain_size_);
 	next_[FEMALE] = markov_prefixes(names_[FEMALE],chain_size_);
+	next_untranslated_[MALE] = markov_prefixes(names_untranslated_[MALE],chain_size_);
+	next_untranslated_[FEMALE] = markov_prefixes(names_untranslated_[FEMALE],chain_size_);
 }
 
 const t_string& unit_race::name() const { return name_; }
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {
-	return utils::wstring_to_string(markov_generate_name(next_[gender],chain_size_,12));
+	std::string result;
+	std::vector<int> random_values;
+
+	// hack to be backward-compatible with old versions
+	result = utils::wstring_to_string(markov_generate_name(next_untranslated_[gender],chain_size_,12, true, random_values));
+	//std::cout << "en: " << result << "\n";
+	result = utils::wstring_to_string(markov_generate_name(next_[gender],chain_size_,12, false, random_values));
+	//std::cout << "localized: " << result << "\n";
+	return result;
 }
 
 bool unit_race::uses_global_traits() const

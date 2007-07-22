@@ -46,7 +46,9 @@ private:
 	t_string name_;
 	unsigned int ntraits_;
 	std::vector<std::string> names_[NUM_GENDERS];
+	std::vector<std::string> names_untranslated_[NUM_GENDERS];
 	markov_prefix_map next_[NUM_GENDERS];
+	markov_prefix_map next_untranslated_[NUM_GENDERS];
 	int chain_size_;
 
 	bool not_living_;
