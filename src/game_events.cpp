@@ -322,7 +322,7 @@ at the moment.
 */
 const size_t MaxLoop = 65536;
 
-}
+} //end anonymous namespace
 
 static bool events_init() { return screen != NULL; }
 
@@ -412,7 +412,7 @@ private:
 	vconfig cfg_;
 };
 
-}
+} //end anonymous namespace
 
 static gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
 {
@@ -2197,7 +2197,7 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 	return mutated;
 }
 
-}
+} //end anonymous namespace
 
 static bool process_event(event_handler& handler, const queued_event& ev)
 {
