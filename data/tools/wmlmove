@@ -38,12 +38,13 @@ translation files.
 ''' 
 
 import sys, os, time, re, getopt, sre_constants, md5
-import wesnoth.wmltools
+from wesnoth.wmltools import *
 
 if __name__ == "__main__":
     # Process options.
-    (options, arguments) = getopt.getopt(sys.argv[1:], "dhilr", ['delete', 'help', 'imageclass', 'list', 'revert'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "dhi:lLr", ['delete', 'help', 'imageclass', 'list', 'listspaces', 'revert'])
     listem = False
+    listspaces = False
     iclass = None
     delete = False
     revert = False
@@ -54,22 +55,26 @@ if __name__ == "__main__":
         elif switch in ('-d', '--delete'):
             delete = True
         elif switch in ('-i', '--imageclass'):
-            iclass = True
+            iclass = val
         elif switch in ('-l', '--list'):
             listem = True
+        elif switch in ('-L', '--listspaces'):
+            listspaces = True
         elif switch in ('-r', '--revert'):
             listem = True
-    if len(arguments) == 0:
-        sys.stderr.write("wmlmove: at least one path to a unit is required.\n")
-	sys.stderr.write(__doc__)
-        sys.exit(1)
-    if not delete:
-        if len(arguments) == 1:
-            sys.stderr.write("wmlmove: a campaign name or 'core' is required.\n")
+
+    if not listspaces:
+        if len(arguments) == 0:
+            sys.stderr.write("wmlmove: at least one path to a unit is required.\n")
             sys.stderr.write(__doc__)
             sys.exit(1)
-        else:
-            dst = arguments.pop()
+        if not delete:
+            if len(arguments) == 1:
+                sys.stderr.write("wmlmove: a campaign name or 'core' is required.\n")
+                sys.stderr.write(__doc__)
+                sys.exit(1)
+            else:
+                dst = arguments.pop()
 
     # First, pop upward to the top-level directory.
     upwards = os.getcwd().split(os.sep)
@@ -84,6 +89,10 @@ if __name__ == "__main__":
                          "for Wesnoth source tree.\n")
         sys.exit(1)
 
+    if listspaces:
+        print " ".join(scopelist())
+        sys.exit(0)
+
     # Locate the unit .cfgs to be moved.
     srclist = []
     for src in arguments:
@@ -93,10 +102,10 @@ if __name__ == "__main__":
             sys.stderr.write("wmlmove: source name must be in the form "
                              "namespace::resource.\n")
             sys.exit(1)
-        if not wmltools.is_namespace(namespace):
+        if not is_namespace(namespace):
             sys.stderr.write("wmlmove: no such scope as %s.\n" % namespace)
             sys.exit(1)
-        src = wmltools.resolve_unit_cfg(namespace, resource)
+        src = resolve_unit_cfg(namespace, resource)
         if not os.path.exists(src):
             sys.stderr.write("wmlmove: can't find %s to move it.\n" % src)
             sys.exit(1)
@@ -104,13 +113,13 @@ if __name__ == "__main__":
   
     # Validate the destination.
     if not delete:
-        dstdir = wmltools.namespace_directory(arguments[dst])
+        dstdir = namespace_directory(dst)
         if dstdir == None:
             sys.stderr.write("wmlmove: invalid namespace %s\n" % dstdir)
             sys.exit(1)
   
     # Cross-reference all files.
-    cref = wmltools.CrossRef(wmltools.scopelist())
+    cref = CrossRef(scopelist())
 
     # Filter reference information on all files referenced in the source .cfgs
     srcrefs = cref.subtract(srclist)
@@ -168,45 +177,45 @@ overwrite()
     if delete:
         print "# Image deletions:"
         for (name, defloc) in srcrefs.fileref.items():
-                for namespace in map(wmltools.directory_namespace, srclist):
-                    if wmltools.namespace_member(name, namespace) and cref.refcount(name) == 0:
+                for namespace in map(directory_namespace, srclist):
+                    if namespace_member(name, namespace) and cref.refcount(name) == 0:
                         if revert:
-                            print wmltools.vcundelete(name)
+                            print vcundelete(name)
                         else:
-                            print wmltools.vcdelete(name)
+                            print vcdelete(name)
                         break
         print ""
         print "# .cfg deletions"
         for filename in srclist:
             if revert:
-                print wmltools.vcundelete(filename)
+                print vcundelete(filename)
             else:
-                print wmltools.vcdelete(filename)
+                print vcdelete(filename)
     else:
         if iclass == None:
             print "# Defaulting image subclass to 'monsters', use -i to set it."
             iclass = 'monsters'
         print "# Image moves:"
         for (name, defloc) in srcrefs.fileref.items():
-            source = wmltools.directory_namespace(name)
-            target = wmltools.resolve_unit_image(dst, iclass, os.path.basename(name))
+            source = directory_namespace(name)
+            target = resolve_unit_image(dst, iclass, os.path.basename(name))
             if revert:
-                if not wmltools.namespace_member(name, source):
-                    print wmltools.vcunmove(name, target)
+                if not namespace_member(name, source):
+                    print vcunmove(name, target)
             else:
-                if not wmltools.namespace_member(name, dst):
-                    print wmltools.vcmove(name, target)
+                if not namespace_member(name, dst):
+                    print vcmove(name, target)
         print ""
         print "# .cfg moves and transformations"
         for filename in srclist:
-            source = wmltools.directory_namespace(name)
-            target = wmltools.resolve_unit_cfg(dst, os.path.basename(filename))
+            source = directory_namespace(filename)
+            target = resolve_unit_cfg(dst, os.path.basename(filename))
             if revert:
-                if not wmltools.namespace_member(filename, source):
-                    print wmltools.vcunmove(filename, target)
+                if not namespace_member(filename, source):
+                    print vcunmove(filename, target)
             else:
-                if not wmltools.namespace_member(filename, dst):
-                    print wmltools.vcmove(filename, target)
+                if not namespace_member(filename, dst):
+                    print vcmove(filename, target)
                     if iclass:
                         print "replace 'units/' 'units/%s/' %s" % (iclass, target)
                         if dst == "core":

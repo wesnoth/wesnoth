@@ -287,11 +287,11 @@ class CrossRef:
 
 def scopelist():
     "Return a list of (separate) package scopes, core first."
-    return ["data/core"] + glob.glob("data/campaigns/*")
+    return map(os.path.basename, ["data/core"] + glob.glob("data/campaigns/*"))
 
 def is_namespace(name):
     "Is the name either a valid campaign name or core?"
-    return name in map(os.path.basename, scopelist())
+    return name in scopelist()
 
 def namespace_directory(name):
     "Go from namespace to directory."
