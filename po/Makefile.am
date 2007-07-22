@@ -1,4 +1,4 @@
-SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-tutorial wesnoth-httt wesnoth-ei wesnoth-trow wesnoth-tb wesnoth-tsg wesnoth-utbs wesnoth-nr wesnoth-sotbe wesnoth-sof wesnoth-did wesnoth-l
+SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-tutorial wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-trow wesnoth-tsg wesnoth-utbs
 
 PO4A_SUBDIRS = wesnoth-man
 

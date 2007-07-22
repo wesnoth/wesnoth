@@ -874,17 +874,17 @@ AC_CONFIG_FILES([Makefile
 		 po/wesnoth-units/Makefile.in
 		 po/wesnoth-multiplayer/Makefile.in
 		 po/wesnoth-tutorial/Makefile.in
-		 po/wesnoth-httt/Makefile.in
+		 po/wesnoth-did/Makefile.in
 		 po/wesnoth-ei/Makefile.in
-		 po/wesnoth-trow/Makefile.in
+		 po/wesnoth-httt/Makefile.in
+		 po/wesnoth-l/Makefile.in
+		 po/wesnoth-nr/Makefile.in
+		 po/wesnoth-sof/Makefile.in
+		 po/wesnoth-sotbe/Makefile.in
 		 po/wesnoth-tb/Makefile.in
+		 po/wesnoth-trow/Makefile.in
 		 po/wesnoth-tsg/Makefile.in
 		 po/wesnoth-utbs/Makefile.in
-		 po/wesnoth-nr/Makefile.in
-		 po/wesnoth-sotbe/Makefile.in
-		 po/wesnoth-sof/Makefile.in
-		 po/wesnoth-did/Makefile.in
-po/wesnoth-l/Makefile.in
 		 m4/Makefile
 		 icons/Makefile
 		 src/Makefile
