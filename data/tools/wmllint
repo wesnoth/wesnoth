@@ -245,11 +245,11 @@ filemoves = {
         ("colour=9", "colour=teal"),
     ),
     "1.3.5" : (),	# This was an aborted release
+    "1.3.6" : (
+	("Soul Shooter", "Aptrgangr"),
+    ),
     # An empty sentinel value at end is required.
-    # Always have the current version here.
-    "1.3.5" : (
-	("Soul Shooter", "Aptrgangr")
-    )
+    "future" : (),
 }
 
 # Turn all the filemove string substition pairs into nearly equivalent
