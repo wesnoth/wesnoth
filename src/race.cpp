@@ -40,7 +40,6 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	markov_prefix_map res;
 
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		std::cerr << "adding prefix " << (*i) << "\n";
 		add_prefixes(utils::string_to_wstring(*i),length,res);
 	}
 
