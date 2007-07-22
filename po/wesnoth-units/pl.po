@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-21 15:04+0200\n"
+"POT-Creation-Date: 2007-07-22 02:01+0200\n"
 "PO-Revision-Date: 2007-07-20 12:03+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -94,7 +94,7 @@ msgstr "kukła"
 #: data/core/units/undead/Corpse_Walking.cfg:52
 #: data/core/units/undead/Skeleton_Archer.cfg:35
 #: data/core/units/undead/Necromancer.cfg:29
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:28
 #: data/core/units/undead/Corpse_Soulless.cfg:50
 msgid "impact"
 msgstr "obuchowa"
@@ -1431,8 +1431,8 @@ msgstr ""
 #: data/core/units/humans/Mage_Arch.cfg:30
 #: data/core/units/humans/Mage_Red.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:23
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:24
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
 msgid "staff"
 msgstr "laska"
 
@@ -4314,7 +4314,7 @@ msgstr "klątwa"
 #: data/core/units/undead/Necro_Lich.cfg:79
 #: data/core/units/undead/Spirit_Spectre.cfg:89
 #: data/core/units/undead/Necromancer.cfg:70
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:64
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:66
 msgid "cold"
 msgstr "chłód"
 
@@ -4764,25 +4764,38 @@ msgstr "Mroczna adeptka"
 msgid "Dark Sorcerer"
 msgstr "Mroczny czarnoksiężnik"
 
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:19
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
+#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
-"of life and death, the latter of which is all too easy to inflict.\n"
+"of life and death, quickly becoming masters of inflicting pain and anguish.\n"
+"\n"
+"The ultimate prize of the dark arts is complete domination of death and "
+"life. Dark Sorcerers may eventually learn how to manipulate life and death "
+"by reanimating corpses, skeletons, and spirits. The most corrupt and power-"
+"hungry will attempt to completely conquer death through transformation to "
+"lichdom and attainment of a dreadful immortality.\n"
 "\n"
 "Special Notes:"
 msgstr ""
-"Groza, jaką owiane jest czarnoksięstwo, wynika przede wszystkim stąd, że "
-"zwykli ludzie wiedzą o czarnej magii bardzo niewiele. Czarnoksiężnicy "
-"zgłębiają tajemnice życia i śmierci, a szerzenie tej ostatniej jest niestety "
-"bardzo łatwe.\n"
+"Lęk powodowany przez czarną magię pochodzi głównie z powodu braku jej "
+"zrozumienia pośród zwyczajnych ludzi. Czarnoksiężnicy zaczęli odkrywać "
+"sekrety życia i śmierci, szybko stając się mistrzami w dręczeniu i zadawaniu "
+"bólu.\n"
+"\n"
+"Ostateczną nagrodą czekającą na tych, którzy opanują mroczne sztuki, jest "
+"całkowite panowanie nad życiem i śmiercią. Czarnoksiężnicy uczą się jak "
+"manipulować życiem i śmiercią, wskrzeszając ciała, szkielety i dusze. "
+"Najbardziej zepsuci i żądni władzy starają się całkowicie pokonać śmierć, "
+"stając się liczami i osiągając przerażającą nieśmiertelność.\n"
 "\n"
 "Uwagi specjalne:"
 
 #: data/core/units/undead/Necromancer.cfg:68
 #: data/core/units/undead/Necromancer.cfg:69
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:62
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:63
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:64
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:65
 msgid "chill wave"
 msgstr "fala chłodu"
 
@@ -5272,6 +5285,21 @@ msgstr ""
 "Nie są również przyzwyczajone do szybkiego przemieszczania się.\n"
 "\n"
 "Uwagi specjalne:"
+
+#~ msgid ""
+#~ "The dread inspired by black magic comes chiefly from how little is known "
+#~ "about it by the common man. Dark sorcerers have begun to unlock the "
+#~ "secrets of life and death, the latter of which is all too easy to "
+#~ "inflict.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Groza, jaką owiane jest czarnoksięstwo, wynika przede wszystkim stąd, że "
+#~ "zwykli ludzie wiedzą o czarnej magii bardzo niewiele. Czarnoksiężnicy "
+#~ "zgłębiają tajemnice życia i śmierci, a szerzenie tej ostatniej jest "
+#~ "niestety bardzo łatwe.\n"
+#~ "\n"
+#~ "Uwagi specjalne:"
 
 #~ msgid ""
 #~ "The Armageddon Drakes truly are amongst the toughest of all drakes - so "
@@ -12319,33 +12347,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Te ożywione chodzące trupy stały się silniejsze dzięki dużemu "
 #~ "doświadczeniu w walce z żywymi.\n"
-#~ "\n"
-#~ "Uwagi specjalne:"
-
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it by the common man. Dark sorcerers have begun to unlock the "
-#~ "secrets of life and death, quickly becoming masters of inflicting pain "
-#~ "and anguish.\n"
-#~ "\n"
-#~ "The ultimate prize of the dark arts is complete domination of death and "
-#~ "life. Dark Sorcerers may eventually learn how to manipulate life and "
-#~ "death by reanimating corpses, skeletons, and spirits. The most corrupt "
-#~ "and power-hungry will attempt to completely conquer death through the "
-#~ "transformation to lichdom and attainment of a dreadful immortality.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Lęk powodowany przez czarną magię pochodzi głównie z powodu braku jej "
-#~ "zrozumienia pośród zwyczajnych ludzi. Czarnoksiężnicy zaczęli odkrywać "
-#~ "sekrety życia i śmierci, szybko stając się mistrzami w dręczeniu i "
-#~ "zadawaniu bólu.\n"
-#~ "\n"
-#~ "Ostateczną nagrodą czekającą na tych, którzy opanują mroczne sztuki, jest "
-#~ "całkowite panowanie nad życiem i śmiercią. Czarnoksiężnicy uczą się jak "
-#~ "manipulować życiem i śmiercią, wskrzeszając ciała, szkielety i dusze. "
-#~ "Najbardziej zepsuci i żądni władzy starają się całkowicie pokonać śmierć, "
-#~ "stając się liczami i osiągając przerażającą nieśmiertelność.\n"
 #~ "\n"
 #~ "Uwagi specjalne:"
 

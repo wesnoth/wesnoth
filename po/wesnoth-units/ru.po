@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-21 15:04+0200\n"
+"POT-Creation-Date: 2007-07-22 02:01+0200\n"
 "PO-Revision-Date: 2007-02-12 23:13+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -99,7 +99,7 @@ msgstr "ложный"
 #: data/core/units/undead/Corpse_Walking.cfg:52
 #: data/core/units/undead/Skeleton_Archer.cfg:35
 #: data/core/units/undead/Necromancer.cfg:29
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:28
 #: data/core/units/undead/Corpse_Soulless.cfg:50
 msgid "impact"
 msgstr "крушащий"
@@ -1419,8 +1419,8 @@ msgstr ""
 #: data/core/units/humans/Mage_Arch.cfg:30
 #: data/core/units/humans/Mage_Red.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:23
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:24
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
 msgid "staff"
 msgstr "посох"
 
@@ -4278,7 +4278,7 @@ msgstr "проклятие"
 #: data/core/units/undead/Necro_Lich.cfg:79
 #: data/core/units/undead/Spirit_Spectre.cfg:89
 #: data/core/units/undead/Necromancer.cfg:70
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:64
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:66
 msgid "cold"
 msgstr "холод"
 
@@ -4717,19 +4717,37 @@ msgstr "Темная посвященная"
 msgid "Dark Sorcerer"
 msgstr "Темный колдун"
 
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:19
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
+#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
-"of life and death, the latter of which is all too easy to inflict.\n"
+"of life and death, quickly becoming masters of inflicting pain and anguish.\n"
+"\n"
+"The ultimate prize of the dark arts is complete domination of death and "
+"life. Dark Sorcerers may eventually learn how to manipulate life and death "
+"by reanimating corpses, skeletons, and spirits. The most corrupt and power-"
+"hungry will attempt to completely conquer death through transformation to "
+"lichdom and attainment of a dreadful immortality.\n"
 "\n"
 "Special Notes:"
 msgstr ""
+"Ужас, вдохновленный темной магией, исходящий от обычного на вид человека — "
+"это почти все, что известно о них. Темные колдуны постигли секреты жизни и "
+"смерти, быстро став мастерами боли и страданий\n"
+"\n"
+"Последняя награда темного искусства полное управление над жизнью и смертью. "
+"Возможно, темные колдуны знают, как воздействовать на жизнь и смерть при "
+"реанимации мертвых тел, скелетов и духов. Дальнейшее разрушение личности и "
+"тела и постоянная жажда власти позволят смерти завладеть ими, превратив их в "
+"личей и даровав ужасное бессмертие.\n"
+"\n"
+"Примечание:"
 
 #: data/core/units/undead/Necromancer.cfg:68
 #: data/core/units/undead/Necromancer.cfg:69
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:62
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:63
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:64
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:65
 msgid "chill wave"
 msgstr "волна холода"
 
@@ -12165,32 +12183,6 @@ msgstr ""
 #~ "Special Notes:"
 #~ msgstr ""
 #~ "Эти ходячие трупы стали сильнее после опыта долгих битв с живыми.\n"
-#~ "\n"
-#~ "Примечание:"
-
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it by the common man. Dark sorcerers have begun to unlock the "
-#~ "secrets of life and death, quickly becoming masters of inflicting pain "
-#~ "and anguish.\n"
-#~ "\n"
-#~ "The ultimate prize of the dark arts is complete domination of death and "
-#~ "life. Dark Sorcerers may eventually learn how to manipulate life and "
-#~ "death by reanimating corpses, skeletons, and spirits. The most corrupt "
-#~ "and power-hungry will attempt to completely conquer death through the "
-#~ "transformation to lichdom and attainment of a dreadful immortality.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Ужас, вдохновленный темной магией, исходящий от обычного на вид человека "
-#~ "— это почти все, что известно о них. Темные колдуны постигли секреты "
-#~ "жизни и смерти, быстро став мастерами боли и страданий\n"
-#~ "\n"
-#~ "Последняя награда темного искусства полное управление над жизнью и "
-#~ "смертью. Возможно, темные колдуны знают, как воздействовать на жизнь и "
-#~ "смерть при реанимации мертвых тел, скелетов и духов. Дальнейшее "
-#~ "разрушение личности и тела и постоянная жажда власти позволят смерти "
-#~ "завладеть ими, превратив их в личей и даровав ужасное бессмертие.\n"
 #~ "\n"
 #~ "Примечание:"
 

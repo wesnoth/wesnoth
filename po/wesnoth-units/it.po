@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-21 15:04+0200\n"
+"POT-Creation-Date: 2007-07-22 02:01+0200\n"
 "PO-Revision-Date: 2007-05-29 10:53+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -99,7 +99,7 @@ msgstr "fantoccio"
 #: data/core/units/undead/Corpse_Walking.cfg:52
 #: data/core/units/undead/Skeleton_Archer.cfg:35
 #: data/core/units/undead/Necromancer.cfg:29
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:28
 #: data/core/units/undead/Corpse_Soulless.cfg:50
 msgid "impact"
 msgstr "impatto"
@@ -1432,8 +1432,8 @@ msgstr ""
 #: data/core/units/humans/Mage_Arch.cfg:30
 #: data/core/units/humans/Mage_Red.cfg:51
 #: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:23
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:24
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
 msgid "staff"
 msgstr "bastone"
 
@@ -4359,7 +4359,7 @@ msgstr "maledizione"
 #: data/core/units/undead/Necro_Lich.cfg:79
 #: data/core/units/undead/Spirit_Spectre.cfg:89
 #: data/core/units/undead/Necromancer.cfg:70
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:64
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:66
 msgid "cold"
 msgstr "freddo"
 
@@ -4802,26 +4802,39 @@ msgstr "Adepta dell'Oscurità"
 msgid "Dark Sorcerer"
 msgstr "Mago oscuro"
 
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:19
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
 #, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
-"of life and death, the latter of which is all too easy to inflict.\n"
+"of life and death, quickly becoming masters of inflicting pain and anguish.\n"
+"\n"
+"The ultimate prize of the dark arts is complete domination of death and "
+"life. Dark Sorcerers may eventually learn how to manipulate life and death "
+"by reanimating corpses, skeletons, and spirits. The most corrupt and power-"
+"hungry will attempt to completely conquer death through transformation to "
+"lichdom and attainment of a dreadful immortality.\n"
 "\n"
 "Special Notes:"
 msgstr ""
 "Il terrore ispirato dalla magia nera è dovuto principalmente all'ignoranza "
 "dell'uomo comune. I maghi oscuri hanno iniziato a svelare i segreti della "
-"vita e della morte, ed è facile usare questo potere per fini violenti.\n"
+"vita e della morte, diventando rapidamente dei maestri nell'infliggere "
 "dolore e angosce.\n"
+"\n"
+"Il premio più ambito delle arti oscure è il controllo completo della morte e "
+"della vita. I maghi oscuri possono prima o poi imparare a manipolare la vita "
+"e la morte rianimando i cadaveri, gli scheletri e gli spiriti. I più "
+"corrotti e affamati di potere tentano di conquistare completamente la morte "
+"attraverso la trasformazione a Lich e il raggiungimento di una spaventosa "
+"immortalità.\n"
 "\n"
 "Note speciali:"
 
 #: data/core/units/undead/Necromancer.cfg:68
 #: data/core/units/undead/Necromancer.cfg:69
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:62
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:63
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:64
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:65
 msgid "chill wave"
 msgstr "onda di terrore"
 
@@ -5331,6 +5344,23 @@ msgstr ""
 "piace muoversi e sono molto lenti.\n"
 "\n"
 "Note speciali:"
+
+#, fuzzy
+#~ msgid ""
+#~ "The dread inspired by black magic comes chiefly from how little is known "
+#~ "about it by the common man. Dark sorcerers have begun to unlock the "
+#~ "secrets of life and death, the latter of which is all too easy to "
+#~ "inflict.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "Il terrore ispirato dalla magia nera è dovuto principalmente "
+#~ "all'ignoranza dell'uomo comune. I maghi oscuri hanno iniziato a svelare i "
+#~ "segreti della vita e della morte, ed è facile usare questo potere per "
+#~ "fini violenti.\n"
+#~ "dolore e angosce.\n"
+#~ "\n"
+#~ "Note speciali:"
 
 #, fuzzy
 #~ msgid ""
@@ -12453,34 +12483,6 @@ msgstr ""
 #~ "Special Notes:"
 #~ msgstr ""
 #~ "I corpi animati diventano più forti se riescono a uccidere abbastanza.\n"
-#~ "\n"
-#~ "Note speciali:"
-
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it by the common man. Dark sorcerers have begun to unlock the "
-#~ "secrets of life and death, quickly becoming masters of inflicting pain "
-#~ "and anguish.\n"
-#~ "\n"
-#~ "The ultimate prize of the dark arts is complete domination of death and "
-#~ "life. Dark Sorcerers may eventually learn how to manipulate life and "
-#~ "death by reanimating corpses, skeletons, and spirits. The most corrupt "
-#~ "and power-hungry will attempt to completely conquer death through the "
-#~ "transformation to lichdom and attainment of a dreadful immortality.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Il terrore ispirato dalla magia nera è dovuto principalmente "
-#~ "all'ignoranza dell'uomo comune. I maghi oscuri hanno iniziato a svelare i "
-#~ "segreti della vita e della morte, diventando rapidamente dei maestri "
-#~ "nell'infliggere dolore e angosce.\n"
-#~ "\n"
-#~ "Il premio più ambito delle arti oscure è il controllo completo della "
-#~ "morte e della vita. I maghi oscuri possono prima o poi imparare a "
-#~ "manipolare la vita e la morte rianimando i cadaveri, gli scheletri e gli "
-#~ "spiriti. I più corrotti e affamati di potere tentano di conquistare "
-#~ "completamente la morte attraverso la trasformazione a Lich e il "
-#~ "raggiungimento di una spaventosa immortalità.\n"
 #~ "\n"
 #~ "Note speciali:"
 
