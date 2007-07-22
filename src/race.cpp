@@ -40,6 +40,7 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	markov_prefix_map res;
 
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
+		std::cerr << "adding prefix " << (*i) << "\n";
 		add_prefixes(utils::string_to_wstring(*i),length,res);
 	}
 
@@ -53,14 +54,16 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 
 	wide_string prefix, res;
 
-	// Since this function is called from several translation domains it can
-	// be a translation has a different markov_prefix_map which means 
-	// get_random is called a different number of times. To avoid that problem
-	// we load a vector with those items. This is a kind of klugdge since when
-	// we bail out at 'if(c == 0)' the names of the units differ and thus we
-	// still have an OOS. The main difference with this change only the names
-	// differ and not the traits which causes real problems due to different 
-	// stats.
+	// Since this function is called in the name description in a MP game it 
+	// uses the local locale. The locale between players can be different and
+	// thus the markov_prefix_map can be different. This resulted in 
+	// get_random() getting called a different number of times for the 
+	// generation in different locales (due to the bail out at 'if(c == 0)').
+	//
+	// This causes a problem since the random state is no longer in sync. The 
+	// following calls to get_random() return different results, which caused 
+	// traits to be different. To avoid that problem we call get_random() 
+	// the maximum number of times and store the result in a lookup table.
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) { 
