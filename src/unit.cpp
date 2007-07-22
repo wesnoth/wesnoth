@@ -251,7 +251,7 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
 	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false), state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
-{
+{ 
 	goto_ = gamemap::location();
 	side_ = side;
 	movement_ = 0;
@@ -370,15 +370,6 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 	map_ = map;
 	gamestatus_ = game_status;
 	teams_ = teams;
-}
-void unit::write_checksum(std::string& str) const
-{
-	config unit_config;
-	write(unit_config);
-	unit_config["controller"] = "";
-	// since the ai messes up the 'moves' attribute, ignore that for the checksum
-	unit_config["moves"] = "";
-	str = unit_config.hash();
 }
 
 void unit::generate_traits()
@@ -3177,3 +3168,20 @@ void unit::set_hidden(bool state) {
 	// we need to get rid of haloes immediately to avoid display glitches
 	clear_haloes();
 }
+
+std::string get_checksum(const unit& u, const bool discard_description)
+{
+	config unit_config;
+	u.write(unit_config);
+	unit_config["controller"] = "";
+	// since the ai messes up the 'moves' attribute, ignore that for the checksum
+	unit_config["moves"] = "";
+
+	if(discard_description) {
+		unit_config["description"] = "";
+		unit_config["user_description"] = "";
+	}
+
+	return unit_config.hash();
+}
+

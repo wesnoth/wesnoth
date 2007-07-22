@@ -203,9 +203,7 @@ void replay::add_unit_checksum(const gamemap::location& loc,config* const cfg)
 	loc.write(cc);
 	unit_map::const_iterator u = unit_map_ref->find(loc);
 	wassert(u != unit_map_ref->end());
-	std::string chk_value;
-	u->second.write_checksum(chk_value);
-	cc["value"] = chk_value;
+	cc["value"] = get_checksum(u->second);
 }
 
 void replay::add_start()
@@ -640,9 +638,7 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 			disp.add_chat_message("verification",1,message.str(),game_display::MESSAGE_PRIVATE,false);
 			continue;
 		}
-		std::string check;
-		u->second.write_checksum(check);
-		if(check != (**ci)["value"]) {
+		if(get_checksum(u->second) != (**ci)["value"]) {
 			std::stringstream message;
 			message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
 			disp.add_chat_message("verification",1,message.str(),game_display::MESSAGE_PRIVATE,false);

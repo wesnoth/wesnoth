@@ -63,7 +63,6 @@ class unit
 		unit& operator=(const unit&);
 
 		void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
-		void write_checksum(std::string& str) const;
 
 		// Advances this unit to another type
 		void advance_to(const unit_type* t);
@@ -479,5 +478,16 @@ private:
 	const gamemap::location& loc_;
 	std::pair<gamemap::location,unit> *temp_;
 };
+
+/**
+ * gets a checksum for a unit, in MP games the descriptions are locally 
+ * generated and might differ, so it should be possible to discard them.
+ * Not sure whether replays suffer the same problem.
+ *
+ * param discard_desc	discards the descriptions for the checksum
+ *
+ * returns 				the checksum for a unit
+ */
+std::string get_checksum(const unit& u, const bool discard_description = false);
 
 #endif
