@@ -16,6 +16,10 @@
 # the first directory should point at a copy of mainline and all later
 # ones at UMC.)
 #
+# This tool does catch one kind of implicit reference: if an attack name
+# is specified but no icon is given, the attack icon will default to
+# a name generated from the attack name,
+#
 # The checking done by this tool has a couple of flaws:
 #
 # (1) It doesn't actually evaluate file inclusions.  Instead, any
@@ -38,13 +42,9 @@
 # statically matching the pattern as having been referenced even
 # though none of the actual macro calls would actually generate it.
 #
-# (4) There are some implicit references.  Notably, if an attack name
-# is specified but no icon is given, the attack icon will default to
-# a name generated from the attack name,
-#
 # Problems (1) and (2) imply that this tool might conceivably report
 # that a reference has been satisfied when under actual
-# WML-interpreter rules it has not.  Problem (4) means the reverse
+# WML-interpreter rules it has not.
 # can also occur.
 #
 # The reporting format is compatible with GNU Emacs compile mode.

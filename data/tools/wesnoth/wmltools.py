@@ -207,6 +207,8 @@ class CrossRef:
         for fn in self.filelist.generator():
             if iswml(fn):
                 rfp = open(fn)
+                attack_name = None
+                beneath = 0
                 for (n, line) in enumerate(rfp):
                     if line.startswith("#define"):
                         formals = line.split()[2:]
@@ -260,7 +262,34 @@ class CrossRef:
                             if len(candidates) > 1:
                                 print "%s: more than one definition of %s is visible here (%s)." % (Reference(fn, n), name, ", ".join(candidates))
                         if not key:
-                            self.missing.append((name, Reference(fn,n+1)))
+                            self.missing.append((name, Reference(fn,n+1))) # Notice implicit references through attacks
+                    if state == "outside":
+                        if "[attack]" in line:
+                            beneath = 0
+                            attack_name = default_icon = None
+                            have_icon = False
+                        elif "name=" in line:
+                            attack_name = line[line.find("name=")+5:].strip()
+                            default_icon = os.path.join("attacks", attack_name  + ".png")
+                        elif "icon=" in line and beneath == 0:
+                            have_icon = True
+                        elif "[/attack]" in line:
+                            if attack_name and not have_icon:
+                                candidates = []
+                                key = None
+                                for trial in self.fileref:
+                                    if trial.endswith(os.sep + default_icon) and self.visible_from(trial, fn, n):
+                                        key = trial
+                                        self.fileref[trial].append(fn, n+1)
+                                        candidates.append(trial)
+                                if len(candidates) > 1:
+                                    print "%s: more than one definition of %s is visible here (%s)." % (Reference(fn, n), name, ", ".join(candidates))
+                            if not key:
+                                self.missing.append((default_icon, Reference(fn,n+1)))
+                        elif line.strip().startswith("[/"):
+                            beneath -= 1
+                        elif line.strip().startswith("["):
+                            beneath += 1
                 rfp.close()
     def subtract(self, filelist):
         "Transplant file references in files from filelist to a new CrossRef."
