@@ -145,7 +145,6 @@ std::string recruit_unit(const gamemap& map, int side,
 	}
 	new_unit.heal_all();
 
-
 	units.add(new std::pair<gamemap::location,unit>(recruit_location,new_unit));
 
 	LOG_NG << "firing prerecruit event\n";
@@ -154,22 +153,20 @@ std::string recruit_unit(const gamemap& map, int side,
 	LOG_NG << "firing recruit event\n";
 	game_events::fire("recruit",recruit_location);
 
-	checksumstream cs;
-	config cfg_unit;
-	new_unit.write(cfg_unit);
-	::write_compressed(cs,cfg_unit);
+	const std::string checksum = get_checksum(new_unit, true);
 
 	const config* ran_results = get_random_results();
 	if(ran_results != NULL) {
-		unsigned long rc = lexical_cast_default<unsigned long>
-			((*ran_results)["checksum"], 0);
-		if((*ran_results)["checksum"].empty() || rc != cs.checksum()) {
+		const std::string rc = (*ran_results)["checksum"];
+		if(rc != checksum) {
 			ERR_NW << "SYNC: In recruit " << new_unit.id() <<
-				": has checksum " << cs.checksum() <<
+				": has checksum " << checksum <<
 				" while datasource has checksum " <<
 				rc << "\n";
 
-			::write(std::cerr, cfg_unit);
+			config cfg_unit1; 
+			new_unit.write(cfg_unit1);
+			::write(std::cerr, cfg_unit1);
 			// FIXME: this was not playtested, so I will disable it
 			// for release.
 			//if (!game_config::ignore_replay_errors) throw replay::error();
@@ -177,8 +174,21 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	} else {
 		config cfg;
-		cfg["checksum"] = lexical_cast<std::string>(cs.checksum());
+		cfg["checksum"] = checksum;
 		set_random_results(cfg);
+	}
+
+	// if an OOS happens this option allows to write the debug info about the 
+	// recruited unit.
+	if(!lg::info.dont_log(lg::engine)) {
+		config cfg_unit; 
+		new_unit.write(cfg_unit);
+
+		LOG_NG << "recruit unit\nChecksum = " 
+			<< checksum << "\n-----[start data]-----\n";
+
+		::write(lg::info(lg::engine), cfg_unit);
+		LOG_NG << "\n----[end data]-----\n";
 	}
 
 	return std::string();
