@@ -90,7 +90,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if listspaces:
-        print " ".join(scopelist())
+        print " ".join(map(os.path.basename, scopelist()))
         sys.exit(0)
 
     # Locate the unit .cfgs to be moved.
