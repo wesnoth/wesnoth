@@ -13,7 +13,6 @@
 
 #include "actions.hpp"
 #include "attack_prediction.hpp"
-#include "checksum.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "game_preferences.hpp"

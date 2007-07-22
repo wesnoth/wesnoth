@@ -140,10 +140,6 @@ SOURCE=.\src\cavegen.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\checksum.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\clipboard.cpp
 # End Source File
 # Begin Source File

@@ -56,7 +56,6 @@ wesnoth_SOURCES = \
 	attack_prediction.cpp \
 	builder.cpp \
 	cavegen.cpp \
-	checksum.cpp \
 	clipboard.cpp \
 	color_range.cpp \
 	config_adapter.cpp \
@@ -172,7 +171,6 @@ wesnoth_editor_SOURCES = \
 	astarsearch.cpp \
 	builder.cpp \
 	cavegen.cpp \
-	checksum.cpp \
 	clipboard.cpp \
 	color_range.cpp \
 	construct_dialog.cpp \
@@ -334,7 +332,6 @@ noinst_HEADERS = \
 	attack_prediction.hpp \
 	builder.hpp \
 	cavegen.hpp \
-	checksum.hpp \
 	clipboard.hpp \
 	color_range.hpp \
 	config.hpp \

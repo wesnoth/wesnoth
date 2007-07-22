@@ -162,10 +162,6 @@ SOURCE=.\src\cavegen.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\checksum.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\clipboard.cpp
 # End Source File
 # Begin Source File
@@ -659,10 +655,6 @@ SOURCE=.\src\widgets\button.hpp
 # Begin Source File
 
 SOURCE=.\src\cavegen.hpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\checksum.hpp
 # End Source File
 # Begin Source File
 
