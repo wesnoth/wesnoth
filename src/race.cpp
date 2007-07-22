@@ -72,6 +72,7 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 				randint = rand() & 0x7FFFFFFF;
 			}
 		}
+		//std::cout << (use_game_rng ? "true":"false") << " " << randint << "\n";
 		const wchar_t c = i->second[randint%i->second.size()];
 		if(c == 0) {
 			return res;
@@ -133,8 +134,15 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 {
 	names_[MALE] = utils::split(cfg["male_names"]);
 	names_[FEMALE] = utils::split(cfg["female_names"]);
-	names_untranslated_[MALE] = utils::split(cfg["male_names"].value());
-	names_untranslated_[FEMALE] = utils::split(cfg["female_names"].value());
+	std::string s;
+	s = cfg["male_names"].value();
+	s.erase(0, 3); // no idea where this garbage bytes come from...
+	//std::cout << s << " \n ";
+	names_untranslated_[MALE] = utils::split(s);
+	s = cfg["female_names"].value();
+	s.erase(0, 3); // no idea where this garbage bytes come from...
+	//std::cout << s << "\n";
+	names_untranslated_[FEMALE] = utils::split(s);
 
 	chain_size_ = atoi(cfg["markov_chain_size"].c_str());
 	if(chain_size_ <= 0)
@@ -144,6 +152,8 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 	next_[FEMALE] = markov_prefixes(names_[FEMALE],chain_size_);
 	next_untranslated_[MALE] = markov_prefixes(names_untranslated_[MALE],chain_size_);
 	next_untranslated_[FEMALE] = markov_prefixes(names_untranslated_[FEMALE],chain_size_);
+
+	//std::cout << cfg["male_names"].value() << " \n " << cfg["female_names"].value() << "\n";
 }
 
 const t_string& unit_race::name() const { return name_; }
