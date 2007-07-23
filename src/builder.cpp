@@ -43,23 +43,6 @@ static const int UNITPOS = 36 + 18;
  */
 static const int BASE_Y_INTERVAL = 100000;
 
-static t_translation::t_letter builder_letter(const t_translation::t_letter& letter) 
-{
-	 t_translation::t_letter result(letter);
-	
-	 if(result == t_translation::STAR || result == t_translation::NOT) {
-		 return result;
-	 }
-	 
-	 if(result.overlay == t_translation::NO_LAYER && 
-			 result.base !=  t_translation::WILDCARD) {
-		 
-		 result.overlay = t_translation::WILDCARD;
-	}
-	 
-	return result;
-}
-
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image) :
 	layer(layer), basex(x), basey(y), global_image(global_image)
 {}
@@ -611,7 +594,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 			} else if (terrain.overlay != 0 ) {
 				anchors.insert(std::pair<int, gamemap::location>(terrain.overlay, gamemap::location(x, y)));
 			} else if (terrain.base == t_translation::TB_STAR) {
-				add_constraints(br.constraints, gamemap::location(x, y), builder_letter(t_translation::STAR), global_images);
+				add_constraints(br.constraints, gamemap::location(x, y), t_translation::STAR, global_images);
 			} else {
 					ERR_NG << "Invalid terrain (" << t_translation::write_letter(terrain) << ") in builder map\n";
 					wassert(false);
@@ -789,8 +772,8 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 			if(!tile_map_.on_map(tloc)) {
 				return false;
 			}
-
-			if(!terrain_matches(builder_letter(map_.get_terrain(tloc)), cons->second.terrain_types_match)) {
+            //std::cout << "testing..." << builder_letter(map_.get_terrain(tloc))
+			if(!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types_match)) {
 				return false;
 			}
 		}
@@ -893,10 +876,10 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 	if(types.empty()) {
 		return INT_MAX;
 	}
-	if(types.front() == builder_letter(t_translation::NOT)) {
+	if(types.front() == t_translation::NOT) {
 		return INT_MAX;
 	}
-	if(std::find(types.begin(), types.end(), builder_letter(t_translation::STAR)) != types.end()) { 
+	if(std::find(types.begin(), types.end(), t_translation::STAR) != types.end()) { 
 		return INT_MAX;
 	}
 	// as soon as the list has 1 wildcard we bail out
@@ -954,7 +937,7 @@ void terrain_builder::build_terrains()
 	for(int x = -1; x <= map_.x(); ++x) {
 		for(int y = -1; y <= map_.y(); ++y) {
 			const gamemap::location loc(x,y);
-			const t_translation::t_letter t = builder_letter(map_.get_terrain(loc));
+			const t_translation::t_letter t = map_.get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
 			gamemap::location adj[6];
@@ -966,10 +949,10 @@ void terrain_builder::build_terrains()
 			tile_map_[loc].adjacents[0] = t;
 			for(i = 0; i < 6; ++i) {
 				//updates the list of adjacents for this tile
-				tile_map_[loc].adjacents[i+1] = builder_letter(map_.get_terrain(adj[i]));
+				tile_map_[loc].adjacents[i+1] = map_.get_terrain(adj[i]);
 
 				//determines if this tile is a border tile
-				if(builder_letter(map_.get_terrain(adj[i])) != t) {
+				if(map_.get_terrain(adj[i]) != t) {
 					border = true;
 				}
 

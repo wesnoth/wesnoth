@@ -389,10 +389,6 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 		return false;
 	}
 
-	const t_letter src_mask = get_mask_(src);
-	const t_letter masked_src = (src & src_mask);
-	const bool src_has_wildcard = has_wildcard(src);
-	
 #if 0
 	std::cerr << std::hex << "src = " << src.base << "^" << src.overlay << "\t" 
 		<< src_mask.base << "^" << src_mask.overlay << "\t" 
@@ -422,13 +418,6 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 			return result;
 		}
 		
-		// does the source wildcard match
-		if(src_has_wildcard && 
-				(itor->base & src_mask.base) == masked_src.base &&
-				(itor->overlay & src_mask.overlay) == masked_src.overlay) {
-			return result;
-		}
-		
 		// does the destination wildcard match
 		const t_letter dest_mask = get_mask_(*itor);
 		const t_letter masked_dest = (*itor & dest_mask);
@@ -446,9 +435,9 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 			return result;
 		}
 
-		if(src_has_wildcard && src.overlay == 0 && itor->overlay == NO_LAYER &&
-				 ((itor->base & src_mask.base) == masked_src.base )) {
-			 return result;
+		// Special case for NO_LAYER
+		if(itor->overlay == 0 && src.overlay == NO_LAYER && src.base == itor->base) {
+			return result;
 		}
 
 		if(dest_has_wildcard && itor->overlay == 0 && src.overlay == NO_LAYER &&
@@ -487,10 +476,6 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 		return false;
 	}
 
-	const t_letter src_mask = get_mask_(src);
-	const t_letter masked_src = (src & src_mask);
-	const bool src_has_wildcard = has_wildcard(src);
-
 	bool result = true;
 
 	// try to match the terrains if matched jump out of the loop.
@@ -518,26 +503,17 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 		if(*terrain_itor == src) {
 			return result;
 		}
-		
-		// does the source wildcard match
-		if(src_has_wildcard && 
-				(terrain_itor->base & src_mask.base) == masked_src.base &&
-				(terrain_itor->overlay & src_mask.overlay) == masked_src.overlay) {
-			return result;
-		}
-		
+
 		// does the destination wildcard match
 		if(dest.has_wildcard && 
 				(src.base & dest.mask[i].base) == dest.masked_terrain[i].base &&
 				(src.overlay & dest.mask[i].overlay) == dest.masked_terrain[i].overlay) {
 			return result;
 		}
-		
-		// does the source have a wildcard and an empty overlay and the destination
-		// no overlay, we need to check the part base for a match
-		if(src_has_wildcard && src.overlay == 0 && terrain_itor->overlay == NO_LAYER &&
-				 ((terrain_itor->base & src_mask.base) == masked_src.base )) {
-			 return result;
+
+		// Special case for NO_LAYER
+		if(terrain_itor->overlay == 0 && src.overlay == NO_LAYER && src.base == terrain_itor->base) {
+			return result;
 		}
 
 		// does the desination have a wildcard and an empty overlay and the source

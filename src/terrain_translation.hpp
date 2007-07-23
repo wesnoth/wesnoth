@@ -238,53 +238,58 @@ namespace t_translation {
 	std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions = std::map<int, coordinate>());
 
 	/** 
-	 * Tests whether a certain terrain matches a list of terrains the terrains can 
+	 * Tests whether a specific terrain matches a list of expressions. The list can 
 	 * use wildcard matching with *. It also has an inversion function. When a ! 
 	 * is found the result of the match is inverted. The matching stops at the 
 	 * first match (regardless of the ! found) the data is match from start to end.
 	 *
 	 * Example: 
-	 * W*, Ww 		does match and returns true
-	 * W*, {!, Ww}	does match and returns false (due to the !)
-	 * Ww, WW		doesn't match and return false
+	 * Ww, W* 		does match and returns true
+	 * Ww, {!, W*}	does match and returns false (due to the !)
+	 * WW, Ww		doesn't match and return false
 	 *
 	 * Multilayer rules:
-	 * If a terrain has multiple layers a wildcard on the first layer also
-	 * matches the following layer unless a caret is used, in this case 
-	 * there is no need to put anything behind the caret
+	 * If a terrain has multiple layers, each layer will be matched seperately, 
+	 * returning true only if both layers match.
 	 *
 	 * Example:
-	 * A*       matches Abcd but also Abcd^Abcd
 	 * A*^*     matches Abcd but also Abcd^Abcd
 	 * A*^      matches Abcd but *not* Abcd^Abcd
 	 * A*^Abcd  does not match Abcd but matches Abcd^Abcd
 	 *
-	 * @param src	the value to match (may also contain the wildcard)
-	 * @param dest	the list of values to match against
+	 * Note: If an expression doesn't specify a second layer (i.e. it contains no 
+	 * caret) the second layer will be filled in with a default value (See read_letter
+	 * and read_list).
+	 *
+	 * In the terrain building code, the second layer will default to the wildcard, so
+	 * both A* and A*^* will match Abcd^Abcd
+	 *
+	 * @param src	the value to match (may not contain wildcards)
+	 * @param dest	the list of expressions to match against
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
 	bool terrain_matches(const t_letter& src, const t_list& dest);
 
 	/** 
-	 * Tests whether a certain terrain matches another terrain, for matching 
+	 * Tests whether a specific terrain matches an expression, for matching 
 	 * rules see above.
 	 *
-	 * @param src	the value to match (may also contain the wildcard)
-	 * @param dest 	the value to match against
+	 * @param src	the value to match (may not contain wildcards)
+	 * @param dest 	the expression to match against
 	 *
 	 * @returns		the result of the match (depending on the !'s)
 	 */
 	bool terrain_matches(const t_letter& src, const t_letter& dest);
 	
 	/** 
-	 * Tests whether a certain terrain matches another terrain, for matching 
+	 * Tests whether a certain terrain matches a list of expressions, for matching 
 	 * rules see above. The matching requires some bit mask which impose a
 	 * certain overhead. This version uses a cache to cache the masks so if
 	 * a list needs to be matched often this version is preferred.
 	 *
-	 * @param src	the value to match (may also contain the wildcard)
-	 * @param dest 	the value to match against
+	 * @param src	the value to match (may not contain  wildcards)
+	 * @param dest 	the cached list of expressions to match against
 	 *
 	 * @returns	the result of the match (depending on the !'s)
 	 */
