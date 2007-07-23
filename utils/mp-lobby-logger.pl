@@ -8,10 +8,10 @@ use POSIX qw(strftime);
 use Getopt::Std;
 use Data::Dumper;
 
-#my $usage = "Usage: $0 [-gj] [-e count] [-h [host]] [-p [port]] [-t [timestampformat]] [-u username]";
+#my $usage = "Usage: $0 [-gjn] [-e count] [-h [host]] [-p [port]] [-t [timestampformat]] [-u username]";
 
 my %opts = ();
-getopts('gje:h:p:t:u:',\%opts);
+getopts('gjne:h:p:t:u:',\%opts);
 
 my $USERNAME = 'log';
 $USERNAME = $opts{'u'} if $opts{'u'};
@@ -26,16 +26,17 @@ $timestamp = $opts{'t'} if $opts{'t'};
 $timestamp = '' unless exists $opts{'t'};
 my $showjoins = $opts{'j'};
 my $showgames = $opts{'g'};
+my $showturns = $opts{'n'};
 
 my $LOGIN_RESPONSE = "[login]\nusername=\"$USERNAME\"\n[/login]";
 my $VERSION_RESPONSE = "[version]\nversion=\"test\"\n[/version]";
-my @usernamelist = ();
-my @gamelist = ();
+my @users = ();
+my @games = ();
 my %outgoing_schemas = ();
 my %incoming_schemas = ();
 
 
-sub connect {
+sub connect($$) {
 	my ($host,$port) = @_;
 	my $sock = IO::Socket::INET->new(PeerAddr => $host, PeerPort => $port, Proto => 'tcp', Type => SOCK_STREAM)
 		or die "Could not connect to $host:$port: $@\n";
@@ -50,14 +51,14 @@ sub connect {
 	return $sock;
 }
 
-sub disconnect {
+sub disconnect($) {
 	my ($sock) = @_;
 	delete($outgoing_schemas{$sock});
 	delete($incoming_schemas{$sock});
 	close $sock;
 }
 
-sub read_packet {
+sub read_packet($) {
 	my ($sock) = @_;
 	my $buf = '';
 	read $sock, $buf, 4;
@@ -80,7 +81,7 @@ sub read_packet {
 	return &wml::read_binary($incoming_schemas{$sock},$res);
 }
 
-sub write_packet {
+sub write_packet($$) {
 	my ($sock,$doc) = @_;
 	my $data = &wml::write_binary($outgoing_schemas{$sock},$doc);
 	$data .= chr 0;
@@ -88,7 +89,7 @@ sub write_packet {
 	print $sock "$header$data" or die "Error writing to socket: $!";
 }
 
-sub write_bad_packet {
+sub write_bad_packet($$) {
 	my ($sock, $doc) = @_;
 	my $data = &wml::write_binary($outgoing_schemas{$sock},$doc);
 	$data .= chr 0;
@@ -103,7 +104,7 @@ sub timestamp {
 	}
 }
 
-sub login {
+sub login($) {
 	my $sock = shift;
 	my $response = &read_packet($sock);
 	# server asks for the version string or tells us to login right away
@@ -141,11 +142,9 @@ sub login {
 	if (&wml::has_child($response, 'gamelist')) {
 		foreach (@ {$response->{'children'}}) {
 			if ($_->{'name'} eq 'gamelist') {
-				foreach (@ {$_->{'children'}}) {
-					$gamelist[@gamelist] = $_->{'attr'}->{'name'};
-				}
+				@games = @ {$_->{'children'}};
 			} elsif ($_->{'name'} eq 'user') {
-				$usernamelist[@usernamelist] = $_->{'attr'}->{'name'};
+				$users[@users] = $_;
 			}
 		}
 	} elsif (my $error = &wml::has_child($response, 'error')) {
@@ -153,8 +152,20 @@ sub login {
 	} else {
 		print STDERR "Error: Server didn't send the initial gamelist and gave no error.\n" . Dumper($response) and die;
 	}
-	print "usernames: @usernamelist\n" if $showjoins;
-	print "games: \"" . join("\" \"",@gamelist) . "\"\n" if $showgames;
+	if ($showjoins) {
+		print STDERR @users . " users:";
+		foreach (@users) {
+			print STDERR " " . $_->{'attr'}->{'name'};
+		}
+		print STDERR "\n";
+	}
+	if ($showgames) {
+		print STDERR @games . " games:";
+		foreach (@games) {
+			print STDERR " \"" . $_->{'attr'}->{'name'} . "\"";
+		}
+		print STDERR "\n";
+	}
 }
 
 # make several connections and send packets with a wrong length then sleep indefinitely
@@ -195,33 +206,36 @@ while (1) {
 			}
 		} elsif ($_->{'name'} eq 'gamelist_diff') {
 			foreach (@ {$_->{'children'}}) {
-				my $index = $_->{'attr'}->{'index'};
+				my $userindex = $_->{'attr'}->{'index'};
 				if ($_->{'name'} eq 'insert_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
 						my $username = $user->{'attr'}->{'name'};
-						print STDERR &timestamp . "--> $username has logged on. ($index)\n" if $showjoins;
-						$usernamelist[@usernamelist] = $username;
-						#print "usernames: @usernamelist\n";
+						print STDERR &timestamp . "--> $username has logged on. ($userindex)\n" if $showjoins;
+						$users[@users] = $user;
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_);
 					}
 				} elsif ($_->{'name'} eq 'delete_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
-						print STDERR &timestamp . "<-- $usernamelist[$index] has logged off. ($index)\n" if $showjoins;
-						splice(@usernamelist,$index,1);
-						#print "usernames: @usernamelist\n";
+						my $username = $users[$userindex]->{'attr'}->{'name'};
+						print STDERR &timestamp . "<-- $username has logged off. ($userindex)\n" if $showjoins;
+						splice(@users,$userindex,1);
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_);
 					}
 				} elsif ($_->{'name'} eq 'change_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
 						foreach (@ {$user->{'children'}}) {
-							#my $userindex = $_->{'attr'}->{'index'};   #there's no index it seems, the gamelistindex would be nice..
+							#my $userindex = $_->{'attr'}->{'index'};   #the gamelistindex would be nice here.. probably hacky though so better put it in the 'location' key
 							if ($_->{'name'} eq 'insert') {
+								my $username = $users[$userindex]->{'attr'}->{'name'};
 								if ($_->{'attr'}->{'available'} eq "yes") {
-									print STDERR &timestamp . "++> $usernamelist[$index] has left a game.\n" if $showjoins and $showgames;
+									my $location = $users[$userindex]->{'attr'}->{'location'};
+									print STDERR &timestamp . "++> $username has left a game: \"$location\"\n" if $showjoins and $showgames;
 								} elsif ($_->{'attr'}->{'available'} eq "no") {
-									print STDERR &timestamp . "<++ $usernamelist[$index] has joined a game.\n" if $showjoins and $showgames;
+									my $location = $_->{'attr'}->{'location'};
+									$users[$userindex]->{'attr'}->{'location'} = $location;
+									print STDERR &timestamp . "<++ $username has joined a game: \"$location\"\n" if $showjoins and $showgames;
 								}
 							} elsif ($_->{'name'} eq 'delete') {
 							} else {
@@ -235,23 +249,55 @@ while (1) {
 							if ($_->{'name'} eq 'insert_child') {
 								if (my $game = &wml::has_child($_, 'game')) {
 									my $gamename = $game->{'attr'}->{'name'};
-									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex).\n" if $showgames;
-									$gamelist[@gamelist] = $gamename;
+									my $gameid   = $game->{'attr'}->{'id'};
+									my $era      = $game->{'attr'}->{'mp_era'};
+									my $scenario = "unknown";   # some scenarios don't set the id
+									$scenario    = $game->{'attr'}->{'mp_scenario'} if $game->{'attr'}->{'mp_scenario'};
+									my $players  = $game->{'attr'}->{'human_sides'};
+									my $xp       = $game->{'attr'}->{'experience_modifier'};
+									my $gpv      = $game->{'attr'}->{'mp_village_gold'};
+									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $showgames;
+									print STDERR &timestamp . "Settings: map: $scenario  era: $era  players: $players  XP: $xp  GPV: $gpv\n";
+									$games[@games] = $game;
 								} else {
 									print "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
 								}
 							} elsif ($_->{'name'} eq 'delete_child') {
 								if (my $game = &wml::has_child($_, 'game')) {
-									print STDERR &timestamp . "--- A game has ended: \"$gamelist[$gamelistindex]\". ($gamelistindex)\n" if $showgames;
+									my $gamename = $games[$gamelistindex]->{'attr'}->{'name'};
+									my $gameid   = $games[$gamelistindex]->{'attr'}->{'id'};
+									my $turn     = $games[$gamelistindex]->{'attr'}->{'turn'};
+									if (defined($turn)) {
+										print STDERR &timestamp . "--- A game ended at turn $turn: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames;
+									} else {
+										print STDERR &timestamp . "--- A game was aborted: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames;
+									}
+									splice(@games,$gamelistindex,1);
 								} else {
 									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
 								}
 							} elsif ($_->{'name'} eq 'change_child') {
-#								if (my $game = &wml::has_child($_, 'game')) {
-#									print STDERR &timestamp . "Something changed in a game. ($gamelistindex)\n" if $showgames;
-#								} else {
-#									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
-#								}
+								if (my $game = &wml::has_child($_, 'game')) {
+									foreach (@ {$game->{'children'}}) {
+										if ($_->{'name'} eq 'insert') {
+											if (my $turn = $_->{'attr'}->{'turn'}) {
+												my $gamename = $games[$gamelistindex]->{'attr'}->{'name'};
+												my $gameid   = $games[$gamelistindex]->{'attr'}->{'id'};
+												if ($turn =~ /1\//) {
+													print STDERR &timestamp . "*** A game has started: \"$gamename\". ($gamelistindex, $gameid)\n"
+												} else {
+													print STDERR &timestamp . "Turn changed to $turn in game: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames and $showturns;
+												}
+												$games[$gamelistindex]->{'attr'}->{'turn'} = $turn;
+											}
+										} elsif ($_->{'name'} eq 'delete') {
+										} else {
+											print "[gamelist_diff][change_child][gamelist][change_child][game]:" . Dumper($_);
+										}
+									}
+								} else {
+									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+								}
 							} else {
 								print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
 							}
