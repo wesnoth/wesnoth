@@ -265,16 +265,29 @@ while (1) {
 								if (my $game = &wml::has_child($_, 'game')) {
 									my $gamename = $game->{'attr'}->{'name'};
 									my $gameid   = $game->{'attr'}->{'id'};
-									my $era      = $game->{'attr'}->{'mp_era'};
+									my $era      = "unknown";   # some games don't set the era?!
+									$era         = $game->{'attr'}->{'mp_era'}; if $game->{'attr'}->{'mp_era'};
 									my $scenario = "unknown";   # some scenarios don't set the id
 									$scenario    = $game->{'attr'}->{'mp_scenario'} if $game->{'attr'}->{'mp_scenario'};
 									my $players  = $game->{'attr'}->{'human_sides'};
 									my $xp       = $game->{'attr'}->{'experience_modifier'};
 									my $gpv      = $game->{'attr'}->{'mp_village_gold'};
+									my $fog      = $game->{'attr'}->{'mp_fog'};
+									my $shroud   = $game->{'attr'}->{'mp_shroud'};
+									my $timer    = $game->{'attr'}->{'mp_countdown'};
+									my $observer = $game->{'attr'}->{'observer'};
 									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $showgames;
 									print LOG &logtimestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $logfile;
-									print STDERR &timestamp . "Settings: map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv\n" if $showgames;
-									print LOG &logtimestamp . "Settings: map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv\n" if $logfile;
+									my $settings = "Settings: map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv  fog: $fog  shroud: $shroud  observers: $observer  timer: $timer";
+									if ($timer =~ "yes") {
+										my $treservoir = $game->{'attr'}->{'mp_countdown_reservoir_time'};
+										my $tinit      = $game->{'attr'}->{'mp_countdown_init_time'};
+										my $taction    = $game->{'attr'}->{'mp_countdown_action_bonus'};
+										my $tturn      = $game->{'attr'}->{'mp_countdown_turn_bonus'};
+										$settings .= "  reservoir time: $treservoir  init time: $tinit  action bonus: $taction  turn bonus: $tturn";
+									}
+									print STDERR &timestamp . $settings . "\n" if $showgames;
+									print LOG &logtimestamp . $settings . "\n" if $logfile;
 									$games[@games] = $game;
 								} else {
 									print "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
