@@ -266,7 +266,7 @@ while (1) {
 									my $gamename = $game->{'attr'}->{'name'};
 									my $gameid   = $game->{'attr'}->{'id'};
 									my $era      = "unknown";   # some games don't set the era?!
-									$era         = $game->{'attr'}->{'mp_era'}; if $game->{'attr'}->{'mp_era'};
+									$era         = $game->{'attr'}->{'mp_era'} if $game->{'attr'}->{'mp_era'};
 									my $scenario = "unknown";   # some scenarios don't set the id
 									$scenario    = $game->{'attr'}->{'mp_scenario'} if $game->{'attr'}->{'mp_scenario'};
 									my $players  = $game->{'attr'}->{'human_sides'};
