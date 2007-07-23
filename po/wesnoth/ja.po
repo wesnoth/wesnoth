@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-22 02:48+0200\n"
-"PO-Revision-Date: 2007-07-14 06:59+0900\n"
+"PO-Revision-Date: 2007-07-22 11:40+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -84,12 +84,11 @@ msgstr "作者"
 
 #: data/campaigns/Liberty/_main.cfg:28
 msgid "Prose-doctoring and preparation for mainline"
-msgstr ""
+msgstr "本線における散文の修正と調整"
 
 #: data/campaigns/Liberty/_main.cfg:32
-#, fuzzy
 msgid "Unit art"
-msgstr "ユニット一覧"
+msgstr "ユニットのグラフィック"
 
 #: data/campaigns/Liberty/_main.cfg:36
 #: data/campaigns/Northern_Rebirth/_main.cfg:41
@@ -98,11 +97,11 @@ msgstr "翻訳者"
 
 #: data/campaigns/Liberty/_main.cfg:41
 msgid "Map art"
-msgstr ""
+msgstr "マップのグラフィック"
 
 #: data/campaigns/Liberty/_main.cfg:46
 msgid "Portrait Art"
-msgstr ""
+msgstr "肖像画のグラフィック"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -232,9 +231,8 @@ msgid "French Translation"
 msgstr "フランス語翻訳"
 
 #: data/core/about.cfg:511
-#, fuzzy
 msgid "Galician Translation"
-msgstr "バレンシア語翻訳"
+msgstr "ガリシア語翻訳"
 
 #: data/core/about.cfg:518
 msgid "German Translation"
@@ -1377,9 +1375,8 @@ msgid "Quick"
 msgstr "敏捷"
 
 #: data/core/help.cfg:286
-#, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
-msgstr "敏捷なユニットは移動力が1つ多くなるが、HPが通常より10%少なくなる。"
+msgstr "敏捷なユニットは移動力が1つ多くなるが、HPが通常より5%少なくなる。"
 
 #: data/core/help.cfg:288
 msgid ""
@@ -1405,9 +1402,8 @@ msgid "Resilient"
 msgstr "頑強"
 
 #: data/core/help.cfg:294
-#, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "頑強なユニットは通常より 10% + 3 だけHPが多い。"
+msgstr "頑強なユニットは通常より 4 + レベルにつき 1 だけHPが多い。"
 
 #: data/core/help.cfg:296
 msgid ""
@@ -1542,6 +1538,10 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"機械ユニットは基本的に唯一の特性として「機械」を持っています。機械ユニットは"
+"本当に生きているわけではないため、吸収、毒、疫病は全く効きません。"
 
 #: data/core/help.cfg:339
 msgid "Dextrous"
@@ -1587,6 +1587,10 @@ msgid ""
 "Healthy units have 2 more HP than usual and rest heal 2 additional HP after "
 "each turn they did not fight."
 msgstr ""
+"\n"
+"\n"
+"壮健ユニットは通常よりも HP が 2 多く、戦闘をしなかったターンの終わりに追加"
+"で HP が 2 回復する。"
 
 #: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
 msgid "Grassland"
@@ -6722,9 +6726,8 @@ msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
 #: src/unit.cpp:2605
-#, fuzzy
 msgid "/level"
-msgstr "レベル"
+msgstr "/レベル"
 
 #: src/unit_types.cpp:193 src/unit_types.cpp:233
 msgid "damage"
@@ -6773,34 +6776,6 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
-
-#, fuzzy
-#~ msgid "Village Elder"
-#~ msgstr "村からの収入: "
-
-#, fuzzy
-#~ msgid "mace"
-#~ msgstr "種族"
-
-#, fuzzy
-#~ msgid "sling"
-#~ msgstr "回復"
-
-#, fuzzy
-#~ msgid "female^Footpad"
-#~ msgstr "忠義"
-
-#, fuzzy
-#~ msgid "Night Watchman"
-#~ msgstr "夜"
-
-#, fuzzy
-#~ msgid "female^Outlaw"
-#~ msgstr "忠義"
-
-#, fuzzy
-#~ msgid "dagger"
-#~ msgstr "ダメージ"
 
 #~ msgid "-- The Tome of Wesnoth"
 #~ msgstr "-- Wesnothの書"
