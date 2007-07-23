@@ -8,25 +8,29 @@ use POSIX qw(strftime);
 use Getopt::Std;
 use Data::Dumper;
 
-#my $usage = "Usage: $0 [-gjn] [-e count] [-h [host]] [-p [port]] [-t [timestampformat]] [-u username]";
+#my $usage = "Usage: $0 [-gjn] [-e count] [-l logfile] [-h [host]] [-p [port]] [-t [timestampformat]] [-u username]";
 
 my %opts = ();
-getopts('gjne:h:p:t:u:',\%opts);
+getopts('gjl:ne:h:p:t:u:',\%opts);
 
 my $USERNAME = 'log';
-$USERNAME = $opts{'u'} if $opts{'u'};
+$USERNAME    = $opts{'u'} if $opts{'u'};
 my $HOST = '127.0.0.1';
-$HOST = 'server.wesnoth.org' if exists $opts{'h'};
-$HOST = $opts{'h'} if $opts{'h'};
+$HOST    = 'server.wesnoth.org' if exists $opts{'h'};
+$HOST    = $opts{'h'} if $opts{'h'};
 my $PORT = '15000';
-$PORT = '14999' if exists $opts{'p'};
-$PORT = $opts{'p'} if $opts{'p'};
+$PORT    = '14999' if exists $opts{'p'};
+$PORT    = $opts{'p'} if $opts{'p'};
+my $logtimestamp = "%Y%m%d %T ";
 my $timestamp = "%Y%m%d %T ";
-$timestamp = $opts{'t'} if $opts{'t'};
-$timestamp = '' unless exists $opts{'t'};
+$timestamp    = $opts{'t'} if $opts{'t'};
+$timestamp    = '' unless exists $opts{'t'};
 my $showjoins = $opts{'j'};
 my $showgames = $opts{'g'};
 my $showturns = $opts{'n'};
+my $logfile   = $opts{'l'};
+if (exists $opts{'l'}) {open(LOG, ">> $logfile") or die "can't open $logfile: $!";}
+select LOG; $| = 1;
 
 my $LOGIN_RESPONSE = "[login]\nusername=\"$USERNAME\"\n[/login]";
 my $VERSION_RESPONSE = "[version]\nversion=\"test\"\n[/version]";
@@ -99,9 +103,11 @@ sub write_bad_packet($$) {
 
 
 sub timestamp {
-	if ($timestamp) {
-		return strftime($timestamp, localtime());
-	}
+	return strftime($timestamp, localtime());
+}
+
+sub logtimestamp {
+	return strftime($logtimestamp, localtime());
 }
 
 sub login($) {
@@ -152,20 +158,20 @@ sub login($) {
 	} else {
 		print STDERR "Error: Server didn't send the initial gamelist and gave no error.\n" . Dumper($response) and die;
 	}
-	if ($showjoins) {
-		print STDERR @users . " users:";
-		foreach (@users) {
-			print STDERR " " . $_->{'attr'}->{'name'};
-		}
-		print STDERR "\n";
+	my $userlist = @users . " users:";
+	foreach (@users) {
+		$userlist .= " " . $_->{'attr'}->{'name'};
 	}
-	if ($showgames) {
-		print STDERR @games . " games:";
-		foreach (@games) {
-			print STDERR " \"" . $_->{'attr'}->{'name'} . "\"";
-		}
-		print STDERR "\n";
+	$userlist .= "\n";
+	print STDERR $userlist if $showjoins;
+	print LOG    $userlist if $logfile;
+	my $gamelist = @games . " games:";
+	foreach (@games) {
+		$gamelist .= " \"" . $_->{'attr'}->{'name'} . "\"";
 	}
+	$gamelist .= "\n";
+	print STDERR $gamelist if $showgames;
+	print LOG    $gamelist if $logfile;
 }
 
 # make several connections and send packets with a wrong length then sleep indefinitely
@@ -180,6 +186,7 @@ if (my $count = $opts{'e'}) {
 
 
 print STDERR "Connecting to $HOST:$PORT as $USERNAME.\n";
+print LOG    "Connecting to $HOST:$PORT as $USERNAME.\n" if $logfile;
 my $socket = &connect($HOST,$PORT);
 defined($socket) or die "Error: Can't connect to the server.";
 
@@ -193,16 +200,20 @@ while (1) {
 			my $message = $_->{'attr'}->{'message'};
 			if ($message =~ s,^/me,,) {
 				print STDERR &timestamp . "* $sender$message\n";
+				print LOG &logtimestamp . "* $sender$message\n" if $logfile;
 			} else {
 				print STDERR &timestamp . "<$sender> $message\n";
+				print LOG &logtimestamp . "<$sender> $message\n" if $logfile;
 			}
 		} elsif ($_->{'name'} eq 'whisper') {
 			my $sender = $_->{'attr'}->{'sender'};
 			my $message = $_->{'attr'}->{'message'};
 			if ($message =~ s,^/me,,) {
 				print STDERR &timestamp . "*$sender$message*\n";
+				print LOG &logtimestamp . "*$sender$message*\n" if $logfile;
 			} else {
 				print STDERR &timestamp . "*$sender* $message\n";
+				print LOG &logtimestamp . "*$sender* $message\n" if $logfile;
 			}
 		} elsif ($_->{'name'} eq 'gamelist_diff') {
 			foreach (@ {$_->{'children'}}) {
@@ -211,6 +222,7 @@ while (1) {
 					if (my $user = &wml::has_child($_, 'user')) {
 						my $username = $user->{'attr'}->{'name'};
 						print STDERR &timestamp . "--> $username has logged on. ($userindex)\n" if $showjoins;
+						print LOG &logtimestamp . "--> $username has logged on. ($userindex)\n" if $logfile;
 						$users[@users] = $user;
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_);
@@ -219,6 +231,7 @@ while (1) {
 					if (my $user = &wml::has_child($_, 'user')) {
 						my $username = $users[$userindex]->{'attr'}->{'name'};
 						print STDERR &timestamp . "<-- $username has logged off. ($userindex)\n" if $showjoins;
+						print LOG &logtimestamp . "<-- $username has logged off. ($userindex)\n" if $logfile;
 						splice(@users,$userindex,1);
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_);
@@ -232,10 +245,12 @@ while (1) {
 								if ($_->{'attr'}->{'available'} eq "yes") {
 									my $location = $users[$userindex]->{'attr'}->{'location'};
 									print STDERR &timestamp . "++> $username has left a game: \"$location\"\n" if $showjoins and $showgames;
+									print LOG &logtimestamp . "++> $username has left a game: \"$location\"\n" if $logfile;
 								} elsif ($_->{'attr'}->{'available'} eq "no") {
 									my $location = $_->{'attr'}->{'location'};
 									$users[$userindex]->{'attr'}->{'location'} = $location;
 									print STDERR &timestamp . "<++ $username has joined a game: \"$location\"\n" if $showjoins and $showgames;
+									print LOG &logtimestamp . "<++ $username has joined a game: \"$location\"\n" if $logfile;
 								}
 							} elsif ($_->{'name'} eq 'delete') {
 							} else {
@@ -257,7 +272,9 @@ while (1) {
 									my $xp       = $game->{'attr'}->{'experience_modifier'};
 									my $gpv      = $game->{'attr'}->{'mp_village_gold'};
 									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $showgames;
-									print STDERR &timestamp . "Settings: map: $scenario  era: $era  players: $players  XP: $xp  GPV: $gpv\n";
+									print LOG &logtimestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $logfile;
+									print STDERR &timestamp . "Settings: map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv\n" if $showgames;
+									print LOG &logtimestamp . "Settings: map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv\n" if $logfile;
 									$games[@games] = $game;
 								} else {
 									print "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
@@ -269,8 +286,10 @@ while (1) {
 									my $turn     = $games[$gamelistindex]->{'attr'}->{'turn'};
 									if (defined($turn)) {
 										print STDERR &timestamp . "--- A game ended at turn $turn: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames;
+										print LOG &logtimestamp . "--- A game ended at turn $turn: \"$gamename\". ($gamelistindex, $gameid)\n" if $logfile;
 									} else {
 										print STDERR &timestamp . "--- A game was aborted: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames;
+										print LOG &logtimestamp . "--- A game was aborted: \"$gamename\". ($gamelistindex, $gameid)\n" if $logfile;
 									}
 									splice(@games,$gamelistindex,1);
 								} else {
@@ -284,9 +303,11 @@ while (1) {
 												my $gamename = $games[$gamelistindex]->{'attr'}->{'name'};
 												my $gameid   = $games[$gamelistindex]->{'attr'}->{'id'};
 												if ($turn =~ /1\//) {
-													print STDERR &timestamp . "*** A game has started: \"$gamename\". ($gamelistindex, $gameid)\n"
+													print STDERR &timestamp . "*** A game has started: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames;
+													print LOG &logtimestamp . "*** A game has started: \"$gamename\". ($gamelistindex, $gameid)\n" if $logfile;
 												} else {
 													print STDERR &timestamp . "Turn changed to $turn in game: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames and $showturns;
+													print LOG &logtimestamp . "Turn changed to $turn in game: \"$gamename\". ($gamelistindex, $gameid)\n" if $logfile;
 												}
 												$games[$gamelistindex]->{'attr'}->{'turn'} = $turn;
 											}
@@ -322,5 +343,5 @@ while (1) {
 	}
 
 }
-print "Connection closed.\n\n"
-
+print "Connection closed.\n\n";
+close(LOG);
