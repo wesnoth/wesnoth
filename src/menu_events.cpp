@@ -1001,8 +1001,10 @@ namespace events{
 
 				std::vector<unit>& recall_list = player->available_units;
 				recall_list.insert(recall_list.begin()+action.recall_pos,un);
-				units_.erase(action.recall_loc);
+				// invalidate before erasing allow us
+				// to also do the ovelerlapped hexes
 				gui_->invalidate(action.recall_loc);
+				units_.erase(action.recall_loc);
 				gui_->draw();
 			}
 		} else if(action.is_recruit()) {
@@ -1023,8 +1025,10 @@ namespace events{
 				teams_[team_num-1].set_action_bonus_count(teams_[team_num-1].action_bonus_count() - 1);
 			}
 
-			units_.erase(action.recall_loc);
+			// invalidate before erasing allow us
+			// to also do the ovelerlapped hexes
 			gui_->invalidate(action.recall_loc);
+			units_.erase(action.recall_loc);
 			gui_->draw();
 		} else {
 			// Undo a move action
