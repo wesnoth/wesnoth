@@ -99,12 +99,11 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 		      }
 		    }
 		    blue=temp;
-		    if(i1 != i2 && i1+1 != i2 && '>'==(*i1)){
+		    if(i1 != i2 && '>'==(*i1)){
 		      SDL_Color temp_color = {red,green,blue,0};
 		      (*colour) = temp_color;
-		      return i1+1;
-		    }else
-		      return i_start;
+		    }
+		    if(i1 == i2) return i1;
 		    break;
 		  }
 		default:
