@@ -458,7 +458,7 @@ def hack_syntax(lines):
     modcount = 0
     # Ensure that every attack has a translatable description."
     for i in range(len(lines)):
-        if "no-syntax-rewrite" in lines[j]:
+        if "no-syntax-rewrite" in lines[i]:
             return modcount
         elif "[attack]" in lines[i]:
             j = i;
@@ -485,7 +485,7 @@ def hack_syntax(lines):
     # Ensure that every speaker=narrator block without an image uses wesnoth-icon.png as an image."
     need_image = False
     for i in range(len(lines)):
-        if "no-syntax-rewrite" in lines[j]:
+        if "no-syntax-rewrite" in lines[i]:
             return modcount
         precomment = lines[i].split("#")[0]
         if "speaker=narrator" in precomment:
