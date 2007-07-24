@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:48+0200\n"
+"POT-Creation-Date: 2007-07-24 23:29+0200\n"
 "PO-Revision-Date: 2007-07-03 18:26+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -33,6 +33,10 @@ msgstr "Officiell Wesnoth-server"
 #: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr "Alternativ Wesnoth-server"
+
+#: data/_main.cfg:148
+msgid "-- The Tome of Wesnoth"
+msgstr "-- Wesnoths krönika"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -2866,43 +2870,43 @@ msgstr "Denna ring helar sin bärare lite varje drag."
 msgid "Can't set abilities yet, sorry."
 msgstr "Kan inte ställa in egenskaper ännu, ursäkta."
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:577
 msgid "Ring of Slowness"
 msgstr "Långsamhetsring"
 
-#: data/core/macros/items.cfg:579
+#: data/core/macros/items.cfg:580
 msgid "The bearer of this ring is slowed."
 msgstr "Denna rings bärare blir långsam."
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:615
 msgid "Staff of Swiftness"
 msgstr "Snabbhetsstav"
 
-#: data/core/macros/items.cfg:617
+#: data/core/macros/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
 msgstr "Denna stav gör att bäraren förflyttar sig snabbt."
 
-#: data/core/macros/items.cfg:618
+#: data/core/macros/items.cfg:619
 msgid "Only magical beings can wield such an object."
 msgstr "Enbart magiska varelser kan använda ett sådant ting."
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:653
 msgid "Storm Trident"
 msgstr "Stormtreudd"
 
-#: data/core/macros/items.cfg:655
+#: data/core/macros/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Med denna treudd kan en av sjöfolket skjuta åskviggar på sina fiender."
 
-#: data/core/macros/items.cfg:656
+#: data/core/macros/items.cfg:657
 msgid "Only the mermen can use this item!"
 msgstr "Endast sjöfolket kan använda denna sak!"
 
-#: data/core/macros/items.cfg:668
+#: data/core/macros/items.cfg:669
 msgid "storm trident"
 msgstr "stormtreudd"
 
-#: data/core/macros/items.cfg:742
+#: data/core/macros/items.cfg:743
 msgid "Zap"
 msgstr "Zap"
 
@@ -4223,6 +4227,90 @@ msgstr "Obestigbara berg"
 msgid "Impassable Desert Mountains"
 msgstr "Obestigbara ökenberg"
 
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
+"can be fearful in their element but no real match for professional law "
+"enforcment forces."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:30
+#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:42
+msgid "mace"
+msgstr "spikklubba"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:32
+#: data/core/units/humans/Outlaw_Fugitive.cfg:79
+#: data/core/units/humans/Outlaw_Highwayman.cfg:44
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "kross"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:77
+#: data/core/units/humans/Outlaw_Fugitive.cfg:78
+msgid "sling"
+msgstr "slunga"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:126
+#, fuzzy
+msgid "female^Fugitive"
+msgstr "Magiker"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:129
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
+"beauty is exceeded only by their dangerousness."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+msgid "Highwayman"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+msgid ""
+"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
+"deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:5
+#, fuzzy
+msgid "Outlaw Ranger"
+msgstr "Fredlös"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:25
+msgid ""
+"Rangers are wild men and masters of forest and hills.  They are excellent "
+"trackers, scouts, and archers, moving freely through the countryside under "
+"the cover of night.  Most rulers are afraid of rangers and would rather put "
+"them in the dungeon than put their abilities to use."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:52
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+msgid "sword"
+msgstr "svärd"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "hugg"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:99
+#: data/core/units/humans/Outlaw_Ranger.cfg:100
+msgid "bow"
+msgstr "pilbåge"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "stick"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Lätt"
@@ -4383,18 +4471,6 @@ msgstr "närstrid"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "distans"
-
-#: data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "hugg"
-
-#: data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "stick"
-
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "kross"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4758,6 +4834,13 @@ msgstr ""
 "veteranen ta hand om motståndaren tills den nya truppen kan dela ut "
 "dödsstöten."
 
+#: data/hardwired/tips.cfg:39
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
 msgid "Menu"
@@ -4773,8 +4856,8 @@ msgid "End Turn"
 msgstr "Avsluta draget"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
-#: src/unit.cpp:2583
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2428
+#: src/unit.cpp:2574
 msgid "HP"
 msgstr "HP"
 
@@ -4900,65 +4983,65 @@ msgstr "+  "
 msgid "Close"
 msgstr "Stäng"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
 msgstr "Du har ingen ledare att rekrytera med."
 
-#: src/actions.cpp:118
+#: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Du måste ha din ledare i ett kärntorn för att kunna rekrytera eller "
 "återkalla trupper."
 
-#: src/actions.cpp:137
+#: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Det finns inga lediga borgrutor för nya trupper."
 
-#: src/actions.cpp:883 src/actions.cpp:1114
+#: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
 msgstr "förgiftad"
 
-#: src/actions.cpp:887 src/actions.cpp:1118
+#: src/actions.cpp:896 src/actions.cpp:1127
 msgid "slowed"
 msgstr "långsam"
 
-#: src/actions.cpp:893 src/actions.cpp:1124
+#: src/actions.cpp:902 src/actions.cpp:1133
 msgid "stone"
 msgstr "förstena"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2040
 msgid "Ambushed!"
 msgstr "Bakhåll!"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2078
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Allierad trupp inom synhåll"
 msgstr[1] "$friends allierade trupper inom synhåll"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2081
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Fiendetrupp inom synhåll!"
 msgstr[1] "$enemies fiendetrupper inom synhåll!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2086
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 allierad trupp"
 msgstr[1] "$friends allierade trupper"
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2087
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 fiende"
 msgstr[1] "$enemies fiender"
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2088
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Trupper inom synhåll! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2097
 msgid "(press $hotkey to keep moving)"
 msgstr "(tryck $hotkey för att fortsätta)"
 
@@ -5746,7 +5829,7 @@ msgstr "Nivå"
 msgid "unit list^Traits"
 msgstr "Karaktärsdrag"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
+#: src/menu_events.cpp:319 src/unit.cpp:2461 src/unit.cpp:2582
 msgid "Moves"
 msgstr "Förflyttning"
 
@@ -5901,41 +5984,41 @@ msgstr[0] ""
 msgstr[1] ""
 "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Vill du verkligen avsluta ditt drag utan att göra något?"
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1328
 msgid "Rename Unit"
 msgstr "Döp om truppen"
 
-#: src/menu_events.cpp:1406
+#: src/menu_events.cpp:1410
 msgid "Place Label"
 msgstr "Sätt ut etikett"
 
-#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
+#: src/menu_events.cpp:1413 src/menu_events.cpp:1416
 msgid "Label:"
 msgstr "Etikett: "
 
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1419
 msgid "Team only"
 msgstr "Endast laget"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1520
 msgid "Search"
 msgstr "Sök"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1563
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Kommandon: whisper list emote. Skriv /help [kommando] för mer hjälp."
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1614
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5943,18 +6026,18 @@ msgstr ""
 "Skicka ett privat meddelande. Du kan inte skicka meddelanden till spelare "
 "som kontrollerar en sida i spelet. Syntax: /whisper [spelare] [meddelande]"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1618
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lägg till spelare till din lista över vänner. Syntax: /list addfriend "
 "[argument]"
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1620
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lägg till spelare till din ignoreralista. Syntax: /list ignore [argument]"
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1622
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -5962,19 +6045,19 @@ msgstr ""
 "Ta bort spelare från listan över vänner eller ignorerade. Syntax: /list "
 "remove [argument]"
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Rensa dina listor över vänner och ignorerade. Syntax: /list clear"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1626
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Visa dina listor över vänner och ignorerade. Syntax: /list display"
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1628
 msgid "Unknown subcommand"
 msgstr "Okänt underkommando"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1631
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5986,52 +6069,52 @@ msgstr ""
 "(valfritt)]. Underkommandon: addfriend addignore remove display clear. "
 "Skriv /help list [underkommando] för mer information."
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1634
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Skicka en smiley. Syntax: /emote [message]"
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1636
 msgid "Unknown command"
 msgstr "Okänt kommando"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1648
 msgid "Added to ignore list: "
 msgstr "Lagd i ignoreralistan: "
 
-#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
+#: src/menu_events.cpp:1650 src/menu_events.cpp:1657 src/menu_events.cpp:1664
 msgid "Invalid username: "
 msgstr "Ogiltigt användarnamn: "
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1655
 msgid "Added to friends list: "
 msgstr "Lagd i vänlistan: "
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1662
 msgid "Removed from list: "
 msgstr "Borttagen från listan: "
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
 msgstr "Det finns inga spelare på dina listor över vänner och ignorerade."
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1698
 msgid "Removed from ignore list: "
 msgstr "Borttagen från ignoreralistan: "
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1701
 msgid "Removed from friends list: "
 msgstr "Borttagen från vänlistan: "
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 msgid "Unknown command: "
 msgstr "Okänt kommando: "
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1818
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Kunde inte finna etikett eller trupp som innehöll textsträngen '$search'."
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1969
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
@@ -6164,12 +6247,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2612
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2619
 msgid ")"
 msgstr ")"
 
@@ -6826,15 +6909,15 @@ msgstr "Läs mer"
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjälp Wesnoth genom att skicka oss information"
 
-#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
+#: src/unit.cpp:2391 src/unit.cpp:2562 src/unit.cpp:2617
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2488 src/unit.cpp:2599
+#: src/unit.cpp:2479 src/unit.cpp:2590
 msgid "XP to advance"
 msgstr "EP till befordran"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2596
 #, fuzzy
 msgid "/level"
 msgstr "nivå"
@@ -6893,18 +6976,12 @@ msgstr "Aktivera uppladdning av spelsammanställningar"
 #~ msgid "Village Elder"
 #~ msgstr "Byguld: "
 
-#~ msgid "mace"
-#~ msgstr "spikklubba"
-
 #, fuzzy
 #~ msgid "Young Peasant"
 #~ msgstr "Bonde"
 
 #~ msgid "club"
 #~ msgstr "klubba"
-
-#~ msgid "sling"
-#~ msgstr "slunga"
 
 #~ msgid "female^Footpad"
 #~ msgstr "Stigman"
@@ -6923,18 +7000,12 @@ msgstr "Aktivera uppladdning av spelsammanställningar"
 #~ msgid "dagger"
 #~ msgstr "dolk"
 
-#~ msgid "bow"
-#~ msgstr "pilbåge"
-
 #~ msgid "Peasant"
 #~ msgstr "Bonde"
 
 #, fuzzy
 #~ msgid "Peasant Trapper"
 #~ msgstr "Pälsjägare"
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- Wesnoths krönika"
 
 #~ msgid "short sword"
 #~ msgstr "kortsvärd"
@@ -7912,9 +7983,6 @@ msgstr "Aktivera uppladdning av spelsammanställningar"
 #~ msgstr ""
 #~ "De bland drakfolket som bemästrar svärdet tas upp i en särskild orden. "
 #~ "Ordens tecken är den svarta och vita krigsmålning som de bär i strid."
-
-#~ msgid "sword"
-#~ msgstr "svärd"
 
 #~ msgid "Drake Burner"
 #~ msgstr "Sotdrake"
@@ -9674,9 +9742,6 @@ msgstr "Aktivera uppladdning av spelsammanställningar"
 #~ msgid "missile"
 #~ msgstr "projektil"
 
-#~ msgid "female^Mage"
-#~ msgstr "Magiker"
-
 #~ msgid "Arch Mage"
 #~ msgstr "Ärkemagiker"
 
@@ -9903,9 +9968,6 @@ msgstr "Aktivera uppladdning av spelsammanställningar"
 
 #~ msgid "female^Mage of Light"
 #~ msgstr "Ljusets magiker"
-
-#~ msgid "Outlaw"
-#~ msgstr "Fredlös"
 
 #~ msgid ""
 #~ "After some years of service, former 'footpads' rise up in the ranks of "

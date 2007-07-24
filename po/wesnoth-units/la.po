@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-24 23:30+0200\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -24,12 +24,12 @@ msgstr "Navis Veligera"
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
 
-#: data/core/units/boats/Galleon.cfg:22 data/core/units/boats/Galleon.cfg:23
+#: data/core/units/boats/Galleon.cfg:22
 msgid "dummy"
 msgstr "vacuus"
 
 #: data/core/units/wose/Wose.cfg:34 data/core/units/wose/Ancient.cfg:96
-#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:24
+#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:23
 #: data/core/units/elves/Enchantress.cfg:28
 #: data/core/units/elves/Enchantress.cfg:73 data/core/units/elves/Druid.cfg:30
 #: data/core/units/elves/Druid.cfg:69 data/core/units/elves/Shyde.cfg:31
@@ -198,9 +198,9 @@ msgstr "ballista"
 #: data/core/units/goblins/Impaler.cfg:27
 #: data/core/units/goblins/Impaler.cfg:207
 #: data/core/units/undead/Skeleton_Archer.cfg:74
+#: data/core/units/undead/Skele_Banebow.cfg:73
 #: data/core/units/undead/Skele_Chocobone.cfg:28
 #: data/core/units/undead/Skele_Death_Knight.cfg:92
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:73
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:84
 msgid "pierce"
 msgstr "transfigere"
@@ -332,6 +332,7 @@ msgstr "ungues"
 #: data/core/units/undead/Bat_Blood.cfg:55
 #: data/core/units/undead/Corpse_Necrophage.cfg:38
 #: data/core/units/undead/Skele_Deathblade.cfg:46
+#: data/core/units/undead/Skele_Banebow.cfg:34
 #: data/core/units/undead/Skele_Revenant.cfg:33
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:56
 #: data/core/units/undead/Spirit_Shadow.cfg:30
@@ -339,7 +340,6 @@ msgstr "ungues"
 #: data/core/units/undead/Corpse_Ghoul.cfg:70
 #: data/core/units/undead/Skele_Death_Knight.cfg:48
 #: data/core/units/undead/Bat_Vampire.cfg:69
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:34
 #: data/core/units/undead/Skele_Draug.cfg:34
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:45
 msgid "blade"
@@ -927,8 +927,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman.cfg:28
 #: data/core/units/humans/Outlaw_Trapper.cfg:70
 #: data/core/units/humans/Outlaw_Trapper.cfg:71
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:31
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:32
+#: data/core/units/undead/Skele_Banebow.cfg:31
+#: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:42
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:43
 msgid "dagger"
@@ -1252,8 +1252,8 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Trapper.cfg:140
 #: data/core/units/undead/Skeleton_Archer.cfg:71
 #: data/core/units/undead/Skeleton_Archer.cfg:72
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:70
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:71
+#: data/core/units/undead/Skele_Banebow.cfg:70
+#: data/core/units/undead/Skele_Banebow.cfg:71
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:81
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:82
 msgid "bow"
@@ -4645,6 +4645,29 @@ msgstr ""
 msgid "plague staff"
 msgstr "virga pestilentiae"
 
+#: data/core/units/undead/Skele_Banebow.cfg:4
+#, fuzzy
+msgid "Banebow"
+msgstr "arcus"
+
+#: data/core/units/undead/Skele_Banebow.cfg:19
+#, fuzzy
+msgid ""
+"The most powerful of the undead archers invariably end up being those who "
+"were themselves archers in their previous life. They wander the fields of "
+"battle, guided by the fading memory of their former skill, neither knowing, "
+"nor caring what their purpose, or foes be. They are driven only by a malice "
+"borne of their empty and tortured existence.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Potentissimi sagittariorum inmortuorum sunt qui ipsi sagittarii in vita "
+"erunt. Errant per campos proelii, ducti a memoria peritiae prioris suae, "
+"nescientes et nil morentes quod prositum, qui hostes sint. Coguntur tantum a "
+"malitia natu ex angore existentiae suae vacuae et interruptae.\n"
+"\n"
+"Nota Praecipua:"
+
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "Coniector Ossium"
@@ -4772,28 +4795,6 @@ msgstr ""
 "excitaverunt tantum coniecturas facere possunt de historia eorum. Neglectis "
 "talibus interrogationibus Reveniens instrumentum potens est in proelio: "
 "bellator sine metu qui dolorem non sentit et usque ad finem pugnabit.\n"
-"\n"
-"Nota Praecipua:"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:4
-msgid "Soul Shooter"
-msgstr "Coniector Animarum"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:19
-#, fuzzy
-msgid ""
-"The most powerful of the undead archers invariably end up being those who "
-"were themselves archers in their previous life. They wander the fields of "
-"battle, guided by the fading memory of their former skill, neither knowing, "
-"nor caring what their purpose, or foes be. They are driven only by a malice "
-"borne of their empty and tortured existence.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Potentissimi sagittariorum inmortuorum sunt qui ipsi sagittarii in vita "
-"erunt. Errant per campos proelii, ducti a memoria peritiae prioris suae, "
-"nescientes et nil morentes quod prositum, qui hostes sint. Coguntur tantum a "
-"malitia natu ex angore existentiae suae vacuae et interruptae.\n"
 "\n"
 "Nota Praecipua:"
 
@@ -5072,3 +5073,6 @@ msgstr ""
 "consuetudinem motu, et lenta sunt.\n"
 "\n"
 "Nota Praecipua:"
+
+#~ msgid "Soul Shooter"
+#~ msgstr "Coniector Animarum"

@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:48+0200\n"
+"POT-Creation-Date: 2007-07-24 23:29+0200\n"
 "PO-Revision-Date: 2006-12-15 16:18+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -179,6 +179,10 @@ msgstr "Συνδεθείτε με τον Επίσημο Εξυπηρέτη"
 #: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr ""
+
+#: data/_main.cfg:148
+msgid "-- The Tome of Wesnoth"
+msgstr " Η βίβλος του Γουέσνοθ "
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -2672,45 +2676,45 @@ msgstr "Αυτό τ ό δαχτυλίδι θά γιατρεύει τόν κάτ�
 msgid "Can't set abilities yet, sorry."
 msgstr "Λυπάμαι, δέν μπορώ ακόμα να ρυθμίσω ικανότητες. "
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:577
 msgid "Ring of Slowness"
 msgstr "Δαχτυλίδι βραδύτητας."
 
-#: data/core/macros/items.cfg:579
+#: data/core/macros/items.cfg:580
 msgid "The bearer of this ring is slowed."
 msgstr "Ο κάτοχος του δαχτυλιδιού αυτού επιβραδύνεται. "
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:615
 msgid "Staff of Swiftness"
 msgstr ""
 
-#: data/core/macros/items.cfg:617
+#: data/core/macros/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
 msgstr ""
 
-#: data/core/macros/items.cfg:618
+#: data/core/macros/items.cfg:619
 msgid "Only magical beings can wield such an object."
 msgstr "Μόνο μαγικά όντα μπορούν νά φέρουν αυτό τό αντικείμενο."
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:653
 msgid "Storm Trident"
 msgstr "Τρίαινα θύελλας"
 
-#: data/core/macros/items.cfg:655
+#: data/core/macros/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 " Αυτή η τρίαινα επιτρέπει σε θαλασσανθρώπος να ρίχνουν ηλεκτρικές εκκενώσεις "
 "στούς αντιπάλους τους"
 
-#: data/core/macros/items.cfg:656
+#: data/core/macros/items.cfg:657
 msgid "Only the mermen can use this item!"
 msgstr "Μόνο οιθαλασσάνθρωποι μπορούν να χρησιμοποιήσουν αυτό τό αντικείμενο. "
 
-#: data/core/macros/items.cfg:668
+#: data/core/macros/items.cfg:669
 msgid "storm trident"
 msgstr "τρίαινα θύελλας"
 
-#: data/core/macros/items.cfg:742
+#: data/core/macros/items.cfg:743
 msgid "Zap"
 msgstr ""
 
@@ -3610,6 +3614,91 @@ msgstr "Αδιάβατα Βουνά"
 msgid "Impassable Desert Mountains"
 msgstr "Αδιάβατα Βουνά"
 
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
+"can be fearful in their element but no real match for professional law "
+"enforcment forces."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:30
+#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:42
+msgid "mace"
+msgstr "σφύρα"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:32
+#: data/core/units/humans/Outlaw_Fugitive.cfg:79
+#: data/core/units/humans/Outlaw_Highwayman.cfg:44
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "κρούση"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:77
+#: data/core/units/humans/Outlaw_Fugitive.cfg:78
+msgid "sling"
+msgstr "σφεντόνα"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:126
+#, fuzzy
+msgid "female^Fugitive"
+msgstr "Πολεμήστρια"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:129
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
+"beauty is exceeded only by their dangerousness."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+#, fuzzy
+msgid "Highwayman"
+msgstr "Λογχοφόρος"
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+msgid ""
+"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
+"deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:5
+#, fuzzy
+msgid "Outlaw Ranger"
+msgstr "Παράνομος"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:25
+msgid ""
+"Rangers are wild men and masters of forest and hills.  They are excellent "
+"trackers, scouts, and archers, moving freely through the countryside under "
+"the cover of night.  Most rulers are afraid of rangers and would rather put "
+"them in the dungeon than put their abilities to use."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:52
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+msgid "sword"
+msgstr "σπαθί"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "λεπίδα"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:99
+#: data/core/units/humans/Outlaw_Ranger.cfg:100
+msgid "bow"
+msgstr "τόξο"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "τρύπημα"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "εύκολο"
@@ -3774,18 +3863,6 @@ msgstr "σώμα με σώμα"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "εξ αποστάσεως"
-
-#: data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "λεπίδα"
-
-#: data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "τρύπημα"
-
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "κρούση"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4107,6 +4184,13 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
+#: data/hardwired/tips.cfg:39
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
 msgid "Menu"
@@ -4122,8 +4206,8 @@ msgid "End Turn"
 msgstr "Τέλος Γύρου"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
-#: src/unit.cpp:2583
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2428
+#: src/unit.cpp:2574
 msgid "HP"
 msgstr "Βαθμοί Υγείας"
 
@@ -4249,68 +4333,68 @@ msgstr "+"
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
 msgstr "Δέν έχεις αρχηγό γιά να στρατολογήσεις "
 
-#: src/actions.cpp:118
+#: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Πρέπει νά έχεις τόν αρχηγό σέ κάστρο η στρατόπεδο γιά να στρατολογήσεις η νά "
 "ανακαλέσεις μονάδες"
 
-#: src/actions.cpp:137
+#: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Δέν υπάρχουν κενές θέσεις στό κάστρο γιά να στρατολογήσεις μονάδες"
 
-#: src/actions.cpp:883 src/actions.cpp:1114
+#: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
 msgstr "δηλητηριασμένος"
 
-#: src/actions.cpp:887 src/actions.cpp:1118
+#: src/actions.cpp:896 src/actions.cpp:1127
 msgid "slowed"
 msgstr "επιβραδυμένος"
 
-#: src/actions.cpp:893 src/actions.cpp:1124
+#: src/actions.cpp:902 src/actions.cpp:1133
 msgid "stone"
 msgstr "πέτρα"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2040
 msgid "Ambushed!"
 msgstr "Επεσες σέ ενέδρα "
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2078
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Εθεάθη φιλική μονάδα"
 msgstr[1] "Εθεάθη φιλική μονάδα"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2081
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Εθεάθη εχθρική μονάδα!"
 msgstr[1] "Εθεάθη εχθρική μονάδα!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2086
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2087
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2088
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2097
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(πάτα  $hotkey γιά νά συνεχίσεις) "
@@ -5106,7 +5190,7 @@ msgstr "Επίπεδο"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
+#: src/menu_events.cpp:319 src/unit.cpp:2461 src/unit.cpp:2582
 msgid "Moves"
 msgstr "Κινήσεις"
 
@@ -5266,73 +5350,73 @@ msgstr[1] ""
 "Πρέπει νά έχεις τόν αρχηγό σέ κάστρο η στρατόπεδο γιά να στρατολογήσεις η νά "
 "ανακαλέσεις μονάδες"
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1328
 msgid "Rename Unit"
 msgstr "Μετονομασία Μονάδας"
 
-#: src/menu_events.cpp:1406
+#: src/menu_events.cpp:1410
 msgid "Place Label"
 msgstr "Δώσε Ονομα"
 
-#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
+#: src/menu_events.cpp:1413 src/menu_events.cpp:1416
 msgid "Label:"
 msgstr "Ονομα:"
 
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1419
 #, fuzzy
 msgid "Team only"
 msgstr "Ομάδα"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1520
 msgid "Search"
 msgstr "Ερευνα"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1563
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1614
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1618
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1620
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1622
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1626
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1628
 msgid "Unknown subcommand"
 msgstr ""
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1631
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5340,51 +5424,51 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1634
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1636
 msgid "Unknown command"
 msgstr "Άγνωστη ενέργεια"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1648
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
+#: src/menu_events.cpp:1650 src/menu_events.cpp:1657 src/menu_events.cpp:1664
 msgid "Invalid username: "
 msgstr "Μη έγκυρο όνομα:"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1655
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1662
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1698
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1701
 msgid "Removed from friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 msgid "Unknown command: "
 msgstr "Άγνωστη ενέργεια:"
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1818
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1969
 msgid "prompt^Command:"
 msgstr ""
 
@@ -5516,12 +5600,12 @@ msgid "Normal"
 msgstr "Κανονικό"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2612
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2619
 msgid ")"
 msgstr ")"
 
@@ -6184,15 +6268,15 @@ msgstr "Περισσότερα"
 msgid "Help Wesnoth by sending us information"
 msgstr "Βοηθήστε μας στέλνοντάς μας πληροφορίες"
 
-#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
+#: src/unit.cpp:2391 src/unit.cpp:2562 src/unit.cpp:2617
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2488 src/unit.cpp:2599
+#: src/unit.cpp:2479 src/unit.cpp:2590
 msgid "XP to advance"
 msgstr "απαιτούμενες μονάδες εμπειρίας γιά εξέλιξη"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2596
 #, fuzzy
 msgid "/level"
 msgstr "επίπεδο"
@@ -6249,18 +6333,12 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ msgid "Village Elder"
 #~ msgstr "Χρυσάφι Χωριού: "
 
-#~ msgid "mace"
-#~ msgstr "σφύρα"
-
 #, fuzzy
 #~ msgid "Young Peasant"
 #~ msgstr "Χωριάτης"
 
 #~ msgid "club"
 #~ msgstr "ρόπαλο"
-
-#~ msgid "sling"
-#~ msgstr "σφεντόνα"
 
 #~ msgid "female^Footpad"
 #~ msgstr "Γοργοπόδαρη"
@@ -6280,9 +6358,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ msgid "dagger"
 #~ msgstr "στιλέτο"
 
-#~ msgid "bow"
-#~ msgstr "τόξο"
-
 #~ msgid "Peasant"
 #~ msgstr "Χωριάτης"
 
@@ -6299,9 +6374,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ "Οι παγιδευτές συνήθως προμηθεύουν φαγητό στούς ληστές καί παράνομους. Η "
 #~ "εμπιερά τους από το κυνήγι τους κάνει ιδιαίτερα πολύτιμους τη νύχτα καί "
 #~ "σέ δάση καί βάλτους."
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr " Η βίβλος του Γουέσνοθ "
 
 #~ msgid "short sword"
 #~ msgstr "κοντό σπαθί"
@@ -6566,9 +6638,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ "Τά δρακοειδή πού γίνονται μάστορες στήν χρήση του σπαθιού γίνονται δεκτά "
 #~ "σέ ένα ειδικό τάγμα. Το έμβλημά του είναι ασπρόμαυρη πολεμική μπογιά πού "
 #~ "φορούν στή μάχη."
-
-#~ msgid "sword"
-#~ msgstr "σπαθί"
 
 #~ msgid "Drake Burner"
 #~ msgstr "Δρακοειδές Καυστήρας"
@@ -7167,9 +7236,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 
 #~ msgid "female^Mage of Light"
 #~ msgstr "Μάγισσα του Φωτός"
-
-#~ msgid "Outlaw"
-#~ msgstr "Παράνομος"
 
 #~ msgid "Assassin"
 #~ msgstr "Δολοφόνος"
@@ -7901,9 +7967,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #~ "Ειδικές Σημειώσεις: οι μπάλλες φωτιάς του Μεγάλου Μάγου είναι μαγικές, "
 #~ "καί πάντα έχουν μιά υψηλή πιθανότητα να χτυπήσουν τόν αντίπαλο."
 
-#~ msgid "female^Fighter"
-#~ msgstr "Πολεμήστρια"
-
 #, fuzzy
 #~ msgid "Yes"
 #~ msgstr "Ναι!"
@@ -8113,10 +8176,6 @@ msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
 #, fuzzy
 #~ msgid "Eowynial"
 #~ msgstr "πιστός"
-
-#, fuzzy
-#~ msgid "Shaman"
-#~ msgstr "Λογχοφόρος"
 
 #, fuzzy
 #~ msgid "Golir"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-24 23:30+0200\n"
 "PO-Revision-Date: 2007-05-15 02:45+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -33,12 +33,12 @@ msgstr "Галеон"
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
 
-#: data/core/units/boats/Galleon.cfg:22 data/core/units/boats/Galleon.cfg:23
+#: data/core/units/boats/Galleon.cfg:22
 msgid "dummy"
 msgstr "чучело"
 
 #: data/core/units/wose/Wose.cfg:34 data/core/units/wose/Ancient.cfg:96
-#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:24
+#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:23
 #: data/core/units/elves/Enchantress.cfg:28
 #: data/core/units/elves/Enchantress.cfg:73 data/core/units/elves/Druid.cfg:30
 #: data/core/units/elves/Druid.cfg:69 data/core/units/elves/Shyde.cfg:31
@@ -207,9 +207,9 @@ msgstr "балиста"
 #: data/core/units/goblins/Impaler.cfg:27
 #: data/core/units/goblins/Impaler.cfg:207
 #: data/core/units/undead/Skeleton_Archer.cfg:74
+#: data/core/units/undead/Skele_Banebow.cfg:73
 #: data/core/units/undead/Skele_Chocobone.cfg:28
 #: data/core/units/undead/Skele_Death_Knight.cfg:92
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:73
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:84
 msgid "pierce"
 msgstr "пробождане"
@@ -340,6 +340,7 @@ msgstr "нокти"
 #: data/core/units/undead/Bat_Blood.cfg:55
 #: data/core/units/undead/Corpse_Necrophage.cfg:38
 #: data/core/units/undead/Skele_Deathblade.cfg:46
+#: data/core/units/undead/Skele_Banebow.cfg:34
 #: data/core/units/undead/Skele_Revenant.cfg:33
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:56
 #: data/core/units/undead/Spirit_Shadow.cfg:30
@@ -347,7 +348,6 @@ msgstr "нокти"
 #: data/core/units/undead/Corpse_Ghoul.cfg:70
 #: data/core/units/undead/Skele_Death_Knight.cfg:48
 #: data/core/units/undead/Bat_Vampire.cfg:69
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:34
 #: data/core/units/undead/Skele_Draug.cfg:34
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:45
 msgid "blade"
@@ -955,8 +955,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman.cfg:28
 #: data/core/units/humans/Outlaw_Trapper.cfg:70
 #: data/core/units/humans/Outlaw_Trapper.cfg:71
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:31
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:32
+#: data/core/units/undead/Skele_Banebow.cfg:31
+#: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:42
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:43
 msgid "dagger"
@@ -1290,8 +1290,8 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Trapper.cfg:140
 #: data/core/units/undead/Skeleton_Archer.cfg:71
 #: data/core/units/undead/Skeleton_Archer.cfg:72
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:70
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:71
+#: data/core/units/undead/Skele_Banebow.cfg:70
+#: data/core/units/undead/Skele_Banebow.cfg:71
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:81
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:82
 msgid "bow"
@@ -4872,6 +4872,30 @@ msgstr ""
 msgid "plague staff"
 msgstr "чумен жезъл"
 
+#: data/core/units/undead/Skele_Banebow.cfg:4
+#, fuzzy
+msgid "Banebow"
+msgstr "лък"
+
+#: data/core/units/undead/Skele_Banebow.cfg:19
+#, fuzzy
+msgid ""
+"The most powerful of the undead archers invariably end up being those who "
+"were themselves archers in their previous life. They wander the fields of "
+"battle, guided by the fading memory of their former skill, neither knowing, "
+"nor caring what their purpose, or foes be. They are driven only by a malice "
+"borne of their empty and tortured existence.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Най-силните стрелци на неживите съвсем разбираемо са тези, които са били "
+"стрелци и приживе. Те обикалят бойните полета, водени от избледняващия "
+"спомен за предишното им умение, не знаят нито се интересуват каква е целта "
+"на съществуването им или кой е врагът им. Води ги единствено злобата на "
+"празното им и неестествено съществуване.\n"
+"\n"
+"Бележки:"
+
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "Стрелец с кости"
@@ -4999,29 +5023,6 @@ msgstr ""
 "са въздигнати за лъжливи живот. Дори магьосникът, който ги е въздигнал, може "
 "само да предполага в какво време са живели. Като оставим това настрана обаче "
 "Призованите са мощно оръжие в битка – не чувстват болка и се бият до край.\n"
-"\n"
-"Бележки:"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:4
-msgid "Soul Shooter"
-msgstr "Душегубец"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:19
-#, fuzzy
-msgid ""
-"The most powerful of the undead archers invariably end up being those who "
-"were themselves archers in their previous life. They wander the fields of "
-"battle, guided by the fading memory of their former skill, neither knowing, "
-"nor caring what their purpose, or foes be. They are driven only by a malice "
-"borne of their empty and tortured existence.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Най-силните стрелци на неживите съвсем разбираемо са тези, които са били "
-"стрелци и приживе. Те обикалят бойните полета, водени от избледняващия "
-"спомен за предишното им умение, не знаят нито се интересуват каква е целта "
-"на съществуването им или кой е врагът им. Води ги единствено злобата на "
-"празното им и неестествено съществуване.\n"
 "\n"
 "Бележки:"
 
@@ -5308,3 +5309,6 @@ msgstr ""
 "нито, желанието нито навика да се местят от едно място на друго.\n"
 "\n"
 "Бележки:"
+
+#~ msgid "Soul Shooter"
+#~ msgstr "Душегубец"

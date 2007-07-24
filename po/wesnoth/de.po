@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:48+0200\n"
+"POT-Creation-Date: 2007-07-24 23:29+0200\n"
 "PO-Revision-Date: 2007-07-19 12:17+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -38,6 +38,10 @@ msgstr "Offizieller Wesnothserver"
 #: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr "Alternativer Wesnothserver"
+
+#: data/_main.cfg:148
+msgid "-- The Tome of Wesnoth"
+msgstr "-- Das Buch von Wesnoth"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -2966,45 +2970,45 @@ msgstr "Dieser Ring wird den Träger jede Runde ein wenig heilen."
 msgid "Can't set abilities yet, sorry."
 msgstr "Entschuldigt, aber ich kann die Fähigkeiten noch nicht festlegen."
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:577
 msgid "Ring of Slowness"
 msgstr "Ring der Langsamkeit"
 
-#: data/core/macros/items.cfg:579
+#: data/core/macros/items.cfg:580
 msgid "The bearer of this ring is slowed."
 msgstr "Der Träger dieses Ringes wird verlangsamt."
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:615
 msgid "Staff of Swiftness"
 msgstr "Stab der Geschwindigkeit"
 
-#: data/core/macros/items.cfg:617
+#: data/core/macros/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
 msgstr "Dieser Stab gewährt dem Träger Schnelligkeit!"
 
-#: data/core/macros/items.cfg:618
+#: data/core/macros/items.cfg:619
 msgid "Only magical beings can wield such an object."
 msgstr "Nur magische Wesen können solch ein Objekt richtig handhaben."
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:653
 msgid "Storm Trident"
 msgstr "Dreizack des Sturms"
 
-#: data/core/macros/items.cfg:655
+#: data/core/macros/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Dieser Dreizack erlaubt es einem Wassermann, einen elektrischen Blitz auf "
 "seine Feinde zu schießen!"
 
-#: data/core/macros/items.cfg:656
+#: data/core/macros/items.cfg:657
 msgid "Only the mermen can use this item!"
 msgstr "Nur Wassermänner können diesen Gegenstand nutzen!"
 
-#: data/core/macros/items.cfg:668
+#: data/core/macros/items.cfg:669
 msgid "storm trident"
 msgstr "Dreizack des Sturms"
 
-#: data/core/macros/items.cfg:742
+#: data/core/macros/items.cfg:743
 msgid "Zap"
 msgstr "Zap"
 
@@ -4345,6 +4349,92 @@ msgstr "Unpassierbare Berge"
 msgid "Impassable Desert Mountains"
 msgstr "Unpassierbare Wüstenberge"
 
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
+"can be fearful in their element but no real match for professional law "
+"enforcment forces."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:30
+#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:42
+#, fuzzy
+msgid "mace"
+msgstr "Rasse"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:32
+#: data/core/units/humans/Outlaw_Fugitive.cfg:79
+#: data/core/units/humans/Outlaw_Highwayman.cfg:44
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "Wucht"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:77
+#: data/core/units/humans/Outlaw_Fugitive.cfg:78
+#, fuzzy
+msgid "sling"
+msgstr "Heilung"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:126
+#, fuzzy
+msgid "female^Fugitive"
+msgstr "schnell"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:129
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
+"beauty is exceeded only by their dangerousness."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+msgid "Highwayman"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+msgid ""
+"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
+"deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:5
+msgid "Outlaw Ranger"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:25
+msgid ""
+"Rangers are wild men and masters of forest and hills.  They are excellent "
+"trackers, scouts, and archers, moving freely through the countryside under "
+"the cover of night.  Most rulers are afraid of rangers and would rather put "
+"them in the dungeon than put their abilities to use."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:52
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+#, fuzzy
+msgid "sword"
+msgstr "Schwarm"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "Klinge"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:99
+#: data/core/units/humans/Outlaw_Ranger.cfg:100
+msgid "bow"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "Stich"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Einfach"
@@ -4508,18 +4598,6 @@ msgstr "Nahkampf"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "Fernkampf"
-
-#: data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "Klinge"
-
-#: data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "Stich"
-
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "Wucht"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4905,6 +4983,13 @@ msgstr ""
 "verwundet, so dass die unerfahrene Einheit den vernichtenden Schlag "
 "ausführen kann."
 
+#: data/hardwired/tips.cfg:39
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
 msgid "Menu"
@@ -4920,8 +5005,8 @@ msgid "End Turn"
 msgstr "Zug beenden"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
-#: src/unit.cpp:2583
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2428
+#: src/unit.cpp:2574
 msgid "HP"
 msgstr "LP"
 
@@ -5046,65 +5131,65 @@ msgstr "+  "
 msgid "Close"
 msgstr "Schließen"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
 msgstr ""
 "Euer Heerführer ist gefallen. Ihr könnt keine weiteren Einheiten ausbilden."
 
-#: src/actions.cpp:118
+#: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Euer Heerführer muss sich im Burgfried befinden, um Einheiten auszubilden."
 
-#: src/actions.cpp:137
+#: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
 
-#: src/actions.cpp:883 src/actions.cpp:1114
+#: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
 msgstr "vergiftet"
 
-#: src/actions.cpp:887 src/actions.cpp:1118
+#: src/actions.cpp:896 src/actions.cpp:1127
 msgid "slowed"
 msgstr "verlangsamt"
 
-#: src/actions.cpp:893 src/actions.cpp:1124
+#: src/actions.cpp:902 src/actions.cpp:1133
 msgid "stone"
 msgstr "versteinern"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2040
 msgid "Ambushed!"
 msgstr "Hinterhalt!"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2078
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Verbündete Einheit gesichtet"
 msgstr[1] "$friends verbündete Einheiten gesichtet"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2081
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Gegnerische Einheit gesichtet!"
 msgstr[1] "$enemies gegnerische Einheiten gesichtet!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2086
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 verbündete"
 msgstr[1] "$friends verbündete"
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2087
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 feindliche"
 msgstr[1] "$enemies feindliche"
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2088
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Einheiten gesichtet! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2097
 msgid "(press $hotkey to keep moving)"
 msgstr "(Drückt $hotkey um fortzufahren)"
 
@@ -5894,7 +5979,7 @@ msgstr "Stufe"
 msgid "unit list^Traits"
 msgstr "Fertigkeiten"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
+#: src/menu_events.cpp:319 src/unit.cpp:2461 src/unit.cpp:2582
 msgid "Moves"
 msgstr "BP"
 
@@ -6051,46 +6136,46 @@ msgstr[1] ""
 "Ihr benötigt mindestens $cost Goldstücke, um eine Einheit einberufen zu "
 "können."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Ihr habt Euren Zug noch nicht begonnen. Wollt Ihr diese Runde wirklich schon "
 "beenden?"
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Einige Eurer Einheiten verfügen noch über Bewegungspunkte. Wollt Ihr Euren "
 "Zug wirklich schon beenden?"
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1328
 msgid "Rename Unit"
 msgstr "Einheit umbenennen"
 
-#: src/menu_events.cpp:1406
+#: src/menu_events.cpp:1410
 msgid "Place Label"
 msgstr "Beschriftung erstellen"
 
-#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
+#: src/menu_events.cpp:1413 src/menu_events.cpp:1416
 msgid "Label:"
 msgstr "Beschriftung:"
 
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1419
 msgid "Team only"
 msgstr "Nur Mannschaft"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1520
 msgid "Search"
 msgstr "Suchen"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1563
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Kommandos: whisper list emote. Gebt /help [Kommando] ein, um weitere "
 "Informationen zu erhalten."
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1614
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6099,19 +6184,19 @@ msgstr ""
 "die ein Seite im Spiel kontrollieren. Verwendung: /whisper [Spitzname] "
 "[Nachricht]"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1618
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Fügt einen Benutzer zur Liste Eurer Freunde hinzu. Verwendung: /list "
 "addfriend [Argument]"
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1620
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Fügt einen Benutzer zur Liste der Benutzer hinzu, die Ihr ignoriert. "
 "Verwendung: /list ignore [Argument]"
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1622
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6119,23 +6204,23 @@ msgstr ""
 "Entfernt einen Benutzer aus der Liste der Benutzer, die Ihr ignoriert. "
 "Verwendung: /list remove [Argument]"
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 "Setzt die Liste Eurer Freunde und der Benutzer, die Ihr ignoriert, zurück. "
 "Verwendung: /list clear"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1626
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 "Zeigt die Eure Freunde und Benutzer, die von Euch ignoriert werden. "
 "Verwendung: /list display"
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1628
 msgid "Unknown subcommand"
 msgstr "Unbekanntes Unterkommando"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1631
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6147,56 +6232,56 @@ msgstr ""
 "remove display clear. Gebt /help list [Unterkommando] ein, um weitere "
 "Informationen zu erhalten."
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1634
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Sendet eine Emotion oder eine persönliche Handlung im Gespräch. Verwendung: /"
 "emote [Nachricht]"
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1636
 msgid "Unknown command"
 msgstr "Unbekanntes Kommando"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1648
 msgid "Added to ignore list: "
 msgstr "Zur Liste der zu ignorierenden Benutzer hinzugefügt:"
 
-#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
+#: src/menu_events.cpp:1650 src/menu_events.cpp:1657 src/menu_events.cpp:1664
 msgid "Invalid username: "
 msgstr "Ungültiger Benutzername:"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1655
 msgid "Added to friends list: "
 msgstr "Zur Freundesliste hinzugefügt:"
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1662
 msgid "Removed from list: "
 msgstr "Von der Liste der zu ignorierenden Benutzer entfernt:"
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 "Ihr habt keine Spieler auf Eurer Freundes- oder Ignorierliste eingetragen."
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1698
 msgid "Removed from ignore list: "
 msgstr "Von der Liste der zu ignorierenden Benutzer entfernt:"
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1701
 msgid "Removed from friends list: "
 msgstr "Von der Freundesliste entfernt:"
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 msgid "Unknown command: "
 msgstr "Unbekanntes Kommando: "
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1818
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Eine Beschriftung oder Einheit, deren Name »$search« enthält, konnte nicht "
 "gefunden werden."
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1969
 msgid "prompt^Command:"
 msgstr "Befehl:"
 
@@ -6329,12 +6414,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2612
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2619
 msgid ")"
 msgstr ")"
 
@@ -6997,15 +7082,15 @@ msgstr "Nächste Seite"
 msgid "Help Wesnoth by sending us information"
 msgstr "Helft Wesnoth, indem Ihr uns Informationen zukommen lasst"
 
-#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
+#: src/unit.cpp:2391 src/unit.cpp:2562 src/unit.cpp:2617
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2488 src/unit.cpp:2599
+#: src/unit.cpp:2479 src/unit.cpp:2590
 msgid "XP to advance"
 msgstr "EP pro Stufenanstieg"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2596
 msgid "/level"
 msgstr "/Stufe"
 
@@ -7062,14 +7147,6 @@ msgstr "Erlauben, dass Zusammenfassungen übertragen werden dürfen"
 #~ msgstr "Steuereinnahmen pro Dorf:"
 
 #, fuzzy
-#~ msgid "mace"
-#~ msgstr "Rasse"
-
-#, fuzzy
-#~ msgid "sling"
-#~ msgstr "Heilung"
-
-#, fuzzy
 #~ msgid "female^Footpad"
 #~ msgstr "loyal"
 
@@ -7084,6 +7161,3 @@ msgstr "Erlauben, dass Zusammenfassungen übertragen werden dürfen"
 #, fuzzy
 #~ msgid "dagger"
 #~ msgstr "Schaden"
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- Das Buch von Wesnoth"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-24 23:30+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -27,12 +27,12 @@ msgstr "大帆船"
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
 
-#: data/core/units/boats/Galleon.cfg:22 data/core/units/boats/Galleon.cfg:23
+#: data/core/units/boats/Galleon.cfg:22
 msgid "dummy"
 msgstr "傀儡"
 
 #: data/core/units/wose/Wose.cfg:34 data/core/units/wose/Ancient.cfg:96
-#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:24
+#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:23
 #: data/core/units/elves/Enchantress.cfg:28
 #: data/core/units/elves/Enchantress.cfg:73 data/core/units/elves/Druid.cfg:30
 #: data/core/units/elves/Druid.cfg:69 data/core/units/elves/Shyde.cfg:31
@@ -200,9 +200,9 @@ msgstr "巨弩"
 #: data/core/units/goblins/Impaler.cfg:27
 #: data/core/units/goblins/Impaler.cfg:207
 #: data/core/units/undead/Skeleton_Archer.cfg:74
+#: data/core/units/undead/Skele_Banebow.cfg:73
 #: data/core/units/undead/Skele_Chocobone.cfg:28
 #: data/core/units/undead/Skele_Death_Knight.cfg:92
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:73
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:84
 msgid "pierce"
 msgstr "穿刺"
@@ -334,6 +334,7 @@ msgstr "爪"
 #: data/core/units/undead/Bat_Blood.cfg:55
 #: data/core/units/undead/Corpse_Necrophage.cfg:38
 #: data/core/units/undead/Skele_Deathblade.cfg:46
+#: data/core/units/undead/Skele_Banebow.cfg:34
 #: data/core/units/undead/Skele_Revenant.cfg:33
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:56
 #: data/core/units/undead/Spirit_Shadow.cfg:30
@@ -341,7 +342,6 @@ msgstr "爪"
 #: data/core/units/undead/Corpse_Ghoul.cfg:70
 #: data/core/units/undead/Skele_Death_Knight.cfg:48
 #: data/core/units/undead/Bat_Vampire.cfg:69
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:34
 #: data/core/units/undead/Skele_Draug.cfg:34
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:45
 msgid "blade"
@@ -905,8 +905,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman.cfg:28
 #: data/core/units/humans/Outlaw_Trapper.cfg:70
 #: data/core/units/humans/Outlaw_Trapper.cfg:71
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:31
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:32
+#: data/core/units/undead/Skele_Banebow.cfg:31
+#: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:42
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:43
 msgid "dagger"
@@ -1219,8 +1219,8 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Trapper.cfg:140
 #: data/core/units/undead/Skeleton_Archer.cfg:71
 #: data/core/units/undead/Skeleton_Archer.cfg:72
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:70
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:71
+#: data/core/units/undead/Skele_Banebow.cfg:70
+#: data/core/units/undead/Skele_Banebow.cfg:71
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:81
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:82
 msgid "bow"
@@ -4482,6 +4482,28 @@ msgstr ""
 msgid "plague staff"
 msgstr "瘟疫法杖"
 
+#: data/core/units/undead/Skele_Banebow.cfg:4
+#, fuzzy
+msgid "Banebow"
+msgstr "弓"
+
+#: data/core/units/undead/Skele_Banebow.cfg:19
+#, fuzzy
+msgid ""
+"The most powerful of the undead archers invariably end up being those who "
+"were themselves archers in their previous life. They wander the fields of "
+"battle, guided by the fading memory of their former skill, neither knowing, "
+"nor caring what their purpose, or foes be. They are driven only by a malice "
+"borne of their empty and tortured existence.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"不死族的弓箭手生前就都是弓箭手。他们在战场上徘徊，带着对过去技艺淡淡的回忆，"
+"全然不知自己的目的与敌人，对此也毫不在乎。空虚而不连贯的生命带给他们的痛苦驱"
+"使他们战斗。\n"
+"\n"
+"特别提示："
+
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "枯骨射手"
@@ -4601,27 +4623,6 @@ msgstr ""
 "这些被称为亡魂的生物以前是伟大的战士，忘却了生前的记忆，接受了虚假的生命，再"
 "次来到战场作战。召唤他们出来的巫师也只能参测他们的过去。无需多言，亡魂是强力"
 "的战斗工具：他们是不畏恐惧的战士，感受不到疼痛，一直战斗直到最后。\n"
-"\n"
-"特别提示："
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:4
-msgid "Soul Shooter"
-msgstr "灵魂射手"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:19
-#, fuzzy
-msgid ""
-"The most powerful of the undead archers invariably end up being those who "
-"were themselves archers in their previous life. They wander the fields of "
-"battle, guided by the fading memory of their former skill, neither knowing, "
-"nor caring what their purpose, or foes be. They are driven only by a malice "
-"borne of their empty and tortured existence.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"不死族的弓箭手生前就都是弓箭手。他们在战场上徘徊，带着对过去技艺淡淡的回忆，"
-"全然不知自己的目的与敌人，对此也毫不在乎。空虚而不连贯的生命带给他们的痛苦驱"
-"使他们战斗。\n"
 "\n"
 "特别提示："
 
@@ -4883,3 +4884,6 @@ msgstr ""
 "他们完全不好战，但拥有强大的力量。然而他们不善于迅速的移动。\n"
 "\n"
 "特别提示："
+
+#~ msgid "Soul Shooter"
+#~ msgstr "灵魂射手"

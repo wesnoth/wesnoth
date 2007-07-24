@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:48+0200\n"
+"POT-Creation-Date: 2007-07-24 23:29+0200\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -44,6 +44,10 @@ msgstr "Resmi sunucuya gir"
 #: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr ""
+
+#: data/_main.cfg:148
+msgid "-- The Tome of Wesnoth"
+msgstr "-- Wesnoth Kitabı"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -2816,44 +2820,44 @@ msgstr "Bu yüzük taşıyanı her sırada biraz tedavi edecektir."
 msgid "Can't set abilities yet, sorry."
 msgstr "Kabiliyetler henüz ayarlanamıyor, üzgünüm."
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:577
 msgid "Ring of Slowness"
 msgstr "Yavaşlık yüzüğü"
 
-#: data/core/macros/items.cfg:579
+#: data/core/macros/items.cfg:580
 msgid "The bearer of this ring is slowed."
 msgstr "Bu yüzüğü taşıyan kişi yavaşlar."
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:615
 msgid "Staff of Swiftness"
 msgstr "Çeviklik sopası"
 
-#: data/core/macros/items.cfg:617
+#: data/core/macros/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
 msgstr "Bu sopa taşıyana çevikleşmiş hareket kabiliyeti sağlar."
 
-#: data/core/macros/items.cfg:618
+#: data/core/macros/items.cfg:619
 msgid "Only magical beings can wield such an object."
 msgstr "Sadece büyücü olanlar bu maddeyi kullanabilir."
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:653
 msgid "Storm Trident"
 msgstr "Üç dişli fırtına zıpkını"
 
-#: data/core/macros/items.cfg:655
+#: data/core/macros/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Bu üç dişli zıpkın bir su adamına düşmalarına elektrik oku atma imkanı verir."
 
-#: data/core/macros/items.cfg:656
+#: data/core/macros/items.cfg:657
 msgid "Only the mermen can use this item!"
 msgstr "Sadece deniz adamları bu aleti kullanabilirler!"
 
-#: data/core/macros/items.cfg:668
+#: data/core/macros/items.cfg:669
 msgid "storm trident"
 msgstr "üç dişli rüzgar zıpkını"
 
-#: data/core/macros/items.cfg:742
+#: data/core/macros/items.cfg:743
 msgid "Zap"
 msgstr "Zap"
 
@@ -3779,6 +3783,90 @@ msgstr "Aşılmaz Dağlar"
 msgid "Impassable Desert Mountains"
 msgstr "Aşılmaz Dağlar"
 
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
+"can be fearful in their element but no real match for professional law "
+"enforcment forces."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:30
+#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:42
+msgid "mace"
+msgstr "topuz"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:32
+#: data/core/units/humans/Outlaw_Fugitive.cfg:79
+#: data/core/units/humans/Outlaw_Highwayman.cfg:44
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "darbe"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:77
+#: data/core/units/humans/Outlaw_Fugitive.cfg:78
+msgid "sling"
+msgstr "sapan"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:126
+#, fuzzy
+msgid "female^Fugitive"
+msgstr "female^Savaşçı"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:129
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
+"beauty is exceeded only by their dangerousness."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+msgid "Highwayman"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+msgid ""
+"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
+"deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:5
+#, fuzzy
+msgid "Outlaw Ranger"
+msgstr "Kanun Kaçağı"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:25
+msgid ""
+"Rangers are wild men and masters of forest and hills.  They are excellent "
+"trackers, scouts, and archers, moving freely through the countryside under "
+"the cover of night.  Most rulers are afraid of rangers and would rather put "
+"them in the dungeon than put their abilities to use."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:52
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+msgid "sword"
+msgstr "kılıç"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "pala"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:99
+#: data/core/units/humans/Outlaw_Ranger.cfg:100
+msgid "bow"
+msgstr "ok"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "delme"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Kolay"
@@ -3943,18 +4031,6 @@ msgstr "yakın"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "menzilli"
-
-#: data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "pala"
-
-#: data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "delme"
-
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "darbe"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4322,6 +4398,13 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
+#: data/hardwired/tips.cfg:39
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
 msgid "Menu"
@@ -4337,8 +4420,8 @@ msgid "End Turn"
 msgstr "Eli bitir"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
-#: src/unit.cpp:2583
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2428
+#: src/unit.cpp:2574
 msgid "HP"
 msgstr "YP"
 
@@ -4476,62 +4559,62 @@ msgstr "+"
 msgid "Close"
 msgstr "Kapat"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
 msgstr "Askere alabilecek bir liderin yok."
 
-#: src/actions.cpp:118
+#: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "Birim askere almak veya tekrar çağırmak için liderin iç kalede olmalı."
 
-#: src/actions.cpp:137
+#: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "İçinde birim askere alabileceğin boş kale bölümü yok."
 
-#: src/actions.cpp:883 src/actions.cpp:1114
+#: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
 msgstr "zehirli"
 
-#: src/actions.cpp:887 src/actions.cpp:1118
+#: src/actions.cpp:896 src/actions.cpp:1127
 msgid "slowed"
 msgstr "yavaş"
 
-#: src/actions.cpp:893 src/actions.cpp:1124
+#: src/actions.cpp:902 src/actions.cpp:1133
 msgid "stone"
 msgstr "taş"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2040
 msgid "Ambushed!"
 msgstr "Pusuya düştü!"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2078
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Arkadaş birim göründü"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2081
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Düşman birimi göründü!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2086
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2087
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2088
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Birim göründü! ($friends dostça, $enemies düşmanca)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2097
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey bas)"
@@ -5325,7 +5408,7 @@ msgstr "Seviye"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
+#: src/menu_events.cpp:319 src/unit.cpp:2461 src/unit.cpp:2582
 msgid "Moves"
 msgstr "Hareketler"
 
@@ -5479,45 +5562,45 @@ msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Bir birimi tekrar çağırmak için en az $cost altının olmalı"
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Daha eline başlamadın. Gerçekten eli bitirmek istiyor musun?"
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Bazı birimlerin hareket hakları kaldı. Gerçekten eli bitirmek istiyor musun?"
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1328
 msgid "Rename Unit"
 msgstr "Birimin ismini değiştir"
 
-#: src/menu_events.cpp:1406
+#: src/menu_events.cpp:1410
 msgid "Place Label"
 msgstr "Etiket koy"
 
-#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
+#: src/menu_events.cpp:1413 src/menu_events.cpp:1416
 msgid "Label:"
 msgstr "Etiket:"
 
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1419
 #, fuzzy
 msgid "Team only"
 msgstr "Çamur rengi"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1520
 msgid "Search"
 msgstr "Ara"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1563
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Komutlar: whisper duyguları es geçer. Daha fazla yardım için /help [komut] "
 "yazınız."
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1614
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5525,17 +5608,17 @@ msgstr ""
 "Özel mesajlar gönderir. Oyunu oynayan kullanıcılara mesaj gönderemezsiniz. "
 "Kullanım: /whisper [kullanıcı ismi] [mesaj]"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1618
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Göz ardı listenize oyuncu ekler. Kullanım : /ignore add [argüman]"
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1620
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Göz ardı listenize oyuncu ekler. Kullanım : /ignore add [argüman]"
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1622
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -5543,21 +5626,21 @@ msgid ""
 msgstr ""
 "Gözardı listenizden oyuncu kaldırır. Kullanım : /ignore remove [argüman]"
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Gözardı listenizi temizler. Kullanım : /ignore clear"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1626
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Gözardı listenizi gösterir. Kullanım : /ignore list"
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1628
 msgid "Unknown subcommand"
 msgstr "Bilinmeyen alt komut"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1631
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5565,54 +5648,54 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1634
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1636
 msgid "Unknown command"
 msgstr "Bilinmeyen komut"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1648
 msgid "Added to ignore list: "
 msgstr "Gözardı listenize eklenen: "
 
-#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
+#: src/menu_events.cpp:1650 src/menu_events.cpp:1657 src/menu_events.cpp:1664
 msgid "Invalid username: "
 msgstr "Geçersiz kullanıcı ismi"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1655
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Gözardı listenize eklenen: "
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1662
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1698
 msgid "Removed from ignore list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1701
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 msgid "Unknown command: "
 msgstr "Bilinmeyen Komut: "
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1818
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "'$search' yazısını içeren etiket veya birim bulunamadı."
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1969
 msgid "prompt^Command:"
 msgstr "Komut:"
 
@@ -5747,12 +5830,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2612
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2619
 msgid ")"
 msgstr ")"
 
@@ -6417,15 +6500,15 @@ msgstr "Devamı"
 msgid "Help Wesnoth by sending us information"
 msgstr "Bize bilgi göndererek Wesnoth'a yardım et"
 
-#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
+#: src/unit.cpp:2391 src/unit.cpp:2562 src/unit.cpp:2617
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2488 src/unit.cpp:2599
+#: src/unit.cpp:2479 src/unit.cpp:2590
 msgid "XP to advance"
 msgstr "terfi için gerekli TP"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2596
 #, fuzzy
 msgid "/level"
 msgstr "seviye"
@@ -6482,18 +6565,12 @@ msgstr "Özet yüklemeyi aç"
 #~ msgid "Village Elder"
 #~ msgstr "Köy başına altın: "
 
-#~ msgid "mace"
-#~ msgstr "topuz"
-
 #, fuzzy
 #~ msgid "Young Peasant"
 #~ msgstr "Köylü"
 
 #~ msgid "club"
 #~ msgstr "sopa"
-
-#~ msgid "sling"
-#~ msgstr "sapan"
 
 #~ msgid "female^Footpad"
 #~ msgstr "Eşkiya"
@@ -6512,9 +6589,6 @@ msgstr "Özet yüklemeyi aç"
 #~ msgid "dagger"
 #~ msgstr "hançer"
 
-#~ msgid "bow"
-#~ msgstr "ok"
-
 #~ msgid "Peasant"
 #~ msgstr "Köylü"
 
@@ -6531,9 +6605,6 @@ msgstr "Özet yüklemeyi aç"
 #~ "Tuzakçılar genellikle haydutlar ve kanunsuzlara yiyecek sağlarlar. "
 #~ "Onların avlanma tecrübeleri onları en çok gecede ve orman ve "
 #~ "bataklıklarda değerli yapar."
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- Wesnoth Kitabı"
 
 #~ msgid "short sword"
 #~ msgstr "kısa kılıç"
@@ -7183,9 +7254,6 @@ msgstr "Özet yüklemeyi aç"
 #~ msgstr ""
 #~ "Kılıç kullanımında ustalaşan ejderler özel bir yola bağlanmışlardır. "
 #~ "Bunun işareti savaşta sürdükleri siyah ve beyaz boyadır."
-
-#~ msgid "sword"
-#~ msgstr "kılıç"
 
 #~ msgid "Drake Burner"
 #~ msgstr "Ejder yakıcı"
@@ -9219,9 +9287,6 @@ msgstr "Özet yüklemeyi aç"
 
 #~ msgid "female^Mage of Light"
 #~ msgstr "Işık Büyücüsü"
-
-#~ msgid "Outlaw"
-#~ msgstr "Kanun Kaçağı"
 
 #~ msgid ""
 #~ "After some years of service, former 'footpads' rise up in the ranks of "
@@ -11693,9 +11758,6 @@ msgstr "Özet yüklemeyi aç"
 #~ "hasarların bütün türlerine karşı oldukça dirençlidir. Onlar iki kasaba "
 #~ "arasında anında hareket edebilirler ama iki kasabada oyuncunun "
 #~ "kontrolünde olmalı ve hedef kasaba boş olmalıdır."
-
-#~ msgid "female^Fighter"
-#~ msgstr "female^Savaşçı"
 
 #~ msgid "Quintain"
 #~ msgstr "Quintain"

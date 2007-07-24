@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:48+0200\n"
+"POT-Creation-Date: 2007-07-24 23:29+0200\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -39,6 +39,10 @@ msgstr "Csatlakozás a hivatalos kiszolgálóhoz"
 #: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr ""
+
+#: data/_main.cfg:148
+msgid "-- The Tome of Wesnoth"
+msgstr "-- Wesnoth kódexe "
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -2900,45 +2904,45 @@ msgstr "A gyűrű viselője minden körben gyógyul egy keveset."
 msgid "Can't set abilities yet, sorry."
 msgstr "Képességek beállítása egyelőre nem lehetséges, sajnáljuk."
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:577
 msgid "Ring of Slowness"
 msgstr "Lassúság gyűrűje"
 
-#: data/core/macros/items.cfg:579
+#: data/core/macros/items.cfg:580
 msgid "The bearer of this ring is slowed."
 msgstr "A gyűrű viselője lelassul."
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:615
 msgid "Staff of Swiftness"
 msgstr "Gyorsaság botja"
 
-#: data/core/macros/items.cfg:617
+#: data/core/macros/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
 msgstr "A bot sebes mozgást ad használójának."
 
-#: data/core/macros/items.cfg:618
+#: data/core/macros/items.cfg:619
 msgid "Only magical beings can wield such an object."
 msgstr "Csak mágikus lények kezelhetik ezt a tárgyat."
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:653
 msgid "Storm Trident"
 msgstr "Viharszigony"
 
-#: data/core/macros/items.cfg:655
+#: data/core/macros/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "A szigonyt használva egy sellő elektromos lövedékkel támadhatja meg "
 "ellenségeit."
 
-#: data/core/macros/items.cfg:656
+#: data/core/macros/items.cfg:657
 msgid "Only the mermen can use this item!"
 msgstr "Csak egy sellő használhatja ezt a tárgyat!"
 
-#: data/core/macros/items.cfg:668
+#: data/core/macros/items.cfg:669
 msgid "storm trident"
 msgstr "viharszigony"
 
-#: data/core/macros/items.cfg:742
+#: data/core/macros/items.cfg:743
 msgid "Zap"
 msgstr "Zap"
 
@@ -3893,6 +3897,90 @@ msgstr "Megmászhatatlan hegyvidék"
 msgid "Impassable Desert Mountains"
 msgstr "Megmászhatatlan hegyvidék"
 
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
+"can be fearful in their element but no real match for professional law "
+"enforcment forces."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:30
+#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:42
+msgid "mace"
+msgstr "buzogány"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:32
+#: data/core/units/humans/Outlaw_Fugitive.cfg:79
+#: data/core/units/humans/Outlaw_Highwayman.cfg:44
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "ütés"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:77
+#: data/core/units/humans/Outlaw_Fugitive.cfg:78
+msgid "sling"
+msgstr "parittya"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:126
+#, fuzzy
+msgid "female^Fugitive"
+msgstr "Harcosnő"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:129
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
+"beauty is exceeded only by their dangerousness."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+msgid "Highwayman"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+msgid ""
+"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
+"deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:5
+#, fuzzy
+msgid "Outlaw Ranger"
+msgstr "Törvényen kívüli"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:25
+msgid ""
+"Rangers are wild men and masters of forest and hills.  They are excellent "
+"trackers, scouts, and archers, moving freely through the countryside under "
+"the cover of night.  Most rulers are afraid of rangers and would rather put "
+"them in the dungeon than put their abilities to use."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:52
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+msgid "sword"
+msgstr "kard"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "penge"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:99
+#: data/core/units/humans/Outlaw_Ranger.cfg:100
+msgid "bow"
+msgstr "íj"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "páncéltörés"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Könnyű"
@@ -4058,18 +4146,6 @@ msgstr "közelharc"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "távolsági harc"
-
-#: data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "penge"
-
-#: data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "páncéltörés"
-
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "ütés"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4440,6 +4516,13 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
+#: data/hardwired/tips.cfg:39
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
 msgid "Menu"
@@ -4455,8 +4538,8 @@ msgid "End Turn"
 msgstr "Kör vége"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
-#: src/unit.cpp:2583
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2428
+#: src/unit.cpp:2574
 msgid "HP"
 msgstr "ÉP"
 
@@ -4584,63 +4667,63 @@ msgstr "+  "
 msgid "Close"
 msgstr "Bezár"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
 msgstr "Nincs vezetőd, amely toborozhatna."
 
-#: src/actions.cpp:118
+#: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "A vezetődnek a várban kell állnia, ahhoz hogy új egységeket toborozhass."
 
-#: src/actions.cpp:137
+#: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nincs több üres hely a várban, ahova az új egységeket toborozhatnánk."
 
-#: src/actions.cpp:883 src/actions.cpp:1114
+#: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
 msgstr "megmérgezett"
 
-#: src/actions.cpp:887 src/actions.cpp:1118
+#: src/actions.cpp:896 src/actions.cpp:1127
 msgid "slowed"
 msgstr "lelassított"
 
-#: src/actions.cpp:893 src/actions.cpp:1124
+#: src/actions.cpp:902 src/actions.cpp:1133
 msgid "stone"
 msgstr "kővéváltoztatás"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2040
 msgid "Ambushed!"
 msgstr "Rajtaütés!"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2078
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Szövetséges egység a láthatáron"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2081
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Ellenséges egység a láthatáron!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2086
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2087
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2088
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Egységek a láthatáron! ($friends szövetséges, $enemies ellenséges)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2097
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(a folytatáshoz nyomd le ezt: $hotkey)"
@@ -5440,7 +5523,7 @@ msgstr "Szint"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
+#: src/menu_events.cpp:319 src/unit.cpp:2461 src/unit.cpp:2582
 msgid "Moves"
 msgstr "lép"
 
@@ -5595,44 +5678,44 @@ msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Legalább $cost arannyal kell rendelkezned ahhoz, hogy toborozhass."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Még nem tettél semmit ebben a körben. Mégis befejezed a köröd?"
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Néhány egység még léphetne. Mégis befejezed a köröd?"
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1328
 msgid "Rename Unit"
 msgstr "Egység átnevezése"
 
-#: src/menu_events.cpp:1406
+#: src/menu_events.cpp:1410
 msgid "Place Label"
 msgstr "Címke elhelyezése"
 
-#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
+#: src/menu_events.cpp:1413 src/menu_events.cpp:1416
 msgid "Label:"
 msgstr "Címke:"
 
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1419
 #, fuzzy
 msgid "Team only"
 msgstr "Kékezöld"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1520
 msgid "Search"
 msgstr "Keresés"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1563
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Parancsok: suttogás (whisper), mellőzés (ignore), hangulat (emote). Add ki "
 "a /help [parancs neve] parancsot segítségért."
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1614
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5640,19 +5723,19 @@ msgstr ""
 "Privát üzenet küldése. A játékban résztvevő játékosoknak nem küldhetsz ilyen "
 "üzeneteket. Használat: /whisper [becenév] [üzenet]"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1618
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Játékos hozzáadása a mellőzési listádhoz. Használat: /ignore add [változó]"
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1620
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Játékos hozzáadása a mellőzési listádhoz. Használat: /ignore add [változó]"
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1622
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -5660,21 +5743,21 @@ msgid ""
 msgstr ""
 "Játékos levétele a mellőzési listádról. Használat: /ignore remove [változó]"
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Mellőzési listád kiürtése. Használat: /ignore clear"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1626
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Mellőzési listád kilistázása. Használat: /ignore list"
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1628
 msgid "Unknown subcommand"
 msgstr "Ismeretlen alparancs"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1631
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -5686,58 +5769,58 @@ msgstr ""
 "ignore [alparancs] [változó](nem kötelező). Alparancsok: add, remove, list, "
 "clear. Add ki a /help ignore [subcommand] parancsot további információkért."
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1634
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Hangulat, vagy személyes cselekedet küldése a csevegésben. Használat: /emote "
 "[üzenet]"
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1636
 msgid "Unknown command"
 msgstr "Ismeretlen parancs"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1648
 msgid "Added to ignore list: "
 msgstr "Hozzáadva a mellőzési listádhoz: "
 
-#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
+#: src/menu_events.cpp:1650 src/menu_events.cpp:1657 src/menu_events.cpp:1664
 msgid "Invalid username: "
 msgstr "Érvénytelen felhasználónév: "
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1655
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Hozzáadva a mellőzési listádhoz: "
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1662
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Kitörölve a mellőzési listádról: "
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1698
 msgid "Removed from ignore list: "
 msgstr "Kitörölve a mellőzési listádról: "
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1701
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Kitörölve a mellőzési listádról: "
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 msgid "Unknown command: "
 msgstr "Ismeretlen parancs: "
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1818
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Nem találtam olyan címkét vagy egységet ami megfelelt volna a következőnek: "
 "'$search'."
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1969
 msgid "prompt^Command:"
 msgstr "Parancs:"
 
@@ -5873,12 +5956,12 @@ msgid "Normal"
 msgstr "Sima"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2612
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2619
 msgid ")"
 msgstr ")"
 
@@ -6544,15 +6627,15 @@ msgstr "Tovább"
 msgid "Help Wesnoth by sending us information"
 msgstr "Segítsd a Wesnoth fejlesztőit azzal, hogy információt küldesz!"
 
-#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
+#: src/unit.cpp:2391 src/unit.cpp:2562 src/unit.cpp:2617
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2488 src/unit.cpp:2599
+#: src/unit.cpp:2479 src/unit.cpp:2590
 msgid "XP to advance"
 msgstr "TP a szintlépésig"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2596
 #, fuzzy
 msgid "/level"
 msgstr "szint"
@@ -6609,18 +6692,12 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgid "Village Elder"
 #~ msgstr "Falu arany: "
 
-#~ msgid "mace"
-#~ msgstr "buzogány"
-
 #, fuzzy
 #~ msgid "Young Peasant"
 #~ msgstr "Paraszt"
 
 #~ msgid "club"
 #~ msgstr "fütykös"
-
-#~ msgid "sling"
-#~ msgstr "parittya"
 
 #~ msgid "female^Footpad"
 #~ msgstr "Útonálló"
@@ -6639,9 +6716,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgid "dagger"
 #~ msgstr "tőr"
 
-#~ msgid "bow"
-#~ msgstr "íj"
-
 #~ msgid "Peasant"
 #~ msgstr "Paraszt"
 
@@ -6658,9 +6732,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ "A prémvadászok munkája általában ellátni a banditákat és más törvényen "
 #~ "kívülieket ennivalóval. Leginkább éjszaka, erdőben és ingoványos vidéken "
 #~ "válnak értékessé ezek a tapasztalt vadászok."
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- Wesnoth kódexe "
 
 #~ msgid "short sword"
 #~ msgstr "rövidkard"
@@ -7325,9 +7396,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ msgstr ""
 #~ "A perzsekény pengeforgatók kiválóan kezelik a kardot, és örökölték a "
 #~ "tűzokádás képességét őseiktől."
-
-#~ msgid "sword"
-#~ msgstr "kard"
 
 #~ msgid "Drake Burner"
 #~ msgstr "Tűzokádó perzsekény"
@@ -9108,9 +9176,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 
 #~ msgid "female^Mage of Light"
 #~ msgstr "Fény mágusnője"
-
-#~ msgid "Outlaw"
-#~ msgstr "Törvényen kívüli"
 
 #~ msgid ""
 #~ "After some years of service, former 'footpads' rise up in the ranks of "
@@ -11564,9 +11629,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 #~ "mágus közül. Teleportálni tudnak bármely két barátságos falu közt, egy "
 #~ "pillanat alatt átugorva. Emellett jól ellenállnak minden mágikus "
 #~ "támadásnak."
-
-#~ msgid "female^Fighter"
-#~ msgstr "Harcosnő"
 
 #~ msgid "Quintain"
 #~ msgstr "Bábu"

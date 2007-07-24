@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:48+0200\n"
+"POT-Creation-Date: 2007-07-24 23:29+0200\n"
 "PO-Revision-Date: 2007-07-21 01:51+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -34,6 +34,10 @@ msgstr "Wesnothin virallinen palvelin"
 #: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr "Vaihtoehtoinen Wesnoth-palvelin"
+
+#: data/_main.cfg:148
+msgid "-- The Tome of Wesnoth"
+msgstr "-- Wesnothin kirja"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -2866,43 +2870,43 @@ msgstr "Tämä sormus parantaa kantajaa vähän joka vuoro."
 msgid "Can't set abilities yet, sorry."
 msgstr "Pahoittelen, erikoistaitoja ei voi vielä säätää."
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:577
 msgid "Ring of Slowness"
 msgstr "Hitauden sormus"
 
-#: data/core/macros/items.cfg:579
+#: data/core/macros/items.cfg:580
 msgid "The bearer of this ring is slowed."
 msgstr "Sormuksen kantaja hidastuu."
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:615
 msgid "Staff of Swiftness"
 msgstr "Nopeuden sauva"
 
-#: data/core/macros/items.cfg:617
+#: data/core/macros/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
 msgstr "Tämä sauva antaa kantajalleen nopean liikkumisen."
 
-#: data/core/macros/items.cfg:618
+#: data/core/macros/items.cfg:619
 msgid "Only magical beings can wield such an object."
 msgstr "Vain taikaolennot voivat käyttää tuollaista esinettä."
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:653
 msgid "Storm Trident"
 msgstr "myrskyjen kolmikärki"
 
-#: data/core/macros/items.cfg:655
+#: data/core/macros/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Tämä kolmikärki sallii merenmiehen ampua salamoita vihollisiinsa!"
 
-#: data/core/macros/items.cfg:656
+#: data/core/macros/items.cfg:657
 msgid "Only the mermen can use this item!"
 msgstr "Vain merenmiehet voivat käyttää tätä esinettä!"
 
-#: data/core/macros/items.cfg:668
+#: data/core/macros/items.cfg:669
 msgid "storm trident"
 msgstr "myrskyjen kolmikärki"
 
-#: data/core/macros/items.cfg:742
+#: data/core/macros/items.cfg:743
 msgid "Zap"
 msgstr "Zap"
 
@@ -4229,6 +4233,91 @@ msgstr "ylitsepääsemätön vuoristo"
 msgid "Impassable Desert Mountains"
 msgstr "Ylitsepääsemätön aavikkovuoristo"
 
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
+"can be fearful in their element but no real match for professional law "
+"enforcment forces."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:30
+#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:42
+msgid "mace"
+msgstr "helanuija"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:32
+#: data/core/units/humans/Outlaw_Fugitive.cfg:79
+#: data/core/units/humans/Outlaw_Highwayman.cfg:44
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "murskaus"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:77
+#: data/core/units/humans/Outlaw_Fugitive.cfg:78
+msgid "sling"
+msgstr "linko"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:126
+#, fuzzy
+msgid "female^Fugitive"
+msgstr "Soturi"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:129
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
+"beauty is exceeded only by their dangerousness."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+#, fuzzy
+msgid "Highwayman"
+msgstr "Keihäsmies"
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+msgid ""
+"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
+"deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:5
+#, fuzzy
+msgid "Outlaw Ranger"
+msgstr "Lainsuojaton"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:25
+msgid ""
+"Rangers are wild men and masters of forest and hills.  They are excellent "
+"trackers, scouts, and archers, moving freely through the countryside under "
+"the cover of night.  Most rulers are afraid of rangers and would rather put "
+"them in the dungeon than put their abilities to use."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:52
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+msgid "sword"
+msgstr "miekka"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "viilto"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:99
+#: data/core/units/humans/Outlaw_Ranger.cfg:100
+msgid "bow"
+msgstr "jousi"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "lävistys"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "helppo"
@@ -4389,18 +4478,6 @@ msgstr "lähitaistelu"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "kaukotaistelu"
-
-#: data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "viilto"
-
-#: data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "lävistys"
-
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "murskaus"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4763,6 +4840,13 @@ msgstr ""
 "ja käytä veteraania vahingoittamaan kohdetta tarpeeksi heikomman yksikön "
 "saamiseksi aiheuttamaan tapon vastustajalle."
 
+#: data/hardwired/tips.cfg:39
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
 msgid "Menu"
@@ -4778,8 +4862,8 @@ msgid "End Turn"
 msgstr "Lopeta vuoro"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
-#: src/unit.cpp:2583
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2428
+#: src/unit.cpp:2574
 msgid "HP"
 msgstr "EP"
 
@@ -4904,64 +4988,64 @@ msgstr "+ "
 msgid "Close"
 msgstr "Sulje"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
 msgstr "Sinulla ei ole johtajaa, joka voisi värvätä."
 
-#: src/actions.cpp:118
+#: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Johtajasi täytyy olla linnakkeessa, jos haluat värvätä tai kutsua yksiköitä."
 
-#: src/actions.cpp:137
+#: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Linnassa ei ole tyhjää tilaa, johon värvätä."
 
-#: src/actions.cpp:883 src/actions.cpp:1114
+#: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
 msgstr "myrkytetty"
 
-#: src/actions.cpp:887 src/actions.cpp:1118
+#: src/actions.cpp:896 src/actions.cpp:1127
 msgid "slowed"
 msgstr "hidastettu"
 
-#: src/actions.cpp:893 src/actions.cpp:1124
+#: src/actions.cpp:902 src/actions.cpp:1133
 msgid "stone"
 msgstr "kivetys"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2040
 msgid "Ambushed!"
 msgstr "Väijytys!"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2078
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Ystävä havaittu"
 msgstr[1] "$friends ystävää havaittu"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2081
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vihollinen havaittu!"
 msgstr[1] "$enemies vihollista havaittu!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2086
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 ystävällinen"
 msgstr[1] "$friends ystävällistä"
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2087
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 vihollinen"
 msgstr[1] "$enemies vihollista"
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2088
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Yksiköitä näköpiirissä! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2097
 msgid "(press $hotkey to keep moving)"
 msgstr "(paina $hotkey jatkaaksesi)"
 
@@ -5741,7 +5825,7 @@ msgstr "taso"
 msgid "unit list^Traits"
 msgstr "Ominaisuudet"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
+#: src/menu_events.cpp:319 src/unit.cpp:2461 src/unit.cpp:2582
 msgid "Moves"
 msgstr "Liike"
 
@@ -5898,44 +5982,44 @@ msgstr[1] ""
 "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön "
 "takaisin palvelukseen."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Et ole vielä aloittanut vuoroasi.  Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Jokin yksiköistäsi voi vielä liikkua. Haluatko todellakin lopettaa vuorosi?"
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1328
 msgid "Rename Unit"
 msgstr "Vaihda yksikön nimeä"
 
-#: src/menu_events.cpp:1406
+#: src/menu_events.cpp:1410
 msgid "Place Label"
 msgstr "Lisää karttamerkintä"
 
-#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
+#: src/menu_events.cpp:1413 src/menu_events.cpp:1416
 msgid "Label:"
 msgstr "Karttamerkintä:"
 
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1419
 msgid "Team only"
 msgstr "Vain joukkue"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1520
 msgid "Search"
 msgstr "Etsi"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1563
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Komennot: whisper list emote. Kirjoita /help [komento] saadaksesi lisää "
 "apua. "
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1614
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5943,15 +6027,15 @@ msgstr ""
 "Lähettää yksityisviestin. Pelin osanottajat eivät voi vastaanottaa viestejä. "
 "Käyttö: /whisper [pelaajanimi] [viesti]"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1618
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Lisää pelaaja ystävälistallesi. Käyttö: /list addfriend [nimi]"
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1620
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Lisää pelaaja torjuttujen listallesi. Käyttö: /list ignore [nimi]"
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1622
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -5959,19 +6043,19 @@ msgstr ""
 "Poista pelaaja ystävien tai torjuttujen listaltasi. Käyttö: /ignore remove "
 "[pelaajanimi]"
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Puhdista torjuttujen ja ystävien listasi. Käyttö: /list clear"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1626
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Näytä torjuttujen ja ystävien listasi. Käyttö: /list display"
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1628
 msgid "Unknown subcommand"
 msgstr "Tuntematon alikomento"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1631
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5983,51 +6067,51 @@ msgstr ""
 "(vapaaehtoinen) Alikomennot: addfriend addignore remove display clear. "
 "Kirjoits /help list [alikomento] lisäinfoa saadaksesi."
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1634
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Lähetä tunneilmaisu keskustelutilassa. Käyttö: /emote [viesti]"
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1636
 msgid "Unknown command"
 msgstr "Tuntematon komento"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1648
 msgid "Added to ignore list: "
 msgstr "Et enää saa viestejä, jotka lähettää"
 
-#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
+#: src/menu_events.cpp:1650 src/menu_events.cpp:1657 src/menu_events.cpp:1664
 msgid "Invalid username: "
 msgstr "Virheellinen käyttäjänimi"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1655
 msgid "Added to friends list: "
 msgstr "Lisätyt ystävälistalle:"
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1662
 msgid "Removed from list: "
 msgstr "Poistettu listalta:"
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
 msgstr "Sinulla ei ole pelaajia ystävien tai tai torjuttujen listalla."
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1698
 msgid "Removed from ignore list: "
 msgstr "Saat nyt jälleen viestit, jotka lähettää"
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1701
 msgid "Removed from friends list: "
 msgstr "Poistettu ystävälistalta:"
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 msgid "Unknown command: "
 msgstr "Tuntematon komento:"
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1818
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Tekstiä '$search' sisältävää yksikköä tai karttamerkintää ei löytynyt."
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1969
 msgid "prompt^Command:"
 msgstr "Komento:"
 
@@ -6159,12 +6243,12 @@ msgid "Normal"
 msgstr "Normaali"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2612
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2619
 msgid ")"
 msgstr ")"
 
@@ -6822,15 +6906,15 @@ msgstr "Lisää"
 msgid "Help Wesnoth by sending us information"
 msgstr "Auta Wesnothia lähettämälla meille tietoa"
 
-#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
+#: src/unit.cpp:2391 src/unit.cpp:2562 src/unit.cpp:2617
 msgid "; "
 msgstr "."
 
-#: src/unit.cpp:2488 src/unit.cpp:2599
+#: src/unit.cpp:2479 src/unit.cpp:2590
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen:"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2596
 msgid "/level"
 msgstr "/taso"
 
@@ -6886,18 +6970,12 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ msgid "Village Elder"
 #~ msgstr "Kulta kylistä: "
 
-#~ msgid "mace"
-#~ msgstr "helanuija"
-
 #, fuzzy
 #~ msgid "Young Peasant"
 #~ msgstr "Talonpoika"
 
 #~ msgid "club"
 #~ msgstr "puunuija"
-
-#~ msgid "sling"
-#~ msgstr "linko"
 
 #~ msgid "female^Footpad"
 #~ msgstr "Rosvo"
@@ -6916,9 +6994,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ msgid "dagger"
 #~ msgstr "tikari"
 
-#~ msgid "bow"
-#~ msgstr "jousi"
-
 #~ msgid "Peasant"
 #~ msgstr "Talonpoika"
 
@@ -6935,9 +7010,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ "Ansastajat hankkivat yleensä ruokaa bandiiteille ja lainsuojattomille. "
 #~ "Heidän metsästyskokemuksensa tekee heistä hyödyllisimpiä öisin soissa ja "
 #~ "metsissä."
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- Wesnothin kirja"
 
 #~ msgid "short sword"
 #~ msgstr "lyhytmiekka"
@@ -7861,9 +7933,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ "Ne draakit, jotka saavuttavat huipun miekan käytön taidossa liittyvät "
 #~ "erityiseen järjestöön. Tämän paljastaa heidän taistelussa käyttämänsä "
 #~ "mustavalkoinen sotamaalaus."
-
-#~ msgid "sword"
-#~ msgstr "miekka"
 
 #~ msgid "Drake Burner"
 #~ msgstr "Polttodraakki"
@@ -9848,9 +9917,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 
 #~ msgid "female^Mage of Light"
 #~ msgstr "Valon velhotar"
-
-#~ msgid "Outlaw"
-#~ msgstr "Lainsuojaton"
 
 #~ msgid ""
 #~ "After some years of service, former 'footpads' rise up in the ranks of "
@@ -12375,9 +12441,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ "kaukosiirtyä kahden kylän välillä viiveettä, joskin pelaajan tulee "
 #~ "hallita molempia ja kohdekylän tulee olla miehittämätön."
 
-#~ msgid "female^Fighter"
-#~ msgstr "Soturi"
-
 #~ msgid "Quintain"
 #~ msgstr "Harjoittelunukke"
 
@@ -12895,10 +12958,6 @@ msgstr "Salli yhteenvetojen lataaminen"
 #, fuzzy
 #~ msgid "Eowynial"
 #~ msgstr "uskollinen"
-
-#, fuzzy
-#~ msgid "Shaman"
-#~ msgstr "Keihäsmies"
 
 #, fuzzy
 #~ msgid "Golir"

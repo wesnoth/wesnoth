@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-24 23:30+0200\n"
 "PO-Revision-Date: 2007-02-23 22:37+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -31,12 +31,12 @@ msgstr "Gal·leó"
 msgid "Galleons are blue-water ships built for trade and transport."
 msgstr ""
 
-#: data/core/units/boats/Galleon.cfg:22 data/core/units/boats/Galleon.cfg:23
+#: data/core/units/boats/Galleon.cfg:22
 msgid "dummy"
 msgstr "arma fictícia"
 
 #: data/core/units/wose/Wose.cfg:34 data/core/units/wose/Ancient.cfg:96
-#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:24
+#: data/core/units/wose/Elder.cfg:95 data/core/units/boats/Galleon.cfg:23
 #: data/core/units/elves/Enchantress.cfg:28
 #: data/core/units/elves/Enchantress.cfg:73 data/core/units/elves/Druid.cfg:30
 #: data/core/units/elves/Druid.cfg:69 data/core/units/elves/Shyde.cfg:31
@@ -206,9 +206,9 @@ msgstr "balista"
 #: data/core/units/goblins/Impaler.cfg:27
 #: data/core/units/goblins/Impaler.cfg:207
 #: data/core/units/undead/Skeleton_Archer.cfg:74
+#: data/core/units/undead/Skele_Banebow.cfg:73
 #: data/core/units/undead/Skele_Chocobone.cfg:28
 #: data/core/units/undead/Skele_Death_Knight.cfg:92
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:73
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:84
 msgid "pierce"
 msgstr "perfora"
@@ -339,6 +339,7 @@ msgstr "urpes"
 #: data/core/units/undead/Bat_Blood.cfg:55
 #: data/core/units/undead/Corpse_Necrophage.cfg:38
 #: data/core/units/undead/Skele_Deathblade.cfg:46
+#: data/core/units/undead/Skele_Banebow.cfg:34
 #: data/core/units/undead/Skele_Revenant.cfg:33
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:56
 #: data/core/units/undead/Spirit_Shadow.cfg:30
@@ -346,7 +347,6 @@ msgstr "urpes"
 #: data/core/units/undead/Corpse_Ghoul.cfg:70
 #: data/core/units/undead/Skele_Death_Knight.cfg:48
 #: data/core/units/undead/Bat_Vampire.cfg:69
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:34
 #: data/core/units/undead/Skele_Draug.cfg:34
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:45
 msgid "blade"
@@ -950,8 +950,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman.cfg:28
 #: data/core/units/humans/Outlaw_Trapper.cfg:70
 #: data/core/units/humans/Outlaw_Trapper.cfg:71
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:31
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:32
+#: data/core/units/undead/Skele_Banebow.cfg:31
+#: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:42
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:43
 msgid "dagger"
@@ -1284,8 +1284,8 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Trapper.cfg:140
 #: data/core/units/undead/Skeleton_Archer.cfg:71
 #: data/core/units/undead/Skeleton_Archer.cfg:72
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:70
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:71
+#: data/core/units/undead/Skele_Banebow.cfg:70
+#: data/core/units/undead/Skele_Banebow.cfg:71
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:81
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:82
 msgid "bow"
@@ -4842,6 +4842,30 @@ msgstr ""
 msgid "plague staff"
 msgstr "bastó de plaga"
 
+#: data/core/units/undead/Skele_Banebow.cfg:4
+#, fuzzy
+msgid "Banebow"
+msgstr "arc"
+
+#: data/core/units/undead/Skele_Banebow.cfg:19
+#, fuzzy
+msgid ""
+"The most powerful of the undead archers invariably end up being those who "
+"were themselves archers in their previous life. They wander the fields of "
+"battle, guided by the fading memory of their former skill, neither knowing, "
+"nor caring what their purpose, or foes be. They are driven only by a malice "
+"borne of their empty and tortured existence.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Els arquers més poderosos dels no morts són indubtablement els que ja ho "
+"havien estat en la seva vida anterior. Vaguen pel camp de batalla, guiats "
+"per la memòria i els records de la seva habilitat, sense saber ni preocupar-"
+"se quin és el seu propòsit ni els seus enemics. Estan guiats per la malícia "
+"nascuda de la seva existència buida i incoherent.\n"
+"\n"
+"Notes especials:"
+
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
 msgstr "Disparaossos"
@@ -4975,29 +4999,6 @@ msgstr ""
 "seu passat. Deixant de banda aquestes qüestions, un renascut és una poderosa "
 "eina en combat: un guerrer sense por no sent el dolor i lluitarà fins al "
 "final.\n"
-"\n"
-"Notes especials:"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:4
-msgid "Soul Shooter"
-msgstr "Llança ànimes"
-
-#: data/core/units/undead/Skele_Soul_Shooter.cfg:19
-#, fuzzy
-msgid ""
-"The most powerful of the undead archers invariably end up being those who "
-"were themselves archers in their previous life. They wander the fields of "
-"battle, guided by the fading memory of their former skill, neither knowing, "
-"nor caring what their purpose, or foes be. They are driven only by a malice "
-"borne of their empty and tortured existence.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Els arquers més poderosos dels no morts són indubtablement els que ja ho "
-"havien estat en la seva vida anterior. Vaguen pel camp de batalla, guiats "
-"per la memòria i els records de la seva habilitat, sense saber ni preocupar-"
-"se quin és el seu propòsit ni els seus enemics. Estan guiats per la malícia "
-"nascuda de la seva existència buida i incoherent.\n"
 "\n"
 "Notes especials:"
 
@@ -5285,3 +5286,6 @@ msgstr ""
 "totes maneres, no són ni ràpids ni estan habituats a moure's pel món.\n"
 "\n"
 "Notes especials:"
+
+#~ msgid "Soul Shooter"
+#~ msgstr "Llança ànimes"

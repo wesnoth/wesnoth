@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:48+0200\n"
+"POT-Creation-Date: 2007-07-24 23:29+0200\n"
 "PO-Revision-Date: 2007-02-23 22:37+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -43,6 +43,10 @@ msgstr "Unir-se al servidor oficial"
 #: data/_main.cfg:60
 msgid "Alternate Wesnoth Server"
 msgstr ""
+
+#: data/_main.cfg:148
+msgid "-- The Tome of Wesnoth"
+msgstr "-- Guerra i virtut"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
@@ -2889,45 +2893,45 @@ msgstr "Aquesta anell curarà al seu portador una mica cada torn."
 msgid "Can't set abilities yet, sorry."
 msgstr "No ha estat possible definir les habilitats, ho sent."
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:577
 msgid "Ring of Slowness"
 msgstr "Anell d'alentiment"
 
-#: data/core/macros/items.cfg:579
+#: data/core/macros/items.cfg:580
 msgid "The bearer of this ring is slowed."
 msgstr "El portador d'aquest anell anirà més lent."
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:615
 msgid "Staff of Swiftness"
 msgstr "Bastó de la rapidesa"
 
-#: data/core/macros/items.cfg:617
+#: data/core/macros/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
 msgstr "Aquest bastó concedirà al seu portador moviments més ràpids."
 
-#: data/core/macros/items.cfg:618
+#: data/core/macros/items.cfg:619
 msgid "Only magical beings can wield such an object."
 msgstr "Només éssers màgics poden portar aquest objecte."
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:653
 msgid "Storm Trident"
 msgstr "Trident de la tormenta"
 
-#: data/core/macros/items.cfg:655
+#: data/core/macros/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Aquest trident permet als sirènids disparar míssils elèctrics contra els "
 "seus enemics."
 
-#: data/core/macros/items.cfg:656
+#: data/core/macros/items.cfg:657
 msgid "Only the mermen can use this item!"
 msgstr "Només els sirènids poden usar aquest objecte!"
 
-#: data/core/macros/items.cfg:668
+#: data/core/macros/items.cfg:669
 msgid "storm trident"
 msgstr "trident de la tormenta"
 
-#: data/core/macros/items.cfg:742
+#: data/core/macros/items.cfg:743
 msgid "Zap"
 msgstr "Zap"
 
@@ -4266,6 +4270,90 @@ msgstr "Muntanyes impassables"
 msgid "Impassable Desert Mountains"
 msgstr "Muntanyes impassables"
 
+#: data/core/units/humans/Outlaw_Fugitive.cfg:5
+msgid "Fugitive"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
+"can be fearful in their element but no real match for professional law "
+"enforcment forces."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:30
+#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:41
+#: data/core/units/humans/Outlaw_Highwayman.cfg:42
+msgid "mace"
+msgstr "maça"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:32
+#: data/core/units/humans/Outlaw_Fugitive.cfg:79
+#: data/core/units/humans/Outlaw_Highwayman.cfg:44
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "impacta"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:77
+#: data/core/units/humans/Outlaw_Fugitive.cfg:78
+msgid "sling"
+msgstr "fona"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:126
+#, fuzzy
+msgid "female^Fugitive"
+msgstr "Guerrera"
+
+#: data/core/units/humans/Outlaw_Fugitive.cfg:129
+msgid ""
+"Veteran criminals become notorious among the authorities for both their "
+"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
+"beauty is exceeded only by their dangerousness."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:5
+msgid "Highwayman"
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+msgid ""
+"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
+"deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:5
+#, fuzzy
+msgid "Outlaw Ranger"
+msgstr "Proscrit"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:25
+msgid ""
+"Rangers are wild men and masters of forest and hills.  They are excellent "
+"trackers, scouts, and archers, moving freely through the countryside under "
+"the cover of night.  Most rulers are afraid of rangers and would rather put "
+"them in the dungeon than put their abilities to use."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:52
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+msgid "sword"
+msgstr "espasa"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "talla"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:99
+#: data/core/units/humans/Outlaw_Ranger.cfg:100
+msgid "bow"
+msgstr "arc"
+
+#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "perfora"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Fàcil"
@@ -4427,18 +4515,6 @@ msgstr "melé"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "distància"
-
-#: data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "talla"
-
-#: data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "perfora"
-
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "impacta"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4804,6 +4880,13 @@ msgid ""
 "get in the killing blow."
 msgstr ""
 
+#: data/hardwired/tips.cfg:39
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
 msgid "Menu"
@@ -4819,8 +4902,8 @@ msgid "End Turn"
 msgstr "Fi del torn"
 
 #: data/themes/default.cfg:172 data/themes/dfool.cfg:199
-#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2437
-#: src/unit.cpp:2583
+#: data/themes/experimental.cfg:150 src/menu_events.cpp:316 src/unit.cpp:2428
+#: src/unit.cpp:2574
 msgid "HP"
 msgstr "HP"
 
@@ -4946,64 +5029,64 @@ msgstr "+  "
 msgid "Close"
 msgstr "Tanca"
 
-#: src/actions.cpp:111
+#: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
 msgstr "No teniu un líder amb el que reclutar."
 
-#: src/actions.cpp:118
+#: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
-#: src/actions.cpp:137
+#: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "El castell no disposa de més zones lliures per reclutar."
 
-#: src/actions.cpp:883 src/actions.cpp:1114
+#: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
 msgstr "enverinat"
 
-#: src/actions.cpp:887 src/actions.cpp:1118
+#: src/actions.cpp:896 src/actions.cpp:1127
 msgid "slowed"
 msgstr "alentit "
 
-#: src/actions.cpp:893 src/actions.cpp:1124
+#: src/actions.cpp:902 src/actions.cpp:1133
 msgid "stone"
 msgstr "pedra"
 
-#: src/actions.cpp:2031
+#: src/actions.cpp:2040
 msgid "Ambushed!"
 msgstr "Emboscada!"
 
-#: src/actions.cpp:2069
+#: src/actions.cpp:2078
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "S'ha vist una unitat amiga"
 msgstr[1] "S'han vist $friends unitats amigues"
 
-#: src/actions.cpp:2072
+#: src/actions.cpp:2081
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "S'ha vist una unitat enemiga!"
 msgstr[1] "S'han vist $enemies unitats enemigues!"
 
-#: src/actions.cpp:2077
+#: src/actions.cpp:2086
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends amiga"
 msgstr[1] "$friends amigues"
 
-#: src/actions.cpp:2078
+#: src/actions.cpp:2087
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies enemiga"
 msgstr[1] "$enemies enemigues"
 
-#: src/actions.cpp:2079
+#: src/actions.cpp:2088
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitats a la vista! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2088
+#: src/actions.cpp:2097
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(premeu $hotkey per continuar)"
@@ -5803,7 +5886,7 @@ msgstr "Nivell"
 msgid "unit list^Traits"
 msgstr "Trets"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2470 src/unit.cpp:2591
+#: src/menu_events.cpp:319 src/unit.cpp:2461 src/unit.cpp:2582
 msgid "Moves"
 msgstr "Moviments"
 
@@ -5956,45 +6039,45 @@ msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Necessiteu almenys 1 moneda d'or per reincorporar una unitat."
 msgstr[1] "Necessiteu almenys $cost monedes d'or per reincorporar una unitat."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "No heu començat a moure les unitats. Segur que voleu finalitzar el vostre "
 "torn?"
 
-#: src/menu_events.cpp:1278 src/menu_events.cpp:1283
+#: src/menu_events.cpp:1282 src/menu_events.cpp:1287
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunes unitats encara es poden moure. Segur que voleu finalitzar el vostre "
 "torn?"
 
-#: src/menu_events.cpp:1324
+#: src/menu_events.cpp:1328
 msgid "Rename Unit"
 msgstr "Renomena unitat"
 
-#: src/menu_events.cpp:1406
+#: src/menu_events.cpp:1410
 msgid "Place Label"
 msgstr "Posa etiqueta"
 
-#: src/menu_events.cpp:1409 src/menu_events.cpp:1412
+#: src/menu_events.cpp:1413 src/menu_events.cpp:1416
 msgid "Label:"
 msgstr "Etiqueta:"
 
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1419
 msgid "Team only"
 msgstr "Als aliats"
 
-#: src/menu_events.cpp:1516
+#: src/menu_events.cpp:1520
 msgid "Search"
 msgstr "Cerca"
 
-#: src/menu_events.cpp:1559
+#: src/menu_events.cpp:1563
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Ordres: whisper list emote. Introduïu /help [ordre] per a obtenir més ajuda."
 
-#: src/menu_events.cpp:1610
+#: src/menu_events.cpp:1614
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6003,19 +6086,19 @@ msgstr ""
 "jugadors que controlin algun bàndol. Forma d'ús: /whisper [sobrenom] "
 "[missatge]"
 
-#: src/menu_events.cpp:1614
+#: src/menu_events.cpp:1618
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Afegeix un jugador a la vostra llista d'amics. Forma d'ús: /list addfriend "
 "[argument]"
 
-#: src/menu_events.cpp:1616
+#: src/menu_events.cpp:1620
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Afegeix un jugador a la vostra llista d'ignorats. Forma d'ús: /list ignore "
 "[argument]"
 
-#: src/menu_events.cpp:1618
+#: src/menu_events.cpp:1622
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6023,19 +6106,19 @@ msgstr ""
 "Esborra un jugador a la vostra llista d'amics. Forma d'ús: /list remove "
 "[argument]"
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Neteja la llista d'amics i ignorats. Forma d'ús: /list clear"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1626
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Mostra la llista d'amics i ignorats. Forma d'ús: /list display"
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1628
 msgid "Unknown subcommand"
 msgstr "Subordre desconeguda"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1631
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6043,52 +6126,52 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1634
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Envia una emoció o acció personal al xat. Forma d'ús: /emote [missatge]"
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1636
 msgid "Unknown command"
 msgstr "Ordre desconeguda"
 
-#: src/menu_events.cpp:1644
+#: src/menu_events.cpp:1648
 msgid "Added to ignore list: "
 msgstr "Afegit a la llista d'ignorats: "
 
-#: src/menu_events.cpp:1646 src/menu_events.cpp:1653 src/menu_events.cpp:1660
+#: src/menu_events.cpp:1650 src/menu_events.cpp:1657 src/menu_events.cpp:1664
 msgid "Invalid username: "
 msgstr "Nom d'usuari no vàlid: "
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1655
 msgid "Added to friends list: "
 msgstr "Afegit a la llista d'amics: "
 
-#: src/menu_events.cpp:1658
+#: src/menu_events.cpp:1662
 msgid "Removed from list: "
 msgstr "Esborrat de la llista: "
 
-#: src/menu_events.cpp:1684
+#: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
 msgstr "No hi ha jugadors a la vostra llista d'amics o ignorats."
 
-#: src/menu_events.cpp:1694
+#: src/menu_events.cpp:1698
 msgid "Removed from ignore list: "
 msgstr "Esborrat de la llista d'ignorats: "
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1701
 msgid "Removed from friends list: "
 msgstr "Esborrat de la llista d'amics: "
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 msgid "Unknown command: "
 msgstr "Ordre desconeguda: "
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1818
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "No s'ha trobat cap etiqueta o unitat amb el nom '$search'."
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1969
 msgid "prompt^Command:"
 msgstr "Comanda:"
 
@@ -6223,12 +6306,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2621
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2612
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:353 src/multiplayer_connect.cpp:450
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2628
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2619
 msgid ")"
 msgstr ")"
 
@@ -6889,15 +6972,15 @@ msgstr "Més"
 msgid "Help Wesnoth by sending us information"
 msgstr "Ajudeu el Wesnoth i envieu-nos informació"
 
-#: src/unit.cpp:2400 src/unit.cpp:2571 src/unit.cpp:2626
+#: src/unit.cpp:2391 src/unit.cpp:2562 src/unit.cpp:2617
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2488 src/unit.cpp:2599
+#: src/unit.cpp:2479 src/unit.cpp:2590
 msgid "XP to advance"
 msgstr "punt d'experiència per avançar"
 
-#: src/unit.cpp:2605
+#: src/unit.cpp:2596
 #, fuzzy
 msgid "/level"
 msgstr "nivell"
@@ -6954,18 +7037,12 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "Village Elder"
 #~ msgstr "Or per llogaret: "
 
-#~ msgid "mace"
-#~ msgstr "maça"
-
 #, fuzzy
 #~ msgid "Young Peasant"
 #~ msgstr "Pagès"
 
 #~ msgid "club"
 #~ msgstr "garrot"
-
-#~ msgid "sling"
-#~ msgstr "fona"
 
 #~ msgid "female^Footpad"
 #~ msgstr "Saltejadora"
@@ -6984,18 +7061,12 @@ msgstr "Permetre la pujada de resums"
 #~ msgid "dagger"
 #~ msgstr "daga"
 
-#~ msgid "bow"
-#~ msgstr "arc"
-
 #~ msgid "Peasant"
 #~ msgstr "Pagès"
 
 #, fuzzy
 #~ msgid "Peasant Trapper"
 #~ msgstr "Paranyer"
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- Guerra i virtut"
 
 #~ msgid "short sword"
 #~ msgstr "espasa curta"
@@ -7952,9 +8023,6 @@ msgstr "Permetre la pujada de resums"
 #~ "Els dracs especialitzats en l'ús de l'espasa juren fidelitat a un orde "
 #~ "diferent. La seva marca és el símbol de guerra negre i blanc que mostren "
 #~ "en combat."
-
-#~ msgid "sword"
-#~ msgstr "espasa"
 
 #~ msgid "Drake Burner"
 #~ msgstr "Cremador drac"
@@ -9985,9 +10053,6 @@ msgstr "Permetre la pujada de resums"
 
 #~ msgid "female^Mage of Light"
 #~ msgstr "Maga de la llum"
-
-#~ msgid "Outlaw"
-#~ msgstr "Proscrit"
 
 #~ msgid ""
 #~ "After some years of service, former 'footpads' rise up in the ranks of "
@@ -12643,9 +12708,6 @@ msgstr "Permetre la pujada de resums"
 #~ msgstr ""
 #~ "Un mapa de duels per partides molt ràpides. Es recomana assignar 2 "
 #~ "monedes d'or per llogaret."
-
-#~ msgid "female^Fighter"
-#~ msgstr "Guerrera"
 
 #~ msgid "Quintain"
 #~ msgstr "Quintana"
