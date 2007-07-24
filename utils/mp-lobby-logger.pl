@@ -278,7 +278,7 @@ while (1) {
 									my $observer = $game->{'attr'}->{'observer'};
 									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $showgames;
 									print LOG &logtimestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $logfile;
-									my $settings = "Settings: map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv  fog: $fog  shroud: $shroud  observers: $observer  timer: $timer";
+									my $settings = "Settings:  map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv  fog: $fog  shroud: $shroud  observers: $observer  timer: $timer";
 									if ($timer =~ "yes") {
 										my $treservoir = "-";
 										$treservoir    = $game->{'attr'}->{'mp_countdown_reservoir_time'} if $game->{'attr'}->{'mp_countdown_reservoir_time'};
@@ -319,7 +319,7 @@ while (1) {
 											if (my $turn = $_->{'attr'}->{'turn'}) {
 												my $gamename = $games[$gamelistindex]->{'attr'}->{'name'};
 												my $gameid   = $games[$gamelistindex]->{'attr'}->{'id'};
-												if ($turn =~ /1\//) {
+												if ($turn =~ /^1\//) {
 													print STDERR &timestamp . "*** A game has started: \"$gamename\". ($gamelistindex, $gameid)\n" if $showgames;
 													print LOG &logtimestamp . "*** A game has started: \"$gamename\". ($gamelistindex, $gameid)\n" if $logfile;
 												} else {
