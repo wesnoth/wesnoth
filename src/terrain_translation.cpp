@@ -435,15 +435,6 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 			return result;
 		}
 
-		// Special case for NO_LAYER
-		if(itor->overlay == 0 && src.overlay == NO_LAYER && src.base == itor->base) {
-			return result;
-		}
-
-		if(dest_has_wildcard && itor->overlay == 0 && src.overlay == NO_LAYER &&
-				((src.base & dest_mask.base) == masked_dest.base)) {
-			return result;
-		}
 /* Test code */ /*
 		if(src_has_wildcard && dest_has_wildcard && (
 				(
@@ -511,19 +502,6 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 			return result;
 		}
 
-		// Special case for NO_LAYER
-		if(terrain_itor->overlay == 0 && src.overlay == NO_LAYER && src.base == terrain_itor->base) {
-			return result;
-		}
-
-		// does the desination have a wildcard and an empty overlay and the source
-		// no overlay, we need to check the part base for a match
-		// NOTE the has_wildcard(*terrain_itor) is expensive so move the test to
-		// later in the line
-		if(terrain_itor->overlay == 0 && src.overlay == NO_LAYER && has_wildcard(*terrain_itor) &&
-				((src.base & dest.mask[i].base) == dest.masked_terrain[i].base)) {
-			return result;
-		}
 /* Test code */ /*
 		if(src_has_wildcard && has_wildcard(*terrain_itor) && (
 				(
@@ -677,7 +655,7 @@ inline t_layer get_layer_mask_(t_layer terrain)
 static t_letter get_mask_(const t_letter& terrain)
 {
 	if(terrain.overlay == NO_LAYER) {
-		return t_letter(get_layer_mask_(terrain.base), 0);
+		return t_letter(get_layer_mask_(terrain.base), 0xFFFFFFFF);
 	} else {
 		return t_letter(get_layer_mask_(terrain.base), get_layer_mask_(terrain.overlay));
 	}
@@ -685,6 +663,9 @@ static t_letter get_mask_(const t_letter& terrain)
 
 static t_layer string_to_layer_(const std::string& str)
 {
+	if (str.size() == 0)
+		return NO_LAYER;
+
 	t_layer result = 0;
 
 	//validate the string
