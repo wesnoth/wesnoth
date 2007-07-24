@@ -1061,7 +1061,7 @@ void game_data::set_config(const config& cfg)
 				if(from_unit != unit_types.end())
 				{
 					//derive a new unit type from an existing base unit id
-					config& merged_cfg = from_unit->second.cfg_.merge_with(**i.first);
+					config merged_cfg = from_unit->second.cfg_.merge_with(**i.first);
 					merged_cfg.clear_children("base_unit");
 					const unit_type u_type(merged_cfg,movement_types,races,unit_traits);
 					unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
