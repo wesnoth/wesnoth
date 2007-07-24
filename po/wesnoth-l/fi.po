@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-24 23:31+0200\n"
+"POT-Creation-Date: 2007-07-25 00:54+0200\n"
 "PO-Revision-Date: 2005-04-25 21:43+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -224,40 +224,49 @@ msgstr ""
 msgid "The banner will fly over a ghost town if help does not come soon."
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:279
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:281
 msgid ""
 "They're getting closer to our village! What about the town guards, can they "
 "help us?"
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:283
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:285
 msgid ""
-"They'll come out when they see those riders approaching, but there aren't "
-"many of them... I wouldn't count on them being able to protect the village "
-"alone for long."
+"They'll come out when they see those riders, or us, approaching, but there "
+"aren't many of them... I wouldn't count on them being able to protect the "
+"village alone for long."
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:299
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:298
 msgid "Remald"
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:300
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:299
 msgid "Wolmas"
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:303
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:302
 msgid "Jasken"
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:307
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:309
+msgid ""
+"What's happening here? Why are you running like mad, $unit.user_description|?"
+msgstr ""
+
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:313
+msgid "Goblin riders on the hunt. We must not let any of them to the village!"
+msgstr ""
+
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:320
 msgid "Look!  Goblin riders are on the hunt - and heading right for Dallben!"
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:311
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:324
 msgid "Halt!"
 msgstr ""
 
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:327
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
 msgid ""
 "The goblins reached the village!  There will surely be nothing left when "
 "they are done pillaging it."
@@ -1582,14 +1591,11 @@ msgid "godlike powers"
 msgstr ""
 
 #: data/campaigns/Liberty/units/Avatar.cfg:31
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:40
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:40
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:35
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:38
-#: data/campaigns/Liberty/units/Skeleton_Rider2.cfg:40
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:30
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
 #: data/campaigns/Liberty/units/Death_Squire.cfg:31
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:71
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:74
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:38
 msgid "blade"
 msgstr "viilto"
@@ -1603,16 +1609,10 @@ msgstr "lävistys"
 msgid "marksman"
 msgstr "tarkk'ampuja"
 
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:7
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:7
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:5
 msgid "Bone Knight"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:28
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:28
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:26
-#: data/campaigns/Liberty/units/Skeleton_Rider2.cfg:28
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:26
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
@@ -1620,77 +1620,26 @@ msgid ""
 "and destruction."
 msgstr ""
 
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:38
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:39
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:38
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:39
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:36
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:37
-#: data/campaigns/Liberty/units/Skeleton_Rider2.cfg:38
-#: data/campaigns/Liberty/units/Skeleton_Rider2.cfg:39
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:36
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:37
 msgid "axe"
 msgstr "kirves"
 
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:56
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:58
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:56
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:58
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:54
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:56
 msgid "trample"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:59
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:59
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:163
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:176
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:57
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:35
 msgid "impact"
 msgstr "murskaus"
 
-#: data/campaigns/Liberty/units/Bone_Knight2.cfg:63
-#: data/campaigns/Liberty/units/Bone_Knight3.cfg:63
 #: data/campaigns/Liberty/units/Bone_Knight.cfg:61
 msgid "charge"
 msgstr "rynnäkkö"
-
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:11
-msgid "Dark Sorcerer"
-msgstr ""
-
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:28
-msgid ""
-"The dread inspired by black magic comes chiefly from how little is known "
-"about it by the common man. Dark sorcerers have begun to unlock the secrets "
-"of life and death, quickly becoming masters of inflicting pain and anguish.\n"
-"\n"
-"The ultimate prize of the dark arts is complete domination of death and "
-"life. Dark Sorcerers may eventually learn how to manipulate life and death "
-"by reanimating corpses, skeletons, and spirits. The most corrupt and power-"
-"hungry will attempt to completely conquer death through transformation to "
-"lichdom and attainment of a dreadful immortality.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:32
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:33
-msgid "staff"
-msgstr ""
-
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:71
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:72
-msgid "chill wave"
-msgstr ""
-
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:65
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:64
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:114
-#: data/campaigns/Liberty/units/Dark_Sorcerer2.cfg:73
-msgid "cold"
-msgstr "kylmä"
 
 #: data/campaigns/Liberty/units/Death_Squire.cfg:5
 msgid "Death Squire"
@@ -1718,59 +1667,91 @@ msgstr "miekka"
 msgid "Rogue Mage"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:30
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:31
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:28
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
+msgid ""
+"Some mages are thrown out of the mage's guild for attempting to practice "
+"forbidden arts. Now completely outside the law, these rogue mages do "
+"whatever necessary to support their study of black magic. Although not as "
+"skilled as mages with more formal training, their magic can be quite lethal, "
+"while their banditry has resulted in moderate skill with the short sword."
+msgstr ""
+
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:33
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:29
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:30
 msgid "short sword"
 msgstr "lyhytmiekka"
 
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:61
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:63
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:86
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:87
 msgid "missile"
 msgstr "tulipallo"
 
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:34
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:67
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:66
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:73
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:116
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:165
-msgid "magical"
-msgstr "maaginen"
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:74
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:88
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:135
+msgid "cold"
+msgstr "kylmä"
 
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:4
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:69
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:70
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
+msgid ""
+"Few humans fathom the secrets of light and dark magic and retain their "
+"sanity.  Those that can master that balance become Shadow Lords, fully "
+"existing neither in the world of light nor the world of darkness.  No longer "
+"needing physical weapons, they are fearsome to both their enemies and those "
+"they lord over."
+msgstr ""
+
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:72
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:73
 msgid "astral blade"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:112
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:113
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:132
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:133
 msgid "shadow bolt"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:161
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:162
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:173
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:174
 msgid "shadow blast"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:4
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:5
 msgid "Shadow Mage"
 msgstr ""
 
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:63
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:64
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
+msgid ""
+"Years of violence and brutality to support the study of forbidden magical "
+"arts have turned the shadow mages into feared fighters. Now completely "
+"enthralled with power, they have been known to command small followings of "
+"henchmen. They are outmatched in direct magical combat with their magic-"
+"using peers, instead channeling their energies into devestating melee "
+"attacks. Despite their offensive power, the corruption in their souls has "
+"begun to adversely affect their health."
+msgstr ""
+
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:72
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:73
 msgid "ice blast"
 msgstr ""
 
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
-#: data/campaigns/Liberty/units/Skeleton_Rider2.cfg:7
 msgid "Skeleton Rider"
 msgstr "Luurankoratsastaja"
+
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:26
+msgid ""
+"Once great warriors thundering across the plains, these mounted riders atop "
+"their skeletal horses were raised from the grave by unholy magic to spread "
+"fear and destruction."
+msgstr ""
 
 #: data/campaigns/Liberty/units/Villagers.cfg:15
 msgid "Peasant"
@@ -1891,13 +1872,5 @@ msgid ""
 "in their territory.  They are highly skilled at hunting at night."
 msgstr ""
 
-
-
-#, fuzzy
-
-
-
-
-
-#, fuzzy
-
+#~ msgid "magical"
+#~ msgstr "maaginen"
