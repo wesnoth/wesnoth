@@ -8,6 +8,9 @@
 # resource (sound or image) files with uses of the resources in WML.
 # and generates various useful reports from such cross-references.
 #
+# (Most of the work is done by a cross-referencer class that is also
+# used elsewhere, e.g. by wmlmove.) 
+#
 # It takes a list of directories as arguments; if none is given, it
 # behaves as though the current directory had been specified as a
 # single argument.  Each directory is treated as a separate domain for
@@ -46,7 +49,6 @@
 # Problems (1) and (2) imply that this tool might conceivably report
 # that a reference has been satisfied when under actual
 # WML-interpreter rules it has not.
-# can also occur.
 #
 # The reporting format is compatible with GNU Emacs compile mode.
 
