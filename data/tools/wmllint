@@ -458,7 +458,9 @@ def hack_syntax(lines):
     modcount = 0
     # Ensure that every attack has a translatable description."
     for i in range(len(lines)):
-        if "[attack]" in lines[i]:
+        if "no-syntax-rewrite" in lines[j]:
+            return modcount
+        elif "[attack]" in lines[i]:
             j = i;
             have_description = False
             while '[/attack]' not in lines[j]:
@@ -483,11 +485,14 @@ def hack_syntax(lines):
     # Ensure that every speaker=narrator block without an image uses wesnoth-icon.png as an image."
     need_image = False
     for i in range(len(lines)):
-        if "speaker=narrator" in lines[i]:
+        if "no-syntax-rewrite" in lines[j]:
+            return modcount
+        precomment = lines[i].split("#")[0]
+        if "speaker=narrator" in precomment:
             need_image = True
-        elif lines[i].strip().startswith("image"):
+        elif precomment.strip().startswith("image"):
             need_image = False
-        elif '[/message]' in lines[i]:
+        elif '[/message]' in precomment:
             if need_image:
                 # This line presumes the code has been through wmlindent
                 leader = lines[i][:lines[i].find("[/")] + "    "
