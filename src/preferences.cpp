@@ -74,7 +74,7 @@ void erase(const std::string key) {
 	prefs.values.erase(key);
 }
 
-std::string get(const std::string key) {
+const std::string get(const std::string key) {
 	return prefs[key];
 }
 

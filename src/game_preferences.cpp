@@ -376,7 +376,7 @@ int countdown_turn_bonus()
 
 void set_countdown_turn_bonus(int value)
 {
-	preferences::get("mp_countdown_turn_bonus") =lexical_cast<std::string>(value);
+	preferences::set("mp_countdown_turn_bonus", lexical_cast<std::string>(value));
 }
 
 int countdown_action_bonus()
@@ -395,7 +395,7 @@ int countdown_action_bonus()
 
 void set_countdown_action_bonus(int value)
 {
-	preferences::get("mp_countdown_action_bonus") =lexical_cast<std::string>(value);
+	preferences::set("mp_countdown_action_bonus", lexical_cast<std::string>(value));
 }
 
 int village_gold()
@@ -542,7 +542,7 @@ std::string clock_format()
 	if(preferences::get("clock_format").size())
 		return preferences::get("clock_format");
 	else
-		preferences::get("clock_format")="%H:%M";
+		preferences::set("clock_format", "%H:%M");
 	return "%H:%M";
 }
 
@@ -630,9 +630,9 @@ const std::string upload_id()
 	// randomness.
 	if (preferences::get("upload_id") == "") {
 		srand(time(NULL));
-		preferences::get("upload_id")
-			= lexical_cast<std::string>(rand())
-			+ lexical_cast<std::string>(SDL_GetTicks());
+		preferences::set("upload_id",
+			lexical_cast<std::string>(rand())
+				 + lexical_cast<std::string>(SDL_GetTicks()));
 	}
 	return preferences::get("upload_id");
 }

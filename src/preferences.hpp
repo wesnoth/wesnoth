@@ -43,7 +43,7 @@ namespace preferences {
 
 	// low-level, should be seen only by preferences_display ?
 	void set(std::string key, std::string value);
-	std::string get(const std::string key);
+	const std::string get(const std::string key);
 	void erase(const std::string key);
 
 	void disable_preferences_save();
