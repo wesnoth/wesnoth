@@ -18,7 +18,8 @@
 #
 # This tool does catch one kind of implicit reference: if an attack name
 # is specified but no icon is given, the attack icon will default to
-# a name generated from the attack name,
+# a name generated from the attack name.  This behavior can be suppressed
+# by adding a magic comment containing the string "no-icon" to the name= line.
 #
 # The checking done by this tool has a couple of flaws:
 #
