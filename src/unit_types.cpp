@@ -1016,72 +1016,74 @@ void game_data::set_config(const config& cfg)
 
 	const config::child_list& unit_traits = cfg.get_children("trait");
 
-	for(config::const_child_itors i = cfg.child_range("movetype");
-	    i.first != i.second; ++i.first) {
+	config::const_child_itors i;
+	for(i = cfg.child_range("movetype"); i.first != i.second; ++i.first)
+	{
 		const unit_movement_type move_type(**i.first);
 		movement_types.insert(
-				std::pair<std::string,unit_movement_type>(move_type.name(),
-						                                  move_type));
+			std::pair<std::string,unit_movement_type>(move_type.name(), move_type));
 		increment_set_config_progress();
 	}
 
-	for(config::const_child_itors r = cfg.child_range("race");
-	    r.first != r.second; ++r.first) {
-		const unit_race race(**r.first);
+	for(i = cfg.child_range("race"); i.first != i.second; ++i.first) 
+	{
+		const unit_race race(**i.first);
 		races.insert(std::pair<std::string,unit_race>(race.name(),race));
 		increment_set_config_progress();
 	}
 
-	for(config::const_child_itors j = cfg.child_range("unit");
-	    j.first != j.second; ++j.first) {
-		const unit_type u_type(**j.first,movement_types,races,unit_traits);
+	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first) 
+	{
+		//LOAD UNIT TYPES
+		const unit_type u_type(**i.first,movement_types,races,unit_traits);
 		unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 		increment_set_config_progress();
 	}
+	
+	// fix up advance_from references
+	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
+	{
+		config::const_child_itors af;
+		for(af = (*i.first)->child_range("advancefrom"); af.first != af.second; ++af.first)
+		{
+			const std::string &to = (**i.first)["id"];
+			const std::string &from = (**af.first)["unit"];
+			const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
 
-        // fix up advance_from references
-        for(config::const_child_itors k = cfg.child_range("unit");
-            k.first != k.second; ++k.first)
-          for(config::const_child_itors af = (*k.first)->child_range("advancefrom");
-            af.first != af.second; ++af.first) {
-                const std::string &to = (**k.first)["id"];
-                const std::string &from = (**af.first)["unit"];
-                const int xp = lexical_cast_default<int>((**af.first)["experience"],0);
+			unit_type_map::iterator from_unit = unit_types.find(from);
+			unit_type_map::iterator to_unit = unit_types.find(to);
+			if(from_unit==unit_types.end())
+			{
+				lg::warn(lg::config) << "unknown unit " << from << " in advancefrom\n";
+				continue;
+			}
+			wassert(to_unit!=unit_types.end());
 
-                unit_type_map::iterator from_unit = unit_types.find(from);
-                unit_type_map::iterator to_unit = unit_types.find(to);
-                if(from_unit==unit_types.end()) {
-                  lg::warn(lg::config) << "unknown unit " << from << " in advancefrom\n";
-                        continue;
-                }
-                wassert(to_unit!=unit_types.end());
-
-                from_unit->second.add_advancement(to_unit->second,xp);
-		increment_set_config_progress();
-        }
+			from_unit->second.add_advancement(to_unit->second,xp);
+			increment_set_config_progress();
+		}
+	}
 
 	// For all unit types, store what units they advance from
-	for(unit_type_map::iterator from_unit = unit_types.begin();
-			from_unit != unit_types.end();
-			++from_unit)
+	unit_type_map::iterator from_unit;
+	for(from_unit = unit_types.begin(); from_unit != unit_types.end(); ++from_unit)
 	{
 		std::vector<std::string> to_units_ids = from_unit->second.advances_to();
-		for ( std::vector<std::string>::iterator to_unit_id = to_units_ids.begin();
-				to_unit_id != to_units_ids.end();
-				++to_unit_id)
+		std::vector<std::string>::iterator to_unit_id;
+		for(to_unit_id = to_units_ids.begin(); to_unit_id != to_units_ids.end(); ++to_unit_id)
 		{
 			unit_type_map::iterator to_unit = unit_types.find(*to_unit_id);
-			if (to_unit != unit_types.end())
+			if(to_unit != unit_types.end())
 			{
 				to_unit->second.add_advancesfrom(from_unit->second);
 			}
 			else
 			{
-				lg::warn(lg::config) << "unknown unit " << *to_unit_id << " advanced to by unit " << from_unit->first << "\n";
+				lg::warn(lg::config) << "unknown unit " << *to_unit_id 
+					<< " advanced to by unit " << from_unit->first << "\n";
 			}
 		}
-	} 
-
+	}
 }
 
 void game_data::clear()
