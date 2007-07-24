@@ -13,7 +13,7 @@
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
 
-struct game_data;
+class game_data;
 class gamestatus;
 class unit;
 class unit_map;

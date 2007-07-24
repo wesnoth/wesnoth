@@ -18,7 +18,7 @@
 
 class config;
 class display;
-struct game_data;
+class game_data;
 class gamemap;
 
 #include "hotkeys.hpp"

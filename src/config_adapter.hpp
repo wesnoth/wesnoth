@@ -23,7 +23,7 @@
 
 class gamestatus;
 class game_state;
-struct game_data;
+class game_data;
 class gamemap;
 class unit_map;
 

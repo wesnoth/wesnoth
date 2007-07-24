@@ -26,7 +26,7 @@
 class unit_type;
 class unit;
 class unit_ability_list;
-struct game_data;
+class game_data;
 class gamestatus;
 class team;
 
@@ -144,6 +144,7 @@ class unit_type
 {
 public:
 	friend class unit;
+	friend class game_data;
 	unit_type(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
 	unit_type(const unit_type& o);
@@ -284,8 +285,9 @@ private:
     std::string flag_rgb_;
 };
 
-struct game_data
+class game_data
 {
+public:
 	game_data();
 	game_data(const config& cfg);
 	void set_config(const config& cfg);

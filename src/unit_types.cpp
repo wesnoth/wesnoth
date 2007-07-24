@@ -1032,12 +1032,63 @@ void game_data::set_config(const config& cfg)
 		increment_set_config_progress();
 	}
 
+	unsigned base_unit_count = 0;
 	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first) 
 	{
-		//LOAD UNIT TYPES
-		const unit_type u_type(**i.first,movement_types,races,unit_traits);
-		unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
-		increment_set_config_progress();
+		if((**i.first).child("base_unit"))
+		{
+			++base_unit_count;
+		}
+		else 
+		{
+			//LOAD UNIT TYPES
+			const unit_type u_type(**i.first,movement_types,races,unit_traits);
+			unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
+			increment_set_config_progress();
+		} 
+	}
+	while(base_unit_count > 0)
+	{
+		unsigned new_count = base_unit_count;
+		std::string skipped;
+		for(i = cfg.child_range("unit"); i.first != i.second; ++i.first) 
+		{
+			const config *bu_cfg = (**i.first).child("base_unit");
+			if(bu_cfg)
+			{
+				const std::string &based_from = (*bu_cfg)["id"];
+				unit_type_map::iterator from_unit = unit_types.find(based_from);
+				if(from_unit != unit_types.end())
+				{
+					config& merged_cfg = from_unit->second.cfg_.merge_with(**i.first);
+					merged_cfg.clear_children("base_unit");
+					merged_cfg.debug(); //REMOVE ME
+					const unit_type u_type(merged_cfg,movement_types,races,unit_traits);
+					unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
+					increment_set_config_progress();
+					--new_count;
+				}
+				else if(skipped.empty())
+				{
+					skipped = based_from;
+				}
+				else
+				{
+					skipped += ',' + based_from;
+				}
+			}
+		}
+		//if we iterate through the whole list and no work was done, an error has occurred
+		if(new_count >= base_unit_count)
+		{
+			lg::warn(lg::config) << "unknown unit(s) " << skipped
+				<< " specified in [base_unit] id(s)\n";
+			break;
+		}
+		else
+		{
+			base_unit_count = new_count;
+		}
 	}
 	
 	// fix up advance_from references

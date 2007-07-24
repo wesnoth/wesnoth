@@ -18,7 +18,7 @@ class t_string;
 class game_display;
 class gamestatus;
 class unit;
-struct game_data;
+class game_data;
 class game_state;
 
 #include "map.hpp"

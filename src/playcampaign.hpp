@@ -20,7 +20,7 @@
 class display;
 class game_state;
 class config;
-struct game_data;
+class game_data;
 class CVideo;
 struct upload_log;
 

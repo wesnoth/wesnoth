@@ -17,7 +17,7 @@
 
 class config;
 class game_display;
-struct game_data;
+class game_data;
 
 namespace mp {
 

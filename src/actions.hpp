@@ -22,7 +22,7 @@ class unit;
 
 class attack_type;
 class team;
-struct game_data;
+class game_data;
 
 #include "global.hpp"
 #include "gamestatus.hpp"
