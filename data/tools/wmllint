@@ -452,9 +452,11 @@ def validate_stack(stack, filename, lineno):
 def validate_on_pop(tagstack, closer, file, lineno):
     pass
 
-def hack_attacks(lines):
-    "Ensure that every attack has a translatable description."
+# Syntax transformations
+
+def hack_syntax(lines):
     modcount = 0
+    # Ensure that every attack has a translatable description."
     for i in range(len(lines)):
         if "[attack]" in lines[i]:
             j = i;
@@ -478,6 +480,22 @@ def hack_attacks(lines):
                         j += 1
                         modcount += 1
                     j += 1
+    # Ensure that every speaker=narrator block without an image uses wesnoth-icon.png as an image."
+    need_image = False
+    for i in range(len(lines)):
+        if "speaker=narrator" in lines[i]:
+            need_image = True
+        elif lines[i].strip().startswith("image"):
+            need_image = False
+        elif '[/message]' in lines[i]:
+            if need_image:
+                # This line presumes the code has been through wmlindent
+                leader = lines[i][:lines[i].find("[/")] + "    "
+                if verbose:
+                    print 'wmllint: inserting "image=wesnoth-icon.png"'
+                lines.insert(i, leader + "image=wesnoth-icon.png\n")
+                modcount += 1        
+            need_image = False
     return modcount
 
 # Generic machinery starts here
@@ -626,7 +644,7 @@ def translator(filename, mapxforms, textxform):
     if "maps" in filename:
         modified_maps[filename] = modified
     # OK, now perform WML rewrites
-    hacked = hack_attacks(newdata)
+    hacked = hack_syntax(newdata)
     # Return None if the transformation functions made no changes.
     if modified or hacked:
         return "".join(newdata)
