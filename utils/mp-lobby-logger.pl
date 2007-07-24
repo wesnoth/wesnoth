@@ -265,7 +265,7 @@ while (1) {
 								if (my $game = &wml::has_child($_, 'game')) {
 									my $gamename = $game->{'attr'}->{'name'};
 									my $gameid   = $game->{'attr'}->{'id'};
-									my $era      = "unknown";   # some games don't set the era?!
+									my $era      = "unknown";   # some eras don't set the id
 									$era         = $game->{'attr'}->{'mp_era'} if $game->{'attr'}->{'mp_era'};
 									my $scenario = "unknown";   # some scenarios don't set the id
 									$scenario    = $game->{'attr'}->{'mp_scenario'} if $game->{'attr'}->{'mp_scenario'};
@@ -280,10 +280,14 @@ while (1) {
 									print LOG &logtimestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $logfile;
 									my $settings = "Settings: map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv  fog: $fog  shroud: $shroud  observers: $observer  timer: $timer";
 									if ($timer =~ "yes") {
-										my $treservoir = $game->{'attr'}->{'mp_countdown_reservoir_time'};
-										my $tinit      = $game->{'attr'}->{'mp_countdown_init_time'};
-										my $taction    = $game->{'attr'}->{'mp_countdown_action_bonus'};
-										my $tturn      = $game->{'attr'}->{'mp_countdown_turn_bonus'};
+										my $treservoir = "-";
+										$treservoir    = $game->{'attr'}->{'mp_countdown_reservoir_time'} if $game->{'attr'}->{'mp_countdown_reservoir_time'};
+										my $tinit      = "-";
+										$tinit         = $game->{'attr'}->{'mp_countdown_init_time'} if $game->{'attr'}->{'mp_countdown_init_time'};
+										my $taction    = "-";
+										$taction       = $game->{'attr'}->{'mp_countdown_action_bonus'} if $game->{'attr'}->{'mp_countdown_action_bonus'};
+										my $tturn      = "-";
+										$tturn         = $game->{'attr'}->{'mp_countdown_turn_bonus'} if $game->{'attr'}->{'mp_countdown_turn_bonus'};
 										$settings .= "  reservoir time: $treservoir  init time: $tinit  action bonus: $taction  turn bonus: $tturn";
 									}
 									print STDERR &timestamp . $settings . "\n" if $showgames;
