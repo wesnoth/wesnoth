@@ -454,7 +454,7 @@ def validate_on_pop(tagstack, closer, file, lineno):
 
 # Syntax transformations
 
-def hack_syntax(lines):
+def hack_syntax(filename, lines):
     modcount = 0
     # Ensure that every attack has a translatable description."
     for i in range(len(lines)):
@@ -477,7 +477,7 @@ def hack_syntax(lines):
                         leader = lines[j][:lines[j].find("name")]
                         new_line = leader + "description=_"+description
                         if verbose:
-                            print "wmllint: inserting %s" % `new_line`
+                            print 'wmllint: "%s", line %d: inserting %s' % (filename, i+1, `new_line`)
                         lines.insert(j+1, new_line)
                         j += 1
                         modcount += 1
@@ -497,7 +497,7 @@ def hack_syntax(lines):
                 # This line presumes the code has been through wmlindent
                 leader = lines[i][:lines[i].find("[/")] + "    "
                 if verbose:
-                    print 'wmllint: inserting "image=wesnoth-icon.png"'
+                    print 'wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
                 lines.insert(i, leader + "image=wesnoth-icon.png\n")
                 modcount += 1        
             need_image = False
@@ -649,7 +649,7 @@ def translator(filename, mapxforms, textxform):
     if "maps" in filename:
         modified_maps[filename] = modified
     # OK, now perform WML rewrites
-    hacked = hack_syntax(newdata)
+    hacked = hack_syntax(filename, newdata)
     # Return None if the transformation functions made no changes.
     if modified or hacked:
         return "".join(newdata)
