@@ -214,8 +214,12 @@ class CrossRef:
                         formals = line.split()[2:]
                     elif line.startswith("#enddef"):
                         formals = []
+                    comment = ""
                     if '#' in line:
-                        line = line.split('#')[0]
+                        fields = line.split('#')
+                        line = fields[0]
+                        if len(fields) > 1:
+                            comment = fields[1]
                     if not line:
                         continue
                     # Find references to macros
@@ -262,13 +266,14 @@ class CrossRef:
                             if len(candidates) > 1:
                                 print "%s: more than one definition of %s is visible here (%s)." % (Reference(fn, n), name, ", ".join(candidates))
                         if not key:
-                            self.missing.append((name, Reference(fn,n+1))) # Notice implicit references through attacks
+                            self.missing.append((name, Reference(fn,n+1)))
+                    # Notice implicit references through attacks
                     if state == "outside":
                         if "[attack]" in line:
                             beneath = 0
                             attack_name = default_icon = None
                             have_icon = False
-                        elif "name=" in line:
+                        elif "name=" in line and not "no-icon" in comment:
                             attack_name = line[line.find("name=")+5:].strip()
                             default_icon = os.path.join("attacks", attack_name  + ".png")
                         elif "icon=" in line and beneath == 0:
