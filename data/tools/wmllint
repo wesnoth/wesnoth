@@ -488,8 +488,8 @@ def hack_syntax(filename, lines):
                             if verbose:
                                 print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
                             lines.insert(j+1, new_line)
-                        j += 1
-                        modcount += 1
+                            j += 1
+                            modcount += 1
                     j += 1
     # Ensure that every speaker=narrator block without an image uses
     # wesnoth-icon.png as an image.
