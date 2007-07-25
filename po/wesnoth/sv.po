@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-25 00:53+0200\n"
-"PO-Revision-Date: 2007-07-03 18:26+0200\n"
+"PO-Revision-Date: 2007-07-25 13:22+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -84,9 +84,8 @@ msgid "Prose-doctoring and preparation for mainline"
 msgstr ""
 
 #: data/campaigns/Liberty/_main.cfg:32
-#, fuzzy
 msgid "Unit art"
-msgstr "Trupplista"
+msgstr "Truppgrafik"
 
 #: data/campaigns/Liberty/_main.cfg:36
 #: data/campaigns/Northern_Rebirth/_main.cfg:41
@@ -95,11 +94,11 @@ msgstr "Översättning"
 
 #: data/campaigns/Liberty/_main.cfg:41
 msgid "Map art"
-msgstr ""
+msgstr "Kartgrafik"
 
 #: data/campaigns/Liberty/_main.cfg:46
 msgid "Portrait Art"
-msgstr ""
+msgstr "Porträtt"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -229,9 +228,8 @@ msgid "French Translation"
 msgstr "Fransk översättning"
 
 #: data/core/about.cfg:511
-#, fuzzy
 msgid "Galician Translation"
-msgstr "Valencisk översättning"
+msgstr "Galicisk översättning"
 
 #: data/core/about.cfg:518
 msgid "German Translation"
@@ -270,9 +268,8 @@ msgid "Latin Translation"
 msgstr "Latinsk översättning"
 
 #: data/core/about.cfg:622
-#, fuzzy
 msgid "Lithuanian Translation"
-msgstr "Italiensk översättning"
+msgstr "Litauisk översättning"
 
 #: data/core/about.cfg:629
 msgid "Norwegian Translation"
@@ -793,7 +790,7 @@ msgstr ""
 "Normalt kan man ångra en trupps förflyttning så länge ingen slumpmässigt "
 "avgjord händelse ägt rum, såsom strid eller rekrytering. Detta gäller även "
 "vid utforskning av terräng täckt av slöja eller stridsdimma. För att ändra "
-"detta, kan inställningen \"Fördröj slöjuppdateringarna\" i menyn Handlingar "
+"detta, kan inställningen 'Fördröj slöjuppdateringarna' i menyn Handlingar "
 "aktiveras. Detta gör att slöjan eller stridsdimman inte lyfts av trupper "
 "förrän nästa slumpmässigt avgjorda händelse äger rum eller om man väljer att "
 "uppdatera slöjan själv (eller vid dragets slut). Därigenom behålls "
@@ -1426,10 +1423,9 @@ msgid "Quick"
 msgstr "Snabb"
 
 #: data/core/help.cfg:286
-#, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Snabba trupper har en extra förflyttningspoäng, men 10% mindre hälsopoäng än "
+"Snabba trupper har en extra förflyttningspoäng, men 5% mindre hälsopoäng än "
 "vanligt."
 
 #: data/core/help.cfg:288
@@ -1456,9 +1452,9 @@ msgid "Resilient"
 msgstr "Tålig"
 
 #: data/core/help.cfg:294
-#, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Tåliga trupper har 10% +3 mer hälsopoäng än vanligt."
+msgstr ""
+"Tåliga trupper har 4 hälsopoäng plus 1 hälsopoäng per nivå mer än normalt."
 
 #: data/core/help.cfg:296
 msgid ""
@@ -1577,17 +1573,15 @@ msgstr ""
 "använder gift i sina attacker."
 
 #: data/core/help.cfg:331
-#, fuzzy
 msgid "trait^Mechanical"
-msgstr "Konstruktioner"
+msgstr "Konstruktion"
 
 #: data/core/help.cfg:332
-#, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Vandöda trupper är immuna mot gift, dessutom kan de inte påverkas av suga "
+"Konstruktioner är immuna mot gift, dessutom kan de inte påverkas av suga "
 "livskraft eller pest."
 
 #: data/core/help.cfg:334
@@ -1598,6 +1592,11 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Konstruktioner har 'konstruktion' som sitt enda karaktärsdrag. Då "
+"konstruktioner egentligen inte lever, påverkas de inte av suga livskraft, "
+"gift eller pest."
 
 #: data/core/help.cfg:339
 msgid "Dextrous"
@@ -2193,7 +2192,6 @@ msgid "Impassable Mountain"
 msgstr "Obestigbara berg"
 
 #: data/core/help.cfg:596
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
@@ -3987,19 +3985,16 @@ msgid "female^undead"
 msgstr "vandöd"
 
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:34
-#, fuzzy
 msgid "Immune to drain, poison and plague"
-msgstr "immun mot gift"
+msgstr "immun mot gift, pest och suga livskraft"
 
 #: data/core/macros/traits.cfg:32
-#, fuzzy
 msgid "mechanical"
-msgstr "Konstruktioner"
+msgstr "konstruktion"
 
 #: data/core/macros/traits.cfg:33
-#, fuzzy
 msgid "female^mechanical"
-msgstr "Konstruktioner"
+msgstr "konstruktion"
 
 #: data/core/macros/traits.cfg:42
 msgid "strong"
@@ -4102,9 +4097,8 @@ msgid "Teal"
 msgstr "Turkos"
 
 #: data/core/terrain.cfg:12
-#, fuzzy
 msgid "None"
-msgstr "inget"
+msgstr "Inget"
 
 #: data/core/terrain.cfg:19 src/multiplayer_create.cpp:70
 #: src/multiplayer_lobby.cpp:421 src/multiplayer_lobby.cpp:427
@@ -4229,7 +4223,7 @@ msgstr "Obestigbara ökenberg"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "Flykting"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:26
 msgid ""
@@ -4238,6 +4232,9 @@ msgid ""
 "can be fearful in their element but no real match for professional law "
 "enforcment forces."
 msgstr ""
+"Erfarna brottslingar blir ökända hos myndigheterna för deras stridbarhet och "
+"förmåga att undkomma. De är farliga och skoningslösa i sina rätta element, "
+"men ingen riktig match för yrkesarbetande upprätthållare av lag och ordning."
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:30
 #: data/core/units/humans/Outlaw_Fugitive.cfg:31
@@ -4259,9 +4256,8 @@ msgid "sling"
 msgstr "slunga"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:126
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "Magiker"
+msgstr "Flykting"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:129
 msgid ""
@@ -4269,21 +4265,24 @@ msgid ""
 "battle prowess and ability to elude capture.  Beautiful and dangerous, their "
 "beauty is exceeded only by their dangerousness."
 msgstr ""
+"Erfarna brottslingar blir ökända hos myndigheterna för deras stridbarhet och "
+"förmåga att undkomma. Deras skönhet överträffas bara av deras farlighet."
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "Stråtrövare"
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
 msgstr ""
+"Med sina tunga klubbor är stråtrövare de sista du skulle vilja stöta på på "
+"en övergiven landsväg om natten."
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:5
-#, fuzzy
 msgid "Outlaw Ranger"
-msgstr "Fredlös"
+msgstr "Fredlös jägare"
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:25
 msgid ""
@@ -4292,6 +4291,10 @@ msgid ""
 "the cover of night.  Most rulers are afraid of rangers and would rather put "
 "them in the dungeon than put their abilities to use."
 msgstr ""
+"Fredlösa jägare är vilda män som är skogens och kullarnas mästare. De är "
+"utmärkta spårare, spejare och bågskyttar, och rör sig ledigt genom markerna "
+"i nattens mörker. De flesta makthavare är rädda för de fredlösa jägarna och "
+"kastar dem hellre i fängelsehålorna än de drar nytta av deras kunskaper."
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:52
 #: data/core/units/humans/Outlaw_Ranger.cfg:53
@@ -4840,6 +4843,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Du kan inte ångra ett drag som avslöjar mark täckt av stridsdimma eller "
+"slöja. Aktivera alternativet 'Fördröj slöjuppdateringar' när du vill "
+"förflytta trupper och samtidigt kunna ångra förflyttningarna."
 
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
@@ -4962,9 +4968,8 @@ msgid "play side turn"
 msgstr "spela upp sidans drag"
 
 #: data/themes/macros.cfg:136
-#, fuzzy
 msgid "Point of view"
-msgstr "Försvagande elixir"
+msgstr "Perspektiv"
 
 #: data/themes/macros.cfg:148
 msgid "Skip animation"
@@ -5146,13 +5151,13 @@ msgid "No Saved Games"
 msgstr "Inga sparade spel"
 
 #: src/dialogs.cpp:542
-#, fuzzy
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "Det finns inga sparade spel.\n"
+"\n"
 "(Spel sparas automatiskt när du klarar ett scenario)"
 
 #: src/dialogs.cpp:555
@@ -5613,9 +5618,8 @@ msgid "Help"
 msgstr "Hjälp"
 
 #: src/help.cpp:1143
-#, fuzzy
 msgid "Advances from: "
-msgstr "Befordras från:"
+msgstr "Befordras från: "
 
 #: src/help.cpp:1165
 msgid "Advances to: "
@@ -6918,9 +6922,8 @@ msgid "XP to advance"
 msgstr "EP till befordran"
 
 #: src/unit.cpp:2596
-#, fuzzy
 msgid "/level"
-msgstr "nivå"
+msgstr "/nivå"
 
 #: src/unit_types.cpp:193 src/unit_types.cpp:233
 msgid "damage"
