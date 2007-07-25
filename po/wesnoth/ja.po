@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-25 00:53+0200\n"
+"POT-Creation-Date: 2007-07-25 16:03+0200\n"
 "PO-Revision-Date: 2007-07-22 11:40+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -1596,7 +1596,7 @@ msgstr ""
 "壮健ユニットは通常よりも HP が 2 多く、戦闘をしなかったターンの終わりに追加"
 "で HP が 2 回復する。"
 
-#: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
+#: data/core/help.cfg:355
 msgid "Grassland"
 msgstr "平原"
 
@@ -1617,7 +1617,7 @@ msgstr ""
 "\n"
 "ほとんどのユニットは平原で 30から40%の防御を持ちます。"
 
-#: data/core/help.cfg:365 data/core/terrain.cfg:552
+#: data/core/help.cfg:365
 msgid "Road"
 msgstr "道路"
 
@@ -1631,7 +1631,7 @@ msgstr ""
 "す。ゲームプレイに関する限り、道路は<ref>dst=terrain_grassland text=平原</"
 "ref>と同じになります。"
 
-#: data/core/help.cfg:373 data/core/terrain.cfg:408
+#: data/core/help.cfg:373
 msgid "Forest"
 msgstr "森"
 
@@ -1665,7 +1665,7 @@ msgstr ""
 "乗馬中であっても60から70%の防御を享受します。ドワーフは一般的に森では30%の防"
 "御しか得られません。"
 
-#: data/core/help.cfg:385 data/core/terrain.cfg:479
+#: data/core/help.cfg:385
 msgid "Hills"
 msgstr "丘"
 
@@ -1689,7 +1689,7 @@ msgstr ""
 "ほとんどのユニットは丘で約50%の防御を持ちますが、騎兵は40%に抑えられます。ド"
 "ワーフは丘では60%の防御を享受します。"
 
-#: data/core/help.cfg:395 data/core/terrain.cfg:491 data/core/terrain.cfg:500
+#: data/core/help.cfg:395
 msgid "Mountains"
 msgstr "山"
 
@@ -1713,7 +1713,7 @@ msgstr ""
 "\n"
 "多くのユニットは山で60%の防御になりますが、ドワーフは70%を享受します。"
 
-#: data/core/help.cfg:405 data/core/terrain.cfg:574
+#: data/core/help.cfg:405
 msgid "Swamp"
 msgstr "沼地"
 
@@ -1736,7 +1736,7 @@ msgstr ""
 "多くのユニットは沼地で30%の防御となります。 マーマン、ナーガ、トカゲ族は全て"
 "一般的に60%を享受します。"
 
-#: data/core/help.cfg:415 data/core/terrain.cfg:851
+#: data/core/help.cfg:415
 msgid "Shallow Water"
 msgstr "浅瀬"
 
@@ -1761,7 +1761,7 @@ msgstr ""
 "多くのユニットは浅瀬で20から30%の防御を持ち、ナーガとマーマンは共に60%を享受"
 "します。"
 
-#: data/core/help.cfg:425 data/core/terrain.cfg:841
+#: data/core/help.cfg:425
 msgid "Deep Water"
 msgstr "深水"
 
@@ -1779,7 +1779,7 @@ msgstr ""
 "\n"
 "深水でマーマンとナーガは共に50%の防御と完全な移動を行います。"
 
-#: data/core/help.cfg:435 data/core/terrain.cfg:47
+#: data/core/help.cfg:435
 msgid "Snow"
 msgstr "雪原"
 
@@ -1797,7 +1797,7 @@ msgstr ""
 "\n"
 "ほとんどのユニットが雪原で20から40%の防御になります。"
 
-#: data/core/help.cfg:445 data/core/terrain.cfg:37
+#: data/core/help.cfg:445
 msgid "Ice"
 msgstr "氷"
 
@@ -1811,7 +1811,7 @@ msgstr ""
 "text=雪原</ref>と同じ扱いです。泳ぐことのできるユニットは例え水の中で息ができ"
 "るとしても、氷の下を泳ぐことはできないことに注意して下さい。"
 
-#: data/core/help.cfg:453 data/core/terrain.cfg:158
+#: data/core/help.cfg:453
 msgid "Castle"
 msgstr "城"
 
@@ -1836,7 +1836,7 @@ msgstr ""
 "\n"
 "ほとんどのユニットは城で60%の防御になります。"
 
-#: data/core/help.cfg:465 data/core/terrain.cfg:366
+#: data/core/help.cfg:465
 msgid "Sand"
 msgstr "砂地"
 
@@ -1854,7 +1854,7 @@ msgstr ""
 "\n"
 "多くのユニットは砂地において20から40%の防御をもちます。"
 
-#: data/core/help.cfg:475 data/core/terrain.cfg:346
+#: data/core/help.cfg:475
 msgid "Desert"
 msgstr "砂漠"
 
@@ -1867,7 +1867,7 @@ msgstr ""
 "砂漠は小さな砂の穴や砂浜とは少しばかり異なる性質ですが、ゲームプレイの目的で"
 "は同じ扱いです。<ref>dst=terrain_sand text=砂地</ref>を参照して下さい。"
 
-#: data/core/help.cfg:483 data/core/terrain.cfg:588
+#: data/core/help.cfg:483
 msgid "Cave"
 msgstr "洞窟"
 
@@ -1892,7 +1892,7 @@ msgstr ""
 "\n"
 "多くのユニットは洞窟で20から40%の防御となり、ドワーフは50%です。"
 
-#: data/core/help.cfg:493 data/core/terrain.cfg:634
+#: data/core/help.cfg:493
 msgid "Rockbound Cave"
 msgstr "岩に囲まれた洞窟"
 
@@ -1939,7 +1939,7 @@ msgstr ""
 "ほとんどのユニットは洞窟では 20% から 40% の防御を得ます。一方、ドワーフ族は "
 "50% を得ます。"
 
-#: data/core/help.cfg:511 data/core/terrain.cfg:606 data/core/terrain.cfg:614
+#: data/core/help.cfg:511
 msgid "Mushroom Grove"
 msgstr "キノコの森"
 
@@ -1965,7 +1965,7 @@ msgstr ""
 "ほとんどのユニットはキノコの森において 50% から 60% の防御を得ます。一方、騎"
 "兵は 20% しか得ることができません。"
 
-#: data/core/help.cfg:521 data/core/terrain.cfg:446
+#: data/core/help.cfg:521
 msgid "Savanna"
 msgstr "サバンナ"
 
@@ -1978,14 +1978,7 @@ msgstr ""
 "サバンナは背の高い草で覆われた平地で、暖かい気候の世界で見られます。ゲームプ"
 "レイの目的では、<ref>dst=terrain_grassland text=草原</ref>と同じ扱いです。"
 
-#: data/core/help.cfg:529 data/core/terrain.cfg:661 data/core/terrain.cfg:672
-#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
-#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
-#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
-#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
-#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
-#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
-#: data/core/terrain.cfg:826 src/terrain.cpp:95
+#: data/core/help.cfg:529 src/terrain.cpp:95
 msgid "Village"
 msgstr "村"
 
@@ -2028,7 +2021,7 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#: data/core/help.cfg:551 data/core/terrain.cfg:512
+#: data/core/help.cfg:551
 msgid "Chasm"
 msgstr "深い割目"
 
@@ -2043,7 +2036,7 @@ msgstr ""
 "り立った壁になっています。ゲームプレイに関して言えば、深い割目を飛び越えられ"
 "る能力を持ったユニットのみがこの地形を通過できます。"
 
-#: data/core/help.cfg:559 data/core/terrain.cfg:520
+#: data/core/help.cfg:559
 msgid "Lava"
 msgstr "溶岩"
 
@@ -2061,7 +2054,7 @@ msgstr ""
 "は秩序ユニットに対して攻撃のボーナスを与え、 混沌ユニットからは攻撃ボーナスを"
 "奪います。"
 
-#: data/core/help.cfg:567 data/core/terrain.cfg:861
+#: data/core/help.cfg:567
 msgid "River Ford"
 msgstr "川の浅瀬"
 
@@ -2080,10 +2073,7 @@ msgstr ""
 "限り、川の浅瀬は草原か浅い水かで、そこにいるユニットにとって最も防御と移動力"
 "ボーナスの大きい方が選択されます。"
 
-#: data/core/help.cfg:575 data/core/terrain.cfg:60 data/core/terrain.cfg:69
-#: data/core/terrain.cfg:78 data/core/terrain.cfg:88 data/core/terrain.cfg:97
-#: data/core/terrain.cfg:106 data/core/terrain.cfg:116
-#: data/core/terrain.cfg:125 data/core/terrain.cfg:134
+#: data/core/help.cfg:575
 msgid "Bridge"
 msgstr "橋"
 
@@ -2111,7 +2101,7 @@ msgstr ""
 "防御と移動力ボーナスの大きい方が選択されます。泳ぐユニットと歩行型ユニットは"
 "同時に橋ヘクスを占拠することができないことに注意して下さい。"
 
-#: data/core/help.cfg:585 data/core/terrain.cfg:894
+#: data/core/help.cfg:585
 msgid "Cave Wall"
 msgstr "洞窟の壁"
 
@@ -4022,131 +4012,6 @@ msgstr "茶"
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "青緑"
-
-#: data/core/terrain.cfg:12
-msgid "None"
-msgstr "なし"
-
-#: data/core/terrain.cfg:19 src/multiplayer_create.cpp:70
-#: src/multiplayer_lobby.cpp:421 src/multiplayer_lobby.cpp:427
-msgid "Shroud"
-msgstr "幕"
-
-#: data/core/terrain.cfg:26 src/multiplayer_lobby.cpp:417
-msgid "Fog"
-msgstr "霧"
-
-#: data/core/terrain.cfg:147
-msgid "Encampment"
-msgstr "野営地"
-
-#: data/core/terrain.cfg:168
-msgid "Elven Castle"
-msgstr "エルフの城"
-
-#: data/core/terrain.cfg:179
-msgid "Dwarven Castle"
-msgstr "ドワーフの城"
-
-#: data/core/terrain.cfg:190
-msgid "Ruin"
-msgstr "廃墟"
-
-#: data/core/terrain.cfg:201
-msgid "Sunken Ruin"
-msgstr "水中の廃墟"
-
-#: data/core/terrain.cfg:213
-msgid "Swamp Ruin"
-msgstr "沼の廃墟"
-
-#: data/core/terrain.cfg:238
-msgid "Encampment keep"
-msgstr "野営地の主塔"
-
-#: data/core/terrain.cfg:250
-msgid "Keep"
-msgstr "主塔"
-
-#: data/core/terrain.cfg:262
-msgid "Elven Keep"
-msgstr "エルフの主塔"
-
-#: data/core/terrain.cfg:274
-msgid "Dwarven keep"
-msgstr "ドワーフの主塔"
-
-#: data/core/terrain.cfg:286
-msgid "Ruined keep"
-msgstr "破壊された主塔"
-
-#: data/core/terrain.cfg:298
-msgid "Sunken keep"
-msgstr "水中の主塔"
-
-#: data/core/terrain.cfg:310
-msgid "Swamp keep"
-msgstr "沼地の主塔"
-
-#: data/core/terrain.cfg:336
-msgid "Crater"
-msgstr "火口"
-
-#: data/core/terrain.cfg:356
-msgid "Rubble"
-msgstr "瓦礫"
-
-#: data/core/terrain.cfg:374
-msgid "Oasis"
-msgstr "オアシス"
-
-#: data/core/terrain.cfg:389
-msgid "Snow Forest"
-msgstr "雪の森"
-
-#: data/core/terrain.cfg:399
-msgid "Great Tree"
-msgstr "大木"
-
-#: data/core/terrain.cfg:416
-msgid "Tropical Forest"
-msgstr "熱帯林"
-
-#: data/core/terrain.cfg:459
-msgid "Snow Hills"
-msgstr "雪丘"
-
-#: data/core/terrain.cfg:469
-msgid "Dunes"
-msgstr "砂丘"
-
-#: data/core/terrain.cfg:534
-msgid "Desert road"
-msgstr "砂漠の道"
-
-#: data/core/terrain.cfg:543
-msgid "Dirt"
-msgstr "荒地"
-
-#: data/core/terrain.cfg:561
-msgid "Farmland"
-msgstr "農地"
-
-#: data/core/terrain.cfg:596
-msgid "Cave Lit"
-msgstr "照らされた洞窟"
-
-#: data/core/terrain.cfg:644
-msgid "Rockbound Cave Lit"
-msgstr "岩に囲まれた照らされた洞窟"
-
-#: data/core/terrain.cfg:876
-msgid "Impassable Mountains"
-msgstr "通れない山"
-
-#: data/core/terrain.cfg:885
-msgid "Impassable Desert Mountains"
-msgstr "通れない砂漠の山"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -6271,6 +6136,11 @@ msgstr "ランダムな開始時刻"
 msgid "Fog Of War"
 msgstr "戦争の霧"
 
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:421
+#: src/multiplayer_lobby.cpp:427
+msgid "Shroud"
+msgstr "幕"
+
 #: src/multiplayer_create.cpp:71
 msgid "Observers"
 msgstr "観戦者"
@@ -6434,6 +6304,10 @@ msgstr "空いているスロット"
 #: src/multiplayer_lobby.cpp:406
 msgid "Vacant Slots:"
 msgstr "空のスロット"
+
+#: src/multiplayer_lobby.cpp:417
+msgid "Fog"
+msgstr "霧"
 
 #: src/multiplayer_lobby.cpp:431
 msgid "none"
@@ -6822,15 +6696,15 @@ msgstr "ダメージ"
 msgid "strikes"
 msgstr "回数"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "lawful"
 msgstr "秩序"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "neutral"
 msgstr "中立"
 
@@ -6861,3 +6735,90 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
+
+#~ msgid "None"
+#~ msgstr "なし"
+
+#~ msgid "Encampment"
+#~ msgstr "野営地"
+
+#~ msgid "Elven Castle"
+#~ msgstr "エルフの城"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "ドワーフの城"
+
+#~ msgid "Ruin"
+#~ msgstr "廃墟"
+
+#~ msgid "Sunken Ruin"
+#~ msgstr "水中の廃墟"
+
+#~ msgid "Swamp Ruin"
+#~ msgstr "沼の廃墟"
+
+#~ msgid "Encampment keep"
+#~ msgstr "野営地の主塔"
+
+#~ msgid "Keep"
+#~ msgstr "主塔"
+
+#~ msgid "Elven Keep"
+#~ msgstr "エルフの主塔"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "ドワーフの主塔"
+
+#~ msgid "Ruined keep"
+#~ msgstr "破壊された主塔"
+
+#~ msgid "Sunken keep"
+#~ msgstr "水中の主塔"
+
+#~ msgid "Swamp keep"
+#~ msgstr "沼地の主塔"
+
+#~ msgid "Crater"
+#~ msgstr "火口"
+
+#~ msgid "Rubble"
+#~ msgstr "瓦礫"
+
+#~ msgid "Oasis"
+#~ msgstr "オアシス"
+
+#~ msgid "Snow Forest"
+#~ msgstr "雪の森"
+
+#~ msgid "Great Tree"
+#~ msgstr "大木"
+
+#~ msgid "Tropical Forest"
+#~ msgstr "熱帯林"
+
+#~ msgid "Snow Hills"
+#~ msgstr "雪丘"
+
+#~ msgid "Dunes"
+#~ msgstr "砂丘"
+
+#~ msgid "Desert road"
+#~ msgstr "砂漠の道"
+
+#~ msgid "Dirt"
+#~ msgstr "荒地"
+
+#~ msgid "Farmland"
+#~ msgstr "農地"
+
+#~ msgid "Cave Lit"
+#~ msgstr "照らされた洞窟"
+
+#~ msgid "Rockbound Cave Lit"
+#~ msgstr "岩に囲まれた照らされた洞窟"
+
+#~ msgid "Impassable Mountains"
+#~ msgstr "通れない山"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "通れない砂漠の山"

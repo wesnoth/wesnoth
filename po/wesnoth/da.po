@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-25 00:53+0200\n"
+"POT-Creation-Date: 2007-07-25 16:03+0200\n"
 "PO-Revision-Date: 2007-07-06 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -1626,7 +1626,7 @@ msgid ""
 msgstr ""
 
 # kunne også være græs 
-#: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
+#: data/core/help.cfg:355
 msgid "Grassland"
 msgstr "Græseng"
 
@@ -1648,7 +1648,7 @@ msgstr ""
 "\n"
 "De fleste enheder har på græseng et forsvar på 30-40 %."
 
-#: data/core/help.cfg:365 data/core/terrain.cfg:552
+#: data/core/help.cfg:365
 msgid "Road"
 msgstr "Vej"
 
@@ -1662,7 +1662,7 @@ msgstr ""
 "dem. Hvad angår gameplay, så er veje identiske med "
 "<ref>dst=terrain_grassland text=Græseng</ref>."
 
-#: data/core/help.cfg:373 data/core/terrain.cfg:408
+#: data/core/help.cfg:373
 msgid "Forest"
 msgstr "Skov"
 
@@ -1698,7 +1698,7 @@ msgstr ""
 "Dværge har kun 30 % i skove.\n"
 "\n"
 
-#: data/core/help.cfg:385 data/core/terrain.cfg:479
+#: data/core/help.cfg:385
 msgid "Hills"
 msgstr "Bakker"
 
@@ -1723,7 +1723,7 @@ msgstr ""
 "De fleste enheder har omkring 50 % forsvar i bakker, mens kavaleri er "
 "begrænset til 40 %. Dværge har 60 % forsvar i bakker."
 
-#: data/core/help.cfg:395 data/core/terrain.cfg:491 data/core/terrain.cfg:500
+#: data/core/help.cfg:395
 msgid "Mountains"
 msgstr "Bjerge"
 
@@ -1749,7 +1749,7 @@ msgstr ""
 "\n"
 "De fleste enheder har en 60 % forsvarsbonus i bjerge, mens dværge har 70 %."
 
-#: data/core/help.cfg:405 data/core/terrain.cfg:574
+#: data/core/help.cfg:405
 msgid "Swamp"
 msgstr "Sump"
 
@@ -1773,7 +1773,7 @@ msgstr ""
 "De fleste enheder må nøjes med 30 % forsvar i sumpe. Havænd, nagaer og øgler "
 "har alle normalt 60 %."
 
-#: data/core/help.cfg:415 data/core/terrain.cfg:851
+#: data/core/help.cfg:415
 msgid "Shallow Water"
 msgstr "Lavt vand"
 
@@ -1798,7 +1798,7 @@ msgstr ""
 "De fleste enheder har 20 til 30 % forsvar i lavt vand, mens nagaer og "
 "havmænd har 60 %."
 
-#: data/core/help.cfg:425 data/core/terrain.cfg:841
+#: data/core/help.cfg:425
 msgid "Deep Water"
 msgstr "Dybt vand"
 
@@ -1817,7 +1817,7 @@ msgstr ""
 "Havmænd og nagaer har begge en 50 % forsvarsbonus i dybt vand og fuld "
 "bevægelse."
 
-#: data/core/help.cfg:435 data/core/terrain.cfg:47
+#: data/core/help.cfg:435
 msgid "Snow"
 msgstr "Sne"
 
@@ -1835,7 +1835,7 @@ msgstr ""
 "\n"
 "De fleste enheder har 20 til 40 % forsvar i sne."
 
-#: data/core/help.cfg:445 data/core/terrain.cfg:37
+#: data/core/help.cfg:445
 msgid "Ice"
 msgstr "Is"
 
@@ -1849,7 +1849,7 @@ msgstr ""
 "<ref>dst=terrain_tundra text=Sne</ref>. Bemærk at svømmende enheder, selv "
 "dem som kan trække vejret under vand ikke kan svømme under is."
 
-#: data/core/help.cfg:453 data/core/terrain.cfg:158
+#: data/core/help.cfg:453
 msgid "Castle"
 msgstr "Borg"
 
@@ -1875,7 +1875,7 @@ msgstr ""
 "De fleste enheder har en 60 % forsvarsbonus i en borg.\n"
 "\n"
 
-#: data/core/help.cfg:465 data/core/terrain.cfg:366
+#: data/core/help.cfg:465
 msgid "Sand"
 msgstr "Sand"
 
@@ -1893,7 +1893,7 @@ msgstr ""
 "\n"
 "De fleste enheder har 20-40 % forsvar i sand."
 
-#: data/core/help.cfg:475 data/core/terrain.cfg:346
+#: data/core/help.cfg:475
 msgid "Desert"
 msgstr "Ørken"
 
@@ -1906,7 +1906,7 @@ msgstr ""
 "Ørken har en noget andet sammensætning end sand eller strande, men i spillet "
 "er de identiske. Se <ref>dst=terrain_sand text=Sand</ref>."
 
-#: data/core/help.cfg:483 data/core/terrain.cfg:588
+#: data/core/help.cfg:483
 msgid "Cave"
 msgstr "Hule"
 
@@ -1932,7 +1932,7 @@ msgstr ""
 "\n"
 "De fleste enheder har en 20-40 % forsvarsbonus i huler, mens dværge har 50 %."
 
-#: data/core/help.cfg:493 data/core/terrain.cfg:634
+#: data/core/help.cfg:493
 msgid "Rockbound Cave"
 msgstr "Stenhule"
 
@@ -1977,7 +1977,7 @@ msgstr ""
 "fjerner angrebsbonussen fra kaotiske enheder. I alle andre henseender "
 "opfører dette terræn sig på samme måde som normalt huleterræn."
 
-#: data/core/help.cfg:511 data/core/terrain.cfg:606 data/core/terrain.cfg:614
+#: data/core/help.cfg:511
 msgid "Mushroom Grove"
 msgstr "Champignonskov"
 
@@ -2003,7 +2003,7 @@ msgstr ""
 "De fleste enheder har 50-60 % forsvar i champignonskove, mens kavaleri kun "
 "har 20 %."
 
-#: data/core/help.cfg:521 data/core/terrain.cfg:446
+#: data/core/help.cfg:521
 msgid "Savanna"
 msgstr "Savanne"
 
@@ -2017,14 +2017,7 @@ msgstr ""
 "spillet er området identisk med <ref>dst=terrain_grassland text=Græseng</"
 "ref>."
 
-#: data/core/help.cfg:529 data/core/terrain.cfg:661 data/core/terrain.cfg:672
-#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
-#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
-#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
-#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
-#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
-#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
-#: data/core/terrain.cfg:826 src/terrain.cpp:95
+#: data/core/help.cfg:529 src/terrain.cpp:95
 msgid "Village"
 msgstr "Landsby"
 
@@ -2078,7 +2071,7 @@ msgstr ""
 "Havmænd og nagaer har 60 % forsvar i undervandslandsbyer, mens landbaserede "
 "enheder normalt har en lav forsvarsevne."
 
-#: data/core/help.cfg:551 data/core/terrain.cfg:512
+#: data/core/help.cfg:551
 msgid "Chasm"
 msgstr "Kløft"
 
@@ -2093,7 +2086,7 @@ msgstr ""
 "er kendt for stejle vægge som det tager dage at forcere. I spillet kan kun "
 "enheder som er i stand til at flyve forcere denne terræntype."
 
-#: data/core/help.cfg:559 data/core/terrain.cfg:520
+#: data/core/help.cfg:559
 msgid "Lava"
 msgstr "Lava"
 
@@ -2111,7 +2104,7 @@ msgstr ""
 "giver en angrebsbonus til hæderlige enheder og fjerne angrebsbonusen fra "
 "kaotiske enhder."
 
-#: data/core/help.cfg:567 data/core/terrain.cfg:861
+#: data/core/help.cfg:567
 msgid "River Ford"
 msgstr "Vadested"
 
@@ -2130,10 +2123,7 @@ msgstr ""
 "græsland eller lavvandet vand alt efter hvad der giver enheden dens bedste "
 "defensive- og bevægelsesbonus."
 
-#: data/core/help.cfg:575 data/core/terrain.cfg:60 data/core/terrain.cfg:69
-#: data/core/terrain.cfg:78 data/core/terrain.cfg:88 data/core/terrain.cfg:97
-#: data/core/terrain.cfg:106 data/core/terrain.cfg:116
-#: data/core/terrain.cfg:125 data/core/terrain.cfg:134
+#: data/core/help.cfg:575
 msgid "Bridge"
 msgstr "Bro"
 
@@ -2162,7 +2152,7 @@ msgstr ""
 "forsvarsbonus af disse to muligheder. Bemærk at en svømmende enhed og en "
 "landenhed ikke kan være på et brofelt på samme tid."
 
-#: data/core/help.cfg:585 data/core/terrain.cfg:894
+#: data/core/help.cfg:585
 msgid "Cave Wall"
 msgstr "Hulemur"
 
@@ -4103,131 +4093,6 @@ msgstr "Brun"
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "Grønblå"
-
-#: data/core/terrain.cfg:12
-msgid "None"
-msgstr "Ingen"
-
-#: data/core/terrain.cfg:19 src/multiplayer_create.cpp:70
-#: src/multiplayer_lobby.cpp:421 src/multiplayer_lobby.cpp:427
-msgid "Shroud"
-msgstr "Sløring"
-
-#: data/core/terrain.cfg:26 src/multiplayer_lobby.cpp:417
-msgid "Fog"
-msgstr "Tåge"
-
-#: data/core/terrain.cfg:147
-msgid "Encampment"
-msgstr "Lejr"
-
-#: data/core/terrain.cfg:168
-msgid "Elven Castle"
-msgstr "Elverborg"
-
-#: data/core/terrain.cfg:179
-msgid "Dwarven Castle"
-msgstr "Dværgeborg"
-
-#: data/core/terrain.cfg:190
-msgid "Ruin"
-msgstr "Ruin"
-
-#: data/core/terrain.cfg:201
-msgid "Sunken Ruin"
-msgstr "Nedsunket ruin"
-
-#: data/core/terrain.cfg:213
-msgid "Swamp Ruin"
-msgstr "Sump-ruin"
-
-#: data/core/terrain.cfg:238
-msgid "Encampment keep"
-msgstr "Lejrvedligeholdelse"
-
-#: data/core/terrain.cfg:250
-msgid "Keep"
-msgstr "Tårn"
-
-#: data/core/terrain.cfg:262
-msgid "Elven Keep"
-msgstr "Elvertårnborg"
-
-#: data/core/terrain.cfg:274
-msgid "Dwarven keep"
-msgstr "Dværgetårnborg"
-
-#: data/core/terrain.cfg:286
-msgid "Ruined keep"
-msgstr "Tårnruin"
-
-#: data/core/terrain.cfg:298
-msgid "Sunken keep"
-msgstr "Nedsunket tårnruin"
-
-#: data/core/terrain.cfg:310
-msgid "Swamp keep"
-msgstr "Sumptårn"
-
-#: data/core/terrain.cfg:336
-msgid "Crater"
-msgstr "Krater"
-
-#: data/core/terrain.cfg:356
-msgid "Rubble"
-msgstr "Murbrok"
-
-#: data/core/terrain.cfg:374
-msgid "Oasis"
-msgstr "Oase"
-
-#: data/core/terrain.cfg:389
-msgid "Snow Forest"
-msgstr "Sneskov"
-
-#: data/core/terrain.cfg:399
-msgid "Great Tree"
-msgstr "Det Store Træ"
-
-#: data/core/terrain.cfg:416
-msgid "Tropical Forest"
-msgstr "Regnskov"
-
-#: data/core/terrain.cfg:459
-msgid "Snow Hills"
-msgstr "Snebakker"
-
-#: data/core/terrain.cfg:469
-msgid "Dunes"
-msgstr "Klitter"
-
-#: data/core/terrain.cfg:534
-msgid "Desert road"
-msgstr "Ørkenvej"
-
-#: data/core/terrain.cfg:543
-msgid "Dirt"
-msgstr "Skidt"
-
-#: data/core/terrain.cfg:561
-msgid "Farmland"
-msgstr "Landbrugsjord"
-
-#: data/core/terrain.cfg:596
-msgid "Cave Lit"
-msgstr "Hulelys"
-
-#: data/core/terrain.cfg:644
-msgid "Rockbound Cave Lit"
-msgstr "Stenfast hulelys"
-
-#: data/core/terrain.cfg:876
-msgid "Impassable Mountains"
-msgstr "Ufremkommelige bjerge"
-
-#: data/core/terrain.cfg:885
-msgid "Impassable Desert Mountains"
-msgstr "Ufremkommelige ørkenbjerge"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -6384,6 +6249,11 @@ msgstr "Tilfældigt starttid"
 msgid "Fog Of War"
 msgstr "Krigståge"
 
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:421
+#: src/multiplayer_lobby.cpp:427
+msgid "Shroud"
+msgstr "Sløring"
+
 #: src/multiplayer_create.cpp:71
 msgid "Observers"
 msgstr "Iagtagere"
@@ -6548,6 +6418,10 @@ msgstr "Ledig plads:"
 #: src/multiplayer_lobby.cpp:406
 msgid "Vacant Slots:"
 msgstr "Ledige pladser:"
+
+#: src/multiplayer_lobby.cpp:417
+msgid "Fog"
+msgstr "Tåge"
 
 #: src/multiplayer_lobby.cpp:431
 msgid "none"
@@ -6935,15 +6809,15 @@ msgstr "skade"
 msgid "strikes"
 msgstr "slag"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "chaotic"
 msgstr "lyssky"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "lawful"
 msgstr "hæderlig"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "neutral"
 msgstr "neutral"
 
@@ -6974,3 +6848,90 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Encampment"
+#~ msgstr "Lejr"
+
+#~ msgid "Elven Castle"
+#~ msgstr "Elverborg"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Dværgeborg"
+
+#~ msgid "Ruin"
+#~ msgstr "Ruin"
+
+#~ msgid "Sunken Ruin"
+#~ msgstr "Nedsunket ruin"
+
+#~ msgid "Swamp Ruin"
+#~ msgstr "Sump-ruin"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Lejrvedligeholdelse"
+
+#~ msgid "Keep"
+#~ msgstr "Tårn"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Elvertårnborg"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Dværgetårnborg"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Tårnruin"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Nedsunket tårnruin"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Sumptårn"
+
+#~ msgid "Crater"
+#~ msgstr "Krater"
+
+#~ msgid "Rubble"
+#~ msgstr "Murbrok"
+
+#~ msgid "Oasis"
+#~ msgstr "Oase"
+
+#~ msgid "Snow Forest"
+#~ msgstr "Sneskov"
+
+#~ msgid "Great Tree"
+#~ msgstr "Det Store Træ"
+
+#~ msgid "Tropical Forest"
+#~ msgstr "Regnskov"
+
+#~ msgid "Snow Hills"
+#~ msgstr "Snebakker"
+
+#~ msgid "Dunes"
+#~ msgstr "Klitter"
+
+#~ msgid "Desert road"
+#~ msgstr "Ørkenvej"
+
+#~ msgid "Dirt"
+#~ msgstr "Skidt"
+
+#~ msgid "Farmland"
+#~ msgstr "Landbrugsjord"
+
+#~ msgid "Cave Lit"
+#~ msgstr "Hulelys"
+
+#~ msgid "Rockbound Cave Lit"
+#~ msgstr "Stenfast hulelys"
+
+#~ msgid "Impassable Mountains"
+#~ msgstr "Ufremkommelige bjerge"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "Ufremkommelige ørkenbjerge"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-25 16:00+0200\n"
 "PO-Revision-Date: 2007-07-16 11:04+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -18,6 +18,232 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
+
+#: data/core/terrain.cfg:12
+msgid "None"
+msgstr "brak"
+
+#: data/core/terrain.cfg:19
+msgid "Shroud"
+msgstr "Mgła"
+
+#: data/core/terrain.cfg:26
+msgid "Fog"
+msgstr "Mgła"
+
+#: data/core/terrain.cfg:37
+msgid "Ice"
+msgstr "Lód"
+
+#: data/core/terrain.cfg:47
+msgid "Snow"
+msgstr "Śnieg"
+
+#: data/core/terrain.cfg:60 data/core/terrain.cfg:69 data/core/terrain.cfg:78
+#: data/core/terrain.cfg:88 data/core/terrain.cfg:97 data/core/terrain.cfg:106
+#: data/core/terrain.cfg:116 data/core/terrain.cfg:125
+#: data/core/terrain.cfg:134
+msgid "Bridge"
+msgstr "Most"
+
+#: data/core/terrain.cfg:147
+msgid "Encampment"
+msgstr "Obóz"
+
+#: data/core/terrain.cfg:158
+msgid "Castle"
+msgstr "Zamek"
+
+#: data/core/terrain.cfg:168
+msgid "Elven Castle"
+msgstr "Elficki zamek"
+
+#: data/core/terrain.cfg:179
+msgid "Dwarven Castle"
+msgstr "Krasnoludzki zamek"
+
+#: data/core/terrain.cfg:190
+msgid "Ruin"
+msgstr "Ruina"
+
+#: data/core/terrain.cfg:201
+msgid "Sunken Ruin"
+msgstr "Podtopiona ruina"
+
+#: data/core/terrain.cfg:213
+msgid "Swamp Ruin"
+msgstr "Bagienna ruina"
+
+#: data/core/terrain.cfg:238
+msgid "Encampment keep"
+msgstr "Twierdza polowa"
+
+#: data/core/terrain.cfg:250
+msgid "Keep"
+msgstr "Twierdza"
+
+#: data/core/terrain.cfg:262
+msgid "Elven Keep"
+msgstr "Elficka twierdza"
+
+#: data/core/terrain.cfg:274
+msgid "Dwarven keep"
+msgstr "Krasnoludzka twierdza"
+
+#: data/core/terrain.cfg:286
+msgid "Ruined keep"
+msgstr "Zrujnowana twierdza"
+
+#: data/core/terrain.cfg:298
+msgid "Sunken keep"
+msgstr "Zatopiona twierdza"
+
+#: data/core/terrain.cfg:310
+msgid "Swamp keep"
+msgstr "Bagienna twierdza"
+
+#: data/core/terrain.cfg:336
+msgid "Crater"
+msgstr "Krater"
+
+#: data/core/terrain.cfg:346
+msgid "Desert"
+msgstr "Pustynia"
+
+#: data/core/terrain.cfg:356
+msgid "Rubble"
+msgstr "Rumowisko"
+
+#: data/core/terrain.cfg:366
+msgid "Sand"
+msgstr "Piasek"
+
+#: data/core/terrain.cfg:374
+msgid "Oasis"
+msgstr "Oaza"
+
+#: data/core/terrain.cfg:389
+msgid "Snow Forest"
+msgstr "Las w śniegu"
+
+#: data/core/terrain.cfg:399
+msgid "Great Tree"
+msgstr "Wielkie drzewo"
+
+#: data/core/terrain.cfg:408
+msgid "Forest"
+msgstr "Las"
+
+#: data/core/terrain.cfg:416
+msgid "Tropical Forest"
+msgstr "Las tropikalny"
+
+#: data/core/terrain.cfg:429 data/core/terrain.cfg:437
+msgid "Grassland"
+msgstr "Łąka"
+
+#: data/core/terrain.cfg:446
+msgid "Savanna"
+msgstr "Sawanna"
+
+#: data/core/terrain.cfg:459
+msgid "Snow Hills"
+msgstr "Wzgórza w śniegu"
+
+#: data/core/terrain.cfg:469
+msgid "Dunes"
+msgstr "Wydmy"
+
+#: data/core/terrain.cfg:479
+msgid "Hills"
+msgstr "Wzgórza"
+
+#: data/core/terrain.cfg:491 data/core/terrain.cfg:500
+msgid "Mountains"
+msgstr "Góry"
+
+#: data/core/terrain.cfg:512
+msgid "Chasm"
+msgstr "Otchłań"
+
+#: data/core/terrain.cfg:520
+msgid "Lava"
+msgstr "Lawa"
+
+#: data/core/terrain.cfg:534
+msgid "Desert road"
+msgstr "Pustynna droga"
+
+#: data/core/terrain.cfg:543
+msgid "Dirt"
+msgstr "Błoto"
+
+#: data/core/terrain.cfg:552
+msgid "Road"
+msgstr "Droga"
+
+#: data/core/terrain.cfg:561
+msgid "Farmland"
+msgstr "Pola uprawne"
+
+#: data/core/terrain.cfg:574
+msgid "Swamp"
+msgstr "Bagno"
+
+#: data/core/terrain.cfg:588
+msgid "Cave"
+msgstr "Jaskinia"
+
+#: data/core/terrain.cfg:596
+msgid "Cave Lit"
+msgstr "Rozświetlona jaskinia"
+
+#: data/core/terrain.cfg:606 data/core/terrain.cfg:614
+msgid "Mushroom Grove"
+msgstr "Grzybowy gaj"
+
+#: data/core/terrain.cfg:634
+msgid "Rockbound Cave"
+msgstr "Kamienista jaskinia"
+
+#: data/core/terrain.cfg:644
+msgid "Rockbound Cave Lit"
+msgstr "Kamienista oświetlona jaskinia"
+
+#: data/core/terrain.cfg:661 data/core/terrain.cfg:672
+#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
+#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
+#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
+#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
+#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
+#: data/core/terrain.cfg:826
+msgid "Village"
+msgstr "Wioska"
+
+#: data/core/terrain.cfg:841
+msgid "Deep Water"
+msgstr "Głęboka woda"
+
+#: data/core/terrain.cfg:851
+msgid "Shallow Water"
+msgstr "Płytka woda"
+
+#: data/core/terrain.cfg:861
+msgid "River Ford"
+msgstr "Bród rzeczny"
+
+#: data/core/terrain.cfg:876
+msgid "Impassable Mountains"
+msgstr "Nieprzebyte góry"
+
+#: data/core/terrain.cfg:885
+msgid "Impassable Desert Mountains"
+msgstr "Nieprzebyte góry pustynne"
+
+#: data/core/terrain.cfg:894
+msgid "Cave Wall"
+msgstr "Ściana jaskini"
 
 #: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401

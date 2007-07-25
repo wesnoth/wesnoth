@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-25 00:53+0200\n"
+"POT-Creation-Date: 2007-07-25 16:03+0200\n"
 "PO-Revision-Date: 2007-07-19 20:00+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -1676,7 +1676,7 @@ msgstr ""
 "Les unités vigoureuses ont 2 PV de plus que la normale et peuvent récuperer "
 "2 PV chaque tour où elles ne combattent pas."
 
-#: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
+#: data/core/help.cfg:355
 msgid "Grassland"
 msgstr "Prairie"
 
@@ -1698,7 +1698,7 @@ msgstr ""
 "\n"
 "La plupart des unités ont une défense de 30 à 40 % en prairie."
 
-#: data/core/help.cfg:365 data/core/terrain.cfg:552
+#: data/core/help.cfg:365
 msgid "Road"
 msgstr "Route"
 
@@ -1712,7 +1712,7 @@ msgstr ""
 "voyageurs. Dans le jeu, les routes sont identiques aux "
 "<ref>dst=terrain_grassland text=prairies</ref>."
 
-#: data/core/help.cfg:373 data/core/terrain.cfg:408
+#: data/core/help.cfg:373
 msgid "Forest"
 msgstr "Forêt"
 
@@ -1750,7 +1750,7 @@ msgstr ""
 "que 30 % de défense en forêt.\n"
 "\n"
 
-#: data/core/help.cfg:385 data/core/terrain.cfg:479
+#: data/core/help.cfg:385
 msgid "Hills"
 msgstr "Collines"
 
@@ -1777,7 +1777,7 @@ msgstr ""
 "que les cavaleries sont limitées à 40 %. Les nains bénéficient d'une défense "
 "de 60 % dans les collines."
 
-#: data/core/help.cfg:395 data/core/terrain.cfg:491 data/core/terrain.cfg:500
+#: data/core/help.cfg:395
 msgid "Mountains"
 msgstr "Montagnes"
 
@@ -1804,7 +1804,7 @@ msgstr ""
 "La plupart des unités reçoivent environ 60 % de défense dans les montagnes, "
 "tandis que les nains y bénéficient de 70 %."
 
-#: data/core/help.cfg:405 data/core/terrain.cfg:574
+#: data/core/help.cfg:405
 msgid "Swamp"
 msgstr "Marais"
 
@@ -1828,7 +1828,7 @@ msgstr ""
 "La plupart des unités ont 30 % de défense dans les marais. Les ondins, les "
 "nagas et les sauriens y profitent d'une défense de 60 %."
 
-#: data/core/help.cfg:415 data/core/terrain.cfg:851
+#: data/core/help.cfg:415
 msgid "Shallow Water"
 msgstr "Eau peu profonde"
 
@@ -1855,7 +1855,7 @@ msgstr ""
 "La plupart des unités ont 20 à 30 % de défense en eau peu profonde, tandis "
 "que les nagas et les ondins y profitent d'une défense de 60 %."
 
-#: data/core/help.cfg:425 data/core/terrain.cfg:841
+#: data/core/help.cfg:425
 msgid "Deep Water"
 msgstr "Eau profonde"
 
@@ -1875,7 +1875,7 @@ msgstr ""
 "Les ondins et les nagas reçoivent 50 % de défense en eau profonde et leur "
 "plein mouvement."
 
-#: data/core/help.cfg:435 data/core/terrain.cfg:47
+#: data/core/help.cfg:435
 msgid "Snow"
 msgstr "Neige"
 
@@ -1893,7 +1893,7 @@ msgstr ""
 "défendre.\n"
 "La plupart des unités ont une défense de 20 à 40 % dans la neige."
 
-#: data/core/help.cfg:445 data/core/terrain.cfg:37
+#: data/core/help.cfg:445
 msgid "Ice"
 msgstr "Glace"
 
@@ -1908,7 +1908,7 @@ msgstr ""
 "unités nageuses, y compris celles capables de respirer sous l'eau, ne "
 "peuvent nager sous la glace."
 
-#: data/core/help.cfg:453 data/core/terrain.cfg:158
+#: data/core/help.cfg:453
 msgid "Castle"
 msgstr "Château"
 
@@ -1934,7 +1934,7 @@ msgstr ""
 "\n"
 "La plupart des unités ont environ 60 % de défense dans un château.\n"
 
-#: data/core/help.cfg:465 data/core/terrain.cfg:366
+#: data/core/help.cfg:465
 msgid "Sand"
 msgstr "Sable"
 
@@ -1953,7 +1953,7 @@ msgstr ""
 "\n"
 "La plupart des unités reçoivent une défense de 20 à 40 % dans le sable."
 
-#: data/core/help.cfg:475 data/core/terrain.cfg:346
+#: data/core/help.cfg:475
 msgid "Desert"
 msgstr "Désert"
 
@@ -1967,7 +1967,7 @@ msgstr ""
 "des plages, mais dans le jeu ils sont identiques. Voir <ref>dst=terrain_sand "
 "text=sable</ref>."
 
-#: data/core/help.cfg:483 data/core/terrain.cfg:588
+#: data/core/help.cfg:483
 msgid "Cave"
 msgstr "Caverne"
 
@@ -1995,7 +1995,7 @@ msgstr ""
 "La plupart des unités reçoivent 20 à 40 % de défense dans les cavernes, les "
 "nains en obtiennent 50 %."
 
-#: data/core/help.cfg:493 data/core/terrain.cfg:634
+#: data/core/help.cfg:493
 msgid "Rockbound Cave"
 msgstr "Caverne accidentée"
 
@@ -2042,7 +2042,7 @@ msgstr ""
 "de dégâts aux unités loyales et enlève celui des unités chaotiques. Sinon ce "
 "terrain ressemble aux cavernes normales."
 
-#: data/core/help.cfg:511 data/core/terrain.cfg:606 data/core/terrain.cfg:614
+#: data/core/help.cfg:511
 msgid "Mushroom Grove"
 msgstr "Forêt de champignons"
 
@@ -2070,7 +2070,7 @@ msgstr ""
 "La plupart des unités reçoivent 50% à 60% de défense dans les forêts de "
 "champignons, alors que la cavalerie n'en reçoit que 20%."
 
-#: data/core/help.cfg:521 data/core/terrain.cfg:446
+#: data/core/help.cfg:521
 msgid "Savanna"
 msgstr "Savane"
 
@@ -2084,14 +2084,7 @@ msgstr ""
 "climats les plus chauds du monde. Dans le jeu, elles sont identiques aux "
 "<ref>dst=terrain_grassland text=plaines</ref>."
 
-#: data/core/help.cfg:529 data/core/terrain.cfg:661 data/core/terrain.cfg:672
-#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
-#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
-#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
-#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
-#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
-#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
-#: data/core/terrain.cfg:826 src/terrain.cpp:95
+#: data/core/help.cfg:529 src/terrain.cpp:95
 msgid "Village"
 msgstr "Village"
 
@@ -2144,7 +2137,7 @@ msgstr ""
 "Les ondins et les nagas ont 60 % de défense dans les villages sous-marins, "
 "tandis que les unités terrestres n'ont qu'une défense réduite."
 
-#: data/core/help.cfg:551 data/core/terrain.cfg:512
+#: data/core/help.cfg:551
 msgid "Chasm"
 msgstr "Abîme"
 
@@ -2160,7 +2153,7 @@ msgstr ""
 "les traverser. Dans le jeu, seules les unités capables de voler au-dessus "
 "des abîmes peuvent traverser ce terrain."
 
-#: data/core/help.cfg:559 data/core/terrain.cfg:520
+#: data/core/help.cfg:559
 msgid "Lava"
 msgstr "Lave"
 
@@ -2178,7 +2171,7 @@ msgstr ""
 "lumière rougeâtre éclairant la zone au-dessus. Celle-ci procure donc un "
 "bonus de dégâts aux unités loyales et enlève celui des unités chaotiques."
 
-#: data/core/help.cfg:567 data/core/terrain.cfg:861
+#: data/core/help.cfg:567
 msgid "River Ford"
 msgstr "Gué"
 
@@ -2197,10 +2190,7 @@ msgstr ""
 "plaine, soit comme une eau peu profonde, selon les meilleurs bonus de "
 "défense et de mouvement pour l'unité qui y est présente."
 
-#: data/core/help.cfg:575 data/core/terrain.cfg:60 data/core/terrain.cfg:69
-#: data/core/terrain.cfg:78 data/core/terrain.cfg:88 data/core/terrain.cfg:97
-#: data/core/terrain.cfg:106 data/core/terrain.cfg:116
-#: data/core/terrain.cfg:125 data/core/terrain.cfg:134
+#: data/core/help.cfg:575
 msgid "Bridge"
 msgstr "Pont"
 
@@ -2230,7 +2220,7 @@ msgstr ""
 "nageuse et une unité terrestre ne sont pas capables d'occuper en même temps "
 "une case de pont."
 
-#: data/core/help.cfg:585 data/core/terrain.cfg:894
+#: data/core/help.cfg:585
 msgid "Cave Wall"
 msgstr "Mur de caverne"
 
@@ -4163,131 +4153,6 @@ msgstr "Marron"
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "Turquoise"
-
-#: data/core/terrain.cfg:12
-msgid "None"
-msgstr "Aucune"
-
-#: data/core/terrain.cfg:19 src/multiplayer_create.cpp:70
-#: src/multiplayer_lobby.cpp:421 src/multiplayer_lobby.cpp:427
-msgid "Shroud"
-msgstr "Voile"
-
-#: data/core/terrain.cfg:26 src/multiplayer_lobby.cpp:417
-msgid "Fog"
-msgstr "Brouillard"
-
-#: data/core/terrain.cfg:147
-msgid "Encampment"
-msgstr "Campement"
-
-#: data/core/terrain.cfg:168
-msgid "Elven Castle"
-msgstr "Château elfe"
-
-#: data/core/terrain.cfg:179
-msgid "Dwarven Castle"
-msgstr "Château nain"
-
-#: data/core/terrain.cfg:190
-msgid "Ruin"
-msgstr "Ruine"
-
-#: data/core/terrain.cfg:201
-msgid "Sunken Ruin"
-msgstr "Ruine engloutie"
-
-#: data/core/terrain.cfg:213
-msgid "Swamp Ruin"
-msgstr "Ruine des marais"
-
-#: data/core/terrain.cfg:238
-msgid "Encampment keep"
-msgstr "Donjon de cantonnement"
-
-#: data/core/terrain.cfg:250
-msgid "Keep"
-msgstr "Donjon"
-
-#: data/core/terrain.cfg:262
-msgid "Elven Keep"
-msgstr "Donjon elfe"
-
-#: data/core/terrain.cfg:274
-msgid "Dwarven keep"
-msgstr "Donjon nain"
-
-#: data/core/terrain.cfg:286
-msgid "Ruined keep"
-msgstr "Donjon en ruine"
-
-#: data/core/terrain.cfg:298
-msgid "Sunken keep"
-msgstr "Donjon englouti"
-
-#: data/core/terrain.cfg:310
-msgid "Swamp keep"
-msgstr "Donjon des marais"
-
-#: data/core/terrain.cfg:336
-msgid "Crater"
-msgstr "Cratère"
-
-#: data/core/terrain.cfg:356
-msgid "Rubble"
-msgstr "Gravats"
-
-#: data/core/terrain.cfg:374
-msgid "Oasis"
-msgstr "Oasis"
-
-#: data/core/terrain.cfg:389
-msgid "Snow Forest"
-msgstr "Forêt enneigée"
-
-#: data/core/terrain.cfg:399
-msgid "Great Tree"
-msgstr "Arbre séculaire"
-
-#: data/core/terrain.cfg:416
-msgid "Tropical Forest"
-msgstr "Forêt tropicale"
-
-#: data/core/terrain.cfg:459
-msgid "Snow Hills"
-msgstr "Collines enneigées"
-
-#: data/core/terrain.cfg:469
-msgid "Dunes"
-msgstr "Dunes"
-
-#: data/core/terrain.cfg:534
-msgid "Desert road"
-msgstr "Route du désert"
-
-#: data/core/terrain.cfg:543
-msgid "Dirt"
-msgstr "Terre battue"
-
-#: data/core/terrain.cfg:561
-msgid "Farmland"
-msgstr "Champ"
-
-#: data/core/terrain.cfg:596
-msgid "Cave Lit"
-msgstr "Caverne éclairée"
-
-#: data/core/terrain.cfg:644
-msgid "Rockbound Cave Lit"
-msgstr "Caverne accidentée éclairée"
-
-#: data/core/terrain.cfg:876
-msgid "Impassable Mountains"
-msgstr "Montagnes infranchissables"
-
-#: data/core/terrain.cfg:885
-msgid "Impassable Desert Mountains"
-msgstr "Montagnes désertiques infranchissables"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -6505,6 +6370,11 @@ msgstr "Moment de la journée aléatoire"
 msgid "Fog Of War"
 msgstr "Brouillard de guerre"
 
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:421
+#: src/multiplayer_lobby.cpp:427
+msgid "Shroud"
+msgstr "Voile"
+
 #: src/multiplayer_create.cpp:71
 msgid "Observers"
 msgstr "Observateurs"
@@ -6670,6 +6540,10 @@ msgstr "Place vacante :"
 #: src/multiplayer_lobby.cpp:406
 msgid "Vacant Slots:"
 msgstr "Places vacantes :"
+
+#: src/multiplayer_lobby.cpp:417
+msgid "Fog"
+msgstr "Brouillard"
 
 #: src/multiplayer_lobby.cpp:431
 msgid "none"
@@ -7058,15 +6932,15 @@ msgstr "dégâts"
 msgid "strikes"
 msgstr "attaques"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "chaotic"
 msgstr "chaotique"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "lawful"
 msgstr "loyal"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "neutral"
 msgstr "neutre"
 
@@ -7097,3 +6971,90 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Autoriser l'envoi de résumés"
+
+#~ msgid "None"
+#~ msgstr "Aucune"
+
+#~ msgid "Encampment"
+#~ msgstr "Campement"
+
+#~ msgid "Elven Castle"
+#~ msgstr "Château elfe"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Château nain"
+
+#~ msgid "Ruin"
+#~ msgstr "Ruine"
+
+#~ msgid "Sunken Ruin"
+#~ msgstr "Ruine engloutie"
+
+#~ msgid "Swamp Ruin"
+#~ msgstr "Ruine des marais"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Donjon de cantonnement"
+
+#~ msgid "Keep"
+#~ msgstr "Donjon"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Donjon elfe"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Donjon nain"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Donjon en ruine"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Donjon englouti"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Donjon des marais"
+
+#~ msgid "Crater"
+#~ msgstr "Cratère"
+
+#~ msgid "Rubble"
+#~ msgstr "Gravats"
+
+#~ msgid "Oasis"
+#~ msgstr "Oasis"
+
+#~ msgid "Snow Forest"
+#~ msgstr "Forêt enneigée"
+
+#~ msgid "Great Tree"
+#~ msgstr "Arbre séculaire"
+
+#~ msgid "Tropical Forest"
+#~ msgstr "Forêt tropicale"
+
+#~ msgid "Snow Hills"
+#~ msgstr "Collines enneigées"
+
+#~ msgid "Dunes"
+#~ msgstr "Dunes"
+
+#~ msgid "Desert road"
+#~ msgstr "Route du désert"
+
+#~ msgid "Dirt"
+#~ msgstr "Terre battue"
+
+#~ msgid "Farmland"
+#~ msgstr "Champ"
+
+#~ msgid "Cave Lit"
+#~ msgstr "Caverne éclairée"
+
+#~ msgid "Rockbound Cave Lit"
+#~ msgstr "Caverne accidentée éclairée"
+
+#~ msgid "Impassable Mountains"
+#~ msgstr "Montagnes infranchissables"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "Montagnes désertiques infranchissables"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-25 16:00+0200\n"
 "PO-Revision-Date: 2007-07-06 13:19+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -15,6 +15,234 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
+
+#: data/core/terrain.cfg:12
+#, fuzzy
+msgid "None"
+msgstr "Ne"
+
+#: data/core/terrain.cfg:19
+msgid "Shroud"
+msgstr "Uždanga"
+
+#: data/core/terrain.cfg:26
+msgid "Fog"
+msgstr "Rūkas"
+
+#: data/core/terrain.cfg:37
+msgid "Ice"
+msgstr "Ledas"
+
+#: data/core/terrain.cfg:47
+msgid "Snow"
+msgstr "Sniegas"
+
+#: data/core/terrain.cfg:60 data/core/terrain.cfg:69 data/core/terrain.cfg:78
+#: data/core/terrain.cfg:88 data/core/terrain.cfg:97 data/core/terrain.cfg:106
+#: data/core/terrain.cfg:116 data/core/terrain.cfg:125
+#: data/core/terrain.cfg:134
+msgid "Bridge"
+msgstr "Tiltas"
+
+#: data/core/terrain.cfg:147
+msgid "Encampment"
+msgstr "Stovykla"
+
+#: data/core/terrain.cfg:158
+msgid "Castle"
+msgstr "Pilis"
+
+#: data/core/terrain.cfg:168
+msgid "Elven Castle"
+msgstr "Elfų pilis"
+
+#: data/core/terrain.cfg:179
+msgid "Dwarven Castle"
+msgstr "Dvorfų pilis"
+
+#: data/core/terrain.cfg:190
+msgid "Ruin"
+msgstr "Tvirtovė"
+
+#: data/core/terrain.cfg:201
+msgid "Sunken Ruin"
+msgstr "Paskendę griuvėsiai"
+
+#: data/core/terrain.cfg:213
+msgid "Swamp Ruin"
+msgstr ""
+
+#: data/core/terrain.cfg:238
+msgid "Encampment keep"
+msgstr ""
+
+#: data/core/terrain.cfg:250
+msgid "Keep"
+msgstr "Tvirtovė"
+
+#: data/core/terrain.cfg:262
+msgid "Elven Keep"
+msgstr "Elfų tvirtovė"
+
+#: data/core/terrain.cfg:274
+msgid "Dwarven keep"
+msgstr "Dvorfų tvirtovė"
+
+#: data/core/terrain.cfg:286
+msgid "Ruined keep"
+msgstr "Sugriuvusi tvirtovė"
+
+#: data/core/terrain.cfg:298
+msgid "Sunken keep"
+msgstr "Paskendusi tvirtovė"
+
+#: data/core/terrain.cfg:310
+msgid "Swamp keep"
+msgstr "Pelkių tvirtovė"
+
+#: data/core/terrain.cfg:336
+msgid "Crater"
+msgstr "Krateris"
+
+#: data/core/terrain.cfg:346
+msgid "Desert"
+msgstr "Dykuma"
+
+#: data/core/terrain.cfg:356
+msgid "Rubble"
+msgstr ""
+
+#: data/core/terrain.cfg:366
+msgid "Sand"
+msgstr "Smėlis"
+
+#: data/core/terrain.cfg:374
+msgid "Oasis"
+msgstr "Oazė"
+
+#: data/core/terrain.cfg:389
+msgid "Snow Forest"
+msgstr "Sniego miškas"
+
+#: data/core/terrain.cfg:399
+msgid "Great Tree"
+msgstr ""
+
+#: data/core/terrain.cfg:408
+msgid "Forest"
+msgstr "Miškas"
+
+#: data/core/terrain.cfg:416
+msgid "Tropical Forest"
+msgstr "Tropinis miškas"
+
+#: data/core/terrain.cfg:429 data/core/terrain.cfg:437
+#, fuzzy
+msgid "Grassland"
+msgstr "Sala"
+
+#: data/core/terrain.cfg:446
+msgid "Savanna"
+msgstr "Savana"
+
+#: data/core/terrain.cfg:459
+msgid "Snow Hills"
+msgstr "Sniego kalvos"
+
+#: data/core/terrain.cfg:469
+msgid "Dunes"
+msgstr "Kopos"
+
+#: data/core/terrain.cfg:479
+msgid "Hills"
+msgstr "Kalvos"
+
+#: data/core/terrain.cfg:491 data/core/terrain.cfg:500
+msgid "Mountains"
+msgstr "Kalnai"
+
+#: data/core/terrain.cfg:512
+msgid "Chasm"
+msgstr "Bedugnė"
+
+#: data/core/terrain.cfg:520
+msgid "Lava"
+msgstr "Lava"
+
+#: data/core/terrain.cfg:534
+msgid "Desert road"
+msgstr "Dykumos kelias"
+
+#: data/core/terrain.cfg:543
+msgid "Dirt"
+msgstr "Purvas"
+
+#: data/core/terrain.cfg:552
+msgid "Road"
+msgstr "Kelias"
+
+#: data/core/terrain.cfg:561
+msgid "Farmland"
+msgstr ""
+
+#: data/core/terrain.cfg:574
+msgid "Swamp"
+msgstr "Pelkė"
+
+#: data/core/terrain.cfg:588
+msgid "Cave"
+msgstr "Urvas"
+
+#: data/core/terrain.cfg:596
+msgid "Cave Lit"
+msgstr ""
+
+#: data/core/terrain.cfg:606 data/core/terrain.cfg:614
+msgid "Mushroom Grove"
+msgstr ""
+
+#: data/core/terrain.cfg:634
+msgid "Rockbound Cave"
+msgstr ""
+
+#: data/core/terrain.cfg:644
+msgid "Rockbound Cave Lit"
+msgstr ""
+
+#: data/core/terrain.cfg:661 data/core/terrain.cfg:672
+#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
+#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
+#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
+#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
+#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
+#: data/core/terrain.cfg:826
+msgid "Village"
+msgstr "Kaimas"
+
+#: data/core/terrain.cfg:841
+msgid "Deep Water"
+msgstr "Gilus vanduo"
+
+#: data/core/terrain.cfg:851
+msgid "Shallow Water"
+msgstr "Seklus vanduo"
+
+#: data/core/terrain.cfg:861
+msgid "River Ford"
+msgstr ""
+
+#: data/core/terrain.cfg:876
+msgid "Impassable Mountains"
+msgstr ""
+
+#: data/core/terrain.cfg:885
+msgid "Impassable Desert Mountains"
+msgstr ""
+
+#: data/core/terrain.cfg:894
+msgid "Cave Wall"
+msgstr "Urvo siena"
 
 #: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401

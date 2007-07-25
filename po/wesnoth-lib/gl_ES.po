@@ -7,13 +7,240 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-25 16:00+0200\n"
 "PO-Revision-Date: 2007-07-17 20:46+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: data/core/terrain.cfg:12
+#, fuzzy
+msgid "None"
+msgstr "Non"
+
+#: data/core/terrain.cfg:19
+msgid "Shroud"
+msgstr ""
+
+#: data/core/terrain.cfg:26
+msgid "Fog"
+msgstr "Néboa"
+
+#: data/core/terrain.cfg:37
+msgid "Ice"
+msgstr "Xeo"
+
+#: data/core/terrain.cfg:47
+msgid "Snow"
+msgstr "Neve"
+
+#: data/core/terrain.cfg:60 data/core/terrain.cfg:69 data/core/terrain.cfg:78
+#: data/core/terrain.cfg:88 data/core/terrain.cfg:97 data/core/terrain.cfg:106
+#: data/core/terrain.cfg:116 data/core/terrain.cfg:125
+#: data/core/terrain.cfg:134
+msgid "Bridge"
+msgstr "Ponte"
+
+#: data/core/terrain.cfg:147
+msgid "Encampment"
+msgstr "Campamento"
+
+#: data/core/terrain.cfg:158
+msgid "Castle"
+msgstr "Castelo"
+
+#: data/core/terrain.cfg:168
+msgid "Elven Castle"
+msgstr "Castelo dos Elfos"
+
+#: data/core/terrain.cfg:179
+msgid "Dwarven Castle"
+msgstr "Castelo dos Ananos"
+
+#: data/core/terrain.cfg:190
+msgid "Ruin"
+msgstr ""
+
+#: data/core/terrain.cfg:201
+msgid "Sunken Ruin"
+msgstr ""
+
+#: data/core/terrain.cfg:213
+msgid "Swamp Ruin"
+msgstr ""
+
+#: data/core/terrain.cfg:238
+msgid "Encampment keep"
+msgstr ""
+
+#: data/core/terrain.cfg:250
+msgid "Keep"
+msgstr "Torre"
+
+#: data/core/terrain.cfg:262
+msgid "Elven Keep"
+msgstr ""
+
+#: data/core/terrain.cfg:274
+msgid "Dwarven keep"
+msgstr ""
+
+#: data/core/terrain.cfg:286
+msgid "Ruined keep"
+msgstr ""
+
+#: data/core/terrain.cfg:298
+msgid "Sunken keep"
+msgstr ""
+
+#: data/core/terrain.cfg:310
+msgid "Swamp keep"
+msgstr ""
+
+#: data/core/terrain.cfg:336
+msgid "Crater"
+msgstr ""
+
+#: data/core/terrain.cfg:346
+msgid "Desert"
+msgstr "Deserto"
+
+#: data/core/terrain.cfg:356
+msgid "Rubble"
+msgstr ""
+
+#: data/core/terrain.cfg:366
+msgid "Sand"
+msgstr "Area"
+
+#: data/core/terrain.cfg:374
+msgid "Oasis"
+msgstr "Oasis"
+
+#: data/core/terrain.cfg:389
+msgid "Snow Forest"
+msgstr "Bosque Nevado"
+
+#: data/core/terrain.cfg:399
+msgid "Great Tree"
+msgstr "Árbore Grande"
+
+#: data/core/terrain.cfg:408
+msgid "Forest"
+msgstr "Bosque"
+
+#: data/core/terrain.cfg:416
+msgid "Tropical Forest"
+msgstr "Selva Tropical"
+
+#: data/core/terrain.cfg:429 data/core/terrain.cfg:437
+msgid "Grassland"
+msgstr "Prado"
+
+#: data/core/terrain.cfg:446
+msgid "Savanna"
+msgstr "Sabana"
+
+#: data/core/terrain.cfg:459
+msgid "Snow Hills"
+msgstr "Outeiros Nevados"
+
+#: data/core/terrain.cfg:469
+msgid "Dunes"
+msgstr "Dunas"
+
+#: data/core/terrain.cfg:479
+msgid "Hills"
+msgstr "Outeiros"
+
+#: data/core/terrain.cfg:491 data/core/terrain.cfg:500
+msgid "Mountains"
+msgstr "Montañas"
+
+#: data/core/terrain.cfg:512
+msgid "Chasm"
+msgstr ""
+
+#: data/core/terrain.cfg:520
+msgid "Lava"
+msgstr "Lava"
+
+#: data/core/terrain.cfg:534
+msgid "Desert road"
+msgstr ""
+
+#: data/core/terrain.cfg:543
+msgid "Dirt"
+msgstr "Terra"
+
+#: data/core/terrain.cfg:552
+msgid "Road"
+msgstr "Estrada"
+
+#: data/core/terrain.cfg:561
+msgid "Farmland"
+msgstr ""
+
+#: data/core/terrain.cfg:574
+msgid "Swamp"
+msgstr "Braña"
+
+#: data/core/terrain.cfg:588
+msgid "Cave"
+msgstr "Cova"
+
+#: data/core/terrain.cfg:596
+msgid "Cave Lit"
+msgstr ""
+
+#: data/core/terrain.cfg:606 data/core/terrain.cfg:614
+msgid "Mushroom Grove"
+msgstr "Colonia de Cogomelos"
+
+#: data/core/terrain.cfg:634
+msgid "Rockbound Cave"
+msgstr ""
+
+#: data/core/terrain.cfg:644
+msgid "Rockbound Cave Lit"
+msgstr ""
+
+#: data/core/terrain.cfg:661 data/core/terrain.cfg:672
+#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
+#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
+#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
+#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
+#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
+#: data/core/terrain.cfg:826
+msgid "Village"
+msgstr "Vila"
+
+#: data/core/terrain.cfg:841
+msgid "Deep Water"
+msgstr "Auga Profunda"
+
+#: data/core/terrain.cfg:851
+msgid "Shallow Water"
+msgstr "Auga Superficial"
+
+#: data/core/terrain.cfg:861
+msgid "River Ford"
+msgstr "Vao nun Río"
+
+#: data/core/terrain.cfg:876
+msgid "Impassable Mountains"
+msgstr "Montañas Infranqueables"
+
+#: data/core/terrain.cfg:885
+msgid "Impassable Desert Mountains"
+msgstr ""
+
+#: data/core/terrain.cfg:894
+msgid "Cave Wall"
+msgstr "Parede de Cova"
 
 #: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401

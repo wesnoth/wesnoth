@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-22 02:01+0200\n"
+"POT-Creation-Date: 2007-07-25 16:00+0200\n"
 "PO-Revision-Date: 2007-07-15 00:55+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -15,6 +15,232 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/core/terrain.cfg:12
+msgid "None"
+msgstr "Ei mitään"
+
+#: data/core/terrain.cfg:19
+msgid "Shroud"
+msgstr "Huntu"
+
+#: data/core/terrain.cfg:26
+msgid "Fog"
+msgstr "sumua"
+
+#: data/core/terrain.cfg:37
+msgid "Ice"
+msgstr "jäätä"
+
+#: data/core/terrain.cfg:47
+msgid "Snow"
+msgstr "lunta"
+
+#: data/core/terrain.cfg:60 data/core/terrain.cfg:69 data/core/terrain.cfg:78
+#: data/core/terrain.cfg:88 data/core/terrain.cfg:97 data/core/terrain.cfg:106
+#: data/core/terrain.cfg:116 data/core/terrain.cfg:125
+#: data/core/terrain.cfg:134
+msgid "Bridge"
+msgstr "silta"
+
+#: data/core/terrain.cfg:147
+msgid "Encampment"
+msgstr "leiri"
+
+#: data/core/terrain.cfg:158
+msgid "Castle"
+msgstr "linna"
+
+#: data/core/terrain.cfg:168
+msgid "Elven Castle"
+msgstr "Haltialinna"
+
+#: data/core/terrain.cfg:179
+msgid "Dwarven Castle"
+msgstr "kääpiölinna"
+
+#: data/core/terrain.cfg:190
+msgid "Ruin"
+msgstr "raunioita"
+
+#: data/core/terrain.cfg:201
+msgid "Sunken Ruin"
+msgstr "uponneita raunioita"
+
+#: data/core/terrain.cfg:213
+msgid "Swamp Ruin"
+msgstr "soistuneita raunioita"
+
+#: data/core/terrain.cfg:238
+msgid "Encampment keep"
+msgstr "Leiri"
+
+#: data/core/terrain.cfg:250
+msgid "Keep"
+msgstr "linnake"
+
+#: data/core/terrain.cfg:262
+msgid "Elven Keep"
+msgstr "Haltialinnake"
+
+#: data/core/terrain.cfg:274
+msgid "Dwarven keep"
+msgstr "kääpiölinnake"
+
+#: data/core/terrain.cfg:286
+msgid "Ruined keep"
+msgstr "Raunioitunut linnake"
+
+#: data/core/terrain.cfg:298
+msgid "Sunken keep"
+msgstr "Uponnut linnake"
+
+#: data/core/terrain.cfg:310
+msgid "Swamp keep"
+msgstr "Suolinnake"
+
+#: data/core/terrain.cfg:336
+msgid "Crater"
+msgstr "Kraateri"
+
+#: data/core/terrain.cfg:346
+msgid "Desert"
+msgstr "aavikkoa"
+
+#: data/core/terrain.cfg:356
+msgid "Rubble"
+msgstr "Kivimurska"
+
+#: data/core/terrain.cfg:366
+msgid "Sand"
+msgstr "hiekkaa"
+
+#: data/core/terrain.cfg:374
+msgid "Oasis"
+msgstr "keidas"
+
+#: data/core/terrain.cfg:389
+msgid "Snow Forest"
+msgstr "lumista metsää"
+
+#: data/core/terrain.cfg:399
+msgid "Great Tree"
+msgstr "suuri puu"
+
+#: data/core/terrain.cfg:408
+msgid "Forest"
+msgstr "metsää"
+
+#: data/core/terrain.cfg:416
+msgid "Tropical Forest"
+msgstr "trooppista metsää"
+
+#: data/core/terrain.cfg:429 data/core/terrain.cfg:437
+msgid "Grassland"
+msgstr "tasankoa"
+
+#: data/core/terrain.cfg:446
+msgid "Savanna"
+msgstr "savannia"
+
+#: data/core/terrain.cfg:459
+msgid "Snow Hills"
+msgstr "lumisia mäkiä"
+
+#: data/core/terrain.cfg:469
+msgid "Dunes"
+msgstr "hiekkadyynejä"
+
+#: data/core/terrain.cfg:479
+msgid "Hills"
+msgstr "mäkiä"
+
+#: data/core/terrain.cfg:491 data/core/terrain.cfg:500
+msgid "Mountains"
+msgstr "vuoria"
+
+#: data/core/terrain.cfg:512
+msgid "Chasm"
+msgstr "kuilu"
+
+#: data/core/terrain.cfg:520
+msgid "Lava"
+msgstr "laavaa"
+
+#: data/core/terrain.cfg:534
+msgid "Desert road"
+msgstr "Aavikkotie"
+
+#: data/core/terrain.cfg:543
+msgid "Dirt"
+msgstr "mutaa"
+
+#: data/core/terrain.cfg:552
+msgid "Road"
+msgstr "tie"
+
+#: data/core/terrain.cfg:561
+msgid "Farmland"
+msgstr "Peltomaa"
+
+#: data/core/terrain.cfg:574
+msgid "Swamp"
+msgstr "suota"
+
+#: data/core/terrain.cfg:588
+msgid "Cave"
+msgstr "luola"
+
+#: data/core/terrain.cfg:596
+msgid "Cave Lit"
+msgstr "valoisa luola"
+
+#: data/core/terrain.cfg:606 data/core/terrain.cfg:614
+msgid "Mushroom Grove"
+msgstr "sienilehtoa"
+
+#: data/core/terrain.cfg:634
+msgid "Rockbound Cave"
+msgstr "louhikkoluola"
+
+#: data/core/terrain.cfg:644
+msgid "Rockbound Cave Lit"
+msgstr "Valaistu louhikkoluola"
+
+#: data/core/terrain.cfg:661 data/core/terrain.cfg:672
+#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
+#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
+#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
+#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
+#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
+#: data/core/terrain.cfg:826
+msgid "Village"
+msgstr "kylä"
+
+#: data/core/terrain.cfg:841
+msgid "Deep Water"
+msgstr "syvää vettä"
+
+#: data/core/terrain.cfg:851
+msgid "Shallow Water"
+msgstr "matalaa vettä"
+
+#: data/core/terrain.cfg:861
+msgid "River Ford"
+msgstr "kahlaamo"
+
+#: data/core/terrain.cfg:876
+msgid "Impassable Mountains"
+msgstr "ylitsepääsemätön vuoristo"
+
+#: data/core/terrain.cfg:885
+msgid "Impassable Desert Mountains"
+msgstr "Ylitsepääsemätön aavikkovuoristo"
+
+#: data/core/terrain.cfg:894
+msgid "Cave Wall"
+msgstr "kiveä"
 
 #: src/construct_dialog.cpp:106 src/construct_dialog.cpp:113
 #: src/editor/editor_dialogs.cpp:401

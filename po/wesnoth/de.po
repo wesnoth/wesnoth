@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-25 00:53+0200\n"
+"POT-Creation-Date: 2007-07-25 16:03+0200\n"
 "PO-Revision-Date: 2007-07-19 12:17+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -1683,7 +1683,7 @@ msgstr ""
 "einer Runde, in der sie nicht gekämpft haben, 2 LP zusätzlich zur normalen "
 "Heilung durch Rasten."
 
-#: data/core/help.cfg:355 data/core/terrain.cfg:429 data/core/terrain.cfg:437
+#: data/core/help.cfg:355
 msgid "Grassland"
 msgstr "Grasland"
 
@@ -1706,7 +1706,7 @@ msgstr ""
 "\n"
 "Die meisten Einheiten haben 30 bis 40% Verteidigung auf dem Grasland."
 
-#: data/core/help.cfg:365 data/core/terrain.cfg:552
+#: data/core/help.cfg:365
 msgid "Road"
 msgstr "Straße"
 
@@ -1721,7 +1721,7 @@ msgstr ""
 "Spieltechnisch verhält es sich wie das Gelände <ref>dst=terrain_grassland "
 "text=Grasland</ref>."
 
-#: data/core/help.cfg:373 data/core/terrain.cfg:408
+#: data/core/help.cfg:373
 msgid "Forest"
 msgstr "Wald"
 
@@ -1762,7 +1762,7 @@ msgstr ""
 "Waldfeldern, wohingegen ihre Kavallerie auf 40% begrenzt ist.\n"
 "\n"
 
-#: data/core/help.cfg:385 data/core/terrain.cfg:479
+#: data/core/help.cfg:385
 msgid "Hills"
 msgstr "Hügel"
 
@@ -1788,7 +1788,7 @@ msgstr ""
 "Die meisten Einheiten erhalten 50% Verteidigung, Kavallerie maximal 40%.\n"
 "Zwerge haben sogar 60% Verteidigung in den Hügeln."
 
-#: data/core/help.cfg:395 data/core/terrain.cfg:491 data/core/terrain.cfg:500
+#: data/core/help.cfg:395
 msgid "Mountains"
 msgstr "Berge"
 
@@ -1815,7 +1815,7 @@ msgstr ""
 "Die meisten Einheiten verfügen über 60% Verteidigung in den Bergen, Zwerge "
 "genießen 70%."
 
-#: data/core/help.cfg:405 data/core/terrain.cfg:574
+#: data/core/help.cfg:405
 msgid "Swamp"
 msgstr "Sumpf"
 
@@ -1839,7 +1839,7 @@ msgstr ""
 "Die meisten Einheiten haben 30% Verteidigung in den Sümpfen. Wassermänner, "
 "Nagas und Saurianer haben 60%."
 
-#: data/core/help.cfg:415 data/core/terrain.cfg:851
+#: data/core/help.cfg:415
 msgid "Shallow Water"
 msgstr "Seichtes Wasser"
 
@@ -1866,7 +1866,7 @@ msgstr ""
 "Die meisten Einheiten haben zwischen 20 und 30% Verteidigung im seichten "
 "Wasser, Naga und Wassermänner haben 60%."
 
-#: data/core/help.cfg:425 data/core/terrain.cfg:841
+#: data/core/help.cfg:425
 msgid "Deep Water"
 msgstr "Tiefes Wasser"
 
@@ -1886,7 +1886,7 @@ msgstr ""
 "Wassermänner und Naga haben beide 50% Verteidigung und volle Bewegung im "
 "tiefen Wasser."
 
-#: data/core/help.cfg:435 data/core/terrain.cfg:47
+#: data/core/help.cfg:435
 msgid "Snow"
 msgstr "Schnee"
 
@@ -1906,7 +1906,7 @@ msgstr ""
 "Die meisten Einheiten haben zwischen 20 und 40% Verteidigung auf "
 "verschneiten Flächen."
 
-#: data/core/help.cfg:445 data/core/terrain.cfg:37
+#: data/core/help.cfg:445
 msgid "Ice"
 msgstr "Eis"
 
@@ -1921,7 +1921,7 @@ msgstr ""
 "Schwimmende Einheiten, auch die, die unter Wasser atmen können, können "
 "trotzdem nicht unter dem Eis schwimmen."
 
-#: data/core/help.cfg:453 data/core/terrain.cfg:158
+#: data/core/help.cfg:453
 msgid "Castle"
 msgstr "Burg"
 
@@ -1948,7 +1948,7 @@ msgstr ""
 "Die meisten Einheiten haben 60% Verteidigung auf Burgfeldern.\n"
 "\n"
 
-#: data/core/help.cfg:465 data/core/terrain.cfg:366
+#: data/core/help.cfg:465
 msgid "Sand"
 msgstr "Sand"
 
@@ -1967,7 +1967,7 @@ msgstr ""
 "\n"
 "Die meisten Einheiten haben 20 bis 40% Verteidigung im Sand."
 
-#: data/core/help.cfg:475 data/core/terrain.cfg:346
+#: data/core/help.cfg:475
 msgid "Desert"
 msgstr "Wüste"
 
@@ -1981,7 +1981,7 @@ msgstr ""
 "Spieltechnisch verhält es sich wie das Gelände <ref>dst=terrain_sand "
 "text=Sand</ref>."
 
-#: data/core/help.cfg:483 data/core/terrain.cfg:588
+#: data/core/help.cfg:483
 msgid "Cave"
 msgstr "Höhle"
 
@@ -2009,7 +2009,7 @@ msgstr ""
 "Die meisten Einheiten haben 20 bis 40% Verteidigung in Höhlen, Zwerge haben "
 "50%."
 
-#: data/core/help.cfg:493 data/core/terrain.cfg:634
+#: data/core/help.cfg:493
 msgid "Rockbound Cave"
 msgstr "Unwegsame Höhle"
 
@@ -2053,7 +2053,7 @@ msgstr ""
 "Einheiten einen Angriffsbonus und nimmt allen chaotischen Einheiten den "
 "ihrigen. Ansonsten verhält sich dieses Gelände wie normales Höhlengelände."
 
-#: data/core/help.cfg:511 data/core/terrain.cfg:606 data/core/terrain.cfg:614
+#: data/core/help.cfg:511
 msgid "Mushroom Grove"
 msgstr "Pilzhain"
 
@@ -2081,7 +2081,7 @@ msgstr ""
 "Die meisten Einheiten haben 50 bis 60% Verteidigung in Pilzhainen, "
 "Kavallerie hingegen nur 20%."
 
-#: data/core/help.cfg:521 data/core/terrain.cfg:446
+#: data/core/help.cfg:521
 msgid "Savanna"
 msgstr "Savanne"
 
@@ -2095,14 +2095,7 @@ msgstr ""
 "der Welt findet. Spieltechnisch verhält es sich wie das Gelände "
 "<ref>dst=terrain_grassland text=Grasland</ref>."
 
-#: data/core/help.cfg:529 data/core/terrain.cfg:661 data/core/terrain.cfg:672
-#: data/core/terrain.cfg:685 data/core/terrain.cfg:696
-#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
-#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
-#: data/core/terrain.cfg:752 data/core/terrain.cfg:763
-#: data/core/terrain.cfg:776 data/core/terrain.cfg:787
-#: data/core/terrain.cfg:800 data/core/terrain.cfg:815
-#: data/core/terrain.cfg:826 src/terrain.cpp:95
+#: data/core/help.cfg:529 src/terrain.cpp:95
 msgid "Village"
 msgstr "Dorf"
 
@@ -2160,7 +2153,7 @@ msgstr ""
 "Dörfern, wohingegen Landbewohner meist schlechtere Verteidigungswerte "
 "hinnehmen müssen."
 
-#: data/core/help.cfg:551 data/core/terrain.cfg:512
+#: data/core/help.cfg:551
 msgid "Chasm"
 msgstr "Kluft"
 
@@ -2177,7 +2170,7 @@ msgstr ""
 "Kluft für Reiter und Fußtruppen viel zu lange dauern würde, können nur "
 "fliegende Einheiten dieses Hindernis passieren."
 
-#: data/core/help.cfg:559 data/core/terrain.cfg:520
+#: data/core/help.cfg:559
 msgid "Lava"
 msgstr "Lava"
 
@@ -2195,7 +2188,7 @@ msgstr ""
 "umliegende Gebiet, was rechtschaffenen Einheiten einen Angriffsbonus "
 "verleiht und chaotischen Einheiten den ihrigen entzieht."
 
-#: data/core/help.cfg:567 data/core/terrain.cfg:861
+#: data/core/help.cfg:567
 msgid "River Ford"
 msgstr "Furt"
 
@@ -2216,10 +2209,7 @@ msgstr ""
 "oder Seichtes Wasser, je nachdem in welchem Gelände bessere Bewegungs- und "
 "Verteidungsboni für die Einheit gelten."
 
-#: data/core/help.cfg:575 data/core/terrain.cfg:60 data/core/terrain.cfg:69
-#: data/core/terrain.cfg:78 data/core/terrain.cfg:88 data/core/terrain.cfg:97
-#: data/core/terrain.cfg:106 data/core/terrain.cfg:116
-#: data/core/terrain.cfg:125 data/core/terrain.cfg:134
+#: data/core/help.cfg:575
 msgid "Bridge"
 msgstr "Brücke"
 
@@ -2249,7 +2239,7 @@ msgstr ""
 "Verteidungsboni für die Einheit gelten. Es ist nicht möglich, dass sich eine "
 "schwimmende und eine Landeinheit ein Brückenfeld teilen."
 
-#: data/core/help.cfg:585 data/core/terrain.cfg:894
+#: data/core/help.cfg:585
 msgid "Cave Wall"
 msgstr "Höhlenwand"
 
@@ -4223,131 +4213,6 @@ msgstr "Braun"
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:119
 msgid "Teal"
 msgstr "Türkis"
-
-#: data/core/terrain.cfg:12
-msgid "None"
-msgstr "Nichts"
-
-#: data/core/terrain.cfg:19 src/multiplayer_create.cpp:70
-#: src/multiplayer_lobby.cpp:421 src/multiplayer_lobby.cpp:427
-msgid "Shroud"
-msgstr "Schleier der Finsternis"
-
-#: data/core/terrain.cfg:26 src/multiplayer_lobby.cpp:417
-msgid "Fog"
-msgstr "Nebel"
-
-#: data/core/terrain.cfg:147
-msgid "Encampment"
-msgstr "Lager"
-
-#: data/core/terrain.cfg:168
-msgid "Elven Castle"
-msgstr "Elfische Burg"
-
-#: data/core/terrain.cfg:179
-msgid "Dwarven Castle"
-msgstr "Zwergische Burg"
-
-#: data/core/terrain.cfg:190
-msgid "Ruin"
-msgstr "Ruine"
-
-#: data/core/terrain.cfg:201
-msgid "Sunken Ruin"
-msgstr "versunkene Ruine"
-
-#: data/core/terrain.cfg:213
-msgid "Swamp Ruin"
-msgstr "Sumpfruine"
-
-#: data/core/terrain.cfg:238
-msgid "Encampment keep"
-msgstr "Hauptzelt"
-
-#: data/core/terrain.cfg:250
-msgid "Keep"
-msgstr "Burgfried"
-
-#: data/core/terrain.cfg:262
-msgid "Elven Keep"
-msgstr "Elfische Festung"
-
-#: data/core/terrain.cfg:274
-msgid "Dwarven keep"
-msgstr "Zwergische Burg"
-
-#: data/core/terrain.cfg:286
-msgid "Ruined keep"
-msgstr "Festungsruine"
-
-#: data/core/terrain.cfg:298
-msgid "Sunken keep"
-msgstr "versunkene Festungsruine"
-
-#: data/core/terrain.cfg:310
-msgid "Swamp keep"
-msgstr "Sumpffestung"
-
-#: data/core/terrain.cfg:336
-msgid "Crater"
-msgstr "Krater"
-
-#: data/core/terrain.cfg:356
-msgid "Rubble"
-msgstr "Trümmer"
-
-#: data/core/terrain.cfg:374
-msgid "Oasis"
-msgstr "Oase"
-
-#: data/core/terrain.cfg:389
-msgid "Snow Forest"
-msgstr "Verschneiter Wald"
-
-#: data/core/terrain.cfg:399
-msgid "Great Tree"
-msgstr "Bedeutsamer Baum"
-
-#: data/core/terrain.cfg:416
-msgid "Tropical Forest"
-msgstr "Tropischer Wald"
-
-#: data/core/terrain.cfg:459
-msgid "Snow Hills"
-msgstr "Verschneite Hügel"
-
-#: data/core/terrain.cfg:469
-msgid "Dunes"
-msgstr "Dünen"
-
-#: data/core/terrain.cfg:534
-msgid "Desert road"
-msgstr "Wüstenstraße"
-
-#: data/core/terrain.cfg:543
-msgid "Dirt"
-msgstr "Dreck"
-
-#: data/core/terrain.cfg:561
-msgid "Farmland"
-msgstr "Ackerland"
-
-#: data/core/terrain.cfg:596
-msgid "Cave Lit"
-msgstr "Erhellte Höhle"
-
-#: data/core/terrain.cfg:644
-msgid "Rockbound Cave Lit"
-msgstr "Erhellte unwegsame Höhle"
-
-#: data/core/terrain.cfg:876
-msgid "Impassable Mountains"
-msgstr "Unpassierbare Berge"
-
-#: data/core/terrain.cfg:885
-msgid "Impassable Desert Mountains"
-msgstr "Unpassierbare Wüstenberge"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -6545,6 +6410,11 @@ msgstr "Zufällige Startzeit"
 msgid "Fog Of War"
 msgstr "Nebel des Krieges"
 
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:421
+#: src/multiplayer_lobby.cpp:427
+msgid "Shroud"
+msgstr "Schleier der Finsternis"
+
 #: src/multiplayer_create.cpp:71
 msgid "Observers"
 msgstr "Beobachter"
@@ -6712,6 +6582,10 @@ msgstr "Verfügbarer Platz:"
 #: src/multiplayer_lobby.cpp:406
 msgid "Vacant Slots:"
 msgstr "Verfügbare Plätze:"
+
+#: src/multiplayer_lobby.cpp:417
+msgid "Fog"
+msgstr "Nebel"
 
 #: src/multiplayer_lobby.cpp:431
 msgid "none"
@@ -7102,15 +6976,15 @@ msgstr "Schaden"
 msgid "strikes"
 msgstr "Attacken"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "chaotic"
 msgstr "lichtscheu"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "lawful"
 msgstr "redlich"
 
-#: src/unit_types.cpp:920
+#: src/unit_types.cpp:922
 msgid "neutral"
 msgstr "neutral"
 
@@ -7141,3 +7015,90 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Erlauben, dass Zusammenfassungen übertragen werden dürfen"
+
+#~ msgid "None"
+#~ msgstr "Nichts"
+
+#~ msgid "Encampment"
+#~ msgstr "Lager"
+
+#~ msgid "Elven Castle"
+#~ msgstr "Elfische Burg"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Zwergische Burg"
+
+#~ msgid "Ruin"
+#~ msgstr "Ruine"
+
+#~ msgid "Sunken Ruin"
+#~ msgstr "versunkene Ruine"
+
+#~ msgid "Swamp Ruin"
+#~ msgstr "Sumpfruine"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Hauptzelt"
+
+#~ msgid "Keep"
+#~ msgstr "Burgfried"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Elfische Festung"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Zwergische Burg"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Festungsruine"
+
+#~ msgid "Sunken keep"
+#~ msgstr "versunkene Festungsruine"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Sumpffestung"
+
+#~ msgid "Crater"
+#~ msgstr "Krater"
+
+#~ msgid "Rubble"
+#~ msgstr "Trümmer"
+
+#~ msgid "Oasis"
+#~ msgstr "Oase"
+
+#~ msgid "Snow Forest"
+#~ msgstr "Verschneiter Wald"
+
+#~ msgid "Great Tree"
+#~ msgstr "Bedeutsamer Baum"
+
+#~ msgid "Tropical Forest"
+#~ msgstr "Tropischer Wald"
+
+#~ msgid "Snow Hills"
+#~ msgstr "Verschneite Hügel"
+
+#~ msgid "Dunes"
+#~ msgstr "Dünen"
+
+#~ msgid "Desert road"
+#~ msgstr "Wüstenstraße"
+
+#~ msgid "Dirt"
+#~ msgstr "Dreck"
+
+#~ msgid "Farmland"
+#~ msgstr "Ackerland"
+
+#~ msgid "Cave Lit"
+#~ msgstr "Erhellte Höhle"
+
+#~ msgid "Rockbound Cave Lit"
+#~ msgstr "Erhellte unwegsame Höhle"
+
+#~ msgid "Impassable Mountains"
+#~ msgstr "Unpassierbare Berge"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "Unpassierbare Wüstenberge"
