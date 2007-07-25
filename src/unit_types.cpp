@@ -504,8 +504,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
 		const config& var_cfg = **var;
 		if(var_cfg["inherit"] == "yes") {
-			config nvar_cfg = cfg;
-			nvar_cfg = nvar_cfg.merge_with(var_cfg);
+			config nvar_cfg(cfg);
+			nvar_cfg.merge_with(var_cfg);
 			nvar_cfg.clear_children("variation");
 			variations_.insert(std::pair<std::string,unit_type*>(nvar_cfg["variation_name"],new unit_type(nvar_cfg,mv_types,races,traits)));
 		} else {
@@ -518,11 +518,12 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	const config* const male_cfg = cfg.child("male");
 	if(male_cfg != NULL) {
-		config m_cfg(cfg);
+		config m_cfg;
 		if((*male_cfg)["inherit"]=="no") {
 			m_cfg = *male_cfg;
 		} else {
-			m_cfg = m_cfg.merge_with(*male_cfg);
+			m_cfg = cfg;
+			m_cfg.merge_with(*male_cfg);
 		}
 		m_cfg.clear_children("male");
 		m_cfg.clear_children("female");
@@ -531,11 +532,12 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	const config* const female_cfg = cfg.child("female");
 	if(female_cfg != NULL) {
-		config f_cfg(cfg);
+		config f_cfg;
 		if((*female_cfg)["inherit"]=="no") {
 			f_cfg = *female_cfg;
 		} else {
-			f_cfg = f_cfg.merge_with(*female_cfg);
+			f_cfg = cfg;
+			f_cfg.merge_with(*female_cfg);
 		}
 		f_cfg.clear_children("male");
 		f_cfg.clear_children("female");
@@ -1061,9 +1063,10 @@ void game_data::set_config(const config& cfg)
 				if(from_unit != unit_types.end())
 				{
 					//derive a new unit type from an existing base unit id
-					config merged_cfg = from_unit->second.cfg_.merge_with(**i.first);
-					merged_cfg.clear_children("base_unit");
-					const unit_type u_type(merged_cfg,movement_types,races,unit_traits);
+					config merge_cfg(from_unit->second.cfg_);
+					merge_cfg.merge_with(**i.first);
+					merge_cfg.clear_children("base_unit");
+					const unit_type u_type(merge_cfg,movement_types,races,unit_traits);
 					unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 					increment_set_config_progress();
 					--new_count;

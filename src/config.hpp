@@ -131,7 +131,7 @@ public:
 
 	void apply_diff(const config& diff); //throw error
 
-	config merge_with(const config& c) const;
+	void merge_with(const config& c);
 
 	bool matches(const config &filter) const;
 

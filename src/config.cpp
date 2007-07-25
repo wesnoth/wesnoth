@@ -532,6 +532,39 @@ void config::apply_diff(const config& diff)
 	}
 }
 
+void config::merge_with(const config& c)
+{
+	std::map<std::string, unsigned> visitations;
+
+	//merge attributes first
+	string_map::const_iterator attrib_it, attrib_end = c.values.end();
+	for(attrib_it = c.values.begin(); attrib_it != attrib_end; ++attrib_it) {
+		values[attrib_it->first] = attrib_it->second;
+	}
+
+	//now merge shared tags
+	all_children_iterator::Itor i, i_end = ordered_children.end();
+	for(i = ordered_children.begin(); i != i_end; ++i) {
+		const std::string& tag = i->pos->first;
+		child_map::const_iterator j = c.children.find(tag);
+		if (j != c.children.end()) {
+			unsigned &visits = visitations[tag];
+			if(visits < j->second.size()) {
+				(i->pos->second[i->index])->merge_with(*j->second[visits++]);
+			}
+		}
+	}
+
+	//now add any unvisited tags
+	for(child_map::const_iterator j = c.children.begin(); j != c.children.end(); ++j) {
+		const std::string& tag = j->first;
+		unsigned &visits = visitations[tag];
+		while(visits < j->second.size()) {
+			add_child(tag, *j->second[visits++]);
+		}
+	}
+}
+/*
 // Create a new config tree as a copy of 'this' overridden by 'c'.
 // Nodes are matched up by name and with name by order. Nodes in 'c',
 // but not in 'this' are added at the end in the order they appeared in 'c'.
@@ -559,7 +592,7 @@ config config::merge_with(const config& c) const
 	}
 	n.append(m);
 	return n;
-}
+}*/
 
 bool config::matches(const config &filter) const
 {

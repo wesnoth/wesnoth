@@ -588,7 +588,7 @@ config connect::side::get_config() const
 			trimmed["user_description"] = "";
 		}
 		trimmed.prune();
-		return res.merge_with(trimmed);
+		res.merge_with(trimmed);
 	}
 	return res;
 }

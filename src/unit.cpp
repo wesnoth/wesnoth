@@ -417,7 +417,7 @@ void unit::advance_to(const unit_type* t)
 	movement_costs_.clear();
 
 	if(t->movement_type().get_parent()) {
-		cfg_ = cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
+		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
 	//if unit has specific profile, remember it and have it after advaces
 	bool specific_profile = false;
@@ -430,7 +430,7 @@ void unit::advance_to(const unit_type* t)
 			profile = cfg_["profile"];
 		}
 	}
-	cfg_ = cfg_.merge_with(t->cfg_);
+	cfg_.merge_with(t->cfg_);
 	if (specific_profile)
 	{
 	cfg_["profile"] = profile;
@@ -1081,8 +1081,8 @@ void unit::read(const config& cfg)
 			    range.first != range.second; ++range.first) {
 				u_atks.add_child("attack",**range.first);
 			}
-			u_atks = t_atks.merge_with(u_atks);
-			for(range = u_atks.child_range("attack");
+			t_atks.merge_with(u_atks);
+			for(range = t_atks.child_range("attack");
 			    range.first != range.second; ++range.first) {
 				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 			}
