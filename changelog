@@ -9,6 +9,7 @@ Version 1.2.5+svn:
    * the unit name generation could with different locales call get_random() a
      different number of times. This lead to different names and traits.
      Changed to call random a fixed number of times which fixes the traits.
+   * Enable "Save Game" and "View Chat Log" menu entries in replay mode
 
 Version 1.2.5:
  * campaigns:

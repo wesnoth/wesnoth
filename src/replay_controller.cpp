@@ -365,6 +365,8 @@ bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command) cons
 	case hotkey::HOTKEY_REPLAY_FOG:
 	case hotkey::HOTKEY_REPLAY_SHROUD:
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
+	case hotkey::HOTKEY_SAVE_GAME:
+	case hotkey::HOTKEY_CHAT_LOG:
 		return true;
 
 	default:
