@@ -8,10 +8,10 @@ use POSIX qw(strftime);
 use Getopt::Std;
 use Data::Dumper;
 
-#my $usage = "Usage: $0 [-gjn] [-e count] [-l logfile] [-h [host]] [-p [port]] [-t [timestampformat]] [-u username]";
+#my $usage = "Usage: $0 [-dgjnqs] [-e count] [-l logfile] [-h [host]] [-p [port]] [-t [timestampformat]] [-u username]";
 
 my %opts = ();
-getopts('gjl:ne:h:p:t:u:',\%opts);
+getopts('dgjqsl:ne:h:p:t:u:',\%opts);
 
 my $USERNAME = 'log';
 $USERNAME    = $opts{'u'} if $opts{'u'};
@@ -25,9 +25,13 @@ my $logtimestamp = "%Y%m%d %T ";
 my $timestamp = "%Y%m%d %T ";
 $timestamp    = $opts{'t'} if $opts{'t'};
 $timestamp    = '' unless exists $opts{'t'};
+my $writestats = $opts{'s'};
+my $statsfile = "/tmp/wesnoth.stats_" . $HOST . "_" . $PORT;
 my $showjoins = $opts{'j'};
 my $showgames = $opts{'g'};
 my $showturns = $opts{'n'};
+my $dumpunknown = $opts{'d'};
+my $quiet     = $opts{'q'};
 my $logfile   = $opts{'l'};
 if (exists $opts{'l'}) {open(LOG, ">> $logfile") or die "can't open $logfile: $!";}
 select LOG; $| = 1;
@@ -70,7 +74,7 @@ sub read_packet($) {
 
 	my $len = unpack('N',$buf);
 
-	my $res = "\0" * $len;
+	my $res = "\0";
 	my $count = 0;
 	while($len > $count) {
 		$buf = '';
@@ -174,6 +178,12 @@ sub login($) {
 	print LOG    $gamelist if $logfile;
 }
 
+sub serverstats() {
+	open STATS, ">" . $statsfile;
+	print STATS "users: " . ($#users + 1) . "\ngames: " . ($#games + 1) . "\n";
+	close STATS;
+}
+
 # make several connections and send packets with a wrong length then sleep indefinitely
 if (my $count = $opts{'e'}) {
 	for (1..$count) {
@@ -185,12 +195,13 @@ if (my $count = $opts{'e'}) {
 
 
 
-print STDERR "Connecting to $HOST:$PORT as $USERNAME.\n";
+print STDERR "Connecting to $HOST:$PORT as $USERNAME.\n" unless $quiet;
 print LOG    "Connecting to $HOST:$PORT as $USERNAME.\n" if $logfile;
 my $socket = &connect($HOST,$PORT);
 defined($socket) or die "Error: Can't connect to the server.";
 
 login($socket);
+serverstats() if $writestats;
 
 while (1) {
 	my $response = &read_packet($socket);
@@ -199,20 +210,20 @@ while (1) {
 			my $sender = $_->{'attr'}->{'sender'};
 			my $message = $_->{'attr'}->{'message'};
 			if ($message =~ s,^/me,,) {
-				print STDERR &timestamp . "* $sender$message\n";
+				print STDERR &timestamp . "* $sender$message\n" unless $quiet;
 				print LOG &logtimestamp . "* $sender$message\n" if $logfile;
 			} else {
-				print STDERR &timestamp . "<$sender> $message\n";
+				print STDERR &timestamp . "<$sender> $message\n" unless $quiet;
 				print LOG &logtimestamp . "<$sender> $message\n" if $logfile;
 			}
 		} elsif ($_->{'name'} eq 'whisper') {
 			my $sender = $_->{'attr'}->{'sender'};
 			my $message = $_->{'attr'}->{'message'};
 			if ($message =~ s,^/me,,) {
-				print STDERR &timestamp . "*$sender$message*\n";
+				print STDERR &timestamp . "*$sender$message*\n" unless $quiet;
 				print LOG &logtimestamp . "*$sender$message*\n" if $logfile;
 			} else {
-				print STDERR &timestamp . "*$sender* $message\n";
+				print STDERR &timestamp . "*$sender* $message\n" unless $quiet;
 				print LOG &logtimestamp . "*$sender* $message\n" if $logfile;
 			}
 		} elsif ($_->{'name'} eq 'gamelist_diff') {
@@ -224,8 +235,9 @@ while (1) {
 						print STDERR &timestamp . "--> $username has logged on. ($userindex)\n" if $showjoins;
 						print LOG &logtimestamp . "--> $username has logged on. ($userindex)\n" if $logfile;
 						$users[@users] = $user;
+						serverstats() if $writestats;
 					} else {
-						print STDERR "[gamelist_diff]:" . Dumper($_);
+						print STDERR "[gamelist_diff]:" . Dumper($_) if $dumpunknown;
 					}
 				} elsif ($_->{'name'} eq 'delete_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
@@ -233,8 +245,9 @@ while (1) {
 						print STDERR &timestamp . "<-- $username has logged off. ($userindex)\n" if $showjoins;
 						print LOG &logtimestamp . "<-- $username has logged off. ($userindex)\n" if $logfile;
 						splice(@users,$userindex,1);
+						serverstats() if $writestats;
 					} else {
-						print STDERR "[gamelist_diff]:" . Dumper($_);
+						print STDERR "[gamelist_diff]:" . Dumper($_) if $dumpunknown;
 					}
 				} elsif ($_->{'name'} eq 'change_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
@@ -254,10 +267,10 @@ while (1) {
 								}
 							} elsif ($_->{'name'} eq 'delete') {
 							} else {
-								print STDERR "[gamelist_diff][change_child][user]:" . Dumper($_);
+								print STDERR "[gamelist_diff][change_child][user]:" . Dumper($_) if $dumpunknown;
 							}
 						}
-						#print STDERR "[gamelist_diff][change_child]:" . Dumper($user);
+						#print STDERR "[gamelist_diff][change_child]:" . Dumper($user) if $dumpunknown;
 					} elsif (my $gamelist = &wml::has_child($_, 'gamelist')) {
 						foreach (@ {$gamelist->{'children'}}) {
 							my $gamelistindex = $_->{'attr'}->{'index'};
@@ -293,8 +306,9 @@ while (1) {
 									print STDERR &timestamp . $settings . "\n" if $showgames;
 									print LOG &logtimestamp . $settings . "\n" if $logfile;
 									$games[@games] = $game;
+									serverstats() if $writestats;
 								} else {
-									print "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+									print "[gamelist_diff][change_child][gamelist]:" . Dumper($_) if $dumpunknown;
 								}
 							} elsif ($_->{'name'} eq 'delete_child') {
 								if (my $game = &wml::has_child($_, 'game')) {
@@ -309,8 +323,9 @@ while (1) {
 										print LOG &logtimestamp . "--- A game was aborted: \"$gamename\". ($gamelistindex, $gameid)\n" if $logfile;
 									}
 									splice(@games,$gamelistindex,1);
+									serverstats() if $writestats;
 								} else {
-									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_) if $dumpunknown;
 								}
 							} elsif ($_->{'name'} eq 'change_child') {
 								if (my $game = &wml::has_child($_, 'game')) {
@@ -330,21 +345,21 @@ while (1) {
 											}
 										} elsif ($_->{'name'} eq 'delete') {
 										} else {
-											print "[gamelist_diff][change_child][gamelist][change_child][game]:" . Dumper($_);
+											print "[gamelist_diff][change_child][gamelist][change_child][game]:" . Dumper($_) if $dumpunknown;
 										}
 									}
 								} else {
-									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_) if $dumpunknown;
 								}
 							} else {
-								print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_);
+								print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_) if $dumpunknown;
 							}
 						}
 					} else {
-						print STDERR "[gamelist_diff]:" . Dumper($_);
+						print STDERR "[gamelist_diff]:" . Dumper($_) if $dumpunknown;
 					}
 				} else {
-					print STDERR "[gamelist_diff]:" . Dumper($_);
+					print STDERR "[gamelist_diff]:" . Dumper($_) if $dumpunknown;
 				}
 			}
 		# [observer] and [observer_quit] should be deprecated they are redundant to parts of [gamelist_diff]
@@ -355,10 +370,10 @@ while (1) {
 #			my $username = $_->{'attr'}->{'name'};
 #			print &timestamp . "<++ $username has left the lobby.\n";
 		} else {
-			print STDERR Dumper($_);
+			print STDERR Dumper($_) if $dumpunknown;
 		}
 	}
 
 }
-print "Connection closed.\n\n";
+print "Connection closed.\n\n" unless $quiet;
 close(LOG);
