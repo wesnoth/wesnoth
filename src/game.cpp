@@ -686,6 +686,12 @@ bool game_controller::load_game()
 			defines_map_["MULTIPLAYER"] = preproc_define();
 		}
 
+		const std::vector<std::string> campaign_xtra_defines = utils::split(cfg["campaign_extra_defines"]);
+		
+		for(std::vector<std::string>::const_iterator i = campaign_xtra_defines.begin(); i != campaign_xtra_defines.end(); ++i) {
+			defines_map_[*i] = preproc_define();
+		}
+		
 		refresh_game_cfg();
 
 		state_ = game_state(units_data_,cfg);
@@ -846,6 +852,7 @@ bool game_controller::new_campaign()
 #endif
 
 	state_.campaign_define = campaign["define"];
+	state_.campaign_xtra_defines = utils::split(campaign["extra_defines"]);
 
 	return true;
 }
@@ -1712,6 +1719,11 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 	if(reload == RELOAD_DATA) {
 		if(state_.campaign_define.empty() == false) {
 			defines_map_[state_.campaign_define] = preproc_define();
+		}
+
+		for( std::vector<std::string>::const_iterator i = state_.campaign_xtra_defines.begin();
+		     i != state_.campaign_xtra_defines.end(); ++i) {
+			defines_map_[*i] = preproc_define();
 		}
 
 		if(defines_map_.count("NORMAL")) {

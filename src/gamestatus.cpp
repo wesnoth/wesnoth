@@ -470,6 +470,8 @@ game_state::game_state(const game_data& data, const config& cfg)
 
 	campaign_define = cfg["campaign_define"];
 
+	campaign_xtra_defines = utils::split(cfg["campaign_extra_defines"]);
+
 	campaign_type = cfg["campaign_type"];
 	if(campaign_type.empty())
 		campaign_type = "scenario";
@@ -580,7 +582,8 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 	cfg["difficulty"] = gamestate.difficulty;
 
 	cfg["campaign_define"] = gamestate.campaign_define;
-
+	cfg["campaign_extra_defines"] = utils::join(gamestate.campaign_xtra_defines);
+	
 	cfg.add_child("variables",gamestate.get_variables());
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
@@ -630,6 +633,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_key_val("campaign_type", gamestate.campaign_type);
 	out.write_key_val("difficulty", gamestate.difficulty);
 	out.write_key_val("campaign_define", gamestate.campaign_define);
+	out.write_key_val("campaign_xtra_defines", utils::join(gamestate.campaign_xtra_defines));
 	out.write_child("variables", gamestate.get_variables());
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
 	    j!=gamestate.wml_menu_items.end(); ++j) {
@@ -1301,6 +1305,7 @@ game_state& game_state::operator=(const game_state& state)
 	version = state.version;
 	campaign_type = state.campaign_type;
 	campaign_define = state.campaign_define;
+	campaign_xtra_defines = state.campaign_xtra_defines;
 	campaign = state.campaign;
 	scenario = state.scenario;
 	players = state.players;

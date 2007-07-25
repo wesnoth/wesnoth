@@ -92,6 +92,7 @@ public:
 	std::string campaign_type; //type of the game - campaign, multiplayer etc
 
 	std::string campaign_define; //if there is a define the campaign uses to customize data
+	std::vector<std::string> campaign_xtra_defines; // more customization of data
 
 	std::string campaign; //the campaign being played
 	std::string scenario; //the scenario being played
