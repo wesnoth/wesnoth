@@ -343,8 +343,8 @@ bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 	case hotkey::HOTKEY_REPLAY_SHOW_EACH:
 	case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
-	case hotkey::HOTKEY_SAVE_GAME:	/* UWE: hack to enable save game */
-	case hotkey::HOTKEY_CHAT_LOG:	/* UWE: hack to enable chat log */
+	case hotkey::HOTKEY_SAVE_GAME:
+	case hotkey::HOTKEY_CHAT_LOG:
 		return true;
 
 	default:
