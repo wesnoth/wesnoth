@@ -28,6 +28,7 @@
 #
 # Note: You can shut wmllint up about custom terrains by having a comment
 # on the same line that includes the string "wmllint: ignore".
+# You can also prevent description insertions with "wmllint: no-icon".
 
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
@@ -470,15 +471,23 @@ def hack_syntax(filename, lines):
             if not have_description:
                 j = i
                 while '[/attack]' not in lines[j]:
-                    if lines[j].strip().startswith("name"):
-                        description = lines[j].split("=")[1].strip()
+                    fields = lines[j].strip().split('#')
+                    syntactic = fields[0]
+                    comment = ""
+                    if len(fields) > 1:
+                        comment = fields[1]
+                    if syntactic.strip().startswith("name"):
+                        description = syntactic.split("=")[1].strip()
                         if not description.startswith('"'):
                             description = '"' + description + '"\n'
-                        leader = lines[j][:lines[j].find("name")]
-                        new_line = leader + "description=_"+description
-                        if verbose:
-                            print 'wmllint: "%s", line %d: inserting %s' % (filename, i+1, `new_line`)
-                        lines.insert(j+1, new_line)
+                        leader = syntactic[:syntactic.find("name")]
+                        # Skip the insertion if this is a dummy declaration
+                        # or one modifying an attack inherited from a base unit.
+                        if "no-icon" not in comment:
+                            new_line = leader + "description=_"+description
+                            if verbose:
+                                print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
+                            lines.insert(j+1, new_line)
                         j += 1
                         modcount += 1
                     j += 1
