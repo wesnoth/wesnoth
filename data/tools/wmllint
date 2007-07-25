@@ -599,7 +599,7 @@ def translator(filename, mapxforms, textxform):
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
                 mapfile = refre.group(1)
-                if not mapfile.endswith(".map") and modified_maps.get(mapfile)==False and not windows:
+                if not mapfile.endswith(".map") and modified_maps.get(mapfile)==False:
                     newline = newline.replace(mapfile, mapfile + ".map") 
             newdata.append(newline + terminator)
             if newline != line:
@@ -751,11 +751,6 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
-
-    # Check to see if we're on Windows.  If so, shellouts to mv and rm
-    # and the svn command-line client won't work, so we suppress the
-    # normal behavior of renaming old-style mapfiles.
-    windows = sys.platform.startswith("win")
 
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
@@ -933,11 +928,10 @@ if __name__ == '__main__':
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
                     raise exc_type, exc_value, exc_traceback
             # Time for map file renames
-            if not windows:
-                if not fn.endswith(".map") and modified_maps.get(fn) == False:
-                    mover = vcmove(fn, fn + ".map")
-                    print mover
-                    if not dryrun:
-                        os.system(mover)
+            if not fn.endswith(".map") and modified_maps.get(fn) == False:
+                mover = vcmove(fn, fn + ".map")
+                print mover
+                if not dryrun:
+                    os.system(mover)
 
 # wmllint ends here
