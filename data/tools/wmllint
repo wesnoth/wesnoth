@@ -675,7 +675,10 @@ def allcfgfiles(dir):
     datafiles = []
     if not os.path.isdir(dir):
         if interesting(dir):
-            datafiles.append(dir)
+            if not os.path.exists(dir):
+                sys.stderr.write("wmllint: %s does not exist\n" % dir)
+            else:
+                datafiles.append(dir)
     else:
         for root, dirs, files in os.walk(dir):
             if vcdir in dirs:
