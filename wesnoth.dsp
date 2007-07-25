@@ -130,11 +130,11 @@ SOURCE=.\src\astarnode.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\attack_prediction.cpp
+SOURCE=.\src\astarsearch.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\basic_dialog.cpp
+SOURCE=.\src\attack_prediction.cpp
 # End Source File
 # Begin Source File
 
@@ -235,6 +235,14 @@ SOURCE=.\src\game_display.cpp
 # Begin Source File
 
 SOURCE=.\src\game_events.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\game_preferences.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\game_preferences_display.cpp
 # End Source File
 # Begin Source File
 
@@ -702,6 +710,10 @@ SOURCE=.\src\events.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\file_chooser.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\file_menu.hpp
 # End Source File
 # Begin Source File
@@ -734,7 +746,15 @@ SOURCE=.\src\game_events.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\game_preferences.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\gamestatus.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\generic_event.hpp
 # End Source File
 # Begin Source File
 
@@ -991,6 +1011,10 @@ SOURCE=.\src\team.hpp
 # Begin Source File
 
 SOURCE=.\src\terrain.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\terrain_filter.hpp
 # End Source File
 # Begin Source File
 

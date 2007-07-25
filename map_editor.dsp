@@ -96,14 +96,6 @@ LINK32=link.exe
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\src\about.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\actions.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\animated_editor.cpp
 # End Source File
 # Begin Source File
@@ -112,11 +104,7 @@ SOURCE=.\src\astarnode.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\attack_prediction.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\basic_dialog.cpp
+SOURCE=.\src\astarsearch.cpp
 # End Source File
 # Begin Source File
 
@@ -157,10 +145,6 @@ SOURCE=.\src\construct_dialog.cpp
 # Begin Source File
 
 SOURCE=.\src\cursor.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\dialogs.cpp
 # End Source File
 # Begin Source File
 
@@ -220,35 +204,11 @@ SOURCE=.\src\game_config.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\game_display.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\game_events.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\gamestatus.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\generate_report.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\generic_event.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\src\gettext.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\halo.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\help.cpp
 # End Source File
 # Begin Source File
 
@@ -320,31 +280,11 @@ SOURCE=.\src\minimap.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\mouse_events.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\network.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\network_worker.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\serialization\parser.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\pathfind.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\pathutils.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\playturn.cpp
 # End Source File
 # Begin Source File
 
@@ -369,10 +309,6 @@ SOURCE=.\src\race.cpp
 # Begin Source File
 
 SOURCE=.\src\random.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\replay.cpp
 # End Source File
 # Begin Source File
 
@@ -412,23 +348,11 @@ SOURCE=.\src\soundsource.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\statistics.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\serialization\string_utils.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\team.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\terrain.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\terrain_filter.cpp
 # End Source File
 # Begin Source File
 
@@ -444,10 +368,6 @@ SOURCE=.\src\theme.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\thread.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\serialization\tokenizer.cpp
 # End Source File
 # Begin Source File
@@ -460,39 +380,7 @@ SOURCE=.\src\tstring.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\unit.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\unit_abilities.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\unit_animation.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\unit_display.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\unit_frame.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\unit_map.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\unit_types.cpp
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\util.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\variable.cpp
 # End Source File
 # Begin Source File
 
