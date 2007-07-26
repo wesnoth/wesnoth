@@ -70,7 +70,6 @@ class bailout:
 
 def reindent(name, infp, outfp):
     "Reindent WML."
-    baseindent = "    "
     dostrip = True
     seen_wml = False
     inmacro = False

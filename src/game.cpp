@@ -466,7 +466,7 @@ bool game_controller::play_multiplayer_mode()
 		return true;
 	}
 
-	std::string era = "era_default";
+	std::string era = "era_turmoil";
 	std::string scenario = "multiplayer_Charge";
 	std::map<int,std::string> side_types, side_controllers, side_algorithms;
 	std::map<int,string_map> side_parameters;

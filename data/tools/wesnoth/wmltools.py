@@ -359,6 +359,9 @@ def resolve_unit_image(namespace, subdir, resource):
     "Construct a plausible location for given resource in specified namespace."
     return os.path.join(namespace_directory(namespace), "images/units", subdir, resource)
 
+# And this is for code that does syntax transformation
+baseindent = "    "
+
 ## Version-control hooks begin here.
 #
 # Change these if we move away from Subversion
