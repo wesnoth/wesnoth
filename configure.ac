@@ -245,6 +245,19 @@ AC_ARG_ENABLE([display-revision],
 	      [svnrev=$enableval],
 	      [svnrev=no])
 
+
+if test "x$game" = "xno"
+then
+	python=no
+	AC_MSG_WARN([*** Game build disabled, suppressing Python support.])
+fi
+
+if test "x$python" = "xno"
+then
+	python_install=no
+	AC_MSG_WARN([*** Python support disabled, suppressing installation of Python tools.])
+fi
+
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([PYTHON_INSTALL], [test x$python_install = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
