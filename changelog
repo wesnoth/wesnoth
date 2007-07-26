@@ -12,6 +12,8 @@ Version 1.2.5+svn:
      settings" on in a darker font. (patch #771 by uso)
  * misc:
    * added some extra headers for the upcomming gcc 4.3 (debian bug #417764)
+   * added a .desktop entry for the editor so that it is shown in the kde/gnome
+     menu
    * the unit name generation could with different locales call get_random() a
      different number of times. This lead to different names and traits.
      Changed to call random a fixed number of times which fixes the traits.
