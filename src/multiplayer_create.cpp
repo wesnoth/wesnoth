@@ -501,12 +501,9 @@ void create::process_event()
 		map_size_label_.set_text(map_size.str());
 
 		if(use_map_settings_.checked()) {
-			try {
-				xp_modifier_slider_.set_value(lexical_cast<int>(parameters_.scenario_data["experience_modifier"]));
-			} catch(bad_lexical_cast&) {
-				xp_modifier_slider_.set_value(preferences::xp_modifier());
-			}
-			random_start_time_.set_check(::gamestatus::is_start_ToD(parameters_.scenario_data["random_start_time"]));
+			xp_modifier_slider_.set_value(lexical_cast_default<int>(
+				parameters_.scenario_data["experience_modifier"],
+				preferences::xp_modifier()));
 		}
 	}
 }
