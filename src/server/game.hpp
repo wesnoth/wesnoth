@@ -104,6 +104,8 @@ public:
 
 	size_t nplayers() const { return players_.size(); }
 
+	size_t nobservers() const { return observers_.size(); }
+
 	const std::string& termination_reason() const {
 		static const std::string aborted = "aborted";
 		return termination_.empty() ? aborted : termination_;
