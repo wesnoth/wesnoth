@@ -62,6 +62,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOUR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
+	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
@@ -488,12 +489,16 @@ void create::process_event()
 		}
 
 		std::stringstream players;
+		std::stringstream map_size;
 		if(map.get() != NULL) {
 			players << _("Players: ") << nsides;
+			map_size << _("Map size: ") << map.get()->x() << "x" << map.get()->y();
 		} else {
 			players << _("Error");
+			map_size << "";
 		}
 		num_players_label_.set_text(players.str());
+		map_size_label_.set_text(map_size.str());
 
 		if(use_map_settings_.checked()) {
 			try {
@@ -531,6 +536,7 @@ void create::hide_children(bool hide)
 
 	name_entry_label_.hide(hide);
 	num_players_label_.hide(hide);
+	map_size_label_.hide(hide);
 	era_label_.hide(hide);
 	map_label_.hide(hide);
 
@@ -610,6 +616,9 @@ void create::layout_children(const SDL_Rect& rect)
 
 	num_players_label_.set_location(xpos, ypos);
 	ypos += num_players_label_.height() + border_size;
+
+	map_size_label_.set_location(xpos, ypos);
+	ypos += map_size_label_.height() + 2 * border_size;
 
 	regenerate_map_.set_location(xpos + era_label_.width() + border_size, ypos);
 	ypos += regenerate_map_.height() + border_size;
@@ -747,6 +756,9 @@ void create::layout_children(const SDL_Rect& rect)
 	// First column: map list, era, generator
 	num_players_label_.set_location(xpos, ypos);
 	ypos += num_players_label_.height() + border_size;
+	
+	map_size_label_.set_location(xpos, ypos);
+	ypos += map_size_label_.height() + border_size;
 	
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;

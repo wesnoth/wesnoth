@@ -114,6 +114,7 @@ private:
 
 	gui::label name_entry_label_;
 	gui::label num_players_label_;
+	gui::label map_size_label_;
 	gui::label era_label_;
 	gui::label map_label_;
 
