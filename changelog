@@ -11,6 +11,8 @@ Version 1.3.6+svn:
    * unit descriptions are no longer evaluated for the recruitment checksum
      and thus avoiding an OOS error when different languages are used. 
      The change is incompatible with older trunk versions fixes (bug #9472).
+   * Show the (possibly bogus) GPV and fog settings of games with "Use map
+     settings" on in a darker font. (patch #771 by uso)
  * user interface:
    * Enable "Save Game" and "View Chat Log" menu entries in replay mode.
  * WML engine:

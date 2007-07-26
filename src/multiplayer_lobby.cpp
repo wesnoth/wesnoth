@@ -144,7 +144,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	xpos += gold_icon->w + h_padding_;
 
 	// draw gold text
-	const surface gold_text(font::get_rendered_text(game.gold, font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	const surface gold_text(font::get_rendered_text(game.gold, font::SIZE_NORMAL, game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
 	ypos -= abs(gold_icon->h - gold_text->h) / 2;
 	video().blit_surface(xpos, ypos, gold_text);
 
@@ -189,9 +189,16 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	const surface status_text(font::get_rendered_text(game.status, font::SIZE_NORMAL, font_color));
 
 	const int status_text_width = status_text ? status_text->w : 0;
-	const surface vision_text(font::get_rendered_text(font::make_text_ellipsis(game.vision, font::SIZE_NORMAL, maximum<int>((item_rect.x + item_rect.w - margin_ - status_text_width - 2 * h_padding_) - xpos, 0)),font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	const surface vision_text(font::get_rendered_text(font::make_text_ellipsis(game.vision, font::SIZE_NORMAL, maximum<int>((item_rect.x + item_rect.w - margin_ - status_text_width - 2 * h_padding_) - xpos, 0)),font::SIZE_NORMAL, game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
 	// draw vision text
 	video().blit_surface(xpos, ypos, vision_text);
+
+	// draw map settings text
+	if (game.use_map_settings) {
+		const surface map_settings_text(font::get_rendered_text(_("Use map settings"), font::SIZE_NORMAL, font::NORMAL_COLOUR));
+		xpos += vision_text->w + 4 * h_padding_;
+		video().blit_surface(xpos, ypos, map_settings_text);
+	}
 
 	// draw status text
 	xpos = item_rect.x + item_rect.w - margin_ - status_text_width;
@@ -407,31 +414,29 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		}
 
 		if((**game)["mp_use_map_settings"] == "yes") {
-			games_.back().gold = _("Use map settings");
-			games_.back().vision = _("Use map settings");
 			games_.back().use_map_settings = true;
 		} else {
 			games_.back().use_map_settings = false;
-			games_.back().gold = (**game)["mp_village_gold"];
-			if((**game)["mp_fog"] == "yes") {
-				games_.back().vision = _("Fog");
-				games_.back().fog = true;
-				if((**game)["mp_shroud"] == "yes") {
-					games_.back().vision += "/";
-					games_.back().vision += _("Shroud");
-					games_.back().shroud = true;
-				} else {
-					games_.back().shroud = false;
-				}
-			} else if((**game)["mp_shroud"] == "yes") {
-				games_.back().vision = _("Shroud");
-				games_.back().fog = false;
+		}
+		games_.back().gold = (**game)["mp_village_gold"];
+		if((**game)["mp_fog"] == "yes") {
+			games_.back().vision = _("Fog");
+			games_.back().fog = true;
+			if((**game)["mp_shroud"] == "yes") {
+				games_.back().vision += "/";
+				games_.back().vision += _("Shroud");
 				games_.back().shroud = true;
 			} else {
-				games_.back().vision = _("none");
-				games_.back().fog = false;
 				games_.back().shroud = false;
 			}
+		} else if((**game)["mp_shroud"] == "yes") {
+			games_.back().vision = _("Shroud");
+			games_.back().fog = false;
+			games_.back().shroud = true;
+		} else {
+			games_.back().vision = _("none");
+			games_.back().fog = false;
+			games_.back().shroud = false;
 		}
 		if((**game)["mp_countdown"] == "yes" ) {
 			games_.back().time_limit = (**game)["mp_countdown_init_time"] + " / +" + (**game)["mp_countdown_turn_bonus"] + " " + (**game)["mp_countdown_action_bonus"];
