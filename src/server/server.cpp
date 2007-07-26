@@ -251,8 +251,9 @@ void server::dump_stats()
 
 	std::cout <<
 		"Statistics\n"
-		"\tnum_players = " << players_.size() << "\n"
-		"\tlobby_players = " << lobby_players_.nplayers() << "\n"
+		"\tnumber_of_games = " << games_.size() << "\n"
+		"\tnumber_of_players = " << players_.size() << "\n"
+		"\tlobby_players = " << lobby_players_.nobservers() << "\n"
 		"\tstart_interval = " << old_stats << "\n"
 		"\tend_interval = " << last_stats_ << std::endl;
 }
