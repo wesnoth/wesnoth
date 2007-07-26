@@ -460,7 +460,7 @@ def hack_syntax(filename, lines):
     # Ensure that every attack has a translatable description."
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
-            return modcount
+            break
         elif "[attack]" in lines[i]:
             j = i;
             have_description = False
@@ -496,7 +496,7 @@ def hack_syntax(filename, lines):
     need_image = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
-            return modcount
+            break
         precomment = lines[i].split("#")[0]
         if "speaker=narrator" in precomment:
             need_image = True
@@ -511,6 +511,63 @@ def hack_syntax(filename, lines):
                 lines.insert(i, leader + "image=wesnoth-icon.png\n")
                 modcount += 1        
             need_image = False
+    # Boucman's transformation of animation syntax
+    if future:
+        animations = []
+        attackname = None
+        for i in range(len(lines)):
+            if "no-syntax-rewrite" in lines[i]:
+                break
+            elif "[female]" in lines[i]:
+                in_female = True
+            elif "[/female]" in lines[i]:
+                in_female = False
+            elif "[unit]" in lines[i]:
+                in_attack = in_animation = in_female = False
+                female_attack_index = -1
+                male_attack_start = len(animations)
+            elif "[attack]" in lines[i]:
+                in_attack = True;
+                attackname = None
+                if in_female:
+                    female_attack_index += 1
+            elif "[animation]" in lines[i] and in_attack:
+                print '"%s", line %d: [animation] within [attack]'%(filename, i+1)
+                # This weird piece of code is because attacks for female
+                # variants don't have names.  Instead, they're supposed
+                # to pick up the name of the corresponding male attack,
+                # where correspondence is by order of declaration.  The
+                # male_attack_start variable copes with the possibility
+                # of multiple units per file.
+                if attackname == None and in_female:
+                    attackname = animations[male_attack_start + female_attack_index][0]
+                if not attackname:
+                    print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
+                    
+                animations.append([attackname, i, i])
+                in_animation = True
+            elif "[/animation]" in lines[i] and in_attack:
+                in_animation = False
+            elif "[/attack]" in lines[i]:
+                inattack = False;
+                attackname = None
+            # Only pick up the *first* name field in an attack block;
+            # by convention, it's right after the opening [attack] tag
+            elif in_attack and not in_animation and not attackname:
+                #print filename + ":" + `i+1` + ";" + `lines[i]` 
+                fields = lines[i].strip().split('#')
+                syntactic = fields[0]
+                comment = ""
+                if len(fields) > 1:
+                    comment = fields[1]
+                if syntactic.strip().startswith("name"):
+                    attackname = syntactic.split("=")[1].strip()
+            elif in_attack and in_animation:
+                animations[-1][2] += 1
+        # All animation ranges have been gathered
+        if animations:
+            print filename + ":", animations
+
     return modcount
 
 # Generic machinery starts here
