@@ -68,7 +68,7 @@ void play_sound(const std::string& files, channel_group group = SOUND_FX);
 void play_sound_positioned(const std::string &files, int id, unsigned int distance);
 
 // Play sound, or random one of comma-separated sounds in bell channel
-void play_bell(const std::string& files);
+void play_bell(const std::string& files, int loop_ticks=0);
 
 // Play user-interface sound, or random one of comma-separated sounds.
 void play_UI_sound(const std::string& files);

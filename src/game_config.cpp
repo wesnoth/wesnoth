@@ -85,6 +85,7 @@ namespace game_config
 
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
+		timer_bell = "timer.wav",
 		receive_message = "receive.wav",
 		user_arrive = "arrive.wav",
 		user_leave = "leave.wav";

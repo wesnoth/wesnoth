@@ -41,7 +41,7 @@ std::vector<Mix_Chunk*> channel_chunks;
 std::vector<int> channel_ids;
 
 static bool play_sound_internal(const std::string& files, channel_group group, bool sound_on,
-						 unsigned int distance=0, int id=-1);
+						 unsigned int distance=0, int id=-1, int loop_ticks=0);
 }
 
 namespace {
@@ -647,7 +647,7 @@ void play_sound_positioned(const std::string &files, int id, unsigned int distan
 	play_sound_internal(files, SOUND_SOURCES, preferences::sound_on(), distance, id);
 }
 
-bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int distance, int id)
+bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int distance, int id, int loop_ticks)
 {
 	if(files.empty() || distance >= DISTANCE_SILENT || !sound_on || !mix_ok) {
 		return false;
@@ -709,7 +709,15 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 		it = sound_cache.begin();
 	}
 
-	const int res = Mix_PlayChannel(channel, it->get_data(), 0);
+	int res;
+	if(loop_ticks > 0) {
+		res = Mix_PlayChannel(channel, it->get_data(), -1);
+		if(res >= 0) {
+			Mix_ExpireChannel(channel, loop_ticks);
+		}
+	} else {
+		res = Mix_PlayChannel(channel, it->get_data(), 0);
+	}
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
 		//still keep it in the sound cache, in case we want to try again later
@@ -727,9 +735,9 @@ void play_sound(const std::string& files, channel_group group)
 }
 
 // Play bell on separate volume than sound
-void play_bell(const std::string& files)
+void play_bell(const std::string& files, int loop_ticks)
 {
-	play_sound_internal(files, SOUND_BELL, preferences::turn_bell());
+	play_sound_internal(files, SOUND_BELL, preferences::turn_bell(),0,-1,loop_ticks);
 }
 
 // Play UI sounds on separate volume than soundfx

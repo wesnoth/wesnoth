@@ -38,7 +38,6 @@ playmp_controller::playmp_controller(const config& level, const game_data& gamei
 									 bool skip_replay)
 	: playsingle_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay)
 {
-	beep_warning_time_ = 10000; //Starts beeping each second when time is less than this (millisec)
 	turn_data_ = NULL;
 }
 
@@ -63,6 +62,7 @@ void playmp_controller::shout(){
 }
 
 void playmp_controller::play_side(const unsigned int team_index, bool save){
+	beep_warning_time_ = 10000; //Starts beeping each second when time is less than this (millisec)
 	do {
 		player_type_changed_ = false;
 		end_turn_ = false;
@@ -93,6 +93,9 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 				}
 			}
 			LOG_NG << "human finished turn...\n";
+			if(beep_warning_time_ < 10000) {
+				sound::stop_bell();
+			}
 		} else if(current_team().is_ai()) {
 			play_ai_turn();
 		} else if(current_team().is_network()) {
@@ -143,20 +146,21 @@ void playmp_controller::play_human_turn(){
 			const int ticks = SDL_GetTicks();
 			int new_time = current_team().countdown_time()-maximum<int>(1,(ticks - cur_ticks));
 			if (new_time > 0 ){
-				current_team().set_countdown_time(current_team().countdown_time()-maximum<int>(1,(ticks - cur_ticks)));
+				current_team().set_countdown_time(new_time);
 				cur_ticks = ticks;
-				if ( current_team().countdown_time() <= beep_warning_time_){
-					beep_warning_time_ = beep_warning_time_ - 1000;
+				if (current_team().countdown_time() <= beep_warning_time_){
+					beep_warning_time_ = -1;
 					const bool bell_on = preferences::turn_bell();
 					if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
 						preferences::set_turn_bell(true);
-						sound::play_bell(game_config::sounds::turn_bell);
+						sound::play_bell(game_config::sounds::timer_bell, new_time);
 						preferences::set_turn_bell(bell_on);
 					}
 				}
 			} else {
 				// Clock time ended
 				// If no turn bonus or action bonus -> defeat
+				beep_warning_time_ = 10000;
 				const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);
 				if ( lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0) == 0
 					&& (action_increment == 0 || current_team().action_bonus_count() == 0)) {
