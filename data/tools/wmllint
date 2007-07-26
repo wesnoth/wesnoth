@@ -447,8 +447,6 @@ def validate_stack(stack, filename, lineno):
     "Check for deprecated WML syntax."
     if verbose >= 2:
         print '"%s", line %d: %s' % (filename, lineno+1, stack)
-    if future and stack[-1] == 'animation' and 'attack' in stack[:-1]:
-        print >>sys.stderr, '"%s", line %d: [attack] within [animation]' % (filename, lineno)
 
 def validate_on_pop(tagstack, closer, file, lineno):
     pass
@@ -513,8 +511,19 @@ def hack_syntax(filename, lines):
             need_image = False
     # Boucman's transformation of animation syntax
     if future:
+        class anim_frame:
+            def __init__(self, attackline, attackname, lineno):
+                self.attackstart = attackline
+                self.name = attackname
+                self.animstart = lineno
+                self.animend = None
+                self.attackend = None
+            def __repr__(self):
+                return `self.__dict__`
+        in_attack = in_animation = in_female = False
         animations = []
         attackname = None
+        attackline = None
         for i in range(len(lines)):
             if "no-syntax-rewrite" in lines[i]:
                 break
@@ -529,10 +538,13 @@ def hack_syntax(filename, lines):
             elif "[attack]" in lines[i]:
                 in_attack = True;
                 attackname = None
+                attackline = i
                 if in_female:
                     female_attack_index += 1
             elif "[animation]" in lines[i] and in_attack:
-                print '"%s", line %d: [animation] within [attack]'%(filename, i+1)
+                #if verbose:
+                #    print '"%s", line %d: [animation] within [attack]' \
+                #          % (filename, i+1)
                 # This weird piece of code is because attacks for female
                 # variants don't have names.  Instead, they're supposed
                 # to pick up the name of the corresponding male attack,
@@ -540,19 +552,34 @@ def hack_syntax(filename, lines):
                 # male_attack_start variable copes with the possibility
                 # of multiple units per file.
                 if attackname == None and in_female:
-                    attackname = animations[male_attack_start + female_attack_index][0]
+                    attackname = animations[male_attack_start + female_attack_index].name
                 if not attackname:
                     print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
                     
-                animations.append([attackname, i, i])
+                animations.append(anim_frame(attackline, attackname, i))
                 in_animation = True
             elif "[/animation]" in lines[i] and in_attack:
                 in_animation = False
+                if animations and animations[-1].animstart != None and animations[-1].animend == None:
+                    animations[-1].animend = i
+                else:
+                    print '"%s", line %d: [animation] ending here may be ill-formed'%(filename, i+1)
             elif "[/attack]" in lines[i]:
                 inattack = False;
                 attackname = None
+                if animations and (animations[-1].attackstart == None or animations[-1].attackend != None):
+                    print '"%s", line %d: [attack] ending here may be ill-formed'%(filename, i+1)
+                elif animations:
+                    # This loop is needed because a single attack tag may
+                    # enclose both hit and miss animations.
+                    j = len(animations)-1
+                    while True:
+                        animations[j].attackend = i
+                        j -= 1
+                        if j < 0 or animations[j].attackend != None:
+                            break
             # Only pick up the *first* name field in an attack block;
-            # by convention, it's right after the opening [attack] tag
+            # by convention, it will be right after the opening [attack] tag
             elif in_attack and not in_animation and not attackname:
                 #print filename + ":" + `i+1` + ";" + `lines[i]` 
                 fields = lines[i].strip().split('#')
@@ -562,9 +589,12 @@ def hack_syntax(filename, lines):
                     comment = fields[1]
                 if syntactic.strip().startswith("name"):
                     attackname = syntactic.split("=")[1].strip()
-            elif in_attack and in_animation:
-                animations[-1][2] += 1
-        # All animation ranges have been gathered
+        # All animation ranges have been gathered,  We have a list of tuples
+        # of the form [attack_startline, attack_name, animation_startline,
+        # animation_endline, attack_endline].  Reverse it because we're
+        # going to process them back to front to avoid invalidating with the
+        # line numbers.
+        #animations.reverse()
         if animations:
             print filename + ":", animations
 
