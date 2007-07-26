@@ -4,12 +4,15 @@ Version 1.2.5+svn:
  * language and i18n:
    * updated translations: British English, Danish, Finnish, Spanish, Swedish
    * updated DejaVuSans font to version 2.18
+ * user interface:
+   * Enable "Save Game" and "View Chat Log" menu entries in replay mode.
+   * Show the (possibly bogus) GPV and fog settings of games with "Use map
+     settings" on in a darker font. (patch #771 by uso)
  * misc:
    * added some extra headers for the upcomming gcc 4.3 (debian bug #417764)
    * the unit name generation could with different locales call get_random() a
      different number of times. This lead to different names and traits.
      Changed to call random a fixed number of times which fixes the traits.
-   * Enable "Save Game" and "View Chat Log" menu entries in replay mode
 
 Version 1.2.5:
  * campaigns:
