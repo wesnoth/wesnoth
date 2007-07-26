@@ -17,7 +17,6 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "log.hpp"
-#include "playmp_controller.hpp"
 #include "preferences_display.hpp"
 #include "sound.hpp"
 #include "video.hpp"
@@ -273,7 +272,6 @@ void pump()
 	//used to keep track of double click events
 	static int last_mouse_down = -1;
 	static int last_click_x = -1, last_click_y = -1;
-	int current_ticks = 0;
 
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
@@ -331,7 +329,7 @@ void pump()
 					static const int DoubleClickTime = 500;
 
 					static const int DoubleClickMaxMove = 3;
-					current_ticks = ::SDL_GetTicks();
+					const int current_ticks = ::SDL_GetTicks();
 					if(last_mouse_down >= 0 && current_ticks - last_mouse_down < DoubleClickTime &&
 					   abs(event.button.x - last_click_x) < DoubleClickMaxMove &&
 					   abs(event.button.y - last_click_y) < DoubleClickMaxMove) {
@@ -382,21 +380,8 @@ void pump()
 		resize_dimensions.second = 0;
 	}
 
-	if(preferences::music_on()) {
+	if (preferences::music_on())
 		sound::think_about_music();
-	}
-
-	if(playmp_controller::counting_down()) {
-		if(current_ticks) {
-			playmp_controller::think_about_countdown(current_ticks);
-		} else {
-			const int timer_refresh_rate = 50;
-			static int timer_refresh = 1;
-			if(++timer_refresh % timer_refresh_rate == 0) {
-				playmp_controller::think_about_countdown(::SDL_GetTicks());
-			}
-		}
-	}
 }
 
 void raise_process_event()

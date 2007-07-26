@@ -22,7 +22,6 @@
 #define LOG_NG LOG_STREAM(info, engine)
 
 unsigned int playmp_controller::replay_last_turn_ = 0;
-int playmp_controller::beep_warning_time_ = 0;
 
 LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_config,
 		config const* level, CVideo& video, game_state& state_of_game,
@@ -40,14 +39,6 @@ playmp_controller::playmp_controller(const config& level, const game_data& gamei
 	: playsingle_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay)
 {
 	turn_data_ = NULL;
-}
-
-playmp_controller::~playmp_controller() {
-	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
-		sound::stop_bell();
-	}
-	beep_warning_time_ = 0;
 }
 
 void playmp_controller::set_replay_last_turn(unsigned int turn){
@@ -71,6 +62,7 @@ void playmp_controller::shout(){
 }
 
 void playmp_controller::play_side(const unsigned int team_index, bool save){
+	beep_warning_time_ = 10000; //Starts beeping each second when time is less than this (millisec)
 	do {
 		player_type_changed_ = false;
 		end_turn_ = false;
@@ -101,6 +93,9 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 				}
 			}
 			LOG_NG << "human finished turn...\n";
+			if(beep_warning_time_ < 10000) {
+				sound::stop_bell();
+			}
 		} else if(current_team().is_ai()) {
 			play_ai_turn();
 		} else if(current_team().is_network()) {
@@ -116,22 +111,6 @@ void playmp_controller::before_human_turn(bool save){
 	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
 		*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
 	turn_data_->replay_error().attach_handler(this);
-}
-
-bool playmp_controller::counting_down() {
-	return beep_warning_time_ > 0;
-}
-
-void playmp_controller::think_about_countdown(int ticks){
-	if(beep_warning_time_ > 0 && ticks >= beep_warning_time_){
-		const bool bell_on = preferences::turn_bell();
-		if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
-			preferences::set_turn_bell(true);
-			sound::play_bell(game_config::sounds::timer_bell, 10000-(ticks-beep_warning_time_));
-			beep_warning_time_ = -1;
-			preferences::set_turn_bell(bell_on);
-		}
-	}
 }
 
 void playmp_controller::play_human_turn(){
@@ -169,13 +148,19 @@ void playmp_controller::play_human_turn(){
 			if (new_time > 0 ){
 				current_team().set_countdown_time(new_time);
 				cur_ticks = ticks;
-				if(current_team().is_human() && !beep_warning_time_) {
-					beep_warning_time_ = new_time - 10000 + ticks;
+				if (current_team().countdown_time() <= beep_warning_time_){
+					beep_warning_time_ = -1;
+					const bool bell_on = preferences::turn_bell();
+					if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
+						preferences::set_turn_bell(true);
+						sound::play_bell(game_config::sounds::timer_bell, new_time);
+						preferences::set_turn_bell(bell_on);
+					}
 				}
-				think_about_countdown(ticks);
 			} else {
 				// Clock time ended
 				// If no turn bonus or action bonus -> defeat
+				beep_warning_time_ = 10000;
 				const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);
 				if ( lexical_cast_default<int>(level_["mp_countdown_turn_bonus"],0) == 0
 					&& (action_increment == 0 || current_team().action_bonus_count() == 0)) {
@@ -231,16 +216,11 @@ void playmp_controller::after_human_turn(){
 
 void playmp_controller::finish_side_turn(){
 	play_controller::finish_side_turn();
-
 	//just in case due to an exception turn_data_ has not been deleted in after_human_turn
-	delete turn_data_;
-	turn_data_ = NULL;
-
-	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
-		sound::stop_bell();
+	if (turn_data_ != NULL){
+		delete turn_data_;
+		turn_data_ = NULL;
 	}
-	beep_warning_time_ = 0;
 }
 
 void playmp_controller::play_network_turn(){
