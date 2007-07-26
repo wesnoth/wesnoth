@@ -453,6 +453,19 @@ def validate_on_pop(tagstack, closer, file, lineno):
 
 # Syntax transformations
 
+leading_ws = re.compile(r"^\s*")
+
+def leader(s):
+    "Return a copy of the leading whitespace in the argument."
+    return leading_ws.match(s).group(0)
+
+def outdent(s):
+    "Outdent line by one level."
+    if s.startswith(baseindent):
+        return s[len(baseindent):]
+    else:
+        return s
+
 def hack_syntax(filename, lines):
     modcount = 0
     # Ensure that every attack has a translatable description."
@@ -478,11 +491,10 @@ def hack_syntax(filename, lines):
                         description = syntactic.split("=")[1].strip()
                         if not description.startswith('"'):
                             description = '"' + description + '"\n'
-                        leader = syntactic[:syntactic.find("name")]
                         # Skip the insertion if this is a dummy declaration
                         # or one modifying an attack inherited from a base unit.
                         if "no-icon" not in comment:
-                            new_line = leader + "description=_"+description
+                            new_line = leader(syntactic) + "description=_"+description
                             if verbose:
                                 print '"%s", line %d: inserting %s' % (filename, i+1, `new_line`)
                             lines.insert(j+1, new_line)
@@ -503,10 +515,9 @@ def hack_syntax(filename, lines):
         elif '[/message]' in precomment:
             if need_image:
                 # This line presumes the code has been through wmlindent
-                leader = lines[i][:lines[i].find("[/")] + "    "
                 if verbose:
                     print 'wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
-                lines.insert(i, leader + "image=wesnoth-icon.png\n")
+                lines.insert(i, leader(precomment) + baeindent + "image=wesnoth-icon.png\n")
                 modcount += 1        
             need_image = False
     # Boucman's transformation of animation syntax
@@ -591,14 +602,36 @@ def hack_syntax(filename, lines):
                     attackname = syntactic.split("=")[1].strip()
         # All animation ranges have been gathered,  We have a list of tuples
         # of the form [attack_startline, attack_name, animation_startline,
-        # animation_endline, attack_endline].  Reverse it because we're
-        # going to process them back to front to avoid invalidating with the
-        # line numbers.
-        #animations.reverse()
-        if animations:
-            print filename + ":", animations
-
-    return modcount
+        # animation_endline, attack_endline].  Reverse it, because we're
+        # going to process them back to front to avoid invalidating the
+        # already-collected line numbers.
+        animations.reverse()
+        for aframe in animations:
+            if verbose:
+                print '"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' % (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1)
+            # Make a copy of the animation block, change its enclosing tags,
+            # outdent it, and add the needed filter clause.
+            animation = lines[aframe.animstart:aframe.animend+1]
+            animation[0] = animation[0].replace("[animation]", "[attack_anim]")
+            animation[-1] = animation[-1].replace("[/animation]","[/attack_anim]")
+            for i in range(len(animation)):
+                animation[i] = outdent(animation[i])
+            indent = leader(animation[1])
+            animation.insert(1, indent + "[/attack_filter]\n")
+            animation.insert(1, indent + baseindent + "name="+aframe.name+"\n")
+            animation.insert(1, indent + "[attack_filter]\n")
+            # Delete it from its original location
+            lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
+            # Insert it before the enclosing attack
+            lines = lines[:aframe.attackstart] + animation + lines[aframe.attackstart:]
+            # Garbage-collect any empty [attack] scope left behind;
+            # this is likely to happen with female-variant units.
+            newatk = aframe.attackstart + len(animation)
+            if "[attack]" in lines[newatk] and "[/attack]" in lines[newatk+1]:
+                del lines[newatk]
+                del lines[newatk]
+            modcount += 1
+    return (lines, modcount)
 
 # Generic machinery starts here
 
@@ -746,7 +779,7 @@ def translator(filename, mapxforms, textxform):
     if "maps" in filename:
         modified_maps[filename] = modified
     # OK, now perform WML rewrites
-    hacked = hack_syntax(filename, newdata)
+    (newdata, hacked) = hack_syntax(filename, newdata)
     # Run everything together
     filetext = "".join(newdata)
     # WML syntax changed in 1.3.5.  The transformation cannot
