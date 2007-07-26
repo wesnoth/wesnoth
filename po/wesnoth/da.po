@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-25 16:03+0200\n"
-"PO-Revision-Date: 2007-07-06 13:44+0200\n"
+"PO-Revision-Date: 2007-07-25 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -84,12 +84,11 @@ msgstr "Forfatter"
 
 #: data/campaigns/Liberty/_main.cfg:28
 msgid "Prose-doctoring and preparation for mainline"
-msgstr ""
+msgstr "Tekstprøvning og forberedelse til hovedspillet"
 
 #: data/campaigns/Liberty/_main.cfg:32
-#, fuzzy
 msgid "Unit art"
-msgstr "Enhedsliste"
+msgstr "Enhedstype"
 
 #: data/campaigns/Liberty/_main.cfg:36
 #: data/campaigns/Northern_Rebirth/_main.cfg:41
@@ -98,11 +97,11 @@ msgstr "Oversættere"
 
 #: data/campaigns/Liberty/_main.cfg:41
 msgid "Map art"
-msgstr ""
+msgstr "Kortkunst"
 
 #: data/campaigns/Liberty/_main.cfg:46
 msgid "Portrait Art"
-msgstr ""
+msgstr "Portrætkunst"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:33
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
@@ -232,9 +231,8 @@ msgid "French Translation"
 msgstr "Fransk oversættelse"
 
 #: data/core/about.cfg:511
-#, fuzzy
 msgid "Galician Translation"
-msgstr "Valencisk oversættelse"
+msgstr "Galician oversættelse"
 
 #: data/core/about.cfg:518
 msgid "German Translation"
@@ -505,7 +503,7 @@ msgstr ""
 
 #: data/core/help.cfg:101
 msgid "Recruiting and Recalling"
-msgstr "Rekrutering og Tilbagekaldelse"
+msgstr "Rekruttering og Tilbagekaldelse"
 
 #: data/core/help.cfg:102
 msgid ""
@@ -519,15 +517,15 @@ msgid ""
 "units available for recruitment, along with their gold cost. Click on a unit "
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
-"Hver side begynder med én leder i deres tårn. I starten af ethvert slag - og "
-"også under det - skal du rekrutere <ref>dst=units text=enheder</ref> til din "
-"hær. For at rekrutere skal din leder (f.eks. Konrad i kampagnen: "
-"Tronarvingen) stå i et tårn på en <ref>dst=terrain text=borg</ref>. Du kan "
-"så rekrutere ved enten at vælge 'Rekrutér' i hovedmenuen eller ved at "
-"højreklikke på et felt i borgen og vælge 'Rekrutér' i den menu. Dette "
-"fremkalder rekruteringsvinduet, hvor du kan se hvilke enheder der kan "
-"rekruteres og hvor meget de koster. Klik på enhederne for at få vist deres "
-"egenskaber og tryk 'Rekrutér'-knappen for at rekrutere dem."
+"Hver side begynder med en leder i deres tårn. I starten af ethvert slag - og "
+"også under det - skal du rekruttere <ref>dst=units text=enheder</ref> til "
+"din hær. For at rekruttere skal din leder (for eksempel Konrad i kampagnen: "
+"Tronarvingen) stå i et tårn på en <ref>dst=terrain_castle text=Borg</ref>. "
+"Du kan så rekruttere ved enten at vælge rekrutter' i hovedmenuen eller ved "
+"at højreklikke på et felt i borgen og vælge rekrutter i den menu. Dette "
+"fremkalder rekrutteringsvinduet, hvor du kan se hvilke enheder der kan "
+"rekrutteres og hvor meget de koster. Klik på enhederne for at få vist deres "
+"egenskaber og tryk på Rekrutterknappen for at rekruttere dem."
 
 #: data/core/help.cfg:104
 msgid ""
@@ -540,10 +538,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hvis du højreklikkede på et felt i en borg og valgte 'Rekrutér', så vil den "
+"Hvis du højreklikkede på et felt i en borg og valgte rekrutter, så vil den "
 "nye enhed blive sat ind på det felt ellers bliver den sat ind på et felt i "
-"nærheden af tårnet. Du kan ikke rekrutere flere enheder end der er plads til "
-"på din borg og heller ikke bruge mere guld end du har på rekruteringer."
+"nærheden af tårnet. Du kan ikke rekruttere flere enheder end der er plads "
+"til på din borg og heller ikke bruge mere guld end du har på rekrutteringer."
 
 #: data/core/help.cfg:106
 msgid ""
@@ -554,7 +552,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rekruterede enheder får to tilfældige <ref>dst=traits text=karaktertræk</"
+"Rekrutterede enheder får to tilfældige <ref>dst=traits text=karaktertræk</"
 "ref>, som påvirker deres egenskaber."
 
 #: data/core/help.cfg:108
@@ -582,7 +580,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Enheder koster ikke bare penge når de rekruteres eller tilbagekaldes - de "
+"Enheder koster ikke bare penge når de rekrutteres eller tilbagekaldes - de "
 "skal også vedligeholdes. Se <ref>dst=income_and_upkeep text='Indkomst og "
 "Vedligeholdelse'</ref> for yderligere information."
 
@@ -634,8 +632,9 @@ msgid ""
 "points, and gains experience by fighting enemies."
 msgstr ""
 "Hver enhed har et bestemt antal liv (L). Kommer antallet af liv ned under 1 "
-"dør enheden. Hver enhed har også erfaringspoints (EP). En nyrekruteret enhed "
-"starter med 0 erfaringspoints, men kan optjene dem ved at bekæmpe fjender."
+"dør enheden. Hver enhed har også erfaringspoints (EP). En nyrekrutteret "
+"enhed starter med 0 erfaringspoints, men kan optjene dem ved at bekæmpe "
+"fjender."
 
 #: data/core/help.cfg:131
 msgid ""
@@ -714,7 +713,7 @@ msgstr ""
 "elver kun 1 bevægelsespoint, de fleste mennesker og orker anvender 2, mens "
 "ryttere anvender 3. Du kan se hvor mange bevægelsespoint en enhed anvender "
 "ved at højreklikke på enheden, vælge enhedsbeskrivelse og herefter kigge på "
-"<italic>text='Terrain Modifiers'</italic>"
+"<italic>text='Terrain Modifiers'</italic>."
 
 #: data/core/help.cfg:142
 msgid ""
@@ -1195,7 +1194,7 @@ msgstr ""
 "\n"
 "Helbredende enheder: Enheder med evnen <ref>dst=ability_heals text=Heals</"
 "ref>, kan helbrede alle allierede nærvedstående enheder. de yder 4 eller 8 "
-"liv per runde, eller forhindrer gift i at gøre skade på en enhed. "
+"liv per runde, eller forhindrer gift i at gøre skade på en enhed."
 
 #: data/core/help.cfg:229
 msgid ""
@@ -1235,7 +1234,7 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
-"I Wesnoth er det ikke nok bare at rekrutere enheder og kæmpe. Du skal også "
+"I Wesnoth er det ikke nok bare at rekruttere enheder og kæmpe. Du skal også "
 "holde øje med dit guld, specielt i kampagner, hvor du kan få overført ekstra "
 "guld fra et scenarie til et andet. Der er to aspekter af dette: Indkomst og "
 "Vedligeholdelse."
@@ -1403,10 +1402,9 @@ msgid "Quick"
 msgstr "Hurtig"
 
 #: data/core/help.cfg:286
-#, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Hurtige enheder har 1 ekstra bevægelsespoint, men 10% mindre liv end normalt."
+"Hurtige enheder har 1 ekstra bevægelsespoint, men 5 % mindre liv end normalt."
 
 #: data/core/help.cfg:288
 msgid ""
@@ -1433,9 +1431,8 @@ msgid "Resilient"
 msgstr "Ukuelig"
 
 #: data/core/help.cfg:294
-#, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Ukuelige enheder har 10 % +3 mere liv end normalt."
+msgstr "Ukuelige enheder har 4 liv og 1 liv ekstra per niveau end normalt."
 
 #: data/core/help.cfg:296
 msgid ""
@@ -1557,18 +1554,16 @@ msgstr ""
 "fjender som bruger gift i forbindelse med deres angreb."
 
 #: data/core/help.cfg:331
-#, fuzzy
 msgid "trait^Mechanical"
 msgstr "Mekaniske"
 
 #: data/core/help.cfg:332
-#, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Udøde enheder er immune overfor gift, bloddræning og pest virker heller ikke "
-"på dem."
+"Mekaniske enheder er immune overfor gift, bloddræning og pest virker heller "
+"ikke på dem."
 
 #: data/core/help.cfg:334
 msgid ""
@@ -1578,6 +1573,11 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"Mekaniske enheder har normalt »Mekaniske« som deres eneste karaktertræk. Da "
+"mekaniske enheder normalt ikke har liv har bloddræning, gift og pest ingen "
+"effekt på dem."
 
 #: data/core/help.cfg:339
 msgid "Dextrous"
@@ -1624,6 +1624,10 @@ msgid ""
 "Healthy units have 2 more HP than usual and rest heal 2 additional HP after "
 "each turn they did not fight."
 msgstr ""
+"\n"
+"\n"
+"Sunde enheder har 2 flere liv end normalt og får 2 ekstra liv efter hver "
+"runde de ikke kæmper."
 
 # kunne også være græs 
 #: data/core/help.cfg:355
@@ -2169,14 +2173,13 @@ msgid "Impassable Mountain"
 msgstr "Ufremkommelig bjerg"
 
 #: data/core/help.cfg:596
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
-"Ufremkommelige bjerge er så høje og stejle at de konstant er omgivet af "
-"skyer. At krydse sådanne bjerge er så godt som umuligt. Selv ikke flyvende "
+"Ufremkommelige bjerge er så høje og stejle, at de konstant er omgivet af "
+"skyer.  At krydse sådanne bjerge er så godt som umuligt. Selv ikke flyvende "
 "væsner kan navigere blandt bjergenes tinder på grund af højden."
 
 #: data/core/help.cfg:601
@@ -2610,8 +2613,8 @@ msgid ""
 msgstr ""
 "Pest:\n"
 "Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af et "
-"gående lig på den samme side som enheden der har pestangrebet. (Dette gælder "
-"ikke for udøde eller enheder i landsbyer.)"
+"gående lig på den samme side som enheden der har pestangrebet. Dette gælder "
+"ikke for udøde eller enheder i landsbyer."
 
 #: data/core/macros/abilities.cfg:489
 msgid "slows"
@@ -3976,19 +3979,16 @@ msgid "female^undead"
 msgstr "udød"
 
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:34
-#, fuzzy
 msgid "Immune to drain, poison and plague"
-msgstr "Immun overfor gift"
+msgstr "Immun overfor bloddræning, gift og pest"
 
 #: data/core/macros/traits.cfg:32
-#, fuzzy
 msgid "mechanical"
-msgstr "Mekaniske"
+msgstr "mekaniske"
 
 #: data/core/macros/traits.cfg:33
-#, fuzzy
 msgid "female^mechanical"
-msgstr "Mekaniske"
+msgstr "mekaniske"
 
 #: data/core/macros/traits.cfg:42
 msgid "strong"
@@ -4096,7 +4096,7 @@ msgstr "Grønblå"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "Flygtning"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:26
 msgid ""
@@ -4105,6 +4105,10 @@ msgid ""
 "can be fearful in their element but no real match for professional law "
 "enforcment forces."
 msgstr ""
+"Erfarne kriminelle bliver kendte blandt myndighederne både for deres "
+"kampevner men også deres evne til at undgå tilfangetagelse.  Farlige og "
+"nådesløse, de bør frygtes på deres hjemmebane men er ikke nogen reel "
+"udfordring for en politistyrke."
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:30
 #: data/core/units/humans/Outlaw_Fugitive.cfg:31
@@ -4126,9 +4130,8 @@ msgid "sling"
 msgstr "slynge"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:126
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "Troldkvinde"
+msgstr "Flygtning"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:129
 msgid ""
@@ -4136,21 +4139,25 @@ msgid ""
 "battle prowess and ability to elude capture.  Beautiful and dangerous, their "
 "beauty is exceeded only by their dangerousness."
 msgstr ""
+"Erfarne kriminelle bliver kendte blandt myndighederne både for deres "
+"kampevner men også deres evne til at undgå tilfangetagelse.  Smukke og "
+"farlige, skønheden overgåes kun af deres farlighed."
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "Landevejsrøver"
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
 msgstr ""
+"Bevæbnet med en tung stridsøkse er landevejsrøveren den sidste person du "
+"ønsker at se på en øde vej sent om natten."
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:5
-#, fuzzy
 msgid "Outlaw Ranger"
-msgstr "Lovløs"
+msgstr "Fredløs skovfoged"
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:25
 msgid ""
@@ -4159,6 +4166,10 @@ msgid ""
 "the cover of night.  Most rulers are afraid of rangers and would rather put "
 "them in the dungeon than put their abilities to use."
 msgstr ""
+"Skovfogeder er mænd af skoven og bakkerne.  De er glimrende sporhunde, "
+"spejdere og bueskytter, og kan flytte sig frit rundt i landskabet i dække af "
+"natten.  De fleste regenter er bange for skovfogeder og vil hellere sætte "
+"dem i fangekælderen end anvende deres evner."
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:52
 #: data/core/units/humans/Outlaw_Ranger.cfg:53
@@ -4644,7 +4655,7 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"»langsom« angrebsevnen gør fjendtlige enheder langsommere og halverer skaden "
+"»Langsom« angrebsevnen gør fjendtlige enheder langsommere og halverer skaden "
 "de uddeler i alle angreb indtil de afslutter en runde."
 
 #: data/hardwired/tips.cfg:31
@@ -4726,6 +4737,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Du kan ikke omgøre en bevægelse som afslører tåge eller sløring. Vælg »Udsæt "
+"sløringsopdateringer« indstillingen når du har behov for at flytte enheder, "
+"mens du bevarer muligheden for at omgøre træk."
 
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
@@ -4871,17 +4885,17 @@ msgstr "Luk"
 
 #: src/actions.cpp:110
 msgid "You don't have a leader to recruit with."
-msgstr "Du har ingen leder at rekrutere med."
+msgstr "Du har ingen leder at rekruttere med."
 
 #: src/actions.cpp:117
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
-"Du skal have din leder i et tårn for at kunne rekrutere eller tilbagekalde "
+"Du skal have din leder i et tårn for at kunne rekruttere eller tilbagekalde "
 "enheder."
 
 #: src/actions.cpp:136
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Der er ikke plads på borgen til at rekrutere en enhed."
+msgstr "Der er ikke plads på borgen til at rekruttere en enhed."
 
 #: src/actions.cpp:892 src/actions.cpp:1123
 msgid "poisoned"
@@ -5085,7 +5099,7 @@ msgstr "EP: "
 
 #: src/dialogs.cpp:753 src/help.cpp:1204
 msgid "Moves: "
-msgstr "Bevægelser:"
+msgstr "Bevægelser: "
 
 #: src/dialogs.cpp:898 src/dialogs.cpp:999 src/multiplayer_connect.cpp:756
 #: src/multiplayer_create.cpp:72 src/multiplayer_wait.cpp:166
@@ -5368,7 +5382,7 @@ msgstr "Advarsel: Fejl under indlæsning af spillets konfigurationsfiler:-'"
 
 #: src/game.cpp:1681
 msgid "Error loading game configuration files: '"
-msgstr "Fejl ved indlæsning af spillets konfigurationsfiler:-'"
+msgstr "Fejl ved indlæsning af spillets konfigurationsfiler: '"
 
 #: src/game.cpp:1682
 msgid "' (The game will now exit)"
@@ -5475,7 +5489,7 @@ msgstr "vs."
 
 #: src/generate_report.cpp:299
 msgid "Lawful units: "
-msgstr "hæderlige enheder: "
+msgstr "Hæderlige enheder: "
 
 #: src/generate_report.cpp:301
 msgid "Neutral units: "
@@ -5832,7 +5846,7 @@ msgstr "Vælg enhed:"
 
 #: src/menu_events.cpp:821
 msgid "You don't have enough gold to recruit that unit"
-msgstr "Du har ikke guld nok til at rekrutere den enhed"
+msgstr "Du har ikke guld nok til at rekruttere den enhed"
 
 #: src/menu_events.cpp:878
 msgid "You are separated from your soldiers and may not recall them"
@@ -5965,7 +5979,7 @@ msgstr "Tilføjet venneliste: "
 
 #: src/menu_events.cpp:1662
 msgid "Removed from list: "
-msgstr "Fjernet fra liste:"
+msgstr "Fjernet fra liste: "
 
 #: src/menu_events.cpp:1688
 msgid "There are no players on your friends or ignore list."
@@ -6021,7 +6035,7 @@ msgstr "Tid på døgnet"
 
 #: src/mouse_events.cpp:336
 msgid "Leadership"
-msgstr "lederskab"
+msgstr "Lederskab"
 
 #: src/mouse_events.cpp:343
 msgid "Total damage"
@@ -6797,9 +6811,8 @@ msgid "XP to advance"
 msgstr "Erfaring til forfremmelse"
 
 #: src/unit.cpp:2596
-#, fuzzy
 msgid "/level"
-msgstr "level"
+msgstr "/level"
 
 #: src/unit_types.cpp:193 src/unit_types.cpp:233
 msgid "damage"

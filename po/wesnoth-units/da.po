@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-24 23:30+0200\n"
-"PO-Revision-Date: 2007-06-25 13:44+0200\n"
+"PO-Revision-Date: 2007-07-25 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,6 @@ msgid "Pirate Galleon"
 msgstr "Piratgaleon"
 
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "onboard are more than happy to help relieve other ships of their weighty "
@@ -109,7 +108,7 @@ msgid ""
 msgstr ""
 "Piratgaleoner er for transportskibe hvad ulve er for får. Skibe fulde af "
 "varer skal ikke være ensomme langt fra land. Det er bedre at hjælpe dem, så "
-"de ikke synker på grund af for stor læs..."
+"de ikke synker på grund af for stor læs."
 
 #: data/core/units/boats/Transport_Galleon.cfg:21
 #: data/core/units/boats/Transport_Galleon.cfg:22
@@ -219,9 +218,11 @@ msgstr ""
 "Transportgaleoner er veludrustede skibe som kan transportere tropper. Hvis "
 "de når stranden kan de placere tropperne i angrebsposition."
 
+# NB bemærk at der også er en Fire Drake, så navnet kan ikke være ildhestedrage
+# Armageddonhestedrage kan også være en mulighed.
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
-msgstr "Ildhestedrage"
+msgstr "Dommedagshestedrage"
 
 #: data/core/units/drakes/Armageddon.cfg:20
 msgid ""
@@ -230,6 +231,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"Hvis det ikke var for deres rustning ville nogle hestedrager ikke være til "
+"at skelne fra rigtige drager, i det mindste ikke for den gængse mand. "
+"Skabningerne der går under navnet dommedagshestedrager er giganter som både "
+"er immune over for ild og selv har en enorm ild."
 
 #: data/core/units/dwarves/Gryphon_Rider.cfg:28
 #: data/core/units/dwarves/Gryphon_Rider.cfg:29
@@ -509,6 +514,21 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"En nærkampshestedrage er ikke i stand til at flyve eller spy ild, og "
+"foretrækker at indgå i nærkamp - en måde at få glæde af en ellers markant "
+"ulempe for en hestedrage. Det er muligt, at de har enkelte "
+"utilstrækkeligheder i de normale hestedrageevner, men dem som gør "
+"opmærksomme på dette har ikke bemærket hvor godt egnet de er til at bekæmpe "
+"en racefælle.\n"
+"\n"
+"De er i høj grad dommere i hestedragesamfundet, og selvom deres rustning "
+"hovedsagelig er af ceremoniel karakter, er den stadig effektiv. I deres møde "
+"med mindre racer, har de opdaget at deres naturlige størrelse og styrke gør "
+"dem til et magtfuldt våben, og når det kombineres med deres rustning, har "
+"den udrustede soldat ofte ikke de normale svage sider hos hestedragerne, "
+"såsom den kraftige ulempe over for spyd og pile.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/saurians/Skirmisher.cfg:31
 #: data/core/units/saurians/Skirmisher.cfg:32
@@ -579,6 +599,9 @@ msgid ""
 "hours at the forge have equipped them with a bristling array of weaponry, "
 "and they are clad them head to toe in shining armor of proof."
 msgstr ""
+"Den store politihestedrage et et symbol på racens styrke. Lang tid ved "
+"smedjen har udstyret med med et børste af våben, og de er klædt i rustning "
+"fra top til tå."
 
 #: data/core/units/drakes/Enforcer.cfg:100
 #: data/core/units/drakes/Enforcer.cfg:101
@@ -599,7 +622,6 @@ msgid "Drake Fighter"
 msgstr "Hestedragekæmper"
 
 #: data/core/units/drakes/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
 "of their ancestors. They can also fly, which is troubling to any foe.  Their "
@@ -607,8 +629,9 @@ msgid ""
 "swordsman of any other race."
 msgstr ""
 "Hestedragekæmper svinger deres krumsabler med dødelig præcision, og har også "
-"ildånden fra deres forfædre som våben. De bedste kæmper bliver en del af "
-"elite hestedragekæmperne."
+"ildånden fra deres forfædre som våben. De kan også flyve, hvilket er "
+"foruroligende for enhver fjende. De bedste kæmper bliver en del af elite "
+"hestedragekæmperne."
 
 #: data/core/units/drakes/Fighter.cfg:64 data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
@@ -624,10 +647,13 @@ msgid ""
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
+"De store ildhestedrager er mestre i brugen af deres indre ild. Klædt i "
+"skinnende rustning, sender de kolonner af flammer imod enhvor som sætter sig "
+"op imod dem, et bevis på styrken og det ophøjede hos denne race."
 
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Flammehjertehestedrage"
 
 #: data/core/units/drakes/Flameheart.cfg:28
 msgid ""
@@ -638,10 +664,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Det siges at den ældste linje af hestedrager - de første efterkommere af "
+"drager - har årer med ild fremfor blod. At de kan ånde ild som de gør har "
+"givet grobund til denne overbevisning, selvom ingen, af åbenlyse årsager, "
+"har forsøgt at skære en op for at finde ud af det.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "Flammehestedrage"
 
 #: data/core/units/drakes/Flare.cfg:27
 msgid ""
@@ -651,10 +683,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Hestedrager er en gammel race som er klog nok til at høre på deres egne "
+"naturlige ledere. Dem som kaldes »flammehestedrager« af deres fjender er de "
+"hestedrager som aspirerer til at blive sådanne ledere, både i krigstid og i "
+"fredstid.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/drakes/Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Hestedragegladiator"
 
 #: data/core/units/drakes/Gladiator.cfg:19
 msgid ""
@@ -666,10 +704,18 @@ msgid ""
 "on their weapons confers offensive capability at the cost of a slight "
 "reduction in their defensive abilities."
 msgstr ""
+"Gladiatoren har valgt en fuldstændig forskellig vej i forhold til "
+"hellebarderen. I steden for at lægge vægt på træning, har de valgt at "
+"fokusere på udformningen af deres våbenarsenal. De er hestedragernes smede, "
+"og de har derfor de bedste våben - de skarpeste klinger og spyd, og "
+"stridsøkser som gør deres allerede imponerende udvalg fuldstændig. Deres "
+"fulde fokus på deres våben giver dem en offensiv kvalitet på bekostning af "
+"en mindre reduktion i deres forsvarsmæssige evner."
 
+# Glider -> svæveflyver
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "Hestedragesvæver"
 
 #: data/core/units/drakes/Glider.cfg:22
 msgid ""
@@ -682,6 +728,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Hestedragesvævere bærer så lidt vægt som muligt, så de kan udnytte deres "
+"flyveevner til det yderste. Disse hestedrager er kompetente kæmpere og har "
+"ildvåbenet som deres race tilskriver. Svævere kan også effektivt bruge deres "
+"fart til at knuse fjenden til undergivelse. Fra deres luftposition kan de se "
+"igennem forsvarsdække. Deres flyveevner gør at de kan angribe fjender under "
+"sådan et dække.\n"
+"\n"
+"Specielle bemærkninger:"
 
 # konteks ikke afklaret (andre muligheder = smæld, brag, smadre, smække)
 #: data/core/units/drakes/Glider.cfg:76 data/core/units/drakes/Glider.cfg:77
@@ -721,6 +775,11 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
+"De flyvende storbrande kendt som infernehestedrager er mestre i ildånde, og "
+"overgår selv deres forfædre dragerne i brugen heraf. Denne naturlige evne "
+"gør dem immune over for ild. Deres skinnende, ildfarvede rustning er et "
+"symbol på deres stolte og magtfulde kaste, idealet som deres racefæller "
+"aspirerer imod."
 
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
@@ -827,6 +886,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Bersærkere er en sjælden kaste blandt dværge. Bersærkerne arbejder sig ind i "
+"et fuldstændig raseri før de går i kamp. Disse krigere glemmer alt om "
+"forsvar og tænker kun på at angribe, hvilket har gjort dem legendariske.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/dwarves/Berserker.cfg:32
 #: data/core/units/dwarves/Berserker.cfg:33
@@ -850,6 +914,14 @@ msgid ""
 "Dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors in a single blow."
 msgstr ""
+"Det vides ikke med sikkerhed hvorfor dværgedragevagter kaldes for dette "
+"navn. Et navn som er givet til dem af deres racefæller. Nogle spekulerer i "
+"at navnet kommer fra deres foretrukne våben, disse mærkværdige stave som "
+"udsender ild og død. Andre at et sådant våben kunne være en trussel om en "
+"virkelig drage, hvis en sådan igen skulle ses i den kendte verden. Uanset "
+"hvad er det på grund af dette våben af vagterne af de store dværgeborge er "
+"både kendt og frygtet; våben som har knust selv den mægtigste kriger i et "
+"enkelte slag."
 
 #: data/core/units/orcs/Archer.cfg:70 data/core/units/orcs/Archer.cfg:71
 #: data/core/units/orcs/Assassin.cfg:71 data/core/units/orcs/Assassin.cfg:72
@@ -895,6 +967,10 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"Dværgekæmpere bærer store stridsøkser og hammere, hvilket gør dem til "
+"frygtede modstandere i nærkamp. De er specielt gode i bjergrigt terræn eller "
+"under jorden. Selvom de ikke er hurtige, så mere end kompenserer deres kraft "
+"og udholdenhed for dette."
 
 #: data/core/units/dwarves/Fighter.cfg:34
 #: data/core/units/dwarves/Fighter.cfg:35
@@ -949,7 +1025,7 @@ msgstr ""
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr "Bodyguarddværg"
+msgstr "Dværgelivvagt"
 
 #: data/core/units/dwarves/Guardsman.cfg:22
 msgid ""
@@ -961,6 +1037,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Dværgeracen har altid været kendt for at være fast bygget og mange af deres "
+"soldater udryster dem så de har fordel af dette. Dværgelivvagter går i krig "
+"med deres store skjolde og spyd. Ofte er deres rolle at holde linjen, og "
+"indgå i de store slag med dem som ønsker at bryde linjen. Når linjen rykkes "
+"fremad fungerer de som sikring af det hårdt vundet land.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/dwarves/Stalwart.cfg:84
 #: data/core/units/dwarves/Stalwart.cfg:85
@@ -986,6 +1069,10 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"Klædt i skinnende rustning, ligner disse dværge konger fra under bjergene. "
+"De bærer store økser og hammere med store evner, og kan ramme et mål med en "
+"kasteøkse i høj hastighed. Selvom langsomme på fødderne, er disse dværge et "
+"symbol på evnerne hos dværgene."
 
 #: data/core/units/dwarves/Steelclad.cfg:28
 #: data/core/units/dwarves/Steelclad.cfg:29
@@ -1039,6 +1126,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Mestre hos deres racefæller, gør at vagtdværge udgør skansen af deres "
+"krigslinje. At foretage et direkte angreb mod en linje som de har forstærket "
+"er ofte ikke en mulighed; det tenderer mod at være selvmord, fremfor bare "
+"ueffektivt. Disse dværge er mestre i nærkamp og kan holde et stykke jord med "
+"samme rodfæstet stædighed som et egetræ.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
@@ -1053,6 +1147,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Erfaringen og træningen gør ståldværgesoldater til værdige soldater. Disse "
+"soldater er udstyret i forhold til deres evner, og kan holde stand mod selv "
+"det stærkeste angreb. Det er farligt at miste balancen foran en af disse, da "
+"det hurtigt vil blive straffet.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
@@ -1071,7 +1171,6 @@ msgid "Dwarvish Thunderer"
 msgstr "Tordendværg"
 
 #: data/core/units/dwarves/Thunderer.cfg:19
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -1081,9 +1180,9 @@ msgid ""
 msgstr ""
 "Da Wesnoths mænd først mødte dværgene, blev de mystificeret af magten hos "
 "tordendværgene, som var i stand til at sprede død fra lang afstand igennem "
-"disse aparte ... »stave« som de bar i kamp. Efter at freden indstiftet af "
+"disse aparte »stave« som de bar i kamp. Efter at freden indstiftet af "
 "Ka'lian trådte i effekt erkendte Haldrics folk at de, som ikke forstod disse "
-"våben, var heldige at de ikke længere kæmpede imod dværgen og de sværgede "
+"våben var heldige, at de ikke længere kæmpede imod dværgene, og de sværgede "
 "aldrig at ville gøre det igen."
 
 #: data/core/units/dwarves/Thunderer.cfg:89
@@ -1110,10 +1209,19 @@ msgid ""
 "Though a single shot from these 'thundersticks' can take several minutes to "
 "prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
+"Dværgetordenvagter er kendt for deres mærkværdige våben, disse mærkelige "
+"stave af træ og jern som afgiver en tordenlyd i arrigskab. Mekanismen bag "
+"dette våben er et mysterium, en hemmelighed som Knalgas dværge har taget med "
+"sig i graven. De bar dem og menes også at have fremstillet dem. Det vides "
+"kun at dværgene hælder noget mærkeligt sort støv i spidsen af deres våben, "
+"hvilket nogen tolker som mad til det bæst som er fanget indeni våbenet.\n"
+"\n"
+"Selvom et enkelt skud fra disse »tordenstave« kan tage flere minutter at "
+"forberede, er resultatet værd at vente på set fra dværgenes synspunkt."
 
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr "Ulfebersærkerdværg"
+msgstr "Ulfbersærkerdværg"
 
 #: data/core/units/dwarves/Ulfserker.cfg:21
 msgid ""
@@ -1124,11 +1232,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Dværge er en historisk race af magtfulde kæmpere. Ulfbersærkere er blandt de "
+"vildeste; i kamp sætter de sig selv i et vildt raseri hvor de til sidst ikke "
+"kan føle frygt eller mærke smerte, og de tager sig ikke at sår de modtager.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
 msgstr "Elverbueskytte"
 
+# engelsk fejl?
+# can best skal vel være beat  måske nej. best kan også betyde besejre.
 #: data/core/units/elves/Archer.cfg:20
 msgid ""
 "Elves have always had a reputation for archery, a skill that, for many "
@@ -1138,6 +1253,12 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
+"Elver har et rygte for at være gode med en bue, en evne som af mange årsager "
+"kommer naturligt for dem. Selv den skrøbeligste krop kan være dødelig med en "
+"bue i hånden, og i krigstider vil mange anvende dette våben. Selvom deres "
+"relative manglende erfaring med krig gør dem noget sårbare, gøre deres "
+"naturlige behændighed at de kan besejre enhver af menneskens grønne "
+"rekrutter."
 
 #: data/core/units/orcs/Sovereign.cfg:67 data/core/units/orcs/Sovereign.cfg:68
 #: data/core/units/orcs/Archer.cfg:179 data/core/units/orcs/Archer.cfg:180
@@ -1199,6 +1320,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Det mærkværdige navn for elven »hævner« kommer af den taktik som disse "
+"buemestre anvender. Fjenden tillades at bryde igennem et tyndt forsvar, og "
+"når de svage tropper bag frontlinjen følger efter, så bryder disse "
+"bueskytter deres dække og angriber, afskærer forsyningslinjerne og omringer "
+"fjenden i et træk.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/elves/Avenger.cfg:173
 msgid "female^Elvish Avenger"
@@ -1240,10 +1368,14 @@ msgid ""
 "swordsmanship to which few can compare. Even archery, treated as a secondary "
 "pursuit, is masterfully executed."
 msgstr ""
+"De få elver som bevidst gør sig til eksperter i krigsførelse bliver til "
+"noget som skjuler det ellers føjelige rygte for deres race. Dedikering og "
+"evner samles i den reneste form og resultatet er sværdkunst som kun få kan "
+"matche. Selv buen, som læres i anden række, kan anvendes med stor dygtighed."
 
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr "Elverdruid"
+msgstr "Elverdruide"
 
 #: data/core/units/elves/Druid.cfg:22
 msgid ""
@@ -1256,6 +1388,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Skovelvernes magi er dårlig egnet til kamp, men alligevel effektiv. Skoven "
+"de lever i kan hurtigt vækkes med en kommando, og vil angribe dem som truer "
+"dens fred.\n"
+"\n"
+"Deres væsentligste evne er i lægegerningen, og det er via denne evne at "
+"elverdruiderne er respekteret blandt deres folk.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/elves/Enchantress.cfg:26
 #: data/core/units/elves/Enchantress.cfg:27 data/core/units/elves/Druid.cfg:28
@@ -1315,6 +1455,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Elvernes magi er så forskellig fra menneskenes, at de menneskene generelt "
+"ikke er i stand til at forstå den, og langt fra i stand til at anvende den. "
+"På samme måde er dem som mestre magien gådefulde; selvom det kan siges at de "
+"næres af ærbødighed af deres folk, kan meget lidt siges om deres faktiske "
+"funktion eller formål i samfundet.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/elves/Enchantress.cfg:71
 #: data/core/units/elves/Enchantress.cfg:72
@@ -1359,6 +1506,11 @@ msgid ""
 "can grasp the basics of swordsmanship and archery in an uncannily short "
 "time, and put them to effective use on the battlefield."
 msgstr ""
+"Elvere er ikke krigsmagere af natur, men når nødvendigheden kalder, så gør "
+"deres naturlige behændighed og smidighed dem godt, det samme gør deres evner "
+"indenfor fabrikation. En elv kan forstå det grundlæggende i sværdkunst og "
+"bueskytteri indenfor en utrolig kort periode, og anvende dem effektivt på "
+"slagmarken."
 
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
@@ -1391,6 +1543,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"En af de ting som udgør deres evner med buen er det utrolig gode øje som "
+"elver har. En elv øvet i brugen af buen kan ramme et mål som et menneske "
+"slet ikke kan se, selv om natten, og kan sende pil nummer to af sted lige så "
+"snart den første er sendt af sted.\n"
+"\n"
+"Denne exceptionelle evne kommer dog med en omkostning, nemlig den manglende "
+"evne med et sværd.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/elves/Marksman.cfg:103
 #: data/core/units/elves/Marksman.cfg:104
@@ -1733,7 +1894,6 @@ msgid "Wolf Rider"
 msgstr "Ulverytter"
 
 #: data/core/units/goblins/Wolf_Rider.cfg:36
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1748,7 +1908,7 @@ msgid ""
 "woods will still slow them down."
 msgstr ""
 "Ingen ved rigtigt hvordan evnen til at tæmme og ride på ulve opstod. "
-"Gobliner er mindre og meget svagere end orker. Enhver som kan opnå at få en "
+"Gobliner er mindre og meget svagere end orker. Enhver som kan opnå, at få en "
 "ulv er meget mere sikker og spiller en meget mere vigtig rolle i kamp.\n"
 "\n"
 "Ulve ville aldrig kunne bære vægten af en mand i fuld rustning, men en "
@@ -1821,10 +1981,9 @@ msgstr ""
 
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr "lansenér"
+msgstr "Lansenér"
 
 #: data/core/units/humans/Horse_Lancer.cfg:20
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -1833,7 +1992,7 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
-"Lansenér er nogle af de modigste og mest frygtede ryttere i hele Wesnoth. "
+"Lansenéren er en af de modigste og mest frygtede ryttere i hele Wesnoth. "
 "Klædt i en mininal rustning, er de i stand til at ride hurtigt; hurtigere "
 "end nogle andre i deres rækker. Den modige taktik, de anvender, er et "
 "tveægget sværd, som often enten fører til en gloværdig sejr eller en hurtig "
@@ -1909,7 +2068,6 @@ msgid "Cavalier"
 msgstr "Kavaler"
 
 #: data/core/units/humans/Loyalist_Cavalier.cfg:20
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -1917,7 +2075,7 @@ msgid ""
 "of many a tale and song."
 msgstr ""
 "Et imponerende syn på slagmarken, kavalerer er mestre i brugen af både sværd "
-"og armbørst fra hesteryg. Dette er en frygtet kombination, og dette gør dem "
+"og armbørst fra hesteryg. Dette er en frygtet kombination , og dette gør dem "
 "til genstand for både sagn og sange."
 
 #: data/core/units/orcs/Crossbowman.cfg:62
@@ -2261,7 +2419,6 @@ msgid "Sergeant"
 msgstr "Sergent"
 
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
-#, fuzzy
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
@@ -2276,7 +2433,6 @@ msgid "Shock Trooper"
 msgstr "Stødtropper"
 
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2749,7 +2905,6 @@ msgid "Ruffian"
 msgstr "Bandit"
 
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
-#, fuzzy
 msgid ""
 "Some men without particular skills cannot or will not make an honest living. "
 "Those that attempt to make their way through life by the heavy end of a "
@@ -3069,7 +3224,6 @@ msgid "female^Mermaid Priestess"
 msgstr "Havfrueprinsesse"
 
 #: data/core/units/merfolk/Priestess.cfg:24
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3127,7 +3281,6 @@ msgid "Merman Spearman"
 msgstr "Havspydmand"
 
 #: data/core/units/merfolk/Spearman.cfg:18
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
 "function. Though thrown javelins are of little use under the water, they are "
@@ -3136,7 +3289,7 @@ msgid ""
 "damage. They are also useful in melee, even deep under the surface, which is "
 "something that certainly cannot be said of arrows."
 msgstr ""
-"Buen er ikke foretrukket blandt havmænd da javelinen har en lignende "
+"Buen er ikke foretrukket blandt havmænd, da javelinen har en lignende "
 "funktion. Selvom kastede javeliner ikke har stor værdi under vandet, så er "
 "de særdeles effektive på overfladen, hvor deres vægt giver dem mulighed for "
 "at nå flere meter under vand og stadig have nok momentum til at forvolde "
@@ -3173,7 +3326,6 @@ msgid "Giant Spider"
 msgstr "Kæmpeedderkop"
 
 #: data/core/units/monsters/Cave_Spider.cfg:19
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
@@ -3293,7 +3445,6 @@ msgstr "Kæmpeskorpion"
 # Joe 14. februar 2007 (virker som om engelsk tekst er blevet misforstået, har rettet
 # en smule til ingen.
 #: data/core/units/monsters/Giant_Scorpion.cfg:21
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation.\n"
@@ -3545,7 +3696,6 @@ msgid "Orcish Archer"
 msgstr "Orkbueskytte"
 
 #: data/core/units/orcs/Archer.cfg:19
-#, fuzzy
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and and those of slight build, are pragmatic enough to use "
@@ -3563,7 +3713,7 @@ msgstr ""
 # Det er "assassinate"... Det her er "an assassin". :-)
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
-msgstr "Orkersnigmorder"
+msgstr "Orksnigmorder"
 
 #: data/core/units/orcs/Assassin.cfg:24
 msgid ""
@@ -3591,7 +3741,7 @@ msgstr "kasteknive"
 
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
-msgstr "Orkerarmbrøstskytte"
+msgstr "Orkarmbrøstskytte"
 
 #: data/core/units/orcs/Crossbowman.cfg:18
 msgid ""
@@ -3613,7 +3763,7 @@ msgstr "kortsværd"
 
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr "Orkersoldat"
+msgstr "Orksoldat"
 
 #: data/core/units/orcs/Grunt.cfg:19
 msgid ""
@@ -3627,10 +3777,9 @@ msgstr ""
 
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr "Orkerleder"
+msgstr "Orkleder"
 
 #: data/core/units/orcs/Leader.cfg:21
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -3662,6 +3811,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Enhver ork som kan holde en stor stamme fra intern skænderier og slåskampe "
+"er normalt specielt intelligent og lederegnet, og er uundgåelig også "
+"særdeles stærk. De er dygtige med både sværd og bue, men deres virkelige "
+"talent ligger i den sjældne evne til at kunne give ordre til andre orker "
+"under slaget, ordre som følges ikke af frygt, men af loyalitet.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/orcs/Warrior.cfg:22 data/core/units/orcs/Warrior.cfg:23
 #: data/core/units/orcs/Sovereign.cfg:28 data/core/units/orcs/Sovereign.cfg:29
@@ -3672,7 +3828,7 @@ msgstr "kæmpesværd"
 
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
-msgstr "Orkermorder"
+msgstr "Orkmorder"
 
 #: data/core/units/orcs/Slayer.cfg:24
 msgid ""
@@ -3720,7 +3876,7 @@ msgstr ""
 
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr "Orkerkrigsherre"
+msgstr "Orkkrigsherre"
 
 #: data/core/units/orcs/Warlord.cfg:19
 msgid ""
@@ -3734,7 +3890,7 @@ msgstr ""
 
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr "Orkerkriger"
+msgstr "Orkkriger"
 
 #: data/core/units/orcs/Warrior.cfg:18
 msgid ""
@@ -3759,13 +3915,21 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Øgler er adrætte og i stand til at navigere igennem terræn som ofte stopper "
+"deres fjender. Når det kombineres med erfaring, styrke og udstyr, så kan en "
+"af deres krigere bliver specielt truende i kamp, specielt fordi de er så "
+"meget sværere at omringe end andre fjender. Selv i rustning kan en "
+"øglekriger få fordel af den mindste sprække i fjendens linje, og har "
+"samtidig styrken til at få fjenden til at fortryde sin taktiske "
+"fejltagelse.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
 msgstr "Øgleaugur"
 
 #: data/core/units/saurians/Augur.cfg:23
-#, fuzzy
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
@@ -3773,9 +3937,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Øgler har enkelte evner indenfor hvad mennesker kalder magi, alle indenfor "
-"række af ubehagelig trolddom. Lige så lidt som den er forstået, lige så "
-"meget er den frygtet af dem den bruges imod.\n"
+"Øgler har enkelte evner indenfor hvad mennesker kalder magi, men deres brug "
+"af dette stinker af ritualer og mørk magi. Lige så lidt som den er forstået, "
+"lige så meget er den frygtet af dem den bruges imod.\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -3815,6 +3979,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Øglekrigere er normalt svagere end deres elver eller menneske modpart. Dette "
+"er selvfølgelig en relativ observation, og de kan stadig blive stærke, uden "
+"at miste deres naturlige mobilitet. Denne øglekriger er meget farlig i kamp, "
+"da en ikke opmærksom fjende hurtigt kan se sine støttetropper omringet af "
+"disse skabninger.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
@@ -3831,6 +4002,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Visse øgler er set klædt i mytisk tøj og klædt fra top til tå i "
+"frygtindjagende eksotiske mærker og mønstre, både malet og tatoveret på. "
+"Nogle anser dem for at være seere, eller orakler blandt deres egne. Men "
+"uanset hvilken social funktion du måtte have, så er de magtfulde indenfor "
+"den mærkværdige magi de mestrer og er derfor skabninger man skal være "
+"forsigtige med hvis man støder ind i dem.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
@@ -3849,6 +4028,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Øgler er meget små i størrelse, og selvom de er noget skrøbelige på grund af "
+"dette, så er de meget adrætte. I kamp gør deres størrelse at de kan snige "
+"sig forbi forsvar som ville holde enhver voksen mand tilbage, hvilket kan "
+"gøre dem til en besværlig fjende.\n"
+"\n"
+"Spyd er deres foretrukne våben, da deres stærke bagben kan trænge et spyd "
+"igennem med tilstrækkelig kraft til at gøre stor skade, enten i hånden eller "
+"kastet.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
@@ -3937,7 +4126,6 @@ msgid "Troll"
 msgstr "Trold"
 
 #: data/core/units/trolls/Troll.cfg:20
-#, fuzzy
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -3962,7 +4150,6 @@ msgid "Troll Warrior"
 msgstr "Troldekriger"
 
 #: data/core/units/trolls/Warrior.cfg:22
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -3983,7 +4170,7 @@ msgstr ""
 "brugen af metal. Med tanke på hvor stærk en trold er i kamp er "
 "forestillingen om en trold i fuld rustning særdeles urovækkende.\n"
 "\n"
-"Spcielle bemærkninger:"
+"Specielle bemærkninger:"
 
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
@@ -4006,6 +4193,7 @@ msgstr ""
 "\n"
 "Specielle bemærkninger:"
 
+# Kan ikke være vampyrflagermus, da en sådan også findes i spillet.
 #: data/core/units/undead/Bat_Blood.cfg:4
 msgid "Blood Bat"
 msgstr "Blodflagermus"
@@ -4019,13 +4207,18 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Blodflagermus kaldes således på grund af deres rødlige farve, hvilket nogle "
+"tolker som et symbol på deres foretrukne diæt. Disse skabninger er hurtige "
+"og kan suge blodet ud af deres ofre, og dermed få genskabt liv der svarer "
+"til noget af det de hiver ud af deres ofre.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/undead/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
 msgstr "Vampyrflagermus"
 
 #: data/core/units/undead/Bat_Vampire.cfg:19
-#, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -4044,7 +4237,6 @@ msgid "Ghoul"
 msgstr "Ond ånd"
 
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
-#, fuzzy
 msgid ""
 "Only those with a dreadful knowledge of necromancy know what must be done to "
 "turn a person into a ghoul, and it is a secret they are not telling. "
@@ -4059,7 +4251,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Kun personer med en indgående kendskab til åndemaneri ved hvad der skal "
-"gøres for at forvandle en person til en ond ånd, og det er en hemmelighed "
+"gøres for at forvandle en person til en ond ånd, og det er en hemmelighed, "
 "som de ikke deler med andre. Uanset hvad det har udtalt af trolddom er "
 "resultatet et bæst som ingen erindring har om sit liv som menneske, en "
 "skabning som vandrer omkring ligeså nøgen som den dag den blev født, og "
@@ -4103,6 +4295,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Teknikken til at genoplive en død sjæl er desværre velkendt inden for mørk "
+"magi; udøverne bruger det ofte til at hidkalde tjenere og soldater fra "
+"uvillige lig. Disse sjæle er ofte talrige, men svage; en snert af kamp kan "
+"vække dem, og derigennem gøre dem stærkere.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/undead/Corpse_Walking.cfg:49
 #: data/core/units/undead/Corpse_Walking.cfg:50
@@ -4188,7 +4386,7 @@ msgstr ""
 #: data/core/units/undead/Necro_Dark_Adept.cfg:31
 #: data/core/units/undead/Necro_Dark_Adept.cfg:32
 msgid "shadow wave"
-msgstr "Skyggebølge"
+msgstr "skyggebølge"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:132
 msgid "female^Dark Adept"
@@ -4199,7 +4397,6 @@ msgid "Dark Sorcerer"
 msgstr "Mørk troldmand"
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -4237,7 +4434,6 @@ msgid "Lich"
 msgstr "Lich"
 
 #: data/core/units/undead/Necro_Lich.cfg:25
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4296,9 +4492,8 @@ msgid "plague staff"
 msgstr "peststav"
 
 #: data/core/units/undead/Skele_Banebow.cfg:4
-#, fuzzy
 msgid "Banebow"
-msgstr "bue"
+msgstr "Dødsbue"
 
 #: data/core/units/undead/Skele_Banebow.cfg:19
 msgid ""
@@ -4348,7 +4543,8 @@ msgid ""
 msgstr ""
 "Ridende på de strudselignende store fugle som tidligere blev brugt af en "
 "forsvundet civilisation som heste, kan skeletchocobonerne bevæge sig "
-"hurtigere end de fleste kavalerienheder./n\n"
+"hurtigere end de fleste kavalerienheder.\n"
+"\n"
 "Specielle bemærkninger:"
 
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
@@ -4542,6 +4738,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Da lys kom til verden og gav form til det ukendte, blev frygt tvunget ind i "
+"mørket. Siden den dag har verdens skygger indeholdt menneskehedens terror, "
+"selvom den ikke ved hvorfor.\n"
+"\n"
+"Det er et spørgsmål som nemt kan besvares af en åndemaner.\n"
+"\n"
+"Specielle bemærkninger:"
 
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
@@ -4580,7 +4783,6 @@ msgid "Wraith"
 msgstr "Dobbeltgænger"
 
 #: data/core/units/undead/Spirit_Wraith.cfg:18
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them as if "
@@ -4595,7 +4797,6 @@ msgstr ""
 "lige igennem dem, på samme måde som igennem luft. Frygten kommer fra "
 "oplevelsen af at disse skabninger er usynlige, en sandhed som dog langfra er "
 "sand.\n"
-"\t\n"
 "\n"
 "Specielle bemærkninger:"
 
@@ -4604,7 +4805,6 @@ msgid "Ancient Wose"
 msgstr "Ældgammel træsjæl"
 
 #: data/core/units/wose/Ancient.cfg:22
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -4641,7 +4841,6 @@ msgid "Elder Wose"
 msgstr "Træsjæl ældste"
 
 #: data/core/units/wose/Elder.cfg:21
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
