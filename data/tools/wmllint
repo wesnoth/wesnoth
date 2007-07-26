@@ -8,6 +8,8 @@
 # markup to newer ones should live here.  This includes resource path changes
 # and renames, also map format conversions.
 #
+# While the script is at it, it checks for unbalanced tags and warns about them.
+#
 # Takes any number of directories as arguments.  Each directory is converted.
 # If no directories are specified, acts on the current directory.
 #
@@ -443,12 +445,16 @@ def maptransform2(filename, baseline, inmap, y):
 
 name_in_attack = False
 
+# These hooks are not presently used.
+
 def validate_stack(stack, filename, lineno):
-    "Check for deprecated WML syntax."
-    if verbose >= 2:
+    "Check the stack for deprecated WML syntax."
+    if verbose >= 3:
         print '"%s", line %d: %s' % (filename, lineno+1, stack)
+    pass
 
 def validate_on_pop(tagstack, closer, file, lineno):
+    "Validate the stack at the time a new close tag is seen."
     pass
 
 # Syntax transformations
