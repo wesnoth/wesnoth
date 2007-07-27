@@ -617,13 +617,14 @@ void create::layout_children(const SDL_Rect& rect)
 	map_size_label_.set_location(xpos, ypos);
 	ypos += map_size_label_.height() + 2 * border_size;
 
-	regenerate_map_.set_location(xpos + era_label_.width() + border_size, ypos);
+	regenerate_map_.set_location(xpos, ypos);
 	ypos += regenerate_map_.height() + border_size;
-	generator_settings_.set_location(xpos + era_label_.width() + border_size, ypos);
-	ypos += generator_settings_.height() + border_size;
+	generator_settings_.set_location(xpos, ypos);
+	ypos += generator_settings_.height() + 2 * border_size;
 
-	era_label_.set_location(xpos, ypos + (era_combo_.height() - era_label_.height()) / 2);
-	era_combo_.set_location(xpos + era_label_.width() + border_size, ypos);
+	era_label_.set_location(xpos, ypos);
+	ypos += era_label_.height() + border_size;
+	era_combo_.set_location(xpos, ypos);
 	ypos += era_combo_.height() + border_size;
 
 #ifdef MP_VISION_OPTIONAL
