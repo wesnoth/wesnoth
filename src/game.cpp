@@ -91,6 +91,7 @@ public:
 	bool play_multiplayer_mode();
 
 	void reset_game_cfg();
+	void reset_defines_map();
 
 	bool is_loading() const;
 	bool load_game();
@@ -671,7 +672,7 @@ bool game_controller::load_game()
 					error_log);
 		}
 
-		defines_map_.clear();
+		reset_defines_map();
 		defines_map_[cfg["difficulty"]] = preproc_define();
 
 		if(defines_map_.count("NORMAL")) {
@@ -771,7 +772,7 @@ void game_controller::set_tutorial()
 	state_.campaign_type = "tutorial";
 	state_.scenario = "tutorial";
 	state_.campaign_define = "TUTORIAL";
-	defines_map_.clear();
+	reset_defines_map();
 	defines_map_["TUTORIAL"] = preproc_define();
 }
 
@@ -844,7 +845,7 @@ bool game_controller::new_campaign()
 		}
 
 		state_.difficulty = difficulties[dlg.result()];
-		defines_map_.clear();
+		reset_defines_map();
 		defines_map_[difficulties[dlg.result()]] = preproc_define();
 	}
 
@@ -1397,7 +1398,7 @@ bool game_controller::play_multiplayer()
 
 		/* do */ {
 			input_blocker eventlock; //prevent the "keylogger" effect
-			defines_map_.clear();
+			reset_defines_map();
 			defines_map_[state_.campaign_define] = preproc_define();
 			refresh_game_cfg();
 		}
@@ -1690,21 +1691,13 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 
 void game_controller::reset_game_cfg()
 {
-	defines_map_.clear();
+	reset_defines_map();
 
 	//load in the game's configuration files
 #if defined(__APPLE__)
 	defines_map_["APPLE"] = preproc_define();
 #endif
-
-#ifdef USE_TINY_GUI
-	defines_map_["TINY"] = preproc_define();
-#endif
-
-#ifdef HAVE_PYTHON
-	defines_map_["PYTHON"] = preproc_define();
-#endif
-
+	
 	if(multiplayer_mode_) {
 		defines_map_["MULTIPLAYER"] = preproc_define();
 	} else {
@@ -1713,6 +1706,21 @@ void game_controller::reset_game_cfg()
 	}
 
 	refresh_game_cfg();
+}
+
+void game_controller::reset_defines_map()
+{
+	defines_map_.clear();
+
+/* APPLE is only meant for configuration so it's not there */
+
+#ifdef USE_TINY_GUI
+	defines_map_["TINY"] = preproc_define();
+#endif
+
+#ifdef HAVE_PYTHON
+	defines_map_["PYTHON"] = preproc_define();
+#endif
 }
 
 void game_controller::play_game(RELOAD_GAME_DATA reload)
