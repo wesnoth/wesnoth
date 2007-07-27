@@ -537,10 +537,9 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	std::vector<save_info> games = get_saves_list();
 
 	if(games.empty()) {
-		gui::dialog(disp,
+		gui::message_dialog(disp,
 		                 _("No Saved Games"),
-				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"),
-		                 gui::OK_ONLY).show();
+				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)")).show();
 		return "";
 	}
 
