@@ -12,6 +12,7 @@
 */
 
 #include "global.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "terrain_translation.hpp"
 #include "serialization/string_utils.hpp"
@@ -697,6 +698,11 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 {
 	t_letter result;
 
+	// need to store the orginal string for the error handling, this has been
+	// made to avoid the assertion failure which happens often and is not too
+	// user friendly
+	const std::string input(str);
+
 	//strip the spaces around us
 	const std::string& whitespace = " \t";
 	str.erase(0, str.find_first_not_of(whitespace));
@@ -712,22 +718,39 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		str.erase(0, offset + 1);
 	}
 
-
     offset = str.find('^', 0);
     if(offset !=  std::string::npos) {
+		// if either string is longer than 4 characters bail out
+		if(offset > 4 || (str.size() - offset) > 5) {
+			goto error;
+		}
 		const std::string base_str(str, 0, offset);
 		const std::string overlay_str(str, offset + 1, str.size());
 		result = t_letter(base_str, overlay_str);
 	} else {
+		// if the string is longer than 4 characters bail out
+		if(str.size() > 4) {
+			goto error;
+		}
 		result = t_letter(str, filler);
 
 		//ugly hack 
-		if(filler == WILDCARD && (result.base == NOT.base || result.base == STAR.base)) {
+		if(filler == WILDCARD && (result.base == NOT.base || 
+				result.base == STAR.base)) {
+
 			result.overlay = NO_LAYER;
 		}
 	}	
 
 	return result;
+
+error:
+	// when this string is removed also test whether the gettext include 
+	// is still required
+	lg::wml_error << _("Invalid terrain found probably an 1.2 terrain format, "
+		"terrain = ") << input << '\n';
+	
+	return VOID_TERRAIN;
 }
 
 static std::string number_to_string_(t_letter terrain, const int start_position)

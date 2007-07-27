@@ -21,6 +21,8 @@ Version 1.3.6+svn:
 
   * Miscellaneous
     * Isle of Anduin renamed to Isle of Alduin to avoid copyright problems.
+    * The assertion 'str.size() <= 4' no longer happens instead the terrain is
+      read as 'void' and an ingame message is shown.
 
 
 Version 1.3.6:
