@@ -134,4 +134,11 @@ private:
 	bool unlock;
 };
 
+//an object which prevents resizing of the screen occuring during
+//its lifetime.
+struct resize_lock {
+	resize_lock();
+	~resize_lock();
+};
+
 #endif

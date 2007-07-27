@@ -30,6 +30,7 @@
 #include <vector>
 
 #define ERR_GEN LOG_STREAM(err, general)
+#define INFO_GEN LOG_STREAM(info, general)
 
 
 unsigned input_blocker::instance_count = 0; //static initialization
@@ -38,20 +39,6 @@ namespace events
 {
 
 void raise_help_string_event(int mousex, int mousey);
-
-namespace {
-	int disallow_resize = 0;
-}
-
-resize_lock::resize_lock()
-{
-	++disallow_resize;
-}
-
-resize_lock::~resize_lock()
-{
-	--disallow_resize;
-}
 
 namespace {
 
@@ -149,7 +136,19 @@ void context::set_focus(const handler* ptr)
 //in that context. The current context is the one on the top of the stack
 std::deque<context> event_contexts;
 
+std::vector<pump_monitor*> pump_monitors;
+
 } //end anon namespace
+
+pump_monitor::pump_monitor() {
+	pump_monitors.push_back(this);
+}
+
+pump_monitor::~pump_monitor() {
+	pump_monitors.erase(
+		std::remove(pump_monitors.begin(), pump_monitors.end(), this),
+		pump_monitors.end());
+}
 
 event_context::event_context()
 {
@@ -267,7 +266,7 @@ void pump()
 {
 	SDL_PumpEvents();
 
-	static std::pair<int,int> resize_dimensions(0,0);
+	pump_info info;
 
 	//used to keep track of double click events
 	static int last_mouse_down = -1;
@@ -301,15 +300,8 @@ void pump()
 
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize = reinterpret_cast<SDL_ResizeEvent*>(&event);
-
-				if(resize->w < min_allowed_width || resize->h < min_allowed_height) {
-					resize_dimensions.first = 0;
-					resize_dimensions.second = 0;
-				} else {
-					resize_dimensions.first = resize->w;
-					resize_dimensions.second = resize->h;
-				}
-
+				info.resize_dimensions.first = resize->w;
+				info.resize_dimensions.second = resize->h;
 				break;
 			}
 
@@ -329,8 +321,8 @@ void pump()
 					static const int DoubleClickTime = 500;
 
 					static const int DoubleClickMaxMove = 3;
-					const int current_ticks = ::SDL_GetTicks();
-					if(last_mouse_down >= 0 && current_ticks - last_mouse_down < DoubleClickTime &&
+					info.ticks = ::SDL_GetTicks();
+					if(last_mouse_down >= 0 && info.ticks - last_mouse_down < DoubleClickTime &&
 					   abs(event.button.x - last_click_x) < DoubleClickMaxMove &&
 					   abs(event.button.y - last_click_y) < DoubleClickMaxMove) {
 						SDL_UserEvent user_event;
@@ -341,7 +333,7 @@ void pump()
 						::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 					}
 
-					last_mouse_down = current_ticks;
+					last_mouse_down = info.ticks;
 					last_click_x = event.button.x;
 					last_click_y = event.button.y;
 				}
@@ -374,14 +366,10 @@ void pump()
 		}
 	}
 
-	if(resize_dimensions.first > 0 && disallow_resize == 0) {
-		preferences::set_resolution(resize_dimensions);
-		resize_dimensions.first = 0;
-		resize_dimensions.second = 0;
+	//inform the pump monitors that an events::pump() has occurred
+	for(size_t i1 = 0, i2 = pump_monitors.size(); i1 != i2 && i1 < pump_monitors.size(); ++i1) {
+		pump_monitors[i1]->process(info);
 	}
-
-	if (preferences::music_on())
-		sound::think_about_music();
 }
 
 void raise_process_event()

@@ -2674,7 +2674,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
-	const events::resize_lock prevent_resizing;
+	const resize_lock prevent_resizing;
 
 	CVideo& screen = disp.video();
 	surface const scr = screen.getSurface();

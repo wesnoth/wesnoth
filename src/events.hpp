@@ -23,13 +23,6 @@
 namespace events
 {
 
-//an object which prevents resizing of the screen occuring during
-//its lifetime.
-struct resize_lock {
-	resize_lock();
-	~resize_lock();
-};
-
 //any classes that derive from this class will automatically
 //receive sdl events through the handle function for their lifetime,
 //while the event context they were created in is active.
@@ -86,6 +79,21 @@ struct event_context
 
 //causes events to be dispatched to all handler objects.
 void pump();
+
+struct pump_info {
+	pump_info() : ticks(0) {}
+	std::pair<int,int> resize_dimensions;
+	int ticks; //0 if not calculated
+};
+
+class pump_monitor {
+//pump_monitors receive notifcation after an events::pump() occurs
+public:
+	pump_monitor();
+	virtual ~pump_monitor();
+	virtual void process(pump_info& info) = 0;
+};
+
 int flush(Uint32 event_mask=SDL_ALLEVENTS);
 
 void raise_process_event();

@@ -45,7 +45,7 @@ void show_intro(display &disp, const config& data, const config& level)
 	LOG_NG << "showing intro sequence...\n";
 
 	//stop the screen being resized while we're in this function
-	const events::resize_lock stop_resizing;
+	const resize_lock stop_resizing;
 	const events::event_context context;
 
 	bool showing = true;

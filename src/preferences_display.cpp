@@ -319,7 +319,7 @@ bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>
 
 bool show_video_mode_dialog(display& disp)
 {
-	const events::resize_lock prevent_resizing;
+	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
 	CVideo& video = disp.video();

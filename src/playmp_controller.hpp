@@ -22,14 +22,19 @@
 
 #include <vector>
 
-class playmp_controller : public playsingle_controller
+class playmp_controller : public playsingle_controller, public events::pump_monitor
 {
 public:
 	playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
+	~playmp_controller();
 
 	static unsigned int replay_last_turn() { return replay_last_turn_; }
 	static void set_replay_last_turn(unsigned int turn);
+
+	bool counting_down();
+	void think_about_countdown(int ticks);
+	void process(events::pump_info &info);
 
 protected:
 	virtual void handle_generic_event(const std::string& name);
