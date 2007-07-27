@@ -523,7 +523,7 @@ def hack_syntax(filename, lines):
                 # This line presumes the code has been through wmlindent
                 if verbose:
                     print 'wmllint: "%s", line %d: inserting "image=wesnoth-icon.png"'%(filename, i+1)
-                lines.insert(i, leader(precomment) + baeindent + "image=wesnoth-icon.png\n")
+                lines.insert(i, leader(precomment) + baseindent + "image=wesnoth-icon.png\n")
                 modcount += 1        
             need_image = False
     # Boucman's transformation of animation syntax
