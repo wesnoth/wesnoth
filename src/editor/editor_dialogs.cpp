@@ -55,7 +55,7 @@ bool confirm_modification_disposal(display& disp) {
 std::string new_map_dialog(display& disp, const t_translation::t_letter fill_terrain,
 	const bool confirmation_needed, const config &game_config)
 {
-	const events::resize_lock prevent_resizing;
+	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager dialog_mgr;
 
@@ -356,7 +356,7 @@ void preferences_dialog(display &disp, config &prefs) {
 
 std::pair<unsigned, unsigned>
 resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
-	const events::resize_lock prevent_resizing;
+	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager dialog_mgr;
 
