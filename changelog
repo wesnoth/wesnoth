@@ -27,6 +27,9 @@ Version 1.3.6+svn:
    * now [base_unit]id= inside [unit] can extend upon existing unit types
    * new extra_defines key to define in campaigns some other preprocessor
      symbol *before* the files are repreprocessed
+ * team color
+   * allow color ranges to be defined on-the-fly (like color palettes)
+   * now [side] colour=<string> is valid (previously only int)
  * miscellaneous and bug fixes
    * added a .desktop entry for the editor so that it is shown in the kde/gnome
      menu

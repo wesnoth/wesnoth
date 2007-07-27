@@ -112,7 +112,10 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	} else {
 		team_ = itor - parent_->team_names_.begin();
 	}
-	colour_ = lexical_cast_default<int>(cfg_["colour"], index_ + 1) - 1;
+	colour_ = index_;
+	if(!cfg_["colour"].empty()) {
+		colour_ = game_config::color_info(cfg_["colour"]).index() - 1;
+	}
 	gold_ = lexical_cast_default<int>(cfg_["gold"], 100);
 	income_ = lexical_cast_default<int>(cfg_["income"], 0);
 	config *ai = cfg_.child("ai");

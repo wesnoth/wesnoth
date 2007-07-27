@@ -57,6 +57,7 @@ public:
   {
     return(mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep());
   }
+  int index() const; //the default team index for this color, or 0 for none
 private:
   Uint32 mid_ , max_ , min_ , rep_;
 };

@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "game_config.hpp"
 #include "global.hpp"
 #include "color_range.hpp"
 #include "serialization/string_utils.hpp"
@@ -150,4 +151,14 @@ std::string rgb2highlight(Uint32 rgb)
 	  << "," << ((rgb & 0x00FF00) >> 8)
 	  << "," << (rgb & 0x0000FF) << ">";
 	return h.str();
+}
+
+int color_range::index() const
+{
+	for(int i = 1; i < 10; ++i) {
+		if(*this==(game_config::color_info(lexical_cast<std::string>(i)))) {
+			return i;
+		}
+	}
+	return 0;
 }

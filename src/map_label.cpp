@@ -365,20 +365,19 @@ void terrain_label::read(const config& cfg, const variable_set *variables)
 		tmp_colour = utils::interpolate_variables_into_string(
 				  tmp_colour, *variables);
 	}
-	
-	std::vector<std::string> tmp_c = utils::split(tmp_colour,',',
-			utils::REMOVE_EMPTY);
-	switch (tmp_c.size())
-	{
-		case 4:
-			colour.unused = lexical_cast_default<unsigned int>(tmp_c[3]);
-		case 3:
-			colour.b = lexical_cast_default<unsigned int>(tmp_c[2]);
-			colour.g = lexical_cast_default<unsigned int>(tmp_c[1]);
-			colour.r = lexical_cast_default<unsigned int>(tmp_c[0]);
-			break;
+
+	if(!tmp_colour.empty()) {
+		std::vector<Uint32> temp_rgb;
+		try {
+			temp_rgb = string2rgb(tmp_colour);
+		} catch(bad_lexical_cast&) {
+			//throw config::error(_("Invalid color range: ") + name);
+		}
+		if(!temp_rgb.empty()) {
+			colour = int_to_color(temp_rgb[0]);
+		}
 	}
-	colour_    = colour;
+	colour_ = colour;
 }
 
 void terrain_label::write(config& cfg) const

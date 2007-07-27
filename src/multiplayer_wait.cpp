@@ -452,7 +452,15 @@ void wait::generate_menu()
 		}
 
 		str	<< COLUMN_SEPARATOR << sd["user_team_name"];
-		str << COLUMN_SEPARATOR << get_colour_string(lexical_cast_default<int>(sd["colour"], 0) - 1);
+		int disp_color = lexical_cast_default<int>(sd["colour"], 0) - 1;
+		if(!sd["colour"].empty()) {
+			try {
+				disp_color = game_config::color_info(sd["colour"]).index() - 1;
+			} catch(config::error&) {
+				//ignore
+			}
+		}
+		str << COLUMN_SEPARATOR << get_colour_string(disp_color);
 		details.push_back(str.str());
 	}
 
