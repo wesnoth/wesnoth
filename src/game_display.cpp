@@ -244,7 +244,11 @@ void game_display::draw(bool update,bool force)
 		std::set<gamemap::location, ordered_draw> unit_invals;
 
 		const time_of_day& tod = status_.get_time_of_day();
-	
+		const std::string shroud_image = "terrain/" +
+			map_.get_terrain_info(t_translation::VOID_TERRAIN).symbol_image() + ".png";
+		const std::string fog_image = "terrain/" +
+			map_.get_terrain_info(t_translation::FOGGED).symbol_image() + ".png";
+			
 		SDL_Rect clip_rect = map_area();
 		surface const dst(screen_.getSurface());
 		clip_rect_setter set_clip_rect(dst, clip_rect);
@@ -318,7 +322,7 @@ void game_display::draw(bool update,bool force)
 			} else /*if(on_map)*/ {
 				// we apply void also on off-map tiles to
 				// shroud the half-hexes too
-				tile_stack_append(image::get_image(game_config::void_image));
+				tile_stack_append(image::get_image(shroud_image));
 			}
 
 			// footsteps indicating a movement path may be
@@ -333,7 +337,7 @@ void game_display::draw(bool update,bool force)
 
 			// apply fogging
 			if(fogged(*it) /*&& on_map*/ && !is_shrouded) {
-				tile_stack_append(image::get_image(game_config::fog_image));
+				tile_stack_append(image::get_image(fog_image));
 			}
 
 			if(!is_shrouded /*&& on_map*/) {

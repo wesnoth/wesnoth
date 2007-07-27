@@ -47,8 +47,6 @@ namespace game_config
 	std::string terrain_mask_image = "terrain/alphamask.png";
 	std::string grid_image = "terrain/grid.png";
 	std::string unreachable_image = "terrain/darken.png";
-	std::string void_image = "terrain/void.png";
-	std::string fog_image = "terrain/fog.png";
 
 	std::string energy_image = "misc/bar-energy.png";
 	std::string moved_ball_image = "misc/ball-moved.png";
@@ -160,8 +158,6 @@ namespace game_config
 		terrain_mask_image = v["terrain_mask_image"];
 		grid_image = v["grid_image"];
 		unreachable_image = v["unreachable_image"];
-		void_image = v["void_image"];
-		fog_image = v["fog_image"];
 
 		observer_image = v["observer_image"];
 		tod_bright_image = v["tod_bright_image"];
