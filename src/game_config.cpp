@@ -234,6 +234,20 @@ namespace game_config
 		}
 	}
 	
+	const color_range& color_info(const std::string& name)
+	{
+		std::map<std::string, color_range>::const_iterator i = team_rgb_range.find(name);
+		if(i == team_rgb_range.end()) {
+			try {
+				team_rgb_range.insert(std::make_pair(name,color_range(string2rgb(name))));
+				return color_info(name);
+			} catch(bad_lexical_cast&) {
+				throw config::error(_("Invalid color range: ") + name);
+			}
+		}
+		return i->second;
+	}
+
 	const std::vector<Uint32>& tc_info(const std::string& name)
 	{
 		std::map<std::string, std::vector<Uint32> >::const_iterator i = team_rgb_colors.find(name);
