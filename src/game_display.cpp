@@ -58,6 +58,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 	temp_unit_(NULL),
 	status_(status),
 	teams_(t),
+	level_(level),
 	invalidateUnit_(true),
 	currentTeam_(0), activeTeam_(0),
 	sidebarScaling_(1.0),
@@ -540,7 +541,7 @@ void game_display::draw_report(reports::TYPE report_num)
 							  units_, teams_,
 							  teams_[viewing_team()],
 							  size_t(currentTeam_+1),size_t(activeTeam_+1),
-							  selectedHex_,mouseoverHex_,status_,observers_);
+							  selectedHex_,mouseoverHex_,status_,observers_,level_);
 
 	brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {

@@ -200,6 +200,8 @@ private:
 
 	const std::vector<team>& teams_;
 
+	const config& level_;
+
 	void invalidate_route();
 
 	bool invalidateUnit_;

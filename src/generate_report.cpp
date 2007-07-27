@@ -36,7 +36,8 @@ report generate_report(TYPE type,
                        const std::vector<team>& teams, const team& current_team,
                        unsigned int current_side, unsigned int playing_side,
                        const gamemap::location& loc, const gamemap::location& mouseover,
-                       const gamestatus& status, const std::set<std::string>& observers)
+                       const gamestatus& status, const std::set<std::string>& observers,
+                       const config& level)
 {
 	unit_map::iterator u = units.end();
 	SDL_Color HPC;
@@ -140,10 +141,17 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	  break;
 	}
 	case UNIT_XP: {
+	  report res;
+	  std::stringstream tooltip;
+
 	  XPC=u->second.xp_color();
 	  str << "<" << (int) XPC.r << "," << (int) XPC.g << "," << (int) XPC.b << ">"
 	      << u->second.experience() << "/" << u->second.max_experience();
-	  break;
+
+	  tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
+	  res.add_text(str,tooltip);
+
+	  return res;
 	}
 	case UNIT_ADVANCEMENT_OPTIONS: {
 	  report res;
