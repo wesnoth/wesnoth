@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-24 23:30+0200\n"
+"POT-Creation-Date: 2007-07-27 23:51+0200\n"
 "PO-Revision-Date: 2007-03-04 21:00+0900\n"
 "Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -26,8 +26,8 @@ msgid "Random"
 msgstr "Mapa aleatório"
 
 #: data/multiplayer/eras.cfg:12
-msgid "Default"
-msgstr "Padrão"
+msgid "Era of Turmoil"
+msgstr ""
 
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
@@ -45,32 +45,32 @@ msgstr "Aliança da Escuridão"
 msgid "Alliance of Light"
 msgstr "Aliança da Luz"
 
-#: data/multiplayer/factions/drakes-default.cfg:4
+#: data/multiplayer/factions/drakes-turmoil.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "Draconianos"
 
-#: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
+#: data/multiplayer/factions/knalgans-turmoil.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Aliança de Knalga"
 
-#: data/multiplayer/factions/loyalists-default.cfg:4
+#: data/multiplayer/factions/loyalists-turmoil.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Leais"
 
+#: data/multiplayer/factions/northerners-turmoil.cfg:4
 #: data/multiplayer/factions/northerners-aoh.cfg:4
-#: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Nortistas"
 
 #: data/multiplayer/factions/rebels-aoh.cfg:4
-#: data/multiplayer/factions/rebels-default.cfg:4
+#: data/multiplayer/factions/rebels-turmoil.cfg:4
 msgid "Rebels"
 msgstr "Rebeldes"
 
-#: data/multiplayer/factions/undead-default.cfg:4
+#: data/multiplayer/factions/undead-turmoil.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Mortos-Vivos"
@@ -288,11 +288,12 @@ msgstr ""
 "(inscrito por Turin)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
+#, fuzzy
 msgid ""
 "A brave hero of Wesnoth's Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
 "the foul creatures, many of his fellows were killed, but he fought "
-"valiantly, slaying many a foe. But alas! The foul Basilik turned him to "
+"valiantly, slaying many a foe. But alas! The foul Basilisk turned him to "
 "stone even as he slew the last orc. Now all that is left is a stark reminder "
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
@@ -343,12 +344,13 @@ msgstr ""
 "(inscrito por Elvish Pillager)"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:145
+#, fuzzy
 msgid ""
-"This brave warrior, known as Rilhon amoung the Naga, heard tell of a "
-"fabulous treasure that had been lost in these watery caves- a spear whose "
-"head was said to have been fashioned from the tooth of Chak'kso Ney'yks, an "
-"Elder Basilisk slain long ago by the Elvish hero, Eloralduil. According to "
-"the legend, the weapon rested somewhere on the bottom of this very lake "
+"This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
+"treasure that had been lost in these watery caves- a spear whose head was "
+"said to have been fashioned from the tooth of Chak'kso Ney'yks, an Elder "
+"Basilisk slain long ago by the Elvish hero, Eloralduil. According to the "
+"legend, the weapon rested somewhere on the bottom of this very lake "
 "(Ruaskkolin Lake, named for a well-known Sea Serpent who made it his home). "
 "Having prepared himself for battle with the Serpent, Rilhon met with two "
 "rather large surprises. The first was the petrified form of Ruaskkolin the "
@@ -1255,3 +1257,6 @@ msgid ""
 msgstr ""
 "Um benchmark para wesnoth, use as opções --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
+
+#~ msgid "Default"
+#~ msgstr "Padrão"
