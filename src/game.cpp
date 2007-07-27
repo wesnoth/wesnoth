@@ -847,9 +847,6 @@ bool game_controller::new_campaign()
 		defines_map_.clear();
 		defines_map_[difficulties[dlg.result()]] = preproc_define();
 	}
-#ifdef HAVE_PYTHON
-	defines_map_["PYTHON"] = preproc_define();
-#endif
 
 	state_.campaign_define = campaign["define"];
 	state_.campaign_xtra_defines = utils::split(campaign["extra_defines"]);
@@ -1702,6 +1699,10 @@ void game_controller::reset_game_cfg()
 
 #ifdef USE_TINY_GUI
 	defines_map_["TINY"] = preproc_define();
+#endif
+
+#ifdef HAVE_PYTHON
+	defines_map_["PYTHON"] = preproc_define();
 #endif
 
 	if(multiplayer_mode_) {
