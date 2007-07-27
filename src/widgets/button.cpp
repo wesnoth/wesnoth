@@ -167,7 +167,10 @@ void button::enable(bool new_val)
 	if(new_val != enabled())
 	{
 		pressed_ = false;
-		state_ = NORMAL;
+		// check buttons should keep their state
+		if(type_ != TYPE_CHECK) {
+			state_ = NORMAL;
+		}
 		widget::enable(new_val);
 	}
 }
