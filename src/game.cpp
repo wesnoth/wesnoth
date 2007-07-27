@@ -1523,7 +1523,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 		if(is_valid) {
 			const std::string& cache = get_cache_dir();
 			if(cache != "") {
-				const std::string fname = cache + "/_main.cfg-cache" + str.str();
+				const std::string fname = cache + "/cache" + str.str();
 				const std::string fname_checksum = fname + ".checksum";
 
 				file_tree_checksum dir_checksum;
