@@ -218,12 +218,12 @@ bool server::ip_exceeds_connection_limit(const std::string& ip)
 bool server::is_ip_banned(const std::string& ip)
 {
 	for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-		std::cerr << "comparing for ban '" << *i << "' vs '" << ip << "'\n";
+		LOG_SERVER << "comparing for ban '" << *i << "' vs '" << ip << "'\n";
 		if(utils::wildcard_string_match(ip,*i)) {
-			std::cerr << "is banned\n";
+			std::cerr << ip << " is banned\n";
 			return true;
 		}
-		std::cerr << "not banned\n";
+		LOG_SERVER << "not banned\n";
 	}
 
 	return false;
@@ -445,6 +445,7 @@ void server::run()
 				lobby_players_.remove_player(e.socket);
 				for(std::vector<game>::iterator i = games_.begin(); i != games_.end(); ++i) {
 					if(i->is_needed(e.socket)) {
+						//FIXME: when the host disconnects a new one should be chosen and the game shouldn't end (see the handling of [leave_game])
 						delete_game(i);
 						e.socket = 0;
 						break;
@@ -506,7 +507,7 @@ void server::run()
 
 				sync_scheduled = true;
 
-				std::cerr << "done closing socket...\n";
+				LOG_SERVER << "done closing socket...\n";
 			}
 
 			continue;
@@ -692,24 +693,24 @@ void server::process_query(const network::connection sock, const config& query)
 	} else if(admin_passwd_.empty() == false && query["type"] == admin_passwd_) {
 		admins_.insert(sock);
 		response << "You are now recognized as an administrator";
-		std::cerr << "New Admin recognized:\n";
-		std::cerr << "\tIP: "<< network::ip_address(sock)<<"\n";
+		std::cerr << "New Admin recognized:";
+		std::cerr << "\tIP: "<< network::ip_address(sock);
 		std::map<network::connection, player>::iterator temp = players_.find(sock);
-		std::cerr << "\tnick: "<< temp->second.name()<<"\n";
+		std::cerr << "\tnick: "<< temp->second.name();
 		std::cerr << std::endl;
 	} else if(admins_.count(sock) != 0) {
 		response << process_command(query["type"]);
-		std::cerr << "Admin Command:\n";
-		std::cerr << "\ttype:" << query["type"]<<"\n";
-		std::cerr << "\tIP: "<< network::ip_address(sock)<<"\n";
+		std::cerr << "Admin Command:";
+		std::cerr << "\ttype: " << query["type"];
+		std::cerr << "\tIP: "<< network::ip_address(sock);
 		std::map<network::connection, player>::iterator temp = players_.find(sock);
-		std::cerr << "\tnick: "<< temp->second.name()<<"\n";
+		std::cerr << "\tnick: "<< temp->second.name();
 		std::cerr << std::endl;
 	} else if(admin_passwd_.empty() == false) {
-	  std::cerr << "FAILED Admin attempt:\n";
-	  std::cerr << "\tIP: "<< network::ip_address(sock)<<"\n";
+	  std::cerr << "FAILED Admin attempt:";
+	  std::cerr << "\tIP: "<< network::ip_address(sock);
 	  std::map<network::connection, player>::iterator temp = players_.find(sock);
-	  std::cerr << "\tnick: "<< temp->second.name()<<"\n";
+	  std::cerr << "\tnick: "<< temp->second.name();
 	  std::cerr << std::endl;
 	  response << "Error: unrecognized query";
 	} else {
@@ -774,7 +775,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 	const player_map::iterator pl = players_.find(sock);
 	if(pl == players_.end()) {
-		std::cerr << "ERROR: Could not find player in map\n";
+		LOG_SERVER << "ERROR: Could not find player in map\n";
 	}
 
 	if(create_game != NULL) {
@@ -819,7 +820,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 			cfg.add_child("leave_game");
 			network::send_data(cfg,sock);
 
-			std::cerr << "attempt to join unknown game\n";
+			LOG_SERVER << "attempt to join unknown game\n";
 			return;
 		}
 
@@ -842,7 +843,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 			lobby_players_.send_data(sync_initial_response());
 		} else {
-			std::cerr << "ERROR: Could not find player in map\n";
+			LOG_SERVER << "ERROR: Could not find player in map\n";
 		}
 	}
 
@@ -889,7 +890,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	}
 
 	if(g == games_.end()) {
-		std::cerr << "ERROR: unknown socket " << games_.size() << "\n";
+		LOG_SERVER << "ERROR: unknown socket " << games_.size() << "\n";
 		return;
 	}
 
@@ -1141,7 +1142,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		const bool res = g->take_side(sock,data);
 		config response;
 		if(res) {
-			std::cerr << "player joined side\n";
+			LOG_SERVER << "player joined side\n";
 			response["side_secured"] = side->second;
 
 			//update the number of available slots
@@ -1221,7 +1222,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
 				g->send_data(msg);
 			} else {
-				std::cerr << "ERROR: Could not find player in map\n";
+				LOG_SERVER << "ERROR: Could not find player in map\n";
 			}
 
 			if (needed){
@@ -1238,7 +1239,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		if(pl != players_.end()) {
 			pl->second.mark_available(true,"");
 		} else {
-			std::cerr << "ERROR: Could not find player in map\n";
+			LOG_SERVER << "ERROR: Could not find player in map\n";
 		}
 		lobby_players_.add_player(sock);
 
@@ -1252,7 +1253,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	} else if(data["side_secured"].empty() == false) {
 		return;
 	} else if(data["failed"].empty() == false) {
-		std::cerr << "ERROR: failure to get side\n";
+		LOG_SERVER << "ERROR: Failure to get side\n";
 		return;
 	}
 
