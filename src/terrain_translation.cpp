@@ -694,6 +694,12 @@ static t_letter string_to_number_(const std::string& str, const t_layer filler) 
 	return string_to_number_(str, dummy, filler);
 }
 
+// when this string is removed also test whether the gettext include 
+// is still required
+#define RETURN_TERRAIN_ERROR lg::wml_error << \
+_("Invalid terrain found probably an 1.2 terrain format, "\
+		"terrain = ") << input << '\n';\
+	return VOID_TERRAIN
 static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler)
 {
 	t_letter result;
@@ -722,7 +728,7 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
     if(offset !=  std::string::npos) {
 		// if either string is longer than 4 characters bail out
 		if(offset > 4 || (str.size() - offset) > 5) {
-			goto error;
+			RETURN_TERRAIN_ERROR;
 		}
 		const std::string base_str(str, 0, offset);
 		const std::string overlay_str(str, offset + 1, str.size());
@@ -730,7 +736,7 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 	} else {
 		// if the string is longer than 4 characters bail out
 		if(str.size() > 4) {
-			goto error;
+			RETURN_TERRAIN_ERROR;
 		}
 		result = t_letter(str, filler);
 
@@ -743,14 +749,6 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 	}	
 
 	return result;
-
-error:
-	// when this string is removed also test whether the gettext include 
-	// is still required
-	lg::wml_error << _("Invalid terrain found probably an 1.2 terrain format, "
-		"terrain = ") << input << '\n';
-	
-	return VOID_TERRAIN;
 }
 
 static std::string number_to_string_(t_letter terrain, const int start_position)
