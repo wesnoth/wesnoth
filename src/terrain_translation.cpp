@@ -720,7 +720,11 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 	// split if we have 1 space inside
 	size_t offset = str.find(' ', 0);
 	if(offset != std::string::npos) {
-		start_position = lexical_cast<int>(str.substr(0, offset));
+		try {
+			start_position = lexical_cast<int>(str.substr(0, offset));
+		} catch(bad_lexical_cast&) {
+			RETURN_TERRAIN_ERROR;
+		}
 		str.erase(0, offset + 1);
 	}
 
