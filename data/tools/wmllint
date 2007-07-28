@@ -31,6 +31,8 @@
 # Note: You can shut wmllint up about custom terrains by having a comment
 # on the same line that includes the string "wmllint: ignore".
 # You can also prevent description insertions with "wmllint: no-icon".
+# Finally, you can disable stack-based malformation checks with a comment
+# containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
 
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
@@ -453,8 +455,16 @@ def validate_stack(stack, filename, lineno):
         print '"%s", line %d: %s' % (filename, lineno+1, stack)
     pass
 
-def validate_on_pop(tagstack, closer, file, lineno):
+def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
+    (tag, attributes) = tagstack[-1]
+    ancestors = map(lambda x: x[0], tagstack)
+    if verbose >= 3:
+        print '"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes)
+    # Detect a malformation that will cause the game to barf while attempting to
+    # deserialize an empty unit.
+    if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
+        print '"%s", line %d: [side] without type attribute' % (filename, lineno)
     pass
 
 # Syntax transformations
@@ -673,6 +683,7 @@ def translator(filename, mapxforms, textxform):
     outmap = []
     newdata = []
     lineno = baseline = 0
+    validate = True
     while mfile:
         if not map_only:
             line = mfile.pop(0)
@@ -751,31 +762,37 @@ def translator(filename, mapxforms, textxform):
             if newline != line:
                 modified = True
             # Now do warnings based on the state of the tag stack
-            trimmed = newline.split("#")[0]
+            fields = newline.split("#")
+            trimmed = fields[0]
+            comment = ""
+            if len(fields) > 1:
+                comment = fields[1]
             for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", trimmed):
                 tag = instance.group(1)
-                while tagstack and tagstack[-1].endswith("="):
-                    tagstack.pop()
+                attributes = []
                 closer = instance.group(0)[1] == '/'
                 if not closer:
-                    tagstack.append(tag)
+                    tagstack.append((tag, {}))
                 else:
                     if len(tagstack) == 0:
                         print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
-                    elif tagstack[-1] != tag:
-                        print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1], tag)
+                    elif tagstack[-1][0] != tag:
+                        print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1][0], tag)
                     else:
-                        while tagstack and tagstack[-1].endswith("="):
-                            tagstack.pop()
+                        if validate:
+                            validate_on_pop(tagstack, tag, filename, lineno)
                         tagstack.pop()
-                        validate_on_pop(tagstack, closer, filename, lineno)
             if tagstack:
-                for instance in re.finditer(r"([a-z][a-z_]*[a-z])\s*=", trimmed):
+                for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(\w+|"[^"]*")', trimmed):
                     attribute = instance.group(1)
-                    while tagstack and tagstack[-1].endswith("="):
-                        tagstack.pop()
-                    tagstack.append(attribute + "=")
-                validate_stack(tagstack, filename, lineno)
+                    value = instance.group(2)
+                    tagstack[-1][1][attribute] = value
+                if validate:
+                    validate_stack(tagstack, filename, lineno)
+            if "wmllint: validate-on" in comment:
+                validate = True
+            if "wmllint: validate-off" in comment:
+                validate = False
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
