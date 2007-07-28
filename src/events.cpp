@@ -31,7 +31,12 @@
 
 #define ERR_GEN LOG_STREAM(err, general)
 #define INFO_GEN LOG_STREAM(info, general)
-
+#define INPUT_MASK SDL_EVENTMASK(SDL_KEYDOWN)|\
+			               SDL_EVENTMASK(SDL_KEYUP)|\
+			               SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|\
+			               SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|\
+			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|\
+			               SDL_EVENTMASK(SDL_JOYBUTTONUP)
 
 unsigned input_blocker::instance_count = 0; //static initialization
 
@@ -272,22 +277,39 @@ void pump()
 	static int last_mouse_down = -1;
 	static int last_click_x = -1, last_click_y = -1;
 
-	SDL_Event event;
-	while(SDL_PollEvent(&event)) {
-
+	SDL_Event temp_event;
+	int poll_count = 0;
+	int begin_ignoring = 0;
+	bool ignore_user_input = false;
+	std::vector< SDL_Event > events;
+	while(SDL_PollEvent(&temp_event)) {
+		++poll_count;
+		if(!begin_ignoring && temp_event.type == SDL_ACTIVEEVENT) {
+			begin_ignoring = poll_count;
+		} else if(begin_ignoring > 0 && SDL_EVENTMASK(temp_event.type)&INPUT_MASK) {
+			//ignore user input events that occurred after the window was activated
+			continue;
+		}
+		events.push_back(temp_event);
+	}
+	std::vector<SDL_Event>::iterator ev_it = events.begin();
+	for(int i=1; i < begin_ignoring; ++i){
+		if(SDL_EVENTMASK(ev_it->type)&INPUT_MASK) {
+			//ignore user input events that occurred before the window was activated
+			ev_it = events.erase(ev_it);
+		} else {
+			++ev_it;
+		}
+	}
+	std::vector<SDL_Event>::iterator ev_end = events.end();
+	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it){
+		SDL_Event &event = *ev_it;
 		switch(event.type) {
 
 			case SDL_ACTIVEEVENT: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
 				if((ae.state & SDL_APPMOUSEFOCUS) != 0 || (ae.state & SDL_APPINPUTFOCUS) != 0) {
 					cursor::set_focus(ae.gain != 0);
-					events::flush( SDL_EVENTMASK(SDL_KEYDOWN)|
-			               SDL_EVENTMASK(SDL_KEYUP)|
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|
-			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|
-			               SDL_EVENTMASK(SDL_JOYBUTTONUP)
-			             );
 				}
 				break;
 			}
@@ -319,7 +341,6 @@ void pump()
 				cursor::set_focus(true);
 				if(event.button.button == SDL_BUTTON_LEFT) {
 					static const int DoubleClickTime = 500;
-
 					static const int DoubleClickMaxMove = 3;
 					info.ticks = ::SDL_GetTicks();
 					if(last_mouse_down >= 0 && info.ticks - last_mouse_down < DoubleClickTime &&
@@ -332,12 +353,10 @@ void pump()
 						user_event.data2 = reinterpret_cast<void*>(event.button.y);
 						::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 					}
-
 					last_mouse_down = info.ticks;
 					last_click_x = event.button.x;
 					last_click_y = event.button.y;
 				}
-
 				break;
 			}
 
@@ -440,9 +459,9 @@ void raise_help_string_event(int mousex, int mousey)
 	}
 }
 
-int flush(Uint32 event_mask)
+int discard(Uint32 event_mask)
 {
-	int flush_count = 0;
+	int discard_count = 0;
 	SDL_Event temp_event;
 	std::vector< SDL_Event > keepers;
 	SDL_Delay(10);
@@ -450,7 +469,7 @@ int flush(Uint32 event_mask)
 		if((SDL_EVENTMASK(temp_event.type) & event_mask) == 0) {
 			keepers.push_back( temp_event );
 		} else {
-			++flush_count;
+			++discard_count;
 		}
 	}
 
@@ -462,7 +481,31 @@ int flush(Uint32 event_mask)
                 }
         }
 
-	return flush_count;
+	return discard_count;
+}
+} //end events namespace
+
+input_blocker::input_blocker()
+{
+	SDL_EventState(SDL_KEYDOWN, SDL_IGNORE);
+	SDL_EventState(SDL_KEYUP, SDL_IGNORE);
+	SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_IGNORE);
+	SDL_EventState(SDL_MOUSEBUTTONUP, SDL_IGNORE);
+	SDL_EventState(SDL_JOYBUTTONDOWN, SDL_IGNORE);
+	SDL_EventState(SDL_JOYBUTTONUP, SDL_IGNORE);
+	instance_count++;
 }
 
+input_blocker::~input_blocker()
+{
+	instance_count--;
+	if(instance_count == 0) {
+		events::discard(INPUT_MASK);
+		SDL_EventState(SDL_KEYDOWN, SDL_ENABLE);
+		SDL_EventState(SDL_KEYUP, SDL_ENABLE);
+		SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_ENABLE);
+		SDL_EventState(SDL_MOUSEBUTTONUP, SDL_ENABLE);
+		SDL_EventState(SDL_JOYBUTTONDOWN, SDL_ENABLE);
+		SDL_EventState(SDL_JOYBUTTONUP, SDL_ENABLE);
+	}
 }

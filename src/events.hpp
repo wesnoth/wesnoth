@@ -94,7 +94,7 @@ public:
 	virtual void process(pump_info& info) = 0;
 };
 
-int flush(Uint32 event_mask=SDL_ALLEVENTS);
+int discard(Uint32 event_mask=SDL_ALLEVENTS);
 
 void raise_process_event();
 void raise_draw_event();
@@ -105,39 +105,13 @@ void raise_help_string_event(int mousex, int mousey);
 
 typedef std::vector<events::handler*> handler_vector;
 
-struct input_blocker
+class input_blocker
 {
+public:
+	input_blocker();
+	~input_blocker();
+private:
 	static unsigned instance_count;
-	input_blocker()
-	{
-		SDL_EventState(SDL_KEYDOWN, SDL_IGNORE);
-		SDL_EventState(SDL_KEYUP, SDL_IGNORE);
-		SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_IGNORE);
-		SDL_EventState(SDL_MOUSEBUTTONUP, SDL_IGNORE);
-		SDL_EventState(SDL_JOYBUTTONDOWN, SDL_IGNORE);
-		SDL_EventState(SDL_JOYBUTTONUP, SDL_IGNORE);
-		instance_count++;
-	}
-
-	~input_blocker()
-	{
-		instance_count--;
-		if(instance_count == 0) {
-			events::flush( SDL_EVENTMASK(SDL_KEYDOWN)|
-			               SDL_EVENTMASK(SDL_KEYUP)|
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)|
-			               SDL_EVENTMASK(SDL_MOUSEBUTTONUP)|
-			               SDL_EVENTMASK(SDL_JOYBUTTONDOWN)|
-			               SDL_EVENTMASK(SDL_JOYBUTTONUP)
-			             );
-			SDL_EventState(SDL_KEYDOWN, SDL_ENABLE);
-			SDL_EventState(SDL_KEYUP, SDL_ENABLE);
-			SDL_EventState(SDL_MOUSEBUTTONDOWN, SDL_ENABLE);
-			SDL_EventState(SDL_MOUSEBUTTONUP, SDL_ENABLE);
-			SDL_EventState(SDL_JOYBUTTONDOWN, SDL_ENABLE);
-			SDL_EventState(SDL_JOYBUTTONUP, SDL_ENABLE);
-		}
-	}
 };
 
 #endif
