@@ -772,7 +772,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		if (cursor::get() != cursor::WAIT) {
 			if(selected_unit != units_.end() && selected_unit->second.side() == team_num_
-			   && !selected_unit->second.incapacitated()) {
+			   && !selected_unit->second.incapacitated() && !browse) {
 				if (attack_from.valid()) {
 					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
 				} else if (mouseover_unit==units_.end() && current_paths_.routes.count(new_hex)) {
@@ -785,7 +785,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			}
 		}
 
-		if (attack_from.valid()) {
+		if (attack_from.valid() && !browse) {
 			std::string dir_str = gamemap::location::write_direction(new_hex.get_relative_dir(attack_from));
 			surface attack_dir_surf = image::get_image("misc/attack-from-"+dir_str+".png", image::UNMASKED,image::NO_ADJUST_COLOUR);
 			gui_->set_mouseover_hex_overlay(attack_dir_surf);
