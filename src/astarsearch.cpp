@@ -167,7 +167,8 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 
 	a_star_init(src, dst, openList, aStarGameWorld, parWidth, parHeight, vectLocation, teleports, locNbTeleport);
 
-	while (!openList.empty())
+	bool routeSolved = false;
+	while (!routeSolved && !openList.empty())
 	{
 		locCurNode = openList.front();
 		wassert(locCurNode != NULL);
@@ -175,39 +176,39 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 		//if we have found a solution
 		if (locCurNode->loc == dst)
 		{
-			locDestNode = locCurNode;
+			routeSolved = true;
+		} else {
+			std::pop_heap(openList.begin(), openList.end(), compare_lt_a_star_node);
+			openList.pop_back();
 
-			LOG_PF << "found solution; calculating it...\n";
-			while (locCurNode != NULL)
-			{
-				locRoute.steps.push_back(locCurNode->loc);
-				locCurNode = locCurNode->nodeParent;
-			}
-			std::reverse(locRoute.steps.begin(), locRoute.steps.end());
-			locRoute.move_left = int(locDestNode->g);
+			wassert(locCurNode->isInCloseList == false);
+			locCurNode->isInCloseList = true;
 
-			wassert(locRoute.steps.front() == src);
-			wassert(locRoute.steps.back() == dst);
-
-			LOG_PF << "exiting a* search (solved)\n";
-			goto label_AStarSearch_end;
+			a_star_explore_neighbours(dst, stop_at, costCalculator, parWidth, parHeight,
+				teleports, vectLocation, openList, aStarGameWorld, locCurNode, locNbTeleport);
 		}
-
-		std::pop_heap(openList.begin(), openList.end(), compare_lt_a_star_node);
-		openList.pop_back();
-
-		wassert(locCurNode->isInCloseList == false);
-		locCurNode->isInCloseList = true;
-
-		a_star_explore_neighbours(dst, stop_at, costCalculator, parWidth, parHeight, teleports, vectLocation,
-		                          openList, aStarGameWorld, locCurNode, locNbTeleport);
-
 	}
+	if(routeSolved) {
+		locDestNode = locCurNode;
 
-	LOG_PF << "aborted a* search\n";
-	locRoute.move_left = int(costCalculator->getNoPathValue());
+		LOG_PF << "found solution; calculating it...\n";
+		while (locCurNode != NULL)
+		{
+			locRoute.steps.push_back(locCurNode->loc);
+			locCurNode = locCurNode->nodeParent;
+		}
+		std::reverse(locRoute.steps.begin(), locRoute.steps.end());
+		locRoute.move_left = int(locDestNode->g);
 
-label_AStarSearch_end:
+		wassert(locRoute.steps.front() == src);
+		wassert(locRoute.steps.back() == dst);
+
+		LOG_PF << "exiting a* search (solved)\n";
+	} else {
+		//route not solved
+		LOG_PF << "aborted a* search\n";
+		locRoute.move_left = int(costCalculator->getNoPathValue());
+	}
 	openList.clear();
 	aStarGameWorld.clear();
 	return locRoute;
