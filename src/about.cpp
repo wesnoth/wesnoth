@@ -28,6 +28,38 @@ namespace about
 	static std::map<std::string , std::string> images;
 	static std::string images_default;
 
+// Given a vector of strings, and a config representing an [about] section,
+// add all the credits lines from the about section to the list of strings.
+std::string add_lines(std::vector<std::string> &res, config const &c) {
+	std::string title=c["title"];
+	if(title.size()) {
+	  	title = N_("+" + title);
+		res.push_back(title);
+	}
+
+	std::vector<std::string> lines = utils::split(c["text"], '\n');
+    for(std::vector<std::string>::iterator line = lines.begin();
+		line != lines.end(); line++) {
+		if((*line)[0] == '+' && (*line).size()>1){
+			*line = N_("+  " + (*line).substr(1,(*line).size()-1));
+	    } else {
+			*line = "-  " + *line;
+	    }
+	    if(line->size()) {
+			if ((*line)[0] == '_')
+				*line = gettext(line->substr(1,line->size()-1).c_str());
+			res.push_back(*line);
+		}
+	}
+
+	config::child_list entries = c.get_children("entry");
+	config::child_list::const_iterator entry;
+	for(entry = entries.begin(); entry != entries.end(); entry++) {
+		res.push_back("-  "+(**entry)["name"]);
+	}
+}
+
+
 std::vector<std::string> get_text(std::string campaign) {
 	std::vector< std::string > res;
 
@@ -36,48 +68,12 @@ std::vector<std::string> get_text(std::string campaign) {
 	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
 	  //just finished a particular campaign
 	  if(campaign.size() && campaign == (**cc)["id"]){
-	    std::string title=(**cc)["title"];
-	    if(title.size()){
-	      title = N_("+" + title);
-	      res.push_back(title);
-	    }
-	    std::vector<std::string> lines=utils::split((**cc)["text"],'\n');
-	    for(std::vector<std::string>::iterator line=lines.begin();
-		line != lines.end(); line++){
-	      if((*line)[0] == '+' && (*line).size()>1){
-		*line = N_("+  " + (*line).substr(1,(*line).size()-1));
-	      }else{
-		*line = "-  " + *line;
-	      }
-	      if(line->size()){
-		if ((*line)[0] == '_')
-		  *line = gettext(line->substr(1,line->size()-1).c_str());
-		res.push_back(*line);
-	      }
-	    }
+	  	add_lines(res, **cc);
 	  }
 	}
 
 	for(config::child_list::const_iterator acc = children.begin(); acc != children.end(); ++acc) {
-	  std::string title=(**acc)["title"];
-	  if(title.size()){
-	    title = N_("+" + title);
-	    res.push_back(title);
-	  }
-	  std::vector<std::string> lines=utils::split((**acc)["text"],'\n');
-	  for(std::vector<std::string>::iterator line=lines.begin();
-	      line != lines.end(); line++){
-	    if((*line)[0] == '+' && (*line).size()>1){
-	      *line = N_("+  " + (*line).substr(1,(*line).size()-1));
-	    }else{
-	      *line = "-  " + *line;
-	    }
-	    if(line->size()){
-	      if ((*line)[0] == '_')
-		*line = gettext(line->substr(1,line->size()-1).c_str());
-	      res.push_back(*line);
-	    }
-	  }
+	  add_lines(res, **acc);
 	}
 
 	return res;
@@ -117,8 +113,14 @@ void set_about(const config& cfg){
 				}
 				std::vector<std::string> lines=utils::split(AA["text"],'\n');
 				for(std::vector<std::string>::iterator line=lines.begin();
-			line != lines.end(); line++){
+					line != lines.end(); line++){
 					text+="    "+(*line)+"\n";
+				}
+				
+				config::child_list entries = AA.get_children("entry");
+				config::child_list::const_iterator entry;
+				for(entry = entries.begin(); entry != entries.end(); entry++) {
+					text+="    "+(**entry)["name"]+"\n";
 				}
 
 				if(!AA["images"].empty()){
@@ -128,7 +130,7 @@ void set_about(const config& cfg){
 						images[campaign]+=","+AA["images"];
 					}
 				}
-		}
+			}
 			temp["text"]=text;
 			about_list.add_child("about",temp);
 		}
