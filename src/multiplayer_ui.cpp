@@ -430,12 +430,16 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 			semiword.assign(text,last_space+1,text.size());
 		}
 
-
 		std::vector<std::string> matches;
 		std::string best_match = semiword;
-		std::vector<std::string>& users = user_list_;
-		std::sort<std::vector<std::string>::iterator>(users.begin(), users.end());
-		for(std::vector<std::string>::const_iterator i = users.begin(); i != users.end(); ++i) {
+		config::child_list users = gamelist_.get_children("user");
+		config::child_iterator user;
+		std::vector<std::string> user_list;
+		for (user = users.begin(); user != users.end(); ++user) {
+			user_list.push_back(std::string((**user)["name"]));
+		}
+		std::sort<std::vector<std::string>::iterator>(user_list.begin(), user_list.end());
+		for(std::vector<std::string>::const_iterator i = user_list.begin(); i != user_list.end(); ++i) {
 			if( i->size() >= semiword.size() &&
 					std::equal(semiword.begin(),semiword.end(),i->begin(),chars_equal_insensitive)) {
 				if(matches.empty()) {
