@@ -16,6 +16,7 @@
 #include "construct_dialog.hpp"
 #include "game_display.hpp"
 #include "font.hpp"
+#include "marked-up_text.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
@@ -701,7 +702,7 @@ void ui::gamelist_updated(bool silent)
 	std::vector< std::string >::const_iterator help_itor = user_strings.begin();
 	std::vector< std::string >::iterator menu_itor = menu_strings.begin();
    	while(help_itor != user_strings.end() && menu_itor != menu_strings.end()) {
-		*menu_itor++ += help_sep + *help_itor++;
+		*menu_itor++ += help_sep + font::del_tags(*help_itor++);
 	}
 	set_user_list(user_strings, silent);
 	set_user_menu_items(menu_strings);
