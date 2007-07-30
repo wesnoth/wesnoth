@@ -52,6 +52,7 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 		return wide_string();
 
 	wide_string prefix, res;
+	int random_usage = 0;
 
 	while(res.size() < max_len) {
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
@@ -64,12 +65,12 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 			randint = get_random();
 			rng_results.push_back(randint);
 		} else {
-			if (rng_results.size() > 0) {
-				randint = rng_results[0];
-				rng_results.erase(rng_results.begin());
+			if (rng_results.size() > random_usage) {
+				randint = rng_results[random_usage++];
 			} else {
-				// use the local rng
-				randint = rand() & 0x7FFFFFFF;
+				randint = 0xC0DE9D9; // create a pseudorandom number
+				randint += rng_results[rng_results.size() % random_usage++];
+				randint &= 0x7FFFFFFF; //chop off any excess bits
 			}
 		}
 		//std::cout << (use_game_rng ? "true":"false") << " " << randint << "\n";
