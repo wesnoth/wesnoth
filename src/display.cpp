@@ -779,20 +779,21 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
 #endif
 	
-	const SDL_Rect& text_area = font::text_area(text,font_sz);
-	const int x = get_location_x(loc) - text_area.w/2
+	surface text_surf = font::get_rendered_text(text, font_sz, color);
+	surface back_surf = font::get_rendered_text(text, font_sz, font::DARK_COLOUR);
+	const int x = get_location_x(loc) - text_surf->w/2
 	              + static_cast<int>(x_in_hex* hex_size());
-	const int y = get_location_y(loc) - text_area.h/2
+	const int y = get_location_y(loc) - text_surf->h/2
 	              + static_cast<int>(y_in_hex* hex_size());
 
-	const SDL_Rect& rect = map_outside_area();
+	SDL_Rect clip_rect = map_area();
 	for (int dy=-1; dy <= 1; dy++) {
 		for (int dx=-1; dx <= 1; dx++) {
 			if (dx!=0 || dy!=0)
-				font::draw_text(&screen_, rect, font_sz, font::DARK_COLOUR, text, x+dx, y+dy);
+				video().blit_surface(x+dx, y+dy, back_surf, NULL, &clip_rect);
 		}
 	}
-	font::draw_text(&screen_, rect,font_sz, color, text, x, y);
+	video().blit_surface(x, y, text_surf, NULL, &clip_rect);
 }
 
 void display::clear_hex_overlay(const gamemap::location& loc)
