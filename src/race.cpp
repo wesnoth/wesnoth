@@ -69,7 +69,9 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 				randint = rng_results[random_usage++];
 			} else {
 				randint = 0xC0DE9D9; // create a pseudorandom number
-				randint += rng_results[rng_results.size() % random_usage++];
+				if(!rng_results.empty()) {
+					randint += rng_results[rng_results.size() % random_usage++];
+				}
 				randint &= 0x7FFFFFFF; //chop off any excess bits
 			}
 		}
