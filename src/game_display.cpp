@@ -243,11 +243,11 @@ void game_display::draw(bool update,bool force)
 		return;
 	}
 
+	halo::unrender(invalidated_);
+
 	//int simulate_delay = 0;
 	if(!invalidated_.empty()) {
 		changed = true;
-		
-		halo::unrender(invalidated_);
 
 		// z-ordered set to store invalidated units
 		std::set<gamemap::location, ordered_draw> unit_invals;
@@ -518,16 +518,10 @@ void game_display::draw(bool update,bool force)
 			}
 		}
 
-		halo::render();
-		
 		invalidated_.clear();
-	} else {
-		// if no hexes are invalidated we still need to update the
-		// haloes since there might be animated or expired haloes
-		wassert(invalidated_.empty());
-		halo::unrender(invalidated_);
-		halo::render();
 	}
+
+	halo::render();
 
 	draw_sidebar();
 	//FIXME: This changed can probably be smarter
