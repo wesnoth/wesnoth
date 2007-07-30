@@ -227,15 +227,24 @@ void game_display::draw(bool update,bool force)
 		return;
 	}
 
+	bool changed = display::draw_init();
+
 	//log_scope("Drawing");
 	invalidate_animations();
 
 	process_reachmap_changes();
 
-	bool changed = display::draw_init();
+	//FIXME: must modify changed, but best to do it at the
+	//floating_label level 
+	prune_chat_messages();
+
+	if(map_.empty()) {
+		display::draw_wrap(update, force, changed);
+		return;
+	}
 
 	//int simulate_delay = 0;
-	if(!map_.empty() && !invalidated_.empty()) {
+	if(!invalidated_.empty()) {
 		changed = true;
 		
 		halo::unrender(invalidated_);
@@ -512,7 +521,7 @@ void game_display::draw(bool update,bool force)
 		halo::render();
 		
 		invalidated_.clear();
-	} else if (!map_.empty()) {
+	} else {
 		// if no hexes are invalidated we still need to update the
 		// haloes since there might be animated or expired haloes
 		wassert(invalidated_.empty());
@@ -520,12 +529,9 @@ void game_display::draw(bool update,bool force)
 		halo::render();
 	}
 
-	if(!map_.empty()) {
-		draw_sidebar();
-		changed = true;
-	}
-
-	prune_chat_messages();
+	draw_sidebar();
+	//FIXME: This changed can probably be smarter
+	changed = true;  
 
 	// simulate slow pc
 	//SDL_Delay(2*simulate_delay + rand() % 20);
