@@ -42,7 +42,6 @@ if __name__ == "__main__":
             section.lines = []
             for entry in about.get_all("entry"):
                 name = entry.get_text_val("name")
-                if name == "*": continue
                 comment = entry.get_text_val("comment", "")
                 wikiuser = entry.get_text_val("wikiuser", "")
                 email = entry.get_text_val("email", "")
@@ -76,6 +75,9 @@ developer to do it for you.
         for section in sections:
             output("=== %s ===\n" % section.title)
             for name, comment, wikiuser, email in section.lines:
+                if name == "*":
+                    output("<hr>\n")
+                    continue
                 if comment: comment = " - " + comment
                 if wikiuser:
                     if "(" in name:
