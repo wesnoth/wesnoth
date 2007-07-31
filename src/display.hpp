@@ -203,6 +203,9 @@ public:
 	//toggle)
 	void sunset(const size_t delay = 0);
 
+	//toogle to continuously redrawing the screen
+	void toggle_benchmark();
+
 	//function to draw text on a hex. (0.5, 0.5) is the center
 	//The font size is adjusted to the zoom factor
 	void draw_text_in_hex(const gamemap::location& loc, const std::string& text,

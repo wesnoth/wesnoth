@@ -1902,6 +1902,8 @@ namespace events{
 		} else if(game_config::debug && cmd == "sunset") {
 			int delay = lexical_cast_default<int>(data);
 			gui_->sunset(delay);
+		} else if(cmd == "benchmark") {
+			gui_->toggle_benchmark();
 		} else if(cmd == "w") {
 			save_game(data,gui::NULL_DIALOG);
 		} else if(cmd == "wq") {

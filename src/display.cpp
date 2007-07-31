@@ -55,6 +55,8 @@ namespace {
 	size_t sunset_delay = 0;
 	size_t sunset_timer = 0;
 
+	bool benchmark = false;
+
 	// number of border hexes, the real size will be border 
 	// and border + 0.5 depending whether the x is odd or even 
 	double border = 0.5;
@@ -570,9 +572,15 @@ void display::tile_stack_render(int x, int y)
 	update_rect(x, y, zoom_, zoom_);
 }
 
-void display::sunset(const size_t delay) {
+void display::sunset(const size_t delay)
+{
 	// this allow both parametric and toggle use
 	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
+}
+
+void display::toggle_benchmark()
+{
+	benchmark = !benchmark;
 }
 
 void display::flip()
@@ -904,6 +912,12 @@ bool display::draw_init()
 // Initiate a redraw.  May require redrawing panels and background
 {
 	bool changed = false;
+
+	if(benchmark) {
+		panelsDrawn_ = true;
+		redraw_background_ = true;
+		invalidateAll_ = true;
+	}
 
 	if(!panelsDrawn_) {
 		draw_all_panels();
