@@ -174,12 +174,8 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 	names_[FEMALE] = utils::split(cfg["female_names"]);
 	std::string s;
 	s = cfg["male_names"].value();
-	s.erase(0, 3); // no idea where this garbage bytes come from...
-	//std::cout << s << " \n ";
 	names_untranslated_[MALE] = utils::split(s);
 	s = cfg["female_names"].value();
-	s.erase(0, 3); // no idea where this garbage bytes come from...
-	//std::cout << s << "\n";
 	names_untranslated_[FEMALE] = utils::split(s);
 
 	chain_size_ = atoi(cfg["markov_chain_size"].c_str());
@@ -190,8 +186,6 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 	next_[FEMALE] = markov_prefixes(names_[FEMALE],chain_size_);
 	next_untranslated_[MALE] = markov_prefixes(names_untranslated_[MALE],chain_size_);
 	next_untranslated_[FEMALE] = markov_prefixes(names_untranslated_[FEMALE],chain_size_);
-
-	//std::cout << cfg["male_names"].value() << " \n " << cfg["female_names"].value() << "\n";
 }
 
 const t_string& unit_race::name() const { return name_; }
@@ -203,9 +197,7 @@ std::string unit_race::generate_name(unit_race::GENDER gender) const
 
 	// hack to be backward-compatible with old versions
 	result = utils::wstring_to_string(markov_generate_name(next_untranslated_[gender],chain_size_,12, true, random_values));
-	//std::cout << "en: " << result << "\n";
 	result = utils::wstring_to_string(markov_generate_name(next_[gender],chain_size_,12, false, random_values));
-	//std::cout << "localized: " << result << "\n";
 	return result;
 }
 
