@@ -281,6 +281,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			const int ticks = SDL_GetTicks();
 			const int num_turns = atoi((*scenario)["turns"].c_str());
+			// FIXME: make this an auto_ptr
 			playsingle_controller *pcontroller;
 
 			LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
@@ -294,11 +295,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			case IO_CLIENT:
 			  	pcontroller = new playmp_controller(*scenario,units_data,gamestate,ticks,num_turns,game_config,video,skip_replay);
 				LOG_NG << "created objects... " << (SDL_GetTicks() - pcontroller->get_ticks()) << "\n";
-				res = reinterpret_cast<playmp_controller *>(pcontroller)->play_scenario(story, log, skip_replay);
+				res = dynamic_cast<playmp_controller *>(pcontroller)->play_scenario(story, log, skip_replay);
 				break;
 			}
-
-
 
 			// tell all clients that the campaign won't continue
 			// why isn't this done on VICTORY as well?
@@ -316,6 +315,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				                 _("You have been defeated!")
 				                 ).show();
 			}
+
+			// FIXME: Support this for MP as well.
+			if (io_type == IO_NONE && (res == VICTORY || res == DEFEAT)) {
+				pcontroller->linger(log);
+			}
+
 			// Temporary fix:
 			// Only apply preferences for replays and autosave
 			// deletes on victory.  We need to rethink what this

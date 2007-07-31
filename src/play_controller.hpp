@@ -145,6 +145,7 @@ protected:
 	unsigned int start_turn_;
 	bool skip_replay_;
 	bool browse_;
+	bool linger_;
 	bool scrolling_;
 	bool first_turn_;
 
