@@ -241,6 +241,15 @@ t_string t_string::from_serialized(const std::string& string)
 	return res;
 }
 
+const std::string t_string::base_str() const
+{
+	std::string res;
+	for(walker w(*this); !w.eos(); w.next()) {
+		res += std::string(w.begin(), w.end());
+	}
+	return res;
+}
+
 std::string t_string::to_serialized() const
 {
 	t_string res;

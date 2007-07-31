@@ -80,6 +80,7 @@ public:
 	const std::string& str() const;
 	const char* c_str() const;
 	const std::string& value() const;
+	const std::string base_str() const;
 
 	void reset_translation() const;
 

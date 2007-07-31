@@ -17,8 +17,6 @@
 
 #include <cctype>
 #include <sstream>
-#include "SDL_types.h"
-
 #include "gettext.hpp"
 #include "util.hpp"
 #include "log.hpp"

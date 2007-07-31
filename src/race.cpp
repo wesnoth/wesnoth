@@ -57,13 +57,6 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 	while(res.size() < max_len) {
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
 		if(i == prefixes.end() || i->second.empty()) {
-			/* REMOVE ME */
-			if(use_game_rng) {
-				std::cerr << "[debug" << ++debug_usage << "] rng_results.size()=" << rng_results.size() << " A";
-			} else {
-				std::cerr << "\n\trandom_usage=" << random_usage  << " A" << std::endl;
-			} 
-			/* --------- */
 			return res;
 		}
 
@@ -85,13 +78,6 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 		//std::cout << (use_game_rng ? "true":"false") << " " << randint << "\n";
 		const wchar_t c = i->second[randint%i->second.size()];
 		if(c == 0) {
-			/* REMOVE ME */
-			if(use_game_rng) {
-				std::cerr << "[debug" << ++debug_usage << "] rng_results.size()=" << rng_results.size() << " B";
-			} else {
-				std::cerr << "\n\trandom_usage=" << random_usage  << " B" << std::endl;
-			} 
-			/* --------- */
 			return res;
 		}
 
@@ -121,25 +107,11 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
 		if (i == prefixes.end() || i->second.empty()) {
-			/* REMOVE ME */
-			if(use_game_rng) {
-				std::cerr << "[debug" << ++debug_usage << "] rng_results.size()=" << rng_results.size() << " C";
-			} else {
-				std::cerr << "\n\trandom_usage=" << random_usage  << " C" << std::endl;
-			} 
-			/* --------- */
 			return res;
 		}
 		if (std::find(i->second.begin(), i->second.end(), static_cast<wchar_t>(0))
 				!= i->second.end()) {
 			// This ending is valid.
-			/* REMOVE ME */
-			if(use_game_rng) {
-				std::cerr << "[debug" << ++debug_usage << "] rng_results.size()=" << rng_results.size() << " D";
-			} else {
-				std::cerr << "\n\trandom_usage=" << random_usage  << " D" << std::endl;
-			} 
-			/* --------- */
 			return res;
 		}
 		// The current ending is invalid, remove the last character
@@ -150,13 +122,6 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 	// not happen, unless the chain length is very long or the
 	// maximum length is very small. Return the originally generated
 	// name, it's not much we can do about it.
-	/* REMOVE ME */
-	if(use_game_rng) {
-		std::cerr << "[debug" << ++debug_usage << "] rng_results.size()=" << rng_results.size() << " E";
-	} else {
-		std::cerr << "\n\trandom_usage=" << random_usage  << " E" << std::endl;
-	} 
-	/* --------- */
 	return originalRes;
 }
 
@@ -173,9 +138,9 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 	names_[MALE] = utils::split(cfg["male_names"]);
 	names_[FEMALE] = utils::split(cfg["female_names"]);
 	std::string s;
-	s = cfg["male_names"].value();
+	s = cfg["male_names"].base_str();
 	names_untranslated_[MALE] = utils::split(s);
-	s = cfg["female_names"].value();
+	s = cfg["female_names"].base_str();
 	names_untranslated_[FEMALE] = utils::split(s);
 
 	chain_size_ = atoi(cfg["markov_chain_size"].c_str());
