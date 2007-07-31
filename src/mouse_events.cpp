@@ -682,8 +682,6 @@ undo_stack_(undo_stack), redo_stack_(redo_stack), game_state_(game_state)
 	dragging_started_ = false;
 	drag_from_x_ = 0;
 	drag_from_y_ = 0;
-	last_hex_ = gamemap::location();
-	last_empty_hex_ = gamemap::location();
 	enemy_paths_ = false;
 	path_turns_ = 0;
 	undo_ = false;
@@ -747,7 +745,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 	// the selected hex is always the best attack origin
 	if (new_hex == selected_hex_) {
-		last_empty_hex_ = new_hex;
+		last_highlighted_hex_ = new_hex;
 	}
 
 	if(new_hex != last_hex_) {
@@ -767,7 +765,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		// we consider any hex without enemy as a possible attack origin,
 		// we will search later the nearest empty hex
 		if (mouseover_unit == units_.end() || !current_team().is_enemy(mouseover_unit->second.side())) {
-			last_empty_hex_ = new_hex;
+			last_highlighted_hex_ = new_hex;
 		}
 
 		gamemap::location attack_from = current_unit_attacks_from(new_hex);
@@ -894,7 +892,7 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 		return gamemap::location();
 	}
 
-	const gamemap::location::DIRECTION preferred = loc.get_relative_dir(last_empty_hex_);
+	const gamemap::location::DIRECTION preferred = loc.get_relative_dir(last_highlighted_hex_);
 	const gamemap::location::DIRECTION second_preferred = loc.get_relative_dir(selected_hex_);
 
 	int best_rating = 100;//smaller is better

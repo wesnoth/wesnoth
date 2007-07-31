@@ -101,7 +101,8 @@ private:
 	int drag_from_y_;
 	
 	gamemap::location last_hex_;
-	gamemap::location last_empty_hex_;
+	// last highlighted hex without any enemy
+	gamemap::location last_highlighted_hex_;
 	gamemap::location selected_hex_;
 	gamemap::location next_unit_;
 	paths::route current_route_;
