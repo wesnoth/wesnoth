@@ -745,6 +745,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		}
 	}
 
+	// the selected hex is always the best attack origin
 	if (new_hex == selected_hex_) {
 		last_empty_hex_ = new_hex;
 	}
@@ -757,14 +758,15 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		(*gui_).highlight_hex(new_hex);
 
-
 		//see if we should show the normal cursor, the movement cursor, or
 		//the attack cursor
 
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
-		if (mouseover_unit == units_.end()) {
+		// we consider any hex without enemy as a possible attack origin,
+		// we will search later the nearest empty hex
+		if (mouseover_unit == units_.end() || !current_team().is_enemy(mouseover_unit->second.side())) {
 			last_empty_hex_ = new_hex;
 		}
 
