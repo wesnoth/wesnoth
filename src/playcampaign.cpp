@@ -34,6 +34,7 @@
 #include "wassert.hpp"
 
 #define LOG_G LOG_STREAM(info, general)
+#define LOG_NG LOG_STREAM(info, engine)
 
 namespace {
 
@@ -278,15 +279,26 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			gamestate.completion = "running";
 
+			const int ticks = SDL_GetTicks();
+			const int num_turns = atoi((*scenario)["turns"].c_str());
+			playsingle_controller *pcontroller;
+
+			LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
+				pcontroller = new playsingle_controller(*scenario,units_data,gamestate,ticks,num_turns,game_config,video,skip_replay);
+				LOG_NG << "created objects... " << (SDL_GetTicks() - pcontroller->get_ticks()) << "\n";
+				res = pcontroller->play_scenario(story, log, skip_replay);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
+			  	pcontroller = new playmp_controller(*scenario,units_data,gamestate,ticks,num_turns,game_config,video,skip_replay);
+				LOG_NG << "created objects... " << (SDL_GetTicks() - pcontroller->get_ticks()) << "\n";
+				res = reinterpret_cast<playmp_controller *>(pcontroller)->play_scenario(story, log, skip_replay);
 				break;
 			}
+
+
 
 			// tell all clients that the campaign won't continue
 			// why isn't this done on VICTORY as well?
