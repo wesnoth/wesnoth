@@ -34,7 +34,6 @@
 #include "wassert.hpp"
 
 #define LOG_G LOG_STREAM(info, general)
-#define LOG_NG LOG_STREAM(info, engine)
 
 namespace {
 
@@ -279,23 +278,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			gamestate.completion = "running";
 
-			const int ticks = SDL_GetTicks();
-			const int num_turns = atoi((*scenario)["turns"].c_str());
-			// FIXME: make this an auto_ptr
-			playsingle_controller *pcontroller;
-
-			LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 			switch (io_type){
 			case IO_NONE:
-				pcontroller = new playsingle_controller(*scenario,units_data,gamestate,ticks,num_turns,game_config,video,skip_replay);
-				LOG_NG << "created objects... " << (SDL_GetTicks() - pcontroller->get_ticks()) << "\n";
-				res = pcontroller->play_scenario(story, log, skip_replay);
+				res = playsingle_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-			  	pcontroller = new playmp_controller(*scenario,units_data,gamestate,ticks,num_turns,game_config,video,skip_replay);
-				LOG_NG << "created objects... " << (SDL_GetTicks() - pcontroller->get_ticks()) << "\n";
-				res = dynamic_cast<playmp_controller *>(pcontroller)->play_scenario(story, log, skip_replay);
+				res = playmp_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
 				break;
 			}
 
@@ -315,12 +304,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				                 _("You have been defeated!")
 				                 ).show();
 			}
-
-			// FIXME: Support this for MP as well.
-			if (io_type == IO_NONE && (res == VICTORY || res == DEFEAT)) {
-				pcontroller->linger(log);
-			}
-
 			// Temporary fix:
 			// Only apply preferences for replays and autosave
 			// deletes on victory.  We need to rethink what this

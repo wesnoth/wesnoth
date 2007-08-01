@@ -24,6 +24,19 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
+LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_config,
+		const config* level, CVideo& video, game_state& state_of_game,
+		const std::vector<config*>& story, upload_log& log, bool skip_replay)
+{
+	const int ticks = SDL_GetTicks();
+	const int num_turns = atoi((*level)["turns"].c_str());
+	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
+	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
+	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
+
+	return playcontroller.play_scenario(story, log, skip_replay);
+}
+
 playsingle_controller::playsingle_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 											 const int ticks, const int num_turns, const config& game_config, CVideo& video,
 											 bool skip_replay)
@@ -75,9 +88,7 @@ void playsingle_controller::update_shroud_now(){
 }
 
 void playsingle_controller::end_turn(){
-	if (linger_)
-		end_turn_ = true;
-	else if (!browse_){
+	if (!browse_){
 		end_turn_ = menu_handler_.end_turn(player_number_);
 	}
 }
@@ -114,22 +125,6 @@ void playsingle_controller::end_unit_turn(){
 
 void playsingle_controller::user_command(){
 	menu_handler_.user_command();
-}
-
-void playsingle_controller::linger(upload_log& log)
-{
-	LOG_NG << "beginning post-turn linger";
-	browse_ = true;
-	linger_ = true;
-	try {
-		play_human_turn();
-	} catch(game::load_game_exception&) {
-		// Loading a new game is effectively a quit.
-		log.quit(status_.turn());
-		throw;
-	} catch(end_level_exception& end_level) {
-	} 
-	LOG_NG << "ending post-turn linger";
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
@@ -473,7 +468,6 @@ void playsingle_controller::before_human_turn(bool save)
 {
 	log_scope("player turn");
 	browse_ = false;
-	linger_ = false;
 
 	gui_->set_team(player_number_ - 1);
 	gui_->recalculate_minimap();
@@ -591,7 +585,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_REPEAT_RECRUIT:
 		case hotkey::HOTKEY_RECALL:
 		case hotkey::HOTKEY_ENDTURN:
-			return (!browse_ || linger_) && !events::commands_disabled;
+			return !browse_ && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
 			return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());

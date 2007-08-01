@@ -52,7 +52,6 @@ public:
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();
 	virtual void user_command();
-	void linger(upload_log& log);
 
 protected:
 	virtual void play_turn(bool no_save);
@@ -74,5 +73,10 @@ protected:
 	bool replaying_;
 private:
 };
+
+
+LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& terrain_config,
+		const config* level, CVideo& video,	game_state& state_of_game,
+		const std::vector<config*>& story, upload_log& loo, bool skip_replay);
 
 #endif
