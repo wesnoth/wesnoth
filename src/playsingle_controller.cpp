@@ -514,7 +514,14 @@ void playsingle_controller::linger(upload_log& log)
 	browse_ = true;
 	linger_ = true;
 	try {
-		play_human_turn();
+		// Same logic as single-player human turn, but
+		// *not* the same as multiplayer human turn. 
+		gui_->enable_menu("endturn", true);
+	 	while(!end_turn_) {
+			play_slice();
+
+			gui_->draw();
+		}
 	} catch(game::load_game_exception&) {
 		// Loading a new game is effectively a quit.
 		log.quit(status_.turn());
