@@ -105,7 +105,7 @@ def reindent(name, infp, outfp):
         # Track whether we've seen real WML rather than just macro definitions
         if transformed.startswith("#define"):
             saved_indent = indent
-            indent = baseindent
+            indent = wmltools.baseindent
             inmacro = True
         elif transformed.startswith("#enddef"):
             indent = saved_indent
@@ -119,7 +119,7 @@ def reindent(name, infp, outfp):
             if indent == "":
                 print >>sys.stderr, 'wmlindent: "%s", line %d: close tag with indent already zero.' % (name, countlines)
             else:
-                indent = indent[:-len(baseindent)]
+                indent = indent[:-len(wmltools.baseindent)]
         # Cope with blank lines outside of multiline literals
         if dostrip:
             if transformed == "\n":
@@ -144,7 +144,7 @@ def reindent(name, infp, outfp):
         outfp.write(output)
         # May need to indent based on the line we just saw.
         if transformed.startswith("[") and not transformed.startswith("[/"):
-            indent += baseindent
+            indent += wmltools.baseindent
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
         if dostrip:
