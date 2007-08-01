@@ -18,8 +18,6 @@
 #include <map>
 #include <string>
 #include <vector>
-
-#include "SDL_types.h"
 #include "../tstring.hpp"
 #include "../util.hpp"
 

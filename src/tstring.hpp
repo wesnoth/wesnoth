@@ -81,6 +81,7 @@ public:
 	const std::string& str() const;
 	const char* c_str() const                        { return str().c_str(); }
 	const std::string& value() const                 { return value_; }
+	const std::string base_str() const;
 
 	void reset_translation() const                   { translated_value_ = ""; }
 
