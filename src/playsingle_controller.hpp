@@ -52,6 +52,7 @@ public:
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();
 	virtual void user_command();
+	void linger(upload_log& log);
 
 protected:
 	virtual void play_turn(bool no_save);

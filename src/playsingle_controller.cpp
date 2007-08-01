@@ -75,7 +75,9 @@ void playsingle_controller::update_shroud_now(){
 }
 
 void playsingle_controller::end_turn(){
-	if (!browse_){
+	if (linger_)
+		end_turn_ = true;
+	else if (!browse_){
 		end_turn_ = menu_handler_.end_turn(player_number_);
 	}
 }
@@ -455,6 +457,7 @@ void playsingle_controller::before_human_turn(bool save)
 {
 	log_scope("player turn");
 	browse_ = false;
+	linger_ = false;
 
 	gui_->set_team(player_number_ - 1);
 	gui_->recalculate_minimap();
@@ -503,6 +506,22 @@ void playsingle_controller::play_human_turn(){
 
 		gui_->draw();
 	}
+}
+
+void playsingle_controller::linger(upload_log& log)
+{
+	LOG_NG << "beginning end-of-scenario linger";
+	browse_ = true;
+	linger_ = true;
+	try {
+		play_human_turn();
+	} catch(game::load_game_exception&) {
+		// Loading a new game is effectively a quit.
+		log.quit(status_.turn());
+		throw;
+	} catch(end_level_exception& end_level) {
+	} 
+	LOG_NG << "ending end-of-scenario linger";
 }
 
 void playsingle_controller::after_human_turn(){
@@ -572,7 +591,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_REPEAT_RECRUIT:
 		case hotkey::HOTKEY_RECALL:
 		case hotkey::HOTKEY_ENDTURN:
-			return !browse_ && !events::commands_disabled;
+			return (!browse_ || linger_) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
 			return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());
