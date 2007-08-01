@@ -34,6 +34,7 @@
 #include "wassert.hpp"
 
 #define LOG_G LOG_STREAM(info, general)
+#define LOG_NG LOG_STREAM(info, engine)
 
 namespace {
 
@@ -108,6 +109,30 @@ static void clean_autosaves(const std::string &label)
 	}
 }
 
+
+LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_config,
+		const config* level, CVideo& video, game_state& state_of_game,
+		const std::vector<config*>& story, upload_log& log, bool skip_replay)
+{
+	const int ticks = SDL_GetTicks();
+	const int num_turns = atoi((*level)["turns"].c_str());
+	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
+	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
+	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
+
+	return playcontroller.play_scenario(story, log, skip_replay);
+}
+
+
+LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_config,
+		config const* level, CVideo& video, game_state& state_of_game,
+		const config::child_list& story, upload_log& log, bool skip_replay)
+{
+	const int ticks = SDL_GetTicks();
+	const int num_turns = atoi((*level)["turns"].c_str());
+	playmp_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
+	return playcontroller.play_scenario(story, log, skip_replay);
+}
 
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
 		const game_data& units_data, CVideo& video,

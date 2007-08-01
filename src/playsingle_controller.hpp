@@ -75,8 +75,4 @@ private:
 };
 
 
-LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& terrain_config,
-		const config* level, CVideo& video,	game_state& state_of_game,
-		const std::vector<config*>& story, upload_log& loo, bool skip_replay);
-
 #endif
