@@ -448,7 +448,7 @@ bool game_controller::play_test()
 
 	try {
 		upload_log nolog(false);
-		::play_game(disp(),state_,game_config_,units_data_,video_,nolog);
+		::play_game(disp(),state_,game_config_,units_data_,nolog);
 	} catch(game::load_game_exception& e) {
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
@@ -623,7 +623,7 @@ bool game_controller::play_multiplayer_mode()
 	try {
 		upload_log nolog(false);
 		state_.snapshot = level;
-		::play_game(disp(),state_,game_config_,units_data_,video_,nolog);
+		::play_game(disp(),state_,game_config_,units_data_,nolog);
 		//play_level(units_data_,game_config_,&level,video_,state_,story);
 	} catch(game::error& e) {
 		std::cerr << "caught error: '" << e.message << "'\n";
@@ -1750,7 +1750,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 					   || state_.campaign_type == "scenario"
 					   || state_.campaign_type == "tutorial");
 
-		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_, log);
+		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_, log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {

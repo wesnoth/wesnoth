@@ -111,32 +111,57 @@ static void clean_autosaves(const std::string &label)
 
 
 LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_config,
-		const config* level, CVideo& video, game_state& state_of_game,
+		const config* level, display& disp, game_state& state_of_game,
 		const std::vector<config*>& story, upload_log& log, bool skip_replay)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
+	playsingle_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
-	return playcontroller.play_scenario(story, log, skip_replay);
+	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
+
+	if (res == DEFEAT) {
+		gui::message_dialog(disp,
+				    _("Defeat"),
+				    _("You have been defeated!")
+				    ).show();
+	}
+
+	return res;
 }
 
 
 LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_config,
-		config const* level, CVideo& video, game_state& state_of_game,
+		config const* level, display& disp, game_state& state_of_game,
 		const config::child_list& story, upload_log& log, bool skip_replay)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
-	playmp_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay);
-	return playcontroller.play_scenario(story, log, skip_replay);
+	playmp_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
+	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
+
+	if (res == DEFEAT) {
+		gui::message_dialog(disp,
+				    _("Defeat"),
+				    _("You have been defeated!")
+				    ).show();
+	}
+
+	// tell all clients that the campaign won't continue
+	// why isn't this done on VICTORY as well?
+	if (res==QUIT || res==DEFEAT) {
+		config end;
+		end.add_child("end_scenarios");
+		network::send_data(end);
+	}
+
+	return res;
 }
 
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
-		const game_data& units_data, CVideo& video,
-		upload_log &log,
+		const game_data& units_data, upload_log &log,
 		io_type_t io_type, bool skip_replay)
 {
 	std::string type = gamestate.campaign_type;
@@ -305,30 +330,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
+				res = playsingle_scenario(units_data,game_config,scenario,disp,gamestate,story,log, skip_replay);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(units_data,game_config,scenario,video,gamestate,story,log, skip_replay);
+				res = playmp_scenario(units_data,game_config,scenario,disp,gamestate,story,log, skip_replay);
 				break;
-			}
-
-			// tell all clients that the campaign won't continue
-			// why isn't this done on VICTORY as well?
-			if(io_type==IO_SERVER && (res==QUIT || res==DEFEAT)) {
-			 	config end;
-				end.add_child("end_scenarios");
-				network::send_data(end);
 			}
 
 			gamestate.snapshot = config();
 
-			if (res == DEFEAT) {
-				gui::message_dialog(disp,
-				                 _("Defeat"),
-				                 _("You have been defeated!")
-				                 ).show();
-			}
 			// Temporary fix:
 			// Only apply preferences for replays and autosave
 			// deletes on victory.  We need to rethink what this

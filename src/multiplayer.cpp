@@ -314,7 +314,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, game_
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, disp.video(), nolog, IO_CLIENT, preferences::skip_mp_replay());
+		play_game(disp, state, game_config, data, nolog, IO_CLIENT, preferences::skip_mp_replay());
 		recorder.clear();
 
 		break;
@@ -358,7 +358,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config, ga
 
 	switch (res) {
 	case mp::ui::PLAY:
-		play_game(disp, state, game_config, data, disp.video(), nolog, IO_SERVER);
+		play_game(disp, state, game_config, data, nolog, IO_SERVER);
 		recorder.clear();
 
 		break;
