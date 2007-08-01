@@ -129,6 +129,8 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 				    ).show();
 	}
 
+	playcontroller.linger(log);
+
 	return res;
 }
 
@@ -148,6 +150,8 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 				    _("You have been defeated!")
 				    ).show();
 	}
+
+	playcontroller.linger(log);
 
 	// tell all clients that the campaign won't continue
 	// why isn't this done on VICTORY as well?

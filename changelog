@@ -48,6 +48,10 @@ Version 1.3.6+svn:
    * Isle of Anduin renamed to Isle of Alduin to avoid copyright problems.
    * the assertion 'str.size() <= 4' no longer happens instead the terrain is
       read as 'void' and an ingame message is shown (bug #9609)
+   * IMPORTANT! End-of-scenario no longer takes you immediately to the
+     next scenario or the lobby. Instead, you linger in browse mode --
+     menu commands for chat, saving games, etc. are available.  Clicking
+     end-of-turn ends the linger and takes you out.
 
 Version 1.3.6:
  * language and i18n:
