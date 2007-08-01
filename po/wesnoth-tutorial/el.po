@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-07-24 23:30+0200\n"
-"PO-Revision-Date: 2007-07-01 02:02+0200\n"
+"PO-Revision-Date: 2007-08-01 15:21+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <konsnos@hotmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -176,7 +176,7 @@ msgid ""
 "then try again.\n"
 "*Left click or any key to continue..."
 msgstr ""
-"Ούπς!\n"
+"*Ούπς!\n"
 "Πήγες σε λάθος σημείο! Μετά από αυτό το μήνυμα μπορείς να πατήσεις 'θ' για "
 "να ανακαλέσεις, και να ξαναπροσπαθήσεις.\n"
 "*Αριστερό κλικ ή οποιοδήποτε κουμπί για συνέχεια..."
@@ -300,7 +300,7 @@ msgstr ""
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:472
 msgid "Click on the End Turn button on the bottom right"
-msgstr "Κάνε κλικ στο Τέλος Γύρου κουμπί κάτω αριστερά"
+msgstr "Κάνε κλικ στο Τέλος Γύρου κουμπί κάτω δεξιά"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:484
 msgid "Ouch! I need to heal! Only $student_hp hp left!"
@@ -377,7 +377,7 @@ msgstr ""
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
 msgid "Move Konrad to the keep"
-msgstr "Μετακίνησε τον Κώνραντ στο οχυρό"
+msgstr "Μετακίνησε τον Κώνραντ στον πύργο"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:574
 msgid "Move Li'sar to the keep"
@@ -1021,13 +1021,12 @@ msgstr ""
 "Όχι! Είπα ανακάλεσε $recall_name1, όχι $recall_name2|! Ξαναπροσπάθησε..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:760
-#, fuzzy
 msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
 "Όχι! Είπα ΑΝΑΚΑΛΕΣΕ $recall_name1 από την προηγούμενη μάχη, όχι να "
-"στρατολογήσεις $recruit.type|! Ξαναπροσπάθησε..."
+"στρατολογήσεις $recruit.language_name|! Ξαναπροσπάθησε..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:777
 msgid "Right click on the tile south-east of you and recall $recall_name2"
@@ -1045,12 +1044,12 @@ msgstr ""
 "Ξωτικοπολεμιστή."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:798
-#, fuzzy
 msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.type|? Είπα ΑΝΑΚΑΛΕΣΕ έναν νέο ΞΩΤΙΚΟΠΟΛΕΜΙΣΤΗ. Ξαναπροσπάθησε..."
+"$recruit.language_name|? Είπα ΑΝΑΚΑΛΕΣΕ έναν νέο ΞΩΤΙΚΟΠΟΛΕΜΙΣΤΗ. "
+"Ξαναπροσπάθησε..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:812
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:823
@@ -1550,7 +1549,7 @@ msgstr "κρούση"
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:74
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:75
 msgid "lightning"
-msgstr "ατραπή"
+msgstr "αsτραπή"
 
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:77
 msgid "fire"
