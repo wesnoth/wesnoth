@@ -108,6 +108,19 @@ if __name__ == "__main__":
             for message in mythread.data.find_all("message", "error"):
                 print message.get_text_val("message")
 
+    def get_info(name):
+        """
+        Get info for a locally installed campaign. If expects a direct path
+        to the info.cfg file.
+        """
+        if not os.path.exists(name): return None
+        p = wmlparser.Parser(None)
+        p.parse_file(name)
+        info = wmldata.DataSub("WML")
+        p.parse_top(info)
+        uploads = info.get_or_create_sub("info").get_text_val("uploads", "")
+        return uploads
+
     if options.list:
         cs = CampaignClient(address)
         data = cs.list_campaigns()
@@ -157,7 +170,13 @@ if __name__ == "__main__":
                     if re.search(options.download, name):
                         fetchlist.append((name, version, uploads))
         for name, version, uploads in fetchlist:
-            get(name, version, uploads, options.campaigns_dir)
+            info = os.path.join(options.campaigns_dir, name, "info.cfg")
+            local_uploads = get_info(info)
+            if uploads != local_uploads:
+                get(name, version, uploads, options.campaigns_dir)
+            else:
+                print "Not downloading", name,\
+                    "because it already has version", uploads, "!"
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
@@ -211,13 +230,8 @@ if __name__ == "__main__":
                 info = os.path.join(dir, "info.cfg")
                 version = campaigns[dirname].get_text_val("version", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
-                if os.path.exists(info):
-                    p = wmlparser.Parser(None)
-                    p.parse_file(info)
-                    info = wmldata.DataSub("WML")
-                    p.parse_top(info)
-                    
-                    lrev = info.get_or_create_sub("info").get_text_val("uploads", "")
+                if os.path.exists(info):                    
+                    lrev = get_info(info)
                     if not srev:
                         sys.stdout.write(" ? " + dirname + " has no " +
                             "version info on the server.\n")
