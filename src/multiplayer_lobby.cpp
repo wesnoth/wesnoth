@@ -535,7 +535,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	game_preferences_(disp.video(), _("Preferences")),
 #endif
 	quit_game_(disp.video(), _("Quit")),
-	sorter_(gamelist),
+	old_selection_(-1), sorter_(gamelist),
 	games_menu_(disp.video(),cfg.child("multiplayer_hashes"))
 {
 	skip_replay_.set_check(preferences::skip_mp_replay());
@@ -613,6 +613,17 @@ void lobby::process_event()
 	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
 	preferences::set_skip_mp_replay(skip_replay_.checked());
 	playmp_controller::set_replay_last_turn(0);
+
+	int new_selection = games_menu_.selection();
+	if (new_selection != old_selection_) {
+		if (games_menu_.empty()) {
+			set_selected_game("");
+		} else {
+			set_selected_game(games_menu_.selected_game().name);
+		}
+		ui::gamelist_updated();
+		old_selection_ = new_selection;
+	}
 
 	if(join || observe) {
 		const int selected = games_menu_.selection();

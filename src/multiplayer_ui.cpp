@@ -231,6 +231,8 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	chat_textbox_(disp.video(), 100, "", false),
 	users_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &umenu_style),
 
+	selected_game_(""),
+
 	result_(CONTINUE),
 	gamelist_refresh_(false),
 	lobby_clock_(0)
@@ -615,13 +617,20 @@ void ui::gamelist_updated(bool silent)
 		    menu_strings.push_back(preferences::login());
         }
 
+	// FIXME: we don't get the id of the game a player joins so we need to
+	// test against the name of the game which leads to wrong results if
+	// there are two or more games with the same name
 	for (user = users.begin(); user != users.end(); ++user) {
         std::string ig = std::string((**user)["name"]);
 	    if((*cignore)[ig] == "friend" && ig != preferences::login()) {
 	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
 			std::string suffix = "";
 			if(!(**user)["location"].empty()) {
-				suffix = std::string(" (") + (**user)["location"] + std::string(")");
+				const std::string location = (**user)["location"];
+				if (location == selected_game_) {
+					prefix = "~#";
+				}
+				suffix = std::string(" (") + location + std::string(")");
 			}
 			if(preferences::iconize_list()) {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
@@ -639,7 +648,11 @@ void ui::gamelist_updated(bool silent)
 	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
 			std::string suffix = "";
 			if(!(**user)["location"].empty()) {
-				suffix = std::string(" (") + (**user)["location"] + std::string(")");
+				const std::string location = (**user)["location"];
+				if (location == selected_game_) {
+					prefix = "~#";
+				}
+				suffix = std::string(" (") + location + std::string(")");
 			}
 			if(preferences::iconize_list()) {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
@@ -657,7 +670,11 @@ void ui::gamelist_updated(bool silent)
 	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
 			std::string suffix = "";
 			if(!(**user)["location"].empty()) {
-				suffix = std::string(" (") + (**user)["location"] + std::string(")");
+				const std::string location = (**user)["location"];
+				if (location == selected_game_) {
+					prefix = "~#";
+				}
+				suffix = std::string(" (") + location + std::string(")");
 			}
 			if(preferences::iconize_list()) {
 			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
@@ -671,10 +688,14 @@ void ui::gamelist_updated(bool silent)
     } else {
 	
 	for (user = users.begin(); user != users.end(); ++user) {
-		const std::string prefix = (**user)["available"] == "no" ? "#" : "";
+		std::string prefix = (**user)["available"] == "no" ? "#" : "";
 		std::string suffix = "";
 		if(!(**user)["location"].empty()) {
-			suffix = std::string(" (") + (**user)["location"] + std::string(")");
+			const std::string location = (**user)["location"];
+			if (location == selected_game_) {
+				prefix = "~#";
+			}
+			suffix = std::string(" (") + location + std::string(")");
 		}
 		if(preferences::iconize_list()) {
 			std::string ig = std::string((**user)["name"]);
@@ -706,6 +727,11 @@ void ui::gamelist_updated(bool silent)
 	}
 	set_user_list(user_strings, silent);
 	set_user_menu_items(menu_strings);
+}
+
+void ui::set_selected_game(const std::string game_name)
+{
+	selected_game_ = game_name;
 }
 
 void ui::set_user_menu_items(const std::vector<std::string>& list)

@@ -19,6 +19,10 @@ Version 1.3.6+svn:
      default is used (bug #9532)
    * "Default Era" is now renamed to "Era of Turmoil" (bug #4210) in
      accordance with the master history.
+   * multiplayer lobby: highlight the names of the players which have joined
+     the selected game
+   * multiplayer lobby: tab completion works for all player names now,
+     not only for those which are not in a game (bug #9350)
  * graphics
    * fixed a glitch with the undo of recruit or recall on high places.
  * user interface:
@@ -28,8 +32,6 @@ Version 1.3.6+svn:
    * Add a tooltip with the experience modifier for the units XP display.
    * add an empty attack icon in attack dialog when needed (this also remove
      an error message, bug #9570)
-   * tab completion in the multiplayer lobby works for all player names now,
-     not only for those which are not in a game (bug #9350)
  * WML engine:
    * now [base_unit]id= inside [unit] can extend upon existing unit types
    * new extra_defines key to define in campaigns some other preprocessor
