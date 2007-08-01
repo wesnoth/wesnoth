@@ -176,7 +176,7 @@ if __name__ == "__main__":
                 get(name, version, uploads, options.campaigns_dir)
             else:
                 print "Not downloading", name,\
-                    "because it already has version", uploads, "!"
+                    "because it is already at version:", uploads
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
