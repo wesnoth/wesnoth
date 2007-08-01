@@ -49,7 +49,7 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
 SDL_Rect text_area(const std::string& text, int size, int style=0);
 
 // Copy string but without tags at the begining 
-std::string del_tags(std::string name);
+std::string del_tags(const std::string& text);
 
 bool is_format_char(char c);
 

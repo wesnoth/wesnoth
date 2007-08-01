@@ -116,32 +116,17 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 
 
 // Copy string but without tags at the begining
-std::string del_tags(std::string name){
-	std::stringstream str;
-	bool color_block = false;
-	bool text_started = false;
+std::string del_tags(const std::string& text){
 	std::string::const_iterator	it;
-	for (it = name.begin(); it != name.end(); it++){
-		if (!text_started) {
-			if (color_block) {
-				if (!isdigit(*it) && *it != ',' && *it != ' ') {
-					// '>' or bad RGB values, close the block
-					color_block = false;
-				}
-				continue;
-			} else if (*it == '<') {
-				// Start of RGB definition block
-				color_block = true;
-				continue;
-			} else if (is_format_char(*it)) {
-				//other format char
-				continue;
-			}
-			text_started = true;
+	for(it = text.begin(); it != text.end(); it++){
+		if (*it == '<') {
+			// skip until the end of the <tag>
+			for ( ; *it != '>' && it+1 != text.end(); it++);
+		} else if (!is_format_char(*it)) {
+			break;
 		}
-		str << *it;
 	}
-	return str.str();
+	return std::string(it, text.end());
 }
 
 SDL_Rect text_area(const std::string& text, int size, int style)
