@@ -353,13 +353,10 @@ void ui::handle_event(const SDL_Event& event)
 		handle_key_event(event.key);
 	}
     if(users_menu_.double_clicked()) {
-		std::string usr_text = user_list_[users_menu_.selection()];
-		if(usr_text.size() > 1 && usr_text.at(0) == '#') {
-			usr_text.erase(0,1);
-			int index = usr_text.find_first_of(' ');
-			if(index > -1) {
-				usr_text.erase(index);
-			}
+		std::string usr_text = font::del_tags(user_list_[users_menu_.selection()]);
+		const int index = usr_text.find_first_of(' ');
+		if (index > -1) {
+			usr_text.erase(index);
 		}
 		std::string caption = _("Send a private message to ") + usr_text;
 		gui::dialog d(disp(), _("Whisper"), caption, gui::OK_CANCEL);
