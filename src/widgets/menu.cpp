@@ -878,8 +878,11 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				column.x = xpos;
 				const bool has_wrap = (str.find_first_of("\r\n") != std::string::npos);
 				//prevent ellipsis calculation if there is any line wrapping
-				const std::string to_show = (use_ellipsis_ && !has_wrap) ?
-					font::make_text_ellipsis(str, style_->get_font_size(), loc.w - (xpos - rect.x), false) : str;
+				const std::string to_show = 
+					(use_ellipsis_ && !has_wrap) ?
+						font::make_text_ellipsis(str, style_->get_font_size(),
+							loc.w - (xpos - rect.x) - 2*style_->get_thickness(), false)
+						: str;
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
 				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOUR,to_show,xpos,y);
