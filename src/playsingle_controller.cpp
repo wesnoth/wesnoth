@@ -513,6 +513,10 @@ void playsingle_controller::linger(upload_log& log)
 	LOG_NG << "beginning end-of-scenario linger";
 	browse_ = true;
 	linger_ = true;
+	// end all unit moves
+	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
+		u->second.set_user_end_turn(true);
+	}
 	try {
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn. 
