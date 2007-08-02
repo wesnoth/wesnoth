@@ -21,6 +21,9 @@ class game_data;
 
 namespace mp {
 
+// max. length of a player name
+const int max_login_size = 18;
+
 /*
  * This is the main entry points of multiplayer mode.
  */

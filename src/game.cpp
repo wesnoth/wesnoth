@@ -1384,7 +1384,7 @@ bool game_controller::play_multiplayer()
 	{
 		gui::dialog d(disp(), _("Multiplayer"), "", gui::OK_CANCEL);
 		d.set_menu(host_or_join);
-		d.set_textbox(_("Login: "), login, 18, font::relative_size(250));
+		d.set_textbox(_("Login: "), login, mp::max_login_size, font::relative_size(250));
 		res = d.show();
 		login = d.textbox_text();
 	}
