@@ -117,16 +117,10 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 
 // Copy string but without tags at the begining
 std::string del_tags(const std::string& text){
-	std::string::const_iterator	it;
-	for(it = text.begin(); it != text.end(); it++){
-		if (*it == '<') {
-			// skip until the end of the <tag>
-			for ( ; *it != '>' && it+1 != text.end(); it++);
-		} else if (!is_format_char(*it)) {
-			break;
-		}
-	}
-	return std::string(it, text.end());
+	int ignore_int;
+	SDL_Color ignore_color;
+	std::string::const_iterator i1 = text.begin(), i2 = text.end();
+	return std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
 }
 
 SDL_Rect text_area(const std::string& text, int size, int style)
