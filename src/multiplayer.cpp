@@ -228,7 +228,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				if(!first_time) {
 					const int res = gui::show_dialog(disp, NULL, "",
 							_("You must log in to this server"), gui::OK_CANCEL,
-							NULL, NULL, _("Login: "), &login);
+							NULL, NULL, _("Login: "), &login, 18);
 					if(res != 0 || login.empty()) {
 						return ABORT_SERVER;
 					}
