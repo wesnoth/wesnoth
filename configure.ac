@@ -790,7 +790,7 @@ LIBS=$OLD_LIBS
 #######################################################################
 
 if test "x$lite" = "xno"; then
-    if test -e "music/main_menu.ogg" ; then
+    if test -e "data/core/music/main_menu.ogg" ; then
         AC_LANG([C])
 	AC_MSG_CHECKING([for OGG support in SDL_mixer])
 
@@ -810,7 +810,7 @@ if test "x$lite" = "xno"; then
 
 	int main(int argc, char **argv)
         {
-	    Mix_Music* music = Mix_LoadMUS("music/main_menu.ogg");
+	    Mix_Music* music = Mix_LoadMUS("data/core/music/main_menu.ogg");
 	    if (music == NULL)
 		exit(1);
 	    exit(0);
