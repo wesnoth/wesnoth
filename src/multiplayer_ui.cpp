@@ -592,6 +592,10 @@ void ui::gamelist_updated(bool silent)
    	std::vector<std::string> menu_strings;
 	config::child_list users = gamelist_.get_children("user");
 	config::child_iterator user;
+
+	// can't use the bold tag here until the menu code
+	// calculates a correct ellipsis for it
+	const std::string highlight_color_tag = "<255,215,0>";
 	
     //if we have not already got the relationship child it will
     //cause the game to crash if we don't create it.
@@ -625,7 +629,7 @@ void ui::gamelist_updated(bool silent)
 			if(!(**user)["location"].empty()) {
 				const std::string location = (**user)["location"];
 				if (location == selected_game_) {
-					prefix = "~#";
+					prefix = highlight_color_tag;
 				}
 				suffix = std::string(" (") + location + std::string(")");
 			}
@@ -647,7 +651,7 @@ void ui::gamelist_updated(bool silent)
 			if(!(**user)["location"].empty()) {
 				const std::string location = (**user)["location"];
 				if (location == selected_game_) {
-					prefix = "~#";
+					prefix = highlight_color_tag;
 				}
 				suffix = std::string(" (") + location + std::string(")");
 			}
@@ -669,7 +673,7 @@ void ui::gamelist_updated(bool silent)
 			if(!(**user)["location"].empty()) {
 				const std::string location = (**user)["location"];
 				if (location == selected_game_) {
-					prefix = "~#";
+					prefix = highlight_color_tag;
 				}
 				suffix = std::string(" (") + location + std::string(")");
 			}
@@ -690,7 +694,7 @@ void ui::gamelist_updated(bool silent)
 		if(!(**user)["location"].empty()) {
 			const std::string location = (**user)["location"];
 			if (location == selected_game_) {
-				prefix = "~#";
+				prefix = highlight_color_tag;
 			}
 			suffix = std::string(" (") + location + std::string(")");
 		}

@@ -128,7 +128,7 @@ private:
 #endif
 	gui::button quit_game_;
 
-	int old_selection_;
+	int last_selected_game_;
 
 	lobby_sorter sorter_;
 	gamebrowser games_menu_;

@@ -535,7 +535,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	game_preferences_(disp.video(), _("Preferences")),
 #endif
 	quit_game_(disp.video(), _("Quit")),
-	old_selection_(-1), sorter_(gamelist),
+	last_selected_game_(-1), sorter_(gamelist),
 	games_menu_(disp.video(),cfg.child("multiplayer_hashes"))
 {
 	skip_replay_.set_check(preferences::skip_mp_replay());
@@ -614,15 +614,15 @@ void lobby::process_event()
 	preferences::set_skip_mp_replay(skip_replay_.checked());
 	playmp_controller::set_replay_last_turn(0);
 
-	int new_selection = games_menu_.selection();
-	if (new_selection != old_selection_) {
+	int selected_game = games_menu_.selection();
+	if (selected_game != last_selected_game_) {
 		if (games_menu_.empty()) {
 			set_selected_game("");
 		} else {
 			set_selected_game(games_menu_.selected_game().name);
 		}
 		ui::gamelist_updated();
-		old_selection_ = new_selection;
+		last_selected_game_ = selected_game;
 	}
 
 	if(join || observe) {
@@ -676,6 +676,9 @@ void lobby::process_event()
 void lobby::process_network_data(const config& data, const network::connection sock)
 {
 	ui::process_network_data(data, sock);
+
+	// invalidate game selection for the player list
+	last_selected_game_ = -1;
 }
 
 }
