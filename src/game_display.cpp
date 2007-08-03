@@ -330,12 +330,6 @@ void game_display::draw(bool update,bool force)
 				}
 			}
 
-			// footsteps indicating a movement path may be
-			// required; this has to be done before fogging
-			// because you might specify a goto to a place
-			// your unit can't reach in one turn.
-			tile_stack_append(footstep_image(*it));
-
 			if(!is_shrouded /*|| !on_map*/) {
 				tile_stack_terrains(*it,tod.id,image_type,ADJACENT_FOREGROUND);
 			}
@@ -382,6 +376,9 @@ void game_display::draw(bool update,bool force)
 				if(itor != hex_overlay_.end())
 					tile_stack_append(itor->second);
 			}
+
+			// footsteps indicating a movement path
+			tile_stack_append(footstep_image(*it));
 
 			// paint selection and mouseover overlays
 			if(*it == selectedHex_ && on_map && selected_hex_overlay_ != NULL)
