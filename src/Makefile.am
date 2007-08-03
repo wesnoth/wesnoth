@@ -113,6 +113,7 @@ wesnoth_SOURCES = \
 	replay_controller.cpp \
 	reports.cpp \
 	sdl_utils.cpp \
+	sha1.cpp \
 	show_dialog.cpp \
 	sound.cpp \
 	soundsource.cpp \
@@ -397,6 +398,7 @@ noinst_HEADERS = \
 	replay_controller.hpp \
 	reports.hpp \
 	scoped_resource.hpp \
+	sha1.hpp \
 	sdl_utils.hpp \
 	show_dialog.hpp \
 	sound.hpp \

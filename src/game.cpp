@@ -52,6 +52,7 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "sha1.hpp"
 
 #ifdef HAVE_PYTHON
 #include "ai_python.hpp"
@@ -1505,152 +1506,151 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 {
 	log_scope("read_game_cfg");
 
-	if(defines.size() < 6) {
-		bool is_valid = true;
-		std::stringstream str;
-		str << "-v" << game_config::version;
-		for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
-			if(i->second.value != "" || i->second.arguments.empty() == false) {
-				is_valid = false;
-				break;
-			}
-
-			str << "-" << i->first;
+	bool is_valid = true;
+	std::stringstream str;
+	for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
+		if(i->second.value != "" || i->second.arguments.empty() == false) {
+			is_valid = false;
+			break;
 		}
-		//std::string localename = get_locale().localename;
-		//str << "-lang_" << (localename.empty() ? "default" : localename);
 
-		if(is_valid) {
-			const std::string& cache = get_cache_dir();
-			if(cache != "") {
-				const std::string fname = cache + "/cache" + str.str();
-				const std::string fname_checksum = fname + ".checksum";
+		str << " " << i->first;
+	}
+	//std::string localename = get_locale().localename;
+	//str << "-lang_" << (localename.empty() ? "default" : localename);
 
-				file_tree_checksum dir_checksum;
+	if(is_valid) {
+		const std::string& cache = get_cache_dir();
+		if(cache != "") {
+			sha1_hash sha;
+			sha.hash(str.str()); // use a hash for a shorter display of the defines
+			const std::string fname = cache + "/cache-v" + game_config::version + "-" + sha.display();
+			const std::string fname_checksum = fname + ".checksum";
 
-				if(use_cache && !force_valid_cache_) {
-					try {
-						if(file_exists(fname_checksum)) {
-							config checksum_cfg;
-							scoped_istream stream = istream_file(fname_checksum);
-							read(checksum_cfg, *stream);
-							dir_checksum = file_tree_checksum(checksum_cfg);
-						}
-					} catch(config::error&) {
-						std::cerr << "cache checksum is corrupt\n";
-					} catch(io_exception&) {
-						std::cerr << "error reading cache checksum\n";
-					}
-				}
+			file_tree_checksum dir_checksum;
 
-				if(force_valid_cache_)
-					std::cerr << "skipping cache validation (forced)\n";
-
-				if(use_cache && file_exists(fname) && (force_valid_cache_ || file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum())) {
-					std::cerr << "found valid cache at '" << fname << "' using it\n";
-					log_scope("read cache");
-					try {
-						scoped_istream stream = istream_file(fname);
-						read_compressed(cfg, *stream);
-						return;
-					} catch(config::error&) {
-						std::cerr << "cache is corrupt. Loading from files\n";
-					} catch(io_exception&) {
-						std::cerr << "error reading cache. Loading from files\n";
-					}
-				}
-
-				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
-
-				preproc_map defines_map(defines);
-
-				//read the file and then write to the cache
-				scoped_istream stream = preprocess_file("data/", &defines_map);
-
-				//reset the parse counter before reading the game files
-				if (loadscreen::global_loadscreen) {
-					loadscreen::global_loadscreen->parser_counter = 0;
-				}
-
-				std::string error_log, user_error_log;
-
-				read(cfg, *stream, &error_log);
-
-				//load user campaigns
-				const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
-				std::vector<std::string> user_campaigns, error_campaigns;
-				get_files_in_dir(user_campaign_dir,&user_campaigns,NULL,ENTIRE_FILE_PATH);
-				for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
-					static const std::string extension = ".cfg";
-					if(uc->size() < extension.size() || std::equal(uc->end() - extension.size(),uc->end(),extension.begin()) == false) {
-						continue;
-					}
-
-					try {
-						preproc_map user_defines_map(defines_map);
-						scoped_istream stream = preprocess_file(*uc,&user_defines_map);
-
-						std::string campaign_error_log;
-
-						config user_campaign_cfg;
-						read(user_campaign_cfg,*stream,&campaign_error_log);
-
-						if(campaign_error_log.empty()) {
-							cfg.append(user_campaign_cfg);
-						} else {
-							user_error_log += campaign_error_log;
-							error_campaigns.push_back(*uc);
-						}
-					} catch(config::error& err) {
-						std::cerr << "error reading user campaign '" << *uc << "'\n";
-						error_campaigns.push_back(*uc);
-
-						user_error_log += err.message + "\n";
-					} catch(io_exception&) {
-						std::cerr << "error reading user campaign '" << *uc << "'\n";
-						error_campaigns.push_back(*uc);
-					}
-				}
-
-				if(error_campaigns.empty() == false) {
-					std::stringstream msg;
-					msg << _("The following add-on campaign(s) had errors and could not be loaded:");
-					for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
-						msg << "\n" << *i;
-					}
-
-					msg << "\n" << _("ERROR DETAILS:") << "\n" << user_error_log;
-
-					gui::show_error_message(disp(),msg.str());
-				}
-
-				cfg.merge_children("units");
-
-				config& hashes = cfg.add_child("multiplayer_hashes");
-				for(config::child_list::const_iterator ch = cfg.get_children("multiplayer").begin(); ch != cfg.get_children("multiplayer").end(); ++ch) {
-					hashes[(**ch)["id"]] = (*ch)->hash();
-				}
-
-				if(!error_log.empty()) {
-					gui::show_error_message(disp(),
-							_("Warning: Errors occurred while loading game configuration files: '") +
-							error_log);
-
-				} else {
-					try {
-						scoped_ostream cache = ostream_file(fname);
-						write_compressed(*cache, cfg);
+			if(use_cache && !force_valid_cache_) {
+				try {
+					if(file_exists(fname_checksum)) {
 						config checksum_cfg;
-						data_tree_checksum().write(checksum_cfg);
-						scoped_ostream checksum = ostream_file(fname_checksum);
-						write(*checksum, checksum_cfg);
-					} catch(io_exception&) {
-						std::cerr << "could not write to cache '" << fname << "'\n";
+						scoped_istream stream = istream_file(fname_checksum);
+						read(checksum_cfg, *stream);
+						dir_checksum = file_tree_checksum(checksum_cfg);
 					}
+				} catch(config::error&) {
+					std::cerr << "cache checksum is corrupt\n";
+				} catch(io_exception&) {
+					std::cerr << "error reading cache checksum\n";
+				}
+			}
+
+			if(force_valid_cache_)
+				std::cerr << "skipping cache validation (forced)\n";
+
+			if(use_cache && file_exists(fname) && (force_valid_cache_ || file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum())) {
+				std::cerr << "found valid cache at '" << fname << "' using it\n";
+				log_scope("read cache");
+				try {
+					scoped_istream stream = istream_file(fname);
+					read_compressed(cfg, *stream);
+					return;
+				} catch(config::error&) {
+					std::cerr << "cache is corrupt. Loading from files\n";
+				} catch(io_exception&) {
+					std::cerr << "error reading cache. Loading from files\n";
+				}
+			}
+
+			std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
+
+			preproc_map defines_map(defines);
+
+			//read the file and then write to the cache
+			scoped_istream stream = preprocess_file("data/", &defines_map);
+
+			//reset the parse counter before reading the game files
+			if (loadscreen::global_loadscreen) {
+				loadscreen::global_loadscreen->parser_counter = 0;
+			}
+
+			std::string error_log, user_error_log;
+
+			read(cfg, *stream, &error_log);
+
+			//load user campaigns
+			const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
+			std::vector<std::string> user_campaigns, error_campaigns;
+			get_files_in_dir(user_campaign_dir,&user_campaigns,NULL,ENTIRE_FILE_PATH);
+			for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
+				static const std::string extension = ".cfg";
+				if(uc->size() < extension.size() || std::equal(uc->end() - extension.size(),uc->end(),extension.begin()) == false) {
+					continue;
 				}
 
-				return;
+				try {
+					preproc_map user_defines_map(defines_map);
+					scoped_istream stream = preprocess_file(*uc,&user_defines_map);
+
+					std::string campaign_error_log;
+
+					config user_campaign_cfg;
+					read(user_campaign_cfg,*stream,&campaign_error_log);
+
+					if(campaign_error_log.empty()) {
+						cfg.append(user_campaign_cfg);
+					} else {
+						user_error_log += campaign_error_log;
+						error_campaigns.push_back(*uc);
+					}
+				} catch(config::error& err) {
+					std::cerr << "error reading user campaign '" << *uc << "'\n";
+					error_campaigns.push_back(*uc);
+
+					user_error_log += err.message + "\n";
+				} catch(io_exception&) {
+					std::cerr << "error reading user campaign '" << *uc << "'\n";
+					error_campaigns.push_back(*uc);
+				}
 			}
+
+			if(error_campaigns.empty() == false) {
+				std::stringstream msg;
+				msg << _("The following add-on campaign(s) had errors and could not be loaded:");
+				for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
+					msg << "\n" << *i;
+				}
+
+				msg << "\n" << _("ERROR DETAILS:") << "\n" << user_error_log;
+
+				gui::show_error_message(disp(),msg.str());
+			}
+
+			cfg.merge_children("units");
+
+			config& hashes = cfg.add_child("multiplayer_hashes");
+			for(config::child_list::const_iterator ch = cfg.get_children("multiplayer").begin(); ch != cfg.get_children("multiplayer").end(); ++ch) {
+				hashes[(**ch)["id"]] = (*ch)->hash();
+			}
+
+			if(!error_log.empty()) {
+				gui::show_error_message(disp(),
+						_("Warning: Errors occurred while loading game configuration files: '") +
+						error_log);
+
+			} else {
+				try {
+					scoped_ostream cache = ostream_file(fname);
+					write_compressed(*cache, cfg);
+					config checksum_cfg;
+					data_tree_checksum().write(checksum_cfg);
+					scoped_ostream checksum = ostream_file(fname_checksum);
+					write(*checksum, checksum_cfg);
+				} catch(io_exception&) {
+					std::cerr << "could not write to cache '" << fname << "'\n";
+				}
+			}
+
+			return;
 		}
 	}
 
