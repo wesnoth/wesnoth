@@ -305,12 +305,7 @@ void game_display::draw(bool update,bool force)
 				image_type = image::SEMI_BRIGHTENED;
 			}
 			*/
-			
-			t_translation::t_letter terrain = t_translation::VOID_TERRAIN;
 
-			if(!is_shrouded || !on_map) {
-				terrain = map_.get_terrain(*it);
-			}
 
 			tile_stack_clear();
 
@@ -319,7 +314,7 @@ void game_display::draw(bool update,bool force)
 				tile_stack_terrains(*it,tod.id, image_type, ADJACENT_BACKGROUND);
 
 				// village-control flags.
-				tile_stack_append(get_flag(terrain,*it));
+				tile_stack_append(get_flag(*it));
 
 				typedef overlay_map::const_iterator Itor;
 
@@ -820,8 +815,10 @@ surface game_display::footstep_image(const gamemap::location& loc)
 	return image;
 }
 
-surface game_display::get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc)
+surface game_display::get_flag(const gamemap::location& loc)
 {
+	t_translation::t_letter terrain = map_.get_terrain(loc);
+
 	if(!map_.is_village(terrain)) {
 		return surface(NULL);
 	}

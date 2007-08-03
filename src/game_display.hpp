@@ -182,7 +182,7 @@ private:
 	void draw_game_status();
 
 	//this surface must be freed by the caller
-	surface get_flag(const t_translation::t_letter& terrain, const gamemap::location& loc);
+	surface get_flag(const gamemap::location& loc);
 
 	unit_map& units_;
 
