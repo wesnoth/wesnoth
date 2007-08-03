@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-31 11:06+0200\n"
+"POT-Creation-Date: 2007-08-03 15:39+0200\n"
 "PO-Revision-Date: 2007-01-04 19:17+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -86,34 +86,6 @@ msgstr "Artwork and Graphics Designers"
 msgid "Underground"
 msgstr "Underground"
 
-#: data/campaigns/Liberty/_main.cfg:25 src/game.cpp:1066
-msgid "Author"
-msgstr "Author"
-
-#: data/campaigns/Liberty/_main.cfg:31
-msgid "Prose-doctoring and preparation for mainline"
-msgstr ""
-
-#: data/campaigns/Liberty/_main.cfg:37
-#, fuzzy
-msgid "Unit art"
-msgstr "Unit List"
-
-#: data/campaigns/Liberty/_main.cfg:43
-#: data/campaigns/Northern_Rebirth/_main.cfg:54
-#, fuzzy
-msgid "Translators"
-msgstr "Czech Translation"
-
-#: data/campaigns/Liberty/_main.cfg:50
-#, fuzzy
-msgid "Map art"
-msgstr "Map"
-
-#: data/campaigns/Liberty/_main.cfg:57
-msgid "Portrait Art"
-msgstr ""
-
 #: data/campaigns/Northern_Rebirth/_main.cfg:42
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:29
 msgid "Prose, Grammatical and WML Assistance"
@@ -123,6 +95,11 @@ msgstr ""
 #, fuzzy
 msgid "Music Development"
 msgstr "Multiplayer Developers"
+
+#: data/campaigns/Northern_Rebirth/_main.cfg:54
+#, fuzzy
+msgid "Translators"
+msgstr "Czech Translation"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:76
 #, fuzzy
@@ -341,20 +318,20 @@ msgstr "Slovenian Translation"
 msgid "Spanish Translation"
 msgstr "Spanish Translation"
 
-#: data/core/about.cfg:1488
+#: data/core/about.cfg:1492
 msgid "Swedish Translation"
 msgstr "Swedish Translation"
 
-#: data/core/about.cfg:1514
+#: data/core/about.cfg:1518
 msgid "Turkish Translation"
 msgstr "Turkish Translation"
 
-#: data/core/about.cfg:1533
+#: data/core/about.cfg:1537
 #, fuzzy
 msgid "Valencian Translation"
 msgstr "Slovenian Translation"
 
-#: data/core/about.cfg:1540
+#: data/core/about.cfg:1544
 msgid "Bots"
 msgstr "Bots"
 
@@ -3709,90 +3686,6 @@ msgstr "Brown"
 msgid "Teal"
 msgstr "Teal"
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:5
-msgid "Fugitive"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Fugitive.cfg:26
-msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture.  Dangerous and ruthless, they "
-"can be fearful in their element but no real match for professional law "
-"enforcment forces."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Fugitive.cfg:30
-#: data/core/units/humans/Outlaw_Fugitive.cfg:31
-#: data/core/units/humans/Outlaw_Highwayman.cfg:41
-#: data/core/units/humans/Outlaw_Highwayman.cfg:42
-msgid "mace"
-msgstr "mace"
-
-#: data/core/units/humans/Outlaw_Fugitive.cfg:32
-#: data/core/units/humans/Outlaw_Fugitive.cfg:79
-#: data/core/units/humans/Outlaw_Highwayman.cfg:44
-#: data/hardwired/english.cfg:55
-msgid "impact"
-msgstr "impact"
-
-#: data/core/units/humans/Outlaw_Fugitive.cfg:77
-#: data/core/units/humans/Outlaw_Fugitive.cfg:78
-msgid "sling"
-msgstr "sling"
-
-#: data/core/units/humans/Outlaw_Fugitive.cfg:126
-#, fuzzy
-msgid "female^Fugitive"
-msgstr "Fighter"
-
-#: data/core/units/humans/Outlaw_Fugitive.cfg:129
-msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture.  Beautiful and dangerous, their "
-"beauty is exceeded only by their dangerousness."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Highwayman.cfg:5
-msgid "Highwayman"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Highwayman.cfg:25
-msgid ""
-"Armed with heavy mace, Highwaymen are the last people you want to meet on a "
-"deserted road late at night."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:5
-#, fuzzy
-msgid "Outlaw Ranger"
-msgstr "Outlaw"
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:25
-msgid ""
-"Rangers are wild men and masters of forest and hills.  They are excellent "
-"trackers, scouts, and archers, moving freely through the countryside under "
-"the cover of night.  Most rulers are afraid of rangers and would rather put "
-"them in the dungeon than put their abilities to use."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:52
-#: data/core/units/humans/Outlaw_Ranger.cfg:53
-msgid "sword"
-msgstr "sword"
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:55 data/hardwired/english.cfg:53
-msgid "blade"
-msgstr "blade"
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:99
-#: data/core/units/humans/Outlaw_Ranger.cfg:100
-msgid "bow"
-msgstr "bow"
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:102 data/hardwired/english.cfg:54
-msgid "pierce"
-msgstr "pierce"
-
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Easy"
@@ -3956,6 +3849,18 @@ msgstr "melee"
 #: data/hardwired/english.cfg:50
 msgid "ranged"
 msgstr "ranged"
+
+#: data/hardwired/english.cfg:53
+msgid "blade"
+msgstr "blade"
+
+#: data/hardwired/english.cfg:54
+msgid "pierce"
+msgstr "pierce"
+
+#: data/hardwired/english.cfg:55
+msgid "impact"
+msgstr "impact"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4820,6 +4725,10 @@ msgid "Version"
 msgstr "Version"
 
 #: src/game.cpp:1066
+msgid "Author"
+msgstr "Author"
+
+#: src/game.cpp:1066
 msgid "Downloads"
 msgstr "Downloads"
 
@@ -4888,7 +4797,7 @@ msgstr ""
 "There was a problem creating the files necessary to install this campaign."
 
 #: src/game.cpp:1274 src/game.cpp:1313 src/game.cpp:1340
-#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:67 src/playcampaign.cpp:372
+#: src/multiplayer.cpp:251 src/multiplayer_ui.cpp:67 src/playcampaign.cpp:412
 msgid "Connection timed out"
 msgstr "Connection timed out"
 
@@ -4946,15 +4855,15 @@ msgstr "Play a multiplayer game sharing the same machine"
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1424 src/playcampaign.cpp:90 src/playcampaign.cpp:344
+#: src/game.cpp:1424 src/playcampaign.cpp:91 src/playcampaign.cpp:384
 msgid "The game could not be loaded: "
 msgstr "The game could not be loaded: "
 
-#: src/game.cpp:1426 src/playcampaign.cpp:92 src/playcampaign.cpp:347
+#: src/game.cpp:1426 src/playcampaign.cpp:93 src/playcampaign.cpp:387
 msgid "Error while playing the game: "
 msgstr "Error while playing the game: "
 
-#: src/game.cpp:1442 src/playcampaign.cpp:94 src/playcampaign.cpp:350
+#: src/game.cpp:1442 src/playcampaign.cpp:95 src/playcampaign.cpp:390
 msgid "The game map could not be loaded: "
 msgstr "The game map could not be loaded: "
 
@@ -5092,7 +5001,7 @@ msgstr "weapon range: "
 msgid "damage type: "
 msgstr "damage type: "
 
-#: src/generate_report.cpp:258 src/mouse_events.cpp:1330
+#: src/generate_report.cpp:258 src/mouse_events.cpp:1329
 msgid "vs"
 msgstr "vs"
 
@@ -5378,7 +5287,7 @@ msgstr "Upkeep"
 msgid "Income"
 msgstr "Income"
 
-#: src/menu_events.cpp:491 src/playcampaign.cpp:465
+#: src/menu_events.cpp:491 src/playcampaign.cpp:505
 msgid "Name:"
 msgstr "Name:"
 
@@ -5398,7 +5307,7 @@ msgstr "Saved"
 msgid "The game has been saved"
 msgstr "The game has been saved"
 
-#: src/menu_events.cpp:509 src/playcampaign.cpp:473
+#: src/menu_events.cpp:509 src/playcampaign.cpp:513
 msgid "The game could not be saved"
 msgstr "The game could not be saved"
 
@@ -5421,7 +5330,7 @@ msgid "Could not save the map: $msg"
 msgstr ""
 
 #: src/menu_events.cpp:635 src/menu_events.cpp:637 src/play_controller.cpp:747
-#: src/playcampaign.cpp:101
+#: src/playcampaign.cpp:102
 msgid "Auto-Save"
 msgstr "Auto-Save"
 
@@ -5674,15 +5583,15 @@ msgstr "No usable weapon"
 msgid "Chance of being unscathed"
 msgstr "Chance of being unscathed"
 
-#: src/mouse_events.cpp:656 src/mouse_events.cpp:1347
+#: src/mouse_events.cpp:656 src/mouse_events.cpp:1346
 msgid "Damage Calculations"
 msgstr "Damage Calculations"
 
-#: src/mouse_events.cpp:1358
+#: src/mouse_events.cpp:1357
 msgid "Attack Enemy"
 msgstr "Attack Enemy"
 
-#: src/mouse_events.cpp:1359
+#: src/mouse_events.cpp:1358
 msgid "Choose weapon:"
 msgstr "Choose weapon:"
 
@@ -6093,16 +6002,16 @@ msgstr "Skip quickly to the active turn when observing"
 msgid "Invalid Color"
 msgstr "Invalid Colour"
 
-#: src/multiplayer_ui.cpp:362
+#: src/multiplayer_ui.cpp:361
 msgid "Send a private message to "
 msgstr ""
 
-#: src/multiplayer_ui.cpp:363
+#: src/multiplayer_ui.cpp:362
 #, fuzzy
 msgid "Whisper"
 msgstr "White"
 
-#: src/multiplayer_ui.cpp:364
+#: src/multiplayer_ui.cpp:363
 #, fuzzy
 msgid "Message: "
 msgstr "Message:"
@@ -6143,8 +6052,8 @@ msgstr "Could not add socket to socket set"
 msgid "Could not send initial handshake"
 msgstr "Could not send initial handshake"
 
-#: src/play_controller.cpp:393 src/playsingle_controller.cpp:353
-#: src/playsingle_controller.cpp:402
+#: src/play_controller.cpp:393 src/playsingle_controller.cpp:342
+#: src/playsingle_controller.cpp:391
 msgid "The file you have tried to load is corrupt"
 msgstr "The file you have tried to load is corrupt"
 
@@ -6156,41 +6065,41 @@ msgstr "Back to start"
 msgid "Back to turn "
 msgstr "Back to turn "
 
-#: src/playcampaign.cpp:303
+#: src/playcampaign.cpp:127 src/playcampaign.cpp:149
 msgid "Defeat"
 msgstr "Defeat"
 
-#: src/playcampaign.cpp:304
+#: src/playcampaign.cpp:128 src/playcampaign.cpp:150
 msgid "You have been defeated!"
 msgstr "You have been defeated!"
 
-#: src/playcampaign.cpp:315
+#: src/playcampaign.cpp:355
 msgid " replay"
 msgstr " replay"
 
-#: src/playcampaign.cpp:325
+#: src/playcampaign.cpp:365
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "The game could not be saved"
 
-#: src/playcampaign.cpp:363
+#: src/playcampaign.cpp:403
 msgid "Receiving data..."
 msgstr "Receiving data..."
 
-#: src/playcampaign.cpp:365
+#: src/playcampaign.cpp:405
 msgid "Downloading next scenario..."
 msgstr "Downloading next scenario..."
 
-#: src/playcampaign.cpp:464
+#: src/playcampaign.cpp:504
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Do you really want to delete this game?"
 
-#: src/playcampaign.cpp:489
+#: src/playcampaign.cpp:529
 msgid "Unknown scenario: '"
 msgstr "Unknown scenario: '"
 
-#: src/playmp_controller.cpp:329
+#: src/playmp_controller.cpp:319
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6198,60 +6107,60 @@ msgstr ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 
-#: src/playsingle_controller.cpp:220
+#: src/playsingle_controller.cpp:209
 msgid "Game Over"
 msgstr "Game Over"
 
-#: src/playsingle_controller.cpp:221
+#: src/playsingle_controller.cpp:210
 msgid "The game is over."
 msgstr "The game is over."
 
-#: src/playsingle_controller.cpp:292
+#: src/playsingle_controller.cpp:281
 msgid "Scenario Report"
 msgstr "Scenario Report"
 
-#: src/playsingle_controller.cpp:294
+#: src/playsingle_controller.cpp:283
 msgid "Victory"
 msgstr "Victory"
 
-#: src/playsingle_controller.cpp:295
+#: src/playsingle_controller.cpp:284
 msgid "You have emerged victorious!"
 msgstr "You have emerged victorious!"
 
-#: src/playsingle_controller.cpp:325
+#: src/playsingle_controller.cpp:314
 msgid "Remaining gold: "
 msgstr "Remaining gold: "
 
-#: src/playsingle_controller.cpp:328
+#: src/playsingle_controller.cpp:317
 msgid "Early finish bonus: "
 msgstr "Early finish bonus: "
 
-#: src/playsingle_controller.cpp:330
+#: src/playsingle_controller.cpp:319
 msgid "per turn"
 msgstr "per turn"
 
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:320
 msgid "Turns finished early: "
 msgstr "Turns finished early: "
 
-#: src/playsingle_controller.cpp:333
+#: src/playsingle_controller.cpp:322
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:335
+#: src/playsingle_controller.cpp:324
 msgid "Gold: "
 msgstr "Gold: "
 
-#: src/playsingle_controller.cpp:340
+#: src/playsingle_controller.cpp:329
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% of gold is retained for the next scenario"
 
-#: src/playsingle_controller.cpp:341
+#: src/playsingle_controller.cpp:330
 msgid "Retained Gold: "
 msgstr "Retained Gold: "
 
-#: src/playsingle_controller.cpp:363
+#: src/playsingle_controller.cpp:352
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6259,7 +6168,7 @@ msgstr ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 
-#: src/playsingle_controller.cpp:487
+#: src/playsingle_controller.cpp:477
 msgid "It is now your turn"
 msgstr "It is now your turn"
 
@@ -6497,6 +6406,34 @@ msgstr "Help us make Wesnoth better for you!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Enable summary uploads"
+
+#, fuzzy
+#~ msgid "Unit art"
+#~ msgstr "Unit List"
+
+#, fuzzy
+#~ msgid "Map art"
+#~ msgstr "Map"
+
+#~ msgid "mace"
+#~ msgstr "mace"
+
+#~ msgid "sling"
+#~ msgstr "sling"
+
+#, fuzzy
+#~ msgid "female^Fugitive"
+#~ msgstr "Fighter"
+
+#, fuzzy
+#~ msgid "Outlaw Ranger"
+#~ msgstr "Outlaw"
+
+#~ msgid "sword"
+#~ msgstr "sword"
+
+#~ msgid "bow"
+#~ msgstr "bow"
 
 #, fuzzy
 #~ msgid "None"
