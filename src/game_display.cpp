@@ -344,16 +344,15 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image(game_config::grid_image));
 			}
 
-			//FIXME: this is a temporary hack to render/flush
-			//the stack, so we can draw text
-			tile_stack_render(xpos, ypos);
-
 			// draw reach_map information
 			if (!reach_map_.empty() && !is_shrouded && on_map) {
 				reach_map::iterator reach = reach_map_.find(*it);
 				if (reach == reach_map_.end()) {
 					tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED,image::NO_ADJUST_COLOUR));
 				} else if (reach->second > 1) {
+					//FIXME: this is a temporary hack to render/flush
+					//the stack, so we can draw text
+					tile_stack_render(xpos, ypos);
 					const std::string num = lexical_cast<std::string>(reach->second);
 					draw_text_in_hex(*it, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
 				}
