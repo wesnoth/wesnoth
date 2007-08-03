@@ -353,7 +353,7 @@ void ui::handle_event(const SDL_Event& event)
 		handle_key_event(event.key);
 	}
     if(users_menu_.double_clicked()) {
-		std::string usr_text = font::del_tags(user_list_[users_menu_.selection()]);
+		std::string usr_text = user_list_[users_menu_.selection()];
 		const int index = usr_text.find_first_of(' ');
 		if (index > -1) {
 			usr_text.erase(index);
@@ -634,10 +634,10 @@ void ui::gamelist_updated(bool silent)
 				suffix = std::string(" (") + location + std::string(")");
 			}
 			if(preferences::iconize_list()) {
-			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings.push_back((**user)["name"].str() + suffix);
 			    menu_strings.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
             } else {
-			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings.push_back((**user)["name"].str() + suffix);
 			    menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
             }
         }
@@ -656,10 +656,10 @@ void ui::gamelist_updated(bool silent)
 				suffix = std::string(" (") + location + std::string(")");
 			}
 			if(preferences::iconize_list()) {
-			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings.push_back((**user)["name"].str() + suffix);
 			    menu_strings.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
             } else {
-			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings.push_back((**user)["name"].str() + suffix);
 			    menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
             }
         }
@@ -678,10 +678,10 @@ void ui::gamelist_updated(bool silent)
 				suffix = std::string(" (") + location + std::string(")");
 			}
 			if(preferences::iconize_list()) {
-			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings.push_back((**user)["name"].str() + suffix);
 			    menu_strings.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
             } else {
-			    user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+			    user_strings.push_back((**user)["name"].str() + suffix);
 			    menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
             }
         }
@@ -701,20 +701,20 @@ void ui::gamelist_updated(bool silent)
 		if(preferences::iconize_list()) {
 			std::string ig = std::string((**user)["name"]);
 		    if(ig == preferences::login()) {
-	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+	            user_strings.push_back((**user)["name"].str() + suffix);
 	            menu_strings.push_back(imgpre + "self.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        } else if((*cignore)[ig] == "ignored") {
-	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+	            user_strings.push_back((**user)["name"].str() + suffix);
 	            menu_strings.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        } else if ((*cignore)[ig] == "friend") {
-	            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+	            user_strings.push_back((**user)["name"].str() + suffix);
 	            menu_strings.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        } else {
-	             user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+	             user_strings.push_back((**user)["name"].str() + suffix);
 	             menu_strings.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
 	        }
 		} else {
-            user_strings.push_back(prefix + (**user)["name"].str() + suffix);
+            user_strings.push_back((**user)["name"].str() + suffix);
             menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
         }
     }
@@ -724,7 +724,7 @@ void ui::gamelist_updated(bool silent)
 	std::vector< std::string >::const_iterator help_itor = user_strings.begin();
 	std::vector< std::string >::iterator menu_itor = menu_strings.begin();
    	while(help_itor != user_strings.end() && menu_itor != menu_strings.end()) {
-		*menu_itor++ += help_sep + font::del_tags(*help_itor++);
+		*menu_itor++ += help_sep + *help_itor++;
 	}
 	set_user_list(user_strings, silent);
 	set_user_menu_items(menu_strings);
