@@ -93,14 +93,15 @@ foreach my $file (@ARGV) {
       # single-line non-quoted string
       die "nested string in $file" if defined $str;
 
-      # magic handling of weapon descriptions
-      push @{$messages{raw2postring($2)}},  "$file:$."
-	if $readingattack and
-	  ($1 eq 'name' or $1 eq 'type' or $1 eq 'special');
-
-      # magic handling of unit abilities
-      push @{$messages{raw2postring($2)}},  "$file:$."
-	if $1 eq 'ability';
+### probably not needed ###
+#      # magic handling of weapon descriptions
+#      push @{$messages{raw2postring($2)}},  "$file:$."
+#	if $readingattack and
+#	  ($1 eq 'name' or $1 eq 'type' or $1 eq 'special');
+#
+#      # magic handling of unit abilities
+#      push @{$messages{raw2postring($2)}},  "$file:$."
+#	if $1 eq 'ability';
 
     } elsif (m,\[attack\],) {
       $readingattack = 1;
