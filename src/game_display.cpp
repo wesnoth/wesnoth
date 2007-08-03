@@ -306,7 +306,6 @@ void game_display::draw(bool update,bool force)
 			}
 			*/
 
-
 			tile_stack_clear();
 
 			if(!is_shrouded /*|| !on_map*/) {
@@ -340,6 +339,11 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image(tod_hex_mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
 			}
 
+			// draw the grid, if that's been enabled 
+			if(grid_ && !is_shrouded && on_map) {
+				tile_stack_append(image::get_image(game_config::grid_image));
+			}
+
 			//FIXME: this is a temporary hack to render/flush
 			//the stack, so we can draw text
 			tile_stack_render(xpos, ypos);
@@ -355,12 +359,7 @@ void game_display::draw(bool update,bool force)
 				}
 			}
 
-			// draw the grid, if that's been enabled 
-			if(grid_ && !is_shrouded && on_map) {
-				tile_stack_append(image::get_image(game_config::grid_image));
-			}
-
-			// draw cross images for debug highlights 
+			// draw cross images for debug highlights
 			if(game_config::debug && debugHighlights_.count(*it)) {
 				tile_stack_append(image::get_image(game_config::cross_image));
 			}
