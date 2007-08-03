@@ -729,7 +729,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		if(minimap_scrolling_) return;
 	}
 
-	const gamemap::location new_hex = (*gui_).hex_clicked_on(x,y,NULL,NULL);
+	const gamemap::location new_hex = (*gui_).hex_clicked_on(x,y);
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
@@ -760,11 +760,15 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
 				previous_free_hex_ = last_hex_;
 		}
+		last_hex_ = new_hex;
 
+		// we search if there is an attack possibility and where
 		gamemap::location attack_from = current_unit_attacks_from(new_hex);
 
 		//see if we should show the normal cursor, the movement cursor, or
 		//the attack cursor
+		//If the cursor is on WAIT, we don't change it and let the setter
+		//of this state end it
 		if (cursor::get() != cursor::WAIT) {
 			if(selected_unit != units_.end() && selected_unit->second.side() == team_num_
 			   && !selected_unit->second.incapacitated() && !browse) {
@@ -773,13 +777,16 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 				} else if (mouseover_unit==units_.end() && current_paths_.routes.count(new_hex)) {
 					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 				} else {
+					// selecte unit can't attack or move there
 					cursor::set(cursor::NORMAL);
 				}
 			} else {
+				// no selected unit or we can't move it
 				cursor::set(cursor::NORMAL);
 			}
 		}
 
+		// show (or cancel) the attack direction indicator
 		if (attack_from.valid() && !browse) {
 			std::string dir_str = gamemap::location::write_direction(new_hex.get_relative_dir(attack_from));
 			surface attack_dir_surf = image::get_image("misc/attack-from-"+dir_str+".png", image::UNMASKED,image::NO_ADJUST_COLOUR);
@@ -798,6 +805,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 			(*gui_).set_route(NULL);
 		}
 
+		// the destination is the pointed hex or the adjacent hex
+		// used to attack it
 		gamemap::location dest;
 		unit_map::const_iterator dest_un;
 		if (attack_from.valid()) {
@@ -814,10 +823,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		} else if(!current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
-			unit_map::const_iterator un = selected_unit;
-
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && !un->second.incapacitated()) {
-				current_route_ = get_route(un, dest, current_team());
+			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
+				current_route_ = get_route(selected_unit, dest, current_team());
 				if(!browse) {
 					(*gui_).set_route(&current_route_);
 				}
@@ -838,8 +845,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 				enemy_paths_ = true;
 			} else {
 				//unit is on our team, show path if the unit has one
-				unit u = un->second;
-				const gamemap::location go_to = u.get_goto();
+				const gamemap::location go_to = un->second.get_goto();
 				if(map_.on_board(go_to)) {
 					paths::route route = get_route(un, go_to, current_team());
 					gui_->set_route(&route);
@@ -847,8 +853,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 				over_route_ = true;
 			}
 		}
-
-		last_hex_ = new_hex;
 	}
 }
 
