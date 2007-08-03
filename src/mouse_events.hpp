@@ -99,10 +99,13 @@ private:
 	bool dragging_started_;
 	int drag_from_x_;
 	int drag_from_y_;
-	
+
+	// last highlighted hex
 	gamemap::location last_hex_;
-	// last highlighted hex without any enemy
-	gamemap::location last_highlighted_hex_;
+	// previous highlighted hexes
+	// the hex of the selected unit and empty hex are "free"
+	gamemap::location previous_hex_;
+	gamemap::location previous_free_hex_;
 	gamemap::location selected_hex_;
 	gamemap::location next_unit_;
 	paths::route current_route_;

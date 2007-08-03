@@ -743,11 +743,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		}
 	}
 
-	// the selected hex is always the best attack origin
-	if (new_hex == selected_hex_) {
-		last_highlighted_hex_ = new_hex;
-	}
-
 	if(new_hex != last_hex_) {
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
@@ -756,20 +751,20 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		(*gui_).highlight_hex(new_hex);
 
-		//see if we should show the normal cursor, the movement cursor, or
-		//the attack cursor
-
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
-		// we consider any hex without enemy as a possible attack origin,
-		// we will search later the nearest empty hex
-		if (mouseover_unit == units_.end() || !current_team().is_enemy(mouseover_unit->second.side())) {
-			last_highlighted_hex_ = new_hex;
+		// we store the previous hexes used to propose attack direction
+		previous_hex_ = last_hex_;
+		// the hex of the selected unit is also "free"
+		if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
+				previous_free_hex_ = last_hex_;
 		}
 
 		gamemap::location attack_from = current_unit_attacks_from(new_hex);
 
+		//see if we should show the normal cursor, the movement cursor, or
+		//the attack cursor
 		if (cursor::get() != cursor::WAIT) {
 			if(selected_unit != units_.end() && selected_unit->second.side() == team_num_
 			   && !selected_unit->second.incapacitated() && !browse) {
@@ -852,9 +847,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 				over_route_ = true;
 			}
 		}
-	}
 
-	last_hex_ = new_hex;
+		last_hex_ = new_hex;
+	}
 }
 
 unit_map::iterator mouse_handler::selected_unit()
@@ -892,8 +887,8 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 		return gamemap::location();
 	}
 
-	const gamemap::location::DIRECTION preferred = loc.get_relative_dir(last_highlighted_hex_);
-	const gamemap::location::DIRECTION second_preferred = loc.get_relative_dir(selected_hex_);
+	const gamemap::location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
+	const gamemap::location::DIRECTION second_preferred = loc.get_relative_dir(previous_free_hex_);
 
 	int best_rating = 100;//smaller is better
 	gamemap::location res;
