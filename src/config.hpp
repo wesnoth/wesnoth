@@ -35,7 +35,7 @@ typedef std::map<std::string,t_string> string_map;
 
 //a config object defines a single node in a WML file, with access to
 //child nodes.
-class config: public variable_set
+class config
 {
 public:
 	//create an empty node.
@@ -70,6 +70,7 @@ public:
 	const t_string& operator[](const std::string& key) const;
 
 	const t_string& get_attribute(const std::string& key) const;
+	bool has_attribute(const std::string& key) const {return values.find(key) != values.end();}
 
 	config* find_child(const std::string& key, const std::string& name,
 	                   const t_string& value);
@@ -148,9 +149,6 @@ public:
 
 	//resets the translated values of all strings contained in this object
 	void reset_translation() const;
-
-	// allow any WML to be used to interpolate variables
-	const t_string& get_variable_const(const std::string& id) const;
 
 	//all the attributes of this node.
 	string_map values;

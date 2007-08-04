@@ -46,6 +46,11 @@ Version 1.3.6+svn:
    * now [base_unit]id= inside [unit] can extend upon existing unit types
    * new tag [filter_radius] to allow greater control over radius expansion
      when using the standard location filter
+   * fix a bug where containers could only be stored at the top-level
+   * fix a bug where both x and y had to be specified in location filters
+   * better handling/reporting of invalid WML variable type usage
+   * new key find_in= to allow searching a variable of previously stored  
+     locations when using the standard location filter
    * new extra_defines= key to define in campaigns some other preprocessor
      symbol *before* the files are repreprocessed
    * fog and shroud tiles are now defined by the TerrainWML (not [game_config])

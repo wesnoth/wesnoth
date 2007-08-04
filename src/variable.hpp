@@ -47,9 +47,7 @@ public:
 	const t_string expand(const std::string&) const; /** < Synonym for operator[] */
 	const t_string operator[](const std::string& key) const { return expand(key); }
 	const t_string& get_attribute(const std::string& key) const { return (*cfg_)[key]; }
-	bool has_attribute(const std::string& key) const {
-		return (*cfg_).values.find(key) != (*cfg_).values.end(); 
-	}
+	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
 
 private:

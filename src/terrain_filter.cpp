@@ -51,9 +51,30 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 	}
 	
 	//Allow filtering on location ranges 
-	if(!ignore_xy && !(cfg["x"].empty() && cfg["y"].empty())){
+	if(!ignore_xy) {
 		if(!loc.matches_range(cfg["x"], cfg["y"])) {
 			return false;
+		}
+		//allow filtering by searching a stored variable of locations
+		if(cfg.has_attribute("find_in")) {
+			variable_info vi = game_status.sog().get_variable_info(cfg["find_in"],
+				false, variable_info::TYPE_CONTAINER);
+			if(!vi.is_valid) return false;
+			if(vi.explicit_index) {
+				if(gamemap::location(*vi.vars->get_children(vi.key)[vi.index],NULL) != loc) {
+					return false;
+				}
+			} else {
+				config::child_itors ch_itors = vi.vars->child_range(vi.key);
+				for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
+					if(gamemap::location(**ch_itors.first,NULL) == loc) {
+						break;
+					}
+				}
+				if(ch_itors.first == ch_itors.second) {
+					return false;
+				}
+			}
 		}
 	}
 
@@ -119,6 +140,7 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 			return false;
 		}
 	}
+
 	return true; 
 }
 
@@ -138,20 +160,19 @@ namespace {
 	//terrain predicate, returns true if a terrain matches the predicate
 	class terrain_pred : public xy_pred, protected terrain_cache_manager {
 	public:
-		terrain_pred(const gamemap& map, const vconfig& cfg, 
-		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
-		const bool ignore_xy) : map_(map), cfg_(cfg), status_(game_status),
-		units_(units), flat_(flat_tod), ignore_(ignore_xy) {}
+		terrain_pred(const gamemap& map, const vconfig& cfg, const gamestatus& game_status,
+			const unit_map& units, const bool flat_tod) : map_(map), cfg_(cfg),
+			status_(game_status), units_(units), flat_(flat_tod) {}
 
 		virtual bool operator()(const gamemap::location& loc) {
-			return terrain_matches_internal(map_, loc, cfg_, status_, units_, flat_, ignore_, ptr);
+			return terrain_matches_internal(map_, loc, cfg_, status_, units_, flat_, false, ptr);
 		}
 	private:
 		const gamemap& map_;
 		const vconfig& cfg_; 
 		const gamestatus& status_;
 		const unit_map& units_;
-		const bool flat_, ignore_;
+		const bool flat_;
 	};
 
 } //end anonymous namespace
@@ -166,7 +187,7 @@ bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, co
 	std::set<gamemap::location> hexes;
 	std::vector<gamemap::location> loc_vec(1, loc);
 	if(cfg.has_child("filter_radius")) {
-		terrain_pred tp(map, cfg.child("filter_radius"), game_status, units, flat_tod, false);
+		terrain_pred tp(map, cfg.child("filter_radius"), game_status, units, flat_tod);
 		get_tiles_radius(map, loc_vec, radius, hexes, &tp);
 	} else {
 		get_tiles_radius(map, loc_vec, radius, hexes);
@@ -243,7 +264,7 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	const size_t radius = minimum<size_t>(max_loop,
 		lexical_cast_default<size_t>(filter["radius"], 0));
 	if(filter.has_child("filter_radius")) {
-		terrain_pred tp(map, filter.child("filter_radius"), game_status, units, flat_tod, true);
+		terrain_pred tp(map, filter.child("filter_radius"), game_status, units, flat_tod);
 		get_tiles_radius(map, xy_locs, radius, locs, &tp);
 	} else {
 		get_tiles_radius(map, xy_locs, radius, locs);

@@ -76,6 +76,19 @@ struct player_info
 	std::set<std::string> can_recruit; /** < units the player has the ability to recruit */
 };
 
+/** Information on a WML variable. */
+struct variable_info
+{
+	variable_info():is_valid(false), key(), explicit_index(false), index(0),
+		vars(NULL) {}
+	enum TYPE { TYPE_SCALAR, TYPE_ARRAY, TYPE_CONTAINER, TYPE_UNSPECIFIED };
+	bool is_valid;
+	std::string key; //the name of the internal attribute or child
+	bool explicit_index; //true if query ended in [...] specifier
+	size_t index; //the index of the child
+	config *vars; //the containing node in game_state::variables
+};
+
 class game_state : public variable_set
 {
 public:
@@ -117,8 +130,11 @@ public:
 
 	//Variable access
 
+	variable_info get_variable_info(const std::string& varname, bool force_valid=true,
+		variable_info::TYPE validation_type=variable_info::TYPE_UNSPECIFIED) const;
+
 	t_string& get_variable(const std::string& varname);
-	virtual const t_string& get_variable_const(const std::string& varname)const ;
+	virtual const t_string& get_variable_const(const std::string& varname) const;
 	config& get_variable_cfg(const std::string& varname);
 
 	void set_variable(const std::string& varname, const t_string& value);
@@ -149,6 +165,7 @@ private:
 	void get_variable_internal_const(const std::string& key, const config& cfg,
 			const t_string** varout) const;
 	mutable config variables; //mutable due to lazy-evaluation
+	mutable config temporaries; //lengths of arrays, etc.
 	void activate_scope_variable(std::string var_name) const;
 	mutable bool recursive_; //checks for recursion in activate_scope_variable()
 };

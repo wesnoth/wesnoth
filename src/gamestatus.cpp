@@ -1037,197 +1037,76 @@ void game_state::activate_scope_variable(std::string var_name) const
 	}
 }
 
-void game_state::get_variable_internal_const(const std::string& key, const config& cfg,
-		const t_string** varout) const
-{
-	//we get the variable from the [variables] section of the game state. Variables may
-	//be in the format
-	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
-	if(itor != key.end()) {
-		std::string element(key.begin(),itor);
-		std::string sub_key(itor+1,key.end());
-
-		size_t index = 0;
-		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
-		const bool explicit_index = index_start != element.end();
-
-		if(explicit_index) {
-			const std::string::iterator index_end = std::find(index_start,element.end(),']');
-			const std::string index_str(index_start+1,index_end);
-			index = size_t(atoi(index_str.c_str()));
-			if(index > MaxLoop) {
-				LOG_NG << "get_variable_internal: index greater than " << MaxLoop
-				       << ", truncated\n";
-				index = MaxLoop;
-			}
-
-			element = std::string(element.begin(),index_start);
-		}
-
-		const config::child_list& items = cfg.get_children(element);
-
-		//special case -- '.length' on an array returns the size of the array
-		if(explicit_index == false && sub_key == "length") {
-			if(items.empty()) {
-				if(varout != NULL) {
-					static const t_string zero_str = "";
-					*varout = &zero_str;
-				}
-			} else {
-				int size = minimum<int>(MaxLoop,int(items.size()));
-				(*items.back())["__length"] = lexical_cast<std::string>(size);
-
-				if(varout != NULL) {
-					*varout = &(*items.back())["__length"];
-				}
-			}
-
-			return;
-		}
-
-		if(cfg.get_children(element).size() <= index) {
-			static const t_string empty_str = "";
-			*varout = &empty_str;
-			return;
-		}
-
-
-		get_variable_internal_const(sub_key,*cfg.get_children(element)[index],varout);
-	} else {
-		if(varout != NULL) {
-			*varout = &cfg[key];
-		}
-	}
-}
-void game_state::get_variable_internal(const std::string& key, config& cfg,
-		t_string** varout, config** cfgout)
-{
-	//we get the variable from the [variables] section of the game state. Variables may
-	//be in the format
-	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
-	if(itor != key.end()) {
-		std::string element(key.begin(),itor);
-		std::string sub_key(itor+1,key.end());
-
-		size_t index = 0;
-		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
-		const bool explicit_index = index_start != element.end();
-
-		if(explicit_index) {
-			const std::string::iterator index_end = std::find(index_start,element.end(),']');
-			const std::string index_str(index_start+1,index_end);
-			index = size_t(atoi(index_str.c_str()));
-			if(index > MaxLoop) {
-				LOG_NG << "get_variable_internal: index greater than " << MaxLoop
-				       << ", truncated\n";
-				index = MaxLoop;
-			}
-
-			element = std::string(element.begin(),index_start);
-		}
-
-		const config::child_list& items = cfg.get_children(element);
-
-		//special case -- '.length' on an array returns the size of the array
-		if(explicit_index == false && sub_key == "length") {
-			if(items.empty()) {
-				if(varout != NULL) {
-					static t_string zero_str;
-					zero_str = "";
-					*varout = &zero_str;
-				}
-			} else {
-				int size = minimum<int>(MaxLoop,int(items.size()));
-				(*items.back())["__length"] = lexical_cast<std::string>(size);
-
-				if(varout != NULL) {
-					*varout = &(*items.back())["__length"];
-				}
-			}
-
-			return;
-		}
-
-		while(cfg.get_children(element).size() <= index) {
-			cfg.add_child(element);
-		}
-
-		if(cfgout != NULL) {
-			*cfgout = cfg.get_children(element)[index];
-		}
-
-		get_variable_internal(sub_key,*cfg.get_children(element)[index],varout,cfgout);
-	} else {
-		if(varout != NULL) {
-			*varout = &cfg[key];
-		}
-	}
-}
-
-
 t_string& game_state::get_variable(const std::string& key)
 {
-	t_string* res = NULL;
 	activate_scope_variable(key);
-	get_variable_internal(key, variables, &res, NULL);
-	return *res;
+	variable_info to_get = get_variable_info(key, true, variable_info::TYPE_SCALAR);
+	return to_get.vars->values[to_get.key];
 }
 
 const t_string& game_state::get_variable_const(const std::string& key) const
 {
-	const t_string* res = NULL;
 	activate_scope_variable(key);
-	get_variable_internal_const(key, variables, &res);
-	if(res != NULL) {
-		return *res;
-	}
-
-	static t_string empty_string;
-	return empty_string;
+	variable_info to_get = get_variable_info(key, false, variable_info::TYPE_SCALAR);
+	if(!to_get.is_valid) return temporaries[key];
+	return to_get.vars->get_attribute(to_get.key);
 }
 
 config& game_state::get_variable_cfg(const std::string& key)
 {
-	config* res = NULL;
 	activate_scope_variable(key);
-	get_variable_internal(key + ".", variables, NULL, &res);
-	if(res != NULL) {
-		return *res;
-	}
-	static config illegal_key_cfg;
-	LOG_NG << "get_variable_cfg: illegal name \"" << key << "\" used for WML array.";
-	return illegal_key_cfg;
+	variable_info to_get = get_variable_info(key, true, variable_info::TYPE_ARRAY);
+	return *to_get.vars->child(to_get.key);
 }
 
 void game_state::set_variable(const std::string& key, const t_string& value)
 {
-	t_string* res = NULL;
 	activate_scope_variable(key);
-	get_variable_internal(key, variables, &res, NULL);
-	*res = value;
+	variable_info to_set = get_variable_info(key, true, variable_info::TYPE_SCALAR);
+	to_set.vars->values[to_set.key] = value;
 }
 
 config& game_state::add_variable_cfg(const std::string& key, const config& value)
 {
 	activate_scope_variable(key);
-	return variables.add_child(key, value);
+	variable_info to_add = get_variable_info(key, true, variable_info::TYPE_ARRAY);
+	return to_add.vars->add_child(to_add.key, value);
 }
 
 void game_state::clear_variable_cfg(const std::string& varname)
 {
-	variables.clear_children(varname);
+	variable_info to_clear = get_variable_info(varname, false, variable_info::TYPE_CONTAINER);
+	if(!to_clear.is_valid) return;
+	if(to_clear.explicit_index) {
+		to_clear.vars->remove_child(to_clear.key, to_clear.index);
+	} else {
+		to_clear.vars->clear_children(to_clear.key);
+	}
 }
 
 void game_state::clear_variable(const std::string& varname)
 {
-	config* vars = &variables;
-	std::string key(varname);
-	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
-	int dot_index = key.find('.');
+	variable_info to_clear = get_variable_info(varname, false);
+	if(!to_clear.is_valid) return;
+	if(to_clear.explicit_index) {
+		to_clear.vars->remove_child(to_clear.key, to_clear.index);
+	} else {
+		to_clear.vars->clear_children(to_clear.key);
+		to_clear.vars->values.erase(to_clear.key);
+	}
+}
+
+variable_info game_state::get_variable_info(const std::string& varname, bool force_valid, variable_info::TYPE vartype) const
+{
+	variable_info res;
+	res.vars = &variables;
+	res.key = varname;
+	std::string::const_iterator itor = std::find(res.key.begin(),res.key.end(),'.');
+	int dot_index = res.key.find('.');
 	// "mover.modifications.trait[0]"
-	while(itor != key.end()) { // subvar access
-		std::string element=key.substr(0,dot_index);
-		key = key.substr(dot_index+1);
+	while(itor != res.key.end()) { // subvar access
+		std::string element=res.key.substr(0,dot_index);
+		res.key = res.key.substr(dot_index+1);
 
 		size_t index = 0;
 		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
@@ -1237,48 +1116,112 @@ void game_state::clear_variable(const std::string& varname)
 			const std::string index_str(index_start+1,index_end);
 			index = static_cast<size_t>(lexical_cast_default<int>(index_str));
 			if(index > MaxLoop) {
-				LOG_NG << "clear_variable: index greater than " << MaxLoop
+				LOG_NG << "get_variable_info: index greater than " << MaxLoop
 				       << ", truncated\n";
 				index = MaxLoop;
 			}
 			element = std::string(element.begin(),index_start);
 		}
 
-		if(vars->get_children(element).size() <= index) {
-			return;
+		size_t size = res.vars->get_children(element).size();
+		if(size <= index) {
+			if(!force_valid) {
+				WRN_NG << "get_variable_info: invalid WML array index, " << varname << std::endl;
+				return res;
+			}
+			for(; size <= index; ++size) {
+				res.vars->add_child(element);
+			}
 		}
-		//std::cerr << "Entering " << element << "[" << index << "] of [" << vars->get_children(element).size() << "]\n";
-		vars = vars->get_children(element)[index];
-		if(!vars) {
-			return;
+
+		if(!explicit_index && res.key == "length") {
+			switch(vartype) {
+			case variable_info::TYPE_ARRAY:
+			case variable_info::TYPE_CONTAINER:
+				WRN_NG << "get_variable_info: using reserved WML variable as wrong type, "
+					<< varname << std::endl;
+				if(!force_valid) {
+					return res;
+				}
+			default:
+				temporaries[varname] = lexical_cast<std::string>(size);
+				res.key = varname;
+				res.vars = &temporaries;
+				res.is_valid = true;
+				return res;
+			}
 		}
-		itor = std::find(key.begin(),key.end(),'.');
-		dot_index = key.find('.');
+
+		//std::cerr << "Entering " << element << "[" << index << "] of [" << res.vars->get_children(element).size() << "]\n";
+		res.vars = res.vars->get_children(element)[index];
+		itor = std::find(res.key.begin(),res.key.end(),'.');
+		dot_index = res.key.find('.');
 	}
-	size_t index = 0;
-	const std::string::iterator index_start = std::find(key.begin(),key.end(),'[');
-	const bool explicit_index = index_start != key.end();
-	if(explicit_index) {
-		const std::string::iterator index_end = std::find(index_start,key.end(),']');
+	const std::string::iterator index_start = std::find(res.key.begin(),res.key.end(),'[');
+	res.explicit_index = index_start != res.key.end();
+	if(res.explicit_index) {
+		const std::string::iterator index_end = std::find(index_start,res.key.end(),']');
 		const std::string index_str(index_start+1,index_end);
-		index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-		if(index > MaxLoop) {
+		res.index = static_cast<size_t>(lexical_cast_default<int>(index_str));
+		if(res.index > MaxLoop) {
 			LOG_NG << "clear_variable: index greater than " << MaxLoop
 				   << ", truncated\n";
-			index = MaxLoop;
+			res.index = MaxLoop;
 		}
-		key = std::string(key.begin(),index_start);
-	}
-
-	if(explicit_index) {
-		if(vars->get_children(key).size() <= index) {
-			return;
+		res.key = std::string(res.key.begin(),index_start);
+		size_t size = res.vars->get_children(res.key).size();
+		if(size <= res.index) {
+			if(!force_valid) {
+				WRN_NG << "get_variable_info: invalid WML array index, " << varname << std::endl;
+				return res;
+			}
+			for(; size <= res.index; ++size) {
+				res.vars->add_child(res.key);
+			}
 		}
-		//std::cerr << "Removing " << key << "\n";
-		vars->remove_child(key,index);
+		switch(vartype) {
+		case variable_info::TYPE_ARRAY:
+			if(force_valid) {
+				res.vars = res.vars->get_children(res.key)[res.index];
+				res.key = "__array";
+				res.vars->add_child(res.key);
+			}
+			break;
+		case variable_info::TYPE_SCALAR:
+			if(force_valid) {
+				res.vars = res.vars->get_children(res.key)[res.index];
+				res.key = "__value";
+			}
+			break;
+		case variable_info::TYPE_CONTAINER:
+		case variable_info::TYPE_UNSPECIFIED:
+		default:
+			res.is_valid = true;
+			return res;
+		}
+		WRN_NG << "get_variable_info: using explicitly indexed Container as wrong WML type, "
+			<< varname << std::endl;
+		if(force_valid) {
+			res.is_valid = true;
+			res.explicit_index = false;
+			res.index = 0;
+		}
+		return res;
 	} else {
-		vars->values.erase(key);
-		vars->clear_children(key);
+		switch(vartype) {
+		case variable_info::TYPE_ARRAY:
+		case variable_info::TYPE_CONTAINER:
+			res.is_valid = force_valid || res.vars->child(res.key);
+			break;
+		case variable_info::TYPE_SCALAR:
+			res.is_valid = force_valid || res.vars->has_attribute(res.key);
+			break;
+		case variable_info::TYPE_UNSPECIFIED:
+		default:
+			res.is_valid = true;
+			break;
+		}
+		return res;
 	}
 }
 
