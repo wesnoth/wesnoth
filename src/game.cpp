@@ -1522,8 +1522,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 	if(is_valid) {
 		const std::string& cache = get_cache_dir();
 		if(cache != "") {
-			sha1_hash sha;
-			sha.hash(str.str()); // use a hash for a shorter display of the defines
+			sha1_hash sha(str.str()); // use a hash for a shorter display of the defines
 			const std::string fname = cache + "/cache-v" + game_config::version + "-" + sha.display();
 			const std::string fname_checksum = fname + ".checksum";
 

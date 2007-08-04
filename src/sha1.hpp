@@ -20,7 +20,7 @@
 class sha1_hash
 {
 public:
-	void hash(const std::string& str);
+	sha1_hash(const std::string& str);
 	std::string display();
 private:
 	void next(char block[64]);

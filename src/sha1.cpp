@@ -42,19 +42,14 @@ std::string sha1_hash::display() {
 }
 
 // make a hash from a string
-void sha1_hash::hash(const std::string& str) {
+sha1_hash::sha1_hash(const std::string& str) 
+: H0(0x67452301), H1(0xefcdab89), H2(0x98badcfe), H3(0x10325476), H4(0xc3d2e1f0)
+{
 	char block[64];
 	
 	int bytes_left = str.size();
 	Uint32 ssz = bytes_left * 8; // string length in bits
-	
-	// initialize the hash values
-	H0 = 0x67452301;
-	H1 = 0xefcdab89;
-	H2 = 0x98badcfe;
-	H3 = 0x10325476;
-	H4 = 0xc3d2e1f0;
-		
+			
 	std::stringstream iss (str, std::stringstream::in);
 	// cut our string in 64 bytes blocks then process it
 	while (bytes_left > 0) {
