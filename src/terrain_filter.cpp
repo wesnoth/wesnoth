@@ -32,20 +32,6 @@
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
 
-namespace {
-	struct terrain_cache_manager {
-		terrain_cache_manager() : ptr(NULL) {}
-		~terrain_cache_manager() { delete ptr; }
-		t_translation::t_match *ptr;
-	};
-
-	struct cfg_isor {
-		bool operator() (std::pair<const std::string*,const config*> val) {
-			return *(val.first) == "or";
-		}
-	};
-
-} //end anonymous namespace
 
 static bool terrain_matches_internal(const gamemap& map, const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
@@ -136,6 +122,40 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 	return true; 
 }
 
+namespace {
+	struct terrain_cache_manager {
+		terrain_cache_manager() : ptr(NULL) {}
+		~terrain_cache_manager() { delete ptr; }
+		t_translation::t_match *ptr;
+	};
+
+	struct cfg_isor {
+		bool operator() (std::pair<const std::string*,const config*> val) {
+			return *(val.first) == "or";
+		}
+	};
+
+	//terrain predicate, returns true if a terrain matches the predicate
+	class terrain_pred : public xy_pred, protected terrain_cache_manager {
+	public:
+		terrain_pred(const gamemap& map, const vconfig& cfg, 
+		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
+		const bool ignore_xy) : map_(map), cfg_(cfg), status_(game_status),
+		units_(units), flat_(flat_tod), ignore_(ignore_xy) {}
+
+		virtual bool operator()(const gamemap::location& loc) {
+			return terrain_matches_internal(map_, loc, cfg_, status_, units_, flat_, ignore_, ptr);
+		}
+	private:
+		const gamemap& map_;
+		const vconfig& cfg_; 
+		const gamestatus& status_;
+		const unit_map& units_;
+		const bool flat_, ignore_;
+	};
+
+} //end anonymous namespace
+
 bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, const vconfig& cfg, 
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
@@ -145,7 +165,12 @@ bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, co
 		lexical_cast_default<size_t>(cfg["radius"], 0));
 	std::set<gamemap::location> hexes;
 	std::vector<gamemap::location> loc_vec(1, loc);
-	get_tiles_radius(map, loc_vec, radius, hexes);
+	if(cfg.has_child("filter_radius")) {
+		terrain_pred tp(map, cfg.child("filter_radius"), game_status, units, flat_tod, false);
+		get_tiles_radius(map, loc_vec, radius, hexes, &tp);
+	} else {
+		get_tiles_radius(map, loc_vec, radius, hexes);
+	}
 
 	size_t loop_count = 0;
 	bool matches = false;
@@ -217,7 +242,12 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	//handle radius
 	const size_t radius = minimum<size_t>(max_loop,
 		lexical_cast_default<size_t>(filter["radius"], 0));
-	get_tiles_radius(map, xy_locs, radius, locs);
+	if(filter.has_child("filter_radius")) {
+		terrain_pred tp(map, filter.child("filter_radius"), game_status, units, flat_tod, true);
+		get_tiles_radius(map, xy_locs, radius, locs, &tp);
+	} else {
+		get_tiles_radius(map, xy_locs, radius, locs);
+	}
 
 	//handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond = filter.get_config().ordered_begin();
