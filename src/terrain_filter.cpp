@@ -248,6 +248,34 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 			}
 		}
 	}
+	if(filter.has_attribute("find_in")) {
+		//remove any locations not found in the specified variable
+		variable_info vi = game_status.sog().get_variable_info(filter["find_in"],
+			false, variable_info::TYPE_CONTAINER);
+		if(!vi.is_valid) {
+			xy_locs.clear();
+		} else if(vi.explicit_index) {
+			gamemap::location test_loc(*vi.vars->get_children(vi.key)[vi.index],NULL);
+			if(std::find(xy_locs.begin(), xy_locs.end(), test_loc) != xy_locs.end()) {
+				xy_locs.clear();
+				xy_locs.push_back(test_loc);
+			} else {
+				xy_locs.clear();
+			}
+		} else {
+			std::set<gamemap::location> findin_locs;
+			config::child_itors ch_itors = vi.vars->child_range(vi.key);
+			for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
+				gamemap::location test_loc(**ch_itors.first,NULL);
+				if(std::find(xy_locs.begin(), xy_locs.end(), test_loc) != xy_locs.end()) {
+					findin_locs.insert(test_loc);
+				}
+			}
+			xy_locs.clear();
+			std::copy(findin_locs.begin(), findin_locs.end(),
+				std::inserter(xy_locs, xy_locs.end()));
+		}
+	}
 
 	//handle location filter
 	terrain_cache_manager tcm;
