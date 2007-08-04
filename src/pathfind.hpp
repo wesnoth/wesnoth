@@ -28,18 +28,26 @@ class unit_map;
 #include <list>
 #include <set>
 #include <vector>
+#include <functional>
 
 //this module contains various pathfinding functions and utilities.
 
 //a convenient type for storing a list of tiles adjacent to a certain tile
 typedef util::array<gamemap::location,6> adjacent_tiles_array;
 
+class xy_pred : public std::unary_function<gamemap::location const&, bool>
+{
+public:
+	virtual bool operator()(gamemap::location const&) = 0;
+};
+
 //function which, given a location, will find all tiles within 'radius' of that tile
-void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res);
+void get_tiles_radius(const gamemap::location& a, size_t radius,
+					  std::set<gamemap::location>& res, xy_pred *pred=NULL);
 
 //function which, given a set of locations, will find all tiles within 'radius' of those tiles
 void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& locs, size_t radius,
-	std::set<gamemap::location>& res);
+	std::set<gamemap::location>& res, xy_pred *pred=NULL);
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 

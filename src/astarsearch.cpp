@@ -214,32 +214,42 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	return locRoute;
 }
 
-static void get_tiles_radius_internal(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited)
-	{
-		visited[a] = radius;
-		res.insert(a);
+static void get_tiles_radius_internal(const gamemap::location& a, size_t radius,
+	std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited, xy_pred &filter)
+{
+	visited[a] = radius;
+	res.insert(a);
 
-		if(radius == 0) {
-			return;
-		}
-
-		gamemap::location adj[6];
-		get_adjacent_tiles(a,adj);
-		for(size_t i = 0; i != 6; ++i) {
-			if(visited.count(adj[i]) == 0 || visited[adj[i]] < int(radius)-1) {
-				get_tiles_radius_internal(adj[i],radius-1,res,visited);
-			}
-		}
+	if(radius == 0) {
+		return;
 	}
 
-void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res)
+	gamemap::location adj[6];
+	get_adjacent_tiles(a,adj);
+	for(size_t i = 0; i != 6; ++i) {
+		if((visited.count(adj[i]) == 0 || visited[adj[i]] < int(radius)-1) && filter(adj[i])) {
+			get_tiles_radius_internal(adj[i],radius-1,res,visited,filter);
+		}
+	}
+}
+
+namespace {
+    class unfiltered : public xy_pred
+    {
+	public:
+		virtual bool operator()(gamemap::location const&) { return true; }
+    };
+}
+
+void get_tiles_radius(const gamemap::location& a, size_t radius,
+					  std::set<gamemap::location>& res, xy_pred *pred)
 {
 	std::map<gamemap::location,int> visited;
-	get_tiles_radius_internal(a,radius,res,visited);
+	get_tiles_radius_internal(a,radius,res,visited, ((pred)? *pred :unfiltered()));
 }
 
 void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &locs,
-                      size_t radius, std::set<gamemap::location> &res)
+                      size_t radius, std::set<gamemap::location> &res, xy_pred *pred)
 {
 	typedef std::set<gamemap::location> location_set;
 	location_set not_visited(locs.begin(), locs.end()), must_visit;
@@ -253,7 +263,7 @@ void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &
 			get_adjacent_tiles(*it, adj);
 			for(size_t i = 0; i != 6; ++i) {
 				gamemap::location const &loc = adj[i];
-				if(map.on_board(loc) && res.count(loc) == 0) {
+				if(map.on_board(loc) && !res.count(loc) && (!pred || (*pred)(loc))) {
 					must_visit.insert(loc);
 				}
 			}
