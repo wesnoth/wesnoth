@@ -537,11 +537,18 @@ const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terr
 
 bool gamemap::location::matches_range(const std::string& xloc, const std::string &yloc) const
 {
-	if(std::find(xloc.begin(),xloc.end(),',') != xloc.end()) {
+	if(std::find(xloc.begin(),xloc.end(),',') != xloc.end()
+	|| std::find(yloc.begin(),yloc.end(),',') != yloc.end()) {
 		std::vector<std::string> xlocs = utils::split(xloc);
 		std::vector<std::string> ylocs = utils::split(yloc);
 
-		const int size = xlocs.size() < ylocs.size()?xlocs.size():ylocs.size();
+		int size;
+		for(size = xlocs.size(); size < ylocs.size(); ++size) {
+			xlocs.push_back("");
+		}
+		while(size > ylocs.size()) {
+			ylocs.push_back("");
+		}
 		for(int i = 0; i != size; ++i) {
 			if(matches_range(xlocs[i],ylocs[i]))
 				return true;
