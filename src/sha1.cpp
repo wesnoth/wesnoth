@@ -46,7 +46,7 @@ void sha1_hash::hash(const std::string& str) {
 	char block[64];
 	
 	int bytes_left = str.size();
-	uint32_t ssz = bytes_left * 8; // string length in bits
+	Uint32 ssz = bytes_left * 8; // string length in bits
 	
 	// initialize the hash values
 	H0 = 0x67452301;
@@ -61,7 +61,7 @@ void sha1_hash::hash(const std::string& str) {
 		iss.read(block, 64);
 		if (bytes_left <= 64) { // if it's the last block, pad it
 			if (bytes_left < 64) {
-				block[bytes_left]=0x80; // add a 1 bit right after the end of the string
+				block[bytes_left]= '\10'; // add a 1 bit right after the end of the string
 			}
 			int i;
 			for (i = 63; i > bytes_left; i--) {
@@ -80,7 +80,7 @@ void sha1_hash::hash(const std::string& str) {
 					block[i]=0; // pad our block with zeros
 				}
 				if (bytes_left == 64) {
-					block[0]=0x80; // add a 1 bit right after the end of the string = beginning of our new block
+					block[0]='\10'; // add a 1 bit right after the end of the string = beginning of our new block
 				}
 				// put the length at the end of the block
 				block[60] = ssz >> 24;
@@ -96,8 +96,8 @@ void sha1_hash::hash(const std::string& str) {
 
 // process the next 512 bits block
 void sha1_hash::next(char block[64]) {
-	uint32_t W[80];
-	uint32_t A, B, C, D, E, T;
+	Uint32 W[80];
+	Uint32 A, B, C, D, E, T;
 	int i;
 	
 	A = H0;

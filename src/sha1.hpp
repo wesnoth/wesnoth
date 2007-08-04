@@ -15,7 +15,7 @@
 #define SHA1_H_INCLUDED
 
 #include <string>
-#include <stdint.h>
+#include "SDL_Types.h"
 
 class sha1_hash
 {
@@ -24,7 +24,7 @@ public:
 	std::string display();
 private:
 	void next(char block[64]);
-	uint32_t H0, H1, H2, H3, H4;
+	Uint32 H0, H1, H2, H3, H4;
 	
 };
 
