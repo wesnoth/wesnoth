@@ -530,7 +530,7 @@ void playsingle_controller::linger(upload_log& log)
 		// Loading a new game is effectively a quit.
 		log.quit(status_.turn());
 		throw;
-	} catch(end_level_exception& end_level) {
+	} catch(end_level_exception&) {
 	} 
 	LOG_NG << "ending end-of-scenario linger";
 }

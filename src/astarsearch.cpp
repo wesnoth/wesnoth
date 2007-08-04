@@ -215,7 +215,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 }
 
 static void get_tiles_radius_internal(const gamemap::location& a, size_t radius,
-	std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited, xy_pred &filter)
+	std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited)
 {
 	visited[a] = radius;
 	res.insert(a);
@@ -228,28 +228,16 @@ static void get_tiles_radius_internal(const gamemap::location& a, size_t radius,
 	get_adjacent_tiles(a,adj);
 	for(size_t i = 0; i != 6; ++i) {
 		if(visited.count(adj[i]) == 0 || visited[adj[i]] < int(radius)-1) {
-			if(filter(adj[i])) {
-				get_tiles_radius_internal(adj[i],radius-1,res,visited,filter);
-			} else {
-				visited[adj[i]] = radius-1;
-			}
+			get_tiles_radius_internal(adj[i],radius-1,res,visited);
 		}
 	}
 }
 
-namespace {
-    class unfiltered : public xy_pred
-    {
-	public:
-		virtual bool operator()(gamemap::location const&) { return true; }
-    };
-}
-
 void get_tiles_radius(const gamemap::location& a, size_t radius,
-					  std::set<gamemap::location>& res, xy_pred *pred)
+					  std::set<gamemap::location>& res)
 {
 	std::map<gamemap::location,int> visited;
-	get_tiles_radius_internal(a,radius,res,visited, ((pred)? *pred :unfiltered()));
+	get_tiles_radius_internal(a,radius,res,visited);
 }
 
 void get_tiles_radius(gamemap const &map, std::vector<gamemap::location> const &locs,
