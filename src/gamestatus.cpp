@@ -1012,9 +1012,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	}
 }
 
-namespace {
-const size_t MaxLoop = 1024;
-}
+
 
 void game_state::activate_scope_variable(std::string var_name) const
 {
@@ -1054,9 +1052,11 @@ const t_string& game_state::get_variable_const(const std::string& key) const
 
 config& game_state::get_variable_cfg(const std::string& key)
 {
+	config *to_return = NULL;
 	activate_scope_variable(key);
 	variable_info to_get = get_variable_info(key, true, variable_info::TYPE_ARRAY);
-	return *to_get.vars->child(to_get.key);
+	to_return = to_get.vars->child(to_get.key);
+	return (to_return)? *to_return: to_get.vars->add_child(to_get.key);	
 }
 
 void game_state::set_variable(const std::string& key, const t_string& value)
@@ -1098,131 +1098,7 @@ void game_state::clear_variable(const std::string& varname)
 
 variable_info game_state::get_variable_info(const std::string& varname, bool force_valid, variable_info::TYPE vartype) const
 {
-	variable_info res;
-	res.vars = &variables;
-	res.key = varname;
-	std::string::const_iterator itor = std::find(res.key.begin(),res.key.end(),'.');
-	int dot_index = res.key.find('.');
-	// "mover.modifications.trait[0]"
-	while(itor != res.key.end()) { // subvar access
-		std::string element=res.key.substr(0,dot_index);
-		res.key = res.key.substr(dot_index+1);
-
-		size_t index = 0;
-		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
-		const bool explicit_index = index_start != element.end();
-		if(explicit_index) {
-			const std::string::iterator index_end = std::find(index_start,element.end(),']');
-			const std::string index_str(index_start+1,index_end);
-			index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-			if(index > MaxLoop) {
-				LOG_NG << "get_variable_info: index greater than " << MaxLoop
-				       << ", truncated\n";
-				index = MaxLoop;
-			}
-			element = std::string(element.begin(),index_start);
-		}
-
-		size_t size = res.vars->get_children(element).size();
-		if(size <= index) {
-			if(!force_valid) {
-				WRN_NG << "get_variable_info: invalid WML array index, " << varname << std::endl;
-				return res;
-			}
-			for(; size <= index; ++size) {
-				res.vars->add_child(element);
-			}
-		}
-
-		if(!explicit_index && res.key == "length") {
-			switch(vartype) {
-			case variable_info::TYPE_ARRAY:
-			case variable_info::TYPE_CONTAINER:
-				WRN_NG << "get_variable_info: using reserved WML variable as wrong type, "
-					<< varname << std::endl;
-				if(!force_valid) {
-					return res;
-				}
-			default:
-				temporaries[varname] = lexical_cast<std::string>(size);
-				res.key = varname;
-				res.vars = &temporaries;
-				res.is_valid = true;
-				return res;
-			}
-		}
-
-		//std::cerr << "Entering " << element << "[" << index << "] of [" << res.vars->get_children(element).size() << "]\n";
-		res.vars = res.vars->get_children(element)[index];
-		itor = std::find(res.key.begin(),res.key.end(),'.');
-		dot_index = res.key.find('.');
-	}
-	const std::string::iterator index_start = std::find(res.key.begin(),res.key.end(),'[');
-	res.explicit_index = index_start != res.key.end();
-	if(res.explicit_index) {
-		const std::string::iterator index_end = std::find(index_start,res.key.end(),']');
-		const std::string index_str(index_start+1,index_end);
-		res.index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-		if(res.index > MaxLoop) {
-			LOG_NG << "clear_variable: index greater than " << MaxLoop
-				   << ", truncated\n";
-			res.index = MaxLoop;
-		}
-		res.key = std::string(res.key.begin(),index_start);
-		size_t size = res.vars->get_children(res.key).size();
-		if(size <= res.index) {
-			if(!force_valid) {
-				WRN_NG << "get_variable_info: invalid WML array index, " << varname << std::endl;
-				return res;
-			}
-			for(; size <= res.index; ++size) {
-				res.vars->add_child(res.key);
-			}
-		}
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-			if(force_valid) {
-				res.vars = res.vars->get_children(res.key)[res.index];
-				res.key = "__array";
-				res.vars->add_child(res.key);
-			}
-			break;
-		case variable_info::TYPE_SCALAR:
-			if(force_valid) {
-				res.vars = res.vars->get_children(res.key)[res.index];
-				res.key = "__value";
-			}
-			break;
-		case variable_info::TYPE_CONTAINER:
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			res.is_valid = true;
-			return res;
-		}
-		WRN_NG << "get_variable_info: using explicitly indexed Container as wrong WML type, "
-			<< varname << std::endl;
-		if(force_valid) {
-			res.is_valid = true;
-			res.explicit_index = false;
-			res.index = 0;
-		}
-		return res;
-	} else {
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-		case variable_info::TYPE_CONTAINER:
-			res.is_valid = force_valid || res.vars->child(res.key);
-			break;
-		case variable_info::TYPE_SCALAR:
-			res.is_valid = force_valid || res.vars->has_attribute(res.key);
-			break;
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			res.is_valid = true;
-			break;
-		}
-		return res;
-	}
+	return variable_info(varname, force_valid, vartype);
 }
 
 static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {

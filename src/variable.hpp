@@ -18,7 +18,7 @@
 #include <string>
 #include <vector>
 
-#include "gamestatus.hpp"
+class game_state;
 class config;
 class t_string;
 
@@ -110,14 +110,28 @@ private:
 	unsigned int recall_index_;
 };
 
-// Here should go a class which servers as a variable repository
-#if 0
-class repository
+/** Information on a WML variable. */
+struct variable_info
 {
 public:
-private:
-	config variables_;
-}
-#endif
+	/**
+	 * TYPE: the correct variable type should be decided by the user of the info structure
+	 * Note: an Array can also be considered a Container, since index 0 will be used by default
+	 */
+	enum TYPE { TYPE_SCALAR,    //a Scalar variable resolves to a t_string attribute of *vars
+	            TYPE_ARRAY,     //an Array variable is a series of Containers
+	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
+	            TYPE_UNSPECIFIED };
+
+	variable_info(const std::string& varname, bool force_valid=true, 
+		TYPE validation_type=TYPE_UNSPECIFIED);
+
+	TYPE vartype;
+	bool is_valid;
+	std::string key; //the name of the internal attribute or child
+	bool explicit_index; //true if query ended in [...] specifier
+	size_t index; //the index of the child
+	config *vars; //the containing node in game_state::variables
+};
 
 #endif

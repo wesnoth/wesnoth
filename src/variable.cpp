@@ -16,11 +16,13 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "gamestatus.hpp"
 #include "log.hpp"
-#include "variable.hpp"
 #include "wassert.hpp"
 #include <iostream>
 
+#define LOG_NG LOG_STREAM(info, engine)
+#define WRN_NG LOG_STREAM(warn, engine)
 #define ERR_NG LOG_STREAM(err, engine)
 
 namespace
@@ -173,5 +175,131 @@ void scoped_recall_unit::activate()
 		}
 	} else {
 		ERR_NG << "failed to auto-store $" << name() << " for player: " << player_ << '\n';
+	}
+}
+
+namespace {
+const size_t MaxLoop = 1024;
+}
+
+variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type) 
+	: vartype(validation_type), is_valid(false), explicit_index(false), index(0), vars(NULL)
+{
+	wassert(repos != NULL);
+	vars = &repos->variables;
+	key = varname;
+	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
+	int dot_index = key.find('.');
+	// "mover.modifications.trait[0]"
+	while(itor != key.end()) { // subvar access
+		std::string element=key.substr(0,dot_index);
+		key = key.substr(dot_index+1);
+
+		size_t inner_index = 0;
+		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
+		const bool inner_explicit_index = index_start != element.end();
+		if(inner_explicit_index) {
+			const std::string::iterator index_end = std::find(index_start,element.end(),']');
+			const std::string index_str(index_start+1,index_end);
+			inner_index = static_cast<size_t>(lexical_cast_default<int>(index_str));
+			if(inner_index > MaxLoop) {
+				LOG_NG << "variable_info: index greater than " << MaxLoop
+				       << ", truncated\n";
+				inner_index = MaxLoop;
+			}
+			element = std::string(element.begin(),index_start);
+		}
+
+		size_t size = vars->get_children(element).size();
+		if(size <= inner_index) {
+			if(!force_valid) {
+				WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
+				return;
+			}
+			for(; size <= inner_index; ++size) {
+				vars->add_child(element);
+			}
+		}
+
+		if(!inner_explicit_index && key == "length") {
+			switch(vartype) {
+			case variable_info::TYPE_ARRAY:
+			case variable_info::TYPE_CONTAINER:
+				WRN_NG << "variable_info: using reserved WML variable as wrong type, "
+					<< varname << std::endl;
+				is_valid = force_valid || repos->temporaries.child(varname) != NULL;
+				break;
+			default:
+				repos->temporaries[varname] = lexical_cast<std::string>(size);
+				is_valid = true;
+				break;
+			}
+			key = varname;
+			vars = &repos->temporaries;
+			return;
+		}
+
+		//std::cerr << "Entering " << element << "[" << inner_index << "] of [" << vars->get_children(element).size() << "]\n";
+		vars = vars->get_children(element)[inner_index];
+		itor = std::find(key.begin(),key.end(),'.');
+		dot_index = key.find('.');
+	}
+	const std::string::iterator index_start = std::find(key.begin(),key.end(),'[');
+	explicit_index = index_start != key.end();
+	if(explicit_index) {
+		const std::string::iterator index_end = std::find(index_start,key.end(),']');
+		const std::string index_str(index_start+1,index_end);
+		index = static_cast<size_t>(lexical_cast_default<int>(index_str));
+		if(index > MaxLoop) {
+			LOG_NG << "variable_info: index greater than " << MaxLoop
+				   << ", truncated\n";
+			index = MaxLoop;
+		}
+		key = std::string(key.begin(),index_start);
+		size_t size = vars->get_children(key).size();
+		if(size <= index) {
+			if(!force_valid) {
+				WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
+				return;
+			}
+			for(; size <= index; ++size) {
+				vars->add_child(key);
+			}
+		}
+		switch(vartype) {
+		case variable_info::TYPE_ARRAY:
+			vars = vars->get_children(key)[index];
+			key = "__array";
+			is_valid = force_valid || vars->child(key) != NULL;
+			break;
+		case variable_info::TYPE_SCALAR:
+			vars = vars->get_children(key)[index];
+			key = "__value";
+			is_valid = force_valid || vars->has_attribute(key);
+			break;
+		case variable_info::TYPE_CONTAINER:
+		case variable_info::TYPE_UNSPECIFIED:
+		default:
+			is_valid = true;
+			return;
+		}
+		WRN_NG << "variable_info: using explicitly indexed Container as wrong WML type, "
+			<< varname << std::endl;
+		explicit_index = false;
+		index = 0;
+	} else {
+		switch(vartype) {
+		case variable_info::TYPE_ARRAY:
+		case variable_info::TYPE_CONTAINER:
+			is_valid = force_valid || vars->child(key);
+			break;
+		case variable_info::TYPE_SCALAR:
+			is_valid = force_valid || vars->has_attribute(key);
+			break;
+		case variable_info::TYPE_UNSPECIFIED:
+		default:
+			is_valid = true;
+			break;
+		}
 	}
 }

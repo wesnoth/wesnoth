@@ -16,6 +16,7 @@
 #include "filesystem.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "variable.hpp"
 
 #include <time.h>
 #include <string>
@@ -74,27 +75,6 @@ struct player_info
 	std::vector<unit> available_units; /** < units the player may recall */
 
 	std::set<std::string> can_recruit; /** < units the player has the ability to recruit */
-};
-
-/** Information on a WML variable. */
-struct variable_info
-{
-	variable_info():is_valid(false), key(), explicit_index(false), index(0), vars(NULL) {}
-
-	/**
-	 * TYPE: the correct variable type should be decided by the user of the info structure
-	 * Note: an Array can also be considered a Container, since index 0 will be used by default
-	 */
-	enum TYPE { TYPE_SCALAR,    //a Scalar variable resolves to a t_string attribute of *vars
-	            TYPE_ARRAY,     //an Array variable is a series of Containers
-	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
-	            TYPE_UNSPECIFIED };
-
-	bool is_valid;
-	std::string key; //the name of the internal attribute or child
-	bool explicit_index; //true if query ended in [...] specifier
-	size_t index; //the index of the child
-	config *vars; //the containing node in game_state::variables
 };
 
 class game_state : public variable_set
@@ -168,14 +148,11 @@ public:
 	//the last location where a select event fired.
 	gamemap::location last_selected;
 private:
-	void get_variable_internal(const std::string& key, config& cfg,
-			t_string** varout, config** cfgout);
-	void get_variable_internal_const(const std::string& key, const config& cfg,
-			const t_string** varout) const;
 	mutable config variables; //mutable due to lazy-evaluation
 	mutable config temporaries; //lengths of arrays, etc.
 	void activate_scope_variable(std::string var_name) const;
 	mutable bool recursive_; //checks for recursion in activate_scope_variable()
+	friend struct variable_info;
 };
 
 
