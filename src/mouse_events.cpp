@@ -1101,8 +1101,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	const gamemap::location& attack_from = current_unit_attacks_from(hex);
 
 	//see if we're trying to do a move-and-attack
-	if(!browse && !commands_disabled && u != units_.end() && u->second.attacks_left()>0 && enemy != units_.end() && !current_route_.steps.empty()) {
-		if(attack_from.valid()) {
+	if(!browse && !commands_disabled && u != units_.end() && u->second.attacks_left()>0 && enemy != units_.end() && attack_from.valid()) {
 			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
 				// a WML event could have invalidated both attacker and defender
 				// so make sure they're valid before attacking 
@@ -1162,12 +1161,6 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			}
 
 			return;
-		}
-	}
-
-	//see if we're trying to attack an enemy
-	if(!commands_disabled && !browse && attack_from.valid()) {
-		attack_enemy(u,enemy);
 	}
 
 	//otherwise we're trying to move to a hex
@@ -1223,7 +1216,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 {
 	const std::vector<gamemap::location> steps = current_route_.steps;
 	if(steps.empty()) {
-		return false;
+		return true;
 	}
 
 	const size_t moves = ::move_unit(gui_,gameinfo_,status_,map_,units_,teams_,
