@@ -197,6 +197,18 @@ private:
 	bool gamelist_refresh_;
 
 	Uint32 lobby_clock_;
+
+	enum user_relation { ME, FRIEND, NEUTRAL, IGNORED };
+	enum user_state    { LOBBY, GAME, SEL_GAME };
+
+	struct user_info
+	{
+		std::string    name;
+		std::string    location;
+		user_relation  relation;
+		user_state     state;
+		bool operator> (const user_info& b) const;
+	};
 };
 
 }

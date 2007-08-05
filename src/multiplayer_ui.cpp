@@ -586,63 +586,54 @@ void ui::layout_children(const SDL_Rect& /*rect*/)
 #endif
 }
 
-enum user_relation { ME, FRIEND, NEUTRAL, IGNORED };
-enum user_state    { LOBBY, GAME, SEL_GAME };
+bool ui::user_info::operator> (const user_info& b) const {
+	user_info const& a = *this;
 
-struct user_info
-{
-	std::string   name;
-	std::string   location;
-	user_relation relation;
-	user_state    state;
-	bool operator> (const user_info& b) const {
-		user_info const& a = *this;
-		// ME always on top
-		if (a.relation == ME) {
-			return true;
-		}
-		if (b.relation == ME) {
-			return false;
-		}
+	// ME always on top
+	if (a.relation == ME) {
+		return true;
+	}
+	if (b.relation == ME) {
+		return false;
+	}
 
-		// friends next, sorted by location
-		if ((a.relation == FRIEND) && (b.relation == FRIEND)) {
-			if (a.state != b.state) {
-				return a.state < b.state;
-			}
-			return a.name < b.name;
-		}
-		if (a.relation == FRIEND) {
-			return true;
-		}
-		if (b.relation == FRIEND) {
-			return false;
-		}
-
-		// players in the selected game next, sorted by relation (friends/neutral/ignored)
-		if ((a.state == SEL_GAME) && (b.state == SEL_GAME)) {
-			if (a.relation != b.relation) {
-				return a.relation < b.relation;
-			}
-			return a.name < b.name;
-		}
-		if (a.state == SEL_GAME) {
-			return true;
-		}
-		if (b.state == SEL_GAME) {
-			return false;
-		}
-
-		// all others grouped by relation
-		if (a.relation != b.relation) {
-			return a.relation < b.relation;
-		}
+	// friends next, sorted by location
+	if ((a.relation == FRIEND) && (b.relation == FRIEND)) {
 		if (a.state != b.state) {
 			return a.state < b.state;
 		}
 		return a.name < b.name;
 	}
-};
+	if (a.relation == FRIEND) {
+		return true;
+	}
+	if (b.relation == FRIEND) {
+		return false;
+	}
+
+	// players in the selected game next, sorted by relation (friends/neutral/ignored)
+	if ((a.state == SEL_GAME) && (b.state == SEL_GAME)) {
+		if (a.relation != b.relation) {
+			return a.relation < b.relation;
+		}
+		return a.name < b.name;
+	}
+	if (a.state == SEL_GAME) {
+		return true;
+	}
+	if (b.state == SEL_GAME) {
+		return false;
+	}
+
+	// all others grouped by relation
+	if (a.relation != b.relation) {
+		return a.relation < b.relation;
+	}
+	if (a.state != b.state) {
+		return a.state < b.state;
+	}
+	return a.name < b.name;
+}
 
 void ui::gamelist_updated(bool silent)
 {
