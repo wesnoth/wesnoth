@@ -586,146 +586,139 @@ void ui::layout_children(const SDL_Rect& /*rect*/)
 #endif
 }
 
+enum user_relation { ME, FRIEND, NEUTRAL, IGNORED };
+enum user_state    { LOBBY, GAME, SEL_GAME };
+
+struct user_info
+{
+	std::string   name;
+	std::string   location;
+	user_relation relation;
+	user_state    state;
+};
+
+bool user_compare(user_info a, user_info b)
+{
+	// ME always on top
+	if (a.relation == ME) {
+		return true;
+	}
+	if (b.relation == ME) {
+		return false;
+	}
+
+	// friends next, sorted by location
+	if ((a.relation == FRIEND) && (b.relation == FRIEND)) {
+		if (a.state != b.state) {
+			return a.state < b.state;
+		}
+		return a.name < b.name;
+	}
+	if (a.relation == FRIEND) {
+		return true;
+	}
+	if (b.relation == FRIEND) {
+		return false;
+	}
+
+	// players in the selected game next, sorted by relation (friends/neutral/ignored)
+	if ((a.state == SEL_GAME) && (b.state == SEL_GAME)) {
+		if (a.relation != b.relation) {
+			return a.relation < b.relation;
+		}
+		return a.name < b.name;
+	}
+	if (a.state == SEL_GAME) {
+		return true;
+	}
+	if (b.state == SEL_GAME) {
+		return false;
+	}
+
+	// all others grouped by relation
+	if (a.relation != b.relation) {
+		return a.relation < b.relation;
+	}
+	if (a.state != b.state) {
+		return a.state < b.state;
+	}
+	return a.name < b.name;
+}
+
 void ui::gamelist_updated(bool silent)
-{ 
-   	std::vector<std::string> user_strings;
-   	std::vector<std::string> menu_strings;
+{
 	config::child_list users = gamelist_.get_children("user");
 	config::child_iterator user;
+	std::list<user_info> u_list;
 
-	// can't use the bold tag here until the menu code
-	// calculates a correct ellipsis for it
-	const std::string highlight_color_tag = "<255,215,0>";
-	
-    //if we have not already got the relationship child it will
-    //cause the game to crash if we don't create it.
-    if (!preferences::get_prefs()->child("relationship")){
+	// if we have not already got the relationship child it will
+	// cause the game to crash if we don't create it.
+	if (!preferences::get_prefs()->child("relationship")){
 		preferences::get_prefs()->add_child("relationship");
 	}
 	config* cignore;
 	cignore = preferences::get_prefs()->child("relationship");
-	
-	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
-	char const sep1 = COLUMN_SEPARATOR;
 
-    if(preferences::sort_list()) {
-
-		if(preferences::iconize_list()) {
-		    user_strings.push_back(preferences::login());
-		    menu_strings.push_back(imgpre + "self.png" + sep1 + preferences::login());
-        } else {
-		    user_strings.push_back(preferences::login());
-		    menu_strings.push_back(preferences::login());
-        }
-
-	// FIXME: we don't get the id of the game a player joins so we need to
-	// test against the name of the game which leads to wrong results if
-	// there are two or more games with the same name
 	for (user = users.begin(); user != users.end(); ++user) {
-        std::string ig = std::string((**user)["name"]);
-	    if((*cignore)[ig] == "friend" && ig != preferences::login()) {
-	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
-			std::string suffix = "";
-			if(!(**user)["location"].empty()) {
-				const std::string location = (**user)["location"];
-				if (location == selected_game_) {
-					prefix = highlight_color_tag;
-				}
-				suffix = std::string(" (") + location + std::string(")");
-			}
-			if(preferences::iconize_list()) {
-			    user_strings.push_back((**user)["name"].str() + suffix);
-			    menu_strings.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
-            } else {
-			    user_strings.push_back((**user)["name"].str() + suffix);
-			    menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
-            }
-        }
-	}
-	
-    for (user = users.begin(); user != users.end(); ++user) {
-        std::string ig = std::string((**user)["name"]);
-	    if((*cignore)[ig] != "ignored" && (*cignore)[ig] != "friend" && ig != preferences::login()) {
-	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
-			std::string suffix = "";
-			if(!(**user)["location"].empty()) {
-				const std::string location = (**user)["location"];
-				if (location == selected_game_) {
-					prefix = highlight_color_tag;
-				}
-				suffix = std::string(" (") + location + std::string(")");
-			}
-			if(preferences::iconize_list()) {
-			    user_strings.push_back((**user)["name"].str() + suffix);
-			    menu_strings.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
-            } else {
-			    user_strings.push_back((**user)["name"].str() + suffix);
-			    menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
-            }
-        }
-	}
-	
-	for (user = users.begin(); user != users.end(); ++user) {
-       std::string ig = std::string((**user)["name"]);
-	    if((*cignore)[ig] == "ignored" && ig != preferences::login()) {
-	   		std::string prefix = (**user)["available"] == "no" ? "#" : "";
-			std::string suffix = "";
-			if(!(**user)["location"].empty()) {
-				const std::string location = (**user)["location"];
-				if (location == selected_game_) {
-					prefix = highlight_color_tag;
-				}
-				suffix = std::string(" (") + location + std::string(")");
-			}
-			if(preferences::iconize_list()) {
-			    user_strings.push_back((**user)["name"].str() + suffix);
-			    menu_strings.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
-            } else {
-			    user_strings.push_back((**user)["name"].str() + suffix);
-			    menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
-            }
-        }
-   	}
-    } else {
-	
-	for (user = users.begin(); user != users.end(); ++user) {
-		std::string prefix = (**user)["available"] == "no" ? "#" : "";
-		std::string suffix = "";
+		user_info u_elem;
+		u_elem.name = (**user)["name"];
+		u_elem.location = "";
+		u_elem.state = (**user)["available"] == "no" ? GAME : LOBBY;
 		if(!(**user)["location"].empty()) {
-			const std::string location = (**user)["location"];
-			if (location == selected_game_) {
-				prefix = highlight_color_tag;
+			u_elem.location = (**user)["location"];
+			if (u_elem.location == selected_game_) {
+				u_elem.state = SEL_GAME;
 			}
-			suffix = std::string(" (") + location + std::string(")");
 		}
-		if(preferences::iconize_list()) {
-			std::string ig = std::string((**user)["name"]);
-		    if(ig == preferences::login()) {
-	            user_strings.push_back((**user)["name"].str() + suffix);
-	            menu_strings.push_back(imgpre + "self.png" + sep1 + prefix + (**user)["name"].str() + suffix);
-	        } else if((*cignore)[ig] == "ignored") {
-	            user_strings.push_back((**user)["name"].str() + suffix);
-	            menu_strings.push_back(imgpre + "ignore.png" + sep1 + prefix + (**user)["name"].str() + suffix);
-	        } else if ((*cignore)[ig] == "friend") {
-	            user_strings.push_back((**user)["name"].str() + suffix);
-	            menu_strings.push_back(imgpre + "friend.png" + sep1 + prefix + (**user)["name"].str() + suffix);
-	        } else {
-	             user_strings.push_back((**user)["name"].str() + suffix);
-	             menu_strings.push_back(imgpre + "neutral.png" + sep1 + prefix + (**user)["name"].str() + suffix);
-	        }
+		if (u_elem.name == preferences::login()) {
+			u_elem.relation = ME;
+		} else if ((*cignore)[u_elem.name] == "ignored") {
+			u_elem.relation = IGNORED;
+		} else if ((*cignore)[u_elem.name] == "friend") {
+			u_elem.relation = FRIEND;
 		} else {
-            user_strings.push_back((**user)["name"].str() + suffix);
-            menu_strings.push_back(prefix + (**user)["name"].str() + suffix);
-        }
-    }
-    }
-	std::string help_sep = " ";
-	help_sep[0] = HELP_STRING_SEPARATOR;
-	std::vector< std::string >::const_iterator help_itor = user_strings.begin();
-	std::vector< std::string >::iterator menu_itor = menu_strings.begin();
-   	while(help_itor != user_strings.end() && menu_itor != menu_strings.end()) {
-		*menu_itor++ += help_sep + *help_itor++;
+			u_elem.relation = NEUTRAL;
+		}
+		u_list.push_back(u_elem);
 	}
+
+	if (preferences::sort_list()) {
+		u_list.sort(user_compare);
+	}
+
+	// can't use the bold tag here until the menu code
+	// calculates a correct ellipsis for it
+	const std::string lobby_color_tag   = "";
+	const std::string ingame_color_tag  = "#";
+	const std::string selgame_color_tag = "<255,215,0>";
+
+	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
+	std::vector<std::string> user_strings;
+	std::vector<std::string> menu_strings;
+
+	std::list<user_info>::const_iterator u_itor = u_list.begin();
+	while (u_itor != u_list.end()) {
+		const std::string game_str = (u_itor->state == LOBBY) ? "" : " (" + u_itor->location + ")";
+		std::string img_str = "";
+		std::string color_str = "";
+		switch (u_itor->state) {
+			case LOBBY:    color_str = lobby_color_tag;   break;
+			case GAME:     color_str = ingame_color_tag;  break;
+			case SEL_GAME: color_str = selgame_color_tag; break;
+		}
+		if (preferences::iconize_list()) {
+			switch (u_itor->relation) {
+				case NEUTRAL: img_str = imgpre + "neutral.png" + COLUMN_SEPARATOR; break;
+				case IGNORED: img_str = imgpre + "ignore.png"  + COLUMN_SEPARATOR; break;
+				case FRIEND:  img_str = imgpre + "friend.png"  + COLUMN_SEPARATOR; break;
+				case ME:      img_str = imgpre + "self.png"    + COLUMN_SEPARATOR; break;
+			}
+		}
+		user_strings.push_back(u_itor->name + game_str);
+		menu_strings.push_back(img_str + color_str + u_itor->name + game_str + HELP_STRING_SEPARATOR + u_itor->name + game_str);
+		u_itor++;
+	}
+
 	set_user_list(user_strings, silent);
 	set_user_menu_items(menu_strings);
 }
