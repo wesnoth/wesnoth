@@ -341,7 +341,7 @@ void game_display::draw(bool update,bool force)
 
 			// draw the grid, if that's been enabled 
 			if(grid_ && !is_shrouded && on_map) {
-				tile_stack_append(image::get_image(game_config::grid_image));
+				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
 
 			// draw reach_map information
@@ -360,7 +360,7 @@ void game_display::draw(bool update,bool force)
 
 			// draw cross images for debug highlights
 			if(game_config::debug && debugHighlights_.count(*it)) {
-				tile_stack_append(image::get_image(game_config::cross_image));
+				tile_stack_append(image::get_image(game_config::cross_image, image::SCALED_TO_HEX));
 			}
 
 			// Add the top layer overlay surfaces
@@ -383,9 +383,9 @@ void game_display::draw(bool update,bool force)
 			if(is_shrouded) {
 				// we apply void also on off-map tiles to
 				// shroud the half-hexes too
-				tile_stack_append(image::get_image(shroud_image));
+				tile_stack_append(image::get_image(shroud_image, image::SCALED_TO_HEX));
 			} else if(fogged(*it)) {
-				tile_stack_append(image::get_image(fog_image));
+				tile_stack_append(image::get_image(fog_image, image::SCALED_TO_HEX));
 			} else {
 				tile_stack_terrains(*it,tod.id,image_type,ADJACENT_FOGSHROUD);
 			}
@@ -826,7 +826,7 @@ surface game_display::get_flag(const gamemap::location& loc)
 		  (!fogged(loc) || !teams_[currentTeam_].is_enemy(i+1)))
 		{
 			flags_[i].update_last_draw_time();
-			return image::get_image(flags_[i].get_current_frame());
+			return image::get_image(flags_[i].get_current_frame(), image::SCALED_TO_HEX);
 		}
 	}
 
