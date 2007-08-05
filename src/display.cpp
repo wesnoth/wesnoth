@@ -649,7 +649,7 @@ void display::update_display()
 static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
 {
 	//log_scope("draw panel");
-	surface surf(image::get_image(panel.image(),image::UNSCALED));
+	surface surf(image::get_image(panel.image()));
 
 	const SDL_Rect screen = screen_area();
 	SDL_Rect& loc = panel.location(screen);
@@ -709,7 +709,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 	SDL_Rect& loc = label.location(screen_area());
 
 	if(icon.empty() == false) {
-		surface surf(image::get_image(icon,image::UNSCALED));
+		surface surf(image::get_image(icon));
 		if(!surf.null()) {
 			if(surf->w > loc.w || surf->h > loc.h) {
 				surf.assign(scale_surface(surf,loc.w,loc.h));
@@ -757,7 +757,7 @@ void display::draw_all_panels()
  */
 static void draw_background(surface screen, const SDL_Rect& area)
 {
-	static const surface wood(image::get_image("terrain/off-map/wood.png",image::UNSCALED));
+	static const surface wood(image::get_image("terrain/off-map/wood.png"));
 	static const unsigned int width = wood->w;
 	static const unsigned int height = wood->h;
 	wassert(!wood.null());
@@ -1588,7 +1588,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 				} else if(i->image.get_filename().empty() == false) {
 				  if(used_ellipsis == false) {
 					// Draw an image element
-					surface img(image::get_image(i->image,image::UNSCALED));
+					surface img(image::get_image(i->image));
 
 					if(img == NULL) {
 						ERR_DP << "could not find image for report: '" << i->image.get_filename() << "'\n";
@@ -1597,7 +1597,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 
 					if(rect.w + rect.x - x < img->w && image_count) {
 					  //we have more than one image, and this one doesn't fit.
-					  img=surface(image::get_image(game_config::ellipsis_image,image::UNSCALED));
+					  img=surface(image::get_image(game_config::ellipsis_image));
 					  used_ellipsis=true;
 					}
 
@@ -1608,7 +1608,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 					draw_image_for_report(img, area);
 
 					if(brighten) {
-						surface tod_bright(image::get_image(game_config:: tod_bright_image,image::UNSCALED));
+						surface tod_bright(image::get_image(game_config:: tod_bright_image));
 						if(tod_bright != NULL) {
 							draw_image_for_report(tod_bright,area);
 						}

@@ -1485,7 +1485,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			surface surface(NULL);
 
 			if(image.empty() == false) {
-				surface.assign(image::get_image(image,image::UNSCALED));
+				surface.assign(image::get_image(image));
 			}
 
 			//this will redraw the unit, with its new stats
@@ -1631,7 +1631,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		surface surface(NULL);
 		if(image.empty() == false) {
-			surface.assign(image::get_image(image,image::UNSCALED));
+			surface.assign(image::get_image(image));
 		}
 
 		int option_chosen = -1;

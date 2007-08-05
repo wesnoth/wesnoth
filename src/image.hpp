@@ -196,7 +196,7 @@ namespace image {
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
-	surface get_image(const locator& i_locator, TYPE type=SCALED_TO_HEX, bool add_to_cache = true);
+	surface get_image(const locator& i_locator, TYPE type=UNSCALED, bool add_to_cache = true);
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()

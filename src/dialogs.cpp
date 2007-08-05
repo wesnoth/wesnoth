@@ -375,9 +375,9 @@ void save_preview_pane::draw_contents()
 	if(leader != data_->unit_types.end()) {
 
 #ifdef LOW_MEM
-		const surface image(image::get_image(leader->second.image(),image::UNSCALED));
+		const surface image(image::get_image(leader->second.image()));
 #else
-		const surface image(image::get_image(leader->second.image() + "~RC(" + leader->second.flag_rgb() + ">1)",image::UNSCALED));
+		const surface image(image::get_image(leader->second.image() + "~RC(" + leader->second.flag_rgb() + ">1)"));
 #endif
 
 		if(image != NULL) {
@@ -861,7 +861,7 @@ void campaign_preview_pane::draw_contents()
 	surface img(NULL);
 	const std::string desc_img_name = (*descriptions_)[index_].second;
 	if(!desc_img_name.empty()) {
-		img.assign(image::get_image(desc_img_name,image::UNSCALED));
+		img.assign(image::get_image(desc_img_name));
 	}
 	if (!img.null()) {
 		SDL_Rect src_rect,dst_rect;

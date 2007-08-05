@@ -156,10 +156,10 @@ void show_about(display &disp, std::string campaign)
 	}else{
 		image_list=utils::split(images_default,',',utils::STRIP_SPACES);
 	}
-	surface map_image(scale_surface(image::get_image(image_list[0],image::UNSCALED), disp.w(), disp.h()));
+	surface map_image(scale_surface(image::get_image(image_list[0]), disp.w(), disp.h()));
 	if(! map_image){
 		image_list[0]=game_config::game_title;
-		map_image=surface(scale_surface(image::get_image(image_list[0],image::UNSCALED), disp.w(), disp.h()));
+		map_image=surface(scale_surface(image::get_image(image_list[0]), disp.w(), disp.h()));
 	}
 
 	SDL_Rect map_rect;
@@ -218,7 +218,7 @@ void show_about(display &disp, std::string campaign)
 		// check to see if background image has changed
 		if(text.size() && (image_count < ((startline*(int)image_list.size())/(int)text.size()))){
 			image_count++;
-			surface temp=surface(scale_surface(image::get_image(image_list[image_count],image::UNSCALED), disp.w(), disp.h()));
+			surface temp=surface(scale_surface(image::get_image(image_list[image_count]), disp.w(), disp.h()));
 			map_image=temp?temp:map_image;
 		}
 		// draw map to screen, thus erasing all text

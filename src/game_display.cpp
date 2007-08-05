@@ -634,7 +634,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 
 	// we use UNSCALED because scaling (and bilinear interpolaion )
 	// is bad for calculate_energy_bar. But we will do a geometric scaling later
-	surface bar_surf(image::get_image(image,image::UNSCALED));
+	surface bar_surf(image::get_image(image));
 	if(surf == NULL || bar_surf == NULL) {
 		return;
 	}

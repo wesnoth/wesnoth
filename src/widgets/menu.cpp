@@ -889,7 +889,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
 					const surface sort_img = image::get_image(sortreversed_ ? "misc/sort-arrow.png" :
-					                                   "misc/sort-arrow-reverse.png", image::UNSCALED);
+					                                   "misc/sort-arrow-reverse.png");
 					if(sort_img != NULL && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
 						const size_t sort_x = xpos + widths[i] - sort_img->w;
 						const size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;

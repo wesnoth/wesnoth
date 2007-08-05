@@ -102,7 +102,7 @@ bool show_intro_part(display &disp, const config& part,
 
 	surface background(NULL);
 	if(background_name.empty() == false) {
-		background.assign(image::get_image(background_name,image::UNSCALED));
+		background.assign(image::get_image(background_name));
 	}
 
 	int textx = 200;
@@ -202,7 +202,7 @@ bool show_intro_part(display &disp, const config& part,
 				continue;
 
 			if(image_name == "") continue;
-			surface img(image::get_image(image_name,image::UNSCALED));
+			surface img(image::get_image(image_name));
 			if(img.null()) continue;
 
 			if ((**i)["flip"] == "yes")

@@ -42,7 +42,7 @@
 
 static bool fade_logo(game_display& screen, int xpos, int ypos)
 {
-	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
+	const surface logo(image::get_image(game_config::game_logo));
 	if(logo == NULL) {
 		ERR_DP << "Could not find game logo\n";
 		return true;
@@ -216,7 +216,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 
 	// Display Wesnoth logo
 	surface const title_surface(scale_surface(
-		image::get_image(game_config::game_title,image::UNSCALED),
+		image::get_image(game_config::game_title),
 		screen.w(), screen.h()));
 	screen.video().modeChanged(); // resets modeChanged value
 	int logo_x = game_config::title_logo_x * screen.w() / 1024,

@@ -112,7 +112,7 @@ void wait::leader_preview_pane::draw_contents()
 
 		SDL_Rect image_rect = {area.x,area.y,0,0};
 
-		surface unit_image(image::get_image(image, image::UNSCALED));
+		surface unit_image(image::get_image(image));
 
 		if(!unit_image.null()) {
 			image_rect.w = unit_image->w;

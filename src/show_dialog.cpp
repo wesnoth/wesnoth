@@ -93,15 +93,15 @@ dialog_frame::dialog_frame(CVideo &video, const std::string& title, const style&
 	bool auto_restore, std::vector<button*>* buttons, button* help_button)
 	:title_(title), video_(video), dialog_style_(style),
 	 buttons_(buttons), help_button_(help_button), restorer_(NULL), auto_restore_(auto_restore),
-	 top_(image::get_image("dialogs/" + dialog_style_.panel + "-border-top.png",image::UNSCALED)),
-	 bot_(image::get_image("dialogs/" + dialog_style_.panel + "-border-bottom.png",image::UNSCALED)),
-	 left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-left.png",image::UNSCALED)),
-	 right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-right.png",image::UNSCALED)),
-	 top_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topleft.png",image::UNSCALED)),
-	 bot_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botleft.png",image::UNSCALED)),
-	 top_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topright.png",image::UNSCALED)),
-	 bot_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botright.png",image::UNSCALED)),
-	 bg_(image::get_image("dialogs/" + dialog_style_.panel + "-background.png",image::UNSCALED))
+	 top_(image::get_image("dialogs/" + dialog_style_.panel + "-border-top.png")),
+	 bot_(image::get_image("dialogs/" + dialog_style_.panel + "-border-bottom.png")),
+	 left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-left.png")),
+	 right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-right.png")),
+	 top_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topleft.png")),
+	 bot_left_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botleft.png")),
+	 top_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-topright.png")),
+	 bot_right_(image::get_image("dialogs/" + dialog_style_.panel + "-border-botright.png")),
+	 bg_(image::get_image("dialogs/" + dialog_style_.panel + "-background.png"))
 {
 	have_border_ = top_ != NULL && bot_ != NULL && left_ != NULL && right_ != NULL;
 }

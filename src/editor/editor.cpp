@@ -949,10 +949,10 @@ void map_editor::set_mouseover_overlay()
 {
 	surface image_fg(image::get_image("terrain/" + map_.get_terrain_info(
 				palette_.selected_fg_terrain()).symbol_image() + 
-				".png",image::UNSCALED));
+				".png"));
 	surface image_bg(image::get_image("terrain/" + map_.get_terrain_info(
 				palette_.selected_bg_terrain()).symbol_image() + 
-				".png",image::UNSCALED));
+				".png"));
 
 	// for efficiency the size of the tile is cached. We assume all tiles are 
 	// of the same size. The zoom factor can change so it's not cached. 

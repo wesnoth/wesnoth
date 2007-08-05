@@ -317,9 +317,9 @@ void ui::draw_contents()
 	hide_children();
 
 #ifdef USE_TINY_GUI
-	surface background(image::get_image("misc/lobby_tiny.png",image::UNSCALED));
+	surface background(image::get_image("misc/lobby_tiny.png"));
 #else
-	surface background(image::get_image("misc/lobby.png",image::UNSCALED));
+	surface background(image::get_image("misc/lobby.png"));
 #endif
 	background = scale_surface(background, video().getx(), video().gety());
 	if(background == NULL)

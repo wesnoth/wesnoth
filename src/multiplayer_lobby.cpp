@@ -137,7 +137,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	video().blit_surface(xpos, ypos - map_info_surf->h/2, map_info_surf);
 
 	// draw gold icon
-	const surface gold_icon(image::get_image(gold_icon_locator_, image::UNSCALED));
+	const surface gold_icon(image::get_image(gold_icon_locator_));
 	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
 	video().blit_surface(xpos, ypos, gold_icon);
 
@@ -151,7 +151,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	xpos += gold_text->w + 2 * h_padding_;
 
 	// draw xp icon
-	const surface xp_icon(image::get_image(xp_icon_locator_, image::UNSCALED));
+	const surface xp_icon(image::get_image(xp_icon_locator_));
 	ypos = item_rect.y + item_rect.h  - margin_ - xp_icon->h;
 	video().blit_surface(xpos, ypos, xp_icon);
 
@@ -166,7 +166,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	if(!game.time_limit.empty()) {
 		// draw time icon
-		const surface time_icon(image::get_image(time_limit_icon_locator_, image::UNSCALED));
+		const surface time_icon(image::get_image(time_limit_icon_locator_));
 		ypos = item_rect.y + item_rect.h  - margin_ - time_icon->h;
 		video().blit_surface(xpos, ypos, time_icon);
 
@@ -181,7 +181,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	}
 
 	// draw vision icon
-	const surface vision_icon(image::get_image(vision_icon_locator_, image::UNSCALED));
+	const surface vision_icon(image::get_image(vision_icon_locator_));
 	video().blit_surface(xpos, ypos, vision_icon);
 
 	xpos += vision_icon->w + h_padding_;

@@ -80,7 +80,7 @@ void menu::style::scale_images(int max_width, int max_height)
 
 surface menu::style::get_item_image(const image::locator& img_loc) const
 {
-	surface surf = image::get_image(img_loc, image::UNSCALED);
+	surface surf = image::get_image(img_loc);
 	if(!surf.null())
 	{
 		int scale = 100;
@@ -101,7 +101,7 @@ surface menu::style::get_item_image(const image::locator& img_loc) const
 bool menu::imgsel_style::load_image(const std::string &img_sub)
 {
 	std::string path = img_base_ + "-" + img_sub + ".png";
-	const surface image = image::get_image(path,image::UNSCALED);
+	const surface image = image::get_image(path);
 	img_map_[img_sub] = image;
 	return(!image.null());
 }

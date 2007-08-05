@@ -674,7 +674,7 @@ static std::string generate_table(const table_spec &tab, const unsigned int spac
 static unsigned image_width(const std::string &filename)
 	{
 		image::locator loc(filename);
-		surface surf(image::get_image(loc, image::UNSCALED));
+		surface surf(image::get_image(loc));
 		if (surf != NULL) {
 			return surf->w;
 		}
@@ -2027,7 +2027,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 void help_text_area::add_img_item(const std::string path, const std::string alignment,
 								  const bool floating, const bool box)
 {
-	surface surf(image::get_image(path, image::UNSCALED));
+	surface surf(image::get_image(path));
 	if (surf.null())
 		return;
 	ALIGNMENT align = str_to_align(alignment);

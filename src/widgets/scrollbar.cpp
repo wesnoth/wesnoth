@@ -45,7 +45,7 @@ scrollbar::scrollbar(CVideo &video)
 	  state_(NORMAL),
 	  grip_position_(0), grip_height_(0), full_height_(0), scroll_rate_(1)
 {
-	static const surface img(image::get_image(scrollbar_mid, image::UNSCALED));
+	static const surface img(image::get_image(scrollbar_mid));
 
 	if (img != NULL) {
 		set_width(img->w);
@@ -208,15 +208,15 @@ SDL_Rect scrollbar::grip_area() const
 void scrollbar::draw_contents()
 {
 	const surface mid_img(image::get_image(state_ != NORMAL ?
-					scrollbar_mid_hl : scrollbar_mid, image::UNSCALED));
+					scrollbar_mid_hl : scrollbar_mid));
 	const surface bottom_img(image::get_image(state_ != NORMAL ?
-					scrollbar_bottom_hl : scrollbar_bottom, image::UNSCALED));
+					scrollbar_bottom_hl : scrollbar_bottom));
 	const surface top_img(image::get_image(state_ != NORMAL ?
-					scrollbar_top_hl : scrollbar_top, image::UNSCALED));
+					scrollbar_top_hl : scrollbar_top));
 
-	const surface top_grv(image::get_image(groove_top,image::UNSCALED));
-	const surface mid_grv(image::get_image(groove_mid,image::UNSCALED));
-	const surface bottom_grv(image::get_image(groove_bottom,image::UNSCALED));
+	const surface top_grv(image::get_image(groove_top));
+	const surface mid_grv(image::get_image(groove_mid));
+	const surface bottom_grv(image::get_image(groove_bottom));
 
 	if (mid_img == NULL || bottom_img == NULL || top_img == NULL
 	 || top_grv == NULL || bottom_grv == NULL || mid_grv == NULL) {

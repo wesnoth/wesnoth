@@ -48,9 +48,9 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	}
 
 	const std::string button_image_file = "buttons/" + button_image_name + ".png";
-	surface button_image(image::get_image(button_image_file,image::UNSCALED));
-	surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png", image::UNSCALED));
-	surface active_image(image::get_image("buttons/" + button_image_name + "-active.png", image::UNSCALED));
+	surface button_image(image::get_image(button_image_file));
+	surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png"));
+	surface active_image(image::get_image("buttons/" + button_image_name + "-active.png"));
 	surface pressed_active_image;
 
 	if (pressed_image.null())
@@ -60,8 +60,7 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 		active_image.assign(button_image);
 
 	if (type == TYPE_CHECK) {
-		pressed_active_image.assign(image::get_image("buttons/" + button_image_name + "-active-pressed.png",
-		                                             image::UNSCALED));
+		pressed_active_image.assign(image::get_image("buttons/" + button_image_name + "-active-pressed.png"));
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
 	}

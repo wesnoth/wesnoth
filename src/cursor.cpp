@@ -113,7 +113,7 @@ static SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	if(cache[type] == NULL) {
 		static const std::string prefix = "cursors-bw/";
-		const surface surf(image::get_image(prefix + bw_images[type],image::UNSCALED));
+		const surface surf(image::get_image(prefix + bw_images[type]));
 		cache[type] = create_cursor(surf);
 	}
 
@@ -244,7 +244,7 @@ void draw(surface screen)
 	}
 
 	//FIXME: don't parse the file path every time
-	const surface surf(image::get_image("cursors/" + colour_images[current_cursor],image::UNSCALED));
+	const surface surf(image::get_image("cursors/" + colour_images[current_cursor]));
 	if(surf == NULL) {
 		//fall back to b&w cursors
 		std::cerr << "could not load colour cursors. Falling back to hardware cursors\n";
