@@ -789,7 +789,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 		// show (or cancel) the attack direction indicator
 		if (attack_from.valid() && !browse) {
 			std::string dir_str = gamemap::location::write_direction(new_hex.get_relative_dir(attack_from));
-			surface attack_dir_surf = image::get_image("misc/attack-from-"+dir_str+".png", image::UNMASKED,image::NO_ADJUST_COLOUR);
+			surface attack_dir_surf = image::get_image("misc/attack-from-"+dir_str+".png", image::UNMASKED);
 			gui_->set_mouseover_hex_overlay(attack_dir_surf);
 		} else {
 			gui_->set_mouseover_hex_overlay(NULL);

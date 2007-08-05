@@ -280,8 +280,8 @@ surface locator::load_image_file() const
 
 surface locator::load_image_sub_file() const
 {
-	const surface mother_surface(get_image(val_.filename_, UNSCALED, NO_ADJUST_COLOUR));
-	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED, NO_ADJUST_COLOUR));
+	const surface mother_surface(get_image(val_.filename_, UNSCALED));
+	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED));
 
 	if(mother_surface == NULL)
 		return surface(NULL);
@@ -488,10 +488,10 @@ static surface get_hexed(const locator i_locator)
 {
 	// we don't want to add it to the unscaled cache
 	// since we will normaly never need the non-hexed one
-	surface image(get_image(i_locator, UNSCALED, NO_ADJUST_COLOUR, false));
+	surface image(get_image(i_locator, UNSCALED, false));
 	// Re-cut scaled tiles according to a mask.
 	const surface hex(get_image(game_config::terrain_mask_image,
-					UNSCALED, NO_ADJUST_COLOUR));
+					UNSCALED));
 	return mask_surface(image, hex);
 }
 
@@ -506,18 +506,18 @@ static surface get_unmasked(const locator i_locator)
 		return image;
 }
 
-static surface get_scaled_to_hex(const locator i_locator, COLOUR_ADJUSTMENT adj)
+static surface get_scaled_to_hex(const locator i_locator)
 {
-	surface res(get_image(i_locator, UNMASKED, adj));
+	surface res(get_image(i_locator, UNMASKED));
 
 	// Adjusts colour if necessary.
-	if(adj == ADJUST_COLOUR && (red_adjust != 0 ||
-				green_adjust != 0 || blue_adjust != 0)) {
+	if (red_adjust != 0 ||
+				green_adjust != 0 || blue_adjust != 0) {
 		res = surface(adjust_surface_colour(res,
 					red_adjust, green_adjust, blue_adjust));
 	}
 	/*
-	const surface mask(get_image(image_mask,UNMASKED,NO_ADJUST_COLOUR));
+	const surface mask(get_image(image_mask,UNMASKED));
 	if(mask != NULL) {
 		SDL_SetAlpha(mask,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
 		SDL_SetAlpha(res,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
@@ -542,19 +542,19 @@ static surface get_scaled_to_zoom(const locator i_locator)
 	}
 }
 
-static surface get_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
+static surface get_brightened(const locator i_locator)
 {
-	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
+	surface image(get_image(i_locator, SCALED_TO_HEX));
 	return surface(brighten_image(image, ftofxp(1.5)));
 }
 
-static surface get_semi_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
+static surface get_semi_brightened(const locator i_locator)
 {
-	surface image(get_image(i_locator, SCALED_TO_HEX, adj));
+	surface image(get_image(i_locator, SCALED_TO_HEX));
 	return surface(brighten_image(image, ftofxp(1.25)));
 }
 
-surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT adj,bool add_to_cache )
+surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache )
 {
 	surface res(NULL);
 	image_cache *imap;
@@ -620,7 +620,7 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 
 		switch(type) {
 		case SCALED_TO_HEX:
-			res = get_scaled_to_hex(i_locator, adj);
+			res = get_scaled_to_hex(i_locator);
 			break;
 		case SCALED_TO_ZOOM:
 			res = get_scaled_to_zoom(i_locator);
@@ -632,10 +632,10 @@ surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT 
 			res = get_unmasked(i_locator);
 			break;
 		case BRIGHTENED:
-			res = get_brightened(i_locator, adj);
+			res = get_brightened(i_locator);
 			break;
 		case SEMI_BRIGHTENED:
-			res = get_semi_brightened(i_locator, adj);
+			res = get_semi_brightened(i_locator);
 			break;
 		default:
 			return surface(NULL);

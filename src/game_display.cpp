@@ -336,7 +336,7 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(tod_hex_mask1);
 				tile_stack_append(tod_hex_mask2);
 			} else if(tod_hex_mask != "") {
-				tile_stack_append(image::get_image(tod_hex_mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
+				tile_stack_append(image::get_image(tod_hex_mask,image::UNMASKED));
 			}
 
 			// draw the grid, if that's been enabled 
@@ -348,7 +348,7 @@ void game_display::draw(bool update,bool force)
 			if (!reach_map_.empty() && !is_shrouded && on_map) {
 				reach_map::iterator reach = reach_map_.find(*it);
 				if (reach == reach_map_.end()) {
-					tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED,image::NO_ADJUST_COLOUR));
+					tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED));
 				} else if (reach->second > 1) {
 					//FIXME: this is a temporary hack to render/flush
 					//the stack, so we can draw text
@@ -630,11 +630,11 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 	height /= 2;
 #endif
 
-	surface surf(image::get_image(image,image::SCALED_TO_HEX,image::NO_ADJUST_COLOUR));
+	surface surf(image::get_image(image,image::UNMASKED));
 
 	// we use UNSCALED because scaling (and bilinear interpolaion )
 	// is bad for calculate_energy_bar. But we will do a geometric scaling later
-	surface bar_surf(image::get_image(image,image::UNSCALED,image::NO_ADJUST_COLOUR));
+	surface bar_surf(image::get_image(image,image::UNSCALED));
 	if(surf == NULL || bar_surf == NULL) {
 		return;
 	}
@@ -792,7 +792,7 @@ surface game_display::footstep_image(const gamemap::location& loc)
 		}
 	}
 
-	surface image(image::get_image(*image_str, image::UNMASKED, image::NO_ADJUST_COLOUR));
+	surface image(image::get_image(*image_str, image::UNMASKED));
 	if(image == NULL) {
 		ERR_DP << "Could not find image: " << *image_str << "\n";
 		return NULL;
