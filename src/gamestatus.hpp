@@ -79,9 +79,17 @@ struct player_info
 /** Information on a WML variable. */
 struct variable_info
 {
-	variable_info():is_valid(false), key(), explicit_index(false), index(0),
-		vars(NULL) {}
-	enum TYPE { TYPE_SCALAR, TYPE_ARRAY, TYPE_CONTAINER, TYPE_UNSPECIFIED };
+	variable_info():is_valid(false), key(), explicit_index(false), index(0), vars(NULL) {}
+
+	/**
+	 * TYPE: the correct variable type should be decided by the user of the info structure
+	 * Note: an Array can also be considered a Container, since index 0 will be used by default
+	 */
+	enum TYPE { TYPE_SCALAR,    //a Scalar variable resolves to a t_string attribute of *vars
+	            TYPE_ARRAY,     //an Array variable is a series of Containers
+	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
+	            TYPE_UNSPECIFIED };
+
 	bool is_valid;
 	std::string key; //the name of the internal attribute or child
 	bool explicit_index; //true if query ended in [...] specifier
