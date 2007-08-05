@@ -1079,7 +1079,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		return;
 	}
 
-	gamemap::location hex = gui_->hex_clicked_on(event.x,event.y,NULL,NULL);
+	gamemap::location hex = gui_->hex_clicked_on(event.x,event.y);
 
 	unit_map::iterator u = find_unit(selected_hex_);
 
@@ -1101,66 +1101,66 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	const gamemap::location& attack_from = current_unit_attacks_from(hex);
 
 	//see if we're trying to do a move-and-attack
-	if(!browse && !commands_disabled && u != units_.end() && u->second.attacks_left()>0 && enemy != units_.end() && attack_from.valid()) {
-			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
-				// a WML event could have invalidated both attacker and defender
-				// so make sure they're valid before attacking 
-				u = find_unit(attack_from);
-				enemy = find_unit(hex);
-				if(u != units_.end() && u->second.side() == team_num_ &&
-					enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-					//if shroud or fog is active, rememember nits a and after attack check if someone isn`t seen
-					std::set<gamemap::location> known_units;
+	if(!browse && !commands_disabled && attack_from.valid()) {
+		if(move_unit_along_current_route(false)) { //move the unit without updating shroud
+			// a WML event could have invalidated both attacker and defender
+			// so make sure they're valid before attacking
+			u = find_unit(attack_from);
+			enemy = find_unit(hex);
+			if(u != units_.end() && u->second.side() == team_num_ &&
+				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
+				//if shroud or fog is active, rememember nits a and after attack check if someone isn`t seen
+				std::set<gamemap::location> known_units;
 
+				if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
+					 for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+				   if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
+					 known_units.insert(u->first);
+					 teams_[team_num_-1].see(u->second.side()-1);
+							}
+						}
+				}
+				if(!commands_disabled && attack_enemy(u,enemy) == false) {
+					undo_ = true;
+					selected_hex_ = src;
+					gui_->select_hex(src);
+					current_paths_ = orig_paths;
+					gui_->highlight_reach(current_paths_);
+					return;
+				}
+				else //attack == true
+				{
 					if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
-						 for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-				       if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
-				         known_units.insert(u->first);
-				         teams_[team_num_-1].see(u->second.side()-1);
-								}
+						//check if some new part of map discovered or is active delay shroud updates, which need special care
+						if (clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
+							clear_undo_stack();
+							gui_->invalidate_all();
+							gui_->draw();
+							//some new part of map discovered
+							for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+						   if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
+										//check if unit is not known
+										if (known_units.find(u->first)==known_units.end())
+										{
+											game_events::raise("sighted",u->first,attack_from);
+										}
+								 }
 							}
-					}
-					if(!commands_disabled && attack_enemy(u,enemy) == false) {
-						undo_ = true;
-						selected_hex_ = src;
-						gui_->select_hex(src);
-						current_paths_ = orig_paths;
-						gui_->highlight_reach(current_paths_);
-						return;
-					}
-					else //attack == true
-					{
-						if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
-							//check if some new part of map discovered or is active delay shroud updates, which need special care
-							if (clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)||!teams_[team_num_-1].auto_shroud_updates()){
-								clear_undo_stack();
-								gui_->invalidate_all();
-								gui_->draw();
-								//some new part of map discovered
-								for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-						       if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
-											//check if unit is not known
-											if (known_units.find(u->first)==known_units.end())
-											{
-												game_events::raise("sighted",u->first,attack_from);
-											}
-									 }
-								}
-								game_events::pump();
-								return;
-							}
+							game_events::pump();
+							return;
 						}
 					}
 				}
 			}
+		}
 
-			if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
-				clear_undo_stack();
-				gui_->invalidate_all();
-				gui_->draw();
-			}
+		if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
+			clear_undo_stack();
+			gui_->invalidate_all();
+			gui_->draw();
+		}
 
-			return;
+		return;
 	}
 
 	//otherwise we're trying to move to a hex
@@ -1173,6 +1173,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			clear_undo_stack();
 		}
 	} else {
+		// we slect a (maybe empty) hex 
 		gui_->unhighlight_reach();
 		current_paths_ = paths();
 
