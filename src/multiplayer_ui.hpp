@@ -198,9 +198,11 @@ private:
 
 	Uint32 lobby_clock_;
 
+public:
 	enum user_relation { ME, FRIEND, NEUTRAL, IGNORED };
 	enum user_state    { LOBBY, GAME, SEL_GAME };
 
+private:
 	struct user_info
 	{
 		std::string    name;
