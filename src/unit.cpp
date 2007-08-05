@@ -883,7 +883,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		return false;
 	}
 
-	if (canrecruit.empty() == false && utils::string_bool(canrecruit) != can_recruit()) {
+	if(canrecruit.empty() == false && utils::string_bool(canrecruit) != can_recruit()) {
 		return false;
 	}
 
@@ -906,6 +906,30 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			}
 		}
 	}
+
+	if(cfg.has_attribute("find_in")) {
+		//allow filtering by searching a stored variable of units
+		wassert(gamestatus_ != NULL);
+		variable_info vi = gamestatus_->sog().get_variable_info(cfg["find_in"], false,
+			variable_info::TYPE_CONTAINER);
+		if(!vi.is_valid) return false;
+		if(vi.explicit_index) {
+			if(description_ != (vi.vars->get_children(vi.key)[vi.index])->get_attribute("description")) {
+				return false;
+			}
+		} else {
+			config::child_itors ch_itors = vi.vars->child_range(vi.key);
+			for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
+				if(description_ == (*ch_itors.first)->get_attribute("description")) {
+					break;
+				}
+			}
+			if(ch_itors.first == ch_itors.second) {
+				return false;
+			}
+		}
+	}
+
 	return true;
 }
 
