@@ -57,21 +57,20 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 		}
 		//allow filtering by searching a stored variable of locations
 		if(cfg.has_attribute("find_in")) {
-			variable_info vi = game_status.sog().get_variable_info(cfg["find_in"],
-				false, variable_info::TYPE_CONTAINER);
+			variable_info vi = variable_info(cfg["find_in"],false,variable_info::TYPE_CONTAINER);
 			if(!vi.is_valid) return false;
 			if(vi.explicit_index) {
-				if(gamemap::location(*vi.vars->get_children(vi.key)[vi.index],NULL) != loc) {
+				if(gamemap::location(vi.as_container(),NULL) != loc) {
 					return false;
 				}
 			} else {
-				config::child_itors ch_itors = vi.vars->child_range(vi.key);
-				for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
-					if(gamemap::location(**ch_itors.first,NULL) == loc) {
+				variable_info::array_range a_range;
+				for(a_range = vi.as_array(); a_range.first != a_range.second; ++a_range.first) {
+					if(gamemap::location(**a_range.first,NULL) == loc) {
 						break;
 					}
 				}
-				if(ch_itors.first == ch_itors.second) {
+				if(a_range.first == a_range.second) {
 					return false;
 				}
 			}
@@ -250,12 +249,11 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	}
 	if(filter.has_attribute("find_in")) {
 		//remove any locations not found in the specified variable
-		variable_info vi = game_status.sog().get_variable_info(filter["find_in"],
-			false, variable_info::TYPE_CONTAINER);
+		variable_info vi = variable_info(filter["find_in"],false,variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) {
 			xy_locs.clear();
 		} else if(vi.explicit_index) {
-			gamemap::location test_loc(*vi.vars->get_children(vi.key)[vi.index],NULL);
+			gamemap::location test_loc(vi.as_container(),NULL);
 			if(std::find(xy_locs.begin(), xy_locs.end(), test_loc) != xy_locs.end()) {
 				xy_locs.clear();
 				xy_locs.push_back(test_loc);
@@ -264,9 +262,9 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 			}
 		} else {
 			std::set<gamemap::location> findin_locs;
-			config::child_itors ch_itors = vi.vars->child_range(vi.key);
-			for(; ch_itors.first != ch_itors.second; ++ch_itors.first) {
-				gamemap::location test_loc(**ch_itors.first,NULL);
+			variable_info::array_range a_range;
+			for(a_range = vi.as_array(); a_range.first != a_range.second; ++a_range.first) {
+				gamemap::location test_loc(**a_range.first,NULL);
 				if(std::find(xy_locs.begin(), xy_locs.end(), test_loc) != xy_locs.end()) {
 					findin_locs.insert(test_loc);
 				}

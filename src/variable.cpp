@@ -303,3 +303,28 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 		}
 	}
 }
+
+t_string& variable_info::as_scalar() {
+	wassert(is_valid);
+	return vars->values[key];
+}
+
+config& variable_info::as_container() {
+	wassert(is_valid);
+	if(explicit_index) {
+		//empty data for explicit index was already created if it was needed
+		return *vars->get_children(key)[index];
+	} 
+	config *temp = vars->child(key);
+	if(temp) {
+		//the container exists, index not specified, return index 0
+		return *temp;
+	}
+	//add empty data for the new variable, since it does not exist yet
+	return vars->add_child(key);
+}
+
+variable_info::array_range variable_info::as_array() {
+	wassert(is_valid);
+	return vars->child_range(key);
+}

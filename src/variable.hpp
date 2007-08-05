@@ -15,11 +15,11 @@
 #ifndef VARIABLE_H_INCLUDED
 #define VARIABLE_H_INCLUDED
 
-#include <string>
 #include <vector>
+#include <string>
 
-class game_state;
 class config;
+class game_state;
 class t_string;
 
 /**
@@ -113,6 +113,7 @@ private:
 /** Information on a WML variable. */
 struct variable_info
 {
+typedef std::pair<std::vector<config*>::iterator, std::vector<config*>::iterator> array_range;
 public:
 	/**
 	 * TYPE: the correct variable type should be decided by the user of the info structure
@@ -126,12 +127,20 @@ public:
 	variable_info(const std::string& varname, bool force_valid=true, 
 		TYPE validation_type=TYPE_UNSPECIFIED);
 
-	TYPE vartype;
+	TYPE vartype; //default is TYPE_UNSPECIFIED
 	bool is_valid;
 	std::string key; //the name of the internal attribute or child
 	bool explicit_index; //true if query ended in [...] specifier
 	size_t index; //the index of the child
 	config *vars; //the containing node in game_state::variables
+
+	/**
+	 * Results: after deciding the desired type, these methods can retrieve the result
+	 * Note: first you should force_valid or check is_valid, otherwise these may fail
+	 */
+	t_string& as_scalar();
+	config& as_container();
+	array_range as_array(); //range may be empty
 };
 
 #endif

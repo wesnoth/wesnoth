@@ -1039,7 +1039,7 @@ t_string& game_state::get_variable(const std::string& key)
 {
 	activate_scope_variable(key);
 	variable_info to_get = get_variable_info(key, true, variable_info::TYPE_SCALAR);
-	return to_get.vars->values[to_get.key];
+	return to_get.as_scalar();
 }
 
 const t_string& game_state::get_variable_const(const std::string& key) const
@@ -1047,23 +1047,22 @@ const t_string& game_state::get_variable_const(const std::string& key) const
 	activate_scope_variable(key);
 	variable_info to_get = get_variable_info(key, false, variable_info::TYPE_SCALAR);
 	if(!to_get.is_valid) return temporaries[key];
-	return to_get.vars->get_attribute(to_get.key);
+	return to_get.as_scalar();
 }
 
 config& game_state::get_variable_cfg(const std::string& key)
 {
-	config *to_return = NULL;
 	activate_scope_variable(key);
+
+	//FIXME: since this method is serving double duty for Arrays and Containers,
+	//we must validate type as an Array to be safe
 	variable_info to_get = get_variable_info(key, true, variable_info::TYPE_ARRAY);
-	to_return = to_get.vars->child(to_get.key);
-	return (to_return)? *to_return: to_get.vars->add_child(to_get.key);	
+	return to_get.as_container();
 }
 
 void game_state::set_variable(const std::string& key, const t_string& value)
 {
-	activate_scope_variable(key);
-	variable_info to_set = get_variable_info(key, true, variable_info::TYPE_SCALAR);
-	to_set.vars->values[to_set.key] = value;
+	get_variable(key) = value;
 }
 
 config& game_state::add_variable_cfg(const std::string& key, const config& value)
