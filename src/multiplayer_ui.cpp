@@ -354,10 +354,6 @@ void ui::handle_event(const SDL_Event& event)
 	}
     if(users_menu_.double_clicked()) {
 		std::string usr_text = user_list_[users_menu_.selection()];
-		const int index = usr_text.find_first_of(' ');
-		if (index > -1) {
-			usr_text.erase(index);
-		}
 		std::string caption = _("Send a private message to ") + usr_text;
 		gui::dialog d(disp(), _("Whisper"), caption, gui::OK_CANCEL);
 		d.set_textbox( _("Message: "));
@@ -704,7 +700,7 @@ void ui::gamelist_updated(bool silent)
 				case ME:      img_str = imgpre + "self.png"    + COLUMN_SEPARATOR; break;
 			}
 		}
-		user_strings.push_back(u_itor->name + game_str);
+		user_strings.push_back(u_itor->name);
 		menu_strings.push_back(img_str + color_str + u_itor->name + game_str + HELP_STRING_SEPARATOR + u_itor->name + game_str);
 		u_itor++;
 	}
