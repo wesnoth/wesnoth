@@ -1,4 +1,4 @@
-# translation of es.po to Spanish
+# translation of es.po to
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -17,9 +17,9 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-03 16:15+0200\n"
-"PO-Revision-Date: 2007-07-31 20:17+0200\n"
+"PO-Revision-Date: 2007-08-06 09:49+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"Language-Team:  <Spanish <es@li.org>>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,7 +70,7 @@ msgstr "Diseñador de campañas"
 #: data/campaigns/Two_Brothers/_main.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
 msgid "Current Maintainer"
-msgstr "Responsable actual"
+msgstr "Mantenedor actual"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:29
 msgid "Campaign Epilog and Continuity"
@@ -85,7 +85,7 @@ msgstr "Epílogo de campaña y continuidad"
 #: data/campaigns/Two_Brothers/_main.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:45
 msgid "Artwork and Graphics Designers"
-msgstr "Trabajo artístico y diseñadores gráficos"
+msgstr "Diseñadores gráficos y artísticos"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:536
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -1413,7 +1413,7 @@ msgstr ""
 "\n"
 "Los otros rasgos que pueden asignarse a las unidades son "
 "<ref>dst=traits_dextrous text=diestro</ref>,<ref>dst=traits_loyal text=leal</"
-"ref>, <ref>dst=traits_undead text='no muerto'</ref>."
+"ref> y <ref>dst=traits_undead text='no muerto'</ref>."
 
 #: data/core/help.cfg:277
 msgid "Intelligent"
@@ -2640,7 +2640,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:439
 msgid "berserk"
-msgstr "locura"
+msgstr "berserk"
 
 #: data/core/macros/abilities.cfg:441
 msgid ""
@@ -2648,7 +2648,7 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Locura:\n"
+"Berserk:\n"
 "Usado tanto ofensiva como defensivamente, este ataque alarga la lucha hasta "
 "la muerte de uno de los combatientes, con un máximo de 30 rondas de ataques."
 
@@ -3861,7 +3861,7 @@ msgid ""
 "open water."
 msgstr ""
 " Los espíritus tienen una resistencia muy inusual al daño, y se mueven con "
-"bastante lentitud sobre las aguas abiertas."
+"bastante lentitud sobre el agua."
 
 #: data/core/macros/special-notes.cfg:6
 msgid ""
@@ -3940,7 +3940,7 @@ msgid ""
 msgstr ""
 " En los bosques, la habilidad para emboscar de esta unidad la vuelve "
 "invisible a los enemigos, a menos que estén adyacentes o se haya revelado a "
-"sí misma en un ataque."
+"sí misma atacando."
 
 #: data/core/macros/special-notes.cfg:36
 msgid " This unit is able to hide at night, leaving no trace of its presence."
@@ -3960,8 +3960,8 @@ msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-" Cuando usa su ataque enloquecido, esta unidad continúa atacando hasta que "
-"uno de los dos haya muerto."
+" Cuando usa su ataque berserk, esta unidad continúa atacando hasta que uno "
+"de los dos haya muerto."
 
 #: data/core/macros/special-notes.cfg:45
 msgid ""
@@ -4352,7 +4352,7 @@ msgstr "de penetración"
 
 #: data/hardwired/english.cfg:55
 msgid "impact"
-msgstr "impacto"
+msgstr "de impacto"
 
 #: data/hardwired/english.cfg:56
 msgid "fire"
@@ -4677,10 +4677,10 @@ msgid ""
 "often more useful to try to advance your lower level units."
 msgstr ""
 "Las unidades pueden ganar Avances Sobre el Máximo Nivel (ASMN, AMLA en "
-"inglés) que normalmente incrementa los puntos de vida de la unidad en 3. Sin "
-"embargo, conseguir un ASMN se hace progresivamente más difícil cada vez que "
-"la unidad recibe un ASMN. Por lo tanto, normalmente es más útil intentar "
-"mejorar sus unidades de bajo nivel."
+"inglés) lo que normalmente eleva los puntos de vida máximos de la unidad en "
+"3. Sin embargo, conseguir un ASMN se hace progresivamente más difícil cada "
+"vez que la unidad recibe un ASMN. Por lo tanto, normalmente es más útil "
+"intentar mejorar sus unidades de bajo nivel."
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4689,8 +4689,8 @@ msgid ""
 "best to scout specific types of terrain."
 msgstr ""
 "En los mapas donde se haya habilitado la oscuridad o niebla de guerra, el "
-"alcance de la vista de una unidad está limitado por su máximo movimiento. Es "
-"bueno recordar esto al decidir qué unidad es la mejor para explorar tipos "
+"alcance de la vista de una unidad está limitado por su máximo movimiento. "
+"Recuerde esto cuando decida qué unidad es la mejor para explorar tipos "
 "específicos de terreno."
 
 #: data/hardwired/tips.cfg:36
@@ -6255,7 +6255,7 @@ msgid ""
 "@Defeat enemy leader(s)"
 msgstr ""
 "Victoria\n"
-"@Derrota al/los líder/es enemigo/s"
+"@Derrotar al/los líder/es enemigo/s"
 
 #: src/multiplayer_connect.cpp:1413
 msgid "Waiting for players to join..."
@@ -6899,79 +6899,3 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
-
-#~ msgid "Prose-doctoring and preparation for mainline"
-#~ msgstr "Retoques de prosa y preparación para la línea principal"
-
-#~ msgid "Unit art"
-#~ msgstr "Diseño artístico de unidades"
-
-#~ msgid "Map art"
-#~ msgstr "Diseño artístico de mapas"
-
-#~ msgid "Portrait Art"
-#~ msgstr "Diseño artístico de retratos"
-
-#~ msgid "Fugitive"
-#~ msgstr "Fugitivo"
-
-#~ msgid ""
-#~ "Veteran criminals become notorious among the authorities for both their "
-#~ "battle prowess and ability to elude capture.  Dangerous and ruthless, "
-#~ "they can be fearful in their element but no real match for professional "
-#~ "law enforcment forces."
-#~ msgstr ""
-#~ "Los criminales veteranos se vuelven notorios entre las autoridades tanto "
-#~ "por su valía en la batalla como por su habilidad para eludir su captura.  "
-#~ "Peligrosos y despiadados, pueden ser temibles en su entorno pero no están "
-#~ "a la altura de las fuerzas policiales profesionales."
-
-#~ msgid "mace"
-#~ msgstr "maza"
-
-#~ msgid "sling"
-#~ msgstr "honda"
-
-#~ msgid "female^Fugitive"
-#~ msgstr "Fugitiva"
-
-#~ msgid ""
-#~ "Veteran criminals become notorious among the authorities for both their "
-#~ "battle prowess and ability to elude capture.  Beautiful and dangerous, "
-#~ "their beauty is exceeded only by their dangerousness."
-#~ msgstr ""
-#~ "Las criminales veteranas se vuelven notorias entre las autoridades tanto "
-#~ "por su valía en la batalla como por su habilidad para eludir su captura.  "
-#~ "Bellas y peligrosas, su belleza es sólo superada por su peligrosidad."
-
-#~ msgid "Highwayman"
-#~ msgstr "Salteador de caminos"
-
-#~ msgid ""
-#~ "Armed with heavy mace, Highwaymen are the last people you want to meet on "
-#~ "a deserted road late at night."
-#~ msgstr ""
-#~ "Armados con una pesada maza, los salteadores de caminos son la última "
-#~ "persona que querrías encontrarte en una carretera desierta entrada la "
-#~ "noche."
-
-#~ msgid "Outlaw Ranger"
-#~ msgstr "Montaraz forajido"
-
-#~ msgid ""
-#~ "Rangers are wild men and masters of forest and hills.  They are excellent "
-#~ "trackers, scouts, and archers, moving freely through the countryside "
-#~ "under the cover of night.  Most rulers are afraid of rangers and would "
-#~ "rather put them in the dungeon than put their abilities to use."
-#~ msgstr ""
-#~ "Los montaraces son hombres salvajes y maestros de los bosques y las "
-#~ "montañas.  Son excelentes rastreadores, exploradores y arqueros, y son "
-#~ "capaces de moverse con total libertad a través del campo al amparo de la "
-#~ "noche.  Muchos gobernantes temen a los montaraces y los encerrarían en "
-#~ "una mazmorra antes que darle un uso a sus habilidades."
-
-#~ msgid "sword"
-#~ msgstr "espada"
-
-#~ msgid "bow"
-#~ msgstr "arco"
