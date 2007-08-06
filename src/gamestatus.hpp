@@ -117,9 +117,6 @@ public:
 
 	//Variable access
 
-	variable_info get_variable_info(const std::string& varname, bool force_valid=true,
-		variable_info::TYPE validation_type=variable_info::TYPE_UNSPECIFIED) const;
-
 	t_string& get_variable(const std::string& varname);
 	virtual const t_string& get_variable_const(const std::string& varname) const;
 	config& get_variable_cfg(const std::string& varname);

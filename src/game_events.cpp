@@ -1819,8 +1819,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 		const std::string mode = cfg["mode"];
 		config to_store;
-		variable_info varinfo = state_of_game->get_variable_info(variable, true,
-			variable_info::TYPE_ARRAY);
+		variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
 
 		const bool kill_units = utils::string_bool(cfg["kill"]);
 

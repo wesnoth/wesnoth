@@ -1014,12 +1014,12 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 t_string& game_state::get_variable(const std::string& key)
 {
-	return get_variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
+	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
 }
 
 const t_string& game_state::get_variable_const(const std::string& key) const
 {
-	variable_info to_get = get_variable_info(key, false, variable_info::TYPE_SCALAR);
+	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
 	if(!to_get.is_valid) return temporaries[key];
 	return to_get.as_scalar();
 }
@@ -1028,7 +1028,7 @@ config& game_state::get_variable_cfg(const std::string& key)
 {
 	//FIXME: since this method is serving double duty for Arrays and Containers,
 	//we must validate type as an Array to be safe
-	return get_variable_info(key, true, variable_info::TYPE_ARRAY).as_container();
+	return variable_info(key, true, variable_info::TYPE_ARRAY).as_container();
 }
 
 void game_state::set_variable(const std::string& key, const t_string& value)
@@ -1038,7 +1038,7 @@ void game_state::set_variable(const std::string& key, const t_string& value)
 
 config& game_state::add_variable_cfg(const std::string& key, const config& value)
 {
-	variable_info to_add = get_variable_info(key, true, variable_info::TYPE_ARRAY);
+	variable_info to_add(key, true, variable_info::TYPE_ARRAY);
 	return to_add.vars->add_child(to_add.key, value);
 }
 
@@ -1063,11 +1063,6 @@ void game_state::clear_variable(const std::string& varname)
 		to_clear.vars->clear_children(to_clear.key);
 		to_clear.vars->values.erase(to_clear.key);
 	}
-}
-
-variable_info game_state::get_variable_info(const std::string& varname, bool force_valid, variable_info::TYPE vartype) const
-{
-	return variable_info(varname, force_valid, vartype);
 }
 
 static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
