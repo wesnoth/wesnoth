@@ -394,7 +394,9 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image(shroud_image, image::SCALED_TO_HEX));
 			} else if(fogged(*it)) {
 				tile_stack_append(image::get_image(fog_image, image::SCALED_TO_HEX));
-			} else {
+			}
+
+			if(!is_shrouded) {
 				tile_stack_terrains(*it,tod.id,image_type,ADJACENT_FOGSHROUD);
 			}
 
