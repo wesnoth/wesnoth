@@ -788,11 +788,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		// show (or cancel) the attack direction indicator
 		if (attack_from.valid() && !browse) {
-			std::string dir_str = gamemap::location::write_direction(new_hex.get_relative_dir(attack_from));
-			surface attack_dir_surf = image::get_image("misc/attack-from-"+dir_str+".png", image::UNMASKED);
-			gui_->set_mouseover_hex_overlay(attack_dir_surf);
+   			gui_->set_attack_indicator(attack_from, new_hex);
 		} else {
-			gui_->set_mouseover_hex_overlay(NULL);
+			gui_->clear_attack_indicator();
 		}
 
 		if(enemy_paths_) {
@@ -986,6 +984,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			selected_hex_ = gamemap::location();
 			gui_->select_hex(gamemap::location());
 			gui_->set_mouseover_hex_overlay(NULL);
+			gui_->clear_attack_indicator();
 			gui_->unhighlight_reach();
 			current_paths_ = paths();
 			current_route_.steps.clear();
@@ -1173,8 +1172,9 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			clear_undo_stack();
 		}
 	} else {
-		// we slect a (maybe empty) hex 
+		// we select a (maybe empty) hex 
 		gui_->unhighlight_reach();
+		gui_->clear_attack_indicator();
 		current_paths_ = paths();
 
 		selected_hex_ = hex;

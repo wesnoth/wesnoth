@@ -290,7 +290,9 @@ void game_display::draw(bool update,bool force)
 
 			image::TYPE image_type = image::SCALED_TO_HEX;
 
-			if (on_map && *it == mouseoverHex_) {
+			//we higlight hex under the mouse, origin of
+			//attack or under a selected unit
+			if (on_map && (*it == mouseoverHex_ || *it == attack_indicator_from_)) {
 				image_type = image::BRIGHTENED;
 			} else if (on_map && *it == selectedHex_) {
 				unit_map::iterator un = find_visible_unit(units_, *it, map_,
@@ -299,6 +301,7 @@ void game_display::draw(bool update,bool force)
 					image_type = image::BRIGHTENED;
 				}
 			}
+
 			//currently only used in editor
 			/*
 				else if (highlighted_locations_.find(*it) != highlighted_locations_.end()) {
@@ -378,6 +381,11 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(selected_hex_overlay_);
 			if(*it == mouseoverHex_ && on_map && mouseover_hex_overlay_ != NULL)
 				tile_stack_append(mouseover_hex_overlay_);
+
+			// draw the attack direction indicator
+			if(*it == attack_indicator_to_) {
+				tile_stack_append(image::get_image(attack_indicator_image_, image::UNMASKED));
+			}
 
 			// apply shroud anf fog
 			if(is_shrouded) {
@@ -1085,6 +1093,28 @@ void game_display::remove_temporary_unit()
 	temp_unit_->clear_haloes();
 	temp_unit_ = NULL;
 }
+
+void game_display::set_attack_indicator(const gamemap::location& from, const gamemap::location& to)
+{
+	if (attack_indicator_from_ != from || attack_indicator_to_ != to) {
+		invalidate(attack_indicator_from_);
+		invalidate(attack_indicator_to_);
+
+		attack_indicator_from_ = from;
+		attack_indicator_to_ = to;
+		std::string dir = gamemap::location::write_direction(to.get_relative_dir(from));
+		attack_indicator_image_ = "misc/attack-from-" + dir + ".png";
+
+		invalidate(attack_indicator_from_);
+		invalidate(attack_indicator_to_);
+	}
+}
+
+void game_display::clear_attack_indicator()
+{
+	set_attack_indicator(gamemap::location::null_location, gamemap::location::null_location);
+}
+
 void game_display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
 	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2, 
