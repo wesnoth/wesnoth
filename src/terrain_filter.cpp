@@ -57,7 +57,7 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 		}
 		//allow filtering by searching a stored variable of locations
 		if(cfg.has_attribute("find_in")) {
-			variable_info vi = variable_info(cfg["find_in"],false,variable_info::TYPE_CONTAINER);
+			variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
 			if(!vi.is_valid) return false;
 			if(vi.explicit_index) {
 				if(gamemap::location(vi.as_container(),NULL) != loc) {
@@ -249,7 +249,7 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	}
 	if(filter.has_attribute("find_in")) {
 		//remove any locations not found in the specified variable
-		variable_info vi = variable_info(filter["find_in"],false,variable_info::TYPE_CONTAINER);
+		variable_info vi(filter["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) {
 			xy_locs.clear();
 		} else if(vi.explicit_index) {

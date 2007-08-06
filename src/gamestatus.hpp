@@ -80,8 +80,7 @@ struct player_info
 class game_state : public variable_set
 {
 public:
-	game_state() : difficulty("NORMAL"), last_selected(gamemap::location::null_location),
-		recursive_(false) {}
+	game_state() : difficulty("NORMAL"), last_selected(gamemap::location::null_location) {}
 	game_state(const game_state& state);
 	game_state(const game_data& data, const config& cfg);
 
@@ -148,10 +147,8 @@ public:
 	//the last location where a select event fired.
 	gamemap::location last_selected;
 private:
-	mutable config variables; //mutable due to lazy-evaluation
+	config variables;
 	mutable config temporaries; //lengths of arrays, etc.
-	void activate_scope_variable(std::string var_name) const;
-	mutable bool recursive_; //checks for recursion in activate_scope_variable()
 	friend struct variable_info;
 };
 

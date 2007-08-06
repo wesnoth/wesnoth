@@ -910,8 +910,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	if(cfg.has_attribute("find_in")) {
 		//allow filtering by searching a stored variable of units
 		wassert(gamestatus_ != NULL);
-		variable_info vi = gamestatus_->sog().get_variable_info(cfg["find_in"], false,
-			variable_info::TYPE_CONTAINER);
+		variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {
 			if(description_ != (vi.vars->get_children(vi.key)[vi.index])->get_attribute("description")) {

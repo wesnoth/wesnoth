@@ -1818,10 +1818,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			variable="unit";
 		}
 		const std::string mode = cfg["mode"];
-		bool cleared = false;
-		if(mode != "replace" && mode != "append") {
-			state_of_game->clear_variable_cfg(variable);
-		}
+		config to_store;
+		variable_info varinfo = state_of_game->get_variable_info(variable, true,
+			variable_info::TYPE_ARRAY);
 
 		const bool kill_units = utils::string_bool(cfg["kill"]);
 
@@ -1831,11 +1830,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				continue;
 			}
 
-			if(mode == "replace" && !cleared) {
-				state_of_game->clear_variable_cfg(variable);
-				cleared = true;
-			}
-			config& data = state_of_game->add_variable_cfg(variable);
+			config& data = to_store.add_child(varinfo.key);
 			i->first.write(data);
 			i->second.write(data);
 
@@ -1861,12 +1856,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 						++j;
 						continue;
 					}
-
-					if(mode == "replace" && !cleared) {
-						state_of_game->clear_variable_cfg(variable);
-						cleared = true;
-					}
-					config& data = state_of_game->add_variable_cfg(variable);
+					config& data = to_store.add_child(varinfo.key);
 					j->write(data);
 					data["x"] = "recall";
 					data["y"] = "recall";
@@ -1879,6 +1869,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 			}
 		}
+		if(mode != "append") {
+			varinfo.vars->clear_children(varinfo.key);
+		}
+		varinfo.vars->append(to_store);
 	}
 	
 	else if(cmd == "unstore_unit") {
@@ -2008,11 +2002,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if (variable.empty()) {
 			variable="location";
 		}
-		state_of_game->clear_variable_cfg(variable);
 
 		std::set<gamemap::location> res;
 		get_locations(*game_map, res, cfg, *status_ptr, *units, false, MaxLoop);
 
+		state_of_game->clear_variable_cfg(variable);
 		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end(); ++j) {
 			config &loc_store = state_of_game->add_variable_cfg(variable);
 			j->write(loc_store);

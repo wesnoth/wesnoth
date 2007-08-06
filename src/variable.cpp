@@ -180,12 +180,37 @@ void scoped_recall_unit::activate()
 
 namespace {
 const size_t MaxLoop = 1024;
+bool recursive_activation = false;
+
+//turns on any auto-stored variables
+void activate_scope_variable(std::string var_name)
+{
+	if(recursive_activation)
+		return;
+	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
+	if(itor != var_name.end()) {
+		var_name.erase(itor, var_name.end());
+	}
+	std::vector<scoped_wml_variable*>::reverse_iterator rit;
+	for(rit = repos->scoped_variables.rbegin(); rit != repos->scoped_variables.rend(); ++rit) {
+		if((**rit).name() == var_name) {
+			recursive_activation = true;
+			if(!(**rit).activated()) {
+				(**rit).activate();
+			}
+			recursive_activation = false;
+			break;
+		}
+	}
 }
+} //end anonymous namespace
 
 variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type) 
 	: vartype(validation_type), is_valid(false), explicit_index(false), index(0), vars(NULL)
 {
 	wassert(repos != NULL);
+	activate_scope_variable(varname);
+
 	vars = &repos->variables;
 	key = varname;
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');

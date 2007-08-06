@@ -420,7 +420,7 @@ static player_info read_player(const game_data& data, const config* cfg)
 }
 
 game_state::game_state(const game_data& data, const config& cfg) 
-: difficulty("NORMAL"), last_selected(gamemap::location::null_location), recursive_(false)
+: difficulty("NORMAL"), last_selected(gamemap::location::null_location)
 {
 	log_scope("read_game");
 	label = cfg["label"];
@@ -1012,39 +1012,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	}
 }
 
-
-
-void game_state::activate_scope_variable(std::string var_name) const
-{
-	if(recursive_)
-		return;
-	const std::string::iterator itor = std::find(var_name.begin(),var_name.end(),'.');
-	if(itor != var_name.end()) {
-		var_name.erase(itor, var_name.end());
-	}
-	std::vector<scoped_wml_variable*>::const_reverse_iterator rit;
-	for(rit = scoped_variables.rbegin(); rit != scoped_variables.rend(); ++rit) {
-		if((**rit).name() == var_name) {
-			recursive_ = true;
-			if(!(**rit).activated()) {
-				(**rit).activate();
-			}
-			recursive_ = false;
-			break;
-		}
-	}
-}
-
 t_string& game_state::get_variable(const std::string& key)
 {
-	activate_scope_variable(key);
-	variable_info to_get = get_variable_info(key, true, variable_info::TYPE_SCALAR);
-	return to_get.as_scalar();
+	return get_variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
 }
 
 const t_string& game_state::get_variable_const(const std::string& key) const
 {
-	activate_scope_variable(key);
 	variable_info to_get = get_variable_info(key, false, variable_info::TYPE_SCALAR);
 	if(!to_get.is_valid) return temporaries[key];
 	return to_get.as_scalar();
@@ -1052,12 +1026,9 @@ const t_string& game_state::get_variable_const(const std::string& key) const
 
 config& game_state::get_variable_cfg(const std::string& key)
 {
-	activate_scope_variable(key);
-
 	//FIXME: since this method is serving double duty for Arrays and Containers,
 	//we must validate type as an Array to be safe
-	variable_info to_get = get_variable_info(key, true, variable_info::TYPE_ARRAY);
-	return to_get.as_container();
+	return get_variable_info(key, true, variable_info::TYPE_ARRAY).as_container();
 }
 
 void game_state::set_variable(const std::string& key, const t_string& value)
@@ -1067,14 +1038,13 @@ void game_state::set_variable(const std::string& key, const t_string& value)
 
 config& game_state::add_variable_cfg(const std::string& key, const config& value)
 {
-	activate_scope_variable(key);
 	variable_info to_add = get_variable_info(key, true, variable_info::TYPE_ARRAY);
 	return to_add.vars->add_child(to_add.key, value);
 }
 
 void game_state::clear_variable_cfg(const std::string& varname)
 {
-	variable_info to_clear = get_variable_info(varname, false, variable_info::TYPE_CONTAINER);
+	variable_info to_clear(varname, false, variable_info::TYPE_CONTAINER);
 	if(!to_clear.is_valid) return;
 	if(to_clear.explicit_index) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
@@ -1085,7 +1055,7 @@ void game_state::clear_variable_cfg(const std::string& varname)
 
 void game_state::clear_variable(const std::string& varname)
 {
-	variable_info to_clear = get_variable_info(varname, false);
+	variable_info to_clear(varname, false);
 	if(!to_clear.is_valid) return;
 	if(to_clear.explicit_index) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
@@ -1142,7 +1112,6 @@ game_state& game_state::operator=(const game_state& state)
 	snapshot = state.snapshot;
 	last_selected = state.last_selected;
 	set_variables(state.get_variables());
-	recursive_ = state.recursive_;
 
 	return *this;
 }
