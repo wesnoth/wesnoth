@@ -997,7 +997,7 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 void game_display::invalidate(const gamemap::location& loc)
 {
 	if(!invalidateAll_) {
-		if (loc.valid() && invalidated_.insert(loc).second) {
+		if (invalidated_.insert(loc).second) {
 			// Units can overlap adjacent tiles.
 			unit_map::iterator u = units_.find(loc);
 
