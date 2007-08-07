@@ -23,7 +23,7 @@ public:
 	sha1_hash(const std::string& str);
 	std::string display();
 private:
-	void next(char block[64]);
+	void next(Uint8 block[64]);
 	Uint32 H0, H1, H2, H3, H4;
 	
 };

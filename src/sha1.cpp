@@ -45,7 +45,7 @@ std::string sha1_hash::display() {
 sha1_hash::sha1_hash(const std::string& str) 
 : H0(0x67452301), H1(0xefcdab89), H2(0x98badcfe), H3(0x10325476), H4(0xc3d2e1f0)
 {
-	char block[64];
+	Uint8 block[64];
 	
 	int bytes_left = str.size();
 	Uint32 ssz = bytes_left * 8; // string length in bits
@@ -53,10 +53,10 @@ sha1_hash::sha1_hash(const std::string& str)
 	std::stringstream iss (str, std::stringstream::in);
 	// cut our string in 64 bytes blocks then process it
 	while (bytes_left > 0) {
-		iss.read(block, 64);
+		iss.read(reinterpret_cast<char*>(block), 64);
 		if (bytes_left <= 64) { // if it's the last block, pad it
 			if (bytes_left < 64) {
-				block[bytes_left]= '\200'; // add a 1 bit right after the end of the string
+				block[bytes_left]= 0x80; // add a 1 bit right after the end of the string
 			}
 			int i;
 			for (i = 63; i > bytes_left; i--) {
@@ -75,7 +75,7 @@ sha1_hash::sha1_hash(const std::string& str)
 					block[i]=0; // pad our block with zeros
 				}
 				if (bytes_left == 64) {
-					block[0]= '\200'; // add a 1 bit right after the end of the string = beginning of our new block
+					block[0]= 0x80; // add a 1 bit right after the end of the string = beginning of our new block
 				}
 				// put the length at the end of the block
 				block[60] = ssz >> 24;
@@ -90,7 +90,7 @@ sha1_hash::sha1_hash(const std::string& str)
 }
 
 // process the next 512 bits block
-void sha1_hash::next(char block[64]) {
+void sha1_hash::next(Uint8 block[64]) {
 	Uint32 W[80];
 	Uint32 A, B, C, D, E, T;
 	int i;
