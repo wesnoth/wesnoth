@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-03 16:15+0200\n"
-"PO-Revision-Date: 2007-07-21 01:51+0200\n"
+"PO-Revision-Date: 2007-08-07 19:59+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Tämänhetkinen ylläpitäjä"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:29
 msgid "Campaign Epilog and Continuity"
-msgstr ""
+msgstr "Kampanjan epilogi ja jatko"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:39
@@ -120,11 +120,13 @@ msgid ""
 "and other people\n"
 "this list is very incomplete\n"
 msgstr ""
+"ja muut osallistuneet\n"
+"tämä lista on erittäin epätäydellinen\n"
 
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr ""
+msgstr "Ja erityiskiitokset jokaiselle, jonka unohdin mainita."
 
 #: data/core/about.cfg:7
 msgid "Programming"
@@ -2176,16 +2178,15 @@ msgid "Impassable Mountain"
 msgstr "Ylitsepääsemätön vuoristo"
 
 #: data/core/help.cfg:596
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 "Ylitsepääsemättömät vuoristot ovat niin korkeita ja jyrkkiä, että ne ovat "
-"jatkuvasti pilvien peitossa. Mokoman vuoriston ylittäminen on käytännössä "
-"mahdotonta. Edes lentävät hahmot eivät kykene navigoimaan rosoisten "
-"huippujen luona niin korkealla."
+"jatkuvasti pilvien peitossa. Mokoman vuoriston ylittäminen on "
+"käytännöllisesti katsoen mahdotonta. Edes lentävät hahmot eivät kykene "
+"suunnistamaan kelvollisesti rosoisten huippujen luona niin korkealla."
 
 #: data/core/help.cfg:601
 msgid "General commands"
@@ -4630,6 +4631,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Et voi peruuttaa siirtoa, joka on puhdistanut yhtään sumua tai huntua. Pistä "
+"'Viivytä peitteen päivityksiä'-asetus päälle, milloin tarvitset tälläisissä "
+"tilanteissa peruutustoimintoa. "
 
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
@@ -5294,9 +5298,8 @@ msgid "Loading title screen."
 msgstr "Ladataan aloitusikkunaa."
 
 #: src/game_config.cpp:241
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "Virheellinen väri"
+msgstr "Virheellinen värialue:"
 
 #: src/game_events.cpp:876
 msgid "Victory:"
@@ -6314,9 +6317,8 @@ msgid "Players: "
 msgstr "Pelaajia: "
 
 #: src/multiplayer_create.cpp:495
-#, fuzzy
 msgid "Map size: "
-msgstr "Kartta tallennettu."
+msgstr "Kartan koko:"
 
 #: src/multiplayer_lobby.cpp:97
 msgid "--no games open--"
