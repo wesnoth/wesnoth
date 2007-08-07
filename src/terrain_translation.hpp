@@ -105,23 +105,8 @@ namespace t_translation {
 	extern const t_letter VOID_TERRAIN;
 	extern const t_letter FOGGED;
 
-	// these terrains are defined but not used yet.
-	// Needed for the new border transitions
-	
-	// off the map and outside the border
-	extern const t_letter OFF_MAP;
 	// on the map the user can use this type to make odd shaped maps good
 	extern const t_letter OFF_MAP_USER;
-	// border tiles differnt type to make it easier for WML to detect the
-	// position on the border
-	extern const t_letter OFF_MAP_BORDER_LEFT;
-	extern const t_letter OFF_MAP_BORDER_RIGHT;
-	extern const t_letter OFF_MAP_BORDER_TOP;
-	extern const t_letter OFF_MAP_BORDER_TOP_LEFT;
-	extern const t_letter OFF_MAP_BORDER_TOP_RIGHT;
-	extern const t_letter OFF_MAP_BORDER_BOTTOM;
-	extern const t_letter OFF_MAP_BORDER_BOTTOM_LEFT;
-	extern const t_letter OFF_MAP_BORDER_BOTTOM_RIGHT;
 
 	extern const t_letter HUMAN_CASTLE;
 	extern const t_letter HUMAN_KEEP;
