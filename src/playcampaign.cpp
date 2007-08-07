@@ -389,6 +389,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		} catch(gamemap::incorrect_format_exception& e) {
 			gui::show_error_message(disp, std::string(_("The game map could not be loaded: ")) + e.msg_);
 			return QUIT;
+		} catch(config::error& e) {
+			std::cerr << "caught config::error...\n";
+			gui::show_error_message(disp, _("Error while reading the WML: ") + e.message);
+			return QUIT;
 		}
 
 		//if the scenario hasn't been set in-level, set it now.

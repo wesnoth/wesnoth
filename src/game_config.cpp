@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <sstream>
 #define LOG_NG LOG_STREAM(info, engine)
+#define ERR_NG LOG_STREAM(err, engine)
 
 namespace game_config
 {
@@ -225,6 +226,7 @@ namespace game_config
 					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));  
 				} catch(bad_lexical_cast&) {
 					//throw config::error(_("Invalid team color: ") + rgb_it->second);
+					ERR_NG << "Invalid team color: " << rgb_it->second;
 				}
 			}
 		}
@@ -238,6 +240,8 @@ namespace game_config
 				team_rgb_range.insert(std::make_pair(name,color_range(string2rgb(name))));
 				return color_info(name);
 			} catch(bad_lexical_cast&) {
+				//ERR_NG << "Invalid color range: " << name;
+				//return color_info();
 				throw config::error(_("Invalid color range: ") + name);
 			}
 		}
@@ -254,6 +258,7 @@ namespace game_config
 			} catch(bad_lexical_cast&) {
 				static std::vector<Uint32> stv;
 				//throw config::error(_("Invalid team color: ") + name);
+				ERR_NG << "Invalid team color: " << name;
 				return stv;
 			}
 		}

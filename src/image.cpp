@@ -341,9 +341,14 @@ surface locator::load_image_sub_file() const
 				if("RC" == function){ //re-color function
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
-						color_range const& new_color = game_config::color_info(recolor[1]);
-						std::vector<Uint32> const& old_color = game_config::tc_info(recolor[0]);
-						std::map<Uint32, Uint32> tmp_map = recolor_range(new_color,old_color);
+						std::map<Uint32, Uint32> tmp_map;
+						try {
+							color_range const& new_color = game_config::color_info(recolor[1]);
+							std::vector<Uint32> const& old_color = game_config::tc_info(recolor[0]);
+							tmp_map = recolor_range(new_color,old_color);
+						} catch (config::error& e) {
+							ERR_DP << "caught config::error... " << e.message << std::endl;
+						}
 						for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){	
 							recolor_map[tmp->first] = tmp->second;
 						}
