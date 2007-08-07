@@ -131,6 +131,11 @@ const struct {
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
 
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
+	{ hotkey::HOTKEY_USER_CMD_1, "clearmessages", N_("Clear messages"), false },
+#ifdef USRCMD2
+	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false },
+	{ hotkey::HOTKEY_USER_CMD_3, "usercommand#3", N_("User-Command#3"), false },
+#endif
 	{ hotkey::HOTKEY_NULL, NULL, NULL, true }
 };
 
@@ -631,6 +636,21 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		case HOTKEY_USER_CMD:
 			user_command();
 			break;
+//%%
+		case HOTKEY_USER_CMD_1:
+			user_command_1();
+			break;
+#ifdef USRCMD2
+		case HOTKEY_USER_CMD_2:
+			//user_command();
+			user_command_2();
+			break;
+		case HOTKEY_USER_CMD_3:
+			//user_command();
+			user_command_3();
+			break;
+#endif
+
 		case HOTKEY_EDIT_SET_TERRAIN:
 			edit_set_terrain();
 			break;
@@ -691,6 +711,7 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		 case HOTKEY_EDIT_AUTO_UPDATE:
 			edit_auto_update();
 			break;
+
 		 case HOTKEY_LANGUAGE:
 			change_language();
 			break;

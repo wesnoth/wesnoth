@@ -116,6 +116,20 @@ void playsingle_controller::user_command(){
 	menu_handler_.user_command();
 }
 
+void playsingle_controller::user_command_1(){
+	menu_handler_.user_command_1();		// clear messages
+}
+
+#ifdef USRCMD2
+void playsingle_controller::user_command_2(){
+	menu_handler_.user_command_2();
+}
+
+void playsingle_controller::user_command_3(){
+	menu_handler_.user_command_3();
+}
+#endif
+
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
 												  bool skip_replay)
 {

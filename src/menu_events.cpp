@@ -1970,6 +1970,29 @@ namespace events{
 	{
 		textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
 	}
+//%%
+	void menu_handler::user_command_1()
+	{
+		gui_->clear_chat_messages();	// clear messages
+	}
+
+#ifdef USRCMD2
+	// not used yet - for future hotkey-commands:
+	void menu_handler::user_command_2()
+	{
+		gui::message_dialog(*gui_, "Test", "User-Command#2").show();
+		//sound::play_bell(game_config::sounds::turn_bell);
+		sound::play_bell("bell.wav");
+	}
+
+	void menu_handler::user_command_3()
+	{
+		gui::message_dialog(*gui_, "Info", _("User-Command#3")).show();
+		//gui::show_error_message(disp(), "User-Command#3");
+		//sound::play_sound("heal.wav");
+		sound::play_sound("select.wav");
+	}
+#endif
 
 	void menu_handler::change_side_controller(const std::string& side, const std::string& player, bool own_side)
 	{

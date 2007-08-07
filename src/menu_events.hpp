@@ -105,6 +105,11 @@ public:
 	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
 	void search();
 	void user_command();
+	void user_command_1();
+#ifdef USRCMD2
+	void user_command_2();
+	void user_command_3();
+#endif
 
 	unit_map::iterator current_unit(mouse_handler& mousehandler);
 	unit_map::const_iterator current_unit(const mouse_handler& mousehandler) const;
