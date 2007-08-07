@@ -1252,13 +1252,23 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 		}
 
 		current_route_.steps.clear();
-		show_attack_options(u);
 
-		if(current_paths_.routes.empty() == false) {
-			current_paths_.routes[dst] = paths::route();
-			selected_hex_ = dst;
-			gui_->select_hex(dst);
-			gui_->highlight_reach(current_paths_);
+		//check if we are now adjacent to an enemy,
+		//we reselect the unit (old 1.2.x behavior)
+		gamemap::location adj[6];
+		get_adjacent_tiles(dst,adj);
+		for(int i = 0; i != 6; i++) {
+			unit_map::iterator adj_unit = find_unit(adj[i]);
+			if (adj_unit != units_.end() &&  current_team().is_enemy(adj_unit->second.side())) {
+				selected_hex_ = dst;
+				gui_->select_hex(dst);
+				const bool teleport = u->second.get_ability_bool("teleport",u->first);
+				current_paths_ = paths(map_,status_,gameinfo_,units_,dst,teams_,
+									false,teleport,viewing_team(),path_turns_);
+				show_attack_options(u);
+				gui_->highlight_reach(current_paths_);
+				break;
+			}
 		}
 	}
 
