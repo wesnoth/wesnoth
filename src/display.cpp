@@ -516,7 +516,10 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 			image::locator image = it->get_current_frame();
 			// image.filename = "terrain/" + image.filename;
 
-			const surface surface(image::get_image(image, image_type));
+			// we prevent ToD coloring and brightening of off-map tiles
+			static const std::string off_map_dir = "terrain/off-map/";
+			bool off_map = image.get_filename().substr(0,off_map_dir.length()) ==  off_map_dir;
+			const surface surface(image::get_image(image, off_map ? image::UNMASKED : image_type));
 			if (!surface.null()) {
 				res.push_back(surface);
 			}
