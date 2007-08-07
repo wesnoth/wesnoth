@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-31 11:07+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2007-06-11 22:11+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -1051,11 +1051,24 @@ msgstr "言語を変更します"
 msgid "Enter user command"
 msgstr "ユーザーコマンドを入力してください"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:134
+#, fuzzy
+msgid "Clear messages"
+msgstr "ラベルをクリアする"
+
+#: src/hotkeys.cpp:136
+msgid "User-Command#2"
+msgstr ""
+
+#: src/hotkeys.cpp:137
+msgid "User-Command#3"
+msgstr ""
+
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Quit"
 msgstr "終了"
 
@@ -1157,6 +1170,6 @@ msgstr "解像度を選択して下さい"
 msgid "Error"
 msgstr "エラー"
 
-#: src/terrain_translation.cpp:754
+#: src/terrain_translation.cpp:745
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""

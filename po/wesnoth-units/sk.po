@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-03 15:51+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2007-01-08 22:45+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -17,6 +17,17 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
+
+#: data/core/units/boats/Boat.cfg:4
+#, fuzzy
+msgid "Boat"
+msgstr "Krvavý netopier"
+
+#: data/core/units/boats/Boat.cfg:18
+msgid ""
+"Often propelled by oars or small sails, boats are used to travel short "
+"distances and in shallows where large ships cannot navigate."
+msgstr ""
 
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
@@ -1652,7 +1663,7 @@ msgstr ""
 #: data/core/units/orcs/Crossbowman.cfg:103
 #: data/core/units/orcs/Slurbow.cfg:81 data/core/units/orcs/Slurbow.cfg:126
 #: data/core/units/humans/Loyalist_Duelist.cfg:110
-#: data/core/units/humans/Loyalist_General.cfg:94
+#: data/core/units/humans/Loyalist_General.cfg:130
 #: data/core/units/humans/Loyalist_Sergeant.cfg:83
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:189
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:79
@@ -3993,7 +4004,7 @@ msgstr ""
 msgid "shadow wave"
 msgstr "ťieňová vlna"
 
-#: data/core/units/undead/Necro_Dark_Adept.cfg:132
+#: data/core/units/undead/Necro_Dark_Adept.cfg:186
 msgid "female^Dark Adept"
 msgstr "Temná učnica"
 

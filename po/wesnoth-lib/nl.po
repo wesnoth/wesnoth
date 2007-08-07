@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-31 11:07+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2007-03-22 13:03+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -1065,11 +1065,24 @@ msgstr "De taal veranderen"
 msgid "Enter user command"
 msgstr "Typ gebruikerscommando in"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:134
+#, fuzzy
+msgid "Clear messages"
+msgstr "Alle labels verwijderen"
+
+#: src/hotkeys.cpp:136
+msgid "User-Command#2"
+msgstr ""
+
+#: src/hotkeys.cpp:137
+msgid "User-Command#3"
+msgstr ""
+
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
 msgstr "Weet je zeker dat je het spel wilt verlaten?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Quit"
 msgstr "Verlaten"
 
@@ -1172,6 +1185,6 @@ msgstr "Kies een resolutie"
 msgid "Error"
 msgstr "Fout"
 
-#: src/terrain_translation.cpp:754
+#: src/terrain_translation.cpp:745
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""

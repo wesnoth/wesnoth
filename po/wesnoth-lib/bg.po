@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-31 11:07+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -1055,11 +1055,24 @@ msgstr "Смяна на езика"
 msgid "Enter user command"
 msgstr "Въведете потребителска команда"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:134
+#, fuzzy
+msgid "Clear messages"
+msgstr "Изчистване на надписите"
+
+#: src/hotkeys.cpp:136
+msgid "User-Command#2"
+msgstr ""
+
+#: src/hotkeys.cpp:137
+msgid "User-Command#3"
+msgstr ""
+
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
 msgstr "Наистина ли искате да излезете от играта?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Quit"
 msgstr "Изход"
 
@@ -1162,6 +1175,6 @@ msgstr "Избор на резолюция"
 msgid "Error"
 msgstr "Грешка"
 
-#: src/terrain_translation.cpp:754
+#: src/terrain_translation.cpp:745
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""

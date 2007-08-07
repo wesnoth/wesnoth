@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-27 23:51+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -25,8 +25,8 @@ msgid "Random"
 msgstr "Fortituita"
 
 #: data/multiplayer/eras.cfg:12
-msgid "Era of Turmoil"
-msgstr ""
+msgid "Default"
+msgstr "Solita"
 
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
@@ -44,32 +44,32 @@ msgstr "Societas Tenebrarum"
 msgid "Alliance of Light"
 msgstr "Societas Luminis"
 
-#: data/multiplayer/factions/drakes-turmoil.cfg:4
+#: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "Draculi"
 
+#: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
-#: data/multiplayer/factions/knalgans-turmoil.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Societas Knalgensis"
 
-#: data/multiplayer/factions/loyalists-turmoil.cfg:4
+#: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Fideles"
 
-#: data/multiplayer/factions/northerners-turmoil.cfg:4
 #: data/multiplayer/factions/northerners-aoh.cfg:4
+#: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Septentrionales"
 
 #: data/multiplayer/factions/rebels-aoh.cfg:4
-#: data/multiplayer/factions/rebels-turmoil.cfg:4
+#: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Rebelles"
 
-#: data/multiplayer/factions/undead-turmoil.cfg:4
+#: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Inmortuum"
@@ -102,6 +102,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:8
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:6
 #: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:5
 #, fuzzy
 msgid " Recommended setting of 2 gold per village."
@@ -1162,6 +1163,30 @@ msgstr ""
 "(septentriones versus meridiem), sed iucunda est etiam cum partibus I IV VI "
 "aut I III VI. Impostationes suasae: CL auri; XLIV pagi."
 
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:4
+msgid "8p_Mokena_Prairie"
+msgstr ""
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:6
+msgid ""
+"Inspired from Morituri, this 8 player map creates an epic battle scene that "
+"requires two teams to coordinate on both offense and defense."
+msgstr ""
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:17
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:37
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:57
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:87
+msgid "teamname^east"
+msgstr ""
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:27
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:47
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:67
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:77
+msgid "teamname^west"
+msgstr ""
+
 #: data/multiplayer/scenarios/8p_Morituri.cfg:4
 msgid "8p - Morituri"
 msgstr "VIII l - Morituri"
@@ -1287,6 +1312,3 @@ msgid ""
 msgstr ""
 "Probatio Occidiseptentrionis, utere --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Default"
-#~ msgstr "Solita"

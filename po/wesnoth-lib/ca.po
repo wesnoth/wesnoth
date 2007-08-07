@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-31 11:07+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2006-06-28 17:44+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -1076,11 +1076,24 @@ msgstr "Canvia l'idioma"
 msgid "Enter user command"
 msgstr "Introdueix una comanda"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:134
+#, fuzzy
+msgid "Clear messages"
+msgstr "Esborra les etiquetes"
+
+#: src/hotkeys.cpp:136
+msgid "User-Command#2"
+msgstr ""
+
+#: src/hotkeys.cpp:137
+msgid "User-Command#3"
+msgstr ""
+
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
 msgstr "Segur que voleu sortir?"
 
-#: src/hotkeys.cpp:485 src/hotkeys.cpp:787
+#: src/hotkeys.cpp:490 src/hotkeys.cpp:808
 msgid "Quit"
 msgstr "Surt"
 
@@ -1183,6 +1196,6 @@ msgstr "Tria la resolució"
 msgid "Error"
 msgstr "Error"
 
-#: src/terrain_translation.cpp:754
+#: src/terrain_translation.cpp:745
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-27 23:51+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -28,8 +28,8 @@ msgid "Random"
 msgstr "随机"
 
 #: data/multiplayer/eras.cfg:12
-msgid "Era of Turmoil"
-msgstr ""
+msgid "Default"
+msgstr "缺省"
 
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
@@ -47,32 +47,32 @@ msgstr "黑暗联盟"
 msgid "Alliance of Light"
 msgstr "光明联盟"
 
-#: data/multiplayer/factions/drakes-turmoil.cfg:4
+#: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "龙族"
 
+#: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
-#: data/multiplayer/factions/knalgans-turmoil.cfg:4
 msgid "Knalgan Alliance"
 msgstr "纳尔迦联盟"
 
-#: data/multiplayer/factions/loyalists-turmoil.cfg:4
+#: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "保皇派"
 
-#: data/multiplayer/factions/northerners-turmoil.cfg:4
 #: data/multiplayer/factions/northerners-aoh.cfg:4
+#: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "北方民族"
 
 #: data/multiplayer/factions/rebels-aoh.cfg:4
-#: data/multiplayer/factions/rebels-turmoil.cfg:4
+#: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "反叛者"
 
-#: data/multiplayer/factions/undead-turmoil.cfg:4
+#: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "不死族"
@@ -105,6 +105,7 @@ msgstr "2v2对战地图，适合速战速决"
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:8
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:6
 #: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:5
 msgid " Recommended setting of 2 gold per village."
 msgstr " 建议设置每座村庄提供2个金币。"
@@ -1000,6 +1001,32 @@ msgstr ""
 "家1、4、5组队对阵玩家2、3、6（北部对阵南部），但是由玩家1、4、6或1、3、6组队"
 "也很有意思。适合150金币的起始资源。图上有44座村庄。"
 
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:4
+msgid "8p_Mokena_Prairie"
+msgstr ""
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:6
+msgid ""
+"Inspired from Morituri, this 8 player map creates an epic battle scene that "
+"requires two teams to coordinate on both offense and defense."
+msgstr ""
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:17
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:37
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:57
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:87
+#, fuzzy
+msgid "teamname^east"
+msgstr "西部"
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:27
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:47
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:67
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:77
+#, fuzzy
+msgid "teamname^west"
+msgstr "西部"
+
 #: data/multiplayer/scenarios/8p_Morituri.cfg:4
 msgid "8p - Morituri"
 msgstr "8p - 濒临死亡"
@@ -1116,6 +1143,3 @@ msgid ""
 msgstr ""
 "这是一幅韦诺测试标准图，用法 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
-
-#~ msgid "Default"
-#~ msgstr "缺省"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-27 23:51+0200\n"
+"POT-Creation-Date: 2007-08-08 01:37+0200\n"
 "PO-Revision-Date: 2007-01-04 19:17+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -27,8 +27,8 @@ msgid "Random"
 msgstr "Random"
 
 #: data/multiplayer/eras.cfg:12
-msgid "Era of Turmoil"
-msgstr ""
+msgid "Default"
+msgstr "Default"
 
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
@@ -46,32 +46,32 @@ msgstr "Alliance of Darkness"
 msgid "Alliance of Light"
 msgstr "Alliance of Light"
 
-#: data/multiplayer/factions/drakes-turmoil.cfg:4
+#: data/multiplayer/factions/drakes-default.cfg:4
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 msgid "Drakes"
 msgstr "Drakes"
 
+#: data/multiplayer/factions/knalgans-default.cfg:4
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
-#: data/multiplayer/factions/knalgans-turmoil.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Knalgan Alliance"
 
-#: data/multiplayer/factions/loyalists-turmoil.cfg:4
+#: data/multiplayer/factions/loyalists-default.cfg:4
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 msgid "Loyalists"
 msgstr "Loyalists"
 
-#: data/multiplayer/factions/northerners-turmoil.cfg:4
 #: data/multiplayer/factions/northerners-aoh.cfg:4
+#: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Northerners"
 
 #: data/multiplayer/factions/rebels-aoh.cfg:4
-#: data/multiplayer/factions/rebels-turmoil.cfg:4
+#: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Rebels"
 
-#: data/multiplayer/factions/undead-turmoil.cfg:4
+#: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
 msgid "Undead"
 msgstr "Undead"
@@ -104,6 +104,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:8
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:6
 #: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:5
 #, fuzzy
 msgid " Recommended setting of 2 gold per village."
@@ -1169,6 +1170,32 @@ msgstr ""
 "having players 146 or 136 as a side also is interesting.  Designed for "
 "150gp, has 44 villages."
 
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:4
+msgid "8p_Mokena_Prairie"
+msgstr ""
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:6
+msgid ""
+"Inspired from Morituri, this 8 player map creates an epic battle scene that "
+"requires two teams to coordinate on both offense and defense."
+msgstr ""
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:17
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:37
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:57
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:87
+#, fuzzy
+msgid "teamname^east"
+msgstr "West"
+
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:27
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:47
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:67
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:77
+#, fuzzy
+msgid "teamname^west"
+msgstr "West"
+
 #: data/multiplayer/scenarios/8p_Morituri.cfg:4
 msgid "8p - Morituri"
 msgstr "8p - Morituri"
@@ -1292,6 +1319,3 @@ msgid ""
 msgstr ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Default"
-#~ msgstr "Default"
