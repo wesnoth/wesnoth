@@ -524,7 +524,7 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 	} else if(terrain_type == ADJACENT_BACKGROUND){
 		// this should only happen with the off map tiles and now 
 		// return the void image. NOTE this is a temp hack
-		const surface surface(image::get_image("terrain/off-map/alpha.png", image::SCALED_TO_HEX));
+		const surface surface(image::get_image("terrain/off-map/alpha.png", image::UNMASKED));
 		wassert(!surface.null());
 		if (!surface.null()) {
 			res.push_back(surface);
