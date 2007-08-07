@@ -20,7 +20,8 @@ class game_display;
 namespace gui {
 
 enum TITLE_RESULT { TUTORIAL = 0, NEW_CAMPAIGN, MULTIPLAYER, LOAD_GAME, GET_ADDONS,
-                    CHANGE_LANGUAGE, EDIT_PREFERENCES, SHOW_ABOUT, QUIT_GAME, TITLE_CONTINUE, SHOW_HELP, BEG_FOR_UPLOAD};
+                    CHANGE_LANGUAGE, EDIT_PREFERENCES, SHOW_ABOUT, QUIT_GAME, 
+                    TITLE_CONTINUE, SHOW_HELP, BEG_FOR_UPLOAD};
 
 TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip);
 

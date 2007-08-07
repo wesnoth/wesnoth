@@ -252,7 +252,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 
 	LOG_DP << "drew version number\n";
 
-	//members of this array must correspond to the enumeration TITLE_RESULT
+	// Members of this array must correspond to the enumeration TITLE_RESULT
 	static const char* button_labels[] = { N_("TitleScreen button^Tutorial"),
 					       N_("TitleScreen button^Campaign"),
 					       N_("TitleScreen button^Multiplayer"),
@@ -260,8 +260,13 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 					       N_("TitleScreen button^Add-ons"),
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
-					       N_("Credits"),
-						   N_("TitleScreen button^Quit") };
+					       N_("TitleScreen button^Credits"),
+					       N_("TitleScreen button^Quit"),
+								// Only the above buttons go into the menu-frame
+					       N_("TitleScreen button^More"),
+					       N_("TitleScreen button^Help"),
+								// Next entry is no button, but shown as a mail-icon instead:
+					       N_("TitleScreen button^Help Wesnoth") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
 						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
@@ -270,10 +275,13 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 						    N_("Change the language"),
 						    N_("Configure the game's settings"),
 						    N_("View the credits"),
-						    N_("Quit the game") };
+						    N_("Quit the game"),
+								// Next 2 buttons go into frame for the tip-of-the-day:
+						    N_("Show next tip of the day"),
+						    N_("Show Battle for Wesnoth help"),
+						    N_("Upload statistics") };
 
 	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
-
 	const int menu_xbase = (game_config::title_buttons_x*screen.w())/1024;
 	const int menu_xincr = 0;
 
@@ -289,13 +297,17 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
+	size_t n_menubuttons = 0;
 	for(b = 0; b != nbuttons; ++b) {
 		buttons.push_back(button(screen.video(),sgettext(button_labels[b])));
 		buttons.back().set_help_string(sgettext(help_button_labels[b]));
 		max_width = maximum<size_t>(max_width,buttons.back().width());
-	}
 
-	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
+		n_menubuttons = b;
+		if(b == QUIT_GAME) break;	// Menu-frame ends at the quit-button
+	} 
+
+	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(n_menubuttons)+buttons.back().height()+padding*2};
 
 	gui::dialog_frame main_frame(screen.video(), "", gui::dialog_frame::titlescreen_style, false);
 	main_frame.layout(main_dialog_area);
@@ -305,10 +317,17 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 	for(b = 0; b != nbuttons; ++b) {
 		buttons[b].set_width(max_width);
 		buttons[b].set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
+		if(b == QUIT_GAME) break;
 	}
 
-	gui::button next_tip_button(screen.video(),_("More"),button::TYPE_PRESS,"lite_small");
-	gui::button help_tip_button(screen.video(),_("Help"),button::TYPE_PRESS,"lite_small");
+	b = TITLE_CONTINUE;
+	gui::button next_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
+	next_tip_button.set_help_string( sgettext(help_button_labels[b] )); 
+
+	b = SHOW_HELP;
+	gui::button help_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
+	help_tip_button.set_help_string( sgettext(help_button_labels[b] )); 
+
 	// FIXME: Translatable string is here because we WILL put text in before 1.2!
 	gui::button beg_button(screen.video(),("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 	beg_button.set_help_string(_("Help Wesnoth by sending us information"));
