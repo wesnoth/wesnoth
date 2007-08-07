@@ -384,7 +384,13 @@ void game_display::draw(bool update,bool force)
 
 			// draw the attack direction indicator
 			if(*it == attack_indicator_to_) {
-				tile_stack_append(image::get_image(attack_indicator_image_, image::UNMASKED));
+				const std::string dir = gamemap::location::write_direction(
+					attack_indicator_to_.get_relative_dir(attack_indicator_from_));
+				tile_stack_append(image::get_image("misc/attack-from-" + dir + ".png", image::UNMASKED));
+			} else if (*it == attack_indicator_from_) {
+				const std::string dir = gamemap::location::write_direction(
+					attack_indicator_from_.get_relative_dir(attack_indicator_to_));
+				tile_stack_append(image::get_image("misc/attack-to-" + dir + ".png", image::UNMASKED));
 			}
 
 			// apply shroud anf fog
@@ -1104,8 +1110,6 @@ void game_display::set_attack_indicator(const gamemap::location& from, const gam
 
 		attack_indicator_from_ = from;
 		attack_indicator_to_ = to;
-		std::string dir = gamemap::location::write_direction(to.get_relative_dir(from));
-		attack_indicator_image_ = "misc/attack-from-" + dir + ".png";
 
 		invalidate(attack_indicator_from_);
 		invalidate(attack_indicator_to_);

@@ -193,10 +193,9 @@ private:
 	unit *temp_unit_;
 	gamemap::location temp_unit_loc_;
 
-	//location and direction of the attack direction indicator
+	//locations of the attack direction indicator's parts
 	gamemap::location attack_indicator_to_;
 	gamemap::location attack_indicator_from_;
-	std::string attack_indicator_image_;
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy
