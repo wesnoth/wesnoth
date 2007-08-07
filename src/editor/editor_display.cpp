@@ -77,8 +77,8 @@ void editor_display::draw(bool update,bool force)
 			tile_stack_clear();
 
 			const std::string nodarken = "morning";
-			tile_stack_terrains(*it,nodarken,image_type,ADJACENT_BACKGROUND);
-			tile_stack_terrains(*it,nodarken,image_type,ADJACENT_FOREGROUND);
+			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_BACKGROUND));
+			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_FOREGROUND));
 
 			// draw the grid, if that's been enabled 
 			if(grid_) {

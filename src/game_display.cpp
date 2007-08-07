@@ -313,7 +313,7 @@ void game_display::draw(bool update,bool force)
 
 			if(!is_shrouded /*|| !on_map*/) {
 				// unshrouded terrain (the normal case)
-				tile_stack_terrains(*it,tod.id, image_type, ADJACENT_BACKGROUND);
+				tile_stack_append(get_terrain_images(*it,tod.id, image_type, ADJACENT_BACKGROUND));
 
 				// village-control flags.
 				tile_stack_append(get_flag(*it));
@@ -328,7 +328,7 @@ void game_display::draw(bool update,bool force)
 			}
 
 			if(!is_shrouded /*|| !on_map*/) {
-				tile_stack_terrains(*it,tod.id,image_type,ADJACENT_FOREGROUND);
+				tile_stack_append(get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND));
 			}
 
 			//draw the time-of-day mask on top of the
@@ -403,7 +403,7 @@ void game_display::draw(bool update,bool force)
 			}
 
 			if(!is_shrouded) {
-				tile_stack_terrains(*it,tod.id,image_type,ADJACENT_FOGSHROUD);
+				tile_stack_append(get_terrain_images(*it,tod.id,image_type,ADJACENT_FOGSHROUD));
 			}
 
 			tile_stack_render(xpos, ypos);

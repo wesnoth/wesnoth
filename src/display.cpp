@@ -540,18 +540,13 @@ void display::tile_stack_append(const surface surf)
 		tile_stack_.push_back(surf);
 };
 
-void display::tile_stack_terrains(const gamemap::location& loc, 
-				       const std::string timeid,
-				       image::TYPE image_type, 
-				       ADJACENT_TERRAIN_TYPE type)
-// find all terrain images matching our specs, drop them on the terrain stack 
+void display::tile_stack_append(const std::vector<surface>& surfaces)
 {
-	const std::vector<surface>& images = get_terrain_images(loc,timeid,image_type,type);
-
 	std::vector<surface>::const_iterator itor;
-	for(itor = images.begin(); itor != images.end(); ++itor)
+	for(itor = surfaces.begin(); itor != surfaces.end(); ++itor) {
 		tile_stack_append(*itor);
-}
+	}
+};
 
 void display::tile_stack_render(int x, int y)
 // Render a stack of tile surfaces at the specified location
