@@ -383,11 +383,11 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(mouseover_hex_overlay_);
 
 			// draw the attack direction indicator
-			if(*it == attack_indicator_to_) {
+			if(attack_indicator_to_.valid() && *it == attack_indicator_to_) {
 				const std::string dir = gamemap::location::write_direction(
 					attack_indicator_to_.get_relative_dir(attack_indicator_from_));
 				tile_stack_append(image::get_image("misc/attack-from-" + dir + ".png", image::UNMASKED));
-			} else if (*it == attack_indicator_from_) {
+			} else if (attack_indicator_from_.valid() && *it == attack_indicator_from_) {
 				const std::string dir = gamemap::location::write_direction(
 					attack_indicator_from_.get_relative_dir(attack_indicator_to_));
 				tile_stack_append(image::get_image("misc/attack-to-" + dir + ".png", image::UNMASKED));
