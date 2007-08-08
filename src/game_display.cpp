@@ -403,7 +403,7 @@ void game_display::draw(bool update,bool force)
 			}
 
 			if(!is_shrouded) {
-				tile_stack_append(get_terrain_images(*it,tod.id,image_type,ADJACENT_FOGSHROUD));
+				tile_stack_append(get_terrain_images(*it, tod.id, image::SCALED_TO_HEX, ADJACENT_FOGSHROUD));
 			}
 
 			tile_stack_render(xpos, ypos);
