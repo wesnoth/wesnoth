@@ -350,7 +350,7 @@ void game_display::draw(bool update,bool force)
 			// draw reach_map information
 			if (!reach_map_.empty() && !is_shrouded) {
 				reach_map::iterator reach = reach_map_.find(*it);
-				if (reach == reach_map_.end()) {
+				if (reach == reach_map_.end() && *it != attack_indicator_to_) {
 					tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED));
 				} else if (reach->second > 1) {
 					//FIXME: this is a temporary hack to render/flush
