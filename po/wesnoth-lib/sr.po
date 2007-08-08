@@ -9,20 +9,19 @@ msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-08 01:37+0200\n"
-"PO-Revision-Date: 2007-02-03 03:31+0100\n"
+"PO-Revision-Date: 2007-30-07 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
 "10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/core/terrain.cfg:12
-#, fuzzy
 msgid "None"
-msgstr "Не"
+msgstr "никакав"
 
 #: data/core/terrain.cfg:19
 msgid "Shroud"
@@ -57,11 +56,11 @@ msgstr "замак"
 
 #: data/core/terrain.cfg:168
 msgid "Elven Castle"
-msgstr ""
+msgstr "вилин-замак"
 
 #: data/core/terrain.cfg:179
 msgid "Dwarven Castle"
-msgstr "патуљачки замак"
+msgstr "патуљ-замак"
 
 #: data/core/terrain.cfg:190
 msgid "Ruin"
@@ -77,7 +76,7 @@ msgstr "мочварна рушевина"
 
 #: data/core/terrain.cfg:238
 msgid "Encampment keep"
-msgstr ""
+msgstr "кула табора"
 
 #: data/core/terrain.cfg:250
 msgid "Keep"
@@ -85,27 +84,27 @@ msgstr "кула"
 
 #: data/core/terrain.cfg:262
 msgid "Elven Keep"
-msgstr ""
+msgstr "вилин-кула"
 
 #: data/core/terrain.cfg:274
 msgid "Dwarven keep"
-msgstr ""
+msgstr "патуљ-кула"
 
 #: data/core/terrain.cfg:286
 msgid "Ruined keep"
-msgstr ""
+msgstr "урушена кула"
 
 #: data/core/terrain.cfg:298
 msgid "Sunken keep"
-msgstr ""
+msgstr "потопљена кула"
 
 #: data/core/terrain.cfg:310
 msgid "Swamp keep"
-msgstr ""
+msgstr "мочварна кула"
 
 #: data/core/terrain.cfg:336
 msgid "Crater"
-msgstr ""
+msgstr "гротло"
 
 #: data/core/terrain.cfg:346
 msgid "Desert"
@@ -113,7 +112,7 @@ msgstr "пустиња"
 
 #: data/core/terrain.cfg:356
 msgid "Rubble"
-msgstr ""
+msgstr "запрека"
 
 #: data/core/terrain.cfg:366
 msgid "Sand"
@@ -173,7 +172,7 @@ msgstr "лава"
 
 #: data/core/terrain.cfg:534
 msgid "Desert road"
-msgstr ""
+msgstr "пустињски друм"
 
 #: data/core/terrain.cfg:543
 msgid "Dirt"
@@ -185,7 +184,7 @@ msgstr "друм"
 
 #: data/core/terrain.cfg:561
 msgid "Farmland"
-msgstr ""
+msgstr "ораница"
 
 #: data/core/terrain.cfg:574
 msgid "Swamp"
@@ -209,7 +208,7 @@ msgstr "стеновита пећина"
 
 #: data/core/terrain.cfg:644
 msgid "Rockbound Cave Lit"
-msgstr ""
+msgstr "осветљена стеновита пећина"
 
 #: data/core/terrain.cfg:661 data/core/terrain.cfg:672
 #: data/core/terrain.cfg:685 data/core/terrain.cfg:696
@@ -240,7 +239,7 @@ msgstr "непролазне планине"
 
 #: data/core/terrain.cfg:885
 msgid "Impassable Desert Mountains"
-msgstr ""
+msgstr "непролазне пустињске планине"
 
 #: data/core/terrain.cfg:894
 msgid "Cave Wall"
@@ -352,7 +351,7 @@ msgstr "Преврни (може променити димензије мапе)
 
 #: src/filechooser.cpp:51
 msgid "File: "
-msgstr ""
+msgstr "Датотека: "
 
 #: src/filechooser.cpp:52
 msgid "Delete File"
@@ -360,7 +359,7 @@ msgstr "Обриши датотеку"
 
 #: src/filechooser.cpp:54 src/filechooser.cpp:168
 msgid "New Folder"
-msgstr ""
+msgstr "Нова фасцикла"
 
 #: src/filechooser.cpp:156
 msgid "Deletion of the file failed."
@@ -368,12 +367,11 @@ msgstr "Брисање датотеке није успело."
 
 #: src/filechooser.cpp:169
 msgid "Name: "
-msgstr ""
+msgstr "Име: "
 
 #: src/filechooser.cpp:174
-#, fuzzy
 msgid "Creation of the directory failed."
-msgstr "Брисање датотеке није успело."
+msgstr "Стварање директоријума није успело."
 
 #: src/game_preferences.cpp:202
 msgid "player"
@@ -388,59 +386,52 @@ msgid "Skip AI Moves"
 msgstr "Прескочи потезе ВИ"
 
 #: src/game_preferences_display.cpp:138
-#, fuzzy
 msgid "Save Replays"
-msgstr "Сачувај пречице"
+msgstr "Чувај снимке"
 
 #: src/game_preferences_display.cpp:139
 msgid "Delete Autosaves"
-msgstr ""
+msgstr "Бриши самочувања"
 
 #: src/game_preferences_display.cpp:140
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Прикажи уласке у хол"
+msgstr "Не приказуј уласке у хол"
 
 #: src/game_preferences_display.cpp:141
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Прикажи уласке у хол"
+msgstr "Прикажи уласке у хол само пријатеља"
 
 #: src/game_preferences_display.cpp:142
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Прикажи уласке у хол"
+msgstr "Прикажи све уласке у хол"
 
 #: src/game_preferences_display.cpp:143
-#, fuzzy
 msgid "Sort Lobby List"
-msgstr "Прикажи уласке у хол"
+msgstr "Прикажи списак хола"
 
 #: src/game_preferences_display.cpp:144
-#, fuzzy
 msgid "Iconize Lobby List"
-msgstr "Прикажи уласке у хол"
+msgstr "Списак хола у икону"
 
 #: src/game_preferences_display.cpp:145
 msgid "Friends List"
-msgstr ""
+msgstr "Списак пријатеља"
 
 #: src/game_preferences_display.cpp:146
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Вишеиграчке опције"
 
 #: src/game_preferences_display.cpp:147
 msgid "Add As Friend"
-msgstr ""
+msgstr "Додај као пријатеља"
 
 #: src/game_preferences_display.cpp:148
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Додај као игнорисаног"
 
 #: src/game_preferences_display.cpp:149
-#, fuzzy
 msgid "Remove"
-msgstr "Понови"
+msgstr "Уклони"
 
 #: src/game_preferences_display.cpp:150
 msgid "Show Floating Labels"
@@ -500,7 +491,7 @@ msgstr "Нормални режим"
 
 #: src/game_preferences_display.cpp:167
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Звуци корисничког сучеља"
 
 #: src/game_preferences_display.cpp:170
 msgid "Custom"
@@ -519,14 +510,12 @@ msgid "SFX Volume:"
 msgstr "Јачина звукова:"
 
 #: src/game_preferences_display.cpp:174
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "Јачина звукова:"
+msgstr "Јачина УИ звука:"
 
 #: src/game_preferences_display.cpp:175
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Јачина звукова:"
+msgstr "Јачина звона:"
 
 #: src/game_preferences_display.cpp:176
 msgid "Gamma:"
@@ -553,17 +542,16 @@ msgid "Change the music volume"
 msgstr "Промени јачину музике"
 
 #: src/game_preferences_display.cpp:218
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Промени јачину музике"
+msgstr "Промени јачину звона"
 
 #: src/game_preferences_display.cpp:221
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Укључи/искључи звуке менија и дугмади"
 
 #: src/game_preferences_display.cpp:225
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Промени јачину звука при клику на дугме, итд."
 
 #: src/game_preferences_display.cpp:227
 msgid "Change the sample rate"
@@ -606,9 +594,8 @@ msgid "Make units move and fight faster"
 msgstr "Нека се јединице брже крећу и боре"
 
 #: src/game_preferences_display.cpp:293
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Нека се јединице брже крећу и боре"
+msgstr "Брзина кретања и борбе јединица"
 
 #: src/game_preferences_display.cpp:296
 msgid "Do not animate AI units moving"
@@ -616,11 +603,11 @@ msgstr "Не анимирати ВИ јединице приликом крет�
 
 #: src/game_preferences_display.cpp:299
 msgid "Save replays at scenario end."
-msgstr ""
+msgstr "Чувај снимке на крају сценарија."
 
 #: src/game_preferences_display.cpp:302
 msgid "Automatically delete autosaves at the end of a scenario"
-msgstr ""
+msgstr "Аутоматски бриши самочувања на крају сценарија."
 
 #: src/game_preferences_display.cpp:304
 msgid "Overlay a grid onto the map"
@@ -628,51 +615,47 @@ msgstr "Преклопи мрежу преко мапе"
 
 #: src/game_preferences_display.cpp:307
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "Поређај играче на списку у холу по групама"
 
 #: src/game_preferences_display.cpp:310
-#, fuzzy
 msgid "Show icons in front of the player names in the lobby."
-msgstr "Прикажи поруке о играчима који пристижу у вишеиграчки хол"
+msgstr "Прикажи иконе испред имена играча у холу."
 
 #: src/game_preferences_display.cpp:313
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Прикажи поруке о играчима који пристижу у вишеиграчки хол"
+msgstr "Не приказуј поруке о играчима који пристигну у вишеиграчки хол"
 
 #: src/game_preferences_display.cpp:315
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Прикажи поруке о играчима који пристижу у вишеиграчки хол"
+msgstr "Прикажи поруке о пријатељима који пристигну у вишеиграчки хол"
 
 #: src/game_preferences_display.cpp:317
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Прикажи поруке о играчима који пристижу у вишеиграчки хол"
+msgstr "Прикажи поруке о свим играчима који пристигну у вишеиграчки хол"
 
 #: src/game_preferences_display.cpp:319
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Прегледајте и уредите списак пријатеља и игнорисаних"
 
 #: src/game_preferences_display.cpp:320
 msgid "Back to the multiplayer options"
-msgstr ""
+msgstr "Назад на вишеиграчке опције"
 
 #: src/game_preferences_display.cpp:321
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Додај ово корисничко име на списак пријатеља"
 
 #: src/game_preferences_display.cpp:322
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Додај ово корисничко име на списак игнорисаних"
 
 #: src/game_preferences_display.cpp:323
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Уклони ово корисничко име са списка"
 
 #: src/game_preferences_display.cpp:326
 msgid "Insert a username"
-msgstr ""
+msgstr "Уметни корисничко име"
 
 #: src/game_preferences_display.cpp:329
 msgid "Show text above a unit when it is hit to display damage inflicted"
@@ -719,9 +702,8 @@ msgid "View and configure keyboard shortcuts"
 msgstr "Прикажи и подеси пречице са тастатуре"
 
 #: src/game_preferences_display.cpp:622
-#, fuzzy
 msgid "Speed: "
-msgstr "Брзина клизања:"
+msgstr "Брзина: "
 
 #: src/game_preferences_display.cpp:784
 msgid "Chat Lines: "
@@ -786,7 +768,7 @@ msgstr "Крај потеза јединице"
 
 #: src/hotkeys.cpp:54
 msgid "Leader"
-msgstr "Вођа"
+msgstr "Вођ"
 
 #: src/hotkeys.cpp:55
 msgid "Undo"
@@ -829,7 +811,6 @@ msgid "Save Game"
 msgstr "Сачувај игру"
 
 #: src/hotkeys.cpp:66
-#, fuzzy
 msgid "Save The Map"
 msgstr "Сачувај мапу"
 
@@ -898,9 +879,8 @@ msgid "Quit Game"
 msgstr "Напусти игру"
 
 #: src/hotkeys.cpp:84
-#, fuzzy
 msgid "Set Team Label"
-msgstr "Етикетирај"
+msgstr "Етикетирај тим"
 
 #: src/hotkeys.cpp:85
 msgid "Set Label"
@@ -939,17 +919,16 @@ msgid "Next Side"
 msgstr "Следећа страна"
 
 #: src/hotkeys.cpp:95
-#, fuzzy
 msgid "Full map"
-msgstr "Преврни мапу"
+msgstr "Цела мапа"
 
 #: src/hotkeys.cpp:97
 msgid "Each team"
-msgstr ""
+msgstr "Сваки тим"
 
 #: src/hotkeys.cpp:99
 msgid "Team 1"
-msgstr ""
+msgstr "Тим 1"
 
 #: src/hotkeys.cpp:100
 msgid "Skip animation"
@@ -1024,13 +1003,12 @@ msgid "Refresh Image Cache"
 msgstr "Освежи кеш слика"
 
 #: src/hotkeys.cpp:120
-#, fuzzy
 msgid "Delay transition updates"
-msgstr "Застој ажурирања покрова"
+msgstr "Застој ажурирања прелаза"
 
 #: src/hotkeys.cpp:121
 msgid "Update transitions"
-msgstr ""
+msgstr "Ажурирај прелазе"
 
 #: src/hotkeys.cpp:123
 msgid "Delay Shroud Updates"
@@ -1114,9 +1092,8 @@ msgid "Villages:"
 msgstr "Села:"
 
 #: src/mapgen_dialog.cpp:115
-#, fuzzy
 msgid "Castle Size:"
-msgstr "Највећа величина брда:"
+msgstr "Величина замка:"
 
 #: src/mapgen_dialog.cpp:116
 msgid "Landform:"
@@ -1194,4 +1171,4 @@ msgstr "Грешка"
 
 #: src/terrain_translation.cpp:745
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-msgstr ""
+msgstr "Нађен неисправан терен, вероватно у формату 1.2, терен = "
