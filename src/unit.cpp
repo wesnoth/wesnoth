@@ -1516,7 +1516,6 @@ const surface unit::still_image(bool scaled) const
 void unit::set_standing(const game_display &disp,const gamemap::location& loc, bool with_bars)
 {
 	state_ = STATE_STANDING;
-	offset_=0;
 	start_animation(disp,loc,stand_animation(disp,loc),with_bars);
 }
 void unit::set_defending(const game_display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
@@ -1635,6 +1634,7 @@ void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 const unit_animation* unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool is_attack_anim)
 {
 	draw_bars_ =  with_bars;
+	offset_=0;
 	if(anim_) delete anim_;
 	if(animation && !is_attack_anim) {
 		anim_ = new unit_animation(*animation);
