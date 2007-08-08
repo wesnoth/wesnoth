@@ -122,8 +122,12 @@ public:
 	void remove_temporary_unit();
 
 	// set the attack direction indicator
-	void set_attack_indicator(const gamemap::location& from, const gamemap::location& to);
+	void set_attack_indicator(const gamemap::location& src, const gamemap::location& dst);
 	void clear_attack_indicator();
+	//function to get attack direction suffix
+	const std::string attack_indicator_direction() const
+	{ return gamemap::location::write_direction(
+		attack_indicator_src_.get_relative_dir(attack_indicator_dst_)); }
 
 	//functions to add and remove overlays from locations. An overlay is an
 	//image that is displayed on top of the tile. One tile may have multiple
@@ -194,8 +198,8 @@ private:
 	gamemap::location temp_unit_loc_;
 
 	//locations of the attack direction indicator's parts
-	gamemap::location attack_indicator_to_;
-	gamemap::location attack_indicator_from_;
+	gamemap::location attack_indicator_src_;
+	gamemap::location attack_indicator_dst_;
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy

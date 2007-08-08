@@ -292,7 +292,7 @@ void game_display::draw(bool update,bool force)
 
 			//we higlight hex under the mouse, origin of
 			//attack or under a selected unit
-			if (on_map && (*it == mouseoverHex_ || *it == attack_indicator_from_)) {
+			if (on_map && (*it == mouseoverHex_ || *it == attack_indicator_src_)) {
 				image_type = image::BRIGHTENED;
 			} else if (on_map && *it == selectedHex_) {
 				unit_map::iterator un = find_visible_unit(units_, *it, map_,
@@ -348,9 +348,11 @@ void game_display::draw(bool update,bool force)
 			}
 
 			// draw reach_map information
+			// we remove the reachability mask of the unit
+			// that we want to attack
 			if (!reach_map_.empty() && !is_shrouded) {
 				reach_map::iterator reach = reach_map_.find(*it);
-				if (reach == reach_map_.end() && *it != attack_indicator_to_) {
+				if (reach == reach_map_.end() && *it != attack_indicator_dst_) {
 					tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED));
 				} else if (reach->second > 1) {
 					//FIXME: this is a temporary hack to render/flush
@@ -383,14 +385,10 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(mouseover_hex_overlay_);
 
 			// draw the attack direction indicator
-			if(attack_indicator_to_.valid() && *it == attack_indicator_to_) {
-				const std::string dir = gamemap::location::write_direction(
-					attack_indicator_to_.get_relative_dir(attack_indicator_from_));
-				tile_stack_append(image::get_image("misc/attack-from-" + dir + ".png", image::UNMASKED));
-			} else if (attack_indicator_from_.valid() && *it == attack_indicator_from_) {
-				const std::string dir = gamemap::location::write_direction(
-					attack_indicator_from_.get_relative_dir(attack_indicator_to_));
-				tile_stack_append(image::get_image("misc/attack-to-" + dir + ".png", image::UNMASKED));
+			if(on_map && *it == attack_indicator_src_) {
+				tile_stack_append(image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED));
+			} else if (on_map && *it == attack_indicator_dst_) {
+				tile_stack_append(image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED));
 			}
 
 			// apply shroud anf fog
@@ -1102,17 +1100,17 @@ void game_display::remove_temporary_unit()
 	temp_unit_ = NULL;
 }
 
-void game_display::set_attack_indicator(const gamemap::location& from, const gamemap::location& to)
+void game_display::set_attack_indicator(const gamemap::location& src, const gamemap::location& dst)
 {
-	if (attack_indicator_from_ != from || attack_indicator_to_ != to) {
-		invalidate(attack_indicator_from_);
-		invalidate(attack_indicator_to_);
+	if (attack_indicator_src_ != src || attack_indicator_dst_ != dst) {
+		invalidate(attack_indicator_src_);
+		invalidate(attack_indicator_dst_);
 
-		attack_indicator_from_ = from;
-		attack_indicator_to_ = to;
+		attack_indicator_src_ = src;
+		attack_indicator_dst_ = dst;
 
-		invalidate(attack_indicator_from_);
-		invalidate(attack_indicator_to_);
+		invalidate(attack_indicator_src_);
+		invalidate(attack_indicator_dst_);
 	}
 }
 
