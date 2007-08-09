@@ -146,6 +146,10 @@ void replay_controller::reset_replay(){
 	}
 	fire_prestart(true);
 	fire_start(!loading_game_);
+
+	gui_->new_turn();
+	gui_->invalidate_game_status();
+	events::raise_draw_event();
 	(*gui_).invalidate_all();
 	(*gui_).draw();
 	b = gui_->find_button("button-resetreplay");
@@ -245,6 +249,10 @@ void replay_controller::play_turn(){
 	}
 
 	LOG_NG << "turn: " << current_turn_ << "\n";
+
+	gui_->new_turn();
+	gui_->invalidate_game_status();
+	events::raise_draw_event();
 
 	while ( ((size_t)player_number_ <= teams_.size()) && (!recorder.at_end()) ){
 		play_side(player_number_ - 1, false);
