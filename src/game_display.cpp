@@ -702,21 +702,6 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un = units_.find(route_.steps.front());
 		if(un != units_.end()) {
-			//display the number of turn to reach only if > 0
-			int turns_to_reach = turn_waypoint_iter->second;
-			if(turns_to_reach > 0 && turns_to_reach < 10) {
-				std::stringstream turns_text;
-				turns_text << "(" << turns_to_reach << ")";
-				const SDL_Color turns_color = font::NORMAL_COLOUR;
-#ifndef USE_TINY_GUI
-				draw_text_in_hex(loc, turns_text.str(), 16, turns_color, 0.5, 0.8);
-#else
-				draw_text_in_hex(loc, turns_text.str(), 16, turns_color);
-				return;  // all done for tiny-gui
-#endif
-			}
-
-#ifndef USE_TINY_GUI
 			//display the def% of this terrain
 			const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
 			std::stringstream def_text;
@@ -727,8 +712,18 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
 
 			draw_text_in_hex(loc, def_text.str(), 18, color);
+
+			//display the number of turn to reach only if > 0
+			int turns_to_reach = turn_waypoint_iter->second;
+			if(turns_to_reach > 0 && turns_to_reach < 10) {
+				std::stringstream turns_text;
+				turns_text << "(" << turns_to_reach << ")";
+				const SDL_Color turns_color = font::NORMAL_COLOUR;
+				draw_text_in_hex(loc, turns_text.str(), 16, turns_color, 0.5, 0.8);
+			}
+
+			// the hex is full now, so skip the "show enemy moves"
 			return;
-#endif
 		}
 	}
 
