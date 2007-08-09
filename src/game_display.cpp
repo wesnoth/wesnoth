@@ -350,17 +350,9 @@ void game_display::draw(bool update,bool force)
 			// draw reach_map information
 			// we remove the reachability mask of the unit
 			// that we want to attack
-			if (!reach_map_.empty() && !is_shrouded) {
-				reach_map::iterator reach = reach_map_.find(*it);
-				if (reach == reach_map_.end() && *it != attack_indicator_dst_) {
-					tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED));
-				} else if (reach->second > 1) {
-					//FIXME: this is a temporary hack to render/flush
-					//the stack, so we can draw text
-					tile_stack_render(xpos, ypos);
-					const std::string num = lexical_cast<std::string>(reach->second);
-					draw_text_in_hex(*it, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
-				}
+			if (!is_shrouded && !reach_map_.empty()
+					&& reach_map_.find(*it) == reach_map_.end() && *it != attack_indicator_dst_) {
+				tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED));
 			}
 
 			// draw cross images for debug highlights
@@ -702,43 +694,50 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 
 void game_display::draw_movement_info(const gamemap::location& loc)
 {
-
-	//check if there is a path and if we are not at its start
-	//because we don't want to display movement info on the unit's
-	//hex (useless and unreadable)
-	if (route_.steps.empty() || route_.steps.front() == loc) return;
-
 	//search if there is a turn waypoint here
 	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
-	if(turn_waypoint_iter == route_.turn_waypoints.end()) return;
 
-	//display the def% of this terrain
+	//don't use empty route or the first step (the unit will be there)
+	if(turn_waypoint_iter != route_.turn_waypoints.end()
+				&& !route_.steps.empty() && route_.steps.front() != loc) {
+		const unit_map::const_iterator un = units_.find(route_.steps.front());
+		if(un != units_.end()) {
+			//display the number of turn to reach only if > 0
+			int turns_to_reach = turn_waypoint_iter->second;
+			if(turns_to_reach > 0 && turns_to_reach < 10) {
+				std::stringstream turns_text;
+				turns_text << "(" << turns_to_reach << ")";
+				const SDL_Color turns_color = font::NORMAL_COLOUR;
 #ifndef USE_TINY_GUI
-	const unit_map::const_iterator un = units_.find(route_.steps.front());
-	if(un != units_.end()) {
-		const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
-		std::stringstream def_text;
-		def_text << def << "%";
-
-		// with 11 colors, the last one will be used only for def=100
-		int val = (game_config::defense_color_scale.size()-1) * def/100;
-		SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
-
-		draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color, 0.5, 0.5);
-	}
-#endif
-
-	//display the number of turn to reach if > 0
-	int turns_to_reach = turn_waypoint_iter->second;
-	if(turns_to_reach > 0 && turns_to_reach < 10) {
-		std::stringstream turns_text;
-		turns_text << "(" << turns_to_reach << ")";
-		const SDL_Color turns_color = font::NORMAL_COLOUR;
-#ifndef USE_TINY_GUI
-		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
+				draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
 #else
-		draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.5);
+				draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color);
+				return;  // all done for tiny-gui
 #endif
+			}
+
+#ifndef USE_TINY_GUI
+			//display the def% of this terrain
+			const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
+			std::stringstream def_text;
+			def_text << def << "%";
+
+			// with 11 colors, the last one will be used only for def=100
+			int val = (game_config::defense_color_scale.size()-1) * def/100;
+			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
+
+			draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color);
+			return;
+#endif
+		}
+	}
+
+	if (!reach_map_.empty()) {
+		reach_map::iterator reach = reach_map_.find(loc);
+		if (reach != reach_map_.end() && reach->second > 1) {
+			const std::string num = lexical_cast<std::string>(reach->second);
+			draw_text_in_hex(loc, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
+		}
 	}
 }
 
