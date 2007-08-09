@@ -316,7 +316,7 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 			get_locations(map, intersect_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			std::set<gamemap::location>::iterator intersect_itor = locs.begin();
 			while(intersect_itor != locs.end()) {
-				if(intersect_hexes.find(*intersect_itor) == locs.end()) {
+				if(intersect_hexes.find(*intersect_itor) == intersect_hexes.end()) {
 					locs.erase(*intersect_itor++);
 				} else {
 					++intersect_itor;
