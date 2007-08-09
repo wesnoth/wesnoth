@@ -776,16 +776,13 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 		size_t font_size, SDL_Color color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
-	
+
+	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor()
 #ifdef USE_TINY_GUI
-	// FIXME: This 16/9 must be defined elsewhere,
-	// It's the ratio of the font size bewteen the two gui.
-	// It makes the text fill the hex like it does in the normal gui.
-	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor() * 16/9);
-#else
-	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
+		/ 2  //the hex is 2 times smaller
 #endif
-	
+	);
+
 	surface text_surf = font::get_rendered_text(text, font_sz, color);
 	surface back_surf = font::get_rendered_text(text, font_sz, font::DARK_COLOUR);
 	const int x = get_location_x(loc) - text_surf->w/2

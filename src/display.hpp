@@ -208,6 +208,7 @@ public:
 
 	//function to draw text on a hex. (0.5, 0.5) is the center
 	//The font size is adjusted to the zoom factor
+	//and divided by 2 for tiny-gui
 	void draw_text_in_hex(const gamemap::location& loc, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
 	

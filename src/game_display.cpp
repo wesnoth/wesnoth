@@ -709,9 +709,9 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 				turns_text << "(" << turns_to_reach << ")";
 				const SDL_Color turns_color = font::NORMAL_COLOUR;
 #ifndef USE_TINY_GUI
-				draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color, 0.5, 0.8);
+				draw_text_in_hex(loc, turns_text.str(), 16, turns_color, 0.5, 0.8);
 #else
-				draw_text_in_hex(loc, turns_text.str(), font::SIZE_PLUS, turns_color);
+				draw_text_in_hex(loc, turns_text.str(), 16, turns_color);
 				return;  // all done for tiny-gui
 #endif
 			}
@@ -726,7 +726,7 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 			int val = (game_config::defense_color_scale.size()-1) * def/100;
 			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
 
-			draw_text_in_hex(loc, def_text.str(), font::SIZE_LARGE, color);
+			draw_text_in_hex(loc, def_text.str(), 18, color);
 			return;
 #endif
 		}
@@ -736,7 +736,7 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach != reach_map_.end() && reach->second > 1) {
 			const std::string num = lexical_cast<std::string>(reach->second);
-			draw_text_in_hex(loc, num, font::SIZE_PLUS, font::YELLOW_COLOUR);
+			draw_text_in_hex(loc, num, 16, font::YELLOW_COLOUR);
 		}
 	}
 }
