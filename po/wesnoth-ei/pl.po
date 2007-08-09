@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-03 15:52+0200\n"
-"PO-Revision-Date: 2007-06-17 16:29+0100\n"
+"PO-Revision-Date: 2007-08-02 16:11+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,8 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
+"X-Poedit-Basepath: /usr/local/share/wesnoth\n"
+"X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:9
 msgid "The Eastern Invasion"
@@ -178,7 +180,6 @@ msgid "What?! Men, to arms! And where did Dacyn go?!"
 msgstr "Co?! Ludzie, do broni! I gdzie zniknął Dacyn?!"
 
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:196
-#, fuzzy
 msgid ""
 "There are too many undead, I cannot defeat them... but my orders are to hold "
 "this outpost at all costs. It may be we will die this day."
@@ -215,11 +216,11 @@ msgid "But what about the outpost?"
 msgstr "A co z posterunkiem?"
 
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:239
-#, fuzzy
 msgid ""
 "It is pointless to try to defend it. Now, come on, we do not have much time "
 "to spare!"
-msgstr "Nie ma sensu próbować go obronić. Ruszaj, nie mamy czasu do stracenia!"
+msgstr ""
+"Nie ma sensu próbować go obronić. Ruszajmy, nie mamy czasu do stracenia!"
 
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:244
 msgid "Move Gweddry to the trapdoor"
@@ -316,15 +317,11 @@ msgid "Who goes there?"
 msgstr "Kto idzie?"
 
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:161
-#, fuzzy
 msgid ""
 "We are soldiers of the king of Wesnoth. Will you help us escape these trolls?"
-msgstr ""
-"Jesteśmy podróżnymi lojalnymi królowi Wesnoth. Pomożecie nam uciec tym "
-"trollom?"
+msgstr "Jesteśmy żołnierzami Wesnoth. Pomożecie nam uciec tym trollom?"
 
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:165
-#, fuzzy
 msgid ""
 "Aye, we'll help ye, for we have nae love for the trolls. Anyone attacked by "
 "them deserves some help, I think."
@@ -349,7 +346,6 @@ msgstr ""
 "nieumarli i niechybnie znajdą te jaskinie."
 
 #: data/campaigns/Eastern_Invasion/scenarios/02.The_Escape_Tunnel.cfg:187
-#, fuzzy
 msgid ""
 "My clan ha' lived in these caves for centuries. We'll no' be scattered now "
 "by a few undead."
@@ -1430,10 +1426,8 @@ msgstr ""
 "mielibyście pomóc nam teraz?"
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:129
-#, fuzzy
 msgid "Impossible! I canna believe any of my kin would ha' helped a human!"
-msgstr ""
-"Niemożliwe! Nie wierzę, że którykolwiek z moich towarzyszy pomógł ludziom."
+msgstr "Nie może być! Nie wierzę, że ktoś z moich pobratymców pomógł ludziom."
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:133
 msgid "Indeed. Why should any of us help those not of our people?"
@@ -1461,7 +1455,6 @@ msgstr ""
 "Te orki zginą. Ale ty również, człowieczku. Wkroczyłeś na ziemie elfów."
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:153
-#, fuzzy
 msgid "Oh, Elvish land is it now? Die, ye elf-dog! And you too, human!"
 msgstr ""
 "Tak? A od kiedy to są ziemie elfów? Giń, elficki psie! I ty też, człowieku!"
@@ -1499,24 +1492,23 @@ msgstr "Wygląda na to, że ci ludzie są potężniejsi, niż sądziłem. Uch."
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:232
 msgid "Cursed dwarves! Perhaps we should have allied with the humans..."
-msgstr ""
+msgstr "Przeklęte krasnoludy! Może trzeba było sprzymierzyć się z ludźmi..."
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:245
 msgid "Foul orcs! Perhaps we should have allied with the humans..."
-msgstr ""
+msgstr "Podłe orki! Może trzeba było sprzymierzyć się z ludźmi..."
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:258
-#, fuzzy
 msgid "It seems yon humans are mightier than I kenned..."
-msgstr "Wygląda na to, że ci ludzie są potężniejsi, niż sądziłem. Uch."
+msgstr "Chyba ci ludzie są potężniejsi, niż sądziłem..."
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:271
 msgid "Foul orcs! Perhaps we should ha' allied wi' the humans..."
-msgstr ""
+msgstr "Podłe orki! Może trzeba nam było sprzymierzyć się z ludźmi..."
 
 #: data/campaigns/Eastern_Invasion/scenarios/10.Xenophobia.cfg:284
 msgid "Cursed elves! Perhaps we should have allied wi' the humans..."
-msgstr ""
+msgstr "Przeklęte elfy! Może trzeba nam było sprzymierzyć się z ludźmi..."
 
 #: data/campaigns/Eastern_Invasion/scenarios/11.Lake_Vrug.cfg:4
 msgid "Lake Vrug"
@@ -2574,7 +2566,6 @@ msgid "Letting any enemy unit on to your keep"
 msgstr "Jakakolwiek jednostka wroga w twojej fortecy"
 
 #: data/campaigns/Eastern_Invasion/scenarios/18b.Weldyn_Besieged.cfg:154
-#, fuzzy
 msgid ""
 "You people are fools! You rejected my master's offer to duel... very well, "
 "you will ALL die! And know this; my master is here to enjoy your demise. For "
@@ -2583,9 +2574,9 @@ msgid ""
 "leader! ha ha ha ha! To be fair about it, we will all tell you our names."
 msgstr ""
 "Jesteście głupcami! Postanowiliście odrzucić pojedynek z moim mistrzem... "
-"niech tak będzie, wszyscy ZGINIECIE! I wiedzcie, że mój mistrz jest tutaj, "
-"oglądając waszą zgubę. Gdyż wcale się was nie obawia, i wie, że nigdy nie "
-"dacie rady odnaleźć go i zabić! Jest nas tu siedmiu, i tylko JEDEN z nas "
+"niech tak będzie, zginiecie CO DO JEDNEGO! I wiedzcie, że mój mistrz jest "
+"tutaj, oglądając waszą zgubę. Gdyż wcale się was nie obawia, i wie, że nigdy "
+"nie dacie rady odnaleźć go i zabić! Jest nas tu siedmiu, i tylko JEDEN z nas "
 "jest prawdziwym przywódcą! Hahaha! Żeby było uczciwie, wyjawimy wam nasze "
 "imiona."
 
@@ -2608,7 +2599,7 @@ msgstr ""
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:4
 msgid "Epilog"
-msgstr ""
+msgstr "Epilog"
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:15
 msgid ""
@@ -2621,61 +2612,88 @@ msgid ""
 "Men let weapons fall from nerveless fingers and horses reared in terror as "
 "that great dark pall obscured the sun..."
 msgstr ""
+"Gdy Mal-Ravanal padł, wszystkie walczące pod jego sztandarem żywe stworzenia "
+"zaprzestały walki i rzuciły się do ucieczki, a nieumarli padli na ziemię jak "
+"kukiełki, których sznurki nagle przecięto. W powietrzu brzmiało agonalne "
+"wycie licza, a z jego zwłok jak dym z nieczystego ognia uniósł się potężny "
+"snop cienia, który u szczytu dzielił się na pięć smug, sięgającym ku "
+"niebiosom jak wyciągnięta ręka.\n"
+"\n"
+"Wielki, mroczny całun spowił słońce. Broń padała z pozbawionych nagle czucia "
+"rąk, a konie płoszyły się i rżały przerażone..."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:19
 msgid ""
 "...and then it thinned, and paled, and a breeze from the west dissolved it "
 "in tatters, and the light of day shone once again undiminished on Weldyn."
 msgstr ""
+"... jednak całun przerzedzał się i jaśniał, aż wreszcie podmuch zachodniego "
+"wiatru rozwiał go w niepamięć, a na Weldyn znów padły promienie jasnego "
+"słońca."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:87
 msgid ""
 "It is a great victory we have won here, destroying he who was the main "
 "author of Wesnoth's troubles."
 msgstr ""
+"Odnieśliśmy dziś wielkie zwycięstwo, niszcząc sprawcę niedoli królestwa "
+"Wesnoth."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:92
 msgid ""
 "So many months of fighting...I feel as though I am awakening from a long "
 "nightmare."
 msgstr ""
+"Tyle miesięcy walk... Czuję się, jakbym się budził z długiego koszmaru."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:97
 msgid ""
 "Nor is our work yet complete. Mal-Ravanal's main host has been broken, but "
 "its outriders ravage the countryside in all directions."
 msgstr ""
+"Zwyciężyliśmy, lecz to jeszcze nie koniec naszych zmagań. Główna armia Mal-"
+"Ravanala została rozbita, lecz jej podjazdy wciąż pustoszą nasze ziemie."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:102
 msgid ""
 "We will be years...perhaps decades...recovering from the ill he has wrought."
 msgstr ""
+"Upłynie wiele lat, a może i dziesięcioleci, nim naprawimy całe zło, które "
+"wyrządził."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:107
 msgid ""
 "Even now we should be sending our cavalry to harry and slay as many of the "
 "fleeing orcs as we can."
 msgstr ""
+"Powinniśmy niezwłocznie wysłać kawalerię w pościg za uciekającymi orkami, by "
+"jak najmniej z nich uszło z życiem."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:112
 msgid ""
 "It shall be so.  But it is also to be thought that you three have served Us, "
 "and Our Kingdom, full well.  We are minded to reward you."
 msgstr ""
+"Tak też się stanie. Ale wpierw wypada uhonorować trzech obecnych tu mężów, "
+"którzy tak dobrze służyli nam i naszemu Królestwu. Nie ominie was nagroda."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:117
 msgid ""
 "Dacyn.  You will remain by Our side, here; as you counseled these two in "
 "war, you shall counsel Us in peace and the rebuilding of the Kingdom."
 msgstr ""
+"Dacyn. Ty pozostaniesz u Naszego boku. Jako radziłeś tym dwóm w czasach "
+"wojny, tako będziesz doradzać Nam w czasach pokoju i odbudowy Królestwa."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:124
 msgid "Sire, we but did our duty."
-msgstr ""
+msgstr "Panie, wypełnialiśmy tylko swą powinność."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:129
 msgid "Quite.  Now do not interrupt while I am doing mine...kneel, Owaec."
 msgstr ""
+"W rzeczy samej. A teraz nie przerywaj i pozwól mi wypełnić moją powinność... "
+"Uklęknij, Owaec."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:136
 msgid ""
@@ -2684,23 +2702,30 @@ msgid ""
 "their flight until the fields of Weldyn become a byword for fear at which "
 "they will tremble at for generations"
 msgstr ""
+"Powstań, Owaec, rycerzu i dowódco Królewskiej Konnicy. Jako Nasz pierwszy "
+"rozkaz przyjmij to, co sam doradziłeś. Wyruszaj niezwłocznie w pogoń za "
+"orkami, nękaj i niszcz ich oddziały, by wspomnienie pól Weldyn budziło wśród "
+"nich postrach jeszcze przez wiele pokoleń."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:169
-#, fuzzy
 msgid "Kneel, Gweddry."
-msgstr "Bądź pozdrowiony, Gweddry!"
+msgstr "Uklęknij, Gweddry!"
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:176
 msgid ""
 "And arise, Gweddry, Earl of Eastmarch.  The land for which you shed your "
 "blood shall be put under your hand to be made green again."
 msgstr ""
+"I powstań Gweddry, Hrabio Marchii Wschodniej. Oddaję Ci we władanie ziemie, "
+"za które przelałeś swą krew, by pod twoimi rządami ponownie rozkwitły."
 
 #: data/campaigns/Eastern_Invasion/scenarios/19_Epilog.cfg:181
 msgid ""
 "With these words and acts began the Silver Age of Wesnoth, that time known "
 "to historians as the Reconstruction..."
 msgstr ""
+"Tymi słowy i czynami rozpoczęła się Srebrna Epoka Wesnoth, czasy zwane przez "
+"historyków Odbudową..."
 
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:4
 msgid "Horse Lord"

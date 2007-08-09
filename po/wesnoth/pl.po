@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-08 01:41+0200\n"
-"PO-Revision-Date: 2007-07-20 12:02+0100\n"
+"PO-Revision-Date: 2007-08-02 15:01+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,7 @@ msgstr "Obecny opiekun"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:29
 msgid "Campaign Epilog and Continuity"
-msgstr ""
+msgstr "Epilog i ciągłość kampanii"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:39
@@ -126,11 +126,13 @@ msgid ""
 "and other people\n"
 "this list is very incomplete\n"
 msgstr ""
+"i inni\n"
+"ta lista jest wysoce niekompletna\n"
 
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr ""
+msgstr "I wielkie podziękowania wszystkim, których tu pominąłem."
 
 #: data/core/about.cfg:7
 msgid "Programming"
@@ -4663,6 +4665,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Nie można cofnąć ruchu, który powoduje odkrycie mgły lub całunu. Jeśli "
+"chcesz zachować możliwość cofania ruchów jednostek, włącz opcję 'Opóźniaj "
+"odsłanianie całunu'."
 
 #: data/themes/default.cfg:81 data/themes/dfool.cfg:102
 #: data/themes/experimental.cfg:65
@@ -5338,9 +5343,8 @@ msgid "Loading title screen."
 msgstr "Ładowanie ekranu tytułowego."
 
 #: src/game_config.cpp:245
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "Błędny kolor"
+msgstr "Niepoprawny zakres kolorów:"
 
 #: src/game_events.cpp:876
 msgid "Victory:"
@@ -6360,9 +6364,8 @@ msgid "Players: "
 msgstr "Gracze:"
 
 #: src/multiplayer_create.cpp:495
-#, fuzzy
 msgid "Map size: "
-msgstr "Mapa zapisana."
+msgstr "Wielkość mapy:"
 
 #: src/multiplayer_lobby.cpp:97
 msgid "--no games open--"
@@ -6766,7 +6769,7 @@ msgstr "Pozwala na zmianę ustawień"
 
 #: src/titlescreen.cpp:277
 msgid "View the credits"
-msgstr "Wyświetla nazwiska twórców gry"
+msgstr "Informacje o twórcach gry"
 
 #: src/titlescreen.cpp:278
 msgid "Quit the game"
@@ -6850,19 +6853,32 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 msgid "Enable summary uploads"
 msgstr "Włącz wysyłanie podsumowań"
 
-#~ msgid "Credits"
-#~ msgstr "Twórcy"
+#~ msgid "Prose-doctoring and preparation for mainline"
+#~ msgstr "Pielęgnacja prozy i przygotowanie do umieszczenia w gałęzi głównej"
 
-#~ msgid "More"
-#~ msgstr "Więcej"
-
-#, fuzzy
 #~ msgid "Unit art"
-#~ msgstr "Lista jednostek"
+#~ msgstr "Grafika jednostek"
 
-#, fuzzy
 #~ msgid "Map art"
-#~ msgstr "Mapa"
+#~ msgstr "Grafika map"
+
+#~ msgid "Portrait Art"
+#~ msgstr "Grafika portretów"
+
+#~ msgid "Fugitive"
+#~ msgstr "Uciekinier"
+
+#~ msgid ""
+#~ "Veteran criminals become notorious among the authorities for both their "
+#~ "battle prowess and ability to elude capture.  Dangerous and ruthless, "
+#~ "they can be fearful in their element but no real match for professional "
+#~ "law enforcment forces."
+#~ msgstr ""
+#~ "Doświadczeni kryminaliści cieszą się złą sławą zarówno ze względu na "
+#~ "doświadczenie w walce, jak i umiejętność wymykania się władzom. Choć ci "
+#~ "niebezpieczni i bezwzględni przestępcy mogą stanowić poważne zagrożenie, "
+#~ "gdy walczą na swoim terenie, to dobrze wyszkolone jednostki porządkowe "
+#~ "nie powinny mieć problemów z ich pokonaniem."
 
 #~ msgid "mace"
 #~ msgstr "buzdygan"
@@ -6870,19 +6886,54 @@ msgstr "Włącz wysyłanie podsumowań"
 #~ msgid "sling"
 #~ msgstr "proca"
 
-#, fuzzy
 #~ msgid "female^Fugitive"
-#~ msgstr "Wojowniczka"
+#~ msgstr "Uciekinierka"
 
-#, fuzzy
+#~ msgid ""
+#~ "Veteran criminals become notorious among the authorities for both their "
+#~ "battle prowess and ability to elude capture.  Beautiful and dangerous, "
+#~ "their beauty is exceeded only by their dangerousness."
+#~ msgstr ""
+#~ "Doświadczone kryminalistki cieszą się złą sławą zarówno ze względu na "
+#~ "doświadczenie w walce, jak i umiejętność wymykania się władzom. Uroda "
+#~ "wielu kryminalistek dorównuje tylko ich bezwzględności."
+
+#~ msgid "Highwayman"
+#~ msgstr "Rabuś"
+
+#~ msgid ""
+#~ "Armed with heavy mace, Highwaymen are the last people you want to meet on "
+#~ "a deserted road late at night."
+#~ msgstr ""
+#~ "Uzbrojeni w ciężkie maczugi rabusie to ostatni ludzie, jakich chcieliby "
+#~ "napotkać podróżni przemierzający nocą gościniec."
+
 #~ msgid "Outlaw Ranger"
-#~ msgstr "Banita"
+#~ msgstr "Łowca banita"
+
+#~ msgid ""
+#~ "Rangers are wild men and masters of forest and hills.  They are excellent "
+#~ "trackers, scouts, and archers, moving freely through the countryside "
+#~ "under the cover of night.  Most rulers are afraid of rangers and would "
+#~ "rather put them in the dungeon than put their abilities to use."
+#~ msgstr ""
+#~ "Łowcy to nieujarzmieni samotnicy, znający lasy i wzgórza jak własną "
+#~ "kieszeń. Są doskonałymi tropicielami, zwiadowcami i łucznikami, którzy "
+#~ "swobodnie przemierzają bezdroża pod osłoną nocy. Władcy najczęściej "
+#~ "uważają łowców za zagrożenie i wolą ich zamknąć w lochu, niż czynić "
+#~ "użytek z ich umiejętności."
 
 #~ msgid "sword"
 #~ msgstr "miecz"
 
 #~ msgid "bow"
 #~ msgstr "łuk"
+
+#~ msgid "Credits"
+#~ msgstr "Twórcy"
+
+#~ msgid "More"
+#~ msgstr "Więcej"
 
 #~ msgid "None"
 #~ msgstr "brak"
