@@ -1753,7 +1753,7 @@ void ai::analyze_potential_recruit_movements()
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
 			const paths::route& route = a_star_search(start, t->loc, 100.0, &calc,
-					get_info().map.x(), get_info().map.y());
+					get_info().map.w(), get_info().map.h());
 			
 			if(route.steps.empty() == false) {
 				LOG_AI << "made it: " << route.move_left << "\n";
@@ -1913,7 +1913,7 @@ void ai::move_leader_to_goals( const move_map& enemy_dstsrc)
 
 	shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_);
 	const paths::route route = a_star_search(leader->first, dst, 1000.0, &calc,
-			get_info().map.x(), get_info().map.y());
+			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
 		LOG_AI << "route empty";
 		return;
@@ -2218,8 +2218,8 @@ const std::set<gamemap::location>& ai::keeps()
 {
 	if(keeps_.empty()) {
 		//generate the list of keeps -- iterate over the entire map and find all keeps
-		for(size_t x = 0; x != size_t(map_.x()); ++x) {
-			for(size_t y = 0; y != size_t(map_.y()); ++y) {
+		for(size_t x = 0; x != size_t(map_.w()); ++x) {
+			for(size_t y = 0; y != size_t(map_.h()); ++y) {
 				const gamemap::location loc(x,y);
 				if(map_.is_keep(loc)) {
 					gamemap::location adj[6];

@@ -241,8 +241,8 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"], &map);
 	if(xy_locs.empty()) {
 		//consider all locations on the map
-		for(int x=0; x < map.xsize(); x++) {
-			for(int y=0; y < map.ysize(); y++) {
+		for(int x=0; x < map.w(); x++) {
+			for(int y=0; y < map.h(); y++) {
 				xy_locs.push_back(gamemap::location(x,y));
 			}
 		}

@@ -244,7 +244,8 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 	}
 }
 
-gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1), x_(-1), y_(-1)
+gamemap::gamemap(const config& cfg, const std::string& data) : 
+		tiles_(1), w_(-1), h_(-1)
 {
 	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
@@ -288,8 +289,8 @@ void gamemap::read(const std::string& data)
 	// post processing on the map
 	const int width = tiles_.size();
 	const int height = width > 0 ? tiles_[0].size() : 0;
-    x_ = width;
-    y_ = height;
+    w_ = width;
+    h_ = height;
 	for(int x = 0; x < width; ++x) {
 		for(int y = 0; y < height; ++y) {
 			
@@ -332,14 +333,14 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 
 	const int xstart = maximum<int>(0, -xpos);
 	const int ystart = maximum<int>(0, -ypos-((xpos & 1) ? 1 : 0));
-	const int xend = minimum<int>(m.x(),x()-xpos);
-	const int yend = minimum<int>(m.y(),y()-ypos);
+	const int xend = minimum<int>(m.w(),w()-xpos);
+	const int yend = minimum<int>(m.h(),h()-ypos);
 	for(int x1 = xstart; x1 < xend; ++x1) {
 		for(int y1 = ystart; y1 < yend; ++y1) {
 			const int x2 = x1 + xpos;
 			const int y2 = y1 + ypos +
 				((xpos & 1) && (x1 & 1) ? 1 : 0);
-			if (y2 < 0 || y2 >= y()) {
+			if (y2 < 0 || y2 >= h()) {
 				continue;
 			}
 			const t_translation::t_letter t = m[x1][y1];
@@ -596,7 +597,7 @@ std::vector<gamemap::location> parse_location_range(const std::string& x, const 
 			xrange = utils::parse_range(xvals[i]);
 		} else if (map != NULL) {
 			xrange.first = 1;
-			xrange.second = map->x();
+			xrange.second = map->w();
 		} else {
 			break;
 		}
@@ -606,7 +607,7 @@ std::vector<gamemap::location> parse_location_range(const std::string& x, const 
 			yrange = utils::parse_range(yvals[i]);
 		} else if (map != NULL) {
 			yrange.first = 1;
-			yrange.second = map->y();
+			yrange.second = map->h();
 		} else {
 			break;
 		}
@@ -626,15 +627,15 @@ const std::map<t_translation::t_letter, size_t>& gamemap::get_weighted_terrain_f
 		return terrainFrequencyCache_;
 	}
 
-	const location center(x()/2,y()/2);
+	const location center(w()/2,h()/2);
 
 	const size_t furthest_distance = distance_between(location(0,0),center);
 
 	const size_t weight_at_edge = 100;
 	const size_t additional_weight_at_center = 200;
 
-	for(size_t i = 0; i != size_t(x()); ++i) {
-		for(size_t j = 0; j != size_t(y()); ++j) {
+	for(size_t i = 0; i != size_t(w()); ++i) {
+		for(size_t j = 0; j != size_t(h()); ++j) {
 			const size_t distance = distance_between(location(i,j),center);
 			terrainFrequencyCache_[(*this)[i][j]] += weight_at_edge + (furthest_distance-distance)*additional_weight_at_center;
 		}

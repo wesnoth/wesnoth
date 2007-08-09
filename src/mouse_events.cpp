@@ -943,7 +943,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 		
 	}
 	
-	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.x(), map_.y(), teleports);
+	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), teleports);
 	route.move_left = route_turns_to_complete(u,map_,route,units_,teams_);
 
 	return route;

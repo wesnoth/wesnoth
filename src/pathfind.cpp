@@ -144,7 +144,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 
 			//check if the adjacent location is off the board
 			if (currentloc.x < 0 || currentloc.y < 0 ||
-			    currentloc.x >= map.x() || currentloc.y >= map.y())
+			    currentloc.x >= map.w() || currentloc.y >= map.h())
 				continue;
 
 			//see if the tile is on top of an enemy unit

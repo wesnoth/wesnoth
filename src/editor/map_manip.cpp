@@ -25,8 +25,8 @@
 
 std::string editormap::resize(const size_t width, const size_t height, const t_translation::t_letter filler)
 {
-	const unsigned old_w = static_cast<unsigned>(x());
-	const unsigned old_h = static_cast<unsigned>(y());
+	const unsigned old_w = static_cast<unsigned>(w());
+	const unsigned old_h = static_cast<unsigned>(h());
 
 	if(old_w == width && old_h == height) {
 		return "";
@@ -212,7 +212,7 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 		const gamemap m(cfg, data);
 		// Having a zero size map may cause floating point exceptions at
 		// some places later on.
-		res = m.x() != 0 && m.y() != 0;
+		res = m.w() != 0 && m.h() != 0;
 	}
 	catch (gamemap::incorrect_format_exception) {
 		res = false;

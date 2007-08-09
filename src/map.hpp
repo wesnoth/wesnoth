@@ -133,8 +133,8 @@ public:
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
 
 	//dimensions of the map.
-	int x() const { return x_; }
-	int y() const { return y_; }
+	int w() const { return w_; }
+	int h() const { return h_; }
 
 	//allows lookup of terrain at a particular location.
 	const t_translation::t_list& operator[](int index) const 
@@ -160,13 +160,13 @@ public:
 	//on the map. Should be called before indexing using []
 	bool on_board(const location& loc) const
 	{
-		return loc.valid() && loc.x < x() && loc.y < y();
+		return loc.valid() && loc.x < w() && loc.y < h();
 	}
 
 	//function to tell if the map is of 0 size.
 	bool empty() const
 	{
-		return x() == 0 || y() == 0;
+		return w() == 0 || h() == 0;
 	}
 
 	//function to return a list of the locations of villages on the map
@@ -202,8 +202,6 @@ public:
 	//STARTING_POSITIONS - 1
 	enum { STARTING_POSITIONS = 10 };
 
-	int xsize() const {return x_;};
-	int ysize() const {return y_;};
 protected:
 	t_translation::t_map tiles_;
 	location startingPositions_[STARTING_POSITIONS];
@@ -219,8 +217,8 @@ private:
 	mutable std::map<location, t_translation::t_letter> borderCache_;
 	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
 
-    int x_;
-    int y_;
+    int w_;
+    int h_;
 };
 
 class viewpoint

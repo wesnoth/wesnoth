@@ -27,10 +27,10 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 {
 	const int scale = 8;
 
-	LOG_DP << "creating minimap " << int(map.x()*scale*0.75) << "," << int(map.y()*scale) << "\n";
+	LOG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << int(map.h()*scale) << "\n";
 
-	const size_t map_width = map.x()*scale*3/4;
-	const size_t map_height = map.y()*scale;
+	const size_t map_width = map.w()*scale*3/4;
+	const size_t map_height = map.h()*scale;
 	if(map_width == 0 || map_height == 0) {
 		return surface(NULL);
 	}
@@ -48,8 +48,8 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 	typedef mini_terrain_cache_map cache_map;
 	cache_map& cache = mini_terrain_cache;
 
-	for(int y = 0; y != map.y(); ++y) {
-		for(int x = 0; x != map.x(); ++x) {
+	for(int y = 0; y != map.h(); ++y) {
+		for(int x = 0; x != map.w(); ++x) {
 
 			surface surf(NULL);
 

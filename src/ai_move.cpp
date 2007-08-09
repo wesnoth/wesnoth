@@ -430,7 +430,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		wassert(map_.on_board(tg->loc));
 
 		const double locStopValue = minimum(tg->value / best_rating, 500.0);
-		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.x(), map_.y());
+		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.w(), map_.h());
 
 		if (cur_route.move_left < locStopValue)
 		{
@@ -515,7 +515,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 			const move_cost_calculator calc(u->second, map_, gameinfo_, units_, u->first, dstsrc, enemy_dstsrc);
 			const double locStopValue = minimum(best_target->value / best_rating, 100.0);
-			paths::route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.x(), map_.y());
+			paths::route cur_route = a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if (cur_route.move_left < locStopValue)
 			{
@@ -779,7 +779,7 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 		const location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->second.total_movement()) {
 			shortest_path_calculator calc(u_it->second, current_team(), units_, teams_, map_);
-			const paths::route& rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.x(), map_.y());
+			const paths::route& rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc, map_.w(), map_.h());
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);
 			}

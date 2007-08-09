@@ -97,8 +97,8 @@ const SDL_Rect& display::map_area() const
 	// 3 so there shouldn't be off by one errors due to rounding
 	// To display a hex fully on screen a little bit extra space is needed
 	// Also added the border two times.
-	const int width = static_cast<int>((map_.x() + 2 * border + 1.0/3.0) * hex_width()); 
-	const int height = static_cast<int>((map_.y() + 2 * border + 0.5) * hex_size());
+	const int width = static_cast<int>((map_.w() + 2 * border + 1.0/3.0) * hex_width()); 
+	const int height = static_cast<int>((map_.h() + 2 * border + 0.5) * hex_size());
 
 	if(width < res.w) {
 		// map is smaller, center
@@ -291,10 +291,10 @@ void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gam
 	if(topleft.y >= -1) {
 		topleft.y--;
 	}
-	if(bottomright.x <= map_.x()) {
+	if(bottomright.x <= map_.w()) {
 		bottomright.x++;
 	}
-	if(bottomright.y <= map_.y()) {
+	if(bottomright.y <= map_.h()) {
 		bottomright.y++;
 	}
 }
@@ -318,8 +318,8 @@ gamemap::location display::minimap_location_on(int x, int y)
 		return gamemap::location();
 	}
 
-	const double xdiv = double(rect.w) / double(map_.x());
-	const double ydiv = double(rect.h) / double(map_.y());
+	const double xdiv = double(rect.w) / double(map_.w());
+	const double ydiv = double(rect.h) / double(map_.h());
 
 	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
@@ -1095,7 +1095,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	SDL_Rect loc = minimap_location;
 	SDL_BlitSurface(surf,NULL,video().getSurface(),&loc);
 
-	int map_w = map_.x(), map_h = map_.y();
+	int map_w = map_.w(), map_h = map_.h();
 
 	draw_minimap_units(x, y, w, h);
 
@@ -1362,8 +1362,8 @@ void display::bounds_check_position(int& xpos, int& ypos)
 	const int tile_width = hex_width();
 
 	// adjust for the border 2 times 
-	const int xend = static_cast<int>(tile_width * (map_.x() + 2 * border) + tile_width/3);
-	const int yend = static_cast<int>(zoom_ * (map_.y() + 2 * border) + zoom_/2);
+	const int xend = static_cast<int>(tile_width * (map_.w() + 2 * border) + tile_width/3);
+	const int yend = static_cast<int>(zoom_ * (map_.h() + 2 * border) + zoom_/2);
 
 	if(xpos > xend - map_area().w) {
 		xpos = xend - map_area().w;

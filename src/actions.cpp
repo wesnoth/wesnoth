@@ -81,7 +81,7 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 		return false;
 
 	castle_cost_calculator calc(map);
-	const paths::route& rt = a_star_search(leader, loc, 100.0, &calc, map.x(), map.y());
+	const paths::route& rt = a_star_search(leader, loc, 100.0, &calc, map.w(), map.h());
 
 	if(rt.steps.empty())
 		return false;

@@ -795,11 +795,11 @@ typedef struct {
 
 static PyObject* gamemap_get_x(wesnoth_gamemap* map, void* /*closure*/)
 {
-	return Py_BuildValue("i", map->map_->x());
+	return Py_BuildValue("i", map->map_->w());
 }
 static PyObject* gamemap_get_y(wesnoth_gamemap* map, void* /*closure*/)
 {
-	return Py_BuildValue("i", map->map_->y());
+	return Py_BuildValue("i", map->map_->h());
 }
 
 static PyGetSetDef gamemap_getseters[] = {
@@ -1271,8 +1271,8 @@ PyObject* python_ai::wrapper_get_location(PyObject* /*self*/, PyObject* args)
 	int x, y;
 	if (!PyArg_ParseTuple( args, "ii", &x, &y ))
 		return NULL;
-	if (x < 0 || x >= running_instance->get_info().map.x()) return_none;
-	if (y < 0 || y >= running_instance->get_info().map.y()) return_none;
+	if (x < 0 || x >= running_instance->get_info().map.w()) return_none;
+	if (y < 0 || y >= running_instance->get_info().map.h()) return_none;
 
 	gamemap::location loc(x,y);
 	return wrap_location(loc);
@@ -1418,7 +1418,7 @@ PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* /*self*/, PyObject* ar
 	gamemap::location loc[6];
 	get_adjacent_tiles(*where->location_,loc);
 	for ( int tile = 0; tile < 6; tile++ )
-		if (loc[tile].valid(map.x(), map.y()))
+		if (loc[tile].valid(map.w(), map.h()))
 			PyList_Append(list,wrap_location(loc[tile]));
 	return list;
 }
@@ -1469,7 +1469,7 @@ PyObject* python_ai::wrapper_unit_find_path(wesnoth_unit* self, PyObject* args)
 		running_instance->current_team(),
 		inf.units, inf.teams, inf.map);
 	const paths::route& route = a_star_search(*from->location_, *to->location_,
-		max_cost, &calc, inf.map.x(), inf.map.y());
+		max_cost, &calc, inf.map.w(), inf.map.h());
 
 	PyObject* steps = PyList_New(route.steps.size());
 	for (size_t step = 0; step < route.steps.size(); step++)

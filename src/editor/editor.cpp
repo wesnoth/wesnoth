@@ -702,7 +702,7 @@ void map_editor::edit_revert() {
 
 void map_editor::edit_resize() {
 	const std::pair<unsigned, unsigned> new_size =
-		resize_dialog(gui_, map_.x(), map_.y());
+		resize_dialog(gui_, map_.w(), map_.h());
 	if (new_size.first != 0) {
 		const std::string resized_map =
 			resize_map(map_, new_size.first, new_size.second, palette_.selected_bg_terrain());
@@ -728,8 +728,8 @@ void map_editor::edit_flip() {
 
 void map_editor::edit_select_all() {
 	if (!all_hexes_selected_) {
-		for (int i = 0; i < map_.x(); i++) {
-			for (int j = 0; j < map_.y(); j++) {
+		for (int i = 0; i < map_.w(); i++) {
+			for (int j = 0; j < map_.h(); j++) {
 				selected_hexes_.insert(gamemap::location(i, j));
 			}
 		}

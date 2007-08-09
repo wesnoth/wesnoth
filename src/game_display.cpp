@@ -416,7 +416,7 @@ void game_display::draw(bool update,bool force)
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->x == map_.x() && it->y == -1) { // top right corner
+				} else if(it->x == map_.w() && it->y == -1) { // top right corner
 					SDL_Rect rect = { xpos, -1, 3 * zoom_/4, zoom_ } ;
 					surface border;
 					if(it->x%2 == 0) {
@@ -431,14 +431,14 @@ void game_display::draw(bool update,bool force)
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->x == -1 && it->y == map_.y()) { // bottom left corner
+				} else if(it->x == -1 && it->y == map_.h()) { // bottom left corner
 					SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_/2 } ;
 
 					const surface border(image::get_image("terrain/off-map/fade_corner_bottom_left.png", image::SCALED_TO_ZOOM));
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 					
-				} else if(it->x == map_.x() && it->y == map_.y()) { // bottom right corner
+				} else if(it->x == map_.w() && it->y == map_.h()) { // bottom right corner
 					SDL_Rect rect = { xpos, ypos, 3 * zoom_/4, zoom_/2 } ;
 					surface border;
 					if(it->x%2 == 1) {
@@ -457,7 +457,7 @@ void game_display::draw(bool update,bool force)
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->x == map_.x()) { // right side
+				} else if(it->x == map_.w()) { // right side
 					SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 					const surface border(image::get_image("terrain/off-map/fade_border_right.png", image::SCALED_TO_ZOOM));
 
@@ -478,7 +478,7 @@ void game_display::draw(bool update,bool force)
 
 					SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-				} else if(it->y == map_.y()) { // bottom side
+				} else if(it->y == map_.h()) { // bottom side
 					SDL_Rect rect = { xpos, -1, zoom_, zoom_/2 } ;
 					surface border;
 
@@ -621,9 +621,9 @@ void game_display::draw_minimap_units(int x, int y, int w, int h)
 		const int side = u->second.side();
 		const SDL_Color col = team::get_minimap_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-		SDL_Rect rect = { x + (u->first.x * w) / map_.x(),
-		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_.y(),
-		                  w / map_.x(), h / map_.y() };
+		SDL_Rect rect = { x + (u->first.x * w) / map_.w(),
+		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_.h(),
+		                  w / map_.w(), h / map_.h() };
 		SDL_FillRect(video().getSurface(),&rect,mapped_col);
 	}
 }

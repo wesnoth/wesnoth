@@ -806,14 +806,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 
 				paths::route route = a_star_search(src, dst, 10000, &calc,
-				                                   game_map->x(), game_map->y());
+				                                   game_map->w(), game_map->h());
 
 				if (route.steps.size() == 0) {
 					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
 					emergency_path_calculator calc(dummy_unit, *game_map);
 
 					route = a_star_search(src, dst, 10000, &calc,
-										  game_map->x(), game_map->y());
+										  game_map->w(), game_map->h());
 					wassert(route.steps.size() > 0);
 				}
 				unit_display::move_unit( *game_map, route.steps, dummy_unit, *teams);
@@ -1708,8 +1708,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "kill") {
 		//Use (x,y) iteration because firing events ruins unit_map iteration
-		for(gamemap::location loc(0,0); loc.x < game_map->x(); ++loc.x) {
-			for(loc.y = 0; loc.y < game_map->y(); ++loc.y) {
+		for(gamemap::location loc(0,0); loc.x < game_map->w(); ++loc.x) {
+			for(loc.y = 0; loc.y < game_map->h(); ++loc.y) {
 				unit_map::iterator un = units->find(loc);
 				if(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
 					if(utils::string_bool(cfg["animate"])) {

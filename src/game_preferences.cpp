@@ -726,8 +726,8 @@ void encounter_recallable_units(game_state& gamestate){
 }
 
 void encounter_map_terrain(gamemap& map){
-	for (int map_x = 0; map_x < map.x(); map_x++) {
-		for (int map_y = 0; map_y < map.y(); map_y++) {
+	for (int map_x = 0; map_x < map.w(); map_x++) {
+		for (int map_y = 0; map_y < map.h(); map_y++) {
 			const t_translation::t_letter t = map.get_terrain(gamemap::location(map_x, map_y));
 			preferences::encountered_terrains().insert(t);
 		}

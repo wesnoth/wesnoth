@@ -1759,20 +1759,20 @@ namespace events{
 			int x, y;
 			x = lexical_cast_default<int>(args[0], 0)-1;
 			y = lexical_cast_default<int>(args[1], 0)-1;
-			if(x >= 0 && x < map_.x() && y >= 0 && y < map_.y()) {
+			if(x >= 0 && x < map_.w() && y >= 0 && y < map_.h()) {
 				loc = gamemap::location(x,y);
 				found = true;
 			}
 		}
 		//Start scanning the game map
 		if(loc.valid() == false)
-			loc = gamemap::location(map_.x()-1,map_.y()-1);
+			loc = gamemap::location(map_.w()-1,map_.h()-1);
 		gamemap::location start = loc;
 		while (!found) {
 			//Move to the next location
-			loc.x = (loc.x + 1) % map_.x();
+			loc.x = (loc.x + 1) % map_.w();
 			if(loc.x == 0)
-				loc.y = (loc.y + 1) % map_.y();
+				loc.y = (loc.y + 1) % map_.h();
 
 			//Search label
 			if (!gui_->shrouded(loc)) {

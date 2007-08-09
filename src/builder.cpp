@@ -128,7 +128,7 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap
 }
 
 terrain_builder::terrain_builder(const config& cfg, const config& level, const gamemap& gmap) :
-	map_(gmap), tile_map_(gmap.x(), gmap.y())
+	map_(gmap), tile_map_(gmap.w(), gmap.h())
 {
 	parse_config(cfg);
 	parse_config(level);
@@ -934,8 +934,8 @@ void terrain_builder::build_terrains()
 	log_scope("terrain_builder::build_terrains");
 
 	//builds the terrain_by_type_ cache
-	for(int x = -1; x <= map_.x(); ++x) {
-		for(int y = -1; y <= map_.y(); ++y) {
+	for(int x = -1; x <= map_.w(); ++x) {
+		for(int y = -1; y <= map_.h(); ++y) {
 			const gamemap::location loc(x,y);
 			const t_translation::t_letter t = map_.get_terrain(loc);
 
@@ -1061,8 +1061,8 @@ void terrain_builder::build_terrains()
 			// some overlays fail but (probably their map size) this is fixed by 
 			// changing the start position from -1 to -2. So it's no real fix but
 			// a hack, so still need to figure out the best number -- Mordante
-			for(int x = -2; x <= map_.x(); ++x) {
-				for(int y = -2; y <= map_.y(); ++y) {
+			for(int x = -2; x <= map_.w(); ++x) {
+				for(int y = -2; y <= map_.h(); ++y) {
 					const gamemap::location loc(x,y);
 					if(rule_matches(rule->second, loc, rule_index, true))
 						apply_rule(rule->second, loc);
