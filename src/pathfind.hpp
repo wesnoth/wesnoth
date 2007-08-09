@@ -39,6 +39,8 @@ class xy_pred : public std::unary_function<gamemap::location const&, bool>
 {
 public:
 	virtual bool operator()(gamemap::location const&) = 0;
+protected:
+	~xy_pred() {}
 };
 
 //function which, given a location, will find all tiles within 'radius' of that tile
