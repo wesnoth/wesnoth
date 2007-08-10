@@ -180,6 +180,8 @@ bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, co
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
 {
+	if(!map.on_board(loc)) return false;
+
 	//handle radius
 	const size_t radius = minimum<size_t>(max_loop,
 		lexical_cast_default<size_t>(cfg["radius"], 0));
