@@ -92,11 +92,9 @@ public:
 	                 int red, int green, int blue);
 
 public:
-	//function to return a footstep for the given location, on screen at
-	//pixel co-ordinates (xloc,yloc). A footstep will only be drawn if
-	//loc is on the current route set by set_route. Otherwise it will
-	//return NULL.
-	surface footstep_image(const gamemap::location& loc);
+	//function to return 2 half-hex footsteps images for the given location.
+	//only loc is on the current route set by set_route.
+	std::vector<surface> game_display::footsteps_images(const gamemap::location& loc);
 
 	//draws the movement info (turns available) for a given location
 	void draw_movement_info(const gamemap::location& loc);

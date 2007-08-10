@@ -368,7 +368,7 @@ void game_display::draw(bool update,bool force)
 			}
 
 			// footsteps indicating a movement path
-			tile_stack_append(footstep_image(*it));
+			tile_stack_append(footsteps_images(*it));
 
 			// paint selection and mouseover overlays
 			if(*it == selectedHex_ && on_map && selected_hex_overlay_ != NULL)
@@ -736,89 +736,52 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 	}
 }
 
-surface game_display::footstep_image(const gamemap::location& loc)
+std::vector<surface> game_display::footsteps_images(const gamemap::location& loc)
 {
+	std::vector<surface> res;
+
+	if (route_.steps.size() < 2) {
+		return res; // no real "route"
+	}
+
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
 
-	if(i == route_.steps.begin() || i == route_.steps.end()) {
-		return NULL;
+	if( i == route_.steps.end()) {
+		return res; // not on the route
 	}
 
-	const bool left_foot = is_even(i - route_.steps.begin());
-
-	//generally we want the footsteps facing toward the direction
-	//they're going to go next.  if we're on the last step, then
-	//we want them facing according to where they came from, so we
-	//move i back by one
-	if(i+1 == route_.steps.end() && i != route_.steps.begin()) {
-		--i;
+	std::string speed = "-normal";
+	const unit_map::const_iterator u = units_.find(route_.steps.front());
+	if(u != units_.end() && u->second.movement_cost(map_.get_terrain(loc)) > 1) {
+			speed = "-slow";
 	}
 
-	gamemap::location::DIRECTION direction = gamemap::location::NORTH;
+	// we draw 2 half-hex (with possibly different directions)
+	// but skip the first for the first step
+	const int first_half = (i == route_.steps.begin()) ? 1 : 0;
+	// and the second for the last step
+	const int second_half = (i+1 == route_.steps.end()) ? 0 : 1;
 
-	if(i+1 != route_.steps.end()) {
-		for(int n = 0; n != 6; ++n) {
-			direction = gamemap::location::DIRECTION(n);
-			if(i->get_direction(direction) == *(i+1)) {
-				break;
-			}
+	for (int h = first_half; h <= second_half; h++) {
+		std::string rotate;
+
+		// in function of the half, use the incoming or outgoing direction
+		gamemap::location::DIRECTION dir = (i-1+h)->get_relative_dir(*(i+h));
+		if (dir > gamemap::location::SOUTH_EAST) {
+			//no image, take the opposite direction and do a 180 rotation
+			dir = i->get_opposite_dir(dir);
+			rotate = "~FL(horiz)~FL(vert)";
 		}
+
+		const std::string image = "images/footsteps/foot" + speed
+			+ (h==0 ? "-in-" : "-out-") + i->write_direction(dir)
+			+ ".png" + rotate;
+
+		res.push_back(image::get_image(image, image::UNMASKED));
 	}
 
-	const std::vector<std::string>* image_category = NULL;
-
-
-	if(left_foot) {
-		if(direction == gamemap::location::NORTH ||
-		   direction == gamemap::location::SOUTH) {
-			image_category = &game_config::foot_left_n;
-		} else {
-			image_category = &game_config::foot_left_nw;
-		}
-	} else {
-		if(direction == gamemap::location::NORTH ||
-		   direction == gamemap::location::SOUTH) {
-			image_category = &game_config::foot_right_n;
-		} else {
-			image_category = &game_config::foot_right_nw;
-		}
-	}
-
-	if(image_category == NULL || image_category->empty()) {
-		return NULL;
-	}
-
-	const std::string* image_str = &image_category->front();
-	const unit_map::const_iterator un = units_.find(route_.steps.front());
-	if(un != units_.end()) {
-		const int move_cost = un->second.movement_cost(map_.get_terrain(loc)) - 1;
-		if(move_cost >= int(image_category->size())) {
-			image_str = &image_category->back();
-		} else if(move_cost > 0) {
-			image_str = &(*image_category)[move_cost];
-		}
-	}
-
-	surface image(image::get_image(*image_str, image::UNMASKED));
-	if(image == NULL) {
-		ERR_DP << "Could not find image: " << *image_str << "\n";
-		return NULL;
-	}
-
-	const bool hflip = !(direction > gamemap::location::NORTH &&
-	                     direction <= gamemap::location::SOUTH);
-	const bool vflip = (direction >= gamemap::location::SOUTH_EAST &&
-	                    direction <= gamemap::location::SOUTH_WEST);
-
-	if(!hflip) {
-		image.assign(image::reverse_image(image));
-	}
-	if(vflip) {
-		image.assign(flop_surface(image));
-	}
-
-	return image;
+	return res;
 }
 
 surface game_display::get_flag(const gamemap::location& loc)
