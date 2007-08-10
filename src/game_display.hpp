@@ -94,7 +94,7 @@ public:
 public:
 	//function to return 2 half-hex footsteps images for the given location.
 	//only loc is on the current route set by set_route.
-	std::vector<surface> game_display::footsteps_images(const gamemap::location& loc);
+	std::vector<surface> footsteps_images(const gamemap::location& loc);
 
 	//draws the movement info (turns available) for a given location
 	void draw_movement_info(const gamemap::location& loc);
