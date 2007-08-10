@@ -41,10 +41,8 @@ class manager : public events::observer {
 		std::string _files;
 		std::list<gamemap::location> _locations;
 
-		/*
-		 * Last assigned id; this can, of course, overflow, but I'd never expect to
-		 * see 4 billions sound sources being created...
-		 */
+		// Last assigned id; this can, of course, overflow, but I'd 
+		// never expect to see 4 billions sound sources being created...
 		static unsigned int last_id;
 
 	public:
@@ -88,6 +86,6 @@ public:
 	void add_location(const std::string &id, const gamemap::location &loc);
 };
 
-} // namespce soundsource
+} // namespace soundsource
 
 #endif
