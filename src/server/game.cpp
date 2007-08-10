@@ -836,10 +836,12 @@ void game::send_data_team(const config& data, const std::string& team, network::
 	}
 }
 
-void game::send_data_observers(const config& data)
+void game::send_data_observers(const config& data, network::connection exclude)
 {
 	for(std::vector<network::connection>::const_iterator i = observers_.begin(); i != observers_.end(); ++i) {
-		network::queue_data(data,*i);
+		if (*i != exclude) {
+			network::queue_data(data,*i);
+		}
 	}
 }
 

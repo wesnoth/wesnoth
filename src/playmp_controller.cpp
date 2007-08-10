@@ -350,9 +350,9 @@ bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_CLEAR_LABELS:
-		case hotkey::HOTKEY_SPEAK_ALLY:
 			res = !is_observer();
 		case hotkey::HOTKEY_SPEAK:
+		case hotkey::HOTKEY_SPEAK_ALLY:
 		case hotkey::HOTKEY_SPEAK_ALL:
 			res = res && network::nconnections() > 0;
 			break;

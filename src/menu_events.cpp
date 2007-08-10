@@ -672,27 +672,26 @@ namespace events{
 	void menu_handler::speak()
 	{
 		textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
-			has_friends() ? _("Send to allies only") : "", preferences::message_private(), *gui_);
+			has_friends() ? is_observer() ? _("Send to observers only") : _("Send to allies only")
+						  : "", preferences::message_private(), *gui_);
 	}
 
 	void menu_handler::whisper()
 	{
 		preferences::set_message_private(true);
-		textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
-			has_friends() ? _("Send to allies only") : "", true, *gui_);
+		speak();
 	}
 
 	void menu_handler::shout()
 	{
 		preferences::set_message_private(false);
-		textbox_info_.show(gui::TEXTBOX_MESSAGE,_("Message:"),
-			has_friends() ? _("Send to allies only") : "", false, *gui_);
+		speak();
 	}
 
 	bool menu_handler::has_friends() const
 	{
 		if(is_observer()) {
-			return false;
+			return !gui_->observers().empty();
 		}
 
 		for(size_t n = 0; n != teams_.size(); ++n) {
@@ -1734,7 +1733,11 @@ namespace events{
 		bool private_message = has_friends() && allies_only;
 
 		if(private_message) {
-			cfg["team_name"] = teams_[gui_->viewing_team()].team_name();
+			if (is_observer()) {
+				cfg["team_name"] = "observer";
+			} else {
+				cfg["team_name"] = teams_[gui_->viewing_team()].team_name();
+			}
 		}
 
 		recorder.speak(cfg);

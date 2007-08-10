@@ -74,7 +74,7 @@ public:
 	config construct_server_message(const std::string& message);
 	void send_data(const config& data, network::connection exclude=0);
 	void send_data_team(const config& data, const std::string& team, network::connection exclude=0);
-	void send_data_observers(const config& data);
+	void send_data_observers(const config& data, network::connection exclude=0);
 
 	void record_data(const config& data);
 	void reset_history();

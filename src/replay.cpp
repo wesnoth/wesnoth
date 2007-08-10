@@ -718,7 +718,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];
 			const std::string& speaker_name = (*child)["description"];
-			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
+			if (team_name == "" || !is_observer() && teams[disp.viewing_team()].team_name() == team_name
+				|| is_observer() && team_name == "observer") {
 				bool is_lobby_join = (speaker_name == "server"
 							&& (*child)["message"].value().find("has logged into the lobby") != std::string::npos);
 					    				std::string str = (*child)["message"];
