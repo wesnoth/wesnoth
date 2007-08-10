@@ -1922,7 +1922,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					const int side = lexical_cast_default<int>(side_str.value(), -1);
 
 					//Select advancement if it is on the playing side and the player is a human
-					const bool sel = (side == u.side() && (*teams)[side-1].is_human());
+					const bool sel = (side == static_cast<int>(u.side())
+					                 && (*teams)[side-1].is_human());
 
 					//The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
