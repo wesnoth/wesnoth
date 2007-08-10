@@ -228,29 +228,31 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 		if(!utils::string_bool(cfg["same_location_as_previous"])) {
 			index = rand()%c.locs.size();
 		}
+		const std::string loc_var = cfg["store_location_as"];
 
 		std::set<gamemap::location>::const_iterator loc = c.locs.begin();
 		std::advance(loc,index);
 
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",loc->x+1);
-		cfg.values["x"] = buf;
+		char xbuf[50];
+		snprintf(xbuf,sizeof(xbuf),"%d",loc->x+1);
+		cfg.values["x"] = xbuf;
 		if(filter != NULL) {
-			(*filter)["x"] = buf;
+			(*filter)["x"] = xbuf;
 		}
 
 		if(object_filter != NULL) {
-			(*object_filter)["x"] = buf;
+			(*object_filter)["x"] = xbuf;
 		}
 
-		snprintf(buf,sizeof(buf),"%d",loc->y+1);
-		cfg.values["y"] = buf;
+		char ybuf[50];
+		snprintf(ybuf,sizeof(ybuf),"%d",loc->y+1);
+		cfg.values["y"] = ybuf;
 		if(filter != NULL) {
-			(*filter)["y"] = buf;
+			(*filter)["y"] = ybuf;
 		}
 
 		if(object_filter != NULL) {
-			(*object_filter)["y"] = buf;
+			(*object_filter)["y"] = ybuf;
 		}
 
 		//if this is a side, place a castle for the side
@@ -259,6 +261,17 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 		}
 
 		res_.add_child(key,cfg);
+
+		if(!loc_var.empty()) {
+			config &temp = res_.add_child("event");
+			temp["name"] = "prestart";
+			config &xcfg = temp.add_child("set_variable");
+			xcfg["name"] = loc_var + "_x";
+			xcfg["value"] = xbuf;
+			config &ycfg = temp.add_child("set_variable");
+			ycfg["name"] = loc_var + "_y";
+			ycfg["value"] = ybuf;
+		}
 
 		++i1;
 	}
