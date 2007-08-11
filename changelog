@@ -37,7 +37,8 @@ Version 1.3.6+svn:
    * enable "teamchat" for observers
  * graphics
    * fixed a glitch with the undo of recruit or recall on high places.
-   * Improve rendering of "black stripes": don't hide footsteps and fog
+   * Improve rendering of "black stripes": don't hide footsteps or fog,
+     and apply it also on off-map tiles when active.
    * Improve rendering of grid : draw under fog, shroud and "black stripes"
    * Fixed bug #9646: ToD changes not applied to mainmap in replay mode.
  * user interface:
@@ -54,6 +55,9 @@ Version 1.3.6+svn:
    * 'help' and 'more' button in the title screen now also have a tooltip
      (bug #9618 patch #790)
    * added a hotkey for clearing the chat messages (patch #770)
+   * fixed incorrect displayed reachable zone when moving next to an enemy
+     in special ZoC cases (skirmish or lvl0)
+   * Remove the "black stripes" of the enemy that we want to attack.
  * WML engine:
    * now [base_unit]id= inside [unit] can extend upon existing unit types
    * new tag [filter_radius] to allow greater control over radius expansion
@@ -84,8 +88,8 @@ Version 1.3.6+svn:
      next scenario or the lobby. Instead, you linger in browse mode --
      menu commands for chat, saving games, etc. are available.  Clicking
      end-of-turn ends the linger and takes you out.
-   * fixed a bug-cheat allowing super-ranged attack when using unit's end of
-     turn (thanks jgp93)
+   * fixed a bug-cheat allowing super-ranged attack in some special cases
+     (thanks jgp93)
 
 Version 1.3.6:
  * language and i18n:
