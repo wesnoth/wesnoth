@@ -1146,13 +1146,20 @@ public:
 					++from_iter)
 			{
 				std::string unit_id = *from_iter;
-				std::map<std::string,unit_type>::const_iterator from_type = game_info->unit_types.find(unit_id);
-				if (from_type != game_info->unit_types.end())
+				std::map<std::string,unit_type>::const_iterator type = game_info->unit_types.find(unit_id);
+				if (type != game_info->unit_types.end())
 				{
-					std::string lang_unit = from_type->second.language_name();
-					std::string ref_id = std::string("unit_") + from_type->second.id();
+					std::string lang_unit = type->second.language_name();
+					std::string ref_id;
+					if (description_type(type->second) == FULL_DESCRIPTION) {
+						ref_id = std::string("unit_") + type->second.id();
+					} else {
+						ref_id = "unknown_unit";
+						lang_unit += " (?)";
+					}
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
-					if (from_iter + 1 != from_units.end()) ss << ", ";
+					if (from_iter + 1 != from_units.end())
+						ss << ", ";
 				}
 			}
 			ss << "\n";
@@ -1167,12 +1174,17 @@ public:
 				 advance_end = next_units.end();
 				 advance_it != advance_end; ++advance_it) {
 				std::string unit_id = *advance_it;
-				std::map<std::string,unit_type>::const_iterator new_type = game_info->unit_types.find(unit_id);
-				if(new_type != game_info->unit_types.end()) {
-					std::string lang_unit = new_type->second.language_name();
-					std::string ref_id = std::string("unit_") + new_type->second.id();
-					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit)
-					   << "'</ref>";
+				std::map<std::string,unit_type>::const_iterator type = game_info->unit_types.find(unit_id);
+				if(type != game_info->unit_types.end()) {
+					std::string lang_unit = type->second.language_name();
+					std::string ref_id;
+					if (description_type(type->second) == FULL_DESCRIPTION) {
+						ref_id = std::string("unit_") + type->second.id();
+					} else {
+						ref_id = "unknown_unit";
+						lang_unit += " (?)";
+					}
+					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
 					if (advance_it + 1 != advance_end)
 						ss << ", ";
 				}
