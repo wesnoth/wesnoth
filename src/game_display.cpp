@@ -688,7 +688,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 			rotate = "~FL(horiz)~FL(vert)";
 		}
 
-		const std::string image = "images/footsteps/foot" + speed
+		const std::string image = "footsteps/foot" + speed
 			+ (h==0 ? "-in-" : "-out-") + i->write_direction(dir)
 			+ ".png" + rotate;
 
