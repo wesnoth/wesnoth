@@ -271,6 +271,37 @@ theme::object::object(const config& cfg) :
 {
 }
 
+theme::tborder::tborder() :
+		size(0.0)
+{
+}
+
+theme::tborder::tborder(const config& cfg) :
+	size(lexical_cast_default<double>(cfg["border_size"], 0.0)),
+
+	background_image(cfg["background_image"]),
+
+	corner_image_top_left(cfg["corner_image_top_left"]),
+	corner_image_bottom_left(cfg["corner_image_bottom_left"]),
+
+	corner_image_top_right_odd(cfg["corner_image_top_right_odd"]),
+	corner_image_top_right_even(cfg["corner_image_top_right_even"]),
+
+	corner_image_bottom_right_odd(cfg["corner_image_bottom_right_odd"]),
+	corner_image_bottom_right_even(cfg["corner_image_bottom_right_even"]),
+
+	border_image_left(cfg["border_image_left"]),
+	border_image_right(cfg["border_image_right"]),
+
+	border_image_top_odd(cfg["border_image_top_odd"]),
+	border_image_top_even(cfg["border_image_top_even"]),
+
+	border_image_bottom_odd(cfg["border_image_bottom_odd"]),
+	border_image_bottom_even(cfg["border_image_bottom_even"])
+{
+	wassert(size >= 0.0);
+}
+
 SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 {
 	if(last_screen_ == screen && !location_modified_)
@@ -563,6 +594,12 @@ void theme::add_object(const config& cfg){
 		LOG_DP << "done adding menu...\n";
 	}
 
+	const config* const border_cfg = cfg.child("main_map_border");
+	if (border_cfg != NULL) {
+		border_ = tborder(*border_cfg);
+	} else {
+		border_ = tborder();
+	}
 }
 
 void theme::remove_object(std::string id){

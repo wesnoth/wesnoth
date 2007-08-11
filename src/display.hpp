@@ -329,6 +329,19 @@ public:
 	std::map<reports::TYPE, std::string> get_report_contents() {return report_;};
 
 protected:
+
+	/**
+	 * draws the border tile overlay, the routine determines by itself which
+	 * border it's on and draws an overlay accordingly. The definition of the
+	 * border is stored in the 'main_map_border' part of the theme.
+	 *
+	 * param loc	the map location of the tile
+	 * param xpos	the on-screen pixels x coordinate of the tile
+	 * param ypos	the on-screen pixels y coordinate of the tile
+	 */
+	virtual void draw_border(const gamemap::location& loc, 
+		const int xpos, const int ypos);
+
 	void draw_minimap(int x, int y, int w, int h);
 
 	virtual void zoom_redraw_hook() {};

@@ -63,6 +63,36 @@ class theme
 		static ANCHORING read_anchor(const std::string& str);
 	};
 
+	struct tborder
+	{
+
+		tborder();
+		tborder(const config& cfg);
+
+		double size;
+
+		std::string background_image;
+
+		std::string corner_image_top_left;
+		std::string corner_image_bottom_left;
+
+		std::string corner_image_top_right_odd;
+		std::string corner_image_top_right_even;
+
+		std::string corner_image_bottom_right_odd;
+		std::string corner_image_bottom_right_even;
+
+		std::string border_image_left;
+		std::string border_image_right;
+
+		std::string border_image_top_odd;
+		std::string border_image_top_even;
+
+		std::string border_image_bottom_odd;
+		std::string border_image_bottom_even;
+
+	};
+
 public:
 
 	class label : public object
@@ -175,6 +205,8 @@ public:
     static void set_known_themes(const config* cfg);
     static std::vector<std::string> get_known_themes();
 
+	const tborder& border() const { return border_; }
+
 private:
 	theme::object& find_element(std::string id);
 	void add_object(const config& cfg);
@@ -193,6 +225,8 @@ private:
 	std::map<std::string,status_item> status_;
 
 	object main_map_, mini_map_, unit_image_;
+
+	tborder border_;
 };
 
 #endif
