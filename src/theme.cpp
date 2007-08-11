@@ -299,7 +299,7 @@ theme::tborder::tborder(const config& cfg) :
 	border_image_bottom_odd(cfg["border_image_bottom_odd"]),
 	border_image_bottom_even(cfg["border_image_bottom_even"])
 {
-	wassert(size >= 0.0);
+	wassert(size >= 0.0 && size <= 0.5);
 }
 
 SDL_Rect& theme::object::location(const SDL_Rect& screen) const

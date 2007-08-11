@@ -1067,9 +1067,14 @@ surface display::get_minimap(int w, int h)
 	return minimap_;
 }
 
-// FIXME we assume a hardcoded half hex border!!!
 void display::draw_border(const gamemap::location& loc, const int xpos, const int ypos)
 {
+	/**
+	 * at the moment the border must be between 0.0 and 0.5 and the image
+	 * should always be prepared for a 0.5 border. This way this code 
+	 * doesn't need modifications for other border sizes
+	 */
+
 	// first handle the corners 
 	if(loc.x == -1 && loc.y == -1) { // top left corner
 		SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
@@ -1143,7 +1148,6 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 
 		if(loc.x%2 == 1) {
 			rect.y = ypos;
-			// NOTE here is the internal idea off odd and even used
 			border = image::get_image(theme_.border().border_image_bottom_even, image::SCALED_TO_ZOOM);
 		} else {
 			rect.y = ypos + zoom_/2;
