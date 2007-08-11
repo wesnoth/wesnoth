@@ -753,7 +753,7 @@ void display::draw_all_panels()
  */
 static void draw_background(surface screen, const SDL_Rect& area)
 {
-	static const surface wood(image::get_image("terrain/off-map/wood.png"));
+	static const surface wood(image::get_image("terrain/off-map/background.png"));
 	static const unsigned int width = wood->w;
 	static const unsigned int height = wood->h;
 	wassert(!wood.null());
@@ -1140,7 +1140,7 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 			border = image::get_image(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM);
 		} else {
 			rect.y = ypos + zoom_/2;
-			border = image::get_image(theme_.border().border_image_top_even, image::SCALED_TO_ZOOM);
+			border = image::get_image(theme_.border().border_image_top_odd, image::SCALED_TO_ZOOM);
 		}
 
 		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
