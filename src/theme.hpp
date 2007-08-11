@@ -177,7 +177,7 @@ public:
 
 private:
 	theme::object& find_element(std::string id);
-	theme::object& add_object(const config& cfg);
+	void add_object(const config& cfg);
 	void remove_object(std::string id);
 	void set_object_location(theme::object& element, std::string rect_str, std::string ref_id);
 

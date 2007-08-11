@@ -508,19 +508,16 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	return result;
 }
 
-theme::object& theme::add_object(const config& cfg){
-	static theme::object result;
+void theme::add_object(const config& cfg){
 
 	const config* const main_map_cfg = cfg.child("main_map");
 	if(main_map_cfg != NULL) {
 		main_map_ = object(*main_map_cfg);
-		result = main_map_;
 	}
 
 	const config* const mini_map_cfg = cfg.child("mini_map");
 	if(mini_map_cfg != NULL) {
 		mini_map_ = object(*mini_map_cfg);
-		result = mini_map_;
 	}
 
 	const config* const status_cfg = cfg.child("status");
@@ -536,7 +533,6 @@ theme::object& theme::add_object(const config& cfg){
 		} else {
 			unit_image_ = object();
 		}
-		result = unit_image_;
 	}
 
 	const config::child_list& panel_list = cfg.get_children("panel");
@@ -544,7 +540,6 @@ theme::object& theme::add_object(const config& cfg){
 		panel new_panel(**p);
 		set_object_location(new_panel, (**p)["rect"], (**p)["ref"]);
 		panels_.push_back(new_panel);
-		result = new_panel;
 	}
 
 	const config::child_list& label_list = cfg.get_children("label");
@@ -552,7 +547,6 @@ theme::object& theme::add_object(const config& cfg){
 		label new_label(**lb);
 		set_object_location(new_label, (**lb)["rect"], (**lb)["ref"]);
 		labels_.push_back(new_label);
-		result = new_label;
 	}
 
 	const config::child_list& menu_list = cfg.get_children("menu");
@@ -567,10 +561,8 @@ theme::object& theme::add_object(const config& cfg){
 		}
 
 		LOG_DP << "done adding menu...\n";
-		result = new_menu;
 	}
 
-	return result;
 }
 
 void theme::remove_object(std::string id){
