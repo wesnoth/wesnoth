@@ -1973,10 +1973,10 @@ namespace events{
 	{
 		textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
 	}
-//%%
-	void menu_handler::user_command_1()
+
+	void menu_handler::clear_messages()
 	{
-		gui_->clear_chat_messages();	// clear messages
+		gui_->clear_chat_messages();	// also clear debug-messages and WML-error-messages
 	}
 
 #ifdef USRCMD2

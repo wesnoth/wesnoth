@@ -757,8 +757,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns,"");
 	}
 
-	//moving a 'unit' - i.e. a dummy unit that is just moving for
-	//the visual effect
+	// Moving a 'unit' - i.e. a dummy unit 
+	// that is just moving for the visual effect
 	else if(cmd == "move_unit_fake") {
 		std::string type = cfg["type"];
 		std::string side = cfg["side"];
@@ -1928,7 +1928,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					//The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
 				}
-			
+
 			} else {
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
 

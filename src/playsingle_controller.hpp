@@ -52,7 +52,7 @@ public:
 	virtual void unit_hold_position();
 	virtual void end_unit_turn();
 	virtual void user_command();
-	virtual void user_command_1();
+	virtual void clear_messages();
 #ifdef USRCMD2
 	virtual void user_command_2();
 	virtual void user_command_3();

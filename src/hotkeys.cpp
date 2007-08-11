@@ -131,7 +131,7 @@ const struct {
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true },
 
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
-	{ hotkey::HOTKEY_USER_CMD_1, "clearmessages", N_("Clear messages"), false },
+	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false },
 #ifdef USRCMD2
 	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false },
 	{ hotkey::HOTKEY_USER_CMD_3, "usercommand#3", N_("User-Command#3"), false },
@@ -637,8 +637,8 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			user_command();
 			break;
 //%%
-		case HOTKEY_USER_CMD_1:
-			user_command_1();
+		case HOTKEY_CLEAR_MSG:
+			clear_messages();
 			break;
 #ifdef USRCMD2
 		case HOTKEY_USER_CMD_2:
@@ -646,7 +646,6 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			user_command_2();
 			break;
 		case HOTKEY_USER_CMD_3:
-			//user_command();
 			user_command_3();
 			break;
 #endif

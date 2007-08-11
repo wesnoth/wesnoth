@@ -105,7 +105,7 @@ public:
 	void end_unit_turn(mouse_handler& mousehandler, const unsigned int team_num);
 	void search();
 	void user_command();
-	void user_command_1();
+	void clear_messages();
 #ifdef USRCMD2
 	void user_command_2();
 	void user_command_3();

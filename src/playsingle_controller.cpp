@@ -116,8 +116,8 @@ void playsingle_controller::user_command(){
 	menu_handler_.user_command();
 }
 
-void playsingle_controller::user_command_1(){
-	menu_handler_.user_command_1();		// clear messages
+void playsingle_controller::clear_messages(){
+	menu_handler_.clear_messages();
 }
 
 #ifdef USRCMD2

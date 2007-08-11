@@ -505,7 +505,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_SEARCH:
 	case hotkey::HOTKEY_HELP:
 	case hotkey::HOTKEY_USER_CMD:
-	case hotkey::HOTKEY_USER_CMD_1:
+	case hotkey::HOTKEY_CLEAR_MSG:
 #ifdef USRCMD2
 	case hotkey::HOTKEY_USER_CMD_2:
 	case hotkey::HOTKEY_USER_CMD_3:
