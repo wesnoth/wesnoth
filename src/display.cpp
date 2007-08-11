@@ -741,22 +741,14 @@ void display::draw_all_panels()
 	create_buttons();
 }
 
-/**
- * Proof-of-concept of the new background still has some flaws
- * * upon scrolling the background static (so maps scrolls over wood)
- * * _off^usr has redraw glitches since background is only updated every now and then
- * * the alpha at the border tends to "build up"
- * * we impose a huge performance hit
- *
- * needs quite some work to become fully working, but first evaluate whether
- * the new way is really wanted.
- */
-static void draw_background(surface screen, const SDL_Rect& area)
+static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
 {
-	static const surface wood(image::get_image("terrain/off-map/background.png"));
-	static const unsigned int width = wood->w;
-	static const unsigned int height = wood->h;
-	wassert(!wood.null());
+	const surface background(image::get_image(image));
+	if(background.null()) {
+		return;
+	}
+	const unsigned int width = background->w;
+	const unsigned int height = background->h;
 
 	const unsigned int w_count = static_cast<int>(ceil(static_cast<double>(area.w) / static_cast<double>(width)));
 	const unsigned int h_count = static_cast<int>(ceil(static_cast<double>(area.h) / static_cast<double>(height)));
@@ -764,7 +756,7 @@ static void draw_background(surface screen, const SDL_Rect& area)
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
 			SDL_Rect clip = {w_off, h_off, 0, 0};
-			SDL_BlitSurface(wood, NULL, screen, &clip);
+			SDL_BlitSurface(background, NULL, screen, &clip);
 		}
 	}
 }
@@ -923,7 +915,7 @@ bool display::draw_init()
 		const SDL_Rect clip_rect = map_outside_area();
 		const surface outside_surf(screen_.getSurface());
 		clip_rect_setter set_clip_rect(outside_surf, clip_rect);
-		draw_background(outside_surf, clip_rect);
+		draw_background(outside_surf, clip_rect, theme_.border().background_image);
 		update_rect(clip_rect);
 
 		redraw_background_ = false;
