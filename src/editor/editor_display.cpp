@@ -81,8 +81,8 @@ void editor_display::draw(bool update,bool force)
 			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_FOREGROUND));
 
 			// draw the grid, if that's been enabled 
-			if(grid_) {
-				tile_stack_append(image::get_image(game_config::grid_image));
+			if(grid_ && map_.on_board(*it)) {
+				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
 
 			// paint selection and mouseover overlays
