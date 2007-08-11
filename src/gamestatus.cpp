@@ -1126,7 +1126,7 @@ void game_state::set_variables(const config& vars) {
 void game_state::set_menu_items(const config::child_list& menu_items) {
 	clear_wmi(wml_menu_items);
 	for(config::const_child_iterator i=menu_items.begin(); i != menu_items.end(); ++i) {
-		const std::string& id = (**i)["id"].value();
+		const std::string& id = (**i)["id"].base_str();
 		wml_menu_item*& mref = wml_menu_items[id];
 		if(mref == NULL) {
 			mref = new wml_menu_item(id, *i);

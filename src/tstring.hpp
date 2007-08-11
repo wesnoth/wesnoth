@@ -80,6 +80,9 @@ public:
 	operator const std::string&() const              { return str(); }
 	const std::string& str() const;
 	const char* c_str() const                        { return str().c_str(); }
+
+	//warning, value() may contain platform dependant prefix bytes
+	//consider base_str() for a more reliable untranslated string
 	const std::string& value() const                 { return value_; }
 	const std::string base_str() const;
 

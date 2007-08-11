@@ -1919,7 +1919,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 					//FIXME: get player_number_ from the play_controller not from the WML vars
 					const t_string& side_str = state_of_game->get_variable("side_number");
-					const int side = lexical_cast_default<int>(side_str.value(), -1);
+					const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
 					//Select advancement if it is on the playing side and the player is a human
 					const bool sel = (side == static_cast<int>(u.side())
@@ -2044,7 +2044,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			state_of_game->scenario = next_scenario;
 		}
 
-		const std::string result = cfg["result"].value(); //do not translate
+		const std::string result = cfg["result"].base_str(); //do not translate
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
 			throw end_level_exception(VICTORY,bonus);

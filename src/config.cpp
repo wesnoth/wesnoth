@@ -592,13 +592,13 @@ bool config::matches(const config &filter) const
 		if(!this->values.count(j->first)) return false; 
 		const t_string& test_val = this->values.find(j->first)->second;
 		if(test_val != j->second) {
-			const std::string& boolcheck = j->second.value();
+			const std::string& boolcheck = j->second.base_str();
 			if(boolcheck == "yes" || boolcheck == "true" || boolcheck == "on") {
-				if(!utils::string_bool(test_val.value(), false)) {
+				if(!utils::string_bool(test_val.base_str(), false)) {
 					return false;
 				}
 			} else if(boolcheck == "no" || boolcheck == "false" || boolcheck == "off") {
-				if(utils::string_bool(test_val.value(), true)) {
+				if(utils::string_bool(test_val.base_str(), true)) {
 					return false;
 				}
 			} else {
@@ -703,7 +703,8 @@ std::string config::hash() const
 					i = 0;
 				}
 			}
-			for(c = val->second.value().begin(); c != val->second.value().end(); ++c) {
+			const std::string &base_str = val->second.base_str();
+			for(c = base_str.begin(); c != base_str.end(); ++c) {
 				if(utils::portable_isspace(*c)) {
 					continue;
 				}

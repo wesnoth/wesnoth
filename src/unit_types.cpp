@@ -68,7 +68,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 			icon_ = "attacks/blank-attack.png";
 	}
 
-	range_ = cfg["range"].value();
+	range_ = cfg["range"].base_str();
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
 
