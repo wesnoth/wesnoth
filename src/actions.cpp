@@ -166,9 +166,12 @@ std::string recruit_unit(const gamemap& map, int side,
 			config cfg_unit1; 
 			new_unit.write(cfg_unit1);
 			::write(std::cerr, cfg_unit1);
-			// FIXME: this was not playtested, so I will disable it
-			// for release.
-			//if (!game_config::ignore_replay_errors) throw replay::error();
+			// FIXME enabling this exception will trigger an assertion failure
+			// in display.cpp:1010 when loading a map (the cause of that OOS 
+			// will be fixed soon). (Only tested in SP for bug #9728)
+//			if (!game_config::ignore_replay_errors) {
+//				throw replay::error("OOS while recruiting.");
+//			}
 		}
 
 	} else {
