@@ -383,7 +383,7 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED));
 			}
 
-			// apply shroud anf fog
+			// apply shroud and fog
 			if(is_shrouded) {
 				// we apply void also on off-map tiles to
 				// shroud the half-hexes too
