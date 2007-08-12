@@ -1372,6 +1372,10 @@ void unit::read(const config& cfg)
 	}
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
+        // Make the default upkeep "full"
+	if(cfg_["upkeep"].empty()) {
+            cfg_["upkeep"] = "full";
+        }
 }
 void unit::write(config& cfg) const
 {
@@ -1957,6 +1961,10 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 
 int unit::upkeep() const
 {
+        // Leaders do not incur upkeep.
+        if(can_recruit()) {
+                return 0;
+        }
 	if(cfg_["upkeep"] == "full") {
 		return level();
 	}

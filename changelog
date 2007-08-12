@@ -82,6 +82,16 @@ Version 1.3.6+svn:
    * fog and shroud tiles are now defined by the TerrainWML (not [game_config])
    * new key store_location_as= to store generated chamber item locations
    * the border has been made themable
+   * Instead of having an empty upkeep type as the default when reading a
+     config file being used to normally give leaders a 0 upkeep, now leaders
+     (canrecruit=1) are specifically exempted from upkeep and the upkeep
+     type defaults to "full" when read from config files the same as for
+     using the recruit function. This makes documenting how upkeep works
+     simpler (it currently wasn't really correct) without having to make
+     leaders loyal. It also will work better for campaigns where the leaders
+     change (not that there are any now) so that the current leader is
+     exempted and any exleaders pay for upkeep (unless the are specically
+     marked as loyal).
  * team color
    * allow color ranges to be defined on-the-fly (like color palettes)
    * now [side] colour=<string> is valid (previously only int)
