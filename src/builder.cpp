@@ -737,7 +737,7 @@ void terrain_builder::parse_config(const config &cfg)
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
 			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc
-			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types) << "'\n";
+			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types_match.terrain) << "'\n";
 
 			std::vector<std::string>::const_iterator flag;
 
