@@ -50,14 +50,19 @@ public:
 
 	/** Constructor for the terrain_builder class.
 	 *
-	 * @param cfg   The main grame configuration object, where the
-	 *              [terrain_graphics] rule reside.
-	 * @param level A level (scenario)-specific configuration file,
-	 *              containing scenario-specific [terrain_graphics] rules.
-	 * @param gmap  A properly-initialized gamemap object representing the
-	 *              current terrain map.
+	 * @param cfg			The main grame configuration object, where the
+	 * 						[terrain_graphics] rule reside.
+	 * @param level 		A level (scenario)-specific configuration file,
+	 *          		    containing scenario-specific [terrain_graphics] rules.
+	 * @param map			A properly-initialized gamemap object representing the
+	 *             			current terrain map.
+	 * @param offmap_image	The filename of the image which will be used as
+	 * 						off map image (see add_off_map_rule()). This image
+	 * 						automatically gets the 'terrain/' prefix and '.png'
+	 * 						suffix
 	 */
-	terrain_builder(const config& cfg, const config &level, const gamemap& gmap);
+	terrain_builder(const config& cfg, const config &level, 
+		const gamemap& map, const std::string& offmap_image);
 
 	/** Returns a vector of strings representing the images to load & blit
 	 * together to get the built content for this tile.
@@ -579,6 +584,13 @@ private:
 	 * @param config   The configuration object to parse.
 	 */
 	void parse_config(const config &cfg);
+
+	/**
+	 * adds a builder rule for the _off^_usr tile, this tile only has 1 image
+	 *
+	 * @param image		The filename of the image
+	 */
+	void add_off_map_rule(const std::string& image);
 
 	/**
 	 * Checks whether a terrain letter matches a given list of terrain letters

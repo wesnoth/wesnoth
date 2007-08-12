@@ -62,7 +62,7 @@ namespace {
 display::display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
 	screen_(video), map_(map), viewpoint_(NULL), xpos_(0), ypos_(0),
 	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
-	builder_(cfg, level, map),
+	builder_(cfg, level, map, theme_.border().tile_image),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	invalidateAll_(true), grid_(false),
 	diagnostic_label_(0), panelsDrawn_(false),

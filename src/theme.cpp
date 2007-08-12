@@ -280,6 +280,7 @@ theme::tborder::tborder(const config& cfg) :
 	size(lexical_cast_default<double>(cfg["border_size"], 0.0)),
 
 	background_image(cfg["background_image"]),
+	tile_image(cfg["tile_image"]),
 
 	corner_image_top_left(cfg["corner_image_top_left"]),
 	corner_image_bottom_left(cfg["corner_image_bottom_left"]),

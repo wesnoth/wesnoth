@@ -72,6 +72,7 @@ class theme
 		double size;
 
 		std::string background_image;
+		std::string tile_image;
 
 		std::string corner_image_top_left;
 		std::string corner_image_bottom_left;

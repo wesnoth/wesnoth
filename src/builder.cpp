@@ -127,8 +127,9 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
 
-terrain_builder::terrain_builder(const config& cfg, const config& level, const gamemap& gmap) :
-	map_(gmap), tile_map_(gmap.w(), gmap.h())
+terrain_builder::terrain_builder(const config& cfg, const config& level, 
+	const gamemap& map, const std::string& offmap_image) :
+		map_(map), tile_map_(map.w(), map.h())
 {
 	// make sure there's nothing left in the cache since it might
 	// give problems
@@ -136,8 +137,9 @@ terrain_builder::terrain_builder(const config& cfg, const config& level, const g
 
 	parse_config(cfg);
 	parse_config(level);
+	add_off_map_rule(offmap_image);
+
 	build_terrains();
-	//rebuild_terrain(gamemap::location(0,0));
 }
 
 const terrain_builder::imagelist *terrain_builder::get_terrain_at(const gamemap::location &loc,
@@ -757,6 +759,33 @@ void terrain_builder::parse_config(const config &cfg)
 	}
 #endif
 
+}
+
+void terrain_builder::add_off_map_rule(const std::string& image)
+{
+	// build a config object
+	config cfg;
+
+	cfg.add_child("terrain_graphics");
+	config *item = cfg.child("terrain_graphics");
+
+	(*item).add_child("tile");
+	config *tile = (*item).child("tile");
+	(*tile)["x"] = "0";
+	(*tile)["y"] = "0";
+	(*tile)["type"] = t_translation::write_letter(t_translation::OFF_MAP_USER);
+
+	(*tile).add_child("image");
+	config *tile_image = (*tile).child("image");
+	(*tile_image)["layer"] = "-1000";
+	(*tile_image)["name"] = image;
+
+	(*item)["probability"] = "100";
+	(*item)["no_flag"] = "base";
+	(*item)["set_flag"] = "base";
+
+	// parse the object
+	parse_config(cfg);
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, 
