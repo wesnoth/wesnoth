@@ -20,32 +20,34 @@ class CVideo;
 
 namespace font {
 
-//standard markups
-extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, GRAY_TEXT, BLACK_TEXT, BOLD_TEXT, IMAGE, NULL_MARKUP;
+// Standard markups
+extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT, 
+                  GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, YELLOW_TEXT, IMAGE;
 
 
-//function to draw text on the screen. The text will be clipped to area.
+//Function to draw text on the screen. The text will be clipped to area.
 //If the text runs outside of area horizontally, an ellipsis will be displayed
-//at the end of it. If use_tooltips is true, then text with an ellipsis will
-//have a tooltip set for it equivalent to the entire contents of the text.
+//at the end of it.
+//If use_tooltips is true, then text with an ellipsis will have a tooltip 
+//set for it equivalent to the entire contents of the text.
 //
-//some very basic 'markup' will be done on the text:
-// - any line beginning in # will be displayed in BAD_COLOUR
-// - any line beginning in @ will be displayed in GOOD_COLOUR
+//Some very basic 'markup' will be done on the text:
+// - any line beginning in # will be displayed in BAD_COLOUR  (red)
+// - any line beginning in @ will be displayed in GOOD_COLOUR (green)
 // - any line beginning in + will be displayed with size increased by 2
 // - any line beginning in - will be displayed with size decreased by 2
 // - any line beginning with 0x0n will be displayed in the colour of side n
 //
-//the above special characters can be quoted using a C-style backslash.
+//The above special characters can be quoted using a C-style backslash.
 //
-//a bounding rectangle of the text is returned. If gui is NULL, then the
+//A bounding rectangle of the text is returned. If gui is NULL, then the
 //text will not be drawn, and a bounding rectangle only will be returned.
 
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
-//function which returns the size of text if it were to be drawn.
+// Function which returns the size of text if it were to be drawn.
 SDL_Rect text_area(const std::string& text, int size, int style=0);
 
 // Copy string but without tags at the begining 
@@ -55,15 +57,15 @@ bool is_format_char(char c);
 
 ///
 /// If the text exceedes the specified max width, wrap it one a word basis.
-/// If the is not possible, e.g. the word is too big to fit, wrap it on a
+/// If this is not possible, e.g. the word is too big to fit, wrap it on a
 /// char basis.
 ///
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height=-1, int max_lines=-1);
 
 ///
 /// Draw text on the screen. This method makes sure that the text
-/// fits within a given maximum width. If a line exceedes this width it
-/// will be wrapped on a word basis if possible, otherwise on a char
+/// fits within a given maximum width. If a line exceedes this width
+/// it will be wrapped on a word basis if possible, otherwise on a char
 /// basis. This method is otherwise similar to the draw_text method,
 /// but it doesn't support special markup or tooltips.
 ///

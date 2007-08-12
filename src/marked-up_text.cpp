@@ -20,11 +20,16 @@
 
 namespace font {
 
-const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
-           NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&',
-           COLOR_TEXT='<', NULL_MARKUP='^', GRAY_TEXT='|';
+const char LARGE_TEXT='*', SMALL_TEXT='`', 
+		   BOLD_TEXT='~',  NORMAL_TEXT='{', 
+		   NULL_MARKUP='^', 
+		   BLACK_TEXT='}', GRAY_TEXT='|',
+           GOOD_TEXT='@',  BAD_TEXT='#',
+           GREEN_TEXT='@', RED_TEXT='#',
+           COLOR_TEXT='<', YELLOW_TEXT='!', 
+		   IMAGE='&';
 
-//function which will parse the markup tags at the front of a string
+//Function which will parse the markup tags at the front of a string
 static std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
 					 int* font_size, SDL_Color* colour, int* style)
 {
@@ -54,6 +59,9 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 		case GRAY_TEXT:
 			*colour = GRAY_COLOUR;
 			break;
+		case YELLOW_TEXT:
+			*colour = YELLOW_COLOUR;
+			break;
 		case LARGE_TEXT:
 			*font_size += 2;
 			break;
@@ -67,7 +75,7 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 			return i1+1;
 		case COLOR_TEXT:
 		  {
-		    //very primitive parsing for rgb value
+		    //Very primitive parsing for rgb value
 		    //should look like <213,14,151>
 		    //but no checking on commas or end '>',
 		    //could be any non-# char
@@ -186,7 +194,9 @@ bool is_format_char(char c)
 	case GOOD_TEXT:
 	case BAD_TEXT:
 	case NORMAL_TEXT:
+	case YELLOW_TEXT:
 	case BLACK_TEXT:
+	   // ?? GRAY_TEXT 
 	case BOLD_TEXT:
 	case NULL_MARKUP:
 		return true;

@@ -113,8 +113,8 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 		title = _("Losses");
 		break;
 	case 4:
-		items_sub = create_unit_table(gameinfo_, stats_.killed, team_num_); 
-		// FIXME? Perhaps killed units shouldn't have the same team-color as your own.
+		items_sub = create_unit_table(gameinfo_, stats_.killed, team_num_);
+		//! @todo FIXME? Perhaps killed units shouldn't have the same team-color as your own.
 		title = _("Kills");
 		break;
 	default:
@@ -236,8 +236,8 @@ namespace events{
 		if(index < units_.size()) {
 			const unit& u = units_[index];
 
-			//if the unit is of level > 1, or is close to advancing, we warn the player
-			//about it
+			//If the unit is of level > 1, or is close to advancing,
+			//we warn the player about it
 			std::string message = "";
 			if(u.level() > 1) {
 				message = _("My lord, this unit is an experienced one, having advanced levels! Do you really want to dismiss $noun?");
@@ -310,14 +310,15 @@ namespace events{
 	void menu_handler::unit_list()
 	{
 		const std::string heading = std::string(1,HEADING_PREFIX) +
-									_("Type") + COLUMN_SEPARATOR +
-									_("Name") + COLUMN_SEPARATOR +
-									_("Level") + COLUMN_SEPARATOR +
-									_("HP") + COLUMN_SEPARATOR +
-									_("XP") + COLUMN_SEPARATOR +
+									_("Type")     + COLUMN_SEPARATOR +
+									_("Name")     + COLUMN_SEPARATOR +
+									_("Level")    + COLUMN_SEPARATOR +
+									_("HP")       + COLUMN_SEPARATOR +
+									_("XP")       + COLUMN_SEPARATOR +
 									_("unit list^Traits") + COLUMN_SEPARATOR +
-									_("Moves") + COLUMN_SEPARATOR +
-									_("Location");
+									_("Moves")    + COLUMN_SEPARATOR +
+									_("Location") + COLUMN_SEPARATOR +
+									_("Status");
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(0).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
@@ -328,8 +329,9 @@ namespace events{
 
 		std::vector<gamemap::location> locations_list;
 		std::vector<unit> units_list;
+
 		int selected = 0;
-		
+
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->second.side() != (gui_->viewing_team()+1))
 				continue;
@@ -340,24 +342,86 @@ namespace events{
 				 row << DEFAULT_ITEM;
 				 selected = units_list.size();
 			}
-			
-			row << i->second.language_name() << COLUMN_SEPARATOR
-				<< i->second.description() << COLUMN_SEPARATOR
-				<< i->second.level() << COLUMN_SEPARATOR
-				<< i->second.hitpoints() << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR
-				<< i->second.experience() << "/";
+//%%
+			// If unit is leader/hero, show name+desc in green/yellow
+			//! @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query
+			if(i->second.can_recruit() )
+				row << font::GREEN_TEXT;
+			row << i->second.language_name() << COLUMN_SEPARATOR;
+			if(i->second.can_recruit() )
+				row << font::GREEN_TEXT;
+			row << i->second.description()   << COLUMN_SEPARATOR;
 
+			// Show units of level 0 as red / level 1 as white / level 2+ as green
+			if(i->second.level() < 1 )
+				row << font::RED_TEXT;
+			if(i->second.level() == 2 )
+				row << font::YELLOW_TEXT;
+			if(i->second.level() > 2 )
+				row << font::GREEN_TEXT;
+			row << i->second.level()         << COLUMN_SEPARATOR;
+
+			// see also unit_preview_pane in dialogs.cpp
+			// Display hitpoints in green (>75%) / white / yellow (<66%) / red (<33%)
+			if(i->second.hitpoints() <= i->second.max_hitpoints()/3)
+				row << font::RED_TEXT;
+			else if(i->second.hitpoints()  < 2*(i->second.max_hitpoints()/3))
+				row << font::YELLOW_TEXT;
+			else if(i->second.hitpoints()  > 3*(i->second.max_hitpoints()/4))
+				row << font::GREEN_TEXT;
+			row << i->second.hitpoints()  << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR;
+
+			// Display in green if killing a unit the same level as us would level us up
+			// Display in yellow if unit has more than half the required XP to level up
+			// FIXME: use violet color if unit cannot advance further, as in panel right of the map
+			// ?? if(i->second.max_experience() - i->second.experience() < game_config::kill_experience)
+			if(i->second.max_experience() - i->second.experience() <= (game_config::kill_experience*i->second.level()))
+				row << font::GREEN_TEXT;
+			else if(i->second.experience() > (i->second.max_experience()/2) )
+				row << font::YELLOW_TEXT; 
+			row << i->second.experience() << "/";
 			if(i->second.can_advance() == false)
 				row << "-";
 			else
 				row << i->second.max_experience();
 
+			// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
 			row << COLUMN_SEPARATOR
-				<< i->second.traits_description() << COLUMN_SEPARATOR
-				<< i->second.movement_left() << "/"
-				<< i->second.total_movement() << COLUMN_SEPARATOR
-				<< i->first;
+				<< i->second.traits_description() << COLUMN_SEPARATOR;
 
+			// If unit has no movement left, show mp in red
+			if(i->second.movement_left() < 1 )
+				row << font::RED_TEXT;
+			// If unit has all its movement left, show mp in green
+			if(i->second.movement_left() == i->second.total_movement() )
+				row << font::GREEN_TEXT;
+			row << i->second.movement_left()  << "/"
+				<< i->second.total_movement() << COLUMN_SEPARATOR;
+
+			// If unit is on a village, show the location in green
+			if(map_.is_village(i->first))
+				row << font::GREEN_TEXT;
+			// if unit is on a castle/keep, show the location in yellow/red
+			// FIXME: use gold instead of yellow
+			if(map_.is_castle(i->first))
+				row << font::YELLOW_TEXT;
+			if(map_.is_keep(i->first))
+				row << font::RED_TEXT;
+			row << i->first << COLUMN_SEPARATOR;
+
+			// show icons if unit is slowed, poisoned, stoned, invisible:
+			if(utils::string_bool(i->second.get_state("stoned")))
+				row << IMAGE_PREFIX << "misc/stone.png"    << IMG_TEXT_SEPARATOR;
+			if(utils::string_bool(i->second.get_state("slowed")))
+				row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
+			if(utils::string_bool(i->second.get_state("poisoned")))
+				row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
+
+			//! @todo FIXME: condition for "invisible" does not work
+			//if(utils::string_bool(i->second.get_state("hides"))) 	// "hides" gives ability, not status
+			if(utils::string_bool(i->second.get_state("invisible")))
+				row << IMAGE_PREFIX << "misc/invisible.png";
+//%% 
 			items.push_back(row.str());
 
 			locations_list.push_back(i->first);
@@ -384,11 +448,11 @@ namespace events{
 	{
 		std::stringstream heading;
 		heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
-				<< _("Team") << COLUMN_SEPARATOR
-				<< _("Gold") << COLUMN_SEPARATOR
-				<< _("Villages") << COLUMN_SEPARATOR
+				<< _("Team")         << COLUMN_SEPARATOR
+				<< _("Gold")         << COLUMN_SEPARATOR
+				<< _("Villages")     << COLUMN_SEPARATOR
 				<< _("status^Units") << COLUMN_SEPARATOR
-				<< _("Upkeep") << COLUMN_SEPARATOR
+				<< _("Upkeep")       << COLUMN_SEPARATOR
 				<< _("Income");
 
 		gui::menu::basic_sorter sorter;
