@@ -89,6 +89,7 @@ void flush_cache()
 	reset_cache(semi_brightened_images_);
 	mini_terrain_cache.clear();
 	reversed_images_.clear();
+	image_existance_map.clear();
 }
 
 int locator::last_index_ = 0;

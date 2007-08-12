@@ -130,6 +130,10 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap
 terrain_builder::terrain_builder(const config& cfg, const config& level, const gamemap& gmap) :
 	map_(gmap), tile_map_(gmap.w(), gmap.h())
 {
+	// make sure there's nothing left in the cache since it might
+	// give problems
+	image::flush_cache();
+
 	parse_config(cfg);
 	parse_config(level);
 	build_terrains();
