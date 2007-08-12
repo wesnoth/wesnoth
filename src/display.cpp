@@ -507,15 +507,23 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 			timeid, builder_terrain_type);
 
 	if(terrains != NULL) {
+		// cache the offmap name, since it's themabel it 
+		// can change so don't make it static
+		const std::string off_map_name = "terrain/" + theme_.border().tile_image + ".png";
 		for(std::vector<animated<image::locator> >::const_iterator it = 
 				terrains->begin(); it != terrains->end(); ++it) {
 
 			image::locator image = it->get_current_frame();
 
-			// we prevent ToD coloring and brightening of off-map tiles
+			// we prevent ToD colouring and brightening of off-map tiles
 			// except if we are not in_game and so in the editor.
-			const bool off_map = (map_.get_terrain(loc) == t_translation::OFF_MAP_USER);
-			const surface surface(image::get_image(image, off_map ? image::UNMASKED : image_type));
+			// We need to test for the file to be rendered and not the
+			// location, since the transitions are rendered over the 
+			// offmap terrain and these need a ToD colouring
+			const bool off_map = (image.get_filename() == off_map_name);
+			const surface surface(image::get_image(image, 
+				off_map ? image::UNMASKED : image_type));
+
 			if (!surface.null()) {
 				res.push_back(surface);
 			}
