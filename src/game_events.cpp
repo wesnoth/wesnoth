@@ -1955,7 +1955,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		const gamemap::location& loc = game_map->starting_position(side_num);
 		wassert(state_of_game != NULL);
-		config &loc_store = state_of_game->add_variable_cfg(variable);
+		config &loc_store = state_of_game->get_variable_cfg(variable);
+		loc_store.clear();
 		loc.write(loc_store);
 		game_map->write_terrain(loc, loc_store);
 	}
@@ -1972,7 +1973,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if (variable.empty()) {
 			variable="location";
 		}
-		state_of_game->clear_variable_cfg(variable);
+		config to_store;
+		variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
 
 		std::vector<gamemap::location> locs = game_map->villages();
 
@@ -1989,11 +1991,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				matches = terrain_matches_filter(*game_map, *j, cfg, *status_ptr, *units);
 			}
 			if(matches) {
-				config &loc_store = state_of_game->add_variable_cfg(variable);
+				config &loc_store = to_store.add_child(varinfo.key);
 				j->write(loc_store);
 				game_map->write_terrain(*j, loc_store);
 			}
 		}
+		varinfo.vars->clear_children(varinfo.key);
+		varinfo.vars->append(to_store);
 	}
 
 	else if(cmd == "store_locations" ) {
