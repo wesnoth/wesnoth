@@ -1026,9 +1026,7 @@ const t_string& game_state::get_variable_const(const std::string& key) const
 
 config& game_state::get_variable_cfg(const std::string& key)
 {
-	//FIXME: since this method is serving double duty for Arrays and Containers,
-	//we must validate type as an Array to be safe
-	return variable_info(key, true, variable_info::TYPE_ARRAY).as_container();
+	return variable_info(key, true, variable_info::TYPE_CONTAINER).as_container();
 }
 
 void game_state::set_variable(const std::string& key, const t_string& value)
