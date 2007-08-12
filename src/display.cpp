@@ -488,7 +488,6 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 		if(!fog_shroud.empty()) {
 			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {
 				image::locator image(*it);
-				// image.filename = "terrain/" + *it;
 
 				const surface surface(image::get_image(image, image_type));
 				if (!surface.null()) {
@@ -508,27 +507,18 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 			timeid, builder_terrain_type);
 
 	if(terrains != NULL) {
-		for(std::vector<animated<image::locator> >::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
-			// it->update_current_frame();
+		for(std::vector<animated<image::locator> >::const_iterator it = 
+				terrains->begin(); it != terrains->end(); ++it) {
+
 			image::locator image = it->get_current_frame();
-			// image.filename = "terrain/" + image.filename;
 
 			// we prevent ToD coloring and brightening of off-map tiles
 			// except if we are not in_game and so in the editor.
-			static const std::string off_map_dir = "terrain/off-map/";
-			bool off_map = in_game() && image.get_filename().substr(0,off_map_dir.length()) ==  off_map_dir;
+			const bool off_map = (map_.get_terrain(loc) == t_translation::OFF_MAP_USER);
 			const surface surface(image::get_image(image, off_map ? image::UNMASKED : image_type));
 			if (!surface.null()) {
 				res.push_back(surface);
 			}
-		}
-	} else if(terrain_type == ADJACENT_BACKGROUND){
-		// this should only happen with the off map tiles and now 
-		// return the void image. NOTE this is a temp hack
-		const surface surface(image::get_image("terrain/off-map/alpha.png", image::UNMASKED));
-		wassert(!surface.null());
-		if (!surface.null()) {
-			res.push_back(surface);
 		}
 	}
 
