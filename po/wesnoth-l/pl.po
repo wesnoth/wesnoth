@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-11 23:28+0200\n"
-"PO-Revision-Date: 2007-08-09 12:14+0100\n"
+"PO-Revision-Date: 2007-08-12 10:34+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "(Łatwy)"
 
 #: data/campaigns/Liberty/_main.cfg:15
 msgid "(Difficult)"
-msgstr ""
+msgstr "(trudny)"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:15
 #: data/campaigns/Liberty/_main.cfg:15
@@ -50,30 +50,38 @@ msgid ""
 "\n"
 "(Intermediate level, 9 scenarios)"
 msgstr ""
+"Gdy królestwo Wesnoth coraz głębiej pogrąża się w wojnie domowej, "
+"zahartowani i odważni mieszkańcy zachodnich prowincji wszczynają bunt "
+"przeciwko okrutnym poczynaniom królowej-uzurpatorki Asheviere. Jeśli nie "
+"zdołają zrzucić dławiącego jarzma władzy królowej, czeka ich śmierć pod "
+"mieczami armii Wesnoth -- albo jeszcze straszniejszy los w rękach orków i "
+"nieumarłych.\n"
+"\n"
+"(poziom średni, 9 scenariuszy)"
 
 #: data/campaigns/Liberty/_main.cfg:23
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: data/campaigns/Liberty/_main.cfg:29
 msgid "Prose-doctoring and preparation for mainline"
-msgstr ""
+msgstr "Pielęgnacja prozy i przygotowanie do umieszczenia w gałęzi głównej"
 
 #: data/campaigns/Liberty/_main.cfg:35
 msgid "Unit art"
-msgstr ""
+msgstr "Grafika jednostek"
 
 #: data/campaigns/Liberty/_main.cfg:41
 msgid "Translators"
-msgstr ""
+msgstr "Tłumacze"
 
 #: data/campaigns/Liberty/_main.cfg:48
 msgid "Map art"
-msgstr ""
+msgstr "Grafika map"
 
 #: data/campaigns/Liberty/_main.cfg:55
 msgid "Portrait Art"
-msgstr ""
+msgstr "Grafika portretów"
 
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:5
 msgid "The Raid"
@@ -337,7 +345,7 @@ msgstr ""
 msgid ""
 "They're getting closer to our village! What about the town guards, can they "
 "help us?"
-msgstr ""
+msgstr "Zbliżają się do naszej wioski! Może strażnicy miejscy nam pomogą?"
 
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:285
 msgid ""
@@ -345,6 +353,8 @@ msgid ""
 "aren't many of them... I wouldn't count on them being able to protect the "
 "village alone for long."
 msgstr ""
+"Na widok tych jeźdźców (lub nas) zapewne staną do obrony, ale nie ma ich "
+"wielu... Nie sądzę, by sami dali radę zbyt długo chronić wioski."
 
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:298
 msgid "Remald"
@@ -361,11 +371,11 @@ msgstr "Jasken"
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:309
 msgid ""
 "What's happening here? Why are you running like mad, $unit.user_description|?"
-msgstr ""
+msgstr "Co tu się dzieje? Dokąd tak pędzisz, $unit.user_description|?"
 
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:313
 msgid "Goblin riders on the hunt. We must not let any of them to the village!"
-msgstr ""
+msgstr "Goblińscy jeźdźcy. Nie możemy ich dopuścić do wioski!"
 
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:320
 msgid "Look!  Goblin riders are on the hunt - and heading right for Dallben!"
@@ -416,7 +426,6 @@ msgid "Garard is the King of Wesnoth.  We are ruled by no queen."
 msgstr "Królem Wesnoth jest Garard. Nie rządzi nami żadna królowa."
 
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:142
-#, fuzzy
 msgid ""
 "Insolent peasants, you will kneel before your betters!  Asheviere is the "
 "queen of Wesnoth.  The King fell three weeks ago at Abez.  I shall not bandy "
@@ -424,8 +433,8 @@ msgid ""
 "if it is dead or alive."
 msgstr ""
 "Bezczelne wieśniaki! Na kolana przed władzą! Ashaviere jest królową Wesnoth. "
-"Król poległ trzy tygodnie temu pod Abez. Nie mam zamiaru więcej na was "
-"tracić czasu. Wasz sędzia pokoju idzie z nami, żywy lub martwy."
+"Król poległ trzy tygodnie temu pod Abez. Nie zamierzam dłużej wysłuchiwać "
+"waszych pyskówek. Wasz sędzia pokoju idzie z nami, żywy lub martwy."
 
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:176
 msgid "Guard the gate."
@@ -463,7 +472,6 @@ msgid "We must tell the people of Delwyn about this."
 msgstr "Musimy powiedzieć o tym ludziom z Delwyn."
 
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:248
-#, fuzzy
 msgid ""
 "That is true.  We have always flown to their aid, and they to ours.  This is "
 "something we should face together."
@@ -472,7 +480,6 @@ msgstr ""
 "czoła razem."
 
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:253
-#, fuzzy
 msgid ""
 "Very well.  We will go to Delwyn and share counsel with them.  I never "
 "thought Wesnoth would fall into darkness.  Now, not only do the orcs "
@@ -480,12 +487,11 @@ msgid ""
 "the Queen to the throne."
 msgstr ""
 "Dobrze. Udamy się do Delwyn i wspólnie się naradzimy. Nigdy nie sądziłem, że "
-"Wesnoth pogrąży się w ciemności. A teraz nie orki zagrażają naszym ziemiom, "
-"ale wraz ze wstąpieniem Królowej na tron zaczęły się dziać dziwne i "
+"Wesnoth pogrąży się w ciemności. A teraz nie tylko orki zagrażają naszym "
+"ziemiom, ale wraz ze wstąpieniem Królowej na tron zaczęły się dziać dziwne i "
 "złowieszcze rzeczy."
 
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:258
-#, fuzzy
 msgid ""
 "Today we may no longer be citizens of Wesnoth.  I would it could be "
 "otherwise, but we are now outlaws."
@@ -503,17 +509,16 @@ msgid "A Strategy of Hope"
 msgstr "Strategia nadziei"
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:48
-#, fuzzy
 msgid "Relnan"
-msgstr "Powracający"
+msgstr "Relnan"
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:73
 msgid "Urk Delek"
-msgstr ""
+msgstr "Urk Delek"
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:101
 msgid "Thhsthss"
-msgstr ""
+msgstr "Thhsthss"
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:130
 msgid "Defeat both enemy leaders"
@@ -590,47 +595,64 @@ msgid ""
 "incompetence is afoot.  But when the effects fall on mere peasants, the "
 "wrong of it may not seem so obvious from a noble's chair."
 msgstr ""
+"Zgadzam się. Ale co mu powiesz, Baldrasie? Wiemy, że ostatnio w Wesnoth "
+"dzieje się coś bardzo złego, coś co znacznie wykracza poza zwykłą korupcję i "
+"niekompetencję. Ale gdy nieszczęście spada tylko na prostych chłopów, z "
+"fotela magnata może ono nie być oczywiste."
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:204
 msgid ""
 "We need evidence.  Hard evidence...but wait, are those orcish war drums I "
 "hear?"
 msgstr ""
+"Potrzebne nam dowody. Niezbite dowody... ale cóż to, czyżbym słyszał bębny "
+"wojenne orków?"
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:208
 msgid ""
 "I think they are, old friend.  And that rank smell on the wind tells another "
 "tale; saurians approach.  To arms!"
 msgstr ""
+"Zdaje się, że tak, stary druhu. A wiatr niesie odór kolejnego zagrożenia: "
+"zbliżają się jaszczury. Do broni!"
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:213
 msgid ""
 "By the sound of the wolves, the scent trail of Fal Khag's killers ends here."
 msgstr ""
+"Sądząc po wyciu wilków, tutaj kończy się trop, którym podążali zabójcy Fal "
+"Khaga."
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:218
 msgid "Fal Khag is nothing to usss, orc.  You promissed uss gold. Bright gold."
 msgstr ""
+"Fal Khag nicss dla nasss nie sssnaczy, orku. Obiecssałeśśś sssłoto, "
+"błyszczącsse sssłoto."
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:222
 msgid "You will get gold. And our wolves will get meat."
-msgstr ""
+msgstr "Dostaniecie złoto. A nasze wilki dostaną mięso."
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:234
 msgid ""
 "Something is very wrong here.  Those orcs were carrying weapons with Army "
 "forge-markings."
 msgstr ""
+"Coś mi tu poważnie nie pasuje. Na broni tych orków były znaki kuźni armii "
+"królewskiej."
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:238
 msgid "Aye.  And the gold in their pouches looked new from the mint."
-msgstr ""
+msgstr "Ano. A złote monety w ich sakiewkach wyglądały na świeżo bite."
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:242
 msgid ""
 "Can the darkest rumors be true, then?  Does the Kingdom...does Queen "
 "Asheviere...send orcs against its own people?"
 msgstr ""
+"Czyżby zatem najczarniejsze pogłoski miały się okazać prawdą? Czy "
+"Królestwo... czy Królowa Asheviere... wysyła orków przeciwko własnym "
+"poddanym?"
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:246
 msgid ""
@@ -638,6 +660,10 @@ msgid ""
 "Baldras.  I must remain here to see to the defense of Delwyn and Dallben, "
 "but you should fly to Elensefar with all speed."
 msgstr ""
+"Wygląda na to, że twoja misja dotarcia do Lorda Maddocka nagle stała się "
+"jeszcze pilniejsza, niż nam się wydawało. Ja muszę tu pozostać, by "
+"przygotować obronę Delwyn i Dallben, ale ty ruszaj do Elensefaru co koń "
+"wyskoczy."
 
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:262
 msgid ""
@@ -653,13 +679,12 @@ msgid "Unlawful Orders"
 msgstr "Bezprawne rozkazy"
 
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:59
-#, fuzzy
 msgid "Lord Maddock"
-msgstr "Śmierć Maddocka"
+msgstr "Lord Maddock"
 
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:79
 msgid "Kestrel"
-msgstr ""
+msgstr "Kestrel"
 
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:104
 msgid "Defeat the enemy general"
@@ -671,7 +696,7 @@ msgstr "Śmierć Maddocka"
 
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:139
 msgid "Rothel"
-msgstr ""
+msgstr "Rothel"
 
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:189
 msgid ""
@@ -863,30 +888,27 @@ msgstr "Północ"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:50
 msgid "Quentin"
-msgstr ""
+msgstr "Quentin"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:65
 msgid "Hans"
-msgstr ""
+msgstr "Hans"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:88
-#, fuzzy
 msgid "Take Baldras to meet the leader of the insurgency"
-msgstr "Zlokalizuj przywódcę powstańców"
+msgstr "Zaprowadź Baldrasa do przywódcy powstańców"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:123
-#, fuzzy
 msgid "Amman"
-msgstr "strzelec"
+msgstr "Amman"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:141
-#, fuzzy
 msgid "Porus"
-msgstr "Novus"
+msgstr "Porus"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:205
 msgid ""
@@ -920,6 +942,9 @@ msgid ""
 "hold stationary posts, so if we're careful enough we should be able to slip "
 "our way around them."
 msgstr ""
+"Wygląda na to, że wokół miasta rozstawiono straże. Zdaje się, że mają "
+"rozkazy nie oddalać się od posterunków, więc jeśli będziemy ostrożni, "
+"powinniśmy dać radę się między nimi prześlizgnąć."
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:233
 msgid ""
@@ -927,6 +952,9 @@ msgid ""
 "and try to find a way for us to get past the guards, but make sure to not "
 "stay where they can see you or we're all in big trouble..."
 msgstr ""
+"Harper, wy młodsi i szybsi musicie teraz być naszymi oczami. Idź na zwiad i "
+"spróbuj znaleźć drogę, która pozwoli nam ominąć straże. Tylko nie daj im się "
+"zobaczyć, bo wszyscy będziemy mieli poważne kłopoty..."
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:247
 msgid "Wait - I hear something..."
@@ -973,26 +1001,25 @@ msgstr "No to ich obejdźmy."
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:291
 msgid "They've seen us, RUN!"
-msgstr ""
+msgstr "Zobaczyli nas. CHODU!"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:308
 msgid "Fall back, quickly! Maybe we can yet lose them!"
-msgstr ""
+msgstr "Szybko, wycofujemy się! Może jeszcze uda nam się ich zgubić!"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:327
 msgid "Who is that?"
 msgstr "Kto to?"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:331
-#, fuzzy
 msgid ""
 "I have come to find you.  You must make it into the city without being "
 "seen.  The soldiers are normally out hunting for my kind, but a company of "
 "heavy infantry arrived three days ago and took over the patrols."
 msgstr ""
 "Przybyłem, aby was odnaleźć. Nie uda wam się wejść do miasta niezauważenie. "
-"Żołnierze zwykle są na zewnątrz szukając ludzi mego pokroju, ale kompania "
-"żołnierzy uderzeniowych przybyła trzy dni temu i przejęła patrole."
+"Żołnierze zwykle patrolują okolice szukając ludzi mego pokroju, ale trzy dni "
+"temu przybyła kompania ciężkiej piechoty i przejęła patrole."
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:335
 msgid "They're looking for us."
@@ -1052,16 +1079,15 @@ msgid "We have to go through the city?  Impossible!"
 msgstr "Mamy przejść przez miasto? Niemożliwe!"
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:420
-#, fuzzy
 msgid ""
 "You must.  Make a run for it if you have to.  There is a small path that "
 "leads out of the city to the southeast and into the forest; look for the "
 "signpost.  My brother Hans is waiting for you at that gate so he can take "
 "you to our master."
 msgstr ""
-"Musicie. Jeżeli musicie, to biegnijcie. Jest mała ścieżka, która prowadzi za "
-"miasto, na południowy wschód i do lasu. Mój brat czeka na was przy "
-"tamtejszej bramie aby zaprowadzić was do naszego pana."
+"Musicie. Biegnijcie, jeśli trzeba. Jest mała ścieżka, która prowadzi za "
+"miasto, na południowy wschód i do lasu. Mój brat Hans będzie na was czekać "
+"przy bramie i zaprowadzi was do naszego pana."
 
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:433
 msgid ""
@@ -1128,24 +1154,23 @@ msgstr "Szary las"
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:131
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:64
 msgid "Helicrom"
-msgstr ""
+msgstr "Helicrom"
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:85
 msgid "Mal-Jarrof"
-msgstr ""
+msgstr "Mal-Jarrof"
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:99
 msgid "Mal-Jerod"
-msgstr ""
+msgstr "Mal-Jerod"
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:113
 msgid "Sel-Mana"
-msgstr ""
+msgstr "Sel-Mana"
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:133
-#, fuzzy
 msgid "Defeat the lich"
-msgstr "Pokonaj władców liczów"
+msgstr "Pokonaj licza"
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:207
 msgid "The leader, I presume."
@@ -1195,37 +1220,36 @@ msgid ""
 "of balance between the ways of light and darkness.  We dance between both "
 "ways, adhering to neither."
 msgstr ""
-"Skąd! Nekromanci stają się niewolnikami swoich panów liczów i w końcu tracą "
-"swoje człowieczeństwo. My zaś odkryliśmy, że uprawianie czarnej sztuki nie "
-"jest aż tak ryzykowne, jak to się by mogło wydawać. równowaga światła i "
-"ciemności to mistyczny sekret który chcemy odkryć. Dlatego właśnie "
-"istniejemy pomiędzy tymi dwoma światami, nie pasując do żadnego."
+"Skąd! Nekromanci stają się niewolnikami panujących nad nimi liczów i w końcu "
+"tracą swoje własne człowieczeństwo. My zaś odkryliśmy, że praktykowanie "
+"czarnej magii wcale nie musi prowadzić ścieżką potępienia. Pozostajemy "
+"ludźmi i zgłębiamy mistyczną tajemnicę zrównoważenia Dróg Światła i "
+"Ciemności. Korzystamy to z jednej, to z drugiej drogi, nie podążając jednak "
+"żadną z nich."
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:231
 msgid "I...see, I think.  Why do you want to help us?"
 msgstr "Rozumiem... chyba. Dlaczego chcecie nam pomóc?"
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:235
-#, fuzzy
 msgid ""
 "We don't.  You have sought us out.  But, I do know of your situation and am "
 "willing to help.  Any weakening the Throne of Wesnoth, whether it be "
 "occupied by King or Queen, aids us."
 msgstr ""
-"Nie chcemy. To wyście nas wyszukali. Ale znam waszą sytuację i skory jestem "
-"do pomocy. Tron Wesnoth, czy pod królem czy królową, to krowa której zawsze "
-"chętnie dajemy szturchańce, że się tak wyrażę."
+"Nie chcemy. To wyście nas odszukali. Ale znam waszą sytuację i jestem "
+"skłonny wam pomóc. Każde osłabienie tronu Wesnoth działa na naszą korzyść, "
+"czy zasiada na nim król, czy królowa."
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:239
-#, fuzzy
 msgid ""
 "Carcyn is always foggy as of late because these woods have recently become "
 "home to a lich and his minions.  Our experiments may have actually aroused "
 "him from sleep... we're not exactly sure."
 msgstr ""
-"Carcyn ostatnio jest ciągle zamglone, gdyż lasy te stały się domem dla "
-"potężnych liczów. Być może to nasze eksperymenty obudziły ich ze snów... Nie "
-"jesteśmy do końca pewni."
+"Carcyn ostatnio jest ciągle zamglone, gdyż lasy te od niedawna opanował licz "
+"z zastępami swoich sługusów. Niewykluczone, że to nasze eksperymenty "
+"obudziły go ze snu... dokładnie nie wiemy."
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:243
 msgid ""
@@ -1238,23 +1262,23 @@ msgstr ""
 "nam pomóc bronić naszych stron rodzinnych."
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:258
-#, fuzzy
 msgid ""
 "The defeat of the evil liches infesting the Gray Woods was a bittersweet "
 "victory. With Helicrom dead, the guild of shadow magic was thrown into "
 "disarray."
 msgstr ""
-"Pokonanie złych liczów plugawiących Szary Las było gorzkim zwycięstwem."
+"Pokonanie złych liczów plugawiących Szary Las było gorzkim zwycięstwem. "
+"Śmierć Helicroma wprowadziła zamęt w gildii magii cienia."
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:263
-#, fuzzy
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizeable sum "
 "of gold for his help. It was not the help he was hoping for, but he knew it "
 "would have to be enough for the coming conflict."
 msgstr ""
-"Nie była to pomoc na jaką liczył, ale wiedział, że musi to wystarczyć na "
-"nadchodzącą walkę."
+"Pozostali członkowie byli bardzo wdzięczni Baldrasowi i w podzięce wręczyli "
+"mu znaczną sumę w złocie. Nie na taką pomoc liczył, ale rozumiał, że złoto "
+"będzie musiało wystarczyć w zbliżającej się walce."
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:279
 msgid ""
@@ -1327,8 +1351,8 @@ msgid ""
 "Send your men with us.  They will be valuable help as we prepare for the "
 "assault from the Wesnoth army garrison."
 msgstr ""
-"Wyślij z nami swoich ludzi. Będą wartościową pomocą gdyż \n"
-"przygotowujemy się na atak garnizonu Wesnoth."
+"Wyślij z nami swoich ludzi. Będą cenną pomocą \n"
+"w planowanym ataku na garnizon armii Wesnoth."
 
 #: data/campaigns/Liberty/scenarios/06_The_Gray_Woods.cfg:330
 msgid ""
@@ -2206,7 +2230,7 @@ msgstr "miecz"
 
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
-msgstr "Zbuntowany mag"
+msgstr "Mag renegat"
 
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
 msgid ""
@@ -2216,6 +2240,12 @@ msgid ""
 "skilled as mages with more formal training, their magic can be quite lethal, "
 "while their banditry has resulted in moderate skill with the short sword."
 msgstr ""
+"Niektórzy magowie są usuwani z cechu za próby praktykowania zakazanych sztuk "
+"magicznych. Wyjęci spod prawa magowie renegaci imają się wszystkiego, co "
+"pozwoli im dalej zgłębiać tajniki czarnej magii. Choć nie dorównują "
+"umiejętnościami swoim formalnie wyszkolonym kolegom po fachu, ich ataki "
+"magiczne są mimo to niebezpieczne, a jako banici nabyli również niejaką "
+"sprawność we władaniu krótkim mieczem."
 
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:33
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:30
@@ -2223,9 +2253,8 @@ msgid "short sword"
 msgstr "krótki miecz"
 
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:87
-#, fuzzy
 msgid "magic missile"
-msgstr "pocisk"
+msgstr "pocisk magiczny"
 
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:5
 msgid "Shadow Lord"
@@ -2239,6 +2268,12 @@ msgid ""
 "needing physical weapons, they are fearsome to both their enemies and those "
 "they lord over."
 msgstr ""
+"Niewielu ludzi jest zdolnych zgłębiać zarazem tajniki magii światła i "
+"ciemności bez postradania zmysłów. Nieliczni, którym udaje się uchwycić i "
+"opanować tę równowagę, stają się władcami cienia, istniejącymi po części w "
+"świecie światła, a po części w świecie ciemności. Nie potrzebują już broni "
+"fizycznej i sieją postrach zarówno w szeregach przeciwników, jak i wśród "
+"własnych poddanych."
 
 #: data/campaigns/Liberty/units/Shadow_Lord.cfg:74
 msgid "astral blade"
@@ -2266,6 +2301,14 @@ msgid ""
 "attacks. Despite their offensive power, the corruption in their souls has "
 "begun to adversely affect their health."
 msgstr ""
+"Długie lata zgłębiania zakazanych sztuk magicznych w połączeniu z przemocą i "
+"występkami, jakich wymaga ten proceder, zmieniają magów cienia w groźnych "
+"wojowników. Są całkowicie urzeczeni posiadaną mocą i nierzadko gromadzą "
+"wokół siebie niewielkie grupy popleczników. W bezpośrednich pojedynkach "
+"magicznych znacznie ustępują swoim formalnie wyszkolonym kolegom po fachu, "
+"toteż wykorzystują swą moc przede wszystkim do śmiercionośnych ataków wręcz. "
+"Choć są potężni w walce, zepsucie ich dusz negatywnie wpływa na stan ich "
+"zdrowia."
 
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:73
 msgid "ice blast"
@@ -2276,7 +2319,6 @@ msgid "Skeleton Rider"
 msgstr "Szkieletowy jeździec"
 
 #: data/campaigns/Liberty/units/Skeleton_Rider.cfg:26
-#, fuzzy
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
@@ -2286,7 +2328,6 @@ msgstr ""
 "ponownego życia, by na szkieletowych koniach siać strach i zniszczenie."
 
 #: data/campaigns/Liberty/units/Villagers.cfg:19
-#, fuzzy
 msgid ""
 "Peasants live in the small hamlets and villages scatt\n"
 "ered across the Wesnoth countryside."
@@ -2312,7 +2353,6 @@ msgid "Senior Village Elder"
 msgstr "Przywódca starszyzny"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:42
-#, fuzzy
 msgid ""
 "The entire village looks to the senior elder for guidance.  Strong and wise, "
 "the senior elders take responsibility for the community's well-being on "
@@ -2320,12 +2360,13 @@ msgid ""
 "as magistrates so that legal and customary authority will coincide."
 msgstr ""
 "Cała wieś szuka rady u przywódcy starszyzny. Silny i mądry, nosi na barkach "
-"odpowiedzialność za losy całej społeczności."
+"odpowiedzialność za losy całej społeczności. Zarządcy prowincji często "
+"mianują starszych wiosek sędziami pokoju, co pozwala połączyć autorytet "
+"zwyczajowy i urzędowy."
 
 #: data/campaigns/Liberty/units/Villagers.cfg:53
-#, fuzzy
 msgid "Peasant Youth"
-msgstr "Chłop myśliwy"
+msgstr "Młody chłop"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:58
 msgid ""
@@ -2337,46 +2378,41 @@ msgstr ""
 
 #: data/campaigns/Liberty/units/Villagers.cfg:64
 msgid "female^Peasant Youth"
-msgstr ""
+msgstr "Młoda chłopka"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:73
-#, fuzzy
 msgid "Watchman"
-msgstr "Nocny wartownik"
+msgstr "Wartownik"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:78
-#, fuzzy
 msgid ""
 "The watchmen are men and women who protect the villages from marauders, both "
 "human and otherwise, that prowl the Wesnoth countryside at night."
 msgstr ""
-"Nocni wartownicy to kobiety i mężczyźni chroniący wioski przed rabusiami, "
-"ludźmi i innymi, którzy są plagą okolic Wesnoth w nocy."
+"Wartownicy to kobiety i mężczyźni chroniący wiosek przed grasującymi na "
+"ziemiach Wesnoth nocnymi rabusiami - czy to ludźmi, czy innymi stworzeniami."
 
 #: data/campaigns/Liberty/units/Villagers.cfg:80
-#, fuzzy
 msgid "female^Watchwoman"
-msgstr "Nocna Wartowniczka"
+msgstr "Wartowniczka"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:89
 msgid "Borderer"
-msgstr ""
+msgstr "Strażnik pogranicza"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:93
-#, fuzzy
 msgid ""
 "Each village has a group of highly capable fighters dedicated to fending off "
 "orc raids.  Some of these join the Wesnoth army, while others join the core "
 "of the village's patrol."
 msgstr ""
-"Każda wieś posiada grupę ludzi przywykłych do walki, których zadaniem jest "
+"Każda wieś posiada grupę ludzi zaprawionych w boju, których zadaniem jest "
 "odpieranie ataków orków. Niektórzy z nich dołączają do armii Wesnoth, "
-"podczas gdy inni stanowią rdzeń nocnej straży wsi."
+"podczas gdy inni stanowią rdzeń straży wsi."
 
 #: data/campaigns/Liberty/units/Villagers.cfg:95
-#, fuzzy
 msgid "female^Borderer"
-msgstr "Rozbójniczka"
+msgstr "Strażniczka pogranicza"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:109
 msgid "Peasant Hunter"
@@ -2388,30 +2424,31 @@ msgid ""
 "bring in much of their food supply.  Their stealth and intimate knowledge of "
 "local terrain can be valuable assets in combat."
 msgstr ""
+"Myśliwi dostarczają znaczną część zaopatrzenia wiosek, zwłaszcza na mniej "
+"zaludnionych terenach pogranicznych. Ich umiejętność pozostawania "
+"niezauważonym i niesłyszanym w połączeniu z doskonałą znajomością terenu "
+"bywa niezwykle cenna w walce."
 
 #: data/campaigns/Liberty/units/Villagers.cfg:120
 msgid "Peasant Trapper"
 msgstr "Chłop traper"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:127
-#, fuzzy
 msgid ""
 "Trappers are skilled hunters who supply food and furs\n"
 " for several villages. Their hunting experience makes them most valuable at "
 "nig\n"
 "ht and in forests and swamps."
 msgstr ""
-"Traperzy to wytrawni myśliwi, którzy dostarczają żywność i futra kilku "
-"wioskom. Ich doświadczenie w polowaniu czyni ich najbardziej wartościowymi w "
-"nocy, oraz wśród lasów i bagien."
+"Traperzy to wytrawni myśliwi, którzy często dostarczają żywność i futra "
+"kilku wioskom. Ich doświadczenie w polowaniu czyni ich najbardziej "
+"wartościowymi w nocy, oraz wśród lasów i bagien."
 
 #: data/campaigns/Liberty/units/Villagers.cfg:135
-#, fuzzy
 msgid "Peasant Huntsman"
 msgstr "Chłop myśliwy"
 
 #: data/campaigns/Liberty/units/Villagers.cfg:139
-#, fuzzy
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes.  They can bullseye wamprats and track anything that moves "
@@ -2419,16 +2456,15 @@ msgid ""
 msgstr ""
 "Myśliwi całe swoje życie spędzili w ostępach puszczy i bagnach pokrywających "
 "ich dziką ojczyznę. Potrafią trafić w locie nietoperze i wyśledzić wszystko, "
-"co się rusza w ich terenie. Posiadają wysokie umiejętności polowania w nocy."
+"co się porusza na ich terenie."
 
 #~ msgid "Dusk"
 #~ msgstr "Zmierzch"
 
-#, fuzzy
 #~ msgid ""
 #~ "Look there... the canyon valley lies in perpetual darkness... a sign of "
 #~ "true evil."
-#~ msgstr "Patrz tam... Parów okrywa wieczny cień... znak prawdziwego zła."
+#~ msgstr "Patrzcie... parów okrywa wieczny cień... znak prawdziwego zła."
 
 #~ msgid ""
 #~ "There are some bones here.  There appears to be something among them."
