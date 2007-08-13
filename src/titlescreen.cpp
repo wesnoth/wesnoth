@@ -11,6 +11,12 @@
    See the COPYING file for more details.
 */
 
+//! @file titlescreen.cpp
+//! Shows the titlescreen, with main-menu and tip-of-the-day.
+//!
+//! The menu consists of buttons, such als Start-Tutorial, Start-Campaign, Load-Game, etc. \n
+//! As decoration, the wesnoth-logo and a landmap in the background are shown.
+
 #include "global.hpp"
 
 #include "config.hpp"
@@ -37,9 +43,24 @@
 
 #include "sdl_ttf/SDL_ttf.h"
 
+//! Log info-messages to stdout during the game, mainly for debugging
 #define LOG_DP LOG_STREAM(info, display)
+//! Log error-messages to stdout during the game, mainly for debugging
 #define ERR_DP LOG_STREAM(err, display)
 
+//! Fade-in the wesnoth-logo.
+//!
+//! Animation-effect: scroll-in from right. \n
+//! Used only once, after the game is started.
+//!
+//! @param 	screen 	surface to operate on
+//! @param 	xpos 	x-position of logo
+//! @param 	ypos 	y-position of logo
+//!
+//! @return 		Result of running the routine
+//! @retval true  	operation finished (successful or not)
+//! @retval false 	operation failed (because modeChanged), need to retry
+//!
 static bool fade_logo(game_display& screen, int xpos, int ypos)
 {
 	const surface logo(image::get_image(game_config::game_logo));
@@ -54,27 +75,27 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 		return true;
 	}
 
-	//only once, when the game is first started, the logo fades in
+	// Only once, when the game is first started, the logo fades in
 	static bool faded_in = false;
+//	static bool faded_in = true;	// for faster startup: mark logo as 'has already faded in'
 
 	CKey key;
 	bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
 
 	LOG_DP << "fading logo in....\n";
-
 	LOG_DP << "logo size: " << logo->w << "," << logo->h << "\n";
 
 	for(int x = 0; x != logo->w; ++x) {
 		SDL_Rect srcrect = {x,0,1,logo->h};
 		SDL_Rect dstrect = {xpos+x,ypos,1,logo->h};
-
 		SDL_BlitSurface(logo,&srcrect,fb,&dstrect);
 
 		update_rect(dstrect);
 
 		if(!faded_in && (x%5) == 0) {
 
-			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE] || key[SDLK_RETURN] || key[SDLK_KP_ENTER] ;
+			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE] ||
+									key[SDLK_RETURN] || key[SDLK_KP_ENTER] ;
 			if(new_button && !last_button) {
 				faded_in = true;
 			}
@@ -82,7 +103,6 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 			last_button = new_button;
 
 			screen.update_display();
-
 			screen.delay(10);
 
 			events::pump();
@@ -100,6 +120,7 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 	return true;
 }
 
+//! Return the text for one of the tips-of-the-day.
 static const std::string& get_tip_of_day(const config& tips,int* ntip)
 {
 	static const std::string empty_string;
@@ -134,6 +155,7 @@ static const std::string& get_tip_of_day(const config& tips,int* ntip)
 	return it->second;
 }
 
+//! Read the file with the tips-of-the-day.
 static const config get_tips_of_day()
 {
 	config cfg;
@@ -150,8 +172,15 @@ static const config get_tips_of_day()
 }
 
 
-
-static void draw_tip_of_day(game_display& screen, config& tips_of_day, int* ntip, const gui::dialog_frame::style& style, gui::button* const next_tip_button, gui::button* const help_tip_button, const SDL_Rect* const main_dialog_area, surface_restorer& tip_of_day_restorer)
+//! Show one tip-of-the-day in a frame on the titlescreen.
+//! This frame has 2 buttons: Next-Tip, and Show-Help.
+static void draw_tip_of_day(game_display& screen, 
+							config& tips_of_day, int* ntip, 
+							const gui::dialog_frame::style& style, 
+							gui::button* const next_tip_button, 
+							gui::button* const help_tip_button, 
+							const SDL_Rect* const main_dialog_area, 
+							surface_restorer& tip_of_day_restorer)
 {
 
     // Restore the previous tip of day area to its old state (section of the title image).
@@ -160,8 +189,8 @@ static void draw_tip_of_day(game_display& screen, config& tips_of_day, int* ntip
     // Draw tip of the day
     std::string tip_of_day = get_tip_of_day(tips_of_day,ntip);
     if(tip_of_day.empty() == false) {
-        tip_of_day = font::word_wrap_text(tip_of_day,font::SIZE_NORMAL,
-                                          (game_config::title_tip_width*screen.w())/1024);
+        tip_of_day = font::word_wrap_text(tip_of_day, font::SIZE_NORMAL,
+					 (game_config::title_tip_width*screen.w())/1024);
 
         const std::string& tome = font::word_wrap_text(game_config::tome_title,
                 font::SIZE_NORMAL,
@@ -177,11 +206,12 @@ static void draw_tip_of_day(game_display& screen, config& tips_of_day, int* ntip
         area.x = main_dialog_area->x - (game_config::title_tip_x*screen.w())/1024 - area.w;
         area.y = main_dialog_area->y + main_dialog_area->h - area.h;
 
-        // Note: The buttons' locations need to be set before the dialog frame is drawn.
-        // Otherwise, when the buttons restore their area, they draw parts
-        // of the old dialog frame at their old locations.
-        // This way, the buttons draw a part of the title image, because the call to restore
-        // above restored the old tip of the day area to its initial state (the title image).
+		// Note: The buttons' locations need to be set before the dialog frame is drawn.
+		// Otherwise, when the buttons restore their area, they
+		// draw parts of the old dialog frame at their old locations.
+		// This way, the buttons draw a part of the title image,
+		// because the call to restore above restored the area
+		// of the old tip of the day to its initial state (the title image).
         next_tip_button->set_location(area.x + area.w - next_tip_button->location().w - pad,
                                       area.y + area.h - pad - next_tip_button->location().h);
 
@@ -197,7 +227,8 @@ static void draw_tip_of_day(game_display& screen, config& tips_of_day, int* ntip
                          tip_of_day, area.x + pad, area.y + pad);
         font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
                          tome, area.x + area.w - tome_area.w - pad,
-                         next_tip_button->location().y - tome_area.h - pad, false, TTF_STYLE_ITALIC);
+                         next_tip_button->location().y - tome_area.h - pad,
+						 false, TTF_STYLE_ITALIC);
     }
 
     LOG_DP << "drew tip of day\n";
@@ -205,6 +236,19 @@ static void draw_tip_of_day(game_display& screen, config& tips_of_day, int* ntip
 
 namespace gui {
 
+//! Show titlepage with logo and background, menu-buttons and tip-of-the-day.
+//!
+//! After the page is shown, this routine waits 
+//! for the user to click one of the menu-buttons, 
+//! or a keypress.
+//!
+//! @param 	screen			surface to write on
+//! @param 	tips_of_day		list of tips
+//! @param 	ntip			number of the tip to show
+//!
+//! @return 	the value of the menu-item the user has choosen.
+//! @retval 	see @ref TITLE_RESULT for possible values
+//!
 TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 {
 	cursor::set(cursor::NORMAL);
@@ -232,6 +276,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 	} while (!fade_logo(screen, logo_x, logo_y));
 	LOG_DP << "faded logo\n";
 
+	// Display Wesnoth version and (if configured with --enable-display-revision) the svn-revision
 	const std::string& version_str = _("Version") + std::string(" ") +
 		game_config::version
 #if defined(SVNREV) && defined(DO_DISPLAY_REVISION)
@@ -239,21 +284,23 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 #endif /* defined(SVNREV) && defined(DO_DISPLAY_REVISION) */
        	;
 
-	const SDL_Rect version_area = font::draw_text(NULL,screen_area(),
-						      font::SIZE_TINY,
-	                                    font::NORMAL_COLOUR,version_str,0,0);
+	const SDL_Rect version_area = font::draw_text(NULL, screen_area(),
+								  font::SIZE_TINY, font::NORMAL_COLOUR,
+								  version_str,0,0);
 	const size_t versiony = screen.h() - version_area.h;
 
 	if(versiony < size_t(screen.h())) {
 		font::draw_text(&screen.video(),screen.screen_area(),
-				font::SIZE_TINY,
-				font::NORMAL_COLOUR,version_str,0,versiony);
+				font::SIZE_TINY, font::NORMAL_COLOUR,
+				version_str,0,versiony);
 	}
 
 	LOG_DP << "drew version number\n";
 
-	// Members of this array must correspond to the enumeration TITLE_RESULT
-	static const char* button_labels[] = { N_("TitleScreen button^Tutorial"),
+	//- Texts for the menu-buttons.
+	//- Members of this array must correspond to the enumeration TITLE_RESULT
+	static const char* button_labels[] = {
+					       N_("TitleScreen button^Tutorial"),
 					       N_("TitleScreen button^Campaign"),
 					       N_("TitleScreen button^Multiplayer"),
 					       N_("TitleScreen button^Load"),
@@ -263,10 +310,12 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 					       N_("TitleScreen button^Credits"),
 					       N_("TitleScreen button^Quit"),
 								// Only the above buttons go into the menu-frame
+								// Next 2 buttons go into frame for the tip-of-the-day:
 					       N_("TitleScreen button^More"),
 					       N_("TitleScreen button^Help"),
 								// Next entry is no button, but shown as a mail-icon instead:
 					       N_("TitleScreen button^Help Wesnoth") };
+	//- Texts for the tooltips of the menu-buttons
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
 						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
@@ -276,7 +325,6 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 						    N_("Configure the game's settings"),
 						    N_("View the credits"),
 						    N_("Quit the game"),
-								// Next 2 buttons go into frame for the tip-of-the-day:
 						    N_("Show next tip of the day"),
 						    N_("Show Battle for Wesnoth help"),
 						    N_("Upload statistics") };
@@ -305,9 +353,10 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 
 		n_menubuttons = b;
 		if(b == QUIT_GAME) break;	// Menu-frame ends at the quit-button
-	} 
+	}
 
-	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(n_menubuttons)+buttons.back().height()+padding*2};
+	SDL_Rect main_dialog_area = {menu_xbase-padding, menu_ybase-padding, max_width+padding*2,
+								 menu_yincr*(n_menubuttons)+buttons.back().height()+padding*2};
 
 	gui::dialog_frame main_frame(screen.video(), "", gui::dialog_frame::titlescreen_style, false);
 	main_frame.layout(main_dialog_area);
@@ -322,13 +371,13 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 
 	b = TITLE_CONTINUE;
 	gui::button next_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
-	next_tip_button.set_help_string( sgettext(help_button_labels[b] )); 
+	next_tip_button.set_help_string( sgettext(help_button_labels[b] ));
 
 	b = SHOW_HELP;
 	gui::button help_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
-	help_tip_button.set_help_string( sgettext(help_button_labels[b] )); 
+	help_tip_button.set_help_string( sgettext(help_button_labels[b] ));
 
-	// FIXME: Translatable string is here because we WILL put text in before 1.2!
+	//! @todo FIXME: Translatable string is here because we WILL put text in before 1.2!
 	gui::button beg_button(screen.video(),("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 	beg_button.set_help_string(_("Help Wesnoth by sending us information"));
 
@@ -336,10 +385,10 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 		tips_of_day = get_tips_of_day();
 	}
 
-
 	surface_restorer tip_of_day_restorer;
 
-	draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+	draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style, 
+					&next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
 	const int pad = game_config::title_tip_padding;
 	beg_button.set_location(screen.w() - pad - beg_button.location().w,
@@ -368,7 +417,8 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 				*ntip = *ntip + 1;
 			}
 
-            draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+		draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style, 
+						&next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 		}
 
 		if(help_tip_button.pressed()) {
@@ -390,8 +440,8 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 
 		events::pump();
 
-		//if the resolution has changed due to the user resizing the screen,
-		//or from changing between windowed and fullscreen
+		// If the resolution has changed due to the user resizing the screen,
+		// or from changing between windowed and fullscreen:
 		if(screen.video().modeChanged()) {
 			return TITLE_CONTINUE;
 		}
@@ -402,4 +452,6 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 	return QUIT_GAME;
 }
 
-}
+} // namespace gui
+
+//.
