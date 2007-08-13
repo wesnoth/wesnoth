@@ -178,14 +178,8 @@ class escape_handler : public events::handler {
 public:
 	escape_handler() : escape_pressed_(false) {}
 	bool escape_pressed() { return escape_pressed_; }
-	void handle_event(const SDL_Event &event) {
-		if(event.type == SDL_KEYDOWN) {
-			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
-			if (key.sym == SDLK_ESCAPE) {
-				escape_pressed_ = true;
-			}
-		}
-	}
+	void handle_event(const SDL_Event &event) { escape_pressed_ |= (event.type == SDL_KEYDOWN)
+		&& (reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym.sym == SDLK_ESCAPE); }
 private:
 	bool escape_pressed_;
 };
