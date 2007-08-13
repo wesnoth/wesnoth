@@ -10,6 +10,11 @@
 
    See the COPYING file for more details.
 */
+
+//! @file scoped_resource.hpp
+//! scoped_resource: class template, functions, helper policies etc.\  
+//! for resource management. 
+
 #ifndef SCOPED_RESOURCE_H_INCLUDED
 #define SCOPED_RESOURCE_H_INCLUDED
 
@@ -18,13 +23,15 @@
 namespace util
 {
 /**
-* A class template, scoped_resource, designed to
-* implement the Resource Acquisition Is Initialization (RAII) approach
-* to resource management. scoped_resource is designed to be used when
-* a resource is initialized at the beginning or middle of a scope,
-* and released at the end of the scope. The template argument
-* ReleasePolicy is a functor which takes an argument of the
-* type of the resource, and releases it.
+* A class template, scoped_resource, designed to implement 
+* the Resource Acquisition Is Initialization (RAII) approach
+* to resource management. 
+* scoped_resource is designed to be used when a resource 
+* is initialized at the beginning or middle of a scope,
+* and released at the end of the scope. 
+* The template argument ReleasePolicy is a functor 
+* which takes an argument of the type of the resource, 
+* and releases it.
 *
 * Usage example, for working with files:
 *
@@ -37,11 +44,11 @@ namespace util
 * } // file is automatically closed here
 * @endcode
 *
-* Note that scoped_resource has an explicit constructor, and prohibits
-* copy-construction, and thus the initialization syntax, rather than
-* the assignment syntax must be used when initializing.
+* Note that scoped_resource has an explicit constructor, 
+* and prohibits copy-construction, and thus the initialization syntax.
+* The assignment syntax must be used when initializing.
 *
-* i.e. using scoped_resource<int,close_file> file = open("file.txt",O_RDONLY);
+* I.e. using scoped_resource<int,close_file> file = open("file.txt",O_RDONLY);
 * in the above example is illegal.
 *
 */
@@ -59,16 +66,17 @@ public:
 
   /**
   * Constructor
-	*
-	* @ param res This is the resource to be managed
+  *
+  * @param res 	This is the resource to be managed
   */
 	scoped_resource(resource_type res = resource_type())
 			: resource(res) {}
 
   /**
-  * The destructor is the main point in this class. It takes care of proper
-	* deletion of the resource, using the provided release policy.
-	*/
+  * The destructor is the main point in this class. 
+  * It takes care of proper deletion of the resource, 
+  * using the provided release policy.
+  */
 	~scoped_resource()
 	{
 		release_type()(resource);
@@ -76,24 +84,24 @@ public:
 
   /**
   * This operator makes sure you can access and use the scoped_resource
-	* just like you were using the resource itself.
+  * just like you were using the resource itself.
   *
-  * @ret the underlying resource
-	*/
+  * @return the underlying resource
+  */
 	operator resource_type() const { return resource; }
 
   /**
-  * This function provides explicit access to the resource. Its behaviour
-  * is identical to operator resource_type()
-	*
-	* @ret the underlying resource
+  * This function provides explicit access to the resource. 
+  * Its behaviour is identical to operator resource_type()
+  *
+  * @return the underlying resource
   */
 	resource_type get() const { return resource; }
 
-	/**
+  /**
   * This function provides convenient direct access to the -> operator
-  * if the underlying resource is a pointer. Only call this function
-  * if resource_type is a pointer type.
+  * if the underlying resource is a pointer. 
+  * Only call this function if resource_type is a pointer type.
   */
 	resource_type operator->() const { return resource; }
 
@@ -137,9 +145,10 @@ struct delete_array {
 * @endcode
 *
 * NOTE: use this class only to manage a single object, *never* an array.
-* Use scoped_array to manage arrays. This distinction is because you
-* may call delete only on objects allocated with new, delete[] only
-* on objects allocated with new[].
+* Use scoped_array to manage arrays. 
+* This distinction is because you may call delete only 
+* on objects allocated with new, 
+* delete[] only on objects allocated with new[].
 */
 template<typename T>
 struct scoped_ptr : public scoped_resource<T*,delete_item>
@@ -148,8 +157,8 @@ struct scoped_ptr : public scoped_resource<T*,delete_item>
 };
 
 /**
-* This class has identical behaviour to @ref scoped_ptr, except it manages
-* heap-allocated arrays instead of heap-allocated single objects
+* This class has identical behaviour to @ref scoped_ptr, except it 
+* manages heap-allocated arrays instead of heap-allocated single objects
 *
 * Usage example:
 * @code
@@ -167,8 +176,8 @@ struct scoped_array : public scoped_resource<T*,delete_array>
 };
 
 /**
- * This class specializes the scoped_resource to implement scoped FILEs. Not
- * sure this is the best place to place such an utility, though.
+ * This class specializes the scoped_resource to implement scoped FILEs. 
+ * Not sure this is the best place to place such an utility, though.
  */
 struct close_FILE
 {
