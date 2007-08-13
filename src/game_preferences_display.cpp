@@ -22,7 +22,6 @@
 #include "marked-up_text.hpp"
 #include "preferences_display.hpp"
 #include "construct_dialog.hpp"
-#include "show_dialog.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 #include "widgets/button.hpp"
@@ -30,6 +29,7 @@
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/textbox.hpp"
+#include "scoped_resource.hpp"
 #include "theme.hpp"
 
 #include <vector>
@@ -53,6 +53,23 @@ static void set_iconize_list(bool ison)
 }
 
 namespace {
+
+class preferences_parent_dialog : public gui::dialog
+{
+public:
+	preferences_parent_dialog(display &disp) : dialog(disp, _("Preferences"),"",gui::CLOSE_ONLY),
+		clear_buttons_(false) {}
+	void action(gui::dialog_process_info &info)
+	{
+		if(clear_buttons_) {
+			info.clear_buttons();
+			clear_buttons_ = false;
+		}
+	}
+	void clear_buttons() { clear_buttons_ = true; }
+private:
+	bool clear_buttons_;
+};
 
 class preferences_dialog : public gui::preview_pane
 {
@@ -121,6 +138,8 @@ private:
 	TAB tab_;
 	display &disp_;
 	const config& game_cfg_;
+public:
+	util::scoped_ptr<preferences_parent_dialog> parent;
 };
 
 //change
@@ -187,7 +206,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  advanced_selection_(-1),
 	  friends_selection_(-1),
 
-	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg)
+	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg), parent(NULL)
 {
 	// FIXME: this box should be vertically centered on the screen, but is not
 #ifdef USE_TINY_GUI
@@ -612,8 +631,10 @@ void preferences_dialog::process_event()
 			set_turn_dialog(turn_dialog_button_.checked());
 		if (show_team_colours_button_.pressed())
 			set_show_side_colours(show_team_colours_button_.checked());
-		if (hotkeys_button_.pressed())
+		if (hotkeys_button_.pressed()) {
 			show_hotkeys_dialog(disp_);
+			parent->clear_buttons();
+		}
 
 		set_scroll_speed(scroll_slider_.value());
 		set_turbo_speed(turbo_slider_.item_selected());
@@ -632,6 +653,7 @@ void preferences_dialog::process_event()
 			throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
 		if (theme_button_.pressed())
 			show_theme_dialog(disp_);
+			parent->clear_buttons();
 		if (fullscreen_button_.pressed())
 			throw video_mode_change_exception(fullscreen_button_.checked()
 											? video_mode_change_exception::MAKE_FULLSCREEN
@@ -1031,10 +1053,10 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 	for(;;) {
 		try {
 			preferences_dialog dialog(disp,game_cfg);
-			std::vector<gui::preview_pane*> panes;
-			panes.push_back(&dialog);
-
-			gui::show_dialog(disp,NULL,_("Preferences"),"",gui::CLOSE_ONLY,&items,&panes);
+			dialog.parent.assign(new preferences_parent_dialog(disp));
+			dialog.parent->set_menu(items);
+			dialog.parent->add_pane(&dialog);
+			dialog.parent->show();
 			return;
 		} catch(preferences_dialog::video_mode_change_exception& e) {
 			switch(e.type) {

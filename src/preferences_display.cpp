@@ -173,6 +173,24 @@ void set_colour_cursors(bool value)
 	cursor::set();
 }
 
+namespace {
+class escape_handler : public events::handler {
+public:
+	escape_handler() : escape_pressed_(false) {}
+	bool escape_pressed() { return escape_pressed_; }
+	void handle_event(const SDL_Event &event) {
+		if(event.type == SDL_KEYDOWN) {
+			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+			if (key.sym == SDLK_ESCAPE) {
+				escape_pressed_ = true;
+			}
+		}
+	}
+private:
+	bool escape_pressed_;
+};
+} //end anonymous namespace
+
 void show_hotkeys_dialog (display & disp, config *save_config)
 {
 	log_scope ("show_hotkeys_dialog");
@@ -237,9 +255,11 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::button save_button (disp.video(), _("Save Hotkeys"));
 	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
 
+	escape_handler esc_hand;
+
 	for(;;) {
 
-		if (close_button.pressed())
+		if (close_button.pressed() || esc_hand.escape_pressed())
 			break;
 
 		if (change_button.pressed ()) {
