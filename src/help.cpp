@@ -11,6 +11,9 @@
    See the COPYING file for more details.
 */
 
+//! @file help.cpp 
+//! Routines for showing the help-dialog.
+
 #include "global.hpp"
 
 #include "about.hpp"
@@ -2539,10 +2542,10 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	bool last_char_escape = false;
 	const char escape_char = '\\';
 	std::vector<std::string> attributes;
-	// Find the different attributes. No checks are made for the equal
-	// sign or something like that. Attributes are just separated by
-	// spaces or newlines. Attributes that contain spaces must be in
-	// single quotes.
+	// Find the different attributes. 
+	// No checks are made for the equal sign or something like that. 
+	// Attributes are just separated by spaces or newlines. 
+	// Attributes that contain spaces must be in single quotes.
 	for (size_t pos = 0; pos < contents.size(); pos++) {
 		const char c = contents[pos];
 		if (c == escape_char && !last_char_escape) {
@@ -2675,14 +2678,21 @@ std::string get_first_word(const std::string &s)
 	return s.substr(0, first_word_end);
 }
 
+//! Open the help browser, show topic with id show_topic.
+//!
+//! If show_topic is the empty string, the default topic will be shown.
 void show_help(display &disp, std::string show_topic, int xloc, int yloc)
 {
 	show_help(disp, toplevel, show_topic, xloc, yloc);
 }
 
-/// Open a help dialog using a toplevel other than the default.
-void show_help(display &disp, const section &toplevel_sec, const std::string show_topic,
-			   int xloc, int yloc)
+//! Open a help dialog using a toplevel other than the default. 
+//!
+//! This allows for complete customization of the contents, 
+//! although not in a very easy way.
+void show_help(display &disp, const section &toplevel_sec, 
+			   const std::string show_topic,
+			   int xloc, int yloc) 
 {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
@@ -2691,7 +2701,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	CVideo& screen = disp.video();
 	surface const scr = screen.getSurface();
 
-	const int width = minimum<int>(font::relative_size(900), scr->w - font::relative_size(20));
+	const int width  = minimum<int>(font::relative_size(900), scr->w - font::relative_size(20));
 	const int height = minimum<int>(font::relative_size(800), scr->h - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
