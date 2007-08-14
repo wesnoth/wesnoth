@@ -214,8 +214,8 @@ std::string new_map_dialog(display& disp, const t_translation::t_letter fill_ter
 		random_map_setting_button.set_dirty();
 		cancel_button.set_dirty();
 
-		width_slider.set_min(map_min_width);
-		height_slider.set_min(map_min_height);
+		width_slider.set_dirty();
+		height_slider.set_dirty();
 
 		events::raise_process_event();
 		events::raise_draw_event();
@@ -465,8 +465,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 		cancel_button.set_dirty();
 		ok_button.set_dirty();
 
-		width_slider.set_min(map_min_width);
-		height_slider.set_min(map_min_height);
+		width_slider.set_dirty();
+		height_slider.set_dirty();
 
 		events::raise_process_event();
 		events::raise_draw_event();
