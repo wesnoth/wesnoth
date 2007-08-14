@@ -56,6 +56,7 @@ std::vector<std::string> team_colors;
 std::string image_mask;
 
 int zoom = image::tile_size;
+int cached_zoom = 0;
 
 //The "pointer to surfaces" vector is not cleared anymore (the surface are
 //still freed, of course.) I do not think it is a problem, as the number of
@@ -482,11 +483,18 @@ void set_zoom(int amount)
 	if(amount != zoom) {
 		zoom = amount;
 		reset_cache(scaled_to_hex_images_);
-		reset_cache(scaled_to_zoom_);
 		reset_cache(brightened_images_);
 		reset_cache(semi_brightened_images_);
-		reset_cache(unmasked_images_);
 		reversed_images_.clear();
+
+		// we keep these caches if:
+		// we use default zoom (it doesn't need those)
+		// or if they are already at the wanted zoom
+		if (zoom != tile_size && zoom != cached_zoom) {
+			reset_cache(scaled_to_zoom_);
+			reset_cache(unmasked_images_);
+			cached_zoom = zoom;
+		}
 	}
 }
 
