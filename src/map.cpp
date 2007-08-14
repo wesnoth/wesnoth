@@ -289,8 +289,8 @@ void gamemap::read(const std::string& data)
 	// post processing on the map
 	const int width = tiles_.size();
 	const int height = width > 0 ? tiles_[0].size() : 0;
-    w_ = width;
-    h_ = height;
+	w_ = width;
+	h_ = height;
 	for(int x = 0; x < width; ++x) {
 		for(int y = 0; y < height; ++y) {
 			
@@ -430,7 +430,27 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 		if(on_board(adj[n])) {
 			items[nitems] = tiles_[adj[n].x][adj[n].y];
 			++nitems;
+		} else {
+			// if the terrain is off map but already in the border cache this
+			// will be used to determine the terrain. This avoids glitches
+			// * on map with an even width in the top right corner
+			// * on map with an odd height in the bottom left corner
+			// It might also change the result on other map and become random
+			// but the border tiles will be deterimined in the future so then
+			// this will no longer be used in the game (the editor will use
+			// this feature to expand maps in a better way).
+			std::map<location, t_translation::t_letter>::const_iterator itor = 
+				borderCache_.find(adj[n]);
+
+			// only add if it's in the cache and a valid terrain
+			if(itor != borderCache_.end() && 
+					itor->second != t_translation::NONE_TERRAIN)  {
+
+				items[nitems] = itor->second;
+				++nitems;
+			}
 		}
+
 	}
 
 	//count all the terrain types found, and see which one
