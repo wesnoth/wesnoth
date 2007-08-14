@@ -107,6 +107,25 @@ std::string str_cast(From a)
 	return lexical_cast<std::string,From>(a);
 }
 
+template<typename To, typename From>
+To lexical_cast_in_range(From a, To def, To min, To max)
+{
+	To res;
+	std::stringstream str;
+
+	if(!(str << a && str >> res)) {
+		return def;
+	} else {
+		if(res < min) {
+			return min;
+		}
+		if(res > max) {
+			return max;
+		}
+		return res;
+	}
+}
+
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 

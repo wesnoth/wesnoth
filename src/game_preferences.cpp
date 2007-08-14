@@ -23,6 +23,7 @@
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "sound.hpp"
+#include "settings.hpp"
 #include "util.hpp"
 #include "video.hpp" // non_interactive()
 #include "wassert.hpp"
@@ -102,45 +103,46 @@ bool _set_relationship(std::string nick, std::string rela) {
 
 int lobby_joins()
 {
-    if (preferences::get("lobby_joins") == "friends") {return SHOW_FRIENDS;}
-    else if (preferences::get("lobby_joins") == "all") {return SHOW_ALL;}
-    else {return SHOW_NON;}
+    if(preferences::get("lobby_joins") == "friends") {
+		return SHOW_FRIENDS;
+	} else if(preferences::get("lobby_joins") == "all") {
+		return SHOW_ALL;
+	} else {
+		return SHOW_NON;
+	}
 }
 
 
 void _set_lobby_joins(int show)
 {
-    if (show == SHOW_FRIENDS) {preferences::set("lobby_joins", "friends");}
-    else if (show == SHOW_ALL) {preferences::set("lobby_joins", "all");}
-    else {preferences::set("lobby_joins", "non");}
+    if (show == SHOW_FRIENDS) {
+		preferences::set("lobby_joins", "friends");
+	} else if (show == SHOW_ALL) {
+		preferences::set("lobby_joins", "all");
+	} else {
+		preferences::set("lobby_joins", "non");
+	}
 }
 
 bool sort_list()
 {
-	return preferences::get("sort_list") != "no";
+	return utils::string_bool(preferences::get("sort_list"), true);
 }
 
 
 void _set_sort_list(bool sort)
 {
-	if(sort)
-		preferences::set("sort_list", "yes");
-	else
-		preferences::set("sort_list", "no");
+	preferences::set("sort_list", sort ? "yes" : "no");
 }
 
 bool iconize_list()
 {
-	return preferences::get("iconize_list") != "no";
+	return utils::string_bool(preferences::get("iconize_list"), true);
 }
-
 
 void _set_iconize_list(bool sort)
 {
-	if(sort)
-		preferences::set("iconize_list", "yes");
-	else
-		preferences::set("iconize_list", "no");
+	preferences::set("iconize_list", sort ? "yes" : "no");
 }
 
 const std::vector<game_config::server_info>& server_list()
@@ -165,10 +167,11 @@ const std::vector<game_config::server_info>& server_list()
 const std::string network_host()
 {
 	const std::string res = preferences::get("host");
-	if(res.empty())
+	if(res.empty()) {
 		return server_list().front().address;
-	else
+	} else {
 		return res;
+	}
 }
 
 void set_network_host(const std::string& host)
@@ -178,10 +181,11 @@ void set_network_host(const std::string& host)
 
 const std::string campaign_server()
 {
-	if(!preferences::get("campaign_server").empty())
+	if(!preferences::get("campaign_server").empty()) {
 		return preferences::get("campaign_server");
-	else
+	} else {
 		return "campaigns.wesnoth.org";
+	}
 }
 
 void set_campaign_server(const std::string& host)
@@ -213,22 +217,22 @@ void set_login(const std::string& username)
 
 bool turn_dialog()
 {
-	return preferences::get("turn_dialog") == "yes";
+	return utils::string_bool(preferences::get("turn_dialog"), false);
 }
 
 void set_turn_dialog(bool ison)
 {
-	preferences::set("turn_dialog", (ison ? "yes" : "no"));
+	preferences::set("turn_dialog", ison ? "yes" : "no");
 }
 
 bool show_combat()
 {
-	return preferences::get("show_combat") != "no";
+	return utils::string_bool(preferences::get("show_combat"), true);
 }
 
 bool allow_observers()
 {
-	return preferences::get("allow_observers") != "no";
+	return utils::string_bool(preferences::get("allow_observers"), true);
 }
 
 void set_allow_observers(bool value)
@@ -248,7 +252,7 @@ void set_use_map_settings(bool value)
 
 bool random_start_time()
 {
-	return preferences::get("mp_random_start_time") != "no";
+	return settings::use_random_start_time(preferences::get("mp_random_start_time"));
 }
 
 void set_random_start_time(bool value)
@@ -256,10 +260,9 @@ void set_random_start_time(bool value)
 	preferences::set("mp_random_start_time", value ? "yes" : "no");
 }
 
-
 bool fog()
 {
-	return preferences::get("mp_fog") == "yes";
+	return settings::use_fog(preferences::get("mp_fog"));
 }
 
 void set_fog(bool value)
@@ -269,7 +272,7 @@ void set_fog(bool value)
 
 bool shroud()
 {
-	return preferences::get("mp_shroud") == "yes";
+	return settings::use_shroud(preferences::get("mp_shroud"));
 }
 
 void set_shroud(bool value)
@@ -279,30 +282,17 @@ void set_shroud(bool value)
 
 int turns()
 {
-	static const int default_value = 50;
-	int value = 0;
-	const string_map::const_iterator i = get_prefs()->values.find("mp_turns");
-	if(i != get_prefs()->values.end() && i->second.empty() == false) {
-		value = atoi(i->second.c_str());
-	}
-
-	if(value < 20 || value > 100) {
-		value = default_value;
-	}
-
-	return value;
+	return settings::get_turns(preferences::get("mp_turns"));
 }
 
 void set_turns(int value)
 {
-	std::stringstream stream;
-	stream << value;
-	preferences::set("mp_turns", stream.str());
+	preferences::set("mp_turns", lexical_cast<std::string>(value));
 }
 
 bool skip_mp_replay()
 {
-	return preferences::get("skip_mp_replay") == "yes";
+	return utils::string_bool(preferences::get("skip_mp_replay"), false);
 }
 
 void set_skip_mp_replay(bool value)
@@ -310,10 +300,9 @@ void set_skip_mp_replay(bool value)
 	preferences::set("skip_mp_replay", value ? "yes" : "no");
 }
 
-
 bool countdown()
 {
-	return preferences::get("mp_countdown") == "yes";
+	return utils::string_bool(preferences::get("mp_countdown"), false);
 }
 
 void set_countdown(bool value)
@@ -321,19 +310,10 @@ void set_countdown(bool value)
 	preferences::set("mp_countdown", value ? "yes" : "no");
 }
 
-
 int countdown_init_time()
 {
-	static const int default_value = 270;
-	int value = 0;
-	const std::string& timer_init = preferences::get("mp_countdown_init_time");
-	value = lexical_cast_default<int>(timer_init,default_value);
-
-	if(value < 0 || value > 1500) {
-		value = default_value;
-	}
-
-	return value;
+	return lexical_cast_in_range<int>
+		(preferences::get("mp_countdown_init_time"), 270, 0, 1500);
 }
 
 void set_countdown_init_time(int value)
@@ -343,16 +323,8 @@ void set_countdown_init_time(int value)
 
 int countdown_reservoir_time()
 {
-	static const int default_value = 330;
-	int value = 0;
-	const std::string& timer_init = preferences::get("mp_countdown_reservoir_time");
-	value = lexical_cast_default<int>(timer_init,default_value);
-
-	if(value < 30 || value > 1500) {
-		value = default_value;
-	}
-
-	return value;
+	return lexical_cast_in_range<int>(
+		preferences::get("mp_countdown_reservoir_time"), 330, 30, 1500);
 }
 
 void set_countdown_reservoir_time(int value)
@@ -362,16 +334,8 @@ void set_countdown_reservoir_time(int value)
 
 int countdown_turn_bonus()
 {
-	static const int default_value = 40;
-	int value = 0;
-	const std::string& timer_bonus = preferences::get("mp_countdown_turn_bonus");
-	value = lexical_cast_default<int>(timer_bonus,default_value);
-
-	if(value <= 0 || value > 300) {
-		value = default_value;
-	}
-
-	return value;
+	return lexical_cast_in_range<int>(
+		preferences::get("mp_countdown_turn_bonus"), 40, 0, 300);
 }
 
 void set_countdown_turn_bonus(int value)
@@ -381,16 +345,8 @@ void set_countdown_turn_bonus(int value)
 
 int countdown_action_bonus()
 {
-	static const int default_value = 13;
-	int value = 0;
-	const std::string& timer_bonus = preferences::get("mp_countdown_action_bonus");
-	value = lexical_cast_default<int>(timer_bonus,default_value);
-
-	if(value < 0 || value > 30) {
-		value = default_value;
-	}
-
-	return value;
+	return lexical_cast_in_range<int>(
+		preferences::get("mp_countdown_action_bonus"), 13, 0, 30);
 }
 
 void set_countdown_action_bonus(int value)
@@ -400,88 +356,47 @@ void set_countdown_action_bonus(int value)
 
 int village_gold()
 {
-	static const int default_value = 2;
-	int value = 0;
-	const string_map::const_iterator i = get_prefs()->values.find("mp_village_gold");
-	if(i != get_prefs()->values.end() && i->second.empty() == false) {
-		value = atoi(i->second.c_str());
-	}
-
-	if(value < 1 || value > 5) {
-		value = default_value;
-	}
-
-	return value;
+	return settings::get_village_gold(preferences::get("mp_village_gold"));
 }
 
 void set_village_gold(int value)
 {
-	std::stringstream stream;
-	stream << value;
-	preferences::set("mp_village_gold", stream.str());
+	preferences::set("mp_village_gold", lexical_cast<std::string>(value));
 }
 
 int xp_modifier()
 {
-	static const int default_value = 70;
-	int value = 0;
-	const string_map::const_iterator i = get_prefs()->values.find("mp_xp_modifier");
-	if(i != get_prefs()->values.end() && i->second.empty() == false) {
-		value = atoi(i->second.c_str());
-	}
-
-	if(value < 30 || value > 200) {
-		value = default_value;
-	}
-
-	return value;
+	return settings::get_xp_modifier(preferences::get("mp_xp_modifier"));
 }
 
 void set_xp_modifier(int value)
 {
-	std::stringstream stream;
-	stream << value;
-	preferences::set("mp_xp_modifier", stream.str());
+	preferences::set("mp_xp_modifier", lexical_cast<std::string>(value));
 }
 
 int era()
 {
-	int value = 0;
-	const string_map::const_iterator i = get_prefs()->values.find("mp_era");
-	if(i != get_prefs()->values.end() && i->second.empty() == false) {
-		value = atoi(i->second.c_str());
-	}
-
-	return value;
+	return lexical_cast_default<int>(preferences::get("mp_era"), 0);
 }
 
 void set_era(int value)
 {
-	std::stringstream stream;
-	stream << value;
-	preferences::set("mp_era", stream.str());
+	preferences::set("mp_era", lexical_cast<std::string>(value));
 }
 
 int map()
 {
-	int value = 0;
-	const string_map::const_iterator i = get_prefs()->values.find("mp_map");
-	if(i != get_prefs()->values.end() && i->second.empty() == false) {
-		value = atoi(i->second.c_str());
-	}
-	return value;
+	return lexical_cast_default<int>(preferences::get("mp_map"), 0);
 }
 
 void set_map(int value)
 {
-	std::stringstream stream;
-	stream << value;
-	preferences::set("mp_map", stream.str());
+	preferences::set("mp_map", lexical_cast<std::string>(value));
 }
 
 bool show_ai_moves()
 {
-	return preferences::get("show_ai_moves") != "no";
+	return utils::string_bool(preferences::get("show_ai_moves"), true);
 }
 
 void set_show_ai_moves(bool value)
@@ -496,7 +411,7 @@ void set_show_side_colours(bool value)
 
 bool show_side_colours()
 {
-	return preferences::get("show_side_colours") != "no";
+	return utils::string_bool(preferences::get("show_side_colours"), true);
 }
 
 void set_save_replays(bool value)
@@ -506,7 +421,7 @@ void set_save_replays(bool value)
 
 bool save_replays()
 {
-	return preferences::get("save_replays") != "no";
+	return utils::string_bool(preferences::get("save_replays"), true);
 }
 
 void set_delete_autosaves(bool value)
@@ -516,7 +431,7 @@ void set_delete_autosaves(bool value)
 
 bool delete_autosaves()
 {
-	return preferences::get("delete_autosaves") == "yes";
+	return utils::string_bool(preferences::get("delete_autosaves"), false);
 }
 
 void set_ask_delete_saves(bool value)
@@ -526,15 +441,12 @@ void set_ask_delete_saves(bool value)
 
 bool ask_delete_saves()
 {
-	return preferences::get("ask_delete") != "no";
+	return utils::string_bool(preferences::get("ask_delete"), true);
 }
 
 std::string client_type()
 {
-	if(preferences::get("client_type") == "ai")
-		return "ai";
-	else
-		return "human";
+	return preferences::get("client_type") == "ai" ? "ai" : "human";
 }
 
 std::string clock_format()
@@ -570,7 +482,7 @@ void set_theme(const std::string& theme)
 
 bool show_floating_labels()
 {
-	return preferences::get("floating_labels") != "no";
+	return utils::string_bool(preferences::get("floating_labels"), true);
 }
 
 void set_show_floating_labels(bool value)
@@ -590,7 +502,7 @@ void set_message_private(bool value)
 
 bool show_tip_of_day()
 {
-	return preferences::get("tip_of_day") != "no";
+	return utils::string_bool(preferences::get("tip_of_day"), true);
 }
 
 bool show_haloes()
@@ -606,7 +518,7 @@ void set_show_haloes(bool value)
 
 bool flip_time()
 {
-	return preferences::get("flip_time") == "yes";
+	return utils::string_bool(preferences::get("flip_time"), false);
 }
 
 void set_flip_time(bool value)
@@ -616,7 +528,7 @@ void set_flip_time(bool value)
 
 bool upload_log()
 {
-	return preferences::get("upload_log") == "yes";
+	return utils::string_bool(preferences::get("upload_log"), false);
 }
 
 void set_upload_log(bool value)
@@ -639,12 +551,12 @@ const std::string upload_id()
 
 bool compress_saves()
 {
-	return preferences::get("compress_saves") != "no";
+	return utils::string_bool(preferences::get("compress_saves"), true);
 }
 
 bool chat_timestamp()
 {
-	return preferences::get("chat_timestamp") == "yes";
+	return utils::string_bool(preferences::get("chat_timestamp"), false);
 }
 
 void set_chat_timestamp(bool value)
@@ -654,20 +566,12 @@ void set_chat_timestamp(bool value)
 
 int chat_lines()
 {
-	// defaults to 6 chat log lines displayed
-	static const int default_value = 6;
-	const string_map::const_iterator lines = get_prefs()->values.find("chat_lines");
-	if(lines != get_prefs()->values.end() && lines->second.empty() == false)
-		return atoi(lines->second.c_str());
-	else
-		return default_value;
+	return lexical_cast_default<int>(preferences::get("chat_lines"), 6);
 }
 
 void set_chat_lines(int lines)
 {
-	std::stringstream stream;
-	stream << lines;
-	preferences::set("chat_lines", stream.str());
+	preferences::set("chat_lines", lexical_cast<std::string>(lines));
 }
 
 std::set<std::string> &encountered_units() {

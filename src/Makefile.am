@@ -114,6 +114,7 @@ wesnoth_SOURCES = \
 	reports.cpp \
 	sdl_utils.cpp \
 	sha1.cpp \
+	settings.cpp \
 	show_dialog.cpp \
 	sound.cpp \
 	soundsource.cpp \
@@ -399,6 +400,7 @@ noinst_HEADERS = \
 	reports.hpp \
 	scoped_resource.hpp \
 	sha1.hpp \
+	settings.hpp \
 	sdl_utils.hpp \
 	show_dialog.hpp \
 	sound.hpp \
