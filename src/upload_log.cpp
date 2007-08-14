@@ -10,6 +10,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file upload_log.cpp 
+//! Manage logfiles for uploading as feedback, e.g.\ for champaign-balancing.
+
 #include "global.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth"
@@ -116,8 +120,8 @@ upload_log::upload_log(bool enable) : game_(NULL), enabled_(enable)
 {
 	filename_ = next_filename(get_upload_dir(), 100);
 	if (preferences::upload_log() && !thread_.t) {
-		// Thread can outlive us; it uploads everything up to the next
-		// filename, and unsets thread_.t when it's finished.
+		// Thread can outlive us; it uploads everything up to the 
+		// next filename, and unsets thread_.t when it's finished.
 		thread_.lastfile = filename_;
 		thread_.t = new threading::thread(upload_logs, &thread_);
 	}
@@ -178,8 +182,8 @@ void upload_log::start(game_state &state, const team &team,
 	if (game_finished(game_))
 		config_.add_child("game", *game_);
 
-	//start could be call more than one
-	//so delete game_ to prevent memory leak
+	// Start could be called more than once,
+	// so delete game_ to prevent memory leak
 	delete game_;
 	game_ = new config();
 	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
@@ -193,15 +197,15 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["gold"] = lexical_cast<std::string>(team.gold());
 	(*game_)["num_turns"] = lexical_cast<std::string>(num_turns);
 
-	// We seem to have to walk the map to find some units, and the player's
-	// available_units for the rest.
+	// We seem to have to walk the map to find some units, 
+	// and the player's available_units for the rest.
 	for (unit_map::const_iterator un = units.begin(); un != units.end(); ++un){
 		if (un->second.side() == team_number) {
 			all_units.push_back(&un->second);
 		}
 	}
 
-	// FIXME: Assumes first player is "us"; is that valid?
+	//! @todo FIXME: Assumes first player is "us"; is that valid?
 	player_info &player = state.players.begin()->second;
 	for (std::vector<unit>::iterator it = player.available_units.begin();
 		 it != player.available_units.end();
@@ -278,6 +282,7 @@ void upload_log::quit(int turn)
 	add_game_result("quit", turn);
 }
 
+//! Ask user for permission to upload his game-stats.
 void upload_log_dialog::show_beg_dialog(display& disp)
 {
 	std::string msg = std::string(_("Wesnoth relies on volunteers like yourself for feedback, especially beginners and new players.  Wesnoth keeps summaries of your games: you can help us improve game play by giving permission to send these summaries (anonymously) to wesnoth.org.\n"))
