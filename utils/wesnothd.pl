@@ -4,6 +4,15 @@ use IO::Socket;
 use IO::Select;
 use Fcntl;
 use Carp qw(confess);
+use Getopt::Std;
+
+#my $usage = "Usage: $0 [-p port]";
+
+my %opts = ();
+getopts('p:',\%opts);
+
+my $port = '15000';
+$port    = $opts{'p'} if $opts{'p'};
 
 my %pending_handshake = ();
 my %outgoing_schemas = ();
@@ -24,8 +33,6 @@ my $join_lobby_response = &wml::single_child_doc('join_lobby');
 my $gamelist =  {'name' => 'gamelist', 'children' => [], 'attr' => {}};
 my $initial_response = {'name' => '', 'children' => [$gamelist], 'attr' => {}};
 my $old_initial_response = &wml::deep_copy($initial_response);
-
-my $port = 15000;
 
 my @disallowed_names = ('server', 'ai', 'player', 'network', 'human', 'admin', 'computer');
 
