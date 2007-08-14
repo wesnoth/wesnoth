@@ -44,6 +44,8 @@ Version 1.3.6+svn:
    * Remove ToD coloring and brightening of off-map background tiles
    * fix inconsistant highlighting of fog transitions
    * slightly bigger and multi-hex attack direction indicator
+   * improve footesteps : better beginning, angles and end, reduce
+     cpu cost, fix incorrect left-right sequences and clean some images
  * map editor:
    * the grid is scaled properly again and no longer shown in the offmap area
  * user interface:
@@ -66,6 +68,7 @@ Version 1.3.6+svn:
    * in tiny-gui, now the movement hint also displays the terrain defense.
    * the numbers of "show enemy moves" are now on top of fog and doesn't mix
      with those of the movement hint
+   * display resistances against visible enemy weapons in the HP tooltip
  * WML engine:
    * now [base_unit]id= inside [unit] can extend upon existing unit types
    * new tag [filter_radius] to allow greater control over radius expansion
