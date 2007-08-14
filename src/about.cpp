@@ -11,6 +11,9 @@
    See the COPYING file for more details.
 */
 
+//! @file about.cpp 
+//! Show screen with scrolling credits.
+
 #include "about.hpp"
 #include "construct_dialog.hpp"
 #include "display.hpp"
@@ -21,6 +24,12 @@
 #include "video.hpp"
 #include "show_dialog.hpp"
 
+//! @namespace about	
+//! Display credits about all contributors.
+//! 
+//! This module is used from the startup screen. \n
+//! When show_about() is called, a list of contributors
+//! to the game will be presented to the user.
 namespace about
 {
 
@@ -137,6 +146,9 @@ void set_about(const config& cfg){
 	}
 }
 
+//! Show credits with list of contributors..
+//! Names of people are shown scrolling up like in movie-credits.\n
+//! Uses map from wesnoth or campaign as background.
 void show_about(display &disp, std::string campaign)
 {
 	CVideo &video = disp.video();
@@ -148,7 +160,8 @@ void show_about(display &disp, std::string campaign)
 	// Clear the screen
 	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
 	                                 0,0,0,1.0,video.getSurface());
-	update_whole_screen();
+	update_whole_screen(); 
+	cursor::set(cursor::NORMAL);
 
 	std::vector<std::string> image_list;
 	if(campaign.size() && !images[campaign].empty()){
@@ -292,4 +305,4 @@ void show_about(display &disp, std::string campaign)
 
 }
 
-}
+} // end namespace about
