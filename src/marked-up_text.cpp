@@ -10,6 +10,11 @@
 
    See the COPYING file for more details.
 */
+
+//! @file marked-up_text.cpp 
+//! Support for simple markup in text (fonts, colors, images).
+//! E.g. "@Victory" will be shown in green.
+
 #include "global.hpp"
 
 #include "font.hpp"
@@ -29,9 +34,11 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
            COLOR_TEXT='<', YELLOW_TEXT='!', 
 		   IMAGE='&';
 
-//Function which will parse the markup tags at the front of a string
-static std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
-					 int* font_size, SDL_Color* colour, int* style)
+//! Parses the markup-tags at the front of a string.
+static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
+												std::string::const_iterator i2, 
+												int* font_size, 
+												SDL_Color* colour, int* style) 
 {
 	if(font_size == NULL || colour == NULL) {
 		return i1;
@@ -41,7 +48,7 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 	while(i1 != i2) {
 		switch(*i1) {
 		case '\\':
-			// this must either be a quoted special character or a
+			// This must either be a quoted special character or a
 			// quoted backslash - either way, remove leading backslash
 			break;
 		case BAD_TEXT:
@@ -123,7 +130,7 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
 }
 
 
-// Copy string but without tags at the begining
+//! Copy string, but without tags at the beginning
 std::string del_tags(const std::string& text){
 	int ignore_int;
 	SDL_Color ignore_color;
@@ -141,8 +148,8 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
-	//make sure there's always at least a space, so we can ensure
-	//that we can return a rectangle for height
+	// Make sure there's always at least a space, 
+	// so we can ensure that we can return a rectangle for height
 	static const std::string blank_text(" ");
 	const std::string& text = txt.empty() ? blank_text : txt;
 
@@ -186,6 +193,9 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
 	return res;
 }
 
+//! Determine if char is one of the special chars used as markup.
+//! @retval true	input-char is a markup-char
+//! @retval false	input-char is a normal char
 bool is_format_char(char c)
 {
 	switch(c) {
@@ -287,7 +297,8 @@ inline bool break_after(wchar_t ch)
 		(ch >= 0xf900 && ch < 0xfb00) ||
 		(ch >= 0xff00 && ch < 0xfff0);
 }
-}
+
+} // end of anon namespace 
 
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines)
 {
@@ -316,7 +327,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 				format_string.append(ch.substr().first, ch.substr().second);
 				++ch;
 			}
-			// we need to parse the special format characters
+			// We need to parse the special format characters
 			// to give the proper font_size and style to line_size()
 			font_sz = font_size;
 			style = TTF_STYLE_NORMAL;
@@ -458,5 +469,5 @@ size_t text_to_lines(std::string& message, size_t max_length)
 }
 
 
+} // end namespace font
 
-}
