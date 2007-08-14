@@ -43,8 +43,9 @@ Version 1.3.6+svn:
    * Fixed bug #9646: ToD changes not applied to mainmap in replay mode.
    * Remove ToD coloring and brightening of off-map background tiles
    * fix inconsistant highlighting of fog transitions
-   * slightly bigger and multi-hex attack direction indicator
-   * improve footesteps : better beginning, angles and end, reduce
+   * slightly bigger and multi-hex attack direction indicator, fixed
+     incorrect scale update when zooming.
+   * improve footsteps : better beginning, angles and end, reduce
      cpu cost, fix incorrect left-right sequences and clean some images
  * map editor:
    * the grid is scaled properly again and no longer shown in the offmap area
