@@ -1276,8 +1276,14 @@ void display::set_zoom(int amount)
 }
 
 void display::set_default_zoom()
-{ 
-	set_zoom(DefaultZoom - zoom_); 
+{
+	if (zoom_ != DefaultZoom) {
+		set_zoom(DefaultZoom - zoom_ );
+	} else {
+		// we are already at the default zoom
+		// so switch to the second default (strategic view)
+		set_zoom(DefaultZoom / 2 - zoom_);
+	}
 }
 
 void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_type, bool check_fogged)
