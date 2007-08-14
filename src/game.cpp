@@ -876,8 +876,8 @@ static std::string format_file_size(const std::string& size_str)
 
 		std::ostringstream stream;
 #ifdef _MSC_VER
-		//Visual C++ makes 'precision' set the number of decimal places. Other platforms
-		//make it set the number of significant figures
+		// Visual C++ makes 'precision' set the number of decimal places. 
+		// Other platforms make it set the number of significant figures
 		stream.precision(1);
 		stream << std::fixed << size << size_postfix;
 #else
@@ -1787,6 +1787,7 @@ game_controller::~game_controller()
 	sound::close_sound();
 }
 
+//! Process commandline-arguments
 static int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
@@ -2130,4 +2131,5 @@ int main(int argc, char** argv)
 	}
 
 	return 0;
-}
+} // end main
+
