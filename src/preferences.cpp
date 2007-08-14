@@ -87,25 +87,13 @@ config* get_prefs(){
 	return pointer;
 }
 
-namespace {
-	bool is_fullscreen = false;
-}
-
 bool fullscreen()
 {
-	static bool first_time = true;
-	if(first_time) {
-		const string_map::const_iterator fullscreen =
-	                                   prefs.values.find("fullscreen");
-		is_fullscreen = fullscreen == prefs.values.end() || fullscreen->second == "true";
-	}
-
-	return is_fullscreen;
+	return utils::string_bool(get("fullscreen"), true);
 }
 
 void _set_fullscreen(bool ison)
 {
-	is_fullscreen = ison;
 	prefs["fullscreen"] = (ison ? "true" : "false");
 }
 
@@ -127,13 +115,14 @@ std::pair<int,int> resolution()
 		return std::pair<int,int>(1024,768);
 	}
 }
+
 bool turbo()
 {
-	if(non_interactive())
+	if(non_interactive()) {
 		return true;
+	}
 
-	const string_map::const_iterator turbo = prefs.values.find("turbo");
-	return turbo != prefs.values.end() && turbo->second == "true";
+	return  utils::string_bool(get("turbo"), false);
 }
 
 void _set_turbo(bool ison)
@@ -143,13 +132,14 @@ void _set_turbo(bool ison)
 
 double turbo_speed()
 {
-	return lexical_cast_default<double>(prefs["turbo_speed"], 2);
+	return lexical_cast_default<double>(get("turbo_speed"), 2.0);
 }
 
 void save_turbo_speed(const double speed)
 {
-	prefs["turbo_speed"] = lexical_cast_default<std::string>(speed, "2");
+	preferences::set("turbo_speed", lexical_cast<std::string>(speed));
 }
+
 const std::string& language()
 {
 	return prefs["locale"];
@@ -157,12 +147,12 @@ const std::string& language()
 
 void set_language(const std::string& s)
 {
-	prefs["locale"] = s;
+	preferences::set("locale", s);
 }
 
 bool adjust_gamma()
 {
-	return preferences::get("adjust_gamma") == "yes";
+	return utils::string_bool(get("adjust_gamma"), false);
 }
 
 void _set_adjust_gamma(bool val)
@@ -173,29 +163,27 @@ void _set_adjust_gamma(bool val)
 int gamma()
 {
 	static const int default_value = 100;
-	const string_map::const_iterator gamma = get_prefs()->values.find("gamma");
-	if(adjust_gamma() && gamma != get_prefs()->values.end() && gamma->second.empty() == false)
-		return atoi(gamma->second.c_str());
-	else
+
+	if(!adjust_gamma()) {
 		return default_value;
+	}
+
+	return lexical_cast_default<int>(get("gamma"), default_value);
 }
 
 void _set_gamma(int gamma)
 {
-	std::stringstream stream;
-	stream << gamma;
-	preferences::set("gamma", stream.str());
+	preferences::set("gamma", lexical_cast<std::string>(gamma));
 }
 
 bool grid()
 {
-	const string_map::const_iterator it = prefs.values.find("grid");
-	return it != prefs.values.end() && it->second == "true";
+	return utils::string_bool(get("grid"), false);
 }
 
 void _set_grid(bool ison)
 {
-	prefs["grid"] = (ison ? "true" : "false");
+	preferences::set("grid",  (ison ? "true" : "false"));
 }
 
 size_t sound_buffer_size()
@@ -208,7 +196,7 @@ size_t sound_buffer_size()
 		const size_t buf_size = 1024;
 	#endif
 
-	return lexical_cast_default<size_t>(preferences::get("sound_buffer_size"), buf_size);
+	return lexical_cast_default<size_t>(get("sound_buffer_size"), buf_size);
 }
 
 void save_sound_buffer_size(const size_t size)
@@ -220,7 +208,7 @@ void save_sound_buffer_size(const size_t size)
 	#endif
 
 	const std::string new_size = lexical_cast_default<std::string>(size, buf_size);
-	if (preferences::get("sound_buffer_size") == new_size)
+	if (get("sound_buffer_size") == new_size)
 		return;
 
 	preferences::set("sound_buffer_size", new_size);
@@ -230,44 +218,60 @@ void save_sound_buffer_size(const size_t size)
 
 int music_volume()
 {
-	return lexical_cast_default<int>(preferences::get("music_volume"), 100);
+	return lexical_cast_default<int>(get("music_volume"), 100);
 }
 
 void set_music_volume(int vol)
 {
+	if(music_volume() == vol) {
+		return;
+	}
+
 	preferences::set("music_volume", lexical_cast_default<std::string>(vol, "100"));
 	sound::set_music_volume(music_volume());
 }
 
 int sound_volume()
 {
-	return lexical_cast_default<int>(preferences::get("sound_volume"), 100);
+	return lexical_cast_default<int>(get("sound_volume"), 100);
 }
 
 void set_sound_volume(int vol)
 {
+	if(sound_volume() == vol) {
+		return;
+	}
+
 	preferences::set("sound_volume", lexical_cast_default<std::string>(vol, "100"));
 	sound::set_sound_volume(sound_volume());
 }
 
 int bell_volume()
 {
-	return lexical_cast_default<int>(preferences::get("bell_volume"), 100);
+	return lexical_cast_default<int>(get("bell_volume"), 100);
 }
 
 void set_bell_volume(int vol)
 {
+	if(bell_volume() == vol) {
+		return;
+	}
+
 	preferences::set("bell_volume", lexical_cast_default<std::string>(vol, "100"));
 	sound::set_bell_volume(bell_volume());
 }
 
 int UI_volume()
 {
-	return lexical_cast_default<int>(preferences::get("UI_volume"), 100);
+	return lexical_cast_default<int>(get("UI_volume"), 100);
 }
 
 void set_UI_volume(int vol)
 {
+	if(UI_volume() == vol) {
+		return;
+	}
+
 	preferences::set("UI_volume", lexical_cast_default<std::string>(vol, "100"));
 	sound::set_UI_volume(UI_volume());
 }
@@ -275,7 +279,7 @@ void set_UI_volume(int vol)
 
 bool turn_bell()
 {
-	return preferences::get("turn_bell") == "yes";
+	return get("turn_bell") == "yes";
 }
 
 bool set_turn_bell(bool ison)
@@ -299,7 +303,7 @@ bool set_turn_bell(bool ison)
 
 bool UI_sound_on()
 {
-	return preferences::get("UI_sound") != "no";
+	return utils::string_bool(get("UI_sound"), true);
 }
 
 bool set_UI_sound(bool ison)
@@ -323,16 +327,17 @@ bool set_UI_sound(bool ison)
 
 const std::string turn_cmd()
 {
-	return preferences::get("turn_cmd");
+	return get("turn_cmd");
 }
 
 bool message_bell()
 {
-	return preferences::get("message_bell") != "no";
+	return utils::string_bool(get("message_bell"), true);
 }
 
-bool sound_on() {
-	return preferences::get("sound") != "no";
+bool sound_on() 
+{
+	return utils::string_bool(get("sound"), true);
 }
 
 bool set_sound(bool ison) {
@@ -353,8 +358,9 @@ bool set_sound(bool ison) {
 	return true;
 }
 
-bool music_on() {
-	return preferences::get("music") != "no";
+bool music_on() 
+{
+	return utils::string_bool(get("music"), true);
 }
 
 bool set_music(bool ison) {
@@ -410,12 +416,12 @@ void set_scroll_speed(int new_speed)
 
 bool mouse_scroll_enabled()
 {
-	return preferences::get("mouse_scrolling") != "no";
+	return utils::string_bool(get("mouse_scrolling"), true);
 }
 
 void enable_mouse_scroll(bool value)
 {
-	preferences::set("mouse_scrolling", value ? "yes" : "no");
+	set("mouse_scrolling", value ? "yes" : "no");
 }
 
 bool show_fps()
@@ -463,11 +469,10 @@ unsigned int sample_rate()
 
 void save_sample_rate(const unsigned int rate)
 {
-	const std::string new_rate = lexical_cast_default<std::string>(rate, "44100");
-	if (preferences::get("sample_rate") == new_rate)
+	if (sample_rate() == rate)
 		return;
 
-	preferences::set("sample_rate", new_rate);
+	preferences::set("sample_rate", lexical_cast<std::string>(rate));
 
 	//if audio is open we have to re set sample rate
 	sound::reset_sound();
