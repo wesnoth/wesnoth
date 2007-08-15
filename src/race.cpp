@@ -126,12 +126,11 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 	return originalRes;
 }
 
-unit_race::unit_race() : ntraits_(0), chain_size_(0), not_living_(false), traits_(&empty_traits), global_traits_(true)
+unit_race::unit_race() : ntraits_(0), chain_size_(0), traits_(&empty_traits), global_traits_(true)
 {
 }
 
 unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg["num_traits"].c_str())),
-                                          not_living_(utils::string_bool(cfg["not_living"])),
 										  traits_(&cfg.get_children("trait")), global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
 {
 	names_[MALE] = utils::split(cfg["male_names"]);
@@ -163,8 +162,6 @@ const config::child_list& unit_race::additional_traits() const
 }
 
 unsigned int unit_race::num_traits() const { return ntraits_; }
-
-bool unit_race::not_living() const { return not_living_; }
 
 std::string const& gender_string(unit_race::GENDER gender) {
 	static const std::string female_string = "female";

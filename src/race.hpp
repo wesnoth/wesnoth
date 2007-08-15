@@ -41,16 +41,12 @@ public:
 	const config::child_list& additional_traits() const;
 	unsigned int num_traits() const;
 
-	bool not_living() const;
-
 private:
 	t_string name_;
 	unsigned int ntraits_;
 	std::vector<std::string> names_[NUM_GENDERS];
 	markov_prefix_map next_[NUM_GENDERS];
 	int chain_size_;
-
-	bool not_living_;
 
 	const config::child_list* traits_;
 	bool global_traits_;

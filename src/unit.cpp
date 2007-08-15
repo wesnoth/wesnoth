@@ -202,9 +202,6 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	refreshing_  = false;
 	hidden_ = false;
 	offset_ = 0;
-	if(race_->not_living()) {
-		set_state("not_living","yes");
-	}
 	game_config::add_color_info(cfg);
 }
 
@@ -221,9 +218,6 @@ unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
 	refreshing_  = false;
 	hidden_ = false;
 	offset_ = 0;
-	if(race_->not_living()) {
-		set_state("not_living","yes");
-	}
 }
 
 void unit::clear_status_caches()
@@ -549,9 +543,6 @@ void unit::advance_to(const unit_type* t)
 	set_state("poisoned","");
 	set_state("slowed","");
 	set_state("stoned","");
-	if(race_->not_living()) {
-		set_state("not_living","yes");
-	}
 	end_turn_ = false;
 	refreshing_  = false;
 	hidden_ = false;

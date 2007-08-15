@@ -216,7 +216,6 @@ public:
 	const std::vector<std::string>& abilities() const { return abilities_; }
 	const std::vector<std::string>& ability_tooltips() const { return ability_tooltips_; }
 
-	bool not_living() const { return race_->not_living(); }
 	bool can_advance() const { return !advances_to_.empty(); }
 
 	bool has_zoc() const { return zoc_; }

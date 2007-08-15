@@ -1574,7 +1574,9 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 	int sum = 0, weight_sum = 0;
 
 	bool steadfast = a.has_ability_by_id("steadfast");
-	bool living = !a.not_living();
+        // Currently not_living is by unit, not unit_type, so this isn't
+        // easy to check.
+	bool living = true;
 	const std::vector<attack_type>& attacks = b.attacks();
 	for (std::vector<attack_type>::const_iterator i = attacks.begin(),
 	     i_end = attacks.end(); i != i_end; ++i)
