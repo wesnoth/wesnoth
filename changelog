@@ -124,9 +124,13 @@ Version 1.3.6+svn:
    * IMPORTANT! End-of-scenario no longer takes you immediately to the
      next scenario or the lobby. Instead, you linger in browse mode --
      menu commands for chat, saving games, etc. are available.
-	 Clicking end-of-turn ends the linger and takes you out.
+     Clicking end-of-turn ends the linger and takes you out.
    * fixed a bug-cheat allowing super-ranged attack in some special cases
      (thanks jgp93)
+   * It seemed it's ambiguous whether the GPL license as supplied by
+     Wesnoth means GPL 2 or GPL 2+, since Sirp's orginal intent was
+     GPL 2+ the license has been changed accordingly.
+     (See https://mail.gna.org/public/wesnoth-dev/2007-07/msg00014.html)
 
 Version 1.3.6:
  * language and i18n:
@@ -213,7 +217,7 @@ Version 1.3.5:
      This time added for real, the replay can also handle it(bug #7426)
    * new times= key to apply [effects] more than once (default=once,
      other possible value=per level, i.e. the effect is multiplyed
-	 by the level of the unit).
+     by the level of the unit).
  * miscellaneous and bug fixes
    * fix renames causing OOS when made after moves or recruits
    * fix a minor glitch when selecting the leftmost menu heading
@@ -236,7 +240,7 @@ Version 1.3.4:
        Port", "Bay of Pearls", "Crossroads", "The Siege of Elensefar",
        "Dwarven Doors", "The Lost General", "Elven Coucil"
      * adapted the names of the maps and cfgs of the HttT to match the
-	   scenario identification keys and the order of the scenarios
+       scenario identification keys and the order of the scenarios
      * added the map of "Cliffs of Thoria"
      * changed one of the Orcish Warlords into a Sovereign and another one
 	   into a Slurbow for the variety in "Dwarven Doors"
