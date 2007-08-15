@@ -1666,8 +1666,10 @@ void unit::restart_animation(const game_display& disp,int start_time) {
 }
 
 void unit::set_facing(gamemap::location::DIRECTION dir) {
-	wassert(dir != gamemap::location::NDIRECTIONS);
-	facing_ = dir;
+	if(dir != gamemap::location::NDIRECTIONS) {
+		facing_ = dir;
+	}
+	//else look at yourself (not available so continue to face the same direction)
 }
 
 void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
