@@ -527,14 +527,14 @@ bool gamemap::location::matches_range(const std::string& xloc, const std::string
 		std::vector<std::string> xlocs = utils::split(xloc);
 		std::vector<std::string> ylocs = utils::split(yloc);
 
-		int size;
+		size_t size;
 		for(size = xlocs.size(); size < ylocs.size(); ++size) {
 			xlocs.push_back("");
 		}
 		while(size > ylocs.size()) {
 			ylocs.push_back("");
 		}
-		for(int i = 0; i != size; ++i) {
+		for(size_t i = 0; i != size; ++i) {
 			if(matches_range(xlocs[i],ylocs[i]))
 				return true;
 		}
