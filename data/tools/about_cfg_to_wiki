@@ -55,13 +55,14 @@ if __name__ == "__main__":
 |
 __TOC__
 |}
+__NOEDITSECTION__
 In July 2003, '''David White''' released the first version of Wesnoth. Since
 then, many people have joined the project, contributing in very different ways.
 
 To make any changes to this list, please modify about.cfg in SVN or ask any
 developer to do it for you.
 
-""")
+""".lstrip())
     for path, sections in chapters:
         if path == "data/core/about.cfg":
             output("== Contributors ==\n")
@@ -80,10 +81,17 @@ developer to do it for you.
                     continue
                 if comment: comment = " - " + comment
                 if wikiuser:
+                    # If a wiki user is given, the nickname is turned into a
+                    # wiki link, or else the whole name.
                     if "(" in name:
                         name = re.sub(r"\((.*)\)", "([[User:%s|\\1]])" % wikiuser, name)
                     else:
-                        name = "[[User:%s|%s]]" % (wikiuser, name)
+                        # The whole name is turned into a link, but also an
+                        # email is given - in this case add an extra link.
+                        if email:
+                            name += " ([[User:%s|%s]])" % (wikiuser, wikiuser)
+                        else:
+                            name = "[[User:%s|%s]]" % (wikiuser, name)
                 if email:
                     if "(" in name:
                         name, nick = name.split("(", 1)
