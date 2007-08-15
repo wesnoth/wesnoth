@@ -595,11 +595,18 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_l
 
 	tiles_[loc.x][loc.y] = terrain;
 
+	// temp hack, since the border can have multiple tiles depending on
+	// eachother every change has to invalidate the cache. Once the 
+	// border tiles are part of the map, this hack is no longer required.
+	borderCache_.clear();
+	return;
+
 	location adj[6];
 	get_adjacent_tiles(loc,adj);
 
-	for(int n = 0; n < 6; ++n)
+	for(int n = 0; n < 6; ++n) {
 		remove_from_border_cache(adj[n]);
+	}
 }
 
 std::vector<gamemap::location> parse_location_range(const std::string& x, const std::string& y,
