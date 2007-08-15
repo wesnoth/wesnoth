@@ -281,7 +281,6 @@ void pump()
 	SDL_Event temp_event;
 	int poll_count = 0;
 	int begin_ignoring = 0;
-	bool ignore_user_input = false;
 	std::vector< SDL_Event > events;
 	while(SDL_PollEvent(&temp_event)) {
 		++poll_count;
