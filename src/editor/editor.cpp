@@ -701,16 +701,26 @@ void map_editor::edit_revert() {
 }
 
 void map_editor::edit_resize() {
-	const std::pair<unsigned, unsigned> new_size =
-		resize_dialog(gui_, map_.w(), map_.h());
-	if (new_size.first != 0) {
-		const std::string resized_map =
-			resize_map(map_, new_size.first, new_size.second, palette_.selected_bg_terrain());
-		if (resized_map != "") {
-			map_undo_action action;
-			action.set_map_data(map_.write(), resized_map);
-			save_undo_action(action);
-			throw new_map_exception(resized_map, filename_, from_scenario_);
+
+	unsigned width = map_.w(), height = map_.h();
+	int x_offset = 0, y_offset = 0;
+	bool do_expand = true;
+	if(resize_dialog(gui_, width, height, x_offset, y_offset, do_expand)) {
+	
+		try {
+			const std::string resized_map =
+				resize_map(map_, width, height, x_offset, y_offset, 
+				do_expand, palette_.selected_bg_terrain());
+
+			if (resized_map != "") {
+				map_undo_action action;
+				action.set_map_data(map_.write(), resized_map);
+				save_undo_action(action);
+				throw new_map_exception(resized_map, filename_, from_scenario_);
+			}
+		} catch (gamemap::incorrect_format_exception& e) {
+			std::cerr << "ERROR: " << e.msg_ << '\n';
+			gui::message_dialog(gui_, "", e.msg_).show();
 		}
 	}
 }

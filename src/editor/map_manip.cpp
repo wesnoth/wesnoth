@@ -13,34 +13,68 @@
 
 #include "map_manip.hpp"
 
+#include "../gettext.hpp"
 #include "../map.hpp"
 #include "../config.hpp"
+#include "../construct_dialog.hpp"
 #include "../util.hpp"
+#include "../wassert.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <vector>
 #include <map>
 #include <algorithm>
 #include <set>
+#include <sstream>
 
-std::string editormap::resize(const size_t width, const size_t height, const t_translation::t_letter filler)
+std::string editormap::resize(const size_t width, const size_t height,
+	const int x_offset, const int y_offset,
+	const bool do_expand, t_translation::t_letter filler)
 {
+
 	const unsigned old_w = static_cast<unsigned>(w());
 	const unsigned old_h = static_cast<unsigned>(h());
 
-	if(old_w == width && old_h == height) {
+	// no changes leave
+	if(old_w == width && old_h == height && x_offset == 0 && y_offset == 0 ) {
 		return "";
 	}
-	
-	if (old_w != width) {
-		const t_translation::t_list one_row(old_h, filler);		
-		tiles_.resize(width, one_row);
+
+	if(do_expand) {
+		filler = t_translation::NONE_TERRAIN;
 	}
 
-	if(height != old_h) {
-		for(size_t i = 0; i < tiles_.size(); ++i) {
-			tiles_[i].resize(height, filler);
-		}
+	// determine the amount of resizing is required
+	const int left_resize = -x_offset;
+	const int right_resize = (width - old_w) + x_offset;
+	const int top_resize = -y_offset;
+	const int bottom_resize = (height - old_h) + y_offset;
+		
+//	std::cerr << "resize y " << left_resize << " x " << right_resize 
+//		<< " top " << top_resize << " bottom " << bottom_resize << '\n';
+
+	if(right_resize > 0) {
+		add_tiles_right(right_resize, filler);	
+	} else if(right_resize < 0) {
+		remove_tiles_right(-right_resize);	
+	}
+
+	if(bottom_resize > 0) {
+		add_tiles_bottom(bottom_resize, filler);	
+	} else if(bottom_resize < 0) {
+		remove_tiles_bottom(-bottom_resize);	
+	}
+
+	if(left_resize > 0) {
+		add_tiles_left(left_resize, filler);	
+	} else if(left_resize < 0) {
+		remove_tiles_left(-left_resize);	
+	}
+
+	if(top_resize > 0) {
+		add_tiles_top(top_resize, filler);	
+	} else if(top_resize < 0) {
+		remove_tiles_top(-top_resize);	
 	}
 
 	return write();
@@ -100,7 +134,7 @@ void editormap::set_starting_position(const int pos, const location loc) {
 }
 
 void editormap::swap_starting_position(const size_t x1, const size_t y1,
-										const size_t x2, const size_t y2)
+	const size_t x2, const size_t y2)
 {
 	const int pos1 = is_starting_position(location(x1, y1));
 	const int pos2 = is_starting_position(location(x2, y2));
@@ -112,6 +146,151 @@ void editormap::swap_starting_position(const size_t x1, const size_t y1,
 	if(pos2 != -1) {
 		set_starting_position(pos2 + 1, location(x1, y1));
 	}
+}
+
+void editormap::add_tiles_right(
+	const unsigned count, const t_translation::t_letter& filler)
+{
+//	std::cerr << "add right " << count << '\n';
+
+	for(size_t x = 1; x <= count; ++x) {
+		t_translation::t_list one_row(h());
+		for(size_t y = 0; y < tiles_[1].size(); ++y) {
+			one_row[y] = 
+				filler != t_translation::NONE_TERRAIN ? 
+				filler :
+				get_terrain(gamemap::location(x - 1, y));
+
+			wassert(one_row[y] != t_translation::NONE_TERRAIN);
+		}
+		tiles_.push_back(one_row);
+	}
+}
+
+void editormap::add_tiles_left(
+	const unsigned count, const t_translation::t_letter& filler)
+{
+//	std::cerr << "add left " << count << '\n';
+
+	for(size_t i = 1; i <= count; ++i) {
+		t_translation::t_list one_row(h());
+		for(size_t y = 0; y < tiles_[1].size(); ++y) {
+			one_row[y] = 
+				filler != t_translation::NONE_TERRAIN ? 
+				filler :
+				get_terrain(gamemap::location(-1, y));
+
+			wassert(one_row[y] != t_translation::NONE_TERRAIN);
+		}
+		tiles_.insert(tiles_.begin(), 1, one_row);
+		clear_border_cache();
+	}
+}
+
+void editormap::remove_tiles_right(const unsigned count)
+{
+//	std::cerr << "remove right " << count << '\n';
+
+	if(count > tiles_.size()) {
+		std::stringstream sstr;
+		sstr << _("Can't resize the map, the requested size is bigger "
+			"than the maximum, size=") << count << _(" maximum=") 
+			<< tiles_.size();
+
+		throw incorrect_format_exception(sstr.str().c_str());
+	}
+
+	tiles_.resize(tiles_.size() - count);
+}
+
+void editormap::remove_tiles_left(const unsigned count)
+{
+//	std::cerr << "remove left " << count << '\n';
+
+	if(count > tiles_.size()) {
+		std::stringstream sstr;
+		sstr << _("Can't resize the map, the requested size is bigger "
+			"than the maximum, size=") << count << _(" maximum=") 
+			<< tiles_.size();
+
+		throw incorrect_format_exception(sstr.str().c_str());
+	}
+
+	tiles_.erase(tiles_.begin(), tiles_.begin() + count);
+}
+
+void editormap::add_tiles_top(
+	const unsigned count, const t_translation::t_letter& filler)
+{
+//	std::cerr << "add top " << count << '\n';
+
+	for(size_t i =  1; i <= count; ++i) {
+		for(size_t y = 0; y < tiles_.size(); ++y) {
+			t_translation::t_letter terrain = 
+				filler != t_translation::NONE_TERRAIN ? 
+				filler :
+				get_terrain(gamemap::location(y, -1));
+
+			wassert(terrain != t_translation::NONE_TERRAIN);
+			tiles_[y].insert(tiles_[y].begin(), 1, terrain);
+			clear_border_cache();
+		}
+	}
+}
+
+void editormap::add_tiles_bottom(
+	const unsigned count, const t_translation::t_letter& filler)
+{
+//	std::cerr << "add bottom " << count << '\n';
+
+	for(size_t i =  1; i <= count; ++i) {
+		for(size_t x = 0; x < tiles_.size(); ++x) {
+			t_translation::t_letter terrain = 
+				filler != t_translation::NONE_TERRAIN ? 
+				filler :
+				get_terrain(gamemap::location(x, i - 1));
+
+			wassert(terrain != t_translation::NONE_TERRAIN);
+			tiles_[x].push_back(terrain);
+		}
+	}
+}
+
+void editormap::remove_tiles_top(const unsigned count)
+{
+//	std::cerr << "remove top " << count << '\n';
+
+	if(count > tiles_[0].size()) {
+		std::stringstream sstr;
+		sstr << _("Can't resize the map, the requested size is bigger "
+			"than the maximum, size=") << count << _(" maximum=") 
+			<< tiles_[0].size();
+
+		throw incorrect_format_exception(sstr.str().c_str());
+	}
+
+	for(size_t x = 0; x < tiles_.size(); ++x) {
+		tiles_[x].erase(tiles_[x].begin(), tiles_[x].begin() + count);
+	}
+}
+
+void editormap::remove_tiles_bottom(const unsigned count)
+{
+//	std::cerr << "remove bottom " << count << '\n';
+
+	if(count > tiles_[0].size()) {
+		std::stringstream sstr;
+		sstr << _("Can't resize the map, the requested size is bigger "
+			"than the maximum, size=") << count << _(" maximum=") 
+			<< tiles_[0].size();
+
+		throw incorrect_format_exception(sstr.str().c_str());
+	}
+
+	for(size_t x = 0; x < tiles_.size(); ++x) {
+		tiles_[x].erase(tiles_[x].end() - count, tiles_[x].end());
+	}
+
 }
 
 namespace map_editor {
@@ -194,9 +373,10 @@ std::set<gamemap::location> get_component(const gamemap &map,
 }
 
 std::string resize_map(editormap &map, const unsigned new_w,
-	const unsigned new_h, const t_translation::t_letter fill_with) 
+	const unsigned new_h, const int off_x, const int off_y,
+	const bool do_expand, const t_translation::t_letter fill_with)
 {
-	return map.resize(new_w, new_h, fill_with);
+	return map.resize(new_w, new_h, off_x, off_y, do_expand, fill_with);
 }
 
 

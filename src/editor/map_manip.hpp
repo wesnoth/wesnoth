@@ -41,13 +41,19 @@ public:
 	 *
 	 * @param width 	the new width
 	 * @param height	the new height
+	 * @param x_offset	the offset in x direction (the x coordinate specified will be the new 0 location)
+	 * @param y_offset	the offset in y direction (the y coordinate specified will be the new 0 location)
+	 * @param expand	try to expand the map depending on the current tiles
 	 * @param filler	if the map is enlarged the new tiles are set to this terrain
+	 * 			unless expand is set
 	 *
-	 * @return			if there's been a modification to the map the new map data as string
-	 * 					else an empty string
+	 * @return		if there's been a modification to the map the new map data as string
+	 * 			else an empty string
 	 */
-	std::string resize(const size_t width, const size_t height, const t_translation::t_letter filler); 
-	
+	std::string resize(const size_t width, const size_t height,
+		const int x_offset, const int y_offset,
+		const bool do_expand, t_translation::t_letter filler); 
+
 	/**
 	 * Flips the map over an axis
 	 *
@@ -74,8 +80,77 @@ private:
 	 * is moved to x1, y1. The function also works if both locations contain
 	 * a starting position.
 	 */
-	void swap_starting_position(const size_t x1, const size_t y1,
-								const size_t x2, const size_t y2);
+	void swap_starting_position(
+		const size_t x1, const size_t y1,
+		const size_t x2, const size_t y2);
+
+	/**
+	 * Adds column(s) at the right side
+	 *
+	 * @param count 	the number of columns to add
+	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
+	 * 			the enigne will determine the terrain by itself
+	 */
+	void add_tiles_right(const unsigned count,
+		const t_translation::t_letter& filler);
+
+	/**
+	 * Adds column(s) at the left side
+	 *
+	 * @param count 	the number of columns to add
+	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
+	 * 			the enigne will determine the terrain by itself
+	 */
+	void add_tiles_left(const unsigned count,
+		const t_translation::t_letter& filler);
+
+	/**
+	 * Removes column(s) at the right side
+	 *
+	 * @param count 	the number of columns to remove
+	 */
+	void remove_tiles_right(const unsigned count);
+
+	/**
+	 * Removes column(s) at the left side
+	 *
+	 * @param count 	the number of columns to remove
+	 */
+	void remove_tiles_left(const unsigned count);
+
+	/**
+	 * Adds row(s) at the top side
+	 *
+	 * @param count 	the number of rows to add
+	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
+	 * 			the enigne will determine the terrain by itself
+	 */
+	void add_tiles_top(const unsigned count,
+		const t_translation::t_letter& filler);
+
+	/**
+	 * Adds row(s) at the bottom side
+	 *
+	 * @param count 	the number of rows to add
+	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
+	 * 			the enigne will determine the terrain by itself
+	 */
+	void add_tiles_bottom(const unsigned count, 
+		const t_translation::t_letter& filler);
+
+	/**
+	 * Removes row(s) at the top side
+	 *
+	 * @param count 	the number of rows to remove
+	 */
+	void remove_tiles_top(const unsigned count);
+
+	/**
+	 * Removes row(s) at the bottom side
+	 *
+	 * @param count 	the number of rows to remove
+	 */
+	void remove_tiles_bottom(const unsigned count);
 };
 
 namespace map_editor {
@@ -106,7 +181,8 @@ get_component(const gamemap &map, const gamemap::location &start_loc);
 /// new map area appeard at the bottom and/or the right and is filled
 /// with the terrain fill_with.
 std::string resize_map(editormap &map, const unsigned new_w,
-   const unsigned new_h, const t_translation::t_letter fill_with);
+	const unsigned new_h, const int off_x, const int off_y,
+	const bool do_expand, const t_translation::t_letter fill_with);
 
 /// Return the string representation of the map after it has been
 /// flipped around the axis.

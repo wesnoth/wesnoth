@@ -206,6 +206,10 @@ protected:
 	t_translation::t_map tiles_;
 	location startingPositions_[STARTING_POSITIONS];
 	
+	/**
+	 * Clears the border cache, needed for the editor
+	 */
+	void clear_border_cache() { borderCache_.clear(); }
 private:
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
@@ -217,8 +221,8 @@ private:
 	mutable std::map<location, t_translation::t_letter> borderCache_;
 	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
 
-    int w_;
-    int h_;
+	int w_;
+	int h_;
 };
 
 class viewpoint
@@ -232,8 +236,7 @@ public:
 //a utility function which parses ranges of locations
 //into a vector of locations
 std::vector<gamemap::location> parse_location_range(const std::string& xvals,
-													const std::string& yvals,
-													const gamemap *const map=NULL);
+	const std::string& yvals, const gamemap *const map=NULL);
 
 //dump a position on a stream for debug purposes
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
