@@ -1,4 +1,15 @@
 /* $Id$ */
+/*
+   Copyright (C) 2007
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
 
 #ifndef AI_DFOOL_HPP_INCLUDED
 #define AI_DFOOL_HPP_INCLUDED

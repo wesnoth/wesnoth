@@ -1,4 +1,15 @@
 /* $Id$ */
+/*
+   Copyright (C) 2007
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License version 2.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
 
 #ifndef ATTACK_PREDICTION_H_INCLUDED
 #define ATTACK_PREDICTION_H_INCLUDED
