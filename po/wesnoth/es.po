@@ -1,3 +1,4 @@
+# translation of es.po to Spanish
 # translation of es.po to
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004, 2005, 2006, 2007 Wesnoth development team
@@ -17,9 +18,9 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-11 23:25+0200\n"
-"PO-Revision-Date: 2007-08-06 09:49+0200\n"
+"PO-Revision-Date: 2007-08-15 06:39+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
-"Language-Team:  <Spanish <es@li.org>>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -89,7 +90,7 @@ msgstr "Diseñadores gráficos y artísticos"
 
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:6
 msgid "Injured Sergeant"
-msgstr ""
+msgstr "Sargento herido"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -387,9 +388,8 @@ msgstr ""
 "estarán siempre bajo este apartado."
 
 #: data/core/help.cfg:73
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Escenario desconocido"
+msgstr "Unidad desconocida"
 
 #: data/core/help.cfg:76
 msgid ""
@@ -398,6 +398,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Ésta unidad es desconocida por el momento. Deberá descubrirla durante el "
+"juego para poder ver su descripción."
 
 #: data/core/help.cfg:84
 msgid ""
@@ -5859,12 +5863,11 @@ msgstr "Mensaje:"
 
 #: src/menu_events.cpp:675
 msgid "Send to allies only"
-msgstr "Mandarlo sólo a aliados"
+msgstr "Mandarlo sólo a los aliados"
 
 #: src/menu_events.cpp:675
-#, fuzzy
 msgid "Send to observers only"
-msgstr "Mandarlo sólo a aliados"
+msgstr "Mandarlo sólo a los observadores"
 
 #: src/menu_events.cpp:755
 msgid "unit^Gold"
@@ -6056,9 +6059,8 @@ msgid "prompt^Command:"
 msgstr "Orden:"
 
 #: src/menu_events.cpp:1993
-#, fuzzy
 msgid "User-Command#3"
-msgstr "Órdenes"
+msgstr "Orden-de-usuario#3"
 
 #: src/mouse_events.cpp:197 src/mouse_events.cpp:307
 msgid "Attacker"
@@ -6601,9 +6603,8 @@ msgid "The replay could not be saved"
 msgstr "La repetición no se ha podido guardar"
 
 #: src/playcampaign.cpp:394
-#, fuzzy
 msgid "Error while reading the WML: "
-msgstr "Error durante el juego: "
+msgstr "Error mientras se leía el WML: "
 
 #: src/playcampaign.cpp:407
 msgid "Receiving data..."
@@ -6815,28 +6816,24 @@ msgid "TitleScreen button^Preferences"
 msgstr "Preferencias"
 
 #: src/titlescreen.cpp:263
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "Salir"
+msgstr "Créditos"
 
 #: src/titlescreen.cpp:264
 msgid "TitleScreen button^Quit"
 msgstr "Salir"
 
 #: src/titlescreen.cpp:266
-#, fuzzy
 msgid "TitleScreen button^More"
-msgstr "Cargar"
+msgstr "Más"
 
 #: src/titlescreen.cpp:267
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "Cargar"
+msgstr "Ayuda"
 
 #: src/titlescreen.cpp:269
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Cargar"
+msgstr "Ayuda de Wesnoth"
 
 #: src/titlescreen.cpp:270
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -6881,17 +6878,15 @@ msgstr "Salir del juego"
 
 #: src/titlescreen.cpp:280
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Mostrar el siguiente consejo del día"
 
 #: src/titlescreen.cpp:281
-#, fuzzy
 msgid "Show Battle for Wesnoth help"
-msgstr "Sección de ayuda de la batalla por Wesnoth"
+msgstr "Mostrar la ayuda de la batalla por Wesnoth"
 
 #: src/titlescreen.cpp:282
-#, fuzzy
 msgid "Upload statistics"
-msgstr "Estadísticas"
+msgstr "Estadísticas de subida"
 
 #: src/titlescreen.cpp:333
 msgid "Help Wesnoth by sending us information"
@@ -6957,9 +6952,3 @@ msgstr "¡Ayúdenos a hacer un mejor Wesnoth para todos!"
 #: src/upload_log.cpp:290
 msgid "Enable summary uploads"
 msgstr "Permitir envíos de resúmenes"
-
-#~ msgid "Credits"
-#~ msgstr "Créditos"
-
-#~ msgid "More"
-#~ msgstr "Más"
