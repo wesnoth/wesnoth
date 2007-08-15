@@ -110,6 +110,8 @@ Version 1.3.6+svn:
      by default. It also allows specifying some traits and letting the
      rest fill in randomly. Some traits are always forced on for units
      that can get them (undead and mechanical).
+   * not_living tag removed from race, as this information is provided
+     by the undead and mechanical traits.
  * team color
    * allow color ranges to be defined on-the-fly (like color palettes)
    * now [side] colour=<string> is valid (previously only int)
