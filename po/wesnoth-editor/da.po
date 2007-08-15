@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-11 23:26+0200\n"
+"POT-Creation-Date: 2007-08-15 14:40+0200\n"
 "PO-Revision-Date: 2007-07-09 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -62,15 +62,15 @@ msgstr "landsby"
 msgid "castle"
 msgstr "borg"
 
-#: data/themes/editor.cfg:518
+#: data/themes/editor.cfg:523
 msgid "File"
 msgstr "Fil"
 
-#: data/themes/editor.cfg:527
+#: data/themes/editor.cfg:532
 msgid "Edit"
 msgstr "Rediger"
 
-#: data/themes/editor.cfg:534
+#: data/themes/editor.cfg:539
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -151,7 +151,7 @@ msgstr "Kortet eksisterer allerede. Ønsker du at overskrive?"
 msgid "None"
 msgstr "Ingen"
 
-#: src/editor/editor.cpp:542 src/editor/editor.cpp:1380
+#: src/editor/editor.cpp:542 src/editor/editor.cpp:1390
 msgid "Player"
 msgstr "Spiller"
 
@@ -179,23 +179,23 @@ msgstr ""
 msgid "The file does not contain a valid map."
 msgstr "Filen indeholder ikke et brugbart kort."
 
-#: src/editor/editor.cpp:1259
+#: src/editor/editor.cpp:1269
 msgid "Quit Editor"
 msgstr "Luk program"
 
-#: src/editor/editor.cpp:1263
+#: src/editor/editor.cpp:1273
 msgid "Do you want to save the map before quitting?"
 msgstr "Ønsker du at gemme kortet før lukning?"
 
-#: src/editor/editor.cpp:1311
+#: src/editor/editor.cpp:1321
 msgid "Map saved."
 msgstr "Kort gemt."
 
-#: src/editor/editor.cpp:1319
+#: src/editor/editor.cpp:1329
 msgid "Could not save the map: $msg"
 msgstr "Kunne ikke gemme kortet: $msg"
 
-#: src/editor/editor.cpp:1334
+#: src/editor/editor.cpp:1344
 msgid "Error: Illegal character in filename."
 msgstr "Fejl: Ugyldig tegn i filnavn."
 
@@ -208,3 +208,14 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:425
 msgid "BG"
 msgstr "BG"
+
+#: src/editor/map_manip.cpp:196 src/editor/map_manip.cpp:212
+#: src/editor/map_manip.cpp:265 src/editor/map_manip.cpp:283
+msgid ""
+"Can't resize the map, the requested size is bigger than the maximum, size="
+msgstr ""
+
+#: src/editor/map_manip.cpp:197 src/editor/map_manip.cpp:213
+#: src/editor/map_manip.cpp:266 src/editor/map_manip.cpp:284
+msgid " maximum="
+msgstr ""

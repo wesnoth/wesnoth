@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-11 23:25+0200\n"
+"POT-Creation-Date: 2007-08-15 14:39+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -1225,12 +1225,15 @@ msgstr ""
 "您的收入将会是每回合10个金币。"
 
 #: data/core/help.cfg:253
+#, fuzzy
 msgid ""
 "\n"
-"There is one important exception to Upkeep: units with the Loyal trait never "
-"incur upkeep. Units you begin the scenario with (such as Konrad or "
+"There are two important exceptions to Upkeep: units with the Loyal trait and "
+"leaders never incur upkeep. Units you begin the scenario with (such as "
 "Delfador), or units who join you during a scenario (such as the Horseman in "
-"the second scenario of Heir to the Throne) will usually have the Loyal trait."
+"the second scenario of Heir to the Throne) will usually have the Loyal "
+"trait. The unit you are playing (such as Konrad) will almost always be a "
+"leader."
 msgstr ""
 "\n"
 "维护费用的支付规则中有一个重要的例外：即具有忠诚特质的单位不需支付维护费用。"
@@ -3973,78 +3976,78 @@ msgid ""
 "ability to undo."
 msgstr ""
 
-#: data/themes/default.cfg:107 data/themes/dfool.cfg:128
-#: data/themes/experimental.cfg:91
+#: data/themes/default.cfg:112 data/themes/dfool.cfg:133
+#: data/themes/experimental.cfg:96
 msgid "Menu"
 msgstr "菜单"
 
-#: data/themes/default.cfg:118 data/themes/dfool.cfg:139
-#: data/themes/experimental.cfg:102
+#: data/themes/default.cfg:123 data/themes/dfool.cfg:144
+#: data/themes/experimental.cfg:107
 msgid "Actions"
 msgstr "动作"
 
-#: data/themes/default.cfg:140 data/themes/dfool.cfg:154
+#: data/themes/default.cfg:145 data/themes/dfool.cfg:159
 msgid "End Turn"
 msgstr "结束回合"
 
-#: data/themes/default.cfg:198 data/themes/dfool.cfg:225
-#: data/themes/experimental.cfg:176 src/menu_events.cpp:316 src/unit.cpp:2451
-#: src/unit.cpp:2597
+#: data/themes/default.cfg:203 data/themes/dfool.cfg:230
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:316 src/unit.cpp:2461
+#: src/unit.cpp:2607
 msgid "HP"
 msgstr "生命值"
 
-#: data/themes/default.cfg:207 data/themes/dfool.cfg:235
-#: data/themes/experimental.cfg:185 src/menu_events.cpp:317
-#: src/menu_events.cpp:887
+#: data/themes/default.cfg:212 data/themes/dfool.cfg:240
+#: data/themes/experimental.cfg:190 src/menu_events.cpp:317
+#: src/menu_events.cpp:951
 msgid "XP"
 msgstr "经验值"
 
-#: data/themes/default.cfg:217 data/themes/dfool.cfg:254
-#: data/themes/experimental.cfg:194
+#: data/themes/default.cfg:222 data/themes/dfool.cfg:259
+#: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "金币"
 
-#: data/themes/default.cfg:226 data/themes/dfool.cfg:263
-#: data/themes/experimental.cfg:203
+#: data/themes/default.cfg:231 data/themes/dfool.cfg:268
+#: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "村庄"
 
-#: data/themes/default.cfg:235 data/themes/dfool.cfg:272
-#: data/themes/experimental.cfg:212
+#: data/themes/default.cfg:240 data/themes/dfool.cfg:277
+#: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "单位"
 
-#: data/themes/default.cfg:244 data/themes/dfool.cfg:281
-#: data/themes/experimental.cfg:221
+#: data/themes/default.cfg:249 data/themes/dfool.cfg:286
+#: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "维护费用"
 
-#: data/themes/default.cfg:253 data/themes/dfool.cfg:290
-#: data/themes/experimental.cfg:230
+#: data/themes/default.cfg:258 data/themes/dfool.cfg:295
+#: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "收入"
 
-#: data/themes/default.cfg:392 data/themes/dfool.cfg:443
-#: data/themes/experimental.cfg:356
+#: data/themes/default.cfg:397 data/themes/dfool.cfg:448
+#: data/themes/experimental.cfg:361
 msgid "statuspanel^level"
 msgstr "等级"
 
-#: data/themes/default.cfg:423 data/themes/experimental.cfg:387
+#: data/themes/default.cfg:428 data/themes/experimental.cfg:392
 msgid "statuspanel^movement"
 msgstr "移动点数"
 
 # havn't seen this in action
-#: data/themes/default.cfg:561
+#: data/themes/default.cfg:566
 #, fuzzy
 msgid "Act."
 msgstr "行动"
 
-#: data/themes/default.cfg:594
+#: data/themes/default.cfg:599
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "结束"
 
-#: data/themes/dfool.cfg:245
+#: data/themes/dfool.cfg:250
 msgid "MP"
 msgstr "移动点"
 
@@ -4105,16 +4108,16 @@ msgstr "衰退药剂"
 msgid "Skip animation"
 msgstr "省略动画"
 
-#: src/about.cpp:36 src/multiplayer_connect.cpp:358
+#: src/about.cpp:45 src/multiplayer_connect.cpp:358
 #: src/multiplayer_connect.cpp:455 src/multiplayer_wait.cpp:450
 msgid "+"
 msgstr "+"
 
-#: src/about.cpp:44
+#: src/about.cpp:53
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:171 src/help.cpp:2708 src/menu_events.cpp:139
+#: src/about.cpp:184 src/help.cpp:2718 src/menu_events.cpp:139
 msgid "Close"
 msgstr "关闭"
 
@@ -4234,7 +4237,7 @@ msgstr "#（无效的）"
 msgid "Campaign"
 msgstr "战役"
 
-#: src/dialogs.cpp:462 src/game.cpp:1386
+#: src/dialogs.cpp:462 src/game.cpp:1388
 msgid "Multiplayer"
 msgstr "多人对战"
 
@@ -4246,7 +4249,7 @@ msgstr "教程"
 msgid "replay"
 msgstr "游戏录像"
 
-#: src/dialogs.cpp:474 src/menu_events.cpp:482 src/multiplayer_lobby.cpp:409
+#: src/dialogs.cpp:474 src/menu_events.cpp:546 src/multiplayer_lobby.cpp:409
 msgid "Turn"
 msgstr "回合"
 
@@ -4301,7 +4304,7 @@ msgid "Date"
 msgstr "日期"
 
 #: src/dialogs.cpp:560 src/game.cpp:1066 src/menu_events.cpp:314
-#: src/menu_events.cpp:885 src/multiplayer.cpp:109
+#: src/menu_events.cpp:949 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "名称"
 
@@ -4322,11 +4325,11 @@ msgstr "显示游戏录像"
 msgid "Profile"
 msgstr "资料"
 
-#: src/dialogs.cpp:713 src/help.cpp:1123
+#: src/dialogs.cpp:713 src/help.cpp:1126
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:735 src/help.cpp:1215
+#: src/dialogs.cpp:735 src/help.cpp:1218
 msgid "HP: "
 msgstr "生命值："
 
@@ -4334,7 +4337,7 @@ msgstr "生命值："
 msgid "XP: "
 msgstr "经验值："
 
-#: src/dialogs.cpp:752 src/help.cpp:1216
+#: src/dialogs.cpp:752 src/help.cpp:1219
 msgid "Moves: "
 msgstr "移动： "
 
@@ -4351,7 +4354,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "屏幕截图"
 
-#: src/game.cpp:427 src/game.cpp:1477
+#: src/game.cpp:427 src/game.cpp:1479
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -4438,7 +4441,7 @@ msgstr "插件已安装"
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1011 src/menu_events.cpp:496 src/menu_events.cpp:509
+#: src/game.cpp:1011 src/menu_events.cpp:560 src/menu_events.cpp:573
 #: src/multiplayer_create.cpp:497
 msgid "Error"
 msgstr "错误"
@@ -4459,7 +4462,7 @@ msgstr "请求插件列表"
 msgid "Error communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/game.cpp:1066 src/titlescreen.cpp:235
+#: src/game.cpp:1066 src/titlescreen.cpp:280
 msgid "Version"
 msgstr "版本"
 
@@ -4556,97 +4559,97 @@ msgstr "发送插件"
 msgid "Response"
 msgstr "回应"
 
-#: src/game.cpp:1370
+#: src/game.cpp:1372
 msgid "Join Official Server"
 msgstr "加入官方服务器"
 
-#: src/game.cpp:1371
+#: src/game.cpp:1373
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登录韦诺官方多人对战服务器"
 
-#: src/game.cpp:1373 src/multiplayer_lobby.cpp:531
+#: src/game.cpp:1375 src/multiplayer_lobby.cpp:531
 msgid "Join Game"
 msgstr "加入游戏"
 
-#: src/game.cpp:1374
+#: src/game.cpp:1376
 msgid "Join a server or hosted game"
 msgstr "加入服务器或已建游戏"
 
-#: src/game.cpp:1376
+#: src/game.cpp:1378
 msgid "Host Networked Game"
 msgstr "主建局域网游戏"
 
-#: src/game.cpp:1377
+#: src/game.cpp:1379
 msgid "Host a game without using a server"
 msgstr "无服务器主建游戏"
 
-#: src/game.cpp:1379
+#: src/game.cpp:1381
 #, fuzzy
 msgid "Local Game"
 msgstr "载入游戏"
 
-#: src/game.cpp:1380
+#: src/game.cpp:1382
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "在一台电脑上进行多人对战"
 
-#: src/game.cpp:1388 src/multiplayer.cpp:231
+#: src/game.cpp:1390 src/multiplayer.cpp:231
 msgid "Login: "
 msgstr "登录名： "
 
-#: src/game.cpp:1425 src/playcampaign.cpp:91 src/playcampaign.cpp:384
+#: src/game.cpp:1427 src/playcampaign.cpp:91 src/playcampaign.cpp:384
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1427 src/playcampaign.cpp:93 src/playcampaign.cpp:387
+#: src/game.cpp:1429 src/playcampaign.cpp:93 src/playcampaign.cpp:387
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1443 src/playcampaign.cpp:95 src/playcampaign.cpp:390
+#: src/game.cpp:1445 src/playcampaign.cpp:95 src/playcampaign.cpp:390
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1467
+#: src/game.cpp:1469
 msgid "Language"
 msgstr "语言"
 
-#: src/game.cpp:1468
+#: src/game.cpp:1470
 msgid "Choose your preferred language:"
 msgstr "选择您的语言偏好："
 
-#: src/game.cpp:1617
+#: src/game.cpp:1619
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "以下附加战役有错误，无法加载："
 
-#: src/game.cpp:1622
+#: src/game.cpp:1624
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1636
+#: src/game.cpp:1638
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告：载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1685
+#: src/game.cpp:1687
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1686
+#: src/game.cpp:1688
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1854
+#: src/game.cpp:1857
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:1980
+#: src/game.cpp:1983
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:1986
+#: src/game.cpp:1989
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2001
+#: src/game.cpp:2004
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -4711,152 +4714,157 @@ msgstr "本单位已石化。不能攻击或移动。"
 msgid "stone: "
 msgstr "石化： "
 
-#: src/generate_report.cpp:151 src/multiplayer_create.cpp:365
+#: src/generate_report.cpp:151
+#, fuzzy
+msgid "Resistances: "
+msgstr "抗性"
+
+#: src/generate_report.cpp:189 src/multiplayer_create.cpp:365
 msgid "Experience Modifier: "
 msgstr "经验值修正： "
 
-#: src/generate_report.cpp:226
+#: src/generate_report.cpp:264
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "点伤害"
 msgstr[1] "点伤害"
 
-#: src/generate_report.cpp:227
+#: src/generate_report.cpp:265
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] "次攻击"
 msgstr[1] "次攻击"
 
-#: src/generate_report.cpp:237
+#: src/generate_report.cpp:275
 msgid "weapon range: "
 msgstr "武器攻击范围："
 
-#: src/generate_report.cpp:238
+#: src/generate_report.cpp:276
 msgid "damage type: "
 msgstr "伤害类型："
 
-#: src/generate_report.cpp:258 src/mouse_events.cpp:1338
+#: src/generate_report.cpp:296 src/mouse_events.cpp:1338
 msgid "vs"
 msgstr "vs"
 
-#: src/generate_report.cpp:307
+#: src/generate_report.cpp:345
 msgid "Lawful units: "
 msgstr "善良单位： "
 
-#: src/generate_report.cpp:309
+#: src/generate_report.cpp:347
 msgid "Neutral units: "
 msgstr "中立单位： "
 
-#: src/generate_report.cpp:310
+#: src/generate_report.cpp:348
 msgid "Chaotic units: "
 msgstr "混乱单位： "
 
-#: src/generate_report.cpp:446
+#: src/generate_report.cpp:484
 msgid "Observers:"
 msgstr "观察者："
 
-#: src/help.cpp:56
+#: src/help.cpp:59
 msgid "Help"
 msgstr "帮助"
 
-#: src/help.cpp:1143
+#: src/help.cpp:1146
 #, fuzzy
 msgid "Advances from: "
 msgstr "升级自："
 
-#: src/help.cpp:1172
+#: src/help.cpp:1175
 msgid "Advances to: "
 msgstr "升级为： "
 
-#: src/help.cpp:1198
+#: src/help.cpp:1201
 msgid "Abilities: "
 msgstr "技能： "
 
-#: src/help.cpp:1217
+#: src/help.cpp:1220
 msgid "Cost: "
 msgstr "价格："
 
-#: src/help.cpp:1218
+#: src/help.cpp:1221
 msgid "Alignment: "
 msgstr "攻击属性： "
 
-#: src/help.cpp:1224
+#: src/help.cpp:1227
 msgid "Required XP: "
 msgstr "升级所需经验值： "
 
-#: src/help.cpp:1233
+#: src/help.cpp:1236
 msgid "unit help^Attacks"
 msgstr "攻击"
 
-#: src/help.cpp:1240
+#: src/help.cpp:1243
 msgid "unit help^Name"
 msgstr "名称"
 
-#: src/help.cpp:1241 src/menu_events.cpp:313 src/menu_events.cpp:884
+#: src/help.cpp:1244 src/menu_events.cpp:313 src/menu_events.cpp:948
 msgid "Type"
 msgstr "类型"
 
-#: src/help.cpp:1242
+#: src/help.cpp:1245
 msgid "Strikes"
 msgstr "输出"
 
-#: src/help.cpp:1243
+#: src/help.cpp:1246
 msgid "Range"
 msgstr "范围"
 
-#: src/help.cpp:1244
+#: src/help.cpp:1247
 msgid "Special"
 msgstr "特性"
 
-#: src/help.cpp:1294
+#: src/help.cpp:1297
 msgid "Resistances"
 msgstr "抗性"
 
-#: src/help.cpp:1298
+#: src/help.cpp:1301
 msgid "Attack Type"
 msgstr "攻击类型"
 
-#: src/help.cpp:1299
+#: src/help.cpp:1302
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help.cpp:1336
+#: src/help.cpp:1339
 msgid "Terrain Modifiers"
 msgstr "地形影响"
 
-#: src/help.cpp:1340
+#: src/help.cpp:1343
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help.cpp:1341
+#: src/help.cpp:1344
 msgid "Defense"
 msgstr "闪避几率"
 
-#: src/help.cpp:1342
+#: src/help.cpp:1345
 msgid "Movement Cost"
 msgstr "移动点数耗费"
 
-#: src/help.cpp:2253
+#: src/help.cpp:2256
 msgid " < Back"
 msgstr " < 后退"
 
-#: src/help.cpp:2254
+#: src/help.cpp:2257
 msgid "Forward >"
 msgstr "前进 >"
 
-#: src/help.cpp:2366
+#: src/help.cpp:2369
 msgid "Reference to unknown topic: "
 msgstr "引用未知主题： "
 
-#: src/help.cpp:2626
+#: src/help.cpp:2629
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2711
+#: src/help.cpp:2721
 msgid "The Battle for Wesnoth Help"
 msgstr "韦诺之战帮助"
 
-#: src/help.cpp:2761
+#: src/help.cpp:2771
 msgid "Parse error when parsing help text: "
 msgstr "分析帮助文本时语法错误： "
 
@@ -4966,7 +4974,7 @@ msgstr "他"
 msgid "Statistics"
 msgstr "统计"
 
-#: src/menu_events.cpp:315 src/menu_events.cpp:886
+#: src/menu_events.cpp:315 src/menu_events.cpp:950
 msgid "Level"
 msgstr "等级"
 
@@ -4974,7 +4982,7 @@ msgstr "等级"
 msgid "unit list^Traits"
 msgstr "特质"
 
-#: src/menu_events.cpp:319 src/unit.cpp:2484 src/unit.cpp:2605
+#: src/menu_events.cpp:319 src/unit.cpp:2494 src/unit.cpp:2615
 msgid "Moves"
 msgstr "移动"
 
@@ -4982,134 +4990,139 @@ msgstr "移动"
 msgid "Location"
 msgstr "位置"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:321
+#, fuzzy
+msgid "Status"
+msgstr "统计"
+
+#: src/menu_events.cpp:434
 msgid "Unit List"
 msgstr "单位列表"
 
-#: src/menu_events.cpp:386
+#: src/menu_events.cpp:450
 msgid "Leader"
 msgstr "领袖"
 
-#: src/menu_events.cpp:387 src/multiplayer_connect.cpp:744
+#: src/menu_events.cpp:451 src/multiplayer_connect.cpp:744
 #: src/multiplayer_connect.cpp:753
 msgid "Team"
 msgstr "团队"
 
-#: src/menu_events.cpp:388 src/multiplayer_connect.cpp:755
+#: src/menu_events.cpp:452 src/multiplayer_connect.cpp:755
 #: src/multiplayer_wait.cpp:444
 msgid "Gold"
 msgstr "金币"
 
-#: src/menu_events.cpp:389
+#: src/menu_events.cpp:453
 msgid "Villages"
 msgstr "村庄"
 
-#: src/menu_events.cpp:390
+#: src/menu_events.cpp:454
 msgid "status^Units"
 msgstr "单位"
 
-#: src/menu_events.cpp:391
+#: src/menu_events.cpp:455
 msgid "Upkeep"
 msgstr "维护费用"
 
-#: src/menu_events.cpp:392 src/multiplayer_connect.cpp:756
+#: src/menu_events.cpp:456 src/multiplayer_connect.cpp:756
 #: src/multiplayer_wait.cpp:448
 msgid "Income"
 msgstr "收入"
 
-#: src/menu_events.cpp:491 src/playcampaign.cpp:509
+#: src/menu_events.cpp:555 src/playcampaign.cpp:509
 msgid "Name:"
 msgstr "名称："
 
-#: src/menu_events.cpp:496
+#: src/menu_events.cpp:560
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr "存档名不能包含冒号，斜线或反斜线。请选择一个不同的名字。"
 
-#: src/menu_events.cpp:506
+#: src/menu_events.cpp:570
 msgid "Saved"
 msgstr "已存储"
 
-#: src/menu_events.cpp:506
+#: src/menu_events.cpp:570
 msgid "The game has been saved"
 msgstr "游戏已存储"
 
-#: src/menu_events.cpp:509 src/playcampaign.cpp:517
+#: src/menu_events.cpp:573 src/playcampaign.cpp:517
 msgid "The game could not be saved"
 msgstr "无法保存游戏"
 
-#: src/menu_events.cpp:524
+#: src/menu_events.cpp:588
 #, fuzzy
 msgid "Save the Map As"
 msgstr "共享地图"
 
-#: src/menu_events.cpp:529
+#: src/menu_events.cpp:593
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "存档以存在，要覆盖吗？"
 
-#: src/menu_events.cpp:541
+#: src/menu_events.cpp:605
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:545
+#: src/menu_events.cpp:609
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:635 src/menu_events.cpp:637 src/play_controller.cpp:752
+#: src/menu_events.cpp:699 src/menu_events.cpp:701 src/play_controller.cpp:752
 #: src/playcampaign.cpp:102
 msgid "Auto-Save"
 msgstr "自动存档"
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:704
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "不能自动存储当前游戏，请手动存档。"
 
-#: src/menu_events.cpp:664
+#: src/menu_events.cpp:728
 msgid "Chat Log"
 msgstr "聊天记录"
 
-#: src/menu_events.cpp:674
+#: src/menu_events.cpp:738
 msgid "Message:"
 msgstr "信息："
 
-#: src/menu_events.cpp:675
+#: src/menu_events.cpp:739
 msgid "Send to allies only"
 msgstr "仅发送给同盟"
 
-#: src/menu_events.cpp:675
+#: src/menu_events.cpp:739
 #, fuzzy
 msgid "Send to observers only"
 msgstr "仅发送给同盟"
 
-#: src/menu_events.cpp:755
+#: src/menu_events.cpp:819
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "金币"
 msgstr[1] "金币"
 
-#: src/menu_events.cpp:762
+#: src/menu_events.cpp:826
 msgid "You have no units available to recruit."
 msgstr "您没有可供征募的单位。"
 
-#: src/menu_events.cpp:774
+#: src/menu_events.cpp:838
 msgid "Recruit"
 msgstr "征募"
 
-#: src/menu_events.cpp:775 src/menu_events.cpp:924
+#: src/menu_events.cpp:839 src/menu_events.cpp:988
 msgid "Select unit:"
 msgstr "选择单位："
 
-#: src/menu_events.cpp:820
+#: src/menu_events.cpp:884
 msgid "You don't have enough gold to recruit that unit"
 msgstr "您没有足够的金币去征募该单位"
 
-#: src/menu_events.cpp:877
+#: src/menu_events.cpp:941
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "您与您的士兵已分离，因此不能召回他们。"
 
-#: src/menu_events.cpp:879
+#: src/menu_events.cpp:943
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -5117,56 +5130,56 @@ msgstr ""
 "没有可供召回的单位\n"
 "（上个剧本里必须有存活下来的老兵）"
 
-#: src/menu_events.cpp:918
+#: src/menu_events.cpp:982
 msgid "Dismiss Unit"
 msgstr "解散单位"
 
-#: src/menu_events.cpp:923
+#: src/menu_events.cpp:987
 msgid "Recall"
 msgstr "召回"
 
-#: src/menu_events.cpp:940
+#: src/menu_events.cpp:1004
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "要召回一个单位，您至少需要有1个金币"
 msgstr[1] "要召回一个单位，您至少需要有$cost个金币"
 
-#: src/menu_events.cpp:1273
+#: src/menu_events.cpp:1337
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "您在这回合还没进行操作。您真的想结束本回合吗？"
 
-#: src/menu_events.cpp:1281 src/menu_events.cpp:1286
+#: src/menu_events.cpp:1345 src/menu_events.cpp:1350
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "有些单位还可以移动。您真的要结束本回合吗？"
 
-#: src/menu_events.cpp:1327
+#: src/menu_events.cpp:1391
 msgid "Rename Unit"
 msgstr "重命名单位"
 
-#: src/menu_events.cpp:1409
+#: src/menu_events.cpp:1473
 msgid "Place Label"
 msgstr "设置标签"
 
-#: src/menu_events.cpp:1412 src/menu_events.cpp:1415
+#: src/menu_events.cpp:1476 src/menu_events.cpp:1479
 msgid "Label:"
 msgstr "标签："
 
-#: src/menu_events.cpp:1418
+#: src/menu_events.cpp:1482
 #, fuzzy
 msgid "Team only"
 msgstr "青"
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1583
 msgid "Search"
 msgstr "搜索"
 
-#: src/menu_events.cpp:1562
+#: src/menu_events.cpp:1626
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "指令：whisper ignore emote。输入/help [指令名]以显示相关帮助信息。 "
 
-#: src/menu_events.cpp:1613
+#: src/menu_events.cpp:1677
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5174,38 +5187,38 @@ msgstr ""
 "发送私人消息。您不能发送消息给正在控制游戏中任何一方的玩家。用法：/whisper "
 "[玩家名] [消息内容]"
 
-#: src/menu_events.cpp:1617
+#: src/menu_events.cpp:1681
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "将玩家列入您的忽略名单。用法：/ignore add [表达式]"
 
-#: src/menu_events.cpp:1619
+#: src/menu_events.cpp:1683
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "将玩家列入您的忽略名单。用法：/ignore add [表达式]"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1685
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr "将玩家从您的忽略名单中去除。用法：/ignore remove [表达式]"
 
-#: src/menu_events.cpp:1623
+#: src/menu_events.cpp:1687
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "清空您的忽略名单。用法：/ignore clear"
 
-#: src/menu_events.cpp:1625
+#: src/menu_events.cpp:1689
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "显示您的忽略名单。用法：/ignore list"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1691
 msgid "Unknown subcommand"
 msgstr "未知的子命令"
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1694
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -5216,58 +5229,58 @@ msgstr ""
 "忽略在名单中的玩家发送的消息。用法：/ignore [子命令] [表达式]（可选）。子命令"
 "包括：add remove list clear。输入/help ignore [子命令]获取更多信息。"
 
-#: src/menu_events.cpp:1633
+#: src/menu_events.cpp:1697
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "在聊天中发送情感或个人讯号。用法：Usage: /emote [消息内容]"
 
-#: src/menu_events.cpp:1635
+#: src/menu_events.cpp:1699
 msgid "Unknown command"
 msgstr "未知命令"
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1711
 msgid "Added to ignore list: "
 msgstr "已加入忽略名单："
 
-#: src/menu_events.cpp:1649 src/menu_events.cpp:1656 src/menu_events.cpp:1663
+#: src/menu_events.cpp:1713 src/menu_events.cpp:1720 src/menu_events.cpp:1727
 msgid "Invalid username: "
 msgstr "无效的用户名："
 
-#: src/menu_events.cpp:1654
+#: src/menu_events.cpp:1718
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "已加入忽略名单："
 
-#: src/menu_events.cpp:1661
+#: src/menu_events.cpp:1725
 #, fuzzy
 msgid "Removed from list: "
 msgstr "从忽略名单中除去："
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1751
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1761
 msgid "Removed from ignore list: "
 msgstr "从忽略名单中除去："
 
-#: src/menu_events.cpp:1700
+#: src/menu_events.cpp:1764
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "从忽略名单中除去："
 
-#: src/menu_events.cpp:1707
+#: src/menu_events.cpp:1771
 msgid "Unknown command: "
 msgstr "未知命令："
 
-#: src/menu_events.cpp:1821
+#: src/menu_events.cpp:1885
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "不能找到含有“$search”的标签或单位。"
 
-#: src/menu_events.cpp:1974
+#: src/menu_events.cpp:2038
 msgid "prompt^Command:"
 msgstr "命令："
 
-#: src/menu_events.cpp:1993
+#: src/menu_events.cpp:2057
 #, fuzzy
 msgid "User-Command#3"
 msgstr "指令"
@@ -5401,12 +5414,12 @@ msgid "Normal"
 msgstr "普通"
 
 #: src/multiplayer_connect.cpp:356 src/multiplayer_connect.cpp:453
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2635
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2645
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:356 src/multiplayer_connect.cpp:453
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2642
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2652
 msgid ")"
 msgstr "）"
 
@@ -6001,124 +6014,124 @@ msgstr "敌人的村庄"
 msgid "Owned village"
 msgstr "拥有的村庄"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:303
 msgid "TitleScreen button^Tutorial"
 msgstr "教程"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:304
 msgid "TitleScreen button^Campaign"
 msgstr "战役"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:305
 msgid "TitleScreen button^Multiplayer"
 msgstr "多人对战"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:306
 msgid "TitleScreen button^Load"
 msgstr "载入"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:307
 #, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "下载插件"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:308
 msgid "TitleScreen button^Language"
 msgstr "语言"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:309
 msgid "TitleScreen button^Preferences"
 msgstr "设置"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:310
 #, fuzzy
 msgid "TitleScreen button^Credits"
 msgstr "退出"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:311
 msgid "TitleScreen button^Quit"
 msgstr "退出"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:314
 #, fuzzy
 msgid "TitleScreen button^More"
 msgstr "载入"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:315
 #, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "载入"
 
-#: src/titlescreen.cpp:269
+#: src/titlescreen.cpp:317
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "载入"
 
-#: src/titlescreen.cpp:270
+#: src/titlescreen.cpp:319
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "执行教程来熟悉游戏"
 
-#: src/titlescreen.cpp:271
+#: src/titlescreen.cpp:320
 msgid "Start a new single player campaign"
 msgstr "开始一个新的单人游戏战役"
 
-#: src/titlescreen.cpp:272
+#: src/titlescreen.cpp:321
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr "进行多人对战（热座，局域网或Internet）， 或与电脑进行单人剧本对站。"
 
-#: src/titlescreen.cpp:273
+#: src/titlescreen.cpp:322
 msgid "Load a single player saved game"
 msgstr "载入单人游戏存档"
 
-#: src/titlescreen.cpp:274
+#: src/titlescreen.cpp:323
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "下载用户自定的战役、时代或地图集"
 
-#: src/titlescreen.cpp:275
+#: src/titlescreen.cpp:324
 msgid "Change the language"
 msgstr "切换语言"
 
-#: src/titlescreen.cpp:276
+#: src/titlescreen.cpp:325
 msgid "Configure the game's settings"
 msgstr "配置游戏设置"
 
-#: src/titlescreen.cpp:277
+#: src/titlescreen.cpp:326
 msgid "View the credits"
 msgstr "查看荣誉名单"
 
-#: src/titlescreen.cpp:278
+#: src/titlescreen.cpp:327
 msgid "Quit the game"
 msgstr "退出游戏"
 
-#: src/titlescreen.cpp:280
+#: src/titlescreen.cpp:328
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:281
+#: src/titlescreen.cpp:329
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "韦诺之战帮助"
 
-#: src/titlescreen.cpp:282
+#: src/titlescreen.cpp:330
 #, fuzzy
 msgid "Upload statistics"
 msgstr "统计"
 
-#: src/titlescreen.cpp:333
+#: src/titlescreen.cpp:382
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:2414 src/unit.cpp:2585 src/unit.cpp:2640
+#: src/unit.cpp:2424 src/unit.cpp:2595 src/unit.cpp:2650
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:2502 src/unit.cpp:2613
+#: src/unit.cpp:2512 src/unit.cpp:2623
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2619
+#: src/unit.cpp:2629
 #, fuzzy
 msgid "/level"
 msgstr "等级"
@@ -6143,7 +6156,7 @@ msgstr "善良"
 msgid "neutral"
 msgstr "中立"
 
-#: src/upload_log.cpp:283
+#: src/upload_log.cpp:288
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -6154,19 +6167,19 @@ msgstr ""
 "存了您游戏的摘要信息，如果您允许（匿名）发送这些摘要给wesnoth.org，您将帮助我"
 "们改进游戏。\n"
 
-#: src/upload_log.cpp:284
+#: src/upload_log.cpp:289
 msgid "Summaries are stored here:"
 msgstr "摘要存储在这里："
 
-#: src/upload_log.cpp:286
+#: src/upload_log.cpp:291
 msgid "You can view the results at:"
 msgstr "您可以在这里察看结果："
 
-#: src/upload_log.cpp:288
+#: src/upload_log.cpp:293
 msgid "Help us make Wesnoth better for you!"
 msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 
-#: src/upload_log.cpp:290
+#: src/upload_log.cpp:295
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
 

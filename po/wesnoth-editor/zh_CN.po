@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-11 23:26+0200\n"
+"POT-Creation-Date: 2007-08-15 14:40+0200\n"
 "PO-Revision-Date: 2005-12-08 01:27+0800\n"
 "Last-Translator: Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -57,15 +57,15 @@ msgstr ""
 msgid "castle"
 msgstr ""
 
-#: data/themes/editor.cfg:518
+#: data/themes/editor.cfg:523
 msgid "File"
 msgstr "文件"
 
-#: data/themes/editor.cfg:527
+#: data/themes/editor.cfg:532
 msgid "Edit"
 msgstr "编辑"
 
-#: data/themes/editor.cfg:534
+#: data/themes/editor.cfg:539
 msgid "Settings"
 msgstr "设置"
 
@@ -145,7 +145,7 @@ msgstr "地图已存在。你想覆盖吗？"
 msgid "None"
 msgstr ""
 
-#: src/editor/editor.cpp:542 src/editor/editor.cpp:1380
+#: src/editor/editor.cpp:542 src/editor/editor.cpp:1390
 msgid "Player"
 msgstr "玩家"
 
@@ -171,23 +171,23 @@ msgstr "警告：地图名中有非法字符。请以另外的名字保存。"
 msgid "The file does not contain a valid map."
 msgstr "当前文件不包含有效地图。"
 
-#: src/editor/editor.cpp:1259
+#: src/editor/editor.cpp:1269
 msgid "Quit Editor"
 msgstr "退出编辑器"
 
-#: src/editor/editor.cpp:1263
+#: src/editor/editor.cpp:1273
 msgid "Do you want to save the map before quitting?"
 msgstr "你想在退出游戏之前保存地图吗？"
 
-#: src/editor/editor.cpp:1311
+#: src/editor/editor.cpp:1321
 msgid "Map saved."
 msgstr "地图已保存。"
 
-#: src/editor/editor.cpp:1319
+#: src/editor/editor.cpp:1329
 msgid "Could not save the map: $msg"
 msgstr "不能保存地图： $msg"
 
-#: src/editor/editor.cpp:1334
+#: src/editor/editor.cpp:1344
 msgid "Error: Illegal character in filename."
 msgstr "错误：文件名中有非法字符。"
 
@@ -198,3 +198,14 @@ msgstr "前置地形"
 #: src/editor/editor_palettes.cpp:425
 msgid "BG"
 msgstr "后置地形"
+
+#: src/editor/map_manip.cpp:196 src/editor/map_manip.cpp:212
+#: src/editor/map_manip.cpp:265 src/editor/map_manip.cpp:283
+msgid ""
+"Can't resize the map, the requested size is bigger than the maximum, size="
+msgstr ""
+
+#: src/editor/map_manip.cpp:197 src/editor/map_manip.cpp:213
+#: src/editor/map_manip.cpp:266 src/editor/map_manip.cpp:284
+msgid " maximum="
+msgstr ""

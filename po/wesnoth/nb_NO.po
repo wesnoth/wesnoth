@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-11 23:25+0200\n"
+"POT-Creation-Date: 2007-08-15 14:39+0200\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -1315,12 +1315,15 @@ msgstr ""
 "gull."
 
 #: data/core/help.cfg:253
+#, fuzzy
 msgid ""
 "\n"
-"There is one important exception to Upkeep: units with the Loyal trait never "
-"incur upkeep. Units you begin the scenario with (such as Konrad or "
+"There are two important exceptions to Upkeep: units with the Loyal trait and "
+"leaders never incur upkeep. Units you begin the scenario with (such as "
 "Delfador), or units who join you during a scenario (such as the Horseman in "
-"the second scenario of Heir to the Throne) will usually have the Loyal trait."
+"the second scenario of Heir to the Throne) will usually have the Loyal "
+"trait. The unit you are playing (such as Konrad) will almost always be a "
+"leader."
 msgstr ""
 "\n"
 "Det er et viktig unntak fra reglene om lønn: enheter med karaktertrekket "
@@ -4236,76 +4239,76 @@ msgid ""
 "ability to undo."
 msgstr ""
 
-#: data/themes/default.cfg:107 data/themes/dfool.cfg:128
-#: data/themes/experimental.cfg:91
+#: data/themes/default.cfg:112 data/themes/dfool.cfg:133
+#: data/themes/experimental.cfg:96
 msgid "Menu"
 msgstr "Meny"
 
-#: data/themes/default.cfg:118 data/themes/dfool.cfg:139
-#: data/themes/experimental.cfg:102
+#: data/themes/default.cfg:123 data/themes/dfool.cfg:144
+#: data/themes/experimental.cfg:107
 msgid "Actions"
 msgstr "Handlinger"
 
-#: data/themes/default.cfg:140 data/themes/dfool.cfg:154
+#: data/themes/default.cfg:145 data/themes/dfool.cfg:159
 msgid "End Turn"
 msgstr "Avslutt tur"
 
-#: data/themes/default.cfg:198 data/themes/dfool.cfg:225
-#: data/themes/experimental.cfg:176 src/menu_events.cpp:316 src/unit.cpp:2451
-#: src/unit.cpp:2597
+#: data/themes/default.cfg:203 data/themes/dfool.cfg:230
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:316 src/unit.cpp:2461
+#: src/unit.cpp:2607
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:207 data/themes/dfool.cfg:235
-#: data/themes/experimental.cfg:185 src/menu_events.cpp:317
-#: src/menu_events.cpp:887
+#: data/themes/default.cfg:212 data/themes/dfool.cfg:240
+#: data/themes/experimental.cfg:190 src/menu_events.cpp:317
+#: src/menu_events.cpp:951
 msgid "XP"
 msgstr "XP"
 
-#: data/themes/default.cfg:217 data/themes/dfool.cfg:254
-#: data/themes/experimental.cfg:194
+#: data/themes/default.cfg:222 data/themes/dfool.cfg:259
+#: data/themes/experimental.cfg:199
 msgid "gold"
 msgstr "gull"
 
-#: data/themes/default.cfg:226 data/themes/dfool.cfg:263
-#: data/themes/experimental.cfg:203
+#: data/themes/default.cfg:231 data/themes/dfool.cfg:268
+#: data/themes/experimental.cfg:208
 msgid "villages"
 msgstr "landsbyer"
 
-#: data/themes/default.cfg:235 data/themes/dfool.cfg:272
-#: data/themes/experimental.cfg:212
+#: data/themes/default.cfg:240 data/themes/dfool.cfg:277
+#: data/themes/experimental.cfg:217
 msgid "units"
 msgstr "enheter"
 
-#: data/themes/default.cfg:244 data/themes/dfool.cfg:281
-#: data/themes/experimental.cfg:221
+#: data/themes/default.cfg:249 data/themes/dfool.cfg:286
+#: data/themes/experimental.cfg:226
 msgid "upkeep"
 msgstr "utgifter"
 
-#: data/themes/default.cfg:253 data/themes/dfool.cfg:290
-#: data/themes/experimental.cfg:230
+#: data/themes/default.cfg:258 data/themes/dfool.cfg:295
+#: data/themes/experimental.cfg:235
 msgid "income"
 msgstr "inntekt"
 
-#: data/themes/default.cfg:392 data/themes/dfool.cfg:443
-#: data/themes/experimental.cfg:356
+#: data/themes/default.cfg:397 data/themes/dfool.cfg:448
+#: data/themes/experimental.cfg:361
 msgid "statuspanel^level"
 msgstr "grad"
 
-#: data/themes/default.cfg:423 data/themes/experimental.cfg:387
+#: data/themes/default.cfg:428 data/themes/experimental.cfg:392
 msgid "statuspanel^movement"
 msgstr "forflytning"
 
-#: data/themes/default.cfg:561
+#: data/themes/default.cfg:566
 msgid "Act."
 msgstr "Akt."
 
-#: data/themes/default.cfg:594
+#: data/themes/default.cfg:599
 #, fuzzy
 msgid "short end-turn^E."
 msgstr "Avslutt tur"
 
-#: data/themes/dfool.cfg:245
+#: data/themes/dfool.cfg:250
 msgid "MP"
 msgstr "MP"
 
@@ -4366,16 +4369,16 @@ msgstr "Forråtnelsesbrygg"
 msgid "Skip animation"
 msgstr "Utelat animasjon"
 
-#: src/about.cpp:36 src/multiplayer_connect.cpp:358
+#: src/about.cpp:45 src/multiplayer_connect.cpp:358
 #: src/multiplayer_connect.cpp:455 src/multiplayer_wait.cpp:450
 msgid "+"
 msgstr "+"
 
-#: src/about.cpp:44
+#: src/about.cpp:53
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:171 src/help.cpp:2708 src/menu_events.cpp:139
+#: src/about.cpp:184 src/help.cpp:2718 src/menu_events.cpp:139
 msgid "Close"
 msgstr "Lukk"
 
@@ -4497,7 +4500,7 @@ msgstr "#(Ugyldig)"
 msgid "Campaign"
 msgstr "Felttog"
 
-#: src/dialogs.cpp:462 src/game.cpp:1386
+#: src/dialogs.cpp:462 src/game.cpp:1388
 msgid "Multiplayer"
 msgstr "Gruppespill"
 
@@ -4509,7 +4512,7 @@ msgstr "Opplæring"
 msgid "replay"
 msgstr "reprise"
 
-#: src/dialogs.cpp:474 src/menu_events.cpp:482 src/multiplayer_lobby.cpp:409
+#: src/dialogs.cpp:474 src/menu_events.cpp:546 src/multiplayer_lobby.cpp:409
 msgid "Turn"
 msgstr "Runde"
 
@@ -4564,7 +4567,7 @@ msgid "Date"
 msgstr "Dato"
 
 #: src/dialogs.cpp:560 src/game.cpp:1066 src/menu_events.cpp:314
-#: src/menu_events.cpp:885 src/multiplayer.cpp:109
+#: src/menu_events.cpp:949 src/multiplayer.cpp:109
 msgid "Name"
 msgstr "Navn"
 
@@ -4585,11 +4588,11 @@ msgstr "Vis reprise"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:713 src/help.cpp:1123
+#: src/dialogs.cpp:713 src/help.cpp:1126
 msgid "level"
 msgstr "grad"
 
-#: src/dialogs.cpp:735 src/help.cpp:1215
+#: src/dialogs.cpp:735 src/help.cpp:1218
 msgid "HP: "
 msgstr "HP: "
 
@@ -4597,7 +4600,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:752 src/help.cpp:1216
+#: src/dialogs.cpp:752 src/help.cpp:1219
 msgid "Moves: "
 msgstr "Flytt: "
 
@@ -4614,7 +4617,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Skjermfoto"
 
-#: src/game.cpp:427 src/game.cpp:1477
+#: src/game.cpp:427 src/game.cpp:1479
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
@@ -4707,7 +4710,7 @@ msgstr "Spilltilllegg installert"
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1011 src/menu_events.cpp:496 src/menu_events.cpp:509
+#: src/game.cpp:1011 src/menu_events.cpp:560 src/menu_events.cpp:573
 #: src/multiplayer_create.cpp:497
 msgid "Error"
 msgstr "Feil"
@@ -4728,7 +4731,7 @@ msgstr "Etterspør liste over spilltillegg"
 msgid "Error communicating with the server."
 msgstr "Feil i kommunikasjon med serveren."
 
-#: src/game.cpp:1066 src/titlescreen.cpp:235
+#: src/game.cpp:1066 src/titlescreen.cpp:280
 msgid "Version"
 msgstr "Versjon"
 
@@ -4828,97 +4831,97 @@ msgstr "Sender spilltillegg"
 msgid "Response"
 msgstr "Svar"
 
-#: src/game.cpp:1370
+#: src/game.cpp:1372
 msgid "Join Official Server"
 msgstr "Koble til offisiell server"
 
-#: src/game.cpp:1371
+#: src/game.cpp:1373
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Koble til den offisielle Wesnoth gruppespilltjeneren"
 
-#: src/game.cpp:1373 src/multiplayer_lobby.cpp:531
+#: src/game.cpp:1375 src/multiplayer_lobby.cpp:531
 msgid "Join Game"
 msgstr "Bli med i nettverksspill"
 
-#: src/game.cpp:1374
+#: src/game.cpp:1376
 msgid "Join a server or hosted game"
 msgstr "Kobler til et eksisterende nettverksspill"
 
-#: src/game.cpp:1376
+#: src/game.cpp:1378
 msgid "Host Networked Game"
 msgstr "Opprett nettverksspill"
 
-#: src/game.cpp:1377
+#: src/game.cpp:1379
 msgid "Host a game without using a server"
 msgstr "Vær spillvert for et nytt nettverksspill"
 
-#: src/game.cpp:1379
+#: src/game.cpp:1381
 #, fuzzy
 msgid "Local Game"
 msgstr "Last spill"
 
-#: src/game.cpp:1380
+#: src/game.cpp:1382
 #, fuzzy
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "Spill et gruppespill med flere spillere ved den samme datamaskinen"
 
-#: src/game.cpp:1388 src/multiplayer.cpp:231
+#: src/game.cpp:1390 src/multiplayer.cpp:231
 msgid "Login: "
 msgstr "Kallenavn: "
 
-#: src/game.cpp:1425 src/playcampaign.cpp:91 src/playcampaign.cpp:384
+#: src/game.cpp:1427 src/playcampaign.cpp:91 src/playcampaign.cpp:384
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke lastes: "
 
-#: src/game.cpp:1427 src/playcampaign.cpp:93 src/playcampaign.cpp:387
+#: src/game.cpp:1429 src/playcampaign.cpp:93 src/playcampaign.cpp:387
 msgid "Error while playing the game: "
 msgstr "Feil under spill: "
 
-#: src/game.cpp:1443 src/playcampaign.cpp:95 src/playcampaign.cpp:390
+#: src/game.cpp:1445 src/playcampaign.cpp:95 src/playcampaign.cpp:390
 msgid "The game map could not be loaded: "
 msgstr "Kartet kunne ikke lastes: "
 
-#: src/game.cpp:1467
+#: src/game.cpp:1469
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1468
+#: src/game.cpp:1470
 msgid "Choose your preferred language:"
 msgstr "Velg språket du foretrekker:"
 
-#: src/game.cpp:1617
+#: src/game.cpp:1619
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 
-#: src/game.cpp:1622
+#: src/game.cpp:1624
 msgid "ERROR DETAILS:"
 msgstr "FEILRAPPORT:"
 
-#: src/game.cpp:1636
+#: src/game.cpp:1638
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Advarsel: Feil oppstod under lasting av konfigurasjonsfiler: '"
 
-#: src/game.cpp:1685
+#: src/game.cpp:1687
 msgid "Error loading game configuration files: '"
 msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
-#: src/game.cpp:1686
+#: src/game.cpp:1688
 msgid "' (The game will now exit)"
 msgstr "' (Spillet avsluttes)"
 
-#: src/game.cpp:1854
+#: src/game.cpp:1857
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:1980
+#: src/game.cpp:1983
 msgid "Loading game configuration."
 msgstr "Feil ved lasting av spillkonfigurasjon."
 
-#: src/game.cpp:1986
+#: src/game.cpp:1989
 msgid "Re-initialize fonts for the current language."
 msgstr "Installer skrift for gjeldende språk på nytt."
 
-#: src/game.cpp:2001
+#: src/game.cpp:2004
 msgid "Loading title screen."
 msgstr "Laster hovedmeny."
 
@@ -4989,154 +4992,159 @@ msgstr ""
 msgid "stone: "
 msgstr "forsteinet: "
 
-#: src/generate_report.cpp:151 src/multiplayer_create.cpp:365
+#: src/generate_report.cpp:151
+#, fuzzy
+msgid "Resistances: "
+msgstr "Motstander"
+
+#: src/generate_report.cpp:189 src/multiplayer_create.cpp:365
 msgid "Experience Modifier: "
 msgstr "Erfaringsskalering: "
 
-#: src/generate_report.cpp:226
+#: src/generate_report.cpp:264
 #, fuzzy
 msgid "tooltip^damage"
 msgid_plural "damage"
 msgstr[0] "totalskade"
 msgstr[1] "totalskade"
 
-#: src/generate_report.cpp:227
+#: src/generate_report.cpp:265
 msgid "tooltip^attack"
 msgid_plural "attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/generate_report.cpp:237
+#: src/generate_report.cpp:275
 msgid "weapon range: "
 msgstr "våpenrekkevidde: "
 
-#: src/generate_report.cpp:238
+#: src/generate_report.cpp:276
 msgid "damage type: "
 msgstr "skadetype: "
 
-#: src/generate_report.cpp:258 src/mouse_events.cpp:1338
+#: src/generate_report.cpp:296 src/mouse_events.cpp:1338
 msgid "vs"
 msgstr "mot"
 
-#: src/generate_report.cpp:307
+#: src/generate_report.cpp:345
 msgid "Lawful units: "
 msgstr "Hederlige enheter: "
 
-#: src/generate_report.cpp:309
+#: src/generate_report.cpp:347
 msgid "Neutral units: "
 msgstr "Nøytrale enheter: "
 
-#: src/generate_report.cpp:310
+#: src/generate_report.cpp:348
 msgid "Chaotic units: "
 msgstr "Lyssky enheter: "
 
-#: src/generate_report.cpp:446
+#: src/generate_report.cpp:484
 msgid "Observers:"
 msgstr "Observatører:"
 
-#: src/help.cpp:56
+#: src/help.cpp:59
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/help.cpp:1143
+#: src/help.cpp:1146
 #, fuzzy
 msgid "Advances from: "
 msgstr "Forfremmes til: "
 
-#: src/help.cpp:1172
+#: src/help.cpp:1175
 msgid "Advances to: "
 msgstr "Forfremmes til: "
 
-#: src/help.cpp:1198
+#: src/help.cpp:1201
 msgid "Abilities: "
 msgstr "Egenskaper: "
 
-#: src/help.cpp:1217
+#: src/help.cpp:1220
 msgid "Cost: "
 msgstr "Kostnad:"
 
-#: src/help.cpp:1218
+#: src/help.cpp:1221
 msgid "Alignment: "
 msgstr "Sinnelag: "
 
-#: src/help.cpp:1224
+#: src/help.cpp:1227
 msgid "Required XP: "
 msgstr "Nødvendig XP: "
 
-#: src/help.cpp:1233
+#: src/help.cpp:1236
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1240
+#: src/help.cpp:1243
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Avslutt spillet"
 
-#: src/help.cpp:1241 src/menu_events.cpp:313 src/menu_events.cpp:884
+#: src/help.cpp:1244 src/menu_events.cpp:313 src/menu_events.cpp:948
 msgid "Type"
 msgstr "Type"
 
-#: src/help.cpp:1242
+#: src/help.cpp:1245
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:1243
+#: src/help.cpp:1246
 msgid "Range"
 msgstr "Rekkevidde"
 
-#: src/help.cpp:1244
+#: src/help.cpp:1247
 msgid "Special"
 msgstr "Spesial"
 
-#: src/help.cpp:1294
+#: src/help.cpp:1297
 msgid "Resistances"
 msgstr "Motstander"
 
-#: src/help.cpp:1298
+#: src/help.cpp:1301
 msgid "Attack Type"
 msgstr "Angrepstype"
 
-#: src/help.cpp:1299
+#: src/help.cpp:1302
 msgid "Resistance"
 msgstr "Motstand"
 
-#: src/help.cpp:1336
+#: src/help.cpp:1339
 msgid "Terrain Modifiers"
 msgstr "Terrengmodifikatorer"
 
-#: src/help.cpp:1340
+#: src/help.cpp:1343
 msgid "Terrain"
 msgstr "Terreng"
 
-#: src/help.cpp:1341
+#: src/help.cpp:1344
 msgid "Defense"
 msgstr "Forsvar"
 
-#: src/help.cpp:1342
+#: src/help.cpp:1345
 msgid "Movement Cost"
 msgstr "Forflytningskostnad"
 
-#: src/help.cpp:2253
+#: src/help.cpp:2256
 msgid " < Back"
 msgstr " < Tilbake"
 
-#: src/help.cpp:2254
+#: src/help.cpp:2257
 msgid "Forward >"
 msgstr "Fremover >"
 
-#: src/help.cpp:2366
+#: src/help.cpp:2369
 msgid "Reference to unknown topic: "
 msgstr "Referanse til ukjent begrep: "
 
-#: src/help.cpp:2626
+#: src/help.cpp:2629
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2711
+#: src/help.cpp:2721
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjelp med Kampen om Wesnoth"
 
-#: src/help.cpp:2761
+#: src/help.cpp:2771
 msgid "Parse error when parsing help text: "
 msgstr "Feil med hjelpeteksten: "
 
@@ -5249,7 +5257,7 @@ msgstr "ham"
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: src/menu_events.cpp:315 src/menu_events.cpp:886
+#: src/menu_events.cpp:315 src/menu_events.cpp:950
 msgid "Level"
 msgstr "Grad"
 
@@ -5257,7 +5265,7 @@ msgstr "Grad"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:319 src/unit.cpp:2484 src/unit.cpp:2605
+#: src/menu_events.cpp:319 src/unit.cpp:2494 src/unit.cpp:2615
 msgid "Moves"
 msgstr "Flytt"
 
@@ -5265,46 +5273,51 @@ msgstr "Flytt"
 msgid "Location"
 msgstr "Sted"
 
-#: src/menu_events.cpp:370
+#: src/menu_events.cpp:321
+#, fuzzy
+msgid "Status"
+msgstr "Statistikk"
+
+#: src/menu_events.cpp:434
 msgid "Unit List"
 msgstr "Enhetsliste"
 
-#: src/menu_events.cpp:386
+#: src/menu_events.cpp:450
 msgid "Leader"
 msgstr "Leder"
 
-#: src/menu_events.cpp:387 src/multiplayer_connect.cpp:744
+#: src/menu_events.cpp:451 src/multiplayer_connect.cpp:744
 #: src/multiplayer_connect.cpp:753
 msgid "Team"
 msgstr "Lag"
 
-#: src/menu_events.cpp:388 src/multiplayer_connect.cpp:755
+#: src/menu_events.cpp:452 src/multiplayer_connect.cpp:755
 #: src/multiplayer_wait.cpp:444
 msgid "Gold"
 msgstr "Gull"
 
-#: src/menu_events.cpp:389
+#: src/menu_events.cpp:453
 msgid "Villages"
 msgstr "Landsbyer"
 
-#: src/menu_events.cpp:390
+#: src/menu_events.cpp:454
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:391
+#: src/menu_events.cpp:455
 msgid "Upkeep"
 msgstr "Utgifter"
 
-#: src/menu_events.cpp:392 src/multiplayer_connect.cpp:756
+#: src/menu_events.cpp:456 src/multiplayer_connect.cpp:756
 #: src/multiplayer_wait.cpp:448
 msgid "Income"
 msgstr "Inntekt"
 
-#: src/menu_events.cpp:491 src/playcampaign.cpp:509
+#: src/menu_events.cpp:555 src/playcampaign.cpp:509
 msgid "Name:"
 msgstr "Navn:"
 
-#: src/menu_events.cpp:496
+#: src/menu_events.cpp:560
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -5312,90 +5325,90 @@ msgstr ""
 "Filnavn kan ikke inneholde kolon eller skråstreker. Vær så vennlig å velge "
 "et annet navn."
 
-#: src/menu_events.cpp:506
+#: src/menu_events.cpp:570
 msgid "Saved"
 msgstr "Lagret"
 
-#: src/menu_events.cpp:506
+#: src/menu_events.cpp:570
 msgid "The game has been saved"
 msgstr "Spillet er lagret"
 
-#: src/menu_events.cpp:509 src/playcampaign.cpp:517
+#: src/menu_events.cpp:573 src/playcampaign.cpp:517
 msgid "The game could not be saved"
 msgstr "Spillet kunne ikke lagres"
 
-#: src/menu_events.cpp:524
+#: src/menu_events.cpp:588
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Utveksle kart"
 
-#: src/menu_events.cpp:529
+#: src/menu_events.cpp:593
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Lagret spill eksisterer allerede. Vil du overskrive det?"
 
-#: src/menu_events.cpp:541
+#: src/menu_events.cpp:605
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:545
+#: src/menu_events.cpp:609
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:635 src/menu_events.cpp:637 src/play_controller.cpp:752
+#: src/menu_events.cpp:699 src/menu_events.cpp:701 src/play_controller.cpp:752
 #: src/playcampaign.cpp:102
 msgid "Auto-Save"
 msgstr "Lagre automatisk"
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:704
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunne ikke lagre spillet automatisk. Vennligst lagre spillet manuelt."
 
-#: src/menu_events.cpp:664
+#: src/menu_events.cpp:728
 msgid "Chat Log"
 msgstr "Meldingslogg"
 
-#: src/menu_events.cpp:674
+#: src/menu_events.cpp:738
 msgid "Message:"
 msgstr "Melding:"
 
-#: src/menu_events.cpp:675
+#: src/menu_events.cpp:739
 msgid "Send to allies only"
 msgstr "Send kun til allierte"
 
-#: src/menu_events.cpp:675
+#: src/menu_events.cpp:739
 #, fuzzy
 msgid "Send to observers only"
 msgstr "Send kun til allierte"
 
-#: src/menu_events.cpp:755
+#: src/menu_events.cpp:819
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Gull"
 msgstr[1] "Gull"
 
-#: src/menu_events.cpp:762
+#: src/menu_events.cpp:826
 msgid "You have no units available to recruit."
 msgstr "Du har ingen enheter å rekruttere."
 
-#: src/menu_events.cpp:774
+#: src/menu_events.cpp:838
 msgid "Recruit"
 msgstr "Rekrutter"
 
-#: src/menu_events.cpp:775 src/menu_events.cpp:924
+#: src/menu_events.cpp:839 src/menu_events.cpp:988
 msgid "Select unit:"
 msgstr "Velg enhet:"
 
-#: src/menu_events.cpp:820
+#: src/menu_events.cpp:884
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Du har ikke nok gull til å rekruttere denne enheten."
 
-#: src/menu_events.cpp:877
+#: src/menu_events.cpp:941
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Du er blitt skilt fra soldatene dine og kan ikke kalle dem tilbake"
 
-#: src/menu_events.cpp:879
+#: src/menu_events.cpp:943
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -5403,53 +5416,53 @@ msgstr ""
 "Det finnes ingen tropper å tilbakekalle\n"
 "(Du må ha overlevende veteraner fra tidligere scenarier)."
 
-#: src/menu_events.cpp:918
+#: src/menu_events.cpp:982
 msgid "Dismiss Unit"
 msgstr "Send bort enhet"
 
-#: src/menu_events.cpp:923
+#: src/menu_events.cpp:987
 msgid "Recall"
 msgstr "Tilbakekall"
 
-#: src/menu_events.cpp:940
+#: src/menu_events.cpp:1004
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
 msgstr[1] "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
 
-#: src/menu_events.cpp:1273
+#: src/menu_events.cpp:1337
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Du ennå ikke flyttet noen enheter. Er du sikker på at du vil avslutte turen?"
 
-#: src/menu_events.cpp:1281 src/menu_events.cpp:1286
+#: src/menu_events.cpp:1345 src/menu_events.cpp:1350
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Noen enheter kan fremdeles flytte. Vil du likevel avslutte turen?"
 
-#: src/menu_events.cpp:1327
+#: src/menu_events.cpp:1391
 msgid "Rename Unit"
 msgstr "Navngi enhet"
 
-#: src/menu_events.cpp:1409
+#: src/menu_events.cpp:1473
 msgid "Place Label"
 msgstr "Lag merkelapp"
 
-#: src/menu_events.cpp:1412 src/menu_events.cpp:1415
+#: src/menu_events.cpp:1476 src/menu_events.cpp:1479
 msgid "Label:"
 msgstr "Merkelapp:"
 
-#: src/menu_events.cpp:1418
+#: src/menu_events.cpp:1482
 #, fuzzy
 msgid "Team only"
 msgstr "Turkis"
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1583
 msgid "Search"
 msgstr "Søk"
 
-#: src/menu_events.cpp:1562
+#: src/menu_events.cpp:1626
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
@@ -5458,7 +5471,7 @@ msgstr ""
 "spillere'emote' beskriv handlinger i meldinger\n"
 "'/help [kommando]' for mer hjelp med en av kommandoene"
 
-#: src/menu_events.cpp:1613
+#: src/menu_events.cpp:1677
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5467,21 +5480,21 @@ msgstr ""
 "som kontrollerer lag i aktive spill.\n"
 "'/whisper [brukernavn] [melding]'"
 
-#: src/menu_events.cpp:1617
+#: src/menu_events.cpp:1681
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Legger til en spiller på ignoreringslisten.\n"
 "'/ignore add [brukernavn]'"
 
-#: src/menu_events.cpp:1619
+#: src/menu_events.cpp:1683
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Legger til en spiller på ignoreringslisten.\n"
 "'/ignore add [brukernavn]'"
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1685
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -5490,25 +5503,25 @@ msgstr ""
 "Fjern en spiller fra ignoreringslisten.\n"
 "'/ignore remove [brukernavn]'"
 
-#: src/menu_events.cpp:1623
+#: src/menu_events.cpp:1687
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 "Fjern alle navn på ignoreringslisten.\n"
 "'/ignore clear'"
 
-#: src/menu_events.cpp:1625
+#: src/menu_events.cpp:1689
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 "Viser listen over ignorerte brukere.\n"
 "'/ignore list'"
 
-#: src/menu_events.cpp:1627
+#: src/menu_events.cpp:1691
 msgid "Unknown subcommand"
 msgstr "Ukjent underkommando"
 
-#: src/menu_events.cpp:1630
+#: src/menu_events.cpp:1694
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -5519,60 +5532,60 @@ msgstr ""
 "Ignorer meldinger fra spillere på listen.\n"
 "'/help ignore' for mer hjelp om denne kommandoen"
 
-#: src/menu_events.cpp:1633
+#: src/menu_events.cpp:1697
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Sender en personlig handling.\n"
 "'/emote [message]' for å vise \"Brukernavn [message]\" i snakkevinduet"
 
-#: src/menu_events.cpp:1635
+#: src/menu_events.cpp:1699
 msgid "Unknown command"
 msgstr "Ukjent kommando"
 
-#: src/menu_events.cpp:1647
+#: src/menu_events.cpp:1711
 msgid "Added to ignore list: "
 msgstr "Lagt til på ignoreringsliste:"
 
-#: src/menu_events.cpp:1649 src/menu_events.cpp:1656 src/menu_events.cpp:1663
+#: src/menu_events.cpp:1713 src/menu_events.cpp:1720 src/menu_events.cpp:1727
 msgid "Invalid username: "
 msgstr "Ugyldig brukernavn: "
 
-#: src/menu_events.cpp:1654
+#: src/menu_events.cpp:1718
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Lagt til på ignoreringsliste:"
 
-#: src/menu_events.cpp:1661
+#: src/menu_events.cpp:1725
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Fjernet fra ignoreringsliste:"
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1751
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1697
+#: src/menu_events.cpp:1761
 msgid "Removed from ignore list: "
 msgstr "Fjernet fra ignoreringsliste:"
 
-#: src/menu_events.cpp:1700
+#: src/menu_events.cpp:1764
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Fjernet fra ignoreringsliste:"
 
-#: src/menu_events.cpp:1707
+#: src/menu_events.cpp:1771
 msgid "Unknown command: "
 msgstr "Ukjent kommando: "
 
-#: src/menu_events.cpp:1821
+#: src/menu_events.cpp:1885
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunne ikke finne merke eller enhet som inneholdt '$search'."
 
-#: src/menu_events.cpp:1974
+#: src/menu_events.cpp:2038
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/menu_events.cpp:1993
+#: src/menu_events.cpp:2057
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Kommandoer"
@@ -5706,12 +5719,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:356 src/multiplayer_connect.cpp:453
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2635
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:448 src/unit.cpp:2645
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:356 src/multiplayer_connect.cpp:453
-#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2642
+#: src/multiplayer_wait.cpp:440 src/multiplayer_wait.cpp:451 src/unit.cpp:2652
 msgid ")"
 msgstr ")"
 
@@ -6305,68 +6318,68 @@ msgstr "Fiendtlig landsby"
 msgid "Owned village"
 msgstr "Egen landsby"
 
-#: src/titlescreen.cpp:256
+#: src/titlescreen.cpp:303
 msgid "TitleScreen button^Tutorial"
 msgstr "Opplæring"
 
-#: src/titlescreen.cpp:257
+#: src/titlescreen.cpp:304
 msgid "TitleScreen button^Campaign"
 msgstr "Felttog"
 
-#: src/titlescreen.cpp:258
+#: src/titlescreen.cpp:305
 msgid "TitleScreen button^Multiplayer"
 msgstr "Gruppespill"
 
-#: src/titlescreen.cpp:259
+#: src/titlescreen.cpp:306
 msgid "TitleScreen button^Load"
 msgstr "Fortsett spill"
 
-#: src/titlescreen.cpp:260
+#: src/titlescreen.cpp:307
 #, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Last spilltillegg"
 
-#: src/titlescreen.cpp:261
+#: src/titlescreen.cpp:308
 msgid "TitleScreen button^Language"
 msgstr "Språk"
 
-#: src/titlescreen.cpp:262
+#: src/titlescreen.cpp:309
 msgid "TitleScreen button^Preferences"
 msgstr "Innstillinger"
 
-#: src/titlescreen.cpp:263
+#: src/titlescreen.cpp:310
 #, fuzzy
 msgid "TitleScreen button^Credits"
 msgstr "Avslutt"
 
-#: src/titlescreen.cpp:264
+#: src/titlescreen.cpp:311
 msgid "TitleScreen button^Quit"
 msgstr "Avslutt"
 
-#: src/titlescreen.cpp:266
+#: src/titlescreen.cpp:314
 #, fuzzy
 msgid "TitleScreen button^More"
 msgstr "Fortsett spill"
 
-#: src/titlescreen.cpp:267
+#: src/titlescreen.cpp:315
 #, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "Fortsett spill"
 
-#: src/titlescreen.cpp:269
+#: src/titlescreen.cpp:317
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Fortsett spill"
 
-#: src/titlescreen.cpp:270
+#: src/titlescreen.cpp:319
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Begynn opplæring for å bli kjent med spillet"
 
-#: src/titlescreen.cpp:271
+#: src/titlescreen.cpp:320
 msgid "Start a new single player campaign"
 msgstr "Start et felttog for en spiller"
 
-#: src/titlescreen.cpp:272
+#: src/titlescreen.cpp:321
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -6374,57 +6387,57 @@ msgstr ""
 "Spill med flere spillere: ved samme maskin, mot datamaskinen, over LAN eller "
 "internett"
 
-#: src/titlescreen.cpp:273
+#: src/titlescreen.cpp:322
 msgid "Load a single player saved game"
 msgstr "Fortsett et lagret spill"
 
-#: src/titlescreen.cpp:274
+#: src/titlescreen.cpp:323
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Last ned uoffisielle kampanjer, kart og spilltillegg"
 
-#: src/titlescreen.cpp:275
+#: src/titlescreen.cpp:324
 msgid "Change the language"
 msgstr "Endre språk"
 
-#: src/titlescreen.cpp:276
+#: src/titlescreen.cpp:325
 msgid "Configure the game's settings"
 msgstr "Se over innstillingene"
 
-#: src/titlescreen.cpp:277
+#: src/titlescreen.cpp:326
 msgid "View the credits"
 msgstr "Liste over bidragsytere"
 
-#: src/titlescreen.cpp:278
+#: src/titlescreen.cpp:327
 msgid "Quit the game"
 msgstr "Avslutt spillet"
 
-#: src/titlescreen.cpp:280
+#: src/titlescreen.cpp:328
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:281
+#: src/titlescreen.cpp:329
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Hjelp med Kampen om Wesnoth"
 
-#: src/titlescreen.cpp:282
+#: src/titlescreen.cpp:330
 #, fuzzy
 msgid "Upload statistics"
 msgstr "Statistikk"
 
-#: src/titlescreen.cpp:333
+#: src/titlescreen.cpp:382
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjelp utviklerne ved å sende oss informasjon"
 
-#: src/unit.cpp:2414 src/unit.cpp:2585 src/unit.cpp:2640
+#: src/unit.cpp:2424 src/unit.cpp:2595 src/unit.cpp:2650
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2502 src/unit.cpp:2613
+#: src/unit.cpp:2512 src/unit.cpp:2623
 msgid "XP to advance"
 msgstr "XP til forfremmelse"
 
-#: src/unit.cpp:2619
+#: src/unit.cpp:2629
 #, fuzzy
 msgid "/level"
 msgstr "grad"
@@ -6449,7 +6462,7 @@ msgstr "hederlig"
 msgid "neutral"
 msgstr "nøytral"
 
-#: src/upload_log.cpp:283
+#: src/upload_log.cpp:288
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -6461,19 +6474,19 @@ msgstr ""
 "oss med å forbedre spillet ved å gi tillatelse til å sende disse "
 "oppsummeringene (anonymt) til wesnoth.org\n"
 
-#: src/upload_log.cpp:284
+#: src/upload_log.cpp:289
 msgid "Summaries are stored here:"
 msgstr "Sammendreg lagres her:"
 
-#: src/upload_log.cpp:286
+#: src/upload_log.cpp:291
 msgid "You can view the results at:"
 msgstr "Du kan se resultatene på :"
 
-#: src/upload_log.cpp:288
+#: src/upload_log.cpp:293
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjelp oss å gjøre Kampen om Wesnoth bedre for deg!"
 
-#: src/upload_log.cpp:290
+#: src/upload_log.cpp:295
 msgid "Enable summary uploads"
 msgstr "Tillat sammendragsopplasting"
 
