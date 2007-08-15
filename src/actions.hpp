@@ -137,11 +137,11 @@ private:
 					   const combatant &us_b, const combatant &them_b,
 					   double harm_weight);
 
-	unsigned int choose_attacker_weapon(const unit &attacker, const unit &defender,
-										const gamemap& map, const std::vector<team>& teams, const unit_map& units,
-										const gamestatus& status, const game_data& gamedata,
-										const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
-										double harm_weight, int *defender_weapon, const combatant *prev_def);
+	int choose_attacker_weapon(const unit &attacker, const unit &defender,
+								const gamemap& map, const std::vector<team>& teams, const unit_map& units,
+								const gamestatus& status, const game_data& gamedata,
+								const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
+								double harm_weight, int *defender_weapon, const combatant *prev_def);
 
 	int choose_defender_weapon(const unit &attacker, const unit &defender, unsigned attacker_weapon,
 							   const gamemap& map, const std::vector<team>& teams, const unit_map& units,

@@ -391,7 +391,7 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 	return defender_stats_->attack_num;
 }
 
-unsigned battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
+int battle_context::choose_attacker_weapon(const unit &attacker, const unit &defender,
 												const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 												const gamestatus& status, const game_data& gamedata,
 												const gamemap::location& attacker_loc, const gamemap::location& defender_loc,
