@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file video.cpp 
+//! Video-testprogram, standalone
+
 #include "global.hpp"
 
 #include <stdio.h>
@@ -28,13 +31,13 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_DP LOG_STREAM(err, display)
 
-#define TEST_VIDEO_ON 0
+#define TEST_VIDEO_ON 1
 
 #if (TEST_VIDEO_ON==1)
 
 #include <stdlib.h>
 
-//test program takes three args - x-res y-res colour-depth
+// Testprogram takes three args: x-res y-res colour-depth
 int main( int argc, char** argv )
 {
 	if( argc != 4 ) {
@@ -97,8 +100,8 @@ resize_lock::~resize_lock()
 
 static unsigned int get_flags(unsigned int flags)
 {
-	//SDL under Windows doesn't seem to like hardware surfaces for
-	//some reason.
+	// SDL under Windows doesn't seem to like hardware surfaces 
+	// for some reason.
 #if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
 		flags |= SDL_HWSURFACE;
 #endif

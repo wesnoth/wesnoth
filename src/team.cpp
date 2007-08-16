@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file team.cpp 
+//! Team-management, allies, setup at start of scenario.
+
 #include "global.hpp"
 
 #include "game_events.hpp"
@@ -220,18 +223,19 @@ team::team_info::team_info(const config& cfg)
 
 	recruitment_pattern = utils::split(recruit_pattern);
 
-	//default recruitment pattern is to buy 2 fighters for every 1 archer
+	// Default recruitment pattern is to buy 2 fighters for every 1 archer
 	if(recruitment_pattern.empty()) {
 		recruitment_pattern.push_back("fighter");
 		recruitment_pattern.push_back("fighter");
 		recruitment_pattern.push_back("archer");
 	}
 
-	//keep a copy of the initial recruitment_pattern, since it can be changed
-	//on a per-time-of-day or per-turn basis inside [ai] sections
+	// Keep a copy of the initial recruitment_pattern, 
+	// since it can be changed on a per-time-of-day 
+	// or per-turn basis inside [ai] sections.
 	global_recruitment_pattern = recruitment_pattern;
 
-	//additional targets
+	// Additional targets
 	config::const_child_itors tgts;
 	for(tgts = cfg.child_range("target"); tgts.first != tgts.second; ++tgts.first) {
 		targets.push_back(target(**tgts.first));
@@ -241,7 +245,8 @@ team::team_info::team_info(const config& cfg)
 		targets.push_back(target(**tgts.first));
 	}
 
-	//share_view and share_maps can't both be enabled, so share_view overrides share_maps.
+	// Share_view and share_maps can't both be enabled, 
+	// so share_view overrides share_maps.
 	share_view = utils::string_bool(cfg["share_view"]);
 	share_maps = !share_view && utils::string_bool(cfg["share_maps"],true);
 
@@ -350,11 +355,12 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 	LOG_NG << "team::team(...): team_name: " << info_.team_name
 	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
 
-	//gold is the maximum of 'gold' and what is given in the config file
+	// To ensure some mimimum starting gold,
+	// gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
 		gold_ = maximum(gold,::atoi(info_.gold.c_str()));
 
-	//load in the villages the side controls at the start
+	// Load in the villages the side controls at the start
 	const config::child_list& villages = cfg.get_children("village");
 	for(config::child_list::const_iterator v = villages.begin(); v != villages.end(); ++v) {
 		villages_.insert(gamemap::location(**v,game_events::get_state_of_game()));
@@ -374,7 +380,7 @@ void team::write(config& cfg) const
 	snprintf(buf,sizeof(buf),"%d",gold_);
 	cfg["gold"] = buf;
 
-	//write village locations
+	// Write village locations
 	for(std::set<gamemap::location>::const_iterator t = villages_.begin(); t != villages_.end(); ++t) {
 		t->write(cfg.add_child("village"));
 	}
@@ -432,8 +438,8 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 		aiparams_.append(*i);
 	}
 
-    //get the recruitment pattern from the matching [ai] section, and fall back
-    //to tge global recruitment pattern otherwise
+    // Get the recruitment pattern from the matching [ai] section, 
+    // and fall back to the global recruitment pattern otherwise.
 	info_.recruitment_pattern = utils::split(aiparams_["recruitment_pattern"]);
 	if (info_.recruitment_pattern.empty())
 		info_.recruitment_pattern = info_.global_recruitment_pattern;
@@ -456,17 +462,18 @@ bool team::calculate_enemies(size_t index) const
 
 bool team::calculate_is_enemy(size_t index) const
 {
-	//we're not enemies of ourselves
+	// We're not enemies of ourselves
 	if(&(*teams)[index] == this) {
 		return false;
 	}
 
-	//if we have a team name, we are friends with anyone who has the same team name
+	// If we have a team name, we are friends 
+	// with anyone who has the same team name
 	if(info_.team_name.empty() == false) {
 		return (*teams)[index].info_.team_name != info_.team_name;
 	}
 
-	//if enemies aren't listed, then everyone is an enemy
+	// If enemies aren't listed, then everyone is an enemy
 	if(info_.enemies.empty())
 		return true;
 
@@ -485,7 +492,7 @@ void team::change_team(const std::string& name, const std::string& user_name)
 		info_.user_team_name = name;
 	}
 
-	//reset the cache of allies for all teams
+	// Reset the cache of allies for all teams
 	if(teams != NULL) {
 		for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
 			i->enemies_.clear();
@@ -501,9 +508,9 @@ void team::set_objectives(const t_string& new_objectives, bool silently)
 }
 
 void team::set_ai_memory(const config& ai_mem){
-  //would perhaps be more efficient to allow writing to the memory directly,
-  //but this method comparmentalizes the functionality and protects against
-  //accidentally overwriting the memory
+  // It would perhaps be more efficient to allow writing to the memory directly,
+  // but this method comparmentalizes the functionality and protects against
+  // accidentally overwriting the memory
   info_.ai_memory_=ai_mem;
 }
 
@@ -555,22 +562,22 @@ bool team::knows_about_team(size_t index) const
 {
 	const team& t = (*teams)[index];
 
-	//We know about our own team
+	// We know about our own team
 	if(this == &t) return true;
 
-	//If we aren't using shroud or fog, then we know about everyone
+	// If we aren't using shroud or fog, then we know about everyone
 	if(!uses_shroud() && !uses_fog()) return true;
 
-	//We don't know about enemies
+	// We don't know about enemies
 	if(is_enemy(index+1)) return false;
 
-	//We know our allies in multiplayer
+	// We know our allies in multiplayer
 	if(network::nconnections() > 0) return true;
 
-	//We know about allies we're sharing maps with
+	// We know about allies we're sharing maps with
 	if(share_maps() && t.uses_shroud()) return true;
 
-	//We know about allies we're sharing view with
+	// We know about allies we're sharing view with
 	if(share_view() && (t.uses_fog() || t.uses_shroud())) return true;
 
 	return false;
@@ -765,7 +772,8 @@ const color_range team::get_side_color_range(int side){
 
 const SDL_Color team::get_minimap_colour(int side)
 {
-	//note: use mid() instead of rep() unless high contrast is needed over a map or minimap!
+	// Note: use mid() instead of rep() unless 
+	// high contrast is needed over a map or minimap!
 	return int_to_color(get_side_color_range(side).rep());
 }
 
