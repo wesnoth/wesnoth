@@ -1089,12 +1089,12 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		u->second.set_goto(gamemap::location());
 	}
 
+	unit_map::iterator clicked_u = find_unit(hex);
+
 	//if we can move to that tile
 	std::map<gamemap::location,paths::route>::const_iterator
 			route = enemy_paths_ ? current_paths_.routes.end() :
 	                               current_paths_.routes.find(hex);
-
-	unit_map::iterator enemy = find_unit(hex);
 
 	const gamemap::location src = selected_hex_;
 	paths orig_paths = current_paths_;
@@ -1103,7 +1103,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (attack_from == selected_hex_) { //no move needed
-			if (attack_enemy(u,enemy) == false) {
+			if (attack_enemy(u, clicked_u) == false) {
 				return;
 			}
 		}
@@ -1111,7 +1111,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			// a WML event could have invalidated both attacker and defender
 			// so make sure they're valid before attacking
 			u = find_unit(attack_from);
-			enemy = find_unit(hex);
+			unit_map::iterator enemy = find_unit(hex);
 			if(u != units_.end() && u->second.side() == team_num_ &&
 				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
 				//if shroud or fog is active, rememember nits a and after attack check if someone isn`t seen
@@ -1170,8 +1170,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 	//otherwise we're trying to move to a hex
 	else if(!commands_disabled && !browse && selected_hex_.valid() && selected_hex_ != hex &&
-		     units_.count(selected_hex_) && !enemy_paths_ &&
-		     enemy == units_.end() && !current_route_.steps.empty() &&
+		     u != units_.end() && !enemy_paths_ &&
+		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 		move_unit_along_current_route(check_shroud);
 		if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
@@ -1188,23 +1188,22 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		current_route_.steps.clear();
 		gui_->set_route(NULL);
 
-		const unit_map::iterator it = find_unit(hex);
+		u = clicked_u;
 
-		if(it != units_.end() && it->second.side() == team_num_ && !gui_->fogged(it->first)) {
-			const bool teleport = it->second.get_ability_bool("teleport",it->first);
+		if(u != units_.end() && u->second.side() == team_num_ && !gui_->fogged(u->first)) {
+			const bool teleport = u->second.get_ability_bool("teleport",u->first);
 			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
 								   false,teleport,viewing_team(),path_turns_);
 
-			next_unit_ = it->first;
+			next_unit_ = u->first;
 
-			show_attack_options(it);
+			show_attack_options(u);
 
 			gui_->highlight_reach(current_paths_);
 
-			unit u = it->second;
-			const gamemap::location go_to = u.get_goto();
+			const gamemap::location go_to = u->second.get_goto();
 			if(map_.on_board(go_to)) {
-				paths::route route = get_route(it, go_to, current_team());
+				paths::route route = get_route(u, go_to, current_team());
 				gui_->set_route(&route);
 			}
 			game_events::fire("select",hex);
