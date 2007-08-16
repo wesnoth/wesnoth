@@ -1390,7 +1390,6 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		gui_->clear_attack_indicator();
 		gui_->unhighlight_reach();
 
-		gui_->invalidate_all();
 		gui_->draw();
 
 		const bool defender_human = teams_[defender->second.side()-1].is_human();
@@ -1419,8 +1418,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 		check_victory(units_,teams_,game_state_);
 
-		gui_->invalidate_all();
-		gui_->draw(); //clear the screen
+		gui_->draw(); 
 
 		return true;
 	} else {
