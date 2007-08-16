@@ -1151,3 +1151,58 @@ void game_data::clear()
 	unit_types.clear();
 	races.clear();
 }
+
+// This function is only meant to return the likely state of not_living
+// for a new recruit of this type. It should not be used to check if
+// a particular unit is living or not, use get_state("not_living") for that.
+
+bool unit_type::not_living() const
+{
+        // If a unit hasn't been modified it starts out as living.
+        bool not_living = false;
+
+        // Look at all of the "musthave" traits to see if the not_living
+        // status gets changed. In the unlikely event it gets changed
+        // multiple times, we want to try to do it in the same order
+        // that unit::apply_modifications does things.
+
+        config::child_list const &mods = possible_traits();
+        for(config::child_list::const_iterator j = mods.begin(),
+            j_end = mods.end(); j != j_end; ++j) {
+                if ((**j)["availability"].empty() || (**j)["availability"] !=
+                    "musthave") {
+                        continue;
+                }
+                for(config::const_child_itors i = (**j).child_range("effect");
+                    i.first != i.second; ++i.first) {
+
+                        // See if the effect only applies to certain unit types
+                        // But don't worry about gender checks, since we don't
+                        // know what the gender of the hypothetical recruit is.
+                        const std::string& type_filter = (**i.first)["unit_type"];
+                        if(type_filter.empty() == false) {
+                                const std::vector<std::string>& types = utils::split(type_filter);
+                                if(std::find(types.begin(),types.end(),id()) == types.end()) {
+                                        continue;
+                                }
+                        }
+
+                        // We're only interested in status changes.
+                        if ((**i.first)["apply_to"].empty() ||
+                            (**i.first)["apply_to"] != "status") {
+                                continue;
+                        }
+                        if (!(**i.first)["add"].empty() &&
+                            (**i.first)["add"] == "not_living") {
+                                not_living = true;
+                        }
+                        if (!(**i.first)["remove"].empty() &&
+                            (**i.first)["remove"] == "not_living") {
+                                not_living = false;
+                        }
+                }
+
+        }
+
+        return not_living;
+}

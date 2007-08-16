@@ -218,6 +218,8 @@ public:
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
+        bool not_living() const;
+
 	bool has_zoc() const { return zoc_; }
 
 	bool has_ability(const std::string& ability) const;
