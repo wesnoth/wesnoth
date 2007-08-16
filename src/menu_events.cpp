@@ -457,7 +457,7 @@ namespace events{
 				<< _("Income");
 
 		gui::menu::basic_sorter sorter;
-		sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2).set_numeric_sort(3)
+		sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_alpha_sort(2).set_numeric_sort(3)
 			  .set_numeric_sort(4).set_numeric_sort(5).set_numeric_sort(6).set_numeric_sort(7);
 
 		std::vector<std::string> items;
@@ -500,11 +500,13 @@ namespace events{
 #endif
 				str << COLUMN_SEPARATOR	<< team::get_side_highlight(n);
 				// Delete all tags before name
-				str << font::del_tags(teams_[n].current_player()) << COLUMN_SEPARATOR << data.teamname << COLUMN_SEPARATOR;
+				str << font::del_tags(teams_[n].current_player()) << COLUMN_SEPARATOR;
 
 			} else {
-				str << ' ' << COLUMN_SEPARATOR << team::get_side_highlight(n) << "-" << COLUMN_SEPARATOR;
+				str << COLUMN_SEPARATOR << team::get_side_highlight(n) << "-" << COLUMN_SEPARATOR;
 			}
+
+			str << data.teamname << COLUMN_SEPARATOR;
 
 			if(!known && !game_config::debug) {
 				// We don't spare more info (only name) 
