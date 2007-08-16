@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file race.cpp 
+//! Generate race-specific unit-names.
+
 #include "global.hpp"
 
 #include "race.hpp"
