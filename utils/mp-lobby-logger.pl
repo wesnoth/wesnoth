@@ -200,8 +200,8 @@ print LOG    "Connecting to $HOST:$PORT as $USERNAME.\n" if $logfile;
 my $socket = &connect($HOST,$PORT);
 defined($socket) or die "Error: Can't connect to the server.";
 
-login($socket);
-serverstats() if $writestats;
+&login($socket);
+&serverstats() if $writestats;
 
 while (1) {
 	my $response = &read_packet($socket);
@@ -235,7 +235,7 @@ while (1) {
 						print STDERR &timestamp . "--> $username has logged on. ($userindex)\n" if $showjoins;
 						print LOG &logtimestamp . "--> $username has logged on. ($userindex)\n" if $logfile;
 						$users[@users] = $user;
-						serverstats() if $writestats;
+						&serverstats() if $writestats;
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_) if $dumpunknown;
 					}
@@ -245,7 +245,7 @@ while (1) {
 						print STDERR &timestamp . "<-- $username has logged off. ($userindex)\n" if $showjoins;
 						print LOG &logtimestamp . "<-- $username has logged off. ($userindex)\n" if $logfile;
 						splice(@users,$userindex,1);
-						serverstats() if $writestats;
+						&serverstats() if $writestats;
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_) if $dumpunknown;
 					}
@@ -306,7 +306,7 @@ while (1) {
 									print STDERR &timestamp . $settings . "\n" if $showgames;
 									print LOG &logtimestamp . $settings . "\n" if $logfile;
 									$games[@games] = $game;
-									serverstats() if $writestats;
+									&serverstats() if $writestats;
 								} else {
 									print "[gamelist_diff][change_child][gamelist]:" . Dumper($_) if $dumpunknown;
 								}
@@ -323,7 +323,7 @@ while (1) {
 										print LOG &logtimestamp . "--- A game was aborted: \"$gamename\". ($gamelistindex, $gameid)\n" if $logfile;
 									}
 									splice(@games,$gamelistindex,1);
-									serverstats() if $writestats;
+									&serverstats() if $writestats;
 								} else {
 									print STDERR "[gamelist_diff][change_child][gamelist]:" . Dumper($_) if $dumpunknown;
 								}
