@@ -535,6 +535,7 @@ void unit::advance_to(const unit_type* t)
 		cfg_["gender_id"] = cfg_["gender"];
 	}
 
+	backup_state();
         // This will add new traits to an advancing unit if either the
         // new unit type has new "musthave" traits or the new unit type
         // grants more traits than the unit currently has. This is meant
@@ -544,7 +545,6 @@ void unit::advance_to(const unit_type* t)
         // add traits, only reduce them.
         generate_traits();
 
-	backup_state();
 	// Apply modifications etc, refresh the unit
         // This needs to be after type and gender are fixed, since there
         // can be filters on the modifications that may result in
