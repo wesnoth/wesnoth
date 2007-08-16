@@ -133,6 +133,12 @@ Version 1.3.6+svn:
      Wesnoth means GPL 2 or GPL 2+, since Sirp's orginal intent was
      GPL 2+ the license has been changed accordingly.
      (See https://mail.gna.org/public/wesnoth-dev/2007-07/msg00014.html)
+   * When advancing from Dark Sorcerer to Lich, you now get the undead
+     trait. The way this is fixed can add random traits if the new unit
+     type allows more traits then the unit currently has. This would
+     cause a problem for multiplayer, but no advancement paths currently
+     have this case. You do get to keep your current traits, even if you
+     wouldn't get them in the new unit type.
 
 Version 1.3.6:
  * language and i18n:

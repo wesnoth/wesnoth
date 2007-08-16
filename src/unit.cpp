@@ -528,15 +528,29 @@ void unit::advance_to(const unit_type* t)
 	poison_animations_ = t->poison_animations_;
 	flag_rgb_ = t->flag_rgb();
 
-	backup_state();
-	//apply modifications etc, refresh the unit
-	apply_modifications();
 	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
 		heal_all();
 		id_ = t->id();
 		cfg_["id"] = id_;
 		cfg_["gender_id"] = cfg_["gender"];
 	}
+
+        // This will add new traits to an advancing unit if either the
+        // new unit type has new "musthave" traits or the new unit type
+        // grants more traits than the unit currently has. This is meant
+        // to handle living units advancing to nonliving units.
+        // Note that adding random traits in multiplayer games will cause
+        // OOS errors. However, none of the standard advancement patters
+        // add traits, only reduce them.
+        generate_traits();
+
+	backup_state();
+	// Apply modifications etc, refresh the unit
+        // This needs to be after type and gender are fixed, since there
+        // can be filters on the modifications that may result in
+        // different effects after the advancement.
+	apply_modifications();
+
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
 
