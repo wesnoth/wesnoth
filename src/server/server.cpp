@@ -161,13 +161,15 @@ server::server(int port, input_stream& input, const config& cfg, size_t min_thre
 	login_response_.add_child("mustlogin");
 
 	if(cfg_["disallow_names"] == "") {
-		disallowed_names_.push_back("server");
-		disallowed_names_.push_back("ai");
+		disallowed_names_.push_back("*admin*");
+		disallowed_names_.push_back("*admln*");
+		disallowed_names_.push_back("*server*");
 		disallowed_names_.push_back("player");
 		disallowed_names_.push_back("network");
 		disallowed_names_.push_back("human");
-		disallowed_names_.push_back("admin");
 		disallowed_names_.push_back("computer");
+		disallowed_names_.push_back("ai");
+		disallowed_names_.push_back("ai?");
 	} else {
 		disallowed_names_ = utils::split(cfg_["disallow_names"]);
 	}
