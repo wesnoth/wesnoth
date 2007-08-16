@@ -705,10 +705,10 @@ void mouse_handler::mouse_update(const bool browse)
 {
 	int x, y;
 	SDL_GetMouseState(&x,&y);
-	mouse_motion(x, y, browse);
+	mouse_motion(x, y, browse, true);
 }
 
-void mouse_handler::mouse_motion(int x, int y, const bool browse)
+void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB/MMB up event
@@ -745,6 +745,20 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 	}
 
 	if(new_hex != last_hex_) {
+		update = true;
+
+		if (last_hex_.valid()) {
+			// we store the previous hexes used to propose attack direction
+			previous_hex_ = last_hex_;
+			// the hex of the selected unit is also "free"
+			if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
+					previous_free_hex_ = last_hex_;
+			}
+		}
+		last_hex_ = new_hex;
+	}
+
+	if (update) {
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
 			(*gui_).set_route(NULL);
@@ -754,14 +768,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse)
 
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
-
-		// we store the previous hexes used to propose attack direction
-		previous_hex_ = last_hex_;
-		// the hex of the selected unit is also "free"
-		if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
-				previous_free_hex_ = last_hex_;
-		}
-		last_hex_ = new_hex;
 
 		// we search if there is an attack possibility and where
 		gamemap::location attack_from = current_unit_attacks_from(new_hex);
@@ -1017,7 +1023,6 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		const int ydisp = event.y - centery;
 
 		gui_->scroll(xdisp,ydisp);
-		mouse_update(browse);
 		}
 	} else if (event.button == SDL_BUTTON_WHEELUP) {
 		scrolly = - preferences::scroll_speed();
@@ -1036,14 +1041,15 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			gui_->scroll(scrolly,scrollx);
 		else
 			gui_->scroll(scrollx,scrolly);
-	
-		mouse_update(browse);
 	}
 	
 	if (!dragging_ && dragging_started_) {
 		dragging_started_ = false;
 		cursor::set_dragging(false);
 	}
+
+	mouse_update(browse);
+
 }
 
 bool mouse_handler::is_left_click(const SDL_MouseButtonEvent& event)

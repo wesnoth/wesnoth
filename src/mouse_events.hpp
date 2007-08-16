@@ -67,7 +67,8 @@ private:
 	const team& viewing_team() const { return teams_[(*gui_).viewing_team()]; }
 	team& current_team() { return teams_[team_num_-1]; }
 
-	void mouse_motion(int x, int y, const bool browse);
+	// use update to force an update of the mouse state
+	void mouse_motion(int x, int y, const bool browse, bool update=false);
 	bool is_left_click(const SDL_MouseButtonEvent& event);
 	bool is_middle_click(const SDL_MouseButtonEvent& event);
 	bool is_right_click(const SDL_MouseButtonEvent& event);
