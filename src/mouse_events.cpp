@@ -1387,6 +1387,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		redo_stack_.clear();
 
 		current_paths_ = paths();
+		gui_->clear_attack_indicator();
 		gui_->unhighlight_reach();
 
 		gui_->invalidate_all();
