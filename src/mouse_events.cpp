@@ -1079,7 +1079,9 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		return;
 	}
 
-	gamemap::location hex = gui_->hex_clicked_on(event.x,event.y);
+	//we use the last registered highlighted hex
+	//since it's what update our global state
+	gamemap::location hex = last_hex_;
 
 	unit_map::iterator u = find_unit(selected_hex_);
 
@@ -1503,7 +1505,6 @@ inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
 		gui_->highlight_hex(selected_hex_);
 		current_route_.steps.clear();
 		gui_->set_route(NULL);
-		last_hex_=gamemap::location(-1,-1);
 		mouse_update(true);
 		show_attack_options(it);
 		game_events::fire("select",selected_hex_);
