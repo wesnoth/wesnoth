@@ -13,6 +13,9 @@ but WITHOUT ANY WARRANTY.
 See the COPYING file for more details.
 */
 
+//! @file pathfind.cpp 
+//! Various pathfinding functions and utilities.
+
 #include "global.hpp"
 
 #include "astarnode.hpp"
@@ -63,10 +66,10 @@ static gamemap::location find_vacant(const gamemap& map,
 		}
 	}
 
-gamemap::location find_vacant_tile(const gamemap& map,
-																	 const unit_map& units,
-																	 const gamemap::location& loc,
-																	 VACANT_TILE_TYPE vacancy)
+gamemap::location find_vacant_tile(const gamemap& map, 
+								   const unit_map& units, 
+								   const gamemap::location& loc, 
+								   VACANT_TILE_TYPE vacancy)
 {
 	for(int i = 1; i != 50; ++i) {
 		std::set<gamemap::location> touch;
@@ -116,20 +119,21 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 
 		team const &current_team = teams[u.side()-1];
 
-		//find adjacent tiles
+		// Find adjacent tiles
 		std::vector<gamemap::location> locs(6);
 		get_adjacent_tiles(loc,&locs[0]);
 
-		//check for teleporting units -- we must be on a vacant (or occupied by this unit)
-		//village, that is controlled by our team to be able to teleport.
+		// Check for teleporting units -- we must be on a vacant village 
+		// (or occupied by this unit), that is controlled by our team 
+		// to be able to teleport.
 		if (allow_teleport && map.is_village(loc) &&
 		    current_team.owns_village(loc) &&
 			(starting_pos || find_visible_unit(units, loc, map,
 										teams, viewing_team,see_all) == units.end())) {
 			const std::vector<gamemap::location>& villages = map.villages();
 
-			//if we are on a village, see all friendly villages that we can
-			//teleport to
+			// If we are on a village, see all friendly villages 
+			// that we can teleport to
 			for(std::vector<gamemap::location>::const_iterator t = villages.begin();
 			    t != villages.end(); ++t) {
 				if (!current_team.owns_village(*t) || units.count(*t))
@@ -139,16 +143,16 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 			}
 		}
 
-		//iterate over all adjacent tiles
+		// Iterate over all adjacent tiles
 		for(size_t i = 0; i != locs.size(); ++i) {
 			const gamemap::location& currentloc = locs[i];
 
-			//check if the adjacent location is off the board
+			// Check if the adjacent location is off the board
 			if (currentloc.x < 0 || currentloc.y < 0 ||
 			    currentloc.x >= map.w() || currentloc.y >= map.h())
 				continue;
 
-			//see if the tile is on top of an enemy unit
+			// See if the tile is on top of an enemy unit
 			const unit_map::const_iterator unit_it =
 			  find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
 
@@ -156,10 +160,10 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 			    current_team.is_enemy(unit_it->second.side()))
 				continue;
 
-			//find the terrain of the adjacent location
+			// Find the terrain of the adjacent location
 			const t_translation::t_letter terrain = map[currentloc.x][currentloc.y];
 
-			//find the movement cost of this type onto the terrain
+			// Find the movement cost of this type onto the terrain
 			const int move_cost = u.movement_cost(terrain);
 			if (move_cost <= move_left ||
 			    turns_left > 0 && move_cost <= u.total_movement()) {
@@ -178,7 +182,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 				const std::map<gamemap::location,paths::route>::const_iterator
 					rtit = routes.find(currentloc);
 
-				//if a better route to that tile has already been found
+				// If a better route to that tile has already been found
 				if(rtit != routes.end() && rtit->second.move_left >= total_movement)
 					continue;
 				paths::route new_route = routes[loc];
@@ -255,7 +259,7 @@ int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
 	}
 	
 
-	//add "end-of-path" to waypoints.
+	// Add "end-of-path" to waypoints.
 	if (turns > 0) {
 		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), turns+1));
 	} else if (movement==0 || map.is_village(*(rt.steps.end()-1))) {
@@ -279,20 +283,20 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 {
 	wassert(map_.on_board(loc));
 
-	//the location is not valid
-	//1. if the loc is shrouded, or
-	//2. if moving in it costs more than the total movement of the unit, or
-	//3. if there is a visible enemy on the hex, or	
-	//4. if the unit is not a skirmisher and there is a visible enemy with
-	//   a ZoC on an adjacent hex in the middle of the route
-	// #4 is a bad criteria!  It should be that moving into a ZOC uses up
-	// the rest of your moves
+	// The location is not valid
+	// 1. if the loc is shrouded, or
+	// 2. if moving in it costs more than the total movement of the unit, or
+	// 3. if there is a visible enemy on the hex, or	
+	// 4. if the unit is not a skirmisher and there is a visible enemy 
+	//    with a ZoC on an adjacent hex in the middle of the route
+	// #4 is a bad criteria!  It should be that moving into a ZOC 
+	// uses up the rest of your moves
 
 	if (team_.shrouded(loc.x, loc.y))
 		return getNoPathValue();
 
 	int const base_cost = unit_.movement_cost(map_[loc.x][loc.y]);
-	wassert(base_cost >= 1); // pathfinding heuristic: the cost must be at least 1
+	wassert(base_cost >= 1); // Pathfinding heuristic: the cost must be at least 1
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
 
@@ -303,16 +307,16 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
 		return getNoPathValue();
 
-	//compute how many movement points are left in the game turn needed to
-	//reach the previous hex
-	//total_movement_ is not zero, thanks to the pathfinding heuristic
+	// Compute how many movement points are left in the game turn 
+	// needed to reach the previous hex.
+	// total_movement_ is not zero, thanks to the pathfinding heuristic
 	int remaining_movement = movement_left_ - static_cast<int>(so_far);
 	if (remaining_movement < 0)
 		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
 
-	//supposing we had 2 movement left, and wanted to move onto a hex which
-	//takes 3 movement, it's going to cost us 5 movement in total, since we
-	//sacrifice this turn's movement. Take that into account here.
+	// Supposing we had 2 movement left, and wanted to move onto a hex 
+	// which takes 3 movement, it's going to cost us 5 movement in total, 
+	// since we sacrifice this turn's movement. Take that into account here.
 	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
 
 	if (!isDst && !unit_.get_ability_bool("skirmisher",loc)) {
@@ -323,7 +327,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	    enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
 	    if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
 		   enemy_unit->second.emits_zoc()){
-		 //should cost us remaining movement.
+		 // Should cost us remaining movement.
 		 //		 return getNoPathValue();
 		 return total_movement_ + additional_cost;
 	    }

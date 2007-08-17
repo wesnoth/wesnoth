@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file pathfind.hpp 
+//! 
+
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
 
@@ -31,9 +35,9 @@ class unit_map;
 #include <vector>
 #include <functional>
 
-//this module contains various pathfinding functions and utilities.
+// This module contains various pathfinding functions and utilities.
 
-//a convenient type for storing a list of tiles adjacent to a certain tile
+//! A convenient type for storing a list of tiles adjacent to a certain tile.
 typedef util::array<gamemap::location,6> adjacent_tiles_array;
 
 class xy_pred : public std::unary_function<gamemap::location const&, bool>
@@ -44,28 +48,27 @@ protected:
 	virtual ~xy_pred() {}
 };
 
-//function which, given a location, will find all tiles within 'radius' of that tile
+//! Function which, given a location, will find all tiles within 'radius' of that tile
 void get_tiles_radius(const gamemap::location& a, size_t radius,
 					  std::set<gamemap::location>& res);
 
-//function which, given a set of locations, will find all tiles within 'radius' of those tiles
+//! Function which, given a set of locations, will find all tiles within 'radius' of those tiles
 void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& locs, size_t radius,
-	std::set<gamemap::location>& res, xy_pred *pred=NULL);
+					  std::set<gamemap::location>& res, xy_pred *pred=NULL);
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 
-//function which will find a location on the board that is as near to loc as
-//possible, but which is unoccupied by any units. If terrain is not 0, then
-//the location found must be of the given terrain type, and must have a path
-//of that terrain type to loc.
-//
-//if no valid location can be found, it will return a null location.
+//! Function which will find a location on the board that is 
+//! as near to loc as possible, but which is unoccupied by any units. 
+//! If terrain is not 0, then the location found must be of the given terrain type, 
+//! and must have a path of that terrain type to loc.
+//! If no valid location can be found, it will return a null location.
 gamemap::location find_vacant_tile(const gamemap& map,
                                    const unit_map& un,
                                    const gamemap::location& loc,
                                    VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
-//function which determines if a given location is an enemy zone of control
+//! Function which determines if a given location is in an enemy zone of control.
 bool enemy_zoc(gamemap const &map,
                unit_map const &units,
                std::vector<team> const &teams, gamemap::location const &loc,
@@ -78,19 +81,20 @@ struct cost_calculator
 	inline double getNoPathValue(void) const { return (42424242.0); }
 };
 
-//object which contains all the possible locations a unit can move to, with
-//associated best routes to those locations.
+//! Object which contains all the possible locations a unit can move to, 
+//! with associated best routes to those locations.
 struct paths
 {
 	paths() {}
 
-	//construct a list of paths for the unit at loc.
-	//force_ignore_zocs: find the path ignoring ZOC entirely, if false will use the unit on the loc's ability
-	//allow_teleport: indicates whether unit teleports between villages
-	//additional_turns: if 0, paths for how far the unit can move this turn
-	//will be calculated. If 1, paths for how far the unit can move by the
-	//end of next turn will be calculated, and so forth.
-	//viewing_team is usually current team, except for Show Enemy Moves etc.
+	// Construct a list of paths for the unit at loc.
+	// - force_ignore_zocs: find the path ignoring ZOC entirely, 
+	//                     if false, will use the unit on the loc's ability
+	// - allow_teleport: indicates whether unit teleports between villages
+	// - additional_turns: if 0, paths for how far the unit can move this turn will be calculated. 
+	//                     If 1, paths for how far the unit can move by the end of next turn 
+	//                     will be calculated, and so forth.
+	// viewing_team is usually current team, except for Show Enemy Moves etc.
 	paths(gamemap const &map, gamestatus const &status,
 	      game_data const &gamedata,
 	      unit_map const &units,
@@ -99,12 +103,12 @@ struct paths
 		 const team &viewing_team,int additional_turns = 0,
 		 bool see_all = false);
 
-	//structure which holds a single route between one location and another.
+	//! Structure which holds a single route between one location and another.
 	struct route
 	{
 		route() : move_left(0) {}
 		std::vector<gamemap::location> steps;
-		int move_left; //movement unit will have left at end of the route.
+		int move_left; // movement unit will have left at end of the route.
 		std::map<gamemap::location, int> turn_waypoints;
 	};
 
@@ -117,9 +121,10 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
                            const size_t parWidth, const size_t parHeight,
                            std::set<gamemap::location> const *teleports = NULL);
 
-//function which, given a unit and a route the unit can move on, will
-//return the number of turns it will take the unit to traverse the route.
-//adds "turn waypoints" to rt.turn_waypoints. note that "end of path" is also added.
+//! Function which, given a unit and a route the unit can move on, 
+//! will return the number of turns it will take the unit to traverse the route.
+//! adds "turn waypoints" to rt.turn_waypoints. 
+//! Note that "end of path" is also added.
 int route_turns_to_complete(const unit& u, const gamemap& map,
                             paths::route& rt, const unit_map& units,
 					   const std::vector<team>& teams);
@@ -141,8 +146,8 @@ private:
 	int const total_movement_;
 };
 
-//function which only uses terrain, ignoring shroud, enemies, etc.
-//required by move_unit_fake if the normal path fails.
+//! Function which only uses terrain, ignoring shroud, enemies, etc.
+//! Required by move_unit_fake if the normal path fails.
 struct emergency_path_calculator : cost_calculator
 {
 	emergency_path_calculator(const unit& u, const gamemap& map);
