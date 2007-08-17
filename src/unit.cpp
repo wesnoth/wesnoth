@@ -260,12 +260,11 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 		//units, so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
 		generate_traits();
+	}else{
+		if (race_->name() == "undead") {
+			generate_traits();
+		}
 	}
-        else {
-            // If a unit was created without using generated traits, don't
-            // let them get applied later (after save and restore).
-            cfg_["random_traits"]="no";
-        }
 	if(underlying_description_.empty()){
 	  char buf[80];
 	  if(!custom_unit_description_.empty()){
@@ -305,12 +304,11 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 		//units, so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
 		generate_traits();
+	}else{
+		if (race_->name() == "undead") {
+			generate_traits();
+		}
 	}
-        else {
-            // If a unit was created without using generated traits, don't
-            // let them get applied later (after save and restore).
-            cfg_["random_traits"]="no";
-        }
 	if(underlying_description_.empty()){
 	  char buf[80];
 	  if(!custom_unit_description_.empty()){
@@ -369,73 +367,19 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 	teams_ = teams;
 }
 
-// Apply mandatory traits (e.g. undead, mechanical) to a unit and then
-// fill out with avaiable (leaders have a restircted set of available traits)
-// traits until no more are available or the unit has its maximum number
-// of traits.
-// Note that random numbers used in config files don't work in multiplayer,
-// so that leaders should be barred from all random traits until that
-// is fixed. Later the restrictions will be based on play balance.
-
 void unit::generate_traits()
 {
+	if(!traits_description_.empty())
+		return;
+
 	wassert(gamedata_ != NULL);
 	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(id());
 	//calculate the unit's traits
 	std::vector<config*> candidate_traits = type->second.possible_traits();
 	std::vector<config*> traits;
 
-        // First remove traits the unit already has from consideration.
-        // And count them so that we can figure out how many more are needed.
-        size_t t = 0;
-	config::child_list const &mods = modifications_.get_children("trait");
-	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
-                ++t;
-                for(size_t n = 0; n < candidate_traits.size(); ++n) {
-                        if((**(candidate_traits.begin()+n))["id"] == (**j)["id"]) {
-                                candidate_traits.erase(candidate_traits.begin()+n);
-                        }
-                }
-        }
-
-        // Next add in any manditory traits. These aren't limited by the
-        // number of traits allowed for a unit. They also don't use
-        // any random numbers for assignment. (And hence don't cause
-        // problems for multiplayer.)
-	size_t num_traits = candidate_traits.size();
-        size_t m = 0;
-	for(size_t n = 0; n < num_traits; ++n) {
-                if(!(**(candidate_traits.begin()+m))["availability"].empty() &&
-                    (**(candidate_traits.begin()+m))["availability"] == "musthave") {
-		        traits.push_back(candidate_traits[m]);
-		        candidate_traits.erase(candidate_traits.begin()+m);
-                        ++t;
-                }
-                else {
-                        ++m;
-                }
-	}
-
-        // Next for leaders remove any traits that are not available to
-        // the "any" category.
-        if(can_recruit()) {
-        	num_traits = candidate_traits.size();
-                m = 0;
-        	for(size_t n = 0; n < num_traits; ++n) {
-                        if(!(**(candidate_traits.begin()+m))["availability"].empty() ||
-                            (**(candidate_traits.begin()+m))["availability"] != "any") {
-        		        candidate_traits.erase(candidate_traits.begin()+m);
-                        }
-                        else {
-                                ++m;
-                        }
-        	}
-	}
-
-        // Now randomly fill out to the number of traits required or until
-        // there aren't any more traits.
-	num_traits = type->second.num_traits();
-	for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
+	const size_t num_traits = type->second.num_traits();
+	for(size_t n = 0; n != num_traits && candidate_traits.empty() == false; ++n) {
 		const int num = get_random()%candidate_traits.size();
 		traits.push_back(candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin()+num);
@@ -446,9 +390,6 @@ void unit::generate_traits()
 	}
 
 	apply_modifications();
-        // Once random traits are applied, don't do it again.
-        // Such as when restoring a saved character.
-        cfg_["random_traits"]="no";
 }
 
 // Advances this unit to another type
@@ -1216,9 +1157,10 @@ void unit::read(const config& cfg)
 		backup_state();
 		apply_modifications();
 	}
-	if(cfg["random_traits"].empty() ||
-            utils::string_bool(cfg["random_traits"])) {
+	if(utils::string_bool(cfg["random_traits"]) ||
+	    race_->name() == "undead") {
 		generate_traits();
+		cfg_["random_traits"] = "";
 	}
 	if(cfg["hitpoints"] != "") {
 		hit_points_ = lexical_cast_default<int>(cfg["hitpoints"]);
