@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file sdl_utils.cpp 
+//! Support-routines for the SDL-graphics-library.
+
 #include "global.hpp"
 
 #include "config.hpp"
@@ -138,7 +141,7 @@ surface create_optimized_surface(surface const &surf)
 	return result;
 }
 
-// don't pass this function 0 scaling arguments
+// NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(surface const &surf, int w, int h)
 {
 	assert(SDL_ALPHA_TRANSPARENT==0);
@@ -154,7 +157,7 @@ surface scale_surface(surface const &surf, int w, int h)
 
 	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
 	surface src(make_neutral_surface(surf));
-	// now both surfaces are always in the "neutral" pixel format
+	// Now both surfaces are always in the "neutral" pixel format
 
 	if(src == NULL || dst == NULL) {
 		std::cerr << "Could not create surface to scale onto\n";
@@ -206,7 +209,7 @@ surface scale_surface(surface const &surf, int w, int h)
 				const fixed_t w = 0xFF - e;
 
 				pix[0] = *src_word;              // northwest
-			        pix[1] = *(src_word + dx);       // northeast
+				pix[1] = *(src_word + dx);       // northeast
 				pix[2] = *(src_word + dy);       // southwest
 				pix[3] = *(src_word + dx + dy);  // southeast
 
@@ -241,31 +244,27 @@ surface scale_surface(surface const &surf, int w, int h)
 				  avg_a /= count;
 				}
 
-				// Perform modified bilinear
-				// interpolation. Don't trust any
-				// color information from an RGBA
-				// sample when the alpha channel is
-				// set to fully transparent.
+				// Perform modified bilinear interpolation. 
+				// Don't trust any color information from 
+				// an RGBA sample when the alpha channel 
+				// is set to fully transparent.
 				//
-				// Some of the input images are hex
-				// tiles, created using a hexagon
-				// shaped alpha channel that is either
-				// set to full-on or full-off. If
-				// intermediate alpha values are
-				// introduced along a hex edge, it
-				// produces a gametime artifact.
-				// Moving the mouse around will leave
-				// behind "hexagon halos" from the
-				// temporary highlighting. In other
-				// words the Wesnoth rendering engine
+				// Some of the input images are hex tiles, 
+				// created using a hexagon shaped alpha channel 
+				// that is either set to full-on or full-off. 
+				//
+				// If intermediate alpha values are introduced 
+				// along a hex edge, it produces a gametime artifact.
+				// Moving the mouse around will leave behind 
+				// "hexagon halos" from the temporary highlighting. 
+				// In other words, the Wesnoth rendering engine
 				// freaks out.
 				//
-				// The alpha thresholding step
-				// attempts to accomodates this
-				// limitation. There is a small loss
-				// of quality. For example, skeleton
-				// bowstrings are not as good as they
-				// could be.
+				// The alpha thresholding step attempts 
+				// to accomodates this limitation. 
+				// There is a small loss of quality. 
+				// For example, skeleton bowstrings 
+				// are not as good as they could be.
 
 				rr = gg = bb = aa = 0;
 				for (loc=0; loc<4; loc++) {
@@ -333,8 +332,8 @@ surface scale_surface_blended(surface const &surf, int w, int h)
 
 				double summation = 0.0;
 
-				//we now have a rectangle, (xsrc,ysrc,xratio,yratio) which we
-				//want to derive the pixel from
+				// We now have a rectangle, (xsrc,ysrc,xratio,yratio) 
+				// which we want to derive the pixel from
 				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1.0) {
 					const double xsize = minimum<double>(std::floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
 					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1.0) {
@@ -432,10 +431,10 @@ surface greyscale_image(surface const &surf)
 
 			//const Uint8 avg = (red+green+blue)/3;
 
-			//use the correct formula for RGB to grayscale
-			//conversion. ok, this is no big deal :)
-			//the correct formula being:
-			//gray=0.299red+0.587green+0.114blue
+			// Use the correct formula for RGB to grayscale conversion. 
+			// Ok, this is no big deal :)
+			// The correct formula being:
+			// gray=0.299red+0.587green+0.114blue
 			const Uint8 avg = (Uint8)((77*(Uint16)red +
 						   150*(Uint16)green +
 						   29*(Uint16)blue) / 256);
@@ -472,10 +471,10 @@ surface darken_image(surface const &surf)
 
 			//const Uint8 avg = (red+green+blue)/3;
 
-			//use the correct formula for RGB to grayscale
-			//conversion. ok, this is no big deal :)
-			//the correct formula being:
-			//gray=0.299red+0.587green+0.114blue
+			// Use the correct formula for RGB to grayscale conversion. 
+			// Ok, this is no big deal :)
+			// The correct formula being:
+			// gray=0.299red+0.587green+0.114blue
 			const Uint8 avg = (Uint8)((77*(Uint16)red +
 						   150*(Uint16)green +
 						   29*(Uint16)blue) / 256);
@@ -513,7 +512,7 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb){
      		Uint8 red, green, blue, alpha;
           	SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
-			if(alpha){//don't recolor invisible pixels.
+			if(alpha){	// don't recolor invisible pixels.
 	          	Uint32 oldrgb = (red<<16) + (green<<8) + (blue);
 				for(std::map<Uint32, Uint32>::const_iterator i=map_rgb.begin(); i!= map_rgb.end(); i++){
 					if(oldrgb==i->first){
@@ -522,7 +521,7 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb){
     						Uint8 new_g = (new_rgb & 0x0000FF00)>>8;
     						Uint8 new_b = (new_rgb & 0x000000FF);
 			        		*beg = SDL_MapRGBA(nsurf->format,new_r,new_g,new_b,alpha);
-			     	   	break; //no double replacements.
+			     	   	break; // no double replacements.
 					}
 				}
 			}
@@ -649,7 +648,7 @@ surface adjust_surface_alpha_add(surface const &surf, int amount)
 	return create_optimized_surface(nsurf);
 }
 
-// Applies a mask on a surface
+//! Applies a mask on a surface.
 surface mask_surface(surface const &surf, surface const &mask)
 {
 	if(surf == NULL) {
@@ -697,7 +696,7 @@ surface mask_surface(surface const &surf, surface const &mask)
 	//return create_optimized_surface(nsurf);
 }
 
-// Cross-fades a surface
+//! Cross-fades a surface.
 surface blur_surface(surface const &surf, int depth)
 {
 	if(surf == NULL) {
@@ -814,9 +813,9 @@ surface blur_surface(surface const &surf, int depth)
 	return create_optimized_surface(res);
 }
 
-// Cross-fades a surface with alpha channel
-// FIXME: This is just a adapted copy-paste of the normal blur
-// but with blur alpha channel too
+//! Cross-fades a surface with alpha channel.
+//! @todo FIXME: This is just an adapted copy-paste 
+//! of the normal blur but with blur alpha channel too
 surface blur_alpha_surface(surface const &surf, int depth)
 {
 	if(surf == NULL) {
@@ -939,7 +938,7 @@ surface blur_alpha_surface(surface const &surf, int depth)
 	return create_optimized_surface(res);
 }
 
-// Cuts a rectangle from a surface.
+//! Cuts a rectangle from a surface.
 surface cut_surface(surface const &surf, SDL_Rect const &r)
 {
 	surface res = create_compatible_surface(surf, r.w, r.h);
@@ -1110,7 +1109,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, surface const &
 
 surface get_surface_portion(surface const &src, SDL_Rect &area)
 {
-	// check if there is something in the portion
+	// Check if there is something in the portion
 	if(area.x >= src->w || area.y >= src->h || area.x + area.w < 0 || area.y + area.h < 0) {
 		//std::cerr << "illegal surface portion...\n";
 		return NULL;
@@ -1185,8 +1184,9 @@ SDL_Rect get_non_transparent_portion(surface const &surf)
 			break;
 	}
 
-	//the height is the height of the surface, minus the distance from the top and the
-	//distance from the bottom
+	// The height is the height of the surface, 
+	// minus the distance from the top and 
+	// the distance from the bottom.
 	res.h = nsurf->h - res.y - n;
 
 	for(n = 0; n != nsurf->w; ++n) {
