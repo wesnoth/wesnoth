@@ -617,11 +617,11 @@ void server::process_login(const network::connection sock, const config& data)
 		return;
 	}
 
-	//check the username is valid (all alpha-numeric or space (but no space at ends))
+	//check if the username is valid (all alpha-numeric plus underscore)
 	std::string username = (*login)["username"];
 	if(!utils::isvalid_username(username)) {
 		network::send_data(construct_error(
-		                   "This username is not valid"),sock);
+		                   "This username contains invalid characters. Only alpha-numeric characters and underscores are allowed."),sock);
 		return;
 	}
 
