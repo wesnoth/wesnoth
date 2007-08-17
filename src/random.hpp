@@ -12,6 +12,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file random.hpp 
+//! 
+
 #ifndef RANDOM_H_INCLUDED
 #define RANDOM_H_INCLUDED
 
