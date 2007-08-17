@@ -493,7 +493,7 @@ void create::process_event()
 		std::stringstream map_size;
 		if(map.get() != NULL) {
 			players << _("Players: ") << nsides;
-			map_size << _("Map size: ") << map.get()->w() << "x" << map.get()->h();
+			map_size << _("Size: ") << map.get()->w() << "x" << map.get()->h();
 		} else {
 			players << _("Error");
 			map_size << "";
