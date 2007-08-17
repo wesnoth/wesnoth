@@ -42,7 +42,7 @@ std::string unit_id_test(const std::string& id)
 {
 	if(id == "Halbardier") {
 		lg::wml_error << "'Halbardier' has been renamed to 'Halberdier' "
-			"support for the old name will be removed in version 1.3.8\n";
+			"support for the old name will be removed in version 1.3.9\n";
 		return "Halberdier";
 	}
 
