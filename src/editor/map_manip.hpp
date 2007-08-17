@@ -12,6 +12,9 @@
   See the COPYING file for more details.
 */
 
+//! @file map_manip.hpp
+//!
+
 #ifndef MAP_MANIP_H_INCLUDED
 #define MAP_MANIP_H_INCLUDED
 
@@ -26,11 +29,12 @@ namespace map_editor {
 enum FLIP_AXIS {NO_FLIP, FLIP_X, FLIP_Y};
 }
 
-//This object modifies the internal structure of a map, most of the time this is
-//done on the real map data. This means that the display and mapdata are heavily out
-//of sync. Our callers throw a new_map_exception which will invalide the entire
-//map object. These callers expect a string with the new raw map data.
-//So it's "save" but really not clean. -- Mordante
+// This object modifies the internal structure of a map, 
+// most of the time this is done on the real map data. 
+// This means that the display and mapdata are heavily out of sync. 
+// Our callers throw a new_map_exception which will invalide the entire
+// map object. These callers expect a string with the new raw map data.
+// So it's "save" but really not clean. -- Mordante
 class editormap : public gamemap
 {
 public:
@@ -44,12 +48,12 @@ public:
 	 * @param height	the new height
 	 * @param x_offset	the offset in x direction (the x coordinate specified will be the new 0 location)
 	 * @param y_offset	the offset in y direction (the y coordinate specified will be the new 0 location)
-	 * @param expand	try to expand the map depending on the current tiles
-	 * @param filler	if the map is enlarged the new tiles are set to this terrain
-	 * 			unless expand is set
+	 * @param do_expand	try to expand the map depending on the current tiles
+	 * @param filler	if the map is enlarged the new tiles are set to this terrain,
+	 * 					unless expand is set
 	 *
-	 * @return		if there's been a modification to the map the new map data as string
-	 * 			else an empty string
+	 * @return			if there's been a modification to the map: the new map data as string,
+	 * 					else an empty string
 	 */
 	std::string resize(const size_t width, const size_t height,
 		const int x_offset, const int y_offset,
@@ -66,19 +70,20 @@ public:
 	std::string flip(const map_editor::FLIP_AXIS axis);
 
 	/**
-	 * sets the starting position of a player
+	 * Sets the starting position of a player
 	 *
 	 * @param pos 		the starting position, 1 = player 1
-	 * @location		a location (same as gamemap location)
+	 * @param location	a location (same as gamemap location)
 	 */
 	void set_starting_position(const int pos, const location loc);
 
 private:
 
 	/**
-	 * Exchanges starting positions, if there's a starting location on x1, xy
-	 * it will be moved to x2, y2. If x2, y2 contains a starting location this
-	 * is moved to x1, y1. The function also works if both locations contain
+	 * Exchanges starting positions, 
+	 * If there's a starting location on x1, y1 it will be moved to x2, y2. 
+	 * If x2, y2 contains a starting location this is moved to x1, y1. 
+	 * The function also works if both locations contain
 	 * a starting position.
 	 */
 	void swap_starting_position(
@@ -86,7 +91,7 @@ private:
 		const size_t x2, const size_t y2);
 
 	/**
-	 * Adds column(s) at the right side
+	 * Adds column(s) at the right side.
 	 *
 	 * @param count 	the number of columns to add
 	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
@@ -106,14 +111,14 @@ private:
 		const t_translation::t_letter& filler);
 
 	/**
-	 * Removes column(s) at the right side
+	 * Removes column(s) at the right side.
 	 *
 	 * @param count 	the number of columns to remove
 	 */
 	void remove_tiles_right(const unsigned count);
 
 	/**
-	 * Removes column(s) at the left side
+	 * Removes column(s) at the left side.
 	 *
 	 * @param count 	the number of columns to remove
 	 */
@@ -130,7 +135,7 @@ private:
 		const t_translation::t_letter& filler);
 
 	/**
-	 * Adds row(s) at the bottom side
+	 * Adds row(s) at the bottom side.
 	 *
 	 * @param count 	the number of rows to add
 	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
@@ -140,14 +145,14 @@ private:
 		const t_translation::t_letter& filler);
 
 	/**
-	 * Removes row(s) at the top side
+	 * Removes row(s) at the top side.
 	 *
 	 * @param count 	the number of rows to remove
 	 */
 	void remove_tiles_top(const unsigned count);
 
 	/**
-	 * Removes row(s) at the bottom side
+	 * Removes row(s) at the bottom side.
 	 *
 	 * @param count 	the number of rows to remove
 	 */
@@ -163,15 +168,15 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 
 typedef std::vector<std::pair<gamemap::location, t_translation::t_letter> > terrain_log;
 
-/// Flood fill the map with the terrain fill_with starting from the
-/// location start_loc. If log is non-null it will contain the positions
-/// of the changed tiles and the terrains they had before the filling
-/// started.
+/// Flood fill the map with the terrain fill_with 
+/// starting from the location start_loc. 
+/// If log is non-null it will contain the positions of the changed tiles 
+/// and the terrains they had before the filling started.
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
 		const t_translation::t_letter fill_with, terrain_log *log = NULL);
 
-/// Return the area that would be flood filled if a flood fill was
-/// requested.
+/// Return the area that would be flood filled 
+/// if a flood fill was requested.
 std::set<gamemap::location>
 get_component(const gamemap &map, const gamemap::location &start_loc);
 
@@ -185,20 +190,20 @@ std::string resize_map(editormap &map, const unsigned new_w,
 	const unsigned new_h, const int off_x, const int off_y,
 	const bool do_expand, const t_translation::t_letter fill_with);
 
-/// Return the string representation of the map after it has been
-/// flipped around the axis.
+/// Return the string representation of the map 
+/// after it has been flipped around the axis.
 std::string flip_map(editormap &map, const FLIP_AXIS axis);
 
-/// Return true if the data is valid to create a map with, othwerwise
-/// false.
+//! Return true if the data is valid to create a map with, 
+//! othwerwise false.
 bool valid_mapdata(const std::string &data, const config &cfg);
 
 
-// Returns a string representating a new empty map
-// of width by height of the terrain filler
+//! Returns a string representating a new empty map
+//! of width by height of the terrain filler
 std::string new_map(const size_t width, const size_t height, const t_translation::t_letter filler);
 
-} //namespace
+} // end namespace map_editor 
 
 
 #endif // MAP_MANIP_H_INCLUDED
