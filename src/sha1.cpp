@@ -12,13 +12,17 @@
    See the COPYING file for more details.
 */
 
+//! @file sha1.cpp 
+//! Secure Hash Algorithm 1 (SHA-1).
+//! Used to checksum the game-config / cache.
+
 /* This is supposed to be an implementation of the
    Secure Hash Algorithm 1 (SHA-1)
 
    Check RFC 3174 for details about the algorithm.
 
-   Currently this implementation might produce different result on endian and
-   bigendian machines, but for our current usage, we don't care :)
+   Currently this implementation might produce different results on little-
+   and big-endian machines, but for our current usage, we don't care :)
 */
 
 #include "sha1.hpp"
@@ -31,7 +35,7 @@
 #define sha_parity(x,y,z)	( (x) ^ (y) ^ (z) )
 #define sha_maj(x,y,z)		( ((x) & (y)) | ((x) & (z)) | ((y) & (z)) )
 
-// display our hash
+//! Display the hash
 std::string sha1_hash::display() {
 	std::stringstream s;
 	s << std::hex << std::setfill('0') << std::setw(8) << H0;
@@ -42,7 +46,7 @@ std::string sha1_hash::display() {
 	return s.str();
 }
 
-// make a hash from a string
+//! Make a hash from a string
 sha1_hash::sha1_hash(const std::string& str) 
 : H0(0x67452301), H1(0xefcdab89), H2(0x98badcfe), H3(0x10325476), H4(0xc3d2e1f0)
 {
@@ -90,7 +94,7 @@ sha1_hash::sha1_hash(const std::string& str)
 	}
 }
 
-// process the next 512 bits block
+//! Process the next 512 bits block
 void sha1_hash::next(Uint8 block[64]) {
 	Uint32 W[80];
 	Uint32 A, B, C, D, E, T;
