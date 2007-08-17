@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file loadscreen_empty.cpp 
+//!
+
 #include "loadscreen.hpp"
 
 #include "font.hpp"
@@ -47,3 +50,4 @@ void increment_binary_wml_progress () {}
 void increment_set_config_progress () {}
 
 void increment_parser_progress () {}
+

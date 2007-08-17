@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file loadscreen.cpp 
+//! Screen with logo and "Loading ..."-progressbar during program-startup.
+
 #include "loadscreen.hpp"
 
 #include "font.hpp"
@@ -43,66 +46,65 @@ loadscreen::loadscreen(CVideo &screen, const int &percent):
 }
 void loadscreen::set_progress(const int percentage, const std::string &text, const bool commit)
 {
-	/* Saturate percentage. */
+	//! Saturate percentage.
 	prcnt_ = percentage < MIN_PERCENTAGE ? MIN_PERCENTAGE: percentage > MAX_PERCENTAGE ? MAX_PERCENTAGE: percentage;
-	/* Set progress bar parameters. */
-	int fcr =   21, fcg =   53, fcb = 80; /* Finished piece. */
-	int lcr =   21, lcg =   22, lcb =  24; /* Leftover piece. */
-	int bcr = 188, bcg = 176, bcb = 136; /* Border color. */
-	int bw = 1; /* Border width. */
-	int bispw = 1; /* Border inner spacing width. */
+	// Set progress bar parameters:
+	int fcr =  21, fcg =  53, fcb =  80;		// RGB-values for finished piece.
+	int lcr =  21, lcg =  22, lcb =  24;		// Leftover piece.
+	int bcr = 188, bcg = 176, bcb = 136;		// Border color.
+	int bw = 1; 								//!< Border width. 
+	int bispw = 1; 								//!< Border inner spacing width.
 	bw = 2*(bw+bispw) > screen_.getx() ? 0: 2*(bw+bispw) > screen_.gety() ? 0: bw;
-	int scrx = screen_.getx() - 2*(bw+bispw); /* Available width. */
-	int scry = screen_.gety() - 2*(bw+bispw); /* Available height. */
-	int pbw = scrx/2; /* Used width. */
-	int pbh = scry/16; /* Used heigth. */
+	int scrx = screen_.getx() - 2*(bw+bispw); 	//!< Available width. 
+	int scry = screen_.gety() - 2*(bw+bispw); 	//!< Available height.
+	int pbw = scrx/2; 							//!< Used width. 
+	int pbh = scry/16; 							//!< Used heigth.
 	surface const gdis = screen_.getSurface();
 	SDL_Rect area;
-	/* Draw logo if it was succesfully loaded. */
+	// Draw logo if it was succesfully loaded.
 	if (logo_surface_ && !logo_drawn_) {
 		area.x = (screen_.getx () - logo_surface_->w) / 2;
 		area.y = ((scry - logo_surface_->h) / 2) - pbh;
 		area.w = logo_surface_->w;
 		area.h = logo_surface_->h;
-		/* Check if we have enough pixels to display it. */
+		// Check if we have enough pixels to display it.
 		if (area.x > 0 && area.y > 0) {
 			pby_offset_ = (pbh + area.h)/2;
 			SDL_BlitSurface (logo_surface_, 0, gdis, &area);
-		}
-		else {
+		} else {
 			std::cerr << "loadscreen: Logo image is too big." << std::endl;
 		}
 		logo_drawn_ = true;
 		SDL_UpdateRect(gdis, area.x, area.y, area.w, area.h);
 	}
-	int pbx = (scrx - pbw)/2; /* Horizontal location. */
-	int pby = (scry - pbh)/2 + pby_offset_; /* Vertical location. */
+	int pbx = (scrx - pbw)/2; 					// Horizontal location.
+	int pby = (scry - pbh)/2 + pby_offset_;		// Vertical location.
 
-	/* Draw top border. */
+	// Draw top border.
 	area.x = pbx; area.y = pby;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
-	/* Draw bottom border. */
+	// Draw bottom border.
 	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
-	/* Draw left border. */
+	// Draw left border.
 	area.x = pbx; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
-	/* Draw right border. */
+	// Draw right border.
 	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
-	/* Draw the finished bar area. */
+	// Draw the finished bar area.
 	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
 	area.w = (prcnt_ * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.h = pbh;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,fcr,fcg,fcb));
-	/* Draw the leftover bar area. */
+	// Draw the leftover bar area. 
 	area.x = pbx + bw + bispw + (prcnt_ * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.y = pby + bw + bispw;
 	area.w = ((MAX_PERCENTAGE - prcnt_) * pbw) / (MAX_PERCENTAGE - MIN_PERCENTAGE); area.h = pbh;
 	SDL_FillRect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
-	/* Clear the last text and draw new if text is provided. */
+	// Clear the last text and draw new if text is provided.
 	if(text.length() > 0 && commit)
 	{
 		SDL_Rect oldarea = textarea_;
@@ -117,7 +119,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 		oldarea.h = maximum<int>(textarea_.h, oldarea.h);
 		SDL_UpdateRect(gdis, oldarea.x, oldarea.y, oldarea.w, oldarea.h);
 	}
-	/* Update the rectangle if needed */
+	// Update the rectangle if needed 
 	if(commit)
 	{
 		SDL_UpdateRect(gdis, pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
@@ -130,20 +132,22 @@ void loadscreen::increment_progress(const int percentage, const std::string &tex
 
 void loadscreen::clear_screen(const bool commit)
 {
-	int scrx = screen_.getx(); /* Screen width. */
-	int scry = screen_.gety(); /* Screen height. */
-	SDL_Rect area = {0, 0, scrx, scry}; /* Screen area. */
-	surface const disp(screen_.getSurface()); /* Screen surface. */
-	/* Make everything black. */
+	int scrx = screen_.getx(); 					//!< Screen width.
+	int scry = screen_.gety(); 					//!< Screen height.
+	SDL_Rect area = {0, 0, scrx, scry}; 		// Screen area.
+	surface const disp(screen_.getSurface()); 	// Screen surface.
+	// Make everything black.
 	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 	if(commit)
 	{
-		SDL_Flip(disp); /* Flip the double buffering. */
+		SDL_Flip(disp); 						// Flip the double buffering.
 	}
 }
 
 loadscreen *loadscreen::global_loadscreen = 0;
 
+// Amount of work to expect during the startup-stages,
+// for scaling the progressbars:
 #define CALLS_TO_FILESYSTEM 112
 #define PRCNT_BY_FILESYSTEM  20
 #define CALLS_TO_BINARYWML 9561

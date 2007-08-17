@@ -1,7 +1,4 @@
-/* $Id$ */
-#ifndef JM_LOADSCREEN_HPP
-#define JM_LOADSCREEN_HPP
-
+/* $Id$ */ 
 /*
    Copyright (C) 2005 - 2007 by Joeri Melis <joeri_melis@hotmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -14,6 +11,12 @@
 
    See the COPYING file for more details.
 */
+
+//! @file loadscreen.hpp 
+//!
+
+#ifndef JM_LOADSCREEN_HPP
+#define JM_LOADSCREEN_HPP
 
 #include "SDL.h"
 #include "SDL_image.h"
@@ -36,19 +39,19 @@ class loadscreen {
 		~loadscreen()
 		{
 			std::cerr << "loadscreen: filesystem counter = " << filesystem_counter << std::endl;
-			std::cerr << "loadscreen: binarywml counter = " << binarywml_counter << std::endl;
-			std::cerr << "loadscreen: setconfig counter = " << setconfig_counter << std::endl;
-			std::cerr << "loadscreen: parser counter = " << parser_counter << std::endl;
+			std::cerr << "loadscreen: binarywml counter = "  << binarywml_counter  << std::endl;
+			std::cerr << "loadscreen: setconfig counter = "  << setconfig_counter  << std::endl;
+			std::cerr << "loadscreen: parser counter = "     << parser_counter     << std::endl;
 			if (logo_surface_) {
 				SDL_FreeSurface (logo_surface_);
 			}
 		}
 
-		// Function to display a load progress bar.
+		//! Function to display a load progress bar.
 		void set_progress(const int percentage=0, const std::string &text="", const bool commit=true);
-		// Function to increment the progress bar.
+		//! Function to increment the progress bar.
 		void increment_progress(const int percentage=1, const std::string &text="", const bool commit=true);
-		// Function to draw a blank screen.
+		//! Function to draw a blank screen.
 		void clear_screen(const bool commit=true);
 
 		// Counters
@@ -57,8 +60,8 @@ class loadscreen {
 		int setconfig_counter;
 		int parser_counter;
 
-		// A global loadscreen instance that can be used to avoid
-		// passing it on to functions that are many levels deep.
+		//! A global loadscreen instance that can be used to avoid
+		//! passing it on to functions that are many levels deep.
 		static loadscreen *global_loadscreen;
 	private:
 		// Prohibit default constructor
