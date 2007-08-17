@@ -31,7 +31,7 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_DP LOG_STREAM(err, display)
 
-#define TEST_VIDEO_ON 1
+#define TEST_VIDEO_ON 0
 
 #if (TEST_VIDEO_ON==1)
 
