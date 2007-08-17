@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file tools/dummy_video.cpp 
+//! 
+
 #include "../video.hpp"
 
 surface CVideo::getSurface()

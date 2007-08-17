@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file tools/cutter.cpp
+//! Standalone-Utility for images / tiles
+
 #include "../sdl_utils.hpp"
 #include "../game_config.hpp"
 #include "exploder_utils.hpp"
@@ -33,7 +36,7 @@ int main(int argc, char* argv[])
 	std::string dest_dir;
 	cutter cut;
 
-	//parse arguments that shouldn't require a display device
+	// Parse arguments that shouldn't require a display device
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
@@ -93,6 +96,5 @@ int main(int argc, char* argv[])
 		std::cerr << "Failed: " << err.message << "\n";
 	}
 }
-
 
 

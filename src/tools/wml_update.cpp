@@ -15,6 +15,10 @@
  * Version 1.2
  * Update 1
 */
+ 
+//! @file tools/wml_update.cpp
+//! Standalone-Utility to update the WML-syntax from 1.0 to 1.1.2, and 1.1.2 to 1.2.
+//! See also: data/tools/wmllint
 
 #include <iostream>
 #include <fstream>
@@ -344,26 +348,27 @@ void output_level(Level& l,std::ofstream& outfile,int tabs,bool comments)
 	}
 }
 
-//make sure that we can use Mac, DOS, or Unix style text files on any system
-//and they will work, by making sure the definition of whitespace is consistent
+// Make sure that we can use Mac, DOS, or Unix style text files 
+// on any system and they will work, by making sure 
+// the definition of whitespace is consistent
 bool portable_isspace(char c)
 {
-	// returns true only on ASCII spaces
+	// Returns true only on ASCII spaces
 	if ((unsigned char)c >= 128)
 		return false;
 	return isnewline(c) || isspace(c);
 }
 
-//make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
-//all consider these differently.
+// Make sure we regard '\r' and '\n' as a space, since Mac, Unix, 
+// and DOS all consider these differently.
 bool notspace(char c)
 {
 	return !portable_isspace(c);
 }
 std::string &strip(std::string &str,bool always)
 {
-	//if all the string contains is whitespace, then the whitespace may
-	//have meaning, so don't strip it
+	// If all the string contains is whitespace, 
+	// then the whitespace may have meaning, so don't strip it
 	std::string::iterator it = std::find_if(str.begin(), str.end(), notspace);
 	if (it == str.end() && !always)
 		return str;
@@ -571,11 +576,11 @@ bool pre_update_1_1_2(Level& l,bool verbose) // split things here
 			std::string sound_suffix((hits ? "" : "_miss"));
 
 			while(l.child("sound")) {
-				// needs to find/make a frame with sound=
+				// Needs to find/make a frame with sound=
 				Level* i = l.child("sound");
 				child_list frame_tags = l.get_children("frame");
 				bool create = true;
-				// find a frame with equal time if possible
+				// Find a frame with equal time if possible
 				for(child_list::iterator j = frame_tags.begin(); j != frame_tags.end(); ++j) {
 					if(lexical_cast_default<int>((**j)["begin"],0) == lexical_cast_default<int>((*i)["time"],0)) {
 						if((*i)["sound_miss"] == "" && !hits) {
@@ -590,7 +595,7 @@ bool pre_update_1_1_2(Level& l,bool verbose) // split things here
 					}
 				}
 				if(create) {
-					// create new frame
+					// Create new frame
 					int index=0;
 					for(child_list::iterator j = frame_tags.begin(); j != frame_tags.end(); ++j) {
 						if(lexical_cast_default<int>((**j)["begin"],0) > lexical_cast_default<int>((*i)["time"],0)) {
