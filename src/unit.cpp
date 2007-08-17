@@ -1610,7 +1610,7 @@ void unit::set_teleporting(const game_display &disp,const gamemap::location& loc
 void unit::set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_DYING;
-	start_animation(disp,loc,die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack),true);
+	start_animation(disp,loc,die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack),false);
 	image::locator image_loc = anim_->get_last_frame().image();
 	anim_->add_frame(600,unit_frame(image_loc,600,"1~0:600"));
 }
