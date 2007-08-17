@@ -12,3 +12,6 @@
    See the COPYING file for more details.
 */
 
+//! @file  boilerplate-header.cpp 
+//! Template for new cpp-files.
+
