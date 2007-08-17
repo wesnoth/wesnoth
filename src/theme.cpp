@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file theme.cpp
+//! 
+
 #include "global.hpp"
 
 #include "config.hpp"
@@ -51,7 +54,7 @@ static size_t compute(std::string expr, size_t ref1, size_t ref2=0 ) {
 		return ref + atoi(expr.c_str());
 	}
 
-	// if x2 or y2 are not specified, use x1 and y1 values
+	// If x2 or y2 are not specified, use x1 and y1 values
 static _rect read_rect(const config& cfg) {
 		_rect rect = { 0, 0, 0, 0 };
 		const std::vector<std::string> items = utils::split(cfg["rect"].c_str());
@@ -170,7 +173,7 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 				parent_id = &((*parent)["inherits"]);
 			}
 
-			// add the parent resolution and apply all the modifications of its children
+			// Add the parent resolution and apply all the modifications of its children
 			res_cfgs_.push_back(*parent);
 			while(!parent_stack.empty()) {
 				//override attributes
@@ -210,12 +213,12 @@ static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
 				parent_stack.pop_back();
 			}
 		}
-		// add all the resolutions
+		// Add all the resolutions
 		const config::child_list& res_list = top_cfg.get_children("resolution");
 		for(config::child_list::const_iterator j = res_list.begin(); j != res_list.end(); ++j) {
 			dst_cfg.add_child("resolution", (**j));
 		}
-		// add all the resolved resolutions
+		// Add all the resolved resolutions
 		for(std::vector<config>::const_iterator k = res_cfgs_.begin(); k != res_cfgs_.end(); ++k) {
 			dst_cfg.add_child("resolution", (*k));
 		}
@@ -641,7 +644,7 @@ void theme::set_object_location(theme::object& element, std::string rect_str, st
 
 void theme::modify(const config* cfg){
 	{
-		//changes to existing theme objects
+		// changes to existing theme objects
 		const config::child_list& c = cfg->get_children("change");
 		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
 			std::string id = (**j)["id"];
@@ -652,14 +655,14 @@ void theme::modify(const config* cfg){
 			}
 		}
 	}
-	//adding new theme objects
+	// adding new theme objects
 	{
 		const config::child_list& c = cfg->get_children("add");
 		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
 			add_object(**j);
 		}
 	}
-	//removing existent theme objects
+	// removing existent theme objects
 	{
 		const config::child_list& c = cfg->get_children("remove");
 		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {

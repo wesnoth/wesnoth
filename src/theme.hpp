@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file theme.hpp
+//! Definitions related to theme-support.
+
 #ifndef THEME_HPP_INCLUDED
 #define THEME_HPP_INCLUDED
 
@@ -37,19 +40,19 @@ class theme
 		const SDL_Rect& get_location(void) const { return loc_; }
 		const std::string& get_id() const { return id_; }
 
-		//this supports relocating of theme elements ingame.
-		//It is needed for [change] tags in theme WML.
+		// This supports relocating of theme elements ingame.
+		// It is needed for [change] tags in theme WML.
 		void modify_location(const _rect rect);
 		void modify_location(std::string rect_str, SDL_Rect rect_ref);
 
-		//all on-screen objects have 'anchoring' in the x and y dimensions
-		//'fixed' means that they have fixed co-ordinates and don't move
-		//'top anchored' means they are anchored to the top (or left) side of
-		//the screen - the top (or left) edge stays a constant distance from
-		//the top of the screen
-		//'bottom anchored' is the inverse of top anchored
-		//'proportional' means the location and dimensions change proportionally
-		//to the screen size
+		// All on-screen objects have 'anchoring' in the x and y dimensions.
+		// 'fixed' means that they have fixed co-ordinates and don't move.
+		// 'top anchored' means they are anchored to the top (or left) side 
+		// of the screen - the top (or left) edge stays a constant distance 
+		// from the top of the screen.
+		// 'bottom anchored' is the inverse of top anchored.
+		// 'proportional' means the location and dimensions change 
+		// proportionally to the screen size.
 		enum ANCHORING { FIXED, TOP_ANCHORED, PROPORTIONAL, BOTTOM_ANCHORED };
 
 	private:
@@ -131,7 +134,7 @@ public:
 		const std::string& prefix() const { return prefix_; }
 		const std::string& postfix() const { return postfix_; }
 
-		//if the item has a label associated with it, show where the label is
+		// If the item has a label associated with it, Show where the label is
 		const label* get_label() const { return label_.empty() ? NULL : &label_; }
 
 		size_t font_size() const { return font_; }
