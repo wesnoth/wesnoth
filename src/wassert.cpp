@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file wassert.cpp 
+//! Write assert-message.
+
 #ifdef STANDARD_ASSERT_DOES_NOT_WORK
 
 #include "log.hpp"
