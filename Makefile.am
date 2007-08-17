@@ -1,4 +1,6 @@
-SVNREV = $(shell svnversion -n .)
+if USESVN
+	SVNREV = $(shell svnversion -n .)
+endif
 
 ISUBDIRS = icons
 SUBDIRS = po m4 src doc $(ISUBDIRS)
