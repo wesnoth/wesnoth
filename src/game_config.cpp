@@ -82,6 +82,7 @@ namespace game_config
 
 	const struct game_version wesnoth_version(VERSION);
 	const struct game_version min_savegame_version(MIN_SAVEGAME_VERSION); 
+	const struct game_version test_version("test");
 
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
@@ -287,9 +288,6 @@ game_version::game_version(std::string str) :
 			extra = std::string(str, offset, std::string::npos);
 		}
 	}
-	
-
-
 }
 
 bool operator<(const struct game_version& a, const struct game_version& b)

@@ -103,6 +103,7 @@ namespace game_config
 
 	extern const struct game_version wesnoth_version;
 	extern const struct game_version min_savegame_version;
+	extern const struct game_version test_version;
 
 }
 

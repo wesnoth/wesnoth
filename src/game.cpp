@@ -700,7 +700,12 @@ bool game_controller::load_game()
 		state_ = game_state(units_data_,cfg);
 
 		if(state_.version != game_config::version) {
-			if(state_.version < game_config::min_savegame_version) {
+			// do not load if too old, if either the savegame or the current game 
+			// has the version 'test' allow loading
+			if(state_.version < game_config::min_savegame_version && 
+					game_config::test_version.full != state_.version &&
+					game_config::test_version.full != game_config::version) {
+
 				/* GCC-3.3 needs a temp var otherwise compilation fails */
 				gui::message_dialog dlg(disp(), "", _("This save is from a version too old to be loaded."));
 				dlg.show();
