@@ -14,6 +14,9 @@
    See the COPYING file for more details.
 */
 
+//! @file serialization/string_utils.cpp 
+//! Various string-routines.
+
 #include "global.hpp"
 
 #include <cctype>
@@ -35,30 +38,30 @@ static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 static std::string do_interpolation(const std::string &str, const variable_set& set)
 {
 	std::string res = str;
-	//this needs to be able to store negative numbers to check for the while's condition
-	//(which is only false when the previous '$' was at index 0)
+	// This needs to be able to store negative numbers to check for the while's condition
+	// (which is only false when the previous '$' was at index 0)
 	int rfind_dollars_sign_from = res.size();
 	while(rfind_dollars_sign_from >= 0) {
-		//Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
-		//For example, "I am $creatures[$i].user_description!"
+		// Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
+		// For example, "I am $creatures[$i].user_description!"
 		const std::string::size_type var_begin_loc = res.rfind('$', rfind_dollars_sign_from);
 
-		//If there are no '$' left then we're done.
+		// If there are no '$' left then we're done.
 		if(var_begin_loc == std::string::npos) {
 			break;
 		}
 
-		//For the next iteration of the loop, search for more '$'
-		//(not from the same place because sometimes the '$' is not replaced)
+		// For the next iteration of the loop, search for more '$'
+		// (not from the same place because sometimes the '$' is not replaced)
 		rfind_dollars_sign_from = int(var_begin_loc) - 1;
 
 
 		const std::string::iterator var_begin = res.begin() + var_begin_loc;
 
-		//The '$' is not part of the variable name.
+		// The '$' is not part of the variable name.
 		const std::string::iterator var_name_begin = var_begin + 1;
 
-		//Find the maximum extent of the variable name (it may be shortened later).
+		// Find the maximum extent of the variable name (it may be shortened later).
 		std::string::iterator var_end = var_name_begin;
 		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end) {
 			const char c = *var_end;
@@ -75,22 +78,22 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			}
 		}
 
-		//Two dots in a row cannot be part of a valid variable name.
-		//That matters for random=, e.g. $x..$y
+		// Two dots in a row cannot be part of a valid variable name.
+		// That matters for random=, e.g. $x..$y
 		var_end = std::adjacent_find(var_name_begin, var_end, two_dots);
 
-		//If the last character is '.', then it can't be a sub-variable.
-		//It's probably meant to be a period instead. Don't include it.
-		//Would need to do it repetitively if there are multiple '.'s at the end,
-		//but don't actually need to do so because the previous check for adjacent '.'s would catch that.
-		//For example, "My score is $score." or "My score is $score..."
+		// If the last character is '.', then it can't be a sub-variable.
+		// It's probably meant to be a period instead. Don't include it.
+		// Would need to do it repetitively if there are multiple '.'s at the end,
+		// but don't actually need to do so because the previous check for adjacent '.'s would catch that.
+		// For example, "My score is $score." or "My score is $score..."
 		if(*(var_end-1) == '.'
-		//However, "$array[$i]" by itself does not name a variable,
-		//so if "$array[$i]." is encountered, then best to include the '.',
-		//so that it more closely follows the syntax of a variable (if only to get rid of all of it).
-		//(If it's the script writer's error, they'll have to fix it in either case.)
-		//For example in "$array[$i].$field_name", if field_name does not exist as a variable,
-		//then the result of the expansion should be "", not "." (which it would be if this exception did not exist).
+		// However, "$array[$i]" by itself does not name a variable,
+		// so if "$array[$i]." is encountered, then best to include the '.',
+		// so that it more closely follows the syntax of a variable (if only to get rid of all of it).
+		// (If it's the script writer's error, they'll have to fix it in either case.)
+		// For example in "$array[$i].$field_name", if field_name does not exist as a variable,
+		// then the result of the expansion should be "", not "." (which it would be if this exception did not exist).
 		&& *(var_end-2) != ']') {
 			--var_end;
 		}
@@ -98,11 +101,11 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 		const std::string var_name(var_name_begin, var_end);
 
 		if(*var_end == '|') {
-			//It's been used to end this variable name; now it has no more effect.
-			//This can allow use of things like "$$composite_var_name|.x"
-			//(Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
-			//If there should still be a '|' there afterwards to affect other variable names (unlikely),
-			//just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
+			// It's been used to end this variable name; now it has no more effect.
+			// This can allow use of things like "$$composite_var_name|.x"
+			// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
+			// If there should still be a '|' there afterwards to affect other variable names (unlikely),
+			// just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
 			var_end++;
 		}
 
@@ -113,7 +116,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			res.replace(var_begin, var_end, "$");
 		}
 		else {
-			//The variable is replaced with its value.
+			// The variable is replaced with its value.
 			res.replace(var_begin, var_end,
 			    set.get_variable_const(var_name));
 		}
@@ -129,8 +132,8 @@ bool isnewline(char c)
 	return c == '\r' || c == '\n';
 }
 
-//make sure that we can use Mac, DOS, or Unix style text files on any system
-//and they will work, by making sure the definition of whitespace is consistent
+// Make sure that we can use Mac, DOS, or Unix style text files on any system
+// and they will work, by making sure the definition of whitespace is consistent
 bool portable_isspace(char c)
 {
 	// returns true only on ASCII spaces
@@ -139,8 +142,8 @@ bool portable_isspace(char c)
 	return isnewline(c) || isspace(c);
 }
 
-//make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
-//all consider these differently.
+// Make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
+// all consider these differently.
 bool notspace(char c)
 {
 	return !portable_isspace(c);
@@ -148,8 +151,8 @@ bool notspace(char c)
 
 std::string &strip(std::string &str)
 {
-	//if all the string contains is whitespace, then the whitespace may
-	//have meaning, so don't strip it
+ 	// If all the string contains is whitespace, 
+	// then the whitespace may have meaning, so don't strip it
 	std::string::iterator it = std::find_if(str.begin(), str.end(), notspace);
 	if (it == str.end())
 		return str;
@@ -195,17 +198,23 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-//splits a function based either on a separator where text within paranthesis is protected from splitting,
-//note that one can use the same character for both the left and right paranthesis
-//or if the separator == 0 it splits a string into an odd number of parts:  
-//The part before the first '(', the part between the first '(' and the matching right ')',
-// etc ... and the remainder of the string.  Note that this
-//will find the first matching char in the left string and match against the corresponding 
-//char in the right string.  In this mode, a correctly processed string should return with 
-//an odd number of elements to the vector and an empty elements are never removed as they are placeholders. 
-//hence REMOVE EMPTY only works for the separator split
-//parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return a vector of
-// <"a","b","c","d","e","f{g}","h"> 
+// Splits a function based either on a separator 
+// where text within paranthesis is protected from splitting,
+// (note that one can use the same character for both the left and right paranthesis)
+// or if the separator == 0 it splits a string into an odd number of parts:  
+// - The part before the first '(', 
+// - the part between the first '(' 
+// - and the matching right ')', etc ... 
+// and the remainder of the string.  
+// Note that this will find the first matching char in the left string 
+// and match against the corresponding char in the right string.  
+// In this mode, a correctly processed string should return with 
+// an odd number of elements to the vector and 
+// an empty elements are never removed as they are placeholders. 
+// hence REMOVE EMPTY only works for the separator split.
+//
+// parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return 
+// a vector of <"a","b","c","d","e","f{g}","h"> 
 
 std::vector< std::string > paranthetical_split(std::string const &val, const char separator, std::string const &left, std::string const &right,int flags)
 {
@@ -320,7 +329,7 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 	return do_interpolation(str, variables);
 }
 
-// modify a number by string representing integer difference, or optionally %
+// Modify a number by string representing integer difference, or optionally %
 int apply_modifier( const int number, const std::string &amount, const int minimum ) {
 	// wassert( amount.empty() == false );
 	int value = atoi(amount.c_str());
@@ -333,7 +342,7 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 	return value;
 }
 
-//Prepends a configurable set of characters with a backslash
+//! Prepends a configurable set of characters with a backslash
 std::string &escape(std::string &str, const std::string& special_chars)
 {
 	std::string::size_type pos = 0;
@@ -347,16 +356,16 @@ std::string &escape(std::string &str, const std::string& special_chars)
 	return str;
 }
 
-//prepend all special characters with a backslash
-//special characters are:
-//#@{}+-,\*=
+//! Prepend all special characters with a backslash.
+// Special characters are:
+// #@{}+-,\*=
 std::string& escape(std::string& str)
 {
 	static const std::string special_chars("#@{}+-,\\*=");
 	return escape(str, special_chars);
 }
 
-// remove all escape characters (backslash)
+//! Remove all escape characters (backslash)
 std::string &unescape(std::string &str)
 {
 	std::string::size_type pos = 0;
@@ -383,9 +392,10 @@ bool string_bool(const std::string& str,bool def)
 	return def;
 }
 
+//! Check if the username is valid 
+//! (all alpha-numeric plus underscore)
 bool isvalid_username(const std::string& username)
 {
-	//check if the username is valid (all alpha-numeric plus underscore)
 	const size_t alnum = std::count_if(username.begin(),username.end(),isalnum);
 	const size_t underscore = std::count(username.begin(),username.end(),'_');
 	if((alnum + underscore != username.size()) || underscore == username.size() || username.empty() ) {
@@ -406,12 +416,13 @@ std::string join(std::vector< std::string > const &v, char c)
 	return str.str();
 }
 
-//identical to split(), except it does not split when it otherwise
-//would if the previous character was identical to the parameter 'quote'.
-//i.e. it does not split quoted commas.
-//this method was added to make it possible to quote user input,
-//particularly so commas in user input will not cause visual problems in menus.
-//why not change split()? that would change the methods post condition.
+// This function is identical to split(), except it does not split 
+// when it otherwise would if the previous character was identical to the parameter 'quote'.
+// i.e. it does not split quoted commas.
+// This method was added to make it possible to quote user input,
+// particularly so commas in user input will not cause visual problems in menus.
+//
+//! @todo Why not change split()? That would change the methods post condition.
 std::vector< std::string > quoted_split(std::string const &val, char c, int flags, char quote)
 {
 	std::vector<std::string> res;
@@ -421,7 +432,7 @@ std::vector< std::string > quoted_split(std::string const &val, char c, int flag
 
 	while (i2 != val.end()) {
 		if (*i2 == quote) {
-			// ignore quoted character
+			// Ignore quoted character
 			++i2;
 			if (i2 != val.end()) ++i2;
 		} else if (*i2 == c) {
@@ -480,7 +491,7 @@ int byte_size_from_utf8_first(unsigned char ch)
 	else if ((ch & 0xFE) == 0xFC)
 		count = 6;
 	else
-		throw invalid_utf8_exception(); /* stop on invalid characters */
+		throw invalid_utf8_exception(); // Stop on invalid characters
 
 	return count;
 }
@@ -549,16 +560,15 @@ void utf8_iterator::update()
 
 	current_char = (unsigned char)(*current_substr.first);
 
-	/* Convert the first character */
+	// Convert the first character
 	if(size != 1) {
 		current_char &= 0xFF >> (size + 1);
 	}
 
-	/* Convert the continuation bytes */
+	// Convert the continuation bytes
 	for(std::string::const_iterator c = current_substr.first+1;
 			c != current_substr.second; ++c) {
-		// If the string ends occurs within an UTF8-sequence, this is
-		// bad.
+		// If the string ends occurs within an UTF8-sequence, this is bad.
 		if (c == string_end)
 			throw invalid_utf8_exception();
 
@@ -583,7 +593,7 @@ std::string wstring_to_string(const wide_string &src)
 			unsigned int count;
 			ch = *i;
 
-			/* Determine the bytes required */
+			// Determine the bytes required
 			count = 1;
 			if(ch >= 0x80)
 				count++;
@@ -638,7 +648,7 @@ wide_string string_to_wstring(const std::string &src)
 		utf8_iterator i1(src);
 		const utf8_iterator i2(utf8_iterator::end(src));
 
-		//equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
+		// Equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
 		while(i1 != i2) {
 			push_back(res,*i1);
 			++i1;
@@ -657,7 +667,7 @@ utf8_string capitalize(const utf8_string& s)
 	if(s.size() > 0) {
 		utf8_iterator itor(s);
 #if defined(__APPLE__) || defined(__AMIGAOS4__)
-		// FIXME: Should we support towupper on recent OSX platforms?
+		//! @todo FIXME: Should we support towupper on recent OSX platforms?
 		wchar_t uchar = *itor;
 		if(uchar >= 0 && uchar < 0x100)
 			uchar = toupper(uchar);
@@ -679,7 +689,7 @@ utf8_string uppercase(const utf8_string& s)
 
 		for(;itor != utf8_iterator::end(s); ++itor) {
 #if defined(__APPLE__) || defined(__AMIGAOS4__)
-			// FIXME: Should we support towupper on recent OSX platforms?
+			//! @todo FIXME: Should we support towupper on recent OSX platforms?
 			wchar_t uchar = *itor;
 			if(uchar >= 0 && uchar < 0x100)
 				uchar = toupper(uchar);
@@ -702,7 +712,7 @@ utf8_string lowercase(const utf8_string& s)
 
 		for(;itor != utf8_iterator::end(s); ++itor) {
 #if defined(__APPLE__) || defined(__OpenBSD__) || defined(__AMIGAOS4__)
-			// FIXME: Should we support towupper on recent OSX platforms?
+			//! @todo FIXME: Should we support towupper on recent OSX platforms?
 			wchar_t uchar = *itor;
 			if(uchar >= 0 && uchar < 0x100)
 				uchar = tolower(uchar);
@@ -719,10 +729,11 @@ utf8_string lowercase(const utf8_string& s)
 }
 
 
-//FIXME: 'wordw' does not match '*word*'
+//! @todo FIXME: 'wordw' does not match '*word*'
 bool wildcard_string_match(const std::string& str, const std::string& match)
 {
-	// match using '*' as any number of characters (including none), and '?' as any one character
+	// Match using '*' as any number of characters (including none), 
+	// and '?' as any one character
 	std::string::const_iterator c = str.begin();
 	std::string::const_iterator m = match.begin();
 	while(c != str.end() && m != match.end()) {
@@ -773,7 +784,7 @@ bool wildcard_string_match(const std::string& str, const std::string& match)
 }
 
 
-}
+} // end namespace utils 
 
 std::string vgettext(const char *msgid, const utils::string_map& symbols)
 {
