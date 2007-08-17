@@ -189,7 +189,7 @@ void game_display::adjust_colours(int r, int g, int b)
 
 void game_display::select_hex(gamemap::location hex)
 {
-	if(fogged(hex)) {
+	if(hex.valid() && fogged(hex)) {
 		return;
 	}
 	display::select_hex(hex);

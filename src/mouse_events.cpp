@@ -981,13 +981,13 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			SDL_GetMouseState(&drag_from_x_, &drag_from_y_);
 		}
 	} else if(is_right_click(event) && event.state == SDL_PRESSED) {
-		// FIXME: when it's not our turn, movement gets highlighted
-		// merely by mousing over.  This hack means we don't require a
-		// two clicks to access right menu.
+		// The first right-click cancel the selection if any,
+		// the second open the context menu
 		dragging_ = false;
 		dragging_started_ = false;
 		cursor::set_dragging(false);
-		if (gui_->viewing_team() == team_num_-1 && !current_paths_.routes.empty()) {
+		if (gui_->viewing_team() == team_num_-1	&& selected_hex_.valid()
+				&& find_unit(selected_hex_) != units_.end()) {
 			selected_hex_ = gamemap::location();
 			gui_->select_hex(gamemap::location());
 			gui_->set_mouseover_hex_overlay(NULL);
