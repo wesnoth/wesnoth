@@ -364,6 +364,7 @@ protected:
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
+	int last_zoom_;
 	terrain_builder builder_;
 	surface minimap_;
 	bool redrawMinimap_;

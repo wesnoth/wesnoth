@@ -47,8 +47,10 @@
 namespace {
 #ifdef USE_TINY_GUI
 	const int DefaultZoom = 36;
+	const int SmallZoom = 16;
 #else
 	const int DefaultZoom = 72;
+	const int SmallZoom = 36;
 #endif
 
 	const int MinZoom = 4;
@@ -62,7 +64,8 @@ namespace {
 
 display::display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) : 
 	screen_(video), map_(map), viewpoint_(NULL), xpos_(0), ypos_(0),
-	theme_(theme_cfg,screen_area()), zoom_(DefaultZoom),
+	theme_(theme_cfg,screen_area()),
+	zoom_(DefaultZoom), last_zoom_(SmallZoom),
 	builder_(cfg, level, map, theme_.border().tile_image),
 	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
 	invalidateAll_(true), grid_(false),
@@ -1279,11 +1282,13 @@ void display::set_zoom(int amount)
 void display::set_default_zoom()
 {
 	if (zoom_ != DefaultZoom) {
+		last_zoom_ = zoom_;
 		set_zoom(DefaultZoom - zoom_ );
 	} else {
-		// we are already at the default zoom
-		// so switch to the second default (strategic view)
-		set_zoom(DefaultZoom / 2 - zoom_);
+		// when we are already at the default zoom
+		// switch to the last zoom used
+		set_zoom(last_zoom_ - zoom_);
+		last_zoom_ = DefaultZoom;
 	}
 }
 
