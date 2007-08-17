@@ -73,12 +73,6 @@ void sort_units(std::vector< unit > &units)
 	std::sort(units.begin(), units.end(), compare_unit_values);
 }
 
-
-
-
-
-
-
 // Copy constructor
 unit::unit(const unit& o):
 		cfg_(o.cfg_),
@@ -87,7 +81,7 @@ unit::unit(const unit& o):
 		resistance_b_(o.resistance_b_),
 
 		advances_to_(o.advances_to_),
-		id_(o.id_),
+		id_(unit_id_test(o.id_)),
 		race_(o.race_),
 		name_(o.name_),
 		description_(o.description_),
@@ -471,7 +465,7 @@ void unit::advance_to(const unit_type* t)
 
 	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
 		heal_all();
-		id_ = t->id();
+		id_ = unit_id_test(t->id());
 		cfg_["id"] = id_;
 		cfg_["gender_id"] = cfg_["gender"];
 	}
@@ -1049,9 +1043,9 @@ void unit::read(const config& cfg)
 		}
 	}
 	if(cfg_["id"]=="") {
-		id_ = cfg_["type"];
+		id_ = unit_id_test(cfg_["type"]);
 	} else {
-		id_ = cfg_["id"];
+		id_ = unit_id_test(cfg_["id"]);
 	}
 	if(!type_set || cfg["race"] != "") {
 		const race_map::const_iterator race_it = gamedata_->races.find(cfg["race"]);

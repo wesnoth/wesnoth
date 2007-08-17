@@ -30,6 +30,25 @@
 #include <iostream>
 
 
+//! The Halbardier got renamed so this function fixes that, all 
+//! functions which assign id_ in unit or unit_types should use 
+//! this wrapper in order to keep compatibility with older versions
+//
+// @param id	the id of the unit
+//
+// @returns		the new id of the unit if id == Halbardier it returns
+// 				Halberdier otherwise id unmodified
+std::string unit_id_test(const std::string& id)
+{
+	if(id == "Halbardier") {
+		lg::wml_error << "'Halbardier' has been renamed to 'Halberdier' "
+			"support for the old name will be removed in version 1.3.8\n";
+		return "Halberdier";
+	}
+
+	return id;
+}
+
 attack_type::attack_type(const config& cfg,const std::string& id, const std::string& image_fighting)
 {
 	cfg_ = cfg;
@@ -55,7 +74,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	}
 	assert(!animation_.empty());
 
-	id_ = cfg["name"];
+	id_ = unit_id_test(cfg["name"]);
 	description_ = cfg["description"];
 	if (description_.empty())
 		description_ = egettext(id_.c_str());
@@ -146,7 +165,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	std::stringstream desc;
 
 	if(set_name.empty() == false) {
-		id_ = set_name;
+		id_ = unit_id_test(set_name);
 	}
 
 	if(set_desc.empty() == false) {
@@ -820,11 +839,11 @@ const unit_type& unit_type::get_variation(const std::string& name) const
 const std::string& unit_type::id() const
 {
 	if(id_.empty()) {
-		id_ = cfg_["id"];
+		id_ = unit_id_test(cfg_["id"]);
 
 		if(id_.empty()) {
 			// this code is only for compatibility with old unit defs and savefiles
-			id_ = cfg_["name"];
+			id_ = unit_id_test(cfg_["name"]);
 		}
 
 		//id_.erase(std::remove(id_.begin(),id_.end(),' '),id_.end());
