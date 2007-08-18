@@ -2194,13 +2194,12 @@ int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) c
 	return res;
 }
 
-bool unit::resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const
+bool unit::resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name) const
 {
 	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
 		return false;
 	}
 	const std::string& apply_to = cfg["apply_to"];
-	const std::string& damage_name = damage_type.type();
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
 			if(std::find(apply_to.begin(),apply_to.end(),',') != apply_to.end() &&
@@ -2219,11 +2218,10 @@ bool unit::resistance_filter_matches(const config& cfg,bool attacker,const attac
 }
 
 
-int unit::resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const
+int unit::resistance_against(const std::string& damage_name,bool attacker,const gamemap::location& loc) const
 {
 	int res = 100;
 
-	const std::string& damage_name = damage_type.type();
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
 		const std::string& val = (*resistance)[damage_name];
@@ -2234,7 +2232,7 @@ int unit::resistance_against(const attack_type& damage_type,bool attacker,const 
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
 	for(std::vector<std::pair<config*,gamemap::location> >::iterator i = resistance_abilities.cfgs.begin(); i != resistance_abilities.cfgs.end();) {
-		if(!resistance_filter_matches(*i->first,attacker,damage_type)) {
+		if(!resistance_filter_matches(*i->first,attacker,damage_name)) {
 			i = resistance_abilities.cfgs.erase(i);
 		} else {
 			++i;
@@ -2247,6 +2245,24 @@ int unit::resistance_against(const attack_type& damage_type,bool attacker,const 
 	}
 	return 100 - res;
 }
+
+std::map<std::string, int> unit::get_resistances(bool attacker, const gamemap::location& loc) const
+{
+	std::map<std::string, int> res;
+
+	const config* const resistance = cfg_.child("resistance");
+	if(resistance != NULL) {
+		string_map resistance_list = resistance->values;
+		for (string_map::iterator i = resistance_list.begin();
+				i != resistance_list.end(); i++ ) {
+				const std::string& damage_name = i->first;
+				res[damage_name] = resistance_against(damage_name, attacker, loc);
+			}
+	}
+
+	return res;
+}
+
 #if 0
 std::map<terrain_type::TERRAIN,int> unit::movement_type() const
 {

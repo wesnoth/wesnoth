@@ -143,37 +143,13 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		str << "<" << (int) HPC.r << "," << (int) HPC.g << "," << (int) HPC.b << ">"
 	      << u->second.hitpoints() << "/" << u->second.max_hitpoints();
 
-		const size_t team_index = u->second.side()-1;
-		if(team_index >= teams.size()) {
-			std::cerr << "illegal team index in reporting: " << team_index << "\n";
-			return res;
-		}
-
 		tooltip << _("Resistances: ") << "\n";
-		//for each visible enemy unit on the map,
-		//record its damage_type and our resistance for it
-		std::map<std::string, int> resistances;
-		for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
-			if(teams[team_index].is_enemy(u_it->second.side()) &&
-			   !current_team.fogged(u_it->first.x,u_it->first.y) &&
-			   ( !current_team.is_enemy(u_it->second.side()) ||
-				 !u_it->second.invisible(u_it->first,units,teams)))
-			{
-				const std::vector<attack_type>& attacks = u_it->second.attacks();
-				for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
-						at_it != attacks.end(); ++at_it) {
-					std::string damage_type = gettext(at_it->type().c_str());
-					if (resistances.count(damage_type) == 0) {
-						//new damage type, calculate resistance
-						resistances[damage_type] = 100 - u->second.resistance_against(*at_it,false,u->first);
-					}
-				}
-			}
-		}
+
+		std::map<std::string, int> resistances = u->second.get_resistances(false, u->first);
 
 		for(std::map<std::string, int>::iterator resist = resistances.begin();
 				resist != resistances.end(); ++resist) {
-			tooltip << resist->first << " : "  << resist->second << "%\n" ;
+			tooltip << resist->first << " : "  << (100 - resist->second) << "%\n" ;
 		}
 
 		res.add_text(str,tooltip);

@@ -215,7 +215,11 @@ public:
 	bool is_healthy() const { return is_healthy_; }
 	int movement_cost(const t_translation::t_letter terrain) const;
 	int defense_modifier(t_translation::t_letter terrain, int recurse_count=0) const;
-	int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const;
+	int resistance_against(const std::string& damage_name,bool attacker,const gamemap::location& loc) const;
+	int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const
+		{return resistance_against(damage_type.type(), attacker, loc);};
+
+	std::map<std::string, int> get_resistances(bool attacker, const gamemap::location& loc) const;
 //		std::map<terrain_type::TERRAIN,int> movement_type() const;
 
 	bool can_advance() const { return advances_to_.empty()==false || get_modification_advances().empty() == false; }
@@ -311,7 +315,10 @@ private:
 	bool ability_active(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
 	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const;
 	bool ability_affects_self(const std::string& ability,const config& cfg,const gamemap::location& loc) const;
-	bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const;
+	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name) const;
+	bool resistance_filter_matches(const config& cfg,bool attacker,const attack_type& damage_type) const
+	{return resistance_filter_matches(cfg, attacker, damage_type.type()); };
+
 	int movement_cost_internal(t_translation::t_letter terrain, int recurse_count=0) const;
 	bool has_ability_by_id(const std::string& ability) const;
 
