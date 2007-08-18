@@ -27,18 +27,24 @@
 #include <iostream>
 
 
-terrain_type::terrain_type() : symbol_image_("void"),
-			       number_(t_translation::VOID_TERRAIN),
-			       mvt_type_(1, t_translation::VOID_TERRAIN),
-			       def_type_(1, t_translation::VOID_TERRAIN),
-			       union_type_(1, t_translation::VOID_TERRAIN),
-                   height_adjust_(0), submerge_(0.0), light_modification_(0),
-                   heals_(0), village_(false), castle_(false), keep_(false) 
+terrain_type::terrain_type() : 
+		minimap_image_("void"), editor_image_("void"),
+		number_(t_translation::VOID_TERRAIN),
+		mvt_type_(1, t_translation::VOID_TERRAIN),
+		def_type_(1, t_translation::VOID_TERRAIN),
+		union_type_(1, t_translation::VOID_TERRAIN),
+        height_adjust_(0), submerge_(0.0), light_modification_(0),
+        heals_(0), village_(false), castle_(false), keep_(false) 
 {}
 
 terrain_type::terrain_type(const config& cfg)
 {
-	symbol_image_ = cfg["symbol_image"];
+	minimap_image_ = cfg["symbol_image"];
+
+	editor_image_ = cfg["editor_image"];
+	if(editor_image_.empty()) {
+		editor_image_ = minimap_image_;
+	}
 
 	name_ = cfg["name"];
 	id_ = cfg["id"];

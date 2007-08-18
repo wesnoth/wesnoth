@@ -365,7 +365,7 @@ void terrain_palette::draw(bool force) {
 	int y = terrain_start_;
 	for(unsigned int counter = starting; counter < ending; counter++){
 		const t_translation::t_letter terrain = terrains_[counter];
-		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).symbol_image() + ".png";
+		const std::string filename = "terrain/" + map_.get_terrain_info(terrain).editor_image() + ".png";
 		surface image(image::get_image(filename));
 		if(image == NULL) {
 			std::cerr << "image for terrain " << counter << ": '" << filename << "' not found\n";

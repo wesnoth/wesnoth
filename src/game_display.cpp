@@ -255,9 +255,9 @@ void game_display::draw(bool update,bool force)
 
 		const time_of_day& tod = status_.get_time_of_day();
 		const std::string shroud_image = "terrain/" +
-			map_.get_terrain_info(t_translation::VOID_TERRAIN).symbol_image() + ".png";
+			map_.get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png";
 		const std::string fog_image = "terrain/" +
-			map_.get_terrain_info(t_translation::FOGGED).symbol_image() + ".png";
+			map_.get_terrain_info(t_translation::FOGGED).minimap_image() + ".png";
 			
 		SDL_Rect clip_rect = map_area();
 		surface const dst(screen_.getSurface());

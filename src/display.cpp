@@ -450,7 +450,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 				//	stream << "void";
 				//else
 				//	stream << "fog";
-				stream << "terrain/" << map_.get_terrain_info(*terrain).symbol_image();
+				stream << "terrain/" << map_.get_terrain_info(*terrain).minimap_image();
 
 				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
 					stream << get_direction(i);

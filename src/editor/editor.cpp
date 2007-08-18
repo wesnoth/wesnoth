@@ -963,10 +963,10 @@ void map_editor::clear_highlighted_hexes_in_gui() {
 void map_editor::set_mouseover_overlay()
 {
 	surface image_fg(image::get_image("terrain/" + map_.get_terrain_info(
-				palette_.selected_fg_terrain()).symbol_image() + 
+				palette_.selected_fg_terrain()).editor_image() + 
 				".png"));
 	surface image_bg(image::get_image("terrain/" + map_.get_terrain_info(
-				palette_.selected_bg_terrain()).symbol_image() + 
+				palette_.selected_bg_terrain()).editor_image() + 
 				".png"));
 
 	// For efficiency the size of the tile is cached. 

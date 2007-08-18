@@ -207,7 +207,7 @@ void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 		btile.images_foreground.clear();
 		btile.images_background.clear();
 		const std::string filename =
-			map_.get_terrain_info(map_.get_terrain(loc)).symbol_image();
+			map_.get_terrain_info(map_.get_terrain(loc)).minimap_image();
 		animated<image::locator> img_loc;
 		img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
 		img_loc.start_animation(0, true);

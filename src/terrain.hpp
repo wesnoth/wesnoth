@@ -29,7 +29,8 @@ public:
 	terrain_type();
 	terrain_type(const config& cfg);
 
-	const std::string& symbol_image() const { return symbol_image_; }
+	const std::string& minimap_image() const { return minimap_image_; }
+	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
 	const std::string& id() const { return id_; }
 
@@ -63,7 +64,12 @@ public:
 	const std::string& editor_group() const { return editor_group_; }
 
 private:
-	std::string symbol_image_;
+	//! The image used in the minimap 
+	std::string minimap_image_;
+
+	//! The image used in the editor pallete if not defined in WML it will
+	//! be initialized with the value of minimap_image_
+	std::string editor_image_;
 	std::string id_;
 	t_string name_;
 
