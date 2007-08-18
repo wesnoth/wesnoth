@@ -12,6 +12,9 @@
   See the COPYING file for more details.
 */
 
+//! @file editor/map_manip.cpp
+//! Operations on a game-map.
+
 #include "map_manip.hpp"
 
 #include "../gettext.hpp"
@@ -45,7 +48,7 @@ std::string editormap::resize(const size_t width, const size_t height,
 		filler = t_translation::NONE_TERRAIN;
 	}
 
-	// determine the amount of resizing is required
+	// Determine the amount of resizing is required
 	const int left_resize = -x_offset;
 	const int right_resize = (width - old_w) + x_offset;
 	const int top_resize = -y_offset;
@@ -88,7 +91,7 @@ std::string editormap::flip(const map_editor::FLIP_AXIS axis)
 	}
 
 	if(axis == map_editor::FLIP_X) {
-		// due to the hexes we need some mirror tricks when mirroring over the
+		// Due to the hexes we need some mirror tricks when mirroring over the
 		// X axis. We resize the map and fill it. The odd columns will be extended
 		// with the data in row 0 the even columns are extended with the data in
 		// the last row
@@ -115,8 +118,8 @@ std::string editormap::flip(const map_editor::FLIP_AXIS axis)
 			}
 		}
 	} else { // FLIP_Y
-		// flipping on the Y axis requires no resize so the code
-		// is much simpeler
+		// Flipping on the Y axis requires no resize,
+		// so the code is much simpler.
 		const size_t middle = (tiles_.size() / 2);
 		const size_t end = tiles_.size() - 1;
 		for(size_t y = 0; y < tiles_[0].size(); ++y) {
@@ -350,17 +353,18 @@ std::set<gamemap::location> get_component(const gamemap &map,
 	std::set<gamemap::location> to_fill;
 	std::set<gamemap::location> filled;
 	std::set<gamemap::location>::iterator it;
-	// Insert the start location in a set. Chose an element in the set,
-	// mark this element, and add all adjacent elements that are not
-	// marked. Continue until the set is empty.
+	// Insert the start location in a set. 
+	// Chose an element in the set, mark this element, 
+	// and add all adjacent elements that are not marked. 
+	// Continue until the set is empty.
 	to_fill.insert(start_loc);
 	while (!to_fill.empty()) {
 		it = to_fill.begin();
 		gamemap::location loc = *it;
 		to_fill.erase(it);
 		filled.insert(loc);
-		// Find all adjacent tiles with the terrain that should be
-		// filled and add these to the to_fill vector.
+		// Find all adjacent tiles with the terrain that should 
+		// be filled and add these to the to_fill vector.
 		std::vector<gamemap::location> adj = get_tiles(map, loc, 2);
 		for (std::vector<gamemap::location>::iterator it2 = adj.begin();
 			 it2 != adj.end(); it2++) {
@@ -391,8 +395,8 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	// but simple as things are implemented now.
 	try {
 		const gamemap m(cfg, data);
-		// Having a zero size map may cause floating point exceptions at
-		// some places later on.
+		// Having a zero size map may cause floating point exceptions 
+		// at some places later on.
 		res = m.w() != 0 && m.h() != 0;
 	}
 	catch (gamemap::incorrect_format_exception) {
@@ -410,4 +414,5 @@ std::string new_map(const size_t width, const size_t height, const t_translation
 	
 }
 
-} // namespace
+} // end namespace map_editor 
+

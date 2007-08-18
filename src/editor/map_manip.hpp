@@ -12,7 +12,7 @@
   See the COPYING file for more details.
 */
 
-//! @file map_manip.hpp
+//! @file editor/map_manip.hpp
 //!
 
 #ifndef MAP_MANIP_H_INCLUDED
@@ -42,7 +42,7 @@ public:
 	~editormap(){};
 
 	/**
-	 * Resizes the map
+	 * Resizes the map.
 	 *
 	 * @param width 	the new width
 	 * @param height	the new height
@@ -73,7 +73,7 @@ public:
 	 * Sets the starting position of a player
 	 *
 	 * @param pos 		the starting position, 1 = player 1
-	 * @param location	a location (same as gamemap location)
+	 * @param loc		a location (same as gamemap location)
 	 */
 	void set_starting_position(const int pos, const location loc);
 
@@ -95,7 +95,7 @@ private:
 	 *
 	 * @param count 	the number of columns to add
 	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
-	 * 			the enigne will determine the terrain by itself
+	 * 					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_right(const unsigned count,
 		const t_translation::t_letter& filler);
@@ -105,7 +105,7 @@ private:
 	 *
 	 * @param count 	the number of columns to add
 	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
-	 * 			the enigne will determine the terrain by itself
+	 * 					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_left(const unsigned count,
 		const t_translation::t_letter& filler);
@@ -125,11 +125,11 @@ private:
 	void remove_tiles_left(const unsigned count);
 
 	/**
-	 * Adds row(s) at the top side
+	 * Adds row(s) at the top side.
 	 *
 	 * @param count 	the number of rows to add
 	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
-	 * 			the enigne will determine the terrain by itself
+	 * 					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_top(const unsigned count,
 		const t_translation::t_letter& filler);
@@ -139,7 +139,7 @@ private:
 	 *
 	 * @param count 	the number of rows to add
 	 * @param filler	the terrain to draw, if equal to NONE_TERRAIN
-	 * 			the enigne will determine the terrain by itself
+	 * 					the enigne will determine the terrain by itself
 	 */
 	void add_tiles_bottom(const unsigned count, 
 		const t_translation::t_letter& filler);
@@ -161,7 +161,7 @@ private:
 
 namespace map_editor {
 
-/// Return the tiles that are within radius from the location.
+//! Return the tiles that are within radius from the location.
 std::vector<gamemap::location> get_tiles(const gamemap &map,
 										 const gamemap::location& a,
 										 const unsigned int radius);

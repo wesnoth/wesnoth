@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file unit.hpp 
+//!
+
 #ifndef UNIT_H_INCLUDED
 #define UNIT_H_INCLUDED
 
@@ -45,6 +49,7 @@ public:
 class unit
 {
 public:
+	//! @todo Unclear comment:
 	// clear the status caches for esch unit, this is should be called it
 	// the status of a unit changes
 	static void clear_status_caches();
@@ -63,24 +68,24 @@ public:
 
 	void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
 
-	// Advances this unit to another type
+	//! Advances this unit to another type
 	void advance_to(const unit_type* t);
 	const std::vector<std::string> advances_to() const { return advances_to_; }
 
-	// the current type id
+	//! The current type id
 	const std::string& id() const { return id_; }
 	const unit_type* type() const;
-	// the actual name of the unit
+	//! The actual name of the unit
 	const std::string& name() const { if (description_.empty()) return language_name(); else return description_; }
 	void rename(const std::string& name) { if (!unrenamable_) custom_unit_description_ = name; }
-	// the unit type name
+	//! The unit type name
 	const std::string& description() const { return (custom_unit_description_); }
 	const std::string& underlying_description() const { return underlying_description_; }
 	const t_string& language_name() const { return language_name_; }
 	const std::string& undead_variation() const { return undead_variation_; }
-	// the unit's profile
+	//! The unit's profile
 	const std::string& profile() const;
-	//information about the unit -- a detailed description of it
+	//! Information about the unit -- a detailed description of it
 	const std::string& unit_description() const { return cfg_["unit_description"]; }
 
 	int hitpoints() const { return hit_points_; }
@@ -88,11 +93,11 @@ public:
 	int experience() const { return experience_; }
 	int max_experience() const { return maximum<int>(1,(max_experience_*unit_type::experience_accelerator::get_acceleration() + 50) / 100); }
 	int level() const { return level_; }
-	// adds 'xp' points to the units experience; returns true if advancement should occur
+	//! Adds 'xp' points to the units experience; returns true if advancement should occur
 	bool get_experience(int xp) { experience_ += xp; return advances(); }
 	SDL_Colour hp_color() const;
 	SDL_Colour xp_color() const;
-	/** < Set to true for some scenario-specific units which should not be renamed */
+	//! Set to true for some scenario-specific units which should not be renamed 
 	bool unrenamable() const { return unrenamable_; }
 	unsigned int side() const { return side_; }
 	Uint32 team_rgb() const { return(team::get_side_rgb(side())); }
@@ -117,7 +122,7 @@ public:
 	void new_turn();
 	void end_turn();
 	void new_level();
-	// called on every draw
+	//! Called on every draw
 	void refresh(const game_display& disp,const gamemap::location& loc) {
 		if (state_ == STATE_IDLING && anim_ && anim_->animation_finished()) {
 			set_standing(disp, loc);
@@ -148,11 +153,9 @@ public:
 	void add_overlay(const std::string& overlay) { overlays_.push_back(overlay); }
 	void remove_overlay(const std::string& overlay) { overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end()); }
 	const std::vector<std::string>& overlays() const { return overlays_; }
-	/**
-	* Initializes this unit from a cfg object.
-	*
-	* \param cfg  Configuration object from which to read the unit
-	*/
+
+	//! Initialize this unit from a cfg object.
+	//!  @param cfg  Configuration object from which to read the unit.
 	void read(const config& cfg);
 	void write(config& cfg) const;
 	void write(config_writer& out) const;
@@ -165,10 +168,10 @@ public:
 
 	int damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const { return resistance_against(attack,attacker,loc); }
 
-	// a sdl surface, ready for display for place where we need a fix image of the unit
+	//! A sdl surface, ready for display for place where we need a fix image of the unit.
 	const surface still_image(bool scaled = false) const;
 	void redraw_unit(game_display& disp, const gamemap::location& loc);
-	// clear unit_halo_ and unit_anim_halo_
+	//! Clear unit_halo_ and unit_anim_halo_
 	void clear_haloes();
 	
 
@@ -235,13 +238,16 @@ public:
 	const gamemap::location& get_interrupted_move() const { return interrupted_move_; }
 	void set_interrupted_move(const gamemap::location& interrupted_move) { interrupted_move_ = interrupted_move; }
 
+	//! States for animation.
 	enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
-	STATE_LEADING, STATE_HEALING, STATE_WALKING, STATE_LEVELIN,
-	STATE_LEVELOUT, STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
-	STATE_RECRUITED, STATE_HEALED, STATE_POISONED, STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
+				STATE_LEADING, STATE_HEALING, STATE_WALKING, 
+				STATE_LEVELIN, STATE_LEVELOUT, 
+				STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
+				STATE_RECRUITED, STATE_HEALED, STATE_POISONED, 
+				STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
 	const unit_animation * start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool is_attack_anim =false);
 
-	//the name of the file to game_display (used in menus
+	//! The name of the file to game_display (used in menus).
 	const std::string& absolute_image() const { return cfg_["image"]; }
 	const std::string& image_halo() const { return cfg_["halo"]; }
 	const std::string& image_fighting(attack_type::RANGE range) const;
@@ -288,7 +294,7 @@ public:
 	void generate_traits_description();
 	std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 
-	//only see_all=true use caching
+	// Only see_all=true use caching
 	bool invisible(const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all=true) const;
 
@@ -372,7 +378,7 @@ private:
 //		std::map<terrain_type::TERRAIN,int> defense_mods_, defense_mods_b_;
 
 	string_map modification_descriptions_;
-	// animations
+	// Animations:
 	std::vector<defensive_animation> defensive_animations_;
 	std::vector<unit_animation> teleport_animations_;
 	std::multimap<std::string,unit_animation> extra_animations_;
@@ -410,16 +416,16 @@ private:
 	const gamestatus* gamestatus_;
 	const std::vector<team>* teams_;
 
-	// hold the visibility status cache for a unit, mutable since it's a cache
+	//! Hold the visibility status cache for a unit, mutable since it's a cache.
 	mutable std::map<gamemap::location, bool> invisibility_cache_;
 
-	// clears the cache, since we don't change the state of the object
-	// we're marked const (also required since the objects in the cache
-	// need to be marked const.)
+	//! Clears the cache. 
+	// Since we don't change the state of the object we're marked const 
+	// (also required since the objects in the cache need to be marked const).
 	void clear_visibility_cache() const { invisibility_cache_.clear(); }
 };
 
-//object which temporarily resets a unit's movement
+//! Object which temporarily resets a unit's movement
 struct unit_movement_resetter
 {
 	unit_movement_resetter(unit& u, bool operate=true) : u_(u), moves_(u.movement_)
@@ -465,8 +471,9 @@ team_data calculate_team_data(const class team& tm, int side, const unit_map& un
 
 const std::set<gamemap::location> vacant_villages(const std::set<gamemap::location>& villages, const unit_map& units);
 
-//this object is used to temporary place a unit in the unit map, swapping out any unit
-//that is already there. On destruction, it restores the unit map to its original .
+// This object is used to temporary place a unit in the unit map, 
+// swapping out any unit that is already there. 
+// On destruction, it restores the unit map to its original .
 struct temporary_unit_placer
 {
 	temporary_unit_placer(unit_map& m, const gamemap::location& loc, const unit& u);
@@ -478,15 +485,16 @@ private:
 	std::pair<gamemap::location,unit> *temp_;
 };
 
-/**
- * gets a checksum for a unit, in MP games the descriptions are locally 
- * generated and might differ, so it should be possible to discard them.
- * Not sure whether replays suffer the same problem.
- *
- * param discard_desc	discards the descriptions for the checksum
- *
- * returns 				the checksum for a unit
- */
+//! Gets a checksum for a unit. 
+//! In MP games the descriptions are locally generated and might differ, 
+//! so it should be possible to discard them.
+//! Not sure whether replays suffer the same problem.
+//!  
+//! @param u                    the unit
+//! @param discard_description  discards the descriptions for the checksum
+//!  
+//! @returns                    the checksum for a unit
+//!  
 std::string get_checksum(const unit& u, const bool discard_description = false);
 
 #endif
