@@ -1553,7 +1553,7 @@ unit get_advanced_unit(const game_data& info,
 	if(new_type != info.unit_types.end() && un != units.end()) {
 		unit new_unit(un->second);
 		new_unit.get_experience(-new_unit.max_experience());
-		new_unit.advance_to(&(new_type->second));
+		new_unit.advance_to(&(new_type->second), true);
 		return new_unit;
 	} else {
 		throw game::game_error("Could not find the unit being advanced"

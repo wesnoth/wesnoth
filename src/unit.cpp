@@ -250,17 +250,13 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	attacks_left_ = 0;
 	experience_ = 0;
 	cfg_["upkeep"]="full";
-	advance_to(&t->get_gender_unit_type(gender_));
+	advance_to(&t->get_gender_unit_type(gender_), use_traits);
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		// Units that don't have traits generated are just generic units, 
 		// so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
 		generate_traits();
-	}else{
-		if (race_->name() == "undead") {
-			generate_traits();
-		}
 	}
 	if(underlying_description_.empty()){
 	  char buf[80];
@@ -294,17 +290,13 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	attacks_left_ = 0;
 	experience_ = 0;
 	cfg_["upkeep"]="full";
-	advance_to(&t->get_gender_unit_type(gender_));
+	advance_to(&t->get_gender_unit_type(gender_), use_traits);
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		// Units that don't have traits generated are just generic units, 
 		// so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
 		generate_traits();
-	}else{
-		if (race_->name() == "undead") {
-			generate_traits();
-		}
 	}
 	if(underlying_description_.empty()){
 	  char buf[80];
@@ -455,7 +447,7 @@ void unit::generate_traits()
 }
 
 //! Advance this unit to another type
-void unit::advance_to(const unit_type* t)
+void unit::advance_to(const unit_type* t, bool use_traits)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
@@ -548,7 +540,9 @@ void unit::advance_to(const unit_type* t)
         // Note that adding random traits in multiplayer games will cause
         // OOS errors. However, none of the standard advancement patterns
         // add traits, only reduce them.
-        generate_traits();
+        if (use_traits) {
+                generate_traits();
+        }
 
 	// Apply modifications etc, refresh the unit.
         // This needs to be after type and gender are fixed, 
@@ -1095,7 +1089,7 @@ void unit::read(const config& cfg)
 	if(cfg["type"] != "" && cfg["type"] != cfg["id"] || cfg["gender"] != cfg["gender_id"]) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
-			advance_to(&i->second.get_gender_unit_type(gender_));
+			advance_to(&i->second.get_gender_unit_type(gender_), false);
 			type_set = true;
 		} else {
 			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
@@ -2457,7 +2451,7 @@ void unit::add_modification(const std::string& type, const config& mod,
                                         if(var == gamedata_->unit_types.end()) { 
 		                                throw game::game_error("Unknown unit type '" + id() + "'");
                                         }
-					advance_to(&var->second.get_variation(variation_));
+					advance_to(&var->second.get_variation(variation_), true);
 				} else if(apply_to == "profile") {
 					const std::string& portrait = (**i.first)["portrait"];
 					const std::string& description = (**i.first)["description"];
