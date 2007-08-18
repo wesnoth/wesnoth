@@ -486,12 +486,14 @@ void menu::move_selection_down(size_t dep)
 
 void menu::set_selection_pos(size_t new_selected, SELECTION_MOVE_VIEWPORT move_viewport)
 {
-	if (new_selected == selected_ || new_selected >= items_.size())
+	if (new_selected >= items_.size())
 		return;
 
-	invalidate_row_pos(selected_);
-	invalidate_row_pos(new_selected);
-	selected_ = new_selected;
+	if (new_selected != selected_) {
+		invalidate_row_pos(selected_);
+		invalidate_row_pos(new_selected);
+		selected_ = new_selected;
+	}
 
 	if(move_viewport == MOVE_VIEWPORT) {
 		adjust_viewport_to_selection();
