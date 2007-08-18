@@ -143,22 +143,32 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		str << "<" << (int) HPC.r << "," << (int) HPC.g << "," << (int) HPC.b << ">"
 	      << u->second.hitpoints() << "/" << u->second.max_hitpoints();
 
-		tooltip << _("Resistances: ") << "\n";
+		std::vector<std::string> resistances_table;
 
 		string_map resistances = u->second.get_base_resistances();
 
 		for(string_map::iterator resist = resistances.begin();
 				resist != resistances.end(); ++resist) {
+			std::stringstream line;
+			line << gettext(resist->first.c_str()) << ": ";
+
 			// some unit have different resistances when
 			// attacking or defending.
-			tooltip << resist->first << ": ";
 			int res_att = 100 - u->second.resistance_against(resist->first, true, u->first);
 			int res_def = 100 -u->second.resistance_against(resist->first, false, u->first);
 			if (res_att == res_def) {
-				tooltip << res_def << "%\n";
+				line << res_def << "%\n";
 			} else {
-				tooltip << res_att << "% / " << res_def << "%\n";
+				line << res_att << "% / " << res_def << "%\n";
 			}
+			resistances_table.push_back(line.str());
+		}
+
+		tooltip << _("Resistances: ") << "\n";
+		std::sort(resistances_table.begin(),resistances_table.end());
+		for(std::vector<std::string>::iterator line = resistances_table.begin();
+				line != resistances_table.end(); ++line) {
+			tooltip << (*line);
 		}
 
 		res.add_text(str,tooltip);
