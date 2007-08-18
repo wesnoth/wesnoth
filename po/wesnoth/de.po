@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-17 12:17+0200\n"
-"PO-Revision-Date: 2007-08-09 15:53+0100\n"
+"PO-Revision-Date: 2007-08-18 20:20+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Grafik"
 
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:6
 msgid "Injured Sergeant"
-msgstr ""
+msgstr "Verwundeter Feldwebel"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -380,9 +380,8 @@ msgstr ""
 "erscheinen, sobald Ihr auf sie gestoßen seid."
 
 #: data/core/help.cfg:73
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Unbekanntes Szenario"
+msgstr "Unbekannte Einheit"
 
 #: data/core/help.cfg:76
 msgid ""
@@ -391,6 +390,11 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Noch ist Euch nichts bekannt über diese Einheit. Zunächst müsst Ihr ihr im "
+"Spiel begegnen, bevor es Euch vergönnt ist, ihre Beschreibung einsehen zu "
+"dürfen."
 
 #: data/core/help.cfg:84
 msgid ""
@@ -1348,7 +1352,6 @@ msgstr ""
 "pro Zug."
 
 #: data/core/help.cfg:253
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1359,11 +1362,13 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"Es gibt eine Ausnahme für die Berechnung der Unterhaltskosten. Einheiten mit "
-"der Charakteristik »loyal« kosten keinen Unterhalt. Einheiten, mit denen Ihr "
-"ein Szenario beginnt (z.B. Konrad oder Delfador) und Einheiten, die sich "
-"Euch während eines Szenarios anschließen (z.B. der Reiter im zweiten "
-"Szenario von »Der Thronerbe«) sind üblicherweise »loyal«."
+"Es gibt zwei wichtige Ausnahmen für die Berechnung der Unterhaltskosten. "
+"Einheiten mit der Charakteristik »loyal« und Euer Anführer verursachen "
+"niemals Unterhaltskosten. Einheiten, mit denen Ihr ein Szenario beginnt "
+"(beispielsweise Delfador) oder Einheiten, die sich Euch während eines "
+"Szenarios anschließen (beispielsweise der Reiter im zweiten Szenario von "
+"»Der Thronerbe«) sind üblicherweise »loyal«. Die Einheit, die Ihr verkörpert "
+"(beispielsweise Konrad) wird fast immer auch Euer Anführer sein."
 
 #: data/core/help.cfg:258
 msgid "Wrap Up"
@@ -5538,9 +5543,8 @@ msgid "stone: "
 msgstr "versteinert:"
 
 #: src/generate_report.cpp:152
-#, fuzzy
 msgid "Resistances: "
-msgstr "Resistenztabelle"
+msgstr "Resistenzen: "
 
 #: src/generate_report.cpp:190 src/multiplayer_create.cpp:366
 msgid "Experience Modifier: "
@@ -5815,9 +5819,8 @@ msgid "Location"
 msgstr "Standort"
 
 #: src/menu_events.cpp:322
-#, fuzzy
 msgid "Status"
-msgstr "Statistiken"
+msgstr "Status"
 
 #: src/menu_events.cpp:435
 msgid "Unit List"
@@ -5918,9 +5921,8 @@ msgid "Send to allies only"
 msgstr "Nur an Verbündete senden"
 
 #: src/menu_events.cpp:737
-#, fuzzy
 msgid "Send to observers only"
-msgstr "Nur an Verbündete senden"
+msgstr "Nur an Beobachter senden"
 
 #: src/menu_events.cpp:817
 msgid "unit^Gold"
@@ -6531,9 +6533,8 @@ msgid "Players: "
 msgstr "Spieler:"
 
 #: src/multiplayer_create.cpp:496
-#, fuzzy
 msgid "Size: "
-msgstr "Größe"
+msgstr "Größe: "
 
 #: src/multiplayer_lobby.cpp:98
 msgid "--no games open--"
