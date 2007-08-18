@@ -91,7 +91,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 
 	//if this side tag describes the leader of the side
 	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
-		unit new_unit(&gameinfo, &units, &map, &game_status, &teams,cfg);
+		unit new_unit(&gameinfo, &units, &map, &game_status, &teams, cfg, true);
 
 		//search the recall list for leader units, and if there is
 		//one, use it in place of the config-described unit
@@ -153,7 +153,7 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 		player->available_units.clear();
 	}
 	for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
-		unit new_unit(&gameinfo, &units, &map, &game_status,&teams,**su);
+		unit new_unit(&gameinfo, &units, &map, &game_status,&teams,**su,true);
 
 		new_unit.set_side(side);
 

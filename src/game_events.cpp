@@ -1884,7 +1884,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			wassert(units != NULL);
 			wassert(game_map != NULL);
 			wassert(status_ptr != NULL);
-			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var);
+			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var, false);
 
 			preferences::encountered_units().insert(u.id());
 			gamemap::location loc(var, game_events::get_state_of_game());

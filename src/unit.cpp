@@ -186,14 +186,14 @@ unit::unit(const unit& o):
 
 //! Initilizes a unit from a config.
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
-     const gamestatus* game_status, const std::vector<team>* teams,const config& cfg) :
+     const gamestatus* game_status, const std::vector<team>* teams,const config& cfg, bool use_traits) :
 	movement_(0), hold_position_(false),resting_(false),state_(STATE_STANDING),
 	 facing_(gamemap::location::NORTH_EAST),flying_(false),
 	 anim_(NULL),next_idling_(0),frame_begin_time_(0),unit_halo_(halo::NO_HALO),
 	 unit_anim_halo_(halo::NO_HALO), draw_bars_(false),gamedata_(gamedata), 
 	 units_(unitmap), map_(map), gamestatus_(game_status),teams_(teams)
 {
-	read(cfg);
+	read(cfg, use_traits);
 	getsHit_=0;
 	end_turn_ = false;
 	refreshing_  = false;
@@ -202,14 +202,14 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	game_config::add_color_info(cfg);
 }
 
-unit::unit(const game_data& gamedata,const config& cfg) : movement_(0),
+unit::unit(const game_data& gamedata,const config& cfg,bool use_traits) : movement_(0),
 			hold_position_(false), resting_(false), state_(STATE_STANDING),
 			facing_(gamemap::location::NORTH_EAST),
 			flying_(false),anim_(NULL),next_idling_(0),frame_begin_time_(0),
 			unit_halo_(halo::NO_HALO),unit_anim_halo_(halo::NO_HALO),draw_bars_(false),
 			gamedata_(&gamedata), units_(NULL),map_(NULL), gamestatus_(NULL)
 {
-	read(cfg);
+	read(cfg,use_traits);
 	getsHit_=0;
 	end_turn_ = false;
 	refreshing_  = false;
@@ -250,14 +250,15 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	attacks_left_ = 0;
 	experience_ = 0;
 	cfg_["upkeep"]="full";
-	advance_to(&t->get_gender_unit_type(gender_), use_traits);
+	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		// Units that don't have traits generated are just generic units, 
 		// so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
-		generate_traits();
 	}
+	generate_traits(!use_traits);
+        apply_modifications();
 	if(underlying_description_.empty()){
 	  char buf[80];
 	  if(!custom_unit_description_.empty()){
@@ -290,14 +291,15 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 	attacks_left_ = 0;
 	experience_ = 0;
 	cfg_["upkeep"]="full";
-	advance_to(&t->get_gender_unit_type(gender_), use_traits);
+	advance_to(&t->get_gender_unit_type(gender_));
 	if(dummy_unit == false) validate_side(side_);
 	if(use_traits) {
 		// Units that don't have traits generated are just generic units, 
 		// so they shouldn't get a description either.
 		custom_unit_description_ = generate_description();
-		generate_traits();
 	}
+	generate_traits(!use_traits);
+        apply_modifications();
 	if(underlying_description_.empty()){
 	  char buf[80];
 	  if(!custom_unit_description_.empty()){
@@ -365,10 +367,13 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 // Note that random numbers used in config files don't work in multiplayer,
 // so that leaders should be barred from all random traits until that
 // is fixed. Later the restrictions will be based on play balance.
+// musthavepnly is true when you don't want to generate random traits or
+// you don't want to give any optional traits to a unit.
 
-void unit::generate_traits()
+void unit::generate_traits(bool musthaveonly)
 {
 	wassert(gamedata_ != NULL);
+        LOG_UT << "Generating a trait for unit type " << id() << " with musthaveonly " << musthaveonly << "\n";
 	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(id());
 	// Calculate the unit's traits
         if (type == gamedata_->unit_types.end()) {
@@ -412,42 +417,45 @@ void unit::generate_traits()
                 }
 	}
 
-        // Next for leaders remove any traits that are not available to
-        // the "any" category.
-        if(can_recruit()) {
-        	num_traits = candidate_traits.size();
-                m = 0;
-        	for(size_t n = 0; n < num_traits; ++n) {
-                        if(!(**(candidate_traits.begin()+m))["availability"].empty() ||
-                            (**(candidate_traits.begin()+m))["availability"] != "any") {
-        		        candidate_traits.erase(candidate_traits.begin()+m);
-                        }
-                        else {
-                                ++m;
-                        }
+        // If musthaveonly then don't generate any random/optional traits
+        if(!musthaveonly) {
+                // Next for leaders remove any traits that are not available to
+                // the "any" category.
+                if(can_recruit()) {
+                	num_traits = candidate_traits.size();
+                        m = 0;
+                	for(size_t n = 0; n < num_traits; ++n) {
+                                if(!(**(candidate_traits.begin()+m))["availability"].empty() ||
+                                    (**(candidate_traits.begin()+m))["availability"] != "any") {
+                		        candidate_traits.erase(candidate_traits.begin()+m);
+                                }
+                                else {
+                                        ++m;
+                                }
+                	}
         	}
-	}
+        
+                // Now randomly fill out to the number of traits required or until
+                // there aren't any more traits.
+        	num_traits = type->second.num_traits();
+        	for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
+        		const size_t num = get_random()%candidate_traits.size();
+        		traits.push_back(candidate_traits[num]);
+        		candidate_traits.erase(candidate_traits.begin()+num);
+        	}
 
-        // Now randomly fill out to the number of traits required or until
-        // there aren't any more traits.
-	num_traits = type->second.num_traits();
-	for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
-		const size_t num = get_random()%candidate_traits.size();
-		traits.push_back(candidate_traits[num]);
-		candidate_traits.erase(candidate_traits.begin()+num);
-	}
+                // Once random traits are added, don't do it again.
+                // Such as when restoring a saved character.
+                cfg_["random_traits"]="no";
+     	}
 
 	for(std::vector<config*>::const_iterator j = traits.begin(); j != traits.end(); ++j) {
 		modifications_.add_child("trait",**j);
 	}
-
-        // Once random traits are added, don't do it again.
-        // Such as when restoring a saved character.
-        cfg_["random_traits"]="no";
 }
 
 //! Advance this unit to another type
-void unit::advance_to(const unit_type* t, bool use_traits)
+void unit::advance_to(const unit_type* t)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
@@ -533,16 +541,11 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 	}
 
 
-        // This will add new traits to an advancing unit, if either 
-	// the new unit type has new "musthave" traits or the new unit type
-        // grants more traits than the unit currently has. 
-	// This is meant to handle living units advancing to nonliving units.
-        // Note that adding random traits in multiplayer games will cause
-        // OOS errors. However, none of the standard advancement patterns
-        // add traits, only reduce them.
-        if (use_traits) {
-                generate_traits();
-        }
+        // This will add any "musthave" traits to the new unit that it doesn't
+        // already have. This covers the Dark Sorcerer advancing to Lich
+        // and gaining the "undead" trait. Random and/or optional traits are
+        // not added. Note that inappropiate traits are not removed.
+        generate_traits(true);
 
 	// Apply modifications etc, refresh the unit.
         // This needs to be after type and gender are fixed, 
@@ -1000,7 +1003,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 //! Initialize this unit from a cfg object.
 //! 
 //! @param cfg  Configuration object from which to read the unit
-void unit::read(const config& cfg)
+void unit::read(const config& cfg, bool use_traits)
 {
 	if(cfg["id"]=="" && cfg["type"]=="") {
 		throw game::load_game_failed("Attempt to de-serialize an empty unit");
@@ -1089,7 +1092,7 @@ void unit::read(const config& cfg)
 	if(cfg["type"] != "" && cfg["type"] != cfg["id"] || cfg["gender"] != cfg["gender_id"]) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
-			advance_to(&i->second.get_gender_unit_type(gender_), false);
+			advance_to(&i->second.get_gender_unit_type(gender_));
 			type_set = true;
 		} else {
 			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
@@ -1213,7 +1216,7 @@ void unit::read(const config& cfg)
 		backup_state();
 	        if(cfg["random_traits"].empty() ||
                     utils::string_bool(cfg["random_traits"])) {
-		        generate_traits();
+		        generate_traits(!use_traits);
 	        }
 		apply_modifications();
 	}
@@ -2459,7 +2462,7 @@ void unit::add_modification(const std::string& type, const config& mod,
                                         if(var == gamedata_->unit_types.end()) { 
 		                                throw game::game_error("Unknown unit type '" + id() + "'");
                                         }
-					advance_to(&var->second.get_variation(variation_), true);
+					advance_to(&var->second.get_variation(variation_));
 				} else if(apply_to == "profile") {
 					const std::string& portrait = (**i.first)["portrait"];
 					const std::string& description = (**i.first)["description"];

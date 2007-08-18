@@ -58,8 +58,8 @@ public:
 	// Copy constructor
 	unit(const unit& u);
 	// Initilizes a unit from a config
-	unit(const game_data& gamedata, const config& cfg);
-	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const config& cfg);
+	unit(const game_data& gamedata, const config& cfg, bool use_traits=false);
+	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const config& cfg, bool use_traits=false);
 	// Initilizes a unit from a unit type
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
 	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
@@ -69,7 +69,7 @@ public:
 	void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
 
 	//! Advances this unit to another type
-	void advance_to(const unit_type* t, bool use_traits=false);
+	void advance_to(const unit_type* t);
 	const std::vector<std::string> advances_to() const { return advances_to_; }
 
 	//! The current type id
@@ -156,7 +156,7 @@ public:
 
 	//! Initialize this unit from a cfg object.
 	//!  @param cfg  Configuration object from which to read the unit.
-	void read(const config& cfg);
+	void read(const config& cfg, bool use_traits=true);
 	void write(config& cfg) const;
 	void write(config_writer& out) const;
 
@@ -295,7 +295,7 @@ public:
 	void backup_state();
 	void apply_modifications();
 	void remove_temporary_modifications();
-	void generate_traits();
+	void generate_traits(bool musthaveonly=false);
 	void generate_traits_description();
 	std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 

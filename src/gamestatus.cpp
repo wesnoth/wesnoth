@@ -406,7 +406,7 @@ static player_info read_player(const game_data& data, const config* cfg)
 
 	const config::child_list& units = cfg->get_children("unit");
 	for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
-		res.available_units.push_back(unit(data,**i));
+		res.available_units.push_back(unit(data,**i,false));
 	}
 
 	res.can_recruit.clear();
