@@ -672,7 +672,7 @@ void ui::gamelist_updated(bool silent)
 	// calculates a correct ellipsis for it
 	const std::string lobby_color_tag   = "";
 	const std::string ingame_color_tag  = "#";
-	const std::string selgame_color_tag = "<255,215,0>";
+	const std::string selgame_color_tag = "<0,191,255>";
 
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
 	std::vector<std::string> user_strings;
