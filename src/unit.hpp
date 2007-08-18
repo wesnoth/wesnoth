@@ -219,7 +219,8 @@ public:
 	int resistance_against(const attack_type& damage_type,bool attacker,const gamemap::location& loc) const
 		{return resistance_against(damage_type.type(), attacker, loc);};
 
-	std::map<std::string, int> get_resistances(bool attacker, const gamemap::location& loc) const;
+	//return resistances without any abililities applied
+	string_map get_base_resistances() const;
 //		std::map<terrain_type::TERRAIN,int> movement_type() const;
 
 	bool can_advance() const { return advances_to_.empty()==false || get_modification_advances().empty() == false; }

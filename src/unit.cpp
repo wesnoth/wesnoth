@@ -2246,21 +2246,13 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	return 100 - res;
 }
 
-std::map<std::string, int> unit::get_resistances(bool attacker, const gamemap::location& loc) const
+string_map unit::get_base_resistances() const
 {
-	std::map<std::string, int> res;
-
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
-		string_map resistance_list = resistance->values;
-		for (string_map::iterator i = resistance_list.begin();
-				i != resistance_list.end(); i++ ) {
-				const std::string& damage_name = i->first;
-				res[damage_name] = resistance_against(damage_name, attacker, loc);
-			}
+		return resistance->values;
 	}
-
-	return res;
+	return string_map();
 }
 
 #if 0

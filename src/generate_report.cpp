@@ -145,11 +145,20 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		tooltip << _("Resistances: ") << "\n";
 
-		std::map<std::string, int> resistances = u->second.get_resistances(false, u->first);
+		string_map resistances = u->second.get_base_resistances();
 
-		for(std::map<std::string, int>::iterator resist = resistances.begin();
+		for(string_map::iterator resist = resistances.begin();
 				resist != resistances.end(); ++resist) {
-			tooltip << resist->first << " : "  << (100 - resist->second) << "%\n" ;
+			// some unit have different resistances when
+			// attacking or defending.
+			tooltip << resist->first << " : ";
+			int res_att = 100 - u->second.resistance_against(resist->first, true, u->first);
+			int res_def = 100 -u->second.resistance_against(resist->first, false, u->first);
+			if (res_att == res_def) {
+				tooltip << res_def << "%\n";
+			} else {
+				tooltip << res_att << "% / " << res_def << "%\n";
+			}
 		}
 
 		res.add_text(str,tooltip);
