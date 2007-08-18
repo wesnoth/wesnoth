@@ -107,6 +107,11 @@ Version 1.3.6+svn:
      change (not that there are any now) so that the current leader is
      exempted and any exleaders pay for upkeep (unless the are specically
      marked as loyal).
+   * make random_traits default to "yes". Leaders can't get random traits
+     yet, because it breaks MP, but it does give campaign units traits
+     by default. It also allows specifying some traits and letting the
+     rest fill in randomly. Some traits are always forced on for units
+     that can get them (undead and mechanical).
    * not_living tag removed from race, as this information is provided
      by the undead and mechanical traits.
  * team color
