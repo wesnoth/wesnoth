@@ -240,7 +240,7 @@ void menu::do_sort()
 	recalculate_pos();
 
 	if(selectid >= 0 && selectid < int(item_pos_.size())) {
-		move_selection(selectid, true, NO_MOVE_VIEWPORT);
+		move_selection_to(selectid, true, NO_MOVE_VIEWPORT);
 	}
 
 	set_dirty();
@@ -468,22 +468,6 @@ void menu::adjust_viewport_to_selection()
 	adjust_position(selected_);
 }
 
-void menu::move_selection_up(size_t dep)
-{
-	set_selection_pos(selected_ > dep ? selected_ - dep : 0);
-}
-
-void menu::reset_selection()
-{
-	set_selection_pos(0);
-}
-
-void menu::move_selection_down(size_t dep)
-{
-	size_t nb_items = items_.size();
-	set_selection_pos(selected_ + dep >= nb_items ? nb_items - 1 : selected_ + dep);
-}
-
 void menu::set_selection_pos(size_t new_selected, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
 {
 	if (new_selected >= items_.size())
@@ -505,11 +489,36 @@ void menu::set_selection_pos(size_t new_selected, bool silent, SELECTION_MOVE_VI
 	}
 }
 
-void menu::move_selection(size_t id, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
+void menu::move_selection_up(size_t dep)
+{
+	set_selection_pos(selected_ > dep ? selected_ - dep : 0);
+}
+
+void menu::move_selection_down(size_t dep)
+{
+	size_t nb_items = items_.size();
+	set_selection_pos(selected_ + dep >= nb_items ? nb_items - 1 : selected_ + dep);
+}
+
+// private function with control over sound and viewport
+void menu::move_selection_to(size_t id, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
 {
 	if(id < item_pos_.size()) {
 		set_selection_pos(item_pos_[id], silent, move_viewport);
 	}
+}
+
+// public function
+void menu::move_selection(size_t id)
+{
+	if(id < item_pos_.size()) {
+		set_selection_pos(item_pos_[id], true, MOVE_VIEWPORT);
+	}
+}
+
+void menu::reset_selection()
+{
+	set_selection_pos(0);
 }
 
 void menu::key_press(SDLKey key)
@@ -606,7 +615,7 @@ void menu::handle_event(const SDL_Event& event)
 		const int item = hit(x,y);
 		if(item != -1) {
 			set_focus(true);
-			move_selection(item);
+			move_selection_to(item);
 
 			if(click_selects_) {
 				show_result_ = true;
@@ -644,7 +653,7 @@ void menu::handle_event(const SDL_Event& event)
 		if(click_selects_) {
 			const int item = hit(event.motion.x,event.motion.y);
 			if (item != -1)
-				move_selection(item);
+				move_selection_to(item);
 		}
 
 		const int heading_item = hit_heading(event.motion.x,event.motion.y);

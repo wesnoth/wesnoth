@@ -159,8 +159,7 @@ public:
 
 	int selection() const;
 
-	enum SELECTION_MOVE_VIEWPORT { MOVE_VIEWPORT, NO_MOVE_VIEWPORT };
-	void move_selection(size_t id, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
+	void move_selection(size_t id);
 	void reset_selection();
 
 	// allows user to change_item while running (dangerous)
@@ -296,7 +295,9 @@ private:
 	void assert_pos();
 
 	void update_size();
+	enum SELECTION_MOVE_VIEWPORT { MOVE_VIEWPORT, NO_MOVE_VIEWPORT };
 	void set_selection_pos(size_t pos, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
+	void move_selection_to(size_t id, bool silent=false, SELECTION_MOVE_VIEWPORT move_viewport=MOVE_VIEWPORT);
 	void move_selection_up(size_t dep);
 	void move_selection_down(size_t dep);
 

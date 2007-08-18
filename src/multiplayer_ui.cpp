@@ -709,7 +709,7 @@ void ui::set_selected_game(const std::string game_name)
 {
 	// reposition the player list to show the players in the selected game
 	if (preferences::sort_list() && (selected_game_ != game_name)) {
-		users_menu_.move_selection(0, true);
+		users_menu_.move_selection(0);
 	}
 	selected_game_ = game_name;
 }
