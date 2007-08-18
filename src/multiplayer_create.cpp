@@ -115,7 +115,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	//create the scenarios menu
 	maps_menu_.set_items(map_options_);
 	if (size_t(preferences::map()) < map_options_.size())
-		maps_menu_.move_selection(preferences::map());
+		maps_menu_.move_selection(preferences::map(), true);
 	maps_menu_.set_numeric_keypress_selection(false);
 
 	turns_slider_.set_min(20);
@@ -645,7 +645,7 @@ void create::layout_children(const SDL_Rect& rect)
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();
 	maps_menu_.set_items(map_options_);
-	maps_menu_.move_selection(mapsel_save);
+	maps_menu_.move_selection(mapsel_save, true);
 
 	// Third column: big buch of options
 	ypos = ypos_columntop;
@@ -769,7 +769,7 @@ void create::layout_children(const SDL_Rect& rect)
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();
 	maps_menu_.set_items(map_options_);
-	maps_menu_.move_selection(mapsel_save);
+	maps_menu_.move_selection(mapsel_save, true);
 
 	ypos += 50 + border_size;
 
