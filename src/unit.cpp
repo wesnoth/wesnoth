@@ -2454,6 +2454,9 @@ void unit::add_modification(const std::string& type, const config& mod,
 					variation_ = (**i.first)["name"];
 					wassert(gamedata_ != NULL);
 					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
+                                        if(var == gamedata_->unit_types.end()) { 
+		                                throw game::game_error("Unknown unit type '" + id() + "'");
+                                        }
 					advance_to(&var->second.get_variation(variation_));
 				} else if(apply_to == "profile") {
 					const std::string& portrait = (**i.first)["portrait"];
