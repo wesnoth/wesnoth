@@ -1,3 +1,6 @@
+//! @file doxygen.cpp
+//! Text and HTML-code for the startpage of the doxygen-documentation.
+
 /*
 	This file contains no code, and is only used when generating documentation.
 	It serves as a place for the main page text and various developer documentation.
@@ -9,32 +12,32 @@
 
 /**
 
-\mainpage Developer Documentation
+@mainpage Developer Documentation
 
 	<table border="0">
 	<tr>
 	<td valign="top">
-		\image html wesnoth-icon.png
+		@image html wesnoth-icon.png
 	</td>
 	<td>
 		<h3>Howto</h3>
-		\li \ref get_involved
-		\li \ref howto_document
+		@li @ref get_involved
+		@li @ref howto_document
 
 	</td>
 	</tr>
 
 	<tr>
 	<td valign="top">
-		\image html konrad-commander.png
+		@image html konrad-commander.png
 	</td>
 	<td>
 		<h3>Reference</h3>
-		\li <a href="namespaces.html">Namespaces</a>
-		\li \ref unnamed_namespace
-		\li <a href="hierarchy.html">Classes</a>
-		\li <a href="files.html">Source Files</a>
-		\li <a href="todo.html">Todo</a>
+		@li <a href="namespaces.html">Namespaces</a>
+		@li @ref unnamed_namespace
+		@li <a href="hierarchy.html">Classes</a>
+		@li <a href="files.html">Source Files</a>
+		@li <a href="todo.html">Todo</a>
 	</td>
 	</tr>
 	</table>
@@ -45,9 +48,9 @@
 //	namespace about
 // ===========================================================================
 
-/**
+/*-
 
-\namespace about Display credits about all contributors.
+@namespace about	Display credits about all contributors.
 
 This module is used from the startup screen.
 When show_about() is called, a list of contributors
@@ -61,7 +64,7 @@ to the game will be presented to the user.
 
 /**
 
-\namespace dialogs Various uncategorised dialogs.
+@namespace dialogs	Various uncategorised dialogs.
 
 */
 
@@ -71,7 +74,7 @@ to the game will be presented to the user.
 
 /**
 
-\namespace events Handling of system events.
+@namespace events	Handling of system events.
 
 System events include mouse and key events, and other events which
 are not domain specific.
@@ -82,9 +85,10 @@ When an object of a type inheriting from handler is
 instantiated, it will be associated with the active event_context
 (unless auto_join has been set false, in which case it can manually
 be instructed to join a later context). As long as its event_context
-remains active, and only then, it will recieve all system events.
+remains active, and only then, it will receive all system events.
 
-\note Multiple handler objects will recieve the same events, including key events.
+@note Multiple handler objects will receive the same events, 
+including key events.
 
 */
 
@@ -94,7 +98,7 @@ remains active, and only then, it will recieve all system events.
 
 /**
 
-\namespace font Graphical text output.
+@namespace font 	Graphical text output.
 
 This module is used to display and measure text.
 Text can optionally contain special characters, which may
@@ -111,7 +115,7 @@ they can be escaped, C-style, using backslashes.
 
 /**
 
-\namespace game_config Game configuration data as global variables.
+@namespace game_config 	Game configuration data as global variables.
 
 This module can be used to load various high level
 game configuration data from a .cfg file.
@@ -126,7 +130,7 @@ global variables.
 
 /**
 
-\namespace game_events Domain specific events
+@namespace game_events 	Domain specific events
 
 This module defines the game's event mechanism. Events might be units
 moving or fighting, or when victory or defeat occurs. A scenario's
@@ -135,7 +139,7 @@ occur. This module is responsible for making sure that when the events
 occur, the actions take place.
 
 Game events have nothing to do with mouse movement, keyboard events, etc.
-These kinds of system events can be handled using namespace \ref events
+These kinds of system events can be handled using namespace @ref events
 
 */
 
@@ -145,7 +149,7 @@ These kinds of system events can be handled using namespace \ref events
 
 /**
 
-\namespace gui General purpose widgets.
+@namespace gui 	General purpose widgets.
 
 This module primarily contains a number of common, general purpose
 widgets for the construction of composite user interfaces.
@@ -158,7 +162,7 @@ widgets for the construction of composite user interfaces.
 
 /**
 
-\namespace hotkey Keyboard shortcuts for game actions.
+@namespace hotkey 	Keyboard shortcuts for game actions.
 
 Hotkey commands can be loaded from configuration objects.
 When a keyboard event corresponding to a hotkey occurs,
@@ -171,9 +175,9 @@ For this to work, key_event() must be called whenever a keyboard event happens.
 //	namespace image
 // ===========================================================================
 
-/**
+/* - already documented
 
-\namespace image Cache of images.
+@namespace image 	Cache of images.
 
 This module manages the cache of images. With an image name, you can get
 the surface corresponding to that image, and don't need to free the image.
@@ -195,10 +199,11 @@ images come in a number of varieties:
 
 /**
 
-\namespace mp Multiplayer meeting place and game creation.
+@namespace mp 	Multiplayer meeting place and game creation.
 
-This module controls the multiplayer lobby. The lobby is a section on the server which
-allows players to chat, create games, and join games.
+This module controls the multiplayer lobby. 
+The lobby is a section on the server which allows players 
+to chat, create games, and join games.
 
 */
 
@@ -208,14 +213,16 @@ allows players to chat, create games, and join games.
 
 /**
 
-\namespace network High level network layer for config object transport.
+@namespace network 	High level network layer for config object transport.
 
 This module provides high level network access using an API similiar
-to sockets, but primarily for the transport of \ref config objects.
+to sockets, but primarily for the transport of @ref config objects.
 This is how the games protocols work - data is sent via config objects.
 
-A client would create a \ref manager object to initialize the network layer,
-connect(), and then send_data(). A server would create a \ref server_manager object, then accept_connection(), and finally receive_data().
+A client would create a @ref manager object to initialize 
+the network layer, connect(), and then send_data(). 
+A server would create a @ref server_manager object, 
+then accept_connection(), and finally receive_data().
 
 */
 
@@ -225,7 +232,7 @@ connect(), and then send_data(). A server would create a \ref server_manager obj
 
 /**
 
-\namespace preferences Modify, read and display user preferences.
+@namespace preferences 	Modify, read and display user preferences.
 
 This module contain GUI code to display dialogs regarding
 user preferences, and functions which read and modify the preferences.
@@ -238,7 +245,7 @@ user preferences, and functions which read and modify the preferences.
 
 /**
 
-\namespace reports Unit and team statistics.
+@namespace reports 	Unit and team statistics.
 
 This module can provide statistics and information, such as these
 presented in the in-game windows rightmost and upper borders.
@@ -252,7 +259,7 @@ This is primarily characteristics of units and teams.
 
 /**
 
-\namespace sound Audio output for sound and music.
+@namespace sound 	Audio output for sound and music.
 
 This module provides the ability to play music and sounds.
 Setting music volume to 0 will stop the music.
@@ -265,12 +272,12 @@ Setting music volume to 0 will stop the music.
 
 /**
 
-\namespace tooltips .
+@namespace tooltips 	tooltips.
 
-This module can be used to register tooltips, which
-will be shown provided \ref process() is called
-every time mouse motion events are received from the
-\ref events system.
+This module can be used to register tooltips, 
+which will be shown provided @ref process() 
+is called every time mouse motion events 
+are received from the @ref events system.
 If tooltips::draw_text() is used instead of font::draw_text(),
 the text will also be registered as a tooltip.
 
@@ -282,14 +289,15 @@ the text will also be registered as a tooltip.
 
 /**
 
-\page get_involved Get Involved
+@page get_involved 	Get Involved
 
 Apart from development, there are
 <a href="http://www.wesnoth.org/wiki/FAQ">other ways to contribute</a>
 to the project.
 
-Before you can join the development team, your work needs to be
-reviewed by a current developer. It works like this:
+Before you can join the development team, your work 
+needs to be reviewed by a current developer. 
+It works like this:
 you first get the
 <a href="http://gna.org/svn/?group=wesnoth">latest source code</a>
 and then submit your modified source code as
@@ -311,89 +319,88 @@ When adding new features, keep in mind the project philosophy,
 which is that of
 <a href="http://www.wesnoth.org/wiki/WesnothPhilosophy">KISS</a>.
 
-Other than at the forum, developers may also hang out in
-IRC #wesnoth-dev at irc.freenode.net
+Other than at the forum, developers may also hang out 
+in IRC #wesnoth-dev at irc.freenode.net
 
 */
 
 /**
 
-\page howto_document Document your code
+@page howto_document 	Document your code
 
-\section motivation Motivation
+@section motivation 	Motivation
 
 The document you are reading now was generated using
 <a href="http://www.doxygen.org/">Doxygen</a>.
 It follows in the tradition of
 <a href="http://www.literateprogramming.com/">literal programming</a>,
-the goal of which is to keep documentation in the source
-code, when practical. This way, the documentation will
-not be outdated or unmaintained.
+the goal of which is to keep documentation in the source code, 
+when practical. 
+This way, the documentation will not be outdated or unmaintained.
 
-\section interfaces Commenting interfaces
+@section interfaces 	Commenting interfaces
 
 Concise comments are prefered, as long as the explanation
 is correct, is not open to interpretation and does not
-asume extensive knowledge of other parts of the system.
+assume extensive knowledge of other parts of the system.
 
 By interface, we mean all content of a header file which
 is available from a C++ source file, and could result in
 compile errors if removed.
 When you comment a header file, you need to take care
 of a few, minor things in order to produce readable
-documentation using Doxygen. The basic guidelines for
-this project are:
+documentation using Doxygen. 
+The basic guidelines for this project are:
 
-- Use three slashes when commenting part of an interface,
-  rather than two, followed
-  by a space and then the actual comment.
+- When commenting part of an interface, use two slashes followed by 
+  an exclamation sign, followed by a space and then the actual comment.
   The first sentence you write, terminated by a period,
-  will be the brief description. After that, you can
-  write a longer, more detailed description.
+  will be the brief description. 
+  After that, you can write a longer, more detailed description.
   The brief description will be shown in overviews,
   so it should be no more than a single line.
   It is possible to document virtually all parts of an interface,
   so it is not limited to classes.
 
 Example:
-\code
-/ / / Takes care of displaying the map and game-data on the screen.
-/ / /
-/ / / The display is divided into two main sections: the game area,
-/ / / which displays the tiles of the game board, and units on them,
-/ / / and the side bar, which appears on the right hand side. The side bar
-/ / / display is divided into three sections.
+@code
+/ / ! Takes care of displaying the map and game-data on the screen.
+/ / !
+/ / ! The display is divided into two main sections: the game area,
+/ / ! which displays the tiles of the game board, and units on them,
+/ / ! and the side bar, which appears on the right hand side. 
+/ / ! The side bar display is divided into three sections.
 class display {
    ...
 };
-\endcode
+@endcode
 
 - Do not refer to multiple objects of the type "Manager"
   as "Managers" or "manager". Instead, say "Manager objects".
-  Doxygen will automatically link to class documentation whenever
-  it finds class names in comments,
+  Doxygen will automatically link to class documentation 
+  whenever it finds class names in comments,
   but will not do so if you do not use their proper names.
 
 - Many <a href="http://www.stack.nl/~dimitri/doxygen/commands.html">Doxygen commands</a>
   can be used in comments to enhance the generated documentation and structure the comments.
-  There is a balance between readable autogenerated documentation and
-  readable code, so beware of overdoing it.
+- There is a balance between readable autogenerated documentation and readable code, 
+  so beware of overdoing it.
 
 Example:
-\code
-/ / / \param a an integer dividend
-/ / / \param b an integer divisor, which must not be zero
-/ / / \returns a / b
-/ / /
-/ / / \pre b != 0
-/ / / \post divide' = a / b
-/ / /
-/ / / \throws std::runtime_error
-/ / / \todo this has not been peer reviewed yet
+@code
+/ / ! @param a	an integer dividend
+/ / ! @param b	an integer divisor, which must not be zero
+/ / ! @returns	a / b
+/ / !
+/ / ! @pre b != 0
+/ / ! @post divide' = a / b
+/ / !
+/ / ! @throws std::runtime_error
+/ / ! @todo this has not been peer reviewed yet
 int divide(int a,int b) {
 	return a / b;
 }
-\endcode
+@endcode
 
 */
 
@@ -402,45 +409,44 @@ int divide(int a,int b) {
 // ===========================================================================
 
 /**
-	\defgroup unnamed_namespace Unnamed Namespace
+	@defgroup unnamed_namespace 	Unnamed Namespace
 
 	@{
 */
 
-/**	\file actions.hpp */
-/**	\file ai_attack.hpp */
-/**	\file ai.hpp */
-/**	\file ai_move.hpp */
-/**	\file config.hpp */
-/**	\file display.hpp */
-/**	\file filesystem.hpp */
-/**	\file game.hpp */
-/**	\file gamestatus.hpp */
-/**	\file intro.hpp */
-/**	\file key.hpp */
-/**	\file language.hpp */
-/**	\file log.hpp */
-/**	\file mapgen_dialog.hpp */
-/**	\file mapgen.hpp */
-/**	\file map.hpp */
-/**	\file multiplayer_client.hpp */
-/**	\file multiplayer_connect.hpp */
-/**	\file multiplayer.hpp */
-/**	\file pathfind.hpp */
-/**	\file playlevel.hpp */
-/**	\file playturn.hpp */
-/**	\file race.hpp */
-/**	\file replay.hpp */
-/**	\file sdl_utils.hpp */
-/**	\file team.hpp */
-/**	\file terrain.hpp */
-/**	\file theme.hpp */
-/**	\file unit.hpp */
-/**	\file unit_types.hpp */
-/**	\file util.hpp */
-/**	\file video.hpp */
+/**	@file actions.hpp */
+/**	-file ai_attack.hpp */
+/**	@file ai.hpp */
+/**	-file ai_move.hpp */
+/**	-file config.hpp */
+/**	@file display.hpp */
+/**	-file filesystem.hpp */
+/**	@file game.hpp */
+/**	@file gamestatus.hpp */
+/**	@file intro.hpp */
+/**	@file key.hpp */
+/**	@file language.hpp */
+/**	@file log.hpp */
+/**	@file mapgen_dialog.hpp */
+/**	@file mapgen.hpp */
+/**	@file map.hpp */
+/**	-file multiplayer_client.hpp */
+/**	@file multiplayer_connect.hpp */
+/**	@file multiplayer.hpp */
+/**	-file pathfind.hpp */
+/**	-file playlevel.hpp */
+/**	@file playturn.hpp */
+/**	@file race.hpp */
+/**	@file replay.hpp */
+/**	-file sdl_utils.hpp */
+/**	@file team.hpp */
+/**	@file terrain.hpp */
+/**	-file theme.hpp */
+/**	-file unit.hpp */
+/**	@file unit_types.hpp */
+/**	@file util.hpp */
+/**	@file video.hpp */
 
 /** @} */
 
-
-
+//.

@@ -76,7 +76,7 @@ std::vector<std::string> get_text(std::string campaign) {
 	const config::child_list& children = about::about_list.get_children("about");
 
 	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
-	  //just finished a particular campaign
+	  // just finished a particular campaign
 	  if(campaign.size() && campaign == (**cc)["id"]){
 	  	add_lines(res, **cc);
 	  }
@@ -147,7 +147,7 @@ void set_about(const config& cfg){
 	}
 }
 
-//! Show credits with list of contributors..
+//! Show credits with list of contributors.
 //! Names of people are shown scrolling up like in movie-credits.\n
 //! Uses map from wesnoth or campaign as background.
 void show_about(display &disp, std::string campaign)
