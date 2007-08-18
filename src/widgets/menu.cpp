@@ -489,15 +489,17 @@ void menu::set_selection_pos(size_t new_selected, SELECTION_MOVE_VIEWPORT move_v
 	if (new_selected >= items_.size())
 		return;
 
+	bool changed = false;
 	if (new_selected != selected_) {
 		invalidate_row_pos(selected_);
 		invalidate_row_pos(new_selected);
 		selected_ = new_selected;
+		changed = true;
 	}
 
 	if(move_viewport == MOVE_VIEWPORT) {
 		adjust_viewport_to_selection();
-		if(!silent_) {
+		if(!silent_ && changed) {
 			sound::play_UI_sound(game_config::sounds::menu_select);
 		}
 	}
