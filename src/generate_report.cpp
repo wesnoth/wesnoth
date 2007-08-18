@@ -151,7 +151,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				resist != resistances.end(); ++resist) {
 			// some unit have different resistances when
 			// attacking or defending.
-			tooltip << resist->first << " : ";
+			tooltip << resist->first << ": ";
 			int res_att = 100 - u->second.resistance_against(resist->first, true, u->first);
 			int res_def = 100 -u->second.resistance_against(resist->first, false, u->first);
 			if (res_att == res_def) {
