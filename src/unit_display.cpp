@@ -78,7 +78,10 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 
-	const int total_mvt_time = static_cast<int>(150/acceleration * temp_unit.movement_cost(dst_terrain));
+	//when undo a move from an impassable terrain,
+	//the movement cost can be very high
+	const int move_speed = minimum<int>(temp_unit.movement_cost(dst_terrain), 10);
+	const int total_mvt_time = static_cast<int>(150/acceleration * move_speed);
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
 
