@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file builder.hpp 
+//! Definitions for the terrain builder.
+
 #ifndef BUILDER_H_INCLUDED
 #define BUILDER_H_INCLUDED
 
@@ -24,13 +28,13 @@
 class config;
 
 /**
- * The class terrain_builder is constructed from a config object, and a gamemap
- * object. On construction, it parses the configuration and extracts the list
- * of [terrain_graphics] rules. Each terrain_graphics rule attachs one or more
- * images to a specific terrain pattern.
+ * The class terrain_builder is constructed from a config object, and a 
+ * gamemap object. On construction, it parses the configuration and extracts 
+ * the list of [terrain_graphics] rules. Each terrain_graphics rule attaches 
+ * one or more images to a specific terrain pattern.
  * It then applies the rules loaded from the configuration to the current map,
- * and calculates the list of images that must be associated to each hex of the
- * map.
+ * and calculates the list of images that must be associated to each hex of 
+ * the map.
  *
  * The get_terrain_at method can then be used to obtain the list of images
  * necessary to draw the terrain on a given tile.
@@ -38,14 +42,14 @@ class config;
 class terrain_builder
 {
 public:
-	/** Used as a parameter for the get_terrain_at function.
-	 * ADJACENT_BACKGROUND represent terrains which are to be drawn behind
-	 * unit sprites, ADJACENT_FOREGROUND terrains which are to be drawn in
-	 * front of them.
-	 */
-	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND };
-	/** A shorthand typedef for a list of animated image locators, the base
-	 * data type returned by the get_terrain_at method.
+	//! Used as a parameter for the get_terrain_at function.
+	enum ADJACENT_TERRAIN_TYPE { 
+			ADJACENT_BACKGROUND, 	//!< Represents terrains which are to be drawn behind unit sprites 
+			ADJACENT_FOREGROUND 	//!< Represents terrains which are to be drawn in front of them.
+	};
+
+	/** A shorthand typedef for a list of animated image locators, 
+	 * the base data type returned by the get_terrain_at method.
 	 */
 	typedef std::vector<animated<image::locator> > imagelist;
 
@@ -55,12 +59,12 @@ public:
 	 * 						[terrain_graphics] rule reside.
 	 * @param level 		A level (scenario)-specific configuration file,
 	 *          		    containing scenario-specific [terrain_graphics] rules.
-	 * @param map			A properly-initialized gamemap object representing the
-	 *             			current terrain map.
+	 * @param map			A properly-initialized gamemap object representing 
+	 * 						the current terrain map.
 	 * @param offmap_image	The filename of the image which will be used as
-	 * 						off map image (see add_off_map_rule()). This image
-	 * 						automatically gets the 'terrain/' prefix and '.png'
-	 * 						suffix
+	 * 						off map image (see add_off_map_rule()). 
+	 * 						This image automatically gets the 'terrain/' prefix 
+	 * 						and '.png' suffix
 	 */
 	terrain_builder(const config& cfg, const config &level, 
 		const gamemap& map, const std::string& offmap_image);
@@ -68,11 +72,11 @@ public:
 	/** Returns a vector of strings representing the images to load & blit
 	 * together to get the built content for this tile.
 	 *
-	 * @param loc   The location relative the the terrain map, where we ask
-	 *              for the image list
-	 * @param tod   The string representing the current time-of day. Will
-	 *              be used if some images specify several time-of-day-
-	 *              related variants.
+	 * @param loc   The location relative the the terrain map, 
+	 * 				where we ask for the image list
+	 * @param tod   The string representing the current time-of day. 
+	 * 				Will be used if some images specify several 
+	 * 				time-of-day- related variants.
 	 * @param terrain_type ADJACENT_BACKGROUND or ADJACENT_FOREGROUND,
 	 *              depending on wheter we ask for the terrain which is
 	 *              before, or after the unit sprite.
@@ -83,34 +87,34 @@ public:
 	const imagelist *get_terrain_at(const gamemap::location &loc,
 			const std::string &tod, ADJACENT_TERRAIN_TYPE const terrain_type);
 
-	/** Updates the animation at a given tile. returns true if something has
-	 * changed, and must be redrawn.
+	/** Updates the animation at a given tile. 
+	 * Returns true if something has changed, and must be redrawn.
 	 *
 	 * @param loc   the location to update
 	 *
-	 * @return      true: this tile must be redrawn.
+	 * @retval      true: this tile must be redrawn.
 	 */
 	bool update_animation(const gamemap::location &loc);
 
-	/** Performs a "quick-rebuild" of the terrain in a given location. The
-	 * "quick-rebuild" is no proper rebuild: it only clears the terrain
-	 * cache for a given location, and replaces it with a signle, default
-	 * image for this terrain.
+	/** Performs a "quick-rebuild" of the terrain in a given location. 
+	 * The "quick-rebuild" is no proper rebuild: it only clears the 
+	 * terrain cache for a given location, and replaces it with a single, 
+	 * default image for this terrain.
 	 *
 	 * @param loc   the location where to rebuild terrains
 	 */
 	void rebuild_terrain(const gamemap::location &loc);
 
 	/** Performs a complete rebuild of the list of terrain graphics
-	 * attached to a map. Should be called when a terrain is changed in the
-	 * map.
+	 * attached to a map. 
+	 * Should be called when a terrain is changed in the map.
 	 */
 	void rebuild_all();
 
 	/**
-	 * An image variant. The in-memory representation of the [variant] WML
-	 * tag of the [image] WML tag. When an image only has one variant, the
-	 * [variant] tag may be omitted.
+	 * An image variant. The in-memory representation of the [variant] 
+	 * WML tag of the [image] WML tag. When an image only has one variant, 
+	 * the [variant] tag may be omitted.
 	 */
 	struct rule_image_variant {
 		/** Shorthand constructor for this structure */
@@ -118,37 +122,39 @@ public:
 			image_string(image_string), tod(tod) {};
 
 		/** A string representing either the filename for an image, or
-		 * a list of images, with an optional timing for each image.
-		 * Corresponds to the "name" parameter of the [variant] (or of
-		 * the [image]) WML tag.
+		 *  a list of images, with an optional timing for each image.
+		 *  Corresponds to the "name" parameter of the [variant] (or of
+		 *  the [image]) WML tag.
 		 *
-		 * The timing string is in the following format (expressed in EBNF)
+		 *  The timing string is in the following format (expressed in EBNF)
 		 *
-		 * <timing_string> ::= <timed_image> ( "," <timed_image> ) +
+		 *@verbatim
+		 *  <timing_string> ::= <timed_image> ( "," <timed_image> ) +
 		 *
-		 * <timed_image> ::= <image_name> [ ":" <timing> ]
+		 *  <timed_image> ::= <image_name> [ ":" <timing> ]
 		 *
-		 * Where <image_name> represents the actual filename of an
-		 * image, and <timing> the number of milliseconds this image
-		 * will last in the animation.
+		 *  Where <image_name> represents the actual filename of an image, 
+		 *  and <timing> the number of milliseconds this image will last 
+		 *  in the animation.
+		 *@endverbatim
 		 */
 		std::string image_string;
 
-		/** An animated image locator built according to the image
-		 * string. This will be the image locator which will actually
+		/** An animated image locator built according to the image string. 
+		 * This will be the image locator which will actually
 		 * be returned to the user.
 		 */
 		animated<image::locator> image;
 		/**
-		 * The time-of-day to which this variant applies. Set to the
-		 * empty string, this variant applies to all TODs.
+		 * The time-of-day to which this variant applies. 
+		 * Set to the empty string, this variant applies to all TODs.
 		 */
 		std::string tod;
 	};
 
 	/**
-	 * A map associating a rule_image_variant to a string representing the
-	 * time of day.
+	 * A map associating a rule_image_variant to a string representing 
+	 * the time of day.
 	 */
 	typedef std::map<std::string, rule_image_variant> rule_image_variantlist;
 
@@ -185,8 +191,8 @@ public:
 	typedef std::vector<rule_image> rule_imagelist;
 
 	/**
-	 * The in-memory representation of a [tile] WML rule inside of a
-	 * [terrain_graphics] WML rule.
+	 * The in-memory representation of a [tile] WML rule 
+	 * inside of a [terrain_graphics] WML rule.
 	 */
 	struct terrain_constraint
 	{
@@ -228,8 +234,8 @@ public:
 		void add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor);
 
 		/** Rebuilds the whole image cache, for a given time-of-day.
-		 * Must be called when the time-of-day has changed, to select
-		 * the correct images.
+		 * Must be called when the time-of-day has changed, 
+		 * to select the correct images.
 		 *
 		 * @param tod    The current time-of-day
 		 */
@@ -241,19 +247,19 @@ public:
 		/** The list of flags present in this tile */
 		std::set<std::string> flags;
 
-		/** The list of images associated to this tile ordered by their 
-			layer first and base-y position second.
+		/** The list of images associated to this tile, ordered by 
+		 * their layer first and base-y position second.
 		 */
 		ordered_ri_list images;
 
 		/** The list of images which are in front of the unit sprites,
-		 * attached to this tile. This member is considered a cache: it
-		 * is built once, and on-demand.
+		 * attached to this tile. This member is considered a cache: 
+		 * it is built once, and on-demand.
 		 */
 		imagelist images_foreground;
 		/** The list of images which are behind the unit sprites,
-		 * attached to this tile. This member is considered a cache: it
-		 * is built once, and on-demand.
+		 * attached to this tile. This member is considered a cache: 
+		 * it is built once, and on-demand.
 		 */
 		imagelist images_background;
 		/**
@@ -262,8 +268,8 @@ public:
 		std::string last_tod;
 
 		/**
-		 * The 6 adjacent terrains of this tile, and the terrain on
-		 * this tile.
+		 * The 6 adjacent terrains of this tile, 
+		 * and the terrain on this tile.
 		 */
 		t_translation::t_letter adjacents[7];
 
@@ -286,9 +292,9 @@ private:
 		constraint_set constraints;
 
 		/**
-		 * The location on which this map may match. Set to a valid
-		 * gamemap::location if the "x" and "y" parameters of the
-		 * [terrain_graphics] rule are set.
+		 * The location on which this map may match. 
+		 * Set to a valid gamemap::location if the "x" and "y" parameters 
+		 * of the [terrain_graphics] rule are set.
 		 */
 		gamemap::location location_constraints;
 
@@ -301,9 +307,9 @@ private:
 
 		/**
 		 * The precedence of this rule. Used to order rules differently
-		 * that the order in which they appear. Defined if the
-		 * "precedence" parameter of the [terrain_graphics] element is
-		 * set.
+		 * that the order in which they appear. 
+		 * Defined if the "precedence" parameter of the 
+		 * [terrain_graphics] element is set.
 		 */
 		int precedence;
 	};
@@ -325,7 +331,8 @@ private:
 		 *
 		 * @param loc    The location of the tile
 		 *
-		 * @return A reference to the tile at this location.
+		 * @return 		A reference to the tile at this location.
+		 *
 		 */
 		tile &operator[](const gamemap::location &loc);
 		/**
@@ -334,11 +341,11 @@ private:
 		const tile &operator[] (const gamemap::location &loc) const;
 
 		/**
-		 * Tests if a location is on the map
+		 * Tests if a location is on the map.
 		 *
 		 * @param loc   The location to test
 		 *
-		 * @return true if loc is on the map, false otherwise.
+		 * @return 		true if loc is on the map, false otherwise.
 		 */
 		bool on_map(const gamemap::location &loc) const;
 
@@ -356,8 +363,8 @@ private:
 	};
 
 	/**
-	 * A set of building rules. In-memory representation of the whole set
-	 * of [terrain_graphics] rules.
+	 * A set of building rules. In-memory representation 
+	 * of the whole set of [terrain_graphics] rules.
 	 */
 	typedef std::multimap<int, building_rule> building_ruleset;
 
@@ -366,135 +373,145 @@ private:
 	 * images are present. This method is used, when building the ruleset,
 	 * to only add rules which are valid to the ruleset.
 	 *
-	 * @param rule   The rule to test for validity
+	 * @param rule  The rule to test for validity
 	 *
-	 * @return true if the rule is valid, false if it is not.
+	 * @return 		true if the rule is valid, false if it is not.
 	 */
 	bool rule_valid(const building_rule &rule) const;
 
 	/**
 	 * Starts the animation on a rule.
 	 *
-	 * @param rule    The rule on which ot start animations
+	 * @param rule  The rule on which ot start animations
 	 *
-	 * @return true
+	 * @return 		true
 	 */
 	bool start_animation(building_rule &rule);
 
 	/**
-	 * "Rotates" a constraint from a rule. Takes a template constraint from
-	 * a template rule, and creates a constraint from this template,
-	 * rotated to the given angle.
+	 *  "Rotates" a constraint from a rule. 
+	 *  Takes a template constraint from a template rule, and creates 
+	 *  a constraint from this template, rotated to the given angle.
 	 *
-	 * On a constraint, the relative position of each rule, and the "base"
-	 * of each vertical images, are rotated according to the given angle.
+	 *  On a constraint, the relative position of each rule, and the "base"
+	 *  of each vertical images, are rotated according to the given angle.
 	 *
-	 * Template terrain constraints are defined like normal terrain
-	 * constraints, except that, flags, and image filenames, may contain
-	 * template strings of the form <code>@Rn</code>, n being a number from
-	 * 0 to 5. See the rotate_rule method for more info.
+	 *  Template terrain constraints are defined like normal terrain
+	 *  constraints, except that, flags, and image filenames, 
+	 *  may contain template strings of the form 
+	 *@verbatim
+	 *  <code>@Rn</code>, 
+	 *@endverbatim
+	 *  n being a number from 0 to 5. 
+	 *  See the rotate_rule method for more info.
 	 *
-	 * @param constraint A template constraint to rotate
-	 * @param angle      An int, from 0 to 5, representing the rotation
-	 *                   angle.
+	 *  @param constraint  A template constraint to rotate
+	 *  @param angle       An int, from 0 to 5, representing the rotation angle.
 	 */
 	terrain_constraint rotate(const terrain_constraint &constraint, int angle);
 
 	/**
 	 * Replaces, in a given string, a token with its value.
 	 *
-	 * @param s      The string in which to do the replacement
-	 * @param token  The token to substitute
-	 * @param replacement The replacement string
+	 * @param s            The string in which to do the replacement
+	 * @param token        The token to substitute
+	 * @param replacement  The replacement string
 	 */
 	void replace_token(std::string &s, const std::string &token,
 			const std::string& replacement);
 
 	/**
-	 * Replaces, in a given rule_image, a token with its value. The actual
-	 * substitution is done in all variants of the given image.
+	 * Replaces, in a given rule_image, a token with its value. 
+	 * The actual substitution is done in all variants of the given image.
 	 *
-	 * @param image The rule_image in which to do the replacement
-	 * @param token  The token to substitute
-	 * @param replacement The replacement string
+	 * @param image        The rule_image in which to do the replacement
+	 * @param token        The token to substitute
+	 * @param replacement  The replacement string
 	 */
 	void replace_token(rule_image &image, const std::string &token,
 			const std::string& replacement);
 
 	/**
-	 * Replaces, in a given rule_variant_image, a token with its value. The
-	 * actual substitution is done in the "image_string" parameter of this
-	 * rule_variant_image.
+	 * Replaces, in a given rule_variant_image, a token with its value. 
+	 * The actual substitution is done in the "image_string" parameter 
+	 * of this rule_variant_image.
 	 *
-	 * @param variant The rule_variant_image in which to do the replacement
-	 * @param token  The token to substitute
-	 * @param replacement The replacement string
+	 * @param variant      The rule_variant_image in which to do the replacement
+	 * @param token        The token to substitute
+	 * @param replacement  The replacement string
 	 */
 	void replace_token(rule_image_variant &variant, const std::string &token,
 			const std::string& replacement)
 		{ replace_token(variant.image_string, token, replacement); }
 
 	/**
-	 * Replaces, in a given rule_imagelist, a token with its value. The
-	 * actual substitution is done in all rule_images contained in the
-	 * rule_imagelist.
+	 * Replaces, in a given rule_imagelist, a token with its value. 
+	 * The actual substitution is done in all rule_images contained 
+	 * in the rule_imagelist.
 	 *
-	 * @param image The rule_imagelist in which to do the replacement
-	 * @param token  The token to substitute
-	 * @param replacement The replacement string
+	 * @param &					The rule_imagelist in which to do the replacement
+	 * @param token        		The token to substitute
+	 * @param replacement  		The replacement string
 	 */
 	void replace_token(rule_imagelist &, const std::string &token,
 			const std::string& replacement);
 
 	/**
-	 * Replaces, in a given building_rule, a token with its value. The
-	 * actual substitution is done in the rule_imagelists contained in all
-	 * constraints of the building_rule, and in the flags (has_flag,
-	 * set_flag and no_flag) contained in all constraints of the
-	 * building_rule.
+	 * Replaces, in a given building_rule, a token with its value. 
+	 * The actual substitution is done in the rule_imagelists contained 
+	 * in all constraints of the building_rule, and in the flags 
+	 * (has_flag, set_flag and no_flag) contained in all constraints 
+	 * of the building_rule.
 	 *
-	 * @param image The building_rule  in which to do the replacement
-	 * @param token  The token to substitute
-	 * @param replacement The replacement string
+	 * @param s            The building_rule  in which to do the replacement
+	 * @param token        The token to substitute
+	 * @param replacement  The replacement string
 	 */
 	void replace_token(building_rule &s, const std::string &token,
 			const std::string& replacement);
 
 	/**
-	 * Rotates a template rule to a given angle, and returns the rotated
-	 * rule.
+	 *  Rotates a template rule to a given angle, and returns the rotated rule.
 	 *
-	 * Template rules are defined like normal rules, except that:
-	 * * Flags and image filenames may contain template strings of the form
-	 * <code>@Rn</code>, n being a number from 0 to 5.
-	 * * The rule contains the rotations=r0,r1,r2,r3,r4,r5, with r0 to r5
-	 * being strings describing the 6 different positions, typically, n,
-	 * ne, se, s, sw, and nw (buy may be anything else.)
+	 *  Template rules are defined like normal rules, except that:
+	 *  * Flags and image filenames may contain template strings of the form
+	 *@verbatim
+	 *  <code>@Rn</code>, n being a number from 0 to 5.
+	 *@endverbatim
+	 *  * The rule contains the rotations=r0,r1,r2,r3,r4,r5, with r0 to r5
+	 *    being strings describing the 6 different positions, typically, 
+	 *    n, ne, se, s, sw, and nw (but maybe anything else.)
 	 *
-	 * A template rule will generate 6 rules, which are similar to the
-	 * template, except that:
+	 *  A template rule will generate 6 rules, which are similar 
+	 *  to the template, except that:
 	 *
-	 * * The map of constraints ( [tile]s ) of this rule will be rotated by
-	 * an angle, of 0 to 5 pi / 6
+	 *  * The map of constraints ( [tile]s ) of this rule will be 
+	 *    rotated by an angle, of 0 to 5 pi / 6
 	 *
-	 * * On the rule which is rotated to 0rad, the template strings @R0,
-	 * @R1, @R2, @R3, @R4, @R5, will be replaced by the corresponding r0,
-	 * r1, r2, r3, r4, r5 variables given in the rotations= element.
+	 *  * On the rule which is rotated to 0rad, the template strings 
+	 *@verbatim
+	 *    @R0, @R1, @R2, @R3, @R4, @R5, 
+	 *@endverbatim
+	 *    will be replaced by the corresponding r0, r1, r2, r3, r4, r5 
+	 *    variables given in the rotations= element.
 	 *
-	 * * On the rule which is rotated to pi/3 rad, the template strings
-	 * @R0, @R1, @R2 etc. will be replaced by the corresponding <strong>r1,
-	 * r2, r3, r4, r5, r0</strong> (note the shift in indices).
+	 *  * On the rule which is rotated to pi/3 rad, the template strings
+	 *@verbatim
+	 *    @R0, @R1, @R2 etc. 
+	 *@endverbatim
+	 *    will be replaced by the corresponding 
+	 *    <strong>r1, r2, r3, r4, r5, r0</strong> (note the shift in indices).
 	 *
-	 * * On the rule rotated 2pi/3, those will be replaced by r2, r3, r4,
-	 * r5, r0, r1 and so on.
+	 *  * On the rule rotated 2pi/3, those will be replaced by 
+	 *    r2, r3, r4, r5, r0, r1 and so on.
 	 *
 	 */
-	building_rule rotate_rule(const building_rule &rule, int angle, const
-			std::vector<std::string>& angle_name);
+	building_rule rotate_rule(const building_rule &rule, int angle, 
+							  const std::vector<std::string>& angle_name);
 
 	/**
-	 * Parses a "config" object, which should contains [image] children, and
-	 * adds the corresponding parsed rule_images to a rule_imagelist.
+	 * Parses a "config" object, which should contains [image] children, 
+	 * and adds the corresponding parsed rule_images to a rule_imagelist.
 	 *
 	 * @param images   The rule_imagelist into which to add the parsed images.
 	 * @param cfg      The WML configuration object to parse
@@ -516,27 +533,26 @@ private:
 	 * Creates a rule constraint object which matches a given list of
 	 * terrains, and adds it to the list of constraints of a rule.
 	 *
-	 * @param constraints The constraint set to which to add the constraint.
-	 * @param loc         The location of the constraint
-	 * @param type        The list of terrains this constraint will match
+	 * @param constraints  The constraint set to which to add the constraint.
+	 * @param loc           The location of the constraint
+	 * @param type          The list of terrains this constraint will match
 	 * @param global_images A configuration object containing [image] tags
-	 *                    describing rule-global images.
+	 *                      describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
 			const gamemap::location &loc, const t_translation::t_match& type,
 			const config& global_images);
 
 	/**
-	 * Creates a rule constraint object from a config object and adds it to
-	 * the list of constraints of a rule.
+	 * Creates a rule constraint object from a config object and 
+	 * adds it to the list of constraints of a rule.
 	 *
-	 * @param constraints The constraint set to which to add the constraint.
-	 * @param loc         The location of the constraint
-	 * @param cfg         The config object describing this constraint.
-	 *                    Usually, a [tile] child of a [terrain_graphics]
-	 *                    rule.
+	 * @param constraints   The constraint set to which to add the constraint.
+	 * @param loc           The location of the constraint
+	 * @param cfg           The config object describing this constraint.
+	 *                      Usually, a [tile] child of a [terrain_graphics] rule.
 	 * @param global_images A configuration object containing [image] tags
-	 *                    describing rule-global images.
+	 *                      describing rule-global images.
 	 */
 	void add_constraints(constraint_set& constraints,
 			const gamemap::location &loc, const config &cfg,
@@ -548,12 +564,12 @@ private:
 	 * Parses a map string (the map= element of a [terrain_graphics] rule,
 	 * and adds constraints from this map to a building_rule.
 	 *
-	 * @param mapstring The map vector to parse
-	 * @param br        The building rule into which to add the extracted
-	 *                  constraints
-	 * @param anchors   A map where to put "anchors" extracted from the map.
+	 * @param mapstring     The map vector to parse
+	 * @param br            The building rule into which to add the extracted
+	 *                      constraints
+	 * @param anchors       A map where to put "anchors" extracted from the map.
 	 * @param global_images A config object representing the images defined
-	 *                  as direct children of the [terrain_graphics] rule.
+	 *                      as direct children of the [terrain_graphics] rule.
 	 */
 	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
 			     anchormap& anchors, const config& global_images);
@@ -567,13 +583,14 @@ private:
 	void add_rule(building_ruleset& rules, building_rule &rule);
 
 	/**
-	 * Adds a set of rules to a ruleset, from a template rule which spans 6
-	 * rotations (or less if some of the rotated rules are invalid).
+	 * Adds a set of rules to a ruleset, from a template rule which spans 
+	 * 6 rotations (or less if some of the rotated rules are invalid).
 	 *
-	 * @param rules     The ruleset into which to add the rules.
-	 * @param tpl       The template rule
-	 * @param rotations A coma-separated string containing the 6 values for
-	 *                  replacing rotation template strings (@Rn)
+	 * @param rules      The ruleset into which to add the rules.
+	 * @param tpl        The template rule
+	 * @param rotations  A comma-separated string containing the 
+	 * 					 6 values for replacing rotation 
+	 * 					 template strings @verbatim (@Rn) @endverbatim
 	 */
 	void add_rotated_rules(building_ruleset& rules, building_rule& tpl, const std::string &rotations);
 
@@ -582,39 +599,41 @@ private:
 	 * and fills the building_rules_ member of the current class according
 	 * to those.
 	 *
-	 * @param config   The configuration object to parse.
+	 * @param cfg 		The configuration object to parse.
 	 */
 	void parse_config(const config &cfg);
 
 	/**
-	 * adds a builder rule for the _off^_usr tile, this tile only has 1 image
+	 * Adds a builder rule for the _off^_usr tile, this tile only has 1 image.
 	 *
 	 * @param image		The filename of the image
 	 */
 	void add_off_map_rule(const std::string& image);
 
 	/**
-	 * Checks whether a terrain letter matches a given list of terrain letters
+	 * Checks whether a terrain letter matches a given list of terrain letters.
 	 *
-	 * @param letter   The terrain to check
-	 * @param terrains The terrain list agains which to check the terrain. 
-	 *                 May contain the metacharacter '*' STAR meaning
-	 *                 "all terrains" or the character '!' NOT meaning "all
-	 *                 terrains except those present in the list."
+	 * @param letter   	The terrain to check
+	 * @param terrains 	The terrain list agains which to check the terrain. 
+	 *                 	May contain the metacharacters
+	 *                 	- '*' STAR, meaning "all terrains"
+	 *                 	- '!' NOT,  meaning "all terrains except those present in the list."
 	 *
-	 * @return returns true if "letter" matches the list or the list is empty, else false.
+	 * @return 			returns true if "letter" matches the list or the list is empty, 
+	 * 					else false.
 	 */
 	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_list& terrains) const 
 		{ return terrains.empty()? true : t_translation::terrain_matches(letter, terrains); }
 
 	/**
-	 * Checks whether a terrain letter matches a given list of terrain letters
+	 * Checks whether a terrain letter matches a given list of terrain letters.
 	 *
-	 * @param letter   The terrain to check
-	 * @param terrain  The terrain match structure which to check the terrain.
-	 *                 See previous definition for more details.
+	 * @param letter   	The terrain to check
+	 * @param terrain  	The terrain match structure which to check the terrain.
+	 *                 	See previous definition for more details.
 	 *
-	 * @return returns true if "letter" matches the list or the list is empty, else false.
+	 * @return 			returns true if "letter" matches the list or the list is empty, 
+	 * 					else false.
 	 */
 	bool terrain_matches(t_translation::t_letter letter, const t_translation::t_match &terrain) const
 		{ return terrain.is_empty ? true : t_translation::terrain_matches(letter, terrain); }
@@ -630,18 +649,18 @@ private:
 	 *                  the pseudo-random-number generator used for
 	 *                  probability calculations.
 	 * @param check_loc If this parameter is set to false, the "location"
-	 *                  of the rule (ie, wheter all constraints's terrain
+	 *                  of the rule (ie, whether all constraints's terrain
 	 *                  types do actually match) will be assumed to be
-	 *                  already checked, only flags and probability will be
-	 *                  checked.
+	 *                  already checked, only flags and probability 
+	 *                  will be checked.
 	 */
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc,
 			const int rule_index, const bool check_loc) const;
 
 	/**
-	 * Applies a rule at a given location: applies the result of a matching
-	 * rule at a given location: attachs the images corresponding to the
-	 * rule, and sets the flags corresponding to the rule.
+	 * Applies a rule at a given location: applies the result of a 
+	 * matching rule at a given location: attachs the images corresponding 
+	 * to the rule, and sets the flags corresponding to the rule.
 	 *
 	 * @param rule      The rule to apply
 	 * @param loc       The location to which to apply the rule.
@@ -649,8 +668,9 @@ private:
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
 
 	/**
-	 * Returns the number of constraints adjacent to a given constraint in
-	 * a rule. For example, of the rule map is something like that
+	 * Returns the number of constraints adjacent to a given constraint 
+	 * in a rule. 
+	 * For example, if the rule map is something like that
 	 *  1   .
 	 *    2
 	 *  .   3
@@ -658,30 +678,30 @@ private:
 	 * to the "3", will each have 1 adjacent contraint, whereas the
 	 * constraint corresponding to the "2" will have 2.
 	 *
-	 * @param rule     The rule this applies to
-	 * @param loc      The location of the constraint to check for adjacent
-	 *                 constraints
+	 * @param rule     	The rule this applies to
+	 * @param loc      	The location of the constraint to check for 
+	 * 					adjacent constraints
 	 *
-	 * @return the number of constraints adjacent to the location loc
+	 * @return 			the number of constraints adjacent to the location loc
 	 */
 	int get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc);
 
 	/**
-	 * Returns the "size" of a constraint, that is, the number of tiles, in
-	 * the current map, on which this constraint may possibly match. This
-	 * is used to exclude positions where the rule has no change to match
-	 * from being checked for.
+	 * Returns the "size" of a constraint, that is, the number of tiles, 
+	 * in the current map, on which this constraint may possibly match. 
+	 * This is used to exclude positions where the rule has 
+	 * no change to match from being checked for.
 	 *
-	 * The terrain_by_type_border_ and terrain_by_type_ arrays must be
-	 * initialized before this method is called.
+	 * The terrain_by_type_border_ and terrain_by_type_ arrays 
+	 * must be initialized before this method is called.
 	 *
 	 * @param rule       The rule to check for
 	 * @param constraint The constraint to check for
 	 * @param border     (out) Set to true if this constraint applies to a non-isolated tile
 	 *
-	 * @return The number of tiles in the current map, on which the current
-	 *         constraint may match. INT_MAX means "all of them" or "unable
-	 *         to determine"
+	 * @return 			The number of tiles in the current map, on which 
+	 * 					the current constraint may match. 
+	 *         			INT_MAX means "all of them" or "unable to determine".
 	 */
 	int get_constraint_size(const building_rule& rule, const terrain_constraint& constraint,
 			bool& border);
@@ -713,8 +733,8 @@ private:
 	 */
 	terrain_by_type_map terrain_by_type_;
 	/**
-	 * A map representing all locations whose terrain is adjacent to a
-	 * terrain of a given type.
+	 * A map representing all locations whose terrain 
+	 * is adjacent to a terrain of a given type.
 	 */
 	terrain_by_type_map terrain_by_type_border_;
 

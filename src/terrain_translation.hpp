@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file terrain_translation.hpp 
+//! 
+
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED
 
@@ -66,9 +69,9 @@ namespace t_translation {
 	typedef std::vector<std::vector<t_letter> > t_map;
 
 	/**
-	 * This structure can be used for matching terrain strings
-	 * it optimized for strings that need to be matched often
-	 * and caches the wildcard info required for matching
+	 * This structure can be used for matching terrain strings.
+	 * It optimized for strings that need to be matched often,
+	 * and caches the wildcard info required for matching.
 	 */
 	struct t_match{
 		t_match();
@@ -82,31 +85,28 @@ namespace t_translation {
 		bool is_empty;
 	};
 	
-	/** 
-	 * Contains an x and y coordinate used for starting positions
-	 * in maps
-	 */
+	//!  Contains an x and y coordinate used for starting positions in maps.
 	struct coordinate {
 		size_t x; 
 		size_t y;
 	};
 
-    //exception thrown if there's an error with the terrain
-	//Note atm most thrown result in a crash but I like an 
-	//uncatched exception better than an assert
+    // Exception thrown if there's an error with the terrain.
+	// Note: atm most thrown result in a crash, but I like 
+	// an uncatched exception better than an assert.
 	struct error {
 		error(const std::string& msg) : message(msg) {}
 		std::string message;
 	};
 
-	//some types of terrain which must be known, and can't just be loaded
-	//in dynamically because they're special. It's asserted that there will
-	//be corresponding entries for these types of terrain in the terrain
-	//configuration file.
+	// Some types of terrain which must be known, and can't just 
+	// be loaded in dynamically because they're special. 
+	// It's asserted that there will be corresponding entries for 
+	// these types of terrain in the terrain configuration file.
 	extern const t_letter VOID_TERRAIN;
 	extern const t_letter FOGGED;
 
-	// on the map the user can use this type to make odd shaped maps good
+	// On the map the user can use this type to make odd shaped maps look good.
 	extern const t_letter OFF_MAP_USER;
 
 	extern const t_letter HUMAN_CASTLE;
@@ -130,15 +130,20 @@ namespace t_translation {
 	extern const t_letter STAR; 	// *
 		
 	/** 
-	 * Reads a single terrain from a string
+	 * Reads a single terrain from a string.
+	 *
 	 * @param str		The string which should contain 1 letter the new format 
 	 * 					of a letter is 2 to 4 characters in the set
-	 * 					[a-Z][A-Z]/|\_ The underscore is intended for internal
-	 * 					use. Other letters and characters are not validated but
-	 * 					users of these letters can get nasty surprices. The * 
-	 * 					is used as wildcard in some cases. This letter can
-	 * 					be two groups separated by a caret, the first group
-	 * 					is the base terrain, the second the overlay terrain.
+	 *@verbatim
+	 * 					[a-Z][A-Z]/|\_ 
+	 *@endverbatim
+	 * 					The underscore is intended for internal use. 
+	 * 					Other letters and characters are not validated but
+	 * 					users of these letters can get nasty surprices. 
+	 * 					The * is used as wildcard in some cases. 
+	 * 					This letter can be two groups separated by a caret, 
+	 * 					the first group is the base terrain, 
+	 * 					the second the overlay terrain.
 	 * 
 	 * @param filler	if there's no layer this value will be used as the second layer
 	 *
@@ -148,7 +153,7 @@ namespace t_translation {
 	
 	/** 
 	 * Writes a single letter to a string.
-	 * The writers only support the new format
+	 * The writers only support the new format.
 	 *
 	 * @param letter	The letter to convert to a string
 	 *
@@ -160,8 +165,9 @@ namespace t_translation {
 	
 	/** 
 	 * Reads a list of terrain from a string, when reading the 
+	 *
 	 * @param str		A string with one or more terrain letters (see read_letter)
-	 * @param filler	if there's no layer this value will be used as the second layer
+	 * @param filler	If there's no layer, this value will be used as the second layer
 	 *
 	 * @returns			A vector which contains the letters found in the string
 	 */
@@ -172,8 +178,8 @@ namespace t_translation {
 	 *
 	 * @param list		A vector with one or more terrain letters
 	 *
-	 * @returns			A string with the terrain numbers, comma separated and 
-	 * 					a space behind the comma's. Not padded.
+	 * @returns			A string with the terrain numbers, comma separated 
+	 * 					and a space behind the comma's. Not padded.
 	 */
 	std::string write_list(const t_list& list);
 
@@ -212,22 +218,24 @@ namespace t_translation {
 	t_map read_game_map(const std::string& str, std::map<int, coordinate>& starting_positions);
 
 	/** 
-	 * Write a gamemap in to a vector string
+	 * Write a gamemap in to a vector string.
 	 *
-	 * @param map		A terrain vector, as returned from read_game_map
+	 * @param map				 A terrain vector, as returned from read_game_map
 	 * @param starting_positions A starting positions map, as returned from read_game_map
 	 *
 	 * @returns			A terrain string which can be read with read_game_map.
-	 * 					For readability the map is padded to groups of 12 chars
-	 * 					followed by a comma and space
+	 * 					For readability the map is padded to groups of 12 chars,
+	 * 					followed by a comma and space.
 	 */
 	std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_positions = std::map<int, coordinate>());
 
 	/** 
-	 * Tests whether a specific terrain matches a list of expressions. The list can 
-	 * use wildcard matching with *. It also has an inversion function. When a ! 
-	 * is found the result of the match is inverted. The matching stops at the 
-	 * first match (regardless of the ! found) the data is match from start to end.
+	 * Tests whether a specific terrain matches a list of expressions. 
+	 * The list can use wildcard matching with *. 
+	 * It also has an inversion function. 
+	 * When a ! is found the result of the match is inverted. 
+	 * The matching stops at the first match (regardless of the ! found) 
+	 * the data is match from start to end.
 	 *
 	 * Example: 
 	 * Ww, W* 		does match and returns true
@@ -243,12 +251,12 @@ namespace t_translation {
 	 * A*^      matches Abcd but *not* Abcd^Abcd
 	 * A*^Abcd  does not match Abcd but matches Abcd^Abcd
 	 *
-	 * Note: If an expression doesn't specify a second layer (i.e. it contains no 
-	 * caret) the second layer will be filled in with a default value (See read_letter
-	 * and read_list).
+	 * Note: If an expression doesn't specify a second layer (i.e. it contains 
+	 * no caret) the second layer will be filled in with a default value 
+	 * (See read_letter and read_list).
 	 *
-	 * In the terrain building code, the second layer will default to the wildcard, so
-	 * both A* and A*^* will match Abcd^Abcd
+	 * In the terrain building code, the second layer will default to the wildcard, 
+	 * so both A* and A*^* will match Abcd^Abcd
 	 *
 	 * @param src	the value to match (may not contain wildcards)
 	 * @param dest	the list of expressions to match against
@@ -258,8 +266,8 @@ namespace t_translation {
 	bool terrain_matches(const t_letter& src, const t_list& dest);
 
 	/** 
-	 * Tests whether a specific terrain matches an expression, for matching 
-	 * rules see above.
+	 * Tests whether a specific terrain matches an expression, 
+	 * for matching rules see above.
 	 *
 	 * @param src	the value to match (may not contain wildcards)
 	 * @param dest 	the expression to match against
@@ -274,51 +282,55 @@ namespace t_translation {
 	 * certain overhead. This version uses a cache to cache the masks so if
 	 * a list needs to be matched often this version is preferred.
 	 *
-	 * @param src	the value to match (may not contain  wildcards)
+	 * @param src	the value to match (may not contain wildcards)
 	 * @param dest 	the cached list of expressions to match against
 	 *
-	 * @returns	the result of the match (depending on the !'s)
+	 * @returns		the result of the match (depending on the !'s)
 	 */
 	bool terrain_matches(const t_letter& src, const t_match& dest);
 
 	/** 
-	 * Tests wither a terrain contains a wildcard
+	 * Tests whether a terrain contains a wildcard
 	 *
-	 *  @param		the letter to test for a wildcard
+	 *  @param letter	the letter to test for a wildcard
 	 *
-	 *  @returns	true if wildcard found else false
+	 *  @returns		true if wildcard found,
+	 *  				else false
 	 */
 	bool has_wildcard(const t_letter& letter);
 
 	/** 
-	 * Tests wither a terrain list contains at least
+	 * Tests whether a terrain list contains at least
 	 * one item with a wildcard
 	 *
-	 *  @param		the list to test for a wildcard
+	 *  @param list		the list to test for a wildcard
 	 *
-	 *  @returns	true if a wildcard found else false
+	 *  @returns		true if a wildcard found,
+	 *  				else false
 	 */
 	bool has_wildcard(const t_list& list);
 
-	// these terrain letters are in the builder format, and 
-	// not usable in other parts of the engine
-	const t_layer TB_STAR = '*' << 24; //it can be assumed this is the equivalent of STAR
-	const t_layer TB_DOT = '.' << 24;
+	// These terrain letters are in the builder format, 
+	// and not usable in other parts of the engine
+	const t_layer TB_STAR = '*' << 24; 	// It can be assumed this is the equivalent of STAR
+	const t_layer TB_DOT  = '.' << 24;
 	
 	/** 
-	 * Reads a builder map, a builder map differs much from a normal map hence
-	 * the different functions
+	 * Reads a builder map. 
+	 * A builder map differs much from a normal map, 
+	 * hence the different functions.
 	 *
 	 * @param str		The map data, a terrain letter is either a * or a . or a number as
 	 * 					anchor. The star or dot are stored in the base part of the terrain
 	 * 					and the anchor in the overlay part. If more letters are allowed as
-	 * 					special case they will be stored in the base part. Anchor 0 is no 
-	 * 					anchor
+	 * 					special case they will be stored in the base part. 
+	 * 					Anchor 0 is no anchor.
 	 *
 	 * @returns			A 2D vector with the data found the vector data is stored
 	 * 					like result[y][x] where x the column number is and y the row number.
 	 */
 	t_map read_builder_map(const std::string& str); 
 
-}
+} // end namespace t_translation 
+
 #endif
