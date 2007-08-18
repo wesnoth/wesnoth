@@ -240,7 +240,7 @@ void menu::do_sort()
 	recalculate_pos();
 
 	if(selectid >= 0 && selectid < int(item_pos_.size())) {
-		move_selection(selectid,NO_MOVE_VIEWPORT);
+		move_selection(selectid, true, NO_MOVE_VIEWPORT);
 	}
 
 	set_dirty();
@@ -484,7 +484,7 @@ void menu::move_selection_down(size_t dep)
 	set_selection_pos(selected_ + dep >= nb_items ? nb_items - 1 : selected_ + dep);
 }
 
-void menu::set_selection_pos(size_t new_selected, SELECTION_MOVE_VIEWPORT move_viewport)
+void menu::set_selection_pos(size_t new_selected, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
 {
 	if (new_selected >= items_.size())
 		return;
@@ -499,16 +499,16 @@ void menu::set_selection_pos(size_t new_selected, SELECTION_MOVE_VIEWPORT move_v
 
 	if(move_viewport == MOVE_VIEWPORT) {
 		adjust_viewport_to_selection();
-		if(!silent_ && changed) {
+		if(!silent_ && !silent && changed) {
 			sound::play_UI_sound(game_config::sounds::menu_select);
 		}
 	}
 }
 
-void menu::move_selection(size_t id, SELECTION_MOVE_VIEWPORT move_viewport)
+void menu::move_selection(size_t id, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
 {
 	if(id < item_pos_.size()) {
-		set_selection_pos(item_pos_[id],move_viewport);
+		set_selection_pos(item_pos_[id], silent, move_viewport);
 	}
 }
 
