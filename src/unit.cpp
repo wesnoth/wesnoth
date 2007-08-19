@@ -449,8 +449,8 @@ void unit::generate_traits(bool musthaveonly)
                 cfg_["random_traits"]="no";
      	}
 
-	for(std::vector<config*>::const_iterator j = traits.begin(); j != traits.end(); ++j) {
-		modifications_.add_child("trait",**j);
+	for(std::vector<config*>::const_iterator j2 = traits.begin(); j2 != traits.end(); ++j2) {
+		modifications_.add_child("trait",**j2);
 	}
 }
 
