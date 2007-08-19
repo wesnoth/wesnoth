@@ -684,7 +684,7 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += map_label_.height() + border_size;
 
 	maps_menu_.set_max_width(200);
-	maps_menu_.set_max_height(ca.h + ca.x - ypos - border_size);
+	maps_menu_.set_max_height(ca.h + ca.y - ypos);
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();
