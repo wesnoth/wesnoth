@@ -1,4 +1,4 @@
-/* $Id: boilerplate-header.cpp 18943 2007-07-21 07:28:04Z mordante $ */
+/* $Id: settings.cpp 18943 2007-07-21 07:28:04Z mordante $ */
 /*
    Copyright (C) 2007 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -11,6 +11,9 @@
 
    See the COPYING file for more details.
 */
+
+//! @file settings.cpp
+//! General settings and defaults for scenarios.
 
 #include "global.hpp"
 
@@ -52,5 +55,5 @@ bool use_shroud(const std::string& value)
 	return utils::string_bool(value, false);
 }
 
-} // namespace settings
+} // end namespace settings
 
