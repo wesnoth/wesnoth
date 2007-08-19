@@ -2109,11 +2109,10 @@ int main(int argc, char** argv)
 #endif
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << VERSION
-#if defined(SVNREV) && defined(DO_DISPLAY_REVISION)
-			<< " (" << game_config::svnrev << ")"
-#endif /* defined(SVNREV) && defined(DO_DISPLAY_REVISION) */
-			<< '\n';
+		const std::string rev = game_config::svnrev.empty() ? "" :
+			" (" + game_config::svnrev + ")";
+
+		std::cerr << "Battle for Wesnoth v" << VERSION << rev << '\n';
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 

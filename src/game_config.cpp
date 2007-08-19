@@ -39,6 +39,8 @@ namespace game_config
 	const std::string version = VERSION;
 #ifdef SVNREV
 	const std::string svnrev = SVNREV;
+#else
+	const std::string svnrev = "";
 #endif
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
 	

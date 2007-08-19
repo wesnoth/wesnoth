@@ -279,10 +279,6 @@ if test x$internaldata = xyes; then
   AC_DEFINE([USE_INTERNAL_DATA],[],[Define if translations should be placed inside app, for Mac OS X])
 fi
 
-if test x$svnrev = xyes; then
-  AC_DEFINE([DO_DISPLAY_REVISION],[],[Define if SVN revision should be displayed when querying the version])
-fi
-
 AC_ARG_ENABLE([desktop-entry],
               AS_HELP_STRING([--disable-desktop-entry], [disable installation of desktop entry files]),
 	      [desktopentry=$enableval],
