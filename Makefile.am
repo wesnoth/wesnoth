@@ -1,5 +1,5 @@
 if USESVN
-	SVNREV = $(shell svnversion -n .)
+SVNREV = $(shell svnversion -n .)
 endif
 
 ISUBDIRS = icons

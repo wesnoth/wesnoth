@@ -1,7 +1,7 @@
 if USESVN
-	SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null)
-	CFLAGS += "-DSVNREV=\"$(SVNREV)\""
-	CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
+SVNREV = $(shell svnversion -n $(topdir) 2>/dev/null)
+CFLAGS += "-DSVNREV=\"$(SVNREV)\""
+CXXFLAGS += "-DSVNREV=\"$(SVNREV)\""
 endif
 
 AUTOMAKE_OPTIONS = subdir-objects
