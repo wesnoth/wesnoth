@@ -74,8 +74,8 @@ namespace t_translation {
 	 *
 	 * @return					the letter found in the string
 	 */ 					
-	static t_letter string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
 	static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler);
+	static t_letter string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
 	 * Converts a terrain number to a string
@@ -88,8 +88,8 @@ namespace t_translation {
 	 * @return						the converted string, if no starting position 
 	 * 								given it's padded to 4 chars else padded to 7 chars
 	 */
-	static std::string number_to_string_(t_letter terrain, const int start_position = -1);
 	static std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size);
+	static std::string number_to_string_(t_letter terrain, const int start_position = -1);
 
 	/**
 	 * Converts a terrain string to a letter for the builder.
