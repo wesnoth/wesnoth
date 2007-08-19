@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+//! @file widgets/scrollpane.cpp
+
 #include "global.hpp"
 
 #include <algorithm>
@@ -179,4 +181,5 @@ void scrollpane::update_content_size()
 	set_dirty();
 }
 
-}
+} // namespace gui 
+

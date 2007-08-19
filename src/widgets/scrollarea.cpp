@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file widgets/scrollarea.cpp
+//!
+
 #include "global.hpp"
 
 #include "widgets/scrollarea.hpp"
@@ -160,5 +163,5 @@ void scrollarea::handle_event(const SDL_Event& event)
 	}
 }
 
-}
+} // end namespace gui 
 

@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+//! @file widgets/scrollpane.hpp
+
 #ifndef SCROLLPANE_HPP_INCLUDED
 #define SCROLLPANE_HPP_INCLUDED
 
@@ -24,6 +26,7 @@
 
 namespace gui {
 
+//! Scrollpane.
 class scrollpane : public scrollarea
 {
 public:
@@ -37,16 +40,17 @@ public:
 		int z_order;
 	};
 
-	/// Create a scrollpane.
-	/// \param d the display object
-	/// \param pane the widget where wheel events take place
-	/// \param callback a callback interface for warning that the grip has been moved
+	//! Create a scrollpane.
+//! @todo FIXME: parameterlist ??
+	//- @param d the display object
+	//- @param pane the widget where wheel events take place
+	//- @param callback a callback interface for warning that the grip has been moved
 	scrollpane(CVideo &video);
 
 	virtual void set_location(SDL_Rect const &rect);
 
-	//VC++ doesn't like a 'using scrollarea::set_location' directive here, so we declare
-	//an inline forwarding function instead
+	// VC++ doesn't like a 'using scrollarea::set_location' directive here, 
+	// so we declare an inline forwarding function instead.
 	void set_location(int x, int y) { widget::set_location(x,y); }
 
 	virtual void hide(bool value=true);
@@ -74,6 +78,6 @@ private:
 	SDL_Rect content_pos_;
 };
 
-}
+} // namespace gui
 
 #endif

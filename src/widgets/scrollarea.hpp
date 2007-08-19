@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file widgets/scrollarea.hpp
+//!
+
 #ifndef SCROLLAREA_HPP_INCLUDED
 #define SCROLLAREA_HPP_INCLUDED
 
@@ -25,9 +28,10 @@ namespace gui {
 class scrollarea : public widget
 {
 public:
-	/// Create a zone with automatic handling of scrollbar.
-	/// \param d the display object
-	/// \param pane the widget where wheel events take place
+	//! Create a zone with automatic handling of scrollbar.
+//! @todo FIXME: parameterlist ??
+	//- \param d the display object
+	//- \param pane the widget where wheel events take place
 	scrollarea(CVideo &video, bool auto_join=true);
 
 	virtual void hide(bool value = true);
@@ -63,6 +67,6 @@ private:
 	void test_scrollbar();
 };
 
-}
+} // end namespace gui 
 
 #endif

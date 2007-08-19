@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file widgets/scrollbar.cpp
+//!
+
 #include "global.hpp"
 
 #include "widgets/scrollbar.hpp"
@@ -228,9 +231,9 @@ void scrollbar::draw_contents()
 	SDL_Rect grip = grip_area();
 	int mid_height = grip.h - top_img->h - bottom_img->h;
 	if (mid_height <= 0) {
-		// for now, minimum size of the middle piece is 1. This should
-		// never really be encountered, and if it is, it's a symptom
-		// of a larger problem, I think.
+		// For now, minimum size of the middle piece is 1. 
+		// This should never really be encountered, and if it is, 
+		// it's a symptom of a larger problem, I think.
 		mid_height = 1;
 	}
 
@@ -260,12 +263,12 @@ void scrollbar::draw_contents()
 
 	surface const screen = video().getSurface();
 
-	// draw scrollbar "groove"
+	// Draw scrollbar "groove"
 	video().blit_surface(groove.x, groove.y, top_grv);
 	video().blit_surface(groove.x, groove.y + top_grv->h, groove_scaled_);
 	video().blit_surface(groove.x, groove.y + top_grv->h + groove_height, bottom_grv);
 
-	// draw scrollbar "grip"
+	// Draw scrollbar "grip"
 	video().blit_surface(grip.x, grip.y, top_img);
 	video().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
 	video().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
@@ -338,4 +341,5 @@ void scrollbar::handle_event(const SDL_Event& event)
 	state_ = new_state;
 }
 
-}
+} // end namespace gui
+
