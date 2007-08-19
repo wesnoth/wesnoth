@@ -693,7 +693,6 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// Third column: big buch of options
 	ypos = ypos_columntop;
-
 	xpos += 200 + column_border_size;
 
 	turns_label_.set_location(xpos, ypos);
@@ -715,11 +714,19 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += xp_modifier_slider_.height() + border_size;
 
 	use_map_settings_.set_location(xpos, ypos);
-	random_start_time_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += use_map_settings_.height() + border_size;
 
+	observers_game_.set_location(xpos, ypos);
+	shroud_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += observers_game_.height() + border_size;
+
+	countdown_game_.set_location(xpos, ypos);
+	random_start_time_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
+	ypos += countdown_game_.height() + border_size;
+
 	countdown_init_time_label_.set_location(xpos, ypos);
-	countdown_turn_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5 , ypos);
+	countdown_turn_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += countdown_init_time_label_.height() + border_size;
 	countdown_init_time_slider_.set_width(((ca.w - xpos)/2)-5);
 	countdown_turn_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
@@ -728,25 +735,13 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += countdown_init_time_slider_.height() + border_size;
 
 	countdown_reservoir_time_label_.set_location(xpos, ypos);
-	countdown_action_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5 , ypos);
+	countdown_action_bonus_label_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += countdown_reservoir_time_label_.height() + border_size;
 	countdown_reservoir_time_slider_.set_width(((ca.w - xpos)/2)-5);
 	countdown_action_bonus_slider_.set_width(((ca.w - xpos)/2)-5);
 	countdown_reservoir_time_slider_.set_location(xpos, ypos);
 	countdown_action_bonus_slider_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
 	ypos += countdown_reservoir_time_slider_.height() + border_size;
-
-	countdown_game_.set_location(xpos, ypos);
-//	ypos += countdown_game_.height() + border_size;
-
-	fog_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += fog_game_.height() + border_size;
-
-	shroud_game_.set_location(xpos, ypos);
-//	ypos += shroud_game_.height() + border_size;
-
-	observers_game_.set_location(xpos + (ca.w - xpos)/2 + 5, ypos);
-	ypos += observers_game_.height() + border_size;
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
@@ -908,7 +903,6 @@ void create::layout_children(const SDL_Rect& rect)
 
 	left_button->set_location(xpos, ypos);
 	right_button->set_location(xpos + left_button->width() + 2 * border_size, ypos);
-
 }
 
 
