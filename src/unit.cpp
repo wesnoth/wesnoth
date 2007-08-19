@@ -1002,7 +1002,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 
 //! Initialize this unit from a cfg object.
 //! 
-//! @param cfg  Configuration object from which to read the unit
+//! @param cfg			Configuration object from which to read the unit
+//- @param use_traits	??
 void unit::read(const config& cfg, bool use_traits)
 {
 	if(cfg["id"]=="" && cfg["type"]=="") {

@@ -155,20 +155,19 @@ public:
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
 	//! Initialize this unit from a cfg object.
-	//!  @param cfg  Configuration object from which to read the unit.
 	void read(const config& cfg, bool use_traits=true);
 	void write(config& cfg) const;
 	void write(config_writer& out) const;
 
 	void assign_role(const std::string& role) { role_ = role; }
-            void assign_ai_special(const std::string& s) { ai_special_ = s;}
+	void assign_ai_special(const std::string& s) { ai_special_ = s;}
             std::string get_ai_special() const { return(ai_special_); }
 	const std::vector<attack_type>& attacks() const { return attacks_; }
 	std::vector<attack_type>& attacks() { return attacks_; }
 
 	int damage_from(const attack_type& attack,bool attacker,const gamemap::location& loc) const { return resistance_against(attack,attacker,loc); }
 
-	//! A sdl surface, ready for display for place where we need a fix image of the unit.
+	//! A SDL surface, ready for display for place where we need a still-image of the unit.
 	const surface still_image(bool scaled = false) const;
 	void redraw_unit(game_display& disp, const gamemap::location& loc);
 	//! Clear unit_halo_ and unit_anim_halo_
