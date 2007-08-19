@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "image.hpp"
 #include "construct_dialog.hpp"
+#include "settings.hpp"
 #include "show_dialog.hpp"
 #include "map_create.hpp"
 #include "minimap.hpp"
@@ -30,6 +31,7 @@
 #include "video.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_separators.hpp"
+#include "wassert.hpp"
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};
@@ -212,25 +214,35 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 
 create::~create()
 {
+	// only save the settings if 'accepted' the dialog
+	if(get_result() != CREATE) {
+		return;
+	}
+
+	// Retrieve values
 	get_parameters();
 
-	//Save values for next game
+	// Save values for next game
 	preferences::set_allow_observers(parameters_.allow_observers);
 	preferences::set_use_map_settings(parameters_.use_map_settings);
-	preferences::set_random_start_time(parameters_.random_start_time);
-	preferences::set_fog(parameters_.fog_game);
-	preferences::set_shroud(parameters_.shroud_game);
-	preferences::set_turns(parameters_.num_turns);
 	preferences::set_countdown(parameters_.mp_countdown);
 	preferences::set_countdown_init_time(parameters_.mp_countdown_init_time);
 	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
 	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
 	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
 	preferences::set_village_gold(parameters_.village_gold);
-	preferences::set_xp_modifier(parameters_.xp_modifier);
 	preferences::set_era(era_combo_.selected()); // FIXME: may be broken if new eras are added
 	preferences::set_map(map_selection_);
-	preferences::set_turns(turns_slider_.value());
+
+	// When using map settings, the following variables are determined by the map
+	// so don't store them as the new preferences.
+	if(!parameters_.use_map_settings) {
+		preferences::set_random_start_time(parameters_.random_start_time);
+		preferences::set_fog(parameters_.fog_game);
+		preferences::set_shroud(parameters_.shroud_game);
+		preferences::set_turns(parameters_.num_turns);
+		preferences::set_xp_modifier(parameters_.xp_modifier);
+	}
 }
 
 create::parameters& create::get_parameters()
@@ -500,12 +512,44 @@ void create::process_event()
 		}
 		num_players_label_.set_text(players.str());
 		map_size_label_.set_text(map_size.str());
+	}
 
-		if(use_map_settings_.checked()) {
-			xp_modifier_slider_.set_value(lexical_cast_default<int>(
-				parameters_.scenario_data["experience_modifier"],
-				preferences::xp_modifier()));
-		}
+	if(map_changed || use_map_settings_.pressed()) {
+		const bool map_settings = use_map_settings_.checked();
+
+		// if the map settings are wanted use them if not properly defined
+		// fall back to the default settings
+		turns_slider_.set_value(map_settings ? 
+			settings::get_turns(parameters_.scenario_data["turns"]) :
+			preferences::turns());
+		
+		xp_modifier_slider_.set_value(map_settings ? 
+			settings::get_xp_modifier(parameters_.scenario_data["experience_modifier"]) :
+			preferences::xp_modifier());
+
+		random_start_time_.set_check(map_settings ?
+			settings::use_random_start_time(parameters_.scenario_data["random_start_time"]) :
+			preferences::random_start_time());
+		
+		// These are per player, always show of player 1 this might not be 100% correct,
+		// but at the moment it's not possible to show the fog and shroud per player.
+		// This might change in the future.
+		wassert(parameters_.scenario_data.get_children("side").size());
+
+		fog_game_.set_check(map_settings ? 
+			settings::use_fog((*parameters_.scenario_data.get_children("side").front())["fog"]) :
+			preferences::fog());
+
+		shroud_game_.set_check(map_settings ?
+			settings::use_shroud((*parameters_.scenario_data.get_children("side").front())["shroud"]) :
+			preferences::shroud());
+				
+		// set the widget states
+		turns_slider_.enable(!map_settings);
+		xp_modifier_slider_.enable(!map_settings);
+		random_start_time_.enable(!map_settings);
+		fog_game_.enable(!map_settings);
+		shroud_game_.enable(!map_settings);
 	}
 }
 

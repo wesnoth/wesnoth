@@ -38,6 +38,12 @@ Version 1.3.6+svn:
    * multiplayer lobby: tab completion works for all player names now,
      not only for those which are not in a game (bug #9350)
    * enable "teamchat" for observers
+   * when use 'map settings' is selected, map settings can no longer be
+     changed, if not defined in the map the general default is chosen
+   * when cancelling the MP create the changed preferences are no longer
+     saved
+   * when the MP create is accepted with 'use map settings' the map setting
+     parameters are no longer stored as the new preference
  * graphics
    * fixed a glitch with the undo of recruit or recall on high places.
    * Improve rendering of "black stripes": don't hide footsteps or fog,

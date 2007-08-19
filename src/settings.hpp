@@ -15,6 +15,8 @@
 #ifndef SETTINGS_HPP_INCLUDED
 #define SETTINGS_HPP_INCLUDED
 
+#include <string>
+
 /**
  * Contains the general settings which have a default. These values
  * can be used to initialize the preferences but also to set map 
