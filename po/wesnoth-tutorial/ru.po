@@ -1,19 +1,19 @@
-# translation of ru.po to
-# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
+# translation of comp.po to Russian
+# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-tutorial.po\n"
+"Project-Id-Version: comp\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-03 15:52+0200\n"
-"PO-Revision-Date: 2007-02-13 00:43+0500\n"
+"PO-Revision-Date: 2007-08-20 00:13+0600\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: Russian <bugs.wesnoth.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -207,7 +207,7 @@ msgstr "Манекена? Вы призвали для битвы куклу?!"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:374
 msgid "Child, you have 32 hitpoints and a sword.   I'm fairly sure you'll win."
-msgstr "Дитя моё, у тебя 32 здоровья и меч. И я уверен, что ты победишь."
+msgstr "Дитя моё, у тебя 32 здоровья и меч. Я уверен, что ты победишь."
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:379
 msgid ""
@@ -282,7 +282,6 @@ msgid "The DUMMY gets a turn?"
 msgstr "КУКЛА может ходить?"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
-#, fuzzy
 msgid ""
 "Yes: it's a magical quintain.\n"
 "See the 3-5 in its description? The first number tells you that it does "
@@ -291,10 +290,11 @@ msgid ""
 "If it hits every time, you'll drop from $student_hp to $future_hp hit "
 "points. Brace yourself!"
 msgstr ""
-"Да, ведь это волшебный манекен.\n"
-"Теперь у этого манекена пять попыток ударить тебя, и каждый раз при "
-"попадании у тебя может остаться от $student_hp до $future_hp очков здоровья. "
-"Приготовься!"
+"Да, это же волшебный манекен.\n"
+"Видишь 3-5 в его описании? Первое число означает количество урона. Второе - "
+"что у него есть пять попыток поразить тебя за один раунд.\n"
+"Если он попадет по тебе пять раз подряд, то твое здоровье уменьшится с "
+"$student_hp до $future_hp очков здоровья. Защищайся!"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:472
 msgid "Click on the End Turn button on the bottom right"
@@ -730,9 +730,8 @@ msgid "Ouch! I could use some healing in a village."
 msgstr "Ой! Мне нужна помощь в деревне."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:230
-#, fuzzy
 msgid "I have $side.gold gold: enough to recruit!"
-msgstr "У меня $gold золотых монет, достаточно для вербовки!"
+msgstr "У меня $side.gold золотых монет, достаточно для вербовки!"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:231
 msgid "Yes, keep recruiting more units: I think you might need them!"
@@ -1016,13 +1015,12 @@ msgstr ""
 "раз..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:760
-#, fuzzy
 msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
-"Нет! Я же сказал ПРИЗВАТЬ $recall_name1 с прошлой битвы, а не завербовать "
-"$recruit.type|! Попробуй ещё раз..."
+"Нет! Я же сказал ПРИЗВАТЬ $recall_name1 с прошлой битвы, а не вербовать "
+"$recruit.language_name|! Попробуй ещё раз..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:777
 msgid "Right click on the tile south-east of you and recall $recall_name2"
@@ -1042,13 +1040,12 @@ msgstr ""
 "бойца"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:798
-#, fuzzy
 msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.type|? Я же сказал ЗАВЕРБОВАТЬ нового ЭЛЬФА БОЙЦА. Попробуй ещё "
-"раз..."
+"$recruit.language_name|? Я же сказал ЗАВЕРБОВАТЬ нового ЭЛЬФА БОЙЦА. "
+"Попробуй ещё раз..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:812
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:823
@@ -1503,6 +1500,11 @@ msgid ""
 "beginner's campaign. Konrad, Li'sar and Delfador are characters from Heir To "
 "The Throne."
 msgstr ""
+"Вы победили Орков! Теперь вы, наверное, захотите попробовать одну из "
+"кампаний на уровне Новичок, например Южная гвардия, Легенда о двух братьях "
+"или Наследник престола. Южная гвардия была разработана специально как "
+"кампания для начинающих. Конрад, Ли'сар и Делфадор являются персонажами из "
+"кампании Наследник престола."
 
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:4
 msgid "Elder Mage"
@@ -1563,12 +1565,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "цеп"
-
-#~ msgid "impact"
-#~ msgstr "крушащий"
-
-#~ msgid "fire"
-#~ msgstr "огонь"
-
-#~ msgid "blade"
-#~ msgstr "режущий"

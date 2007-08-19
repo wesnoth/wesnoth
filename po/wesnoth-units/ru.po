@@ -1,4 +1,3 @@
-# #-#-#-#-#  wesnoth.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
 # Copyright (C) 2007 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -8,18 +7,19 @@
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
+# Anthon Kolesov - anthony.kolesov@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-15 14:40+0200\n"
-"PO-Revision-Date: 2007-02-12 23:13+0500\n"
-"Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
+"PO-Revision-Date: 2007-08-16 00:08+0300\n"
+"Last-Translator: Anthony Kolesov <anthony.kolesov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -27,15 +27,17 @@ msgstr ""
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
 #: data/core/units/boats/Boat.cfg:4
-#, fuzzy
 msgid "Boat"
-msgstr "Кровавая мышь"
+msgstr "Лодка"
 
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"Обычно приводимые в движение вёслами или небольшими парусами, лодки "
+"используются для путешествий на короткие дистанции и на мелководье, где "
+"большие корабли не могут передвигаться."
 
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
@@ -43,14 +45,13 @@ msgstr "Галеон"
 
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "Галеоны — это корабли для торговли и перевозок в открытых морях."
 
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
 msgstr "Пиратский галеон"
 
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "onboard are more than happy to help relieve other ships of their weighty "
@@ -89,6 +90,10 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"Если бы не оружие, которе они носят, некоторые драконы были бы неотличимы от "
+"истинных древних драконов, по крайней мере для обычного человека. Известные "
+"как \"Драконы Судного Дня\" они не только владеющиют сокрушительным огнём, "
+"но ещё и отлично от него защищённы."
 
 #: data/core/units/dwarves/Gryphon_Rider.cfg:29
 #: data/core/units/dwarves/Gryphon_Master.cfg:29
@@ -124,13 +129,12 @@ msgid "Drake Blademaster"
 msgstr "Дракон мастер клинка"
 
 #: data/core/units/drakes/Blademaster.cfg:19
-#, fuzzy
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of their initiation is the black-and-white warpaint they display in "
 "battle."
 msgstr ""
-"Драконы, мастерски использующие мечи, присягали специальному ордену. В битве "
+"Драконы, мастерски использующие мечи, присягают специальному ордену. В битве "
 "их отличают черные и белые боевые цвета."
 
 #: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:30
@@ -173,14 +177,13 @@ msgid "Drake Burner"
 msgstr "Дракон поджигатель"
 
 #: data/core/units/drakes/Burner.cfg:19
-#, fuzzy
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
-"Дракон поджигатель — один из немногих, кто унаследовал истинную силу от "
+"Дракон Поджигатель — один из немногих, кто унаследовал истинную силу от "
 "своих далеких предков, особенно способность дышать огнем. Эта способность, в "
 "паре с размерами и когтями на лапах, делают его опасным противником в бою."
 
@@ -189,7 +192,6 @@ msgid "Drake Clasher"
 msgstr "Конфликтный дракон"
 
 #: data/core/units/drakes/Clasher.cfg:23
-#, fuzzy
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -208,12 +210,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Конфликтные драконы не способны ни летать, ни дышать огнем, и их продвижение "
-"в сторону рукопашной битвы является попыткой восполнить этот недостаток и "
-"заполнить нишу, неподходящую для других.Возможно, что они имеют некоторые "
-"изъяны в своих навыках, но те, кто поддерживает эту теорию, были не в "
-"состоянии увидеть, насколько идеально они походят к битве со своими "
-"собратьями.\n"
+"Конфликтные драконы не способны ни летать, ни дышать огнем, и многие "
+"предполагают, что их низведение в сторону рукопашной битвы является попыткой "
+"восполнить этот недостаток и заполнить нишу, неподходящую для других. "
+"Возможно, что они имеют некоторые изъяны в своих навыках, но те, кто "
+"поддерживает эту теорию, были не в состоянии увидеть, насколько идеально они "
+"походят к битве со своими собратьями.\n"
 "\n"
 "Фактически, он являются судьями в иерархии драконов, и хотя их оружие ныне "
 "является в значительной степени церемониальным, оно, тем не менее, "
@@ -221,7 +223,9 @@ msgstr ""
 "природные размер и сила сами по себе является мощным оружием. А в сочетании "
 "с вооружением, используемым этой кастой, воины становятся неуязвимыми к "
 "типичным слабостям своего народа, например сильной уязвимости к копьям и "
-"стрелам."
+"стрелам.\n"
+"\n"
+"Примечание:"
 
 #: data/core/units/saurians/Skirmisher.cfg:32
 #: data/core/units/saurians/Skirmisher.cfg:113
@@ -260,7 +264,6 @@ msgid "Drake Enforcer"
 msgstr "Дракон в броне"
 
 #: data/core/units/drakes/Enforcer.cfg:21
-#, fuzzy
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
 "hours at the forge have equipped them with a bristling array of weaponry, "
@@ -286,7 +289,6 @@ msgid "Drake Fighter"
 msgstr "Дракон боец"
 
 #: data/core/units/drakes/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
 "of their ancestors. They can also fly, which is troubling to any foe.  Their "
@@ -294,8 +296,10 @@ msgid ""
 "swordsman of any other race."
 msgstr ""
 "Драконы бойцы умеют обращаться с изогнутыми ятаганами со смертельным "
-"мастерством и имеют огнедышащие навыки от своих предков. Большинство "
-"одаренных бойцов вступят в ряды элитных воинов."
+"мастерством и имеют огнедышащие навыки от своих предков. Более того они "
+"летают, что делает их значительной проблемой для любого противника. Их "
+"огромная сила, помноженная на внушительные размеры, способна напугать любого "
+"мечника другой расы."
 
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
@@ -306,13 +310,12 @@ msgid "Fire Drake"
 msgstr "Огненный дракон"
 
 #: data/core/units/drakes/Fire.cfg:18
-#, fuzzy
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
-"Великие огненные драконы являются мастерами своего внутреннего огня. Одетые "
+"Великие огненные драконы являются хозяевами своего внутреннего огня. Одетые "
 "в блестящую броню, они извергают столб пламени в любого, кто противостоит "
 "им. Им дарованы сила и величие своего народа."
 
@@ -321,7 +324,6 @@ msgid "Drake Flameheart"
 msgstr "Дракон пламенное сердце"
 
 #: data/core/units/drakes/Flameheart.cfg:28
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves - have veins which course with fire rather than blood. "
@@ -359,7 +361,6 @@ msgid "Drake Gladiator"
 msgstr "Дракон гладиатор"
 
 #: data/core/units/drakes/Gladiator.cfg:19
-#, fuzzy
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
 "Rather than emphasize training, they have chosen to focus on the craft of "
@@ -370,12 +371,12 @@ msgid ""
 "reduction in their defensive abilities."
 msgstr ""
 "Дракон гладиатор выбрал совершенно другой путь, отличный от дракона "
-"измельчителя. Придавая особое значение тренировкам, он сосредоточился на "
-"совершенствовании мастерства обращения со своим оружием. Он — кузнец "
-"общества драконов, это значит, что он обладает лучшим вооружением — "
-"острейшими клинками, копьями и булавой, которая дополняет его и без того "
-"внушительный набор. Сосредоточившись на своем вооружении, он меньше времени "
-"уделял своим защитным способностям."
+"измельчителя. Вместо того, чтобы придавать особое значение тренировкам, он "
+"сосредоточился на совершенствовании мастерства изготовления своего оружия. "
+"Он — кузнец общества драконов, это значит, что он обладает лучшим "
+"вооружением — острейшими клинками, копьями и булавой, которая дополняет его "
+"и без того внушительный набор. Сосредоточившись на своем вооружении, он "
+"меньше времени уделял своим защитным способностям."
 
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
@@ -383,7 +384,6 @@ msgstr "Парящий дракон"
 
 # rev
 #: data/core/units/drakes/Glider.cfg:22
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little encumberment as possible, freeing themselves to "
 "fly to their full ability. These Drakes are competent fighters, possessing "
@@ -397,11 +397,10 @@ msgstr ""
 "Парящие драконы одеты в самую легкую броню, что позволяет им быстро "
 "настигать врагов, покидающих свои пещеры. Эти драконы — достойные "
 "противники, владеющие внутренним огнем, унаследованным от их предков. "
-"Парящие драконы также могут эффективно использовать свою скорость для "
-"яростного хлопанья крыльями по своим противникам. Лучшие парящие драконы "
-"могут в скором времени получить ранг высоко летающих небесных драконов. С "
-"большой высоты эти драконы способны разглядеть самые защищенные укрытия. "
-"Способность летать позволяет им точно поражать противника в таких укрытиях.\n"
+"Парящие драконы также могут эффективно использовать свою скорость чтобы "
+"закрыть врагов в ловушке. С большой высоты эти драконы способны разглядеть "
+"самые защищенные укрытия. Способность летать позволяет им точно поражать "
+"противника в таких укрытиях.\n"
 "\n"
 "Примечание:"
 
@@ -415,7 +414,6 @@ msgid "Hurricane Drake"
 msgstr "Ураганный дракон"
 
 #: data/core/units/drakes/Hurricane.cfg:31
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
 "drakes which are gifted with flight. Soaring high in the air, they can see "
@@ -434,7 +432,6 @@ msgid "Inferno Drake"
 msgstr "Адский дракон"
 
 #: data/core/units/drakes/Inferno.cfg:19
-#, fuzzy
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
 "fire they breathe, and rival their predecessors the Dragons in their ability "
@@ -443,8 +440,8 @@ msgid ""
 "the ideal to which their brethren aspire."
 msgstr ""
 "Летающая разновидность дракона, известная как \"адский дракон\", является "
-"мастером внутреннего огня, унаследованным от их предков. Его естественная "
-"особенность предоставляет ему иммунитет к огню. Он одет в яркую, огненную "
+"мастером внутреннего огня, унаследованным от их предков. Их естественная "
+"особенность предоставляет им иммунитет к огню. Они одты в яркую, огненную "
 "броню и входит в касту гордых и сильных совершенных существ."
 
 #: data/core/units/drakes/Sky.cfg:4
@@ -453,7 +450,6 @@ msgstr "Небесный дракон"
 
 # rev
 #: data/core/units/drakes/Sky.cfg:30
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and and their fire breath combine into a terrible weapon. By "
@@ -465,10 +461,9 @@ msgid ""
 msgstr ""
 "Небесные драконы — истинные повелители неба. Используя свое движение и "
 "огненное дыхание в качестве оружия, эти драконы многим принесли несчастье. "
-"Они могут внезапно налетать на свою жертву, и пройдет еще много времени, "
-"прежде чем кто-то опомнится и попытается остановить их. Атакуя с воздуха, "
-"они могут извергнуть огонь с величайшей точностью по местности, которая в "
-"другом случае считалась бы наилучшим укрытием от противника.\n"
+"Атакуя с воздуха, они могут извергнуть огонь с величайшей точностью по "
+"местности, которая в другом случае считалась бы наилучшим укрытием от "
+"противника.\n"
 "\n"
 "Примечание:"
 
@@ -477,7 +472,6 @@ msgid "Drake Slasher"
 msgstr "Дракон измельчитель"
 
 #: data/core/units/drakes/Slasher.cfg:21
-#, fuzzy
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -488,8 +482,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Драконы измельчители мастерски владеют прежде всего алебардой, а не мечом и "
-"копьем. Их огромный размер позволяет им использовать свое оружие на большой "
-"высоте, достаточной для того чтобы пронзить человека на лошади. Благодаря "
+"копьем. Их огромный размер позволяет им использовать очень большое оружие, "
+"достаточное для того чтобы пронзить лошадь так же, как и человека. Благодаря "
 "своей подготовке они улучшили такие умения как выносливость и защита, что "
 "является важным преимуществом над их двоюродными братьями — гладиаторами.\n"
 "\n"
@@ -528,7 +522,6 @@ msgid "Drake Warrior"
 msgstr "Дракон воин"
 
 #: data/core/units/drakes/Warrior.cfg:18
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
@@ -550,6 +543,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Берсерки — это немногочисленная каста гномов, которые перед битвой приходят "
+"в состояние дикого бешенства. Эти воины забывают о какой бы то ни было "
+"защите, совершая лишь беспрестанные атаки, в исполнении которых они достигли "
+"вершин мастерства.\n"
+"\n"
+"Примечание:"
 
 #: data/core/units/dwarves/Berserker.cfg:33
 #: data/core/units/dwarves/Ulfserker.cfg:33
@@ -634,7 +633,6 @@ msgid "Gryphon Master"
 msgstr "Хозяин грифона"
 
 #: data/core/units/dwarves/Gryphon_Master.cfg:19
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -672,6 +670,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Представители расы гномов хорошо известны крепкостью своих тел и многие из "
+"этих воинов экипируют себя так, чтобы использовать это преимущество. Гномы "
+"охранники идут в битву с копьями и огромными башенными щитам. В большинстве "
+"случаев их роль — держать линию и заставить заплатить высокую цену тех, кто "
+"попытается сломать линию. Пока линия продвигается вперёд, гномы охранники "
+"защищают столь нелегко добытое преимущество."
 
 #: data/core/units/dwarves/Stalwart.cfg:85
 #: data/core/units/dwarves/Guardsman.cfg:82
@@ -712,7 +716,6 @@ msgid "Dwarvish Runemaster"
 msgstr "Гном мастер рун"
 
 #: data/core/units/dwarves/Runemaster.cfg:19
-#, fuzzy
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
 "surface of an object, which by their mere presence somehow imbue it with "
@@ -721,8 +724,8 @@ msgid ""
 msgstr ""
 "Магия гномов, насколько это известно, чаще всего проявляется в рунах, "
 "изображенных на поверхности предмета, в которых есть явное присутствие чего-"
-"то, что вдохновляет этот предмет силой. Хотя редко это замечено было в "
-"битве, но владелец этих рун может использовать их с ужасной силой."
+"то, что вдохновляет этот предмет силой. Хотя их и редко встречают в битве, "
+"но повелители этих рун могут найти им вполне достойное применение в бою."
 
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid "runic hammer"
@@ -746,6 +749,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Лучшие среди своих войск, гномы часовые формируют основу линии фронта. Идти "
+"в прямую атаку на гномов часовых могут только дураки, не понимающие "
+"безнадёжности своего поступка, и самоубийцы, не нащедшие лучшего способа "
+"покинуть сей мир. Эти гномы — мастера рукопашной и могут держать участок "
+"земли с маниакальным упорство.\n"
+"\n"
+"Примечания:"
 
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
@@ -760,6 +770,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Опыт и тренировки способны превратить гномов охранников в очень ценных "
+"солдат. Эти стойкие войска снаряжены как раз по своим навыкам и могут отбить "
+"практически любую атаку, за исключением самой яростной. Для этих солдат "
+"опаснее всего отстать от своих — им будет очень нелегко пробиться к основным "
+"силам."
 
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
@@ -778,7 +793,6 @@ msgid "Dwarvish Thunderer"
 msgstr "Гном громовержец"
 
 #: data/core/units/dwarves/Thunderer.cfg:19
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -830,7 +844,6 @@ msgid "Dwarvish Ulfserker"
 msgstr "Гном ульфсерк"
 
 #: data/core/units/dwarves/Ulfserker.cfg:21
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
@@ -928,7 +941,6 @@ msgid "Elvish Captain"
 msgstr "Эльф капитан"
 
 #: data/core/units/elves/Captain.cfg:28
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. In this they differ greatly from "
@@ -952,7 +964,6 @@ msgid "Elvish Champion"
 msgstr "Эльф чемпион"
 
 #: data/core/units/elves/Champion.cfg:19
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -964,15 +975,13 @@ msgstr ""
 "оправдывать распространенную репутацию своей расы. Преданность и умение "
 "безупречно сочетаются в них, и как результат — совершенное владение "
 "искусством фехтования, в котором лишь немногие могут сравниться с ними. Даже "
-"принимая во внимание навыки владения лука, изучаемые ими во вторую очередь,  "
-"людям остается только изумляться такому чуду."
+"владение луком, изучаемое ими во вторую очередь, заставляет людей поражаться."
 
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
 msgstr "Эльфийка друид"
 
 #: data/core/units/elves/Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -1023,7 +1032,6 @@ msgid "female^Elvish Enchantress"
 msgstr "Эльфийка колдунья"
 
 #: data/core/units/elves/Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -1072,7 +1080,6 @@ msgid "Elvish Hero"
 msgstr "Эльф герой"
 
 #: data/core/units/elves/Hero.cfg:19
-#, fuzzy
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
 "fighter into a master of combat. Those who are honored as heroes are strong "
@@ -1082,14 +1089,13 @@ msgstr ""
 "Относительно небольшое количество опыта необходимо эльфам для того, чтобы из "
 "компетентного бойца превратиться в мастера боя. Они почитаемы как герои и "
 "сильны в обращении как с мечом, так и с луком. Это мастерство, которое "
-"никогда не увядает в отсутствии практики."
+"никогда не увядает даже в отсутствии практики."
 
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "Эльф стрелок"
 
 #: data/core/units/elves/Marksman.cfg:24
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -1127,7 +1133,6 @@ msgstr "Эльф маршал"
 
 # rev
 #: data/core/units/elves/Marshal.cfg:29
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for such things. "
@@ -1139,11 +1144,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Из-за долгожительства и естественного интеллекта эльфы настолько искушены "
-"военном деле, что предпочитают держаться от него подальше. Эльфы знают "
-"намного больше, чем человечество, и обычно интуитивно умеют уже то, что "
-"другим дается только после долгих тренировок. Несомненно, это редчайший "
-"случай, когда эльф использует свой интеллект в войне, становясь в результате "
-"мастером стратегии.\n"
+"военном деле, что предпочитают держаться от него подальше. Эльфы помнят вещи "
+"намнонго лучше чем люди, и обычно интуитивно умеют уже то, что другим дается "
+"только после долгих тренировок. Однако, в редких случаях, когда эльф "
+"посвящает себя в войне, то несомненно, что он становится мастером "
+"стратегии.\n"
 "\n"
 "Примечание:"
 
@@ -1152,7 +1157,6 @@ msgid "Elvish Outrider"
 msgstr "Эльф предвестник"
 
 #: data/core/units/elves/Outrider.cfg:22
-#, fuzzy
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
 "Despite the peaceful nature of their people, their experience makes them "
@@ -1179,7 +1183,6 @@ msgid "Elvish Ranger"
 msgstr "Эльф странник"
 
 #: data/core/units/elves/Ranger.cfg:22
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -1206,7 +1209,6 @@ msgid "Elvish Rider"
 msgstr "Эльф всадник"
 
 #: data/core/units/elves/Rider.cfg:23
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal for any human. Awe of the rider is quite justified "
@@ -1216,7 +1218,7 @@ msgid ""
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
 msgstr ""
-"Мастера верховой езды среди эльфов могут двигаться сквозь лес в такой "
+"Мастера верховой езды среди эльфов могут двигаться сквозь лес с такой "
 "скоростью, которая была бы смертельно опасна для любого человека. "
 "Несомненно, такой наездник поражает воображение людей, но возникает вопрос "
 "об их лошадях, движения которых выглядят сверхестественно.\n"
@@ -1229,7 +1231,6 @@ msgid "Elvish Scout"
 msgstr "Эльф разведчик"
 
 #: data/core/units/elves/Scout.cfg:22
-#, fuzzy
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
 "true skill lies in their horsemanship. Even other elves are impressed by "
@@ -1248,7 +1249,6 @@ msgid "female^Elvish Shaman"
 msgstr "Эльфийка шаман"
 
 #: data/core/units/elves/Shaman.cfg:24
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -1276,7 +1276,6 @@ msgid "Elvish Sharpshooter"
 msgstr "Эльф снайпер"
 
 #: data/core/units/elves/Sharpshooter.cfg:23
-#, fuzzy
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
 "air with one of his own. It is a testament to the skill of the elves that "
@@ -1351,7 +1350,6 @@ msgid "female^Elvish Sylph"
 msgstr "Эльфийка сильф"
 
 #: data/core/units/elves/Sylph.cfg:22
-#, fuzzy
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
 "mundane natures. They are possessed of wondrous, and sometimes terrifying "
@@ -1375,7 +1373,6 @@ msgid "Direwolf Rider"
 msgstr "Наездник страшного волка"
 
 #: data/core/units/goblins/Direwolf_Rider.cfg:23
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1418,7 +1415,6 @@ msgid "Goblin Impaler"
 msgstr "Гоблин закалыватель"
 
 #: data/core/units/goblins/Impaler.cfg:21
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
 "line. Those who manage to survive their first few battles equip themselves "
@@ -1427,10 +1423,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Гоблины используются орками в качестве пушечного мяса в битве с главными "
-"силами противника. Те, кто смог уцелеть, снова экипируются для продолжения "
-"битвы. Длинные копья помогают им компенсировать их низкий рост, а лучшие "
-"доспехи помогают им защищать их хрупкие тела.\n"
+"Гоблины используются орками в качестве пушечного мяса в для прорыва линии "
+"противника. Те, кто смог уцелеть, снова экипируются для продолжения битвы. "
+"Длинные копья помогают им компенсировать их низкий рост, а лучшие доспехи "
+"помогают им защищать их хрупкие тела.\n"
 "\n"
 "Примечание:"
 
@@ -1439,7 +1435,6 @@ msgid "Goblin Knight"
 msgstr "Гоблин рыцарь"
 
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1462,7 +1457,6 @@ msgid "Goblin Pillager"
 msgstr "Гоблин мародер"
 
 #: data/core/units/goblins/Pillager.cfg:21
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -1473,7 +1467,8 @@ msgid ""
 msgstr ""
 "Некоторые гоблины тренируют своих волков преодолевать их страх перед огнем. "
 "В набегах эти гоблины играют роль поддержки; они могут поджигать дома и "
-"урожай своих врагов, также они могут расставлять сети.\n"
+"урожай своих врагов, также они используют сети, чтобы вносиьт беспорядок в "
+"ряды обороняющихся.\n"
 "\n"
 "Примечание:"
 
@@ -1493,7 +1488,6 @@ msgstr "Пробужденный гоблин"
 
 # rev
 #: data/core/units/goblins/Rouser.cfg:28
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1515,7 +1509,6 @@ msgid "Goblin Spearman"
 msgstr "Гоблин копьеносец"
 
 #: data/core/units/goblins/Spearman.cfg:20
-#, fuzzy
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -1541,7 +1534,6 @@ msgid "Wolf Rider"
 msgstr "Наездник волка"
 
 #: data/core/units/goblins/Wolf_Rider.cfg:36
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1555,9 +1547,10 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
-"Никто не знает точно, каким образом приручают и седлают волков. Гоблины "
-"меньше и слабее орков. Любой, кто найдет в себе силы сесть верхом, станет "
-"более защищенным и займет более значимую роль в битве.\n"
+"Никто не знает точно, каким образом приручают и седлают волков, но "
+"преимущества этого для гоблинов очевидны. Гоблины меньше и слабее орков и "
+"их, как правило, посылают в самое пекло битвы. Любой, кто найдет в себе силы "
+"сесть верхом, станет более защищенным и займет более значимую роль в битве.\n"
 "\n"
 "Волки, скорее всего, никогда не смогут выдержать человека в доспехах, но "
 "гоблины в кожаных доспехах запросто удержатся на них. В отличие от "
@@ -1607,7 +1600,6 @@ msgid "Knight"
 msgstr "Рыцарь"
 
 #: data/core/units/humans/Horse_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
 "combat, they have seen the often-fatal results of a failed charge, and have "
@@ -1629,7 +1621,6 @@ msgid "Lancer"
 msgstr "Улан"
 
 #: data/core/units/humans/Horse_Lancer.cfg:20
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -1638,8 +1629,8 @@ msgid ""
 "down infantrymen who have made the mistake of breaking formation, and in "
 "piercing defensive lines. However, they have limited use in defense."
 msgstr ""
-"Уланы — одни из бравых и самых знаменитых всадников во всем Весноте. Они "
-"экипированы минимальной броней, поэтому они способны быстро передвигаться, "
+"Уланы — одни из самых бравых и знаменитых всадников во всем Весноте. Они "
+"экипированы минимальной броней, поэтому они способны быстро передвигаться "
 "быстрее, чем кто-либо другой. В дерзкой тактике они используют обоюдоострый "
 "меч, чтобы победить и прославится или быстро умереть. Уланы отлично подходят "
 "для охоты на пехотинцев, по неосторожности вышедшие из строя, и для "
@@ -1651,7 +1642,6 @@ msgid "Paladin"
 msgstr "Паладин"
 
 #: data/core/units/humans/Horse_Paladin.cfg:22
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to semi-"
 "monastic vows, pledging their might to the cause of righteousness. Though "
@@ -1662,7 +1652,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Рыцари более высоких помыслов, паладины вступили в монашеский орден, "
+"Рыцари более высоких помыслов, паладины вступили в полумонашеский орден, "
 "поклявшись посвятить свое могущество защите обиженных и угнетенных. Хотя они "
 "не так внушительны на поле боя, как Великие Рыцари, паладины все же является "
 "мощной силой в битве и их благочестие является одним из лучших их качеств. "
@@ -1675,7 +1665,6 @@ msgid "Horseman"
 msgstr "Всадник"
 
 #: data/core/units/humans/Horseman.cfg:20
-#, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -1698,7 +1687,6 @@ msgid "Bowman"
 msgstr "Лучник"
 
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -1717,7 +1705,6 @@ msgid "Cavalier"
 msgstr "Всадник"
 
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
@@ -1748,7 +1735,6 @@ msgid "Cavalryman"
 msgstr "Кавалерист"
 
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1760,10 +1746,10 @@ msgid ""
 "for screening friendly soldiers, and also for scoutwork."
 msgstr ""
 "Кавалеристы от всадников отличается тактикой и обмундированием. Кавалеристы "
-"носят тяжелую броню, передвигаются с мечом и щитом, предпочитая их копью. Их "
-"тактика не включает в себя бросок, вместо этого используется маневр для "
-"нанесения удара с плеча своим мечом, используя сразу лошадь и наездника как "
-"эффективный инструмент в рукопашной схватке.\n"
+"носят более тяжелую броню, передвигаются с мечом и щитом, предпочитая их "
+"копью. Их тактика не включает в себя бросок, вместо этого используется "
+"маневр для нанесения удара с плеча своим мечом, используя сразу лошадь и "
+"наездника как эффективный инструмент в рукопашной схватке.\n"
 "\n"
 "Кавалерию очень полезно применять для удержания позиций на открытых "
 "пространствах, поддержки дружественных солдат, также можно использовать в "
@@ -1791,7 +1777,6 @@ msgid "Duelist"
 msgstr "Дуэлянт"
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:21
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -1808,16 +1793,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Благороднейшие представители из нации Веснота обычно отдают своих сыновей "
-"либо в школу верховой езды, либо в школу фехтования. Дуэлянтами называли "
-"молодых аристократов, которые хотели доказать свою правоту тем, кто нанес им "
+"Благороднейшие представители нации Веснота обычно отдают своих сыновей либо "
+"в школу верховой езды, либо в школу фехтования. Дуэлянтами называли молодых "
+"аристократов, которые хотели доказать свою правоту тем, кто нанес им "
 "оскорбление.\n"
 "\n"
 "Опытные фехтовальщики, не всегда являясь благородными от рождения, носят с "
 "собой небольшой арбалет, который можно легко скрыть под одеждой или "
-"накидкой. Он долго заряжается и не удобен в использовании, но, тем не менее, "
-"является очень полезным оружием, в течении жизни их ранг повышается до "
-"уровня ветеранов, они становятся более живучими.\n"
+"накидкой. Он долго заряжается, применять его неудобно и нечестно, но, тем не "
+"менее, арбалет является очень полезным оружием, и те кто смог прожить "
+"достаточно долго, чтобы стать ветераном, как правило сделали это именно "
+"благодаря подобным уступкам прагматизму и желанию выжить.\n"
 "\n"
 "Примечание:"
 
@@ -1832,7 +1818,6 @@ msgid "Fencer"
 msgstr "Фехтовальщик"
 
 #: data/core/units/humans/Loyalist_Fencer.cfg:22
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -1866,7 +1851,6 @@ msgid "General"
 msgstr "Генерал"
 
 #: data/core/units/humans/Loyalist_General.cfg:31
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn "
@@ -1885,7 +1869,6 @@ msgid "Grand Marshal"
 msgstr "Великий маршал"
 
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have survived many trials by fire, "
@@ -1894,9 +1877,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Званием Великого маршала удостаиваются лишь закаленные огнем воины, которые "
-"доказали, что обладают боевой выучкой и выдержкой в индивидуальном бою. Они "
-"по праву являются одними из самых уважаемых в армии людей.\n"
+"Званием Великого маршала удостаиваются лишь закаленные огнем и мечом воины, "
+"которые доказали, что обладают боевой выучкой и выдержкой в индивидуальном "
+"бою. Они по праву являются одними из самых уважаемых в армии людей.\n"
 "\n"
 "Примечание:"
 
@@ -1965,7 +1948,6 @@ msgid "Iron Mauler"
 msgstr "Железный мучитель"
 
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
-#, fuzzy
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
 "their foes. The men within these suits of armor can match ogres in contests "
@@ -2034,7 +2016,6 @@ msgid "Longbowman"
 msgstr "Лучник с длинным луком"
 
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
-#, fuzzy
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
 "wield. It takes great strength to draw one, and the added range and power it "
@@ -2054,7 +2035,6 @@ msgid "Master Bowman"
 msgstr "Мастер лучник"
 
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:20
-#, fuzzy
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
 "capable. Armed with both a sword, and a great yew bow, these warriors crown "
@@ -2068,17 +2048,16 @@ msgstr ""
 "Мастера лучники достигли вершин своего искусства, недоступных любому другому "
 "человеку. Вооруженные мечом и огромным луком, эти воины возглавляют "
 "батальоны лучников, сокрушая любого врага своими точными выстрелами. Их "
-"навыки владения мечом также неоценимы. Они так же хороши, как и новобранцы "
-"мечники. Из всех рас в мире только эльфийские лучники превосходят людей в "
-"стрельбе из лука, а их людские коллеги, завидуя им, предполагают, что это "
-"только из-за долголетия эльфов."
+"навыки владения мечом также очень хороши, они так же хороши, как и "
+"новобранцы мечники. Из всех рас в мире только эльфийские лучники превосходят "
+"людей в стрельбе из лука, а их людские коллеги, завидуя им, предполагают, "
+"что это только из-за долголетия эльфов."
 
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
 msgstr "Мастер оружия"
 
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2096,14 +2075,14 @@ msgid ""
 msgstr ""
 "Мастера фехтования занимают завидное место в жизни. Вопреки безрассудству и "
 "опасной жизни, они достигли того времени, когда они получают свои награды. "
-"Знаменитые благодаря своим навыкам и своим распутным поведением, эти "
-"джентльмены, наделенные аристократизмом от рождения, не пропустят мимо себя "
-"ни одну высокородную леди.\n"
+"Знаменитые благодаря своим навыкам и своему распутныму поведению, эти "
+"джентльмены, наделенные аристократизмом от рождения, находятся под "
+"пристальным вниманием многих благородных леди.\n"
 "\n"
 "Часто они купаются в роскоши, и они свободны выбирать земли, в которых "
 "осядут. Часто они становятся капитанами гарнизона замка или мастерами "
-"военной академии, эти должности для них в тягость, но они, возможно, "
-"пригодятся.\n"
+"военной академии, должности, на которых их природное безрассудство не только "
+"приемлемо, но даже может принести пользу.\n"
 "\n"
 "Примечание:"
 
@@ -2112,7 +2091,6 @@ msgid "Pikeman"
 msgstr "Пикейщик"
 
 #: data/core/units/humans/Loyalist_Pikeman.cfg:20
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -2164,22 +2142,20 @@ msgid "Sergeant"
 msgstr "Сержант"
 
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
-#, fuzzy
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
-"Сержант является офицером в Королевской армии. Хотя он и учился в академии, "
-"ему нужен боевой опыт перед тем, как его лидерство стало значимым и "
-"проверенным."
+"Сержант является младшим офицером в Королевской армии. Хотя он и учился в "
+"академии, ему нужен боевой опыт перед тем, как его лидерство станет значимым "
+"и признаваемым."
 
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
 msgstr "Ударный пехотинец"
 
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2209,7 +2185,6 @@ msgid "Spearman"
 msgstr "Копьеносец"
 
 #: data/core/units/humans/Loyalist_Spearman.cfg:21
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -2233,7 +2208,6 @@ msgid "Swordsman"
 msgstr "Меченосец"
 
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
-#, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himseld with a suit "
 "of scale or chain armor, and a sturdy broadsword. Though trading their "
@@ -2253,7 +2227,6 @@ msgid "Mage"
 msgstr "Маг"
 
 #: data/core/units/humans/Mage.cfg:25
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2287,12 +2260,12 @@ msgstr ""
 "\n"
 "Ирония в том, что со всеми полученными ими знаниями и их самонадеянной "
 "монополией на них, сообщество магов предпочитают править обществом, всюду, "
-"где только можно. Тем не менее, их настоящая любовь — любовь к деньгам, а не "
-"только к власти, а те, кто хочет изучать магию, чаще в конце начинают "
-"сомневаться, нужна ли она для настоящего могущества.\n"
+"где только можно. Тем не менее, их настоящая любовь — не деньги и не власть, "
+"а те, кто, познав магию, видят в ней лишь путь к роскоши, не способны "
+"достичь истинного мастерства.\n"
 "\n"
 "Физически слабые и незнакомые с приемами боя, маги в битве используют свое "
-"искусство в качестве великолепного инструмента.\n"
+"колдовское искусство в качестве великолепного инструмента.\n"
 "\n"
 "Примечание:"
 
@@ -2394,7 +2367,6 @@ msgstr "Красный маг"
 
 # rev
 #: data/core/units/humans/Mage_Red.cfg:22
-#, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice and given the ruddy cloak of a master. "
@@ -2411,14 +2383,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Полностью закончив свое ученичество, маги сбрасывают синие робы учеников и "
-"получают красные робы мастеров. Смысл этого изменения неизвестен для "
-"простолюдин, ошибочно называющих мастеров магов \"красными\". Скорее всего, "
-"символизм этой смены в цветах ошибочно основан на способности мага создавать "
-"огонь из воздуха — на трюке, хотя вне сомнений полезном, рассматриваемом, "
-"как практическое применение старательно накопленного знания.\n"
+"Полностью закончив учёбу, маги сбрасывают синие робы учеников и получают "
+"красные робы мастеров. Смысл этого изменения неизвестен простолюдинам, "
+"ошибочно называющих мастеров магов \"красными\". Скорее всего, символизм "
+"этой смены в цветах ошибочно основан на способности мага создавать огонь из "
+"воздуха — на трюке, хотя вне сомнений полезном, рассматриваемом магами, как "
+"довольно тупое приминение старательно накопленного знания.\n"
 "\n"
-"Хотя физически они слабы и не не обучались быть воинами, у \"красных магов\" "
+"Хотя физически они слабы и не обучались быть воинами, у \"красных магов\" "
 "есть много трюков в запасе, включая и огонь, из-за которого они и получили "
 "свое прозвище.\n"
 "\n"
@@ -2433,7 +2405,6 @@ msgid "Silver Mage"
 msgstr "Серебряный маг"
 
 #: data/core/units/humans/Mage_Silver.cfg:25
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2456,10 +2427,11 @@ msgid ""
 "Special Notes: Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
-"Есть много способов, позволяющих магу по-разному закончить свое обучение. "
-"Серебряных магов часто воспринимают как мудрецов или странствующих мистиков, "
-"их действия и поступки неясны даже для своих коллег. Хотя они бывают полезны "
-"на поле боя, они все же остаются несколько в стороне.\n"
+"В ходе обучения маги могут выбирать из многих путей получения знаний, и "
+"каждый ведёт к своему результату. Серебряных магов часто воспринимают как "
+"мудрецов или странствующих мистиков, их действия и поступки неясны даже для "
+"своих коллег. Хотя они бывают полезны на поле боя, они все же остаются "
+"несколько в стороне.\n"
 "\n"
 "На самом деле у них есть собственный орден, закрытый для других магов и "
 "удерживающий свои секреты от посторонних. Один из них раскрывает способ "
@@ -2486,7 +2458,6 @@ msgstr "Белый маг"
 
 # rev
 #: data/core/units/humans/Mage_White.cfg:22
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -2503,13 +2474,12 @@ msgstr ""
 "Некоторые маги, изучающие мир вокруг себя и познавшие истину о страдании и "
 "нищете, с которой мирится человечество на протяжении всей жизни, понимают, "
 "что они не могут посвятить всю свою жизнь учению. Эти мужчины и женщины, "
-"отдавшие жизнь магии, присоединяются к уединенному ордену, посвящая себя "
+"забрасывают жизнь мага и присоединяются к уединенному ордену, посвящая себя "
 "навыкам, творящим добро для всех. После обучения обычно они путешествуют по "
 "миру, помогая больным и раненым.\n"
 "\n"
-"Хотя они не обучались бою, если против них один враг, то они могут "
-"объединиться. Если возникнет необходимость, они могут призвать силу света "
-"для изгнания существ из мира мертвых.\n"
+"Хотя они не обучались бою, они очень эффективные бойцы против магических и "
+"неприродных созданий.\n"
 "\n"
 "Примечание:"
 
@@ -2529,7 +2499,6 @@ msgid "Mage of Light"
 msgstr "Светлый маг"
 
 #: data/core/units/humans/Mage_of_Light.cfg:24
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -2541,9 +2510,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"После многолетнего опыта все набожные белые маги одарены огромной духовной "
-"энергией. Усердно молясь ради пути света, они могут вызвать его, помогая "
-"изгнать прочь тени ночи.\n"
+"После многолетнего опыта наиболее набожные белые маги развивают в себе "
+"огромную духовную энергиею. Усердно молясь ради пути света, они могут "
+"вызвать его, помогая изгнать прочь тени ночи.\n"
 "\n"
 "Придерживаясь строгого кодекса набожности и чести, эти мужчины и женщины "
 "неустанно работают ради установления жизни и порядка на землях, в которых "
@@ -2592,7 +2561,6 @@ msgid "Assassin"
 msgstr "Убийца"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:22
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2644,7 +2612,6 @@ msgid "Footpad"
 msgstr "Скороход"
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
-#, fuzzy
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2669,11 +2636,11 @@ msgstr "дубинка"
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:111
 msgid "female^Footpad"
-msgstr "Разбойник"
+msgstr "Скороход"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "Беглец"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:26
 msgid ""
@@ -2682,11 +2649,14 @@ msgid ""
 "can be fearful in their element but no real match for professional law "
 "enforcment forces."
 msgstr ""
+"Бывалые преступники хорошо известны властям как за свою воинскую доблесть, "
+"так и за умение избегать арестов. Опасные и беспощадные, они могут быть "
+"лучшими среди своих, но они не могут тягаться с профессиональными войсками "
+"официальных властей."
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:126
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "Волшебница"
+msgstr "Беглянка"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:129
 msgid ""
@@ -2694,23 +2664,27 @@ msgid ""
 "battle prowess and ability to elude capture.  Beautiful and dangerous, their "
 "beauty is exceeded only by their dangerousness."
 msgstr ""
+"Бывалые преступницы хорошо известны властям как за свою воинскую доблесть, "
+"так и за умение избегать арестов. Пожалуй их красота может быть превзойдена "
+"только их опасностью."
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "Разбойник"
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:25
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
 msgstr ""
+"Вооружённые тяжёлой булавой эти опытные разбойники — последние люди, которых "
+"вы хотели бы встретить на пустынной дороге поздно ночью."
 
 #: data/core/units/humans/Outlaw_Poacher.cfg:4
 msgid "Poacher"
 msgstr "Браконьер"
 
 #: data/core/units/humans/Outlaw_Poacher.cfg:22
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of bandits will need a few "
@@ -2721,19 +2695,16 @@ msgid ""
 "and in forests and swamps."
 msgstr ""
 "Хотя охотник не обучался на воина, его навыки, особенно владения луком, "
-"очень полезны на поле боя. Использование этих навыков против своих собратьев "
-"может быть объяснено множеством причин, от наемничества до жестокости по "
-"натуре. Любой банде для снабжения необходимо несколько браконьеров, "
-"добывающих по ночам еду с соседних ферм, а также пара рук взаймы на случай "
-"серьезной драки.\n"
+"очень полезны на поле боя. Любой банде для снабжения необходимо несколько "
+"браконьеров, добывающих по ночам еду с соседних ферм, а также пара рук "
+"взаймы на случай серьезной драки.\n"
 "\n"
 "Благодаря своему опыту, эти охотники лучше всего дерутся ночью, а также в "
 "лесах и на болотах."
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:5
-#, fuzzy
 msgid "Outlaw Ranger"
-msgstr "Изгой"
+msgstr "Изгнанный Рейнджер"
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:25
 msgid ""
@@ -2742,6 +2713,10 @@ msgid ""
 "the cover of night.  Most rulers are afraid of rangers and would rather put "
 "them in the dungeon than put their abilities to use."
 msgstr ""
+"Рейнджеры — это дикие люди и хозяева лесов и холмов. Они отличные "
+"преследователи, разведчики и лучники, спокойно передвигающиеся по "
+"пересечённой местности под покровом ночи. Большинство правителей опасаются "
+"рейнджеров и скорее бросят из за решётку, чем рискнут использовать их навыки."
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
@@ -2773,9 +2748,8 @@ msgid "female^Rogue"
 msgstr "Бестия"
 
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
-#, fuzzy
 msgid "Ruffian"
-msgstr "Руины"
+msgstr "Хулиган"
 
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
 msgid ""
@@ -2784,6 +2758,10 @@ msgid ""
 "stick, are known as 'Ruffians'. With enough luck and experience, they "
 "sometimes manage to avoid the stockade that awaits most of their colleagues."
 msgstr ""
+"Некоторые дюди без особых жизненных навыков не могут или просто не хотят "
+"жить честно. Обычно таких людей называют просто хулиганами и большинству из "
+"них суждено окончить жизнь за решёткой. Но при должном мастерстве и везении "
+"они могут стать опасными и неуловими преступниками."
 
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
@@ -2791,7 +2769,6 @@ msgstr "Вор"
 
 # rev
 #: data/core/units/humans/Outlaw_Thief.cfg:22
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -2803,13 +2780,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Очень давно, что вряд ли кто вспомнит, члены различных воровских \"гильдий"
+"На протяжении всей истории человечества члены различных воровских \"гильдий"
 "\", зародившихся в больших городах, начали странную традицию обесцвечивать "
 "свои волосы известью до тех пор, пока они не приобретали тусклый темно-синий "
 "оттенок. Это было дерзко с их стороны, так как их род деятельности был вне "
 "закона. Воры владеют множеством навыков, необходимых для тихой ходьбы и "
 "хорошего владения ножами. Они придерживаются не очень честной тактики в "
-"битвах, подыскивая любую возможность для \"честного боя\".\n"
+"битвах, видя мало смысла в \"честном бою\".\n"
 "\n"
 "Примечание:"
 
@@ -2822,7 +2799,6 @@ msgid "Thug"
 msgstr "Головорез"
 
 #: data/core/units/humans/Outlaw_Thug.cfg:19
-#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -2863,26 +2839,24 @@ msgid "Peasant"
 msgstr "Крестьянин"
 
 #: data/core/units/humans/Peasant.cfg:20
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
 "homes. However, if you're hurling peasants at your foes, you're clearly out "
 "of superior forces."
 msgstr ""
-"Крестьяне являются основой любой экономики и солдатами последнего призыва. "
-"Беззлобные по своей природе, они будут упорно защищать свои дома. Тем не "
-"менее, если Вы бросите крестьян на своих врагов, Вы безусловно отобьетесь от "
-"превосходящих сил противника."
+"Крестьяне являются основой любой сельской экономики и солдатами последнего "
+"призыва. Беззлобные по своей природе, они будут упорно защищать свои дома. "
+"Тем не менее, если вы атакуете своих врагов крестьянами, то вы явно уже "
+"потеряли все более сильные войска."
 
 #: data/core/units/humans/Peasant.cfg:25 data/core/units/humans/Peasant.cfg:69
 msgid "pitchfork"
 msgstr "вилы"
 
 #: data/core/units/humans/Woodsman.cfg:4
-#, fuzzy
 msgid "Woodsman"
-msgstr "Меченосец"
+msgstr "Житель леса"
 
 #: data/core/units/humans/Woodsman.cfg:19
 msgid ""
@@ -2890,6 +2864,9 @@ msgid ""
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"Жители лесов — это охотники, лесорубы, добытчики угля и прочие, кто "
+"предпочитают жить там, где мир людей соприкасается с дикой природой. Ум и "
+"умение работать с деревом часто помогают им там, где оружие бесстльно."
 
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
@@ -2906,6 +2883,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Годы постоянных богослужений дают жрицам знание устройства мира и уважение "
+"сил света. Сила, данная им — это постоянно повторяющийся узор из сказок и "
+"песен. Например, о рыцарях серебряных вод, окружённых и убитых людьми на "
+"берегах Алавинна, но которые поднялись на следующий день в полном "
+"количестве, дабы сокрушить кровавого лорда.\n"
+"\n"
+"Примечания:"
 
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
@@ -2913,7 +2897,6 @@ msgstr "Водяная колдунья"
 
 # rev
 #: data/core/units/merfolk/Enchantress.cfg:21
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -2966,7 +2949,6 @@ msgid "Merman Fighter"
 msgstr "Водяной боец"
 
 #: data/core/units/merfolk/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
@@ -2987,7 +2969,6 @@ msgstr "Водяной защитник"
 
 # rev
 #: data/core/units/merfolk/Hoplite.cfg:22
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -2999,8 +2980,8 @@ msgstr ""
 "Со своими высокими щитами водяные защитники являются элитной охраной "
 "водяного королевства. Их мощная защита и несгибаемая дисциплина позволяют им "
 "удерживать линию обороны против яростных атак противника. Во время отчаяния, "
-"все они могут действовать и на земле, хотя не так хорошо, как двуногие "
-"создания.\n"
+"они могут действовать и на земле, хотя не так хорошо, как существа с "
+"ногами.\n"
 "\n"
 "Примечание:"
 
@@ -3081,10 +3062,11 @@ msgstr ""
 "Ловля рыбы, практикуемая водяными, является основой для охотничьих школ для "
 "ловли сетями. Сами они наносят слабый урон, но они могут использованы с "
 "великолепной эффективностью против солдат, переправляющихся через реку. "
-"Маленькие и вооруженные сетями, которые они могут метать в воздух, они "
-"особенно эффективны в военное время. Водяные используют подобное оружие для "
-"обездвиживания противника на воде, и что более важно, для задержания солдат "
-"на суше, которые в других случаях могли бы быть действенными\n"
+"Меньшие и утяжелённые в сравнении с обычными, эти сети можно бросать во "
+"врага, и хотя они мало пригодны в мирной жизни, но необычайно полезны на "
+"войне. Водяные используют подобное оружие для обездвиживания противника на "
+"воде, и что более важно, для задержания солдат на суше, которые в других "
+"случаях могли бы быть действенными\n"
 "\n"
 "Примечание:"
 
@@ -3093,7 +3075,6 @@ msgid "female^Mermaid Priestess"
 msgstr "Водяная жрица"
 
 #: data/core/units/merfolk/Priestess.cfg:24
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3103,12 +3084,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Вера водяных очень напоминает веру людей, однако по культурных причинам, ее "
-"проповедуют женские особи, которые являются более интеллектуально развитыми. "
-"Они посвящают себя идеалам спокойствия и жизни в мире, изучая искусство "
-"снятия боли, лечения ран и болезней. Благодаря стараниям и упорству, они "
-"также наделены духовной силой, способной оберегать своих сородичей против "
-"мертвецов.\n"
+"Среди водяных религиозные дела, обычно ведутся женщинами, поскольку они "
+"более склонны к этому. Они посвящают себя идеалам спокойствия и жизни в "
+"мире, изучая искусство снятия боли, лечения ран и болезней. Благодаря "
+"стараниям и упорству, они также наделены духовной силой, способной оберегать "
+"своих сородичей от магических и неестественных созданий.\n"
 "\n"
 "Примечание:"
 
@@ -3151,7 +3131,6 @@ msgid "Merman Spearman"
 msgstr "Водяной копьеносец"
 
 #: data/core/units/merfolk/Spearman.cfg:18
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
 "function. Though thrown javelins are of little use under the water, they are "
@@ -3161,24 +3140,23 @@ msgid ""
 "something that certainly cannot be said of arrows."
 msgstr ""
 "Луки не очень распространены среди водяных, для которых дротики выполняют "
-"подобные функции. Хотя дротики мало полезны под водой, но они весьма полезны "
-"на поверхности, где их вес позволяет им нырнуть под воду, пока не дождутся "
-"удачного момента. Они также полезны в рукопашной, как в глубинах, так и на "
-"поверхности, чего в ряде случаев нельзя сказать о стрелах."
+"подобные функции. Хотя дротики мало полезны под водой, они весьма эффективны "
+"на поверхности, где их вес позволяет им нырнуть под воду, не потеряв момента "
+"движения, чтобы нанести значительный урон. Они также полезны в рукопашной, "
+"как в глубинах, так и на поверхности, чего в  нельзя сказать о стрелах."
 
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
 msgstr "Водяной тритон"
 
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
-"Тритоны — мастера на море. Используя свои трезубцы, Тритоны легко побеждают "
-"любого глупца, осмелившегося войти в их предпочитаемое место обитания."
+"Тритоны — мастера боя на море. Используя свои трезубцы, Тритоны легко "
+"побеждают любого глупца, осмелившегося войти в их родную среду."
 
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
@@ -3197,7 +3175,6 @@ msgid "Giant Spider"
 msgstr "Гигантский паук"
 
 #: data/core/units/monsters/Cave_Spider.cfg:19
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
@@ -3244,7 +3221,6 @@ msgid "ink"
 msgstr "тушь"
 
 #: data/core/units/monsters/Fire_Dragon.cfg:4
-#, fuzzy
 msgid "Fire Dragon"
 msgstr "Огненный дракон"
 
@@ -3261,23 +3237,29 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"Дракон — это легендарное существо, которое, как правило, встречается только "
+"в сказках. Они очень редки, и если бы не исторически достоверные сведения о "
+"разрушениях целых городов, можно было бы считать их всего лишь мифом. "
+"Легенды очень специфичны относительно их описания, отмечая их огромную силу, "
+"скорость, неестественную хитрость и, кроме того, огонь который горит внутри "
+"них.\n"
+"\n"
+"Битва с драконом сама по себе считается величайшей опасностью, которая "
+"подходит лишь дуракам и храбрейшим из рыцарей."
 
 #: data/core/units/monsters/Fire_Dragon.cfg:27
-#, fuzzy
 msgid "bite"
-msgstr "Белый"
+msgstr "укус"
 
 #: data/core/units/monsters/Fire_Dragon.cfg:76
-#, fuzzy
 msgid "tail"
-msgstr "Детали"
+msgstr "хвост"
 
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
 msgstr "Гигантское грязевое чудище"
 
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
@@ -3305,7 +3287,6 @@ msgid "Giant Scorpion"
 msgstr "Гигантский скорпион"
 
 #: data/core/units/monsters/Giant_Scorpion.cfg:21
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation.\n"
@@ -3360,9 +3341,8 @@ msgid ""
 msgstr "Морские змеи — гигантские чудовища, способные обвивать собой суда."
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
-#, fuzzy
 msgid "Skeletal Dragon"
-msgstr "Скелет"
+msgstr "Скелетный Дракон"
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
 msgid ""
@@ -3372,17 +3352,21 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"От некогда одного из сильнейших живых существ, сейчас от дракона остались "
+"только кости и темные жилы. После смерти, он был поднят темной силой "
+"некромантии, которой он сейчас служит. Скелетный Дракон может выглядеть не "
+"более чем грудой костей, но лишь немногие посчитавшие так люди прожили "
+"достаточно, чтобы изменить своё мнение."
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
-msgstr ""
+msgstr "челюсти"
 
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
 msgstr "Щупальце из глубины"
 
 #: data/core/units/monsters/Tentacle.cfg:23
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves.\n"
@@ -3396,7 +3380,7 @@ msgstr ""
 
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "Волк"
 
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
@@ -3439,7 +3423,6 @@ msgid "Naga Myrmidon"
 msgstr "Наг прислужник"
 
 #: data/core/units/nagas/Myrmidon.cfg:20
-#, fuzzy
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -3447,11 +3430,11 @@ msgid ""
 "are they potent enemies on any open terrain, but their ability to swim "
 "allows them deadly mobility in water."
 msgstr ""
-"Большинство обученных наг мастеров клинков посвящено в искусство "
-"прислужников, мастерства владения двумя клинками. Они наносят удары очень "
-"быстро, словно змеи, а их танец уворачивания от атак грациозен. Они уязвимы "
-"против врагов на открытой земле, но их возможность плавать позволяет им быть "
-"смертельно подвижными."
+"Наиболее талантливые мечники наг становятся членами касты Мирмидонов, "
+"мастеров боя на двух саблях. Они наносят удары очень быстро, словно змеи, на "
+"которых они очень похожи, а от ударов противника они уворачиваются в "
+"грациозном \"танце\". Они уязвимы против врагов на открытой земле, а их "
+"возможность плавать позволяет им быть смертельно подвижными в воде."
 
 #: data/core/units/nagas/Myrmidon.cfg:67
 msgid "Nagini Myrmidon"
@@ -3476,7 +3459,6 @@ msgid "Naga Warrior"
 msgstr "Наг воин"
 
 #: data/core/units/nagas/Warrior.cfg:19
-#, fuzzy
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
 "second blade. Their martial practice of using twin blades is wholly unlike "
@@ -3497,7 +3479,6 @@ msgid "Nagini Warrior"
 msgstr "Нага воительница"
 
 #: data/core/units/nagas/Warrior.cfg:69
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3537,7 +3518,6 @@ msgid "Young Ogre"
 msgstr "Молодой великан"
 
 #: data/core/units/ogres/Young_Ogre.cfg:21
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -3558,6 +3538,12 @@ msgid ""
 "semblance of training.  Even as poorly handled as they are, their weapons "
 "can still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"Среди орков бытует мнение, что лук — это оружие трусов, но всё же они "
+"достаточно прагматичны, чтобы использовать его в битве. Особенно это "
+"касается юношей и орков, которых природа не наделила обычной для этого "
+"народа силой. Лучники орков редко хорошо оснащены и не проходят серьёзной "
+"подготовки. Несмотря на это, их оружие все же может быть достаточно опасным, "
+"и не надо забывать, что они редко ходят одни."
 
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
@@ -3565,7 +3551,6 @@ msgstr "Орк убийца"
 
 # rev
 #: data/core/units/orcs/Assassin.cfg:24
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -3577,8 +3562,9 @@ msgid ""
 msgstr ""
 "Несмотря на то, что кто-то считает это подлым, яд — самое любимое орудие "
 "орков, особенно слабых телом. Орки убийцы, использующие метательные ножи, "
-"обычно очень хрупки, однако необычайно проворны. Они редко кого убивают "
-"одним ударом, их тактика — помогать большим и более сильным соплеменникам.\n"
+"обычно очень хрупки по стандартам своей расы, но зато необычайно проворны. "
+"Хотя они редко убивают кого-либо, они — неоценимая помощь основным "
+"подразделениям орков.\n"
 "\n"
 "Примечание:"
 
@@ -3597,6 +3583,10 @@ msgid ""
 "privileged enough to wield them are capable warriors, and what they lack in "
 "finesse, they make up for in numbers."
 msgstr ""
+"Арбалеты орков — это примитивнае копии этих орудий из арсенала людей и "
+"гномов. Тем не менее арбалет любого дизайна — это оружие с большими "
+"способностями. Орки, которым доверили это оружие — способный бойцы, а "
+"недостаток изящества они с компенсируют количеством."
 
 #: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
 msgid "short sword"
@@ -3622,7 +3612,6 @@ msgstr "Орк лидер"
 
 # rev
 #: data/core/units/orcs/Leader.cfg:21
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -3632,11 +3621,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Орки лидеры являются предводителями своих кланов. Они принимают важные "
-"решения и возглавляют своих соплеменников в битве. Они могут отстреливаться "
-"из лука в случае необходимости, но они лучше управляются мечом. Как и все, "
-"они сильные воины. Их природное лидерство делает их очень ценными в битве: "
-"если побежден Лидер, то и битва будет проиграна.\n"
+"Орки лидеры являются предводителями своих кланов. Они могут отстреливаться "
+"из лука в случае необходимости, но они намного лучше управляются с мечом. "
+"Они физически сильные бойцы, но их истинный талант лежит в искусстве ведения "
+"взаимоотношений с другими представителями рода, особенно гоблинами, "
+"вдохновляя тех вести бой с необычайной смелостью.\n"
 "\n"
 "Примечание:"
 
@@ -3654,6 +3643,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Любой орк, способный удержать большое племя от развала и внутренних склок, "
+"явно умён и одарён навыками командира, что впрочем не мешает ему быть и "
+"одним из сильнейших представителей своего рода. Такие орки мастерски владеют "
+"как мечом, так и луком, но их истинный талант лежит в умении вести солдат в "
+"битву и отдавать приказы, которые будут исполняться не из-за страха, но из-"
+"за преданности.\n"
+"\n"
+"Примечание:"
 
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:29
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:28
@@ -3665,7 +3662,6 @@ msgid "Orcish Slayer"
 msgstr "Орк разрушитель"
 
 #: data/core/units/orcs/Slayer.cfg:24
-#, fuzzy
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
 "enemies. Slayers are fast on their feet, and quite nimble in combat, "
@@ -3675,11 +3671,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Крупных и наиболее умелых орков убийц их противники называют \"разрушителями"
-"\", хотя различие в чем-то неверно. Разрушители быстры на своих ногах и "
-"очень подвижны в схватке, однако это достигается путем облегчения брони. Их "
-"избранное оружие — яд — ужасный инструмент, и его применение на поле боя "
-"часто является настоящей причиной превосходства орков.\n"
+"Крупных и наиболее умелых орков убийц противники называют \"разрушителями\". "
+"Разрушители быстры на своих ногах и очень подвижны в схватке, однако это "
+"достигается путем облегчения брони. Их избранное оружие — яд — ужасный "
+"инструмент, и его применение на поле боя часто является настоящей причиной "
+"превосходства орков.\n"
 "\n"
 "Примечание:"
 
@@ -3699,6 +3695,14 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"Основы конструкции арбалета ведут к самострелу, куда более сложному "
+"приспособлению, дополненному ручным воротом для перезарядки и выполненное из "
+"более прочных материалов. Обращаться с ним намного проще, при этом самострел "
+"намного мощнее. Кроме того они полностью являются продуктом оркского "
+"производства.\n"
+"\n"
+"Орки награждают подобным оружием только самых сильных и хитрых своих "
+"лучников."
 
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
@@ -3715,6 +3719,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Время от времени появляется орк, который одарён харизмой и правом управлять "
+"своим племенем. Если при этом у них есть сила и хитрость, то они очень скоро "
+"становятся лидерами огромнойых орд воинов и причиной очень больших проблем у "
+"более цивилизованного населения мира. Самый надёжный способ устранить "
+"проблему оркского нашествия — убить этого редкого представителя орков, "
+"способного держать их вместе.\n"
+"\n"
+"Примечание:"
 
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
@@ -3749,7 +3761,6 @@ msgid "Saurian Ambusher"
 msgstr "Скрытный ящер"
 
 #: data/core/units/saurians/Ambusher.cfg:21
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this is combined with experience, strength, "
@@ -3763,10 +3774,10 @@ msgid ""
 msgstr ""
 "Ящеры очень быстры и очень хорошо ориентируются на местности, "
 "труднопроходимой для противника. В сочетании с опытом, силой и экипировкой "
-"один из этих воинов может стать очень большой угрозой в битве, в "
-"значительной степени потому, что их значительно труднее обездвижить, чем "
-"других. Даже в доспехах воины ящеров могут использовать небольшой зазор в "
-"линиях противника и заставить его пожалеть о содеянной ошибке.\n"
+"такие воины могут стать очень большой угрозой в битве, в значительной "
+"степени потому, что их значительно труднее обездвижить, чем других. Даже в "
+"доспехах воины ящеров могут использовать небольшой зазор в линиях противника "
+"и заставить его пожалеть о тактической ошибке.\n"
 "\n"
 "Примечание:"
 
@@ -3776,7 +3787,6 @@ msgid "Saurian Augur"
 msgstr "Ящер прорицатель"
 
 #: data/core/units/saurians/Augur.cfg:23
-#, fuzzy
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
@@ -3824,7 +3834,6 @@ msgid "Saurian Oracle"
 msgstr "Ящер оракул"
 
 #: data/core/units/saurians/Oracle.cfg:23
-#, fuzzy
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -3838,8 +3847,8 @@ msgstr ""
 "Некоторых ящеров замечали одетыми величественные одежды, покрывающих их с "
 "головы до пят, с таинственными знаками и отметинами в виде рисунков и "
 "татуировок. Некоторые считают, что они являются пророками или оракулами "
-"среди среди своего народа. Но каковы бы ни были их \"социальные\" функции, "
-"они несомненно являются могущественными в своей странной магии, и их следует "
+"среди своего народа. Но каковы бы ни были их \"социальные\" функции, они "
+"несомненно являются могущественными в своей странной магии, и их следует "
 "опасаться.\n"
 "\n"
 "Примечание:"
@@ -3917,7 +3926,6 @@ msgid "Troll Hero"
 msgstr "Тролль герой"
 
 #: data/core/units/trolls/Hero.cfg:20
-#, fuzzy
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
@@ -3949,18 +3957,18 @@ msgid ""
 msgstr ""
 "Метание камней в схватке обычно свойственно многим троллям, и некоторые "
 "выбирают его в качестве оружия. Так как подходящие камни не всегда легко "
-"найти, камнеметатели всегда носят их мешках за спиной. Подобные мешки можно "
-"легко сделать из сыромятой кожи.\n"
+"найти, камнеметатели всегда носят их мешках за спиной. Кстати кожа, из "
+"которой изготовлены эти мешки, легко может быть переделана в примитивную "
+"пращу.\n"
 "\n"
-"Примечание: камень, пущенный одним из этих монстров, при попадании гораздо "
-"смертоносней, чем любая стрела."
+"Примечание: несмотря на громоздкость, эти камни намного более убийственны, "
+"чем любая стрела. Конечно, только в случае попадания в цель."
 
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
 msgstr "Тролль"
 
 #: data/core/units/trolls/Troll.cfg:20
-#, fuzzy
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -3973,10 +3981,11 @@ msgid ""
 msgstr ""
 "Тролли всегда были проблемой для людей и гномов, которых до сих пор ставит в "
 "тупик происхождение этих созданий, и, что более важно, их невероятная "
-"живучесть и сила. Взрослый тролль выше человека и, даже невооруженный, может "
-"быть сильной угрозой в битве. Огромные дубины, предпочитаемые в качестве "
-"оружия в схватке, используются в подобных случаях для истязания их жертв до "
-"полной покорности.\n"
+"живучесть и сила. Взрослый тролль возвышается как скала над обычным "
+"человеком, что уж говорить про гномов! Поэтому даже невооруженный троль "
+"может быть серьёзной угрозой в битве. В бою огромные дубины, предпочитаемые "
+"в качестве оружия, напоминают продолжения их рук: столь велико мастерство "
+"владения ими.\n"
 "\n"
 "Примечание:"
 
@@ -3986,7 +3995,6 @@ msgstr "Тролль воин"
 
 # rev
 #: data/core/units/trolls/Warrior.cfg:22
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -4000,13 +4008,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Обычно в битве тролли ничего особого не используют, разве что огромные камни "
-"да палки. Тем не менее, очень часто троллей замечали одетыми в грубые "
-"доспехи и вооруженными металлическими молотами. Это наводит на размышления, "
-"что их союзники — орки, являются источником и производителем этого, так как "
-"исследователи, проникавшие в норы троллей и замечали лишь небольшой набор "
+"да палки. Тем не менее, иногда троллей замечали одетыми в грубые доспехи и "
+"вооруженными металлическими молотами. Это наводит на размышления, что их "
+"союзники — орки, являются источником и производителем этого, так как "
+"исследователи, проникавшие в норы троллей замечали лишь небольшой набор "
 "используемых инструментов, никоим образом не связанных с обработкой металла. "
-"Зная, как опасен тролль в битве, следует быть осторожным, подбираясь к "
-"троллю в полной броне.\n"
+"Зная, как опасен обычный тролль в битве, следует быть осторожным, подбираясь "
+"к троллю, который обед в полную броню.\n"
 "\n"
 "Примечание:"
 
@@ -4016,7 +4024,6 @@ msgstr "Тролль детеныш"
 
 # rev
 #: data/core/units/trolls/Whelp.cfg:21
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -4028,8 +4035,8 @@ msgid ""
 msgstr ""
 "Ошибочно называть подобного тролля детенышем, ведь его тело намного "
 "выносливее, чем у взрослого человека. Они неуклюжи и еще не способны "
-"нормально ходить, неумело передвигаясь на всех четырех конечностях, но эта "
-"задержка развития сторицей покрывается грубой силой, свойственной их расе.\n"
+"нормально ходить, неумело передвигаясь на всех четырех конечностях, но все "
+"подобные проблемы вызваны грубой силой представителей этой расы.\n"
 "\n"
 "Примечание:"
 
@@ -4046,13 +4053,17 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Кровавые мыши так нахываются из-за их красноватого цвета. Эти создания "
+"быстры и могут пить кровь из своих противников, приобретая таким образом "
+"часть здоровья, потерянного жертвой.\n"
+"\n"
+"Примечание:"
 
 #: data/core/units/undead/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
 msgstr "Вампир мышь"
 
 #: data/core/units/undead/Bat_Vampire.cfg:19
-#, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -4061,8 +4072,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Вампиры мыши — это мертвые летающие твари, которые атакуют, кусая своих "
-"жертв. Пока их клыки не очень сильны, и здоровье жертв уходит вместе с их "
-"вытекающей кровью, но часть передается мышам.\n"
+"жертв. Хотя их клыки не очень сильны, здоровье жертв уходит вместе с их "
+"вытекающей кровью, а часть передается мышам.\n"
 "\n"
 "Примечание:"
 
@@ -4072,7 +4083,6 @@ msgstr "Упырь"
 
 # rev
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
-#, fuzzy
 msgid ""
 "Only those with a dreadful knowledge of necromancy know what must be done to "
 "turn a person into a ghoul, and it is a secret they are not telling. "
@@ -4087,13 +4097,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Только посвященному в искусство некромантов известно, что нужно сделать, "
-"чтобы превратить человека в упыря, и этот секрет хранится в тайне. После "
-"негласного обряда появляется тварь, ничего не помнящая о своей прежней "
-"человеческой жизни, неуклюжее, голое, как в день своего появления на свет и "
-"жадно поедающее мясо мертвых.\n"
+"чтобы превратить человека в упыря, и этот секрет хранится в тайне. Тем не "
+"менее, чтобы они там не делали, но в результате получается тварь, ничего не "
+"помнящая о своей прежней человеческой жизни, неуклюжая, голая, как в день "
+"своего появления на свет и жадно поедающая мясо мертвых.\n"
 "\n"
-"Именно по этой причине некроманты находятся вне закона и преследуются с "
-"особой жестокостью.\n"
+"Именно из-за подобных вещей некроманты находятся вне закона и преследуются с "
+"особой жестокостью во всех цивилизованных землях.\n"
 "\n"
 "Примечание:"
 
@@ -4131,6 +4141,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"Техника оживления тела умершего, к сожалению, очень хорошо известна тем, кто "
+"использует темные искусства. Они часто используют её для получения соуг и "
+"солдат из трупов. Эти трупы, как правило, многочисленны, но слабы. "
+"Прикосновение битвы может пробудить их, однако их создание намного более "
+"сложно.\n"
+"\n"
+"Примечание:"
 
 #: data/core/units/undead/Corpse_Walking.cfg:50
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:37
@@ -4145,7 +4162,6 @@ msgid "Walking Corpse"
 msgstr "Ходячий труп"
 
 #: data/core/units/undead/Corpse_Walking.cfg:23
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -4165,7 +4181,6 @@ msgstr "Древний лич"
 
 # rev
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:26
-#, fuzzy
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death.\n"
@@ -4225,7 +4240,6 @@ msgid "Dark Sorcerer"
 msgstr "Темный колдун"
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
@@ -4239,15 +4253,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ужас, вдохновленный темной магией, исходящий от обычного на вид человека — "
-"это почти все, что известно о них. Темные колдуны постигли секреты жизни и "
-"смерти, быстро став мастерами боли и страданий\n"
+"Ужас от темной магии в основном исходит от того, что обычные люди ничего в "
+"этом не понимают. Темные колдуны постигли секреты жизни и смерти, быстро "
+"став мастерами боли и страданий\n"
 "\n"
-"Последняя награда темного искусства полное управление над жизнью и смертью. "
-"Возможно, темные колдуны знают, как воздействовать на жизнь и смерть при "
-"реанимации мертвых тел, скелетов и духов. Дальнейшее разрушение личности и "
-"тела и постоянная жажда власти позволят смерти завладеть ими, превратив их в "
-"личей и даровав ужасное бессмертие.\n"
+"Главная награда темного искусства — это полное управление над жизнью и "
+"смертью. Возможно, темные колдуны знают, как воздействовать на жизнь и "
+"смерть при реанимации мертвых тел, скелетов и духов. Наиболее бесстрашные и "
+"жадные до жизни и власти рано или поздно постараются потягаться с самой "
+"смертью, путём превращения в личей.\n"
 "\n"
 "Примечание:"
 
@@ -4261,7 +4275,6 @@ msgid "Lich"
 msgstr "Лич"
 
 #: data/core/units/undead/Necro_Lich.cfg:25
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4282,8 +4295,8 @@ msgstr ""
 "ним, хотя тела может уже и не быть.\n"
 "\n"
 "Неизвестно, сохраняется ли жизнь посвященного в познания некромантов или "
-"просто продливается. Но для каждого решения, подобного этому рождению, "
-"требуется значительная дань от того, кто уже достиг этого.\n"
+"просто продливается. Но уже само то, что этот вопрос имеет место, говорит о "
+"том успехе, который достигли тёмные колдуны.\n"
 "\n"
 "Примечание:"
 
@@ -4292,7 +4305,6 @@ msgid "Necromancer"
 msgstr "Некромант"
 
 #: data/core/units/undead/Necromancer.cfg:22
-#, fuzzy
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -4322,12 +4334,10 @@ msgid "plague staff"
 msgstr "чумный посох"
 
 #: data/core/units/undead/Skele_Banebow.cfg:4
-#, fuzzy
 msgid "Banebow"
-msgstr "лук"
+msgstr "Проклятый лучник"
 
 #: data/core/units/undead/Skele_Banebow.cfg:19
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4337,10 +4347,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Самые могущественные из мертвых лучников при жизни были раньше лучниками. "
-"Они бродят по полю боя, ведомые угасающей памятью об их навыках, не зная ни "
-"своем предназначении, ни кто их враг. Их ведет только злоба, порожденная "
-"муками их пустого и бессмысленного существования.\n"
+"Очевидно, что самые могущественные из мертвых лучников, ещё при жизни были "
+"хорошими стрелками. Они бродят по полю боя, ведомые угасающей памятью об их "
+"навыках, не зная ни своем предназначении, ни кто их враг. Их ведет только "
+"злоба, порожденная муками их пустого и бессмысленного существования.\n"
 "\n"
 "Примечание:"
 
@@ -4349,7 +4359,6 @@ msgid "Bone Shooter"
 msgstr "Метатель костей"
 
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:18
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. The potency of their un-life is given equipment to match; "
@@ -4392,7 +4401,6 @@ msgid "Death Knight"
 msgstr "Рыцарь смерти"
 
 #: data/core/units/undead/Skele_Death_Knight.cfg:33
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and stung by betrayal, have come back to this world as Death Knights. "
@@ -4401,10 +4409,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Легенды гласят о могущественных воинах и генералах, проклятых с ненавистью и "
-"предательством, вернулись назад в этот мир в качестве рыцарей смерти. "
-"Вооруженные оружием, что имели при жизни, они командуют мертвецами для "
-"осуществления своей мести.\n"
+"Легенды гласят о могущественных воинах и генералах, которые, будучи прокляты "
+"с ненавистью и предательством, вернулись назад в этот мир в качестве рыцарей "
+"смерти. Вооруженные оружием, что имели при жизни, они командуют мертвецами "
+"для осуществления своей мести.\n"
 "\n"
 "Примечание:"
 
@@ -4414,7 +4422,6 @@ msgstr "Клинок смерти"
 
 # rev
 #: data/core/units/undead/Skele_Deathblade.cfg:20
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters, recognizing "
@@ -4439,7 +4446,6 @@ msgstr "Дрог"
 
 # rev
 #: data/core/units/undead/Skele_Draug.cfg:20
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were.  "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -4449,11 +4455,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Дроги — легендарные воины, их удары вселяют страх всем, кто противостоит им. "
-"Ими не движет злоба, но всегда находясь на грани не-жизни, вспоминая "
-"величайшие бои в своей памяти, они бьются отчаянно до самого конца, за мир, "
-"который может быть достигнут только силой оружия. Но память об их врагах и "
-"их борьба давно ушли в забвение.\n"
+"В этих солдатах, возвышающихся над прочими, уже мало осталось от прежней "
+"человеческой натуры. Воины в душе, они потерялись во тьме воскрешённой "
+"жизни. Они идут сквозь битвы, оставшиеся в памяти и бьются за освобождение, "
+"за мир, который приобретается только силой оружия. Потому они дерутся, "
+"бездумно и беспощадно.\n"
 "\n"
 "Примечание:"
 
@@ -4505,7 +4511,6 @@ msgid "Skeleton Archer"
 msgstr "Скелет лучник"
 
 #: data/core/units/undead/Skeleton_Archer.cfg:19
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -4516,7 +4521,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Скелеты лучники немного отличаются от обычных скелетов, сопровождающих их — "
-"они согрешили против природы и были подняты вновь из могилы биться еще раз. "
+"это грех против природы, воины, поднятые из могилы биться еще раз. "
 "Управляемые своим хозяином, эти солдаты выполнят любую задачу, стоящую перед "
 "ними, ведь смерть не страшна тем, кто уже умер.\n"
 "\n"
@@ -4528,7 +4533,6 @@ msgstr "Призрак"
 
 # rev
 #: data/core/units/undead/Spirit_Ghost.cfg:21
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -4540,12 +4544,13 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Одной из величайших благодетелей является то, что душа живого существа "
-"бессмертна и не может быть уничтожена. Тем не менее, некромант способен "
-"использовать это в своих ужасных замыслах.\n"
-"Дух, пойманный в пелену лживых сетей, считает, что он подобен ветру, "
-"наполняющему паруса корабля. Благодаря этой уловке дух, пойманный в "
-"нерушимую тюрьму, будет выполнять любое задание своего хозяина.\n"
+"Одной из величайших благодетелей создания является то, что душа живого "
+"существа бессмертна и не может быть уничтожена. Тем не менее, некромант "
+"способен использовать это в своих ужасных замыслах.\n"
+"\n"
+"Дух, пойманный в пелену лживых сетей, сожно принять за ветер, который "
+"наполняет паруса корабля. Благодаря этой уловке дух, пойманный в нерушимую "
+"тюрьму, будет выполнять любое задание своего хозяина.\n"
 "\n"
 "Примечание:"
 
@@ -4600,7 +4605,6 @@ msgid "Spectre"
 msgstr "Фантом"
 
 #: data/core/units/undead/Spirit_Spectre.cfg:21
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -4632,7 +4636,6 @@ msgid "Wraith"
 msgstr "Привидение"
 
 #: data/core/units/undead/Spirit_Wraith.cfg:18
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them as if "
@@ -4647,8 +4650,6 @@ msgstr ""
 "сквозь них, будто бы они сотканы из воздуха. Вселяет страх мысль, что эти "
 "твари невидимы, но на самом деле это не так.\n"
 "\n"
-"Эти создания способны восстанавливать себя, высасывая жизненные силы у живых "
-"людей, что вызывает еще больший ужас и отвращение.\n"
 "Примечание:"
 
 #: data/core/units/wose/Ancient.cfg:4
@@ -4656,7 +4657,6 @@ msgid "Ancient Wose"
 msgstr "Древний леший"
 
 #: data/core/units/wose/Ancient.cfg:22
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -4691,7 +4691,6 @@ msgid "Elder Wose"
 msgstr "Старший леший"
 
 #: data/core/units/wose/Elder.cfg:21
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -4708,7 +4707,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "Лешие имеют множество разных обличий, но все из них выглядят как деревья, в "
-"зависимости от их возраста, увеличивается их размер. Легенды рассказывают, "
+"зависимости от их возраста, увеличивается и их размер. Легенды рассказывают, "
 "что к лешим, похожим на деревья, относились с уважением, они возвышались над "
 "теми, кто ходил по земле. Их увидеть очень сложно — обычно они находятся во "
 "сне и выглядят как странное дерево. Даже неосмотрительный эльф может не "
@@ -4724,7 +4723,6 @@ msgid "Wose"
 msgstr "Леший"
 
 #: data/core/units/wose/Wose.cfg:22
-#, fuzzy
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
