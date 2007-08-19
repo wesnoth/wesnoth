@@ -85,8 +85,8 @@ namespace {
 			}
 		}
 	};
-	resize_monitor resize_mon;
 }
+resize_monitor resize_mon;
 
 resize_lock::resize_lock()
 {

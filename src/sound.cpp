@@ -472,8 +472,8 @@ namespace {
 			}
 		}
 	};
-	music_thinker mthink;
 }
+music_thinker mthink;
 
 void think_about_music(void)
 {
