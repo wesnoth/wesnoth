@@ -91,6 +91,7 @@ int main(int argc, char** argv)
 	const font::manager font_manager;
 	const preferences::base_manager prefs_manager;
 	const image::manager image_manager;
+	resize_monitor resize_monitor_;
 	binary_paths_manager paths_manager;
 	std::string filename = "";
 	std::string mapdata;

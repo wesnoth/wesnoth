@@ -464,16 +464,11 @@ void stop_UI_sound() {
 	}
 }
 
-namespace {
-	class music_thinker : public events::pump_monitor {
-		void process(events::pump_info &/*info*/) {
-			if(preferences::music_on()) {
-				think_about_music();
-			}
-		}
-	};
+void music_thinker::process(events::pump_info &/*info*/) {
+	if(preferences::music_on()) {
+		think_about_music();
+	}
 }
-music_thinker mthink;
 
 void think_about_music(void)
 {

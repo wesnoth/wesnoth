@@ -142,6 +142,8 @@ private:
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
 	const upload_log::manager upload_log_manager_;
+	sound::music_thinker music_thinker_;
+	resize_monitor resize_monitor_;
 	binary_paths_manager paths_manager_;
 
 	bool test_mode_, multiplayer_mode_, no_gui_;

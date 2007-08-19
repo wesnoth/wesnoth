@@ -76,17 +76,14 @@ int main( int argc, char** argv )
 namespace {
 	bool fullScreen = false;
 	int disallow_resize = 0;
-	class resize_monitor : public events::pump_monitor {
-		void process(events::pump_info &info) {
-			if(info.resize_dimensions.first >= min_allowed_width
-			&& info.resize_dimensions.second >= min_allowed_height
-			&& disallow_resize == 0) {
-				preferences::set_resolution(info.resize_dimensions);
-			}
-		}
-	};
 }
-resize_monitor resize_mon;
+void resize_monitor::process(events::pump_info &info) {
+	if(info.resize_dimensions.first >= min_allowed_width
+	&& info.resize_dimensions.second >= min_allowed_height
+	&& disallow_resize == 0) {
+		preferences::set_resolution(info.resize_dimensions);
+	}
+}
 
 resize_lock::resize_lock()
 {

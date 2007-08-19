@@ -77,6 +77,11 @@ void play_UI_sound(const std::string& files);
 // Called from event loop to see if we need new music track.
 void think_about_music(void);
 
+// A class to automate the call to think_about_music()
+class music_thinker : public events::pump_monitor {
+	void process(events::pump_info &/*info*/);
+};
+
 // Save music playlist for snapshot
 void write_music_play_list(config& snapshot);
 

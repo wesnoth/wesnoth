@@ -14,6 +14,7 @@
 #ifndef VIDEO_HPP_INCLUDED
 #define VIDEO_HPP_INCLUDED
 
+#include "events.hpp"
 #include "SDL.h"
 #include "sdl_utils.hpp"
 
@@ -133,6 +134,10 @@ struct update_locker
 private:
 	CVideo& video;
 	bool unlock;
+};
+
+class resize_monitor : public events::pump_monitor {
+	void process(events::pump_info &info);
 };
 
 //an object which prevents resizing of the screen occuring during
