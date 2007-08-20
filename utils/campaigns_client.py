@@ -119,7 +119,8 @@ if __name__ == "__main__":
         info = wmldata.DataSub("WML")
         p.parse_top(info)
         uploads = info.get_or_create_sub("info").get_text_val("uploads", "")
-        return uploads
+        version = info.get_or_create_sub("info").get_text_val("version", "")
+        return uploads, version
 
     if options.list:
         cs = CampaignClient(address)
@@ -171,12 +172,16 @@ if __name__ == "__main__":
                         fetchlist.append((name, version, uploads))
         for name, version, uploads in fetchlist:
             info = os.path.join(options.campaigns_dir, name, "info.cfg")
-            local_uploads = get_info(info)
+            local_uploads, local_version = get_info(info)
             if uploads != local_uploads:
-                get(name, version, uploads, options.campaigns_dir)
+                if version != local_version:
+                    get(name, version, uploads, options.campaigns_dir)
+                else:
+                    print "Not downloading", name,\
+                        "as the version already is:", local_version
             else:
                 print "Not downloading", name,\
-                    "because it is already at version:", uploads
+                    "because it is already at revision:", uploads
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
@@ -228,24 +233,28 @@ if __name__ == "__main__":
             dirname = os.path.basename(dir)
             if dirname in campaigns:
                 info = os.path.join(dir, "info.cfg")
-                version = campaigns[dirname].get_text_val("version", "")
+                sversion = campaigns[dirname].get_text_val("version", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
                 if os.path.exists(info):                    
-                    lrev = get_info(info)
+                    lrev, lversion = get_info(info)
                     if not srev:
                         sys.stdout.write(" ? " + dirname + " has no " +
                             "version info on the server.\n")
                     elif srev == lrev:
                         sys.stdout.write("   " + dirname + " - is up to date.\n")
+                    elif sversion == lversion:
+                        sys.stdout.write(" # " + dirname + " version is " +
+                            sversion + ", but you have revision %d not %d." %
+                            (lrev, srev))
                     else:
                         sys.stdout.write(" * " + dirname + " - you have " +
-                            "version " + lrev + " but version " + srev +
+                            "revision " + lrev + " but revision " + srev +
                             " is available.\n")
-                        if options.update: get(dirname, version, srev, cdir)
+                        if options.update: get(dirname, sversion, srev, cdir)
                 else:
                     sys.stdout.write(" ? " + dirname + " - is installed but has no " +
                         "version info.\n")
-                    if options.update: get(dirname, version, srev, cdir)
+                    if options.update: get(dirname, sversion, srev, cdir)
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)
