@@ -616,7 +616,7 @@ void display::update_display()
 		return;
 	}
 
-	if(preferences::show_fps()) {
+	if(preferences::show_fps() || benchmark) {
 		static int last_sample = SDL_GetTicks();
 		static int frames = 0;
 		++frames;
@@ -634,7 +634,9 @@ void display::update_display()
 			}
 			std::ostringstream stream;
 			stream << fps << "fps";
-			fps_handle_ = font::add_floating_label(stream.str(),12,font::NORMAL_COLOUR,10,100,0,0,-1,screen_area(),font::LEFT_ALIGN);
+			fps_handle_ = font::add_floating_label(stream.str(),12,
+				benchmark ? font::BAD_COLOUR : font::NORMAL_COLOUR,
+				10,100,0,0,-1,screen_area(),font::LEFT_ALIGN);
 		}
 	} else if(fps_handle_ != 0) {
 		font::remove_floating_label(fps_handle_);
