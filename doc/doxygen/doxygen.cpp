@@ -414,7 +414,7 @@ int divide(int a,int b) {
 	@{
 */
 
-/**	@file actions.hpp */
+/**	-file actions.hpp */
 /**	-file ai_attack.hpp */
 /**	@file ai.hpp */
 /**	-file ai_move.hpp */
