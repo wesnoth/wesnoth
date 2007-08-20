@@ -32,8 +32,7 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
 		   BLACK_TEXT='}', GRAY_TEXT='|',
            GOOD_TEXT='@',  BAD_TEXT='#',
            GREEN_TEXT='@', RED_TEXT='#',
-           COLOR_TEXT='<', YELLOW_TEXT='!', 
-		   IMAGE='&';
+           COLOR_TEXT='<', IMAGE='&';
 
 //! Parses the markup-tags at the front of a string.
 static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
@@ -66,9 +65,6 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1,
 			break;
 		case GRAY_TEXT:
 			*colour = GRAY_COLOUR;
-			break;
-		case YELLOW_TEXT:
-			*colour = YELLOW_COLOUR;
 			break;
 		case LARGE_TEXT:
 			*font_size += 2;
@@ -205,7 +201,6 @@ bool is_format_char(char c)
 	case GOOD_TEXT:
 	case BAD_TEXT:
 	case NORMAL_TEXT:
-	case YELLOW_TEXT:
 	case BLACK_TEXT:
 	   // ?? GRAY_TEXT 
 	case BOLD_TEXT:

@@ -357,7 +357,7 @@ namespace events{
 			if(i->second.level() < 1 )
 				row << font::RED_TEXT;
 			if(i->second.level() == 2 )
-				row << font::YELLOW_TEXT;
+				row << "<255,255,0>";
 			if(i->second.level() > 2 )
 				row << font::GREEN_TEXT;
 			row << i->second.level()         << COLUMN_SEPARATOR;
@@ -367,7 +367,7 @@ namespace events{
 			if(i->second.hitpoints() <= i->second.max_hitpoints()/3)
 				row << font::RED_TEXT;
 			else if(i->second.hitpoints()  < 2*(i->second.max_hitpoints()/3))
-				row << font::YELLOW_TEXT;
+				row << "<255,255,0>";
 			else if(i->second.hitpoints()  > 3*(i->second.max_hitpoints()/4))
 				row << font::GREEN_TEXT;
 			row << i->second.hitpoints()  << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR;
@@ -379,7 +379,7 @@ namespace events{
 			if(i->second.max_experience() - i->second.experience() <= (game_config::kill_experience*i->second.level()))
 				row << font::GREEN_TEXT;
 			else if(i->second.experience() > (i->second.max_experience()/2) )
-				row << font::YELLOW_TEXT; 
+				row << "<255,255,0>";
 			row << i->second.experience() << "/";
 			if(i->second.can_advance() == false)
 				row << "-";
@@ -405,7 +405,7 @@ namespace events{
 			// if unit is on a castle/keep, show the location in yellow/red
 			// FIXME: use gold instead of yellow
 			if(map_.is_castle(i->first))
-				row << font::YELLOW_TEXT;
+				row << "<255,255,0>";
 			if(map_.is_keep(i->first))
 				row << font::RED_TEXT;
 			row << i->first << COLUMN_SEPARATOR;
