@@ -625,6 +625,7 @@ def hack_syntax(filename, lines):
         # going to process them back to front to avoid invalidating the
         # already-collected line numbers.
         animations.reverse()
+        attack_anims = []
         for aframe in animations:
             if verbose:
                 print '"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' % (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1)
@@ -639,17 +640,28 @@ def hack_syntax(filename, lines):
             animation.insert(1, indent + "[/attack_filter]\n")
             animation.insert(1, indent + baseindent + "name="+aframe.name+"\n")
             animation.insert(1, indent + "[attack_filter]\n")
-            # Delete it from its original location
+            # Save it and delete it from its original location
+            attack_anims = animation + attack_anims
             lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
-            # Insert it before the enclosing attack
-            lines = lines[:aframe.attackstart] + animation + lines[aframe.attackstart:]
-            # Garbage-collect any empty [attack] scope left behind;
-            # this is likely to happen with female-variant units.
-            newatk = aframe.attackstart + len(animation)
-            if "[attack]" in lines[newatk] and "[/attack]" in lines[newatk+1]:
-                del lines[newatk]
-                del lines[newatk]
             modcount += 1
+        # Add the attack animations to the end of the unit declaration
+        if attack_anims:
+            unitend = -1
+            for i in range(len(lines)):
+                if lines[i].endswith("[/unit]\n"):
+                    unitend = i
+            assert unitend != -1
+            lines = lines[:unitend] + attack_anims + lines[unitend:]
+        # Garbage-collect any empty [attack] scopes left behind;
+        # this is likely to happen with female-variant units.
+        nullattack = True
+        while nullattack:
+            nullattack = False
+            for i in range(len(lines)-1):
+                if lines[i].strip() == "[attack]" and lines[i+1].strip() == "[/attack]":
+                    nullattack = True
+            if nullattack:
+                lines = lines[:i] + lines[i+2:] 
     return (lines, modcount)
 
 # Generic machinery starts here
