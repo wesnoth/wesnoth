@@ -102,21 +102,25 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		return true;
 	}
 
-	const std::string& item1 = row1.fields[column];
-	const std::string& item2 = row2.fields[column];
 	if(alpha_sort_.count(column) == 1) {
+		const std::string& item1 = font::del_tags(row1.fields[column]);
+		const std::string& item2 = font::del_tags(row2.fields[column]);
+
 		std::string::const_iterator begin1 = item1.begin(), end1 = item1.end(),
 		                            begin2 = item2.begin(), end2 = item2.end();
-		while(begin1 != end1 && (font::is_format_char(*begin1) || is_wml_separator(*begin1))) {
+		while(begin1 != end1 && is_wml_separator(*begin1)) {
 			++begin1;
 		}
 
-		while(begin2 != end2 && (font::is_format_char(*begin2) || is_wml_separator(*begin2))) {
+		while(begin2 != end2 && is_wml_separator(*begin2)) {
 			++begin2;
 		}
 
 		return std::lexicographical_compare(begin1,end1,begin2,end2,chars_less_insensitive);
 	} else if(numeric_sort_.count(column) == 1) {
+		const std::string& item1 = font::del_tags(row1.fields[column]);
+		const std::string& item2 = font::del_tags(row2.fields[column]);
+
 		const char* a = item1.c_str();
 		const char* b = item2.c_str();
 
