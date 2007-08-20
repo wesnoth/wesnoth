@@ -901,7 +901,6 @@ bool display::draw_init()
 	bool changed = false;
 
 	if(benchmark) {
-		panelsDrawn_ = true;
 		redraw_background_ = true;
 		invalidateAll_ = true;
 	}
