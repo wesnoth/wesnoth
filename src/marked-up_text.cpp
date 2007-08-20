@@ -202,7 +202,7 @@ bool is_format_char(char c)
 	case BAD_TEXT:
 	case NORMAL_TEXT:
 	case BLACK_TEXT:
-	   // ?? GRAY_TEXT 
+	case GRAY_TEXT:
 	case BOLD_TEXT:
 	case NULL_MARKUP:
 		return true;
