@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-19 00:05+0200\n"
-"PO-Revision-Date: 2007-08-11 13:31+0100\n"
+"PO-Revision-Date: 2007-08-20 13:51+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "Projektowanie grafiki"
 
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:6
 msgid "Injured Sergeant"
-msgstr ""
+msgstr "Ranny sierżant"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -382,9 +382,8 @@ msgstr ""
 "pojawiania się w grze."
 
 #: data/core/help.cfg:73
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Nieznany scenariusz"
+msgstr "Nieznana jednostka"
 
 #: data/core/help.cfg:76
 msgid ""
@@ -393,6 +392,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Ta jednostka jest na razie nieznana. Aby jej opis stał się dostępny, musisz "
+"ją napotkać w trakcie gry."
 
 #: data/core/help.cfg:84
 msgid ""
@@ -1322,7 +1325,6 @@ msgstr ""
 "turę."
 
 #: data/core/help.cfg:253
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1333,11 +1335,12 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"Od zwykłych reguł dotyczących utrzymania jest jeden ważny wyjątek: jednostki "
-"z cechą Lojalna nigdy nie wymagają utrzymania. Jednostki, z którymi "
-"zaczynasz scenariusz (takie jak Konrad lub Delfador) lub jednostki, które "
-"dołączają do ciebie w jego trakcie (jak Jeźdźcy w drugim scenariuszu w "
-"Następcy Tronu), będą zazwyczaj lojalne."
+"Od zwykłych reguł dotyczących utrzymania są dwa ważne wyjątki: jednostki z "
+"cechą Lojalna i przywódcy nigdy nie wymagają utrzymania. Jednostki, z "
+"którymi zaczynasz scenariusz (jak na przykład Delfador) lub jednostki, które "
+"dołączają do ciebie w jego trakcie (jak jeździec w drugim scenariuszu "
+"Następcy Tronu), będą zazwyczaj lojalne. Z kolei jednostka postaci, którą "
+"grasz (na przykład Konrada) będzie prawie zawsze przywódcą."
 
 #: data/core/help.cfg:258
 msgid "Wrap Up"
@@ -5429,9 +5432,8 @@ msgid "stone: "
 msgstr "skamieniała: "
 
 #: src/generate_report.cpp:167
-#, fuzzy
 msgid "Resistances: "
-msgstr "Odporności"
+msgstr "Odporności: "
 
 #: src/generate_report.cpp:185 src/multiplayer_create.cpp:366
 msgid "Experience Modifier: "
@@ -5706,9 +5708,8 @@ msgid "Location"
 msgstr "Miejsce"
 
 #: src/menu_events.cpp:322
-#, fuzzy
 msgid "Status"
-msgstr "Statystyki"
+msgstr "Status"
 
 #: src/menu_events.cpp:435
 msgid "Unit List"
@@ -5807,9 +5808,8 @@ msgid "Send to allies only"
 msgstr "Wyślij tylko do sojuszników"
 
 #: src/menu_events.cpp:737
-#, fuzzy
 msgid "Send to observers only"
-msgstr "Wyślij tylko do sojuszników"
+msgstr "Wyślij tylko do obserwatorów"
 
 #: src/menu_events.cpp:817
 msgid "unit^Gold"
@@ -6398,9 +6398,8 @@ msgid "Players: "
 msgstr "Gracze:"
 
 #: src/multiplayer_create.cpp:496
-#, fuzzy
 msgid "Size: "
-msgstr "Rozmiar"
+msgstr "Rozmiar: "
 
 #: src/multiplayer_lobby.cpp:98
 msgid "--no games open--"
