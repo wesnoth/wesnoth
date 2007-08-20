@@ -227,7 +227,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		name << i->get_description();
 		str << name.str();
 		str << COLUMN_SEPARATOR;
-		str << i->get_name();
+		// this trick allow to display char identical to markup character
+		str << font::NULL_MARKUP << i->get_name();
 		menu_items.push_back(str.str());
 	}
 
@@ -304,7 +305,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
-				menu_.change_item(menu_.selection(), 1, newhk.get_name());
+				menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
 			};
 		}
 		if (save_button.pressed()) {
