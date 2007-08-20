@@ -57,7 +57,7 @@ namespace game_config
 	extern std::string flag_rgb;
 	extern std::vector<Uint32> defense_color_scale;
 
-	extern std::vector<std::string> foot_left_nw,foot_left_n,foot_right_nw,foot_right_n;
+	extern std::vector<std::string> foot_speed_prefix;
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_width, title_tip_padding;
 

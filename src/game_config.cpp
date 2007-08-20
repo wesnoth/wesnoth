@@ -65,7 +65,7 @@ namespace game_config
 
 	std::string cross_image = "misc/cross.png";
 
-	std::vector<std::string> foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
+	std::vector<std::string> foot_speed_prefix;
 
 	std::string observer_image = "misc/eye.png";
 	std::string tod_bright_image = "misc/tod-bright.png";
@@ -155,10 +155,7 @@ namespace game_config
 		flag_icon_image = v["flag_icon_image"];
 		cross_image = v["cross_image"];
 
-		foot_left_nw = utils::split(v["footprint_left_nw"]);
-		foot_left_n = utils::split(v["footprint_left_n"]);
-		foot_right_nw = utils::split(v["footprint_right_nw"]);
-		foot_right_n = utils::split(v["footprint_right_n"]);
+		foot_speed_prefix = utils::split(v["footprint_prefix"]);
 
 		terrain_mask_image = v["terrain_mask_image"];
 		grid_image = v["grid_image"];

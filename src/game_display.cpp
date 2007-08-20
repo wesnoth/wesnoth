@@ -666,12 +666,18 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 		return res; // not on the route
 	}
 
-	std::string speed = "-normal";
+	// check which footsteps images of game_config we will use
+	int move_cost = 1;
 	const unit_map::const_iterator u = units_.find(route_.steps.front());
-	if(u != units_.end() && u->second.movement_cost(map_.get_terrain(loc)) > 1) {
-			speed = "-slow";
+	if(u != units_.end()) {
+			move_cost = u->second.movement_cost(map_.get_terrain(loc));
 	}
-
+	int image_number = minimum<int>(move_cost, game_config::foot_speed_prefix.size());
+	if (image_number < 1) {
+		return res; // invalid movement cost or no images
+	} 
+	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
+	
 	// we draw 2 half-hex (with possibly different directions)
 	// but skip the first for the first step
 	const int first_half = (i == route_.steps.begin()) ? 1 : 0;
@@ -689,7 +695,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 			rotate = "~FL(horiz)~FL(vert)";
 		}
 
-		const std::string image = "footsteps/foot" + speed
+		const std::string image = foot_speed_prefix
 			+ (h==0 ? "-in-" : "-out-") + i->write_direction(dir)
 			+ ".png" + rotate;
 
