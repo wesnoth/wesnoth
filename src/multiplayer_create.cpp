@@ -31,7 +31,6 @@
 #include "video.hpp"
 #include "serialization/string_utils.hpp"
 #include "wml_separators.hpp"
-#include "wassert.hpp"
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};
@@ -534,15 +533,19 @@ void create::process_event()
 		// These are per player, always show of player 1 this might not be 100% correct,
 		// but at the moment it's not possible to show the fog and shroud per player.
 		// This might change in the future.
-		wassert(parameters_.scenario_data.get_children("side").size());
+		// NOTE when 'load game' is selected there are no sides
+		if(parameters_.scenario_data.get_children("side").size()) {
 
-		fog_game_.set_check(map_settings ? 
-			settings::use_fog((*parameters_.scenario_data.get_children("side").front())["fog"]) :
-			preferences::fog());
+			fog_game_.set_check(map_settings ? 
+				settings::use_fog((*parameters_.
+					scenario_data.get_children("side").front())["fog"]) :
+				preferences::fog());
 
-		shroud_game_.set_check(map_settings ?
-			settings::use_shroud((*parameters_.scenario_data.get_children("side").front())["shroud"]) :
-			preferences::shroud());
+			shroud_game_.set_check(map_settings ?
+				settings::use_shroud((*parameters_.
+					scenario_data.get_children("side").front())["shroud"]) :
+				preferences::shroud());
+		}
 				
 		// set the widget states
 		turns_slider_.enable(!map_settings);
