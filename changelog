@@ -96,6 +96,11 @@ Version 1.3.6+svn:
    * the numbers of "show enemy moves" are now on top of fog and doesn't mix
      with those of the movement hint
    * display resistances against visible enemy weapons in the HP tooltip
+   * also highlight the destination hex before an attack+move mouse action
+   * more up-to-date mouse state (cursor, highlight, ADI) after some events:
+     undo, attack dialog or right-click cancel
+   * need only one right-click to open context-menu on an unselected enemy
+   * selecting an enemy doesn't directly cancel its reachable zone
  * WML engine:
    * now [base_unit]id= inside [unit] can extend upon existing unit types
    * new tag [filter_radius] to allow greater control over radius expansion
@@ -160,6 +165,8 @@ Version 1.3.6+svn:
      or the current game has 'test' as version
    * Add 2 debug commands: "fps" for showing framerate, and "benchmark"
      to force a continuous refresh of the screen (for testing the real fps)
+   * fixed bug keeping highlighted the previous selected hex after a
+     right-click cancel on map using fog/shroud
 
 Version 1.3.6:
  * language and i18n:
