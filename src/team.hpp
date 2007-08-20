@@ -68,6 +68,7 @@ public:
 		void write(config& cfg) const;
 		std::string name;
 		std::string gold;
+		int start_gold;
 		std::string income;
 		int income_per_village;
 		std::set<std::string> can_recruit;
@@ -128,6 +129,10 @@ public:
 		{ return villages_.count(loc) > 0; }
 
 	int gold() const { return gold_; }
+	int start_gold() const { return info_.start_gold; }
+	int base_income() const
+		{ return atoi(info_.income.c_str()) + game_config::base_income; }
+	int village_gold() const { return info_.income_per_village; }
 	int income() const
 		{ return atoi(info_.income.c_str()) + villages_.size()*info_.income_per_village+game_config::base_income; }
 	void new_turn() { gold_ += income(); }

@@ -524,9 +524,75 @@ namespace events{
 			items.push_back(str.str());
 		}
 
+		gui::dialog slist(*gui_, _("Current Status"), "", gui::NULL_DIALOG);
+		slist.add_button(new gui::standard_dialog_button(gui_->video(), _("More"), 0, false),
+		                 gui::dialog::BUTTON_STANDARD);
+		slist.add_button(new gui::standard_dialog_button(gui_->video(), _("Close"), 1, true),
+		                 gui::dialog::BUTTON_STANDARD);
+		slist.set_menu(items, &sorter);
+
+		if (slist.show() >= 0) game_settings_table();
+	}
+
+	void menu_handler::game_settings_table()
+	{
+		std::stringstream heading;
+		heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR
+		        << COLUMN_SEPARATOR
+		        << _("Side")              << COLUMN_SEPARATOR
+		        << _("Start\nGold")       << COLUMN_SEPARATOR
+		        << _("Base\nIncome")      << COLUMN_SEPARATOR
+		        << _("Gold Per\nVillage") << COLUMN_SEPARATOR
+		        << _("Fog")               << COLUMN_SEPARATOR
+		        << _("Shroud");
+
+		gui::menu::basic_sorter sorter;
+		sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2)
+		      .set_numeric_sort(3).set_numeric_sort(4).set_numeric_sort(5)
+		      .set_alpha_sort(6).set_alpha_sort(7);
+
+		std::vector<std::string> items;
+		items.push_back(heading.str());
+
+		const team& viewing_team = teams_[gui_->viewing_team()];
+
+		for(size_t n = 0; n != teams_.size(); ++n) {
+			if(teams_[n].is_empty()) {
+				continue;
+			}
+
+			std::stringstream str;
+			const unit_map::const_iterator leader = team_leader(n+1, units_);
+
+			if(leader != units_.end()) {
+				// Add leader image. If it's fogged
+				// show only a random leader image.
+				if (viewing_team.knows_about_team(n) || game_config::debug) {
+					str << IMAGE_PREFIX << leader->second.absolute_image();
+				} else {
+					str << IMAGE_PREFIX << std::string("random-enemy.png");
+				}
+#ifndef LOW_MEM
+				str << "~RC(" << leader->second.team_color() << ">"
+				    << team::get_side_colour_index(n+1) << ")";
+#endif
+			}
+
+			str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
+			    << teams_[n].current_player() << COLUMN_SEPARATOR
+			    << n + 1 << COLUMN_SEPARATOR
+			    << teams_[n].start_gold() << COLUMN_SEPARATOR
+			    << teams_[n].base_income() << COLUMN_SEPARATOR
+			    << teams_[n].village_gold() << COLUMN_SEPARATOR
+			    << (teams_[n].uses_fog()    ? "yes" : "no") << COLUMN_SEPARATOR
+			    << (teams_[n].uses_shroud() ? "yes" : "no") << COLUMN_SEPARATOR;
+
+			items.push_back(str.str());
+		}
+
 		int selected = 0;
 		{
-			gui::dialog slist(*gui_, "", "", gui::OK_CANCEL);
+			gui::dialog slist(*gui_, _("Game Settings"), "", gui::OK_CANCEL);
 			slist.set_menu(items, &sorter);
 			selected = slist.show();
 		} // this will kill the dialog before scrolling

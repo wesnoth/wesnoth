@@ -93,8 +93,15 @@ team::team_info::team_info(const config& cfg)
 	  ai_memory_.append(**aimem);
 	}
 
-
 	gold = cfg["gold"];
+
+	// at the start of a game we need to take the value from the gold setting,
+	// at this time "start_gold" is not set, but maybe there is a better way
+	// to check for a game start
+	// this also handles the loading of older save files, though with wrong
+	// values for the start gold in the game settings screen
+	start_gold = lexical_cast_default<int>(cfg["start_gold"],
+	                                       lexical_cast<int>(gold));
 	income = cfg["income"];
 	name = cfg["name"];
 	team_name = cfg["team_name"];
@@ -265,6 +272,7 @@ void team::team_info::write(config& cfg) const
 	cfg["ai_algorithm"] = ai_algorithm;
 
 	cfg["gold"] = gold;
+	cfg["start_gold"] = lexical_cast<std::string>(start_gold).c_str();
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;

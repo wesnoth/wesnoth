@@ -133,6 +133,7 @@ private:
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
+	void game_settings_table();
 
 	game_display* gui_;
 	unit_map& units_;
