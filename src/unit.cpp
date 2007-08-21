@@ -82,6 +82,7 @@ unit::unit(const unit& o):
 		movement_b_(o.movement_b_),
 		defense_b_(o.defense_b_),
 		resistance_b_(o.resistance_b_),
+		abilities_b_(o.abilities_b_),
 
 		advances_to_(o.advances_to_),
 		id_(unit_id_test(o.id_)),
@@ -755,6 +756,23 @@ bool unit::has_ability_by_id(const std::string& ability) const
 		}
 	}
 	return false;
+}
+
+void unit::remove_ability_by_id(const std::string &ability)
+{
+	config* abil = cfg_.child("abilities");
+	if(abil) {
+		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
+			int offset = 0;
+			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j, ++offset) {
+				if((**j)["id"] == ability) {
+					abil->remove_child(i->first, offset);
+					return; /* Abilities are unique by id, so we won't find another. */
+					        /* Besides, we just wrecked our iterator. Bye. */
+				}
+			}
+		}
+	}
 }
 
 bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool use_flat_tod) const
@@ -1445,9 +1463,11 @@ void unit::write(config& cfg) const
 	cfg.clear_children("movement_costs");
 	cfg.clear_children("defense");
 	cfg.clear_children("resistance");
+	cfg.clear_children("abilities");
 	cfg.add_child("movement_costs",movement_b_);
 	cfg.add_child("defense",defense_b_);
 	cfg.add_child("resistance",resistance_b_);
+	cfg.add_child("abilities",abilities_b_);
 	cfg["x"] = x;
 	cfg["y"] = y;
 	cfg["id"] = id();
@@ -2319,9 +2339,11 @@ void unit::reset_modifications()
 	cfg_.clear_children("movement_costs");
 	cfg_.clear_children("defense");
 	cfg_.clear_children("resistance");
+	cfg_.clear_children("abilities");
 	cfg_.add_child("movement_costs",movement_b_);
 	cfg_.add_child("defense",defense_b_);
 	cfg_.add_child("resistance",resistance_b_);
+	cfg_.add_child("abilities",abilities_b_);
 }
 void unit::backup_state()
 {
@@ -2343,6 +2365,11 @@ void unit::backup_state()
 		resistance_b_ = *cfg_.child("resistance");
 	} else {
 		resistance_b_ = config();
+	}
+	if(cfg_.child("abilities")) {
+		abilities_b_ = *cfg_.child("abilities");
+	} else {
+		abilities_b_ = config();
 	}
 }
 
@@ -2633,6 +2660,32 @@ void unit::add_modification(const std::string& type, const config& mod,
 					const std::string& zoc_value = (**i.first)["value"];
 					if(!zoc_value.empty()) {
 						emit_zoc_ = lexical_cast_default<int>(zoc_value);
+					}
+				} else if (apply_to == "new_ability") {
+					config *ab_effect;
+					config *ab = cfg_.child("abilities");
+					if(!ab) {
+						ab = &cfg_.add_child("abilities");
+					}
+					ab_effect = (**i.first).child("abilities");
+					if (ab_effect) {
+						for(config::child_map::const_iterator j = ab_effect->all_children().begin(); j != ab_effect->all_children().end(); ++j) {
+							for (config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+								if (!has_ability_by_id((**k)["id"])) {
+									ab->add_child(j->first, **k);
+								}
+							}
+						}
+					}
+				} else if (apply_to == "remove_ability") {
+					config *ab_effect = (**i.first).child("abilities");
+					config *ab = cfg_.child("abilities");
+					if (ab && ab_effect) {
+						for(config::child_map::const_iterator j = ab_effect->all_children().begin(); j != ab_effect->all_children().end(); ++j) {
+							for (config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
+								remove_ability_by_id((**k)["id"]);
+							}
+						}
 					}
 				} else if (apply_to == "image_mod") {
 					LOG_UT << "applying image_mod \n";
