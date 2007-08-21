@@ -154,7 +154,7 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 	int result = base_score_;
 	if(event_.empty() ==false) {
 		if (std::find(event_.begin(),event_.end(),event)== event_.end()) {
-			return -2;
+			return MATCH_FAIL;
 		} else {
 			result ++;
 		}
@@ -163,13 +163,13 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 		if(t_translation::terrain_matches(disp.get_map().get_terrain(loc), terrain_types_)) {	
 			result ++;
 		} else {
-			return -2;
+			return MATCH_FAIL;
 		} 
 	}
 
 	if(value_.empty() == false ) {
 		if (std::find(value_.begin(),value_.end(),value)== value_.end()) {
-			return -2;
+			return MATCH_FAIL;
 		} else {
 			result ++;
 		}
@@ -177,14 +177,14 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 	if(my_unit) {
 		if(directions.empty()== false) {
 			if (std::find(directions.begin(),directions.end(),my_unit->facing())== directions.end()) {
-				return -2;
+				return MATCH_FAIL;
 			} else {
 				result ++;
 			}
 		}
 		std::vector<config>::const_iterator myitor;
 		for(myitor = unit_filter_.begin(); myitor != unit_filter_.end(); myitor++) {
-			if(!my_unit->matches_filter(&(*myitor),loc)) return -2;
+			if(!my_unit->matches_filter(&(*myitor),loc)) return MATCH_FAIL;
 			result++;
 		}
 		if(!secondary_unit_filter_.empty()) {
@@ -194,14 +194,14 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 				if(unit->first == facing_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); second_itor++) {
-						if(!unit->second.matches_filter(&(*second_itor),facing_loc)) return -2;
+						if(!unit->second.matches_filter(&(*second_itor),facing_loc)) return MATCH_FAIL;
 						result++;
 					}
 
 					break;
 				}
 			}
-			if(unit == disp.get_const_units().end()) return -2;
+			if(unit == disp.get_const_units().end()) return MATCH_FAIL;
 		}
 		if(!neighbour_unit_filter_.empty()) {
 			gamemap::location neighbour_loc[6] ;
@@ -220,12 +220,12 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 						}
 					}
 				}
-				if(!found) return -2;
+				if(!found) return MATCH_FAIL;
 			}
 		}
 
-	} else if (!unit_filter_.empty()) return -2;
-	if(frequency_ && !(rand()%frequency_)) return -2;
+	} else if (!unit_filter_.empty()) return MATCH_FAIL;
+	if(frequency_ && !(rand()%frequency_)) return MATCH_FAIL;
 
 	
 
@@ -267,36 +267,36 @@ int fighting_animation::matches(const game_display& disp, const gamemap::locatio
 		hit_type hit,const attack_type* attack, const attack_type* secondary_attack,int swing,int damage) const
 {
 	int result = unit_animation::matches(disp,loc,my_unit,damage);
-	if(result == -2) return -2;
+	if(result == MATCH_FAIL) return MATCH_FAIL;
 	if(hits.empty() == false ) {
 		if (std::find(hits.begin(),hits.end(),hit)== hits.end()) {
-			return -2;
+			return MATCH_FAIL;
 		} else {
 			result ++;
 		}
 	}
 	if(swing_num.empty() == false ) {
 		if (std::find(swing_num.begin(),swing_num.end(),swing)== swing_num.end()) {
-			return -2;
+			return MATCH_FAIL;
 		} else {
 			result ++;
 		}
 	}
 	if(!attack) {
 		if(!primary_filter.empty())
-			return -2;
+			return MATCH_FAIL;
 	}
 	std::vector<config>::const_iterator myitor;
 	for(myitor = primary_filter.begin(); myitor != primary_filter.end(); myitor++) {
-		if(!attack->matches_filter(*myitor)) return -2;
+		if(!attack->matches_filter(*myitor)) return MATCH_FAIL;
 		result++;
 	}
 	if(!secondary_attack) {
 		if(!secondary_filter.empty())
-			return -2;
+			return MATCH_FAIL;
 	}
 	for(myitor = secondary_filter.begin(); myitor != secondary_filter.end(); myitor++) {
-		if(!secondary_attack->matches_filter(*myitor)) return -2;
+		if(!secondary_attack->matches_filter(*myitor)) return MATCH_FAIL;
 		result++;
 	}
 	return result;
