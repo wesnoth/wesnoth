@@ -35,8 +35,8 @@ class unit_animation:public animated<unit_frame>
 
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
-		explicit unit_animation(int start_time,const unit_frame &frame);
-		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit) const;
+		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
+		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const int value=0,const std::string & event="") const;
 
 	private:
 		t_translation::t_list terrain_types_;
@@ -45,6 +45,9 @@ class unit_animation:public animated<unit_frame>
 		std::vector<config> neighbour_unit_filter_;
 		std::vector<gamemap::location::DIRECTION> directions;
 		int frequency_;
+		int base_score_;
+		std::vector<std::string> event_;
+		std::vector<int> value_;
 };
 
 class attack_type;
@@ -65,7 +68,6 @@ class fighting_animation:public unit_animation
 		std::vector<config> secondary_filter;
 		std::vector<hit_type> hits;
 		std::vector<int> swing_num;
-		std::vector<int> damage_;
 };
 
 class defensive_animation:public fighting_animation
@@ -105,38 +107,7 @@ class movement_animation:public unit_animation
 	private:
 };
 
-class standing_animation:public unit_animation
-{
-	public:
-		explicit standing_animation(const config& cfg):unit_animation(cfg){};
-		explicit standing_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
 
-	private:
-};
-
-class leading_animation:public unit_animation
-{
-	public:
-		explicit leading_animation(const config& cfg):unit_animation(cfg){};
-		explicit leading_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-
-	private:
-};
-
-class healing_animation:public unit_animation
-{
-	public:
-		explicit healing_animation(const config& cfg);
-		explicit healing_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
-
-	private:
-		std::vector<int> damage_;
-
-};
 
 class victory_animation:public fighting_animation
 {
@@ -147,70 +118,5 @@ class victory_animation:public fighting_animation
 
 	private:
 };
-
-class recruit_animation:public unit_animation
-{
-	public:
-		explicit recruit_animation(const config& cfg):unit_animation(cfg){};
-		explicit recruit_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-
-	private:
-};
-
-class idle_animation:public unit_animation
-{
-	public:
-		explicit idle_animation(const config& cfg):unit_animation(cfg){};
-		explicit idle_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-
-	private:
-};
-
-class levelin_animation:public unit_animation
-{
-	public:
-		explicit levelin_animation(const config& cfg):unit_animation(cfg){};
-		explicit levelin_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-
-	private:
-};
-
-class levelout_animation:public unit_animation
-{
-	public:
-		explicit levelout_animation(const config& cfg):unit_animation(cfg){};
-		explicit levelout_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-
-	private:
-};
-
-class poison_animation:public unit_animation
-{
-	public:
-		explicit poison_animation(const config& cfg);
-		explicit poison_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,int damage) const;
-
-	private:
-		std::vector<int> damage_;
-};
-
-class healed_animation:public unit_animation
-{
-	public:
-		explicit healed_animation(const config& cfg);
-		explicit healed_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,int healing) const;
-
-	private:
-		std::vector<int> healing_;
-};
-
 
 #endif

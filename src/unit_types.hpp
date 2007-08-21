@@ -272,21 +272,14 @@ private:
 	std::vector<unit_race::GENDER> genders_;
 
 	// animations
+	std::vector<unit_animation> animations_;
+
 	std::vector<defensive_animation> defensive_animations_;
 	std::vector<unit_animation> teleport_animations_;
 	std::multimap<std::string,unit_animation> extra_animations_;
 	std::vector<death_animation> death_animations_;
 	std::vector<movement_animation> movement_animations_;
-	std::vector<standing_animation> standing_animations_;
-	std::vector<leading_animation> leading_animations_;
-	std::vector<healing_animation> healing_animations_;
 	std::vector<victory_animation> victory_animations_;
-	std::vector<recruit_animation> recruit_animations_;
-	std::vector<idle_animation> idle_animations_;
-	std::vector<levelin_animation> levelin_animations_;
-	std::vector<levelout_animation> levelout_animations_;
-	std::vector<healed_animation> healed_animations_;
-	std::vector<poison_animation> poison_animations_;
     std::string flag_rgb_;
 };
 
