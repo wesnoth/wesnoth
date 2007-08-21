@@ -537,14 +537,14 @@ namespace events{
 	void menu_handler::game_settings_table()
 	{
 		std::stringstream heading;
-		heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR
+		heading << HEADING_PREFIX << _("game settings^Leader") << COLUMN_SEPARATOR
 		        << COLUMN_SEPARATOR
-		        << _("Side")              << COLUMN_SEPARATOR
-		        << _("Start\nGold")       << COLUMN_SEPARATOR
-		        << _("Base\nIncome")      << COLUMN_SEPARATOR
-		        << _("Gold Per\nVillage") << COLUMN_SEPARATOR
-		        << _("Fog")               << COLUMN_SEPARATOR
-		        << _("Shroud");
+		        << _("game settings^Side")              << COLUMN_SEPARATOR
+		        << _("game settings^Start\nGold")       << COLUMN_SEPARATOR
+		        << _("game settings^Base\nIncome")      << COLUMN_SEPARATOR
+		        << _("game settings^Gold Per\nVillage") << COLUMN_SEPARATOR
+		        << _("game settings^Fog")               << COLUMN_SEPARATOR
+		        << _("game settings^Shroud");
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2)
@@ -584,8 +584,8 @@ namespace events{
 			    << teams_[n].start_gold() << COLUMN_SEPARATOR
 			    << teams_[n].base_income() << COLUMN_SEPARATOR
 			    << teams_[n].village_gold() << COLUMN_SEPARATOR
-			    << (teams_[n].uses_fog()    ? "yes" : "no") << COLUMN_SEPARATOR
-			    << (teams_[n].uses_shroud() ? "yes" : "no") << COLUMN_SEPARATOR;
+			    << (teams_[n].uses_fog()    ? _("yes") : _("no")) << COLUMN_SEPARATOR
+			    << (teams_[n].uses_shroud() ? _("yes") : _("no")) << COLUMN_SEPARATOR;
 
 			items.push_back(str.str());
 		}
