@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file ai.hpp 
+//!
+
 #ifndef AI_HPP_INCLUDED
 #define AI_HPP_INCLUDED
 
@@ -51,7 +55,7 @@ public:
 
 	bool leader_can_reach_keep();
 
-	//function which will return true iff there has been another attack this turn 'close' to this one
+	//! Return true iff there has been another attack this turn 'close' to this one.
 	bool attack_close(const location& loc) const;
 
 protected:
@@ -95,13 +99,12 @@ protected:
 
 	void remove_unit_from_moves(const gamemap::location& u, move_map& srcdst, move_map& dstsrc);
 
-	//a function which will find enemy units that threaten our valuable assets
+	//! Find enemy units that threaten our valuable assets.
 	void find_threats();
 
 	bool threats_found_;
 
-	//function which will calculate which movements should 
-	//be made to get an optimal number of villages
+	//! Calculate which movements should be made to get an optimal number of villages.
 	std::vector<std::pair<gamemap::location,gamemap::location> > get_village_combinations(
 			std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, 
 			const move_map& dstsrc, const move_map& enemy_srcdst, 
@@ -111,17 +114,17 @@ protected:
 			std::vector<std::pair<gamemap::location,gamemap::location> >::const_iterator start_at);
 
 
-	//our own version of 'move_unit'. It is like the version in ai_interface, 
-	//however if it is the leader moving, it will first attempt recruitment.
+	//! Our own version of 'move_unit'. It is like the version in ai_interface, 
+	//! however if it is the leader moving, it will first attempt recruitment.
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
-	//our own version of 'attack_enemy'. We record all attacks to support group attacking
+	//! Our own version of 'attack_enemy'. We record all attacks to support group attacking.
 	void attack_enemy(const location& attacking_unit, const location& target, 
 			int att_weapon, int def_weapon);
 
 	std::set<location> attacks_;
 
-	//sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in one turn
+	//! Sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in one turn.
 	bool multistep_move_possible(location from, location to, location via, 
 			std::map<location,paths>& possible_moves);
 
@@ -139,45 +142,45 @@ protected:
 		gamemap::location target;
 		std::vector<std::pair<gamemap::location,gamemap::location> > movements;
 
-		//the value of the unit being targeted
+		//! The value of the unit being targeted.
 		double target_value;
 
-		//the value on average, of units lost in the combat
+		//! The value on average, of units lost in the combat
 		double avg_losses;
 
-		//estimated % chance to kill the unit
+		//! Estimated % chance to kill the unit
 		double chance_to_kill;
 
-		//the average hitpoints damage inflicted
+		//! The average hitpoints damage inflicted
 		double avg_damage_inflicted;
 
 		int target_starting_damage;
 
-		//the average hitpoints damage taken
+		//! The average hitpoints damage taken
 		double avg_damage_taken;
 
-		//the sum of the values of units used in the attack
+		//! The sum of the values of units used in the attack
 		double resources_used;
 
-		//the weighted average of the % chance to hit each attacking unit
+		//! The weighted average of the % chance to hit each attacking unit
 		double terrain_quality;
 
-		//the weighted average of the % defense of the best possible terrain
-		//that the attacking units could reach this turn, without attacking
-		//(good for comparison to see just how good/bad 'terrain_quality' is)
+		//! The weighted average of the % defense of the best possible terrain
+		//! that the attacking units could reach this turn, without attacking
+		//! (good for comparison to see just how good/bad 'terrain_quality' is).
 		double alternative_terrain_quality;
 
-		//the vulnerability is the power projection of enemy units onto the hex
-		//we're standing on. support is the power projection of friendly units.
+		//! The vulnerability is the power projection of enemy units onto the hex
+		//! we're standing on. support is the power projection of friendly units.
 		double vulnerability, support;
 
-		//is true if the unit is a threat to our leader
+		//! Is true if the unit is a threat to our leader.
 		bool leader_threat;
 
-		//is true if this attack sequence makes use of the leader
+		//! Is true if this attack sequence makes use of the leader.
 		bool uses_leader;
 
-		//is true if the units involved in this attack sequence are surrounded.
+		//! Is true if the units involved in this attack sequence are surrounded.
 		bool is_surrounded;
 	};
 
@@ -193,13 +196,15 @@ protected:
 	                );
 
 
-	//function which finds how much 'power' a side can attack a certain location with. This is basically
-	//the maximum hp of damage that can be inflicted upon a unit on loc by full-health units, multiplied by
-	//the defense these units will have. (if 'use_terrain' is false, then it will be multiplied by 0.5)
+	//! Function which finds how much 'power' a side can attack a certain location with. 
+	//! This is basically the maximum hp of damage that can be inflicted upon a unit on loc 
+	//! by full-health units, multiplied by the defense these units will have. 
+	//! (if 'use_terrain' is false, then it will be multiplied by 0.5)
 	//
-	//Example: 'loc' can be reached by two units, one of whom has a 10-3 attack and has 48/48 hp, and
-	//can defend at 40% on the adjacent grassland. The other has a 8-2 attack, and has 30/40 hp, and
-	//can defend at 60% on the adjacent mountain. The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
+	// Example: 'loc' can be reached by two units, one of whom has a 10-3 attack 
+	// and has 48/48 hp, and can defend at 40% on the adjacent grassland. 
+	// The other has a 8-2 attack, and has 30/40 hp, and can defend at 60% on the adjacent mountain. 
+	// The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
 	virtual double power_projection(const gamemap::location& loc, const move_map& dstsrc, 
 			bool use_terrain=true) const;
 
@@ -213,13 +218,13 @@ protected:
 	virtual std::vector<target> find_targets(unit_map::const_iterator leader, 
 			const move_map& enemy_dstsrc);
 
-	//function to form a group of units suitable for moving along the route, 'route'.
-	//returns the location which the group may reach this turn.
-	//stores the locations of the units in the group in 'units'
+	//! Function to form a group of units suitable for moving along the route, 'route'.
+	//! Returns the location which the group may reach this turn.
+	//! Stores the locations of the units in the group in 'units'
 	virtual location form_group(const std::vector<location>& route,
 			const move_map& dstsrc, std::set<location>& units);
 
-	//function to return the group of enemies that threaten a certain path
+	//! Return the group of enemies that threaten a certain path.
 	virtual void enemies_along_path(const std::vector<location>& route,
 			const move_map& dstsrc, std::set<location>& units);
 
@@ -236,7 +241,7 @@ protected:
 	virtual std::pair<location,location> choose_move(std::vector<target>& targets,
 			const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_dstsrc);
 
-	//function which rates the value of moving onto certain terrain for a unit
+	//! Rates the value of moving onto certain terrain for a unit.
 	virtual int rate_terrain(const unit& u, const location& loc);
 
 	game_display& disp_;
@@ -251,50 +256,56 @@ protected:
 
 	void add_target(const target& tgt) { additional_targets_.push_back(tgt); }
 
-	//function which will analyze all the units that this side can recruit and rate
-	//their movement types. Ratings will be placed in 'unit_movement_scores_', with
-	//lower scores being better, and the lowest possible rating being '10'.
+	//! Analyze all the units that this side can recruit 
+	//! and rate their movement types. 
+	//! Ratings will be placed in 'unit_movement_scores_', 
+	//! with lower scores being better, 
+	//! and the lowest possible rating being '10'.
 	virtual void analyze_potential_recruit_movements();
 
 	std::map<std::string,int> unit_movement_scores_;
 	std::set<std::string> not_recommended_units_;
 
-	//function which will analyze all the units that this side can recruit and rate
-	//their fighting suitability against enemy units. Ratings will be placed in
-	//'unit_combat_scores_' with a '0' rating indicating that the unit is 'average'
-	//against enemy units, negative ratings meaning they are poorly suited, and
-	//positive ratings meaning they are well suited
+	//! Analyze all the units that this side can recruit 
+	//! and rate their fighting suitability against enemy units. 
+	//! Ratings will be placed in 'unit_combat_scores_', 
+	//! with a '0' rating indicating that the unit is 'average' against enemy units, 
+	//! negative ratings meaning they are poorly suited, 
+	//! and positive ratings meaning they are well suited.
 	virtual void analyze_potential_recruit_combat();
 
 	std::map<std::string,int> unit_combat_scores_;
 
-	//function which rates two unit types for their suitability against each other.
-	//returns 0 if the units are equally matched, a positive number if a is suited
-	//against b, and a negative number if b is suited against a.
+	//! Rates two unit types for their suitability against each other.
+	// Returns 0 if the units are equally matched, 
+	// a positive number if a is suited against b, 
+	// and a negative number if b is suited against a.
 	virtual int compare_unit_types(const unit_type& a, const unit_type& b) const;
 
-	//function which calculates the average resistance unit type a has against
-	//the attacks of unit type b.
+	//! calculates the average resistance unit type a has 
+	//! against the attacks of unit type b.
 	virtual int average_resistance_against(const unit_type& a, const unit_type& b) const;
 
-	//functions to deal with keeps
+	//! Functions to deal with keeps.
 	const std::set<location>& keeps();
 	const location& nearest_keep(const location& loc);
 
 	std::set<location> keeps_;
 
-	//function which, given a unit position, and a position the unit wants to
-	//get to in two turns, will return all possible positions the unit can
-	//move to, that will make the destination position accessible next turn
+	//! Function which, given a unit position, 
+	//! and a position the unit wants to get to in two turns, 
+	//! will return all possible positions the unit can move to, 
+	//! that will make the destination position accessible next turn.
 	void access_points(const move_map& srcdst, const location& u,
 			const location& dst, std::vector<location>& out);
 
-	//function which gets the areas of the map that this AI has been instructed to avoid
+	//! Function which gets the areas of the map 
+	//! that this AI has been instructed to avoid.
 	const std::set<location>& avoided_locations();
 
 	std::set<location> avoid_;
 
-	// Weapon choice cache, to speed simulations.
+	//! Weapon choice cache, to speed simulations.
 	std::map<std::pair<location,const unit_type *>,
 		std::pair<battle_context::unit_stats,battle_context::unit_stats> > unit_stats_cache_;
 
