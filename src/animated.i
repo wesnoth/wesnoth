@@ -11,7 +11,10 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-   */
+*/
+
+//! @file animated.i 
+//! Templates related to animations.
 
 #include "global.hpp"
 
