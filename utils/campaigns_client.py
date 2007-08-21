@@ -113,7 +113,7 @@ if __name__ == "__main__":
         Get info for a locally installed campaign. If expects a direct path
         to the info.cfg file.
         """
-        if not os.path.exists(name): return None
+        if not os.path.exists(name): return None, None
         p = wmlparser.Parser(None)
         p.parse_file(name)
         info = wmldata.DataSub("WML")
@@ -178,10 +178,10 @@ if __name__ == "__main__":
                     get(name, version, uploads, options.campaigns_dir)
                 else:
                     print "Not downloading", name,\
-                        "as the version already is:", local_version
+                        "as the version already is", local_version
             else:
                 print "Not downloading", name,\
-                    "because it is already at revision:", uploads
+                    "because it is already up-to-date."
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
