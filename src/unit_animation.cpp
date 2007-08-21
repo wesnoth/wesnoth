@@ -152,7 +152,6 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 int unit_animation::matches(const game_display& disp, const gamemap::location& loc,const unit* my_unit,const int value,const std::string & event) const
 {
 	int result = base_score_;
-	std::vector<std::string>::const_iterator event_itor;
 	if(event_.empty() ==false) {
 		if (std::find(event_.begin(),event_.end(),event)== event_.end()) {
 			return -2;

@@ -757,8 +757,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
 	const config::child_list& defends = expanded_cfg.get_children("defend");
-	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
-		defensive_animations_.push_back(defensive_animation(**d));
+	for(config::child_list::const_iterator d2 = defends.begin(); d2 != defends.end(); ++d2) {
+		defensive_animations_.push_back(defensive_animation(**d2));
 	}
 	if(defensive_animations_.empty()) {
 		defensive_animations_.push_back(defensive_animation(-150,unit_frame(image(),300)));

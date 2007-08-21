@@ -1383,8 +1383,8 @@ void unit::read(const config& cfg, bool use_traits)
 
 
 
-			for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
-				defensive_animations_.push_back(defensive_animation(**d));
+			for(config::child_list::const_iterator d2 = defends.begin(); d2 != defends.end(); ++d2) {
+				defensive_animations_.push_back(defensive_animation(**d2));
 			}
 			if(defensive_animations_.empty()) {
 				defensive_animations_.push_back(defensive_animation(-150,unit_frame(absolute_image(),300)));
