@@ -871,6 +871,7 @@ Usage: wmllint [options]
     -D, --diff                 Display diffs between unconverted and unconverted files.
     -r, --revert               Revert the conversion from the -bak files.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
+    --future                   Enable experimental WML conversions.
 """)
 
 if __name__ == '__main__':
