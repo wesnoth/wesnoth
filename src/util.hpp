@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file util.hpp 
+//! Templates and utility-routines for strings and numbers.
+
 #ifndef UTIL_H_INCLUDED
 #define UTIL_H_INCLUDED
 
@@ -18,8 +22,9 @@
 #include <map>
 #include <sstream>
 
-//instead of playing with VC++'s crazy definitions of min and max,
-//just define our own
+// instead of playing with VC++'s crazy definitions of min and max,
+// just define our own
+//! Replacement for VC++'s definitions of min and max.
 template<typename T>
 inline T& minimum(T& a, T& b) { return a < b ? a : b; }
 
@@ -41,13 +46,13 @@ inline bool is_odd(T num) {
 template<typename T>
 inline bool is_even(T num) { return !is_odd(num); }
 
-// guarantees portable results for division by 100; round towards 0
+//! Guarantees portable results for division by 100; round towards 0
 inline int div100rounded(int num) {
 	return (num < 0) ? -(((-num) + 49) / 100) : (num + 49) / 100;
 }
 
-// round (base_damage * bonus / divisor) to the closest integer
-// but up or down towards base_damage
+//! round (base_damage * bonus / divisor) to the closest integer,
+//! but up or down towards base_damage
 inline int round_damage(int base_damage, int bonus, int divisor) {
 	const int rounding = divisor / 2 - (bonus < divisor ? 0 : 1);
 	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
@@ -130,8 +135,8 @@ To lexical_cast_in_range(From a, To def, To min, To max)
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
-//a definition of 'push_back' for strings, since some implementations
-//don't support string::push_back
+//! A definition of 'push_back' for strings, 
+// since some implementations don't support string::push_back
 template<typename T, typename C>
 void push_back(T& str, C c)
 {
@@ -145,16 +150,16 @@ typedef Sint32 fixed_t;
 # define fxp_shift 8
 # define fxp_base (1 << fxp_shift)
 
-// IN: float or int - OUT: fixed_t
+//! IN: float or int - OUT: fixed_t
 # define ftofxp(x) (fixed_t((x) * fxp_base))
 
-// IN: unsigned and fixed_t - OUT: unsigned
+//! IN: unsigned and fixed_t - OUT: unsigned
 # define fxpmult(x,y) (((x)*(y)) >> fxp_shift)
 
-// IN: unsigned and int - OUT: fixed_t
+//! IN: unsigned and int - OUT: fixed_t
 # define fxpdiv(x,y) (((x) << fxp_shift) / (y))
 
-// IN: fixed_t - OUT: int
+//! IN: fixed_t - OUT: int
 # define fxptoi(x) ( ((x)>0) ? ((x) >> fxp_shift) : (-((-(x)) >> fxp_shift)) )
 
 #else

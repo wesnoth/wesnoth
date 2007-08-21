@@ -416,7 +416,7 @@ int divide(int a,int b) {
 
 /**	-file actions.hpp */
 /**	-file ai_attack.hpp */
-/**	@file ai.hpp */
+/**	-file ai.hpp */
 /**	-file ai_move.hpp */
 /**	-file config.hpp */
 /**	@file display.hpp */
@@ -444,7 +444,7 @@ int divide(int a,int b) {
 /**	-file theme.hpp */
 /**	-file unit.hpp */
 /**	@file unit_types.hpp */
-/**	@file util.hpp */
+/**	-file util.hpp */
 /**	@file video.hpp */
 
 /** @} */
