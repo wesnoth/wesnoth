@@ -272,7 +272,7 @@ void team::team_info::write(config& cfg) const
 	cfg["ai_algorithm"] = ai_algorithm;
 
 	cfg["gold"] = gold;
-	cfg["start_gold"] = lexical_cast<std::string>(start_gold).c_str();
+	cfg["start_gold"] = str_cast(start_gold);
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
@@ -285,13 +285,8 @@ void team::team_info::write(config& cfg) const
 	cfg["objectives"] = objectives;
 	cfg["objectives_changed"] = objectives_changed ? "yes" : "no";
 	cfg["countdown_time"]= countdown_time;
-
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",action_bonus_count);
-	cfg["action_bonus_count"]= buf;
-
-	snprintf(buf,sizeof(buf),"%d",income_per_village);
-	cfg["village_gold"] = buf;
+	cfg["action_bonus_count"]= str_cast(action_bonus_count);
+	cfg["village_gold"] = str_cast(income_per_village);
 
 	std::stringstream enemies_str;
 	for(std::vector<int>::const_iterator en = enemies.begin(); en != enemies.end(); ++en) {
@@ -309,16 +304,11 @@ void team::team_info::write(config& cfg) const
 	case EMPTY: cfg["controller"] = "null"; break;
 	default: wassert(false);
 	}
+
 	cfg["persistent"] = persistent ? "1" : "0";
-
-	snprintf(buf,sizeof(buf),"%d",villages_per_scout);
-	cfg["villages_per_scout"] = buf;
-
-	snprintf(buf,sizeof(buf),"%f",leader_value);
-	cfg["leader_value"] = buf;
-
-	snprintf(buf,sizeof(buf),"%f",village_value);
-	cfg["village_value"] = buf;
+	cfg["villages_per_scout"] = str_cast(villages_per_scout);
+	cfg["leader_value"] = str_cast(leader_value);
+	cfg["village_value"] = str_cast(village_value);
 
 	for(std::vector<target>::const_iterator tg = targets.begin(); tg != targets.end(); ++tg) {
 		tg->write(cfg.add_child("target"));
@@ -383,10 +373,7 @@ void team::write(config& cfg) const
 	info_.write(cfg);
 	cfg["shroud"] = uses_shroud() ? "yes" : "no";
 	cfg["fog"] = uses_fog() ? "yes" : "no";
-
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",gold_);
-	cfg["gold"] = buf;
+	cfg["gold"] = str_cast(gold_);
 
 	// Write village locations
 	for(std::set<gamemap::location>::const_iterator t = villages_.begin(); t != villages_.end(); ++t) {
@@ -395,9 +382,8 @@ void team::write(config& cfg) const
 
 	cfg["shroud_data"] = shroud_.write();
 
-	cfg["countdown_time"] = lexical_cast_default<std::string>(countdown_time_);
-	cfg["action_bonus_count"] = lexical_cast_default<std::string>(action_bonus_count_);
-
+	cfg["countdown_time"] = str_cast(countdown_time_);
+	cfg["action_bonus_count"] = str_cast(action_bonus_count_);
 }
 
 bool team::get_village(const gamemap::location& loc)
@@ -643,7 +629,7 @@ void validate_side(int side)
 	}
 
 	if(side < 1 || side > int(teams->size())) {
-		throw game::game_error("invalid side(" + lexical_cast_default<std::string>(side) + ") found in unit definition");
+		throw game::game_error("invalid side(" + str_cast(side) + ") found in unit definition");
 	}
 }
 
