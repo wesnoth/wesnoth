@@ -101,7 +101,7 @@ team::team_info::team_info(const config& cfg)
 	// this also handles the loading of older save files, though with wrong
 	// values for the start gold in the game settings screen
 	start_gold = lexical_cast_default<int>(cfg["start_gold"],
-	                                       lexical_cast_default<int>(gold, 0));
+				     lexical_cast_default<int>(gold, DEFAULT_TEAM_GOLD));
 	income = cfg["income"];
 	name = cfg["name"];
 	team_name = cfg["team_name"];
