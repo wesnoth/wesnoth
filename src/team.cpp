@@ -95,13 +95,17 @@ team::team_info::team_info(const config& cfg)
 
 	gold = cfg["gold"];
 
-	// at the start of a game we need to take the value from the gold setting,
-	// at this time "start_gold" is not set, but maybe there is a better way
-	// to check for a game start
+	// at the start of a scenario "start_gold" is not set, we need to take the
+	// value from the gold setting (or fall back to the gold default)
 	// this also handles the loading of older save files, though with wrong
-	// values for the start gold in the game settings screen
-	start_gold = lexical_cast_default<int>(cfg["start_gold"],
-				     lexical_cast_default<int>(gold, default_team_gold));
+	// values for the start gold in the scenario settings screen
+	if (!cfg["start_gold"].empty())
+		start_gold = cfg["start_gold"];
+	else if (!gold.empty())
+		start_gold = gold;
+	else
+		start_gold = default_team_gold;
+
 	income = cfg["income"];
 	name = cfg["name"];
 	team_name = cfg["team_name"];
@@ -272,7 +276,7 @@ void team::team_info::write(config& cfg) const
 	cfg["ai_algorithm"] = ai_algorithm;
 
 	cfg["gold"] = gold;
-	cfg["start_gold"] = str_cast(start_gold);
+	cfg["start_gold"] = start_gold;
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
@@ -356,7 +360,11 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 	// To ensure some mimimum starting gold,
 	// gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
+	{
 		gold_ = maximum(gold,::atoi(info_.gold.c_str()));
+		if (gold_ != ::atoi(info_.gold.c_str()))
+			info_.start_gold = str_cast(gold) + " (" + info_.start_gold + ")";
+	}
 
 	// Load in the villages the side controls at the start
 	const config::child_list& villages = cfg.get_children("village");
