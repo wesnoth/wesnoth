@@ -22,11 +22,17 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
-
 namespace settings {
 
 int get_turns(const std::string& value)
 {
+	// Special case, -1 is also allowed, which are unlimited turns
+	int val = lexical_cast_default<int>(value);
+
+	if(val == -1) {
+		return 100;
+	}
+
 	return lexical_cast_in_range<int>(value, 50, 20, 100);
 }
 
