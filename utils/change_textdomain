@@ -63,15 +63,15 @@
 usage()
 {
     cat <<EOF
-Usage: change_textdomain {-h | campaign-name oldtextdomain newtextdomain}
+Usage: change_textdomain {-h | -t | campaign-name oldtextdomain newtextdomain}
 Options:
     -h, --help                   Emit this help message and quit.
     -d, --dryrun                 Echo shell actions without performing them.
-    -t                           Insert "#textdomain wesnoth"
+    -t                           Insert "#textdomain wesnoth" in all cfg files
+                                 without textdomain, no other params required.
 Requires as first argument a campaign name.
 Requires as second and third arguments old and new text domain names. 
-Exception: with no arguments, it inserts "#textdomain wesnoth" in files
-that do not already have it.
+
 Call from the top-level directory of mainline.
 EOF
 }
@@ -162,7 +162,7 @@ fi
 campaign=$1
 oldtextdomain=$2
 newtextdomain=$3
-#echo "campaign=$campaign, ols=$old, new=$new"
+echo "campaign=$campaign, ols=$oldtextdomain, new=$newtextdomain"
 if [ "$campaign" = "" ]
 then
     usage
