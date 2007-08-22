@@ -14,6 +14,9 @@
    See the COPYING file for more details.
 */
 
+//! @file variable.cpp 
+//! Manage WML-variables.
+
 #include "global.hpp"
 
 #include "config.hpp"
@@ -28,8 +31,8 @@
 
 namespace
 {
-	// FIXME: the variable repository should be a class of variable.hpp,
-	// and not the game_state.
+	//! @todo FIXME: the variable repository should be 
+	// a class of variable.hpp, and not the game_state.
 	game_state* repos = NULL;
 }
 
@@ -183,7 +186,7 @@ namespace {
 const size_t MaxLoop = 1024;
 bool recursive_activation = false;
 
-//turns on any auto-stored variables
+//! Turns on any auto-stored variables
 void activate_scope_variable(std::string var_name)
 {
 	if(recursive_activation)
@@ -204,7 +207,7 @@ void activate_scope_variable(std::string var_name)
 		}
 	}
 }
-} //end anonymous namespace
+} // end anonymous namespace
 
 variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type) 
 	: vartype(validation_type), is_valid(false), explicit_index(false), index(0), vars(NULL)
@@ -250,7 +253,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 					return;
 				}
 			} else {
-				//add elements to the array until the requested size is attained
+				// Add elements to the array until the requested size is attained
 				for(; size <= inner_index; ++size) {
 					vars->add_child(element);
 				}
@@ -265,7 +268,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 				is_valid = force_valid || repos->temporaries.child(varname) != NULL;
 				break;
 			default:
-				//store the length of the array as a temporary variable
+				// Store the length of the array as a temporary variable
 				repos->temporaries[varname] = lexical_cast<std::string>(size);
 				is_valid = true;
 				break;
@@ -348,15 +351,15 @@ t_string& variable_info::as_scalar() {
 config& variable_info::as_container() {
 	wassert(is_valid);
 	if(explicit_index) {
-		//empty data for explicit index was already created if it was needed
+		// Empty data for explicit index was already created if it was needed
 		return *vars->get_children(key)[index];
 	} 
 	config *temp = vars->child(key);
 	if(temp) {
-		//the container exists, index not specified, return index 0
+		// The container exists, index not specified, return index 0
 		return *temp;
 	}
-	//add empty data for the new variable, since it does not exist yet
+	// Add empty data for the new variable, since it does not exist yet
 	return vars->add_child(key);
 }
 
