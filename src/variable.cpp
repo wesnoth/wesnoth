@@ -239,14 +239,23 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 		size_t size = vars->get_children(element).size();
 		if(size <= inner_index) {
 			if(!force_valid) {
-				WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
-				return;
-			}
-			for(; size <= inner_index; ++size) {
-				vars->add_child(element);
+				if(inner_explicit_index) {
+					WRN_NG << "variable_info: invalid WML array index, "
+						<< varname << std::endl;
+					return;
+				}
+				if(key != "length") {
+					WRN_NG << "variable_info: retrieving member of non-existant WML container, "
+						<< varname << std::endl;
+					return;
+				}
+			} else {
+				//add elements to the array until the requested size is attained
+				for(; size <= inner_index; ++size) {
+					vars->add_child(element);
+				}
 			}
 		}
-
 		if(!inner_explicit_index && key == "length") {
 			switch(vartype) {
 			case variable_info::TYPE_ARRAY:
@@ -256,6 +265,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 				is_valid = force_valid || repos->temporaries.child(varname) != NULL;
 				break;
 			default:
+				//store the length of the array as a temporary variable
 				repos->temporaries[varname] = lexical_cast<std::string>(size);
 				is_valid = true;
 				break;
