@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-15 14:40+0200\n"
+"POT-Creation-Date: 2007-08-22 17:51+0200\n"
 "PO-Revision-Date: 2007-07-02 17:27+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -158,7 +158,6 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Ranger.cfg:53
 #: data/core/units/humans/Loyalist_Cavalier.cfg:38
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
-#: data/core/units/humans/Loyalist_Bowman.cfg:25
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
 msgid "sword"
 msgstr "meč"
@@ -1670,6 +1669,11 @@ msgstr ""
 "jak pro boj s luky, tak i krátkými meči a jsou na válečném poli obvyklou "
 "jednotkou."
 
+#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
+#: data/core/units/humans/Loyalist_Bowman.cfg:25
+msgid "short sword"
+msgstr "krátký meč"
+
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
 msgstr "Jezdec"
@@ -2468,7 +2472,7 @@ msgstr ""
 msgid "lightbeam"
 msgstr "paprsek světla"
 
-#: data/core/units/humans/Mage_White.cfg:263
+#: data/core/units/humans/Mage_White.cfg:257
 msgid "female^White Mage"
 msgstr "Bílá magyně"
 
@@ -2497,7 +2501,7 @@ msgstr ""
 "\n"
 "Zvláštní rysy:"
 
-#: data/core/units/humans/Mage_of_Light.cfg:234
+#: data/core/units/humans/Mage_of_Light.cfg:228
 msgid "female^Mage of Light"
 msgstr "Světlá čarodějka"
 
@@ -3539,10 +3543,6 @@ msgstr ""
 "Kuše jakékoliv výroby je však poměrně výkonná zbraň. Skřeti, pyšnící se "
 "privilegiem této části vybavení, nejsou neschopnými válečníky, a pokud snad "
 "zaostávají v přesnosti, jejich počty tento nedostatek vyvažují."
-
-#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:27
-msgid "short sword"
-msgstr "krátký meč"
 
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
