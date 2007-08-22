@@ -1916,9 +1916,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					}
 				}
 
-				std::string advance = cfg["advance"];
-				std::cerr << "advance = " << advance << '\n';
-				
 				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
 					// Try to advance the unit
 
