@@ -67,10 +67,10 @@ Usage: change_textdomain {-h | campaign-name oldtextdomain newtextdomain}
 Options:
     -h, --help                   Emit this help message and quit.
     -d, --dryrun                 Echo shell actions without performing them.
-    -t                           Insrt "#textdomain wesnoth"
+    -t                           Insert "#textdomain wesnoth"
 Requires as first argument a campaign name.
 Requires as second and third arguments old and new text domain names. 
-Exceptiion: with no arguments, it inserts "#textdomain wesnoth" in files
+Exception: with no arguments, it inserts "#textdomain wesnoth" in files
 that do not already have it.
 Call from the top-level directory of mainline.
 EOF
