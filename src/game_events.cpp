@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file game_events.cpp 
+//! Processing of WML-events.
+
 #include "global.hpp"
 #include "actions.hpp"
 #include "construct_dialog.hpp"
@@ -84,7 +87,7 @@ public:
 	}
 };
 
-} //end anonymous namespace
+} // end anonymous namespace (1)
 
 #ifdef _MSC_VER
 // std::getline might be broken in Visual Studio so show a warning
@@ -97,16 +100,18 @@ public:
 #endif
 
 /**
- * shows the errors encountered in WML thusfar, to avoid a lot of the same messages
- * to be shown, identical messages are shown once with the between braces the number
- * of times that message was encountered. The order in which the messages are shown
- * does not need to be the order in which these messages are encountered.
- * Messages are always written to std::cerr
+ * Shows a summary of the errors encountered in WML thusfar, 
+ * to avoid a lot of the same messages to be shown. 
+ * Identical messages are shown once, with (between braces)
+ * the number of times that message was encountered. 
+ * The order in which the messages are shown does not need 
+ * to be the order in which these messages are encountered.
+ * Messages are always written to std::cerr.
  */
 static void show_wml_errors()
 {
-	// Get all unique messages in messages with the number of encounters for
-	// these messages
+	// Get all unique messages in messages, 
+	// with the number of encounters for these messages
 	std::map<std::string, int> messages;
 	while(true) {
 		std::string msg;
@@ -126,10 +131,10 @@ static void show_wml_errors()
 			messages[msg]++;
 		}
 	}
-	// make sure the eof flag is cleared otherwise no new messages are shown
+	// Make sure the eof flag is cleared otherwise no new messages are shown
 	lg::wml_error.clear();
 
-	// show the messages collected
+	// Show the messages collected
 	std::string caption = "Deprecated WML found";
 	for(std::map<std::string, int>::const_iterator itor = messages.begin();
 			itor != messages.end(); ++itor) {
@@ -159,8 +164,8 @@ bool internal_conditional_passed(const unit_map* units,
                         const vconfig cond, bool& backwards_compat)
 {
 
-	//if the if statement requires we have a certain unit, then
-	//check for that.
+	// If the if statement requires we have a certain unit, 
+	// then check for that.
 	const vconfig::child_list& have_unit = cond.get_children("have_unit");
 	backwards_compat = backwards_compat && have_unit.empty();
 	for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
@@ -180,8 +185,8 @@ bool internal_conditional_passed(const unit_map* units,
 		}
 	}
 
-	//if the if statement requires we have a certain location, then
-	//check for that.
+	// If the if statement requires we have a certain location, 
+	// then check for that.
 	const vconfig::child_list& have_location = cond.get_children("have_location");
 	backwards_compat = backwards_compat && have_location.empty();
 	for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
@@ -193,8 +198,8 @@ bool internal_conditional_passed(const unit_map* units,
 		}
 	}
 
-	//check against each variable statement to see if the variable
-	//matches the conditions or not
+	// Check against each variable statement, 
+	// to see if the variable matches the conditions or not.
 	const vconfig::child_list& variables = cond.get_children("variable");
 	backwards_compat = backwards_compat && variables.empty();
 	for(vconfig::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
@@ -261,7 +266,7 @@ bool conditional_passed(const unit_map* units,
 		utils::string_bool(cond["backwards_compat"],true);
 	bool matches = internal_conditional_passed(units, cond, allow_backwards_compat);
 
-	//handle [and], [or], and [not] with in-order precedence
+	// Handle [and], [or], and [not] with in-order precedence
 	int or_count = 0;
 	config::all_children_iterator cond_i = cond.get_config().ordered_begin();
 	config::all_children_iterator cond_end = cond.get_config().ordered_end();
@@ -270,19 +275,19 @@ bool conditional_passed(const unit_map* units,
 		const std::string& cond_name = *((*cond_i).first);
 		const vconfig cond_filter(&(*((*cond_i).second)));
 
-		//handle [and]
+		// Handle [and]
 		if(cond_name == "and")
 		{
 			matches = matches && conditional_passed(units, cond_filter, backwards_compat);
 			backwards_compat = false;
 		}
-		//handle [or]
+		// Handle [or]
 		else if(cond_name == "or")
 		{
 			matches = matches || conditional_passed(units, cond_filter, backwards_compat);
 			++or_count;
 		}
-		//handle [not]
+		// Handle [not]
 		else if(cond_name == "not")
 		{
 			matches = matches && !conditional_passed(units, cond_filter, backwards_compat);
@@ -290,12 +295,12 @@ bool conditional_passed(const unit_map* units,
 		}
 		++cond_i;
 	}
-	//check for deprecated [or] syntax
+	// Check for deprecated [or] syntax
 	if(matches && or_count > 1 && allow_backwards_compat)
 	{
 		lg::wml_error << "possible deprecated [or] syntax: now forcing re-interpretation\n";
-		//for now we will re-interpret it according to the old rules
-		//but this should be later to prevent re-interpretation errors
+		//! @todo For now we will re-interpret it according to the old rules,
+		// but this should be later to prevent re-interpretation errors.
 		const vconfig::child_list& orcfgs = cond.get_children("or");
 		for(unsigned int i=0; i < orcfgs.size(); ++i) {
 			if(conditional_passed(units, orcfgs[i])) {
@@ -307,7 +312,7 @@ bool conditional_passed(const unit_map* units,
 	return matches;
 }
 
-} //end namespace game_events
+} // end namespace game_events (1)
 
 namespace {
 
@@ -318,12 +323,12 @@ This variable controls the maximum number of hexes in a map, that can be parsed 
 It was set to 1024 before and for larger maps this could become a problem. So it is raised to 
 65536 now, which can feature a map of size 256*256 (maps really shouldn't be bigger than that :-).
 This constant also controls the maximum number of loops for a WML while loop (hence its name).
-If this is felt to be too high now, we must split it into two constants, but i don't feel the need
-at the moment.
+If this is felt to be too high now, we must split it into two constants, 
+but i don't feel the need at the moment.
 */
 const size_t MaxLoop = 65536;
 
-} //end anonymous namespace
+} // end anonymous namespace (2)
 
 static bool events_init() { return screen != NULL; }
 
@@ -413,7 +418,7 @@ private:
 	vconfig cfg_;
 };
 
-} //end anonymous namespace
+} // end anonymous namespace (3)
 
 static gamemap::location cfg_to_loc(const vconfig cfg,int defaultx = 0, int defaulty = 0)
 {
@@ -432,8 +437,7 @@ namespace {
 
 std::multimap<std::string,event_handler> events_map;
 
-//this function handles all the different types of actions that can be triggered
-//by an event.
+//! Handles all the different types of actions that can be triggered by an event.
 bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string& cmd, const vconfig cfg, bool& mutated)
 {
@@ -441,18 +445,18 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	LOG_NG << "handling command: '" << cmd << "'\n";
 
 	bool rval = true;
-	//sub commands that need to be handled in a guaranteed ordering
+	// Sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
 		if(!handle_event(event_info, cfg)) {
 			mutated = false;
 		}
 	}
 
-	//allow undo sets the flag saying whether the event has mutated the game to false
+	// Allow undo sets the flag saying whether the event has mutated the game to false
 	else if(cmd == "allow_undo") {
 		mutated = false;
 	}
-	//change shroud settings for portions of the map
+	// Change shroud settings for portions of the map
 	else if(cmd == "remove_shroud" || cmd == "place_shroud") {
 		const bool remove = cmd == "remove_shroud";
 
@@ -476,12 +480,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 
-	//teleport a unit from one location to another
+	// Teleport a unit from one location to another
 	else if(cmd == "teleport") {
 
 		unit_map::iterator u = units->find(event_info.loc1);
 
-		//search for a valid unit filter, and if we have one, look for the matching unit
+		// Search for a valid unit filter, and if we have one, look for the matching unit
 		const vconfig filter = cfg.child("filter");
 		if(!filter.null()) {
 			for(u = units->begin(); u != units->end(); ++u){
@@ -490,7 +494,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
-		//we have found a unit that matches the filter
+		// We have found a unit that matches the filter
 		if(u != units->end()) {
 			const gamemap::location dst = cfg_to_loc(cfg);
 			if(dst != u->first && game_map->on_board(dst)) {
@@ -518,10 +522,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//remove units from being turned to stone
+	// Remove units from being turned to stone
 	else if(cmd == "unstone") {
 		const vconfig filter = cfg.child("filter");
-		//store which side will need a shroud/fog update
+		// Store which side will need a shroud/fog update
 		std::vector<bool> clear_fog_side(teams->size(),false);
 
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
@@ -540,7 +544,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//allow a side to recruit a new type of unit
+	// Allow a side to recruit a new type of unit
 	else if(cmd == "allow_recruit") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
@@ -564,7 +568,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//remove the ability to recruit a unit from a certain side
+	// Remove the ability to recruit a unit from a certain side
 	else if(cmd == "disallow_recruit") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
@@ -670,7 +674,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//an award of gold to a particular side
+	// An award of gold to a particular side
 	else if(cmd == "gold") {
 		std::string side = cfg["side"];
 		std::string amount = cfg["amount"];
@@ -683,7 +687,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//modifications of some attributes of a side: gold, income, team name
+	// Modifications of some attributes of a side: gold, income, team name
 	else if(cmd == "modify_side") {
 		std::cerr << "modifying side...\n";
 		std::string side = cfg["side"];
@@ -712,7 +716,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 	}
-	//stores of some attributes of a side: gold, income, team name
+	// Stores of some attributes of a side: gold, income, team name
 	else if(cmd == "store_side" || cmd == "store_gold") {
 		t_string *gold_store;
 		std::string side = cfg["side"];
@@ -824,7 +828,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//provide a means of specifying win/loss conditions:
+	// Provide a means of specifying win/loss conditions:
 	// [event]
 	// name=prestart
 	// [objectives]
@@ -853,9 +857,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	//
 	// If side is set to 0, the new objectives are added to each player.
 	//
-	// The new objectives will be automatically displayed, but only to the
-	// player whose objectives did change, and only when it's this player's
-	// turn.
+	// The new objectives will be automatically displayed, 
+	// but only to the player whose objectives did change, 
+	// and only when it's this player's turn.
 	else if(cmd == "objectives") {
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
@@ -928,14 +932,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 
-	//setting a variable
+	// Setting a variable
 	else if(cmd == "set_variable") {
 		wassert(state_of_game != NULL);
 
 		const std::string name = cfg["name"];
 		t_string& var = state_of_game->get_variable(name);
 
-		const t_string& literal = cfg.get_attribute("literal"); //no $var substitution
+		const t_string& literal = cfg.get_attribute("literal"); 	// no $var substitution
 		if(literal.empty() == false) {
 			var = literal;
 		}
@@ -945,7 +949,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			var = value;
 		}
 
-		const t_string format = cfg["format"]; //deprecated, use value
+		const t_string format = cfg["format"];	// Deprecated, use value
 		if(format.empty() == false) {
 			var = format;
 		}
@@ -1001,8 +1005,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
-		// Note maybe we add more options later eg strftime formatting
-		// for now make the stamp mandatory
+		// Note: maybe we add more options later, eg. strftime formatting.
+		// For now make the stamp mandatory.
 		const std::string time = cfg["time"];
 		if(time == "stamp") {
 			char buf[50];
@@ -1010,15 +1014,15 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			var = buf;
 		}
 
-		// random generation works as follows:
+		// Random generation works as follows:
 		// random=[comma delimited list]
 		// Each element in the list will be considered a separate choice,
 		// unless it contains "..". In this case, it must be a numerical
-		// range. (i.e. -1..-10, 0..100, -10..10, etc)
+		// range (i.e. -1..-10, 0..100, -10..10, etc).
 		const std::string random = cfg["random"];
 		if(random.empty() == false) {
 			std::string random_value;
-			//if we're not replaying create a random number
+			// If we're not replaying, create a random number
 			if(get_replay_source().at_end()) {
 				std::string word;
 				std::vector<std::string> words;
@@ -1039,12 +1043,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 
 					if (tmp == std::string::npos) {
-						// treat this element as a string
+						// Treat this element as a string
 						ranges.push_back(std::pair<int, int>(0,0));
 						num_choices += 1;
 					}
 					else {
-						// treat as a numerical range
+						// Treat as a numerical range
 						const std::string first = word.substr(0, tmp);
 						const std::string second = word.substr(tmp+2,
 								random.length());
@@ -1085,7 +1089,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				recorder.set_random_value(random_value.c_str());
 			}
 
-			//otherwise get the random value from the replay data
+			// Otherwise get the random value from the replay data
 			else {
 				const config* const action = get_replay_source().get_next_action();
 				if(action == NULL || action->get_children("random_number").empty()) {
@@ -1099,7 +1103,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//conditional statements
+	// Conditional statements
 	else if(cmd == "if" || cmd == "while") {
 		log_scope(cmd);
 		const size_t max_iterations = (cmd == "if" ? 1 : MaxLoop);
@@ -1113,8 +1117,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				break;
 			}
 
-			//if the if statement passed, then execute all 'then' statements,
-			//otherwise execute 'else' statements
+			// If the if statement passed, then execute all 'then' statements,
+			// otherwise execute 'else' statements
 			const vconfig::child_list commands = cfg.get_children(type);
 			for(vconfig::child_list::const_iterator cmd = commands.begin();
 			cmd != commands.end(); ++cmd) {
@@ -1127,14 +1131,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "role") {
 
-		//get a list of the types this unit can be
+		// Get a list of the types this unit can be
 		std::vector<std::string> types = utils::split(cfg["type"]);
 		if (types.size() == 0) types.push_back("");
 
                 std::vector<std::string> sides = utils::split(cfg["side"]);
 
-		//iterate over all the types, and for each type, try to find
-		//a unit that matches
+		// Iterate over all the types, and for each type, 
+		// try to find a unit that matches
 		std::vector<std::string>::iterator ti;
 		for(ti = types.begin(); ti != types.end(); ++ti) {
 			config item = cfg.get_config();
@@ -1165,7 +1169,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					if(!player)
 						continue;
 
-					//iterate over the units, and try to find one that matches
+					// Iterate over the units, and try to find one that matches
 					std::vector<unit>::iterator ui;
 					for(ui = player->available_units.begin();
 							ui != player->available_units.end(); ++ui) {
@@ -1185,7 +1189,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				for(pi=state_of_game->players.begin();
 						pi!=state_of_game->players.end(); ++pi) {
 					std::vector<unit>::iterator ui;
-					//iterate over the units, and try to find one that matches
+					// Iterate over the units, and try to find one that matches
 					for(ui = pi->second.available_units.begin();
 							ui != pi->second.available_units.end(); ++ui) {
 						wassert(game_data_ptr != NULL);
@@ -1201,7 +1205,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 			}
 
-			//if we found a unit, we don't have to keep going.
+			// Stop searching if we found a unit:
                         if(found)
 				break;
 		}
@@ -1238,7 +1242,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//hiding units
+	// Hiding units
 	else if(cmd == "hide_unit") {
 		const gamemap::location loc = cfg_to_loc(cfg);
 		unit_map::iterator u = units->find(loc);
@@ -1252,7 +1256,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "unhide_unit") {
 		const gamemap::location loc = cfg_to_loc(cfg);
 		unit_map::iterator u;
-		// unhide all for backward compatibility
+		// Unhide all for backward compatibility
 		for(u =  units->begin(); u != units->end() ; u++) {
 			u->second.set_hidden(false);
 			screen->invalidate(loc);
@@ -1260,7 +1264,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//adding new items
+	// Adding new items
 	else if(cmd == "item") {
 		gamemap::location loc = cfg_to_loc(cfg);
 		std::string img = cfg["image"];
@@ -1305,7 +1309,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		soundsources->remove(cfg["id"]);
 	}
 
-	//changing the terrain
+	// Changing the terrain
 	else if(cmd == "terrain") {
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
 		
@@ -1334,7 +1338,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//creating a mask of the terrain
+	// Creating a mask of the terrain
 	else if(cmd == "terrain_mask") {
 		gamemap::location loc = cfg_to_loc(cfg, 1, 1);
 
@@ -1353,7 +1357,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		screen->rebuild_all();
 	}
 
-	//if we should spawn a new unit on the map somewhere
+	// If we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
 		wassert(game_data_ptr != NULL);
 		wassert(units != NULL);
@@ -1397,14 +1401,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//if we should recall units that match a certain description
+	// If we should recall units that match a certain description
 	else if(cmd == "recall") {
 		LOG_NG << "recalling unit...\n";
 		bool unit_recalled = false;
 		config unit_filter(cfg.get_config());
-		//prevent the recall unit filter from using the location as a criterion
-		// FIXME: we should design the WML to avoid these types of collisions;
-		// filters should be named consistently and always have a distinct scope
+		// Prevent the recall unit filter from using the location as a criterion
+		//! @todo FIXME: we should design the WML to avoid these types of collisions;
+		// filters should be named consistently and always have a distinct scope.
 		unit_filter["x"] = "";
 		unit_filter["y"] = "";
 		for(int index = 0; !unit_recalled && index < int(teams->size()); ++index) {
@@ -1427,7 +1431,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				if(game_events::unit_matches_filter(*u, &unit_filter, gamemap::location())) {
 					gamemap::location loc = cfg_to_loc(cfg);
 					unit to_recruit(*u);
-					avail.erase(u); //erase before recruiting, since recruiting can fire more events
+					avail.erase(u); 	// Erase before recruiting, since recruiting can fire more events
 					unit_mutations++;
 					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true),false,true);
 					unit_recalled = true;
@@ -1441,7 +1445,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string id = cfg["id"];
 		wassert(state_of_game != NULL);
 
-		//if this item has already been used
+		// If this item has already been used
 		if(id != "" && used_items.count(id))
 			return rval;
 
@@ -1475,7 +1479,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->select_hex(event_info.loc1);
 			screen->invalidate_unit();
 
-			//mark that this item won't be used again
+			// Mark this item as used up.
 			used_items.insert(id);
 		} else {
 			text = cfg["cannot_use_message"];
@@ -1489,7 +1493,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				surface.assign(image::get_image(image));
 			}
 
-			//this will redraw the unit, with its new stats
+			// Redraw the unit, with its new stats
 			screen->draw();
 
 			const std::string duration_str = cfg["duration"];
@@ -1511,7 +1515,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//displaying a message on-screen
+	// Display a message on-screen
 	else if(cmd == "print") {
 		std::string text = cfg["text"];
 		std::string size_str = cfg["size"];
@@ -1529,7 +1533,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		SDL_Color colour = {red,green,blue,255};
 
-		//remove any old one.
+		// Remove any old message.
 		if (floating_label)
 			font::remove_floating_label(floating_label);
 
@@ -1543,12 +1547,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 				
 	else if(cmd == "deprecated_message") {
-		// note since only used for deprecated things no need to translate the string
+		// Note: no need to translate the string, since only used for deprecated things.
 		const std::string message = cfg["message"];
 		lg::wml_error << message << '\n';
 	}
 
-	//displaying a message dialog
+	// Display a message dialog
 	else if(cmd == "message") {
 		unit_map::iterator speaker = units->end();
 
@@ -1566,8 +1570,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 		if(speaker == units->end() && speaker_str != "narrator") {
-			//no matching unit found, so the dialog can't come up
-			//continue onto the next message
+			// No matching unit found, so the dialog can't come up.
+			// Continue onto the next message.
 			WRN_NG << "cannot show message\n";
 			return rval;
 		}
@@ -1639,8 +1643,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		LOG_DP << "showing dialog...\n";
 
-		//if we're not replaying, or if we are replaying and there is no choice
-		//to be made, show the dialog.
+		// If we're not replaying, or if we are replaying 
+		// and there is no choice to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
 			const t_string msg = cfg["message"];
 			const std::string duration_str = cfg["duration"];
@@ -1673,7 +1677,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
-		//otherwise if a choice has to be made, get it from the replay data
+		// Otherwise if a choice has to be made, get it from the replay data
 		else {
 			const config* action = get_replay_source().get_next_action();
 			if (action != NULL && !action->get_children("start").empty()){
@@ -1687,7 +1691,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			option_chosen = atol(val.c_str());
 		}
 
-		//implement the consequences of the choice
+		// Implement the consequences of the choice
 		if(options.empty() == false) {
 			if(size_t(option_chosen) >= menu_items.size()) {
 				std::stringstream errbuf;
@@ -1708,7 +1712,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "kill") {
-		//Use (x,y) iteration because firing events ruins unit_map iteration
+		// Use (x,y) iteration, because firing events ruins unit_map iteration
 		for(gamemap::location loc(0,0); loc.x < game_map->w(); ++loc.x) {
 			for(loc.y = 0; loc.y < game_map->h(); ++loc.y) {
 				unit_map::iterator un = units->find(loc);
@@ -1733,8 +1737,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
-		//if the filter doesn't contain positional information, then it may match
-                //units on all recall lists.
+		// If the filter doesn't contain positional information, 
+		// then it may match units on all recall lists.
 		if(cfg["x"].empty() && cfg["y"].empty()) {
                   std::map<std::string, player_info>& players=state_of_game->players;
 
@@ -1755,12 +1759,12 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//adding of new events
+	// Adding of new events
 	else if(cmd == "event") {
 		new_handlers.push_back(event_handler(cfg.get_config()));
 	}
 
-	//setting of menu items
+	// Setting of menu items
 	else if(cmd == "set_menu_item") {
 		/* 
 		[set_menu_item]
@@ -1806,8 +1810,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			wmi_command_changes.push_back(wmi_command_change(id, new_command));
 		}
 	}
-	//unit serialization to and from variables
-	// FIXME: Check that store is automove bug safe
+	// Unit serialization to and from variables
+	//! @todo FIXME: Check that store is automove bug safe
 	else if(cmd == "store_unit") {
 		const config empty_filter;
 		vconfig filter = cfg.child("filter");
@@ -1900,7 +1904,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				std::string text = cfg["text"];
 				if(!text.empty())
 				{
-					//Print floating label
+					// Print floating label
 					std::string red_str = cfg["red"];
 					std::string green_str = cfg["green"];
 					std::string blue_str = cfg["blue"];
@@ -1916,17 +1920,17 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				std::cerr << "advance = " << advance << '\n';
 				
 				if(utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()) {
-					//Try to advance the unit
+					// Try to advance the unit
 
-					//FIXME: get player_number_ from the play_controller not from the WML vars
+					//! @todo FIXME: get player_number_ from the play_controller, not from the WML vars.
 					const t_string& side_str = state_of_game->get_variable("side_number");
 					const int side = lexical_cast_default<int>(side_str.base_str(), -1);
 
-					//Select advancement if it is on the playing side and the player is a human
+					// Select advancement if it is on the playing side and the player is a human
 					const bool sel = (side == static_cast<int>(u.side())
 					                 && (*teams)[side-1].is_human());
 
-					//The code in dialogs::advance_unit tests whether the unit can advance
+					// The code in dialogs::advance_unit tests whether the unit can advance
 					dialogs::advance_unit(*game_data_ptr, *game_map, *units, loc, *screen, !sel, true);
 				}
 
@@ -1963,7 +1967,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	/* [store_villages] : store villages into an array
-	 * keys:
+	 * Keys:
 	 * - variable (mandatory): variable to store in
 	 * - side: if present, the village should be owned by this side (0=unowned villages)
 	 * - terrain: if present, filter the village types against this list of terrain types 
@@ -1981,7 +1985,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 			bool matches = false;
-			if(cfg.has_attribute("side")) { //deprecated, use owner_side instead
+			if(cfg.has_attribute("side")) { 	// deprecated, use owner_side instead
 				lg::wml_error << "side key is no longer accepted in [store_villages],"
 					<< " use owner_side instead.\n";
 				config temp_cfg(cfg.get_config());
@@ -2019,13 +2023,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//command to take control of a village for a certain side
+	// Command to take control of a village for a certain side
 	else if(cmd == "capture_village") {
 		std::string side = cfg["side"];
 		wassert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side);
-		//if 'side' is 0, then it will become an invalid index, and so
-		//the village will become neutral.
+		// If 'side' is 0, then it will become an invalid index, 
+		// and so the village will become neutral.
 		const size_t team_num = size_t(side_num-1);
 
 		const std::vector<gamemap::location> locs(multiple_locs(cfg));
@@ -2037,7 +2041,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 	}
 
-	//command to remove a variable
+	// Command to remove a variable
 	else if(cmd == "clear_variable") {
 		const std::string name = cfg["name"];
 		state_of_game->clear_variable(name);
@@ -2079,7 +2083,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		unit_map::iterator u = units->find(event_info.loc1);
 
-		//search for a valid unit filter, and if we have one, look for the matching unit
+		// Search for a valid unit filter, 
+		// and if we have one, look for the matching unit
 		const vconfig filter = cfg.child("filter");
 		if(!filter.null()) {
 			for(u = units->begin(); u != units->end(); ++u){
@@ -2088,7 +2093,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
-		//we have found a unit that matches the filter
+		// We have found a unit that matches the filter
 		if(u != units->end() && ! screen->fogged(u->first)) {
 			screen->highlight_hex(u->first);
 			screen->scroll_to_tile(u->first);
@@ -2123,7 +2128,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 }
 
 static void commit_new_handlers() {
-	//commit any spawned events-within-events
+	// Commit any spawned events-within-events
 	while(new_handlers.size() > 0) {
 		event_handler& new_handler = new_handlers.back();
 		events_map.insert(std::pair<std::string,event_handler>(new_handler.name(),new_handler));
@@ -2134,7 +2139,7 @@ static void commit_new_handlers() {
 }
 
 static void commit_wmi_commands() {
-	//commit WML Menu Item command changes
+	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
 		wmi_command_change wcc = wmi_command_changes.back();
 		wml_menu_item*& mref = state_of_game->wml_menu_items[wcc.first];
@@ -2174,8 +2179,8 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 
 		const std::pair<const std::string*,const config*> item = *i;
 
-		// If the user pressed escape, we skip any message that doesn't
-		// require them to make a choice.
+		// If the user pressed escape, we skip any message 
+		// that doesn't require them to make a choice.
 		if ((skip_messages) && (*item.first == "message")) {
 			if ((item.second)->get_children("option").size() == 0) {
 				continue;
@@ -2190,13 +2195,13 @@ bool event_handler::handle_event(const queued_event& event_info, const vconfig c
 		}
 	}
 
-	// We do this once event has completed any music alterations
+	// We do this once the event has completed any music alterations
 	sound::commit_music_changes();
 
 	return mutated;
 }
 
-} //end anonymous namespace
+} // end anonymous namespace (4)
 
 static bool process_event(event_handler& handler, const queued_event& ev)
 {
@@ -2265,16 +2270,16 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 	}
 	if(ev.loc1.requires_unit() && filtered_unit1
 	&& (unit1 == units->end() || !ev.loc1.matches_unit(unit1->second))) {
-		//wrong or missing entity at src location
+		// Wrong or missing entity at src location
 		return false;
 	}
 	if(ev.loc2.requires_unit()  && filtered_unit2
 	&& (unit2 == units->end() || !ev.loc2.matches_unit(unit2->second))) {
-		//wrong or missing entity at dst location
+		// Wrong or missing entity at dst location
 		return false;
 	}
 
-	//the event hasn't been filtered out, so execute the handler
+	// The event hasn't been filtered out, so execute the handler
 	const bool res = handler.handle_event(ev);
 	if(ev.name == "select") {
 		state_of_game->last_selected = ev.loc1;
@@ -2298,8 +2303,8 @@ namespace game_events {
 
 bool matches_special_filter(const config* cfg, const vconfig filter)
 {
-	//FIXME: this filter should be deprecated and removed, 
-	//instead we should just auto-store $attacker_weapon and check it in a conditional
+	//! @todo FIXME: This filter should be deprecated and removed, 
+	// instead we should just auto-store $attacker_weapon and check it in a conditional
 
 	if(!cfg) {
 		return false;
@@ -2311,7 +2316,7 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 		}
 	}
 
-	//handle [and], [or], and [not] with in-order precedence
+	// Handle [and], [or], and [not] with in-order precedence
 	config::all_children_iterator cond_i = filter.get_config().ordered_begin();
 	config::all_children_iterator cond_end = filter.get_config().ordered_end();
 	while(cond_i != cond_end)
@@ -2319,17 +2324,17 @@ bool matches_special_filter(const config* cfg, const vconfig filter)
 		const std::string& cond_name = *((*cond_i).first);
 		const vconfig cond_filter(&(*((*cond_i).second)));
 
-		//handle [and]
+		// Handle [and]
 		if(cond_name == "and")
 		{
 			matches = matches && matches_special_filter(cfg, cond_filter);
 		}
-		//handle [or]
+		// Handle [or]
 		else if(cond_name == "or")
 		{
 			matches = matches || matches_special_filter(cfg, cond_filter);
 		}
-		//handle [not]
+		// Handle [not]
 		else if(cond_name == "not")
 		{
 			matches = matches && !matches_special_filter(cfg, cond_filter);
@@ -2495,18 +2500,18 @@ bool pump()
 
 	while(events_queue.empty() == false) {
 		queued_event ev = events_queue.front();
-		events_queue.pop_front(); //pop now for exception safety
+		events_queue.pop_front(); 	// pop now for exception safety
 		const std::string& event_name = ev.name;
 		typedef std::multimap<std::string,event_handler>::iterator itor;
 
-		// clear the unit cache, since the best clearing time is hard to figure out
-		// due to status changes by WML every event will flush the cache.
+		// Clear the unit cache, since the best clearing time is hard to figure out
+		// due to status changes by WML. Every event will flush the cache.
 		unit::clear_status_caches();
 
-		//find all handlers for this event in the map
+		// Find all handlers for this event in the map
 		std::pair<itor,itor> i = events_map.equal_range(event_name);
 
-		//set the variables for the event
+		// Set the variables for the event
 		if(i.first != i.second && state_of_game != NULL) {
 			char buf[50];
 			snprintf(buf,sizeof(buf),"%d",ev.loc1.x+1);
@@ -2533,7 +2538,7 @@ bool pump()
 		commit_wmi_commands();
 		commit_new_handlers();
 
-		// dialogs can only be shown if the display is not locked
+		// Dialogs can only be shown if the display is not locked
 		if(! screen->video().update_locked()) {
 			show_wml_errors();
 		}
@@ -2564,4 +2569,5 @@ bool entity_location::requires_unit() const
 	return !id_.empty();
 }
 
-} //end namespace game_events
+} // end namespace game_events (2)
+

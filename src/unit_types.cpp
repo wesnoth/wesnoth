@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file unit_types.cpp 
+//! Handle unit-type specific attributes, animations, advancement.
+
 #include "global.hpp"
 
 #include "game_config.hpp"
@@ -32,12 +35,13 @@
 
 //! The Halbardier got renamed so this function fixes that, all 
 //! functions which assign id_ in unit or unit_types should use 
-//! this wrapper in order to keep compatibility with older versions
+//! this wrapper in order to keep compatibility with older versions.
 //
 // @param id	the id of the unit
 //
-// @returns		the new id of the unit if id == Halbardier it returns
-// 				Halberdier otherwise id unmodified
+// @returns		the new id of the unit.
+// 				if id == Halbardier it returns Halberdier, 
+// 				otherwise id unmodified
 std::string unit_id_test(const std::string& id)
 {
 	if(id == "Halbardier") {
@@ -64,7 +68,8 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	}
 
 	if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id << " is directly in the attack, please use [animation]\n" ;
+		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id 
+								<< " is directly in the attack, please use [animation]\n" ;
 	}
 	if(animation_.empty()) {
 		animation_.push_back(attack_animation(cfg));
@@ -107,7 +112,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 const attack_animation* attack_type::animation(const game_display& disp, const gamemap::location& loc,const unit* my_unit,
 		const fighting_animation::hit_type hit,const attack_type*secondary_attack,int swing_num,int damage) const
 {
-	//select one of the matching animations at random
+	// Select one of the matching animations at random
 	std::vector<const attack_animation*>  options;
 	int max_val = -3;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
@@ -241,7 +246,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	return true;
 }
 
-/* same as above, except only update the descriptions */
+// Same as above, except only update the descriptions
 bool attack_type::describe_modification(const config& cfg,std::string* description)
 {
 	if(!matches_filter(cfg,0))
@@ -306,7 +311,7 @@ int unit_movement_type::movement_cost(const gamemap& map,
 		return i->second;
 	}
 
-	//if this is an alias, then select the best of all underlying terrains
+	// If this is an alias, then select the best of all underlying terrains.
 	const t_translation::t_list& underlying = map.underlying_mvt_terrain(terrain);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
@@ -382,7 +387,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 		return i->second;
 	}
 
-	//if this is an alias, then select the best of all underlying terrains
+	// If this is an alias, then select the best of all underlying terrains.
 	const t_translation::t_list& underlying = 
 		map.underlying_def_terrain(terrain);
 
@@ -529,9 +534,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 			config nvar_cfg(cfg);
 			nvar_cfg.merge_with(var_cfg);
 			nvar_cfg.clear_children("variation");
-			variations_.insert(std::pair<std::string,unit_type*>(nvar_cfg["variation_name"],new unit_type(nvar_cfg,mv_types,races,traits)));
+			variations_.insert(std::pair<std::string,unit_type*>(nvar_cfg["variation_name"],
+												 new unit_type(nvar_cfg,mv_types,races,traits)));
 		} else {
-			variations_.insert(std::pair<std::string,unit_type*>((**var)["variation_name"],new unit_type(**var,mv_types,races,traits)));
+			variations_.insert(std::pair<std::string,unit_type*>((**var)["variation_name"],
+												 new unit_type(**var,mv_types,races,traits)));
 		}
 	}
 
@@ -609,7 +616,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		race_ = &dummy_race;
 	}
 
-	//insert any traits that are just for this unit type
+	// Insert any traits that are just for this unit type
 	const config::child_list& unit_traits = cfg.get_children("trait");
 	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
 
@@ -686,7 +693,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"standing animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=standing flag\n";
 	}
-	// always have a standing animation
+	// Always have a standing animation
 	animations_.push_back(unit_animation(0,unit_frame(image(),0),"standing",-1));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
 	const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
@@ -696,7 +703,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"idling animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=idling flag\n";
 	}
-	//idle anims can be empty
+	// Idle anims can be empty
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
 	const config::child_list& levelin_anims = expanded_cfg.get_children("levelin_anim");
 	for(config::child_list::const_iterator levelin_anim = levelin_anims.begin(); levelin_anim != levelin_anims.end(); ++levelin_anim) {
@@ -706,7 +713,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelin flag\n";
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"1~0:600"),"levelin",-1));
-	// always have a levelin animation
+	// Always have a levelin animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
 	const config::child_list& levelout_anims = expanded_cfg.get_children("levelout_anim");
 	for(config::child_list::const_iterator levelout_anim = levelout_anims.begin(); levelout_anim != levelout_anims.end(); ++levelout_anim) {
@@ -716,7 +723,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelout flag\n";
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelin",-1));
-	// always have a levelout animation
+	// Always have a levelout animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
 	const config::child_list& healing_anims = expanded_cfg.get_children("healing_anim");
 	for(config::child_list::const_iterator healing_anim = healing_anims.begin(); healing_anim != healing_anims.end(); ++healing_anim) {
@@ -727,7 +734,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healing flag\n";
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),500),"healing",-1));
-	// always have a healing animation
+	// Always have a healing animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healed_anim");
 	const config::child_list& healed_anims = expanded_cfg.get_children("healed_anim");
 	for(config::child_list::const_iterator healed_anim = healed_anims.begin(); healed_anim != healed_anims.end(); ++healed_anim) {
@@ -738,7 +745,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healed flag\n";
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30"),"healed",-1));
-	// always have a healed animation
+	// Always have a healed animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
 	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
 	for(config::child_list::const_iterator poison_anim = poison_anims.begin(); poison_anim != poison_anims.end(); ++poison_anim) {
@@ -749,9 +756,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=poison flag\n";
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"),"poison",-1));
-	// always have a poison animation
-
-
+	// Always have a poison animation 
 
 
 
@@ -762,7 +767,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	if(defensive_animations_.empty()) {
 		defensive_animations_.push_back(defensive_animation(-150,unit_frame(image(),300)));
-		// always have a defensive animation
+		// Always have a defensive animation
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
@@ -772,7 +777,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	if(teleport_animations_.empty()) {
 		teleport_animations_.push_back(unit_animation(-20,unit_frame(image(),40)));
-		// always have a defensive animation
+		// Always have a defensive animation
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
 	const config::child_list& extra_anims = expanded_cfg.get_children("extra_anim");
@@ -789,7 +794,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	if(death_animations_.empty()) {
 		death_animations_.push_back(death_animation(0,unit_frame(image(),10)));
-		// always have a defensive animation
+		// Always have a defensive animation
 	}
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
@@ -799,7 +804,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	if(movement_animations_.empty()) {
 		movement_animations_.push_back(movement_animation(0,unit_frame(image(),150)));
-		// always have a movement animation
+		// Always have a movement animation
 	}
 
 
@@ -810,11 +815,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	if(victory_animations_.empty()) {
 		victory_animations_.push_back(victory_animation(0,unit_frame(image(),1)));
-		// always have a victory animation
+		// Always have a victory animation
 	}
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
-	// deprecation messages, only seen when unit is parsed for the first time
+	// Deprecation messages, only seen when unit is parsed for the first time.
 
 	hide_help_= cfg_["hide_help"] == "true" ? true : false;
 }
@@ -855,7 +860,7 @@ const std::string& unit_type::id() const
 		id_ = unit_id_test(cfg_["id"]);
 
 		if(id_.empty()) {
-			// this code is only for compatibility with old unit defs and savefiles
+			// This code is only for compatibility with old unit defs and savefiles.
 			id_ = unit_id_test(cfg_["name"]);
 		}
 
@@ -1013,12 +1018,12 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	const std::string &to_id =  to_unit.cfg_["id"];
 	const std::string &from_id =  cfg_["id"];
 
-	// add extra advancement path to this unit type
+	// Add extra advancement path to this unit type
 	lg::info(lg::config) << "adding advancement from " << from_id << " to " << to_id << "\n";
 	advances_to_.push_back(to_id);
 	if(xp>0 && experience_needed_>xp) experience_needed_=xp;
 
-	// add advancements to gendered subtypes, if supported by to_unit
+	// Add advancements to gendered subtypes, if supported by to_unit
 	for(int gender=0; gender<=1; ++gender) {
 		if(gender_types_[gender] == NULL) continue;
 		if(to_unit.gender_types_[gender] == NULL) {
@@ -1029,10 +1034,10 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]),xp);
 	}
 
-	// add advancements to variation subtypes
-	// since these are still a rare and special-purpose feature,
+	// Add advancements to variation subtypes.
+	// Since these are still a rare and special-purpose feature,
 	// we assume that the unit designer knows what they're doing,
-	// and don't block advancements that would remove a variation
+	// and don't block advancements that would remove a variation.
 	for(variations_map::iterator v=variations_.begin();
 	    v!=variations_.end(); ++v) {
 		lg::info(lg::config) << "variation advancement: ";
@@ -1080,7 +1085,7 @@ void game_data::set_config(const config& cfg)
 		}
 		else 
 		{
-			//LOAD UNIT TYPES
+			// LOAD UNIT TYPES
 			const unit_type u_type(**i.first,movement_types,races,unit_traits);
 			unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 			increment_set_config_progress();
@@ -1099,7 +1104,7 @@ void game_data::set_config(const config& cfg)
 				unit_type_map::iterator from_unit = unit_types.find(based_from);
 				if(from_unit != unit_types.end())
 				{
-					//derive a new unit type from an existing base unit id
+					// Derive a new unit type from an existing base unit id
 					config merge_cfg(from_unit->second.cfg_);
 					merge_cfg.merge_with(**i.first);
 					merge_cfg.clear_children("base_unit");
@@ -1118,7 +1123,7 @@ void game_data::set_config(const config& cfg)
 				}
 			}
 		}
-		//if we iterate through the whole list and no work was done, an error has occurred
+		// If we iterate through the whole list and no work was done, an error has occurred
 		if(new_count >= base_unit_count)
 		{
 			lg::warn(lg::config) << "unknown unit(s) " << skipped
@@ -1131,7 +1136,7 @@ void game_data::set_config(const config& cfg)
 		}
 	}
 	
-	// fix up advance_from references
+	// Fix up advance_from references
 	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
 	{
 		config::const_child_itors af;

@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file image.cpp 
+//! Routines for images: load, scale, re-color, etc.
+
 #include "global.hpp"
 
 #include "config.hpp"
@@ -39,7 +42,7 @@ typedef std::map<image::locator::value, int> locator_finder_t;
 typedef std::pair<image::locator::value, int> locator_finder_pair;
 locator_finder_t locator_finder;
 
-// Definition of all image maps
+//! Definition of all image maps
 image::image_cache images_,hexed_images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
 image::image_cache brightened_images_,semi_brightened_images_;
 
@@ -51,7 +54,7 @@ std::map<surface, surface> reversed_images_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
-// list of colors used by the TC image modification
+//! List of colors used by the TC image modification
 std::vector<std::string> team_colors;
 
 std::string image_mask;
@@ -59,10 +62,11 @@ std::string image_mask;
 int zoom = image::tile_size;
 int cached_zoom = 0;
 
-//The "pointer to surfaces" vector is not cleared anymore (the surface are
-//still freed, of course.) I do not think it is a problem, as the number of
-//different surfaces the program may lookup has an upper limit, so its
-//memory usage won't grow indefinitely over time
+// The "pointer to surfaces" vector is not cleared anymore 
+// (the surface are still freed, of course). 
+// I do not think it is a problem, as the number of different surfaces 
+// the program may lookup has an upper limit, so its memory usage 
+// won't grow indefinitely over time.
 template<typename T>
 void reset_cache(std::vector<image::cache_item<T> >& cache)
 {
@@ -74,7 +78,7 @@ void reset_cache(std::vector<image::cache_item<T> >& cache)
 		beg->item = T();
 	}
 }
-}
+} // end anon namespace
 
 namespace image {
 
@@ -323,8 +327,8 @@ surface locator::load_image_sub_file() const
 				}
 				std::string field = *j++;
 
-				if("TC" == function){//deprecated team coloring syntax
-					//replace with proper RC syntax
+				if("TC" == function){ 	// Deprecated team coloring syntax
+					//! @todo replace with proper RC syntax
 					std::string::size_type pos = 0;
 					pos = field.find(',');
 					if (pos == std::string::npos)
@@ -341,7 +345,7 @@ surface locator::load_image_sub_file() const
 					}						
 				}
 
-				if("RC" == function){ //re-color function
+				if("RC" == function){ 	// Re-color function
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
 						std::map<Uint32, Uint32> tmp_map;
@@ -357,7 +361,7 @@ surface locator::load_image_sub_file() const
 						}
 					}
 				}									
-				if("FL" == function){ //flip layer
+				if("FL" == function){ 	// Flip layer
 					if(field.empty() || field.find("horiz") != std::string::npos) {
 						xflip = !xflip;
 					}
@@ -465,8 +469,8 @@ void set_team_colors(const std::vector<std::string>& colors)
 void set_image_mask(const std::string& /*image*/)
 {
 
-	//image_mask are blitted in display.cpp
-	//so no need to flush the cache here
+	// image_mask are blitted in display.cpp
+	// so no need to flush the cache here
 /*	
 	if(image_mask != image) {
 		image_mask = image;
@@ -488,9 +492,9 @@ void set_zoom(int amount)
 		reset_cache(semi_brightened_images_);
 		reversed_images_.clear();
 
-		// we keep these caches if:
+		// We keep these caches if:
 		// we use default zoom (it doesn't need those)
-		// or if they are already at the wanted zoom
+		// or if they are already at the wanted zoom.
 		if (zoom != tile_size && zoom != cached_zoom) {
 			reset_cache(scaled_to_zoom_);
 			reset_cache(unmasked_images_);
@@ -501,8 +505,8 @@ void set_zoom(int amount)
 
 static surface get_hexed(const locator i_locator)
 {
-	// we don't want to add it to the unscaled cache
-	// since we will normaly never need the non-hexed one
+	// w.e don't want to add it to the unscaled cache,
+	// since we will normaly never need the non-hexed one.
 	surface image(get_image(i_locator, UNSCALED, false));
 	// Re-cut scaled tiles according to a mask.
 	const surface hex(get_image(game_config::terrain_mask_image,
@@ -512,8 +516,8 @@ static surface get_hexed(const locator i_locator)
 
 static surface get_unmasked(const locator i_locator)
 {
-	// if no scaling needed at this zoom level
-	// we just use the hexed image
+	// If no scaling needed at this zoom level,
+	// we just use the hexed image.
 	surface image(get_image(i_locator, HEXED));
 	if (zoom != tile_size)
 		return scale_surface(image, zoom, zoom);
@@ -549,7 +553,7 @@ static surface get_scaled_to_zoom(const locator i_locator)
 	wassert(tile_size != 0);
 
 	surface res(get_image(i_locator, UNSCALED));
-	// for some reason haloes seems to have invalid images, protect against crashing
+	// For some reason haloes seems to have invalid images, protect against crashing
 	if(!res.null()) {
 		return scale_surface(res, ((res.get()->w * zoom) / tile_size), ((res.get()->h * zoom) / tile_size));
 	} else {
@@ -588,7 +592,7 @@ surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache 
 		imap = &scaled_to_hex_images_;
 		break;
 	case SCALED_TO_ZOOM:
-		// only use separate cache if scaled
+		// Only use separate cache if scaled
 		if(zoom != tile_size) {
 			imap = &scaled_to_zoom_;
 		} else {
@@ -600,7 +604,7 @@ surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache 
 		imap = &hexed_images_;
 		break;
 	case UNMASKED:
-		// only use separate cache if scaled
+		// Only use separate cache if scaled
 		if(zoom != tile_size) {
 			imap = &unmasked_images_;
 		} else {
@@ -620,8 +624,8 @@ surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache 
 	if(i_locator.in_cache(*imap))
 		return i_locator.locate_in_cache(*imap);
 
-	// If type is unscaled, directly load the image from the disk. Else,
-	// create it from the unscaled image
+	// If type is unscaled, directly load the image from the disk. 
+	// Else, create it from the unscaled image.
 	if(is_unscaled) {
 		res = i_locator.load_from_disk();
 
@@ -657,7 +661,7 @@ surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache 
 		}
 	}
 
-	// optimizes surface before storing it
+	// Optimizes surface before storing it
 	res = create_optimized_surface(res);
 	if(add_to_cache) i_locator.add_to_cache(*imap, res);
 	return res;
@@ -692,7 +696,7 @@ bool exists(const image::locator& i_locator)
 	if (type != loc::FILE && type != loc::SUB_FILE)
 		return false;
 
-	// the insertion will fail if there is already an element in the cache
+	// The insertion will fail if there is already an element in the cache
 	std::pair< std::map< image::locator, bool >::iterator, bool >
 		it = image_existance_map.insert(std::make_pair(i_locator, false));
 	bool &cache = it.first->second;
@@ -702,4 +706,5 @@ bool exists(const image::locator& i_locator)
 }
 
 
-}
+} // end namespace image 
+
