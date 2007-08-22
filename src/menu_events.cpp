@@ -592,7 +592,7 @@ namespace events{
 
 		int selected = 0;
 		{
-			gui::dialog slist(*gui_, _("Game Settings"), "", gui::OK_CANCEL);
+			gui::dialog slist(*gui_, _("Scenario Settings"), "", gui::OK_CANCEL);
 			slist.set_menu(items, &sorter);
 			selected = slist.show();
 		} // this will kill the dialog before scrolling
