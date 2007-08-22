@@ -27,8 +27,6 @@ struct time_of_day;
 
 #include "SDL.h"
 
-#define	DEFAULT_TEAM_GOLD	100
-
 //This class stores all the data for a single 'side' (in game nomenclature).
 //e.g. there is only one leader unit per team.
 class team : public viewpoint
@@ -117,7 +115,8 @@ public:
 	};
 
 	static std::map<int, color_range> team_color_range_;
-	team(const config& cfg, int gold=DEFAULT_TEAM_GOLD);
+	static const int default_team_gold=100;
+	team(const config& cfg, int gold=default_team_gold);
 
 	~team() {};
 
