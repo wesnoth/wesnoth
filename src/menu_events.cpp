@@ -432,9 +432,13 @@ namespace events{
 		{
 			dialogs::unit_preview_pane unit_preview(*gui_, &map_, units_list);
 			unit_preview.set_selection(selected);
-			gui::dialog umenu(*gui_, _("Unit List"), "", gui::OK_CANCEL);
+			gui::dialog umenu(*gui_, _("Unit List"), "", gui::NULL_DIALOG);
 			umenu.set_menu(items, &sorter);
 			umenu.add_pane(&unit_preview);
+			umenu.add_button(new gui::standard_dialog_button(gui_->video(), _("Scroll To"), 0, false),
+			                 gui::dialog::BUTTON_STANDARD);
+			umenu.add_button(new gui::standard_dialog_button(gui_->video(), _("Close"), 1, true),
+			                 gui::dialog::BUTTON_STANDARD);
 			selected = umenu.show();
 		} // this will kill the dialog before scrolling
 
@@ -592,8 +596,12 @@ namespace events{
 
 		int selected = 0;
 		{
-			gui::dialog slist(*gui_, _("Scenario Settings"), "", gui::OK_CANCEL);
+			gui::dialog slist(*gui_, _("Scenario Settings"), "", gui::NULL_DIALOG);
 			slist.set_menu(items, &sorter);
+			slist.add_button(new gui::standard_dialog_button(gui_->video(), _("Scroll To"), 0, false),
+			                 gui::dialog::BUTTON_STANDARD);
+			slist.add_button(new gui::standard_dialog_button(gui_->video(), _("Close"), 1, true),
+			                 gui::dialog::BUTTON_STANDARD);
 			selected = slist.show();
 		} // this will kill the dialog before scrolling
 
