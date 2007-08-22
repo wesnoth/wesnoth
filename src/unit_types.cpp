@@ -510,7 +510,7 @@ unit_type::unit_type(const unit_type& o)
 
       defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
-      death_animations_(o.death_animations_), movement_animations_(o.movement_animations_),
+      death_animations_(o.death_animations_), 
       victory_animations_(o.victory_animations_),
       flag_rgb_(o.flag_rgb_)
 {
@@ -675,7 +675,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"leading animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=leading flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),150),"leading",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),150),"leading",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"recruit_anim");
 	const config::child_list& recruit_anims = expanded_cfg.get_children("recruit_anim");
 	for(config::child_list::const_iterator recruit_anim = recruit_anims.begin(); recruit_anim != recruit_anims.end(); ++recruit_anim) {
@@ -684,7 +684,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"recruit animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=recruited flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),600,"0~1:600"),"recruited",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),600,"0~1:600"),"recruited",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
 	const config::child_list& standing_anims = expanded_cfg.get_children("standing_anim");
 	for(config::child_list::const_iterator standing_anim = standing_anims.begin(); standing_anim != standing_anims.end(); ++standing_anim) {
@@ -694,7 +694,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=standing flag\n";
 	}
 	// Always have a standing animation
-	animations_.push_back(unit_animation(0,unit_frame(image(),0),"standing",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),0),"standing",unit_animation::DEFAULT_ANIM));
 	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
 	const config::child_list& idle_anims = expanded_cfg.get_children("idle_anim");
 	for(config::child_list::const_iterator idle_anim = idle_anims.begin(); idle_anim != idle_anims.end(); ++idle_anim) {
@@ -712,7 +712,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"levelin animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelin flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"1~0:600"),"levelin",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"1~0:600"),"levelin",unit_animation::DEFAULT_ANIM));
 	// Always have a levelin animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
 	const config::child_list& levelout_anims = expanded_cfg.get_children("levelout_anim");
@@ -722,7 +722,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"levelout animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelout flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelin",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelin",unit_animation::DEFAULT_ANIM));
 	// Always have a levelout animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
 	const config::child_list& healing_anims = expanded_cfg.get_children("healing_anim");
@@ -733,7 +733,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"healing animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healing flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),500),"healing",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),500),"healing",unit_animation::DEFAULT_ANIM));
 	// Always have a healing animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healed_anim");
 	const config::child_list& healed_anims = expanded_cfg.get_children("healed_anim");
@@ -744,7 +744,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"healed animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healed flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30"),"healed",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30"),"healed",unit_animation::DEFAULT_ANIM));
 	// Always have a healed animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
 	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
@@ -755,8 +755,18 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"poison animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=poison flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"),"poison",-1));
+	animations_.push_back(unit_animation(0,unit_frame(image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"),"poison",unit_animation::DEFAULT_ANIM));
 	// Always have a poison animation 
+	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
+	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
+	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
+		(**movement_anim)["apply_to"] ="movement";
+		animations_.push_back(unit_animation(**movement_anim));
+		//lg::wml_error<<"movement animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=movement flag\n";
+	}
+	animations_.push_back(unit_animation(0,unit_frame(image(),150),"movement",unit_animation::DEFAULT_ANIM));
+	// Always have a movement animation
 
 
 
@@ -797,15 +807,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		// Always have a defensive animation
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
-	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
-	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
-		movement_animations_.push_back(movement_animation(**movement_anim));
-	}
-	if(movement_animations_.empty()) {
-		movement_animations_.push_back(movement_animation(0,unit_frame(image(),150)));
-		// Always have a movement animation
-	}
 
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");

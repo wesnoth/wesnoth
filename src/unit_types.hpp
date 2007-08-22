@@ -278,7 +278,6 @@ private:
 	std::vector<unit_animation> teleport_animations_;
 	std::multimap<std::string,unit_animation> extra_animations_;
 	std::vector<death_animation> death_animations_;
-	std::vector<movement_animation> movement_animations_;
 	std::vector<victory_animation> victory_animations_;
     std::string flag_rgb_;
 };

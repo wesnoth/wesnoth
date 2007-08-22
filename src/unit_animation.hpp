@@ -37,7 +37,7 @@ class unit_animation:public animated<unit_frame>
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
 		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const int value=0,const std::string & event="") const;
-		enum { MATCH_FAIL=-2 };
+		enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1};
 
 	private:
 		t_translation::t_list terrain_types_;
@@ -97,18 +97,6 @@ class attack_animation: public fighting_animation
 		unit_animation missile_anim;
 
 };
-
-class movement_animation:public unit_animation
-{
-	public:
-		explicit movement_animation(const config& cfg):unit_animation(cfg){};
-		explicit movement_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-
-	private:
-};
-
-
 
 class victory_animation:public fighting_animation
 {

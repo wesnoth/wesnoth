@@ -273,7 +273,6 @@ public:
 	const unit_animation* extra_animation(const game_display& disp, const gamemap::location& loc,const std::string &flag) const;
 	const death_animation* die_animation(const game_display& disp, const gamemap::location& loc,
 			fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
-	const movement_animation* move_animation(const game_display& disp, const gamemap::location& loc) const;
 	const victory_animation* victorious_animation(const game_display& disp, const gamemap::location& loc,
 			fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
 
@@ -387,7 +386,6 @@ private:
 	std::vector<unit_animation> teleport_animations_;
 	std::multimap<std::string,unit_animation> extra_animations_;
 	std::vector<death_animation> death_animations_;
-	std::vector<movement_animation> movement_animations_;
 	std::vector<victory_animation> victory_animations_;
 	unit_animation *anim_;
 	int next_idling_;
