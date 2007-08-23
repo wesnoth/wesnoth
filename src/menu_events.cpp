@@ -383,14 +383,15 @@ namespace events{
 			// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
 			row << i->second.traits_description() << COLUMN_SEPARATOR;
 
-			// If unit has no movement left, show mp in red
-			if(i->second.movement_left() < 1 )
+			// display move left (0=red, moved=yellow, not moved=green)
+			if(i->second.movement_left() == 0) {
 				row << font::RED_TEXT;
-			// If unit has all its movement left, show mp in green
-			if(i->second.movement_left() == i->second.total_movement() )
+			} else if(i->second.movement_left() < i->second.total_movement() ) {
+				row << "<255,255,0>";
+			} else {
 				row << font::GREEN_TEXT;
-			row << i->second.movement_left()  << "/"
-				<< i->second.total_movement() << COLUMN_SEPARATOR;
+			}
+			row << i->second.movement_left() << "/" << i->second.total_movement() << COLUMN_SEPARATOR;
 
 			// If unit is on a village, show the location in green
 			if(map_.is_village(i->first))
