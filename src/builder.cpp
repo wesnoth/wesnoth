@@ -136,8 +136,8 @@ terrain_builder::terrain_builder(const config& cfg, const config& level,
 		map_(map), tile_map_(map.w(), map.h())
 {
 	// Make sure there's nothing left in the cache, 
-	// since it might give problems
-	image::flush_cache();
+	// since it might give problems (or not?)
+	//image::flush_cache();
 
 	parse_config(cfg);
 	parse_config(level);
