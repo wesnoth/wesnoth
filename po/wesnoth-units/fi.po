@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-units-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-22 17:51+0200\n"
-"PO-Revision-Date: 2007-08-07 19:51+0200\n"
+"PO-Revision-Date: 2007-08-23 17:10+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish <kde-i18n-fi-discussion@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -19,15 +19,17 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #: data/core/units/boats/Boat.cfg:4
-#, fuzzy
 msgid "Boat"
-msgstr "Verilepakko"
+msgstr "Vene"
 
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"Usein liikutettu eteenpäin airoilla tai pienillä purjeillä, veneet ovat "
+"käytettyjä pienten etäisyyksien matkaamiseen ja matalikoilla, missä suuret "
+"laivat eivät voi navigoida."
 
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
@@ -2235,7 +2237,6 @@ msgid "Mage"
 msgstr "Velho"
 
 #: data/core/units/humans/Mage.cfg:25
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2258,9 +2259,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Ihmiset miettivät usein, miten se maailma jossa he asuvat toimii. Jotkut "
-"yrittävät viedä tämän miettimistä pidemmälle, ja tekevät siitä elämänsä "
-"pääasiallisen tehtävän. Velhot ovat viettäneet useita vuosia opissa, ja ovat "
+"Ihmiset miettivät usein, miten se maailma, jossa he asuvat, toimii. Jotkut "
+"koettavat viedä tämän miettimistä pidemmälle, tehden siitä elämänsä "
+"tärkeimmän tehtävän. Velhot ovat viettäneet useita vuosia opissa, ja ovat "
 "keränneet tietomäärän, joka asettaa heidän erilleen muista. Maailmassa, "
 "jossa harvat osaavat lukea ja kirjoittaa, nämä miehet ja naiset ovat "
 "omistaneet itsensä kokonaan tiedon hankinnalle. Heidän rivinsä ovat täynnä "
@@ -2275,7 +2276,7 @@ msgstr ""
 "Fyysisesti heikkoina ja taidottomina lähitaistelussa velhoilla on kuitenkin "
 "tiettyjä kykyjä, joista on hyötyä taistelussa. \n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/humans/Mage.cfg:101
 #: data/core/units/humans/Mage_Silver.cfg:86
@@ -2291,7 +2292,6 @@ msgid "Arch Mage"
 msgstr "Arkkivelho"
 
 #: data/core/units/humans/Mage_Arch.cfg:22
-#, fuzzy
 msgid ""
 "The title of Arch Mage is traditionally conferred only after a lifetime of "
 "study and achievement to match. Arch Magi are often employed in positions of "
@@ -2313,14 +2313,14 @@ msgstr ""
 "ovat tarpeeksi viisaita hyödyntääkseen arkkivelhon tietoja. Useat pitävät "
 "rikkaita asiakkaita. Tämä on hyödyllinen suhde molemmille, sillä silloin "
 "tällöin tulevaa tehtävää tai neuvonpyyntöä lukuunottamatta velho saa jatkaa "
-"tutkimustaan rauhassa. Eräät toiset välttelevät sivistystä, viettäen "
-"päivänsä erakkoina, usein tutkiakseen jotain, mitä ei sivistyksessä "
-"suvaittaisi.\n"
+"tutkimustaan rauhassa. Tästä virtaa suurempi ihmistiedon runko; tieteet, "
+"filosofiat ja taiteet, jotka antavat kauneuden maailmalle koko "
+"laajuudessaan.\n"
 "\n"
 "Vaikka heitä ei ole taisteluun koulutettu, tarvittaessa arkkivelho voi "
-"vapauttaa taitonsa täyden voiman, mitä ei pidä ottaa kevyesti.\n"
+"vapauttaa taitonsa täyden voiman, jotain, mitä ei pidä ottaa kevyesti.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/humans/Mage_Great.cfg:80
 #: data/core/units/humans/Mage_Arch.cfg:79
@@ -2373,7 +2373,6 @@ msgid "Red Mage"
 msgstr "Punainen velho"
 
 #: data/core/units/humans/Mage_Red.cfg:22
-#, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice and given the ruddy cloak of a master. "
@@ -2390,18 +2389,19 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Kun velhon kisälliaika päättyy, heidän siniset kaapunsa otetaan pois ja "
-"korvataan mestarin punaisilla kaavuilla. Tämän eron tärkeyttä eivät "
-"talonpojat tajua, ja he kutsuvat mestarivelhoja 'punaisiksi velhoiksi'. "
-"Samalla tavalla muutoksen merkitys liitetään usein väärin velhon kykyyn "
-"luoda tulta pelkästä ilmasta, joka on kieltämättä hyödyllistä, mutta on vain "
-"alkeellinen sovellus tiedoista, joita he ovat vaivalla hankkineet.\n"
+"Velhon kisälliajan onnistuneen päättymisen huipennuksena velho riisutaan "
+"ruskeista kisällin kaavuista ja puetaan punakkaan mestarin kaapuun. Tämän "
+"eron tärkeyttä eivät talonpojat tajua, ja he kutsuvat mestarivelhoja "
+"'punaisiksi velhoiksi'. Samalla tavalla muutoksen merkitys liitetään usein "
+"väärin velhon kykyyn luoda tulta pelkästä ilmasta, joka on kieltämättä "
+"hyödyllistä, mutta on vain alkeellinen sovellus tiedoista, joita he ovat "
+"vaivalla hankkineet.\n"
 "\n"
 "Vaikka he ovat ruumillisesti heikkoja ja kouluttamattomia sotureina, nämä "
 "punaiset velhot pitävät monia ässiä hihassaan, mukaan lukien tulipallot, "
-"joilla he ovat sinetöineet väärän nimensä.\n"
+"joilla he ovat sinetöineet arkikielisen nimensä.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/humans/Mage_Red.cfg:141
 msgid "female^Red Mage"
@@ -2412,7 +2412,6 @@ msgid "Silver Mage"
 msgstr "Hopeavelho"
 
 #: data/core/units/humans/Mage_Silver.cfg:25
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2455,7 +2454,9 @@ msgstr ""
 "taitonsa ovat varsin hyödyllisiä taistelukentällä, jos onnistuu jotenkin "
 "vakuuttamaan velhon käyttämään niitä.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot: Hopeavelhot ovat hyvin sopeutuneet heidän maagiseen "
+"luontoonsa ja ovat erittäin vastustuskykyisiä muille kuin fyysisille "
+"hyökkäyksille."
 
 #: data/core/units/humans/Mage_Silver.cfg:145
 msgid "female^Silver Mage"
@@ -2466,7 +2467,6 @@ msgid "White Mage"
 msgstr "Valkea velho"
 
 #: data/core/units/humans/Mage_White.cfg:22
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -2486,11 +2486,10 @@ msgstr ""
 "velhona ja liittyvät luostareihin omistaen taitonsa kaikkien hyväksi. "
 "Liityttyään he usein vaeltavat maailmalla hoitaen sairauksia ja haavoja.\n"
 "\n"
-"Vaikka heitä ei ole koulutettu taisteluun, on olemassa yksi vihollinen, jota "
-"vastaan he ovat mahtava liittolainen. Jos tarve tulee, he voivat kutsua "
-"valon voiman apuun karkottaakseen tuonpuoleisen kuolevaiselta tasolta.\n"
+"Vaikka heitä ei ole koulutettu taisteluun, he ovat hyödyllisiä liittolaisia "
+"maagisia ja epäluonnollisia olentoja vastaan.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/merfolk/Priestess.cfg:92
 #: data/core/units/merfolk/Diviner.cfg:106
@@ -2508,7 +2507,6 @@ msgid "Mage of Light"
 msgstr "Valon velho"
 
 #: data/core/units/humans/Mage_of_Light.cfg:24
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -2528,7 +2526,7 @@ msgstr ""
 "väsymättä tuodakseen elämää ja järjestystä siihen kaoottiseen maailmaan, "
 "jossa asuvat.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/humans/Mage_of_Light.cfg:228
 msgid "female^Mage of Light"
@@ -2571,7 +2569,6 @@ msgid "Assassin"
 msgstr "Salamurhaaja"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:22
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2585,10 +2582,10 @@ msgstr ""
 "uhrinsa omaisuuden. Tikaritaiston mestareina ja häiritsevän ketterinä "
 "jaloistaan nämä pahamaineiset hahmot käyttävät mitä tahansa keinoja "
 "surmatakseen vihollisensa hiljaa. Heidän keinoihinsa kuuluvat mm. "
-"myrkkyveitset kaukaa tai selkään pistetyt tikarit. Salamurhaajat eivät pidä "
-"taistelemisesta päivällä.\n"
+"myrkkyveitset kaukaa tai selkään pistetyt tikarit. Vaikka he ovat öisin "
+"kuolettavia, salamurhaajat eivät pidä taistelemisesta päivällä.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:112
 #: data/core/units/humans/Outlaw_Rogue.cfg:71
@@ -2622,7 +2619,6 @@ msgid "Footpad"
 msgstr "Rosvo"
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
-#, fuzzy
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2633,7 +2629,7 @@ msgid ""
 msgstr ""
 "Nämä pikkurikolliset, tai rosvot, kuten ylemmät heitä alentavasti kutsuvat, "
 "saavat usein kaikki työt, joihin liittyy paljon juoksentelua ympäriinsä, "
-"kuten kuriiri- tai tiedustelutehtäviä. Tästä syntyvyy heidän jalkojensa "
+"kuten kuriiri- tai tiedustelutehtäviä. Tästä syntyy heidän jalkojensa "
 "kestävyys ja kyvyt, joista on usein hyötyä taistelussa. Huonosta "
 "aseistuksestaan huolimatta he ovat varsin hyviä vihollisen häiritsemisessä, "
 "varsinkin pimeän suojassa."
@@ -2715,7 +2711,7 @@ msgstr ""
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:5
 msgid "Outlaw Ranger"
-msgstr ""
+msgstr "Ihmissamooja"
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:25
 msgid ""
@@ -2779,7 +2775,6 @@ msgid "Thief"
 msgstr "Varas"
 
 #: data/core/units/humans/Outlaw_Thief.cfg:22
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -2791,14 +2786,14 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Aina on ollut niin, että erinäisten rotanmetsästäjien 'kiltojen' jäsenet "
+"Aina on ollut niin, että erinäisten rotanmetsästäjien \"kiltojen\" jäsenet "
 "ovat värjänneet hiuksensa kalpean sinisiksi. Tämä on röyhkeä teko, sillä "
 "usein heidän ammattinsa liittyy vähemmän laillisiin puuhiin. Varkailla on "
 "monia taitoja ja he ovat pakosta sekä ketteriä jaloistaan että taitavia "
 "veitsen käyttäjiä. He käyttävät iloisesti vähemmänkin kunniallisia "
 "taktiikoita taistelussa ymmärtämättä 'reilun pelin' henkeä.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/humans/Outlaw_Thief.cfg:219
 msgid "female^Thief"
@@ -2809,7 +2804,6 @@ msgid "Thug"
 msgstr "Korsto"
 
 #: data/core/units/humans/Outlaw_Thug.cfg:19
-#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -2817,10 +2811,11 @@ msgid ""
 "Regardless of their background, they all share a penchant for beating their "
 "victims with large clubs."
 msgstr ""
-"Korstoja on monista eri taustoista. Muutamat syntyvät korstoiksi, monet ovat "
-"entisiä sotilaita, jotka on erotettu armeijoistaan, tai talonpoikia, jotka "
-"on heitetty pois mailtaan. Heistä tulee nopeasti korstoja elääkseen. "
-"Taustastaan riippumatta he jakavat tavan piestä uhrejaan isoilla nuijilla."
+"Korstoja tulee monista erilaisista paikoista; Muutamat syntyvät korstoiksi, "
+"monet ovat entisiä sotilaita, jotka on erotettu armeijoistaan, tai "
+"talonpoikia, jotka on heitetty pois mailtaan. Heistä tulee nopeasti korstoja "
+"elääkseen. Taustastaan riippumatta he jakavat tavan piestä uhrejaan isoilla "
+"nuijilla."
 
 #: data/core/units/humans/Outlaw_Trapper.cfg:4
 msgid "Trapper"
@@ -2850,7 +2845,6 @@ msgid "Peasant"
 msgstr "Talonpoika"
 
 #: data/core/units/humans/Peasant.cfg:20
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
@@ -2909,7 +2903,6 @@ msgid "female^Mermaid Enchantress"
 msgstr "Merenneitolumoojatar"
 
 #: data/core/units/merfolk/Enchantress.cfg:21
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -2927,7 +2920,7 @@ msgstr ""
 "kielletty heidän omaa kansaansa vastaan - tämä voima on suuri osa siitä, "
 "joka suojelee heidän kansaansa syvyyksien hirviöiltä. \n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/merfolk/Siren.cfg:76
 #: data/core/units/merfolk/Enchantress.cfg:65
@@ -2962,13 +2955,12 @@ msgid "Merman Fighter"
 msgstr "Merenmiestaistelija"
 
 #: data/core/units/merfolk/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
 msgstr ""
-"Merenmiehet ovat meren taitavia olentoja. He ovat voimakkaita ja nopeita "
-"vetisessä ympäristössä, mutta liikkuvat huonosti maalla."
+"Taitavina merien olentoina, merenmiehet ovat voimakkaita ja nopeita kaikissa "
+"vesielementeissä, mutta häviävät useimmille maalla ryömiessään. "
 
 #: data/core/units/merfolk/Warrior.cfg:23
 #: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:72
@@ -2982,7 +2974,6 @@ msgid "Merman Hoplite"
 msgstr "Hopliitti"
 
 #: data/core/units/merfolk/Hoplite.cfg:22
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -2996,7 +2987,7 @@ msgstr ""
 "järkkymättömän linjan taistelun tuoksinassa. Epätoivoisina aikoina he voivat "
 "tehdä niin jopa maalla, mutta eivät yhtä hyvin kuin jalalliset olennot.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
@@ -3086,7 +3077,6 @@ msgid "female^Mermaid Priestess"
 msgstr "Merenneitopapitar"
 
 #: data/core/units/merfolk/Priestess.cfg:24
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3101,9 +3091,9 @@ msgstr ""
 "enemmän älyllisesti suuntautuneita. He omistavat itsensä rauhan ja elämän "
 "tuomiseen mailmaan ja he tutkivat sairauden kukistamisen taitoa. Heidän "
 "uskonsa suo heille myös joitain henkisiä voimia, mikä sallii heidän suojella "
-"kansaansa tuonpuoleiselta.\n"
+"kansaansa maagisilta ja epäluonnollisilta olennoilta.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
@@ -3146,7 +3136,6 @@ msgid "Merman Spearman"
 msgstr "Merenmieskeihästäjä"
 
 #: data/core/units/merfolk/Spearman.cfg:18
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
 "function. Though thrown javelins are of little use under the water, they are "
@@ -3158,22 +3147,21 @@ msgstr ""
 "Jousiammunta ei ole merenmiesten suosiossa, sillä keihäänheitto palvelee "
 "samaa tarkoitusta heille. Vaikka heittokeihäät ovat varsin hyödyttömiä veden "
 "alla, ne ovat erittäin hyödyllisiä pinnalla, jossa niiden paino sallii "
-"niiden lentää muutaman metrin veden alla liikkuen yhä tarpeeksi lujaa "
+"niiden lentää muutamia metrejä veden alla liikkuen yhä tarpeeksi lujaa "
 "vahingoittaakseen. Ne ovat hyödyllisiä myös lähitaistelussa, jopa syvällä "
-"veden alla, jota ei varmasti voi sanoa nuolista."
+"veden alla, jossa nuolet varmasti ovat hyödyttömiä."
 
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
 msgstr "Tritoni"
 
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
-"Tritonit ovat taitavimpia merenmiehiä. Kolmikärjellään tritonit voittavat "
+"Tritonit ovat meren taistelumestareita. Kolmikärjellään tritonit voittavat "
 "helposti kaikki viholliset, jotka hölmöinä tulevan heidän "
 "ominaisympäristöönsä."
 
@@ -3194,7 +3182,6 @@ msgid "Giant Spider"
 msgstr "Jättiläishämähäkki"
 
 #: data/core/units/monsters/Cave_Spider.cfg:19
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
@@ -3202,11 +3189,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"Jättiläishämähäkkien sanotaan vaeltavan Knalgan syvyyksissä. Ne purevat "
-"läheltä, myrkyttäen vihollisensa, mutta osaavat myös hyökätä kaukaa "
-"verkoilla, hidastaen vihollisensa.\n"
+"Jättiläishämähäkkien sanotaan vaeltavan Knalgan syvyyksissä. Heillä on ilkeä "
+"tapa purea vastustajiaan, joita ei yhtään helpota tieto purennan "
+"myrkyllisyydestä. He voivat myös vangita vihollisensa heittäen verkkonsa "
+"vihollisen päälle.\n"
 "\n"
-"Huomioita:"
+"Erikoistiedot:"
 
 #: data/core/units/monsters/Cave_Spider.cfg:96
 msgid "web"
