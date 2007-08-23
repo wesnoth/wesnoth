@@ -155,6 +155,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	village_gold_slider_.set_max(5);
 	village_gold_slider_.set_value(preferences::village_gold());
 	village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
+
 	xp_modifier_slider_.set_min(30);
 	xp_modifier_slider_.set_max(200);
 	xp_modifier_slider_.set_value(preferences::xp_modifier());
@@ -536,6 +537,11 @@ void create::process_event()
 		// NOTE when 'load game' is selected there are no sides
 		if(parameters_.scenario_data.get_children("side").size()) {
 
+			village_gold_slider_.set_value(map_settings ? 
+				settings::get_village_gold((*parameters_.
+					scenario_data.get_children("side").front())["village_gold"]) :
+				preferences::village_gold());
+
 			fog_game_.set_check(map_settings ? 
 				settings::use_fog((*parameters_.
 					scenario_data.get_children("side").front())["fog"]) :
@@ -549,6 +555,7 @@ void create::process_event()
 				
 		// set the widget states
 		turns_slider_.enable(!map_settings);
+		village_gold_slider_.enable(!map_settings);
 		xp_modifier_slider_.enable(!map_settings);
 		random_start_time_.enable(!map_settings);
 		fog_game_.enable(!map_settings);
