@@ -115,7 +115,7 @@ public:
 	};
 
 	static std::map<int, color_range> team_color_range_;
-	static const int default_team_gold=100;
+	static const int default_team_gold;
 	team(const config& cfg, int gold=default_team_gold);
 
 	~team() {};

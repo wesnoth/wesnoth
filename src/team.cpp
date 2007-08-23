@@ -37,6 +37,9 @@ namespace {
 	std::vector<team>* teams = NULL;
 }
 
+//static member initialization
+const int team::default_team_gold = 100;
+
 teams_manager::teams_manager(std::vector<team>& teams_list)
 {
 	teams = &teams_list;
