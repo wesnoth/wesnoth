@@ -352,14 +352,18 @@ namespace events{
 			}
 			row << i->second.description()   << COLUMN_SEPARATOR;
 
-			// Show units of level 0 as red / level 1 as white / level 2+ as green
-			if(i->second.level() < 1 )
-				row << font::RED_TEXT;
-			if(i->second.level() == 2 )
-				row << "<255,255,0>";
-			if(i->second.level() > 2 )
-				row << font::GREEN_TEXT;
-			row << i->second.level()         << COLUMN_SEPARATOR;
+			// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
+			const int level = i->second.level();
+			if(level < 1) {
+				row << "<150,150,150>";
+			} else if(level == 1) {
+				row << font::NORMAL_TEXT;
+			} else if(level == 2) {
+				row << font::BOLD_TEXT;
+			} if(i->second.level() > 2 ) {
+				row << font::BOLD_TEXT << "<255,255,255>";
+			}
+			row << level << COLUMN_SEPARATOR;
 
 			// see also unit_preview_pane in dialogs.cpp
 			// Display hitpoints in green (>75%) / white / yellow (<66%) / red (<33%)
