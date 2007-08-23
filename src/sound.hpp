@@ -74,12 +74,9 @@ void play_bell(const std::string& files, int loop_ticks=0);
 // Play user-interface sound, or random one of comma-separated sounds.
 void play_UI_sound(const std::string& files);
 
-// Called from event loop to see if we need new music track.
-void think_about_music(void);
-
-// A class to automate the call to think_about_music()
+// A class to periodically check for new music that needs to be played
 class music_thinker : public events::pump_monitor {
-	void process(events::pump_info &/*info*/);
+	void process(events::pump_info &info);
 };
 
 // Save music playlist for snapshot

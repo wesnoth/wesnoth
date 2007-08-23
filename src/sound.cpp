@@ -48,7 +48,12 @@ static bool play_sound_internal(const std::string& files, channel_group group, b
 namespace {
 
 bool mix_ok = false;
-unsigned music_start_time = 0;
+int music_start_time = 0;
+unsigned music_refresh = 0;
+unsigned music_refresh_rate = 20;
+bool want_new_music = false;
+int fadingout_time=5000;
+bool no_fading = false;
 
 const size_t n_of_channels = 16;	// number of allocated channels
 const size_t bell_channel = 0;
@@ -181,6 +186,7 @@ void music_track::write(config &snapshot, bool append)
 
 std::vector<music_track> current_track_list;
 struct music_track current_track("");
+struct music_track last_track("");
 
 }
 
@@ -464,28 +470,6 @@ void stop_UI_sound() {
 	}
 }
 
-void music_thinker::process(events::pump_info &/*info*/) {
-	if(preferences::music_on()) {
-		think_about_music();
-	}
-}
-
-void think_about_music(void)
-{
-	if (!music_start_time) {
-		if (!current_track_list.empty() && !Mix_PlayingMusic()) {
-			// Pick next track, add ending time to its start time.
-			unsigned end_time = current_track.ms_after;
-			current_track = choose_track();
-			music_start_time = SDL_GetTicks() + end_time + current_track.ms_before;
-		}
-	} else {
-		if (SDL_GetTicks() >= music_start_time) {
-			play_music();
-		}
-	}
-}
-
 void play_music_once(const std::string &file)
 {
 	// Clear list so it's not replayed.
@@ -506,8 +490,15 @@ void play_no_music()
 
 void play_music()
 {
-	music_start_time = 0;
+	want_new_music=true;
+	no_fading=false;           
+	fadingout_time=current_track.ms_after; 
+}
 
+void play_new_music()
+{
+	music_start_time = 0;
+	want_new_music=true;
 	if(!preferences::music_on() || !mix_ok || current_track.name.empty())
 		return;
 
@@ -527,16 +518,22 @@ void play_music()
 			return;
 		}
 		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(current_track.name,music)).first;
+		last_track=current_track;
 	}
-	LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
-
-	if(Mix_PlayingMusic()) {
-		Mix_FadeOutMusic(500);
-	}
-
-	const int res = Mix_FadeInMusic(itor->second, 1, 500);
-	if(res < 0) {
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
+	if(!Mix_PlayingMusic())
+	{
+		LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
+		int fading_time=current_track.ms_before;
+		if(no_fading) 
+		{
+			fading_time=0;
+		}
+		const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
+		if(res < 0) 
+		{
+			ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
+		}
+		want_new_music=false;
 	}
 }
 
@@ -580,6 +577,27 @@ void play_music_config(const config &music)
 	if (utils::string_bool(music["immediate"])) {
 		current_track = track;
 		play_music();
+	}
+}
+
+void music_thinker::process(events::pump_info &info) {
+	if(preferences::music_on()) {
+		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
+			// Pick next track, add ending time to its start time.
+			current_track = choose_track();
+			music_start_time = info.ticks();
+			no_fading=true;
+			fadingout_time=0;
+		}
+		if(music_start_time && info.ticks(&music_refresh, music_refresh_rate) >= music_start_time - fadingout_time) {
+			want_new_music=true;
+		}
+		if(want_new_music) {
+			if(Mix_PlayingMusic()) {                              
+				Mix_FadeOutMusic(fadingout_time);
+			}
+			play_new_music();
+		}
 	}
 }
 
