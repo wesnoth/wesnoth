@@ -121,11 +121,10 @@ namespace {
 //make sure we think about countdown even while dialogs are open
 void playmp_controller::process(events::pump_info &info) {
 	if(playmp_controller::counting_down()) {
-		if(info.ticks == 0) {
-			if(++timer_refresh % timer_refresh_rate == 0) {
-				playmp_controller::think_about_countdown(::SDL_GetTicks());
-			}
-		} else {
+		if(info.ticks == 0 && ++timer_refresh % timer_refresh_rate == 0) {
+			info.ticks = ::SDL_GetTicks();
+		}
+		if(info.ticks != 0) {
 			playmp_controller::think_about_countdown(info.ticks);
 		}
 	}
