@@ -1370,8 +1370,6 @@ bool game_controller::play_multiplayer()
 	state_.campaign_type = "multiplayer";
 	state_.campaign_define = "MULTIPLAYER";
 
-	cursor::set(cursor::NORMAL);
-
 	std::vector<std::string> host_or_join;
 	std::string const pre = IMAGE_PREFIX + std::string("icons/icon-");
 	char const sep1 = COLUMN_SEPARATOR, sep2 = HELP_STRING_SEPARATOR;

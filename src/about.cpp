@@ -152,6 +152,7 @@ void set_about(const config& cfg){
 //! Uses map from wesnoth or campaign as background.
 void show_about(display &disp, std::string campaign)
 {
+	cursor::set(cursor::WAIT);
 	CVideo &video = disp.video();
 	std::vector<std::string> text = about::get_text(campaign);
 	SDL_Rect rect = {0, 0, video.getx(), video.gety()};
