@@ -219,7 +219,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 	key = varname;
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	int dot_index = key.find('.');
-	// "mover.modifications.trait[0]"
+	// example varname = "unit_store.modifications.trait[0]"
 	while(itor != key.end()) { // subvar access
 		std::string element=key.substr(0,dot_index);
 		key = key.substr(dot_index+1);
@@ -232,7 +232,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 			const std::string index_str(index_start+1,index_end);
 			inner_index = static_cast<size_t>(lexical_cast_default<int>(index_str));
 			if(inner_index > MaxLoop) {
-				LOG_NG << "variable_info: index greater than " << MaxLoop
+				ERR_NG << "variable_info: index greater than " << MaxLoop
 				       << ", truncated\n";
 				inner_index = MaxLoop;
 			}
@@ -241,23 +241,20 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 
 		size_t size = vars->get_children(element).size();
 		if(size <= inner_index) {
-			if(!force_valid) {
-				if(inner_explicit_index) {
-					WRN_NG << "variable_info: invalid WML array index, "
-						<< varname << std::endl;
-					return;
-				}
-				if(key != "length") {
-					WRN_NG << "variable_info: retrieving member of non-existant WML container, "
-						<< varname << std::endl;
-					return;
-				}
-			} else {
+			if(force_valid) {
 				// Add elements to the array until the requested size is attained
 				for(; size <= inner_index; ++size) {
 					vars->add_child(element);
 				}
-			}
+			} else if(inner_explicit_index) {
+				WRN_NG << "variable_info: invalid WML array index, "
+					<< varname << std::endl;
+				return;
+			} else if(key != "length") {
+				WRN_NG << "variable_info: retrieving member of non-existant WML container, "
+					<< varname << std::endl;
+				return;
+			} //else return length 0 for non-existant WML array (handled below)
 		}
 		if(!inner_explicit_index && key == "length") {
 			switch(vartype) {
@@ -267,6 +264,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 					<< varname << std::endl;
 				is_valid = force_valid || repos->temporaries.child(varname) != NULL;
 				break;
+			case variable_info::TYPE_SCALAR:
 			default:
 				// Store the length of the array as a temporary variable
 				repos->temporaries[varname] = lexical_cast<std::string>(size);
@@ -282,7 +280,8 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 		vars = vars->get_children(element)[inner_index];
 		itor = std::find(key.begin(),key.end(),'.');
 		dot_index = key.find('.');
-	}
+	} // end subvar access
+
 	const std::string::iterator index_start = std::find(key.begin(),key.end(),'[');
 	explicit_index = index_start != key.end();
 	if(explicit_index) {
@@ -290,7 +289,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 		const std::string index_str(index_start+1,index_end);
 		index = static_cast<size_t>(lexical_cast_default<int>(index_str));
 		if(index > MaxLoop) {
-			LOG_NG << "variable_info: index greater than " << MaxLoop
+			ERR_NG << "variable_info: index greater than " << MaxLoop
 				   << ", truncated\n";
 			index = MaxLoop;
 		}
@@ -327,6 +326,7 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 		explicit_index = false;
 		index = 0;
 	} else {
+		// Final variable is not an explicit index [...]
 		switch(vartype) {
 		case variable_info::TYPE_ARRAY:
 		case variable_info::TYPE_CONTAINER:
