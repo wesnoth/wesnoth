@@ -528,27 +528,39 @@ namespace events{
 			items.push_back(str.str());
 		}
 
-		gui::dialog slist(*gui_, _("Current Status"), "", gui::NULL_DIALOG);
-		slist.add_button(new gui::standard_dialog_button(gui_->video(), _("More"), 0, false),
-		                 gui::dialog::BUTTON_STANDARD);
-		slist.add_button(new gui::standard_dialog_button(gui_->video(), _("Close"), 1, true),
-		                 gui::dialog::BUTTON_STANDARD);
-		slist.set_menu(items, &sorter);
+		int selected = 0;
+		{
+			gui::dialog slist(*gui_, _("Current Status"), "", gui::NULL_DIALOG);
+			slist.add_button(new gui::dialog_button(gui_->video(), _("More"),
+			                     gui::button::TYPE_PRESS, gui::DIALOG_FORWARD),
+			                 gui::dialog::BUTTON_STANDARD);
+			slist.add_button(new gui::standard_dialog_button(gui_->video(),
+			                     _("Scroll To"), 0, false),
+			                 gui::dialog::BUTTON_STANDARD);
+			slist.add_button(new gui::standard_dialog_button(gui_->video(),
+			                     _("Close"), 1, true),
+			                 gui::dialog::BUTTON_STANDARD);
+			slist.set_menu(items, &sorter);
+			selected = slist.show();
+		} // this will kill the dialog before scrolling
 
-		if (slist.show() >= 0) game_settings_table();
+		if (selected >= 0)
+			gui_->scroll_to_leader(units_, selected+1);
+		else if (selected == gui::DIALOG_FORWARD)
+			scenario_settings_table();
 	}
 
-	void menu_handler::game_settings_table()
+	void menu_handler::scenario_settings_table()
 	{
 		std::stringstream heading;
-		heading << HEADING_PREFIX << _("game settings^Leader") << COLUMN_SEPARATOR
+		heading << HEADING_PREFIX << _("scenario settings^Leader") << COLUMN_SEPARATOR
 		        << COLUMN_SEPARATOR
-		        << _("game settings^Side")              << COLUMN_SEPARATOR
-		        << _("game settings^Start\nGold")       << COLUMN_SEPARATOR
-		        << _("game settings^Base\nIncome")      << COLUMN_SEPARATOR
-		        << _("game settings^Gold Per\nVillage") << COLUMN_SEPARATOR
-		        << _("game settings^Fog")               << COLUMN_SEPARATOR
-		        << _("game settings^Shroud");
+		        << _("scenario settings^Side")              << COLUMN_SEPARATOR
+		        << _("scenario settings^Start\nGold")       << COLUMN_SEPARATOR
+		        << _("scenario settings^Base\nIncome")      << COLUMN_SEPARATOR
+		        << _("scenario settings^Gold Per\nVillage") << COLUMN_SEPARATOR
+		        << _("scenario settings^Fog")               << COLUMN_SEPARATOR
+		        << _("scenario settings^Shroud");
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2)
@@ -598,14 +610,22 @@ namespace events{
 		{
 			gui::dialog slist(*gui_, _("Scenario Settings"), "", gui::NULL_DIALOG);
 			slist.set_menu(items, &sorter);
-			slist.add_button(new gui::standard_dialog_button(gui_->video(), _("Scroll To"), 0, false),
+			slist.add_button(new gui::dialog_button(gui_->video(), _("Back"),
+			                     gui::button::TYPE_PRESS, gui::DIALOG_BACK),
 			                 gui::dialog::BUTTON_STANDARD);
-			slist.add_button(new gui::standard_dialog_button(gui_->video(), _("Close"), 1, true),
+			slist.add_button(new gui::standard_dialog_button(gui_->video(),
+			                     _("Scroll To"), 0, false),
+			                 gui::dialog::BUTTON_STANDARD);
+			slist.add_button(new gui::standard_dialog_button(gui_->video(),
+			                     _("Close"), 1, true),
 			                 gui::dialog::BUTTON_STANDARD);
 			selected = slist.show();
 		} // this will kill the dialog before scrolling
 
-		if (selected >= 0) gui_->scroll_to_leader(units_, selected+1);
+		if (selected >= 0)
+			gui_->scroll_to_leader(units_, selected+1);
+		else if (selected == gui::DIALOG_BACK)
+			status_table();
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,

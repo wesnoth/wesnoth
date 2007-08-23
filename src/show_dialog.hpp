@@ -37,6 +37,8 @@ namespace gui
 extern const int ButtonHPadding;
 extern const int ButtonVPadding;
 enum DIALOG_RESULT {
+	DIALOG_BACK=-7,
+	DIALOG_FORWARD=-6,
 	CREATE_ITEM =-5,
 	DELETE_ITEM=-4,
 	ESCAPE_DIALOG=-3, //special return used by WML event dialogs
