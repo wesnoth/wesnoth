@@ -6,14 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "POT-Creation-Date: 2007-05-18 18:38+0200\n"
-"PO-Revision-Date: 2007-07-18 22:57+0300\n"
-"Last-Translator: Niklas Laxström\n"
+"PO-Revision-Date: 2007-08-07 22:19+0200\n"
+"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
+"X-Poedit-Bookmarks: -1,17,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 # type: TH
 #: ../../doc/man/wesnoth.6:16
@@ -56,7 +57,7 @@ msgstr "wesnoth - Taistelu Wesnothista, vuoropohjainen fantasiastrategiapeli"
 #: ../../doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr ""
+msgstr "YLEISKATSAUS"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:26
@@ -87,6 +88,15 @@ msgid ""
 "Wesnoth's large community of on-line players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
+"Voita kaikki vastustajan johtajat käyttäen järkevästi valittua ydinjoukkoa, "
+"pitäen huolta kulta- ja kyläresursseistasi. Kaikilla yksiköillä on heidän "
+"omat vahvuutensa ja heikkoutensa; voittaaksesi, järjestä joukkosi "
+"saavuuttaksesi mahdollisimman paljon hyötyä maastosta samalla estäen "
+"vastustajaa pääsemästä asemiin. Samalla kun yksiköt keräävät kokemusta, he "
+"oppivat uusia ominaisuuksia ja kehittyvät entistä voimakkaammiksi. Pelaa "
+"omalla kielelläsi ja testaa taitojasi taitavaa tekoälyä vastaan, tai liity "
+"Wesnothin suureen nettipelaajien yhteisöön. Luo täysin omat yksikkösi, "
+"skenaariosi tai kampanjasi, ja jaa ne muiden pelaajien kanssa. "
 
 # type: SH
 #: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
@@ -133,6 +143,9 @@ msgid ""
 "options in-game (see the Wiki at http://www.wesnoth.org/ for more "
 "information about command mode)."
 msgstr ""
+"näyttää ylimääräistä debug-tietoa ja mahdollistaa ylimääräisen komentotila "
+"pelissä (katso Wikistä: http://www.wesnoth.org/ lisätietoa komentotilaan "
+"liittyen)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:56
@@ -146,6 +159,8 @@ msgid ""
 "decompresses a savefile (infile) that is in binary WML format into text WML "
 "format (outfile)."
 msgstr ""
+"purkaa tallennustiedoston (infile), joka on WML:n binääriformaatissa WML:n "
+"tekstiformaattin (outfile)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -217,7 +232,7 @@ msgstr "B<--logdomains>"
 # type: Plain text
 #: ../../doc/man/wesnoth.6:86 ../../doc/man/wesnoth_editor.6:75
 msgid "Dumps a list of all log domains and exits."
-msgstr ""
+msgstr "Viskaisee listan kaikista logialueista ja poistuu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:86
@@ -338,6 +353,8 @@ msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by --nogui."
 msgstr ""
+"ajaa pelin ilman viiveitä graafisen suorituskyvyn mittausta varten. Tämä on "
+"automaattisesti päällä --nogui :n ajaessa. "
 
 # type: TP
 #: ../../doc/man/wesnoth.6:120
@@ -352,6 +369,9 @@ msgid ""
 "which requires the user to click OK.  This is also used for scriptable "
 "benchmarking."
 msgstr ""
+"poistuu skenaarion lopussa, näyttämättä voitto/häviö-dialogeja, jotka "
+"vaativat käyttäjän klikkaavan. Tämä on myös käytetty skriptattua "
+"suorituskykytestausta varten. "
 
 # type: SH
 #: ../../doc/man/wesnoth.6:124
