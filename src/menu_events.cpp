@@ -393,15 +393,9 @@ namespace events{
 			}
 			row << i->second.movement_left() << "/" << i->second.total_movement() << COLUMN_SEPARATOR;
 
-			// If unit is on a village, show the location in green
-			if(map_.is_village(i->first))
-				row << font::GREEN_TEXT;
-			// if unit is on a castle/keep, show the location in yellow/red
-			// FIXME: use gold instead of yellow
-			if(map_.is_castle(i->first))
-				row << "<255,255,0>";
-			if(map_.is_keep(i->first))
-				row << font::RED_TEXT;
+			const int def =  100 - i->second.defense_modifier(map_.get_terrain(i->first));
+			int val = (game_config::defense_color_scale.size()-1) * def/100;
+			row << rgb2highlight(game_config::defense_color_scale[val]);
 			row << i->first << COLUMN_SEPARATOR;
 
 			// show icons if unit is slowed, poisoned, stoned, invisible:
