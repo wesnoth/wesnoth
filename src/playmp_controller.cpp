@@ -114,18 +114,15 @@ bool playmp_controller::counting_down() {
 
 namespace {
 	const int WARNTIME = 10000; //start beeping when 10 seconds are left (10,000ms)
-	int timer_refresh = 0;
-	const int timer_refresh_rate = 50; //prevents calling SDL_GetTicks() too frequently
+	unsigned timer_refresh = 0;
+	const unsigned timer_refresh_rate = 50; //prevents calling SDL_GetTicks() too frequently
 }
 
 //make sure we think about countdown even while dialogs are open
 void playmp_controller::process(events::pump_info &info) {
 	if(playmp_controller::counting_down()) {
-		if(info.ticks == 0 && ++timer_refresh % timer_refresh_rate == 0) {
-			info.ticks = ::SDL_GetTicks();
-		}
-		if(info.ticks != 0) {
-			playmp_controller::think_about_countdown(info.ticks);
+		if(info.ticks(&timer_refresh, timer_refresh_rate)) {
+			playmp_controller::think_about_countdown(info.ticks());
 		}
 	}
 }

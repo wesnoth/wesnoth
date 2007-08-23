@@ -342,8 +342,7 @@ void pump()
 				if(event.button.button == SDL_BUTTON_LEFT) {
 					static const int DoubleClickTime = 500;
 					static const int DoubleClickMaxMove = 3;
-					info.ticks = ::SDL_GetTicks();
-					if(last_mouse_down >= 0 && info.ticks - last_mouse_down < DoubleClickTime &&
+					if(last_mouse_down >= 0 && info.ticks() - last_mouse_down < DoubleClickTime &&
 					   abs(event.button.x - last_click_x) < DoubleClickMaxMove &&
 					   abs(event.button.y - last_click_y) < DoubleClickMaxMove) {
 						SDL_UserEvent user_event;
@@ -353,7 +352,7 @@ void pump()
 						user_event.data2 = reinterpret_cast<void*>(event.button.y);
 						::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 					}
-					last_mouse_down = info.ticks;
+					last_mouse_down = info.ticks();
 					last_click_x = event.button.x;
 					last_click_y = event.button.y;
 				}
@@ -483,6 +482,14 @@ int discard(Uint32 event_mask)
 
 	return discard_count;
 }
+
+int pump_info::ticks(unsigned *refresh_counter, unsigned refresh_rate) {
+	if(!ticks_ && !(refresh_counter && ++*refresh_counter % refresh_rate)) {
+		ticks_ = ::SDL_GetTicks();
+	}
+	return ticks_;
+}
+
 } //end events namespace
 
 input_blocker::input_blocker()
