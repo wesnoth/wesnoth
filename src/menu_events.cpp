@@ -344,13 +344,12 @@ namespace events{
 				 selected = units_list.size();
 			}
 //%%
-			// If unit is leader/hero, show name+desc in green/yellow
+			// If unit is leader, show name in golden
 			//! @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query
-			if(i->second.can_recruit() )
-				row << font::GREEN_TEXT;
 			row << i->second.language_name() << COLUMN_SEPARATOR;
-			if(i->second.can_recruit() )
-				row << font::GREEN_TEXT;
+			if(i->second.can_recruit() ) {
+				row << "<255,255,200>";
+			}
 			row << i->second.description()   << COLUMN_SEPARATOR;
 
 			// Show units of level 0 as red / level 1 as white / level 2+ as green
