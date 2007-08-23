@@ -56,6 +56,9 @@ std::string del_tags(const std::string& text);
 
 bool is_format_char(char c);
 
+std::string color2markup(const SDL_Color color);
+
+
 ///
 /// If the text exceedes the specified max width, wrap it one a word basis.
 /// If this is not possible, e.g. the word is too big to fit, wrap it on a

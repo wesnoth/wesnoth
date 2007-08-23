@@ -135,6 +135,13 @@ std::string del_tags(const std::string& text){
 	return std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
 }
 
+std::string color2markup(const SDL_Color color) {
+	std::stringstream markup;
+	markup << "<" << static_cast<int>(color.r) << "," << static_cast<int>(color.g)
+		 << "," << static_cast<int>(color.b) << ">";
+	return markup.str();
+}
+
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};

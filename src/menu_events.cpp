@@ -365,33 +365,23 @@ namespace events{
 			}
 			row << level << COLUMN_SEPARATOR;
 
+			// Display HP
 			// see also unit_preview_pane in dialogs.cpp
-			// Display hitpoints in green (>75%) / white / yellow (<66%) / red (<33%)
-			if(i->second.hitpoints() <= i->second.max_hitpoints()/3)
-				row << font::RED_TEXT;
-			else if(i->second.hitpoints()  < 2*(i->second.max_hitpoints()/3))
-				row << "<255,255,0>";
-			else if(i->second.hitpoints()  > 3*(i->second.max_hitpoints()/4))
-				row << font::GREEN_TEXT;
+			row << font::color2markup(i->second.hp_color());
 			row << i->second.hitpoints()  << "/" << i->second.max_hitpoints() << COLUMN_SEPARATOR;
 
-			// Display in green if killing a unit the same level as us would level us up
-			// Display in yellow if unit has more than half the required XP to level up
-			// FIXME: use violet color if unit cannot advance further, as in panel right of the map
-			// ?? if(i->second.max_experience() - i->second.experience() < game_config::kill_experience)
-			if(i->second.max_experience() - i->second.experience() <= (game_config::kill_experience*i->second.level()))
-				row << font::GREEN_TEXT;
-			else if(i->second.experience() > (i->second.max_experience()/2) )
-				row << "<255,255,0>";
+			// Display XP
+			row << font::color2markup(i->second.xp_color());
 			row << i->second.experience() << "/";
-			if(i->second.can_advance() == false)
-				row << "-";
-			else
+			if(i->second.can_advance()) {
 				row << i->second.max_experience();
+			} else {
+				row << "-";	
+			}
+			row << COLUMN_SEPARATOR;
 
 			// TODO: show 'loyal' in green / xxx in red  //  how to handle translations ??
-			row << COLUMN_SEPARATOR
-				<< i->second.traits_description() << COLUMN_SEPARATOR;
+			row << i->second.traits_description() << COLUMN_SEPARATOR;
 
 			// If unit has no movement left, show mp in red
 			if(i->second.movement_left() < 1 )
