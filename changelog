@@ -143,6 +143,8 @@ Version 1.3.6+svn:
      that can get them (undead and mechanical).
    * not_living tag removed from race, as this information is provided
      by the undead and mechanical traits.
+   * the default for turn limit has changed to unlimited, if you have scenarios
+     which rely on the old default of 50 please add a turns parameter to it
  * team color
    * allow color ranges to be defined on-the-fly (like color palettes)
    * now [side] colour=<string> is valid (previously only int)

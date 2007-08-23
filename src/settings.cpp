@@ -33,7 +33,7 @@ int get_turns(const std::string& value)
 		return 100;
 	}
 
-	return lexical_cast_in_range<int>(value, 50, 20, 100);
+	return lexical_cast_in_range<int>(value, 100, 20, 100);
 }
 
 int get_village_gold(const std::string& value)
