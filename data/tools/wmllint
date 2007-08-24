@@ -858,8 +858,10 @@ def allcfgfiles(dir):
 
 def help():
         sys.stderr.write("""\
-Usage: wmllint [options]
+Usage: wmllint [options] [dir]
     Convert Battle of Wesnoth WML from older versions to newer ones.
+    Takes any number of directories as arguments.  Each directory is converted.
+    If no directories are specified, acts on the current directory.
     Options may be any of these:
     -h, --help                 Emit this help message and quit.
     -d, --dryrun               List changes but don't perform them.
@@ -868,7 +870,7 @@ Usage: wmllint [options]
                                -v -v     names each file before it's processed.
                                -v -v -v  shows verbose parse details.
     -c, --clean                Clean up -bak files.
-    -D, --diff                 Display diffs between unconverted and unconverted files.
+    -D, --diff                 Display diffs between converted and unconverted files.
     -r, --revert               Revert the conversion from the -bak files.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
     --future                   Enable experimental WML conversions.
