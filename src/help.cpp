@@ -1380,10 +1380,6 @@ public:
 					 	color = "white";
 					else
 						color = "green";
-					//if unit cannot move to this terrain, defense is relevant only
-					// when unit is put there via WML, so show defense in red:
-					if (moves >= 99)
-						color = "red";
 
 					str << "<format>color=" << color << " text='"<< defense << "%'</format>";
 					const std::string markup = str.str();
