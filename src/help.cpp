@@ -1394,15 +1394,13 @@ public:
 
 					//movement  -  range: 1 .. 5, 99=impassable
 					str.str(clear_stringstream);
-					color = "white";
 					if (moves > type_.movement() ) 		// cannot move in this terrain
 						color = "red";
-					else if (moves > (type_.movement() / 2))	// only one step
+					else if (moves > 1)	
 						color = "yellow";
-					else if (moves > 1)
+					else
 						color = "white";
-					else 
-						color = "green";
+
 
 					str << "<format>color=" << color << " text='"<< moves << "'</format>";
 					push_tab_pair(row, str.str());
