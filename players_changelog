@@ -18,6 +18,11 @@ Version 1.3.6+svn:
       * Fixed invalid side bugs in 'Hunting Trolls'.
       * Fixed an invalid terrain bug in 'A Long Night'.
       * Fixed the dehydration in 'Across the Harsh Sands'.
+  * Graphics
+   * Improve footsteps : better beginning, angles and end, fix incorrect
+     left-right sequences and clean some images.
+   * Various small improvements of the rendering of fog and "black stripes".
+   * Remove the bars, orb and ellipse of dying animations.
 
   * Editor
     * The resize option can now use the current tiles to expand the map
@@ -65,12 +70,24 @@ Version 1.3.6+svn:
     * Fixed the black corners on some maps.
     * There's a new "Game Settings" window which shows the basic game settings
       (accessible through the "More" button in the "Status Table").
+    * The sidebar HP tooltip now show resistances of the current unit
+    * In help, the links to unencountered units now works but have a "(?)"
+      and point to an "Unknown Unit" page explaining why.
+    * The default zoom key now toggles between default and last used zoom. The
+      switch is also faster (cached).
+    * Various improvement of the attack direction indicator and the "attack
+      from the last highlighted hex" system.
+    * The unit list now colors the stats of units.
+    * In tiny-gui, now the movement hint also displays the terrain defense.
 
-  * Miscellaneous
+  * Miscellaneous and bugfixes
     * Isle of Anduin renamed to Isle of Alduin to avoid copyright problems.
     * The assertion 'str.size() <= 4' no longer happens instead the terrain is
       read as 'void' and an ingame message is shown.
-
+    * Fixed bug #9646: ToD changes not applied to mainmap in replay mode.
+    * Fixed incorrect displayed reachable zone when moving next to an enemy
+      in special ZoC cases (skirmish or lvl0)
+    * Fixed a bug-cheat allowing super-ranged attack in some special cases.
 
 Version 1.3.6:
   * Language and translations
