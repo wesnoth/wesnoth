@@ -399,6 +399,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 
 		const t_translation::t_letter terrain = map.get_terrain(mouseover);
+		if (terrain == t_translation::OFF_MAP_USER)
+			break;
+
 		const t_translation::t_list& underlying = map.underlying_union_terrain(terrain);
 
 		if(map.is_village(mouseover)) {
@@ -437,12 +440,15 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 		}
 
+		const t_translation::t_letter terrain = map[mouseover.x][mouseover.y];
+
+		if (terrain == t_translation::OFF_MAP_USER)
+			break;
+
 		str << mouseover;
 
 		if(u == units.end() || current_team.shrouded(mouseover.x,mouseover.y))
 			break;
-
-		const t_translation::t_letter terrain = map[mouseover.x][mouseover.y];
 
 		const int move_cost = u->second.movement_cost(terrain);
 		const int defense = 100 - u->second.defense_modifier(terrain);
