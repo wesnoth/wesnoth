@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-22 17:51+0200\n"
+"POT-Creation-Date: 2007-08-24 10:16+0200\n"
 "PO-Revision-Date: 2007-08-07 21:30+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -83,7 +83,7 @@ msgstr "Liikuta Konrad luoteessa olevalle tienviitalle."
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:29
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:22
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:77
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1190
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1283
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:31
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:31
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:27
@@ -111,7 +111,7 @@ msgstr "Konradin kuolema"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:33
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:26
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:81
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1194
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1287
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:35
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:31
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:66
@@ -1827,7 +1827,7 @@ msgstr "Kukista Kojun Herolm"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:41
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:34
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:89
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1202
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1295
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:43
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:35
@@ -3827,7 +3827,7 @@ msgstr "Pikainen liittoutuma"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:37
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:30
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:85
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1198
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1291
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:39
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:70
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:44
@@ -4744,253 +4744,414 @@ msgid "The Cliffs of Thoria"
 msgstr "Thorian jyrkänteet"
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:73
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1182
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1275
 msgid "Make it to the end of the river"
 msgstr "Selviydy joen loppuun saakka"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:258
 #, fuzzy
 msgid "Warven"
 msgstr "Darglen"
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:289
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:351
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:271
+msgid ""
+"The party travelled up the river for days, sometimes walking through the "
+"shallow watter, sometimes swimming, helped by the merfolk."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:276
+msgid ""
+"One day they saw a gruesome sight - a fleet of ships sunk or shattered among "
+"the river islands. Konrad sent some of the mermen to investigate."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:280
+msgid ""
+"It seems like the ships were sunk in battle, not by a storm. They are all "
+"burned or capsized. THe battle must have taken place not long ago, perhaps a "
+"few weeks before now. We've found no survivors. One more thing...all the "
+"sunk ships fly the banner of the Crown of Wesnoth."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:284
+msgid ""
+"Haven't you found any enemy ships, ones the Wesnothians were fighting "
+"against?"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:288
+msgid "No we have not. If there were any, they are long gone."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:292
+msgid "Perhaps the monsters Lord Kalenz was talking about sunk the ships."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:296
+msgid "That is possible..."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:300
+msgid "What do we do next? How long do we have have to go up this river?"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:304
+msgid ""
+"The mountains north of the river are unpassable. Perhaps we should try "
+"moving south, to the swamps"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:308
+msgid ""
+"I don't recommend it. Long ago, a lich who was at war with my race appointed "
+"some of his most powerful minons to guard the river bank. We must not go "
+"that way!"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:312
+msgid ""
+"Then we have only two choices: to procede up the river or to go back where "
+"we came from and fight our way through the orcs or the undead"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:316
+msgid ""
+"We certainly have no time to go back! We must hurry to the home of the North "
+"Elves, to meet with our elven allies."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:320
+msgid "Delfador is right. We must go on!"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:444
 msgid "Keh Ohn"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:298
-msgid "Oh my god ! A monster !"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:348
+msgid "Oh my! A monster!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:302
-msgid "A dragon ! A big one !"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:352
+msgid "A dragon! A big one!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:306
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:356
 msgid ""
-"I am Keh Ohn, leader of the Drakes who have settled down on these cliffs. "
-"Who are you ?"
+"I am Keh Ohn, leader of the Drakes who have settled upon these cliffs. Who "
+"are you?"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:310
-msgid "A talking daragon ?"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:360
+msgid "A talking dragon?"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:364
 msgid ""
-"I am beginning to understand why were you talking about monsters on our way "
+"I am beginning to understand why you were talking about monsters on our way "
 "here, Lord Kalenz."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:318
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:368
 msgid ""
-"With all due respect, Your Highnesses, but you are both wrong. This is not a "
+"With all due respect, Your Highnesses, you are both wrong. This is not a "
 "dragon. This is a drake."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:322
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:372
 msgid ""
-"Drakes here ? But Drakes have never been seen in Wesnoth before... Are you "
-"sure it is a drake ?"
+"Here? But, drakes have never been seen in Wesnoth before... Are you certain "
+"of this?"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:326
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:376
 msgid ""
-"I was born in the Bay of Pearls and I've spent my entire life on the East "
-"Shore, but our elders who have travelled the Western Ocean and have met "
-"drakes in their journeys have described them well to me, so I am certain "
-"beyond doubt what the creature flying in front of us is. It is a drake. "
-"About drakes never been seen in Wesnoth, I have to remind you that we are "
-"not in Wesnoth anymore, and that there are many unthinkable things and "
-"cratures which can only be found outside Wesnoth, Delfador."
+"I was born in the Bay of Pearls and spent my entire life on the Eastern "
+"Shore. Yet the merman elders who travelled the Western Ocean did meet "
+"several drakes in their journeys, and they have described them well to me. "
+"Therefore, I am certain beyond doubt that the creature flying in front of us "
+"is a drake, Delfador. Concerning the drakes having never been seen in "
+"Wesnoth, must I remind you that we are not in Wesnoth anymore? There are "
+"many unthinkable things and creatures which can be found outside of Wesnoth."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:432
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:380
 msgid ""
-"I slayed the unded monster but somehow it got revived ! There must be some "
-"sort of dark magic involved here !"
+"GRROAR!! Will you self-oriented creatures finally show some manners and pay "
+"some attention to me?"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:384
 msgid ""
-"Those are some of the monsters I was warning you about. The undead guardians "
-"are indestructable. We must find another way to go."
+"Eh... well of course, Sir Drake. Let me introduce myself - I am Prince "
+"Konrad, leader of the group and Heir to the throne of Wesnoth."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:462
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:492
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:522
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:552
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:582
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:612
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:642
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:672
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:702
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:732
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:762
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:792
-msgid "We've found $random gold in the drake base"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:388
+msgid ""
+"And I am Princess Li'sar, the only daughter of the late King Garard II and "
+"Queen Asheviere. I am too an heir to the throne of Wesnoth!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:811
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:393
+msgid ""
+"(releasing a torrent of fire towards Konrad and Li'sar)\n"
+"Soooo... It is you who sent your subordinates to attack us. Now when we've "
+"destroyed them, you come to do the job yourselves."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:397
+msgid ""
+"No...There is an ongoing civil war amongst us humans. The ships were sent by "
+"our enemies, not by us, even if they were Wesnothian ships."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:401
+#, fuzzy
+msgid "The Prince speaks the truth."
+msgstr "Wesnothin prinsessa"
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:405
+msgid ""
+"I don't know. Maybe you are telling the truth, maybe not. We Drakes dont "
+"trust you. Many of our warriors died in the battle and many more are still "
+"healing their wounds. Go back now and leave us in peace. But go no further, "
+"because we dont want threats in our territory now when we are vulnerable."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:409
+msgid "But we can not go back. We are on an important mission."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:413
+msgid "If you proceede like you've planned - prepare for battle."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:417
+msgid ""
+"So be it. We have to go up the river; we have no choice. We'll fight our way "
+"through if necessary."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:421
+msgid "You will regret for challenging us. Drakes, to arms!"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:525
+msgid ""
+"I slayed the undead monster but somehow it has revived! Dark magic is "
+"stirring around us!"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:529
+msgid ""
+"Those are some of the monsters I was warning you about. Such undead "
+"guardians are indestructable. We must find another way to go."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:555
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:585
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:615
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:645
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:675
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:705
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:735
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:765
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:795
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:825
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:855
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:885
+msgid "We've found $random gold in the drake base."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:904
 msgid "GRRROOOOAAAAR"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:815
-msgid "Hurrah ! We've killed their leader"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:908
+msgid "Hurrah! We've killed their leader"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:820
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:913
 msgid ""
 "Our leader is dead...but it matters little for this battle. The rest of the "
 "drakes shall fight till the last one. If we prevail, after the battle we'll "
-"appoint another leader among us. Fight on, comrades !"
+"appoint another leader among us. Fight on, comrades!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:825
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:918
 msgid ""
-"Keep on going up the river . While we're at it, lets make as many of the "
-"drakes as we can pay with their lives for defying us, same as their leader "
-"did !"
+"Keep on going up the river. While we're at it, let us force as many drakes "
+"as possible to pay with their lives. They have defied us, and now they will "
+"meet the same fate as their leader!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:830
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:923
 msgid "We hear and obey, My Lord."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1083
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1176
 msgid "I see someone at the top of the furthermost cliff!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1096
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1189
 msgid ""
-"It is a human sergeant, barely more than a boy. He seems badly hurt, but "
-"still alive."
+"It is a young human sergeant, barely more than a boy. He appears badly hurt "
+"but still alive."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1100
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1193
 msgid ""
-"I wonder why the drakes haven't finished him by now. It is strange that "
-"there are not any drakes nor any undead in that area."
+"I wonder why the drakes haven't finished him by now? It is strange that "
+"there are not any drakes or undead in that area."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1134
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1227
 msgid "Grrroar"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1141
-msgid "OK....that answers the question."
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1234
+msgid "Well... that answers the question."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1145
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1238
 msgid "We should try to help the injured soldier."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1149
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1242
 msgid ""
-"Should I remind you that he, like all the others who died, was sent after us!"
+"Must I remind you that he, like all the others who died, was sent after us!?"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1153
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1246
 msgid ""
-"Perhaps after you, but not after me. I am sure that he is still loyal to his "
-"princess - the heiress to the throne of Wesnoth!"
+"Perhaps he was sent after you, but not after me. I am sure that he is still "
+"loyal to his princess - the Heiress to the throne of Wesnoth!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1157
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1250
 msgid ""
-"Princess Li'sar, do I have to remind you again that it is Konrad, not you "
-"who is the rightful heir to the throne of Wesnoth ?"
+"Princess Li'sar, do I have to remind you again that it is Konrad, not you, "
+"who is the rightful heir to the throne of Wesnoth?"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1161
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1254
 msgid ""
 "Whatever.... I still think we should make an effort to salvage him from the "
 "unfortunate position he is in. If you help him, I'll do my best to convince "
 "him that you are not his enemies but his friends..."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1165
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1258
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
 "we might try to rescue the sergeant strangled on the cliff. However, I make "
 "no promises."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1169
-msgid "Fair enough !"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1262
+msgid "Fair enough!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1173
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1266
 msgid "Fair enough"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1177
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1270
 msgid "Fair enough..."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1186
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1279
 msgid "<0,0,255>Rescue the sergeant ( Optional objective )"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1234
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1316
+#, fuzzy
+msgid "Who...who are you? A friend or a foe?"
+msgstr "Kuka kulkee siellä? Ystävä vai vihollinen?"
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1320
 msgid ""
-"There is a waterfall ahead. It is so high, I can barely see the top of it! "
+"We are friends. Don't worry about it and don't try to fight us - you are in "
+"no position to fight."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1324
+msgid ""
+"I am Princess Li'sar, and we are friends. Join us and wait for the healers "
+"to help you, young sargeant."
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1328
+msgid "Princess Li'sar - here ? Your Highness, I am yours to command!"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1332
+msgid ""
+"Follow us when you think you are capable and beware of monsters. There sure "
+"are plenty of them here!"
+msgstr ""
+
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1347
+msgid ""
+"There is a waterfall ahead. It is so high I can barely see the top of it! "
 "Neither the mermen, even less the land dwellers can swim up the waterfall. "
-"Even the gryphons might have trouble flying so far up. I am afraid, Your "
+"Even the gryphons might have trouble flying up so far! I am afraid, Your "
 "Highness, that we are stuck."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1243
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1356
 msgid ""
-"What about that tributary which infuses into the river from inside the "
-"mountain ? There seem to be a cave..."
+"What about that tributary which infuses the river from inside the mountain? "
+"There seems to be a cave..."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1247
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1360
 msgid ""
-"The legend sais that that little river comes from the land of the North "
+"The legend says that that little river comes from the land of the North "
 "Elves. There is a cave system in that area with several cave entrances and "
-"springs flowing into the ground. But I can say no more about it except that "
-"it is swarming with undead and other cratures which grow powerful in the "
-"darkness of the caves. Us elves don't like venturing into the caves, so the "
-"only thing we do is put guards near the entrances who are ordered to kill "
-"any foul creature foolish enough to get outside. No elves have went inside "
-"for centuries and that area is unknown for us. I dont recommend entering the "
-"cave if we have other options"
+"springs which flow into the ground. I can say no more about it, except that "
+"it is swarming with undead and other creatures which find power in the "
+"darkness of the caves. We elves prefer not to venture into the caves; "
+"instead we put guards near the entrances to kill any foul creature foolish "
+"enough to wander outside. No elves have been inside for centuries and that "
+"area is unknown to us. Truly, I don't recommend entering the cave if we have "
+"any other options."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1251
-msgid "Unfortunately, we have no other option. Onward into the cave !"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1364
+msgid "Unfortunately, we have no other option. Onward into the cave!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1273
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1386
 msgid ""
-"I've reached the cave entrance. There seem to be a system of channels inside "
-"the mountains. Follow me and hope we'll ever manage to get out of it alive"
+"I've reached the cave entrance. There seems to be a system of channels "
+"running through the mountains. Follow me, and let us hope we ever manage to "
+"get out alive."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1277
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1390
 msgid "That is so very encouraging...."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1281
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1394
 msgid "I wonder what kind of monsters await us inside."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1285
-msgid "We are soon going to find out"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1398
+msgid "We are soon going to find out."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1289
-msgid "Well, there is no point in delaying any further. Lets go and find out."
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1402
+msgid "Well, there is no point in delaying any further. Let's go and find out."
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1294
-msgid "Yes, my lady !"
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1407
+msgid "Yes, my lady!"
 msgstr ""
 
-#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1298
+#: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1411
 msgid "Everybody inside..."
 msgstr ""
 
