@@ -437,7 +437,39 @@ namespace events{
 		}
 	}
 
-	void menu_handler::status_table()
+namespace {
+class leader_scroll_dialog : public gui::dialog {
+public:
+	leader_scroll_dialog(display &disp, const std::string &title, std::vector<bool> &leader_bools, int selected, gui::DIALOG_RESULT extra_result)
+	: dialog(disp, title, "", gui::NULL_DIALOG), leader_bools_(leader_bools), extra_result_(extra_result)
+	{
+		scroll_btn_ = new gui::standard_dialog_button(disp.video(), _("Scroll To"), 0, false);
+		scroll_btn_->enable(leader_bools[selected]);
+		add_button(scroll_btn_, gui::dialog::BUTTON_STANDARD);
+		add_button(new gui::standard_dialog_button(disp.video(),
+			_("Close"), 1, true), gui::dialog::BUTTON_STANDARD);
+	}
+	void action(gui::dialog_process_info &info) {
+		const bool leader_bool = leader_bools_[get_menu().selection()];
+		scroll_btn_->enable(leader_bool);
+		if(leader_bool && (info.double_clicked || !info.key_down
+		&& (info.key[SDLK_RETURN] || info.key[SDLK_KP_ENTER]))) {
+			set_result(get_menu().selection());
+		} else if(!info.key_down && info.key[SDLK_ESCAPE]) {
+			set_result(gui::CLOSE_DIALOG);
+		} else if(!info.key_down && info.key[SDLK_SPACE]) {
+			set_result(extra_result_);
+		} else if(result() == gui::CONTINUE_DIALOG) {
+			dialog::action(info);
+		}
+	}
+private:
+	gui::standard_dialog_button *scroll_btn_;
+	std::vector<bool> &leader_bools_;
+	gui::DIALOG_RESULT extra_result_;
+};
+} //end anonymous namespace
+	void menu_handler::status_table(int selected)
 	{
 		std::stringstream heading;
 		heading << HEADING_PREFIX << _("Leader") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR
@@ -453,6 +485,7 @@ namespace events{
 			  .set_numeric_sort(4).set_numeric_sort(5).set_numeric_sort(6).set_numeric_sort(7);
 
 		std::vector<std::string> items;
+		std::vector<bool> leader_bools;
 		items.push_back(heading.str());
 
 		const team& viewing_team = teams_[gui_->viewing_team()];
@@ -483,13 +516,17 @@ namespace events{
 				// show only a random leader image.
 				if (known || game_config::debug) {
 					str << IMAGE_PREFIX << leader->second.absolute_image();
+					leader_bools.push_back(true);
 				} else {
 					str << IMAGE_PREFIX << std::string("random-enemy.png");
+					leader_bools.push_back(false);
 				}
 
 #ifndef LOW_MEM
 				str << "~RC(" << leader->second.team_color() << ">" << team::get_side_colour_index(n+1) << ")";
 #endif
+			} else {
+				leader_bools.push_back(false);
 			}
 			str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
 			    << teams_[n].current_player() << COLUMN_SEPARATOR
@@ -516,29 +553,25 @@ namespace events{
 			items.push_back(str.str());
 		}
 
-		int selected = 0;
+		int result = 0;
 		{
-			gui::dialog slist(*gui_, _("Current Status"), "", gui::NULL_DIALOG);
-			slist.add_button(new gui::dialog_button(gui_->video(), _("More"),
+			leader_scroll_dialog slist(*gui_, _("Current Status"), leader_bools, selected, gui::DIALOG_FORWARD);
+			slist.add_button(new gui::dialog_button(gui_->video(), _("More >"),
 			                     gui::button::TYPE_PRESS, gui::DIALOG_FORWARD),
-			                 gui::dialog::BUTTON_STANDARD);
-			slist.add_button(new gui::standard_dialog_button(gui_->video(),
-			                     _("Scroll To"), 0, false),
-			                 gui::dialog::BUTTON_STANDARD);
-			slist.add_button(new gui::standard_dialog_button(gui_->video(),
-			                     _("Close"), 1, true),
-			                 gui::dialog::BUTTON_STANDARD);
+			                 gui::dialog::BUTTON_EXTRA_LEFT);
 			slist.set_menu(items, &sorter);
-			selected = slist.show();
+			slist.get_menu().move_selection(selected);
+			result = slist.show();
+			selected = slist.get_menu().selection();
 		} // this will kill the dialog before scrolling
 
-		if (selected >= 0)
+		if (result >= 0)
 			gui_->scroll_to_leader(units_, selected+1);
-		else if (selected == gui::DIALOG_FORWARD)
-			scenario_settings_table();
+		else if (result == gui::DIALOG_FORWARD)
+			scenario_settings_table(selected);
 	}
 
-	void menu_handler::scenario_settings_table()
+	void menu_handler::scenario_settings_table(int selected)
 	{
 		std::stringstream heading;
 		heading << HEADING_PREFIX << _("scenario settings^Leader") << COLUMN_SEPARATOR
@@ -556,6 +589,7 @@ namespace events{
 		      .set_alpha_sort(6).set_alpha_sort(7);
 
 		std::vector<std::string> items;
+		std::vector<bool> leader_bools;
 		items.push_back(heading.str());
 
 		const team& viewing_team = teams_[gui_->viewing_team()];
@@ -573,13 +607,17 @@ namespace events{
 				// show only a random leader image.
 				if (viewing_team.knows_about_team(n) || game_config::debug) {
 					str << IMAGE_PREFIX << leader->second.absolute_image();
+					leader_bools.push_back(true);
 				} else {
 					str << IMAGE_PREFIX << std::string("random-enemy.png");
+					leader_bools.push_back(false);
 				}
 #ifndef LOW_MEM
 				str << "~RC(" << leader->second.team_color() << ">"
 				    << team::get_side_colour_index(n+1) << ")";
 #endif
+			} else {
+				leader_bools.push_back(false);
 			}
 
 			str << COLUMN_SEPARATOR	<< team::get_side_highlight(n)
@@ -594,26 +632,22 @@ namespace events{
 			items.push_back(str.str());
 		}
 
-		int selected = 0;
+		int result = 0;
 		{
-			gui::dialog slist(*gui_, _("Scenario Settings"), "", gui::NULL_DIALOG);
+			leader_scroll_dialog slist(*gui_, _("Scenario Settings"), leader_bools, selected, gui::DIALOG_BACK);
 			slist.set_menu(items, &sorter);
-			slist.add_button(new gui::dialog_button(gui_->video(), _("Back"),
+			slist.get_menu().move_selection(selected);
+			slist.add_button(new gui::dialog_button(gui_->video(), _(" < Back"),
 			                     gui::button::TYPE_PRESS, gui::DIALOG_BACK),
-			                 gui::dialog::BUTTON_STANDARD);
-			slist.add_button(new gui::standard_dialog_button(gui_->video(),
-			                     _("Scroll To"), 0, false),
-			                 gui::dialog::BUTTON_STANDARD);
-			slist.add_button(new gui::standard_dialog_button(gui_->video(),
-			                     _("Close"), 1, true),
-			                 gui::dialog::BUTTON_STANDARD);
-			selected = slist.show();
+			                 gui::dialog::BUTTON_EXTRA_LEFT);
+			result = slist.show();
+			selected = slist.get_menu().selection();
 		} // this will kill the dialog before scrolling
 
-		if (selected >= 0)
+		if (result >= 0)
 			gui_->scroll_to_leader(units_, selected+1);
-		else if (selected == gui::DIALOG_BACK)
-			status_table();
+		else if (result == gui::DIALOG_BACK)
+			status_table(selected);
 	}
 
 	void menu_handler::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type,

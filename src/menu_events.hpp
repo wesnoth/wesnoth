@@ -74,7 +74,7 @@ public:
 	void objectives(const unsigned int team_num);
 	void show_statistics(const unsigned int team_num);
 	void unit_list();
-	void status_table();
+	void status_table(int selected=0);
 	void save_game(const std::string& message, gui::DIALOG_TYPE dialog_type, const bool has_exit_button=false);
 	void save_map();
 	void load_game();
@@ -133,7 +133,7 @@ private:
 	bool has_friends() const;
 	bool clear_shroud(const unsigned int team_num);
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
-	void scenario_settings_table();
+	void scenario_settings_table(int selected=0);
 
 	game_display* gui_;
 	unit_map& units_;
