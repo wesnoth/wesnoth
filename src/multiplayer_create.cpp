@@ -230,17 +230,17 @@ create::~create()
 	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
 	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
 	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
-	preferences::set_village_gold(parameters_.village_gold);
 	preferences::set_era(era_combo_.selected()); // FIXME: may be broken if new eras are added
 	preferences::set_map(map_selection_);
 
 	// When using map settings, the following variables are determined by the map
 	// so don't store them as the new preferences.
 	if(!parameters_.use_map_settings) {
-		preferences::set_random_start_time(parameters_.random_start_time);
 		preferences::set_fog(parameters_.fog_game);
 		preferences::set_shroud(parameters_.shroud_game);
 		preferences::set_turns(parameters_.num_turns);
+		preferences::set_random_start_time(parameters_.random_start_time);
+		preferences::set_village_gold(parameters_.village_gold);
 		preferences::set_xp_modifier(parameters_.xp_modifier);
 	}
 }
