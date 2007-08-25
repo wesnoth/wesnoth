@@ -566,13 +566,13 @@ void lobby::layout_children(const SDL_Rect& rect)
 	ui::layout_children(rect);
 
 #ifdef USE_TINY_GUI
-	unsigned int btn_space = 3;
-	unsigned int xborder   = 0;
-	unsigned int yborder   = 0;
+	int btn_space = 3;
+	int xborder   = 0;
+	int yborder   = 0;
 #else
-	unsigned int btn_space = 5;
-	unsigned int xborder   = 10;
-	unsigned int yborder   = 7;
+	int btn_space = 5;
+	int xborder   = 10;
+	int yborder   = 7;
 #endif
 
 	// align to the left border
