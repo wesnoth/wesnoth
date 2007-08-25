@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file statistics.cpp 
+//! Manage statistics: recruitments, recalls, kills, losses, etc.
+
 #include "global.hpp"
 #include "config.hpp"
 #include "statistics.hpp"
@@ -24,8 +27,8 @@
 
 namespace {
 
-//this variable is true whenever the statistics are mid-scenario. This means
-//a new scenario shouldn't be added to the master stats record.
+// This variable is true whenever the statistics are mid-scenario. 
+// This means a new scenario shouldn't be added to the master stats record.
 bool mid_scenario = false;
 
 typedef statistics::stats stats;
@@ -78,7 +81,7 @@ void scenario_stats::write(config_writer &out) const
 
 std::vector<scenario_stats> master_stats;
 
-}
+} // end anon namespace 
 
 static stats& get_stats(int team)
 {
@@ -545,4 +548,5 @@ int sum_str_int_map(const stats::str_int_map& m)
 	return res;
 }
 
-}
+} // end namespace statistics
+
