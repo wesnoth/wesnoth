@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file color_range.hpp
+//! 
+
 #ifndef COLOR_RANGE_H_INCLUDED
 #define COLOR_RANGE_H_INCLUDED
 
@@ -27,7 +31,7 @@
 
 #include "SDL_types.h"
 
-//convert comma separated string into rgb values
+//- Convert comma separated string into rgb values
 std::vector<Uint32> string2rgb(std::string s);
 
 class color_range
@@ -58,7 +62,7 @@ public:
   {
     return(mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep());
   }
-  int index() const; //the default team index for this color, or 0 for none
+  int index() const; // the default team index for this color, or 0 for none
 private:
   Uint32 mid_ , max_ , min_ , rep_;
 };

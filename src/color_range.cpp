@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+//! @file color_range.cpp
+//! Generate ranges of colors, and color palettes.
+//! Used e.g. to color HP, XP.
+
 #include "game_config.hpp"
 #include "global.hpp"
 #include "color_range.hpp"
@@ -35,7 +39,7 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 	Uint16 min_green= (new_range.min() & 0x0000FF00)>>8 ;
 	Uint16 min_blue = (new_range.min() & 0x000000FF)    ;
 
-	//map first color in vector to exact new color
+	// Map first color in vector to exact new color
 	Uint32 temp_rgb=old_rgb[0];
 	Uint16 old_r=(temp_rgb & 0X00FF0000)>>16;
 	Uint16 old_g=(temp_rgb & 0X0000FF00)>>8;
@@ -50,7 +54,7 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 		Uint16 old_b=((*temp_rgb2) & 0X000000FF);
 
 		const Uint16 old_avg = (( old_r + old_g +  old_b) / 3);
-		//calculate new color
+	     // Calculate new color
 		Uint32 new_r, new_g, new_b;
 
 		if(reference_avg && old_avg <= reference_avg){
@@ -66,10 +70,10 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 			new_g=static_cast<Uint32>( old_rat * new_green + (1 - old_rat) * max_green);
 			new_b=static_cast<Uint32>( old_rat * new_blue  + (1 - old_rat) * max_blue);
 		}else{
-			new_r=0; new_g=0; new_b=0; //supress warning
+			new_r=0; new_g=0; new_b=0; // Suppress warning
 			wassert(false);
-			//should never get here
-			//would imply old_avg > reference_avg = 255
+			// Should never get here.
+			// Would imply old_avg > reference_avg = 255
 	     }
 
 		if(new_r>255) new_r=255;
@@ -83,6 +87,7 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 	return map_rgb;
 }
 
+//! Convert comma separated string into rgb values.
 std::vector<Uint32> string2rgb(std::string s){
 	std::vector<Uint32> out;
 	std::vector<std::string> rgb_vec = utils::split(s);
@@ -92,7 +97,7 @@ std::vector<Uint32> string2rgb(std::string s){
 		Uint32 rgb_hex;
 		if(c->length() != 6)
 		{
-			//integer triplets, e.g. white="255,255,255"
+			// integer triplets, e.g. white="255,255,255"
 			rgb_hex =  (0x00FF0000 & ((lexical_cast<int>(*c++))<<16)); //red
 			if(c!=rgb_vec.end())
 			{
@@ -103,7 +108,7 @@ std::vector<Uint32> string2rgb(std::string s){
 				}
 			}
 		} else {
-			//hexadecimal format, e.g. white="FFFFFF"
+			// hexadecimal format, e.g. white="FFFFFF"
 			char* endptr;
 			rgb_hex = (0x00FFFFFF & strtol(c->c_str(), &endptr, 16));
 			if (*endptr != '\0') {
@@ -117,10 +122,10 @@ std::vector<Uint32> string2rgb(std::string s){
 }
 
 std::vector<Uint32> palette(color_range cr){
-//generate a color palette from a color range
+// generate a color palette from a color range
 	std::vector<Uint32> temp,res;
 	std::set<Uint32> clist;
-	//use blue to make master set of possible colors
+	// use blue to make master set of possible colors
 	for(int i=255;i!=0;i--){
 		int j=255-i;
 		Uint32 rgb = i;
@@ -129,9 +134,9 @@ std::vector<Uint32> palette(color_range cr){
 		temp.push_back(rgb);
 	}
 
-	//use recolor function to generate list of possible colors.
-	//could use a special function, would be more efficient, but
-	//harder to maintain.
+	// Use recolor function to generate list of possible colors.
+	// Could use a special function, would be more efficient, 
+	// but harder to maintain.
 	std::map<Uint32,Uint32> cmap = recolor_range(cr,temp);
 	for(std::map<Uint32,Uint32>::const_iterator k=cmap.begin(); k!=cmap.end();k++){
 		clist.insert(k->second);
@@ -147,7 +152,7 @@ std::vector<Uint32> palette(color_range cr){
 std::string rgb2highlight(Uint32 rgb)
 {
 	std::stringstream h("");
-	// must match what the escape interpreter for marked-up-text expects
+	// Must match what the escape interpreter for marked-up-text expects
 	h << "<" << ((rgb & 0xFF0000) >> 16) 
 	  << "," << ((rgb & 0x00FF00) >> 8)
 	  << "," << (rgb & 0x0000FF) << ">";
