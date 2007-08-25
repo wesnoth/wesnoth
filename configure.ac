@@ -35,7 +35,7 @@ AC_CONFIG_COMMANDS([src/wesconfig.h],
  * Some older savegames of Wesnoth can't be loaded anymore this
  * variable defines the minimum required version
  */
-#define MIN_SAVEGAME_VERSION "1.3.2"
+#define MIN_SAVEGAME_VERSION "1.3.4"
 
 #endif
 EOF
