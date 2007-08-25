@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-25 01:15+0200\n"
+"POT-Creation-Date: 2007-08-25 10:22+0200\n"
 "PO-Revision-Date: 2007-07-02 17:27+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -4665,7 +4665,7 @@ msgstr "Životů"
 
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:240
 #: data/themes/experimental.cfg:190 src/menu_events.cpp:318
-#: src/menu_events.cpp:1031
+#: src/menu_events.cpp:1065
 msgid "XP"
 msgstr "Zkušenost"
 
@@ -4784,7 +4784,7 @@ msgid "+  "
 msgstr "+  "
 
 #: src/about.cpp:186 src/help.cpp:2713 src/menu_events.cpp:140
-#: src/menu_events.cpp:428 src/menu_events.cpp:529 src/menu_events.cpp:608
+#: src/menu_events.cpp:428 src/menu_events.cpp:450
 msgid "Close"
 msgstr "Zavřít"
 
@@ -4916,7 +4916,7 @@ msgstr "Výcvik"
 msgid "replay"
 msgstr "záznam"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:626 src/multiplayer_lobby.cpp:410
+#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:410
 msgid "Turn"
 msgstr "Kolo"
 
@@ -4971,7 +4971,7 @@ msgid "Date"
 msgstr "Datum"
 
 #: src/dialogs.cpp:561 src/game.cpp:1074 src/menu_events.cpp:315
-#: src/menu_events.cpp:1029 src/multiplayer.cpp:110
+#: src/menu_events.cpp:1063 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Jméno"
 
@@ -5106,7 +5106,7 @@ msgstr "Rozšíření smazáno"
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "Rozšíření nebylo možno odstranit - soubor nebyl nalezen."
 
-#: src/game.cpp:1019 src/menu_events.cpp:640 src/menu_events.cpp:653
+#: src/game.cpp:1019 src/menu_events.cpp:674 src/menu_events.cpp:687
 #: src/multiplayer_create.cpp:510
 msgid "Error"
 msgstr "Chyba"
@@ -5472,7 +5472,7 @@ msgstr "Útoky"
 msgid "unit help^Name"
 msgstr "Jméno"
 
-#: src/help.cpp:1245 src/menu_events.cpp:314 src/menu_events.cpp:1028
+#: src/help.cpp:1245 src/menu_events.cpp:314 src/menu_events.cpp:1062
 msgid "Type"
 msgstr "Typ"
 
@@ -5516,7 +5516,7 @@ msgstr "Obrana"
 msgid "Movement Cost"
 msgstr "Bodů pohybu"
 
-#: src/help.cpp:2251
+#: src/help.cpp:2251 src/menu_events.cpp:640
 msgid " < Back"
 msgstr " < Zpět"
 
@@ -5648,7 +5648,7 @@ msgstr "ho"
 msgid "Statistics"
 msgstr "Statistiky"
 
-#: src/menu_events.cpp:316 src/menu_events.cpp:1030
+#: src/menu_events.cpp:316 src/menu_events.cpp:1064
 msgid "Level"
 msgstr "Úroveň"
 
@@ -5673,114 +5673,110 @@ msgstr "Statistiky"
 msgid "Unit List"
 msgstr "Seznam jednotek"
 
-#: src/menu_events.cpp:426 src/menu_events.cpp:526 src/menu_events.cpp:605
+#: src/menu_events.cpp:426 src/menu_events.cpp:446
 msgid "Scroll To"
 msgstr ""
 
-#: src/menu_events.cpp:443
+#: src/menu_events.cpp:475
 msgid "Leader"
 msgstr "Vůdce"
 
-#: src/menu_events.cpp:444 src/multiplayer_connect.cpp:745
+#: src/menu_events.cpp:476 src/multiplayer_connect.cpp:745
 #: src/multiplayer_connect.cpp:754
 msgid "Team"
 msgstr "Tým"
 
-#: src/menu_events.cpp:445 src/multiplayer_connect.cpp:756
+#: src/menu_events.cpp:477 src/multiplayer_connect.cpp:756
 #: src/multiplayer_wait.cpp:445
 msgid "Gold"
 msgstr "Zlatých"
 
-#: src/menu_events.cpp:446
+#: src/menu_events.cpp:478
 msgid "Villages"
 msgstr "Vesnic"
 
-#: src/menu_events.cpp:447
+#: src/menu_events.cpp:479
 msgid "status^Units"
 msgstr "Jednotek"
 
-#: src/menu_events.cpp:448
+#: src/menu_events.cpp:480
 msgid "Upkeep"
 msgstr "Výdaje"
 
-#: src/menu_events.cpp:449 src/multiplayer_connect.cpp:757
+#: src/menu_events.cpp:481 src/multiplayer_connect.cpp:757
 #: src/multiplayer_wait.cpp:449
 msgid "Income"
 msgstr "Příjmy"
 
-#: src/menu_events.cpp:521
+#: src/menu_events.cpp:558
 #, fuzzy
 msgid "Current Status"
 msgstr "Současný správce"
 
-#: src/menu_events.cpp:522
-msgid "More"
+#: src/menu_events.cpp:559
+#, fuzzy
+msgid "More >"
 msgstr "Více"
 
-#: src/menu_events.cpp:544
+#: src/menu_events.cpp:577
 #, fuzzy
 msgid "scenario settings^Leader"
 msgstr "Začátek scénáře"
 
-#: src/menu_events.cpp:546
+#: src/menu_events.cpp:579
 #, fuzzy
 msgid "scenario settings^Side"
 msgstr "Začátek scénáře"
 
-#: src/menu_events.cpp:547
+#: src/menu_events.cpp:580
 #, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr "Začátek scénáře"
 
-#: src/menu_events.cpp:548
+#: src/menu_events.cpp:581
 #, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr "Začátek scénáře"
 
-#: src/menu_events.cpp:549
+#: src/menu_events.cpp:582
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
 
-#: src/menu_events.cpp:550
+#: src/menu_events.cpp:583
 #, fuzzy
 msgid "scenario settings^Fog"
 msgstr "Začátek scénáře"
 
-#: src/menu_events.cpp:551
+#: src/menu_events.cpp:584
 #, fuzzy
 msgid "scenario settings^Shroud"
 msgstr "Začátek scénáře"
 
-#: src/menu_events.cpp:591 src/menu_events.cpp:592
+#: src/menu_events.cpp:629 src/menu_events.cpp:630
 #, fuzzy
 msgid "no"
 msgstr "Sníh"
 
-#: src/menu_events.cpp:591 src/menu_events.cpp:592
+#: src/menu_events.cpp:629 src/menu_events.cpp:630
 msgid "yes"
 msgstr ""
 
-#: src/menu_events.cpp:599
+#: src/menu_events.cpp:637
 #, fuzzy
 msgid "Scenario Settings"
 msgstr "Začátek scénáře"
 
-#: src/menu_events.cpp:601
-#, fuzzy
-msgid "Back"
-msgstr "Černá"
-
-#: src/menu_events.cpp:635 src/playcampaign.cpp:512
+#: src/menu_events.cpp:669 src/playcampaign.cpp:512
 msgid "Name:"
 msgstr "Jméno:"
 
-#: src/menu_events.cpp:640
+#: src/menu_events.cpp:674
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -5788,88 +5784,88 @@ msgstr ""
 "Jména uložených her nemohou obsahovat dvojtečky, lomítka nebo zpětná "
 "lomítka. Zvol prosím jiné jméno."
 
-#: src/menu_events.cpp:650
+#: src/menu_events.cpp:684
 msgid "Saved"
 msgstr "Uloženo"
 
-#: src/menu_events.cpp:650
+#: src/menu_events.cpp:684
 msgid "The game has been saved"
 msgstr "Hra byla uložena"
 
-#: src/menu_events.cpp:653 src/playcampaign.cpp:520
+#: src/menu_events.cpp:687 src/playcampaign.cpp:520
 msgid "The game could not be saved"
 msgstr "Hru se nepodařilo uložit"
 
-#: src/menu_events.cpp:668
+#: src/menu_events.cpp:702
 msgid "Save the Map As"
 msgstr "Ulož mapu jako"
 
-#: src/menu_events.cpp:673
+#: src/menu_events.cpp:707
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Tato mapa již existuje. Chceš ji přepsat?"
 
-#: src/menu_events.cpp:685
+#: src/menu_events.cpp:719
 msgid "Map saved."
 msgstr "Mapa uložena."
 
-#: src/menu_events.cpp:689
+#: src/menu_events.cpp:723
 msgid "Could not save the map: $msg"
 msgstr "Mapu nebylo možno uložit: $msg"
 
-#: src/menu_events.cpp:779 src/menu_events.cpp:781 src/play_controller.cpp:753
+#: src/menu_events.cpp:813 src/menu_events.cpp:815 src/play_controller.cpp:753
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Automatické uložení"
 
-#: src/menu_events.cpp:784
+#: src/menu_events.cpp:818
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Hru se nepodařilo automaticky uložit. Uložte ji prosím ručně."
 
-#: src/menu_events.cpp:808
+#: src/menu_events.cpp:842
 msgid "Chat Log"
 msgstr "Záznam rozhovoru"
 
-#: src/menu_events.cpp:818
+#: src/menu_events.cpp:852
 msgid "Message:"
 msgstr "Zpráva:"
 
-#: src/menu_events.cpp:819
+#: src/menu_events.cpp:853
 msgid "Send to allies only"
 msgstr "Pošli jen spojencům"
 
-#: src/menu_events.cpp:819
+#: src/menu_events.cpp:853
 #, fuzzy
 msgid "Send to observers only"
 msgstr "Pošli jen spojencům"
 
-#: src/menu_events.cpp:899
+#: src/menu_events.cpp:933
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "zlatý za jednotku"
 msgstr[1] "zlaté za jednotku"
 msgstr[2] "zlatých za jednotku"
 
-#: src/menu_events.cpp:906
+#: src/menu_events.cpp:940
 msgid "You have no units available to recruit."
 msgstr "Nemáš žádné jednotky k naverbování."
 
-#: src/menu_events.cpp:918
+#: src/menu_events.cpp:952
 msgid "Recruit"
 msgstr "Naverbuj"
 
-#: src/menu_events.cpp:919 src/menu_events.cpp:1068
+#: src/menu_events.cpp:953 src/menu_events.cpp:1102
 msgid "Select unit:"
 msgstr "Vyber jednotku:"
 
-#: src/menu_events.cpp:964
+#: src/menu_events.cpp:998
 msgid "You don't have enough gold to recruit that unit"
 msgstr "K naverbování této jednotky nemáš dost peněz "
 
-#: src/menu_events.cpp:1021
+#: src/menu_events.cpp:1055
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Jsi oddělen od svých vojáků a nemůžeš je přivolat"
 
-#: src/menu_events.cpp:1023
+#: src/menu_events.cpp:1057
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -5877,57 +5873,57 @@ msgstr ""
 "Nelze přivolat jednotky\n"
 "(musíš mít zkušené jednotky, které přežily předchozí scénář)."
 
-#: src/menu_events.cpp:1062
+#: src/menu_events.cpp:1096
 msgid "Dismiss Unit"
 msgstr "Propusť jednotku"
 
-#: src/menu_events.cpp:1067
+#: src/menu_events.cpp:1101
 msgid "Recall"
 msgstr "Přivolej"
 
-#: src/menu_events.cpp:1084
+#: src/menu_events.cpp:1118
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "K přivolání jednotky potřebuješ nejméně 1 zlaťák"
 msgstr[1] "K přivolání jednotky potřebuješ nejméně $cost zlaťáky"
 msgstr[2] "K přivolání jednotky potřebuješ nejméně $cost zlaťáků"
 
-#: src/menu_events.cpp:1417
+#: src/menu_events.cpp:1451
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Ještě jsi ani nezapočal svůj tah. Opravdu si jej přeješ ukončit?"
 
-#: src/menu_events.cpp:1425 src/menu_events.cpp:1430
+#: src/menu_events.cpp:1459 src/menu_events.cpp:1464
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Některé jednotky ještě nevyčerpaly všechny své kroky. Opravdu si přeješ "
 "ukončit kolo?"
 
-#: src/menu_events.cpp:1471
+#: src/menu_events.cpp:1505
 msgid "Rename Unit"
 msgstr "Přejmenuj jednotku"
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1587
 msgid "Place Label"
 msgstr "Umísti popisek"
 
-#: src/menu_events.cpp:1556 src/menu_events.cpp:1559
+#: src/menu_events.cpp:1590 src/menu_events.cpp:1593
 msgid "Label:"
 msgstr "Popisek:"
 
-#: src/menu_events.cpp:1562
+#: src/menu_events.cpp:1596
 msgid "Team only"
 msgstr "Pouze pro tým"
 
-#: src/menu_events.cpp:1663
+#: src/menu_events.cpp:1697
 msgid "Search"
 msgstr "Najdi popisek nebo jednotku"
 
-#: src/menu_events.cpp:1706
+#: src/menu_events.cpp:1740
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Příkazy: whisper list emote. Zadej /help [příkaz] pro více informací."
 
-#: src/menu_events.cpp:1757
+#: src/menu_events.cpp:1791
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5935,17 +5931,17 @@ msgstr ""
 "Pošli soukromou zprávu. Nelze poslat zprávu hráči, který hraje za jakoukoli "
 "stranu ve hře. Použití: /whisper [přezdívka] [zpráva]"
 
-#: src/menu_events.cpp:1761
+#: src/menu_events.cpp:1795
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Přidej uživatele do seznamu přátel. Použití: /list addfriend [uživatel]"
 
 # nekonzistence addignore/ignore i v angl
-#: src/menu_events.cpp:1763
+#: src/menu_events.cpp:1797
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Přidej uživatele do seznamu otrapů. Použití: /list ignore [uživatel]"
 
-#: src/menu_events.cpp:1765
+#: src/menu_events.cpp:1799
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -5953,19 +5949,19 @@ msgstr ""
 "Smaž uživatele ze seznamu otrapů nebo přátel. Použití: /list remove "
 "[uživatel]"
 
-#: src/menu_events.cpp:1767
+#: src/menu_events.cpp:1801
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Smaž seznam otrapů a přátel. Použití: /list clear"
 
-#: src/menu_events.cpp:1769
+#: src/menu_events.cpp:1803
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Zobraz seznam otrapů a přátel. Použití: /ignore list"
 
-#: src/menu_events.cpp:1771
+#: src/menu_events.cpp:1805
 msgid "Unknown subcommand"
 msgstr "Neznámý podpříkaz"
 
-#: src/menu_events.cpp:1774
+#: src/menu_events.cpp:1808
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5977,55 +5973,55 @@ msgstr ""
 "Podpříkazy jsou: addfriend addignore remove display clear. Zadej /help list "
 "[podpříkaz] pro více informací."
 
-#: src/menu_events.cpp:1777
+#: src/menu_events.cpp:1811
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Napiš, co děláš, nebo jak se cítíš, do chatu. Použití: /emote [zpráva]"
 
-#: src/menu_events.cpp:1779
+#: src/menu_events.cpp:1813
 msgid "Unknown command"
 msgstr "Neznámý příkaz"
 
-#: src/menu_events.cpp:1791
+#: src/menu_events.cpp:1825
 msgid "Added to ignore list: "
 msgstr "Přidáni do seznamu otrapů: "
 
-#: src/menu_events.cpp:1793 src/menu_events.cpp:1800 src/menu_events.cpp:1807
+#: src/menu_events.cpp:1827 src/menu_events.cpp:1834 src/menu_events.cpp:1841
 msgid "Invalid username: "
 msgstr "Neplatné uživatelské jméno: "
 
-#: src/menu_events.cpp:1798
+#: src/menu_events.cpp:1832
 msgid "Added to friends list: "
 msgstr "Přidáni do seznamu přátel: "
 
-#: src/menu_events.cpp:1805
+#: src/menu_events.cpp:1839
 msgid "Removed from list: "
 msgstr "Smazáni ze seznamu: "
 
-#: src/menu_events.cpp:1831
+#: src/menu_events.cpp:1865
 msgid "There are no players on your friends or ignore list."
 msgstr "Ve Vašem seznamu přátel nebo otrapů nejsou žádní hráči."
 
-#: src/menu_events.cpp:1841
+#: src/menu_events.cpp:1875
 msgid "Removed from ignore list: "
 msgstr "Smazáni ze seznamu otrapů: "
 
-#: src/menu_events.cpp:1844
+#: src/menu_events.cpp:1878
 msgid "Removed from friends list: "
 msgstr "Smazáni ze seznamu přátel: "
 
-#: src/menu_events.cpp:1851
+#: src/menu_events.cpp:1885
 msgid "Unknown command: "
 msgstr "Neznámý příkaz: "
 
-#: src/menu_events.cpp:1965
+#: src/menu_events.cpp:1999
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nenašel jsem popisek ani jednotku obsahující řetězec „$search“."
 
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2154
 msgid "prompt^Command:"
 msgstr "Příkaz:"
 
-#: src/menu_events.cpp:2139
+#: src/menu_events.cpp:2173
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Příkazy"
@@ -6495,16 +6491,16 @@ msgstr "Přeskoč rychle na aktivní kolo, jsi-li pozorovatelem"
 msgid "Invalid Color"
 msgstr "Neplatná barva"
 
-#: src/multiplayer_ui.cpp:358
+#: src/multiplayer_ui.cpp:361
 msgid "Send a private message to "
 msgstr "Pošli soukromou zprávu hráči "
 
 # Soukromá zpráva?
-#: src/multiplayer_ui.cpp:359
+#: src/multiplayer_ui.cpp:362
 msgid "Whisper"
 msgstr "Šeptání"
 
-#: src/multiplayer_ui.cpp:360
+#: src/multiplayer_ui.cpp:363
 msgid "Message: "
 msgstr "Zpráva: "
 
@@ -6925,6 +6921,10 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:296
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
+
+#, fuzzy
+#~ msgid "Back"
+#~ msgstr "Černá"
 
 #, fuzzy
 #~ msgid "game settings^Fog"
