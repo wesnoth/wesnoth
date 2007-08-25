@@ -26,8 +26,8 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 	std::map<Uint32, Uint32> map_rgb;
 
 	Uint16 new_red  = (new_range.mid() & 0x00FF0000)>>16;
-    	Uint16 new_green= (new_range.mid() & 0x0000FF00)>>8;
-    	Uint16 new_blue = (new_range.mid() & 0x000000FF);
+	Uint16 new_green= (new_range.mid() & 0x0000FF00)>>8;
+	Uint16 new_blue = (new_range.mid() & 0x000000FF);
 	Uint16 max_red  = (new_range.max() & 0x00FF0000)>>16;
 	Uint16 max_green= (new_range.max() & 0x0000FF00)>>8 ;
 	Uint16 max_blue = (new_range.max() & 0x000000FF)    ;
@@ -37,46 +37,46 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 
 	//map first color in vector to exact new color
 	Uint32 temp_rgb=old_rgb[0];
-	int old_r=(temp_rgb & 0X00FF0000)>>16;
-	int old_g=(temp_rgb & 0X0000FF00)>>8;
-	int old_b=(temp_rgb & 0X000000FF);
-	Uint16 reference_avg = (Uint16)(((Uint16) old_r + (Uint16)old_g + (Uint16)old_b)
-			   / 3);
+	Uint16 old_r=(temp_rgb & 0X00FF0000)>>16;
+	Uint16 old_g=(temp_rgb & 0X0000FF00)>>8;
+	Uint16 old_b=(temp_rgb & 0X000000FF);
+	Uint16 reference_avg = (( old_r + old_g + old_b) / 3);
 
 	for(std::vector< Uint32 >::const_iterator temp_rgb2 = old_rgb.begin();
 	      temp_rgb2 != old_rgb.end(); temp_rgb2++)
 	{
-		int old_r=((*temp_rgb2) & 0X00FF0000)>>16;
-	     int old_g=((*temp_rgb2) & 0X0000FF00)>>8;
-	     int old_b=((*temp_rgb2) & 0X000000FF);
+		Uint16 old_r=((*temp_rgb2) & 0X00FF0000)>>16;
+		Uint16 old_g=((*temp_rgb2) & 0X0000FF00)>>8;
+		Uint16 old_b=((*temp_rgb2) & 0X000000FF);
 
-	     const Uint16 old_avg = (Uint16)(((Uint16) old_r +
-			(Uint16) old_g + (Uint16) old_b) / 3);
-	      //calculate new color
-	     Uint32 new_r, new_g, new_b;
+		const Uint16 old_avg = (( old_r + old_g +  old_b) / 3);
+		//calculate new color
+		Uint32 new_r, new_g, new_b;
 
-	     if(reference_avg && old_avg <= reference_avg){
-			float old_rat = ((float)old_avg)/reference_avg;
+		if(reference_avg && old_avg <= reference_avg){
+			float old_rat = static_cast<float>(old_avg)/reference_avg;
 			new_r=Uint32( old_rat * new_red   + (1 - old_rat) * min_red);
 			new_g=Uint32( old_rat * new_green + (1 - old_rat) * min_green);
 			new_b=Uint32( old_rat * new_blue  + (1 - old_rat) * min_blue);
-	     }else if(255 - reference_avg){
-			float old_rat = ((float) 255 - old_avg) / (255 - reference_avg);
-			new_r=Uint32( old_rat * new_red   + (1 - old_rat) * max_red);
-			new_g=Uint32( old_rat * new_green + (1 - old_rat) * max_green);
-			new_b=Uint32( old_rat * new_blue  + (1 - old_rat) * max_blue);
-	     }else{
-		      new_r=0; new_g=0; new_b=0; //supress warning
-		      wassert(false);
+		}else if(255 - reference_avg){
+			float old_rat = (255.0 - static_cast<float>(old_avg)) / 
+				(255.0 - reference_avg);
+
+			new_r=static_cast<Uint32>( old_rat * new_red   + (1 - old_rat) * max_red);
+			new_g=static_cast<Uint32>( old_rat * new_green + (1 - old_rat) * max_green);
+			new_b=static_cast<Uint32>( old_rat * new_blue  + (1 - old_rat) * max_blue);
+		}else{
+			new_r=0; new_g=0; new_b=0; //supress warning
+			wassert(false);
 			//should never get here
 			//would imply old_avg > reference_avg = 255
 	     }
 
-	     if(new_r>255) new_r=255;
-	     if(new_g>255) new_g=255;
-	     if(new_b>255) new_b=255;
+		if(new_r>255) new_r=255;
+		if(new_g>255) new_g=255;
+		if(new_b>255) new_b=255;
 
-	     Uint32 newrgb = (new_r << 16) + (new_g << 8) + (new_b );
+		Uint32 newrgb = (new_r << 16) + (new_g << 8) + (new_b );
 		map_rgb[*temp_rgb2]=newrgb;
 	}
 
