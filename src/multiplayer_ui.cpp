@@ -286,14 +286,17 @@ ui::result ui::set_result(ui::result res)
 	return res;
 }
 
+const int ui::xscale_base = 1024;
+const int ui::yscale_base =  768;
+
 int ui::xscale(int x) const
 {
-	return (x * width())/1024;
+	return (x * width())/ui::xscale_base;
 }
 
 int ui::yscale(int y) const
 {
-	return (y * height())/768;
+	return (y * height())/ui::yscale_base;
 }
 
 SDL_Rect ui::client_area() const

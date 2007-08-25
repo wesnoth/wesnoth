@@ -94,6 +94,8 @@ public:
 protected:
 	int xscale(int x) const;
 	int yscale(int y) const;
+	static const int xscale_base;
+	static const int yscale_base;
 
 	SDL_Rect client_area() const;
 

@@ -566,24 +566,33 @@ void lobby::layout_children(const SDL_Rect& rect)
 	ui::layout_children(rect);
 
 #ifdef USE_TINY_GUI
-	unsigned int yvalue = 0;
-	unsigned int border = 3;
+	unsigned int btn_space = 3;
+	unsigned int xborder   = 0;
+	unsigned int yborder   = 0;
 #else
-	unsigned int yvalue = 7;
-	unsigned int border = 5;
+	unsigned int btn_space = 5;
+	unsigned int xborder   = 10;
+	unsigned int yborder   = 7;
 #endif
 
-	join_game_.set_location(xscale(0),yscale(yvalue));
-	observe_game_.set_location(join_game_.location().x + join_game_.location().w + border,yscale(yvalue));
-	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + border,yscale(yvalue));
+	// align to the left border
+	join_game_.set_location(xscale(xborder), yscale(yborder));
+	observe_game_.set_location(join_game_.location().x + join_game_.location().w + btn_space, yscale(yborder));
+	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + btn_space, yscale(yborder));
 
 #ifndef USE_TINY_GUI
-	skip_replay_.set_location(create_game_.location().x + 2*(create_game_.location().w),yscale(yvalue));
-	game_preferences_.set_location(skip_replay_.location().x + skip_replay_.location().w + border,yscale(yvalue));
-	quit_game_.set_location(game_preferences_.location().x + game_preferences_.location().w + border,yscale(yvalue));
+	// align 'Quit' to the right border
+	quit_game_.set_location(xscale(xscale_base - xborder) - quit_game_.location().w, yscale(yborder));
+
+	// align in the middle between the right and left buttons
+	int space = (quit_game_.location().x - create_game_.location().x - create_game_.location().w
+	             - skip_replay_.location().w - game_preferences_.location().w - btn_space) / 2;
+	if (space < btn_space) space = btn_space;
+	skip_replay_.set_location(create_game_.location().x + create_game_.location().w + space, yscale(yborder));
+	game_preferences_.set_location(quit_game_.location().x - game_preferences_.location().w - space, yscale(yborder));
 #else
-	skip_replay_.set_location(create_game_.location().x + create_game_.location().w,yscale(yvalue));
-	quit_game_.set_location(skip_replay_.location().x + skip_replay_.location().w + border,yscale(yvalue));
+	skip_replay_.set_location(create_game_.location().x + create_game_.location().w, yscale(yborder));
+	quit_game_.set_location(skip_replay_.location().x + skip_replay_.location().w + btn_space, yscale(yborder));
 #endif
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
