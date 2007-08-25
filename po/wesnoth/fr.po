@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-25 01:15+0200\n"
-"PO-Revision-Date: 2007-07-19 20:00+0200\n"
+"PO-Revision-Date: 2007-08-25 02:20+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Mainteneur actuel"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:29
 msgid "Campaign Epilog and Continuity"
-msgstr ""
+msgstr "Épilogue et continuité"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:39
@@ -127,11 +127,14 @@ msgid ""
 "and other people\n"
 "this list is very incomplete\n"
 msgstr ""
+"et pas mal d'autres gens\n"
+"cette liste est assez incomplete\n"
 
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr ""
+"Et remerciments particuliers à tout ceux que j'ai oublié de mentionner."
 
 #: data/core/about.cfg:7
 msgid "Programming"
@@ -377,9 +380,8 @@ msgstr ""
 "rencontrerez."
 
 #: data/core/help.cfg:73
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Scénario inconnu"
+msgstr "Unité inconnue"
 
 #: data/core/help.cfg:76
 msgid ""
@@ -388,6 +390,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Cette unité vous est pour l'instant inconnue. Vous devez l'avoir découverte "
+"dans le jeu pour pouvoir voir sa description."
 
 #: data/core/help.cfg:84
 msgid ""
@@ -1336,7 +1342,6 @@ msgstr ""
 "pièces d'or par tour."
 
 #: data/core/help.cfg:253
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1347,11 +1352,12 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"Il y a une exception importante à l'entretien : les unités avec le trait "
-"fidèle ne nécessitent jamais d'entretien. Les unités avec lesquelles vous "
-"débutez le scénario (comme Konrad ou Delfador), ou les unités qui vous "
+"Il y a deux exceptions importantes à l'entretien : les unités avec le trait "
+"fidèle et les chefs ne nécessitent jamais d'entretien. Les unités avec "
+"lesquelles vous débutez le scénario (comme Delfador), ou les unités qui vous "
 "rejoignent au cours d'un scénario (tel le cavalier dans le second niveau de "
-"L'Héritier du trône) auront généralement le trait fidèle."
+"L'Héritier du trône) auront généralement le trait fidèle. L'unité dont vous "
+"jouer le héros (comme Konrad) seront presque toujours un chef."
 
 #: data/core/help.cfg:258
 msgid "Wrap Up"
@@ -4738,6 +4744,10 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Vous ne pouvez pas annuler un mouvement qui révèle une zone du brouillard ou "
+"du voile. Activez l'option « différer la mise à jour du voile » quand vous "
+"avez besoin de bouger des unités tout en gardant la capacité d'annuler les "
+"mouvements."
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:133
 #: data/themes/experimental.cfg:96
@@ -5426,9 +5436,8 @@ msgid "Loading title screen."
 msgstr "Chargement de l'écran de présentation"
 
 #: src/game_config.cpp:246
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "Couleur invalide"
+msgstr "Plage de couleur invalide : "
 
 #: src/game_events.cpp:881
 msgid "Victory:"
@@ -5495,9 +5504,8 @@ msgid "stone: "
 msgstr "pétrification : "
 
 #: src/generate_report.cpp:167
-#, fuzzy
 msgid "Resistances: "
-msgstr "Résistances"
+msgstr "Résistances : "
 
 #: src/generate_report.cpp:185 src/multiplayer_create.cpp:378
 msgid "Experience Modifier: "
@@ -5772,9 +5780,8 @@ msgid "Location"
 msgstr "Localisation"
 
 #: src/menu_events.cpp:322
-#, fuzzy
 msgid "Status"
-msgstr "Statistiques"
+msgstr "État"
 
 #: src/menu_events.cpp:423
 msgid "Unit List"
@@ -5782,7 +5789,7 @@ msgstr "Liste des unités"
 
 #: src/menu_events.cpp:426 src/menu_events.cpp:526 src/menu_events.cpp:605
 msgid "Scroll To"
-msgstr ""
+msgstr "Déplacement vers"
 
 #: src/menu_events.cpp:443
 msgid "Leader"
@@ -5816,72 +5823,63 @@ msgid "Income"
 msgstr "Revenu"
 
 #: src/menu_events.cpp:521
-#, fuzzy
 msgid "Current Status"
-msgstr "Mainteneur actuel"
+msgstr "État actuel"
 
 #: src/menu_events.cpp:522
 msgid "More"
 msgstr "Davantage"
 
 #: src/menu_events.cpp:544
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "Début du scénario"
+msgstr "Chef"
 
 #: src/menu_events.cpp:546
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "Début du scénario"
+msgstr "Équipe"
 
 #: src/menu_events.cpp:547
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "Début du scénario"
+msgstr "Or au début"
 
 #: src/menu_events.cpp:548
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "Début du scénario"
+msgstr "Revenu de base"
 
 #: src/menu_events.cpp:549
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
-msgstr ""
+msgstr "Or par village"
 
 #: src/menu_events.cpp:550
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "Début du scénario"
+msgstr "Brouillard"
 
 #: src/menu_events.cpp:551
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "Début du scénario"
+msgstr "Voile"
 
 #: src/menu_events.cpp:591 src/menu_events.cpp:592
-#, fuzzy
 msgid "no"
-msgstr "Neige"
+msgstr "non"
 
 #: src/menu_events.cpp:591 src/menu_events.cpp:592
 msgid "yes"
-msgstr ""
+msgstr "oui"
 
 #: src/menu_events.cpp:599
-#, fuzzy
 msgid "Scenario Settings"
-msgstr "Début du scénario"
+msgstr "Paramètres du scénario"
 
+# Benoît : à verifier si ça colle bien dans le contexte
 #: src/menu_events.cpp:601
-#, fuzzy
 msgid "Back"
-msgstr "Noir"
+msgstr "Précédent"
 
 #: src/menu_events.cpp:635 src/playcampaign.cpp:512
 msgid "Name:"
@@ -5947,9 +5945,8 @@ msgid "Send to allies only"
 msgstr "Parler aux alliés uniquement"
 
 #: src/menu_events.cpp:819
-#, fuzzy
 msgid "Send to observers only"
-msgstr "Parler aux alliés uniquement"
+msgstr "Parler aux observateurs uniquement"
 
 #: src/menu_events.cpp:899
 msgid "unit^Gold"
@@ -6143,9 +6140,8 @@ msgid "prompt^Command:"
 msgstr "Commande :"
 
 #: src/menu_events.cpp:2139
-#, fuzzy
 msgid "User-Command#3"
-msgstr "Commandes"
+msgstr "Commande N°3"
 
 #: src/mouse_events.cpp:198 src/mouse_events.cpp:308
 msgid "Attacker"
@@ -6550,9 +6546,8 @@ msgid "Players: "
 msgstr "Joueurs : "
 
 #: src/multiplayer_create.cpp:508
-#, fuzzy
 msgid "Size: "
-msgstr "Taille"
+msgstr "Taille : "
 
 #: src/multiplayer_lobby.cpp:98
 msgid "--no games open--"
@@ -6688,9 +6683,8 @@ msgid "The replay could not be saved"
 msgstr "Le film ne peut pas être sauvegardé"
 
 #: src/playcampaign.cpp:397
-#, fuzzy
 msgid "Error while reading the WML: "
-msgstr "Erreur lors du déroulement de la partie : "
+msgstr "Erreur lors de la lecture du code WML : "
 
 #: src/playcampaign.cpp:410
 msgid "Receiving data..."
@@ -6899,28 +6893,25 @@ msgid "TitleScreen button^Preferences"
 msgstr "Préférences"
 
 #: src/titlescreen.cpp:310
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "Quitter"
+msgstr "Crédits"
 
 #: src/titlescreen.cpp:311
 msgid "TitleScreen button^Quit"
 msgstr "Quitter"
 
+# Benoît : à voir si ça colle dans le contexte
 #: src/titlescreen.cpp:314
-#, fuzzy
 msgid "TitleScreen button^More"
-msgstr "Charger"
+msgstr "Suite"
 
 #: src/titlescreen.cpp:315
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "Charger"
+msgstr "Aide"
 
 #: src/titlescreen.cpp:317
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Charger"
+msgstr "Aider Wesnoth"
 
 #: src/titlescreen.cpp:319
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -6964,17 +6955,15 @@ msgstr "Quitter le jeu"
 
 #: src/titlescreen.cpp:328
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Astuce suivante"
 
 #: src/titlescreen.cpp:329
-#, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Aide de La bataille pour Wesnoth"
 
 #: src/titlescreen.cpp:330
-#, fuzzy
 msgid "Upload statistics"
-msgstr "Statistiques"
+msgstr "Statistiques d'envoi"
 
 #: src/titlescreen.cpp:382
 msgid "Help Wesnoth by sending us information"

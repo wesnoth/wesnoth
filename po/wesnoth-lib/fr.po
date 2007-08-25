@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-22 17:51+0200\n"
-"PO-Revision-Date: 2007-07-19 22:43+0200\n"
+"PO-Revision-Date: 2007-08-25 02:12+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -337,15 +337,16 @@ msgstr "Redimensionner la carte"
 
 #: src/editor/editor_dialogs.cpp:387
 msgid "X offset:"
-msgstr ""
+msgstr "Décalage en X :"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "Y offset:"
-msgstr ""
+msgstr "Décalage en Y :"
 
+# Benoît : pas sûr d'avoir compris de quoi il s'agit
 #: src/editor/editor_dialogs.cpp:467
 msgid "Smart expand"
-msgstr ""
+msgstr "Agrandissement intelligent"
 
 #: src/editor/editor_dialogs.cpp:556
 msgid "X-Axis"
@@ -1062,17 +1063,16 @@ msgid "Enter user command"
 msgstr "Saisie d'une commande de l'utilisateur"
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Clear messages"
-msgstr "Effacer les notes"
+msgstr "Effacer les messages"
 
 #: src/hotkeys.cpp:137
 msgid "User-Command#2"
-msgstr ""
+msgstr "Commande utilisateur N°2"
 
 #: src/hotkeys.cpp:138
 msgid "User-Command#3"
-msgstr ""
+msgstr "Commande utilisateur N°3"
 
 #: src/hotkeys.cpp:491 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
@@ -1189,4 +1189,4 @@ msgstr "Erreur"
 
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-msgstr ""
+msgstr "Terrain non valide. Il s'agit probablement du format v1.2. Terrain : "
