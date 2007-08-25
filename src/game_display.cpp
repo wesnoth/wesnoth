@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file game_display.cpp 
+//! During a game, show map & info-panels at top+right.
+
 #include "global.hpp"
 
 #include "actions.hpp"
@@ -54,21 +57,21 @@ std::map<gamemap::location,fixed_t> game_display::debugHighlights_;
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const gamestatus& status, const std::vector<team>& t,
 		const config& theme_cfg, const config& cfg, const config& level) :
-	display(video, map, theme_cfg, cfg, level),
-	units_(units),
-	temp_unit_(NULL),
-	status_(status),
-	teams_(t),
-	level_(level),
-	invalidateUnit_(true),
-	currentTeam_(0), activeTeam_(0),
-	sidebarScaling_(1.0),
-	first_turn_(true), in_game_(false), 
-	tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true)
+		display(video, map, theme_cfg, cfg, level),
+		units_(units),
+		temp_unit_(NULL),
+		status_(status),
+		teams_(t),
+		level_(level),
+		invalidateUnit_(true),
+		currentTeam_(0), activeTeam_(0),
+		sidebarScaling_(1.0),
+		first_turn_(true), in_game_(false), 
+		tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true)
 {
 	singleton_ = this;
 
-	//inits the flag list and the team colors used by ~TC
+	// Inits the flag list and the team colors used by ~TC
 	flags_.reserve(teams_.size());
 
 	std::vector<std::string> side_colors;
@@ -88,7 +91,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 
 		LOG_STREAM(info, display) << "Adding flag for team " << i << " from animation " << flag << "\n";
 
-		//must recolor flag image
+		// Must recolor flag image
 		animated<image::locator> temp_anim;
 
 		std::vector<std::string> items = utils::split(flag);
@@ -116,7 +119,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 	}
 	image::set_team_colors(side_colors);
 
-	//clear the screen contents
+	// Clear the screen contents
 	surface const disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
 	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
@@ -213,9 +216,10 @@ void game_display::scroll_to_leader(unit_map& units, int side)
 	const unit_map::iterator leader = find_leader(units,side);
 
 	if(leader != units_.end()) {
-		/* YogiHH: I can't see why we need another key_handler
-		here, therefore i will comment it out const
-		hotkey::basic_handler key_events_handler(gui_);
+		// YogiHH: I can't see why we need another key_handler here, 
+		// therefore I will comment it out :
+		/*
+		const hotkey::basic_handler key_events_handler(gui_);
 		*/
 		scroll_to_tile(leader->first, ONSCREEN);
 	}
@@ -235,8 +239,8 @@ void game_display::draw(bool update,bool force)
 
 	process_reachmap_changes();
 
-	//FIXME: must modify changed, but best to do it at the
-	//floating_label level 
+	//! @todo FIXME: must modify changed, but best to do it 
+	//! at the floating_label level 
 	prune_chat_messages();
 
 	if(map_.empty()) {
@@ -268,7 +272,7 @@ void game_display::draw(bool update,bool force)
 			int xpos = get_location_x(*it);
 			int ypos = get_location_y(*it);
 
-			//store invalidated units
+			// Store invalidated units
 			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
 				unit_invals.insert(*it);
 			}
@@ -278,21 +282,22 @@ void game_display::draw(bool update,bool force)
 				continue;
 			}
 
-			// If the terrain is off the map it shouldn't
-			// be included for reachmap, fog, shroud and
-			// the grid.  In the future it may not depend
-			// on whether the location is on the map but
-			// whether it's an _off^* terrain.  (atm not
-			// too happy with how the grid looks) (the
-			// shroud has some glitches due to commented
-			// out code but enabling it looks worse)
+			// If the terrain is off the map, 
+			// it shouldn't be included for reachmap, 
+			// fog, shroud and the grid.  
+			// In the future it may not depend on 
+			// whether the location is on the map, 
+			// but whether it's an _off^* terrain.  
+			// (atm not too happy with how the grid looks) 
+			// (the shroud has some glitches due to 
+			// commented out code, but enabling it looks worse).
 			const bool on_map = map_.on_board(*it);
 			const bool is_shrouded = shrouded(*it);
 
 			image::TYPE image_type = image::SCALED_TO_HEX;
 
-			//we higlight hex under the mouse, origin of
-			//attack or under a selected unit
+			// We highlight hex under the mouse, 
+			// origin of attack or under a selected unit.
 			if (on_map && (*it == mouseoverHex_ || *it == attack_indicator_src_)) {
 				image_type = image::BRIGHTENED;
 			} else if (on_map && *it == selectedHex_) {
@@ -303,7 +308,7 @@ void game_display::draw(bool update,bool force)
 				}
 			}
 
-			//currently only used in editor
+			// Currently only used in editor
 			/*
 				else if (highlighted_locations_.find(*it) != highlighted_locations_.end()) {
 				image_type = image::SEMI_BRIGHTENED;
@@ -332,9 +337,8 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND));
 			}
 
-			//draw the time-of-day mask on top of the
-			//terrain in the hex
-			// tod may differ from tod if hex is illuminated
+			// Draw the time-of-day mask on top of the terrain in the hex.
+			// tod may differ from tod if hex is illuminated.
 			std::string tod_hex_mask = timeofday_at(status_,units_,*it,map_).image_mask;
 			if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
 				tile_stack_append(tod_hex_mask1);
@@ -343,20 +347,20 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image(tod_hex_mask,image::UNMASKED));
 			}
 
-			// draw the grid, if that's been enabled 
+			// Draw the grid, if that's been enabled 
 			if(grid_ && !is_shrouded && on_map) {
 				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
 
-			// draw reach_map information
-			// we remove the reachability mask of the unit
-			// that we want to attack
+			// Draw reach_map information.
+			// We remove the reachability mask of the unit
+			// that we want to attack.
 			if (!is_shrouded && !reach_map_.empty()
 					&& reach_map_.find(*it) == reach_map_.end() && *it != attack_indicator_dst_) {
 				tile_stack_append(image::get_image(game_config::unreachable_image,image::UNMASKED));
 			}
 
-			// draw cross images for debug highlights
+			// Draw cross images for debug highlights
 			if(game_config::debug && debugHighlights_.count(*it)) {
 				tile_stack_append(image::get_image(game_config::cross_image, image::SCALED_TO_HEX));
 			}
@@ -368,26 +372,26 @@ void game_display::draw(bool update,bool force)
 					tile_stack_append(itor->second);
 			}
 
-			// footsteps indicating a movement path
+			// Footsteps indicating a movement path
 			tile_stack_append(footsteps_images(*it));
 
-			// paint selection and mouseover overlays
+			// Paint selection and mouseover overlays
 			if(*it == selectedHex_ && on_map && selected_hex_overlay_ != NULL)
 				tile_stack_append(selected_hex_overlay_);
 			if(*it == mouseoverHex_ && on_map && mouseover_hex_overlay_ != NULL)
 				tile_stack_append(mouseover_hex_overlay_);
 
-			// draw the attack direction indicator
+			// Draw the attack direction indicator
 			if(on_map && *it == attack_indicator_src_) {
 				tile_stack_append(image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED));
 			} else if (on_map && *it == attack_indicator_dst_) {
 				tile_stack_append(image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED));
 			}
 
-			// apply shroud and fog
+			// Apply shroud and fog
 			if(is_shrouded) {
-				// we apply void also on off-map tiles to
-				// shroud the half-hexes too
+				// We apply void also on off-map tiles 
+				// to shroud the half-hexes too
 				tile_stack_append(image::get_image(shroud_image, image::SCALED_TO_HEX));
 			} else if(fogged(*it)) {
 				tile_stack_append(image::get_image(fog_image, image::SCALED_TO_HEX));
@@ -399,20 +403,20 @@ void game_display::draw(bool update,bool force)
 
 			tile_stack_render(xpos, ypos);
 
-			// show def% and turn to reach infos
+			// Show def% and turn to reach infos
 			if(!is_shrouded && on_map) {
 				draw_movement_info(*it);
 			}
 			//simulate_delay += 1;
 			
-			// if the tile is at the border we start to blend it
+			// If the tile is at the border, we start to blend it
 			if(!on_map && map_.get_terrain(*it) != t_translation::OFF_MAP_USER) {
 				 draw_border(*it, xpos, ypos);
 			}
 		}
 
-		// Units can overlap multiple hexes, so we need to
-		// redraw them last and in the good sequence.
+		// Units can overlap multiple hexes, so we need 
+		// to redraw them last and in the good sequence.
 		std::set<gamemap::location, struct display::ordered_draw>::const_iterator it2;
 		for(it2 = unit_invals.begin(); it2 != unit_invals.end(); ++it2) {
 			unit_map::iterator u_it = units_.find(*it2);
@@ -433,10 +437,10 @@ void game_display::draw(bool update,bool force)
 	halo::render();
 
 	draw_sidebar();
-	//FIXME: This changed can probably be smarter
+	//! @todo FIXME: This changed can probably be smarter
 	changed = true;  
 
-	// simulate slow pc
+	// Simulate slow PC:
 	//SDL_Delay(2*simulate_delay + rand() % 20);
 
 	display::draw_wrap(update, force, changed);
@@ -459,7 +463,7 @@ void game_display::draw_report(reports::TYPE report_num)
 	brighten = false;
 	if(report_num == reports::TIME_OF_DAY) {
 		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
-		// don't show illuminated time on fogged/shrouded tiles
+		// Don't show illuminated time on fogged/shrouded tiles
 		if (teams_[viewing_team()].fogged(mouseoverHex_.x, mouseoverHex_.y) || 
 				teams_[viewing_team()].shrouded(mouseoverHex_.x, mouseoverHex_.y)) {
 
@@ -482,7 +486,7 @@ void game_display::draw_game_status()
 		draw_report(reports::TYPE(r));
 	}
 
-	// the mouse-over needs to update the visibility icon
+	// The mouse-over needs to update the visibility icon
 	draw_report(reports::UNIT_STATUS);
 }
 
@@ -496,8 +500,8 @@ void game_display::draw_sidebar()
 	}
 
 	if(invalidateUnit_) {
-		//we display the unit the mouse is over if it is over a unit
-		//otherwise we display the unit that is selected
+		// We display the unit the mouse is over if it is over a unit,
+		// otherwise we display the unit that is selected.
 		unit_map::const_iterator i =
 			find_visible_unit(units_,mouseoverHex_,
 					map_,
@@ -553,8 +557,9 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 
 	surface surf(image::get_image(image,image::UNMASKED));
 
-	// we use UNSCALED because scaling (and bilinear interpolaion )
-	// is bad for calculate_energy_bar. But we will do a geometric scaling later
+	// We use UNSCALED because scaling (and bilinear interpolaion)
+	// is bad for calculate_energy_bar. 
+	// But we will do a geometric scaling later.
 	surface bar_surf(image::get_image(image));
 	if(surf == NULL || bar_surf == NULL) {
 		return;
@@ -609,26 +614,26 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 
 void game_display::draw_movement_info(const gamemap::location& loc)
 {
-	//search if there is a turn waypoint here
+	// Search if there is a turn waypoint here
 	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
 
-	//don't use empty route or the first step (the unit will be there)
+	// Don't use empty route or the first step (the unit will be there)
 	if(turn_waypoint_iter != route_.turn_waypoints.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un = units_.find(route_.steps.front());
 		if(un != units_.end()) {
-			//display the def% of this terrain
+			// Display the def% of this terrain
 			const int def =  100 - un->second.defense_modifier(map_.get_terrain(loc));
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			// with 11 colors, the last one will be used only for def=100
+			// With 11 colors, the last one will be used only for def=100
 			int val = (game_config::defense_color_scale.size()-1) * def/100;
 			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
 
 			draw_text_in_hex(loc, def_text.str(), 18, color);
 
-			//display the number of turn to reach only if > 0
+			// Display the number of turn to reach only if > 0
 			int turns_to_reach = turn_waypoint_iter->second;
 			if(turns_to_reach > 0 && turns_to_reach < 10) {
 				std::stringstream turns_text;
@@ -637,7 +642,7 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 				draw_text_in_hex(loc, turns_text.str(), 16, turns_color, 0.5, 0.8);
 			}
 
-			// the hex is full now, so skip the "show enemy moves"
+			// The hex is full now, so skip the "show enemy moves"
 			return;
 		}
 	}
@@ -666,7 +671,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 		return res; // not on the route
 	}
 
-	// check which footsteps images of game_config we will use
+	// Check which footsteps images of game_config we will use
 	int move_cost = 1;
 	const unit_map::const_iterator u = units_.find(route_.steps.front());
 	if(u != units_.end()) {
@@ -674,12 +679,12 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	}
 	int image_number = minimum<int>(move_cost, game_config::foot_speed_prefix.size());
 	if (image_number < 1) {
-		return res; // invalid movement cost or no images
+		return res; // Invalid movement cost or no images
 	} 
 	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
 	
-	// we draw 2 half-hex (with possibly different directions)
-	// but skip the first for the first step
+	// We draw 2 half-hex (with possibly different directions),
+	// but skip the first for the first step.
 	const int first_half = (i == route_.steps.begin()) ? 1 : 0;
 	// and the second for the last step
 	const int second_half = (i+1 == route_.steps.end()) ? 0 : 1;
@@ -687,10 +692,10 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	for (int h = first_half; h <= second_half; h++) {
 		std::string rotate;
 
-		// in function of the half, use the incoming or outgoing direction
+		// In function of the half, use the incoming or outgoing direction
 		gamemap::location::DIRECTION dir = (i-1+h)->get_relative_dir(*(i+h));
 		if (dir > gamemap::location::SOUTH_EAST) {
-			//no image, take the opposite direction and do a 180 rotation
+			// No image, take the opposite direction and do a 180 rotation
 			dir = i->get_opposite_dir(dir);
 			rotate = "~FL(horiz)~FL(vert)";
 		}
@@ -752,7 +757,7 @@ void game_display::process_reachmap_changes()
 {
 	if (!reach_map_changed_) return;
 	if (reach_map_.empty() != reach_map_old_.empty()) {
-		// invalidate everything except the non-darkened tiles
+		// Invalidate everything except the non-darkened tiles
 		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
 		gamemap::location topleft;
 		gamemap::location bottomright;
@@ -762,16 +767,16 @@ void game_display::process_reachmap_changes()
 				gamemap::location loc(x, y);
 				reach_map::iterator reach = full.find(loc);
 				if (reach == full.end()) {
-					// location needs to be darkened or brightened
+					// Location needs to be darkened or brightened
 					invalidate(loc);
 				} else if (reach->second != 1) {
-					// number needs to be displayed or cleared
+					// Number needs to be displayed or cleared
 					invalidate(loc);
 				}
 			}
 		}
 	} else if (!reach_map_.empty()) {
-		// invalidate only changes
+		// Invalidate only changes
 		reach_map::iterator reach, reach_old;
 		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
 			reach_old = reach_map_old_.find(reach->first);
@@ -897,7 +902,7 @@ void game_display::invalidate(const gamemap::location& loc)
 					invalidate(*i);
 				}
 			}
-			// if neighbour has a unit which overlaps us invalidate him
+			// If neighbour has a unit which overlaps us, invalidate him
 			gamemap::location adjacent[6];
 			get_adjacent_tiles(loc, adjacent);
 			for (unsigned int i = 0; i < 6; i++) {
@@ -973,7 +978,7 @@ void game_display::remove_temporary_unit()
 	if(!temp_unit_) return;
 
 	invalidate(temp_unit_loc_);
-	// redraw with no location to get rid of haloes
+	// Redraw with no location to get rid of haloes
 	temp_unit_->clear_haloes();
 	temp_unit_ = NULL;
 }
@@ -1062,8 +1067,8 @@ void game_display::set_playing_team(size_t teamindex)
 }
 
 
-// timestring() returns the current date as a string.
-// Uses preferences::clock_format() for formatting.
+//! timestring() returns the current date as a string.
+//! Uses preferences::clock_format() for formatting.
 static std::string timestring ()
 {
     time_t now = time (NULL);
@@ -1196,3 +1201,4 @@ void game_display::prune_chat_messages(bool remove_all)
 }
 
 game_display *game_display::singleton_ = NULL;
+
