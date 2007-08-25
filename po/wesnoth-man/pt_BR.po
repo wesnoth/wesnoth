@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-05-18 18:38+0200\n"
-"PO-Revision-Date: 2007-03-04 21:02+0900\n"
+"PO-Revision-Date: 2007-08-25 10:46+0900\n"
 "Last-Translator: Claus Aranha\n"
 "Language-Team: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
@@ -234,14 +234,14 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:83 ../../doc/man/wesnoth_editor.6:72
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--logdomains>"
-msgstr "B<--nogui>"
+msgstr "B<--logdomains>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:86 ../../doc/man/wesnoth_editor.6:75
 msgid "Dumps a list of all log domains and exits."
-msgstr ""
+msgstr "Imprime uma lista de todos os domínios de log e termina."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:86
@@ -922,9 +922,8 @@ msgstr "B<connections_allowed>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:91
-#, fuzzy
 msgid "The number of allowed connections from the same IP. (default: 5)"
-msgstr "O número de conexões oriundas do mesmo IP permitidas."
+msgstr "O número de conexões vindas do mesmo IP permitidas. (padrão: 5)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:91
@@ -952,9 +951,10 @@ msgstr "B<max_messages>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:100
-#, fuzzy
 msgid "The number of allowed messages in B<messages_time_period>. (default: 4)"
-msgstr "O número de mensagens permitidas dentro de B<messages_time_period>."
+msgstr ""
+"O número de mensagens permitidas no período de B<messages_time_period>.< "
+"(padrão: 4)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:100
@@ -964,11 +964,12 @@ msgstr "B<messages_time_period>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: 10 "
 "seconds)"
-msgstr "O tempo (em segundos) usado para detectar flood de mensagens."
+msgstr ""
+"O tempo (em segundos) usado para detectar flood de mensagens. (padrão: 10 "
+"segundos)"
 
 # type: TP
 #: ../../doc/man/wesnothd.6:103
@@ -1004,14 +1005,14 @@ msgstr "B<versions_accepted>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:113
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. `*' "
 "and `?' from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
-"Uma lista separada por vírgulas de strings de versão que serão aceitas pelo "
-"servidor. `*'e `?' podem ser usados para formar coringas."
+"Uma lista, separada por vírgulas, de strings de versão que serão aceitas "
+"pelo servidor. `*'e `?' podem ser usados para formar coringas. (padrão é a "
+"versão desta instalação do wesnoth)"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:115

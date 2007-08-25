@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-03 15:52+0200\n"
-"PO-Revision-Date: 2007-02-21 22:58+0900\n"
+"PO-Revision-Date: 2007-08-16 16:59+0900\n"
 "Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -285,7 +285,6 @@ msgid "The DUMMY gets a turn?"
 msgstr "É a vez do BONECO?"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
-#, fuzzy
 msgid ""
 "Yes: it's a magical quintain.\n"
 "See the 3-5 in its description? The first number tells you that it does "
@@ -295,8 +294,11 @@ msgid ""
 "points. Brace yourself!"
 msgstr ""
 "Sim: ele é um boneco de treino mágico.\n"
-"Mas então, este boneco terá cinco chances de te acertar, e se ele acertar "
-"todas, você cairá de $student_hp para $future_hp pontos de vida. Segure-se!"
+"Você vê os números 3-5 em sua descrição? O primeiro número indica que o "
+"boneco causa três pontos de dano quando acerta. O segundo número indica que "
+"ele tem cinco tentativas para acertar por combate.\n"
+"Se ele te acertar em todas as cinco tentativas, você cairá de $student_hp "
+"para $future_hp pontos de vida. Segure-se!"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:472
 msgid "Click on the End Turn button on the bottom right"
@@ -733,9 +735,8 @@ msgid "Ouch! I could use some healing in a village."
 msgstr "Ai!  Eu esta na hora de eu me curar em uma aldeia."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:230
-#, fuzzy
 msgid "I have $side.gold gold: enough to recruit!"
-msgstr "Eu tenho $gold peças de ouro: o suficiente para recrutar!"
+msgstr "Eu tenho $side.gold peças de ouro: o suficiente para recrutar!"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:231
 msgid "Yes, keep recruiting more units: I think you might need them!"
@@ -1027,13 +1028,12 @@ msgstr ""
 "novamente..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:760
-#, fuzzy
 msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
-"Não! Eu disse CONVOQUE $recall_name1 da última batalha, não para recrutar um "
-"novo $recruit.type|! Agora tente novamente..."
+"Não! Eu disse para CONVOCAR $recall_name1 da última batalha, não para "
+"recrutar um novo $recruit.language_name|! Agora tente novamente..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:777
 msgid "Right click on the tile south-east of you and recall $recall_name2"
@@ -1053,13 +1053,12 @@ msgstr ""
 "Soldado Élfico"
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:798
-#, fuzzy
 msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.type|?! Eu disse para RECRUTAR mais um SOLDADO Élfico. Agora tente "
-"novamente..."
+"$recruit.language_name|?! Eu disse para RECRUTAR mais um SOLDADO ÉLFICO. "
+"Agora tente novamente..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:812
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:823
@@ -1521,6 +1520,11 @@ msgid ""
 "beginner's campaign. Konrad, Li'sar and Delfador are characters from Heir To "
 "The Throne."
 msgstr ""
+"Você foi vitorioso contra os Orcs. A partir daqui, você pode tentar uma das "
+"campanhas para iniciantes, tal como 'A Guarda Sul', 'Dois Irmãos' ou "
+"'Herdeiro do Trono'. 'A Guarda Sul' é uma campanha especialmente preparada "
+"para jogadores novatos. Konrad, Li'sar e Delfador são personagens da "
+"campanha 'Herdeiro do Trono'."
 
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:4
 msgid "Elder Mage"
@@ -1582,12 +1586,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mangual"
-
-#~ msgid "impact"
-#~ msgstr "impacto"
-
-#~ msgid "fire"
-#~ msgstr "fogo"
-
-#~ msgid "blade"
-#~ msgstr "cortante"

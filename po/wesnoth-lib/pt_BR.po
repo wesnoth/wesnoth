@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-22 17:51+0200\n"
-"PO-Revision-Date: 2007-02-21 22:34+0900\n"
-"Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
+"PO-Revision-Date: 2007-08-25 10:10+0900\n"
+"Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,9 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/core/terrain.cfg:13
-#, fuzzy
 msgid "None"
-msgstr "Não"
+msgstr "Nenhum"
 
 #: data/core/terrain.cfg:20
 msgid "Shroud"
@@ -67,7 +66,7 @@ msgstr "Ruína"
 
 #: data/core/terrain.cfg:202
 msgid "Sunken Ruin"
-msgstr "Ruína Afundada"
+msgstr "Ruína inundada"
 
 #: data/core/terrain.cfg:214
 msgid "Swamp Ruin"
@@ -95,15 +94,15 @@ msgstr "Fortaleza em ruínas"
 
 #: data/core/terrain.cfg:299
 msgid "Sunken keep"
-msgstr ""
+msgstr "Fortaleza inundada"
 
 #: data/core/terrain.cfg:311
 msgid "Swamp keep"
-msgstr ""
+msgstr "Fortaleza do pântano"
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
-msgstr ""
+msgstr "Cratera"
 
 #: data/core/terrain.cfg:347
 msgid "Desert"
@@ -171,7 +170,7 @@ msgstr "Lava"
 
 #: data/core/terrain.cfg:535
 msgid "Desert road"
-msgstr ""
+msgstr "Estrada no deserto"
 
 #: data/core/terrain.cfg:544
 msgid "Dirt"
@@ -183,7 +182,7 @@ msgstr "Estrada"
 
 #: data/core/terrain.cfg:562
 msgid "Farmland"
-msgstr ""
+msgstr "Fazenda"
 
 #: data/core/terrain.cfg:575
 msgid "Swamp"
@@ -207,7 +206,7 @@ msgstr "Cavernas Rochosas"
 
 #: data/core/terrain.cfg:645
 msgid "Rockbound Cave Lit"
-msgstr ""
+msgstr "Caverna rochosa iluminada"
 
 #: data/core/terrain.cfg:662 data/core/terrain.cfg:673
 #: data/core/terrain.cfg:686 data/core/terrain.cfg:697
@@ -218,7 +217,7 @@ msgstr ""
 #: data/core/terrain.cfg:801 data/core/terrain.cfg:816
 #: data/core/terrain.cfg:827
 msgid "Village"
-msgstr "Vila"
+msgstr "Aldeia"
 
 #: data/core/terrain.cfg:842
 msgid "Deep Water"
@@ -238,7 +237,7 @@ msgstr "Montanhas Impassáveis"
 
 #: data/core/terrain.cfg:886
 msgid "Impassable Desert Mountains"
-msgstr ""
+msgstr "Montanhas Impassáveis do Deserto"
 
 #: data/core/terrain.cfg:896
 msgid "Cave Wall"
@@ -397,13 +396,12 @@ msgid "Skip AI Moves"
 msgstr "Não mostrar movimento do computador"
 
 #: src/game_preferences_display.cpp:158
-#, fuzzy
 msgid "Save Replays"
-msgstr "Salvar teclas de atalho"
+msgstr "Salvar Replays"
 
 #: src/game_preferences_display.cpp:159
 msgid "Delete Autosaves"
-msgstr ""
+msgstr "Apagar Jogos Autosalvos"
 
 #: src/game_preferences_display.cpp:160
 msgid "Do Not Show Lobby Joins"
@@ -426,7 +424,6 @@ msgid "Iconize Lobby List"
 msgstr "Iconizar a lista da sala de espera"
 
 #: src/game_preferences_display.cpp:165
-#, fuzzy
 msgid "Friends List"
 msgstr "Lista de Amigos"
 
@@ -504,7 +501,7 @@ msgstr "Modo Normal"
 
 #: src/game_preferences_display.cpp:187
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Sons de Interface do Usuário"
 
 #: src/game_preferences_display.cpp:190
 msgid "Custom"
@@ -523,9 +520,8 @@ msgid "SFX Volume:"
 msgstr "Volume dos Efeitos Sonoros:"
 
 #: src/game_preferences_display.cpp:194
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "Volume dos Efeitos Sonoros:"
+msgstr "Volume do Interface:"
 
 #: src/game_preferences_display.cpp:195
 msgid "Bell Volume:"
@@ -561,11 +557,11 @@ msgstr "Muda o volume do alarme"
 
 #: src/game_preferences_display.cpp:241
 msgid "Turn menu and button sounds on/off"
-msgstr ""
+msgstr "Liga/Desliga sons dos menus e botões"
 
 #: src/game_preferences_display.cpp:245
 msgid "Change the sound volume for button clicks, etc."
-msgstr ""
+msgstr "Muda o volume dos sons ao clicar em botões, etc."
 
 #: src/game_preferences_display.cpp:247
 msgid "Change the sample rate"
@@ -617,11 +613,11 @@ msgstr "Não mostrar animação das unidades do computador ao se moverem"
 
 #: src/game_preferences_display.cpp:319
 msgid "Save replays at scenario end."
-msgstr ""
+msgstr "Salva replays ao fim do cenário."
 
 #: src/game_preferences_display.cpp:322
 msgid "Automatically delete autosaves at the end of a scenario"
-msgstr ""
+msgstr "Automaticamente deleta jogos salvos ao fim de um cenário"
 
 #: src/game_preferences_display.cpp:324
 msgid "Overlay a grid onto the map"
@@ -934,17 +930,16 @@ msgid "Next Side"
 msgstr "Próximo time"
 
 #: src/hotkeys.cpp:96
-#, fuzzy
 msgid "Full map"
-msgstr "Inverter Mapa"
+msgstr "Mapa Completo"
 
 #: src/hotkeys.cpp:98
 msgid "Each team"
-msgstr ""
+msgstr "Cada time"
 
 #: src/hotkeys.cpp:100
 msgid "Team 1"
-msgstr ""
+msgstr "Time 1"
 
 #: src/hotkeys.cpp:101
 msgid "Skip animation"
@@ -1019,13 +1014,12 @@ msgid "Refresh Image Cache"
 msgstr "Atualizar Cache de Imagens"
 
 #: src/hotkeys.cpp:121
-#, fuzzy
 msgid "Delay transition updates"
-msgstr "Atrasar atualização da neblina"
+msgstr "Atrasar atualização das transições"
 
 #: src/hotkeys.cpp:122
 msgid "Update transitions"
-msgstr ""
+msgstr "Atualizar transições"
 
 #: src/hotkeys.cpp:124
 msgid "Delay Shroud Updates"
@@ -1068,17 +1062,16 @@ msgid "Enter user command"
 msgstr "Digitar comando do usuário"
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Clear messages"
-msgstr "Apagar Nomes"
+msgstr "Apagar mensagens"
 
 #: src/hotkeys.cpp:137
 msgid "User-Command#2"
-msgstr ""
+msgstr "Comando-Personalizado#2"
 
 #: src/hotkeys.cpp:138
 msgid "User-Command#3"
-msgstr ""
+msgstr "Comando-Personalizado#3"
 
 #: src/hotkeys.cpp:491 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
@@ -1189,4 +1182,4 @@ msgstr "Erro"
 
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-msgstr ""
+msgstr "Terreno Inválido encontrado, provavelmente da versão 1.2, terreno = "

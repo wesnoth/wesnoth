@@ -83,7 +83,7 @@ chave="\fIvalor\fP,\fIvalor\fP,..."
 .
 .TP 
 \fBconnections_allowed\fP
-The number of allowed connections from the same IP. (default: 5)
+O número de conexões vindas do mesmo IP permitidas. (padrão: 5)
 .TP 
 \fBdisallow_names\fP
 Nomes/apelidos que não são aceitos pelo servidor. `*'e `?' podem ser usados
@@ -91,11 +91,12 @@ como coringas. Veja \fBglob\fP(7) para mais detalhes. O valor padrão (usado se
 nada for especificado) é: `server,ai,player,network,human,admin,computer'.
 .TP 
 \fBmax_messages\fP
-The number of allowed messages in \fBmessages_time_period\fP. (default: 4)
+O número de mensagens permitidas no período de \fBmessages_time_period\fP.<
+(padrão: 4)
 .TP 
 \fBmessages_time_period\fP
-The time period (in seconds) message flooding is detected in. (default: 10
-seconds)
+O tempo (em segundos) usado para detectar flood de mensagens. (padrão: 10
+segundos)
 .TP 
 \fBmotd\fP
 A mensagem do dia.
@@ -105,9 +106,9 @@ A senha usada para ganhar privilégios admnistrativos. Geralmente ela começa
 com "admin".
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. `*'
-and `?' from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Uma lista, separada por vírgulas, de strings de versão que serão aceitas
+pelo servidor. `*'e `?' podem ser usados para formar coringas. (padrão é a
+versão desta instalação do wesnoth)
 .br
 Exemplo: versions_accepted="*" aceita qualquer string de versão.
 .
