@@ -181,27 +181,31 @@ bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, co
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
 {
-	if(!map.on_board(loc)) return false;
-
-	//handle radius
-	const size_t radius = minimum<size_t>(max_loop,
-		lexical_cast_default<size_t>(cfg["radius"], 0));
-	std::set<gamemap::location> hexes;
-	std::vector<gamemap::location> loc_vec(1, loc);
-	if(cfg.has_child("filter_radius")) {
-		terrain_pred tp(map, cfg.child("filter_radius"), game_status, units, flat_tod);
-		get_tiles_radius(map, loc_vec, radius, hexes, &tp);
-	} else {
-		get_tiles_radius(map, loc_vec, radius, hexes);
-	}
-
-	size_t loop_count = 0;
 	bool matches = false;
-	std::set<gamemap::location>::const_iterator i;
-	terrain_cache_manager tcm;
-	for(i = hexes.begin(); i != hexes.end() && loop_count <= max_loop && !matches; ++i) {
-		matches = terrain_matches_internal(map, *i, cfg, game_status, units, flat_tod, false, tcm.ptr);
-		++loop_count;
+	if(map.on_board(loc)) {
+		//handle radius
+		const size_t radius = minimum<size_t>(max_loop,
+			lexical_cast_default<size_t>(cfg["radius"], 0));
+		std::set<gamemap::location> hexes;
+		std::vector<gamemap::location> loc_vec(1, loc);
+		if(cfg.has_child("filter_radius")) {
+			terrain_pred tp(map, cfg.child("filter_radius"), game_status, units, flat_tod);
+			get_tiles_radius(map, loc_vec, radius, hexes, &tp);
+		} else {
+			get_tiles_radius(map, loc_vec, radius, hexes);
+		}
+
+		size_t loop_count = 0;
+		std::set<gamemap::location>::const_iterator i;
+		terrain_cache_manager tcm;
+		for(i = hexes.begin(); i != hexes.end() && loop_count <= max_loop && !matches; ++i) {
+			matches = terrain_matches_internal(map, *i, cfg, game_status, units, flat_tod, false, tcm.ptr);
+			++loop_count;
+		}
+	} else if(cfg["x"] == "recall" && cfg["y"] == "recall"
+	&& cfg.get_config().values.size() == 2 && cfg.get_config().all_children().empty()) {
+		//locations not on the map are considered to be on a recall list
+		matches = true;
 	}
 
 	//handle [and], [or], and [not] with in-order precedence
