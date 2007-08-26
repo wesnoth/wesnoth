@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: sv\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-25 10:22+0200\n"
-"PO-Revision-Date: 2007-08-04 10:13+0200\n"
+"PO-Revision-Date: 2007-08-26 23:19+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -371,9 +371,8 @@ msgstr ""
 "dem."
 
 #: data/core/help.cfg:73
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Okänt scenario"
+msgstr "Okänd trupp"
 
 #: data/core/help.cfg:76
 msgid ""
@@ -382,6 +381,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Denna trupp är för tillfället okänd. Du måste upptäcka den under spelets "
+"gång för att få se dess beskrivning."
 
 #: data/core/help.cfg:84
 msgid ""
@@ -1319,7 +1322,6 @@ msgstr ""
 "inkomst 10 guldstycken per drag."
 
 #: data/core/help.cfg:253
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1330,12 +1332,11 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"\n"
-"Det finns ett viktigt undantag för underhåll: Lojala trupper utkräver aldrig "
-"något underhåll. Trupper som du startar ett scenario med (som Konrad eller "
-"Delfador), eller för trupper som förenar sig med dig under ett scenarios "
+"Det finns två viktiga undantag för underhåll: Lojala trupper samt ledare "
+"utkräver aldrig något underhåll. Trupper som du startar ett scenario med "
+"(som Delfador), eller trupper som förenar sig med dig under ett scenarios "
 "gång (som ryttaren i det andra scenariot i Tronarvingen), är vanligtvis "
-"lojala."
+"lojala. Truppen du själv spelar (som Konrad) är nästan alltid en ledare."
 
 #: data/core/help.cfg:258
 msgid "Wrap Up"
@@ -5379,9 +5380,8 @@ msgid "stone: "
 msgstr "förstenad: "
 
 #: src/generate_report.cpp:167
-#, fuzzy
 msgid "Resistances: "
-msgstr "Motståndskraft mot olika attacker"
+msgstr "Motståndskraft mot olika attacker: "
 
 #: src/generate_report.cpp:185 src/multiplayer_create.cpp:378
 msgid "Experience Modifier: "
@@ -5656,9 +5656,8 @@ msgid "Location"
 msgstr "Position"
 
 #: src/menu_events.cpp:322
-#, fuzzy
 msgid "Status"
-msgstr "Statistik"
+msgstr "Status"
 
 #: src/menu_events.cpp:423
 msgid "Unit List"
@@ -5666,7 +5665,7 @@ msgstr "Trupplista"
 
 #: src/menu_events.cpp:426 src/menu_events.cpp:446
 msgid "Scroll To"
-msgstr ""
+msgstr "Rulla till"
 
 #: src/menu_events.cpp:475
 msgid "Leader"
@@ -5700,68 +5699,64 @@ msgid "Income"
 msgstr "Inkomst"
 
 #: src/menu_events.cpp:558
-#, fuzzy
 msgid "Current Status"
-msgstr "Huvudansvarig"
+msgstr "Nuvarande status"
 
 #: src/menu_events.cpp:559
-#, fuzzy
 msgid "More >"
-msgstr "Läs mer"
+msgstr "Mer >"
 
 #: src/menu_events.cpp:577
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "Scenariostart"
+msgstr "Ledare"
 
 #: src/menu_events.cpp:579
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "Scenariostart"
+msgstr "Sida"
 
 #: src/menu_events.cpp:580
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "Scenariostart"
+msgstr ""
+"Start-\n"
+"guld"
 
 #: src/menu_events.cpp:581
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "Scenariostart"
+msgstr ""
+"Grund-\n"
+"inkomst"
 
 #: src/menu_events.cpp:582
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
+"Guld \n"
+"per by"
 
 #: src/menu_events.cpp:583
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "Scenariostart"
+msgstr "Dimma"
 
 #: src/menu_events.cpp:584
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "Scenariostart"
+msgstr "Slöja"
 
 #: src/menu_events.cpp:629 src/menu_events.cpp:630
-#, fuzzy
 msgid "no"
-msgstr "Snö"
+msgstr "nej"
 
 #: src/menu_events.cpp:629 src/menu_events.cpp:630
 msgid "yes"
-msgstr ""
+msgstr "ja"
 
 #: src/menu_events.cpp:637
-#, fuzzy
 msgid "Scenario Settings"
-msgstr "Scenariostart"
+msgstr "Scenarioinställningar"
 
 #: src/menu_events.cpp:669 src/playcampaign.cpp:512
 msgid "Name:"
@@ -5825,9 +5820,8 @@ msgid "Send to allies only"
 msgstr "Skicka enbart till allierade"
 
 #: src/menu_events.cpp:853
-#, fuzzy
 msgid "Send to observers only"
-msgstr "Skicka enbart till allierade"
+msgstr "Skicka enbart till åskådare"
 
 #: src/menu_events.cpp:933
 msgid "unit^Gold"
@@ -6015,9 +6009,8 @@ msgid "prompt^Command:"
 msgstr "Kommando:"
 
 #: src/menu_events.cpp:2173
-#, fuzzy
 msgid "User-Command#3"
-msgstr "Kommandon"
+msgstr "Användarkommandon #3"
 
 #: src/mouse_events.cpp:198 src/mouse_events.cpp:308
 msgid "Attacker"
@@ -6421,9 +6414,8 @@ msgid "Players: "
 msgstr "Spelare: "
 
 #: src/multiplayer_create.cpp:508
-#, fuzzy
 msgid "Size: "
-msgstr "Storlek"
+msgstr "Storlek: "
 
 #: src/multiplayer_lobby.cpp:98
 msgid "--no games open--"
@@ -6559,9 +6551,8 @@ msgid "The replay could not be saved"
 msgstr "Reprisen kunde inte sparas"
 
 #: src/playcampaign.cpp:397
-#, fuzzy
 msgid "Error while reading the WML: "
-msgstr "Fel under spel: "
+msgstr "Fel vid läsning av WML: "
 
 #: src/playcampaign.cpp:410
 msgid "Receiving data..."
@@ -6769,28 +6760,24 @@ msgid "TitleScreen button^Preferences"
 msgstr "Inställningar"
 
 #: src/titlescreen.cpp:310
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "Avsluta"
+msgstr "Tack"
 
 #: src/titlescreen.cpp:311
 msgid "TitleScreen button^Quit"
 msgstr "Avsluta"
 
 #: src/titlescreen.cpp:314
-#, fuzzy
 msgid "TitleScreen button^More"
-msgstr "Sparade spel"
+msgstr "Mer"
 
 #: src/titlescreen.cpp:315
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "Sparade spel"
+msgstr "Hjälp"
 
 #: src/titlescreen.cpp:317
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Sparade spel"
+msgstr "Hjälp Wesnoth"
 
 #: src/titlescreen.cpp:319
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -6834,17 +6821,15 @@ msgstr "Avsluta spelet"
 
 #: src/titlescreen.cpp:328
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Visa nästa tips"
 
 #: src/titlescreen.cpp:329
-#, fuzzy
 msgid "Show Battle for Wesnoth help"
-msgstr "Hjälp om Kampen om Wesnoth"
+msgstr "Visa hjälpsidorna för Kampen om Wesnoth"
 
 #: src/titlescreen.cpp:330
-#, fuzzy
 msgid "Upload statistics"
-msgstr "Statistik"
+msgstr "Ladda upp statistik"
 
 #: src/titlescreen.cpp:382
 msgid "Help Wesnoth by sending us information"
@@ -6911,20 +6896,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:296
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
-
-#, fuzzy
-#~ msgid "Back"
-#~ msgstr "Svart"
-
-#, fuzzy
-#~ msgid "game settings^Fog"
-#~ msgstr "Använd kartinställningar"
-
-#~ msgid "Can't set abilities yet, sorry."
-#~ msgstr "Kan inte ställa in egenskaper ännu, ursäkta."
-
-#~ msgid "Map size: "
-#~ msgstr "Kartstorlek: "
-
-#~ msgid "Credits"
-#~ msgstr "Medverkande"
