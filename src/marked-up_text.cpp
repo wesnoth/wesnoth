@@ -137,6 +137,8 @@ std::string del_tags(const std::string& text){
 
 std::string color2markup(const SDL_Color color) {
 	std::stringstream markup;
+	// the RGB of SDL_Color are Uint8, we need to cast them to int
+	// if not, it gives their char equivalent
 	markup << "<" << static_cast<int>(color.r) << "," << static_cast<int>(color.g)
 		 << "," << static_cast<int>(color.b) << ">";
 	return markup.str();
