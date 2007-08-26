@@ -139,8 +139,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	    report res;
 	    std::stringstream tooltip;
 
-		HPC=u->second.hp_color();
-		str << "<" << (int) HPC.r << "," << (int) HPC.g << "," << (int) HPC.b << ">"
+		HPC = u->second.hp_color();
+		str << "<" << HPC.r << "," << HPC.g << "," << HPC.b << ">"
 	      << u->second.hitpoints() << "/" << u->second.max_hitpoints();
 
 		std::vector<std::string> resistances_table;
@@ -179,7 +179,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	  std::stringstream tooltip;
 
 	  XPC=u->second.xp_color();
-	  str << "<" << (int) XPC.r << "," << (int) XPC.g << "," << (int) XPC.b << ">"
+	  str << "<" << XPC.r << "," << XPC.g << "," << XPC.b << ">"
 	      << u->second.experience() << "/" << u->second.max_experience();
 
 	  tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
@@ -206,7 +206,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	  if(utils::string_bool(u->second.get_state("stoned"))){
 	    x = 128;
 	  }else{
-	    x = (int)(128 + (255-128)*((float)movement_left/u->second.total_movement()));
+	    x = static_cast<int>(128 + (255-128) * 
+            (static_cast<float>(movement_left)/u->second.total_movement()));
 	  }
 	  str << "<" << x << "," << x << "," << x <<">";
 	  str << movement_left << "/" << u->second.total_movement();
