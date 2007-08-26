@@ -145,7 +145,7 @@ void game_display::new_turn()
 			const surface old_mask(image::get_image(old_tod.image_mask,image::UNMASKED));
 			const surface new_mask(image::get_image(tod.image_mask,image::UNMASKED));
 
-			const int niterations = (int)(10/turbo_speed());
+			const int niterations = static_cast<int>(10/turbo_speed());
 			const int frame_time = 30;
 			const int starting_ticks = SDL_GetTicks();
 			for(int i = 0; i != niterations; ++i) {
@@ -602,7 +602,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 	video().blit_surface(xpos,ypos,surf,&top);
 	video().blit_surface(xpos,ypos+top.h,surf,&bot);
 
-	const size_t unfilled = (const size_t)(height*(1.0 - filled));
+	const size_t unfilled = static_cast<const size_t>(height*(1.0 - filled));
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
