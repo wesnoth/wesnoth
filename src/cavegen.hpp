@@ -59,7 +59,10 @@ private:
 	void place_passage(const passage& p);
 
 	bool on_board(const gamemap::location& loc) const
-		{ return loc.x >= 0 && loc.y >= 0 && loc.x < (long)width_ && loc.y < (long)height_; }
+		{ return loc.x >= 0 && loc.y >= 0 && 
+            loc.x < lexical_cast<long>(width_) && 
+            loc.y < static_cast<long>(height_); }
+
 	void set_terrain(gamemap::location loc, t_translation::t_letter t);
 	void place_castle(const std::string& side, gamemap::location loc);
 
