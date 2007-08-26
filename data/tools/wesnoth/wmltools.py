@@ -145,7 +145,7 @@ class CrossRef:
             if isresource(filename):
                 self.fileref[filename] = Reference(filename)
             elif iswml(filename):
-                # It's a WML file, scan for macro defitions
+                # It's a WML file, scan for macro definitions
                 dfp = open(filename)
                 state = "outside"
                 for (n, line) in enumerate(dfp):
@@ -178,7 +178,7 @@ class CrossRef:
                             self.xref[name] = []
                         self.xref[name].append(here)
                         state = "outside"
-                    elif state == "macro_header" and line and line[0] != "#":
+                    elif state == "macro_header" and line.strip() and line.strip()[0] != "#":
                         state = "macro_body"
                     if state == "macro_header":
                         here.docstring += line[1:]
