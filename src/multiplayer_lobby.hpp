@@ -73,6 +73,7 @@ private:
 	image::locator vision_icon_locator_;
 	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
+	image::locator no_observer_icon_locator_;
 
 	const config* map_hashes_;
 

@@ -37,7 +37,8 @@ namespace mp {
 	xp_icon_locator_("misc/units.png"),
 	vision_icon_locator_("misc/invisible.png"),
 	time_limit_icon_locator_("misc/sand-clock.png"),
-	observer_icon_locator_("misc/eye.png"), map_hashes_(map_hashes),
+	observer_icon_locator_("misc/eye.png"),
+	no_observer_icon_locator_("misc/no_observer.png"), map_hashes_(map_hashes),
 	item_height_(100), margin_(5), h_padding_(5),
 	header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
 	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
@@ -104,9 +105,6 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	int xpos = item_rect.x + margin_;
 	int ypos = item_rect.y + margin_;
 
-	//bg_restore(item_rect);
-	//draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 0, 0, 0, 0.2, video().getSurface());
-
 	//draw minimaps
 	video().blit_surface(xpos, ypos, game.mini_map);
 	xpos += item_height_ + margin_;
@@ -127,88 +125,111 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		}
 	}
 
-	//draw game name
-	const surface name_surf(font::get_rendered_text(font::make_text_ellipsis(game.name, font::SIZE_PLUS, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_PLUS, font_color));
+	const surface status_text(font::get_rendered_text(game.status,
+	    font::SIZE_NORMAL, font_color));
+	const int status_text_width = status_text ? status_text->w : 0;
+
+	// first line: draw game name
+	const surface name_surf(font::get_rendered_text(
+	    font::make_text_ellipsis(game.name, font::SIZE_PLUS,
+	        (item_rect.x + item_rect.w) - xpos - margin_ - status_text_width - h_padding_),
+	    font::SIZE_PLUS, font_color));
 	video().blit_surface(xpos, ypos, name_surf);
 
+	// draw status text
+	if(status_text) {
+		// align the bottom of the text with the game name
+		video().blit_surface(item_rect.x + item_rect.w - margin_ - status_text_width,
+		    ypos + name_surf->h - status_text->h, status_text);
+	}
+
+	// second line
 	ypos = item_rect.y + item_rect.h/2;
 
 	// draw map info
-	const surface map_info_surf(font::get_rendered_text(font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL, (item_rect.x + item_rect.w) - xpos - margin_), font::SIZE_NORMAL, font::NORMAL_COLOUR));
+	const surface map_info_surf(font::get_rendered_text(
+	    font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL,
+	        (item_rect.x + item_rect.w) - xpos - margin_),
+	    font::SIZE_NORMAL, font::NORMAL_COLOUR));
 	video().blit_surface(xpos, ypos - map_info_surf->h/2, map_info_surf);
+
+	// third line
+	ypos = item_rect.y + item_rect.h  - margin_;
+
+	// draw observer icon
+	const surface observer_icon(image::get_image(game.observers
+	    ? observer_icon_locator_ : no_observer_icon_locator_));
+	video().blit_surface(xpos, ypos - observer_icon->h, observer_icon);
+
+	// set ypos to the middle of the line
+	// so that all text and icons can be aligned symmetrical to it
+	ypos -= observer_icon->h/2;
+	xpos += observer_icon->w + 2 * h_padding_;
 
 	// draw gold icon
 	const surface gold_icon(image::get_image(gold_icon_locator_));
-	ypos = item_rect.y + item_rect.h  - margin_ - gold_icon->h;
-	video().blit_surface(xpos, ypos, gold_icon);
+	video().blit_surface(xpos, ypos - gold_icon->h/2, gold_icon);
 
 	xpos += gold_icon->w + h_padding_;
 
 	// draw gold text
-	const surface gold_text(font::get_rendered_text(game.gold, font::SIZE_NORMAL, game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
-	ypos -= abs(gold_icon->h - gold_text->h) / 2;
-	video().blit_surface(xpos, ypos, gold_text);
+	const surface gold_text(font::get_rendered_text(game.gold, font::SIZE_NORMAL,
+	    game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
+	video().blit_surface(xpos, ypos - gold_text->h/2, gold_text);
 
 	xpos += gold_text->w + 2 * h_padding_;
 
 	// draw xp icon
 	const surface xp_icon(image::get_image(xp_icon_locator_));
-	ypos = item_rect.y + item_rect.h  - margin_ - xp_icon->h;
-	video().blit_surface(xpos, ypos, xp_icon);
+	video().blit_surface(xpos, ypos - xp_icon->h/2, xp_icon);
 
 	xpos += xp_icon->w + h_padding_;
 
 	// draw xp text
-	const surface xp_text(font::get_rendered_text(game.xp, font::SIZE_NORMAL, font::NORMAL_COLOUR));
-	ypos -= abs(xp_icon->h - xp_text->h) / 2;
-	video().blit_surface(xpos, ypos, xp_text);
+	const surface xp_text(font::get_rendered_text(game.xp, font::SIZE_NORMAL,
+	    font::NORMAL_COLOUR));
+	video().blit_surface(xpos, ypos - xp_text->h/2, xp_text);
 
 	xpos += xp_text->w + 2 * h_padding_;
 
 	if(!game.time_limit.empty()) {
 		// draw time icon
 		const surface time_icon(image::get_image(time_limit_icon_locator_));
-		ypos = item_rect.y + item_rect.h  - margin_ - time_icon->h;
-		video().blit_surface(xpos, ypos, time_icon);
+		video().blit_surface(xpos, ypos - time_icon->h/2, time_icon);
 
 		xpos += time_icon->w + h_padding_;
 
 		// draw time text
-		const surface time_text(font::get_rendered_text(game.time_limit, font::SIZE_NORMAL, font::NORMAL_COLOUR));
-		ypos -= abs(time_icon->h - time_text->h) / 2;
-		video().blit_surface(xpos, ypos, time_text);
+		const surface time_text(font::get_rendered_text(game.time_limit,
+		    font::SIZE_NORMAL, font::NORMAL_COLOUR));
+		video().blit_surface(xpos, ypos - time_text->h/2, time_text);
 
 		xpos += time_text->w + 2 * h_padding_;
 	}
 
 	// draw vision icon
 	const surface vision_icon(image::get_image(vision_icon_locator_));
-	video().blit_surface(xpos, ypos, vision_icon);
+	video().blit_surface(xpos, ypos - vision_icon->h/2, vision_icon);
 
 	xpos += vision_icon->w + h_padding_;
 
-	const surface status_text(font::get_rendered_text(game.status, font::SIZE_NORMAL, font_color));
-
-	const int status_text_width = status_text ? status_text->w : 0;
-	const surface vision_text(font::get_rendered_text(font::make_text_ellipsis(game.vision, font::SIZE_NORMAL, maximum<int>((item_rect.x + item_rect.w - margin_ - status_text_width - 2 * h_padding_) - xpos, 0)),font::SIZE_NORMAL, game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
 	// draw vision text
-	video().blit_surface(xpos, ypos, vision_text);
+	const surface vision_text(font::get_rendered_text(
+	    font::make_text_ellipsis(game.vision, font::SIZE_NORMAL,
+	        (item_rect.x + item_rect.w) - xpos - margin_),
+	    font::SIZE_NORMAL,
+	    game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
+	video().blit_surface(xpos, ypos - vision_text->h/2, vision_text);
 
 	// draw map settings text
 	if (game.use_map_settings) {
-		const surface map_settings_text(font::get_rendered_text(_("Use map settings"), font::SIZE_NORMAL, font::NORMAL_COLOUR));
 		xpos += vision_text->w + 4 * h_padding_;
-		video().blit_surface(xpos, ypos, map_settings_text);
+		const surface map_settings_text(font::get_rendered_text(
+		    font::make_text_ellipsis(_("Use map settings"), font::SIZE_NORMAL,
+		        (item_rect.x + item_rect.w) - xpos - margin_),
+		    font::SIZE_NORMAL, font::NORMAL_COLOUR));
+		video().blit_surface(xpos, ypos - map_settings_text->h/2, map_settings_text);
 	}
-
-	// draw status text
-	xpos = item_rect.x + item_rect.w - margin_ - status_text_width;
-	if(status_text) {
-		video().blit_surface(xpos, ypos, status_text);
-	}
-
-	//if(selected_ == index)
-	//	draw_solid_tinted_rectangle(item_rect.x, item_rect.y, item_rect.w, item_rect.h, 153, 0, 0, 0.3, video().getSurface());
 }
 
 void gamebrowser::handle_event(const SDL_Event& event)
