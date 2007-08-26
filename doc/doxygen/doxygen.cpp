@@ -422,7 +422,7 @@ int divide(int a,int b) {
 /**	-file display.hpp */
 /**	-file filesystem.hpp */
 /**	@file game.hpp */
-/**	@file gamestatus.hpp */
+/**	-file gamestatus.hpp */
 /**	@file intro.hpp */
 /**	@file key.hpp */
 /**	@file language.hpp */

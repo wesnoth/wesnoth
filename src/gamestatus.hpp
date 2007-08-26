@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file gamestatus.hpp 
+//!
+
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
 
@@ -25,32 +29,32 @@
 
 class scoped_wml_variable;
 
-//an object which defines the current time of day
+//! Object which defines the current time of day.
 struct time_of_day
 {
 	explicit time_of_day(const config& cfg);
 	void write(config& cfg) const;
 
-	//the % bonus lawful units receive. chaotic units will
-	//receive -lawful_bonus.
+	// The % bonus lawful units receive. 
+	// Chaotic units will receive -lawful_bonus.
 	int lawful_bonus;
 	int bonus_modified;
 
-	//the image to be displayed in the game status.
+	// The image to be displayed in the game status.
 	std::string image;
 	t_string name;
 	std::string id;
 
-	//the image that is to be laid over all images while it's this
-	//time of day
+	// The image that is to be laid over all images 
+	// while this time of day lasts.
 	std::string image_mask;
 
-	//the colour modifications that should
-	//be made to the game board to reflect the time of day.
+	// The colour modifications that should be made 
+	// to the game board to reflect the time of day.
 	int red, green, blue;
 
-	// list of "ambient" sounds associated with this time_of_day,
-	// played at the beginning of turn
+	//! List of "ambient" sounds associated with this time_of_day,
+	//! Played at the beginning of turn.
 	std::string sounds;
 };
 
@@ -71,11 +75,10 @@ struct player_info
 {
 	player_info():gold(-1) {}
 
-	std::string name; /** < to sore the current_player name */
-	int gold; /** < amount of gold the player has saved */
-	std::vector<unit> available_units; /** < units the player may recall */
-
-	std::set<std::string> can_recruit; /** < units the player has the ability to recruit */
+	std::string name; 	/** < Stores the current_player name */
+	int gold; 			/** < Amount of gold the player has saved */
+	std::vector<unit> available_units; /** < Units the player may recall */ 
+	std::set<std::string> can_recruit; /** < Units the player has the ability to recruit */
 };
 
 class game_state : public variable_set
@@ -88,24 +91,24 @@ public:
 	~game_state();
 	game_state& operator=(const game_state& state);
 
-	std::string label; //name of the game (e.g. name of save file)
-	std::string version; //version game was created with.
-	std::string campaign_type; //type of the game - campaign, multiplayer etc
+	std::string label; 			//!< Name of the game (e.g. name of save file).
+	std::string version; 		//!< Version game was created with.
+	std::string campaign_type; 	//!< Type of the game - campaign, multiplayer etc.
 
-	std::string campaign_define; //if there is a define the campaign uses to customize data
+	std::string campaign_define; //! If there is a define the campaign uses to customize data
 	std::vector<std::string> campaign_xtra_defines; // more customization of data
 
-	std::string campaign; //the campaign being played
-	std::string scenario; //the scenario being played
-	std::string completion; // running. victory, or defeat
+	std::string campaign; 	//!< the campaign being played
+	std::string scenario; 	//!< the scenario being played
+	std::string completion; //!< running. victory, or defeat
 
-	// information about campaign players who carry resources from
-	// previous levels, indexed by a string identifier (which is
-	// the leader name by default, but can be set with the "id"
-	// attribute of the "side" tag)
+	//! Information about campaign players who carry resources 
+	//! from previous levels, indexed by a string identifier 
+	// (which is the leader name by default, but can be set 
+	// with the "id" attribute of the "side" tag).
 	std::map<std::string, player_info> players;
 
-	// Return the Nth player, or NULL if no such player exists
+	//! Return the Nth player, or NULL if no such player exists.
 	player_info* get_player(const std::string& id);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
@@ -116,7 +119,7 @@ public:
 
 	void set_menu_items(const config::child_list& menu_items);
 
-	//Variable access
+	// Variable access
 
 	t_string& get_variable(const std::string& varname);
 	virtual const t_string& get_variable_const(const std::string& varname) const;
@@ -126,33 +129,35 @@ public:
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
 
 	void clear_variable(const std::string& varname);
-	void clear_variable_cfg(const std::string& varname); //clears only the config children
+	void clear_variable_cfg(const std::string& varname); // Clears only the config children
 
-	std::string difficulty; //the difficulty level the game is being played on.
+	std::string difficulty; //!< The difficulty level the game is being played on.
 
-	//if the game is saved mid-level, we have a series of replay steps to
-	//take the game up to the position it was saved at.
+	//! If the game is saved mid-level, we have a series of replay steps 
+	//! to take the game up to the position it was saved at.
 	config replay_data;
 
-	//for multiplayer games, the position the game started in may be different to
-	//the scenario, so we save the starting state of the game here.
+	//! Saved starting state of the game.
+	//! For multiplayer games, the position the game started in 
+	//! may be different to the scenario, 
 	config starting_pos;
 
-	//the snapshot of the game's current contents. i.e. unless the player selects
-	//to view a replay, the game's settings are read in from this object
+	//! Snapshot of the game's current contents. 
+	//! i.e. unless the player selects to view a replay, 
+	//! the game's settings are read in from this object.
 	config snapshot;
 
-	//the last location where a select event fired.
+	//! the last location where a select event fired.
 	gamemap::location last_selected;
 private:
 	config variables;
-	mutable config temporaries; //lengths of arrays, etc.
+	mutable config temporaries; // lengths of arrays, etc.
 	friend struct variable_info;
 };
 
 
-//class which contains the global status of the game -- namely
-//the current turn, the number of turns, and the time of day.
+//! Contains the global status of the game. 
+//! Namely the current turn, the number of turns, and the time of day.
 class gamestatus
 {
 public:
@@ -169,14 +174,14 @@ public:
 	void modify_turns(const std::string& mod);
 	void add_turns(int num);
 
-	//function to move to the next turn. Returns true iff time
-	//has expired.
+	//! function to move to the next turn. 
+	//! Returns true iff time has expired.
 	bool next_turn();
 	
 	static bool is_start_ToD(const std::string&);
 
-	//FIXME: since gamestatus may be constructed with NULL game_state* (by default), 
-	//you should not rely on this function to return the current game_state
+	//! @todo FIXME: since gamestatus may be constructed with NULL game_state* (by default), 
+	//! you should not rely on this function to return the current game_state.
 	const game_state& sog() const{return(*state_of_game_);}
 
 	std::vector<team> *teams;
@@ -202,17 +207,16 @@ private:
 	const game_state* state_of_game_;
 };
 
-//object which holds all the data needed to start a scenario.
-//i.e. this is the object serialized to disk when saving/loading a game.
-//is also the object which needs to be created to start a new game
-
+//! Holds all the data needed to start a scenario.
+//! i.e. this is the object serialized to disk when saving/loading a game.
+//! It is also the object which needs to be created to start a new game.
 struct save_info {
 	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
 	std::string name;
 	time_t time_modified;
 };
 
-//function to get a list of available saves.
+//! Get a list of available saves.
 std::vector<save_info> get_saves_list(const std::string *dir = NULL);
 
 enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
@@ -222,20 +226,20 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 
-// function returns true iff there is already savegame with that name
+//! Returns true iff there is already a savegame with that name.
 bool save_game_exists(const std::string & name);
 
-//throws game::save_game_failed
+//! Throws game::save_game_failed
 scoped_ostream open_save_game(const std::string &label);
 void finish_save_game(config_writer &out, const game_state& gamestate, const std::string &label);
 
-//functions to load/save games.
+//! Load/Save games.
 void load_game(const game_data& data, const std::string& name, game_state& gamestate, std::string* error_log);
 void load_game_summary(const std::string& name, config& cfg_summary, std::string* error_log);
-//throws gamestatus::save_game_failed
+//! Throws gamestatus::save_game_failed
 void save_game(const game_state& gamestate);
 
-//function to delete a save
+//! Delete a savegame.
 void delete_game(const std::string& name);
 
 config& save_summary(const std::string& save);

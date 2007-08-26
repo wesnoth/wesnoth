@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file gamestatus.cpp 
+//! Maintain status of a game, load&save games.
+
 #include "global.hpp"
 #include "wassert.hpp"
 
@@ -45,13 +48,13 @@
 #ifdef _WIN32
 #include <windows.h>
 
-// conv_ansi_utf8()
-//   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
-//  string &name
-//     - filename to be converted
-//  bool a2u
-//     - if true, convert the string from ANSI to UTF-8.
-//     - if false, reverse. (convert it from UTF-8 to ANSI)
+//! conv_ansi_utf8()
+//!   - Convert a string between ANSI encoding (for Windows filename) and UTF-8
+//!  string &name
+//!     - filename to be converted
+//!  bool a2u
+//!     - if true, convert the string from ANSI to UTF-8.
+//!     - if false, reverse. (convert it from UTF-8 to ANSI)
 void conv_ansi_utf8(std::string &name, bool a2u) {
 	int wlen = MultiByteToWideChar(a2u ? CP_ACP : CP_UTF8, 0,
                                    name.c_str(), -1, NULL, 0);
@@ -167,15 +170,15 @@ static void parse_times(const config& cfg, std::vector<time_of_day>& normal_time
 
 	if(normal_times.empty())
 	{
-		// Makeing sure we have at least default time
+		// Make sure we have at least default time
 		config dummy_cfg;
 		normal_times.push_back(time_of_day(dummy_cfg));
 	}
 }
 
-/// Reads turns and time information from parameters
-/// It sets random starting ToD and current_tod to config
-///
+//! Reads turns and time information from parameters.
+//! It sets random starting ToD and current_tod to config.
+//!
 gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
   turn_(1),numTurns_(num_turns),currentTime_(0),state_of_game_(s_o_g)
 {
@@ -241,8 +244,8 @@ void gamestatus::write(config& cfg) const
 	}
 }
 
-/// returns time of day object in the turn 
-/// Correct time is calculated from current time.
+//! Returns time of day object in the turn.
+//! Correct time is calculated from current time.
 time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 {
 	wassert(!times_.empty());
@@ -257,8 +260,7 @@ time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 	return times_[time];
 }
 
-/// returns time of day object for current turn
-
+//! ~eturns time of day object for current turn.
 time_of_day gamestatus::get_time_of_day() const
 {
 	return times_[currentTime_];
@@ -269,9 +271,9 @@ time_of_day gamestatus::get_previous_time_of_day() const
 	return get_time_of_day_turn(turn()-1);
 }
 
-/// Returns time of day object in the turn. 
-/// It first tryes to look for specified. If no area time specified in location it returns global time.
-
+//! Returns time of day object in the turn. 
+//! It first tries to look for specified. 
+//! If no area time specified in location, it returns global time.
 time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
 {
 	time_of_day res = get_time_of_day_turn(n_turn);
@@ -299,9 +301,8 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location
 	return get_time_of_day(illuminated,loc,turn());
 }
 
-/// Sets global time of day in this turn.
-/// Time is number between 0 and n-1 where n is number of ToDs
-
+//! Sets global time of day in this turn.
+//! Time is a number between 0 and n-1, where n is number of ToDs.
 bool gamestatus::set_time_of_day(int newTime)
 {
 	// newTime can come from network so have to take run time test
@@ -355,7 +356,7 @@ void gamestatus::set_start_ToD(config &level, game_state* s_o_g)
 		
 		set_time_of_day((turn() - 1) % times_.size());
 	}
-	// Setting tod to level data
+	// Setting ToD to level data
 
 	std::stringstream buf;
 	buf << currentTime_;
@@ -435,8 +436,8 @@ game_state::game_state(const game_data& data, const config& cfg)
 	const config::child_list& players = cfg.get_children("player");
 
 	if(players.empty()) {
-		//backwards compatibility code: assume that there is player data
-		//in the file itself, which corresponds to the leader of side 1
+		// Backwards compatibility code: assume that there is player data
+		// in the file itself, which corresponds to the leader of side 1.
 		const config::child_list& units = cfg.get_children("unit");
 		config::child_list::const_iterator i;
 		for(i = units.begin(); i != units.end(); ++i) {
@@ -488,7 +489,7 @@ game_state::game_state(const game_data& data, const config& cfg)
 		replay_data = *replay;
 	}
 
-	//older save files used to use 'start', so still support that for now
+	// Older save files used to use 'start', so still support that for now.
 	if(snapshot == NULL) {
 		snapshot = cfg.child("start");
 	}
@@ -528,7 +529,7 @@ static void write_player(const player_info& player, config& cfg)
 	std::copy(player.can_recruit.begin(),player.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
 	std::string can_recruit_str = can_recruit.str();
 
-	//remove the trailing comma
+	// Remove the trailing comma
 	if(can_recruit_str.empty() == false) {
 		can_recruit_str.resize(can_recruit_str.size()-1);
 	}
@@ -556,7 +557,7 @@ static void write_player(config_writer &out, const player_info& player)
 	std::copy(player.can_recruit.begin(),player.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
 	std::string can_recruit_str = can_recruit.str();
 
-	//remove the trailing comma
+	// Remove the trailing comma
 	if(can_recruit_str.empty() == false) {
 		can_recruit_str.resize(can_recruit_str.size()-1);
 	}
@@ -565,7 +566,7 @@ static void write_player(config_writer &out, const player_info& player)
 }
 
 
-// Deprecated, use other write_game below.
+//! @deprecated, use other write_game below.
 void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 {
 	log_scope("write_game");
@@ -673,8 +674,8 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	}
 }
 
-//a structure for comparing to save_info objects based on their modified time.
-//if the times are equal, will order based on the name
+//! A structure for comparing to save_info objects based on their modified time.
+//! If the times are equal, will order based on the name.
 struct save_info_less_time {
 	bool operator()(const save_info& a, const save_info& b) const {
 		return a.time_modified > b.time_modified ||
@@ -724,7 +725,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	//try reading the file both with and without underscores
+	// Try reading the file both with and without underscores
 	scoped_istream file_stream = istream_file(get_saves_dir() + "/" + modified_name);
 	if (file_stream->fail())
 		file_stream = istream_file(get_saves_dir() + "/" + name);
@@ -763,7 +764,7 @@ void load_game_summary(const std::string& name, config& cfg_summary, std::string
 	extract_summary_from_config(cfg, cfg_summary);
 }
 
-//throws game::save_game_failed
+// Throws game::save_game_failed
 scoped_ostream open_save_game(const std::string &label)
 {
 	std::string name = label;
@@ -797,7 +798,7 @@ void finish_save_game(config_writer &out, const game_state& gamestate, const std
 	}
 }
 
-//throws game::save_game_failed
+// Throws game::save_game_failed
 void save_game(const game_state& gamestate)
 {
 	scoped_ostream os(open_save_game(gamestate.label));
@@ -875,10 +876,9 @@ void extract_summary_data_from_save(const game_state& gamestate, config& out)
 		}
 	}
 
-	//find the first human leader so we can display their icon in the load menu
+	// Find the first human leader so we can display their icon in the load menu.
 
-	//ideally we should grab all leaders if there's more than 1
-	//human player?
+	//! @todo Ideally we should grab all leaders if there's more than 1 human player?
 	std::string leader;
 
 	for(std::map<std::string, player_info>::const_iterator p = gamestate.players.begin();
@@ -956,10 +956,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 		}
 	}
 
-	//find the first human leader so we can display their icon in the load menu
+	// Find the first human leader so we can display their icon in the load menu.
 
-	//ideally we should grab all leaders if there's more than 1
-	//human player?
+	//! @todo Ideally we should grab all leaders if there's more than 1 human player?
 	std::string leader;
 
 	const config::child_list& players = cfg_save.get_children("player");
