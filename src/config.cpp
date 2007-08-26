@@ -731,7 +731,8 @@ std::string config::hash() const
 	}
 
 	for(i = 0; i != hash_length; ++i) {
-		hash_str[i] = hash_string[(unsigned)hash_str[i]%strlen(hash_string)];
+		hash_str[i] = hash_string[
+			static_cast<unsigned>(hash_str[i]) % strlen(hash_string)];
 	}
 
 	return std::string(hash_str);
