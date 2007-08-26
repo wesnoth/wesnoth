@@ -127,7 +127,9 @@ void terrain_palette::adjust_size() {
 	rect.y = terrain_start_;
 	rect.h = space_for_terrains;
 	bg_register(rect);
-	const unsigned terrains_fitting = (unsigned)(space_for_terrains / size_specs_.terrain_space) * size_specs_.terrain_width;
+	const unsigned terrains_fitting = 
+		static_cast<unsigned> (space_for_terrains / size_specs_.terrain_space) * 
+		size_specs_.terrain_width;
 	const unsigned total_terrains = num_terrains();
 	nterrains_ = minimum<int>(terrains_fitting, total_terrains);
 	bot_button_y_ = size_specs_.palette_y + (nterrains_ / size_specs_.terrain_width) * size_specs_.terrain_space + \
@@ -372,8 +374,11 @@ void terrain_palette::draw(bool force) {
 			return;
 		}
 
-		if((unsigned)image->w != size_specs_.terrain_size || (unsigned)image->h != size_specs_.terrain_size) {
-			image.assign(scale_surface(image, size_specs_.terrain_size, size_specs_.terrain_size));
+		if(static_cast<unsigned>(image->w) != size_specs_.terrain_size || 
+			static_cast<unsigned>(image->h) != size_specs_.terrain_size) {
+
+			image.assign(scale_surface(image, 
+				size_specs_.terrain_size, size_specs_.terrain_size));
 		}
 
 		const int counter_from_zero = counter - starting;
@@ -471,7 +476,7 @@ void brush_bar::select_brush_size(int new_size) {
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
-		if ((unsigned)index != selected_) {
+		if (static_cast<unsigned>(index) != selected_) {
 			set_dirty();
 			selected_ = index;
 		}
@@ -528,7 +533,9 @@ void brush_bar::draw(bool force) {
 			std::cerr << "Image " << filename.str() << " not found." << std::endl;
 			continue;
 		}
-		if ((unsigned)image->w != size_ || (unsigned)image->h != size_) {
+		if (static_cast<unsigned>(image->w) != size_ || 
+				static_cast<unsigned>(image->h) != size_) {
+
 			image.assign(scale_surface(image, size_, size_));
 		}
 		SDL_Rect dstrect;
@@ -537,7 +544,7 @@ void brush_bar::draw(bool force) {
 		dstrect.w = image->w;
 		dstrect.h = image->h;
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
-		const Uint32 color = (unsigned)i == selected_brush_size() ?
+		const Uint32 color = static_cast<unsigned>(i) == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
@@ -551,15 +558,19 @@ int brush_bar::selected_index(const int x, const int y) const {
 	const int bar_x = size_specs_.brush_x;
 	const int bar_y = size_specs_.brush_y;
 
-	if ((x < bar_x || (unsigned)x > bar_x + size_ * total_brush_ + total_brush_ * size_specs_.brush_padding)
-	    || (y < bar_y || (unsigned)y > bar_y + size_)) {
+	if ((x < bar_x || static_cast<unsigned>(x) > bar_x + size_ * total_brush_ + 
+			total_brush_ * size_specs_.brush_padding) ||
+		    (y < bar_y || static_cast<unsigned>(y) > bar_y + size_)) {
+
 		return -1;
 	}
 
 	for(int i = 0; i < total_brush_; i++) {
 		const int px = bar_x + size_ * i + i * size_specs_.brush_padding;
 
-		if(x >= px && (unsigned)x <= px + size_ && y >= bar_y && (unsigned)y <= bar_y + size_) {
+		if(x >= px && static_cast<unsigned>(x) <= px + size_ && 
+				y >= bar_y && static_cast<unsigned>(y) <= bar_y + size_) {
+
 			return i;
 		}
 	}
