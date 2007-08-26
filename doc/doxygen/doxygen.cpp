@@ -419,14 +419,14 @@ int divide(int a,int b) {
 /**	-file ai.hpp */
 /**	-file ai_move.hpp */
 /**	-file config.hpp */
-/**	@file display.hpp */
+/**	-file display.hpp */
 /**	-file filesystem.hpp */
 /**	@file game.hpp */
 /**	@file gamestatus.hpp */
 /**	@file intro.hpp */
 /**	@file key.hpp */
 /**	@file language.hpp */
-/**	@file log.hpp */
+/**	-file log.hpp */
 /**	@file mapgen_dialog.hpp */
 /**	@file mapgen.hpp */
 /**	@file map.hpp */

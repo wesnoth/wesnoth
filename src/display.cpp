@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file display.cpp 
+//! Routines to set up the display, scroll and zoom the map.
+
 #include "global.hpp"
 
 #include "actions.hpp"
@@ -47,10 +50,10 @@
 namespace {
 #ifdef USE_TINY_GUI
 	const int DefaultZoom = 36;
-	const int SmallZoom = 16;
+	const int SmallZoom   = 16;
 #else
 	const int DefaultZoom = 72;
-	const int SmallZoom = 36;
+	const int SmallZoom   = 36;
 #endif
 
 	const int MinZoom = 4;
@@ -94,11 +97,14 @@ const SDL_Rect& display::map_area() const
 	static SDL_Rect res = {0, 0, 0, 0};
 	res = map_outside_area();
 
-	// hex_size() is always a multiple of 4 and hex_width() a multiple of
-	// 3 so there shouldn't be off by one errors due to rounding
-	// To display a hex fully on screen a little bit extra space is needed
+	// hex_size() is always a multiple of 4 
+	// and hex_width() a multiple of 3,
+	// so there shouldn't be off-by-one-errors 
+	// due to rounding.
+	// To display a hex fully on screen, 
+	// a little bit extra space is needed.
 	// Also added the border two times.
-	const int width = static_cast<int>((map_.w() + 2 * theme_.border().size + 1.0/3.0) * hex_width()); 
+	const int width  = static_cast<int>((map_.w() + 2 * theme_.border().size + 1.0/3.0) * hex_width()); 
 	const int height = static_cast<int>((map_.h() + 2 * theme_.border().size + 0.5) * hex_size());
 
 	if(width < res.w) {
@@ -153,9 +159,9 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 	const int tesselation_x_size = hex_width() * 2;
 	const int tesselation_y_size = s;
 	const int x_base = x / tesselation_x_size * 2;
-	const int x_mod = x % tesselation_x_size;
+	const int x_mod  = x % tesselation_x_size;
 	const int y_base = y / tesselation_y_size;
-	const int y_mod = y % tesselation_y_size;
+	const int y_mod  = y % tesselation_y_size;
 
 	int x_modifier = 0;
 	int y_modifier = 0;
@@ -188,9 +194,9 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
 
 	if(nearest_hex != NULL) {
-		// our x and y use the map_area as reference
-		// and the coorfinates given by get_location use the screen as reference
-		// so we need to convert it
+		// Our x and y use the map_area as reference.
+		// The coordinates given by get_location use the screen as reference,
+		// so we need to convert it.
 		const int centerx = (get_location_x(res) - map_area().x + xpos_) + hex_size()/2 - hex_width();
 		const int centery = (get_location_y(res) - map_area().y + ypos_) + hex_size()/2 - hex_size();
 		const int x_offset = x - centerx;
@@ -261,31 +267,32 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 
 void display::get_rect_hex_bounds(SDL_Rect rect, gamemap::location &topleft, gamemap::location &bottomright) const
 {
-	// change the coordinates of the rect send to be relative 
-	// to the map area instead of the screen area
+	// Change the coordinates of the rect send 
+	// to be relative to the map area, instead of the screen area.
 	const SDL_Rect& map_rect = map_area();
 	rect.x -= map_rect.x;
 	rect.y -= map_rect.y;
-	// only move the left side, the right side should remain
+	// Only move the left side. 
+	// The right side should remain
 	// at the same coordinates, so fix that
 	rect.w += map_rect.x;
 	rect.h += map_rect.y;
 
 	const int tile_width = hex_width();
 
-	// adjust for the border
+	// Adjust for the border
 	topleft.x = static_cast<int>(-theme_.border().size + (xpos_ + rect.x) / tile_width);
 	topleft.y = static_cast<int>(-theme_.border().size + (ypos_ + rect.y - (is_odd(topleft.x) ? zoom_/2 : 0)) / zoom_);
 
 	bottomright.x = static_cast<int>(-theme_.border().size + (xpos_ + rect.x + rect.w) / tile_width);
 	bottomright.y = static_cast<int>(-theme_.border().size + ((ypos_ + rect.y + rect.h) - (is_odd(bottomright.x) ? zoom_/2 : 0)) / zoom_);
 
-	// This routine does a rough approximation so might be off by one
-	// to be sure enough tiles are incuded the boundries are increased
-	// by one if the terrain is "on the map" due to the extra border
-	// this uses a bit larger area. 
-	// FIXME this routine should properly determine what to update and
-	// not increase by one just to be sure.
+	// This routine does a rough approximation, so might be off by one.
+	// To be sure enough tiles are included, the boundaries are increased
+	// by one if the terrain is "on the map" due to the extra border.
+	// This uses a bit larger area.
+	//! @todo FIXME This routine should properly determine what to update,
+	//! and not increase by one just to be sure.
 	if(topleft.x >= -1) {
 		topleft.x--;
 	}
@@ -429,7 +436,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	for(const t_translation::t_letter *terrain = terrain_types; 
 			*terrain != t_translation::NONE_TERRAIN; terrain ++) {
 
-		//find somewhere that doesn't have overlap to use as a starting point
+		// Find somewhere that doesn't have overlap to use as a starting point
 		int start;
 		for(start = 0; start != 6; ++start) {
 			if(tiles[start] != *terrain) {
@@ -441,7 +448,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 			start = 0;
 		}
 
-		//find all the directions overlap occurs from
+		// Find all the directions overlap occurs from
 		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
 			if(tiles[i] == *terrain) {
 				std::ostringstream stream;
@@ -456,8 +463,8 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 					stream << get_direction(i);
 
 					if(!image::exists(stream.str() + ".png")) {
-						//if we don't have any surface at all,
-						//then move onto the next overlapped area
+						// If we don't have any surface at all,
+						// then move onto the next overlapped area
 						if(name.empty()) {
 							i = (i+1)%6;
 						}
@@ -511,19 +518,20 @@ std::vector<surface> display::get_terrain_images(const gamemap::location &loc,
 			timeid, builder_terrain_type);
 
 	if(terrains != NULL) {
-		// cache the offmap name, since it's themabel it 
-		// can change so don't make it static
+		// Cache the offmap name. 
+		// Since it is themabel it can change,
+		// so don't make it static.
 		const std::string off_map_name = "terrain/" + theme_.border().tile_image + ".png";
 		for(std::vector<animated<image::locator> >::const_iterator it = 
 				terrains->begin(); it != terrains->end(); ++it) {
 
 			image::locator image = it->get_current_frame();
 
-			// we prevent ToD colouring and brightening of off-map tiles
+			// We prevent ToD colouring and brightening of off-map tiles,
 			// except if we are not in_game and so in the editor.
-			// We need to test for the file to be rendered and not the
-			// location, since the transitions are rendered over the 
-			// offmap terrain and these need a ToD colouring
+			// We need to test for the tile to be rendered and 
+			// not the location, since the transitions are rendered 
+			// over the offmap-terrain and these need a ToD colouring.
 			const bool off_map = (image.get_filename() == off_map_name);
 			const surface surface(image::get_image(image, 
 				off_map ? image::UNMASKED : image_type));
@@ -551,17 +559,16 @@ void display::tile_stack_append(const std::vector<surface>& surfaces)
 	}
 };
 
+//! Render a stack of tile surfaces at the specified location.
 void display::tile_stack_render(int x, int y)
-// Render a stack of tile surfaces at the specified location
 {
 	surface const dst(screen_.getSurface());
 
 	std::vector<surface>::const_iterator itor;
 	for(itor=tile_stack_.begin(); itor!=tile_stack_.end(); ++itor) {
-		//note that dstrect can be changed by
-		//SDL_BlitSurface and so a new instance should
-		//be initialized to pass to each call to
-		//SDL_BlitSurface
+		// Note that dstrect can be changed by SDL_BlitSurface 
+		// and so a new instance should be initialized 
+		// to pass to each call to SDL_BlitSurface.
 		SDL_Rect dstrect = { x, y, 0, 0 };
 		SDL_BlitSurface(*itor, NULL, dst, &dstrect);
 	}
@@ -572,7 +579,7 @@ void display::tile_stack_render(int x, int y)
 
 void display::sunset(const size_t delay)
 {
-	// this allow both parametric and toggle use
+	// This allow both parametric and toggle use
 	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
 }
 
@@ -589,12 +596,12 @@ void display::flip()
 
 	const surface frameBuffer = get_video_surface();
 
-	// this is just the debug function "sunset" to progressively darken the map area
+	// This is just the debug function "sunset" to progressively darken the map area
 	if (sunset_delay && ++sunset_timer > sunset_delay) {
 		sunset_timer = 0;
-		SDL_Rect r = map_outside_area(); //use frameBuffer to also test the UI
+		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
 		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
-		// adjust the alpha if you want to balance cpu-cost / smooth sunset
+		// Adjust the alpha if you want to balance cpu-cost / smooth sunset
 		fill_rect_alpha(r, color, 1, frameBuffer);
 		update_rect(r);
 	}
@@ -667,16 +674,14 @@ static void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui
 		if(rects_overlap(b->location(),loc)) {
 			b->set_dirty(true);
 			if (first_time){
-				//FixMe YogiHH: This is only made to
-				//have the buttons store their
-				//background information, otherwise
-				//the background will appear
-				//completely black. It would more
-				//straightforward to call bg_update,
-				//but that is not public and there
-				//seems to be no other way atm to call
-				//it. I will check if bg_update can be
-				//made public.
+				//! @todo FixMe YogiHH: 
+				// This is only made to have the buttons store 
+				// their background information, otherwise 
+				// the background will appear completely black. 
+				// It would more straightforward to call bg_update,
+				// but that is not public and there seems to be 
+				// no other way atm to call it. 
+				// I will check if bg_update can be made public.
 				b->hide(true);
 				b->hide(false);
 			}
@@ -772,7 +777,7 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor()
 #ifdef USE_TINY_GUI
-		/ 2  //the hex is 2 times smaller
+		/ 2  	// the hex is only half size
 #endif
 	);
 
@@ -897,8 +902,9 @@ void display::set_diagnostic(const std::string& msg)
 	}
 }
 
+//! Initiate a redraw.  
+//! May require redrawing panels and background.
 bool display::draw_init()
-// Initiate a redraw.  May require redrawing panels and background
 {
 	bool changed = false;
 
@@ -914,7 +920,7 @@ bool display::draw_init()
 	}
 
 	if(redraw_background_) {
-		// full redraw of the background
+		// Full redraw of the background
 		const SDL_Rect clip_rect = map_outside_area();
 		const surface outside_surf(screen_.getSurface());
 		clip_rect_setter set_clip_rect(outside_surf, clip_rect);
@@ -923,7 +929,7 @@ bool display::draw_init()
 
 		redraw_background_ = false;
 
-		// force a full map redraw
+		// Force a full map redraw
 		invalidateAll_ = true;
 	}
 
@@ -959,27 +965,26 @@ void display::draw_wrap(bool update,bool force,bool changed)
 	if(update) {
 		if(force || changed) {
 			if(!force && wait_time > 0) {
-				// if it's not time yet to draw delay until it is
+				// If it's not time yet to draw, delay until it is
 				SDL_Delay(wait_time);
 			}
 			update_display();
 		}
 		
-		// set the theortical next draw time
+		// Set the theortical next draw time
 		nextDraw_ += time_between_draws;
 		
 
-		// if the next draw already should have been finished
+		// If the next draw already should have been finished,
 		// we'll enter an update frenzy, so make sure that the
-		// too late value doesn't keep growing. Note if force
-		// is used too often we can also get the opposite
-		// effect.
+		// too late value doesn't keep growing. 
+		// Note: if force is used too often, 
+		// we can also get the opposite effect.
 		nextDraw_ = maximum<int>(nextDraw_, SDL_GetTicks());
 	}
 }
 
-//Delay routines: use these not SDL_Delay (for --nogui).
-
+//! Delay routines: use these instead of SDL_Delay (for --nogui).  
 void display::delay(unsigned int milliseconds) const
 {
 	if (!game_config::no_delay)
@@ -1018,8 +1023,8 @@ void display::enable_menu(const std::string& item, bool enable)
 
 void display::add_highlighted_loc(const gamemap::location &hex) 
 {
-	// Only invalidate and insert if this is a new addition, for
-	// efficiency.
+	// Only invalidate and insert if this is a new addition, 
+	// for efficiency.
 	if (highlighted_locations_.find(hex) == highlighted_locations_.end()) {
 		highlighted_locations_.insert(hex);
 		invalidate(hex);
@@ -1073,12 +1078,12 @@ surface display::get_minimap(int w, int h)
 void display::draw_border(const gamemap::location& loc, const int xpos, const int ypos)
 {
 	/**
-	 * at the moment the border must be between 0.0 and 0.5 and the image
-	 * should always be prepared for a 0.5 border. This way this code 
-	 * doesn't need modifications for other border sizes
+	 * at the moment the border must be between 0.0 and 0.5 
+	 * and the image should always be prepared for a 0.5 border. 
+	 * This way this code doesn't need modifications for other border sizes.
 	 */
 
-	// first handle the corners 
+	// First handle the corners :
 	if(loc.x == -1 && loc.y == -1) { // top left corner
 		SDL_Rect rect = { xpos + zoom_/4, ypos, 3 * zoom_/4, zoom_ } ;
 		const surface border(image::get_image(theme_.border().corner_image_top_left, image::SCALED_TO_ZOOM));
@@ -1090,7 +1095,8 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 		if(loc.x%2 == 0) {
 			rect.y = ypos + zoom_/2;
 			rect.h = zoom_/2;
-			// we use the map idea of odd and even and map coords are internal coords + 1
+			// We use the map idea of odd and even, 
+			// and map coords are internal coords + 1
 			border = image::get_image(theme_.border().corner_image_top_right_odd, image::SCALED_TO_ZOOM);
 		} else {
 			rect.y = ypos;
@@ -1110,7 +1116,7 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 		SDL_Rect rect = { xpos, ypos, 3 * zoom_/4, zoom_/2 } ;
 		surface border;
 		if(loc.x%2 == 1) {
-			// we use the map idea of odd and even and map coords are internal coords + 1
+			// We use the map idea of odd and even, and map coords are internal coords + 1
 			border = image::get_image(theme_.border().corner_image_bottom_right_even, image::SCALED_TO_ZOOM);
 		} else {
 			border = image::get_image(theme_.border().corner_image_bottom_right_odd, image::SCALED_TO_ZOOM);
@@ -1118,7 +1124,7 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 
 		SDL_BlitSurface( border, NULL, screen_.getSurface(), &rect);
 
-	// now handle the sides
+	// Now handle the sides:
 	} else if(loc.x == -1) { // left side
 		SDL_Rect rect = { xpos + zoom_/4 , ypos, zoom_/2, zoom_ } ;
 		const surface border(image::get_image(theme_.border().border_image_left, image::SCALED_TO_ZOOM));
@@ -1187,7 +1193,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const int xbox = static_cast<int>(xscaling*(xpos_-tile_width)/tile_width);
 	const int ybox = static_cast<int>(yscaling*(ypos_-zoom_)/zoom_);
 
-	// The magic numbers experimental determined like in display::map_area()
+	// The magic numbers experimentally determined, like in display::map_area()
 	const int wbox = static_cast<int>(xscaling*(map_area().w+(4.0/3.0)*tile_width)/tile_width - xscaling);
 	const int hbox = static_cast<int>(yscaling*(map_area().h+1.5*zoom_)/zoom_ - yscaling); 
 
@@ -1209,7 +1215,7 @@ void display::scroll(int xmove, int ymove)
 	const int dx = orig_x - xpos_; // dx = -xmove
 	const int dy = orig_y - ypos_; // dy = -ymove
 
-	//only invalidate if we've actually moved
+	// Only invalidate if we've actually moved
 	if(dx == 0 && dy == 0)
 		return;
 
@@ -1229,7 +1235,7 @@ void display::scroll(int xmove, int ymove)
 	
 	SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
 	
-	//invalidate locations in the newly visible rects
+	// Invalidate locations in the newly visible rects
 
 	if (dy != 0) {
 		SDL_Rect r = map_area();
@@ -1286,7 +1292,7 @@ void display::set_default_zoom()
 		last_zoom_ = zoom_;
 		set_zoom(DefaultZoom - zoom_ );
 	} else {
-		// when we are already at the default zoom
+		// When we are already at the default zoom,
 		// switch to the last zoom used
 		set_zoom(last_zoom_ - zoom_);
 		last_zoom_ = DefaultZoom;
@@ -1303,12 +1309,12 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 		return;
 	}
 
-	// current position of target (upper left tile corner) in screen coordinates
+	// Current position of target (upper left tile corner) in screen coordinates
 	const int screenxpos = get_location_x(loc);
 	const int screenypos = get_location_y(loc);
 
 	if (scroll_type == ONSCREEN) {
-		// the tile must be fully visible
+		// The tile must be fully visible
 		SDL_Rect r = map_area();
 		r.w -= hex_width();
 		r.h -= zoom_;
@@ -1334,7 +1340,7 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 		return;
 	}
 
-	// doing an animated scroll, with acceleration etc.
+	// Doing an animated scroll, with acceleration etc.
 
 	int x_old = 0;
 	int y_old = 0;
@@ -1351,14 +1357,14 @@ void display::scroll_to_tile(const gamemap::location& loc, SCROLL_TYPE scroll_ty
 		int t = SDL_GetTicks();
 		double dt = (t - t_prev) / 1000.0;
 		if (dt > 0.200) {
-			// do not skip too many frames on slow pcs
+			// Do not skip too many frames on slow PCs
 			dt = 0.200;
 		}
 		t_prev = t;
 
 		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
 
-		// those values might need some fine-tuning:
+		//! @todo Those values might need some fine-tuning:
 		const double accel_time = 0.3 / turbo_speed(); // seconds until full speed is reached 
 		const double decel_time = 0.4 / turbo_speed(); // seconds from full speed to stop
 
@@ -1409,18 +1415,18 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 	const int diffx = maxx - minx;
 	const int diffy = maxy - miny;
 
-	// if rectangle formed by corners loc1 and loc2 is larger
-	// than map area then just scroll to loc1
+	// If rectangle formed by corners loc1 and loc2 
+	// is larger than map area, then just scroll to loc1.
 	if(diffx > map_area().w || diffy > map_area().h) {
 		scroll_to_tile(loc1,scroll_type,check_fogged);
 	} else {
-		// only scroll if rectangle is not completely inside map area
-		// assume most paths are within rectangle, sometimes
-		// with rugged terrain this is not true -- but use common
-		// cases to determine behaviour instead of exceptions
+		// Only scroll if rectangle is not completely inside map area.
+		// Assume most paths are within rectangle. 
+		// Sometimes with rugged terrain this is not true -- but use 
+		// common cases to determine behaviour instead of exceptions.
 		if (outside_area(map_area(),minx,miny) ||
 		    outside_area(map_area(),maxx,maxy)) {
-			// scroll to middle point of rectangle
+			// Scroll to middle point of rectangle
 			scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
 		} // else don't scroll, rectangle is already on screen
 	}
@@ -1449,7 +1455,7 @@ void display::bounds_check_position(int& xpos, int& ypos)
 {
 	const int tile_width = hex_width();
 
-	// adjust for the border 2 times 
+	// Adjust for the border 2 times 
 	const int xend = static_cast<int>(tile_width * (map_.w() + 2 * theme_.border().size) + tile_width/3);
 	const int yend = static_cast<int>(zoom_ * (map_.h() + 2 * theme_.border().size) + zoom_/2);
 
@@ -1565,7 +1571,7 @@ void display::recalculate_minimap()
 	}
 
 	redraw_minimap();
-	// remove unit after invalidating...
+	// Remove unit after invalidating...
 }
 
 void display:: set_report_content(const reports::TYPE which_report, const std::string &content) {
@@ -1580,7 +1586,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 		SDL_Rect& rect = reportRects_[report_num];
 		const SDL_Rect& new_rect = item->location(screen_area());
 
-		//report and its location is unchanged since last time. Do nothing.
+		// Report and its location is unchanged since last time. Do nothing.
 		if(rect == new_rect && reports_[report_num] == report) {
 			return;
 		}
@@ -1593,16 +1599,15 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 			SDL_BlitSurface(surf,NULL,screen_.getSurface(),&rect);
 			update_rect(rect);
 		}
-		//if the rectangle has just changed, assign the surface to it
+		// If the rectangle has just changed, assign the surface to it
 		if(new_rect != rect || surf == NULL) {
 			surf.assign(NULL);
 			rect = new_rect;
 
-			//if the rectangle is present, and we are
-			//blitting text, then we need to backup the
-			//surface. (Images generally won't need
-			//backing up unless they are transperant, but
-			//that is done later)
+			// If the rectangle is present, and we are blitting text, 
+			// then we need to backup the surface. 
+			// (Images generally won't need backing up, 
+			// unless they are transperant, but that is done later).
 			if(rect.w > 0 && rect.h > 0) {
 				surf.assign(get_surface_portion(screen_.getSurface(),rect));
 				if(reportSurfaces_[report_num] == NULL) {
@@ -1620,14 +1625,14 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 		int x = rect.x, y = rect.y;
 
 		if(!report.empty()) {
-			// Add prefix, postfix elements. Make sure
-			// that they get the same tooltip as the guys
-			// around them.
+			// Add prefix, postfix elements. 
+			// Make sure that they get the same tooltip 
+			// as the guys around them.
 			std::stringstream temp;
 			Uint32 RGB = item->font_rgb();
-			int red = (RGB & 0x00FF0000)>>16;
+			int red   = (RGB & 0x00FF0000)>>16;
 			int green = (RGB & 0x0000FF00)>>8;
-			int blue = (RGB & 0x000000FF);
+			int blue  = (RGB & 0x000000FF);
 
 			std::string c_start="<";
 			std::string c_sep=",";
@@ -1683,7 +1688,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 					}
 
 					if(rect.w + rect.x - x < img->w && image_count) {
-					  //we have more than one image, and this one doesn't fit.
+					  // We have more than one image, and this one doesn't fit.
 					  img=surface(image::get_image(game_config::ellipsis_image));
 					  used_ellipsis=true;
 					}
@@ -1719,7 +1724,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report,
 				if(i->tooltip.empty() == false) {
 					if(! used_ellipsis) {
 						tooltips::add_tooltip(area,i->tooltip);
-					} else { //collect all tooltips for the ellipsis
+					} else { // Collect all tooltips for the ellipsis
 						ellipsis_tooltip<<i->tooltip<<"\n";
 					}
 				}
