@@ -105,7 +105,9 @@ std::string recruit_unit(const gamemap& map, int side,
 	unit_map::const_iterator u = units.begin();
 
 	for(; u != units.end(); ++u) {
-		if(u->second.can_recruit() && (int)u->second.side() == side) {
+		if(u->second.can_recruit() && 
+				static_cast<int>(u->second.side()) == side) {
+
 			break;
 		}
 	}
@@ -229,7 +231,7 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// A Python AI can send an invalid weapon and crash Wesnoth.
 	// Haven't found a way for the Python API to prevent this problem. 
 	// So instead of segfaulting it sends an assertion failure.
-	wassert(attacker_weapon< (int)attacker.attacks().size());
+	wassert(attacker_weapon < static_cast<int>(attacker.attacks().size()));
 
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
 		attacker_weapon = 0;
@@ -249,11 +251,11 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		const attack_type *adef = NULL;
 		const attack_type *ddef = NULL;
 		if (attacker_weapon >= 0) {
-			wassert(attacker_weapon < (int)attacker.attacks().size());
+			wassert(attacker_weapon < static_cast<int>(attacker.attacks().size()));
 			adef = &attacker.attacks()[attacker_weapon];
 		}
 		if (defender_weapon >= 0) {
-			wassert(defender_weapon < (int)defender.attacks().size());
+			wassert(defender_weapon < static_cast<int>(defender.attacks().size()));
 			ddef = &defender.attacks()[defender_weapon];
 		}
 		wassert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
@@ -340,15 +342,18 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
 								attacker, attacker_loc, &att,
 								units, teams, status, map, gamedata);
-			min_rating = (int) (def_stats->num_blows * def_stats->damage * def_stats->chance_to_hit * def.defense_weight());
+			min_rating = static_cast<int>(def_stats->num_blows * def_stats->damage * 
+				def_stats->chance_to_hit * def.defense_weight());
+
 			delete def_stats;
 		} 
 		else if (def.defense_weight() == max_weight) {
 			unit_stats *def_stats = new unit_stats(defender, defender_loc, choices[i], false,
 								attacker, attacker_loc, &att,
 								units, teams, status, map, gamedata);
-			int simple_rating = (int) (def_stats->num_blows * def_stats->damage *
-							def_stats->chance_to_hit * def.defense_weight());
+			int simple_rating = static_cast<int>(def_stats->num_blows * def_stats->damage * 
+				def_stats->chance_to_hit * def.defense_weight());
+
 			if (simple_rating < min_rating )
 				min_rating = simple_rating;
 			delete def_stats;
@@ -369,8 +374,8 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 		combatant *def_comb = new combatant(*def_stats, prev_def);
 		att_comb->fight(*def_comb);
 
-		int simple_rating = (int) (def_stats->num_blows * def_stats->damage *
-					def_stats->chance_to_hit * def.defense_weight());
+		int simple_rating = static_cast<int>(def_stats->num_blows * 
+			def_stats->damage * def_stats->chance_to_hit * def.defense_weight());
 		
 		if (simple_rating >= min_rating &&
 			( !attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0) )
@@ -654,17 +659,17 @@ battle_context::unit_stats::~unit_stats()
 void battle_context::unit_stats::dump() const
 {
 	printf("==================================\n");
-	printf("is_attacker:	%d\n", (int) is_attacker);
-	printf("is_poisoned:	%d\n", (int) is_poisoned);
-	printf("is_slowed:	%d\n", (int) is_slowed);
-	printf("slows:		%d\n", (int) slows);
-	printf("drains:		%d\n", (int) drains);
-	printf("stones:		%d\n", (int) stones);
-	printf("poisons:	%d\n", (int) poisons);
-	printf("backstab_pos:	%d\n", (int) backstab_pos);
-	printf("swarm:		%d\n", (int) swarm);
-	printf("rounds:	%d\n", (int) rounds);
-	printf("firststrike:	%d\n", (int) firststrike);
+	printf("is_attacker:	%d\n", static_cast<int>(is_attacker));
+	printf("is_poisoned:	%d\n", static_cast<int>(is_poisoned));
+	printf("is_slowed:	%d\n", static_cast<int>(is_slowed));
+	printf("slows:		%d\n", static_cast<int>(slows));
+	printf("drains:		%d\n", static_cast<int>(drains));
+	printf("stones:		%d\n", static_cast<int>(stones));
+	printf("poisons:	%d\n", static_cast<int>(poisons));
+	printf("backstab_pos:	%d\n", static_cast<int>(backstab_pos));
+	printf("swarm:		%d\n", static_cast<int>(swarm));
+	printf("rounds:	%d\n", static_cast<int>(rounds));
+	printf("firststrike:	%d\n", static_cast<int>(firststrike));
 	printf("\n");
 	printf("hp:		%d\n", hp);
 	printf("max_hp:		%d\n", max_hp);
@@ -1378,7 +1383,7 @@ bool get_village(const gamemap::location& loc, std::vector<team>& teams,
 unit_map::iterator find_leader(unit_map& units, int side)
 {
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		if((int)i->second.side() == side && i->second.can_recruit())
+		if(static_cast<int>(i->second.side()) == side && i->second.can_recruit())
 			return i;
 	}
 
@@ -1388,7 +1393,7 @@ unit_map::iterator find_leader(unit_map& units, int side)
 unit_map::const_iterator find_leader(const unit_map& units, int side)
 {
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if((int)i->second.side() == side && i->second.can_recruit())
+		if(static_cast<int>(i->second.side()) == side && i->second.can_recruit())
 			return i;
 	}
 
@@ -1800,7 +1805,7 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 	teams[team].refog();
 
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-		if((int)i->second.side() == team+1) {
+		if(static_cast<int>(i->second.side()) == team + 1) {
 			const unit_movement_resetter move_resetter(i->second);
 
 			clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
@@ -1820,7 +1825,7 @@ bool clear_shroud(game_display& disp, const gamestatus& status,
 
 	unit_map::iterator i;
 	for(i = units.begin(); i != units.end(); ++i) {
-		if((int)i->second.side() == team+1) {
+		if(static_cast<int>(i->second.side()) == team + 1) {
 			const unit_movement_resetter move_resetter(i->second);
 
 			result |= clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
