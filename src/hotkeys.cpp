@@ -219,7 +219,7 @@ std::string hotkey_item::get_name() const
 			str << "cmd+";
 		if (ctrl_)
 			str << "ctrl+";
-		str << (char)character_;
+		str << static_cast<char>(character_);
 	} else if (type_ == BY_KEYCODE) {
 		if (alt_)
 			str << "alt+";
@@ -334,7 +334,7 @@ void save_hotkeys(config& cfg)
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
 			item["shift"] = i->get_shift() ? "yes" : "no";
 		} else if (i->get_type() == hotkey_item::BY_CHARACTER) {
-			item["key"] = std::string(1, (char)i->get_character());
+			item["key"] = std::string(1, static_cast<char>(i->get_character()));
 		}
 		item["alt"] = i->get_alt() ? "yes" : "no";
 		item["ctrl"] = i->get_ctrl() ? "yes" : "no";
