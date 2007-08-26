@@ -41,8 +41,6 @@ report generate_report(TYPE type,
                        const config& level)
 {
 	unit_map::iterator u = units.end();
-	SDL_Color HPC;
-	SDL_Color XPC;
 	bool mouseover_unit = true;
 
 	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END) || type == POSITION) {
@@ -138,10 +136,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_HP: {
 	    report res;
 	    std::stringstream tooltip;
-
-		HPC = u->second.hp_color();
-		str << "<" << HPC.r << "," << HPC.g << "," << HPC.b << ">"
-	      << u->second.hitpoints() << "/" << u->second.max_hitpoints();
+		str << font::color2markup( u->second.hp_color() );
+		str << u->second.hitpoints() << "/" << u->second.max_hitpoints();
 
 		std::vector<std::string> resistances_table;
 
@@ -178,9 +174,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	  report res;
 	  std::stringstream tooltip;
 
-	  XPC=u->second.xp_color();
-	  str << "<" << XPC.r << "," << XPC.g << "," << XPC.b << ">"
-	      << u->second.experience() << "/" << u->second.max_experience();
+	  str << font::color2markup( u->second.xp_color() );
+	  str << u->second.experience() << "/" << u->second.max_experience();
 
 	  tooltip << _("Experience Modifier: ") << ((level["experience_modifier"] != "") ? level["experience_modifier"] : "100") << "%";
 	  res.add_text(str,tooltip);
