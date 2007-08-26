@@ -858,8 +858,15 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		}
 	}
 	// Also allow filtering on location ranges outside of the location filter
-	if(!cfg["x"].empty() || !cfg["y"].empty()){
-		if(!loc.matches_range(cfg["x"], cfg["y"])) {
+	const t_string& cfg_x = cfg["x"];
+	const t_string& cfg_y = cfg["y"];
+	if(!cfg_x.empty() || !cfg_y.empty()){
+		if(cfg_x == "recall" && cfg_y == "recall") {
+			//locations on the map are considered to not be on a recall list
+			if((!map_ && loc.valid()) || (map_ && map_->on_board(loc))) {
+				return false;
+			}
+		} else if(!loc.matches_range(cfg_x, cfg_y)) {
 			return false;
 		}
 	}
