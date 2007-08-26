@@ -231,7 +231,10 @@ void show_about(display &disp, std::string campaign)
 		last_escape = key[SDLK_ESCAPE] != 0;
 
 		// check to see if background image has changed
-		if(text.size() && (image_count < ((startline*(int)image_list.size())/(int)text.size()))){
+		if(text.size() && (image_count < 
+				((startline * static_cast<int>(image_list.size())) / 
+				static_cast<int>(text.size())))){
+
 			image_count++;
 			surface temp=surface(scale_surface(image::get_image(image_list[image_count]), disp.w(), disp.h()));
 			map_image=temp?temp:map_image;
