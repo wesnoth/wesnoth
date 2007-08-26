@@ -547,7 +547,9 @@ void combatant::adjust_hitchance()
 		}
 		if (!summary[1].empty())
 			prob += summary[1][i];
-		for (unsigned int j = 0; j < u_.swarm_min + (u_.swarm_max - (double)u_.swarm_min) * u_.hp / u_.max_hp; j++)
+		for (unsigned int j = 0; j < u_.swarm_min + (u_.swarm_max - 
+                static_cast<double>(u_.swarm_min)) * u_.hp / u_.max_hp; j++)
+
 			hit_chances_[j] += prob * u_.chance_to_hit / 100.0 / alive_prob;
 	}
 
