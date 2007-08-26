@@ -13,6 +13,10 @@
    See the COPYING file for more details.
 */
 
+//! @file log.cpp 
+//! Logger for debugging.
+//! See also wesnoth-commandline-params --logdomains and --log-error="".
+
 #include "global.hpp"
 
 #include "SDL.h"
@@ -39,7 +43,7 @@ public:
 	null_streambuf() {}
 };
 
-} // anonymous namespace
+} // end anonymous namespace
 
 static std::vector< logd > log_domains;
 static std::ostream null_ostream(new null_streambuf);
@@ -142,4 +146,5 @@ void scope_logger::do_indent() const
 
 std::stringstream wml_error;
 
-} // namespace lg
+} // end namespace lg
+
