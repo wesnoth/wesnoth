@@ -666,6 +666,26 @@ def hack_syntax(filename, lines):
 
 # Generic machinery starts here
 
+def is_map(filename):
+    "Is this file a map in either old or new style?"
+    has_map_name = "maps" in filename or filename.endswith(".map")
+    fp = open(filename)
+    lines = fp.readlines()
+    fp.close()
+    has_map_content = False
+    for i in range(len(lines)):
+        if lines[i].endswith("\n"):
+            lines[i] = lines[i][:-1] 
+        if lines[i].endswith("\r"):
+            lines[i] = lines[i][:-1] 
+    w = len(lines[0])
+    for line in lines:
+        if len(line) != w:
+            break
+    else:
+        has_map_content = len(lines) > 1
+    return has_map_name or has_map_content
+
 class maptransform_error:
     "Error object to be thrown by maptransform."
     def __init__(self, infile, inline, type):
@@ -760,7 +780,7 @@ def translator(filename, mapxforms, textxform):
             refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
             if refre:
                 mapfile = refre.group(1)
-                if not mapfile.endswith(".map") and modified_maps.get(mapfile)==False:
+                if not mapfile.endswith(".map") and is_map(mapfile):
                     newline = newline.replace(mapfile, mapfile + ".map") 
             newdata.append(newline + terminator)
             if newline != line:
@@ -812,10 +832,6 @@ def translator(filename, mapxforms, textxform):
     if tagstack:
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
     tagstack = []
-    # Track which maps are modified, we'll use this later for determining
-    # which files get a .map extension.
-    if "maps" in filename:
-        modified_maps[filename] = modified
     # OK, now perform WML rewrites
     (newdata, hacked) = hack_syntax(filename, newdata)
     # Run everything together
@@ -835,7 +851,8 @@ ignore = (".tgz", ".png", ".jpg", "-bak")
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
     return fn.endswith(".cfg") or fn.endswith(".map") \
-        or ("maps" in fn and fn[-4:] not in ignore)
+        or ("maps" in fn and fn[-4:] not in ignore) \
+        or is_map(fn)
 
 def allcfgfiles(dir):
     "Get the names of all interesting files under dir."
@@ -1050,7 +1067,6 @@ if __name__ == '__main__':
 
     for dir in arguments:
         ofp = None
-        modified_maps = {}
         if "older" in versions:
             lock_terrain_coding = None
         else:
@@ -1098,7 +1114,7 @@ if __name__ == '__main__':
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
                     raise exc_type, exc_value, exc_traceback
             # Time for map file renames
-            if not fn.endswith(".map") and modified_maps.get(fn) == False:
+            if not fn.endswith(".map") and is_map(fn):
                 mover = vcmove(fn, fn + ".map")
                 print mover
                 if not dryrun:
