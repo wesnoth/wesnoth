@@ -890,7 +890,7 @@ static std::string format_file_size(const std::string& size_str)
 		stream << std::fixed << size << size_postfix;
 #else
 		if (size < 100) stream.precision(3);
-		else size = (int)size;
+		else size = static_cast<int>(size);
 		stream << size << size_postfix;
 #endif
 		return stream.str();
