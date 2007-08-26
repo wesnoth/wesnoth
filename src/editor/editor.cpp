@@ -1368,7 +1368,7 @@ void map_editor::show_menu(const std::vector<std::string>& items, const int xloc
 						    gui::dialog::hotkeys_style);
 	kmenu.set_menu(get_menu_images(items));
 	const int res = kmenu.show(xloc, yloc);
-	if(res < 0 || (unsigned)res >= items.size())
+	if(res < 0 || static_cast<unsigned>(res) >= items.size())
 		return;
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
 	execute_command(cmd);
