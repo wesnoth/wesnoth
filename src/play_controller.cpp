@@ -342,7 +342,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 
 	if(turn_refresh) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-			if(i->second.side() == (size_t)player_number_) {
+			if(i->second.side() == static_cast<size_t>(player_number_)) {
 				i->second.new_turn();
 			}
 		}
