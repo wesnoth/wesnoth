@@ -181,7 +181,7 @@ class CrossRef:
                     elif state == "macro_header" and line.strip() and line.strip()[0] != "#":
                         state = "macro_body"
                     if state == "macro_header":
-                        here.docstring += line[1:]
+                        here.docstring += line.lstrip()[1:]
                     if state in ("macro_header", "macro_body"):
                         here.hash.update(line)
                     elif line.strip().startswith("#undef"):
