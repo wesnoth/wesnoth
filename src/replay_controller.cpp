@@ -176,7 +176,7 @@ void replay_controller::replay_next_side(){
 	is_playing_ = true;
 	play_side(player_number_ - 1, false);
 
-	if ((size_t)player_number_ > teams_.size()) {
+	if (static_cast<size_t>(player_number_) > teams_.size()) {
 		player_number_ = 1;
 		current_turn_++;
 	}
@@ -255,7 +255,9 @@ void replay_controller::play_turn(){
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
 
-	while ( ((size_t)player_number_ <= teams_.size()) && (!recorder.at_end()) ){
+	while ((static_cast<size_t>(player_number_) <= teams_.size()) && 
+			(!recorder.at_end())){
+
 		play_side(player_number_ - 1, false);
 	}
 
@@ -279,7 +281,7 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 			finish_side_turn();
 
 			for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
-				if(uit->second.side() != (size_t)player_number_){
+				if(uit->second.side() != static_cast<size_t>(player_number_)) {
 					//this is necessary for replays in order to show possible movements
 					uit->second.new_turn();
 				}
@@ -297,7 +299,7 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 
 	player_number_++;
 
-	if ((size_t)player_number_ > teams_.size()) {
+	if(static_cast<size_t>(player_number_) > teams_.size()) {
 		status_.next_turn();
 		finish_turn();
 	}
@@ -307,7 +309,9 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 
 void replay_controller::update_teams(){
 	int next_team = player_number_;
-	if ((size_t)next_team > teams_.size()) { next_team = 1; }
+	if(static_cast<size_t>(next_team) > teams_.size()) { 
+		next_team = 1; 
+	}
 
 	if (!show_team_)
 		gui_->set_team(next_team - 1, show_everything_);
