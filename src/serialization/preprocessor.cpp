@@ -137,7 +137,7 @@ int preprocessor_streambuf::underflow()
 	setg(begin, begin + sz, begin + bs);
 	if (sz >= bs)
 		return EOF;
-	return (unsigned char)*(begin + sz);
+	return static_cast<unsigned char>(*(begin + sz));
 }
 
 preprocessor::preprocessor(preprocessor_streambuf &t)
@@ -324,7 +324,7 @@ std::string preprocessor_data::read_word()
 			return res;
 		}
 		in_->get();
-		res += (char)c;
+		res += static_cast<char>(c);
 	}
 }
 
@@ -340,7 +340,7 @@ std::string preprocessor_data::read_line()
 		if (!in_->good())
 			return res;
 		if (c != '\r')
-			res += (char)c;
+			res += static_cast<char>(c);
 	}
 }
 
