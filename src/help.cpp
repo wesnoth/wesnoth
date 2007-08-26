@@ -1652,7 +1652,9 @@ void help_menu::select_topic(const topic &t)
 int help_menu::process()
 {
 	int res = menu::process();
-	if (!visible_items_.empty() && (unsigned)res < visible_items_.size()) {
+	if (!visible_items_.empty() && 
+            static_cast<size_t>(res) < visible_items_.size()) {
+
 		selected_item_ = visible_items_[res];
 		if (selected_item_.sec != NULL) {
 			// Open or close a section if it is clicked.
@@ -1941,12 +1943,14 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		catch (bad_lexical_cast) {
 			throw parse_error("Invalid amount in the to attribute in jump markup.");
 		}
-		if (to < (unsigned)jump_to) {
+		if (to < jump_to) {
 			down_one_line();
 		}
 		jump_to = to;
 	}
-	if (jump_to > 0 && (int)jump_to < get_max_x(curr_loc_.first, curr_row_height_)) {
+	if (jump_to != 0 && lexical_cast<int>(jump_to) < 
+            get_max_x(curr_loc_.first, curr_row_height_)) {
+
 		curr_loc_.first = jump_to;
 	}
 }
@@ -2184,7 +2188,7 @@ void help_text_area::adjust_last_row()
 
 int help_text_area::get_remaining_width()
 {
-	const int total_w = (int)get_max_x(curr_loc_.second, curr_row_height_);
+	const int total_w = get_max_x(curr_loc_.second, curr_row_height_);
 	return total_w - curr_loc_.first;
 }
 
@@ -2197,7 +2201,7 @@ void help_text_area::draw_contents()
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;
 		dst.y -= get_position();
-		if (dst.y < (int)loc.h && dst.y + it->rect.h > 0) {
+		if (dst.y < static_cast<int>(loc.h) && dst.y + it->rect.h > 0) {
 			dst.x += loc.x;
 			dst.y += loc.y;
 			if (it->box) {
@@ -2230,7 +2234,7 @@ std::string help_text_area::ref_at(const int x, const int y)
 {
 	const int local_x = x - location().x;
 	const int local_y = y - location().y;
-	if (local_y < (int)height() && local_y > 0) {
+	if (local_y < static_cast<int>(height()) && local_y > 0) {
 		const int cmp_y = local_y + get_position();
 		const std::list<item>::const_iterator it =
 			std::find_if(items_.begin(), items_.end(), item_at(local_x, cmp_y));
