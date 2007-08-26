@@ -326,7 +326,9 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 		if(start_of_line) {
 			line_width = 0;
 			format_string = "";
-			while(ch != end && *ch < (wchar_t)0x100 && is_format_char(*ch) && !ch.next_is_end()) {
+			while(ch != end && *ch < static_cast<wchar_t>(0x100) 
+					&& is_format_char(*ch) && !ch.next_is_end()) {
+
 				format_string.append(ch.substr().first, ch.substr().second);
 				++ch;
 			}
@@ -378,9 +380,10 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 
 			line_width += word_width;
 
-			if((long)line_width > max_width) {
-				if((long)word_width > max_width) {
-					cut_word(current_line, current_word, font_sz, style, max_width);
+			if(static_cast<long>(line_width) > max_width) {
+				if(static_cast<long>(word_width) > max_width) {
+					cut_word(current_line, 
+						current_word, font_sz, style, max_width);
 				}
 				if(current_word == " ")
 					current_word = "";
