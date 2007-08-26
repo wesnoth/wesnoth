@@ -132,7 +132,8 @@ SDL_Rect slider::slider_area() const
 	if (image_.null() || image_->w >= loc.w)
 		return default_value;
 
-	int xpos = loc.x + (value_ - min_) * (int)(loc.w - image_->w) / (max_ - min_);
+	int xpos = loc.x + (value_ - min_) * 
+		static_cast<int>(loc.w - image_->w) / (max_ - min_);
 	SDL_Rect res = { xpos, loc.y, image_->w, image_->h };
 	return res;
 }
@@ -171,7 +172,7 @@ void slider::set_slider_position(int x)
 	if (tmp > loc.w - image_->w)
 		tmp = loc.w - image_->w;
 
-	set_value(tmp * (max_ - min_) / (int)(loc.w - image_->w) + min_);
+	set_value(tmp * (max_ - min_) / static_cast<int>(loc.w - image_->w) + min_);
 }
 
 void slider::mouse_motion(const SDL_MouseMotionEvent& event)
