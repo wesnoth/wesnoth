@@ -64,13 +64,13 @@ static SDL_Cursor* create_cursor(surface surf)
 
 			const size_t index = y*cursor_width + x;
 
-			if ((size_t)x < cursor_width) {
+			if (static_cast<size_t>(x) < cursor_width) {
 				SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
-				const size_t shift = 7 - (index%8);
+				const size_t shift = 7 - (index % 8);
 
 				trans = (a < 128 ? 0 : 1) << shift;
-				black = (trans == 0 || (r+g+b)/3 > 128 ? 0 : 1) << shift;
+				black = (trans == 0 || (r+g + b) / 3 > 128 ? 0 : 1) << shift;
 
 				data[index/8] |= black;
 				mask[index/8] |= trans;
