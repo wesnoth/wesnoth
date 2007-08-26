@@ -1089,7 +1089,7 @@ void terrain_builder::build_terrains()
 					}
 
 					if(rule_matches(rule->second, *itor - loc, rule_index, 
-								lexical_cast<size_t>
+								static_cast<size_t>
                                 (biggest_constraint_adjacent + 1) !=
                                 rule->second.constraints.size())) {
 
