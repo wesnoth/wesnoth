@@ -117,7 +117,7 @@ void cave_map_generator::build_chamber(gamemap::location loc, std::set<gamemap::
 	gamemap::location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
-		if((rand()%100) < (100l-(long)jagged)) {
+		if((rand() % 100) < (100l - static_cast<long>(jagged))) {
 			build_chamber(adj[n],locs,size-1,jagged);
 		}
 	}
@@ -341,7 +341,9 @@ void cave_map_generator::place_passage(const passage& p)
 void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_letter t)
 {
 	if(on_board(loc)) {
-		if(t == clear_ && (rand()%1000) < (long)village_density_) {
+		if(t == clear_ && 
+                (rand() % 1000) < static_cast<long>(village_density_)) {
+
 			t = village_;
 		}
 
