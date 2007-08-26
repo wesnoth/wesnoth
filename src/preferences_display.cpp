@@ -154,7 +154,7 @@ void set_gamma(int gamma)
 
 	if(adjust_gamma()) {
 		CVideo& video = disp->video();
-		video.setGamma((float)gamma / 100);
+		video.setGamma(static_cast<float>(gamma) / 100);
 	}
 }
 
