@@ -517,8 +517,9 @@ void unit::advance_to(const unit_type* t)
 
 	backup_state();
 
+        bool do_heal = false; // Track whether unit should get fully healed.
 	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
-		heal_all();
+                do_heal = true; // Can't heal until after mods applied.
 		id_ = unit_id_test(t->id());
 		cfg_["id"] = id_;
 		cfg_["gender_id"] = cfg_["gender"];
@@ -536,6 +537,12 @@ void unit::advance_to(const unit_type* t)
 	// since there can be filters on the modifications 
 	// that may result in different effects after the advancement.
 	apply_modifications();
+
+        // Not that the unit has all of its modifications applied, it is
+        // OK to heal it.
+        if (do_heal) {
+		heal_all();
+        }
 
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
