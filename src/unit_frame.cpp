@@ -114,7 +114,9 @@ const T progressive_<T>::get_current_element(int current_time) const
 	const T first =  data_[sub_halo].first.first;
 	const T second =  data_[sub_halo].first.second;
 
-	return T(( double(current_time - time)/(double)(data_[sub_halo].second))*(second - first)+ first);
+	return T((static_cast<double>(current_time - time) /
+		static_cast<double>(data_[sub_halo].second)) * 
+		(second - first) + first);
 }
 
 template<class T>
