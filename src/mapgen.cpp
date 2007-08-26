@@ -123,9 +123,9 @@ static height_map generate_height_map(size_t width, size_t height,
 		const int radius = rand()%hill_size + 1;
 
 		const int min_x = x1 - radius > 0 ? x1 - radius : 0;
-		const int max_x = x1 + radius < (long)res.size() ? x1 + radius : res.size();
+		const int max_x = x1 + radius < static_cast<long>(res.size()) ? x1 + radius : res.size();
 		const int min_y = y1 - radius > 0 ? y1 - radius : 0;
-		const int max_y = y1 + radius < (long)res.front().size() ? y1 + radius : res.front().size();
+		const int max_y = y1 + radius < static_cast<long>(res.front().size()) ? y1 + radius : res.front().size();
 
 		for(int x2 = min_x; x2 < max_x; ++x2) {
 			for(int y2 = min_y; y2 < max_y; ++y2) {
@@ -219,11 +219,17 @@ typedef gamemap::location location;
 //path that can be found that makes the river flow into another body of water or off the map
 //will be used. If no path can be found, then the river's generation will be aborted, and
 //false will be returned. true is returned if the river is generated successfully.
-static bool generate_river_internal(const height_map& heights, terrain_map& terrain, int x, int y, std::vector<location>& river, std::set<location>& seen_locations, int river_uphill)
+static bool generate_river_internal(const height_map& heights, 
+	terrain_map& terrain, int x, int y, std::vector<location>& river, 
+	std::set<location>& seen_locations, int river_uphill)
 {
-	const bool on_map = x >= 0 && y >= 0 && x < (long)heights.size() && y < (long)heights.back().size();
+	const bool on_map = x >= 0 && y >= 0 && 
+		x < static_cast<long>(heights.size()) && 
+		y < static_cast<long>(heights.back().size());
 
-	if(on_map && !river.empty() && heights[x][y] > heights[river.back().x][river.back().y] + river_uphill) {
+	if(on_map && !river.empty() && heights[x][y] > 
+			heights[river.back().x][river.back().y] + river_uphill) {
+
 		return false;
 	}
 
@@ -354,11 +360,15 @@ private:
 	mutable std::map<t_translation::t_letter, double> cache_; 
 };
 
-double road_path_calculator::cost(const location& /*src*/, const location& loc, const double /*so_far*/, const bool /*isDst*/) const
+double road_path_calculator::cost(const location& /*src*/, const location& loc, 
+	const double /*so_far*/, const bool /*isDst*/) const
 {
 	++calls;
-	if (loc.x < 0 || loc.y < 0 || loc.x >= (long)map_.size() || loc.y >= (long)map_.front().size())
+	if (loc.x < 0 || loc.y < 0 || loc.x >= static_cast<long>(map_.size()) || 
+			loc.y >= static_cast<long>(map_.front().size())) {
+
 		return (getNoPathValue());
+	}
 
 	const std::map<location,double>::const_iterator val = loc_cache_.find(loc);
 	if(val != loc_cache_.end()) {
@@ -407,7 +417,9 @@ is_valid_terrain::is_valid_terrain(const t_translation::t_map& map,
 
 bool is_valid_terrain::operator()(int x, int y) const
 {
-	if(x < 0 || x >= (long)map_.size() || y < 0 || y >= (long)map_[x].size()) {
+	if(x < 0 || x >= static_cast<long>(map_.size()) || 
+			y < 0 || y >= static_cast<long>(map_[x].size())) {
+
 		return false;
 	}
 	
@@ -489,8 +501,12 @@ static gamemap::location place_village(const t_translation::t_map& map,
 	get_tiles_radius(loc,radius,locs);
 	gamemap::location best_loc;
 	size_t best_rating = 0;
-	for(std::set<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-		if(i->x < 0 || i->y < 0 || i->x >= (long)map.size() || i->y >= (long)map[i->x].size()) {
+	for(std::set<gamemap::location>::const_iterator i = locs.begin(); 
+			i != locs.end(); ++i) {
+
+		if(i->x < 0 || i->y < 0 || i->x >= static_cast<long>(map.size()) || 
+				i->y >= static_cast<long>(map[i->x].size())) {
+
 			continue;
 		}
 
@@ -501,7 +517,10 @@ static gamemap::location place_village(const t_translation::t_map& map,
 			gamemap::location adj[6];
 			get_adjacent_tiles(gamemap::location(i->x,i->y),adj);
 			for(size_t n = 0; n != 6; ++n) {
-				if(adj[n].x < 0 || adj[n].y < 0 || adj[n].x >= (long)map.size() || adj[n].y >= (long)map[adj[n].x].size()) {
+				if(adj[n].x < 0 || adj[n].y < 0 || 
+						adj[n].x >= static_cast<long>(map.size()) || 
+						adj[n].y >= static_cast<long>(map[adj[n].x].size())) {
+
 					continue;
 				}
 
@@ -954,12 +973,17 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		bool on_bridge = false;
 
 		//draw the road. If the search failed, rt.steps will simply be empty
-		for(std::vector<location>::const_iterator step = rt.steps.begin(); step != rt.steps.end(); ++step) {
+		for(std::vector<location>::const_iterator step = rt.steps.begin(); 
+				step != rt.steps.end(); ++step) {
+
 			const int x = step->x;
 			const int y = step->y;
 
-			if(x < 0 || y < 0 || x >= (long)width || y >= (long)height)
+			if(x < 0 || y < 0 || x >= static_cast<long>(width) || 
+					y >= static_cast<long>(height)) {
+
 				continue;
+			}
 
 			calc.terrain_changed(*step);
 
@@ -1119,13 +1143,20 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 				const gamemap::location res = place_village(terrain,x,y,2,cfg);
 
-				if(res.x >= (long)width/3 && res.x < (long)(width*2)/3 && res.y >= (long)height/3 && res.y < (long)(height*2)/3) {
-					const std::string str = t_translation::write_letter(terrain[res.x][res.y]);
-					const config* const child = cfg.find_child("village","terrain",str);
+				if(res.x >= static_cast<long>(width) / 3 && 
+						res.x < static_cast<long>(width * 2) / 3 && 
+						res.y >= static_cast<long>(height) / 3 && 
+						res.y < static_cast<long>(height * 2) / 3) {
+
+					const std::string str = 
+						t_translation::write_letter(terrain[res.x][res.y]);
+					const config* const child = 
+						cfg.find_child("village","terrain",str);
 					if(child != NULL) {
 						const std::string& convert_to = (*child)["convert_to"];
 						if(convert_to != "") {
-							terrain[res.x][res.y] = t_translation::read_letter(convert_to);
+							terrain[res.x][res.y] = 
+								t_translation::read_letter(convert_to);
 
 							villages.insert(res);
 
