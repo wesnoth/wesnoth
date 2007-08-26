@@ -340,7 +340,10 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			usc = ai_obj.unit_stats_cache_.end();
 		}
 		// Just check this attack is valid for this attacking unit (may be modified)
-		if (usc != ai_obj.unit_stats_cache_.end() && usc->second.first.attack_num < (int)up->second.attacks().size()) {
+		if (usc != ai_obj.unit_stats_cache_.end() && 
+				usc->second.first.attack_num < 
+				static_cast<int>(up->second.attacks().size())) {
+
 			from_cache = true;
 			bc = new battle_context(usc->second.first, usc->second.second);
 		} else {
