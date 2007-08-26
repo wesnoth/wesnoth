@@ -795,7 +795,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 
 			const std::set<std::string>& recruits = current_team.recruits();
 
-			if(val < 0 || (size_t)val >= recruits.size()) {
+			if(val < 0 || static_cast<size_t>(val) >= recruits.size()) {
 				std::stringstream errbuf;
 				errbuf << "recruitment index is illegal: " << val
 				       << " while this side only has " << recruits.size()
@@ -885,9 +885,12 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			const int val = lexical_cast_default<int>(num);
 			const std::string& tnum = (*child)["team"];
 			const int tval = lexical_cast_default<int>(tnum,-1);
-			if ( (tval<0)  || ((size_t)tval > teams.size()) ) {
+			if ( (tval<0)  || (static_cast<size_t>(tval) > teams.size()) ) {
 				std::stringstream errbuf;
-				errbuf << "Illegal countdown update \n" << "Received update for :" << tval << " Current user :" << team_num << "\n" << " Updated value :" << val;
+				errbuf << "Illegal countdown update \n" 
+					<< "Received update for :" << tval << " Current user :" 
+					<< team_num << "\n" << " Updated value :" << val;
+
 				replay::throw_error(errbuf.str());
 			} else {
 				teams[tval-1].set_countdown_time(val);
@@ -1035,7 +1038,9 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error(errbuf.str());
 			}
 
-			if(def_weapon_num >= (int)tgt->second.attacks().size()) {
+			if(def_weapon_num >= 
+					static_cast<int>(tgt->second.attacks().size())) {
+
 				replay::throw_error("illegal defender weapon type in attack\n");
 			}
 
