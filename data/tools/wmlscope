@@ -60,7 +60,7 @@ def interpret(lines, css):
     inlisting = False
     outstr = '<p class="%s">' % css
     for line in lines:
-        line = line.rstrip()
+        line = line.strip()
         if not inlisting and not line:
             outstr += "</p><p>"
             continue
@@ -155,6 +155,8 @@ class CrossRefLister(CrossRef):
                 dfp = open(filename)
                 for line in dfp:
                     line = line.lstrip()
+                    if line and line.startswith("#textdomain"):
+                        continue
                     if line and line[0] == '#':
                         hdr.append(line[1:])
                     else:

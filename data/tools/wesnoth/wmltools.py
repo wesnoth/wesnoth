@@ -151,7 +151,9 @@ class CrossRef:
                 for (n, line) in enumerate(dfp):
                     if warnlevel > 1:
                         print `line`[1:-1]
-                    if line.strip().startswith("#define"):
+                    if line.strip().startswith("#textdomain"):
+                        continue
+                    elif line.strip().startswith("#define"):
                         tokens = line.split()
                         name = tokens[1]
                         here = Reference(filename, n+1, line)
