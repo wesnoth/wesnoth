@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-03 15:52+0200\n"
-"PO-Revision-Date: 2007-03-19 12:55+0100\n"
+"PO-Revision-Date: 2007-08-26 19:30+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <onne@grammex.com>\n"
 "MIME-Version: 1.0\n"
@@ -284,7 +284,6 @@ msgid "The DUMMY gets a turn?"
 msgstr "De POP is aan de beurt?"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
-#, fuzzy
 msgid ""
 "Yes: it's a magical quintain.\n"
 "See the 3-5 in its description? The first number tells you that it does "
@@ -294,8 +293,11 @@ msgid ""
 "points. Brace yourself!"
 msgstr ""
 "Ja. Het is een magische stropop.\n"
-"Welnu, de stropop krijgt vijf pogingen om je te raken, en als hij elke keer "
-"raakt ga je van $student_hp naar $future_hp hitpoints. Zet je schrap!"
+"Zie je de 3-5 in zijn beschrijving? Het eerste nummer vertelt je dat het "
+"drie punten schade aanbrengt bij iedere rake slag. Het tweede vertelt je dat "
+"het vijf kansen krijgt om je te raken per beurt. \n"
+"Als hij elke keer raakt ga je van $student_hp naar $future_hp hitpoints. Zet "
+"je schrap!"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:472
 msgid "Click on the End Turn button on the bottom right"
@@ -1011,13 +1013,12 @@ msgstr ""
 "eens..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:760
-#, fuzzy
 msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
-"Nee! Ik zei: \"Roep $recall_name1 van de vorige slag op!\" Je hebt een "
-"nieuwe $recruit.type| gerekruteerd. Probeer het nog eens..."
+"Nee! Ik zei: Roep $recall_name1 van de vorige slag op, niet rekruteer een "
+"nieuwe $recruit.language_name|! Probeer het nog eens..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:777
 msgid "Right click on the tile south-east of you and recall $recall_name2"
@@ -1034,12 +1035,12 @@ msgstr ""
 "Rechtsklik op het vakje ten zuidwesten van je, en rekruteer een Elfenkrijger."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:798
-#, fuzzy
 msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
-"$recruit.type|? Ik zei: REKRUTEER een elfenKRIJGER! Probeer het nog eens..."
+"$recruit.language_name|? Ik zei: REKRUTEER een nieuwe elfenKRIJGER! Probeer "
+"het nog eens..."
 
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:812
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:823
@@ -1500,6 +1501,10 @@ msgid ""
 "beginner's campaign. Konrad, Li'sar and Delfador are characters from Heir To "
 "The Throne."
 msgstr ""
+"Je hebt de Orks overwonnen. Vervolgens kun je een veldtocht proberen op het "
+"beginnersniveau, zoals De zuidelijke wacht, De twee broers of De kroonprins. "
+"De zuidelijke wacht is specifiek ontworpen als beginnersveldtocht. Konrad, "
+"Li'sar en Delfador zijn karakters uit De kroonprins."
 
 #: data/campaigns/tutorial/units/Elder_Mage.cfg:4
 msgid "Elder Mage"
