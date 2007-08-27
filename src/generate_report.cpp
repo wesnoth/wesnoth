@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+//! @file generate_report.cpp 
+//! Formatted output of various stats about units and the game.
+//! Used for the right sidebar and the top line of the main game-display.
+
 #include "global.hpp"
 
 #include "actions.hpp"
@@ -32,8 +36,8 @@
 namespace reports {
 
 report generate_report(TYPE type, 
-		       std::map<reports::TYPE, std::string> report_contents,
-		       const gamemap& map, unit_map& units,
+                       std::map<reports::TYPE, std::string> report_contents,
+                       const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
                        unsigned int current_side, unsigned int playing_side,
                        const gamemap::location& loc, const gamemap::location& mouseover,
@@ -84,8 +88,8 @@ report generate_report(TYPE type,
 		std::stringstream tooltip;
 		report res;
 
-		//we call invisible with see_all=false to avoid cheat-detection of hidden enemies
-		//don't display the icon on shrouded location to prevent cheat-detection of terrain
+		// We call invisible with see_all=false to avoid cheat-detection of hidden enemies.
+		// Don't display the icon on shrouded location to prevent cheat-detection of terrain.
 		if(map.on_board(mouseover) && !current_team.shrouded(mouseover.x,mouseover.y)
 			&& u->second.invisible(mouseover,units,teams,false))
 		{
@@ -127,7 +131,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			if(i+2 != abilities.end())
 				str << ",";
 			++i;
-			tooltip << i->c_str();//string_table[*i + "_description"];
+			tooltip << i->c_str(); //string_table[*i + "_description"];
 			res.add_text(str,tooltip);
 		}
 
@@ -148,10 +152,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			std::stringstream line;
 			line << gettext(resist->first.c_str()) << ": ";
 
-			// some unit have different resistances when
+			// Some units have different resistances when
 			// attacking or defending.
 			int res_att = 100 - u->second.resistance_against(resist->first, true, u->first);
-			int res_def = 100 -u->second.resistance_against(resist->first, false, u->first);
+			int res_def = 100 - u->second.resistance_against(resist->first, false, u->first);
 			if (res_att == res_def) {
 				line << res_def << "%\n";
 			} else {
@@ -231,7 +235,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				str << at_it->damage() << "-" ;
 			}
 			int nattacks = at_it->num_attacks();
-			// compute swarm attacks;
+			// Compute swarm attacks:
 			unit_ability_list swarm = at_it->get_specials("attacks");
 			if(!swarm.empty()) {
 				int swarm_max_attacks = swarm.highest("attacks_max",nattacks).first;
@@ -253,7 +257,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			} else {
 				effdmg = at_it->damage();
 			}
-			tooltip << effdmg << " " << _n("tooltip^damage", "damage", effdmg) << ", ";
+			tooltip << effdmg   << " " << _n("tooltip^damage", "damage",  effdmg) << ", ";
 			tooltip << nattacks << " " << _n("tooltip^attack", "attacks", nattacks);
 
 			str<<"\n";
@@ -265,9 +269,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str<<"\n";
 
 			tooltip << _("weapon range: ") << range <<"\n";
-			tooltip << _("damage type: ") << lang_type << "\n";
-			//find all the unit types on the map, and show this weapon's bonus against all the different units
-			//don't show invisible units except if they are in our team or allied
+			tooltip << _("damage type: ")  << lang_type << "\n";
+			// Find all the unit types on the map, and 
+			// show this weapon's bonus against all the different units.
+			// Don't show invisible units, except if they are in our team or allied.
 			std::set<std::string> seen_units;
 			std::map<int,std::vector<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
@@ -327,7 +332,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		time_of_day tod = timeofday_at(status,units,mouseover,map);
 		const std::string tod_image = tod.image + (preferences::flip_time() ? "~FL(horiz)" : "");
 		
-		// don't show illuminated time on fogged/shrouded tiles
+		// Don't show illuminated time on fogged/shrouded tiles
 		if (current_team.fogged(mouseover.x,mouseover.y) || current_team.shrouded(mouseover.x,mouseover.y)) {
 			tod = status.get_time_of_day(false,mouseover);
 		}
@@ -351,7 +356,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		str << "\n";
 		break;
-	// For these following status reports, show them in gray text when it is not the active player's turn.
+	// For the following status reports, show them in gray text 
+	// when it is not the active player's turn.
 	case GOLD:
 		str << (current_side != playing_side ? font::GRAY_TEXT : (current_team.gold() < 0 ? font::BAD_TEXT : font::NULL_MARKUP)) << current_team.gold();
 		break;
@@ -528,9 +534,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			}
 			str << sec;
 			break;
-		} //intentional fall-through to REPORT_CLOCK if the
-		  //time countdown isn't valid. If there is no turn time
-		  //limit, then we display the clock instead.
+		} // Intentional fall-through to REPORT_CLOCK 
+		  // if the time countdown isn't valid. 
+		  // If there is no turn time limit, 
+		  // then we display the clock instead.
 		}
 	case REPORT_CLOCK: {
 		time_t t = time(NULL);
@@ -550,4 +557,5 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	return report(str.str());
 }
 
-};
+}; // end namespace reports
+
