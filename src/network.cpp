@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file network.cpp 
+//! Networking
+
 #include "global.hpp"
 
 #include "serialization/binary_wml.hpp"
@@ -52,13 +55,13 @@
 
 #define LOG_NW LOG_STREAM(info, network)
 #define WRN_NW LOG_STREAM(warn, network)
-// only warnings and not errors to avoid DoS by log flooding
+// Only warnings and not errors to avoid DoS by log flooding
 
 namespace {
 
-//We store the details of a connection in a map that must be looked up by its handle.
-//This allows a connection to be disconnected and then recovered, but the handle remains
-//the same, so it's all seamless to the user
+// We store the details of a connection in a map that must be looked up by its handle.
+// This allows a connection to be disconnected and then recovered, 
+// but the handle remains the same, so it's all seamless to the user.
 struct connection_details {
 	connection_details(TCPsocket sock, const std::string& host, int port)
 		: sock(sock), host(host), port(port), remote_handle(0),
@@ -69,8 +72,8 @@ struct connection_details {
 	std::string host;
 	int port;
 
-	//the remote handle is the handle assigned to this connection by the remote host.
-	//is 0 before a handle has been assigned.
+	// The remote handle is the handle assigned to this connection by the remote host.
+	// Is 0 before a handle has been assigned.
 	int remote_handle;
 
 	int connected_at;
@@ -82,7 +85,7 @@ connection_map connections;
 
 network::connection connection_id = 1;
 
-}
+} // end anon namespace 
 
 static int create_connection(TCPsocket sock, const std::string& host, int port)
 {
@@ -154,7 +157,7 @@ std::set<network::connection> bad_sockets;
 
 network_worker_pool::manager* worker_pool_man = NULL;
 
-}
+} // end anon namespace 
 
 namespace network {
 
@@ -182,13 +185,13 @@ void error::disconnect()
 
 manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 {
-	//if the network is already being managed
+	// If the network is already being managed
 	if(socket_set) {
 		free_ = false;
 		return;
 	}
 
-	//on Unix-based systems, set sigpipe to be ignored
+	// On Unix-based systems, set sigpipe to be ignored
 #if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
 	WRN_NW << "ignoring SIGPIPE\n";
 	signal(SIGPIPE,SIG_IGN);
@@ -293,7 +296,7 @@ namespace {
 		IPaddress localAddress;
 		int sflag;
 	};
-}
+} // end namespace 
 
 void connect_operation::run()
 {
@@ -311,7 +314,7 @@ void connect_operation::run()
 		return;
 	}
 
-// use non blocking IO
+// Use non blocking IO
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 	{
 		unsigned long mode = 1;
@@ -339,14 +342,14 @@ void connect_operation::run()
 	}
 #endif
 
-	//if this is a server socket
+	// If this is a server socket
 	if(hostname == NULL) {
 		const threading::lock l(get_mutex());
 		connect_ = create_connection(sock,"",port_);
 		return;
 	}
 
-	//send data telling the remote host that this is a new connection
+	// Send data telling the remote host that this is a new connection
 	char buf[4];
 	SDLNet_Write32(0,buf);
 	const int nbytes = SDLNet_TCP_Send(sock,buf,4);
@@ -356,7 +359,7 @@ void connect_operation::run()
 		return;
 	}
 
-	//no blocking operations from here on
+	// No blocking operations from here on
 	const threading::lock l(get_mutex());
 	LOG_NW << "sent handshake...\n";
 
@@ -366,7 +369,7 @@ void connect_operation::run()
 		return;
 	}
 
-	//allocate this connection a connection handle
+	// Allocate this connection a connection handle
 	connect_ = create_connection(sock,host_,port_);
 
 	const int res = SDLNet_TCP_AddSocket(socket_set,sock);
@@ -383,7 +386,7 @@ void connect_operation::run()
 	while(!notify_finished());
 }
 
-}
+} // end namespace 
 
 connection connect(const std::string& host, int port)
 {
@@ -411,12 +414,12 @@ connection accept_connection()
 		return 0;
 	}
 
-	//a connection isn't considered 'accepted' until it has sent its initial handshake.
-	//The initial handshake is a 4 byte value, which is 0 for a new connection, or the
-	//handle of the connection if it's trying to recover a lost connection.
+	// A connection isn't considered 'accepted' until it has sent its initial handshake.
+	// The initial handshake is a 4 byte value, which is 0 for a new connection, 
+	// or the handle of the connection if it's trying to recover a lost connection.
 
-	//a list of all the sockets which have connected, but haven't had their initial
-	//handshake received
+	//! A list of all the sockets which have connected, 
+	//! but haven't had their initial handshake received.
 	static std::vector<TCPsocket> pending_sockets;
 	static SDLNet_SocketSet pending_socket_set = 0;
 
@@ -449,8 +452,8 @@ connection accept_connection()
 			continue;
 		}
 
-		//receive the 4 bytes telling us if they're a new connection or trying to
-		//recover a connection
+		// Receive the 4 bytes telling us if they're a new connection 
+		// or trying to recover a connection
 		char buf[4];
 
 		const TCPsocket sock = *i;
@@ -480,7 +483,7 @@ connection accept_connection()
 
 		const connection connect = create_connection(sock,"",0);
 
-		//send back their connection number
+		// Send back their connection number
 		SDLNet_Write32(connect,buf);
 		const int nbytes = SDLNet_TCP_Send(sock,buf,4);
 		if(nbytes != 4) {
@@ -599,8 +602,8 @@ connection receive_data(config& cfg, connection connection_num)
 		const TCPsocket sock = details.sock;
 		if(SDLNet_SocketReady(sock)) {
 
-			//see if this socket is still waiting for it to be assigned its remote handle
-			//if it is, then the first 4 bytes must be the remote handle.
+			// See if this socket is still waiting for it to be assigned its remote handle.
+			// If it is, then the first 4 bytes must be the remote handle.
 			if(is_pending_remote_handle(*i)) {
 				char buf[4];
 				int len = SDLNet_TCP_Recv(sock,buf,4);
@@ -731,4 +734,4 @@ statistics get_receive_stats(connection handle)
 	return network_worker_pool::get_current_transfer_stats(handle == 0 ? get_socket(sockets.back()) : get_socket(handle)).second;
 }
 
-} //end namespace network
+} // end namespace network
