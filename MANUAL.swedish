@@ -20,7 +20,7 @@ u		   Ångra senaste förflyttning (om den inte påverkat
 		   spelet)
 r		   Gör om ångrad förflyttning
 m		   Skicka meddelande till annan spelare (i gruppspel)
-M		   Skicka meddelande till allierade spelare (i 
+ctrl-m		   Skicka meddelande till allierade spelare (i 
 		   gruppspel)
 alt-m		   Skicka meddelande till samtliga i spelet (i 
 		   gruppspel)
@@ -54,6 +54,7 @@ ctrl-g		   Sätt på/stäng av rutmönster
 S		   Uppdatera slöjan nu
 D		   Fördröj slöjuppdateringar
 alt-l		   Namnge terrängruta
+ctrl-l		   Namnge terrängruta, namnet endast synligt för allierade 
 ctrl-c		   Ta bort etiketter
 alt-s		   Visa statustabell
 ctrl-m		   Sätt på/stäng av ljudet
@@ -145,18 +146,24 @@ trupper får två karaktärsdrag. De olika karaktärsdragen är följande:
 
   Stark		Truppen vållar 1 extra skada i närstrid och har 2
 		extra hälsopoäng
-  Snabb		Truppen har ett extra förflyttningspoäng, men 10%
-		mindre hälsopoäng
-  Tålig		Truppen har 7 mer hälsopoäng än vanligt
+  Snabb		Truppen har ett extra förflyttningspoäng, men 5% mindre 
+		hälsopoäng
+  Tålig 	Truppen har 4 mer hälsopoäng än vanligt, samt får 1 
+		extra hälsopoäng per nivå
   Intelligent	Truppen kräver 20% mindre erfarenhetspoäng för att
 		befordras (ej troll)
+  Träffsäker	Truppen vållar 1 extra skada per träff i distansstrid 
+		(endast alver)
+  Livskraftig	Truppen kan vila under förflyttning och har 2 extra 
+		hälsopoäng (endast dvärgar)
+  Orädd		Truppen slåss utan avdrag under dess ofördelaktiga tid 
+		på dygnet (endast troll och vandrande döda)
 
 Det finns även några karaktärsdrag som inte tilldelas slumpmässigt:
 
   Lojal		Truppen kräver inget underhåll
-  Träffsäker	Truppen vållar 1 extra skada per träff i
-		distansstrid (endast alver)
-  Vandöd	Truppen är immun mot gift (endast vandöda)
+  Vandöd	Truppen är immun mot gift, pest och suga livskraft
+  Konstruktion  Truppen är immun mot gift, pest och suga livskraft
 
 
 FÖRFLYTTNING
@@ -338,18 +345,18 @@ titt i forumet (http://forum.wesnoth.org/) om du stöter på problem.
 
 ANDRA RESURSER
 
-Hjälpsidorna i spelet är tillgängliga i alla scenarier. Tryck på
-hjälpsidornas snabbtangent (vanligtvis F1) eller välj Hjälp i menyn.
-Projektets hemsida finns på http://www.wesnoth.org/ och därifrån kan du
-söka dig vidare till andra spelrelaterade sidor. Bland dessa finns
-Wesnoths wiki, http://wiki.wesnoth.org/, där du kan finna
-scenariogenomgångar, speltips, truppernas erfarenhetsträd, information om
-hur du skapar dina egna scenarier och kampanjer, hur du kan bidra som
-utvecklare eller översättare, och mycket annat. Du kan också delta i
-diskussioner på Wesnoths IRC, irc.wesnoth.org, kanal #wesnoth, eller gå
-med i vårt forum, http://forum.wesnoth.org/, där du kan diskutera spelet
-med över 2000 andra forummedlemmar. Forumet har också ett sökbart arkiv
-med tiotusentals inlägg som sträcker sig tillbaka över två år - en
+Hjälpsidorna i spelet är tillgängliga i alla scenarier. Tryck på 
+hjälpsidornas snabbtangent (vanligtvis F1) eller välj Hjälp i menyn. 
+Projektets hemsida finns på http://www.wesnoth.org/ och därifrån kan du 
+söka dig vidare till andra spelrelaterade sidor. Bland dessa finns 
+Wesnoths wiki, http://wiki.wesnoth.org/, där du kan finna 
+scenariogenomgångar, speltips, truppernas erfarenhetsträd, information 
+om hur du skapar dina egna scenarier och kampanjer, hur du kan bidra som 
+utvecklare eller översättare, och mycket annat. Du kan också delta i 
+diskussioner på Wesnoths IRC, irc.wesnoth.org, kanal #wesnoth, eller gå 
+med i vårt forum, http://forum.wesnoth.org/, där du kan diskutera spelet 
+med över 7000 andra forummedlemmar. Forumet har också ett sökbart arkiv 
+med tiotusentals inlägg som sträcker sig tillbaka flera år - en 
 ovärdelig källa till information.
 
 
