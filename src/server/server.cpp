@@ -81,7 +81,7 @@ config construct_server_message(const std::string& message, const game& g)
 
 void truncate_message(t_string& str)
 {
-	const size_t max_message_length = 240;
+	const size_t max_message_length = 256;
 	std::string newstr = str.str();
 	newstr.resize(minimum<size_t>(str.size(),max_message_length));
 	str = newstr;
