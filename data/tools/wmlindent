@@ -143,7 +143,11 @@ def reindent(name, infp, outfp):
         # And ship the line
         outfp.write(output)
         # May need to indent based on the line we just saw.
-        if transformed.startswith("[") and not transformed.startswith("[/"):
+        # This logic is a bit obscure.  The 'not "[/" in transformed'
+        # catches the obvious case of a closing tag, but it also
+        # catches the idiom [allow_undo][/allow_undo] which we
+        # want to treat as a no-op.
+        if transformed.startswith("[") and not "[/" in transformed:
             indent += wmltools.baseindent
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
