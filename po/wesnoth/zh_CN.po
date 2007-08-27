@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-25 10:22+0200\n"
+"POT-Creation-Date: 2007-08-27 12:32+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -3983,8 +3983,8 @@ msgid "End Turn"
 msgstr "结束回合"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2549
-#: src/unit.cpp:2721
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2563
+#: src/unit.cpp:2735
 msgid "HP"
 msgstr "生命值"
 
@@ -4109,70 +4109,70 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:186 src/help.cpp:2713 src/menu_events.cpp:140
+#: src/about.cpp:186 src/help.cpp:2717 src/menu_events.cpp:140
 #: src/menu_events.cpp:428 src/menu_events.cpp:450
 msgid "Close"
 msgstr "关闭"
 
-#: src/actions.cpp:114
+#: src/actions.cpp:116
 msgid "You don't have a leader to recruit with."
 msgstr "您没有领袖，无法征兵。"
 
-#: src/actions.cpp:121
+#: src/actions.cpp:123
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "您的领袖必须在要塞里才能征募或召回单位。"
 
-#: src/actions.cpp:140
+#: src/actions.cpp:142
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征兵。"
 
-#: src/actions.cpp:901 src/actions.cpp:1132
+#: src/actions.cpp:906 src/actions.cpp:1137
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:905 src/actions.cpp:1136
+#: src/actions.cpp:910 src/actions.cpp:1141
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:911 src/actions.cpp:1142
+#: src/actions.cpp:916 src/actions.cpp:1147
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2052
+#: src/actions.cpp:2057
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
 # what is the plural form all about?
-#: src/actions.cpp:2091
+#: src/actions.cpp:2096
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友好单位"
 msgstr[1] "发现$friends个友好单位"
 
-#: src/actions.cpp:2094
+#: src/actions.cpp:2099
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌方单位！"
 msgstr[1] "发现$enemies个敌方单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2099
+#: src/actions.cpp:2104
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1个友好单位"
 msgstr[1] "$friends个友好单位"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2105
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌方单位"
 msgstr[1] "$enemies个敌方单位"
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2106
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2110
+#: src/actions.cpp:2115
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey继续）"
@@ -4242,7 +4242,7 @@ msgstr "教程"
 msgid "replay"
 msgstr "游戏录像"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:410
+#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:431
 msgid "Turn"
 msgstr "回合"
 
@@ -4343,7 +4343,7 @@ msgstr "取消"
 msgid "KB"
 msgstr "KB"
 
-#: src/display.cpp:343
+#: src/display.cpp:350
 msgid "Screenshot"
 msgstr "屏幕截图"
 
@@ -4560,7 +4560,7 @@ msgstr "加入官方服务器"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登录韦诺官方多人对战服务器"
 
-#: src/game.cpp:1381 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1381 src/multiplayer_lobby.cpp:553
 msgid "Join Game"
 msgstr "加入游戏"
 
@@ -4659,29 +4659,29 @@ msgstr "胜利："
 msgid "Defeat:"
 msgstr "失败："
 
-#: src/gamestatus.cpp:787
+#: src/gamestatus.cpp:788
 msgid "Could not write to file"
 msgstr "无法写入文件"
 
-#: src/generate_report.cpp:95
+#: src/generate_report.cpp:97
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "本单位不可见。敌人看不见他，也不能攻击他。"
 
-#: src/generate_report.cpp:95
+#: src/generate_report.cpp:97
 msgid "invisible: "
 msgstr "隐形： "
 
-#: src/generate_report.cpp:100
+#: src/generate_report.cpp:102
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr "本单位被减速了，攻击输出因此减半。"
 
-#: src/generate_report.cpp:100
+#: src/generate_report.cpp:102
 msgid "slowed: "
 msgstr "减速： "
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:107
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -4695,15 +4695,15 @@ msgstr ""
 "\n"
 "单位不会因中毒而死。毒素影响不会让生命值降低到1点以下。"
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:107
 msgid "poisoned: "
 msgstr "中毒： "
 
-#: src/generate_report.cpp:112
+#: src/generate_report.cpp:114
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "本单位已石化。不能攻击或移动。"
 
-#: src/generate_report.cpp:112
+#: src/generate_report.cpp:114
 msgid "stone: "
 msgstr "石化： "
 
@@ -4712,7 +4712,7 @@ msgstr "石化： "
 msgid "Resistances: "
 msgstr "抗性"
 
-#: src/generate_report.cpp:185 src/multiplayer_create.cpp:378
+#: src/generate_report.cpp:184 src/multiplayer_create.cpp:378
 msgid "Experience Modifier: "
 msgstr "经验值修正： "
 
@@ -4736,23 +4736,23 @@ msgstr "武器攻击范围："
 msgid "damage type: "
 msgstr "伤害类型："
 
-#: src/generate_report.cpp:292 src/mouse_events.cpp:1346
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1346
 msgid "vs"
 msgstr "vs"
 
-#: src/generate_report.cpp:341
+#: src/generate_report.cpp:342
 msgid "Lawful units: "
 msgstr "善良单位： "
 
-#: src/generate_report.cpp:343
+#: src/generate_report.cpp:344
 msgid "Neutral units: "
 msgstr "中立单位： "
 
-#: src/generate_report.cpp:344
+#: src/generate_report.cpp:345
 msgid "Chaotic units: "
 msgstr "混乱单位： "
 
-#: src/generate_report.cpp:486
+#: src/generate_report.cpp:488
 msgid "Observers:"
 msgstr "观察者："
 
@@ -4837,27 +4837,27 @@ msgstr "闪避几率"
 msgid "Movement Cost"
 msgstr "移动点数耗费"
 
-#: src/help.cpp:2251 src/menu_events.cpp:640
+#: src/help.cpp:2255 src/menu_events.cpp:640
 msgid " < Back"
 msgstr " < 后退"
 
-#: src/help.cpp:2252
+#: src/help.cpp:2256
 msgid "Forward >"
 msgstr "前进 >"
 
-#: src/help.cpp:2364
+#: src/help.cpp:2368
 msgid "Reference to unknown topic: "
 msgstr "引用未知主题： "
 
-#: src/help.cpp:2624
+#: src/help.cpp:2628
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2716
+#: src/help.cpp:2720
 msgid "The Battle for Wesnoth Help"
 msgstr "韦诺之战帮助"
 
-#: src/help.cpp:2766
+#: src/help.cpp:2770
 msgid "Parse error when parsing help text: "
 msgstr "分析帮助文本时语法错误： "
 
@@ -4975,7 +4975,7 @@ msgstr "等级"
 msgid "unit list^Traits"
 msgstr "特质"
 
-#: src/menu_events.cpp:320 src/unit.cpp:2582 src/unit.cpp:2729
+#: src/menu_events.cpp:320 src/unit.cpp:2596 src/unit.cpp:2743
 msgid "Moves"
 msgstr "移动"
 
@@ -5475,12 +5475,12 @@ msgid "Normal"
 msgstr "普通"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2759
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2773
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2766
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2780
 msgid ")"
 msgstr "）"
 
@@ -5512,7 +5512,7 @@ msgstr "当前时期不允许非随机阵营"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "找不到$faction集团的领袖类型"
 
-#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:529
+#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:550
 #: src/multiplayer_wait.cpp:165
 msgid "Game Lobby"
 msgstr "游戏大厅"
@@ -5573,7 +5573,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
-#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:533
+#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:554
 msgid "Create Game"
 msgstr "创建游戏"
 
@@ -5593,7 +5593,7 @@ msgstr "时期："
 msgid "Map to play:"
 msgstr "选择游戏地图："
 
-#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:199
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:228
 msgid "Use map settings"
 msgstr "使用地图设定"
 
@@ -5606,8 +5606,8 @@ msgstr "随机地图（冬天）"
 msgid "Fog Of War"
 msgstr "战争迷雾"
 
-#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:428
-#: src/multiplayer_lobby.cpp:434
+#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:449
+#: src/multiplayer_lobby.cpp:455
 msgid "Shroud"
 msgstr "覆盖物"
 
@@ -5757,55 +5757,55 @@ msgstr "玩家： "
 msgid "Size: "
 msgstr "大小"
 
-#: src/multiplayer_lobby.cpp:98
+#: src/multiplayer_lobby.cpp:99
 msgid "--no games open--"
 msgstr "—当前没有已建立的游戏—"
 
-#: src/multiplayer_lobby.cpp:339 src/multiplayer_lobby.cpp:342
+#: src/multiplayer_lobby.cpp:360 src/multiplayer_lobby.cpp:363
 msgid "Unknown era"
 msgstr "未知时代"
 
-#: src/multiplayer_lobby.cpp:379 src/multiplayer_lobby.cpp:395
+#: src/multiplayer_lobby.cpp:400 src/multiplayer_lobby.cpp:416
 msgid "Unknown scenario"
 msgstr "未知剧本"
 
-#: src/multiplayer_lobby.cpp:391
+#: src/multiplayer_lobby.cpp:412
 msgid "Remote scenario"
 msgstr "远程剧本"
 
-#: src/multiplayer_lobby.cpp:414
+#: src/multiplayer_lobby.cpp:435
 msgid "Vacant Slot:"
 msgstr "空位："
 
-#: src/multiplayer_lobby.cpp:414
+#: src/multiplayer_lobby.cpp:435
 msgid "Vacant Slots:"
 msgstr "空位："
 
-#: src/multiplayer_lobby.cpp:424
+#: src/multiplayer_lobby.cpp:445
 msgid "Fog"
 msgstr "迷雾"
 
-#: src/multiplayer_lobby.cpp:438
+#: src/multiplayer_lobby.cpp:459
 msgid "none"
 msgstr "无"
 
-#: src/multiplayer_lobby.cpp:531
+#: src/multiplayer_lobby.cpp:552
 msgid "Observe Game"
 msgstr "观察游戏"
 
-#: src/multiplayer_lobby.cpp:534
+#: src/multiplayer_lobby.cpp:555
 msgid "Quick Replays"
 msgstr "快速回放"
 
-#: src/multiplayer_lobby.cpp:536
+#: src/multiplayer_lobby.cpp:557
 msgid "Preferences"
 msgstr "设置"
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:559
 msgid "Quit"
 msgstr "退出"
 
-#: src/multiplayer_lobby.cpp:543
+#: src/multiplayer_lobby.cpp:564
 msgid "Skip quickly to the active turn when observing"
 msgstr "观察游戏时快速跳至当前进行中的回合"
 
@@ -5847,20 +5847,20 @@ msgstr "读取游戏数据..."
 msgid "Choose your side:"
 msgstr "选择阵营："
 
-#: src/network.cpp:97
+#: src/network.cpp:100
 msgid "invalid network handle"
 msgstr "无效网络句柄"
 
-#: src/network.cpp:130
+#: src/network.cpp:133
 msgid "Client disconnected"
 msgstr "客户端断开连接"
 
-#: src/network.cpp:477
+#: src/network.cpp:480
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "不能添加插口对插口组合"
 
-#: src/network.cpp:488
+#: src/network.cpp:491
 msgid "Could not send initial handshake"
 msgstr "不能发送初始化连接信息"
 
@@ -6185,15 +6185,15 @@ msgstr "统计"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:2512 src/unit.cpp:2709 src/unit.cpp:2764
+#: src/unit.cpp:2526 src/unit.cpp:2723 src/unit.cpp:2778
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:2600 src/unit.cpp:2737
+#: src/unit.cpp:2614 src/unit.cpp:2751
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2743
+#: src/unit.cpp:2757
 #, fuzzy
 msgid "/level"
 msgstr "等级"

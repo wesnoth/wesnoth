@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-25 10:22+0200\n"
+"POT-Creation-Date: 2007-08-27 12:32+0200\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -3547,8 +3547,8 @@ msgid "End Turn"
 msgstr "Txanda Amaitu"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2549
-#: src/unit.cpp:2721
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2563
+#: src/unit.cpp:2735
 msgid "HP"
 msgstr "BP"
 
@@ -3681,72 +3681,72 @@ msgstr ""
 msgid "+  "
 msgstr ""
 
-#: src/about.cpp:186 src/help.cpp:2713 src/menu_events.cpp:140
+#: src/about.cpp:186 src/help.cpp:2717 src/menu_events.cpp:140
 #: src/menu_events.cpp:428 src/menu_events.cpp:450
 msgid "Close"
 msgstr "Itxi"
 
-#: src/actions.cpp:114
+#: src/actions.cpp:116
 msgid "You don't have a leader to recruit with."
 msgstr "Ez duzu buruzagirik bilketak egiteko"
 
-#: src/actions.cpp:121
+#: src/actions.cpp:123
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Zure buruzagia gotorlekuan eduki behar duzu unitateak bildu ahal izateko"
 
-#: src/actions.cpp:140
+#: src/actions.cpp:142
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Ez dago gaztelu gelaxka librerik unitateak biltzeko."
 
-#: src/actions.cpp:901 src/actions.cpp:1132
+#: src/actions.cpp:906 src/actions.cpp:1137
 msgid "poisoned"
 msgstr "pozoindua"
 
-#: src/actions.cpp:905 src/actions.cpp:1136
+#: src/actions.cpp:910 src/actions.cpp:1141
 msgid "slowed"
 msgstr "mantsotua"
 
-#: src/actions.cpp:911 src/actions.cpp:1142
+#: src/actions.cpp:916 src/actions.cpp:1147
 msgid "stone"
 msgstr "harria"
 
-#: src/actions.cpp:2052
+#: src/actions.cpp:2057
 msgid "Ambushed!"
 msgstr "Segada batean harrapatuta!"
 
-#: src/actions.cpp:2091
+#: src/actions.cpp:2096
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unitate lagun bat ikustatua"
 msgstr[1] "Unitate lagun bat ikustatua"
 
-#: src/actions.cpp:2094
+#: src/actions.cpp:2099
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unitate etsai bat ikustatua!"
 msgstr[1] "Unitate etsai bat ikustatua!"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2104
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2105
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2106
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unitateak ikustatuta! ($friends lagun, $enemies etsai)"
 
-#: src/actions.cpp:2110
+#: src/actions.cpp:2115
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(sakatu $hotkey jarraitzeko)"
@@ -3816,7 +3816,7 @@ msgstr "Tutoriala"
 msgid "replay"
 msgstr "errepikatu"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:410
+#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:431
 msgid "Turn"
 msgstr "Txanda"
 
@@ -3917,7 +3917,7 @@ msgstr "Utzi"
 msgid "KB"
 msgstr "KB"
 
-#: src/display.cpp:343
+#: src/display.cpp:350
 msgid "Screenshot"
 msgstr "Pantaila argazkia"
 
@@ -4147,7 +4147,7 @@ msgstr "Sartu zerbitzari ofizialera"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Saioa hasi Wesnoth-eko jokalari-anitzeko zerbitzari ofizialean"
 
-#: src/game.cpp:1381 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1381 src/multiplayer_lobby.cpp:553
 msgid "Join Game"
 msgstr "Sartu jokura"
 
@@ -4249,31 +4249,31 @@ msgstr "Garaipena:"
 msgid "Defeat:"
 msgstr "Gainditu:"
 
-#: src/gamestatus.cpp:787
+#: src/gamestatus.cpp:788
 msgid "Could not write to file"
 msgstr "Ezin izan da fitxategian idatzi"
 
-#: src/generate_report.cpp:95
+#: src/generate_report.cpp:97
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Unitate hau ikustezina da. Etsaiek ezin dute ikusi edo eraso unitate hau."
 
-#: src/generate_report.cpp:95
+#: src/generate_report.cpp:97
 msgid "invisible: "
 msgstr "ikustezina:"
 
-#: src/generate_report.cpp:100
+#: src/generate_report.cpp:102
 #, fuzzy
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
 msgstr "Unitate hau harkaitz bihurtu da. Ezin du mugitu edo eraso."
 
-#: src/generate_report.cpp:100
+#: src/generate_report.cpp:102
 msgid "slowed: "
 msgstr "mantsotua:"
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:107
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -4288,15 +4288,15 @@ msgstr ""
 "Unitateak ez dira pozoinaz bakarrik hiltzen. Pozoinak 1HPtik behera ez du "
 "punturik kentzen."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:107
 msgid "poisoned: "
 msgstr "pozoindua:"
 
-#: src/generate_report.cpp:112
+#: src/generate_report.cpp:114
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Unitate hau harkaitz bihurtu da. Ezin du mugitu edo eraso."
 
-#: src/generate_report.cpp:112
+#: src/generate_report.cpp:114
 msgid "stone: "
 msgstr "harria:"
 
@@ -4305,7 +4305,7 @@ msgstr "harria:"
 msgid "Resistances: "
 msgstr "Erresistentzia"
 
-#: src/generate_report.cpp:185 src/multiplayer_create.cpp:378
+#: src/generate_report.cpp:184 src/multiplayer_create.cpp:378
 msgid "Experience Modifier: "
 msgstr "Esperientzi modifikatzaileak: "
 
@@ -4331,23 +4331,23 @@ msgstr ""
 msgid "damage type: "
 msgstr "kaltea"
 
-#: src/generate_report.cpp:292 src/mouse_events.cpp:1346
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1346
 msgid "vs"
 msgstr "vs"
 
-#: src/generate_report.cpp:341
+#: src/generate_report.cpp:342
 msgid "Lawful units: "
 msgstr "Bidezko unitateak:"
 
-#: src/generate_report.cpp:343
+#: src/generate_report.cpp:344
 msgid "Neutral units: "
 msgstr "Unitate neutralak:"
 
-#: src/generate_report.cpp:344
+#: src/generate_report.cpp:345
 msgid "Chaotic units: "
 msgstr "Unitate kaotikoak:"
 
-#: src/generate_report.cpp:486
+#: src/generate_report.cpp:488
 msgid "Observers:"
 msgstr "Ikusleak:"
 
@@ -4435,29 +4435,29 @@ msgstr "Defentsa"
 msgid "Movement Cost"
 msgstr "Mugimendua"
 
-#: src/help.cpp:2251 src/menu_events.cpp:640
+#: src/help.cpp:2255 src/menu_events.cpp:640
 #, fuzzy
 msgid " < Back"
 msgstr "< Atzera"
 
-#: src/help.cpp:2252
+#: src/help.cpp:2256
 msgid "Forward >"
 msgstr "Aurrera >"
 
-#: src/help.cpp:2364
+#: src/help.cpp:2368
 #, fuzzy
 msgid "Reference to unknown topic: "
 msgstr "erreferentzia urruneko fitxategiari"
 
-#: src/help.cpp:2624
+#: src/help.cpp:2628
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2716
+#: src/help.cpp:2720
 msgid "The Battle for Wesnoth Help"
 msgstr "Wesnoth-eko Gudaren Laguntza"
 
-#: src/help.cpp:2766
+#: src/help.cpp:2770
 #, fuzzy
 msgid "Parse error when parsing help text: "
 msgstr "Errorea jokuan jolasterakoan:"
@@ -4575,7 +4575,7 @@ msgstr "Maila"
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:320 src/unit.cpp:2582 src/unit.cpp:2729
+#: src/menu_events.cpp:320 src/unit.cpp:2596 src/unit.cpp:2743
 msgid "Moves"
 msgstr "Mugimenduak"
 
@@ -5078,12 +5078,12 @@ msgid "Normal"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2759
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2773
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2766
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2780
 msgid ")"
 msgstr ")"
 
@@ -5117,7 +5117,7 @@ msgstr ""
 msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:529
+#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:550
 #: src/multiplayer_wait.cpp:165
 msgid "Game Lobby"
 msgstr "Joku atondoa"
@@ -5179,7 +5179,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Jokalariak sartu zai..."
 
-#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:533
+#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:554
 msgid "Create Game"
 msgstr "Jokua sortu"
 
@@ -5199,7 +5199,7 @@ msgstr "Garaia:"
 msgid "Map to play:"
 msgstr "Jokatzeko mapa:"
 
-#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:199
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:228
 msgid "Use map settings"
 msgstr "Erabili maparen ezarpenak"
 
@@ -5212,8 +5212,8 @@ msgstr "Ausazko mapa (Negua)"
 msgid "Fog Of War"
 msgstr "Guda lainoa"
 
-#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:428
-#: src/multiplayer_lobby.cpp:434
+#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:449
+#: src/multiplayer_lobby.cpp:455
 msgid "Shroud"
 msgstr "Ezkutua"
 
@@ -5365,63 +5365,63 @@ msgstr "Jokalariak: "
 msgid "Size: "
 msgstr "Tamaina"
 
-#: src/multiplayer_lobby.cpp:98
+#: src/multiplayer_lobby.cpp:99
 #, fuzzy
 msgid "--no games open--"
 msgstr "<ez dago joku irekirik>"
 
-#: src/multiplayer_lobby.cpp:339 src/multiplayer_lobby.cpp:342
+#: src/multiplayer_lobby.cpp:360 src/multiplayer_lobby.cpp:363
 #, fuzzy
 msgid "Unknown era"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/multiplayer_lobby.cpp:379 src/multiplayer_lobby.cpp:395
+#: src/multiplayer_lobby.cpp:400 src/multiplayer_lobby.cpp:416
 #, fuzzy
 msgid "Unknown scenario"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/multiplayer_lobby.cpp:391
+#: src/multiplayer_lobby.cpp:412
 #, fuzzy
 msgid "Remote scenario"
 msgstr "Guda leku ezezaguna: '"
 
-#: src/multiplayer_lobby.cpp:414
+#: src/multiplayer_lobby.cpp:435
 #, fuzzy
 msgid "Vacant Slot:"
 msgstr "(Erreten hutsa)"
 
-#: src/multiplayer_lobby.cpp:414
+#: src/multiplayer_lobby.cpp:435
 #, fuzzy
 msgid "Vacant Slots:"
 msgstr "(Erreten hutsa)"
 
-#: src/multiplayer_lobby.cpp:424
+#: src/multiplayer_lobby.cpp:445
 msgid "Fog"
 msgstr "Behelaino"
 
-#: src/multiplayer_lobby.cpp:438
+#: src/multiplayer_lobby.cpp:459
 msgid "none"
 msgstr "bat ere ez"
 
-#: src/multiplayer_lobby.cpp:531
+#: src/multiplayer_lobby.cpp:552
 msgid "Observe Game"
 msgstr "Jokua behatu"
 
-#: src/multiplayer_lobby.cpp:534
+#: src/multiplayer_lobby.cpp:555
 #, fuzzy
 msgid "Quick Replays"
 msgstr "errepikapena"
 
-#: src/multiplayer_lobby.cpp:536
+#: src/multiplayer_lobby.cpp:557
 #, fuzzy
 msgid "Preferences"
 msgstr "Printzesa"
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:559
 msgid "Quit"
 msgstr "Irten"
 
-#: src/multiplayer_lobby.cpp:543
+#: src/multiplayer_lobby.cpp:564
 msgid "Skip quickly to the active turn when observing"
 msgstr ""
 
@@ -5464,21 +5464,21 @@ msgstr "Jokuaren datuak lortzen..."
 msgid "Choose your side:"
 msgstr "Aukeratu zure aldea:"
 
-#: src/network.cpp:97
+#: src/network.cpp:100
 #, fuzzy
 msgid "invalid network handle"
 msgstr "%s(e)k ezin ditu geruzak kudeatu"
 
-#: src/network.cpp:130
+#: src/network.cpp:133
 msgid "Client disconnected"
 msgstr "Bezoroak deskonektatu egin du."
 
-#: src/network.cpp:477
+#: src/network.cpp:480
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Ezin izan da ostalariari konektatu."
 
-#: src/network.cpp:488
+#: src/network.cpp:491
 msgid "Could not send initial handshake"
 msgstr ""
 
@@ -5808,15 +5808,15 @@ msgstr "Estatistikak"
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:2512 src/unit.cpp:2709 src/unit.cpp:2764
+#: src/unit.cpp:2526 src/unit.cpp:2723 src/unit.cpp:2778
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2600 src/unit.cpp:2737
+#: src/unit.cpp:2614 src/unit.cpp:2751
 msgid "XP to advance"
 msgstr "Aurreratzeko EP"
 
-#: src/unit.cpp:2743
+#: src/unit.cpp:2757
 #, fuzzy
 msgid "/level"
 msgstr "maila"

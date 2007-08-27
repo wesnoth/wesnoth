@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-22 17:51+0200\n"
+"POT-Creation-Date: 2007-08-27 12:33+0200\n"
 "PO-Revision-Date: 2007-06-06 10:24+0200\n"
 "Last-Translator: Brivido <brivido(at)gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -18,6 +18,22 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:12
 msgid "I'm not ready to die..."
 msgstr "Non sono pronto a morire..."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:28
+msgid ""
+"Fool boy!  You have allowed my death, and now none in this world will aid "
+"you."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:44
+msgid "No!  I will not fall this close to achieving the goal of so many years!"
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:57
+msgid ""
+"Your incompetence at this simple task is appalling.  You will never grow "
+"strong enough to be of use to me."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:73
 msgid "Then my battle against the orcs is lost!"
@@ -129,6 +145,10 @@ msgstr ""
 "Malin, turbato dalla morte di suo padre, sostenne che era inutile permettere "
 "che Darken Volk rimanesse per difendere la città. Il negromante lasciò la "
 "città senza incidenti."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:44
+msgid "Several weeks pass..."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:49
 msgid ""
@@ -1609,6 +1629,7 @@ msgstr "Malin Keshar"
 msgid "Kreg'a'shar Trr"
 msgstr "Kreg'a'shar Trr"
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:52
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Halal.cfg:63
 msgid "Drogan"
 msgstr "Drogan"
@@ -1691,6 +1712,11 @@ msgstr "Occupa tutti i villaggi dei goblin"
 msgid "Death of Darken Volk"
 msgstr "Morte di Darken Volk"
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:99
+#, fuzzy
+msgid "Darken Volk"
+msgstr "Morte di Darken Volk"
+
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:158
 msgid "Villager"
 msgstr "Abitante"
@@ -1759,6 +1785,12 @@ msgstr "K'Vark"
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:6
 msgid "Return to Hal'al"
 msgstr "Ritorno a Hal'al"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:68
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:273
+#, fuzzy
+msgid "Dela Keshar"
+msgstr "Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:95
 msgid "Remove the traitor Drogan"
@@ -1914,6 +1946,11 @@ msgstr "Diventa un lich"
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:142
 msgid "makeshift altar"
 msgstr "altare di fortuna"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:156
+#, fuzzy
+msgid "Mal Keshar"
+msgstr "Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:295
 msgid "Regain your strength"
@@ -2085,14 +2122,25 @@ msgstr ""
 "Nota speciale: Questa unità aggiunge 1 punto ferita al suo massimo ogni "
 "volta che uccide un essere vivente.\n"
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:29
-msgid "Growth"
-msgstr "Crescita"
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:28
+msgid "growth"
+msgstr "crescita"
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:79
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:30
+msgid ""
+"Growth:\n"
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:46
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:21
 msgid "bite"
 msgstr "morso"
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:132
+msgid "+1 max HP"
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:4
 msgid "Giant Rat"
@@ -2140,6 +2188,9 @@ msgstr "pugno"
 msgid "flame blast"
 msgstr "vento di fuoco"
 
+#~ msgid "Growth"
+#~ msgstr "Crescita"
+
 #~ msgid "Dark Adept"
 #~ msgstr "Adepto dell'oscurità"
 
@@ -2176,9 +2227,6 @@ msgstr "vento di fuoco"
 
 #~ msgid "female^Dark Adept"
 #~ msgstr "Adepta dell'oscurità"
-
-#~ msgid "growth"
-#~ msgstr "crescita"
 
 #~ msgid "blade"
 #~ msgstr "lama"

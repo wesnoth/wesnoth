@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-25 10:22+0200\n"
+"POT-Creation-Date: 2007-08-27 12:32+0200\n"
 "PO-Revision-Date: 2007-08-25 10:33+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -4764,8 +4764,8 @@ msgid "End Turn"
 msgstr "Fin du tour"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2549
-#: src/unit.cpp:2721
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2563
+#: src/unit.cpp:2735
 msgid "HP"
 msgstr "PV"
 
@@ -4886,69 +4886,69 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2713 src/menu_events.cpp:140
+#: src/about.cpp:186 src/help.cpp:2717 src/menu_events.cpp:140
 #: src/menu_events.cpp:428 src/menu_events.cpp:450
 msgid "Close"
 msgstr "Fermer"
 
-#: src/actions.cpp:114
+#: src/actions.cpp:116
 msgid "You don't have a leader to recruit with."
 msgstr "Vous n'avez pas de chef pour vous permettre de recruter des unités."
 
-#: src/actions.cpp:121
+#: src/actions.cpp:123
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Votre chef doit se trouver sur un donjon pour pouvoir recruter des unités."
 
-#: src/actions.cpp:140
+#: src/actions.cpp:142
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Il n'y a pas de place vacante dans le château pour recruter une unité."
 
-#: src/actions.cpp:901 src/actions.cpp:1132
+#: src/actions.cpp:906 src/actions.cpp:1137
 msgid "poisoned"
 msgstr "empoisonné"
 
-#: src/actions.cpp:905 src/actions.cpp:1136
+#: src/actions.cpp:910 src/actions.cpp:1141
 msgid "slowed"
 msgstr "ralenti"
 
-#: src/actions.cpp:911 src/actions.cpp:1142
+#: src/actions.cpp:916 src/actions.cpp:1147
 msgid "stone"
 msgstr "pierre"
 
-#: src/actions.cpp:2052
+#: src/actions.cpp:2057
 msgid "Ambushed!"
 msgstr "Embuscade !"
 
-#: src/actions.cpp:2091
+#: src/actions.cpp:2096
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] " $friends unité alliée en vue !"
 msgstr[1] " $friends unités alliées en vue !"
 
-#: src/actions.cpp:2094
+#: src/actions.cpp:2099
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] " $enemies unité ennemie en vue !"
 msgstr[1] " $enemies unités ennemies en vue !"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2104
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 allié"
 msgstr[1] "$friends alliés"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2105
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 ennemi"
 msgstr[1] "$enemies ennemis"
 
-#: src/actions.cpp:2101
+#: src/actions.cpp:2106
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unités en vue ! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2110
+#: src/actions.cpp:2115
 msgid "(press $hotkey to keep moving)"
 msgstr "(appuyez sur $hotkey pour poursuivre le mouvement)"
 
@@ -5017,7 +5017,7 @@ msgstr "Didacticiel"
 msgid "replay"
 msgstr "revoir la partie"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:410
+#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:431
 msgid "Turn"
 msgstr "Tour"
 
@@ -5120,7 +5120,7 @@ msgstr "Annuler"
 msgid "KB"
 msgstr "Ko"
 
-#: src/display.cpp:343
+#: src/display.cpp:350
 msgid "Screenshot"
 msgstr "Capture d'écran"
 
@@ -5345,7 +5345,7 @@ msgstr "Se connecter au serveur officiel"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Se connecter sur le serveur multijoueur officiel de Wesnoth"
 
-#: src/game.cpp:1381 src/multiplayer_lobby.cpp:532
+#: src/game.cpp:1381 src/multiplayer_lobby.cpp:553
 msgid "Join Game"
 msgstr "Se connecter à une partie"
 
@@ -5447,21 +5447,21 @@ msgstr "Victoire : "
 msgid "Defeat:"
 msgstr "Défaite : "
 
-#: src/gamestatus.cpp:787
+#: src/gamestatus.cpp:788
 msgid "Could not write to file"
 msgstr "Impossible d'écrire dans le fichier"
 
-#: src/generate_report.cpp:95
+#: src/generate_report.cpp:97
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Cette unité est invisible. Elle ne peut être vue ou attaquée par des unités "
 "ennemies."
 
-#: src/generate_report.cpp:95
+#: src/generate_report.cpp:97
 msgid "invisible: "
 msgstr "invisible : "
 
-#: src/generate_report.cpp:100
+#: src/generate_report.cpp:102
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
@@ -5469,11 +5469,11 @@ msgstr ""
 "Cette unité a été ralentie. Elle ne fera plus que la moitié de ses dégâts "
 "normaux en attaquant."
 
-#: src/generate_report.cpp:100
+#: src/generate_report.cpp:102
 msgid "slowed: "
 msgstr "ralentie : "
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:107
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -5489,17 +5489,17 @@ msgstr ""
 "Une unité ne peut pas être tuée simplement par du poison. Celui-ci ne fera "
 "pas baisser ses points de vie en dessous de 1."
 
-#: src/generate_report.cpp:105
+#: src/generate_report.cpp:107
 msgid "poisoned: "
 msgstr "empoisonné : "
 
-#: src/generate_report.cpp:112
+#: src/generate_report.cpp:114
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
 "Cette unité a été changée en pierre. Elle ne peut plus ni bouger, ni "
 "attaquer."
 
-#: src/generate_report.cpp:112
+#: src/generate_report.cpp:114
 msgid "stone: "
 msgstr "pétrification : "
 
@@ -5507,7 +5507,7 @@ msgstr "pétrification : "
 msgid "Resistances: "
 msgstr "Résistances : "
 
-#: src/generate_report.cpp:185 src/multiplayer_create.cpp:378
+#: src/generate_report.cpp:184 src/multiplayer_create.cpp:378
 msgid "Experience Modifier: "
 msgstr "Modifications d'expérience : "
 
@@ -5531,23 +5531,23 @@ msgstr "portée de l'arme :"
 msgid "damage type: "
 msgstr "type de dégâts :"
 
-#: src/generate_report.cpp:292 src/mouse_events.cpp:1346
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1346
 msgid "vs"
 msgstr "contre"
 
-#: src/generate_report.cpp:341
+#: src/generate_report.cpp:342
 msgid "Lawful units: "
 msgstr "Unités loyales : "
 
-#: src/generate_report.cpp:343
+#: src/generate_report.cpp:344
 msgid "Neutral units: "
 msgstr "Unités neutres : "
 
-#: src/generate_report.cpp:344
+#: src/generate_report.cpp:345
 msgid "Chaotic units: "
 msgstr "Unités chaotiques : "
 
-#: src/generate_report.cpp:486
+#: src/generate_report.cpp:488
 msgid "Observers:"
 msgstr "Observateurs : "
 
@@ -5631,27 +5631,27 @@ msgstr "Défense"
 msgid "Movement Cost"
 msgstr "Coût des mouvements"
 
-#: src/help.cpp:2251 src/menu_events.cpp:640
+#: src/help.cpp:2255 src/menu_events.cpp:640
 msgid " < Back"
 msgstr "< Précédent"
 
-#: src/help.cpp:2252
+#: src/help.cpp:2256
 msgid "Forward >"
 msgstr "Suivant >"
 
-#: src/help.cpp:2364
+#: src/help.cpp:2368
 msgid "Reference to unknown topic: "
 msgstr "Référence à un sujet inconnu :"
 
-#: src/help.cpp:2624
+#: src/help.cpp:2628
 msgid "corrupted original file"
 msgstr "fichier original corrompu"
 
-#: src/help.cpp:2716
+#: src/help.cpp:2720
 msgid "The Battle for Wesnoth Help"
 msgstr "Aide de La bataille pour Wesnoth"
 
-#: src/help.cpp:2766
+#: src/help.cpp:2770
 msgid "Parse error when parsing help text: "
 msgstr "Erreur d'analyse lors de la lecture du texte d'aide :"
 
@@ -5771,7 +5771,7 @@ msgstr "niveau"
 msgid "unit list^Traits"
 msgstr "Traits"
 
-#: src/menu_events.cpp:320 src/unit.cpp:2582 src/unit.cpp:2729
+#: src/menu_events.cpp:320 src/unit.cpp:2596 src/unit.cpp:2743
 msgid "Moves"
 msgstr "Déplacements"
 
@@ -6267,12 +6267,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2759
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2773
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2766
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2780
 msgid ")"
 msgstr ")"
 
@@ -6304,7 +6304,7 @@ msgstr "Aucun camp non-aléatoire dans l'ère actuelle"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Aucun chef pour la faction $faction n'est trouvable"
 
-#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:529
+#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:550
 #: src/multiplayer_wait.cpp:165
 msgid "Game Lobby"
 msgstr "Vestibule"
@@ -6365,7 +6365,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "En attente d'autres joueurs..."
 
-#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:533
+#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:554
 msgid "Create Game"
 msgstr "Créer une partie"
 
@@ -6385,7 +6385,7 @@ msgstr "Ère :"
 msgid "Map to play:"
 msgstr "Carte(s) disponible(s) : "
 
-#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:199
+#: src/multiplayer_create.cpp:70 src/multiplayer_lobby.cpp:228
 msgid "Use map settings"
 msgstr "Utiliser les paramètres de la carte"
 
@@ -6397,8 +6397,8 @@ msgstr "Moment de la journée aléatoire"
 msgid "Fog Of War"
 msgstr "Brouillard de guerre"
 
-#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:428
-#: src/multiplayer_lobby.cpp:434
+#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:449
+#: src/multiplayer_lobby.cpp:455
 msgid "Shroud"
 msgstr "Voile"
 
@@ -6544,55 +6544,55 @@ msgstr "Joueurs : "
 msgid "Size: "
 msgstr "Taille : "
 
-#: src/multiplayer_lobby.cpp:98
+#: src/multiplayer_lobby.cpp:99
 msgid "--no games open--"
 msgstr "<aucune partie en cours>"
 
-#: src/multiplayer_lobby.cpp:339 src/multiplayer_lobby.cpp:342
+#: src/multiplayer_lobby.cpp:360 src/multiplayer_lobby.cpp:363
 msgid "Unknown era"
 msgstr "Ère inconnue"
 
-#: src/multiplayer_lobby.cpp:379 src/multiplayer_lobby.cpp:395
+#: src/multiplayer_lobby.cpp:400 src/multiplayer_lobby.cpp:416
 msgid "Unknown scenario"
 msgstr "Scénario inconnu"
 
-#: src/multiplayer_lobby.cpp:391
+#: src/multiplayer_lobby.cpp:412
 msgid "Remote scenario"
 msgstr "Scénario distant"
 
-#: src/multiplayer_lobby.cpp:414
+#: src/multiplayer_lobby.cpp:435
 msgid "Vacant Slot:"
 msgstr "Place vacante :"
 
-#: src/multiplayer_lobby.cpp:414
+#: src/multiplayer_lobby.cpp:435
 msgid "Vacant Slots:"
 msgstr "Places vacantes :"
 
-#: src/multiplayer_lobby.cpp:424
+#: src/multiplayer_lobby.cpp:445
 msgid "Fog"
 msgstr "Brouillard"
 
-#: src/multiplayer_lobby.cpp:438
+#: src/multiplayer_lobby.cpp:459
 msgid "none"
 msgstr "aucune"
 
-#: src/multiplayer_lobby.cpp:531
+#: src/multiplayer_lobby.cpp:552
 msgid "Observe Game"
 msgstr "Observer la partie"
 
-#: src/multiplayer_lobby.cpp:534
+#: src/multiplayer_lobby.cpp:555
 msgid "Quick Replays"
 msgstr "Revoir la partie en accéléré"
 
-#: src/multiplayer_lobby.cpp:536
+#: src/multiplayer_lobby.cpp:557
 msgid "Preferences"
 msgstr "Configuration"
 
-#: src/multiplayer_lobby.cpp:538
+#: src/multiplayer_lobby.cpp:559
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/multiplayer_lobby.cpp:543
+#: src/multiplayer_lobby.cpp:564
 msgid "Skip quickly to the active turn when observing"
 msgstr "Passe rapidement au tour en cours quand on observe"
 
@@ -6632,19 +6632,19 @@ msgstr "Réception des données du jeu..."
 msgid "Choose your side:"
 msgstr "Choisissez votre camp :"
 
-#: src/network.cpp:97
+#: src/network.cpp:100
 msgid "invalid network handle"
 msgstr "identifiant réseau invalide"
 
-#: src/network.cpp:130
+#: src/network.cpp:133
 msgid "Client disconnected"
 msgstr "Client déconnecté."
 
-#: src/network.cpp:477
+#: src/network.cpp:480
 msgid "Could not add socket to socket set"
 msgstr "Impossible d'ajouter le port à la liste des ports"
 
-#: src/network.cpp:488
+#: src/network.cpp:491
 msgid "Could not send initial handshake"
 msgstr "Impossible d'envoyer le signal d'établissement de la liaison"
 
@@ -6964,15 +6964,15 @@ msgstr "Statistiques d'envoi"
 msgid "Help Wesnoth by sending us information"
 msgstr "Aider Wesnoth en envoyant des données"
 
-#: src/unit.cpp:2512 src/unit.cpp:2709 src/unit.cpp:2764
+#: src/unit.cpp:2526 src/unit.cpp:2723 src/unit.cpp:2778
 msgid "; "
 msgstr " ; "
 
-#: src/unit.cpp:2600 src/unit.cpp:2737
+#: src/unit.cpp:2614 src/unit.cpp:2751
 msgid "XP to advance"
 msgstr "XP pour évoluer"
 
-#: src/unit.cpp:2743
+#: src/unit.cpp:2757
 msgid "/level"
 msgstr "/niveau"
 

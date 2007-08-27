@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es-DID_shadowm\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-22 17:51+0200\n"
+"POT-Creation-Date: 2007-08-27 12:33+0200\n"
 "PO-Revision-Date: 2007-07-31 18:19+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -23,6 +23,22 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:12
 msgid "I'm not ready to die..."
 msgstr "No estoy preparado para morir..."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:28
+msgid ""
+"Fool boy!  You have allowed my death, and now none in this world will aid "
+"you."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:44
+msgid "No!  I will not fall this close to achieving the goal of so many years!"
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:57
+msgid ""
+"Your incompetence at this simple task is appalling.  You will never grow "
+"strong enough to be of use to me."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:73
 msgid "Then my battle against the orcs is lost!"
@@ -133,6 +149,10 @@ msgstr ""
 "Malin, angustiado por la muerte de su padre, discute, sin ningún resultado, "
 "que debería permitírsele a Darken Volk quedarse a ayudar en la defensa del "
 "pueblo. El nigromante deja Hal'al sin ningún incidente."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:44
+msgid "Several weeks pass..."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:49
 msgid ""
@@ -1623,6 +1643,7 @@ msgstr "Malin Keshar"
 msgid "Kreg'a'shar Trr"
 msgstr "Kreg'a'shar Trr"
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:52
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Halal.cfg:63
 msgid "Drogan"
 msgstr "Drogan"
@@ -1705,6 +1726,11 @@ msgstr "Ocupar todas las aldeas goblin"
 msgid "Death of Darken Volk"
 msgstr "Muerte de Darken Volk"
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:99
+#, fuzzy
+msgid "Darken Volk"
+msgstr "Muerte de Darken Volk"
+
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:158
 msgid "Villager"
 msgstr "Aldeano"
@@ -1773,6 +1799,12 @@ msgstr "K'Vark"
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:6
 msgid "Return to Hal'al"
 msgstr "Regreso a Hal'al"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:68
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:273
+#, fuzzy
+msgid "Dela Keshar"
+msgstr "Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:95
 msgid "Remove the traitor Drogan"
@@ -1928,6 +1960,11 @@ msgstr "Convertirse en un liche."
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:142
 msgid "makeshift altar"
 msgstr "altar improvisado"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:156
+#, fuzzy
+msgid "Mal Keshar"
+msgstr "Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:295
 msgid "Regain your strength"
@@ -2099,14 +2136,25 @@ msgstr ""
 "Notas especiales: esta unidad gana 1 punto de vida máximo adicional cada vez "
 "que mata a una unidad viviente.\n"
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:29
-msgid "Growth"
-msgstr "Crecimiento"
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:28
+msgid "growth"
+msgstr "crecimiento"
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:79
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:30
+msgid ""
+"Growth:\n"
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:46
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:21
 msgid "bite"
 msgstr "mordisco"
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:132
+msgid "+1 max HP"
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:4
 msgid "Giant Rat"
@@ -2153,6 +2201,9 @@ msgstr "puño"
 #: data/campaigns/Descent_Into_Darkness/units/troll-shaman.cfg:60
 msgid "flame blast"
 msgstr "llamarada"
+
+#~ msgid "Growth"
+#~ msgstr "Crecimiento"
 
 #~ msgid "Dark Adept"
 #~ msgstr "Adepto oscuro"
@@ -2205,9 +2256,6 @@ msgstr "llamarada"
 
 #~ msgid "cold"
 #~ msgstr "de frío"
-
-#~ msgid "growth"
-#~ msgstr "crecimiento"
 
 #~ msgid "fire"
 #~ msgstr "de fuego"

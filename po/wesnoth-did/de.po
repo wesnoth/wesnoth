@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-22 17:51+0200\n"
+"POT-Creation-Date: 2007-08-27 12:33+0200\n"
 "PO-Revision-Date: 2007-08-21 16:11+0100\n"
 "Last-Translator: Uz-Valentin Friedrich <uz@jabber.berlin.ccc.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -16,6 +16,22 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:12
 msgid "I'm not ready to die..."
 msgstr "Ich bin noch nicht bereit zu sterben..."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:28
+msgid ""
+"Fool boy!  You have allowed my death, and now none in this world will aid "
+"you."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:44
+msgid "No!  I will not fall this close to achieving the goal of so many years!"
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:57
+msgid ""
+"Your incompetence at this simple task is appalling.  You will never grow "
+"strong enough to be of use to me."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:73
 msgid "Then my battle against the orcs is lost!"
@@ -134,6 +150,10 @@ msgstr ""
 "Malin versucht, Drogan umzustimmen, damit Darken Volk helfen kann die Stadt "
 "zu verteidigen. Doch es ist zwecklos und schließlich verlässt der "
 "Totenbeschwörer die Stadt."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:44
+msgid "Several weeks pass..."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:49
 msgid ""
@@ -1654,6 +1674,7 @@ msgstr "Malin Keshar"
 msgid "Kreg'a'shar Trr"
 msgstr "Kreg'a'shar Trr"
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:52
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Halal.cfg:63
 msgid "Drogan"
 msgstr "Drogan"
@@ -1736,6 +1757,11 @@ msgstr "Besetzt alle Kobolddörfer"
 msgid "Death of Darken Volk"
 msgstr "Darken Volk fällt in der Schlacht"
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:99
+#, fuzzy
+msgid "Darken Volk"
+msgstr "Darken Volk fällt in der Schlacht"
+
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:158
 msgid "Villager"
 msgstr "Dorfbewohner"
@@ -1804,6 +1830,12 @@ msgstr "K'Vark"
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:6
 msgid "Return to Hal'al"
 msgstr "Kehrt nach Hal'al zurück"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:68
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:273
+#, fuzzy
+msgid "Dela Keshar"
+msgstr "Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:95
 msgid "Remove the traitor Drogan"
@@ -1959,6 +1991,11 @@ msgstr "Werdet ein Lich"
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:142
 msgid "makeshift altar"
 msgstr "Altar des Wandels"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:156
+#, fuzzy
+msgid "Mal Keshar"
+msgstr "Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:295
 msgid "Regain your strength"
@@ -2127,14 +2164,25 @@ msgstr ""
 "Besonderheiten: Diese Einheit erhält 1 maximalen Lebenspunkt für jede "
 "Einheit die sie tötet.\n"
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:29
-msgid "Growth"
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:28
+msgid "growth"
 msgstr "Wachstum"
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:79
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:30
+msgid ""
+"Growth:\n"
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:46
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:21
 msgid "bite"
 msgstr "Biss"
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:132
+msgid "+1 max HP"
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:4
 msgid "Giant Rat"
@@ -2183,6 +2231,9 @@ msgstr "Faust"
 msgid "flame blast"
 msgstr "Flammenstoß"
 
+#~ msgid "Growth"
+#~ msgstr "Wachstum"
+
 #~ msgid "Dark Adept"
 #~ msgstr "Dunkler Adept"
 
@@ -2221,9 +2272,6 @@ msgstr "Flammenstoß"
 
 #~ msgid "female^Dark Adept"
 #~ msgstr "Dunkle Adeptin"
-
-#~ msgid "growth"
-#~ msgstr "Wachstum"
 
 #~ msgid "short-sword"
 #~ msgstr "Kurzschwert"

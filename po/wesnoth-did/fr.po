@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-22 17:51+0200\n"
+"POT-Creation-Date: 2007-08-27 12:33+0200\n"
 "PO-Revision-Date: 2007-05-28 11:56+0200\n"
 "Last-Translator: Jean-Luc Menut <jeanluc.menut@laposte.net>\n"
 "Language-Team: French\n"
@@ -18,6 +18,22 @@ msgstr ""
 #, fuzzy
 msgid "I'm not ready to die..."
 msgstr "Je ne suis pas prÃªt Ã  mourir..."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:28
+msgid ""
+"Fool boy!  You have allowed my death, and now none in this world will aid "
+"you."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:44
+msgid "No!  I will not fall this close to achieving the goal of so many years!"
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:57
+msgid ""
+"Your incompetence at this simple task is appalling.  You will never grow "
+"strong enough to be of use to me."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_deaths.cfg:73
 msgid "Then my battle against the orcs is lost!"
@@ -131,6 +147,10 @@ msgstr ""
 "Malin, troublÃ© par la mort de son pÃ¨re,  demanda en vain que Darken Volk "
 "soit autorisÃ© Ã  rester pour dÃ©fendre la ville. Le nÃ©cromancien quitta "
 "Hal'al sans incident."
+
+#: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:44
+msgid "Several weeks pass..."
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/Descent_story.cfg:49
 msgid ""
@@ -1664,6 +1684,7 @@ msgstr "Mort de Malin Keshar"
 msgid "Kreg'a'shar Trr"
 msgstr ""
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:52
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Halal.cfg:63
 msgid "Drogan"
 msgstr ""
@@ -1744,6 +1765,11 @@ msgstr "Occuper tous les villages Gobelins"
 msgid "Death of Darken Volk"
 msgstr "Mort de Darken Volk"
 
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:99
+#, fuzzy
+msgid "Darken Volk"
+msgstr "Mort de Darken Volk"
+
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:158
 msgid "Villager"
 msgstr "Villageois"
@@ -1813,6 +1839,12 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:6
 msgid "Return to Hal'al"
 msgstr "Retour Ã  Hal'al"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:68
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:273
+#, fuzzy
+msgid "Dela Keshar"
+msgstr "Mort de Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Halal.cfg:95
 msgid "Remove the traitor Drogan"
@@ -1970,6 +2002,11 @@ msgstr "Devenir une Liche."
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:142
 msgid "makeshift altar"
 msgstr "autel improvisÃ©"
+
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:156
+#, fuzzy
+msgid "Mal Keshar"
+msgstr "Mort de Malin Keshar"
 
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:295
 msgid "Regain your strength"
@@ -2143,14 +2180,25 @@ msgstr ""
 "Note SpÃ©cialeÂ : Cette unitÃ© ajoute un point de vie Ã  son maximum chaque "
 "fois qu'elle tue une unitÃ© vivante."
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:29
-msgid "Growth"
-msgstr "Croissance"
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:28
+msgid "growth"
+msgstr "croissance"
 
-#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:79
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:30
+msgid ""
+"Growth:\n"
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:46
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:21
 msgid "bite"
 msgstr "morsure"
+
+#: data/campaigns/Descent_Into_Darkness/units/ghast.cfg:132
+msgid "+1 max HP"
+msgstr ""
 
 #: data/campaigns/Descent_Into_Darkness/units/giant-rat.cfg:4
 msgid "Giant Rat"
@@ -2199,6 +2247,9 @@ msgstr "poing"
 #: data/campaigns/Descent_Into_Darkness/units/troll-shaman.cfg:60
 msgid "flame blast"
 msgstr "rafale de feu"
+
+#~ msgid "Growth"
+#~ msgstr "Croissance"
 
 #~ msgid "No benefit is worth the price of defiling the bodies of our dead!"
 #~ msgstr ""
@@ -2295,9 +2346,6 @@ msgstr "rafale de feu"
 #~ "liche et Ã  l'acquisition d'une horrible immortalitÃ©.\n"
 #~ "\n"
 #~ "Notes SpÃ©cialesÂ :"
-
-#~ msgid "growth"
-#~ msgstr "croissance"
 
 #~ msgid "fire"
 #~ msgstr "feu"
