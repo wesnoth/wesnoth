@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file unit_map.hpp 
+//! 
+
 #ifndef UNIT_MAP_H_INCLUDED
 #define UNIT_MAP_H_INCLUDED
 
@@ -18,14 +22,15 @@ class unit;
 #include <cstring>
 #include "map.hpp"
 
-// We used to just open-code a std::map<location,unit>, but as unit
-// gained weight leading up to 1.1.3, manipulating the map caused
-// significant performance issues for the AI, which had to actually
-// move units for accurate simulation with the new, more powerful
-// filtering.  This class eases the transition, by providing a wrapper
-// which acts like a map of units, not unit pointers, except
-// implemented with pointers and hence providing a cheap move
-// function.
+// We used to just open-code a std::map<location,unit>, 
+// but as unit gained weight leading up to 1.1.3, 
+// manipulating the map caused significant performance issues 
+// for the AI, which had to actually move units for accurate 
+// simulation with the new, more powerful filtering.  
+// This class eases the transition, by providing a wrapper
+// which acts like a map of units, not unit pointers, 
+// except implemented with pointers and hence providing 
+// a cheap move function.
 
 class unit_map
 {
@@ -33,11 +38,11 @@ public:
 	unit_map() { };
 	unit_map(const unit_map &that);
 	unit_map &operator =(const unit_map &that);
-	// A unit map with a single unit in it.
+	//! A unit map with a single unit in it.
 	explicit unit_map(const gamemap::location &loc, const unit &u);
 	~unit_map();
 
-	// We actually keep map to pointers to pairs.  Easy to fake iterators.
+	//! We actually keep map to pointers to pairs.  Easy to fake iterators.
 	typedef std::map<gamemap::location,std::pair<gamemap::location,unit>*> pmap;
 	struct iterator;
 	struct const_iterator {
@@ -130,13 +135,13 @@ public:
 
 	void clear();
 
-	// Extract (like erase, only don't delete).
+	//! Extract (like erase, only don't delete).
 	std::pair<gamemap::location,unit> *extract(const gamemap::location &loc);
 
-	// Map owns pointer after this.  Loc must be currently empty.
+	//! Map owns pointer after this.  Loc must be currently empty.
 	void add(std::pair<gamemap::location,unit> *p);
 
-	// Like add, but loc must be occupied (implicitly erased).
+	//! Like add, but loc must be occupied (implicitly erased).
 	void replace(std::pair<gamemap::location,unit> *p);
 
 	void erase(iterator pos);
@@ -146,7 +151,7 @@ private:
 
 	void delete_all();
 
-	// A map of pairs is redundant, but makes it possible to imitate a map of location,unit.
+	//! A map of pairs is redundant, but makes it possible to imitate a map of location,unit.
 	std::map<gamemap::location,std::pair<gamemap::location,unit>*> map_;
 };
 

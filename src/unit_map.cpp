@@ -11,11 +11,15 @@
 
    See the COPYING file for more details.
 */
+
+//! @file unit_map.cpp 
+//!
+
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "wassert.hpp"
 
-// A unit map with a copy of a single unit in it.
+//! A unit map with a copy of a single unit in it.
 unit_map::unit_map(const gamemap::location &loc, const unit &u)
 {
 	add(new std::pair<gamemap::location,unit>(loc, u));
@@ -70,7 +74,7 @@ void unit_map::delete_all()
 	}
 }
 
-// Extract (like erase, only don't delete).
+//! Extract (like erase, but don't delete).
 std::pair<gamemap::location,unit> *unit_map::extract(const gamemap::location &loc)
 {
 	pmap::iterator i = map_.find(loc);
