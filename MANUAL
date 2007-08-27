@@ -20,7 +20,7 @@ alt-r          Recall unit
 u              Undo last move (only deterministic moves can be undone)
 r              Redo move
 m              Message another player (in multiplayer)
-M              Message your allies (in multiplayer)
+ctrl-m         Message your allies (in multiplayer)
 alt-m          Message everyone in the game (in multiplayer)
 n              Cycle through units that have movement left
 N              Cycle through units that have movement left, in reverse order
@@ -47,6 +47,7 @@ ctrl-g         Toggle grid
 S              Update shroud now
 D              Delay shroud updates
 alt-l          Attach a text label to a terrain hex
+ctrl-l         Attach a text label to a terrain hex only visible by your allies
 ctrl-c         Clear labels
 alt-s          Show status table
 ctrl-m         Toggle muting of game sounds
@@ -132,15 +133,19 @@ Traits are assigned randomly to units when they are created.
 Most units receive two traits.  The possible traits are as follows:
 
  Strong       does 1 extra damage per strike in melee, and has 1 extra hitpoint
- Quick        has one extra movement point, but 10% fewer hitpoints
- Resilient    increases hitpoints by 10% and adds 3 hitpoints
+ Quick        has one extra movement point, but 5% fewer hitpoints
+ Resilient    increases hitpoints by 1 per level and adds 4 hitpoints
  Intelligent  requires 20% less experience to advance a level (not Trolls)
+ Dextrous     does 1 extra damage per strike in ranged combat (Elves only)
+ Healthy      can rest while moving and has 2 extra hitpoints (Dwarves only)
+ Fearless     fights normally during unfavorable times of day/night (Trolls and
+              Walking Corpses only)
 
 There are also some traits that are not assigned randomly:
 
  Loyal        has zero upkeep cost
- Dextrous     does 1 extra damage per strike in ranged combat (Elves only)
- Undead       immune to poison (Undead only)
+ Undead       immune to drain, poison and plague
+ Mechanical   immune to drain, poison and plague
 
 
 MOVING
@@ -329,7 +334,7 @@ advancement tree, information about making your own scenarios and
 campaigns, how to contribute as a developer or a translator, and much
 more.  You can also join us to chat on IRC at irc.wesnoth.org in channel
 #wesnoth or join our forum community at http://forum.wesnoth.org/ where
-you can discuss the game with over 4000 forum members.  The forums also
+you can discuss the game with over 7000 forum members.  The forums also
 contain a searchable archive of tens of thousands of posts, spanning
 over several years -- an invaluable source of information.
 
