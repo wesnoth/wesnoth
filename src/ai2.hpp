@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file ai2.hpp
+//! AI-interface part 2, virtual.
+
 #ifndef AI2_HPP_INCLUDED
 #define AI2_HPP_INCLUDED
 
@@ -27,5 +30,5 @@ public:
 
 };
 
-
 #endif
+

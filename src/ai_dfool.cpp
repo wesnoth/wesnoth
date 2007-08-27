@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file ai_dfool.cpp
+//!
+
 #include "global.hpp"
 #include "ai_dfool.hpp"
 #include "variable.hpp"
@@ -37,9 +40,9 @@ namespace dfool {
     LOG_STREAM(info, ai)<<"dfool sees:"<<std::endl;
     
     //    for(unit_map::iterator ua = get_info().units.begin(); ua != get_info().units.end(); ++ua) {
-      //      std::string t = ua->second.get_ai_special();
-      //      LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_description()<<"\t"<<t<<std::endl;
-      //      LOG_STREAM(info, ai)<<"\t\t\t"<<ua->first.x<<","<<ua->first.y<<std::endl;
+    //        std::string t = ua->second.get_ai_special();
+    //        LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_description()<<"\t"<<t<<std::endl;
+    //        LOG_STREAM(info, ai)<<"\t\t\t"<<ua->first.x<<","<<ua->first.y<<std::endl;
     //    }
 
     unit_list all = all_units();
@@ -79,20 +82,21 @@ namespace dfool {
 
       LOG_STREAM(info, ai)<<"dfool order:"<<order_id<<std::endl;
 
-      //first find units where AI_SPECIAL matches order id
+      // First find units where AI_SPECIAL matches order id
       config order_filter;
       order_filter["ai_special"]=order_id;
       unit_list order_units = filter_units(order_filter,my_units,get_info().units);
       if(num > order_units.size()){
-	//need to populate orders
-	//find units that match any filter. If no filters then accept all units.        
+	// Need to populate orders
+	// Find units that match any filter. 
+	// If no filters, then accept all units.        
 	if(filter.size()){
 	  for(config::child_list::const_iterator f = filter.begin(); f != filter.end(); ++f) {
 	    config ff=**f;
 	    //            LOG_STREAM(info, ai)<<"dfool filter:"<<std::endl;
             unit_list filtered_units=filter_units(ff,my_units,get_info().units);
 
-	    //FIXME: add sorting
+	    //! @todo FIXME: add sorting
 	    
             for(unit_list::iterator i = filtered_units.begin(); i != filtered_units.end() && (num > order_units.size()); ++i) {
 	      unit_map::iterator ui=unit(*i,get_info().units);
@@ -118,7 +122,7 @@ namespace dfool {
         }
       }
       
-      //execute commands
+      // Execute commands
       for(unit_list::iterator ou = order_units.begin(); ou != order_units.end(); ou++){
         const config::child_list& commands = (**o).get_children("command");
 	bool com_break=false;
@@ -245,9 +249,9 @@ namespace dfool {
 	int closest_distance = -1;
 	std::pair<location,location> closest_move;
 
-	//this undoubtedly could be done more cleanly
+	//! @todo This undoubtedly could be done more cleanly
 	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
-	  //must restrict move_map to only unit that is moving.
+	  // Must restrict move_map to only unit that is moving.
 	  if(i->second==m->first){
 	    const int distance = distance_between(target,i->first);
 	    //	    int distance=10000; 
@@ -273,7 +277,7 @@ namespace dfool {
 	if(closest_distance != -1) {
 	  gamemap::location to = move_unit_partial(closest_move.second,closest_move.first,possible_moves);
 	  if(to != closest_move.second)
-	    return(false); //something unexpected happened
+	    return(false); 	// Something unexpected happened
 	}
       }
       return(true);
@@ -307,26 +311,26 @@ namespace dfool {
 
   void unit_memory::add_unit_sighting(unit u, gamemap::location l, size_t t){
     std::string unit_id= u.underlying_description();
-    //check if this unit has already been seen 
+    // Check if this unit has already been seen 
     size_t i,j;
     for(i=0; i < ids_.size();i++){
       if(unit_id == ids_[i]){break;}
     }
 
     if(i == ids_.size()){    
-      //unit has not been seen
+      // Unit has not been seen
       units_.push_back(u);
       ids_.push_back(unit_id);
       turns_.push_back(t);
       locations_.push_back(l);
     }else{
-      //update unit info
+      // Update unit info
       units_[i]=u;
       turns_[i]=t;
       locations_[i]=l;
     }    
 
-    //remove units that are co-located units 
+    // Remove units that are co-located units 
     std::set<size_t> remove_list;
     for(j=0; j < ids_.size();j++){
       if(j!=i && locations_[j] == locations_[i]){
@@ -345,9 +349,9 @@ namespace dfool {
     }
 
     if(i == ids_.size()){    
-      //unit not in memory
+      // Unit not in memory
     }else{
-      //remove unit info
+      // Remove unit info
       units_.erase(units_.begin()+i);
       ids_.erase(ids_.begin()+i);
       locations_.erase(locations_.begin()+i);
@@ -404,7 +408,7 @@ namespace dfool {
     
     std::vector<std::string> p = utils::paranthetical_split(val_string,0,"(",")");
 
-    //find function calls designated by @ and evaluate values inside ()
+    // Find function calls designated by @ and evaluate values inside ()
     std::string func;
     std::stringstream tot;
     std::cout<<"got here eval:"<<val_string<<"\n";
@@ -416,12 +420,12 @@ namespace dfool {
 		std::cout<<"function: "<<func<<"\n";
 		std::map<std::string, evaluator*>::iterator fmi = 
 		  function_map_->find(func);
-		if(fmi != function_map_->end()){//evaluate function
+		if(fmi != function_map_->end()){ // evaluate function
 		  std::cout<<"function ::: "<<func<<" ::: "<<fmi->first<<"\n";
 		  evaluator& f=*(fmi->second);
 		  ptemp<<f.value(p[i]);
 		  p[i]=ptemp.str();
-		}else{//error
+		}else{ // error
 		  std::cout<<"function undefined: "<<func<<"\n";
 		  LOG_STREAM(info, ai)<<"error: evaluator function undefined: "<<func<<"\n";
 		  p[i]="ERR";
@@ -466,7 +470,7 @@ namespace dfool {
   }
 
   std::string arithmetic_evaluator::value(const std::string& val_string){
-    std::string temp = evaluator::value(val_string);//calculate wml variables
+    std::string temp = evaluator::value(val_string); // calculate WML variables
     std::list<std::string> tokens = parse_tokens(temp);
     std::cout<<"tokens:\n";
     for(std::list<std::string>::const_iterator i=tokens.begin();i!=tokens.end();i++){
@@ -548,7 +552,7 @@ namespace dfool {
     int count=0;
     size_t i;
     
-    for(i=0;i!=s.size();i++){//strip out spaces
+    for(i=0;i!=s.size();i++){ // strip out spaces
 	 if(s[i]!=' '){
 	   str+=s[i];
 	 }
@@ -570,7 +574,7 @@ namespace dfool {
 	   }
 	 }
 
-	 if(!found && !dpfound && c==dpoint){//check for decimal point
+	 if(!found && !dpfound && c==dpoint){ // check for decimal point
 	   dpfound=true;
 	   found=true;
 	 }
@@ -656,4 +660,4 @@ namespace dfool {
     t<<distance;
     return(t.str());
   }
-}//end namespace dfool
+} // end namespace dfool

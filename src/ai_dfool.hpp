@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+//! @file ai_dfool.hpp
+//! The Standard-AI ??.
+//! This ai uses for its decisions only units it has "seen".
+
 #ifndef AI_DFOOL_HPP_INCLUDED
 #define AI_DFOOL_HPP_INCLUDED
 
@@ -47,13 +51,13 @@ namespace dfool {
     unit_memory(const game_data& gamedata, const config& cfg);
     void add_unit_sighting(unit u, gamemap::location l, size_t t);
     void remove_unit_sighting(std::string id);
-    //void purge(int turn = -1); //clean outdated entries
+    //void purge(int turn = -1); // Clean outdated entries
     void write(config& temp);
-    //create a map based upon units seen since turn
+    // Create a map based upon units seen since turn
     void known_map(unit_map& units, size_t turn=0); 
   private: 
     void write_element(int i, config& temp);
-    //could replace these with a single vector of memory elements
+    // Could replace these with a single vector of memory elements
     std::vector<unit> units_;
     std::vector<std::string> ids_;
     std::vector<size_t> turns_;
@@ -88,8 +92,9 @@ namespace dfool {
     std::string evaluate_tokens(std::list<std::string>&);
   };
 
-  //an ai that keeps track of what it has "seen", does not target units
-  //that it has not "seen" and does not make decisions based on unseen units.
+  //! An ai that keeps track of what it has "seen", 
+  //! does not target units that it has not "seen",
+  //! and does not make decisions based on unseen units.
   class dfool_ai : public ai_interface {
   public:
     dfool_ai(info& i) : ai_interface(i),unit_memory_(i.gameinfo , i.teams[i.team_num-1].ai_memory()){}
@@ -107,6 +112,6 @@ namespace dfool {
 
   };
 
+} // end namespace dfool
 
-}//end namespace dfool
 #endif
