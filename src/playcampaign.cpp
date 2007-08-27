@@ -130,7 +130,7 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 				    ).show();
 	}
 
-	if (res != QUIT)
+	if (res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
 		playcontroller.linger(log);
 
 	return res;
@@ -153,7 +153,7 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 				    ).show();
 	}
 
-	if (res != QUIT)
+	if (res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
 		playcontroller.linger(log);
 
 	// tell all clients that the campaign won't continue
@@ -291,7 +291,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		bool save_game_after_scenario = true;
 
 		const set_random_generator generator_setter(&recorder);
-		LEVEL_RESULT res;
+		LEVEL_RESULT res = LEVEL_CONTINUE;
 
 		try {
 			// preserve old label eg. replay
@@ -377,11 +377,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			//continue without saving is like a victory, but the
 			//save game dialog isn't displayed
-			if(res == LEVEL_CONTINUE_NO_SAVE) {
-				res = VICTORY;
+			if(res == LEVEL_CONTINUE_NO_SAVE)
 				save_game_after_scenario = false;
-			}
-			if(res != VICTORY)
+			if(res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE)
 				return res;
 		} catch(game::load_game_failed& e) {
 			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);

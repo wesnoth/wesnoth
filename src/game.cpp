@@ -1760,7 +1760,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_, log);
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
-		if(result == VICTORY && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
+		if((result == VICTORY or result == LEVEL_CONTINUE_NO_SAVE) && (state_.campaign_type.empty() || state_.campaign_type != "multiplayer")) {
 			the_end(disp());
 			about::show_about(disp(),state_.campaign);
 		}
