@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+//! @file unit_abilities.hpp 
+//! 
 
 #ifndef UNIT_ABILITIES_HPP_INCLUDED
 #define UNIT_ABILITIES_HPP_INCLUDED
@@ -60,9 +62,5 @@ class effect
 }
 
 
-
-#endif
-
-
-
+#endif 
 
