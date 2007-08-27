@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file unit_display.cpp 
+//!
+
 #include "global.hpp"
 
 #include "actions.hpp"
@@ -78,14 +81,14 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 
-	//when undo a move from an impassable terrain,
-	//the movement cost can be very high
+	// When undo a move from an impassable terrain,
+	// the movement cost can be very high
 	const int move_speed = minimum<int>(temp_unit.movement_cost(dst_terrain), 10);
 	const int total_mvt_time = static_cast<int>(150/acceleration * move_speed);
 	const unsigned int start_time = SDL_GetTicks();
 	int mvt_time = 1;
 
-	while(mvt_time < total_mvt_time-1) { // one draw in each hex at least
+	while(mvt_time < total_mvt_time-1) { // One draw in each hex at least
 		disp->delay(10);
 		mvt_time = SDL_GetTicks() -start_time;
 		if(mvt_time >=total_mvt_time) mvt_time = total_mvt_time -1;
@@ -125,12 +128,12 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 	game_display* disp = game_display::get_singleton();
 	wassert(!path.empty());
 	wassert(disp);
-	// one hex path (strange), nothing to do
+	// One hex path (strange), nothing to do
 	if (path.size()==1) return;
 	
 	const unit_map& units = disp->get_units();
 
-	// if the unit is visible scroll to there before hide it
+	// If the unit is visible, scroll to there before hide it
 	bool invisible =  teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 				u.invisible(path[0],units,teams);
 	if (!invisible) {
@@ -162,7 +165,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 	u.set_standing(*disp,path[path.size()-1]);
 
-	//clean the footsteps path, its hexes will be invalidated if needed
+	// Clean the footsteps path, its hexes will be invalidated if needed
 	disp->set_route(NULL);
 
 	u.set_hidden(was_hidden);
@@ -182,7 +185,7 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 		}
 
 		loser.set_dying(*disp,loc,attack,secondary_attack);
-	if(winner == NULL) { //test to see if there is no victor.
+	if(winner == NULL) { // Test to see if there is no victor.
 
 		while(!loser.get_animation()->animation_finished()) {
 
@@ -236,7 +239,7 @@ static void unit_attack_ranged(
 	const double acceleration = disp->turbo_speed();
 
 
-	// more damage shown for longer, but 1s at most for this factor
+	// More damage shown for longer, but 1s at most for this factor
 	const double xsrc = disp->get_location_x(a);
 	const double ysrc = disp->get_location_y(a) - (attacker.is_flying() ? 0 : disp->get_map().get_terrain_info(disp->get_map().get_terrain(a)).unit_height_adjust());
 	const double xdst = disp->get_location_x(b);
@@ -248,7 +251,7 @@ static void unit_attack_ranged(
 
 
 
-	// start leader and attacker animation, wait for attacker animation to end
+	// Start leader and attacker animation, wait for attacker animation to end
 	unit_animation missile_animation = attacker.set_attacking(*disp,a,damage,attack,secondary_attack,swing);
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
@@ -288,7 +291,7 @@ static void unit_attack_ranged(
 	const bool vertical_dir = (a.x == b.x) ? true:false;
 
 	defender.set_defending(*disp,b,damage,&attack,secondary_attack,swing);
-	// min of attacker, defender, missile and -200
+	// Min of attacker, defender, missile and -200
 	int start_time = -200;
 	start_time = minimum<int>(start_time,defender.get_animation()->get_begin_time());
 	start_time = minimum<int>(start_time,missile_animation.get_begin_time());
@@ -376,7 +379,8 @@ static void unit_attack_ranged(
 		events::pump();
 		missile_animation.update_last_draw_time();
 		disp->delay(10);
-		// we use missile animation because it's the only one not reseted in the middle to go to standing
+		// We use missile animation because it's the only one 
+		// not reseted in the middle to go to standing
 		animation_time = missile_animation.get_animation_time();
 	}
 
@@ -515,10 +519,7 @@ void unit_attack(
 	att->second.set_standing(*disp,a);
 	def->second.set_standing(*disp,b);
 	def->second.set_hidden(def_was_hidden);
-	disp->remove_temporary_unit();
-
-
-
+	disp->remove_temporary_unit(); 
 }
 
 
@@ -568,7 +569,7 @@ void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit
 	if (healing < 0) {
 		healed.set_poisoned(*disp,healed_loc, -healing);
 		start_time = minimum<int>(start_time, healed.get_animation()->get_begin_time());
-		// FIXME
+		//! @todo FIXME
 		sound::play_sound("poison.ogg");
 		disp->float_label(healed_loc, lexical_cast<std::string>(-healing), 255,0,0);
 	} else {
@@ -579,7 +580,7 @@ void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit
 	}
 	disp->draw();
 	events::pump();
-	// restart all anims in a synchronized way
+	// Restart all anims in a synchronized way
 	healed.restart_animation(*disp, start_time);
 	for(std::vector<unit_map::iterator>::iterator heal_reanim_it = healers.begin(); heal_reanim_it != healers.end(); ++heal_reanim_it) {
 		(*heal_reanim_it)->second.restart_animation(*disp, start_time);
@@ -593,7 +594,7 @@ void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit
 			finished &= (*heal_fanim_it)->second.get_animation()->animation_finished();
 			disp->invalidate((*heal_fanim_it)->first);
 		}
-		// TODO : adapt HP change speed to turbo_speed
+		//! @todo TODO : Adapt HP change speed to turbo_speed
 		if(healing > 0) {
 			healed.heal(1);
 			healing--;
@@ -616,4 +617,4 @@ void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit
 	disp->update_display();
 	events::pump();
 }
-} // end unit display namespace
+} // end unit_display namespace
