@@ -10,7 +10,11 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-   */
+*/
+
+//! @file unit_frame.hpp 
+//! Frame for unit's animation sequence.
+
 #ifndef UNIT_FRAME_H_INCLUDED
 #define UNIT_FRAME_H_INCLUDED
 
@@ -50,14 +54,14 @@ typedef progressive_<int> progressive_int;
 typedef progressive_<double> progressive_double;
 
 #endif
-//This hack prevents MSVC++ 6 to issue several warnings 
+// This hack prevents MSVC++ 6 to issue several warnings 
 #ifndef UNIT_FRAME_H_PART2
 #define UNIT_FRAME_H_PART2
 
-//a class to describe a unit's animation sequence
+//! Describe a unit's animation sequence.
 class unit_frame {
 	public:
-	// constructors
+	// Constructors
 		unit_frame();
 		explicit unit_frame(const image::locator& image, int duration=0,
 				const std::string& highlight="1.0",const std::string& offset="",

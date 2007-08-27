@@ -12,9 +12,11 @@
    See the COPYING file for more details.
 */
 
+//! @file unit_frame.cpp 
+//!
 
 #include "global.hpp"
-//note: global.hpp must be first!
+// NOTE: global.hpp must be first!
 
 #include "display.hpp"
 #define UNIT_FRAME_H_PART2
@@ -108,7 +110,7 @@ const T progressive_<T>::get_current_element(int current_time) const
 	}
 	if(sub_halo >= data_.size()) {
 		sub_halo = data_.size();
-		time = current_time; // never more than max allowed
+		time = current_time; // Never more than max allowed
 	}
 
 	const T first =  data_[sub_halo].first.first;
