@@ -668,6 +668,8 @@ def hack_syntax(filename, lines):
 
 def is_map(filename):
     "Is this file a map in either old or new style?"
+    if isresource(filename) or '{' in filename or '}' in filename:
+        return False
     has_map_name = "maps" in filename or filename.endswith(".map")
     fp = open(filename)
     lines = fp.readlines()
