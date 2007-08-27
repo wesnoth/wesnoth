@@ -13,9 +13,13 @@
 
    Full algorithm by Yogin.  Typing and optimization by Rusty.
 
-   This code has lots of debugging.  It is there for a reason: this
-   code is kinda tricky.  Do not remove it.
+   This code has lots of debugging.  It is there for a reason: 
+   this code is kinda tricky.  Do not remove it.
 */
+
+//! @file attack_prediction.cpp 
+//! Simulate combat to calculate attacks. Standalone program, benchmark.
+
 #include "attack_prediction.hpp"
 
 #include <cstring> // For memset
@@ -23,8 +27,9 @@
 
 #include "wassert.hpp"
 
-// Compile with -O3 -DBENCHMARK for speed testing, -DCHECK for testing
-// correctness (run tools/wesnoth-attack-sim.c --check on output)
+// Compile with -O3 -DBENCHMARK for speed testing, 
+// -DCHECK for testing correctness 
+// (run tools/wesnoth-attack-sim.c --check on output)
 #if !defined(BENCHMARK) && !defined(CHECK)
 #include "util.hpp"
 #else
@@ -44,7 +49,7 @@
 
 namespace
 {
-// A matrix of A's hitpoints vs B's hitpoints.
+//! A matrix of A's hitpoints vs B's hitpoints.
 struct prob_matrix
 {
 	// Simple matrix, both known HP.
@@ -78,8 +83,7 @@ struct prob_matrix
 	void dump() const;
 
 	// We need four matrices, or "planes", reflecting the possible
-	// "slowed" states (neither slowed, A slowed, B slowed, both
-	// slowed).
+	// "slowed" states (neither slowed, A slowed, B slowed, both slowed).
 	enum {
 		NEITHER_SLOWED,
 		A_SLOWED,
@@ -108,7 +112,7 @@ private:
 	void shift_rows(unsigned dst, unsigned src,
 					unsigned damage, double prob, bool drain);
 
-	// FIXME: rename using _ at end.
+	//! @todo FIXME: rename using _ at end.
 	unsigned int rows, cols;
 	double *plane[4];
 
@@ -157,7 +161,7 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 
 	// Transfer HP distribution from A?
 	if (!a_summary[0].empty()) {
-		// FIXME: Can optimize here.
+		// @todo FIXME: Can optimize here.
 		min_row[NEITHER_SLOWED] = 0;
 		min_row[A_SLOWED] = 0;
 		min_col[A_SLOWED] = b_hp - 1;
@@ -182,8 +186,8 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		debug(("B has fought before\n"));
 		dump();
 	} else {
-		// if a unit has drain it might end with more HP than before
-		// make sure we don't access the matrix in invalid positions
+		// If a unit has drain it might end with more HP than before.
+		// Make sure we don't access the matrix in invalid positions.
 		a_hp = minimum<unsigned int>(a_hp, rows - 1);
 		b_hp = minimum<unsigned int>(b_hp, cols - 1);
 		val(NEITHER_SLOWED, a_hp, b_hp) = 1.0;
@@ -316,8 +320,8 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src,
 	}
 }
 
-// Shift prob_matrix to reflect probability 'hit_chance' that damage (up
-// to) 'damage' is done to 'b'.
+// Shift prob_matrix to reflect probability 'hit_chance' 
+// that damage (up to) 'damage' is done to 'b'.
 void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool a_slows, bool a_drains)
 {
@@ -330,7 +334,7 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 		if (!plane[src])
 			continue;
 
-		// If a slows us we go from 0=>2, 1=>3, 2=>2 3=>3.
+		// If A slows us, we go from 0=>2, 1=>3, 2=>2 3=>3.
 		if (a_slows)
 			dst = (src|2);
 		else
@@ -442,8 +446,8 @@ double prob_matrix::dead_prob() const
 	return prob;
 }
 
-// Shift matrix to reflect probability 'hit_chance' that damage (up
-// to) 'damage' is done to 'a'.
+// Shift matrix to reflect probability 'hit_chance' 
+// that damage (up to) 'damage' is done to 'a'.
 void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool b_slows, bool b_drains)
 {
@@ -456,7 +460,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 		if (!plane[src])
 			continue;
 
-		// If b slows us we go from 0=>1, 1=>1, 2=>3 3=>3.
+		// If B slows us, we go from 0=>1, 1=>1, 2=>3 3=>3.
 		if (b_slows)
 			dst = (src|1);
 		else
@@ -478,7 +482,7 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 	}
 }
 
-}
+} // end anon namespace
 
 unsigned combatant::hp_dist_size(const battle_context::unit_stats &u, const combatant *prev)
 {
@@ -523,9 +527,9 @@ combatant::combatant(const combatant &that, const battle_context::unit_stats &u)
 
 
 
-// For swarm, whether we get an attack depends on HP distribution from
-// previous combat.  So we roll this into our P(hitting), since no
-// attack is equivalent to missing.
+// For swarm, whether we get an attack depends on HP distribution 
+// from previous combat.  So we roll this into our P(hitting), 
+// since no attack is equivalent to missing.
 void combatant::adjust_hitchance()
 {
 	if (summary[0].empty() || u_.swarm_min == u_.swarm_max)
@@ -559,7 +563,7 @@ void combatant::adjust_hitchance()
 	debug(("\n"));
 }
 
-// Minimum hp we could possibly have.
+// Minimum HP we could possibly have.
 unsigned combatant::min_hp() const
 {
 	if (summary[0].empty())
@@ -679,7 +683,7 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 	unsigned int b_damage = opp.u_.damage, b_slow_damage = opp.u_.slow_damage;
 
 	// To simulate stoning, we set to amount which kills, and re-adjust after.
-	// FIXME: This doesn't work for rolling calculations, just first battle.
+	//! @todo FIXME: This doesn't work for rolling calculations, just first battle.
 	if (u_.stones)
 		a_damage = a_slow_damage = opp.u_.max_hp;
 	if (opp.u_.stones)
@@ -715,8 +719,9 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 }
 
 // Two man enter.  One man leave!
-// ... Or maybe two.  But definitely not three.  Of course, one could
-// be a woman.  Or both.  And neither could be human, too.
+// ... Or maybe two.  But definitely not three.  
+// Of course, one could be a woman.  Or both.  
+// And neither could be human, too.
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp)
 {
@@ -794,8 +799,9 @@ void combatant::fight(combatant &opp)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 
-	// make sure we don't try to access the vectors out of bounds, drain increases hps
-	// so we determine the number of hp here and make sure it stays within bounds
+	// Make sure we don't try to access the vectors out of bounds, 
+	// drain increases HPs so we determine the number of HP here 
+	// and make sure it stays within bounds
 	const unsigned int hp = minimum<unsigned int>(u_.hp, hp_dist.size() - 1);
 	const unsigned int opp_hp = minimum<unsigned int>(opp.u_.hp, opp.hp_dist.size() - 1);
 
@@ -812,7 +818,7 @@ void combatant::fight(combatant &opp)
 	if (u_.slows)
 		opp.slowed += (1 - opp.slowed) * opp_touched;
 
-	// FIXME: This is approximate: we could drain, then get hit.
+	//! @todo FIXME: This is approximate: we could drain, then get hit.
 	untouched = hp_dist[hp];
 	opp.untouched = opp.hp_dist[opp_hp];
 }
@@ -829,8 +835,8 @@ double combatant::average_hp(unsigned int healing) const
 }
 
 #if defined(BENCHMARK) || defined(CHECK)
-// We create a significant number of nasty-to-calculate units, and
-// test each one against the others.
+// We create a significant number of nasty-to-calculate units, 
+// and test each one against the others.
 #define NUM_UNITS 50
 
 // Stolen from glibc headers sys/time.h
@@ -900,8 +906,8 @@ static void run(unsigned specific_battle)
 				if (specific_battle && battle != specific_battle)
 					continue;
 				u[j]->fight(*u[i]);
-				// We need this here, because swarm means out num hits
-				// can change.
+				// We need this here, because swarm means 
+				// out num hits can change.
 				u[i]->set_effectiveness((i % 7) + 2, 0.3 + (i % 6)*0.1,
 										(i % 8) == 0);
 				u[k]->fight(*u[i]);
