@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file ai_python.cpp
+//! Interface to python for ai-scripts.
+
 /* Note about Python exceptions:
 
    Originally, runtime exceptions were used for things like using out of bounds
@@ -670,9 +673,9 @@ static int location_internal_compare(wesnoth_location* left, wesnoth_location* r
 
 static long location_internal_hash(wesnoth_location* obj)
 {
-	// Never return -1, which is reserved for raising an exception. Note that
-	// both x and y can get values < 0, e.g. when checking all positions in
-	// a certain radius at the map border.
+	// Never return -1, which is reserved for raising an exception. 
+	// Note that both x and y can get values < 0, 
+	// e.g. when checking all positions in a certain radius at the map border.
 	unsigned char x = (unsigned)obj->location_->x;
 	unsigned char y = (unsigned)obj->location_->y;
 	return x << 8 + y;
@@ -921,7 +924,7 @@ static PyObject* wrapper_team_is_enemy(wesnoth_team* team, void* /*closure*/)
 {
 	int result;
 
-	// find side number of team
+	// Find side number of team
 	int side = 0;
 	for (size_t t = 0; t < running_instance->get_teams().size(); t++) {
 		if (team->team_ == &running_instance->get_teams()[t]) {
@@ -983,15 +986,15 @@ PyObject *python_ai::wrapper_team_targets(PyObject *, PyObject *args)
 
     PyObject* dict = PyDict_New();
 
-    // FIXME: There should be a C++ method to return all targets instead, for
-    // now it's just copy&pasted.
+    //! @todo FIXME: There should be a C++ method to return all targets instead, 
+	// for now it's just copy&pasted.
     std::vector<team::target>& team_targets =
         running_instance->current_team().targets();
 
     unit_map &units = running_instance->get_info().units;
 
     for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-        //explicit targets for this team
+        // explicit targets for this team
         for(std::vector<team::target>::iterator j = team_targets.begin();
             j != team_targets.end(); ++j) {
             if(u->second.matches_filter(&(j->criteria), u->first)) {
@@ -1378,9 +1381,9 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		&wesnoth_location_type, &to, &weapon ) )
 		return NULL;
 
-	// FIXME: Remove this check and let the C++ code do the check if the attack
-	// is valid at all (there may be ranged attacks or similar later, and then
-	// the below will horribly fail).
+	//! @todo FIXME: Remove this check and let the C++ code do the check 
+	// if the attack is valid at all (there may be ranged attacks or similar later, 
+	// and then the code below will horribly fail).
 	if (!tiles_adjacent(*from->location_, *to->location_))
 		return_none;
 
@@ -1497,8 +1500,8 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 	info& inf = running_instance->get_info();
 
-	// We need to temporarily move our unit to where the attack calculation is
-	// supposed to take place.
+	// We need to temporarily move our unit to where the attack calculation 
+	// is supposed to take place.
 	std::pair<gamemap::location,unit> *temp = inf.units.extract(*from->location_);
 	std::pair<gamemap::location,unit> *backup = temp;
 	std::pair<gamemap::location,unit> replace(*from->location_,*self->unit_);
@@ -1529,7 +1532,7 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 			PyDict_SetItem(ddict, PyInt_FromLong(i), PyFloat_FromDouble(defender[i]));
 	}
 
-	// restore old position again
+	// Restore old position again
 	temp = inf.units.extract(*from->location_);
 	if (backup)
 		inf.units.add(backup);
@@ -1768,8 +1771,8 @@ void python_ai::play_turn()
 				std::string("internal error (wrong python version?)")) <<
 				std::endl;
 		}
-		// Otherwise, re-throw the exception here, so it will get handled
-		// properly further up.
+		// Otherwise, re-throw the exception here, 
+		// so it will get handled properly further up.
 		else {
 			LOG_AI << "Python script has been interrupted.\n";
 			Py_XDECREF(ret);
