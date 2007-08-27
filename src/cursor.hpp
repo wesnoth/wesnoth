@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file cursor.hpp 
+//!
+
 #ifndef CURSOR_HPP_INCLUDED
 #define CURSOR_HPP_INCLUDED
 
@@ -29,11 +32,11 @@ struct manager
 
 enum CURSOR_TYPE { NORMAL, WAIT, MOVE, ATTACK, HYPERLINK, MOVE_DRAG, ATTACK_DRAG, NO_CURSOR, NUM_CURSORS };
 
-// This function use temporary the b&w cursors while the display is busy
-// If used, the colours ones will be reused when display is ready again
+//! This function uses temporary the b&w cursors while the display is busy.
+// If used, the colour-cursors will be reused when the display is ready again.
 void temporary_use_bw();
 
-// use the default parameter to reset cursors
+//! Use the default parameter to reset cursors.
 // e.g. after a change in color cursor preferences
 void set(CURSOR_TYPE type = NUM_CURSORS);
 void set_dragging(bool drag);
@@ -53,6 +56,6 @@ private:
 	CURSOR_TYPE old_;
 };
 
-}
+} // end namespace cursor
 
 #endif

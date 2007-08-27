@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file cursor.cpp 
+//! Support for different cursors-shapes.
+
 #include "global.hpp"
 
 #include "cursor.hpp"
@@ -39,7 +42,7 @@ static SDL_Cursor* create_cursor(surface surf)
 		return NULL;
 	}
 
-	//the width must be a multiple of 8 (SDL requirement)
+	// The width must be a multiple of 8 (SDL requirement)
 
 #ifdef __APPLE__
 	size_t cursor_width = 16;
@@ -52,8 +55,8 @@ static SDL_Cursor* create_cursor(surface surf)
 	std::vector<Uint8> data((cursor_width*nsurf->h)/8,0);
 	std::vector<Uint8> mask(data.size(),0);
 
-	//see http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation on
-	//the format that data has to be in to pass to SDL_CreateCursor
+	// See http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation 
+	// on the format that data has to be in to pass to SDL_CreateCursor
 	surface_lock lock(nsurf);
 	const Uint32* const pixels = reinterpret_cast<Uint32*>(lock.pixels());
 	for(int y = 0; y != nsurf->h; ++y) {
@@ -87,8 +90,8 @@ namespace {
 
 SDL_Cursor* cache[cursor::NUM_CURSORS] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 
-//this array must have members corresponding to cursor::CURSOR_TYPE enum members
-//Apple need 16x16 b&w cursors
+// This array must have members corresponding to cursor::CURSOR_TYPE enum members
+// Apple need 16x16 b&w cursors
 #ifdef __APPLE__
 const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
 #else
@@ -97,7 +100,7 @@ const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "
 
 const std::string colour_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
 
-// position of the click point from the normal topleft
+// Position of the hotspot of the cursor, from the normal topleft
 const int shift_x[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 2, 3, 0};
 const int shift_y[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 20, 22, 0};
 
@@ -158,12 +161,12 @@ void temporary_use_bw()
 
 void set(CURSOR_TYPE type)
 {
-	// change only if it's a valid cursor
+	// Change only if it's a valid cursor
 	if (type != NUM_CURSORS) {
 		current_cursor = type;
 	} else if (current_cursor == NUM_CURSORS) {
-		// except if the current one is also invalid
-		// in this case change to a valid one
+		// Except if the current one is also invalid.
+		// In this case, change to a valid one.
 		current_cursor = NORMAL;
 	} 
 
@@ -171,7 +174,7 @@ void set(CURSOR_TYPE type)
 
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
 	
-	// cause problem on mac:
+	// Causes problem on Mac:
 	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
 		SDL_SetCursor(cursor_image);
 	
@@ -237,17 +240,17 @@ void draw(surface screen)
 	}
 
 	if (!colour_ready) {
-		// display start to draw cursor
+		// Display start to draw cursor
 		// so it can now display colour cursor
 		colour_ready = true;
-		// reset the cursor to be sure that we hide the b&w
+		// Reset the cursor to be sure that we hide the b&w
 		set();
 	}
 
-	//FIXME: don't parse the file path every time
+	//! @todo FIXME: don't parse the file path every time
 	const surface surf(image::get_image("cursors/" + colour_images[current_cursor]));
 	if(surf == NULL) {
-		//fall back to b&w cursors
+		// Fall back to b&w cursors
 		std::cerr << "could not load colour cursors. Falling back to hardware cursors\n";
 		preferences::set_colour_cursors(false);
 		return;
@@ -271,11 +274,11 @@ void draw(surface screen)
 	cursor_x = new_cursor_x;
 	cursor_y = new_cursor_y;
 
-	//save the screen area where the cursor is being drawn onto the back buffer
+	// Save the screen area where the cursor is being drawn onto the back buffer
 	SDL_Rect area = {cursor_x - shift_x[current_cursor], cursor_y - shift_y[current_cursor],surf->w,surf->h};
 	SDL_BlitSurface(screen,&area,cursor_buf,NULL);
 
-	//blit the surface
+	// Blit the surface
 	SDL_BlitSurface(surf,NULL,screen,&area);
 
 	if(must_update) {
@@ -298,4 +301,5 @@ void undraw(surface screen)
 	update_rect(area);
 }
 
-}
+} // end namespace cursor
+
