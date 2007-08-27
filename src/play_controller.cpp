@@ -217,6 +217,17 @@ void play_controller::save_map(){
 
 void play_controller::load_game(){
 	menu_handler_.load_game();
+
+	// maybe this was saved while in linger mode?
+	if (gamestate_.completion != "running")
+	{
+		browse_ = true;
+		linger_ = true;
+		// End all unit moves
+		for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
+			u->second.set_user_end_turn(true);
+		}
+	}
 }
 
 void play_controller::preferences(){
