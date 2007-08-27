@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file config.hpp 
+//! Definitions for the interface to Wesnoth Markup Language (WML).
+
 #ifndef CONFIG_HPP_INCLUDED
 #define CONFIG_HPP_INCLUDED
 
@@ -24,22 +28,21 @@
 #include "serialization/string_utils.hpp"
 
 
-//This module defines the interface to Wesnoth Markup Language (WML).
-//WML is a simple hierarchical text-based file format. The format
-//is defined in Wiki, under BuildingScenariosWML
+// This module defines the interface to Wesnoth Markup Language (WML).
+// WML is a simple hierarchical text-based file format. 
+// The format is defined in Wiki, under BuildingScenariosWML
 //
-//All configuration files are stored in this format, and data is
-//sent across the network in this format. It is thus used extensively
-//throughout the game.
+// All configuration files are stored in this format, 
+// and data is sent across the network in this format. 
+// It is thus used extensively throughout the game.
 
 typedef std::map<std::string,t_string> string_map;
 
-//a config object defines a single node in a WML file, with access to
-//child nodes.
+//! A config object defines a single node in a WML file, with access to child nodes.
 class config
 {
 public:
-	//create an empty node.
+	// Create an empty node.
 	config() {}
 
 	config(const config& cfg);
@@ -122,13 +125,14 @@ public:
 		Itor i_;
 	};
 
-	//in-order iteration over all children
+	//! In-order iteration over all children.
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
 
-	//a function to get the differences between this object, and 'c', as another config
-	//object. i.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2)) will make cfg1 identical
-	//to cfg2.
+	//! A function to get the differences between this object, 
+	//! and 'c', as another config object. 
+	//! I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2)) 
+	//! will make cfg1 identical to cfg2.
 	config get_diff(const config& c) const;
 
 	void apply_diff(const config& diff); //throw error
@@ -137,25 +141,25 @@ public:
 
 	bool matches(const config &filter) const;
 
-	//removes keys with empty values
+	//! Removes keys with empty values.
 	void prune();
 
-	//append data from another config object to this one. attributes in the
-	//latter config object will clobber attributes in this one.
+	//! Append data from another config object to this one. 
+	//! Attributes in the latter config object will clobber attributes in this one.
 	void append(const config& cfg);
 
-	//all children with the given key will be merged into the first element
-	//with that key
+	//! All children with the given key will be merged 
+	//! into the first element with that key.
 	void merge_children(const std::string& key);
 
-	//resets the translated values of all strings contained in this object
+	//! Resets the translated values of all strings contained in this object
 	void reset_translation() const;
 
-	//all the attributes of this node.
+	//! All the attributes of this node.
 	string_map values;
 
 private:
-	//a list of all children of this node.
+	//! A list of all children of this node.
 	child_map children;
 
 	std::vector<child_pos> ordered_children;

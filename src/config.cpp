@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file config.cpp 
+//! Routines related to configuration-files / WML.
+
 #include "global.hpp"
 
 #include <algorithm>
@@ -204,19 +207,19 @@ void config::clear_children(const std::string& key)
 
 void config::remove_child(const std::string& key, size_t index)
 {
-	//remove from the ordering
+	// Remove from the ordering
 	const child_pos pos(children.find(key),index);
 	ordered_children.erase(std::remove(ordered_children.begin(),ordered_children.end(),pos),ordered_children.end());
 
-	//decrement all indices in the ordering that are above this index, since everything
-	//is getting shifted back by 1.
+	// Decrement all indices in the ordering that are above this index, 
+	// since everything is getting shifted back by 1.
 	for(std::vector<child_pos>::iterator i = ordered_children.begin(); i != ordered_children.end(); ++i) {
 		if(i->pos->first == key && i->index > index) {
 			i->index--;
 		}
 	}
 
-	//remove from the child map
+	// Remove from the child map
 	child_list& v = children[key];
 	//wassert(index < v.size());
 	if(index >= v.size()) {
@@ -263,7 +266,7 @@ private:
 	const std::string name_, value_;
 };
 
-}
+} // end namespace 
 
 config* config::find_child(const std::string& key,
                            const std::string& name,
@@ -410,24 +413,24 @@ config config::get_diff(const config& c) const
 
 		static const child_list dummy;
 
-		//get the two child lists. 'b' has to be modified to look like 'a'
+		// Get the two child lists. 'b' has to be modified to look like 'a'.
 		const child_list& a = itor_a != children.end() ? itor_a->second : dummy;
 		const child_list& b = itor_b != c.children.end() ? itor_b->second : dummy;
 
 		size_t ndeletes = 0;
 		size_t ai = 0, bi = 0;
 		while(ai != a.size() || bi != b.size()) {
-			//if the two elements are the same, nothing needs to be done
+			// If the two elements are the same, nothing needs to be done.
 			if(ai < a.size() && bi < b.size() && *a[ai] == *b[bi]) {
 				++ai;
 				++bi;
 			} else {
-				//we have to work out what the most appropriate operation --
-				//delete, insert, or change is the best to get b[bi] looking like a[ai]
+				// We have to work out what the most appropriate operation --
+				// delete, insert, or change is the best to get b[bi] looking like a[ai].
 				std::stringstream buf;
 
-				//if b has more elements than a, then we assume this element is an
-				//element that needs deleting
+				// If b has more elements than a, then we assume this element 
+				// is an element that needs deleting.
 				if(b.size() - bi > a.size() - ai) {
 					config& new_delete = res.add_child("delete_child");
 					buf << bi - ndeletes;
@@ -438,8 +441,8 @@ config config::get_diff(const config& c) const
 					++bi;
 				}
 
-				//if b has less elements than a, then we assume this element is an
-				//element that needs inserting
+				// If b has less elements than a, then we assume this element 
+				// is an element that needs inserting.
 				else if(b.size() - bi < a.size() - ai) {
 					config& new_insert = res.add_child("insert_child");
 					buf << ai;
@@ -449,8 +452,8 @@ config config::get_diff(const config& c) const
 					++ai;
 				}
 
-				//otherwise, they have the same number of elements, so try just
-				//changing this element to match
+				// Otherwise, they have the same number of elements, 
+				// so try just changing this element to match.
 				else {
 					config& new_change = res.add_child("change_child");
 					buf << bi;
@@ -528,13 +531,13 @@ void config::merge_with(const config& c)
 {
 	std::map<std::string, unsigned> visitations;
 
-	//merge attributes first
+	// Merge attributes first
 	string_map::const_iterator attrib_it, attrib_end = c.values.end();
 	for(attrib_it = c.values.begin(); attrib_it != attrib_end; ++attrib_it) {
 		values[attrib_it->first] = attrib_it->second;
 	}
 
-	//now merge shared tags
+	// Now merge shared tags
 	all_children_iterator::Itor i, i_end = ordered_children.end();
 	for(i = ordered_children.begin(); i != i_end; ++i) {
 		const std::string& tag = i->pos->first;
@@ -547,7 +550,7 @@ void config::merge_with(const config& c)
 		}
 	}
 
-	//now add any unvisited tags
+	// Now add any unvisited tags
 	for(child_map::const_iterator j = c.children.begin(); j != c.children.end(); ++j) {
 		const std::string& tag = j->first;
 		unsigned &visits = visitations[tag];
@@ -558,8 +561,9 @@ void config::merge_with(const config& c)
 }
 /*
 // Create a new config tree as a copy of 'this' overridden by 'c'.
-// Nodes are matched up by name and with name by order. Nodes in 'c',
-// but not in 'this' are added at the end in the order they appeared in 'c'.
+// Nodes are matched up by name and with name by order. 
+// Nodes in 'c', but not in 'this' are added at the end,
+// in the order they appeared in 'c'.
 config config::merge_with(const config& c) const
 {
 	config n;
@@ -567,8 +571,8 @@ config config::merge_with(const config& c) const
 	    j != this->values.end(); ++j) {
 		n.values[j->first] = j->second;
 	}
-	// This ends up copying values twice (in config initialization and
-	// append), but is simpler than dealing with the guts of m.
+	// This ends up copying values twice (in config initialization 
+	// and append), but is simpler than dealing with the guts of m.
 	config m(c);
 	for(all_children_iterator i = this->ordered_begin();
 	    i != this->ordered_end(); ++i) {
@@ -588,7 +592,7 @@ config config::merge_with(const config& c) const
 
 bool config::matches(const config &filter) const
 {
-	// first match values. all values should match
+	// First match values. all values should match.
 	for(string_map::const_iterator j = filter.values.begin(); j != filter.values.end(); ++j) {
 		if(!this->values.count(j->first)) return false; 
 		const t_string& test_val = this->values.find(j->first)->second;
@@ -608,7 +612,7 @@ bool config::matches(const config &filter) const
 		}
 	}
 	
-	//now, match the kids
+	// Now, match the kids
 	for(all_children_iterator i2 = filter.ordered_begin(); i2 != filter.ordered_end(); ++i2) {
 		if(*(*i2).first == "not") continue;
 		child_list interesting_children = get_children(*(*i2).first);

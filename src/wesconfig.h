@@ -11,9 +11,12 @@
 # endif
 #endif
 
+//! @file wesconfig.h
+//! Some defines: VERSION, PACKAGE, MIN_SAVEGAME_VERSION
+
 /**
- * Some older savegames of Wesnoth can't be loaded anymore this
- * variable defines the minimum required version
+ * Some older savegames of Wesnoth can't be loaded anymore,
+ * this variable defines the minimum required version.
  */
 #define MIN_SAVEGAME_VERSION "1.3.2"
 
