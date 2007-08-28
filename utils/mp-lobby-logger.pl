@@ -256,14 +256,19 @@ while (1) {
 							if ($_->{'name'} eq 'insert') {
 								my $username = $users[$userindex]->{'attr'}->{'name'};
 								if ($_->{'attr'}->{'available'} eq "yes") {
+									my $game_id  = $users[$userindex]->{'attr'}->{'game_id'};
 									my $location = $users[$userindex]->{'attr'}->{'location'};
-									print STDERR &timestamp . "++> $username has left a game: \"$location\"\n" if $showjoins and $showgames;
-									print LOG &logtimestamp . "++> $username has left a game: \"$location\"\n" if $logfile;
+									$users[$userindex]->{'attr'}->{'game_id'}  = "";
+									$users[$userindex]->{'attr'}->{'location'} = "";
+									print STDERR &timestamp . "++> $username has left a game: \"$location\" ($game_id)\n" if $showjoins and $showgames;
+									print LOG &logtimestamp . "++> $username has left a game: \"$location\" ($game_id)\n" if $logfile;
 								} elsif ($_->{'attr'}->{'available'} eq "no") {
+									my $game_id  = $_->{'attr'}->{'game_id'};
 									my $location = $_->{'attr'}->{'location'};
+									$users[$userindex]->{'attr'}->{'game_id'}  = $game_id;
 									$users[$userindex]->{'attr'}->{'location'} = $location;
-									print STDERR &timestamp . "<++ $username has joined a game: \"$location\"\n" if $showjoins and $showgames;
-									print LOG &logtimestamp . "<++ $username has joined a game: \"$location\"\n" if $logfile;
+									print STDERR &timestamp . "<++ $username has joined a game: \"$location\" ($game_id)\n" if $showjoins and $showgames;
+									print LOG &logtimestamp . "<++ $username has joined a game: \"$location\" ($game_id)\n" if $logfile;
 								}
 							} elsif ($_->{'name'} eq 'delete') {
 							} else {

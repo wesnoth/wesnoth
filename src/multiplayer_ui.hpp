@@ -209,6 +209,7 @@ private:
 	struct user_info
 	{
 		std::string    name;
+		std::string    game_id;
 		std::string    location;
 		user_relation  relation;
 		user_state     state;

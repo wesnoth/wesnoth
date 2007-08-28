@@ -19,13 +19,15 @@
 player::player(const std::string& n, config& cfg,size_t max_messages,size_t time_period) : name_(n), cfg_(cfg), flood_start_(0), messages_since_flood_start_(0), MaxMessages(max_messages), TimePeriod(time_period)
 {
 	cfg_["name"] = n;
-	mark_available(true,"");
+	mark_available();
 }
 
-void player::mark_available(bool val,std::string location )
+// keep 'available' and game name ('location') for backward compatibility
+void player::mark_available(std::string game_id, std::string location)
 {
-	cfg_.values["available"] = (val ? "yes" : "no");
-	cfg_.values["location"] = location;
+	cfg_.values["available"] = game_id.empty() ? "yes" : "no";
+	cfg_.values["game_id"]   = game_id;
+	cfg_.values["location"]  = location;
 }
 
 const std::string& player::name() const

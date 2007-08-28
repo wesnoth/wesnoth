@@ -650,7 +650,7 @@ void lobby::process_event()
 		if (games_menu_.empty()) {
 			set_selected_game("");
 		} else {
-			set_selected_game(games_menu_.selected_game().name);
+			set_selected_game(games_menu_.selected_game().id);
 		}
 		ui::gamelist_updated();
 		last_selected_game_ = selected_game;

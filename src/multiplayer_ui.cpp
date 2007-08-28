@@ -647,13 +647,17 @@ void ui::gamelist_updated(bool silent)
 	for (user = users.begin(); user != users.end(); ++user) {
 		user_info u_elem;
 		u_elem.name = (**user)["name"];
+		u_elem.game_id = "";
 		u_elem.location = "";
 		u_elem.state = (**user)["available"] == "no" ? GAME : LOBBY;
-		if(!(**user)["location"].empty()) {
-			u_elem.location = (**user)["location"];
-			if (u_elem.location == selected_game_) {
+		if(!(**user)["game_id"].empty()) {
+			u_elem.game_id = (**user)["game_id"];
+			if (u_elem.game_id == selected_game_) {
 				u_elem.state = SEL_GAME;
 			}
+		}
+		if(!(**user)["location"].empty()) {
+			u_elem.location = (**user)["location"];
 		}
 		if (u_elem.name == preferences::login()) {
 			u_elem.relation = ME;
@@ -708,13 +712,13 @@ void ui::gamelist_updated(bool silent)
 	set_user_menu_items(menu_strings);
 }
 
-void ui::set_selected_game(const std::string game_name)
+void ui::set_selected_game(const std::string game_id)
 {
 	// reposition the player list to show the players in the selected game
-	if (preferences::sort_list() && (selected_game_ != game_name)) {
+	if (preferences::sort_list() && (selected_game_ != game_id)) {
 		users_menu_.move_selection(0);
 	}
-	selected_game_ = game_name;
+	selected_game_ = game_id;
 }
 
 void ui::set_user_menu_items(const std::vector<std::string>& list)
