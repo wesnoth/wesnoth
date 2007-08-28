@@ -36,6 +36,17 @@ playsingle_controller::playsingle_controller(const config& level, const game_dat
 {
 	end_turn_ = false;
 	replaying_ = false;
+
+	// game may need to start in linger mode
+	if (state_of_game.completion != "running")
+	{
+		browse_ = true;
+		linger_ = true;
+		// End all unit moves
+		for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
+			u->second.set_user_end_turn(true);
+		}
+	}
 }
 
 void playsingle_controller::init_gui(){
@@ -212,6 +223,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		}
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
 			gamestate_.completion = (end_level.result == VICTORY) ? "victory" : "defeat";
+			recorder.set_save_info_completion(gamestate_.completion);
 			// If we're a player, and the result is victory/defeat, then send 
 			// a message to notify the server of the reason for the game ending.
 			if (!obs) {
@@ -250,6 +262,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				   end_level.result == LEVEL_CONTINUE || 
 				   end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			gamestate_.completion = "victory";
+			recorder.set_save_info_completion(gamestate_.completion);
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {

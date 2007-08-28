@@ -160,6 +160,15 @@ void replay::set_save_info(const game_state& save)
 	saveInfo_ = save;
 }
 
+
+void replay::set_save_info_completion(const std::string &st)
+// This function is a kluge to get around the fact that replay objects carry
+// around a copy of gamestate rather than a reference to the global gamestate.
+// That is probably a design bug that should be fixed.
+{
+	saveInfo_.completion = st;
+}
+
 void replay::set_skip(bool skip)
 {
 	skip_ = skip;
