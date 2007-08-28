@@ -38,7 +38,8 @@ playsingle_controller::playsingle_controller(const config& level, const game_dat
 	replaying_ = false;
 
 	// game may need to start in linger mode
-	if (state_of_game.completion != "running")
+	std::cout << "Completion: " << state_of_game.completion << "\n";
+	if (state_of_game.completion == "victory" || state_of_game.completion == "defeat")
 	{
 		browse_ = true;
 		linger_ = true;
