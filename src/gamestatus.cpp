@@ -1089,6 +1089,7 @@ game_state& game_state::operator=(const game_state& state)
 	campaign_xtra_defines = state.campaign_xtra_defines;
 	campaign = state.campaign;
 	scenario = state.scenario;
+	completion = state.completion;
 	players = state.players;
 	scoped_variables = state.scoped_variables;
 	
