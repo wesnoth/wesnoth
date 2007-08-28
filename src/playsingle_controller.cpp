@@ -211,6 +211,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			exit(0);
 		}
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
+			gamestate_.completion = (end_level.result == VICTORY) ? "victory" : "defeat";
 			// If we're a player, and the result is victory/defeat, then send 
 			// a message to notify the server of the reason for the game ending.
 			if (!obs) {
@@ -234,6 +235,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			log.quit(status_.turn());
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {
+			gamestate_.completion = "defeat";
 			log.defeat(status_.turn());
 			try {
 				game_events::fire("defeat");
@@ -247,6 +249,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		} else if (end_level.result == VICTORY || 
 				   end_level.result == LEVEL_CONTINUE || 
 				   end_level.result == LEVEL_CONTINUE_NO_SAVE) {
+			gamestate_.completion = "victory";
 			try {
 				game_events::fire("victory");
 			} catch(end_level_exception&) {
@@ -420,7 +423,7 @@ void playsingle_controller::play_turn(bool save)
 			}
 
 			finish_side_turn();
-			check_victory(units_,teams_,gamestate_);
+			check_victory(units_,teams_);
 		}
 	}
 
