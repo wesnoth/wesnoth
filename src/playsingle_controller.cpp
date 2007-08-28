@@ -38,16 +38,8 @@ playsingle_controller::playsingle_controller(const config& level, const game_dat
 	replaying_ = false;
 
 	// game may need to start in linger mode
-	std::cout << "Completion: " << state_of_game.completion << "\n";
 	if (state_of_game.completion == "victory" || state_of_game.completion == "defeat")
-	{
-		browse_ = true;
-		linger_ = true;
-		// End all unit moves
-		for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
-			u->second.set_user_end_turn(true);
-		}
-	}
+		browse_ = linger_ = true;
 }
 
 void playsingle_controller::init_gui(){
@@ -204,6 +196,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				t->set_countdown_time(1000 * lexical_cast_default<int>(level_["mp_countdown_init_time"],0));
 			}
 		}
+
+		// if we loaded a save file in linger mode, skip to it.
+		if (linger_)
+			throw end_level_exception(gamestate_.completion == "defeat" ? DEFEAT : VICTORY);
 
 		// Avoid autosaving after loading, but still 
 		// allow the first turn to have an autosave. 
