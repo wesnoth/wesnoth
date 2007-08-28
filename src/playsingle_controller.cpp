@@ -39,7 +39,10 @@ playsingle_controller::playsingle_controller(const config& level, const game_dat
 
 	// game may need to start in linger mode
 	if (state_of_game.completion == "victory" || state_of_game.completion == "defeat")
+	{
+		std::cerr << "Setting linger mode.\n";
 		browse_ = linger_ = true;
+	}
 }
 
 void playsingle_controller::init_gui(){
@@ -548,6 +551,9 @@ void playsingle_controller::linger(upload_log& log)
 	LOG_NG << "beginning end-of-scenario linger";
 	browse_ = true;
 	linger_ = true;
+	// this is actuall for after linger mode is over -- we don't want to 
+	// stay stuck in linger state when the next sceanario is over.
+	gamestate_.completion = "running";
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
 		u->second.set_user_end_turn(true);
