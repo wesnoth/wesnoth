@@ -303,8 +303,9 @@ void menu::update_size()
 	    i < i_end; ++i)
 		h += get_item_rect(i).h;
 	h = maximum(h, height());
-	if (max_height_ > 0 && h > (unsigned)max_height_)
+	if (max_height_ > 0 && h > static_cast<unsigned>(max_height_)) {
 		h = max_height_;
+	}
 
 	use_ellipsis_ = false;
 	std::vector<int> const &widths = column_widths();
@@ -312,7 +313,7 @@ void menu::update_size()
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
 	w = maximum(w, width());
-	if (max_width_ > 0 && w > (unsigned)max_width_) {
+	if (max_width_ > 0 && w > static_cast<unsigned>(max_width_)) {
 		use_ellipsis_ = true;
 		w = max_width_;
 	}
@@ -1053,7 +1054,7 @@ int menu::hit_heading(int x, int y) const
 {
 	const size_t height = heading_height();
 	const SDL_Rect& loc = inner_location();
-	if(y >= loc.y && (size_t)y < loc.y + height) {
+	if(y >= loc.y && static_cast<size_t>(y) < loc.y + height) {
 		return hit_column(x);
 	} else {
 		return -1;
