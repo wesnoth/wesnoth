@@ -359,11 +359,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 								   << _("Gold: ") 
 								   << (remaining_gold+finishing_bonus);
 						}
-
-						// xgettext:no-c-format
-						report << '\n' << _("80% of gold is retained for the next scenario."); 
 						report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player->gold;
-						report << '\n' << _("You will start the next scenario with these 80% or the defined minimum starting gold of the following scenario. Whichever is higher."); 
+						// xgettext:no-c-format
+						report << '\n' << _("You will start the next scenario with ") << player->gold << _(" or the defined minimum starting gold of the following scenario, whichever is higher."); 
 					}
 				}
 			}
