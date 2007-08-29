@@ -79,7 +79,9 @@ void file_menu::display_current_files() {
 		// Make sure that all lines fit.
 		// Guess the width of the scrollbar to be 30 since it is not accessible from here.
 		// -25 to compensate for the picture column.
-		while ((unsigned int)font::line_width(*it, menu_font_size) > width() - 30 - 25) {
+		while(static_cast<unsigned int>(
+				font::line_width(*it, menu_font_size)) > width() - 30 - 25) {
+
 			(*it).resize((*it).size() - 1);
 		}
 	}
@@ -124,7 +126,7 @@ void file_menu::entry_selected(const unsigned entry) {
 	const int entry_index = entry - (is_root(current_dir_) ? 0 : 1);
 	if (entry_index >= 0) {
 		std::string selected;
-		if ((unsigned)entry_index < dirs_in_current_dir_.size()) {
+		if(static_cast<unsigned>(entry_index) < dirs_in_current_dir_.size()) {
 			const int dir_index = entry_index;
 			selected = dirs_in_current_dir_[dir_index];
 		}
