@@ -2010,6 +2010,7 @@ static int play_game(int argc, char** argv)
 	delete loadscreen::global_loadscreen;
 	loadscreen::global_loadscreen = NULL;
 
+	std::cerr << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 	for(;;) {
 		//make sure the game config is always set to how it should be at the title screen
 		game.reset_game_cfg();
@@ -2017,8 +2018,6 @@ static int play_game(int argc, char** argv)
 		statistics::fresh_stats();
 
 		sound::play_music_repeatedly(game_config::title_music);
-
-		std::cerr << "started music\n";
 
 		if(game.play_test() == false) {
 			return 0;
@@ -2030,8 +2029,6 @@ static int play_game(int argc, char** argv)
 
 		recorder.clear();
 
-		std::cerr << "showing title screen...\n";
-		std::cerr << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TITLE_CONTINUE;
 
 		while(res == gui::TITLE_CONTINUE) {
@@ -2039,7 +2036,6 @@ static int play_game(int argc, char** argv)
 		}
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
-		std::cerr << "title screen returned result\n";
 		if(res == gui::QUIT_GAME) {
 			std::cerr << "quitting game...\n";
 			return 0;
