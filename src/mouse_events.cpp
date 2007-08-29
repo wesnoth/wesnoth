@@ -354,7 +354,7 @@ namespace{
 
 		// Unscathed probability.
 		left_strings.push_back(_("Chance of being unscathed"));
-		snprintf(str_buf, 10, "%.1f%%", (float) (u_unscathed * 100.0));
+		snprintf(str_buf, 10, "%.1f%%", static_cast<float>(u_unscathed * 100.0));
 		str_buf[9] = '\0';  //prevents _snprintf error
 		right_strings.push_back(str_buf);
 
@@ -374,7 +374,7 @@ namespace{
 	{
 		int max_len = 0;
 
-		for(int i = 0; i < (int) strings.size(); i++)
+		for(int i = 0; i < static_cast<int>(strings.size()); i++)
 			max_len = maximum<int>(font::line_width(strings[i], font::SIZE_NORMAL), max_len);
 
 		return max_len;
@@ -389,7 +389,7 @@ namespace{
 		std::vector<std::pair<double, int> > prob_hp_vector;
 		int i;
 
-		for(i = 0; i < (int) hp_dist.size(); i++) {
+		for(i = 0; i < static_cast<int>(hp_dist.size()); i++) {
 			double prob = hp_dist[i];
 
 			// We keep only values above 0.1%.
@@ -402,8 +402,12 @@ namespace{
 		// We store a few of the highest probability hitpoint values.
 		int nb_elem = minimum<int>(max_hp_distrib_rows_, prob_hp_vector.size());
 
-		for(i = prob_hp_vector.size() - nb_elem; i < (int) prob_hp_vector.size(); i++)
-			hp_prob_vector.push_back(std::pair<int, double>(prob_hp_vector[i].second, prob_hp_vector[i].first));
+		for(i = prob_hp_vector.size() - nb_elem; 
+				i < static_cast<int>(prob_hp_vector.size()); i++) {
+
+			hp_prob_vector.push_back(std::pair<int, double>
+				(prob_hp_vector[i].second, prob_hp_vector[i].first));
+			}
 
 		// Then, we sort the hitpoint values in ascending order.
 		std::sort(hp_prob_vector.begin(), hp_prob_vector.end());
@@ -453,7 +457,7 @@ namespace{
 		y_off += 24;
 
 		// Draw unit left and right strings except the last two (total damage and unscathed probability).
-		for(i = 0; i < (int) left_strings.size() - 2; i++) {
+		for(i = 0; i < static_cast<int>(left_strings.size()) - 2; i++) {
 			font::draw_text_line(&screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_strings[i],
 								 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
 								 0, TTF_STYLE_NORMAL);
@@ -549,7 +553,7 @@ namespace{
 		SDL_FillRect(surf, &percent_sep_rect, grey_color);
 
 		// Draw the rows (lower HP values are at the bottom).
-		for(int i = 0; i < (int) hp_prob_vector.size(); i++) {
+		for(int i = 0; i < static_cast<int>(hp_prob_vector.size()); i++) {
 			char str_buf[10];
 
 			// Get the HP and probability.
@@ -565,7 +569,7 @@ namespace{
 			}
 
 			// Below current hitpoints value is orange.
-			else if(hp < (int) stats.hp) {
+			else if(hp < static_cast<int>(stats.hp)) {
 				// Stone is grey.
 				if(opp_stats.stones) {
 					SDL_Color color = {0x9a, 0x9a, 0x9a, 0};
@@ -591,7 +595,7 @@ namespace{
 			font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
 								 hp_sep - hp_width - 2, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 
-			int bar_len = maximum<int>((int) ((prob * (bar_space - 4)) + 0.5), 2);
+			int bar_len = maximum<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
 
 			SDL_Rect bar_rect_1 = {hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8};
 			SDL_FillRect(surf, &bar_rect_1, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 100));
@@ -612,7 +616,7 @@ namespace{
 			else if(prob >= 0.1) prob_str_format = "%4.1f %%";
 			else prob_str_format = " %3.1f %%";
 
-			snprintf(str_buf, 10, prob_str_format, (float) (100.0 * (prob + 0.0005)));
+			snprintf(str_buf, 10, prob_str_format, static_cast<float>(100.0 * (prob + 0.0005)));
 			str_buf[9] = '\0';  //prevents _snprintf error
 			int prob_width = font::line_width(str_buf, fs);
 			font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
