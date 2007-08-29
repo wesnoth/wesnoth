@@ -1212,13 +1212,9 @@ bool unit_type::not_living() const
 		// status gets changed. In the unlikely event it gets changed
 		// multiple times, we want to try to do it in the same order
 		// that unit::apply_modifications does things.
-		std::cerr << id() << " possible traits = " << possible_traits().size() << std::endl;
 		config::child_list const &mods = possible_traits();
 		config::child_list::const_iterator j, j_end = mods.end();
 		for(j = mods.begin(); j != j_end; ++j) {
-			std::cerr << "------possibile trait info--------" << std::endl;
-			(**j).debug(std::cerr);
-			std::cerr << "------end possibile trait info--------" << std::endl;
 			const string_map *vals = &((**j).values);
 			string_map::const_iterator temp = vals->find("availability");
 			if (temp == vals->end() || (*temp).second != "musthave") {
