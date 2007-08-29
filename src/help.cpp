@@ -545,6 +545,7 @@ namespace {
 
 	int last_num_encountered_units = -1;
 	int last_num_encountered_terrains = -1;
+	bool last_debug_state = game_config::debug;
 
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
@@ -2724,10 +2725,12 @@ void show_help(display &disp, const section &toplevel_sec,
 	
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+	    last_debug_state != game_config::debug ||
 		last_num_encountered_units < 0) {
 		// More units or terrains encountered, update the contents.
 		last_num_encountered_units = preferences::encountered_units().size();
 		last_num_encountered_terrains = preferences::encountered_terrains().size();
+		last_debug_state = game_config::debug;
 		generate_contents();
 	}
 	try {
