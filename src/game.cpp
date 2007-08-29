@@ -1798,8 +1798,6 @@ game_controller::~game_controller()
 //! Process commandline-arguments
 static int play_game(int argc, char** argv)
 {
-	const int start_ticks = SDL_GetTicks();
-
 	//parse arguments that shouldn't require a display device
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
@@ -1942,6 +1940,7 @@ static int play_game(int argc, char** argv)
 	srand(time(NULL));
 
 	game_controller game(argc,argv);
+	const int start_ticks = SDL_GetTicks();
 
 	// I would prefer to setup locale first so that early error
 	// messages can get localized, but we need the game_controller
@@ -2020,7 +2019,6 @@ static int play_game(int argc, char** argv)
 		sound::play_music_repeatedly(game_config::title_music);
 
 		std::cerr << "started music\n";
-		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 		if(game.play_test() == false) {
 			return 0;
@@ -2033,7 +2031,7 @@ static int play_game(int argc, char** argv)
 		recorder.clear();
 
 		std::cerr << "showing title screen...\n";
-		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
+		std::cerr << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TITLE_CONTINUE;
 
 		while(res == gui::TITLE_CONTINUE) {
