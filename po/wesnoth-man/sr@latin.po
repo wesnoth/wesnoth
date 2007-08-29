@@ -1,0 +1,1093 @@
+# Serbian translations for Battle for Wesnoth package
+# Copyright (C) 2006 Wesnoth development team.
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: sr\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
+"POT-Creation-Date: 2007-05-18 18:38+0200\n"
+"PO-Revision-Date: 2007-02-08 12:00+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n%"
+"10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16
+#, no-wrap
+msgid "WESNOTH"
+msgstr "WESNOTH"
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "2006"
+msgstr "2006"
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16
+#, no-wrap
+msgid "wesnoth"
+msgstr "wesnoth"
+
+# type: TH
+#: ../../doc/man/wesnoth.6:16
+#, no-wrap
+msgid "Battle for Wesnoth"
+msgstr "Boj za Vesnot"
+
+# type: SH
+#: ../../doc/man/wesnoth.6:18 ../../doc/man/wesnoth_editor.6:18
+#: ../../doc/man/wesnothd.6:18
+#, no-wrap
+msgid "NAME"
+msgstr "IME"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:20
+msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
+msgstr "wesnoth — Boj za Vesnot, fantazijska strategija na poteze"
+
+# type: SH
+#: ../../doc/man/wesnoth.6:21 ../../doc/man/wesnoth_editor.6:21
+#: ../../doc/man/wesnothd.6:24
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "PREGLED"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:26
+msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
+msgstr "B<wesnoth> [I<OPCIJE>] [I<PUTANJA_DO_PODATAKA>]"
+
+# type: SH
+#: ../../doc/man/wesnoth.6:27 ../../doc/man/wesnoth_editor.6:24
+#: ../../doc/man/wesnothd.6:37
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "OPIS"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:32
+msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
+msgstr "Boj za B<Vesnot> je fantazijska strateška igra na poteze."
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:42
+msgid ""
+"Defeat all enemy leaders using a well-chosen cadre of troops, taking care to "
+"manage your resources of gold and villages. All units have their own "
+"strengths and weaknesses; to win, deploy your forces to their best advantage "
+"while denying your foes the chance to do the same. As units gain experience, "
+"they acquire new abilities and become more powerful. Play in your own "
+"language and test your skill against a smart computer opponent, or join "
+"Wesnoth's large community of on-line players. Create your own custom units, "
+"scenarios or campaigns, and share them with others."
+msgstr ""
+"Porazite sve neprijateljske vođe dobro izabranom vojnom družinom, starajući "
+"se usput o izvorima zlata i selima. Svaka jedinica ima svoje vrline i mane; "
+"da biste pobedili, rasporedite snage tako da se istaknu preimućstva, pritom "
+"sprečivši protivnika da učini to isto. Kako jedinice postaju iskusnije, "
+"dobijaju nove sposobnosti i postaju snažnije. Igrajte na svom maternjem "
+"jeziku iskušavajući veštine protiv pametnog računarskog protivnika, ili se "
+"pridružite Vesnotovoj velikoj zajednici igrača na vezi. Pravite sopstvene "
+"posebne jedinice, scenarije, pohode, i podelite ih sa drugim igračima."
+
+# type: SH
+#: ../../doc/man/wesnoth.6:43 ../../doc/man/wesnoth_editor.6:29
+#: ../../doc/man/wesnothd.6:42
+#, no-wrap
+msgid "OPTIONS"
+msgstr "OPCIJE"
+
+# type: TP
+#: ../../doc/man/wesnoth.6:45
+#, no-wrap
+msgid "B<--bpp>I<\\ number>"
+msgstr "B<--bpp>I<\\ broj>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:48 ../../doc/man/wesnoth_editor.6:54
+msgid "sets BitsPerPixel value. Example: --bpp 32"
+msgstr "postavlja vrednost BitsPerPixel. Primer: --bpp 32"
+
+# type: TP
+#: ../../doc/man/wesnoth.6:48
+#, no-wrap
+msgid "B<--compress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
+msgstr "B<--compress>I<\\ E<lt>uldatE<gt>>B<\\ >I<E<lt>izdatE<gt>>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:51
+msgid ""
+"compresses a savefile (infile) that is in text WML format into binary WML "
+"format (outfile)."
+msgstr ""
+"pakuje datoteku sačuvane igre (uldat) koja je u tekstualnom VML formatu, u "
+"binarni VML fomat (izdat)."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:51
+#, no-wrap
+msgid "B<-d>, B<--debug>"
+msgstr "B<-d>, B<--debug>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:56
+msgid ""
+"shows extra debugging information and enables additional command mode "
+"options in-game (see the Wiki at http://www.wesnoth.org/ for more "
+"information about command mode)."
+msgstr ""
+"prikazuje dodatne ispravljačke podatke i omogućava dopunske opcije komandnog "
+"režima tokom igre (pogledajte viki na http://www.wesnoth.org/ za više "
+"detalja o komandnom režimu)."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:56
+#, no-wrap
+msgid "B<--decompress>I<\\ E<lt>infileE<gt>>B<\\ >I<E<lt>outfileE<gt>>"
+msgstr "B<--decompress>I<\\ E<lt>uldatE<gt>>B<\\ >I<E<lt>izdatE<gt>>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:60
+msgid ""
+"decompresses a savefile (infile) that is in binary WML format into text WML "
+"format (outfile)."
+msgstr ""
+"raspakuje datoteku sačuvane igre (uldat) koja je u binarnom VML formatu, u "
+"tekstualni VML format (izdat)."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:60
+#, no-wrap
+msgid "B<-f>, B<--fullscreen>"
+msgstr "B<-f>, B<--fullscreen>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:63
+msgid "runs the game in full screen mode."
+msgstr "pokreće igru preko celog ekrana."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:63
+#, no-wrap
+msgid "B<--fps>"
+msgstr "B<--fps>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:67
+msgid ""
+"displays the number of frames per second the game is currently running at, "
+"in a corner of the screen."
+msgstr "prikazuje broj kadrova po sekundi dok teče igra, u uglu ekrana."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:67
+#, no-wrap
+msgid "B<-h>, B<--help>"
+msgstr "B<-h>, B<--help>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:70
+msgid ""
+"displays a summary of command line options to standard output, and exits."
+msgstr "prikazuje sažetak opcija komandne linije na standarnom izlazu."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:70
+#, no-wrap
+msgid "B<--load>I<\\ savegame>"
+msgstr "B<--load>I<\\ sačuvigra>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:73
+msgid "loads the file savegame from the standard save game directory."
+msgstr "učitava sačuvanu igru iz standarnog direktorijuma za sačuvane igre."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:73 ../../doc/man/wesnoth_editor.6:62
+#, no-wrap
+msgid "B<--log-error=\"domain1,domain2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
+msgstr "B<--log-error=\"domen1,domen2,...\">, B<--log-warning=\"...\">, B<--log-info=\"...\">"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:83 ../../doc/man/wesnoth_editor.6:72
+msgid ""
+"sets the severity level of the debug domains. \"all\" can be used to match "
+"any debug domain.  B<--log-info> shows all messages, B<--log-warning> only "
+"warnings and errors, and B<--log-error> just errors."
+msgstr ""
+"postavlja nivo strožine ispravljačkih domena. „all“ se može upotrebiti za "
+"poklapanje svih domena. B<--log-info> prikazuje sve poruke, B<--log-warning> "
+"samo upozorenja i greške, a B<--log-error> samo greške."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:83 ../../doc/man/wesnoth_editor.6:72
+#, no-wrap
+msgid "B<--logdomains>"
+msgstr "B<--logdomains>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:86 ../../doc/man/wesnoth_editor.6:75
+msgid "Dumps a list of all log domains and exits."
+msgstr "ispisuje sve domene beleženja i izlazi."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:86
+#, no-wrap
+msgid "B<--max-fps>"
+msgstr "B<--max-fps>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:90
+msgid ""
+"the number of frames per second the game can show, the value should be "
+"between the 1 and 1000, the default is 50."
+msgstr ""
+"broj kadrova po sekundi koje igra može da prikaže, trebalo bi da bude između "
+"1 i 1000, a podrazumevano je 50."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:90
+#, no-wrap
+msgid "B<--multiplayer>"
+msgstr "B<--multiplayer>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:96
+msgid ""
+"runs a multiplayer game. There are additional options that can be used "
+"together with B<--multiplayer> as explained below."
+msgstr ""
+"pokreće višeigračku igru. Uz ovu opciju mogu biti upotrebljene još neke, "
+"navedene ispod."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:96
+#, no-wrap
+msgid "B<--nocache>"
+msgstr "B<--nocache>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:99
+msgid "disables caching of game data."
+msgstr "isključuje ostavu za podatke igre."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:99
+#, no-wrap
+msgid "B<--nosound>"
+msgstr "B<--nosound>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:102
+msgid "runs the game without sounds and music."
+msgstr "pokreće igru bez zvuka i muzike."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:102 ../../doc/man/wesnoth_editor.6:43
+#, no-wrap
+msgid "B<--path>"
+msgstr "B<--path>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnoth_editor.6:46
+msgid "prints the name of the game data directory and exits."
+msgstr "ispisuje ime direktorijuma sa podacima igre i izlazi."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:105
+#, no-wrap
+msgid "B<-r>, B<--resolution>\\ I<XxY>"
+msgstr "B<-r>, B<--resolution>\\ I<XxY>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:108
+msgid "sets the screen resolution. Example: -r 800x600"
+msgstr "postavlja rezoluciju ekrana. Primer: -r 800x600"
+
+# type: TP
+#: ../../doc/man/wesnoth.6:108
+#, no-wrap
+msgid "B<-t>, B<--test>"
+msgstr "B<-t>, B<--test>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:111
+msgid "runs the game in a small test scenario."
+msgstr "pokreće igru sa malim probnim scenariom."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:111
+#, no-wrap
+msgid "B<-v>, B<--version>"
+msgstr "B<-v>, B<--version>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:114
+msgid "shows the version number and exits."
+msgstr "prikazuje broj verzije i izlazi."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:114
+#, no-wrap
+msgid "B<-w>, B<--windowed>"
+msgstr "B<-w>, B<--windowed>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:117
+msgid "runs the game in windowed mode."
+msgstr "pokreće igru unutar prozora."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:117
+#, no-wrap
+msgid "B<--no-delay>"
+msgstr "B<--no-delay>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:120
+msgid ""
+"runs the game without any delays for graphic benchmarking.  This is "
+"automatically enabled by --nogui."
+msgstr ""
+"pokreće igru bez ikakvih zastoja, za probu grafičkih performansi. Ovo je "
+"automatski ugključeno ako se zada --nogui."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:120
+#, no-wrap
+msgid "B<--exit-at-end>"
+msgstr "B<--exit-at-end>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:123
+msgid ""
+"exits once the scenario is over, without displaying victory/defeat dialog "
+"which requires the user to click OK.  This is also used for scriptable "
+"benchmarking."
+msgstr ""
+"izlazi pošto se scenario okonča, bez prikazivanja prozora o pobedi/porazu na "
+"koji bi korisnik morao da odgovori. Ovo se takođe koristi za skriptovanje "
+"proba performansi."
+
+# type: SH
+#: ../../doc/man/wesnoth.6:124
+#, no-wrap
+msgid "Options for --multiplayer"
+msgstr "Opcije uz --multiplayer"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:129
+msgid ""
+"The side-specific multiplayer options are marked with E<lt>numberE<gt>. "
+"E<lt>numberE<gt> has to be replaced by a side number. It usually is 1 or 2 "
+"but depends on the number of players possible in the chosen scenario."
+msgstr ""
+"Opcije posebne po strani u višeigračkom režimu označene su sa "
+"E<lt>brojE<gt>, gde E<lt>brojE<gt> treba zameniti brojem strane. To je "
+"obično 1 ili 2, ali zavisi od broja igrača dozvoljenih za izabrani scenario."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:129
+#, no-wrap
+msgid "B<--algorithmE<lt>numberE<gt>=value>"
+msgstr "B<--algorithmE<lt>brojE<gt>=value>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:133
+msgid ""
+"selects a non-standard algorithm to be used by the AI controller for this "
+"side. Available values: \"idle_ai\" and \"sample_ai\"."
+msgstr ""
+"bira nestandardni algoritam za VI upravljanje zadatom stranom. Moguće "
+"vrednosti: „idle_ai“ i „sample_ai“."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:133
+#, no-wrap
+msgid "B<--controllerE<lt>numberE<gt>=value>"
+msgstr "B<--controllerE<lt>brojE<gt>=value>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:136
+msgid ""
+"selects the controller for this side. Available values: \"human\" and \"ai\"."
+msgstr ""
+"bira upravljača za zadatu stranu. Moguće vrednosti su: „human“ (čovek) i "
+"„ai“ (VI)."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:136
+#, no-wrap
+msgid "B<--era=value>"
+msgstr "B<--era=vrednost>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:141
+msgid ""
+"use this option to play in the selected era instead of the \"Default\" era. "
+"The era is chosen by an id. Eras are described in the data/multiplayer.cfg "
+"file."
+msgstr ""
+"upotrebite ovo za igranje u izabranoj epohi umesto podrazumevane "
+"(„Default“). Epoha se bira preko identifikatora; moguće vrednosti opisane su "
+"u datoteci data/multiplayer.cfg"
+
+# type: TP
+#: ../../doc/man/wesnoth.6:141
+#, no-wrap
+msgid "B<--nogui>"
+msgstr "B<--nogui>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:146
+msgid ""
+"runs the game without the GUI. Must appear before B<--multiplayer> to have "
+"the desired effect."
+msgstr ""
+"pokreće igru bez grafičkog sučelja. Mora se javiti pre B<--multiplayer> da "
+"bi imalo željeni efekat."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:146
+#, no-wrap
+msgid "B<--parmE<lt>numberE<gt>=name:value>"
+msgstr "B<--parmE<lt>brojE<gt>=broj:vrednost>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:155
+msgid ""
+"sets additional parameters for this side. This parameter depends on the "
+"options used with B<--controller> and B<--algorithm.> It should only be "
+"useful for people designing their own AI. (not yet documented completely)"
+msgstr ""
+"postavlja dodatne parametre za ovu stranu, koji zavise od opcija "
+"upotrebljenih uz B<--controller> i B<--algorithm>. Obično korisno onima koji "
+"projektuju nove VI (još uvek nije sasvim dokumentovano)"
+
+# type: TP
+#: ../../doc/man/wesnoth.6:155
+#, no-wrap
+msgid "B<--scenario=value>"
+msgstr "B<--scenario=vrednost>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:158
+msgid ""
+"selects a multiplayer scenario. The default scenario is \"multiplayer_Charge"
+"\"."
+msgstr "bira višeigrački scenario. Podrazumevan je „multiplayer_Charge“."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:158
+#, no-wrap
+msgid "B<--sideE<lt>numberE<gt>=value>"
+msgstr "B<--sideE<lt>brojE<gt>=vrednost>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:163
+msgid ""
+"selects a faction of the current era for this side. The faction is chosen by "
+"an id. Factions are described in the data/multiplayer.cfg file."
+msgstr ""
+"bira frakciju iz tekuće epohe za zadatu stranu. Frakcija se bira preko "
+"identifikatora; moguće vrednosti opisane su u datoteci data/multiplayer.cfg"
+
+# type: TP
+#: ../../doc/man/wesnoth.6:163
+#, no-wrap
+msgid "B<--turns=value>"
+msgstr "B<--turns=vrednost>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:166
+msgid ""
+"sets the number of turns for the chosen scenario. The default is \"50\"."
+msgstr "postavlja broj poteza za izabrani scenario. Podrazumevano je „50“."
+
+# type: TP
+#: ../../doc/man/wesnoth.6:166
+#, no-wrap
+msgid "Example to test your own AI: "
+msgstr "Primer za isprobavanje vaše VI: "
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:169
+msgid ""
+"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
+"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+msgstr ""
+"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
+"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+
+# type: SH
+#: ../../doc/man/wesnoth.6:170 ../../doc/man/wesnoth_editor.6:76
+#: ../../doc/man/wesnothd.6:139
+#, no-wrap
+msgid "AUTHOR"
+msgstr "AUTOR"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:173
+msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
+msgstr "Napisao Dejvid Vajt (David White) E<lt>davidnwhite@verizon.netE<gt>."
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:175
+msgid ""
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
+msgstr ""
+"Uredili Nils Knojper (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> i Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:177
+msgid ""
+"This manual page was originally written by Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+"Ovu uputnu stranu prvobitno je napisao Siril Butors (Cyril Bouthors) "
+"E<lt>cyril@bouthors.orgE<gt>."
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:179 ../../doc/man/wesnoth_editor.6:82
+#: ../../doc/man/wesnothd.6:146
+msgid "Visit the official homepage: http://www.wesnoth.org/"
+msgstr "Posetite zvaničnu domaću stranu: http://www.wesnoth.org/"
+
+# type: SH
+#: ../../doc/man/wesnoth.6:180 ../../doc/man/wesnoth_editor.6:83
+#: ../../doc/man/wesnothd.6:147
+#, no-wrap
+msgid "COPYRIGHT"
+msgstr "AUTORSKA PRAVA"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:183 ../../doc/man/wesnoth_editor.6:85
+#: ../../doc/man/wesnothd.6:150
+msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr ""
+"Autorska prava \\(co 2003-2006 Dejvid Vajt (David White) "
+"E<lt>davidnwhite@verizon.netE<gt>."
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:186 ../../doc/man/wesnoth_editor.6:88
+#: ../../doc/man/wesnothd.6:153
+msgid ""
+"This is Free Software; this software is licensed under the GPL version 2, as "
+"published by the Free Software Foundation.  There is NO warranty; not even "
+"for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+msgstr ""
+"Ovo je slobodan softver; licenciran je pod uslovima OJL verzije 2  (GPLv2), "
+"koju izdaje Zadužbina za slobodni softver. Nema BILO KAKVE GARANCIJE; čak ni "
+"za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODREĐENE POTREBE."
+
+# type: SH
+#: ../../doc/man/wesnoth.6:187 ../../doc/man/wesnoth_editor.6:89
+#: ../../doc/man/wesnothd.6:154
+#, no-wrap
+msgid "SEE ALSO"
+msgstr "POGLEDATI JOŠ"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:190
+msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+# type: TH
+#: ../../doc/man/wesnoth_editor.6:16
+#, no-wrap
+msgid "WESNOTH_EDITOR"
+msgstr "WESNOTH_EDITOR"
+
+# type: TH
+#: ../../doc/man/wesnoth_editor.6:16
+#, no-wrap
+msgid "June 2005"
+msgstr "Jun 2005"
+
+# type: TH
+#: ../../doc/man/wesnoth_editor.6:16
+#, no-wrap
+msgid "wesnoth_editor"
+msgstr "wesnoth_editor"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:16 ../../doc/man/wesnoth_editor.6:20
+#, no-wrap
+msgid "Battle for Wesnoth map editor"
+msgstr "Uređivač mapa Boja za Vesnot"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:23
+msgid "B<wesnoth_editor>"
+msgstr "B<wesnoth_editor>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:28
+msgid "Battle for B<Wesnoth> map editor."
+msgstr "Uređivač mapa Boja za B<Vesnot>."
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:31
+#, no-wrap
+msgid "B<--datadir>"
+msgstr "B<--datadir>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:34
+msgid "selects the data directory to use."
+msgstr "bira direktorijum podataka koji će se koristiti."
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:35
+#, no-wrap
+msgid "B<-f>,B<\\ --fullscreen>"
+msgstr "B<-f>,B<\\ --fullscreen>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:38
+msgid "runs the editor in full screen mode."
+msgstr "pokreće uređivač preko celog ekrana."
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:39
+#, no-wrap
+msgid "B<-h>,B<\\ --help>"
+msgstr "B<-h>,B<\\ --help>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:42 ../../doc/man/wesnothd.6:55
+msgid "tells you what the command line options do."
+msgstr "govori vam šta čine opcije komandne linije."
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:47
+#, no-wrap
+msgid "B<-r>,B<\\ --resolution>"
+msgstr "B<-r>,B<\\ --resolution>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:50
+msgid "sets screen resolution. Example: -r 800x600"
+msgstr "postavlja rezoluciju ekrana. Primer: -r 800x600"
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:51
+#, no-wrap
+msgid "B<--bpp>"
+msgstr "B<--bpp>"
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:55
+#, no-wrap
+msgid "B<-v>,B<\\ --version>"
+msgstr "B<-v>,B<\\ --version>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:58
+msgid "prints version number and exits."
+msgstr "ispisuje broj verzije i izlazi."
+
+# type: TP
+#: ../../doc/man/wesnoth_editor.6:59
+#, no-wrap
+msgid "B<-w>,B<\\ --windowed>"
+msgstr "B<-w>,B<\\ --windowed>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:62
+msgid "runs the editor in windowed mode."
+msgstr "pokreće uređivač unutar prozora."
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:80
+msgid ""
+"Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> and ott E<lt>ott@gaon.netE<gt>.  "
+"This manual page was originally written by Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+"Napisao Dejvid Vajt (David White) E<lt>davidnwhite@verizon.netE<gt>. Uredili "
+"Nils Knojper (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt> i ott "
+"E<lt>ott@gaon.netE<gt>. Ovu uputnu stranu prvobitno je napisao Siril Butors "
+"(Cyril Bouthors) E<lt>cyril@bouthors.orgE<gt>."
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:90
+msgid "wesnoth(6), wesnothd(6)"
+msgstr "wesnoth(6), wesnothd(6)"
+
+# type: TH
+#: ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "WESNOTHD"
+msgstr "WESNOTHD"
+
+# type: TH
+#: ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "wesnothd"
+msgstr "wesnothd"
+
+# type: TH
+#: ../../doc/man/wesnothd.6:16
+#, no-wrap
+msgid "Battle for Wesnoth multiplayer network daemon"
+msgstr "Višeigrački mrežni domar Boja za Vesnot"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:23
+msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
+msgstr "wesnothd — višeigrački mrežni domar Boja za B<Vesnot>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:36
+msgid ""
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
+"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
+msgstr ""
+"B<wesnothd> [\\|B<-dvV>\\|] [\\|B<-c> I<putanja>\\|] [\\|B<-p> I<port>\\|] "
+"[\\|B<-t> I<broj>\\|] [\\|B<-T> I<broj>\\|]"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:41
+msgid ""
+"Manages Battle for Wesnoth multiplayer games. See http://www.wesnoth.org/"
+"wiki/ServerAdministration on what commands the server accepts via the "
+"wesnoth client or the socket."
+msgstr ""
+"Upravlja višeigračkim sesijama Boja za Vesnot. Pogledajte http://www.wesnoth."
+"org/wiki/ServerAdministration za naredbe koje server prihvata preko klijenta "
+"ili soketa."
+
+# type: TP
+#: ../../doc/man/wesnothd.6:44
+#, no-wrap
+msgid "B<-c,\\ --config>I<\\ path>"
+msgstr "B<-c,\\ --config>I<\\ putanja>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:49
+msgid ""
+"tells wesnothd where to find the config file to use. See the section "
+"B<SERVER CONFIG> below for the syntax."
+msgstr ""
+"kazuje domaru gde se nalazi datoteka sa podešavanjima. Za sintaksu "
+"pogledajte odeljak B<PODEŠAVANJA SERVERA> ispod."
+
+# type: TP
+#: ../../doc/man/wesnothd.6:49
+#, no-wrap
+msgid "B<-d,\\ --daemon>"
+msgstr "B<-d,\\ --daemon>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:52
+msgid "runs wesnothd as a daemon."
+msgstr "pokreće wesnothd kao domar."
+
+# type: TP
+#: ../../doc/man/wesnothd.6:52
+#, no-wrap
+msgid "B<-h,\\ --help>"
+msgstr "B<-h,\\ --help>"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:55
+#, no-wrap
+msgid "B<-p,\\ --port>I<\\ port>"
+msgstr "B<-p,\\ --port>I<\\ port>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:59
+msgid ""
+"binds the server to the specified port. If no port is specified, port 15000 "
+"will be used."
+msgstr ""
+"vezuje server za navedeni port. Ako se port ne navede, podrazumevano se "
+"koristi 15000."
+
+# type: TP
+#: ../../doc/man/wesnothd.6:59
+#, no-wrap
+msgid "B<-t,\\ --threads>I<\\ number>"
+msgstr "B<-t,\\ --threads>I<\\ broj>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:62
+msgid ""
+"sets the maximum number of waiting worker threads for network I/O to n "
+"(default: 5, max: 30)."
+msgstr ""
+"postavlja najveći broj radnih niti na čekanju za mrežni U/I (podrazumevano: "
+"5, najviše: 30)."
+
+# type: TP
+#: ../../doc/man/wesnothd.6:62
+#, no-wrap
+msgid "B<-T,\\ --max-threads>I<\\ number>"
+msgstr "B<-T,\\ --max-threads>I<\\ broj>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:66
+msgid ""
+"sets the maximum number of worker threads that will be created if set to 0 "
+"there will be no limit (default: 0)."
+msgstr ""
+"postavlja najveći broj radnih niti koje mogu biti stvorene; ako se zada 0, "
+"nema ograničenja (podrazumevano: 0)."
+
+# type: TP
+#: ../../doc/man/wesnothd.6:66
+#, no-wrap
+msgid "B<-V,\\ --version>"
+msgstr "B<-V,\\ --version>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:69
+msgid "shows version number and exits."
+msgstr "prikazuje broj verzije i izlazi."
+
+# type: TP
+#: ../../doc/man/wesnothd.6:69
+#, no-wrap
+msgid "B<-v,\\ --verbose>"
+msgstr "B<-v,\\ --verbose>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:72
+msgid "turns on more verbose logging."
+msgstr "uključuje detaljnije beleženje."
+
+# type: SH
+#: ../../doc/man/wesnothd.6:73
+#, no-wrap
+msgid "SERVER CONFIG"
+msgstr "PODEŠAVANJA SERVERA"
+
+# type: SS
+#: ../../doc/man/wesnothd.6:75
+#, no-wrap
+msgid "The general syntax is:"
+msgstr "Opšta sintaksa je:"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:79
+msgid "[I<tag>]"
+msgstr "[I<oznaka>]"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:81
+msgid "key=\"I<value>\""
+msgstr "ključ=\"I<vrednost>\""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:83
+msgid "key=\"I<value>,I<value>,...\""
+msgstr "ključ=\"I<vrednost>,I<vrednost>,...\""
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:85
+msgid "[/I<tag>]"
+msgstr "[/I<oznaka>]"
+
+# type: SS
+#: ../../doc/man/wesnothd.6:86
+#, no-wrap
+msgid "Global keys:"
+msgstr "Globalni ključevi:"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:88
+#, no-wrap
+msgid "B<connections_allowed>"
+msgstr "B<connections_allowed>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:91
+msgid "The number of allowed connections from the same IP. (default: 5)"
+msgstr "broj dozvoljenih veza sa iste IP adrese (podrazumevno: 5)"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:91
+#, no-wrap
+msgid "B<disallow_names>"
+msgstr "B<disallow_names>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:97
+msgid ""
+"Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
+"patterns are supported. See B<glob>(7)  for more details.  Default values "
+"(used if nothing is specified) are: `server,ai,player,network,human,admin,"
+"computer'."
+msgstr ""
+"imena/nadimci koje server ne prihvata. Prihvataju se ‘*’ i ‘?’ kao džokeri "
+"(pogledajte B<glob>(7) za više detalja). Podrazumevane vrednosti, koje se "
+"koriste ako se ništa ne zada, su: ‘server,ai,player,network,human,admin,"
+"computer’"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:97
+#, no-wrap
+msgid "B<max_messages>"
+msgstr "B<max_messages>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:100
+msgid "The number of allowed messages in B<messages_time_period>. (default: 4)"
+msgstr ""
+"broj dozvoljenih poruka za vreme B<messages_time_period> (podrazumevano: 4)"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:100
+#, no-wrap
+msgid "B<messages_time_period>"
+msgstr "B<messages_time_period>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:103
+msgid ""
+"The time period (in seconds) message flooding is detected in. (default: 10 "
+"seconds)"
+msgstr ""
+"vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka "
+"(podrazumevano: 10 sekundi)"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:103
+#, no-wrap
+msgid "B<motd>"
+msgstr "B<motd>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:106
+msgid "The message of the day."
+msgstr "poruka dana"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:106
+#, no-wrap
+msgid "B<passwd>"
+msgstr "B<passwd>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:109
+msgid ""
+"The password used to gain admin privileges. Usually it starts with \"admin "
+"\"."
+msgstr ""
+"lozinka za sticanje administratorskih ovlašćenja. Obično počinje sa „admin “"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:109
+#, no-wrap
+msgid "B<versions_accepted>"
+msgstr "B<versions_accepted>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:113
+msgid ""
+"A comma separated list of version strings to be accepted by the server. `*' "
+"and `?' from wildcard patterns are supported.  (defaults to the "
+"corresponding wesnoth version)"
+msgstr ""
+"Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se "
+"‘*’ i ‘?’ kao džokeri (podrazumevana je verzija klijenta koja odgovara "
+"verziji servera)"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:115
+msgid "Example: versions_accepted=\"*\" accepts any version string."
+msgstr "Primer: versions_accepted=\"*\" prihvata bilo koju nisku verzije."
+
+# type: SS
+#: ../../doc/man/wesnothd.6:116
+#, no-wrap
+msgid "Global tags:"
+msgstr "Globalne oznake:"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:121
+msgid ""
+"B<[redirect]> A tag to specify a server to redirect certain client versions "
+"to."
+msgstr ""
+"B<[redirect]> oznaka za navođenje servera na koji se preusmeravaju neke "
+"verzije klijenta"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:122
+#, no-wrap
+msgid "B<host>"
+msgstr "B<host>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:125
+msgid "The address of the server to redirect to."
+msgstr "adresa servera na koji se preusmerava"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:125
+#, no-wrap
+msgid "B<port>"
+msgstr "B<port>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:128
+msgid "The port to connect to."
+msgstr "port na koji se povezuje"
+
+# type: TP
+#: ../../doc/man/wesnothd.6:128
+#, no-wrap
+msgid "B<version>"
+msgstr "B<version>"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:133
+msgid ""
+"A comma separated list of versions to redirect. Behaves the same way as "
+"B<versions_accepted> in regard to wildcard patterns."
+msgstr ""
+"zapetama razdvojen spisak verzija koje se preusmeravaju. Ponaša se isto kao "
+"i B<versions_accepted> u pogledu džokera"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:138
+msgid ""
+"B<[proxy]> A tag to tell the server to act as a proxy and forward the "
+"connected client's requests to the specified server.  Accepts the same keys "
+"as [redirect]."
+msgstr ""
+"B<[proxy]> oznaka koja govori serveru da se ponaša kao posrednik i "
+"prosleđuje zahteve povezanih klijenata na određeni server. Prihvata iste "
+"ključeve kao i [redirect]"
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:144
+msgid ""
+"Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
+"Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> and "
+"Soliton E<lt>soliton@sonnenkinder.orgE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+msgstr ""
+"Napisao Dejvid Vajt (David White) E<lt>davidnwhite@verizon.netE<gt>. Uredili "
+"Nils Knojper (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> i Soliton E<lt>soliton@sonnenkinder.orgE<gt>. Ovu "
+"uputnu stranu prvobitno je napisao Siril Butors (Cyril Bouthors) "
+"E<lt>cyril@bouthors.orgE<gt>."
+
+# type: Plain text
+#: ../../doc/man/wesnothd.6:157
+msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
