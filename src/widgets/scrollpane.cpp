@@ -110,7 +110,7 @@ void scrollpane::draw()
 
 void scrollpane::scroll(unsigned int pos)
 {
-	if ((int)pos == content_pos_.y)
+	if (static_cast<int>(pos) == content_pos_.y)
 		return;
 
 	content_pos_.y = pos;
