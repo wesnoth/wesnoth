@@ -2433,7 +2433,6 @@ const section *find_section(const section &sec, const std::string &id)
 
 void help_browser::show_topic(const std::string &topic_id)
 {
-	std::cerr << "showing topic '" << topic_id << "'\n";
 	const topic *t = find_topic(toplevel_, topic_id);
 	if (t != NULL) {
 		show_topic(*t);
