@@ -336,6 +336,8 @@ struct minimap_cache_item {
 void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
 	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
+	const bool last_item_selected = (selected_ == games_.size() - 1);
+	const std::string selected_game = (selected_ < games_.size()) ? games_[selected_].id : "";
 
 	item_height_ = 100;
 
@@ -475,7 +477,17 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		set_position(get_max_position());
 	}
 	scroll(get_position());
-	if(selected_ >= games_.size())
+
+	// try to preserve the game selection
+	if (!selected_game.empty() && !last_item_selected) {
+		for (unsigned int i=0; i < games_.size(); i++) {
+			if (games_[i].id == selected_game) {
+				selected_ = i;
+				break;
+			}
+		}
+	}
+	if(selected_ >= games_.size() || last_item_selected)
 		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
 	set_dirty();
 }
@@ -702,7 +714,6 @@ void lobby::process_event()
 		return;
 	}
 }
-
 
 void lobby::process_network_data(const config& data, const network::connection sock)
 {
