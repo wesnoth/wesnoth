@@ -137,7 +137,7 @@ bool isnewline(char c)
 bool portable_isspace(char c)
 {
 	// returns true only on ASCII spaces
-	if ((unsigned char)c >= 128)
+	if (static_cast<unsigned char>(c) >= 128)
 		return false;
 	return isnewline(c) || isspace(c);
 }
@@ -558,7 +558,7 @@ void utf8_iterator::update()
 	size_t size = byte_size_from_utf8_first(*current_substr.first);
 	current_substr.second = current_substr.first + size;
 
-	current_char = (unsigned char)(*current_substr.first);
+	current_char = static_cast<unsigned char>(*current_substr.first);
 
 	// Convert the first character
 	if(size != 1) {
@@ -575,7 +575,7 @@ void utf8_iterator::update()
 		if ((*c & 0xC0) != 0x80)
 			throw invalid_utf8_exception();
 
-		current_char = (current_char << 6) | ((unsigned char)*c & 0x3F);
+		current_char = (current_char << 6) | (static_cast<unsigned char>(*c) & 0x3F);
 	}
 }
 
@@ -614,12 +614,13 @@ std::string wstring_to_string(const wide_string &src)
 			if(count == 1) {
 				push_back(ret,static_cast<char>(ch));
 			} else {
-				for(int j = (int)count-1; j >= 0; --j) {
-					unsigned char c = (ch >> (6*j)) & 0x3f;
+				for(int j = static_cast<int>(count) - 1; j >= 0; --j) {
+					unsigned char c = (ch >> (6 * j)) & 0x3f;
 					c |= 0x80;
-					if(j == (int)count-1)
+					if(j == static_cast<int>(count) - 1) {
 						c |= 0xff << (8 - count);
-					push_back(ret,c);
+					}
+					push_back(ret, c);
 				}
 			}
 
