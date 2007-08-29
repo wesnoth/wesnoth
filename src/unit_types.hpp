@@ -228,8 +228,8 @@ public:
 	bool has_ability(const std::string& ability) const;
 	bool has_ability_by_id(const std::string& ability) const;
 
-	const std::vector<config*>& possible_traits() const { return possibleTraits_; }
-	bool has_random_traits() const { return (num_traits() > 0 && possibleTraits_.size() > 1); }
+	const std::vector<config*> possible_traits() const { return possibleTraits_.get_children("trait"); }
+	bool has_random_traits() const { return (num_traits() > 0 && possible_traits().size() > 1); }
 
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 
@@ -267,7 +267,7 @@ private:
 
 	unit_movement_type movementType_;
 
-	std::vector<config*> possibleTraits_;
+	config possibleTraits_;
 
 	std::vector<unit_race::GENDER> genders_;
 
@@ -293,6 +293,7 @@ public:
 	movement_type_map movement_types;
 	typedef std::map<std::string,unit_type> unit_type_map;
 	unit_type_map unit_types;
+	config merged_units;
 	race_map races;
 };
 

@@ -525,8 +525,13 @@ unit_type::unit_type(const unit_type& o)
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
-	: cfg_(cfg), alpha_(ftofxp(1.0)), movementType_(cfg), possibleTraits_(traits)
+	: cfg_(cfg), alpha_(ftofxp(1.0)), movementType_(cfg)
 {
+	config::const_child_iterator i;
+	for(i=traits.begin(); i != traits.end(); ++i)
+	{
+		possibleTraits_.add_child("trait", **i);
+	}
 	const config::child_list& variations = cfg.get_children("variation");
 	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
 		const config& var_cfg = **var;
@@ -574,8 +579,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 
 	const std::vector<std::string> genders = utils::split(cfg["gender"]);
-	for(std::vector<std::string>::const_iterator i = genders.begin(); i != genders.end(); ++i) {
-		genders_.push_back(string_gender(*i));
+	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
+		genders_.push_back(string_gender(*g));
 	}
 	if(genders_.empty()) {
 		genders_.push_back(unit_race::MALE);
@@ -604,10 +609,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 				possibleTraits_.clear();
 			} else {
 				const config::child_list& traits = race_->additional_traits();
-				for(config::const_child_iterator i=traits.begin(); i != traits.end(); ++i)
+				for(i=traits.begin(); i != traits.end(); ++i)
 				{
 					if(alignment_ != NEUTRAL || ((**i)["id"]) != "fearless")
-						possibleTraits_.push_back(*i);
+						possibleTraits_.add_child("trait", **i);
 				}
 			}
 		}
@@ -618,7 +623,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	// Insert any traits that are just for this unit type
 	const config::child_list& unit_traits = cfg.get_children("trait");
-	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
+	for(i=unit_traits.begin(); i != unit_traits.end(); ++i)
+	{
+		possibleTraits_.add_child("trait", **i);
+	}
 
 	const config* abil_cfg = cfg.child("abilities");
 	if(abil_cfg) {
@@ -1106,7 +1114,7 @@ void game_data::set_config(const config& cfg)
 				if(from_unit != unit_types.end())
 				{
 					// Derive a new unit type from an existing base unit id
-					config merge_cfg(from_unit->second.cfg_);
+					config merge_cfg = merged_units.add_child(based_from, from_unit->second.cfg_);
 					merge_cfg.merge_with(**i.first);
 					merge_cfg.clear_children("base_unit");
 					const unit_type u_type(merge_cfg,movement_types,races,unit_traits);
@@ -1187,6 +1195,7 @@ void game_data::clear()
 {
 	movement_types.clear();
 	unit_types.clear();
+	merged_units.clear();
 	races.clear();
 }
 
@@ -1196,51 +1205,55 @@ void game_data::clear()
 
 bool unit_type::not_living() const
 {
-        // If a unit hasn't been modified it starts out as living.
-        bool not_living = false;
+		// If a unit hasn't been modified it starts out as living.
+		bool not_living = false;
 
-        // Look at all of the "musthave" traits to see if the not_living
-        // status gets changed. In the unlikely event it gets changed
-        // multiple times, we want to try to do it in the same order
-        // that unit::apply_modifications does things.
+		// Look at all of the "musthave" traits to see if the not_living
+		// status gets changed. In the unlikely event it gets changed
+		// multiple times, we want to try to do it in the same order
+		// that unit::apply_modifications does things.
+		std::cerr << id() << " possible traits = " << possible_traits().size() << std::endl;
+		config::child_list const &mods = possible_traits();
+		config::child_list::const_iterator j, j_end = mods.end();
+		for(j = mods.begin(); j != j_end; ++j) {
+			std::cerr << "------possibile trait info--------" << std::endl;
+			(**j).debug(std::cerr);
+			std::cerr << "------end possibile trait info--------" << std::endl;
+			const string_map *vals = &((**j).values);
+			string_map::const_iterator temp = vals->find("availability");
+			if (temp == vals->end() || (*temp).second != "musthave") {
+				continue;
+			}
+			config::const_child_itors i;
+			for(i = (**j).child_range("effect"); i.first != i.second; ++i.first) {
 
-        config::child_list const &mods = possible_traits();
-        for(config::child_list::const_iterator j = mods.begin(),
-            j_end = mods.end(); j != j_end; ++j) {
-                if ((**j)["availability"].empty() || (**j)["availability"] !=
-                    "musthave") {
-                        continue;
-                }
-                for(config::const_child_itors i = (**j).child_range("effect");
-                    i.first != i.second; ++i.first) {
+				// See if the effect only applies to certain unit types
+				// But don't worry about gender checks, since we don't
+				// know what the gender of the hypothetical recruit is.
+				vals = &((**i.first).values);
+				temp = vals->find("unit_type");
+				if(temp != vals->end()) {
+					const std::vector<std::string>& types = utils::split((*temp).second);
+					if(std::find(types.begin(),types.end(),id()) == types.end()) {
+							continue;
+					}
+				}
 
-                        // See if the effect only applies to certain unit types
-                        // But don't worry about gender checks, since we don't
-                        // know what the gender of the hypothetical recruit is.
-                        const std::string& type_filter = (**i.first)["unit_type"];
-                        if(type_filter.empty() == false) {
-                                const std::vector<std::string>& types = utils::split(type_filter);
-                                if(std::find(types.begin(),types.end(),id()) == types.end()) {
-                                        continue;
-                                }
-                        }
+				// We're only interested in status changes.
+				temp = vals->find("apply_to");
+				if (temp == vals->end() || (*temp).second != "status") {
+					continue;
+				}
+				temp = vals->find("add");
+				if (temp != vals->end() && (*temp).second == "not_living") {
+					not_living = true;
+				}
+				temp = vals->find("remove");
+				if (temp != vals->end() && (*temp).second == "not_living") {
+					not_living = false;
+				}
+			}
+		}
 
-                        // We're only interested in status changes.
-                        if ((**i.first)["apply_to"].empty() ||
-                            (**i.first)["apply_to"] != "status") {
-                                continue;
-                        }
-                        if (!(**i.first)["add"].empty() &&
-                            (**i.first)["add"] == "not_living") {
-                                not_living = true;
-                        }
-                        if (!(**i.first)["remove"].empty() &&
-                            (**i.first)["remove"] == "not_living") {
-                                not_living = false;
-                        }
-                }
-
-        }
-
-        return not_living;
+		return not_living;
 }
