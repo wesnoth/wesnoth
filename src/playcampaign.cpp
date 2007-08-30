@@ -131,7 +131,13 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 	}
 
 	if (res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
-		playcontroller.linger(log);
+		try {
+			playcontroller.linger(log);
+		} catch(end_level_exception& e) {
+			if (e.result == QUIT) {
+				return QUIT;
+			}
+		}
 
 	return res;
 }
@@ -154,7 +160,13 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 	}
 
 	if (res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
-		playcontroller.linger(log);
+		try {
+			playcontroller.linger(log);
+		} catch(end_level_exception& e) {
+			if (e.result == QUIT) {
+				return QUIT;
+			}
+		}
 
 	// tell all clients that the campaign won't continue
 	// why isn't this done on VICTORY as well?
