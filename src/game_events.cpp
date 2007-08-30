@@ -1333,8 +1333,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				}
 
 				game_map->set_terrain(*loc,terrain); 
+				screen->rebuild_terrain(*loc);
 			}
-			rebuild_screen_ = true;
+			// rebuild_screen_ = true;
+			screen->rebuild_all();
 		}
 	}
 
