@@ -223,9 +223,6 @@ public:
 	//! Copy the backbuffer to the framebuffer.
 	void update_display();
 
-	//! Rebuild the dynamic terrain at the given location.
-	void rebuild_terrain(const gamemap::location &loc) 
-		{ builder_.rebuild_terrain(loc); }
 	//! Rebuild all dynamic terrain.
 	void rebuild_all() { builder_.rebuild_all(); }
 
@@ -450,6 +447,10 @@ public:
 	//! draw() for the editor display. 
 	//! It only has to know about terrain.
 	void draw(bool update=true,bool force=false);
+
+	//! Rebuild the dynamic terrain at the given location.
+	void rebuild_terrain(const gamemap::location &loc) 
+		{ builder_.rebuild_terrain(loc); }
 };
 
 #endif
