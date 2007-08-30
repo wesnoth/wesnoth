@@ -495,8 +495,9 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
 	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
-	ypos += item_interline; video_mode_button_.set_location(rect.x, ypos);
-	theme_button_.set_location(rect.x+video_mode_button_.width()+10, ypos);
+	video_mode_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height());
+	theme_button_.set_location(rect.x + video_mode_button_.width() + 10,
+	                           bottom_row_y - theme_button_.height());
 
 	// Sound tab
 	slider_label_width_ = maximum<unsigned>(music_label_.width(), sound_label_.width());
