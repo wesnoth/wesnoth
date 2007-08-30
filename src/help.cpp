@@ -1051,7 +1051,8 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	if (game_info == NULL) {
 		return topics;
 	}
-	std::set<std::string> checked_abilities;
+	std::map<std::string, std::string> ability_description;
+	std::map<std::string, std::set<std::string> > ability_units;
 	// Look through all the unit types, check if a unit of this type
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
@@ -1063,13 +1064,11 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			std::vector<std::string> descriptions = type.ability_tooltips();
 			std::vector<std::string>::const_iterator desc_it = descriptions.begin();
 			for (std::vector<std::string>::const_iterator it = type.abilities().begin();
-				 it != type.abilities().end(); ++it) {
-				if (checked_abilities.find(*it) == checked_abilities.end()) {
-					const std::string id = "ability_" + *it;
-					std::string lang_ability = utils::capitalize(gettext(it->c_str()));
+				 it != type.abilities().end(); ++it, ++desc_it) {
+				if (ability_description.find(*it) == ability_description.end()) {
+					//new ability, generate a description
 					std::string description;
-					if(desc_it != descriptions.end())
-					{
+					if(desc_it != descriptions.end()) {
 						description = *desc_it;
 					} else {
 						description = string_table[*it + "_description"];
@@ -1079,16 +1078,34 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 						// Remove the first colon and the following newline.
 						description.erase(0, colon_pos + 2);
 					}
-					topic t(lang_ability, id, description);
-					topics.push_back(t);
-					checked_abilities.insert(*it);
+					ability_description[*it] = description;
 				}
-				// Description ptr needs to pace ability ptr
-				++desc_it;
+
+				//add a link in the list of units having this ability
+				std::string lang_name = type.language_name();
+				std::string ref_id = std::string("unit_") +  type.id();
+				//we put the translated name at the beginning of the hyperlink,
+				//so the automatic alphabetic sorting of std::set can use it
+				std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+				ability_units[*it].insert(link);
 			}
 		}
-
 	}
+
+	for (std::map<std::string, std::string>::iterator a = ability_description.begin(); a != ability_description.end(); a++) {
+		std::string name = utils::capitalize(gettext(a->first.c_str()));
+		std::string id = "ability_" + a->first;
+		std::stringstream text;
+		text << a->second;  //description
+		text << "\n\n" << _("Units having this ability:") << "\n";
+		std::set<std::string>& units = ability_units[a->first];
+		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
+			text << (*u) << "\n";
+		}
+
+		topics.push_back( topic(name, id, text.str()) );
+	}
+	
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
