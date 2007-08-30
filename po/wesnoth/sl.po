@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-27 12:32+0200\n"
+"POT-Creation-Date: 2007-08-30 12:19+0200\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -49,7 +49,7 @@ msgstr "-- Knjiga modrosti Wesnotha"
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:27
-#: data/campaigns/Northern_Rebirth/_main.cfg:86
+#: data/campaigns/Northern_Rebirth/_main.cfg:87
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:32
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 #: data/campaigns/The_South_Guard/_main.cfg:27
@@ -74,7 +74,7 @@ msgstr ""
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:39
-#: data/campaigns/Northern_Rebirth/_main.cfg:27
+#: data/campaigns/Northern_Rebirth/_main.cfg:28
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:36
 #: data/campaigns/The_South_Guard/_main.cfg:39
@@ -89,22 +89,22 @@ msgstr "Grafični oblikovalci"
 msgid "Underground"
 msgstr "Podzemlje"
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:42
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:29
+#: data/campaigns/Northern_Rebirth/_main.cfg:43
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:30
 msgid "Prose, Grammatical and WML Assistance"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:48
+#: data/campaigns/Northern_Rebirth/_main.cfg:49
 #, fuzzy
 msgid "Music Development"
 msgstr "Razvijalci večigralstva"
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:54
+#: data/campaigns/Northern_Rebirth/_main.cfg:55
 #, fuzzy
 msgid "Translators"
 msgstr "Češki prevod"
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:76
+#: data/campaigns/Northern_Rebirth/_main.cfg:77
 #, fuzzy
 msgid "Code and Translation Assistance"
 msgstr "Korejski prevod"
@@ -114,11 +114,11 @@ msgstr "Korejski prevod"
 msgid "WML Contributors"
 msgstr "Sodelavci"
 
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:23
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
 msgstr ""
 
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:35
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:36
 msgid "Completion and Maintenance"
 msgstr ""
 
@@ -2567,7 +2567,9 @@ msgstr "upočasni"
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled."
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
 msgstr ""
 "Upočasni:\n"
 "Ta napad upočasni tarčo do konca njene poteze. Upočasnjene enote se "
@@ -4312,11 +4314,11 @@ msgstr "upočasnjen"
 msgid "stone"
 msgstr "okamèni"
 
-#: src/actions.cpp:2057
+#: src/actions.cpp:2054
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:2096
+#: src/actions.cpp:2093
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
@@ -4325,7 +4327,7 @@ msgstr[1] "Zavezniške enote opažene!"
 msgstr[2] "Zavezniške enote opažene!"
 msgstr[3] "Zavezniške enote opažene!"
 
-#: src/actions.cpp:2099
+#: src/actions.cpp:2096
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
@@ -4334,7 +4336,7 @@ msgstr[1] "Sovražne enote opažene!"
 msgstr[2] "Sovražne enote opažene!"
 msgstr[3] "Sovražne enote opažene!"
 
-#: src/actions.cpp:2104
+#: src/actions.cpp:2101
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
@@ -4342,7 +4344,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2105
+#: src/actions.cpp:2102
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
@@ -4350,12 +4352,12 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2106
+#: src/actions.cpp:2103
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:2115
+#: src/actions.cpp:2112
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
@@ -4425,7 +4427,7 @@ msgstr "Vodič"
 msgid "replay"
 msgstr "vnovično predvajanje"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:431
+#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:433
 msgid "Turn"
 msgstr "Poteza"
 
@@ -4501,11 +4503,11 @@ msgstr "Pokaži posnetek igre"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:714 src/help.cpp:1127
+#: src/dialogs.cpp:714 src/help.cpp:1128
 msgid "level"
 msgstr "stopnja"
 
-#: src/dialogs.cpp:736 src/help.cpp:1219
+#: src/dialogs.cpp:736 src/help.cpp:1220
 msgid "HP: "
 msgstr "HP: "
 
@@ -4513,7 +4515,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:753 src/help.cpp:1220
+#: src/dialogs.cpp:753 src/help.cpp:1221
 msgid "Moves: "
 msgstr "Premiki: "
 
@@ -4719,7 +4721,7 @@ msgid ""
 msgstr "Namestitev kampanje ni uspela; nekaj datotek ni bilo mogoče ustvariti."
 
 #: src/game.cpp:1283 src/game.cpp:1322 src/game.cpp:1349
-#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:419
+#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:428
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
@@ -4747,7 +4749,7 @@ msgstr "Poveži se z uradnim strežnikom"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Poveži se z uradnim večigralskim strežnikom za Wesnoth"
 
-#: src/game.cpp:1381 src/multiplayer_lobby.cpp:553
+#: src/game.cpp:1381 src/multiplayer_lobby.cpp:572
 msgid "Join Game"
 msgstr "Pridruži se igri"
 
@@ -4777,15 +4779,15 @@ msgstr "Večigralska igra na istem računalniku"
 msgid "Login: "
 msgstr "Prijava: "
 
-#: src/game.cpp:1433 src/playcampaign.cpp:92 src/playcampaign.cpp:387
+#: src/game.cpp:1433 src/playcampaign.cpp:92 src/playcampaign.cpp:396
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
-#: src/game.cpp:1435 src/playcampaign.cpp:94 src/playcampaign.cpp:390
+#: src/game.cpp:1435 src/playcampaign.cpp:94 src/playcampaign.cpp:399
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
-#: src/game.cpp:1451 src/playcampaign.cpp:96 src/playcampaign.cpp:393
+#: src/game.cpp:1451 src/playcampaign.cpp:96 src/playcampaign.cpp:402
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
@@ -4817,19 +4819,19 @@ msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
 
-#: src/game.cpp:1863
+#: src/game.cpp:1861
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:1989
+#: src/game.cpp:1988
 msgid "Loading game configuration."
 msgstr "Nalaganje nastavitev."
 
-#: src/game.cpp:1995
+#: src/game.cpp:1994
 msgid "Re-initialize fonts for the current language."
 msgstr "Ponastavi pisave za trenutni jezik."
 
-#: src/game.cpp:2010
+#: src/game.cpp:2009
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
@@ -4929,7 +4931,7 @@ msgstr "doseg orožja: "
 msgid "damage type: "
 msgstr "tip škode: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1346
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1350
 msgid "vs"
 msgstr "proti"
 
@@ -4953,93 +4955,93 @@ msgstr "Opazovalci:"
 msgid "Help"
 msgstr "Pomoč"
 
-#: src/help.cpp:1147
+#: src/help.cpp:1148
 #, fuzzy
 msgid "Advances from: "
 msgstr "Napreduje v: "
 
-#: src/help.cpp:1176
+#: src/help.cpp:1177
 msgid "Advances to: "
 msgstr "Napreduje v: "
 
-#: src/help.cpp:1202
+#: src/help.cpp:1203
 msgid "Abilities: "
 msgstr "Sposobnosti: "
 
-#: src/help.cpp:1221
+#: src/help.cpp:1222
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/help.cpp:1222
+#: src/help.cpp:1223
 msgid "Alignment: "
 msgstr "Poravnava: "
 
-#: src/help.cpp:1228
+#: src/help.cpp:1229
 msgid "Required XP: "
 msgstr "Potrebni XP: "
 
-#: src/help.cpp:1237
+#: src/help.cpp:1238
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1244
+#: src/help.cpp:1245
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Izhod iz igre"
 
-#: src/help.cpp:1245 src/menu_events.cpp:314 src/menu_events.cpp:1062
+#: src/help.cpp:1246 src/menu_events.cpp:314 src/menu_events.cpp:1062
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/help.cpp:1246
+#: src/help.cpp:1247
 msgid "Strikes"
 msgstr "Udarci"
 
-#: src/help.cpp:1247
+#: src/help.cpp:1248
 msgid "Range"
 msgstr "Doseg"
 
-#: src/help.cpp:1248
+#: src/help.cpp:1249
 msgid "Special"
 msgstr "Posebnosti orožja"
 
-#: src/help.cpp:1298
+#: src/help.cpp:1299
 msgid "Resistances"
 msgstr "Odpornosti"
 
-#: src/help.cpp:1302
+#: src/help.cpp:1303
 msgid "Attack Type"
 msgstr "Tip napada"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1304
 msgid "Resistance"
 msgstr "Odpornost"
 
-#: src/help.cpp:1340
+#: src/help.cpp:1341
 msgid "Terrain Modifiers"
 msgstr "Terenski prikrojevalci"
 
-#: src/help.cpp:1344
+#: src/help.cpp:1345
 msgid "Terrain"
 msgstr "Teren"
 
-#: src/help.cpp:1345
+#: src/help.cpp:1346
 msgid "Defense"
 msgstr "Obramba"
 
-#: src/help.cpp:1346
+#: src/help.cpp:1347
 msgid "Movement Cost"
 msgstr "Cena premika"
 
-#: src/help.cpp:2255 src/menu_events.cpp:640
+#: src/help.cpp:2256 src/menu_events.cpp:640
 msgid " < Back"
 msgstr "< Nazaj"
 
-#: src/help.cpp:2256
+#: src/help.cpp:2257
 msgid "Forward >"
 msgstr "Naprej >"
 
-#: src/help.cpp:2368
+#: src/help.cpp:2369
 msgid "Reference to unknown topic: "
 msgstr "Povezava do neznane teme: "
 
@@ -5051,7 +5053,7 @@ msgstr ""
 msgid "The Battle for Wesnoth Help"
 msgstr "Pomoč za The Battle for Wesnoth "
 
-#: src/help.cpp:2770
+#: src/help.cpp:2772
 msgid "Parse error when parsing help text: "
 msgstr "Napaka med razčlenjevanjem pomoči: "
 
@@ -5288,7 +5290,7 @@ msgstr ""
 msgid "Scenario Settings"
 msgstr "Začetek scenarija"
 
-#: src/menu_events.cpp:669 src/playcampaign.cpp:512
+#: src/menu_events.cpp:669 src/playcampaign.cpp:521
 msgid "Name:"
 msgstr "Ime:"
 
@@ -5308,7 +5310,7 @@ msgstr "Shranjeno"
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
-#: src/menu_events.cpp:687 src/playcampaign.cpp:520
+#: src/menu_events.cpp:687 src/playcampaign.cpp:529
 msgid "The game could not be saved"
 msgstr "Igre ni bilo možno shraniti"
 
@@ -5598,15 +5600,15 @@ msgstr "Ni orožja"
 msgid "Chance of being unscathed"
 msgstr "Verjetnost da se ne poškuduje"
 
-#: src/mouse_events.cpp:657 src/mouse_events.cpp:1363
+#: src/mouse_events.cpp:661 src/mouse_events.cpp:1367
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
-#: src/mouse_events.cpp:1374
+#: src/mouse_events.cpp:1378
 msgid "Attack Enemy"
 msgstr "Napadi"
 
-#: src/mouse_events.cpp:1375
+#: src/mouse_events.cpp:1379
 msgid "Choose weapon:"
 msgstr "Izberite orožje:"
 
@@ -5721,7 +5723,7 @@ msgstr "Brez nenakjljučnih strani v trenutni eri"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Ni bilo mogoče najti voditeljske enote za $faction"
 
-#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:550
+#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:569
 #: src/multiplayer_wait.cpp:165
 msgid "Game Lobby"
 msgstr "Čakalnica"
@@ -5782,7 +5784,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Čakanje na igralce..."
 
-#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:554
+#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:573
 msgid "Create Game"
 msgstr "Ustvari igro"
 
@@ -5815,8 +5817,8 @@ msgstr "Naključna karta (zimska)"
 msgid "Fog Of War"
 msgstr "Megla"
 
-#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:449
-#: src/multiplayer_lobby.cpp:455
+#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:451
+#: src/multiplayer_lobby.cpp:457
 msgid "Shroud"
 msgstr "Koprena"
 
@@ -5965,51 +5967,51 @@ msgstr "Velikost"
 msgid "--no games open--"
 msgstr "--nobena igra ne poteka--"
 
-#: src/multiplayer_lobby.cpp:360 src/multiplayer_lobby.cpp:363
+#: src/multiplayer_lobby.cpp:362 src/multiplayer_lobby.cpp:365
 msgid "Unknown era"
 msgstr "Neznana era"
 
-#: src/multiplayer_lobby.cpp:400 src/multiplayer_lobby.cpp:416
+#: src/multiplayer_lobby.cpp:402 src/multiplayer_lobby.cpp:418
 msgid "Unknown scenario"
 msgstr "Neznan scenarij"
 
-#: src/multiplayer_lobby.cpp:412
+#: src/multiplayer_lobby.cpp:414
 msgid "Remote scenario"
 msgstr "Oddaljen scenarij"
 
-#: src/multiplayer_lobby.cpp:435
+#: src/multiplayer_lobby.cpp:437
 msgid "Vacant Slot:"
 msgstr "Prazno mesto:"
 
-#: src/multiplayer_lobby.cpp:435
+#: src/multiplayer_lobby.cpp:437
 msgid "Vacant Slots:"
 msgstr "Praznih mest:"
 
-#: src/multiplayer_lobby.cpp:445
+#: src/multiplayer_lobby.cpp:447
 msgid "Fog"
 msgstr "Megla"
 
-#: src/multiplayer_lobby.cpp:459
+#: src/multiplayer_lobby.cpp:461
 msgid "none"
 msgstr "brez"
 
-#: src/multiplayer_lobby.cpp:552
+#: src/multiplayer_lobby.cpp:571
 msgid "Observe Game"
 msgstr "Opazuj igro"
 
-#: src/multiplayer_lobby.cpp:555
+#: src/multiplayer_lobby.cpp:574
 msgid "Quick Replays"
 msgstr "Hitre ponovitve"
 
-#: src/multiplayer_lobby.cpp:557
+#: src/multiplayer_lobby.cpp:576
 msgid "Preferences"
 msgstr "Nastavitve"
 
-#: src/multiplayer_lobby.cpp:559
+#: src/multiplayer_lobby.cpp:578
 msgid "Quit"
 msgstr "Izhod"
 
-#: src/multiplayer_lobby.cpp:564
+#: src/multiplayer_lobby.cpp:583
 msgid "Skip quickly to the active turn when observing"
 msgstr "Hitri preskok na trenutno potezo (pri opazovanju)"
 
@@ -6070,8 +6072,8 @@ msgstr "Ni bilo mogoče dodati vtičnice"
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
 
-#: src/play_controller.cpp:394 src/playsingle_controller.cpp:361
-#: src/playsingle_controller.cpp:412
+#: src/play_controller.cpp:394 src/playsingle_controller.cpp:376
+#: src/playsingle_controller.cpp:427
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
@@ -6083,44 +6085,44 @@ msgstr "Nazaj na začetek"
 msgid "Back to turn "
 msgstr "Nazaj k potezi "
 
-#: src/playcampaign.cpp:128 src/playcampaign.cpp:151
+#: src/playcampaign.cpp:128 src/playcampaign.cpp:157
 msgid "Defeat"
 msgstr "Poraz"
 
-#: src/playcampaign.cpp:129 src/playcampaign.cpp:152
+#: src/playcampaign.cpp:129 src/playcampaign.cpp:158
 msgid "You have been defeated!"
 msgstr "Bili ste poraženi!"
 
-#: src/playcampaign.cpp:358
+#: src/playcampaign.cpp:369
 msgid " replay"
 msgstr "vnovično predvajanje"
 
-#: src/playcampaign.cpp:368
+#: src/playcampaign.cpp:379
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "Igre ni bilo možno shraniti"
 
-#: src/playcampaign.cpp:397
+#: src/playcampaign.cpp:406
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "Napaka med igranjem: "
 
-#: src/playcampaign.cpp:410
+#: src/playcampaign.cpp:419
 #, fuzzy
 msgid "Receiving data..."
 msgstr "Pridobivanje podatkov o igri..."
 
-#: src/playcampaign.cpp:412
+#: src/playcampaign.cpp:421
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Prenašam naslednjo stopnjo..."
 
-#: src/playcampaign.cpp:511
+#: src/playcampaign.cpp:520
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
 
-#: src/playcampaign.cpp:536
+#: src/playcampaign.cpp:545
 msgid "Unknown scenario: '"
 msgstr "Neznan scenarij: '"
 
@@ -6132,60 +6134,66 @@ msgstr ""
 "Igre niso več sinhronizirane in se bodo morale končati. Ali naj shranim "
 "dnevnik napak iz igre?"
 
-#: src/playsingle_controller.cpp:227
+#: src/playsingle_controller.cpp:240
 msgid "Game Over"
 msgstr "Konec igre"
 
-#: src/playsingle_controller.cpp:228
+#: src/playsingle_controller.cpp:241
 msgid "The game is over."
 msgstr "Igra je končana"
 
-#: src/playsingle_controller.cpp:300
+#: src/playsingle_controller.cpp:316
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
-#: src/playsingle_controller.cpp:302
+#: src/playsingle_controller.cpp:318
 msgid "Victory"
 msgstr "Zmaga"
 
-#: src/playsingle_controller.cpp:303
+#: src/playsingle_controller.cpp:319
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
-#: src/playsingle_controller.cpp:333
+#: src/playsingle_controller.cpp:349
 msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
-#: src/playsingle_controller.cpp:336
+#: src/playsingle_controller.cpp:352
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
-#: src/playsingle_controller.cpp:338
+#: src/playsingle_controller.cpp:354
 msgid "per turn"
 msgstr "na potezo"
 
-#: src/playsingle_controller.cpp:339
+#: src/playsingle_controller.cpp:355
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
-#: src/playsingle_controller.cpp:341
+#: src/playsingle_controller.cpp:357
 msgid "Bonus: "
 msgstr "Bonus: "
 
-#: src/playsingle_controller.cpp:343
+#: src/playsingle_controller.cpp:359
 msgid "Gold: "
 msgstr "Zlato: "
 
-#: src/playsingle_controller.cpp:348
-#, no-c-format
-msgid "80% of gold is retained for the next scenario"
-msgstr "80% zlata se bo ohranilo za naslednji scenarij"
-
-#: src/playsingle_controller.cpp:349
+#: src/playsingle_controller.cpp:362
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:364
+msgid ""
+" or the defined minimum starting gold of the following scenario, whichever "
+"is higher."
+msgstr ""
+
+#: src/playsingle_controller.cpp:364
+#, fuzzy, no-c-format
+msgid "You will start the next scenario with "
+msgstr "80% zlata se bo ohranilo za naslednji scenarij"
+
+#: src/playsingle_controller.cpp:386
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6193,7 +6201,7 @@ msgstr ""
 "Zgodila se je mrežna prkinitev in igra se ne more nadaljevati. Ali želite "
 "shraniti igro?"
 
-#: src/playsingle_controller.cpp:499
+#: src/playsingle_controller.cpp:514
 msgid "It is now your turn"
 msgstr "Vaša poteza se je začela"
 
@@ -6419,15 +6427,15 @@ msgstr "škoda"
 msgid "strikes"
 msgstr "udarci"
 
-#: src/unit_types.cpp:965
+#: src/unit_types.cpp:973
 msgid "chaotic"
 msgstr "kaotičen"
 
-#: src/unit_types.cpp:965
+#: src/unit_types.cpp:973
 msgid "lawful"
 msgstr "zakonit"
 
-#: src/unit_types.cpp:965
+#: src/unit_types.cpp:973
 msgid "neutral"
 msgstr "nevtralen"
 
