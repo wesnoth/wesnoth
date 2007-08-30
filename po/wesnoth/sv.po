@@ -1,10 +1,11 @@
+# Swedish translations for Battle for Wesnoth
 # translation of sv.po to
 msgid ""
 msgstr ""
-"Project-Id-Version: sv\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-30 12:19+0200\n"
-"PO-Revision-Date: 2007-08-27 14:38+0200\n"
+"PO-Revision-Date: 2007-08-30 15:00+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -2643,7 +2644,6 @@ msgid "slows"
 msgstr "sakta ner"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2654,7 +2654,8 @@ msgstr ""
 "Sakta ner:\n"
 "Denna attack saktar ner motståndartruppen tills den avslutar sitt drag. En "
 "nersaktad trupp vållar hälften av den nominella skadan och har en hälften så "
-"god förflyttning (avrundat uppåt)."
+"god förflyttning. När en nersaktad trupp valts har den en snigelikon i "
+"sidopanelen."
 
 #: data/core/macros/abilities.cfg:500
 msgid "stones"
@@ -6633,12 +6634,12 @@ msgstr "Bibehållet guld: "
 msgid ""
 " or the defined minimum starting gold of the following scenario, whichever "
 "is higher."
-msgstr ""
+msgstr " eller nästa scenarios minimala mängd startguld, om denna är högre."
 
 #: src/playsingle_controller.cpp:364
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "You will start the next scenario with "
-msgstr "80% av guldet bibehålls till nästa scenario"
+msgstr "Du startar nästa scenario med "
 
 #: src/playsingle_controller.cpp:386
 msgid ""
