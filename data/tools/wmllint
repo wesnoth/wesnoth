@@ -644,14 +644,6 @@ def hack_syntax(filename, lines):
             attack_anims = animation + attack_anims
             lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
             modcount += 1
-        # Add the attack animations to the end of the unit declaration
-        if attack_anims:
-            unitend = -1
-            for i in range(len(lines)):
-                if lines[i].endswith("[/unit]\n"):
-                    unitend = i
-            assert unitend != -1
-            lines = lines[:unitend] + attack_anims + lines[unitend:]
         # Garbage-collect any empty [attack] scopes left behind;
         # this is likely to happen with female-variant units.
         nullattack = True
@@ -660,8 +652,17 @@ def hack_syntax(filename, lines):
             for i in range(len(lines)-1):
                 if lines[i].strip() == "[attack]" and lines[i+1].strip() == "[/attack]":
                     nullattack = True
+                    break
             if nullattack:
                 lines = lines[:i] + lines[i+2:] 
+        # Add the attack animations to the end of the unit declaration
+        if attack_anims:
+            unitend = -1
+            for i in range(len(lines)):
+                if lines[i].endswith("[/unit]\n"):
+                    unitend = i
+            assert unitend != -1
+            lines = lines[:unitend] + attack_anims + lines[unitend:]
     return (lines, modcount)
 
 # Generic machinery starts here
