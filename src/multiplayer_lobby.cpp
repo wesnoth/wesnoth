@@ -336,7 +336,7 @@ struct minimap_cache_item {
 void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 {
 	const bool scrolled_to_max = (has_scrollbar() && get_position() == get_max_position());
-	const bool last_item_selected = (selected_ == games_.size() - 1);
+	const bool selection_visible = (selected_ >= visible_range_.first && selected_ <= visible_range_.second);
 	const std::string selected_game = (selected_ < games_.size()) ? games_[selected_].id : "";
 
 	item_height_ = 100;
@@ -473,13 +473,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
-	if(scrolled_to_max) {
-		set_position(get_max_position());
-	}
-	scroll(get_position());
 
 	// try to preserve the game selection
-	if (!selected_game.empty() && !last_item_selected) {
+	if (!selected_game.empty()) {
 		for (unsigned int i=0; i < games_.size(); i++) {
 			if (games_[i].id == selected_game) {
 				selected_ = i;
@@ -487,8 +483,19 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			}
 		}
 	}
-	if(selected_ >= games_.size() || last_item_selected)
+	if(selected_ >= games_.size())
 		selected_ = maximum<long>(static_cast<long>(games_.size()) - 1, 0);
+
+	if (scrolled_to_max) {
+		set_position(get_max_position());
+	} else {
+		// keep the selected game visible if it was visible before
+		if (selection_visible && (visible_range_.first > selected_
+								  || visible_range_.second < selected_)) {
+			set_position(selected_);
+		}
+	}
+	scroll(get_position());
 	set_dirty();
 }
 
