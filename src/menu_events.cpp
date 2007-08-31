@@ -1912,7 +1912,7 @@ private:
 
 		if(private_message) {
 			if (is_observer()) {
-				cfg["team_name"] = "observer";
+				cfg["team_name"] = game_config::observer_team_name;
 			} else {
 				cfg["team_name"] = teams_[gui_->viewing_team()].team_name();
 			}

@@ -63,15 +63,18 @@ namespace game_config
 
 	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
-	
 	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
+
+	// observer team name used for observer team chat
+	extern const std::string observer_team_name;
+
 	namespace sounds {
 		extern const std::string turn_bell, timer_bell, receive_message, user_arrive, user_leave;
 		extern const std::string button_press, checkbox_release, slider_adjust,
 			menu_expand, menu_contract, menu_select;
 	}
 	
-        void load_config(const config* cfg);
+	void load_config(const config* cfg);
         
 	const void add_color_info(const config& v);
 	const std::vector<Uint32>& tc_info(const std::string& name);

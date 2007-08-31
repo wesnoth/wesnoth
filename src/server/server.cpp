@@ -1313,7 +1313,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// If all there are are messages and they're all private, then
 		// just forward them on to the client that should receive them.
 		if(nprivate > 0 && npublic == 0 && nother == 0) {
-			if (team_name == "observer") {
+			if (team_name == game_config::observer_team_name) {
 				g->send_data_observers(data,sock);
 			} else {
 				g->send_data_team(data,team_name,sock);

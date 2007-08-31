@@ -43,7 +43,7 @@ namespace game_config
 	const std::string svnrev = "";
 #endif
 	bool debug = false, editor = false, ignore_replay_errors = false, mp_debug = false, exit_at_end = false, no_delay = false, disable_autosave = false;
-	
+
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
@@ -85,6 +85,8 @@ namespace game_config
 	const struct game_version wesnoth_version(VERSION);
 	const struct game_version min_savegame_version(MIN_SAVEGAME_VERSION); 
 	const struct game_version test_version("test");
+
+	const std::string observer_team_name = "observer";
 
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
