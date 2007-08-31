@@ -1009,8 +1009,11 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 				unit_map::const_iterator unit_itor = units_->find(adjacent[index]);
 				if (unit_itor == units_->end())
 					continue;
-				if (unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod))
+				if (unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod)
+				&& !(*i).has_attribute("is_enemy") || utils::string_bool((*i)["is_enemy"])
+				== (*gamestatus_->teams)[this->side()-1].is_enemy(unit_itor->second.side())) {
 					++match_count;
+				}
 			}
 			std::string count_str = (*i).has_attribute("count") ? (*i)["count"]
 				: "1-6";
