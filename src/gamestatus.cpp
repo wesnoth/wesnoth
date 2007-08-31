@@ -678,7 +678,6 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 //! If the times are equal, will order based on the name.
 struct save_info_less_time {
 	bool operator()(const save_info& a, const save_info& b) const {
-		printf("Comparing %s to %s\n", a.name.c_str(), b.name.c_str());
        		if (a.time_modified > b.time_modified) {
 		        return true;
 	  	} else if (a.time_modified < b.time_modified) {
