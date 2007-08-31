@@ -999,7 +999,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	if (game_info == NULL) {
 		return topics;
 	}
-	std::set<std::string> checked_specials;
+
+	std::map<std::string, std::string> special_description;
+	std::map<std::string, std::set<std::string> > special_units;
 	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
@@ -1021,25 +1023,43 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 					//make sure we cut off the argument
 					special.erase(std::find(special.begin(),special.end(),'('),special.end());
 					if (special != "") {
-						if (checked_specials.find(special) == checked_specials.end()) {
-							std::string lang_special = gettext(special.c_str());
-							lang_special = utils::capitalize(lang_special);
-							std::string description;
-							description = *sp_it;
+						if (special_description.find(special) == special_description.end()) {
+							std::string description = *sp_it;
 							const size_t colon_pos = description.find(':');
 							if (colon_pos != std::string::npos) {
 								// Remove the first colon and the following newline.
 								description.erase(0, colon_pos + 2);
 							}
-							topic t(lang_special, "weaponspecial_" + special, description);
-							topics.push_back(t);
-							checked_specials.insert(special);
+							special_description[special] = description;
 						}
+
+						//add a link in the list of units having this special
+						std::string lang_name = type.language_name();
+						std::string ref_id = std::string("unit_") +  type.id();
+						//we put the translated name at the beginning of the hyperlink,
+						//so the automatic alphabetic sorting of std::set can use it
+						std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+						special_units[special].insert(link);
 					}
 				}
 			}
 		}
 	}
+
+	for (std::map<std::string, std::string>::iterator s = special_description.begin(); s != special_description.end(); s++) {
+		std::string name = utils::capitalize(gettext(s->first.c_str()));
+		std::string id = "weaponspecial_" + s->first;
+		std::stringstream text;
+		text << s->second;  //description
+		text << "\n\n" << _("Units having this special attack:") << "\n";
+		std::set<std::string>& units = special_units[s->first];
+		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
+			text << (*u) << "\n";
+		}
+
+		topics.push_back( topic(name, id, text.str()) );
+	}
+
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
