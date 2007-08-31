@@ -550,8 +550,8 @@ void playsingle_controller::linger(upload_log& log)
 	LOG_NG << "beginning end-of-scenario linger";
 	browse_ = true;
 	linger_ = true;
-	// this is actuall for after linger mode is over -- we don't want to 
-	// stay stuck in linger state when the next sceanario is over.
+	// this is actually for after linger mode is over -- we don't want to 
+	// stay stuck in linger state when the *next* scenario is over.
 	gamestate_.completion = "running";
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
