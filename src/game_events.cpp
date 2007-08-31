@@ -1334,8 +1334,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 				game_map->set_terrain(*loc,terrain); 
 			}
-			// rebuild_screen_ = true;
-			screen->rebuild_all();
+			rebuild_screen_ = true;
 		}
 	}
 
@@ -1353,9 +1352,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		}
 
 		game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y);
-		screen->recalculate_minimap();
-		screen->invalidate_all();
-		screen->rebuild_all();
+		rebuild_screen_ = true;
 	}
 
 	// If we should spawn a new unit on the map somewhere
@@ -2072,6 +2069,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const int side_num = lexical_cast_default<int>(side);
 			recalculate_fog(*game_map,*status_ptr,*game_data_ptr,*units,*teams,side_num-1);
 			screen->recalculate_minimap();
+		}
+		if(rebuild_screen_) {
+			rebuild_screen_ = false;
+			screen->recalculate_minimap();
+			screen->rebuild_all();
 		}
 		screen->invalidate_all();
 		screen->draw(true,true);
