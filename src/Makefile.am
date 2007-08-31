@@ -476,11 +476,16 @@ revision-stamp: FORCE
 FORCE:
 endif
 
-AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ @PYTHON_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@  -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DFIFODIR=\"$(fifodir)\"
 
-AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ @PYTHON_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
+
+if PYTHON
+AM_CXXFLAGS += @PYTHON_CFLAGS@
+AM_CFLAGS += @PYTHON_CFLAGS@
+endif
 
 if FRIBIDI
     AM_CXXFLAGS += -DHAVE_FRIBIDI @FRIBIDI_CFLAGS@
