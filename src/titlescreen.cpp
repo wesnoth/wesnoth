@@ -54,13 +54,13 @@
 //! Animation-effect: scroll-in from right. \n
 //! Used only once, after the game is started.
 //!
-//! @param 	screen 	surface to operate on
-//! @param 	xpos 	x-position of logo
-//! @param 	ypos 	y-position of logo
+//! @param	screen	surface to operate on
+//! @param	xpos	x-position of logo
+//! @param	ypos	y-position of logo
 //!
-//! @return 		Result of running the routine
-//! @retval true  	operation finished (successful or not)
-//! @retval false 	operation failed (because modeChanged), need to retry
+//! @return		Result of running the routine
+//! @retval true	operation finished (successful or not)
+//! @retval false	operation failed (because modeChanged), need to retry
 //!
 static bool fade_logo(game_display& screen, int xpos, int ypos)
 {
@@ -175,12 +175,12 @@ static const config get_tips_of_day()
 
 //! Show one tip-of-the-day in a frame on the titlescreen.
 //! This frame has 2 buttons: Next-Tip, and Show-Help.
-static void draw_tip_of_day(game_display& screen, 
-							config& tips_of_day, int* ntip, 
-							const gui::dialog_frame::style& style, 
-							gui::button* const next_tip_button, 
-							gui::button* const help_tip_button, 
-							const SDL_Rect* const main_dialog_area, 
+static void draw_tip_of_day(game_display& screen,
+							config& tips_of_day, int* ntip,
+							const gui::dialog_frame::style& style,
+							gui::button* const next_tip_button,
+							gui::button* const help_tip_button,
+							const SDL_Rect* const main_dialog_area,
 							surface_restorer& tip_of_day_restorer)
 {
 
@@ -239,16 +239,16 @@ namespace gui {
 
 //! Show titlepage with logo and background, menu-buttons and tip-of-the-day.
 //!
-//! After the page is shown, this routine waits 
-//! for the user to click one of the menu-buttons, 
+//! After the page is shown, this routine waits
+//! for the user to click one of the menu-buttons,
 //! or a keypress.
 //!
-//! @param 	screen			surface to write on
-//! @param 	tips_of_day		list of tips
-//! @param 	ntip			number of the tip to show
+//! @param	screen			surface to write on
+//! @param	tips_of_day		list of tips
+//! @param	ntip			number of the tip to show
 //!
-//! @return 	the value of the menu-item the user has choosen.
-//! @retval 	see @ref TITLE_RESULT for possible values
+//! @return	the value of the menu-item the user has choosen.
+//! @retval	see @ref TITLE_RESULT for possible values
 //!
 TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 {
@@ -281,7 +281,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 	const std::string rev =  game_config::svnrev.empty() ? "" :
 		" (" + game_config::svnrev + ")";
 
-	const std::string& version_str = _("Version") + 
+	const std::string& version_str = _("Version") +
 		std::string(" ") + game_config::version + rev;
 
 	const SDL_Rect version_area = font::draw_text(NULL, screen_area(),
@@ -387,7 +387,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 
 	surface_restorer tip_of_day_restorer;
 
-	draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style, 
+	draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style,
 					&next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
 	const int pad = game_config::title_tip_padding;
@@ -417,7 +417,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 				*ntip = *ntip + 1;
 			}
 
-		draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style, 
+		draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style,
 						&next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 		}
 

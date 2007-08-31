@@ -60,7 +60,7 @@ namespace {
 	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
 		+ "/preferences";
 
-	// Return the side that has it's starting position at hex, 
+	// Return the side that has it's starting position at hex,
 	// or -1 if none has.
 	int starting_side_at(const gamemap& map, const gamemap::location hex) {
 		int start_side = -1;
@@ -98,9 +98,9 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 		newfilename.erase(newfilename.begin());
 		newfilename.erase(newfilename.end() - 1);
 
-		// If the filename begins with a '~', then look in the user's data directory. 
-		// If the filename begins with a '@' then we look in the user's data directory, 
-		// but default to the standard data directory if it's not found there.  
+		// If the filename begins with a '~', then look in the user's data directory.
+		// If the filename begins with a '@' then we look in the user's data directory,
+		// but default to the standard data directory if it's not found there.
 		if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
 			nfname = newfilename;
 			nfname.erase(nfname.begin(),nfname.begin()+1);
@@ -114,8 +114,8 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 		} else
 		if(newfilename.size() >= 2 && newfilename[0] == '.' &&
 			newfilename[1] == '/' ) {
-			// If the filename begins with a "./", 
-			// then look in the same directory 
+			// If the filename begins with a "./",
+			// then look in the same directory
 			// as the file currrently being preprocessed
 			nfname = newfilename;
 			nfname.erase(nfname.begin(),nfname.begin()+2);
@@ -139,14 +139,14 @@ bool check_data(std::string &data, std::string &filename, bool &from_scenario, c
 // the whole map takes place. It may not be the most beautiful solution,
 // but it is the way the least interference with the game system is
 // needed. That is the reason we need some static variables to handle
-// things that should be permanent through the program's life time. 
+// things that should be permanent through the program's life time.
 // Of course, the functionality of this assumes that no more than one
 // map_editor object will exist, but that is a reasonable restriction imho.
 bool map_editor::first_time_created_ = true;
 int map_editor::num_operations_since_save_ = 0;
 config map_editor::prefs_;
 config map_editor::hotkeys_;
-// Do not init the l_button_func_ to DRAW, since it should be changed 
+// Do not init the l_button_func_ to DRAW, since it should be changed
 // in the constructor to update the report the first time.
 map_editor::LEFT_BUTTON_FUNC map_editor::l_button_func_ = PASTE;
 t_translation::t_letter map_editor::old_fg_terrain_;
@@ -185,7 +185,7 @@ map_editor::map_editor(editor_display &gui, editormap &map, config &theme, confi
 		//! @todo FIXME: saved hotkeys don't reload correctly,
 		//! so we just reread the theme hotkeys every time
 		hotkey::load_hotkeys(theme_);
-		
+
 		palette_.select_fg_terrain(old_fg_terrain_);
 		palette_.select_bg_terrain(old_bg_terrain_);
 		brush_.select_brush_size(old_brush_size_);
@@ -205,10 +205,10 @@ map_editor::map_editor(editor_display &gui, editormap &map, config &theme, confi
 }
 
 /**
- * @todo 
- * This should be replaced by a WML tag called 'tooltip=' 
- * in the data/themes/editor.cfg file. 
- * The theme and display classes should then load 
+ * @todo
+ * This should be replaced by a WML tag called 'tooltip='
+ * in the data/themes/editor.cfg file.
+ * The theme and display classes should then load
  * the given tooltip in the button.
  */
 void map_editor::load_tooltips()
@@ -261,8 +261,8 @@ void map_editor::load_tooltips()
 		if(text != "")
 			tooltips::add_tooltip(tooltip_rect, text);
 	}
-	
-	// Tooltips for the groups 
+
+	// Tooltips for the groups
 	palette_.load_tooltips();
 }
 
@@ -302,8 +302,8 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
                                        const int /*mousex*/, const int /*mousey*/) {
 	if (event.type == SDL_KEYDOWN) {
 		const SDLKey sym = event.keysym.sym;
-		// We must intercept escape-presses here, 
-		// because we don't want the default shutdown behavior, 
+		// We must intercept escape-presses here,
+		// because we don't want the default shutdown behavior,
 		// we want to ask for saving.
 		if (sym == SDLK_ESCAPE) {
 			set_abort();
@@ -312,9 +312,9 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
 			const bool old_fullscreen = preferences::fullscreen();
 			const std::pair<int, int> old_resolution = preferences::resolution();
 			hotkey::key_event(gui_, event, this);
-			// A key event may change the video mode. 
-			// The redraw functionality inside the preferences module 
-			// does not redraw our palettes, so we need to check 
+			// A key event may change the video mode.
+			// The redraw functionality inside the preferences module
+			// does not redraw our palettes, so we need to check
 			// if the mode has changed and if so redraw everything.
 			if (preferences::fullscreen() != old_fullscreen
 				|| old_resolution != preferences::resolution()) {
@@ -349,9 +349,9 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 				right_click(hex_clicked);
 			}
 		}
-		// Mimic the game's behavior on middle click and mouse wheel movement. 
-		// It would be nice to have had these in functions provided from the game, 
-		// but I don't want to interfer too much with the game code 
+		// Mimic the game's behavior on middle click and mouse wheel movement.
+		// It would be nice to have had these in functions provided from the game,
+		// but I don't want to interfer too much with the game code
 		// and it's fairly simple stuff to rip.
 		if (button == SDL_BUTTON_MIDDLE) {
 			const SDL_Rect& rect = gui_.map_area();
@@ -382,7 +382,7 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 		else
 			gui_.scroll(scrollx,scrolly);
 		}
-		
+
 	}
 	if (event.type == SDL_MOUSEBUTTONUP) {
 		// If we miss the mouse up event, we need to perform the actual
@@ -416,7 +416,7 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 		selection_move_start_ = hex_clicked;
 	}
 	else if (!selected_hexes_.empty()) {
-		// If hexes are selected, clear them 
+		// If hexes are selected, clear them
 		// and do not draw anything.
 		selected_hexes_.clear();
 		clear_highlighted_hexes_in_gui();
@@ -450,7 +450,7 @@ void map_editor::right_click(const gamemap::location hex_clicked ) {
 void map_editor::change_language() {
 	std::vector<language_def> langdefs = get_languages();
 
-	// This only works because get_languages() returns a fresh vector 
+	// This only works because get_languages() returns a fresh vector
 	// at each calls unless show_gui cleans the "*" flag.
 	const std::vector<language_def>::iterator current = std::find(langdefs.begin(),langdefs.end(),get_language());
 	if(current != langdefs.end()) {
@@ -536,22 +536,22 @@ void map_editor::edit_save_as() {
 
 void map_editor::perform_set_starting_pos() {
 	std::vector<std::string> players;
-	
+
 	std::stringstream none_str;
 	none_str << _("None");
 	players.push_back(none_str.str());
-	
+
 	for (int i = 0; i < num_players; i++) {
 		std::stringstream str;
 		str << _("Player") << " " << i + 1;
 		players.push_back(str.str());
 	}
-	gui::dialog pmenu = gui::dialog(gui_, 
+	gui::dialog pmenu = gui::dialog(gui_,
 				       _("Which Player?"),
 				       _("Which player should start here?"),
 				       gui::OK_CANCEL);
 	pmenu.set_menu(players);
-	int res = pmenu.show(); 
+	int res = pmenu.show();
 	if (res >= 0) {
 		// We erase previous starting position on this hex.
 		// This will prevent to cause a "stack" of these.
@@ -710,10 +710,10 @@ void map_editor::edit_resize() {
 	int x_offset = 0, y_offset = 0;
 	bool do_expand = true;
 	if(resize_dialog(gui_, width, height, x_offset, y_offset, do_expand)) {
-	
+
 		try {
 			const std::string resized_map =
-				resize_map(map_, width, height, x_offset, y_offset, 
+				resize_map(map_, width, height, x_offset, y_offset,
 				do_expand, palette_.selected_bg_terrain());
 
 			if (resized_map != "") {
@@ -792,7 +792,7 @@ void map_editor::insert_selection_in_clipboard() {
 	}
 	gamemap::location offset_hex = *(selected_hexes_.begin());
 	std::set<gamemap::location>::const_iterator it;
-	// Find the hex that is closest to the selected one, 
+	// Find the hex that is closest to the selected one,
 	// use this as the one to calculate the offset from.
 	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
 		if (distance_between(selected_hex_, *it) <
@@ -963,15 +963,15 @@ void map_editor::clear_highlighted_hexes_in_gui() {
 void map_editor::set_mouseover_overlay()
 {
 	surface image_fg(image::get_image("terrain/" + map_.get_terrain_info(
-				palette_.selected_fg_terrain()).editor_image() + 
+				palette_.selected_fg_terrain()).editor_image() +
 				".png"));
 	surface image_bg(image::get_image("terrain/" + map_.get_terrain_info(
-				palette_.selected_bg_terrain()).editor_image() + 
+				palette_.selected_bg_terrain()).editor_image() +
 				".png"));
 
-	// For efficiency the size of the tile is cached. 
-	// We assume all tiles are of the same size. 
-	// The zoom factor can change, so it's not cached. 
+	// For efficiency the size of the tile is cached.
+	// We assume all tiles are of the same size.
+	// The zoom factor can change, so it's not cached.
 	// NOTE: when zooming and not moving the mouse, there are glitches.
 	// Since the optimal alpha factor is unknown, it has to be calculated
 	// on the fly, and caching the surfaces makes no sense yet.
@@ -983,20 +983,20 @@ void map_editor::set_mouseover_overlay()
 	static const int new_size = half_size - 2;
 	const int zoom = static_cast<int>(size * gui_.get_zoom_factor());
 
-	// Create a transparent surface of the right size. 
-	// Not sure what's the best way, but this works 
+	// Create a transparent surface of the right size.
+	// Not sure what's the best way, but this works
 	// (but is probably not efficient).
 	surface image = adjust_surface_alpha(image_fg, 0);
 
 	// Blit left side
 	image_fg = scale_surface(image_fg, new_size, new_size);
-   	SDL_Rect rcDestLeft = { offset, quarter_size, 0, 0 };
-   	SDL_BlitSurface ( image_fg, NULL, image, &rcDestLeft );
+	SDL_Rect rcDestLeft = { offset, quarter_size, 0, 0 };
+	SDL_BlitSurface ( image_fg, NULL, image, &rcDestLeft );
 
 	// Blit left side
 	image_bg = scale_surface(image_bg, new_size, new_size);
-   	SDL_Rect rcDestRight = { half_size, quarter_size, 0, 0 };
-   	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
+	SDL_Rect rcDestRight = { half_size, quarter_size, 0, 0 };
+	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
 
 	// Add the alpha factor and scale the image
 	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
@@ -1012,14 +1012,14 @@ bool map_editor::changed_since_save() const {
 void map_editor::set_starting_position(const int player, const gamemap::location loc) {
 	if(map_.on_board(loc)) {
 		map_undo_action action;
-		
+
 		action.add_starting_location(player, player, map_.starting_position(player), loc);
 		map_.set_starting_position(player, loc);
 		save_undo_action(action);
 		recalculate_starting_pos_labels();
 	}
 	else {
-		// If you selected an off-board hex, 
+		// If you selected an off-board hex,
 		// we just use the standard invalid location
 		map_undo_action action;
 		action.add_starting_location(player, player, map_.starting_position(player), gamemap::location());
@@ -1187,8 +1187,8 @@ void map_editor::perform_selection_move() {
 	save_undo_action(undo_action);
 }
 
-void map_editor::draw_terrain(const t_translation::t_letter terrain, 
-		const gamemap::location hex) 
+void map_editor::draw_terrain(const t_translation::t_letter terrain,
+		const gamemap::location hex)
 {
 	const t_translation::t_letter current_terrain = map_.get_terrain(hex);
 	map_undo_action undo_action;
@@ -1199,13 +1199,13 @@ void map_editor::draw_terrain(const t_translation::t_letter terrain,
 	save_undo_action(undo_action);
 }
 
-void map_editor::terrain_changed(const gamemap::location &hex) 
+void map_editor::terrain_changed(const gamemap::location &hex)
 {
 	std::vector<gamemap::location> v(1, hex);
 	terrain_changed(v);
 }
 
-void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes) 
+void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes)
 {
 	invalidate_all_and_adjacent(hexes);
 }
@@ -1256,7 +1256,7 @@ void map_editor::invalidate_all_and_adjacent(const std::set<gamemap::location> &
 }
 
 void map_editor::right_button_down(const int /*mousex*/, const int /*mousey*/) {
-	// Draw with the background terrain on rightclick, 
+	// Draw with the background terrain on rightclick,
 	// no matter what operations are wanted with the left button.
 	//! @todo TODO evaluate if this is what is the smartest thing to do.
 	draw_on_mouseover_hexes(palette_.selected_bg_terrain());
@@ -1299,8 +1299,8 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 		filename_ = filename;
 	}
 
-	// Check if the filename is correct before saving. 
-	// We do this twice (also in the 'save as' routine), 
+	// Check if the filename is correct before saving.
+	// We do this twice (also in the 'save as' routine),
 	// because a file might already contain illegal characters if loaded.
 	if(!verify_filename(filename, display_confirmation)) {
 		return false;
@@ -1402,15 +1402,15 @@ void map_editor::recalculate_starting_pos_labels() {
 	}
 }
 
-void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex) 
+void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 {
 	const int size = (l_button_func_ == DRAW) ? brush_.selected_brush_size() : 1;
 	std::vector<gamemap::location> curr_locs = get_tiles(map_, mouse_over_hex, size);
-	
+
 	std::set<gamemap::location>::iterator it;
 	for (it = mouse_over_hexes_.begin(); it != mouse_over_hexes_.end(); it++) {
 		if (selected_hexes_.find(*it) == selected_hexes_.end()) {
-			// Only remove highlightning if the hex is not selected 
+			// Only remove highlightning if the hex is not selected
 			// in an other way.
 			gui_.remove_highlighted_loc(*it);
 		}
@@ -1424,7 +1424,7 @@ void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 			gui_.add_highlighted_loc(*itv);
 		}
 	}
-	
+
 	gui_.highlight_hex(mouse_over_hex);
 
 	if(l_button_func_ == DRAW || l_button_func_ == FLOOD_FILL) {
@@ -1565,8 +1565,8 @@ void map_editor::main_loop() {
 		gui_.draw(false);
 		events::raise_draw_event();
 
-		// When the map has changed, wait until the left mouse button 
-		// is not held down, and then update the minimap and 
+		// When the map has changed, wait until the left mouse button
+		// is not held down, and then update the minimap and
 		// the starting position labels.
 		if (map_dirty_ && auto_update_) {
 			if (!l_button_down && !r_button_down) {
@@ -1596,6 +1596,6 @@ void map_editor::main_loop() {
 		mouse_moved_ = false;
 	}
 }
-} // end namespace map_editor 
+} // end namespace map_editor
 
 

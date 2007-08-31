@@ -34,8 +34,8 @@
 #define LOG_G LOG_STREAM(info, general)
 
 
-static bool terrain_matches_internal(const gamemap& map, const gamemap::location& loc, const vconfig& cfg, 
-		const gamestatus& game_status, const unit_map& units, const bool flat_tod, 
+static bool terrain_matches_internal(const gamemap& map, const gamemap::location& loc, const vconfig& cfg,
+		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const bool ignore_xy, t_translation::t_match*& parsed_terrain)
 {
 
@@ -50,8 +50,8 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 			}
 		}
 	}
-	
-	//Allow filtering on location ranges 
+
+	//Allow filtering on location ranges
 	if(!ignore_xy) {
 		if(!loc.matches_range(cfg["x"], cfg["y"])) {
 			return false;
@@ -141,7 +141,7 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 		}
 	}
 
-	return true; 
+	return true;
 }
 
 namespace {
@@ -169,7 +169,7 @@ namespace {
 		}
 	private:
 		const gamemap& map_;
-		const vconfig& cfg_; 
+		const vconfig& cfg_;
 		const gamestatus& status_;
 		const unit_map& units_;
 		const bool flat_;
@@ -177,7 +177,7 @@ namespace {
 
 } //end anonymous namespace
 
-bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, const vconfig& cfg, 
+bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, const vconfig& cfg,
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
 {

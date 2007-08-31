@@ -411,7 +411,7 @@ void create::process_event()
 				if(map_data.empty() && parameters_.scenario_data["map"] != "") {
 					map_data = read_map(parameters_.scenario_data["map"]);
 				}
-				
+
 				//if the map should be randomly generated
 				if(parameters_.scenario_data["map_generation"] != "") {
 					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));
@@ -519,30 +519,30 @@ void create::process_event()
 
 		// if the map settings are wanted use them if not properly defined
 		// fall back to the default settings
-		turns_slider_.set_value(map_settings ? 
+		turns_slider_.set_value(map_settings ?
 			settings::get_turns(parameters_.scenario_data["turns"]) :
 			preferences::turns());
-		
-		xp_modifier_slider_.set_value(map_settings ? 
+
+		xp_modifier_slider_.set_value(map_settings ?
 			settings::get_xp_modifier(parameters_.scenario_data["experience_modifier"]) :
 			preferences::xp_modifier());
 
 		random_start_time_.set_check(map_settings ?
 			settings::use_random_start_time(parameters_.scenario_data["random_start_time"]) :
 			preferences::random_start_time());
-		
+
 		// These are per player, always show of player 1 this might not be 100% correct,
 		// but at the moment it's not possible to show the fog and shroud per player.
 		// This might change in the future.
 		// NOTE when 'load game' is selected there are no sides
 		if(parameters_.scenario_data.get_children("side").size()) {
 
-			village_gold_slider_.set_value(map_settings ? 
+			village_gold_slider_.set_value(map_settings ?
 				settings::get_village_gold((*parameters_.
 					scenario_data.get_children("side").front())["village_gold"]) :
 				preferences::village_gold());
 
-			fog_game_.set_check(map_settings ? 
+			fog_game_.set_check(map_settings ?
 				settings::use_fog((*parameters_.
 					scenario_data.get_children("side").front())["fog"]) :
 				preferences::fog());
@@ -552,7 +552,7 @@ void create::process_event()
 					scenario_data.get_children("side").front())["shroud"]) :
 				preferences::shroud());
 		}
-				
+
 		// set the widget states
 		turns_slider_.enable(!map_settings);
 		village_gold_slider_.enable(!map_settings);
@@ -639,7 +639,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	const int border_size = 6;
 	const int column_border_size = 10;
-	
+
 	int xpos = ca.x;
 	int ypos = ca.y;
 
@@ -657,9 +657,9 @@ void create::layout_children(const SDL_Rect& rect)
 
 	// First column: minimap & random map options
 	std::pair<int,int> resolution = preferences::resolution();
-	
+
 	const int resolution_for_small_minimap = 880;
-	
+
 	const int minimap_width = resolution.first > resolution_for_small_minimap ? 200 : 130;
 
 	SDL_Rect mmrect = { xpos, ypos, minimap_width, minimap_width };
@@ -777,7 +777,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	const int border_size = 2;
 	const int column_border_size = 5;
-	
+
 	int xpos = ca.x;
 	int ypos = ca.y;
 
@@ -804,16 +804,16 @@ void create::layout_children(const SDL_Rect& rect)
 	// First column: map list, era, generator
 	num_players_label_.set_location(xpos, ypos);
 	ypos += num_players_label_.height() + border_size;
-	
+
 	map_size_label_.set_location(xpos, ypos);
 	ypos += map_size_label_.height() + border_size;
-	
+
 	map_label_.set_location(xpos, ypos);
 	ypos += map_label_.height() + border_size;
 
 	maps_menu_.set_max_width(100);
 	maps_menu_.set_max_height(50);
-	
+
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
 	int mapsel_save = maps_menu_.selection();
@@ -831,12 +831,12 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += regenerate_map_.height() + border_size;
 	generator_settings_.set_location(xpos, ypos);
 	ypos += generator_settings_.height() + border_size;
-	
+
 	use_map_settings_.set_location(xpos, ypos);
 	ypos += use_map_settings_.height() + border_size;
 	random_start_time_.set_location(xpos, ypos);
 	ypos += random_start_time_.height() + border_size;
-	
+
 #ifdef MP_VISION_OPTIONAL
 	vision_combo_.set_location(xpos, ypos);
 	ypos += vision_combo_.height() + border_size;
@@ -881,7 +881,7 @@ void create::layout_children(const SDL_Rect& rect)
 	countdown_reservoir_time_slider_.set_width(32);
 	countdown_reservoir_time_slider_.set_location(xpos, ypos);
 	ypos += countdown_reservoir_time_slider_.height() + border_size;
-	
+
 	ypos = ypos_columntop;
 	xpos += 75;
 
@@ -896,7 +896,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	observers_game_.set_location(xpos, ypos);
 	ypos += observers_game_.height() + border_size;
-	
+
 	countdown_turn_bonus_label_.set_location(xpos, ypos);
 	ypos += countdown_turn_bonus_label_.height() + border_size;
 

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_map.cpp 
+//! @file unit_map.cpp
 //!
 
 #include "unit.hpp"

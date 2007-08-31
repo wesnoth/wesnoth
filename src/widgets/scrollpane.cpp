@@ -181,5 +181,5 @@ void scrollpane::update_content_size()
 	set_dirty();
 }
 
-} // namespace gui 
+} // namespace gui
 

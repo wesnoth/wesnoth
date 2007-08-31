@@ -13,8 +13,8 @@
    See the COPYING file for more details.
 */
 
-//! @file log.hpp 
-//! 
+//! @file log.hpp
+//!
 
 #ifndef LOG_HPP_INCLUDED
 #define LOG_HPP_INCLUDED
@@ -61,7 +61,7 @@ public:
 	void do_indent() const;
 };
 
-/** 
+/**
  * Use this logger to send errors due to deprecated WML.
  * The preferred format is:
  * xxx is deprecated, support will be removed in version X. or

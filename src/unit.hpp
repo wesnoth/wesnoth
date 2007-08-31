@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit.hpp 
+//! @file unit.hpp
 //!
 
 #ifndef UNIT_H_INCLUDED
@@ -97,7 +97,7 @@ public:
 	bool get_experience(int xp) { experience_ += xp; return advances(); }
 	SDL_Colour hp_color() const;
 	SDL_Colour xp_color() const;
-	//! Set to true for some scenario-specific units which should not be renamed 
+	//! Set to true for some scenario-specific units which should not be renamed
 	bool unrenamable() const { return unrenamable_; }
 	unsigned int side() const { return side_; }
 	Uint32 team_rgb() const { return(team::get_side_rgb(side())); }
@@ -133,7 +133,7 @@ public:
 			set_standing(disp,loc);
 		} else {
 			set_idling(disp, loc);
-		}	
+		}
 	}
 
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
@@ -172,7 +172,7 @@ public:
 	void redraw_unit(game_display& disp, const gamemap::location& loc);
 	//! Clear unit_halo_ and unit_anim_halo_
 	void clear_haloes();
-	
+
 
 	void set_standing(const game_display& disp,const gamemap::location& loc, bool with_bars = true);
 	void set_defending(const game_display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num);
@@ -244,10 +244,10 @@ public:
 
 	//! States for animation.
 	enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
-				STATE_LEADING, STATE_HEALING, STATE_WALKING, 
-				STATE_LEVELIN, STATE_LEVELOUT, 
+				STATE_LEADING, STATE_HEALING, STATE_WALKING,
+				STATE_LEVELIN, STATE_LEVELOUT,
 				STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
-				STATE_RECRUITED, STATE_HEALED, STATE_POISONED, 
+				STATE_RECRUITED, STATE_HEALED, STATE_POISONED,
 				STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
 	const unit_animation * start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool is_attack_anim =false);
 
@@ -296,7 +296,7 @@ public:
 
 	unit_race::GENDER generate_gender(const unit_type& type, bool gen);
 	std::string image_mods() const;
-	
+
 private:
 
 	bool internal_matches_filter(const vconfig& cfg,const gamemap::location& loc,
@@ -340,7 +340,7 @@ private:
 	unit_type::ALIGNMENT alignment_;
 	std::string flag_rgb_;
 	std::string image_mods_;
-	
+
 	bool unrenamable_;
 	unsigned int side_;
 	unit_race::GENDER gender_;
@@ -412,8 +412,8 @@ private:
 	//! Hold the visibility status cache for a unit, mutable since it's a cache.
 	mutable std::map<gamemap::location, bool> invisibility_cache_;
 
-	//! Clears the cache. 
-	// Since we don't change the state of the object we're marked const 
+	//! Clears the cache.
+	// Since we don't change the state of the object we're marked const
 	// (also required since the objects in the cache need to be marked const).
 	void clear_visibility_cache() const { invisibility_cache_.clear(); }
 };
@@ -446,7 +446,7 @@ unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
 		const gamemap& map,
-		const std::vector<team>& teams, const team& current_team, 
+		const std::vector<team>& teams, const team& current_team,
 		bool see_all=false);
 unit_map::const_iterator find_visible_unit(const unit_map& units,
 		const gamemap::location loc,
@@ -464,8 +464,8 @@ team_data calculate_team_data(const class team& tm, int side, const unit_map& un
 
 const std::set<gamemap::location> vacant_villages(const std::set<gamemap::location>& villages, const unit_map& units);
 
-// This object is used to temporary place a unit in the unit map, 
-// swapping out any unit that is already there. 
+// This object is used to temporary place a unit in the unit map,
+// swapping out any unit that is already there.
 // On destruction, it restores the unit map to its original .
 struct temporary_unit_placer
 {
@@ -478,16 +478,16 @@ private:
 	std::pair<gamemap::location,unit> *temp_;
 };
 
-//! Gets a checksum for a unit. 
-//! In MP games the descriptions are locally generated and might differ, 
+//! Gets a checksum for a unit.
+//! In MP games the descriptions are locally generated and might differ,
 //! so it should be possible to discard them.
 //! Not sure whether replays suffer the same problem.
-//!  
+//!
 //! @param u                    the unit
 //! @param discard_description  discards the descriptions for the checksum
-//!  
+//!
 //! @returns                    the checksum for a unit
-//!  
+//!
 std::string get_checksum(const unit& u, const bool discard_description = false);
 
 #endif

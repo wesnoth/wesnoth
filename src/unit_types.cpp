@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_types.cpp 
+//! @file unit_types.cpp
 //! Handle unit-type specific attributes, animations, advancement.
 
 #include "global.hpp"
@@ -33,15 +33,15 @@
 #include <iostream>
 
 
-//! The Halbardier got renamed so this function fixes that, all 
-//! functions which assign id_ in unit or unit_types should use 
+//! The Halbardier got renamed so this function fixes that, all
+//! functions which assign id_ in unit or unit_types should use
 //! this wrapper in order to keep compatibility with older versions.
 //
 // @param id	the id of the unit
 //
 // @returns		the new id of the unit.
-// 				if id == Halbardier it returns Halberdier, 
-// 				otherwise id unmodified
+//				if id == Halbardier it returns Halberdier,
+//				otherwise id unmodified
 std::string unit_id_test(const std::string& id)
 {
 	if(id == "Halbardier") {
@@ -68,7 +68,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	}
 
 	if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id 
+		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id
 								<< " is directly in the attack, please use [animation]\n" ;
 	}
 	if(animation_.empty()) {
@@ -299,12 +299,12 @@ const t_string& unit_movement_type::name() const
 		return res;
 }
 
-int unit_movement_type::movement_cost(const gamemap& map, 
+int unit_movement_type::movement_cost(const gamemap& map,
 		t_translation::t_letter terrain, int recurse_count) const
 {
 	const int impassable = 10000000;
 
-	const std::map<t_translation::t_letter, int>::const_iterator i = 
+	const std::map<t_translation::t_letter, int>::const_iterator i =
 		moveCosts_.find(terrain);
 
 	if(i != moveCosts_.end()) {
@@ -320,7 +320,7 @@ int unit_movement_type::movement_cost(const gamemap& map,
 		}
 
 		int ret_value = revert?0:impassable;
-		for(t_translation::t_list::const_iterator i = underlying.begin(); 
+		for(t_translation::t_list::const_iterator i = underlying.begin();
 				i != underlying.end(); ++i) {
 
 			if(*i == t_translation::PLUS) {
@@ -349,7 +349,7 @@ int unit_movement_type::movement_cost(const gamemap& map,
 
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " 
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return impassable;
@@ -377,10 +377,10 @@ int unit_movement_type::movement_cost(const gamemap& map,
 	return res;
 }
 
-int unit_movement_type::defense_modifier(const gamemap& map, 
+int unit_movement_type::defense_modifier(const gamemap& map,
 		t_translation::t_letter terrain, int recurse_count) const
 {
-	const std::map<t_translation::t_letter, int>::const_iterator i = 
+	const std::map<t_translation::t_letter, int>::const_iterator i =
 		defenseMods_.find(terrain);
 
 	if(i != defenseMods_.end()) {
@@ -388,7 +388,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	}
 
 	// If this is an alias, then select the best of all underlying terrains.
-	const t_translation::t_list& underlying = 
+	const t_translation::t_list& underlying =
 		map.underlying_def_terrain(terrain);
 
 	if(underlying.size() != 1 || underlying.front() != terrain) {
@@ -398,7 +398,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 		}
 
 		int ret_value = revert?0:100;
-		for(t_translation::t_list::const_iterator i = underlying.begin(); 
+		for(t_translation::t_list::const_iterator i = underlying.begin();
 				i != underlying.end(); ++i) {
 
 			if(*i == t_translation::PLUS) {
@@ -427,7 +427,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 
 	if(defense != NULL) {
 		if(underlying.size() != 1) {
-			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " 
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
 
 			return 100;
@@ -510,7 +510,7 @@ unit_type::unit_type(const unit_type& o)
 
       defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
-      death_animations_(o.death_animations_), 
+      death_animations_(o.death_animations_),
       victory_animations_(o.victory_animations_),
       flag_rgb_(o.flag_rgb_)
 {
@@ -764,7 +764,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=poison flag\n";
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"),"poison",unit_animation::DEFAULT_ANIM));
-	// Always have a poison animation 
+	// Always have a poison animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
 	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
 	for(config::child_list::const_iterator movement_anim = movement_anims.begin(); movement_anim != movement_anims.end(); ++movement_anim) {
@@ -951,7 +951,7 @@ unit_type::experience_accelerator::~experience_accelerator()
 	experience_modifier = old_value_;
 }
 
-int unit_type::experience_accelerator::get_acceleration() 
+int unit_type::experience_accelerator::get_acceleration()
 {
 	return experience_modifier;
 }
@@ -1078,7 +1078,7 @@ void game_data::set_config(const config& cfg)
 		increment_set_config_progress();
 	}
 
-	for(i = cfg.child_range("race"); i.first != i.second; ++i.first) 
+	for(i = cfg.child_range("race"); i.first != i.second; ++i.first)
 	{
 		const unit_race race(**i.first);
 		races.insert(std::pair<std::string,unit_race>(race.name(),race));
@@ -1086,25 +1086,25 @@ void game_data::set_config(const config& cfg)
 	}
 
 	unsigned base_unit_count = 0;
-	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first) 
+	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
 	{
 		if((**i.first).child("base_unit"))
 		{
 			++base_unit_count;
 		}
-		else 
+		else
 		{
 			// LOAD UNIT TYPES
 			const unit_type u_type(**i.first,movement_types,races,unit_traits);
 			unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 			increment_set_config_progress();
-		} 
+		}
 	}
 	while(base_unit_count > 0)
 	{
 		unsigned new_count = base_unit_count;
 		std::string skipped;
-		for(i = cfg.child_range("unit"); i.first != i.second; ++i.first) 
+		for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
 		{
 			const config *bu_cfg = (**i.first).child("base_unit");
 			if(bu_cfg)
@@ -1144,7 +1144,7 @@ void game_data::set_config(const config& cfg)
 			base_unit_count = new_count;
 		}
 	}
-	
+
 	// Fix up advance_from references
 	for(i = cfg.child_range("unit"); i.first != i.second; ++i.first)
 	{
@@ -1184,7 +1184,7 @@ void game_data::set_config(const config& cfg)
 			}
 			else
 			{
-				lg::warn(lg::config) << "unknown unit " << *to_unit_id 
+				lg::warn(lg::config) << "unknown unit " << *to_unit_id
 					<< " advanced to by unit " << from_unit->first << "\n";
 			}
 		}

@@ -49,7 +49,7 @@ public:
 
 	virtual void set_location(SDL_Rect const &rect);
 
-	// VC++ doesn't like a 'using scrollarea::set_location' directive here, 
+	// VC++ doesn't like a 'using scrollarea::set_location' directive here,
 	// so we declare an inline forwarding function instead.
 	void set_location(int x, int y) { widget::set_location(x,y); }
 

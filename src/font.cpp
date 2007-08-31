@@ -534,16 +534,16 @@ private:
 text_cache::text_list text_cache::cache_;
 unsigned int text_cache::max_size_ = 50;
 
-void text_cache::resize(unsigned int size) 
+void text_cache::resize(unsigned int size)
 {
-	LOG_FT << "Text cache: resize from: " << max_size_ << " to: " 
+	LOG_FT << "Text cache: resize from: " << max_size_ << " to: "
 		<< size << " items in cache: " << cache_.size() << '\n';
-	
-	while(size < cache_.size()) { 
-		cache_.pop_back(); 
-	} 
-	max_size_ = size; 
-} 
+
+	while(size < cache_.size()) {
+		cache_.pop_back();
+	}
+	max_size_ = size;
+}
 
 
 text_surface &text_cache::find(text_surface const &t)
@@ -1161,14 +1161,14 @@ bool load_font_config()
 	return true;
 }
 
-void cache_mode(CACHE mode) 
+void cache_mode(CACHE mode)
 {
-	if(mode == CACHE_LOBBY) { 
-		text_cache::resize(1000); 
-	} else { 
-		text_cache::resize(50); 
-	} 
-} 
+	if(mode == CACHE_LOBBY) {
+		text_cache::resize(1000);
+	} else {
+		text_cache::resize(50);
+	}
+}
 
 
 }

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file image.cpp 
+//! @file image.cpp
 //! Routines for images: load, scale, re-color, etc.
 
 #include "global.hpp"
@@ -62,10 +62,10 @@ std::string image_mask;
 int zoom = image::tile_size;
 int cached_zoom = 0;
 
-// The "pointer to surfaces" vector is not cleared anymore 
-// (the surface are still freed, of course). 
-// I do not think it is a problem, as the number of different surfaces 
-// the program may lookup has an upper limit, so its memory usage 
+// The "pointer to surfaces" vector is not cleared anymore
+// (the surface are still freed, of course).
+// I do not think it is a problem, as the number of different surfaces
+// the program may lookup has an upper limit, so its memory usage
 // won't grow indefinitely over time.
 template<typename T>
 void reset_cache(std::vector<image::cache_item<T> >& cache)
@@ -128,7 +128,7 @@ void locator::parse_arguments()
 		return;
 	}
 	size_t markup_field = fn.find('~');
- 
+
 	if(markup_field != std::string::npos) {
 		val_.type_ = SUB_FILE;
 		val_.modifications_ = fn.substr(markup_field, fn.size() - markup_field);
@@ -235,7 +235,7 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_; 
+	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_;
 	} else {
 		return false;
 	}
@@ -320,14 +320,14 @@ surface locator::load_image_sub_file() const
 				std::string function=*j++;
 				if(j==tmpmod.end()){
 					if(function.size()){
-						ERR_DP << "error parsing image modifications: " 
+						ERR_DP << "error parsing image modifications: "
 							<< val_.modifications_<< "\n";
 					}
 					break;
 				}
 				std::string field = *j++;
 
-				if("TC" == function){ 	// Deprecated team coloring syntax
+				if("TC" == function){	// Deprecated team coloring syntax
 					//! @todo replace with proper RC syntax
 					std::string::size_type pos = 0;
 					pos = field.find(',');
@@ -342,10 +342,10 @@ surface locator::load_image_sub_file() const
 					if(game_config::tc_info(f2).size()){
 						function="RC";
 						field= f2 + ">" + f1;
-					}						
+					}
 				}
 
-				if("RC" == function){ 	// Re-color function
+				if("RC" == function){	// Re-color function
 					std::vector<std::string> recolor=utils::split(field,'>');
 					if(recolor.size()>1){
 						std::map<Uint32, Uint32> tmp_map;
@@ -356,20 +356,20 @@ surface locator::load_image_sub_file() const
 						} catch (config::error& e) {
 							ERR_DP << "caught config::error... " << e.message << std::endl;
 						}
-						for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){	
+						for(std::map<Uint32, Uint32>::const_iterator tmp = tmp_map.begin(); tmp!= tmp_map.end(); tmp++){
 							recolor_map[tmp->first] = tmp->second;
 						}
 					}
-				}									
-				if("FL" == function){ 	// Flip layer
+				}
+				if("FL" == function){	// Flip layer
 					if(field.empty() || field.find("horiz") != std::string::npos) {
 						xflip = !xflip;
 					}
 					if(field.find("vert") != std::string::npos) {
 						yflip = !yflip;
 					}
-				}									
-			} 			
+				}
+			}
 		}
 		surf = recolor_image(surf,recolor_map);
 		if(xflip) {
@@ -471,7 +471,7 @@ void set_image_mask(const std::string& /*image*/)
 
 	// image_mask are blitted in display.cpp
 	// so no need to flush the cache here
-/*	
+/*
 	if(image_mask != image) {
 		image_mask = image;
 		reset_cache(scaled_to_hex_images_);
@@ -624,7 +624,7 @@ surface get_image(const image::locator& i_locator, TYPE type, bool add_to_cache 
 	if(i_locator.in_cache(*imap))
 		return i_locator.locate_in_cache(*imap);
 
-	// If type is unscaled, directly load the image from the disk. 
+	// If type is unscaled, directly load the image from the disk.
 	// Else, create it from the unscaled image.
 	if(is_unscaled) {
 		res = i_locator.load_from_disk();
@@ -706,5 +706,5 @@ bool exists(const image::locator& i_locator)
 }
 
 
-} // end namespace image 
+} // end namespace image
 

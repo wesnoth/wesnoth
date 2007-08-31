@@ -231,8 +231,8 @@ void scrollbar::draw_contents()
 	SDL_Rect grip = grip_area();
 	int mid_height = grip.h - top_img->h - bottom_img->h;
 	if (mid_height <= 0) {
-		// For now, minimum size of the middle piece is 1. 
-		// This should never really be encountered, and if it is, 
+		// For now, minimum size of the middle piece is 1.
+		// This should never really be encountered, and if it is,
 		// it's a symptom of a larger problem, I think.
 		mid_height = 1;
 	}
@@ -325,7 +325,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 			new_state = on_grip ? ACTIVE : NORMAL;
 		} else if (state_ == DRAGGED && groove.h != grip.h) {
 			int y_dep = e.y - grip.y - mousey_on_grip_;
-			int dep = y_dep * static_cast<int>(full_height_ - grip_height_) / 
+			int dep = y_dep * static_cast<int>(full_height_ - grip_height_) /
                 static_cast<int>(groove.h - grip.h);
 			move_position(dep);
 		}

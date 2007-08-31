@@ -42,7 +42,7 @@ class manager : public events::observer {
 		std::string _files;
 		std::list<gamemap::location> _locations;
 
-		// Last assigned id; this can, of course, overflow, but I'd 
+		// Last assigned id; this can, of course, overflow, but I'd
 		// never expect to see 4 billions sound sources being created...
 		static unsigned int last_id;
 
@@ -68,7 +68,7 @@ class manager : public events::observer {
 
 	positional_source_map _sources;
 	const display &_disp;
-	
+
 	// checks which sound sources are visible
 	void update_positions();
 

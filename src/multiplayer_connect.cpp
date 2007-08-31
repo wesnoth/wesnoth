@@ -1168,7 +1168,7 @@ void connect::lists_init()
 			{
 				user_team_name = team_name;
 			}
-			
+
 			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
 			if(itor == team_names_.end()) {
 				team_names_.push_back(team_name);
@@ -1184,7 +1184,7 @@ void connect::lists_init()
 
 			if(team_name.empty())
 				team_name = side_num;
-			
+
 			std::vector<std::string>::const_iterator itor = std::find(map_team_names.begin(), map_team_names.end(), team_name);
 			if(itor == map_team_names.end()) {
 				map_team_names.push_back(team_name);
@@ -1257,9 +1257,9 @@ void connect::load_game()
 		}
 
 		if(state_.version != game_config::version) {
-			// do not load if too old, if either the savegame or the current game 
+			// do not load if too old, if either the savegame or the current game
 			// has the version 'test' allow loading
-			if(state_.version < game_config::min_savegame_version && 
+			if(state_.version < game_config::min_savegame_version &&
 					game_config::test_version.full != state_.version &&
 					game_config::test_version.full != game_config::version) {
 
@@ -1314,7 +1314,7 @@ void connect::load_game()
 		level_["mp_countdown_turn_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_turn_bonus, "35");
 		level_["mp_countdown_reservoir_time"] = lexical_cast_default<std::string>(params_.mp_countdown_reservoir_time, "330");
 		level_["mp_countdown_action_bonus"] = lexical_cast_default<std::string>(params_.mp_countdown_action_bonus, "13");
-		
+
 		if (params_.random_start_time)
 		{
 			if (!gamestatus::is_start_ToD(level_["random_start_time"]))
@@ -1392,14 +1392,14 @@ void connect::update_and_send_diff(bool update_time_of_day)
 {
 	config old_level = level_;
 	update_level();
-	
+
 	if (update_time_of_day)
 	{
-		// Set random start ToD 
+		// Set random start ToD
 		gamestatus game_status(level_,atoi(level_["turns"].c_str()),&state_);
 
 	}
-	
+
 	config diff;
 	diff.add_child("scenario_diff",level_.get_diff(old_level));
 	network::send_data(diff);

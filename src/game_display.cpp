@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file game_display.cpp 
+//! @file game_display.cpp
 //! During a game, show map & info-panels at top+right.
 
 #include "global.hpp"
@@ -66,7 +66,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		invalidateUnit_(true),
 		currentTeam_(0), activeTeam_(0),
 		sidebarScaling_(1.0),
-		first_turn_(true), in_game_(false), 
+		first_turn_(true), in_game_(false),
 		tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true)
 {
 	singleton_ = this;
@@ -216,7 +216,7 @@ void game_display::scroll_to_leader(unit_map& units, int side)
 	const unit_map::iterator leader = find_leader(units,side);
 
 	if(leader != units_.end()) {
-		// YogiHH: I can't see why we need another key_handler here, 
+		// YogiHH: I can't see why we need another key_handler here,
 		// therefore I will comment it out :
 		/*
 		const hotkey::basic_handler key_events_handler(gui_);
@@ -239,8 +239,8 @@ void game_display::draw(bool update,bool force)
 
 	process_reachmap_changes();
 
-	//! @todo FIXME: must modify changed, but best to do it 
-	//! at the floating_label level 
+	//! @todo FIXME: must modify changed, but best to do it
+	//! at the floating_label level
 	prune_chat_messages();
 
 	if(map_.empty()) {
@@ -262,7 +262,7 @@ void game_display::draw(bool update,bool force)
 			map_.get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png";
 		const std::string fog_image = "terrain/" +
 			map_.get_terrain_info(t_translation::FOGGED).minimap_image() + ".png";
-			
+
 		SDL_Rect clip_rect = map_area();
 		surface const dst(screen_.getSurface());
 		clip_rect_setter set_clip_rect(dst, clip_rect);
@@ -282,21 +282,21 @@ void game_display::draw(bool update,bool force)
 				continue;
 			}
 
-			// If the terrain is off the map, 
-			// it shouldn't be included for reachmap, 
-			// fog, shroud and the grid.  
-			// In the future it may not depend on 
-			// whether the location is on the map, 
-			// but whether it's an _off^* terrain.  
-			// (atm not too happy with how the grid looks) 
-			// (the shroud has some glitches due to 
+			// If the terrain is off the map,
+			// it shouldn't be included for reachmap,
+			// fog, shroud and the grid.
+			// In the future it may not depend on
+			// whether the location is on the map,
+			// but whether it's an _off^* terrain.
+			// (atm not too happy with how the grid looks)
+			// (the shroud has some glitches due to
 			// commented out code, but enabling it looks worse).
 			const bool on_map = map_.on_board(*it);
 			const bool is_shrouded = shrouded(*it);
 
 			image::TYPE image_type = image::SCALED_TO_HEX;
 
-			// We highlight hex under the mouse, 
+			// We highlight hex under the mouse,
 			// origin of attack or under a selected unit.
 			if (on_map && (*it == mouseoverHex_ || *it == attack_indicator_src_)) {
 				image_type = image::BRIGHTENED;
@@ -347,7 +347,7 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image(tod_hex_mask,image::UNMASKED));
 			}
 
-			// Draw the grid, if that's been enabled 
+			// Draw the grid, if that's been enabled
 			if(grid_ && !is_shrouded) {
 				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
@@ -390,7 +390,7 @@ void game_display::draw(bool update,bool force)
 
 			// Apply shroud and fog
 			if(is_shrouded) {
-				// We apply void also on off-map tiles 
+				// We apply void also on off-map tiles
 				// to shroud the half-hexes too
 				tile_stack_append(image::get_image(shroud_image, image::SCALED_TO_HEX));
 			} else if(fogged(*it)) {
@@ -408,14 +408,14 @@ void game_display::draw(bool update,bool force)
 				draw_movement_info(*it);
 			}
 			//simulate_delay += 1;
-			
+
 			// If the tile is at the border, we start to blend it
 			if(!on_map && map_.get_terrain(*it) != t_translation::OFF_MAP_USER) {
 				 draw_border(*it, xpos, ypos);
 			}
 		}
 
-		// Units can overlap multiple hexes, so we need 
+		// Units can overlap multiple hexes, so we need
 		// to redraw them last and in the good sequence.
 		std::set<gamemap::location, struct display::ordered_draw>::const_iterator it2;
 		for(it2 = unit_invals.begin(); it2 != unit_invals.end(); ++it2) {
@@ -438,7 +438,7 @@ void game_display::draw(bool update,bool force)
 
 	draw_sidebar();
 	//! @todo FIXME: This changed can probably be smarter
-	changed = true;  
+	changed = true;
 
 	// Simulate slow PC:
 	//SDL_Delay(2*simulate_delay + rand() % 20);
@@ -464,7 +464,7 @@ void game_display::draw_report(reports::TYPE report_num)
 	if(report_num == reports::TIME_OF_DAY) {
 		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
 		// Don't show illuminated time on fogged/shrouded tiles
-		if (teams_[viewing_team()].fogged(mouseoverHex_.x, mouseoverHex_.y) || 
+		if (teams_[viewing_team()].fogged(mouseoverHex_.x, mouseoverHex_.y) ||
 				teams_[viewing_team()].shrouded(mouseoverHex_.x, mouseoverHex_.y)) {
 
 			tod = status_.get_time_of_day(false,mouseoverHex_);
@@ -558,7 +558,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 	surface surf(image::get_image(image,image::UNMASKED));
 
 	// We use UNSCALED because scaling (and bilinear interpolaion)
-	// is bad for calculate_energy_bar. 
+	// is bad for calculate_energy_bar.
 	// But we will do a geometric scaling later.
 	surface bar_surf(image::get_image(image));
 	if(surf == NULL || bar_surf == NULL) {
@@ -680,9 +680,9 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	int image_number = minimum<int>(move_cost, game_config::foot_speed_prefix.size());
 	if (image_number < 1) {
 		return res; // Invalid movement cost or no images
-	} 
+	}
 	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
-	
+
 	// We draw 2 half-hex (with possibly different directions),
 	// but skip the first for the first step.
 	const int first_half = (i == route_.steps.begin()) ? 1 : 0;
@@ -930,7 +930,7 @@ void game_display::invalidate_animations()
 	gamemap::location topleft;
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
-	
+
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			const gamemap::location loc(x,y);
@@ -1004,7 +1004,7 @@ void game_display::clear_attack_indicator()
 
 void game_display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
-	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2, 
+	const int halo_handle = halo::add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
 	const overlay item(img,halo,halo_handle);

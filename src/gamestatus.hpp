@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file gamestatus.hpp 
+//! @file gamestatus.hpp
 //!
 
 #ifndef GAME_STATUS_HPP_INCLUDED
@@ -35,7 +35,7 @@ struct time_of_day
 	explicit time_of_day(const config& cfg);
 	void write(config& cfg) const;
 
-	// The % bonus lawful units receive. 
+	// The % bonus lawful units receive.
 	// Chaotic units will receive -lawful_bonus.
 	int lawful_bonus;
 	int bonus_modified;
@@ -45,11 +45,11 @@ struct time_of_day
 	t_string name;
 	std::string id;
 
-	// The image that is to be laid over all images 
+	// The image that is to be laid over all images
 	// while this time of day lasts.
 	std::string image_mask;
 
-	// The colour modifications that should be made 
+	// The colour modifications that should be made
 	// to the game board to reflect the time of day.
 	int red, green, blue;
 
@@ -75,9 +75,9 @@ struct player_info
 {
 	player_info():gold(-1) {}
 
-	std::string name; 	/** < Stores the current_player name */
-	int gold; 			/** < Amount of gold the player has saved */
-	std::vector<unit> available_units; /** < Units the player may recall */ 
+	std::string name;	/** < Stores the current_player name */
+	int gold;			/** < Amount of gold the player has saved */
+	std::vector<unit> available_units; /** < Units the player may recall */
 	std::set<std::string> can_recruit; /** < Units the player has the ability to recruit */
 };
 
@@ -91,20 +91,20 @@ public:
 	~game_state();
 	game_state& operator=(const game_state& state);
 
-	std::string label; 			//!< Name of the game (e.g. name of save file).
-	std::string version; 		//!< Version game was created with.
-	std::string campaign_type; 	//!< Type of the game - campaign, multiplayer etc.
+	std::string label;			//!< Name of the game (e.g. name of save file).
+	std::string version;		//!< Version game was created with.
+	std::string campaign_type;	//!< Type of the game - campaign, multiplayer etc.
 
 	std::string campaign_define; //! If there is a define the campaign uses to customize data
 	std::vector<std::string> campaign_xtra_defines; // more customization of data
 
-	std::string campaign; 	//!< the campaign being played
-	std::string scenario; 	//!< the scenario being played
+	std::string campaign;	//!< the campaign being played
+	std::string scenario;	//!< the scenario being played
 	std::string completion; //!< running. victory, or defeat
 
-	//! Information about campaign players who carry resources 
-	//! from previous levels, indexed by a string identifier 
-	// (which is the leader name by default, but can be set 
+	//! Information about campaign players who carry resources
+	//! from previous levels, indexed by a string identifier
+	// (which is the leader name by default, but can be set
 	// with the "id" attribute of the "side" tag).
 	std::map<std::string, player_info> players;
 
@@ -133,17 +133,17 @@ public:
 
 	std::string difficulty; //!< The difficulty level the game is being played on.
 
-	//! If the game is saved mid-level, we have a series of replay steps 
+	//! If the game is saved mid-level, we have a series of replay steps
 	//! to take the game up to the position it was saved at.
 	config replay_data;
 
 	//! Saved starting state of the game.
-	//! For multiplayer games, the position the game started in 
-	//! may be different to the scenario, 
+	//! For multiplayer games, the position the game started in
+	//! may be different to the scenario,
 	config starting_pos;
 
-	//! Snapshot of the game's current contents. 
-	//! i.e. unless the player selects to view a replay, 
+	//! Snapshot of the game's current contents.
+	//! i.e. unless the player selects to view a replay,
 	//! the game's settings are read in from this object.
 	config snapshot;
 
@@ -156,7 +156,7 @@ private:
 };
 
 
-//! Contains the global status of the game. 
+//! Contains the global status of the game.
 //! Namely the current turn, the number of turns, and the time of day.
 class gamestatus
 {
@@ -174,13 +174,13 @@ public:
 	void modify_turns(const std::string& mod);
 	void add_turns(int num);
 
-	//! function to move to the next turn. 
+	//! function to move to the next turn.
 	//! Returns true iff time has expired.
 	bool next_turn();
-	
+
 	static bool is_start_ToD(const std::string&);
 
-	//! @todo FIXME: since gamestatus may be constructed with NULL game_state* (by default), 
+	//! @todo FIXME: since gamestatus may be constructed with NULL game_state* (by default),
 	//! you should not rely on this function to return the current game_state.
 	const game_state& sog() const{return(*state_of_game_);}
 

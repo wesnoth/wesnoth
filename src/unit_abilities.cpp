@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_abilities.cpp 
+//! @file unit_abilities.cpp
 //! Manage unit-abilities, like heal, cure, and weapon_specials.
 
 #include "unit.hpp"

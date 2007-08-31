@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file cursor.hpp 
+//! @file cursor.hpp
 //!
 
 #ifndef CURSOR_HPP_INCLUDED

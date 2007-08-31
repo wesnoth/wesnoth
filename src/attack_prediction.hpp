@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file attack_prediction.hpp 
+//! @file attack_prediction.hpp
 //!
 
 #ifndef ATTACK_PREDICTION_H_INCLUDED

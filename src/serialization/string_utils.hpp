@@ -13,8 +13,8 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/string_utils.hpp 
-//! 
+//! @file serialization/string_utils.hpp
+//!
 
 #ifndef SERIALIZATION_STRING_UTILS_HPP_INCLUDED
 #define SERIALIZATION_STRING_UTILS_HPP_INCLUDED
@@ -36,7 +36,7 @@ public:
 
 //! The type we use to represent Unicode strings.
 typedef std::vector<wchar_t> wide_string;
-// If we append a 0 to that one, 
+// If we append a 0 to that one,
 // we can pass it to SDL_ttf as a const Uint16*
 typedef std::vector<Uint16> ucs2_string;
 typedef std::vector<Uint32> ucs4_string;
@@ -48,8 +48,8 @@ bool isnewline(char c);
 bool portable_isspace(char c);
 bool notspace(char c);
 
-enum { REMOVE_EMPTY = 0x01, 	//!< REMOVE_EMPTY : remove empty elements
-	  STRIP_SPACES  = 0x02 		//!< STRIP_SPACES : strips leading and trailing blank spaces
+enum { REMOVE_EMPTY = 0x01,	//!< REMOVE_EMPTY : remove empty elements
+	  STRIP_SPACES  = 0x02		//!< STRIP_SPACES : strips leading and trailing blank spaces
 	 };
 
 std::vector< std::string > split(std::string const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
@@ -71,13 +71,13 @@ bool string_bool(const std::string& str,bool def=false);
 bool isvalid_username(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
-//! Function which will interpolate variables, starting with '$' in the string 'str' 
-//! with the equivalent symbols in the given symbol table. 
+//! Function which will interpolate variables, starting with '$' in the string 'str'
+//! with the equivalent symbols in the given symbol table.
 //! If 'symbols' is NULL, then game event variables will be used instead.
 std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols);
 std::string interpolate_variables_into_string(std::string const &str, const variable_set& variables);
 
-//! Functions for converting Unicode wide-char strings 
+//! Functions for converting Unicode wide-char strings
 //! to UTF-8 encoded strings, back and forth
 class invalid_utf8_exception : public std::exception {
 };
@@ -115,11 +115,11 @@ std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 std::string wchar_to_string(const wchar_t);
 
-//! Returns a version of the string with the first letter capitalized 
+//! Returns a version of the string with the first letter capitalized
 utf8_string capitalize(const utf8_string&);
-//! Returns an uppercased version of the string 
+//! Returns an uppercased version of the string
 utf8_string uppercase(const utf8_string&);
-//! Returns a lowercased version of the string 
+//! Returns a lowercased version of the string
 utf8_string lowercase(const utf8_string&);
 
 bool wildcard_string_match(const std::string& str, const std::string& match);

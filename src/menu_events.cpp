@@ -376,7 +376,7 @@ namespace events{
 			if(i->second.can_advance()) {
 				row << i->second.max_experience();
 			} else {
-				row << "-";	
+				row << "-";
 			}
 			row << COLUMN_SEPARATOR;
 
@@ -407,10 +407,10 @@ namespace events{
 				row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
 
 			//! @todo FIXME: condition for "invisible" does not work
-			//if(utils::string_bool(i->second.get_state("hides"))) 	// "hides" gives ability, not status
+			//if(utils::string_bool(i->second.get_state("hides")))	// "hides" gives ability, not status
 			if(utils::string_bool(i->second.get_state("invisible")))
 				row << IMAGE_PREFIX << "misc/invisible.png";
-//%% 
+//%%
 			items.push_back(row.str());
 
 			locations_list.push_back(i->first);
@@ -533,8 +533,8 @@ private:
 			    << data.teamname << COLUMN_SEPARATOR;
 
 			if(!known && !game_config::debug) {
-				// We don't spare more info (only name) 
-			  	// so let's go on next side ...
+				// We don't spare more info (only name)
+				// so let's go on next side ...
 				items.push_back(str.str());
 				continue;
 			}
@@ -756,7 +756,7 @@ private:
 			}
 			//recall list
 			{
-				for(std::map<std::string, player_info>::const_iterator i=gamestate_.players.begin(); 
+				for(std::map<std::string, player_info>::const_iterator i=gamestate_.players.begin();
 				i!=gamestate_.players.end(); ++i) {
 					for(std::vector<unit>::const_iterator j = i->second.available_units.begin();
 						j != i->second.available_units.end(); ++j) {
@@ -953,7 +953,7 @@ private:
 
 			gui::dialog rmenu(*gui_,_("Recruit"),
 					  _("Select unit:") + std::string("\n"),
-					  gui::OK_CANCEL, 
+					  gui::OK_CANCEL,
 					  gui::dialog::default_style);
 			rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
 				gui::dialog::BUTTON_HELP);
@@ -1102,7 +1102,7 @@ private:
 				dialogs::unit_preview_pane unit_preview(*gui_,&map_,recall_list);
 				gui::dialog rmenu(*gui_,_("Recall"),
 						  _("Select unit:") + std::string("\n"),
-						  gui::OK_CANCEL, 
+						  gui::OK_CANCEL,
 						  gui::dialog::default_style);
 				rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
 					gui::dialog::BUTTON_HELP);
@@ -1141,7 +1141,7 @@ private:
 							clear_undo_stack(team_num);
 						} else {
 							undo_stack_.push_back(undo_action(un,loc,res));
-						}	
+						}
 
 						redo_stack_.clear();
 

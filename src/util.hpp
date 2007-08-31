@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file util.hpp 
+//! @file util.hpp
 //! Templates and utility-routines for strings and numbers.
 
 #ifndef UTIL_H_INCLUDED
@@ -61,7 +61,7 @@ inline int round_damage(int base_damage, int bonus, int divisor) {
 // not guaranteed to have exactly the same result on different platforms
 inline int round_double(double d) {
 #ifdef HAVE_ROUND
-	return static_cast<int>(round(d)); //surprisingly, not implemented everywhere 
+	return static_cast<int>(round(d)); //surprisingly, not implemented everywhere
 #else
 	return static_cast<int>((d >= 0.0)? floor(d + 0.5) : ceil(d - 0.5));
 #endif
@@ -135,7 +135,7 @@ To lexical_cast_in_range(From a, To def, To min, To max)
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
-//! A definition of 'push_back' for strings, 
+//! A definition of 'push_back' for strings,
 // since some implementations don't support string::push_back
 template<typename T, typename C>
 void push_back(T& str, C c)

@@ -35,7 +35,7 @@ class map_labels
 public:
 	typedef std::map<gamemap::location,const terrain_label*> label_map;
 	typedef std::map<std::string,label_map> team_label_map;
-	
+
 	map_labels(const display& disp, const gamemap& map, const team*);
 	map_labels(const display& disp, const config& cfg, const gamemap& map, const team*, const variable_set *variables);
 	~map_labels();
@@ -46,14 +46,14 @@ public:
 	static size_t get_max_chars();
 
 	const terrain_label* get_label(const gamemap::location& loc);
-	const terrain_label* set_label(const gamemap::location& loc, 
+	const terrain_label* set_label(const gamemap::location& loc,
 							   const std::string& text,
 							   const std::string team = "",
 							   const SDL_Color colour = font::NORMAL_COLOUR);
-	
+
 	void add_label(const gamemap::location&,
 				   const terrain_label*);
-	
+
 	void clear(const std::string&);
 
 	void scroll(double xmove, double ymove);
@@ -64,9 +64,9 @@ public:
 	void recalculate_shroud();
 
 	const display& disp() const;
-	
+
 	const std::string& team_name() const;
-	
+
 	void set_team(const team*);
 
 private:
@@ -89,33 +89,33 @@ class terrain_label
 {
 public:
 	terrain_label(const std::string&,
-				  const std::string&, 
-				  const gamemap::location&, 
-				  const map_labels&, 
+				  const std::string&,
+				  const gamemap::location&,
+				  const map_labels&,
 				  const SDL_Color colour = font::NORMAL_COLOUR);
-	
-	terrain_label(const map_labels&, 
+
+	terrain_label(const map_labels&,
 		      const config&,
 		      const variable_set *variables);
-	
+
 	terrain_label(const map_labels&);
-	
+
 	~terrain_label();
-	
+
 	void write(config& res) const;
 	void read(const config& cfg, const variable_set *variables);
-	
+
 	const std::string& text() const;
 	const std::string& team_name() const;
 	const gamemap::location& location() const;
 	const SDL_Colour& colour() const;
-	
+
 	void set_text(const std::string&);
-				
+
 	void update_info(const std::string&,
 					 const std::string&,
- 					 const SDL_Color);
-	
+					 const SDL_Color);
+
 	void scroll(double xmove, double ymove) const;
 
 	void recalculate();
@@ -129,16 +129,16 @@ private:
 	bool visible() const;
 	void check_text_length();
 	const std::string cfg_colour() const;
-	
+
 	int handle_;
-	
+
 	std::string text_;
 	std::string team_name_;
 	SDL_Color	colour_;
-	
+
 	const map_labels* parent_;
 	gamemap::location loc_;
-	
+
 };
 
 #endif

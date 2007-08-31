@@ -14,7 +14,7 @@
    See the COPYING file for more details.
 */
 
-//! @file serialization/string_utils.cpp 
+//! @file serialization/string_utils.cpp
 //! Various string-routines.
 
 #include "global.hpp"
@@ -151,7 +151,7 @@ bool notspace(char c)
 
 std::string &strip(std::string &str)
 {
- 	// If all the string contains is whitespace, 
+	// If all the string contains is whitespace,
 	// then the whitespace may have meaning, so don't strip it
 	std::string::iterator it = std::find_if(str.begin(), str.end(), notspace);
 	if (it == str.end())
@@ -198,23 +198,23 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-// Splits a function based either on a separator 
+// Splits a function based either on a separator
 // where text within paranthesis is protected from splitting,
 // (note that one can use the same character for both the left and right paranthesis)
-// or if the separator == 0 it splits a string into an odd number of parts:  
-// - The part before the first '(', 
-// - the part between the first '(' 
-// - and the matching right ')', etc ... 
-// and the remainder of the string.  
-// Note that this will find the first matching char in the left string 
-// and match against the corresponding char in the right string.  
-// In this mode, a correctly processed string should return with 
-// an odd number of elements to the vector and 
-// an empty elements are never removed as they are placeholders. 
+// or if the separator == 0 it splits a string into an odd number of parts:
+// - The part before the first '(',
+// - the part between the first '('
+// - and the matching right ')', etc ...
+// and the remainder of the string.
+// Note that this will find the first matching char in the left string
+// and match against the corresponding char in the right string.
+// In this mode, a correctly processed string should return with
+// an odd number of elements to the vector and
+// an empty elements are never removed as they are placeholders.
 // hence REMOVE EMPTY only works for the separator split.
 //
-// parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return 
-// a vector of <"a","b","c","d","e","f{g}","h"> 
+// parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
+// a vector of <"a","b","c","d","e","f{g}","h">
 
 std::vector< std::string > paranthetical_split(std::string const &val, const char separator, std::string const &left, std::string const &right,int flags)
 {
@@ -223,10 +223,10 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2 = val.begin();
-	
+
 	std::string lp=left;
 	std::string rp=right;
-	
+
 	if(left.size()!=right.size()){
 		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
 		return res;
@@ -260,7 +260,7 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 				++i2;
 			}
 			continue;
-		}		
+		}
 		bool found=false;
 		for(size_t i=0; i < lp.size(); i++){
 			if (*i2 == lp[i]){
@@ -273,15 +273,15 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 					i1=i2;
 				}else{
 					++i2;
-				}			
+				}
 				part.push_back(rp[i]);
 				found=true;
 				break;
 			}
-		}	
+		}
 		if(!found){
 				++i2;
-		}	
+		}
 	}
 
 	std::string new_val(i1, i2);
@@ -392,7 +392,7 @@ bool string_bool(const std::string& str,bool def)
 	return def;
 }
 
-//! Check if the username is valid 
+//! Check if the username is valid
 //! (all alpha-numeric plus underscore)
 bool isvalid_username(const std::string& username)
 {
@@ -416,7 +416,7 @@ std::string join(std::vector< std::string > const &v, char c)
 	return str.str();
 }
 
-// This function is identical to split(), except it does not split 
+// This function is identical to split(), except it does not split
 // when it otherwise would if the previous character was identical to the parameter 'quote'.
 // i.e. it does not split quoted commas.
 // This method was added to make it possible to quote user input,
@@ -733,7 +733,7 @@ utf8_string lowercase(const utf8_string& s)
 //! @todo FIXME: 'wordw' does not match '*word*'
 bool wildcard_string_match(const std::string& str, const std::string& match)
 {
-	// Match using '*' as any number of characters (including none), 
+	// Match using '*' as any number of characters (including none),
 	// and '?' as any one character
 	std::string::const_iterator c = str.begin();
 	std::string::const_iterator m = match.begin();
@@ -785,7 +785,7 @@ bool wildcard_string_match(const std::string& str, const std::string& match)
 }
 
 
-} // end namespace utils 
+} // end namespace utils
 
 std::string vgettext(const char *msgid, const utils::string_map& symbols)
 {

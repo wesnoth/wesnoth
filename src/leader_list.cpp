@@ -98,7 +98,7 @@ void leader_list_manager::populate_combo(int selected_index) {
 		if (utypes.find(*itor) != utypes.end()) {
 			const std::string name =  utypes.find(*itor)->second.language_name();
 			const std::string image = utypes.find(*itor)->second.image();
-		
+
 #ifdef LOW_MEM
 			leader_strings.push_back(IMAGE_PREFIX + image + COLUMN_SEPARATOR + name);
 #else

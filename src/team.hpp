@@ -126,7 +126,7 @@ public:
 	void lose_village(const gamemap::location&);
 	void clear_villages() { villages_.clear(); }
 	const std::set<gamemap::location>& villages() const { return villages_; }
-	bool owns_village(const gamemap::location& loc) const 
+	bool owns_village(const gamemap::location& loc) const
 		{ return villages_.count(loc) > 0; }
 
 	int gold() const { return gold_; }
@@ -140,14 +140,14 @@ public:
 	void set_time_of_day(int turn, const struct time_of_day& tod);
 	void get_shared_maps();
 	void spend_gold(const int amount) { gold_ -= amount; }
-	void set_income(const int amount) 
+	void set_income(const int amount)
 		{ info_.income = lexical_cast<std::string>(amount); }
 	int countdown_time() const {  return countdown_time_; }
 	void set_countdown_time(const int amount)
 		{ countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
-	void set_current_player(const std::string player) 
+	void set_current_player(const std::string player)
 		{ info_.current_player = player; }
 
 	const std::set<std::string>& recruits() const
@@ -218,7 +218,7 @@ public:
 	void set_ai_memory(const config& ai_mem);
 
 	double leader_value() const { return info_.leader_value; }
-	double village_value() const { return info_.village_value; } 
+	double village_value() const { return info_.village_value; }
 
 	int villages_per_scout() const { return info_.villages_per_scout; }
 

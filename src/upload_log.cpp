@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file upload_log.cpp 
+//! @file upload_log.cpp
 //! Manage logfiles for uploading as feedback, e.g.\ for champaign-balancing.
 
 #include "global.hpp"
@@ -121,7 +121,7 @@ upload_log::upload_log(bool enable) : game_(NULL), enabled_(enable)
 {
 	filename_ = next_filename(get_upload_dir(), 100);
 	if (preferences::upload_log() && !thread_.t) {
-		// Thread can outlive us; it uploads everything up to the 
+		// Thread can outlive us; it uploads everything up to the
 		// next filename, and unsets thread_.t when it's finished.
 		thread_.lastfile = filename_;
 		thread_.t = new threading::thread(upload_logs, &thread_);
@@ -198,7 +198,7 @@ void upload_log::start(game_state &state, const team &team,
 	(*game_)["gold"] = lexical_cast<std::string>(team.gold());
 	(*game_)["num_turns"] = lexical_cast<std::string>(num_turns);
 
-	// We seem to have to walk the map to find some units, 
+	// We seem to have to walk the map to find some units,
 	// and the player's available_units for the rest.
 	for (unit_map::const_iterator un = units.begin(); un != units.end(); ++un){
 		if (un->second.side() == team_number) {
@@ -293,7 +293,7 @@ void upload_log_dialog::show_beg_dialog(display& disp)
 		+ "http://stats.wesnoth.org/?" + preferences::upload_id() + "\n \n";
 	gui::dialog d(disp, _("Help us make Wesnoth better for you!"), msg, gui::OK_ONLY);
 
-	d.add_option(_("Enable summary uploads"), 
+	d.add_option(_("Enable summary uploads"),
 		preferences::upload_log(), gui::dialog::BUTTON_CHECKBOX_LEFT);
 	d.show();
 	preferences::set_upload_log(d.option_checked());

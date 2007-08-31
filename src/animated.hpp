@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file animated.hpp 
+//! @file animated.hpp
 //! Animate units.
 
 #ifndef ANIMATED_IMAGE_H_INCLUDED
@@ -50,8 +50,8 @@ public:
 	//! Adds a frame to an animation.
 	void add_frame(int duration, const T& value,bool force_change =false);
 
-	//! Starts an animation cycle. 
-	//! The first frame of the animation to start may be set 
+	//! Starts an animation cycle.
+	//! The first frame of the animation to start may be set
 	//! to any value by using a start_time different to 0.
 	void start_animation(int start_time, bool cycles=false, double acceleration=1);
 

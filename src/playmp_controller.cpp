@@ -133,7 +133,7 @@ void playmp_controller::think_about_countdown(int ticks) {
 		const bool bell_on = preferences::turn_bell();
 		if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
 			preferences::set_turn_bell(true);
-			sound::play_bell(game_config::sounds::timer_bell, 
+			sound::play_bell(game_config::sounds::timer_bell,
 				WARNTIME - (ticks - beep_warning_time_));
 			beep_warning_time_ = -1;
 			preferences::set_turn_bell(bell_on);

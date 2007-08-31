@@ -57,8 +57,8 @@ public:
 		//! A list of the teams in the game.
 		std::vector<team>& teams;
 
-		//! The number of the team the AI is. 
-		//! Note: this number is 1-based, so 1 must be subtracted 
+		//! The number of the team the AI is.
+		//! Note: this number is 1-based, so 1 must be subtracted
 		//! for using it as index of 'teams'.
 		unsigned int team_num;
 
@@ -73,15 +73,15 @@ public:
 		class game_state& game_state_;
 	};
 
-	//! The constructor. 
-	//! All derived classes should take an argument of type info& 
+	//! The constructor.
+	//! All derived classes should take an argument of type info&
 	//! which they should pass to this constructor.
 	ai_interface(info& arg) : info_(arg), last_interact_(0), user_interact_("ai_user_interact"),
 		unit_recruited_("ai_unit_recruited"), unit_moved_("ai_unit_moved"),
 		enemy_attacked_("ai_enemy_attacked") {}
 	virtual ~ai_interface() {}
 
-	//! Function that is called when the AI must play its turn. 
+	//! Function that is called when the AI must play its turn.
 	//! Derived classes should implement their AI algorithm in this function.
 	virtual void play_turn() = 0;
 
@@ -103,61 +103,61 @@ public:
 
 protected:
 	//! This function should be called to attack an enemy.
-	//! 'attacking_unit': 	the location of the attacking unit
-	//! 'target': 			the location of the target unit. 
+	//! 'attacking_unit':	the location of the attacking unit
+	//! 'target':			the location of the target unit.
 	//						This unit must be in range of the attacking unit's weapon
-	//! 'att_weapon': 		the number of the weapon (0-based) which should be used in the attack.
-	//! 					This must be a valid weapon of the attacking unit.
+	//! 'att_weapon':		the number of the weapon (0-based) which should be used in the attack.
+	//!					This must be a valid weapon of the attacking unit.
 	void attack_enemy(const location& attacking_unit, const location& target, int att_weapon, int def_weapon);
 
-	//! This function should be called to move a unit. 
+	//! This function should be called to move a unit.
 	//! Once the unit has been moved, its movement allowance is set to 0.
-	//! 'from': 			the location of the unit being moved.
-	//! 'to': 				the location to be moved to. This must be a valid move for the unit.
-	//! 'possible_moves': 	the map of possible moves, as obtained from 'calculate_possible_moves'.
+	//! 'from':			the location of the unit being moved.
+	//! 'to':				the location to be moved to. This must be a valid move for the unit.
+	//! 'possible_moves':	the map of possible moves, as obtained from 'calculate_possible_moves'.
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
-	//! Identical to 'move_unit', except that the unit's movement 
+	//! Identical to 'move_unit', except that the unit's movement
 	//! isn't set to 0 after the move is complete.
 	location move_unit_partial(location from, location t, std::map<location,paths>& possible_moves);
 
 	//! Calculate the moves units may possibly make.
-	//! 'possible_moves': 	a map which will be filled with the paths each unit can take 
-	//!						to get to every possible destination. 
+	//! 'possible_moves':	a map which will be filled with the paths each unit can take
+	//!						to get to every possible destination.
 	//!						You probably don't want to use this object at all, except to pass to 'move_unit'.
-	//! 'srcdst': 			a map of units to all their possible destinations
-	//! 'dstsrc': 			a map of destinations to all the units that can move to that destination
-	//! 'enemy': 			if true, a map of possible moves for enemies will be calculated. 
-	//!						If false, a map of possible moves for units on the AI's side will be calculated. 
+	//! 'srcdst':			a map of units to all their possible destinations
+	//! 'dstsrc':			a map of destinations to all the units that can move to that destination
+	//! 'enemy':			if true, a map of possible moves for enemies will be calculated.
+	//!						If false, a map of possible moves for units on the AI's side will be calculated.
 	//!						The AI's own leader will not be included in this map.
-	//! 'assume_full_movement': 	if true, the function will operate on the assumption 
+	//! 'assume_full_movement':	if true, the function will operate on the assumption
 	//!								that all units can move their full movement allotment.
-	//! 'remove_destinations': 		a pointer to a set of possible destinations to omit.
+	//! 'remove_destinations':		a pointer to a set of possible destinations to omit.
 	void calculate_possible_moves(std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false,
 	                              const std::set<location>* remove_destinations=NULL);
 
-  //! A more fundamental version of calculate_possible_moves 
+  //! A more fundamental version of calculate_possible_moves
   //! which allows the use of a speculative unit map.
   void calculate_moves(const unit_map& units, std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false,
 	   const std::set<location>* remove_destinations=NULL, bool see_all=false);
 
 	//! Recruit a unit. It will recruit the unit with the given name,
-	//! at the given location, or at an available location to recruit units 
+	//! at the given location, or at an available location to recruit units
 	//! if 'loc' is not a valid recruiting location.
 	//!
-	//! @retval 	false if recruitment cannot be performed, 
-	//!				because there are no available tiles, 
-	//! 			or not enough money.
+	//! @retval	false if recruitment cannot be performed,
+	//!				because there are no available tiles,
+	//!			or not enough money.
 	bool recruit(const std::string& unit_name, location loc=location());
 
-	//! functions to retrieve the 'info' object. 
+	//! functions to retrieve the 'info' object.
 	//! Used by derived classes to discover all necessary game information.
 	info& get_info() { return info_; }
 	const info& get_info() const { return info_; }
 
-	//! Function which should be called frequently to allow the user 
+	//! Function which should be called frequently to allow the user
 	//! to interact with the interface.
-	//! This function will make sure that interaction doesn't occur too often, 
+	//! This function will make sure that interaction doesn't occur too often,
 	//! so there is no problem with calling it very regularly.
 	void raise_user_interact();
 

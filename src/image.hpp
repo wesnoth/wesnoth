@@ -65,7 +65,7 @@ namespace image {
 			value(const char *filename);
 			value(const char *filename, const std::string& modifications);
 			value(const std::string& filename);
-  		     value(const std::string& filename, const std::string& modifications);
+		     value(const std::string& filename, const std::string& modifications);
 			value(const std::string& filename, const gamemap::location& loc, const std::string& modifications);
 
 			bool operator==(const value& a) const;

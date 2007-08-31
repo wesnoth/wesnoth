@@ -377,11 +377,11 @@ int show_dialog(display& screen, surface image,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
 				int text_widget_max_chars,
-				std::vector<check_item>* options, 
+				std::vector<check_item>* options,
 				int xloc, int yloc,
-				const dialog_frame::style* dialog_style, 
+				const dialog_frame::style* dialog_style,
 				std::vector<dialog_button_info>* action_buttons,
-				const menu::sorter* sorter, 
+				const menu::sorter* sorter,
 				menu::style* menu_style)
 {
 	const std::string& title = (image.null())? caption : "";

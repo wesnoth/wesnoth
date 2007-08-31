@@ -69,7 +69,7 @@ int main(int argc, char** argv)
 			<< "  --logdomains      List defined log domains and exit.\n";
 			return 0;
 		} else if(val == "--version" || val == "-v") {
-			std::cout << "Battle for Wesnoth " 
+			std::cout << "Battle for Wesnoth "
 				  << game_config::version
 #if defined(SVNREV) && defined(DO_DISPLAY_REVISION)
 				  << " (" << game_config::svnrev << ")"

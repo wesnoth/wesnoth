@@ -21,7 +21,7 @@
 #include <string>
 
 /**
- * Contains the general settings which have a default. 
+ * Contains the general settings which have a default.
  * These values can be used to initialize the preferences,
  * but also to set map values if these aren't defined.
  */
@@ -29,9 +29,9 @@
 namespace settings {
 
 	/**
-	 *  Gets the number of turns. 
-	 *  If no valid value supplied, it will return a default. 
-	 *  The value is also range checked. 
+	 *  Gets the number of turns.
+	 *  If no valid value supplied, it will return a default.
+	 *  The value is also range checked.
 	 *  When out of bounds, it will be set to the nearest bound.
 	 *
 	 *  @param value	string containing the number of turns
@@ -41,9 +41,9 @@ namespace settings {
 	int get_turns(const std::string& value);
 
 	/**
-	 *  Gets the village gold. 
-	 *  If no valid value supplied, it will return a default. 
-	 *  The value is also range checked. 
+	 *  Gets the village gold.
+	 *  If no valid value supplied, it will return a default.
+	 *  The value is also range checked.
 	 *  When out of bounds, it will be set to the nearest bound.
 	 *
 	 *  @param value	string containing the village gold
@@ -53,9 +53,9 @@ namespace settings {
 	int get_village_gold(const std::string& value);
 
 	/**
-	 *  Gets the xp modifier. 
-	 *  If no valid value supplied, it will return a default. 
-	 *  The value is also range checked. 
+	 *  Gets the xp modifier.
+	 *  If no valid value supplied, it will return a default.
+	 *  The value is also range checked.
 	 *  When out of bounds, it will be set to the nearest bound.
 	 *
 	 *  @param value	string containing the xp modifier

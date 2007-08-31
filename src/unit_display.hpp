@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_display.hpp 
+//! @file unit_display.hpp
 //! Display units performing various actions: moving, attacking, and dying.
 
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
@@ -25,7 +25,7 @@ class team;
 class unit;
 class unit_map;
 
-//! Contains a number of free functions which display units 
+//! Contains a number of free functions which display units
 //! performing various on-screen actions - moving, attacking, and dying.
 namespace unit_display
 {
@@ -34,14 +34,14 @@ bool unit_visible_on_path( const std::vector<gamemap::location>& path, const uni
 //! Display a unit moving along a given path.
 void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams);
 
-//! Show a unit fading out. 
+//! Show a unit fading out.
 //! Note: this only shows the effect, it doesn't actually kill the unit.
 void unit_die( const gamemap::location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL, unit * winner=NULL);
 
 //! Make the unit on tile 'a' attack the unit on tile 'b'.
-//! The 'damage' will be subtracted from the unit's hitpoints, 
+//! The 'damage' will be subtracted from the unit's hitpoints,
 //! and a die effect will be displayed if the unit dies.
-//! @retval   	true if the defending unit is dead, 
+//! @retval	true if the defending unit is dead,
 //!				and should be removed from the playing field.
 void unit_attack(
                  const gamemap::location& a, const gamemap::location& b, int damage,

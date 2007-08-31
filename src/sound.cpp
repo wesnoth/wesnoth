@@ -37,7 +37,7 @@ namespace sound {
 // Channel-chunk mapping lets us know, if we can safely free a given chunk
 std::vector<Mix_Chunk*> channel_chunks;
 
-// Channel-id mapping for use with sound sources (to check if given source 
+// Channel-id mapping for use with sound sources (to check if given source
 // is playing on a channel for fading/panning)
 std::vector<int> channel_ids;
 
@@ -93,13 +93,13 @@ namespace {
 class sound_cache_chunk {
 public:
 	sound_cache_chunk(const std::string& f) : group(sound::NULL_CHANNEL), file(f), data_(NULL) {}
-	sound_cache_chunk(const sound_cache_chunk& scc) 
-		: group(scc.group), file(scc.file), data_(scc.data_) 
+	sound_cache_chunk(const sound_cache_chunk& scc)
+		: group(scc.group), file(scc.file), data_(scc.data_)
 	{
 		increment_chunk_usage(data_);
 	}
 
-	~sound_cache_chunk() 
+	~sound_cache_chunk()
 	{
 		decrement_chunk_usage(data_);
 	}
@@ -491,8 +491,8 @@ void play_no_music()
 void play_music()
 {
 	want_new_music=true;
-	no_fading=false;           
-	fadingout_time=current_track.ms_after; 
+	no_fading=false;
+	fadingout_time=current_track.ms_after;
 }
 
 void play_new_music()
@@ -524,12 +524,12 @@ void play_new_music()
 	{
 		LOG_AUDIO << "Playing track '" << current_track.name << "'\n";
 		int fading_time=current_track.ms_before;
-		if(no_fading) 
+		if(no_fading)
 		{
 			fading_time=0;
 		}
 		const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
-		if(res < 0) 
+		if(res < 0)
 		{
 			ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << current_track.name <<" \n";
 		}
@@ -555,8 +555,8 @@ void play_music_repeatedly(const std::string &name)
 void play_music_config(const config &music)
 {
 	struct music_track track(music["name"],
-				 			 music["ms_before"],
-				 			 music["ms_after"]);
+							 music["ms_before"],
+							 music["ms_after"]);
 
 	// If they say play once, we don't alter playlist.
 	if (utils::string_bool(music["play_once"])) {
@@ -593,7 +593,7 @@ void music_thinker::process(events::pump_info &info) {
 			want_new_music=true;
 		}
 		if(want_new_music) {
-			if(Mix_PlayingMusic()) {                              
+			if(Mix_PlayingMusic()) {
 				Mix_FadeOutMusic(fadingout_time);
 			}
 			play_new_music();

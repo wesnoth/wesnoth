@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file gamestatus.cpp 
+//! @file gamestatus.cpp
 //! Maintain status of a game, load&save games.
 
 #include "global.hpp"
@@ -186,19 +186,19 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
     std::string turn_at = time_cfg["turn_at"];
 	std::string current_tod = time_cfg["current_tod"];
 	std::string random_start_time = time_cfg["random_start_time"];
-	if (s_o_g) 
+	if (s_o_g)
 	{
 	    turn_at = utils::interpolate_variables_into_string(turn_at, *s_o_g);
 		current_tod = utils::interpolate_variables_into_string(current_tod, *s_o_g);
 
 	}
-	
-	if(turn_at.empty() == false) 
+
+	if(turn_at.empty() == false)
 	{
 		turn_ = atoi(turn_at.c_str());
 	}
-	
-	
+
+
 	parse_times(time_cfg,times_);
 
 	set_start_ToD(const_cast<config&>(time_cfg),s_o_g);
@@ -249,9 +249,9 @@ void gamestatus::write(config& cfg) const
 time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 {
 	wassert(!times_.empty());
-	
+
 	int time = (currentTime_ + nturn  - turn())% times_.size();
-	
+
 	if (time < 0)
 	{
 		time += times_.size();
@@ -271,16 +271,16 @@ time_of_day gamestatus::get_previous_time_of_day() const
 	return get_time_of_day_turn(turn()-1);
 }
 
-//! Returns time of day object in the turn. 
-//! It first tries to look for specified. 
+//! Returns time of day object in the turn.
+//! It first tries to look for specified.
 //! If no area time specified in location, it returns global time.
 time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location& loc, int n_turn) const
 {
 	time_of_day res = get_time_of_day_turn(n_turn);
-	
+
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		if(i->hexes.count(loc) == 1) {
-			
+
 			wassert(!i->times.empty());
 
 			res = i->times[(n_turn-1)%i->times.size()];
@@ -306,12 +306,12 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location
 bool gamestatus::set_time_of_day(int newTime)
 {
 	// newTime can come from network so have to take run time test
-	if( newTime >= static_cast<int>(times_.size()) 
+	if( newTime >= static_cast<int>(times_.size())
 	  || newTime < 0)
 	{
 		return false;
 	}
-	
+
 	currentTime_ = newTime;
 
 	return true;
@@ -334,10 +334,10 @@ void gamestatus::set_start_ToD(config &level, game_state* s_o_g)
 	if (s_o_g)
 	{
 		random_start_time = utils::interpolate_variables_into_string(random_start_time, *s_o_g);
-	}			 
+	}
 	if (gamestatus::is_start_ToD(random_start_time))
 	{
-		std::vector<std::string> start_strings = 
+		std::vector<std::string> start_strings =
 			utils::split(random_start_time, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
 		if (utils::string_bool(random_start_time,false))
@@ -352,8 +352,8 @@ void gamestatus::set_start_ToD(config &level, game_state* s_o_g)
 	}
 	else
 	{
-		// We have to set right ToD for oldsaves 
-		
+		// We have to set right ToD for oldsaves
+
 		set_time_of_day((turn() - 1) % times_.size());
 	}
 	// Setting ToD to level data
@@ -370,7 +370,7 @@ void gamestatus::next_time_of_day()
 
 	currentTime_ = (currentTime_ + 1)%times_.size();
 }
-	
+
 size_t gamestatus::turn() const
 {
 	return turn_;
@@ -421,7 +421,7 @@ static player_info read_player(const game_data& data, const config* cfg)
 	return res;
 }
 
-game_state::game_state(const game_data& data, const config& cfg) 
+game_state::game_state(const game_data& data, const config& cfg)
 : difficulty("NORMAL"), last_selected(gamemap::location::null_location)
 {
 	log_scope("read_game");
@@ -585,7 +585,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 
 	cfg["campaign_define"] = gamestate.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(gamestate.campaign_xtra_defines);
-	
+
 	cfg.add_child("variables",gamestate.get_variables());
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
@@ -678,9 +678,9 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 //! If the times are equal, will order based on the name.
 struct save_info_less_time {
 	bool operator()(const save_info& a, const save_info& b) const {
-       		if (a.time_modified > b.time_modified) {
+		if (a.time_modified > b.time_modified) {
 		        return true;
-	  	} else if (a.time_modified < b.time_modified) {
+		} else if (a.time_modified < b.time_modified) {
 			return false;
 		// Special funky case; for files created in the same second,
 		// a replay file sorts less than a non-replay file.  Prevents
@@ -782,7 +782,7 @@ void load_game_summary(const std::string& name, config& cfg_summary, std::string
 scoped_ostream open_save_game(const std::string &label)
 {
 	std::string name = label;
- 	replace_space2underbar(name);
+	replace_space2underbar(name);
 
 	try {
 		return scoped_ostream(ostream_file(get_saves_dir() + "/" + name));
@@ -1106,7 +1106,7 @@ game_state& game_state::operator=(const game_state& state)
 	completion = state.completion;
 	players = state.players;
 	scoped_variables = state.scoped_variables;
-	
+
 	clear_wmi(wml_menu_items);
 	std::map<std::string, wml_menu_item*>::const_iterator itor;
 	for (itor = state.wml_menu_items.begin(); itor != state.wml_menu_items.end(); ++itor) {

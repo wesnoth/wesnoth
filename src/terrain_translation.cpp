@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file terrain_translation.cpp 
+//! @file terrain_translation.cpp
 //! Routines for terrain-conversion.
 
 #include "global.hpp"
@@ -31,26 +31,26 @@ namespace t_translation {
 
 /***************************************************************************************/
 // forward declaration of internal functions
-	
-	// The low level convertors, 
-	// These function are the ones which know about the internal format. 
+
+	// The low level convertors,
+	// These function are the ones which know about the internal format.
 	// All other functions are unaware of the internal format.
-	
+
 	/**
 	 * Get the mask for a single layer.
 	 *
-	 * @param terrain 	1 layer of a terrain, might have a wildcard
+	 * @param terrain	1 layer of a terrain, might have a wildcard
 	 *
 	 * @return			mask for that layer
 	 */
 	static t_layer get_layer_mask_(t_layer terrain); //inlined
-	
+
 	/**
 	 * Gets a mask for a terrain, this mask is used for wildcard matching.
 	 *
-	 * @param terrain 	the terrain which might have a wildcard
+	 * @param terrain	the terrain which might have a wildcard
 	 *
-	 * @return 			the mask for this terrain
+	 * @return			the mask for this terrain
 	 */
 	static t_letter get_mask_(const t_letter& terrain);
 
@@ -58,35 +58,35 @@ namespace t_translation {
 	 * Converts a string to a layer.
 	 *
 	 * @param str		the terrain string to convert, but needs to be sanitized
-	 * 					so no spaces and only the terrain to convert
-	 * 					
+	 *					so no spaces and only the terrain to convert
+	 *
 	 * @return			the converted layer
 	 */
 	static t_layer string_to_layer_(const std::string& str);
-	
+
 	/**
 	 * Converts a terrain string to a number.
-	 * @param str 				the terrain string with an optional number
+	 * @param str				the terrain string with an optional number
 	 * @param start_position	returns the start_position, the caller should set it on -1
-	 * 					    	and it's only changed it there is a starting position found
+	 *						and it's only changed it there is a starting position found
 	 * @param filler			if the terrain has only 1 layer then the filler will be used
-	 * 							as the second layer.
+	 *							as the second layer.
 	 *
 	 * @return					the letter found in the string
-	 */ 					
+	 */
 	static t_letter string_to_number_(std::string str, int& start_position, const t_layer filler);
 	static t_letter string_to_number_(const std::string& str, const t_layer filler = NO_LAYER);
 
 	/**
 	 * Converts a terrain number to a string
-	 * 
+	 *
 	 * @param terrain				the terrain number to convert
 	 * @param start_position		the starting position, if smaller than 0 it's
-	 * 								ignored else it's written
-	 * @param min_size				padds the results with spaces if required, 
-	 * 								until the result has a length of min_size.
-	 * @return						the converted string, if no starting position 
-	 * 								given it's padded to 4 chars else padded to 7 chars
+	 *								ignored else it's written
+	 * @param min_size				padds the results with spaces if required,
+	 *								until the result has a length of min_size.
+	 * @return						the converted string, if no starting position
+	 *								given it's padded to 4 chars else padded to 7 chars
 	 */
 	static std::string number_to_string_(t_letter terrain, const int start_position, const size_t min_size);
 	static std::string number_to_string_(t_letter terrain, const int start_position = -1);
@@ -101,7 +101,7 @@ namespace t_translation {
 	 */
 	static t_letter string_to_builder_number_(std::string str);
 
-/***************************************************************************************/	
+/***************************************************************************************/
 
 const t_letter OFF_MAP_USER = string_to_number_("_off^_usr");
 
@@ -128,18 +128,18 @@ const t_letter MINUS = string_to_number_("-");
 const t_letter NOT = string_to_number_("!");
 const t_letter STAR = string_to_number_("*");
 
-/***************************************************************************************/	
+/***************************************************************************************/
 
-t_letter::t_letter(const std::string& b) : 
+t_letter::t_letter(const std::string& b) :
 	base(string_to_layer_(b)), overlay(NO_LAYER)
 {}
 
-t_letter::t_letter(const std::string& b, const t_layer o) : 
+t_letter::t_letter(const std::string& b, const t_layer o) :
 	base(string_to_layer_(b)), overlay(o)
 {}
 
-t_letter::t_letter(const std::string& b, const std::string& o) : 
-	base(string_to_layer_(b)), overlay(string_to_layer_(o)) 
+t_letter::t_letter(const std::string& b, const std::string& o) :
+	base(string_to_layer_(b)), overlay(string_to_layer_(o))
 {}
 
 t_match::t_match() :
@@ -147,7 +147,7 @@ t_match::t_match() :
 {}
 
 t_match::t_match(const std::string& str, const t_layer filler):
-	terrain(t_translation::read_list(str, filler)) 
+	terrain(t_translation::read_list(str, filler))
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
@@ -161,7 +161,7 @@ t_match::t_match(const std::string& str, const t_layer filler):
 }
 
 t_match::t_match(const t_letter& letter):
-	terrain(t_list(1, letter)) 
+	terrain(t_list(1, letter))
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
@@ -192,7 +192,7 @@ t_list read_list(const std::string& str, const t_layer filler)
 	if(str.empty()) {
 		return result;
 	}
-		
+
 	size_t offset = 0;
 	while(offset < str.length()) {
 
@@ -220,7 +220,7 @@ t_list read_list(const std::string& str, const t_layer filler)
 
 std::string write_list(const t_list& list)
 {
-	std::stringstream result; 
+	std::stringstream result;
 
 	t_list::const_iterator itor = list.begin();
 	for( ; itor != list.end(); ++itor) {
@@ -245,12 +245,12 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	while(offset < str.length() && utils::isnewline(str[offset])) {
 		++offset;
 	}
-	
+
 	// Did we get an empty map?
 	if((offset + 1) >= str.length()) {
 		return result;
 	}
-		
+
 	while(offset < str.length()) {
 
 		// Get a terrain chunk
@@ -275,27 +275,27 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				const struct coordinate coord = {x, y};
 				starting_positions.insert(std::pair<int, coordinate>(starting_position, coord));
 			}
-		} 
+		}
 
-		// Make space for the new item 
-		// NOTE we increase the vector every loop for every x and y. 
-		// Profiling with an increase of y with 256 items didn't show 
-		// an significant speed increase. 
-		// So didn't rework the system to allocate larger vectors at once. 
+		// Make space for the new item
+		// NOTE we increase the vector every loop for every x and y.
+		// Profiling with an increase of y with 256 items didn't show
+		// an significant speed increase.
+		// So didn't rework the system to allocate larger vectors at once.
 		if(result.size() <= x) {
 			result.resize(x + 1);
 		}
 		if(result[x].size() <= y) {
 			result[x].resize(y + 1);
 		}
-		
+
 		// Add the resulting terrain number
 		result[x][y] = tile;
 
 		// Evaluate the separator
 		if(utils::isnewline(str[pos_separator]) || pos_separator == std::string::npos) {
 			// the first line we set the with the other lines we check the width
-			if(y == 0) { 
+			if(y == 0) {
 				// x contains the offset in the map
 				width = x + 1;
 			} else {
@@ -305,22 +305,22 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				}
 			}
 
-			// Prepare next iteration 
+			// Prepare next iteration
 			++y;
 			x = 0;
-			
+
 			// Avoid in infinite loop if the last line ends without an EOL
 			if(pos_separator == std::string::npos) {
 				offset = str.length();
 
 			} else {
-			
+
 				offset = pos_separator + 1;
-				// Skip the following newlines 
+				// Skip the following newlines
 				while(offset < str.length() && utils::isnewline(str[offset])) {
 					++offset;
 				}
-			} 
+			}
 
 		} else {
 			++x;
@@ -330,10 +330,10 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	}
 
 	if(x != 0 && (x + 1) != width) {
-		ERR_G << "Map not a rectangle error occured at the end\n"; 
+		ERR_G << "Map not a rectangle error occured at the end\n";
 		throw error("Map not a rectangle.");
 	}
-	
+
 	return result;
 }
 
@@ -344,9 +344,9 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 	for(size_t y = 0; y < map[0].size(); ++y) {
 		for(size_t x = 0; x < map.size(); ++x) {
 
-			// If the current location is a starting position, 
-			// it needs to be added to the terrain. 
-			// After it's found it can't be found again, 
+			// If the current location is a starting position,
+			// it needs to be added to the terrain.
+			// After it's found it can't be found again,
 			// so the location is removed from the map.
 			std::map<int, coordinate>::iterator itor = starting_positions.begin();
 			int starting_position = -1;
@@ -378,19 +378,19 @@ bool terrain_matches(const t_letter& src, const t_letter& dest)
 
 bool terrain_matches(const t_letter& src, const t_list& dest)
 {
-	// NOTE we impose some code duplication. 
-	// It could have been rewritten to get a match structure 
-	// and then call the version with the match structure. 
-	// IMO that's some extra overhead to this function 
+	// NOTE we impose some code duplication.
+	// It could have been rewritten to get a match structure
+	// and then call the version with the match structure.
+	// IMO that's some extra overhead to this function
 	// which is not required. Hence the two versions
 	if(dest.empty()) {
 		return false;
 	}
 
 #if 0
-	std::cerr << std::hex << "src = " << src.base << "^" << src.overlay << "\t" 
-		<< src_mask.base << "^" << src_mask.overlay << "\t" 
-		<< masked_src.base << "^" << masked_src.overlay << "\t" 
+	std::cerr << std::hex << "src = " << src.base << "^" << src.overlay << "\t"
+		<< src_mask.base << "^" << src_mask.overlay << "\t"
+		<< masked_src.base << "^" << masked_src.overlay << "\t"
 		<< src_has_wildcard << "\n";
 #endif
 
@@ -400,7 +400,7 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 	// Try to match the terrains if matched jump out of the loop.
 	for(; itor != dest.end(); ++itor) {
 
-		// Match wildcard 
+		// Match wildcard
 		if(*itor == STAR) {
 			return result;
 		}
@@ -411,23 +411,23 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 			continue;
 		}
 
-		// Full match 
+		// Full match
 		if(src == *itor) {
 			return result;
 		}
-		
+
 		// Does the destination wildcard match
 		const t_letter dest_mask = get_mask_(*itor);
 		const t_letter masked_dest = (*itor & dest_mask);
 		const bool dest_has_wildcard = has_wildcard(*itor);
 #if 0
-		std::cerr << std::hex << "dest= " 
-			<< itor->base << "^" << itor->overlay  << "\t" 
-			<< dest_mask.base << "^" << dest_mask.overlay << "\t" 
+		std::cerr << std::hex << "dest= "
+			<< itor->base << "^" << itor->overlay  << "\t"
+			<< dest_mask.base << "^" << dest_mask.overlay << "\t"
 			<< masked_dest.base << "^" << masked_dest.overlay << "\t"
 			<< dest_has_wildcard << "\n";
 #endif
-		if(dest_has_wildcard && 
+		if(dest_has_wildcard &&
 				(src.base & dest_mask.base) == masked_dest.base &&
 				(src.overlay & dest_mask.overlay) == masked_dest.overlay) {
 			return result;
@@ -436,12 +436,12 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 /* Test code */ /*
 		if(src_has_wildcard && dest_has_wildcard && (
 				(
-					get_layer_mask_(itor->base) != NO_LAYER && 
+					get_layer_mask_(itor->base) != NO_LAYER &&
 					get_layer_mask_(src.overlay) != NO_LAYER &&
 					(src.base & dest_mask.base) == masked_dest.base &&
 					(itor->overlay & src_mask.overlay) == masked_src.overlay
-				) || ( 
-					get_layer_mask_(itor->overlay) != NO_LAYER && 
+				) || (
+					get_layer_mask_(itor->overlay) != NO_LAYER &&
 					get_layer_mask_(src.base) != NO_LAYER &&
 					(src.overlay & dest_mask.overlay) == masked_dest.overlay &&
 					(itor->base & src_mask.base) == masked_src.base
@@ -449,15 +449,15 @@ bool terrain_matches(const t_letter& src, const t_list& dest)
 
 			return result;
 		}
-*/		
+*/
 	}
 
 	// No match, return the inverse of the result
 	return !result;
 }
 
-// This routine is used for the terrain building, 
-// so it's one of the delays while loading a map. 
+// This routine is used for the terrain building,
+// so it's one of the delays while loading a map.
 // This routine is optimized a bit at the loss of readability.
 bool terrain_matches(const t_letter& src, const t_match& dest)
 {
@@ -469,16 +469,16 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 
 	// Try to match the terrains if matched jump out of the loop.
 	// We loop on the dest.terrain since the iterator is faster than operator[].
-	// The i holds the value for operator[]. 
-	// Since dest.mask and dest.masked_terrain need to be in sync, 
+	// The i holds the value for operator[].
+	// Since dest.mask and dest.masked_terrain need to be in sync,
 	// they are less often looked up, so no iterator for them.
 	size_t i = 0;
 	t_list::const_iterator end = dest.terrain.end();
 	for(t_list::const_iterator terrain_itor = dest.terrain.begin();
-			terrain_itor != end; 
+			terrain_itor != end;
 			++i, ++terrain_itor) {
-		
-		// Match wildcard 
+
+		// Match wildcard
 		if(*terrain_itor == STAR) {
 			return result;
 		}
@@ -489,13 +489,13 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 			continue;
 		}
 
-		// Full match 
+		// Full match
 		if(*terrain_itor == src) {
 			return result;
 		}
 
 		// Does the destination wildcard match
-		if(dest.has_wildcard && 
+		if(dest.has_wildcard &&
 				(src.base & dest.mask[i].base) == dest.masked_terrain[i].base &&
 				(src.overlay & dest.mask[i].overlay) == dest.masked_terrain[i].overlay) {
 			return result;
@@ -504,12 +504,12 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 /* Test code */ /*
 		if(src_has_wildcard && has_wildcard(*terrain_itor) && (
 				(
-					get_layer_mask_(terrain_itor->base) != NO_LAYER && 
+					get_layer_mask_(terrain_itor->base) != NO_LAYER &&
 					get_layer_mask_(src.overlay) != NO_LAYER &&
 					(src.base & dest.mask[i].base) == dest.masked_terrain[i].base &&
 					(terrain_itor->overlay & src_mask.overlay) == masked_src.overlay
-				) || ( 
-					get_layer_mask_(terrain_itor->overlay) != NO_LAYER && 
+				) || (
+					get_layer_mask_(terrain_itor->overlay) != NO_LAYER &&
 					get_layer_mask_(src.base) != NO_LAYER &&
 					(src.overlay & dest.mask[i].overlay) == dest.masked_terrain[i].overlay &&
 					(terrain_itor->base & src_mask.base) == masked_src.base
@@ -517,14 +517,14 @@ bool terrain_matches(const t_letter& src, const t_match& dest)
 
 			return result;
 		}
-*/		
+*/
 	}
 
 	// No match, return the inverse of the result
 	return !result;
 }
 
-bool has_wildcard(const t_letter& letter) 
+bool has_wildcard(const t_letter& letter)
 {
 	if(letter.overlay == NO_LAYER) {
 		return get_layer_mask_(letter.base) != NO_LAYER;
@@ -538,8 +538,8 @@ bool has_wildcard(const t_list& list)
 	if(list.empty()) {
 		return false;
 	}
-	
-	// Test all items for a wildcard 
+
+	// Test all items for a wildcard
 	t_list::const_iterator itor = list.begin();
 	for(; itor != list.end(); ++itor) {
 		if(has_wildcard(*itor)) {
@@ -560,12 +560,12 @@ t_map read_builder_map(const std::string& str)
 	while(offset < str.length() && utils::isnewline(str[offset])) {
 		++offset;
 	}
-	
+
 	// Did we get an empty map?
 	if((offset + 1) >= str.length()) {
 		return result;
 	}
-		
+
 	size_t x = 0, y = 0;
 	while(offset < str.length()) {
 
@@ -590,25 +590,25 @@ t_map read_builder_map(const std::string& str)
 		if(result[y].size() <= x) {
 			result[y].resize(x + 1);
 		}
-		
+
 		// Add the resulting terrain number,
 		result[y][x] = tile;
 
 		// evaluate the separator
 		if(pos_separator == std::string::npos) {
-			// Probably not required to change the value, 
-			// but be sure the case should be handled at least. 
-			// I'm not sure how it is defined in the standard, 
-			// but here it's defined at max u32 which with +1 gives 0 
+			// Probably not required to change the value,
+			// but be sure the case should be handled at least.
+			// I'm not sure how it is defined in the standard,
+			// but here it's defined at max u32 which with +1 gives 0
 			// and make a nice infinite loop.
-			offset = str.length();	
+			offset = str.length();
 		} else if(utils::isnewline(str[pos_separator])) {
-			// Prepare next iteration 
+			// Prepare next iteration
 			++y;
 			x = 0;
-			
+
 			offset =  pos_separator + 1;
-			// Skip the following newlines 
+			// Skip the following newlines
 			while(offset < str.length() && utils::isnewline(str[offset])) {
 				++offset;
 			}
@@ -623,14 +623,14 @@ t_map read_builder_map(const std::string& str)
 	return result;
 }
 
-/***************************************************************************************/	
+/***************************************************************************************/
 // Internal
 
 inline t_layer get_layer_mask_(t_layer terrain)
 {
-	// Test for the star 0x2A in every position 
+	// Test for the star 0x2A in every position
 	// and return the appropriate mask
-/*	
+/*
  *	This is what the code intents to do, but in order to gain some more
  *	speed it's changed to the code below, which does the same but faster.
  *	This routine is used often in the builder and the speedup is noticable. */
@@ -639,7 +639,7 @@ inline t_layer get_layer_mask_(t_layer terrain)
 	if((terrain & 0x0000FF00) == 0x00002A00) return 0xFFFF0000;
 	if((terrain & 0x000000FF) == 0x0000002A) return 0xFFFFFF00;
 
-/*	
+/*
 	Uint8 *ptr = (Uint8 *) &terrain;
 
 	if(ptr[3] == 0x2A) return 0x00000000;
@@ -669,18 +669,18 @@ static t_layer string_to_layer_(const std::string& str)
 
 	// Validate the string
 	wassert(str.size() <= 4);
-	
-	// The conversion to int puts the first char 
-	// in the highest part of the number. 
-	// This will make the wildcard matching 
+
+	// The conversion to int puts the first char
+	// in the highest part of the number.
+	// This will make the wildcard matching
 	// later on a bit easier.
 	for(size_t i = 0; i < 4; ++i) {
 		const unsigned char c = (i < str.length()) ? str[i] : 0;
-		
-		// Clearing the lower area is a nop on i == 0 
+
+		// Clearing the lower area is a nop on i == 0
 		// so no need for if statement
-		result <<= 8; 
-		
+		result <<= 8;
+
 		// Add the result
 		result += c;
 	}
@@ -698,7 +698,7 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 	t_letter result;
 
 	// Need to store the orginal string for the error handling.
-	// This has been made to avoid the assertion failure 
+	// This has been made to avoid the assertion failure
 	// which happens often and is not too user friendly.
 	const std::string input(str);
 
@@ -737,18 +737,18 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 		}
 		result = t_letter(str, filler);
 
-		// Ugly hack 
-		if(filler == WILDCARD && (result.base == NOT.base || 
+		// Ugly hack
+		if(filler == WILDCARD && (result.base == NOT.base ||
 				result.base == STAR.base)) {
 
 			result.overlay = NO_LAYER;
 		}
-	}	
+	}
 
 	return result;
 
 terrain_error:
-	// When this string is removed, also test 
+	// When this string is removed, also test
 	// whether the gettext include is still required
 	lg::wml_error << _("Invalid terrain found probably an 1.2 terrain format, "
 		"terrain = ") << input << '\n';
@@ -763,7 +763,7 @@ static std::string number_to_string_(t_letter terrain, const int start_position)
 	if(start_position > 0) {
 		result = str_cast(start_position) + " ";
 	}
-	
+
 	// Insert the terrain letter
 	unsigned char letter[9];
 	letter[0] = ((terrain.base & 0xFF000000) >> 24);
@@ -782,7 +782,7 @@ static std::string number_to_string_(t_letter terrain, const int start_position)
 		// so no need to initialize that part of the array
 		letter[4] = 0;
 	}
-		
+
 	for(int i = 0; i < 9; ++i) {
 		if(letter[i] != 0 && letter[i] != 0xFF) {
 			result += letter[i];
@@ -819,18 +819,18 @@ static t_letter string_to_builder_number_(std::string str)
 	if(str.empty()) {
 		return t_letter();
 	}
-	
+
 	const int number = lexical_cast_default(str, -1);
 	if(number == -1) {
 		// At this point we have a single char
-		// which should be interpreted by the 
+		// which should be interpreted by the
 		// map builder, so return this number
 		return t_letter(str[0] << 24, 0);
 	} else {
 		return t_letter(0, number);
 	}
 }
-	
+
 } // end namespace t_translation
 
 #if 0
@@ -840,10 +840,10 @@ static t_letter string_to_builder_number_(std::string str)
 int main(int argc, char** argv)
 {
 	if(argc > 1) {
-	
+
 		if(std::string(argv[1]) == "match" && argc == 4) {
 			t_translation::t_letter src = t_translation::read_letter(std::string(argv[2]));
-			
+
 			t_translation::t_list dest = t_translation::read_list(std::string(argv[3]));
 
 			if(t_translation::terrain_matches(src, dest)) {

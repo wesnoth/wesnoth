@@ -692,19 +692,19 @@ bool game_controller::load_game()
 		}
 
 		const std::vector<std::string> campaign_xtra_defines = utils::split(cfg["campaign_extra_defines"]);
-		
+
 		for(std::vector<std::string>::const_iterator i = campaign_xtra_defines.begin(); i != campaign_xtra_defines.end(); ++i) {
 			defines_map_[*i] = preproc_define();
 		}
-		
+
 		refresh_game_cfg();
 
 		state_ = game_state(units_data_,cfg);
 
 		if(state_.version != game_config::version) {
-			// do not load if too old, if either the savegame or the current game 
+			// do not load if too old, if either the savegame or the current game
 			// has the version 'test' allow loading
-			if(state_.version < game_config::min_savegame_version && 
+			if(state_.version < game_config::min_savegame_version &&
 					game_config::test_version.full != state_.version &&
 					game_config::test_version.full != game_config::version) {
 
@@ -884,7 +884,7 @@ static std::string format_file_size(const std::string& size_str)
 
 		std::ostringstream stream;
 #ifdef _MSC_VER
-		// Visual C++ makes 'precision' set the number of decimal places. 
+		// Visual C++ makes 'precision' set the number of decimal places.
 		// Other platforms make it set the number of significant figures
 		stream.precision(1);
 		stream << std::fixed << size << size_postfix;
@@ -949,17 +949,17 @@ namespace
 			{
 				gui::show_error_message(disp(), _("You have no Add-ons installed."));
 				return;
-			}			
+			}
 
 			gui::menu::basic_sorter sorter;
 			sorter.set_alpha_sort(1);
 
 
 			int index = 0;
-		 
+
 			do
 			{
-				gui::dialog addon_dialog(disp(), 
+				gui::dialog addon_dialog(disp(),
 							 _("Remove Add-ons"), _("Choose the add-on to remove."),
 							 gui::OK_CANCEL);
 				gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
@@ -1147,7 +1147,7 @@ void game_controller::download_campaigns(std::string host)
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_numeric_sort(4).set_position_sort(5,sizes);
 
-		gui::dialog addon_dialog(disp(), _("Get Add-ons"), 
+		gui::dialog addon_dialog(disp(), _("Get Add-ons"),
 					       _("Choose the add-on to download."),
 					       gui::OK_CANCEL);
 		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
@@ -1190,11 +1190,11 @@ void game_controller::download_campaigns(std::string host)
 			// TODO: Somehow offer to automatically download
 			// the missing dependencies.
 			if (!missing.empty()) {
-				if (gui::dialog(disp(), 
+				if (gui::dialog(disp(),
 						      _("Dependencies"),
 						      std::string(_("This add-on requires the following additional dependencies:")) +
-						      	"\n" + missing +
-						      	"\n" + _("Do you still want to download it?"), gui::OK_CANCEL).show())
+							"\n" + missing +
+							"\n" + _("Do you still want to download it?"), gui::OK_CANCEL).show())
 					return;
 			}
 		}
@@ -1704,7 +1704,7 @@ void game_controller::reset_game_cfg()
 #if defined(__APPLE__)
 	defines_map_["APPLE"] = preproc_define();
 #endif
-	
+
 	if(multiplayer_mode_) {
 		defines_map_["MULTIPLAYER"] = preproc_define();
 	} else {

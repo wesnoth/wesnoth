@@ -43,8 +43,8 @@ void advance_unit(const game_data& info,
 		  const gamemap& map,
                   unit_map& units,
                   gamemap::location loc,
-                  game_display& gui, 
-		  bool random_choice, 
+                  game_display& gui,
+		  bool random_choice,
 		  const bool add_replay_event)
 {
 	unit_map::iterator u = units.find(loc);
@@ -118,8 +118,8 @@ void advance_unit(const game_data& info,
 
 	LOG_DP << "animating advancement...\n";
 	animate_unit_advancement(info,units,loc,gui,size_t(res));
-	
-	// in some rare cases the unit can have enough XP to advance again so try to do that, 
+
+	// in some rare cases the unit can have enough XP to advance again so try to do that,
 	// make sure that we're no entering an infinite level loop
 	u = units.find(loc);
 	if(u != units.end()) {
@@ -127,7 +127,7 @@ void advance_unit(const game_data& info,
 		if(u->second.experience() < 81) {
 			advance_unit(info, map, units, loc, gui, random_choice, add_replay_event);
 		} else {
-			LOG_STREAM(err, config) << "Unit has an too high amount of " << u->second.experience() 
+			LOG_STREAM(err, config) << "Unit has an too high amount of " << u->second.experience()
 				<< " XP left, cascade leveling disabled\n";
 		}
 	} else {
@@ -394,7 +394,7 @@ void save_preview_pane::draw_contents()
 		const config* const scenario = game_config_->find_child(summary["campaign_type"],"id",summary["scenario"]);
 		if(scenario != NULL && scenario->find_child("side","shroud","yes") == NULL) {
 			map_data = (*scenario)["map_data"];
-			if(map_data.empty() && (*scenario)["map"].empty() == false) { 
+			if(map_data.empty() && (*scenario)["map"].empty() == false) {
 				try {
 					map_data = read_map((*scenario)["map"]);
 				} catch(io_exception& e) {
@@ -402,7 +402,7 @@ void save_preview_pane::draw_contents()
 				}
 			}
 		}
-	} 
+	}
 
 	surface map_surf(NULL);
 
@@ -587,7 +587,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	//create an option for whether the replay should be shown or not
 	if(show_replay != NULL)
 		lmenu.add_option(_("Show replay"), false);
-	lmenu.add_button(delete_button);	
+	lmenu.add_button(delete_button);
 	const int res = lmenu.show();
 
 	write_save_index();
@@ -680,9 +680,9 @@ void unit_preview_pane::draw_contents()
 	const clip_rect_setter clipper(screen,clip_area);
 
 	surface unit_image = u.still_image();
-	if (!left_) 
+	if (!left_)
 		unit_image = image::reverse_image(unit_image);
-	
+
 	SDL_Rect image_rect = {area.x,area.y,0,0};
 
 	if(unit_image != NULL) {

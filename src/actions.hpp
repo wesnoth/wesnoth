@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file actions.hpp 
+//! @file actions.hpp
 //! Various functions which implement in-game events and commands.
 
 #ifndef ACTIONS_H_INCLUDED
@@ -40,17 +40,17 @@ class game_data;
 
 bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const gamemap::location loc);
 
-//! Function which recruits a unit into the game. 
+//! Function which recruits a unit into the game.
 // A copy of u will be created and inserted as the new recruited unit.
 // If need_castle is true, then the new unit must be on the same castle
 // as the leader of the team is on the keep of.
 //
-// If preferred_location is in a valid location, it will be used, 
-// otherwise a valid location will be arbitrarily chosen. 
+// If preferred_location is in a valid location, it will be used,
+// otherwise a valid location will be arbitrarily chosen.
 // If disp is not NULL, the new unit will be faded in.
 //
 // If the unit cannot be recruited, then a human-readable message
-// describing the reason will be returned. 
+// describing the reason will be returned.
 // On success, the return string is empty.
 std::string recruit_unit(const gamemap& map, int team, unit_map& units,
 		unit u, gamemap::location& recruit_location,bool show=false,
@@ -103,9 +103,9 @@ public:
 		void dump() const;
 	};
 
-	// If no attacker_weapon is given, we select the best one, 
-	// based on harm_weight (1.0 means 1 hp lost counters 1 hp damage, 
-	// 0.0 means we ignore harm weight).  
+	// If no attacker_weapon is given, we select the best one,
+	// based on harm_weight (1.0 means 1 hp lost counters 1 hp damage,
+	// 0.0 means we ignore harm weight).
 	// prev_def is for predicting multiple attacks against a defender.
 	battle_context(const gamemap& map, const std::vector<team>& teams, const unit_map& units,
 				   const gamestatus& status, const game_data& gamedata,
@@ -191,7 +191,7 @@ class attack {
 		battle_context* bc_;
 		const battle_context::unit_stats* a_stats_;
 		const battle_context::unit_stats* d_stats_;
-		
+
 		int orig_attacks_,orig_defends_;
 		int n_attacks_,n_defends_;
 		int attacker_cth_,defender_cth_;
@@ -199,12 +199,12 @@ class attack {
 		int attackerxp_,defenderxp_;
 };
 
-//! Given the location of a village, will return the 0-based index 
+//! Given the location of a village, will return the 0-based index
 //! of the team that currently owns it, and -1 if it is unowned.
 int village_owner(const gamemap::location& loc, const std::vector<team>& teams);
 
-//! Makes it so the village at the given location 
-//! is owned by the given 0-based team number. 
+//! Makes it so the village at the given location
+//! is owned by the given 0-based team number.
 //! Returns true if getting the village triggered a mutating event.
 bool get_village(const gamemap::location& loc, std::vector<team>& teams,
                size_t team_num, const unit_map& units, int *time_bonus = NULL);
@@ -219,51 +219,51 @@ unit_map::const_iterator find_leader(const unit_map& units, int side);
 //! @todo FIXME: Try moving this to unit::new_turn, then move it above calculate_healing().
 void reset_resting(unit_map& units, unsigned int side);
 
-//! Calculates healing for all units for the given side. 
+//! Calculates healing for all units for the given side.
 //! Should be called at the beginning of a side's turn.
 void calculate_healing(game_display& disp, const gamemap& map,
                        unit_map& units, unsigned int side,
 					   const std::vector<team>& teams, bool update_display);
 
-//! Function which, given the location of a unit that is advancing, 
-//! and the name of the unit it is advancing to, 
-//! Will return the advanced version of this unit. 
+//! Function which, given the location of a unit that is advancing,
+//! and the name of the unit it is advancing to,
+//! Will return the advanced version of this unit.
 //! (with traits and items retained).
 unit get_advanced_unit(const game_data& info,
                   unit_map& units,
                   const gamemap::location& loc, const std::string& advance_to);
 
 //! Function which will advance the unit at loc to 'advance_to'.
-//  Note that 'loc' is not a reference, because if it were a reference, 
-//  we couldn't safely pass in a reference to the item in the map 
+//  Note that 'loc' is not a reference, because if it were a reference,
+//  we couldn't safely pass in a reference to the item in the map
 //  that we're going to delete, since deletion would invalidate the reference.
 void advance_unit(const game_data& info,
                   unit_map& units,
                   gamemap::location loc, const std::string& advance_to);
 
-//! function which tests if the unit at loc is currently affected by leadership. 
+//! function which tests if the unit at loc is currently affected by leadership.
 //! (i.e. has a higher-level 'leadership' unit next to it).
-//! If it does, then the location of the leader unit will be returned, 
+//! If it does, then the location of the leader unit will be returned,
 //! Otherwise gamemap::location::null_location will be returned.
 //! If 'bonus' is not NULL, the % bonus will be stored in it.
 gamemap::location under_leadership(const unit_map& units,
                                    const gamemap::location& loc, int* bonus=NULL);
 
-//! Checks to see if a side has won, and will throw 
-//! an end_level_exception if one has. 
+//! Checks to see if a side has won, and will throw
+//! an end_level_exception if one has.
 //! Will also remove control of villages from sides with dead leaders.
 void check_victory(unit_map& units, std::vector<team>& teams);
 
-//! Gets the time of day at a certain tile. 
-//! Certain tiles may have a time of day that differs 
-//! from 'the' time of day, if a unit that illuminates 
+//! Gets the time of day at a certain tile.
+//! Certain tiles may have a time of day that differs
+//! from 'the' time of day, if a unit that illuminates
 //! is in that tile or adjacent.
 time_of_day timeofday_at(const gamestatus& status,
                               const unit_map& units,
                               const gamemap::location& loc,
 			      const gamemap& map);
 
-//! Returns the amount that a unit's damage should be multiplied by 
+//! Returns the amount that a unit's damage should be multiplied by
 //! due to the current time of day.
 int combat_modifier(const gamestatus& status,
 			const unit_map& units,
@@ -291,10 +291,10 @@ struct undo_action {
 
 typedef std::deque<undo_action> undo_list;
 
-//! function which moves a unit along the sequence of locations given by steps. 
+//! function which moves a unit along the sequence of locations given by steps.
 //! If the unit cannot make it completely along the path this turn,
-//! a goto order will be set. 
-//! If move_recorder is not NULL, the move will be recorded in it. 
+//! a goto order will be set.
+//! If move_recorder is not NULL, the move will be recorded in it.
 //! If undos is not NULL, undo information will be added.
 size_t move_unit(game_display* disp, const game_data& gamedata,
 				const gamestatus& status, const gamemap& map,
@@ -309,8 +309,8 @@ void recalculate_fog(const gamemap& map, const gamestatus& status,
 		      const game_data& gamedata,
 		      unit_map& units, std::vector<team>& teams, int team);
 
-//! Function which will clear shroud away for the given 0-based team 
-//! based on current unit positions. 
+//! Function which will clear shroud away for the given 0-based team
+//! based on current unit positions.
 //! Returns true if some shroud is actually cleared away.
 bool clear_shroud(game_display& disp, const gamestatus& status,
 		const gamemap& map, const game_data& gamedata,
@@ -321,7 +321,7 @@ bool clear_shroud(game_display& disp, const gamestatus& status,
 void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus& status, const gamemap& map,
 	const game_data& gamedata, unit_map& units, std::vector<team>& teams, int team);
 
-//! Will return true iff the unit at 'loc' has any possible moves 
+//! Will return true iff the unit at 'loc' has any possible moves
 //! it can do (including attacking etc).
 bool unit_can_move(const gamemap::location& loc, const unit_map& units,
                    const gamemap& map, const std::vector<team>& teams);
@@ -332,14 +332,14 @@ namespace victory_conditions {
 }
 
 //! Function to check if an attack will satisfy the requirements for backstab.
-//! Input: 
-//! - the location from which the attack will occur, 
-//! - the defending unit location, 
-//! - the list of units on the map and 
+//! Input:
+//! - the location from which the attack will occur,
+//! - the defending unit location,
+//! - the list of units on the map and
 //! - the list of teams.
-//! The defender and opposite units should be in place already. 
-//! The attacking unit doesn't need to be, but if it isn't, 
-//! an external check should be made to make sure the opposite unit 
+//! The defender and opposite units should be in place already.
+//! The attacking unit doesn't need to be, but if it isn't,
+//! an external check should be made to make sure the opposite unit
 //! isn't also the attacker.
 bool backstab_check(const gamemap::location& attacker_loc,
 	const gamemap::location& defender_loc,

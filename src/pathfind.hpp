@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-//! @file pathfind.hpp 
-//! 
+//! @file pathfind.hpp
+//!
 
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
@@ -58,9 +58,9 @@ void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& 
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 
-//! Function which will find a location on the board that is 
-//! as near to loc as possible, but which is unoccupied by any units. 
-//! If terrain is not 0, then the location found must be of the given terrain type, 
+//! Function which will find a location on the board that is
+//! as near to loc as possible, but which is unoccupied by any units.
+//! If terrain is not 0, then the location found must be of the given terrain type,
 //! and must have a path of that terrain type to loc.
 //! If no valid location can be found, it will return a null location.
 gamemap::location find_vacant_tile(const gamemap& map,
@@ -81,18 +81,18 @@ struct cost_calculator
 	inline double getNoPathValue(void) const { return (42424242.0); }
 };
 
-//! Object which contains all the possible locations a unit can move to, 
+//! Object which contains all the possible locations a unit can move to,
 //! with associated best routes to those locations.
 struct paths
 {
 	paths() {}
 
 	// Construct a list of paths for the unit at loc.
-	// - force_ignore_zocs: find the path ignoring ZOC entirely, 
+	// - force_ignore_zocs: find the path ignoring ZOC entirely,
 	//                     if false, will use the unit on the loc's ability
 	// - allow_teleport: indicates whether unit teleports between villages
-	// - additional_turns: if 0, paths for how far the unit can move this turn will be calculated. 
-	//                     If 1, paths for how far the unit can move by the end of next turn 
+	// - additional_turns: if 0, paths for how far the unit can move this turn will be calculated.
+	//                     If 1, paths for how far the unit can move by the end of next turn
 	//                     will be calculated, and so forth.
 	// viewing_team is usually current team, except for Show Enemy Moves etc.
 	paths(gamemap const &map, gamestatus const &status,
@@ -121,9 +121,9 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
                            const size_t parWidth, const size_t parHeight,
                            std::set<gamemap::location> const *teleports = NULL);
 
-//! Function which, given a unit and a route the unit can move on, 
+//! Function which, given a unit and a route the unit can move on,
 //! will return the number of turns it will take the unit to traverse the route.
-//! adds "turn waypoints" to rt.turn_waypoints. 
+//! adds "turn waypoints" to rt.turn_waypoints.
 //! Note that "end of path" is also added.
 int route_turns_to_complete(const unit& u, const gamemap& map,
                             paths::route& rt, const unit_map& units,

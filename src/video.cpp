@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file video.cpp 
+//! @file video.cpp
 //! Video-testprogram, standalone
 
 #include "global.hpp"
@@ -97,7 +97,7 @@ resize_lock::~resize_lock()
 
 static unsigned int get_flags(unsigned int flags)
 {
-	// SDL under Windows doesn't seem to like hardware surfaces 
+	// SDL under Windows doesn't seem to like hardware surfaces
 	// for some reason.
 #if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
 		flags |= SDL_HWSURFACE;

@@ -183,7 +183,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 	}
 
 	//update the chosen file
-	if(dp_info.selection != last_selection_ 
+	if(dp_info.selection != last_selection_
 		|| dp_info.first_time
 		|| dp_info.double_clicked)
 	{

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file help.cpp 
+//! @file help.cpp
 //! Routines for showing the help-dialog.
 
 #include "global.hpp"
@@ -907,7 +907,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		generate_topics(sort_generated,(*section_cfg)["generator"]);
 
 		if (sort_topics) {
-		  	std::sort(topics.begin(),topics.end(), title_less());
+			std::sort(topics.begin(),topics.end(), title_less());
 			std::sort(generated_topics.begin(),
 			  generated_topics.end(), title_less());
 			std::merge(generated_topics.begin(),
@@ -957,7 +957,7 @@ std::string generate_topic_text(const std::string &generator)
 		return empty_string;
 	} else if (generator == "about") {
 		return generate_about_text();
-	} 
+	}
 	return empty_string;
 }
 
@@ -1125,7 +1125,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 
 		topics.push_back( topic(name, id, text.str()) );
 	}
-	
+
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
@@ -1347,7 +1347,7 @@ public:
 			std::vector<item> row;
 			int resistance = 100 - atoi((*dam_it).second.c_str());
 			char resi[16];
-			snprintf(resi,sizeof(resi),"% 4d%%",resistance); 	// range: -100% .. +70%
+			snprintf(resi,sizeof(resi),"% 4d%%",resistance);	// range: -100% .. +70%
 			//FIXME: "white" is currently not a supported color key
 			//so the default grey-white will be used
 			std::string color;
@@ -1415,7 +1415,7 @@ public:
 					else if (defense <= 30)
 						color = "yellow";
 					else if (defense <= 50)
-					 	color = "white";
+						color = "white";
 					else
 						color = "green";
 
@@ -1428,9 +1428,9 @@ public:
 
 					//movement  -  range: 1 .. 5, 99=impassable
 					str.str(clear_stringstream);
-					if (moves > type_.movement() ) 		// cannot move in this terrain
+					if (moves > type_.movement() )		// cannot move in this terrain
 						color = "red";
-					else if (moves > 1)	
+					else if (moves > 1)
 						color = "yellow";
 					else
 						color = "white";
@@ -1690,7 +1690,7 @@ void help_menu::select_topic(const topic &t)
 int help_menu::process()
 {
 	int res = menu::process();
-	if (!visible_items_.empty() && 
+	if (!visible_items_.empty() &&
             static_cast<size_t>(res) < visible_items_.size()) {
 
 		selected_item_ = visible_items_[res];
@@ -1986,7 +1986,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		}
 		jump_to = to;
 	}
-	if (jump_to != 0 && static_cast<int>(jump_to) < 
+	if (jump_to != 0 && static_cast<int>(jump_to) <
             get_max_x(curr_loc_.first, curr_row_height_)) {
 
 		curr_loc_.first = jump_to;
@@ -2578,9 +2578,9 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	bool last_char_escape = false;
 	const char escape_char = '\\';
 	std::vector<std::string> attributes;
-	// Find the different attributes. 
-	// No checks are made for the equal sign or something like that. 
-	// Attributes are just separated by spaces or newlines. 
+	// Find the different attributes.
+	// No checks are made for the equal sign or something like that.
+	// Attributes are just separated by spaces or newlines.
 	// Attributes that contain spaces must be in single quotes.
 	for (size_t pos = 0; pos < contents.size(); pos++) {
 		const char c = contents[pos];
@@ -2706,7 +2706,7 @@ std::string get_first_word(const std::string &s)
 	if (first_word_start == std::string::npos) {
 		return s;
 	}
- 	size_t first_word_end = s.find_first_of(" \n", first_word_start);
+	size_t first_word_end = s.find_first_of(" \n", first_word_start);
 	if( first_word_end == first_word_start ) {
 		// This word is '\n'.
 		first_word_end = first_word_start+1;
@@ -2722,13 +2722,13 @@ void show_help(display &disp, std::string show_topic, int xloc, int yloc)
 	show_help(disp, toplevel, show_topic, xloc, yloc);
 }
 
-//! Open a help dialog using a toplevel other than the default. 
+//! Open a help dialog using a toplevel other than the default.
 //!
-//! This allows for complete customization of the contents, 
+//! This allows for complete customization of the contents,
 //! although not in a very easy way.
-void show_help(display &disp, const section &toplevel_sec, 
+void show_help(display &disp, const section &toplevel_sec,
 			   const std::string show_topic,
-			   int xloc, int yloc) 
+			   int xloc, int yloc)
 {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
@@ -2758,7 +2758,7 @@ void show_help(display &disp, const section &toplevel_sec,
 					 true, &buttons_ptr);
 	f.layout(xloc, yloc, width, height);
 	f.draw();
-	
+
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
 	    last_debug_state != game_config::debug ||

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file config.hpp 
+//! @file config.hpp
 //! Definitions for the interface to Wesnoth Markup Language (WML).
 
 #ifndef CONFIG_HPP_INCLUDED
@@ -29,11 +29,11 @@
 
 
 // This module defines the interface to Wesnoth Markup Language (WML).
-// WML is a simple hierarchical text-based file format. 
+// WML is a simple hierarchical text-based file format.
 // The format is defined in Wiki, under BuildingScenariosWML
 //
-// All configuration files are stored in this format, 
-// and data is sent across the network in this format. 
+// All configuration files are stored in this format,
+// and data is sent across the network in this format.
 // It is thus used extensively throughout the game.
 
 typedef std::map<std::string,t_string> string_map;
@@ -129,9 +129,9 @@ public:
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
 
-	//! A function to get the differences between this object, 
-	//! and 'c', as another config object. 
-	//! I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2)) 
+	//! A function to get the differences between this object,
+	//! and 'c', as another config object.
+	//! I.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2))
 	//! will make cfg1 identical to cfg2.
 	config get_diff(const config& c) const;
 
@@ -144,11 +144,11 @@ public:
 	//! Removes keys with empty values.
 	void prune();
 
-	//! Append data from another config object to this one. 
+	//! Append data from another config object to this one.
 	//! Attributes in the latter config object will clobber attributes in this one.
 	void append(const config& cfg);
 
-	//! All children with the given key will be merged 
+	//! All children with the given key will be merged
 	//! into the first element with that key.
 	void merge_children(const std::string& key);
 

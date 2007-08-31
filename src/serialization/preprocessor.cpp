@@ -94,7 +94,7 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
 	: streambuf(), current_(NULL), defines_(t.defines_),
-	  textdomain_(PACKAGE), depth_(t.depth_),buffer_size_(0), 
+	  textdomain_(PACKAGE), depth_(t.depth_),buffer_size_(0),
 	  quoted_(t.quoted_)
 {
 }
@@ -264,7 +264,7 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
 	t.linenum_ = linenum;
 	t.textdomain_ = domain;
 
-	t.buffer_ << "\376line " << linenum 
+	t.buffer_ << "\376line " << linenum
 		<< ' ' << t.location_ << "\n\376textdomain " << domain << '\n';
 	const int fixed_char_count = 22;
 	count_extra_digits(linenum, t.buffer_size_);
@@ -358,7 +358,7 @@ void preprocessor_data::put(char c)
 		if (c == '\n')
 			--target_.linenum_;
 
-		target_.buffer_ << "\376line " << target_.linenum_ 
+		target_.buffer_ << "\376line " << target_.linenum_
 			<< ' ' << target_.location_ << '\n';
 		const int fixed_char_count = 9;
 		count_extra_digits(target_.linenum_, target_.buffer_size_);

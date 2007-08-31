@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file about.cpp 
+//! @file about.cpp
 //! Show screen with scrolling credits.
 
 #include "about.hpp"
@@ -25,9 +25,9 @@
 #include "video.hpp"
 #include "show_dialog.hpp"
 
-//! @namespace about	
+//! @namespace about
 //! Display credits about all contributors.
-//! 
+//!
 //! This module is used from the startup screen. \n
 //! When show_about() is called, a list of contributors
 //! to the game will be presented to the user.
@@ -43,7 +43,7 @@ namespace about
 void add_lines(std::vector<std::string> &res, config const &c) {
 	std::string title=c["title"];
 	if(title.size()) {
-	  	title = N_("+" + title);
+		title = N_("+" + title);
 		res.push_back(title);
 	}
 
@@ -78,7 +78,7 @@ std::vector<std::string> get_text(std::string campaign) {
 	for(config::child_list::const_iterator cc = children.begin(); cc != children.end(); ++cc) {
 	  // just finished a particular campaign
 	  if(campaign.size() && campaign == (**cc)["id"]){
-	  	add_lines(res, **cc);
+		add_lines(res, **cc);
 	  }
 	}
 
@@ -126,7 +126,7 @@ void set_about(const config& cfg){
 					line != lines.end(); line++){
 					text+="    "+(*line)+"\n";
 				}
-				
+
 				config::child_list entries = AA.get_children("entry");
 				config::child_list::const_iterator entry;
 				for(entry = entries.begin(); entry != entries.end(); entry++) {
@@ -162,7 +162,7 @@ void show_about(display &disp, std::string campaign)
 	// Clear the screen
 	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
 	                                 0,0,0,1.0,video.getSurface());
-	update_whole_screen(); 
+	update_whole_screen();
 	cursor::set(cursor::NORMAL);
 
 	std::vector<std::string> image_list;
@@ -231,8 +231,8 @@ void show_about(display &disp, std::string campaign)
 		last_escape = key[SDLK_ESCAPE] != 0;
 
 		// check to see if background image has changed
-		if(text.size() && (image_count < 
-				((startline * static_cast<int>(image_list.size())) / 
+		if(text.size() && (image_count <
+				((startline * static_cast<int>(image_list.size())) /
 				static_cast<int>(text.size())))){
 
 			image_count++;
@@ -246,7 +246,7 @@ void show_about(display &disp, std::string campaign)
 			map_rect.x + map_rect.w * 3/32,
 			map_rect.y + top_margin,
 			map_rect.w * 13 / 16,
-			map_rect.h - top_margin - bottom_margin 
+			map_rect.h - top_margin - bottom_margin
 		};
 		gui::dialog_frame f(disp.video(), "", gui::dialog_frame::titlescreen_style, false);
 		f.layout(frame_area);

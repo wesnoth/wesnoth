@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file util.cpp 
+//! @file util.cpp
 //! String-routines - Templates for lexical_cast & lexical_cast_default.
 
 #include "util.hpp"

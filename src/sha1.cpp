@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file sha1.cpp 
+//! @file sha1.cpp
 //! Secure Hash Algorithm 1 (SHA-1).
 //! Used to checksum the game-config / cache.
 
@@ -47,14 +47,14 @@ std::string sha1_hash::display() {
 }
 
 //! Make a hash from a string
-sha1_hash::sha1_hash(const std::string& str) 
+sha1_hash::sha1_hash(const std::string& str)
 : H0(0x67452301), H1(0xefcdab89), H2(0x98badcfe), H3(0x10325476), H4(0xc3d2e1f0)
 {
 	Uint8 block[64];
-	
+
 	int bytes_left = str.size();
 	Uint32 ssz = bytes_left * 8; // string length in bits
-			
+
 	std::stringstream iss (str, std::stringstream::in);
 	// cut our string in 64 bytes blocks then process it
 	while (bytes_left > 0) {
@@ -72,7 +72,7 @@ sha1_hash::sha1_hash(const std::string& str)
 				block[60] = ssz >> 24;
 				block[61] = ssz >> 16;
 				block[62] = ssz >> 8;
-				block[63] = ssz; 
+				block[63] = ssz;
 			} else { // not enough space for the zeros => we need a new block
 				next(block);
 				// new block
@@ -86,7 +86,7 @@ sha1_hash::sha1_hash(const std::string& str)
 				block[60] = ssz >> 24;
 				block[61] = ssz >> 16;
 				block[62] = ssz >> 8;
-				block[63] = ssz; 
+				block[63] = ssz;
 			}
 		}
 		next(block);
@@ -99,7 +99,7 @@ void sha1_hash::next(Uint8 block[64]) {
 	Uint32 W[80];
 	Uint32 A, B, C, D, E, T;
 	int i;
-	
+
 	A = H0;
 	B = H1;
 	C = H2;

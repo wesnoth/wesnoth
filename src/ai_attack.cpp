@@ -4,7 +4,7 @@
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License version 
+   it under the terms of the GNU General Public License version
    or at your option any later version2
    or at your option any later version.
    This program is distributed in the hope that it will be useful,
@@ -77,7 +77,7 @@ void ai::do_attack_analysis(
 		wassert(unit_itor != units_.end());
 
 		// See if the unit has the backstab ability.
-		// Units with backstab will want to try to have a 
+		// Units with backstab will want to try to have a
 		// friendly unit opposite the position they move to.
 		//
 		// See if the unit has the slow ability -- units with slow only attack first.
@@ -99,10 +99,10 @@ void ai::do_attack_analysis(
 			continue;
 		}
 
-               // Check if the friendly unit is surrounded, 
-			   // A unit is surrounded if it is flanked by enemy units 
-			   // and at least one other enemy unit is nearby 
-			   // or if the unit is totaly surrounded by enemies 
+               // Check if the friendly unit is surrounded,
+			   // A unit is surrounded if it is flanked by enemy units
+			   // and at least one other enemy unit is nearby
+			   // or if the unit is totaly surrounded by enemies
 			   // with max. one tile to escape.
                bool is_surrounded = false;
                bool is_flanked = false;
@@ -182,12 +182,12 @@ void ai::do_attack_analysis(
 			if(tiles[(j+3)%6] != current_unit) {
 				const unit_map::const_iterator itor = units_.find(tiles[(j+3)%6]);
 
-				// Note that we *could* also check if a unit plans to move there 
-				// before we're at this stage, but we don't because, since the 
-				// attack calculations don't actually take backstab into account (too complicated), 
+				// Note that we *could* also check if a unit plans to move there
+				// before we're at this stage, but we don't because, since the
+				// attack calculations don't actually take backstab into account (too complicated),
 				// this could actually make our analysis look *worse* instead of better.
 				// So we only check for 'concrete' backstab opportunities.
-				// That would also break backstab_check, since it assumes 
+				// That would also break backstab_check, since it assumes
 				// the defender is in place.
 				if(itor != units_.end() &&
 					backstab_check(tiles[j], loc, units_, teams_)) {
@@ -210,12 +210,12 @@ void ai::do_attack_analysis(
 			// Find out how vulnerable we are to attack from enemy units in this hex.
 			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);
 
-			// Calculate how much support we have on this hex from allies. 
-			// Support does not take into account terrain, because we don't want 
+			// Calculate how much support we have on this hex from allies.
+			// Support does not take into account terrain, because we don't want
 			// to move into a hex that is surrounded by good defensive terrain.
 			const double support = power_projection(tiles[j],fullmove_dstsrc,false);
 
-			// If this is a position with equal defense to another position, 
+			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
 			if(cur_position >= 0 && rating == best_rating && vulnerability/surround_bonus - support*surround_bonus >= best_vulnerability - best_support) {
 				continue;
@@ -229,7 +229,7 @@ void ai::do_attack_analysis(
 
 		if(cur_position != -1) {
 			units.erase(units.begin() + i);
-			
+
 			cur_analysis.movements.push_back(std::pair<location,location>(current_unit,tiles[cur_position]));
 
 			cur_analysis.vulnerability += best_vulnerability;
@@ -346,8 +346,8 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 			usc = ai_obj.unit_stats_cache_.end();
 		}
 		// Just check this attack is valid for this attacking unit (may be modified)
-		if (usc != ai_obj.unit_stats_cache_.end() && 
-				usc->second.first.attack_num < 
+		if (usc != ai_obj.unit_stats_cache_.end() &&
+				usc->second.first.attack_num <
 				static_cast<int>(up->second.attacks().size())) {
 
 			from_cache = true;
@@ -413,16 +413,16 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 				advance_prob = prob_killed;
 			avg_losses -= up->second.cost() * advance_prob;
 
-			// The reward for getting a unit closer to advancement 
-			// (if it didn't advance) is to get the proportion of 
-			// remaining experience needed, and multiply it by 
-			// a quarter of the unit cost. 
-			// This will cause the AI to heavily favor 
+			// The reward for getting a unit closer to advancement
+			// (if it didn't advance) is to get the proportion of
+			// remaining experience needed, and multiply it by
+			// a quarter of the unit cost.
+			// This will cause the AI to heavily favor
 			// getting xp for close-to-advance units.
 			avg_losses -= (up->second.cost()*fight_xp)/(xp_for_advance*4) * (prob_fought - prob_killed);
 			avg_losses -= (up->second.cost()*kill_xp)/(xp_for_advance*4) * prob_killed;
 
-			// The reward for killing with a unit that plagues 
+			// The reward for killing with a unit that plagues
 			// is to get a 'negative' loss of that unit.
 			if (bc->get_attacker_stats().plagues) {
 				avg_losses -= prob_killed * up->second.cost();
@@ -479,8 +479,8 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	double value = chance_to_kill*target_value - avg_losses*(1.0-aggression);
 
 	if(terrain_quality > alternative_terrain_quality) {
-		// This situation looks like it might be a bad move: 
-		// we are moving our attackers out of their optimal terrain 
+		// This situation looks like it might be a bad move:
+		// we are moving our attackers out of their optimal terrain
 		// into sub-optimal terrain.
 		// Calculate the 'exposure' of our units to risk.
 
@@ -495,8 +495,8 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		value -= exposure*(1.0-aggression);
 	}
 
-	// If this attack uses our leader, and the leader can reach the keep, 
-	// and has gold to spend, reduce the value to reflect the leader's 
+	// If this attack uses our leader, and the leader can reach the keep,
+	// and has gold to spend, reduce the value to reflect the leader's
 	// lost recruitment opportunity in the case of an attack.
 	if(uses_leader && ai_obj.leader_can_reach_keep() && ai_obj.current_team().gold() > 20) {
 		value -= double(ai_obj.current_team().gold())*0.5;
@@ -506,15 +506,15 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
        // If the unit is surrounded and there is no support,
-	   // or if the unit is surrounded and the average damage is 0, 
+	   // or if the unit is surrounded and the average damage is 0,
 	   // the unit skips its sanity check and tries to break free as good as possible.
        if(!is_surrounded || (support != 0 && avg_damage_taken != 0))
        {
-               // Sanity check: if we're putting ourselves at major risk, 
-			   // and have no chance to kill, and we're not aiding our allies 
+               // Sanity check: if we're putting ourselves at major risk,
+			   // and have no chance to kill, and we're not aiding our allies
 			   // who are also attacking, then don't do it.
-               if(vulnerability > 50.0 && vulnerability > support*2.0 
-			   && chance_to_kill < 0.02 && aggression < 0.75 
+               if(vulnerability > 50.0 && vulnerability > support*2.0
+			   && chance_to_kill < 0.02 && aggression < 0.75
 			   && !ai_obj.attack_close(target)) {
                        return -1.0;
                }
@@ -531,11 +531,11 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	}
 
 	LOG_AI << "attack on " << target << ": attackers: " << movements.size()
-		<< " value: " << value << " chance to kill: " << chance_to_kill 
-		<< " damage inflicted: " << avg_damage_inflicted 
-		<< " damage taken: " << avg_damage_taken 
-		<< " vulnerability: " << vulnerability 
-		<< " support: " << support 
+		<< " value: " << value << " chance to kill: " << chance_to_kill
+		<< " damage inflicted: " << avg_damage_inflicted
+		<< " damage taken: " << avg_damage_taken
+		<< " vulnerability: " << vulnerability
+		<< " support: " << support
 		<< " quality: " << terrain_quality
 		<< " alternative quality: " << alternative_terrain_quality << "\n";
 
@@ -569,7 +569,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
-		// Attack anyone who is on the enemy side, 
+		// Attack anyone who is on the enemy side,
 		// and who is not invisible or turned to stone.
 		if(current_team().is_enemy(j->second.side()) && !j->second.incapacitated() &&
 		   j->second.invisible(j->first,units_,teams_) == false) {
@@ -612,7 +612,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 	for (int i = 0;; ++i) {
 		if (i == 6) {
 			if (!changed) break;
-			// Loop once again, in case a unit found a better spot 
+			// Loop once again, in case a unit found a better spot
 			// and freed the place for another unit.
 			changed = false;
 			i = 0;
@@ -683,7 +683,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 		else if (best_rating == ratings[index])
 			continue;
 		else {
-			// The unit was in another spot already, so remove its older rating 
+			// The unit was in another spot already, so remove its older rating
 			// from the final result, and require a new run to fill its old spot.
 			res -= ratings[index];
 			changed = true;

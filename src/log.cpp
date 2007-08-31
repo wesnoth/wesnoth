@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file log.cpp 
+//! @file log.cpp
 //! Logger for debugging.
 //! See also wesnoth-commandline-params --logdomains and --log-error="".
 
@@ -55,8 +55,8 @@ namespace lg {
 void timestamps(bool t) { timestamp = t; }
 
 logger err("error", 0), warn("warning", 1), info("info", 2);
-log_domain general("general"), ai("ai"), config("config"), display("display"), 
- 	   engine("engine"), network("network"), filesystem("filesystem"), 
+log_domain general("general"), ai("ai"), config("config"), display("display"),
+	   engine("engine"), network("network"), filesystem("filesystem"),
 	   audio("audio"), paths("paths");
 
 log_domain::log_domain(char const *name) : domain_(log_domains.size())
@@ -89,7 +89,7 @@ std::string list_logdomains()
 		it_begin = log_domains.begin(),
 		it_end = log_domains.end(),
 		it;
- 	std::string domainlist = "";
+	std::string domainlist = "";
 	for(it = it_begin; it != it_end; ++it) {
 		if (it != it_begin)
 			domainlist += ", ";

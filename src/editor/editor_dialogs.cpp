@@ -276,7 +276,7 @@ void preferences_dialog(display &disp, config &prefs) {
 	scroll_slider.set_min(1);
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(preferences::scroll_speed());
-	
+
 	gui::button fullscreen_button(disp.video(),_("Toggle Full Screen"),
 	                              gui::button::TYPE_CHECK);
 
@@ -299,7 +299,7 @@ void preferences_dialog(display &disp, config &prefs) {
 								scroll_pos + 80 + 50);
 
 	bool redraw_all = true;
-	
+
 	for(;;) {
 		if(close_button.pressed()) {
 			break;
@@ -401,7 +401,7 @@ bool resize_dialog(display &disp, unsigned& width, unsigned& height,
 
 	// store the width of all labels in an array to determine the maximum
 	const int label_arr_size = 4;
-	int label_arr[label_arr_size] = 
+	int label_arr[label_arr_size] =
 		{ width_rect.w, height_rect.w, x_offset_rect.w, y_offset_rect.w };
 
 	// use the biggest label to deterimine the right side for the labels
@@ -495,7 +495,7 @@ bool resize_dialog(display &disp, unsigned& width, unsigned& height,
 				font::NORMAL_COLOUR, _("Resize Map"),
 				xpos + (dlg_width - title_rect.w) / 2, ypos + 10);
 
-			font::draw_text(&disp.video(), screen_area(), 14, font::NORMAL_COLOUR, 
+			font::draw_text(&disp.video(), screen_area(), 14, font::NORMAL_COLOUR,
 				width_label, width_rect.x, width_rect.y);
 
 			font::draw_text(&disp.video(), screen_area(), 14, font::NORMAL_COLOUR,
@@ -507,19 +507,19 @@ bool resize_dialog(display &disp, unsigned& width, unsigned& height,
 			font::draw_text(&disp.video(),screen_area(),14,font::NORMAL_COLOUR,
 				y_offset_label, y_offset_rect.x, y_offset_rect.y);
 
-			font::draw_text(&disp.video(), screen_area(), 14, 
-				font::NORMAL_COLOUR, lexical_cast<std::string>(width), 
+			font::draw_text(&disp.video(), screen_area(), 14,
+				font::NORMAL_COLOUR, lexical_cast<std::string>(width),
 				slider_right + horz_margin, width_rect.y);
 
-			font::draw_text(&disp.video(), screen_area(), 14, 
+			font::draw_text(&disp.video(), screen_area(), 14,
 				font::NORMAL_COLOUR, lexical_cast<std::string>(height),
 				slider_right + horz_margin, height_rect.y);
 
-			font::draw_text(&disp.video(), screen_area(), 14, 
+			font::draw_text(&disp.video(), screen_area(), 14,
 				font::NORMAL_COLOUR, lexical_cast<std::string>(x_offset),
 				slider_right + horz_margin, x_offset_rect.y);
 
-			font::draw_text(&disp.video(), screen_area(), 14, 
+			font::draw_text(&disp.video(), screen_area(), 14,
 				font::NORMAL_COLOUR, lexical_cast<std::string>(y_offset),
 				slider_right + horz_margin, y_offset_rect.y);
 

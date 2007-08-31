@@ -254,7 +254,7 @@ private:
 
 	// Sets the special overlay with the selection of fore and background
 	void set_mouseover_overlay();
-	// Clears the special overlay 
+	// Clears the special overlay
 	void reset_mouseover_overlay() { gui_.clear_mouseover_hex_overlay(); }
 
 	/// Terrain has changed at the specified hex through user drawing
@@ -321,7 +321,7 @@ private:
 	gamemap::location selected_hex_;
 	// When map_dirty_ is true, schedule redraw of the minimap and
 	// perform some updates like recalculating labels of starting
-	// positions. But only it the option auto_update is enabled 
+	// positions. But only it the option auto_update is enabled
 	bool map_dirty_;
 	bool auto_update_;
 	bool l_button_palette_dirty_;

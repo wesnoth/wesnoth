@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file display.hpp 
+//! @file display.hpp
 //!
 
 #ifndef DISPLAY_H_INCLUDED
@@ -42,18 +42,18 @@ class unit_map;
 #include <set>
 #include <string>
 
-// map_display and display: classes which take care of 
+// map_display and display: classes which take care of
 // displaying the map and game-data on the screen.
-// 
-// The display is divided into two main sections: 
+//
+// The display is divided into two main sections:
 // - the game area, which displays the tiles of the game board, and units on them,
-// - and the side bar, which appears on the right hand side. 
+// - and the side bar, which appears on the right hand side.
 // The side bar display is divided into three sections:
 // - the minimap, which is displayed at the top right
-// - the game status, which includes the day/night image, 
-//   the turn number, information about the current side, 
+// - the game status, which includes the day/night image,
+//   the turn number, information about the current side,
 //   and information about the hex currently moused over (highlighted)
-// - the unit status, which displays an image and stats 
+// - the unit status, which displays an image and stats
 //   for the current unit.
 
 class display
@@ -71,14 +71,14 @@ public:
 
 	virtual bool in_game() const { return false; }
 
-	// the dimensions of the display. x and y are width/height. 
-	// mapx is the width of the portion of the display which shows the game area. 
+	// the dimensions of the display. x and y are width/height.
+	// mapx is the width of the portion of the display which shows the game area.
 	// Between mapx and x is the sidebar region.
 	int w() const { return screen_.getx(); }	//!< width
 	int h() const { return screen_.gety(); }	//!< height
-	const SDL_Rect& minimap_area() const 
+	const SDL_Rect& minimap_area() const
 		{ return theme_.mini_map_location(screen_area()); }
-	const SDL_Rect& unit_image_area() const 
+	const SDL_Rect& unit_image_area() const
 		{ return theme_.unit_image_location(screen_area()); }
 
 	SDL_Rect screen_area() const
@@ -90,8 +90,8 @@ public:
 	const SDL_Rect& map_area() const;
 
 	/**
-	 * Returns the available area for a map, this may differ 
-	 * from the above. This area will get the background area 
+	 * Returns the available area for a map, this may differ
+	 * from the above. This area will get the background area
 	 * applied to it.
 	 */
 	const SDL_Rect& map_outside_area() const
@@ -102,7 +102,7 @@ public:
 
 	//! Function which returns the width of a hex in pixels,
 	//! up to where the next hex starts.
-	//! (i.e. not entirely from tip to tip -- use hex_size() 
+	//! (i.e. not entirely from tip to tip -- use hex_size()
 	//! to get the distance from tip to tip)
 	int hex_width() const { return (zoom_*3)/4; }
 
@@ -114,17 +114,17 @@ public:
 	double get_zoom_factor() { return double(zoom_)/double(image::tile_size); }
 
 	// given x,y co-ordinates of an onscreen pixel, will return the
-	// location of the hex that this pixel corresponds to. 
+	// location of the hex that this pixel corresponds to.
 	// Returns an invalid location if the mouse isn't over any valid location.
-	const gamemap::location hex_clicked_on(int x, int y, 
-		gamemap::location::DIRECTION* nearest_hex=NULL, 
+	const gamemap::location hex_clicked_on(int x, int y,
+		gamemap::location::DIRECTION* nearest_hex=NULL,
 		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
 
 	// given x,y co-ordinates of a pixel on the map, will return the
-	// location of the hex that this pixel corresponds to. 
+	// location of the hex that this pixel corresponds to.
 	// Returns an invalid location if the mouse isn't over any valid location.
-	const gamemap::location pixel_position_to_hex(int x, int y, 
-		gamemap::location::DIRECTION* nearest_hex=NULL, 
+	const gamemap::location pixel_position_to_hex(int x, int y,
+		gamemap::location::DIRECTION* nearest_hex=NULL,
 		gamemap::location::DIRECTION* second_nearest_hex=NULL) const;
 
 	// given x,y co-ordinates of the mouse, will return the location of the
@@ -158,7 +158,7 @@ public:
 	//! (to more clearly show where hexes are)
 	void set_grid(const bool grid) { grid_ = grid; }
 
-	//! Returns the locations of 2 hexes 
+	//! Returns the locations of 2 hexes
 	//! that bind the visible area of the map.
 	void get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const;
 
@@ -174,7 +174,7 @@ public:
 	void create_buttons();
 	void invalidate_theme() { panelsDrawn_ = false; }
 
-	void refresh_report(reports::TYPE report_num, reports::report report, 
+	void refresh_report(reports::TYPE report_num, reports::report report,
 		      bool brightened = false);
 
 	// Will be overridden in the display subclass
@@ -187,25 +187,25 @@ public:
 
 	// The last action in drawing a tile is adding the overlays.
 	// These overlays are drawn in the following order:
-	// hex_overlay_ 			if the drawn location is in the map
+	// hex_overlay_			if the drawn location is in the map
 	// selected_hex_overlay_	if the drawn location is selected
 	// mouseover_hex_overlay_	if the drawn location is underneath the mouse
 	//
-	// These functions require a prerendered surface. 
+	// These functions require a prerendered surface.
 	// Since they are drawn at the top, they are not influenced by TOD, shroud etc.
 	void set_hex_overlay(const gamemap::location& loc, surface image) { hex_overlay_[loc] = image; }
 	void clear_hex_overlay(const gamemap::location& loc);
-	
+
 	void set_selected_hex_overlay(const surface& image) { selected_hex_overlay_ = image; }
 	void clear_selected_hex_overlay() { selected_hex_overlay_ = NULL; }
 
 	void set_mouseover_hex_overlay(const surface& image) { mouseover_hex_overlay_ = image; }
 	void clear_mouseover_hex_overlay() { mouseover_hex_overlay_ = NULL; }
-	
-	//! Debug function to toggle the "sunset" mode. 
-	//! The map area become progressively darker, 
+
+	//! Debug function to toggle the "sunset" mode.
+	//! The map area become progressively darker,
 	//! except where hexes are refreshed.
-	//! delay is the number of frames between each darkening 
+	//! delay is the number of frames between each darkening
 	//! (0 to toggle).
 	void sunset(const size_t delay = 0);
 
@@ -217,7 +217,7 @@ public:
 	//! and divided by 2 for tiny-gui.
 	void draw_text_in_hex(const gamemap::location& loc, const std::string& text,
 		size_t font_size, SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
-	
+
 	void flip();
 
 	//! Copy the backbuffer to the framebuffer.
@@ -233,7 +233,7 @@ public:
 	//! greyscale: used when the unit is stoned
 	//! alpha: the merging to use with the background
 	//! blendto: blend to this colour using blend_ratio
- 	//! submerged: the amount of the unit out of 1.0 that is submerged
+	//! submerged: the amount of the unit out of 1.0 that is submerged
 	//!            (presumably under water) and thus shouldn't be drawn
 	void render_unit_image(int x, int y, surface image,
 			bool reverse=false, bool greyscale=false,
@@ -242,7 +242,7 @@ public:
 
 	const theme::menu* menu_pressed();
 
-	//! Finds the menu which has a given item in it, 
+	//! Finds the menu which has a given item in it,
 	//! and enables or disables it.
 	void enable_menu(const std::string& item, bool enable);
 
@@ -251,7 +251,7 @@ public:
 	// Delay routines: use these not SDL_Delay (for --nogui).
 	void delay(unsigned int milliseconds) const;
 
-	//! Set/Get whether 'turbo' mode is on. 
+	//! Set/Get whether 'turbo' mode is on.
 	//! When turbo mode is on, everything moves much faster.
 	void set_turbo(const bool turbo) { turbo_ = turbo; }
 
@@ -259,9 +259,9 @@ public:
 
 	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
 
-	//! Add a location to highlight. 
-	//! Note that this has nothing to do with selecting hexes, 
-	//! it is pure highlighting. These hexes will be highlighted 
+	//! Add a location to highlight.
+	//! Note that this has nothing to do with selecting hexes,
+	//! it is pure highlighting. These hexes will be highlighted
 	//! slightly darker than the currently selected hex.
 	void add_highlighted_loc(const gamemap::location &hex);
 
@@ -275,14 +275,14 @@ public:
 	//! Function to invalidate all tiles.
 	void invalidate_all();
 
-	//! Scrolls the display by xmov,ymov pixels. 
+	//! Scrolls the display by xmov,ymov pixels.
 	//! Invalidation and redrawing will be scheduled.
 	void scroll(int xmov, int ymov);
 
-	//! Zooms the display by the specified amount. 
-	//! Negative values zoom out.  
+	//! Zooms the display by the specified amount.
+	//! Negative values zoom out.
 	//! Note the amount should be a multiple of four,
-	//! otherwise the images might start to look odd 
+	//! otherwise the images might start to look odd
 	//! (hex_width() gets rounding errors).
 	void set_zoom(int amount);
 
@@ -305,8 +305,8 @@ public:
 	//! Expose the event, so observers can be notified about map scrolling.
 	events::generic_event &scroll_event() const { return _scroll_event; }
 
-	//! Draws invalidated items. 
-	//! If update is true, will also copy the display to the frame buffer. 
+	//! Draws invalidated items.
+	//! If update is true, will also copy the display to the frame buffer.
 	//! If force is true, will not skip frames, even if running behind.
 	virtual void draw(bool update=true,bool force=false) = 0;
 
@@ -314,20 +314,20 @@ public:
 	const map_labels& labels() const { return map_labels_; }
 
 	//! Announce a message prominently.
-	void announce(const std::string msg, 
+	void announce(const std::string msg,
 		       const SDL_Color& colour = font::GOOD_COLOUR);
 
-	//! Schedule the minimap for recalculation. 
+	//! Schedule the minimap for recalculation.
 	//! Useful if any terrain in the map has changed.
 	void recalculate_minimap();
 
-	//! Schedule the minimap to be redrawn. 
+	//! Schedule the minimap to be redrawn.
 	//! Useful if units have moved about on the map.
 	void redraw_minimap() { redrawMinimap_ = true; }
 
 	//! Set what will be shown for the report with type which_report.
 	//! Note that this only works for some reports,
-	//! i.e. reports that can not be deducted 
+	//! i.e. reports that can not be deducted
 	//! from the supplied arguments to generate_report,
 	//! currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
 	void set_report_content(const reports::TYPE which_report, const std::string &content);
@@ -336,8 +336,8 @@ public:
 protected:
 
 	/**
-	 * Draws the border tile overlay. 
-	 * The routine determines by itself which border it is on 
+	 * Draws the border tile overlay.
+	 * The routine determines by itself which border it is on
 	 * and draws an overlay accordingly. The definition of the
 	 * border is stored in the 'main_map_border' part of the theme.
 	 *
@@ -345,7 +345,7 @@ protected:
 	 * @param xpos	the on-screen pixels x coordinate of the tile
 	 * @param ypos	the on-screen pixels y coordinate of the tile
 	 */
-	virtual void draw_border(const gamemap::location& loc, 
+	virtual void draw_border(const gamemap::location& loc,
 		const int xpos, const int ypos);
 
 	void draw_minimap(int x, int y, int w, int h);
@@ -354,9 +354,9 @@ protected:
 
 	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
 
-	std::vector<surface> get_terrain_images(const gamemap::location &loc, 
+	std::vector<surface> get_terrain_images(const gamemap::location &loc,
 					const std::string timeid,
-					image::TYPE type, 
+					image::TYPE type,
 					ADJACENT_TERRAIN_TYPE terrain_type);
 
 	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
@@ -388,7 +388,7 @@ protected:
 	//! Drawing shouldn't occur before this time.
 	int nextDraw_;
 
-  	// Not set by the initializer:
+	// Not set by the initializer:
 	SDL_Rect reportRects_[reports::NUM_REPORTS];
 	surface reportSurfaces_[reports::NUM_REPORTS];
 	reports::report reports_[reports::NUM_REPORTS];
@@ -414,8 +414,8 @@ protected:
 
 	void invalidate_locations_in_rect(SDL_Rect r);
 
-	//! Strict weak ordering to sort a STL-set of hexes 
-	//! for drawing using the z-order. 
+	//! Strict weak ordering to sort a STL-set of hexes
+	//! for drawing using the z-order.
 	//! (1000 are just to weight the y compare to x)
 	struct ordered_draw : public std::binary_function<gamemap::location, gamemap::location, bool> {
 		bool operator()(gamemap::location a, gamemap::location b) {
@@ -423,15 +423,15 @@ protected:
 		}
 	};
 
-	//! Invalidate controls and panels when changed 
-	//! after they have been drawn initially. 
+	//! Invalidate controls and panels when changed
+	//! after they have been drawn initially.
 	//! Useful for dynamic theme modification.
 	bool draw_init();
 	void draw_wrap(bool update,bool force,bool changed);
 
 private:
 	//! Tile stack for terrain rendering.
-  	std::vector<surface> tile_stack_;
+	std::vector<surface> tile_stack_;
 	//! Handle for the label which displays frames per second.
 	int fps_handle_;
 };
@@ -444,12 +444,12 @@ public:
 	editor_display(CVideo& video, const gamemap& map, const config& theme_cfg,
 			const config& cfg, const config& level);
 
-	//! draw() for the editor display. 
+	//! draw() for the editor display.
 	//! It only has to know about terrain.
 	void draw(bool update=true,bool force=false);
 
 	//! Rebuild the dynamic terrain at the given location.
-	void rebuild_terrain(const gamemap::location &loc) 
+	void rebuild_terrain(const gamemap::location &loc)
 		{ builder_.rebuild_terrain(loc); }
 };
 

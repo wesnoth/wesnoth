@@ -86,7 +86,7 @@ namespace reports {
 	};
 
 	report generate_report(TYPE type,
-			       std::map<reports::TYPE, std::string> report_contents, 
+			       std::map<reports::TYPE, std::string> report_contents,
 			       const gamemap& map, unit_map& units,
 	                       const std::vector<team>& teams, const team& current_team,
 	                       unsigned int current_side, int unsigned active_side,

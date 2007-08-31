@@ -47,11 +47,11 @@ class theme
 
 		// All on-screen objects have 'anchoring' in the x and y dimensions.
 		// 'fixed' means that they have fixed co-ordinates and don't move.
-		// 'top anchored' means they are anchored to the top (or left) side 
-		// of the screen - the top (or left) edge stays a constant distance 
+		// 'top anchored' means they are anchored to the top (or left) side
+		// of the screen - the top (or left) edge stays a constant distance
 		// from the top of the screen.
 		// 'bottom anchored' is the inverse of top anchored.
-		// 'proportional' means the location and dimensions change 
+		// 'proportional' means the location and dimensions change
 		// proportionally to the screen size.
 		enum ANCHORING { FIXED, TOP_ANCHORED, PROPORTIONAL, BOTTOM_ANCHORED };
 
@@ -195,7 +195,7 @@ public:
 	const std::vector<label>& labels() const { return labels_; }
 	const std::vector<menu>& menus() const { return menus_; }
 
-	const menu* context_menu() const 
+	const menu* context_menu() const
 		{ return context_.is_context() ? &context_ : NULL; }
 
 	const status_item* get_status_item(const std::string& item) const;

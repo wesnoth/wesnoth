@@ -77,7 +77,7 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 				while(child != analyzed_anim.ordered_end()) {
 					for(std::vector<config>::iterator itor= to_add.begin(); itor != to_add.end();itor++) {
 							itor->add_child(*(*child).first,*(*child).second);
-							
+
 					}
 					child++;
 				}
@@ -131,7 +131,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for(itor = cfg.child_range("secondary_unit_filter").first; itor <cfg.child_range("secondary_unit_filter").second;itor++) {
 		secondary_unit_filter_.push_back(**itor);
 	}
-	frequency_ = atoi(cfg["frequency"].c_str());	
+	frequency_ = atoi(cfg["frequency"].c_str());
 
 	for(itor = cfg.child_range("neighbour_unit_filter").first; itor <cfg.child_range("neighbour_unit_filter").second;itor++) {
 		neighbour_unit_filter_.push_back(**itor);
@@ -160,11 +160,11 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 		}
 	}
 	if(terrain_types_.empty() == false) {
-		if(t_translation::terrain_matches(disp.get_map().get_terrain(loc), terrain_types_)) {	
+		if(t_translation::terrain_matches(disp.get_map().get_terrain(loc), terrain_types_)) {
 			result ++;
 		} else {
 			return MATCH_FAIL;
-		} 
+		}
 	}
 
 	if(value_.empty() == false ) {
@@ -227,12 +227,12 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 	} else if (!unit_filter_.empty()) return MATCH_FAIL;
 	if(frequency_ && !(rand()%frequency_)) return MATCH_FAIL;
 
-	
+
 
 	return result;
 }
 
-fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg) 
+fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg)
 {
 	std::vector<std::string> hits_str = utils::split(cfg["hits"]);
 	std::vector<std::string>::iterator hit;
@@ -304,7 +304,7 @@ int fighting_animation::matches(const game_display& disp, const gamemap::locatio
 
 
 //
-//poison_animation::poison_animation(const config& cfg) :unit_animation(cfg) 
+//poison_animation::poison_animation(const config& cfg) :unit_animation(cfg)
 //{
 //	std::vector<std::string> damage_str = utils::split(cfg["damage"]);
 //	std::vector<std::string>::iterator damage;
@@ -313,7 +313,7 @@ int fighting_animation::matches(const game_display& disp, const gamemap::locatio
 //	}
 //}
 //
-//healed_animation::healed_animation(const config& cfg) :unit_animation(cfg) 
+//healed_animation::healed_animation(const config& cfg) :unit_animation(cfg)
 //{
 //	std::vector<std::string> damage_str = utils::split(cfg["healing"]);
 //	std::vector<std::string>::iterator damage;
@@ -322,7 +322,7 @@ int fighting_animation::matches(const game_display& disp, const gamemap::locatio
 //	}
 //}
 //
-//healing_animation::healing_animation(const config& cfg) :unit_animation(cfg) 
+//healing_animation::healing_animation(const config& cfg) :unit_animation(cfg)
 //{
 //	std::vector<std::string> damage_str = utils::split(cfg["damage"]);
 //	std::vector<std::string>::iterator damage;

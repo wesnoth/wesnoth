@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file network.hpp 
+//! @file network.hpp
 //!
 
 #ifndef NETWORK_HPP_INCLUDED
@@ -36,12 +36,12 @@ namespace network {
 // A network manager must be created before networking can be used.
 // It must be destroyed only after all networking activity stops.
 
-// min_threads is the maximum number we allow to wait, 
+// min_threads is the maximum number we allow to wait,
 // of more threads attempt to wait, they will die.
-// If min_threads == 0 no thread will ever be destroyed, 
+// If min_threads == 0 no thread will ever be destroyed,
 // and we will stay at the max number of threads ever needed.
 
-// max_threads is the overall max number of helper threads. 
+// max_threads is the overall max number of helper threads.
 // If we have that many threads already running, we will never create more.
 // If max_threads == 0 we will always create a thread if we need it.
 struct manager {
@@ -55,14 +55,14 @@ private:
 	void operator=(const manager&);
 };
 
-//! A server manager causes listening on a given port 
+//! A server manager causes listening on a given port
 //! to occur for the duration of its lifetime.
 struct server_manager {
 
-	//! Parameter to pass to the constructor.  
-	enum CREATE_SERVER { MUST_CREATE_SERVER, 	//!< Will throw exception on failure
-	                     TRY_CREATE_SERVER, 	//!< Will swallow failure
-	                     NO_SERVER }; 			//!< Won't try to create a server at all
+	//! Parameter to pass to the constructor.
+	enum CREATE_SERVER { MUST_CREATE_SERVER,	//!< Will throw exception on failure
+	                     TRY_CREATE_SERVER,	//!< Will swallow failure
+	                     NO_SERVER };			//!< Won't try to create a server at all
 
 	// Throws error.
 	server_manager(int port, CREATE_SERVER create_server=MUST_CREATE_SERVER);
@@ -84,54 +84,54 @@ size_t nconnections();
 //! If we are currently accepting connections.
 bool is_server();
 
-//! Function to attempt to connect to a remote host. 
+//! Function to attempt to connect to a remote host.
 //! Returns the new connection on success, or 0 on failure.
 //! Throws error.
 connection connect(const std::string& host, int port=15000);
 
 connection connect(const std::string& host, int port, threading::waiter& waiter);
 
-//! Function to accept a connection from a remote host. 
+//! Function to accept a connection from a remote host.
 //! If no host is attempting to connect, it will return 0 immediately.
 //! Otherwise returns the new connection.
 //! Throws error.
 connection accept_connection();
 
-//! Function to disconnect from a certain host, 
+//! Function to disconnect from a certain host,
 //! or close all connections if connection_num is 0.
 //! Returns true if the connection was disconnected.
 //! Returns false on failure to disconnect, since the socket is
-//! in the middle of sending/receiving data. 
+//! in the middle of sending/receiving data.
 //! The socket will be closed when it has finished its send/receive.
 bool disconnect(connection connection_num=0);
 
-//! Function to queue a disconnection. 
-//! Next time receive_data is called, it will generate an error 
-//! on the given connection (and presumably then the handling of the error 
+//! Function to queue a disconnection.
+//! Next time receive_data is called, it will generate an error
+//! on the given connection (and presumably then the handling of the error
 //! will include closing the connection).
 void queue_disconnect(connection connection_num);
 
-//! Function to receive data from either a certain connection, 
-//! or all connections if connection_num is 0. 
-//! Will store the data received in cfg. 
-//! Times out after timeout milliseconds. 
-//! Returns the connection that data was received from, 
-//! or 0 if timeout occurred. 
+//! Function to receive data from either a certain connection,
+//! or all connections if connection_num is 0.
+//! Will store the data received in cfg.
+//! Times out after timeout milliseconds.
+//! Returns the connection that data was received from,
+//! or 0 if timeout occurred.
 //! Throws error if an error occurred.
 connection receive_data(config& cfg, connection connection_num=0);
 connection receive_data(config& cfg, connection connection_num, int timeout);
 
-//! Function to send data down a given connection, 
-//! or broadcast to all peers if connection_num is 0. 
+//! Function to send data down a given connection,
+//! or broadcast to all peers if connection_num is 0.
 //! Throws error.
 void send_data(const config& cfg, connection connection_num=0);
 
-//! Function to queue data to be sent. 
+//! Function to queue data to be sent.
 //! queue_data(cfg,sock) is equivalent to send_data(cfg,sock,0,QUEUE_ONLY)
 void queue_data(const config& cfg, connection connection_num=0);
 
-//! Function to send any data that is in a connection's send_queue, 
-//! up to a maximum of 'max_size' bytes -- 
+//! Function to send any data that is in a connection's send_queue,
+//! up to a maximum of 'max_size' bytes --
 //! or the entire send queue if 'max_size' bytes is 0.
 void process_send_queue(connection connection_num=0, size_t max_size=0);
 

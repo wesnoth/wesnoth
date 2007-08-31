@@ -100,7 +100,7 @@ private:
 	void volatile_undraw();
 
 	void hide_override(bool value = true);
-	
+
 	CVideo* video_;
 	std::vector< surface_restorer > restorer_;
 	SDL_Rect rect_;

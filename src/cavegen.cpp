@@ -23,10 +23,10 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation::CAVE_WALL), 
-	clear_(t_translation::CAVE), village_(t_translation::UNDERGROUND_VILLAGE), 
-    castle_(t_translation::DWARVEN_CASTLE), keep_(t_translation::DWARVEN_KEEP), 
-	cfg_(cfg), width_(50), height_(50), 
+cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation::CAVE_WALL),
+	clear_(t_translation::CAVE), village_(t_translation::UNDERGROUND_VILLAGE),
+    castle_(t_translation::DWARVEN_CASTLE), keep_(t_translation::DWARVEN_KEEP),
+	cfg_(cfg), width_(50), height_(50),
 	village_density_(0), flipx_(false), flipy_(false)
 {
 	if(cfg_ == NULL) {
@@ -101,7 +101,7 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	LOG_NG << "outputting map....\n";
 
 	res_["map_data"] = t_translation::write_game_map(map_, starting_positions_);
-		
+
 	LOG_NG << "returning result...\n";
 
 	return res_;
@@ -280,8 +280,8 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 
 struct passage_path_calculator : cost_calculator
 {
-	passage_path_calculator(const t_translation::t_map& mapdata, 
-	t_translation::t_letter wall, double laziness, size_t windiness): 
+	passage_path_calculator(const t_translation::t_map& mapdata,
+	t_translation::t_letter wall, double laziness, size_t windiness):
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 
@@ -341,7 +341,7 @@ void cave_map_generator::place_passage(const passage& p)
 void cave_map_generator::set_terrain(gamemap::location loc, t_translation::t_letter t)
 {
 	if(on_board(loc)) {
-		if(t == clear_ && 
+		if(t == clear_ &&
                 (rand() % 1000) < static_cast<long>(village_density_)) {
 
 			t = village_;
@@ -361,7 +361,7 @@ void cave_map_generator::place_castle(const std::string& side, gamemap::location
 		set_terrain(loc, keep_);
 
 		const struct t_translation::coordinate coord = {loc.x, loc.y};
-		starting_positions_[starting_position] = coord; 
+		starting_positions_[starting_position] = coord;
 	}
 
 	gamemap::location adj[6];

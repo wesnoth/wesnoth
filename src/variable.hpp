@@ -125,7 +125,7 @@ public:
 	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
 	            TYPE_UNSPECIFIED };
 
-	variable_info(const std::string& varname, bool force_valid=true, 
+	variable_info(const std::string& varname, bool force_valid=true,
 		TYPE validation_type=TYPE_UNSPECIFIED);
 
 	TYPE vartype; //default is TYPE_UNSPECIFIED

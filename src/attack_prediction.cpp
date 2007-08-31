@@ -13,11 +13,11 @@
 
    Full algorithm by Yogin.  Typing and optimization by Rusty.
 
-   This code has lots of debugging.  It is there for a reason: 
+   This code has lots of debugging.  It is there for a reason:
    this code is kinda tricky.  Do not remove it.
 */
 
-//! @file attack_prediction.cpp 
+//! @file attack_prediction.cpp
 //! Simulate combat to calculate attacks. Standalone program, benchmark.
 
 #include "attack_prediction.hpp"
@@ -27,8 +27,8 @@
 
 #include "wassert.hpp"
 
-// Compile with -O3 -DBENCHMARK for speed testing, 
-// -DCHECK for testing correctness 
+// Compile with -O3 -DBENCHMARK for speed testing,
+// -DCHECK for testing correctness
 // (run tools/wesnoth-attack-sim.c --check on output)
 #if !defined(BENCHMARK) && !defined(CHECK)
 #include "util.hpp"
@@ -320,7 +320,7 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src,
 	}
 }
 
-// Shift prob_matrix to reflect probability 'hit_chance' 
+// Shift prob_matrix to reflect probability 'hit_chance'
 // that damage (up to) 'damage' is done to 'b'.
 void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool a_slows, bool a_drains)
@@ -446,7 +446,7 @@ double prob_matrix::dead_prob() const
 	return prob;
 }
 
-// Shift matrix to reflect probability 'hit_chance' 
+// Shift matrix to reflect probability 'hit_chance'
 // that damage (up to) 'damage' is done to 'a'.
 void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
 								 bool b_slows, bool b_drains)
@@ -527,8 +527,8 @@ combatant::combatant(const combatant &that, const battle_context::unit_stats &u)
 
 
 
-// For swarm, whether we get an attack depends on HP distribution 
-// from previous combat.  So we roll this into our P(hitting), 
+// For swarm, whether we get an attack depends on HP distribution
+// from previous combat.  So we roll this into our P(hitting),
 // since no attack is equivalent to missing.
 void combatant::adjust_hitchance()
 {
@@ -551,7 +551,7 @@ void combatant::adjust_hitchance()
 		}
 		if (!summary[1].empty())
 			prob += summary[1][i];
-		for (unsigned int j = 0; j < u_.swarm_min + (u_.swarm_max - 
+		for (unsigned int j = 0; j < u_.swarm_min + (u_.swarm_max -
                 static_cast<double>(u_.swarm_min)) * u_.hp / u_.max_hp; j++)
 
 			hit_chances_[j] += prob * u_.chance_to_hit / 100.0 / alive_prob;
@@ -719,8 +719,8 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 }
 
 // Two man enter.  One man leave!
-// ... Or maybe two.  But definitely not three.  
-// Of course, one could be a woman.  Or both.  
+// ... Or maybe two.  But definitely not three.
+// Of course, one could be a woman.  Or both.
 // And neither could be human, too.
 // Um, ok, it was a stupid thing to say.
 void combatant::fight(combatant &opp)
@@ -799,8 +799,8 @@ void combatant::fight(combatant &opp)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
 	}
 
-	// Make sure we don't try to access the vectors out of bounds, 
-	// drain increases HPs so we determine the number of HP here 
+	// Make sure we don't try to access the vectors out of bounds,
+	// drain increases HPs so we determine the number of HP here
 	// and make sure it stays within bounds
 	const unsigned int hp = minimum<unsigned int>(u_.hp, hp_dist.size() - 1);
 	const unsigned int opp_hp = minimum<unsigned int>(opp.u_.hp, opp.hp_dist.size() - 1);
@@ -835,7 +835,7 @@ double combatant::average_hp(unsigned int healing) const
 }
 
 #if defined(BENCHMARK) || defined(CHECK)
-// We create a significant number of nasty-to-calculate units, 
+// We create a significant number of nasty-to-calculate units,
 // and test each one against the others.
 #define NUM_UNITS 50
 
@@ -906,7 +906,7 @@ static void run(unsigned specific_battle)
 				if (specific_battle && battle != specific_battle)
 					continue;
 				u[j]->fight(*u[i]);
-				// We need this here, because swarm means 
+				// We need this here, because swarm means
 				// out num hits can change.
 				u[i]->set_effectiveness((i % 7) + 2, 0.3 + (i % 6)*0.1,
 										(i % 8) == 0);

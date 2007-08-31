@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file marked-up_text.cpp 
+//! @file marked-up_text.cpp
 //! Support for simple markup in text (fonts, colors, images).
 //! E.g. "@Victory" will be shown in green.
 
@@ -26,19 +26,19 @@
 
 namespace font {
 
-const char LARGE_TEXT='*', SMALL_TEXT='`', 
-		   BOLD_TEXT='~',  NORMAL_TEXT='{', 
-		   NULL_MARKUP='^', 
+const char LARGE_TEXT='*', SMALL_TEXT='`',
+		   BOLD_TEXT='~',  NORMAL_TEXT='{',
+		   NULL_MARKUP='^',
 		   BLACK_TEXT='}', GRAY_TEXT='|',
            GOOD_TEXT='@',  BAD_TEXT='#',
            GREEN_TEXT='@', RED_TEXT='#',
            COLOR_TEXT='<', IMAGE='&';
 
 //! Parses the markup-tags at the front of a string.
-static std::string::const_iterator parse_markup(std::string::const_iterator i1, 
-												std::string::const_iterator i2, 
-												int* font_size, 
-												SDL_Color* colour, int* style) 
+static std::string::const_iterator parse_markup(std::string::const_iterator i1,
+												std::string::const_iterator i2,
+												int* font_size,
+												SDL_Color* colour, int* style)
 {
 	if(font_size == NULL || colour == NULL) {
 		return i1;
@@ -154,7 +154,7 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
-	// Make sure there's always at least a space, 
+	// Make sure there's always at least a space,
 	// so we can ensure that we can return a rectangle for height
 	static const std::string blank_text(" ");
 	const std::string& text = txt.empty() ? blank_text : txt;
@@ -303,7 +303,7 @@ inline bool break_after(wchar_t ch)
 		(ch >= 0xff00 && ch < 0xfff0);
 }
 
-} // end of anon namespace 
+} // end of anon namespace
 
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines)
 {
@@ -328,7 +328,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 		if(start_of_line) {
 			line_width = 0;
 			format_string = "";
-			while(ch != end && *ch < static_cast<wchar_t>(0x100) 
+			while(ch != end && *ch < static_cast<wchar_t>(0x100)
 					&& is_format_char(*ch) && !ch.next_is_end()) {
 
 				format_string.append(ch.substr().first, ch.substr().second);
@@ -384,7 +384,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 
 			if(static_cast<long>(line_width) > max_width) {
 				if(static_cast<long>(word_width) > max_width) {
-					cut_word(current_line, 
+					cut_word(current_line,
 						current_word, font_sz, style, max_width);
 				}
 				if(current_word == " ")

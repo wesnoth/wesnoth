@@ -22,14 +22,14 @@ class CVideo;
 namespace font {
 
 // Standard markups
-extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT, 
+extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT,
                   GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, YELLOW_TEXT, IMAGE;
 
 
 //Function to draw text on the screen. The text will be clipped to area.
 //If the text runs outside of area horizontally, an ellipsis will be displayed
 //at the end of it.
-//If use_tooltips is true, then text with an ellipsis will have a tooltip 
+//If use_tooltips is true, then text with an ellipsis will have a tooltip
 //set for it equivalent to the entire contents of the text.
 //
 //Some very basic 'markup' will be done on the text:
@@ -51,7 +51,7 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
 // Function which returns the size of text if it were to be drawn.
 SDL_Rect text_area(const std::string& text, int size, int style=0);
 
-// Copy string but without tags at the begining 
+// Copy string but without tags at the begining
 std::string del_tags(const std::string& text);
 
 bool is_format_char(char c);

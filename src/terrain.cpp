@@ -27,14 +27,14 @@
 #include <iostream>
 
 
-terrain_type::terrain_type() : 
+terrain_type::terrain_type() :
 		minimap_image_("void"), editor_image_("void"),
 		number_(t_translation::VOID_TERRAIN),
 		mvt_type_(1, t_translation::VOID_TERRAIN),
 		def_type_(1, t_translation::VOID_TERRAIN),
 		union_type_(1, t_translation::VOID_TERRAIN),
         height_adjust_(0), submerge_(0.0), light_modification_(0),
-        heals_(0), village_(false), castle_(false), keep_(false) 
+        heals_(0), village_(false), castle_(false), keep_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -72,7 +72,7 @@ terrain_type::terrain_type(const config& cfg)
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
 
 	// remove + and -
-	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(), 
+	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
 				t_translation::MINUS), union_type_.end());
 
 	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
@@ -118,7 +118,7 @@ terrain_type::terrain_type(const config& cfg)
 		}
 	}
 
-	editor_group_ = cfg["editor_group"]; 
+	editor_group_ = cfg["editor_group"];
 }
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
@@ -127,8 +127,8 @@ void create_terrain_maps(const std::vector<config*>& cfgs,
 {
 	for(std::vector<config*>::const_iterator i = cfgs.begin();
 	    i != cfgs.end(); ++i) {
-		terrain_type terrain(**i); 
-		terrain_list.push_back(terrain.number()); 
+		terrain_type terrain(**i);
+		terrain_list.push_back(terrain.number());
 		letter_to_terrain.insert(std::pair<t_translation::t_letter, terrain_type>(
 		                              terrain.number(),terrain));
 	}

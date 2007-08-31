@@ -43,7 +43,7 @@ namespace dfool {
 //     config terrain_filter_;
 //     std::string hex_val_;
 //     std::string number;
-//     std::string id;    
+//     std::string id;
 //   };
 
   class unit_memory{
@@ -54,8 +54,8 @@ namespace dfool {
     //void purge(int turn = -1); // Clean outdated entries
     void write(config& temp);
     // Create a map based upon units seen since turn
-    void known_map(unit_map& units, size_t turn=0); 
-  private: 
+    void known_map(unit_map& units, size_t turn=0);
+  private:
     void write_element(int i, config& temp);
     // Could replace these with a single vector of memory elements
     std::vector<unit> units_;
@@ -92,7 +92,7 @@ namespace dfool {
     std::string evaluate_tokens(std::list<std::string>&);
   };
 
-  //! An ai that keeps track of what it has "seen", 
+  //! An ai that keeps track of what it has "seen",
   //! does not target units that it has not "seen",
   //! and does not make decisions based on unseen units.
   class dfool_ai : public ai_interface {

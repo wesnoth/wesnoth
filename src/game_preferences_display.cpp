@@ -99,29 +99,29 @@ private:
 	void set_friends_menu();
 	std::vector<std::string> friends_names_;
 
-//	
+//
 	// change
 	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_, scroll_slider_,
 				gamma_slider_, chat_lines_slider_, buffer_size_slider_;
 	gui::list_slider<double> turbo_slider_;
-	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_, 
-	  		show_grid_button_, save_replays_button_, delete_autosaves_button_,
-			show_lobby_joins_button1_, 
-			show_lobby_joins_button2_, 
-			show_lobby_joins_button3_, 
-			sort_list_by_group_button_, iconize_list_button_, 
-			friends_list_button_, friends_back_button_, 
+	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
+			show_grid_button_, save_replays_button_, delete_autosaves_button_,
+			show_lobby_joins_button1_,
+			show_lobby_joins_button2_,
+			show_lobby_joins_button3_,
+			sort_list_by_group_button_, iconize_list_button_,
+			friends_list_button_, friends_back_button_,
 			friends_add_friend_button_, friends_add_ignore_button_,
-			friends_remove_button_, show_floating_labels_button_, 
-			turn_dialog_button_, turn_bell_button_, 
+			friends_remove_button_, show_floating_labels_button_,
+			turn_dialog_button_, turn_bell_button_,
 			show_team_colours_button_, show_colour_cursors_button_,
-			show_haloing_button_, video_mode_button_, 
+			show_haloing_button_, video_mode_button_,
 			theme_button_, hotkeys_button_, gamma_button_,
-			flip_time_button_, advanced_button_, sound_button_, 
+			flip_time_button_, advanced_button_, sound_button_,
 			music_button_, chat_timestamp_button_,
-			advanced_sound_button_, normal_sound_button_, 
-			UI_sound_button_, sample_rate_button1_, 
-			sample_rate_button2_, sample_rate_button3_, 
+			advanced_sound_button_, normal_sound_button_,
+			UI_sound_button_, sample_rate_button1_,
+			sample_rate_button2_, sample_rate_button3_,
 			confirm_sound_button_;
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_, scroll_label_,
 				gamma_label_, chat_lines_label_, turbo_slider_label_,
@@ -149,7 +149,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  music_slider_(disp.video()), sound_slider_(disp.video()), UI_sound_slider_(disp.video()),
 	  bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()), chat_lines_slider_(disp.video()),
-	  buffer_size_slider_(disp.video()), turbo_slider_(disp.video()), 
+	  buffer_size_slider_(disp.video()), turbo_slider_(disp.video()),
 
 	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
@@ -203,7 +203,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  slider_label_width_(0),
 	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
 	  friends_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
-	  
+
 	  advanced_selection_(-1),
 	  friends_selection_(-1),
 
@@ -296,8 +296,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	turbo_button_.set_check(turbo());
 	turbo_button_.set_help_string(_("Make units move and fight faster"));
-	
-	//0.25 0.5 1 2 4 8 16 
+
+	//0.25 0.5 1 2 4 8 16
 	std::vector< double > turbo_items;
 	turbo_items.push_back(0.25);
 	turbo_items.push_back(0.5);
@@ -335,7 +335,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_lobby_joins_button2_.set_help_string(_("Show messages about your friends joining the multiplayer lobby"));
 	show_lobby_joins_button3_.set_check(lobby_joins() == SHOW_ALL);
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
-	
+
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
 	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
@@ -403,7 +403,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&friends_add_friend_button_);
 	h.push_back(&friends_add_ignore_button_);
 	h.push_back(&friends_remove_button_);
- 	h.push_back(&friends_input_);		
+	h.push_back(&friends_input_);
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
 	h.push_back(&turn_bell_button_);
@@ -574,33 +574,33 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
 	ypos += item_interline; sort_list_by_group_button_.set_location(rect.x, ypos);
 	ypos += item_interline; iconize_list_button_.set_location(rect.x, ypos);
-	
+
 	ypos += item_interline; show_lobby_joins_button1_.set_location(rect.x, ypos);
 	ypos += short_interline; show_lobby_joins_button2_.set_location(rect.x, ypos);
 	ypos += short_interline; show_lobby_joins_button3_.set_location(rect.x, ypos);
-	
+
 	friends_list_button_.set_location(rect.x, bottom_row_y - friends_list_button_.height());
 
 	//Friends tab
 	ypos = rect.y + top_border;
 	friends_input_.set_location(rect.x,ypos);
-	
+
 	friends_.set_location(rect.x,ypos + item_interline);
 	friends_.set_max_height(height() - 100 - friends_back_button_.height());
-	
+
 	int friends_xpos;
-	
+
 	if (friends_.width() > friends_input_.width()) {
 		friends_xpos = rect.x+  friends_.width() + 20;
 	} else {
 		friends_xpos = rect.x+  friends_input_.width() + 20;
 	}
-	
+
 	friends_add_friend_button_.set_location(friends_xpos,ypos);
 	ypos += short_interline+3; friends_add_ignore_button_.set_location(friends_xpos,ypos);
 	ypos += short_interline+3; friends_remove_button_.set_location(friends_xpos,ypos);
 	friends_back_button_.set_location(rect.x, bottom_row_y - friends_back_button_.height());
-	
+
 	//Advanced tab
 	ypos = rect.y + top_border;
 	advanced_.set_location(rect.x,ypos);
@@ -812,8 +812,8 @@ void preferences_dialog::process_event()
 	}
 
 	if (tab_ == FRIENDS_TAB) {
- 		if(friends_.selection() != friends_selection_) {
- 			friends_selection_ = friends_.selection();
+		if(friends_.selection() != friends_selection_) {
+			friends_selection_ = friends_.selection();
 			std::stringstream ss;
 			ss << friends_names_[friends_.selection()];
 			if (ss.str() != "(empty list)") friends_input_.set_text(ss.str());
@@ -826,7 +826,7 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-          		friends_input_.set_text("Invalid username");
+		friends_input_.set_text("Invalid username");
             }
         }
 		if (friends_add_ignore_button_.pressed()) {
@@ -834,7 +834,7 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-          		friends_input_.set_text("Invalid username");
+		friends_input_.set_text("Invalid username");
             }
         }
 		if (friends_remove_button_.pressed()) {
@@ -842,11 +842,11 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-          		friends_input_.set_text("Invalid username");
+		friends_input_.set_text("Invalid username");
             }
         }
 		return;
-	} 
+	}
 
 	if (tab_ == ADVANCED_TAB) {
 		if(advanced_.selection() != advanced_selection_) {
@@ -1024,7 +1024,7 @@ void preferences_dialog::set_selection(int index)
 	show_lobby_joins_button2_.hide(hide_multiplayer);
 	show_lobby_joins_button3_.hide(hide_multiplayer);
 	friends_list_button_.hide(hide_multiplayer);
-	
+
 	const bool hide_friends = tab_ != FRIENDS_TAB;
 	friends_.hide(hide_friends);
 	friends_back_button_.hide(hide_friends);

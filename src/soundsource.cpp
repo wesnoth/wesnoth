@@ -111,7 +111,7 @@ void manager::add_location(const std::string &id, const gamemap::location &loc)
 
 
 manager::positional_source::positional_source(const std::string &files, int min_delay, int chance, bool play_fogged)
-						: _last_played(0), _min_delay(min_delay), _chance(chance), 
+						: _last_played(0), _min_delay(min_delay), _chance(chance),
 							_id(last_id++), _play_fogged(play_fogged), _visible(false),
 							_files(files)
 {
@@ -127,7 +127,7 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 
 
 	if(i <= _chance) {
-		// If no locations have been specified, treat the source as if 
+		// If no locations have been specified, treat the source as if
 		// it was present everywhere on the map
 		if(_locations.size() == 0) {
 			sound::play_sound_positioned(_files, last_id, 0);	// max volume
@@ -141,7 +141,7 @@ void manager::positional_source::update(unsigned int time, const display &disp)
 			int locx = disp.get_location_x(*i);
 			int locy = disp.get_location_y(*i);
 /*
-			if(disp.outside_area(area, locx, locy) || disp.shrouded((*i).x, (*i).y) 
+			if(disp.outside_area(area, locx, locy) || disp.shrouded((*i).x, (*i).y)
 				|| (!_play_fogged && disp.fogged((*i).x, (*i).y)))
 					continue;
 			else {*/
@@ -168,7 +168,7 @@ void manager::positional_source::update_positions(unsigned int time, const displ
 		int locx = disp.get_location_x(*i);
 		int locy = disp.get_location_y(*i);
 
-		if(disp.outside_area(area, locx, locy) || disp.shrouded(*i) 
+		if(disp.outside_area(area, locx, locy) || disp.shrouded(*i)
 			|| (!_play_fogged && disp.fogged(*i)))
 				continue;
 		else {

@@ -35,14 +35,14 @@ bool is_invalid_terrain(t_translation::t_letter c) {
 }
 
 terrain_group::terrain_group(const config& cfg, display& gui):
-	id(cfg["id"]), name(cfg["name"]), 
+	id(cfg["id"]), name(cfg["name"]),
 	button(gui.video(), "", gui::button::TYPE_CHECK, cfg["icon"])
 {
 }
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 								 const gamemap &map, const config& cfg)
-	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0), 
+	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0),
 	  checked_group_btn_(0), map_(map),
 	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
 	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
@@ -72,19 +72,19 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	t_translation::t_list::const_iterator t_itor = terrains_.begin();
 	for(; t_itor != terrains_.end(); ++t_itor) {
 		// add the terrain to the requested groups
-		const std::vector<std::string>& key = 
+		const std::vector<std::string>& key =
 			utils::split(map_.get_terrain_info(*t_itor).editor_group());
-		
-		for(std::vector<std::string>::const_iterator k_itor = key.begin(); 
+
+		for(std::vector<std::string>::const_iterator k_itor = key.begin();
 				k_itor != key.end(); ++k_itor)
 		 {
 			terrain_map_[*k_itor].push_back(*t_itor);
 		}
-		
+
 		// add the terrain to the default group
 		terrain_map_["all"].push_back(*t_itor);
 	}
-	
+
 	// set the default group
 	terrains_ = terrain_map_["all"];
 
@@ -127,8 +127,8 @@ void terrain_palette::adjust_size() {
 	rect.y = terrain_start_;
 	rect.h = space_for_terrains;
 	bg_register(rect);
-	const unsigned terrains_fitting = 
-		static_cast<unsigned> (space_for_terrains / size_specs_.terrain_space) * 
+	const unsigned terrains_fitting =
+		static_cast<unsigned> (space_for_terrains / size_specs_.terrain_space) *
 		size_specs_.terrain_width;
 	const unsigned total_terrains = num_terrains();
 	nterrains_ = minimum<int>(terrains_fitting, total_terrains);
@@ -148,7 +148,7 @@ void terrain_palette::adjust_size() {
 			left += group_button_height + group_button_padding;
 		}
 	}
-	
+
 	set_dirty();
 }
 
@@ -211,17 +211,17 @@ void terrain_palette::set_group(const std::string& id)
 	scroll_top();
 }
 
-t_translation::t_letter terrain_palette::selected_fg_terrain() const 
+t_translation::t_letter terrain_palette::selected_fg_terrain() const
 {
 	return selected_fg_terrain_;
 }
 
-t_translation::t_letter terrain_palette::selected_bg_terrain() const 
+t_translation::t_letter terrain_palette::selected_bg_terrain() const
 {
 	return selected_bg_terrain_;
 }
 
-void terrain_palette::select_fg_terrain(t_translation::t_letter terrain) 
+void terrain_palette::select_fg_terrain(t_translation::t_letter terrain)
 {
 	if (selected_fg_terrain_ != terrain) {
 		set_dirty();
@@ -230,7 +230,7 @@ void terrain_palette::select_fg_terrain(t_translation::t_letter terrain)
 	}
 }
 
-void terrain_palette::select_bg_terrain(t_translation::t_letter terrain) 
+void terrain_palette::select_bg_terrain(t_translation::t_letter terrain)
 {
 	if (selected_bg_terrain_ != terrain) {
 		set_dirty();
@@ -242,13 +242,13 @@ void terrain_palette::select_bg_terrain(t_translation::t_letter terrain)
 /**
  * After the language is changed, the selected terrains needs an update.
  */
-void terrain_palette::update_selected_terrains(void) 
+void terrain_palette::update_selected_terrains(void)
 {
 	set_dirty();
 	update_report();
 }
 
-std::string terrain_palette::get_terrain_string(const t_translation::t_letter t) 
+std::string terrain_palette::get_terrain_string(const t_translation::t_letter t)
 {
 	std::stringstream str;
 	const std::string& name = map_.get_terrain_info(t).name();
@@ -374,10 +374,10 @@ void terrain_palette::draw(bool force) {
 			return;
 		}
 
-		if(static_cast<unsigned>(image->w) != size_specs_.terrain_size || 
+		if(static_cast<unsigned>(image->w) != size_specs_.terrain_size ||
 			static_cast<unsigned>(image->h) != size_specs_.terrain_size) {
 
-			image.assign(scale_surface(image, 
+			image.assign(scale_surface(image,
 				size_specs_.terrain_size, size_specs_.terrain_size));
 		}
 
@@ -533,7 +533,7 @@ void brush_bar::draw(bool force) {
 			std::cerr << "Image " << filename.str() << " not found." << std::endl;
 			continue;
 		}
-		if (static_cast<unsigned>(image->w) != size_ || 
+		if (static_cast<unsigned>(image->w) != size_ ||
 				static_cast<unsigned>(image->h) != size_) {
 
 			image.assign(scale_surface(image, size_, size_));
@@ -558,7 +558,7 @@ int brush_bar::selected_index(const int x, const int y) const {
 	const int bar_x = size_specs_.brush_x;
 	const int bar_y = size_specs_.brush_y;
 
-	if ((x < bar_x || static_cast<unsigned>(x) > bar_x + size_ * total_brush_ + 
+	if ((x < bar_x || static_cast<unsigned>(x) > bar_x + size_ * total_brush_ +
 			total_brush_ * size_specs_.brush_padding) ||
 		    (y < bar_y || static_cast<unsigned>(y) > bar_y + size_)) {
 
@@ -568,7 +568,7 @@ int brush_bar::selected_index(const int x, const int y) const {
 	for(int i = 0; i < total_brush_; i++) {
 		const int px = bar_x + size_ * i + i * size_specs_.brush_padding;
 
-		if(x >= px && static_cast<unsigned>(x) <= px + size_ && 
+		if(x >= px && static_cast<unsigned>(x) <= px + size_ &&
 				y >= bar_y && static_cast<unsigned>(y) <= bar_y + size_) {
 
 			return i;

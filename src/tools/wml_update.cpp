@@ -15,7 +15,7 @@
  * Version 1.2
  * Update 1
 */
- 
+
 //! @file tools/wml_update.cpp
 //! Standalone-Utility to update the WML-syntax from 1.0 to 1.1.2, and 1.1.2 to 1.2.
 //! See also: data/tools/wmllint
@@ -348,8 +348,8 @@ void output_level(Level& l,std::ofstream& outfile,int tabs,bool comments)
 	}
 }
 
-// Make sure that we can use Mac, DOS, or Unix style text files 
-// on any system and they will work, by making sure 
+// Make sure that we can use Mac, DOS, or Unix style text files
+// on any system and they will work, by making sure
 // the definition of whitespace is consistent
 bool portable_isspace(char c)
 {
@@ -359,7 +359,7 @@ bool portable_isspace(char c)
 	return isnewline(c) || isspace(c);
 }
 
-// Make sure we regard '\r' and '\n' as a space, since Mac, Unix, 
+// Make sure we regard '\r' and '\n' as a space, since Mac, Unix,
 // and DOS all consider these differently.
 bool notspace(char c)
 {
@@ -367,7 +367,7 @@ bool notspace(char c)
 }
 std::string &strip(std::string &str,bool always)
 {
-	// If all the string contains is whitespace, 
+	// If all the string contains is whitespace,
 	// then the whitespace may have meaning, so don't strip it
 	std::string::iterator it = std::find_if(str.begin(), str.end(), notspace);
 	if (it == str.end() && !always)

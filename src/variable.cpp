@@ -14,7 +14,7 @@
    See the COPYING file for more details.
 */
 
-//! @file variable.cpp 
+//! @file variable.cpp
 //! Manage WML-variables.
 
 #include "global.hpp"
@@ -31,7 +31,7 @@
 
 namespace
 {
-	//! @todo FIXME: the variable repository should be 
+	//! @todo FIXME: the variable repository should be
 	// a class of variable.hpp, and not the game_state.
 	game_state* repos = NULL;
 }
@@ -174,7 +174,7 @@ void scoped_recall_unit::activate()
 			tmp_cfg["y"] = "recall";
 			store(tmp_cfg);
 		} else {
-			ERR_NG << "failed to auto-store $" << name() << " for player: " << player_ 
+			ERR_NG << "failed to auto-store $" << name() << " for player: " << player_
 				<< " at recall index: " << recall_index_ << '\n';
 		}
 	} else {
@@ -209,7 +209,7 @@ void activate_scope_variable(std::string var_name)
 }
 } // end anonymous namespace
 
-variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type) 
+variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type)
 	: vartype(validation_type), is_valid(false), explicit_index(false), index(0), vars(NULL)
 {
 	wassert(repos != NULL);
@@ -353,7 +353,7 @@ config& variable_info::as_container() {
 	if(explicit_index) {
 		// Empty data for explicit index was already created if it was needed
 		return *vars->get_children(key)[index];
-	} 
+	}
 	config *temp = vars->child(key);
 	if(temp) {
 		// The container exists, index not specified, return index 0

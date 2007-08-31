@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_frame.hpp 
+//! @file unit_frame.hpp
 //! Frame for unit's animation sequence.
 
 #ifndef UNIT_FRAME_H_INCLUDED
@@ -54,7 +54,7 @@ typedef progressive_<int> progressive_int;
 typedef progressive_<double> progressive_double;
 
 #endif
-// This hack prevents MSVC++ 6 to issue several warnings 
+// This hack prevents MSVC++ 6 to issue several warnings
 #ifndef UNIT_FRAME_H_PART2
 #define UNIT_FRAME_H_PART2
 
@@ -72,7 +72,7 @@ class unit_frame {
 		explicit unit_frame(const config& cfg);
 		image::locator image() const { return image_ ;}
 		image::locator image_diagonal() const { return image_diagonal_ ; }
-		const std::string &halo(int current_time) const  
+		const std::string &halo(int current_time) const
 			{ return halo_.get_current_element(current_time); }
 
 		std::string sound() const { return sound_ ; };

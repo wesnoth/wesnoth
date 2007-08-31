@@ -129,7 +129,7 @@ namespace gui{
 				semiword.assign(text,last_space+1,text.size());
 			}
 
-			std::set<std::string> 		matches;
+			std::set<std::string>		matches;
 			std::string best_match = semiword;
 
 			for(size_t n = 0; n != teams.size(); ++n) {
@@ -154,7 +154,7 @@ namespace gui{
 					matches.insert(name);
 				}
 			}
-			
+
 			// Searching in observers list
 			const std::set<std::string>& observers = gui.observers();
 			for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {

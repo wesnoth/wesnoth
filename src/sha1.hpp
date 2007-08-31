@@ -26,7 +26,7 @@ public:
 private:
 	void next(Uint8 block[64]);
 	Uint32 H0, H1, H2, H3, H4;
-	
+
 };
 
 #endif

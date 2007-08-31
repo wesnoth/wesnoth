@@ -480,7 +480,7 @@ void replay::undo()
 			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
-				if ((async_child = (***async_cmd).child("rename")) != NULL) 
+				if ((async_child = (***async_cmd).child("rename")) != NULL)
 				{
 					gamemap::location aloc(*async_child, game_events::get_state_of_game());
 					if (dst == aloc)
@@ -498,7 +498,7 @@ void replay::undo()
 			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
-				if ((async_child = (***async_cmd).child("rename")) != NULL) 
+				if ((async_child = (***async_cmd).child("rename")) != NULL)
 				{
 					gamemap::location aloc(*async_child, game_events::get_state_of_game());
 					if (src == aloc)
@@ -732,11 +732,11 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				|| is_observer() && team_name == "observer") {
 				bool is_lobby_join = (speaker_name == "server"
 							&& (*child)["message"].value().find("has logged into the lobby") != std::string::npos);
-					    				std::string str = (*child)["message"];
-	    		std::string buf;
-	    		std::stringstream ss(str);
-	    		ss >> buf;
-	    		if (!preferences::get_prefs()->child("relationship")){
+									std::string str = (*child)["message"];
+			std::string buf;
+			std::stringstream ss(str);
+			ss >> buf;
+			if (!preferences::get_prefs()->child("relationship")){
 					preferences::get_prefs()->add_child("relationship");
 				}
 				config* cignore;
@@ -744,8 +744,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				bool is_lobby_join_of_friend = ((*cignore)[buf] == "friend");
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
 				if((!replayer.is_skipping() || is_whisper) &&
-                (!is_lobby_join || 
-				 		((is_lobby_join && preferences::lobby_joins() == preferences::SHOW_ALL) || 
+                (!is_lobby_join ||
+						((is_lobby_join && preferences::lobby_joins() == preferences::SHOW_ALL) ||
 						(is_lobby_join_of_friend && preferences::lobby_joins() == preferences::SHOW_FRIENDS)))) {
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
 					disp.add_chat_message(speaker_name,side,(*child)["message"],
@@ -755,14 +755,14 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 		} else if((child = cfg->child("label")) != NULL) {
 
 			terrain_label label(disp.labels(),*child, game_events::get_state_of_game());
-			
+
 			disp.labels().set_label(label.location(),
 						label.text(),
 						label.team_name(),
 						label.colour());
-		
+
 		} else if((child = cfg->child("clear_labels")) != NULL) {
-			
+
 			disp.labels().clear(std::string((*child)["team_name"]));
 		}
 
@@ -896,8 +896,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			const int tval = lexical_cast_default<int>(tnum,-1);
 			if ( (tval<0)  || (static_cast<size_t>(tval) > teams.size()) ) {
 				std::stringstream errbuf;
-				errbuf << "Illegal countdown update \n" 
-					<< "Received update for :" << tval << " Current user :" 
+				errbuf << "Illegal countdown update \n"
+					<< "Received update for :" << tval << " Current user :"
 					<< team_num << "\n" << " Updated value :" << val;
 
 				replay::throw_error(errbuf.str());
@@ -968,11 +968,11 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			std::pair<gamemap::location,unit> *up = units.extract(u->first);
 			up->first = dst;
 			units.add(up);
-			if (up->first == up->second.get_goto()) 
-			{ 
-				//if unit has arrived to destination, goto variable is cleaned 
-				up->second.set_goto(gamemap::location()); 
-			} 
+			if (up->first == up->second.get_goto())
+			{
+				//if unit has arrived to destination, goto variable is cleaned
+				up->second.set_goto(gamemap::location());
+			}
 			up->second.set_standing(disp,up->first);
 			u = units.find(dst);
 			check_checksums(disp,units,*cfg);
@@ -1047,7 +1047,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error(errbuf.str());
 			}
 
-			if(def_weapon_num >= 
+			if(def_weapon_num >=
 					static_cast<int>(tgt->second.attacks().size())) {
 
 				replay::throw_error("illegal defender weapon type in attack\n");

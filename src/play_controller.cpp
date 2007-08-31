@@ -39,7 +39,7 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	map_(game_config, level["map_data"]), ticks_(ticks),
 	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
 	loading_game_(level["playing_team"].empty() == false),
-	first_human_team_(-1), player_number_(1), 
+	first_human_team_(-1), player_number_(1),
 	first_player_ (lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1),
 	start_turn_(status_.turn()), skip_replay_(skip_replay), browse_(false), linger_(false), scrolling_(false)
 {
@@ -124,7 +124,7 @@ void play_controller::init_managers(){
 
 	//this *needs* to be created before the show_intro and show_map_scene
 	//as that functions use the manager state_of_game
-	events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_, 
+	events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
                                                    units_,teams_, gamestate_,status_,gameinfo_);
 
 	halo_manager_ = new halo::manager(*gui_);
@@ -135,7 +135,7 @@ static int placing_score(const config& side, const gamemap& map, const gamemap::
 {
 	int positions = 0, liked = 0;
 	const t_translation::t_list terrain = t_translation::read_list(side["terrain_liked"]);
-	
+
 	for(int i = pos.x-8; i != pos.x+8; ++i) {
 		for(int j = pos.y-8; j != pos.y+8; ++j) {
 			const gamemap::location pos(i,j);
@@ -315,12 +315,12 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	gamestate_.set_variable("side_number",player_number_str.str());
 	gamestate_.last_selected = gamemap::location::null_location;
 
-	/*  
-		normally, events must not be actively fired through replays, because they have been 
+	/*
+		normally, events must not be actively fired through replays, because they have been
 		recorded previously and therefore will get executed anyway. Firing them in the normal
 		code would lead to double execution.
-		However, the following events are different in that they need to be executed _now_ 
-		(before calculation of income and healing) or we will risk OOS errors if we manipulate 
+		However, the following events are different in that they need to be executed _now_
+		(before calculation of income and healing) or we will risk OOS errors if we manipulate
 		these informations inside the events and in the replay have a different order of execution.
 	*/
 	if(first_turn_) {
@@ -718,7 +718,7 @@ void play_controller::play_slice()
 	if (!scrolling_) {
 		if (was_scrolling) {
 			// scrolling ended, update the cursor and the brightened hex
-			mouse_handler_.mouse_update(browse_);	
+			mouse_handler_.mouse_update(browse_);
 		}
 		gui_->delay(20);
 	}
@@ -797,9 +797,9 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				&& newitems.size() < MAX_WML_COMMANDS; ++itor) {
 				config& show_if = itor->second->show_if;
 				config filter_location = itor->second->filter_location;
-				if ((show_if.empty() 
+				if ((show_if.empty()
 					|| game_events::conditional_passed(&units_, &show_if))
-				&& (filter_location.empty() 
+				&& (filter_location.empty()
 					|| terrain_matches_filter(map_, hex, &filter_location, status_, units_))
 				&& (!itor->second->needs_select
 					|| gamestate_.last_selected.valid()))
@@ -808,7 +808,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 					std::string newitem = itor->second->description;
 
 					//prevent accidental hotkey binding by appending a space
-					push_back<std::string, char>(newitem, ' '); 
+					push_back<std::string, char>(newitem, ' ');
 					newitems.push_back(newitem);
 				}
 			}

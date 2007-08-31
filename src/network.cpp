@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file network.cpp 
+//! @file network.cpp
 //! Networking
 
 #include "global.hpp"
@@ -60,7 +60,7 @@
 namespace {
 
 // We store the details of a connection in a map that must be looked up by its handle.
-// This allows a connection to be disconnected and then recovered, 
+// This allows a connection to be disconnected and then recovered,
 // but the handle remains the same, so it's all seamless to the user.
 struct connection_details {
 	connection_details(TCPsocket sock, const std::string& host, int port)
@@ -85,7 +85,7 @@ connection_map connections;
 
 network::connection connection_id = 1;
 
-} // end anon namespace 
+} // end anon namespace
 
 static int create_connection(TCPsocket sock, const std::string& host, int port)
 {
@@ -157,7 +157,7 @@ std::set<network::connection> bad_sockets;
 
 network_worker_pool::manager* worker_pool_man = NULL;
 
-} // end anon namespace 
+} // end anon namespace
 
 namespace network {
 
@@ -296,7 +296,7 @@ namespace {
 		IPaddress localAddress;
 		int sflag;
 	};
-} // end namespace 
+} // end namespace
 
 void connect_operation::run()
 {
@@ -386,7 +386,7 @@ void connect_operation::run()
 	while(!notify_finished());
 }
 
-} // end namespace 
+} // end namespace
 
 connection connect(const std::string& host, int port)
 {
@@ -415,10 +415,10 @@ connection accept_connection()
 	}
 
 	// A connection isn't considered 'accepted' until it has sent its initial handshake.
-	// The initial handshake is a 4 byte value, which is 0 for a new connection, 
+	// The initial handshake is a 4 byte value, which is 0 for a new connection,
 	// or the handle of the connection if it's trying to recover a lost connection.
 
-	//! A list of all the sockets which have connected, 
+	//! A list of all the sockets which have connected,
 	//! but haven't had their initial handshake received.
 	static std::vector<TCPsocket> pending_sockets;
 	static SDLNet_SocketSet pending_socket_set = 0;
@@ -452,7 +452,7 @@ connection accept_connection()
 			continue;
 		}
 
-		// Receive the 4 bytes telling us if they're a new connection 
+		// Receive the 4 bytes telling us if they're a new connection
 		// or trying to recover a connection
 		char buf[4];
 

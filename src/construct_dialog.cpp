@@ -81,13 +81,13 @@ std::vector<std::string> empty_string_vector;
 
 namespace gui {
 
-dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior(empty_rect), 
-	message(empty_rect), textbox(empty_rect), menu_height(-1) 
+dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior(empty_rect),
+	message(empty_rect), textbox(empty_rect), menu_height(-1)
 {
 	//note: this is not defined in the header file to C++ ODR (one-definition rule)
-	//since each inclusion of the header file uses a different version of empty_rect 
-	//(unnamed namespace and/or const object defined at declaration time). 
-} 
+	//since each inclusion of the header file uses a different version of empty_rect
+	//(unnamed namespace and/or const object defined at declaration time).
+}
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
 				const DIALOG_TYPE type, const style& dialog_style) : disp_(disp), image_(NULL),
@@ -811,5 +811,5 @@ void message_dialog::action(gui::dialog_process_info &dp_info)
 message_dialog::~message_dialog()
 {
 }
-		
+
 }//end namespace gui

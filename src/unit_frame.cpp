@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_frame.cpp 
+//! @file unit_frame.cpp
 //!
 
 #include "global.hpp"
@@ -66,7 +66,7 @@ const std::string& progressive_string::get_current_element(int current_time)cons
 }
 
 template <class T>
-progressive_<T>::progressive_(const std::string &data, int duration) 
+progressive_<T>::progressive_(const std::string &data, int duration)
 {
 	const std::vector<std::string> first_split = utils::split(data);
 	const int time_chunk = maximum<int>(duration / (first_split.size()?first_split.size():1),1);
@@ -117,7 +117,7 @@ const T progressive_<T>::get_current_element(int current_time) const
 	const T second =  data_[sub_halo].first.second;
 
 	return T((static_cast<double>(current_time - time) /
-		static_cast<double>(data_[sub_halo].second)) * 
+		static_cast<double>(data_[sub_halo].second)) *
 		(second - first) + first);
 }
 

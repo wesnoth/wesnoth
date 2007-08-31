@@ -40,7 +40,7 @@ gamemap::location gamemap::location::null_location;
 
 const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
 {
-	const std::map<t_translation::t_letter,terrain_type>::const_iterator i = 
+	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
 		letterToTerrain_.find(terrain);
 
 	if(i == letterToTerrain_.end()) {
@@ -54,7 +54,7 @@ const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_le
 
 const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_letter terrain) const
 {
-	const std::map<t_translation::t_letter, terrain_type>::const_iterator i = 
+	const std::map<t_translation::t_letter, terrain_type>::const_iterator i =
 		letterToTerrain_.find(terrain);
 
 	if(i == letterToTerrain_.end()) {
@@ -63,14 +63,14 @@ const t_translation::t_list& gamemap::underlying_def_terrain(t_translation::t_le
 		return result;
 	} else {
 		return i->second.def_type();
-	} 
+	}
 }
 
 const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_letter terrain) const
 {
-	const std::map<t_translation::t_letter,terrain_type>::const_iterator i = 
+	const std::map<t_translation::t_letter,terrain_type>::const_iterator i =
 		letterToTerrain_.find(terrain);
-	
+
 	if(i == letterToTerrain_.end()) {
 		static t_translation::t_list result(1);
 		result[0] = terrain;
@@ -245,7 +245,7 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 	}
 }
 
-gamemap::gamemap(const config& cfg, const std::string& data) : 
+gamemap::gamemap(const config& cfg, const std::string& data) :
 		tiles_(1), w_(-1), h_(-1)
 {
 	LOG_G << "loading map: '" << data << "'\n";
@@ -265,28 +265,28 @@ void gamemap::read(const std::string& data)
 	try {
 		tiles_ = t_translation::read_game_map(data, starting_positions);
 	} catch(t_translation::error& e) {
-		// we re-throw the error but as map error, since all codepaths test 
+		// we re-throw the error but as map error, since all codepaths test
 		// for this, it's the least work
 		throw incorrect_format_exception(e.message.c_str());
 	}
 
 	//convert the starting positions to the array
-	std::map<int, t_translation::coordinate>::const_iterator itor = 
+	std::map<int, t_translation::coordinate>::const_iterator itor =
 		starting_positions.begin();
 
 	for(; itor != starting_positions.end(); ++itor) {
 
 		// check for valid position, the first valid position is
 		// 1 so the offset 0 in the array is never used
-		if(itor->first < 1 || itor->first >= STARTING_POSITIONS) { 
-			ERR_CF << "Starting position " << itor->first << " out of range\n"; 
+		if(itor->first < 1 || itor->first >= STARTING_POSITIONS) {
+			ERR_CF << "Starting position " << itor->first << " out of range\n";
 			throw incorrect_format_exception("Illegal starting position found in map. The scenario cannot be loaded.");
 		}
 
 		// add to the starting position array
 		startingPositions_[itor->first] = location(itor->second.x, itor->second.y);
 	}
-	
+
 	// post processing on the map
 	const int width = tiles_.size();
 	const int height = width > 0 ? tiles_[0].size() : 0;
@@ -294,14 +294,14 @@ void gamemap::read(const std::string& data)
 	h_ = height;
 	for(int x = 0; x < width; ++x) {
 		for(int y = 0; y < height; ++y) {
-			
-			// is the terrain valid? 
+
+			// is the terrain valid?
 			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
-				ERR_CF << "Illegal character in map: (" << t_translation::write_letter(tiles_[x][y]) 
-					<< ") '" << tiles_[x][y] << "'\n"; 
+				ERR_CF << "Illegal character in map: (" << t_translation::write_letter(tiles_[x][y])
+					<< ") '" << tiles_[x][y] << "'\n";
 				throw incorrect_format_exception("Illegal character found in map. The scenario cannot be loaded.");
-			} 
-			
+			}
+
 			// is it a village
 			if(is_village(tiles_[x][y])) {
 				villages_.push_back(location(x, y));
@@ -316,14 +316,14 @@ std::string gamemap::write() const
 
 	// convert the starting positions to a map
 	for(int i = 0; i < STARTING_POSITIONS; ++i) {
-    	if(on_board(startingPositions_[i])) {
-			const struct t_translation::coordinate position = 
+	if(on_board(startingPositions_[i])) {
+			const struct t_translation::coordinate position =
 				{startingPositions_[i].x, startingPositions_[i].y};
-			
+
 			 starting_positions.insert(std::pair<int, t_translation::coordinate>(i, position));
 		}
 	}
-	
+
 	// let the low level convertor do the conversion
 	return t_translation::write_game_map(tiles_, starting_positions);
 }
@@ -400,8 +400,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 		}
 	}
 
-	for(const location* pos = m.startingPositions_; 
-			pos != m.startingPositions_ + sizeof(m.startingPositions_)/sizeof(*m.startingPositions_); 
+	for(const location* pos = m.startingPositions_;
+			pos != m.startingPositions_ + sizeof(m.startingPositions_)/sizeof(*m.startingPositions_);
 			++pos) {
 
 		if(pos->valid()) {
@@ -440,11 +440,11 @@ t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 			// but the border tiles will be deterimined in the future so then
 			// this will no longer be used in the game (the editor will use
 			// this feature to expand maps in a better way).
-			std::map<location, t_translation::t_letter>::const_iterator itor = 
+			std::map<location, t_translation::t_letter>::const_iterator itor =
 				borderCache_.find(adj[n]);
 
 			// only add if it's in the cache and a valid terrain
-			if(itor != borderCache_.end() && 
+			if(itor != borderCache_.end() &&
 					itor->second != t_translation::NONE_TERRAIN)  {
 
 				items[nitems] = itor->second;
@@ -597,7 +597,7 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_l
 	tiles_[loc.x][loc.y] = terrain;
 
 	// temp hack, since the border can have multiple tiles depending on
-	// eachother every change has to invalidate the cache. Once the 
+	// eachother every change has to invalidate the cache. Once the
 	// border tiles are part of the map, this hack is no longer required.
 	borderCache_.clear();
 	return;

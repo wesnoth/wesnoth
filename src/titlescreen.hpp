@@ -21,14 +21,14 @@ class game_display;
 namespace gui {
 
 //! Values for the menu-items of the main menu.
-enum TITLE_RESULT { TUTORIAL = 0, 		//!< Start special campaign 'tutorial'
-					NEW_CAMPAIGN, 		//!< Let user select a campaign to play
-					MULTIPLAYER, 		//!< Play single scenario against humans or AI
+enum TITLE_RESULT { TUTORIAL = 0,		//!< Start special campaign 'tutorial'
+					NEW_CAMPAIGN,		//!< Let user select a campaign to play
+					MULTIPLAYER,		//!< Play single scenario against humans or AI
 					LOAD_GAME, GET_ADDONS,
                     CHANGE_LANGUAGE, EDIT_PREFERENCES,
-					SHOW_ABOUT,			//!< Show credits 
+					SHOW_ABOUT,			//!< Show credits
 					QUIT_GAME,
-                    TITLE_CONTINUE, 	//!< Show next tip-of-the-day
+                    TITLE_CONTINUE,	//!< Show next tip-of-the-day
 					SHOW_HELP,
 					BEG_FOR_UPLOAD		//!< Ask user for permission to upload game-stats as feedback
 				  };

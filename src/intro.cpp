@@ -155,7 +155,7 @@ bool show_intro_part(display &disp, const config& part,
 		textx = 200;
 		xbuttons = video.getx() - 200 - 40;
 	}
-	
+
 	texty = dstrect.y + dstrect.h - 200;
 #endif
 

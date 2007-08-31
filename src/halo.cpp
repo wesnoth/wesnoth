@@ -47,7 +47,7 @@ public:
 	bool expired() const { return images_.animation_finished(); }
 	bool need_update() const { return images_.need_update(); }
 	bool does_change() const { return !images_.does_not_change(); }
-	bool on_location(const std::set<gamemap::location>& locations) const; 
+	bool on_location(const std::set<gamemap::location>& locations) const;
 
 	void add_overlay_location(std::set<gamemap::location>& locations);
 private:
@@ -72,10 +72,10 @@ private:
 std::map<int, effect> haloes;
 int halo_id = 1;
 
-// Upon unrendering an invalidation list is send. All haloes in that area and the 
+// Upon unrendering an invalidation list is send. All haloes in that area and the
 // other invalidated haloes are stored in this set. Then there'll be tested which
-// haloes overlap and they're also stored in this set. 
-std::set<int> invalidated_haloes; 
+// haloes overlap and they're also stored in this set.
+std::set<int> invalidated_haloes;
 
 // A newly added halo will be added to this list, these haloes don't need to
 // be unrendered but do not to be rendered regardless which tiles are invalidated.
@@ -90,7 +90,7 @@ std::set<int> deleted_haloes;
 // Haloes that have an animation or expiration time need to be checked every frame
 // and are stored in this set.
 std::set<int> changing_haloes;
-	
+
 effect::effect(int xpos, int ypos, const animated<std::string>::anim_description& img,
 	const gamemap::location& loc, ORIENTATION orientation, bool infinite) :
 		images_(img), orientation_(orientation), x_(xpos), y_(ypos),
@@ -125,7 +125,7 @@ bool effect::render()
 	if(disp == NULL) {
 		return false;
 	}
-	
+
 	if(loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_)) {
 		return false;
 	}
@@ -212,7 +212,7 @@ void effect::unrender()
 	update_rect(rect_);
 }
 
-bool effect::on_location(const std::set<gamemap::location>& locations) const 
+bool effect::on_location(const std::set<gamemap::location>& locations) const
 {
 	for(std::vector<gamemap::location>::const_iterator itor = overlayed_hexes_.begin();
 			itor != overlayed_hexes_.end(); ++itor) {
@@ -242,7 +242,7 @@ manager::manager(display& screen) : old(disp)
 manager::~manager()
 {
 	haloes.clear();
-	invalidated_haloes.clear(); 
+	invalidated_haloes.clear();
 	new_haloes.clear();
 	deleted_haloes.clear();
 	changing_haloes.clear();
@@ -290,12 +290,12 @@ void set_location(int handle, int x, int y)
 
 void remove(int handle)
 {
-	// silently ignore invalid haloes, this happens when Wesnoth is being 
+	// silently ignore invalid haloes, this happens when Wesnoth is being
 	// terminated as well.
 	if(handle == NO_HALO || haloes.find(handle) == haloes.end())  {
 		return;
 	}
-	
+
 	deleted_haloes.insert(handle);
 }
 
@@ -320,7 +320,7 @@ void unrender(std::set<gamemap::location> invalidated_locations)
 		invalidated_haloes.insert(*set_itor);
 		haloes.find(*set_itor)->second.add_overlay_location(invalidated_locations);
 	}
-	
+
 	// test the multi-frame haloes whether they need an update
 	for(set_itor = changing_haloes.begin();
 			set_itor != changing_haloes.end(); ++set_itor) {
@@ -339,9 +339,9 @@ void unrender(std::set<gamemap::location> invalidated_locations)
 		halo_count = invalidated_haloes.size();
 		for(itor = haloes.begin(); itor != haloes.end(); ++itor) {
 			// test all haloes not yet in the set which match one of the locations
-			if(invalidated_haloes.find(itor->first) == invalidated_haloes.end() && 
+			if(invalidated_haloes.find(itor->first) == invalidated_haloes.end() &&
 					itor->second.on_location(invalidated_locations)) {
-				
+
 				// if found add all locations which the halo invalidates
 				// and add it to the set
 				itor->second.add_overlay_location(invalidated_locations);
@@ -353,7 +353,7 @@ void unrender(std::set<gamemap::location> invalidated_locations)
 	if(halo_count == 0) {
 		return;
 	}
-	
+
 	// render the haloes iterate through all the haloes and invalidate if in set
 	for(std::map<int, effect>::reverse_iterator ritor = haloes.rbegin(); ritor != haloes.rend(); ++ritor) {
 		if(invalidated_haloes.find(ritor->first) != invalidated_haloes.end()) {
@@ -365,7 +365,7 @@ void unrender(std::set<gamemap::location> invalidated_locations)
 	for(set_itor = deleted_haloes.begin(); set_itor != deleted_haloes.end(); ++set_itor) {
 		// it can happen a delete halo hasn't been rendered yet, invalidate them as well
 		new_haloes.erase(*set_itor);
-		
+
 		changing_haloes.erase(*set_itor);
 		invalidated_haloes.erase(*set_itor);
 		haloes.erase(*set_itor);
@@ -386,12 +386,12 @@ void render()
 	std::set<int> unrendered_new_haloes;
 
 	// render the haloes iterate through all the haloes and draw if in either set
-	for(std::map<int, effect>::iterator itor = haloes.begin(); 
+	for(std::map<int, effect>::iterator itor = haloes.begin();
 			itor != haloes.end(); ++itor) {
 
-		if(new_haloes.find(itor->first) != new_haloes.end() && 
+		if(new_haloes.find(itor->first) != new_haloes.end() &&
 				! itor->second.render()) {
-			
+
 			unrendered_new_haloes.insert(itor->first);
 		} else if(invalidated_haloes.find(itor->first) != invalidated_haloes.end()) {
 			itor->second.render();

@@ -178,10 +178,10 @@ public:
 	//Constructor & destructor
 	//dialog - throws button::error() if standard buttons fail to initialize
 	//         throws utils::invalid_utf8_exception() if message is invalid
-	dialog(display &disp, 
-	       const std::string& title="", 
+	dialog(display &disp,
+	       const std::string& title="",
 	       const std::string& message="",
-	       const DIALOG_TYPE type=MESSAGE, 
+	       const DIALOG_TYPE type=MESSAGE,
 	       const style& dialog_style=default_style);
 	virtual ~dialog();
 
@@ -253,7 +253,7 @@ private:
 	display &disp_;
 	dialog_image *image_;
 	const std::string title_;
- 	const style& style_;
+	const style& style_;
 	label *title_widget_, *message_;
 	const DIALOG_TYPE type_;
 	gui::menu *menu_;

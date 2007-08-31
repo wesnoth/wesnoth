@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file cursor.cpp 
+//! @file cursor.cpp
 //! Support for different cursors-shapes.
 
 #include "global.hpp"
@@ -55,7 +55,7 @@ static SDL_Cursor* create_cursor(surface surf)
 	std::vector<Uint8> data((cursor_width*nsurf->h)/8,0);
 	std::vector<Uint8> mask(data.size(),0);
 
-	// See http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation 
+	// See http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation
 	// on the format that data has to be in to pass to SDL_CreateCursor
 	surface_lock lock(nsurf);
 	const Uint32* const pixels = reinterpret_cast<Uint32*>(lock.pixels());
@@ -168,16 +168,16 @@ void set(CURSOR_TYPE type)
 		// Except if the current one is also invalid.
 		// In this case, change to a valid one.
 		current_cursor = NORMAL;
-	} 
+	}
 
 	const CURSOR_TYPE new_cursor = use_colour_cursors() && colour_ready ? cursor::NO_CURSOR : current_cursor;
 
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
-	
+
 	// Causes problem on Mac:
 	//if (cursor_image != NULL && cursor_image != SDL_GetCursor())
 		SDL_SetCursor(cursor_image);
-	
+
 }
 
 void set_dragging(bool drag)

@@ -163,5 +163,5 @@ void scrollarea::handle_event(const SDL_Event& event)
 	}
 }
 
-} // end namespace gui 
+} // end namespace gui
 

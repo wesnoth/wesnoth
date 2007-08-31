@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_map.hpp 
-//! 
+//! @file unit_map.hpp
+//!
 
 #ifndef UNIT_MAP_H_INCLUDED
 #define UNIT_MAP_H_INCLUDED
@@ -22,14 +22,14 @@ class unit;
 #include <cstring>
 #include "map.hpp"
 
-// We used to just open-code a std::map<location,unit>, 
-// but as unit gained weight leading up to 1.1.3, 
-// manipulating the map caused significant performance issues 
-// for the AI, which had to actually move units for accurate 
-// simulation with the new, more powerful filtering.  
+// We used to just open-code a std::map<location,unit>,
+// but as unit gained weight leading up to 1.1.3,
+// manipulating the map caused significant performance issues
+// for the AI, which had to actually move units for accurate
+// simulation with the new, more powerful filtering.
 // This class eases the transition, by providing a wrapper
-// which acts like a map of units, not unit pointers, 
-// except implemented with pointers and hence providing 
+// which acts like a map of units, not unit pointers,
+// except implemented with pointers and hence providing
 // a cheap move function.
 
 class unit_map

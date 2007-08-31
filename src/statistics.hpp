@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file statistics.hpp 
+//! @file statistics.hpp
 //!
 
 #ifndef STATISTICS_HPP_INCLUDED
@@ -41,7 +41,7 @@ namespace statistics
 		str_int_map recruits, recalls, advanced_to, deaths, killed;
 		int recruit_cost, recall_cost;
 
-		//! A type that will map a string of hit/miss 
+		//! A type that will map a string of hit/miss
 		//! to the number of times that sequence has occurred.
 		typedef str_int_map battle_sequence_frequency_map;
 
@@ -52,11 +52,11 @@ namespace statistics
 
 		int damage_inflicted, damage_taken;
 
-		// Expected value for damage inflicted/taken * 100, based on 
-		// probability to hit, 
+		// Expected value for damage inflicted/taken * 100, based on
+		// probability to hit,
 		// Use this long term to see how lucky a side is.
-		//! @todo FIXME: Since integers are used, rounding errors accumulate. 
-		// Also, slow isn't accounted for properly. 
+		//! @todo FIXME: Since integers are used, rounding errors accumulate.
+		// Also, slow isn't accounted for properly.
 		// Rusty's simulator could be used obtain valid values.
 		int expected_damage_inflicted, expected_damage_taken;
 	};

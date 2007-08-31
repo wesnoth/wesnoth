@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file playsingle_controller.cpp 
+//! @file playsingle_controller.cpp
 //! Logic for single-player game.
 
 #include "playsingle_controller.hpp"
@@ -204,8 +204,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		if (linger_)
 			throw end_level_exception(gamestate_.completion == "defeat" ? DEFEAT : VICTORY);
 
-		// Avoid autosaving after loading, but still 
-		// allow the first turn to have an autosave. 
+		// Avoid autosaving after loading, but still
+		// allow the first turn to have an autosave.
 		bool save = !loading_game_;
 		for(; ; first_player_ = 1) {
 			play_turn(save);
@@ -224,7 +224,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		if (end_level.result == DEFEAT || end_level.result == VICTORY) {
 			gamestate_.completion = (end_level.result == VICTORY) ? "victory" : "defeat";
 			recorder.set_save_info_completion(gamestate_.completion);
-			// If we're a player, and the result is victory/defeat, then send 
+			// If we're a player, and the result is victory/defeat, then send
 			// a message to notify the server of the reason for the game ending.
 			if (!obs) {
 				config cfg;
@@ -237,7 +237,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					info["result"] = "defeat";
 				network::send_data(cfg);
 			} else {
-				gui::message_dialog(*gui_,_("Game Over"), 
+				gui::message_dialog(*gui_,_("Game Over"),
 									_("The game is over.")).show();
 				return OBSERVER_END;
 			}
@@ -258,8 +258,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				return DEFEAT;
 			else
 				return QUIT;
-		} else if (end_level.result == VICTORY || 
-				   end_level.result == LEVEL_CONTINUE || 
+		} else if (end_level.result == VICTORY ||
+				   end_level.result == LEVEL_CONTINUE ||
 				   end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 			gamestate_.completion = "victory";
 			recorder.set_save_info_completion(gamestate_.completion);
@@ -318,7 +318,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				title = _("Victory");
 				report << font::BOLD_TEXT << _("You have emerged victorious!") << "\n~\n";
 			}
-			if (gamestate_.players.size() > 0 && 
+			if (gamestate_.players.size() > 0 &&
 					 (has_next_scenario ||
 					 gamestate_.campaign_type == "test")) {
 				for(i=teams_.begin(); i!=teams_.end(); ++i) {
@@ -328,11 +328,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					player_info *player=gamestate_.get_player(i->save_id());
 
 					const int remaining_gold = i->gold();
-					const int finishing_bonus_per_turn = 
-							 map_.villages().size() * game_config::village_income + 
+					const int finishing_bonus_per_turn =
+							 map_.villages().size() * game_config::village_income +
 							 game_config::base_income;
 					const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
-					const int finishing_bonus = end_level.gold_bonus ? 
+					const int finishing_bonus = end_level.gold_bonus ?
 							 (finishing_bonus_per_turn * turns_left) : 0;
 
 					if(player) {
@@ -349,19 +349,19 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 						report << _("Remaining gold: ")
 							   << remaining_gold << "\n";
 						if(end_level.gold_bonus) {
-							report << _("Early finish bonus: ") 
-								   << finishing_bonus_per_turn 
+							report << _("Early finish bonus: ")
+								   << finishing_bonus_per_turn
 								   << " " << _("per turn") << "\n"
-								   << font::BOLD_TEXT << _("Turns finished early: ") 
-								   << turns_left << "\n" 
-								   << _("Bonus: ") 
-								   << finishing_bonus << "\n" 
-								   << _("Gold: ") 
+								   << font::BOLD_TEXT << _("Turns finished early: ")
+								   << turns_left << "\n"
+								   << _("Bonus: ")
+								   << finishing_bonus << "\n"
+								   << _("Gold: ")
 								   << (remaining_gold+finishing_bonus);
 						}
 						report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player->gold;
 						// xgettext:no-c-format
-						report << '\n' << _("You will start the next scenario with ") << player->gold << _(" or the defined minimum starting gold of the following scenario, whichever is higher."); 
+						report << '\n' << _("You will start the next scenario with ") << player->gold << _(" or the defined minimum starting gold of the following scenario, whichever is higher.");
 					}
 				}
 			}
@@ -408,14 +408,14 @@ void playsingle_controller::play_turn(bool save)
 			init_side(player_number_ - 1);
 
 			if (replaying_){
-				// YogiHH: I can't see why we 
-				// need another key_handler here 
-				// in addition to the one defined 
-				// in play_controller. 
-				// Since this is causing problems 
+				// YogiHH: I can't see why we
+				// need another key_handler here
+				// in addition to the one defined
+				// in play_controller.
+				// Since this is causing problems
 				// with double execution of hotkeys,
-				// I will comment it out 
-				/* 
+				// I will comment it out
+				/*
 				const hotkey::basic_handler
 				key_events_handler(gui_);
 				*/
@@ -448,8 +448,8 @@ void playsingle_controller::play_turn(bool save)
 void playsingle_controller::play_side(const unsigned int team_index, bool save)
 {
 	do {
-		// Although this flag is used only in this method, 
-		// it has to be a class member since derived classes 
+		// Although this flag is used only in this method,
+		// it has to be a class member since derived classes
 		// rely on it
 		player_type_changed_ = false;
 		end_turn_ = false;
@@ -486,7 +486,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 			play_ai_turn();
 		}
 	} while (player_type_changed_);
-	// Keep looping if the type of a team (human/ai/networked) 
+	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
 }
 
@@ -550,7 +550,7 @@ void playsingle_controller::linger(upload_log& log)
 	LOG_NG << "beginning end-of-scenario linger";
 	browse_ = true;
 	linger_ = true;
-	// this is actually for after linger mode is over -- we don't want to 
+	// this is actually for after linger mode is over -- we don't want to
 	// stay stuck in linger state when the *next* scenario is over.
 	gamestate_.completion = "running";
 	// End all unit moves
@@ -559,9 +559,9 @@ void playsingle_controller::linger(upload_log& log)
 	}
 	try {
 		// Same logic as single-player human turn, but
-		// *not* the same as multiplayer human turn. 
+		// *not* the same as multiplayer human turn.
 		gui_->enable_menu("endturn", true);
-	 	while(!end_turn_) {
+		while(!end_turn_) {
 			play_slice();
 
 			gui_->draw();
@@ -570,7 +570,7 @@ void playsingle_controller::linger(upload_log& log)
 		// Loading a new game is effectively a quit.
 		log.quit(status_.turn());
 		throw;
-	} 
+	}
 	LOG_NG << "ending end-of-scenario linger";
 }
 

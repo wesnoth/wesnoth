@@ -413,7 +413,7 @@ static int process_queue(void*)
 				} catch(config::error &e) {
 					//throw back the error in the parent thread
 					received_data_queue.back().config_error =e.message;
-					
+
 				}
 			}
 		}

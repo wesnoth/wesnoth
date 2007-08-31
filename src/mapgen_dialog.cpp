@@ -374,11 +374,11 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 	res["map_data"] = generate_map(args,&labels);
 	std::cerr << "done generating map..\n";
 
-	for(std::map<gamemap::location,std::string>::const_iterator i = 
+	for(std::map<gamemap::location,std::string>::const_iterator i =
 			labels.begin(); i != labels.end(); ++i) {
 
-		if(i->first.x >= 0 && i->first.y >= 0 && 
-				i->first.x < static_cast<long>(width_) && 
+		if(i->first.x >= 0 && i->first.y >= 0 &&
+				i->first.x < static_cast<long>(width_) &&
 				i->first.y < static_cast<long>(height_)) {
 
 			config& label = res.add_child("label");

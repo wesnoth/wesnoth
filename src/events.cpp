@@ -255,7 +255,7 @@ bool has_focus(const handler* hand, const SDL_Event* event)
 			handler *const thief_hand = event_contexts.back().handlers[i];
 			if(i != foc_i && thief_hand->requires_event_focus(event)) {
 				//steal focus
-				focus_handler(thief_hand); 
+				focus_handler(thief_hand);
 				if(foc_i < back_i) {
 					//position the previously focused handler to allow stealing back
 					event_contexts.back().delete_handler_index(foc_i);
@@ -473,7 +473,7 @@ int discard(Uint32 event_mask)
 	}
 
 	//FIXME: there is a chance new events are added before kept events are replaced
-	for (unsigned int i=0; i < keepers.size(); ++i) 
+	for (unsigned int i=0; i < keepers.size(); ++i)
 	{
 		if(SDL_PushEvent(&keepers[i]) != 0) {
                        ERR_GEN << "failed to return an event to the queue.";

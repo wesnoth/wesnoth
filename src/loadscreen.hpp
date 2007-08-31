@@ -1,4 +1,4 @@
-/* $Id$ */ 
+/* $Id$ */
 /*
    Copyright (C) 2005 - 2007 by Joeri Melis <joeri_melis@hotmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file loadscreen.hpp 
+//! @file loadscreen.hpp
 //!
 
 #ifndef JM_LOADSCREEN_HPP

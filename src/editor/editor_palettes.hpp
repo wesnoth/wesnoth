@@ -32,7 +32,7 @@ class config;
 namespace map_editor {
 
 // a helper struct which for some reason can't be moved to
-// the cpp file. Stores the info about the data in 
+// the cpp file. Stores the info about the data in
 // editor-groups.cfg in a nice format
 struct terrain_group
 {
@@ -117,25 +117,25 @@ private:
 	const size_specs &size_specs_;
 	display &gui_;
 	unsigned int tstart_;
-	
+
 	//this map contains all editor_group as defined in terrain.cfg and
 	//associate with the group there. The group all is added automatically
 	//and all terrains are also automatically stored in this group
 	std::map<std::string, t_translation::t_list> terrain_map_;
-	
+
 	// a copy from the terrain_map_->second for the current active group
-	t_translation::t_list terrains_; 
+	t_translation::t_list terrains_;
 
 	//the editor_groups as defined in editor-groups.cfg, note the
-	//user must make sure the id's here are the same as the 
+	//user must make sure the id's here are the same as the
 	//editor_group in terrain.cfg
 	std::vector<terrain_group> terrain_groups_;
 
-	//the group buttons behave like a radio group this one points to the 
+	//the group buttons behave like a radio group this one points to the
 	//selected button, this value should not be 0 otherwise things will
 	//fail. Thus should be set in constructor
 	gui::button *checked_group_btn_;
-	
+
 	t_translation::t_letter selected_fg_terrain_, selected_bg_terrain_;
 	const gamemap &map_;
 	gui::button top_button_, bot_button_;

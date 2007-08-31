@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file pathutils.cpp 
+//! @file pathutils.cpp
 //! Various pathfinding functions and utilities.
 
 #include "global.hpp"
@@ -60,8 +60,8 @@ void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 {
 	// Two tiles are adjacent:
-	// if y is different by 1, and x by 0, 
-	// or if x is different by 1 and y by 0, 
+	// if y is different by 1, and x by 0,
+	// or if x is different by 1 and y by 0,
 	// or if x and y are each different by 1,
 	// and the x value of the hex with the greater y value is even.
 

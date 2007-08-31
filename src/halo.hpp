@@ -60,7 +60,7 @@ struct remover
 	void operator()(int handle) const { remove(handle); }
 };
 
-///functions to render and unrender haloes. Which haloes are rendered 
+///functions to render and unrender haloes. Which haloes are rendered
 // is determined by invalidated_locations and the internal state in
 // the control sets (in halo.cpp)
 void unrender(std::set<gamemap::location> invalidated_locations);

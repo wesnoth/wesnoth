@@ -402,7 +402,7 @@ namespace{
 		// We store a few of the highest probability hitpoint values.
 		int nb_elem = minimum<int>(max_hp_distrib_rows_, prob_hp_vector.size());
 
-		for(i = prob_hp_vector.size() - nb_elem; 
+		for(i = prob_hp_vector.size() - nb_elem;
 				i < static_cast<int>(prob_hp_vector.size()); i++) {
 
 			hp_prob_vector.push_back(std::pair<int, double>
@@ -799,7 +799,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 		// show (or cancel) the attack direction indicator
 		if (attack_from.valid() && !browse) {
-   			gui_->set_attack_indicator(attack_from, new_hex);
+			gui_->set_attack_indicator(attack_from, new_hex);
 		} else {
 			gui_->clear_attack_indicator();
 		}
@@ -822,7 +822,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			dest = attack_from;
 			dest_un = find_unit(dest);
 		}	else {
-		 	dest = new_hex;
+			dest = new_hex;
 			dest_un = mouseover_unit;
 		}
 
@@ -943,7 +943,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	unit u = un->second;
 	const shortest_path_calculator calc(u,team,units_,teams_,map_);
-		
+
 	const std::set<gamemap::location>* teleports = NULL;
 	std::set<gamemap::location> allowed_teleports;
 	if(u.get_ability_bool("teleport",un->first)) {
@@ -951,9 +951,9 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 		teleports = &allowed_teleports;
 		if(team.villages().count(un->first))
 			allowed_teleports.insert(un->first);
-		
+
 	}
-	
+
 	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), teleports);
 	route.move_left = route_turns_to_complete(u,map_,route,units_,teams_);
 
@@ -1032,12 +1032,12 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		scrolly = - preferences::scroll_speed();
 	} else if (event.button == SDL_BUTTON_WHEELDOWN) {
 		scrolly = preferences::scroll_speed();
- 	} else if (event.button == SDL_BUTTON_WHEELLEFT) {
+	} else if (event.button == SDL_BUTTON_WHEELLEFT) {
 		scrollx = - preferences::scroll_speed();
-  	} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
+	} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
 		scrollx = preferences::scroll_speed();
 	}
-	
+
 	if (scrollx != 0 || scrolly != 0) {
 		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
@@ -1046,7 +1046,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		else
 			gui_->scroll(scrollx,scrolly);
 	}
-	
+
 	if (!dragging_ && dragging_started_) {
 		dragging_started_ = false;
 		cursor::set_dragging(false);
@@ -1190,7 +1190,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			clear_undo_stack();
 		}
 	} else {
-		// we select a (maybe empty) hex 
+		// we select a (maybe empty) hex
 		gui_->unhighlight_reach();
 		gui_->clear_attack_indicator();
 		current_paths_ = paths();
@@ -1300,7 +1300,7 @@ bool mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 		lg::wml_error << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
 		return false;
 	}
-	
+
 }
 
 bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender)
@@ -1422,7 +1422,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 		check_victory(units_,teams_);
 
-		gui_->draw(); 
+		gui_->draw();
 
 		return true;
 	} else {

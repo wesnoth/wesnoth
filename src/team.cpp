@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file team.cpp 
+//! @file team.cpp
 //! Team-management, allies, setup at start of scenario.
 
 #include "global.hpp"
@@ -116,7 +116,7 @@ team::team_info::team_info(const config& cfg)
 	if(team_name.empty()) {
 		team_name = cfg["side"];
 	}
-	
+
 	save_id = cfg["save_id"];
 	if(save_id.empty()) {
 		save_id = cfg["description"];
@@ -244,8 +244,8 @@ team::team_info::team_info(const config& cfg)
 		recruitment_pattern.push_back("archer");
 	}
 
-	// Keep a copy of the initial recruitment_pattern, 
-	// since it can be changed on a per-time-of-day 
+	// Keep a copy of the initial recruitment_pattern,
+	// since it can be changed on a per-time-of-day
 	// or per-turn basis inside [ai] sections.
 	global_recruitment_pattern = recruitment_pattern;
 
@@ -259,7 +259,7 @@ team::team_info::team_info(const config& cfg)
 		targets.push_back(target(**tgts.first));
 	}
 
-	// Share_view and share_maps can't both be enabled, 
+	// Share_view and share_maps can't both be enabled,
 	// so share_view overrides share_maps.
 	share_view = utils::string_bool(cfg["share_view"]);
 	share_maps = !share_view && utils::string_bool(cfg["share_maps"],true);
@@ -443,7 +443,7 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 		aiparams_.append(*i);
 	}
 
-    // Get the recruitment pattern from the matching [ai] section, 
+    // Get the recruitment pattern from the matching [ai] section,
     // and fall back to the global recruitment pattern otherwise.
 	info_.recruitment_pattern = utils::split(aiparams_["recruitment_pattern"]);
 	if (info_.recruitment_pattern.empty())
@@ -472,7 +472,7 @@ bool team::calculate_is_enemy(size_t index) const
 		return false;
 	}
 
-	// If we have a team name, we are friends 
+	// If we have a team name, we are friends
 	// with anyone who has the same team name
 	if(info_.team_name.empty() == false) {
 		return (*teams)[index].info_.team_name != info_.team_name;
@@ -777,7 +777,7 @@ const color_range team::get_side_color_range(int side){
 
 const SDL_Color team::get_minimap_colour(int side)
 {
-	// Note: use mid() instead of rep() unless 
+	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
 	return int_to_color(get_side_color_range(side).rep());
 }
@@ -791,7 +791,7 @@ std::string team::get_side_colour_index(int side)
 		if(side_map.size()) {
 			return side_map;
 		}
-	}	
+	}
 	std::stringstream id;
 	id<<side;
 	return id.str();

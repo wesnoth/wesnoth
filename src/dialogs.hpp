@@ -28,7 +28,7 @@ class game_display;
 #include "file_chooser.hpp"
 
 namespace dialogs {
- 
+
 //function to handle an advancing unit. If there is only one choice to advance
 //to, the unit will be automatically advanced. If there is a choice, and 'random_choice'
 //is true, then a unit will be selected at random. Otherwise, a dialog will be displayed

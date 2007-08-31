@@ -138,7 +138,7 @@ public:
 	int h() const { return h_; }
 
 	//allows lookup of terrain at a particular location.
-	const t_translation::t_list& operator[](int index) const 
+	const t_translation::t_list& operator[](int index) const
 		{ return tiles_[index]; }
 
 	//looks up terrain at a particular location. Hexes off the map
@@ -206,7 +206,7 @@ public:
 protected:
 	t_translation::t_map tiles_;
 	location startingPositions_[STARTING_POSITIONS];
-	
+
 	/**
 	 * Clears the border cache, needed for the editor
 	 */

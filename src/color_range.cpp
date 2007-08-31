@@ -63,7 +63,7 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 			new_g=Uint32( old_rat * new_green + (1 - old_rat) * min_green);
 			new_b=Uint32( old_rat * new_blue  + (1 - old_rat) * min_blue);
 		}else if(255 - reference_avg){
-			float old_rat = (255.0 - static_cast<float>(old_avg)) / 
+			float old_rat = (255.0 - static_cast<float>(old_avg)) /
 				(255.0 - reference_avg);
 
 			new_r=static_cast<Uint32>( old_rat * new_red   + (1 - old_rat) * max_red);
@@ -135,7 +135,7 @@ std::vector<Uint32> palette(color_range cr){
 	}
 
 	// Use recolor function to generate list of possible colors.
-	// Could use a special function, would be more efficient, 
+	// Could use a special function, would be more efficient,
 	// but harder to maintain.
 	std::map<Uint32,Uint32> cmap = recolor_range(cr,temp);
 	for(std::map<Uint32,Uint32>::const_iterator k=cmap.begin(); k!=cmap.end();k++){
@@ -153,7 +153,7 @@ std::string rgb2highlight(Uint32 rgb)
 {
 	std::stringstream h("");
 	// Must match what the escape interpreter for marked-up-text expects
-	h << "<" << ((rgb & 0xFF0000) >> 16) 
+	h << "<" << ((rgb & 0xFF0000) >> 16)
 	  << "," << ((rgb & 0x00FF00) >> 8)
 	  << "," << (rgb & 0x0000FF) << ">";
 	return h.str();

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file mapgen.cpp 
+//! @file mapgen.cpp
 //! Map-generator, with standalone testprogram.
 
 #include "global.hpp"
@@ -54,16 +54,16 @@ typedef t_translation::t_map terrain_map;
 typedef gamemap::location location;
 
 //! Generate a height-map.
-//! Basically we generate alot of hills, 
-//! each hill being centered at a certain point, 
+//! Basically we generate alot of hills,
+//! each hill being centered at a certain point,
 //! with a certain radius - being a half sphere.
 //! Hills are combined additively to form a bumpy surface.
 //! The size of each hill varies randomly from 1-hill_size.
 //! We generate 'iterations' hills in total.
 //! The range of heights is normalized to 0-1000.
-//! 'island_size' controls whether or not the map should tend toward an island shape, 
-//! and if so, how large the island should be. 
-//! Hills with centers that are more than 'island_size' away from 
+//! 'island_size' controls whether or not the map should tend toward an island shape,
+//! and if so, how large the island should be.
+//! Hills with centers that are more than 'island_size' away from
 //! the center of the map will be inverted (i.e. be valleys).
 //! 'island_size' as 0 indicates no island.
 static height_map generate_height_map(size_t width, size_t height,
@@ -102,13 +102,13 @@ static height_map generate_height_map(size_t width, size_t height,
 
 	for(size_t i = 0; i != iterations; ++i) {
 
-		// (x1,y1) is the location of the hill, 
+		// (x1,y1) is the location of the hill,
 		// and 'radius' is the radius of the hill.
-		// We iterate over all points, (x2,y2). 
+		// We iterate over all points, (x2,y2).
 		// The formula for the amount the height is increased by is:
 		// radius - sqrt((x2-x1)^2 + (y2-y1)^2) with negative values ignored.
 		//
-		// Rather than iterate over every single point, we can reduce the points 
+		// Rather than iterate over every single point, we can reduce the points
 		// to a rectangle that contains all the positive values for this formula --
 		// the rectangle is given by min_x,max_x,min_y,max_y.
 
@@ -183,11 +183,11 @@ static height_map generate_height_map(size_t width, size_t height,
 	return res;
 }
 
-//! Generate a lake. 
-//! It will create water at (x,y), and then have 'lake_fall_off' % chance 
+//! Generate a lake.
+//! It will create water at (x,y), and then have 'lake_fall_off' % chance
 //! to make another water tile in each of the directions n,s,e,w.
-//! In each of the directions it does make another water tile, 
-//! it will have 'lake_fall_off'/2 % chance to make another water tile 
+//! In each of the directions it does make another water tile,
+//! it will have 'lake_fall_off'/2 % chance to make another water tile
 //! in each of the directions. This will continue recursively.
 static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
 {
@@ -220,36 +220,36 @@ static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off,
 typedef gamemap::location location;
 
 //! River generation.
-//! Rivers have a source, and then keep on flowing 
-//! until they meet another body of water, which they flow into, 
-//! or until they reach the edge of the map. 
-//! Rivers will always flow downhill, except that they can flow 
+//! Rivers have a source, and then keep on flowing
+//! until they meet another body of water, which they flow into,
+//! or until they reach the edge of the map.
+//! Rivers will always flow downhill, except that they can flow
 //! a maximum of 'river_uphill' uphill.
 //! This is to represent the water eroding the higher ground lower.
 //!
-//! Every possible path for a river will be attempted, in random order, 
-//! and the first river path that can be found that makes the river flow 
-//! into another body of water or off the map will be used. 
+//! Every possible path for a river will be attempted, in random order,
+//! and the first river path that can be found that makes the river flow
+//! into another body of water or off the map will be used.
 //!
-//! If no path can be found, then the river's generation will be aborted, 
-//! and false will be returned. 
+//! If no path can be found, then the river's generation will be aborted,
+//! and false will be returned.
 //! true is returned if the river is generated successfully.
-static bool generate_river_internal(const height_map& heights, 
-	terrain_map& terrain, int x, int y, std::vector<location>& river, 
+static bool generate_river_internal(const height_map& heights,
+	terrain_map& terrain, int x, int y, std::vector<location>& river,
 	std::set<location>& seen_locations, int river_uphill)
 {
-	const bool on_map = x >= 0 && y >= 0 && 
-		x < static_cast<long>(heights.size()) && 
+	const bool on_map = x >= 0 && y >= 0 &&
+		x < static_cast<long>(heights.size()) &&
 		y < static_cast<long>(heights.back().size());
 
-	if(on_map && !river.empty() && heights[x][y] > 
+	if(on_map && !river.empty() && heights[x][y] >
 			heights[river.back().x][river.back().y] + river_uphill) {
 
 		return false;
 	}
 
 	// If we're at the end of the river
-	if(!on_map || terrain[x][y] == t_translation::SHALLOW_WATER || 
+	if(!on_map || terrain[x][y] == t_translation::SHALLOW_WATER ||
 			terrain[x][y] == t_translation::DEEP_WATER) {
 
 		LOG_NG << "generating river...\n";
@@ -302,7 +302,7 @@ static std::vector<location> generate_river(const height_map& heights, terrain_m
 	return river;
 }
 
-//! Return a random tile at one of the borders of a map 
+//! Return a random tile at one of the borders of a map
 //! that is of the given dimensions.
 static location random_point_at_side(size_t width, size_t height)
 {
@@ -319,11 +319,11 @@ static location random_point_at_side(size_t width, size_t height)
 }
 
 //! Function which, given the map will output it in a valid format.
-static std::string output_map(const terrain_map& terrain, 
+static std::string output_map(const terrain_map& terrain,
 		std::map<int, t_translation::coordinate> starting_positions)
 {
-	// Remember that we only want the middle 1/9th of the map. 
-	// All other segments of the map are there only to give 
+	// Remember that we only want the middle 1/9th of the map.
+	// All other segments of the map are there only to give
 	// the important middle part some context.
 	const size_t begin_x = terrain.size()/3;
 	const size_t end_x = begin_x*2;
@@ -341,7 +341,7 @@ static std::string output_map(const terrain_map& terrain,
 		}
 	}
 
-	// Since the map has been resized, 
+	// Since the map has been resized,
 	// the starting locations also need to be fixed
 	std::map<int, t_translation::coordinate>::iterator itor = starting_positions.begin();
 	for(; itor != starting_positions.end(); ++itor) {
@@ -372,14 +372,14 @@ private:
 	const config& cfg_;
 	int windiness_;
 	mutable std::map<location, double> loc_cache_;
-	mutable std::map<t_translation::t_letter, double> cache_; 
+	mutable std::map<t_translation::t_letter, double> cache_;
 };
 
-double road_path_calculator::cost(const location& /*src*/, const location& loc, 
+double road_path_calculator::cost(const location& /*src*/, const location& loc,
 	const double /*so_far*/, const bool /*isDst*/) const
 {
 	++calls;
-	if (loc.x < 0 || loc.y < 0 || loc.x >= static_cast<long>(map_.size()) || 
+	if (loc.x < 0 || loc.y < 0 || loc.x >= static_cast<long>(map_.size()) ||
 			loc.y >= static_cast<long>(map_.front().size())) {
 
 		return (getNoPathValue());
@@ -390,11 +390,11 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 		return val->second;
 	}
 
-	// We multiply the cost by a random amount, 
-	// depending upon how 'windy' the road should be. 
-	// If windiness is 1, that will mean that the cost is always genuine, 
-	// and so the road always takes the shortest path. 
-	// If windiness is greater than 1, we sometimes over-report costs 
+	// We multiply the cost by a random amount,
+	// depending upon how 'windy' the road should be.
+	// If windiness is 1, that will mean that the cost is always genuine,
+	// and so the road always takes the shortest path.
+	// If windiness is greater than 1, we sometimes over-report costs
 	// for some segments, to make the road wind a little.
 	const double windiness = windiness_ > 0 ? (double(rand()%windiness_) + 1.0) : 1.0;
 
@@ -404,7 +404,7 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 		return itor->second*windiness;
 	}
 
-	static std::string terrain; 
+	static std::string terrain;
 	terrain = t_translation::write_letter(c);
 	const config* const child = cfg_.find_child("road_cost","terrain",terrain);
 	double res = getNoPathValue();
@@ -420,7 +420,7 @@ double road_path_calculator::cost(const location& /*src*/, const location& loc,
 //!
 struct is_valid_terrain
 {
-	is_valid_terrain(const t_translation::t_map& map, 
+	is_valid_terrain(const t_translation::t_map& map,
 			const t_translation::t_list& terrain_list);
 	bool operator()(int x, int y) const;
 private:
@@ -428,19 +428,19 @@ private:
 	const t_translation::t_list& terrain_;
 };
 
-is_valid_terrain::is_valid_terrain(const t_translation::t_map& map, 
+is_valid_terrain::is_valid_terrain(const t_translation::t_map& map,
 		const t_translation::t_list& terrain_list)
 : map_(map), terrain_(terrain_list)
 {}
 
 bool is_valid_terrain::operator()(int x, int y) const
 {
-	if(x < 0 || x >= static_cast<long>(map_.size()) || 
+	if(x < 0 || x >= static_cast<long>(map_.size()) ||
 			y < 0 || y >= static_cast<long>(map_[x].size())) {
 
 		return false;
 	}
-	
+
 	return std::find(terrain_.begin(),terrain_.end(),map_[x][y]) != terrain_.end();
 }
 
@@ -521,10 +521,10 @@ static gamemap::location place_village(const t_translation::t_map& map,
 	get_tiles_radius(loc,radius,locs);
 	gamemap::location best_loc;
 	size_t best_rating = 0;
-	for(std::set<gamemap::location>::const_iterator i = locs.begin(); 
+	for(std::set<gamemap::location>::const_iterator i = locs.begin();
 			i != locs.end(); ++i) {
 
-		if(i->x < 0 || i->y < 0 || i->x >= static_cast<long>(map.size()) || 
+		if(i->x < 0 || i->y < 0 || i->x >= static_cast<long>(map.size()) ||
 				i->y >= static_cast<long>(map[i->x].size())) {
 
 			continue;
@@ -537,15 +537,15 @@ static gamemap::location place_village(const t_translation::t_map& map,
 			gamemap::location adj[6];
 			get_adjacent_tiles(gamemap::location(i->x,i->y),adj);
 			for(size_t n = 0; n != 6; ++n) {
-				if(adj[n].x < 0 || adj[n].y < 0 || 
-						adj[n].x >= static_cast<long>(map.size()) || 
+				if(adj[n].x < 0 || adj[n].y < 0 ||
+						adj[n].x >= static_cast<long>(map.size()) ||
 						adj[n].y >= static_cast<long>(map[adj[n].x].size())) {
 
 					continue;
 				}
 
 				const t_translation::t_letter t = map[adj[n].x][adj[n].y];
-				const t_translation::t_list& adjacent_liked = 
+				const t_translation::t_list& adjacent_liked =
 					t_translation::read_list((*child)["adjacent_liked"]);
 
 				rating += std::count(adjacent_liked.begin(),adjacent_liked.end(),t);
@@ -599,8 +599,8 @@ namespace {
 //     height=n
 //     terrain=x
 //   [/height]
-// These should be in descending order of n. 
-// They are checked sequentially, and if height is greater than n for that tile, 
+// These should be in descending order of n.
+// They are checked sequentially, and if height is greater than n for that tile,
 // then the tile is set to terrain type x.
 class terrain_height_mapper
 {
@@ -615,8 +615,8 @@ private:
 	t_translation::t_letter to;
 };
 
-terrain_height_mapper::terrain_height_mapper(const config& cfg) : 
-	terrain_height(lexical_cast_default<int>(cfg["height"],0)), 
+terrain_height_mapper::terrain_height_mapper(const config& cfg) :
+	terrain_height(lexical_cast_default<int>(cfg["height"],0)),
 	to(t_translation::GRASS_LAND)
 {
 	const std::string& terrain = cfg["terrain"];
@@ -649,9 +649,9 @@ private:
 	t_translation::t_letter to;
 };
 
-terrain_converter::terrain_converter(const config& cfg) : min_temp(-1), 
-	  max_temp(-1), min_height(-1), max_height(-1), 
-	  from(t_translation::read_list(cfg["from"])), 
+terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
+	  max_temp(-1), min_height(-1), max_height(-1),
+	  from(t_translation::read_list(cfg["from"])),
 	  to(t_translation::NONE_TERRAIN)
 {
 	min_temp = lexical_cast_default<int>(cfg["min_temperature"],-100000);
@@ -665,7 +665,7 @@ terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
 	}
 }
 
-bool terrain_converter::convert_terrain(const t_translation::t_letter terrain, 
+bool terrain_converter::convert_terrain(const t_translation::t_letter terrain,
 		const int height, const int temperature) const
 {
 	return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height &&
@@ -677,7 +677,7 @@ t_translation::t_letter terrain_converter::convert_to() const
 	return to;
 }
 
-} // end anon namespace 
+} // end anon namespace
 
 //! Generate the map.
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
@@ -696,15 +696,15 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	std::string flatland = cfg["default_flatland"];
 	if(flatland == "") {
 		flatland = t_translation::write_letter(t_translation::GRASS_LAND);
-	} 
+	}
 
 	const t_translation::t_letter grassland = t_translation::read_letter(flatland);
 
-	// We want to generate a map that is 9 times bigger 
-	// than the actual size desired. 
-	// Only the middle part of the map will be used, 
-	// but the rest is so that the map we end up using 
-	// can have a context (e.g. rivers flowing from 
+	// We want to generate a map that is 9 times bigger
+	// than the actual size desired.
+	// Only the middle part of the map will be used,
+	// but the rest is so that the map we end up using
+	// can have a context (e.g. rivers flowing from
 	// out of the map into the map, same for roads, etc.)
 	width *= 3;
 	height *= 3;
@@ -748,17 +748,17 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << "placed land forms\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
-	// Now that we have our basic set of flatland/hills/mountains/water, 
-	// we can place lakes and rivers on the map. 
-	// All rivers are sourced at a lake. 
-	// Lakes must be in high land - at least 'min_lake_height'. 
-	// (Note that terrain below a certain altitude may be made 
-	// into bodies of water in the code above - i.e. 'sea', 
-	// but these are not considered 'lakes', because 
+	// Now that we have our basic set of flatland/hills/mountains/water,
+	// we can place lakes and rivers on the map.
+	// All rivers are sourced at a lake.
+	// Lakes must be in high land - at least 'min_lake_height'.
+	// (Note that terrain below a certain altitude may be made
+	// into bodies of water in the code above - i.e. 'sea',
+	// but these are not considered 'lakes', because
 	// they are not sources of rivers).
 	//
-	// We attempt to place 'max_lakes' lakes. 
-	// Each lake will be placed at a random location, 
+	// We attempt to place 'max_lakes' lakes.
+	// Each lake will be placed at a random location,
 	// if that random location meets the minimum terrain requirements for a lake.
 	// We will also attempt to source a river from each lake.
 	std::set<location> lake_locs;
@@ -804,7 +804,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 					std::set<location>::const_iterator i;
 
-					// Only generate a name if the lake hasn't touched any other lakes, 
+					// Only generate a name if the lake hasn't touched any other lakes,
 					// so that we don't end up with one big lake with multiple names.
 					for(i = locs.begin(); i != locs.end(); ++i) {
 						if(lake_locs.count(*i) != 0) {
@@ -844,9 +844,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	const size_t default_dimensions = 40*40*9;
 
 	//! Convert grassland terrain to other types of flat terrain.
-	//! We generate a 'temperature map' which uses the height generation algorithm 
-	//! to generate the temperature levels all over the map. 
-	//! Then we can use a combination of height and terrain 
+	//! We generate a 'temperature map' which uses the height generation algorithm
+	//! to generate the temperature levels all over the map.
+	//! Then we can use a combination of height and terrain
 	//! to divide terrain up into more interesting types than the default.
 	const height_map temperature_map = generate_height_map(width,height,
 	                                                       (atoi(cfg["temperature_iterations"].c_str())*width*height)/default_dimensions,
@@ -865,7 +865,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 
-	// Iterate over every flatland tile, and determine 
+	// Iterate over every flatland tile, and determine
 	// what type of flatland it is, based on our [convert] tags.
 	for(x = 0; x != width; ++x) {
 		for(y = 0; y != height; ++y) {
@@ -881,8 +881,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << "placing villages...\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
-	//! Place villages in a 'grid', to make placing fair, 
-	//! but with villages displaced from their position 
+	//! Place villages in a 'grid', to make placing fair,
+	//! but with villages displaced from their position
 	//! according to terrain and randomness, to add some variety.
 	std::set<location> villages;
 
@@ -895,19 +895,19 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		return "";
 	}
 
-	//! Castle configuration tag contains a 'valid_terrain' attribute 
+	//! Castle configuration tag contains a 'valid_terrain' attribute
 	//! which is a list of terrains that the castle may appear on.
-	const t_translation::t_list list = 
+	const t_translation::t_list list =
 		t_translation::read_list((*castle_config)["valid_terrain"]);
 
 	const is_valid_terrain terrain_tester(terrain, list);
 
-	//! Attempt to place castles at random. 
-	//! Once we have placed castles, we run a sanity check 
-	//! to make sure that the castles are well-placed. 
-	//! If the castles are not well-placed, we try again. 
-	//! Definition of 'well-placed' is if no two castles 
-	//! are closer than 'min_distance' hexes from each other, 
+	//! Attempt to place castles at random.
+	//! Once we have placed castles, we run a sanity check
+	//! to make sure that the castles are well-placed.
+	//! If the castles are not well-placed, we try again.
+	//! Definition of 'well-placed' is if no two castles
+	//! are closer than 'min_distance' hexes from each other,
 	//! and the castles appear on a terrain listed in 'valid_terrain'.
 	std::vector<location> castles;
 	std::set<location> failed_locs;
@@ -948,8 +948,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << "placing roads...\n";
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
-	// Place roads. 
-	// We select two tiles at random locations on the borders 
+	// Place roads.
+	// We select two tiles at random locations on the borders
 	// of the map, and try to build roads between them.
 	size_t nroads = atoi(cfg["roads"].c_str());
 	if(roads_between_castles) {
@@ -962,8 +962,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	for(size_t road = 0; road != nroads; ++road) {
 		log_scope("creating road");
 
-		//! We want the locations to be on the portion of the map 
-		//! we're actually going to use, since roads on other parts of the map 
+		//! We want the locations to be on the portion of the map
+		//! we're actually going to use, since roads on other parts of the map
 		//! won't have any influence, and doing it like this will be quicker.
 		location src = random_point_at_side(width/3 + 2,height/3 + 2);
 		location dst = random_point_at_side(width/3 + 2,height/3 + 2);
@@ -1002,15 +1002,15 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 		bool on_bridge = false;
 
-		// Draw the road. 
+		// Draw the road.
 		// If the search failed, rt.steps will simply be empty.
-		for(std::vector<location>::const_iterator step = rt.steps.begin(); 
+		for(std::vector<location>::const_iterator step = rt.steps.begin();
 				step != rt.steps.end(); ++step) {
 
 			const int x = step->x;
 			const int y = step->y;
 
-			if(x < 0 || y < 0 || x >= static_cast<long>(width) || 
+			if(x < 0 || y < 0 || x >= static_cast<long>(width) ||
 					y >= static_cast<long>(height)) {
 
 				continue;
@@ -1018,19 +1018,19 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 			calc.terrain_changed(*step);
 
-			// Find the configuration which tells us 
+			// Find the configuration which tells us
 			// what to convert this tile to, to make it into a road.
-			const config* const child = cfg.find_child("road_cost", "terrain", 
+			const config* const child = cfg.find_child("road_cost", "terrain",
 					t_translation::write_letter(terrain[x][y]));
 			if(child != NULL) {
-				// Convert to bridge means that we want to convert 
+				// Convert to bridge means that we want to convert
 				// depending upon the direction the road is going.
 				// Typically it will be in a format like,
 				// convert_to_bridge=\,|,/
 				// '|' will be used if the road is going north-south
 				// '/' will be used if the road is going south west-north east
 				// '\' will be used if the road is going south east-north west
-				// The terrain will be left unchanged otherwise 
+				// The terrain will be left unchanged otherwise
 				// (if there is no clear direction).
 				const std::string& convert_to_bridge = (*child)["convert_to_bridge"];
 				if(convert_to_bridge.empty() == false) {
@@ -1083,7 +1083,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				// Just a plain terrain substitution for a road
 				const std::string& convert_to = (*child)["convert_to"];
 				if(convert_to.empty() == false) {
-					const t_translation::t_letter letter = 
+					const t_translation::t_letter letter =
 						t_translation::read_letter(convert_to);
 					if(labels != NULL && terrain[x][y] != letter && name_count++ == name_frequency && on_bridge == false) {
 						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
@@ -1112,7 +1112,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const struct t_translation::coordinate coord = {x, y};
 		starting_positions.insert(std::pair<int, t_translation::coordinate>(player, coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
-		
+
 		const int castles[13][2] = {
 		  {-1, 0}, {-1, -1}, {0, -1}, {1, -1}, {1, 0}, {0, 1}, {-1, 1},
 		  {-2, 1}, {-2, 0}, {-2, -1}, {-1, -2}, {0, -2}, {1, -2}
@@ -1150,8 +1150,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const size_t tiles_per_village = ((width*height)/9)/nvillages;
 		size_t village_x = 1, village_y = 1;
 
-		// Alternate between incrementing the x and y value. 
-		// When they are high enough to equal or exceed the tiles_per_village, 
+		// Alternate between incrementing the x and y value.
+		// When they are high enough to equal or exceed the tiles_per_village,
 		// then we have them to the value we want them at.
 		while(village_x*village_y < tiles_per_village) {
 			if(village_x < village_y) {
@@ -1174,19 +1174,19 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 				const gamemap::location res = place_village(terrain,x,y,2,cfg);
 
-				if(res.x >= static_cast<long>(width) / 3 && 
-						res.x  < static_cast<long>(width * 2) / 3 && 
-						res.y >= static_cast<long>(height) / 3 && 
+				if(res.x >= static_cast<long>(width) / 3 &&
+						res.x  < static_cast<long>(width * 2) / 3 &&
+						res.y >= static_cast<long>(height) / 3 &&
 						res.y  < static_cast<long>(height * 2) / 3) {
 
-					const std::string str = 
+					const std::string str =
 						t_translation::write_letter(terrain[res.x][res.y]);
-					const config* const child = 
+					const config* const child =
 						cfg.find_child("village","terrain",str);
 					if(child != NULL) {
 						const std::string& convert_to = (*child)["convert_to"];
 						if(convert_to != "") {
-							terrain[res.x][res.y] = 
+							terrain[res.x][res.y] =
 								t_translation::read_letter(convert_to);
 
 							villages.insert(res);
@@ -1198,7 +1198,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 								get_adjacent_tiles(loc,adj);
 
 								std::string name_type = "village_name";
-								const t_translation::t_list 
+								const t_translation::t_list
 									field    = t_translation::t_list(1, t_translation::GRASS_LAND),
 									forest   = t_translation::t_list(1, t_translation::FOREST),
 									mountain = t_translation::t_list(1, t_translation::MOUNTAIN),
@@ -1229,9 +1229,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 										break;
 									}
 
-									const t_translation::t_letter terr = 
+									const t_translation::t_letter terr =
 										terrain[adj[n].x+width/3][adj[n].y+height/3];
-									
+
 									if(std::count(field.begin(),field.end(),terr) > 0) {
 										++field_count;
 									} else if(std::count(forest.begin(),forest.end(),terr) > 0) {
@@ -1289,7 +1289,7 @@ generator_map generators;
 //! Standalone testprogram for the mapgenerator.
 int main(int argc, char** argv)
 {
-	int x = 50, y = 50, iterations = 50, 
+	int x = 50, y = 50, iterations = 50,
 		hill_size = 50, lakes=3,
 	    nvillages = 25, nplayers = 2;
 	if(argc >= 2) {

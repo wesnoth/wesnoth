@@ -240,7 +240,7 @@ namespace {
 
 #ifndef S_IFMT
 #define S_IFMT	(S_IFDIR|S_IFREG)
-#endif 
+#endif
 #ifndef S_ISREG
 #define S_ISREG(x) (((x) & S_IFMT) == S_IFREG)
 #endif
@@ -300,13 +300,13 @@ namespace {
 #include <CoreFoundation/CFBase.h>
 #endif
 
-static bool ends_with(const std::string& str, const std::string& suffix) 
+static bool ends_with(const std::string& str, const std::string& suffix)
 {
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
 }
 
 // These are the filenames that get special processing
-#define MAINCFG 	"_main.cfg"
+#define MAINCFG	"_main.cfg"
 #define FINALCFG	"_final.cfg"
 
 void get_files_in_dir(const std::string& directory,
@@ -369,10 +369,10 @@ void get_files_in_dir(const std::string& directory,
 		characters. Try to get the precomposed form.
 		*/
 		char basename[MAXNAMLEN+1];
-		CFStringRef cstr = CFStringCreateWithCString(NULL, 
+		CFStringRef cstr = CFStringCreateWithCString(NULL,
 						     entry->d_name,
 						     kCFStringEncodingUTF8);
-		CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL, 
+		CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL,
 						     0, cstr);
 		CFStringNormalize(mut_str, kCFStringNormalizationFormC);
 		CFStringGetCString(mut_str,
@@ -404,8 +404,8 @@ void get_files_in_dir(const std::string& directory,
 						files->push_back(basename);
 				}
 			} else if (S_ISDIR(st.st_mode)) {
-				if (reorder == DO_REORDER && 
-					    ::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 && 
+				if (reorder == DO_REORDER &&
+					    ::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 &&
 					    S_ISREG(st.st_mode)) {
 					LOG_FS << "_main.cfg found : ";
 					if (files != NULL) {
@@ -415,9 +415,9 @@ void get_files_in_dir(const std::string& directory,
 						} else {
 							files->push_back(std::string(basename) + "/" + MAINCFG);
 							LOG_FS << std::string(basename) << "/" << MAINCFG << '\n';
-				    	}
+					}
 				    } else {
-				    	// show what I consider strange
+					// show what I consider strange
 						LOG_FS << fullname << "/" << MAINCFG << " not used now but skip the directory \n";
 				    }
 			    } else if (dirs != NULL) {

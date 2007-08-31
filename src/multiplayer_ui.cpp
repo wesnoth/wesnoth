@@ -39,8 +39,8 @@ namespace {
 	public:
 		user_menu_style() : gui::menu::imgsel_style("misc/selection", false,
 										   0x000000, 0x4a4440, 0x999999,
-										   0.0, 0.2, 0.2), 
-										   item_size_(empty_rect) 
+										   0.0, 0.2, 0.2),
+										   item_size_(empty_rect)
 		{}
 		virtual void init();
 		virtual SDL_Rect item_size(const std::string& /*item*/) { return item_size_; }
@@ -53,7 +53,7 @@ namespace {
 	{
 		imgsel_style::init();
 		item_size_.h = font::get_max_height(font_size_);
-		scale_images(-1, item_size_.h); 
+		scale_images(-1, item_size_.h);
 		item_size_.h += 2 * thickness_;
 	}
 
@@ -125,7 +125,7 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 		const config::child_list& level_sides = level.get_children("side");
 		for(config::child_list::const_iterator side = snapshot_sides.begin(); side != snapshot_sides.end(); ++side) {
 			for(config::child_list::const_iterator lside = level_sides.begin(); lside != level_sides.end(); ++lside) {
-				if ( ((**side)["side"] == (**lside)["side"]) 
+				if ( ((**side)["side"] == (**lside)["side"])
 					&& ((**side)["current_player"] != (**lside)["current_player"]) ){
 					(**side)["current_player"] = (**lside)["current_player"];
 					(**side)["description"] = (**lside)["description"];

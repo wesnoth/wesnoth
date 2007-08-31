@@ -13,7 +13,7 @@
 */
 
 //! @file theme.cpp
-//! 
+//!
 
 #include "global.hpp"
 
@@ -270,7 +270,7 @@ theme::object::object() : location_modified_(false), loc_(empty_rect), relative_
 
 theme::object::object(const config& cfg) :
 		location_modified_(false), id_(cfg["id"]), loc_(read_sdl_rect(cfg)),
-		relative_loc_(empty_rect), last_screen_(empty_rect), 
+		relative_loc_(empty_rect), last_screen_(empty_rect),
 		xanchor_(read_anchor(cfg["xanchor"])), yanchor_(read_anchor(cfg["yanchor"]))
 {
 }

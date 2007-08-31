@@ -87,7 +87,7 @@ instantiated, it will be associated with the active event_context
 be instructed to join a later context). As long as its event_context
 remains active, and only then, it will receive all system events.
 
-@note Multiple handler objects will receive the same events, 
+@note Multiple handler objects will receive the same events,
 including key events.
 
 */
@@ -98,7 +98,7 @@ including key events.
 
 /**
 
-@namespace font 	Graphical text output.
+@namespace font	Graphical text output.
 
 This module is used to display and measure text.
 Text can optionally contain special characters, which may
@@ -115,7 +115,7 @@ they can be escaped, C-style, using backslashes.
 
 /**
 
-@namespace game_config 	Game configuration data as global variables.
+@namespace game_config	Game configuration data as global variables.
 
 This module can be used to load various high level
 game configuration data from a .cfg file.
@@ -130,7 +130,7 @@ global variables.
 
 /**
 
-@namespace game_events 	Domain specific events
+@namespace game_events	Domain specific events
 
 This module defines the game's event mechanism. Events might be units
 moving or fighting, or when victory or defeat occurs. A scenario's
@@ -149,7 +149,7 @@ These kinds of system events can be handled using namespace @ref events
 
 /**
 
-@namespace gui 	General purpose widgets.
+@namespace gui	General purpose widgets.
 
 This module primarily contains a number of common, general purpose
 widgets for the construction of composite user interfaces.
@@ -162,7 +162,7 @@ widgets for the construction of composite user interfaces.
 
 /**
 
-@namespace hotkey 	Keyboard shortcuts for game actions.
+@namespace hotkey	Keyboard shortcuts for game actions.
 
 Hotkey commands can be loaded from configuration objects.
 When a keyboard event corresponding to a hotkey occurs,
@@ -177,7 +177,7 @@ For this to work, key_event() must be called whenever a keyboard event happens.
 
 /* - already documented
 
-@namespace image 	Cache of images.
+@namespace image	Cache of images.
 
 This module manages the cache of images. With an image name, you can get
 the surface corresponding to that image, and don't need to free the image.
@@ -199,10 +199,10 @@ images come in a number of varieties:
 
 /**
 
-@namespace mp 	Multiplayer meeting place and game creation.
+@namespace mp	Multiplayer meeting place and game creation.
 
-This module controls the multiplayer lobby. 
-The lobby is a section on the server which allows players 
+This module controls the multiplayer lobby.
+The lobby is a section on the server which allows players
 to chat, create games, and join games.
 
 */
@@ -213,15 +213,15 @@ to chat, create games, and join games.
 
 /**
 
-@namespace network 	High level network layer for config object transport.
+@namespace network	High level network layer for config object transport.
 
 This module provides high level network access using an API similiar
 to sockets, but primarily for the transport of @ref config objects.
 This is how the games protocols work - data is sent via config objects.
 
-A client would create a @ref manager object to initialize 
-the network layer, connect(), and then send_data(). 
-A server would create a @ref server_manager object, 
+A client would create a @ref manager object to initialize
+the network layer, connect(), and then send_data().
+A server would create a @ref server_manager object,
 then accept_connection(), and finally receive_data().
 
 */
@@ -232,7 +232,7 @@ then accept_connection(), and finally receive_data().
 
 /**
 
-@namespace preferences 	Modify, read and display user preferences.
+@namespace preferences	Modify, read and display user preferences.
 
 This module contain GUI code to display dialogs regarding
 user preferences, and functions which read and modify the preferences.
@@ -245,7 +245,7 @@ user preferences, and functions which read and modify the preferences.
 
 /**
 
-@namespace reports 	Unit and team statistics.
+@namespace reports	Unit and team statistics.
 
 This module can provide statistics and information, such as these
 presented in the in-game windows rightmost and upper borders.
@@ -259,7 +259,7 @@ This is primarily characteristics of units and teams.
 
 /**
 
-@namespace sound 	Audio output for sound and music.
+@namespace sound	Audio output for sound and music.
 
 This module provides the ability to play music and sounds.
 Setting music volume to 0 will stop the music.
@@ -272,11 +272,11 @@ Setting music volume to 0 will stop the music.
 
 /**
 
-@namespace tooltips 	tooltips.
+@namespace tooltips	tooltips.
 
-This module can be used to register tooltips, 
-which will be shown provided @ref process() 
-is called every time mouse motion events 
+This module can be used to register tooltips,
+which will be shown provided @ref process()
+is called every time mouse motion events
 are received from the @ref events system.
 If tooltips::draw_text() is used instead of font::draw_text(),
 the text will also be registered as a tooltip.
@@ -289,14 +289,14 @@ the text will also be registered as a tooltip.
 
 /**
 
-@page get_involved 	Get Involved
+@page get_involved	Get Involved
 
 Apart from development, there are
 <a href="http://www.wesnoth.org/wiki/FAQ">other ways to contribute</a>
 to the project.
 
-Before you can join the development team, your work 
-needs to be reviewed by a current developer. 
+Before you can join the development team, your work
+needs to be reviewed by a current developer.
 It works like this:
 you first get the
 <a href="http://gna.org/svn/?group=wesnoth">latest source code</a>
@@ -319,26 +319,26 @@ When adding new features, keep in mind the project philosophy,
 which is that of
 <a href="http://www.wesnoth.org/wiki/WesnothPhilosophy">KISS</a>.
 
-Other than at the forum, developers may also hang out 
+Other than at the forum, developers may also hang out
 in IRC #wesnoth-dev at irc.freenode.net
 
 */
 
 /**
 
-@page howto_document 	Document your code
+@page howto_document	Document your code
 
-@section motivation 	Motivation
+@section motivation	Motivation
 
 The document you are reading now was generated using
 <a href="http://www.doxygen.org/">Doxygen</a>.
 It follows in the tradition of
 <a href="http://www.literateprogramming.com/">literal programming</a>,
-the goal of which is to keep documentation in the source code, 
-when practical. 
+the goal of which is to keep documentation in the source code,
+when practical.
 This way, the documentation will not be outdated or unmaintained.
 
-@section interfaces 	Commenting interfaces
+@section interfaces	Commenting interfaces
 
 Concise comments are prefered, as long as the explanation
 is correct, is not open to interpretation and does not
@@ -349,13 +349,13 @@ is available from a C++ source file, and could result in
 compile errors if removed.
 When you comment a header file, you need to take care
 of a few, minor things in order to produce readable
-documentation using Doxygen. 
+documentation using Doxygen.
 The basic guidelines for this project are:
 
-- When commenting part of an interface, use two slashes followed by 
+- When commenting part of an interface, use two slashes followed by
   an exclamation sign, followed by a space and then the actual comment.
   The first sentence you write, terminated by a period,
-  will be the brief description. 
+  will be the brief description.
   After that, you can write a longer, more detailed description.
   The brief description will be shown in overviews,
   so it should be no more than a single line.
@@ -368,7 +368,7 @@ Example:
 / / !
 / / ! The display is divided into two main sections: the game area,
 / / ! which displays the tiles of the game board, and units on them,
-/ / ! and the side bar, which appears on the right hand side. 
+/ / ! and the side bar, which appears on the right hand side.
 / / ! The side bar display is divided into three sections.
 class display {
    ...
@@ -377,13 +377,13 @@ class display {
 
 - Do not refer to multiple objects of the type "Manager"
   as "Managers" or "manager". Instead, say "Manager objects".
-  Doxygen will automatically link to class documentation 
+  Doxygen will automatically link to class documentation
   whenever it finds class names in comments,
   but will not do so if you do not use their proper names.
 
 - Many <a href="http://www.stack.nl/~dimitri/doxygen/commands.html">Doxygen commands</a>
   can be used in comments to enhance the generated documentation and structure the comments.
-- There is a balance between readable autogenerated documentation and readable code, 
+- There is a balance between readable autogenerated documentation and readable code,
   so beware of overdoing it.
 
 Example:
@@ -409,7 +409,7 @@ int divide(int a,int b) {
 // ===========================================================================
 
 /**
-	@defgroup unnamed_namespace 	Unnamed Namespace
+	@defgroup unnamed_namespace	Unnamed Namespace
 
 	@{
 */

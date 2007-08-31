@@ -67,6 +67,6 @@ private:
 	void test_scrollbar();
 };
 
-} // end namespace gui 
+} // end namespace gui
 
 #endif

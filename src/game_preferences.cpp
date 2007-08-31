@@ -69,7 +69,7 @@ manager::manager()
 
 	const t_translation::t_list terrain =
 		t_translation::read_list(preferences::get("encountered_terrain_list"));
-	std::copy(terrain.begin(), terrain.end(), 
+	std::copy(terrain.begin(), terrain.end(),
 			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 }
 

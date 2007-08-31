@@ -119,7 +119,7 @@ void replay_controller::init_replay_display(){
 	if (theme_cfg) {
 		const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
 		if (NULL != replay_theme_cfg)
-	    	gui_->get_theme().modify(replay_theme_cfg);
+		gui_->get_theme().modify(replay_theme_cfg);
 		gui_->invalidate_theme();
 	}
 
@@ -142,7 +142,7 @@ void replay_controller::reset_replay(){
 	statistics::fresh_stats();
 	if (events_manager_ != NULL){
 		delete events_manager_;
-		events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_, 
+		events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
 								units_,teams_, gamestate_,status_,gameinfo_);
 	}
 	fire_prestart(true);
@@ -255,7 +255,7 @@ void replay_controller::play_turn(){
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
 
-	while ((static_cast<size_t>(player_number_) <= teams_.size()) && 
+	while ((static_cast<size_t>(player_number_) <= teams_.size()) &&
 			(!recorder.at_end())){
 
 		play_side(player_number_ - 1, false);
@@ -309,14 +309,14 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 
 void replay_controller::update_teams(){
 	int next_team = player_number_;
-	if(static_cast<size_t>(next_team) > teams_.size()) { 
-		next_team = 1; 
+	if(static_cast<size_t>(next_team) > teams_.size()) {
+		next_team = 1;
 	}
 
 	if (!show_team_)
 		gui_->set_team(next_team - 1, show_everything_);
 
-	::clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, 
+	::clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_,
 		next_team - 1);
 	gui_->set_playing_team(next_team - 1);
 	gui_->invalidate_all();

@@ -30,7 +30,7 @@
 #include "SDL_image.h"
 
 editor_display::editor_display(CVideo& video, const gamemap& map,
-		const config& theme_cfg, const config& cfg, 
+		const config& theme_cfg, const config& cfg,
 		const config& level) :
 	display(video, map, theme_cfg, cfg, level)
 {
@@ -47,7 +47,7 @@ void editor_display::draw(bool update,bool force)
 	//int simulate_delay = 0;
 	if(!map_.empty() && !invalidated_.empty()) {
 		changed = true;
-		
+
 		SDL_Rect clip_rect = map_outside_area();
 		surface const dst(screen_.getSurface());
 		clip_rect_setter set_clip_rect(dst, clip_rect);
@@ -81,7 +81,7 @@ void editor_display::draw(bool update,bool force)
 			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_BACKGROUND));
 			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_FOREGROUND));
 
-			// draw the grid, if that's been enabled 
+			// draw the grid, if that's been enabled
 			if(grid_ && map_.on_board(*it)) {
 				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
@@ -110,7 +110,7 @@ void editor_display::draw(bool update,bool force)
 		if(underlying.size() != 1 || underlying.front() != terrain) {
 			str << " (";
 
-			for(t_translation::t_list::const_iterator i = 
+			for(t_translation::t_list::const_iterator i =
 					underlying.begin(); i != underlying.end(); ++i) {
 
 			str << map_.get_terrain_info(*i).name();

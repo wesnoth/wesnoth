@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file config.cpp 
+//! @file config.cpp
 //! Routines related to configuration-files / WML.
 
 #include "global.hpp"
@@ -211,7 +211,7 @@ void config::remove_child(const std::string& key, size_t index)
 	const child_pos pos(children.find(key),index);
 	ordered_children.erase(std::remove(ordered_children.begin(),ordered_children.end(),pos),ordered_children.end());
 
-	// Decrement all indices in the ordering that are above this index, 
+	// Decrement all indices in the ordering that are above this index,
 	// since everything is getting shifted back by 1.
 	for(std::vector<child_pos>::iterator i = ordered_children.begin(); i != ordered_children.end(); ++i) {
 		if(i->pos->first == key && i->index > index) {
@@ -266,7 +266,7 @@ private:
 	const std::string name_, value_;
 };
 
-} // end namespace 
+} // end namespace
 
 config* config::find_child(const std::string& key,
                            const std::string& name,
@@ -429,7 +429,7 @@ config config::get_diff(const config& c) const
 				// delete, insert, or change is the best to get b[bi] looking like a[ai].
 				std::stringstream buf;
 
-				// If b has more elements than a, then we assume this element 
+				// If b has more elements than a, then we assume this element
 				// is an element that needs deleting.
 				if(b.size() - bi > a.size() - ai) {
 					config& new_delete = res.add_child("delete_child");
@@ -441,7 +441,7 @@ config config::get_diff(const config& c) const
 					++bi;
 				}
 
-				// If b has less elements than a, then we assume this element 
+				// If b has less elements than a, then we assume this element
 				// is an element that needs inserting.
 				else if(b.size() - bi < a.size() - ai) {
 					config& new_insert = res.add_child("insert_child");
@@ -452,7 +452,7 @@ config config::get_diff(const config& c) const
 					++ai;
 				}
 
-				// Otherwise, they have the same number of elements, 
+				// Otherwise, they have the same number of elements,
 				// so try just changing this element to match.
 				else {
 					config& new_change = res.add_child("change_child");
@@ -561,7 +561,7 @@ void config::merge_with(const config& c)
 }
 /*
 // Create a new config tree as a copy of 'this' overridden by 'c'.
-// Nodes are matched up by name and with name by order. 
+// Nodes are matched up by name and with name by order.
 // Nodes in 'c', but not in 'this' are added at the end,
 // in the order they appeared in 'c'.
 config config::merge_with(const config& c) const
@@ -571,7 +571,7 @@ config config::merge_with(const config& c) const
 	    j != this->values.end(); ++j) {
 		n.values[j->first] = j->second;
 	}
-	// This ends up copying values twice (in config initialization 
+	// This ends up copying values twice (in config initialization
 	// and append), but is simpler than dealing with the guts of m.
 	config m(c);
 	for(all_children_iterator i = this->ordered_begin();
@@ -594,7 +594,7 @@ bool config::matches(const config &filter) const
 {
 	// First match values. all values should match.
 	for(string_map::const_iterator j = filter.values.begin(); j != filter.values.end(); ++j) {
-		if(!this->values.count(j->first)) return false; 
+		if(!this->values.count(j->first)) return false;
 		const t_string& test_val = this->values.find(j->first)->second;
 		if(test_val != j->second) {
 			const std::string& boolcheck = j->second.base_str();
@@ -611,7 +611,7 @@ bool config::matches(const config &filter) const
 			}
 		}
 	}
-	
+
 	// Now, match the kids
 	for(all_children_iterator i2 = filter.ordered_begin(); i2 != filter.ordered_end(); ++i2) {
 		if(*(*i2).first == "not") continue;

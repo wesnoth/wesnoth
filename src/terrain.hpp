@@ -42,7 +42,7 @@ public:
 	const t_translation::t_list& def_type() const { return def_type_; }
 	const t_translation::t_list& union_type() const { return union_type_; }
 
-	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) && 
+	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
 		(number_ != t_translation::VOID_TERRAIN ); }
 	int light_modification() const { return light_modification_; }
 
@@ -64,7 +64,7 @@ public:
 	const std::string& editor_group() const { return editor_group_; }
 
 private:
-	//! The image used in the minimap 
+	//! The image used in the minimap
 	std::string minimap_image_;
 
 	//! The image used in the editor pallete if not defined in WML it will
@@ -81,7 +81,7 @@ private:
 	t_translation::t_list mvt_type_;
 	t_translation::t_list def_type_;
 	t_translation::t_list union_type_;
-		
+
 	int height_adjust_;
 
 	double submerge_;

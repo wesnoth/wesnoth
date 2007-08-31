@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file generate_report.cpp 
+//! @file generate_report.cpp
 //! Formatted output of various stats about units and the game.
 //! Used for the right sidebar and the top line of the main game-display.
 
@@ -35,7 +35,7 @@
 
 namespace reports {
 
-report generate_report(TYPE type, 
+report generate_report(TYPE type,
                        std::map<reports::TYPE, std::string> report_contents,
                        const gamemap& map, unit_map& units,
                        const std::vector<team>& teams, const team& current_team,
@@ -205,7 +205,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	  if(utils::string_bool(u->second.get_state("stoned"))){
 	    x = 128;
 	  }else{
-	    x = static_cast<int>(128 + (255-128) * 
+	    x = static_cast<int>(128 + (255-128) *
             (static_cast<float>(movement_left)/u->second.total_movement()));
 	  }
 	  str << "<" << x << "," << x << "," << x <<">";
@@ -270,7 +270,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 			tooltip << _("weapon range: ") << range <<"\n";
 			tooltip << _("damage type: ")  << lang_type << "\n";
-			// Find all the unit types on the map, and 
+			// Find all the unit types on the map, and
 			// show this weapon's bonus against all the different units.
 			// Don't show invisible units, except if they are in our team or allied.
 			std::set<std::string> seen_units;
@@ -323,7 +323,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_IMAGE:
 	{
 //		const std::vector<Uint32>& old_rgb = u->second.team_rgb_range();
-//		color_range new_rgb = team::get_side_color_range(u->second.side());	
+//		color_range new_rgb = team::get_side_color_range(u->second.side());
 	    return report("",image::locator(u->second.absolute_image(),u->second.image_mods()),"");
 	}
 	case UNIT_PROFILE:
@@ -331,7 +331,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case TIME_OF_DAY: {
 		time_of_day tod = timeofday_at(status,units,mouseover,map);
 		const std::string tod_image = tod.image + (preferences::flip_time() ? "~FL(horiz)" : "");
-		
+
 		// Don't show illuminated time on fogged/shrouded tiles
 		if (current_team.fogged(mouseover.x,mouseover.y) || current_team.shrouded(mouseover.x,mouseover.y)) {
 			tod = status.get_time_of_day(false,mouseover);
@@ -356,7 +356,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		str << "\n";
 		break;
-	// For the following status reports, show them in gray text 
+	// For the following status reports, show them in gray text
 	// when it is not the active player's turn.
 	case GOLD:
 		str << (current_side != playing_side ? font::GRAY_TEXT : (current_team.gold() < 0 ? font::BAD_TEXT : font::NULL_MARKUP)) << current_team.gold();
@@ -425,7 +425,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		if(underlying.size() != 1 || underlying.front() != terrain) {
 			str << " (";
 
-			for(t_translation::t_list::const_iterator i = 
+			for(t_translation::t_list::const_iterator i =
 					underlying.begin(); i != underlying.end(); ++i) {
 
 			str << map.get_terrain_info(*i).name();
@@ -460,7 +460,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		} else if (mouseover_unit) {
 			str << " (" << defense << "%,-)";
 		} else {
-			str << " (-)";	
+			str << " (-)";
 		}
 
 		break;
@@ -534,9 +534,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			}
 			str << sec;
 			break;
-		} // Intentional fall-through to REPORT_CLOCK 
-		  // if the time countdown isn't valid. 
-		  // If there is no turn time limit, 
+		} // Intentional fall-through to REPORT_CLOCK
+		  // if the time countdown isn't valid.
+		  // If there is no turn time limit,
 		  // then we display the clock instead.
 		}
 	case REPORT_CLOCK: {

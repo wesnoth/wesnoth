@@ -13,7 +13,7 @@
 */
 
 //! @file color_range.hpp
-//! 
+//!
 
 #ifndef COLOR_RANGE_H_INCLUDED
 #define COLOR_RANGE_H_INCLUDED

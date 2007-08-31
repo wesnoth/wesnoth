@@ -4,7 +4,7 @@
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License version 
+   it under the terms of the GNU General Public License version
    or at your option any later version2
    or at your option any later version.
    This program is distributed in the hope that it will be useful,
@@ -673,8 +673,8 @@ static int location_internal_compare(wesnoth_location* left, wesnoth_location* r
 
 static long location_internal_hash(wesnoth_location* obj)
 {
-	// Never return -1, which is reserved for raising an exception. 
-	// Note that both x and y can get values < 0, 
+	// Never return -1, which is reserved for raising an exception.
+	// Note that both x and y can get values < 0,
 	// e.g. when checking all positions in a certain radius at the map border.
 	unsigned char x = (unsigned)obj->location_->x;
 	unsigned char y = (unsigned)obj->location_->y;
@@ -986,7 +986,7 @@ PyObject *python_ai::wrapper_team_targets(PyObject *, PyObject *args)
 
     PyObject* dict = PyDict_New();
 
-    //! @todo FIXME: There should be a C++ method to return all targets instead, 
+    //! @todo FIXME: There should be a C++ method to return all targets instead,
 	// for now it's just copy&pasted.
     std::vector<team::target>& team_targets =
         running_instance->current_team().targets();
@@ -1381,8 +1381,8 @@ PyObject* python_ai::wrapper_attack_unit(PyObject* /*self*/, PyObject* args)
 		&wesnoth_location_type, &to, &weapon ) )
 		return NULL;
 
-	//! @todo FIXME: Remove this check and let the C++ code do the check 
-	// if the attack is valid at all (there may be ranged attacks or similar later, 
+	//! @todo FIXME: Remove this check and let the C++ code do the check
+	// if the attack is valid at all (there may be ranged attacks or similar later,
 	// and then the code below will horribly fail).
 	if (!tiles_adjacent(*from->location_, *to->location_))
 		return_none;
@@ -1500,7 +1500,7 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 	info& inf = running_instance->get_info();
 
-	// We need to temporarily move our unit to where the attack calculation 
+	// We need to temporarily move our unit to where the attack calculation
 	// is supposed to take place.
 	std::pair<gamemap::location,unit> *temp = inf.units.extract(*from->location_);
 	std::pair<gamemap::location,unit> *backup = temp;
@@ -1716,7 +1716,7 @@ python_ai::~python_ai()
 void python_ai::play_turn()
 {
 	game_events::fire("ai turn");
-	
+
 	std::string script_name = current_team().ai_parameters()["python_script"];
 	if (script_name.substr(script_name.length() - 3) != ".py") {
 		// Make sure the script ends in .py here - Wesnoth will not execute any
@@ -1771,7 +1771,7 @@ void python_ai::play_turn()
 				std::string("internal error (wrong python version?)")) <<
 				std::endl;
 		}
-		// Otherwise, re-throw the exception here, 
+		// Otherwise, re-throw the exception here,
 		// so it will get handled properly further up.
 		else {
 			LOG_AI << "Python script has been interrupted.\n";

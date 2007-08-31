@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file race.cpp 
+//! @file race.cpp
 //! Generate race-specific unit-names.
 
 #include "global.hpp"
@@ -57,22 +57,22 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 
 	wide_string prefix, res;
 
-	// Since this function is called in the name description in a MP game it 
+	// Since this function is called in the name description in a MP game it
 	// uses the local locale. The locale between players can be different and
-	// thus the markov_prefix_map can be different. This resulted in 
-	// get_random() getting called a different number of times for the 
+	// thus the markov_prefix_map can be different. This resulted in
+	// get_random() getting called a different number of times for the
 	// generation in different locales (due to the bail out at 'if(c == 0)').
 	//
-	// This causes a problem since the random state is no longer in sync. The 
-	// following calls to get_random() return different results, which caused 
-	// traits to be different. To avoid that problem we call get_random() 
+	// This causes a problem since the random state is no longer in sync. The
+	// following calls to get_random() return different results, which caused
+	// traits to be different. To avoid that problem we call get_random()
 	// the maximum number of times and store the result in a lookup table.
 	std::vector<int> random(max_len);
 	size_t j = 0;
-	for(; j < max_len; ++j) { 
+	for(; j < max_len; ++j) {
 		random[j] = get_random();
 	}
-	
+
 	j = 0;
 	while(res.size() < max_len) {
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);

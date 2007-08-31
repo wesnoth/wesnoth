@@ -92,11 +92,11 @@ const struct {
 	{ hotkey::HOTKEY_STOP_REPLAY, "stopreplay", N_("Stop"), false },
 	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false },
 	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false },
-	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything", 
+	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything",
 	  N_("Full map"), false },
-	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach", 
+	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach",
 	  N_("Each team"), false },
-	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1", 
+	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1",
 	  N_("Team 1"), false },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false },
 
@@ -259,7 +259,7 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 			character += 96;
 		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
-	
+
 	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
 	if (cmd && character > 96 && character < 123 && shift)
 		character -= 32;
@@ -392,7 +392,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 			character += 96;
 		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
-	
+
 	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
 	if (cmd && character > 96 && character < 123 && shift)
 		character -= 32;

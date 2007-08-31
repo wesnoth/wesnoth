@@ -4,7 +4,7 @@
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License version 
+   it under the terms of the GNU General Public License version
    or at your option any later version2
    or at your option any later version.
    This program is distributed in the hope that it will be useful,
@@ -28,7 +28,7 @@ namespace dfool {
     int team_num=get_info().team_num;
     const config& parms = current_team().ai_parameters();
     config ai_mem = current_team().ai_memory();
-    
+
     const config::child_list& orders = parms.get_children("order");
     LOG_STREAM(info, ai)<<"dfool side:"<<team_num<<" of "<<current_team().nteams()<<std::endl;
 
@@ -38,7 +38,7 @@ namespace dfool {
     side_filter["side"]=buf;
 
     LOG_STREAM(info, ai)<<"dfool sees:"<<std::endl;
-    
+
     //    for(unit_map::iterator ua = get_info().units.begin(); ua != get_info().units.end(); ++ua) {
     //        std::string t = ua->second.get_ai_special();
     //        LOG_STREAM(info, ai)<<"ua:"<<ua->second.underlying_description()<<"\t"<<t<<std::endl;
@@ -48,7 +48,7 @@ namespace dfool {
     unit_list all = all_units();
     unit_list my_units=filter_units(side_filter, all,get_info().units);
     unit_list v_units=visible_units();
-    
+
     //    LOG_STREAM(info, ai)<<"My Units"<<std::endl;
     //    for(unit_list::iterator ui = all.begin(); ui != all.end(); ++ui) {
     //      LOG_STREAM(info, ai)<<"\t....."<<*ui<<"........"<<std::endl;
@@ -60,7 +60,7 @@ namespace dfool {
     //	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
     //      }
     //    }
-    
+
     LOG_STREAM(info, ai)<<"Visible Units"<<std::endl;
     for(unit_list::iterator ui = v_units.begin(); ui != v_units.end(); ++ui) {
       unit_map::iterator u = unit(*ui,get_info().units);
@@ -69,7 +69,7 @@ namespace dfool {
 	LOG_STREAM(info, ai)<<"\t\t"<<u->second.underlying_description()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->second.get_ai_special()<<std::endl;
 	//	LOG_STREAM(info, ai)<<"\t\t\t"<<u->first.x<<","<<u->first.y<<std::endl;
-	
+
 	unit_memory_.add_unit_sighting(u->second, u->first, get_info().state.turn());
       }
     }
@@ -88,8 +88,8 @@ namespace dfool {
       unit_list order_units = filter_units(order_filter,my_units,get_info().units);
       if(num > order_units.size()){
 	// Need to populate orders
-	// Find units that match any filter. 
-	// If no filters, then accept all units.        
+	// Find units that match any filter.
+	// If no filters, then accept all units.
 	if(filter.size()){
 	  for(config::child_list::const_iterator f = filter.begin(); f != filter.end(); ++f) {
 	    config ff=**f;
@@ -97,21 +97,21 @@ namespace dfool {
             unit_list filtered_units=filter_units(ff,my_units,get_info().units);
 
 	    //! @todo FIXME: add sorting
-	    
+
             for(unit_list::iterator i = filtered_units.begin(); i != filtered_units.end() && (num > order_units.size()); ++i) {
 	      unit_map::iterator ui=unit(*i,get_info().units);
 	      if(ui!=get_info().units.end()){
 		std::string ais=ui->second.get_ai_special();
-		
-		//		LOG_STREAM(info, ai)<<"\t match: "<<ui->second.underlying_description()<<"\t"<<ais<<":::"<<std::endl;	      
-		
+
+		//		LOG_STREAM(info, ai)<<"\t match: "<<ui->second.underlying_description()<<"\t"<<ais<<":::"<<std::endl;
+
 		bool used=(ais.size() > 0);
 		if(used){
 		  //		  LOG_STREAM(info, ai)<<"\t\talready assigned: "<<ui->second.underlying_description()<<"\t"<<ais<<std::endl;
 		}else{
 		  ui->second.assign_ai_special(order_id);
 		  order_units.push_back(*i);
-		  
+
 		  //		  LOG_STREAM(info, ai)<<"\t\tmatching: "<<ui->second.underlying_description()<<" to order: "<<order_id<<"\t"<<ui->second.get_ai_special()<<std::endl;
 		}
 	      }
@@ -121,7 +121,7 @@ namespace dfool {
           order_units=my_units;
         }
       }
-      
+
       // Execute commands
       for(unit_list::iterator ou = order_units.begin(); ou != order_units.end(); ou++){
         const config::child_list& commands = (**o).get_children("command");
@@ -174,10 +174,10 @@ namespace dfool {
       }
     }
 
-    unit_memory_.write(ai_mem);    
+    unit_memory_.write(ai_mem);
     current_team().set_ai_memory(ai_mem);
 
-    return;  
+    return;
   }
 
   unit_list dfool_ai::filter_units(const config& filter, unit_list& ul, unit_map& um)
@@ -213,7 +213,7 @@ namespace dfool {
 	  visible_units.push_back(i->second.underlying_description());
       }
     }
-    
+
     LOG_STREAM(info, ai) << "number of visible units: " << visible_units.size() << "\n";
     return visible_units;
   }
@@ -224,8 +224,8 @@ namespace dfool {
     for(unit_map::const_iterator i = um.begin(); i != um.end(); ++i) {
       //      LOG_STREAM(info, ai)<<"all:"<<i->second.underlying_description()<<std::endl;
       all.push_back(i->second.underlying_description());
-    }    
-    return(all); 
+    }
+    return(all);
   }
 
   bool dfool_ai::moveto(config::child_list::const_iterator o, unit_map::const_iterator m){
@@ -235,7 +235,7 @@ namespace dfool {
 	std::map<location,paths> possible_moves;
 	move_map srcdst, dstsrc;
 	unit_map known_units;
-	
+
 	//	unit_memory_.known_map(known_units, get_info().state.turn());
 	unit_memory_.known_map(known_units, 0);
 
@@ -254,30 +254,30 @@ namespace dfool {
 	  // Must restrict move_map to only unit that is moving.
 	  if(i->second==m->first){
 	    const int distance = distance_between(target,i->first);
-	    //	    int distance=10000; 
+	    //	    int distance=10000;
 	    //	    std::cout<<"got here\n";
 	    //	    const shortest_path_calculator calc(m->second, current_team(),known_units,get_info().teams,get_info().map);
 	    //std::cout<<"got here2\n";
 	    //paths::route route = a_star_search(m->first, target, 1000.0, &calc,
 	    //get_info().map.x(), get_info().map.y());
 	    //	    std::cout<<"got here3\n";
-	    
+
 	    //	    distance = route_turns_to_complete(m->second, get_info().map, route, known_units, get_info().teams) + distance_between(target,i->first)/100;
-	    
+
 	    if(closest_distance == -1 || distance < closest_distance) {
 			  closest_distance = distance;
 			  closest_move = *i;
 	    }
 	  }
 	}
-	
+
 	LOG_STREAM(info, ai)<<"\tmoving : "<< m->second.underlying_description() <<" "<<" from ("<<closest_move.first.x<<","<<closest_move.first.y<<")"<<" to ("<<target.x<<","<<target.y<<")"<<std::endl;
 	LOG_STREAM(info, ai)<<"\tdistance: "<<closest_distance<<"\n";
 
 	if(closest_distance != -1) {
 	  gamemap::location to = move_unit_partial(closest_move.second,closest_move.first,possible_moves);
 	  if(to != closest_move.second)
-	    return(false); 	// Something unexpected happened
+	    return(false);	// Something unexpected happened
 	}
       }
       return(true);
@@ -311,13 +311,13 @@ namespace dfool {
 
   void unit_memory::add_unit_sighting(unit u, gamemap::location l, size_t t){
     std::string unit_id= u.underlying_description();
-    // Check if this unit has already been seen 
+    // Check if this unit has already been seen
     size_t i,j;
     for(i=0; i < ids_.size();i++){
       if(unit_id == ids_[i]){break;}
     }
 
-    if(i == ids_.size()){    
+    if(i == ids_.size()){
       // Unit has not been seen
       units_.push_back(u);
       ids_.push_back(unit_id);
@@ -328,9 +328,9 @@ namespace dfool {
       units_[i]=u;
       turns_[i]=t;
       locations_[i]=l;
-    }    
+    }
 
-    // Remove units that are co-located units 
+    // Remove units that are co-located units
     std::set<size_t> remove_list;
     for(j=0; j < ids_.size();j++){
       if(j!=i && locations_[j] == locations_[i]){
@@ -348,7 +348,7 @@ namespace dfool {
       if(id == ids_[i]){break;}
     }
 
-    if(i == ids_.size()){    
+    if(i == ids_.size()){
       // Unit not in memory
     }else{
       // Remove unit info
@@ -377,7 +377,7 @@ namespace dfool {
     temp["x"] = xs.str();
     ys << locations_[i].y;
     temp["y"] = ys.str();
-    units_[i].write(temp_unit); 
+    units_[i].write(temp_unit);
     temp.add_child("unit",temp_unit);
     //    std::cout<<"ai write: "<<temp_unit["description"]<<"\n";
   }
@@ -387,7 +387,7 @@ namespace dfool {
     std::map<gamemap::location,size_t> turn_used;
     for(i=0;i<units_.size();i++){
       gamemap::location l = locations_[i];
-      size_t t = turn_used[l]; 
+      size_t t = turn_used[l];
       if(turns_[i] >= turn && turns_[i] >= t){
 	   //      std::cout<<"turn_used: "<< t <<"\n";
 	 //      std::cout<<"turn: "<< turns_[i] <<"\n";
@@ -405,7 +405,7 @@ namespace dfool {
 
   std::string evaluator::value(const std::string& val_string){
     std::string temp_string = val_string;
-    
+
     std::vector<std::string> p = utils::paranthetical_split(val_string,0,"(",")");
 
     // Find function calls designated by @ and evaluate values inside ()
@@ -418,7 +418,7 @@ namespace dfool {
 	 if(i%2){
 	   if(function){
 		std::cout<<"function: "<<func<<"\n";
-		std::map<std::string, evaluator*>::iterator fmi = 
+		std::map<std::string, evaluator*>::iterator fmi =
 		  function_map_->find(func);
 		if(fmi != function_map_->end()){ // evaluate function
 		  std::cout<<"function ::: "<<func<<" ::: "<<fmi->first<<"\n";
@@ -449,7 +449,7 @@ namespace dfool {
 		std::cout<<"evaluator syntax error:\n\t" << val_string << std::endl;
 	   }
 	   std::cout<<"eval size:"<<temp.size()<<"\n";
-	   
+
 	   if(function && temp.size()>0){
 		std::cout<<"temp "<<temp[0]<<"\n";
 		if(temp.size()==2){
@@ -506,22 +506,22 @@ namespace dfool {
 		  std::cout<<"atb:"<<*token<<"\n";
 		  //		  std::cout<<"atb:"<<*a<<*token<<*b<<"\n";
 		  if((*token)[0]=='*'){
-		    temp= atof((*a).c_str()) * atof((*b).c_str()); 
+		    temp= atof((*a).c_str()) * atof((*b).c_str());
 		  }
 		  if((*token)[0]=='/'){
-		    temp= atof((*a).c_str()) / atof((*b).c_str()); 
+		    temp= atof((*a).c_str()) / atof((*b).c_str());
 		  }
 		  if((*token)[0]=='%'){
-		    temp= fmod(atof((*a).c_str()), atof((*b).c_str())); 
+		    temp= fmod(atof((*a).c_str()), atof((*b).c_str()));
 		  }
 		  if((*token)[0]=='+'){
-		    temp= atof((*a).c_str()) + atof((*b).c_str()); 
+		    temp= atof((*a).c_str()) + atof((*b).c_str());
 		  }
 		  if((*token)[0]=='-'){
-		    temp= atof((*a).c_str()) - atof((*b).c_str()); 
+		    temp= atof((*a).c_str()) - atof((*b).c_str());
 		  }
 		  if((*token)[0]=='^'){
-		    temp= pow(atof((*a).c_str()),atof((*b).c_str())); 
+		    temp= pow(atof((*a).c_str()),atof((*b).c_str()));
 		  }
 		  std::cout<<"got here token2:"<<temp<<"\n";
 		  std::stringstream r;
@@ -551,13 +551,13 @@ namespace dfool {
     std::string parenthesis="()";
     int count=0;
     size_t i;
-    
+
     for(i=0;i!=s.size();i++){ // strip out spaces
 	 if(s[i]!=' '){
 	   str+=s[i];
 	 }
     }
-    
+
     i=0;
     while(i!=str.size()){
 	 std::cout<<"i:"<<i<<"\n";
@@ -566,7 +566,7 @@ namespace dfool {
 	 }
 	 char c=str[i];
 	 bool dpfound=false;
-	 bool found=false;  
+	 bool found=false;
 	 for(size_t j=0;j!=digits.size();j++){
 	   if(c==digits[j]){
 		found=true;
@@ -589,7 +589,7 @@ namespace dfool {
 		  found=true;
 		  break;
 		}
-	   }	  
+	   }
 	   if(found){
 		ret.push_back("");
 		ret.back()+=c;
@@ -612,7 +612,7 @@ namespace dfool {
 		    found=true;
 		    break;
 		  }
-		}	  
+		}
 		if(found){
 		  ret.push_back("");
 		  ret.back()+=c;
@@ -638,7 +638,7 @@ namespace dfool {
 
   std::string distance_evaluator::value(const std::string& val_string){
     std::cout<<"got distance:"<<val_string<<"\n";
-    std::vector<std::string> vals = utils::split(val_string,',');    
+    std::vector<std::string> vals = utils::split(val_string,',');
     if(vals.size()<4){
 	 std::cout<<"error in distance parameters\n";
 	 return("ERR");

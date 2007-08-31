@@ -29,7 +29,7 @@
 #include <map>
 
 
-// the fork execute is unix specific only tested on Linux quite sure it won't 
+// the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
 #if !(defined(_WIN32))
 #include <errno.h>
@@ -85,7 +85,7 @@ namespace {
 	bool campaign_server::fire(const std::string& hook)
 	{
 		out_.resize(0);
-		
+
 		const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
 		if(itor == hooks_.end()) return true;
 
@@ -95,17 +95,17 @@ namespace {
 #if (defined(_WIN32))
 		construct_error("Tried to execute a script on a not supporting platform");
 		return false;
-#else		
+#else
 
 		int fd_out[2], fd_err[2];
 		pid_t childpid;
 
 		pipe(fd_out);
 		pipe(fd_err);
-        
+
 		if((childpid = fork()) == -1) {
 			construct_error("fork failed");
-			return false; 
+			return false;
 		}
 
 		if(childpid == 0) {
@@ -145,7 +145,7 @@ namespace {
 
 			while (read(fd_err[0], &buf, 1) > 0) error += buf;
 			if(!error.empty()) construct_error(error);
-		
+
 			// read the message for the user
 			while (read(fd_out[0], &buf, 1) > 0) out_ += buf;
 
@@ -384,7 +384,7 @@ namespace {
 							network::send_data(construct_error("The name of the add-on is invalid"),sock);
 						} else if(check_names_legal(*data) == false) {
 							network::send_data(construct_error("The add-on contains an illegal file or directory name."),sock);
-						} else if(! fire("hook_pre_upload")) {  
+						} else if(! fire("hook_pre_upload")) {
 							if(out_ == "") {
 								network::send_data(construct_error("The add-on failed with unknown error in pre-upload hook."),sock);
 							} else {

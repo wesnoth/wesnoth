@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-//! @file game_display.hpp 
-//! 
+//! @file game_display.hpp
+//!
 
 #ifndef GAME_DISPLAY_H_INCLUDED
 #define GAME_DISPLAY_H_INCLUDED
@@ -34,7 +34,7 @@ class unit_map;
 #include <string>
 
 // This needs to be separate from display.h because of the static
-// singleton member, which will otherwise trigger link failure 
+// singleton member, which will otherwise trigger link failure
 // when building the editor.
 
 class game_display : public display
@@ -48,34 +48,34 @@ public:
 	static game_display* get_singleton() { return singleton_ ;}
 
 	//! Update lighting settings.
-	//! Should be called on every new turn, 
+	//! Should be called on every new turn,
 	void new_turn();
 
-	//! Add r,g,b to the colours for all images displayed on the map. 
+	//! Add r,g,b to the colours for all images displayed on the map.
 	//! Used for special effects like flashes.
 	void adjust_colours(int r, int g, int b);
 
-	//! Scrolls to the leader of a certain side. 
+	//! Scrolls to the leader of a certain side.
 	//! This will normally be the playing team.
 	void scroll_to_leader(unit_map& units, int side);
 
-	//! Draw for the game display has to know about units 
+	//! Draw for the game display has to know about units
 	void draw(bool update=true,bool force=false);
 
-	//! Function to display a location as selected. 
-	//! If a unit is in the location, and there is no unit 
-	//! in the currently highlighted hex, 
+	//! Function to display a location as selected.
+	//! If a unit is in the location, and there is no unit
+	//! in the currently highlighted hex,
 	//! the unit will be displayed in the sidebar.
 	virtual void select_hex(gamemap::location hex);
 
-	//! Function to highlight a location. 
-	//! If a unit is in the location, it will be displayed in the sidebar. 
-	//! Selection is used when a unit has been clicked on, 
+	//! Function to highlight a location.
+	//! If a unit is in the location, it will be displayed in the sidebar.
+	//! Selection is used when a unit has been clicked on,
 	//! while highlighting is used when a location has been moused over.
 	virtual void highlight_hex(gamemap::location hex);
 
-	//! Sets the paths that are currently displayed as available 
-	//! for the unit to move along.  
+	//! Sets the paths that are currently displayed as available
+	//! for the unit to move along.
 	//! All other paths will be greyed out.
 	void highlight_reach(const paths &paths_list);
 
@@ -86,7 +86,7 @@ public:
 	//! Reset highlighting of paths.
 	void unhighlight_reach();
 
-	//! Sets the route along which footsteps are drawn to show movement of a unit. 
+	//! Sets the route along which footsteps are drawn to show movement of a unit.
 	//! If NULL, no route is displayed. route does not have to remain valid after being set.
 	void set_route(const paths::route* route);
 
@@ -133,9 +133,9 @@ public:
 	{ return gamemap::location::write_direction(
 		attack_indicator_src_.get_relative_dir(attack_indicator_dst_)); }
 
-	//! Functions to add and remove overlays from locations. 
-	//! An overlay is an image that is displayed on top of the tile. 
-	//! One tile may have multiple overlays. 
+	//! Functions to add and remove overlays from locations.
+	//! An overlay is an image that is displayed on top of the tile.
+	//! One tile may have multiple overlays.
 	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="");
 	//! remove_overlay will remove all overlays on a tile.
 	void remove_overlay(const gamemap::location& loc);
@@ -159,12 +159,12 @@ public:
 	unit_map& get_units() {return units_;};
 	const unit_map& get_const_units() const {return units_;};
 
-	//! Draws a cross on a tile to emphasize something there.  
+	//! Draws a cross on a tile to emphasize something there.
 	//! It is used in debug mode, typically to show AI plans.
 	static void debug_highlight(const gamemap::location& loc, fixed_t amount);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
-	//! The viewing team is the team currently viewing the game. 
+	//! The viewing team is the team currently viewing the game.
 	size_t viewing_team() const { return currentTeam_; }
 	//! The playing team is the team whose turn it is.
 	size_t playing_team() const { return activeTeam_; }

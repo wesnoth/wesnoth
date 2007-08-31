@@ -336,7 +336,7 @@ bool message_bell()
 	return utils::string_bool(get("message_bell"), true);
 }
 
-bool sound_on() 
+bool sound_on()
 {
 	return utils::string_bool(get("sound"), true);
 }
@@ -359,7 +359,7 @@ bool set_sound(bool ison) {
 	return true;
 }
 
-bool music_on() 
+bool music_on()
 {
 	return utils::string_bool(get("music"), true);
 }

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-//! @file unit_display.cpp 
+//! @file unit_display.cpp
 //!
 
 #include "global.hpp"
@@ -130,7 +130,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 	wassert(disp);
 	// One hex path (strange), nothing to do
 	if (path.size()==1) return;
-	
+
 	const unit_map& units = disp->get_units();
 
 	// If the unit is visible, scroll to there before hide it
@@ -379,7 +379,7 @@ static void unit_attack_ranged(
 		events::pump();
 		missile_animation.update_last_draw_time();
 		disp->delay(10);
-		// We use missile animation because it's the only one 
+		// We use missile animation because it's the only one
 		// not reseted in the middle to go to standing
 		animation_time = missile_animation.get_animation_time();
 	}
@@ -519,7 +519,7 @@ void unit_attack(
 	att->second.set_standing(*disp,a);
 	def->second.set_standing(*disp,b);
 	def->second.set_hidden(def_was_hidden);
-	disp->remove_temporary_unit(); 
+	disp->remove_temporary_unit();
 }
 
 

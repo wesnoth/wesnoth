@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file random.cpp 
+//! @file random.cpp
 //! Generate random numbers.
 
 #include "global.hpp"
