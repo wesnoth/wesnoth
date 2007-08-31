@@ -355,43 +355,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				res = playmp_scenario(units_data,game_config,scenario,disp,gamestate,story,log, skip_replay);
 				break;
 			}
-
-			gamestate.snapshot = config();
-
-			// Temporary fix:
-			// Only apply preferences for replays and autosave
-			// deletes on victory.  We need to rethink what this
-			// code should be doing.
-			if(res == VICTORY) {
-				const std::string orig_scenario = gamestate.scenario;
-				gamestate.scenario = current_scenario;
-
-				std::string label = gamestate.label + _(" replay");
-				if (preferences::delete_autosaves())
-					clean_autosaves(gamestate.label);
-
-				if(preferences::save_replays()) {
-					try {
-						config snapshot;
-
-						recorder.save_game(label, snapshot, gamestate.starting_pos);
-					} catch(game::save_game_failed&) {
-						gui::show_error_message(disp, _("The replay could not be saved"));
-					}
-				}
-
-				gamestate.scenario = orig_scenario;
-			}
-
-			recorder.clear();
-			gamestate.replay_data.clear();
-
-			//continue without saving is like a victory, but the
-			//save game dialog isn't displayed
-			if(res == LEVEL_CONTINUE_NO_SAVE)
-				save_game_after_scenario = false;
-			if(res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE)
-				return res;
 		} catch(game::load_game_failed& e) {
 			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
 			return QUIT;
@@ -406,6 +369,45 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			gui::show_error_message(disp, _("Error while reading the WML: ") + e.message);
 			return QUIT;
 		}
+
+		gamestate.snapshot = config();
+
+		// Temporary fix:
+		// Only apply preferences for replays and autosave
+		// deletes on victory.  We need to rethink what this
+		// code should be doing.
+		if(res == VICTORY) {
+			const std::string orig_scenario = gamestate.scenario;
+			gamestate.scenario = current_scenario;
+
+			std::string label = gamestate.label + _(" replay");
+			if (preferences::delete_autosaves())
+				clean_autosaves(gamestate.label);
+
+			if(preferences::save_replays()) {
+				try {
+					config snapshot;
+
+					recorder.save_game(label, snapshot, gamestate.starting_pos);
+				} catch(game::save_game_failed&) {
+					gui::show_error_message(disp, _("The replay could not be saved"));
+				}
+			}
+
+			gamestate.scenario = orig_scenario;
+		}
+
+		recorder.clear();
+		gamestate.replay_data.clear();
+
+		//on DEFEAT, QUIT, or OBSERVER_END, we're done now
+		if(res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE)
+			return res;
+
+		//continue without saving is like a victory, but the
+		//save game dialog isn't displayed
+		if(res == LEVEL_CONTINUE_NO_SAVE)
+			save_game_after_scenario = false;
 
 		//if the scenario hasn't been set in-level, set it now.
 		if(gamestate.scenario == current_scenario)
