@@ -1222,7 +1222,7 @@ private:
 			}
 
 			if(map_.is_village(route.front())) {
-				get_village(route.front(),teams_,action.original_village_owner,units_);
+				get_village(route.front(),*gui_,teams_,action.original_village_owner,units_);
 				//MP_COUNTDOWN take away capture bonus
 				if(action.countdown_time_bonus)
 				{
@@ -1363,7 +1363,7 @@ private:
 			up->second.set_standing(*gui_,up->first);
 
 			if(map_.is_village(route.back())) {
-				get_village(route.back(),teams_,up->second.side()-1,units_);
+				get_village(route.back(),*gui_,teams_,up->second.side()-1,units_);
 				//MP_COUNTDOWN restore capture bonus
 				if(action.countdown_time_bonus)
 				{

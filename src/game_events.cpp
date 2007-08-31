@@ -508,7 +508,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					units->add(up);
 					unit_mutations++;
 					if(game_map->is_village(vacant_dst)) {
-						get_village(vacant_dst,*teams,side,*units);
+						get_village(vacant_dst, *screen,*teams,side,*units);
 					}
 
 					if(utils::string_bool(cfg["clear_shroud"],true)) {
@@ -1374,7 +1374,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
 			unit_mutations++;
 			if(game_map->is_village(loc)) {
-				get_village(loc,*teams,new_unit.side()-1,*units);
+				get_village(loc,*screen,*teams,new_unit.side()-1,*units);
 			}
 
 			screen->invalidate(loc);
@@ -2031,7 +2031,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		for(std::vector<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 			if(game_map->is_village(*i)) {
-				get_village(*i,*teams,team_num,*units);
+				get_village(*i,*screen,*teams,team_num,*units);
 			}
 		}
 	}

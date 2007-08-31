@@ -510,7 +510,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 		// If a new village is captured, disallow any future movement.
 		if (!info_.teams[info_.team_num-1].owns_village(to))
 			info_.units.find(to)->second.set_movement(-1);
-		get_village(to,info_.teams,info_.team_num-1,info_.units);
+		get_village(to,info_.disp,info_.teams,info_.team_num-1,info_.units);
 	}
 
 	if(show_move) {

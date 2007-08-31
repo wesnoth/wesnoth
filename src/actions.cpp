@@ -1342,8 +1342,9 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 	return -1;
 }
 
-bool get_village(const gamemap::location& loc, std::vector<team>& teams,
-                 size_t team_num, const unit_map& units, int *action_timebonus)
+bool get_village(const gamemap::location& loc, game_display& disp,
+                 std::vector<team>& teams, size_t team_num,
+                 const unit_map& units, int *action_timebonus)
 {
 	if(team_num < teams.size() && teams[team_num].owns_village(loc)) {
 		return false;
@@ -1374,6 +1375,7 @@ bool get_village(const gamemap::location& loc, std::vector<team>& teams,
 	}
 
 	if(has_leader) {
+		disp.invalidate(loc);
 		return teams[team_num].get_village(loc);
 	}
 
@@ -2021,7 +2023,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 
 		if(size_t(orig_village_owner) != team_num) {
 			ui->second.set_movement(0);
-			event_mutated = get_village(steps.back(),teams,team_num,units,&action_time_bonus);
+			event_mutated = get_village(steps.back(),*disp,teams,team_num,units,&action_time_bonus);
 		}
 	}
 

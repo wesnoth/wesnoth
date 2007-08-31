@@ -982,7 +982,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				const int orig_owner = village_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
 					u->second.set_movement(0);
-					get_village(dst,teams,team_num-1,units);
+					get_village(dst,disp,teams,team_num-1,units);
 				}
 			}
 

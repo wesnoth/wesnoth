@@ -206,8 +206,9 @@ int village_owner(const gamemap::location& loc, const std::vector<team>& teams);
 //! Makes it so the village at the given location
 //! is owned by the given 0-based team number.
 //! Returns true if getting the village triggered a mutating event.
-bool get_village(const gamemap::location& loc, std::vector<team>& teams,
-               size_t team_num, const unit_map& units, int *time_bonus = NULL);
+bool get_village(const gamemap::location& loc, game_display& disp,
+                 std::vector<team>& teams, size_t team_num,
+                 const unit_map& units, int *time_bonus = NULL);
 
 //! Given the 1-based side, will find the leader of that side,
 //! and return an iterator to the leader
