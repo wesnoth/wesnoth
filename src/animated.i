@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-//! @file animated.i 
+//! @file animated.i
 //! Templates related to animations.
 
 #include "global.hpp"
@@ -34,7 +34,7 @@ void new_animation_frame()
 	current_ticks = SDL_GetTicks();
 }
 
-int get_current_animation_tick() 
+int get_current_animation_tick()
 {
 	return current_ticks;
 }
@@ -93,7 +93,7 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 {
 	started_ = true;
 	last_update_tick_ = current_ticks;
-	start_tick_ =  last_update_tick_ + 
+	start_tick_ =  last_update_tick_ +
         static_cast<int>(( starting_frame_time_ - start_time)/acceleration);
 
 	cycles_ = cycles;
@@ -144,8 +144,8 @@ bool animated<T,T_void_value>::need_update() const
 	if(!started_) {
 		return false;
 	}
-	if(current_ticks > 
-            static_cast<int>(get_current_frame_end_time() / 
+	if(current_ticks >
+            static_cast<int>(get_current_frame_end_time() /
             acceleration_+start_tick_)){
 
 		return true;
@@ -160,8 +160,8 @@ bool animated<T,T_void_value>::animation_would_finish() const
 		return true;
 	if(!started_)
 		return true;
-	if(!cycles_ && 
-            ((static_cast<double>(current_ticks - start_tick_) * 
+	if(!cycles_ &&
+            ((static_cast<double>(current_ticks - start_tick_) *
             acceleration_) + starting_frame_time_) > get_end_time())
 
 		return true;
@@ -187,7 +187,7 @@ int animated<T,T_void_value>::get_animation_time() const
 	if(!started_  ) return starting_frame_time_;
 
 	return static_cast<int>(
-        (static_cast<double>(last_update_tick_ - start_tick_) * 
+        (static_cast<double>(last_update_tick_ - start_tick_) *
         acceleration_) + starting_frame_time_);
 }
 
