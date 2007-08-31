@@ -678,8 +678,23 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 //! If the times are equal, will order based on the name.
 struct save_info_less_time {
 	bool operator()(const save_info& a, const save_info& b) const {
-		return a.time_modified > b.time_modified ||
-		       a.time_modified == b.time_modified && a.name > b.name;
+		printf("Comparing %s to %s\n", a.name.c_str(), b.name.c_str());
+       		if (a.time_modified > b.time_modified) {
+		        return true;
+	  	} else if (a.time_modified < b.time_modified) {
+			return false;
+		// Special funky case; for files created in the same second,
+		// a replay file sorts less than a non-replay file.  Prevents
+		// a timing-dependent bug where it may look like, at the end
+		// of a scenario, the replay and the autosave for the next
+		// scenario are displayed in the wrong order.
+		} else if (a.name.find(_(" replay"))==std::string::npos && b.name.find(_(" replay"))!=std::string::npos) {
+			return true;
+		} else if (a.name.find(_(" replay"))!=std::string::npos && b.name.find(_(" replay"))==std::string::npos) {
+			return false;
+		} else {
+			return  a.name > b.name;
+		}
 	}
 };
 
