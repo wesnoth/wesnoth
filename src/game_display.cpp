@@ -348,7 +348,7 @@ void game_display::draw(bool update,bool force)
 			}
 
 			// Draw the grid, if that's been enabled 
-			if(grid_ && !is_shrouded && on_map) {
+			if(grid_ && !is_shrouded) {
 				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
 
