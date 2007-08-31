@@ -20,6 +20,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "preferences.hpp"
 #include "util.hpp"
 #include "serialization/parser.hpp"
@@ -249,7 +250,7 @@ const language_def& get_locale()
 			if (prefs_locale == i->localename)
 				return *i;
 		}
-		std::cerr << "locale not found in known array; defaulting to system locale\n";
+		LOG_STREAM(info, general) << "locale not found in known array; defaulting to system locale\n";
 		return known_languages[0];
 	}
 
@@ -266,7 +267,7 @@ const language_def& get_locale()
 	}
 #endif
 
-	std::cerr << "locale could not be determined; defaulting to system locale\n";
+	LOG_STREAM(info, general) << "locale could not be determined; defaulting to system locale\n";
 	return known_languages[0];
 }
 
