@@ -989,6 +989,46 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		}
 	}
 
+	if (cfg.has_child("filter_adjacent")) {
+		wassert(units_ && map_ && gamestatus_);
+		gamemap::location adjacent[6];
+		get_adjacent_tiles(loc, adjacent);
+		vconfig::child_list::const_iterator i, i_end;
+		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent");
+		for (i = adj_filt.begin(), i_end = adj_filt.end(); i != i_end; ++i) {
+			int match_count=0;
+			std::string adj_dirs = (*i).has_attribute("adjacent") ? (*i)["adjacent"]
+				: "n,ne,se,s,sw,nw";
+			std::vector<std::string> dirs = utils::split(adj_dirs);
+			std::vector<std::string>::const_iterator j, j_end = dirs.end();
+			for (j = dirs.begin(); j != j_end; ++j) {
+				gamemap::location::DIRECTION index =
+					gamemap::location::parse_direction(*j);
+				if (index == gamemap::location::NDIRECTIONS)
+					continue;
+				unit_map::const_iterator unit_itor = units_->find(adjacent[index]);
+				if (unit_itor == units_->end())
+					continue;
+				if (unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod))
+					++match_count;
+			}
+			std::string count_str = (*i).has_attribute("count") ? (*i)["count"]
+				: "1-6";
+			std::vector<std::string> counts = utils::split(count_str);
+			j_end = counts.end();
+			bool count_matches = false;
+			for (j = counts.begin(); j != j_end && !count_matches; ++j) {
+				std::pair<int,int> count_range = utils::parse_range(*j);
+				if(count_range.first <= match_count && match_count <= count_range.second) {
+					count_matches = true;
+				}
+			}
+			if(!count_matches) {
+				return false;
+			}
+		}
+	}
+
 	if(cfg.has_attribute("find_in")) {
 		// Allow filtering by searching a stored variable of units
 		wassert(gamestatus_ != NULL);
