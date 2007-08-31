@@ -1010,8 +1010,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 				if (unit_itor == units_->end())
 					continue;
 				if (unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod)
-				&& !(*i).has_attribute("is_enemy") || utils::string_bool((*i)["is_enemy"])
-				== (*gamestatus_->teams)[this->side()-1].is_enemy(unit_itor->second.side())) {
+				&& !(*i).has_attribute("is_enemy") || (utils::string_bool((*i)["is_enemy"])
+				== (*gamestatus_->teams)[this->side()-1].is_enemy(unit_itor->second.side()))) {
 					++match_count;
 				}
 			}
