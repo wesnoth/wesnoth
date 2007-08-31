@@ -838,7 +838,9 @@ private:
 
 	void menu_handler::show_chat_log()
 	{
-		std::string text = recorder.build_chat_log(teams_[gui_->viewing_team()].team_name());
+		std::string text = recorder.build_chat_log(
+		    is_observer() ? game_config::observer_team_name
+		                  : teams_[gui_->viewing_team()].team_name());
 		gui::show_dialog(*gui_,NULL,_("Chat Log"),"",gui::CLOSE_ONLY,NULL,NULL,"",&text);
 	}
 
