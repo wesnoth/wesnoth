@@ -149,8 +149,6 @@ unit::unit(const unit& o):
 
 		animations_(o.animations_),
 
-		teleport_animations_(o.teleport_animations_),
-		extra_animations_(o.extra_animations_),
 		anim_(NULL),
 
 		frame_begin_time_(o.frame_begin_time_),
@@ -452,10 +450,6 @@ void unit::advance_to(const unit_type* t)
 	// Remove old animations
 	cfg_.clear_children("animation");
 
-	cfg_.clear_children("defend");
-	cfg_.clear_children("teleport_anim");
-	cfg_.clear_children("extra_anim");
-	cfg_.clear_children("death");
 	cfg_.clear_children("attack");
 	cfg_.clear_children("abilities");
 	// Clear cache of movement costs
@@ -505,8 +499,6 @@ void unit::advance_to(const unit_type* t)
 
 	animations_ = t->animations_;
 
-	teleport_animations_ = t->teleport_animations_;
-	extra_animations_ = t->extra_animations_;
 	flag_rgb_ = t->flag_rgb();
 
 	backup_state();
@@ -1312,17 +1304,7 @@ void unit::read(const config& cfg, bool use_traits)
 	if(!type_set) {
 		if(ut) {
 			animations_ = ut->animations_;
-
-			teleport_animations_ = ut->teleport_animations_;
-			extra_animations_ = ut->extra_animations_;
-			// Remove animations from private cfg, since they're not needed there now
 			cfg_.clear_children("animation");
-
-			cfg_.clear_children("defend");
-			cfg_.clear_children("teleport_anim");
-			cfg_.clear_children("extra_anim");
-			cfg_.clear_children("death");
-			cfg_.clear_children("victory_anim");
 		} else {
 			const config::child_list& animations = cfg_.get_children("animation");
 			const config::child_list& recruit_anims = cfg_.get_children("recruit_anim");
@@ -1452,21 +1434,21 @@ void unit::read(const config& cfg, bool use_traits)
 			}
 			animations_.push_back(unit_animation(0,unit_frame(absolute_image(),150),"victory",unit_animation::DEFAULT_ANIM));
 			// Always have a victory animation
-
-
-
-
-			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
-				teleport_animations_.push_back(unit_animation(**t));
-			}
-			if(teleport_animations_.empty()) {
-				teleport_animations_.push_back(unit_animation(-20,unit_frame(absolute_image(),40)));
-				// Always have a teleport animation
-			}
-
 			for(config::child_list::const_iterator extra_anim = extra_anims.begin(); extra_anim != extra_anims.end(); ++extra_anim) {
-				extra_animations_.insert(std::pair<std::string,unit_animation>((**extra_anim)["flag"],unit_animation(**extra_anim)));
+				(**extra_anim)["apply_to"]=(**extra_anim)["flag"];
+				animations_.push_back(unit_animation(**extra_anim));
+				//lg::wml_error<<"extra animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
+				//lg::wml_error<<"please put it with an [animation] tag and apply_to=extra flag\n";
 			}
+			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
+				(**t)["apply_to"]="teleport";
+				animations_.push_back(unit_animation(**t));
+				//lg::wml_error<<"teleport animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
+				//lg::wml_error<<"please put it with an [animation] tag and apply_to=teleport flag\n";
+			}
+			animations_.push_back(unit_animation(-20,unit_frame(absolute_image(),40),"teleport",unit_animation::DEFAULT_ANIM));
+			// Always have a teleport animation
+
 
 
 		}
@@ -1666,7 +1648,8 @@ void unit::set_defending(const game_display &disp,const gamemap::location& loc, 
 void unit::set_extra_anim(const game_display &disp,const gamemap::location& loc, std::string flag)
 {
 	state_ =  STATE_EXTRA;
-	start_animation(disp,loc,extra_animation(disp,loc,flag),false);
+	printf("aaaaa %s\n",flag.c_str());
+	start_animation(disp,loc,choose_animation(disp,loc,flag),false);
 
 }
 
@@ -1718,7 +1701,7 @@ void unit::set_poisoned(const game_display &disp,const gamemap::location& loc, i
 void unit::set_teleporting(const game_display &disp,const gamemap::location& loc)
 {
 	state_ = STATE_TELEPORT;
-	start_animation(disp,loc,teleport_animation(disp,loc),false);
+	start_animation(disp,loc,choose_animation(disp,loc,"teleport"),false);
 }
 
 void unit::set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
@@ -1758,6 +1741,7 @@ void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 const unit_animation* unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool is_attack_anim)
 {
 	if(!animation) {
+	printf("missed\n");
 		set_standing(disp,loc,with_bars);
 		return NULL;
 	}
@@ -2848,46 +2832,6 @@ const std::string& unit::image_fighting(attack_type::RANGE range) const
 	}
 }
 
-const unit_animation* unit::teleport_animation(const game_display& disp, const gamemap::location& loc) const
-{
-	// Select one of the matching animations at random
-	std::vector<const unit_animation*> options;
-	int max_val = -3;
-	for(std::vector<unit_animation>::const_iterator i = teleport_animations_.begin(); i != teleport_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
-
-
-	if(options.empty()) return NULL;
-	return options[rand()%options.size()];
-}
-const unit_animation* unit::extra_animation(const game_display& disp, const gamemap::location& loc,const std::string &flag) const
-{
-	// Select one of the matching animations at random
-	std::vector<const unit_animation*> options;
-	int max_val = -3;
-	std::multimap<std::string,unit_animation>::const_iterator i;
-	for(i = extra_animations_.lower_bound(flag); i != extra_animations_.upper_bound(flag); ++i) {
-		int matching = i->second.matches(disp,loc,this);
-		if(matching == max_val) {
-			options.push_back(&i->second);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&i->second);
-		}
-	}
-	if(extra_animations_.lower_bound(flag) == extra_animations_.end()) { return NULL;}
-
-	return options[rand()%options.size()];
-}
 
 const unit_animation* unit::choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int value,const unit_animation::hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
 {

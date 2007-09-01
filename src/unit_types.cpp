@@ -508,7 +508,6 @@ unit_type::unit_type(const unit_type& o)
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), animations_(o.animations_),
 
-      teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -803,27 +802,24 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),1),"victory",unit_animation::DEFAULT_ANIM));
 	// Always have a victory animation
-
-
-
-
-
+	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
+	const config::child_list& extra_anims = expanded_cfg.get_children("extra_anim");
+	for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
+		(**t)["apply_to"] =(**t)["flag"];
+		animations_.push_back(unit_animation(**t));
+		//lg::wml_error<<"extra animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=extra flag\n";
+	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
 	const config::child_list& teleports = expanded_cfg.get_children("teleport_anim");
 	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
-		teleport_animations_.push_back(unit_animation(**t));
+		(**t)["apply_to"] ="teleport";
+		animations_.push_back(unit_animation(**t));
+		//lg::wml_error<<"teleport animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=teleport flag\n";
 	}
-	if(teleport_animations_.empty()) {
-		teleport_animations_.push_back(unit_animation(-20,unit_frame(image(),40)));
-		// Always have a defensive animation
-	}
-	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
-	const config::child_list& extra_anims = expanded_cfg.get_children("extra_anim");
-	{
-		for(config::child_list::const_iterator t = extra_anims.begin(); t != extra_anims.end(); ++t) {
-			extra_animations_.insert(std::pair<std::string,unit_animation>((**t)["flag"],unit_animation(**t)));
-		}
-	}
+	animations_.push_back(unit_animation(-20,unit_frame(image(),40),"teleport",unit_animation::DEFAULT_ANIM));
+	// Always have a defensive animation
 
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);

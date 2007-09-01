@@ -274,8 +274,6 @@ private:
 	// animations
 	std::vector<unit_animation> animations_;
 
-	std::vector<unit_animation> teleport_animations_;
-	std::multimap<std::string,unit_animation> extra_animations_;
     std::string flag_rgb_;
 };
 

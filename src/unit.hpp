@@ -266,8 +266,6 @@ public:
 
 	const unit_animation* choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int damage=0,const unit_animation::hit_type hit_type = unit_animation::INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
-	const unit_animation* teleport_animation(const game_display& disp, const gamemap::location& loc) const;
-	const unit_animation* extra_animation(const game_display& disp, const gamemap::location& loc,const std::string &flag) const;
 
 	bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 	unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;
@@ -375,8 +373,6 @@ private:
 	// Animations:
 	std::vector<unit_animation> animations_;
 
-	std::vector<unit_animation> teleport_animations_;
-	std::multimap<std::string,unit_animation> extra_animations_;
 	unit_animation *anim_;
 	int next_idling_;
 	int frame_begin_time_;
