@@ -41,6 +41,7 @@ namespace game_config
 	extern std::string path;
 
 	struct server_info {
+		server_info() : name(""), address("") { }
 		std::string name;
 		std::string address; //may include ':' followed by port number
 	};
