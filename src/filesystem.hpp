@@ -149,7 +149,7 @@ class scoped_istream {
 	std::istream *stream;
 public:
 	scoped_istream(std::istream *s): stream(s) {}
-	void operator=(std::istream *);
+	scoped_istream& operator=(std::istream *);
 	std::istream &operator*() { return *stream; }
 	std::istream *operator->() { return stream; }
 	~scoped_istream();
@@ -159,7 +159,7 @@ class scoped_ostream {
 	std::ostream *stream;
 public:
 	scoped_ostream(std::ostream *s): stream(s) {}
-	void operator=(std::ostream *);
+	scoped_ostream& operator=(std::ostream *);
 	std::ostream &operator*() { return *stream; }
 	std::ostream *operator->() { return stream; }
 	~scoped_ostream();

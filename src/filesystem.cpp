@@ -1049,10 +1049,11 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	return "";
 }
 
-void scoped_istream::operator=(std::istream *s)
+scoped_istream& scoped_istream::operator=(std::istream *s)
 {
 	delete stream;
 	stream = s;
+	return *this;
 }
 
 scoped_istream::~scoped_istream()
@@ -1060,10 +1061,11 @@ scoped_istream::~scoped_istream()
 	delete stream;
 }
 
-void scoped_ostream::operator=(std::ostream *s)
+scoped_ostream& scoped_ostream::operator=(std::ostream *s)
 {
 	delete stream;
 	stream = s;
+	return *this;
 }
 
 scoped_ostream::~scoped_ostream()
