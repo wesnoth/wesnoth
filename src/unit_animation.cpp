@@ -121,7 +121,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
 	for(std::vector<std::string>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
 		const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
-		directions.push_back(d);
+		directions_.push_back(d);
 	}
 	config::const_child_iterator itor;
 	for(itor = cfg.child_range("unit_filter").first; itor <cfg.child_range("unit_filter").second;itor++) {
@@ -139,14 +139,33 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 		value_.push_back(atoi(value->c_str()));
 	}
 
-	/* warn on deprecated WML */
-	if(cfg.child("sound")) {
-		lg::wml_error << "an animation uses the deprecated [sound] tag, please include sound in the [frame] tag, support will be removed in version 1.3.4\n";
-
+	std::vector<std::string> hits_str = utils::split(cfg["hits"]);
+	std::vector<std::string>::iterator hit;
+	for(hit=hits_str.begin() ; hit != hits_str.end() ; hit++) {
+		if(*hit == "yes" || *hit == "hit") {
+			hits_.push_back(HIT);
+		}
+		if(*hit == "no" || *hit == "miss") {
+			hits_.push_back(MISS);
+		}
+		if(*hit == "yes" || *hit == "kill" ) {
+			hits_.push_back(KILL);
+		}
+	}
+	std::vector<std::string> swing_str = utils::split(cfg["swing"]);
+	std::vector<std::string>::iterator swing;
+	for(swing=swing_str.begin() ; swing != swing_str.end() ; swing++) {
+		swing_num_.push_back(atoi(swing->c_str()));
+	}
+	for(itor = cfg.child_range("attack_filter").first; itor <cfg.child_range("attack_filter").second;itor++) {
+		primary_attack_filter_.push_back(**itor);
+	}
+	for(itor = cfg.child_range("secondary_attack_filter").first; itor <cfg.child_range("secondary_attack_filter").second;itor++) {
+		secondary_attack_filter_.push_back(**itor);
 	}
 }
 
-int unit_animation::matches(const game_display& disp, const gamemap::location& loc,const unit* my_unit,const int value,const std::string & event) const
+int unit_animation::matches(const game_display &disp,const gamemap::location& loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
 {
 	int result = base_score_;
 	if(event_.empty() ==false) {
@@ -172,8 +191,8 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 		}
 	}
 	if(my_unit) {
-		if(directions.empty()== false) {
-			if (std::find(directions.begin(),directions.end(),my_unit->facing())== directions.end()) {
+		if(directions_.empty()== false) {
+			if (std::find(directions_.begin(),directions_.end(),my_unit->facing())== directions_.end()) {
 				return MATCH_FAIL;
 			} else {
 				result ++;
@@ -205,106 +224,38 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 	if(frequency_ && !(rand()%frequency_)) return MATCH_FAIL;
 
 
-
-	return result;
-}
-
-fighting_animation::fighting_animation(const config& cfg) :unit_animation(cfg)
-{
-	std::vector<std::string> hits_str = utils::split(cfg["hits"]);
-	std::vector<std::string>::iterator hit;
-	for(hit=hits_str.begin() ; hit != hits_str.end() ; hit++) {
-		if(*hit == "yes" || *hit == "hit") {
-			hits.push_back(HIT);
-		}
-		if(*hit == "no" || *hit == "miss") {
-			hits.push_back(MISS);
-		}
-		if(*hit == "yes" || *hit == "kill" ) {
-			hits.push_back(KILL);
-		}
-	}
-	std::vector<std::string> swing_str = utils::split(cfg["swing"]);
-	std::vector<std::string>::iterator swing;
-	for(swing=swing_str.begin() ; swing != swing_str.end() ; swing++) {
-		swing_num.push_back(atoi(swing->c_str()));
-	}
-	config::const_child_iterator itor;
-	for(itor = cfg.child_range("attack_filter").first; itor <cfg.child_range("attack_filter").second;itor++) {
-		primary_filter.push_back(**itor);
-	}
-	for(itor = cfg.child_range("secondary_attack_filter").first; itor <cfg.child_range("secondary_attack_filter").second;itor++) {
-		secondary_filter.push_back(**itor);
-	}
-
-}
-
-
-int fighting_animation::matches(const game_display& disp, const gamemap::location & loc,const unit* my_unit,
-		hit_type hit,const attack_type* attack, const attack_type* secondary_attack,int swing,int damage) const
-{
-	int result = unit_animation::matches(disp,loc,my_unit,damage);
-	if(result == MATCH_FAIL) return MATCH_FAIL;
-	if(hits.empty() == false ) {
-		if (std::find(hits.begin(),hits.end(),hit)== hits.end()) {
+	if(hits_.empty() == false ) {
+		if (std::find(hits_.begin(),hits_.end(),hit)== hits_.end()) {
 			return MATCH_FAIL;
 		} else {
 			result ++;
 		}
 	}
-	if(swing_num.empty() == false ) {
-		if (std::find(swing_num.begin(),swing_num.end(),swing)== swing_num.end()) {
+	if(swing_num_.empty() == false ) {
+		if (std::find(swing_num_.begin(),swing_num_.end(),swing_num)== swing_num_.end()) {
 			return MATCH_FAIL;
 		} else {
 			result ++;
 		}
 	}
 	if(!attack) {
-		if(!primary_filter.empty())
+		if(!primary_attack_filter_.empty())
 			return MATCH_FAIL;
 	}
 	std::vector<config>::const_iterator myitor;
-	for(myitor = primary_filter.begin(); myitor != primary_filter.end(); myitor++) {
+	for(myitor = primary_attack_filter_.begin(); myitor != primary_attack_filter_.end(); myitor++) {
 		if(!attack->matches_filter(*myitor)) return MATCH_FAIL;
 		result++;
 	}
-	if(!secondary_attack) {
-		if(!secondary_filter.empty())
+	if(!second_attack) {
+		if(!secondary_attack_filter_.empty())
 			return MATCH_FAIL;
 	}
-	for(myitor = secondary_filter.begin(); myitor != secondary_filter.end(); myitor++) {
-		if(!secondary_attack->matches_filter(*myitor)) return MATCH_FAIL;
+	for(myitor = secondary_attack_filter_.begin(); myitor != secondary_attack_filter_.end(); myitor++) {
+		if(!second_attack->matches_filter(*myitor)) return MATCH_FAIL;
 		result++;
 	}
 	return result;
+
 }
 
-
-//
-//poison_animation::poison_animation(const config& cfg) :unit_animation(cfg)
-//{
-//	std::vector<std::string> damage_str = utils::split(cfg["damage"]);
-//	std::vector<std::string>::iterator damage;
-//	for(damage=damage_str.begin() ; damage != damage_str.end() ; damage++) {
-//		damage_.push_back(atoi(damage->c_str()));
-//	}
-//}
-//
-//healed_animation::healed_animation(const config& cfg) :unit_animation(cfg)
-//{
-//	std::vector<std::string> damage_str = utils::split(cfg["healing"]);
-//	std::vector<std::string>::iterator damage;
-//	for(damage=damage_str.begin() ; damage != damage_str.end() ; damage++) {
-//		healing_.push_back(atoi(damage->c_str()));
-//	}
-//}
-//
-//healing_animation::healing_animation(const config& cfg) :unit_animation(cfg)
-//{
-//	std::vector<std::string> damage_str = utils::split(cfg["damage"]);
-//	std::vector<std::string>::iterator damage;
-//	for(damage=damage_str.begin() ; damage != damage_str.end() ; damage++) {
-//		damage_.push_back(atoi(damage->c_str()));
-//	}
-//}
-//

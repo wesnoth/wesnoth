@@ -110,13 +110,13 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 }
 
 const attack_animation* attack_type::animation(const game_display& disp, const gamemap::location& loc,const unit* my_unit,
-		const fighting_animation::hit_type hit,const attack_type*secondary_attack,int swing_num,int damage) const
+		const unit_animation::hit_type hit,const attack_type*secondary_attack,int swing_num,int damage) const
 {
 	// Select one of the matching animations at random
 	std::vector<const attack_animation*>  options;
 	int max_val = -3;
 	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
-		int matching = i->matches(disp,loc,my_unit,hit,this,secondary_attack,swing_num,damage);
+		int matching = i->matches(disp,loc,my_unit,"attack",damage,hit,this,secondary_attack,swing_num);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {

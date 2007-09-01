@@ -1655,13 +1655,13 @@ void unit::set_defending(const game_display &disp,const gamemap::location& loc, 
 {
 	state_ =  STATE_DEFENDING;
 
-	fighting_animation::hit_type hit_type;
+	unit_animation::hit_type hit_type;
 	if(damage >= hitpoints()) {
-		hit_type = fighting_animation::KILL;
+		hit_type = unit_animation::KILL;
 	} else if(damage > 0) {
-		hit_type = fighting_animation::HIT;
+		hit_type = unit_animation::HIT;
 	}else {
-		hit_type = fighting_animation::MISS;
+		hit_type = unit_animation::MISS;
 	}
 	start_animation(disp,loc,defend_animation(disp,loc,hit_type,attack,secondary_attack,swing_num,damage),true);
 
@@ -1682,13 +1682,13 @@ void unit::set_extra_anim(const game_display &disp,const gamemap::location& loc,
 const unit_animation & unit::set_attacking(const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num)
 {
 	state_ =  STATE_ATTACKING;
-	fighting_animation::hit_type hit_type;
+	unit_animation::hit_type hit_type;
 	if(damage >= hitpoints()) {
-		hit_type = fighting_animation::KILL;
+		hit_type = unit_animation::KILL;
 	} else if(damage > 0) {
-		hit_type = fighting_animation::HIT;
+		hit_type = unit_animation::HIT;
 	}else {
-		hit_type = fighting_animation::MISS;
+		hit_type = unit_animation::MISS;
 	}
 	return *start_animation(disp,loc,type.animation(disp,loc,this,hit_type,secondary_attack,swing_num,damage),true,true);
 
@@ -1733,7 +1733,7 @@ void unit::set_teleporting(const game_display &disp,const gamemap::location& loc
 void unit::set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_DYING;
-	start_animation(disp,loc,die_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack),false);
+	start_animation(disp,loc,die_animation(disp,loc,unit_animation::KILL,attack,secondary_attack),false);
 	image::locator image_loc = anim_->get_last_frame().image();
 	anim_->add_frame(600,unit_frame(image_loc,600,"1~0:600"));
 }
@@ -1745,12 +1745,12 @@ void unit::set_healing(const game_display &disp,const gamemap::location& loc,int
 void unit::set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_VICTORIOUS;
-	start_animation(disp,loc,victorious_animation(disp,loc,fighting_animation::KILL,attack,secondary_attack),true);
+	start_animation(disp,loc,victorious_animation(disp,loc,unit_animation::KILL,attack,secondary_attack),true);
 }
 
 void unit::set_walking(const game_display &disp,const gamemap::location& loc)
 {
-	if(state_ == STATE_WALKING && anim_ != NULL && anim_->matches(disp,loc,this,0,"movement") >unit_animation::MATCH_FAIL) {
+	if(state_ == STATE_WALKING && anim_ != NULL && anim_->matches(disp,loc,this,"movement") >unit_animation::MATCH_FAIL) {
 		return; // finish current animation, don't start a new one
 	}
 	state_ = STATE_WALKING;
@@ -2858,13 +2858,13 @@ const std::string& unit::image_fighting(attack_type::RANGE range) const
 }
 
 const defensive_animation* unit::defend_animation(const game_display& disp, const gamemap::location& loc,
-		fighting_animation::hit_type hits, const attack_type* attack,const attack_type* secondary_attack, int swing_num,int damage) const
+		unit_animation::hit_type hits, const attack_type* attack,const attack_type* secondary_attack, int swing_num,int damage) const
 {
 	// Select one of the matching animations at random
 	std::vector<const defensive_animation*> options;
 	int max_val = -3;
 	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,hits,attack,secondary_attack,swing_num,damage);
+		int matching = i->matches(disp,loc,this,"defend",damage,hits,attack,secondary_attack,swing_num);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
@@ -2918,13 +2918,13 @@ const unit_animation* unit::extra_animation(const game_display& disp, const game
 	return options[rand()%options.size()];
 }
 const death_animation* unit::die_animation(const game_display& disp, const gamemap::location& loc,
-		fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
+		unit_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
 {
 	// Select one of the matching animations at random
 	std::vector<const death_animation*> options;
 	int max_val = -3;
 	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,hits,attack,secondary_attack,0,0);
+		int matching = i->matches(disp,loc,this,"death",0,hits,attack,secondary_attack);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
@@ -2940,13 +2940,13 @@ const death_animation* unit::die_animation(const game_display& disp, const gamem
 }
 
 
-const unit_animation* unit::choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int damage) const
+const unit_animation* unit::choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int value) const
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
 	for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,damage,event);
+		int matching = i->matches(disp,loc,this,event,value);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
@@ -2964,13 +2964,13 @@ const unit_animation* unit::choose_animation(const game_display& disp, const gam
 
 
 const victory_animation* unit::victorious_animation(const game_display& disp, const gamemap::location& loc,
-		fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
+		unit_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
 {
 	// Select one of the matching animations at random
 	std::vector<const victory_animation*> options;
 	int max_val = -3;
 	for(std::vector<victory_animation>::const_iterator i = victory_animations_.begin(); i != victory_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,hits,attack,secondary_attack,0,0);
+		int matching = i->matches(disp,loc,this,"victory",0,hits,attack,secondary_attack,0);
 		if(matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {

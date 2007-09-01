@@ -267,14 +267,14 @@ public:
 	const unit_animation* choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int damage=0) const;
 
 	const defensive_animation* defend_animation(const game_display& disp, const gamemap::location& loc,
-			fighting_animation::hit_type hits,const attack_type* attack,
+			unit_animation::hit_type hits,const attack_type* attack,
 			const attack_type* secondary_attack,int swing_num,int damage) const;
 	const unit_animation* teleport_animation(const game_display& disp, const gamemap::location& loc) const;
 	const unit_animation* extra_animation(const game_display& disp, const gamemap::location& loc,const std::string &flag) const;
 	const death_animation* die_animation(const game_display& disp, const gamemap::location& loc,
-			fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
+			unit_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
 	const victory_animation* victorious_animation(const game_display& disp, const gamemap::location& loc,
-			fighting_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
+			unit_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const;
 
 	bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 	unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;

@@ -27,82 +27,71 @@
 
 
 class game_display;
+class attack_type;
 
 class unit_animation:public animated<unit_frame>
 {
 	public:
+		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1};
+		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
 		static config prepare_animation(const config &cfg,const std::string animation_tag);
 
 		unit_animation(){};
 		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
-		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const int value=0,const std::string & event="") const;
-		enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1};
+		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
 	private:
 		t_translation::t_list terrain_types_;
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;
-		std::vector<gamemap::location::DIRECTION> directions;
+		std::vector<gamemap::location::DIRECTION> directions_;
 		int frequency_;
 		int base_score_;
 		std::vector<std::string> event_;
 		std::vector<int> value_;
-};
-
-class attack_type;
-
-
-class fighting_animation:public unit_animation
-{
-	public:
-		typedef enum { HIT, MISS, KILL} hit_type;
-
-		explicit fighting_animation(const config& cfg);
-		explicit fighting_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame) {};
-		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num,int damage) const;
-
-	private:
-		std::vector<config> primary_filter;
-		std::vector<config> secondary_filter;
-		std::vector<hit_type> hits;
-		std::vector<int> swing_num;
-};
-
-class defensive_animation:public fighting_animation
-{
-	public:
-		explicit defensive_animation(const config& cfg):fighting_animation(cfg){};
-		explicit defensive_animation(int start_time,const unit_frame &frame):fighting_animation(start_time,frame){};
+		std::vector<config> primary_attack_filter_;
+		std::vector<config> secondary_attack_filter_;
+		std::vector<hit_type> hits_;
+		std::vector<int> swing_num_;
 };
 
 
-class death_animation:public fighting_animation
+
+
+class defensive_animation:public unit_animation
 {
 	public:
-		explicit death_animation(const config& cfg):fighting_animation(cfg){};
-		explicit death_animation(int start_time,const unit_frame &frame):fighting_animation(start_time,frame) {};
+		explicit defensive_animation(const config& cfg):unit_animation(cfg){};
+		explicit defensive_animation(int start_time,const unit_frame &frame):unit_animation(start_time,frame){};
+};
+
+
+class death_animation:public unit_animation
+{
+	public:
+		explicit death_animation(const config& cfg):unit_animation(cfg){};
+		explicit death_animation(int start_time,const unit_frame &frame):unit_animation(start_time,frame) {};
 	private:
 };
 
-class attack_animation: public fighting_animation
+class attack_animation: public unit_animation
 {
 	public:
-		explicit attack_animation(const config& cfg):fighting_animation(cfg),missile_anim(cfg,"missile_frame"){};
-		explicit attack_animation(int start_time,const unit_frame &frame):fighting_animation(start_time,frame) {};
+		explicit attack_animation(const config& cfg):unit_animation(cfg),missile_anim(cfg,"missile_frame"){};
+		explicit attack_animation(int start_time,const unit_frame &frame):unit_animation(start_time,frame) {};
 		const unit_animation &get_missile_anim() {return missile_anim;}
 	private:
 		unit_animation missile_anim;
 
 };
 
-class victory_animation:public fighting_animation
+class victory_animation:public unit_animation
 {
 	public:
-		explicit victory_animation(const config& cfg):fighting_animation(cfg){};
+		explicit victory_animation(const config& cfg):unit_animation(cfg){};
 		explicit victory_animation(int start_time,const unit_frame &frame):
-			fighting_animation(start_time,frame){};
+			unit_animation(start_time,frame){};
 
 	private:
 };
