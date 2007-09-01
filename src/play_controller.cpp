@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file play_controller.cpp 
+//! Handle input via mouse & keyboard, events, schedule commands.
+
 #include "play_controller.hpp"
 #include "dialogs.hpp"
 #include "config_adapter.hpp"
@@ -59,8 +62,8 @@ play_controller::~play_controller(){
 }
 
 void play_controller::init(CVideo& video){
-	//if the recorder has no event, adds an "game start" event to the
-	//recorder, whose only goal is to initialize the RNG
+	// If the recorder has no event, adds an "game start" event 
+	// to the recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
 		recorder.add_start();
 	} else {
@@ -95,7 +98,7 @@ void play_controller::init(CVideo& video){
 	preferences::encounter_recallable_units(gamestate_);
 	preferences::encounter_map_terrain(map_);
 
-	LOG_NG << "initialized teams... " << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
 	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
@@ -122,8 +125,8 @@ void play_controller::init_managers(){
 	tooltips_manager_ = new tooltips::manager(gui_->video());
 	soundsources_manager_ = new soundsource::manager(*gui_);
 
-	//this *needs* to be created before the show_intro and show_map_scene
-	//as that functions use the manager state_of_game
+	// This *needs* to be created before the show_intro and show_map_scene
+	// as that functions use the manager state_of_game
 	events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
                                                    units_,teams_, gamestate_,status_,gameinfo_);
 
@@ -272,8 +275,8 @@ const int play_controller::get_ticks(){
 }
 
 void play_controller::fire_prestart(bool execute){
-	//pre-start events must be executed before any GUI operation,
-	//as those may cause the display to be refreshed.
+	// pre-start events must be executed before any GUI operation,
+	// as those may cause the display to be refreshed.
 	if (execute){
 		update_locker lock_display(gui_->video());
 		game_events::fire("prestart");
@@ -315,10 +318,10 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	gamestate_.set_variable("side_number",player_number_str.str());
 	gamestate_.last_selected = gamemap::location::null_location;
 
-	/*
-		normally, events must not be actively fired through replays, because they have been
-		recorded previously and therefore will get executed anyway. Firing them in the normal
-		code would lead to double execution.
+	/*  
+		Normally, events must not be actively fired through replays, because 
+		they have been recorded previously and therefore will get executed anyway. 
+		Firing them in the normal code would lead to double execution.
 		However, the following events are different in that they need to be executed _now_
 		(before calculation of income and healing) or we will risk OOS errors if we manipulate
 		these informations inside the events and in the replay have a different order of execution.
@@ -329,15 +332,16 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		game_events::fire("side turn");
 		first_turn_ = false;
 	} else
-	//fire side turn event only if real side change occurs not counting changes from void to a side
+	// Fire side turn event only if real side change occurs,
+	// not counting changes from void to a side
 	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
 		game_events::fire("side turn");
 	}
 
-	//we want to work out if units for this player should get healed, and the
-	//player should get income now. healing/income happen if it's not the first
-	//turn of processing, or if we are loading a game, and this is not the
-	//player it started with.
+	// We want to work out if units for this player should get healed, 
+	// and the player should get income now. 
+	// Healing/income happen if it's not the first turn of processing, 
+	// or if we are loading a game, and this is not the player it started with.
 	const bool turn_refresh = status_.turn() > start_turn_ || loading_game_ && team_index != (first_player_ - 1);
 
 	if(turn_refresh) {
@@ -349,8 +353,8 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 
 		current_team.new_turn();
 
-		//if the expense is less than the number of villages owned,
-		//then we don't have to pay anything at all
+		// If the expense is less than the number of villages owned,
+		// then we don't have to pay anything at all
 		const int expense = team_upkeep(units_,player_number_) -
 								current_team.villages().size();
 		if(expense > 0) {
@@ -380,9 +384,11 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 bool play_controller::do_replay(const bool replaying){
 	bool result = false;
 	if(replaying) {
-		/* YogiHH: I can't see why we need another key_handler here in addition
-		to the one defined in play_controller. Since this is causing problems with
-		double execution of hotkeys i will comment it out
+		// YogiHH: I can't see why we need another key_handler here 
+		// in addition to the one defined in play_controller. 
+		// Since this is causing problems with double execution of hotkeys,
+		// I will comment it out
+		/* 
 		const hotkey::basic_handler key_events_handler(gui_);
 		*/
 		LOG_NG << "doing replay " << player_number_ << "\n";
@@ -390,7 +396,7 @@ bool play_controller::do_replay(const bool replaying){
 			result = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
 						          player_number_,status_,gamestate_);
 		} catch(replay::error&) {
-			//in next version after string freeze add to text ". continue playing?"
+			//! @todo In next version after string freeze add to text ". continue playing?"
 			if(gui::dialog(*gui_,"",_("The file you have tried to load is corrupt"),gui::OK_CANCEL).show())
 				throw;
 
@@ -407,7 +413,8 @@ void play_controller::finish_side_turn(){
 			uit->second.end_turn();
 	}
 
-	//This implements "delayed map sharing." It's meant as an alternative to shared vision.
+	// This implements "delayed map sharing." 
+	// It is meant as an alternative to shared vision.
 	if(current_team().copy_ally_shroud()) {
 		gui_->recalculate_minimap();
 		gui_->invalidate_all();
@@ -438,7 +445,7 @@ bool play_controller::enemies_visible() const
 	if(current_team().uses_fog() == false && current_team().uses_shroud() == false)
 		return true;
 
-	//See if any enemies are visible
+	// See if any enemies are visible
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u)
 		if(current_team().is_enemy(u->second.side()) && !gui_->fogged(u->first))
 			return true;
@@ -451,7 +458,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 	if(index >= 0) {
 		unsigned i = static_cast<unsigned>(index);
 		if(i < savenames_.size() && !savenames_[i].empty()) {
-			//load the game by throwing load_game_exception
+			// Load the game by throwing load_game_exception
 			throw game::load_game_exception(savenames_[i],false);
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
@@ -461,7 +468,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			gamemap::location const& menu_hex = mouse_handler_.get_last_hex();
 			recorder.add_event(wml_commands_[i]->name, menu_hex);
 			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
-				//the event has mutated the gamestate
+				// The event has mutated the gamestate
 				apply_shroud_changes(undo_stack_, gui_, status_, map_, gameinfo_,
 					units_, teams_, (player_number_ - 1));
 				undo_stack_.clear();
@@ -472,6 +479,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 	return command_executor::execute_command(command, index);
 }
 
+//! Check if a command can be executed.
 bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	if(index >= 0) {
@@ -483,7 +491,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	}
 	switch(command) {
 
-	//commands we can always do
+	// Commands we can always do:
 	case hotkey::HOTKEY_LEADER:
 	case hotkey::HOTKEY_CYCLE_UNITS:
 	case hotkey::HOTKEY_CYCLE_BACK_UNITS:
@@ -508,11 +516,13 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_USER_CMD:
 	case hotkey::HOTKEY_CLEAR_MSG:
 #ifdef USRCMD2
+//%%
 	case hotkey::HOTKEY_USER_CMD_2:
 	case hotkey::HOTKEY_USER_CMD_3:
 #endif
 		return true;
 
+	// Commands that have some precondions:
 	case hotkey::HOTKEY_SAVE_GAME:
 		return !events::commands_disabled;
 
@@ -521,7 +531,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 		return enemies_visible();
 
 	case hotkey::HOTKEY_LOAD_GAME:
-		return network::nconnections() == 0; //can only load games if not in a network game
+		return network::nconnections() == 0; // Can only load games if not in a network game
 
 	case hotkey::HOTKEY_CHAT_LOG:
 		return network::nconnections() > 0;
@@ -592,6 +602,7 @@ int play_controller::find_human_team_before(const size_t team_num) const
 	return human_side+1;
 }
 
+//! Process mouse- and keypress-events from SDL.
 void play_controller::handle_event(const SDL_Event& event)
 {
 	if(gui::in_dialog()) {
@@ -600,8 +611,9 @@ void play_controller::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_KEYDOWN:
-		//detect key press events, unless there is a textbox present on-screen
-		//in which case the key press events should go only to it.
+//%%
+		// Detect key press events, unless there is a textbox present on-screen,
+		// in which case the key press events should go only to it.
 		if(menu_handler_.get_textbox().active() == false) {
 			hotkey::key_event(*gui_,event.key,this);
 		} else {
@@ -615,11 +627,11 @@ void play_controller::handle_event(const SDL_Event& event)
 			break;
 		}
 
-		//intentionally fall-through
+		// intentionally fall-through
 	case SDL_KEYUP:
 
-		//if the user has pressed 1 through 9, we want to show how far
-		//the unit can move in that many turns
+		// If the user has pressed 1 through 9, we want to show 
+		// how far the unit can move in that many turns
 		if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '7') {
 			const int new_path_turns = (event.type == SDL_KEYDOWN) ?
 			                           event.key.keysym.sym - '1' : 0;
@@ -638,10 +650,13 @@ void play_controller::handle_event(const SDL_Event& event)
 				}
 			}
 		}
+//%%
+//		std::cerr << "@play_controller.cpp::handle_event : Key pressed: " << event.key.keysym.sym 
+//				<< std::endl;
 
 		break;
 	case SDL_MOUSEMOTION:
-		// ignore old mouse motion events in the event queue
+		// Ignore old mouse motion events in the event queue
 		SDL_Event new_event;
 
 		if(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
@@ -807,7 +822,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 					wml_commands_.push_back(itor->second);
 					std::string newitem = itor->second->description;
 
-					//prevent accidental hotkey binding by appending a space
+					// Prevent accidental hotkey binding by appending a space
 					push_back<std::string, char>(newitem, ' ');
 					newitems.push_back(newitem);
 				}
@@ -826,19 +841,19 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
-			//autosave visibility is similar to LOAD_GAME hotkey
+			// Autosave visibility is similar to LOAD_GAME hotkey
 			command = hotkey::HOTKEY_LOAD_GAME;
 		} else {
 			command = hotkey::get_hotkey(*i).get_id();
 		}
-		//remove WML commands if they would not be allowed here
+		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {
 			if(!context_menu || gui_->viewing_team() != gui_->playing_team()
 			|| events::commands_disabled || !teams_[gui_->viewing_team()].is_human()) {
 				i = items.erase(i);
 				continue;
 			}
-		//remove commands that can't be executed or don't belong in this type of menu
+		// Remove commands that can't be executed or don't belong in this type of menu
 		} else if(!can_execute_command(command)
 		|| (context_menu && !in_context_menu(command))) {
 			i = items.erase(i);
@@ -847,7 +862,7 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 		++i;
 	}
 
-	//add special non-hotkey items to the menu and remember their indeces
+	// Add special non-hotkey items to the menu and remember their indeces
 	expand_autosaves(items);
 	expand_wml_commands(items);
 
@@ -857,12 +872,12 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 	command_executor::show_menu(items, xloc, yloc, context_menu, *gui_);
 }
 
-// Indicates whether the command should be in the context menu or not.
-// Independant of whether or not we can actually execute the command.
+//! Determines whether the command should be in the context menu or not.
+//! Independant of whether or not we can actually execute the command.
 bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 {
 	switch(command) {
-	//Only display these if the mouse is over a castle or keep tile
+	// Only display these if the mouse is over a castle or keep tile
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
 	case hotkey::HOTKEY_RECALL: {
