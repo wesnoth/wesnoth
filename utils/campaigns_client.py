@@ -174,8 +174,8 @@ if __name__ == "__main__":
             info = os.path.join(options.campaigns_dir, name, "info.cfg")
             local_uploads, local_version = get_info(info)
             if uploads != local_uploads:
-                # The uploads < local_uploads likely means a server reset
-                if version != local_version or uploads < local_uploads:
+                # The uploads > local_uploads likely means a server reset
+                if version != local_version or uploads > local_uploads:
                     get(name, version, uploads, options.campaigns_dir)
                 else:
                     print "Not downloading", name,\
