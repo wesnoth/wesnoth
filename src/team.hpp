@@ -33,7 +33,7 @@ class team : public viewpoint
 {
 	class shroud_map {
 	public:
-		shroud_map() : enabled_(false) {}
+		shroud_map() : enabled_(false), data_() {}
 
 		void place(size_t x, size_t y);
 		bool clear(size_t x, size_t y);
