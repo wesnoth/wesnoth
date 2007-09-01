@@ -230,7 +230,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 	}
 }
 
-//! Initilizes a unit from a unit type.
+//! Initializes a unit from a unit type.
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t,
 					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
@@ -574,6 +574,7 @@ const std::string& unit::profile() const
 	return absolute_image();
 }
 
+//! Colors for the unit's hitpoints.
 SDL_Colour unit::hp_color() const
 {
   double unit_energy = 0.0;
@@ -610,6 +611,8 @@ SDL_Colour unit::hp_color() const
   }
   return energy_colour;
 }
+
+//! Colors for the unit's XP.
 SDL_Colour unit::xp_color() const
 {
   const SDL_Color near_advance_colour = {255,255,255,0};
@@ -1353,6 +1356,7 @@ void unit::read(const config& cfg, bool use_traits)
 			for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
 				(**leading_anim)["apply_to"]="leading";
 				animations_.push_back(unit_animation(**leading_anim));
+				//! @deprecated leading animations are deprecate
 				//lg::wml_error<<"leading animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
 				//lg::wml_error<<"please put it with an [animation] tag and apply_to=leading flag\n";
 			}
