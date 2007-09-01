@@ -39,13 +39,13 @@ class color_range
 public:
   color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){};
   color_range(const std::vector<Uint32>& v)
+    : mid_(v.size()     ? v[0] : 0x00808080),
+      max_(v.size() > 1 ? v[1] : 0x00FFFFFF),
+      min_(v.size() > 2 ? v[2] : 0x00000000),
+      rep_(v.size() > 3 ? v[3] : mid_)
   {
-    mid_ = v.size() ? v[0] : 0x00808080;
-    max_ = v.size() > 1 ? v[1] : 0x00FFFFFF;
-    min_ = v.size() > 2 ? v[2] : 0x00000000;
-    rep_ = v.size() > 3 ? v[3] : mid_;
   };
-  color_range(){color_range(0x00808080,0x00FFFFFF,0x00000000,0x00808080);};
+  color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {};
   Uint32 mid() const{return(mid_);};
   Uint32 max() const{return(max_);};
   Uint32 min() const{return(min_);};

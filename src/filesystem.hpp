@@ -22,7 +22,7 @@
 
 //an exception object used when an IO error occurs
 struct io_exception : public std::exception {
-	io_exception() {}
+	io_exception() : message("") {}
 	io_exception(const std::string& msg) : message(msg) {}
 	virtual ~io_exception() throw() {}
 
