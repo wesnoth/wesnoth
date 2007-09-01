@@ -837,11 +837,11 @@ file_tree_checksum::file_tree_checksum()
     : nfiles(0), sum_size(0), modified(0)
 {}
 
-file_tree_checksum::file_tree_checksum(const config& cfg)
+file_tree_checksum::file_tree_checksum(const config& cfg) :
+	nfiles  (lexical_cast_default<size_t>(cfg["nfiles"])),
+	sum_size(lexical_cast_default<size_t>(cfg["size"])),
+	modified(lexical_cast_default<time_t>(cfg["modified"]))
 {
-	nfiles = lexical_cast_default<size_t>(cfg["nfiles"]);
-	sum_size = lexical_cast_default<size_t>(cfg["size"]);
-	modified = lexical_cast_default<time_t>(cfg["modified"]);
 }
 
 void file_tree_checksum::write(config& cfg) const
@@ -960,10 +960,10 @@ static void init_binary_paths()
 	}
 }
 
-binary_paths_manager::binary_paths_manager()
+binary_paths_manager::binary_paths_manager() : paths_()
 {}
 
-binary_paths_manager::binary_paths_manager(const config& cfg)
+binary_paths_manager::binary_paths_manager(const config& cfg) : paths_()
 {
 	set_paths(cfg);
 }
