@@ -82,7 +82,7 @@ struct event_context
 void pump();
 
 struct pump_info {
-	pump_info() : ticks_(0) {}
+	pump_info() : resize_dimensions(), ticks_(0) {}
 	std::pair<int,int> resize_dimensions;
 	int ticks(unsigned *refresh_counter=NULL, unsigned refresh_rate=1);
 private:
