@@ -133,9 +133,6 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	}
 	frequency_ = atoi(cfg["frequency"].c_str());
 
-	for(itor = cfg.child_range("neighbour_unit_filter").first; itor <cfg.child_range("neighbour_unit_filter").second;itor++) {
-		neighbour_unit_filter_.push_back(**itor);
-	}
 	std::vector<std::string> value_str = utils::split(cfg["value"]);
 	std::vector<std::string>::iterator value;
 	for(value=value_str.begin() ; value != value_str.end() ; value++) {
@@ -202,26 +199,6 @@ int unit_animation::matches(const game_display& disp, const gamemap::location& l
 				}
 			}
 			if(unit == disp.get_const_units().end()) return MATCH_FAIL;
-		}
-		if(!neighbour_unit_filter_.empty()) {
-			gamemap::location neighbour_loc[6] ;
-			get_adjacent_tiles(loc,neighbour_loc);
-			unit_map::const_iterator unit;
-			std::vector<config>::const_iterator second_itor;
-			for(second_itor = neighbour_unit_filter_.begin(); second_itor != neighbour_unit_filter_.end(); second_itor++) {
-				bool found = false;
-				for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; unit++) {
-					for(int dir =0; dir < 6 ;dir++) {
-						if(unit->first == neighbour_loc[dir]) {
-							if(unit->second.matches_filter(&(*second_itor),neighbour_loc[dir])) {
-								result++;
-								found=true;
-							}
-						}
-					}
-				}
-				if(!found) return MATCH_FAIL;
-			}
 		}
 
 	} else if (!unit_filter_.empty()) return MATCH_FAIL;

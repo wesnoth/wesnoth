@@ -43,7 +43,6 @@ class unit_animation:public animated<unit_frame>
 		t_translation::t_list terrain_types_;
 		std::vector<config> unit_filter_;
 		std::vector<config> secondary_unit_filter_;
-		std::vector<config> neighbour_unit_filter_;
 		std::vector<gamemap::location::DIRECTION> directions;
 		int frequency_;
 		int base_score_;
