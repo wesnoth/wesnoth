@@ -1980,7 +1980,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 			bool matches = false;
-			if(cfg.has_attribute("side")) {	// deprecated, use owner_side instead
+			if(cfg.has_attribute("side")) { 	//! @deprecated, use owner_side instead
 				lg::wml_error << "side key is no longer accepted in [store_villages],"
 					<< " use owner_side instead.\n";
 				config temp_cfg(cfg.get_config());
