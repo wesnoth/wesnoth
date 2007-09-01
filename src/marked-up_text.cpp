@@ -135,21 +135,45 @@ std::string del_tags(const std::string& text){
 	return std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
 }
 
+//! Create string of color-markup, such as "<255,255,0>" for yellow.
 std::string color2markup(const SDL_Color color) {
 	std::stringstream markup;
-	// the RGB of SDL_Color are Uint8, we need to cast them to int
-	// if not, it gives their char equivalent
-	markup << "<" << static_cast<int>(color.r) << "," << static_cast<int>(color.g)
-		 << "," << static_cast<int>(color.b) << ">";
+	// The RGB of SDL_Color are Uint8, we need to cast them to int.
+	// Without cast, it gives their char equivalent.
+	markup << "<" 
+		   << static_cast<int>(color.r) << "," 
+		   << static_cast<int>(color.g) << "," 
+		   << static_cast<int>(color.b) << ">";
 	return markup.str();
 }
 
+//! Calculate the size of a text (in pixels) if it were to be drawn.
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};
 	return draw_text(NULL, area, size, font::NORMAL_COLOUR, text, 0, 0, false, style);
 }
 
+//! Draw text on the screen, clip text to area. Supports simple markup.
+//!
+//! If the text runs outside of area horizontally, 
+//! an ellipsis will be displayed at the end of it.
+//! If use_tooltips is true, then text with an ellipsis will have a 
+//! tooltip set for it equivalent to the entire contents of the text.
+//!
+//! Some very basic 'markup' will be done on the text:
+//! - any line beginning in # will be displayed in BAD_COLOUR  (red)
+//! - any line beginning in @ will be displayed in GOOD_COLOUR (green)
+//! - any line beginning in + will be displayed with size increased by 2
+//! - any line beginning in - will be displayed with size decreased by 2
+//! - any line beginning with 0x0n will be displayed in the colour of side n
+//!
+//! The above special characters can be quoted using a C-style backslash.
+//!
+//! A bounding rectangle of the text is returned. 
+//! If gui is NULL, then the text will not be drawn, 
+//! and only a bounding rectangle will be returned.
+//! 
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
@@ -305,6 +329,11 @@ inline bool break_after(wchar_t ch)
 
 } // end of anon namespace
 
+//! Wrap text.
+//!
+//! If the text exceedes the specified max width, wrap it one a word basis.
+//! If this is not possible, e.g. the word is too big to fit, 
+//! wrap it on a char basis.
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines)
 {
 	wassert(max_width > 0);
@@ -421,6 +450,16 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 	return wrapped_text;
 }
 
+//! Draw text on the screen, fit text to maximum width, no markup, no tooltips.
+//!
+//! This method makes sure that the text fits within a given maximum width. 
+//! If a line exceedes this width, it will be wrapped 
+//! on a word basis if possible, otherwise on a char basis.
+//! This method is otherwise similar to the draw_text method,
+//! but it doesn't support special markup or tooltips.
+//!
+//! @return 	a bounding rectangle of the text.
+//!
 SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 		     const SDL_Color& colour, const std::string& text,
 		     int x, int y, int max_width)
@@ -430,6 +469,7 @@ SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 }
 
 
+//! Chop up one long string of text into lines.
 size_t text_to_lines(std::string& message, size_t max_length)
 {
 	std::string starting_markup;

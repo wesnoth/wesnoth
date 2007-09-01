@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file marked-up_text.hpp 
+//!
+
 #ifndef MARKED_UP_TEXT_HPP_INCLUDED
 #define MARKED_UP_TEXT_HPP_INCLUDED
 
@@ -21,7 +25,7 @@ class CVideo;
 
 namespace font {
 
-// Standard markups
+//! Standard markups for color, size, font, images.
 extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, BLACK_TEXT, GRAY_TEXT,
                   GOOD_TEXT, BAD_TEXT, GREEN_TEXT, RED_TEXT, COLOR_TEXT, YELLOW_TEXT, IMAGE;
 
@@ -48,40 +52,34 @@ SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
-// Function which returns the size of text if it were to be drawn.
+//- Calculate the size of a text (in pixels) if it were to be drawn.
 SDL_Rect text_area(const std::string& text, int size, int style=0);
 
-// Copy string but without tags at the begining
+// Copy string, but without tags at the beginning 
 std::string del_tags(const std::string& text);
 
+//- Determine if char is one of the special chars used as markup.
 bool is_format_char(char c);
 
+//- Create string of color-markup, such as "<255,255,0>" for yellow.
 std::string color2markup(const SDL_Color color);
 
 
-///
-/// If the text exceedes the specified max width, wrap it one a word basis.
-/// If this is not possible, e.g. the word is too big to fit, wrap it on a
-/// char basis.
-///
+//- Wrap text.
+//- If the text exceedes the specified max width, wrap it one a word basis.
+//- If this is not possible, e.g. the word is too big to fit, wrap it on a
+//- char basis.
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height=-1, int max_lines=-1);
 
-///
-/// Draw text on the screen. This method makes sure that the text
-/// fits within a given maximum width. If a line exceedes this width
-/// it will be wrapped on a word basis if possible, otherwise on a char
-/// basis. This method is otherwise similar to the draw_text method,
-/// but it doesn't support special markup or tooltips.
-///
-/// @return a bounding rectangle of the text.
-///
+//- Draw text on the screen, fit text to maximum width, no markup, no tooltips.
 SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
 			     int x, int y, int max_width);
 
-//function to chop up one long string of text into lines
+//- Chop up one long string of text into lines.
 size_t text_to_lines(std::string& text, size_t max_length);
 
-}
+} // end namespace font 
 
 #endif // MARKED_UP_TEXT_HPP_INCLUDED
+
