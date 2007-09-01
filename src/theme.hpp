@@ -35,6 +35,7 @@ class theme
 	public:
 		object();
 		object(const config& cfg);
+		virtual ~object() { }
 
 		SDL_Rect& location(const SDL_Rect& screen) const;
 		const SDL_Rect& get_location(void) const { return loc_; }
