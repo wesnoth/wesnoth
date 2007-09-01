@@ -28,7 +28,11 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 
-config::config(const config& cfg)
+config::config() : values(), children(), ordered_children()
+{
+}
+
+config::config(const config& cfg)  : values(), children(), ordered_children()
 {
 	append(cfg);
 }
@@ -324,7 +328,7 @@ bool config::empty() const
 config::all_children_iterator::all_children_iterator(config::all_children_iterator::Itor i) : i_(i)
 {}
 
-config::all_children_iterator config::all_children_iterator::operator++()
+config::all_children_iterator& config::all_children_iterator::operator++()
 {
 	++i_;
 	return *this;

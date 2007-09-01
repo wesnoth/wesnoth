@@ -43,7 +43,7 @@ class config
 {
 public:
 	// Create an empty node.
-	config() {}
+	config();
 
 	config(const config& cfg);
 	~config();
@@ -113,8 +113,8 @@ public:
 		typedef std::vector<child_pos>::const_iterator Itor;
 		explicit all_children_iterator(Itor i);
 
-		all_children_iterator operator++();
-		all_children_iterator operator++(int);
+		all_children_iterator& operator++();
+		all_children_iterator  operator++(int);
 
 		value_type operator*() const;
 
