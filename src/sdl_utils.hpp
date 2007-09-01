@@ -160,11 +160,11 @@ struct pixel_data
 	pixel_data(int red, int green, int blue) : r(red), g(green), b(blue)
 	{}
 
-	pixel_data(int pixel, SDL_PixelFormat* fmt) {
+	pixel_data(int pixel, SDL_PixelFormat* fmt) : r(0), g(0), b(0) {
 		unformat(pixel, fmt);
 	}
 
-	pixel_data(config& cfg) {
+	pixel_data(config& cfg) : r(0), g(0), b(0) {
 		read(cfg);
 	}
 
@@ -229,7 +229,7 @@ private:
 
 struct clip_rect_setter
 {
-	clip_rect_setter(surface const &surf, const SDL_Rect& r) : surface_(surf)
+	clip_rect_setter(surface const &surf, const SDL_Rect& r) : surface_(surf), rect()
 	{
 		SDL_GetClipRect(surface_,&rect);
 		SDL_SetClipRect(surface_,&r);
