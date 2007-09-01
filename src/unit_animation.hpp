@@ -59,22 +59,6 @@ class unit_animation:public animated<unit_frame>
 
 
 
-class defensive_animation:public unit_animation
-{
-	public:
-		explicit defensive_animation(const config& cfg):unit_animation(cfg){};
-		explicit defensive_animation(int start_time,const unit_frame &frame):unit_animation(start_time,frame){};
-};
-
-
-class death_animation:public unit_animation
-{
-	public:
-		explicit death_animation(const config& cfg):unit_animation(cfg){};
-		explicit death_animation(int start_time,const unit_frame &frame):unit_animation(start_time,frame) {};
-	private:
-};
-
 class attack_animation: public unit_animation
 {
 	public:
@@ -84,16 +68,6 @@ class attack_animation: public unit_animation
 	private:
 		unit_animation missile_anim;
 
-};
-
-class victory_animation:public unit_animation
-{
-	public:
-		explicit victory_animation(const config& cfg):unit_animation(cfg){};
-		explicit victory_animation(int start_time,const unit_frame &frame):
-			unit_animation(start_time,frame){};
-
-	private:
 };
 
 #endif

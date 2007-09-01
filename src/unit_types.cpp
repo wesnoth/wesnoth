@@ -508,10 +508,7 @@ unit_type::unit_type(const unit_type& o)
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), animations_(o.animations_),
 
-      defensive_animations_(o.defensive_animations_),
       teleport_animations_(o.teleport_animations_), extra_animations_(o.extra_animations_),
-      death_animations_(o.death_animations_),
-      victory_animations_(o.victory_animations_),
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -775,18 +772,41 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	animations_.push_back(unit_animation(0,unit_frame(image(),150),"movement",unit_animation::DEFAULT_ANIM));
 	// Always have a movement animation
-
-
-
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
 	const config::child_list& defends = expanded_cfg.get_children("defend");
 	for(config::child_list::const_iterator d2 = defends.begin(); d2 != defends.end(); ++d2) {
-		defensive_animations_.push_back(defensive_animation(**d2));
+		(**d2)["apply_to"] ="defend";
+		(**d2)["value"]=(**d2)["damage"];
+		animations_.push_back(unit_animation(**d2));
+		//lg::wml_error<<"defend animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=defend flag\n";
 	}
-	if(defensive_animations_.empty()) {
-		defensive_animations_.push_back(defensive_animation(-150,unit_frame(image(),300)));
-		// Always have a defensive animation
+	animations_.push_back(unit_animation(-150,unit_frame(image(),300),"defend",unit_animation::DEFAULT_ANIM));
+	// Always have a defensive animation
+	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
+	const config::child_list& deaths = expanded_cfg.get_children("death");
+	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
+		(**death)["apply_to"] ="death";
+		animations_.push_back(unit_animation(**death));
+		//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
 	}
+	animations_.push_back(unit_animation(0,unit_frame(image(),10),"death",unit_animation::DEFAULT_ANIM));
+	// Always have a defensive animation
+	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
+	const config::child_list& victory_anims = expanded_cfg.get_children("victory_anim");
+	for(config::child_list::const_iterator victory_anim = victory_anims.begin(); victory_anim != victory_anims.end(); ++victory_anim) {
+		(**victory_anim)["apply_to"] ="victory";
+		animations_.push_back(unit_animation(**victory_anim));
+		//lg::wml_error<<"victory animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=victory flag\n";
+	}
+	animations_.push_back(unit_animation(0,unit_frame(image(),1),"victory",unit_animation::DEFAULT_ANIM));
+	// Always have a victory animation
+
+
+
+
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
 	const config::child_list& teleports = expanded_cfg.get_children("teleport_anim");
@@ -805,27 +825,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
-	const config::child_list& deaths = expanded_cfg.get_children("death");
-	for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
-		death_animations_.push_back(death_animation(**death));
-	}
-	if(death_animations_.empty()) {
-		death_animations_.push_back(death_animation(0,unit_frame(image(),10)));
-		// Always have a defensive animation
-	}
-
-
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
-	const config::child_list& victory_anims = expanded_cfg.get_children("victory_anim");
-	for(config::child_list::const_iterator victory_anim = victory_anims.begin(); victory_anim != victory_anims.end(); ++victory_anim) {
-		victory_animations_.push_back(victory_animation(**victory_anim));
-	}
-	if(victory_animations_.empty()) {
-		victory_animations_.push_back(victory_animation(0,unit_frame(image(),1)));
-		// Always have a victory animation
-	}
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
 	// Deprecation messages, only seen when unit is parsed for the first time.

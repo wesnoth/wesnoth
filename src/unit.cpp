@@ -149,11 +149,8 @@ unit::unit(const unit& o):
 
 		animations_(o.animations_),
 
-		defensive_animations_(o.defensive_animations_),
 		teleport_animations_(o.teleport_animations_),
 		extra_animations_(o.extra_animations_),
-		death_animations_(o.death_animations_),
-		victory_animations_(o.victory_animations_),
 		anim_(NULL),
 
 		frame_begin_time_(o.frame_begin_time_),
@@ -508,11 +505,8 @@ void unit::advance_to(const unit_type* t)
 
 	animations_ = t->animations_;
 
-	defensive_animations_ = t->defensive_animations_;
 	teleport_animations_ = t->teleport_animations_;
 	extra_animations_ = t->extra_animations_;
-	death_animations_ = t->death_animations_;
-	victory_animations_ = t->victory_animations_;
 	flag_rgb_ = t->flag_rgb();
 
 	backup_state();
@@ -1319,11 +1313,8 @@ void unit::read(const config& cfg, bool use_traits)
 		if(ut) {
 			animations_ = ut->animations_;
 
-			defensive_animations_ = ut->defensive_animations_;
 			teleport_animations_ = ut->teleport_animations_;
 			extra_animations_ = ut->extra_animations_;
-			death_animations_ = ut->death_animations_;
-			victory_animations_ = ut->victory_animations_;
 			// Remove animations from private cfg, since they're not needed there now
 			cfg_.clear_children("animation");
 
@@ -1436,17 +1427,34 @@ void unit::read(const config& cfg, bool use_traits)
 			}
 			animations_.push_back(unit_animation(0,unit_frame(absolute_image(),150),"movement",unit_animation::DEFAULT_ANIM));
 			// Always have a movement animation
-
-
-
-
 			for(config::child_list::const_iterator d2 = defends.begin(); d2 != defends.end(); ++d2) {
-				defensive_animations_.push_back(defensive_animation(**d2));
+				(**d2)["apply_to"]="defend";
+				(**d2)["value"]=(**d2)["damage"];
+				animations_.push_back(unit_animation(**d2));
+				//lg::wml_error<<"defend animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
+				//lg::wml_error<<"please put it with an [animation] tag and apply_to=defend flag\n";
 			}
-			if(defensive_animations_.empty()) {
-				defensive_animations_.push_back(defensive_animation(-150,unit_frame(absolute_image(),300)));
-				// Always have a defensive animation
+			animations_.push_back(unit_animation(-150,unit_frame(absolute_image(),300),"defend",unit_animation::DEFAULT_ANIM));
+			// Always have a defensive animation
+			for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
+				(**death)["apply_to"]="death";
+				animations_.push_back(unit_animation(**death));
+				//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
+				//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
 			}
+			animations_.push_back(unit_animation(0,unit_frame(absolute_image(),10),"death",unit_animation::DEFAULT_ANIM));
+			// Always have a death animation
+			for(config::child_list::const_iterator victory_anim = victory_anims.begin(); victory_anim != victory_anims.end(); ++victory_anim) {
+				(**victory_anim)["apply_to"]="victory";
+				animations_.push_back(unit_animation(**victory_anim));
+				//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
+				//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
+			}
+			animations_.push_back(unit_animation(0,unit_frame(absolute_image(),150),"victory",unit_animation::DEFAULT_ANIM));
+			// Always have a victory animation
+
+
+
 
 			for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
 				teleport_animations_.push_back(unit_animation(**t));
@@ -1460,23 +1468,6 @@ void unit::read(const config& cfg, bool use_traits)
 				extra_animations_.insert(std::pair<std::string,unit_animation>((**extra_anim)["flag"],unit_animation(**extra_anim)));
 			}
 
-			for(config::child_list::const_iterator death = deaths.begin(); death != deaths.end(); ++death) {
-				death_animations_.push_back(death_animation(**death));
-			}
-			if(death_animations_.empty()) {
-				death_animations_.push_back(death_animation(0,unit_frame(absolute_image(),10)));
-				// Always have a death animation
-			}
-
-
-
-			for(config::child_list::const_iterator victory_anim = victory_anims.begin(); victory_anim != victory_anims.end(); ++victory_anim) {
-				victory_animations_.push_back(victory_animation(**victory_anim));
-			}
-			if(victory_animations_.empty()) {
-				victory_animations_.push_back(victory_animation(0,unit_frame(absolute_image(),150)));
-				// Always have a victory animation
-			}
 
 		}
 	} else {
@@ -1663,7 +1654,7 @@ void unit::set_defending(const game_display &disp,const gamemap::location& loc, 
 	}else {
 		hit_type = unit_animation::MISS;
 	}
-	start_animation(disp,loc,defend_animation(disp,loc,hit_type,attack,secondary_attack,swing_num,damage),true);
+	start_animation(disp,loc,choose_animation(disp,loc,"defend",damage,hit_type,attack,secondary_attack,swing_num),true);
 
 	// Add a blink on damage effect
 	const image::locator image_loc = anim_->get_last_frame().image();
@@ -1733,7 +1724,7 @@ void unit::set_teleporting(const game_display &disp,const gamemap::location& loc
 void unit::set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_DYING;
-	start_animation(disp,loc,die_animation(disp,loc,unit_animation::KILL,attack,secondary_attack),false);
+	start_animation(disp,loc,choose_animation(disp,loc,"death",0,unit_animation::KILL,attack,secondary_attack),false);
 	image::locator image_loc = anim_->get_last_frame().image();
 	anim_->add_frame(600,unit_frame(image_loc,600,"1~0:600"));
 }
@@ -1745,7 +1736,7 @@ void unit::set_healing(const game_display &disp,const gamemap::location& loc,int
 void unit::set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
 {
 	state_ = STATE_VICTORIOUS;
-	start_animation(disp,loc,victorious_animation(disp,loc,unit_animation::KILL,attack,secondary_attack),true);
+	start_animation(disp,loc,choose_animation(disp,loc,"victory",0,unit_animation::KILL,attack,secondary_attack),true);
 }
 
 void unit::set_walking(const game_display &disp,const gamemap::location& loc)
@@ -2857,26 +2848,6 @@ const std::string& unit::image_fighting(attack_type::RANGE range) const
 	}
 }
 
-const defensive_animation* unit::defend_animation(const game_display& disp, const gamemap::location& loc,
-		unit_animation::hit_type hits, const attack_type* attack,const attack_type* secondary_attack, int swing_num,int damage) const
-{
-	// Select one of the matching animations at random
-	std::vector<const defensive_animation*> options;
-	int max_val = -3;
-	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,"defend",damage,hits,attack,secondary_attack,swing_num);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
-
-	if(options.empty()) return NULL;
-	return options[rand()%options.size()];
-}
 const unit_animation* unit::teleport_animation(const game_display& disp, const gamemap::location& loc) const
 {
 	// Select one of the matching animations at random
@@ -2917,36 +2888,14 @@ const unit_animation* unit::extra_animation(const game_display& disp, const game
 
 	return options[rand()%options.size()];
 }
-const death_animation* unit::die_animation(const game_display& disp, const gamemap::location& loc,
-		unit_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
-{
-	// Select one of the matching animations at random
-	std::vector<const death_animation*> options;
-	int max_val = -3;
-	for(std::vector<death_animation>::const_iterator i = death_animations_.begin(); i != death_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,"death",0,hits,attack,secondary_attack);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
 
-
-	if(options.empty()) return NULL;
-	return options[rand()%options.size()];
-}
-
-
-const unit_animation* unit::choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int value) const
+const unit_animation* unit::choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int value,const unit_animation::hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
 	for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,event,value);
+		int matching = i->matches(disp,loc,this,event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&*i);
 		} else if(matching > max_val) {
@@ -2962,27 +2911,6 @@ const unit_animation* unit::choose_animation(const game_display& disp, const gam
 	return options[rand()%options.size()];
 }
 
-
-const victory_animation* unit::victorious_animation(const game_display& disp, const gamemap::location& loc,
-		unit_animation::hit_type hits,const attack_type* attack,const attack_type* secondary_attack) const
-{
-	// Select one of the matching animations at random
-	std::vector<const victory_animation*> options;
-	int max_val = -3;
-	for(std::vector<victory_animation>::const_iterator i = victory_animations_.begin(); i != victory_animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,this,"victory",0,hits,attack,secondary_attack,0);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
-
-	if(options.empty()) return NULL;
-	return options[rand()%options.size()];
-}
 
 void unit::apply_modifications()
 {
