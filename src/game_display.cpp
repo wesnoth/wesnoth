@@ -724,7 +724,9 @@ surface game_display::get_flag(const gamemap::location& loc)
 		  (!fogged(loc) || !teams_[currentTeam_].is_enemy(i+1)))
 		{
 			flags_[i].update_last_draw_time();
-			return image::get_image(flags_[i].get_current_frame(), image::SCALED_TO_HEX);
+			image::locator image_flag = preferences::animate_map() ?
+				flags_[i].get_current_frame() : flags_[i].get_first_frame();
+			return image::get_image(image_flag, image::SCALED_TO_HEX);
 		}
 	}
 
@@ -928,6 +930,21 @@ void game_display::invalidate(const gamemap::location& loc)
 void game_display::invalidate_animations()
 {
 	new_animation_frame();
+
+	unit_map::iterator unit;
+	for(unit=units_.begin() ; unit != units_.end() ; unit++) {
+		if (unit->second.get_animation() && unit->second.get_animation()->need_update())
+			invalidate(unit->first);
+		unit->second.refresh(*this,unit->first);
+	}
+	if (temp_unit_ ) {
+		if (temp_unit_->get_animation() && temp_unit_->get_animation()->need_update())
+			invalidate(temp_unit_loc_);
+		temp_unit_->refresh(*this, temp_unit_loc_);
+	}
+
+	if (!preferences::animate_map()) {return;}
+	
 	gamemap::location topleft;
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
@@ -946,19 +963,6 @@ void game_display::invalidate_animations()
 			}
 		}
 	}
-	unit_map::iterator unit;
-	for(unit=units_.begin() ; unit != units_.end() ; unit++) {
-		if (unit->second.get_animation() && unit->second.get_animation()->need_update())
-			invalidate(unit->first);
-		unit->second.refresh(*this,unit->first);
-	}
-	if (temp_unit_ ) {
-		if (temp_unit_->get_animation() && temp_unit_->get_animation()->need_update())
-			invalidate(temp_unit_loc_);
-		temp_unit_->refresh(*this, temp_unit_loc_);
-	}
-
-
 }
 
 void game_display::debug_highlight(const gamemap::location& loc, fixed_t amount)

@@ -113,6 +113,8 @@ namespace preferences {
 	int draw_delay();
 	void set_draw_delay(int value);
 
+	bool animate_map();
+
 	bool show_fps();
 	void set_show_fps(bool value);
 

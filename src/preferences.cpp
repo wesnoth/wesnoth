@@ -425,6 +425,11 @@ void enable_mouse_scroll(bool value)
 	set("mouse_scrolling", value ? "yes" : "no");
 }
 
+bool animate_map()
+{
+	return utils::string_bool(preferences::get("animate_map"), true);
+}
+
 bool show_fps()
 {
 	return fps;
