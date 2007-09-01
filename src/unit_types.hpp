@@ -112,13 +112,10 @@ class unit_movement_type;
 //large land, etc etc.
 class unit_movement_type
 {
-	mutable std::map<t_translation::t_letter, int> moveCosts_;
-	mutable std::map<t_translation::t_letter, int> defenseMods_;
-
 public:
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
-	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL) : cfg_(cfg), parent_(parent) {};
+	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL) : moveCosts_(), defenseMods_(), cfg_(cfg), parent_(parent) {};
 
 	const t_string& name() const;
 	int movement_cost(const gamemap& map, t_translation::t_letter terrain, int recurse_count=0) const;
@@ -137,6 +134,9 @@ public:
 	const config& get_cfg() const { return cfg_; }
 	const unit_movement_type* get_parent() const { return parent_; }
 private:
+	mutable std::map<t_translation::t_letter, int> moveCosts_;
+	mutable std::map<t_translation::t_letter, int> defenseMods_;
+
 	const config cfg_;
 
 	const unit_movement_type* parent_;
