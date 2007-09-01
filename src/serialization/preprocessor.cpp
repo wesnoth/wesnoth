@@ -87,15 +87,16 @@ public:
 };
 
 preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
-	: current_(NULL), defines_(def), textdomain_(PACKAGE),
-	  depth_(0), buffer_size_(0), quoted_(false)
+	: streambuf(), out_buffer_(""), buffer_(), current_(NULL), defines_(def),
+          textdomain_(PACKAGE), location_(""), linenum_(0), depth_(0),
+          buffer_size_(0), quoted_(false)
 {
 }
 
 preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: streambuf(), current_(NULL), defines_(t.defines_),
-	  textdomain_(PACKAGE), depth_(t.depth_),buffer_size_(0),
-	  quoted_(t.quoted_)
+	: streambuf(), out_buffer_(""), buffer_(), current_(NULL), defines_(t.defines_),
+	  textdomain_(PACKAGE), location_(""), linenum_(0), depth_(t.depth_),
+          buffer_size_(0), quoted_(t.quoted_)
 {
 }
 

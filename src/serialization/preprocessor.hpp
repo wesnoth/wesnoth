@@ -22,8 +22,8 @@
 
 struct preproc_define
 {
-	preproc_define() {}
-	explicit preproc_define(std::string const &val) : value(val) {}
+	preproc_define() : value(""), arguments(), textdomain(""), linenum(0), location("") {}
+	explicit preproc_define(std::string const &val) : value(val), arguments(), textdomain(""), linenum(0), location("") {}
 	preproc_define(std::string const &val, std::vector< std::string > const &args,
 	               std::string const &domain, int line, std::string const &loc)
 		: value(val), arguments(args), textdomain(domain), linenum(line), location(loc) {}

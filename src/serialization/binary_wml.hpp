@@ -24,6 +24,8 @@ class config;
 //this object holds the schema by which config objects can be compressed and decompressed.
 struct compression_schema
 {
+	compression_schema() : char_to_word(), word_to_char() { }
+
 	typedef std::map< unsigned int, std::string > char_word_map;
 	char_word_map char_to_word;
 
