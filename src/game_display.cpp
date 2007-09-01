@@ -292,6 +292,7 @@ void game_display::draw(bool update,bool force)
 			// (the shroud has some glitches due to
 			// commented out code, but enabling it looks worse).
 			const bool on_map = map_.on_board(*it);
+			const bool off_map_tile = (map_.get_terrain(*it) == t_translation::OFF_MAP_USER);
 			const bool is_shrouded = shrouded(*it);
 
 			image::TYPE image_type = image::SCALED_TO_HEX;
@@ -348,7 +349,7 @@ void game_display::draw(bool update,bool force)
 			}
 
 			// Draw the grid, if that's been enabled
-			if(grid_ && !is_shrouded) {
+			if(grid_ && !is_shrouded && on_map && !off_map_tile) {
 				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
 
@@ -410,7 +411,7 @@ void game_display::draw(bool update,bool force)
 			//simulate_delay += 1;
 
 			// If the tile is at the border, we start to blend it
-			if(!on_map && map_.get_terrain(*it) != t_translation::OFF_MAP_USER) {
+			if(!on_map && !off_map_tile) {
 				 draw_border(*it, xpos, ypos);
 			}
 		}
