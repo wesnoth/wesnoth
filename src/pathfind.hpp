@@ -85,7 +85,7 @@ struct cost_calculator
 //! with associated best routes to those locations.
 struct paths
 {
-	paths() {}
+	paths() : routes() {}
 
 	// Construct a list of paths for the unit at loc.
 	// - force_ignore_zocs: find the path ignoring ZOC entirely,
@@ -106,7 +106,7 @@ struct paths
 	//! Structure which holds a single route between one location and another.
 	struct route
 	{
-		route() : move_left(0) {}
+		route() : steps(), move_left(0), turn_waypoints() {}
 		std::vector<gamemap::location> steps;
 		int move_left; // movement unit will have left at end of the route.
 		std::map<gamemap::location, int> turn_waypoints;
