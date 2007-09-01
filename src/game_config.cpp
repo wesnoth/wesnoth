@@ -269,7 +269,7 @@ namespace game_config
 	}
 
 game_version::game_version(std::string str) :
-		major_nr(0), minor_nr(0), patch(0), full(str)
+		major_nr(0), minor_nr(0), patch(0), extra(""), full(str)
 {
 
 	size_t offset = str.find_first_not_of("0123456789");
