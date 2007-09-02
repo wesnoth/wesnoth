@@ -62,7 +62,7 @@ public:
 		static DIRECTION parse_direction(const std::string& str);
 		static std::string write_direction(DIRECTION dir);
 
-		location() : x(-1), y(-1) {}
+		location() : x(-1000), y(-1000) {}
 		location(int x, int y) : x(x), y(y) {}
 		location(const config& cfg, const variable_set *variables);
 
