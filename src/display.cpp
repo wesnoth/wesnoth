@@ -62,7 +62,6 @@ namespace {
 	size_t sunset_timer = 0;
 
 	bool benchmark = false;
-
 }
 
 display::display(CVideo& video, const gamemap& map, const config& theme_cfg, const config& cfg, const config& level) :
@@ -77,11 +76,15 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	invalidateGameStatus_(true),
 	map_labels_(*this,map, 0),
 	_scroll_event("scrolled"),
-	nextDraw_(0), fps_handle_(0)
+	nextDraw_(0), fps_handle_(0),
+	idle_anim_(preferences::idle_anim()),
+	idle_anim_rate_(1.0)
 {
 	if(non_interactive()) {
 		screen_.lock_updates(true);
 	}
+
+	set_idle_anim_rate(preferences::idle_anim_rate());
 
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
 
@@ -1497,6 +1500,11 @@ double display::turbo_speed() const
 		return turbo_speed_;
 	else
 		return 1.0;
+}
+
+void display::set_idle_anim_rate(int rate)
+{
+	idle_anim_rate_ = pow(2.0, -rate/10.0);
 }
 
 void display::redraw_everything()

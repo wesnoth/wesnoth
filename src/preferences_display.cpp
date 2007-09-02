@@ -174,6 +174,20 @@ void set_colour_cursors(bool value)
 	cursor::set();
 }
 
+void set_idle_anim(bool ison) {
+	_set_idle_anim(ison);
+	if(disp != NULL) {
+		disp->set_idle_anim(ison);
+	}
+}
+
+void set_idle_anim_rate(int rate) {
+	_set_idle_anim_rate(rate);
+	if(disp != NULL) {
+		disp->set_idle_anim_rate(rate);
+	}
+}
+
 namespace {
 class escape_handler : public events::handler {
 public:

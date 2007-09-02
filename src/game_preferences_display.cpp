@@ -101,8 +101,9 @@ private:
 
 //
 	// change
-	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_, scroll_slider_,
-				gamma_slider_, chat_lines_slider_, buffer_size_slider_;
+	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_,
+	            scroll_slider_, gamma_slider_, chat_lines_slider_,
+	            buffer_size_slider_, idle_anim_slider_;
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 			show_grid_button_, save_replays_button_, delete_autosaves_button_,
@@ -122,10 +123,11 @@ private:
 			advanced_sound_button_, normal_sound_button_,
 			UI_sound_button_, sample_rate_button1_,
 			sample_rate_button2_, sample_rate_button3_,
-			confirm_sound_button_;
-	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_, scroll_label_,
-				gamma_label_, chat_lines_label_, turbo_slider_label_,
-				sample_rate_label_, buffer_size_label_;
+			confirm_sound_button_, idle_anim_button_;
+	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
+	           scroll_label_, gamma_label_, chat_lines_label_,
+	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
+	           idle_anim_slider_label_;
 	gui::textbox sample_rate_input_, friends_input_;
 
 	unsigned slider_label_width_;
@@ -146,10 +148,11 @@ public:
 //change
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
-	  music_slider_(disp.video()), sound_slider_(disp.video()), UI_sound_slider_(disp.video()),
-	  bell_slider_(disp.video()),
-	  scroll_slider_(disp.video()), gamma_slider_(disp.video()), chat_lines_slider_(disp.video()),
-	  buffer_size_slider_(disp.video()), turbo_slider_(disp.video()),
+	  music_slider_(disp.video()), sound_slider_(disp.video()),
+	  UI_sound_slider_(disp.video()), bell_slider_(disp.video()),
+	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
+	  chat_lines_slider_(disp.video()), buffer_size_slider_(disp.video()),
+	  idle_anim_slider_(disp.video()), turbo_slider_(disp.video()),
 
 	  fullscreen_button_(disp.video(), _("Toggle Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
@@ -189,6 +192,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_CHECK),
 	  sample_rate_button3_(disp.video(), _("Custom"), gui::button::TYPE_CHECK),
 	  confirm_sound_button_(disp.video(), _("Apply")),
+	  idle_anim_button_(disp.video(), _("Show Unit Idle Animations"), gui::button::TYPE_CHECK),
 
 	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
 	  UI_sound_label_(disp.video(), _("UI Sound Volume:")),
@@ -196,6 +200,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  gamma_label_(disp.video(), _("Gamma:")), chat_lines_label_(disp.video(), ""),
 	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
+	  idle_anim_slider_label_(disp.video(), _("Frequency:")),
 
 	  sample_rate_input_(disp.video(), 70),
 	  friends_input_(disp.video(), 170),
@@ -312,6 +317,15 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	}
 	turbo_slider_.set_help_string(_("Units move and fight speed"));
 
+	idle_anim_button_.set_check(idle_anim());
+	idle_anim_button_.set_help_string(_("Show unit idle animations"));
+
+	// exponential scale (2^(n/10))
+	idle_anim_slider_.set_min(-40);
+	idle_anim_slider_.set_max(30);
+	idle_anim_slider_.set_value(idle_anim_rate());
+	idle_anim_slider_.set_help_string(_("Set the frequency of unit idle animations"));
+
 	show_ai_moves_button_.set_check(!show_ai_moves());
 	show_ai_moves_button_.set_help_string(_("Do not animate AI units moving"));
 
@@ -386,9 +400,11 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&gamma_slider_);
 	h.push_back(&chat_lines_slider_);
 	h.push_back(&turbo_slider_);
+	h.push_back(&idle_anim_slider_);
 	h.push_back(&buffer_size_slider_);
 	h.push_back(&fullscreen_button_);
 	h.push_back(&turbo_button_);
+	h.push_back(&idle_anim_button_);
 	h.push_back(&show_ai_moves_button_);
 	h.push_back(&save_replays_button_);
 	h.push_back(&delete_autosaves_button_);
@@ -433,6 +449,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&scroll_label_);
 	h.push_back(&gamma_label_);
 	h.push_back(&turbo_slider_label_);
+	h.push_back(&idle_anim_slider_label_);
 	h.push_back(&chat_lines_label_);
 	h.push_back(&sample_rate_label_);
 	h.push_back(&buffer_size_label_);
@@ -458,7 +475,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	const int top_border = 28;
 	const int bottom_border = 40;
 	const int short_interline = 20;
-	const int item_interline = 50;
+	const int item_interline = 40;
 #endif
 	const int bottom_row_y = rect.y + rect.h - bottom_border;
 
@@ -485,16 +502,22 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	// Display tab
 	ypos = rect.y + top_border;
 	gamma_button_.set_location(rect.x, ypos);
-	ypos += item_interline;
+	ypos += short_interline;
 	gamma_label_.set_location(rect.x, ypos);
 	SDL_Rect gamma_rect = { rect.x + gamma_label_.width(), ypos,
 							rect.w - gamma_label_.width() - right_border, 0 };
 	gamma_slider_.set_location(gamma_rect);
+	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
-	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
-	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
+	ypos += item_interline; idle_anim_button_.set_location(rect.x, ypos);
+	ypos += short_interline;
+	idle_anim_slider_label_.set_location(rect.x, ypos);
+	SDL_Rect idle_anim_rect = { rect.x + idle_anim_slider_label_.width(), ypos,
+	                            rect.w - idle_anim_slider_label_.width() - right_border, 0 };
+	idle_anim_slider_.set_location(idle_anim_rect);
 	video_mode_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height());
 	theme_button_.set_location(rect.x + video_mode_button_.width() + 10,
 	                           bottom_row_y - theme_button_.height());
@@ -666,14 +689,23 @@ void preferences_dialog::process_event()
 			set_show_haloes(show_haloing_button_.checked());
 		if (gamma_button_.pressed()) {
 			set_adjust_gamma(gamma_button_.checked());
-			bool enable_gamma = adjust_gamma();
+			const bool enable_gamma = adjust_gamma();
 			gamma_slider_.enable(enable_gamma);
 			gamma_label_.enable(enable_gamma);
 		}
 		if (flip_time_button_.pressed())
 			set_flip_time(flip_time_button_.checked());
+		if (idle_anim_button_.pressed()) {
+			const bool enable_idle_anim = idle_anim_button_.checked();
+			idle_anim_slider_label_.enable(enable_idle_anim);
+			idle_anim_slider_.enable(enable_idle_anim);
+			set_idle_anim(enable_idle_anim);
+			if (!enable_idle_anim)
+				idle_anim_slider_.set_value(0);
+		}
 
 		set_gamma(gamma_slider_.value());
+		set_idle_anim_rate(idle_anim_slider_.value());
 
 		return;
 	}
@@ -976,6 +1008,11 @@ void preferences_dialog::set_selection(int index)
 	show_colour_cursors_button_.hide(hide_display);
 	show_haloing_button_.hide(hide_display);
 	fullscreen_button_.hide(hide_display);
+	idle_anim_button_.hide(hide_display);
+	idle_anim_slider_label_.hide(hide_display);
+	idle_anim_slider_label_.enable(idle_anim());
+	idle_anim_slider_.hide(hide_display);
+	idle_anim_slider_.enable(idle_anim());
 	video_mode_button_.hide(hide_display);
 	theme_button_.hide(hide_display);
 	flip_time_button_.hide(hide_display);

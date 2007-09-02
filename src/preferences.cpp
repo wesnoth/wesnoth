@@ -141,6 +141,26 @@ void save_turbo_speed(const double speed)
 	preferences::set("turbo_speed", lexical_cast<std::string>(speed));
 }
 
+bool idle_anim()
+{
+	return  utils::string_bool(get("idle_anim"), true);
+}
+
+void _set_idle_anim(const bool ison)
+{
+	prefs["idle_anim"] = (ison ? "yes" : "no");
+}
+
+int idle_anim_rate()
+{
+	return lexical_cast_default<int>(get("idle_anim_rate"), 0);
+}
+
+void _set_idle_anim_rate(const int rate)
+{
+	preferences::set("idle_anim_rate", lexical_cast<std::string>(rate));
+}
+
 const std::string& language()
 {
 	return prefs["locale"];

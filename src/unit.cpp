@@ -1757,7 +1757,12 @@ const unit_animation* unit::start_animation(const game_display &disp, const game
 	}
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
-	next_idling_= get_current_animation_tick() +20000 +rand()%20000;
+	if (disp.idle_anim()) {
+		next_idling_ = get_current_animation_tick()
+			+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
+	} else {
+		next_idling_ = INT_MAX;
+	}
 	if(is_attack_anim) {
 		return &((attack_animation*)anim_)->get_missile_anim();
 	} else {

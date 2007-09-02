@@ -259,6 +259,12 @@ public:
 
 	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
 
+	// control unit idle animations and their frequency
+	void set_idle_anim(bool ison) { idle_anim_ = ison; }
+	bool idle_anim() const { return idle_anim_; }
+	void set_idle_anim_rate(int rate);
+	double idle_anim_rate() const { return idle_anim_rate_; }
+
 	//! Add a location to highlight.
 	//! Note that this has nothing to do with selecting hexes,
 	//! it is pure highlighting. These hexes will be highlighted
@@ -434,6 +440,9 @@ private:
 	std::vector<surface> tile_stack_;
 	//! Handle for the label which displays frames per second.
 	int fps_handle_;
+
+	bool idle_anim_;
+	double idle_anim_rate_;
 };
 
 //! Simplified display class for the editor.
