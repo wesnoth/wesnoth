@@ -320,8 +320,6 @@ bool game_controller::init_video()
 		  << "x" << resolution.second << "x" << DefaultBPP << "...\n";
 	int bpp = video_.modePossible(resolution.first,resolution.second,DefaultBPP,video_flags);
 
-	std::cerr << bpp << "\n";
-
 	if(bpp == 0) {
 		//Video mode not supported, maybe from bad prefs.
 		std::cerr << "Video mode " << resolution.first
@@ -2108,7 +2106,6 @@ int main(int argc, char** argv)
 		time_t t = time(NULL);
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
-		std::cerr << "started game: " << SDL_GetTicks() << "\n";
 		const int res = play_game(argc,argv);
 		std::cerr << "exiting with code " << res << "\n";
 #ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
