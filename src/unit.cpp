@@ -1741,7 +1741,6 @@ void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 const unit_animation* unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool is_attack_anim)
 {
 	if(!animation) {
-	printf("missed\n");
 		set_standing(disp,loc,with_bars);
 		return NULL;
 	}
