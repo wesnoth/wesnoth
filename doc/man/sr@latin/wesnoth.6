@@ -1,0 +1,185 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2006 wesnoth "Boj za Vesnot"
+.
+.SH IME
+wesnoth ? Boj za Vesnot, fantazijska strategija na poteze
+.
+.SH PREGLED
+.
+\fBwesnoth\fP [\fIOPCIJE\fP] [\fIPUTANJA_DO_PODATAKA\fP]
+.
+.SH OPIS
+.
+Boj za \fBVesnot\fP je fantazijska strate?ka igra na poteze.
+
+Porazite sve neprijateljske vo?e dobro izabranom vojnom dru?inom, staraju?i
+se usput o izvorima zlata i selima. Svaka jedinica ima svoje vrline i mane;
+da biste pobedili, rasporedite snage tako da se istaknu preimu?stva, pritom
+spre?iv?i protivnika da u?ini to isto. Kako jedinice postaju iskusnije,
+dobijaju nove sposobnosti i postaju sna?nije. Igrajte na svom maternjem
+jeziku isku?avaju?i ve?tine protiv pametnog ra?unarskog protivnika, ili se
+pridru?ite Vesnotovoj velikoj zajednici igra?a na vezi. Pravite sopstvene
+posebne jedinice, scenarije, pohode, i podelite ih sa drugim igra?ima.
+.
+.SH OPCIJE
+.
+.TP 
+\fB\-\-bpp\fP\fI\ broj\fP
+postavlja vrednost BitsPerPixel. Primer: \-\-bpp 32
+.TP 
+\fB\-\-compress\fP\fI\ <uldat>\fP\fB\ \fP\fI<izdat>\fP
+pakuje datoteku sa?uvane igre (uldat) koja je u tekstualnom VML formatu, u
+binarni VML fomat (izdat).
+.TP 
+\fB\-d\fP, \fB\-\-debug\fP
+prikazuje dodatne ispravlja?ke podatke i omogu?ava dopunske opcije komandnog
+re?ima tokom igre (pogledajte viki na http://www.wesnoth.org/ za vi?e
+detalja o komandnom re?imu).
+.TP 
+\fB\-\-decompress\fP\fI\ <uldat>\fP\fB\ \fP\fI<izdat>\fP
+raspakuje datoteku sa?uvane igre (uldat) koja je u binarnom VML formatu, u
+tekstualni VML format (izdat).
+.TP 
+\fB\-f\fP, \fB\-\-fullscreen\fP
+pokre?e igru preko celog ekrana.
+.TP 
+\fB\-\-fps\fP
+prikazuje broj kadrova po sekundi dok te?e igra, u uglu ekrana.
+.TP 
+\fB\-h\fP, \fB\-\-help\fP
+prikazuje sa?etak opcija komandne linije na standarnom izlazu.
+.TP 
+\fB\-\-load\fP\fI\ sa?uvigra\fP
+u?itava sa?uvanu igru iz standarnog direktorijuma za sa?uvane igre.
+.TP 
+\fB\-\-log\-error="domen1,domen2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+postavlja nivo stro?ine ispravlja?kih domena. ?all? se mo?e upotrebiti za
+poklapanje svih domena. \fB\-\-log\-info\fP prikazuje sve poruke, \fB\-\-log\-warning\fP
+samo upozorenja i gre?ke, a \fB\-\-log\-error\fP samo gre?ke.
+.TP 
+\fB\-\-logdomains\fP
+ispisuje sve domene bele?enja i izlazi.
+.TP 
+\fB\-\-max\-fps\fP
+broj kadrova po sekundi koje igra mo?e da prika?e, trebalo bi da bude izme?u
+1 i 1000, a podrazumevano je 50.
+.TP 
+\fB\-\-multiplayer\fP
+pokre?e vi?eigra?ku igru. Uz ovu opciju mogu biti upotrebljene jo? neke,
+navedene ispod.
+.TP 
+\fB\-\-nocache\fP
+isklju?uje ostavu za podatke igre.
+.TP 
+\fB\-\-nosound\fP
+pokre?e igru bez zvuka i muzike.
+.TP 
+\fB\-\-path\fP
+ispisuje ime direktorijuma sa podacima igre i izlazi.
+.TP 
+\fB\-r\fP, \fB\-\-resolution\fP\ \fIXxY\fP
+postavlja rezoluciju ekrana. Primer: \-r 800x600
+.TP 
+\fB\-t\fP, \fB\-\-test\fP
+pokre?e igru sa malim probnim scenariom.
+.TP 
+\fB\-v\fP, \fB\-\-version\fP
+prikazuje broj verzije i izlazi.
+.TP 
+\fB\-w\fP, \fB\-\-windowed\fP
+pokre?e igru unutar prozora.
+.TP 
+\fB\-\-no\-delay\fP
+pokre?e igru bez ikakvih zastoja, za probu grafi?kih performansi. Ovo je
+automatski ugklju?eno ako se zada \-\-nogui.
+.TP 
+\fB\-\-exit\-at\-end\fP
+izlazi po?to se scenario okon?a, bez prikazivanja prozora o pobedi/porazu na
+koji bi korisnik morao da odgovori. Ovo se tako?e koristi za skriptovanje
+proba performansi.
+.
+.SH "Opcije uz \-\-multiplayer"
+.
+Opcije posebne po strani u vi?eigra?kom re?imu ozna?ene su sa
+<broj>, gde <broj> treba zameniti brojem strane. To je
+obi?no 1 ili 2, ali zavisi od broja igra?a dozvoljenih za izabrani scenario.
+.TP 
+\fB\-\-algorithm<broj>=value\fP
+bira nestandardni algoritam za VI upravljanje zadatom stranom. Mogu?e
+vrednosti: ?idle_ai? i ?sample_ai?.
+.TP  
+\fB\-\-controller<broj>=value\fP
+bira upravlja?a za zadatu stranu. Mogu?e vrednosti su: ?human? (?ovek) i
+?ai? (VI).
+.TP  
+\fB\-\-era=vrednost\fP
+upotrebite ovo za igranje u izabranoj epohi umesto podrazumevane
+(?Default?). Epoha se bira preko identifikatora; mogu?e vrednosti opisane su
+u datoteci data/multiplayer.cfg
+.TP 
+\fB\-\-nogui\fP
+pokre?e igru bez grafi?kog su?elja. Mora se javiti pre \fB\-\-multiplayer\fP da
+bi imalo ?eljeni efekat.
+.TP 
+\fB\-\-parm<broj>=broj:vrednost\fP
+postavlja dodatne parametre za ovu stranu, koji zavise od opcija
+upotrebljenih uz \fB\-\-controller\fP i \fB\-\-algorithm\fP. Obi?no korisno onima koji
+projektuju nove VI (jo? uvek nije sasvim dokumentovano)
+.TP 
+\fB\-\-scenario=vrednost\fP
+bira vi?eigra?ki scenario. Podrazumevan je ?multiplayer_Charge?.
+.TP 
+\fB\-\-side<broj>=vrednost\fP
+bira frakciju iz teku?e epohe za zadatu stranu. Frakcija se bira preko
+identifikatora; mogu?e vrednosti opisane su u datoteci data/multiplayer.cfg
+.TP 
+\fB\-\-turns=vrednost\fP
+postavlja broj poteza za izabrani scenario. Podrazumevano je ?50?.
+.TP 
+Primer za isprobavanje va?e VI: 
+wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
+\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+.
+.SH AUTOR
+.
+Napisao Dejvid Vajt (David White) <davidnwhite@verizon.net>.
+.br
+Uredili Nils Knojper (Nils Kneuper) <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> i Soliton <soliton@sonnenkinder.org>.
+.br
+Ovu uputnu stranu prvobitno je napisao Siril Butors (Cyril Bouthors)
+<cyril@bouthors.org>.
+.br
+Posetite zvani?nu doma?u stranu: http://www.wesnoth.org/
+.
+.SH "AUTORSKA PRAVA"
+.
+Autorska prava \(co 2003\-2006 Dejvid Vajt (David White)
+<davidnwhite@verizon.net>.
+.br
+Ovo je slobodan softver; licenciran je pod uslovima OJL verzije 2  (GPLv2),
+koju izdaje Zadu?bina za slobodni softver. Nema BILO KAKVE GARANCIJE; ?ak ni
+za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODRE?ENE POTREBE.
+.
+.SH "POGLEDATI JO?"
+.
+\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)

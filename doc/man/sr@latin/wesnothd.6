@@ -1,0 +1,157 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Vi?eigra?ki mre?ni domar Boja za Vesnot"
+.
+.SH IME
+.
+wesnothd ? vi?eigra?ki mre?ni domar Boja za \fBVesnot\fP
+.
+.SH PREGLED
+.
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIputanja\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+[\|\fB\-t\fP \fIbroj\fP\|] [\|\fB\-T\fP \fIbroj\fP\|]
+.
+.SH OPIS
+.
+Upravlja vi?eigra?kim sesijama Boja za Vesnot. Pogledajte
+http://www.wesnoth.org/wiki/ServerAdministration za naredbe koje server
+prihvata preko klijenta ili soketa.
+.
+.SH OPCIJE
+.
+.TP 
+\fB\-c,\ \-\-config\fP\fI\ putanja\fP
+kazuje domaru gde se nalazi datoteka sa pode?avanjima. Za sintaksu
+pogledajte odeljak \fBPODE?AVANJA SERVERA\fP ispod.
+.TP 
+\fB\-d,\ \-\-daemon\fP
+pokre?e wesnothd kao domar.
+.TP 
+\fB\-h,\ \-\-help\fP
+govori vam ?ta ?ine opcije komandne linije.
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ port\fP
+vezuje server za navedeni port. Ako se port ne navede, podrazumevano se
+koristi 15000.
+.TP 
+\fB\-t,\ \-\-threads\fP\fI\ broj\fP
+postavlja najve?i broj radnih niti na ?ekanju za mre?ni U/I (podrazumevano:
+5, najvi?e: 30).
+.TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ broj\fP
+postavlja najve?i broj radnih niti koje mogu biti stvorene; ako se zada 0,
+nema ograni?enja (podrazumevano: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
+prikazuje broj verzije i izlazi.
+.TP 
+\fB\-v,\ \-\-verbose\fP
+uklju?uje detaljnije bele?enje.
+.
+.SH "PODE?AVANJA SERVERA"
+.
+.SS "Op?ta sintaksa je:"
+.
+.P
+[\fIoznaka\fP]
+.IP
+klju?="\fIvrednost\fP"
+.IP
+klju?="\fIvrednost\fP,\fIvrednost\fP,..."
+.P
+[/\fIoznaka\fP]
+.
+.SS "Globalni klju?evi:"
+.
+.TP 
+\fBconnections_allowed\fP
+broj dozvoljenih veza sa iste IP adrese (podrazumevno: 5)
+.TP 
+\fBdisallow_names\fP
+imena/nadimci koje server ne prihvata. Prihvataju se ?*? i ??? kao d?okeri
+(pogledajte \fBglob\fP(7) za vi?e detalja). Podrazumevane vrednosti, koje se
+koriste ako se ni?ta ne zada, su:
+?server,ai,player,network,human,admin,computer?
+.TP 
+\fBmax_messages\fP
+broj dozvoljenih poruka za vreme \fBmessages_time_period\fP (podrazumevano: 4)
+.TP 
+\fBmessages_time_period\fP
+vremenski period u sekundama koji se razmatra za otkrivanje poplave poruka
+(podrazumevano: 10 sekundi)
+.TP 
+\fBmotd\fP
+poruka dana
+.TP 
+\fBpasswd\fP
+lozinka za sticanje administratorskih ovla??enja. Obi?no po?inje sa ?admin ?
+.TP 
+\fBversions_accepted\fP
+Zapetama razdvojen spisak niski verzija koje server prihvata. Prihvataju se
+?*? i ??? kao d?okeri (podrazumevana je verzija klijenta koja odgovara
+verziji servera)
+.br
+Primer: versions_accepted="*" prihvata bilo koju nisku verzije.
+.
+.SS "Globalne oznake:"
+.
+.P
+\fB[redirect]\fP oznaka za navo?enje servera na koji se preusmeravaju neke
+verzije klijenta
+.RS
+.TP 
+\fBhost\fP
+adresa servera na koji se preusmerava
+.TP 
+\fBport\fP
+port na koji se povezuje
+.TP 
+\fBversion\fP
+zapetama razdvojen spisak verzija koje se preusmeravaju. Pona?a se isto kao
+i \fBversions_accepted\fP u pogledu d?okera
+.RE
+.P
+\fB[proxy]\fP oznaka koja govori serveru da se pona?a kao posrednik i
+prosle?uje zahteve povezanih klijenata na odre?eni server. Prihvata iste
+klju?eve kao i [redirect]
+.
+.SH AUTOR
+.
+Napisao Dejvid Vajt (David White) <davidnwhite@verizon.net>. Uredili
+Nils Knojper (Nils Kneuper) <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> i Soliton <soliton@sonnenkinder.org>. Ovu
+uputnu stranu prvobitno je napisao Siril Butors (Cyril Bouthors)
+<cyril@bouthors.org>.
+.br
+Posetite zvani?nu doma?u stranu: http://www.wesnoth.org/
+.
+.SH "AUTORSKA PRAVA"
+.
+Autorska prava \(co 2003\-2006 Dejvid Vajt (David White)
+<davidnwhite@verizon.net>.
+.br
+Ovo je slobodan softver; licenciran je pod uslovima OJL verzije 2  (GPLv2),
+koju izdaje Zadu?bina za slobodni softver. Nema BILO KAKVE GARANCIJE; ?ak ni
+za KOMERCIJALNU VREDNOST ili ISPUNJAVANJE ODRE?ENE POTREBE.
+.
+.SH "POGLEDATI JO?"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
