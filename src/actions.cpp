@@ -1832,7 +1832,9 @@ bool clear_shroud(game_display& disp, const gamestatus& status,
 	}
 	game_events::pump();
 
-	recalculate_fog(map,status,gamedata,units,teams,team);
+	if (teams[team].uses_fog()) {
+		recalculate_fog(map,status,gamedata,units,teams,team);
+	}
 
 	disp.labels().recalculate_shroud();
 
