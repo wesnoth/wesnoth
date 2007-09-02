@@ -47,6 +47,7 @@ public:
 		bool shroud;
 		bool observers;
 		bool use_map_settings;
+		bool verified;
 	};
 	gamebrowser(CVideo& video,const config* map_hashes);
 	void scroll(unsigned int pos);

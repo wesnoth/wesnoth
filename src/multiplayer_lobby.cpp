@@ -228,7 +228,8 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		    font::make_text_ellipsis(_("Use map settings"), font::SIZE_NORMAL,
 		        (item_rect.x + item_rect.w) - xpos - margin_),
 		    font::SIZE_NORMAL,
-		    (game.vacant_slots > 0) ? font::GOOD_COLOUR : font::NORMAL_COLOUR));
+		    (game.verified && game.vacant_slots > 0)
+				? font::GOOD_COLOUR : font::NORMAL_COLOUR));
 		video().blit_surface(xpos, ypos - map_settings_text->h/2, map_settings_text);
 	}
 }
@@ -357,13 +358,19 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	config::child_iterator game;
 
 	for(game = games.begin(); game != games.end(); ++game) {
+		bool verified = true;
 		games_.push_back(game_item());
 		if((**game)["mp_era"] != "") {
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
-			games_.back().map_info = era_cfg != NULL ? era_cfg->get_attribute("name") : _("Unknown era");
-
+			if (era_cfg != NULL) {
+				games_.back().map_info = era_cfg->get_attribute("name");
+			} else {
+				games_.back().map_info = _("Unknown era");
+				verified = false;
+			}
 		} else {
 			games_.back().map_info = _("Unknown era");
+			verified = false;
 		}
 		games_.back().map_data = (**game)["map_data"];
 		if(games_.back().map_data.empty()) {
@@ -385,12 +392,13 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 					// parsing the map and generating the minimap are both cpu expensive
 					gamemap map(game_config, games_.back().map_data);
 					games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
-					games_.back().map_info_size = lexical_cast_default<std::string, int>(map.w(), "??") + std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");
+					games_.back().map_info_size = lexical_cast_default<std::string, int>(map.w(), "??")
+						+ std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");
 				}
-
 				games_.back().map_info += " - " + games_.back().map_info_size;
 			} catch(gamemap::incorrect_format_exception &e) {
 				std::cerr << "illegal map: " << e.msg_ << "\n";
+				verified = false;
 			}
 		} else {
 			games_.back().map_info += " - ??x??";
@@ -400,8 +408,8 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			const config* level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
 			if(level_cfg == NULL)
 				level_cfg = game_config.find_child("multiplayer", "id", (**game)["mp_scenario"]);
-			games_.back().map_info += level_cfg != NULL ? level_cfg->get_attribute("name") : _("Unknown scenario");
 			if(level_cfg) {
+				games_.back().map_info += level_cfg->get_attribute("name");
 				const std::string& hash = (**game)["hash"];
 				bool hash_found = false;
 				for(string_map::const_iterator i = map_hashes_->values.begin(); i != map_hashes_->values.end(); ++i) {
@@ -413,10 +421,15 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				if(!hash_found) {
 					games_.back().map_info += " - ";
 					games_.back().map_info += _("Remote scenario");
+					verified = false;
 				}
+			} else {
+				games_.back().map_info += _("Unknown scenario");
+				verified = false;
 			}
 		} else {
 			games_.back().map_info += _("Unknown scenario");
+			verified = false;
 		}
 		games_.back().id = (**game)["id"];
 		games_.back().name = (**game)["name"];
@@ -435,14 +448,11 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		} else {
 			games_.back().started = false;
 			if(slots != "")
-				games_.back().status = std::string(ngettext(_("Vacant Slot:"), _("Vacant Slots:"), games_.back().vacant_slots)) + " " + slots;
+				games_.back().status = std::string(ngettext(_("Vacant Slot:"), _("Vacant Slots:"),
+				                                            games_.back().vacant_slots)) + " " + slots;
 		}
 
-		if((**game)["mp_use_map_settings"] == "yes") {
-			games_.back().use_map_settings = true;
-		} else {
-			games_.back().use_map_settings = false;
-		}
+		games_.back().use_map_settings = ((**game)["mp_use_map_settings"] == "yes");
 		games_.back().gold = (**game)["mp_village_gold"];
 		if((**game)["mp_fog"] == "yes") {
 			games_.back().vision = _("Fog");
@@ -464,13 +474,16 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().shroud = false;
 		}
 		if((**game)["mp_countdown"] == "yes" ) {
-			games_.back().time_limit = (**game)["mp_countdown_init_time"] + " / +" + (**game)["mp_countdown_turn_bonus"] + " " + (**game)["mp_countdown_action_bonus"];
+			games_.back().time_limit = (**game)["mp_countdown_init_time"] + " / +"
+			                           + (**game)["mp_countdown_turn_bonus"] + " "
+			                           + (**game)["mp_countdown_action_bonus"];
 		} else {
 			games_.back().time_limit = "";
 		}
 
 		games_.back().xp = (**game)["experience_modifier"] + "%";
 		games_.back().observers = (**game)["observer"] != "no" ? true : false;
+		games_.back().verified = verified;
 	}
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
