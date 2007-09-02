@@ -675,6 +675,9 @@ void team::shroud_map::place(size_t x, size_t y)
 
 void team::shroud_map::reset()
 {
+	if(enabled_ == false)
+		return;
+
 	for(std::vector<std::vector<bool> >::iterator i = data_.begin(); i != data_.end(); ++i) {
 		std::fill(i->begin(),i->end(),false);
 	}
