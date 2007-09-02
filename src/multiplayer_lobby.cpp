@@ -227,7 +227,8 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		const surface map_settings_text(font::get_rendered_text(
 		    font::make_text_ellipsis(_("Use map settings"), font::SIZE_NORMAL,
 		        (item_rect.x + item_rect.w) - xpos - margin_),
-		    font::SIZE_NORMAL, font::NORMAL_COLOUR));
+		    font::SIZE_NORMAL,
+		    (game.vacant_slots > 0) ? font::GOOD_COLOUR : font::NORMAL_COLOUR));
 		video().blit_surface(xpos, ypos - map_settings_text->h/2, map_settings_text);
 	}
 }
