@@ -171,7 +171,8 @@ namespace image {
 
 	///set the team colors used by the TC image modification
 	///use a vector with one string for each team
-	void set_team_colors(const std::vector<std::string>& colors);
+	///using NULL will reset to default TC
+	void set_team_colors(const std::vector<std::string>* colors = NULL);
 
 	///function which sets a certain image as a 'mask' for all scaled images.
 	///the 'mask' is blitted onto all scaled images.

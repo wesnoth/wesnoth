@@ -2013,6 +2013,10 @@ static int play_game(int argc, char** argv)
 		//make sure the game config is always set to how it should be at the title screen
 		game.reset_game_cfg();
 
+		// reset the TC, since a game can modify it, and it may be used
+		// by images in add-ons or campaigns dialogs
+		image::set_team_colors();
+
 		statistics::fresh_stats();
 
 		sound::play_music_repeatedly(game_config::title_music);

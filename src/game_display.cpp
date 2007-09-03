@@ -117,7 +117,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 
 		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
-	image::set_team_colors(side_colors);
+	image::set_team_colors(&side_colors);
 
 	// Clear the screen contents
 	surface const disp(screen_.getSurface());

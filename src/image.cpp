@@ -335,9 +335,16 @@ surface locator::load_image_sub_file() const
 						break;
 					std::string f1,f2;
 					int side_n = lexical_cast_default<int>(field.substr(0,pos),-1);
-					if (side_n > static_cast<int>(team_colors.size()) || side_n < 1)
-						break;
-					f1 = team_colors[side_n-1];
+					if (side_n < 1)
+						 break;
+					else if (side_n < static_cast<int>(team_colors.size())) {
+						f1 = team_colors[side_n-1];
+					} else {
+						// this side is not inialized use default "n"
+						f1 = lexical_cast<std::string>(side_n);
+					}	
+
+					
 					f2 = field.substr(pos+1);
 					if(game_config::tc_info(f2).size()){
 						function="RC";
@@ -461,9 +468,13 @@ void set_colour_adjustment(int r, int g, int b)
 	}
 }
 
-void set_team_colors(const std::vector<std::string>& colors)
+void set_team_colors(const std::vector<std::string>* colors)
 {
-	team_colors = colors;
+	if (colors == NULL)
+		team_colors.clear();
+	else {
+		team_colors = *colors;
+	}
 }
 
 void set_image_mask(const std::string& /*image*/)
