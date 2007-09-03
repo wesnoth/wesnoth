@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-02 13:13+0200\n"
-"PO-Revision-Date: 2007-08-25 20:44+0100\n"
+"PO-Revision-Date: 2007-09-03 20:41+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Pokaż walkę"
 
 #: data/_main.cfg:50
 msgid "Animate Map"
-msgstr ""
+msgstr "Animacja mapy"
 
 #: data/_main.cfg:57
 msgid "Mouse Scrolling"
@@ -2670,7 +2670,6 @@ msgid "slows"
 msgstr "spowalnia"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2680,8 +2679,9 @@ msgid ""
 msgstr ""
 "Spowolnienie:\n"
 "Ten atak spowalnia cel do końca jego tury. Spowolnienie zmniejsza o połowę "
-"obrażenia zadawane przez ataki, a spowolniona jednostka porusza się z połową "
-"swojej normalnej szybkości."
+"obrażenia zadawane przez ataki, a koszt ruchu spowolnionej jednostki jest "
+"dwa razy większy. Gdy spowolniona jednostka zostanie wybrana, wśród jej "
+"informacji w pasku bocznym będzie wyświetlana ikona ślimaka."
 
 #: data/core/macros/abilities.cfg:500
 msgid "stones"
@@ -3926,15 +3926,14 @@ msgstr ""
 "przeciwnika do momentu, gdy zostanie zabita lub go pokona."
 
 #: data/core/macros/special-notes.cfg:45
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target. This "
 "unit may backstab, inflicting double damage, by creeping around behind that "
 "enemy."
 msgstr ""
-"  Jeśli sojusznicza jednostka rozprasza uwagę wroga, jednostka ta potrafi "
-"zadać cios w plecy, zadając podwójne obrażenia. Wymaga to jednak "
-"zakradnięcia się za przeciwnika."
+" Jeśli po drugiej stronie wrogiej jednostki znajduje się jednostka "
+"sojusznicza, ta jednostka potrafi zadać wyrządzający podwójne obrażenia cios "
+"w plecy, jeżeli tylko zdoła zakraść się za przeciwnika."
 
 #: data/core/macros/special-notes.cfg:48
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -5493,11 +5492,11 @@ msgstr "Pomoc"
 
 #: src/help.cpp:1054
 msgid "Units having this special attack:"
-msgstr ""
+msgstr "Jednostki posiadające ten atak specjalny:"
 
 #: src/help.cpp:1120
 msgid "Units having this ability:"
-msgstr ""
+msgstr "Jednostki posiadające tę zdolność:"
 
 #: src/help.cpp:1185
 msgid "Advances from: "
@@ -6689,11 +6688,13 @@ msgid ""
 " or the defined minimum starting gold of the following scenario, whichever "
 "is higher."
 msgstr ""
+" lub minimalną ilość początkową złota dla następnego scenariusza, zależnie "
+"od tego, która ilość jest większa."
 
 #: src/playsingle_controller.cpp:364
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "You will start the next scenario with "
-msgstr "80% złota zostaje zachowane do następnego scenariusza"
+msgstr "Następny scenariusz rozpoczniesz posiadając "
 
 #: src/playsingle_controller.cpp:386
 msgid ""
