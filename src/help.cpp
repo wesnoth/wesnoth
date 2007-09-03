@@ -463,10 +463,13 @@ private:
 // see.
 
 /// Dispatch generators to their appropriate functions.
+// FIXME: Must generalize the "append" behavior used for sections
+static void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 static std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 static std::string generate_topic_text(const std::string &generator);
 static std::string generate_about_text();
-static std::vector<topic> generate_unit_topics(const bool);
+static void generate_races_sections(const config *help_cfg, section &sec, int level);
+static std::vector<topic> generate_unit_topics(const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
 /// Return the type of description that should be shown for a unit of
 /// the given kind. This method is intended to filter out information
@@ -860,6 +863,8 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			}
 		}
 
+		generate_sections(help_cfg, (*section_cfg)["sections_generator"], sec, level);
+
 		bool sort_topics = false;
 		bool sort_generated = true;
 
@@ -937,17 +942,29 @@ section parse_config(const config *cfg)
 std::vector<topic> generate_topics(const bool sort_generated,const std::string &generator)
 {
 	std::vector<topic> res;
-	if (generator == "units") {
-		res = generate_unit_topics(sort_generated);
+	if (generator == "") {
+		return res;
 	}
-	else if (generator == "abilities") {
+
+	if (generator == "abilities") {
 		res = generate_ability_topics(sort_generated);
-	}
-	else if (generator == "weapon_specials") {
+	} else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
+	} else {
+		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
+		if (parts[0] == "units" && parts.size()>1) {
+			res = generate_unit_topics(sort_generated, parts[1]);
+		}
 	}
 
 	return res;
+}
+
+void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level)
+{
+	if (generator == "races") {
+		generate_races_sections(help_cfg, sec, level);
+	}
 }
 
 std::string generate_topic_text(const std::string &generator)
@@ -1457,7 +1474,37 @@ struct unit_topic_less {
 	}
 };
 
-std::vector<topic> generate_unit_topics(const bool sort_generated)
+void generate_races_sections(const config *help_cfg, section &sec, int level)
+{
+	if (game_info == NULL) {return;}
+
+	std::set<std::string> races;
+
+	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
+	    i != game_info->unit_types.end(); i++) {
+		const unit_type &type = (*i).second;
+		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
+		if (desc_type == FULL_DESCRIPTION && !type.hide_help()) {
+			races.insert(type.race());
+		}
+	}
+
+	for(std::set<std::string>::iterator it = races.begin(); it != races.end(); it++) {
+		section race_section;
+		config section_cfg;
+
+		section_cfg["id"] =  "race_" + *it;
+		//FIXME: Need to choose a "No race" expression and translate it
+		section_cfg["title"] = it->empty() ? "" : gettext(it->c_str());
+		section_cfg["generator"] = "units:" + *it;
+
+		parse_config_internal(help_cfg, &section_cfg, race_section, level+1);
+		sec.add_section(race_section);
+	}
+}
+
+
+std::vector<topic> generate_unit_topics(const bool sort_generated, const std::string& race)
 {
 	std::vector<std::pair<const unit_type*,topic> > unit_topics;
 	std::vector<topic> topics;
@@ -1467,6 +1514,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated)
 	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
+
+		if (type.race() != race)
+			continue;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type == NO_DESCRIPTION || type.hide_help())
 			continue;
