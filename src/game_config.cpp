@@ -229,7 +229,7 @@ namespace game_config
 					team_rgb_colors.insert(std::make_pair(rgb_it->first,string2rgb(rgb_it->second)));
 				} catch(bad_lexical_cast&) {
 					//throw config::error(_("Invalid team color: ") + rgb_it->second);
-					ERR_NG << "Invalid team color: " << rgb_it->second;
+					ERR_NG << "Invalid team color: " << rgb_it->second << "\n";
 				}
 			}
 		}
@@ -261,7 +261,7 @@ namespace game_config
 			} catch(bad_lexical_cast&) {
 				static std::vector<Uint32> stv;
 				//throw config::error(_("Invalid team color: ") + name);
-				ERR_NG << "Invalid team color: " << name;
+				ERR_NG << "Invalid team color: " << name << "\n";
 				return stv;
 			}
 		}
