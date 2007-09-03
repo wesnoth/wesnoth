@@ -327,28 +327,25 @@ surface locator::load_image_sub_file() const
 				}
 				std::string field = *j++;
 
-				if("TC" == function){	// Deprecated team coloring syntax
-					//! @todo replace with proper RC syntax
-					std::string::size_type pos = 0;
-					pos = field.find(',');
-					if (pos == std::string::npos)
+				if("TC" == function){
+					std::vector<std::string> param = utils::split(field,',');
+					if(param.size() < 2)
 						break;
-					std::string f1,f2;
-					int side_n = lexical_cast_default<int>(field.substr(0,pos),-1);
-					if (side_n < 1)
-						 break;
-					else if (side_n < static_cast<int>(team_colors.size())) {
-						f1 = team_colors[side_n-1];
+
+					int side_n = lexical_cast_default<int>(param[0], -1);
+					std::string team_color; 
+					if (side_n < 1) {
+						break;
+					} else if (side_n < static_cast<int>(team_colors.size())) {
+						team_color = team_colors[side_n - 1];
 					} else {
-						// this side is not inialized use default "n"
-						f1 = lexical_cast<std::string>(side_n);
+					// this side is not inialized use default "n"
+						team_color = lexical_cast<std::string>(side_n);
 					}	
 
-					
-					f2 = field.substr(pos+1);
-					if(game_config::tc_info(f2).size()){
+					if(game_config::tc_info(param[1]).size()){
 						function="RC";
-						field= f2 + ">" + f1;
+						field = param[1] + ">" + team_color;
 					}
 				}
 
