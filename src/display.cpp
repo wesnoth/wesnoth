@@ -821,7 +821,8 @@ void display::render_unit_image(int x, int y, surface image,
 		return;
 
 	SDL_Rect image_rect = {x, y, image->w, image->h};
-	if (!rects_overlap(image_rect, map_outside_area()))
+	SDL_Rect clip_rect = map_area();
+	if (!rects_overlap(image_rect, clip_rect))
 		return;
 
 	surface surf(image);
@@ -852,7 +853,7 @@ void display::render_unit_image(int x, int y, surface image,
 
 	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,int(surf->h*(1.0-submerged))));
 
-	SDL_Rect clip_rect = map_outside_area();
+	
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
 	video().blit_surface(x,y,surf,&srcrect,&clip_rect);
 
