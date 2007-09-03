@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-02 13:13+0200\n"
+"POT-Creation-Date: 2007-09-03 22:02+0200\n"
 "PO-Revision-Date: 2007-07-22 11:40+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -69,6 +69,10 @@ msgstr "キャンペーンデザイナー"
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
 msgid "Current Maintainer"
 msgstr "現在の管理者"
+
+#: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
+msgid "+1 max HP"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:29
 msgid "Campaign Epilog and Continuity"
@@ -4575,8 +4579,8 @@ msgid "End Turn"
 msgstr "ターン終了"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2589
-#: src/unit.cpp:2761
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2592
+#: src/unit.cpp:2764
 msgid "HP"
 msgstr "HP"
 
@@ -4697,7 +4701,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2754 src/menu_events.cpp:140
+#: src/about.cpp:186 src/help.cpp:2804 src/menu_events.cpp:140
 #: src/menu_events.cpp:428 src/menu_events.cpp:450
 msgid "Close"
 msgstr "閉じる"
@@ -4808,11 +4812,11 @@ msgstr "%Y年%m月%d日(%a) %H:%M"
 msgid "#(Invalid)"
 msgstr "#(無効)"
 
-#: src/dialogs.cpp:461 src/game.cpp:823
+#: src/dialogs.cpp:461 src/game.cpp:821
 msgid "Campaign"
 msgstr "キャンペーン"
 
-#: src/dialogs.cpp:463 src/game.cpp:1394
+#: src/dialogs.cpp:463 src/game.cpp:1392
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
 
@@ -4824,7 +4828,7 @@ msgstr "チュートリアル"
 msgid "replay"
 msgstr "リプレイ"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:434
+#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:447
 msgid "Turn"
 msgstr "ターン"
 
@@ -4878,7 +4882,7 @@ msgstr "保存データの削除"
 msgid "Date"
 msgstr "日付"
 
-#: src/dialogs.cpp:561 src/game.cpp:1074 src/menu_events.cpp:315
+#: src/dialogs.cpp:561 src/game.cpp:1072 src/menu_events.cpp:315
 #: src/menu_events.cpp:1065 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名前"
@@ -4900,11 +4904,11 @@ msgstr "リプレイを見る"
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/dialogs.cpp:714 src/help.cpp:1165
+#: src/dialogs.cpp:714 src/help.cpp:1182
 msgid "level"
 msgstr "レベル"
 
-#: src/dialogs.cpp:736 src/help.cpp:1257
+#: src/dialogs.cpp:736 src/help.cpp:1274
 msgid "HP: "
 msgstr "HP: "
 
@@ -4912,7 +4916,7 @@ msgstr "HP: "
 msgid "XP: "
 msgstr "経験: "
 
-#: src/dialogs.cpp:753 src/help.cpp:1258
+#: src/dialogs.cpp:753 src/help.cpp:1275
 msgid "Moves: "
 msgstr "移動: "
 
@@ -4921,7 +4925,7 @@ msgstr "移動: "
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/dialogs.cpp:922 src/game.cpp:878
+#: src/dialogs.cpp:922 src/game.cpp:876
 msgid "KB"
 msgstr "Kバイト"
 
@@ -4929,294 +4933,294 @@ msgstr "Kバイト"
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: src/game.cpp:430 src/game.cpp:1485
+#: src/game.cpp:428 src/game.cpp:1483
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:675
+#: src/game.cpp:673
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告: 読み込もうとしたファイルは壊れています。とにかく読み込みます。\n"
 
-#: src/game.cpp:712 src/multiplayer_connect.cpp:1267
+#: src/game.cpp:710 src/multiplayer_connect.cpp:1267
 msgid "This save is from a version too old to be loaded."
 msgstr "この保存データのバージョンは古すぎます。ロードすることができません。"
 
-#: src/game.cpp:718 src/multiplayer_connect.cpp:1274
+#: src/game.cpp:716 src/multiplayer_connect.cpp:1274
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "この保存データはゲームとは異なるバージョンです。 ロードしてみますか？"
 
-#: src/game.cpp:726 src/game.cpp:729 src/multiplayer_connect.cpp:1245
+#: src/game.cpp:724 src/game.cpp:727 src/multiplayer_connect.cpp:1245
 msgid "The file you have tried to load is corrupt: '"
 msgstr "ロードしようとしたファイルは壊れています: '"
 
-#: src/game.cpp:732
+#: src/game.cpp:730
 msgid "File I/O Error while reading the game"
 msgstr "ゲーム読み込み中のファイル入出力エラー"
 
-#: src/game.cpp:824
+#: src/game.cpp:822
 msgid "Choose the campaign you want to play:"
 msgstr "遊びたいキャンペーンを選択して下さい:"
 
-#: src/game.cpp:849
+#: src/game.cpp:847
 msgid "Difficulty"
 msgstr "難易度"
 
-#: src/game.cpp:850
+#: src/game.cpp:848
 msgid "Select difficulty level:"
 msgstr "難易度を選択して下さい:"
 
-#: src/game.cpp:875
+#: src/game.cpp:873
 msgid "B"
 msgstr "バイト"
 
-#: src/game.cpp:881
+#: src/game.cpp:879
 msgid "MB"
 msgstr "Mバイト"
 
-#: src/game.cpp:911
+#: src/game.cpp:909
 msgid "Connect to Server"
 msgstr "サーバーへの接続"
 
-#: src/game.cpp:912
+#: src/game.cpp:910
 msgid "You will now connect to a server to download add-ons."
 msgstr "アドオンをダウンロードするために、サーバーに接続します。"
 
-#: src/game.cpp:914
+#: src/game.cpp:912
 msgid "Server: "
 msgstr "サーバー: "
 
-#: src/game.cpp:915 src/game.cpp:963
+#: src/game.cpp:913 src/game.cpp:961
 msgid "Remove Add-ons"
 msgstr "アドオンの削除"
 
-#: src/game.cpp:950
+#: src/game.cpp:948
 msgid "You have no Add-ons installed."
 msgstr "アドオンはインストールされていません。"
 
-#: src/game.cpp:963
+#: src/game.cpp:961
 msgid "Choose the add-on to remove."
 msgstr "削除するアドオンを選択して下さい。"
 
-#: src/game.cpp:980
+#: src/game.cpp:978
 msgid "Confirm"
 msgstr "確認"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1010
 msgid "Add-on deleted"
 msgstr "アドオンは削除されました"
 
-#: src/game.cpp:1019
+#: src/game.cpp:1017
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "アドオンは削除できませんでした。ファイルが見つかりませんでした。"
 
-#: src/game.cpp:1019 src/menu_events.cpp:674 src/menu_events.cpp:687
+#: src/game.cpp:1017 src/menu_events.cpp:674 src/menu_events.cpp:687
 #: src/multiplayer_create.cpp:510
 msgid "Error"
 msgstr "エラー"
 
-#: src/game.cpp:1040 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1038 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "サーバーに接続中..."
 
-#: src/game.cpp:1043
+#: src/game.cpp:1041
 msgid "Could not connect to host."
 msgstr "ホストに接続できませんでした。"
 
-#: src/game.cpp:1052
+#: src/game.cpp:1050
 msgid "Asking for list of add-ons"
 msgstr "アドオンの一覧を要求中"
 
-#: src/game.cpp:1065
+#: src/game.cpp:1063
 msgid "Error communicating with the server."
 msgstr "サーバーとの通信エラー"
 
-#: src/game.cpp:1074 src/titlescreen.cpp:284
+#: src/game.cpp:1072 src/titlescreen.cpp:284
 msgid "Version"
 msgstr "バージョン"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1073
 msgid "Author"
 msgstr "作者"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1073
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1073
 msgid "Size"
 msgstr "大きさ"
 
-#: src/game.cpp:1135
+#: src/game.cpp:1133
 msgid "Publish add-on: "
 msgstr "アドオンの公開: "
 
-#: src/game.cpp:1139
+#: src/game.cpp:1137
 msgid "Delete add-on: "
 msgstr "アドオンの削除: "
 
-#: src/game.cpp:1143
+#: src/game.cpp:1141
 msgid "There are no add-ons available for download from this server."
 msgstr "このサーバーから ダウンロード可能な アドオンはありません。"
 
-#: src/game.cpp:1150
+#: src/game.cpp:1148
 msgid "Get Add-ons"
 msgstr "アドオンの入手"
 
-#: src/game.cpp:1151
+#: src/game.cpp:1149
 msgid "Choose the add-on to download."
 msgstr "ダウンロードするアドオンを選択して下さい。"
 
-#: src/game.cpp:1194
+#: src/game.cpp:1192
 msgid "Dependencies"
 msgstr "依存関係"
 
-#: src/game.cpp:1195
+#: src/game.cpp:1193
 msgid "This add-on requires the following additional dependencies:"
 msgstr "このアドオンを使用するには以下の追加アドオンが必要です:"
 
-#: src/game.cpp:1197
+#: src/game.cpp:1195
 msgid "Do you still want to download it?"
 msgstr "これを本当にダウンロードしますか？"
 
-#: src/game.cpp:1206
+#: src/game.cpp:1204
 msgid "Downloading add-on..."
 msgstr "アドオンのダウンロード中..."
 
-#: src/game.cpp:1264
+#: src/game.cpp:1262
 msgid "Add-on Installed"
 msgstr "インストールされたアドオン"
 
-#: src/game.cpp:1264
+#: src/game.cpp:1262
 msgid "The add-on has been installed."
 msgstr "アドオンのインストール完了。"
 
-#: src/game.cpp:1267
+#: src/game.cpp:1265
 msgid "Network communication error."
 msgstr "ネットワーク通信エラー。"
 
-#: src/game.cpp:1269
+#: src/game.cpp:1267
 msgid "Remote host disconnected."
 msgstr "リモートホストと切断しました。"
 
-#: src/game.cpp:1271
+#: src/game.cpp:1269
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "このキャンペーンを導入するのに 必要なファイルを作成する際に、 問題がありまし"
 "た。"
 
-#: src/game.cpp:1283 src/game.cpp:1322 src/game.cpp:1349
+#: src/game.cpp:1281 src/game.cpp:1320 src/game.cpp:1347
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:430
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
-#: src/game.cpp:1286 src/game.cpp:1324 src/game.cpp:1351
+#: src/game.cpp:1284 src/game.cpp:1322 src/game.cpp:1349
 msgid "The server responded with an error: \""
 msgstr "サーバーがエラーを返しました: \""
 
-#: src/game.cpp:1290
+#: src/game.cpp:1288
 msgid "Terms"
 msgstr "通信"
 
-#: src/game.cpp:1320
+#: src/game.cpp:1318
 msgid "Sending add-on"
 msgstr "アドオンを送信しています"
 
-#: src/game.cpp:1328 src/game.cpp:1355 src/multiplayer_wait.cpp:344
+#: src/game.cpp:1326 src/game.cpp:1353 src/multiplayer_wait.cpp:344
 msgid "Response"
 msgstr "応答"
 
-#: src/game.cpp:1378
+#: src/game.cpp:1376
 msgid "Join Official Server"
 msgstr "公式サーバーに参加"
 
-#: src/game.cpp:1379
+#: src/game.cpp:1377
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Wesnothの公式マルチプレイサーバーにログオンします。"
 
-#: src/game.cpp:1381 src/multiplayer_lobby.cpp:573
+#: src/game.cpp:1379 src/multiplayer_lobby.cpp:586
 msgid "Join Game"
 msgstr "ゲームに参加"
 
-#: src/game.cpp:1382
+#: src/game.cpp:1380
 msgid "Join a server or hosted game"
 msgstr "サーバーか主催されたゲームに参加します。"
 
-#: src/game.cpp:1384
+#: src/game.cpp:1382
 msgid "Host Networked Game"
 msgstr "ネットワークゲームを作成"
 
-#: src/game.cpp:1385
+#: src/game.cpp:1383
 msgid "Host a game without using a server"
 msgstr "サーバーを使用せずに、ゲームを主催します。"
 
-#: src/game.cpp:1387
+#: src/game.cpp:1385
 msgid "Local Game"
 msgstr "ローカルゲーム"
 
-#: src/game.cpp:1388
+#: src/game.cpp:1386
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr "同一マシンを共用して AI もしくは人間とマルチプレイを行います。"
 
-#: src/game.cpp:1396 src/multiplayer.cpp:232
+#: src/game.cpp:1394 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "ログイン: "
 
-#: src/game.cpp:1433 src/playcampaign.cpp:92 src/playcampaign.cpp:359
+#: src/game.cpp:1431 src/playcampaign.cpp:92 src/playcampaign.cpp:359
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1435 src/playcampaign.cpp:94 src/playcampaign.cpp:362
+#: src/game.cpp:1433 src/playcampaign.cpp:94 src/playcampaign.cpp:362
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1451 src/playcampaign.cpp:96 src/playcampaign.cpp:365
+#: src/game.cpp:1449 src/playcampaign.cpp:96 src/playcampaign.cpp:365
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
-#: src/game.cpp:1475
+#: src/game.cpp:1473
 msgid "Language"
 msgstr "言語"
 
-#: src/game.cpp:1476
+#: src/game.cpp:1474
 msgid "Choose your preferred language:"
 msgstr "お好みの言語を選んで下さい:"
 
-#: src/game.cpp:1625
+#: src/game.cpp:1623
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr "以下のアドオンキャンペーンでエラーが起きて、読み込めませんでした:"
 
-#: src/game.cpp:1630
+#: src/game.cpp:1628
 msgid "ERROR DETAILS:"
 msgstr "エラー詳細:"
 
-#: src/game.cpp:1644
+#: src/game.cpp:1642
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告: ゲームの設定ファイル読み込み中にエラー発生: '"
 
-#: src/game.cpp:1693
+#: src/game.cpp:1691
 msgid "Error loading game configuration files: '"
 msgstr "ゲーム設定ファイルの読み込みエラー: '"
 
-#: src/game.cpp:1694
+#: src/game.cpp:1692
 msgid "' (The game will now exit)"
 msgstr "' (このゲームは終了します)"
 
-#: src/game.cpp:1861
+#: src/game.cpp:1859
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:1988
+#: src/game.cpp:1986
 msgid "Loading game configuration."
 msgstr "ゲーム設定を読み込んでいます。"
 
-#: src/game.cpp:1994
+#: src/game.cpp:1992
 msgid "Re-initialize fonts for the current language."
 msgstr "現在の言語でフォントを再初期化します。"
 
-#: src/game.cpp:2009
+#: src/game.cpp:2007
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
@@ -5340,111 +5344,111 @@ msgstr "観戦者:"
 msgid "Help"
 msgstr "ヘルプ"
 
-#: src/help.cpp:1054
+#: src/help.cpp:1071
 msgid "Units having this special attack:"
 msgstr ""
 
-#: src/help.cpp:1120
+#: src/help.cpp:1137
 msgid "Units having this ability:"
 msgstr ""
 
-#: src/help.cpp:1185
+#: src/help.cpp:1202
 msgid "Advances from: "
 msgstr "クラスチェンジ元: "
 
-#: src/help.cpp:1214
+#: src/help.cpp:1231
 msgid "Advances to: "
 msgstr "クラスチェンジ先: "
 
-#: src/help.cpp:1240
+#: src/help.cpp:1257
 msgid "Abilities: "
 msgstr "能力: "
 
-#: src/help.cpp:1259
+#: src/help.cpp:1276
 msgid "Cost: "
 msgstr "コスト:"
 
-#: src/help.cpp:1260
+#: src/help.cpp:1277
 msgid "Alignment: "
 msgstr "属性: "
 
-#: src/help.cpp:1266
+#: src/help.cpp:1283
 msgid "Required XP: "
 msgstr "必要経験値: "
 
-#: src/help.cpp:1275
+#: src/help.cpp:1292
 msgid "unit help^Attacks"
 msgstr "攻撃"
 
-#: src/help.cpp:1282
+#: src/help.cpp:1299
 msgid "unit help^Name"
 msgstr "名前"
 
-#: src/help.cpp:1283 src/menu_events.cpp:314 src/menu_events.cpp:1064
+#: src/help.cpp:1300 src/menu_events.cpp:314 src/menu_events.cpp:1064
 msgid "Type"
 msgstr "型"
 
-#: src/help.cpp:1284
+#: src/help.cpp:1301
 msgid "Strikes"
 msgstr "回数"
 
-#: src/help.cpp:1285
+#: src/help.cpp:1302
 msgid "Range"
 msgstr "範囲"
 
-#: src/help.cpp:1286
+#: src/help.cpp:1303
 msgid "Special"
 msgstr "特殊"
 
-#: src/help.cpp:1336
+#: src/help.cpp:1353
 msgid "Resistances"
 msgstr "抵抗力"
 
-#: src/help.cpp:1340
+#: src/help.cpp:1357
 msgid "Attack Type"
 msgstr "攻撃型"
 
-#: src/help.cpp:1341
+#: src/help.cpp:1358
 msgid "Resistance"
 msgstr "抵抗値"
 
-#: src/help.cpp:1378
+#: src/help.cpp:1395
 msgid "Terrain Modifiers"
 msgstr "地形による修正"
 
-#: src/help.cpp:1382
+#: src/help.cpp:1399
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help.cpp:1383
+#: src/help.cpp:1400
 msgid "Defense"
 msgstr "防御"
 
-#: src/help.cpp:1384
+#: src/help.cpp:1401
 msgid "Movement Cost"
 msgstr "移動コスト"
 
-#: src/help.cpp:2293 src/menu_events.cpp:640
+#: src/help.cpp:2343 src/menu_events.cpp:640
 msgid " < Back"
 msgstr "< 戻る"
 
-#: src/help.cpp:2294
+#: src/help.cpp:2344
 msgid "Forward >"
 msgstr "進む >"
 
-#: src/help.cpp:2406
+#: src/help.cpp:2456
 msgid "Reference to unknown topic: "
 msgstr "不明なトピックへの参照: "
 
-#: src/help.cpp:2665
+#: src/help.cpp:2715
 msgid "corrupted original file"
 msgstr "破損したもとのファイル"
 
-#: src/help.cpp:2757
+#: src/help.cpp:2807
 msgid "The Battle for Wesnoth Help"
 msgstr "The Battle for Wesnoth ヘルプ"
 
-#: src/help.cpp:2809
+#: src/help.cpp:2859
 msgid "Parse error when parsing help text: "
 msgstr "ヘルプ文書をパース中にエラー: "
 
@@ -5564,7 +5568,7 @@ msgstr "レベル"
 msgid "unit list^Traits"
 msgstr "特性"
 
-#: src/menu_events.cpp:320 src/unit.cpp:2622 src/unit.cpp:2769
+#: src/menu_events.cpp:320 src/unit.cpp:2625 src/unit.cpp:2772
 msgid "Moves"
 msgstr "移動"
 
@@ -6060,12 +6064,12 @@ msgid "Normal"
 msgstr "ノーマル"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2799
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2802
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2806
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2809
 msgid ")"
 msgstr "）"
 
@@ -6097,7 +6101,7 @@ msgstr "この時代にはランダム以外のチームはありません。"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "党派 $faction のリーダーのタイプが見つかりません。"
 
-#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:570
+#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:583
 #: src/multiplayer_wait.cpp:165
 msgid "Game Lobby"
 msgstr "ゲームロビー"
@@ -6158,7 +6162,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "プレイヤーの参加待ち..."
 
-#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:574
+#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:587
 msgid "Create Game"
 msgstr "ゲームの作成"
 
@@ -6190,8 +6194,8 @@ msgstr "ランダムな開始時刻"
 msgid "Fog Of War"
 msgstr "戦争の霧"
 
-#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:452
-#: src/multiplayer_lobby.cpp:458
+#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:462
+#: src/multiplayer_lobby.cpp:468
 msgid "Shroud"
 msgstr "幕"
 
@@ -6340,51 +6344,51 @@ msgstr "大きさ"
 msgid "--no games open--"
 msgstr "＜公開中のゲームはありません＞"
 
-#: src/multiplayer_lobby.cpp:363 src/multiplayer_lobby.cpp:366
+#: src/multiplayer_lobby.cpp:368 src/multiplayer_lobby.cpp:372
 msgid "Unknown era"
 msgstr "不明の時代"
 
-#: src/multiplayer_lobby.cpp:403 src/multiplayer_lobby.cpp:419
-msgid "Unknown scenario"
-msgstr "不明のシナリオ"
-
-#: src/multiplayer_lobby.cpp:415
+#: src/multiplayer_lobby.cpp:423
 msgid "Remote scenario"
 msgstr "リモートシナリオ"
 
-#: src/multiplayer_lobby.cpp:438
+#: src/multiplayer_lobby.cpp:427 src/multiplayer_lobby.cpp:431
+msgid "Unknown scenario"
+msgstr "不明のシナリオ"
+
+#: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slot:"
 msgstr "空いているスロット"
 
-#: src/multiplayer_lobby.cpp:438
+#: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slots:"
 msgstr "空のスロット"
 
-#: src/multiplayer_lobby.cpp:448
+#: src/multiplayer_lobby.cpp:458
 msgid "Fog"
 msgstr "霧"
 
-#: src/multiplayer_lobby.cpp:462
+#: src/multiplayer_lobby.cpp:472
 msgid "none"
 msgstr "なし"
 
-#: src/multiplayer_lobby.cpp:572
+#: src/multiplayer_lobby.cpp:585
 msgid "Observe Game"
 msgstr "ゲーム観戦"
 
-#: src/multiplayer_lobby.cpp:575
+#: src/multiplayer_lobby.cpp:588
 msgid "Quick Replays"
 msgstr "クイックリプレイ"
 
-#: src/multiplayer_lobby.cpp:577
+#: src/multiplayer_lobby.cpp:590
 msgid "Preferences"
 msgstr "初期設定"
 
-#: src/multiplayer_lobby.cpp:579
+#: src/multiplayer_lobby.cpp:592
 msgid "Quit"
 msgstr "終了"
 
-#: src/multiplayer_lobby.cpp:584
+#: src/multiplayer_lobby.cpp:597
 msgid "Skip quickly to the active turn when observing"
 msgstr "観戦のとき、現在のターンまで瞬時にスキップします"
 
@@ -6764,15 +6768,15 @@ msgstr "統計情報"
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
-#: src/unit.cpp:2552 src/unit.cpp:2749 src/unit.cpp:2804
+#: src/unit.cpp:2555 src/unit.cpp:2752 src/unit.cpp:2807
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2640 src/unit.cpp:2777
+#: src/unit.cpp:2643 src/unit.cpp:2780
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2783
+#: src/unit.cpp:2786
 msgid "/level"
 msgstr "/レベル"
 
@@ -6784,15 +6788,15 @@ msgstr "ダメージ"
 msgid "strikes"
 msgstr "回数"
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:969
 msgid "chaotic"
 msgstr "混沌"
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:969
 msgid "lawful"
 msgstr "秩序"
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:969
 msgid "neutral"
 msgstr "中立"
 

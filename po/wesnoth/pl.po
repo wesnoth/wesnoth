@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-02 13:13+0200\n"
+"POT-Creation-Date: 2007-09-03 22:02+0200\n"
 "PO-Revision-Date: 2007-09-03 20:41+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -69,6 +69,10 @@ msgstr "Projektowanie kampanii"
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
 msgid "Current Maintainer"
 msgstr "Obecny opiekun"
+
+#: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
+msgid "+1 max HP"
+msgstr ""
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:29
 msgid "Campaign Epilog and Continuity"
@@ -4707,8 +4711,8 @@ msgid "End Turn"
 msgstr "Zakończ turę"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2589
-#: src/unit.cpp:2761
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2592
+#: src/unit.cpp:2764
 msgid "HP"
 msgstr "PŻ"
 
@@ -4829,7 +4833,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:186 src/help.cpp:2754 src/menu_events.cpp:140
+#: src/about.cpp:186 src/help.cpp:2804 src/menu_events.cpp:140
 #: src/menu_events.cpp:428 src/menu_events.cpp:450
 msgid "Close"
 msgstr "Zamknij"
@@ -4948,11 +4952,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Niepoprawny)"
 
-#: src/dialogs.cpp:461 src/game.cpp:823
+#: src/dialogs.cpp:461 src/game.cpp:821
 msgid "Campaign"
 msgstr "Kampania"
 
-#: src/dialogs.cpp:463 src/game.cpp:1394
+#: src/dialogs.cpp:463 src/game.cpp:1392
 msgid "Multiplayer"
 msgstr "Gra z innymi"
 
@@ -4964,7 +4968,7 @@ msgstr "Samouczek"
 msgid "replay"
 msgstr "powtórka"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:434
+#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:447
 msgid "Turn"
 msgstr "Tura"
 
@@ -5018,7 +5022,7 @@ msgstr "Usuń zapisaną grę"
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:561 src/game.cpp:1074 src/menu_events.cpp:315
+#: src/dialogs.cpp:561 src/game.cpp:1072 src/menu_events.cpp:315
 #: src/menu_events.cpp:1065 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nazwa"
@@ -5040,11 +5044,11 @@ msgstr "Pokaż powtórkę"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:714 src/help.cpp:1165
+#: src/dialogs.cpp:714 src/help.cpp:1182
 msgid "level"
 msgstr "poziom"
 
-#: src/dialogs.cpp:736 src/help.cpp:1257
+#: src/dialogs.cpp:736 src/help.cpp:1274
 msgid "HP: "
 msgstr "PŻ: "
 
@@ -5052,7 +5056,7 @@ msgstr "PŻ: "
 msgid "XP: "
 msgstr "PD: "
 
-#: src/dialogs.cpp:753 src/help.cpp:1258
+#: src/dialogs.cpp:753 src/help.cpp:1275
 msgid "Moves: "
 msgstr "Ruchy:"
 
@@ -5061,7 +5065,7 @@ msgstr "Ruchy:"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/dialogs.cpp:922 src/game.cpp:878
+#: src/dialogs.cpp:922 src/game.cpp:876
 msgid "KB"
 msgstr "KB"
 
@@ -5069,21 +5073,21 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Zrzut ekranu"
 
-#: src/game.cpp:430 src/game.cpp:1485
+#: src/game.cpp:428 src/game.cpp:1483
 msgid "The Battle for Wesnoth"
 msgstr "Bitwa o Wesnoth"
 
-#: src/game.cpp:675
+#: src/game.cpp:673
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Ostrzeżenie: wczytywany plik jest uszkodzony. Mimo to zostanie załadowany.\n"
 
-#: src/game.cpp:712 src/multiplayer_connect.cpp:1267
+#: src/game.cpp:710 src/multiplayer_connect.cpp:1267
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Zapisana gra pochodzi ze zbyt starej wersji. Jej wczytanie nie jest możliwe."
 
-#: src/game.cpp:718 src/multiplayer_connect.cpp:1274
+#: src/game.cpp:716 src/multiplayer_connect.cpp:1274
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -5091,278 +5095,278 @@ msgstr ""
 "Zapisana gra pochodzi z innej wersji Bitwy o Wesnoth. Czy spróbować ją "
 "wczytać?"
 
-#: src/game.cpp:726 src/game.cpp:729 src/multiplayer_connect.cpp:1245
+#: src/game.cpp:724 src/game.cpp:727 src/multiplayer_connect.cpp:1245
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Wczytywany plik jest uszkodzony: '"
 
-#: src/game.cpp:732
+#: src/game.cpp:730
 msgid "File I/O Error while reading the game"
 msgstr "Błąd odczytu pliku podczas wczytywania gry"
 
-#: src/game.cpp:824
+#: src/game.cpp:822
 msgid "Choose the campaign you want to play:"
 msgstr "Wybierz kampanię, w którą chcesz zagrać:"
 
-#: src/game.cpp:849
+#: src/game.cpp:847
 msgid "Difficulty"
 msgstr "Poziom trudności"
 
-#: src/game.cpp:850
+#: src/game.cpp:848
 msgid "Select difficulty level:"
 msgstr "Wybierz poziom trudności:"
 
-#: src/game.cpp:875
+#: src/game.cpp:873
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:881
+#: src/game.cpp:879
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:911
+#: src/game.cpp:909
 msgid "Connect to Server"
 msgstr "Połącz z serwerem"
 
-#: src/game.cpp:912
+#: src/game.cpp:910
 msgid "You will now connect to a server to download add-ons."
 msgstr "Połączysz się teraz z serwerem, by pobrać dodatki."
 
-#: src/game.cpp:914
+#: src/game.cpp:912
 msgid "Server: "
 msgstr "Serwer:"
 
-#: src/game.cpp:915 src/game.cpp:963
+#: src/game.cpp:913 src/game.cpp:961
 msgid "Remove Add-ons"
 msgstr "Usuń dodatki"
 
-#: src/game.cpp:950
+#: src/game.cpp:948
 msgid "You have no Add-ons installed."
 msgstr "Nie są zainstalowane żadne dodatki."
 
-#: src/game.cpp:963
+#: src/game.cpp:961
 msgid "Choose the add-on to remove."
 msgstr "Wybierz dodatek do usunięcia."
 
-#: src/game.cpp:980
+#: src/game.cpp:978
 msgid "Confirm"
 msgstr "Potwiedź"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1010
 msgid "Add-on deleted"
 msgstr "Dodatek usunięty"
 
-#: src/game.cpp:1019
+#: src/game.cpp:1017
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "Nie można usunąć dodatku - nie znaleziono pliku."
 
-#: src/game.cpp:1019 src/menu_events.cpp:674 src/menu_events.cpp:687
+#: src/game.cpp:1017 src/menu_events.cpp:674 src/menu_events.cpp:687
 #: src/multiplayer_create.cpp:510
 msgid "Error"
 msgstr "Błąd"
 
-#: src/game.cpp:1040 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1038 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Łączenie z serwerem..."
 
-#: src/game.cpp:1043
+#: src/game.cpp:1041
 msgid "Could not connect to host."
 msgstr "Nie udało się połączyć z hostem."
 
-#: src/game.cpp:1052
+#: src/game.cpp:1050
 msgid "Asking for list of add-ons"
 msgstr "Pobieranie listy dodatków"
 
-#: src/game.cpp:1065
+#: src/game.cpp:1063
 msgid "Error communicating with the server."
 msgstr "Błąd komunikacji z serwerem."
 
-#: src/game.cpp:1074 src/titlescreen.cpp:284
+#: src/game.cpp:1072 src/titlescreen.cpp:284
 msgid "Version"
 msgstr "Wersja"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1073
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1073
 msgid "Downloads"
 msgstr "Pobrania"
 
-#: src/game.cpp:1075
+#: src/game.cpp:1073
 msgid "Size"
 msgstr "Rozmiar"
 
-#: src/game.cpp:1135
+#: src/game.cpp:1133
 msgid "Publish add-on: "
 msgstr "Opublikuj dodatek:"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1137
 msgid "Delete add-on: "
 msgstr "Usuń dodatek:"
 
-#: src/game.cpp:1143
+#: src/game.cpp:1141
 msgid "There are no add-ons available for download from this server."
 msgstr "Na tym serwerze nie ma dostępnych dodatków."
 
-#: src/game.cpp:1150
+#: src/game.cpp:1148
 msgid "Get Add-ons"
 msgstr "Pobierz dodatki"
 
-#: src/game.cpp:1151
+#: src/game.cpp:1149
 msgid "Choose the add-on to download."
 msgstr "Wybierz dodatek do pobrania."
 
-#: src/game.cpp:1194
+#: src/game.cpp:1192
 msgid "Dependencies"
 msgstr "Zależności"
 
-#: src/game.cpp:1195
+#: src/game.cpp:1193
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Ten dodatek wymaga następujących zależności dodatkowych:"
 
-#: src/game.cpp:1197
+#: src/game.cpp:1195
 msgid "Do you still want to download it?"
 msgstr "Czy nadal chcesz go pobrać?"
 
-#: src/game.cpp:1206
+#: src/game.cpp:1204
 msgid "Downloading add-on..."
 msgstr "Pobieranie dodatku..."
 
-#: src/game.cpp:1264
+#: src/game.cpp:1262
 msgid "Add-on Installed"
 msgstr "Dodatek zainstalowany"
 
-#: src/game.cpp:1264
+#: src/game.cpp:1262
 msgid "The add-on has been installed."
 msgstr "Dodatek został zainstalowany."
 
-#: src/game.cpp:1267
+#: src/game.cpp:1265
 msgid "Network communication error."
 msgstr "Błąd komunikacji sieciowej."
 
-#: src/game.cpp:1269
+#: src/game.cpp:1267
 msgid "Remote host disconnected."
 msgstr "Zdalny host rozłączył się."
 
-#: src/game.cpp:1271
+#: src/game.cpp:1269
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Wystąpił błąd podczas tworzenia plików koniecznych do instalacji tej "
 "kampanii."
 
-#: src/game.cpp:1283 src/game.cpp:1322 src/game.cpp:1349
+#: src/game.cpp:1281 src/game.cpp:1320 src/game.cpp:1347
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:430
 msgid "Connection timed out"
 msgstr "Minął czas oczekiwania na połączenie"
 
-#: src/game.cpp:1286 src/game.cpp:1324 src/game.cpp:1351
+#: src/game.cpp:1284 src/game.cpp:1322 src/game.cpp:1349
 msgid "The server responded with an error: \""
 msgstr "Serwer zwrócił komunikat błędu: \""
 
-#: src/game.cpp:1290
+#: src/game.cpp:1288
 msgid "Terms"
 msgstr "Warunki"
 
-#: src/game.cpp:1320
+#: src/game.cpp:1318
 msgid "Sending add-on"
 msgstr "Wysyłanie dodatku"
 
-#: src/game.cpp:1328 src/game.cpp:1355 src/multiplayer_wait.cpp:344
+#: src/game.cpp:1326 src/game.cpp:1353 src/multiplayer_wait.cpp:344
 msgid "Response"
 msgstr "Odpowiedź"
 
-#: src/game.cpp:1378
+#: src/game.cpp:1376
 msgid "Join Official Server"
 msgstr "Połącz z oficjalnym serwerem"
 
-#: src/game.cpp:1379
+#: src/game.cpp:1377
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
 
-#: src/game.cpp:1381 src/multiplayer_lobby.cpp:573
+#: src/game.cpp:1379 src/multiplayer_lobby.cpp:586
 msgid "Join Game"
 msgstr "Dołącz do gry"
 
-#: src/game.cpp:1382
+#: src/game.cpp:1380
 msgid "Join a server or hosted game"
 msgstr "Dołącz do serwera lub założonej gry"
 
-#: src/game.cpp:1384
+#: src/game.cpp:1382
 msgid "Host Networked Game"
 msgstr "Załóż grę sieciową"
 
-#: src/game.cpp:1385
+#: src/game.cpp:1383
 msgid "Host a game without using a server"
 msgstr "Załóż grę wieloosobową bez użycia serwera"
 
-#: src/game.cpp:1387
+#: src/game.cpp:1385
 msgid "Local Game"
 msgstr "Gra lokalna"
 
-#: src/game.cpp:1388
+#: src/game.cpp:1386
 msgid "Play a multiplayer game with AI or humans sharing the same machine"
 msgstr ""
 "Gra dla wielu graczy używających jednego komputera lub przeciwko komputerowi"
 
-#: src/game.cpp:1396 src/multiplayer.cpp:232
+#: src/game.cpp:1394 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Login:"
 
-#: src/game.cpp:1433 src/playcampaign.cpp:92 src/playcampaign.cpp:359
+#: src/game.cpp:1431 src/playcampaign.cpp:92 src/playcampaign.cpp:359
 msgid "The game could not be loaded: "
 msgstr "Gra nie może zostać wczytana:"
 
-#: src/game.cpp:1435 src/playcampaign.cpp:94 src/playcampaign.cpp:362
+#: src/game.cpp:1433 src/playcampaign.cpp:94 src/playcampaign.cpp:362
 msgid "Error while playing the game: "
 msgstr "Błąd w czasie gry:"
 
-#: src/game.cpp:1451 src/playcampaign.cpp:96 src/playcampaign.cpp:365
+#: src/game.cpp:1449 src/playcampaign.cpp:96 src/playcampaign.cpp:365
 msgid "The game map could not be loaded: "
 msgstr "Mapa gry nie może zostać wczytana:"
 
-#: src/game.cpp:1475
+#: src/game.cpp:1473
 msgid "Language"
 msgstr "Język"
 
-#: src/game.cpp:1476
+#: src/game.cpp:1474
 msgid "Choose your preferred language:"
 msgstr "Wybierz preferowany język:"
 
-#: src/game.cpp:1625
+#: src/game.cpp:1623
 msgid "The following add-on campaign(s) had errors and could not be loaded:"
 msgstr ""
 "Następujące kampanie dodatkowe zawierały błędy i nie mogły zostać załadowane:"
 
-#: src/game.cpp:1630
+#: src/game.cpp:1628
 msgid "ERROR DETAILS:"
 msgstr "SZCZEGÓŁY BŁĘDU:"
 
-#: src/game.cpp:1644
+#: src/game.cpp:1642
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Ostrzeżenie: Błąd podczas ładowania plików konfiguracyjnych gry: '"
 
-#: src/game.cpp:1693
+#: src/game.cpp:1691
 msgid "Error loading game configuration files: '"
 msgstr "Błąd podczas ładowania plików konfiguracyjnych gry: '"
 
-#: src/game.cpp:1694
+#: src/game.cpp:1692
 msgid "' (The game will now exit)"
 msgstr "' (Gra zostanie zakończona)"
 
-#: src/game.cpp:1861
+#: src/game.cpp:1859
 msgid "Battle for Wesnoth"
 msgstr "Bitwa o Wesnoth"
 
-#: src/game.cpp:1988
+#: src/game.cpp:1986
 msgid "Loading game configuration."
 msgstr "Trwa ładowanie konfiguracji gry."
 
-#: src/game.cpp:1994
+#: src/game.cpp:1992
 msgid "Re-initialize fonts for the current language."
 msgstr "Ponowna inicjalizacja czcionek dla bieżącego języka."
 
-#: src/game.cpp:2009
+#: src/game.cpp:2007
 msgid "Loading title screen."
 msgstr "Ładowanie ekranu tytułowego."
 
@@ -5490,111 +5494,111 @@ msgstr "Obserwatorzy:"
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/help.cpp:1054
+#: src/help.cpp:1071
 msgid "Units having this special attack:"
 msgstr "Jednostki posiadające ten atak specjalny:"
 
-#: src/help.cpp:1120
+#: src/help.cpp:1137
 msgid "Units having this ability:"
 msgstr "Jednostki posiadające tę zdolność:"
 
-#: src/help.cpp:1185
+#: src/help.cpp:1202
 msgid "Advances from: "
 msgstr "Awansuje z:"
 
-#: src/help.cpp:1214
+#: src/help.cpp:1231
 msgid "Advances to: "
 msgstr "Awansuje na:"
 
-#: src/help.cpp:1240
+#: src/help.cpp:1257
 msgid "Abilities: "
 msgstr "Zdolności:"
 
-#: src/help.cpp:1259
+#: src/help.cpp:1276
 msgid "Cost: "
 msgstr "Koszt:"
 
-#: src/help.cpp:1260
+#: src/help.cpp:1277
 msgid "Alignment: "
 msgstr "Charakter:"
 
-#: src/help.cpp:1266
+#: src/help.cpp:1283
 msgid "Required XP: "
 msgstr "Wymagane PD: "
 
-#: src/help.cpp:1275
+#: src/help.cpp:1292
 msgid "unit help^Attacks"
 msgstr "Ataki"
 
-#: src/help.cpp:1282
+#: src/help.cpp:1299
 msgid "unit help^Name"
 msgstr "Nazwa"
 
-#: src/help.cpp:1283 src/menu_events.cpp:314 src/menu_events.cpp:1064
+#: src/help.cpp:1300 src/menu_events.cpp:314 src/menu_events.cpp:1064
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1284
+#: src/help.cpp:1301
 msgid "Strikes"
 msgstr "Ciosy"
 
-#: src/help.cpp:1285
+#: src/help.cpp:1302
 msgid "Range"
 msgstr "Zasięg"
 
-#: src/help.cpp:1286
+#: src/help.cpp:1303
 msgid "Special"
 msgstr "Specjalna"
 
-#: src/help.cpp:1336
+#: src/help.cpp:1353
 msgid "Resistances"
 msgstr "Odporności"
 
-#: src/help.cpp:1340
+#: src/help.cpp:1357
 msgid "Attack Type"
 msgstr "Rodzaj ataku"
 
-#: src/help.cpp:1341
+#: src/help.cpp:1358
 msgid "Resistance"
 msgstr "Odporność"
 
-#: src/help.cpp:1378
+#: src/help.cpp:1395
 msgid "Terrain Modifiers"
 msgstr "Modyfikatory terenowe"
 
-#: src/help.cpp:1382
+#: src/help.cpp:1399
 msgid "Terrain"
 msgstr "Teren"
 
-#: src/help.cpp:1383
+#: src/help.cpp:1400
 msgid "Defense"
 msgstr "Obrona"
 
-#: src/help.cpp:1384
+#: src/help.cpp:1401
 msgid "Movement Cost"
 msgstr "Koszt ruchu"
 
-#: src/help.cpp:2293 src/menu_events.cpp:640
+#: src/help.cpp:2343 src/menu_events.cpp:640
 msgid " < Back"
 msgstr "< Wróć"
 
-#: src/help.cpp:2294
+#: src/help.cpp:2344
 msgid "Forward >"
 msgstr "Dalej >"
 
-#: src/help.cpp:2406
+#: src/help.cpp:2456
 msgid "Reference to unknown topic: "
 msgstr "Odniesienie do nieznanego tematu:"
 
-#: src/help.cpp:2665
+#: src/help.cpp:2715
 msgid "corrupted original file"
 msgstr "uszkodzony plik oryginalny"
 
-#: src/help.cpp:2757
+#: src/help.cpp:2807
 msgid "The Battle for Wesnoth Help"
 msgstr "System pomocy Bitwy o Wesnoth"
 
-#: src/help.cpp:2809
+#: src/help.cpp:2859
 msgid "Parse error when parsing help text: "
 msgstr "Błąd podczas przetwarzania tekstu pomocy:"
 
@@ -5712,7 +5716,7 @@ msgstr "Poziom"
 msgid "unit list^Traits"
 msgstr "Cechy"
 
-#: src/menu_events.cpp:320 src/unit.cpp:2622 src/unit.cpp:2769
+#: src/menu_events.cpp:320 src/unit.cpp:2625 src/unit.cpp:2772
 msgid "Moves"
 msgstr "Liczba ruchów"
 
@@ -6200,12 +6204,12 @@ msgid "Normal"
 msgstr "Normalny"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2799
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2802
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2806
+#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2809
 msgid ")"
 msgstr ")"
 
@@ -6237,7 +6241,7 @@ msgstr "Brak nielosowych stron w wybranej erze"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nie można znaleźć jednostki-przywódcy dla strony $faction"
 
-#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:570
+#: src/multiplayer_connect.cpp:739 src/multiplayer_lobby.cpp:583
 #: src/multiplayer_wait.cpp:165
 msgid "Game Lobby"
 msgstr "Lobby"
@@ -6299,7 +6303,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Oczekiwanie na dołączenie graczy..."
 
-#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:574
+#: src/multiplayer_create.cpp:42 src/multiplayer_lobby.cpp:587
 msgid "Create Game"
 msgstr "Stwórz grę"
 
@@ -6331,8 +6335,8 @@ msgstr "Losowy czas rozpoczęcia"
 msgid "Fog Of War"
 msgstr "Mgła wojny"
 
-#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:452
-#: src/multiplayer_lobby.cpp:458
+#: src/multiplayer_create.cpp:73 src/multiplayer_lobby.cpp:462
+#: src/multiplayer_lobby.cpp:468
 msgid "Shroud"
 msgstr "Mgła"
 
@@ -6482,51 +6486,51 @@ msgstr "Rozmiar: "
 msgid "--no games open--"
 msgstr "--brak otwartych gier--"
 
-#: src/multiplayer_lobby.cpp:363 src/multiplayer_lobby.cpp:366
+#: src/multiplayer_lobby.cpp:368 src/multiplayer_lobby.cpp:372
 msgid "Unknown era"
 msgstr "Nieznana era"
 
-#: src/multiplayer_lobby.cpp:403 src/multiplayer_lobby.cpp:419
-msgid "Unknown scenario"
-msgstr "Nieznany scenariusz"
-
-#: src/multiplayer_lobby.cpp:415
+#: src/multiplayer_lobby.cpp:423
 msgid "Remote scenario"
 msgstr "Zdalny scenariusz"
 
-#: src/multiplayer_lobby.cpp:438
+#: src/multiplayer_lobby.cpp:427 src/multiplayer_lobby.cpp:431
+msgid "Unknown scenario"
+msgstr "Nieznany scenariusz"
+
+#: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slot:"
 msgstr "Wolne miejsce:"
 
-#: src/multiplayer_lobby.cpp:438
+#: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slots:"
 msgstr "Wolne miejsca:"
 
-#: src/multiplayer_lobby.cpp:448
+#: src/multiplayer_lobby.cpp:458
 msgid "Fog"
 msgstr "Mgła"
 
-#: src/multiplayer_lobby.cpp:462
+#: src/multiplayer_lobby.cpp:472
 msgid "none"
 msgstr "brak"
 
-#: src/multiplayer_lobby.cpp:572
+#: src/multiplayer_lobby.cpp:585
 msgid "Observe Game"
 msgstr "Obserwuj grę"
 
-#: src/multiplayer_lobby.cpp:575
+#: src/multiplayer_lobby.cpp:588
 msgid "Quick Replays"
 msgstr "Szybkie powtórki"
 
-#: src/multiplayer_lobby.cpp:577
+#: src/multiplayer_lobby.cpp:590
 msgid "Preferences"
 msgstr "Ustawienia"
 
-#: src/multiplayer_lobby.cpp:579
+#: src/multiplayer_lobby.cpp:592
 msgid "Quit"
 msgstr "Wyjdź"
 
-#: src/multiplayer_lobby.cpp:584
+#: src/multiplayer_lobby.cpp:597
 msgid "Skip quickly to the active turn when observing"
 msgstr "Szybko przewiń powtórkę do aktualnej tury"
 
@@ -6901,15 +6905,15 @@ msgstr "Wyślij statystyki"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomóż Wesnoth, wysyłając nam informacje"
 
-#: src/unit.cpp:2552 src/unit.cpp:2749 src/unit.cpp:2804
+#: src/unit.cpp:2555 src/unit.cpp:2752 src/unit.cpp:2807
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2640 src/unit.cpp:2777
+#: src/unit.cpp:2643 src/unit.cpp:2780
 msgid "XP to advance"
 msgstr "PD do awansu"
 
-#: src/unit.cpp:2783
+#: src/unit.cpp:2786
 msgid "/level"
 msgstr "/poziom"
 
@@ -6921,15 +6925,15 @@ msgstr "obrażenia"
 msgid "strikes"
 msgstr "ciosy"
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:969
 msgid "chaotic"
 msgstr "chaotyczny"
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:969
 msgid "lawful"
 msgstr "praworządny"
 
-#: src/unit_types.cpp:968
+#: src/unit_types.cpp:969
 msgid "neutral"
 msgstr "neutralny"
 
