@@ -344,6 +344,9 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 	map_ = map;
 	gamestatus_ = game_status;
 	teams_ = teams;
+
+	// In case the unit carries EventWML, apply it now
+	game_events::add_events(cfg_.get_children("event"),id_);
 }
 
 // Apply mandatory traits (e.g. undead, mechanical) to a unit and then
