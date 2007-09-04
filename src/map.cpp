@@ -245,27 +245,6 @@ gamemap::location::DIRECTION gamemap::location::get_relative_dir(gamemap::locati
 	// Impossible
 	wassert(false);
 	return NDIRECTIONS;
-
-
-}
-gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::location::DIRECTION d) {
-	switch (d) {
-		case NORTH:
-			return SOUTH;
-		case NORTH_EAST:
-			return SOUTH_WEST;
-		case SOUTH_EAST:
-			return NORTH_WEST;
-		case SOUTH:
-			return NORTH;
-		case SOUTH_WEST:
-			return NORTH_EAST;
-		case NORTH_WEST:
-			return SOUTH_EAST;
-		case NDIRECTIONS:
-		default:
-			return NDIRECTIONS;
-	}
 }
 
 gamemap::gamemap(const config& cfg, const std::string& data) :

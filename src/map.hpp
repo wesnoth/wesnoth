@@ -56,9 +56,15 @@ public:
 	//structure which represents a location on the map.
 	struct location {
 		//any valid direction which can be moved in in our hexagonal world.
-		enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
-		                 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
-
+		enum DIRECTION { NORTH =-3, 
+						 NORTH_EAST,
+						 SOUTH_EAST,
+						 NDIRECTIONS,
+						 NORTH_WEST,
+						 SOUTH_WEST,
+						 SOUTH,
+		                };
+		static DIRECTION get_opposite_dir(DIRECTION d) {return static_cast<DIRECTION>(-d);}
 		static DIRECTION parse_direction(const std::string& str);
 		//parse_directions takes a comma-separated list and filters out any invalid directions
 		static std::vector<DIRECTION> parse_directions(const std::string& str);
@@ -94,7 +100,6 @@ public:
 
 		location get_direction(DIRECTION d) const;
 		DIRECTION get_relative_dir(location loc) const;
-		static DIRECTION get_opposite_dir(DIRECTION d);
 
 		static location null_location;
 	};
