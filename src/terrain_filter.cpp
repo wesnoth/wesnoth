@@ -125,7 +125,7 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 				gamemap::location &adj = adjacent[*j];
 				if(map.on_board(adj)) {
 					if(cache.adjacent_matches == NULL) {
-						while(index >= cache.adjacent_match_cache.size()) {
+						while(index >= std::distance(cache.adjacent_match_cache.begin(), cache.adjacent_match_cache.end())) {
 							cache.adjacent_match_cache.push_back(std::map<gamemap::location,bool>());
 						}
 						std::map<gamemap::location,bool> &amc = cache.adjacent_match_cache[index];
@@ -140,7 +140,7 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 						} else if(lookup->second) {
 							++match_count;
 						}
-					} else if(index < cache.adjacent_matches->size()) {
+					} else if(index < std::distance(cache.adjacent_matches->begin(), cache.adjacent_matches->end())) {
 						std::set<gamemap::location> &amc = (*cache.adjacent_matches)[index];
 						if(amc.find(adj) != amc.end()) {
 							++match_count;
