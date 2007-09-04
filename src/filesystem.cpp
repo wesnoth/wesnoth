@@ -1030,10 +1030,12 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
 	const std::vector<std::string>& paths = get_binary_paths(type);
-	LOG_STREAM(info, paths) << "Looking for " << filename << " in  '.'\n";
-	if(file_exists(filename) || is_directory(filename)) {
-	  LOG_STREAM(info, paths) << "  Found at " << filename << "\n";
-		return filename;
+	if(!filename.empty()) {
+		LOG_STREAM(info, paths) << "Looking for " << filename << " in  '.'\n";
+		if(file_exists(filename) || is_directory(filename)) {
+		  LOG_STREAM(info, paths) << "  Found at " << filename << "\n";
+			return filename;
+		}
 	}
 
 	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
