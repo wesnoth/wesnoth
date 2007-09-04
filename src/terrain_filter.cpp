@@ -113,7 +113,7 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 		vconfig::child_list::const_iterator i, i_end, i_begin = adj_filt.begin();
 		for (i = i_begin, i_end = adj_filt.end(); i != i_end; ++i) {
 			int match_count = 0;
-			int index = i - i_begin;
+			vconfig::child_list::difference_type index = i - i_begin;
 			std::string adj_dirs = (*i).has_attribute("adjacent") ? (*i)["adjacent"]
 				: "n,ne,se,s,sw,nw";
 			static std::vector<gamemap::location::DIRECTION> default_dirs
@@ -353,7 +353,7 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	if(filter.has_child("filter_adjacent")) {
 		tfc.adjacent_matches = new std::vector<std::set<gamemap::location> >();
 		const vconfig::child_list& adj_filt = filter.get_children("filter_adjacent");
-		for (int i = 0; i < adj_filt.size() && i <= max_loop; ++i) {
+		for (unsigned i = 0; i < adj_filt.size() && i <= max_loop; ++i) {
 			std::set<gamemap::location> adj_set;
 			get_locations(map, adj_set, adj_filt[i], game_status, units, flat_tod, max_loop);
 			tfc.adjacent_matches->push_back(adj_set);
