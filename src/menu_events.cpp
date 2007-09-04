@@ -806,20 +806,20 @@ private:
 		Uint32 start, end;
 		start = SDL_GetTicks();
 		config snapshot;
-
+		std::string savename;
+		if (label.empty())
+			savename = _("Auto-Save");
+		else
+			savename = label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 		write_game_snapshot(snapshot);
 		try {
-			if (label.empty()) {
-				recorder.save_game(_("Auto-Save"), snapshot, starting_pos);
-			} else {
-				recorder.save_game(label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn), snapshot, starting_pos);
-			}
+			recorder.save_game(savename, snapshot, starting_pos);
 		} catch(game::save_game_failed&) {
 			gui::message_dialog(*gui_,"",_("Could not auto save the game. Please save the game manually.")).show();
 			//do not bother retrying, since the user can just save the game
 		}
 		end = SDL_GetTicks();
-		std::cerr << "Milliseconds to save: " << end - start << "\n";
+		std::cerr << "Milliseconds to save " << savename << ": " << end - start << "\n";
 	}
 
 	void menu_handler::load_game(){
