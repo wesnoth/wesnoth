@@ -474,6 +474,17 @@ std::pair< int, int > parse_range(std::string const &str)
 	return res;
 }
 
+std::vector< std::pair< int, int > > parse_ranges(std::string const &str)
+{
+	std::vector< std::pair< int, int > > to_return;
+	std::vector<std::string> strs = utils::split(str);
+	std::vector<std::string>::const_iterator i, i_end=strs.end();
+	for(i = strs.begin(); i != i_end; ++i) {
+		to_return.push_back(parse_range(*i));
+	}
+	return to_return;
+}
+
 int byte_size_from_utf8_first(unsigned char ch)
 {
 	int count;
