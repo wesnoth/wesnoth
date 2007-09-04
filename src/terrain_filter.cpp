@@ -112,7 +112,8 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent");
 		vconfig::child_list::const_iterator i, i_end, i_begin = adj_filt.begin();
 		for (i = i_begin, i_end = adj_filt.end(); i != i_end; ++i) {
-			int match_count=0;
+			int match_count = 0;
+			int index = i - i_begin;
 			std::string adj_dirs = (*i).has_attribute("adjacent") ? (*i)["adjacent"]
 				: "n,ne,se,s,sw,nw";
 			static std::vector<gamemap::location::DIRECTION> default_dirs
@@ -124,19 +125,26 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 				gamemap::location &adj = adjacent[*j];
 				if(map.on_board(adj)) {
 					if(cache.adjacent_matches == NULL) {
-						std::map<gamemap::location,bool>::iterator lookup = cache.adjacent_match_cache[i-i_begin].find(adj);
-						if(lookup == cache.adjacent_match_cache[i-i_begin].end()) {
+						while(index >= cache.adjacent_match_cache.size()) {
+							cache.adjacent_match_cache.push_back(std::map<gamemap::location,bool>());
+						}
+						std::map<gamemap::location,bool> &amc = cache.adjacent_match_cache[index];
+						std::map<gamemap::location,bool>::iterator lookup = amc.find(adj);
+						if(lookup == amc.end()) {
 							if(terrain_matches_filter(map,adj,*i,game_status,units,flat_tod)) {
-								cache.adjacent_match_cache[i-i_begin][adj] = true;
+								amc[adj] = true;
 								++match_count;
 							} else {
-								cache.adjacent_match_cache[i-i_begin][adj] = false;
+								amc[adj] = false;
 							}
 						} else if(lookup->second) {
 							++match_count;
 						}
-					} else if((*cache.adjacent_matches)[i-i_begin].find(adj) != (*cache.adjacent_matches)[i-i_begin].end()) {
-						++match_count;
+					} else if(index < cache.adjacent_matches->size()) {
+						std::set<gamemap::location> &amc = (*cache.adjacent_matches)[index];
+						if(amc.find(adj) != amc.end()) {
+							++match_count;
+						}
 					}
 				}
 			}
