@@ -60,6 +60,8 @@ public:
 		                 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
 
 		static DIRECTION parse_direction(const std::string& str);
+		//parse_directions takes a comma-separated list and filters out any invalid directions
+		static std::vector<DIRECTION> parse_directions(const std::string& str);
 		static std::string write_direction(DIRECTION dir);
 
 		location() : x(-1000), y(-1000) {}
@@ -92,7 +94,7 @@ public:
 
 		location get_direction(DIRECTION d) const;
 		DIRECTION get_relative_dir(location loc) const;
-		DIRECTION get_opposite_dir(DIRECTION d) const;
+		static DIRECTION get_opposite_dir(DIRECTION d);
 
 		static location null_location;
 	};

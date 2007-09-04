@@ -17,7 +17,8 @@ Version 1.3.7+svn:
  * WML engine:
    * now tag [filter_adjacent] is supported in the Standard Unit Filter
    * remove the unused [neighbour_unit_filter] animation filter, now that SUF
-   does it for us (and better)
+     does it for us (and better)
+   * a minus sign in front of a cardinal direction now reverses it ("-s"="n")
  * graphics:
    * new graphics for the highwayman
    * no more idle animations for units next to an enemy unit

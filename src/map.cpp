@@ -90,21 +90,41 @@ void gamemap::write_terrain(const gamemap::location &loc, config& cfg) const
 
 gamemap::location::DIRECTION gamemap::location::parse_direction(const std::string& str)
 {
-	if(str == "n") {
-		return NORTH;
-	} else if(str == "ne") {
-		return NORTH_EAST;
-	} else if(str == "se") {
-		return SOUTH_EAST;
-	} else if(str == "s") {
-		return SOUTH;
-	} else if(str == "sw") {
-		return SOUTH_WEST;
-	} else if(str == "nw") {
-		return NORTH_WEST;
-	} else {
-		return NDIRECTIONS;
+	if(!str.empty()) {
+		if(str == "n") {
+			return NORTH;
+		} else if(str == "ne") {
+			return NORTH_EAST;
+		} else if(str == "se") {
+			return SOUTH_EAST;
+		} else if(str == "s") {
+			return SOUTH;
+		} else if(str == "sw") {
+			return SOUTH_WEST;
+		} else if(str == "nw") {
+			return NORTH_WEST;
+		} else if(str[0] == '-' && str.length() <= 10) {
+			// A minus sign reverses the direction
+			return get_opposite_dir(parse_direction(str.substr(1)));
+		}
 	}
+	return NDIRECTIONS;
+}
+
+std::vector<gamemap::location::DIRECTION> gamemap::location::parse_directions(const std::string& str)
+{
+	gamemap::location::DIRECTION temp;
+	std::vector<gamemap::location::DIRECTION> to_return;
+	std::vector<std::string> dir_strs = utils::split(str);
+	std::vector<std::string>::const_iterator i, i_end=dir_strs.end();
+	for(i = dir_strs.begin(); i != i_end; ++i) {
+		temp = gamemap::location::parse_direction(*i);
+		// Filter out any invalid directions
+		if(temp != NDIRECTIONS) {
+			to_return.push_back(temp);
+		}
+	}
+	return to_return;
 }
 
 std::string gamemap::location::write_direction(gamemap::location::DIRECTION dir)
@@ -228,7 +248,7 @@ gamemap::location::DIRECTION gamemap::location::get_relative_dir(gamemap::locati
 
 
 }
-gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::location::DIRECTION d) const {
+gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::location::DIRECTION d) {
 	switch (d) {
 		case NORTH:
 			return SOUTH;
