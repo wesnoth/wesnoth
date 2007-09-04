@@ -70,20 +70,20 @@
 
 struct dirent
 {
-    char    d_name[NAME_MAX + 1];      /*!< file name (null-terminated) */
-    int     d_mode;
+	char	d_name[NAME_MAX + 1];	   /*!< file name (null-terminated) */
+	int 	d_mode;
 };
 
 struct DIR
 {
-    char              directory[_MAX_DIR+1];   /* . */
-    WIN32_FIND_DATAA  find_data;               /* The Win32 FindFile data. */
-    HANDLE            hFind;                   /* The Win32 FindFile handle. */
-    struct dirent     dirent;                  /* The handle's entry. */
+	char			  directory[_MAX_DIR+1];   /* . */
+	WIN32_FIND_DATAA  find_data;			   /* The Win32 FindFile data. */
+	HANDLE			  hFind;				   /* The Win32 FindFile handle. */
+	struct dirent	  dirent;				   /* The handle's entry. */
 };
 
 #ifndef FILE_ATTRIBUTE_ERROR
-# define FILE_ATTRIBUTE_ERROR           (0xFFFFFFFF)
+# define FILE_ATTRIBUTE_ERROR			(0xFFFFFFFF)
 #endif /* FILE_ATTRIBUTE_ERROR */
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -92,23 +92,23 @@ struct DIR
 
 static HANDLE dirent__findfile_directory(char const *name, LPWIN32_FIND_DATAA data)
 {
-    char    search_spec[_MAX_PATH +1];
+	char	search_spec[_MAX_PATH +1];
 
-    /* Simply add the *.*, ensuring the path separator is
-     * included.
-     */
-    (void)lstrcpyA(search_spec, name);
-    if( '\\' != search_spec[lstrlenA(search_spec) - 1] &&
-        '/' != search_spec[lstrlenA(search_spec) - 1])
-    {
-        (void)lstrcatA(search_spec, "\\*.*");
-    }
-    else
-    {
-        (void)lstrcatA(search_spec, "*.*");
-    }
+	/* Simply add the *.*, ensuring the path separator is
+	 * included.
+	 */
+	(void)lstrcpyA(search_spec, name);
+	if( '\\' != search_spec[lstrlenA(search_spec) - 1] &&
+		'/' != search_spec[lstrlenA(search_spec) - 1])
+	{
+		(void)lstrcatA(search_spec, "\\*.*");
+	}
+	else
+	{
+		(void)lstrcatA(search_spec, "*.*");
+	}
 
-    return FindFirstFileA(search_spec, data);
+	return FindFirstFileA(search_spec, data);
 }
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -117,113 +117,113 @@ static HANDLE dirent__findfile_directory(char const *name, LPWIN32_FIND_DATAA da
 
 DIR *opendir(char const *name)
 {
-    DIR     *result =   NULL;
-    DWORD   dwAttr;
+	DIR 	*result =	NULL;
+	DWORD	dwAttr;
 
-    /* Must be a valid name */
-    if( !name ||
-        !*name ||
-        (dwAttr = GetFileAttributes(name)) == 0xFFFFFFFF)
-    {
-        errno = ENOENT;
-    }
-    /* Must be a directory */
-    else if(!(dwAttr & FILE_ATTRIBUTE_DIRECTORY))
-    {
-        errno = ENOTDIR;
-    }
-    else
-    {
-        result = (DIR*)malloc(sizeof(DIR));
+	/* Must be a valid name */
+	if( !name ||
+		!*name ||
+		(dwAttr = GetFileAttributes(name)) == 0xFFFFFFFF)
+	{
+		errno = ENOENT;
+	}
+	/* Must be a directory */
+	else if(!(dwAttr & FILE_ATTRIBUTE_DIRECTORY))
+	{
+		errno = ENOTDIR;
+	}
+	else
+	{
+		result = (DIR*)malloc(sizeof(DIR));
 
-        if(result == NULL)
-        {
-            errno = ENOMEM;
-        }
-        else
-        {
-            result->hFind=dirent__findfile_directory(name, &result->find_data);
+		if(result == NULL)
+		{
+			errno = ENOMEM;
+		}
+		else
+		{
+			result->hFind=dirent__findfile_directory(name, &result->find_data);
 
-            if(result->hFind == INVALID_HANDLE_VALUE)
-            {
-                free(result);
+			if(result->hFind == INVALID_HANDLE_VALUE)
+			{
+				free(result);
 
-                result = NULL;
-            }
-            else
-            {
-                /* Save the directory, in case of rewind. */
-                (void)lstrcpyA(result->directory, name);
-                (void)lstrcpyA(result->dirent.d_name, result->find_data.cFileName);
-                result->dirent.d_mode   =   (int)result->find_data.dwFileAttributes;
-            }
-        }
-    }
+				result = NULL;
+			}
+			else
+			{
+				/* Save the directory, in case of rewind. */
+				(void)lstrcpyA(result->directory, name);
+				(void)lstrcpyA(result->dirent.d_name, result->find_data.cFileName);
+				result->dirent.d_mode	=	(int)result->find_data.dwFileAttributes;
+			}
+		}
+	}
 
-    return result;
+	return result;
 }
 
 int closedir(DIR *dir)
 {
-    int ret;
+	int ret;
 
-    if(dir == NULL)
-    {
-        errno = EBADF;
+	if(dir == NULL)
+	{
+		errno = EBADF;
 
-        ret = -1;
-    }
-    else
-    {
-        /* Close the search handle, if not already done. */
-        if(dir->hFind != INVALID_HANDLE_VALUE)
-        {
-            (void)FindClose(dir->hFind);
-        }
+		ret = -1;
+	}
+	else
+	{
+		/* Close the search handle, if not already done. */
+		if(dir->hFind != INVALID_HANDLE_VALUE)
+		{
+			(void)FindClose(dir->hFind);
+		}
 
-        free(dir);
+		free(dir);
 
-        ret = 0;
-    }
+		ret = 0;
+	}
 
-    return ret;
+	return ret;
 }
 
 struct dirent *readdir(DIR *dir)
 {
-    /* The last find exhausted the matches, so return NULL. */
-    if(dir->hFind == INVALID_HANDLE_VALUE)
-    {
-        if(FILE_ATTRIBUTE_ERROR == dir->find_data.dwFileAttributes)
-        {
-            errno = EBADF;
-        }
-        else
-        {
-            dir->find_data.dwFileAttributes = FILE_ATTRIBUTE_ERROR;
-        }
+	/* The last find exhausted the matches, so return NULL. */
+	if(dir->hFind == INVALID_HANDLE_VALUE)
+	{
+		if(FILE_ATTRIBUTE_ERROR == dir->find_data.dwFileAttributes)
+		{
+			errno = EBADF;
+		}
+		else
+		{
+			dir->find_data.dwFileAttributes = FILE_ATTRIBUTE_ERROR;
+		}
 
-        return NULL;
-    }
-    else
-    {
-        /* Copy the result of the last successful match to
-         * dirent.
-         */
-        (void)lstrcpyA(dir->dirent.d_name, dir->find_data.cFileName);
+		return NULL;
+	}
+	else
+	{
+		/* Copy the result of the last successful match to
+		 * dirent.
+		 */
+		(void)lstrcpyA(dir->dirent.d_name, dir->find_data.cFileName);
 
-        /* Attempt the next match. */
-        if(!FindNextFileA(dir->hFind, &dir->find_data))
-        {
-            /* Exhausted all matches, so close and null the
-             * handle.
-             */
-            (void)FindClose(dir->hFind);
-            dir->hFind = INVALID_HANDLE_VALUE;
-        }
+		/* Attempt the next match. */
+		if(!FindNextFileA(dir->hFind, &dir->find_data))
+		{
+			/* Exhausted all matches, so close and null the
+			 * handle.
+			 */
+			(void)FindClose(dir->hFind);
+			dir->hFind = INVALID_HANDLE_VALUE;
+		}
 
-        return &dir->dirent;
-    }
+		return &dir->dirent;
+	}
 }
 
 /*
@@ -306,14 +306,14 @@ static bool ends_with(const std::string& str, const std::string& suffix)
 }
 
 // These are the filenames that get special processing
-#define MAINCFG	"_main.cfg"
+#define MAINCFG "_main.cfg"
 #define FINALCFG	"_final.cfg"
 
 void get_files_in_dir(const std::string& directory,
-                      std::vector<std::string>* files,
-                      std::vector<std::string>* dirs,
-                      FILE_NAME_MODE mode,
-                      FILE_REORDER_OPTION reorder)
+					  std::vector<std::string>* files,
+					  std::vector<std::string>* dirs,
+					  FILE_NAME_MODE mode,
+					  FILE_REORDER_OPTION reorder)
 {
 	// if we have a path to find directories in, then
 	// convert relative pathnames to be rooted on the
@@ -370,10 +370,10 @@ void get_files_in_dir(const std::string& directory,
 		*/
 		char basename[MAXNAMLEN+1];
 		CFStringRef cstr = CFStringCreateWithCString(NULL,
-						     entry->d_name,
-						     kCFStringEncodingUTF8);
+							 entry->d_name,
+							 kCFStringEncodingUTF8);
 		CFMutableStringRef mut_str = CFStringCreateMutableCopy(NULL,
-						     0, cstr);
+							 0, cstr);
 		CFStringNormalize(mut_str, kCFStringNormalizationFormC);
 		CFStringGetCString(mut_str,
 				basename,sizeof(basename)-1,
@@ -405,8 +405,8 @@ void get_files_in_dir(const std::string& directory,
 				}
 			} else if (S_ISDIR(st.st_mode)) {
 				if (reorder == DO_REORDER &&
-					    ::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 &&
-					    S_ISREG(st.st_mode)) {
+						::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 &&
+						S_ISREG(st.st_mode)) {
 					LOG_FS << "_main.cfg found : ";
 					if (files != NULL) {
 						if (mode == ENTIRE_FILE_PATH) {
@@ -416,11 +416,11 @@ void get_files_in_dir(const std::string& directory,
 							files->push_back(std::string(basename) + "/" + MAINCFG);
 							LOG_FS << std::string(basename) << "/" << MAINCFG << '\n';
 					}
-				    } else {
+					} else {
 					// show what I consider strange
 						LOG_FS << fullname << "/" << MAINCFG << " not used now but skip the directory \n";
-				    }
-			    } else if (dirs != NULL) {
+					}
+				} else if (dirs != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
 						dirs->push_back(fullname);
 					else
@@ -441,9 +441,9 @@ void get_files_in_dir(const std::string& directory,
 	if (files != NULL && reorder == DO_REORDER) {
 		for (unsigned int i = 0; i < files->size(); i++)
 			if (ends_with((*files)[i], FINALCFG)) {
-			    files->push_back((*files)[i]);
-			    files->erase(files->begin()+i);
-			    break;
+				files->push_back((*files)[i]);
+				files->erase(files->begin()+i);
+				break;
 			}
 	}
 }
@@ -774,7 +774,10 @@ static bool is_directory_internal(const std::string& fname)
 
 bool is_directory(const std::string& fname)
 {
-	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
+	if(fname.empty()) {
+		return false;
+	}
+	if(fname[0] != '/' && !game_config::path.empty()) {
 		if(is_directory_internal(game_config::path + "/" + fname))
 			return true;
 	}
@@ -785,10 +788,11 @@ bool is_directory(const std::string& fname)
 bool file_exists(const std::string& name)
 {
 	std::ifstream file(name.c_str(),std::ios_base::binary);
-	if (file.rdstate() != 0)
-	        return false;
+	if (file.rdstate() != 0) {
+		return false;
+	}
 	file.close();
-        return true;
+	return true;
 }
 
 time_t file_create_time(const std::string& fname)
@@ -834,11 +838,11 @@ std::string next_filename(const std::string &dirname, unsigned int max)
 }
 
 file_tree_checksum::file_tree_checksum()
-    : nfiles(0), sum_size(0), modified(0)
+	: nfiles(0), sum_size(0), modified(0)
 {}
 
 file_tree_checksum::file_tree_checksum(const config& cfg) :
-	nfiles  (lexical_cast_default<size_t>(cfg["nfiles"])),
+	nfiles	(lexical_cast_default<size_t>(cfg["nfiles"])),
 	sum_size(lexical_cast_default<size_t>(cfg["size"])),
 	modified(lexical_cast_default<time_t>(cfg["modified"]))
 {
@@ -854,7 +858,7 @@ void file_tree_checksum::write(config& cfg) const
 bool operator==(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
 {
 	return lhs.nfiles == rhs.nfiles && lhs.sum_size == rhs.sum_size &&
-	       lhs.modified == rhs.modified;
+		   lhs.modified == rhs.modified;
 }
 
 bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
@@ -892,8 +896,8 @@ const file_tree_checksum& data_tree_checksum()
 		get_file_tree_checksum_internal("data/",checksum);
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
 		LOG_FS << "calculated data tree checksum: "
-		       << checksum.nfiles << " files; "
-		       << checksum.sum_size << " bytes\n";
+			   << checksum.nfiles << " files; "
+			   << checksum.sum_size << " bytes\n";
 	}
 
 	return checksum;
