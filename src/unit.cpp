@@ -989,32 +989,29 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent");
 		for (i = adj_filt.begin(), i_end = adj_filt.end(); i != i_end; ++i) {
 			int match_count=0;
-			std::string adj_dirs = (*i).has_attribute("adjacent") ? (*i)["adjacent"]
-				: "n,ne,se,s,sw,nw";
-			std::vector<std::string> dirs = utils::split(adj_dirs);
-			std::vector<std::string>::const_iterator j, j_end = dirs.end();
+			static std::vector<gamemap::location::DIRECTION> default_dirs
+				= gamemap::location::parse_directions("n,ne,se,s,sw,nw");
+			std::vector<gamemap::location::DIRECTION> dirs = (*i).has_attribute("adjacent")
+				? gamemap::location::parse_directions((*i)["adjacent"]) : default_dirs;
+			std::vector<gamemap::location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
-				gamemap::location::DIRECTION index =
-					gamemap::location::parse_direction(*j);
-				if (index == gamemap::location::NDIRECTIONS)
+				unit_map::const_iterator unit_itor = units_->find(adjacent[*j]);
+				if (unit_itor == units_->end() 
+				|| !unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod)) {
 					continue;
-				unit_map::const_iterator unit_itor = units_->find(adjacent[index]);
-				if (unit_itor == units_->end())
-					continue;
-				if (unit_itor->second.matches_filter(*i, unit_itor->first, use_flat_tod)
-				&& (!(*i).has_attribute("is_enemy") || utils::string_bool((*i)["is_enemy"])
-				== (*gamestatus_->teams)[this->side()-1].is_enemy(unit_itor->second.side()))) {
+				}
+				if (!(*i).has_attribute("is_enemy")
+				|| utils::string_bool((*i)["is_enemy"]) == (*gamestatus_->teams)[this->side()-1].is_enemy(unit_itor->second.side())) {
 					++match_count;
 				}
 			}
-			std::string count_str = (*i).has_attribute("count") ? (*i)["count"]
-				: "1-6";
-			std::vector<std::string> counts = utils::split(count_str);
-			j_end = counts.end();
+			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
+			std::vector<std::pair<int,int> > counts = (*i).has_attribute("count") 
+				? utils::parse_ranges((*i)["count"]) : default_counts;
+			std::vector<std::pair<int,int> >::const_iterator count, count_end = counts.end();
 			bool count_matches = false;
-			for (j = counts.begin(); j != j_end && !count_matches; ++j) {
-				std::pair<int,int> count_range = utils::parse_range(*j);
-				if(count_range.first <= match_count && match_count <= count_range.second) {
+			for (count = counts.begin(); count != count_end && !count_matches; ++count) {
+				if(count->first <= match_count && match_count <= count->second) {
 					count_matches = true;
 				}
 			}
