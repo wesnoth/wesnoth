@@ -15,8 +15,9 @@ Version 1.3.7+svn:
      a game to avoid ambiguity in case of multiple games with the same name
    * show observer team chat messages in the 'Chat Log' window
  * WML engine:
-   * now tag [filter_adjacent] is supported in the Standard Unit Filter
-   * now tag [filter_adjacent] is supported in the Standard Location Filter
+   * now tag [filter_adjacent] is supported in the Standard Unit Filter (SUF)
+   * now tag [filter_adjacent_location] is supported in the Standard Location
+     Filter (SLF)
    * remove the unused [neighbour_unit_filter] animation filter, now that SUF
      does it for us (and better)
    * a minus sign in front of a cardinal direction now reverses it ("-s"="n")

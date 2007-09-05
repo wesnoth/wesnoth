@@ -106,10 +106,10 @@ static bool terrain_matches_internal(const gamemap& map, const gamemap::location
 	}
 
 	//Allow filtering on adjacent locations
-	if(cfg.has_child("filter_adjacent")) {
+	if(cfg.has_child("filter_adjacent_location")) {
 		gamemap::location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
-		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent");
+		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent_location");
 		vconfig::child_list::const_iterator i, i_end, i_begin = adj_filt.begin();
 		for (i = i_begin, i_end = adj_filt.end(); i != i_end; ++i) {
 			int match_count = 0;
@@ -350,9 +350,9 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 
 	//handle location filter
 	terrain_filter_cache tfc;
-	if(filter.has_child("filter_adjacent")) {
+	if(filter.has_child("filter_adjacent_location")) {
 		tfc.adjacent_matches = new std::vector<std::set<gamemap::location> >();
-		const vconfig::child_list& adj_filt = filter.get_children("filter_adjacent");
+		const vconfig::child_list& adj_filt = filter.get_children("filter_adjacent_location");
 		for (unsigned i = 0; i < adj_filt.size() && i <= max_loop; ++i) {
 			std::set<gamemap::location> adj_set;
 			get_locations(map, adj_set, adj_filt[i], game_status, units, flat_tod, max_loop);
