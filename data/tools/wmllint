@@ -542,10 +542,11 @@ def hack_syntax(filename, lines):
     # Boucman's transformation of animation syntax
     if future:
         class anim_frame:
-            def __init__(self, attackline, attackname, lineno):
+            def __init__(self, attackline, attackname, lineno, female):
                 self.attackstart = attackline
                 self.name = attackname
                 self.animstart = lineno
+                self.female = female
                 self.animend = None
                 self.attackend = None
             def __repr__(self):
@@ -586,7 +587,7 @@ def hack_syntax(filename, lines):
                 if not attackname:
                     print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
                     
-                animations.append(anim_frame(attackline, attackname, i))
+                animations.append(anim_frame(attackline, attackname, i, in_female))
                 in_animation = True
             elif "[/animation]" in lines[i] and in_attack:
                 in_animation = False
@@ -619,13 +620,12 @@ def hack_syntax(filename, lines):
                     comment = fields[1]
                 if syntactic.strip().startswith("name"):
                     attackname = syntactic.split("=")[1].strip()
-        # All animation ranges have been gathered,  We have a list of tuples
-        # of the form [attack_startline, attack_name, animation_startline,
-        # animation_endline, attack_endline].  Reverse it, because we're
+        # All animation ranges have been gathered,  We have a list of objects
+        # containing the attack information.  Reverse it, because we're
         # going to process them back to front to avoid invalidating the
-        # already-collected line numbers.
+        # already-collected line numbers.  Then pull out the animation
+        # WML and stash it in the frame objects.
         animations.reverse()
-        attack_anims = []
         for aframe in animations:
             if verbose:
                 print '"%s", line %d: lifting animation block at %d:%d for %s attack (%d:%d)' % (filename, aframe.animstart+1, aframe.animstart+1, aframe.animend+1, aframe.name, aframe.attackstart+1, aframe.attackend+1)
@@ -641,9 +641,32 @@ def hack_syntax(filename, lines):
             animation.insert(1, indent + baseindent + "name="+aframe.name+"\n")
             animation.insert(1, indent + "[attack_filter]\n")
             # Save it and delete it from its original location
-            attack_anims = animation + attack_anims
+            aframe.wml = "".join(animation)
             lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
             modcount += 1
+        # Insert attacks where they belong
+        female_attacks = filter(lambda a: a.female, animations)
+        if female_attacks:
+            female_end = -1
+            for i in range(len(lines)):
+                if lines[i].endswith("[/female]\n"):
+                    female_end = i
+                    break
+            assert female_end != -1
+            female_wml = "".join(map(lambda x: x.wml, female_attacks))
+            lines = lines[:female_end] + [female_wml] + lines[female_end:]
+        male_attacks = filter(lambda a: not a.female, animations)
+        if male_attacks:
+            male_end = -1
+            for i in range(len(lines)):
+                # Male attacks go either before the [female] tag or just
+                # before the closing [/unit]
+                if lines[i].endswith("[/unit]\n") or lines[i].endswith("[female]\n"):
+                    male_end = i
+                    break
+            assert male_end != -1
+            male_wml = "".join(map(lambda x: x.wml, male_attacks))
+            lines = lines[:male_end] + [male_wml] + lines[male_end:]
         # Garbage-collect any empty [attack] scopes left behind;
         # this is likely to happen with female-variant units.
         nullattack = True
@@ -655,14 +678,6 @@ def hack_syntax(filename, lines):
                     break
             if nullattack:
                 lines = lines[:i] + lines[i+2:] 
-        # Add the attack animations to the end of the unit declaration
-        if attack_anims:
-            unitend = -1
-            for i in range(len(lines)):
-                if lines[i].endswith("[/unit]\n"):
-                    unitend = i
-            assert unitend != -1
-            lines = lines[:unitend] + attack_anims + lines[unitend:]
     return (lines, modcount)
 
 # Generic machinery starts here
