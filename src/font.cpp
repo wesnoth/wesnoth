@@ -135,7 +135,7 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 				current_chunk.ucs2_text.clear();
 				current_chunk.subset = font_map[size_t(*ch)];
 			}
-			current_chunk.ucs2_text.push_back((Uint16)*ch);
+			current_chunk.ucs2_text.push_back(static_cast<Uint16>(*ch));
 			current_chunk.text.append(ch.substr().first, ch.substr().second);
 		}
 		if (!current_chunk.text.empty()) {
@@ -467,7 +467,8 @@ void text_surface::measure() const
 			itor->ucs2_text.push_back(0);
 		}
 
-		TTF_SizeUNICODE(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), &w, &h);
+		TTF_SizeUNICODE(ttfont, 
+			static_cast<Uint16 const *>(&(itor->ucs2_text.front())), &w, &h);
 		w_ += w;
 		h_ = maximum<int>(h_, h);
 	}
@@ -512,7 +513,8 @@ std::vector<surface> const &text_surface::get_surfaces() const
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 
-		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), color_));
+		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, 
+			static_cast<Uint16 const *>(&(itor->ucs2_text.front())), color_));
 		if(!s.null())
 			surfs_.push_back(s);
 	}
