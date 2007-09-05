@@ -1494,8 +1494,16 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		config section_cfg;
 
 		section_cfg["id"] =  "race_" + *it;
-		//FIXME: Need to choose a "No race" expression and translate it
-		section_cfg["title"] = it->empty() ? "" : gettext(it->c_str());
+		
+		std::string title;
+		const race_map::const_iterator race_it = game_info->races.find(*it);
+		if (race_it != game_info->races.end()) {
+			title = race_it->second.name();
+		} else {
+			title = _ ("race^Miscellaneous");
+		}
+		section_cfg["title"] = title;
+
 		section_cfg["generator"] = "units:" + *it;
 
 		parse_config_internal(help_cfg, &section_cfg, race_section, level+1);
