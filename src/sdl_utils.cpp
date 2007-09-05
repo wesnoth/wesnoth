@@ -435,9 +435,10 @@ surface greyscale_image(surface const &surf)
 			// Ok, this is no big deal :)
 			// The correct formula being:
 			// gray=0.299red+0.587green+0.114blue
-			const Uint8 avg = (Uint8)((77*(Uint16)red +
-						   150*(Uint16)green +
-						   29*(Uint16)blue) / 256);
+			const Uint8 avg = static_cast<Uint8>((
+				77 * static_cast<Uint16>(red) +
+				150 * static_cast<Uint16>(green) +
+				29 * static_cast<Uint16>(blue)) / 256);
 
 
 			*beg = SDL_MapRGBA(nsurf->format,avg,avg,avg,alpha);
@@ -475,13 +476,14 @@ surface darken_image(surface const &surf)
 			// Ok, this is no big deal :)
 			// The correct formula being:
 			// gray=0.299red+0.587green+0.114blue
-			const Uint8 avg = (Uint8)((77*(Uint16)red +
-						   150*(Uint16)green +
-						   29*(Uint16)blue) / 256);
+			const Uint8 avg = static_cast<Uint8>((
+				77 * static_cast<Uint16>(red) +
+				150 * static_cast<Uint16>(green) +
+				29 * static_cast<Uint16>(blue)) / 256);
 			// then tint 77%, 67%, 72%
-			const Uint8 r=(Uint8)((avg*196)>>8);
-			const Uint8 g=(Uint8)((avg*171)>>8);
-			const Uint8 b=(Uint8)((avg*184)>>8);
+			const Uint8 r= ((avg * 196) >> 8);
+			const Uint8 g= ((avg * 171) >> 8);
+			const Uint8 b= ((avg * 184) >> 8);
 
 
 			*beg = SDL_MapRGBA(nsurf->format,r,g,b,alpha);
