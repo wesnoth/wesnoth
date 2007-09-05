@@ -199,6 +199,15 @@ public:
             return strcoll(t1.title.c_str(), t2.title.c_str()) < 0; }
 };
 
+/// To be used as a function object when sorting section lists on the title.
+class section_less
+{
+public:
+	bool operator()(const section* s1, const section* s2) {
+            return strcoll(s1->title.c_str(), s2->title.c_str()) < 0; }
+};
+
+
 struct delete_section
 {
 	void operator()(section *s) { delete s; }
@@ -864,6 +873,10 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		}
 
 		generate_sections(help_cfg, (*section_cfg)["sections_generator"], sec, level);
+		//TODO: harmonize topics/sections sorting
+		if ((*section_cfg)["sort_sections"] == "yes") {
+			std::sort(sec.sections.begin(),sec.sections.end(), section_less());
+		}
 
 		bool sort_topics = false;
 		bool sort_generated = true;
@@ -873,7 +886,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		  sort_generated = false;
 		} else if ((*section_cfg)["sort_topics"] == "no") {
 		  sort_topics = false;
-		  sort_generated = false;
+    	  sort_generated = false;
 		} else if ((*section_cfg)["sort_topics"] == "generated") {
 		  sort_topics = false;
 		  sort_generated = true;
