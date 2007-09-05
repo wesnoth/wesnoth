@@ -919,8 +919,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		}
 	}
 
-	if(side.empty() == false && this->side() != (unsigned)atoi(side.c_str()))
-	  {
+	if(side.empty() == false && this->side() != lexical_cast_default<unsigned>(side)) {
 		if(std::find(side.begin(),side.end(),',') != side.end()) {
 			const std::vector<std::string>& vals = utils::split(side);
 
@@ -1752,7 +1751,7 @@ const unit_animation* unit::start_animation(const game_display &disp, const game
 	} else {
 		//! @todo TODO this, the is_attack_anim param and the return value are ugly hacks
 		// that need to be taken care of eventually
-		anim_ = new attack_animation(*(const attack_animation*)animation);
+		anim_ = new attack_animation(*(static_cast<const attack_animation*>(animation)));
 	}
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
@@ -1763,7 +1762,7 @@ const unit_animation* unit::start_animation(const game_display &disp, const game
 		next_idling_ = INT_MAX;
 	}
 	if(is_attack_anim) {
-		return &((attack_animation*)anim_)->get_missile_anim();
+		return &(static_cast<attack_animation*>(anim_))->get_missile_anim();
 	} else {
 		return NULL;
 	}
