@@ -33,6 +33,7 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
+#define ERR_NG LOG_STREAM(err, engine)
 
 namespace {
 	struct terrain_filter_cache {
@@ -247,76 +248,87 @@ bool terrain_matches_filter(const gamemap& map, const gamemap::location& loc, co
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
 {
-	bool matches = false;
-	if(map.on_board(loc)) {
-		//handle radius
-		const size_t radius = minimum<size_t>(max_loop,
-			lexical_cast_default<size_t>(cfg["radius"], 0));
-		std::set<gamemap::location> hexes;
-		std::vector<gamemap::location> loc_vec(1, loc);
-		if(cfg.has_child("filter_radius")) {
-			terrain_pred tp(map, cfg.child("filter_radius"), game_status, units, flat_tod);
-			get_tiles_radius(map, loc_vec, radius, hexes, &tp);
-		} else {
-			get_tiles_radius(map, loc_vec, radius, hexes);
-		}
+	if(cfg["x"] == "recall" && cfg["y"] == "recall") {
+		return !map.on_board(loc);
+	}
+	std::set<gamemap::location> hexes;
+	std::vector<gamemap::location> loc_vec(1, loc);
 
-		size_t loop_count = 0;
-		std::set<gamemap::location>::const_iterator i;
-		terrain_filter_cache tfc;
-		for(i = hexes.begin(); i != hexes.end() && loop_count <= max_loop && !matches; ++i) {
-			matches = terrain_matches_internal(map, *i, cfg, game_status, units, flat_tod, false, tfc);
-			++loop_count;
-		}
-	} else if(cfg["x"] == "recall" && cfg["y"] == "recall"
-	&& cfg.get_config().values.size() == 2 && cfg.get_config().all_children().empty()) {
-		//locations not on the map are considered to be on a recall list
-		matches = true;
+	//handle radius
+	size_t radius = lexical_cast_default<size_t>(cfg["radius"], 0);
+	if(radius > max_loop) {
+		ERR_NG << "terrain_matches_filter: radius greater than " << max_loop
+		<< ", restricting\n";
+		radius = max_loop;
+	}
+	if(cfg.has_child("filter_radius")) {
+		terrain_pred tp(map, cfg.child("filter_radius"), game_status, units, flat_tod);
+		get_tiles_radius(map, loc_vec, radius, hexes, &tp);
+	} else {
+		get_tiles_radius(map, loc_vec, radius, hexes);
 	}
 
-	//handle [and], [or], and [not] with in-order precedence
-	config::all_children_iterator cond = cfg.get_config().ordered_begin();
-	config::all_children_iterator cond_end = cfg.get_config().ordered_end();
-	while(cond != cond_end)
-	{
-		const std::string& cond_name = *((*cond).first);
-		const vconfig cond_filter(&(*((*cond).second)));
+	size_t loop_count = 0;
+	std::set<gamemap::location>::const_iterator i;
+	terrain_filter_cache tfc;
+	for(i = hexes.begin(); i != hexes.end(); ++i) {
+		bool matches = terrain_matches_internal(map, *i, cfg, game_status, units, flat_tod, false, tfc);
 
-		//handle [and]
-		if(cond_name == "and")
+		//handle [and], [or], and [not] with in-order precedence
+		config::all_children_iterator cond = cfg.get_config().ordered_begin();
+		config::all_children_iterator cond_end = cfg.get_config().ordered_end();
+		while(cond != cond_end)
 		{
-			matches = matches &&
-				terrain_matches_filter(map, loc, cond_filter, game_status, units, flat_tod, max_loop);
-		}
-		//handle [or]
-		else if(cond_name == "or")
-		{
-			matches = matches ||
-				terrain_matches_filter(map, loc, cond_filter, game_status, units, flat_tod, max_loop);
-		}
-		//handle [not]
-		else if(cond_name == "not")
-		{
-			matches = matches &&
-				!terrain_matches_filter(map, loc, cond_filter, game_status, units, flat_tod, max_loop);
-		}
+			const std::string& cond_name = *((*cond).first);
+			const vconfig cond_filter(&(*((*cond).second)));
 
-		++cond;
+			//handle [and]
+			if(cond_name == "and")
+			{
+				matches = matches &&
+					terrain_matches_filter(map, *i, cond_filter, game_status, units, flat_tod, max_loop);
+			}
+			//handle [or]
+			else if(cond_name == "or")
+			{
+				matches = matches ||
+					terrain_matches_filter(map, *i, cond_filter, game_status, units, flat_tod, max_loop);
+			}
+			//handle [not]
+			else if(cond_name == "not")
+			{
+				matches = matches &&
+					!terrain_matches_filter(map, *i, cond_filter, game_status, units, flat_tod, max_loop);
+			}
+
+			++cond;
+		}
+		if(matches) {
+			return true;
+		}
+		if(++loop_count > max_loop) {
+			std::set<gamemap::location>::const_iterator temp = i;
+			if(++temp != hexes.end()) {
+				ERR_NG << "terrain_matches_filter: loop count greater than " << max_loop
+				<< ", aborting\n";
+				break;
+			}
+		}
 	}
-
-	return matches;
+	return false;
 }
 
 void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const vconfig& filter,
 		const gamestatus& game_status, const unit_map& units, const bool flat_tod,
 		const size_t max_loop)
 {
-	std::vector<gamemap::location> xy_locs = parse_location_range(filter["x"],filter["y"], &map);
-	if(xy_locs.empty()) {
+	std::vector<gamemap::location> xy_vector = parse_location_range(filter["x"],filter["y"], &map);
+	std::set<gamemap::location> xy_set(xy_vector.begin(), xy_vector.end());
+	if(xy_set.empty()) {
 		//consider all locations on the map
 		for(int x=0; x < map.w(); x++) {
 			for(int y=0; y < map.h(); y++) {
-				xy_locs.push_back(gamemap::location(x,y));
+				xy_set.insert(gamemap::location(x,y));
 			}
 		}
 	}
@@ -324,27 +336,25 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 		//remove any locations not found in the specified variable
 		variable_info vi(filter["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) {
-			xy_locs.clear();
+			xy_set.clear();
 		} else if(vi.explicit_index) {
 			gamemap::location test_loc(vi.as_container(),NULL);
-			if(std::find(xy_locs.begin(), xy_locs.end(), test_loc) != xy_locs.end()) {
-				xy_locs.clear();
-				xy_locs.push_back(test_loc);
+			if(xy_set.count(test_loc)) {
+				xy_set.clear();
+				xy_set.insert(test_loc);
 			} else {
-				xy_locs.clear();
+				xy_set.clear();
 			}
 		} else {
 			std::set<gamemap::location> findin_locs;
 			variable_info::array_range a_range;
 			for(a_range = vi.as_array(); a_range.first != a_range.second; ++a_range.first) {
 				gamemap::location test_loc(**a_range.first,NULL);
-				if(std::find(xy_locs.begin(), xy_locs.end(), test_loc) != xy_locs.end()) {
+				if(xy_set.count(test_loc)) {
 					findin_locs.insert(test_loc);
 				}
 			}
-			xy_locs.clear();
-			std::copy(findin_locs.begin(), findin_locs.end(),
-				std::inserter(xy_locs, xy_locs.end()));
+			xy_set.swap(findin_locs);
 		}
 	}
 
@@ -353,29 +363,24 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	if(filter.has_child("filter_adjacent_location")) {
 		tfc.adjacent_matches = new std::vector<std::set<gamemap::location> >();
 		const vconfig::child_list& adj_filt = filter.get_children("filter_adjacent_location");
-		for (unsigned i = 0; i < adj_filt.size() && i <= max_loop; ++i) {
+		for (unsigned i = 0; i < adj_filt.size(); ++i) {
 			std::set<gamemap::location> adj_set;
 			get_locations(map, adj_set, adj_filt[i], game_status, units, flat_tod, max_loop);
 			tfc.adjacent_matches->push_back(adj_set);
+			if(i >= max_loop && i+1 < adj_filt.size()) {
+				ERR_NG << "get_locations: loop count greater than " << max_loop
+				<< ", aborting\n";
+				break;
+			}
 		}
 	}
-	std::vector<gamemap::location>::iterator loc_itor = xy_locs.begin();
-	while(loc_itor != xy_locs.end()) {
+	std::set<gamemap::location>::iterator loc_itor = xy_set.begin();
+	while(loc_itor != xy_set.end()) {
 		if(terrain_matches_internal(map, *loc_itor, filter, game_status, units, flat_tod, true, tfc)) {
 			++loc_itor;
 		} else {
-			loc_itor = xy_locs.erase(loc_itor);
+			xy_set.erase(loc_itor++);
 		}
-	}
-
-	//handle radius
-	const size_t radius = minimum<size_t>(max_loop,
-		lexical_cast_default<size_t>(filter["radius"], 0));
-	if(filter.has_child("filter_radius")) {
-		terrain_pred tp(map, filter.child("filter_radius"), game_status, units, flat_tod);
-		get_tiles_radius(map, xy_locs, radius, locs, &tp);
-	} else {
-		get_tiles_radius(map, xy_locs, radius, locs);
 	}
 
 	//handle [and], [or], and [not] with in-order precedence
@@ -385,7 +390,7 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 	while(cond != cond_end)
 	{
 		//if there are no locations or [or] conditions left, go ahead and return empty
-		if(locs.empty() && ors_left <= 0) {
+		if(xy_set.empty() && ors_left <= 0) {
 			return;
 		}
 
@@ -396,10 +401,10 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 		if(cond_name == "and") {
 			std::set<gamemap::location> intersect_hexes;
 			get_locations(map, intersect_hexes, cond_filter, game_status, units, flat_tod, max_loop);
-			std::set<gamemap::location>::iterator intersect_itor = locs.begin();
-			while(intersect_itor != locs.end()) {
+			std::set<gamemap::location>::iterator intersect_itor = xy_set.begin();
+			while(intersect_itor != xy_set.end()) {
 				if(intersect_hexes.find(*intersect_itor) == intersect_hexes.end()) {
-					locs.erase(*intersect_itor++);
+					xy_set.erase(*intersect_itor++);
 				} else {
 					++intersect_itor;
 				}
@@ -409,10 +414,10 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 		else if(cond_name == "or") {
 			std::set<gamemap::location> union_hexes;
 			get_locations(map, union_hexes, cond_filter, game_status, units, flat_tod, max_loop);
-			//locs.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
+			//xy_set.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
 			std::set<gamemap::location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
-				locs.insert(*insert_itor++);
+				xy_set.insert(*insert_itor++);
 			}
 			--ors_left;
 		}
@@ -422,23 +427,35 @@ void get_locations(const gamemap& map, std::set<gamemap::location>& locs, const 
 			get_locations(map, removal_hexes, cond_filter, game_status, units, flat_tod, max_loop);
 			std::set<gamemap::location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
-				locs.erase(*erase_itor++);
+				xy_set.erase(*erase_itor++);
 			}
 		}
 
 		++cond;
 	}
-
-	/*	
-	//restrict the potential number of locations to be returned
-	if(locs.size() > max_loop + 1) {
-		std::set<gamemap::location>::iterator erase_itor = locs.begin();
-		for(unsigned i=0; i < max_loop + 1; ++i) {
-			++erase_itor;
-		}
-		locs.erase(erase_itor, locs.end());
+	if(xy_set.empty()) {
+		return;
 	}
-	*/
+
+	//handle radius
+	size_t radius = lexical_cast_default<size_t>(filter["radius"], 0);
+	if(radius > max_loop) {
+		ERR_NG << "get_locations: radius greater than " << max_loop
+		<< ", restricting\n";
+		radius = max_loop;
+	}
+	if(radius > 0) {
+		xy_vector.clear();
+		std::copy(xy_set.begin(),xy_set.end(),std::inserter(xy_vector,xy_vector.end()));
+		if(filter.has_child("filter_radius")) {
+			terrain_pred tp(map, filter.child("filter_radius"), game_status, units, flat_tod);
+			get_tiles_radius(map, xy_vector, radius, locs, &tp);
+		} else {
+			get_tiles_radius(map, xy_vector, radius, locs);
+		}
+	} else {
+		std::copy(xy_set.begin(),xy_set.end(),std::inserter(locs,locs.end()));
+	}
 }
 
 
