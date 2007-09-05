@@ -262,7 +262,7 @@ public:
 
 	const std::string& usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
-	const std::string& race() const { return race_->name(); }
+	const std::string& race() const { return race_->id(); }
 
 	const unit_animation* choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int damage=0,const unit_animation::hit_type hit_type = unit_animation::INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 

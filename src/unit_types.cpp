@@ -1007,7 +1007,7 @@ const std::string& unit_type::race() const
 		return empty_string;
 	}
 
-	return race_->name();
+	return race_->id();
 }
 
 // Allow storing "advances from" info for convenience in Help.
@@ -1077,7 +1077,7 @@ void game_data::set_config(const config& cfg)
 	for(i = cfg.child_range("race"); i.first != i.second; ++i.first)
 	{
 		const unit_race race(**i.first);
-		races.insert(std::pair<std::string,unit_race>(race.name(),race));
+		races.insert(std::pair<std::string,unit_race>(race.id(),race));
 		increment_set_config_progress();
 	}
 

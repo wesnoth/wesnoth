@@ -909,7 +909,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		}
 	}
 
-	if(race.empty() == false && race_->name() != race) {
+	if(race.empty() == false && race_->id() != race) {
 		return false;
 	}
 
@@ -1561,7 +1561,7 @@ void unit::write(config& cfg) const
 
 	cfg["advances_to"] = utils::join(advances_to_);
 
-	cfg["race"] = race_->name();
+	cfg["race"] = race_->id();
 	cfg["name"] = name_;
 	cfg["language_name"] = language_name_;
 	cfg["undead_variation"] = undead_variation_;
