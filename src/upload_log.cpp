@@ -50,8 +50,9 @@ upload_log::manager::~manager()
 
 static void send_string(TCPsocket sock, const std::string &str)
 {
-	if (SDLNet_TCP_Send(sock, (void *)str.c_str(), str.length())
-		!= (int)str.length()) {
+	if (SDLNet_TCP_Send(sock, const_cast<void*>(static_cast<const void*>(
+			str.c_str())), str.length()) != static_cast<int>(str.length())) {
+
 		throw network::error("");
 	}
 }
@@ -62,7 +63,7 @@ static void send_string(TCPsocket sock, const std::string &str)
 static int upload_logs(void *_ti)
 {
 	TCPsocket sock = NULL;
-	upload_log::thread_info *ti = (upload_log::thread_info *)_ti;
+	upload_log::thread_info *ti = static_cast<upload_log::thread_info*>(_ti);
 
 	const char *header =
 		"POST " TARGET_URL " HTTP/1.1\n"
