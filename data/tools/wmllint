@@ -482,6 +482,10 @@ def outdent(s):
         return s
 
 def hack_syntax(filename, lines):
+    # Syntax transformations go here.  This gets called once per WML file;
+    # the name of the file is passed as filename, text of the file as the
+    # array of strings in lines.  Modify lines in place as needed, and
+    # set modcount to nonzero when you actually change any.
     modcount = 0
     # Ensure that every attack has a translatable description."
     for i in range(len(lines)):
@@ -673,7 +677,8 @@ def hack_syntax(filename, lines):
                     nullattack = True
                     break
             if nullattack:
-                lines = lines[:i] + lines[i+2:] 
+                lines = lines[:i] + lines[i+2:]
+    # More syntax transformations would go here.
     return (lines, modcount)
 
 # Generic machinery starts here
