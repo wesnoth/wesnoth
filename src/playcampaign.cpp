@@ -421,7 +421,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				msg = _("Receiving data...");
 			else
 				msg = _("Downloading next scenario...");
-
+			// FIXME: If the host (IO_SERVER) changes mid-game we're waiting forever on
+			// the next scenario data, because the newly chosen host doesn't know about
+			// its new status. (see bug #6332)
 			do {
 				cfg.clear();
 				network::connection data_res = dialogs::network_receive_dialog(disp,
