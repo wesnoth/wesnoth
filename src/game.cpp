@@ -1266,7 +1266,7 @@ void game_controller::download_campaigns(std::string host)
 	} catch(network::error&) {
 		gui::show_error_message(disp(), _("Remote host disconnected."));
 	} catch(io_exception&) {
-		gui::show_error_message(disp(), _("There was a problem creating the files necessary to install this campaign."));
+		gui::show_error_message(disp(), _("There was a problem creating the files necessary to install this add-on."));
 	}
 }
 
@@ -1582,7 +1582,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 
 			read(cfg, *stream, &error_log);
 
-			//load user campaigns
+			//load usermade add-ons
 			const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
 			std::vector<std::string> user_campaigns, error_campaigns;
 			get_files_in_dir(user_campaign_dir,&user_campaigns,NULL,ENTIRE_FILE_PATH);
@@ -1608,19 +1608,19 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 						error_campaigns.push_back(*uc);
 					}
 				} catch(config::error& err) {
-					std::cerr << "error reading user campaign '" << *uc << "'\n";
+					std::cerr << "error reading usermade add-on '" << *uc << "'\n";
 					error_campaigns.push_back(*uc);
 
 					user_error_log += err.message + "\n";
 				} catch(io_exception&) {
-					std::cerr << "error reading user campaign '" << *uc << "'\n";
+					std::cerr << "error reading usermade add-on '" << *uc << "'\n";
 					error_campaigns.push_back(*uc);
 				}
 			}
 
 			if(error_campaigns.empty() == false) {
 				std::stringstream msg;
-				msg << _("The following add-on campaign(s) had errors and could not be loaded:");
+				msg << _("The following add-on(s) had errors and could not be loaded:");
 				for(std::vector<std::string>::const_iterator i = error_campaigns.begin(); i != error_campaigns.end(); ++i) {
 					msg << "\n" << *i;
 				}
