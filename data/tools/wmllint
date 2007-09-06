@@ -486,6 +486,7 @@ def hack_syntax(filename, lines):
     # the name of the file is passed as filename, text of the file as the
     # array of strings in lines.  Modify lines in place as needed, and
     # set modcount to nonzero when you actually change any.
+    global versions
     modcount = 0
     # Ensure that every attack has a translatable description."
     for i in range(len(lines)):
@@ -678,6 +679,32 @@ def hack_syntax(filename, lines):
                     break
             if nullattack:
                 lines = lines[:i] + lines[i+2:]
+    # Upconvert old radius usage
+    if "1.3.7" in versions and future:
+        radius_pos = wmlfind("radius=")
+        scopeIter = radius_pos.iterScope()
+        startline = scopeIter.lineno()
+        wspace = radius_pos.text()
+        wspace = wspace[:len(wspace)-len(wspace.lstrip())]
+        radius_danger = False
+        to_indent = []
+        no_indent = []
+        for pos in scopeIter:
+            tag = pos.tag()
+            if tag in ("[and]", "[or]", "[not]"):
+                radius_danger = True
+                no_indent.extend(pos.text().splitlines())
+            elif tag in ("variable=", "side=", "count=", "adjacent="):
+                no_indent.extend(pos.text().splitlines())
+            else:
+                to_add = pos.text().splitlines()
+                to_add[0] = baseindent + to_add[0]
+                to_indent.extend(to_add)
+        if radius_danger:
+            lines = lines[:startline] + [wspace + "[and]"] + to_indent +\
+                    [wspace + "[/and]"] + no_indent + lines[scopeIter.lineno():]
+            modcount += 1
+        
     # More syntax transformations would go here.
     return (lines, modcount)
 
@@ -917,6 +944,7 @@ Usage: wmllint [options] [dir]
 """)
 
 if __name__ == '__main__':
+    global versions
     try:
         (options, arguments) = getopt.getopt(sys.argv[1:], "cdfDho:rsv", [
             "help",
