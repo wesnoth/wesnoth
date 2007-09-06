@@ -1483,7 +1483,7 @@ void display::bounds_check_position(int& xpos, int& ypos)
 
 void display::invalidate_all()
 {
-	INFO_DP << "invalidate_all()";
+	INFO_DP << "invalidate_all()\n";
 	invalidateAll_ = true;
 	invalidated_.clear();
 	update_rect(map_area());
