@@ -1376,14 +1376,14 @@ bool game_controller::play_multiplayer()
 		+ sep1 + _("Join Official Server")
 		+ sep2 + _("Log on to the official Wesnoth multiplayer server"));
 	host_or_join.push_back(pre + "serverother.png"
-		+ sep1 + _("Join Game")
+		+ sep1 + _("Connect to Host/Server")
 		+ sep2 + _("Join a server or hosted game"));
 	host_or_join.push_back(pre + "hostgame.png"
 		+ sep1 + _("Host Networked Game")
 		+ sep2 + _("Host a game without using a server"));
 	host_or_join.push_back(pre + "hotseat.png"
 		+ sep1 + _("Local Game")
-		+ sep2 + _("Play a multiplayer game with AI or humans sharing the same machine"));
+		+ sep2 + _("Play a multiplayer game with the AI or humans sharing the same machine"));
 
 	std::string login = preferences::login();
 
@@ -1432,19 +1432,23 @@ bool game_controller::play_multiplayer()
 	} catch(game::game_error& e) {
 		gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
-		std::cerr << "caught network error...\n";
+		std::cerr << "caught network::error";
 		if(e.message != "") {
+			std::cerr << ": " << e.message;
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::dialog dlg(disp(),"",e.message,gui::OK_ONLY);
 			dlg.show();
 		}
+		std::cerr << "\n";
 	} catch(config::error& e) {
-		std::cerr << "caught config::error...\n";
+		std::cerr << "caught config::error";
 		if(e.message != "") {
+			std::cerr << ": " << e.message;
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::dialog dlg2(disp(),"",e.message,gui::OK_ONLY);
 			dlg2.show();
 		}
+		std::cerr << "\n";
 	} catch(gamemap::incorrect_format_exception& e) {
 		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(game::load_game_exception& e) {
