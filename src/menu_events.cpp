@@ -239,19 +239,18 @@ namespace events{
 
 			//If the unit is of level > 1, or is close to advancing,
 			//we warn the player about it
-			std::string message = "";
+			std::stringstream message;
 			if(u.level() > 1) {
-				message = _("My lord, this unit is an experienced one, having advanced levels! Do you really want to dismiss $noun?");
+				message << _("My lord, this unit is an experienced one, having advanced levels! ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+						: _("Do you really want to dismiss her?"));
+
 			} else if(u.experience() > u.max_experience()/2) {
-				message = _("My lord, this unit is close to advancing a level! Do you really want to dismiss $noun?");
+				message << _("My lord, this unit is close to advancing a level! ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+						: _("Do you really want to dismiss her?"));
 			}
 
-			if(message != "") {
-				utils::string_map symbols;
-				symbols["noun"] = (u.gender() == unit_race::MALE ? _("him") : _("her"));
-				message = utils::interpolate_variables_into_string(message, &symbols);
-
-				const int res = gui::dialog(disp_,"",message,gui::YES_NO).show();
+			if(message != NULL) {
+				const int res = gui::dialog(disp_,"",message.str(),gui::YES_NO).show();
 				if(res != 0) {
 					return gui::CONTINUE_DIALOG;
 				}
