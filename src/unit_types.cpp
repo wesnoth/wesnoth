@@ -53,7 +53,7 @@ std::string unit_id_test(const std::string& id)
 	return id;
 }
 
-attack_type::attack_type(const config& cfg,const std::string& id, const std::string& image_fighting)
+attack_type::attack_type(const config& cfg,const std::string& id, const std::string& image_fighting, bool with_animations)
 {
 	cfg_ = cfg;
 	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
@@ -61,23 +61,25 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 	} else {
 		range_type_ = SHORT_RANGE;
 	}
-	const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
-	const config::child_list& animations = expanded_cfg.get_children("animation");
-	for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
-		animation_.push_back(attack_animation(**d));
-	}
+	if (with_animations) {
+		const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
+		const config::child_list& animations = expanded_cfg.get_children("animation");
+		for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
+			animation_.push_back(attack_animation(**d));
+		}
 
-	if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-		LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id
-								<< " is directly in the attack, please use [animation]\n" ;
+		if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
+			LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id
+									<< " is directly in the attack, please use [animation]\n" ;
+		}
+		if(animation_.empty()) {
+			animation_.push_back(attack_animation(cfg));
+		}
+		if(animation_.empty()) {
+			animation_.push_back(attack_animation(-200,unit_frame(image_fighting,300)));
+		}
+		assert(!animation_.empty());
 	}
-	if(animation_.empty()) {
-		animation_.push_back(attack_animation(cfg));
-	}
-	if(animation_.empty()) {
-		animation_.push_back(attack_animation(-200,unit_frame(image_fighting,300)));
-	}
-	assert(!animation_.empty());
 
 	id_ = unit_id_test(cfg["name"]);
 	description_ = cfg["description"];
@@ -921,12 +923,12 @@ const t_string& unit_type::unit_description() const
 }
 
 
-std::vector<attack_type> unit_type::attacks() const
+std::vector<attack_type> unit_type::attacks(bool with_animations) const
 {
 	std::vector<attack_type> res;
 	for(config::const_child_itors range = cfg_.child_range("attack");
 	    range.first != range.second; ++range.first) {
-		res.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+		res.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE), with_animations));
 	}
 
 	return res;

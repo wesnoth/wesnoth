@@ -494,7 +494,7 @@ void unit::advance_to(const unit_type* t)
 	max_hit_points_ = t->hitpoints();
 	max_movement_ = t->movement();
 	emit_zoc_ = t->level();
-	attacks_ = t->attacks();
+	attacks_ = t->attacks(true);
 	unit_value_ = t->cost();
 	flying_ = t->movement_type().is_flying();
 

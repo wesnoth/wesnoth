@@ -40,7 +40,7 @@ class attack_type
 public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
-	attack_type(const config& cfg, const std::string& id, const std::string& image_fighting);
+	attack_type(const config& cfg, const std::string& id, const std::string& image_fighting, bool with_animations=true);
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }
@@ -187,7 +187,7 @@ public:
     const std::string& flag_rgb() const { return flag_rgb_; }
 
 	int hitpoints() const { return atoi(cfg_["hitpoints"].c_str()); }
-	std::vector<attack_type> attacks() const;
+	std::vector<attack_type> attacks(bool with_animations = false) const;
 	const unit_movement_type& movement_type() const { return movementType_; }
 
 	int experience_needed(bool with_acceleration=true) const;
