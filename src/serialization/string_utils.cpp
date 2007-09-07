@@ -753,22 +753,28 @@ bool wildcard_string_match(const std::string& str, const std::string& match)
 			++c;
 			++m;
 		} else if(*m == '*') {
-			while(c != str.end()) {
-				if(*c == *(m+1)) {
-					std::string ns,nm;
-					ns.assign(c+1,str.end());
-					nm.assign(m,match.end());
-					if(ns.find(*(m+1)) != std::string::npos) {
-						if(wildcard_string_match(ns,nm)) {
-							return true;
+			if(m+1 == match.end()) {
+				//if we end on a star, the remaining characters are consumed successfully
+				return true;
+			} else {
+				while(c != str.end()) {
+					if(*c == *(m+1)) {
+						std::string ns,nm;
+						ns.assign(c+1,str.end());
+						nm.assign(m,match.end());
+						if(ns.find(*(m+1)) != std::string::npos) {
+							//FIXME: possibility of runaway recursion for long strings
+							if(wildcard_string_match(ns,nm)) {
+								return true;
+							}
+						} else {
+							break;
 						}
-					} else {
-						break;
 					}
+					++c;
 				}
-				++c;
+				++m;
 			}
-			++m;
 		} else {
 			if(*c != *m) {
 				return false;
