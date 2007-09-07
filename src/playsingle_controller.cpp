@@ -360,8 +360,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 								   << (remaining_gold+finishing_bonus);
 						}
 						report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player->gold;
+
+						std::string goldmsg = _("You will start the next scenario with $gold or its defined minimum starting gold, whichever is higher.");
+						utils::string_map symbols;
+						symbols["gold"] = lexical_cast_default<std::string>(player->gold);
+						goldmsg = utils::interpolate_variables_into_string(goldmsg, &symbols);  
+
 						// xgettext:no-c-format
-						report << '\n' << _("You will start the next scenario with ") << player->gold << _(" or the defined minimum starting gold of the following scenario, whichever is higher.");
+						report << '\n' << goldmsg;
 					}
 				}
 			}
