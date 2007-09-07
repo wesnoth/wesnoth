@@ -407,7 +407,7 @@ void server::run()
 					network::disconnect(sock);
 				} else if(ip_exceeds_connection_limit(ip)) {
 					std::cerr << "rejected ip '" << ip << "' due to excessive connections\n";
-					network::send_data(construct_error("Too many connections from your host."),sock);
+					network::send_data(construct_error("Too many connections from your IP."),sock);
 					network::disconnect(sock);
 				} else {
 					network::send_data(version_query_response_,sock);
@@ -428,7 +428,7 @@ void server::run()
 				std::cerr << "fatal network error: " << e.message << "\n";
 				break;
 			} else {
-				std::cerr << "socket closed: " << e.message << "\n";
+				LOG_SERVER << "socket closed: " << e.message << "\n";
 
 				const std::map<network::connection,player>::iterator pl_it = players_.find(e.socket);
 				const std::string pl_name = pl_it != players_.end() ? pl_it->second.name() : "";
@@ -439,6 +439,7 @@ void server::run()
 						initial_response_.remove_child("user",index);
 
 					players_.erase(pl_it);
+					std::cerr << "'" << pl_name << "' (" << network::ip_address(e.socket) << ") has logged off\n";
 				}
 
 				not_logged_in_.remove_player(e.socket);
@@ -985,7 +986,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	//if the owner is banning someone from the game
 	if(g->is_owner(sock) && (data.child("ban") != NULL || data.child("kick") != NULL)) {
 		std::string name;
-		bool ban = false;;
+		bool ban = false;
 		if (data.child("ban") != NULL) {
 			const config& u = *data.child("ban");
 			name = u["username"];
@@ -993,7 +994,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		} else if (data.child("kick") != NULL) {
 			const config& u = *data.child("kick");
 			name = u["username"];
-			std::cerr << "kick: " << u["username"] << "\n";
 			ban = false;
 		}
 
@@ -1005,17 +1005,21 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 
 		if(pl->first != sock && pl != players_.end()) {
+			std::string owner = g->find_player(sock)->name();
 			if (ban) {
-				g->ban_player(pl->first);
 				const config& msg = construct_server_message("You have been banned",*g);
 				network::send_data(msg, pl->first);
-
 				const config& p_msg = construct_server_message(pl->second.name() + " has been banned",*g);
 				g->send_data(p_msg);
+				g->ban_player(pl->first);
+				std::cerr << owner << " banned: " << name << " from game: " << g->id() << "\n";
 			} else {
+				const config& msg = construct_server_message("You have been kicked",*g);
+				network::send_data(msg, pl->first);
 				const config& p_msg = construct_server_message(pl->second.name() + " has been kicked",*g);
 				g->send_data(p_msg);
 				g->remove_player(pl->first);
+				std::cerr << owner << " kicked: " << name << " from game: " << g->id() << "\n";
 			}
 
 			config leave_game;
@@ -1035,16 +1039,16 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			lobby_players_.send_data(sync_initial_response(),sock);
 		} else if(pl == players_.end()) {
 			const config& response = construct_server_message(
-			             "Ban failed: user '" + name + "' not found",*g);
+			             "Kick/ban failed: user '" + name + "' not found",*g);
 			network::send_data(response,sock);
 		}
 	} else if(data.child("ban")) {
 		const config& response = construct_server_message(
-		             "You cannot ban: not the game creator",*g);
+		             "You cannot ban: not the game host",*g);
 		network::send_data(response,sock);
 	} else if(data.child("kick")) {
 		const config& response = construct_server_message(
-		             "You cannot kick: not the game creator",*g);
+		             "You cannot kick: not the game host",*g);
 		network::send_data(response,sock);
 	}
 
