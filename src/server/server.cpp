@@ -181,7 +181,7 @@ server::server(int port, input_stream& input, const config& cfg, size_t nthreads
 			accepted_versions_.insert(*i);
 		}
 	} else {
-		accepted_versions_.insert(game_config::version);
+		accepted_versions_.insert("1.2*");
 	}
 
 	const config::child_list& redirects = cfg_.get_children("redirect");
