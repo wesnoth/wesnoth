@@ -292,7 +292,8 @@ while (1) {
 									my $gpv      = $game->{'attr'}->{'mp_village_gold'};
 									my $fog      = $game->{'attr'}->{'mp_fog'};
 									my $shroud   = $game->{'attr'}->{'mp_shroud'};
-									my $timer    = $game->{'attr'}->{'mp_countdown'};
+									my $timer    = "none";      # reloads may not set the timer
+									$timer       = $game->{'attr'}->{'mp_countdown'} if $game->{'attr'}->{'mp_countdown'};
 									my $observer = $game->{'attr'}->{'observer'};
 									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $showgames;
 									print LOG &logtimestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $logfile;
