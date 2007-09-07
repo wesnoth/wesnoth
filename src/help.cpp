@@ -1478,15 +1478,6 @@ public:
 	}
 };
 
-struct unit_topic_less {
-	bool operator() (std::pair<const unit_type*,topic> a,
-	    std::pair<const unit_type*,topic> b) {
-		if (a.first->race() == b.first->race())
-			return a.second.title < b.second.title;
-		return strcoll(a.first->race().c_str(), b.first->race().c_str()) < 0;
-	}
-};
-
 void generate_races_sections(const config *help_cfg, section &sec, int level)
 {
 	if (game_info == NULL) {return;}
@@ -1527,7 +1518,6 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 std::vector<topic> generate_unit_topics(const bool sort_generated, const std::string& race)
 {
-	std::vector<std::pair<const unit_type*,topic> > unit_topics;
 	std::vector<topic> topics;
 	if (game_info == NULL) {
 		return topics;
@@ -1539,26 +1529,17 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		if (type.race() != race)
 			continue;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-		if (desc_type == NO_DESCRIPTION || type.hide_help())
+		if (desc_type != FULL_DESCRIPTION || type.hide_help())
 			continue;
 
 		const std::string lang_name = type.language_name();
 		const std::string id = type.id();
 		topic unit_topic(lang_name, std::string("unit_") + id, "");
-		if (desc_type == NON_REVEALING_DESCRIPTION) {
-		} else if (desc_type == FULL_DESCRIPTION) {
-			unit_topic.text = new unit_topic_generator(type);
-		} else {
-			wassert(false);
-		}
-		unit_topics.push_back(std::pair<const unit_type*,topic>(&type,unit_topic));
+		unit_topic.text = new unit_topic_generator(type);
+		topics.push_back(unit_topic);
 	}
 	if (sort_generated)
-		std::sort(unit_topics.begin(), unit_topics.end(), unit_topic_less());
-	for(std::vector<std::pair<const unit_type*,topic> >::const_iterator j = unit_topics.begin();
-	    j != unit_topics.end(); j++) {
-		topics.push_back((*j).second);
-	}
+		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
 
