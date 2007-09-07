@@ -1,5 +1,5 @@
  Version 1.3.7+svn:
- * Campaigns
+ * campaigns:
    * Northern Rebirth
      * Colored portraits for Sisal and Rakshas
    * Son of the Black Eye
@@ -9,6 +9,11 @@
      * Map for "A Choice In The Fog modified so mermen are actually useful.
      * "Tidings Good And Ill" is now playable even if you didn't recruit
        elves in the previous scenarios (bug #9944).
+ * graphics:
+   * new graphics for the highwayman
+   * no more idle animations for units next to an enemy unit
+   * new button and slider in preferences to switch unit idle animations on
+     and off and set their frequency
  * language and i18n:
    * updated translations: Bulgarian, Danish, Dutch, Finnish, French, German, 
      Polish, Swedish
@@ -21,6 +26,16 @@
    * the server sends the game id and not only the game name if a player joins
      a game to avoid ambiguity in case of multiple games with the same name
    * show observer team chat messages in the 'Chat Log' window
+ * units:
+   * balancing changes:
+     * gave the Fugitive the concealment ability (village hiding)
+     * increased the XP requirement to advance to the Fugitive from 77 to 120
+     * decreased the melee attack of the Fugitive from 12-2 to 11-2
+     * decreased the ranged attack of the Fugitive from 8-4 to 7-4
+ * user interface:
+   * In help, for each ability and special weapon topic, display a list of
+     hyperlinks to encountered units having this ability/special (bug #9567)
+   * OK in the status menu replaced with more informative "Scroll To".
  * WML engine:
    * now tag [filter_adjacent] is supported in the Standard Unit Filter (SUF)
    * now tag [filter_adjacent_location] is supported in the Standard Location
@@ -30,16 +45,7 @@
    * a minus sign in front of a cardinal direction now reverses it ("-s"="n")
    * now radius expansion is handled last in Standard Location Filters;
      previously it was handled last except before [and], [or], and [not]
- * graphics:
-   * new graphics for the highwayman
-   * no more idle animations for units next to an enemy unit
-   * new button and slider in preferences to switch unit idle animations on
-     and off and set their frequency
- * user interface:
-   * In help, for each ability and special weapon topic, display a list of
-     hyperlinks to encountered units having this ability/special (bug #9567)
-    * OK in the status menu replaced with more informative "Scroll To".
- * miscellaneous and bug fixes
+ * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
    * in help, the encountered units list is now correctly updated when using
      ":debug" and ":nodebug" commands
