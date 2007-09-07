@@ -1163,13 +1163,13 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 
 class unit_topic_generator: public topic_generator
 {
-	unit_type type_;
+	const unit_type& type_;
 	typedef std::pair< std::string, unsigned > item;
 	void push_header(std::vector< item > &row, char const *name) const {
 		row.push_back(item(bold(name), font::line_width(name, normal_font_size, TTF_STYLE_BOLD)));
 	}
 public:
-	unit_topic_generator(unit_type const &t): type_(t) {}
+	unit_topic_generator(const unit_type &t): type_(t) {}
 	virtual std::string operator()() const {
 		std::stringstream ss;
 		std::string clear_stringstream;
