@@ -249,7 +249,7 @@ namespace events{
 						: _("Do you really want to dismiss her?"));
 			}
 
-			if(message != NULL) {
+			if(!message.str().empty()) {
 				const int res = gui::dialog(disp_,"",message.str(),gui::YES_NO).show();
 				if(res != 0) {
 					return gui::CONTINUE_DIALOG;
