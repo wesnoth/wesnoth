@@ -1125,6 +1125,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			// its old contents with the new ones given here
 			g->level() = data;
 			g->update_side_data();
+			// Send the update of the game description to the lobby
+			lobby_players_.send_data(sync_initial_response());
 		}
 
 		// Send the new data to all players in the level (except the sender).
