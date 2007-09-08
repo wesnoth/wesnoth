@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-22 17:53+0200\n"
+"POT-Creation-Date: 2007-09-08 18:43+0200\n"
 "PO-Revision-Date: 2007-01-08 23:08+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -114,8 +114,8 @@ msgstr "Zomrie Deoran"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:272
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:544
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:598
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:205
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:281
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:274
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:351
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:121
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:291
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:307
@@ -271,8 +271,8 @@ msgstr "Porazíš Urza Matína"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:260
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:532
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:586
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:197
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:273
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:266
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:343
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:287
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:211
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:259
@@ -853,8 +853,8 @@ msgstr "Veliteľ, ako je možné, že obyčajný bandita dokáže vzkriesiť nem
 #, fuzzy
 msgid ""
 "Just before the bandit raids began, an ambassador came to Sir Loris from the "
-"elves of the wood west of here. He asked that a knight be sent to discuss a "
-"new threat to Wesnoth."
+"elves of the Aethenwood west of here. He asked that a knight be sent to "
+"discuss a new threat to Wesnoth."
 msgstr ""
 "Tesne predtým, než začali nájazdy tých banditov, nás navštívil vyslanec od "
 "elfov z lesov na západ odtiaľto. Požadoval, aby sme k nim vyslali nejakého "
@@ -894,9 +894,10 @@ msgstr ""
 "schopnosti nám môžu v boji proti týmto vojakom temna pomôcť."
 
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:559
+#, fuzzy
 msgid ""
 "Deoran sent a rider to request mounted reinforcements and set out at once "
-"towards the western forest..."
+"towards the Aethenwood..."
 msgstr ""
 "Deoran vyslal jazdca, aby vyžiadal ďalšie jazdecké posily a sám sa vybral "
 "smerom k západným lesom..."
@@ -910,7 +911,8 @@ msgid "Urza Fastik"
 msgstr "Urza Fastik"
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:119
-msgid "Deoran and his men came to the border of the elvish woods..."
+#, fuzzy
+msgid "Deoran and his men came to the eastern border of the Aethenwood..."
 msgstr "Deoran so svojou družinou prišli na hranicu elfských lesov"
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:125
@@ -1336,7 +1338,7 @@ msgstr "Mebrin! Si tam? Prišli sme sem hľadať tvoju pomoc!"
 
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:496
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:507
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:322
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:392
 msgid "..."
 msgstr "..."
 
@@ -1488,7 +1490,8 @@ msgid "Very well. We will seek the river and probe its secrets."
 msgstr "Výborne. Nájdeme rieku a preskúmame jej tajomstvá."
 
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:252
-msgid "Investigate the areas to the south of the Great River"
+#, fuzzy
+msgid "Investigate the areas to the south of the Black River"
 msgstr "Preskúmaš územia na juh od Veľkej rieky."
 
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:288
@@ -1820,7 +1823,8 @@ msgstr "Súhlasím. Môj národ ochráni teba, aj správu ktorú nesieš!"
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:748
 #, fuzzy
 msgid ""
-"Fare well Deoran! I will be there to greet you when you return to Kerlath."
+"Fare well, Deoran! I will be there to greet you when you return to Kerlath "
+"Province."
 msgstr ""
 "Nech sa ti tuto darí, Deoran! Budem ťa čakať v Kerlate, aby som ťa pozdravil "
 "ako hrdinu."
@@ -1835,27 +1839,33 @@ msgid "Ithelden"
 msgstr "Itelden"
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:64
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:65
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:66
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:80
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:87
-msgid "S'ssth"
+#, fuzzy
+msgid "Ssesseth"
 msgstr "S'sst"
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:65
+msgid "Zasz"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:66
+msgid "Zerix"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:68
 msgid "Scorpion"
 msgstr "Škorpión"
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:69
-msgid "Wild Ogre"
-msgstr "Divoký ohyzd"
+msgid "Kramak"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:71
+msgid "Issorai"
+msgstr ""
+
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:72
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:83
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:91
-msgid "Naga"
-msgstr "Hadí človek"
+msgid "Zarr"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:75
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:81
@@ -1866,25 +1876,57 @@ msgstr "Abdur"
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:76
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:82
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:90
-msgid "Naga Queen"
-msgstr "Hadia kráľovna"
+msgid "Queen Xeila"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:80
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:87
+msgid "Ssanur"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:83
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:91
+msgid "Lesssh"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:89
 msgid "Kallen"
 msgstr "Kallen"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:178
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:192
+msgid "Thirian"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:202
+#, fuzzy
+msgid "Ardolan"
+msgstr "Aleron"
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:212
+msgid "Nyldar"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:222
+msgid "Lirané"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:232
+#, fuzzy
+msgid "Elendra"
+msgstr "Eera"
+
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:247
 #, fuzzy
 msgid ""
-"Sir Gerrick, you must make it back to Kerlath and warn your people of the "
-"danger from the south. We will lead you through the forest and clear any "
-"foes from your path."
+"Sir Gerrick, you must make it back to Kerlath Province and warn your people "
+"of the danger from the south. We will lead you through the forest and clear "
+"any foes from your path."
 msgstr ""
 "Pán Gerrik, musíte ste ísť nazad do Kerlatu a varovať váš národ ohľadom "
 "hrozby z juhu. My vás prevedieme cez les a pomôžeme vám vyhnúť sa "
 "nepriateľom."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:182
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:251
 #, fuzzy
 msgid ""
 "With the bandits and undead vanquished behind us, what foes can there be "
@@ -1894,17 +1936,17 @@ msgstr ""
 "číhajú? Dúfajme, že táto cesta ubehne rýchlo, pretože zima sa rýchlo "
 "približuje."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:193
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:265
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:262
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:335
 msgid "Move Sir Gerrick to the north end of the woods"
 msgstr "Dostaneš pána Gerrika na severný okraj lesov"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:201
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:277
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:270
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:347
 msgid "Death of Ithelden"
 msgstr "Zomrie Itelden"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:227
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:297
 #, fuzzy
 msgid ""
 "Hss... Here are the humans who have made a pact with the cursed mermen! "
@@ -1913,17 +1955,17 @@ msgstr ""
 "Sss... Tu sssú tí ľudia, čo sssa ssspolčili sss prekliatym morssským "
 "národom! Sss..."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:231
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:301
 #, fuzzy
 msgid "We have stumbled into a den of nagas!"
 msgstr "Narazili sme na oblasť pod kontrolou Nagov - hadích ľudí!"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:235
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:305
 #, fuzzy
 msgid "Hss... We will kill them all, my brood. Hss..."
 msgstr "Sss... Všetkých ich pozabíjame, deti moje. Sss..."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:239
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:309
 #, fuzzy
 msgid ""
 "We must clear this road for Deoran and Ethiliel! We must destroy the naga "
@@ -1932,17 +1974,17 @@ msgstr ""
 "Musíme vyčistiť túto cestu už len kvôli Deoranovi a Etiliel! Musíme zničiť "
 "to hadie hniezdo!"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:245
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:315
 #, fuzzy
 msgid "Hss... elves! Are they friends or enemies? Hss..."
 msgstr "Sss... Elfovia! Priatelia, alebo nepriatelia? Sss..."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:249
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:319
 #, fuzzy
 msgid "We are weary travelers, seeking our homes. If you but let us pass..."
 msgstr "Sme unavení pocestní, hľadáme svoj domov. Nechajte nás prejsť..."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:253
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:323
 #, fuzzy
 msgid ""
 "Hss... And humans! Humans drained our swamps and made them fields for farms, "
@@ -1951,7 +1993,7 @@ msgstr ""
 "Sss... a ľudia! Ľudia vysssušujú naše močiare a premieňajú ich na polia a "
 "farmy. A teraz našli moje zimovisssko. Sssuchozemci musssia umrieť! Sss..."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:257
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:327
 #, fuzzy
 msgid ""
 "She won't listen. If we leave these nagas here, they will ambush Deoran and "
@@ -1960,37 +2002,38 @@ msgstr ""
 "Myslím, že nás veľmi počúvať nebude. Ak týchto Nagov neodstránime z tejto "
 "oblasti, určite napadnú Deorana a Etiliel od chrbta! Musíme ich poraziť!"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:269
-msgid "Defeat the Naga Queen"
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:339
+#, fuzzy
+msgid "Defeat the Queen Xeila"
 msgstr "Porazíš Hadiu kráľovnu"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:296
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:366
 #, fuzzy
 msgid "Hss... Who will watch over my brood now? Hss..."
 msgstr "Sss... Kto sa bude teraz starať o moje mladé? Sss..."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:310
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:380
 msgid "Ho! Me see elves. Elves tasty? Me take elves to eat."
 msgstr "Ha! Ja vidieť elfov. Elfovia chutia? Ja jesť elfov."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:314
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:384
 msgid "Err, Mr. Ogre, we are not very tasty."
 msgstr "Ehm, pán ohyzd, my naozaj nie sme veľmi chutnou potravou."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:318
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:388
 #, fuzzy
 msgid "Oh. Me only want tasty food. Go away."
 msgstr "Oh. Ja chcieť len chutné jedlo. Vy ísť preč!"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:326
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:396
 msgid "Wait! Me not believe you. Me eat you!"
 msgstr "Stáť! Ja neverím vám! Ja vás zjesť!"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:337
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:407
 msgid "Bad food! It hurt me. Arrrrggghhhh!!"
 msgstr "Hnusné jedlo! Bolí ma. Arrrrggghhhh!!"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:349
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:419
 #, fuzzy
 msgid ""
 "Travelers in this desolate land! I seek that dark Sage who is rumored to "
@@ -1999,7 +2042,7 @@ msgstr ""
 "Pocestní v tejto opustenej krajine! Hľadám temného mudrca, ktorý podľa "
 "legiend žije v týchto krajoch. Zaisto prichádzate od neho?"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:353
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:423
 msgid ""
 "Indeed! I just left my comrades, who were preparing to kill the vile "
 "Necromancer."
@@ -2007,19 +2050,20 @@ msgstr ""
 "Iste! Akurát som opustil svojich druhov, ktorí sa chystali nájsť a zničiť "
 "toho odporného černokňažníka."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:357
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:427
 msgid "Unworthy fools! I'll kill you for this sacrilege!"
 msgstr "Nehodní hlupáci! Pozabíjam vás za túto svätokrádež!"
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:370
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:440
+#, fuzzy
 msgid ""
-"I will hasten back to Kerlath now and seek the advice of the Council of "
-"Westin..."
+"I will hasten back to Kerlath Province now and seek the advice of the "
+"Council of Westin..."
 msgstr ""
 "Poponáhľam sa teraz do Kerlatu, aby som získal názor Westinskej rady na "
 "situáciu..."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:374
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:444
 #, fuzzy
 msgid ""
 "We too will return to our councils. We have much to tell them... Much indeed."
@@ -2027,7 +2071,7 @@ msgstr ""
 "Aj my sa vrátime k našej rade. Je to veľa, o čom sa treba poradiť. Naozaj "
 "veľa."
 
-#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:378
+#: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:448
 msgid ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin's fortress..."
@@ -2980,7 +3024,7 @@ msgstr ""
 "Velitelia - veteráni veľakrát čelili nepriateľovi v boji a viedli svojich "
 "mužov pevnou rukou  a odhodlaním."
 
-#: data/campaigns/The_South_Guard/units/5.Assault_Commander.cfg:72
+#: data/campaigns/The_South_Guard/units/5.Assault_Commander.cfg:37
 msgid "shield"
 msgstr "štít"
 
@@ -3078,7 +3122,7 @@ msgstr ""
 "problém si poradiť s jednou mŕtvolou. Obzvlášť nebezpečné sú tieto mŕtvoly "
 "kvôli ich tendencii útočiť vo veľkých skupinách!"
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:7
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:20
 #, fuzzy
 msgid ""
 "During the reign of Haldric VII, the land of Wesnoth was peaceful.  Konrad I "
@@ -3091,48 +3135,49 @@ msgstr ""
 "ľudoprázdne. Elfi v západných lesoch sa o záležitosti iných národov prestali "
 "zaujiímať. A na prosperujúcom juhu budovali ľudia nové mestá a farmy."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:11
-#, fuzzy
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:24
 msgid ""
 "For eight years the South Guard had defended the farms and homes surrounding "
-"the city of Westin.  The fiercest foe they had faced was the occasional "
-"bandit.  The orcs were far to the north.  Nothing lived in the forest beyond "
-"the river."
+"the city of Westin, the capital of Wesnoth's frontier province of Kerlath in "
+"the furthermost south.  The fiercest foe they had faced was the occasional "
+"bandit.  The orcs were far to the north.  In the Aethenwood to the west "
+"dreamed the elves, not foes of humankind but keeping aloof from men. Only "
+"scattered few outlaws lived in the wildlands south of Kerlath, a bastion of "
+"the ancient heart forest of the Great Continent so dense and gloomy that "
+"even elves forbore from dwelling there."
 msgstr ""
-"Osem rokov tam Južná posádka bránila a chránila farmy i dediny okolo mesta "
-"Westin. Najväčšou hrozbou boli v tých časoch banditi. Orkovia boli zatlačení "
-"ďaleko na sever a v lesoch za riekou nebolo živej duše."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:15
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:28
 #, fuzzy
 msgid ""
-"Then, In the spring of the ninth year the reports from the South Guard, "
-"under the command of Sir Loris, stopped suddenly.  King Haldric decided to "
+"Then, in the spring of the ninth year the reports from the South Guard, "
+"under the command of Sir Loris, suddenly ceased.  King Haldric decided to "
 "send someone to investigate."
 msgstr ""
 "No na jar v deviatom roku odrazu prestali prichádzať správy od pána Lorisa, "
 "veliteľa južných posádok. Kráľ Haldrik sa rozhodol vyslať do oblasti "
 "vyšetrovateľa."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:19
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:32
 msgid ""
-"King Haldric summoned a young, undistinguished but promising calvery officer "
-"named Deoran, the son of Haldiel - who rode with Konrad I.  The king had a "
-"mission for him."
+"King Haldric summoned a young, undistinguished but promising cavalry officer "
+"named Deoran. Deoran was the son of Haldiel, who had foughtwith distinction "
+"alongside Konrad I in the wars against the orcs.  The king had a mission for "
+"Haldiel's son."
 msgstr ""
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:23
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:36
 #, fuzzy
 msgid ""
-"King Haldric knighted young Deoron, and when he rose tasked him to ride "
-"south towards Westin, the capital of the province of Kerlath, to replace Sir "
-"Loris as commander of the South Guard..."
+"King Haldric knighted young Deoron, and when he rose tasked him to ride to "
+"Westin, to demand an accounting from Sir Loris, the commander of the South "
+"Guard..."
 msgstr ""
 "Deoran dostal rozkaz, aby cválal smerom na Westin, do hlavného mesta "
 "provincie Kerlat a tam vystriedal pána Lorisa v pozícii veliteľa Južnej "
 "posádky..."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:44
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:57
 msgid ""
 "Having defeated Urza Mathin, Deoran immediately sent scouts out into the "
 "whole countryside.  His men reported bandits roaming freely over the border, "
@@ -3144,7 +3189,7 @@ msgstr ""
 "cez hranice, pritom terorizujúc farmárov a dedinčanov. Po vojakoch z Južnej "
 "posádky však nebolo ani stopy."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:48
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:61
 msgid ""
 "Deoran decided to take action and wipe out the bandits. He gathered the men "
 "of Sir Gerrick's command and whatever peasants were of strong body and "
@@ -3156,7 +3201,7 @@ msgstr ""
 "dostatočne silní a schopní. Na čele tohto malého oddielu sa vydal do "
 "Westinu, hlavného mesta provincie."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:52
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:65
 msgid ""
 "Deoran and his men approached the old city, and they saw that their fears "
 "were well founded..."
@@ -3164,7 +3209,7 @@ msgstr ""
 "Ako sa Deoran a jeho vojaci blížili k starobylému mestu, zistili, že ich "
 "obavy boli opodstatnené..."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:73
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:86
 msgid ""
 "Ethiliel led the men of the South Guard into the southern forest.  Shadows "
 "soon covered their paths day and night, and a thick fog filled the air."
@@ -3172,7 +3217,7 @@ msgstr ""
 "Etiliel viedla vojakov z Južnej posádky do južných lesov. Onedlho sa okolo "
 "výpravy vznášali iba tiene a hustá hmla."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:78
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:91
 msgid ""
 "For many weeks they marched down nameless paths that no man had trod "
 "before.  From time to time they saw ghostly images of elven villages and "
@@ -3183,26 +3228,28 @@ msgstr ""
 "budovy v hlbokých lesoch, ale ako postupovali, aj tieto zvyšky civilizácie "
 "sa stávali čoraz zriedkavejšie."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:83
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:96
+#, fuzzy
 msgid ""
 "Finally Ethiliel told the men to halt and pitch camp - they had reached the "
-"great river, beyond which no elf or man would willingly pass."
+"Black River, beyond which no elf or man would willingly pass."
 msgstr ""
 "Nakoniec im Etiliel povedala, aby zastavili a postavili tábor - dostali sa k "
 "veľkej rieky, cez ktorú by za normálnych okolností nechcel prejsť žiaden "
 "človek ani elf."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:92
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:105
+#, fuzzy
 msgid ""
 "Snow fell as Deoran, Sir Gerrick and Urza Afalas emerged from the great "
-"southern forest.  A great hush fell over the land, and an ominous gloom "
-"followed close behind the men of the South Guard."
+"southern forest.  An oppressive silence hung over the land, and an ominous "
+"gloom followed close behind the men of the South Guard."
 msgstr ""
 "Keď sa Deoran, Gerrik a Urza Afalas dostali z veľkých južných lesov, napadol "
 "prvý sneh. Krajina stíchla a za vojakmi z Južnej posádky za vznášala tichá "
 "no výrazná hrozba."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:97
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:110
 msgid ""
 "Finally they arrived at the southern border of Wesnoth and the forts that "
 "guarded it.  The undead were close on their heels..."
@@ -3210,7 +3257,7 @@ msgstr ""
 "Konečne sa dostali na južnú hranicu Wesnotu, k pevnostiam, ktoré chránili "
 "hranice. Nemŕtvi im však boli tesne za pätami..."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:106
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:119
 msgid ""
 "Finally the sun broke the horizon and its rays breathed new life into the "
 "weary defenders of Westin.  A great cry echoed through the valley as the men "
@@ -3223,7 +3270,7 @@ msgstr ""
 "protivníkov čím ďalej od mestských hradieb. A potom, náhle pokryla okolie "
 "hustá hmla..."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:111
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:124
 msgid ""
 "When the fog broke, Ethiliel stood alone, facing the wall of spears.  Bathed "
 "in light, she spoke to the men of Wesnoth, saying, 'Stop!  Enough blood has "
@@ -3236,7 +3283,7 @@ msgstr ""
 "elfov veľmi urazili ale na druhej strane, vaše činy z posledných týždňov "
 "boli k nezaplateniu.\""
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:115
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:128
 msgid ""
 "These are the terms of the peace between us:  any man found in the forest or "
 "hills that belong to the elves will taste death.  No more will the elves "
@@ -3249,7 +3296,7 @@ msgstr ""
 "územie Westinu a nebudú pôsobiť v úlohe poradcov. Už nikdy v budúcnosti "
 "nebude človek vítaní v zelených lesoch."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:119
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:132
 msgid ""
 "Thus an uneasy peace was consummated between man and elf.  For many weeks "
 "the South Guard patrolled the borders of the elven woods and watched over "
@@ -3261,7 +3308,7 @@ msgstr ""
 "rozrastajúce farmy a dediny. Nakoniec, keď sa sneh konečne roztopil a cesty "
 "boli opäť voľné, dorazil posol od kráľa Haldrika."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:123
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:136
 msgid ""
 "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
 "King Haldric himself.  Storm clouds were brewing throughout the realm, and "
@@ -3273,7 +3320,7 @@ msgstr ""
 "\n"
 "(Verzia 1.2.0, September 2006 -- preklad Martin \"Arðarïeŀ\" Džbor)"
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:133
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:146
 msgid ""
 "With bitter spears and grim expression, the men of Wesnoth launched the last "
 "assault on the undead.  As they cut through lifeless flesh and shattered "
@@ -3287,7 +3334,7 @@ msgstr ""
 "života. Ohromný bojový pokrik sprevádzal ich nájazd na hlavný stan samotného "
 "Mal M´brina a v tomto nájazde sa im podarilo zvrhnúť mocného čarodejníka."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:139
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:152
 msgid ""
 "Exhausted, Deoran dropped his lance to the ground.  The men around him "
 "slowly lifted their helmets from their brows.  The moans of the wounded "
@@ -3298,7 +3345,7 @@ msgstr ""
 "zložili svoje prilby a brnenie. Ston ranených sa stal výraznejším než nápory "
 "severného vetra. Nemŕtvi boli minulosťou."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:144
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:157
 msgid ""
 "For days the healers of Westin worked feverishly to save as many of the "
 "valiant soldiers as they were able.  Many mounds, though, were raised as "
@@ -3310,7 +3357,7 @@ msgstr ""
 "mohyle vyrastali vo poliach okolo mesta pre tých, ktorým žiadna snaha "
 "nepomohla a dostali sa už len na zoznam padlých hrdinov."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:149
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:162
 msgid ""
 "The loftiest mound belonged to Sir Gerrick.  After the battle, Deoran led an "
 "expedition to the southern border posts, and there he found Sir Gerrick's "
@@ -3323,7 +3370,7 @@ msgstr ""
 "mohyly ako symbol jeho vernosti a udatnosti, na obdiv a pre pamäť všetkým "
 "obyvateľom Westinu."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:152
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:166
 #, fuzzy
 msgid ""
 "Gerrick's name was added at the top of the roll of fallen heroes, and read "
@@ -3336,7 +3383,7 @@ msgstr ""
 "zúfalý posledný boj na hraniciach sa dostali do piesní a legiend a nebola "
 "zabudnutá po mnoho generácií."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:157
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:171
 msgid ""
 "Deoran spent his days visiting the wounded and directing the men as they "
 "rebuilt the shattered walls and ramparts of the city.  Finally, as the snow "
@@ -3347,7 +3394,7 @@ msgstr ""
 "hradieb a obranných veží mesta. Nakoniec, po tom čo sa roztopil posledný "
 "sneh, objavil sa v meste posol od kráľa Haldrika."
 
-#: data/campaigns/The_South_Guard/utils/sg_story.cfg:162
+#: data/campaigns/The_South_Guard/utils/sg_story.cfg:176
 msgid ""
 "Sir Deoran, Knight of Wesnoth, was summoned to Weldyn for a council with "
 "King Haldric himself.  Storm clouds were brewing throughout the realm, and "
@@ -3370,6 +3417,26 @@ msgstr "Vezmi si palcát (tupý úder)"
 #: data/campaigns/The_South_Guard/utils/sg_unit_utils.cfg:117
 msgid "Add a swing to your attack."
 msgstr "Pridaj rozmach do úderu."
+
+#~ msgid "Wild Ogre"
+#~ msgstr "Divoký ohyzd"
+
+#~ msgid "Naga"
+#~ msgstr "Hadí človek"
+
+#~ msgid "Naga Queen"
+#~ msgstr "Hadia kráľovna"
+
+#, fuzzy
+#~ msgid ""
+#~ "For eight years the South Guard had defended the farms and homes "
+#~ "surrounding the city of Westin.  The fiercest foe they had faced was the "
+#~ "occasional bandit.  The orcs were far to the north.  Nothing lived in the "
+#~ "forest beyond the river."
+#~ msgstr ""
+#~ "Osem rokov tam Južná posádka bránila a chránila farmy i dediny okolo "
+#~ "mesta Westin. Najväčšou hrozbou boli v tých časoch banditi. Orkovia boli "
+#~ "zatlačení ďaleko na sever a v lesoch za riekou nebolo živej duše."
 
 #~ msgid ""
 #~ "A young commander, Deoran, son of one of the horsemen who rode with "

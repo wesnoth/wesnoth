@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-24 23:32+0200\n"
+"POT-Creation-Date: 2007-09-08 18:42+0200\n"
 "PO-Revision-Date: 2007-01-08 22:58+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -36,7 +36,7 @@ msgstr "Rytier"
 #: data/campaigns/Two_Brothers/_main.cfg:19
 #, fuzzy
 msgid ""
-"A Black Mage is threatening the local village and its inhabitants. When "
+"An evil mage is threatening the local village and its inhabitants. When "
 "their leader Bjarn sends for aid from his brother Arne, he is victorious, "
 "but Bjarn himself is kidnapped. Can you rescue him?\n"
 "\n"
@@ -54,7 +54,8 @@ msgid "Rooting Out A Mage"
 msgstr "Ako sa zbaviť mága"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:41
-msgid "Slay the Black Mage"
+#, fuzzy
+msgid "Slay Mordak, the evil mage"
 msgstr "Zabiješ čierneho mága"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:45
@@ -88,40 +89,54 @@ msgstr "Vyprší čas"
 msgid "Arne"
 msgstr "Arne"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:73
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:74
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:623
 msgid "Bjarn"
 msgstr "Bjarn"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:86
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:98
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:110
-msgid "Peasant"
-msgstr "Sedliak"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:87
+msgid "Alwyn"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:122
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:134
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:146
-msgid "Villager"
-msgstr "Dedinčan"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:100
+#, fuzzy
+msgid "Brent"
+msgstr "Brena"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:160
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:113
+msgid "Cadell"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:126
+msgid "Dannen"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:139
+msgid "Efran"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:152
+#, fuzzy
+msgid "Fargus"
+msgstr "Magnus"
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:167
 msgid "Erik"
 msgstr "Erik"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:172
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:180
 msgid "Heine"
 msgstr "Heine"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:184
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:193
 msgid "Magnus"
 msgstr "Magnus"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:206
-msgid "The Black Mage"
-msgstr "Čierny mág"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:216
+msgid "Mordak"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:229
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:239
 #, fuzzy
 msgid ""
 "In a remote part of Wesnoth, people lived their lives working hard and "
@@ -134,7 +149,7 @@ msgstr ""
 "však ich pokojný svet rozsypal, keď do regiónu prišiel zlý mág a začal šíriť "
 "zmätok a zúfalstvo."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:234
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:244
 msgid ""
 "Bjarn, the local mage of the village, was the man who saw best how to deal "
 "with this threat. He asked the help of his brother Arne, leader of a "
@@ -145,33 +160,26 @@ msgstr ""
 "hrozbou. Požiadal o pomoc svojho brata Arneho, veliteľa bandy nájomných "
 "jazdcov, a niekoľkým dedinčanom pridelil zásoby zo zbrojnice."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:238
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:248
 msgid "'ello there, Bjarn. So, what's the big fuss?"
 msgstr "Čauko, Bjarn! Čo je to tu za zhon?"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:242
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:252
 #, fuzzy
 msgid ""
-"An evil mage, two days ride north, threatens our lives and livelihoods. He "
-"is terrorizing our countryside. I've already called the village to arms and "
-"now it's up to you to lead them."
+"Mordak, an evil mage, threatens our lives and livelihoods. He is terrorizing "
+"our countryside. I've already called the village to arms and now it's up to "
+"you to lead them.  You'll find him about two days' ride north of here."
 msgstr ""
 "Naše živobytie ohrozuje zlý mág, dva dni jazdy na sever. Terorizuje náš "
 "vidiek. Už som povolal dedinu do zbrane, a teraz je na tebe, aby si ich "
 "viedol."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:246
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:256
 msgid "Very well. We will go there and slay this source of evil. Charge, men!"
 msgstr "Výborne. Pôjdeme tam a zlikvidujeme ten zdroj zla. Muži, do útoku!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:251
-msgid ""
-"After a short journey the small band of troops is close to the hideout of "
-"the evil mage."
-msgstr ""
-"Po krátkej výprave sa skupinka bojovníkov priblížila k sídlu zlého mága."
-
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:255
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:260
 msgid ""
 "I will attempt to sneak through the forest. If I can slay the evil one while "
 "he is off his guard, the battle will be over in one stroke!"
@@ -179,7 +187,7 @@ msgstr ""
 "Pokúsim sa prešmyknúť cez les. Keby sa mi toho zlého podarilo zabiť vo "
 "chvíľke nepozornosti, celá bitka by sa vyriešila jediným úderom!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:266
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:271
 msgid ""
 "Bjarn should have been in position by now. I wonder if anything's happened "
 "to him?"
@@ -187,7 +195,7 @@ msgstr ""
 "Bjarn by už o takomto čase mal byť na svojom mieste. Rozmýšľam, či sa mu "
 "niečo nestalo."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:274
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:279
 msgid ""
 "This is worrying. What's happened to Bjarn? I suppose we must slay the dark "
 "sorcerer ourselves."
@@ -195,24 +203,24 @@ msgstr ""
 "Znervózňuje ma to. Čo sa stalo Bjarnovi? Myslím, že musíme toho temného "
 "čarodeja zabiť sami."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:289
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:294
 msgid "Argh!"
 msgstr "Ach!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:293
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:298
 msgid "Good work, men. Now, where is Bjarn?"
 msgstr "Dobrá práca, chlapi. Tak, kde je Bjarn?"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:297
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:302
 #, fuzzy
 msgid "Worried about him, are you? E-he-he..hergh...gaargh..."
 msgstr "Bojíš sa oňho, čo? He-he-he... eh... aaah. . ."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:301
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:306
 msgid "Nothing more to be had from him."
 msgstr "Viac sme z neho nedostali."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:305
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:310
 msgid ""
 "Sir, he's been kidnapped! I just saw some men running off with him. They "
 "looked like friends of this one."
@@ -220,11 +228,11 @@ msgstr ""
 "Pane, uniesli ho! Videl som, ako s ním bežali preč nejakí chlapi. Vyzerali "
 "ako kamoši tohoto tu."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:309
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:314
 msgid "Damn! I suppose we have to go after him, then."
 msgstr "Do čerta! Nuž myslím, že budeme musieť ísť za ním."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:322
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:327
 msgid ""
 "Ha, so you thought to send a mage around and stab me in the back? Well, I "
 "have news for you. We've kidnapped him!"
@@ -232,22 +240,22 @@ msgstr ""
 "Ha, myslel si si, že pošleš mága okolo, aby ma bodol do chrbta? Nuž, mám pre "
 "teba novinku. Uniesli sme ho!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:326
-msgid ""
-"What? Bjarn kidnapped? And the black mage still ravages the land? Noooo!"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:331
+#, fuzzy
+msgid "What? Bjarn kidnapped? And the evil mage still ravages the land? Noooo!"
 msgstr "Čože? Bjarna uniesli? A čierny mág stále pustoší krajinu? Nieee!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:338
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:346
 msgid "I hear these creatures are near immune to our weapons, let us see!"
 msgstr ""
 "Počul som, že tieto potvory sú takmer odolné voči našim zbraniam, poďme to "
 "overiť!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:350
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:358
 msgid "That wasn't so hard!"
 msgstr "Nebolo to až také ťažké!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:361
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:369
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:477
 #, fuzzy
 msgid "All is lost now that I am dead..."
@@ -785,3 +793,18 @@ msgstr "Myslím, že z týchto dedín už nikoho nezachránime. Je príliš nesk
 msgid "I was too weak to protect these people. Oh why did this happen to me?!?"
 msgstr ""
 "Bol som slabý a nevedel som tých ľudí ochrániť. Ach, prečo sa mi to stalo?!"
+
+#~ msgid "Peasant"
+#~ msgstr "Sedliak"
+
+#~ msgid "Villager"
+#~ msgstr "Dedinčan"
+
+#~ msgid "The Black Mage"
+#~ msgstr "Čierny mág"
+
+#~ msgid ""
+#~ "After a short journey the small band of troops is close to the hideout of "
+#~ "the evil mage."
+#~ msgstr ""
+#~ "Po krátkej výprave sa skupinka bojovníkov priblížila k sídlu zlého mága."

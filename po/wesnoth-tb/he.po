@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-07-24 23:32+0200\n"
+"POT-Creation-Date: 2007-09-08 18:42+0200\n"
 "PO-Revision-Date: 2006-02-15 13:29+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -37,7 +37,7 @@ msgstr "אביר"
 #: data/campaigns/Two_Brothers/_main.cfg:19
 #, fuzzy
 msgid ""
-"A Black Mage is threatening the local village and its inhabitants. When "
+"An evil mage is threatening the local village and its inhabitants. When "
 "their leader Bjarn sends for aid from his brother Arne, he is victorious, "
 "but Bjarn himself is kidnapped. Can you rescue him?\n"
 "\n"
@@ -53,7 +53,8 @@ msgid "Rooting Out A Mage"
 msgstr "לעקור קוסם"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:41
-msgid "Slay the Black Mage"
+#, fuzzy
+msgid "Slay Mordak, the evil mage"
 msgstr "הרוג את הקוסם השחור"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:45
@@ -87,40 +88,54 @@ msgstr "הסתיימו התורות"
 msgid "Arne"
 msgstr "אמה"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:73
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:74
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:623
 msgid "Bjarn"
 msgstr "בג'ם"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:86
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:98
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:110
-msgid "Peasant"
-msgstr "איכר"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:87
+msgid "Alwyn"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:122
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:134
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:146
-msgid "Villager"
-msgstr "כפרי"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:100
+#, fuzzy
+msgid "Brent"
+msgstr "ברנה"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:160
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:113
+msgid "Cadell"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:126
+msgid "Dannen"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:139
+msgid "Efran"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:152
+#, fuzzy
+msgid "Fargus"
+msgstr "מגנוס"
+
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:167
 msgid "Erik"
 msgstr "אריק"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:172
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:180
 msgid "Heine"
 msgstr "איינה"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:184
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:193
 msgid "Magnus"
 msgstr "מגנוס"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:206
-msgid "The Black Mage"
-msgstr "הקוסם השחור"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:216
+msgid "Mordak"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:229
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:239
 #, fuzzy
 msgid ""
 "In a remote part of Wesnoth, people lived their lives working hard and "
@@ -132,7 +147,7 @@ msgstr ""
 "לשני, אבל בלי לדעת הרבה על העולם בחוץ. יום אחד, אולם, יום אחד, עולמם השליו "
 "נופץ, כאשר קוסם רשע הגיע לאזור, והפיץ הרס ויאוש."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:234
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:244
 msgid ""
 "Bjarn, the local mage of the village, was the man who saw best how to deal "
 "with this threat. He asked the help of his brother Arne, leader of a "
@@ -143,32 +158,25 @@ msgstr ""
 "האיום. הוא ביקש עזרה מאחיו אמה, מנהיג של קבוצת לוחמים שכירים רכובים, וצייד "
 "כמה מהכפריים עם ציוד מהנשקייה."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:238
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:248
 msgid "'ello there, Bjarn. So, what's the big fuss?"
 msgstr "'לום שם, בג'ם, אז מה כל המהומה?"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:242
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:252
 #, fuzzy
 msgid ""
-"An evil mage, two days ride north, threatens our lives and livelihoods. He "
-"is terrorizing our countryside. I've already called the village to arms and "
-"now it's up to you to lead them."
+"Mordak, an evil mage, threatens our lives and livelihoods. He is terrorizing "
+"our countryside. I've already called the village to arms and now it's up to "
+"you to lead them.  You'll find him about two days' ride north of here."
 msgstr ""
 "קוסם רשע, שני ימי רכיבה לצפון, מאווה איום על פרנסתנו. הוא מטיל טרור על האזור "
 "מסביב לכפר. כבר קראתי לכפר אל הנשק ועכשיו אתה צריך להנהיג אותם."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:246
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:256
 msgid "Very well. We will go there and slay this source of evil. Charge, men!"
 msgstr "טוב מאד. אנחנו נלך לשם ונהרוג את מקור הרוע הזה. הסתערו, אנשים!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:251
-msgid ""
-"After a short journey the small band of troops is close to the hideout of "
-"the evil mage."
-msgstr ""
-"אחרי מסע קצר קבוצת החיילים הקטנה הגיע קרוב אל מקום מסתורו של הקוסם הרשע."
-
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:255
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:260
 msgid ""
 "I will attempt to sneak through the forest. If I can slay the evil one while "
 "he is off his guard, the battle will be over in one stroke!"
@@ -176,38 +184,38 @@ msgstr ""
 "אני אנסה להתגנב דרך היער. אם אני אוכל לחסל את הרשע בזמן שהוא לא מוכן, הקרב "
 "יגמר במכה אחת!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:266
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:271
 msgid ""
 "Bjarn should have been in position by now. I wonder if anything's happened "
 "to him?"
 msgstr "בג'ם כבר היה צריך להיות במקום עד עכשיו. אני תוהה אם משהו קרה לו?"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:274
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:279
 #, fuzzy
 msgid ""
 "This is worrying. What's happened to Bjarn? I suppose we must slay the dark "
 "sorcerer ourselves."
 msgstr "זה מדאיג. מה קרה לבג'ם? אני מניח שנצטרך לחסל את המעלה באוב בעצמנו."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:289
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:294
 #, fuzzy
 msgid "Argh!"
 msgstr "ארגג!!!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:293
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:298
 msgid "Good work, men. Now, where is Bjarn?"
 msgstr "עבודה טובה, אנשים. עכשיו איפה בג'ם?"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:297
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:302
 #, fuzzy
 msgid "Worried about him, are you? E-he-he..hergh...gaargh..."
 msgstr "דואג לו, באמת? א אה אה... הרגג... גאארג. . ."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:301
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:306
 msgid "Nothing more to be had from him."
 msgstr "אי אפשר הצלחנו להוציא ממנו עוד כלום."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:305
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:310
 msgid ""
 "Sir, he's been kidnapped! I just saw some men running off with him. They "
 "looked like friends of this one."
@@ -215,11 +223,11 @@ msgstr ""
 "אדוני, הוא נחטף! כרגע ראיתי כמה אנשים בורחים איתו. הם נראו כמו חברים של האחד "
 "הזה."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:309
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:314
 msgid "Damn! I suppose we have to go after him, then."
 msgstr "לעזאזל! אני מניח אז, שאנחנו חייבים ללכת אחריו."
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:322
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:327
 msgid ""
 "Ha, so you thought to send a mage around and stab me in the back? Well, I "
 "have news for you. We've kidnapped him!"
@@ -227,20 +235,20 @@ msgstr ""
 "הא, אז חשבת לשלוח אלי קוסם ולתקוע לי סכין בגב? טוב, יש לי חדשות בשבילך. "
 "חטפנו אותו!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:326
-msgid ""
-"What? Bjarn kidnapped? And the black mage still ravages the land? Noooo!"
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:331
+#, fuzzy
+msgid "What? Bjarn kidnapped? And the evil mage still ravages the land? Noooo!"
 msgstr "מה? בג'ם נחטף? והקוסם השחור עדיין בוזז את הארץ? לאאאאא!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:338
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:346
 msgid "I hear these creatures are near immune to our weapons, let us see!"
 msgstr "שמעתי שהייצורים האלו כמעט חסינים לכלי הנשק שלנו, בואו נראה!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:350
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:358
 msgid "That wasn't so hard!"
 msgstr "זה לא היה כל כך קשה!"
 
-#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:361
+#: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:369
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:477
 #, fuzzy
 msgid "All is lost now that I am dead..."
@@ -762,3 +770,18 @@ msgstr "אני לא חושב שאנחנו יכולים מישהו מהכפרים
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:268
 msgid "I was too weak to protect these people. Oh why did this happen to me?!?"
 msgstr "הייתי חלש מידי מכדי להגן על אנשי. או למה זה קרה לי?!?"
+
+#~ msgid "Peasant"
+#~ msgstr "איכר"
+
+#~ msgid "Villager"
+#~ msgstr "כפרי"
+
+#~ msgid "The Black Mage"
+#~ msgstr "הקוסם השחור"
+
+#~ msgid ""
+#~ "After a short journey the small band of troops is close to the hideout of "
+#~ "the evil mage."
+#~ msgstr ""
+#~ "אחרי מסע קצר קבוצת החיילים הקטנה הגיע קרוב אל מקום מסתורו של הקוסם הרשע."

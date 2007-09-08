@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-08-30 12:21+0200\n"
+"POT-Creation-Date: 2007-09-08 18:43+0200\n"
 "PO-Revision-Date: 2007-04-24 22:06+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -186,7 +186,7 @@ msgstr "Sauver les elfes survivants"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:169
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:921
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:202
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1349
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:783
 msgid "Death of Kaleh, Nym, Garak or Zhul"
 msgstr "Mort de Kaleh, Nym, Garak ou de Zhul"
@@ -291,7 +291,7 @@ msgstr "Kaleh, Nym, aidez-nous !"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:278
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:672
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6132
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6130
 msgid "What in Uria's name is that?"
 msgstr "Au nom d'Uria, qu'est-ce que c'est que ça ?"
 
@@ -655,10 +655,10 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1431
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1529
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1563
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4124
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4866
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5011
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1334
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4123
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4865
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5010
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1338
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:246
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1514
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1555
@@ -1056,7 +1056,7 @@ msgstr ""
 "nous. Seul le nord s'offrait à nous."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:198
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1337
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1341
 msgid "Kaleh Must Reach the Northern Edge of the Desert"
 msgstr "Kaleh doit atteindre le bord nord du désert"
 
@@ -1142,14 +1142,23 @@ msgstr ""
 "tiendrons pas longtemps sans eau dans ces terres désolées. Entre la chaleur "
 "du jour et la fraîcheur de la nuit, ce voyage sera dur pour nos semblables."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:277
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:276
+msgid ""
+"The other shamans and I can prevent exhaustion and dehydration from "
+"weakening anyone close to us. But oases like the one next to us are the key "
+"to our survival; their fresh water will heal our people back to their full "
+"strength."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:282
 #, fuzzy
 msgid ""
-"During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the end "
-"of each your turns, every unit in a sand, road, rubble or sand dune hex will "
-"have attack damage weakened. Magic type attacks will be unaffected by this. "
-"At the start of your turn, each unit in an oasis (shallow water) hex will "
-"regain full attack strength."
+"During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the "
+"beginning of your turn, every unit not on grassland, castles or encampments "
+"will have their melee attack damage weakened by one point. Adjacent healer "
+"units will prevent the dehydration from taking place, and ranged attacks "
+"will always remain unaffected. Every unit beginning their turn in an oasis "
+"(shallow water) will regain full attack strength."
 msgstr ""
 "Pendant la journée (aube, matin, midi, après-midi, et crépuscule), vos "
 "unités situées en fin de tour sur une case de sable, de route, de rocaille "
@@ -1158,7 +1167,7 @@ msgstr ""
 "de graves dégâts. Par ailleurs, au début de votre tour, toute unité se "
 "trouvant dans une case d'oasis (eau peu profonde) récupérera 8 points de vie."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:285
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:288
 #, fuzzy
 msgid ""
 "Kaleh, be careful you don't recruit too many guards to go with us. I doubt "
@@ -1174,54 +1183,55 @@ msgstr ""
 "nécessiteront de soutien : nous ne voulons pas nous retrouver à court de "
 "ressources au milieu du désert."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:290
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:293
 msgid "Well, the sooner we reach Pinnacle Rock, the better. Onwards!"
 msgstr ""
 "Bien, plus tôt nous rejoindrons le pic du Pinacle, mieux ce sera. En avant !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:322
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:324
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:326
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:331
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:333
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:340
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:342
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:344
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:325
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:327
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:329
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:334
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:336
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:343
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:347
 msgid "Scorpion"
 msgstr "Scorpion"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:364
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:367
 msgid "Traveler's Ring"
 msgstr "Anneau du voyageur"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:366
-msgid "At the end of each turn, this unit takes no damage from the desert."
-msgstr ""
-"À la fin de chaque tour, cette unité ne subira pas les dégâts dus au désert."
-
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:401
-msgid "Wait. I think I spotted something ahead of us..."
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:369
+msgid ""
+"This unit will no longer suffer from the fatiguing effects of the daytime "
+"heat."
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:405
-msgid "What? I don't see a thing."
+msgid "Wait. I think I spotted something ahead of us..."
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:409
+msgid "What? I don't see a thing."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:413
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:416
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:420
 msgid ""
 "Do you want us to fight? We can still avoid them, but they are between us "
 "and the next oasis."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:433
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:437
 msgid "Scorpions! We must have stumbled across a nest of them."
 msgstr "Des scorpions ! Nous devons être tombés sur un de leurs nids."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:474
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:478
 msgid ""
 "The scorpions were devouring some poor person's body. There doesn't seem to "
 "be much of him or her left, but wait...what's this? It looks like a tiny "
@@ -1238,7 +1248,7 @@ msgstr ""
 "contes sur des objets magiques semblables : nous pouvons nous en servir dès "
 "à présent."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:479
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:483
 msgid ""
 "One unit wearing this ring is immune to any damage caused during the day by "
 "the heat of the desert."
@@ -1246,7 +1256,7 @@ msgstr ""
 "L'unité portant cet anneau est immunisée contre les dégâts causés par la "
 "chaleur du désert pendant la journée."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:509
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:513
 #, fuzzy
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
@@ -1256,41 +1266,41 @@ msgstr ""
 "s'y baignera. Les autres pourront se reposer sur l'herbe sans craindre la "
 "brûlure du jour."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:537
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:539
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:541
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:543
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:548
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:557
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:566
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:545
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:547
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:552
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:561
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:570
 msgid "Hunting Ogre"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:586
 msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:586
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:590
 msgid "No chance to sneak around?"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:590
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:594
 msgid ""
 "We would have to cover extra distance in difficult terrain. If you want to "
 "bypas them I suggest going straight north and hope to find third oasis."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:612
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:616
 msgid "Ogre ambush!"
 msgstr "Une embuscade d'ogres !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:617
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:621
 msgid "Fresh meat!"
 msgstr "Viande fraîche !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:622
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:626
 msgid ""
 "Ugh, they smell as bad as they look. And they're huge! Well, the bigger they "
 "are, the harder they fall."
@@ -1298,7 +1308,7 @@ msgstr ""
 "Pffah ! Ça ressemble à ce que ça sent, et c'est énorme ! Hum, Mmmm, plus ils "
 "sont grands, plus dure est leur chute."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:647
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:651
 #, fuzzy
 msgid ""
 "That's the last of them. This looks like a hunting party, they must have a "
@@ -1307,74 +1317,74 @@ msgstr ""
 "C'est le dernier d'entre eux. On dirait un groupe de pillards, ils doivent "
 "avoir un camp dans le coin."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:665
 msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what's inside..."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:674
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:678
 #, fuzzy
 msgid "Nym! No! don't open..."
 msgstr "Non, ne..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:684
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:688
 msgid ""
 "Too late. And it's just sand inside. Not worth... Whoa! What's happening?!"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:690
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:694
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:4
 msgid "Dust Devil"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:703
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:707
 msgid "It's a dust devil, but I have never seen one so small before."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:733
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:737
 msgid "It seems to like you, looks like you just got yourself a pet."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:742
 msgid ""
 "No buts, girl, I told you not to open it. Let's go; I'd really like to get "
 "to an oasis soon."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:773
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:774
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:775
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:776
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:777
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:778
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:779
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:780
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:781
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:782
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:788
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:789
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:790
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:796
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:797
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:798
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:785
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:786
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:792
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:793
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:794
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:800
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:801
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:802
 #, fuzzy
 msgid "Black Hand Bandit"
 msgstr "Bandit de la Main Noire"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:812
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:816
 #, fuzzy
 msgid ""
 "And I tought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
 msgstr "C'est notre oasis et nous la remplirons de votre sang !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:817
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:840
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:821
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:844
 msgid ""
 "We need that water, and if we have to go through you to get it, so be it."
 msgstr ""
 "Nous avons besoin de cette eau et si nous devons nous battre, nous le "
 "ferons !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:839
 msgid ""
 "We don't know who you are, and we don't much care. Tremble before the might "
 "of the Black Hand!"
@@ -1382,31 +1392,31 @@ msgstr ""
 "Nous ne savons qui vous êtes et nous nous en moquons. Tremblez devant la "
 "puissance de la Main Noire !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:890
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:894
 msgid "Elyssa"
 msgstr "Elyssa"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:910
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:914
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:916
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:922
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:924
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:933
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:935
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:943
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:945
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:918
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:920
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:926
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:928
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:937
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:939
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:947
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:949
 msgid "Undead Raider"
 msgstr "Pillard mort-vivant"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:912
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:916
 msgid "Go'hag"
 msgstr "Go'hag"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:955
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:959
 msgid "Back, you fiends! Or I'll kill you a second time!"
 msgstr "Arrière, démons ! Ou je vous tue une deuxième fois !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:962
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:966
 msgid ""
 "You have defied our master for the last time. Now you shall die! And I shall "
 "personally make it slow and painful, to thank you for that scorching you "
@@ -1416,36 +1426,36 @@ msgstr ""
 "mourir ! Et je m'assurerai personnellement que votre mort soit lente et "
 "douloureuse pour vous remercier de cette brûlure que vous m'avez infligée."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:969
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:973
 msgid "You have defied our master for the last time. Now you shall die!"
 msgstr ""
 "Vous avez défié notre maître pour la dernière fois. Maintenant vous allez "
 "mourir !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:976
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:980
 msgid "Stupid undead, they never listen. Then have a taste of my flame!"
 msgstr ""
 "Stupides morts-vivants, ils n'écoutent jamais. Goûtez donc à ma flamme !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:981
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:985
 msgid "She looks like she's in trouble. We should help her."
 msgstr "Elle a l'air d'avoir des problèmes. Nous devrions l'aider."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1008
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1012
 msgid "Whew! Looks like that's the last of them."
 msgstr "Ouf ! On dirait que c'est le dernier."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1013
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1017
 msgid "Thanks for the help! That was a little too close for comfort."
 msgstr ""
 "Merci pour votre aide ! C'était un peu trop juste pour être confortable."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1018
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1022
 msgid "That was a lot of undead. Why were they coming after you?"
 msgstr ""
 "Cela faisait beaucoup de morts-vivants. Pourquoi en avaient-ils après vous ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1023
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1027
 msgid ""
 "I accidentally managed to anger a powerful necromancer a while ago...it's a "
 "long story. But who are you? You almost look like elves."
@@ -1454,7 +1464,7 @@ msgstr ""
 "puissant... C'est une longue histoire. Mais qui êtes-vous ? Vous ressemblez "
 "presque à des elfes."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1028
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1032
 msgid ""
 "We are, we're the Quenoth Elves and we are traveling north. You look like "
 "you're a mage, but I thought your kind were all gone."
@@ -1463,7 +1473,7 @@ msgstr ""
 "nord. Vous semblez être une magicienne mais je croyais que toutes celles "
 "comme vous avaient disparu."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1033
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1037
 msgid ""
 "I am, I'm a fire mage. I've been traveling for quite a while now, exploring "
 "and learning. But these sands seem particularly inhospitable! I've been "
@@ -1475,12 +1485,12 @@ msgstr ""
 "particulièrement inhospitalières ! J'avais l'intention de parcourir les "
 "montagnes du nord ; voyez-vous un problème à ce que je me joigne à vous ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1038
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1042
 msgid "We'd be glad to have the help of someone with the mastery of fire."
 msgstr ""
 "Nous serions heureux de pouvoir compter sur quelqu'un qui maîtrise le feu."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1045
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1049
 msgid ""
 "The undead are defeated, but we lost her in the fight as well. Darn, if only "
 "we could have saved her."
@@ -1488,24 +1498,24 @@ msgstr ""
 "Les morts-vivants sont vaincus mais elle aussi est morte dans la bataille. "
 "Peste ! Si seulement nous avions pu la sauver."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1127
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1131
 msgid "Vengeful Lord"
 msgstr "Seigneur vindicatif"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1136
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1138
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1143
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1145
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1140
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1142
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1147
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1149
 msgid "Honor Guard"
 msgstr "Gardien d'élite"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1151
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1155
 msgid ""
 "The most hated living in my castle! To me! To me stray souls of the deserts! "
 "Let's cleanse this pollution!"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1156
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1160
 #, fuzzy
 msgid ""
 "Elf with a bow, I remember you. You thought me defeated, but I am back even "
@@ -1517,40 +1527,40 @@ msgstr ""
 "plus puissant qu'avant. La mort règne éternelle et bientôt vos os noircis et "
 "vos corps sans vie devront suivre un nouveau maître !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1161
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1165
 msgid ""
 "Still singing the same tune. We defeated you once before, we can do so again!"
 msgstr ""
 "Toujours la même rengaine. Nous t'avons battu une première fois, nous "
 "pouvons le refaire !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1173
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1177
 msgid "Nooo... (fades)"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1186
 #, fuzzy
 msgid "Searching his castle, we found a chest filled with gold."
 msgstr ""
 "En fouillant son château, nous avons trouvé un coffre avec $goldreward "
 "pièces d'or."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1213
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1214
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1217
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1218
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1219
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1225
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1226
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1232
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1233
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1222
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1223
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1229
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1230
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1236
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1237
 msgid "Ogre Nomad"
 msgstr "Nomade ogre"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1239
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1243
 msgid "Elves! Kill them all!"
 msgstr "Des elfes ! Tuez-les tous !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1244
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1248
 msgid ""
 "This ruined castle must be where the ogres make their home. Well, if it's a "
 "fight they want, it's a fight they'll get. "
@@ -1559,36 +1569,36 @@ msgstr ""
 "repaire. Bien, si c'est une bagarre qu'ils veulent, c'est une bagarre qu'ils "
 "auront."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1266
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1270
 #, fuzzy
 msgid ""
 "That's the last of those stinking beasts. They should trouble us no more."
 msgstr "C'était la dernière de ces bêtes puantes. Ils ne nous embêteront plus."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1271
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1275
 msgid "Y'know, this ruin looks oddly familiar."
 msgstr "Vous savez quoi ? Cette ruine me dit quelque chose."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1276
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1280
 msgid "Yuck, there's still dried blood on the stones. It's kind of spooky."
 msgstr ""
 "Beurk, il y a encore du sang séché sur les pierres. C'est plutôt sinistre."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1314
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1318
 #, fuzzy
 msgid "This land belongs to the Black Hand. Trespass and you will die."
 msgstr ""
 "Le panneau dit : cette terre appartient à la Main Noire. Entrez et vous "
 "mourrez."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1320
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1324
 #, fuzzy
 msgid "Bandits. If they get in our way, they're going to be sorry."
 msgstr ""
 "Ah oui, ils mettent des panneaux maintenant ? Qui qu'ils soient, s'ils se "
 "mettent en travers de notre chemin, ils vont le regretter."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1325
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1329
 #, fuzzy
 msgid ""
 "There's no way we can get all our people safely across the desert with "
@@ -1598,7 +1608,7 @@ msgstr ""
 "la-loi continuent de nous harceler. Nous devons les vaincre avant de "
 "continuer."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1330
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1334
 msgid ""
 "Did you see that? I think I just saw someone disappear behind that dune over "
 "there. I think we're being watched. I suspect there are more of these "
@@ -1609,15 +1619,15 @@ msgstr ""
 "soupçonne qu'il y ait plus de ces bandits qui se cachent que ce que nous "
 "pensions au départ."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1341
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1345
 msgid "Defeat Outlaw Leader"
 msgstr "Vaincre le chef des hors-la-Loi"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1353
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1357
 msgid "Thorn"
 msgstr "Thorn"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1440
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1444
 msgid ""
 "Dang. I was sure I saw an oasis here. Must have been a mirage. I've been out "
 "in the sand for too long."
@@ -1625,7 +1635,7 @@ msgstr ""
 "Morbleu ! J'étais sûr d'avoir vu une oasis ici. Ce devait être un mirage. "
 "J'ai été dans ces sables trop longtemps."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1462
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1466
 #, fuzzy
 msgid ""
 "So, the outlaws have made a base around Pinnacle Rock. It's a good location, "
@@ -1634,11 +1644,11 @@ msgstr ""
 "Ainsi les hors-la-loi ont établi un camp vers le pic du Pinacle. C'est un "
 "bon emplacement, mais nous les en chasserons quand même."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1484
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1488
 msgid "Pure Water"
 msgstr "Eau pure"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1486
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1490
 msgid ""
 "This water will make your melee weapons holy, and thus especially powerful "
 "against the undead."
@@ -1646,19 +1656,19 @@ msgstr ""
 "Cette eau sanctifiera vos armes de corps à corps, les rendant "
 "particulièrement puissantes contre les morts-vivants."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1514
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1518
 msgid "I surrender! I mean we surrender. Just please don't kill me."
 msgstr "Je me rends ! Je veux dire, nous nous rendons. Pitié, ne me tuez pas !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1521
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1533
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1525
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1537
 msgid ""
 "Please, have mercy on us. We're just trying to survive in this horrible land."
 msgstr ""
 "Par pitié, faites-nous grâce, nous essayons seulement de survivre dans cet "
 "enfer !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1526
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1530
 msgid ""
 "I will not kill you in cold blood. But leave these lands, and never darken "
 "our path again. Or I will show you no mercy."
@@ -1666,7 +1676,7 @@ msgstr ""
 "Je ne vous tuerai pas de sang-froid. Mais quittez ces terres et ne croisez "
 "plus notre chemin. Je serai alors sans pitié."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1544
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1548
 msgid ""
 "Here, take this vial of holy water. You'll need it with all the undead "
 "around."
@@ -1674,7 +1684,7 @@ msgstr ""
 "Tenez, prenez cette fiole d'eau bénite : vous en aurez besoin avec tous ces "
 "morts-vivants autour."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1549
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1553
 msgid ""
 "I will take this vial, in exchange for your life. But leave these lands, and "
 "never darken our path again. Or I will show you no mercy."
@@ -1682,7 +1692,7 @@ msgstr ""
 "Je prendrai cette fiole en échange de ta vie, mais quitte ces terres et ne "
 "cherche pas à croiser encore notre chemin, ou je serai sans pitié."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1554
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1558
 msgid ""
 "It's Holy Water. When anointed on a weapon it makes it deadly to magical "
 "creatures. Vials such as these are rare and valuable. We should choose "
@@ -1692,7 +1702,7 @@ msgstr ""
 "ravagera les morts-vivants. Des fioles comme celles-ci ont de la valeur et "
 "sont rares. Nous devrions bien choisir qui l'utilisera."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1592
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1596
 msgid ""
 "The Black Hand outlaws still threaten the others. While their leader still "
 "fights we won't be able to get all our people across the sands safely. We "
@@ -1702,7 +1712,7 @@ msgstr ""
 "combat, nous ne pouvons faire traverser les sables à notre peuple en toute "
 "sécurité. Nous devons combattre la Main Noire avant de progresser encore !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1599
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1605
 msgid ""
 "The outlaws are defeated and we've made it across these blasted sands. The "
 "hills are just a few miles to the north. We should be able to find water and "
@@ -1712,7 +1722,7 @@ msgstr ""
 "maudits. Les collines sont juste à quelques lieues au nord. Nous devrions "
 "pouvoir nous y reposer et y trouver de l'eau."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1623
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1629
 msgid ""
 "Now that we have a moment of peace, I have to ask you, Elyssa, what were you "
 "really doing out in the middle of the desert? It's a rather barren place to "
@@ -1722,7 +1732,7 @@ msgstr ""
 "faisiez-vous vraiment au beau milieu du désert ? C'est plutôt un endroit "
 "désolé pour voyager..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1628
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1634
 msgid ""
 "I've been searching for secrets from the past. Did you know that this entire "
 "land used to be a huge empire? Apparently this used to all be great plains "
@@ -1732,7 +1742,7 @@ msgstr ""
 "grand empire ? Apparemment, il y avait ici de grandes plaines et des "
 "pâturages avant l'arrivée des sables."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1633
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1639
 msgid ""
 "It's hard to imagine. There's barely enough rain here now to support these "
 "tiny cacti, let alone crops."
@@ -1740,7 +1750,7 @@ msgstr ""
 "C'est difficile à imaginer. Les pluies arrivent à peine à arroser ces petits "
 "cactus, alors des cultures."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1638
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1644
 msgid ""
 "And yet the great ruins that I have seen scattered across these sands are a "
 "testament that something was here before us. Perhaps in a time long ago when "
@@ -1750,7 +1760,7 @@ msgstr ""
 "sont les vestiges de quelque chose qui était là avant nous. Il y a longtemps "
 "peut-être quand la terre était plus accueillante."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1643
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1649
 msgid ""
 "Before the great fall, there were huge cities, with great schools of magery, "
 "libraries of books, vast repositories of knowledge. Most of it was destroyed "
@@ -1764,11 +1774,11 @@ msgstr ""
 "laisser-aller, mais je recherche ce qu'il en reste. Avez-vous par exemple "
 "entendu parler du Sceptre de Feu ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1648
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1654
 msgid "No, I haven't. What is it?"
 msgstr "Non. De quoi s'agit-il ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1653
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1659
 msgid ""
 "I'm not sure. I've read various references to it, but nothing specific. I've "
 "been searching for it for a long time. All I know is that it was a very "
@@ -1783,14 +1793,14 @@ msgstr ""
 "aujourd'hui. Ainsi, je parcours le monde, étudiant tout ce que je peux des "
 "jours anciens. Il est sûrement quelque part."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1658
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1664
 msgid ""
 "Perhaps. But it has been so long, and so much has been lost. Who can say?"
 msgstr ""
 "Peut-être. Mais cela fait si longtemps et tant a été perdu. Qui pourrait "
 "nous renseigner ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1721
 msgid ""
 "We've run out of provisions and our people are exhausted. We've taken too "
 "long crossing the desert, I fear we shall never reach the other side. "
@@ -1798,11 +1808,11 @@ msgstr ""
 "Nous sommes à court de provisions et nos gens sont épuisés. Nous avons trop "
 "traîné dans le désert. Je crains que nous ne rejoignions jamais l'autre côté."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1842
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1782
 msgid "Lost Soul"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1901
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1841
 msgid ""
 "The sands are haunted with the spirits of tortured souls long since dead. At "
 "dusk they rise again, and during the Long Dark they can be particularly "
@@ -1814,7 +1824,7 @@ msgstr ""
 "nuit. Ils s'évaporent à l'aube : je préfère personnellement la chaleur du "
 "désert aux horreurs de la nuit."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1906
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1846
 msgid ""
 "The combination of the heat of the day and the rising undead make dusk a "
 "particularly dangerous time of day."
@@ -1822,11 +1832,11 @@ msgstr ""
 "L'association de la chaleur du jour et des fantômes de la nuit fait du "
 "crépuscule un moment particulièrement dangereux."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1957
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1897
 msgid "What happened? The undead spirits all just disappeared."
 msgstr "Que s'est-il passé ? Les fantômes ont disparu !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1962
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1902
 msgid ""
 "These spirits are weak. They seek to prey on the helpless, but when they "
 "encounter strong resistance they flee."
@@ -1834,9 +1844,17 @@ msgstr ""
 "Ces esprits sont faibles. Ils chassent les faibles et fuient quand ils "
 "rencontrent une forte résistance."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1969
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1909
 msgid "Flee, you craven spirits, and leave us in peace!"
 msgstr "Fuyez, esprits peureux, et laissez-nous en paix !"
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1999
+msgid "Dehydrated"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2057
+msgid "Rehydrated"
+msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:12
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:13
@@ -7585,13 +7603,13 @@ msgstr ""
 "les grottes de son peuple. Mais maintenant, $ally_name continuera à vous "
 "servir et vous protéger."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3762
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3761
 msgid "Look, daylight! I think we finally made it out of the caves!"
 msgstr ""
 "Regardez, la lumière du jour ! Je crois que nous sommes enfin sortis des "
 "grottes !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3767
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3766
 msgid ""
 "What's this? Someone has built an outpost at the end of the cave. Where are "
 "its occupants?"
@@ -7599,11 +7617,11 @@ msgstr ""
 "Qu'est-ce que c'est ? Quelqu'un a construit un avant-poste à l'entrée de la "
 "caverne. Qui sont ses occupants ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3786
 msgid "Kaleh, I think you should come up and see this."
 msgstr "Kaleh, je pense que tu devrais venir pour voir ça."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3798
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3797
 msgid ""
 "Oh, Eloh. They're all dead. Butchered. Quick, we have to clean this up, we "
 "don't want the rest of our people to have to see such horror."
@@ -7611,17 +7629,17 @@ msgstr ""
 "Oh, Eloh. Ils sont tous morts. Massacrés. Vite, nous devons nettoyer tout "
 "cela pour éviter que le reste de notre peuple voie une telle horreur."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3803
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3802
 msgid "Now, Keratur, I will have my answers. Did you have a hand in this?"
 msgstr ""
 "Maintenant, Keratur, je veux des réponses. As-tu trempé dans ce qui vient "
 "d'arriver ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3811
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3810
 msgid "Keratur"
 msgstr "Keratur"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3821
 msgid ""
 "They heard me and...and they got in the way. But they aren't even elves, "
 "what do they matter?"
@@ -7629,11 +7647,11 @@ msgstr ""
 "Ils m'ont entendu et... ils étaient sur mon chemin. Mais ce n'étaient même "
 "pas des elfes, donc quelle importance ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3827
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3826
 msgid "You idiot--"
 msgstr "Espèce d'idiot..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3832
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3831
 msgid ""
 "Quiet, Nym. But I still don't understand how you got here. We were sure you "
 "were dead. We searched and searched, but never found your body."
@@ -7642,7 +7660,7 @@ msgstr ""
 "Nous étions sûrs que tu étais mort. Nous avons cherché et cherché, mais nous "
 "n'avons jamais trouvé ton corps."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3837
 #, fuzzy
 msgid ""
 "Heh, heh, no you didn't find me. I awoke trapped under the rubble, and when "
@@ -7657,11 +7675,11 @@ msgstr ""
 "morts-vivants s'élevant des dunes. Une cabale de nécromanciens... Ils m'ont "
 "trouvé et m'ont fait regarder, ils m'ont tout fait regarder !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3843
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3842
 msgid "Watch what?"
 msgstr "Regarder quoi ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3849
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3848
 msgid ""
 "They brought some humans, bound up tight. So beautiful...she had flaming red "
 "hair...they cut her...I can still hear her screaming. But that was only the "
@@ -7674,11 +7692,11 @@ msgstr ""
 "le sang chaud sur la sable et j'ai alors entendu leurs hurlements de douleur "
 "et d'agonie..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3854
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3853
 msgid "From the humans?"
 msgstr "Des humains ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3860
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3859
 msgid ""
 "Paugh. No, I heard the screams of the dead, torn from their rest, their "
 "souls rose into the air howling in agony."
@@ -7686,12 +7704,12 @@ msgstr ""
 "Pouah. Non, j'ai entendu les hurlements arrachés des restes des morts, leurs "
 "âmes agonisantes montant en l'air en criant."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3865
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3864
 msgid "But, but we burned the bodies so they couldn't be raised."
 msgstr ""
 "Mais nous avons brûlé les corps pour qu'ils ne puissent pas être ressuscités."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3871
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3870
 msgid ""
 "Fool. That did not stop their dark power. Nothing could stop them. I felt "
 "the rush of flying spirits, and the unbearable cold, so cold. For a moment I "
@@ -7704,7 +7722,7 @@ msgstr ""
 "tourment. Mais non, ils ne m'auraient pas tué. Ils m'ont laissé partir pour "
 "témoigner et ils ont ri quand je me suis rué par-delà les dunes."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3877
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3876
 msgid ""
 "I was able to follow your trail, and I slipped among your people. No one "
 "noticed me, no I was too sneaky. And you wondered how I managed to follow "
@@ -7714,11 +7732,11 @@ msgstr ""
 "remarqué, j'ai été trop discret. Et vous vous demandez comment j'ai pu vous "
 "suivre à travers les tunnels ? Ah, vous m'avez escorté."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3882
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3881
 msgid "But why, why did you want to kill us?"
 msgstr "Mais pourquoi, pourquoi voulais-tu nous tuer ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3888
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3887
 msgid ""
 "You abandoned them! The pain, the agony, I still see their ghostly faces and "
 "hear their wails. And the necromancers kept chanting one name over and over: "
@@ -7735,15 +7753,15 @@ msgstr ""
 "je la crois. Kaleh, pardonne-moi, je voulais seulement faire cesser la "
 "douleur."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3893
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3892
 msgid "I...I forgive you."
 msgstr "Je... Je te pardonne."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3899
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3898
 msgid "I do not fear death any more."
 msgstr "Je n'ai plus peur de la mort."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3912
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3911
 msgid ""
 "He's dead. Rest in peace. Oh, what have I done? All our dead kin, desecrated "
 "and tormented for eternity."
@@ -7751,14 +7769,14 @@ msgstr ""
 "Il est mort. Repose en paix. Oh, qu'est-ce que j'ai fait ? Tous nos frères "
 "morts, maudits et tourmentés pour l'éternité."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3917
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3916
 msgid ""
 "As you said yourself, the past is the past, there is nothing you can do now."
 msgstr ""
 "Comme tu l'as dit toi-même, le passé est le passé et il n'y a rien que tu "
 "puisses faire maintenant."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3922
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3921
 msgid ""
 "Don't blame yourself. You didn't know. If we had stayed behind we too would "
 "have been killed by the undead; we could not have defended our village "
@@ -7769,7 +7787,7 @@ msgstr ""
 "défendre notre village contre une telle multitude. Nous n'avions pas le "
 "choix."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3927
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3926
 msgid ""
 "That is small consolation. My deeds have turned to ashes in my mouth. Eloh "
 "forgive me. I did not know."
@@ -7777,7 +7795,7 @@ msgstr ""
 "Ce n'est qu'une piètre consolation. Mes actes ont maintenant un goût amer. "
 "Eloh, pardonne-moi. Je ne savais pas."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3938
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3937
 msgid ""
 "With your permission, Kaleh, I think I should go scout around a bit outside. "
 "We have no idea what lies out there. And I can sneak around unseen many "
@@ -7787,15 +7805,15 @@ msgstr ""
 "les alentours. Je n'ai aucune idée de ce qui se cache dehors. Et "
 "contrairement à toi, je peux me faufiler discrètement dans plusieurs lieux."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3943
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3942
 msgid "Okay Nym, just be careful."
 msgstr "D'accord Nym, fais juste attention."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3948
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3947
 msgid "I'm always careful. I'll be back soon."
 msgstr "Je fais toujours attention, je serai de retour bientôt."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3968
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3967
 msgid ""
 "Well, at least we can use this outpost to rally our surviving troops. How "
 "many of our people made it out of the caves, Zhul?"
@@ -7803,7 +7821,7 @@ msgstr ""
 "Bon, nous pouvons au moins utiliser cet avant-poste pour réunir nos "
 "survivants. Combien d'entre nous sont sortis des cavernes, Zhul ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3973
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:3972
 msgid ""
 "We're still trying to get a head count, but between the underground horrors "
 "and the water, we lost quite a few. Recruiting new warriors is going to be "
@@ -7816,7 +7834,7 @@ msgstr ""
 "tout vous remercier Eloh et toi pour avoir permis à autant d'entre nous de "
 "survivre."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4120
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4119
 msgid ""
 "Well, Nym's right, we don't know what's out there. So we should set up a "
 "perimeter guard around the cave mouth and start discovering what this side "
@@ -7826,17 +7844,17 @@ msgstr ""
 "organiser un tour de garde autour de l'entrée de la caverne et commencer à "
 "explorer ce côté de la montagne."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4127
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4126
 msgid "Explore Outside"
 msgstr "Explorez l'extérieur"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4131
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4873
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5022
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4130
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4872
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5021
 msgid "Death of Kaleh, Nym, or Zhul"
 msgstr "Mort de Kaleh, Nym ou de Zhul"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4170
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4169
 msgid ""
 "Looks like the guards at this outpost had been saving away a bit of loot. I "
 "don't suppose they're going to mind anymore if we made use of it."
@@ -7845,8 +7863,8 @@ msgstr ""
 "précieux. Je ne crois pas qu'ils nous en voudront si nous les utilisons à "
 "leur place."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4228
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4318
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4227
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4317
 msgid ""
 "Praise Eloh, it is so good to be outside again. To see the sky stretching "
 "out above me, to feel the wind in my face..."
@@ -7854,7 +7872,7 @@ msgstr ""
 "Eloh soit louée, c'est si bon d'être de nouveau dehors. Voir le ciel défiler "
 "au-dessus de moi, sentir le vent sur mon visage..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4261
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4260
 msgid ""
 "I think we finally made it outside. I'd forgotten how big the sky is and how "
 "windy it can be."
@@ -7862,7 +7880,7 @@ msgstr ""
 "Je crois que nous avons enfin trouvé la sortie. J'avais oublié la grandeur "
 "du ciel et la force du vent."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4270
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4269
 msgid ""
 "We made it. Outside look strange to $ally_name, $ally_name not used to big "
 "open spaces."
@@ -7870,7 +7888,7 @@ msgstr ""
 "Nous réussir. Dehors paraît bizarre pour $ally_name, $ally_name pas habitué "
 "à grands espaces ouverts."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4296
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4295
 msgid ""
 "Kromph is outside, but everything looks strange. What does mistress want "
 "Kromph to do?"
@@ -7878,15 +7896,15 @@ msgstr ""
 "Kromph est dehors, mais tout semble bizarre. Quels sont les ordres, "
 "maîtresse ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4301
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4300
 msgid "Just stay where you are, I'll come up there myself"
 msgstr "Reste simplement là où tu es, je vais aller là-haut moi-même."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4330
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4329
 msgid "Can you see very far? Do you have any idea where we are?"
 msgstr "Peux-tu voir au loin ? As-tu une idée de l'endroit où nous sommes ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4335
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4334
 msgid ""
 "We've come out on the side of a mountain, overlooking a large valley. The "
 "land seems to be much the same as the foothills south of the mountains. The "
@@ -7903,37 +7921,37 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1027
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_Final.cfg:541
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1893
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4419
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4418
 msgid "Eloh"
 msgstr "Eloh"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4448
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4447
 msgid "Kaleh, Kaleh, come to me."
 msgstr "Kaleh, Kaleh, viens à moi."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4453
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4452
 msgid "What is the voice? It sounds so familiar."
 msgstr "Quelle est cette voix ? Elle me paraît si familière."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4459
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4458
 msgid "Come out so that I might see you. Your god calls to you."
 msgstr "Sors que je puisse te voir. Ta déesse t'appelle à elle."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4464
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4463
 msgid "Am I dreaming? Is this real? I'm coming, I'm coming."
 msgstr "Suis-je en train de rêver ? Est-ce réel ? Je viens, j'accours."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4479
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4478
 msgid "Hail Kaleh, it is I, Eloh."
 msgstr "Mes salutations Kaleh, c'est moi, Eloh."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4486
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4485
 msgid "But I am not asleep? And yet I can see you? How is this possible?"
 msgstr ""
 "Mais je ne suis pas endormi ? Et je peux vous voir ? Comment est-ce "
 "possible ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4492
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4491
 msgid ""
 "Do you doubt my powers? You have come out of the darkness, and I appear unto "
 "you to congratulate you."
@@ -7941,13 +7959,13 @@ msgstr ""
 "Tu doutes de mes pouvoirs ? Tu sors des ténèbres et j'apparais à tes yeux "
 "pour te féliciter."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4507
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4525
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4506
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4524
 msgid "Kaleh, who are you talking to?"
 msgstr "Kaleh, à qui parles-tu ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4513
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4531
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4512
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4530
 msgid ""
 "For now, I appear only to you, for you, Kaleh, are special, you are the "
 "Chosen One."
@@ -7955,15 +7973,15 @@ msgstr ""
 "Pour l'instant, je n'apparais qu'à toi, car toi, Kaleh, tu es spécial, tu es "
 "l'Élu."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4518
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4517
 msgid " $speaker.description, be quiet, I'll explain it all later."
 msgstr " $speaker.description, silence, je vais tout expliquer plus tard."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4536
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4535
 msgid "Be quiet Zhul, I'll explain it all later."
 msgstr "Silence Zhul, je vais tout expliquer plus tard."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4544
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4543
 msgid ""
 "Yes, I have chosen you as the one to lead my people out of danger and death "
 "and into a life of eternal salvation. Crossing under the mountains was a "
@@ -7973,19 +7991,19 @@ msgstr ""
 "et de la mort pour une vie de paix éternelle. La traversée des montagnes "
 "était une étape très importante, et la destruction des infidèles prouve ta-"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4558
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4557
 msgid "Kaleh, a quick question-"
 msgstr "Kaleh, une question rapide-"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4563
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4562
 msgid "Not now $ally_name, I'm busy."
 msgstr "Pas tout de suite, $ally_name, je suis occupé."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4569
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4568
 msgid "What's this? You did not kill the unbelievers?!"
 msgstr "Qu'est-ce que c'est ça ? Tu n'as pas tué les infidèles ?!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4581
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4580
 msgid ""
 "I am sorry I could not have fulfilled your command, but we found ourselves "
 "in the middle of a war. We were vastly outnumbered and we needed help. In "
@@ -7999,7 +8017,7 @@ msgstr ""
 "assistés. Ils nous ont protégés des trolls et, sans leurs conseils, nous "
 "n'aurions pas pu sortir vivants de ces souterrains."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4588
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4587
 msgid ""
 "I am sorry I could not have fulfilled your command, but we found ourselves "
 "in the middle of a war. We were vastly outnumbered and we needed help. In "
@@ -8012,7 +8030,7 @@ msgstr ""
 "assistés. Ils nous ont protégés des nains et, sans eux, nous n'aurions pas "
 "pu sortir vivants de ces souterrains."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4596
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4595
 msgid ""
 "You were weak and foolish, but I forgive you. You must remember, Kaleh, that "
 "without my guidance, your people would have died out years ago. I am your "
@@ -8022,7 +8040,7 @@ msgstr ""
 "que sans ma protection, ton peuple serait mort depuis des années déjà. Je "
 "suis ta déesse et tu dois obéir à chacun de mes ordres."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4602
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4601
 msgid ""
 "Now, in the valley live a group of humans who have also seen the light. They "
 "may seem strange, but they are my obedient followers. You must trust them, "
@@ -8033,7 +8051,7 @@ msgstr ""
 "dois leur faire confiance, ils t'indiqueront le chemin du nord. Suis-les et "
 "ils te conduiront à moi."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4607
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4606
 msgid ""
 "What do you mean 'lead you to me'? You are a god, don't you exist "
 "everywhere? I thought you were going to show us our new home."
@@ -8042,7 +8060,7 @@ msgstr ""
 "pas en chaque chose ? Je pensais que vous alliez nous conduire vers notre "
 "nouvelle patrie."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4613
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4612
 msgid ""
 "Of course I am. Oh, how little you understand. Do not worry yourself with "
 "all those tiny questions. Come to me and all will be made clear."
@@ -8051,23 +8069,23 @@ msgstr ""
 "t'inquiète pas avec toutes ces questions si futiles. Viens à moi et tout "
 "sera clair."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4623
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4760
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4622
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4759
 msgid "Sergeant Durstrag"
 msgstr "Sergent Durstrag"
 
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4623
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4624
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4625
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4626
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4627
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4771
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4772
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4773
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4774
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4775
 msgid "Human Guard"
 msgstr "Garde humain"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4631
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4630
 msgid ""
 "I saw the distress signal from the outpost on the bluff. Who in the Dark "
 "Lady's name are you and what have you done with my men?"
@@ -8075,7 +8093,7 @@ msgstr ""
 "J'ai vu le signal de détresse envoyé par l'avant-poste sur la falaise. Au "
 "nom de la Vierge Noire, qui êtes-vous et qu'avez-vous fait à mes hommes ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4636
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4635
 msgid ""
 "My name is Kaleh, and these are my people. We come from the south and "
 "unfortunately we found your men dead--"
@@ -8083,7 +8101,7 @@ msgstr ""
 "Je m'appelle Kaleh et ces personnes sont mon peuple. Nous venons du sud et "
 "malheureusement, nous avons trouvé vos hommes morts..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4641
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4640
 msgid ""
 "Dead?! You 'found' them you say? You'll pardon me if I don't take you at "
 "your word. We haven't seen elves for generations, but we remember your "
@@ -8095,11 +8113,11 @@ msgstr ""
 "nous nous rappelons toujours vos anciennes traîtrises. Que font, dans notre "
 "dos, des elfes errants dans les cavernes ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4646
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4645
 msgid "Well, actually they were fleeing from--"
 msgstr "Bien, en fait nous étions en train de fuir..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4658
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4657
 msgid ""
 "A troll! This just gets better and better. We haven't seen one of your kind "
 "up here for many years, but I have a long memory. I still remember the troll "
@@ -8109,7 +8127,7 @@ msgstr ""
 "plusieurs années, mais j'ai une longue mémoire. Je me rappelle toujours des "
 "raids trolls durant ma jeunesse."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4664
 msgid ""
 "A dwarf! This just gets better and better. We haven't seen one of your kind "
 "up here for many years, but we have a long memories. I remember how your "
@@ -8121,11 +8139,11 @@ msgstr ""
 "'marchands' qui venaient pour nous arnaquer nos biens. Vous ne nous "
 "trouverez plus si naïfs maintenant."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4672
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4671
 msgid "Look, if you'll just let me explain--"
 msgstr "Un instant, si vous me laissiez juste expliquer..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4684
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4683
 msgid ""
 "Oh there is no need to explain, it's pretty obvious what you're up to. Here "
 "we have a whole legion of elves, consorting with trolls, sneaking up behind "
@@ -8135,7 +8153,7 @@ msgstr ""
 "Nous avons ici une légion d'elfes associés à des trolls se faufilant dans "
 "nos défenses arrière. Cela me paraît puer l'invasion."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4691
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4690
 msgid ""
 "Oh they're no need to explain, it's pretty obvious what you're up to. Here "
 "we have a whole legion of elves, consorting with dwarves, sneaking up behind "
@@ -8145,12 +8163,12 @@ msgstr ""
 "Nous avons ici une légion d'elfes associés à des nains se faufilant dans nos "
 "défenses arrière. Cela me paraît puer l'invasion."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4698
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4697
 msgid "No, no. You don't understand! We were told you could help us."
 msgstr ""
 "Non, non. Vous ne comprenez pas ! On nous a dit que vous pouviez nous aider."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4703
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4702
 msgid ""
 "Sir, remember the edict passed down by councilman Noblis? About any "
 "foreigners spotted on the borders?"
@@ -8158,7 +8176,7 @@ msgstr ""
 "Monsieur, vous rappelez-vous le décret édicté par le conseiller Noblis ? Au "
 "sujet de tout étranger surpris aux frontières ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4708
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4707
 msgid ""
 "I have no idea what you're babbling about, elf, but you're just lucky you "
 "caught me on a good day. You get to explain everything to the Iron Council. "
@@ -8171,18 +8189,18 @@ msgstr ""
 "escortons en lieu sûr pour être jugés. Ils s'occuperont de vous en temps et "
 "en heure."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4714
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4713
 msgid "Everything will be fine. Do as he says."
 msgstr "Tout va bien se passer. Faites comme il dit."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4719
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4718
 msgid ""
 "I am my own master. I will not be ordered around, not even by you, Eloh."
 msgstr ""
 "Je suis mon propre maître. Je ne reçois d'ordres de personne, ni même de "
 "vous, Eloh."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4724
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4723
 msgid ""
 "What's that, boy? Are you talking back to me? This isn't a negotiation. You "
 "are on my land, and under my jurisdiction. Lay down your weapons and submit "
@@ -8192,7 +8210,7 @@ msgstr ""
 "sur ma terre et sous ma juridiction. Posez vos armes et rendez-vous sans "
 "faire de scandale ou vous allez le regretter."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4730
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4729
 msgid ""
 "Kaleh, I am Eloh, bearer of the staff of Ishtar and slayer of the demon-god "
 "Yanqui. Do as I say! Submit to him or I will abandon your people to "
@@ -8204,7 +8222,7 @@ msgstr ""
 "souffrance et à la mort. Vos os iront joncher le sable des dunes et les "
 "vautours mangeront votre chair. Je ne suis pas une déesse clémente, Kaleh."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4735
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4734
 msgid ""
 "Then kill me if you must, but I will not give myself over to those who "
 "threaten me and my people. I have not come through peril and darkness just "
@@ -8214,7 +8232,7 @@ msgstr ""
 "peuple et me menacent moi. Je n'ai pas affronté mille périls et traversé les "
 "ténèbres pour tout bonnement me rendre à un homme comme toi."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4740
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4739
 msgid ""
 "Your dare defy me?!? All who refuse to submit to the authority of the Iron "
 "Council shall be killed. By the Dark Lady, I shall not put up with this "
@@ -8226,7 +8244,7 @@ msgstr ""
 "cet affront plus longtemps. Aux armes soldats ! Repoussez ces barbares dans "
 "les cavernes !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4780
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4779
 msgid ""
 "You disappoint me, Kaleh. You are weak, and not worthy of my guidance. Do "
 "what you will, but this is not over. You may be the appointed leader of your "
@@ -8237,7 +8255,7 @@ msgstr ""
 "ton peuple, mais je suis votre déesse et je ne te permettrai d'usurper mon "
 "autorité."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4791
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4790
 msgid ""
 "You are not the god I grew up with. You may be all powerful, but I will not "
 "be your puppet. I am still their leader and as long as I draw breath I will "
@@ -8248,12 +8266,12 @@ msgstr ""
 "et, jusqu'à mon dernier souffle, je ferai ce que je juge le meilleur pour "
 "mon peuple."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4796
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4795
 msgid "Kaleh, would you mind telling me what in Uria's name is going on."
 msgstr ""
 "Kaleh, au nom d'Uria, est-ce que tu pourrais me dire ce qui se passe ici."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4801
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4800
 msgid ""
 "There's no time. Right now we have to prepare ourselves for another battle. "
 "I'd better head back to the outpost and rally our troops. I fear a whole lot "
@@ -8264,14 +8282,14 @@ msgstr ""
 "J'ai peur que des événements très fâcheux ne surgissent bientôt de derrière "
 "ces collines."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4806
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4805
 msgid ""
 "Well, now we're really in for it. I hope you know what you're doing, Kaleh."
 msgstr ""
 "Bon, nous sommes vraiment dedans jusqu'au cou. J'espère que tu sais ce que "
 "tu fais, Kaleh."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4825
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4824
 msgid ""
 " $ally_name no like humans either. They mean. But they sound great when they "
 "go squish."
@@ -8279,7 +8297,7 @@ msgstr ""
 " $ally_name pas aimer les humains non plus. Eux vicieux. Mais ils feront "
 "beau bruit quand nous les écraserons."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4832
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4831
 msgid ""
 "I never liked humans much anyway. I'll be glad to be fighting something "
 "besides undead."
@@ -8287,26 +8305,26 @@ msgstr ""
 "Je n'ai jamais aimé beaucoup les humains de toute façon. Je serai content de "
 "combattre autre chose que des morts-vivants."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4869
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5014
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4868
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5013
 msgid "Defeat Sergeant Durstrag"
 msgstr "Vaincre le sergent Durstrag"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4977
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4976
 msgid "I'm back, Kaleh."
 msgstr "Je suis de retour, Kaleh."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4982
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4981
 msgid "Ah! You scared me, Nym. I didn't hear you coming."
 msgstr "Ah, tu m'as fait peur, Nym. Je ne t'ai pas entendue venir."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4987
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4986
 msgid "Of course you didn't. That's why it's called sneaking."
 msgstr ""
 "Bien sûr que tu n'as pas entendu. C'est pour cela que l'on appelle cela la "
 "discrétion."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4992
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4991
 msgid ""
 "Anyway you've really gotten us into a mess. The good news is that the "
 "outpost isn't guarded as heavily as you might think. The garrison seems only "
@@ -8319,11 +8337,11 @@ msgstr ""
 "s'attendent apparemment pas à une grosse attaque provenant de cette "
 "direction."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4997
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4996
 msgid "And what's the bad news?"
 msgstr "Et quelle est la mauvaise nouvelle ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5002
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5001
 msgid ""
 "The bad news is that I overheard the commander ordering a special group of "
 "his men to get ready to ride north and summon reinforcements. It seems that "
@@ -8339,7 +8357,7 @@ msgstr ""
 "vaincre mais, vu notre état affaibli, je crains que nous ne soyons écrasés "
 "s'ils portent l'ensemble de leur forces armées contre nous."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5007
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5006
 msgid ""
 "Then we'll just have to make sure that no messenger escapes this valley to "
 "summon reinforcements."
@@ -8347,19 +8365,19 @@ msgstr ""
 "Nous devons alors nous assurer qu'aucun de leurs messagers ne s'échappe de "
 "cette vallé pour aller quérir des renforts."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5018
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5017
 msgid "If a human messenger escapes the valley"
 msgstr "Si un messager humain s'échappe de la vallée"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5025
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5024
 msgid "The messenger is the leader of the special white colored units"
 msgstr "Le messager est le chef des unités d'un blanc particulier."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5124
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5123
 msgid "Undead Emissary"
 msgstr "Émissaire mort-vivant"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5128
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5127
 msgid ""
 "Cursed Elves, you tracked your filth through our halls and you defiled our "
 "sanctuary. You have besmirched our honor, and we will have our revenge. We "
@@ -8371,7 +8389,7 @@ msgstr ""
 "sommes de l'Ordre de la Serre Pourpre et même la mort ne peut nous arrêter. "
 "Vous pleurerez le jour où vous avez pénétré sur nos terres."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5144
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5143
 msgid ""
 "Can't the dead ever just stay dead? And aren't they trapped by the flooded "
 "tunnels and caves?"
@@ -8379,7 +8397,7 @@ msgstr ""
 "Pourquoi les morts ne peuvent-ils pas simplement rester morts ? N'ont-ils "
 "pas été piégés par les grottes et les tunnels inondés ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5149
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5148
 msgid ""
 "Undead don't have to breathe and I don't think a little water is going to "
 "stop them. Besides, you saw how the ghost just flew through the rock; if "
@@ -8390,15 +8408,15 @@ msgstr ""
 "traversent la roche ; s'ils peuvent se déplacer à travers les murs, alors "
 "ils se moquent bien des passages remplis d'eau."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5154
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5153
 msgid "Great. So now we're fighting in a haunted valley."
 msgstr "Super. Maintenant, on va se battre dans une vallée hantée."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5177
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5176
 msgid "Undead Leader"
 msgstr "Meneur mort-vivant"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5215
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5214
 msgid ""
 "I don't understand. What are these humans doing here? I've never seen so "
 "many in one place before."
@@ -8406,7 +8424,7 @@ msgstr ""
 "Je ne comprends pas. Que font ici tous ces humains ? Je n'en n'ai jamais vu "
 "autant réunis ensemble."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5220
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5219
 msgid ""
 "Humans aren't just the bandits and outlaws you're familiar with from the "
 "deserts, Kaleh. Remember that long ago the great human empire of Wesnoth "
@@ -8423,7 +8441,7 @@ msgstr ""
 "ne sont pas les ténèbres extérieures mais bien nos ténèbres intérieures qui "
 "ont été la cause de notre corruption et de notre chute."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5225
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5224
 msgid ""
 "But now is not a time for preaching. Humans once spread to many lands, and "
 "despite all the ravages of time, I have no doubt that at least a few of them "
@@ -8436,13 +8454,13 @@ msgstr ""
 "s'adaptent vite à des conditions nouvelles. J'aimerais pouvoir en dire "
 "autant de nos semblables."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5230
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5229
 msgid "There might be other elves somewhere. We can't be sure."
 msgstr ""
 "Il pourrait y avoir d'autres elfes quelque part. Nous ne pouvons pas en être "
 "sûr."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5235
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5234
 msgid ""
 "No we can't. But for now we must deal with the problem at hand. Thank you "
 "for the information, Zhul; these humans are good fighters but they are no "
@@ -8455,7 +8473,7 @@ msgstr ""
 "J'ai grandi combattant dans des dunes comme celles-ci et ce n'est pas une "
 "bande de bandits qui me surpassera."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5283
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5282
 msgid ""
 "Send forth the messenger and his escort. Go north and bring help as soon as "
 "possible!"
@@ -8463,20 +8481,20 @@ msgstr ""
 "Envoie le messager et son escorte. Allez au nord et revenez avec de l'aide "
 "aussi vite de possible !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5303
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5424
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5429
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5302
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5423
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5428
 msgid "Human Messenger"
 msgstr "Messager humain"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5323
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5342
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5361
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5380
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5322
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5341
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5360
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5379
 msgid "Human Escort"
 msgstr "Escorte humaine"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5390
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5389
 msgid ""
 "If that messenger escapes the valley, we'll be in trouble. We have to stop "
 "him!"
@@ -8484,11 +8502,11 @@ msgstr ""
 "Nous allons avoir des problèmes si ce messager s'échappe de la vallée. Nous "
 "devons l'arrêter !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5408
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5407
 msgid "No! I must get help!"
 msgstr "Non ! J'ai besoin d'aide !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5413
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5412
 msgid ""
 "Good. We're safe for now. We just have to defeat Durstrag before he sends "
 "another messenger for reinforcements."
@@ -8496,7 +8514,7 @@ msgstr ""
 "Parfait. Nous sommes hors de danger pour le moment. Nous devons vaincre "
 "Durstrag avant qu'il n'envoie un autre messager chercher des renforts."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5435
 msgid ""
 "The messenger has escaped! He will surely return with reinforcements. We are "
 "doomed!"
@@ -8504,7 +8522,7 @@ msgstr ""
 "Le messager s'est échappé ! Il va sûrement revenir avec des renforts. Nous "
 "sommes perdus !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5455
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5454
 msgid ""
 "Don't worry. We're not the monsters you seem to think we are. I will not "
 "kill you in cold blood."
@@ -8512,40 +8530,40 @@ msgstr ""
 "Ne vous inquiétez pas. Nous ne sommes pas les monstres que vous imaginez. Je "
 "ne vais pas vous tuer de sang-froid."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5460
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5459
 msgid "Paugh, boy, you know nothing! There are fates worse than death."
 msgstr ""
 "Pouah, gamin, tu ne connais rien à rien ! Il y a des destinées pires que la "
 "mort."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5471
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5470
 msgid "He killed himself rather then surrender to us!"
 msgstr "Il s'est suicidé plutôt que de se rendre à nous !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5476
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5475
 msgid "They killed Sergeant Durstrag! Run for your lives!"
 msgstr "Ils ont tué le sergent Durstrag ! Sauve qui peut !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5493
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5492
 msgid "The rest of the humans are fleeing."
 msgstr "Les autres humains s'enfuient."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5498
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5497
 msgid ""
 "Let them go. We have won this battle and I am weary of all this bloodshed."
 msgstr ""
 "Laissez-les s'en aller. Nous avons gagné cette bataille et je commence à "
 "être fatigué de tout ce sang répandu."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5503
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5502
 msgid "What was it that the human Durstrag was so afraid of?"
 msgstr "Qu'est-ce qui effrayait tant l'humain Durstrag ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5508
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5507
 msgid "I don't know, but I fear we may find out."
 msgstr "Je ne sais pas, mais je crains que nous allions le découvrir."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5513
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5512
 msgid ""
 "You're being very cryptic, Kaleh. Now that the battle is over would you care "
 "to explain to us who you were talking to back when we first met the humans?"
@@ -8554,15 +8572,15 @@ msgstr ""
 "voudrais-tu nous expliquer avec qui tu discutais avant que nous ne "
 "rencontrions les humains ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5518
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5517
 msgid "No, not yet."
 msgstr "Non, pas encore."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5523
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5522
 msgid "What's wrong, Kaleh? Don't you trust us?"
 msgstr "Qu'est-ce qui se passe, Kaleh ? Tu ne nous fais pas confiance ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5528
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5527
 msgid ""
 "Yes, yes of course I do. But it's just a theory. I don't want to say more "
 "until I have proof. Give me until tomorrow night, then I'll tell you "
@@ -8572,7 +8590,7 @@ msgstr ""
 "plus jusqu'au moment où j'aurai une preuve. Donnez-moi jusqu'à demain soir "
 "et alors je vous dirai tout."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5533
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5532
 msgid ""
 "Very well. I've trusted your decisions and your leadership so far; I'll wait "
 "a little longer."
@@ -8580,7 +8598,7 @@ msgstr ""
 "Très bien. J'ai eu confiance en tes décisions et tes talents de chef ; "
 "j'attendrai encore un peu."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5538
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5537
 msgid ""
 "So what do we do now? The land seems to be about the same on the northern "
 "side of the mountains as it was on the south. And we can't hang around here "
@@ -8592,7 +8610,7 @@ msgstr ""
 "Les humains risquent de revenir avec des renforts et la vallée est toujours "
 "hantée par les morts-vivants."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5543
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5542
 msgid ""
 "Yes, I think the sooner we leave this valley the better. But we don't know "
 "anything about the surrounding terrain. Without anyone to guide us, we have "
@@ -8606,7 +8624,7 @@ msgstr ""
 "pays étrangers quand je ne sais pas ce qui va nous attendre. Nous avons déjà "
 "perdu beaucoup de monde. Je ne veux pas nous conduire dans un piège."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5548
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5547
 msgid ""
 "When I was scouting around I think I saw a small oasis near the entrance to "
 "this valley. If we move out there we should be out of range of the undead. I "
@@ -8616,7 +8634,7 @@ msgstr ""
 "l'entrée de cette vallée. Si nous y arrivons, nous devrions être à l'abri "
 "des morts-vivants. Ça devrait être sans danger, au moins à court terme."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5553
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5552
 msgid ""
 "Indeed. Undead ghosts such as these are often bound to the places they died: "
 "the farther away they travel, the weaker they are. So if we move out of the "
@@ -8626,7 +8644,7 @@ msgstr ""
 "sont morts : plus ils s'en éloignent, plus ils sont faibles. Donc si nous "
 "nous écartons, nous devrions être relativement en sûreté."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5558
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5557
 msgid ""
 "Good, we'll move our people out and camp by the oasis. Now, Nym, you know "
 "who our best scouts are; I want you to lead a few elves to do some "
@@ -8641,11 +8659,11 @@ msgstr ""
 "ouest. N'allez pas trop loin, essayez de ne pas être vus et, s'il te plaît, "
 "ne faites rien de dangereux. Mais je veux savoir ce qu'il se passe."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5563
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5562
 msgid "But hasn't Eloh told you where to go and what dangers you face?"
 msgstr "Mais Eloh ne t'a pas dit où aller et quels sont les futurs dangers ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5568
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5567
 msgid ""
 "She was ... rather vague. I know we're supposed to generally go north, but I "
 "want more information before I commit us to a direction."
@@ -8654,7 +8672,7 @@ msgstr ""
 "le nord, mais je voulais plus d'informations avant de nous engager "
 "définitivement dans une direction."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5573
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5572
 msgid ""
 "Don't you worry about us, Kaleh. We'll be careful. I'll organize five bands "
 "to scout out the nearby lands. We should be back in about half a day."
@@ -8663,7 +8681,7 @@ msgstr ""
 "cinq groupes pour étudier le voisinage. Nous devrions rentrer dans une demi-"
 "journée."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5578
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5577
 msgid ""
 "Good, until then we'll settle around that oasis and set up as good a defense "
 "as we can. Until I know what's out there, I'm not taking any chances."
@@ -8672,12 +8690,12 @@ msgstr ""
 "oasis et y établir la meilleure défense possible. Je ne prendrai aucun "
 "risque avant de savoir ce qu'il se passe ici."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5791
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5789
 msgid "Help, I'm drowning!"
 msgstr "Au secours, je me noie !"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5911
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5938
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5909
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5936
 msgid ""
 "Look, the water is pouring out the side tunnel into the valley! That's a lot "
 "of water: it's even creating a small river. I sure wouldn't want to be "
@@ -8687,7 +8705,7 @@ msgstr ""
 "a beaucoup d'eau : elle crée même une petite rivière. Je ne voudrais "
 "vraiment pas être sous ce torrent maintenant."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5982
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5980
 msgid ""
 "Look, up there in the valley. The water has poured out of the side tunnel "
 "and created a small river and lake. I'm glad we weren't downstream of that "
@@ -8697,7 +8715,7 @@ msgstr ""
 "a créé une petite rivière et un lac. Je suis heureux de n'avoir pas été "
 "dessous quand l'eau a déferlé hors du tunnel."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5995
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5993
 msgid ""
 "I can see human reinforcements arriving on the horizon. We'll surely be "
 "overwhelmed now! If only we had moved faster."
@@ -8705,82 +8723,82 @@ msgstr ""
 "Je vois les renforts humains à l'horizon. Nous allons probablement être "
 "submergés ! Si seulement nous avions pu nous dégager plus vite."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6040
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6038
 msgid "Dummy Unit1"
 msgstr "Mannequin 1"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6041
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6039
 msgid "Dummy Unit2"
 msgstr "Mannequin 2"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6042
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6040
 msgid "Dummy Unit3"
 msgstr "Mannequin 3"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6043
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6041
 msgid "Dummy Unit4"
 msgstr "Mannequin 4"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6044
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6042
 msgid "Dummy Unit5"
 msgstr "Mannequin 5"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6045
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6043
 msgid "Dummy Unit6"
 msgstr "Mannequin 6"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6057
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6055
 msgid "Several hours pass..."
 msgstr "Plusieurs heures passent..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6087
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6085
 msgid "In Eloh's name, Nym, you look terrible. Are you okay?"
 msgstr "Par Eloh, Nym, tu as l'air exténuée. Tu vas bien ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6092
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6090
 msgid "Yes. Just...let me...catch...my breath."
 msgstr "Oui... Laisse-moi... juste... récupérer... mon souffle."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6108
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6106
 msgid "Esanoo"
 msgstr "Esanoo"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6127
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6125
 msgid "Water. Sweet water. By the gods, I thought my scales would fall off."
 msgstr ""
 "De l'eau. De l'eau douce. Par les dieux, j'ai cru que mes écailles allaient "
 "tomber."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6137
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6135
 msgid "Relax, he's a friend. Just let me explain."
 msgstr "Reste tranquille, c'est un ami. Laisse-moi d'abord t'expliquer."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6142
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6140
 msgid "You're really beat up, Nym. Are you sure you're okay?"
 msgstr "Tu as vraiment l'air épuisée, Nym. Tu es sûre que tu vas bien ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6147
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6145
 msgid "I'm fine. But I found someone who really wanted to speak with you."
 msgstr ""
 "Je vais bien. Mais j'ai rencontré quelqu'un qui voulait absolument te parler."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6152
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6150
 msgid "He looks like a half-man half-fish."
 msgstr "Il semble mi-homme, mi-poisson."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6157
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6155
 msgid "Indeed. I come from the ocean, and long have I been looking for you."
 msgstr "Tout à fait. Je viens de l'océan et je vous cherche depuis longtemps."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6162
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6160
 msgid "The Ocean? What are you talking about?"
 msgstr "L'océan ? Mais de quoi parles-tu ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6167
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6165
 msgid "Don't try to explain, Esanoo. We'll have to show them instead."
 msgstr "N'essaye pas d'expliquer, Esanoo. Nous allons plutôt leur montrer."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6172
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6170
 msgid ""
 "It's not important. What's important is that I am an emissary from one who "
 "much desires to speak with you, Kaleh. Despite the danger, my master sent me "
@@ -8791,11 +8809,11 @@ msgstr ""
 "notre maîtresse nous a envoyés moi et mes frères parcourir les terres sèches "
 "pour vous rechercher."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6177
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6175
 msgid "There are more of you? Where are the others?"
 msgstr "Il y en a d'autres comme vous ? Où sont les autres ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6180
 msgid ""
 "They have been captured by the foul humans. I just barely managed to hide "
 "and escape, with the help of your friend."
@@ -8803,11 +8821,11 @@ msgstr ""
 "Ils ont été capturés par les humains puants. Je n'ai pu me cacher et "
 "m'échapper qu'avec l'aide de votre amie."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6187
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6185
 msgid "And why should we trust anything you say?"
 msgstr "Et pourquoi devrions-nous avoir confiance en vos paroles ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6192
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6190
 msgid ""
 "My master thought you might be suspicious. She said that what we must talk "
 "with you about concerns the fate of your people. Apparently it concerns "
@@ -8817,13 +8835,13 @@ msgstr ""
 "du destin de votre peuple. Apparemment, cela concerne 'Yechnagoth' et "
 "'Yanqui'. Elle a dit que vous comprendriez, Kaleh."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6197
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6195
 msgid "Hmmmm...yes, yes I think I do. I don't know why, but I trust you."
 msgstr ""
 "Hummm... Oui, Oui, je pense que je comprends. Je ne sais pas pourquoi, mais "
 "je vous fais confiance."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6202
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6200
 msgid ""
 "Thank you. Now I have a boon to ask of you. Our instructions were to find "
 "you and to bring you and your people to meet with my master. The problem is "
@@ -8833,11 +8851,11 @@ msgstr ""
 "de vous trouver vous et votre peuple et de vous permettre de rencontrer "
 "notre maîtresse. Le problème est que nous ne savons pas où elle se cache."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6207
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6205
 msgid "You don't know where to find your master?"
 msgstr "Vous ne savez pas où trouver votre maîtresse ?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6212
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6210
 msgid ""
 "It's complicated, and I don't know how much I am allowed to tell you. My "
 "people are fighting a desperate war against...against a powerful foe. Many "
@@ -8861,7 +8879,7 @@ msgstr ""
 "Nous devons les délivrer d'abord pour avoir une chance de retrouver ma "
 "maîtresse. Je l'aurais fait moi-même, mais..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6217
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6215
 msgid ""
 "It would be suicide for you to try to rescue them alone. Of course we will "
 "help you."
@@ -8869,11 +8887,11 @@ msgstr ""
 "Ce serait un suicide pour vous d'aller les secourir tout seul. Bien sûr que "
 "nous allons vous aider."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6222
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6220
 msgid "Thank you. I am not very good at fighting on the dry ground."
 msgstr "Merci. Je ne me bats pas très bien sur la terre ferme."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6227
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6225
 msgid ""
 "All the other scouting parties have returned, except for one. Tanstafaal and "
 "his scouts haven't reported back yet. I'm starting to get worried."
@@ -8882,7 +8900,7 @@ msgstr ""
 "l'accompagnaient ne sont pas venus faire leur rapport. Je commence à "
 "m'inquiéter."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6232
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6230
 msgid ""
 "They were sent due north. From Esanoo's description it sounds like they were "
 "headed right for the human settlement. I hope nothing bad has happened to "
@@ -8892,7 +8910,7 @@ msgstr ""
 "semblerait qu'ils ont filé droit vers les camps des humains. J'espère que "
 "rien ne leur est arrivé."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6237
+#: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:6235
 msgid ""
 "Things are coming to a head. I'm worried about Tanstafaal and your merfolk "
 "friends. Time is of the essence, so let's move out as soon as possible."
@@ -13439,13 +13457,13 @@ msgstr ""
 "Cette chose est impossible à décrire, personne n'a jamais rien vu de pareil."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:36
-#: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/units/Alien_Body2.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:37
-#: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:55
+#: data/campaigns/Under_the_Burning_Suns/units/Alien_Body3.cfg:49
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Spire.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/Alien_Body.cfg:34
-#: data/campaigns/Under_the_Burning_Suns/units/Alien_Body.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/Alien_Minion.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/units/Alien_Body.cfg:46
+#: data/campaigns/Under_the_Burning_Suns/units/Alien_Minion.cfg:39
 msgid "energy ray"
 msgstr "rayon d'énergie."
 
@@ -13541,18 +13559,18 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Fighter.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:69
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:222
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:228
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:168
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:174
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:70
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:219
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:225
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:62
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:195
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:201
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:68
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:230
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:236
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/units/Naga_Hunter.cfg:42
@@ -13573,8 +13591,8 @@ msgstr ""
 msgid "sword"
 msgstr "épée"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Spider_Lich.cfg:40
-#: data/campaigns/Under_the_Burning_Suns/units/Corrupted_Elf.cfg:59
+#: data/campaigns/Under_the_Burning_Suns/units/Spider_Lich.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/Corrupted_Elf.cfg:39
 msgid "magic"
 msgstr "magie"
 
@@ -13642,7 +13660,7 @@ msgstr ""
 msgid "scythe"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/units/Dark_Assassin1.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/Dark_Assassin1.cfg:31
 msgid "darts"
 msgstr "dards"
 
@@ -13662,32 +13680,32 @@ msgstr ""
 "fait honneur à leur race, bien que leurs arcs soient plus rustiques et leurs "
 "flèches moins acérées que ceux de leurs ancêtres elfes."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Fighter.cfg:77
-#: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:65
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:101
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:254
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:88
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:102
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:251
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:91
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:224
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:73
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:83
-#: data/campaigns/Under_the_Burning_Suns/units/Naga_Hunter.cfg:69
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:66
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Marshal.cfg:81
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Hero.cfg:76
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:70
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Captain.cfg:80
-#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Champion.cfg:78
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:83
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:67
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:68
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:82
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Fighter.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:52
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:81
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:240
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Horseman.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:82
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:237
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:210
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:53
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:57
+#: data/campaigns/Under_the_Burning_Suns/units/Naga_Hunter.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Hero.cfg:46
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Marshal.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Hero.cfg:46
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Captain.cfg:50
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Captain.cfg:50
+#: data/campaigns/Under_the_Burning_Suns/units/Kaleh_Champion.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:57
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Champion.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Fighter.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:56
 msgid "bow"
 msgstr "arc"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:141
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Archer.cfg:147
 msgid "female^Desert Archer"
 msgstr "Archère du désert"
 
@@ -13715,7 +13733,7 @@ msgstr ""
 "unité ennemie si celle-ci est distraite par une unité du même camp que le "
 "vengeur."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:161
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Avenger.cfg:167
 msgid "female^Desert Avenger"
 msgstr "Vengeuse du désert"
 
@@ -13786,15 +13804,15 @@ msgid "staff"
 msgstr "bâton"
 
 # Pas séduction mais ralentissement par des ronces. Damien : envoûtement ??
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:114
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:138
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:147
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:94
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:121
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:130
 msgid "ensnare"
 msgstr "envoûtement"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:149
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:173
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:182
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Druid.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Shyde.cfg:133
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Star.cfg:142
 msgid "thorns"
 msgstr "épines"
 
@@ -13868,16 +13886,16 @@ msgstr ""
 "et les ennemis. Ils peuvent ralentir les autres avec leurs bolas et les "
 "achever à l'épée."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:65
-#: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:84
-#: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:83
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:68
-#: data/campaigns/Under_the_Burning_Suns/units/Nym_Hunter.cfg:80
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:75
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/units/Nym_Prowler.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/Nym_Hunter.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:50
 msgid "bola"
 msgstr "bolas"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:115
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:121
 msgid "female^Desert Hunter"
 msgstr "Chasseuse du désert"
 
@@ -13904,14 +13922,14 @@ msgstr ""
 "Remarque : le tir d'élite leur permet d'augmenter leur chance de toucher les "
 "ennemis, en attaque seulement."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:67
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:197
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:97
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:259
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:183
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:77
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:245
 msgid "longbow"
 msgstr "arc long"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:135
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:141
 msgid "female^Desert Marksman"
 msgstr "Tireuse d'élite du désert"
 
@@ -13977,7 +13995,7 @@ msgstr ""
 "Remarque : la capacité de tirailleur permet d'ignorer la zone de contrôle "
 "des ennemis et donc de se déplacer sans problème parmi eux."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:135
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:141
 msgid "female^Desert Prowler"
 msgstr "Patrouilleuse du désert"
 
@@ -14005,7 +14023,7 @@ msgstr ""
 "Remarque : le rôdeur du désert peut infliger le double de dégâts à une unité "
 "ennemie si celle-ci est distraite par une unité du même camp que le rôdeur."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:161
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:167
 msgid "female^Desert Ranger"
 msgstr "Rôdeuse du désert"
 
@@ -14050,7 +14068,7 @@ msgstr ""
 "Leur capacité de tirailleur leur permet d'ignorer les zones de contrôle "
 "ennemies et donc de se déplacer autour d'eux sans encombre."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:118
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:124
 msgid "female^Desert Sentinel"
 msgstr "Sentinelle du désert"
 
@@ -14069,7 +14087,7 @@ msgstr ""
 "d'un le nombre d'attaques dont ils disposent. Ils ont aussi des capacités "
 "limitées de soin."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:117
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Shaman.cfg:97
 msgid "entangle"
 msgstr "enchevêtrement"
 
@@ -14096,7 +14114,7 @@ msgstr ""
 "Remarque : leur tir d'élite leur permet d'avoir une grande chance de toucher "
 "leur ennemi, mais en attaque seulement."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:165
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:171
 msgid "female^Desert Sharpshooter"
 msgstr "Franc-tireur du désert"
 
@@ -14223,7 +14241,7 @@ msgstr ""
 msgid "twister"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:65
+#: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:40
 msgid "sand storm"
 msgstr ""
 
@@ -14251,10 +14269,10 @@ msgid "battle axe"
 msgstr "hache de bataille"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Scout.cfg:26
-#: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Scout.cfg:59
-#: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:82
+#: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Scout.cfg:34
+#: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Explorer.cfg:41
 #: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Pathfinder.cfg:26
-#: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Pathfinder.cfg:69
+#: data/campaigns/Under_the_Burning_Suns/units/Dwarvish_Pathfinder.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/Undead_Horseman.cfg:37
 msgid "axe"
 msgstr "hache"
@@ -14325,10 +14343,10 @@ msgstr ""
 msgid "touch"
 msgstr "toucher"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:85
-#: data/campaigns/Under_the_Burning_Suns/units/Haunt.cfg:68
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:62
-#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Spectre.cfg:65
+#: data/campaigns/Under_the_Burning_Suns/units/Haunt.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Wraith.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/units/Ethereal_Ghost.cfg:43
 msgid "wail"
 msgstr "hurlement"
 
@@ -14585,9 +14603,9 @@ msgstr ""
 msgid "fire claws"
 msgstr "griffes ardentes"
 
-#: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster2.cfg:56
-#: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster3.cfg:56
-#: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster.cfg:56
+#: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster2.cfg:38
+#: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster3.cfg:38
+#: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster.cfg:38
 msgid "fire breath"
 msgstr "souffle ardent"
 
@@ -14688,7 +14706,7 @@ msgid ""
 "with the plague, and any foe struck down by it will rise again in unlife."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/units/Necromancer2.cfg:38
 msgid "chill wave"
 msgstr ""
 
@@ -14728,7 +14746,7 @@ msgstr ""
 "attaquent en projetant de l'eau bouillante sur leurs ennemis ou en frappant "
 "avec leurs poings."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Small_Mudcrawler.cfg:74
+#: data/campaigns/Under_the_Burning_Suns/units/Small_Mudcrawler.cfg:54
 msgid "mud glob"
 msgstr "jet de boue"
 
@@ -14762,7 +14780,7 @@ msgstr ""
 "maîtrise magique du feu qu'ils projettent par rafales pour carboniser leurs "
 "ennemis."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Troll_Shaman.cfg:61
+#: data/campaigns/Under_the_Burning_Suns/units/Troll_Shaman.cfg:41
 msgid "flame blast"
 msgstr "rafale de feu"
 
@@ -14929,6 +14947,11 @@ msgstr "La longue nuit (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:184
 msgid "The Long Dark (4)"
 msgstr "La longue nuit (4)"
+
+#~ msgid "At the end of each turn, this unit takes no damage from the desert."
+#~ msgstr ""
+#~ "À la fin de chaque tour, cette unité ne subira pas les dégâts dus au "
+#~ "désert."
 
 #~ msgid ""
 #~ "Please, have mercy on us. We'm just trying to survive in this horrible "

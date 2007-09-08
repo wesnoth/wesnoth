@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-03 22:02+0200\n"
+"POT-Creation-Date: 2007-09-08 18:39+0200\n"
 "PO-Revision-Date: 2007-09-03 22:26+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -46,41 +46,43 @@ msgstr "-- Wesnoths krönika"
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:25
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:27
-#: data/campaigns/Northern_Rebirth/_main.cfg:87
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:32
+#: data/campaigns/Northern_Rebirth/_main.cfg:28
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:30
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 #: data/campaigns/The_South_Guard/_main.cfg:27
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33
-msgid "Campaign Designer"
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33 data/core/about.cfg:413
+msgid "Campaign Design"
 msgstr "Kampanjdesign"
 
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:31
+#: data/campaigns/Eastern_Invasion/_main.cfg:29
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:33
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
-msgid "Current Maintainer"
-msgstr "Huvudansvarig"
+#, fuzzy
+msgid "Campaign Maintenance"
+msgstr "Ansvarig"
 
 #: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
 msgid "+1 max HP"
 msgstr "+1 max HP"
 
-#: data/campaigns/Eastern_Invasion/_main.cfg:29
+#: data/campaigns/Eastern_Invasion/_main.cfg:35
 msgid "Campaign Epilog and Continuity"
 msgstr "Kampanjepilog och korrektur"
 
-#: data/campaigns/Eastern_Invasion/_main.cfg:35
-#: data/campaigns/Heir_To_The_Throne/_main.cfg:39
-#: data/campaigns/Northern_Rebirth/_main.cfg:28
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:43
-#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:36
+#: data/campaigns/Eastern_Invasion/_main.cfg:41
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:43
+#: data/campaigns/Northern_Rebirth/_main.cfg:34
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:42
+#: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:40
 #: data/campaigns/The_South_Guard/_main.cfg:39
 #: data/campaigns/Two_Brothers/_main.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:45
-msgid "Artwork and Graphics Designers"
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
+#, fuzzy
+msgid "Artwork and Graphics Design"
 msgstr "Grafik och illustrationer"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
@@ -88,26 +90,27 @@ msgstr "Grafik och illustrationer"
 msgid "Underground"
 msgstr "Underjorden"
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:43
+#: data/campaigns/Northern_Rebirth/_main.cfg:49
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:30
 msgid "Prose, Grammatical and WML Assistance"
 msgstr "Bidrag till prosa, grammatik och WML"
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:49
-msgid "Music Development"
+#: data/campaigns/Northern_Rebirth/_main.cfg:55 data/core/about.cfg:375
+msgid "Music"
 msgstr "Musik"
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:55
+#: data/campaigns/Northern_Rebirth/_main.cfg:61
 msgid "Translators"
 msgstr "Översättning"
 
-#: data/campaigns/Northern_Rebirth/_main.cfg:77
+#: data/campaigns/Northern_Rebirth/_main.cfg:83
 msgid "Code and Translation Assistance"
 msgstr "Bidrag till kod och översättning"
 
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:36
-msgid "WML Contributors"
-msgstr "WML-bidrag"
+#: data/campaigns/Sceptre_of_Fire/credits.cfg:34
+#, fuzzy
+msgid "WML Assistance"
+msgstr "Motståndskraft"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
@@ -119,7 +122,7 @@ msgstr "Ansvarig"
 
 #: data/campaigns/The_South_Guard/_main.cfg:51
 #: data/campaigns/Two_Brothers/_main.cfg:47
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:81
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:75
 msgid "Miscellaneous"
 msgstr "Diverse"
 
@@ -132,7 +135,7 @@ msgstr ""
 "denna lista är långt ifrån fullständig\n"
 
 #: data/campaigns/Two_Brothers/_main.cfg:54
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Och stort tack till alla andra jag glömde att nämna."
 
@@ -148,183 +151,175 @@ msgstr "Administratörer och koordinatörer"
 msgid "Artwork and Graphics"
 msgstr "Grafik och illustrationer"
 
-#: data/core/about.cfg:371
-msgid "Music"
-msgstr "Musik"
-
-#: data/core/about.cfg:392
+#: data/core/about.cfg:396
 msgid "Sound Effects"
 msgstr "Ljudeffekter"
 
-#: data/core/about.cfg:409
-msgid "Campaign Design"
-msgstr "Kampanjdesign"
-
-#: data/core/about.cfg:464
+#: data/core/about.cfg:468
 msgid "Multiplayer Maps and Balancing"
 msgstr "Gruppspelskartor och -balansering"
 
-#: data/core/about.cfg:498
+#: data/core/about.cfg:502
 msgid "Packagers"
 msgstr "Paketerare"
 
-#: data/core/about.cfg:543 data/core/help.cfg:264
+#: data/core/about.cfg:547 data/core/help.cfg:265
 msgid "Contributors"
 msgstr "Medverkande"
 
-#: data/core/about.cfg:658
+#: data/core/about.cfg:662
 msgid "Internationalization Managers"
 msgstr "Översättningsamordnare"
 
-#: data/core/about.cfg:683
+#: data/core/about.cfg:687
 msgid "Afrikaans Translation"
 msgstr "Afrikaansk översättning"
 
-#: data/core/about.cfg:700
+#: data/core/about.cfg:704
 msgid "Basque Translation"
 msgstr "Baskisk översättning"
 
-#: data/core/about.cfg:714
+#: data/core/about.cfg:718
 msgid "Bulgarian Translation"
 msgstr "Bulgarisk översättning"
 
-#: data/core/about.cfg:733
+#: data/core/about.cfg:737
 msgid "Catalan Translation"
 msgstr "Katalansk översättning"
 
-#: data/core/about.cfg:769
+#: data/core/about.cfg:773
 msgid "Chinese Translation"
 msgstr "Kinesisk översättning"
 
-#: data/core/about.cfg:779
+#: data/core/about.cfg:783
 msgid "Czech Translation"
 msgstr "Tjeckisk översättning"
 
-#: data/core/about.cfg:824
+#: data/core/about.cfg:828
 msgid "Danish Translation"
 msgstr "Dansk översättning"
 
-#: data/core/about.cfg:856
+#: data/core/about.cfg:860
 msgid "Dutch Translation"
 msgstr "Holländsk översättning"
 
-#: data/core/about.cfg:896
+#: data/core/about.cfg:900
 msgid "English (GB) Translation"
 msgstr "Brittisk-engelsk översättning"
 
-#: data/core/about.cfg:907
+#: data/core/about.cfg:911
 msgid "Esperanto Translation"
 msgstr "Översättning till esperanto"
 
-#: data/core/about.cfg:926
+#: data/core/about.cfg:930
 msgid "Estonian Translation"
 msgstr "Estnisk översättning"
 
-#: data/core/about.cfg:933
+#: data/core/about.cfg:937
 msgid "Filipino Translation"
 msgstr "Filippinsk översättning"
 
-#: data/core/about.cfg:940
+#: data/core/about.cfg:944
 msgid "Finnish Translation"
 msgstr "Finsk översättning"
 
-#: data/core/about.cfg:968
+#: data/core/about.cfg:972
 msgid "French Translation"
 msgstr "Fransk översättning"
 
-#: data/core/about.cfg:1071
+#: data/core/about.cfg:1075
 msgid "Galician Translation"
 msgstr "Galicisk översättning"
 
-#: data/core/about.cfg:1078
+#: data/core/about.cfg:1082
 msgid "German Translation"
 msgstr "Tysk översättning"
 
-#: data/core/about.cfg:1123
+#: data/core/about.cfg:1127
 msgid "Greek Translation"
 msgstr "Grekisk översättning"
 
-#: data/core/about.cfg:1148
+#: data/core/about.cfg:1152
 msgid "Hebrew Translation"
 msgstr "Hebreisk översättning"
 
-#: data/core/about.cfg:1158
+#: data/core/about.cfg:1162
 msgid "Hungarian Translation"
 msgstr "Ungersk översättning"
 
-#: data/core/about.cfg:1195
+#: data/core/about.cfg:1199
 msgid "Indonesian Translation"
 msgstr "Indonesisk översättning"
 
-#: data/core/about.cfg:1202
+#: data/core/about.cfg:1206
 msgid "Italian Translation"
 msgstr "Italiensk översättning"
 
-#: data/core/about.cfg:1233
+#: data/core/about.cfg:1237
 msgid "Japanese Translation"
 msgstr "Japansk översättning"
 
-#: data/core/about.cfg:1256
+#: data/core/about.cfg:1260
 msgid "Korean Translation"
 msgstr "Koreansk översättning"
 
-#: data/core/about.cfg:1263
+#: data/core/about.cfg:1267
 msgid "Latin Translation"
 msgstr "Latinsk översättning"
 
-#: data/core/about.cfg:1270
+#: data/core/about.cfg:1274
 msgid "Lithuanian Translation"
 msgstr "Litauisk översättning"
 
-#: data/core/about.cfg:1277
+#: data/core/about.cfg:1281
 msgid "Norwegian Translation"
 msgstr "Norsk översättning"
 
-#: data/core/about.cfg:1299
+#: data/core/about.cfg:1303
 msgid "Polish Translation"
 msgstr "Polsk översättning"
 
-#: data/core/about.cfg:1343
+#: data/core/about.cfg:1347
 msgid "Portuguese Translation"
 msgstr "Portugisisk översättning"
 
-#: data/core/about.cfg:1350
+#: data/core/about.cfg:1354
 msgid "Portuguese (Brazil) Translation"
 msgstr "Brasiliansk-portugisisk översättning"
 
-#: data/core/about.cfg:1385
+#: data/core/about.cfg:1389
 msgid "Russian Translation"
 msgstr "Rysk översättning"
 
-#: data/core/about.cfg:1414
+#: data/core/about.cfg:1418
 msgid "Serbian Translation"
 msgstr "Serbisk översättning"
 
-#: data/core/about.cfg:1429
+#: data/core/about.cfg:1433
 msgid "Slovak Translation"
 msgstr "Slovakisk översättning"
 
-#: data/core/about.cfg:1443
+#: data/core/about.cfg:1447
 msgid "Slovenian Translation"
 msgstr "Slovensk översättning"
 
-#: data/core/about.cfg:1453
+#: data/core/about.cfg:1457
 msgid "Spanish Translation"
 msgstr "Spansk översättning"
 
-#: data/core/about.cfg:1495
+#: data/core/about.cfg:1499
 msgid "Swedish Translation"
 msgstr "Svensk översättning"
 
-#: data/core/about.cfg:1521
+#: data/core/about.cfg:1525
 msgid "Turkish Translation"
 msgstr "Turkisk översättning"
 
-#: data/core/about.cfg:1540
+#: data/core/about.cfg:1544
 msgid "Valencian Translation"
 msgstr "Valencisk översättning"
 
-#: data/core/about.cfg:1547
+#: data/core/about.cfg:1551
 msgid "Bots"
 msgstr "Bots"
 
@@ -348,27 +343,27 @@ msgstr "Karaktärsdrag"
 msgid "Units"
 msgstr "Trupper"
 
-#: data/core/help.cfg:39
+#: data/core/help.cfg:40
 msgid "Abilities"
 msgstr "Förmågor"
 
-#: data/core/help.cfg:47
+#: data/core/help.cfg:48
 msgid "Weapon Specials"
 msgstr "Vapenspecialiteter"
 
-#: data/core/help.cfg:54
+#: data/core/help.cfg:55
 msgid "Terrains"
 msgstr "Terräng"
 
-#: data/core/help.cfg:61
+#: data/core/help.cfg:62
 msgid "Commands"
 msgstr "Kommandon"
 
-#: data/core/help.cfg:67 data/core/help.cfg:81 data/core/help.cfg:276
+#: data/core/help.cfg:68 data/core/help.cfg:82 data/core/help.cfg:277
 msgid "Overview"
 msgstr "Översikt"
 
-#: data/core/help.cfg:68
+#: data/core/help.cfg:69
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -379,15 +374,16 @@ msgstr ""
 "förmågor kommer att beskrivas under denna rubrik efter hand som du stöter på "
 "dem."
 
-#: data/core/help.cfg:73
+#: data/core/help.cfg:74
 msgid "Unknown Unit"
 msgstr "Okänd trupp"
 
-#: data/core/help.cfg:76
+#: data/core/help.cfg:77
+#, fuzzy
 msgid ""
 "\n"
 "\n"
-"This unit is unknown for the moment. You must discover it in game to be "
+"This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
 "\n"
@@ -395,7 +391,7 @@ msgstr ""
 "Denna trupp är för tillfället okänd. Du måste upptäcka den under spelets "
 "gång för att få se dess beskrivning."
 
-#: data/core/help.cfg:84
+#: data/core/help.cfg:85
 msgid ""
 "\n"
 "\n"
@@ -414,11 +410,11 @@ msgstr ""
 "dessa enkla regler ger ett mycket rikt strategispel, som är lätt att lära "
 "sig men en rejäl utmaning att bemästra. "
 
-#: data/core/help.cfg:89
+#: data/core/help.cfg:90
 msgid "Fundamentals of Gameplay"
 msgstr "Grundläggande spelteknik"
 
-#: data/core/help.cfg:90
+#: data/core/help.cfg:91
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -433,7 +429,7 @@ msgstr ""
 "får du mer detaljerad information angående särskilda situationer och "
 "undantag."
 
-#: data/core/help.cfg:92
+#: data/core/help.cfg:93
 msgid ""
 "\n"
 "\n"
@@ -453,7 +449,7 @@ msgstr ""
 "italic>. Då Kampen om Wesnoth kan vara riktigt utmanande, bör du kanske "
 "börja med en <italic>text=Lätt</italic> kampanj."
 
-#: data/core/help.cfg:95
+#: data/core/help.cfg:96
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -465,11 +461,11 @@ msgstr ""
 "förklarar det du pekar på lite närmare. Detta är särskilt användbart när du "
 "stöter på nya <ref>dst=abilities text=förmågor</ref> första gången."
 
-#: data/core/help.cfg:100
+#: data/core/help.cfg:101
 msgid "About the Game"
 msgstr "Om spelet"
 
-#: data/core/help.cfg:101
+#: data/core/help.cfg:102
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -486,7 +482,7 @@ msgstr ""
 "också spela mot andra som är uppkopplade mot samma nätverk. Om din dator har "
 "tillgång till Internet så kan du spela mot andra över Internet."
 
-#: data/core/help.cfg:103
+#: data/core/help.cfg:104
 msgid ""
 "\n"
 "\n"
@@ -504,7 +500,7 @@ msgstr ""
 "fiender, men du kan även behöva nå en viss plats på kartan, rädda någon, "
 "lösa en gåta, eller bara överleva ett visst antal drag."
 
-#: data/core/help.cfg:105
+#: data/core/help.cfg:106
 msgid ""
 "\n"
 "\n"
@@ -520,11 +516,11 @@ msgstr ""
 "noggrant och hålla dina bästa trupper vid liv så att de kan användas i "
 "senare scenarier i kampanjen."
 
-#: data/core/help.cfg:110
+#: data/core/help.cfg:111
 msgid "Recruiting and Recalling"
 msgstr "Rekrytera och återkalla"
 
-#: data/core/help.cfg:111
+#: data/core/help.cfg:112
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -548,7 +544,7 @@ msgstr ""
 "dialogrutan. För att rekrytera en trupp ur det valda truppslaget klickar du "
 "på Ok."
 
-#: data/core/help.cfg:113
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -565,7 +561,7 @@ msgstr ""
 "lediga rutor i din borg, och du kan inte använda mer guld än du faktiskt har "
 "i din kassakista."
 
-#: data/core/help.cfg:115
+#: data/core/help.cfg:116
 msgid ""
 "\n"
 "\n"
@@ -577,7 +573,7 @@ msgstr ""
 "Rekryterade trupper får två slumpmässigt valda <ref>dst=traits "
 "text=karaktärsdrag</ref> som ändrar deras egenskaper."
 
-#: data/core/help.cfg:117
+#: data/core/help.cfg:118
 msgid ""
 "\n"
 "\n"
@@ -593,7 +589,7 @@ msgstr ""
 "rekryterade den. Om du väljer Återkalla får du upp en lista över de "
 "tillgängliga veteraner som du kan välja bland."
 
-#: data/core/help.cfg:119
+#: data/core/help.cfg:120
 msgid ""
 "\n"
 "\n"
@@ -607,11 +603,11 @@ msgstr ""
 "också en underhållskostnad. Läs <ref>dst=income_and_upkeep text='Inkomst och "
 "underhåll'</ref> för mer information om detta."
 
-#: data/core/help.cfg:124
+#: data/core/help.cfg:125
 msgid "Orbs"
 msgstr "Sfärer"
 
-#: data/core/help.cfg:125
+#: data/core/help.cfg:126
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -619,34 +615,34 @@ msgstr ""
 "Ovanför energimätaren som visas bredvid alla dina trupper finns en sfär. För "
 "de trupper du kontrollerar är sfären:"
 
-#: data/core/help.cfg:126
+#: data/core/help.cfg:127
 msgid "green if it hasn't moved this turn,"
 msgstr "grön om truppen inte har förflyttats detta drag,"
 
-#: data/core/help.cfg:127
+#: data/core/help.cfg:128
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "gul om du har flyttat truppen detta drag, men den kan förflyttas ytterligare "
 "och/eller anfalla under innevarande drag, eller"
 
-#: data/core/help.cfg:128
+#: data/core/help.cfg:129
 msgid "red if it has used all its movement this turn."
 msgstr ""
 "röd om du kontrollerar truppen, men dess förflyttning detta drag är slut."
 
-#: data/core/help.cfg:129
+#: data/core/help.cfg:130
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Sfären är blå om truppen är en allierad som du inte kontrollerar."
 
-#: data/core/help.cfg:130
+#: data/core/help.cfg:131
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Fiendetrupper har ingen sfär ovanför sina energimätare."
 
-#: data/core/help.cfg:135
+#: data/core/help.cfg:136
 msgid "Hitpoints and Experience"
 msgstr "Hälsopoäng och erfarenhet"
 
-#: data/core/help.cfg:136
+#: data/core/help.cfg:137
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -658,7 +654,7 @@ msgstr ""
 "erfarenhetspoäng (EP). En nyrekryterad trupp har inga erfarenhetspoäng till "
 "en början, men erhåller detta genom att strida."
 
-#: data/core/help.cfg:140
+#: data/core/help.cfg:141
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -668,7 +664,7 @@ msgstr ""
 "vardera. Den första siffran visar de nuvarande poängen och den andra visar "
 "maximalt värde."
 
-#: data/core/help.cfg:141
+#: data/core/help.cfg:142
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -680,11 +676,11 @@ msgstr ""
 "erfarenhetsmätare. Denna blir vit när truppen är nära att "
 "<ref>dst=experience_and_advancement text=befordras</ref>."
 
-#: data/core/help.cfg:146
+#: data/core/help.cfg:147
 msgid "Movement"
 msgstr "Förflyttning"
 
-#: data/core/help.cfg:147
+#: data/core/help.cfg:148
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -713,7 +709,7 @@ msgstr ""
 "trupp ställs i en by man inte redan kontrollerar så förloras återstående "
 "förflyttning, men man kan fortfarande anfalla."
 
-#: data/core/help.cfg:149
+#: data/core/help.cfg:150
 msgid ""
 "\n"
 "\n"
@@ -740,7 +736,7 @@ msgstr ""
 "truppen, välja Truppbeskrivning, och sedan <italic>text='Terrängavdrag'</"
 "italic>."
 
-#: data/core/help.cfg:151
+#: data/core/help.cfg:152
 msgid ""
 "\n"
 "\n"
@@ -760,7 +756,7 @@ msgstr ""
 "eftersom bara <ref>dst=ability_skirmisher text='stigfinnarna'</ref> kan röra "
 "sig obehindrat över dessa."
 
-#: data/core/help.cfg:153
+#: data/core/help.cfg:154
 msgid ""
 "\n"
 "\n"
@@ -774,11 +770,11 @@ msgstr ""
 "Cmd-v. Ctrl-b eller Cmd-b visar vart fienden skulle kunna flytta om dina "
 "trupper inte fanns på kartan och blockerade framfarten."
 
-#: data/core/help.cfg:158
+#: data/core/help.cfg:159
 msgid "Shroud and Fog of War"
 msgstr "Slöja och stridsdimma"
 
-#: data/core/help.cfg:161
+#: data/core/help.cfg:162
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -817,11 +813,11 @@ msgstr ""
 "uppdatera slöjan själv (eller vid dragets slut). Därigenom behålls "
 "möjligheten att ångra sina förflyttningar så länge som möjligt."
 
-#: data/core/help.cfg:166
+#: data/core/help.cfg:167
 msgid "Combat"
 msgstr "Strid"
 
-#: data/core/help.cfg:167
+#: data/core/help.cfg:168
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -843,7 +839,7 @@ msgstr ""
 "räckvidd indelas i närstrid, där vapen som svärd, yxor eller huggtänder "
 "används, och distansstrid, där vapen som pilbågar, spjut och eldklot används."
 
-#: data/core/help.cfg:169
+#: data/core/help.cfg:170
 msgid ""
 "\n"
 "\n"
@@ -853,7 +849,7 @@ msgstr ""
 "\n"
 "<header>text='Turordning och antal attacker'</header>"
 
-#: data/core/help.cfg:171
+#: data/core/help.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -875,7 +871,7 @@ msgstr ""
 "utfall som vardera ger 5 i skada, medan en orchsoldat med en 9-2-attack bara "
 "har två utfall (men som ger 9 i skada vardera)."
 
-#: data/core/help.cfg:173
+#: data/core/help.cfg:174
 msgid ""
 "\n"
 "\n"
@@ -885,7 +881,7 @@ msgstr ""
 "\n"
 "<header>text='Chans för träff'</header>"
 
-#: data/core/help.cfg:175
+#: data/core/help.cfg:176
 msgid ""
 "\n"
 "\n"
@@ -908,7 +904,7 @@ msgstr ""
 "sätt avgörs träffmöjligheten för alven av terrängen som den andra truppen "
 "står på."
 
-#: data/core/help.cfg:177
+#: data/core/help.cfg:178
 msgid ""
 "\n"
 "\n"
@@ -927,7 +923,7 @@ msgstr ""
 "prickskyttar gör ett offensivt utfall har de alltid minst 60% chans att "
 "träffa, oavsett terräng."
 
-#: data/core/help.cfg:179
+#: data/core/help.cfg:180
 msgid ""
 "\n"
 "\n"
@@ -937,7 +933,7 @@ msgstr ""
 "\n"
 "<header>text=Skada</header>"
 
-#: data/core/help.cfg:181
+#: data/core/help.cfg:182
 msgid ""
 "\n"
 "\n"
@@ -959,7 +955,7 @@ msgstr ""
 "förändras av dessa faktorer kan du se under <italic>text='Skadeberäkning'</"
 "italic> när du väljer attack."
 
-#: data/core/help.cfg:183
+#: data/core/help.cfg:184
 msgid ""
 "\n"
 "\n"
@@ -975,11 +971,11 @@ msgstr ""
 "<ref>dst=weaponspecial_charge text=storma</ref>. Då en trupp stormar en "
 "annan fördubblas skadan som både anfallaren och försvararen vållar varandra."
 
-#: data/core/help.cfg:188
+#: data/core/help.cfg:189
 msgid "Damage Types and Resistance"
 msgstr "Skadetyper och motståndskraft"
 
-#: data/core/help.cfg:189
+#: data/core/help.cfg:190
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -993,7 +989,7 @@ msgstr ""
 "attacker. Truppernas olika motståndskraft kan förändra skadan de får från "
 "olika skadetyper."
 
-#: data/core/help.cfg:191
+#: data/core/help.cfg:192
 msgid ""
 "\n"
 "\n"
@@ -1012,7 +1008,7 @@ msgstr ""
 "motståndskraft, till exempel -100%, så kommer den att få 100% mer i skada "
 "när den träffas av den sortens attack."
 
-#: data/core/help.cfg:193
+#: data/core/help.cfg:194
 msgid ""
 "\n"
 "\n"
@@ -1026,7 +1022,7 @@ msgstr ""
 "stickattacker, men de är sårbara för kross- och eldattacker. De är dessutom "
 "extremt sårbara för ockulta attacker."
 
-#: data/core/help.cfg:195
+#: data/core/help.cfg:196
 msgid ""
 "\n"
 "\n"
@@ -1040,11 +1036,11 @@ msgstr ""
 "gäller även om den försvarande truppen har 100% motstånd mot aktuell "
 "attacktyp."
 
-#: data/core/help.cfg:200
+#: data/core/help.cfg:201
 msgid "Time of Day"
 msgstr "Dygnets gång"
 
-#: data/core/help.cfg:204
+#: data/core/help.cfg:205
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1057,7 +1053,7 @@ msgstr ""
 "dagen.\n"
 "- Neutrala trupper är opåverkade av tiden på dygnet."
 
-#: data/core/help.cfg:207
+#: data/core/help.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -1071,31 +1067,31 @@ msgstr ""
 "dygnscykeln räknas förmiddag och eftermiddag som dag, och första och andra "
 "vakten som natt:\n"
 
-#: data/core/help.cfg:207 data/core/macros/schedules.cfg:5
+#: data/core/help.cfg:208 data/core/macros/schedules.cfg:5
 msgid "Dawn"
 msgstr "Gryning"
 
-#: data/core/help.cfg:208 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:209 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Förmiddag"
 
-#: data/core/help.cfg:209 data/core/macros/schedules.cfg:30
+#: data/core/help.cfg:210 data/core/macros/schedules.cfg:30
 msgid "Afternoon"
 msgstr "Eftermiddag"
 
-#: data/core/help.cfg:210 data/core/macros/schedules.cfg:41
+#: data/core/help.cfg:211 data/core/macros/schedules.cfg:41
 msgid "Dusk"
 msgstr "Skymning"
 
-#: data/core/help.cfg:211 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:212 data/core/macros/schedules.cfg:55
 msgid "First Watch"
 msgstr "Första vakten"
 
-#: data/core/help.cfg:212 data/core/macros/schedules.cfg:69
+#: data/core/help.cfg:213 data/core/macros/schedules.cfg:69
 msgid "Second Watch"
 msgstr "Andra vakten"
 
-#: data/core/help.cfg:214
+#: data/core/help.cfg:215
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1103,11 +1099,11 @@ msgstr ""
 "Somliga scenarier äger rum i underjorden eller i grottor, där det råder evig "
 "natt!"
 
-#: data/core/help.cfg:219
+#: data/core/help.cfg:220
 msgid "Experience and Advancement"
 msgstr "Erfarenhet och befordran"
 
-#: data/core/help.cfg:220
+#: data/core/help.cfg:221
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1120,7 +1116,7 @@ msgstr ""
 "nollte nivån, 8 för en på första, 16 för en på andra, 24 för en på tredje, "
 "och så vidare."
 
-#: data/core/help.cfg:222
+#: data/core/help.cfg:223
 msgid ""
 "\n"
 "\n"
@@ -1137,7 +1133,7 @@ msgstr ""
 "samtidigt sin fulla styrka. I vissa fall ges möjlighet att välja truppens "
 "nästa roll."
 
-#: data/core/help.cfg:226
+#: data/core/help.cfg:227
 msgid ""
 "\n"
 "\n"
@@ -1173,11 +1169,11 @@ msgstr ""
 "Endast ett litet fåtal truppslag, såsom nekrofagen, återfår full styrka när "
 "detta inträffar. De flesta trupper får bara en höjd maximal HP."
 
-#: data/core/help.cfg:231
+#: data/core/help.cfg:232
 msgid "Healing"
 msgstr "Läkande"
 
-#: data/core/help.cfg:232
+#: data/core/help.cfg:233
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1193,7 +1189,7 @@ msgstr ""
 "gemensamma för dessa olika sätt är att de äger rum i början av ditt drag, "
 "innan några order ges."
 
-#: data/core/help.cfg:234
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1205,7 +1201,7 @@ msgstr ""
 "- Vila: En trupp som varken förflyttas, anfaller eller blir anfallen själv "
 "återfår 2 HP nästa drag."
 
-#: data/core/help.cfg:235
+#: data/core/help.cfg:236
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1214,7 +1210,7 @@ msgstr ""
 "- Byar: trupper som som befinner sig i en by då deras drag startar återfår 8 "
 "HP."
 
-#: data/core/help.cfg:236
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1224,7 +1220,7 @@ msgstr ""
 "- <ref>dst=ability_regenerates text=Regenerering</ref>: Vissa trupper (såsom "
 "troll) återfår alltid 8 HP i början av draget."
 
-#: data/core/help.cfg:237
+#: data/core/help.cfg:238
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1236,7 +1232,7 @@ msgstr ""
 "text=hela</ref> läker alla intillstående trupper med vanligtvis 4 eller 8 "
 "hälsopoäng per drag, eller hindrar en förgiftning från att göra skada."
 
-#: data/core/help.cfg:238
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1248,7 +1244,7 @@ msgstr ""
 "text=bota</ref> återställer intillstående förgiftade trupper. Om den läkande "
 "truppen även kan hela, så botar den förgiftningen först."
 
-#: data/core/help.cfg:240
+#: data/core/help.cfg:241
 msgid ""
 "\n"
 "\n"
@@ -1263,11 +1259,11 @@ msgstr ""
 "möjligheter till helande finns, väljs den kraftigaste metoden. Slutligen, "
 "alla trupper återfår sin fulla styrka mellan scenarier."
 
-#: data/core/help.cfg:245
+#: data/core/help.cfg:246
 msgid "Income and Upkeep"
 msgstr "Inkomst och underhåll"
 
-#: data/core/help.cfg:246
+#: data/core/help.cfg:247
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1279,7 +1275,7 @@ msgstr ""
 "från ett scenario till nästa. Det finns två aspekter av detta: inkomst och "
 "underhåll."
 
-#: data/core/help.cfg:248
+#: data/core/help.cfg:249
 msgid ""
 "\n"
 "\n"
@@ -1295,7 +1291,7 @@ msgstr ""
 "har tio byar, får du vanligtvis tolv guldstycken. Din kostnad för underhåll "
 "dras från denna inkomst, såsom beskrivs nedan."
 
-#: data/core/help.cfg:250
+#: data/core/help.cfg:251
 msgid ""
 "\n"
 "\n"
@@ -1316,7 +1312,7 @@ msgstr ""
 "har ett antal trupper som tillsammans har 12 erfarenhetsnivåer, och om du "
 "kontrollerar 10 byar, så utkrävs två guldstycken per drag i underhåll."
 
-#: data/core/help.cfg:252
+#: data/core/help.cfg:253
 msgid ""
 "\n"
 "\n"
@@ -1330,7 +1326,7 @@ msgstr ""
 "om du har trupper med sammanlagt tolv nivåer samt tio byar så blir din "
 "inkomst 10 guldstycken per drag."
 
-#: data/core/help.cfg:253
+#: data/core/help.cfg:254
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1347,11 +1343,11 @@ msgstr ""
 "gång (som ryttaren i det andra scenariot i Tronarvingen), är vanligtvis "
 "lojala. Truppen du själv spelar (som Konrad) är nästan alltid en ledare."
 
-#: data/core/help.cfg:258
+#: data/core/help.cfg:259
 msgid "Wrap Up"
 msgstr "Slutord"
 
-#: data/core/help.cfg:259
+#: data/core/help.cfg:260
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1365,11 +1361,11 @@ msgstr ""
 "vet du allt du behöver veta för att spela Tronarvingen. Ha så roligt, och "
 "lycka till! "
 
-#: data/core/help.cfg:270
+#: data/core/help.cfg:271
 msgid "License"
 msgstr "Licens"
 
-#: data/core/help.cfg:277
+#: data/core/help.cfg:278
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1381,7 +1377,7 @@ msgstr ""
 "inför små ändringar av truppernas egenskaper. Trupperna tilldelas "
 "karaktärsdrag slumpmässigt när de rekryteras."
 
-#: data/core/help.cfg:279
+#: data/core/help.cfg:280
 msgid ""
 "\n"
 "\n"
@@ -1397,7 +1393,7 @@ msgstr ""
 "text=Snabb</ref>, <ref>dst=traits_resilient text=Tålig</ref> och "
 "<ref>dst=traits_strong text=Stark</ref>."
 
-#: data/core/help.cfg:281
+#: data/core/help.cfg:282
 msgid ""
 "\n"
 "\n"
@@ -1411,17 +1407,17 @@ msgstr ""
 "text=Lojal</ref>, <ref>dst=traits_dextrous text=Träffsäker</ref> och "
 "<ref>dst=traits_undead text=Vandöd</ref>."
 
-#: data/core/help.cfg:286
+#: data/core/help.cfg:287
 msgid "Intelligent"
 msgstr "Intelligent"
 
-#: data/core/help.cfg:287
+#: data/core/help.cfg:288
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligenta trupper kräver 20% mindre erfarenhet än vanligt för att "
 "befordras."
 
-#: data/core/help.cfg:289
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1440,17 +1436,17 @@ msgstr ""
 "högre nivåer så kan det vara bättre att återkalla trupper som har andra "
 "karaktärsdrag. "
 
-#: data/core/help.cfg:294
+#: data/core/help.cfg:295
 msgid "Quick"
 msgstr "Snabb"
 
-#: data/core/help.cfg:295
+#: data/core/help.cfg:296
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Snabba trupper har en extra förflyttningspoäng, men 5% mindre hälsopoäng än "
 "vanligt."
 
-#: data/core/help.cfg:297
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -1469,16 +1465,16 @@ msgstr ""
 "trupper. Eftersom snabba trupper inte är så starka så är de mindre lämpade "
 "för att hålla positioner."
 
-#: data/core/help.cfg:302
+#: data/core/help.cfg:303
 msgid "Resilient"
 msgstr "Tålig"
 
-#: data/core/help.cfg:303
+#: data/core/help.cfg:304
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Tåliga trupper har 4 hälsopoäng plus 1 hälsopoäng per nivå mer än normalt."
 
-#: data/core/help.cfg:305
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -1496,11 +1492,11 @@ msgstr ""
 "försvarsegenskaper och starka motståndskrafter. Tåliga trupper är speciellt "
 "lämpade för att hålla strategiska positioner."
 
-#: data/core/help.cfg:310
+#: data/core/help.cfg:311
 msgid "Strong"
 msgstr "Stark"
 
-#: data/core/help.cfg:311
+#: data/core/help.cfg:312
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1508,7 +1504,7 @@ msgstr ""
 "Starka trupper vållar 1 mer skada per träff i närstrid och har 1 mer "
 "hälsopoäng."
 
-#: data/core/help.cfg:313
+#: data/core/help.cfg:314
 msgid ""
 "\n"
 "\n"
@@ -1524,19 +1520,19 @@ msgstr ""
 "mycket nyttiga när det krävs lite extra skada för att göra en träff till "
 "nådastöten."
 
-#: data/core/help.cfg:318
+#: data/core/help.cfg:319
 msgid "Fearless"
 msgstr "Orädd"
 
-#: data/core/help.cfg:319
+#: data/core/help.cfg:320
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Dessa modiga individer tar ingen hänsyn till om det är natt eller dag."
 
-#: data/core/help.cfg:324
+#: data/core/help.cfg:325
 msgid "Loyal"
 msgstr "Lojal"
 
-#: data/core/help.cfg:325
+#: data/core/help.cfg:326
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1546,7 +1542,7 @@ msgstr ""
 "underhållskostnad vid slutet av varje drag, som är lika med deras "
 "erfarenhetsnivå. Lojala trupper utkräver inte denna kostnad."
 
-#: data/core/help.cfg:327
+#: data/core/help.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -1566,11 +1562,11 @@ msgstr ""
 "Karaktärsdraget Lojal ges aldrig till rekryterade trupper, så det är oklokt "
 "att avskeda eller skicka dina lojala trupper i döden i onödan."
 
-#: data/core/help.cfg:332
+#: data/core/help.cfg:333
 msgid "trait^Undead"
 msgstr "Vandöd"
 
-#: data/core/help.cfg:333
+#: data/core/help.cfg:334
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1578,7 +1574,7 @@ msgstr ""
 "Vandöda trupper är immuna mot gift, dessutom kan de inte påverkas av suga "
 "livskraft eller pest."
 
-#: data/core/help.cfg:335
+#: data/core/help.cfg:336
 msgid ""
 "\n"
 "\n"
@@ -1594,11 +1590,11 @@ msgstr ""
 "på dem. Detta kan göra dem mycket användbara i strid mot fiender som "
 "använder gift i sina attacker."
 
-#: data/core/help.cfg:340
+#: data/core/help.cfg:341
 msgid "trait^Mechanical"
 msgstr "Konstruktion"
 
-#: data/core/help.cfg:341
+#: data/core/help.cfg:342
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1606,7 +1602,7 @@ msgstr ""
 "Konstruktioner är immuna mot gift, dessutom kan de inte påverkas av suga "
 "livskraft eller pest."
 
-#: data/core/help.cfg:343
+#: data/core/help.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -1620,18 +1616,18 @@ msgstr ""
 "konstruktioner egentligen inte lever, påverkas de inte av suga livskraft, "
 "gift eller pest."
 
-#: data/core/help.cfg:348
+#: data/core/help.cfg:349
 msgid "Dextrous"
 msgstr "Träffsäker"
 
-#: data/core/help.cfg:349
+#: data/core/help.cfg:350
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Träffsäkra trupper åsamkar 1 extra poäng i skada för varje träff med "
 "distansvapen."
 
-#: data/core/help.cfg:351
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -1647,11 +1643,11 @@ msgstr ""
 "dock begåvade med en naturlig fallenhet för bågskytte utöver det vanliga. "
 "Dessa alver åsamkar ytterligare en poäng i skada med varje pil."
 
-#: data/core/help.cfg:356
+#: data/core/help.cfg:357
 msgid "Healthy"
 msgstr "Livskraftig"
 
-#: data/core/help.cfg:357
+#: data/core/help.cfg:358
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -1659,7 +1655,7 @@ msgstr ""
 "Vissa dvärgar är vitt kända för sin vitalitet. De är härdigare än andra och "
 "kan återhämta sig även under färd."
 
-#: data/core/help.cfg:359
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -1671,11 +1667,11 @@ msgstr ""
 "Livskraftiga trupper har 2 hälsopoäng mer än normalt. Dessutom återskänker "
 "vila 2 extra hälspoäng för varje drag utan strid."
 
-#: data/core/help.cfg:364
+#: data/core/help.cfg:365
 msgid "Grassland"
 msgstr "Slätt"
 
-#: data/core/help.cfg:369
+#: data/core/help.cfg:370
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1693,11 +1689,11 @@ msgstr ""
 "\n"
 "De flesta truppslag har 30-40% försvar på slätter."
 
-#: data/core/help.cfg:374
+#: data/core/help.cfg:375
 msgid "Road"
 msgstr "Väg"
 
-#: data/core/help.cfg:377
+#: data/core/help.cfg:378
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1707,11 +1703,11 @@ msgstr ""
 "dem. I spelet fungerar vägar på samma sätt som <ref>dst=terrain_grassland "
 "text=slätt</ref>."
 
-#: data/core/help.cfg:382
+#: data/core/help.cfg:383
 msgid "Forest"
 msgstr "Skog"
 
-#: data/core/help.cfg:389
+#: data/core/help.cfg:390
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1741,11 +1737,11 @@ msgstr ""
 "försvar i skog.\n"
 "\n"
 
-#: data/core/help.cfg:394
+#: data/core/help.cfg:395
 msgid "Hills"
 msgstr "Kullar"
 
-#: data/core/help.cfg:399
+#: data/core/help.cfg:400
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1766,11 +1762,11 @@ msgstr ""
 "De flesta truppslag har omkring 50% försvar i kullar, medan kavalleri har "
 "40% som bäst. Dvärgar har 60% försvar i kullar."
 
-#: data/core/help.cfg:404
+#: data/core/help.cfg:405
 msgid "Mountains"
 msgstr "Berg"
 
-#: data/core/help.cfg:409
+#: data/core/help.cfg:410
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1791,11 +1787,11 @@ msgstr ""
 "\n"
 "De flesta truppslag har 60% försvar i berg; dvärgar har 70%."
 
-#: data/core/help.cfg:414
+#: data/core/help.cfg:415
 msgid "Swamp"
 msgstr "Träsk"
 
-#: data/core/help.cfg:419
+#: data/core/help.cfg:420
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1814,11 +1810,11 @@ msgstr ""
 "De flesta truppslag har 30% försvar i träsk. Sjöfolket, nagafolket och "
 "ödlefolket har oftast 60% försvar."
 
-#: data/core/help.cfg:424
+#: data/core/help.cfg:425
 msgid "Shallow Water"
 msgstr "Grunt vatten"
 
-#: data/core/help.cfg:429
+#: data/core/help.cfg:430
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1840,11 +1836,11 @@ msgstr ""
 "De flesta truppslag får nöja sig med 20-30% försvar i grunt vatten, medan "
 "både sjöfolket och nagafolket har 60%."
 
-#: data/core/help.cfg:434
+#: data/core/help.cfg:435
 msgid "Deep Water"
 msgstr "Djupt vatten"
 
-#: data/core/help.cfg:439
+#: data/core/help.cfg:440
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1859,11 +1855,11 @@ msgstr ""
 "\n"
 "Sjöfolket och nagafolket rör sig fritt på djupt vatten och har 50% försvar."
 
-#: data/core/help.cfg:444
+#: data/core/help.cfg:445
 msgid "Snow"
 msgstr "Snö"
 
-#: data/core/help.cfg:449
+#: data/core/help.cfg:450
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1877,11 +1873,11 @@ msgstr ""
 "\n"
 "De flesta truppslag har 20-40% försvar i denna terräng."
 
-#: data/core/help.cfg:454
+#: data/core/help.cfg:455
 msgid "Ice"
 msgstr "Is"
 
-#: data/core/help.cfg:457
+#: data/core/help.cfg:458
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1892,11 +1888,11 @@ msgstr ""
 "Observera att simmande trupper inte kan simma under is; detta gäller även de "
 "som kan andas under vatten."
 
-#: data/core/help.cfg:462
+#: data/core/help.cfg:463
 msgid "Castle"
 msgstr "Borg"
 
-#: data/core/help.cfg:469
+#: data/core/help.cfg:470
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1917,11 +1913,11 @@ msgstr ""
 "De flesta trupper har omkring 60% försvar i borgar.\n"
 "\n"
 
-#: data/core/help.cfg:474
+#: data/core/help.cfg:475
 msgid "Sand"
 msgstr "Sand"
 
-#: data/core/help.cfg:479
+#: data/core/help.cfg:480
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1935,11 +1931,11 @@ msgstr ""
 "\n"
 "De flesta trupper har 20-40% försvar i denna terräng."
 
-#: data/core/help.cfg:484
+#: data/core/help.cfg:485
 msgid "Desert"
 msgstr "Öken"
 
-#: data/core/help.cfg:487
+#: data/core/help.cfg:488
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1949,11 +1945,11 @@ msgstr ""
 "stränder. I spelet behandlas dock sand och öken som samma terräng. Se "
 "<ref>dst=terrain_sand text=sand</ref>."
 
-#: data/core/help.cfg:492
+#: data/core/help.cfg:493
 msgid "Cave"
 msgstr "Grotta"
 
-#: data/core/help.cfg:497
+#: data/core/help.cfg:498
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1975,11 +1971,11 @@ msgstr ""
 "\n"
 "De flesta trupper har 20-40% försvar i denna terräng, medan dvärgar har 50%."
 
-#: data/core/help.cfg:502
+#: data/core/help.cfg:503
 msgid "Rockbound Cave"
 msgstr "Klippgrotta"
 
-#: data/core/help.cfg:507
+#: data/core/help.cfg:508
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2003,11 +1999,11 @@ msgstr ""
 "De flesta truppslag har omkring 50% försvar i klippgrottor, medan kavalleri "
 "är begränsat till 40%. Dvärgar har 60% försvar i klippgrottor."
 
-#: data/core/help.cfg:512
+#: data/core/help.cfg:513
 msgid "Illuminated Cave"
 msgstr "Upplyst grotta"
 
-#: data/core/help.cfg:515
+#: data/core/help.cfg:516
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness.  This provides an attack "
@@ -2020,11 +2016,11 @@ msgstr ""
 "trupper ett avdrag på attacker. I alla andra avseenden är denna terräng "
 "ekvivalent med en normal grotta."
 
-#: data/core/help.cfg:520
+#: data/core/help.cfg:521
 msgid "Mushroom Grove"
 msgstr "Svampdunge"
 
-#: data/core/help.cfg:525
+#: data/core/help.cfg:526
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -2046,11 +2042,11 @@ msgstr ""
 "De flesta truppslag har mellan 50% och 60% försvar i svampdungor, medan "
 "kavalleri endast har 20%."
 
-#: data/core/help.cfg:530
+#: data/core/help.cfg:531
 msgid "Savanna"
 msgstr "Savann"
 
-#: data/core/help.cfg:533
+#: data/core/help.cfg:534
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -2060,11 +2056,11 @@ msgstr ""
 "har denna terräng samma egenskaper som <ref>dst=terrain_grassland "
 "text=slätt</ref>."
 
-#: data/core/help.cfg:538 src/terrain.cpp:102
+#: data/core/help.cfg:539 src/terrain.cpp:102
 msgid "Village"
 msgstr "By"
 
-#: data/core/help.cfg:545
+#: data/core/help.cfg:546
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2087,11 +2083,11 @@ msgstr ""
 "De flesta truppslag har 50-60% försvar i byar; kavalleri har 40%.\n"
 "\n"
 
-#: data/core/help.cfg:550
+#: data/core/help.cfg:551
 msgid "Submerged Village"
 msgstr "Undervattensby"
 
-#: data/core/help.cfg:555
+#: data/core/help.cfg:556
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2112,11 +2108,11 @@ msgstr ""
 "Sjöfolket och nagafolket har 60% försvar i undervattensbyar, medan "
 "landvarelser ofta har ett dåligt försvar här."
 
-#: data/core/help.cfg:560
+#: data/core/help.cfg:561
 msgid "Chasm"
 msgstr "Klyfta"
 
-#: data/core/help.cfg:563
+#: data/core/help.cfg:564
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2127,11 +2123,11 @@ msgstr ""
 "klippväggar som det skulle ta dagar att ta sig över. I spelet är det bara "
 "flygande truppslag som kan ta sig över denna typ av terräng."
 
-#: data/core/help.cfg:568
+#: data/core/help.cfg:569
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/help.cfg:571
+#: data/core/help.cfg:572
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2144,11 +2140,11 @@ msgstr ""
 "ger också ifrån sig ett sken som lyser upp det närliggande området. Detta "
 "ger redbara trupper en bonus och ljusskygga trupper ett avdrag på attacker."
 
-#: data/core/help.cfg:576
+#: data/core/help.cfg:577
 msgid "River Ford"
 msgstr "Vadställe"
 
-#: data/core/help.cfg:579
+#: data/core/help.cfg:580
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2163,11 +2159,11 @@ msgstr ""
 "eller grunt vatten beroende på vad som är bäst för truppslaget som befinner "
 "sig där."
 
-#: data/core/help.cfg:584
+#: data/core/help.cfg:585
 msgid "Bridge"
 msgstr "Bro"
 
-#: data/core/help.cfg:589
+#: data/core/help.cfg:590
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2191,11 +2187,11 @@ msgstr ""
 "som ger de bästa fördelarna för truppen som passerar bron. Observera att en "
 "simmande trupp och en landtrupp inte kan ställa sig på en broruta samtidigt."
 
-#: data/core/help.cfg:594
+#: data/core/help.cfg:595
 msgid "Cave Wall"
 msgstr "Grottvägg"
 
-#: data/core/help.cfg:597
+#: data/core/help.cfg:598
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2203,11 +2199,11 @@ msgstr ""
 "Grottvägar är gjorda av solid sten, som är välkänt för sin förmåga att stå "
 "emot även den mest bestämda av färdmän."
 
-#: data/core/help.cfg:602
+#: data/core/help.cfg:603
 msgid "Impassable Mountain"
 msgstr "Obestigbara berg"
 
-#: data/core/help.cfg:605
+#: data/core/help.cfg:606
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud.  To cross such mountains is practically impossible. Even flying "
@@ -2217,11 +2213,11 @@ msgstr ""
 "ta sig över ett sådant berg är praktiskt taget omöjligt. Även flygande "
 "varelser stoppas av bergstopparna på sådana höjder."
 
-#: data/core/help.cfg:610
+#: data/core/help.cfg:611
 msgid "General commands"
 msgstr "Allmänna kommandon"
 
-#: data/core/help.cfg:614
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2231,7 +2227,7 @@ msgstr ""
 "Avsluta scenariot (utan bekräftelse).\n"
 "\n"
 
-#: data/core/help.cfg:617
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2241,7 +2237,7 @@ msgstr ""
 "Spara spelet (utan bekräftelse).\n"
 "\n"
 
-#: data/core/help.cfg:620
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
@@ -2251,7 +2247,7 @@ msgstr ""
 "Spara spelet och avsluta scenariot (utan bekräftelse).\n"
 "\n"
 
-#: data/core/help.cfg:623
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2261,7 +2257,7 @@ msgstr ""
 "Rita om skärmen.\n"
 "\n"
 
-#: data/core/help.cfg:626
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2273,15 +2269,15 @@ msgstr ""
 "avsluta spelet.\n"
 "\n"
 
-#: data/core/help.cfg:627
+#: data/core/help.cfg:628
 msgid "Bring up theme selection menu."
 msgstr "Visa temavalsmenyn."
 
-#: data/core/help.cfg:632
+#: data/core/help.cfg:633
 msgid "Multiplayer commands"
 msgstr "Gruppspelskommandon"
 
-#: data/core/help.cfg:636
+#: data/core/help.cfg:637
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2294,7 +2290,7 @@ msgstr ""
 "kontrollerar aktuell sida kan välja detta. Om ingen sida anges, antas '1'.\n"
 "\n"
 
-#: data/core/help.cfg:639
+#: data/core/help.cfg:640
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -2304,7 +2300,7 @@ msgstr ""
 "Växla till/från att ignorera åskådares inlägg.\n"
 "\n"
 
-#: data/core/help.cfg:642
+#: data/core/help.cfg:643
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2316,7 +2312,7 @@ msgstr ""
 "ignorerade användare.\n"
 "\n"
 
-#: data/core/help.cfg:645
+#: data/core/help.cfg:646
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2330,7 +2326,7 @@ msgstr ""
 "problem.\n"
 "\n"
 
-#: data/core/help.cfg:648
+#: data/core/help.cfg:649
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -2342,7 +2338,7 @@ msgstr ""
 "används av aktuell användare.\n"
 "\n"
 
-#: data/core/help.cfg:651
+#: data/core/help.cfg:652
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2354,7 +2350,7 @@ msgstr ""
 "(ange användarnamnet).\n"
 "\n"
 
-#: data/core/help.cfg:652
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Clear chat messages."
@@ -2569,10 +2565,34 @@ msgstr ""
 "upptäcker den här truppen förlorar omedelbart resterande förflyttningspoäng."
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
+#, fuzzy
+msgid "concealment"
+msgstr "Förflyttning"
+
+#: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:422
+#, fuzzy
+msgid ""
+"Concealment:\n"
+"This unit can hide in villages (with the exception of water villages), and "
+"remain undetected by its enemies, except by those standing next to it.\n"
+"\n"
+"Enemy units can not see this unit while it is in a village, except if they "
+"have units next to it. Any enemy unit that first discovers this unit "
+"immediately loses all its remaining movement."
+msgstr ""
+"Den här truppen kan gömma sig på djupt vatten, och blir inte upptäckt av "
+"sina fiender.\n"
+"\n"
+"Fiendetrupper kan inte se eller attackera den här truppen då den är i djupt "
+"vatten, förutom då det finns fiendetrupper alldeles bredvid. Den fiendetrupp "
+"som först upptäcker den här truppen förlorar omedelbart resterande "
+"förflyttningspoäng."
+
+#: data/core/macros/abilities.cfg:437 data/core/macros/abilities.cfg:442
 msgid "submerge"
 msgstr "dyka"
 
-#: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:422
+#: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:446
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -2589,11 +2609,11 @@ msgstr ""
 "som först upptäcker den här truppen förlorar omedelbart resterande "
 "förflyttningspoäng."
 
-#: data/core/macros/abilities.cfg:439
+#: data/core/macros/abilities.cfg:463
 msgid "berserk"
 msgstr "bärsärk"
 
-#: data/core/macros/abilities.cfg:441
+#: data/core/macros/abilities.cfg:465
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -2603,11 +2623,11 @@ msgstr ""
 "Vare sig det gäller anfall eller försvar fortsätter striden tills en av "
 "parterna ligger död på marken eller tills striden pågått i 30 utfall."
 
-#: data/core/macros/abilities.cfg:451
+#: data/core/macros/abilities.cfg:475
 msgid "backstab"
 msgstr "rygghugg"
 
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/abilities.cfg:477
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -2619,11 +2639,11 @@ msgstr ""
 "sig på motsatt sida av målet, och den truppen inte är oskadliggjord (t ex "
 "förstenad)."
 
-#: data/core/macros/abilities.cfg:465 data/core/macros/abilities.cfg:477
+#: data/core/macros/abilities.cfg:489 data/core/macros/abilities.cfg:501
 msgid "plague"
 msgstr "pest"
 
-#: data/core/macros/abilities.cfg:467
+#: data/core/macros/abilities.cfg:491
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2635,7 +2655,7 @@ msgstr ""
 "tillhör sidan som pestsmittade truppen. (Detta fungerar inte mot vandöda "
 "eller trupper i byar.)"
 
-#: data/core/macros/abilities.cfg:479
+#: data/core/macros/abilities.cfg:503
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2647,11 +2667,11 @@ msgstr ""
 "tillhör sidan som pestsmittade truppen. Detta fungerar inte mot vandöda "
 "eller trupper i byar."
 
-#: data/core/macros/abilities.cfg:489
+#: data/core/macros/abilities.cfg:513
 msgid "slows"
 msgstr "sakta ner"
 
-#: data/core/macros/abilities.cfg:491
+#: data/core/macros/abilities.cfg:515
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2665,11 +2685,11 @@ msgstr ""
 "god förflyttning. När en nersaktad trupp valts har den en snigelikon i "
 "sidopanelen."
 
-#: data/core/macros/abilities.cfg:500
+#: data/core/macros/abilities.cfg:524
 msgid "stones"
 msgstr "förstena"
 
-#: data/core/macros/abilities.cfg:502
+#: data/core/macros/abilities.cfg:526
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2679,11 +2699,11 @@ msgstr ""
 "Denna attack förstenar målet. Förstenade trupper kan inte röra sig och inte "
 "attackera."
 
-#: data/core/macros/abilities.cfg:511
+#: data/core/macros/abilities.cfg:535
 msgid "marksman"
 msgstr "prickskytt"
 
-#: data/core/macros/abilities.cfg:513
+#: data/core/macros/abilities.cfg:537
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -2691,11 +2711,11 @@ msgstr ""
 "Prickskytt:\n"
 "Vid anfall har denna typ av attack alltid åtminstone 60% chans att träffa."
 
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:549
 msgid "magical"
 msgstr "magisk"
 
-#: data/core/macros/abilities.cfg:527
+#: data/core/macros/abilities.cfg:551
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -2703,11 +2723,11 @@ msgstr ""
 "Magisk:\n"
 "Denna attack har alltid 70% chans att träffa."
 
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:562
 msgid "swarm"
 msgstr "svärma"
 
-#: data/core/macros/abilities.cfg:540
+#: data/core/macros/abilities.cfg:564
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -2721,11 +2741,11 @@ msgstr ""
 "hälsopoäng. En trupp som t ex har 3/4 av sin maximala hälsopoäng har 3/4 av "
 "det maximala antalet utfall."
 
-#: data/core/macros/abilities.cfg:549
+#: data/core/macros/abilities.cfg:573
 msgid "charge"
 msgstr "storma"
 
-#: data/core/macros/abilities.cfg:551
+#: data/core/macros/abilities.cfg:575
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -2735,11 +2755,11 @@ msgstr ""
 "Denna typ av attack vållar dubbel skada hos målet, men den anfallande "
 "truppen mottar också dubbel skada från målets motattack."
 
-#: data/core/macros/abilities.cfg:563
+#: data/core/macros/abilities.cfg:587
 msgid "drains"
 msgstr "suga livskraft"
 
-#: data/core/macros/abilities.cfg:565
+#: data/core/macros/abilities.cfg:589
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -2750,11 +2770,11 @@ msgstr ""
 "anfallande truppens hälsa med hälften av den skada den orsakar (avrundat "
 "nedåt)."
 
-#: data/core/macros/abilities.cfg:574
+#: data/core/macros/abilities.cfg:598
 msgid "firststrike"
 msgstr "första slaget"
 
-#: data/core/macros/abilities.cfg:576
+#: data/core/macros/abilities.cfg:600
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -2762,11 +2782,11 @@ msgstr ""
 "Första slaget:\n"
 "Denna trupp slår alltid först, även om den försvarar sig."
 
-#: data/core/macros/abilities.cfg:585
+#: data/core/macros/abilities.cfg:609
 msgid "poison"
 msgstr "gift"
 
-#: data/core/macros/abilities.cfg:587
+#: data/core/macros/abilities.cfg:611
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2915,15 +2935,16 @@ msgstr "Med denna treudd kan en av sjöfolket skjuta åskviggar på sina fiender
 msgid "Only the mermen can use this item!"
 msgstr "Endast sjöfolket kan använda denna sak!"
 
-#: data/core/macros/items.cfg:665
+#: data/core/macros/items.cfg:666
 msgid "storm trident"
 msgstr "stormtreudd"
 
-#: data/core/macros/items.cfg:739
+#: data/core/macros/items.cfg:747
 msgid "Zap"
 msgstr "Zap"
 
 #: data/core/macros/names.cfg:3
+#, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -2983,7 +3004,7 @@ msgid ""
 "Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
 "Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
-"Amithrarion,Cálad,Legilad"
+"Amithrarion,Cálad,Legilad,Linduilas"
 msgstr ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -4112,6 +4133,71 @@ msgstr "Brun"
 msgid "Teal"
 msgstr "Turkos"
 
+#: data/core/units.cfg:40 data/hardwired/english.cfg:18
+#, fuzzy
+msgid "race^Elves"
+msgstr "Dvärgar"
+
+#: data/core/units.cfg:49 data/hardwired/english.cfg:32
+msgid "race^Woses"
+msgstr "Enter"
+
+#: data/core/units.cfg:57 data/hardwired/english.cfg:19
+#, fuzzy
+msgid "race^Humans"
+msgstr "Människor"
+
+#: data/core/units.cfg:64 data/hardwired/english.cfg:22
+msgid "race^Dwarves"
+msgstr "Dvärgar"
+
+#: data/core/units.cfg:72 data/hardwired/english.cfg:20
+#, fuzzy
+msgid "race^Orcs"
+msgstr "Resar"
+
+#: data/core/units.cfg:79 data/hardwired/english.cfg:24
+msgid "race^Goblins"
+msgstr "Vättar"
+
+#: data/core/units.cfg:86 data/hardwired/english.cfg:21
+msgid "race^Undead"
+msgstr "Vandöda"
+
+#: data/core/units.cfg:94 data/hardwired/english.cfg:30
+msgid "race^Ogres"
+msgstr "Resar"
+
+#: data/core/units.cfg:101 data/hardwired/english.cfg:27
+msgid "race^Mermen"
+msgstr "Sjöfolket"
+
+#: data/core/units.cfg:108 data/hardwired/english.cfg:29
+msgid "race^Nagas"
+msgstr "Nagafolket"
+
+#: data/core/units.cfg:114 data/hardwired/english.cfg:28
+msgid "race^Monsters"
+msgstr "Monster"
+
+#: data/core/units.cfg:120 data/hardwired/english.cfg:31
+msgid "race^Trolls"
+msgstr "Troll"
+
+#: data/core/units.cfg:132 data/hardwired/english.cfg:23
+#, fuzzy
+msgid "race^Drakes"
+msgstr "Dvärgar"
+
+#: data/core/units.cfg:139
+#, fuzzy
+msgid "race^Saurians"
+msgstr "Nagafolket"
+
+#: data/core/units.cfg:147 data/hardwired/english.cfg:26
+msgid "race^Mechanical"
+msgstr "Konstruktioner"
+
 #: data/hardwired/english.cfg:3
 msgid "Easy"
 msgstr "Lätt"
@@ -4154,162 +4240,110 @@ msgstr ""
 "Dagtid: -25% skada\n"
 "Nattetid:+25% skada"
 
-#: data/hardwired/english.cfg:18
-msgid "Elves"
-msgstr "Alver"
-
-#: data/hardwired/english.cfg:19
-msgid "Humans"
-msgstr "Människor"
-
-#: data/hardwired/english.cfg:20
-msgid "Orcs"
-msgstr "Orcher"
-
-#: data/hardwired/english.cfg:21
-msgid "race^Undead"
-msgstr "Vandöda"
-
-#: data/hardwired/english.cfg:22
-msgid "race^Dwarves"
-msgstr "Dvärgar"
-
-#: data/hardwired/english.cfg:23
-msgid "race^Goblins"
-msgstr "Vättar"
-
-#: data/hardwired/english.cfg:24
+#: data/hardwired/english.cfg:25
 msgid "race^Lizards"
 msgstr "Ödlefolket"
 
-#: data/hardwired/english.cfg:25
-msgid "race^Mechanical"
-msgstr "Konstruktioner"
-
-#: data/hardwired/english.cfg:26
-msgid "race^Mermen"
-msgstr "Sjöfolket"
-
-#: data/hardwired/english.cfg:27
-msgid "race^Monsters"
-msgstr "Monster"
-
-#: data/hardwired/english.cfg:28
-msgid "race^Nagas"
-msgstr "Nagafolket"
-
-#: data/hardwired/english.cfg:29
-msgid "race^Ogres"
-msgstr "Resar"
-
-#: data/hardwired/english.cfg:30
-msgid "race^Trolls"
-msgstr "Troll"
-
-#: data/hardwired/english.cfg:31
-msgid "race^Woses"
-msgstr "Enter"
-
-#: data/hardwired/english.cfg:34
+#: data/hardwired/english.cfg:35
 msgid "$name's Bridge,$name's Crossing"
 msgstr "$name|s bro,$name|s överfart"
 
-#: data/hardwired/english.cfg:35
+#: data/hardwired/english.cfg:36
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "$name|s väg,$name|s pass,$name|s stig"
 
-#: data/hardwired/english.cfg:36
+#: data/hardwired/english.cfg:37
 msgid "$name River,River $name"
 msgstr "$name|floden,Floden $name"
 
-#: data/hardwired/english.cfg:37
+#: data/hardwired/english.cfg:38
 msgid "$name Forest,$name's Forest"
 msgstr "$name|skogen,$name|s skog"
 
-#: data/hardwired/english.cfg:38
+#: data/hardwired/english.cfg:39
 msgid "$name Lake"
 msgstr "$name|sjön"
 
-#: data/hardwired/english.cfg:39
+#: data/hardwired/english.cfg:40
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|hult,$name|torp,$name|by"
 
-#: data/hardwired/english.cfg:40
+#: data/hardwired/english.cfg:41
 msgid "$name|harbor,$name|port"
 msgstr "$name|hamn,$name|läge"
 
-#: data/hardwired/english.cfg:41
+#: data/hardwired/english.cfg:42
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr "$name|torp,$name|vadet,$name|överfarten,$river|vadet,$river|överfarten"
 
-#: data/hardwired/english.cfg:42
+#: data/hardwired/english.cfg:43
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "$river|bron,$river|bron,$river|bron,$name|torp,$name|bron"
 
-#: data/hardwired/english.cfg:43
+#: data/hardwired/english.cfg:44
 msgid "$name|ham,$name|ton,$name|field"
 msgstr "$name|torp,$name|by,$name|vall"
 
-#: data/hardwired/english.cfg:44
+#: data/hardwired/english.cfg:45
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr "$name|torp,$name|by,$name|lund,$name|skogen"
 
-#: data/hardwired/english.cfg:45
+#: data/hardwired/english.cfg:46
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name|torp,$name|hult,$name|by,$name|kullen,$name|krönet"
 
-#: data/hardwired/english.cfg:46
+#: data/hardwired/english.cfg:47
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "$name|torp,$name|hult,$name|by,$name|berget,$name|berget,$name|klippan,$name|"
 "klippan"
 
-#: data/hardwired/english.cfg:49
+#: data/hardwired/english.cfg:50
 msgid "melee"
 msgstr "närstrid"
 
-#: data/hardwired/english.cfg:50
+#: data/hardwired/english.cfg:51
 msgid "ranged"
 msgstr "distans"
 
-#: data/hardwired/english.cfg:53
+#: data/hardwired/english.cfg:54
 msgid "blade"
 msgstr "hugg"
 
-#: data/hardwired/english.cfg:54
+#: data/hardwired/english.cfg:55
 msgid "pierce"
 msgstr "stick"
 
-#: data/hardwired/english.cfg:55
+#: data/hardwired/english.cfg:56
 msgid "impact"
 msgstr "kross"
 
-#: data/hardwired/english.cfg:56
+#: data/hardwired/english.cfg:57
 msgid "fire"
 msgstr "eld"
 
-#: data/hardwired/english.cfg:57
+#: data/hardwired/english.cfg:58
 msgid "cold"
 msgstr "frost"
 
-#: data/hardwired/english.cfg:58
+#: data/hardwired/english.cfg:59
 msgid "arcane"
 msgstr "ockult"
 
-#: data/hardwired/english.cfg:61
+#: data/hardwired/english.cfg:62
 msgid "Wesnoth unit list"
 msgstr "Wesnoths trupplista"
 
-#: data/hardwired/english.cfg:62
+#: data/hardwired/english.cfg:63
 msgid "Based on version"
 msgstr "Baserad på version"
 
-#: data/hardwired/english.cfg:63
+#: data/hardwired/english.cfg:64
 msgid "Race"
 msgstr "Ras"
 
-#: data/hardwired/english.cfg:64
+#: data/hardwired/english.cfg:65
 msgid "Advance from:"
 msgstr "Befordras från:"
 
@@ -4672,14 +4706,14 @@ msgid "End Turn"
 msgstr "Avsluta draget"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:317 src/unit.cpp:2592
-#: src/unit.cpp:2764
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2596
+#: src/unit.cpp:2894
 msgid "HP"
 msgstr "HP"
 
 #: data/themes/default.cfg:212 data/themes/dfool.cfg:240
-#: data/themes/experimental.cfg:190 src/menu_events.cpp:318
-#: src/menu_events.cpp:1067
+#: data/themes/experimental.cfg:190 src/menu_events.cpp:323
+#: src/menu_events.cpp:1077
 msgid "XP"
 msgstr "EP"
 
@@ -4786,7 +4820,7 @@ msgid "Skip animation"
 msgstr "Hoppa över animering"
 
 #: src/about.cpp:46 src/multiplayer_connect.cpp:359
-#: src/multiplayer_connect.cpp:456 src/multiplayer_wait.cpp:451
+#: src/multiplayer_connect.cpp:456 src/multiplayer_wait.cpp:453
 msgid "+"
 msgstr "+"
 
@@ -4794,8 +4828,8 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2804 src/menu_events.cpp:140
-#: src/menu_events.cpp:428 src/menu_events.cpp:450
+#: src/about.cpp:186 src/help.cpp:2806 src/menu_events.cpp:144
+#: src/menu_events.cpp:438 src/menu_events.cpp:460
 msgid "Close"
 msgstr "Stäng"
 
@@ -4861,107 +4895,107 @@ msgstr "Trupper inom synhåll! ($friendphrase, $enemyphrase)"
 msgid "(press $hotkey to keep moving)"
 msgstr "(tryck $hotkey för att fortsätta)"
 
-#: src/dialogs.cpp:105
+#: src/dialogs.cpp:109
 msgid "Advance Unit"
 msgstr "Befordra trupp"
 
-#: src/dialogs.cpp:106
+#: src/dialogs.cpp:110
 msgid "What should our victorious unit become?"
 msgstr "Vad skall din segrande trupp avancera till?"
 
-#: src/dialogs.cpp:209
+#: src/dialogs.cpp:214
 msgid "No objectives available"
 msgstr "Inga mål tillgängliga"
 
-#: src/dialogs.cpp:222
+#: src/dialogs.cpp:227
 msgid "Save Game"
 msgstr "Spara spelet"
 
-#: src/dialogs.cpp:230
+#: src/dialogs.cpp:235
 msgid "Quit Game"
 msgstr "Avsluta spelet"
 
-#: src/dialogs.cpp:235
+#: src/dialogs.cpp:240
 msgid "Ignore All"
 msgstr "Ignorera alla"
 
-#: src/dialogs.cpp:252
+#: src/dialogs.cpp:257
 msgid "Overwrite?"
 msgstr "Skriva över?"
 
-#: src/dialogs.cpp:253
+#: src/dialogs.cpp:258
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Det sparade spelet finns redan, vill du skriva över det?"
 
-#: src/dialogs.cpp:287
+#: src/dialogs.cpp:292
 msgid "Do you really want to delete this game?"
 msgstr "Vill du verkligen radera detta spel?"
 
-#: src/dialogs.cpp:289
+#: src/dialogs.cpp:294
 msgid "Don't ask me again!"
 msgstr "Fråga mig inte en gång till!"
 
-#: src/dialogs.cpp:439
+#: src/dialogs.cpp:444
 msgid "%a %b %d %H:%M %Y"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/dialogs.cpp:456
+#: src/dialogs.cpp:461
 msgid "#(Invalid)"
 msgstr "#(Ogiltigt)"
 
-#: src/dialogs.cpp:461 src/game.cpp:821
+#: src/dialogs.cpp:466 src/game.cpp:821
 msgid "Campaign"
 msgstr "Kampanj"
 
-#: src/dialogs.cpp:463 src/game.cpp:1392
+#: src/dialogs.cpp:468 src/game.cpp:1392
 msgid "Multiplayer"
 msgstr "Gruppspel"
 
-#: src/dialogs.cpp:465
+#: src/dialogs.cpp:470
 msgid "Tutorial"
 msgstr "Träningsspel"
 
-#: src/dialogs.cpp:473
+#: src/dialogs.cpp:478
 msgid "replay"
 msgstr "repris"
 
-#: src/dialogs.cpp:475 src/menu_events.cpp:660 src/multiplayer_lobby.cpp:447
+#: src/dialogs.cpp:480 src/menu_events.cpp:670 src/multiplayer_lobby.cpp:447
 msgid "Turn"
 msgstr "Drag"
 
-#: src/dialogs.cpp:477
+#: src/dialogs.cpp:482
 msgid "Scenario Start"
 msgstr "Scenariostart"
 
-#: src/dialogs.cpp:480
+#: src/dialogs.cpp:485
 msgid "Difficulty: "
 msgstr "Svårighetsgrad: "
 
-#: src/dialogs.cpp:482
+#: src/dialogs.cpp:487
 msgid "Version: "
 msgstr "Version: "
 
-#: src/dialogs.cpp:506 src/dialogs.cpp:522
+#: src/dialogs.cpp:511 src/dialogs.cpp:527
 msgid "%b %d %y"
 msgstr "%F"
 
-#: src/dialogs.cpp:512
+#: src/dialogs.cpp:517
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:515
+#: src/dialogs.cpp:520
 msgid "%A, %H:%M"
 msgstr "%A %H:%M"
 
-#: src/dialogs.cpp:518
+#: src/dialogs.cpp:523
 msgid "%b %d"
 msgstr "%e %b"
 
-#: src/dialogs.cpp:542
+#: src/dialogs.cpp:547
 msgid "No Saved Games"
 msgstr "Inga sparade spel"
 
-#: src/dialogs.cpp:543
+#: src/dialogs.cpp:548
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -4971,58 +5005,58 @@ msgstr ""
 "\n"
 "(Spel sparas automatiskt när du klarar ett scenario)"
 
-#: src/dialogs.cpp:555
+#: src/dialogs.cpp:560
 msgid "Delete Save"
 msgstr "Radera sparat spel"
 
-#: src/dialogs.cpp:561
+#: src/dialogs.cpp:566
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:561 src/game.cpp:1072 src/menu_events.cpp:315
-#: src/menu_events.cpp:1065 src/multiplayer.cpp:110
+#: src/dialogs.cpp:566 src/game.cpp:1072 src/menu_events.cpp:320
+#: src/menu_events.cpp:1075 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Namn"
 
-#: src/dialogs.cpp:582 src/multiplayer_create.cpp:92
+#: src/dialogs.cpp:587 src/multiplayer_create.cpp:92
 #: src/multiplayer_create.cpp:93
 msgid "Load Game"
 msgstr "Sparade spel"
 
-#: src/dialogs.cpp:583
+#: src/dialogs.cpp:588
 msgid "Choose the game to load"
 msgstr "Välj spel"
 
-#: src/dialogs.cpp:589
+#: src/dialogs.cpp:594
 msgid "Show replay"
 msgstr "Spela upp repris"
 
-#: src/dialogs.cpp:616 src/dialogs.cpp:628
+#: src/dialogs.cpp:622 src/dialogs.cpp:634
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:714 src/help.cpp:1182
+#: src/dialogs.cpp:727 src/help.cpp:1195
 msgid "level"
 msgstr "nivå"
 
-#: src/dialogs.cpp:736 src/help.cpp:1274
+#: src/dialogs.cpp:744 src/help.cpp:1287
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:740 src/dialogs.cpp:748
+#: src/dialogs.cpp:747
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:753 src/help.cpp:1275
+#: src/dialogs.cpp:752 src/help.cpp:1288
 msgid "Moves: "
 msgstr "Förflyttning: "
 
-#: src/dialogs.cpp:898 src/dialogs.cpp:999 src/multiplayer_connect.cpp:760
+#: src/dialogs.cpp:901 src/dialogs.cpp:1002 src/multiplayer_connect.cpp:760
 #: src/multiplayer_create.cpp:75 src/multiplayer_wait.cpp:167
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/dialogs.cpp:922 src/game.cpp:876
+#: src/dialogs.cpp:925 src/game.cpp:876
 msgid "KB"
 msgstr "KB"
 
@@ -5030,7 +5064,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Skärmdump"
 
-#: src/game.cpp:428 src/game.cpp:1483
+#: src/game.cpp:428 src/game.cpp:1487
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
@@ -5116,7 +5150,7 @@ msgstr "Extramaterialet har raderats"
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "Extramaterialet kunde inte raderas - en fil kunde inte hittas."
 
-#: src/game.cpp:1017 src/menu_events.cpp:674 src/menu_events.cpp:687
+#: src/game.cpp:1017 src/menu_events.cpp:684 src/menu_events.cpp:697
 #: src/multiplayer_create.cpp:510
 msgid "Error"
 msgstr "Fel"
@@ -5206,14 +5240,15 @@ msgid "Remote host disconnected."
 msgstr "Anslutningen avbruten."
 
 #: src/game.cpp:1269
+#, fuzzy
 msgid ""
-"There was a problem creating the files necessary to install this campaign."
+"There was a problem creating the files necessary to install this add-on."
 msgstr ""
 "Problem uppstod i skapandet av de filer som behövs för att installera denna "
 "kampanj."
 
 #: src/game.cpp:1281 src/game.cpp:1320 src/game.cpp:1347
-#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:430
+#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:432
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
@@ -5229,7 +5264,7 @@ msgstr "Villkor"
 msgid "Sending add-on"
 msgstr "Skickar extramaterial"
 
-#: src/game.cpp:1326 src/game.cpp:1353 src/multiplayer_wait.cpp:344
+#: src/game.cpp:1326 src/game.cpp:1353 src/multiplayer_wait.cpp:346
 msgid "Response"
 msgstr "Svar"
 
@@ -5241,9 +5276,10 @@ msgstr "Anslut till den officiella servern"
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Kampen om Wesnoths officiella spelserver"
 
-#: src/game.cpp:1379 src/multiplayer_lobby.cpp:586
-msgid "Join Game"
-msgstr "Anslut till spel"
+#: src/game.cpp:1379
+#, fuzzy
+msgid "Connect to Host/Server"
+msgstr "Anslut till server"
 
 #: src/game.cpp:1380
 msgid "Join a server or hosted game"
@@ -5262,7 +5298,8 @@ msgid "Local Game"
 msgstr "Lokalt spel"
 
 #: src/game.cpp:1386
-msgid "Play a multiplayer game with AI or humans sharing the same machine"
+#, fuzzy
+msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Spela ett gruppspel med en och samma dator"
 
 #: src/game.cpp:1394 src/multiplayer.cpp:232
@@ -5277,51 +5314,52 @@ msgstr "Spelet kunde inte öppnas: "
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game.cpp:1449 src/playcampaign.cpp:96 src/playcampaign.cpp:365
+#: src/game.cpp:1453 src/playcampaign.cpp:96 src/playcampaign.cpp:365
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
-#: src/game.cpp:1473
+#: src/game.cpp:1477
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1474
+#: src/game.cpp:1478
 msgid "Choose your preferred language:"
 msgstr "Välj språk: "
 
-#: src/game.cpp:1623
-msgid "The following add-on campaign(s) had errors and could not be loaded:"
+#: src/game.cpp:1627
+#, fuzzy
+msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Följande extrakampanjer var felaktiga och kunde inte öppnas: "
 
-#: src/game.cpp:1628
+#: src/game.cpp:1632
 msgid "ERROR DETAILS:"
 msgstr "FELDETALJER:"
 
-#: src/game.cpp:1642
+#: src/game.cpp:1646
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Varning: Fel inträffade vid öppnande av spelkonfigurationsfiler: '"
 
-#: src/game.cpp:1691
+#: src/game.cpp:1695
 msgid "Error loading game configuration files: '"
 msgstr "Fel vid öppnande av konfigurationsfiler: '"
 
-#: src/game.cpp:1692
+#: src/game.cpp:1696
 msgid "' (The game will now exit)"
 msgstr "' (Spelet kommer nu att avslutas)"
 
-#: src/game.cpp:1859
+#: src/game.cpp:1863
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:1986
+#: src/game.cpp:1990
 msgid "Loading game configuration."
 msgstr "Laddar spelkonfiguration."
 
-#: src/game.cpp:1992
+#: src/game.cpp:1996
 msgid "Re-initialize fonts for the current language."
 msgstr "Ställer in typsnitt för aktuellt språk."
 
-#: src/game.cpp:2007
+#: src/game.cpp:2011
 msgid "Loading title screen."
 msgstr "Laddar titelsidan."
 
@@ -5448,111 +5486,116 @@ msgstr "Åskådare: "
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/help.cpp:1071
+#: src/help.cpp:1084
 msgid "Units having this special attack:"
 msgstr "Trupper med denna specialattack:"
 
-#: src/help.cpp:1137
+#: src/help.cpp:1150
 msgid "Units having this ability:"
 msgstr "Trupper med denna förmåga:"
 
-#: src/help.cpp:1202
+#: src/help.cpp:1215
 msgid "Advances from: "
 msgstr "Befordras från: "
 
-#: src/help.cpp:1231
+#: src/help.cpp:1244
 msgid "Advances to: "
 msgstr "Kan befordras till: "
 
-#: src/help.cpp:1257
+#: src/help.cpp:1270
 msgid "Abilities: "
 msgstr "Förmågor: "
 
-#: src/help.cpp:1276
+#: src/help.cpp:1289
 msgid "Cost: "
 msgstr "Kostnad: "
 
-#: src/help.cpp:1277
+#: src/help.cpp:1290
 msgid "Alignment: "
 msgstr "Sinnelag: "
 
-#: src/help.cpp:1283
+#: src/help.cpp:1296
 msgid "Required XP: "
 msgstr "EP för nästa nivå: "
 
-#: src/help.cpp:1292
+#: src/help.cpp:1305
 msgid "unit help^Attacks"
 msgstr "Attacker"
 
-#: src/help.cpp:1299
+#: src/help.cpp:1312
 msgid "unit help^Name"
 msgstr "Namn"
 
-#: src/help.cpp:1300 src/menu_events.cpp:314 src/menu_events.cpp:1064
+#: src/help.cpp:1313 src/menu_events.cpp:319 src/menu_events.cpp:1074
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1301
+#: src/help.cpp:1314
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:1302
+#: src/help.cpp:1315
 msgid "Range"
 msgstr "Räckvidd"
 
-#: src/help.cpp:1303
+#: src/help.cpp:1316
 msgid "Special"
 msgstr "Specialitet"
 
-#: src/help.cpp:1353
+#: src/help.cpp:1366
 msgid "Resistances"
 msgstr "Motståndskraft mot olika attacker"
 
-#: src/help.cpp:1357
+#: src/help.cpp:1370
 msgid "Attack Type"
 msgstr "Attacktyp"
 
-#: src/help.cpp:1358
+#: src/help.cpp:1371
 msgid "Resistance"
 msgstr "Motståndskraft"
 
-#: src/help.cpp:1395
+#: src/help.cpp:1408
 msgid "Terrain Modifiers"
 msgstr "Terrängavdrag"
 
-#: src/help.cpp:1399
+#: src/help.cpp:1412
 msgid "Terrain"
 msgstr "Terräng"
 
-#: src/help.cpp:1400
+#: src/help.cpp:1413
 msgid "Defense"
 msgstr "Försvar"
 
-#: src/help.cpp:1401
+#: src/help.cpp:1414
 msgid "Movement Cost"
 msgstr "Förflyttningskostnad"
 
-#: src/help.cpp:2343 src/menu_events.cpp:640
+#: src/help.cpp:1507
+#, fuzzy
+msgid "race^Miscellaneous"
+msgstr "Diverse"
+
+#: src/help.cpp:2345 src/menu_events.cpp:650
 msgid " < Back"
 msgstr " < Tillbaka"
 
-#: src/help.cpp:2344
+#: src/help.cpp:2346
 msgid "Forward >"
 msgstr "Fram >"
 
-#: src/help.cpp:2456
+#: src/help.cpp:2458
 msgid "Reference to unknown topic: "
 msgstr "Referens till okänt ämne: "
 
-#: src/help.cpp:2715
+#: src/help.cpp:2717
 msgid "corrupted original file"
 msgstr "trasig originalfil"
 
-#: src/help.cpp:2807
+#: src/help.cpp:2809
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
-#: src/help.cpp:2859
+#: src/help.cpp:2861
 msgid "Parse error when parsing help text: "
 msgstr "Tolkningsfel när hjälptexten tolkades: "
 
@@ -5596,150 +5639,150 @@ msgstr "Läser truppfiler."
 msgid "Reading files and creating cache."
 msgstr "Läser filer och skapar cache."
 
-#: src/menu_events.cpp:102 src/menu_events.cpp:151
+#: src/menu_events.cpp:106 src/menu_events.cpp:155
 msgid "Recruits"
 msgstr "Rekryterade"
 
-#: src/menu_events.cpp:106 src/menu_events.cpp:159
+#: src/menu_events.cpp:110 src/menu_events.cpp:163
 msgid "Recalls"
 msgstr "Återkallade"
 
-#: src/menu_events.cpp:110 src/menu_events.cpp:167
+#: src/menu_events.cpp:114 src/menu_events.cpp:171
 msgid "Advancements"
 msgstr "Befordringar"
 
-#: src/menu_events.cpp:114 src/menu_events.cpp:175
+#: src/menu_events.cpp:118 src/menu_events.cpp:180
 msgid "Losses"
 msgstr "Förluster"
 
-#: src/menu_events.cpp:119 src/menu_events.cpp:183
+#: src/menu_events.cpp:123 src/menu_events.cpp:188
 msgid "Kills"
 msgstr "Dödade fiender"
 
-#: src/menu_events.cpp:138
+#: src/menu_events.cpp:142
 msgid "Details"
 msgstr "Detaljer"
 
-#: src/menu_events.cpp:189
+#: src/menu_events.cpp:194
 msgid "Damage Inflicted"
 msgstr "Vållad skada"
 
-#: src/menu_events.cpp:195
+#: src/menu_events.cpp:201
 msgid "Damage Taken"
 msgstr "Mottagen skada"
 
-#: src/menu_events.cpp:201
+#: src/menu_events.cpp:207
 msgid "Damage Inflicted (EV)"
 msgstr "Vållad skada (VV)"
 
-#: src/menu_events.cpp:208
+#: src/menu_events.cpp:214
 msgid "Damage Taken (EV)"
 msgstr "Mottagen skada (VV)"
 
-#: src/menu_events.cpp:244
-msgid ""
-"My lord, this unit is an experienced one, having advanced levels! Do you "
-"really want to dismiss $noun?"
+#: src/menu_events.cpp:250 src/menu_events.cpp:254
+#, fuzzy
+msgid "Do you really want to dismiss him?"
+msgstr "Vill du verkligen radera detta spel?"
+
+#: src/menu_events.cpp:250
+#, fuzzy
+msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr ""
 "Ers nåd, denna trupp är erfaren och har befordrats. Vill ni verkligen "
 "avskeda $noun?"
 
-#: src/menu_events.cpp:246
-msgid ""
-"My lord, this unit is close to advancing a level! Do you really want to "
-"dismiss $noun?"
+#: src/menu_events.cpp:251 src/menu_events.cpp:255
+#, fuzzy
+msgid "Do you really want to dismiss her?"
+msgstr "Vill du verkligen radera detta spel?"
+
+#: src/menu_events.cpp:254
+#, fuzzy
+msgid "My lord, this unit is close to advancing a level! "
 msgstr ""
 "Ers nåd, denna trupp kommer snart att avancera till en högre nivå. Vill ni "
 "verkligen avskeda $noun?"
 
-#: src/menu_events.cpp:251
-msgid "her"
-msgstr "henne"
-
-#: src/menu_events.cpp:251
-msgid "him"
-msgstr "honom"
-
-#: src/menu_events.cpp:306
+#: src/menu_events.cpp:311
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/menu_events.cpp:316 src/menu_events.cpp:1066
+#: src/menu_events.cpp:321 src/menu_events.cpp:1076
 msgid "Level"
 msgstr "Nivå"
 
-#: src/menu_events.cpp:319
+#: src/menu_events.cpp:324
 msgid "unit list^Traits"
 msgstr "Karaktärsdrag"
 
-#: src/menu_events.cpp:320 src/unit.cpp:2625 src/unit.cpp:2772
+#: src/menu_events.cpp:325 src/unit.cpp:2629 src/unit.cpp:2902
 msgid "Moves"
 msgstr "Förflyttning"
 
-#: src/menu_events.cpp:321
+#: src/menu_events.cpp:326
 msgid "Location"
 msgstr "Position"
 
-#: src/menu_events.cpp:322
+#: src/menu_events.cpp:327
 msgid "Status"
 msgstr "Status"
 
-#: src/menu_events.cpp:423
+#: src/menu_events.cpp:433
 msgid "Unit List"
 msgstr "Trupplista"
 
-#: src/menu_events.cpp:426 src/menu_events.cpp:446
+#: src/menu_events.cpp:436 src/menu_events.cpp:456
 msgid "Scroll To"
 msgstr "Rulla till"
 
-#: src/menu_events.cpp:475
+#: src/menu_events.cpp:485
 msgid "Leader"
 msgstr "Ledare"
 
-#: src/menu_events.cpp:476 src/multiplayer_connect.cpp:745
+#: src/menu_events.cpp:486 src/multiplayer_connect.cpp:745
 #: src/multiplayer_connect.cpp:754
 msgid "Team"
 msgstr "Lag"
 
-#: src/menu_events.cpp:477 src/multiplayer_connect.cpp:756
-#: src/multiplayer_wait.cpp:445
+#: src/menu_events.cpp:487 src/multiplayer_connect.cpp:756
+#: src/multiplayer_wait.cpp:447
 msgid "Gold"
 msgstr "Guld"
 
-#: src/menu_events.cpp:478
+#: src/menu_events.cpp:488
 msgid "Villages"
 msgstr "Byar"
 
-#: src/menu_events.cpp:479
+#: src/menu_events.cpp:489
 msgid "status^Units"
 msgstr "Trupper"
 
-#: src/menu_events.cpp:480
+#: src/menu_events.cpp:490
 msgid "Upkeep"
 msgstr "Underhåll"
 
-#: src/menu_events.cpp:481 src/multiplayer_connect.cpp:757
-#: src/multiplayer_wait.cpp:449
+#: src/menu_events.cpp:491 src/multiplayer_connect.cpp:757
+#: src/multiplayer_wait.cpp:451
 msgid "Income"
 msgstr "Inkomst"
 
-#: src/menu_events.cpp:558
+#: src/menu_events.cpp:568
 msgid "Current Status"
 msgstr "Nuvarande status"
 
-#: src/menu_events.cpp:559
+#: src/menu_events.cpp:569
 msgid "More >"
 msgstr "Mer >"
 
-#: src/menu_events.cpp:577
+#: src/menu_events.cpp:587
 msgid "scenario settings^Leader"
 msgstr "Ledare"
 
-#: src/menu_events.cpp:579
+#: src/menu_events.cpp:589
 msgid "scenario settings^Side"
 msgstr "Sida"
 
-#: src/menu_events.cpp:580
+#: src/menu_events.cpp:590
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -5747,7 +5790,7 @@ msgstr ""
 "Start-\n"
 "guld"
 
-#: src/menu_events.cpp:581
+#: src/menu_events.cpp:591
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -5755,7 +5798,7 @@ msgstr ""
 "Grund-\n"
 "inkomst"
 
-#: src/menu_events.cpp:582
+#: src/menu_events.cpp:592
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -5763,31 +5806,31 @@ msgstr ""
 "Guld \n"
 "per by"
 
-#: src/menu_events.cpp:583
+#: src/menu_events.cpp:593
 msgid "scenario settings^Fog"
 msgstr "Dimma"
 
-#: src/menu_events.cpp:584
+#: src/menu_events.cpp:594
 msgid "scenario settings^Shroud"
 msgstr "Slöja"
 
-#: src/menu_events.cpp:629 src/menu_events.cpp:630
+#: src/menu_events.cpp:639 src/menu_events.cpp:640
 msgid "no"
 msgstr "nej"
 
-#: src/menu_events.cpp:629 src/menu_events.cpp:630
+#: src/menu_events.cpp:639 src/menu_events.cpp:640
 msgid "yes"
 msgstr "ja"
 
-#: src/menu_events.cpp:637
+#: src/menu_events.cpp:647
 msgid "Scenario Settings"
 msgstr "Scenarioinställningar"
 
-#: src/menu_events.cpp:669 src/playcampaign.cpp:523
+#: src/menu_events.cpp:679 src/playcampaign.cpp:525
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/menu_events.cpp:674
+#: src/menu_events.cpp:684
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -5795,87 +5838,87 @@ msgstr ""
 "Du får inte använda kolon eller någon form av snedstreck när du sparar ett "
 "spel. Var vänlig välj ett annat namn."
 
-#: src/menu_events.cpp:684
+#: src/menu_events.cpp:694
 msgid "Saved"
 msgstr "Sparat"
 
-#: src/menu_events.cpp:684
+#: src/menu_events.cpp:694
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
-#: src/menu_events.cpp:687 src/playcampaign.cpp:531
+#: src/menu_events.cpp:697 src/playcampaign.cpp:533
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
-#: src/menu_events.cpp:702
+#: src/menu_events.cpp:712
 msgid "Save the Map As"
 msgstr "Spara kartan som"
 
-#: src/menu_events.cpp:707
+#: src/menu_events.cpp:717
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kartan finns redan. Vill du skriva över den?"
 
-#: src/menu_events.cpp:719
+#: src/menu_events.cpp:729
 msgid "Map saved."
 msgstr "Kartan sparad."
 
-#: src/menu_events.cpp:723
+#: src/menu_events.cpp:733
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/menu_events.cpp:813 src/menu_events.cpp:815 src/play_controller.cpp:768
+#: src/menu_events.cpp:821 src/menu_events.cpp:823 src/play_controller.cpp:768
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Autosparat"
 
-#: src/menu_events.cpp:818
+#: src/menu_events.cpp:828
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunde inte autospara spelet. Var vänlig och spara spelet manuellt."
 
-#: src/menu_events.cpp:844
+#: src/menu_events.cpp:854
 msgid "Chat Log"
 msgstr "Chatlogg"
 
-#: src/menu_events.cpp:854
+#: src/menu_events.cpp:864
 msgid "Message:"
 msgstr "Meddelande: "
 
-#: src/menu_events.cpp:855
+#: src/menu_events.cpp:865
 msgid "Send to allies only"
 msgstr "Skicka enbart till allierade"
 
-#: src/menu_events.cpp:855
+#: src/menu_events.cpp:865
 msgid "Send to observers only"
 msgstr "Skicka enbart till åskådare"
 
-#: src/menu_events.cpp:935
+#: src/menu_events.cpp:945
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Guld"
 msgstr[1] "Guld"
 
-#: src/menu_events.cpp:942
+#: src/menu_events.cpp:952
 msgid "You have no units available to recruit."
 msgstr "Det finns inte några trupper tillgängliga att värva till armén."
 
-#: src/menu_events.cpp:954
+#: src/menu_events.cpp:964
 msgid "Recruit"
 msgstr "Rekrytera"
 
-#: src/menu_events.cpp:955 src/menu_events.cpp:1104
+#: src/menu_events.cpp:965 src/menu_events.cpp:1114
 msgid "Select unit:"
 msgstr "Välj trupp: "
 
-#: src/menu_events.cpp:1000
+#: src/menu_events.cpp:1010
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Du har inte tillräckligt med guld för att rekrytera den truppen"
 
-#: src/menu_events.cpp:1057
+#: src/menu_events.cpp:1067
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 "Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
 
-#: src/menu_events.cpp:1059
+#: src/menu_events.cpp:1069
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -5883,15 +5926,15 @@ msgstr ""
 "Det finns inga trupper att återkalla\n"
 "(Du måste ha överlevande veteraner från ett tidigare scenario)"
 
-#: src/menu_events.cpp:1098
+#: src/menu_events.cpp:1108
 msgid "Dismiss Unit"
 msgstr "Avskeda trupp"
 
-#: src/menu_events.cpp:1103
+#: src/menu_events.cpp:1113
 msgid "Recall"
 msgstr "Återkalla"
 
-#: src/menu_events.cpp:1120
+#: src/menu_events.cpp:1130
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
@@ -5899,41 +5942,41 @@ msgstr[0] ""
 msgstr[1] ""
 "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
-#: src/menu_events.cpp:1453
+#: src/menu_events.cpp:1463
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Vill du verkligen avsluta ditt drag utan att göra något?"
 
-#: src/menu_events.cpp:1461 src/menu_events.cpp:1466
+#: src/menu_events.cpp:1471 src/menu_events.cpp:1476
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
 
-#: src/menu_events.cpp:1507
+#: src/menu_events.cpp:1517
 msgid "Rename Unit"
 msgstr "Döp om truppen"
 
-#: src/menu_events.cpp:1589
+#: src/menu_events.cpp:1599
 msgid "Place Label"
 msgstr "Sätt ut etikett"
 
-#: src/menu_events.cpp:1592 src/menu_events.cpp:1595
+#: src/menu_events.cpp:1602 src/menu_events.cpp:1605
 msgid "Label:"
 msgstr "Etikett: "
 
-#: src/menu_events.cpp:1598
+#: src/menu_events.cpp:1608
 msgid "Team only"
 msgstr "Endast laget"
 
-#: src/menu_events.cpp:1699
+#: src/menu_events.cpp:1709
 msgid "Search"
 msgstr "Sök"
 
-#: src/menu_events.cpp:1742
+#: src/menu_events.cpp:1752
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Kommandon: whisper list emote. Skriv /help [kommando] för mer hjälp."
 
-#: src/menu_events.cpp:1793
+#: src/menu_events.cpp:1803
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5941,18 +5984,18 @@ msgstr ""
 "Skicka ett privat meddelande. Du kan inte skicka meddelanden till spelare "
 "som kontrollerar en sida i spelet. Syntax: /whisper [spelare] [meddelande]"
 
-#: src/menu_events.cpp:1797
+#: src/menu_events.cpp:1807
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lägg till spelare till din lista över vänner. Syntax: /list addfriend "
 "[argument]"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1809
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lägg till spelare till din ignoreralista. Syntax: /list ignore [argument]"
 
-#: src/menu_events.cpp:1801
+#: src/menu_events.cpp:1811
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -5960,19 +6003,19 @@ msgstr ""
 "Ta bort spelare från listan över vänner eller ignorerade. Syntax: /list "
 "remove [argument]"
 
-#: src/menu_events.cpp:1803
+#: src/menu_events.cpp:1813
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Rensa dina listor över vänner och ignorerade. Syntax: /list clear"
 
-#: src/menu_events.cpp:1805
+#: src/menu_events.cpp:1815
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Visa dina listor över vänner och ignorerade. Syntax: /list display"
 
-#: src/menu_events.cpp:1807
+#: src/menu_events.cpp:1817
 msgid "Unknown subcommand"
 msgstr "Okänt underkommando"
 
-#: src/menu_events.cpp:1810
+#: src/menu_events.cpp:1820
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5984,56 +6027,56 @@ msgstr ""
 "(valfritt)]. Underkommandon: addfriend addignore remove display clear. "
 "Skriv /help list [underkommando] för mer information."
 
-#: src/menu_events.cpp:1813
+#: src/menu_events.cpp:1823
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Skicka en smiley. Syntax: /emote [message]"
 
-#: src/menu_events.cpp:1815
+#: src/menu_events.cpp:1825
 msgid "Unknown command"
 msgstr "Okänt kommando"
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1837
 msgid "Added to ignore list: "
 msgstr "Lagd i ignoreralistan: "
 
-#: src/menu_events.cpp:1829 src/menu_events.cpp:1836 src/menu_events.cpp:1843
+#: src/menu_events.cpp:1839 src/menu_events.cpp:1846 src/menu_events.cpp:1853
 msgid "Invalid username: "
 msgstr "Ogiltigt användarnamn: "
 
-#: src/menu_events.cpp:1834
+#: src/menu_events.cpp:1844
 msgid "Added to friends list: "
 msgstr "Lagd i vänlistan: "
 
-#: src/menu_events.cpp:1841
+#: src/menu_events.cpp:1851
 msgid "Removed from list: "
 msgstr "Borttagen från listan: "
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1877
 msgid "There are no players on your friends or ignore list."
 msgstr "Det finns inga spelare på dina listor över vänner och ignorerade."
 
-#: src/menu_events.cpp:1877
+#: src/menu_events.cpp:1887
 msgid "Removed from ignore list: "
 msgstr "Borttagen från ignoreralistan: "
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1890
 msgid "Removed from friends list: "
 msgstr "Borttagen från vänlistan: "
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1897
 msgid "Unknown command: "
 msgstr "Okänt kommando: "
 
-#: src/menu_events.cpp:2001
+#: src/menu_events.cpp:2011
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Kunde inte finna etikett eller trupp som innehöll textsträngen '$search'."
 
-#: src/menu_events.cpp:2156
+#: src/menu_events.cpp:2166
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/menu_events.cpp:2175
+#: src/menu_events.cpp:2185
 msgid "User-Command#3"
 msgstr "Användarkommandon #3"
 
@@ -6166,12 +6209,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:449 src/unit.cpp:2802
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2932
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:441 src/multiplayer_wait.cpp:452 src/unit.cpp:2809
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2939
 msgid ")"
 msgstr ")"
 
@@ -6478,6 +6521,10 @@ msgstr "inget"
 msgid "Observe Game"
 msgstr "Iaktta spel"
 
+#: src/multiplayer_lobby.cpp:586
+msgid "Join Game"
+msgstr "Anslut till spel"
+
 #: src/multiplayer_lobby.cpp:588
 msgid "Quick Replays"
 msgstr "Snabba repriser"
@@ -6546,8 +6593,8 @@ msgstr "Kunde inte lägga till sockel till sockellistan"
 msgid "Could not send initial handshake"
 msgstr "Kunde inte utföra handskakning"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:376
-#: src/playsingle_controller.cpp:427
+#: src/play_controller.cpp:400 src/playsingle_controller.cpp:382
+#: src/playsingle_controller.cpp:433
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
@@ -6583,11 +6630,11 @@ msgstr "Tar emot data..."
 msgid "Downloading next scenario..."
 msgstr "Hämtar nästa scenario..."
 
-#: src/playcampaign.cpp:522
+#: src/playcampaign.cpp:524
 msgid "Do you want to save your game?"
 msgstr "Vill du spara ditt spel?"
 
-#: src/playcampaign.cpp:547
+#: src/playcampaign.cpp:549
 msgid "Unknown scenario: '"
 msgstr "Okänt scenario: '"
 
@@ -6648,17 +6695,13 @@ msgid "Retained Gold: "
 msgstr "Bibehållet guld: "
 
 #: src/playsingle_controller.cpp:364
+#, fuzzy
 msgid ""
-" or the defined minimum starting gold of the following scenario, whichever "
-"is higher."
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
 msgstr " eller nästa scenarios minimala mängd startguld, om denna är högre."
 
-#: src/playsingle_controller.cpp:364
-#, no-c-format
-msgid "You will start the next scenario with "
-msgstr "Du startar nästa scenario med "
-
-#: src/playsingle_controller.cpp:386
+#: src/playsingle_controller.cpp:392
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6666,7 +6709,7 @@ msgstr ""
 "Anslutningen har kopplats ner och spelet kan inte fortsätta. Vill du spara "
 "spelet?"
 
-#: src/playsingle_controller.cpp:514
+#: src/playsingle_controller.cpp:520
 msgid "It is now your turn"
 msgstr "Nu är det din tur"
 
@@ -6862,39 +6905,39 @@ msgstr "Ladda upp statistik"
 msgid "Help Wesnoth by sending us information"
 msgstr "Hjälp Wesnoth genom att skicka oss information"
 
-#: src/unit.cpp:2555 src/unit.cpp:2752 src/unit.cpp:2807
+#: src/unit.cpp:2559 src/unit.cpp:2882 src/unit.cpp:2937
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2643 src/unit.cpp:2780
+#: src/unit.cpp:2647 src/unit.cpp:2910
 msgid "XP to advance"
 msgstr "EP till befordran"
 
-#: src/unit.cpp:2786
+#: src/unit.cpp:2916
 msgid "/level"
 msgstr "/nivå"
 
-#: src/unit_types.cpp:222 src/unit_types.cpp:262
+#: src/unit_types.cpp:204 src/unit_types.cpp:244
 msgid "damage"
 msgstr "skada"
 
-#: src/unit_types.cpp:230 src/unit_types.cpp:268
+#: src/unit_types.cpp:212 src/unit_types.cpp:250
 msgid "strikes"
 msgstr "slag"
 
-#: src/unit_types.cpp:969
+#: src/unit_types.cpp:967
 msgid "chaotic"
 msgstr "ljusskygg"
 
-#: src/unit_types.cpp:969
+#: src/unit_types.cpp:967
 msgid "lawful"
 msgstr "redbar"
 
-#: src/unit_types.cpp:969
+#: src/unit_types.cpp:967
 msgid "neutral"
 msgstr "neutral"
 
-#: src/upload_log.cpp:289
+#: src/upload_log.cpp:290
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players.  Wesnoth keeps summaries of your games: you can "
@@ -6908,18 +6951,45 @@ msgstr ""
 "till wesnoth.org.\n"
 "\n"
 
-#: src/upload_log.cpp:290
+#: src/upload_log.cpp:291
 msgid "Summaries are stored here:"
 msgstr "Sammanställningar sparas här:"
 
-#: src/upload_log.cpp:292
+#: src/upload_log.cpp:293
 msgid "You can view the results at:"
 msgstr "Du kan se resultaten på:"
 
-#: src/upload_log.cpp:294
+#: src/upload_log.cpp:295
 msgid "Help us make Wesnoth better for you!"
 msgstr "Hjälp oss att förbättra Wesnoth!"
 
-#: src/upload_log.cpp:296
+#: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
+
+#~ msgid "Campaign Designer"
+#~ msgstr "Kampanjdesign"
+
+#~ msgid "Current Maintainer"
+#~ msgstr "Huvudansvarig"
+
+#~ msgid "Music Development"
+#~ msgstr "Musik"
+
+#~ msgid "WML Contributors"
+#~ msgstr "WML-bidrag"
+
+#~ msgid "Elves"
+#~ msgstr "Alver"
+
+#~ msgid "Orcs"
+#~ msgstr "Orcher"
+
+#~ msgid "her"
+#~ msgstr "henne"
+
+#~ msgid "him"
+#~ msgstr "honom"
+
+#~ msgid "You will start the next scenario with "
+#~ msgstr "Du startar nästa scenario med "
