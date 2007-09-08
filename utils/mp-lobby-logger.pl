@@ -288,7 +288,8 @@ while (1) {
 									my $scenario = "unknown";   # some scenarios don't set the id
 									$scenario    = $game->{'attr'}->{'mp_scenario'} if $game->{'attr'}->{'mp_scenario'};
 									my $players  = $game->{'attr'}->{'human_sides'};
-									my $xp       = $game->{'attr'}->{'experience_modifier'};
+									my $xp       = "100%";      # scenarios might not set XP
+									$xp          = $game->{'attr'}->{'experience_modifier'} if $game->{'attr'}->{'experience_modifier'};
 									my $gpv      = $game->{'attr'}->{'mp_village_gold'};
 									my $fog      = $game->{'attr'}->{'mp_fog'};
 									my $shroud   = $game->{'attr'}->{'mp_shroud'};
