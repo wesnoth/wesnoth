@@ -480,7 +480,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		} else {
 			games_.back().time_limit = "";
 		}
-
+		//! @todo FIXME: use the default experience modifier (100%) if the scenario doesn't set it
 		games_.back().xp = (**game)["experience_modifier"] + "%";
 		games_.back().observers = (**game)["observer"] != "no" ? true : false;
 		games_.back().verified = verified;
