@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-08 18:39+0200\n"
-"PO-Revision-Date: 2007-09-03 22:26+0200\n"
+"PO-Revision-Date: 2007-09-08 22:07+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -61,9 +61,8 @@ msgstr "Kampanjdesign"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Ansvarig"
+msgstr "Kampanjunderhåll"
 
 #: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
 msgid "+1 max HP"
@@ -81,7 +80,6 @@ msgstr "Kampanjepilog och korrektur"
 #: data/campaigns/The_South_Guard/_main.cfg:39
 #: data/campaigns/Two_Brothers/_main.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
-#, fuzzy
 msgid "Artwork and Graphics Design"
 msgstr "Grafik och illustrationer"
 
@@ -108,9 +106,8 @@ msgid "Code and Translation Assistance"
 msgstr "Bidrag till kod och översättning"
 
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:34
-#, fuzzy
 msgid "WML Assistance"
-msgstr "Motståndskraft"
+msgstr "WML-handledning"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
@@ -379,7 +376,6 @@ msgid "Unknown Unit"
 msgstr "Okänd trupp"
 
 #: data/core/help.cfg:77
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2565,12 +2561,10 @@ msgstr ""
 "upptäcker den här truppen förlorar omedelbart resterande förflyttningspoäng."
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
-#, fuzzy
 msgid "concealment"
-msgstr "Förflyttning"
+msgstr "gömd"
 
 #: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -2580,13 +2574,14 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Den här truppen kan gömma sig på djupt vatten, och blir inte upptäckt av "
-"sina fiender.\n"
+"gömd:\n"
+"Denna trupp kan gömma sig i byar (dock ej i vatten), och blir inte upptäckt "
+"av sina fiender, förutom de som står alldeles bredvid.\n"
 "\n"
-"Fiendetrupper kan inte se eller attackera den här truppen då den är i djupt "
-"vatten, förutom då det finns fiendetrupper alldeles bredvid. Den fiendetrupp "
-"som först upptäcker den här truppen förlorar omedelbart resterande "
-"förflyttningspoäng."
+"Fiendetrupper kan inte se eller attackera den här truppen då den befinner "
+"sig in en by, förutom då det finns fiendetrupper alldeles bredvid. Den "
+"fiendetrupp som först upptäcker den här truppen förlorar omedelbart "
+"resterande förflyttningspoäng."
 
 #: data/core/macros/abilities.cfg:437 data/core/macros/abilities.cfg:442
 msgid "submerge"
@@ -2944,7 +2939,6 @@ msgid "Zap"
 msgstr "Zap"
 
 #: data/core/macros/names.cfg:3
-#, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -3064,7 +3058,7 @@ msgstr ""
 "Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
 "Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
-"Amithrarion,Cálad,Legilad"
+"Amithrarion,Cálad,Legilad,Linduilas"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -4134,16 +4128,14 @@ msgid "Teal"
 msgstr "Turkos"
 
 #: data/core/units.cfg:40 data/hardwired/english.cfg:18
-#, fuzzy
 msgid "race^Elves"
-msgstr "Dvärgar"
+msgstr "Alver"
 
 #: data/core/units.cfg:49 data/hardwired/english.cfg:32
 msgid "race^Woses"
 msgstr "Enter"
 
 #: data/core/units.cfg:57 data/hardwired/english.cfg:19
-#, fuzzy
 msgid "race^Humans"
 msgstr "Människor"
 
@@ -4152,9 +4144,8 @@ msgid "race^Dwarves"
 msgstr "Dvärgar"
 
 #: data/core/units.cfg:72 data/hardwired/english.cfg:20
-#, fuzzy
 msgid "race^Orcs"
-msgstr "Resar"
+msgstr "Orcher"
 
 #: data/core/units.cfg:79 data/hardwired/english.cfg:24
 msgid "race^Goblins"
@@ -4185,14 +4176,12 @@ msgid "race^Trolls"
 msgstr "Troll"
 
 #: data/core/units.cfg:132 data/hardwired/english.cfg:23
-#, fuzzy
 msgid "race^Drakes"
-msgstr "Dvärgar"
+msgstr "Drakfolket"
 
 #: data/core/units.cfg:139
-#, fuzzy
 msgid "race^Saurians"
-msgstr "Nagafolket"
+msgstr "Ödlefolket"
 
 #: data/core/units.cfg:147 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
@@ -5240,12 +5229,11 @@ msgid "Remote host disconnected."
 msgstr "Anslutningen avbruten."
 
 #: src/game.cpp:1269
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
-"Problem uppstod i skapandet av de filer som behövs för att installera denna "
-"kampanj."
+"Problem uppstod i skapandet av de filer som behövs för att installera detta "
+"extramaterial."
 
 #: src/game.cpp:1281 src/game.cpp:1320 src/game.cpp:1347
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:432
@@ -5277,9 +5265,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Kampen om Wesnoths officiella spelserver"
 
 #: src/game.cpp:1379
-#, fuzzy
 msgid "Connect to Host/Server"
-msgstr "Anslut till server"
+msgstr "Anslut till värd/server"
 
 #: src/game.cpp:1380
 msgid "Join a server or hosted game"
@@ -5298,7 +5285,6 @@ msgid "Local Game"
 msgstr "Lokalt spel"
 
 #: src/game.cpp:1386
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Spela ett gruppspel med en och samma dator"
 
@@ -5327,9 +5313,8 @@ msgid "Choose your preferred language:"
 msgstr "Välj språk: "
 
 #: src/game.cpp:1627
-#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
-msgstr "Följande extrakampanjer var felaktiga och kunde inte öppnas: "
+msgstr "Följande extramaterial innehöll fel och kunde inte öppnas:"
 
 #: src/game.cpp:1632
 msgid "ERROR DETAILS:"
@@ -5571,7 +5556,6 @@ msgid "Movement Cost"
 msgstr "Förflyttningskostnad"
 
 #: src/help.cpp:1507
-#, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
@@ -5680,28 +5664,20 @@ msgid "Damage Taken (EV)"
 msgstr "Mottagen skada (VV)"
 
 #: src/menu_events.cpp:250 src/menu_events.cpp:254
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Vill du verkligen radera detta spel?"
+msgstr "Vill du verkligen avskeda honom?"
 
 #: src/menu_events.cpp:250
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
-"Ers nåd, denna trupp är erfaren och har befordrats. Vill ni verkligen "
-"avskeda $noun?"
+msgstr "Ers nåd, denna trupp är erfaren och har befordrats! "
 
 #: src/menu_events.cpp:251 src/menu_events.cpp:255
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Vill du verkligen radera detta spel?"
+msgstr "Vill du verkligen avskeda henne?"
 
 #: src/menu_events.cpp:254
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
-"Ers nåd, denna trupp kommer snart att avancera till en högre nivå. Vill ni "
-"verkligen avskeda $noun?"
+msgstr "Ers nåd, denna trupp kommer snart att avancera till en högre nivå! "
 
 #: src/menu_events.cpp:311
 msgid "Statistics"
@@ -6695,11 +6671,12 @@ msgid "Retained Gold: "
 msgstr "Bibehållet guld: "
 
 #: src/playsingle_controller.cpp:364
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr " eller nästa scenarios minimala mängd startguld, om denna är högre."
+msgstr ""
+"Du startar nästa scenario med $gold guldstycken eller scenariots minimala "
+"mängd startguld, om denna är högre."
 
 #: src/playsingle_controller.cpp:392
 msgid ""
@@ -6966,30 +6943,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
-
-#~ msgid "Campaign Designer"
-#~ msgstr "Kampanjdesign"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "Huvudansvarig"
-
-#~ msgid "Music Development"
-#~ msgstr "Musik"
-
-#~ msgid "WML Contributors"
-#~ msgstr "WML-bidrag"
-
-#~ msgid "Elves"
-#~ msgstr "Alver"
-
-#~ msgid "Orcs"
-#~ msgstr "Orcher"
-
-#~ msgid "her"
-#~ msgstr "henne"
-
-#~ msgid "him"
-#~ msgstr "honom"
-
-#~ msgid "You will start the next scenario with "
-#~ msgstr "Du startar nästa scenario med "
