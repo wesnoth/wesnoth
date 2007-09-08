@@ -1140,6 +1140,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->level() = *scenario;
 			g->reset_history();
 			g->update_side_data();
+			// Send the update of the game description to the lobby
+			lobby_players_.send_data(sync_initial_response());
 		} else {
 			// next_scenario sent while the scenario was not initialized.
 			// Something's broken here.
