@@ -207,7 +207,7 @@ bool internal_conditional_passed(const unit_map* units,
 
 		const std::string name = values["name"];
 		wassert(state_of_game != NULL);
-		const std::string& value = state_of_game->get_variable(name);
+		const std::string& value = state_of_game->get_variable_const(name);
 
 		const double num_value = atof(value.c_str());
 

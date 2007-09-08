@@ -2,7 +2,8 @@
  * campaigns:
    * Northern Rebirth
      * Colored portraits for Sisal and Rakshas
-     * Fixed bug in 'Old Friend' where Tallin looses bonus HP, MP and experience gained from the Rod of Justice
+     * Fixed bug in 'Old Friend' where Tallin looses bonus HP, MP and
+       experience gained from the Rod of Justice
    * Son of the Black Eye
      * Fixed bug in 'Saving Inarix' where the blown up bridge wasn't shown
        properly (bug #9817)
@@ -46,6 +47,8 @@
    * a minus sign in front of a cardinal direction now reverses it ("-s"="n")
    * now radius expansion is handled last in Standard Location Filters;
      previously it was handled last except before [and], [or], and [not]
+   * fix a bug with array.length side-effects causing empty arrays to increase
+     to size 1
  * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
    * in help, the encountered units list is now correctly updated when using

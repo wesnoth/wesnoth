@@ -243,8 +243,10 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 		if(size <= inner_index) {
 			if(force_valid) {
 				// Add elements to the array until the requested size is attained
-				for(; size <= inner_index; ++size) {
-					vars->add_child(element);
+				if(inner_explicit_index || key != "length") {
+					for(; size <= inner_index; ++size) {
+						vars->add_child(element);
+					}
 				}
 			} else if(inner_explicit_index) {
 				WRN_NG << "variable_info: invalid WML array index, "
