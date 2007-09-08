@@ -290,7 +290,9 @@ void wait::start_game()
 {
 	// add era events
 	const config* const era_cfg = level_.child("era");
-	game_events::add_events(era_cfg->get_children("event"),"all");
+	if(era_cfg != NULL) {
+		game_events::add_events(era_cfg->get_children("event"),"all");
+	}
 
 	config const * const stats = level_.child("statistics");
 	if(stats != NULL) {
