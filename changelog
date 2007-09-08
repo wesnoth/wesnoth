@@ -47,11 +47,11 @@
    * a minus sign in front of a cardinal direction now reverses it ("-s"="n")
    * now radius expansion is handled last in Standard Location Filters;
      previously it was handled last except before [and], [or], and [not]
-   * the WML for attack animations has been moved from the [attack] block to
-   the [unit] block...
    * fix a bug with array.length side-effects causing empty arrays to increase
-   * new effect apply_to=new_animation to add animations to units
      to size 1
+   * the WML for attack animations has been moved from the [attack] block to
+     the [unit] block
+   * new effect apply_to=new_animation to add animations to unit
  * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
    * in help, the encountered units list is now correctly updated when using
