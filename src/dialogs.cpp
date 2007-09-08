@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file dialogs.cpp 
+//! Various dialogs: advance_unit, show_objectives, save+load game, network::connection.
+
 #include "global.hpp"
 
 #include "dialogs.hpp"
@@ -25,6 +28,7 @@
 #include "menu_events.hpp"
 #include "minimap.hpp"
 #include "replay.hpp"
+//#include "sound.hpp" 
 #include "thread.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
@@ -118,12 +122,13 @@ void advance_unit(const game_data& info,
 
 	LOG_DP << "animating advancement...\n";
 	animate_unit_advancement(info,units,loc,gui,size_t(res));
-
-	// in some rare cases the unit can have enough XP to advance again so try to do that,
-	// make sure that we're no entering an infinite level loop
+	
+	// In some rare cases the unit can have enough XP to advance again, 
+	// so try to do that. 
+	// Make sure that we don't enter an infinite level loop.
 	u = units.find(loc);
 	if(u != units.end()) {
-		// level 10 unit gives 80 XP and the highest mainline is level 5
+		// Level 10 unit gives 80 XP and the highest mainline is level 5
 		if(u->second.experience() < 81) {
 			advance_unit(info, map, units, loc, gui, random_choice, add_replay_event);
 		} else {
@@ -151,8 +156,8 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 		return false;
 	}
 
-	//when the unit advances, it fades to white, and then switches to the
-	//new unit, then fades back to the normal colour
+	// When the unit advances, it fades to white, and then switches 
+	// to the new unit, then fades back to the normal colour
 
 	if(!gui.video().update_locked()) {
 		u->second.set_leveling_out(gui,u->first);
@@ -173,7 +178,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 		LOG_NG << "firing advance event (AMLA)\n";
 		game_events::fire("advance",loc);
 
-		amla_unit.get_experience(-amla_unit.max_experience()); //subtract xp required
+		amla_unit.get_experience(-amla_unit.max_experience()); // subtract xp required
 		amla_unit.add_modification("advance",*mod_options[choice - options.size()]);
 		units.replace(new std::pair<gamemap::location,unit>(loc,amla_unit));
 
@@ -261,7 +266,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 	return res;
 }
 
-//a class to handle deleting a saved game
+//! Class to handle deleting a saved game.
 namespace {
 
 class delete_save : public gui::dialog_button_action
@@ -281,14 +286,14 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 	const size_t index = size_t(menu_selection);
 	if(index < saves_.size()) {
 
-		//see if we should ask the user for deletion confirmation
+		// See if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
 			gui::dialog dmenu(disp_,"",
 					       _("Do you really want to delete this game?"),
 					       gui::YES_NO);
 			dmenu.add_option(_("Don't ask me again!"), true);
 			const int res = dmenu.show();
-			//see if the user doesn't want to be asked this again
+			// See if the user doesn't want to be asked this again
 			if(dmenu.option_checked()) {
 				preferences::set_ask_delete_saves(false);
 			}
@@ -298,10 +303,10 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 			}
 		}
 
-		//delete the file
+		// Delete the file
 		delete_game(saves_[index].name);
 
-		//remove it from the list of saves
+		// Remove it from the list of saves
 		saves_.erase(saves_.begin() + index);
 
 		if(index < summaries_.size()) {
@@ -447,7 +452,7 @@ void save_preview_pane::draw_contents()
 
 	std::stringstream str;
 
-	// escape all special characters in filenames
+	// Escape all special characters in filenames
 	std::string name = (*info_)[index_].name;
 	str << font::BOLD_TEXT << utils::escape(name) << "\n" << time_buf;
 
@@ -508,17 +513,17 @@ std::string format_time_summary(time_t t)
 	if(current_time.tm_year == save_time.tm_year) {
 		const int days_apart = current_time.tm_yday - save_time.tm_yday;
 		if(days_apart == 0) {
-			//save is from today
+			// save is from today
 			format_string = _("%H:%M");
 		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
-			//save is from this week
+			// save is from this week
 			format_string = _("%A, %H:%M");
 		} else {
-			//save is from current year
+			// save is from current year
 			format_string = _("%b %d");
 		}
 	} else {
-		//save is from a different year
+		// save is from a different year
 		format_string = _("%b %d %y");
 	}
 
@@ -531,7 +536,7 @@ std::string format_time_summary(time_t t)
 	return buf;
 }
 
-} //end anon namespace
+} // end anon namespace
 
 std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay)
 {
@@ -584,7 +589,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 			  gui::OK_CANCEL);
 	lmenu.set_menu(items, &sorter);
 	lmenu.add_pane(&save_preview);
-	//create an option for whether the replay should be shown or not
+	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL)
 		lmenu.add_option(_("Show replay"), false);
 	lmenu.add_button(delete_button);
@@ -611,6 +616,7 @@ namespace {
 	static const int unit_preview_border = 10;
 }
 
+//! Show unit-stats in a side-pane to unit-list, recall-list, etc.
 unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
 				    : gui::preview_pane(disp.video()), disp_(disp),
 				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
@@ -691,7 +697,7 @@ void unit_preview_pane::draw_contents()
 		image_rect = rect;
 	}
 
-	//place the 'unit profile' button
+	// Place the 'unit profile' button
 	if(map_ != NULL) {
 		const SDL_Rect button_loc = {right_align ? area.x : area.x + area.w - details_button_.location().w,
 		                             image_rect.y + image_rect.h,
@@ -705,13 +711,20 @@ void unit_preview_pane::draw_contents()
 		std::stringstream desc;
 		desc << font::NORMAL_TEXT << u.description();
 		const std::string description = desc.str();
-		description_rect = font::text_area(description,font::SIZE_NORMAL);
-		description_rect = font::draw_text(&video(),area,font::SIZE_NORMAL,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h+details_button_.location().h);
+		description_rect = font::text_area(description, font::SIZE_NORMAL);
+		description_rect = font::draw_text(&video(), area, 
+							font::SIZE_NORMAL, font::NORMAL_COLOUR, 
+							desc.str(), right_align ?  image_rect.x : 
+							image_rect.x + image_rect.w - description_rect.w, 
+							image_rect.y + image_rect.h + details_button_.location().h);
 	}
 
+//%%
 	std::stringstream details;
 	details << u.language_name()
-			<< "\n" << _("level") << " "
+			<< "\n" 
+			<< font::BOLD_TEXT  
+			<< _("level") << " "
 			<< u.level() << "\n"
 			<< unit_type::alignment_description(u.alignment()) << "\n"
 			<< u.traits_description() << " \n";
@@ -727,43 +740,33 @@ void unit_preview_pane::draw_contents()
 
 	details << " \n";
 
-	//display in green/white/red depending on hitpoints
-	if(u.hitpoints() <= u.max_hitpoints()/3)
-		details << font::BAD_TEXT;
-	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
-		details << font::GOOD_TEXT;
+	// Use same coloring as in generate_report.cpp:
+	details << font::color2markup(u.hp_color()) << _("HP: ")
+			<< u.hitpoints() << "/" << u.max_hitpoints() << "\n";
 
-	details << _("HP: ") << u.hitpoints()
-			<< "/" << u.max_hitpoints() << "\n";
-
-	if(u.can_advance() == false) {
-		details << _("XP: ") << u.experience() << "/-";
-	} else {
-		//if killing a unit the same level as us would level us up,
-		//then display in green
-		if(u.max_experience() - u.experience() < game_config::kill_experience) {
-			details << font::GOOD_TEXT;
-		}
-
-		details << _("XP: ") << u.experience() << "/" << u.max_experience();
-	}
+	details << font::color2markup(u.xp_color()) << _("XP: ")  
+			<< u.experience() << "/" << u.max_experience();
 
 	if(weapons_) {
 		details << "\n"
 				<< _("Moves: ") << u.movement_left() << "/"
 				<< u.total_movement()
 				<< "\n";
-
+//%%
 		std::vector<attack_type>& attacks = u.attacks();
 		for(std::vector<attack_type>::iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 			at_it->set_specials_context(gamemap::location(),u);
 
-			details << "\n" << at_it->name()
+			details << "\n" 
+					<< "<245,230,193>" 		// see generate_report() in generate_report.cpp
+					<< at_it->name() 
 			        << " (" << gettext(at_it->type().c_str()) << ")\n";
 
-			details << at_it->weapon_specials(true);
+			details << "<166,146,117>  "
+					<< at_it->weapon_specials(true);
 			details << "\n"
+					<< "<166,146,117>  "
 			        << at_it->damage() << "-" << at_it->num_attacks() << " -- "
 			        << _(at_it->range().c_str());
 		}
@@ -891,7 +894,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 	const size_t border = 20;
 #endif
 	const int left = disp.w()/2 - width/2;
-	const int top = disp.h()/2 - height/2;
+	const int top  = disp.h()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 
@@ -949,7 +952,7 @@ network::connection network_receive_dialog(display& disp, const std::string& msg
 							   network::get_receive_stats);
 }
 
-}
+} // end namespace dialogs
 
 namespace {
 
@@ -992,7 +995,7 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	const size_t height = 20;
 #endif
 	const int left = disp.w()/2 - width/2;
-	const int top = disp.h()/2 - height/2;
+	const int top  = disp.h()/2 - height/2;
 
 	const events::event_context dialog_events_context;
 
@@ -1010,4 +1013,4 @@ network::connection network_connect_dialog(display& disp, const std::string& msg
 	return network::connect(hostname,port,waiter);
 }
 
-} //end namespace dialogs
+} // end namespace dialogs

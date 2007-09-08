@@ -13,6 +13,10 @@
    See the COPYING file for more details.
 */
 
+//! @file menu_events.cpp
+//! Operations activated from menus/hotkeys while playing a game.
+//! E.g. Unitlist, status_table, save_game, save_map, chat, show_help, etc.
+
 #include "global.hpp"
 
 #include "construct_dialog.hpp"
@@ -91,7 +95,7 @@ void statistics_dialog::action(gui::dialog_process_info &dp_info)
 		set_result(gui::CLOSE_DIALOG);
 	}
 
-	//prepare the sub-dialog for Statistic Details
+	// Prepare the sub-dialog for Statistic Details
 	std::string title;
 	std::vector<std::string> items_sub;
 	switch(result()) {
@@ -143,7 +147,7 @@ team_num_(team), unit_count_(5,0)
 	stats_ = statistics::calculate_stats(0, team_num_);
 	int n;
 	std::vector<std::string> items;
-	//prepare the menu items
+	// Prepare the menu items
 	{
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.recruits);
@@ -164,7 +168,8 @@ team_num_(team), unit_count_(5,0)
 		std::stringstream str;
 		n = statistics::sum_str_int_map(stats_.advanced_to);
 		unit_count_[2] = n;
-		str << _("Advancements") << COLUMN_SEPARATOR << n;
+        str << font::BOLD_TEXT << _("Advancements") << COLUMN_SEPARATOR
+            << font::BOLD_TEXT << n;
 		items.push_back(str.str());
 	}
 
@@ -186,7 +191,8 @@ team_num_(team), unit_count_(5,0)
 
 	{
 		std::stringstream str;
-		str << _("Damage Inflicted") << COLUMN_SEPARATOR << stats_.damage_inflicted;
+        str << font::BOLD_TEXT << _("Damage Inflicted") << COLUMN_SEPARATOR
+            << font::BOLD_TEXT << stats_.damage_inflicted;
 		items.push_back(str.str());
 	}
 
@@ -198,8 +204,8 @@ team_num_(team), unit_count_(5,0)
 
 	{
 		std::stringstream str;
-		str << _("Damage Inflicted (EV)") << COLUMN_SEPARATOR
-			<< (stats_.expected_damage_inflicted / 100.0);
+        str << font::BOLD_TEXT << _("Damage Inflicted (EV)") << COLUMN_SEPARATOR
+            << font::BOLD_TEXT << (stats_.expected_damage_inflicted / 100.0);
 		items.push_back(str.str());
 	}
 
@@ -216,7 +222,7 @@ statistics_dialog::~statistics_dialog()
 {
 }
 
-} //end anonymous namespace
+} // end anonymous namespace
 
 namespace events{
 
@@ -337,14 +343,19 @@ namespace events{
 				continue;
 
 			std::stringstream row;
-			// if a unit is already selected on the map, we do the same in the unit list dialog
+			// If a unit is already selected on the map, we do the same in the unit list dialog
 			if (gui_->selected_hex() == i->first) {
 				 row << DEFAULT_ITEM;
 				 selected = units_list.size();
 			}
 //%%
-			// If unit is leader, show name in golden
+			// If unit is leader, show name in special color, e.g. gold/silver
 			//! @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query
+
+			if(i->second.can_recruit() ) {
+				row << "<255,255,200>";
+//              row << "<205,173,0>";   // gold3
+			}
 			row << i->second.language_name() << COLUMN_SEPARATOR;
 			if(i->second.can_recruit() ) {
 				row << "<255,255,200>";
@@ -2191,4 +2202,5 @@ private:
 
 		network::send_data(cfg);
 	}
-}
+} // end namespace events
+
