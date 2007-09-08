@@ -12,11 +12,15 @@
    See the COPYING file for more details.
 */
 
+//! @file filesystem.cpp 
+//! File-IO
+
 #include "global.hpp"
 
-//include files for opendir(3), readdir(3), etc. These files may vary
-//from platform to platform, since these functions are NOT ANSI-conforming
-//functions. They may have to be altered to port to new platforms
+// Include files for opendir(3), readdir(3), etc. 
+// These files may vary from platform to platform, 
+// since these functions are NOT ANSI-conforming functions. 
+// They may have to be altered to port to new platforms
 #include <sys/types.h>
 
 //for mkdir
@@ -94,9 +98,7 @@ static HANDLE dirent__findfile_directory(char const *name, LPWIN32_FIND_DATAA da
 {
 	char	search_spec[_MAX_PATH +1];
 
-	/* Simply add the *.*, ensuring the path separator is
-	 * included.
-	 */
+	// Simply add the *.*, ensuring the path separator is included.
 	(void)lstrcpyA(search_spec, name);
 	if( '\\' != search_spec[lstrlenA(search_spec) - 1] &&
 		'/' != search_spec[lstrlenA(search_spec) - 1])
@@ -120,14 +122,14 @@ DIR *opendir(char const *name)
 	DIR 	*result =	NULL;
 	DWORD	dwAttr;
 
-	/* Must be a valid name */
+	// Must be a valid name 
 	if( !name ||
 		!*name ||
 		(dwAttr = GetFileAttributes(name)) == 0xFFFFFFFF)
 	{
 		errno = ENOENT;
 	}
-	/* Must be a directory */
+	// Must be a directory 
 	else if(!(dwAttr & FILE_ATTRIBUTE_DIRECTORY))
 	{
 		errno = ENOTDIR;
@@ -152,7 +154,7 @@ DIR *opendir(char const *name)
 			}
 			else
 			{
-				/* Save the directory, in case of rewind. */
+				// Save the directory, in case of rewind. 
 				(void)lstrcpyA(result->directory, name);
 				(void)lstrcpyA(result->dirent.d_name, result->find_data.cFileName);
 				result->dirent.d_mode	=	(int)result->find_data.dwFileAttributes;
@@ -175,7 +177,7 @@ int closedir(DIR *dir)
 	}
 	else
 	{
-		/* Close the search handle, if not already done. */
+		// Close the search handle, if not already done.
 		if(dir->hFind != INVALID_HANDLE_VALUE)
 		{
 			(void)FindClose(dir->hFind);
@@ -191,7 +193,7 @@ int closedir(DIR *dir)
 
 struct dirent *readdir(DIR *dir)
 {
-	/* The last find exhausted the matches, so return NULL. */
+	// The last find exhausted the matches, so return NULL.
 	if(dir->hFind == INVALID_HANDLE_VALUE)
 	{
 		if(FILE_ATTRIBUTE_ERROR == dir->find_data.dwFileAttributes)
@@ -207,17 +209,13 @@ struct dirent *readdir(DIR *dir)
 	}
 	else
 	{
-		/* Copy the result of the last successful match to
-		 * dirent.
-		 */
+		// Copy the result of the last successful match to dirent.
 		(void)lstrcpyA(dir->dirent.d_name, dir->find_data.cFileName);
 
-		/* Attempt the next match. */
+		// Attempt the next match.
 		if(!FindNextFileA(dir->hFind, &dir->find_data))
 		{
-			/* Exhausted all matches, so close and null the
-			 * handle.
-			 */
+			// Exhausted all matches, so close and null the handle.
 			(void)FindClose(dir->hFind);
 			dir->hFind = INVALID_HANDLE_VALUE;
 		}
@@ -267,7 +265,7 @@ namespace {
 BPath be_path;
 #endif
 
-//for getenv
+// for getenv
 #include <cstdlib>
 #include <cerrno>
 #include <cstring>
@@ -315,9 +313,9 @@ void get_files_in_dir(const std::string& directory,
 					  FILE_NAME_MODE mode,
 					  FILE_REORDER_OPTION reorder)
 {
-	// if we have a path to find directories in, then
-	// convert relative pathnames to be rooted on the
-	// wesnoth path
+	// If we have a path to find directories in, 
+	// then convert relative pathnames to be rooted 
+	// on the wesnoth path
 #ifndef __AMIGAOS4__
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 		const std::string& dir = game_config::path + "/" + directory;
@@ -365,9 +363,8 @@ void get_files_in_dir(const std::string& directory,
 		if(entry->d_name[0] == '.')
 			continue;
 #ifdef __APPLE__
-		/* HFS Mac OS X decomposes filenames using combining unicode
-		characters. Try to get the precomposed form.
-		*/
+		// HFS Mac OS X decomposes filenames using combining unicode characters. 
+		// Try to get the precomposed form.
 		char basename[MAXNAMLEN+1];
 		CFStringRef cstr = CFStringCreateWithCString(NULL,
 							 entry->d_name,
@@ -381,7 +378,7 @@ void get_files_in_dir(const std::string& directory,
 		CFRelease(cstr);
 		CFRelease(mut_str);
 #else
-		/* generic Unix */
+		// generic Unix 
 		char *basename = entry->d_name;
 #endif /* !APPLE */
 
@@ -417,7 +414,7 @@ void get_files_in_dir(const std::string& directory,
 							LOG_FS << std::string(basename) << "/" << MAINCFG << '\n';
 					}
 					} else {
-					// show what I consider strange
+					// Show what I consider strange
 						LOG_FS << fullname << "/" << MAINCFG << " not used now but skip the directory \n";
 					}
 				} else if (dirs != NULL) {
@@ -526,8 +523,8 @@ bool make_directory(const std::string& path)
 	return (mkdir(path.c_str(),AccessMode) == 0);
 }
 
-//this deletes a directory with no hidden files and subdirectories
-//also deletes a single file
+// This deletes a directory with no hidden files and subdirectories.
+// Also deletes a single file.
 bool delete_directory(const std::string& path)
 {
 	bool ret = true;
@@ -648,7 +645,7 @@ std::string get_user_data_dir()
 	if(dir == NULL) {
 		const int res = mkdir(dir_path.c_str(),AccessMode);
 
-		//also create the maps directory
+		// Also create the maps directory
 		mkdir((dir_path + "/editor").c_str(),AccessMode);
 		mkdir((dir_path + "/editor/maps").c_str(),AccessMode);
 		mkdir((dir_path + "/data").c_str(),AccessMode);
@@ -692,9 +689,9 @@ std::istream *istream_file(std::string const &fname)
 		delete s;
 	}
 
-	// FIXME: why do we rely on this even with relative paths ?
-	// still useful with zipios, for things like cache and prefs
-	// NOTE zipios has been removed not sure what to do with this code
+	//! @todo FIXME: why do we rely on this even with relative paths ?
+	// Still useful with zipios, for things like cache and prefs.
+	// NOTE zipios has been removed - not sure what to do with this code.
 	std::istream *s = new std::ifstream(fname.c_str(), std::ios_base::binary);
 	if (s->fail())
 		LOG_FS << "streaming " << fname << " failed.\n";
@@ -713,7 +710,7 @@ std::ostream *ostream_file(std::string const &fname)
 	return new std::ofstream(fname.c_str(), std::ios_base::binary);
 }
 
-//throws io_exception if an error occurs
+// Throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data)
 {
 	//const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"wb"));
@@ -805,7 +802,7 @@ time_t file_create_time(const std::string& fname)
 }
 
 std::string next_filename(const std::string &dirname, unsigned int max)
-//return the next ordered full filename within this directory
+// Return the next ordered full filename within this directory
 {
 	std::vector<std::string> files;
 	std::stringstream fname;
@@ -913,7 +910,7 @@ int file_size(const std::string& fname)
 }
 
 std::string file_name(const std::string& file)
-// analogous to POSIX basename(3), but for C++ string-object pathnames
+// Analogous to POSIX basename(3), but for C++ string-object pathnames
 {
 #ifdef _WIN32
 	static const std::string dir_separators = "\\/:";
@@ -932,7 +929,7 @@ std::string file_name(const std::string& file)
 }
 
 std::string directory_name(const std::string& file)
-// analogous to POSIX dirname(3), but for C++ string-object pathnames
+// Analogous to POSIX dirname(3), but for C++ string-object pathnames
 {
 #ifdef _WIN32
 	static const std::string dir_separators = "\\/:";
