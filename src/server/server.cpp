@@ -1068,9 +1068,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 
 		const bool lobby_changes = g->describe_slots();
-		if(lobby_changes) {
-			lobby_players_.send_data(sync_initial_response());
-		}
+		lobby_players_.send_data(sync_initial_response());
 	}
 
 	// If this is data describing the level for a game.
