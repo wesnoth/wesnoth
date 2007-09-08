@@ -65,20 +65,20 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 		const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
 		const config::child_list& animations = expanded_cfg.get_children("animation");
 		for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
-			animation_.push_back(attack_animation(**d));
+			lg::wml_error<<"attack animation  directly in attack is deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
+			lg::wml_error<<"please put it with an [attack_anim] tag in the [unit] and filter on the attack name\n";
+			animation_.push_back(unit_animation(**d));
+			animation_.back().back_compat_add_name(cfg["name"]);
 		}
-
 		if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-			LOG_STREAM(err, config) << "the animation for " << cfg["name"] << "in unit " << id
-									<< " is directly in the attack, please use [animation]\n" ;
+			lg::wml_error<<"using frame directly in attack is VERY deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
 		}
 		if(animation_.empty()) {
-			animation_.push_back(attack_animation(cfg));
+			animation_.push_back(unit_animation(cfg));
+			animation_.back().back_compat_add_name(cfg["name"]);
 		}
-		if(animation_.empty()) {
-			animation_.push_back(attack_animation(-200,unit_frame(image_fighting,300)));
-		}
-		assert(!animation_.empty());
+		animation_.push_back(unit_animation(-200,unit_frame(image_fighting,300),"attack",unit_animation::DEFAULT_ANIM));
+		animation_.back().back_compat_add_name(cfg["name"]);
 	}
 
 	id_ = unit_id_test(cfg["name"]);
@@ -111,26 +111,6 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 
 }
 
-const attack_animation* attack_type::animation(const game_display& disp, const gamemap::location& loc,const unit* my_unit,
-		const unit_animation::hit_type hit,const attack_type*secondary_attack,int swing_num,int damage) const
-{
-	// Select one of the matching animations at random
-	std::vector<const attack_animation*>  options;
-	int max_val = -3;
-	for(std::vector<attack_animation>::const_iterator i = animation_.begin(); i != animation_.end(); ++i) {
-		int matching = i->matches(disp,loc,my_unit,"attack",damage,hit,this,secondary_attack,swing_num);
-		if(matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.erase(options.begin(),options.end());
-			options.push_back(&*i);
-		}
-	}
-
-	if(options.empty()) return NULL;
-	return options[rand()%options.size()];
-}
 
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {
@@ -785,6 +765,22 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 	animations_.push_back(unit_animation(-150,unit_frame(image(),300),"defend",unit_animation::DEFAULT_ANIM));
 	// Always have a defensive animation
+	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
+	const config::child_list& attack_anims = expanded_cfg.get_children("attack_anim");
+	for(config::child_list::const_iterator d = attack_anims.begin(); d != attack_anims.end(); ++d) {
+		(**d)["apply_to"] ="attack";
+		animations_.push_back(unit_animation(**d));
+		//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=attack flag\n";
+	}
+	// get old animation format, to be removed circum 1.3.10
+	std::vector<attack_type> tmp_attacks = attacks(true);
+	for(std::vector<attack_type>::iterator attacks_itor = tmp_attacks.begin() ; attacks_itor!= tmp_attacks.end();attacks_itor++) {
+		animations_.insert(animations_.end(),attacks_itor->animation_.begin(),attacks_itor->animation_.end());
+		// this has been detected elsewhere, no deprecation message needed here
+	}
+	animations_.push_back(unit_animation(-150,unit_frame(image(),300),"attack",unit_animation::DEFAULT_ANIM));
+	// always have an attack animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
 	const config::child_list& deaths = expanded_cfg.get_children("death");
 	for(anim_itor = deaths.begin(); anim_itor != deaths.end(); ++anim_itor) {

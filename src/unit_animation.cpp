@@ -163,6 +163,13 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for(itor = cfg.child_range("secondary_attack_filter").first; itor <cfg.child_range("secondary_attack_filter").second;itor++) {
 		secondary_attack_filter_.push_back(**itor);
 	}
+	// this whole block is a temporary hack that will stay until proper multi-frame in anim is supported...
+	range = cfg.child_range("missile_frame");
+	for(; range.first != range.second; ++range.first) {
+		unit_frame tmp_frame(**range.first);
+		missile_anim_.add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
+	}
+
 }
 
 int unit_animation::matches(const game_display &disp,const gamemap::location& loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
@@ -259,3 +266,11 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 
 }
 
+
+void unit_animation::back_compat_add_name(const std::string name)
+{
+	config tmp;
+	tmp["name"] = name;
+	event_.push_back("attack");
+	primary_attack_filter_.push_back(tmp);
+}

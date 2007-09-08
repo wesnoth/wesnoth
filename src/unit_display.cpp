@@ -252,7 +252,8 @@ static void unit_attack_ranged(
 
 
 	// Start leader and attacker animation, wait for attacker animation to end
-	unit_animation missile_animation = attacker.set_attacking(*disp,a,damage,attack,secondary_attack,swing);
+	 attacker.set_attacking(*disp,a,damage,attack,secondary_attack,swing);
+	animated<unit_frame> missile_animation = attacker.get_animation()->get_missile_anim();
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){

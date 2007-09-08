@@ -184,7 +184,7 @@ public:
 	void set_extra_anim(const game_display& disp,const gamemap::location& loc, std::string flag);
 	void set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
 	void set_walking(const game_display& disp,const gamemap::location& loc);
-	const unit_animation & set_attacking( const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num);
+	void set_attacking( const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num);
 	void set_recruited(const game_display& disp,const gamemap::location& loc);
 	void set_healed(const game_display& disp,const gamemap::location& loc,int healing);
 	void set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
@@ -249,7 +249,7 @@ public:
 				STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
 				STATE_RECRUITED, STATE_HEALED, STATE_POISONED,
 				STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
-	const unit_animation * start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool is_attack_anim =false);
+	void start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars);
 
 	//! The name of the file to game_display (used in menus).
 	const std::string& absolute_image() const { return cfg_["image"]; }
@@ -265,7 +265,6 @@ public:
 	const std::string& race() const { return race_->id(); }
 
 	const unit_animation* choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int damage=0,const unit_animation::hit_type hit_type = unit_animation::INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
-
 
 	bool get_ability_bool(const std::string& ability, const gamemap::location& loc) const;
 	unit_ability_list get_abilities(const std::string& ability, const gamemap::location& loc) const;

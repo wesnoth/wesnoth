@@ -41,6 +41,9 @@ class unit_animation:public animated<unit_frame>
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
 		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
+		// only to support all [attack_anim] format, to remove at 1.3.10 time
+		void back_compat_add_name(const std::string name);
+		const animated<unit_frame> &get_missile_anim() const {return missile_anim_;} 
 	private:
 		t_translation::t_list terrain_types_;
 		std::vector<config> unit_filter_;
@@ -54,20 +57,8 @@ class unit_animation:public animated<unit_frame>
 		std::vector<config> secondary_attack_filter_;
 		std::vector<hit_type> hits_;
 		std::vector<int> swing_num_;
+		animated<unit_frame> missile_anim_;
 };
 
-
-
-
-class attack_animation: public unit_animation
-{
-	public:
-		explicit attack_animation(const config& cfg):unit_animation(cfg),missile_anim(cfg,"missile_frame"){};
-		explicit attack_animation(int start_time,const unit_frame &frame):unit_animation(start_time,frame) {};
-		const unit_animation &get_missile_anim() {return missile_anim;}
-	private:
-		unit_animation missile_anim;
-
-};
 
 #endif

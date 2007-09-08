@@ -90,9 +90,11 @@ public:
 	bool special_affects_self(const config& cfg) const;
 
 	config cfg_;
-	const attack_animation* animation(const game_display& disp, const gamemap::location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
+	const unit_animation* animation(const game_display& disp, const gamemap::location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
+	// made public to ease backward compatibility for WML syntax
+	// to be removed (with all corresponding code once 1.3.6 is reached
+	std::vector<unit_animation> animation_;
 private:
-	std::vector<attack_animation> animation_;
 	t_string description_;
 	std::string id_;
 	std::string type_;
@@ -274,7 +276,7 @@ private:
 	// animations
 	std::vector<unit_animation> animations_;
 
-    std::string flag_rgb_;
+	std::string flag_rgb_;
 };
 
 class game_data

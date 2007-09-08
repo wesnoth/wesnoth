@@ -1310,6 +1310,7 @@ void unit::read(const config& cfg, bool use_traits)
 			const config::child_list& leading_anims = cfg_.get_children("leading_anim");
 
 			const config::child_list& defends = cfg_.get_children("defend");
+			const config::child_list& attack_anim = cfg_.get_children("attack_anim");
 			const config::child_list& teleports = cfg_.get_children("teleport_anim");
 			const config::child_list& extra_anims = cfg_.get_children("extra_anim");
 			const config::child_list& deaths = cfg_.get_children("death");
@@ -1408,6 +1409,22 @@ void unit::read(const config& cfg, bool use_traits)
 			}
 			animations_.push_back(unit_animation(0,unit_frame(absolute_image(),150),"movement",unit_animation::DEFAULT_ANIM));
 			// Always have a movement animation
+			bool found_attack = false;
+			for(config::child_list::const_iterator d = attack_anim.begin(); d != attack_anim.end(); ++d) {
+				animations_.push_back(unit_animation(**d));
+				found_attack = true;
+				//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
+				//lg::wml_error<<"please put it with an [animation] tag and apply_to=attack flag\n";
+			}
+			// TODO backward compat code, to be removed in 1.3.10, support for old attack format ([animation] in [attack] )
+			if(found_attack == false) {
+				std::vector<attack_type> tmp_attacks = type()->attacks();
+				for(std::vector<attack_type>::iterator attacks_itor = tmp_attacks.begin() ; attacks_itor!= tmp_attacks.end();attacks_itor++) {
+					animations_.insert(animations_.end(),attacks_itor->animation_.begin(),attacks_itor->animation_.end());
+				}
+			}
+			animations_.push_back(unit_animation(-150,unit_frame(absolute_image(),300),"attack",unit_animation::DEFAULT_ANIM));
+			// always have an attack animation
 			for(config::child_list::const_iterator d2 = defends.begin(); d2 != defends.end(); ++d2) {
 				(**d2)["apply_to"]="defend";
 				(**d2)["value"]=(**d2)["damage"];
@@ -1652,7 +1669,7 @@ void unit::set_extra_anim(const game_display &disp,const gamemap::location& loc,
 
 }
 
-const unit_animation & unit::set_attacking(const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num)
+void unit::set_attacking(const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num)
 {
 	state_ =  STATE_ATTACKING;
 	unit_animation::hit_type hit_type;
@@ -1663,7 +1680,7 @@ const unit_animation & unit::set_attacking(const game_display &disp,const gamema
 	}else {
 		hit_type = unit_animation::MISS;
 	}
-	return *start_animation(disp,loc,type.animation(disp,loc,this,hit_type,secondary_attack,swing_num,damage),true,true);
+	start_animation(disp,loc,choose_animation(disp,loc,"attack",damage,hit_type,&type,secondary_attack,swing_num),true);
 
 }
 void unit::set_leading(const game_display &disp,const gamemap::location& loc)
@@ -1737,22 +1754,16 @@ void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 	start_animation(disp,loc,choose_animation(disp,loc,"idling"),true);
 }
 
-const unit_animation* unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool is_attack_anim)
+void unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars)
 {
 	if(!animation) {
 		set_standing(disp,loc,with_bars);
-		return NULL;
+		return ;
 	}
 	draw_bars_ =  with_bars;
 	offset_=0;
 	if(anim_) delete anim_;
-	if(!is_attack_anim) {
-		anim_ = new unit_animation(*animation);
-	} else {
-		//! @todo TODO this, the is_attack_anim param and the return value are ugly hacks
-		// that need to be taken care of eventually
-		anim_ = new attack_animation(*(static_cast<const attack_animation*>(animation)));
-	}
+	anim_ = new unit_animation(*animation);
 	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp.idle_anim()) {
@@ -1760,11 +1771,6 @@ const unit_animation* unit::start_animation(const game_display &disp, const game
 			+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
 	} else {
 		next_idling_ = INT_MAX;
-	}
-	if(is_attack_anim) {
-		return &(static_cast<attack_animation*>(anim_))->get_missile_anim();
-	} else {
-		return NULL;
 	}
 }
 
