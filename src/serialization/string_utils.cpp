@@ -740,8 +740,6 @@ utf8_string lowercase(const utf8_string& s)
 	return s;
 }
 
-
-//! @todo FIXME: 'wordw' does not match '*word*'
 bool wildcard_string_match(const std::string& str, const std::string& match)
 {
 	bool matches = false;
