@@ -681,7 +681,7 @@ def hack_syntax(filename, lines):
         if nullattack:
             lines = lines[:i] + lines[i+2:]
     # Upconvert old radius usage
-    if "1.3.7" in versions and future:
+    if "1.3.7" in versions:
         radius_pos = wmlfind("radius=", WmlIterator(lines))
         while radius_pos is not None:
             scopeIter = radius_pos.iterScope()
@@ -691,20 +691,26 @@ def hack_syntax(filename, lines):
             radius_danger = False
             to_indent = []
             no_indent = []
+	    insideElem = 0
             for i in scopeIter:
                 elem = i.element
                 if elem in ("[and]", "[or]", "[not]"):
                     radius_danger = True
-                    no_indent.extend(i.text.splitlines())
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
+		    insideElem += 1
+		elif insideElem:
+		    if elem in ("[/and]", "[/or]", "[/not]"):
+		        insideElem -= 1
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
                 elif elem in ("variable=", "side=", "count=", "adjacent="):
-                    no_indent.extend(i.text.splitlines())
+                    no_indent.extend(txt+'\n' for txt in i.text.splitlines())
                 else:
-                    to_add = i.text.splitlines()
+                    to_add = [txt+'\n' for txt in i.text.splitlines()]
                     to_add[0] = baseindent + to_add[0]
                     to_indent.extend(to_add)
             if radius_danger:
-                lines = lines[:startline] + [wspace + "[and]"] + to_indent +[
-                    wspace + "[/and]"] + no_indent + lines[scopeIter.lineno:]
+                lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
+                    wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
                 modcount += 1
                 radius_pos = wmlfind("radius=", WmlIterator(lines, startline+len(to_indent)+1))
             else:
