@@ -681,7 +681,7 @@ def hack_syntax(filename, lines):
         if nullattack:
             lines = lines[:i] + lines[i+2:]
     # Upconvert old radius usage
-    if "1.3.7" in versions:
+    if "1.3.7" in versions and "older" not in versions:
         radius_pos = wmlfind("radius=", WmlIterator(lines))
         while radius_pos is not None:
             scopeIter = radius_pos.iterScope()
@@ -972,7 +972,7 @@ if __name__ == '__main__':
     except getopt.GetoptError:
         help()
         sys.exit(1)
-    oldversion = 'trunk'
+    oldversion = 'older'
     dryrun = False
     future = False
     verbose = 0
@@ -1016,7 +1016,7 @@ if __name__ == '__main__':
     else:
         print >>sys.stderr, "wmllint: unrecognized version."
         sys.exit(1)
-    if not dryrun and not clean and not revert:
+    if not dryrun and not clean and not revert and len(versions) > 1:
         explain = "Upgrades for:"
         for i in range(len(versions)-1):
             explain += " %s -> %s," % (versions[i],  versions[i+1])
