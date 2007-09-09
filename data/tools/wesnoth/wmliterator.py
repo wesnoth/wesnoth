@@ -6,7 +6,7 @@ import sys, re
 keyPattern = re.compile('(\w+)(,\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(\[.*?\])')
-macroOpenPattern = re.compile(r'(\{[\w\:]+)')
+macroOpenPattern = re.compile(r'(\{[^\s\}]+)')
 macroClosePattern = re.compile(r'\}')
 
 def wmlfind(element, itor):
