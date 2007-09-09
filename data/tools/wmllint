@@ -744,6 +744,8 @@ def is_map(filename):
             has_map_content = len(lines) > 1
     except OSError:
         has_map_content = False
+    except IndexError:
+        has_map_content = False
     return has_map_content
 
 class maptransform_error:
@@ -970,7 +972,7 @@ if __name__ == '__main__':
     except getopt.GetoptError:
         help()
         sys.exit(1)
-    oldversion = 'older'
+    oldversion = 'trunk'
     dryrun = False
     future = False
     verbose = 0
