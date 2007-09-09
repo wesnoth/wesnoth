@@ -1323,7 +1323,8 @@ void unit::read(const config& cfg, bool use_traits)
 			const config::child_list& levelout_anims = cfg_.get_children("levelout_anim");
 			const config::child_list& healed_anims = cfg_.get_children("healed_anim");
 			const config::child_list& poison_anims = cfg_.get_children("poison_anim");
-			for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
+			config::child_list::const_iterator d;
+			for(d = animations.begin(); d != animations.end(); ++d) {
 				animations_.push_back(unit_animation(**d));
 			}
 			for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
@@ -1410,7 +1411,7 @@ void unit::read(const config& cfg, bool use_traits)
 			animations_.push_back(unit_animation(0,unit_frame(absolute_image(),150),"movement",unit_animation::DEFAULT_ANIM));
 			// Always have a movement animation
 			bool found_attack = false;
-			for(config::child_list::const_iterator d = attack_anim.begin(); d != attack_anim.end(); ++d) {
+			for(d = attack_anim.begin(); d != attack_anim.end(); ++d) {
 				animations_.push_back(unit_animation(**d));
 				found_attack = true;
 				//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
@@ -2758,7 +2759,8 @@ void unit::add_modification(const std::string& type, const config& mod,
 					const config::child_list& levelout_anims = (**i.first).get_children("levelout_anim");
 					const config::child_list& healed_anims = (**i.first).get_children("healed_anim");
 					const config::child_list& poison_anims = (**i.first).get_children("poison_anim");
-					for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
+					config::child_list::const_iterator d;
+					for(d = animations.begin(); d != animations.end(); ++d) {
 						animations_.push_back(unit_animation(**d));
 					}
 					for(config::child_list::const_iterator leading_anim = leading_anims.begin(); leading_anim != leading_anims.end(); ++leading_anim) {
@@ -2826,7 +2828,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 						//lg::wml_error<<"movement animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
 						//lg::wml_error<<"please put it with an [animation] tag and apply_to=movement flag\n";
 					}
-					for(config::child_list::const_iterator d = attack_anim.begin(); d != attack_anim.end(); ++d) {
+					for(d = attack_anim.begin(); d != attack_anim.end(); ++d) {
 						(**d)["apply_to"]="attack";
 						animations_.push_back(unit_animation(**d));
 						//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
