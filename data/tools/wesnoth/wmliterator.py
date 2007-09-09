@@ -130,7 +130,7 @@ Element Types:
             elif scopes:
                 scopes.pop()
             else:
-                print >>sys.stderr, 'wmliterator: attempt to close empty scope at '+elementType
+                print >>sys.stderr, 'wmliterator: attempt to close empty scope at', elementType, 'line', lineno
             scopeDelta += 1
         while scopeDelta > 0:
             openedScopes.append((elementType, lineno))
@@ -148,6 +148,7 @@ class WmlIterator(object):
         self.lines = lines
         self.endScope = None
         self.end = len(lines)
+        self.reset()
         self.seek(begin)
         self.endScope = endScope
 
@@ -155,16 +156,20 @@ class WmlIterator(object):
         """The magic iterator method"""
         return self
 
+    def reset(self):
+        """reset any line tracking information to defaults"""
+        self.lineno = -1
+        self.scopes = []
+        self.nextScopes = []
+        self.text = ""
+        self.span = 1
+        self.element = ""
+        
     def seek(self, lineno):
         """Move the iterator to a specific line number"""
-        if lineno < 0 or lineno < self.lineno:
-            # moving backwards or to the beginning forces a reset
-            self.lineno = -1
-            self.scopes = []
-            self.nextScopes = []
-            self.text = ""
-            self.span = 1
-            self.element = ""
+        if lineno < self.lineno:
+        # moving backwards forces a reset
+            self.reset()
         while self.lineno + self.span - 1 < lineno:
             self.next()
 
