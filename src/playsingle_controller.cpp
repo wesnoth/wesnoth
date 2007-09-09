@@ -517,7 +517,11 @@ void playsingle_controller::before_human_turn(bool save)
 	}
 
 	if(preferences::turn_dialog()) {
-		gui::message_dialog(*gui_,"",_("It is now your turn")).show();
+		std::string message = _("It is now $name|'s turn");
+		utils::string_map symbols;
+		symbols["name"] = teams_[player_number_ - 1].current_player();
+		message = utils::interpolate_variables_into_string(message, &symbols);
+		gui::message_dialog(*gui_, "", message).show();
 	}
 
 	const std::string& turn_cmd = preferences::turn_cmd();
