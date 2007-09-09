@@ -683,28 +683,30 @@ def hack_syntax(filename, lines):
         radius_pos = wmlfind("radius=", WmlIterator(lines))
         while radius_pos is not None:
             scopeIter = radius_pos.iterScope()
-            startline = scopeIter.lineno()
-            wspace = radius_pos.text()
+            startline = scopeIter.lineno + 1
+            wspace = radius_pos.text
             wspace = wspace[:len(wspace)-len(wspace.lstrip())]
             radius_danger = False
             to_indent = []
             no_indent = []
-            for pos in scopeIter:
-                tag = pos.tag()
-                if tag in ("[and]", "[or]", "[not]"):
+            for i in scopeIter:
+                elem = i.element
+                if elem in ("[and]", "[or]", "[not]"):
                     radius_danger = True
-                    no_indent.extend(pos.text().splitlines())
-                elif tag in ("variable=", "side=", "count=", "adjacent="):
-                    no_indent.extend(pos.text().splitlines())
+                    no_indent.extend(i.text.splitlines())
+                elif elem in ("variable=", "side=", "count=", "adjacent="):
+                    no_indent.extend(i.text.splitlines())
                 else:
-                    to_add = pos.text().splitlines()
+                    to_add = i.text.splitlines()
                     to_add[0] = baseindent + to_add[0]
                     to_indent.extend(to_add)
             if radius_danger:
-                lines = lines[:startline] + [wspace + "[and]"] + to_indent +\
-                        [wspace + "[/and]"] + no_indent + lines[scopeIter.lineno():]
+                lines = lines[:startline] + [wspace + "[and]"] + to_indent +[
+                    wspace + "[/and]"] + no_indent + lines[scopeIter.lineno:]
                 modcount += 1
-            radius_pos = wmlfind("radius=", WmlIterator(lines, startline+len(to_indent)+1+radius_danger))
+                radius_pos = wmlfind("radius=", WmlIterator(lines, startline+len(to_indent)+1))
+            else:
+                radius_pos = wmlfind("radius=", radius_pos)
     # More syntax transformations would go here.
     return (lines, modcount)
 
