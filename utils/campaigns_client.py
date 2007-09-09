@@ -83,7 +83,7 @@ if __name__ == "__main__":
     address = options.address
     if not ":" in address:
         address += ":" + str(port)
-        
+
     def get(name, version, uploads, cdir):
         mythread = cs.get_campaign_async(name, options.raw_download)
 
@@ -179,7 +179,8 @@ if __name__ == "__main__":
                     get(name, version, uploads, options.campaigns_dir)
                 else:
                     print "Not downloading", name,\
-                        "as the version already is", local_version
+                        "as the version already is", local_version,\
+                        "(The add-on got re-uploaded.)"
             else:
                 print "Not downloading", name,\
                     "because it is already up-to-date."
@@ -236,26 +237,30 @@ if __name__ == "__main__":
                 info = os.path.join(dir, "info.cfg")
                 sversion = campaigns[dirname].get_text_val("version", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
-                if os.path.exists(info):                    
+                if os.path.exists(info):
                     lrev, lversion = get_info(info)
                     if not srev:
-                        sys.stdout.write(" ? " + dirname + " has no " +
+                        sys.stdout.write(" ? " + dirname + " - has no " +
                             "version info on the server.\n")
                     elif srev == lrev:
-                        sys.stdout.write("   " + dirname + " - is up to date.\n")
+                        sys.stdout.write("   " + dirname + 
+                            " - is up to date.\n")
                     elif sversion == lversion:
-                        sys.stdout.write(" # " + dirname + " version is " +
-                            sversion + ", but you have revision %d not %d." %
-                            (lrev, srev))
-                        if srev < lrev: # server reset?
-                            if options.update: get(dirname, sversion, srev, cdir)
+                        sys.stdout.write(" # " + dirname + " - is version " +
+                            sversion + (" but you have revision %s not %s." +
+			    " (The add-on got re-uploaded.)\n") %
+			    (lrev, srev))
+                        if srev > lrev: # server reset?
+                            if options.update:
+				get(dirname, sversion, srev, cdir)
                     else:
                         sys.stdout.write(" * " + dirname + " - you have " +
                             "revision " + lrev + " but revision " + srev +
                             " is available.\n")
                         if options.update: get(dirname, sversion, srev, cdir)
                 else:
-                    sys.stdout.write(" ? " + dirname + " - is installed but has no " +
+                    sys.stdout.write(" ? " + dirname + 
+                        " - is installed but has no " +
                         "version info.\n")
                     if options.update: get(dirname, sversion, srev, cdir)
             else:
