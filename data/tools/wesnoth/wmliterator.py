@@ -6,7 +6,7 @@ import sys, re
 keyPattern = re.compile('(\w+)(,\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(\[.*?\])')
-macroOpenPattern = re.compile(r'(\{[^\s\}]+)')
+macroOpenPattern = re.compile(r'(\{[^\s\}]*)')
 macroClosePattern = re.compile(r'\}')
 
 def wmlfind(element, itor):
@@ -30,10 +30,12 @@ def parseQuotes(lines, lineno):
         while endquote < 0:
             endquote = text.find('"', beginofend)
             if endquote < 0:
-                # todo: check for no lines left
+                if lineno + span >= len(lines):
+                    print >>sys.stderr, 'wmliterator: reached EOF due to unterminated string at line', lineno+1
+                    return text, span
                 text += lines[lineno + span]
                 span += 1
-                beginofend = 0
+                beginofend = text.rfind('\n', beginofend, len(text)-1)
         begincomment = text.find('#', endquote+1)
         if begincomment < 0:
             begincomment = None
@@ -130,7 +132,7 @@ Element Types:
             elif scopes:
                 scopes.pop()
             else:
-                print >>sys.stderr, 'wmliterator: attempt to close empty scope at', elementType, 'line', lineno
+                print >>sys.stderr, 'wmliterator: attempt to close empty scope at', elementType, 'line', lineno+1
             scopeDelta += 1
         while scopeDelta > 0:
             openedScopes.append((elementType, lineno))
