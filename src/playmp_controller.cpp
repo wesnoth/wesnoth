@@ -215,6 +215,66 @@ void playmp_controller::play_human_turn(){
 	menu_handler_.clear_undo_stack(player_number_);
 }
 
+void playmp_controller::linger(upload_log& log)
+{
+        LOG_NG << "beginning end-of-scenario linger";
+        browse_ = true;
+        linger_ = true;
+        // this is actually for after linger mode is over -- we don't want to
+        // stay stuck in linger state when the *next* scenario is over.
+        gamestate_.completion = "running";
+        // End all unit moves
+        for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
+                u->second.set_user_end_turn(true);
+        }
+        try {
+		// reimplement parts of play_side()
+		//! @todo FIXME: needs cleaning up of unnecessary stuff
+		//               the timer probably needs some handling
+		turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
+				        *gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
+		turn_data_->replay_error().attach_handler(this);
+		gui_->enable_menu("endturn", true);
+		while(!end_turn_) {
+			config cfg;
+			const network::connection res = network::receive_data(cfg);
+			std::deque<config> backlog;
+
+			if(res != network::null_connection) {
+				try{
+					turn_data_->process_network_data(cfg,res,backlog,skip_replay_);
+				}
+				catch (replay::error& e){
+					process_oos(e.message);
+					throw e;
+				}
+			}
+
+			play_slice();
+//			} catch(end_level_exception& e) {
+//				turn_data_->send_data();
+//				throw e;
+
+			gui_->draw();
+
+			turn_data_->send_data();
+		}
+		menu_handler_.clear_undo_stack(player_number_);
+		// send any remaining data
+		turn_data_->send_data();
+		if (turn_data_ != NULL){
+			turn_data_->replay_error().detach_handler(this);
+			delete turn_data_;
+			turn_data_ = NULL;
+		}
+        } catch(game::load_game_exception&) {
+                // Loading a new game is effectively a quit.
+                log.quit(status_.turn());
+                throw;
+        }
+        LOG_NG << "ending end-of-scenario linger";
+}
+
 void playmp_controller::after_human_turn(){
 	if ( level_["mp_countdown"] == "yes" ){
 		const int action_increment = lexical_cast_default<int>(level_["mp_countdown_action_bonus"],0);

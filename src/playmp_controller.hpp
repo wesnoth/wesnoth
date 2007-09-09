@@ -36,6 +36,7 @@ public:
 	bool counting_down();
 	void think_about_countdown(int ticks);
 	void process(events::pump_info &info);
+	void linger(upload_log&);
 
 protected:
 	virtual void handle_generic_event(const std::string& name);
