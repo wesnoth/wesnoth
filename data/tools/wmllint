@@ -648,6 +648,7 @@ def hack_syntax(filename, lines):
         modcount += 1
     # Insert attacks where they belong
     female_attacks = filter(lambda a: a.female, animations)
+    female_attacks.reverse()
     if female_attacks:
         female_end = -1
         for i in range(len(lines)):
@@ -658,6 +659,7 @@ def hack_syntax(filename, lines):
         female_wml = "".join(map(lambda x: x.wml, female_attacks))
         lines = lines[:female_end] + [female_wml] + lines[female_end:]
     male_attacks = filter(lambda a: not a.female, animations)
+    male_attacks.reverse()
     if male_attacks:
         male_end = -1
         for i in range(len(lines)):
