@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-08 18:39+0200\n"
-"PO-Revision-Date: 2007-09-07 13:42+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2007-09-10 23:00+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,9 +65,8 @@ msgstr "Kampagnengestaltung"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Fertigstellung und Betreuung"
+msgstr "Betreuung"
 
 #: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
 msgid "+1 max HP"
@@ -85,7 +84,6 @@ msgstr "Kampagnenepilog und -fortsetzung"
 #: data/campaigns/The_South_Guard/_main.cfg:39
 #: data/campaigns/Two_Brothers/_main.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
-#, fuzzy
 msgid "Artwork and Graphics Design"
 msgstr "Grafik"
 
@@ -112,9 +110,8 @@ msgid "Code and Translation Assistance"
 msgstr "Programmierungs- und Übersetzungshilfe"
 
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:34
-#, fuzzy
 msgid "WML Assistance"
-msgstr "Resistenz"
+msgstr "WML-Entwicklung"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
@@ -383,7 +380,6 @@ msgid "Unknown Unit"
 msgstr "Unbekannte Einheit"
 
 #: data/core/help.cfg:77
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -392,7 +388,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Noch ist Euch nichts bekannt über diese Einheit. Zunächst müsst Ihr ihr im "
+"Noch ist Euch nichts über diese Einheit bekannt. Zunächst müsst Ihr ihr im "
 "Spiel begegnen, bevor es Euch vergönnt ist, ihre Beschreibung einsehen zu "
 "dürfen."
 
@@ -2606,7 +2602,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:365 data/core/macros/abilities.cfg:366
 msgid "ambush"
-msgstr "Hinterhalt"
+msgstr "Waldkenntnis"
 
 #: data/core/macros/abilities.cfg:370 data/core/macros/abilities.cfg:374
 msgid ""
@@ -2617,17 +2613,19 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Hinterhalt:\n"
-"Diese Einheit kann sich im Wald vor ihren Gegnern verstecken. \n"
+"Waldkenntnis:\n"
+"Da die meisten Elfen in den Wäldern aufwachsen, sind sie mit diesem Gelände "
+"vertraut, wie kaum ein anderer und können sich vor den Augen des Feindes "
+"verbergen. \n"
 "\n"
 "Feindliche Einheiten können diese Einheit nicht sehen oder angreifen, wenn "
-"sie im Wald ist, außer, wenn sich eine feindliche Einheit auf einem "
+"sie sich im Wald aufhält, außer, wenn sich eine feindliche Einheit auf einem "
 "angrenzenden Feld befindet, oder direkt nachdem die Einheit selbst "
 "angegriffen hat."
 
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:394
 msgid "nightstalk"
-msgstr "Nachtschatten"
+msgstr "Schemen"
 
 #: data/core/macros/abilities.cfg:393 data/core/macros/abilities.cfg:398
 msgid ""
@@ -2638,20 +2636,19 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Nachtschatten:\n"
-"Diese Einheit ist des Nachts für ihre Feinde unsichtbar. \n"
+"Schemen:\n"
+"Bereits tagsüber ist es schwierig, einen Geist zu erkennen. Doch des Nachts "
+"sind ihre schemenhaften Körper so gut wie unsichtbar.\n"
 "\n"
 "Feindliche Einheiten können diese Einheit nachts nicht sehen oder angreifen, "
-"es sei denn, diese Einheit hat unmittelbar zuvor selbst angegriffen, oder es "
-"befindet sich eine feindliche Einheit auf einem angrenzenden Feld."
+"außer, wenn sich eine feindliche Einheit auf einem angrenzenden Feld "
+"befindet, oder direkt nachdem die Einheit selbst angegriffen hat."
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
-#, fuzzy
 msgid "concealment"
-msgstr "Lager"
+msgstr "Gassenwissen"
 
 #: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -2661,12 +2658,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Abtauchen:\n"
-"Diese Einheit kann sich in tiefem Wasser vor ihren Gegnern verstecken. \n"
+"Gassenwissen:\n"
+"Diese Einheit kennt sich so gut in Dörfern (Ausnahmen bilden die Dörfer des "
+"Meervolkes und der Naga) aus, dass sie ihre Anwesenheit verbergen kann. \n"
 "\n"
 "Feindliche Einheiten können diese Einheit nicht sehen oder angreifen, wenn "
-"sie in tiefem Wasser ist, außer, wenn sich eine feindliche Einheit auf einem "
-"angrenzenden Feld befindet, oder direkt nachdem die Einheit selbst "
+"sie sich in einem Dorf aufhält, außer, wenn sich eine feindliche Einheit auf "
+"einem angrenzenden Feld befindet oder direkt nachdem die Einheit selbst "
 "angegriffen hat."
 
 #: data/core/macros/abilities.cfg:437 data/core/macros/abilities.cfg:442
@@ -2692,7 +2690,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:463
 msgid "berserk"
-msgstr "Berserkertum"
+msgstr "Kampfrausch"
 
 #: data/core/macros/abilities.cfg:465
 msgid ""
@@ -2700,7 +2698,7 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"Berserkertum:\n"
+"Kampfrausch:\n"
 "Diese Einheit ist es gewohnt, bis zum Tod zu kämpfen. Wenn sie in die "
 "Offensive geht und einen Gegner angreift oder sich verteidigt, ruht sie "
 "erst, bis der Tod die Entscheidung gefällt hat oder 30 Angriffsrunden "
@@ -3047,7 +3045,6 @@ msgid "Zap"
 msgstr "Zap"
 
 #: data/core/macros/names.cfg:3
-#, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -3167,7 +3164,7 @@ msgstr ""
 "Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
 "Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
-"Amithrarion,Cálad,Legilad"
+"Amithrarion,Cálad,Legilad,Linduilas"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -4038,7 +4035,6 @@ msgstr ""
 
 # Hat jemand eine Idee, wie man "ein Feind des Feindes" nicht so holprig hinbekommt?
 #: data/core/macros/special-notes.cfg:45
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target. This "
 "unit may backstab, inflicting double damage, by creeping around behind that "
@@ -4263,16 +4259,14 @@ msgid "Teal"
 msgstr "Türkis"
 
 #: data/core/units.cfg:40 data/hardwired/english.cfg:18
-#, fuzzy
 msgid "race^Elves"
-msgstr "Zwerge"
+msgstr "Elfen"
 
 #: data/core/units.cfg:49 data/hardwired/english.cfg:32
 msgid "race^Woses"
 msgstr "Waldschrate"
 
 #: data/core/units.cfg:57 data/hardwired/english.cfg:19
-#, fuzzy
 msgid "race^Humans"
 msgstr "Menschen"
 
@@ -4281,9 +4275,8 @@ msgid "race^Dwarves"
 msgstr "Zwerge"
 
 #: data/core/units.cfg:72 data/hardwired/english.cfg:20
-#, fuzzy
 msgid "race^Orcs"
-msgstr "Oger"
+msgstr "Orks"
 
 #: data/core/units.cfg:79 data/hardwired/english.cfg:24
 msgid "race^Goblins"
@@ -4314,14 +4307,12 @@ msgid "race^Trolls"
 msgstr "Trolle"
 
 #: data/core/units.cfg:132 data/hardwired/english.cfg:23
-#, fuzzy
 msgid "race^Drakes"
-msgstr "Zwerge"
+msgstr "Draken"
 
 #: data/core/units.cfg:139
-#, fuzzy
 msgid "race^Saurians"
-msgstr "Nagas"
+msgstr "Saurianer"
 
 #: data/core/units.cfg:147 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
@@ -5395,11 +5386,10 @@ msgid "Remote host disconnected."
 msgstr "Der Server hat die Verbindung unterbrochen."
 
 #: src/game.cpp:1269
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
-"Es gab ein Problem beim Erstellen der für die Installation der Kampagne "
+"Es gab ein Problem beim Erstellen der für die Installation der Erweiterung "
 "benötigten Dateien."
 
 #: src/game.cpp:1281 src/game.cpp:1320 src/game.cpp:1347
@@ -5432,9 +5422,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Beim offiziellen Wesnoth-Server anmelden"
 
 #: src/game.cpp:1379
-#, fuzzy
 msgid "Connect to Host/Server"
-msgstr "Mit Kampagnenserver verbinden"
+msgstr "Mit Gastgeber/Server verbinden"
 
 #: src/game.cpp:1380
 msgid "Join a server or hosted game"
@@ -5453,9 +5442,8 @@ msgid "Local Game"
 msgstr "Lokales Spiel"
 
 #: src/game.cpp:1386
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Eine Mehrspielerpartie am selben Rechner spielen"
+msgstr "Eine Mehrspielerpartie am selben Rechner gegen KI/Menschen spielen"
 
 #: src/game.cpp:1394 src/multiplayer.cpp:232
 msgid "Login: "
@@ -5482,10 +5470,9 @@ msgid "Choose your preferred language:"
 msgstr "Wählt die gewünschte Sprache:"
 
 #: src/game.cpp:1627
-#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr ""
-"Die folgende(n) Zusatzkampagne(n) weisen Fehler auf und können nicht geladen "
+"Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
 "werden:"
 
 #: src/game.cpp:1632
@@ -5729,7 +5716,6 @@ msgid "Movement Cost"
 msgstr "Bewegungskosten"
 
 #: src/help.cpp:1507
-#, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Verschiedenes"
 
@@ -5838,28 +5824,22 @@ msgid "Damage Taken (EV)"
 msgstr "Erlittener Schaden (EW)"
 
 #: src/menu_events.cpp:250 src/menu_events.cpp:254
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
+msgstr "Möchtet Ihr ihn wirklich entlassen?"
 
 #: src/menu_events.cpp:250
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr ""
 "Diese Einheit ist sehr erfahren und ist bereits mindestens eine Stufe "
-"aufgestiegen. Wollt Ihr $noun wirklich entlassen?"
+"aufgestiegen!"
 
 #: src/menu_events.cpp:251 src/menu_events.cpp:255
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
+msgstr "Möchtet Ihr sie wirklich entlassen?"
 
 #: src/menu_events.cpp:254
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
-"Diese Einheit steht kurz vor dem Stufenaufstieg! Wollt Ihr $noun wirklich "
-"entlassen?"
+msgstr "Diese Einheit steht kurz vor dem Stufenaufstieg!"
 
 #: src/menu_events.cpp:311
 msgid "Statistics"
@@ -6873,6 +6853,8 @@ msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr ""
+"Ihr werdet das nächste Szenario mit $gold Goldstücken oder dem vorgegebenen "
+"Startgold beginnen, je nachdem welcher Wert höher ist."
 
 #: src/playsingle_controller.cpp:392
 msgid ""
