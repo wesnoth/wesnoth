@@ -5,7 +5,7 @@ Author: Sapient (Patrick Parker), 2007
 import sys, re
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
-tagPattern = re.compile(r'(^|(?<![\w\|]))(\[.*?\])')
+tagPattern = re.compile(r'(^|(?<![\w\|\}]))(\[.*?\])')
 macroOpenPattern = re.compile(r'(\{[^\s\}]*)')
 macroClosePattern = re.compile(r'\}')
 
@@ -67,7 +67,8 @@ def closeScope(scopes, closerElement):
                 pass
         elif not isDirective(scopes[-1][0]):
             closed = scopes.pop()
-            if ((isOpener(closed[0]) and closerElement != '[/'+closed[0][1:])
+            if ((isOpener(closed[0]) and closerElement != '[/'+closed[0][1:]
+                 and '+'+closerElement != closed[0][1]+'[/'+closed[0][2:])
             or (closed[0].startswith('{') and closerElement.find('macro')<0)):
                 print >>sys.stderr, 'wmliterator: reached', closerElement, 'before closing scope', closed
                 scopes.append(closed) # to reduce additional errors (hopefully)
@@ -225,5 +226,29 @@ class WmlIterator(object):
         if not self.scopes:
             return WmlIterator(self.lines)
         return WmlIterator(self.lines, self.scopes[-1][1], self.scopes[-1])
+
+if __name__ == '__main__':
+    """Perform a test run on a file or directory"""
+    import os, glob
+    didSomething = False
+    print 'Current directory is', os.getcwd()
+    flist = glob.glob(os.path.join(os.getcwd(), raw_input('Which file(s) would you like to test?\n')))
+    while flist:
+        fname = flist.pop()
+        if os.path.isdir(fname):
+            flist += glob.glob(fname + os.path.sep + '*')
+            continue
+        if not os.path.isfile(fname) or os.path.splitext(fname)[1] != '.cfg':
+            continue
+        print 'Reading', fname+'...'
+        didSomething = True
+        f = open(fname)
+        itor = WmlIterator(f.readlines())
+        for i in itor:
+            pass
+        f.close()
+        print itor.lineno + itor.span, 'lines read.'
+    if not didSomething:
+        print 'That is not a valid .cfg file'
 
 # wmliterator.py ends here
