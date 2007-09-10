@@ -58,7 +58,7 @@ def isOpener(str):
     return str.startswith("[") and not isCloser(str)
 
 def closeScope(scopes, closerElement):
-    """Close the most recently opened scope. Return false if unsuccessful
+    """Close the most recently opened scope. Return false if not enough scopes.
     note: directives close all the way back to the last open directive
     non-directives cannot close a directive and will no-op in that case."""
     try:
@@ -67,9 +67,10 @@ def closeScope(scopes, closerElement):
                 pass
         elif not isDirective(scopes[-1][0]):
             closed = scopes.pop()
-            if ((isOpener(closed[0]) and not isCloser(closerElement))
+            if ((isOpener(closed[0]) and closerElement != '[/'+closed[0][1:])
             or (closed[0].startswith('{') and closerElement.find('macro')<0)):
                 print >>sys.stderr, 'wmliterator: reached', closerElement, 'before closing scope', closed
+                scopes.append(closed) # to reduce additional errors (hopefully)
         return True
     except IndexError:
         return False
