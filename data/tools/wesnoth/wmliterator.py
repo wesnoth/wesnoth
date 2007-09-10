@@ -3,7 +3,7 @@ wmliterator.py -- Python routines for navigating a Battle For Wesnoth WML tree
 Author: Sapient (Patrick Parker), 2007
 """
 import sys, re
-keyPattern = re.compile('(\w+)(,\w+)*\s*=')
+keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(\[.*?\])')
 macroOpenPattern = re.compile(r'(\{[^\s\}]*)')
@@ -57,6 +57,20 @@ def isOpener(str):
     "Are we looking at an opening tag?"
     return str.startswith("[") and not closer(str)
 
+def closeScope(scopes, closerIsDirective=True):
+    """Close the most recently opened scope. Return false if unsuccessful
+    note: directives close all the way back to the last open directive
+    non-directives cannot close a directive and will no-op in that case."""
+    try:
+        if closerIsDirective:
+            while not isDirective(scopes.pop()[0]):
+                pass
+        elif not isDirective(scopes[-1][0]):
+            scopes.pop()
+        return True
+    except IndexError:
+        return False
+        
 def parseElements(text, lineno, scopes):
     """remove any closed scopes, return a tuple of element names
     and list of new unclosed scopes    
@@ -66,16 +80,18 @@ Element Types:
         [/tag_name] - closes a scope
     keys: either "key=" or "key1,key2=" (multi-assignment)
         key= - does not affect the scope
+        (key1=, key2=) - multi-assignment returns multiple elements
     directives: one of "#ifdef", "#else", "#endif", "#define", "#enddef"
         #ifdef - opens a scope
         #else - closes a scope, also opens a new scope
         #endif - closes a scope
         #define - opens a scope
         #enddef - closes a scope
-    macro calls: "{MACRO_NAME"
+    macro calls: "{MACRO_NAME}"
         {MACRO_NAME - opens a scope
         } - closes a scope (not an element)
     """
+    closeMacroType = 'end of macro'
     elements = [] #(elementType, sortPos, scopeDelta)
     # first remove any quoted strings
     beginquote = text.find('"')
@@ -93,10 +109,10 @@ Element Types:
     if text.startswith('#ifdef'):
         return ['#ifdef'], [('#ifdef', lineno)]
     elif text.startswith('#else'):
-        scopes.pop()
+        closeScope(scopes)
         return ['#else'], [('#else', lineno)]
     elif text.startswith('#endif'):
-        scopes.pop()
+        closeScope(scopes)
         return ['#endif'], []
     elif text.startswith('#define'):
         return ['#define'], [('#define', lineno)]
@@ -120,24 +136,23 @@ Element Types:
     for m in macroOpenPattern.finditer(text):
         elements.append((m.group(1)+'}', m.start(), 1))
     for m in macroClosePattern.finditer(text):
-        elements.append((None, m.start(), -1))
+        elements.append((closeMacroType, m.start(), -1))
     #sort by start position
     elements.sort(key=lambda x:x[1])
     resultElements = []
     openedScopes = []
     for elementType, sortPos, scopeDelta in elements:
         while scopeDelta < 0:
-            if openedScopes:
-                openedScopes.pop()
-            elif scopes:
-                scopes.pop()
+            dtype = isDirective(elementType)
+            if closeScope(openedScopes, dtype) or closeScope(scopes, dtype):
+                pass
             else:
                 print >>sys.stderr, 'wmliterator: attempt to close empty scope at', elementType, 'line', lineno+1
             scopeDelta += 1
         while scopeDelta > 0:
             openedScopes.append((elementType, lineno))
             scopeDelta -= 1
-        if elementType:
+        if elementType != closeMacroType:
             resultElements.append(elementType)
     return resultElements, openedScopes
     
@@ -159,7 +174,7 @@ class WmlIterator(object):
         return self
 
     def reset(self):
-        """reset any line tracking information to defaults"""
+        """Reset any line tracking information to defaults"""
         self.lineno = -1
         self.scopes = []
         self.nextScopes = []
@@ -176,7 +191,7 @@ class WmlIterator(object):
             self.next()
 
     def hasNext(self):
-        """some loops may wish to check this method instead of calling next()
+        """Some loops may wish to check this method instead of calling next()
         and handling StopIteration... note: inaccurate for ScopeIterators"""
         return self.end > self.lineno + self.span
 
