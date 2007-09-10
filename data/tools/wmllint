@@ -622,6 +622,7 @@ def hack_syntax(filename, lines):
                 comment = fields[1]
             if syntactic.strip().startswith("name"):
                 attackname = syntactic.split("=")[1].strip()
+    boucmanized = False
     # All animation ranges have been gathered,  We have a list of objects
     # containing the attack information.  Reverse it, because we're
     # going to process them back to front to avoid invalidating the
@@ -646,6 +647,7 @@ def hack_syntax(filename, lines):
         aframe.wml = "".join(animation)
         lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
         modcount += 1
+        boucmanized = True
     # Insert attacks where they belong
     female_attacks = filter(lambda a: a.female, animations)
     female_attacks.reverse()
@@ -719,7 +721,7 @@ def hack_syntax(filename, lines):
                 radius_pos = wmlfind("radius=", radius_pos)
     # Check for duplicated attack names -- may be a result of a naive
     # boucman conversion.
-    if experimental: 
+    if boucmanized:
         name_pos = wmlfind("name=", WmlIterator(lines))
         duplist = {}
         while name_pos is not None:
@@ -1001,7 +1003,6 @@ if __name__ == '__main__':
     diffs = False
     revert = False
     stripcr = False
-    experimental = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -1023,8 +1024,6 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
-        elif switch in ('-x', '--experimental'):
-            experimental = True
 
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
