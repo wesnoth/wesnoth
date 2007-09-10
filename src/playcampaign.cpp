@@ -546,7 +546,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	}
 
 	if (!gamestate.scenario.empty() && gamestate.scenario != "null") {
-		gui::show_error_message(disp, _("Unknown scenario: '") + gamestate.scenario + '\'');
+		std::string message = _("Unknown scenario: '$scenario|'");
+		utils::string_map symbols;
+		symbols["scenario"] = gamestate.scenario;
+		message = utils::interpolate_variables_into_string(message, &symbols);
+		gui::show_error_message(disp, message);
 		return QUIT;
 	}
 

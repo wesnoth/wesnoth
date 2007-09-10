@@ -444,7 +444,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				const std::string current_turn = turn.substr(0, index);
 				games_.back().current_turn = lexical_cast<unsigned int>(current_turn);
 			}
-			games_.back().status = _("Turn") + (" " + turn);
+			games_.back().status = _("Turn ") + turn;
 		} else {
 			games_.back().started = false;
 			if(slots != "")

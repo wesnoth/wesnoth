@@ -969,15 +969,11 @@ namespace
 
 				if(index < 0) return;
 
-				const std::string confirm_message =
-					"Are you sure you want to remove the add-on \'"
-					+ addons.at(index)
-					+ "?\'";
-				res = gui::dialog(
-						disp(),
-						_("Confirm"),
-						confirm_message,
-						gui::YES_NO).show();
+				std::string confirm_message = _("Are you sure you want to remove the add-on '$addon|'?");
+				utils::string_map symbols;
+				symbols["addon"] = addons.at(index);
+				confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
+				res = gui::dialog(disp(), _("Confirm"),	confirm_message, gui::YES_NO).show();
 			} while (res != 0);
 
 			bool delete_success = true;
@@ -986,14 +982,10 @@ namespace
 			std::string filename = addons.at(index);
 			std::replace(filename.begin(), filename.end(), ' ', '_');
 			delete_success &= delete_directory(campaign_dir + filename + ".cfg");
-			if (delete_success)
-			{
-				delete_success &= delete_directory(campaign_dir + filename);
-			}
-
 			//Report results
 			if (delete_success)
 			{
+				delete_success &= delete_directory(campaign_dir + filename);
 				//force a reload of configuration information
 				const bool old_cache = use_caching_;
 				use_caching_ = false;
@@ -1004,11 +996,12 @@ namespace
 				paths_manager_.set_paths(game_config_);
 				clear_binary_paths_cache();
 
-				std::string success_message = "Add-on \'" + addons.at(index) + "\' deleted.";
-
+				std::string message = _("Add-on '$addon|' deleted.");
+				utils::string_map symbols;
+				symbols["addon"] = addons.at(index);
+				message = utils::interpolate_variables_into_string(message, &symbols);
 				/* GCC-3.3 needs a temp var otherwise compilation fails */
-				gui::dialog dlg(disp(), _("Add-on deleted"), success_message,
-						gui::OK_ONLY);
+				gui::dialog dlg(disp(), _("Add-on deleted"), message, gui::OK_ONLY);
 				dlg.show();
 			}
 			else
@@ -1281,8 +1274,11 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 		gui::show_error_message(disp(), _("Connection timed out"));
 		return;
 	} else if(data.child("error")) {
-		gui::show_error_message(disp(), _("The server responded with an error: \"") +
-		                        (*data.child("error"))["message"].str() + '"');
+		std::string error_message = _("The server responded with an error: \"$error|\"");
+		utils::string_map symbols;
+		symbols["error"] = (*data.child("error"))["message"].str();
+		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+		gui::show_error_message(disp(), error_message);
 		return;
 	} else if(data.child("message")) {
 		const int res = gui::dialog(disp(),_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL).show();

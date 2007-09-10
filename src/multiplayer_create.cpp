@@ -90,7 +90,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	std::string help_sep = " ";
 	help_sep[0] = HELP_STRING_SEPARATOR;
 	std::string menu_help_str = help_sep + _("Load Game");
-	map_options_.push_back(markup_txt + _("Load Game") + std::string("...") + menu_help_str);
+	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
 
 	//user maps
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);

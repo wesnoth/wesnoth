@@ -368,7 +368,12 @@ void unit::generate_traits(bool musthaveonly)
 	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(id());
 	// Calculate the unit's traits
         if (type == gamedata_->unit_types.end()) {
-		throw game::game_error("Unknown unit type '" + id() + "'");
+		std::string error_message = _("Unknown unit type '$type|'");
+		utils::string_map symbols;
+		symbols["type"] = id();
+		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+		LOG_STREAM(err, engine) << "unit of type " << id() << " not found!\n";
+		throw game::game_error(error_message);
         }
 	std::vector<config*> candidate_traits = type->second.possible_traits();
 	std::vector<config*> traits;
@@ -1142,8 +1147,12 @@ void unit::read(const config& cfg, bool use_traits)
 			advance_to(&i->second.get_gender_unit_type(gender_));
 			type_set = true;
 		} else {
+			std::string error_message = _("Unknown unit type '$type|'");
+			utils::string_map symbols;
+			symbols["type"] = cfg["type"];
+			error_message = utils::interpolate_variables_into_string(error_message, &symbols);
 			LOG_STREAM(err, engine) << "unit of type " << cfg["type"] << " not found!\n";
-			throw game::game_error("Unknown unit type '" + cfg["type"] + "'");
+			throw game::game_error(error_message);
 		}
 		attacks_left_ = max_attacks_;
 		if(cfg["moves"]=="") {
@@ -2518,7 +2527,12 @@ void unit::add_modification(const std::string& type, const config& mod,
 					wassert(gamedata_ != NULL);
 					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
                                         if(var == gamedata_->unit_types.end()) {
-		                                throw game::game_error("Unknown unit type '" + id() + "'");
+						std::string error_message = _("Unknown unit type '$type|'");
+						utils::string_map symbols;
+						symbols["type"] = id();
+						error_message = utils::interpolate_variables_into_string(error_message, &symbols);
+						LOG_STREAM(err, engine) << "unit of type " << id() << " not found!\n";
+						throw game::game_error(error_message);
                                         }
 					advance_to(&var->second.get_variation(variation_));
 				} else if(apply_to == "profile") {
