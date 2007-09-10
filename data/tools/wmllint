@@ -715,6 +715,25 @@ def hack_syntax(filename, lines):
                 radius_pos = wmlfind("radius=", WmlIterator(lines, startline+len(to_indent)+1))
             else:
                 radius_pos = wmlfind("radius=", radius_pos)
+    # Check for duplicated attack names -- may be a result of a naive
+    # boucman conversion.
+    if experimental: 
+        name_pos = wmlfind("name=", WmlIterator(lines))
+        duplist = {}
+        while name_pos is not None:
+            key = lines[name_pos.lineno].strip()
+            context = map(lambda x: x[0], name_pos.scopes)
+            if '[attack]' in context:
+                if key not in duplist:
+                    duplist[key] = []
+                duplist[key].append(name_pos.lineno)
+            # Go to next
+            name_pos = wmlfind("name=", name_pos)
+        for (key, linenos) in duplist.items():
+            if len(linenos) > 1:
+                print 'warning: duplicated attack %s at:' % key
+                for dup in linenos:
+                    print '"%s", %d: %s' % (filename, dup, key) 
     # More syntax transformations would go here.
     return (lines, modcount)
 
@@ -980,6 +999,7 @@ if __name__ == '__main__':
     diffs = False
     revert = False
     stripcr = False
+    experimental = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -1001,6 +1021,8 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
+        elif switch in ('-x', '--experimental'):
+            experimental = True
 
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
