@@ -5,26 +5,26 @@ Author: Sapient (Patrick Parker), 2007
 import sys, re
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
-tagPattern = re.compile(r'(\[.*?\])')
+tagPattern = re.compile(r'(^|(?<![\w\|]))(\[.*?\])')
 macroOpenPattern = re.compile(r'(\{[^\s\}]*)')
 macroClosePattern = re.compile(r'\}')
 
 def wmlfind(element, itor):
-    """find a simple element from traversing a WML iterator"""
+    """Find a simple element from traversing a WML iterator"""
     for i in itor:
         if element == itor.element:
             return itor
     return None
 
 def parseQuotes(lines, lineno):
-    """return the line or multiline text if a quote spans multiple lines"""
+    """Return the line or multiline text if a quote spans multiple lines"""
     text = lines[lineno]
     span = 1
     begincomment = text.find('#')
     if begincomment < 0:
         begincomment = None
     beginquote = text[:begincomment].find('"')
-    while beginquote > 0:
+    while beginquote >= 0:
         endquote = -1
         beginofend = beginquote+1
         while endquote < 0:
@@ -55,24 +55,31 @@ def isCloser(str):
 
 def isOpener(str):
     "Are we looking at an opening tag?"
-    return str.startswith("[") and not closer(str)
+    return str.startswith("[") and not isCloser(str)
 
-def closeScope(scopes, closerIsDirective=True):
+def closeScope(scopes, closerElement):
     """Close the most recently opened scope. Return false if unsuccessful
     note: directives close all the way back to the last open directive
     non-directives cannot close a directive and will no-op in that case."""
     try:
-        if closerIsDirective:
+        if isDirective(closerElement):
             while not isDirective(scopes.pop()[0]):
                 pass
         elif not isDirective(scopes[-1][0]):
-            scopes.pop()
+            closed = scopes.pop()
+            if ((isOpener(closed[0]) and not isCloser(closerElement))
+            or (closed[0].startswith('{') and closerElement.find('macro')<0)):
+                print >>sys.stderr, 'wmliterator: reached', closerElement, 'before closing scope', closed
         return True
     except IndexError:
         return False
-        
+
+def printScopeError(elementType, lineno):
+    """Print out warning if a scope was unable to close"""
+    print >>sys.stderr, 'wmliterator: attempt to close empty scope at', elementType, 'line', lineno+1
+
 def parseElements(text, lineno, scopes):
-    """remove any closed scopes, return a tuple of element names
+    """Remove any closed scopes, return a tuple of element names
     and list of new unclosed scopes    
 Element Types:
     tags: one of "[tag_name]" or "[/tag_name]"
@@ -95,7 +102,7 @@ Element Types:
     elements = [] #(elementType, sortPos, scopeDelta)
     # first remove any quoted strings
     beginquote = text.find('"')
-    while beginquote > 0:
+    while beginquote >= 0:
         endquote = text.find('"', beginquote+1)
         if endquote < 0:
             text = text[:beginquote]
@@ -109,26 +116,28 @@ Element Types:
     if text.startswith('#ifdef'):
         return ['#ifdef'], [('#ifdef', lineno)]
     elif text.startswith('#else'):
-        closeScope(scopes)
+        if not closeScope(scopes, '#else'):
+            printScopeError('#else', lineno)
         return ['#else'], [('#else', lineno)]
     elif text.startswith('#endif'):
-        closeScope(scopes)
+        if not closeScope(scopes, '#endif'):
+            printScopeError('#endif', lineno)            
         return ['#endif'], []
     elif text.startswith('#define'):
         return ['#define'], [('#define', lineno)]
-    elif text.find('#enddef') > 0:
+    elif text.find('#enddef') >= 0:
         elements.append(('#enddef', text.find('#enddef'), -1))
     else:
         commentSearch = 0
     begincomment = text.find('#', commentSearch)
-    if begincomment > 0:
+    if begincomment >= 0:
         text = text[:begincomment]
     #now find elements in a loop
     for m in tagPattern.finditer(text):
         delta = 1
-        if isCloser(m.group(1)):
+        if isCloser(m.group(2)):
             delta = -1
-        elements.append((m.group(1), m.start(), delta))
+        elements.append((m.group(2), m.start(), delta))
     for m in keyPattern.finditer(text):
         for i, k in enumerate(keySplit.split(m.group(0))):
             if k:
@@ -141,19 +150,16 @@ Element Types:
     elements.sort(key=lambda x:x[1])
     resultElements = []
     openedScopes = []
-    for elementType, sortPos, scopeDelta in elements:
+    for elem, sortPos, scopeDelta in elements:
         while scopeDelta < 0:
-            dtype = isDirective(elementType)
-            if closeScope(openedScopes, dtype) or closeScope(scopes, dtype):
-                pass
-            else:
-                print >>sys.stderr, 'wmliterator: attempt to close empty scope at', elementType, 'line', lineno+1
+            if not(closeScope(openedScopes, elem) or closeScope(scopes, elem)):
+                printScopeError(elem, lineno)
             scopeDelta += 1
         while scopeDelta > 0:
-            openedScopes.append((elementType, lineno))
+            openedScopes.append((elem, lineno))
             scopeDelta -= 1
-        if elementType != closeMacroType:
-            resultElements.append(elementType)
+        if elem != closeMacroType:
+            resultElements.append(elem)
     return resultElements, openedScopes
     
 class WmlIterator(object):
@@ -199,12 +205,13 @@ class WmlIterator(object):
         """Move the iterator to the next line number
         note: May raise StopIteration"""
         if not self.hasNext():
+            if self.scopes:
+                print >>sys.stderr, "wmliterator: reached EOF with open scopes", self.scopes
             raise StopIteration
         self.lineno = self.lineno + self.span
         self.text, self.span = parseQuotes(self.lines, self.lineno)
         self.scopes.extend(self.nextScopes)
-        self.element, self.nextScopes = parseElements(self.lines[self.lineno],
-                                                     self.lineno, self.scopes)
+        self.element, self.nextScopes = parseElements(self.text, self.lineno, self.scopes)
         if(len(self.element) == 1):
             # currently we only wish to handle simple single assignment syntax
             self.element = self.element[0]
