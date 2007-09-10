@@ -9,6 +9,8 @@ tagPattern = re.compile(r'(^|(?<![\w\|\}]))(\[.*?\])')
 macroOpenPattern = re.compile(r'(\{[^\s\}]*)')
 macroClosePattern = re.compile(r'\}')
 
+silenceErrors = {}
+
 def wmlfind(element, itor):
     """Find a simple element from traversing a WML iterator"""
     for i in itor:
@@ -16,7 +18,7 @@ def wmlfind(element, itor):
             return itor
     return None
 
-def parseQuotes(lines, lineno):
+def parseQuotes(lines, fname, lineno):
     """Return the line or multiline text if a quote spans multiple lines"""
     text = lines[lineno]
     span = 1
@@ -31,7 +33,7 @@ def parseQuotes(lines, lineno):
             endquote = text.find('"', beginofend)
             if endquote < 0:
                 if lineno + span >= len(lines):
-                    print >>sys.stderr, 'wmliterator: reached EOF due to unterminated string at line', lineno+1
+                    printError(fname, 'reached EOF due to unterminated string at line', lineno+1)
                     return text, span
                 text += lines[lineno + span]
                 span += 1
@@ -57,7 +59,7 @@ def isOpener(str):
     "Are we looking at an opening tag?"
     return str.startswith("[") and not isCloser(str)
 
-def closeScope(scopes, closerElement):
+def closeScope(scopes, closerElement, fname, lineno):
     """Close the most recently opened scope. Return false if not enough scopes.
     note: directives close all the way back to the last open directive
     non-directives cannot close a directive and will no-op in that case."""
@@ -70,17 +72,32 @@ def closeScope(scopes, closerElement):
             if ((isOpener(closed[0]) and closerElement != '[/'+closed[0][1:]
                  and '+'+closerElement != closed[0][1]+'[/'+closed[0][2:])
             or (closed[0].startswith('{') and closerElement.find('macro')<0)):
-                print >>sys.stderr, 'wmliterator: reached', closerElement, 'before closing scope', closed
+                printError(fname, 'reached', closerElement, 'at line', lineno, 'before closing scope', closed[0], '(%d)'%closed[1])
                 scopes.append(closed) # to reduce additional errors (hopefully)
         return True
     except IndexError:
         return False
 
-def printScopeError(elementType, lineno):
+def printError(fname, *misc):
+    """Print error associated with a given file; avoid printing duplicates"""
+    if fname:
+        silenceValue = ' '.join(map(str, misc))
+        if fname not in silenceErrors:
+            print >>sys.stderr, fname
+            silenceErrors[fname] = set()
+        elif silenceValue in silenceErrors[fname]:
+            return # do not print a duplicate error for this file
+        silenceErrors[fname].add(silenceValue)
+    print >>sys.stderr, 'wmliterator:',
+    for item in misc:
+        print >>sys.stderr, item,
+    print >>sys.stderr #terminate line
+        
+def printScopeError(elementType, fname, lineno):
     """Print out warning if a scope was unable to close"""
-    print >>sys.stderr, 'wmliterator: attempt to close empty scope at', elementType, 'line', lineno+1
+    printError(fname, 'attempt to close empty scope at', elementType, 'line', lineno+1)
 
-def parseElements(text, lineno, scopes):
+def parseElements(text, fname, lineno, scopes):
     """Remove any closed scopes, return a tuple of element names
     and list of new unclosed scopes    
 Element Types:
@@ -118,12 +135,12 @@ Element Types:
     if text.startswith('#ifdef'):
         return ['#ifdef'], [('#ifdef', lineno)]
     elif text.startswith('#else'):
-        if not closeScope(scopes, '#else'):
-            printScopeError('#else', lineno)
+        if not closeScope(scopes, '#else', fname, lineno):
+            printScopeError('#else', fname, lineno)
         return ['#else'], [('#else', lineno)]
     elif text.startswith('#endif'):
-        if not closeScope(scopes, '#endif'):
-            printScopeError('#endif', lineno)            
+        if not closeScope(scopes, '#endif', fname, lineno):
+            printScopeError('#endif', fname, lineno)            
         return ['#endif'], []
     elif text.startswith('#define'):
         return ['#define'], [('#define', lineno)]
@@ -154,8 +171,9 @@ Element Types:
     openedScopes = []
     for elem, sortPos, scopeDelta in elements:
         while scopeDelta < 0:
-            if not(closeScope(openedScopes, elem) or closeScope(scopes, elem)):
-                printScopeError(elem, lineno)
+            if not(closeScope(openedScopes, elem, fname, lineno)\
+            or closeScope(scopes, elem, fname, lineno)):
+                printScopeError(elem, fname, lineno)
             scopeDelta += 1
         while scopeDelta > 0:
             openedScopes.append((elem, lineno))
@@ -168,9 +186,10 @@ class WmlIterator(object):
     """Return an iterable WML navigation object.
     note: if changes are made to lines while iterating, this may produce
     unexpected results."""
-    def __init__(self, lines, begin=-1, endScope=None):
+    def __init__(self, lines, fname=None, begin=-1, endScope=None):
         "Initialize a new WmlIterator"
         self.lines = lines
+        self.fname = fname
         self.endScope = None
         self.end = len(lines)
         self.reset()
@@ -208,12 +227,12 @@ class WmlIterator(object):
         note: May raise StopIteration"""
         if not self.hasNext():
             if self.scopes:
-                print >>sys.stderr, "wmliterator: reached EOF with open scopes", self.scopes
+                printError(self.fname, "reached EOF with open scopes", self.scopes)
             raise StopIteration
         self.lineno = self.lineno + self.span
-        self.text, self.span = parseQuotes(self.lines, self.lineno)
+        self.text, self.span = parseQuotes(self.lines, self.fname, self.lineno)
         self.scopes.extend(self.nextScopes)
-        self.element, self.nextScopes = parseElements(self.text, self.lineno, self.scopes)
+        self.element, self.nextScopes = parseElements(self.text, self.fname, self.lineno, self.scopes)
         if(len(self.element) == 1):
             # currently we only wish to handle simple single assignment syntax
             self.element = self.element[0]
@@ -224,8 +243,8 @@ class WmlIterator(object):
     def iterScope(self):
         """Return an iterator for the current scope"""
         if not self.scopes:
-            return WmlIterator(self.lines)
-        return WmlIterator(self.lines, self.scopes[-1][1], self.scopes[-1])
+            return WmlIterator(self.lines, self.fname)
+        return WmlIterator(self.lines, self.fname, self.scopes[-1][1], self.scopes[-1])
 
 if __name__ == '__main__':
     """Perform a test run on a file or directory"""
@@ -250,5 +269,7 @@ if __name__ == '__main__':
         print itor.lineno + itor.span, 'lines read.'
     if not didSomething:
         print 'That is not a valid .cfg file'
+    if os.name == 'nt' and os.path.splitext(__file__)[0].endswith('wmliterator') and not sys.argv[1:]:
+        os.system('pause')
 
 # wmliterator.py ends here

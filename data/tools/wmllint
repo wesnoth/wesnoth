@@ -686,7 +686,7 @@ def hack_syntax(filename, lines):
             lines = lines[:i] + lines[i+2:]
     # Upconvert old radius usage
     if "1.3.7" in versions and "older" not in versions:
-        radius_pos = wmlfind("radius=", WmlIterator(lines))
+        radius_pos = wmlfind("radius=", WmlIterator(lines, filename))
         while radius_pos is not None:
             scopeIter = radius_pos.iterScope()
             startline = scopeIter.lineno + 1
@@ -716,7 +716,7 @@ def hack_syntax(filename, lines):
                 lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
                     wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
                 modcount += 1
-                radius_pos = wmlfind("radius=", WmlIterator(lines, startline+len(to_indent)+1))
+                radius_pos = wmlfind("radius=", WmlIterator(lines, filename, startline+len(to_indent)+1))
             else:
                 radius_pos = wmlfind("radius=", radius_pos)
     # Check for duplicated attack names -- may be a result of a naive
