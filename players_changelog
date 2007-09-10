@@ -4,22 +4,38 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.3.7+svn:
   * Campaigns
+    * Descent into Darkness
+      * Fixed a bug causing the growth ability of Ghast to not always work.
+      * Fixed a bug in 'A Small Favor - Part 2' preventing one random passage
+        from opening up.
+    * Eastern Invasion
+      * New portrait for Konrad II.
+    * Liberty
+      * Fixed the undead transformations not working in 'Unlawful Orders'.
     * Northern Rebirth
-      * Colored portraits for Sisal and Rakshas
+      * Colored portraits for Sisal and Rakshas.
+    * Sceptre of Fire
+      * Fixed lava expansion in 'Caverns of Flame' not working.
     * Son of the Black Eye
       * Fixed bug in 'Saving Inarix', the bridge is now properly blown up.
     * The South Guard
-      * Map for "A Choice In The Fog modified so mermen are actually useful.
-      * "Tidings Good And Ill" is now playable even if you didn't recruit
-	elves in the previous scenarios.
+      * Deoran now has a lvl 3 advancement, and no special AMLA options.
+      * Map for 'A Choice In The Fog' modified so mermen are actually useful.
+      * Fixed all bugs with units sometimes not starting with max HP and
+        movement at the beginning of some scenarios.
+      * In 'Tidings Good And Ill', you can now recruit and recall the elf
+        escorts of your choosing instead of having them automatically picked
+        from those you had in the previous scenario.
+      * In 'Tidings Good And Ill', defeating the naga queen is now mandatory.
 
   * Graphics
     * New graphics for Highwayman.
+    * Nicer image for the illuminates aura.
     * New button and slider in preferences to switch unit idle animations on
       and off and set their frequency.
 
   * Language and translations
-    * Updated translations: Bulgarian, Danish, Dutch, Finnish, French, German, 
+    * Updated translations: Bulgarian, Danish, Dutch, Finnish, French, German,
       Polish, Swedish, Valencian.
     * New translation: Serbian (Latin version).
 
@@ -33,7 +49,6 @@ Version 1.3.7+svn:
     * Increase the XP requirement to advance to the Fugitive from 77 to 120.
     * Decreased the melee attack of the Fugitive from 12-2 to 11-2.
     * Decreased the ranged attack of the Fugitive from 8-4 to 7-4.
-
 
   * User interface
     * OK in the status menu replaced with more informative "Scroll To".
