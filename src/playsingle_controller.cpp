@@ -231,10 +231,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				config& info = cfg.add_child("info");
 				info["type"] = "termination";
 				info["condition"] = "game over";
-				if (end_level.result == VICTORY)
-					info["result"] = "victory";
-				else
-					info["result"] = "defeat";
+				info["result"] = gamestate_.completion;
 				network::send_data(cfg);
 			} else {
 				gui::message_dialog(*gui_,_("Game Over"),

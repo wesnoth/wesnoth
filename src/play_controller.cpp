@@ -522,7 +522,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 #endif
 		return true;
 
-	// Commands that have some precondions:
+	// Commands that have some preconditions:
 	case hotkey::HOTKEY_SAVE_GAME:
 		return !events::commands_disabled;
 

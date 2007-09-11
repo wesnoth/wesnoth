@@ -219,7 +219,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				}
 			}
 
-			const std::string msg = teams_[side_index].current_player() + " " + _("has left the game. What do you want to do?");
+			const std::string msg = teams_[side_index].current_player() + _(" has left the game. What do you want to do?");
 			action = gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY,&options);
 		}
 
