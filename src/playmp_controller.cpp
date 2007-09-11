@@ -169,7 +169,7 @@ void playmp_controller::play_human_turn(){
 		}
 
 
-		if (current_team().countdown_time() > 0 &&  ( level_["mp_countdown"] == "yes" ) ){
+		if (current_team().countdown_time() > 0 &&  ( level_["mp_countdown"] == "yes" ) && !linger_){
 			SDL_Delay(1);
 			const int ticks = SDL_GetTicks();
 			int new_time = current_team().countdown_time()-maximum<int>(1,(ticks - cur_ticks));
@@ -227,46 +227,21 @@ void playmp_controller::linger(upload_log& log)
         for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
                 u->second.set_user_end_turn(true);
         }
+	//current_team().set_countdown_time(0);
+	//halt and cancel the countdown timer
+	if(beep_warning_time_ < 0) {
+		sound::stop_bell();
+	}
+	beep_warning_time_=-1;
         try {
 		// reimplement parts of play_side()
-		//! @todo FIXME: needs cleaning up of unnecessary stuff
-		//               the timer probably needs some handling
 		turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
 				        *gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
 		turn_data_->replay_error().attach_handler(this);
-		gui_->enable_menu("endturn", true);
-		while(!end_turn_) {
-			config cfg;
-			const network::connection res = network::receive_data(cfg);
-			std::deque<config> backlog;
 
-			if(res != network::null_connection) {
-				try{
-					turn_data_->process_network_data(cfg,res,backlog,skip_replay_);
-				}
-				catch (replay::error& e){
-					process_oos(e.message);
-					throw e;
-				}
-			}
+		play_human_turn();
+		after_human_turn();
 
-			play_slice();
-//			} catch(end_level_exception& e) {
-//				turn_data_->send_data();
-//				throw e;
-
-			gui_->draw();
-
-			turn_data_->send_data();
-		}
-		menu_handler_.clear_undo_stack(player_number_);
-		// send any remaining data
-		turn_data_->send_data();
-		if (turn_data_ != NULL){
-			turn_data_->replay_error().detach_handler(this);
-			delete turn_data_;
-			turn_data_ = NULL;
-		}
         } catch(game::load_game_exception&) {
                 // Loading a new game is effectively a quit.
                 log.quit(status_.turn());
