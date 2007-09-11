@@ -57,6 +57,7 @@
    * In help, for each ability and special weapon topic, display a list of
      hyperlinks to encountered units having this ability/special (bug #9567)
    * OK in the status menu replaced with more informative "Scroll To".
+   * in help, the unit list is now organized by race sub-sections.
  * WML engine:
    * now tag [filter_adjacent] is supported in the Standard Unit Filter (SUF)
    * now tag [filter_adjacent_location] is supported in the Standard Location
@@ -71,12 +72,14 @@
    * the WML for attack animations has been moved from the [attack] block to
      the [unit] block
    * new effect apply_to=new_animation to add animations to unit
+   * the [race] tag have now an "id" key for WML operations. The old "name" is    now used for user display purposes (currently only in help sections).
  * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
    * in help, the encountered units list is now correctly updated when using
      ":debug" and ":nodebug" commands
    * remove some useless messages from the standard output
    * user-made campaign translations now work again for Windows (bug #9926)
+   * faster inital loading of the help.
 
 Version 1.3.7:
  * Campaigns
