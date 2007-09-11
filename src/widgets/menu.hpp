@@ -237,6 +237,7 @@ private:
 
 	size_t selected_;
 	bool click_selects_;
+	bool out_;
 	bool previous_button_;
 	//std::set<size_t> undrawn_items_;
 

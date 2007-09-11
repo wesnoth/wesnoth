@@ -159,7 +159,7 @@ menu::menu(CVideo& video, const std::vector<std::string>& items,
           max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
 		  heading_height_(-1),
 	  cur_help_(-1,-1), help_string_(-1),
-	  selected_(0), click_selects_(click_selects),
+	  selected_(0), click_selects_(click_selects), out_(false),
 	  previous_button_(true), show_result_(false),
 	  double_clicked_(false),
 	  num_selects_(true),
@@ -657,8 +657,14 @@ void menu::handle_event(const SDL_Event& event)
 	} else if(event.type == SDL_MOUSEMOTION) {
 		if(click_selects_) {
 			const int item = hit(event.motion.x,event.motion.y);
-			if (item != -1)
+			const bool out = (item == -1);
+			if (out_ != out) {
+					out_ = out;
+					invalidate_row_pos(selected_);
+			}
+			if (item != -1) {
 				move_selection_to(item);
+			}
 		}
 
 		const int heading_item = hit_heading(event.motion.x,event.motion.y);
@@ -933,7 +939,8 @@ void menu::draw_contents()
 	style_->draw_row(*this,0,heading_rect,HEADING_ROW);
 
 	for(size_t i = 0; i != item_pos_.size(); ++i) {
-		style_->draw_row(*this,item_pos_[i],get_item_rect(i),item_pos_[i] == selected_ ? SELECTED_ROW : NORMAL_ROW);
+		style_->draw_row(*this,item_pos_[i],get_item_rect(i),
+			 (!out_ && item_pos_[i] == selected_) ? SELECTED_ROW : NORMAL_ROW);
 	}
 }
 
@@ -956,7 +963,8 @@ void menu::draw()
 				const unsigned int pos = item_pos_[*i];
 				const SDL_Rect& rect = get_item_rect(*i);
 				bg_restore(rect);
-				style_->draw_row(*this,pos,rect,pos == selected_ ? SELECTED_ROW : NORMAL_ROW);
+				style_->draw_row(*this,pos,rect,
+					(!out_ && pos == selected_) ? SELECTED_ROW : NORMAL_ROW);
 				update_rect(rect);
 			}
 		}
