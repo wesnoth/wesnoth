@@ -1640,16 +1640,16 @@ bool help_menu::expanded(const section &sec)
 
 void help_menu::expand(const section &sec)
 {
-	if (sec.id != "toplevel") {
-		expanded_.insert(&sec);
+	if (sec.id != "toplevel" && expanded_.insert(&sec).second) {
 		sound::play_UI_sound(game_config::sounds::menu_expand);
 	}
 }
 
 void help_menu::contract(const section &sec)
 {
-	expanded_.erase(&sec);
-	sound::play_UI_sound(game_config::sounds::menu_contract);
+	if (expanded_.erase(&sec)) {
+		sound::play_UI_sound(game_config::sounds::menu_contract);
+	}
 }
 
 void help_menu::update_visible_items(const section &sec, unsigned level)
@@ -1731,7 +1731,6 @@ void help_menu::select_topic(const topic &t)
 			 it != visible_items_.end(); it++) {
 			if (*it == t) {
 				selected_item_ = *it;
-				sound::play_UI_sound(game_config::sounds::menu_select);
 				break;
 			}
 		}
