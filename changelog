@@ -58,7 +58,8 @@
      hyperlinks to encountered units having this ability/special (bug #9567)
    * OK in the status menu replaced with more informative "Scroll To".
    * in help, the unit list is now organized by race sub-sections.
-   * add an "Animate Map" option in advanced preferences, to switch off flags     and terrain animation
+   * add an "Animate Map" option in advanced preferences, to switch off flags
+     and terrain animation
  * WML engine:
    * now tag [filter_adjacent] is supported in the Standard Unit Filter (SUF)
    * now tag [filter_adjacent_location] is supported in the Standard Location
@@ -73,7 +74,8 @@
    * the WML for attack animations has been moved from the [attack] block to
      the [unit] block
    * new effect apply_to=new_animation to add animations to unit
-   * the [race] tag have now an "id" key for WML operations. The old "name" is    now used for user display purposes (currently only in help sections).
+   * the [race] tag have now an "id" key for WML operations. The old "name" is
+     now used for user display purposes (currently only in help sections).
  * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
    * in help, the encountered units list is now correctly updated when using
@@ -83,6 +85,7 @@
    * faster inital loading of the help.
    * fix TC imagepath function for non-playing side and add-on/campaigns icons
    * remove a 500ms delay between AI turn
+   * switch to observer viewpoint in linger mode in multiplayer (bug #4072)
 
 Version 1.3.7:
  * Campaigns
