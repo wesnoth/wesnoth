@@ -233,6 +233,14 @@ void playmp_controller::linger(upload_log& log)
 		sound::stop_bell();
 	}
 	beep_warning_time_=-1;
+
+	// switch to observer viewpoint
+	gui_->set_team(0,true);
+	gui_->recalculate_minimap();
+	gui_->invalidate_all();
+	gui_->draw();
+	gui_->update_display();
+
         try {
 		// reimplement parts of play_side()
 		turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
