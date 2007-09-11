@@ -2,7 +2,7 @@
 wmliterator.py -- Python routines for navigating a Battle For Wesnoth WML tree
 Author: Sapient (Patrick Parker), 2007
 """
-import sys, re
+import sys, re, copy
 keyPattern = re.compile('(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
 tagPattern = re.compile(r'(^|(?<![\w\|\}]))(\[.*?\])')
@@ -17,6 +17,42 @@ def wmlfind(element, itor):
         if element == itor.element:
             return itor
     return None
+
+def wmlfindin(element, scopeElement, itor, memory={}):
+    """Find an element inside a particular type of scope element
+    return an iterator pointing to the element and an iterator to its scope"""
+    if element is None:
+        #pass element None to flush wmlfindin's cached memory
+        for k in memory.keys():
+            if k[0] == itor.fname and k[1] == scopeElement:
+                del memory[k]
+        return None
+    #start the main loop... this is optimized to prevent iterator resets
+    initLoop = True
+    tracker, breaker = memory.get((itor.fname, scopeElement, itor.lineno), ([], itor.endScope))
+    while True:
+        try:
+            if initLoop:
+                itor.endScope, breaker = breaker, itor.endScope
+                initLoop = False
+            itor.next()
+            if scopeElement == itor.element:
+                restoreBreak = itor.endScope
+                itor.endScope = (scopeElement, itor.lineno)
+                tracker.append((len(itor.scopes), itor.copy(), restoreBreak))
+                memory[(itor.fname, scopeElement, itor.lineno)] = (tracker, itor.endScope)
+            if element == itor.element:
+                for track in tracker:
+                    if len(itor.scopes) == track[0]+1:
+                        memory[(itor.fname, scopeElement, itor.lineno)] = (tracker, itor.endScope)
+                        itor.endScope = breaker
+                        return itor, track[1].copy()
+        except StopIteration:
+            if not tracker:
+                return None
+            track = tracker.pop()
+            itor.endScope = track[2]
+            del memory[(itor.fname, scopeElement, track[1].lineno)]
 
 def parseQuotes(lines, fname, lineno):
     """Return the line or multiline text if a quote spans multiple lines"""
@@ -72,7 +108,7 @@ def closeScope(scopes, closerElement, fname, lineno):
             if ((isOpener(closed[0]) and closerElement != '[/'+closed[0][1:]
                  and '+'+closerElement != closed[0][1]+'[/'+closed[0][2:])
             or (closed[0].startswith('{') and closerElement.find('macro')<0)):
-                printError(fname, 'reached', closerElement, 'at line', lineno, 'before closing scope', closed[0], '(%d)'%closed[1])
+                printError(fname, 'reached', closerElement, 'at line', lineno+1, 'before closing scope', closed[0], '(%d)'%(closed[1]+1))
                 scopes.append(closed) # to reduce additional errors (hopefully)
         return True
     except IndexError:
@@ -221,6 +257,13 @@ class WmlIterator(object):
         """Some loops may wish to check this method instead of calling next()
         and handling StopIteration... note: inaccurate for ScopeIterators"""
         return self.end > self.lineno + self.span
+
+    def copy(self):
+        """Return a copy of this iterator"""
+        itor = copy.copy(self)
+        itor.scopes = self.scopes[:]
+        itor.nextScopes = self.nextScopes[:]
+        return itor
 
     def next(self):
         """Move the iterator to the next line number
