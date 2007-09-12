@@ -316,14 +316,14 @@ namespace events{
 	void menu_handler::unit_list()
 	{
 		const std::string heading = std::string(1,HEADING_PREFIX) +
-									_("Type")     + COLUMN_SEPARATOR +
-									_("Name")     + COLUMN_SEPARATOR +
-									_("Level")    + COLUMN_SEPARATOR +
-									_("HP")       + COLUMN_SEPARATOR +
-									_("XP")       + COLUMN_SEPARATOR +
+									_("Type")          + COLUMN_SEPARATOR +
+									_("Name")          + COLUMN_SEPARATOR +
+									_("Level^Lv.")     + COLUMN_SEPARATOR +
+									_("HP")            + COLUMN_SEPARATOR +
+									_("XP")            + COLUMN_SEPARATOR +
 									_("unit list^Traits") + COLUMN_SEPARATOR +
-									_("Moves")    + COLUMN_SEPARATOR +
-									_("Location") + COLUMN_SEPARATOR +
+									_("Moves")         + COLUMN_SEPARATOR +
+									_("Location^Loc.") + COLUMN_SEPARATOR +
 									_("Status");
 
 		gui::menu::basic_sorter sorter;
@@ -353,12 +353,13 @@ namespace events{
 			//! @todo TODO: hero just has overlay "misc/hero-icon.png" - needs an ability to query
 
 			if(i->second.can_recruit() ) {
-				row << "<255,255,200>";
-//              row << "<205,173,0>";   // gold3
+//				row << "<255,255,200>";
+                row << "<205,173,0>";   // gold3
 			}
 			row << i->second.language_name() << COLUMN_SEPARATOR;
 			if(i->second.can_recruit() ) {
-				row << "<255,255,200>";
+//				row << "<255,255,200>";
+                row << "<205,173,0>";   // gold3
 			}
 			row << i->second.description()   << COLUMN_SEPARATOR;
 
