@@ -96,7 +96,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 
 	// Getting here means that the maximum length was reached when
 	// generating the name, hence the ending of the name has to be
-	// made valid. Otherwise weird names like Un�rierinil- and
+	// made valid. Otherwise weird names like Unárierini- and
 	// Thramboril-G may occur.
 
 	// Strip characters from the end until the last prefix of the
