@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file cavegen.hpp 
+//!
+
 #ifndef CAVEGEN_HPP_INCLUDED
 #define CAVEGEN_HPP_INCLUDED
 
@@ -26,7 +29,7 @@ public:
 	cave_map_generator(const config* game_config);
 
 	bool allow_user_config() const { return true; }
-	// This is a pure virtual function in the base class so must be here
+	// This is a pure virtual function in the base class, so must be here
 	void user_config(display& /* disp*/) { return; }
 
 	std::string name() const { return "cave"; }
@@ -78,8 +81,8 @@ private:
 	const config* cfg_;
 	size_t width_, height_, village_density_;
 
-	//the scenario may have a chance to flip all x values or y values
-	//to make the scenario appear all random. This is kept track of here.
+	// The scenario may have a chance to flip all x values or y values
+	// to make the scenario appear all random. This is kept track of here.
 	bool flipx_, flipy_;
 
 	size_t translate_x(size_t x) const;

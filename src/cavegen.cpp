@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file cavegen.cpp 
+//! Map-generator for caves.
+
 #include "global.hpp"
 
 #include "cavegen.hpp"
@@ -127,7 +130,7 @@ void cave_map_generator::generate_chambers()
 {
 	const config::child_list& chambers = cfg_->get_children("chamber");
 	for(config::child_list::const_iterator i = chambers.begin(); i != chambers.end(); ++i) {
-		//if there is only a chance of the chamber appearing, deal with that here.
+		// If there is only a chance of the chamber appearing, deal with that here.
 		const std::string& chance = (**i)["chance"];
 		if(chance != "" && (rand()%100) < atoi(chance.c_str())) {
 			continue;
@@ -186,7 +189,7 @@ void cave_map_generator::generate_chambers()
 		for(config::child_list::const_iterator p = passages.begin(); p != passages.end(); ++p) {
 			const std::string& dst = (**p)["destination"];
 
-			//find the destination of this passage
+			// Find the destination of this passage
 			const std::map<std::string,size_t>::const_iterator itor = chamber_ids_.find(dst);
 			if(itor == chamber_ids_.end())
 				continue;
@@ -256,7 +259,7 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 			(*object_filter)["y"] = ybuf;
 		}
 
-		//if this is a side, place a castle for the side
+		// If this is a side, place a castle for the side
 		if(key == "side" && !utils::string_bool(cfg["no_castle"])) {
 			place_castle(cfg["side"],*loc);
 		}
@@ -370,3 +373,4 @@ void cave_map_generator::place_castle(const std::string& side, gamemap::location
 		set_terrain(adj[n],castle_);
 	}
 }
+
