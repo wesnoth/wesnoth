@@ -32,8 +32,9 @@ public:
 	unit_race();
 	unit_race(const config& cfg);
 
-	const std::string& id() const {return id_;};
-	const t_string& name() const;
+	const std::string& id() const { return id_; };
+	const t_string& name() const { return name_; };
+	const t_string& description() const { return description_; };
 
 	std::string generate_name(GENDER gender) const;
 
@@ -45,6 +46,7 @@ public:
 private:
 	std::string id_;
 	t_string name_;
+	t_string description_;
 	unsigned int ntraits_;
 	std::vector<std::string> names_[NUM_GENDERS];
 	markov_prefix_map next_[NUM_GENDERS];

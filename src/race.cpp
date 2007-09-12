@@ -96,7 +96,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 
 	// Getting here means that the maximum length was reached when
 	// generating the name, hence the ending of the name has to be
-	// made valid. Otherwise weird names like Unárierinil- and
+	// made valid. Otherwise weird names like Unï¿½rierinil- and
 	// Thramboril-G may occur.
 
 	// Strip characters from the end until the last prefix of the
@@ -141,6 +141,7 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 		// This code is only for compatibility with old race defs.
 		id_ = (cfg["name"]);
 	}
+	description_ = cfg["description"];
 	
 	names_[MALE] = utils::split(cfg["male_names"]);
 	names_[FEMALE] = utils::split(cfg["female_names"]);
@@ -152,8 +153,6 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 	next_[MALE] = markov_prefixes(names_[MALE],chain_size_);
 	next_[FEMALE] = markov_prefixes(names_[FEMALE],chain_size_);
 }
-
-const t_string& unit_race::name() const { return name_; }
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {
