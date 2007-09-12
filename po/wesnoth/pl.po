@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-08 18:39+0200\n"
-"PO-Revision-Date: 2007-09-03 20:41+0100\n"
+"PO-Revision-Date: 2007-09-11 21:12+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -67,13 +67,12 @@ msgstr "Projektowanie kampanii"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Wykonanie i utrzymanie"
+msgstr "Utrzymanie kampanii"
 
 #: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 maks. PŻ"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 msgid "Campaign Epilog and Continuity"
@@ -87,9 +86,8 @@ msgstr "Epilog i ciągłość kampanii"
 #: data/campaigns/The_South_Guard/_main.cfg:39
 #: data/campaigns/Two_Brothers/_main.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
-#, fuzzy
 msgid "Artwork and Graphics Design"
-msgstr "Projektowanie grafiki"
+msgstr "Grafika i projektowanie graficzne"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -114,9 +112,8 @@ msgid "Code and Translation Assistance"
 msgstr "Pomoc w kodowaniu i tłumaczeniach"
 
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:34
-#, fuzzy
 msgid "WML Assistance"
-msgstr "Odporność"
+msgstr "Pomoc przy kodowaniu WML"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
@@ -385,7 +382,6 @@ msgid "Unknown Unit"
 msgstr "Nieznana jednostka"
 
 #: data/core/help.cfg:77
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -989,7 +985,7 @@ msgid ""
 msgstr ""
 "W Wesnoth istnieją trzy typy obrażeń związanych z atakami fizycznymi: cięte, "
 "kłute i obuchowe. Ponadto ataki magiczne mogą wywoływać obrażenia od ognia, "
-"chłodu lub świętości. Różne rodzaje jednostek mogą posiadać odporności "
+"chłodu lub mocy tajemnych. Różne rodzaje jednostek mogą posiadać odporności "
 "wpływające na ilość obrażeń otrzymywanych w wyniku określonych ataków."
 
 #: data/core/help.cfg:192
@@ -1022,7 +1018,7 @@ msgstr ""
 "\n"
 "Na przykład Szkielety posiadają wysoką odporność na ataki sieczne i kłute, "
 "ale są wrażliwe na ataki obuchowe oraz ogniste i niezwykle wrażliwe na ataki "
-"święte."
+"tajemne."
 
 #: data/core/help.cfg:196
 msgid ""
@@ -2586,12 +2582,10 @@ msgstr ""
 "zauważy taką jednostkę, natychmiast traci wszystkie pozostałe punkty ruchu."
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
-#, fuzzy
 msgid "concealment"
-msgstr "Obóz"
+msgstr "ukrywanie"
 
 #: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -2601,14 +2595,14 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Zanurzenie:\n"
-"Jednostka może ukryć się w głębokiej wodzie, pozostając niezauważoną przez "
-"wrogów.\n"
+"Ukrywanie:\n"
+"Jednostka potrafi się ukrywać w wioskach (z wyjątkiem wiosek wodnych), gdzie "
+"jest niewidoczna dla wrogów, z wyjątkiem jednostek z nią sąsiadujących.\n"
 "\n"
-"Jednostki nieprzyjaciela nie mogą zobaczyć ani zaatakować tej jednostki, gdy "
-"znajduje się ona w głębokiej wodzie, chyba że znajdują się bezpośrednio obok "
-"niej. Jednostka wroga, która jako pierwsza zauważy taką jednostkę, "
-"natychmiast traci wszystkie pozostałe punkty ruchu."
+"Gdy jednostka znajduje się w wiosce, jednostki nieprzyjaciela nie widzą jej, "
+"dopóki nie znajdą się na polu z nią sąsiadującym. Jednostka wroga, która "
+"jako pierwsza zauważy taką jednostkę, natychmiast traci wszystkie pozostałe "
+"punkty ruchu."
 
 #: data/core/macros/abilities.cfg:437 data/core/macros/abilities.cfg:442
 msgid "submerge"
@@ -2968,7 +2962,6 @@ msgid "Zap"
 msgstr "Bzzzt"
 
 #: data/core/macros/names.cfg:3
-#, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -3088,7 +3081,7 @@ msgstr ""
 "Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
 "Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
-"Amithrarion,Cálad,Legilad"
+"Amithrarion,Cálad,Legilad,Linduilas"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -3857,7 +3850,7 @@ msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Święty atak tej jednostki zadaje ogromne obrażenia nieumarłym, a "
+" Tajemny atak tej jednostki zadaje ogromne obrażenia nieumarłym, a "
 "skromniejsze istotom żyjącym."
 
 #: data/core/macros/special-notes.cfg:9
@@ -4171,16 +4164,14 @@ msgid "Teal"
 msgstr "Seledyn"
 
 #: data/core/units.cfg:40 data/hardwired/english.cfg:18
-#, fuzzy
 msgid "race^Elves"
-msgstr "Krasnoludy"
+msgstr "Elfy"
 
 #: data/core/units.cfg:49 data/hardwired/english.cfg:32
 msgid "race^Woses"
 msgstr "Drzewce"
 
 #: data/core/units.cfg:57 data/hardwired/english.cfg:19
-#, fuzzy
 msgid "race^Humans"
 msgstr "Ludzie"
 
@@ -4189,9 +4180,8 @@ msgid "race^Dwarves"
 msgstr "Krasnoludy"
 
 #: data/core/units.cfg:72 data/hardwired/english.cfg:20
-#, fuzzy
 msgid "race^Orcs"
-msgstr "Ogry"
+msgstr "Orkowie"
 
 #: data/core/units.cfg:79 data/hardwired/english.cfg:24
 msgid "race^Goblins"
@@ -4222,14 +4212,12 @@ msgid "race^Trolls"
 msgstr "Trolle"
 
 #: data/core/units.cfg:132 data/hardwired/english.cfg:23
-#, fuzzy
 msgid "race^Drakes"
-msgstr "Krasnoludy"
+msgstr "Smoki"
 
 #: data/core/units.cfg:139
-#, fuzzy
 msgid "race^Saurians"
-msgstr "Nagi"
+msgstr "Jaszczury"
 
 #: data/core/units.cfg:147 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
@@ -4371,7 +4359,7 @@ msgstr "chłód"
 
 #: data/hardwired/english.cfg:59
 msgid "arcane"
-msgstr "święty"
+msgstr "tajemny"
 
 #: data/hardwired/english.cfg:62
 msgid "Wesnoth unit list"
@@ -4413,7 +4401,7 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
-"Istnieje sześć rodzajów ataków: kłute, sieczne, obuchowe, święte, ogień i "
+"Istnieje sześć rodzajów ataków: kłute, sieczne, obuchowe, tajemne, ogień i "
 "chłód. Różne jednostki są czułe na różne typy ataków. Kliknij jednostkę "
 "prawym przyciskiem myszy i wybierz \"Opis jednostki\", a potem \"Odporność"
 "\", by zobaczyć jak reaguje ona na różne rodzaje ataków."
@@ -4580,7 +4568,7 @@ msgid ""
 "impact, fire, and arcane attacks."
 msgstr ""
 "Szkielety są odporne na ataki kłujące i sieczne, ale czułe na broń obuchową, "
-"świętą oraz ogień."
+"ataki tajemne oraz ogień."
 
 #: data/hardwired/tips.cfg:22
 msgid ""
@@ -4650,7 +4638,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:31
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Święte ataki są wyjątkowo skuteczne przeciw nieumarłym."
+msgstr "Tajemne ataki są wyjątkowo skuteczne przeciw nieumarłym."
 
 #: data/hardwired/tips.cfg:32
 msgid ""
@@ -5284,12 +5272,11 @@ msgid "Remote host disconnected."
 msgstr "Zdalny host rozłączył się."
 
 #: src/game.cpp:1269
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
-"Wystąpił błąd podczas tworzenia plików koniecznych do instalacji tej "
-"kampanii."
+"Wystąpił błąd podczas tworzenia plików niezbędnych do instalacji tego "
+"dodatku."
 
 #: src/game.cpp:1281 src/game.cpp:1320 src/game.cpp:1347
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:432
@@ -5321,9 +5308,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Zaloguj się na oficjalny serwer gier wieloosobowych Wesnoth"
 
 #: src/game.cpp:1379
-#, fuzzy
 msgid "Connect to Host/Server"
-msgstr "Połącz z serwerem"
+msgstr "Połącz z hostem/serwerem"
 
 #: src/game.cpp:1380
 msgid "Join a server or hosted game"
@@ -5342,10 +5328,10 @@ msgid "Local Game"
 msgstr "Gra lokalna"
 
 #: src/game.cpp:1386
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
-"Gra dla wielu graczy używających jednego komputera lub przeciwko komputerowi"
+"Gra dla wielu graczy przeciwko komputerowi lub innym graczom na tej samej "
+"maszynie"
 
 #: src/game.cpp:1394 src/multiplayer.cpp:232
 msgid "Login: "
@@ -5372,10 +5358,8 @@ msgid "Choose your preferred language:"
 msgstr "Wybierz preferowany język:"
 
 #: src/game.cpp:1627
-#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
-msgstr ""
-"Następujące kampanie dodatkowe zawierały błędy i nie mogły zostać załadowane:"
+msgstr "Następujące dodatki zawierały błędy i nie mogły zostać załadowane:"
 
 #: src/game.cpp:1632
 msgid "ERROR DETAILS:"
@@ -5618,9 +5602,8 @@ msgid "Movement Cost"
 msgstr "Koszt ruchu"
 
 #: src/help.cpp:1507
-#, fuzzy
 msgid "race^Miscellaneous"
-msgstr "Różności"
+msgstr "Inne"
 
 #: src/help.cpp:2345 src/menu_events.cpp:650
 msgid " < Back"
@@ -5728,25 +5711,20 @@ msgid "Damage Taken (EV)"
 msgstr "Otrzymane obrażenia (EV)"
 
 #: src/menu_events.cpp:250 src/menu_events.cpp:254
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Czy na pewno skasować tę grę?"
+msgstr "Czy naprawdę chcesz go zwolnić?"
 
 #: src/menu_events.cpp:250
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
-"Panie, to doświadczona jednostka, po awansach! Czy naprawdę zwolnić $noun?"
+msgstr "Panie, to doświadczona jednostka, po awansach!"
 
 #: src/menu_events.cpp:251 src/menu_events.cpp:255
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Czy na pewno skasować tę grę?"
+msgstr "Czy naprawdę chcesz ją zwolnić?"
 
 #: src/menu_events.cpp:254
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "Panie, ta jednostka wkrótce awansuje! Czy naprawdę zwolnić $noun?"
+msgstr "Panie, ta jednostka wkrótce awansuje na kolejny poziom!"
 
 #: src/menu_events.cpp:311
 msgid "Statistics"
@@ -6736,13 +6714,13 @@ msgid "Retained Gold: "
 msgstr "Zachowane złoto: "
 
 #: src/playsingle_controller.cpp:364
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr ""
-" lub minimalną ilość początkową złota dla następnego scenariusza, zależnie "
-"od tego, która ilość jest większa."
+"Następny scenariusz rozpoczniesz z $gold sztukami złota lub minimalną "
+"ilością początkową dla następnego scenariusza, zależnie od tego, która "
+"wartość jest większa."
 
 #: src/playsingle_controller.cpp:392
 msgid ""
