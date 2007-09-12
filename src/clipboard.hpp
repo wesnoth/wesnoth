@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file clipboard.cpp 
+//!
+
 #ifndef CLIPBOARD_HPP_INCLUDED
 #define CLIPBOARD_HPP_INCLUDED
 
