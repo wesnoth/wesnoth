@@ -485,6 +485,7 @@ enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESC
 /// about units that should not be shown, for example due to not being
 /// encountered.
 static UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
+static std::vector<topic> generate_race_topics(const bool);
 static std::vector<topic> generate_ability_topics(const bool);
 static std::vector<topic> generate_weapon_special_topics(const bool);
 
@@ -959,7 +960,9 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		return res;
 	}
 
-	if (generator == "abilities") {
+	if (generator == "races") {
+		res = generate_race_topics(sort_generated);
+	} else if (generator == "abilities") {
 		res = generate_ability_topics(sort_generated);
 	} else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
@@ -1083,6 +1086,62 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		text << s->second;  //description
 		text << "\n\n" << _("Units having this special attack:") << "\n";
 		std::set<std::string>& units = special_units[s->first];
+		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
+			text << (*u) << "\n";
+		}
+
+		topics.push_back( topic(name, id, text.str()) );
+	}
+
+	if (sort_generated)
+		std::sort(topics.begin(), topics.end(), title_less());
+	return topics;
+}
+
+std::vector<topic> generate_race_topics(const bool sort_generated)
+{
+	std::vector<topic> topics;
+	if (game_info == NULL) {
+		return topics;
+	}
+	std::map<std::string, std::set<std::string> > race_units;
+	// Look through all the unit types, check if a unit of this type
+	// should have a full description, if so, add this race for display.
+	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
+	    i != game_info->unit_types.end(); ++i) {
+		const unit_type &type = (*i).second;
+		if (description_type(type) == FULL_DESCRIPTION) {
+			const std::string& race = type.race();
+
+			//add a link in the list of units of this race
+			std::string lang_name = type.language_name();
+			std::string ref_id = std::string("unit_") +  type.id();
+			//we put the translated name at the beginning of the hyperlink,
+			//so the automatic alphabetic sorting of std::set can use it
+			std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+			race_units[race].insert(link);
+		}
+	}
+
+	for (std::map<std::string, std::set<std::string> >::iterator r = race_units.begin(); r != race_units.end(); r++) {
+		std::string id = "race_" + r->first;
+		std::string name;
+		std::string description;
+
+		const race_map::const_iterator race_it = game_info->races.find(r->first);
+		if (race_it != game_info->races.end()) {
+			name = race_it->second.name();
+			description = race_it->second.description();
+			// if (description.empty()) description =  _("No description Available");
+		} else {
+			name = _ ("race^Miscellaneous");
+			// description =  _("Here put the description of the Miscellaneous race");
+		}
+
+		std::stringstream text;
+		text << description;
+		text << "\n\n" << _("Units of this race:") << "\n";
+		std::set<std::string>& units = race_units[r->first];
 		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
 			text << (*u) << "\n";
 		}
@@ -1263,6 +1322,20 @@ public:
 			}
 			ss << "\n";
 		}
+
+		// Print the race of the unit, cross-reference it to the
+		// respective topic.
+		const std::string race_id = type_.race();
+		std::string race_name;
+		const race_map::const_iterator race_it = game_info->races.find(race_id);
+		if (race_it != game_info->races.end()) {
+			race_name = race_it->second.name();
+		} else {
+			race_name = _ ("race^Miscellaneous");
+		}
+		ss << _("Race: ");
+		ss << "<ref>dst='" << escape("race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
+		ss << "\n";
 
 		// Print the abilities the units has, cross-reference them
 		// to their respective topics.
