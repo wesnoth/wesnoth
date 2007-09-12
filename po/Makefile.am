@@ -1,6 +1,6 @@
 SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-tutorial wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-trow wesnoth-tsg wesnoth-utbs
 
-PO4A_SUBDIRS = wesnoth-man
+PO4A_SUBDIRS = wesnoth-manpages
 
 EXTRA_DIST = Makefile.in.in
 
