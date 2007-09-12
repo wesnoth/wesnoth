@@ -4,7 +4,7 @@
 # scriptable).
 #
 
-DOMAIN= wesnoth-man
+DOMAIN= wesnoth-manpages
 MSGMERGE = msgmerge
 MSGFMT = msgfmt
 
