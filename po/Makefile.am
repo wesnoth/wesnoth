@@ -1,6 +1,7 @@
 SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-units wesnoth-multiplayer wesnoth-tutorial wesnoth-did wesnoth-ei wesnoth-httt wesnoth-l wesnoth-nr wesnoth-sof wesnoth-sotbe wesnoth-tb wesnoth-trow wesnoth-tsg wesnoth-utbs
 
 PO4A_SUBDIRS = wesnoth-manpages
+PO4A_OPTIONS = --rm-backups --copyright-holder "Wesnoth Development Team"
 
 EXTRA_DIST = Makefile.in.in
 
@@ -10,7 +11,7 @@ update-po:
 	done
 if PO4AUPDATE
 	@for dir in $(PO4A_SUBDIRS); do \
-		( cd $$dir && $(PO4A) --no-translations --rm-backups $$dir.cfg || \
+		( cd $$dir && $(PO4A) $(PO4A_OPTIONS) --no-translations $$dir.cfg || \
 		  exit $? ); \
 	done
 endif
@@ -18,7 +19,7 @@ endif
 if PO4AUPDATE
 update-po4a:
 	@for dir in $(PO4A_SUBDIRS); do \
-		( cd $$dir && $(PO4A) --rm-backups $$dir.cfg || exit $? ); \
+		( cd $$dir && $(PO4A) $(PO4A_OPTIONS) $$dir.cfg || exit $? ); \
 	done
 endif
 

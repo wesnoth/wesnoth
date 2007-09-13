@@ -572,6 +572,23 @@ fi
 
 AM_CONDITIONAL([PO4AUPDATE], [test "x$po4afound" = "xyes"])
 
+# manual: asciidoc, dos2unix, xsltproc
+
+AC_PATH_PROGS([ASCIIDOC], [asciidoc], [none])
+AC_PATH_PROGS([DOS2UNIX], [dos2unix], [none])
+AC_PATH_PROGS([XSLTPROC], [xsltproc], [none])
+
+if test "x$PO4A" = "xnone" || test "x$ASCIIDOC" = "xnone" ||
+   test "x$DOS2UNIX" = "xnone" || test "x$XSLTPROC" = "xnone" ; then
+    manualdeps=no
+else
+    manualdeps=yes
+fi
+
+# Disable manual update until it is ready.
+#AM_CONDITIONAL([MANUALUPDATE], [test "x$manualdeps" = "xyes"])
+AM_CONDITIONAL([MANUALUPDATE], [false])
+
 #######################################################################
 # Checks for libraries.                                               #
 #######################################################################
@@ -882,7 +899,6 @@ AC_SUBST([IMAGE_FILES])
 AC_SUBST([MUSIC_FILES])
 AC_SUBST([SOUND_FILES])
 
-
 AC_CONFIG_FILES([Makefile
 		 po/Makefile
 		 po/wesnoth/Makefile.in
@@ -906,6 +922,7 @@ AC_CONFIG_FILES([Makefile
 		 icons/Makefile
 		 src/Makefile
 		 doc/Makefile
-		 doc/man/Makefile])
+		 doc/man/Makefile
+		 doc/manual/Makefile])
 
 AC_OUTPUT

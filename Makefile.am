@@ -157,13 +157,19 @@ endif
 
 update-po:
 	@cd po && make $@ || exit $?
+if MANUALUPDATE
+	@cd doc/manual && make update-po || exit $?
+endif
 
 if PO4AUPDATE
 update-po4a:
 	@cd po && make update-po4a || exit $?
-	@echo -n "Removing empty directories... "
+	@echo -n "Removing empty man directories... "
 	@find doc/man/ -maxdepth 1 -type d -empty -exec rmdir {} \; && \
 		echo "done." || exit $?
+if MANUALUPDATE
+	@cd doc/manual && make update-po4a || exit $?
+endif
 endif
 
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
