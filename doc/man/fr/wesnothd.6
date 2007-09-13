@@ -85,10 +85,10 @@ clé="\fIvaleur\fP,\fIvaleur\fP,..."
 Nombre maximum de connexions ayant la même adresse IP. (par défaut : 5)
 .TP 
 \fBdisallow_names\fP
-Noms/surnoms non acceptés par le serveur. Les caractères génériques `*' et
-`?' sont acceptés. Voir \fBglob\fP(7) pour plus d'informations. Les valeurs par
-défaut (utilisées si rien n'est précisé) sont\ :
-`server,ai,player,network,human,admin,computer'
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 Nombre maximum de messages permis en \fBmessages_time_period\fP. (par défaut :

@@ -86,9 +86,10 @@ nøgle="\fIværdi\fP,\fIværdi\fP,..."
 Antallet af tilladte forbindelser fra samme IP. (standard: 5)
 .TP 
 \fBdisallow_names\fP
-Navne som ikke accepteres af serveren. '*' og `?' fra wildcard mønstre er
-understøttet. Se \fBglob\fP(7)  for flere detaljer.  Standardværdier (anvendes
-hvis intet er anført) er: `server,ai,player,netværk,human,admin,computer'.
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 Antallet af tilladte beskeder i \fBmessages_time_period\fP. (Standard: 4)

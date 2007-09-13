@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2007-09-02 13:15+0200\n"
+"POT-Creation-Date: 2007-09-14 00:34+0200\n"
 "PO-Revision-Date: 2007-05-26 18:18+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
@@ -939,11 +939,12 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:97
+#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: `server,ai,player,network,human,admin,"
-"computer'."
+"(used if nothing is specified) are: `*admin*,*admln*,*server*,ai,ai?,"
+"computer,human,network,player'."
 msgstr ""
 "Nazwy/ksywy, które nie są akceptowane przez serwer. `*' oraz `?' z wzorców "
 "wieloznacznych są obsługiwane. Zobacz stronę B<glob>(7), aby uzyskać "

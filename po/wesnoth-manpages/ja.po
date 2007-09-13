@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2007-09-02 13:15+0200\n"
+"POT-Creation-Date: 2007-09-14 00:34+0200\n"
 "PO-Revision-Date: 2006-09-12 12:09+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -922,11 +922,12 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:97
+#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: `server,ai,player,network,human,admin,"
-"computer'."
+"(used if nothing is specified) are: `*admin*,*admln*,*server*,ai,ai?,"
+"computer,human,network,player'."
 msgstr ""
 "サーバによって受けつけられない名前やニックネーム。 `*' と `?' からなるワイル"
 "ドカードのパターンに対応。詳細は B<glob>(7) を参照。(何も指定されなければ、)"

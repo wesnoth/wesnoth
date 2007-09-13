@@ -88,10 +88,10 @@ key="\fIvalore\fP,\fIvalore\fP,..."
 Il numero di connessioni permesse dallo stesso IP (valore predefinito: 5).
 .TP 
 \fBdisallow_names\fP
-I nomi o nick che non sono accettati dal server. Si possono usare i
-caratteri jolly `*' e `?'. Vedi \fBglob\fP(7) per maggiori dettagli. I valori
-predefiniti (usati in mancanza di specifiche diverse) sono:
-`server,ai,player,network,human,admin,computer'.
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP

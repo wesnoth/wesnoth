@@ -84,8 +84,10 @@ key="\fIvalue\fP,\fIvalue\fP,..."
 The number of allowed connections from the same IP. (default: 5)
 .TP 
 \fBdisallow_names\fP
-サーバによって受けつけられない名前やニックネーム。 `*' と `?' からなるワイルドカードのパターンに対応。詳細は \fBglob\fP(7)
-を参照。(何も指定されなければ、)既定の値は `server,ai,player,network,human,admin,computer'。
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 The number of allowed messages in \fBmessages_time_period\fP. (default: 4)

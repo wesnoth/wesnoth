@@ -86,10 +86,10 @@ sleutel="\fIwaarde\fP,\fIwaarde\fP,..."
 Het aantal toegestane verbindingen van hetzelfde IP. (standaard: 5)
 .TP 
 \fBdisallow_names\fP
-Namen die niet geaccepteerd worden door de sever. `*' en `?' als jokertekens
-zijn toegestaan. Bekijk \fBglob\fP(7) voor meer details. Standaard waarden
-(gebruikt wanneer niet gespecificeerd) zijn:
-`server,ai,player,network,human,admin,computer'.
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 Het aantal toegestane berichten in \fBmessages_time_period\fP. (standaard: 4)

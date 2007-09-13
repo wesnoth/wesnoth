@@ -86,10 +86,10 @@ klju?="\fIvrednost\fP,\fIvrednost\fP,..."
 broj dozvoljenih veza sa iste IP adrese (podrazumevno: 5)
 .TP 
 \fBdisallow_names\fP
-imena/nadimci koje server ne prihvata. Prihvataju se ?*? i ??? kao d?okeri
-(pogledajte \fBglob\fP(7) za vi?e detalja). Podrazumevane vrednosti, koje se
-koriste ako se ni?ta ne zada, su:
-?server,ai,player,network,human,admin,computer?
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 broj dozvoljenih poruka za vreme \fBmessages_time_period\fP (podrazumevano: 4)

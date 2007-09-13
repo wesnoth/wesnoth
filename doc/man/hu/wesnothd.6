@@ -87,10 +87,10 @@ Az azonos IP címr?l engedélyezett párhuzamos kapcsolatok
 száma. (alapártelmezett: 5)
 .TP 
 \fBdisallow_names\fP
-Nevek és becenevek, amelyeket nem fogad el a kiszolgáló. A `*' és `?'
-jelzések is használhatóak. Lásd a \fBglob\fP(7) részt a
-részletekért. Alapértlmezett értékek (ha más nincsen megadva):
-`server,ai,player,network,human,admin,computer'.
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 A megadott id?táv (\fBmessages_time_period\fP) alatt küldhet? üzenetek

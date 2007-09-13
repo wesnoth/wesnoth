@@ -86,9 +86,10 @@ chave="\fIvalor\fP,\fIvalor\fP,..."
 O número de conexões vindas do mesmo IP permitidas. (padrão: 5)
 .TP 
 \fBdisallow_names\fP
-Nomes/apelidos que não são aceitos pelo servidor. `*'e `?' podem ser usados
-como coringas. Veja \fBglob\fP(7) para mais detalhes. O valor padrão (usado se
-nada for especificado) é: `server,ai,player,network,human,admin,computer'.
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP
 O número de mensagens permitidas no período de \fBmessages_time_period\fP.<
