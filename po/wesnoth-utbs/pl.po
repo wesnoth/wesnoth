@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-14 00:33+0200\n"
-"PO-Revision-Date: 2007-09-11 21:14+0100\n"
+"PO-Revision-Date: 2007-09-14 21:11+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -1117,7 +1117,6 @@ msgstr ""
 "podróż będzie ciężka dla naszych ludzi."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:287
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1127,12 +1126,12 @@ msgid ""
 "your units will regain full attack strength and some of the lost hitpoints."
 msgstr ""
 "Na początku każdej Twojej tury podczas dnia (Świt, Ranek, Południe, "
-"Popołudnie i Zmierzch), każda jednostka znajdująca się na polu innym niż "
-"łąka, zamek lub obóz będzie zadawać o jeden punkt mniejsze obrażenia podczas "
-"ataku. Osłabienie nie dotyczy jednostek sąsiadujących z jednostką leczącą, a "
-"ataki z dystansu pozostają równie skuteczne niezależnie od osłabienia. Każda "
-"jednostka rozpoczynająca turę w polu oazy (płytka woda) odzyska pełną siłę "
-"ataku."
+"Popołudnie i Zmierzch), każda jednostka znajdująca się na polu z piaskiem, "
+"drogą, gruzami lub wydmą zostanie osłabiona z powodu pragnienia, tracąc "
+"$dehydration_loss punktów życia i zadając odtąd mniejsze obrażenia podczas "
+"ataku. Szamani nie mogą wyleczyć z takiego osłabienia. Jednostka może "
+"odzyskać pełną siłę ataku i część utraconych punktów życia wyłącznie wtedy, "
+"gdy rozpoczyna turę w oazie (płytkiej wodzie)."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:295
 msgid ""
@@ -1327,9 +1326,8 @@ msgstr ""
 "byłoby jak najszybciej dotrzeć do oazy."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:839
-#, fuzzy
 msgid "Black Lieutenant"
-msgstr "Bandyta Czarnej Dłoni"
+msgstr "Czarny Porucznik"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:841
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:843
@@ -1347,13 +1345,12 @@ msgid "Black Hand Bandit"
 msgstr "Bandyta Czarnej Dłoni"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:891
-#, fuzzy
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
 msgstr ""
-"A już myślałem, że to będzie zwykły, nudny patrol. Ty tam! Elf! To jest "
-"nasza oaza i napełnimy ją waszą krwią!"
+"A już myślałem, że to będzie zwykły, nudny patrol. Ej, ty tam! Elfie! To "
+"jest nasza oaza i napełnimy ją waszą krwią!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:896
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:928
@@ -1684,13 +1681,12 @@ msgstr ""
 "odpoczynek."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1918
-#, fuzzy
 msgid "thirst"
-msgstr "kolce"
+msgstr "pragnienie"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1926
 msgid "refreshed"
-msgstr ""
+msgstr "orzeźwiony"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2115
 msgid ""
@@ -1979,13 +1975,12 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:129
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:134
-#, fuzzy
 msgid ""
 "There's no way we can marshal our people to escape the battle in time. We "
 "must protect our people's $village_counter encampments from the undead."
 msgstr ""
-"Nie damy rady na tyle szybko zebrać ludzi, żeby uciec. Musimy chronić nasze "
-"jedenaście obozowisk przed nieumarłymi."
+"Nie damy rady na tyle szybko zebrać ludzi, żeby uciec. Musimy chronić "
+"naszych $village_counter obozowisk przed nieumarłymi."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:140
 msgid ""
@@ -14432,9 +14427,8 @@ msgid "Human Ship"
 msgstr "Statek ludzi"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:86
-#, fuzzy
 msgid "Campfire"
-msgstr "ogień"
+msgstr "Ognisko"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:18
 msgid "First Dawn"

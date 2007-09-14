@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-14 00:23+0200\n"
-"PO-Revision-Date: 2007-09-11 21:12+0100\n"
+"PO-Revision-Date: 2007-09-14 13:28+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -319,9 +319,8 @@ msgid "Turkish Translation"
 msgstr "Tłumaczenie tureckie"
 
 #: data/core/about.cfg:1551
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Tłumaczenie walenckie"
+msgstr "Tłumaczenie walenckie (południowy kataloński)"
 
 #: data/core/about.cfg:1561
 msgid "Bots"
@@ -348,9 +347,8 @@ msgid "Units"
 msgstr "Jednostki"
 
 #: data/core/help.cfg:40
-#, fuzzy
 msgid "Races"
-msgstr "Rasa"
+msgstr "Rasy"
 
 #: data/core/help.cfg:47
 msgid "Abilities"
@@ -991,8 +989,9 @@ msgid ""
 msgstr ""
 "W Wesnoth istnieją trzy typy obrażeń związanych z atakami fizycznymi: cięte, "
 "kłute i obuchowe. Ponadto ataki magiczne mogą wywoływać obrażenia od ognia, "
-"chłodu lub mocy tajemnych. Różne rodzaje jednostek mogą posiadać odporności "
-"wpływające na ilość obrażeń otrzymywanych w wyniku określonych ataków."
+"chłodu lub energii astralnej. Różne rodzaje jednostek mogą posiadać "
+"odporności wpływające na ilość obrażeń otrzymywanych w wyniku określonych "
+"ataków."
 
 #: data/core/help.cfg:199
 msgid ""
@@ -1024,7 +1023,7 @@ msgstr ""
 "\n"
 "Na przykład Szkielety posiadają wysoką odporność na ataki sieczne i kłute, "
 "ale są wrażliwe na ataki obuchowe oraz ogniste i niezwykle wrażliwe na ataki "
-"tajemne."
+"astralne."
 
 #: data/core/help.cfg:203
 msgid ""
@@ -1713,7 +1712,6 @@ msgid "Forest"
 msgstr "Las"
 
 #: data/core/help.cfg:397
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1742,7 +1740,7 @@ msgstr ""
 "terenie nie otrzymują żadnej premii do obrony.\n"
 "\n"
 "Większość jednostek ma w lasach obronę na poziomie 50%, ale kawaleria jest "
-"ograniczona do 40%. Z kolei elfy cieszą się w nich obroną od 60 do 70%, "
+"ograniczona do 40%. Z kolei elfy korzystają w nich z obrony od 60 do 70%, "
 "włącznie z jednostkami konnymi. Krasnoludy na ogół mają w lasach obronę "
 "zaledwie 30%.\n"
 "\n"
@@ -2022,7 +2020,6 @@ msgid "Illuminated Cave"
 msgstr "Oświetlona jaskinia"
 
 #: data/core/help.cfg:523
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2040,7 +2037,6 @@ msgid "Mushroom Grove"
 msgstr "Grzybowy gaj"
 
 #: data/core/help.cfg:533
-#, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness.  Most units have trouble negotiating the spongy "
@@ -2231,7 +2227,6 @@ msgid "Impassable Mountain"
 msgstr "Nieprzebyta góra"
 
 #: data/core/help.cfg:613
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
@@ -3859,7 +3854,7 @@ msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Tajemny atak tej jednostki zadaje ogromne obrażenia nieumarłym, a "
+" Astralny atak tej jednostki zadaje ogromne obrażenia nieumarłym, a "
 "skromniejsze istotom żyjącym."
 
 #: data/core/macros/special-notes.cfg:9
@@ -4368,7 +4363,7 @@ msgstr "chłód"
 
 #: data/hardwired/english.cfg:59
 msgid "arcane"
-msgstr "tajemny"
+msgstr "astralny"
 
 #: data/hardwired/english.cfg:62
 msgid "Wesnoth unit list"
@@ -4410,7 +4405,7 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
-"Istnieje sześć rodzajów ataków: kłute, sieczne, obuchowe, tajemne, ogień i "
+"Istnieje sześć rodzajów ataków: kłute, sieczne, obuchowe, astralne, ogień i "
 "chłód. Różne jednostki są czułe na różne typy ataków. Kliknij jednostkę "
 "prawym przyciskiem myszy i wybierz \"Opis jednostki\", a potem \"Odporność"
 "\", by zobaczyć jak reaguje ona na różne rodzaje ataków."
@@ -4479,13 +4474,12 @@ msgstr ""
 "swojej tury."
 
 #: data/hardwired/tips.cfg:11
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Jednostki, które nie poruszą się ani nie zaatakują, odpoczywają. Na początku "
-"następnej tury odzyskają 2 punkty życia."
+"Jednostki odpoczywają, jeśli podczas swojej tury nie poruszą się ani nie "
+"zaatakują. Na początku następnej tury odzyskają 2 punkty życia."
 
 #: data/hardwired/tips.cfg:12
 msgid ""
@@ -4578,7 +4572,7 @@ msgid ""
 "impact, fire, and arcane attacks."
 msgstr ""
 "Szkielety są odporne na ataki kłujące i sieczne, ale czułe na broń obuchową, "
-"ataki tajemne oraz ogień."
+"ataki astralne oraz ogień."
 
 #: data/hardwired/tips.cfg:22
 msgid ""
@@ -4648,7 +4642,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:31
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Tajemne ataki są wyjątkowo skuteczne przeciw nieumarłym."
+msgstr "Ataki astralne są wyjątkowo skuteczne przeciw nieumarłym."
 
 #: data/hardwired/tips.cfg:32
 msgid ""
@@ -4698,7 +4692,6 @@ msgstr ""
 "wyjaśnienie lub opis."
 
 #: data/hardwired/tips.cfg:37
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -4706,7 +4699,7 @@ msgid ""
 "adjust campaign difficulty."
 msgstr ""
 "Możesz przekazać Projektowi Wesnoth anonimowe zestawienie swoich postępów w "
-"grze przy użyciu przycisku Pomóż nam (ikona koperty w prawym dolnym rogu "
+"grze przy użyciu przycisku Pomóż Wesnoth (ikona koperty w prawym dolnym rogu "
 "głównego ekranu gry). Informacje te są nam potrzebne do dopracowania poziomu "
 "trudności kampanii."
 
@@ -5182,16 +5175,15 @@ msgstr "Wybierz dodatek do usunięcia."
 
 #: src/game.cpp:972
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć dodatek '$addon|'?"
 
 #: src/game.cpp:976
 msgid "Confirm"
 msgstr "Potwiedź"
 
 #: src/game.cpp:999
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "Dodatek usunięty"
+msgstr "Dodatek '$addon|' został usunięty."
 
 #: src/game.cpp:1004
 msgid "Add-on deleted"
@@ -5303,9 +5295,8 @@ msgid "Connection timed out"
 msgstr "Minął czas oczekiwania na połączenie"
 
 #: src/game.cpp:1277
-#, fuzzy
 msgid "The server responded with an error: \"$error|\""
-msgstr "Serwer zwrócił komunikat błędu: \""
+msgstr "Serwer zwrócił komunikat błędu: \"$error|\""
 
 #: src/game.cpp:1284
 msgid "Terms"
@@ -5550,9 +5541,8 @@ msgid "race^Miscellaneous"
 msgstr "Inne"
 
 #: src/help.cpp:1143
-#, fuzzy
 msgid "Units of this race:"
-msgstr "Jednostki posiadające tę zdolność:"
+msgstr "Jednostki tej rasy:"
 
 #: src/help.cpp:1209
 msgid "Units having this ability:"
@@ -5567,9 +5557,8 @@ msgid "Advances to: "
 msgstr "Awansuje na:"
 
 #: src/help.cpp:1336
-#, fuzzy
 msgid "Race: "
-msgstr "Rasa"
+msgstr "Rasa: "
 
 #: src/help.cpp:1343
 msgid "Abilities: "
@@ -5765,9 +5754,8 @@ msgid "Statistics"
 msgstr "Statystyki"
 
 #: src/menu_events.cpp:321
-#, fuzzy
 msgid "Level^Lv."
-msgstr "Poziom"
+msgstr "Poz."
 
 #: src/menu_events.cpp:324
 msgid "unit list^Traits"
@@ -5778,9 +5766,8 @@ msgid "Moves"
 msgstr "Liczba ruchów"
 
 #: src/menu_events.cpp:326
-#, fuzzy
 msgid "Location^Loc."
-msgstr "Miejsce"
+msgstr "Lok."
 
 #: src/menu_events.cpp:327
 msgid "Status"
@@ -6419,9 +6406,8 @@ msgid "Settings..."
 msgstr "Ustawienia..."
 
 #: src/multiplayer_create.cpp:93
-#, fuzzy
 msgid "Load Game..."
-msgstr "Wczytaj grę"
+msgstr "Wczytaj grę..."
 
 #: src/multiplayer_create.cpp:125
 msgid "The maximum number of turns the game can last"
@@ -6566,9 +6552,8 @@ msgid "Unknown scenario"
 msgstr "Nieznany scenariusz"
 
 #: src/multiplayer_lobby.cpp:447
-#, fuzzy
 msgid "Turn "
-msgstr "Tura"
+msgstr "Tura "
 
 #: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slot:"
@@ -6704,9 +6689,8 @@ msgid "Do you want to save your game?"
 msgstr "Czy chcesz zapisać grę?"
 
 #: src/playcampaign.cpp:549
-#, fuzzy
 msgid "Unknown scenario: '$scenario|'"
-msgstr "Nieznany scenariusz: '"
+msgstr "Nieznany scenariusz: '$scenario|'"
 
 #: src/playmp_controller.cpp:359
 msgid ""
@@ -6781,9 +6765,8 @@ msgstr ""
 "Nastąpiło rozłączenie sieci i gra nie może być kontynuowana. Czy zapisać grę?"
 
 #: src/playsingle_controller.cpp:517
-#, fuzzy
 msgid "It is now $name|'s turn"
-msgstr "Nadeszła twoja tura"
+msgstr "Tura gracza $name|"
 
 #: src/playturn.cpp:200
 msgid "Replace with AI"
@@ -6802,9 +6785,8 @@ msgid "Replace with "
 msgstr "Zastąp przez"
 
 #: src/playturn.cpp:222
-#, fuzzy
 msgid " has left the game. What do you want to do?"
-msgstr "opuścił grę. Co teraz?"
+msgstr " opuścił grę. Co chcesz zrobić?"
 
 #: src/serialization/parser.cpp:99
 msgid "Unexpected characters at line start"
@@ -6982,7 +6964,7 @@ msgstr "Pomóż Wesnoth, wysyłając nam informacje"
 
 #: src/unit.cpp:371 src/unit.cpp:1150 src/unit.cpp:2530
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "Nieznany typ jednostki '$type|'"
 
 #: src/unit.cpp:2574 src/unit.cpp:2898 src/unit.cpp:2953
 msgid "; "
