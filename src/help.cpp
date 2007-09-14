@@ -1741,8 +1741,10 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	}
 	topic_list::const_iterator topic_it;
 	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); topic_it++) {
-		const std::string vis_string = get_string_to_show(*topic_it, level);
-		visible_items_.push_back(visible_item(&(*topic_it), vis_string));
+		if (topic_it->id.empty() || (topic_it->id)[0] != '.') {
+			const std::string vis_string = get_string_to_show(*topic_it, level);
+			visible_items_.push_back(visible_item(&(*topic_it), vis_string));
+		}
 	}
 }
 
