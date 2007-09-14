@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-08 18:40+0200\n"
-"PO-Revision-Date: 2007-06-11 22:11+0900\n"
+"PO-Revision-Date: 2007-09-09 11:43+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "なし"
 
 #: data/core/terrain.cfg:20
 msgid "Shroud"
-msgstr "幕"
+msgstr "重なり"
 
 #: data/core/terrain.cfg:27
 msgid "Fog"
@@ -38,7 +38,7 @@ msgstr "氷"
 
 #: data/core/terrain.cfg:48
 msgid "Snow"
-msgstr "雪原"
+msgstr "雪"
 
 #: data/core/terrain.cfg:61 data/core/terrain.cfg:70 data/core/terrain.cfg:79
 #: data/core/terrain.cfg:89 data/core/terrain.cfg:98 data/core/terrain.cfg:107
@@ -169,7 +169,7 @@ msgstr "深い割目"
 
 #: data/core/terrain.cfg:521
 msgid "Lava chasm"
-msgstr ""
+msgstr "溶岩の深い割目"
 
 #: data/core/terrain.cfg:531
 msgid "Lava"
@@ -185,11 +185,11 @@ msgstr "荒地"
 
 #: data/core/terrain.cfg:563
 msgid "Road"
-msgstr "道路"
+msgstr "道"
 
 #: data/core/terrain.cfg:572
 msgid "Stone path"
-msgstr ""
+msgstr "石畳"
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -217,7 +217,7 @@ msgstr "岩に囲まれた洞窟"
 
 #: data/core/terrain.cfg:665
 msgid "Rockbound Cave Lit"
-msgstr "岩に囲まれた照らされた洞窟"
+msgstr "岩に囲まれ照らされた洞窟"
 
 #: data/core/terrain.cfg:682 data/core/terrain.cfg:693
 #: data/core/terrain.cfg:706 data/core/terrain.cfg:717
@@ -348,15 +348,15 @@ msgstr "マップのサイズ変更"
 
 #: src/editor/editor_dialogs.cpp:387
 msgid "X offset:"
-msgstr ""
+msgstr "X オフセット:"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "Y offset:"
-msgstr ""
+msgstr "Y オフセット:"
 
 #: src/editor/editor_dialogs.cpp:467
 msgid "Smart expand"
-msgstr ""
+msgstr "ちょうどよい拡張"
 
 #: src/editor/editor_dialogs.cpp:556
 msgid "X-Axis"
@@ -524,7 +524,7 @@ msgstr "適用"
 
 #: src/game_preferences_display.cpp:195
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "ユニットが何もしていないときのアニメーションを表示する"
 
 #: src/game_preferences_display.cpp:197
 msgid "Music Volume:"
@@ -552,7 +552,7 @@ msgstr "サンプルレート(Hz):"
 
 #: src/game_preferences_display.cpp:203
 msgid "Frequency:"
-msgstr ""
+msgstr "周波数:"
 
 #: src/game_preferences_display.cpp:226
 msgid "Sound effects on/off"
@@ -627,13 +627,12 @@ msgid "Units move and fight speed"
 msgstr "ユニット移動と戦闘速度"
 
 #: src/game_preferences_display.cpp:321
-#, fuzzy
 msgid "Show unit idle animations"
-msgstr "アニメーションをスキップ"
+msgstr "ユニットが何もしていないときのアニメーションを表示します"
 
 #: src/game_preferences_display.cpp:327
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "ユニットが何もしていないときのアニメーションの頻度を設定します"
 
 #: src/game_preferences_display.cpp:330
 msgid "Do not animate AI units moving"
@@ -1089,17 +1088,16 @@ msgid "Enter user command"
 msgstr "ユーザーコマンドを入力してください"
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Clear messages"
-msgstr "ラベルをクリアする"
+msgstr "メッセージをクリアする"
 
 #: src/hotkeys.cpp:137
 msgid "User-Command#2"
-msgstr ""
+msgstr "ユーザーコマンド#2"
 
 #: src/hotkeys.cpp:138
 msgid "User-Command#3"
-msgstr ""
+msgstr "ユーザーコマンド#3"
 
 #: src/hotkeys.cpp:491 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
@@ -1210,3 +1208,5 @@ msgstr "エラー"
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+"不正な地形が見つかりました。おそらくバージョン 1.2 の地形フォーマットです。地"
+"形 = "

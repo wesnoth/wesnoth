@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-14 00:23+0200\n"
-"PO-Revision-Date: 2007-07-22 11:40+0900\n"
+"PO-Revision-Date: 2007-09-09 12:36+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "戦闘を表示"
 
 #: data/_main.cfg:50
 msgid "Animate Map"
-msgstr ""
+msgstr "マップのアニメーション"
 
 #: data/_main.cfg:57
 msgid "Mouse Scrolling"
@@ -67,17 +67,16 @@ msgstr "キャンペーンデザイン"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "完成とメンテナンス"
+msgstr "キャンペーンのメンテナンス"
 
 #: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
 msgid "+1 max HP"
-msgstr ""
+msgstr "最大 HP +1"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 msgid "Campaign Epilog and Continuity"
-msgstr ""
+msgstr "キャンペーンのエピローグと台本"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:41
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:43
@@ -87,9 +86,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/_main.cfg:39
 #: data/campaigns/Two_Brothers/_main.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
-#, fuzzy
 msgid "Artwork and Graphics Design"
-msgstr "アートワークおよびグラフィクスデザイナー"
+msgstr "アートワークおよびグラフィクスデザイン"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -114,9 +112,8 @@ msgid "Code and Translation Assistance"
 msgstr "コーディングと翻訳支援"
 
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:34
-#, fuzzy
 msgid "WML Assistance"
-msgstr "抵抗値"
+msgstr "WML 支援"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
@@ -137,11 +134,13 @@ msgid ""
 "and other people\n"
 "this list is very incomplete\n"
 msgstr ""
+"そしてその他の人たち\n"
+"この一覧はきわめて未完成です\n"
 
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr ""
+msgstr "そして特に、言い忘れた他のすべての人たちに感謝します。"
 
 #: data/core/about.cfg:7
 msgid "Programming"
@@ -384,9 +383,8 @@ msgstr ""
 "らの能力は遭遇した時にこのトピックの下に一覧表示されます。"
 
 #: data/core/help.cfg:81
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "不明のシナリオ"
+msgstr "不明のユニット"
 
 #: data/core/help.cfg:84
 msgid ""
@@ -395,6 +393,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"このユニットは現在のところ不明です。このユニットの詳細を見るためには、ゲーム"
+"の中で見つけなければなりません。"
 
 #: data/core/help.cfg:92
 msgid ""
@@ -764,7 +766,6 @@ msgid "Shroud and Fog of War"
 msgstr "幕と戦雲（霧）"
 
 #: data/core/help.cfg:169
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -1289,7 +1290,6 @@ msgstr ""
 "は、差し引き合計の収入は毎ターン10ゴールドとなります。"
 
 #: data/core/help.cfg:261
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1300,10 +1300,11 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"維持費にはひとつだけ重要な例外があります。「忠義」特性を持つユニットには、維"
-"持費が全くかかりません。シナリオを開始するユニット(KonradやDelfadorなど)や、 "
+"維持費には重要な例外がふたつあります。「忠義」特性を持つユニットとリーダーに"
+"は維持費が全くかかりません。シナリオの最初からいるユニット(Delfadorなど)や、 "
 "シナリオの途中で加わるユニット(「王位継承者」のシナリオ２での騎兵など)は、通"
-"常この忠義特性を持っています。"
+"常この忠義特性を持っています。あなたがプレイしているユニット（Konrad など）は"
+"ほとんどの場合リーダーでしょう。"
 
 #: data/core/help.cfg:266
 msgid "Wrap Up"
@@ -1853,7 +1854,8 @@ msgstr ""
 "ば、敵は簡単に城の中に忍び込むことがでい、中にいる全てのものと同様の防御特典"
 "を得ることになります。\n"
 "\n"
-"ほとんどのユニットは城で60%の防御になります。"
+"ほとんどのユニットは城で60%の防御になります。\n"
+"\n"
 
 #: data/core/help.cfg:482
 msgid "Sand"
@@ -1907,7 +1909,8 @@ msgstr ""
 "す。ほとんどのユニットはこの地形に慣れておらず、それゆえ歩みが遅く防御を妨げ"
 "ます。住まいを洞窟に作るドワーフとトロールは、共にこの地形では比較的容易に行"
 "動し、特にドワーフその小さな身体で他の種族では通れないような多くの障害物も乗"
-"り越えられます。\n"
+"り越えられます。時には、洞窟は <ref>dst=terrain_illuminated_cave text=照らさ"
+"れている</ref> ことがあります。\n"
 "\n"
 "多くのユニットは洞窟で20から40%の防御となり、ドワーフは50%です。"
 
@@ -1933,8 +1936,9 @@ msgstr ""
 "る浸食作用のある粒子を運んでいるのです。それはごつごつした地下の洞窟に似て、"
 "ほとんどのユニットの動きを妨げますが、防御力は高くなります。洞窟の主要な居住"
 "者であるドワーフ族やトロルは、比較的楽にこの地形を進むことができます。ドワー"
-"フ族は、その小さな体を生かし、このような地形を歩くのに最も有利です。\n"
-"\n"
+"フ族は、その小さな体を生かし、このような地形を歩くのに最も有利です。時には、"
+"洞窟は <ref>dst=terrain_illuminated_cave text=照らされている</ref> ことがあり"
+"ます。\n"
 "ほとんどのユニットは岩の多い洞窟ではおよそ 50% の防御を得ます。一方騎兵は "
 "40% に制限されます。ドワーフ族は岩に囲まれた洞窟では 60% の防御を享受します。"
 
@@ -1950,12 +1954,9 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units. In all "
 "other regards this terrain is functionally identical to normal cave terrains."
 msgstr ""
-"照らされた洞窟は表面からの光が暗闇を照らしている場所です。これによって秩序ユ"
-"ニットは攻撃ボーナスを得、混沌ユニットは攻撃ボーナスを失います。それ以外のす"
-"べての点において、この地形は通常の洞窟の地形と同じです。\n"
-"\n"
-"ほとんどのユニットは洞窟では 20% から 40% の防御を得ます。一方、ドワーフ族は "
-"50% を得ます。"
+"表面からの光が暗闇を照らしている地下の世界では珍しい土地です。これによって秩"
+"序ユニットは攻撃ボーナスを得、混沌ユニットは攻撃ボーナスを失います。それ以外"
+"のすべての点において、この地形は通常の洞窟の地形と同じです。"
 
 #: data/core/help.cfg:528
 msgid "Mushroom Grove"
@@ -2002,7 +2003,6 @@ msgid "Village"
 msgstr "村"
 
 #: data/core/help.cfg:553
-#, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2017,11 +2017,12 @@ msgid ""
 msgstr ""
 "村は建物と人間やその他の一群を表します。ほとんど全てのユニットは、例え騎兵で"
 "あっても、村を進行するのは容易で、多くのユニットは村に駐留中は防御特典を得ま"
-"す。\n"
-"村はユニットに資源をきれいにし傷を介抱することで、駐留している全てのユニット"
-"は各ターン8HPの回復と毒の治療が行われます。\n"
+"す。村はユニットに資源をきれいにし傷を介抱することで、駐留している全てのユ"
+"ニットは各ターン8HPの回復もしくは毒の治療が行われます。\n"
 "\n"
-"ほとんどのユニットは50から60%の防御を村でもちますが、騎兵は40%のみです。"
+"ほとんどのユニットは村にいる間50から60%の防御を得ますが、騎兵は40%のみで"
+"す。\n"
+"\n"
 
 #: data/core/help.cfg:558
 msgid "Submerged Village"
@@ -2039,6 +2040,14 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defence."
 msgstr ""
+"水中の村は海の種族とナーガの住処です。水中にすむ生き物にとっては家にいるよう"
+"なものですが、陸にすむものにとってはこれらの村を通ったりこれらの村を防御した"
+"りするのは困難です。しかしながら、他の村と同じように、すべての生き物のための"
+"設備があり、これによって傷を癒すことができます。村に配置されているユニットは"
+"すべて各ターンに 8HP の回復もしくは毒の治療を受けることができます。\n"
+"\n"
+"海の種族とナーガは水中の村で 60% の防御を得ますが、陸のユニットは通常低い防御"
+"となります。"
 
 #: data/core/help.cfg:568
 msgid "Chasm"
@@ -2136,12 +2145,17 @@ msgstr ""
 msgid "Impassable Mountain"
 msgstr "通れない山"
 
+# rarify = 薄いなので、rarified = 空気の薄いと訳しましたが……
 #: data/core/help.cfg:613
+#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
+"通れない山は非常に高く急なため、常に雲に覆われています。こんな山を越えること"
+"は事実上不可能です。飛ぶことのできる生き物であっても、このような空気の薄い高"
+"地のギザギザの山頂を超えることはできません。"
 
 #: data/core/help.cfg:618
 msgid "General commands"
@@ -2492,12 +2506,10 @@ msgstr ""
 "ません。"
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
-#, fuzzy
 msgid "concealment"
-msgstr "野営地"
+msgstr "潜伏"
 
 #: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -2507,12 +2519,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"潜水:\n"
-"このユニットは水中深くに隠れることができ、 敵に見つからなくなります。\n"
+"潜伏:\n"
+"このユニットは村に隠れることができ（水中の村は例外です）、敵に見つけられるこ"
+"とはありません。敵がこのユニットの隣にいる場合を除いて。\n"
 "\n"
-"このユニットが深い水中にいるときは、このユニットを見つけることはできません。 "
-"敵がこのユニットの隣にいる場合を除いて。 このユニットを初めて見つけた敵ユニッ"
-"トはそれ以上移動することはできません。"
+"このユニットが村にいるときは、このユニットを見つけることはできません。敵がこ"
+"のユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットはそ"
+"れ以上移動することはできません。"
 
 #: data/core/macros/abilities.cfg:437 data/core/macros/abilities.cfg:442
 msgid "submerge"
@@ -2597,7 +2610,6 @@ msgid "slows"
 msgstr "遅化"
 
 #: data/core/macros/abilities.cfg:515
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2607,7 +2619,8 @@ msgid ""
 msgstr ""
 "遅化:\n"
 "この攻撃は、ターンが終わるまでターゲットを遅くします。遅化は攻撃によるダメー"
-"ジを半減させ、遅化されたユニットの移動コストを倍にします。"
+"ジを半減させ、遅化されたユニットの移動コストを倍にします。遅化を受けたユニッ"
+"トは、選択するとサイドバーの情報にカタツムリのアイコンが表示されます。"
 
 #: data/core/macros/abilities.cfg:524
 msgid "stones"
@@ -2864,7 +2877,6 @@ msgid "Zap"
 msgstr "ふるう"
 
 #: data/core/macros/names.cfg:3
-#, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -2984,7 +2996,7 @@ msgstr ""
 "Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
 "Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
-"Amithrarion,Cálad,Legilad"
+"Amithrarion,Cálad,Legilad,Linduilas"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -3844,14 +3856,13 @@ msgstr ""
 "れるまで攻撃し続けます。"
 
 #: data/core/macros/special-notes.cfg:45
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target. This "
 "unit may backstab, inflicting double damage, by creeping around behind that "
 "enemy."
 msgstr ""
-"  同盟の誰かがユニットが敵の気を引いていれば、このユニットはその敵の背後に忍"
-"び寄ることで、 2倍のダメージを与えるふい打ちをくらわせます。"
+" 標的のユニットの反対側にそのユニットの敵がいれば、このユニットはその敵の背後"
+"に忍び寄ることで、 2倍のダメージを与えるふい打ちをくらわせます。"
 
 #: data/core/macros/special-notes.cfg:48
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -4058,16 +4069,14 @@ msgid "Teal"
 msgstr "青緑"
 
 #: data/core/units.cfg:40 data/hardwired/english.cfg:18
-#, fuzzy
 msgid "race^Elves"
-msgstr "ドワーフ"
+msgstr "エルフ族"
 
 #: data/core/units.cfg:49 data/hardwired/english.cfg:32
 msgid "race^Woses"
 msgstr "ウーズ"
 
 #: data/core/units.cfg:57 data/hardwired/english.cfg:19
-#, fuzzy
 msgid "race^Humans"
 msgstr "人間族"
 
@@ -4076,9 +4085,8 @@ msgid "race^Dwarves"
 msgstr "ドワーフ"
 
 #: data/core/units.cfg:72 data/hardwired/english.cfg:20
-#, fuzzy
 msgid "race^Orcs"
-msgstr "オーガ"
+msgstr "オーク族"
 
 #: data/core/units.cfg:79 data/hardwired/english.cfg:24
 msgid "race^Goblins"
@@ -4109,14 +4117,12 @@ msgid "race^Trolls"
 msgstr "トロル"
 
 #: data/core/units.cfg:132 data/hardwired/english.cfg:23
-#, fuzzy
 msgid "race^Drakes"
-msgstr "ドワーフ"
+msgstr "ドレーク族"
 
 #: data/core/units.cfg:139
-#, fuzzy
 msgid "race^Saurians"
-msgstr "ナーガ"
+msgstr "トカゲ族"
 
 #: data/core/units.cfg:147 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
@@ -4603,6 +4609,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"霧や幕を取り除くような動きは取り消すことができない。「幕の更新を遅らせる」オ"
+"プションで設定を切り替えることができる。ユニットの移動取り消しを維持したいの"
+"であれば。"
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:133
 #: data/themes/experimental.cfg:96
@@ -5153,12 +5162,10 @@ msgid "Remote host disconnected."
 msgstr "リモートホストと切断しました。"
 
 #: src/game.cpp:1262
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
-"このキャンペーンを導入するのに 必要なファイルを作成する際に、 問題がありまし"
-"た。"
+"このアドオンを導入するのに 必要なファイルを作成する際に、 問題がありました。"
 
 #: src/game.cpp:1274 src/game.cpp:1316 src/game.cpp:1343
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:432
@@ -5195,9 +5202,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Wesnothの公式マルチプレイサーバーにログオンします。"
 
 #: src/game.cpp:1375
-#, fuzzy
 msgid "Connect to Host/Server"
-msgstr "サーバーへの接続"
+msgstr "ホスト/サーバーへの接続"
 
 #: src/game.cpp:1376
 msgid "Join a server or hosted game"
@@ -5216,7 +5222,6 @@ msgid "Local Game"
 msgstr "ローカルゲーム"
 
 #: src/game.cpp:1382
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "同一マシンを共用して AI もしくは人間とマルチプレイを行います。"
 
@@ -5245,9 +5250,8 @@ msgid "Choose your preferred language:"
 msgstr "お好みの言語を選んで下さい:"
 
 #: src/game.cpp:1623
-#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
-msgstr "以下のアドオンキャンペーンでエラーが起きて、読み込めませんでした:"
+msgstr "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
 
 #: src/game.cpp:1628
 msgid "ERROR DETAILS:"
@@ -5282,9 +5286,8 @@ msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
 #: src/game_config.cpp:248
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "無効な色"
+msgstr "無効な色範囲:"
 
 #: src/game_events.cpp:881
 msgid "Victory:"
@@ -5351,9 +5354,8 @@ msgid "stone: "
 msgstr "石化: "
 
 #: src/generate_report.cpp:167
-#, fuzzy
 msgid "Resistances: "
-msgstr "抵抗力"
+msgstr "抵抗力: "
 
 #: src/generate_report.cpp:184 src/multiplayer_create.cpp:378
 msgid "Experience Modifier: "
@@ -5403,20 +5405,20 @@ msgstr "ヘルプ"
 
 #: src/help.cpp:1087
 msgid "Units having this special attack:"
-msgstr ""
+msgstr "この特別な攻撃が可能なユニット:"
 
 #: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580
-#, fuzzy
 msgid "race^Miscellaneous"
 msgstr "その他"
 
 #: src/help.cpp:1143
+#, fuzzy
 msgid "Units of this race:"
-msgstr ""
+msgstr "この能力を持っているユニット:"
 
 #: src/help.cpp:1209
 msgid "Units having this ability:"
-msgstr ""
+msgstr "この能力を持っているユニット:"
 
 #: src/help.cpp:1274
 msgid "Advances from: "
@@ -5501,7 +5503,7 @@ msgstr "移動コスト"
 
 #: src/help.cpp:2417 src/menu_events.cpp:651
 msgid " < Back"
-msgstr "< 戻る"
+msgstr " < 戻る"
 
 #: src/help.cpp:2418
 msgid "Forward >"
@@ -5604,28 +5606,20 @@ msgid "Damage Taken (EV)"
 msgstr "受けたダメージ (EV)"
 
 #: src/menu_events.cpp:250 src/menu_events.cpp:254
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "このゲームを本当に削除しますか？"
+msgstr "本当に彼を解雇しますか？"
 
 #: src/menu_events.cpp:250
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
-"王よ、このユニットは高レベルの経験を積んでいます！ 本当に $noun を解雇します"
-"か？"
+msgstr "閣下、このユニットは経験を積んでいてレベルが高いです！ "
 
 #: src/menu_events.cpp:251 src/menu_events.cpp:255
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "このゲームを本当に削除しますか？"
+msgstr "本当に彼女を解雇しますか？"
 
 #: src/menu_events.cpp:254
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
-"王様、 このユニットはもうすぐレベルアップしますよ！ 本当に $noun を解雇するの"
-"ですか？"
+msgstr "閣下、 このユニットはもうすぐレベルアップします！ "
 
 #: src/menu_events.cpp:311
 msgid "Statistics"
@@ -5650,9 +5644,8 @@ msgid "Location^Loc."
 msgstr "位置"
 
 #: src/menu_events.cpp:327
-#, fuzzy
 msgid "Status"
-msgstr "統計情報"
+msgstr "ステータス"
 
 #: src/menu_events.cpp:434
 msgid "Unit List"
@@ -5660,7 +5653,7 @@ msgstr "ユニット一覧"
 
 #: src/menu_events.cpp:437 src/menu_events.cpp:457
 msgid "Scroll To"
-msgstr ""
+msgstr "スクロールする"
 
 #: src/menu_events.cpp:486
 msgid "Leader"
@@ -5694,68 +5687,64 @@ msgid "Income"
 msgstr "収入"
 
 #: src/menu_events.cpp:569
-#, fuzzy
 msgid "Current Status"
-msgstr "現在の管理者"
+msgstr "現在のステータス"
 
 #: src/menu_events.cpp:570
-#, fuzzy
 msgid "More >"
-msgstr "次"
+msgstr "次 >"
 
 #: src/menu_events.cpp:588
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "シナリオ開始"
+msgstr "リーダー"
 
 #: src/menu_events.cpp:590
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "シナリオ開始"
+msgstr "陣営"
 
 #: src/menu_events.cpp:591
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "シナリオ開始"
+msgstr ""
+"開始\n"
+"ゴールド"
 
 #: src/menu_events.cpp:592
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "シナリオ開始"
+msgstr ""
+"基準\n"
+"収入"
 
 #: src/menu_events.cpp:593
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
+"村あたりの\n"
+"ゴールド"
 
 #: src/menu_events.cpp:594
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "シナリオ開始"
+msgstr "霧"
 
 #: src/menu_events.cpp:595
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "シナリオ開始"
+msgstr "幕"
 
 #: src/menu_events.cpp:640 src/menu_events.cpp:641
-#, fuzzy
 msgid "no"
-msgstr "雪原"
+msgstr "いいえ"
 
 #: src/menu_events.cpp:640 src/menu_events.cpp:641
 msgid "yes"
-msgstr ""
+msgstr "はい"
 
 #: src/menu_events.cpp:648
-#, fuzzy
 msgid "Scenario Settings"
-msgstr "シナリオ開始"
+msgstr "シナリオ設定"
 
 #: src/menu_events.cpp:680 src/playcampaign.cpp:525
 msgid "Name:"
@@ -5819,9 +5808,8 @@ msgid "Send to allies only"
 msgstr "同盟者にのみ送る"
 
 #: src/menu_events.cpp:866
-#, fuzzy
 msgid "Send to observers only"
-msgstr "同盟者にのみ送る"
+msgstr "観戦者にのみ送る"
 
 #: src/menu_events.cpp:946
 msgid "unit^Gold"
@@ -6008,9 +5996,8 @@ msgid "prompt^Command:"
 msgstr "コマンド:"
 
 #: src/menu_events.cpp:2186
-#, fuzzy
 msgid "User-Command#3"
-msgstr "コマンド"
+msgstr "ユーザーコマンド#3"
 
 #: src/mouse_events.cpp:198 src/mouse_events.cpp:308
 msgid "Attacker"
@@ -6418,9 +6405,8 @@ msgid "Players: "
 msgstr "プレイヤー数: "
 
 #: src/multiplayer_create.cpp:508
-#, fuzzy
 msgid "Size: "
-msgstr "大きさ"
+msgstr "大きさ: "
 
 #: src/multiplayer_lobby.cpp:99
 msgid "--no games open--"
@@ -6557,9 +6543,8 @@ msgid "You have been defeated!"
 msgstr "あなたは敗れました！"
 
 #: src/playcampaign.cpp:369
-#, fuzzy
 msgid "Error while reading the WML: "
-msgstr "ゲームプレイ中のエラー: "
+msgstr "WML 読み込み中のエラー: "
 
 #: src/playcampaign.cpp:393
 msgid "The replay could not be saved"
@@ -6643,6 +6628,8 @@ msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr ""
+"次のシナリオの開始ゴールドは $gold あるいは次のシナリオに設定されている最小の"
+"開始ゴールドのどちらか高い方になります。"
 
 #: src/playsingle_controller.cpp:389
 msgid ""
@@ -6775,28 +6762,24 @@ msgid "TitleScreen button^Preferences"
 msgstr "設定"
 
 #: src/titlescreen.cpp:310
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "終了"
+msgstr "クレジット"
 
 #: src/titlescreen.cpp:311
 msgid "TitleScreen button^Quit"
 msgstr "終了"
 
 #: src/titlescreen.cpp:314
-#, fuzzy
 msgid "TitleScreen button^More"
-msgstr "再開"
+msgstr "次"
 
 #: src/titlescreen.cpp:315
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "再開"
+msgstr "ヘルプ"
 
 #: src/titlescreen.cpp:317
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "再開"
+msgstr "Wesnoth への支援"
 
 #: src/titlescreen.cpp:319
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -6841,17 +6824,15 @@ msgstr "ゲームを終了します"
 
 #: src/titlescreen.cpp:328
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "次のヒントを表示します"
 
 #: src/titlescreen.cpp:329
-#, fuzzy
 msgid "Show Battle for Wesnoth help"
-msgstr "The Battle for Wesnoth ヘルプ"
+msgstr "Battle for Wesnoth のヘルプを表示します"
 
 #: src/titlescreen.cpp:330
-#, fuzzy
 msgid "Upload statistics"
-msgstr "統計情報"
+msgstr "統計情報をアップロードします"
 
 #: src/titlescreen.cpp:382
 msgid "Help Wesnoth by sending us information"
@@ -6920,161 +6901,3 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
-
-#~ msgid "Campaign Designer"
-#~ msgstr "キャンペーンデザイナー"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "現在の管理者"
-
-#~ msgid "Music Development"
-#~ msgstr "音楽開発"
-
-#~ msgid "WML Contributors"
-#~ msgstr "WML への貢献者"
-
-#~ msgid "Elves"
-#~ msgstr "エルフ族"
-
-#~ msgid "Orcs"
-#~ msgstr "オーク族"
-
-#~ msgid "her"
-#~ msgstr "彼女"
-
-#~ msgid "him"
-#~ msgstr "彼"
-
-#, fuzzy
-#~ msgid "You will start the next scenario with "
-#~ msgstr "所持金額の80%が次のシナリオに持ち越されます"
-
-#, fuzzy
-#~ msgid "Back"
-#~ msgstr "黒"
-
-#, fuzzy
-#~ msgid "game settings^Fog"
-#~ msgstr "マップ設定を使用"
-
-#~ msgid "Can't set abilities yet, sorry."
-#~ msgstr "申し訳ありませんが、 まだ能力を つけられません。"
-
-#, fuzzy
-#~ msgid "Map size: "
-#~ msgstr "マップを保存しました。"
-
-#~ msgid "Credits"
-#~ msgstr "クレジット"
-
-#~ msgid "Prose-doctoring and preparation for mainline"
-#~ msgstr "本線における散文の修正と調整"
-
-#~ msgid "Unit art"
-#~ msgstr "ユニットのグラフィック"
-
-#~ msgid "Map art"
-#~ msgstr "マップのグラフィック"
-
-#~ msgid "Portrait Art"
-#~ msgstr "肖像画のグラフィック"
-
-#, fuzzy
-#~ msgid "mace"
-#~ msgstr "種族"
-
-#, fuzzy
-#~ msgid "sling"
-#~ msgstr "回復"
-
-#, fuzzy
-#~ msgid "female^Fugitive"
-#~ msgstr "俊敏"
-
-#, fuzzy
-#~ msgid "sword"
-#~ msgstr "群れ"
-
-#~ msgid "None"
-#~ msgstr "なし"
-
-#~ msgid "Elven Castle"
-#~ msgstr "エルフの城"
-
-#~ msgid "Dwarven Castle"
-#~ msgstr "ドワーフの城"
-
-#~ msgid "Ruin"
-#~ msgstr "廃墟"
-
-#~ msgid "Sunken Ruin"
-#~ msgstr "水中の廃墟"
-
-#~ msgid "Swamp Ruin"
-#~ msgstr "沼の廃墟"
-
-#~ msgid "Encampment keep"
-#~ msgstr "野営地の主塔"
-
-#~ msgid "Keep"
-#~ msgstr "主塔"
-
-#~ msgid "Elven Keep"
-#~ msgstr "エルフの主塔"
-
-#~ msgid "Dwarven keep"
-#~ msgstr "ドワーフの主塔"
-
-#~ msgid "Ruined keep"
-#~ msgstr "破壊された主塔"
-
-#~ msgid "Sunken keep"
-#~ msgstr "水中の主塔"
-
-#~ msgid "Swamp keep"
-#~ msgstr "沼地の主塔"
-
-#~ msgid "Crater"
-#~ msgstr "火口"
-
-#~ msgid "Rubble"
-#~ msgstr "瓦礫"
-
-#~ msgid "Oasis"
-#~ msgstr "オアシス"
-
-#~ msgid "Snow Forest"
-#~ msgstr "雪の森"
-
-#~ msgid "Great Tree"
-#~ msgstr "大木"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "熱帯林"
-
-#~ msgid "Snow Hills"
-#~ msgstr "雪丘"
-
-#~ msgid "Dunes"
-#~ msgstr "砂丘"
-
-#~ msgid "Desert road"
-#~ msgstr "砂漠の道"
-
-#~ msgid "Dirt"
-#~ msgstr "荒地"
-
-#~ msgid "Farmland"
-#~ msgstr "農地"
-
-#~ msgid "Cave Lit"
-#~ msgstr "照らされた洞窟"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "岩に囲まれた照らされた洞窟"
-
-#~ msgid "Impassable Mountains"
-#~ msgstr "通れない山"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "通れない砂漠の山"
