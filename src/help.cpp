@@ -1334,7 +1334,7 @@ public:
 			race_name = _ ("race^Miscellaneous");
 		}
 		ss << _("Race: ");
-		ss << "<ref>dst='" << escape("race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
+		ss << "<ref>dst='" << escape(".race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
 		ss << "\n";
 
 		// Print the abilities the units has, cross-reference them
@@ -1595,6 +1595,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	if (game_info == NULL) {
 		return topics;
 	}
+
+	std::set<std::string> race_units;
+	
 	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
@@ -1606,11 +1609,39 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 			continue;
 
 		const std::string lang_name = type.language_name();
-		const std::string id = type.id();
-		topic unit_topic(lang_name, std::string("unit_") + id, "");
+		const std::string ref_id = std::string("unit_") +  type.id();
+		topic unit_topic(lang_name, ref_id, "");
 		unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);
+
+		// we also record an hyperlink of this unit
+		// in the list used for the race topic
+		std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+		race_units.insert(link);
 	}
+
+	//generate the hidden race description topic
+	std::string race_id = ".race_"+race;
+	std::string race_name;
+	std::string race_description;
+	const race_map::const_iterator race_it = game_info->races.find(race);
+	if (race_it != game_info->races.end()) {
+		race_name = race_it->second.name();
+		race_description = race_it->second.description();
+		// if (description.empty()) description =  _("No description Available");
+	} else {
+		race_name = _ ("race^Miscellaneous");
+		// description =  _("Here put the description of the Miscellaneous race");
+	}
+
+	std::stringstream text;
+	text << race_description;
+	text << "\n\n" << _("Units of this race:") << "\n";
+	for (std::set<std::string>::iterator u = race_units.begin(); u != race_units.end();u++) {
+		text << (*u) << "\n";
+	}
+	topics.push_back(topic(race_name, race_id, text.str()) );
+
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
