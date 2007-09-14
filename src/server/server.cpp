@@ -1067,7 +1067,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->update_side_data();
 		}
 
-		// const bool lobby_changes = g->describe_slots();
+		/*const bool lobby_changes = */g->describe_slots();
 		lobby_players_.send_data(sync_initial_response());
 	}
 

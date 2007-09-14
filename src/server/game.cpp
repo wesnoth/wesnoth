@@ -517,7 +517,7 @@ bool game::describe_slots()
 			num_sides--;
 		} else {
 			if(!sides_taken_[i])
-			available_slots++;
+				available_slots++;
 		}
 	}
 	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
