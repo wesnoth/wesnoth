@@ -574,7 +574,7 @@ namespace {
 	const std::string open_section_img = "help/open_section.png";
 	// The topic to open by default when opening the help dialog.
 	const std::string default_show_topic = "introduction_topic";
-
+	const std::string unknown_unit_topic = ".unknown_unit";
 }
 
 	/// Return true if the id is valid for user defined topics and
@@ -1285,7 +1285,7 @@ public:
 					if (description_type(type->second) == FULL_DESCRIPTION) {
 						ref_id = std::string("unit_") + type->second.id();
 					} else {
-						ref_id = "unknown_unit";
+						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
 					}
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
@@ -1312,7 +1312,7 @@ public:
 					if (description_type(type->second) == FULL_DESCRIPTION) {
 						ref_id = std::string("unit_") + type->second.id();
 					} else {
-						ref_id = "unknown_unit";
+						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
 					}
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
