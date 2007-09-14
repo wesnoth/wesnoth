@@ -14,6 +14,9 @@
    See the COPYING file for more details.
 */
 
+//! @file serialization/parser.cpp 
+//! Read/Write & analyse WML- and config-files.
+
 #include "serialization/parser.hpp"
 
 #include "config.hpp"
@@ -342,7 +345,7 @@ static char const *EndElementPostfix = "]\n";
 static std::string escaped_string(const std::string& value) {
 	std::vector<char> res;
 	for(std::string::const_iterator i = value.begin(); i != value.end(); ++i) {
-		//double interior quotes
+		// double interior quotes
 		if(*i == '\"') res.push_back(*i);
 		res.push_back(*i);
 	}

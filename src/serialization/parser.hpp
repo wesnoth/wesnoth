@@ -12,6 +12,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file serialization/parser.hpp
+//!
+
 #ifndef SERIALIZATION_PARSER_HPP_INCLUDED
 #define SERIALIZATION_PARSER_HPP_INCLUDED
 
@@ -23,8 +27,8 @@
 class config;
 class t_string;
 
-//read data in, clobbering existing data.
-void read(config &cfg, std::istream &in, std::string* error_log = NULL); //throws config::error
+// Read data in, clobbering existing data.
+void read(config &cfg, std::istream &in, std::string* error_log = NULL); 	// Throws config::error
 
 void write(std::ostream &out, config const &cfg, unsigned int level=0);
 void write_key_val(std::ostream &out, const std::string &key, const t_string &value, unsigned int level, std::string &textdomain);
