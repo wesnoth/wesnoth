@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-15 15:15+0200\n"
-"PO-Revision-Date: 2007-09-08 22:32+0200\n"
+"PO-Revision-Date: 2007-09-14 23:29+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -1129,7 +1129,6 @@ msgstr ""
 "att plågas av dagens hetta och nattens köld, och resan kommer att bli svår."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:287
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1139,11 +1138,11 @@ msgid ""
 "your units will regain full attack strength and some of the lost hitpoints."
 msgstr ""
 "Under dagtid (gryning, morgon, middag, eftermiddag och skymning) kommer "
-"trupper som inte befinner sig på slätt, i ett slott eller i läger att få "
-"sina närstridsattacker försvagade med en poäng i början av draget. "
-"Intillstående helande trupper förhindrar uttorkningen, och distansattacker "
-"påverkar inte. Vid början av varje drag återfår trupper som befinner sig i "
-"en oas (grunt vatten) full attackstyrka."
+"varje trupp som befinner sig på sand, väg, slätt, bråte eller sanddyn att "
+"drabbas av törst, och förlora $dehydration_loss hälsopoäng och få försvagade "
+"attacker i början av varje drag. Schamaner kan inte bota denna skada. Endast "
+"vila i en oas (grunt vatten) vid början av ett drag återskänker truppen "
+"attackstyrkan och en del av de förlorade hälsopoängen."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:295
 msgid ""
@@ -1180,7 +1179,7 @@ msgstr "Färdring"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:415
 msgid "At the end of each turn, this unit takes no damage from the desert."
-msgstr ""
+msgstr "Vid slutet av varje drag tar denna trupp ingen skada av öknen."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:450
 msgid "Wait. I think I spotted something ahead of us..."
@@ -1332,9 +1331,8 @@ msgstr ""
 "skulle vilja nå fram till en oas snart."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:839
-#, fuzzy
 msgid "Black Lieutenant"
-msgstr "Svarta handen-skurk"
+msgstr "Svartlöjtnant"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:841
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:843
@@ -1352,7 +1350,6 @@ msgid "Black Hand Bandit"
 msgstr "Svarta handen-skurk"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:891
-#, fuzzy
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
@@ -1691,13 +1688,12 @@ msgstr ""
 "vila ut."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1932
-#, fuzzy
 msgid "thirst"
-msgstr "törnen"
+msgstr "törst"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1946
 msgid "refreshed"
-msgstr ""
+msgstr "upplivad"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2154
 msgid ""
@@ -1986,13 +1982,12 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:129
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:134
-#, fuzzy
 msgid ""
 "There's no way we can marshal our people to escape the battle in time. We "
 "must protect our people's $village_counter encampments from the undead."
 msgstr ""
 "Vi hinner aldrig samla ihop vårt folk och undfly striden i tid. Vi måste "
-"skydda de elva lägerplatserna där vårt folk bor från de vandöda."
+"skydda vårt folks $village_counter läger från de vandöda."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:140
 msgid ""
@@ -14355,7 +14350,7 @@ msgstr "Människoskepp"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:86
 msgid "Campfire"
-msgstr ""
+msgstr "Lägereld"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:18
 msgid "First Dawn"
@@ -14453,32 +14448,3 @@ msgstr "Det långa mörkret (4)"
 #~ "Anmärkning: nekromantens distansattack är magisk och träffar ofta sitt "
 #~ "mål. Nekromantens stav har pestens märke, och en fiende som träffas av "
 #~ "denna kommer att återuppstå som vandöd."
-
-#~ msgid ""
-#~ "The other shamans and I can prevent exhaustion and dehydration from "
-#~ "weakening anyone close to us. But oases like the one next to us are the "
-#~ "key to our survival; their fresh water will heal our people back to their "
-#~ "full strength."
-#~ msgstr ""
-#~ "De andra schamanerna och jag kan förhindra att utmattning och uttorkning "
-#~ "drabbar de som står i vår närhet. Dock är oaser nyckeln till vår "
-#~ "överlevnad; vattnet i dem återskänker vårt folk sin fulla styrka."
-
-#~ msgid ""
-#~ "This unit will no longer suffer from the fatiguing effects of the daytime "
-#~ "heat."
-#~ msgstr ""
-#~ "Denna trupp kommer inte längre att drabbas av dagshettans utmattning."
-
-#~ msgid "Dehydrated"
-#~ msgstr "Uttorkad"
-
-#~ msgid "Rehydrated"
-#~ msgstr "Otörstig"
-
-#~ msgid ""
-#~ "There's no way we can marshal our people to escape the battle in time. We "
-#~ "must protect our people's twelve encampments from the undead."
-#~ msgstr ""
-#~ "Vi hinner aldrig samla ihop vårt folk och undfly striden i tid. Vi måste "
-#~ "skydda de tolv lägerplatserna där vårt folk bor från de vandöda."

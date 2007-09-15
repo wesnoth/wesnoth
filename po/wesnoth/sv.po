@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-15 16:12+0200\n"
-"PO-Revision-Date: 2007-09-08 22:07+0200\n"
+"PO-Revision-Date: 2007-09-14 23:37+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -313,9 +313,8 @@ msgid "Turkish Translation"
 msgstr "Turkisk översättning"
 
 #: data/core/about.cfg:1551
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Valencisk översättning"
+msgstr "Valencisk (sydkatalansk) översättning"
 
 #: data/core/about.cfg:1561
 msgid "Bots"
@@ -1708,7 +1707,6 @@ msgid "Forest"
 msgstr "Skog"
 
 #: data/core/help.cfg:390
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1733,7 +1731,7 @@ msgstr ""
 "Dvärgar utgör ett annat undantag; de kan ta sig igenom skogar utan större "
 "hinder, men deras ovana i terrängen ger dem inte någon försvarsfördel.\n"
 "\n"
-"De flesta truppslag har 50% försvar i skog, men kavalleri har 40%. Alver har "
+"De flesta truppslag har 50% försvar i skog, men kavalleri har 30%. Alver har "
 "däremot 60-70% försvar, även till häst. Dvärgar har vanligtvis bara 30% "
 "försvar i skog.\n"
 "\n"
@@ -2005,7 +2003,6 @@ msgid "Illuminated Cave"
 msgstr "Upplyst grotta"
 
 #: data/core/help.cfg:516
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2206,7 +2203,6 @@ msgid "Impassable Mountain"
 msgstr "Obestigbara berg"
 
 #: data/core/help.cfg:606
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
@@ -4441,7 +4437,6 @@ msgid ""
 msgstr "Trupper som befinner sig i byar återfår 8 HP i början på sitt drag."
 
 #: data/hardwired/tips.cfg:11
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -4662,7 +4657,6 @@ msgstr ""
 "begreppet."
 
 #: data/hardwired/tips.cfg:37
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -5142,16 +5136,15 @@ msgstr "Välj extramaterial att radera."
 
 #: src/game.cpp:972
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "Är du säker på att du vill ta bort extramaterialet '$addon|'?"
 
 #: src/game.cpp:976
 msgid "Confirm"
 msgstr "Bekräfta"
 
 #: src/game.cpp:999
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "Extramaterialet har raderats"
+msgstr "Extramaterialet '$addon|' har raderats."
 
 #: src/game.cpp:1004
 msgid "Add-on deleted"
@@ -5263,9 +5256,8 @@ msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
 #: src/game.cpp:1277
-#, fuzzy
 msgid "The server responded with an error: \"$error|\""
-msgstr "Felmeddelande från servern: \""
+msgstr "Felmeddelande från servern: \"$error|\""
 
 #: src/game.cpp:1284
 msgid "Terms"
@@ -5507,9 +5499,8 @@ msgid "race^Miscellaneous"
 msgstr "Diverse"
 
 #: src/help.cpp:1143 src/help.cpp:1639
-#, fuzzy
 msgid "Units of this race:"
-msgstr "Trupper med denna förmåga:"
+msgstr "Trupper av denna ras:"
 
 #: src/help.cpp:1209
 msgid "Units having this ability:"
@@ -5524,9 +5515,8 @@ msgid "Advances to: "
 msgstr "Kan befordras till: "
 
 #: src/help.cpp:1336
-#, fuzzy
 msgid "Race: "
-msgstr "Ras"
+msgstr "Ras: "
 
 #: src/help.cpp:1343
 msgid "Abilities: "
@@ -5721,7 +5711,6 @@ msgid "Statistics"
 msgstr "Statistik"
 
 #: src/menu_events.cpp:321
-#, fuzzy
 msgid "Level^Lv."
 msgstr "Nivå"
 
@@ -5734,9 +5723,8 @@ msgid "Moves"
 msgstr "Förflyttning"
 
 #: src/menu_events.cpp:326
-#, fuzzy
 msgid "Location^Loc."
-msgstr "Position"
+msgstr "Pos."
 
 #: src/menu_events.cpp:327
 msgid "Status"
@@ -6380,9 +6368,8 @@ msgid "Settings..."
 msgstr "Inställningar..."
 
 #: src/multiplayer_create.cpp:93
-#, fuzzy
 msgid "Load Game..."
-msgstr "Sparade spel"
+msgstr "Öppna spel..."
 
 #: src/multiplayer_create.cpp:125
 msgid "The maximum number of turns the game can last"
@@ -6526,9 +6513,8 @@ msgid "Unknown scenario"
 msgstr "Okänt scenario"
 
 #: src/multiplayer_lobby.cpp:447
-#, fuzzy
 msgid "Turn "
-msgstr "Drag"
+msgstr "Drag "
 
 #: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slot:"
@@ -6664,9 +6650,8 @@ msgid "Do you want to save your game?"
 msgstr "Vill du spara ditt spel?"
 
 #: src/playcampaign.cpp:549
-#, fuzzy
 msgid "Unknown scenario: '$scenario|'"
-msgstr "Okänt scenario: '"
+msgstr "Okänt scenario: '$scenario|'"
 
 #: src/playmp_controller.cpp:359
 msgid ""
@@ -6741,9 +6726,8 @@ msgstr ""
 "spelet?"
 
 #: src/playsingle_controller.cpp:517
-#, fuzzy
 msgid "It is now $name|'s turn"
-msgstr "Nu är det din tur"
+msgstr "Nu är det $name|s drag"
 
 #: src/playturn.cpp:200
 msgid "Replace with AI"
@@ -6762,9 +6746,8 @@ msgid "Replace with "
 msgstr "Ersätt med"
 
 #: src/playturn.cpp:222
-#, fuzzy
 msgid " has left the game. What do you want to do?"
-msgstr "har lämnat spelet. Vad vill du göra?"
+msgstr " har lämnat spelet. Vad vill du göra?"
 
 #: src/serialization/parser.cpp:102
 msgid "Unexpected characters at line start"
@@ -6940,7 +6923,7 @@ msgstr "Hjälp Wesnoth genom att skicka oss information"
 
 #: src/unit.cpp:371 src/unit.cpp:1150 src/unit.cpp:2530
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "Okänt truppslag: '$type|'"
 
 #: src/unit.cpp:2574 src/unit.cpp:2898 src/unit.cpp:2953
 msgid "; "
@@ -7005,6 +6988,5 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
 
-#, fuzzy
 #~ msgid "Races"
-#~ msgstr "Ras"
+#~ msgstr "Raser"
