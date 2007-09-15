@@ -14,13 +14,13 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-14 00:33+0200\n"
-"PO-Revision-Date: 2007-09-12 19:08+0200\n"
+"PO-Revision-Date: 2007-09-15 11:49+0200\n"
 "Last-Translator: Allefant <allefant@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:13
 msgid "Under the Burning Suns"
@@ -1189,7 +1189,6 @@ msgstr ""
 "werden: Am Tag die Hitze, in der Nacht die Kälte."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:287
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1198,13 +1197,7 @@ msgid ""
 "refreshing at an oasis (any shallow water hex) at the start of your turn, "
 "your units will regain full attack strength and some of the lost hitpoints."
 msgstr ""
-"Tagsüber (Morgengrauen, Morgen, Mittag, Nachmittag, Abenddämmerung) verliert "
-"jede Einheit, die sich zu Beginn eines Zuges nicht auf einem Gras- oder "
-"Burg-/Befestigungsfeld befindet, einen Punkt Angriffsstärke bei ihrer "
-"Nahkampfattacke. Benachbarte Heiler verhinden diesen Dehydrationseffekt, und "
-"Fernkampf ist nicht betroffen. Jede Einheit die sich zu Beginn des Zuges in "
-"einer Oase (flaches Wasser) aufhält, erhält wieder die volle Angriffsstärke "
-"zurück."
+"Tagsüber (Morgengrauen, Morgen, Mittag, Nachmittag, Abenddämmerung) leide Einheit, die sich zu Beginn eines Zuges auf einem Sand-, Straßen-, Geröll- oder Dünenfeld befinden, unter Durst. Dadurch verlieren sie $dehydration_loss Angriffspunkte, wodurch ihre Attacken geschwächt werden. Schamanen können dies nicht verhinden. Die einzige Möglichkeit, die volle Stärke zurückzuerlangen ist es, wenn sich die Einheit zu Beginn eines Zuges in einer Oase (flaches Wasser) erfrischen kann."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:295
 msgid ""
@@ -1405,9 +1398,8 @@ msgstr ""
 "Lasst uns weiter gehen, ich würde wirklich zu gerne bald eine Oase erreichen."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:839
-#, fuzzy
 msgid "Black Lieutenant"
-msgstr "Schwarzhand Bandit"
+msgstr "Schwarzer Hauptmann"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:841
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:843
@@ -1425,7 +1417,6 @@ msgid "Black Hand Bandit"
 msgstr "Schwarzhand Bandit"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:891
-#, fuzzy
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
@@ -1783,13 +1774,12 @@ msgstr ""
 "es uns möglich sein, Wasser und Ruhe zu finden."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1918
-#, fuzzy
 msgid "thirst"
-msgstr "Dornen"
+msgstr "Durst"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1926
 msgid "refreshed"
-msgstr ""
+msgstr "erfrischt"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2115
 msgid ""
@@ -2090,14 +2080,12 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:129
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:134
-#, fuzzy
 msgid ""
 "There's no way we can marshal our people to escape the battle in time. We "
 "must protect our people's $village_counter encampments from the undead."
 msgstr ""
 "Es gibt keine Möglichkeit, unsere Leute noch alle rechtzeitig aus dem "
-"Kampfgebiet weg zu bringen. Wir müssen alle elf Lager vor den Untoten "
-"beschützen."
+"Kampfgebiet weg zu bringen. Wir müssen alle $village_counter Lager vor den Untoten beschützen."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:140
 msgid ""
@@ -15192,9 +15180,8 @@ msgid "Human Ship"
 msgstr "Schiff der Menschen"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:86
-#, fuzzy
 msgid "Campfire"
-msgstr "Feuer"
+msgstr "Lagerfeuer"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:18
 msgid "First Dawn"
