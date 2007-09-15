@@ -93,9 +93,16 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 		}
 	}
 
-	if((minimap->w != w || minimap->h != h) && w != 0) {
+	if((minimap->w != w || minimap->h != h) && w != 0 && h != 0) {
 		const surface surf(minimap);
-		minimap = surface(scale_surface(surf,w,h));
+		float sw = 1.0, sh = 1.0;
+
+		// preserve the aspect ratio of the original map rather than
+		// distorting it to fit the minimap window.
+		if (minimap->h < minimap->w) sh = (minimap->h*1.0)/minimap->w;
+		if (minimap->w < minimap->h) sw = (minimap->w*1.0)/minimap->h;
+
+		minimap = surface(scale_surface(surf,int(w * sw),int(h * sh)));
 	}
 
 	LOG_DP << "done generating minimap\n";
