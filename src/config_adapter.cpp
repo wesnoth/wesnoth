@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file config_adapter.cpp
+//! Construct objects like 'team' or 'unit' out of WML-based config-infos.
+
 #include "global.hpp"
 
 #include <sstream>
@@ -25,7 +28,8 @@
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)
 
-std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids){
+std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids)
+{
 	std::string save_id = cfg["save_id"];
 
 	if(save_id.empty()) {
@@ -36,7 +40,7 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 		save_id="Unknown";
 	}
 
-	//make sure the 'save_id' is unique
+	// Make sure the 'save_id' is unique
 	while(seen_save_ids.count(save_id)) {
 		save_id += "_";
 	}
@@ -44,7 +48,12 @@ std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_sav
 	return save_id;
 }
 
-void get_player_info(const config& cfg, game_state& gamestate, std::string save_id, std::vector<team>& teams, const config& level, const game_data& gameinfo, gamemap& map, unit_map& units, gamestatus& game_status, bool snapshot){
+void get_player_info(const config& cfg, game_state& gamestate,
+					 std::string save_id, std::vector<team>& teams,
+					 const config& level, const game_data& gameinfo,
+					 gamemap& map, unit_map& units,
+					 gamestatus& game_status, bool snapshot)
+{
 	player_info *player = NULL;
 
 	if(cfg["controller"] == "human" ||
@@ -75,28 +84,31 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 	team temp_team(cfg, ngold);
 	teams.push_back(temp_team);
 
-	//update/fix the recall list for this side, by setting the
-	//"side" of each unit in it to be the "side" of the player.
+	// Update/fix the recall list for this side,
+	// by setting the "side" of each unit in it
+	// to be the "side" of the player.
 	int side = lexical_cast_default<int>(cfg["side"], 1);
 	if(player != NULL) {
-		for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
+		for(std::vector<unit>::iterator it = player->available_units.begin();
+			it != player->available_units.end(); ++it) {
 			it->set_side(side);
 		}
 	}
 
-	//if this team has no objectives, set its objectives to the
-	//level-global "objectives"
+	// If this team has no objectives, set its objectives
+	// to the level-global "objectives"
 	if(teams.back().objectives().empty())
 		teams.back().set_objectives(level["objectives"]);
 
-	//if this side tag describes the leader of the side
+	// If this side tag describes the leader of the side
 	if(!utils::string_bool(cfg["no_leader"]) && cfg["controller"] != "null") {
 		unit new_unit(&gameinfo, &units, &map, &game_status, &teams, cfg, true);
 
-		//search the recall list for leader units, and if there is
-		//one, use it in place of the config-described unit
+		// Search the recall list for leader units, and if there is one,
+		// use it in place of the config-described unit
 		if(player != NULL) {
-			for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
+			for(std::vector<unit>::iterator it = player->available_units.begin();
+				it != player->available_units.end(); ++it) {
 				if(it->can_recruit()) {
 					new_unit = *it;
 					new_unit.set_game_context(&gameinfo, &units, &map, &game_status, &teams);
@@ -106,8 +118,8 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 			}
 		}
 
-		//see if the side specifies its location. Otherwise start it at the map-given
-		//starting position
+		// See if the side specifies its location.
+		// Otherwise start it at the map-given starting position.
 		gamemap::location start_pos(cfg, &gamestate);
 
 		if(map.empty()) {
@@ -132,8 +144,8 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 			<< start_pos << '\n';
 	}
 
-	//if the game state specifies units that can be recruited for the player
-	//then add them
+	// If the game state specifies units that
+	// can be recruited for the player, add them.
 	if(player != NULL && player->can_recruit.empty() == false) {
 		std::copy(player->can_recruit.begin(),player->can_recruit.end(),
 				std::inserter(teams.back().recruits(),teams.back().recruits().end()));
@@ -143,12 +155,14 @@ void get_player_info(const config& cfg, game_state& gamestate, std::string save_
 		player->can_recruit = teams.back().recruits();
 	}
 
-	//if there are additional starting units on this side
+	// If there are additional starting units on this side
 	const config::child_list& starting_units = cfg.get_children("unit");
-	//available_units has been filled by loading the [player]-section already. However, we need
-	//to get the information from the snapshot so we start from scratch here. This is rather a
-	//quick hack, originating from keeping changes as minimal as possible for 1.2. Moving [player]
-	//into [replay_start] should be the correct way to go.
+	// available_units has been filled by loading the [player]-section already.
+	// However, we need to get the information from the snapshot,
+	// so we start from scratch here.
+	// This is rather a quick hack, originating from keeping changes
+	// as minimal as possible for 1.2.
+	// Moving [player] into [replay_start] should be the correct way to go.
 	if (player && snapshot){
 		player->available_units.clear();
 	}
@@ -200,7 +214,7 @@ int get_first_human_team(const config::child_list::const_iterator& cfg, const co
 	return result;
 }
 
-//return NULL if theme is not found
+//! Return NULL if theme is not found.
 const config* get_theme(const config& game_config, std::string theme_name){
 	const config* theme_cfg = NULL;
 	if(theme_name != "") {

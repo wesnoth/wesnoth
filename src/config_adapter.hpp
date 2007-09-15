@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file config_adapter.hpp
+//!
+
 #ifndef CONFIG_ADAPTER_HPP_INCLUDED
 #define CONFIG_ADAPTER_HPP_INCLUDED
 
@@ -28,8 +31,8 @@ class game_data;
 class gamemap;
 class unit_map;
 
-//This module is responsible for constructing objects like 'team'
-//or 'unit' out of config-information, that is based on WML.
+// This module is responsible for constructing objects like 'team'
+// or 'unit' out of config-information, that is based on WML.
 
 std::string get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids);
 int get_first_human_team(const config::child_list::const_iterator& cfg, const config::child_list& unit_cfg);
