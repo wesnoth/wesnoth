@@ -287,7 +287,7 @@ void upload_log::quit(int turn)
 //! Ask user for permission to upload his game-stats.
 void upload_log_dialog::show_beg_dialog(display& disp)
 {
-	std::string msg = std::string(_("Wesnoth relies on volunteers like yourself for feedback, especially beginners and new players.  Wesnoth keeps summaries of your games: you can help us improve game play by giving permission to send these summaries (anonymously) to wesnoth.org.\n"))
+	std::string msg = std::string(_("Wesnoth relies on volunteers like yourself for feedback, especially beginners and new players. Wesnoth keeps summaries of your games: you can help us improve game play by giving permission to send these summaries (anonymously) to wesnoth.org.\n"))
 		+ " \n`" + _("Summaries are stored here:")
 		+ " \n`~" + get_upload_dir() + "\n \n`"
 		+ _("You can view the results at:") + "\n`~"

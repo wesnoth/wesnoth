@@ -1132,7 +1132,7 @@ bool show_theme_dialog(display& disp)
 		return(1);
 		}
 	}else{
-		gui::message_dialog(disp,"",_("No known themes.  Try changing from within an existing game.")).show();
+		gui::message_dialog(disp,"",_("No known themes. Try changing from within an existing game.")).show();
 	}
 	return(0);
 }
