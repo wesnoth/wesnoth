@@ -12,6 +12,8 @@
 
    See the COPYING file for more details.
 */
+
+
 #ifndef SERIALIZATION_BINARY_WML_HPP_INCLUDED
 #define SERIALIZATION_BINARY_WML_HPP_INCLUDED
 
@@ -21,7 +23,7 @@
 
 class config;
 
-//this object holds the schema by which config objects can be compressed and decompressed.
+//! Holds the schema by which config objects can be compressed and decompressed.
 struct compression_schema
 {
 	compression_schema() : char_to_word(), word_to_char() { }
@@ -33,12 +35,15 @@ struct compression_schema
 	word_char_map word_to_char;
 };
 
-//functions to read and write compressed data. The schema will be created and written
-//with the data. However if you are making successive writes (e.g. a network connection)
-//you can re-use the same schema on the sending end, and the receiver can store the schema,
-//meaning that the entire schema won't have to be transmitted each time.
+//  Read and write compressed data. 
 
+//! Write compressed data. 
+//! The schema will be created and written with the data. 
+//! However if you are making successive writes (e.g. a network connection),
+//! you can re-use the same schema on the sending end, and the receiver can store 
+//! the schema, meaning that the entire schema won't have to be transmitted each time.
 void write_compressed(std::ostream &out, config const &cfg, compression_schema &schema);
+//! Read compressed data. 
 void read_compressed(config &cfg, std::istream &in, compression_schema &schema); //throws config::error
 
 void write_compressed(std::ostream &out, config const &cfg);
