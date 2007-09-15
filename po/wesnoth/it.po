@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-15 16:12+0200\n"
-"PO-Revision-Date: 2007-05-29 10:53+0200\n"
+"PO-Revision-Date: 2007-09-15 13:13+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Mostra i combattimenti"
 
 #: data/_main.cfg:50
 msgid "Animate Map"
-msgstr ""
+msgstr "Anima la mappa"
 
 #: data/_main.cfg:57
 msgid "Mouse Scrolling"
@@ -71,17 +71,16 @@ msgstr "Progetto delle campagne"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Completamento e manutenzione"
+msgstr "Manutenzione delle campagne"
 
 #: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 PF max."
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 msgid "Campaign Epilog and Continuity"
-msgstr ""
+msgstr "Epilogo delle campagne e continuità"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:41
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:43
@@ -91,7 +90,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/_main.cfg:39
 #: data/campaigns/Two_Brothers/_main.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
-#, fuzzy
 msgid "Artwork and Graphics Design"
 msgstr "Disegnatori e contributi artistici"
 
@@ -118,9 +116,8 @@ msgid "Code and Translation Assistance"
 msgstr "Assistenza per codice e traduzioni"
 
 #: data/campaigns/Sceptre_of_Fire/credits.cfg:34
-#, fuzzy
 msgid "WML Assistance"
-msgstr "Resistenza"
+msgstr "Assistenza per WML"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
@@ -141,11 +138,15 @@ msgid ""
 "and other people\n"
 "this list is very incomplete\n"
 msgstr ""
+"e molti altri\n"
+"questa lista è molto incompleta\n"
 
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr ""
+"E ringraziamenti speciali a tutti quelli che mi sono dimenticato di "
+"menzionare."
 
 #: data/core/about.cfg:7
 msgid "Programming"
@@ -236,9 +237,8 @@ msgid "French Translation"
 msgstr "Traduzione in francese"
 
 #: data/core/about.cfg:1079
-#, fuzzy
 msgid "Galician Translation"
-msgstr "Traduzione in valenciano"
+msgstr "Traduzione in galiziano"
 
 #: data/core/about.cfg:1086
 msgid "German Translation"
@@ -277,9 +277,8 @@ msgid "Latin Translation"
 msgstr "Traduzione in latino"
 
 #: data/core/about.cfg:1278
-#, fuzzy
 msgid "Lithuanian Translation"
-msgstr "Traduzione in italiano"
+msgstr "Traduzione in lituano"
 
 #: data/core/about.cfg:1285
 msgid "Norwegian Translation"
@@ -326,9 +325,8 @@ msgid "Turkish Translation"
 msgstr "Traduzione in turco"
 
 #: data/core/about.cfg:1551
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Traduzione in valenciano"
+msgstr "Traduzione in valenciano (catalano del sud)"
 
 #: data/core/about.cfg:1561
 msgid "Bots"
@@ -385,9 +383,8 @@ msgstr ""
 "elencate sotto questo soggetto quando le incontrate."
 
 #: data/core/help.cfg:74
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Scenario sconosciuto"
+msgstr "Unità sconosciuta"
 
 #: data/core/help.cfg:77
 msgid ""
@@ -396,6 +393,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Questa unità ti è sconosciuta al momento. Devi scoprirla durante il gioco "
+"per poter vedere la sua descrizione."
 
 #: data/core/help.cfg:85
 msgid ""
@@ -1346,7 +1347,6 @@ msgstr ""
 "per turno."
 
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1358,10 +1358,11 @@ msgid ""
 msgstr ""
 "\n"
 "Vi è un'importante eccezione al mantenimento: le unità con la qualità leale "
-"non necessitano di alcun costo di mantenimento. Le unità con il quale inizi "
-"lo scenario (come Konrad o Delfador) o quelle che si uniscono alla tua "
-"armata durante lo scenario (come il cavaliere nel secondo livello de "
-"\"L'erede al trono\") avranno generalmente la qualità leale."
+"e i condottieri non hanno alcun costo di mantenimento. Le unità con il quale "
+"inizi lo scenario (come Delfador) o quelle che si uniscono alla tua armata "
+"durante lo scenario (come il cavaliere nel secondo livello de «L'erede al "
+"trono») avranno generalmente la qualità leale. L'unità con cui giochi (come "
+"Konrad) saranno quasi sempre condottieri."
 
 #: data/core/help.cfg:259
 msgid "Wrap Up"
@@ -1463,10 +1464,9 @@ msgid "Quick"
 msgstr "Veloce"
 
 #: data/core/help.cfg:296
-#, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Le unità veloce ha 1 punto movimento extra, ma il 10% di PF in meno del "
+"Le unità veloci hanno 1 punto di movimento extra, ma il 5% di PF in meno del "
 "normale."
 
 #: data/core/help.cfg:298
@@ -1494,9 +1494,8 @@ msgid "Resilient"
 msgstr "Resistente"
 
 #: data/core/help.cfg:304
-#, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
-msgstr "Le unità resistenti hanno 10% +3 PF più delle altre."
+msgstr "Le unità resistenti hanno 4 PF più 1 PF per livelo più del solito."
 
 #: data/core/help.cfg:306
 msgid ""
@@ -1617,18 +1616,16 @@ msgstr ""
 "combattere con i nemici che usano il veleno per indebolire l'avversario."
 
 #: data/core/help.cfg:341
-#, fuzzy
 msgid "trait^Mechanical"
-msgstr "Meccanici"
+msgstr "Meccanica"
 
 #: data/core/help.cfg:342
-#, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"I non-morti sono immuni al veleno, ed inoltre gli attacchi di assorbimento e "
-"contagio non funzionano su di loro."
+"Le unità meccaniche sono immuni al veleno; inoltre gli attacchi di "
+"assorbimento e contagio non funzionano su di loro."
 
 #: data/core/help.cfg:344
 msgid ""
@@ -1672,13 +1669,12 @@ msgid "Healthy"
 msgstr "Sano"
 
 #: data/core/help.cfg:358
-#, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 "Rinomati per la loro vitalità, alcuni nani sono più robusti di altri e "
-"recuperano più velocemente con il riposo."
+"recuperano energia anche mentre si spostano."
 
 #: data/core/help.cfg:360
 msgid ""
@@ -1731,7 +1727,6 @@ msgid "Forest"
 msgstr "Foresta"
 
 #: data/core/help.cfg:390
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1751,16 +1746,16 @@ msgstr ""
 "Le foreste rappresentano le zone boschive con una notevole quantità di "
 "sottobosco, abbastanza rigoglioso da rendere il passaggio difficile. Anche "
 "se le foreste rallentano quasi tutte le creature, in queste zone si ha una "
-"maggiore difesa rispetto alle zone aperte. La cavalleria comunque ha molti "
+"maggiore difesa rispetto alle zone aperte. La cavalleria però ha molti "
 "problemi a muoversi attraverso la foresta. Gli elfi sono l'eccezione alla "
 "regola. Non solo riescono a muoversi con agilità attraverso le foreste, ma "
-"hanno un bonus significativo nella difesa. I nani sono un'altra eccezione; "
-"anche se riescono a muoversi nelle foreste senza diminuire troppo "
+"hanno un vantaggio significativo nella difesa. I nani sono un'altra "
+"eccezione; anche se riescono a muoversi nelle foreste senza diminuire troppo "
 "l'andatura, la loro scarsa conoscenza del terreno li rende molto vulnerabili "
 "agli attacchi.\n"
 "\n"
 "Gran parte delle unità ha il 50% di difesa nelle foreste, mentre la "
-"cavalleria ha il 40%. Gli elfi, d'altro canto, godono del 60-70% di difesa, "
+"cavalleria ha il 30%. Gli elfi, d'altro canto, godono del 60-70% di difesa, "
 "anche le loro unità a cavallo. I nani di solito hanno il 30% di difesa nelle "
 "foreste.\n"
 "\n"
@@ -2051,7 +2046,6 @@ msgid "Illuminated Cave"
 msgstr "Grotta illuminata"
 
 #: data/core/help.cfg:516
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2085,9 +2079,9 @@ msgstr ""
 "il terreno spugnoso costituito dai funghi più piccoli, mentre ottengono vari "
 "punti di riparo grazie ai funghi più grandi. Le unità a cavallo, invece, "
 "sono completamente svantaggiate e non riescono a ottenere la libertà di "
-"movimento di cui necessiterebbero in combattimento. Le unità di non morti "
-"hanno una naturale affinità per la decadenza e agiscono particolarmente bene "
-"in questo particolare tipo di terreno.\n"
+"movimento di cui necessitano in combattimento. Le unità di non morti hanno "
+"una naturale affinità per la decadenza e agiscono particolarmente bene in "
+"questo particolare tipo di terreno.\n"
 "\n"
 "La maggior parte delle unità riceve dal 50% al 60% di difesa nei campi di "
 "funghi, mentre la cavalleria ne riceve solo il 20%."
@@ -2263,7 +2257,6 @@ msgid "Impassable Mountain"
 msgstr "Montagna invalicabili"
 
 #: data/core/help.cfg:606
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
@@ -2509,7 +2502,7 @@ msgid ""
 msgstr ""
 "Risoluta:\n"
 "Le resistenze di questa unità sono raddoppiate sino a un massimo del 50%, "
-"quando l'unità è in difesa. Le vulnerabilità non vengono modificate"
+"quando l'unità è in difesa. Le vulnerabilità non vengono modificate."
 
 #: data/core/macros/abilities.cfg:97 data/core/macros/abilities.cfg:119
 #: data/core/macros/abilities.cfg:153 data/core/macros/abilities.cfg:199
@@ -2592,7 +2585,6 @@ msgid "ambush"
 msgstr "imboscata"
 
 #: data/core/macros/abilities.cfg:370 data/core/macros/abilities.cfg:374
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -2605,16 +2597,15 @@ msgstr ""
 "Questa unità può nascondersi nella foresta e non può essere individuata dai "
 "suoi nemici.\n"
 "\n"
-"Le unità nemiche non possono né vedere né attaccare questa unità quando è "
-"nella foresta, tranne nel turno immediatamente successivo a un attacco da "
-"parte dell'unità nascosta."
+"Le unità nemiche non possono vedere questa unità se è nella foresta, a meno "
+"che non abbiano unità adiacenti ad essa. L'unità nemica che scopre per prima "
+"quasta unità perde immediatamente tutti i punti movimento rimanenti."
 
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:394
 msgid "nightstalk"
 msgstr "agguato notturno"
 
 #: data/core/macros/abilities.cfg:393 data/core/macros/abilities.cfg:398
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2626,9 +2617,9 @@ msgstr ""
 "Agguato notturno:\n"
 "L'unità diviene invisibile durante la notte.\n"
 "\n"
-"Le unità nemiche non possono né vedere né attaccare questa unità durante la "
-"notte, tranne nel turno immediatamente successivo a un attacco da parte "
-"dell'unità nascosta, o se ci sono delle unità nemiche vicino a questa unità."
+"Le unità nemiche non possono vedere questa unità durante la notte, a meno "
+"che non abbiano unità adiacenti ad essa. L'unità nemica che scopre per prima "
+"quasta unità perde immediatamente tutti i punti movimento rimanenti."
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
 #, fuzzy
@@ -2704,8 +2695,8 @@ msgid ""
 msgstr ""
 "Attacco alle spalle:\n"
 "Questo attacco causa il doppio dei danni se l'unità si trova alle spalle del "
-"bersaglio e non è sotto l'effetto di abilità limitanti. (esempio: "
-"trasformata in pietra)"
+"bersaglio e non è sotto l'effetto di abilità limitanti (esempio: trasformata "
+"in pietra)."
 
 #: data/core/macros/abilities.cfg:489 data/core/macros/abilities.cfg:501
 msgid "plague"
@@ -2724,7 +2715,6 @@ msgstr ""
 "Contagio (Non funziona sui non morti e sulle unità nei villaggi)."
 
 #: data/core/macros/abilities.cfg:503
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2732,16 +2722,15 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Contagio:\n"
-"Quando un'unità viene uccisa da un attacco Contagio, essa viene sostituita "
-"da un'unità identica e della stessa squadra dell'unità con l'attacco "
-"Contagio (Non funziona sui non morti e sulle unità nei villaggi)."
+"Quando un'unità viene uccisa da un attacco Contagio, viene sostituita da un "
+"morto che cammina della squadra dell'unità che l'ha uccisa. Questo non vale "
+"per i non morti e per le unità nei villaggi."
 
 #: data/core/macros/abilities.cfg:513
 msgid "slows"
 msgstr "rallenta"
 
 #: data/core/macros/abilities.cfg:515
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2750,9 +2739,10 @@ msgid ""
 "is selected."
 msgstr ""
 "Rallenta:\n"
-"Questo attacco rallenta il bersaglio. Rallentare dimezza il danno causato "
-"dagli attacchi ed il costo per il movimento delle unità rallentate è "
-"raddoppiato."
+"Questo attacco rallenta l'unità bersaglio fino alla fine del suo turno. Il "
+"rallentamento dimezza il danno causato dagli attacchi ed il costo per il "
+"movimento delle unità rallentate è raddoppiato. Un'unità rallentata avrà "
+"l'icona di una lumaca nella barra laterale quando è selezionata."
 
 #: data/core/macros/abilities.cfg:524
 msgid "stones"
@@ -3019,7 +3009,6 @@ msgid "Zap"
 msgstr "Zap"
 
 #: data/core/macros/names.cfg:3
-#, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -3139,7 +3128,7 @@ msgstr ""
 "Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
 "Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
-"Amithrarion,Cálad,Legilad"
+"Amithrarion,Cálad,Legilad,Linduilas"
 
 #: data/core/macros/names.cfg:4
 msgid ""
@@ -4001,14 +3990,14 @@ msgstr ""
 "fino a che uno dei due combattenti muore."
 
 #: data/core/macros/special-notes.cfg:45
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target. This "
 "unit may backstab, inflicting double damage, by creeping around behind that "
 "enemy."
 msgstr ""
-" Se una unità alleata distrae un nemico, questa unità può attaccarlo alle "
-"spalle, infliggendo il doppie dei danni, strisciando dietro il nemico."
+" Se c'è un'unità nemica di quella bersaglio sul lato opposto del bersaglio "
+"rispetto alla tua, questa unità può attaccarlo alle spalle, infliggendo il "
+"doppie dei danni, strisciando dietro il nemico."
 
 #: data/core/macros/special-notes.cfg:48
 msgid " Foes who lose their life to the plague will rise again in unlife."
@@ -4106,19 +4095,16 @@ msgid "female^undead"
 msgstr "non-morta"
 
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
-#, fuzzy
 msgid "Immune to drain, poison and plague"
-msgstr "Immune al veleno"
+msgstr "Immune all'assorbinemto, al veleno e al contagio"
 
 #: data/core/macros/traits.cfg:38
-#, fuzzy
 msgid "mechanical"
-msgstr "Meccanici"
+msgstr "meccanico"
 
 #: data/core/macros/traits.cfg:39
-#, fuzzy
 msgid "female^mechanical"
-msgstr "Meccanici"
+msgstr "meccanica"
 
 #: data/core/macros/traits.cfg:52
 msgid "strong"
@@ -4170,7 +4156,7 @@ msgstr "sana"
 
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
-msgstr ""
+msgstr "Può riposare durante gli spostamenti"
 
 #: data/core/macros/traits.cfg:146
 msgid "fearless"
@@ -4222,16 +4208,14 @@ msgid "Teal"
 msgstr "Verde-azzurro"
 
 #: data/core/units.cfg:40 data/hardwired/english.cfg:18
-#, fuzzy
 msgid "race^Elves"
-msgstr "Nani"
+msgstr "Elfi"
 
 #: data/core/units.cfg:49 data/hardwired/english.cfg:32
 msgid "race^Woses"
 msgstr "Wose"
 
 #: data/core/units.cfg:57 data/hardwired/english.cfg:19
-#, fuzzy
 msgid "race^Humans"
 msgstr "Uomini"
 
@@ -4240,9 +4224,8 @@ msgid "race^Dwarves"
 msgstr "Nani"
 
 #: data/core/units.cfg:72 data/hardwired/english.cfg:20
-#, fuzzy
 msgid "race^Orcs"
-msgstr "Ogri"
+msgstr "Orchi"
 
 #: data/core/units.cfg:79 data/hardwired/english.cfg:24
 msgid "race^Goblins"
@@ -4250,7 +4233,7 @@ msgstr "Goblin"
 
 #: data/core/units.cfg:86 data/hardwired/english.cfg:21
 msgid "race^Undead"
-msgstr "Non-morto"
+msgstr "Non-morti"
 
 #: data/core/units.cfg:94
 #, fuzzy
@@ -4278,14 +4261,12 @@ msgid "race^Trolls"
 msgstr "Troll"
 
 #: data/core/units.cfg:138 data/hardwired/english.cfg:23
-#, fuzzy
 msgid "race^Drakes"
-msgstr "Nani"
+msgstr "Draghi"
 
 #: data/core/units.cfg:145
-#, fuzzy
 msgid "race^Saurians"
-msgstr "Naga"
+msgstr "Sauri"
 
 #: data/core/units.cfg:153 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
@@ -4544,13 +4525,12 @@ msgstr ""
 "all'inizio del loro turno."
 
 #: data/hardwired/tips.cfg:11
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
 "recover 2 hitpoints at the beginning of their next turn."
 msgstr ""
-"Le unità che non si muovono o attaccano durante il loro turno riposano e "
-"recuperano 2 punti ferita all'inizio del loro turno successivo."
+"Le unità si riposano se non si spostano e non attaccano durante il loro "
+"turno. Recupereranno 2 punti ferita all'inizio del turno successivo."
 
 #: data/hardwired/tips.cfg:12
 msgid ""
@@ -4768,7 +4748,6 @@ msgstr ""
 "menù a comparsa. Poni il mouse sopra qualcosa per ottenerne una descrizione."
 
 #: data/hardwired/tips.cfg:37
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -4776,7 +4755,7 @@ msgid ""
 "adjust campaign difficulty."
 msgstr ""
 "Puoi mandare al progetto Wesnoth un rapporto anonimo dei tuoi progressi "
-"utilizzando il pulsante \"Aiuta Wesnoth\" (indicato dall'icona di una busta "
+"utilizzando il pulsante «Aiuta Wesnoth» (indicato dall'icona di una busta "
 "nell'angolo in basso a destra della schermata iniziale del gioco). Queste "
 "informazioni sono essenziali per permetterci di calibrare la difficoltà "
 "delle campagne."
@@ -4797,6 +4776,10 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Non si può annullare una mossa che rivela quello che è nascosto dalla nebbia "
+"o dall'oscurità. Attiva l'opzione «Aggiornamenti ritardati dell'oscurità» se "
+"vuoi avere la possibilità di spostare le unità avendo sempre la possibilità "
+"di annullare la mossa."
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:133
 #: data/themes/experimental.cfg:96
@@ -4919,9 +4902,8 @@ msgid "play side turn"
 msgstr "gioca il turno della fazione"
 
 #: data/themes/macros.cfg:136
-#, fuzzy
 msgid "Point of view"
-msgstr "Pozione del deperimento"
+msgstr "Punto di vista"
 
 #: data/themes/macros.cfg:148
 msgid "Skip animation"
@@ -5000,9 +4982,8 @@ msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unità avvistate! $friendphrase,$enemyphrase)"
 
 #: src/actions.cpp:2116
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
-msgstr "(premi $hotkey per continuare)"
+msgstr "(premi $hotkey per continuare la mossa)"
 
 #: src/dialogs.cpp:109
 msgid "Advance Unit"
@@ -5105,13 +5086,13 @@ msgid "No Saved Games"
 msgstr "Nessuna partita salvata"
 
 #: src/dialogs.cpp:548
-#, fuzzy
 msgid ""
 "There are no saved games to load.\n"
 "\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "Non ci sono salvataggi da caricare.\n"
+"\n"
 "(La partita viene salvata automaticamente alla fine di ogni scenario)"
 
 #: src/dialogs.cpp:560
@@ -5236,41 +5217,37 @@ msgid "Server: "
 msgstr "Server: "
 
 #: src/game.cpp:913 src/game.cpp:961
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "Estensioni"
+msgstr "Elimina estensioni"
 
 #: src/game.cpp:948
-#, fuzzy
 msgid "You have no Add-ons installed."
-msgstr "L'estensione è stato installata."
+msgstr "Non ci sono estensioni installate."
 
 #: src/game.cpp:961
-#, fuzzy
 msgid "Choose the add-on to remove."
-msgstr "Scegli l'estensione da scaricare."
+msgstr "Scegli l'estensione da eliminare."
 
 #: src/game.cpp:972
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "Sei sicuro di voler eliminare l'estensione «$addon»?"
 
 #: src/game.cpp:976
 msgid "Confirm"
-msgstr ""
+msgstr "Confermo"
 
 #: src/game.cpp:999
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "Estensione installata"
+msgstr "L'estensione «$addon» è stata eliminata."
 
 #: src/game.cpp:1004
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "Estensione installata"
+msgstr "Estensione eliminata"
 
 #: src/game.cpp:1010
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
+"Non è stato possibile eliminare l'estensione — non è stato trovato un file."
 
 #: src/game.cpp:1010 src/menu_events.cpp:685 src/menu_events.cpp:698
 #: src/multiplayer_create.cpp:510
@@ -5362,12 +5339,11 @@ msgid "Remote host disconnected."
 msgstr "Disconnesso dall'host remoto."
 
 #: src/game.cpp:1262
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
 "C'è stato un problema durante la creazione dei file necessari a installare "
-"questa campagna."
+"questa estensione."
 
 #: src/game.cpp:1274 src/game.cpp:1316 src/game.cpp:1343
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:432
@@ -5375,9 +5351,8 @@ msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
 #: src/game.cpp:1277
-#, fuzzy
 msgid "The server responded with an error: \"$error|\""
-msgstr "Il server ha risposto con un errore: \""
+msgstr "Il server ha risposto con un errore: «$error|»"
 
 #: src/game.cpp:1284
 msgid "Terms"
@@ -5404,9 +5379,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Accedi al server ufficiale di Wesnoth in multiplayer"
 
 #: src/game.cpp:1375
-#, fuzzy
 msgid "Connect to Host/Server"
-msgstr "Connetti al server"
+msgstr "Connetti all'host/server"
 
 #: src/game.cpp:1376
 msgid "Join a server or hosted game"
@@ -5425,7 +5399,6 @@ msgid "Local Game"
 msgstr "Partita locale"
 
 #: src/game.cpp:1382
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Gioca una partita in multigiocatore con IA o persone condividendo la stessa "
@@ -5456,10 +5429,9 @@ msgid "Choose your preferred language:"
 msgstr "Scegli la lingua che preferisci:"
 
 #: src/game.cpp:1623
-#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr ""
-"Le seguenti campagne hanno alcuni errori e non possono essere caricata:"
+"Le seguenti estensioni hanno degli errori e non possono essere caricate:"
 
 #: src/game.cpp:1628
 msgid "ERROR DETAILS:"
@@ -5495,9 +5467,8 @@ msgid "Loading title screen."
 msgstr "Caricamento schermata dei titoli"
 
 #: src/game_config.cpp:248
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "Colore non valido"
+msgstr "Gamma di colori non valida: "
 
 #: src/game_events.cpp:881
 msgid "Victory:"
@@ -5564,9 +5535,8 @@ msgid "stone: "
 msgstr "pietrifica: "
 
 #: src/generate_report.cpp:167
-#, fuzzy
 msgid "Resistances: "
-msgstr "Resistenze"
+msgstr "Resistenze: "
 
 #: src/generate_report.cpp:184 src/multiplayer_create.cpp:378
 msgid "Experience Modifier: "
@@ -5618,34 +5588,31 @@ msgstr "Aiuto"
 
 #: src/help.cpp:1087
 msgid "Units having this special attack:"
-msgstr ""
+msgstr "Unità con questo attacco speciale:"
 
 #: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580 src/help.cpp:1633
-#, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Varie"
 
 #: src/help.cpp:1143 src/help.cpp:1639
 msgid "Units of this race:"
-msgstr ""
+msgstr "Unità di questa razza:"
 
 #: src/help.cpp:1209
 msgid "Units having this ability:"
-msgstr ""
+msgstr "Unità con questa abilità:"
 
 #: src/help.cpp:1274
-#, fuzzy
 msgid "Advances from: "
-msgstr "Avanza da:"
+msgstr "Avanza da: "
 
 #: src/help.cpp:1303
 msgid "Advances to: "
 msgstr "Avanza come: "
 
 #: src/help.cpp:1336
-#, fuzzy
 msgid "Race: "
-msgstr "Razza"
+msgstr "Razza: "
 
 #: src/help.cpp:1343
 msgid "Abilities: "
@@ -5800,7 +5767,6 @@ msgid "Kills"
 msgstr "Uccisioni"
 
 #: src/menu_events.cpp:142
-#, fuzzy
 msgid "Details"
 msgstr "Dettagli"
 
@@ -5821,37 +5787,28 @@ msgid "Damage Taken (EV)"
 msgstr "Danni subiti (EV)"
 
 #: src/menu_events.cpp:250 src/menu_events.cpp:254
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Vuoi davvero cancellare questa partita?"
+msgstr "Vuoi davvero congedarlo?"
 
 #: src/menu_events.cpp:250
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
-"Mio signore, questa è un'unità esperta che è già avanzata di livello! Volete "
-"davvero eliminar$noun?"
+msgstr "Mio signore, questa è un'unità esperta che è già avanzata di livello!"
 
 #: src/menu_events.cpp:251 src/menu_events.cpp:255
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Vuoi davvero cancellare questa partita?"
+msgstr "Vuoi davvero congedarla?"
 
 #: src/menu_events.cpp:254
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
-"Mio signore, questa unità sta per avanzare di livello! Volete davvero "
-"eliminar$noun?"
+msgstr "Mio signore, questa unità sta per avanzare di livello!"
 
 #: src/menu_events.cpp:311
 msgid "Statistics"
 msgstr "Statistiche"
 
 #: src/menu_events.cpp:321
-#, fuzzy
 msgid "Level^Lv."
-msgstr "Livello"
+msgstr "Liv."
 
 #: src/menu_events.cpp:324
 msgid "unit list^Traits"
@@ -5867,9 +5824,8 @@ msgid "Location^Loc."
 msgstr "Luogo"
 
 #: src/menu_events.cpp:327
-#, fuzzy
 msgid "Status"
-msgstr "Statistiche"
+msgstr "Stato"
 
 #: src/menu_events.cpp:434
 msgid "Unit List"
@@ -5877,7 +5833,7 @@ msgstr "Lista delle unità"
 
 #: src/menu_events.cpp:437 src/menu_events.cpp:457
 msgid "Scroll To"
-msgstr ""
+msgstr "Spostati verso"
 
 #: src/menu_events.cpp:486
 msgid "Leader"
@@ -5886,7 +5842,7 @@ msgstr "Condottiero"
 #: src/menu_events.cpp:487 src/multiplayer_connect.cpp:745
 #: src/multiplayer_connect.cpp:754
 msgid "Team"
-msgstr "Verde-azzurro"
+msgstr "Squadra"
 
 #: src/menu_events.cpp:488 src/multiplayer_connect.cpp:756
 #: src/multiplayer_wait.cpp:447
@@ -5911,31 +5867,26 @@ msgid "Income"
 msgstr "Entrate"
 
 #: src/menu_events.cpp:569
-#, fuzzy
 msgid "Current Status"
-msgstr "Responsabile attuale"
+msgstr "Stato attuale"
 
 #: src/menu_events.cpp:570
-#, fuzzy
 msgid "More >"
-msgstr "Altro"
+msgstr "Altro >"
 
 #: src/menu_events.cpp:588
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "Inizia scenario"
+msgstr "Condottiero"
 
 #: src/menu_events.cpp:590
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "Inizia scenario"
+msgstr "Fazione"
 
 #: src/menu_events.cpp:591
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "Inizia scenario"
+msgstr "Oro"
 
 #: src/menu_events.cpp:592
 #, fuzzy
@@ -5949,30 +5900,28 @@ msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
+"Oro per\n"
+"villaggio"
 
 #: src/menu_events.cpp:594
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "Inizia scenario"
+msgstr "Nebbia"
 
 #: src/menu_events.cpp:595
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "Inizia scenario"
+msgstr "Oscurità"
 
 #: src/menu_events.cpp:640 src/menu_events.cpp:641
-#, fuzzy
 msgid "no"
-msgstr "Neve"
+msgstr "no"
 
 #: src/menu_events.cpp:640 src/menu_events.cpp:641
 msgid "yes"
-msgstr ""
+msgstr "sì"
 
 #: src/menu_events.cpp:648
-#, fuzzy
 msgid "Scenario Settings"
-msgstr "Inizia scenario"
+msgstr "Impostazioni dello scenario"
 
 #: src/menu_events.cpp:680 src/playcampaign.cpp:525
 msgid "Name:"
@@ -5983,8 +5932,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
-"I nomi dei salvataggi non possono contenere due punti, slash o blackslash. "
-"Per favore, scegli un nome differente."
+"I nomi dei salvataggi non possono contenere due punti, barre o barre "
+"inverse. Per favore, scegli un nome differente."
 
 #: src/menu_events.cpp:695
 msgid "Saved"
@@ -6038,9 +5987,8 @@ msgid "Send to allies only"
 msgstr "Invia solo agli alleati"
 
 #: src/menu_events.cpp:866
-#, fuzzy
 msgid "Send to observers only"
-msgstr "Invia solo agli alleati"
+msgstr "Invia solo agli osservatori"
 
 #: src/menu_events.cpp:946
 msgid "unit^Gold"
@@ -6233,9 +6181,8 @@ msgid "prompt^Command:"
 msgstr "Comando:"
 
 #: src/menu_events.cpp:2186
-#, fuzzy
 msgid "User-Command#3"
-msgstr "Comandi"
+msgstr "Comando-utente#3"
 
 #: src/mouse_events.cpp:198 src/mouse_events.cpp:308
 msgid "Attacker"
@@ -6518,9 +6465,8 @@ msgid "Settings..."
 msgstr "Impostazioni..."
 
 #: src/multiplayer_create.cpp:93
-#, fuzzy
 msgid "Load Game..."
-msgstr "Carica partita"
+msgstr "Carica partita..."
 
 #: src/multiplayer_create.cpp:125
 msgid "The maximum number of turns the game can last"
@@ -6646,9 +6592,8 @@ msgid "Players: "
 msgstr "Giocatori: "
 
 #: src/multiplayer_create.cpp:508
-#, fuzzy
 msgid "Size: "
-msgstr "Dimensione"
+msgstr "Dimensione: "
 
 #: src/multiplayer_lobby.cpp:99
 msgid "--no games open--"
@@ -6667,9 +6612,8 @@ msgid "Unknown scenario"
 msgstr "Scenario sconosciuto"
 
 #: src/multiplayer_lobby.cpp:447
-#, fuzzy
 msgid "Turn "
-msgstr "Turno"
+msgstr "Turno "
 
 #: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slot:"
@@ -6785,9 +6729,8 @@ msgid "You have been defeated!"
 msgstr "Sei stato sconfitto!"
 
 #: src/playcampaign.cpp:369
-#, fuzzy
 msgid "Error while reading the WML: "
-msgstr "Errore mentre si gioca la partita: "
+msgstr "Errore di lettura del WML: "
 
 #: src/playcampaign.cpp:393
 msgid "The replay could not be saved"
@@ -6802,14 +6745,12 @@ msgid "Downloading next scenario..."
 msgstr "Scaricamento scenario successivo..."
 
 #: src/playcampaign.cpp:524
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Vuoi davvero cancellare questa partita?"
+msgstr "Vuoi salvare questa partita?"
 
 #: src/playcampaign.cpp:549
-#, fuzzy
 msgid "Unknown scenario: '$scenario|'"
-msgstr "Scenario sconosciuto: '"
+msgstr "Scenario sconosciuto: «$scenario|»"
 
 #: src/playmp_controller.cpp:359
 msgid ""
@@ -6872,6 +6813,8 @@ msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr ""
+"Inizierai il prossimo scenario con un capitale di $gold monete, o con l'oro "
+"minimo iniziale, se è di più."
 
 #: src/playsingle_controller.cpp:389
 msgid ""
@@ -6882,9 +6825,8 @@ msgstr ""
 "proseguire. Vuoi salvare la partita?"
 
 #: src/playsingle_controller.cpp:517
-#, fuzzy
 msgid "It is now $name|'s turn"
-msgstr "Adesso è il tuo turno"
+msgstr "Adesso è il turno di «$name|»"
 
 #: src/playturn.cpp:200
 msgid "Replace with AI"
@@ -6903,9 +6845,8 @@ msgid "Replace with "
 msgstr "Rimpiazza con "
 
 #: src/playturn.cpp:222
-#, fuzzy
 msgid " has left the game. What do you want to do?"
-msgstr "ha abbandonato il gioco. Cosa vuoi fare?"
+msgstr " ha abbandonato il gioco. Cosa vuoi fare?"
 
 #: src/serialization/parser.cpp:102
 msgid "Unexpected characters at line start"
@@ -6996,7 +6937,6 @@ msgid "TitleScreen button^Load"
 msgstr "Carica"
 
 #: src/titlescreen.cpp:307
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Estensioni"
 
@@ -7009,28 +6949,24 @@ msgid "TitleScreen button^Preferences"
 msgstr "Preferenze"
 
 #: src/titlescreen.cpp:310
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "Esci"
+msgstr "Riconoscimenti"
 
 #: src/titlescreen.cpp:311
 msgid "TitleScreen button^Quit"
 msgstr "Esci"
 
 #: src/titlescreen.cpp:314
-#, fuzzy
 msgid "TitleScreen button^More"
-msgstr "Carica"
+msgstr "Altro"
 
 #: src/titlescreen.cpp:315
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "Carica"
+msgstr "Aiuto"
 
 #: src/titlescreen.cpp:317
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Carica"
+msgstr "Aiuta Wesnoth"
 
 #: src/titlescreen.cpp:319
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -7074,25 +7010,23 @@ msgstr "Esci dal gioco"
 
 #: src/titlescreen.cpp:328
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Mostra il prossimo suggerimento del giorno"
 
 #: src/titlescreen.cpp:329
-#, fuzzy
 msgid "Show Battle for Wesnoth help"
-msgstr "Aiuto per The Battle for Wesnoth"
+msgstr "Mostra la guida di Wesnoth"
 
 #: src/titlescreen.cpp:330
-#, fuzzy
 msgid "Upload statistics"
-msgstr "Statistiche"
+msgstr "Invia le statistiche"
 
 #: src/titlescreen.cpp:382
 msgid "Help Wesnoth by sending us information"
-msgstr "Aiuta Wesnoth mandandoci un rapporto"
+msgstr "Aiuta Wesnoth mandandoci delle informazioni"
 
 #: src/unit.cpp:371 src/unit.cpp:1150 src/unit.cpp:2530
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "Tipo di unità «$type|» sconosciuto"
 
 #: src/unit.cpp:2574 src/unit.cpp:2898 src/unit.cpp:2953
 msgid "; "
@@ -7103,9 +7037,8 @@ msgid "XP to advance"
 msgstr "PE per avanzare"
 
 #: src/unit.cpp:2932
-#, fuzzy
 msgid "/level"
-msgstr "Livello"
+msgstr "/level"
 
 #: src/unit_types.cpp:204 src/unit_types.cpp:244
 msgid "damage"
@@ -7156,166 +7089,5 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
 
-#, fuzzy
 #~ msgid "Races"
-#~ msgstr "Razza"
-
-#~ msgid "Campaign Designer"
-#~ msgstr "Progetto delle campagne"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "Responsabile attuale"
-
-#~ msgid "Music Development"
-#~ msgstr "Sviluppo della musica"
-
-#~ msgid "WML Contributors"
-#~ msgstr "Contributi a WML"
-
-#~ msgid "Elves"
-#~ msgstr "Elfi"
-
-#~ msgid "Orcs"
-#~ msgstr "Orchi"
-
-# Testo integrativo per i messaggi precedenti: eliminarLA
-#~ msgid "her"
-#~ msgstr "la"
-
-# Testo integrativo per i messaggi precedenti: eliminarLO
-#~ msgid "him"
-#~ msgstr "lo"
-
-#, fuzzy
-#~ msgid "You will start the next scenario with "
-#~ msgstr "80% dell'oro sarà trattenuto per il prossimo scenario"
-
-#, fuzzy
-#~ msgid "Back"
-#~ msgstr "Nero"
-
-#, fuzzy
-#~ msgid "game settings^Fog"
-#~ msgstr "Usa le impostazioni della mappa"
-
-#~ msgid "Can't set abilities yet, sorry."
-#~ msgstr "Non è possibile impostare le abilità, spiacente."
-
-#, fuzzy
-#~ msgid "Map size: "
-#~ msgstr "Mappa salvata."
-
-#~ msgid "Credits"
-#~ msgstr "Riconoscimenti"
-
-#, fuzzy
-#~ msgid "Unit art"
-#~ msgstr "Lista delle unità"
-
-#, fuzzy
-#~ msgid "Map art"
-#~ msgstr "Mappa"
-
-#~ msgid "mace"
-#~ msgstr "mazza"
-
-#~ msgid "sling"
-#~ msgstr "fionda"
-
-#, fuzzy
-#~ msgid "female^Fugitive"
-#~ msgstr "Maga"
-
-#, fuzzy
-#~ msgid "Outlaw Ranger"
-#~ msgstr "Fuorilegge"
-
-#~ msgid "sword"
-#~ msgstr "spada"
-
-#~ msgid "bow"
-#~ msgstr "arco"
-
-#~ msgid "None"
-#~ msgstr "Nessuno"
-
-#~ msgid "Elven Castle"
-#~ msgstr "Castello degli elfi"
-
-#~ msgid "Dwarven Castle"
-#~ msgstr "Castello dei nani"
-
-#~ msgid "Ruin"
-#~ msgstr "Rovine"
-
-#~ msgid "Sunken Ruin"
-#~ msgstr "Rovine sommerse"
-
-#~ msgid "Swamp Ruin"
-#~ msgstr "Rovine paludose"
-
-#~ msgid "Encampment keep"
-#~ msgstr "Fortezza di accampamento"
-
-#~ msgid "Keep"
-#~ msgstr "Fortezza"
-
-#~ msgid "Elven Keep"
-#~ msgstr "Fortezza degli elfi"
-
-#~ msgid "Dwarven keep"
-#~ msgstr "Fortezza dei nani"
-
-#~ msgid "Ruined keep"
-#~ msgstr "Fortezza in rovina"
-
-#~ msgid "Sunken keep"
-#~ msgstr "Fortezza sommersa"
-
-#~ msgid "Swamp keep"
-#~ msgstr "Fortezza di palude"
-
-#~ msgid "Crater"
-#~ msgstr "Cratere"
-
-#~ msgid "Rubble"
-#~ msgstr "Macerie"
-
-#~ msgid "Oasis"
-#~ msgstr "Oasi"
-
-#~ msgid "Snow Forest"
-#~ msgstr "Foresta innevata"
-
-#~ msgid "Great Tree"
-#~ msgstr "Grande albero"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "Foresta tropicale"
-
-#~ msgid "Snow Hills"
-#~ msgstr "Colline innevate"
-
-#~ msgid "Dunes"
-#~ msgstr "Dune"
-
-#~ msgid "Desert road"
-#~ msgstr "Strada del deserto"
-
-#~ msgid "Dirt"
-#~ msgstr "Terreno arido"
-
-#~ msgid "Farmland"
-#~ msgstr "Terra agricola"
-
-#~ msgid "Cave Lit"
-#~ msgstr "Caverna illuminata"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Breccia di cava illuminata"
-
-#~ msgid "Impassable Mountains"
-#~ msgstr "Montagne invalicabili"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Montagne invalicabili del deserto"
+#~ msgstr "Razze"
