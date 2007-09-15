@@ -1079,7 +1079,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			const std::string event = (*child)["raise"];
 			//exclude these events here, because in a replay proper time of execution can't be
 			//established and therefore we fire those events inside play_controller::init_side
-			if ((event != "side turn") && (event != "turn 1") && (event != "new_turn")){
+			if ((event != "side turn") && (event != "turn 1") && (event != "new turn") && (event != "turn refresh")){
 				const config* const source = child->child("source");
 				if(source != NULL) {
 					game_events::fire(event, gamemap::location(*source, game_events::get_state_of_game()));

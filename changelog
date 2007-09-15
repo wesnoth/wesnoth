@@ -78,6 +78,8 @@
    * add an "Animate Map" option in advanced preferences, to switch flag and
      terrain animation off
  * WML engine:
+   * new event "turn refresh" occurs after healing, calculating income, and
+     restoring movement (note: this intentionally excludes the first turn)
    * now tag [filter_adjacent] is supported in the Standard Unit Filter (SUF)
    * now tag [filter_adjacent_location] is supported in the Standard Location
      Filter (SLF)

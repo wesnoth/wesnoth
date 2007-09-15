@@ -363,6 +363,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 
 		calculate_healing((*gui_),map_,units_,player_number_,teams_, !recorder.is_skipping());
 		reset_resting(units_, player_number_);
+		game_events::fire("turn refresh");
 	}
 
 	const time_of_day &tod = status_.get_time_of_day();
