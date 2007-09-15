@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-14 00:23+0200\n"
+"POT-Creation-Date: 2007-09-15 15:37+0200\n"
 "PO-Revision-Date: 2007-09-08 22:07+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -131,6 +131,28 @@ msgstr ""
 "och många andra\n"
 "denna lista är långt ifrån fullständig\n"
 
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:3
+msgid "Eyestalk"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:26
+msgid ""
+"Named 'Eyestalks' for obvious reasons, these plant-like creatures can focus "
+"their gaze onto an unsuspecting victim to draw life energy straight out of "
+"them to replenish their own. While almost defenseless against melee attacks, "
+"its deadly gaze from afar is not to be underestimated.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:33
+msgid "smash"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:85
+msgid "gaze"
+msgstr ""
+
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
 msgid "And special thanks to everyone else who I forgot to mention."
@@ -160,7 +182,7 @@ msgstr "Gruppspelskartor och -balansering"
 msgid "Packagers"
 msgstr "Paketerare"
 
-#: data/core/about.cfg:551 data/core/help.cfg:272
+#: data/core/about.cfg:551 data/core/help.cfg:265
 msgid "Contributors"
 msgstr "Medverkande"
 
@@ -342,31 +364,26 @@ msgid "Units"
 msgstr "Trupper"
 
 #: data/core/help.cfg:40
-#, fuzzy
-msgid "Races"
-msgstr "Ras"
-
-#: data/core/help.cfg:47
 msgid "Abilities"
 msgstr "Förmågor"
 
-#: data/core/help.cfg:55
+#: data/core/help.cfg:48
 msgid "Weapon Specials"
 msgstr "Vapenspecialiteter"
 
-#: data/core/help.cfg:62
+#: data/core/help.cfg:55
 msgid "Terrains"
 msgstr "Terräng"
 
-#: data/core/help.cfg:69
+#: data/core/help.cfg:62
 msgid "Commands"
 msgstr "Kommandon"
 
-#: data/core/help.cfg:75 data/core/help.cfg:89 data/core/help.cfg:284
+#: data/core/help.cfg:68 data/core/help.cfg:82 data/core/help.cfg:277
 msgid "Overview"
 msgstr "Översikt"
 
-#: data/core/help.cfg:76
+#: data/core/help.cfg:69
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -377,11 +394,11 @@ msgstr ""
 "förmågor kommer att beskrivas under denna rubrik efter hand som du stöter på "
 "dem."
 
-#: data/core/help.cfg:81
+#: data/core/help.cfg:74
 msgid "Unknown Unit"
 msgstr "Okänd trupp"
 
-#: data/core/help.cfg:84
+#: data/core/help.cfg:77
 msgid ""
 "\n"
 "\n"
@@ -393,7 +410,7 @@ msgstr ""
 "Denna trupp är för tillfället okänd. Du måste upptäcka den under spelets "
 "gång för att få se dess beskrivning."
 
-#: data/core/help.cfg:92
+#: data/core/help.cfg:85
 msgid ""
 "\n"
 "\n"
@@ -412,11 +429,11 @@ msgstr ""
 "dessa enkla regler ger ett mycket rikt strategispel, som är lätt att lära "
 "sig men en rejäl utmaning att bemästra. "
 
-#: data/core/help.cfg:97
+#: data/core/help.cfg:90
 msgid "Fundamentals of Gameplay"
 msgstr "Grundläggande spelteknik"
 
-#: data/core/help.cfg:98
+#: data/core/help.cfg:91
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -431,7 +448,7 @@ msgstr ""
 "får du mer detaljerad information angående särskilda situationer och "
 "undantag."
 
-#: data/core/help.cfg:100
+#: data/core/help.cfg:93
 msgid ""
 "\n"
 "\n"
@@ -451,7 +468,7 @@ msgstr ""
 "italic>. Då Kampen om Wesnoth kan vara riktigt utmanande, bör du kanske "
 "börja med en <italic>text=Lätt</italic> kampanj."
 
-#: data/core/help.cfg:103
+#: data/core/help.cfg:96
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -463,11 +480,11 @@ msgstr ""
 "förklarar det du pekar på lite närmare. Detta är särskilt användbart när du "
 "stöter på nya <ref>dst=abilities text=förmågor</ref> första gången."
 
-#: data/core/help.cfg:108
+#: data/core/help.cfg:101
 msgid "About the Game"
 msgstr "Om spelet"
 
-#: data/core/help.cfg:109
+#: data/core/help.cfg:102
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -484,7 +501,7 @@ msgstr ""
 "också spela mot andra som är uppkopplade mot samma nätverk. Om din dator har "
 "tillgång till Internet så kan du spela mot andra över Internet."
 
-#: data/core/help.cfg:111
+#: data/core/help.cfg:104
 msgid ""
 "\n"
 "\n"
@@ -502,7 +519,7 @@ msgstr ""
 "fiender, men du kan även behöva nå en viss plats på kartan, rädda någon, "
 "lösa en gåta, eller bara överleva ett visst antal drag."
 
-#: data/core/help.cfg:113
+#: data/core/help.cfg:106
 msgid ""
 "\n"
 "\n"
@@ -518,11 +535,11 @@ msgstr ""
 "noggrant och hålla dina bästa trupper vid liv så att de kan användas i "
 "senare scenarier i kampanjen."
 
-#: data/core/help.cfg:118
+#: data/core/help.cfg:111
 msgid "Recruiting and Recalling"
 msgstr "Rekrytera och återkalla"
 
-#: data/core/help.cfg:119
+#: data/core/help.cfg:112
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -546,7 +563,7 @@ msgstr ""
 "dialogrutan. För att rekrytera en trupp ur det valda truppslaget klickar du "
 "på Ok."
 
-#: data/core/help.cfg:121
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -563,7 +580,7 @@ msgstr ""
 "lediga rutor i din borg, och du kan inte använda mer guld än du faktiskt har "
 "i din kassakista."
 
-#: data/core/help.cfg:123
+#: data/core/help.cfg:116
 msgid ""
 "\n"
 "\n"
@@ -575,7 +592,7 @@ msgstr ""
 "Rekryterade trupper får två slumpmässigt valda <ref>dst=traits "
 "text=karaktärsdrag</ref> som ändrar deras egenskaper."
 
-#: data/core/help.cfg:125
+#: data/core/help.cfg:118
 msgid ""
 "\n"
 "\n"
@@ -591,7 +608,7 @@ msgstr ""
 "rekryterade den. Om du väljer Återkalla får du upp en lista över de "
 "tillgängliga veteraner som du kan välja bland."
 
-#: data/core/help.cfg:127
+#: data/core/help.cfg:120
 msgid ""
 "\n"
 "\n"
@@ -605,11 +622,11 @@ msgstr ""
 "också en underhållskostnad. Läs <ref>dst=income_and_upkeep text='Inkomst och "
 "underhåll'</ref> för mer information om detta."
 
-#: data/core/help.cfg:132
+#: data/core/help.cfg:125
 msgid "Orbs"
 msgstr "Sfärer"
 
-#: data/core/help.cfg:133
+#: data/core/help.cfg:126
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -617,34 +634,34 @@ msgstr ""
 "Ovanför energimätaren som visas bredvid alla dina trupper finns en sfär. För "
 "de trupper du kontrollerar är sfären:"
 
-#: data/core/help.cfg:134
+#: data/core/help.cfg:127
 msgid "green if it hasn't moved this turn,"
 msgstr "grön om truppen inte har förflyttats detta drag,"
 
-#: data/core/help.cfg:135
+#: data/core/help.cfg:128
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "gul om du har flyttat truppen detta drag, men den kan förflyttas ytterligare "
 "och/eller anfalla under innevarande drag, eller"
 
-#: data/core/help.cfg:136
+#: data/core/help.cfg:129
 msgid "red if it has used all its movement this turn."
 msgstr ""
 "röd om du kontrollerar truppen, men dess förflyttning detta drag är slut."
 
-#: data/core/help.cfg:137
+#: data/core/help.cfg:130
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Sfären är blå om truppen är en allierad som du inte kontrollerar."
 
-#: data/core/help.cfg:138
+#: data/core/help.cfg:131
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Fiendetrupper har ingen sfär ovanför sina energimätare."
 
-#: data/core/help.cfg:143
+#: data/core/help.cfg:136
 msgid "Hitpoints and Experience"
 msgstr "Hälsopoäng och erfarenhet"
 
-#: data/core/help.cfg:144
+#: data/core/help.cfg:137
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -656,7 +673,7 @@ msgstr ""
 "erfarenhetspoäng (EP). En nyrekryterad trupp har inga erfarenhetspoäng till "
 "en början, men erhåller detta genom att strida."
 
-#: data/core/help.cfg:148
+#: data/core/help.cfg:141
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -666,7 +683,7 @@ msgstr ""
 "vardera. Den första siffran visar de nuvarande poängen och den andra visar "
 "maximalt värde."
 
-#: data/core/help.cfg:149
+#: data/core/help.cfg:142
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -678,11 +695,11 @@ msgstr ""
 "erfarenhetsmätare. Denna blir vit när truppen är nära att "
 "<ref>dst=experience_and_advancement text=befordras</ref>."
 
-#: data/core/help.cfg:154
+#: data/core/help.cfg:147
 msgid "Movement"
 msgstr "Förflyttning"
 
-#: data/core/help.cfg:155
+#: data/core/help.cfg:148
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -711,7 +728,7 @@ msgstr ""
 "trupp ställs i en by man inte redan kontrollerar så förloras återstående "
 "förflyttning, men man kan fortfarande anfalla."
 
-#: data/core/help.cfg:157
+#: data/core/help.cfg:150
 msgid ""
 "\n"
 "\n"
@@ -738,7 +755,7 @@ msgstr ""
 "truppen, välja Truppbeskrivning, och sedan <italic>text='Terrängavdrag'</"
 "italic>."
 
-#: data/core/help.cfg:159
+#: data/core/help.cfg:152
 msgid ""
 "\n"
 "\n"
@@ -758,7 +775,7 @@ msgstr ""
 "eftersom bara <ref>dst=ability_skirmisher text='stigfinnarna'</ref> kan röra "
 "sig obehindrat över dessa."
 
-#: data/core/help.cfg:161
+#: data/core/help.cfg:154
 msgid ""
 "\n"
 "\n"
@@ -772,11 +789,12 @@ msgstr ""
 "Cmd-v. Ctrl-b eller Cmd-b visar vart fienden skulle kunna flytta om dina "
 "trupper inte fanns på kartan och blockerade framfarten."
 
-#: data/core/help.cfg:166
+#: data/core/help.cfg:159
 msgid "Shroud and Fog of War"
 msgstr "Slöja och stridsdimma"
 
-#: data/core/help.cfg:169
+#: data/core/help.cfg:162
+#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -788,13 +806,14 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units).\n"
 "\n"
-"Normaly you can undo a unit's movement, as long as an event with a "
-"randomized result has not occurred, such as combat or a recuritment. "
-"Exploring hidden terrain by clearing Shroud or Fog will also prevent undos "
-"to a previous state. You may wish to activate 'delay shroud updates' in the "
-"actions menu. This will prevent units from clearing Shroud or Fog until the "
-"next randomized event or a manual update via 'update shroud now' (or the end "
-"of your turn) and thereby perserve your ability to undo movement."
+"Normally you can undo a unit's movement, as long as an event with a "
+"randomized result has not occurred, such as combat or recruitment (as most "
+"units receive random traits when recruited). Exploring hidden terrain by "
+"clearing Shroud or Fog will also prevent undos to a previous state. You may "
+"wish to activate 'delay shroud updates' in the actions menu. This will "
+"prevent units from clearing Shroud or Fog until the next randomized event or "
+"a manual update via 'update shroud now' (or the end of your turn) and "
+"thereby perserve your ability to undo movement."
 msgstr ""
 "I vissa scenarier är delar av kartan dolda. Två olika mekanismer ligger "
 "bakom detta, som kan användas separat eller tillsammans. Slöjan döljer både "
@@ -815,11 +834,11 @@ msgstr ""
 "uppdatera slöjan själv (eller vid dragets slut). Därigenom behålls "
 "möjligheten att ångra sina förflyttningar så länge som möjligt."
 
-#: data/core/help.cfg:174
+#: data/core/help.cfg:167
 msgid "Combat"
 msgstr "Strid"
 
-#: data/core/help.cfg:175
+#: data/core/help.cfg:168
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -841,7 +860,7 @@ msgstr ""
 "räckvidd indelas i närstrid, där vapen som svärd, yxor eller huggtänder "
 "används, och distansstrid, där vapen som pilbågar, spjut och eldklot används."
 
-#: data/core/help.cfg:177
+#: data/core/help.cfg:170
 msgid ""
 "\n"
 "\n"
@@ -851,7 +870,7 @@ msgstr ""
 "\n"
 "<header>text='Turordning och antal attacker'</header>"
 
-#: data/core/help.cfg:179
+#: data/core/help.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -873,7 +892,7 @@ msgstr ""
 "utfall som vardera ger 5 i skada, medan en orchsoldat med en 9-2-attack bara "
 "har två utfall (men som ger 9 i skada vardera)."
 
-#: data/core/help.cfg:181
+#: data/core/help.cfg:174
 msgid ""
 "\n"
 "\n"
@@ -883,7 +902,7 @@ msgstr ""
 "\n"
 "<header>text='Chans för träff'</header>"
 
-#: data/core/help.cfg:183
+#: data/core/help.cfg:176
 msgid ""
 "\n"
 "\n"
@@ -906,7 +925,7 @@ msgstr ""
 "sätt avgörs träffmöjligheten för alven av terrängen som den andra truppen "
 "står på."
 
-#: data/core/help.cfg:185
+#: data/core/help.cfg:178
 msgid ""
 "\n"
 "\n"
@@ -925,7 +944,7 @@ msgstr ""
 "prickskyttar gör ett offensivt utfall har de alltid minst 60% chans att "
 "träffa, oavsett terräng."
 
-#: data/core/help.cfg:187
+#: data/core/help.cfg:180
 msgid ""
 "\n"
 "\n"
@@ -935,7 +954,7 @@ msgstr ""
 "\n"
 "<header>text=Skada</header>"
 
-#: data/core/help.cfg:189
+#: data/core/help.cfg:182
 msgid ""
 "\n"
 "\n"
@@ -957,7 +976,7 @@ msgstr ""
 "förändras av dessa faktorer kan du se under <italic>text='Skadeberäkning'</"
 "italic> när du väljer attack."
 
-#: data/core/help.cfg:191
+#: data/core/help.cfg:184
 msgid ""
 "\n"
 "\n"
@@ -973,11 +992,11 @@ msgstr ""
 "<ref>dst=weaponspecial_charge text=storma</ref>. Då en trupp stormar en "
 "annan fördubblas skadan som både anfallaren och försvararen vållar varandra."
 
-#: data/core/help.cfg:196
+#: data/core/help.cfg:189
 msgid "Damage Types and Resistance"
 msgstr "Skadetyper och motståndskraft"
 
-#: data/core/help.cfg:197
+#: data/core/help.cfg:190
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -991,7 +1010,7 @@ msgstr ""
 "attacker. Truppernas olika motståndskraft kan förändra skadan de får från "
 "olika skadetyper."
 
-#: data/core/help.cfg:199
+#: data/core/help.cfg:192
 msgid ""
 "\n"
 "\n"
@@ -1010,7 +1029,7 @@ msgstr ""
 "motståndskraft, till exempel -100%, så kommer den att få 100% mer i skada "
 "när den träffas av den sortens attack."
 
-#: data/core/help.cfg:201
+#: data/core/help.cfg:194
 msgid ""
 "\n"
 "\n"
@@ -1024,7 +1043,7 @@ msgstr ""
 "stickattacker, men de är sårbara för kross- och eldattacker. De är dessutom "
 "extremt sårbara för ockulta attacker."
 
-#: data/core/help.cfg:203
+#: data/core/help.cfg:196
 msgid ""
 "\n"
 "\n"
@@ -1038,11 +1057,11 @@ msgstr ""
 "gäller även om den försvarande truppen har 100% motstånd mot aktuell "
 "attacktyp."
 
-#: data/core/help.cfg:208
+#: data/core/help.cfg:201
 msgid "Time of Day"
 msgstr "Dygnets gång"
 
-#: data/core/help.cfg:212
+#: data/core/help.cfg:205
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1055,7 +1074,7 @@ msgstr ""
 "dagen.\n"
 "- Neutrala trupper är opåverkade av tiden på dygnet."
 
-#: data/core/help.cfg:215
+#: data/core/help.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -1069,31 +1088,31 @@ msgstr ""
 "dygnscykeln räknas förmiddag och eftermiddag som dag, och första och andra "
 "vakten som natt:\n"
 
-#: data/core/help.cfg:215 data/core/macros/schedules.cfg:5
+#: data/core/help.cfg:208 data/core/macros/schedules.cfg:5
 msgid "Dawn"
 msgstr "Gryning"
 
-#: data/core/help.cfg:216 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:209 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Förmiddag"
 
-#: data/core/help.cfg:217 data/core/macros/schedules.cfg:30
+#: data/core/help.cfg:210 data/core/macros/schedules.cfg:30
 msgid "Afternoon"
 msgstr "Eftermiddag"
 
-#: data/core/help.cfg:218 data/core/macros/schedules.cfg:41
+#: data/core/help.cfg:211 data/core/macros/schedules.cfg:41
 msgid "Dusk"
 msgstr "Skymning"
 
-#: data/core/help.cfg:219 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:212 data/core/macros/schedules.cfg:55
 msgid "First Watch"
 msgstr "Första vakten"
 
-#: data/core/help.cfg:220 data/core/macros/schedules.cfg:69
+#: data/core/help.cfg:213 data/core/macros/schedules.cfg:69
 msgid "Second Watch"
 msgstr "Andra vakten"
 
-#: data/core/help.cfg:222
+#: data/core/help.cfg:215
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1101,11 +1120,11 @@ msgstr ""
 "Somliga scenarier äger rum i underjorden eller i grottor, där det råder evig "
 "natt!"
 
-#: data/core/help.cfg:227
+#: data/core/help.cfg:220
 msgid "Experience and Advancement"
 msgstr "Erfarenhet och befordran"
 
-#: data/core/help.cfg:228
+#: data/core/help.cfg:221
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1118,7 +1137,7 @@ msgstr ""
 "nollte nivån, 8 för en på första, 16 för en på andra, 24 för en på tredje, "
 "och så vidare."
 
-#: data/core/help.cfg:230
+#: data/core/help.cfg:223
 msgid ""
 "\n"
 "\n"
@@ -1135,7 +1154,8 @@ msgstr ""
 "samtidigt sin fulla styrka. I vissa fall ges möjlighet att välja truppens "
 "nästa roll."
 
-#: data/core/help.cfg:234
+#: data/core/help.cfg:227
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1144,8 +1164,8 @@ msgid ""
 "its maximum level, it may have an After Maximum Level Advancement (AMLA) "
 "available to it. The AMLA will modify the unit each time the unit reaches "
 "the experience goal, but the unit will remain the same level. The typical "
-"AMLA effect is for the unit to raise the maximum HP by 3.  The first AMLA "
-"will normally be reached with 100 XP gained (80 XP for intelligent units).  "
+"AMLA effect is for the unit to raise the maximum HP by 3. The first AMLA "
+"will normally be reached with 100 XP gained (80 XP for intelligent units). "
 "However, gaining an AMLA becomes progressively harder for each AMLA the unit "
 "receives, and so it is often more useful to try to advance your lower level "
 "units.\n"
@@ -1171,11 +1191,11 @@ msgstr ""
 "Endast ett litet fåtal truppslag, såsom nekrofagen, återfår full styrka när "
 "detta inträffar. De flesta trupper får bara en höjd maximal HP."
 
-#: data/core/help.cfg:239
+#: data/core/help.cfg:232
 msgid "Healing"
 msgstr "Läkande"
 
-#: data/core/help.cfg:240
+#: data/core/help.cfg:233
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1191,7 +1211,7 @@ msgstr ""
 "gemensamma för dessa olika sätt är att de äger rum i början av ditt drag, "
 "innan några order ges."
 
-#: data/core/help.cfg:242
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1203,7 +1223,7 @@ msgstr ""
 "- Vila: En trupp som varken förflyttas, anfaller eller blir anfallen själv "
 "återfår 2 HP nästa drag."
 
-#: data/core/help.cfg:243
+#: data/core/help.cfg:236
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1212,7 +1232,7 @@ msgstr ""
 "- Byar: trupper som som befinner sig i en by då deras drag startar återfår 8 "
 "HP."
 
-#: data/core/help.cfg:244
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1222,7 +1242,7 @@ msgstr ""
 "- <ref>dst=ability_regenerates text=Regenerering</ref>: Vissa trupper (såsom "
 "troll) återfår alltid 8 HP i början av draget."
 
-#: data/core/help.cfg:245
+#: data/core/help.cfg:238
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1234,7 +1254,7 @@ msgstr ""
 "text=hela</ref> läker alla intillstående trupper med vanligtvis 4 eller 8 "
 "hälsopoäng per drag, eller hindrar en förgiftning från att göra skada."
 
-#: data/core/help.cfg:246
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1246,7 +1266,7 @@ msgstr ""
 "text=bota</ref> återställer intillstående förgiftade trupper. Om den läkande "
 "truppen även kan hela, så botar den förgiftningen först."
 
-#: data/core/help.cfg:248
+#: data/core/help.cfg:241
 msgid ""
 "\n"
 "\n"
@@ -1261,11 +1281,11 @@ msgstr ""
 "möjligheter till helande finns, väljs den kraftigaste metoden. Slutligen, "
 "alla trupper återfår sin fulla styrka mellan scenarier."
 
-#: data/core/help.cfg:253
+#: data/core/help.cfg:246
 msgid "Income and Upkeep"
 msgstr "Inkomst och underhåll"
 
-#: data/core/help.cfg:254
+#: data/core/help.cfg:247
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1277,7 +1297,7 @@ msgstr ""
 "från ett scenario till nästa. Det finns två aspekter av detta: inkomst och "
 "underhåll."
 
-#: data/core/help.cfg:256
+#: data/core/help.cfg:249
 msgid ""
 "\n"
 "\n"
@@ -1293,7 +1313,7 @@ msgstr ""
 "har tio byar, får du vanligtvis tolv guldstycken. Din kostnad för underhåll "
 "dras från denna inkomst, såsom beskrivs nedan."
 
-#: data/core/help.cfg:258
+#: data/core/help.cfg:251
 msgid ""
 "\n"
 "\n"
@@ -1314,7 +1334,7 @@ msgstr ""
 "har ett antal trupper som tillsammans har 12 erfarenhetsnivåer, och om du "
 "kontrollerar 10 byar, så utkrävs två guldstycken per drag i underhåll."
 
-#: data/core/help.cfg:260
+#: data/core/help.cfg:253
 msgid ""
 "\n"
 "\n"
@@ -1328,7 +1348,7 @@ msgstr ""
 "om du har trupper med sammanlagt tolv nivåer samt tio byar så blir din "
 "inkomst 10 guldstycken per drag."
 
-#: data/core/help.cfg:261
+#: data/core/help.cfg:254
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1345,11 +1365,11 @@ msgstr ""
 "gång (som ryttaren i det andra scenariot i Tronarvingen), är vanligtvis "
 "lojala. Truppen du själv spelar (som Konrad) är nästan alltid en ledare."
 
-#: data/core/help.cfg:266
+#: data/core/help.cfg:259
 msgid "Wrap Up"
 msgstr "Slutord"
 
-#: data/core/help.cfg:267
+#: data/core/help.cfg:260
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1363,11 +1383,11 @@ msgstr ""
 "vet du allt du behöver veta för att spela Tronarvingen. Ha så roligt, och "
 "lycka till! "
 
-#: data/core/help.cfg:278
+#: data/core/help.cfg:271
 msgid "License"
 msgstr "Licens"
 
-#: data/core/help.cfg:285
+#: data/core/help.cfg:278
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1379,7 +1399,7 @@ msgstr ""
 "inför små ändringar av truppernas egenskaper. Trupperna tilldelas "
 "karaktärsdrag slumpmässigt när de rekryteras."
 
-#: data/core/help.cfg:287
+#: data/core/help.cfg:280
 msgid ""
 "\n"
 "\n"
@@ -1395,7 +1415,7 @@ msgstr ""
 "text=Snabb</ref>, <ref>dst=traits_resilient text=Tålig</ref> och "
 "<ref>dst=traits_strong text=Stark</ref>."
 
-#: data/core/help.cfg:289
+#: data/core/help.cfg:282
 msgid ""
 "\n"
 "\n"
@@ -1409,17 +1429,17 @@ msgstr ""
 "text=Lojal</ref>, <ref>dst=traits_dextrous text=Träffsäker</ref> och "
 "<ref>dst=traits_undead text=Vandöd</ref>."
 
-#: data/core/help.cfg:294
+#: data/core/help.cfg:287
 msgid "Intelligent"
 msgstr "Intelligent"
 
-#: data/core/help.cfg:295
+#: data/core/help.cfg:288
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligenta trupper kräver 20% mindre erfarenhet än vanligt för att "
 "befordras."
 
-#: data/core/help.cfg:297
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1438,17 +1458,17 @@ msgstr ""
 "högre nivåer så kan det vara bättre att återkalla trupper som har andra "
 "karaktärsdrag. "
 
-#: data/core/help.cfg:302
+#: data/core/help.cfg:295
 msgid "Quick"
 msgstr "Snabb"
 
-#: data/core/help.cfg:303
+#: data/core/help.cfg:296
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Snabba trupper har en extra förflyttningspoäng, men 5% mindre hälsopoäng än "
 "vanligt."
 
-#: data/core/help.cfg:305
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -1467,16 +1487,16 @@ msgstr ""
 "trupper. Eftersom snabba trupper inte är så starka så är de mindre lämpade "
 "för att hålla positioner."
 
-#: data/core/help.cfg:310
+#: data/core/help.cfg:303
 msgid "Resilient"
 msgstr "Tålig"
 
-#: data/core/help.cfg:311
+#: data/core/help.cfg:304
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Tåliga trupper har 4 hälsopoäng plus 1 hälsopoäng per nivå mer än normalt."
 
-#: data/core/help.cfg:313
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -1494,11 +1514,11 @@ msgstr ""
 "försvarsegenskaper och starka motståndskrafter. Tåliga trupper är speciellt "
 "lämpade för att hålla strategiska positioner."
 
-#: data/core/help.cfg:318
+#: data/core/help.cfg:311
 msgid "Strong"
 msgstr "Stark"
 
-#: data/core/help.cfg:319
+#: data/core/help.cfg:312
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1506,7 +1526,7 @@ msgstr ""
 "Starka trupper vållar 1 mer skada per träff i närstrid och har 1 mer "
 "hälsopoäng."
 
-#: data/core/help.cfg:321
+#: data/core/help.cfg:314
 msgid ""
 "\n"
 "\n"
@@ -1522,19 +1542,19 @@ msgstr ""
 "mycket nyttiga när det krävs lite extra skada för att göra en träff till "
 "nådastöten."
 
-#: data/core/help.cfg:326
+#: data/core/help.cfg:319
 msgid "Fearless"
 msgstr "Orädd"
 
-#: data/core/help.cfg:327
+#: data/core/help.cfg:320
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Dessa modiga individer tar ingen hänsyn till om det är natt eller dag."
 
-#: data/core/help.cfg:332
+#: data/core/help.cfg:325
 msgid "Loyal"
 msgstr "Lojal"
 
-#: data/core/help.cfg:333
+#: data/core/help.cfg:326
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1544,7 +1564,7 @@ msgstr ""
 "underhållskostnad vid slutet av varje drag, som är lika med deras "
 "erfarenhetsnivå. Lojala trupper utkräver inte denna kostnad."
 
-#: data/core/help.cfg:335
+#: data/core/help.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -1564,11 +1584,11 @@ msgstr ""
 "Karaktärsdraget Lojal ges aldrig till rekryterade trupper, så det är oklokt "
 "att avskeda eller skicka dina lojala trupper i döden i onödan."
 
-#: data/core/help.cfg:340
+#: data/core/help.cfg:333
 msgid "trait^Undead"
 msgstr "Vandöd"
 
-#: data/core/help.cfg:341
+#: data/core/help.cfg:334
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1576,7 +1596,7 @@ msgstr ""
 "Vandöda trupper är immuna mot gift, dessutom kan de inte påverkas av suga "
 "livskraft eller pest."
 
-#: data/core/help.cfg:343
+#: data/core/help.cfg:336
 msgid ""
 "\n"
 "\n"
@@ -1592,11 +1612,11 @@ msgstr ""
 "på dem. Detta kan göra dem mycket användbara i strid mot fiender som "
 "använder gift i sina attacker."
 
-#: data/core/help.cfg:348
+#: data/core/help.cfg:341
 msgid "trait^Mechanical"
 msgstr "Konstruktion"
 
-#: data/core/help.cfg:349
+#: data/core/help.cfg:342
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1604,7 +1624,7 @@ msgstr ""
 "Konstruktioner är immuna mot gift, dessutom kan de inte påverkas av suga "
 "livskraft eller pest."
 
-#: data/core/help.cfg:351
+#: data/core/help.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -1618,18 +1638,18 @@ msgstr ""
 "konstruktioner egentligen inte lever, påverkas de inte av suga livskraft, "
 "gift eller pest."
 
-#: data/core/help.cfg:356
+#: data/core/help.cfg:349
 msgid "Dextrous"
 msgstr "Träffsäker"
 
-#: data/core/help.cfg:357
+#: data/core/help.cfg:350
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Träffsäkra trupper åsamkar 1 extra poäng i skada för varje träff med "
 "distansvapen."
 
-#: data/core/help.cfg:359
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -1645,11 +1665,11 @@ msgstr ""
 "dock begåvade med en naturlig fallenhet för bågskytte utöver det vanliga. "
 "Dessa alver åsamkar ytterligare en poäng i skada med varje pil."
 
-#: data/core/help.cfg:364
+#: data/core/help.cfg:357
 msgid "Healthy"
 msgstr "Livskraftig"
 
-#: data/core/help.cfg:365
+#: data/core/help.cfg:358
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -1657,7 +1677,7 @@ msgstr ""
 "Vissa dvärgar är vitt kända för sin vitalitet. De är härdigare än andra och "
 "kan återhämta sig även under färd."
 
-#: data/core/help.cfg:367
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -1669,11 +1689,11 @@ msgstr ""
 "Livskraftiga trupper har 2 hälsopoäng mer än normalt. Dessutom återskänker "
 "vila 2 extra hälspoäng för varje drag utan strid."
 
-#: data/core/help.cfg:372
+#: data/core/help.cfg:365
 msgid "Grassland"
 msgstr "Slätt"
 
-#: data/core/help.cfg:377
+#: data/core/help.cfg:370
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1691,11 +1711,11 @@ msgstr ""
 "\n"
 "De flesta truppslag har 30-40% försvar på slätter."
 
-#: data/core/help.cfg:382
+#: data/core/help.cfg:375
 msgid "Road"
 msgstr "Väg"
 
-#: data/core/help.cfg:385
+#: data/core/help.cfg:378
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1705,11 +1725,11 @@ msgstr ""
 "dem. I spelet fungerar vägar på samma sätt som <ref>dst=terrain_grassland "
 "text=slätt</ref>."
 
-#: data/core/help.cfg:390
+#: data/core/help.cfg:383
 msgid "Forest"
 msgstr "Skog"
 
-#: data/core/help.cfg:397
+#: data/core/help.cfg:390
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1740,11 +1760,11 @@ msgstr ""
 "försvar i skog.\n"
 "\n"
 
-#: data/core/help.cfg:402
+#: data/core/help.cfg:395
 msgid "Hills"
 msgstr "Kullar"
 
-#: data/core/help.cfg:407
+#: data/core/help.cfg:400
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1765,11 +1785,11 @@ msgstr ""
 "De flesta truppslag har omkring 50% försvar i kullar, medan kavalleri har "
 "40% som bäst. Dvärgar har 60% försvar i kullar."
 
-#: data/core/help.cfg:412
+#: data/core/help.cfg:405
 msgid "Mountains"
 msgstr "Berg"
 
-#: data/core/help.cfg:417
+#: data/core/help.cfg:410
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1790,11 +1810,11 @@ msgstr ""
 "\n"
 "De flesta truppslag har 60% försvar i berg; dvärgar har 70%."
 
-#: data/core/help.cfg:422
+#: data/core/help.cfg:415
 msgid "Swamp"
 msgstr "Träsk"
 
-#: data/core/help.cfg:427
+#: data/core/help.cfg:420
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1813,11 +1833,11 @@ msgstr ""
 "De flesta truppslag har 30% försvar i träsk. Sjöfolket, nagafolket och "
 "ödlefolket har oftast 60% försvar."
 
-#: data/core/help.cfg:432
+#: data/core/help.cfg:425
 msgid "Shallow Water"
 msgstr "Grunt vatten"
 
-#: data/core/help.cfg:437
+#: data/core/help.cfg:430
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1839,11 +1859,11 @@ msgstr ""
 "De flesta truppslag får nöja sig med 20-30% försvar i grunt vatten, medan "
 "både sjöfolket och nagafolket har 60%."
 
-#: data/core/help.cfg:442
+#: data/core/help.cfg:435
 msgid "Deep Water"
 msgstr "Djupt vatten"
 
-#: data/core/help.cfg:447
+#: data/core/help.cfg:440
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1858,11 +1878,11 @@ msgstr ""
 "\n"
 "Sjöfolket och nagafolket rör sig fritt på djupt vatten och har 50% försvar."
 
-#: data/core/help.cfg:452
+#: data/core/help.cfg:445
 msgid "Snow"
 msgstr "Snö"
 
-#: data/core/help.cfg:457
+#: data/core/help.cfg:450
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1876,11 +1896,11 @@ msgstr ""
 "\n"
 "De flesta truppslag har 20-40% försvar i denna terräng."
 
-#: data/core/help.cfg:462
+#: data/core/help.cfg:455
 msgid "Ice"
 msgstr "Is"
 
-#: data/core/help.cfg:465
+#: data/core/help.cfg:458
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1891,11 +1911,11 @@ msgstr ""
 "Observera att simmande trupper inte kan simma under is; detta gäller även de "
 "som kan andas under vatten."
 
-#: data/core/help.cfg:470
+#: data/core/help.cfg:463
 msgid "Castle"
 msgstr "Borg"
 
-#: data/core/help.cfg:477
+#: data/core/help.cfg:470
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1916,11 +1936,11 @@ msgstr ""
 "De flesta trupper har omkring 60% försvar i borgar.\n"
 "\n"
 
-#: data/core/help.cfg:482
+#: data/core/help.cfg:475
 msgid "Sand"
 msgstr "Sand"
 
-#: data/core/help.cfg:487
+#: data/core/help.cfg:480
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1934,11 +1954,11 @@ msgstr ""
 "\n"
 "De flesta trupper har 20-40% försvar i denna terräng."
 
-#: data/core/help.cfg:492
+#: data/core/help.cfg:485
 msgid "Desert"
 msgstr "Öken"
 
-#: data/core/help.cfg:495
+#: data/core/help.cfg:488
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1948,11 +1968,11 @@ msgstr ""
 "stränder. I spelet behandlas dock sand och öken som samma terräng. Se "
 "<ref>dst=terrain_sand text=sand</ref>."
 
-#: data/core/help.cfg:500
+#: data/core/help.cfg:493
 msgid "Cave"
 msgstr "Grotta"
 
-#: data/core/help.cfg:505
+#: data/core/help.cfg:498
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1974,11 +1994,11 @@ msgstr ""
 "\n"
 "De flesta trupper har 20-40% försvar i denna terräng, medan dvärgar har 50%."
 
-#: data/core/help.cfg:510
+#: data/core/help.cfg:503
 msgid "Rockbound Cave"
 msgstr "Klippgrotta"
 
-#: data/core/help.cfg:515
+#: data/core/help.cfg:508
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2002,11 +2022,11 @@ msgstr ""
 "De flesta truppslag har omkring 50% försvar i klippgrottor, medan kavalleri "
 "är begränsat till 40%. Dvärgar har 60% försvar i klippgrottor."
 
-#: data/core/help.cfg:520
+#: data/core/help.cfg:513
 msgid "Illuminated Cave"
 msgstr "Upplyst grotta"
 
-#: data/core/help.cfg:523
+#: data/core/help.cfg:516
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2019,17 +2039,17 @@ msgstr ""
 "trupper ett avdrag på attacker. I alla andra avseenden är denna terräng "
 "ekvivalent med en normal grotta."
 
-#: data/core/help.cfg:528
+#: data/core/help.cfg:521
 msgid "Mushroom Grove"
 msgstr "Svampdunge"
 
-#: data/core/help.cfg:533
+#: data/core/help.cfg:526
 #, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
-"thrive in the damp darkness.  Most units have trouble negotiating the spongy "
+"thrive in the damp darkness. Most units have trouble negotiating the spongy "
 "floor of smaller fungi, but they have plenty of cover behind the larger "
-"stalks.  Mounted units, however, become completely mired and lack proper "
+"stalks. Mounted units, however, become completely mired and lack proper "
 "freedom of movement in combat. Undead units have a natural affinity for "
 "decay and function quite well in mushroom forests.\n"
 "\n"
@@ -2046,11 +2066,11 @@ msgstr ""
 "De flesta truppslag har mellan 50% och 60% försvar i svampdungor, medan "
 "kavalleri endast har 20%."
 
-#: data/core/help.cfg:538
+#: data/core/help.cfg:531
 msgid "Savanna"
 msgstr "Savann"
 
-#: data/core/help.cfg:541
+#: data/core/help.cfg:534
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -2060,11 +2080,11 @@ msgstr ""
 "har denna terräng samma egenskaper som <ref>dst=terrain_grassland "
 "text=slätt</ref>."
 
-#: data/core/help.cfg:546 src/terrain.cpp:102
+#: data/core/help.cfg:539 src/terrain.cpp:102
 msgid "Village"
 msgstr "By"
 
-#: data/core/help.cfg:553
+#: data/core/help.cfg:546
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2087,11 +2107,11 @@ msgstr ""
 "De flesta truppslag har 50-60% försvar i byar; kavalleri har 40%.\n"
 "\n"
 
-#: data/core/help.cfg:558
+#: data/core/help.cfg:551
 msgid "Submerged Village"
 msgstr "Undervattensby"
 
-#: data/core/help.cfg:563
+#: data/core/help.cfg:556
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2112,11 +2132,11 @@ msgstr ""
 "Sjöfolket och nagafolket har 60% försvar i undervattensbyar, medan "
 "landvarelser ofta har ett dåligt försvar här."
 
-#: data/core/help.cfg:568
+#: data/core/help.cfg:561
 msgid "Chasm"
 msgstr "Klyfta"
 
-#: data/core/help.cfg:571
+#: data/core/help.cfg:564
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2127,11 +2147,11 @@ msgstr ""
 "klippväggar som det skulle ta dagar att ta sig över. I spelet är det bara "
 "flygande truppslag som kan ta sig över denna typ av terräng."
 
-#: data/core/help.cfg:576
+#: data/core/help.cfg:569
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/help.cfg:579
+#: data/core/help.cfg:572
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2144,11 +2164,11 @@ msgstr ""
 "ger också ifrån sig ett sken som lyser upp det närliggande området. Detta "
 "ger redbara trupper en bonus och ljusskygga trupper ett avdrag på attacker."
 
-#: data/core/help.cfg:584
+#: data/core/help.cfg:577
 msgid "River Ford"
 msgstr "Vadställe"
 
-#: data/core/help.cfg:587
+#: data/core/help.cfg:580
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2163,11 +2183,11 @@ msgstr ""
 "eller grunt vatten beroende på vad som är bäst för truppslaget som befinner "
 "sig där."
 
-#: data/core/help.cfg:592
+#: data/core/help.cfg:585
 msgid "Bridge"
 msgstr "Bro"
 
-#: data/core/help.cfg:597
+#: data/core/help.cfg:590
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2191,11 +2211,11 @@ msgstr ""
 "som ger de bästa fördelarna för truppen som passerar bron. Observera att en "
 "simmande trupp och en landtrupp inte kan ställa sig på en broruta samtidigt."
 
-#: data/core/help.cfg:602
+#: data/core/help.cfg:595
 msgid "Cave Wall"
 msgstr "Grottvägg"
 
-#: data/core/help.cfg:605
+#: data/core/help.cfg:598
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2203,11 +2223,11 @@ msgstr ""
 "Grottvägar är gjorda av solid sten, som är välkänt för sin förmåga att stå "
 "emot även den mest bestämda av färdmän."
 
-#: data/core/help.cfg:610
+#: data/core/help.cfg:603
 msgid "Impassable Mountain"
 msgstr "Obestigbara berg"
 
-#: data/core/help.cfg:613
+#: data/core/help.cfg:606
 #, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
@@ -2218,11 +2238,11 @@ msgstr ""
 "ta sig över ett sådant berg är praktiskt taget omöjligt. Även flygande "
 "varelser stoppas av bergstopparna på sådana höjder."
 
-#: data/core/help.cfg:618
+#: data/core/help.cfg:611
 msgid "General commands"
 msgstr "Allmänna kommandon"
 
-#: data/core/help.cfg:622
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2232,7 +2252,7 @@ msgstr ""
 "Avsluta scenariot (utan bekräftelse).\n"
 "\n"
 
-#: data/core/help.cfg:625
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2242,7 +2262,7 @@ msgstr ""
 "Spara spelet (utan bekräftelse).\n"
 "\n"
 
-#: data/core/help.cfg:628
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
@@ -2252,7 +2272,7 @@ msgstr ""
 "Spara spelet och avsluta scenariot (utan bekräftelse).\n"
 "\n"
 
-#: data/core/help.cfg:631
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2262,7 +2282,7 @@ msgstr ""
 "Rita om skärmen.\n"
 "\n"
 
-#: data/core/help.cfg:634
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2274,15 +2294,15 @@ msgstr ""
 "avsluta spelet.\n"
 "\n"
 
-#: data/core/help.cfg:635
+#: data/core/help.cfg:628
 msgid "Bring up theme selection menu."
 msgstr "Visa temavalsmenyn."
 
-#: data/core/help.cfg:640
+#: data/core/help.cfg:633
 msgid "Multiplayer commands"
 msgstr "Gruppspelskommandon"
 
-#: data/core/help.cfg:644
+#: data/core/help.cfg:637
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2295,7 +2315,7 @@ msgstr ""
 "kontrollerar aktuell sida kan välja detta. Om ingen sida anges, antas '1'.\n"
 "\n"
 
-#: data/core/help.cfg:647
+#: data/core/help.cfg:640
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -2305,7 +2325,7 @@ msgstr ""
 "Växla till/från att ignorera åskådares inlägg.\n"
 "\n"
 
-#: data/core/help.cfg:650
+#: data/core/help.cfg:643
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2317,7 +2337,7 @@ msgstr ""
 "ignorerade användare.\n"
 "\n"
 
-#: data/core/help.cfg:653
+#: data/core/help.cfg:646
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2331,7 +2351,7 @@ msgstr ""
 "problem.\n"
 "\n"
 
-#: data/core/help.cfg:656
+#: data/core/help.cfg:649
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -2343,7 +2363,7 @@ msgstr ""
 "används av aktuell användare.\n"
 "\n"
 
-#: data/core/help.cfg:659
+#: data/core/help.cfg:652
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2355,7 +2375,7 @@ msgstr ""
 "(ange användarnamnet).\n"
 "\n"
 
-#: data/core/help.cfg:660
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Clear chat messages."
@@ -4164,35 +4184,40 @@ msgstr "Vättar"
 msgid "race^Undead"
 msgstr "Vandöda"
 
-#: data/core/units.cfg:94 data/hardwired/english.cfg:30
+#: data/core/units.cfg:94
+#, fuzzy
+msgid "race^Bats"
+msgstr "Nagafolket"
+
+#: data/core/units.cfg:100 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr "Resar"
 
-#: data/core/units.cfg:101 data/hardwired/english.cfg:27
+#: data/core/units.cfg:107 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr "Sjöfolket"
 
-#: data/core/units.cfg:108 data/hardwired/english.cfg:29
+#: data/core/units.cfg:114 data/hardwired/english.cfg:29
 msgid "race^Nagas"
 msgstr "Nagafolket"
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:28
+#: data/core/units.cfg:120 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr "Monster"
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:31
+#: data/core/units.cfg:126 data/hardwired/english.cfg:31
 msgid "race^Trolls"
 msgstr "Troll"
 
-#: data/core/units.cfg:132 data/hardwired/english.cfg:23
+#: data/core/units.cfg:138 data/hardwired/english.cfg:23
 msgid "race^Drakes"
 msgstr "Drakfolket"
 
-#: data/core/units.cfg:139
+#: data/core/units.cfg:145
 msgid "race^Saurians"
 msgstr "Ödlefolket"
 
-#: data/core/units.cfg:147 data/hardwired/english.cfg:26
+#: data/core/units.cfg:153 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr "Konstruktioner"
 
@@ -4828,7 +4853,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2878 src/menu_events.cpp:144
+#: src/about.cpp:186 src/help.cpp:2911 src/menu_events.cpp:144
 #: src/menu_events.cpp:439 src/menu_events.cpp:461
 msgid "Close"
 msgstr "Stäng"
@@ -5499,11 +5524,11 @@ msgstr "Hjälp"
 msgid "Units having this special attack:"
 msgstr "Trupper med denna specialattack:"
 
-#: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580
+#: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580 src/help.cpp:1633
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
-#: src/help.cpp:1143
+#: src/help.cpp:1143 src/help.cpp:1639
 #, fuzzy
 msgid "Units of this race:"
 msgstr "Trupper med denna förmåga:"
@@ -5593,27 +5618,27 @@ msgstr "Försvar"
 msgid "Movement Cost"
 msgstr "Förflyttningskostnad"
 
-#: src/help.cpp:2417 src/menu_events.cpp:651
+#: src/help.cpp:2450 src/menu_events.cpp:651
 msgid " < Back"
 msgstr " < Tillbaka"
 
-#: src/help.cpp:2418
+#: src/help.cpp:2451
 msgid "Forward >"
 msgstr "Fram >"
 
-#: src/help.cpp:2530
+#: src/help.cpp:2563
 msgid "Reference to unknown topic: "
 msgstr "Referens till okänt ämne: "
 
-#: src/help.cpp:2789
+#: src/help.cpp:2822
 msgid "corrupted original file"
 msgstr "trasig originalfil"
 
-#: src/help.cpp:2881
+#: src/help.cpp:2914
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
-#: src/help.cpp:2933
+#: src/help.cpp:2966
 msgid "Parse error when parsing help text: "
 msgstr "Tolkningsfel när hjälptexten tolkades: "
 
@@ -6763,59 +6788,59 @@ msgstr "Ersätt med"
 msgid " has left the game. What do you want to do?"
 msgstr "har lämnat spelet. Vad vill du göra?"
 
-#: src/serialization/parser.cpp:99
+#: src/serialization/parser.cpp:102
 msgid "Unexpected characters at line start"
 msgstr "Oväntade tecken vid radens början"
 
-#: src/serialization/parser.cpp:126
+#: src/serialization/parser.cpp:129
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Avslutande tag saknas för tag $tag på $pos"
 
-#: src/serialization/parser.cpp:141
+#: src/serialization/parser.cpp:144
 msgid "Unterminated [element] tag"
 msgstr "Oavslutad [element]-tag"
 
-#: src/serialization/parser.cpp:151 src/serialization/parser.cpp:187
+#: src/serialization/parser.cpp:154 src/serialization/parser.cpp:190
 msgid "Invalid tag name"
 msgstr "Ogiltigt tag-namn"
 
-#: src/serialization/parser.cpp:154
+#: src/serialization/parser.cpp:157
 msgid "Unterminated [+element] tag"
 msgstr "Oavslutad [+element]-tag"
 
-#: src/serialization/parser.cpp:170
+#: src/serialization/parser.cpp:173
 msgid "Invalid closing tag name"
 msgstr "Ogiltig avslutande tag-namn"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated closing tag"
 msgstr "Oavslutad avslutningstag"
 
-#: src/serialization/parser.cpp:175
+#: src/serialization/parser.cpp:178
 msgid "Unexpected closing tag"
 msgstr "Oväntat avslutningstag"
 
-#: src/serialization/parser.cpp:181
+#: src/serialization/parser.cpp:184
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr "Ogiltig avslutningstag funnen för tag $tag (öppnad på $pos)"
 
-#: src/serialization/parser.cpp:206 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:209 src/serialization/parser.cpp:221
 msgid "Empty variable name"
 msgstr "Tomt variabelnamn"
 
-#: src/serialization/parser.cpp:212
+#: src/serialization/parser.cpp:215
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Oväntade tecken efter variabelnamn (borde vara , eller =)"
 
-#: src/serialization/parser.cpp:247 src/serialization/parser.cpp:271
+#: src/serialization/parser.cpp:250 src/serialization/parser.cpp:274
 msgid "Unterminated quoted string"
 msgstr "Oavslutad citatsträng"
 
-#: src/serialization/parser.cpp:294
+#: src/serialization/parser.cpp:297
 msgid " included from "
 msgstr " från "
 
-#: src/serialization/parser.cpp:315
+#: src/serialization/parser.cpp:318
 msgid "$error at $pos"
 msgstr "$error på $pos"
 
@@ -6972,9 +6997,10 @@ msgid "neutral"
 msgstr "neutral"
 
 #: src/upload_log.cpp:290
+#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
-"beginners and new players.  Wesnoth keeps summaries of your games: you can "
+"beginners and new players. Wesnoth keeps summaries of your games: you can "
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
@@ -7000,3 +7026,7 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
+
+#, fuzzy
+#~ msgid "Races"
+#~ msgstr "Ras"

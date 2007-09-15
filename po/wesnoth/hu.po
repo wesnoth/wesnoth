@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-14 00:23+0200\n"
+"POT-Creation-Date: 2007-09-15 15:37+0200\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -140,6 +140,28 @@ msgid ""
 "this list is very incomplete\n"
 msgstr ""
 
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:3
+msgid "Eyestalk"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:26
+msgid ""
+"Named 'Eyestalks' for obvious reasons, these plant-like creatures can focus "
+"their gaze onto an unsuspecting victim to draw life energy straight out of "
+"them to replenish their own. While almost defenseless against melee attacks, "
+"its deadly gaze from afar is not to be underestimated.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:33
+msgid "smash"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:85
+msgid "gaze"
+msgstr ""
+
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
 msgid "And special thanks to everyone else who I forgot to mention."
@@ -172,7 +194,7 @@ msgstr "Többjátékos Pályák"
 msgid "Packagers"
 msgstr "Csomagkészítők"
 
-#: data/core/about.cfg:551 data/core/help.cfg:272
+#: data/core/about.cfg:551 data/core/help.cfg:265
 msgid "Contributors"
 msgstr "Hozzájárulók"
 
@@ -356,31 +378,26 @@ msgid "Units"
 msgstr "Egységek"
 
 #: data/core/help.cfg:40
-#, fuzzy
-msgid "Races"
-msgstr "buzogány"
-
-#: data/core/help.cfg:47
 msgid "Abilities"
 msgstr "Képességek"
 
-#: data/core/help.cfg:55
+#: data/core/help.cfg:48
 msgid "Weapon Specials"
 msgstr "Fegyverkülönlegességek"
 
-#: data/core/help.cfg:62
+#: data/core/help.cfg:55
 msgid "Terrains"
 msgstr "Terepek"
 
-#: data/core/help.cfg:69
+#: data/core/help.cfg:62
 msgid "Commands"
 msgstr "Parancsok"
 
-#: data/core/help.cfg:75 data/core/help.cfg:89 data/core/help.cfg:284
+#: data/core/help.cfg:68 data/core/help.cfg:82 data/core/help.cfg:277
 msgid "Overview"
 msgstr "Áttekintés"
 
-#: data/core/help.cfg:76
+#: data/core/help.cfg:69
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -390,12 +407,12 @@ msgstr ""
 "befolyásolhatják, hogyan reagálnak ezen egységek más egységekkel. Ezen "
 "képességek listáját láthatod alább."
 
-#: data/core/help.cfg:81
+#: data/core/help.cfg:74
 #, fuzzy
 msgid "Unknown Unit"
 msgstr "Ismeretlen pálya"
 
-#: data/core/help.cfg:84
+#: data/core/help.cfg:77
 msgid ""
 "\n"
 "\n"
@@ -403,7 +420,7 @@ msgid ""
 "allowed to see its description."
 msgstr ""
 
-#: data/core/help.cfg:92
+#: data/core/help.cfg:85
 msgid ""
 "\n"
 "\n"
@@ -422,11 +439,11 @@ msgstr ""
 "egyszerű szabályokból emelkedik ki a stratégiai lehetőségek gazdagsága, így "
 "a játék könnyen elsajátítható, de művelése kihívás marad."
 
-#: data/core/help.cfg:97
+#: data/core/help.cfg:90
 msgid "Fundamentals of Gameplay"
 msgstr "A játékmenet vezérelvei"
 
-#: data/core/help.cfg:98
+#: data/core/help.cfg:91
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -440,7 +457,7 @@ msgstr ""
 "információt érhetsz itt el. Részletes magyarázatokat és különleges tippeket "
 "a linkeket követve találhatsz."
 
-#: data/core/help.cfg:100
+#: data/core/help.cfg:93
 msgid ""
 "\n"
 "\n"
@@ -461,7 +478,7 @@ msgstr ""
 "művelése komoly kihívást jelenthet, érdemes lesz <italic>text=legkönnyebb</"
 "italic> fokozaton kezdened."
 
-#: data/core/help.cfg:103
+#: data/core/help.cfg:96
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -473,11 +490,11 @@ msgstr ""
 "kifejezetten hasznos az új <ref>dst=abilities text=képességek</ref> "
 "megismerésében."
 
-#: data/core/help.cfg:108
+#: data/core/help.cfg:101
 msgid "About the Game"
 msgstr "Röviden a játékról"
 
-#: data/core/help.cfg:109
+#: data/core/help.cfg:102
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -495,7 +512,7 @@ msgstr ""
 "hálózatban vannak. Emellett, ha a számítógéped rendelkezik internet "
 "hozzáféréssel, játszhatsz másokkal az interneten keresztül is."
 
-#: data/core/help.cfg:111
+#: data/core/help.cfg:104
 msgid ""
 "\n"
 "\n"
@@ -514,7 +531,7 @@ msgstr ""
 "ments valakit, meg kell fejts egy feladványt vagy éppen csak túl kell hogy "
 "élj bizonyos megadott számú kört."
 
-#: data/core/help.cfg:113
+#: data/core/help.cfg:106
 msgid ""
 "\n"
 "\n"
@@ -530,11 +547,11 @@ msgstr ""
 "játékra, hogy megmenthesd a legjobb egységeidet és visszahívhasd őket a "
 "hadjárat későbbi csatái során."
 
-#: data/core/help.cfg:118
+#: data/core/help.cfg:111
 msgid "Recruiting and Recalling"
 msgstr "Toborzás és visszahívás"
 
-#: data/core/help.cfg:119
+#: data/core/help.cfg:112
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -557,7 +574,7 @@ msgstr ""
 "mennyibe kerülnek. Ha egy egységre rákattintasz, akkor a baloldalon "
 "megjelenik a statisztikája, a Toborzás gombra kattintva pedig megveheted."
 
-#: data/core/help.cfg:121
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -573,7 +590,7 @@ msgstr ""
 "akkor toborozhatsz új egységeket, ha van még üres helyed a várad területén, "
 "valamint elég aranyad a toborzáshoz."
 
-#: data/core/help.cfg:123
+#: data/core/help.cfg:116
 msgid ""
 "\n"
 "\n"
@@ -585,7 +602,7 @@ msgstr ""
 "A toborzott egységeknek két véletlenszerű <ref>dst=traits text=Jellemvonása</"
 "ref> lesz, melyek módosítják a statisztikájukat."
 
-#: data/core/help.cfg:125
+#: data/core/help.cfg:118
 msgid ""
 "\n"
 "\n"
@@ -599,7 +616,7 @@ msgstr ""
 "felvenni. Ez a funkció hasonlít a Toborzásra: 20 arany költség mellett "
 "visszahívhatod az előző pályákat túlélt egységeket."
 
-#: data/core/help.cfg:127
+#: data/core/help.cfg:120
 msgid ""
 "\n"
 "\n"
@@ -614,11 +631,11 @@ msgstr ""
 "További információkért tekintsd meg a <ref>dst=income_and_upkeep "
 "text='Bevétel és Fenntartás'</ref> fejezetet."
 
-#: data/core/help.cfg:132
+#: data/core/help.cfg:125
 msgid "Orbs"
 msgstr "Gömböcskék"
 
-#: data/core/help.cfg:133
+#: data/core/help.cfg:126
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -626,33 +643,33 @@ msgstr ""
 "Az egységek mellett látható energiacsík tetején található egy gömböcske. Az "
 "általad irányított egységeknél ez a következőt jelenti:"
 
-#: data/core/help.cfg:134
+#: data/core/help.cfg:127
 msgid "green if it hasn't moved this turn,"
 msgstr "zöld, ha az egység még nem lépett ebben a körben."
 
-#: data/core/help.cfg:135
+#: data/core/help.cfg:128
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "sárga, ha már lépett, de még további lépéseket tehet vagy támadhat; vagy"
 
-#: data/core/help.cfg:136
+#: data/core/help.cfg:129
 msgid "red if it has used all its movement this turn."
 msgstr "piros, ha minden lépését felhasználta már az aktuális körben."
 
-#: data/core/help.cfg:137
+#: data/core/help.cfg:130
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr ""
 "A gömböcske kék, ha az egység a szövetségesedé, amit nem te irányítasz."
 
-#: data/core/help.cfg:138
+#: data/core/help.cfg:131
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Az ellenséges egységek energiacsíkjának tetején nincs gömböcske."
 
-#: data/core/help.cfg:143
+#: data/core/help.cfg:136
 msgid "Hitpoints and Experience"
 msgstr "Életerő- és tapasztalati pontok"
 
-#: data/core/help.cfg:144
+#: data/core/help.cfg:137
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -665,7 +682,7 @@ msgstr ""
 "tapasztalati pontról indul, és az ellenséggel való harc során szerzi a "
 "tapasztalatokat."
 
-#: data/core/help.cfg:148
+#: data/core/help.cfg:141
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -675,7 +692,7 @@ msgstr ""
 "vannak feltüntetve (az aktuális érték, valamint az egység által elérhető "
 "maximális érték)."
 
-#: data/core/help.cfg:149
+#: data/core/help.cfg:142
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -688,11 +705,11 @@ msgstr ""
 "egység megközelíti a <ref>dst=experience_and_advancement text=szintlépés</"
 "ref>t."
 
-#: data/core/help.cfg:154
+#: data/core/help.cfg:147
 msgid "Movement"
 msgstr "Lépés"
 
-#: data/core/help.cfg:155
+#: data/core/help.cfg:148
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -720,7 +737,7 @@ msgstr ""
 "birtokolt faluba lépsz, akkor az adott egység ugyancsak nem léphet tovább "
 "abban a körben, viszont még megtámadhatja a körülötte állókat."
 
-#: data/core/help.cfg:157
+#: data/core/help.cfg:150
 msgid ""
 "\n"
 "\n"
@@ -747,7 +764,7 @@ msgstr ""
 "kiválasztod az Egység leírását, és ott megnézed a <italic>text='Terep-"
 "alakítókat'</italic>."
 
-#: data/core/help.cfg:159
+#: data/core/help.cfg:152
 msgid ""
 "\n"
 "\n"
@@ -768,7 +785,7 @@ msgstr ""
 "<ref>dst=ability_skirmisher text='Portyázók'</ref> hagyhatják figyelmen "
 "kívül."
 
-#: data/core/help.cfg:161
+#: data/core/help.cfg:154
 msgid ""
 "\n"
 "\n"
@@ -783,11 +800,11 @@ msgstr ""
 "az ellenség, ha az egységeid nem lennének a térképen és nem akadályoznák az "
 "előrehaladásukat."
 
-#: data/core/help.cfg:166
+#: data/core/help.cfg:159
 msgid "Shroud and Fog of War"
 msgstr "Eltakarás és köd a csatatéren"
 
-#: data/core/help.cfg:169
+#: data/core/help.cfg:162
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -800,13 +817,14 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units).\n"
 "\n"
-"Normaly you can undo a unit's movement, as long as an event with a "
-"randomized result has not occurred, such as combat or a recuritment. "
-"Exploring hidden terrain by clearing Shroud or Fog will also prevent undos "
-"to a previous state. You may wish to activate 'delay shroud updates' in the "
-"actions menu. This will prevent units from clearing Shroud or Fog until the "
-"next randomized event or a manual update via 'update shroud now' (or the end "
-"of your turn) and thereby perserve your ability to undo movement."
+"Normally you can undo a unit's movement, as long as an event with a "
+"randomized result has not occurred, such as combat or recruitment (as most "
+"units receive random traits when recruited). Exploring hidden terrain by "
+"clearing Shroud or Fog will also prevent undos to a previous state. You may "
+"wish to activate 'delay shroud updates' in the actions menu. This will "
+"prevent units from clearing Shroud or Fog until the next randomized event or "
+"a manual update via 'update shroud now' (or the end of your turn) and "
+"thereby perserve your ability to undo movement."
 msgstr ""
 "Néhány pályán a térkép egyes részei nem leszek felfedve előtted. Ez kétféle "
 "módon történhet meg, amelyek együtt és külön-külön is működhetnek. Az "
@@ -821,11 +839,11 @@ msgstr ""
 "lát rá (figyelmen kívül hagyva a valódi odalépésben akadályt jelentő "
 "ellenséges egységeket és azok ellenőzött területét)."
 
-#: data/core/help.cfg:174
+#: data/core/help.cfg:167
 msgid "Combat"
 msgstr "Küzdelem"
 
-#: data/core/help.cfg:175
+#: data/core/help.cfg:168
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -849,7 +867,7 @@ msgstr ""
 "távolsági harc, ami olyasféle fegyvereket foglal magában, mint az íj, a "
 "lándzsa vagy a tűzgolyók."
 
-#: data/core/help.cfg:177
+#: data/core/help.cfg:170
 msgid ""
 "\n"
 "\n"
@@ -859,7 +877,7 @@ msgstr ""
 "\n"
 "<header>text='A támadások száma és szabályai'</header>"
 
-#: data/core/help.cfg:179
+#: data/core/help.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -879,7 +897,7 @@ msgstr ""
 "akkor 4 alkalommal, egyenként 5-öt, sebezhet, míg egy ork közkatona 9-2-vel "
 "2 alkalommal 9-et."
 
-#: data/core/help.cfg:181
+#: data/core/help.cfg:174
 msgid ""
 "\n"
 "\n"
@@ -889,7 +907,7 @@ msgstr ""
 "\n"
 "<header>text='Sebezhetőség'</header>"
 
-#: data/core/help.cfg:183
+#: data/core/help.cfg:176
 msgid ""
 "\n"
 "\n"
@@ -912,7 +930,7 @@ msgstr ""
 "tündének a támadójára vonatkozó találati esélye attól függ, hogy a támadó "
 "milyen terepen áll."
 
-#: data/core/help.cfg:185
+#: data/core/help.cfg:178
 msgid ""
 "\n"
 "\n"
@@ -930,7 +948,7 @@ msgstr ""
 "lépnek fel, akkor mindig legalább 60% találati esélyük van, függetlenül a "
 "tereptől."
 
-#: data/core/help.cfg:187
+#: data/core/help.cfg:180
 msgid ""
 "\n"
 "\n"
@@ -940,7 +958,7 @@ msgstr ""
 "\n"
 "<header>text=Sebzés</header>"
 
-#: data/core/help.cfg:189
+#: data/core/help.cfg:182
 msgid ""
 "\n"
 "\n"
@@ -962,7 +980,7 @@ msgstr ""
 "a támadás menüjének a <italic>text='Sebzés előszámítások'</italic> részében "
 "tájékozódhatsz."
 
-#: data/core/help.cfg:191
+#: data/core/help.cfg:184
 msgid ""
 "\n"
 "\n"
@@ -978,11 +996,11 @@ msgstr ""
 "<ref>dst=weaponspecial_charge text=Roham</ref>, amely megduplázza a sebzést "
 "mind a támadónál, mind a megtámadottnál,amikor a Rohamra képes egység támad."
 
-#: data/core/help.cfg:196
+#: data/core/help.cfg:189
 msgid "Damage Types and Resistance"
 msgstr "Sebzéstípusok és Ellenállás"
 
-#: data/core/help.cfg:197
+#: data/core/help.cfg:190
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -997,7 +1015,7 @@ msgstr ""
 "egységeknek lehet ellenálló képességük, ami módosítja a sebzést amegfelelő "
 "támadási típusok esetén."
 
-#: data/core/help.cfg:199
+#: data/core/help.cfg:192
 msgid ""
 "\n"
 "\n"
@@ -1015,7 +1033,7 @@ msgstr ""
 "az ellenállása egy támadástípusnál, így ekkor 100%-kal több sebzést fog "
 "elszenvedni egy ilyen típusú találatnál."
 
-#: data/core/help.cfg:201
+#: data/core/help.cfg:194
 #, fuzzy
 msgid ""
 "\n"
@@ -1030,7 +1048,7 @@ msgstr ""
 "sebzésekkel szemben, de sebezhetőek ütés és tűz sebzéstípussal, valamint "
 "rendkívüli módon a szentség támadásokkal."
 
-#: data/core/help.cfg:203
+#: data/core/help.cfg:196
 msgid ""
 "\n"
 "\n"
@@ -1044,11 +1062,11 @@ msgstr ""
 "ha a védekező 100%-os védettséggel rendelkezik az adott sebzéstípussal "
 "szemben."
 
-#: data/core/help.cfg:208
+#: data/core/help.cfg:201
 msgid "Time of Day"
 msgstr "Napszak"
 
-#: data/core/help.cfg:212
+#: data/core/help.cfg:205
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1060,7 +1078,7 @@ msgstr ""
 " A törvénytelen egységek +25% sebzést kapnak éjjel és -25%-ot nappal.\n"
 " A semleges egységekre nem hatnak a különböző napszakok."
 
-#: data/core/help.cfg:215
+#: data/core/help.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -1074,31 +1092,31 @@ msgstr ""
 "A napszakok általános körforgásában a reggel és a délután számít nappalnak, "
 "az éjszaka első és második fele pedig éjszakának:\n"
 
-#: data/core/help.cfg:215 data/core/macros/schedules.cfg:5
+#: data/core/help.cfg:208 data/core/macros/schedules.cfg:5
 msgid "Dawn"
 msgstr "Hajnal"
 
-#: data/core/help.cfg:216 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:209 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Reggel"
 
-#: data/core/help.cfg:217 data/core/macros/schedules.cfg:30
+#: data/core/help.cfg:210 data/core/macros/schedules.cfg:30
 msgid "Afternoon"
 msgstr "Délután"
 
-#: data/core/help.cfg:218 data/core/macros/schedules.cfg:41
+#: data/core/help.cfg:211 data/core/macros/schedules.cfg:41
 msgid "Dusk"
 msgstr "Alkonyat"
 
-#: data/core/help.cfg:219 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:212 data/core/macros/schedules.cfg:55
 msgid "First Watch"
 msgstr "Éjszaka első fele"
 
-#: data/core/help.cfg:220 data/core/macros/schedules.cfg:69
+#: data/core/help.cfg:213 data/core/macros/schedules.cfg:69
 msgid "Second Watch"
 msgstr "Éjszaka második fele"
 
-#: data/core/help.cfg:222
+#: data/core/help.cfg:215
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1106,11 +1124,11 @@ msgstr ""
 "Emlékezz rá, hogy némely pályákon előfordulnak olyan földalatti részek,ahol "
 "örökké éjszaka van!"
 
-#: data/core/help.cfg:227
+#: data/core/help.cfg:220
 msgid "Experience and Advancement"
 msgstr "Tapasztalat és Szintlépés"
 
-#: data/core/help.cfg:228
+#: data/core/help.cfg:221
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1123,7 +1141,7 @@ msgstr ""
 "szintűért, 8-at egy 1.szintűért, 16-ot egy 2. szintűért, 24-et egy 3. "
 "szintűért, és így tovább."
 
-#: data/core/help.cfg:230
+#: data/core/help.cfg:223
 msgid ""
 "\n"
 "\n"
@@ -1140,7 +1158,8 @@ msgstr ""
 "és ÉP-jük újra maximális lesz. Néhány esetben kiválaszthatjuk, mivé "
 "fejlődjön az egység."
 
-#: data/core/help.cfg:234
+#: data/core/help.cfg:227
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1149,8 +1168,8 @@ msgid ""
 "its maximum level, it may have an After Maximum Level Advancement (AMLA) "
 "available to it. The AMLA will modify the unit each time the unit reaches "
 "the experience goal, but the unit will remain the same level. The typical "
-"AMLA effect is for the unit to raise the maximum HP by 3.  The first AMLA "
-"will normally be reached with 100 XP gained (80 XP for intelligent units).  "
+"AMLA effect is for the unit to raise the maximum HP by 3. The first AMLA "
+"will normally be reached with 100 XP gained (80 XP for intelligent units). "
 "However, gaining an AMLA becomes progressively harder for each AMLA the unit "
 "receives, and so it is often more useful to try to advance your lower level "
 "units.\n"
@@ -1177,11 +1196,11 @@ msgstr ""
 "része (például a hullazabálók) gyógyul fel az LSzUSz során. A legtöbb "
 "egységnél csak a maximálisan elérhető ÉP növekszik meg."
 
-#: data/core/help.cfg:239
+#: data/core/help.cfg:232
 msgid "Healing"
 msgstr "Gyógyulás"
 
-#: data/core/help.cfg:240
+#: data/core/help.cfg:233
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1195,7 +1214,7 @@ msgstr ""
 "is. A Wesnoth-ban az egységek megannyi más módon gyógyíthatóak, amire mindig "
 "a körök elején kerül sor, mielőtt lépni kezdenél."
 
-#: data/core/help.cfg:242
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1207,7 +1226,7 @@ msgstr ""
 "Nyugalmi helyzet: Ha egy egység nem mozog és nem harcol (őt se támadják) egy "
 "körben, akkor a következő körben 2 ÉP-t gyógyul."
 
-#: data/core/help.cfg:243
+#: data/core/help.cfg:236
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1216,7 +1235,7 @@ msgstr ""
 "Falvak: Az egységek, amelyek az új kört egy városban kezdik, 8 ÉP-t "
 "gyógyulnak."
 
-#: data/core/help.cfg:244
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1226,7 +1245,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=Regeneráció</ref>: Bizonyos egységek (mint "
 "a trollok), minden körben automatikusan 8 ÉP-t gyógyulnak."
 
-#: data/core/help.cfg:245
+#: data/core/help.cfg:238
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1239,7 +1258,7 @@ msgstr ""
 "baráti egységet gyógyítani fognak 4, illetve 8 ÉP-vel körönként, vagy "
 "megakadályozzák a mérgek sebzését."
 
-#: data/core/help.cfg:246
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1252,7 +1271,7 @@ msgstr ""
 "baráti egységet meg tudnak gyógyítani a mérgezéstől (a gyógyításon felül, ha "
 "ezt a képességet is birtokolják)."
 
-#: data/core/help.cfg:248
+#: data/core/help.cfg:241
 msgid ""
 "\n"
 "\n"
@@ -1267,11 +1286,11 @@ msgstr ""
 "nem kombinálhatóak. Természetesen két pálya között az egységek teljesen "
 "regenerálódnak."
 
-#: data/core/help.cfg:253
+#: data/core/help.cfg:246
 msgid "Income and Upkeep"
 msgstr "Bevétel és Fenntartás"
 
-#: data/core/help.cfg:254
+#: data/core/help.cfg:247
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1283,7 +1302,7 @@ msgstr ""
 "aranyadat tovább viheted a következő pályára. Pénzügyeidet a Bevételek és "
 "Fenntartási költségek alapján kezeled."
 
-#: data/core/help.cfg:256
+#: data/core/help.cfg:249
 msgid ""
 "\n"
 "\n"
@@ -1300,7 +1319,7 @@ msgstr ""
 "esetben. Azonban a Fenntartási költségek csökkentik ezt, amelyről lentebb "
 "olvashatsz."
 
-#: data/core/help.cfg:258
+#: data/core/help.cfg:251
 msgid ""
 "\n"
 "\n"
@@ -1320,7 +1339,7 @@ msgstr ""
 "egy aranyat kell fizetned körönként. Például, ha 12 első szintű egységed van "
 "és tíz falvad, akkor 2 aranyat kell fizetned körönként kiadásként."
 
-#: data/core/help.cfg:260
+#: data/core/help.cfg:253
 msgid ""
 "\n"
 "\n"
@@ -1334,7 +1353,7 @@ msgstr ""
 "megfelelő egység és 10 falu esetén a Bevételeid maradéka 10 arany lesz "
 "körönként."
 
-#: data/core/help.cfg:261
+#: data/core/help.cfg:254
 #, fuzzy
 msgid ""
 "\n"
@@ -1353,11 +1372,11 @@ msgstr ""
 "csatlakoznak hozzád (mint például a Lovas, A Trónörökös hadjárat második "
 "pályáján) mindig megkapják a Hűséges jellemvonást."
 
-#: data/core/help.cfg:266
+#: data/core/help.cfg:259
 msgid "Wrap Up"
 msgstr "Utószó"
 
-#: data/core/help.cfg:267
+#: data/core/help.cfg:260
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1371,11 +1390,11 @@ msgstr ""
 "ref>, de most már mindent tudsz, hogy nekivághass A trónörökös hadjáratnak. "
 "Jó szórakozást, és sok szerencsét!"
 
-#: data/core/help.cfg:278
+#: data/core/help.cfg:271
 msgid "License"
 msgstr "Licenc"
 
-#: data/core/help.cfg:285
+#: data/core/help.cfg:278
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1388,7 +1407,7 @@ msgstr ""
 "tulajdonságain. Az egységek alapvetően véletlenszerűen kapják meg őket "
 "toborozáskor."
 
-#: data/core/help.cfg:287
+#: data/core/help.cfg:280
 msgid ""
 "\n"
 "\n"
@@ -1404,7 +1423,7 @@ msgstr ""
 "text=gyors</ref>, az <ref>dst=traits_resilient text=ellenálló</ref> és az "
 "<ref>dst=traits_strong text=erős</ref>."
 
-#: data/core/help.cfg:289
+#: data/core/help.cfg:282
 msgid ""
 "\n"
 "\n"
@@ -1418,17 +1437,17 @@ msgstr ""
 "<ref>dst=traits_undead text=élőholt</ref>, a <ref>dst=traits_loyal "
 "text=hűséges</ref> és az <ref>dst=traits_dextrous text=ügyeskezű</ref>."
 
-#: data/core/help.cfg:294
+#: data/core/help.cfg:287
 msgid "Intelligent"
 msgstr "Eszes"
 
-#: data/core/help.cfg:295
+#: data/core/help.cfg:288
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Az eszes egységeknek 20%-kal kevesebb tapasztalatra van szükségük a "
 "szintlépéshez."
 
-#: data/core/help.cfg:297
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1447,18 +1466,18 @@ msgstr ""
 "inkább a hasznosabb jellemvonásokkal rendelkező egységeket érdemes "
 "visszahívnod."
 
-#: data/core/help.cfg:302
+#: data/core/help.cfg:295
 msgid "Quick"
 msgstr "Gyors"
 
-#: data/core/help.cfg:303
+#: data/core/help.cfg:296
 #, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "A gyors egységeknek eggyel több a lépési pontjuk, ugyanakkor10%-kal kevesebb "
 "ÉP-jük van a szokásosnál."
 
-#: data/core/help.cfg:305
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -1478,17 +1497,17 @@ msgstr ""
 "gyors egységek nem olyan erősek, mint általában a többi egység, és emiatt "
 "nem olyan jók egy terület megtartására."
 
-#: data/core/help.cfg:310
+#: data/core/help.cfg:303
 msgid "Resilient"
 msgstr "Ellenálló"
 
-#: data/core/help.cfg:311
+#: data/core/help.cfg:304
 #, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Az ellenálló egységeknek a szokásosnál 10%-al és 3 egésszel több ÉP-jük van."
 
-#: data/core/help.cfg:313
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -1506,11 +1525,11 @@ msgstr ""
 "védekezőképessége vagy magas mértékű ellenállásai vannak. Az ilyen egységek "
 "leginkább egy terület megtartásában tudnak jeleskedni."
 
-#: data/core/help.cfg:318
+#: data/core/help.cfg:311
 msgid "Strong"
 msgstr "Erős"
 
-#: data/core/help.cfg:319
+#: data/core/help.cfg:312
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1518,7 +1537,7 @@ msgstr ""
 "Az erős egységek 1-el többet sebeznek minden sikeres támadáskor a "
 "közelharcban, és 1-el több ÉP-jük van."
 
-#: data/core/help.cfg:321
+#: data/core/help.cfg:314
 msgid ""
 "\n"
 "\n"
@@ -1534,19 +1553,19 @@ msgstr ""
 "hasznosak lehetnek, ha az a kevés hozzáadott sebzés éppen elengendő ahhoz, "
 "hogy egy egyszerű sebzésből halálos sebzés váljon."
 
-#: data/core/help.cfg:326
+#: data/core/help.cfg:319
 msgid "Fearless"
 msgstr ""
 
-#: data/core/help.cfg:327
+#: data/core/help.cfg:320
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 
-#: data/core/help.cfg:332
+#: data/core/help.cfg:325
 msgid "Loyal"
 msgstr "Hűséges"
 
-#: data/core/help.cfg:333
+#: data/core/help.cfg:326
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1556,7 +1575,7 @@ msgstr ""
 "szintjével azonos számú arany kifizetését, mint fenntartási költséget von "
 "maga után a körök végén. A hűséges egységek után nem kell ezt kifizetni."
 
-#: data/core/help.cfg:335
+#: data/core/help.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -1577,18 +1596,18 @@ msgstr ""
 "megszerezni, ezért felelőtlen dolog elbocsátani, vagy a biztos halálba "
 "küldeni őket."
 
-#: data/core/help.cfg:340
+#: data/core/help.cfg:333
 msgid "trait^Undead"
 msgstr "Élőholt"
 
-#: data/core/help.cfg:341
+#: data/core/help.cfg:334
 #, fuzzy
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "Az élőholt egységek immunisak a méreggel szemben."
 
-#: data/core/help.cfg:343
+#: data/core/help.cfg:336
 msgid ""
 "\n"
 "\n"
@@ -1604,18 +1623,18 @@ msgstr ""
 "nem hat rájuk. Ez felbecsülhetetlenné teszi őket olyan ellenfelek elleni "
 "küzdelemben, akik mérget is használnak támadásukban."
 
-#: data/core/help.cfg:348
+#: data/core/help.cfg:341
 msgid "trait^Mechanical"
 msgstr ""
 
-#: data/core/help.cfg:349
+#: data/core/help.cfg:342
 #, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "Az élőholt egységek immunisak a méreggel szemben."
 
-#: data/core/help.cfg:351
+#: data/core/help.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -1624,18 +1643,18 @@ msgid ""
 "effect upon them."
 msgstr ""
 
-#: data/core/help.cfg:356
+#: data/core/help.cfg:349
 msgid "Dextrous"
 msgstr "Ügyeskezű"
 
-#: data/core/help.cfg:357
+#: data/core/help.cfg:350
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Az ügyeskezű egységek eggyel többet sebeznek minden sikeres távolsági "
 "támadás során."
 
-#: data/core/help.cfg:359
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -1652,17 +1671,17 @@ msgstr ""
 "felebarátaikén is túltesz. Ezek a tündék eggyel többet sebeznek minden célba "
 "talált nyilvesszővel."
 
-#: data/core/help.cfg:364
+#: data/core/help.cfg:357
 msgid "Healthy"
 msgstr ""
 
-#: data/core/help.cfg:365
+#: data/core/help.cfg:358
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
 
-#: data/core/help.cfg:367
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -1670,11 +1689,11 @@ msgid ""
 "each turn they did not fight."
 msgstr ""
 
-#: data/core/help.cfg:372
+#: data/core/help.cfg:365
 msgid "Grassland"
 msgstr "Mezőség"
 
-#: data/core/help.cfg:377
+#: data/core/help.cfg:370
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1692,11 +1711,11 @@ msgstr ""
 "\n"
 "A mezőségeken a legtöbb egységnek 30 és 40% közti a védekezése."
 
-#: data/core/help.cfg:382
+#: data/core/help.cfg:375
 msgid "Road"
 msgstr "Országút"
 
-#: data/core/help.cfg:385
+#: data/core/help.cfg:378
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1706,11 +1725,11 @@ msgstr ""
 "illeti, az országutak megegyeznek a <ref>dst=terrain_grassland "
 "text=mezőséggel</ref>."
 
-#: data/core/help.cfg:390
+#: data/core/help.cfg:383
 msgid "Forest"
 msgstr "Erdőség"
 
-#: data/core/help.cfg:397
+#: data/core/help.cfg:390
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1742,11 +1761,11 @@ msgstr ""
 "nem több mint 40%. Másrészről a tündék 60-70%-os védekezést élveznek, még "
 "lóháton is. A törpök általában csak 30%-ot kapnak."
 
-#: data/core/help.cfg:402
+#: data/core/help.cfg:395
 msgid "Hills"
 msgstr "Dombság"
 
-#: data/core/help.cfg:407
+#: data/core/help.cfg:400
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1768,11 +1787,11 @@ msgstr ""
 "Az erdőségekben a legtöbb egységnek 50% körüli a védekezése, de a lovas "
 "egységeknek nem több mint 40%. A törpök 60% védekezést kapnak dombságon."
 
-#: data/core/help.cfg:412
+#: data/core/help.cfg:405
 msgid "Mountains"
 msgstr "Hegyvidék"
 
-#: data/core/help.cfg:417
+#: data/core/help.cfg:410
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1794,11 +1813,11 @@ msgstr ""
 "A hegyvidéken a legtöbb egységnek 60% körüli a védekezése, de a törpök 70% "
 "védekezést kapnak."
 
-#: data/core/help.cfg:422
+#: data/core/help.cfg:415
 msgid "Swamp"
 msgstr "Láp"
 
-#: data/core/help.cfg:427
+#: data/core/help.cfg:420
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1818,11 +1837,11 @@ msgstr ""
 "A lápokban a legtöbb egységnek 30% a védekezése. A sellők, a nagák és a "
 "gyíkok általában 60% védekezést kapnak."
 
-#: data/core/help.cfg:432
+#: data/core/help.cfg:425
 msgid "Shallow Water"
 msgstr "Sekélyvíz"
 
-#: data/core/help.cfg:437
+#: data/core/help.cfg:430
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1844,11 +1863,11 @@ msgstr ""
 "A sekély vizekben a legtöbb egységnek 20 és 30% közti a védekezése, de a "
 "nagák és a sellők 60% védekezést kapnak."
 
-#: data/core/help.cfg:442
+#: data/core/help.cfg:435
 msgid "Deep Water"
 msgstr "Mélyvíz"
 
-#: data/core/help.cfg:447
+#: data/core/help.cfg:440
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1864,11 +1883,11 @@ msgstr ""
 "A mélyvizekben a nagáknak és a sellőknek is 50% a védekezése, és teljesen "
 "kihasználhatják lépési pontjaikat."
 
-#: data/core/help.cfg:452
+#: data/core/help.cfg:445
 msgid "Snow"
 msgstr "Hó"
 
-#: data/core/help.cfg:457
+#: data/core/help.cfg:450
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1882,11 +1901,11 @@ msgstr ""
 "\n"
 "A hóban a legtöbb egységnek 20 és 40% közti a védekezése."
 
-#: data/core/help.cfg:462
+#: data/core/help.cfg:455
 msgid "Ice"
 msgstr "Jég"
 
-#: data/core/help.cfg:465
+#: data/core/help.cfg:458
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1897,11 +1916,11 @@ msgstr ""
 "hogy az úszni képes egységek, még ha a víz alatt is élnek, a jég alatt nem "
 "tudnak úszni."
 
-#: data/core/help.cfg:470
+#: data/core/help.cfg:463
 msgid "Castle"
 msgstr "Várkastély"
 
-#: data/core/help.cfg:477
+#: data/core/help.cfg:470
 #, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
@@ -1924,11 +1943,11 @@ msgstr ""
 "\n"
 "A várkastélyokban a legtöbb egységnek 60% körüli a védekezése."
 
-#: data/core/help.cfg:482
+#: data/core/help.cfg:475
 msgid "Sand"
 msgstr "Homok"
 
-#: data/core/help.cfg:487
+#: data/core/help.cfg:480
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1942,11 +1961,11 @@ msgstr ""
 "\n"
 "A homokban a legtöbb egységnek 20 és 40% közti a védekezése."
 
-#: data/core/help.cfg:492
+#: data/core/help.cfg:485
 msgid "Desert"
 msgstr "Sivatag"
 
-#: data/core/help.cfg:495
+#: data/core/help.cfg:488
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1956,11 +1975,11 @@ msgstr ""
 "partoktól, de a játékmenet szempontjából azonosak. Lásd a "
 "<ref>dst=terrain_sand text=Homokot</ref>."
 
-#: data/core/help.cfg:500
+#: data/core/help.cfg:493
 msgid "Cave"
 msgstr "Barlang"
 
-#: data/core/help.cfg:505
+#: data/core/help.cfg:498
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1983,11 +2002,11 @@ msgstr ""
 "A barlangokban a legtöbb egységnek 20 és 40% közti a védekezése, míg a "
 "törpöknek 50%."
 
-#: data/core/help.cfg:510
+#: data/core/help.cfg:503
 msgid "Rockbound Cave"
 msgstr "Sziklafal"
 
-#: data/core/help.cfg:515
+#: data/core/help.cfg:508
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2012,11 +2031,11 @@ msgstr ""
 "lovasság védelme 40%-ra korlátozódik. A törpök 60% védelmet élveznek a "
 "sziklafalakon."
 
-#: data/core/help.cfg:520
+#: data/core/help.cfg:513
 msgid "Illuminated Cave"
 msgstr "Megvilágított barlang"
 
-#: data/core/help.cfg:523
+#: data/core/help.cfg:516
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2031,17 +2050,17 @@ msgstr ""
 "\n"
 "A legtöbb egység 20%-40% védelmet élvez a barlangokban, míg a törpök 50%-ot."
 
-#: data/core/help.cfg:528
+#: data/core/help.cfg:521
 msgid "Mushroom Grove"
 msgstr "Gombamező"
 
-#: data/core/help.cfg:533
+#: data/core/help.cfg:526
 #, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
-"thrive in the damp darkness.  Most units have trouble negotiating the spongy "
+"thrive in the damp darkness. Most units have trouble negotiating the spongy "
 "floor of smaller fungi, but they have plenty of cover behind the larger "
-"stalks.  Mounted units, however, become completely mired and lack proper "
+"stalks. Mounted units, however, become completely mired and lack proper "
 "freedom of movement in combat. Undead units have a natural affinity for "
 "decay and function quite well in mushroom forests.\n"
 "\n"
@@ -2059,11 +2078,11 @@ msgstr ""
 "A legtöbb egység 50%-60% védelmet élvez a gombamezőkön, míg a lovasság csak "
 "20%-ot."
 
-#: data/core/help.cfg:538
+#: data/core/help.cfg:531
 msgid "Savanna"
 msgstr "Szavanna"
 
-#: data/core/help.cfg:541
+#: data/core/help.cfg:534
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -2073,11 +2092,11 @@ msgstr ""
 "közt alakulnak ki. A játékmenet szempontjából megegyeznek a "
 "<ref>dst=terrain_grassland text=Mezőséggel</ref>."
 
-#: data/core/help.cfg:546 src/terrain.cpp:102
+#: data/core/help.cfg:539 src/terrain.cpp:102
 msgid "Village"
 msgstr "Falu"
 
-#: data/core/help.cfg:553
+#: data/core/help.cfg:546
 #, fuzzy
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
@@ -2101,12 +2120,12 @@ msgstr ""
 "A falvakban a legtöbb egységnek 50 és 60% közti a védekezése, míg a lovasok "
 "csak 40%-ot kapnak."
 
-#: data/core/help.cfg:558
+#: data/core/help.cfg:551
 #, fuzzy
 msgid "Submerged Village"
 msgstr "Elfoglalt falu"
 
-#: data/core/help.cfg:563
+#: data/core/help.cfg:556
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2119,11 +2138,11 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#: data/core/help.cfg:568
+#: data/core/help.cfg:561
 msgid "Chasm"
 msgstr "Szakadék"
 
-#: data/core/help.cfg:571
+#: data/core/help.cfg:564
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2135,11 +2154,11 @@ msgstr ""
 "tarthat. Ami a játékmenetet illeti, csak a repülni tudó egységek képesek "
 "átkelni ezen a terepen."
 
-#: data/core/help.cfg:576
+#: data/core/help.cfg:569
 msgid "Lava"
 msgstr "Láva"
 
-#: data/core/help.cfg:579
+#: data/core/help.cfg:572
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2153,11 +2172,11 @@ msgstr ""
 "az eget. Ez a láva terepen tartózkodó igazságos egységeknek előnyt, a "
 "törvényteleneknek hátrányt jelent."
 
-#: data/core/help.cfg:584
+#: data/core/help.cfg:577
 msgid "River Ford"
 msgstr "Gázló"
 
-#: data/core/help.cfg:587
+#: data/core/help.cfg:580
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2173,11 +2192,11 @@ msgstr ""
 "mezőségnek vagy sekélyvíznek tekinthetünk, kiválasztva azt, amelyik a "
 "legjobb védekezési és lépési lehetőségeket kínálja a rajta álló egységnek."
 
-#: data/core/help.cfg:592
+#: data/core/help.cfg:585
 msgid "Bridge"
 msgstr "Híd"
 
-#: data/core/help.cfg:597
+#: data/core/help.cfg:590
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2204,11 +2223,11 @@ msgstr ""
 "figyelembe kell venni, hogy a hidat jelképező hatszöget nem foglalhatja el "
 "egy úszó és egy szárazföldi egység is egyszerre."
 
-#: data/core/help.cfg:602
+#: data/core/help.cfg:595
 msgid "Cave Wall"
 msgstr "Barlangfal"
 
-#: data/core/help.cfg:605
+#: data/core/help.cfg:598
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2216,23 +2235,23 @@ msgstr ""
 "A barlangfal áthatolhatatlan kőből készült és híres arról, hogy képes a "
 "legeltökéltebb utazót is feltartóztatni."
 
-#: data/core/help.cfg:610
+#: data/core/help.cfg:603
 #, fuzzy
 msgid "Impassable Mountain"
 msgstr "Megmászhatatlan hegyvidék"
 
-#: data/core/help.cfg:613
+#: data/core/help.cfg:606
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
-#: data/core/help.cfg:618
+#: data/core/help.cfg:611
 msgid "General commands"
 msgstr "Általános parancsok"
 
-#: data/core/help.cfg:622
+#: data/core/help.cfg:615
 #, fuzzy
 msgid ""
 "\n"
@@ -2242,7 +2261,7 @@ msgstr ""
 "\n"
 "Kilpés a csatatérről (megerősítés kérésének elhagyásával)."
 
-#: data/core/help.cfg:625
+#: data/core/help.cfg:618
 #, fuzzy
 msgid ""
 "\n"
@@ -2252,7 +2271,7 @@ msgstr ""
 "\n"
 "Játék mentése (megerősítés kérésének elhagyásával)."
 
-#: data/core/help.cfg:628
+#: data/core/help.cfg:621
 #, fuzzy
 msgid ""
 "\n"
@@ -2262,7 +2281,7 @@ msgstr ""
 "\n"
 "Játék mentése és kilépés a csatatérről (megerősítés kérésének elhagyásával)."
 
-#: data/core/help.cfg:631
+#: data/core/help.cfg:624
 #, fuzzy
 msgid ""
 "\n"
@@ -2272,7 +2291,7 @@ msgstr ""
 "\n"
 "Képernyő újrarajzolása."
 
-#: data/core/help.cfg:634
+#: data/core/help.cfg:627
 #, fuzzy
 msgid ""
 "\n"
@@ -2284,18 +2303,18 @@ msgstr ""
 "Hibakereső üzemmód bekapcsolása (többjátékos játéknál nem működik). Ebből a "
 "módból való kilépés megtörténik az adott játék befejezésével."
 
-#: data/core/help.cfg:635
+#: data/core/help.cfg:628
 #, fuzzy
 msgid "Bring up theme selection menu."
 msgstr ""
 "\n"
 "A témaválasztó menü feldobása."
 
-#: data/core/help.cfg:640
+#: data/core/help.cfg:633
 msgid "Multiplayer commands"
 msgstr "Többjátékos parancsok"
 
-#: data/core/help.cfg:644
+#: data/core/help.cfg:637
 #, fuzzy
 msgid ""
 "\n"
@@ -2309,7 +2328,7 @@ msgstr ""
 "csapatot irányító játékosnak/kliensnek kell ezt a parancsot kiadnia. Ha "
 "nincsen csapat megadva, akkor az '1'-es számú lesz kiválasztva."
 
-#: data/core/help.cfg:647
+#: data/core/help.cfg:640
 #, fuzzy
 msgid ""
 "\n"
@@ -2319,7 +2338,7 @@ msgstr ""
 "\n"
 "Be- illetve kikapcsolása a megfigyelők elnémításának."
 
-#: data/core/help.cfg:650
+#: data/core/help.cfg:643
 #, fuzzy
 msgid ""
 "\n"
@@ -2331,7 +2350,7 @@ msgstr ""
 "Meghatározott megfigyelő elnémítása. Ha nincsen felhasználónév megadva, "
 "akkor az elnémított nevek meg lesznek jelenítve."
 
-#: data/core/help.cfg:653
+#: data/core/help.cfg:646
 #, fuzzy
 msgid ""
 "\n"
@@ -2345,7 +2364,7 @@ msgstr ""
 "újra csatlakozni a játékhoz. Általában ez egy barátságos módja egy olyan "
 "játékos eltávolításának, akinek a hálózatával vagy mással problémái adódtak."
 
-#: data/core/help.cfg:656
+#: data/core/help.cfg:649
 #, fuzzy
 msgid ""
 "\n"
@@ -2356,7 +2375,7 @@ msgstr ""
 "\n"
 "Egy felhasználó kirúgása és kitiltása (IP-cím alapján) többjátékos játékból."
 
-#: data/core/help.cfg:659
+#: data/core/help.cfg:652
 #, fuzzy
 msgid ""
 "\n"
@@ -2368,7 +2387,7 @@ msgstr ""
 "Egy csapat (szám alapján megadva) irányításának átadása egy felhasználónak "
 "(egy játékos vagy egy megfigyelő neve alapján)."
 
-#: data/core/help.cfg:660
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Clear chat messages."
@@ -3816,38 +3835,43 @@ msgstr ""
 msgid "race^Undead"
 msgstr "Élőholtak"
 
-#: data/core/units.cfg:94 data/hardwired/english.cfg:30
+#: data/core/units.cfg:94
+#, fuzzy
+msgid "race^Bats"
+msgstr "Emberek"
+
+#: data/core/units.cfg:100 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr ""
 
-#: data/core/units.cfg:101 data/hardwired/english.cfg:27
+#: data/core/units.cfg:107 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr ""
 
-#: data/core/units.cfg:108 data/hardwired/english.cfg:29
+#: data/core/units.cfg:114 data/hardwired/english.cfg:29
 msgid "race^Nagas"
 msgstr ""
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:28
+#: data/core/units.cfg:120 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr ""
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:31
+#: data/core/units.cfg:126 data/hardwired/english.cfg:31
 #, fuzzy
 msgid "race^Trolls"
 msgstr "Troll"
 
-#: data/core/units.cfg:132 data/hardwired/english.cfg:23
+#: data/core/units.cfg:138 data/hardwired/english.cfg:23
 #, fuzzy
 msgid "race^Drakes"
 msgstr "Troll"
 
-#: data/core/units.cfg:139
+#: data/core/units.cfg:145
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Élőholtak"
 
-#: data/core/units.cfg:147 data/hardwired/english.cfg:26
+#: data/core/units.cfg:153 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr ""
 
@@ -4492,7 +4516,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2878 src/menu_events.cpp:144
+#: src/about.cpp:186 src/help.cpp:2911 src/menu_events.cpp:144
 #: src/menu_events.cpp:439 src/menu_events.cpp:461
 msgid "Close"
 msgstr "Bezár"
@@ -5176,12 +5200,12 @@ msgstr "Súgó"
 msgid "Units having this special attack:"
 msgstr ""
 
-#: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580
+#: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580 src/help.cpp:1633
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Egyéb"
 
-#: src/help.cpp:1143
+#: src/help.cpp:1143 src/help.cpp:1639
 msgid "Units of this race:"
 msgstr ""
 
@@ -5272,27 +5296,27 @@ msgstr "Védekezés"
 msgid "Movement Cost"
 msgstr "Lépéspont költség"
 
-#: src/help.cpp:2417 src/menu_events.cpp:651
+#: src/help.cpp:2450 src/menu_events.cpp:651
 msgid " < Back"
 msgstr " < Vissza"
 
-#: src/help.cpp:2418
+#: src/help.cpp:2451
 msgid "Forward >"
 msgstr "Előre >"
 
-#: src/help.cpp:2530
+#: src/help.cpp:2563
 msgid "Reference to unknown topic: "
 msgstr "Ismeretlen tárgyra történt hivatkozás: "
 
-#: src/help.cpp:2789
+#: src/help.cpp:2822
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:2881
+#: src/help.cpp:2914
 msgid "The Battle for Wesnoth Help"
 msgstr "Harc Wesnoth-ért Súgó"
 
-#: src/help.cpp:2933
+#: src/help.cpp:2966
 msgid "Parse error when parsing help text: "
 msgstr "Elemzési hiba a súgó szövegének elemzésekor: "
 
@@ -6479,61 +6503,61 @@ msgstr "Állítsuk be őt:"
 msgid " has left the game. What do you want to do?"
 msgstr "kilépett a játékból. Mit tegyünk most?"
 
-#: src/serialization/parser.cpp:99
+#: src/serialization/parser.cpp:102
 msgid "Unexpected characters at line start"
 msgstr "Nem várt karakterek a sor kezdetén"
 
-#: src/serialization/parser.cpp:126
+#: src/serialization/parser.cpp:129
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Hiányzik a befejező tag a $tag tag-hez itt: $pos"
 
-#: src/serialization/parser.cpp:141
+#: src/serialization/parser.cpp:144
 msgid "Unterminated [element] tag"
 msgstr "Befejezetlen [element] tag"
 
-#: src/serialization/parser.cpp:151 src/serialization/parser.cpp:187
+#: src/serialization/parser.cpp:154 src/serialization/parser.cpp:190
 msgid "Invalid tag name"
 msgstr "Érvénytelen nevű tag"
 
-#: src/serialization/parser.cpp:154
+#: src/serialization/parser.cpp:157
 msgid "Unterminated [+element] tag"
 msgstr "Befejezetlen [+element] tag"
 
-#: src/serialization/parser.cpp:170
+#: src/serialization/parser.cpp:173
 msgid "Invalid closing tag name"
 msgstr "Érvénytelen nevű lezáró tag"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated closing tag"
 msgstr "Befejezetlen lezáró tag"
 
-#: src/serialization/parser.cpp:175
+#: src/serialization/parser.cpp:178
 msgid "Unexpected closing tag"
 msgstr "Nem várt lezáró tag"
 
-#: src/serialization/parser.cpp:181
+#: src/serialization/parser.cpp:184
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
 "Érvénytelen lezáró tag-et ($tag2) találtam a $tag tag-hez ($pos helyen "
 "megnyitva)"
 
-#: src/serialization/parser.cpp:206 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:209 src/serialization/parser.cpp:221
 msgid "Empty variable name"
 msgstr "Üres nevű változó"
 
-#: src/serialization/parser.cpp:212
+#: src/serialization/parser.cpp:215
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Nem várt karakterek a változó neve után (, vagy = kéne)"
 
-#: src/serialization/parser.cpp:247 src/serialization/parser.cpp:271
+#: src/serialization/parser.cpp:250 src/serialization/parser.cpp:274
 msgid "Unterminated quoted string"
 msgstr "Befejezetlen meghívott string"
 
-#: src/serialization/parser.cpp:294
+#: src/serialization/parser.cpp:297
 msgid " included from "
 msgstr ", ami innen származik:"
 
-#: src/serialization/parser.cpp:315
+#: src/serialization/parser.cpp:318
 msgid "$error at $pos"
 msgstr "$error $pos helyen"
 
@@ -6697,9 +6721,10 @@ msgid "neutral"
 msgstr "semleges"
 
 #: src/upload_log.cpp:290
+#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
-"beginners and new players.  Wesnoth keeps summaries of your games: you can "
+"beginners and new players. Wesnoth keeps summaries of your games: you can "
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
@@ -6723,6 +6748,10 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
+
+#, fuzzy
+#~ msgid "Races"
+#~ msgstr "buzogány"
 
 #~ msgid "Current Maintainer"
 #~ msgstr "Jelenlegi Karbantartó"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-14 00:23+0200\n"
+"POT-Creation-Date: 2007-09-15 15:37+0200\n"
 "PO-Revision-Date: 2007-02-23 22:37+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -143,6 +143,28 @@ msgid ""
 "this list is very incomplete\n"
 msgstr ""
 
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:3
+msgid "Eyestalk"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:26
+msgid ""
+"Named 'Eyestalks' for obvious reasons, these plant-like creatures can focus "
+"their gaze onto an unsuspecting victim to draw life energy straight out of "
+"them to replenish their own. While almost defenseless against melee attacks, "
+"its deadly gaze from afar is not to be underestimated.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:33
+msgid "smash"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/units/Eyestalk.cfg:85
+msgid "gaze"
+msgstr ""
+
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
 msgid "And special thanks to everyone else who I forgot to mention."
@@ -172,7 +194,7 @@ msgstr "Mapes i balanceig multijugador"
 msgid "Packagers"
 msgstr "Empaquetadors"
 
-#: data/core/about.cfg:551 data/core/help.cfg:272
+#: data/core/about.cfg:551 data/core/help.cfg:265
 msgid "Contributors"
 msgstr "Col·laboradors"
 
@@ -356,31 +378,26 @@ msgid "Units"
 msgstr "Unitats"
 
 #: data/core/help.cfg:40
-#, fuzzy
-msgid "Races"
-msgstr "Raça"
-
-#: data/core/help.cfg:47
 msgid "Abilities"
 msgstr "Habilitats"
 
-#: data/core/help.cfg:55
+#: data/core/help.cfg:48
 msgid "Weapon Specials"
 msgstr "Atacs especials"
 
-#: data/core/help.cfg:62
+#: data/core/help.cfg:55
 msgid "Terrains"
 msgstr "Terrenys"
 
-#: data/core/help.cfg:69
+#: data/core/help.cfg:62
 msgid "Commands"
 msgstr "Ordres"
 
-#: data/core/help.cfg:75 data/core/help.cfg:89 data/core/help.cfg:284
+#: data/core/help.cfg:68 data/core/help.cfg:82 data/core/help.cfg:277
 msgid "Overview"
 msgstr "Descripció"
 
-#: data/core/help.cfg:76
+#: data/core/help.cfg:69
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -390,12 +407,12 @@ msgstr ""
 "unitats, o bé tenen un impacte en com la unitat interactua amb la resta. "
 "Estes habilitats es mostren a continuació."
 
-#: data/core/help.cfg:81
+#: data/core/help.cfg:74
 #, fuzzy
 msgid "Unknown Unit"
 msgstr "Escenari desconegut"
 
-#: data/core/help.cfg:84
+#: data/core/help.cfg:77
 msgid ""
 "\n"
 "\n"
@@ -403,7 +420,7 @@ msgid ""
 "allowed to see its description."
 msgstr ""
 
-#: data/core/help.cfg:92
+#: data/core/help.cfg:85
 msgid ""
 "\n"
 "\n"
@@ -422,11 +439,11 @@ msgstr ""
 "d'estes regles senzilles es presenta un joc ric en estratègia, fàcil "
 "d'aprendre però tot un repte si es vol dominar."
 
-#: data/core/help.cfg:97
+#: data/core/help.cfg:90
 msgid "Fundamentals of Gameplay"
 msgstr "Fonaments del joc"
 
-#: data/core/help.cfg:98
+#: data/core/help.cfg:91
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -440,7 +457,7 @@ msgstr ""
 "nous aspectes. Recordeu que això és només un resum. Per a situacions "
 "especials o excepcions, seguiu els enllaços que s'inclouen."
 
-#: data/core/help.cfg:100
+#: data/core/help.cfg:93
 msgid ""
 "\n"
 "\n"
@@ -461,7 +478,7 @@ msgstr ""
 "desafiant, així que és recomanable començar en nivell <italic>text=Fàcil</"
 "italic>."
 
-#: data/core/help.cfg:103
+#: data/core/help.cfg:96
 msgid ""
 "While playing, keep in mind that if you mouse-over many items in the game, "
 "such as the information displayed in the status pane, a brief description "
@@ -473,11 +490,11 @@ msgstr ""
 "explicativa. Això pot ser especialment útil quan trobeu noves "
 "<ref>dst=abilities text='habilitats'</ref> per primera vegada."
 
-#: data/core/help.cfg:108
+#: data/core/help.cfg:101
 msgid "About the Game"
 msgstr "Quant a Wesnoth"
 
-#: data/core/help.cfg:109
+#: data/core/help.cfg:102
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -494,7 +511,7 @@ msgstr ""
 "podeu jugar amb la resta d'ordinadors que en formin part. I si disposeu de "
 "connexió a internet, podreu jugar amb gent de tot el món."
 
-#: data/core/help.cfg:111
+#: data/core/help.cfg:104
 msgid ""
 "\n"
 "\n"
@@ -513,7 +530,7 @@ msgstr ""
 "del mapa, rescatar algú, solucionar un problema, o simplement sobreviure un "
 "cert nombre de torns."
 
-#: data/core/help.cfg:113
+#: data/core/help.cfg:106
 msgid ""
 "\n"
 "\n"
@@ -529,11 +546,11 @@ msgstr ""
 "recomanable que jugueu amb molta cura, reservant les millors unitats per tal "
 "de reincorporar-les en escenaris posteriors."
 
-#: data/core/help.cfg:118
+#: data/core/help.cfg:111
 msgid "Recruiting and Recalling"
 msgstr "Reclutant i reincorporant"
 
-#: data/core/help.cfg:119
+#: data/core/help.cfg:112
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -556,7 +573,7 @@ msgstr ""
 "veureu les seues estadístiques a l'esquerra. Fent clic sobre el botó "
 "<italic>text='D\\'acord'</italic>, reclutareu la unitat seleccionada."
 
-#: data/core/help.cfg:121
+#: data/core/help.cfg:114
 msgid ""
 "\n"
 "\n"
@@ -574,7 +591,7 @@ msgstr ""
 "unitats com hexàgons disponibles hi hagi, i no podeu gastar més diners dels "
 "que tingueu."
 
-#: data/core/help.cfg:123
+#: data/core/help.cfg:116
 msgid ""
 "\n"
 "\n"
@@ -586,7 +603,7 @@ msgstr ""
 "Les unitats reclutades tenen dos <ref>dst=traits text='trets'</ref> "
 "aleatoris que modifiquen les seues estadístiques."
 
-#: data/core/help.cfg:125
+#: data/core/help.cfg:118
 msgid ""
 "\n"
 "\n"
@@ -601,7 +618,7 @@ msgstr ""
 "el diàleg presenta una llista de totes les unitats que han sobreviscut a "
 "escenaris anteriors."
 
-#: data/core/help.cfg:127
+#: data/core/help.cfg:120
 msgid ""
 "\n"
 "\n"
@@ -616,11 +633,11 @@ msgstr ""
 "<ref>dst=income_and_upkeep text='guanys i manteniment'</ref> per a més "
 "informació."
 
-#: data/core/help.cfg:132
+#: data/core/help.cfg:125
 msgid "Orbs"
 msgstr "Orbes"
 
-#: data/core/help.cfg:133
+#: data/core/help.cfg:126
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -628,31 +645,31 @@ msgstr ""
 "A sobre de la barra d'energia de cada unitat hi ha un orbe. Per a unitats "
 "que estan sota el vostre control, este orbe pot ser:"
 
-#: data/core/help.cfg:134
+#: data/core/help.cfg:127
 msgid "green if it hasn't moved this turn,"
 msgstr "Verd, si encara no s'ha desplaçat."
 
-#: data/core/help.cfg:135
+#: data/core/help.cfg:128
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "Groc, si s'ha mogut però encara pot continuar o atacar."
 
-#: data/core/help.cfg:136
+#: data/core/help.cfg:129
 msgid "red if it has used all its movement this turn."
 msgstr "Vermell, si ja ha esgotat els seus moviments en este torn."
 
-#: data/core/help.cfg:137
+#: data/core/help.cfg:130
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "L'orbe és blau si la unitat és aliada però no la controleu."
 
-#: data/core/help.cfg:138
+#: data/core/help.cfg:131
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Les unitats enemigues no tenen orbe."
 
-#: data/core/help.cfg:143
+#: data/core/help.cfg:136
 msgid "Hitpoints and Experience"
 msgstr "Salut i experiència"
 
-#: data/core/help.cfg:144
+#: data/core/help.cfg:137
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -665,7 +682,7 @@ msgstr ""
 "experiència, però l'anirà adquirint a mesura que lluiti contra els seus "
 "rivals."
 
-#: data/core/help.cfg:148
+#: data/core/help.cfg:141
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -674,7 +691,7 @@ msgstr ""
 "Els punts de vida i experiència s'indiquen a la barra d'estat usant dos "
 "nombres (el valor actual i el valor màxim que pot tenir la unitat)."
 
-#: data/core/help.cfg:149
+#: data/core/help.cfg:142
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -686,11 +703,11 @@ msgstr ""
 "amb al menys un punt d'experiència tindrà una barra de color blau que "
 "s'anirà emblanquint a mesura que s'apropi a l'avanç de nivell."
 
-#: data/core/help.cfg:154
+#: data/core/help.cfg:147
 msgid "Movement"
 msgstr "Moviment"
 
-#: data/core/help.cfg:155
+#: data/core/help.cfg:148
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -720,7 +737,7 @@ msgstr ""
 "moviment en un llogaret que encara no posseïu també esgota el moviment de la "
 "unitat, però encara li és permès d'atacar."
 
-#: data/core/help.cfg:157
+#: data/core/help.cfg:150
 msgid ""
 "\n"
 "\n"
@@ -745,7 +762,7 @@ msgstr ""
 "sobre ella amb el botó dret i seleccionant <italic>text='Descriu unitat'</"
 "italic>."
 
-#: data/core/help.cfg:159
+#: data/core/help.cfg:152
 msgid ""
 "\n"
 "\n"
@@ -765,7 +782,7 @@ msgstr ""
 "les unitats amb l'habilitat d'<ref>dst=ability_skirmisher text='esquivar'</"
 "ref> poden ignorar estes zones."
 
-#: data/core/help.cfg:161
+#: data/core/help.cfg:154
 msgid ""
 "\n"
 "\n"
@@ -779,11 +796,11 @@ msgstr ""
 "o Cmd-v. Ctrl-b o Cmd-b mostra els possibles moviments enemics si les "
 "vostres unitats no estiguessin al mapa."
 
-#: data/core/help.cfg:166
+#: data/core/help.cfg:159
 msgid "Shroud and Fog of War"
 msgstr "Ocultació i boira de guerra"
 
-#: data/core/help.cfg:169
+#: data/core/help.cfg:162
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -796,13 +813,14 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units).\n"
 "\n"
-"Normaly you can undo a unit's movement, as long as an event with a "
-"randomized result has not occurred, such as combat or a recuritment. "
-"Exploring hidden terrain by clearing Shroud or Fog will also prevent undos "
-"to a previous state. You may wish to activate 'delay shroud updates' in the "
-"actions menu. This will prevent units from clearing Shroud or Fog until the "
-"next randomized event or a manual update via 'update shroud now' (or the end "
-"of your turn) and thereby perserve your ability to undo movement."
+"Normally you can undo a unit's movement, as long as an event with a "
+"randomized result has not occurred, such as combat or recruitment (as most "
+"units receive random traits when recruited). Exploring hidden terrain by "
+"clearing Shroud or Fog will also prevent undos to a previous state. You may "
+"wish to activate 'delay shroud updates' in the actions menu. This will "
+"prevent units from clearing Shroud or Fog until the next randomized event or "
+"a manual update via 'update shroud now' (or the end of your turn) and "
+"thereby perserve your ability to undo movement."
 msgstr ""
 "En alguns escenaris hi haurà parts del mapa amagades. Hi ha dos mecanismes "
 "que es poden utilitzar per separat o conjuntament. L'ocultació amaga tan el "
@@ -814,11 +832,11 @@ msgstr ""
 "com la boira de guerra. Cada unitat neteja les localitzacions adjacents al "
 "moviment d'un torn (ignorant les zones de control i les unitats enemigues)."
 
-#: data/core/help.cfg:174
+#: data/core/help.cfg:167
 msgid "Combat"
 msgstr "Combat"
 
-#: data/core/help.cfg:175
+#: data/core/help.cfg:168
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -839,7 +857,7 @@ msgstr ""
 "dos tipus d'atacs: melé, que normalment implica armes com espases, destrals "
 "o ullals; i a distància, amb arcs, llances o boles de foc."
 
-#: data/core/help.cfg:177
+#: data/core/help.cfg:170
 msgid ""
 "\n"
 "\n"
@@ -849,7 +867,7 @@ msgstr ""
 "\n"
 "<header>text='Orde i nombre dels atacs'</header>"
 
-#: data/core/help.cfg:179
+#: data/core/help.cfg:172
 msgid ""
 "\n"
 "\n"
@@ -872,7 +890,7 @@ msgstr ""
 "encertar, causant un certa quantitat de mal, o bé fallar i no causar cap "
 "mena de ferida a l'adversari."
 
-#: data/core/help.cfg:181
+#: data/core/help.cfg:174
 msgid ""
 "\n"
 "\n"
@@ -882,7 +900,7 @@ msgstr ""
 "\n"
 "<header>text='Possibilitat de colpejar'</header>"
 
-#: data/core/help.cfg:183
+#: data/core/help.cfg:176
 msgid ""
 "\n"
 "\n"
@@ -905,7 +923,7 @@ msgstr ""
 "De la mateixa manera, les possibilitats dels elfs de colpejar l'enemic "
 "dependran del terreny en que es trobi l'atacant."
 
-#: data/core/help.cfg:185
+#: data/core/help.cfg:178
 msgid ""
 "\n"
 "\n"
@@ -922,7 +940,7 @@ msgstr ""
 "de colpejar, sigui quin sigui el terreny, mentre que amb l'habilitat de "
 "tirador les possibilitats són del 60% sempre que s'usi ofensivament."
 
-#: data/core/help.cfg:187
+#: data/core/help.cfg:180
 msgid ""
 "\n"
 "\n"
@@ -932,7 +950,7 @@ msgstr ""
 "\n"
 "<header>text=Mal</header>"
 
-#: data/core/help.cfg:189
+#: data/core/help.cfg:182
 msgid ""
 "\n"
 "\n"
@@ -954,7 +972,7 @@ msgstr ""
 "el mal base, seleccioneu <italic>text='Càlcul de mal'</italic> al diàleg "
 "d'atac."
 
-#: data/core/help.cfg:191
+#: data/core/help.cfg:184
 msgid ""
 "\n"
 "\n"
@@ -970,11 +988,11 @@ msgstr ""
 "<ref>dst=ability_charge text='càrrega'</ref>, la qual dobla el mal causat "
 "per l'atacant i pel defensor quan la unitat amb esta habilitat ataca."
 
-#: data/core/help.cfg:196
+#: data/core/help.cfg:189
 msgid "Damage Types and Resistance"
 msgstr "Tipus de mal i resistència"
 
-#: data/core/help.cfg:197
+#: data/core/help.cfg:190
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -988,7 +1006,7 @@ msgstr ""
 "associats a la màgia: foc, fred i sagrat. Cada unitat té resistències a "
 "estos atacs que alteren el mal que poden rebre."
 
-#: data/core/help.cfg:199
+#: data/core/help.cfg:192
 msgid ""
 "\n"
 "\n"
@@ -1006,7 +1024,7 @@ msgstr ""
 "debilitat; si una unitat té -100% de resistència contra un determinat tipus "
 "de mal, patirà un 100% més de mal quan sigui colpejada."
 
-#: data/core/help.cfg:201
+#: data/core/help.cfg:194
 #, fuzzy
 msgid ""
 "\n"
@@ -1021,7 +1039,7 @@ msgstr ""
 "perforant, vulnerables als impactes i al foc, i extremament dèbils contra "
 "els atacs sagrats."
 
-#: data/core/help.cfg:203
+#: data/core/help.cfg:196
 msgid ""
 "\n"
 "\n"
@@ -1034,11 +1052,11 @@ msgstr ""
 "Si un atac arriba a colpejar, sempre farà com a mínim 1 punt de mal. Això "
 "s'aplica fins i tot si el defensor té un 100% de resistència al tipus de mal."
 
-#: data/core/help.cfg:208
+#: data/core/help.cfg:201
 msgid "Time of Day"
 msgstr "Hora del dia"
 
-#: data/core/help.cfg:212
+#: data/core/help.cfg:205
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1050,7 +1068,7 @@ msgstr ""
 " Les unitats caòtiques, +25% de mal durant la nit, i -25% durant el dia.\n"
 " Les unitats neutrals no es veuen afectades per l'hora del dia."
 
-#: data/core/help.cfg:215
+#: data/core/help.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -1064,31 +1082,31 @@ msgstr ""
 "el minimapa. Pel cicle de dia/nit habitual, matí i migdia són com dia, "
 "mentre que matinada equival a nit:\n"
 
-#: data/core/help.cfg:215 data/core/macros/schedules.cfg:5
+#: data/core/help.cfg:208 data/core/macros/schedules.cfg:5
 msgid "Dawn"
 msgstr "Alba"
 
-#: data/core/help.cfg:216 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:209 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "Matí"
 
-#: data/core/help.cfg:217 data/core/macros/schedules.cfg:30
+#: data/core/help.cfg:210 data/core/macros/schedules.cfg:30
 msgid "Afternoon"
 msgstr "Migdia"
 
-#: data/core/help.cfg:218 data/core/macros/schedules.cfg:41
+#: data/core/help.cfg:211 data/core/macros/schedules.cfg:41
 msgid "Dusk"
 msgstr "Vespre"
 
-#: data/core/help.cfg:219 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:212 data/core/macros/schedules.cfg:55
 msgid "First Watch"
 msgstr "Nit"
 
-#: data/core/help.cfg:220 data/core/macros/schedules.cfg:69
+#: data/core/help.cfg:213 data/core/macros/schedules.cfg:69
 msgid "Second Watch"
 msgstr "Matinada"
 
-#: data/core/help.cfg:222
+#: data/core/help.cfg:215
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1096,11 +1114,11 @@ msgstr ""
 "Recordeu que hi ha alguns escenaris que tenen lloc sota terra, on sempre és "
 "de nit."
 
-#: data/core/help.cfg:227
+#: data/core/help.cfg:220
 msgid "Experience and Advancement"
 msgstr "Experiència i avançament"
 
-#: data/core/help.cfg:228
+#: data/core/help.cfg:221
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1113,7 +1131,7 @@ msgstr ""
 "de nivell 0, 8 per unitats de nivell 1, 16 per les de nivell 2, 24 per les "
 "de 3..."
 
-#: data/core/help.cfg:230
+#: data/core/help.cfg:223
 msgid ""
 "\n"
 "\n"
@@ -1130,7 +1148,8 @@ msgstr ""
 "curen al màxim en el procés. En alguns casos, podreu triar entre diferents "
 "opcions per avançar."
 
-#: data/core/help.cfg:234
+#: data/core/help.cfg:227
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1139,8 +1158,8 @@ msgid ""
 "its maximum level, it may have an After Maximum Level Advancement (AMLA) "
 "available to it. The AMLA will modify the unit each time the unit reaches "
 "the experience goal, but the unit will remain the same level. The typical "
-"AMLA effect is for the unit to raise the maximum HP by 3.  The first AMLA "
-"will normally be reached with 100 XP gained (80 XP for intelligent units).  "
+"AMLA effect is for the unit to raise the maximum HP by 3. The first AMLA "
+"will normally be reached with 100 XP gained (80 XP for intelligent units). "
 "However, gaining an AMLA becomes progressively harder for each AMLA the unit "
 "receives, and so it is often more useful to try to advance your lower level "
 "units.\n"
@@ -1168,11 +1187,11 @@ msgstr ""
 "recuperarà realment punts de vida gràcies als efectes d'un AMLA. La major "
 "part d'unitats simplement guanyen la bonificació als punts de vida màxims."
 
-#: data/core/help.cfg:239
+#: data/core/help.cfg:232
 msgid "Healing"
 msgstr "Curació"
 
-#: data/core/help.cfg:240
+#: data/core/help.cfg:233
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1187,7 +1206,7 @@ msgstr ""
 "les unitats, i totes tenen lloc al començament del vostre torn, abans de "
 "passar a l'acció."
 
-#: data/core/help.cfg:242
+#: data/core/help.cfg:235
 msgid ""
 "\n"
 "\n"
@@ -1199,7 +1218,7 @@ msgstr ""
 "Repòs: una unitat que no es mou de la seua posició, i ni ataca ni és "
 "atacada, recuperarà 2 punts de vida al següent torn."
 
-#: data/core/help.cfg:243
+#: data/core/help.cfg:236
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1208,7 +1227,7 @@ msgstr ""
 "Llogarets: una unitat que comença el torn en un llogaret curarà 8 punts de "
 "les seues ferides."
 
-#: data/core/help.cfg:244
+#: data/core/help.cfg:237
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1219,7 +1238,7 @@ msgstr ""
 "esta habilitat (com els trols) recuperen automàticament 8 punts de vida cada "
 "torn."
 
-#: data/core/help.cfg:245
+#: data/core/help.cfg:238
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1232,7 +1251,7 @@ msgstr ""
 "normalment entre 4 i 8 punts de vida per torn. També poden prevenir que el "
 "verí faci mal."
 
-#: data/core/help.cfg:246
+#: data/core/help.cfg:239
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1245,7 +1264,7 @@ msgstr ""
 "amigues adjacents (amb prioritat sobre guarir, si és que també posseeixen "
 "esta habilitat)."
 
-#: data/core/help.cfg:248
+#: data/core/help.cfg:241
 msgid ""
 "\n"
 "\n"
@@ -1261,11 +1280,11 @@ msgstr ""
 "que les unitats recuperen tota la seua vida entre els escenaris d'una "
 "campanya."
 
-#: data/core/help.cfg:253
+#: data/core/help.cfg:246
 msgid "Income and Upkeep"
 msgstr "Guanys i manteniment"
 
-#: data/core/help.cfg:254
+#: data/core/help.cfg:247
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1277,7 +1296,7 @@ msgstr ""
 "monedes d'un escenari al següent. Hi ha dos aspectes a tenir en compte sobre "
 "este tema: els guanys i el manteniment."
 
-#: data/core/help.cfg:256
+#: data/core/help.cfg:249
 msgid ""
 "\n"
 "\n"
@@ -1294,7 +1313,7 @@ msgstr ""
 "Malauradament, els costos de manteniment es resten als guanys, tal i com es "
 "mostra a continuació."
 
-#: data/core/help.cfg:258
+#: data/core/help.cfg:251
 msgid ""
 "\n"
 "\n"
@@ -1314,7 +1333,7 @@ msgstr ""
 "exemple, si teniu dotze unitats de nivell 1, i deu llogarets, tindreu que "
 "pagar dos monedes d'or de manteniment cada torn."
 
-#: data/core/help.cfg:260
+#: data/core/help.cfg:253
 msgid ""
 "\n"
 "\n"
@@ -1328,7 +1347,7 @@ msgstr ""
 "dotze nivells d'unitats i deu llogarets, els guanys finals serien 10 monedes "
 "d'or per torn."
 
-#: data/core/help.cfg:261
+#: data/core/help.cfg:254
 #, fuzzy
 msgid ""
 "\n"
@@ -1346,11 +1365,11 @@ msgstr ""
 "durant el seu transcurs (com els genets del segon nivell de Hereu al Tron), "
 "tindran normalment el tret lleial."
 
-#: data/core/help.cfg:266
+#: data/core/help.cfg:259
 msgid "Wrap Up"
 msgstr "Per concloure"
 
-#: data/core/help.cfg:267
+#: data/core/help.cfg:260
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1364,11 +1383,11 @@ msgstr ""
 "<ref>dst=abilities text='habilitats'</ref>, però ara ja sabeu tot el que "
 "necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
 
-#: data/core/help.cfg:278
+#: data/core/help.cfg:271
 msgid "License"
 msgstr "Llicència"
 
-#: data/core/help.cfg:285
+#: data/core/help.cfg:278
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1380,7 +1399,7 @@ msgstr ""
 "canvien lleugerament els atributs de les unitats. Normalment s'assignen "
 "aleatòriament en el moment de reclutar."
 
-#: data/core/help.cfg:287
+#: data/core/help.cfg:280
 msgid ""
 "\n"
 "\n"
@@ -1396,7 +1415,7 @@ msgstr ""
 "text='ràpid'</ref>, <ref>dst=traits_resilient text='resistent'</ref>, i "
 "<ref>dst=traits_strong text='fort'</ref>."
 
-#: data/core/help.cfg:289
+#: data/core/help.cfg:282
 msgid ""
 "\n"
 "\n"
@@ -1410,17 +1429,17 @@ msgstr ""
 "text='Destre'</ref>, <ref>dst=traits_undead text='Lleial'</ref>, i "
 "<ref>dst=traits_dextrous text=No mort</ref>."
 
-#: data/core/help.cfg:294
+#: data/core/help.cfg:287
 msgid "Intelligent"
 msgstr "Intel·ligent"
 
-#: data/core/help.cfg:295
+#: data/core/help.cfg:288
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Les unitats intel·ligents necessiten un 20% menys d'experiència per pujar de "
 "nivell."
 
-#: data/core/help.cfg:297
+#: data/core/help.cfg:290
 msgid ""
 "\n"
 "\n"
@@ -1439,18 +1458,18 @@ msgstr ""
 "màxim, podeu mirar de reincorporar unitats amb trets més útils a llarg "
 "termini."
 
-#: data/core/help.cfg:302
+#: data/core/help.cfg:295
 msgid "Quick"
 msgstr "Ràpid"
 
-#: data/core/help.cfg:303
+#: data/core/help.cfg:296
 #, fuzzy
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Les unitats ràpides tenen un punt de moviment extra, però un 10% menys de "
 "vida de lo normal."
 
-#: data/core/help.cfg:305
+#: data/core/help.cfg:298
 msgid ""
 "\n"
 "\n"
@@ -1469,17 +1488,17 @@ msgstr ""
 "unitats ràpides són menys resistents, i per tant, no són tan bones per "
 "mantenir posicions."
 
-#: data/core/help.cfg:310
+#: data/core/help.cfg:303
 msgid "Resilient"
 msgstr "Resistent"
 
-#: data/core/help.cfg:311
+#: data/core/help.cfg:304
 #, fuzzy
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Les unitats resistents tenen un 10% +3 punts de vida més del que és habitual."
 
-#: data/core/help.cfg:313
+#: data/core/help.cfg:306
 msgid ""
 "\n"
 "\n"
@@ -1497,11 +1516,11 @@ msgstr ""
 "Les unitats resistents són especialment vàlides per mantenir posicions "
 "davant l'oponent."
 
-#: data/core/help.cfg:318
+#: data/core/help.cfg:311
 msgid "Strong"
 msgstr "Fort"
 
-#: data/core/help.cfg:319
+#: data/core/help.cfg:312
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1509,7 +1528,7 @@ msgstr ""
 "Les unitats fortes fan 1 punt més de mal en combat cos a cos, i tenen 1 "
 "punts més de vida."
 
-#: data/core/help.cfg:321
+#: data/core/help.cfg:314
 msgid ""
 "\n"
 "\n"
@@ -1525,20 +1544,20 @@ msgstr ""
 "el lluitador elf. Les unitats fortes poden ser molt bones quan només un "
 "petit augment del mal és capaç de convertir un cop fort en un cop mortal."
 
-#: data/core/help.cfg:326
+#: data/core/help.cfg:319
 msgid "Fearless"
 msgstr "Intrèpid"
 
-#: data/core/help.cfg:327
+#: data/core/help.cfg:320
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 "L'aversió a la llum o la foscor no té cap influència sobre aquestos valents."
 
-#: data/core/help.cfg:332
+#: data/core/help.cfg:325
 msgid "Loyal"
 msgstr "Lleial"
 
-#: data/core/help.cfg:333
+#: data/core/help.cfg:326
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1548,7 +1567,7 @@ msgstr ""
 "d'unitats, que necessiten un mínim de diners al final de cada torn, no s'ha "
 "de pagar res per estes unitats."
 
-#: data/core/help.cfg:335
+#: data/core/help.cfg:328
 msgid ""
 "\n"
 "\n"
@@ -1569,11 +1588,11 @@ msgstr ""
 "de recursos. Este tret no s'assigna mai a unitats reclutades, així que no "
 "seria gaire encertat acomiadar-les o enviar-les a una mort inútil."
 
-#: data/core/help.cfg:340
+#: data/core/help.cfg:333
 msgid "trait^Undead"
 msgstr "tret^No mort"
 
-#: data/core/help.cfg:341
+#: data/core/help.cfg:334
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1581,7 +1600,7 @@ msgstr ""
 "Les unitats no mortes són immunes al verí, i tampoc els afecten les "
 "habilitats de plaga i drena."
 
-#: data/core/help.cfg:343
+#: data/core/help.cfg:336
 msgid ""
 "\n"
 "\n"
@@ -1597,12 +1616,12 @@ msgstr ""
 "Este fet convertix els no morts en el pitjor enemic d'aquells que usen algun "
 "tipus de verí en els seus atacs."
 
-#: data/core/help.cfg:348
+#: data/core/help.cfg:341
 #, fuzzy
 msgid "trait^Mechanical"
 msgstr "Mecànics"
 
-#: data/core/help.cfg:349
+#: data/core/help.cfg:342
 #, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
@@ -1611,7 +1630,7 @@ msgstr ""
 "Les unitats no mortes són immunes al verí, i tampoc els afecten les "
 "habilitats de plaga i drena."
 
-#: data/core/help.cfg:351
+#: data/core/help.cfg:344
 msgid ""
 "\n"
 "\n"
@@ -1620,18 +1639,18 @@ msgid ""
 "effect upon them."
 msgstr ""
 
-#: data/core/help.cfg:356
+#: data/core/help.cfg:349
 msgid "Dextrous"
 msgstr "Destre"
 
-#: data/core/help.cfg:357
+#: data/core/help.cfg:350
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Les unitats destres fan 1 punt més de mal cada vegada que encerten un atac "
 "des de la distància."
 
-#: data/core/help.cfg:359
+#: data/core/help.cfg:352
 msgid ""
 "\n"
 "\n"
@@ -1647,11 +1666,11 @@ msgstr ""
 "més, estan dotats d'un talent natural que excedix el dels seus germans. "
 "Estos elfs infligeixen un punt addicional de mal amb cada fletxa."
 
-#: data/core/help.cfg:364
+#: data/core/help.cfg:357
 msgid "Healthy"
 msgstr "Sà"
 
-#: data/core/help.cfg:365
+#: data/core/help.cfg:358
 #, fuzzy
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
@@ -1660,7 +1679,7 @@ msgstr ""
 "Encara que tots els nans tenen una afamada vitalitat, alguns nans són més "
 "resistents que altres i es recuperen més ràpid quan descansen."
 
-#: data/core/help.cfg:367
+#: data/core/help.cfg:360
 msgid ""
 "\n"
 "\n"
@@ -1668,11 +1687,11 @@ msgid ""
 "each turn they did not fight."
 msgstr ""
 
-#: data/core/help.cfg:372
+#: data/core/help.cfg:365
 msgid "Grassland"
 msgstr "Prada"
 
-#: data/core/help.cfg:377
+#: data/core/help.cfg:370
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1691,11 +1710,11 @@ msgstr ""
 "\n"
 "La majoria d'unitats tenen una defensa d'entre un 30% i un 40% a les prades."
 
-#: data/core/help.cfg:382
+#: data/core/help.cfg:375
 msgid "Road"
 msgstr "Camí"
 
-#: data/core/help.cfg:385
+#: data/core/help.cfg:378
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1705,11 +1724,11 @@ msgstr ""
 "després de passar-hi repetidament. Pel que fa al joc, els camins són "
 "idèntics a les <ref>dst=terrain_grassland text=prades</ref>."
 
-#: data/core/help.cfg:390
+#: data/core/help.cfg:383
 msgid "Forest"
 msgstr "Bosc"
 
-#: data/core/help.cfg:397
+#: data/core/help.cfg:390
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1744,11 +1763,11 @@ msgstr ""
 "reben en general només un 30% de defensa als boscos.\n"
 "\n"
 
-#: data/core/help.cfg:402
+#: data/core/help.cfg:395
 msgid "Hills"
 msgstr "Colls"
 
-#: data/core/help.cfg:407
+#: data/core/help.cfg:400
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1771,11 +1790,11 @@ msgstr ""
 "mentre que la cavalleria està limitada al 40%. Els nans gaudeixen d'un 60% "
 "de defensa."
 
-#: data/core/help.cfg:412
+#: data/core/help.cfg:405
 msgid "Mountains"
 msgstr "Muntanyes"
 
-#: data/core/help.cfg:417
+#: data/core/help.cfg:410
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1799,11 +1818,11 @@ msgstr ""
 "La majoria d'unitats tenen un 60% de defensa a les muntanyes. Els nans, per "
 "la seua part, obtenen una defensa millorada fins al 70%."
 
-#: data/core/help.cfg:422
+#: data/core/help.cfg:415
 msgid "Swamp"
 msgstr "Pantà"
 
-#: data/core/help.cfg:427
+#: data/core/help.cfg:420
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1823,11 +1842,11 @@ msgstr ""
 "La majoria d'unitats tenen una defensa del 30% als pantans. Sirènids, nagues "
 "i sauris gaudeixen, en general, d'una defensa que volta el 60%."
 
-#: data/core/help.cfg:432
+#: data/core/help.cfg:425
 msgid "Shallow Water"
 msgstr "Aigua baixa"
 
-#: data/core/help.cfg:437
+#: data/core/help.cfg:430
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1849,11 +1868,11 @@ msgstr ""
 "La majoria d'unitats tenen un 20% o un 30% de defensa en aigües baixes. "
 "Sirènids i nagues, en canvi, gaudeixen d'un 60%."
 
-#: data/core/help.cfg:442
+#: data/core/help.cfg:435
 msgid "Deep Water"
 msgstr "Aigua profunda"
 
-#: data/core/help.cfg:447
+#: data/core/help.cfg:440
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1868,11 +1887,11 @@ msgstr ""
 "Sirènids i nagues tenen un 50% de defensa a aigües profundes, amb completa "
 "capacitat de moviment."
 
-#: data/core/help.cfg:452
+#: data/core/help.cfg:445
 msgid "Snow"
 msgstr "Neu"
 
-#: data/core/help.cfg:457
+#: data/core/help.cfg:450
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1886,11 +1905,11 @@ msgstr ""
 "\n"
 "La majoria de les unitats tenen entre un 20% i un 40% de defensa a la tundra."
 
-#: data/core/help.cfg:462
+#: data/core/help.cfg:455
 msgid "Ice"
 msgstr "Gel"
 
-#: data/core/help.cfg:465
+#: data/core/help.cfg:458
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1901,11 +1920,11 @@ msgstr ""
 "nedadores, fins i tot aquelles que poden respirar sota l'aigua, no poden "
 "nedar per sota del gel."
 
-#: data/core/help.cfg:470
+#: data/core/help.cfg:463
 msgid "Castle"
 msgstr "Castell"
 
-#: data/core/help.cfg:477
+#: data/core/help.cfg:470
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1927,11 +1946,11 @@ msgstr ""
 "La majoria d'unitats tenen un 60% de defensa als castells.\n"
 "\n"
 
-#: data/core/help.cfg:482
+#: data/core/help.cfg:475
 msgid "Sand"
 msgstr "Sorra"
 
-#: data/core/help.cfg:487
+#: data/core/help.cfg:480
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1946,11 +1965,11 @@ msgstr ""
 "\n"
 "La majoria d'unitats tenen entre un 20% i un 40% de defensa a la sorra."
 
-#: data/core/help.cfg:492
+#: data/core/help.cfg:485
 msgid "Desert"
 msgstr "Desert"
 
-#: data/core/help.cfg:495
+#: data/core/help.cfg:488
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1960,11 +1979,11 @@ msgstr ""
 "platges, però a efectes pràctics del joc són equivalents. Vegeu "
 "<ref>dst=terrain_sand text=sorra</ref>."
 
-#: data/core/help.cfg:500
+#: data/core/help.cfg:493
 msgid "Cave"
 msgstr "Cova"
 
-#: data/core/help.cfg:505
+#: data/core/help.cfg:498
 #, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
@@ -1987,11 +2006,11 @@ msgstr ""
 "La majoria d'unitats tenen entre un 20% i un 40% de defense a les coves, "
 "mentre que els nans tenen un 50%."
 
-#: data/core/help.cfg:510
+#: data/core/help.cfg:503
 msgid "Rockbound Cave"
 msgstr "Cova rocosa"
 
-#: data/core/help.cfg:515
+#: data/core/help.cfg:508
 #, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
@@ -2017,11 +2036,11 @@ msgstr ""
 "mentre que la cavalleria està limitada al 40%. Els nans disfruten d'un 60% "
 "de defensa a les coves rocoses."
 
-#: data/core/help.cfg:520
+#: data/core/help.cfg:513
 msgid "Illuminated Cave"
 msgstr "Cova il·luminada"
 
-#: data/core/help.cfg:523
+#: data/core/help.cfg:516
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -2035,17 +2054,17 @@ msgstr ""
 "unitats caòtiques. A tots els altres efectes, però, este terreny és "
 "funcionalment idèntic al terreny normal de cova."
 
-#: data/core/help.cfg:528
+#: data/core/help.cfg:521
 msgid "Mushroom Grove"
 msgstr "Boscatge de bolets"
 
-#: data/core/help.cfg:533
+#: data/core/help.cfg:526
 #, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
-"thrive in the damp darkness.  Most units have trouble negotiating the spongy "
+"thrive in the damp darkness. Most units have trouble negotiating the spongy "
 "floor of smaller fungi, but they have plenty of cover behind the larger "
-"stalks.  Mounted units, however, become completely mired and lack proper "
+"stalks. Mounted units, however, become completely mired and lack proper "
 "freedom of movement in combat. Undead units have a natural affinity for "
 "decay and function quite well in mushroom forests.\n"
 "\n"
@@ -2064,11 +2083,11 @@ msgstr ""
 "La majoria d'unitats tenen d'un 50% a un 60% de defensa en els boscatges, "
 "però la cavalleria només té un 20%."
 
-#: data/core/help.cfg:538
+#: data/core/help.cfg:531
 msgid "Savanna"
 msgstr "Sabana"
 
-#: data/core/help.cfg:541
+#: data/core/help.cfg:534
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -2078,11 +2097,11 @@ msgstr ""
 "climes més càlids. A efectes pràctics del joc, la sabana és igual que la "
 "<ref>dst=terrain_grassland text='prada'</ref>."
 
-#: data/core/help.cfg:546 src/terrain.cpp:102
+#: data/core/help.cfg:539 src/terrain.cpp:102
 msgid "Village"
 msgstr "Llogaret"
 
-#: data/core/help.cfg:553
+#: data/core/help.cfg:546
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2107,11 +2126,11 @@ msgstr ""
 "només un 40%.\n"
 "\n"
 
-#: data/core/help.cfg:558
+#: data/core/help.cfg:551
 msgid "Submerged Village"
 msgstr "Llogaret submergit"
 
-#: data/core/help.cfg:563
+#: data/core/help.cfg:556
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2124,11 +2143,11 @@ msgid ""
 "units usually have a low defence."
 msgstr ""
 
-#: data/core/help.cfg:568
+#: data/core/help.cfg:561
 msgid "Chasm"
 msgstr "Abisme"
 
-#: data/core/help.cfg:571
+#: data/core/help.cfg:564
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2140,11 +2159,11 @@ msgstr ""
 "efectes de joc, només les unitats capaces de volar per sobre de les gorges "
 "poden creuar este terreny."
 
-#: data/core/help.cfg:576
+#: data/core/help.cfg:569
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/help.cfg:579
+#: data/core/help.cfg:572
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2159,11 +2178,11 @@ msgstr ""
 "bonificació a l'atac de les unitats legals i els el lleva a les unitats "
 "caòtiques."
 
-#: data/core/help.cfg:584
+#: data/core/help.cfg:577
 msgid "River Ford"
 msgstr "Gual"
 
-#: data/core/help.cfg:587
+#: data/core/help.cfg:580
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2178,11 +2197,11 @@ msgstr ""
 "a prada o bé a aigua baixa, el que millor bonificació de defensa i moviment "
 "ofereixi a la unitat."
 
-#: data/core/help.cfg:592
+#: data/core/help.cfg:585
 msgid "Bridge"
 msgstr "Pont"
 
-#: data/core/help.cfg:597
+#: data/core/help.cfg:590
 #, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
@@ -2208,11 +2227,11 @@ msgstr ""
 "millor bonificació a la defensa i al moviment. Tingueu en compte que una "
 "unitat nedadora i una terrestre no poden ocupar un pont al mateix temps."
 
-#: data/core/help.cfg:602
+#: data/core/help.cfg:595
 msgid "Cave Wall"
 msgstr "Paret de cova"
 
-#: data/core/help.cfg:605
+#: data/core/help.cfg:598
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2220,22 +2239,22 @@ msgstr ""
 "Les parets de les coves estan fetes de roca sólida, anomenada per la seua "
 "capacitat d'impedir el pas fins i tot dels viatgers més determinats."
 
-#: data/core/help.cfg:610
+#: data/core/help.cfg:603
 msgid "Impassable Mountain"
 msgstr "Muntanya impassable"
 
-#: data/core/help.cfg:613
+#: data/core/help.cfg:606
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 
-#: data/core/help.cfg:618
+#: data/core/help.cfg:611
 msgid "General commands"
 msgstr "Ordres generals"
 
-#: data/core/help.cfg:622
+#: data/core/help.cfg:615
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2245,7 +2264,7 @@ msgstr ""
 "Abandona l'escenari (sense confirmació).\n"
 "\n"
 
-#: data/core/help.cfg:625
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2255,7 +2274,7 @@ msgstr ""
 "Alça la partida (sense confirmació).\n"
 "\n"
 
-#: data/core/help.cfg:628
+#: data/core/help.cfg:621
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
@@ -2265,7 +2284,7 @@ msgstr ""
 "Alça la partida i abandona l'escenari (sense confirmació).\n"
 "\n"
 
-#: data/core/help.cfg:631
+#: data/core/help.cfg:624
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2275,7 +2294,7 @@ msgstr ""
 "Torna a dibuixar la pantalla.\n"
 "\n"
 
-#: data/core/help.cfg:634
+#: data/core/help.cfg:627
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2287,15 +2306,15 @@ msgstr ""
 "purificació es desactiva eixint del joc.\n"
 "\n"
 
-#: data/core/help.cfg:635
+#: data/core/help.cfg:628
 msgid "Bring up theme selection menu."
 msgstr "Mostra el menú de selecció d'interfície."
 
-#: data/core/help.cfg:640
+#: data/core/help.cfg:633
 msgid "Multiplayer commands"
 msgstr "Ordres multijugador"
 
-#: data/core/help.cfg:644
+#: data/core/help.cfg:637
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2309,7 +2328,7 @@ msgstr ""
 "s'especifica cap bàndol, s'assumix '1'.\n"
 "\n"
 
-#: data/core/help.cfg:647
+#: data/core/help.cfg:640
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -2319,7 +2338,7 @@ msgstr ""
 "Activa o desactiva el silenci dels observadors.\n"
 "\n"
 
-#: data/core/help.cfg:650
+#: data/core/help.cfg:643
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2331,7 +2350,7 @@ msgstr ""
 "noms del usuaris silenciats.\n"
 "\n"
 
-#: data/core/help.cfg:653
+#: data/core/help.cfg:646
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2340,7 +2359,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:656
+#: data/core/help.cfg:649
 msgid ""
 "\n"
 "Kick and ban a user in multiplayer, and the IP address used by that "
@@ -2348,7 +2367,7 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:659
+#: data/core/help.cfg:652
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2360,7 +2379,7 @@ msgstr ""
 "l'usuari (escriu ací el malnom del jugador o observador).\n"
 "\n"
 
-#: data/core/help.cfg:660
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Clear chat messages."
@@ -4197,37 +4216,42 @@ msgstr "Goblins"
 msgid "race^Undead"
 msgstr "No morts"
 
-#: data/core/units.cfg:94 data/hardwired/english.cfg:30
+#: data/core/units.cfg:94
+#, fuzzy
+msgid "race^Bats"
+msgstr "Nagues"
+
+#: data/core/units.cfg:100 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr "Ogres"
 
-#: data/core/units.cfg:101 data/hardwired/english.cfg:27
+#: data/core/units.cfg:107 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr "Sirènids"
 
-#: data/core/units.cfg:108 data/hardwired/english.cfg:29
+#: data/core/units.cfg:114 data/hardwired/english.cfg:29
 msgid "race^Nagas"
 msgstr "Nagues"
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:28
+#: data/core/units.cfg:120 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr "Monstres"
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:31
+#: data/core/units.cfg:126 data/hardwired/english.cfg:31
 msgid "race^Trolls"
 msgstr "Trols"
 
-#: data/core/units.cfg:132 data/hardwired/english.cfg:23
+#: data/core/units.cfg:138 data/hardwired/english.cfg:23
 #, fuzzy
 msgid "race^Drakes"
 msgstr "Nans"
 
-#: data/core/units.cfg:139
+#: data/core/units.cfg:145
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Nagues"
 
-#: data/core/units.cfg:147 data/hardwired/english.cfg:26
+#: data/core/units.cfg:153 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr "Mecànics"
 
@@ -4862,7 +4886,7 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:186 src/help.cpp:2878 src/menu_events.cpp:144
+#: src/about.cpp:186 src/help.cpp:2911 src/menu_events.cpp:144
 #: src/menu_events.cpp:439 src/menu_events.cpp:461
 msgid "Close"
 msgstr "Tanca"
@@ -5547,12 +5571,12 @@ msgstr "Ajuda"
 msgid "Units having this special attack:"
 msgstr ""
 
-#: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580
+#: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580 src/help.cpp:1633
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Altres"
 
-#: src/help.cpp:1143
+#: src/help.cpp:1143 src/help.cpp:1639
 msgid "Units of this race:"
 msgstr ""
 
@@ -5642,27 +5666,27 @@ msgstr "Defensa"
 msgid "Movement Cost"
 msgstr "Cost del moviment"
 
-#: src/help.cpp:2417 src/menu_events.cpp:651
+#: src/help.cpp:2450 src/menu_events.cpp:651
 msgid " < Back"
 msgstr " < Enrera"
 
-#: src/help.cpp:2418
+#: src/help.cpp:2451
 msgid "Forward >"
 msgstr "Avant >"
 
-#: src/help.cpp:2530
+#: src/help.cpp:2563
 msgid "Reference to unknown topic: "
 msgstr "Referència a un tema desconegut: "
 
-#: src/help.cpp:2789
+#: src/help.cpp:2822
 msgid "corrupted original file"
 msgstr "fitxer original malmès"
 
-#: src/help.cpp:2881
+#: src/help.cpp:2914
 msgid "The Battle for Wesnoth Help"
 msgstr "Ajuda de Batalla per Wesnoth"
 
-#: src/help.cpp:2933
+#: src/help.cpp:2966
 msgid "Parse error when parsing help text: "
 msgstr "S'ha produït un error en analitzar el text d'ajuda: "
 
@@ -6831,61 +6855,61 @@ msgstr "Reemplaça amb "
 msgid " has left the game. What do you want to do?"
 msgstr "ha deixat la partida. Què voleu fer?"
 
-#: src/serialization/parser.cpp:99
+#: src/serialization/parser.cpp:102
 msgid "Unexpected characters at line start"
 msgstr "Caràcters inesperats al principi de línia"
 
-#: src/serialization/parser.cpp:126
+#: src/serialization/parser.cpp:129
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Falta l'etiqueta de tancament per a $tag a $pos"
 
-#: src/serialization/parser.cpp:141
+#: src/serialization/parser.cpp:144
 msgid "Unterminated [element] tag"
 msgstr "Etiqueta [element] no finalitzada"
 
-#: src/serialization/parser.cpp:151 src/serialization/parser.cpp:187
+#: src/serialization/parser.cpp:154 src/serialization/parser.cpp:190
 msgid "Invalid tag name"
 msgstr "Nom d'etiqueta invàlid"
 
-#: src/serialization/parser.cpp:154
+#: src/serialization/parser.cpp:157
 msgid "Unterminated [+element] tag"
 msgstr "Etiqueta [+element] no finalitzada"
 
-#: src/serialization/parser.cpp:170
+#: src/serialization/parser.cpp:173
 msgid "Invalid closing tag name"
 msgstr "Nom d'etiqueta de tancament invàlid"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated closing tag"
 msgstr "Etiqueta de tancament no finalitzada"
 
-#: src/serialization/parser.cpp:175
+#: src/serialization/parser.cpp:178
 msgid "Unexpected closing tag"
 msgstr "Etiqueta de tancament inesperada"
 
-#: src/serialization/parser.cpp:181
+#: src/serialization/parser.cpp:184
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
 "S'ha trobat una etiqueta de tancament $tag2, invàlida per a $tag (posició "
 "$pos)"
 
-#: src/serialization/parser.cpp:206 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:209 src/serialization/parser.cpp:221
 msgid "Empty variable name"
 msgstr "Nom de variable buit"
 
-#: src/serialization/parser.cpp:212
+#: src/serialization/parser.cpp:215
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Caràcters inesperats després del nom de la variable (s'esperava , o =)"
 
-#: src/serialization/parser.cpp:247 src/serialization/parser.cpp:271
+#: src/serialization/parser.cpp:250 src/serialization/parser.cpp:274
 msgid "Unterminated quoted string"
 msgstr "Cadena entre cometes sense finalitzar"
 
-#: src/serialization/parser.cpp:294
+#: src/serialization/parser.cpp:297
 msgid " included from "
 msgstr " inclòs des de "
 
-#: src/serialization/parser.cpp:315
+#: src/serialization/parser.cpp:318
 msgid "$error at $pos"
 msgstr "$error a $pos"
 
@@ -7048,9 +7072,10 @@ msgid "neutral"
 msgstr "neutral"
 
 #: src/upload_log.cpp:290
+#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
-"beginners and new players.  Wesnoth keeps summaries of your games: you can "
+"beginners and new players. Wesnoth keeps summaries of your games: you can "
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
@@ -7074,6 +7099,10 @@ msgstr "Ajuda'ns a millorar Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Permetre la pujada de resums"
+
+#, fuzzy
+#~ msgid "Races"
+#~ msgstr "Raça"
 
 #~ msgid "Current Maintainer"
 #~ msgstr "Mantenidor actual"

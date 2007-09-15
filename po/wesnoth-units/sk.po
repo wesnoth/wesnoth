@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-14 00:25+0200\n"
+"POT-Creation-Date: 2007-09-15 15:11+0200\n"
 "PO-Revision-Date: 2007-01-08 22:45+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -90,10 +90,10 @@ msgstr ""
 #: data/core/units/drakes/Armageddon.cfg:83
 #: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:44
-#: data/core/units/undead/Corpse_Necrophage.cfg:37
+#: data/core/units/undead/Corpse_Necrophage.cfg:27
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:55
 #: data/core/units/undead/Spirit_Shadow.cfg:29
-#: data/core/units/undead/Corpse_Ghoul.cfg:68
+#: data/core/units/undead/Corpse_Ghoul.cfg:58
 msgid "claws"
 msgstr "pazúry"
 
@@ -974,7 +974,7 @@ msgstr ""
 #: data/core/units/humans/Mage_Silver.cfg:37
 #: data/core/units/humans/Mage_Arch.cfg:30
 #: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:26
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:27
 msgid "staff"
 msgstr "palica"
 
@@ -1162,9 +1162,9 @@ msgstr "Elf jazdec"
 #, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
-"which would be suicidal for any human. Awe of the rider is quite justified "
-"-  but questions have also been raised about the stock of the horses, for "
-"the feats they perform seem almost supernatural.\n"
+"which would be suicidal for any human. Awe of the rider is quite justified - "
+"but questions have also been raised about the stock of the horses, for the "
+"feats they perform seem almost supernatural.\n"
 "\n"
 "This combination of incredible mobility and potent combat strength is one of "
 "the greatest assets the elves possess in warfare."
@@ -1340,8 +1340,8 @@ msgstr ""
 #: data/core/units/goblins/Wolf_Rider.cfg:51
 #: data/core/units/goblins/Knight.cfg:35
 #: data/core/units/goblins/Direwolf_Rider.cfg:35
-#: data/core/units/undead/Bat_Blood.cfg:54
-#: data/core/units/undead/Bat_Vampire.cfg:68
+#: data/core/units/undead/Bat_Blood.cfg:65
+#: data/core/units/undead/Bat_Vampire.cfg:79
 msgid "fangs"
 msgstr "tesáky"
 
@@ -2618,7 +2618,7 @@ msgstr "Zbojník"
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:25
 msgid ""
-"Rangers are wild men and masters of forest and hills.  They are excellent "
+"Rangers are wild men and masters of forest and hills. They are excellent "
 "trackers, scouts, and archers, moving freely through the countryside under "
 "the cover of night. Most rulers are afraid of rangers and would rather put "
 "them in the dungeon than put their abilities to use."
@@ -3111,7 +3111,7 @@ msgid ""
 "about the ravages of dragons; noting their great strength, speed, their "
 "preternatural cunning, and above all else, the great fire that burns inside "
 "of them.\n"
-"    \n"
+"\n"
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
@@ -3406,7 +3406,7 @@ msgstr "Ork lukostrelec"
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and and those of slight build, are pragmatic enough to use "
-"them in spite of this.  Orcish archers are seldom well equipped, and have no "
+"them in spite of this. Orcish archers are seldom well equipped, and have no "
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
@@ -3550,11 +3550,11 @@ msgstr "Ork náčelník"
 #: data/core/units/orcs/Sovereign.cfg:21
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
-"over his ilk.  If they are also strong and cunning, they will inevitably "
-"find themselves leading a great horde of warriors, and they will also "
-"inevitably cause a great deal of trouble for the civilized races of the "
-"world. The surest way to disperse such a host is to slay this rare orc who "
-"can hold it together.\n"
+"over his ilk. If they are also strong and cunning, they will inevitably find "
+"themselves leading a great horde of warriors, and they will also inevitably "
+"cause a great deal of trouble for the civilized races of the world. The "
+"surest way to disperse such a host is to slay this rare orc who can hold it "
+"together.\n"
 "\n"
 "Special Notes:"
 msgstr ""
@@ -3888,14 +3888,14 @@ msgstr "Mrchožrút"
 #: data/core/units/undead/Corpse_Necrophage.cfg:22
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
-"which bears only a crude resemblance to a man.  They appear to be quite "
+"which bears only a crude resemblance to a man. They appear to be quite "
 "rotten in spite of their ability to move; they are rife with disease and "
 "poisons of the blood, and have a stench to match. Likely the most unhinging "
 "fact about them, for fact it appears to be, is that they were somehow made "
 "from living men - a process about which almost nothing is known, but which "
 "can be nothing but nightmarish.\n"
 "\n"
-"Special Notes:  When this creature gains enough experience in combat, it "
+"Special Notes: When this creature gains enough experience in combat, it "
 "renews itself as if freshly summoned, healing all damage sustained."
 msgstr ""
 
@@ -3963,7 +3963,15 @@ msgstr ""
 msgid "chill tempest"
 msgstr "studený víchor"
 
-#: data/core/units/undead/Necro_Dark_Adept.cfg:5
+#: data/core/units/undead/Necro_Dark_Adept.cfg:44
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:61
+#: data/core/units/undead/Necro_Lich.cfg:60
+#: data/core/units/undead/Necromancer.cfg:51
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
+msgid "shadow wave"
+msgstr "ťieňová vlna"
+
+#: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
 msgstr "Temný učeň"
 
@@ -3995,10 +4003,12 @@ msgstr ""
 "Poznámka:"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:32
-msgid "shadow wave"
-msgstr "ťieňová vlna"
+#: data/core/units/undead/Necromancer.cfg:39
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:36
+msgid "chill wave"
+msgstr "vlna mrazu"
 
-#: data/core/units/undead/Necro_Dark_Adept.cfg:189
+#: data/core/units/undead/Necro_Dark_Adept.cfg:201
 msgid "female^Dark Adept"
 msgstr "Temná učnica"
 
@@ -4006,11 +4016,11 @@ msgstr "Temná učnica"
 msgid "Dark Sorcerer"
 msgstr "Temný čarodejník"
 
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:21
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:22
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorcerers have begun to unlock the secrets "
-"of life and death, the latter of which is all too easy to inflict.  This "
+"of life and death, the latter of which is all too easy to inflict. This "
 "labor gives the first glimmerings of the connection between the soul and "
 "inert matter, and the first successful experiments in manipulating this "
 "bond. The terrible unknown that lurks beyond death is glimpsed, and will "
@@ -4018,21 +4028,16 @@ msgid ""
 "\n"
 "Despite any design they may have of using this to wrest their own "
 "immortality from nature's grasp, the first results of their work have "
-"immediate, and unpleasant applications.  The life they breathe into dead "
+"immediate, and unpleasant applications. The life they breathe into dead "
 "matter can create servants for them, servants which will work, but which "
-"will also kill, and will never question their masters.  These creations have "
+"will also kill, and will never question their masters. These creations have "
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power.\n"
 "\n"
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/undead/Necromancer.cfg:39
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:35
-msgid "chill wave"
-msgstr "vlna mrazu"
-
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:166
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:179
 #, fuzzy
 msgid "Dark Sorceress"
 msgstr "Temný čarodejník"
@@ -4215,7 +4220,7 @@ msgstr "Kostlivý hrdina"
 #: data/core/units/undead/Skele_Draug.cfg:20
 #, fuzzy
 msgid ""
-"There is little left, in these towering ruins, of the men they once were.  "
+"There is little left, in these towering ruins, of the men they once were. "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
 "through the battles of their memory and fighting desperately for release, "
 "for a peace bought only by strength of arms. And so they struggle; both "
