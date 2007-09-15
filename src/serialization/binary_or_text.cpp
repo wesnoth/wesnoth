@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file serialization/binary_or_text.cpp 
+//! Read/Write file in binary (compressed) or text-format (uncompressed).
+
 #include "global.hpp"
 
 #include "binary_or_text.hpp"
@@ -79,3 +82,4 @@ bool config_writer::good() const
 {
 	return out_.good();
 }
+

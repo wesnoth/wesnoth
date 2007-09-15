@@ -12,6 +12,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file serialization/binary_or_text.hpp 
+//!
+
 #ifndef SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
 #define SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
 
@@ -20,15 +24,16 @@
 
 class config;
 
-//function which reads a file, and automatically detects whether it's compressed or not before
-//reading it. If it's not a valid file at all, it will throw an error as if it was trying to
-//read it as text WML. Returns true iff the format is compressed
-bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log=NULL); //throws config::error
+//! Reads a file, and detects it is compressed before reading it. 
+//! If it is not a valid file at all, it will throw an error 
+//! as if it was trying to read it as text WML. 
+//! Returns true iff the format is compressed.
+bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log=NULL); // Throws config::error
 
-//function which writes a file, compressed or not depending on a flag
+//! Writes a file, compressed or not depending on a flag.
 void write_possibly_compressed(std::ostream &out, config &cfg, bool compress);
 
-// Class for writing a config out to a file in pieces.
+//! Class for writing a config out to a file in pieces.
 class config_writer
 {
 public:
