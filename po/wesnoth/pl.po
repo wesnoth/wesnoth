@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-15 16:12+0200\n"
-"PO-Revision-Date: 2007-09-14 13:28+0100\n"
+"PO-Revision-Date: 2007-09-15 16:29+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -776,7 +776,6 @@ msgid "Shroud and Fog of War"
 msgstr "Całun i Mgła wojny"
 
 #: data/core/help.cfg:162
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -797,15 +796,17 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"Podczas rozgrywania niektórych scenariuszy części mapy będą przed tobą "
+"Podczas rozgrywania niektórych scenariuszy części mapy będą przed Tobą "
 "ukryte. Istnieją dwa mechanizmy, które mogą być użyte niezależnie od siebie. "
 "W miejscu zakrytym Całunem zarówno jednostki, jak i teren, stają się "
 "niewidoczne. Jednak gdy zostanie on odkryty, zawsze będziesz już widzieć "
 "wszystko, co się tam dzieje. Mgła wojny ukrywa przed tobą wyłącznie "
-"jednostki oraz posiadaczy wiosek (innych niż twoi sojusznicy). Zarówno "
-"Całun, jak i Mgła wojny są usuwane przez jednostki. Każda jednostka odkrywa "
-"miejsca przyległe do pól, które znajdują się w zasięgu jednego jej ruchu "
-"(strefy kontroli i jednostki przeciwnika nie są uwzględniane).\n"
+"jednostki oraz posiadaczy wiosek (innych niż Ty i Twoi sojusznicy). Mgła "
+"wojny jest tymczasowo odkrywana przez Twoje jednostki, ale powraca po ich "
+"odejściu. Zarówno Całun, jak i Mgła wojny są usuwane przez jednostki. Każda "
+"jednostka odkrywa miejsca przyległe do pól, które znajdują się w zasięgu "
+"jednego jej ruchu (strefy kontroli i jednostki przeciwnika nie są "
+"uwzględniane).\n"
 "\n"
 "Na ogół możliwe jest cofnięcie ruchu jednostki, pod warunkiem, że nie miało "
 "miejsca zdarzenie z elementem losowym, na przykład walka lub rekrutacja. "
@@ -1133,7 +1134,6 @@ msgstr ""
 "awansu."
 
 #: data/core/help.cfg:227
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2036,7 +2036,6 @@ msgid "Mushroom Grove"
 msgstr "Grzybowy gaj"
 
 #: data/core/help.cfg:526
-#, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -4196,9 +4195,8 @@ msgid "race^Undead"
 msgstr "Nieumarli"
 
 #: data/core/units.cfg:94
-#, fuzzy
 msgid "race^Bats"
-msgstr "Nagi"
+msgstr "Nietoperze"
 
 #: data/core/units.cfg:100 data/hardwired/english.cfg:30
 msgid "race^Ogres"
@@ -7004,7 +7002,6 @@ msgid "neutral"
 msgstr "neutralny"
 
 #: src/upload_log.cpp:290
-#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
