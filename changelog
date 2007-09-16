@@ -71,12 +71,19 @@
      * increased the arcane resistance of the Ghoul line from -40% to 20%
      * increased the arcane resistance of the Ghost line from -30 to -10%
  * user interface:
-   * In help, for each ability and special weapon topic, display a list of
-     hyperlinks to encountered units having this ability/special (bug #9567)
    * OK in the status menu replaced with more informative "Scroll To".
-   * in help, the unit list is now organized by race sub-sections.
    * add an "Animate Map" option in advanced preferences, to switch flag and
      terrain animation off
+ * help system:
+   * the unit list is now organized by race sub-sections.
+   * each ability, special weapon and race description page, display a list of
+     hyperlinks to the related units (bug #9567)
+   * unit pages have now a field "race" with a link to related race page.
+   * hide the "Unknown Unit" page from the left-panel
+   * topic with an id starting with a "." are not shown in the left-panel
+   * the encountered units list is now correctly updated when using ":debug"
+     and ":nodebug" commands
+   * fix some incorrect "open section" UI sound when cliking on links
  * WML engine:
    * new event "turn refresh" occurs after healing, calculating income, and
      restoring movement
@@ -93,12 +100,12 @@
    * the WML for attack animations has been moved from the [attack] block to
      the [unit] block
    * new effect apply_to=new_animation to add animations to unit
-   * the [race] tag now has an "id" key for WML operations. The old "name" is
-     now used for user display purposes (currently only in help sections).
+   * the [race] tag has now an "id" key for WML operations. The old "name" is
+     now used for user display purposes (currently only in help sections). If
+     id is missing, name will be used. There is also a new "description" key
+     displayed in the race help page (but currently not used by mainline races)
  * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
-   * in help, the encountered units list is now correctly updated when using
-     ":debug" and ":nodebug" commands
    * remove some useless messages from the standard output
    * user-made campaign translations now work again for Windows (bug #9926)
    * faster inital loading of the help.
