@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-09-14 00:34+0200\n"
-"PO-Revision-Date: 2007-05-22 22:41+0200\n"
+"PO-Revision-Date: 2007-09-16 14:20+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -938,7 +938,6 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:97
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -947,8 +946,8 @@ msgid ""
 msgstr ""
 "Noms/surnoms non acceptés par le serveur. Les caractères génériques `*' et "
 "`?' sont acceptés. Voir B<glob>(7) pour plus d'informations. Les valeurs par "
-"défaut (utilisées si rien n'est précisé) sont : `server,ai,player,network,"
-"human,admin,computer'"
+"défaut (utilisées si rien n'est précisé) sont : « *admin*,*admln*,*server*,ai,"
+"ai?,computer,human,network,player »."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:97
