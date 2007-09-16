@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-15 16:12+0200\n"
-"PO-Revision-Date: 2007-09-09 12:36+0900\n"
+"PO-Revision-Date: 2007-09-16 00:51+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -319,9 +319,8 @@ msgid "Turkish Translation"
 msgstr "トルコ語翻訳"
 
 #: data/core/about.cfg:1551
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
-msgstr "バレンシア語翻訳"
+msgstr "バレンシア語（カタロニア南部）翻訳"
 
 #: data/core/about.cfg:1561
 msgid "Bots"
@@ -761,7 +760,6 @@ msgid "Shroud and Fog of War"
 msgstr "幕と戦雲（霧）"
 
 #: data/core/help.cfg:162
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -792,12 +790,13 @@ msgstr ""
 "配ゾーンや敵ユニットは無視して）。\n"
 "\n"
 "通常はユニットの移動を取り消すことができます。ランダムな結果が起こる、戦闘や"
-"雇用といったイベント以外は。幕や霧を取り除いて隠されていた地形を探検すること"
-"も元の状態に取り消すことができません。アクションメニューの「幕の更新を遅らせ"
-"る」を有効にしたいと思うかもしれません。この機能は次のランダムな結果が起こる"
-"イベントか、「幕を更新する」をクリックして手動で更新する（あるいはターンを終"
-"了する）までの間、ユニットを動かしても幕や霧を取り除きません。これによって移"
-"動の取り消しを行うことができます。"
+"雇用（ほとんどのユニットは雇用されるときにランダムな特性を得るため）といった"
+"イベント以外は。幕や霧を取り除いて隠されていた地形を探検することも元の状態に"
+"取り消すことができません。アクションメニューの「幕の更新を遅らせる」を有効に"
+"したいと思うかもしれません。この機能は次のランダムな結果が起こるイベントか、"
+"「幕を更新する」をクリックして手動で更新する（あるいはターンを終了する）まで"
+"の間、ユニットを動かしても幕や霧を取り除きません。これによって移動の取り消し"
+"を行うことができます。"
 
 #: data/core/help.cfg:167
 msgid "Combat"
@@ -1102,7 +1101,6 @@ msgstr ""
 "チェンジ先の選択を行います。"
 
 #: data/core/help.cfg:227
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1654,7 +1652,6 @@ msgid "Forest"
 msgstr "森"
 
 #: data/core/help.cfg:390
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1679,9 +1676,10 @@ msgstr ""
 "らしい防御特典も得られるのです。ドワーフはこの規則へのもう一つの例外で、この"
 "地形に全く慣れていない彼等は防御特典を全く受けることができません。\n"
 "\n"
-"多くのユニットは森で50%の防御ですが、騎兵は40%に制限されます。一方でエルフは"
+"多くのユニットは森で50%の防御ですが、騎兵は30%に制限されます。一方でエルフは"
 "乗馬中であっても60から70%の防御を享受します。ドワーフは一般的に森では30%の防"
-"御しか得られません。"
+"御しか得られません。\n"
+"\n"
 
 #: data/core/help.cfg:395
 msgid "Hills"
@@ -1834,7 +1832,6 @@ msgid "Castle"
 msgstr "城"
 
 #: data/core/help.cfg:470
-#, fuzzy
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1846,11 +1843,11 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"城はあらゆる種類の永久的な要塞です。城に駐留することで、ほとんど全てのユニッ"
-"トは防御について素晴らしい特典を受け、城では完全に移動できます。城に駐留する"
-"ユニットは完全な防御能力を示します。それぞれの壁のヘクスにユニットがいなけれ"
-"ば、敵は簡単に城の中に忍び込むことがでい、中にいる全てのものと同様の防御特典"
-"を得ることになります。\n"
+"城はあらゆる種類の永久的な要塞です。城に駐留することで、ほとんどすべてのユ"
+"ニットは防御について素晴らしい特典を受けます。またすべてのユニットは城では完"
+"全に移動できます。城に駐留するユニットは完全な防御能力を示します。それぞれの"
+"壁のヘクスにユニットがいなければ、敵は簡単に城の中に忍び込むことができ、中に"
+"いる全てのものと同様の防御特典を得ることになります。\n"
 "\n"
 "ほとんどのユニットは城で60%の防御になります。\n"
 "\n"
@@ -1891,7 +1888,6 @@ msgid "Cave"
 msgstr "洞窟"
 
 #: data/core/help.cfg:498
-#, fuzzy
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1903,21 +1899,21 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
-"洞窟の地形はユニットが通り抜けられるだけの十分な空間のある地下の空洞を表しま"
-"す。ほとんどのユニットはこの地形に慣れておらず、それゆえ歩みが遅く防御を妨げ"
-"ます。住まいを洞窟に作るドワーフとトロールは、共にこの地形では比較的容易に行"
-"動し、特にドワーフその小さな身体で他の種族では通れないような多くの障害物も乗"
-"り越えられます。時には、洞窟は <ref>dst=terrain_illuminated_cave text=照らさ"
-"れている</ref> ことがあります。\n"
+"洞窟の地形はユニットが通り抜けられるだけの十分な空間のある地下の空洞を表して"
+"います。ほとんどのユニットはこの地形に十分慣れておらず、それゆえ歩みが遅く防"
+"御を妨げられます。住まいを洞窟に作るドワーフ族とトロールは、共にこの地形では"
+"比較的容易に行動し、特にドワーフ族はその小さな身体で他の種族では通れないよう"
+"な多くの障害物も乗り越えられます。時には、洞窟は "
+"<ref>dst=terrain_illuminated_cave text=照らされている</ref> ことがありま"
+"す。\n"
 "\n"
-"多くのユニットは洞窟で20から40%の防御となり、ドワーフは50%です。"
+"多くのユニットは洞窟で20から40%の防御となり、ドワーフ族は50%です。"
 
 #: data/core/help.cfg:503
 msgid "Rockbound Cave"
 msgstr "岩に囲まれた洞窟"
 
 #: data/core/help.cfg:508
-#, fuzzy
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -1945,7 +1941,6 @@ msgid "Illuminated Cave"
 msgstr "照らされた洞窟"
 
 #: data/core/help.cfg:516
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -1961,7 +1956,6 @@ msgid "Mushroom Grove"
 msgstr "キノコの森"
 
 #: data/core/help.cfg:526
-#, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -1973,12 +1967,12 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"キノコの森は地下にある広大な巨大キノコの森です。巨大キノコは湿気のある暗闇で"
-"よく育ちます。ほとんどのユニットは小さな菌類でできたスポンジのような床をうま"
-"く通り抜けることができませんが、大きな茎の背後にはたくさんの避難場所がありま"
-"す。しかしながら、騎乗したユニットは、完全につかまってしまい、戦闘において自"
-"由に動くことができません。アンデッドユニットは腐食という共通点があるため、キ"
-"ノコの森ではとてもよく機能します。\n"
+"キノコの森は地下にある広大な巨大キノコでできた森です。巨大キノコは湿気のある"
+"暗闇でよく育ちます。ほとんどのユニットは小さな菌類でできたスポンジのような床"
+"をうまく通り抜けることができませんが、大きな茎の背後にはたくさんの避難場所が"
+"あります。しかしながら、騎乗したユニットは、完全につかまってしまい、戦闘にお"
+"いて自由に動くことができません。アンデッドユニットは腐食という共通点があるた"
+"め、キノコの森ではとてもよく機能します。\n"
 "\n"
 "ほとんどのユニットはキノコの森において 50% から 60% の防御を得ます。一方、騎"
 "兵は 20% しか得ることができません。"
@@ -2104,7 +2098,6 @@ msgid "Bridge"
 msgstr "橋"
 
 #: data/core/help.cfg:590
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2118,14 +2111,15 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"これを築ける者について、橋を渡すという能力は、上り下りの流れをともなう不安定"
+"これを築ける者にとって、橋を渡すという能力は、上り下りの流れをともなう不安定"
 "な自然の川の流れから解放してくれます。足が濡れずにすむ贅沢は言うまでもなく、1"
 "年のうちの凍える何ヶ月もの間にはとても笑えない苦労をなくしてくれるのです。\n"
 "\n"
-"地面や海を越えるものにとって、橋はどちらの世界でも最良のものであり、ゲームプ"
-"レイ目的では草原か浅瀬のように扱われ、橋ヘクスを占拠するユニットにとって最も"
-"防御と移動力ボーナスの大きい方が選択されます。泳ぐユニットと歩行型ユニットは"
-"同時に橋ヘクスを占拠することができないことに注意して下さい。"
+"陸や海を移動する者にとって、橋はどちらの世界でも最良のものであり、ゲームプレ"
+"イにおける意味としては草原と浅瀬のいずれかとして扱われ、橋ヘクスを占拠するユ"
+"ニットにとって最も防御と移動力ボーナスの大きい方が選択されます。泳ぐユニット"
+"と歩行型ユニットは同時に橋ヘクスを占拠することができないことに注意して下さ"
+"い。"
 
 #: data/core/help.cfg:595
 msgid "Cave Wall"
@@ -2145,7 +2139,6 @@ msgstr "通れない山"
 
 # rarify = 薄いなので、rarified = 空気の薄いと訳しましたが……
 #: data/core/help.cfg:606
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
@@ -4095,9 +4088,8 @@ msgid "race^Undead"
 msgstr "アンデッド"
 
 #: data/core/units.cfg:94
-#, fuzzy
 msgid "race^Bats"
-msgstr "ナーガ"
+msgstr "コウモリ"
 
 #: data/core/units.cfg:100 data/hardwired/english.cfg:30
 msgid "race^Ogres"
@@ -4371,7 +4363,6 @@ msgstr ""
 "村に駐留したユニットは、 そのターンの開始時に、 8ヒットポイント回復する。"
 
 #: data/hardwired/tips.cfg:11
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -4584,7 +4575,6 @@ msgstr ""
 "ある。マウスポインタをその上に置けば、説明や詳細を見ることができる。"
 
 #: data/hardwired/tips.cfg:37
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -5056,16 +5046,15 @@ msgstr "削除するアドオンを選択して下さい。"
 
 #: src/game.cpp:972
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "本当にアドオン '$addon|' を削除してもよろしいですか？"
 
 #: src/game.cpp:976
 msgid "Confirm"
 msgstr "確認"
 
 #: src/game.cpp:999
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "アドオンは削除されました"
+msgstr "アドオン '$addon|' は削除されました"
 
 #: src/game.cpp:1004
 msgid "Add-on deleted"
@@ -5176,9 +5165,8 @@ msgid "Connection timed out"
 msgstr "接続時間切れ"
 
 #: src/game.cpp:1277
-#, fuzzy
 msgid "The server responded with an error: \"$error|\""
-msgstr "サーバーがエラーを返しました: \""
+msgstr "サーバーがエラーを返しました: \"$error|\""
 
 #: src/game.cpp:1284
 msgid "Terms"
@@ -5415,9 +5403,8 @@ msgid "race^Miscellaneous"
 msgstr "その他"
 
 #: src/help.cpp:1143 src/help.cpp:1639
-#, fuzzy
 msgid "Units of this race:"
-msgstr "この能力を持っているユニット:"
+msgstr "この能力を種族のユニット:"
 
 #: src/help.cpp:1209
 msgid "Units having this ability:"
@@ -5432,9 +5419,8 @@ msgid "Advances to: "
 msgstr "クラスチェンジ先: "
 
 #: src/help.cpp:1336
-#, fuzzy
 msgid "Race: "
-msgstr "種族"
+msgstr "種族: "
 
 #: src/help.cpp:1343
 msgid "Abilities: "
@@ -5629,7 +5615,6 @@ msgid "Statistics"
 msgstr "統計情報"
 
 #: src/menu_events.cpp:321
-#, fuzzy
 msgid "Level^Lv."
 msgstr "レベル"
 
@@ -5642,7 +5627,6 @@ msgid "Moves"
 msgstr "移動"
 
 #: src/menu_events.cpp:326
-#, fuzzy
 msgid "Location^Loc."
 msgstr "位置"
 
@@ -6283,9 +6267,8 @@ msgid "Settings..."
 msgstr "設定..."
 
 #: src/multiplayer_create.cpp:93
-#, fuzzy
 msgid "Load Game..."
-msgstr "ロード"
+msgstr "ゲームのロード..."
 
 #: src/multiplayer_create.cpp:125
 msgid "The maximum number of turns the game can last"
@@ -6428,9 +6411,8 @@ msgid "Unknown scenario"
 msgstr "不明のシナリオ"
 
 #: src/multiplayer_lobby.cpp:447
-#, fuzzy
 msgid "Turn "
-msgstr "ターン"
+msgstr "ターン "
 
 #: src/multiplayer_lobby.cpp:451
 msgid "Vacant Slot:"
@@ -6566,9 +6548,8 @@ msgid "Do you want to save your game?"
 msgstr "このゲームを本当に保存しますか？"
 
 #: src/playcampaign.cpp:549
-#, fuzzy
 msgid "Unknown scenario: '$scenario|'"
-msgstr "不明のシナリオ: '"
+msgstr "不明のシナリオ: '$scenario|'"
 
 #: src/playmp_controller.cpp:359
 msgid ""
@@ -6643,9 +6624,8 @@ msgstr ""
 "すか？"
 
 #: src/playsingle_controller.cpp:517
-#, fuzzy
 msgid "It is now $name|'s turn"
-msgstr "あなたのターンです。"
+msgstr "$name| ののターンです"
 
 #: src/playturn.cpp:200
 msgid "Replace with AI"
@@ -6664,7 +6644,6 @@ msgid "Replace with "
 msgstr "交代する "
 
 #: src/playturn.cpp:222
-#, fuzzy
 msgid " has left the game. What do you want to do?"
 msgstr " はゲームを去りました。 どうしますか？"
 
@@ -6843,7 +6822,7 @@ msgstr "我々に情報を送って Wesnoth を支援してください"
 
 #: src/unit.cpp:371 src/unit.cpp:1150 src/unit.cpp:2530
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "不明のユニットタイプ '$type|'"
 
 #: src/unit.cpp:2574 src/unit.cpp:2898 src/unit.cpp:2953
 msgid "; "
@@ -6878,7 +6857,6 @@ msgid "neutral"
 msgstr "中立"
 
 #: src/upload_log.cpp:290
-#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -6906,6 +6884,5 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
 
-#, fuzzy
 #~ msgid "Races"
 #~ msgstr "種族"
