@@ -1126,7 +1126,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 			unit_map::iterator enemy = find_unit(hex);
 			if(u != units_.end() && u->second.side() == team_num_ &&
 				enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.incapacitated()) {
-				//if shroud or fog is active, rememember nits a and after attack check if someone isn`t seen
+				//if shroud or fog is active, rememember units and after attack check if someone isn't seen
 				std::set<gamemap::location> known_units;
 
 				if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
@@ -1155,12 +1155,12 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 							gui_->draw();
 							//some new part of map discovered
 							for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-						   if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
-										//check if unit is not known
-										if (known_units.find(u->first)==known_units.end())
-										{
-											game_events::raise("sighted",u->first,attack_from);
-										}
+								if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
+									//check if unit is not known
+									if (known_units.find(u->first)==known_units.end())
+									{
+										game_events::raise("sighted",u->first,attack_from);
+									}
 								 }
 							}
 							game_events::pump();
