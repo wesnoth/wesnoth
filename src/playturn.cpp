@@ -197,13 +197,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//no leader, we assume they just want to be replaced by
 		//the AI.
 		if(have_leader) {
+			utils::string_map t_vars;
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
 			options.push_back(_("Abort game"));
 
 			//get all observers in as options to transfer control
 			for(std::set<std::string>::const_iterator ob = gui_.observers().begin(); ob != gui_.observers().end(); ++ob) {
-				options.push_back(_("Replace with ") + *ob);
+				t_vars["player"] = *ob;
+				options.push_back(vgettext("Replace with $player", t_vars));
 				observers.push_back(*ob);
 			}
 
@@ -214,12 +216,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					//if this is an ally of the dropping side and it is not us (choose local player
 					//if you want that) and not ai or empty and if it is not the dropping side itself,
 					//get this team in as well
-					options.push_back(_("Replace with ") + team->current_player());
+					t_vars["player"] = team->current_player();
+					options.push_back(vgettext("Replace with $player", t_vars));
 					allies.push_back(&(*team));
 				}
 			}
 
-			utils::string_map t_vars;
 			t_vars["player"] = teams_[side_index].current_player();
 			const std::string msg =  vgettext("$player has left the game. What do you want to do?", t_vars);
 			gui::dialog dlg(gui_, "", msg, gui::OK_ONLY);
