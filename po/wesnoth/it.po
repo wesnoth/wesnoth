@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-09-15 13:13+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -5963,7 +5963,7 @@ msgstr "Mappa salvata."
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Salvataggio automatico"
@@ -6707,16 +6707,16 @@ msgstr "Impossibile aggiungere un socket"
 msgid "Could not send initial handshake"
 msgstr "Impossibile inviare l'handshake iniziale"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "Il file che hai provato a caricare è corrotto"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Torna all'inizio"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Torno al turno"
 
@@ -6844,8 +6844,9 @@ msgstr "Abbandona il gioco"
 msgid "Replace with "
 msgstr "Rimpiazza con "
 
-#: src/playturn.cpp:222
-msgid " has left the game. What do you want to do?"
+#: src/playturn.cpp:224
+#, fuzzy
+msgid "$player has left the game. What do you want to do?"
 msgstr " ha abbandonato il gioco. Cosa vuoi fare?"
 
 #: src/serialization/parser.cpp:102

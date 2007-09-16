@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-09-16 15:00+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -5987,7 +5987,7 @@ msgstr "Carte sauvegardée."
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Sauvegarde automatique"
@@ -6735,16 +6735,16 @@ msgstr "Impossible d'ajouter le port à la liste des ports"
 msgid "Could not send initial handshake"
 msgstr "Impossible d'envoyer le signal d'établissement de la liaison"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "Le fichier sauvegardé est corrompu"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Retour au début"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Retour au tour "
 
@@ -6872,8 +6872,9 @@ msgstr "Annuler le jeu"
 msgid "Replace with "
 msgstr "Remplacer par "
 
-#: src/playturn.cpp:222
-msgid " has left the game. What do you want to do?"
+#: src/playturn.cpp:224
+#, fuzzy
+msgid "$player has left the game. What do you want to do?"
 msgstr " a quitté le jeu. Que voulez-vous faire ?"
 
 #: src/serialization/parser.cpp:102

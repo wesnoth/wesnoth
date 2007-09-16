@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -5970,7 +5970,7 @@ msgstr "Картата запазена."
 msgid "Could not save the map: $msg"
 msgstr "Картата на бе запазена: $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Автоматично запазване"
@@ -6709,16 +6709,16 @@ msgstr "Добавянето на сокета към комплекта от с
 msgid "Could not send initial handshake"
 msgstr "Пращането на първоначалния поздрав е невъзможно"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "Файлът е повреден"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Обратно в началото"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Обратно към ход"
 
@@ -6845,9 +6845,9 @@ msgstr "Прекъсване на играта"
 msgid "Replace with "
 msgstr "Замени със"
 
-#: src/playturn.cpp:222
+#: src/playturn.cpp:224
 #, fuzzy
-msgid " has left the game. What do you want to do?"
+msgid "$player has left the game. What do you want to do?"
 msgstr "излезе от играта. Как ще постъпите?"
 
 #: src/serialization/parser.cpp:102

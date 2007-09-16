@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-02-23 22:37+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -5941,7 +5941,7 @@ msgstr "El mapa ha estat alçat."
 msgid "Could not save the map: $msg"
 msgstr "No s'ha pogut alçar el mapa: $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Partida alçada automàticament"
@@ -6689,16 +6689,16 @@ msgstr "No s'ha pogut afegir el sòcol."
 msgid "Could not send initial handshake"
 msgstr "No s'ha pogut establir la connexió inicial."
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "El fitxer que heu intentat carregar està corromput."
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Torna al principi"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Torna al torn "
 
@@ -6828,9 +6828,9 @@ msgstr "Acaba la partida"
 msgid "Replace with "
 msgstr "Reemplaça amb "
 
-#: src/playturn.cpp:222
+#: src/playturn.cpp:224
 #, fuzzy
-msgid " has left the game. What do you want to do?"
+msgid "$player has left the game. What do you want to do?"
 msgstr "ha deixat la partida. Què voleu fer?"
 
 #: src/serialization/parser.cpp:102

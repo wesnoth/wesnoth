@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-07-02 17:27+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -5918,7 +5918,7 @@ msgstr "Mapa uložena."
 msgid "Could not save the map: $msg"
 msgstr "Mapu nebylo možno uložit: $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Automatické uložení"
@@ -6664,16 +6664,16 @@ msgstr "Nepodařilo se přidat soket do souboru soketů"
 msgid "Could not send initial handshake"
 msgstr "Nemohu poslat žádost o spojení"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "Soubor, který se snažíš načíst, je poškozený."
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Zpátky na start"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Zpět na kolo "
 
@@ -6802,9 +6802,9 @@ msgstr "Ukončí hru"
 msgid "Replace with "
 msgstr "Nahraď: "
 
-#: src/playturn.cpp:222
+#: src/playturn.cpp:224
 #, fuzzy
-msgid " has left the game. What do you want to do?"
+msgid "$player has left the game. What do you want to do?"
 msgstr "opustil(a) hru. Co s tím chceš dělat?"
 
 #: src/serialization/parser.cpp:102

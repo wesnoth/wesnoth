@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-09-14 23:37+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -5869,7 +5869,7 @@ msgstr "Kartan sparad."
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Autosparat"
@@ -6608,16 +6608,16 @@ msgstr "Kunde inte lägga till sockel till sockellistan"
 msgid "Could not send initial handshake"
 msgstr "Kunde inte utföra handskakning"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Tillbaka till början"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Tillbaka till drag "
 
@@ -6745,8 +6745,9 @@ msgstr "Avbryt spelet"
 msgid "Replace with "
 msgstr "Ersätt med"
 
-#: src/playturn.cpp:222
-msgid " has left the game. What do you want to do?"
+#: src/playturn.cpp:224
+#, fuzzy
+msgid "$player has left the game. What do you want to do?"
 msgstr " har lämnat spelet. Vad vill du göra?"
 
 #: src/serialization/parser.cpp:102

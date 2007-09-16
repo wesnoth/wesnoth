@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-09-15 16:29+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -5915,7 +5915,7 @@ msgstr "Mapa zapisana."
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Autozapis"
@@ -6650,16 +6650,16 @@ msgstr "Nie udało się dodać gniazda do zestawu"
 msgid "Could not send initial handshake"
 msgstr "Nie udało się rozpocząć negocjacji połączenia"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "Wczytywany plik jest uszkodzony"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Do początku"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Do tury "
 
@@ -6787,8 +6787,9 @@ msgstr "Porzuć grę"
 msgid "Replace with "
 msgstr "Zastąp przez"
 
-#: src/playturn.cpp:222
-msgid " has left the game. What do you want to do?"
+#: src/playturn.cpp:224
+#, fuzzy
+msgid "$player has left the game. What do you want to do?"
 msgstr " opuścił grę. Co chcesz zrobić?"
 
 #: src/serialization/parser.cpp:102

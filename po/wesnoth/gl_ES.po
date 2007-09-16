@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2007-07-17 19:34+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: none\n"
@@ -5734,7 +5734,7 @@ msgstr "Mapa gardado."
 msgid "Could not save the map: $msg"
 msgstr "Non se puido gardar o mapa: $msg"
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Gardar Automaticamente"
@@ -6476,16 +6476,16 @@ msgstr ""
 msgid "Could not send initial handshake"
 msgstr ""
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que intentou cargar está corrompido"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr ""
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr ""
 
@@ -6613,9 +6613,9 @@ msgstr "Abortar a partida"
 msgid "Replace with "
 msgstr "Substituir por "
 
-#: src/playturn.cpp:222
+#: src/playturn.cpp:224
 #, fuzzy
-msgid " has left the game. What do you want to do?"
+msgid "$player has left the game. What do you want to do?"
 msgstr "deixou a partida. Que desexas facer?"
 
 #: src/serialization/parser.cpp:102

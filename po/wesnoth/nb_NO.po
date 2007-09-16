@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 16:12+0200\n"
+"POT-Creation-Date: 2007-09-16 23:02+0200\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -5506,7 +5506,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:768
+#: src/menu_events.cpp:822 src/menu_events.cpp:824 src/play_controller.cpp:773
 #: src/playcampaign.cpp:103
 msgid "Auto-Save"
 msgstr "Lagre automatisk"
@@ -6273,16 +6273,16 @@ msgstr "Kunne ikke koble til (Could not add socket to socket set)"
 msgid "Could not send initial handshake"
 msgstr "Kunne ikke sende håndtrykk"
 
-#: src/play_controller.cpp:400 src/playsingle_controller.cpp:379
+#: src/play_controller.cpp:405 src/playsingle_controller.cpp:379
 #: src/playsingle_controller.cpp:430
 msgid "The file you have tried to load is corrupt"
 msgstr "Det er noe galt med filen du prøvde å laste"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:777
 msgid "Back to start"
 msgstr "Tilbake til start"
 
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:779
 msgid "Back to turn "
 msgstr "Tilbake til tur "
 
@@ -6415,9 +6415,9 @@ msgstr "Avbryt spill"
 msgid "Replace with "
 msgstr "Erstatt med "
 
-#: src/playturn.cpp:222
+#: src/playturn.cpp:224
 #, fuzzy
-msgid " has left the game. What do you want to do?"
+msgid "$player has left the game. What do you want to do?"
 msgstr "har forlatt spillet. Hva vil du gjøre?"
 
 #: src/serialization/parser.cpp:102
