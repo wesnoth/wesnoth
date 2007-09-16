@@ -41,6 +41,7 @@
    * no more idle animations for units next to an enemy unit
    * new button and slider in preferences to switch unit idle animations on
      and off and set their frequency
+   * no grid on off-map tiles
  * language and i18n:
    * updated translations: Bulgarian, Danish, Dutch, Finnish, French, German,
      Italian, Japanese, Polish, Portuguese (Brazil), Russian, Swedish,
@@ -75,6 +76,7 @@
    * OK in the status menu replaced with more informative "Scroll To".
    * add an "Animate Map" option in advanced preferences, to switch flag and
      terrain animation off
+   * in menus, remove the lingering mouseover highlighting when mouse leave it
  * help system:
    * the unit list is now organized by race sub-sections.
    * each ability, special weapon and race description page, display a list of
@@ -113,6 +115,7 @@
    * fix TC imagepath function for non-playing side and add-on/campaigns icons
    * remove a 500ms delay between AI turns
    * switch to observer viewpoint in linger mode in multiplayer (bug #4072)
+   * optimize unit's moves on map with shroud but no fog
 
 Version 1.3.7:
  * Campaigns
