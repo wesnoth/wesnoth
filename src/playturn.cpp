@@ -15,13 +15,13 @@
 #include "playturn.hpp"
 
 #include "config.hpp"
+#include "construct_dialog.hpp"
 #include "game_display.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "replay.hpp"
-#include "show_dialog.hpp"
 #include "sound.hpp"
 #include "team.hpp"
 #include "unit.hpp"
@@ -219,8 +219,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				}
 			}
 
-			const std::string msg = teams_[side_index].current_player() + _(" has left the game. What do you want to do?");
-			action = gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY,&options);
+			utils::string_map t_vars;
+			t_vars["player"] = teams_[side_index].current_player();
+			const std::string msg =  vgettext("$player has left the game. What do you want to do?", t_vars);
+			gui::dialog dlg(gui_, "", msg, gui::OK_ONLY);
+			dlg.set_menu(options);
+			action = dlg.show();
 		}
 
 		//make the player an AI, and redo this turn, in case
