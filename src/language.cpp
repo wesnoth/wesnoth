@@ -184,10 +184,10 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	}
 
 	if (res == NULL)
-		std::cerr << "WARNING: setlocale() failed for "
-			  << locale << ".\n";
+		std::cerr << "WARNING: setlocale() failed for '"
+			  << locale << "'.\n";
 	else
-		std::cerr << "set locale to " << try_loc << "\n";
+		std::cerr << "set locale to '" << try_loc << "'\n";
 }
 
 bool set_language(const language_def& locale)
@@ -250,7 +250,7 @@ const language_def& get_locale()
 			if (prefs_locale == i->localename)
 				return *i;
 		}
-		LOG_STREAM(info, general) << "locale not found in known array; defaulting to system locale\n";
+		LOG_STREAM(info, general) << "'" << prefs_locale << "' locale not found in known array; defaulting to system locale\n";
 		return known_languages[0];
 	}
 
