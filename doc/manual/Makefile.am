@@ -22,7 +22,7 @@ update-po4a: manual.en.xml
 	( cd ../../po/wesnoth-manual && \
 	  $(PO4A) $(PO4AOPTS) wesnoth-manual.cfg || exit $? )
 
-dist-hook: update-po4a
+html: update-po4a
 	@for i in manual.*.xml; do \
 		lang=$$(echo $$i | sed -e 's/manual\.\([a-zA-Z_@]*\)\.xml/\1/'); \
 		echo "Generating manual from manual.$$lang.xml..."; \
@@ -30,6 +30,8 @@ dist-hook: update-po4a
 		$(XSLTPROC) $(XSLTOPTS) "/etc/asciidoc/docbook-xsl/xhtml.xsl" \
 		            "manual.$$lang.xml" > "manual.$$lang.html"; \
 	done
+
+dist-hook: html
 
 clean-local:
 	rm -f *.xml
