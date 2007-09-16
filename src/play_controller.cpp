@@ -326,16 +326,18 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 		(before calculation of income and healing) or we will risk OOS errors if we manipulate
 		these informations inside the events and in the replay have a different order of execution.
 	*/
+	bool real_side_change = true;
 	if(first_turn_) {
 		game_events::fire("turn 1");
 		game_events::fire("new turn");
 		game_events::fire("side turn");
 		first_turn_ = false;
-	} else
-	// Fire side turn event only if real side change occurs,
-	// not counting changes from void to a side
-	if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
+	} else if (team_index != (first_player_ - 1) || status_.turn() > start_turn_) {
+		// Fire side turn event only if real side change occurs,
+		// not counting changes from void to a side
 		game_events::fire("side turn");
+	} else {
+		real_side_change = false;
 	}
 
 	// We want to work out if units for this player should get healed, 
@@ -363,6 +365,8 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 
 		calculate_healing((*gui_),map_,units_,player_number_,teams_, !recorder.is_skipping());
 		reset_resting(units_, player_number_);
+	}
+	if(turn_refresh || real_side_change) {
 		game_events::fire("turn refresh");
 	}
 
