@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-15 15:12+0200\n"
-"PO-Revision-Date: 2007-08-25 11:06+0900\n"
+"PO-Revision-Date: 2007-09-13 00:51+0900\n"
 "Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -163,7 +163,6 @@ msgid "2p - Caves of the Basilisk"
 msgstr "2p - Caverna do Basilisco"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
-#, fuzzy
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
 "feared region, once the home of a legendary Elder Basilisk. The road to "
@@ -172,7 +171,7 @@ msgid ""
 msgstr ""
 "Os jogadores devem manobrar suas unidades pelo terreno dividido desta região "
 "temida, que outrora fora o lar de um basilisco ancestral. A estrada para a "
-"vitória está acompanhada das formas petrificadas de alguns dos maiores "
+"vitória está pontilhada pelas formas petrificadas de alguns dos maiores "
 "heróis de Wesnoth."
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:93
@@ -413,9 +412,8 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Campo de Batalha de Cynsaun"
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
-#, fuzzy
 msgid " Recommended settings of 150 gold and 2 gold per village."
-msgstr "Recomendado 150 ouros e 1 ouro por vila."
+msgstr "Recomenda-se 150 ouros iniciais e 2 peças de ouro por aldeia."
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid ""
@@ -430,13 +428,13 @@ msgid "2p - Den of Onis"
 msgstr "2p - Gruta de Onis"
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where players must find the balance between force and subterfuge."
 msgstr ""
-"O perigo espreita cada canto deste submundo, um mapa onde força e "
-"subterfúgio se encontram."
+"O perigo espreita em cada canto, neste campo de batalha subterrâneo. Um mapa "
+"de duelo onde os jogadores devem encontrar um equilíbrio entre força bruta e "
+"subterfúgio."
 
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
@@ -561,17 +559,14 @@ msgid "Statue of Sulla"
 msgstr "Estátua de Sulla"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:77
-#, fuzzy
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
 "Uma estátua de pedra de Sulla a Grande, também conhecida como Sulla a Justa, "
-"Sulla a Tirana, Imperadora da Torre Submersa, Vencedora dos Ventos "
-"Esmagadores, Dama da Geleira Ambulante, Proterora da Onda Flamejante, Rainha "
-"da Flama Arrasadora, Sulla a Incineradora, Sulla a Orgulhosa e Sulla a "
-"Divina."
+"Sulla a Tirana, Imperadora da Torre Submersa, Dama da Geleira Ambulante, "
+"Sulla a Incineradora, Sulla a Orgulhosa e Sulla a Divina."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:80
 msgid "Statue of Lhun-dup"
@@ -711,17 +706,16 @@ msgid "4p - Blue Water Province"
 msgstr "4p - Província de Blue Water"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
-#, fuzzy
 msgid ""
 "Historians write that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"Diz a lenda que a Província de Blue Water foi destruída e reconstruída mais "
-"de vinte vezes. Agora, conforme os exércitos novamente se direcionam para os "
-"rios pedregosos e para as montanhas nevadas desta pequena província, seus "
-"moradores mal parecem notar a diferença."
+"Historiadores contam que a Província de Blue Water foi destruída e "
+"reconstruída mais de vinte vezes. Agora, embora novos exércitos se "
+"direcionem para os rios pedregosos e para as montanhas nevadas desta pequena "
+"província, seus moradores mal parecem notar a diferença."
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:20
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:53
@@ -1062,7 +1056,9 @@ msgstr "Cenário no qual o objetivo é sobreviver o maior tempo possível."
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 #, fuzzy
 msgid "Survive for 32 turns."
-msgstr "Sobreviver por 32 turnos."
+msgstr ""
+"``Criado por Roze\n"
+"Sobreviver por 32 turnos."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
@@ -1290,10 +1286,32 @@ msgstr ""
 "Um benchmark para wesnoth, use as opções --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
 
-#, fuzzy
-#~ msgid "Defeat enemy leader"
-#~ msgstr "Morte dos líderes."
+#~ msgid "``Designed by Doc Paterson"
+#~ msgstr "``Criado por Doc Paterson"
 
-#, fuzzy
+#~ msgid "Defeat enemy leader"
+#~ msgstr "Derrote o líder inimigo"
+
+#~ msgid "``Designed by Becephalus and Doc Paterson"
+#~ msgstr "``Criado por Becephalus e Doc Paterson"
+
 #~ msgid "Defeat enemy leader(s)"
-#~ msgstr "Morte dos líderes."
+#~ msgstr "Derrote o(s) líder(es) inimigo(s)"
+
+#~ msgid "``Designed by Becephalus, Doc Paterson and PG"
+#~ msgstr "``Criado por Becephalus, Doc Paterson e PG"
+
+#~ msgid "``Designed by Doc Paterson and PG"
+#~ msgstr "``Criado por Doc Paterson e PG"
+
+#~ msgid "``Designed by Becephalus"
+#~ msgstr "``Criado por Becephalus"
+
+#~ msgid "``Designed by Becephalus and Turin"
+#~ msgstr "``Criado por Becephalus e Turin"
+
+#~ msgid "``Designed by Doc Paterson and Olof"
+#~ msgstr "``Criado por Doc Paterson e Olof"
+
+#~ msgid "``Designed by JB"
+#~ msgstr "``Criado por JB"
