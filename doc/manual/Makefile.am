@@ -1,4 +1,6 @@
 if MANUALUPDATE
+dist_noinst_DATA = images/main-menu.jpg images/recruit.jpg styles/manual.css
+
 XSLTOPTS = --nonet \
   --stringparam callout.graphics 0 \
   --stringparam navig.graphics 0 \
@@ -23,20 +25,12 @@ update-po4a: manual.en.xml
 dist-hook: update-po4a
 	@for i in manual.*.xml; do \
 		lang=$$(echo $$i | sed -e 's/manual\.\([a-zA-Z_@]*\)\.xml/\1/'); \
-		echo "Generating manual from «manual.$$lang.xml»..."; \
+		echo "Generating manual from manual.$$lang.xml..."; \
 		rm -f manual.$$lang.html; \
 		$(XSLTPROC) $(XSLTOPTS) "/etc/asciidoc/docbook-xsl/xhtml.xsl" \
-		             "manual.$$lang.xml" > "manual.$$lang.html"; \
-		rm -rf $$lang && mkdir $$lang; \
-		cd $$lang && ln -s ../images . && ln -s ../styles . && cd -; \
-		$(XSLTPROC) $(XSLTOPTS) --stringparam base.dir "$$lang/" \
-		            "/etc/asciidoc/docbook-xsl/chunked.xsl" "manual.$$lang.xml"; \
+		            "manual.$$lang.xml" > "manual.$$lang.html"; \
 	done
 
 clean-local:
 	rm -f *.xml
-
-distclean-local:
-	for i in manual.*.xml; do rm -rf $$i; done
-	rm -f *.html *.xml
 endif

@@ -585,9 +585,7 @@ else
     manualdeps=yes
 fi
 
-# Disable manual update until it is ready.
-#AM_CONDITIONAL([MANUALUPDATE], [test "x$manualdeps" = "xyes"])
-AM_CONDITIONAL([MANUALUPDATE], [false])
+AM_CONDITIONAL([MANUALUPDATE], [test "x$manualdeps" = "xyes"])
 
 #######################################################################
 # Checks for libraries.                                               #
