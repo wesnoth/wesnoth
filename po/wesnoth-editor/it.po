@@ -1,62 +1,62 @@
+# translation of it.po to Italian
 # Italian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
 #
+# Automatically generated, 2004.
+# Luciano Montanaro <mikelima@cirulla.net>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
+"Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-08-27 12:33+0200\n"
-"PO-Revision-Date: 2007-05-07 17:05+0200\n"
-"Last-Translator: Americo Iacovizzi <darkamex@gmail.com>\n"
-"Language-Team: IT\n"
+"PO-Revision-Date: 2007-09-15 17:00+0200\n"
+"Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: data/core/editor-groups.cfg:11
 msgid "all"
-msgstr ""
+msgstr "tutti"
 
 #: data/core/editor-groups.cfg:17
-#, fuzzy
 msgid "water"
-msgstr "Incolla"
+msgstr "acqua"
 
 #: data/core/editor-groups.cfg:29
 msgid "flat"
-msgstr ""
+msgstr "pianeggiante"
 
 #: data/core/editor-groups.cfg:35
 msgid "desert"
-msgstr ""
+msgstr "deserto"
 
 #: data/core/editor-groups.cfg:41
 msgid "forest"
-msgstr ""
+msgstr "foresta"
 
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
-msgstr ""
+msgstr "congelato"
 
 #: data/core/editor-groups.cfg:53
 msgid "rough"
-msgstr ""
+msgstr "impervio"
 
 #: data/core/editor-groups.cfg:59
 msgid "cave"
-msgstr ""
+msgstr "grotta"
 
 #: data/core/editor-groups.cfg:65
-#, fuzzy
 msgid "village"
-msgstr "Villaggi:"
+msgstr "villaggio"
 
 #: data/core/editor-groups.cfg:71
-#, fuzzy
 msgid "castle"
-msgstr "Incolla"
+msgstr "castello"
 
 #: data/themes/editor.cfg:523
 msgid "File"
@@ -80,7 +80,7 @@ msgstr "Riempi"
 
 #: src/editor/editor.cpp:238
 msgid "Set player's starting position"
-msgstr "Imposta la posizione di inizio del giocatore"
+msgstr "Scegli posizione iniziale del giocatore"
 
 #: src/editor/editor.cpp:240
 msgid "Zoom in"
@@ -116,12 +116,11 @@ msgstr "Rifletti la mappa"
 
 #: src/editor/editor.cpp:256
 msgid "Update transitions"
-msgstr "Aggiorna traduzioni"
+msgstr "Aggiorna transizioni"
 
 #: src/editor/editor.cpp:258
-#, fuzzy
 msgid "Delay transition updates"
-msgstr "Ritarda aggiornamento traduzioni"
+msgstr "Ritarda aggiornamento transizioni"
 
 #: src/editor/editor.cpp:465
 msgid "Language"
@@ -129,7 +128,7 @@ msgstr "Lingua"
 
 #: src/editor/editor.cpp:466
 msgid "Choose your preferred language:"
-msgstr "Scegli la lingua che preferisci:"
+msgstr "Scegli la lingua preferita:"
 
 #: src/editor/editor.cpp:483 src/editor/editor_main.cpp:288
 msgid "Battle for Wesnoth Map Editor"
@@ -137,7 +136,7 @@ msgstr "Editor per le mappe di Battle for Wesnoth"
 
 #: src/editor/editor.cpp:507
 msgid "Save the Map As"
-msgstr "Salva la mappa con nome"
+msgstr "Salva la mappa come"
 
 #: src/editor/editor.cpp:518
 msgid "The map already exists. Do you want to overwrite it?"
@@ -169,7 +168,7 @@ msgid ""
 "different name."
 msgstr ""
 "Attenzione: Sono stati utilizzati dei caratteri non validi nel nome della "
-"mappa. Bisogna salvarla con un nome differente.  "
+"mappa. Bisogna salvarla con un nome differente."
 
 #: src/editor/editor.cpp:629 src/editor/editor.cpp:703
 msgid "The file does not contain a valid map."
@@ -193,7 +192,7 @@ msgstr "Impossibile salvare la mappa: $msg"
 
 #: src/editor/editor.cpp:1352
 msgid "Error: Illegal character in filename."
-msgstr "Errore: Hai inserito un carattere non valido nel nome del file"
+msgstr "Errore: Hai inserito un carattere non valido nel nome del file."
 
 #: src/editor/editor_palettes.cpp:429
 msgid "FG"
@@ -208,8 +207,10 @@ msgstr "Sfondo"
 msgid ""
 "Can't resize the map, the requested size is bigger than the maximum, size="
 msgstr ""
+"Non è possibilie ridimensionare la mappa, la dimensione richiesta è maggiore "
+"del massimo, dimensione="
 
 #: src/editor/map_manip.cpp:201 src/editor/map_manip.cpp:217
 #: src/editor/map_manip.cpp:270 src/editor/map_manip.cpp:288
 msgid " maximum="
-msgstr ""
+msgstr " massimo="
