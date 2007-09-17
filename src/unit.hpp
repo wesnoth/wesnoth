@@ -69,7 +69,7 @@ public:
 	void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
 
 	//! Advances this unit to another type
-	void advance_to(const unit_type* t);
+	void advance_to(const unit_type* t, bool use_traits=false);
 	const std::vector<std::string> advances_to() const { return advances_to_; }
 
 	//! The current type id

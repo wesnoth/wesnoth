@@ -52,7 +52,7 @@
 namespace {
 	const std::string ModificationTypes[] = { "advance", "trait", "object" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
-	                                    sizeof(*ModificationTypes);
+										sizeof(*ModificationTypes);
 
 	//! Pointers to units which have data in their internal caches.
 	// The destructor of an unit removes itself from the cache,
@@ -78,94 +78,94 @@ void sort_units(std::vector< unit > &units)
 
 // Copy constructor
 unit::unit(const unit& o):
-		cfg_(o.cfg_),
-		movement_b_(o.movement_b_),
-		defense_b_(o.defense_b_),
-		resistance_b_(o.resistance_b_),
-		abilities_b_(o.abilities_b_),
+           cfg_(o.cfg_),
+           movement_b_(o.movement_b_),
+           defense_b_(o.defense_b_),
+           resistance_b_(o.resistance_b_),
+           abilities_b_(o.abilities_b_),
 
-		advances_to_(o.advances_to_),
-		id_(unit_id_test(o.id_)),
-		race_(o.race_),
-		name_(o.name_),
-		description_(o.description_),
-		custom_unit_description_(o.custom_unit_description_),
-		underlying_description_(o.underlying_description_),
-		language_name_(o.language_name_),
-		undead_variation_(o.undead_variation_),
-		variation_(o.variation_),
+           advances_to_(o.advances_to_),
+           id_(unit_id_test(o.id_)),
+           race_(o.race_),
+           name_(o.name_),
+           description_(o.description_),
+           custom_unit_description_(o.custom_unit_description_),
+           underlying_description_(o.underlying_description_),
+           language_name_(o.language_name_),
+           undead_variation_(o.undead_variation_),
+           variation_(o.variation_),
 
-		hit_points_(o.hit_points_),
-		max_hit_points_(o.max_hit_points_),
-		max_hit_points_b_(o.max_hit_points_b_),
-		experience_(o.experience_),
-		max_experience_(o.max_experience_),
-		max_experience_b_(o.max_experience_b_),
-		level_(o.level_),
-		alignment_(o.alignment_),
-		flag_rgb_(o.flag_rgb_),
-		image_mods_(o.image_mods_),
+           hit_points_(o.hit_points_),
+           max_hit_points_(o.max_hit_points_),
+           max_hit_points_b_(o.max_hit_points_b_),
+           experience_(o.experience_),
+           max_experience_(o.max_experience_),
+           max_experience_b_(o.max_experience_b_),
+           level_(o.level_),
+           alignment_(o.alignment_),
+           flag_rgb_(o.flag_rgb_),
+           image_mods_(o.image_mods_),
 
-		unrenamable_(o.unrenamable_),
-		side_(o.side_),
-		gender_(o.gender_),
+           unrenamable_(o.unrenamable_),
+           side_(o.side_),
+           gender_(o.gender_),
 
-		alpha_(o.alpha_),
+           alpha_(o.alpha_),
 
-		recruits_(o.recruits_),
+           recruits_(o.recruits_),
 
-		movement_(o.movement_),
-		max_movement_(o.max_movement_),
-		max_movement_b_(o.max_movement_b_),
-		movement_costs_(o.movement_costs_),
-		hold_position_(o.hold_position_),
-		end_turn_(o.end_turn_),
-		resting_(o.resting_),
-		attacks_left_(o.attacks_left_),
-		max_attacks_(o.max_attacks_),
+           movement_(o.movement_),
+           max_movement_(o.max_movement_),
+           max_movement_b_(o.max_movement_b_),
+           movement_costs_(o.movement_costs_),
+           hold_position_(o.hold_position_),
+           end_turn_(o.end_turn_),
+           resting_(o.resting_),
+           attacks_left_(o.attacks_left_),
+           max_attacks_(o.max_attacks_),
 
-		states_(o.states_),
-		variables_(o.variables_),
-		emit_zoc_(o.emit_zoc_),
-		state_(o.state_),
+           states_(o.states_),
+           variables_(o.variables_),
+           emit_zoc_(o.emit_zoc_),
+           state_(o.state_),
 
-		overlays_(o.overlays_),
+           overlays_(o.overlays_),
 
-		role_(o.role_),
-		ai_special_(o.ai_special_),
-		attacks_(o.attacks_),
-		attacks_b_(o.attacks_b_),
-		facing_(o.facing_),
+           role_(o.role_),
+           ai_special_(o.ai_special_),
+           attacks_(o.attacks_),
+           attacks_b_(o.attacks_b_),
+           facing_(o.facing_),
 
-		traits_description_(o.traits_description_),
-		unit_value_(o.unit_value_),
-		goto_(o.goto_),
-		interrupted_move_(o.interrupted_move_),
-		flying_(o.flying_),
-		is_fearless_(o.is_fearless_),
-		is_healthy_(o.is_healthy_),
+           traits_description_(o.traits_description_),
+           unit_value_(o.unit_value_),
+           goto_(o.goto_),
+           interrupted_move_(o.interrupted_move_),
+           flying_(o.flying_),
+           is_fearless_(o.is_fearless_),
+           is_healthy_(o.is_healthy_),
 
-		modification_descriptions_(o.modification_descriptions_),
+           modification_descriptions_(o.modification_descriptions_),
 
-		animations_(o.animations_),
+           animations_(o.animations_),
 
-		anim_(NULL),
+           anim_(NULL),
 
-		frame_begin_time_(o.frame_begin_time_),
-		offset_(o.offset_),
-		unit_halo_(o.unit_halo_),
-		unit_anim_halo_(o.unit_anim_halo_),
-		getsHit_(o.getsHit_),
-		refreshing_(o.refreshing_),
-		hidden_(o.hidden_),
-		draw_bars_(o.draw_bars_),
+           frame_begin_time_(o.frame_begin_time_),
+           offset_(o.offset_),
+           unit_halo_(o.unit_halo_),
+           unit_anim_halo_(o.unit_anim_halo_),
+           getsHit_(o.getsHit_),
+           refreshing_(o.refreshing_),
+           hidden_(o.hidden_),
+           draw_bars_(o.draw_bars_),
 
-		modifications_(o.modifications_),
-		gamedata_(o.gamedata_),
-		units_(o.units_),
-		map_(o.map_),
-		gamestatus_(o.gamestatus_),
-		teams_(o.teams_)
+           modifications_(o.modifications_),
+           gamedata_(o.gamedata_),
+           units_(o.units_),
+           map_(o.map_),
+           gamestatus_(o.gamestatus_),
+           teams_(o.teams_)
 {
 	next_idling_ = 0;
 	unit_halo_ = halo::NO_HALO;
@@ -174,12 +174,12 @@ unit::unit(const unit& o):
 
 //! Initilizes a unit from a config.
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
-     const gamestatus* game_status, const std::vector<team>* teams,const config& cfg, bool use_traits) :
-	movement_(0), hold_position_(false),resting_(false),state_(STATE_STANDING),
-	 facing_(gamemap::location::NORTH_EAST),flying_(false),
-	 anim_(NULL),next_idling_(0),frame_begin_time_(0),unit_halo_(halo::NO_HALO),
-	 unit_anim_halo_(halo::NO_HALO), draw_bars_(false),gamedata_(gamedata),
-	 units_(unitmap), map_(map), gamestatus_(game_status),teams_(teams)
+           const gamestatus* game_status, const std::vector<team>* teams,const config& cfg,
+		   bool use_traits) : movement_(0), hold_position_(false), resting_(false),
+		   state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST), flying_(false),
+           anim_(NULL), next_idling_(0), frame_begin_time_(0), unit_halo_(halo::NO_HALO),
+           unit_anim_halo_(halo::NO_HALO), draw_bars_(false),gamedata_(gamedata),
+           units_(unitmap), map_(map), gamestatus_(game_status),teams_(teams)
 {
 	read(cfg, use_traits);
 	getsHit_=0;
@@ -191,11 +191,11 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 }
 
 unit::unit(const game_data& gamedata,const config& cfg,bool use_traits) : movement_(0),
-			hold_position_(false), resting_(false), state_(STATE_STANDING),
-			facing_(gamemap::location::NORTH_EAST),
-			flying_(false),anim_(NULL),next_idling_(0),frame_begin_time_(0),
-			unit_halo_(halo::NO_HALO),unit_anim_halo_(halo::NO_HALO),draw_bars_(false),
-			gamedata_(&gamedata), units_(NULL),map_(NULL), gamestatus_(NULL)
+           hold_position_(false), resting_(false), state_(STATE_STANDING),
+           facing_(gamemap::location::NORTH_EAST),
+           flying_(false),anim_(NULL),next_idling_(0),frame_begin_time_(0),
+           unit_halo_(halo::NO_HALO),unit_anim_halo_(halo::NO_HALO),draw_bars_(false),
+           gamedata_(&gamedata), units_(NULL),map_(NULL), gamestatus_(NULL)
 {
 	read(cfg,use_traits);
 	getsHit_=0;
@@ -228,8 +228,9 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 //! Initializes a unit from a unit type.
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t,
-					 int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
-	gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false), state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
+           int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
+           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false),
+           state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
 	goto_ = gamemap::location();
@@ -246,15 +247,15 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 		custom_unit_description_ = generate_description();
 	}
 	generate_traits(!use_traits);
-        apply_modifications();
+	apply_modifications();
 	if(underlying_description_.empty()){
-	  char buf[80];
-	  if(!custom_unit_description_.empty()){
-	    snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
-	  }else{
-	    snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
-	  }
-	  underlying_description_ = buf;
+		char buf[80];
+		if(!custom_unit_description_.empty()){
+			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
+		} else {
+			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
+		}
+		underlying_description_ = buf;
 	}
 
 	unrenamable_ = false;
@@ -270,8 +271,8 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 }
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
            gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
-		   state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
-	   gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
+           state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
+           gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
 	goto_ = gamemap::location();
 	side_ = side;
@@ -287,15 +288,15 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 		custom_unit_description_ = generate_description();
 	}
 	generate_traits(!use_traits);
-        apply_modifications();
+	apply_modifications();
 	if(underlying_description_.empty()){
-	  char buf[80];
-	  if(!custom_unit_description_.empty()){
-	    snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
-	  }else{
-	    snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
-	  }
-	  underlying_description_ = buf;
+		char buf[80];
+		if(!custom_unit_description_.empty()){
+			snprintf(buf, sizeof(buf), "%s-%d-%s",type()->id().c_str(), get_random(), custom_unit_description_.c_str());
+		}else{
+			snprintf(buf, sizeof(buf), "%s-%d",type()->id().c_str(), get_random());
+		}
+		underlying_description_ = buf;
 	}
 
 	unrenamable_ = false;
@@ -316,7 +317,7 @@ unit::~unit()
 
 	// Remove us from the status cache
 	std::vector<const unit *>::iterator itor =
-		std::find(units_with_cache.begin(), units_with_cache.end(), this);
+	std::find(units_with_cache.begin(), units_with_cache.end(), this);
 
 	if(itor != units_with_cache.end()) {
 		units_with_cache.erase(itor);
@@ -364,85 +365,82 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 void unit::generate_traits(bool musthaveonly)
 {
 	wassert(gamedata_ != NULL);
-        LOG_UT << "Generating a trait for unit type " << id() << " with musthaveonly " << musthaveonly << "\n";
+	LOG_UT << "Generating a trait for unit type " << id() << " with musthaveonly " << musthaveonly << "\n";
 	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(id());
 	// Calculate the unit's traits
-        if (type == gamedata_->unit_types.end()) {
+	if (type == gamedata_->unit_types.end()) {
 		std::string error_message = _("Unknown unit type '$type|'");
 		utils::string_map symbols;
 		symbols["type"] = id();
 		error_message = utils::interpolate_variables_into_string(error_message, &symbols);
 		LOG_STREAM(err, engine) << "unit of type " << id() << " not found!\n";
 		throw game::game_error(error_message);
-        }
+	}
 	std::vector<config*> candidate_traits = type->second.possible_traits();
 	std::vector<config*> traits;
 
-        // First remove traits the unit already has from consideration.
-        // And count them so that we can figure out how many more are needed.
-        size_t t = 0;
+	// First remove traits the unit already has from consideration.
+	// And count them so that we can figure out how many more are needed.
+	size_t t = 0;
 	config::child_list const &mods = modifications_.get_children("trait");
 	for(config::child_list::const_iterator j = mods.begin(), j_end = mods.end(); j != j_end; ++j) {
-                ++t;
-                size_t m = 0;
-                for(size_t n = 0; n < candidate_traits.size(); ++n) {
-                        if((**(candidate_traits.begin()+m))["id"] == (**j)["id"]) {
-                                candidate_traits.erase(candidate_traits.begin()+m);
-                        }
-                        else {
-                                ++m;
-                        }
-                }
-        }
+		++t;
+		size_t m = 0;
+		for(size_t n = 0; n < candidate_traits.size(); ++n) {
+			if((**(candidate_traits.begin()+m))["id"] == (**j)["id"]) {
+				candidate_traits.erase(candidate_traits.begin()+m);
+			} else {
+				++m;
+			}
+		}
+	}
 
-        // Next add in any manditory traits. These aren't limited by the
-        // number of traits allowed for a unit. They also don't use
-        // any random numbers for assignment. (And hence don't cause
-        // problems for multiplayer.)
+	// Next add in any mandatory traits. These aren't limited by the
+	// number of traits allowed for a unit. They also don't use
+	// any random numbers for assignment. (And hence don't cause
+	// problems for multiplayer.)
 	size_t num_traits = candidate_traits.size();
-        size_t m = 0;
+	size_t m = 0;
 	for(size_t n = 0; n < num_traits; ++n) {
-                if(!(**(candidate_traits.begin()+m))["availability"].empty() &&
-                    (**(candidate_traits.begin()+m))["availability"] == "musthave") {
-		        traits.push_back(candidate_traits[m]);
-		        candidate_traits.erase(candidate_traits.begin()+m);
-                        ++t;
-                }
-                else {
-                        ++m;
-                }
+		if(!(**(candidate_traits.begin()+m))["availability"].empty() &&
+		(**(candidate_traits.begin()+m))["availability"] == "musthave") {
+			traits.push_back(candidate_traits[m]);
+			candidate_traits.erase(candidate_traits.begin()+m);
+			++t;
+		} else {
+			++m;
+		}
 	}
 
-        // If musthaveonly then don't generate any random/optional traits
-        if(!musthaveonly) {
-                // Next for leaders remove any traits that are not available to
-                // the "any" category.
-                if(can_recruit()) {
-	num_traits = candidate_traits.size();
-                        m = 0;
-	for(size_t n = 0; n < num_traits; ++n) {
-                                if(!(**(candidate_traits.begin()+m))["availability"].empty() ||
-                                    (**(candidate_traits.begin()+m))["availability"] != "any") {
-		        candidate_traits.erase(candidate_traits.begin()+m);
-                                }
-                                else {
-                                        ++m;
-                                }
-	}
-	}
+	// If musthaveonly then don't generate any random/optional traits
+	if(!musthaveonly) {
+		// Next for leaders remove any traits that are not available to
+		// the "any" category.
+		if(can_recruit()) {
+			num_traits = candidate_traits.size();
+			m = 0;
+			for(size_t n = 0; n < num_traits; ++n) {
+				if(!(**(candidate_traits.begin()+m))["availability"].empty() ||
+				(**(candidate_traits.begin()+m))["availability"] != "any") {
+					candidate_traits.erase(candidate_traits.begin()+m);
+				} else {
+					++m;
+				}
+			}
+		}
 
-                // Now randomly fill out to the number of traits required or until
-                // there aren't any more traits.
-	num_traits = type->second.num_traits();
-	for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
-		const size_t num = get_random()%candidate_traits.size();
-		traits.push_back(candidate_traits[num]);
-		candidate_traits.erase(candidate_traits.begin()+num);
-	}
+		// Now randomly fill out to the number of traits required or until
+		// there aren't any more traits.
+		num_traits = type->second.num_traits();
+		for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
+			const size_t num = get_random()%candidate_traits.size();
+			traits.push_back(candidate_traits[num]);
+			candidate_traits.erase(candidate_traits.begin()+num);
+		}
 
-                // Once random traits are added, don't do it again.
-                // Such as when restoring a saved character.
-                cfg_["random_traits"]="no";
+		// Once random traits are added, don't do it again.
+		// Such as when restoring a saved character.
+		cfg_["random_traits"]="no";
 	}
 
 	for(std::vector<config*>::const_iterator j2 = traits.begin(); j2 != traits.end(); ++j2) {
@@ -451,7 +449,7 @@ void unit::generate_traits(bool musthaveonly)
 }
 
 //! Advance this unit to another type
-void unit::advance_to(const unit_type* t)
+void unit::advance_to(const unit_type* t, bool use_traits)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
@@ -511,32 +509,36 @@ void unit::advance_to(const unit_type* t)
 
 	backup_state();
 
-        bool do_heal = false; // Track whether unit should get fully healed.
+	bool do_heal = false; // Track whether unit should get fully healed.
 	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
-                do_heal = true; // Can't heal until after mods applied.
+		do_heal = true; // Can't heal until after mods applied.
 		id_ = unit_id_test(t->id());
 		cfg_["id"] = id_;
 		cfg_["gender_id"] = cfg_["gender"];
 	}
 
 
-        // This will add any "musthave" traits to the new unit that it doesn't
-        // already have. This covers the Dark Sorcerer advancing to Lich
-        // and gaining the "undead" trait. Random and/or optional traits are
-        // not added. Note that inappropiate traits are not removed.
-        generate_traits(true);
+	if(cfg_["random_traits"].empty() || utils::string_bool(cfg_["random_traits"])) {
+		generate_traits(!use_traits);
+	} else {
+		// This will add any "musthave" traits to the new unit that it doesn't already have.
+		// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,
+		// but random and/or optional traits are not added,
+		// and neither are inappropiate traits removed.
+		generate_traits(true);
+	}
 
 	// Apply modifications etc, refresh the unit.
-        // This needs to be after type and gender are fixed,
+	// This needs to be after type and gender are fixed,
 	// since there can be filters on the modifications
 	// that may result in different effects after the advancement.
 	apply_modifications();
 
-        // Not that the unit has all of its modifications applied, it is
-        // OK to heal it.
-        if (do_heal) {
+	// Not that the unit has all of its modifications applied, it is
+	// OK to heal it.
+	if (do_heal) {
 		heal_all();
-        }
+	}
 
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
@@ -571,77 +573,77 @@ const std::string& unit::profile() const
 //! Colors for the unit's hitpoints.
 SDL_Colour unit::hp_color() const
 {
-  double unit_energy = 0.0;
-  SDL_Color energy_colour = {0,0,0,0};
-
-  if(max_hitpoints() > 0) {
-    unit_energy = double(hitpoints())/double(max_hitpoints());
-  }
-
-  if(1.0 == unit_energy){
-    energy_colour.r = 33;
-    energy_colour.g = 225;
-    energy_colour.b = 0;
-  } else if(unit_energy > 1.0) {
-    energy_colour.r = 100;
-    energy_colour.g = 255;
-    energy_colour.b = 100;
-  } else if(unit_energy >= 0.75) {
-    energy_colour.r = 170;
-    energy_colour.g = 255;
-    energy_colour.b = 0;
-  } else if(unit_energy >= 0.5) {
-    energy_colour.r = 255;
-    energy_colour.g = 155;
-    energy_colour.b = 0;
-  } else if(unit_energy >= 0.25) {
-    energy_colour.r = 255;
-    energy_colour.g = 175;
-    energy_colour.b = 0;
-  } else {
-    energy_colour.r = 255;
-    energy_colour.g = 0;
-    energy_colour.b = 0;
-  }
-  return energy_colour;
+	double unit_energy = 0.0;
+	SDL_Color energy_colour = {0,0,0,0};
+	
+	if(max_hitpoints() > 0) {
+		unit_energy = double(hitpoints())/double(max_hitpoints());
+	}
+	
+	if(1.0 == unit_energy){
+		energy_colour.r = 33;
+		energy_colour.g = 225;
+		energy_colour.b = 0;
+	} else if(unit_energy > 1.0) {
+		energy_colour.r = 100;
+		energy_colour.g = 255;
+		energy_colour.b = 100;
+	} else if(unit_energy >= 0.75) {
+		energy_colour.r = 170;
+		energy_colour.g = 255;
+		energy_colour.b = 0;
+	} else if(unit_energy >= 0.5) {
+		energy_colour.r = 255;
+		energy_colour.g = 155;
+		energy_colour.b = 0;
+	} else if(unit_energy >= 0.25) {
+		energy_colour.r = 255;
+		energy_colour.g = 175;
+		energy_colour.b = 0;
+	} else {
+		energy_colour.r = 255;
+		energy_colour.g = 0;
+		energy_colour.b = 0;
+	}
+	return energy_colour;
 }
 
 //! Colors for the unit's XP.
 SDL_Colour unit::xp_color() const
 {
-  const SDL_Color near_advance_colour = {255,255,255,0};
-  const SDL_Color mid_advance_colour  = {150,255,255,0};
-  const SDL_Color far_advance_colour  = {0,205,205,0};
-  const SDL_Color normal_colour       = {0,160,225,0};
-  const SDL_Color near_amla_colour    = {225,0,255,0};
-  const SDL_Color mid_amla_colour     = {169,30,255,0};
-  const SDL_Color far_amla_colour     = {139,0,237,0};
-  const SDL_Color amla_colour         = {100,0,150,0};
-  const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
-  const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
-  const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;
-
-  SDL_Color colour=normal_colour;
-  if(advances_to().size()){
-    if(near_advance){
-      colour=near_advance_colour;
-    } else if(mid_advance){
-      colour=mid_advance_colour;
-    } else if(far_advance){
-      colour=far_advance_colour;
-    }
-  } else if (get_modification_advances().size()){
-    if(near_advance){
-      colour=near_amla_colour;
-    } else if(mid_advance){
-      colour=mid_amla_colour;
-    } else if(far_advance){
-      colour=far_amla_colour;
-    } else {
-      colour=amla_colour;
-    }
-  }
-  return(colour);
+	const SDL_Color near_advance_colour = {255,255,255,0};
+	const SDL_Color mid_advance_colour  = {150,255,255,0};
+	const SDL_Color far_advance_colour  = {0,205,205,0};
+	const SDL_Color normal_colour 	  = {0,160,225,0};
+	const SDL_Color near_amla_colour	  = {225,0,255,0};
+	const SDL_Color mid_amla_colour	  = {169,30,255,0};
+	const SDL_Color far_amla_colour	  = {139,0,237,0};
+	const SDL_Color amla_colour		  = {100,0,150,0};
+	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
+	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
+	const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;
+	
+	SDL_Color colour=normal_colour;
+	if(advances_to().size()){
+		if(near_advance){
+			colour=near_advance_colour;
+		} else if(mid_advance){
+			colour=mid_advance_colour;
+		} else if(far_advance){
+			colour=far_advance_colour;
+		}
+	} else if (get_modification_advances().size()){
+		if(near_advance){
+			colour=near_amla_colour;
+		} else if(mid_advance){
+			colour=mid_amla_colour;
+		} else if(far_advance){
+			colour=far_amla_colour;
+		} else {
+			colour=amla_colour;
+		}
+	}
+	return(colour);
 }
 
 void unit::set_movement(int moves)
@@ -768,7 +770,7 @@ void unit::remove_ability_by_id(const std::string &ability)
 				if((**j)["id"] == ability) {
 					abil->remove_child(i->first, offset);
 					return; /* Abilities are unique by id, so we won't find another. */
-					        /* Besides, we just wrecked our iterator. Bye. */
+							/* Besides, we just wrecked our iterator. Bye. */
 				}
 			}
 		}
@@ -885,7 +887,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		// This is because doing the full CSV split is expensive.
 		if(std::find(type.begin(),type.end(),',') != type.end() &&
 		   std::search(type.begin(),type.end(),this_type.begin(),
-			           this_type.end()) != type.end()) {
+					   this_type.end()) != type.end()) {
 			const std::vector<std::string>& vals = utils::split(type);
 
 			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
@@ -942,7 +944,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		bool has_weapon = false;
 		const std::vector<attack_type>& attacks = this->attacks();
 		for(std::vector<attack_type>::const_iterator i = attacks.begin();
-		    i != attacks.end(); ++i) {
+			i != attacks.end(); ++i) {
 			if(i->id() == weapon) {
 				has_weapon = true;
 			}
@@ -1057,7 +1059,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 //- @param use_traits	??
 void unit::read(const config& cfg, bool use_traits)
 {
-	if(cfg["id"]=="" && cfg["type"]=="") {
+	if(cfg["id"].empty() && cfg["type"].empty()) {
 		throw game::load_game_failed("Attempt to de-serialize an empty unit");
 	}
 	cfg_ = cfg;
@@ -1087,12 +1089,12 @@ void unit::read(const config& cfg, bool use_traits)
 
 	underlying_description_ = cfg["description"];
 	if(underlying_description_.empty()){
-	  char buf[80];
-	  snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), get_random());
-	  underlying_description_ = buf;
+		char buf[80];
+		snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), get_random());
+		underlying_description_ = buf;
 	}
 	if(description_.empty()) {
-	  description_ = cfg["type"].c_str();
+		description_ = cfg["type"].c_str();
 	}
 
 	role_ = cfg["role"];
@@ -1141,10 +1143,10 @@ void unit::read(const config& cfg, bool use_traits)
 	bool type_set = false;
 	id_ = "";
 	wassert(gamedata_ != NULL);
-	if(cfg["type"] != "" && cfg["type"] != cfg["id"] || cfg["gender"] != cfg["gender_id"]) {
+	if(!(cfg["type"].empty() || cfg["type"] == cfg["id"]) || cfg["gender"] != cfg["gender_id"]) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
-			advance_to(&i->second.get_gender_unit_type(gender_));
+			advance_to(&i->second.get_gender_unit_type(gender_), use_traits);
 			type_set = true;
 		} else {
 			std::string error_message = _("Unknown unit type '$type|'");
@@ -1218,16 +1220,16 @@ void unit::read(const config& cfg, bool use_traits)
 			config u_atks;
 			config::const_child_itors range;
 			for(range = ut->cfg_.child_range("attack");
-			    range.first != range.second; ++range.first) {
+				range.first != range.second; ++range.first) {
 				t_atks.add_child("attack",**range.first);
 			}
 			for(range = cfg.child_range("attack");
-			    range.first != range.second; ++range.first) {
+				range.first != range.second; ++range.first) {
 				u_atks.add_child("attack",**range.first);
 			}
 			t_atks.merge_with(u_atks);
 			for(range = t_atks.child_range("attack");
-			    range.first != range.second; ++range.first) {
+				range.first != range.second; ++range.first) {
 				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 			}
 			std::vector<attack_type>::iterator at;
@@ -1239,7 +1241,7 @@ void unit::read(const config& cfg, bool use_traits)
 			}
 		} else {
 			for(config::const_child_itors range = cfg.child_range("attack");
-			    range.first != range.second; ++range.first) {
+				range.first != range.second; ++range.first) {
 				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
 			}
 		}
@@ -1270,10 +1272,9 @@ void unit::read(const config& cfg, bool use_traits)
 	}
 	if(!type_set) {
 		backup_state();
-	        if(cfg["random_traits"].empty() ||
-                    utils::string_bool(cfg["random_traits"])) {
-		        generate_traits(!use_traits);
-	        }
+		if(cfg["random_traits"].empty() || utils::string_bool(cfg["random_traits"])) {
+			generate_traits(!use_traits);
+		}
 		apply_modifications();
 	}
 	if(cfg["hitpoints"] != "") {
@@ -1474,9 +1475,6 @@ void unit::read(const config& cfg, bool use_traits)
 			}
 			animations_.push_back(unit_animation(-20,unit_frame(absolute_image(),40),"teleport",unit_animation::DEFAULT_ANIM));
 			// Always have a teleport animation
-
-
-
 		}
 	} else {
 		// Remove animations from private cfg, since they're not needed there now
@@ -1498,10 +1496,10 @@ void unit::read(const config& cfg, bool use_traits)
 	}
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
-        // Make the default upkeep "full"
+	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
-            cfg_["upkeep"] = "full";
-        }
+		cfg_["upkeep"] = "full";
+	}
 }
 void unit::write(config& cfg) const
 {
@@ -1800,15 +1798,19 @@ void unit::set_facing(gamemap::location::DIRECTION dir) {
 void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 {
 	const gamemap & map = disp.get_map();
-	if(!loc.valid() || hidden_ || disp.fogged(loc) ||
-			(invisible(loc,disp.get_units(),disp.get_teams()) &&
-			disp.get_teams()[disp.viewing_team()].is_enemy(side())) ){
-
+	if(!loc.valid() || hidden_ || disp.fogged(loc)
+	|| (invisible(loc,disp.get_units(),disp.get_teams())
+	&& disp.get_teams()[disp.viewing_team()].is_enemy(side())))
+	{
 		clear_haloes();
-		if(anim_) anim_->update_last_draw_time();
+		if(anim_) {
+			anim_->update_last_draw_time();
+		}
 		return;
 	}
-	if(refreshing_) return;
+	if(refreshing_) {
+		return;
+	}
 	refreshing_ = true;
 
 	bool facing_west = facing_ == gamemap::location::NORTH_WEST || facing_ == gamemap::location::SOUTH_WEST;
@@ -1822,10 +1824,14 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
 	const double submerge = is_flying() ? 0.0 : terrain_info.unit_submerge();
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
-	if (is_flying() && height_adjust < 0) height_adjust = 0;
+	if (is_flying() && height_adjust < 0) {
+		height_adjust = 0;
+	}
 	const int ysrc_adjusted = ysrc - height_adjust;
 
-	if(!anim_) set_standing(disp,loc);
+	if(!anim_) {
+		set_standing(disp,loc);
+	}
 	const unit_frame& current_frame = anim_->get_current_frame();
 
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
@@ -1859,8 +1865,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		int dy = static_cast<int>(current_frame.halo_y(ft) * disp.get_zoom_factor());
 		if (facing_west) dx = -dx;
 		unit_anim_halo_ = halo::add(x + dx, y + dy,
-				current_frame.halo(ft), gamemap::location(-1, -1),
-				facing_west ? halo::HREVERSE : halo::NORMAL);
+			current_frame.halo(ft), gamemap::location(-1, -1),
+			facing_west ? halo::HREVERSE : halo::NORMAL);
 	}
 
 
@@ -2074,7 +2080,7 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 	// Invalidate adjacent neighbours if we don't stay in our hex
 	if(tmp_offset != 0) {
 		gamemap::location::DIRECTION dir = (tmp_offset > 0) ? facing_ : loc.get_opposite_dir(facing_);
-		gamemap::location adj_loc =	loc.get_direction(dir);
+		gamemap::location adj_loc = loc.get_direction(dir);
 		over.insert(adj_loc);
 		gamemap::location arr[6];
 		get_adjacent_tiles(adj_loc, arr);
@@ -2088,10 +2094,10 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 
 int unit::upkeep() const
 {
-        // Leaders do not incur upkeep.
-        if(can_recruit()) {
-                return 0;
-        }
+	// Leaders do not incur upkeep.
+	if(can_recruit()) {
+		return 0;
+	}
 	if(cfg_["upkeep"] == "full") {
 		return level();
 	}
@@ -2106,7 +2112,7 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 	const int impassable = 10000000;
 
 	const std::map<t_translation::t_letter,int>::const_iterator i =
-		movement_costs_.find(terrain);
+	movement_costs_.find(terrain);
 
 	if(i != movement_costs_.end()) {
 		return i->second;
@@ -2123,10 +2129,9 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 			return impassable;
 		}
 
-		int ret_value = revert?0:impassable;
+		int ret_value = revert ? 0: impassable;
 		for(t_translation::t_list::const_iterator i = underlying.begin();
-				i != underlying.end(); ++i) {
-
+		i != underlying.end(); ++i) {
 			if(*i == t_translation::PLUS) {
 				revert = false;
 				continue;
@@ -2143,26 +2148,20 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 		}
 
 		movement_costs_.insert(std::pair<t_translation::t_letter, int>(terrain, ret_value));
-
 		return ret_value;
 	}
 
 	const config* movement_costs = cfg_.child("movement_costs");
 
 	int res = -1;
-
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
 			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
-
 			return impassable;
 		}
-
 		const std::string& id = map_->get_terrain_info(underlying.front()).id();
-
 		const std::string& val = (*movement_costs)[id];
-
 		if(val != "") {
 			res = atoi(val.c_str());
 		}
@@ -2236,24 +2235,20 @@ int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) c
 		if(underlying.size() != 1) {
 			LOG_STREAM(err, config) << "terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected\n";
-
 			return 100;
 		}
 
 		const std::string& id = map_->get_terrain_info(underlying.front()).id();
 		const std::string& val = (*defense)[id];
-
 		if(val != "") {
 			res = atoi(val.c_str());
 		}
 	}
-
 	if(res <= 0) {
 		res = 50;
 	}
 
 //	defense_mods_.insert(std::pair<terrain_type::TERRAIN,int>(terrain,res));
-
 	return res;
 }
 
@@ -2327,52 +2322,52 @@ std::map<terrain_type::TERRAIN,int> unit::movement_type() const
 
 std::map<std::string,std::string> unit::advancement_icons() const
 {
-  std::map<std::string,std::string> temp;
-  std::string image;
-  if(can_advance()){
-    if(advances_to_.empty()==false){
-      std::stringstream tooltip;
-      image=game_config::level_image;
-      std::vector<std::string> adv=advances_to();
-      for(std::vector<std::string>::const_iterator i=adv.begin();i!=adv.end();i++){
-	if((*i).size()){
-	  tooltip<<(*i).c_str()<<"\n";
+	std::map<std::string,std::string> temp;
+	std::string image;
+	if(can_advance()){
+		if(advances_to_.empty()==false){
+			std::stringstream tooltip;
+			image=game_config::level_image;
+			std::vector<std::string> adv=advances_to();
+			for(std::vector<std::string>::const_iterator i=adv.begin();i!=adv.end();i++){
+				if((*i).size()){
+					tooltip<<(*i).c_str()<<"\n";
+				}
+			}
+			temp[image]=tooltip.str();
+		}
+		const config::child_list mods=get_modification_advances();
+		for(config::child_list::const_iterator i = mods.begin(); i != mods.end(); ++i) {
+			image=(**i)["image"];
+			if(image.size()){
+				std::stringstream tooltip;
+				tooltip<<temp[image];
+				std::string tt=(**i)["description"];
+				if(tt.size()){
+					tooltip<<tt<<"\n";
+				}
+				temp[image]=tooltip.str();
+			}
+		}
 	}
-      }
-      temp[image]=tooltip.str();
-    }
-    const config::child_list mods=get_modification_advances();
-    for(config::child_list::const_iterator i = mods.begin(); i != mods.end(); ++i) {
-      image=(**i)["image"];
-      if(image.size()){
-	std::stringstream tooltip;
-	tooltip<<temp[image];
-	std::string tt=(**i)["description"];
-	if(tt.size()){
-	  tooltip<<tt<<"\n";
-	}
-	temp[image]=tooltip.str();
-      }
-    }
-  }
-  return(temp);
+	return(temp);
 }
 std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 {
-  std::vector<std::pair<std::string,std::string> > temp;
-  std::pair<std::string,std::string> icon; //<image,tooltip>
-
-  const config::child_list& advances = get_modification_advances();
-  for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
-    icon.first=(**i)["icon"];
-    icon.second=(**i)["description"];
-
-    for(unsigned int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
-
-      temp.push_back(icon);
-    }
-  }
-  return(temp);
+	std::vector<std::pair<std::string,std::string> > temp;
+	std::pair<std::string,std::string> icon; //<image,tooltip>
+	
+	const config::child_list& advances = get_modification_advances();
+	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
+		icon.first=(**i)["icon"];
+		icon.second=(**i)["description"];
+		
+		for(unsigned int j=0;j<(modification_count("advance",(**i)["id"]));j++) {
+			
+			temp.push_back(icon);
+		}
+	}
+	return(temp);
 }
 
 void unit::reset_modifications()
@@ -2425,29 +2420,29 @@ config::child_list unit::get_modification_advances() const
 	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
 		if (!utils::string_bool((**i)["strict_amla"]) || advances_to_.empty()) {
 			if(modification_count("advance",(**i)["id"]) < lexical_cast_default<size_t>((**i)["max_times"],1)) {
-			   std::vector<std::string> temp = utils::split((**i)["require_amla"]);
-			   if(temp.size()){
-			      std::sort(temp.begin(),temp.end());
-			      std::vector<std::string> uniq;
-			      std::unique_copy(temp.begin(),temp.end(),std::back_inserter(uniq));
-			      bool requirements_done=true;
-			      for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
-					int required_num = std::count(temp.begin(),temp.end(),*ii);
-					int mod_num = modification_count("advance",*ii);
-					if(required_num>mod_num){
-						requirements_done=false;
+				std::vector<std::string> temp = utils::split((**i)["require_amla"]);
+				if(temp.size()){
+					std::sort(temp.begin(),temp.end());
+					std::vector<std::string> uniq;
+					std::unique_copy(temp.begin(),temp.end(),std::back_inserter(uniq));
+					bool requirements_done=true;
+					for(std::vector<std::string>::const_iterator ii = uniq.begin(); ii != uniq.end(); ii++){
+						int required_num = std::count(temp.begin(),temp.end(),*ii);
+						int mod_num = modification_count("advance",*ii);
+						if(required_num>mod_num){
+							requirements_done=false;
+						}
 					}
-			      }
-			     if(requirements_done){
+					if(requirements_done){
+						res.push_back(*i);
+					}
+				}else{
 					res.push_back(*i);
-			      }
-		          }else{
-				res.push_back(*i);
-		          }
-		        }
+				}
+			}
 		}
 	}
-
+	
 	return res;
 }
 
@@ -2471,24 +2466,22 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 	string_map::const_iterator end = mod.values.end();
 	for (; iter != end; iter++) {
 		dst[iter->first] =
-				lexical_cast_default<std::string>(
+			lexical_cast_default<std::string>(
 				(delta == true)*lexical_cast_default<int>(dst[iter->first])
 				+ lexical_cast_default<int>(iter->second)
-				);
+			);
 	}
 }
 
-void unit::add_modification(const std::string& type, const config& mod,
-                    bool no_add)
+void unit::add_modification(const std::string& type, const config& mod, bool no_add)
 {
 	if(no_add == false) {
 		modifications_.add_child(type,mod);
 	}
 
 	std::vector<t_string> effects_description;
-
 	for(config::const_child_itors i = mod.child_range("effect");
-	    i.first != i.second; ++i.first) {
+		i.first != i.second; ++i.first) {
 
 		// See if the effect only applies to certain unit types
 		const std::string& type_filter = (**i.first)["unit_type"];
@@ -2508,7 +2501,6 @@ void unit::add_modification(const std::string& type, const config& mod,
 			}
 		}
 
-
 		const std::string& apply_to = (**i.first)["apply_to"];
 		const std::string& apply_times = (**i.first)["times"];
 		int times = 1;
@@ -2526,14 +2518,14 @@ void unit::add_modification(const std::string& type, const config& mod,
 					variation_ = (**i.first)["name"];
 					wassert(gamedata_ != NULL);
 					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
-                                        if(var == gamedata_->unit_types.end()) {
+										if(var == gamedata_->unit_types.end()) {
 						std::string error_message = _("Unknown unit type '$type|'");
 						utils::string_map symbols;
 						symbols["type"] = id();
 						error_message = utils::interpolate_variables_into_string(error_message, &symbols);
 						LOG_STREAM(err, engine) << "unit of type " << id() << " not found!\n";
 						throw game::game_error(error_message);
-                                        }
+										}
 					advance_to(&var->second.get_variation(variation_));
 				} else if(apply_to == "profile") {
 					const std::string& portrait = (**i.first)["portrait"];
@@ -2563,7 +2555,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 					bool first_attack = true;
 
 					for(std::vector<attack_type>::iterator a = attacks_.begin();
-					    a != attacks_.end(); ++a) {
+						a != attacks_.end(); ++a) {
 						std::string desc;
 						bool affected = a->apply_modification(**i.first,&desc);
 						if(affected && desc != "") {
@@ -2879,7 +2871,6 @@ void unit::add_modification(const std::string& type, const config& mod,
 						//lg::wml_error<<"teleport animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id_<<")\n";
 						//lg::wml_error<<"please put it with an [animation] tag and apply_to=teleport flag\n";
 					}
-
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -2888,7 +2879,7 @@ void unit::add_modification(const std::string& type, const config& mod,
 				bool first_attack = true;
 
 				for(std::vector<attack_type>::iterator a = attacks_.begin();
-				    a != attacks_.end(); ++a) {
+					a != attacks_.end(); ++a) {
 					std::string desc;
 					bool affected = a->describe_modification(**i.first,&desc);
 					if(affected && desc != "") {
@@ -2975,7 +2966,7 @@ const std::string& unit::image_fighting(attack_type::RANGE range) const
 	static const std::string long_range("image_long");
 
 	const std::string& str = range == attack_type::LONG_RANGE ?
-	                                  long_range : short_range;
+									  long_range : short_range;
 	const std::string& val = cfg_[str];
 
 	if(!val.empty()) {
@@ -3047,7 +3038,7 @@ void unit::apply_modifications()
 	std::vector< t_string >::iterator k = traits.begin(), k_end = traits.end();
 	if (k != k_end) {
 		// We want to make sure the traits always have a consistent ordering.
-	        // Try out not sorting, since quick,resilient can give different HP
+			// Try out not sorting, since quick,resilient can give different HP
 			// to resilient,quick so rather preserve order
 		// std::sort(k, k_end);
 		for(;;) {
@@ -3079,11 +3070,11 @@ bool unit::invisible(const gamemap::location& loc,
 			if(teams[side_-1].is_enemy(u->second.side()) && tiles_adjacent(loc,u->first)) {
 				// Enemy spotted in adjacent tiles, check if we can see him.
 				// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
-				if(see_all)	{
+				if(see_all) {
 					is_inv = false;
 					break;
 				} else if(!teams[side_-1].fogged(u->first.x,u->first.y)
-						&& !u->second.invisible(u->first, units,teams,true)) {
+				&& !u->second.invisible(u->first, units,teams,true)) {
 					is_inv = false;
 					break;
 				}
@@ -3140,7 +3131,7 @@ unit_map::const_iterator team_leader(unsigned int side, const unit_map& units)
 unit_map::iterator find_visible_unit(unit_map& units,
 		const gamemap::location loc,
 		const gamemap& map,
-          const std::vector<team>& teams, const team& current_team,
+		  const std::vector<team>& teams, const team& current_team,
 		bool see_all)
 {
 	unit_map::iterator u = units.find(loc);

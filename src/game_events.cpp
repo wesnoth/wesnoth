@@ -1362,7 +1362,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		wassert(units != NULL);
 		wassert(game_map != NULL);
 		wassert(status_ptr != NULL);
-		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config());
+		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config(),true);
 		preferences::encountered_units().insert(new_unit.id());
 		gamemap::location loc = cfg_to_loc(cfg);
 
