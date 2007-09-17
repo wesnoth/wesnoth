@@ -86,14 +86,14 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 					if(surf == NULL) {
 						continue;
 					}
-					i = mini_terrain_cache.insert(cache_map::value_type(terrain,surf)).first;
+					i = cache.insert(cache_map::value_type(terrain,surf)).first;
 				}
 
 				surf = i->second;
 				
 				if (need_fogging) {
 					surf = surface(adjust_surface_colour(surf,-50,-50,-50));
-					mini_fogged_terrain_cache.insert(cache_map::value_type(terrain,surf));
+					fog_cache.insert(cache_map::value_type(terrain,surf));
 				}
 
 				wassert(surf != NULL);
