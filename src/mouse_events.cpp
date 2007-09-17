@@ -1186,9 +1186,6 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 		move_unit_along_current_route(check_shroud);
-		if(check_shroud && clear_shroud(*gui_, status_, map_, gameinfo_, units_, teams_, team_num_ - 1)) {
-			clear_undo_stack();
-		}
 	} else {
 		// we select a (maybe empty) hex
 		gui_->unhighlight_reach();
