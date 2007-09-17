@@ -716,9 +716,11 @@ def hack_syntax(filename, lines):
                 lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
                     wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
                 modcount += 1
-                radius_pos = wmlfind("radius=", WmlIterator(lines, filename, startline+len(to_indent)+1))
-            else:
-                radius_pos = wmlfind("radius=", radius_pos)
+                #backup to rescan
+                radius_pos.seek(startline-1)
+                #pass the inserted content
+                radius_pos.seek(startline+len(to_indent)+1)
+            radius_pos = wmlfind("radius=", radius_pos)
     # Check for duplicated attack names -- may be a result of a naive
     # boucman conversion.
     if boucmanized:
