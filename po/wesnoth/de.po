@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-18 00:58+0200\n"
-"PO-Revision-Date: 2007-09-16 13:29+0100\n"
+"PO-Revision-Date: 2007-09-18 01:08+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -2728,7 +2728,6 @@ msgid "plague"
 msgstr "untote Plage"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2806,15 +2805,14 @@ msgid "magical"
 msgstr "magisch"
 
 #: data/core/macros/abilities.cfg:551
-#, fuzzy
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 "Magisch:\n"
-"Angriffe, die magischer Natur sind, haben grundsätzlich eine "
-"Trefferwahrscheinlichkeit von 70%."
+"Angriffe, die magischer Natur sind, haben grundsätzlich, unabhängig vom "
+"Verteidiger, eine Trefferwahrscheinlichkeit von 70%."
 
 #: data/core/macros/abilities.cfg:562
 msgid "swarm"
@@ -2882,7 +2880,6 @@ msgid "poison"
 msgstr "vergiften"
 
 #: data/core/macros/abilities.cfg:611
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2892,7 +2889,8 @@ msgstr ""
 "Vergiften:\n"
 "Mit Gift bestrichene Waffen können bei einem Treffer das Ziel dauerhaft "
 "vergiften. Dadurch verliert das Opfer pro Runde 8 LP, bis es geheilt wird "
-"oder seine LP auf 1 reduziert wurden."
+"oder seine LP auf 1 reduziert wurden. Das Gift alleine wirkt dabei nie "
+"tödlich."
 
 #: data/core/macros/amla.cfg:10
 msgid ", MAX XP +25%"
@@ -6922,9 +6920,8 @@ msgid "Abort game"
 msgstr "Spiel abbrechen"
 
 #: src/playturn.cpp:208 src/playturn.cpp:220
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Durch lokalen Spieler ersetzen"
+msgstr "Durch $player ersetzen"
 
 #: src/playturn.cpp:226
 msgid "$player has left the game. What do you want to do?"
