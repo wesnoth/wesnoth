@@ -237,7 +237,7 @@ class WmlIterator(object):
         if clearEnd:
             self.endScope = None
         if lineno < self.lineno:
-            for scope in reversed(scopes):
+            for scope in reversed(self.scopes):
                 # if moving backwards, try to re-use a scope iterator
                 if scope.lineno <= lineno:
                     # copy the scope iterator's state to self
