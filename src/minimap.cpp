@@ -48,6 +48,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 
 	typedef mini_terrain_cache_map cache_map;
 	cache_map& cache = mini_terrain_cache;
+	cache_map& fog_cache = mini_fogged_terrain_cache;
 
 	for(int y = 0; y != map.h(); ++y) {
 		for(int x = 0; x != map.w(); ++x) {
@@ -59,7 +60,17 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 				const bool shrouded = vw != NULL && vw->shrouded(x,y);
 				const bool fogged = vw != NULL && vw->fogged(x,y) && !shrouded;
 				const t_translation::t_letter terrain = shrouded ? t_translation::VOID_TERRAIN : map[x][y];
-				cache_map::iterator i = cache.find(terrain);
+
+				cache_map::iterator i;
+				bool need_fogging = false;
+
+				if (fogged) {
+					i = fog_cache.find(terrain);
+				}
+				if (!fogged || i == fog_cache.end()) {
+					i = cache.find(terrain);
+					need_fogging = fogged;
+				}
 
 				if(i == cache.end()) {
 					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image() + ".png",image::HEXED));
@@ -75,14 +86,14 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 					if(surf == NULL) {
 						continue;
 					}
-
-					i = cache.insert(cache_map::value_type(terrain,surf)).first;
-				} else {
-					surf = surface(i->second);
+					i = mini_terrain_cache.insert(cache_map::value_type(terrain,surf)).first;
 				}
 
-				if(fogged) {
+				surf = i->second;
+				
+				if (need_fogging) {
 					surf = surface(adjust_surface_colour(surf,-50,-50,-50));
+					mini_fogged_terrain_cache.insert(cache_map::value_type(terrain,surf));
 				}
 
 				wassert(surf != NULL);

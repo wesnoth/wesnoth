@@ -83,6 +83,7 @@ void reset_cache(std::vector<image::cache_item<T> >& cache)
 namespace image {
 
 mini_terrain_cache_map mini_terrain_cache;
+mini_terrain_cache_map mini_fogged_terrain_cache;
 
 void flush_cache()
 {
@@ -94,6 +95,7 @@ void flush_cache()
 	reset_cache(brightened_images_);
 	reset_cache(semi_brightened_images_);
 	mini_terrain_cache.clear();
+	mini_fogged_terrain_cache.clear();
 	reversed_images_.clear();
 	image_existance_map.clear();
 }
