@@ -11,48 +11,22 @@ macroClosePattern = re.compile(r'\}')
 
 silenceErrors = {}
 
-def wmlfind(element, itor):
+def wmlfind(element, wmlItor):
     """Find a simple element from traversing a WML iterator"""
-    for i in itor:
+    for itor in wmlItor.copy():
         if element == itor.element:
             return itor
     return None
 
-def wmlfindin(element, scopeElement, itor, memory={}):
-    """Find an element inside a particular type of scope element
-    return an iterator pointing to the element and an iterator to its scope"""
-    if element is None:
-        #pass element None to flush wmlfindin's cached memory
-        for k in memory.keys():
-            if k[0] == itor.fname and k[1] == scopeElement:
-                del memory[k]
-        return None
-    #start the main loop... this is optimized to prevent iterator resets
-    initLoop = True
-    tracker, breaker = memory.get((itor.fname, scopeElement, itor.lineno), ([], itor.endScope))
-    while True:
-        try:
-            if initLoop:
-                itor.endScope, breaker = breaker, itor.endScope
-                initLoop = False
-            itor.next()
-            if scopeElement == itor.element:
-                restoreBreak = itor.endScope
-                itor.endScope = (scopeElement, itor.lineno)
-                tracker.append((len(itor.scopes), itor.copy(), restoreBreak))
-                memory[(itor.fname, scopeElement, itor.lineno)] = (tracker, itor.endScope)
-            if element == itor.element:
-                for track in tracker:
-                    if len(itor.scopes) == track[0]+1:
-                        memory[(itor.fname, scopeElement, itor.lineno)] = (tracker, itor.endScope)
-                        itor.endScope = breaker
-                        return itor, track[1].copy()
-        except StopIteration:
-            if not tracker:
-                return None
-            track = tracker.pop()
-            itor.endScope = track[2]
-            del memory[(itor.fname, scopeElement, track[1].lineno)]
+def wmlfindin(element, scopeElement, wmlItor):
+    """Find an element inside a particular type of scope element"""
+    if not scopeElement:
+        return wmlfind(element, wmlItor)
+    for itor in wmlItor.copy():
+        if element == itor.element\
+        and itor.scopes and scopeElement == itor.scopes[-1].element:
+            return itor
+    return None
 
 def parseQuotes(lines, fname, lineno):
     """Return the line or multiline text if a quote spans multiple lines"""
@@ -80,20 +54,26 @@ def parseQuotes(lines, fname, lineno):
         beginquote = text[:begincomment].find('"', endquote+1)
     return text, span
 
-def isDirective(str):
+def isDirective(elem):
     "Identify things that shouldn't be indented."
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
     for prefix in ("#ifdef", "#else", "#endif", "#define", "#enddef"):
-        if str.startswith(prefix):
+        if elem.startswith(prefix):
             return True
     return False
 
-def isCloser(str):
+def isCloser(elem):
     "Are we looking at a closing tag?"
-    return str.startswith("[/")
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
+    return elem.startswith("[/")
 
-def isOpener(str):
+def isOpener(elem):
     "Are we looking at an opening tag?"
-    return str.startswith("[") and not isCloser(str)
+    if isinstance(elem, WmlIterator):
+        elem = elem.element
+    return elem.startswith("[") and not isCloser(elem)
 
 def closeScope(scopes, closerElement, fname, lineno):
     """Close the most recently opened scope. Return false if not enough scopes.
@@ -101,14 +81,17 @@ def closeScope(scopes, closerElement, fname, lineno):
     non-directives cannot close a directive and will no-op in that case."""
     try:
         if isDirective(closerElement):
-            while not isDirective(scopes.pop()[0]):
+            while not isDirective(scopes.pop()):
                 pass
-        elif not isDirective(scopes[-1][0]):
+        elif not isDirective(scopes[-1]):
             closed = scopes.pop()
-            if ((isOpener(closed[0]) and closerElement != '[/'+closed[0][1:]
-                 and '+'+closerElement != closed[0][1]+'[/'+closed[0][2:])
-            or (closed[0].startswith('{') and closerElement.find('macro')<0)):
-                printError(fname, 'reached', closerElement, 'at line', lineno+1, 'before closing scope', closed[0], '(%d)'%(closed[1]+1))
+            elem = closed
+            if isinstance(closed, WmlIterator):
+                elem = closed.element
+            if ((isOpener(elem) and closerElement != '[/'+elem[1:]
+                 and '+'+closerElement != elem[1]+'[/'+elem[2:])
+            or (elem.startswith('{') and closerElement.find('macro')<0)):
+                printError(fname, 'reached', closerElement, 'at line', lineno+1, 'before closing scope', elem, '(%d)'%lineno)
                 scopes.append(closed) # to reduce additional errors (hopefully)
         return True
     except IndexError:
@@ -169,17 +152,17 @@ Element Types:
     text = text.lstrip()
     commentSearch = 1
     if text.startswith('#ifdef'):
-        return ['#ifdef'], [('#ifdef', lineno)]
+        return (['#ifdef'],)*2
     elif text.startswith('#else'):
         if not closeScope(scopes, '#else', fname, lineno):
             printScopeError('#else', fname, lineno)
-        return ['#else'], [('#else', lineno)]
+        return (['#else'],)*2
     elif text.startswith('#endif'):
         if not closeScope(scopes, '#endif', fname, lineno):
             printScopeError('#endif', fname, lineno)            
         return ['#endif'], []
     elif text.startswith('#define'):
-        return ['#define'], [('#define', lineno)]
+        return (['#define'],)*2
     elif text.find('#enddef') >= 0:
         elements.append(('#enddef', text.find('#enddef'), -1))
     else:
@@ -212,29 +195,32 @@ Element Types:
                 printScopeError(elem, fname, lineno)
             scopeDelta += 1
         while scopeDelta > 0:
-            openedScopes.append((elem, lineno))
+            openedScopes.append(elem)
             scopeDelta -= 1
         if elem != closeMacroType:
             resultElements.append(elem)
     return resultElements, openedScopes
-    
+
 class WmlIterator(object):
     """Return an iterable WML navigation object.
     note: if changes are made to lines while iterating, this may produce
-    unexpected results."""
+    unexpected results. In such case, seek() to the linenumber of a
+    scope behind where changes were made."""
     def __init__(self, lines, fname=None, begin=-1, endScope=None):
         "Initialize a new WmlIterator"
         self.lines = lines
         self.fname = fname
-        self.endScope = None
-        self.end = len(lines)
         self.reset()
         self.seek(begin)
-        self.endScope = endScope
 
     def __iter__(self):
         """The magic iterator method"""
         return self
+
+    def __cmp__(self, other):
+        """Compare two iterators"""
+        return cmp((self.fname, self.lineno, self.element),
+                   (other.fname, other.lineno, other.element))
 
     def reset(self):
         """Reset any line tracking information to defaults"""
@@ -244,19 +230,32 @@ class WmlIterator(object):
         self.text = ""
         self.span = 1
         self.element = ""
+        return self
         
-    def seek(self, lineno):
+    def seek(self, lineno, clearEnd=True):
         """Move the iterator to a specific line number"""
+        if clearEnd:
+            self.endScope = None
         if lineno < self.lineno:
-        # moving backwards forces a reset
-            self.reset()
+            for scope in reversed(scopes):
+                # if moving backwards, try to re-use a scope iterator
+                if scope.lineno <= lineno:
+                    # copy the scope iterator's state to self
+                    self.__dict__ = dict(scope.__dict__)
+                    self.scopes = scope.scopes[:]
+                    self.nextScopes = scope.nextScopes[:]
+                    break
+            else:
+                # moving backwards past all scopes forces a reset
+                self.reset()
         while self.lineno + self.span - 1 < lineno:
             self.next()
+        return self
 
     def hasNext(self):
         """Some loops may wish to check this method instead of calling next()
         and handling StopIteration... note: inaccurate for ScopeIterators"""
-        return self.end > self.lineno + self.span
+        return len(self.lines) > self.lineno + self.span
 
     def copy(self):
         """Return a copy of this iterator"""
@@ -264,6 +263,21 @@ class WmlIterator(object):
         itor.scopes = self.scopes[:]
         itor.nextScopes = self.nextScopes[:]
         return itor
+
+    def __str__(self):
+        """Return a pretty string representation"""
+        if self.lineno == -1:
+            return 'beginning of file'
+        loc = ' at line ' + str(self.lineno+1)
+        if self.element:
+            return str(self.element) + loc
+        if self.text.strip():
+            return 'text' + loc
+        return 'whitespace' + loc
+
+    def __repr__(self):
+        """Return a very basic string representation"""
+        return 'WmlIterator<' + repr(self.element) +', line %d>'%(self.lineno+1)
 
     def next(self):
         """Move the iterator to the next line number
@@ -275,7 +289,15 @@ class WmlIterator(object):
         self.lineno = self.lineno + self.span
         self.text, self.span = parseQuotes(self.lines, self.fname, self.lineno)
         self.scopes.extend(self.nextScopes)
-        self.element, self.nextScopes = parseElements(self.text, self.fname, self.lineno, self.scopes)
+        self.element, nextScopes = parseElements(self.text, self.fname, self.lineno, self.scopes)
+        self.nextScopes = []
+        for elem in nextScopes:
+            assert elem
+            copyItor = self.copy()
+            copyItor.element = elem
+            copyItor.scopes = self.scopes[:]
+            self.nextScopes.append(copyItor)
+            copyItor.nextScopes = self.nextScopes[:]
         if(len(self.element) == 1):
             # currently we only wish to handle simple single assignment syntax
             self.element = self.element[0]
@@ -287,7 +309,9 @@ class WmlIterator(object):
         """Return an iterator for the current scope"""
         if not self.scopes:
             return WmlIterator(self.lines, self.fname)
-        return WmlIterator(self.lines, self.fname, self.scopes[-1][1], self.scopes[-1])
+        scopeItor = self.scopes[-1].copy()
+        scopeItor.endScope = self.scopes[-1]
+        return scopeItor
 
 if __name__ == '__main__':
     """Perform a test run on a file or directory"""
