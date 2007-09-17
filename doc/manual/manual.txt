@@ -485,22 +485,51 @@ two traits.
 The possible traits for most units are as follows:
 
 Intelligent::
-  Requires 20% less experience to advance a level (Trolls do not get this
-  trait).
+  Intelligent units require 20% less experience than usual to advance
+  (Trolls do not get this trait).
+  Intelligent units are very useful at the beginning of a campaign as they
+  can advance to higher levels more quickly. Later in campaigns Intelligent
+  is not quite as useful because the After Maximum Level Advancement (AMLA)
+  is not as significant a change as advancing a level. If you have many 
+  'maximum level' units you may wish to recall units with more desirable 
+  traits.
 Quick::
-  Has one extra movement point, but 5% fewer hitpoints.
+  Quick units have 1 extra movement point, but 5% less HP than usual.
+  Quick is the most noticeable trait, particularly in slower moving units 
+  such as trolls or heavy infantry. Units with the Quick trait often have 
+  greatly increased mobility in rough terrain, which can be important to 
+  consider when deploying your forces. Also, Quick units aren't quite as 
+  tough as units without this trait and are subsequently less good at holding
+  contested positions.
 Resilient::
-  Increases hitpoints by 4 plus 1 hitpoint per level of the unit.
+  Resilient units have 4 HP plus 1 HP per level more than usual.
+  Resilient units can be useful at all stages of a campaign, and this is a
+  useful trait for all units. Resilient is often most helpful as a trait when
+  it occurs in a unit that has some combination of low hitpoints, good 
+  defense, or high resistances. Resilient units are especially useful for 
+  holding strategic positions against opponents.
 Strong::
-  Does 1 extra damage per strike in melee, and has 1 extra hitpoint
+  Strong units do 1 more damage for every successful strike in melee combat,
+  and have 1 more HP.
+  While useful for any close-combat unit, Strong is most effective for units
+  who have a high number of swings such as the Elvish Fighter. Strong units 
+  can be very useful when a tiny bit of extra damage is all that is needed to
+  turn a damaging stroke into a killing blow.
 
 There are also some traits that are assigned only for certain units or
 only for units of a certain race. These are:
 
 Dextrous::
-  Does 1 extra damage per strike in ranged combat (Elves).
+  Dextrous units do 1 more damage for every successful strike in ranged combat.
+  Dextrous is a trait possessed only by Elves. The Elven people are known for
+  their uncanny grace, and their great facility with the bow. Some, however,
+  are gifted with natural talent that exceeds their brethren. These elves
+  inflict an additional point of damage with each arrow.
 Healthy::
-  Allows the unit to rest-heal even when not resting (Dwarves).
+  Renowned for their vitality, some dwarves are sturdier than others and can
+  rest even when travelling.
+  Healthy units have 2 more HP than usual and rest heal 2 additional HP after
+  each turn they did not fight.
 Fearless::
   Does not suffer from a negative attack bonus during its unfavourable
   time of day (Trolls, Walking Corpses).
@@ -510,11 +539,27 @@ These traits can either be assigned by the scenario designer or are always
 assigned based on the unit type:
 
 Loyal::
-  Has zero upkeep cost.
+  Loyal units don't incur upkeep. Most units incur an upkeep cost at the end 
+  of every turn, which is equal to their level. Loyal units do not incur this
+  cost.
+  During campaigns, certain units may opt to join the player's forces of their
+  own volition. These units are marked with the Loyal trait. Although they may
+  require payment to be recalled, they never incur any upkeep costs. This can
+  make them invaluable during a long campaign, when gold is in short supply.
+  This trait is never given to recruited units, so it may be unwise to dismiss
+  such units or to send them to a foolish death.
 Undead::
-  Immune to poison and drain (Undead).
+  Undead units are immune to poison, also drain and plague doesn't work on them.
+  Undead units generally have 'Undead' as their only trait. Since Undead units 
+  are the bodies of the dead, risen to fight again, poison has no effect upon 
+  them. This can make them invaluable in dealing with foes who use poison in 
+  conjunction with their attacks.
 Mechanical::
-  Immune to poison, drain and plague (Mechanical units).
+  Mechanical units are immune to poison, also drain and plague doesn't work on
+  them.
+  Mechanical units generally have 'Mechanical' as their only trait. Since 
+  mechanical units don't really have life, drain, poison and plague has no 
+  effect upon them.
 
 Unit Specialties
 ^^^^^^^^^^^^^^^^
@@ -522,50 +567,47 @@ Unit Specialties
 Certain units have special attacks. These are listed below:
 
 Backstab::
-  This attack deals double damage if there is an enemy of the target on
-  the opposite side of the target, and that unit is not incapacitated
-  (e.g. turned to stone).
+  This attack deals double damage if there is an enemy of the target on the
+  opposite side of the target, and that unit is not incapacitated (e.g.
+  turned to stone).
 Berserk::
   Whether used offensively or defensively, this attack presses the
-  engagement until one of the combatants is slain, or 30 rounds of
-  attacks have occurred.
+  engagement until one of the combatants is slain, or 30 rounds of attacks
+  have occurred.
 Charge::
-  This attack deals double damage to the target. It also causes this
-  unit to take double damage from the target's counterattack.
+  This attack deals double damage to the target. It also causes this unit to
+  take double damage from the target's counterattack.
 Drain::
-  This unit drains health from living units, healing itself for half
-  the amount of damage it deals (rounded down).
+  This unit drains health from living units, healing itself for half the amount
+  of damage it deals (rounded down).
 Firststrike::
-  This unit always strikes first with this attack, even if they are
-  defending.
+  This unit always strikes first with this attack, even if they are defending.
 Magical::
   This attack always has a 70% chance to hit regardless of the defensive
   ability of the unit being attacked.
 Marksman::
-  When used offensively, this attack always has at least a 60% chance
-  to hit.
+  When used offensively, this attack always has at least a 60% chance to hit.
 Plague::
-  When a unit is killed by a Plague attack, that unit is replaced with
-  a unit identical to and on the same side as the unit with the Plague
-  attack. (This doesn't work on Undead units or units in villages.)
+  When a unit is killed by a Plague attack, that unit is replaced with a
+  Walking Corpse on the same side as the unit with the Plague attack. This
+  doesn't work on Undead or units in villages.
 Poison::
   This attack poisons the target. Poisoned units loose 8 HP every turn
-  until they are cured or are reduced to 1 HP. (Poison can not, of itself,
-  kill a unit.)
+  until they are cured or are reduced to 1 HP. Poison can not, of itself,
+  kill a unit.
 Slow::
-  This attack slows the target. Slow reorders the attacks allowing the
-  attacker to strike one more time until the defender an fight. Slowed
-  units move at half normal speed, do not emit a zone of control,
-  and always lose initiative in fights. [Effect on damage? Needs to
-  be clarified.]
+  This attack slows the target until it ends a turn. Slow halves the damage
+  caused by attacks and the movement cost for a slowed unit is doubled. A unit
+  that is slowed will feature a snail icon in its sidebar information when it
+  is selected.
 Stone::
-  This attack turns the target to stone. Units that have been turned to
-  stone may not move or attack (or be attacked).
+  This attack turns the target to stone. Units that have been turned to stone
+  may not move or attack.
 Swarm::
-  The number of strikes of this attack decreases when the unit is
-  wounded. The number of strikes is proportional to the % of HP/maximum
-  HP the unit has. For example, a unit with 3/4 of its maximum HP will
-  get 3/4 of the number of strikes.
+  The number of strikes of this attack decreases when the unit is wounded. The
+  number of strikes is proportional to the % of HP/maximum HP the unit has. For
+  example a unit with 3/4 of its maximum HP will get 3/4 of the number of
+  strikes.
 
 Abilities
 ^^^^^^^^^
@@ -575,58 +617,67 @@ or have an effect on how the unit interacts with other units. These
 abilities are listed below:
 
 Ambush::
-  This unit can hide in forest, and remain undetected by its
-  enemies. Enemy units cannot see this unit when it is in forest, except
-  for any turn immediately after this unit has attacked, or if there
-  are enemy units next to this unit.
+  This unit can hide in forest, and remain undetected by its enemies.
+  Enemy units cannot see this unit while it is in forest, except if they have
+  units next to it. Any enemy unit that first discovers this unit immediately
+  loses all its remaining movement.
+Concealment::
+  This unit can hide in villages (with the exception of water villages), and
+  remain undetected by its enemies, except by those standing next to it.
+  Enemy units can not see this unit while it is in a village, except if they
+  have units next to it. Any enemy unit that first discovers this unit
+  immediately loses all its remaining movement.
 Cures::
-  This unit combines herbal remedies with magic to heal units more
-  quickly than is normally possible on the battlefield. This unit will
-  care for all adjacent friendly units that are injured at the beginning
-  of each turn. A unit cared for by a curer may heal up to 8 HP per
-  turn. A curer may heal a total of 18 HP per turn, for all units it
-  cares for. A curer can cure a unit of poison, although that unit will
-  receive no additional healing on the turn it is cured of poison.
-Heals::
-  Allows the unit to heal adjacent friendly units at the beginning of
-  each turn. A unit cared for by a healer may heal up to 4HP per turn. A
-  healer may heal a total of 8HP per turn, for all units it cares for. A
-  poisoned unit cannot be cured of its poison by a healer, and must seek
+  A curer can cure a unit of poison, although that unit will receive no
+  additional healing on the turn it is cured of the poison.
+Heals +4::
+  Allows the unit to heal adjacent friendly units at the beginning of each
+  turn.
+  A unit cared for by this healer may heal up to 4 HP per turn, or stop
+  poison from taking effect for that turn.
+  A poisoned unit cannot be cured of its poison by a healer, and must seek
+  the care of a village or a unit that can cure.
+Heals +8::
+  This unit combines herbal remedies with magic to heal units more quickly
+  than is normally possible on the battlefield.
+  A unit cared for by this healer may heal up to 8 HP per turn, or stop
+  poison from taking effect for that turn.
+  A poisoned unit cannot be cured of its poison by a healer, and must seek
   the care of a village or a unit that can cure.
 Illuminates::
-  This unit illuminates the surrounding area, making lawful units fight
-  better, and chaotic units fight worse. Any units adjacent to this unit
-  will fight as if it were dusk when it is night, and as if it were day
-  when it is dusk.
+  This unit illuminates the surrounding area, making lawful units fight 
+  better, and chaotic units fight worse.
+  Any units adjacent to this unit will fight as if it were dusk when it
+  is night, and as if it were day when it is dusk.
 Leadership::
-  This unit can lead friendly units that are next to it, making them
-  fight better. Adjacent friendly units of lower level will do more
-  damage in battle. When a unit adjacent to, of a lower level than,
-  and on the same side as a unit with Leadership engages in combat,
-  its attacks do 25% more damage times the difference in their levels.
+  This unit can lead friendly units that are next to it, making them fight
+  better.
+  Adjacent friendly units of lower level will do more damage in battle.
+  When a unit adjacent to, of a lower level than, and on the same side as a
+  unit with Leadership engages in combat, its attacks do 25% more damage
+  times the difference in their levels.
 Nightstalk::
-  This unit becomes invisible during night. Enemy units cannot see this
-  unit at night, except for any turn immediately after this unit has
-  attacked, or if they are next to this unit.
+  The unit becomes invisible during night.
+  Enemy units cannot see this unit at night, except if they have units next to
+  it. Any enemy unit that first discovers this unit immediately loses all its
+  remaining movement.
 Regenerates::
   This unit will heal itself 8HP per turn. If it is poisoned, it will
   remove the poison instead of healing.
 Skirmisher::
-  This unit is skilled in moving past enemies quickly, and ignores all
-  enemy Zones of Control. (Exception: if you stop in an enemy zone of
-  control, your remaining movement will be set to 0 even if you are
-  a skirmisher.)
+  This unit is skilled in moving past enemies quickly, and ignores all enemy
+  Zones of Control.
 Steadfast::
   This unit's resistances are doubled, up to a maximum of 50%, when
   defending. Vulnerabilities are not affected.
 Submerge::
-  This unit can hide in deep water, and remain undetected by its
-  enemies. Enemy units cannot see or attack this unit when it is in deep
-  water, except for any turn immediately after this unit has attacked,
-  or if there are enemy units next to this unit.
+  This unit can hide in deep water, and remain undetected by its enemies.
+  Enemy units cannot see this unit while it is in deep water, except if they
+  have units next to it. Any enemy unit that first discovers this unit
+  immediately loses all its remaining movement.
 Teleport::
-  This unit may teleport between any two friendly villages using one of
-  its moves.
+  This unit may teleport between any two friendly villages using one of its
+  moves.
 
 Experience
 ^^^^^^^^^^
@@ -714,14 +765,19 @@ Orbs
 On the top of the energy bar shown next to each unit of yours is an
 orb. This orb is:
 
- - green if you control the unit and it hasn't moved this turn,
- - yellow if you control the unit and it has moved this turn, but could
-   still move further or attack,
- - red if you control the unit, but it has used all its movement this
-   turn, or
- - blue if the unit is an ally you do not control. 
+image:images/orb-green.jpg["green orb"] green if you control the unit
+and it hasn't moved this turn,
 
-Enemy units have no orb on the top of their energy bar.
+image:images/orb-yellow.jpg["yellow orb"] yellow if you control the unit
+and it has moved this turn, but could still move further or attack,
+
+image:images/orb-red.jpg["red orb"] red if you control the unit,
+but it has used all its movement this   turn, or
+
+image:images/orb-blue.jpg["blue orb"] blue if the unit is an ally you do
+not control. 
+
+image:images/orb-none.jpg["no orb"] Enemy units have no orb on the top of their energy bar.
 
 Planchets, Team Colors, and Hero Icons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -808,7 +864,7 @@ Examples: Drake scales protect them from most of attack types except from
 piercing weapon and cold weapon. Human Cavalry units are generally well
 protected except from piercing attacks which are their weak point. Undead
 are very resistant to blade and piercing weapon but very vulnerable to
-impact attacks and holy attacks.
+impact attacks and arcane attacks.
 
 Use the best attack type against enemy units.
 
@@ -1111,7 +1167,7 @@ During the scenario
       screen. Plan ahead - think about what it's going to be next turn as
       well as this turn.
  - Some units are resistant or vulnerable to different kind of
-   attacks. Mounted units are weak vs pierce attacks. Fire and holy
+   attacks. Mounted units are weak vs pierce attacks. Fire and arcane
    attacks destroy undead. To see how much a unit resists an attack
    type, right click on the unit, select "Unit Description", then select
    "Resistance". It will show you how resistant a unit is to different
