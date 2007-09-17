@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 15:11+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-09-13 00:22+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -48,17 +48,10 @@ msgstr "Ponte"
 msgid "Encampment"
 msgstr "Acampamento"
 
-#: data/core/terrain.cfg:159
+#: data/core/terrain.cfg:159 data/core/terrain.cfg:169
+#: data/core/terrain.cfg:180
 msgid "Castle"
 msgstr "Castelo"
-
-#: data/core/terrain.cfg:169
-msgid "Elven Castle"
-msgstr "Castelo Élfico"
-
-#: data/core/terrain.cfg:180
-msgid "Dwarven Castle"
-msgstr "Castelo dos Anões"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
@@ -72,33 +65,12 @@ msgstr "Ruína inundada"
 msgid "Swamp Ruin"
 msgstr "Ruína no Pântano"
 
-#: data/core/terrain.cfg:239
-msgid "Encampment keep"
-msgstr "Centro do acampamento"
-
-#: data/core/terrain.cfg:251
+#: data/core/terrain.cfg:239 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:263 data/core/terrain.cfg:275
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:299
+#: data/core/terrain.cfg:311
 msgid "Keep"
 msgstr "Forte"
-
-#: data/core/terrain.cfg:263
-msgid "Elven Keep"
-msgstr "Fortaleza Elfa"
-
-#: data/core/terrain.cfg:275
-msgid "Dwarven keep"
-msgstr "Fortaleza Anã"
-
-#: data/core/terrain.cfg:287
-msgid "Ruined keep"
-msgstr "Fortaleza em ruínas"
-
-#: data/core/terrain.cfg:299
-msgid "Sunken keep"
-msgstr "Fortaleza inundada"
-
-#: data/core/terrain.cfg:311
-msgid "Swamp keep"
-msgstr "Fortaleza do pântano"
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
@@ -172,21 +144,14 @@ msgstr "Desfiladeiro com lava"
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/terrain.cfg:545
-msgid "Desert road"
-msgstr "Estrada no deserto"
+#: data/core/terrain.cfg:545 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:572
+msgid "Road"
+msgstr "Estrada"
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
 msgstr "Terra Batida"
-
-#: data/core/terrain.cfg:563
-msgid "Road"
-msgstr "Estrada"
-
-#: data/core/terrain.cfg:572
-msgid "Stone path"
-msgstr "Trilha de pedras"
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -1208,3 +1173,33 @@ msgstr "Erro"
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Terreno Inválido encontrado, provavelmente da versão 1.2, terreno = "
+
+#~ msgid "Elven Castle"
+#~ msgstr "Castelo Élfico"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Castelo dos Anões"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Centro do acampamento"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Fortaleza Elfa"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Fortaleza Anã"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Fortaleza em ruínas"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Fortaleza inundada"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Fortaleza do pântano"
+
+#~ msgid "Desert road"
+#~ msgstr "Estrada no deserto"
+
+#~ msgid "Stone path"
+#~ msgstr "Trilha de pedras"

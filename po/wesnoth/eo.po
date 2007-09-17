@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-16 23:02+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2006-04-10 20:22+0100\n"
 "Last-Translator: Rastislav Šarišský <rsarissky@post.sk>\n"
 "Language-Team: \n"
@@ -2730,11 +2730,12 @@ msgid "plague"
 msgstr "kontaĝo"
 
 #: data/core/macros/abilities.cfg:491
+#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
+"identical to and on the same side as the unit with the Plague attack. This "
+"doesn't work on Undead or units in villages."
 msgstr ""
 "Plago:\n"
 "Se milit-unuo estas mortigita de atako kaŭzinta malsanon, fariĝos el la "
@@ -2800,9 +2801,11 @@ msgid "magical"
 msgstr "magia"
 
 #: data/core/macros/abilities.cfg:551
+#, fuzzy
 msgid ""
 "Magical:\n"
-"This attack always has a 70% chance to hit."
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
 msgstr ""
 "Magia:\n"
 "Tiu ĉi atako havas ĉiam 70% ŝancon trafi."
@@ -2871,7 +2874,8 @@ msgstr "veneno"
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. "
+"until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
+"a unit."
 msgstr ""
 "Veneno:\n"
 "Tiu ĉi atako venenigos viktimon. Venenigita milit-unuo perdas 8 vivojn dum "
@@ -3809,77 +3813,77 @@ msgstr "Bruna"
 msgid "Teal"
 msgstr "Teamo"
 
-#: data/core/units.cfg:40 data/hardwired/english.cfg:18
+#: data/core/units.cfg:41 data/hardwired/english.cfg:18
 #, fuzzy
 msgid "race^Elves"
 msgstr "Nanoj"
 
-#: data/core/units.cfg:49 data/hardwired/english.cfg:32
+#: data/core/units.cfg:50 data/hardwired/english.cfg:32
 #, fuzzy
 msgid "race^Woses"
 msgstr "Nanoj"
 
-#: data/core/units.cfg:57 data/hardwired/english.cfg:19
+#: data/core/units.cfg:58 data/hardwired/english.cfg:19
 #, fuzzy
 msgid "race^Humans"
 msgstr "Homoj"
 
-#: data/core/units.cfg:64 data/hardwired/english.cfg:22
+#: data/core/units.cfg:65 data/hardwired/english.cfg:22
 #, fuzzy
 msgid "race^Dwarves"
 msgstr "Nanoj"
 
-#: data/core/units.cfg:72 data/hardwired/english.cfg:20
+#: data/core/units.cfg:73 data/hardwired/english.cfg:20
 #, fuzzy
 msgid "race^Orcs"
 msgstr "Trolo"
 
-#: data/core/units.cfg:79 data/hardwired/english.cfg:24
+#: data/core/units.cfg:80 data/hardwired/english.cfg:24
 msgid "race^Goblins"
 msgstr ""
 
-#: data/core/units.cfg:86 data/hardwired/english.cfg:21
+#: data/core/units.cfg:87 data/hardwired/english.cfg:21
 msgid "race^Undead"
 msgstr "Ne malvivaj"
 
-#: data/core/units.cfg:94
+#: data/core/units.cfg:95
 #, fuzzy
 msgid "race^Bats"
 msgstr "Naga-ino"
 
-#: data/core/units.cfg:100 data/hardwired/english.cfg:30
+#: data/core/units.cfg:101 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr ""
 
-#: data/core/units.cfg:107 data/hardwired/english.cfg:27
+#: data/core/units.cfg:108 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr ""
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:29
+#: data/core/units.cfg:115 data/hardwired/english.cfg:29
 #, fuzzy
 msgid "race^Nagas"
 msgstr "Naga-ino"
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:28
+#: data/core/units.cfg:121 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr ""
 
-#: data/core/units.cfg:126 data/hardwired/english.cfg:31
+#: data/core/units.cfg:127 data/hardwired/english.cfg:31
 #, fuzzy
 msgid "race^Trolls"
 msgstr "Trolo"
 
-#: data/core/units.cfg:138 data/hardwired/english.cfg:23
+#: data/core/units.cfg:139 data/hardwired/english.cfg:23
 #, fuzzy
 msgid "race^Drakes"
 msgstr "Nanoj"
 
-#: data/core/units.cfg:145
+#: data/core/units.cfg:146
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Naga-ino"
 
-#: data/core/units.cfg:153 data/hardwired/english.cfg:26
+#: data/core/units.cfg:154 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr ""
 
@@ -5092,11 +5096,11 @@ msgstr ""
 msgid "Invalid color range: "
 msgstr "Ne valida koloro"
 
-#: src/game_events.cpp:881
+#: src/game_events.cpp:882
 msgid "Victory:"
 msgstr "Vi venkos, se:"
 
-#: src/game_events.cpp:884
+#: src/game_events.cpp:885
 msgid "Defeat:"
 msgstr "Malvenko, se:"
 
@@ -5188,7 +5192,7 @@ msgstr ""
 msgid "damage type: "
 msgstr "vundiĝoj"
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1350
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
 msgid "vs"
 msgstr "kontraŭ"
 
@@ -5876,15 +5880,15 @@ msgstr "Elektu armilojn:"
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1367
+#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
 msgid "Damage Calculations"
 msgstr "Vundiĝelkalkulo"
 
-#: src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:1375
 msgid "Attack Enemy"
 msgstr "Ataku malamikon"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1376
 msgid "Choose weapon:"
 msgstr "Elektu armilojn:"
 
@@ -6497,23 +6501,24 @@ msgstr "Retkonekto rompiĝis kaj ludo ne povas daŭrigi. Ĉu mi savu ĝin?"
 msgid "It is now $name|'s turn"
 msgstr "Nun vi moviĝu"
 
-#: src/playturn.cpp:200
+#: src/playturn.cpp:201
 msgid "Replace with AI"
 msgstr "Anstataŭu per komputilo"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with local player"
 msgstr "Anstataŭu per alia ludanto"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Abort game"
 msgstr "Nuligu la ludon"
 
-#: src/playturn.cpp:206 src/playturn.cpp:217
-msgid "Replace with "
-msgstr "substitui"
+#: src/playturn.cpp:208 src/playturn.cpp:220
+#, fuzzy
+msgid "Replace with $player"
+msgstr "Anstataŭu per alia ludanto"
 
-#: src/playturn.cpp:224
+#: src/playturn.cpp:226
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "forlasis la ludon. Kion vi faros?"
@@ -6757,6 +6762,9 @@ msgstr ""
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr ""
+
+#~ msgid "Replace with "
+#~ msgstr "substitui"
 
 #, fuzzy
 #~ msgid "Races"

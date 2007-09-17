@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-16 23:02+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2006-12-15 16:18+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -2457,8 +2457,8 @@ msgstr "πανούκλα"
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
+"identical to and on the same side as the unit with the Plague attack. This "
+"doesn't work on Undead or units in villages."
 msgstr ""
 
 #: data/core/macros/abilities.cfg:503
@@ -2516,9 +2516,11 @@ msgid "magical"
 msgstr "μαγική"
 
 #: data/core/macros/abilities.cfg:551
+#, fuzzy
 msgid ""
 "Magical:\n"
-"This attack always has a 70% chance to hit."
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
 msgstr ""
 "Μαγική:\n"
 "Αυτή η επίθεση έχει πάντα 70% πιθανότητες να είναι εύστοχη."
@@ -2583,7 +2585,8 @@ msgstr "δηλητήριο"
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. "
+"until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
+"a unit."
 msgstr ""
 "Δηλητήριο:\n"
 "Αυτή η επίθεση δηλητηριάζει τον στόχο. Οι δηλητηριασμένες μονάδες χάνουν 8 "
@@ -3497,76 +3500,76 @@ msgstr "Καφέ"
 msgid "Teal"
 msgstr ""
 
-#: data/core/units.cfg:40 data/hardwired/english.cfg:18
+#: data/core/units.cfg:41 data/hardwired/english.cfg:18
 #, fuzzy
 msgid "race^Elves"
 msgstr "νάνοι"
 
-#: data/core/units.cfg:49 data/hardwired/english.cfg:32
+#: data/core/units.cfg:50 data/hardwired/english.cfg:32
 #, fuzzy
 msgid "race^Woses"
 msgstr "νάνοι"
 
-#: data/core/units.cfg:57 data/hardwired/english.cfg:19
+#: data/core/units.cfg:58 data/hardwired/english.cfg:19
 #, fuzzy
 msgid "race^Humans"
 msgstr "Ανθρωποι"
 
-#: data/core/units.cfg:64 data/hardwired/english.cfg:22
+#: data/core/units.cfg:65 data/hardwired/english.cfg:22
 #, fuzzy
 msgid "race^Dwarves"
 msgstr "νάνοι"
 
-#: data/core/units.cfg:72 data/hardwired/english.cfg:20
+#: data/core/units.cfg:73 data/hardwired/english.cfg:20
 #, fuzzy
 msgid "race^Orcs"
 msgstr "Τρόλ"
 
-#: data/core/units.cfg:79 data/hardwired/english.cfg:24
+#: data/core/units.cfg:80 data/hardwired/english.cfg:24
 msgid "race^Goblins"
 msgstr ""
 
-#: data/core/units.cfg:86 data/hardwired/english.cfg:21
+#: data/core/units.cfg:87 data/hardwired/english.cfg:21
 msgid "race^Undead"
 msgstr "φυλή^Ζωντανοί-Νεκροί"
 
-#: data/core/units.cfg:94
+#: data/core/units.cfg:95
 #, fuzzy
 msgid "race^Bats"
 msgstr "Ανθρωποι"
 
-#: data/core/units.cfg:100 data/hardwired/english.cfg:30
+#: data/core/units.cfg:101 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr ""
 
-#: data/core/units.cfg:107 data/hardwired/english.cfg:27
+#: data/core/units.cfg:108 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr ""
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:29
+#: data/core/units.cfg:115 data/hardwired/english.cfg:29
 msgid "race^Nagas"
 msgstr ""
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:28
+#: data/core/units.cfg:121 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr ""
 
-#: data/core/units.cfg:126 data/hardwired/english.cfg:31
+#: data/core/units.cfg:127 data/hardwired/english.cfg:31
 #, fuzzy
 msgid "race^Trolls"
 msgstr "Τρόλ"
 
-#: data/core/units.cfg:138 data/hardwired/english.cfg:23
+#: data/core/units.cfg:139 data/hardwired/english.cfg:23
 #, fuzzy
 msgid "race^Drakes"
 msgstr "νάνοι"
 
-#: data/core/units.cfg:145
+#: data/core/units.cfg:146
 #, fuzzy
 msgid "race^Saurians"
 msgstr "νάνοι"
 
-#: data/core/units.cfg:153 data/hardwired/english.cfg:26
+#: data/core/units.cfg:154 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr ""
 
@@ -4732,11 +4735,11 @@ msgstr "Φορτώνεται το κεντρικό μενού"
 msgid "Invalid color range: "
 msgstr "Μη έγκυρο όνομα:"
 
-#: src/game_events.cpp:881
+#: src/game_events.cpp:882
 msgid "Victory:"
 msgstr "Νίκη:"
 
-#: src/game_events.cpp:884
+#: src/game_events.cpp:885
 msgid "Defeat:"
 msgstr "Ηττα:"
 
@@ -4821,7 +4824,7 @@ msgstr "εμβέλεια όπλου:"
 msgid "damage type: "
 msgstr "τύπος ζημιάς:"
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1350
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
 msgid "vs"
 msgstr "εναντίων"
 
@@ -5495,15 +5498,15 @@ msgstr ""
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1367
+#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
 msgid "Damage Calculations"
 msgstr "Υπολογισμοί Ζημιάς"
 
-#: src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:1375
 msgid "Attack Enemy"
 msgstr "Επίθεση σε εχθρό"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1376
 msgid "Choose weapon:"
 msgstr "Επιλέξτε όπλο:"
 
@@ -6099,23 +6102,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Είναι η σειρά σας να παίξετε"
 
-#: src/playturn.cpp:200
+#: src/playturn.cpp:201
 msgid "Replace with AI"
 msgstr "Αντικατέστησε με την τεχνητή νοημοσύνη του προγράμματος"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with local player"
 msgstr "Αντικατέστησε με τοπικό παίχτη"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Abort game"
 msgstr "Ματαίωση παιχνιδιού"
 
-#: src/playturn.cpp:206 src/playturn.cpp:217
-msgid "Replace with "
-msgstr "Αντικατέστησε μέ"
+#: src/playturn.cpp:208 src/playturn.cpp:220
+#, fuzzy
+msgid "Replace with $player"
+msgstr "Αντικατέστησε με τοπικό παίχτη"
 
-#: src/playturn.cpp:224
+#: src/playturn.cpp:226
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "έχει εγκαταλείψει τό παιχνίδι. Τί θέλεις νά κάνεις;"
@@ -6364,6 +6368,9 @@ msgstr "Βοηθήστε μας να κάνουμε το Γουέσνοθ καλ
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Επέτρεψε να σταλθούν οι περιλήψεις"
+
+#~ msgid "Replace with "
+#~ msgstr "Αντικατέστησε μέ"
 
 #, fuzzy
 #~ msgid "Races"

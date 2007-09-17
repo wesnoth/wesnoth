@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 15:11+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-08-11 22:14+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -50,17 +50,10 @@ msgstr "Puente"
 msgid "Encampment"
 msgstr "Campamento"
 
-#: data/core/terrain.cfg:159
+#: data/core/terrain.cfg:159 data/core/terrain.cfg:169
+#: data/core/terrain.cfg:180
 msgid "Castle"
 msgstr "Castillo"
-
-#: data/core/terrain.cfg:169
-msgid "Elven Castle"
-msgstr "Castillo Élfico"
-
-#: data/core/terrain.cfg:180
-msgid "Dwarven Castle"
-msgstr "Castillo Enano"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
@@ -74,33 +67,12 @@ msgstr "Ruinas hundidas"
 msgid "Swamp Ruin"
 msgstr "Ruinas pantanosas"
 
-#: data/core/terrain.cfg:239
-msgid "Encampment keep"
-msgstr "Torreón de campamento"
-
-#: data/core/terrain.cfg:251
+#: data/core/terrain.cfg:239 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:263 data/core/terrain.cfg:275
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:299
+#: data/core/terrain.cfg:311
 msgid "Keep"
 msgstr "Torreón"
-
-#: data/core/terrain.cfg:263
-msgid "Elven Keep"
-msgstr "Torreón élfico"
-
-#: data/core/terrain.cfg:275
-msgid "Dwarven keep"
-msgstr "Torreón Enano"
-
-#: data/core/terrain.cfg:287
-msgid "Ruined keep"
-msgstr "Torreón en ruinas"
-
-#: data/core/terrain.cfg:299
-msgid "Sunken keep"
-msgstr "Torreón hundido"
-
-#: data/core/terrain.cfg:311
-msgid "Swamp keep"
-msgstr "Torreón empantanado"
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
@@ -174,21 +146,14 @@ msgstr ""
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/terrain.cfg:545
-msgid "Desert road"
-msgstr "Camino desértico"
+#: data/core/terrain.cfg:545 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:572
+msgid "Road"
+msgstr "Camino"
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
 msgstr "Tierra"
-
-#: data/core/terrain.cfg:563
-msgid "Road"
-msgstr "Camino"
-
-#: data/core/terrain.cfg:572
-msgid "Stone path"
-msgstr ""
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -1226,3 +1191,30 @@ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 "Se encontró un terreno no válido, probablemente se trate de un terreno en "
 "formato 1.2, terreno = "
+
+#~ msgid "Elven Castle"
+#~ msgstr "Castillo Élfico"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Castillo Enano"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Torreón de campamento"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Torreón élfico"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Torreón Enano"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Torreón en ruinas"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Torreón hundido"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Torreón empantanado"
+
+#~ msgid "Desert road"
+#~ msgstr "Camino desértico"

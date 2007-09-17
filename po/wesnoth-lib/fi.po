@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 15:11+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-08-23 15:52+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
@@ -47,17 +47,10 @@ msgstr "silta"
 msgid "Encampment"
 msgstr "leiri"
 
-#: data/core/terrain.cfg:159
+#: data/core/terrain.cfg:159 data/core/terrain.cfg:169
+#: data/core/terrain.cfg:180
 msgid "Castle"
 msgstr "linna"
-
-#: data/core/terrain.cfg:169
-msgid "Elven Castle"
-msgstr "Haltialinna"
-
-#: data/core/terrain.cfg:180
-msgid "Dwarven Castle"
-msgstr "kääpiölinna"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
@@ -71,33 +64,12 @@ msgstr "uponneita raunioita"
 msgid "Swamp Ruin"
 msgstr "soistuneita raunioita"
 
-#: data/core/terrain.cfg:239
-msgid "Encampment keep"
-msgstr "Leiri"
-
-#: data/core/terrain.cfg:251
+#: data/core/terrain.cfg:239 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:263 data/core/terrain.cfg:275
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:299
+#: data/core/terrain.cfg:311
 msgid "Keep"
 msgstr "linnake"
-
-#: data/core/terrain.cfg:263
-msgid "Elven Keep"
-msgstr "Haltialinnake"
-
-#: data/core/terrain.cfg:275
-msgid "Dwarven keep"
-msgstr "kääpiölinnake"
-
-#: data/core/terrain.cfg:287
-msgid "Ruined keep"
-msgstr "Raunioitunut linnake"
-
-#: data/core/terrain.cfg:299
-msgid "Sunken keep"
-msgstr "Uponnut linnake"
-
-#: data/core/terrain.cfg:311
-msgid "Swamp keep"
-msgstr "Suolinnake"
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
@@ -171,21 +143,14 @@ msgstr ""
 msgid "Lava"
 msgstr "laavaa"
 
-#: data/core/terrain.cfg:545
-msgid "Desert road"
-msgstr "Aavikkotie"
+#: data/core/terrain.cfg:545 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:572
+msgid "Road"
+msgstr "tie"
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
 msgstr "mutaa"
-
-#: data/core/terrain.cfg:563
-msgid "Road"
-msgstr "tie"
-
-#: data/core/terrain.cfg:572
-msgid "Stone path"
-msgstr ""
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -1204,3 +1169,30 @@ msgstr "Virhe"
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Epäkelpoa maastoa löydetty (mahdollisesti 1.2 terrainformaattia) = "
+
+#~ msgid "Elven Castle"
+#~ msgstr "Haltialinna"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "kääpiölinna"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Leiri"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Haltialinnake"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "kääpiölinnake"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Raunioitunut linnake"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Uponnut linnake"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Suolinnake"
+
+#~ msgid "Desert road"
+#~ msgstr "Aavikkotie"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-16 23:02+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-02-19 17:35+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1920,8 +1920,8 @@ msgstr ""
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
+"identical to and on the same side as the unit with the Plague attack. This "
+"doesn't work on Undead or units in villages."
 msgstr ""
 
 #: data/core/macros/abilities.cfg:503
@@ -1973,7 +1973,8 @@ msgstr ""
 #: data/core/macros/abilities.cfg:551
 msgid ""
 "Magical:\n"
-"This attack always has a 70% chance to hit."
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
 msgstr ""
 
 #: data/core/macros/abilities.cfg:562
@@ -2029,7 +2030,8 @@ msgstr ""
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. "
+"until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
+"a unit."
 msgstr ""
 
 #: data/core/macros/amla.cfg:10
@@ -2923,67 +2925,67 @@ msgstr ""
 msgid "Teal"
 msgstr ""
 
-#: data/core/units.cfg:40 data/hardwired/english.cfg:18
+#: data/core/units.cfg:41 data/hardwired/english.cfg:18
 msgid "race^Elves"
 msgstr ""
 
-#: data/core/units.cfg:49 data/hardwired/english.cfg:32
+#: data/core/units.cfg:50 data/hardwired/english.cfg:32
 msgid "race^Woses"
 msgstr ""
 
-#: data/core/units.cfg:57 data/hardwired/english.cfg:19
+#: data/core/units.cfg:58 data/hardwired/english.cfg:19
 msgid "race^Humans"
 msgstr ""
 
-#: data/core/units.cfg:64 data/hardwired/english.cfg:22
+#: data/core/units.cfg:65 data/hardwired/english.cfg:22
 msgid "race^Dwarves"
 msgstr ""
 
-#: data/core/units.cfg:72 data/hardwired/english.cfg:20
+#: data/core/units.cfg:73 data/hardwired/english.cfg:20
 msgid "race^Orcs"
 msgstr ""
 
-#: data/core/units.cfg:79 data/hardwired/english.cfg:24
+#: data/core/units.cfg:80 data/hardwired/english.cfg:24
 msgid "race^Goblins"
 msgstr ""
 
-#: data/core/units.cfg:86 data/hardwired/english.cfg:21
+#: data/core/units.cfg:87 data/hardwired/english.cfg:21
 msgid "race^Undead"
 msgstr ""
 
-#: data/core/units.cfg:94
+#: data/core/units.cfg:95
 msgid "race^Bats"
 msgstr ""
 
-#: data/core/units.cfg:100 data/hardwired/english.cfg:30
+#: data/core/units.cfg:101 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr ""
 
-#: data/core/units.cfg:107 data/hardwired/english.cfg:27
+#: data/core/units.cfg:108 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr ""
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:29
+#: data/core/units.cfg:115 data/hardwired/english.cfg:29
 msgid "race^Nagas"
 msgstr ""
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:28
+#: data/core/units.cfg:121 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr ""
 
-#: data/core/units.cfg:126 data/hardwired/english.cfg:31
+#: data/core/units.cfg:127 data/hardwired/english.cfg:31
 msgid "race^Trolls"
 msgstr ""
 
-#: data/core/units.cfg:138 data/hardwired/english.cfg:23
+#: data/core/units.cfg:139 data/hardwired/english.cfg:23
 msgid "race^Drakes"
 msgstr ""
 
-#: data/core/units.cfg:145
+#: data/core/units.cfg:146
 msgid "race^Saurians"
 msgstr ""
 
-#: data/core/units.cfg:153 data/hardwired/english.cfg:26
+#: data/core/units.cfg:154 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr ""
 
@@ -4045,11 +4047,11 @@ msgstr ""
 msgid "Invalid color range: "
 msgstr ""
 
-#: src/game_events.cpp:881
+#: src/game_events.cpp:882
 msgid "Victory:"
 msgstr ""
 
-#: src/game_events.cpp:884
+#: src/game_events.cpp:885
 msgid "Defeat:"
 msgstr ""
 
@@ -4129,7 +4131,7 @@ msgstr ""
 msgid "damage type: "
 msgstr ""
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1350
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
 msgid "vs"
 msgstr ""
 
@@ -4768,15 +4770,15 @@ msgstr ""
 msgid "Chance of being unscathed"
 msgstr ""
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1367
+#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
 msgid "Damage Calculations"
 msgstr ""
 
-#: src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:1375
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1376
 msgid "Choose weapon:"
 msgstr ""
 
@@ -5353,23 +5355,23 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr ""
 
-#: src/playturn.cpp:200
+#: src/playturn.cpp:201
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Abort game"
 msgstr ""
 
-#: src/playturn.cpp:206 src/playturn.cpp:217
-msgid "Replace with "
+#: src/playturn.cpp:208 src/playturn.cpp:220
+msgid "Replace with $player"
 msgstr ""
 
-#: src/playturn.cpp:224
+#: src/playturn.cpp:226
 msgid "$player has left the game. What do you want to do?"
 msgstr ""
 

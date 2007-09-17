@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 15:11+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-01-04 19:24+0000\n"
 "Last-Translator: Peter J Ross <wesnoth@pjr.britishlibrary.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -49,17 +49,10 @@ msgstr "Bridge"
 msgid "Encampment"
 msgstr "Encampment"
 
-#: data/core/terrain.cfg:159
+#: data/core/terrain.cfg:159 data/core/terrain.cfg:169
+#: data/core/terrain.cfg:180
 msgid "Castle"
 msgstr "Castle"
-
-#: data/core/terrain.cfg:169
-msgid "Elven Castle"
-msgstr ""
-
-#: data/core/terrain.cfg:180
-msgid "Dwarven Castle"
-msgstr "Dwarven Castle"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
@@ -73,33 +66,12 @@ msgstr "Sunken Ruin"
 msgid "Swamp Ruin"
 msgstr "Swamp Ruin"
 
-#: data/core/terrain.cfg:239
-msgid "Encampment keep"
-msgstr ""
-
-#: data/core/terrain.cfg:251
+#: data/core/terrain.cfg:239 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:263 data/core/terrain.cfg:275
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:299
+#: data/core/terrain.cfg:311
 msgid "Keep"
 msgstr "Keep"
-
-#: data/core/terrain.cfg:263
-msgid "Elven Keep"
-msgstr ""
-
-#: data/core/terrain.cfg:275
-msgid "Dwarven keep"
-msgstr ""
-
-#: data/core/terrain.cfg:287
-msgid "Ruined keep"
-msgstr ""
-
-#: data/core/terrain.cfg:299
-msgid "Sunken keep"
-msgstr ""
-
-#: data/core/terrain.cfg:311
-msgid "Swamp keep"
-msgstr ""
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
@@ -173,21 +145,14 @@ msgstr ""
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/terrain.cfg:545
-msgid "Desert road"
-msgstr ""
+#: data/core/terrain.cfg:545 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:572
+msgid "Road"
+msgstr "Road"
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
 msgstr "Dirt"
-
-#: data/core/terrain.cfg:563
-msgid "Road"
-msgstr "Road"
-
-#: data/core/terrain.cfg:572
-msgid "Stone path"
-msgstr ""
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -1231,3 +1196,6 @@ msgstr "Error"
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Dwarven Castle"

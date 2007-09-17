@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-16 23:02+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -2661,11 +2661,12 @@ msgid "plague"
 msgstr "dögvész"
 
 #: data/core/macros/abilities.cfg:491
+#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
+"identical to and on the same side as the unit with the Plague attack. This "
+"doesn't work on Undead or units in villages."
 msgstr ""
 "Pestis:\n"
 "Ha egy egységet pestis támadással ölnek meg, a helyén egy elpusztítójával "
@@ -2734,9 +2735,11 @@ msgid "magical"
 msgstr "mágikus"
 
 #: data/core/macros/abilities.cfg:551
+#, fuzzy
 msgid ""
 "Magical:\n"
-"This attack always has a 70% chance to hit."
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
 msgstr ""
 "Mágikus:\n"
 "Ez a támadás mindig 70% eséllyel sikeres."
@@ -2809,7 +2812,8 @@ msgstr "mérgezés"
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. "
+"until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
+"a unit."
 msgstr ""
 "Mérgezés:\n"
 "Ez a támadás megmérgezi a célpontot. A megmérgezett egységek körönként 8 ÉP-"
@@ -3781,75 +3785,75 @@ msgstr "Barna"
 msgid "Teal"
 msgstr "Kékezöld"
 
-#: data/core/units.cfg:40 data/hardwired/english.cfg:18
+#: data/core/units.cfg:41 data/hardwired/english.cfg:18
 #, fuzzy
 msgid "race^Elves"
 msgstr "Troll"
 
-#: data/core/units.cfg:49 data/hardwired/english.cfg:32
+#: data/core/units.cfg:50 data/hardwired/english.cfg:32
 #, fuzzy
 msgid "race^Woses"
 msgstr "Troll"
 
-#: data/core/units.cfg:57 data/hardwired/english.cfg:19
+#: data/core/units.cfg:58 data/hardwired/english.cfg:19
 #, fuzzy
 msgid "race^Humans"
 msgstr "Emberek"
 
-#: data/core/units.cfg:64 data/hardwired/english.cfg:22
+#: data/core/units.cfg:65 data/hardwired/english.cfg:22
 msgid "race^Dwarves"
 msgstr ""
 
-#: data/core/units.cfg:72 data/hardwired/english.cfg:20
+#: data/core/units.cfg:73 data/hardwired/english.cfg:20
 #, fuzzy
 msgid "race^Orcs"
 msgstr "Troll"
 
-#: data/core/units.cfg:79 data/hardwired/english.cfg:24
+#: data/core/units.cfg:80 data/hardwired/english.cfg:24
 msgid "race^Goblins"
 msgstr ""
 
-#: data/core/units.cfg:86 data/hardwired/english.cfg:21
+#: data/core/units.cfg:87 data/hardwired/english.cfg:21
 msgid "race^Undead"
 msgstr "Élőholtak"
 
-#: data/core/units.cfg:94
+#: data/core/units.cfg:95
 #, fuzzy
 msgid "race^Bats"
 msgstr "Emberek"
 
-#: data/core/units.cfg:100 data/hardwired/english.cfg:30
+#: data/core/units.cfg:101 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr ""
 
-#: data/core/units.cfg:107 data/hardwired/english.cfg:27
+#: data/core/units.cfg:108 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr ""
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:29
+#: data/core/units.cfg:115 data/hardwired/english.cfg:29
 msgid "race^Nagas"
 msgstr ""
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:28
+#: data/core/units.cfg:121 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr ""
 
-#: data/core/units.cfg:126 data/hardwired/english.cfg:31
+#: data/core/units.cfg:127 data/hardwired/english.cfg:31
 #, fuzzy
 msgid "race^Trolls"
 msgstr "Troll"
 
-#: data/core/units.cfg:138 data/hardwired/english.cfg:23
+#: data/core/units.cfg:139 data/hardwired/english.cfg:23
 #, fuzzy
 msgid "race^Drakes"
 msgstr "Troll"
 
-#: data/core/units.cfg:145
+#: data/core/units.cfg:146
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Élőholtak"
 
-#: data/core/units.cfg:153 data/hardwired/english.cfg:26
+#: data/core/units.cfg:154 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr ""
 
@@ -5056,11 +5060,11 @@ msgstr "Kezdőképernyő betöltése"
 msgid "Invalid color range: "
 msgstr "Érvénytelen szín"
 
-#: src/game_events.cpp:881
+#: src/game_events.cpp:882
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
-#: src/game_events.cpp:884
+#: src/game_events.cpp:885
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
@@ -5150,7 +5154,7 @@ msgstr "fegyver hatósugara: "
 msgid "damage type: "
 msgstr "sebzés: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1350
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
 msgid "vs"
 msgstr "kontra"
 
@@ -5850,15 +5854,15 @@ msgstr "Nincsen használható fegyver"
 msgid "Chance of being unscathed"
 msgstr "Sértetlenül maradás esélye"
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1367
+#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
-#: src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:1375
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1376
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
@@ -6460,23 +6464,24 @@ msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az ál
 msgid "It is now $name|'s turn"
 msgstr "A te köröd következik"
 
-#: src/playturn.cpp:200
+#: src/playturn.cpp:201
 msgid "Replace with AI"
 msgstr "Állítsunk be egy MI-t"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with local player"
 msgstr "Állítsunk be egy helyi játékost"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Abort game"
 msgstr "Fejezzük be a játékot"
 
-#: src/playturn.cpp:206 src/playturn.cpp:217
-msgid "Replace with "
-msgstr "Állítsuk be őt:"
+#: src/playturn.cpp:208 src/playturn.cpp:220
+#, fuzzy
+msgid "Replace with $player"
+msgstr "Állítsunk be egy helyi játékost"
 
-#: src/playturn.cpp:224
+#: src/playturn.cpp:226
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "kilépett a játékból. Mit tegyünk most?"
@@ -6726,6 +6731,9 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
+
+#~ msgid "Replace with "
+#~ msgstr "Állítsuk be őt:"
 
 #, fuzzy
 #~ msgid "Races"

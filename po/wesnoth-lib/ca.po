@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 15:11+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2006-06-28 17:44+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -49,17 +49,10 @@ msgstr "Pont"
 msgid "Encampment"
 msgstr "Campament"
 
-#: data/core/terrain.cfg:159
+#: data/core/terrain.cfg:159 data/core/terrain.cfg:169
+#: data/core/terrain.cfg:180
 msgid "Castle"
 msgstr "Castell"
-
-#: data/core/terrain.cfg:169
-msgid "Elven Castle"
-msgstr "Castell elf"
-
-#: data/core/terrain.cfg:180
-msgid "Dwarven Castle"
-msgstr "Castell nan"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
@@ -73,33 +66,12 @@ msgstr "Ruïnes submergides"
 msgid "Swamp Ruin"
 msgstr "Ruïnes pantanoses"
 
-#: data/core/terrain.cfg:239
-msgid "Encampment keep"
-msgstr ""
-
-#: data/core/terrain.cfg:251
+#: data/core/terrain.cfg:239 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:263 data/core/terrain.cfg:275
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:299
+#: data/core/terrain.cfg:311
 msgid "Keep"
 msgstr "Torre"
-
-#: data/core/terrain.cfg:263
-msgid "Elven Keep"
-msgstr "Torrassa èlfica"
-
-#: data/core/terrain.cfg:275
-msgid "Dwarven keep"
-msgstr "Torrassa nan"
-
-#: data/core/terrain.cfg:287
-msgid "Ruined keep"
-msgstr "Torre arruïnada"
-
-#: data/core/terrain.cfg:299
-msgid "Sunken keep"
-msgstr "Torre submergida"
-
-#: data/core/terrain.cfg:311
-msgid "Swamp keep"
-msgstr "Torre empantanada"
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
@@ -173,21 +145,14 @@ msgstr ""
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/terrain.cfg:545
-msgid "Desert road"
-msgstr ""
+#: data/core/terrain.cfg:545 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:572
+msgid "Road"
+msgstr "Camí"
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
 msgstr "Terra"
-
-#: data/core/terrain.cfg:563
-msgid "Road"
-msgstr "Camí"
-
-#: data/core/terrain.cfg:572
-msgid "Stone path"
-msgstr ""
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -1237,3 +1202,24 @@ msgstr "Error"
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Elven Castle"
+#~ msgstr "Castell elf"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Castell nan"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Torrassa èlfica"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Torrassa nan"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Torre arruïnada"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Torre submergida"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Torre empantanada"

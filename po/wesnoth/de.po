@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-16 23:02+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-09-16 13:29+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -2728,11 +2728,12 @@ msgid "plague"
 msgstr "untote Plage"
 
 #: data/core/macros/abilities.cfg:491
+#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"identical to and on the same side as the unit with the Plague attack. (This "
-"doesn't work on Undead or units in villages.)"
+"identical to and on the same side as the unit with the Plague attack. This "
+"doesn't work on Undead or units in villages."
 msgstr ""
 "Untote Plage:\n"
 "Wird ein Gegner durch eine Einheit mit der Fähigkeit »untote Plage« "
@@ -2805,9 +2806,11 @@ msgid "magical"
 msgstr "magisch"
 
 #: data/core/macros/abilities.cfg:551
+#, fuzzy
 msgid ""
 "Magical:\n"
-"This attack always has a 70% chance to hit."
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
 msgstr ""
 "Magisch:\n"
 "Angriffe, die magischer Natur sind, haben grundsätzlich eine "
@@ -2879,10 +2882,12 @@ msgid "poison"
 msgstr "vergiften"
 
 #: data/core/macros/abilities.cfg:611
+#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. "
+"until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
+"a unit."
 msgstr ""
 "Vergiften:\n"
 "Mit Gift bestrichene Waffen können bei einem Treffer das Ziel dauerhaft "
@@ -4259,67 +4264,67 @@ msgstr "Braun"
 msgid "Teal"
 msgstr "Türkis"
 
-#: data/core/units.cfg:40 data/hardwired/english.cfg:18
+#: data/core/units.cfg:41 data/hardwired/english.cfg:18
 msgid "race^Elves"
 msgstr "Elfen"
 
-#: data/core/units.cfg:49 data/hardwired/english.cfg:32
+#: data/core/units.cfg:50 data/hardwired/english.cfg:32
 msgid "race^Woses"
 msgstr "Waldschrate"
 
-#: data/core/units.cfg:57 data/hardwired/english.cfg:19
+#: data/core/units.cfg:58 data/hardwired/english.cfg:19
 msgid "race^Humans"
 msgstr "Menschen"
 
-#: data/core/units.cfg:64 data/hardwired/english.cfg:22
+#: data/core/units.cfg:65 data/hardwired/english.cfg:22
 msgid "race^Dwarves"
 msgstr "Zwerge"
 
-#: data/core/units.cfg:72 data/hardwired/english.cfg:20
+#: data/core/units.cfg:73 data/hardwired/english.cfg:20
 msgid "race^Orcs"
 msgstr "Orks"
 
-#: data/core/units.cfg:79 data/hardwired/english.cfg:24
+#: data/core/units.cfg:80 data/hardwired/english.cfg:24
 msgid "race^Goblins"
 msgstr "Kobolde"
 
-#: data/core/units.cfg:86 data/hardwired/english.cfg:21
+#: data/core/units.cfg:87 data/hardwired/english.cfg:21
 msgid "race^Undead"
 msgstr "Untote"
 
-#: data/core/units.cfg:94
+#: data/core/units.cfg:95
 msgid "race^Bats"
 msgstr "Fledermäuse"
 
-#: data/core/units.cfg:100 data/hardwired/english.cfg:30
+#: data/core/units.cfg:101 data/hardwired/english.cfg:30
 msgid "race^Ogres"
 msgstr "Oger"
 
-#: data/core/units.cfg:107 data/hardwired/english.cfg:27
+#: data/core/units.cfg:108 data/hardwired/english.cfg:27
 msgid "race^Mermen"
 msgstr "Meervolk"
 
-#: data/core/units.cfg:114 data/hardwired/english.cfg:29
+#: data/core/units.cfg:115 data/hardwired/english.cfg:29
 msgid "race^Nagas"
 msgstr "Nagas"
 
-#: data/core/units.cfg:120 data/hardwired/english.cfg:28
+#: data/core/units.cfg:121 data/hardwired/english.cfg:28
 msgid "race^Monsters"
 msgstr "Monster"
 
-#: data/core/units.cfg:126 data/hardwired/english.cfg:31
+#: data/core/units.cfg:127 data/hardwired/english.cfg:31
 msgid "race^Trolls"
 msgstr "Trolle"
 
-#: data/core/units.cfg:138 data/hardwired/english.cfg:23
+#: data/core/units.cfg:139 data/hardwired/english.cfg:23
 msgid "race^Drakes"
 msgstr "Draken"
 
-#: data/core/units.cfg:145
+#: data/core/units.cfg:146
 msgid "race^Saurians"
 msgstr "Saurianer"
 
-#: data/core/units.cfg:153 data/hardwired/english.cfg:26
+#: data/core/units.cfg:154 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr "Kriegsgerät"
 
@@ -5527,11 +5532,11 @@ msgstr "Laden des Startbildschirms."
 msgid "Invalid color range: "
 msgstr "Ungültige Farbbereich:"
 
-#: src/game_events.cpp:881
+#: src/game_events.cpp:882
 msgid "Victory:"
 msgstr "Sieg:"
 
-#: src/game_events.cpp:884
+#: src/game_events.cpp:885
 msgid "Defeat:"
 msgstr "Niederlage:"
 
@@ -5623,7 +5628,7 @@ msgstr "Reichweite:"
 msgid "damage type: "
 msgstr "Schadenstyp:"
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1350
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
 msgid "vs"
 msgstr "gegen"
 
@@ -6303,15 +6308,15 @@ msgstr "Keine verwendbare Waffe"
 msgid "Chance of being unscathed"
 msgstr "Chance, ungeschoren davonzukommen"
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1367
+#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
 msgid "Damage Calculations"
 msgstr "Schadensberechnung"
 
-#: src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:1375
 msgid "Attack Enemy"
 msgstr "Gegner angreifen"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1376
 msgid "Choose weapon:"
 msgstr "Waffe auswählen:"
 
@@ -6904,23 +6909,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "$name| ist an der Reihe"
 
-#: src/playturn.cpp:200
+#: src/playturn.cpp:201
 msgid "Replace with AI"
 msgstr "Durch Computer ersetzen"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with local player"
 msgstr "Durch lokalen Spieler ersetzen"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Abort game"
 msgstr "Spiel abbrechen"
 
-#: src/playturn.cpp:206 src/playturn.cpp:217
-msgid "Replace with "
-msgstr "Ersetzen durch "
+#: src/playturn.cpp:208 src/playturn.cpp:220
+#, fuzzy
+msgid "Replace with $player"
+msgstr "Durch lokalen Spieler ersetzen"
 
-#: src/playturn.cpp:224
+#: src/playturn.cpp:226
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player hat das Spiel verlassen. Was wollt Ihr tun?"
 
@@ -7162,6 +7168,9 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Die Übertragung von Zusammenfassungen erlauben"
+
+#~ msgid "Replace with "
+#~ msgstr "Ersetzen durch "
 
 #~ msgid "Races"
 #~ msgstr "Rassen"

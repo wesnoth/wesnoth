@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 15:11+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-09-16 16:03+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -48,17 +48,10 @@ msgstr "Pont"
 msgid "Encampment"
 msgstr "Campement"
 
-#: data/core/terrain.cfg:159
+#: data/core/terrain.cfg:159 data/core/terrain.cfg:169
+#: data/core/terrain.cfg:180
 msgid "Castle"
 msgstr "Château"
-
-#: data/core/terrain.cfg:169
-msgid "Elven Castle"
-msgstr "Château elfe"
-
-#: data/core/terrain.cfg:180
-msgid "Dwarven Castle"
-msgstr "Château nain"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
@@ -72,33 +65,12 @@ msgstr "Ruine engloutie"
 msgid "Swamp Ruin"
 msgstr "Ruine des marais"
 
-#: data/core/terrain.cfg:239
-msgid "Encampment keep"
-msgstr "Donjon de cantonnement"
-
-#: data/core/terrain.cfg:251
+#: data/core/terrain.cfg:239 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:263 data/core/terrain.cfg:275
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:299
+#: data/core/terrain.cfg:311
 msgid "Keep"
 msgstr "Donjon"
-
-#: data/core/terrain.cfg:263
-msgid "Elven Keep"
-msgstr "Donjon elfe"
-
-#: data/core/terrain.cfg:275
-msgid "Dwarven keep"
-msgstr "Donjon nain"
-
-#: data/core/terrain.cfg:287
-msgid "Ruined keep"
-msgstr "Donjon en ruine"
-
-#: data/core/terrain.cfg:299
-msgid "Sunken keep"
-msgstr "Donjon englouti"
-
-#: data/core/terrain.cfg:311
-msgid "Swamp keep"
-msgstr "Donjon des marais"
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
@@ -172,21 +144,14 @@ msgstr "Gouffre de lave"
 msgid "Lava"
 msgstr "Lave"
 
-#: data/core/terrain.cfg:545
-msgid "Desert road"
-msgstr "Route du désert"
+#: data/core/terrain.cfg:545 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:572
+msgid "Road"
+msgstr "Route"
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
 msgstr "Terre battue"
-
-#: data/core/terrain.cfg:563
-msgid "Road"
-msgstr "Route"
-
-#: data/core/terrain.cfg:572
-msgid "Stone path"
-msgstr "Chemin de pierre"
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -1214,3 +1179,33 @@ msgstr "Erreur"
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Terrain non valide. Il s'agit probablement du format v1.2. Terrain : "
+
+#~ msgid "Elven Castle"
+#~ msgstr "Château elfe"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Château nain"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Donjon de cantonnement"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Donjon elfe"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Donjon nain"
+
+#~ msgid "Ruined keep"
+#~ msgstr "Donjon en ruine"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Donjon englouti"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Donjon des marais"
+
+#~ msgid "Desert road"
+#~ msgstr "Route du désert"
+
+#~ msgid "Stone path"
+#~ msgstr "Chemin de pierre"

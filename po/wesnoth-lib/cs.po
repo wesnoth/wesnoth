@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-15 15:11+0200\n"
+"POT-Creation-Date: 2007-09-18 00:58+0200\n"
 "PO-Revision-Date: 2007-06-08 23:10+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -53,17 +53,10 @@ msgstr "Most"
 msgid "Encampment"
 msgstr "Ležení"
 
-#: data/core/terrain.cfg:159
+#: data/core/terrain.cfg:159 data/core/terrain.cfg:169
+#: data/core/terrain.cfg:180
 msgid "Castle"
 msgstr "Hrad"
-
-#: data/core/terrain.cfg:169
-msgid "Elven Castle"
-msgstr "Elfský hrad"
-
-#: data/core/terrain.cfg:180
-msgid "Dwarven Castle"
-msgstr "Trpasličí hrad"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
@@ -77,34 +70,12 @@ msgstr "Zatopená zřícenina"
 msgid "Swamp Ruin"
 msgstr "Propadlá zřícenina"
 
-#: data/core/terrain.cfg:239
-msgid "Encampment keep"
-msgstr "Velitelský stan"
-
-#: data/core/terrain.cfg:251
+#: data/core/terrain.cfg:239 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:263 data/core/terrain.cfg:275
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:299
+#: data/core/terrain.cfg:311
 msgid "Keep"
 msgstr "Tvrz"
-
-#: data/core/terrain.cfg:263
-msgid "Elven Keep"
-msgstr "Elfská tvrz"
-
-#: data/core/terrain.cfg:275
-msgid "Dwarven keep"
-msgstr "Trpasličí tvrz"
-
-# alt.: Rozbořená, Pobořená, Rozpadlá
-#: data/core/terrain.cfg:287
-msgid "Ruined keep"
-msgstr "Zřícená tvrz"
-
-#: data/core/terrain.cfg:299
-msgid "Sunken keep"
-msgstr "Zatopená tvrz"
-
-#: data/core/terrain.cfg:311
-msgid "Swamp keep"
-msgstr "Propadlá tvrz"
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
@@ -178,21 +149,14 @@ msgstr ""
 msgid "Lava"
 msgstr "Láva"
 
-#: data/core/terrain.cfg:545
-msgid "Desert road"
-msgstr "Pouštní cesta"
+#: data/core/terrain.cfg:545 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:572
+msgid "Road"
+msgstr "Cesta"
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
 msgstr "Bahno"
-
-#: data/core/terrain.cfg:563
-msgid "Road"
-msgstr "Cesta"
-
-#: data/core/terrain.cfg:572
-msgid "Stone path"
-msgstr ""
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -1223,3 +1187,31 @@ msgstr "Chyba"
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Elven Castle"
+#~ msgstr "Elfský hrad"
+
+#~ msgid "Dwarven Castle"
+#~ msgstr "Trpasličí hrad"
+
+#~ msgid "Encampment keep"
+#~ msgstr "Velitelský stan"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Elfská tvrz"
+
+#~ msgid "Dwarven keep"
+#~ msgstr "Trpasličí tvrz"
+
+# alt.: Rozbořená, Pobořená, Rozpadlá
+#~ msgid "Ruined keep"
+#~ msgstr "Zřícená tvrz"
+
+#~ msgid "Sunken keep"
+#~ msgstr "Zatopená tvrz"
+
+#~ msgid "Swamp keep"
+#~ msgstr "Propadlá tvrz"
+
+#~ msgid "Desert road"
+#~ msgstr "Pouštní cesta"
