@@ -476,6 +476,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			}
 		}
 
+		screen->labels().recalculate_shroud();
 		screen->invalidate_all();
 	}
 
