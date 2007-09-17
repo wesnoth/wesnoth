@@ -168,7 +168,7 @@ update-po4a:
 	@find doc/man/ -maxdepth 1 -type d -empty -exec rmdir {} \; && \
 		echo "done." || exit $?
 if MANUALUPDATE
-	@cd doc/manual && make update-po4a || exit $?
+	@cd doc/manual && make html || exit $?
 endif
 endif
 
