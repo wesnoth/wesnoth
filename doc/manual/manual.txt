@@ -83,7 +83,7 @@ When Wesnoth first starts it displays an initial background and a column
 of buttons called the Main Menu. The buttons only work with a mouse. For
 the impatient, we recommend you: click the "Language" button to set
 your language; then click the "Tutorial" button to run the tutorial;
-and then play the campaign, "The Two Brothers" by clicking the "Campaign"
+and then play the campaign, "Two Brothers" by clicking the "Campaign"
 button and selecting it from the list provided.
 
 image:images/main-menu.jpg["Main Menu"]
@@ -640,7 +640,7 @@ Concealment::
   have units next to it. Any enemy unit that first discovers this unit
   immediately loses all its remaining movement.
 Cures::
-  A curer can cure a unit of poison, although that unit will receive no
+  A unit with can cure an ally of poison, although the ally will receive no
   additional healing on the turn it is cured of the poison.
 Heals +4::
   Allows the unit to heal adjacent friendly units at the beginning of each
@@ -878,7 +878,8 @@ protected except from piercing attacks which are their weak point. Undead
 are very resistant to blade and piercing weapon but very vulnerable to
 impact attacks and arcane attacks.
 
-Use the best attack type against enemy units.
+Using the best attack type against enemy units will substantially
+increase your chances of killing them.
 
 Healing
 ~~~~~~~
@@ -1007,7 +1008,7 @@ line but a zig-zag curve. The north south line and the diagonals are the
 Coming from one side, the enemy may attack any single of your units
 in the line with only 2 of his units at a time. As a rule of thumb,
 a healthy unit without particular weakness can withstand an attack from
-two normal enemy units without getting killed.
+two normal enemy units of the same level or lower without getting killed.
 
 Unfortunately, your line often has to bend to form a wedge or to fit
 the terrain. At these corner points, 3 enemy units may attack. This
@@ -1035,13 +1036,12 @@ Use the terrain
 ^^^^^^^^^^^^^^^
 
 Try to position your troops so that they are attacking from a hex with
-high defense against an enemy in a hex with low terrain. Note that
-different units work better on different terrains. This way, terrain
-often dictates where you line up your units.
+high defense against an enemy in a hex with low terrain.  That way,
+the enemy's counterstrikes will be less likely to do damage.
 
-For example, you may position your elves at the end of the forest so
-that attacking orcs must stand on grassland while your elves enjoy the
-high forest defenses.
+For example, you might position your elves just inside of a forest edge
+so that attacking orcs must stand on grassland while your elves enjoy
+the high forest defenses.
 
 Attacking and choosing your targets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1062,8 +1062,8 @@ Striking first is an advantage because it allows you the choice of which
 units will face off. Take advantage of enemy weakness: e.g. direct your
 ranged attacks against foes without ranged weapons. Take advantage of
 weaknesses like Horsemen's vulnerability to pierce. But remember that
-they get to attack back on their turn, so you might have weaknesses he
-may exploit.
+they get to attack back on their turn, so you might have weaknesses the
+enemy may exploit.
 
 For example, Horsemen can hold up the line against Orcish Grunts and
 Troll Whelps very well because they have some resistances against blade
@@ -1072,11 +1072,16 @@ and Goblin Spearmen.
 
 It usually pays off if you can definitively kill (or almost kill) the
 faced unit. If you are unsure of finishing off the enemy in one turn,
-ensure that your unit can weather the return attacks, or that you're
-willing to lose that unit. To withstand the enemies strikes next turn,
-it is often wise to attack with the weapon that deals the least damage
-to you. So use your ranged weapons if the enemy has no ranged attack. The
-computers default choice only looks for the most damage you deal out.
+either ensure that your unit can weather the return attacks or decide
+that you're willing to lose that unit. To withstand the enemy's
+strikes next turn, it is often wise to attack at the range that
+allows the enemy to do least damage to you, rather than choosing the
+maximum expected damage to the enemy. 
+
+In particualar, use your ranged weapons if the enemy has no ranged
+attack. The computer's default choice only looks for the most damage
+you can deal, so using it will often result in your units taking more 
+damage than necessary.
 
 Time of Day
 ^^^^^^^^^^^
