@@ -72,13 +72,11 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 		}
 		if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
 			lg::wml_error<<"using frame directly in attack is VERY deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
+			if(animation_.empty()) {
+				animation_.push_back(unit_animation(cfg));
+				animation_.back().back_compat_add_name(cfg["name"]);
+			}
 		}
-		if(animation_.empty()) {
-			animation_.push_back(unit_animation(cfg));
-			animation_.back().back_compat_add_name(cfg["name"]);
-		}
-		animation_.push_back(unit_animation(-200,unit_frame(image_fighting,300),"attack",unit_animation::DEFAULT_ANIM));
-		animation_.back().back_compat_add_name(cfg["name"]);
 	}
 
 	id_ = unit_id_test(cfg["name"]);

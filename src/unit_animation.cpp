@@ -175,7 +175,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 int unit_animation::matches(const game_display &disp,const gamemap::location& loc, const unit* my_unit,const std::string & event,const int value,hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const
 {
 	int result = base_score_;
-	if(event_.empty() ==false && !event.empty()) {
+	if(!event.empty()) {
 		if (std::find(event_.begin(),event_.end(),event)== event_.end()) {
 			return MATCH_FAIL;
 		} else {
