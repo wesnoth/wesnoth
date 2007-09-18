@@ -544,11 +544,12 @@ def hack_syntax(filename, lines):
             need_image = False
     # Boucman's transformation of animation syntax
     class anim_frame:
-        def __init__(self, attackline, attackname, lineno, female):
+        def __init__(self, attackline, attackname, lineno, female, variation):
             self.attackstart = attackline
             self.name = attackname
             self.animstart = lineno
             self.female = female
+            self.variation = variation
             self.animend = None
             self.attackend = None
         def __repr__(self):
@@ -564,9 +565,15 @@ def hack_syntax(filename, lines):
             in_female = True
         elif "[/female]" in lines[i]:
             in_female = False
+        elif "[variation]" in lines[i]:
+            variation_index += 1
+            in_variation = True
+        elif "[/variation]" in lines[i]:
+            in_variation = False
         elif "[unit]" in lines[i]:
-            in_attack = in_animation = in_female = False
+            in_attack = in_animation = in_female = in_variation = False
             female_attack_index = -1
+            variation_index = 0
             male_attack_start = len(animations)
         elif "[attack]" in lines[i]:
             in_attack = True;
@@ -588,8 +595,11 @@ def hack_syntax(filename, lines):
                 attackname = animations[male_attack_start + female_attack_index].name
             if not attackname:
                 print '"%s", line %d: cannot deduce attack name'%(filename, i+1)
-                
-            animations.append(anim_frame(attackline, attackname, i, in_female))
+            if in_variation:
+                variation = variation_index
+            else:
+                variation = None
+            animations.append(anim_frame(attackline, attackname, i, in_female, variation))
             in_animation = True
         elif "[/animation]" in lines[i] and in_attack:
             in_animation = False
@@ -648,8 +658,8 @@ def hack_syntax(filename, lines):
         lines = lines[:aframe.animstart] + lines[aframe.animend+1:]
         modcount += 1
         boucmanized = True
-    # Insert attacks where they belong
-    female_attacks = filter(lambda a: a.female, animations)
+    # Insert non-variation attacks where they belong
+    female_attacks = filter(lambda a: a.female and a.variation == None, animations)
     female_attacks.reverse()
     if female_attacks:
         female_end = -1
@@ -660,7 +670,7 @@ def hack_syntax(filename, lines):
         assert female_end != -1
         female_wml = "".join(map(lambda x: x.wml, female_attacks))
         lines = lines[:female_end] + [female_wml] + lines[female_end:]
-    male_attacks = filter(lambda a: not a.female, animations)
+    male_attacks = filter(lambda a: not a.female and a.variation == None, animations)
     male_attacks.reverse()
     if male_attacks:
         male_end = -1
@@ -673,6 +683,16 @@ def hack_syntax(filename, lines):
         assert male_end != -1
         male_wml = "".join(map(lambda x: x.wml, male_attacks))
         lines = lines[:male_end] + [male_wml] + lines[male_end:]
+    # Now insert variation attacks where they belong.
+    for animation in animations:
+        if animation.variation != None:
+            vcount = 0
+            for j in range(len(lines)):
+                if "[/variation]" in lines[j]:
+                    vcount += 1
+                if vcount == animation.variation:
+                    break
+            lines = lines[:j] + [animation.wml] + lines[j:]
     # Garbage-collect any empty [attack] scopes left behind;
     # this is likely to happen with female-variant units.
     nullattack = True
@@ -728,7 +748,7 @@ def hack_syntax(filename, lines):
         duplist = {}
         while name_pos is not None:
             key = lines[name_pos.lineno].strip()
-            context = map(lambda x: x[0], name_pos.scopes)
+            context = map(lambda x: x.element, name_pos.scopes)
             if '[attack]' in context:
                 if key not in duplist:
                     duplist[key] = []
