@@ -477,11 +477,17 @@ void unit_attack(
 	     ){
 
 		double pos = 0.0;
+
 	        if(animation_time < attacker.get_animation()->get_begin_time()) {
+		  	// attack animation has not yet started:
+		  	// can happen if defenders's or leader's
+			// animation has started but attacker's has not.
 			pos = 0.0;
 		} else if( animation_time > 0 && end_time > 0) {
+			// after impact, attacker slides backward
 			pos = 1.0-double(animation_time)/double(end_time);
 		} else {
+			// before impact, attacker slides forward
 			pos = 1.0 - double(animation_time)/double(minimum<int>(attacker.get_animation()->get_begin_time(),-150));
 		}
 		if(pos > 0.0) {
