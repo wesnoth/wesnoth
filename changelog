@@ -8,6 +8,7 @@
      * new portrait for Konrad II
    * Liberty:
      * fixed the undead transformations not working in 'Unlawful Orders'
+     * clarified the objectives in 'The Gray Woods'
    * Northern Rebirth
      * Colored portraits for Sisal and Rakshas
      * Fixed bug in 'Old Friend' where Tallin looses bonus HP, MP and
@@ -18,6 +19,8 @@
      * Fixed bug in 'Saving Inarix' where the blown up bridge wasn't shown
        properly (bug #9817)
    * The South Guard
+     * a large number of assorted little polishing tweaks and improvements
+     * a somewhat nicer-looking village flag
      * Deoran now has a lvl 3 advancement, and no special AMLA options
      * Map for "A Choice In The Fog modified so mermen are actually useful.
      * "Tidings Good And Ill" is now playable even if you didn't recruit
@@ -31,6 +34,8 @@
      * 'Into The Depths' has been completely rewritten.
      * there is a new scenario, 'Return To Kerlath', between 'Into The Depths'
        and 'Vengeance' on the elf branch.
+     * trimmed the large unused portions of the map in 'Vengeance' away
+     * in 'Vengeance', removed the death of Minister Hylas as a defeat condition
    * Under the Burning Suns
      * fixed the missing dialogue parts in 'The Morning After'.
      * 'Across the Harsh Sands' - dehydration causes damage and fractional loss
@@ -38,13 +43,18 @@
         Lost Soul appearance logic.
      * 'A Stirring in the Night' - village events work correctly now (bugs
        #9947 and #9915), Added animated and impassable campfire terrain.
+   * general
+     * fixed many scenarios erroneously using the wrong difficulty level symbol
+       in #ifdefs (MEDIUM instead of NORMAL)
  * graphics:
    * new graphics for the highwayman
-   * nicer image for the illuminates aura
+   * nicer image for the illuminates aura and a new campfire aura
    * no more idle animations for units next to an enemy unit
    * new button and slider in preferences to switch unit idle animations on
      and off and set their frequency
    * no grid on off-map tiles
+   * nicer transitioning between desert road, desert and desert villages
+   * a new alternative terrain for lava, one which isn't drawn in a pit
  * language and i18n:
    * manual: switched to a brand new manual, now using some strange format to
      generate it and ending in a nice .html page
@@ -54,6 +64,9 @@
    * new translation: Serbian (Latin version)
    * added sazanami-gothic font (needed for the Japanese translation)
    * updated DejaVu font to 2.20 (no new characters)
+   * made all keeps be called "Keep", all castles be called "Castle" and all
+     roads be called "Road", instead of using variant names (such as
+     "Elven Castle" or "Desert road")
  * multiplayer:
    * revised maps: Charge, Den of Onis, Meteor Lake, Silverhead Crossing,
      Triple Blitz, Clash
@@ -113,6 +126,8 @@
      now used for user display purposes (currently only in help sections). If
      id is missing, name will be used. There is also a new "description" key
      displayed in the race help page (but currently not used by mainline races)
+   * new potentially useful global macros: FULL_HEAL, HIGHLIGHT_IMAGE,
+     CLEAR_FOG, NO_SCROLL_TO_AI_LEADER
  * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
    * remove some useless messages from the standard output
