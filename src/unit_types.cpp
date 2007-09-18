@@ -65,7 +65,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 		const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
 		const config::child_list& animations = expanded_cfg.get_children("animation");
 		for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
-			lg::wml_error<<"attack animation  directly in attack is deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
+			lg::wml_error<<"attack animation directly in attack is deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
 			lg::wml_error<<"please put it with an [attack_anim] tag in the [unit] and filter on the attack name\n";
 			animation_.push_back(unit_animation(**d));
 			animation_.back().back_compat_add_name(cfg["name"]);
@@ -77,6 +77,8 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 				animation_.back().back_compat_add_name(cfg["name"]);
 			}
 		}
+		animation_.push_back(unit_animation(-150,unit_frame(image_fighting,300),"attack",unit_animation::DEFAULT_ANIM));
+		animation_.back().back_compat_add_name(cfg["name"]);
 	}
 
 	id_ = unit_id_test(cfg["name"]);
@@ -890,6 +892,7 @@ const std::string& unit_type::image_fighting(attack_type::RANGE range) const
 	const std::string& val = cfg_[str];
 
 	if(!val.empty())
+		//lg::wml_error<<"image_short and image_long are deprecated, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		return val;
 	else
 		return image();
