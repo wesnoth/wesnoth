@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-18 01:37+0200\n"
-"PO-Revision-Date: 2007-09-17 11:18+0100\n"
+"PO-Revision-Date: 2007-09-18 12:27+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -2664,7 +2664,6 @@ msgid "plague"
 msgstr "zaraza"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2673,8 +2672,8 @@ msgid ""
 msgstr ""
 "Zaraza:\n"
 "Jednostka zabita atakiem z zarazą zostaje zastąpiona jednostką identyczną do "
-"tej, która ją zabiła, i stojącą po tej samej stronie. (Nie dotyczy to "
-"nieumarłych ani jednostek w wioskach)."
+"tej, która ją zabiła, i stojącą po tej samej stronie. Nie dotyczy to "
+"nieumarłych ani jednostek w wioskach."
 
 #: data/core/macros/abilities.cfg:503
 msgid ""
@@ -2738,14 +2737,14 @@ msgid "magical"
 msgstr "magiczny"
 
 #: data/core/macros/abilities.cfg:551
-#, fuzzy
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 "Magiczny:\n"
-"Ten atak ma zawsze 70% szansy na trafienie."
+"Ten atak ma zawsze 70% szansy na trafienie, niezależnie od zdolności "
+"obronnych atakowanego."
 
 #: data/core/macros/abilities.cfg:562
 msgid "swarm"
@@ -2810,7 +2809,6 @@ msgid "poison"
 msgstr "trucizna"
 
 #: data/core/macros/abilities.cfg:611
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2818,8 +2816,9 @@ msgid ""
 "a unit."
 msgstr ""
 "Trucizna:\n"
-"Ten atak zatruwa atakowanego. Zatrute jednostki tracą 8 PŻ na turę, dopóki "
-"nie zostaną uzdrowione albo zostanie im tylko 1 PŻ."
+"Ten atak zatruwa żyjące cele. Zatrute jednostki tracą 8 PŻ na turę, dopóki "
+"nie zostaną uzdrowione albo zostanie im tylko 1 PŻ. Sama trucizna nie może "
+"zabić jednostki."
 
 #: data/core/macros/amla.cfg:10
 msgid ", MAX XP +25%"
@@ -6789,9 +6788,8 @@ msgid "Abort game"
 msgstr "Porzuć grę"
 
 #: src/playturn.cpp:208 src/playturn.cpp:220
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Zastąp lokalnym graczem"
+msgstr "Zastąp graczem $player"
 
 #: src/playturn.cpp:226
 msgid "$player has left the game. What do you want to do?"
