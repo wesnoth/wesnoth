@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 01:37+0200\n"
+"POT-Creation-Date: 2007-09-18 22:36+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -57,11 +57,11 @@ msgstr "-- Книга за Уеснот"
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:27
 #: data/campaigns/Northern_Rebirth/_main.cfg:28
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:30
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 #: data/campaigns/The_South_Guard/_main.cfg:27
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33 data/core/about.cfg:417
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33 data/core/about.cfg:416
 msgid "Campaign Design"
 msgstr "Проект на кампания"
 
@@ -71,6 +71,7 @@ msgstr "Проект на кампания"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
 #, fuzzy
 msgid "Campaign Maintenance"
 msgstr "Изпълнение и поддръжка"
@@ -86,16 +87,22 @@ msgstr "Приключване и приемственост на кампани
 #: data/campaigns/Eastern_Invasion/_main.cfg:41
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:43
 #: data/campaigns/Northern_Rebirth/_main.cfg:34
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:42
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:50
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:40
-#: data/campaigns/The_South_Guard/_main.cfg:39
+#: data/campaigns/The_South_Guard/_main.cfg:47
 #: data/campaigns/Two_Brothers/_main.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:45
 #, fuzzy
 msgid "Artwork and Graphics Design"
 msgstr "Дизайнери на графично оформление"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:55
+#: data/campaigns/Two_Brothers/_main.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:81
+msgid "Miscellaneous"
+msgstr "Разни"
+
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:547
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
 msgstr "Подземие"
@@ -117,7 +124,7 @@ msgstr "Преводачи"
 msgid "Code and Translation Assistance"
 msgstr "Програмиране и помощ при превода"
 
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:34
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:35
 #, fuzzy
 msgid "WML Assistance"
 msgstr "Устойчивост"
@@ -130,22 +137,8 @@ msgstr "Идеен замисъл и оригинален дизайн"
 msgid "Completion and Maintenance"
 msgstr "Изпълнение и поддръжка"
 
-#: data/campaigns/The_South_Guard/_main.cfg:51
-#: data/campaigns/Two_Brothers/_main.cfg:47
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:75
-msgid "Miscellaneous"
-msgstr "Разни"
-
-#: data/campaigns/The_South_Guard/_main.cfg:54
-msgid ""
-"and other people\n"
-"this list is very incomplete\n"
-msgstr ""
-"и други хора\n"
-"този списък далеч не е изчерпателен\n"
-
 #: data/campaigns/Two_Brothers/_main.cfg:54
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Специални благодарности на всички, които пропуснах да спомена."
 
@@ -165,172 +158,172 @@ msgstr "Графично оформление и дизайн"
 msgid "Sound Effects"
 msgstr "Звукови ефекти"
 
-#: data/core/about.cfg:472
+#: data/core/about.cfg:471
 msgid "Multiplayer Maps and Balancing"
 msgstr "Карти и балансиране за мрежова игра "
 
-#: data/core/about.cfg:506
+#: data/core/about.cfg:505
 msgid "Packagers"
 msgstr "Пакетиращи"
 
-#: data/core/about.cfg:551 data/core/help.cfg:265
+#: data/core/about.cfg:550 data/core/help.cfg:265
 msgid "Contributors"
 msgstr "Сътрудници"
 
-#: data/core/about.cfg:666
+#: data/core/about.cfg:665
 msgid "Internationalization Managers"
 msgstr "Ръководители на превода"
 
-#: data/core/about.cfg:691
+#: data/core/about.cfg:690
 msgid "Afrikaans Translation"
 msgstr "Превод на африкански"
 
-#: data/core/about.cfg:708
+#: data/core/about.cfg:707
 msgid "Basque Translation"
 msgstr "Превод на езика на баските (северна Испания)"
 
-#: data/core/about.cfg:722
+#: data/core/about.cfg:721
 msgid "Bulgarian Translation"
 msgstr "Превод на български"
 
-#: data/core/about.cfg:741
+#: data/core/about.cfg:740
 msgid "Catalan Translation"
 msgstr "Превод на каталунски"
 
-#: data/core/about.cfg:777
+#: data/core/about.cfg:776
 msgid "Chinese Translation"
 msgstr "Превод на китайски"
 
-#: data/core/about.cfg:787
+#: data/core/about.cfg:786
 msgid "Czech Translation"
 msgstr "Превод на чешки"
 
-#: data/core/about.cfg:832
+#: data/core/about.cfg:831
 msgid "Danish Translation"
 msgstr "Превод на датски"
 
-#: data/core/about.cfg:864
+#: data/core/about.cfg:863
 msgid "Dutch Translation"
 msgstr "Превод на холандски"
 
-#: data/core/about.cfg:904
+#: data/core/about.cfg:903
 msgid "English (GB) Translation"
 msgstr "Превод на английски (Великобритания)"
 
-#: data/core/about.cfg:915
+#: data/core/about.cfg:914
 msgid "Esperanto Translation"
 msgstr "Превод на Есперанто"
 
-#: data/core/about.cfg:934
+#: data/core/about.cfg:933
 msgid "Estonian Translation"
 msgstr "Превод на естонски"
 
-#: data/core/about.cfg:941
+#: data/core/about.cfg:940
 msgid "Filipino Translation"
 msgstr "Превод на филипински"
 
-#: data/core/about.cfg:948
+#: data/core/about.cfg:947
 msgid "Finnish Translation"
 msgstr "Превод на финландски"
 
-#: data/core/about.cfg:976
+#: data/core/about.cfg:975
 msgid "French Translation"
 msgstr "Превод на френски"
 
-#: data/core/about.cfg:1079
+#: data/core/about.cfg:1078
 msgid "Galician Translation"
 msgstr "Превод на галицийски"
 
-#: data/core/about.cfg:1086
+#: data/core/about.cfg:1085
 msgid "German Translation"
 msgstr "Превод на немски"
 
-#: data/core/about.cfg:1131
+#: data/core/about.cfg:1130
 msgid "Greek Translation"
 msgstr "Превод на гръцки"
 
-#: data/core/about.cfg:1156
+#: data/core/about.cfg:1155
 msgid "Hebrew Translation"
 msgstr "Превод на иврит"
 
-#: data/core/about.cfg:1166
+#: data/core/about.cfg:1165
 msgid "Hungarian Translation"
 msgstr "Превод на унгарски"
 
-#: data/core/about.cfg:1203
+#: data/core/about.cfg:1202
 msgid "Indonesian Translation"
 msgstr "Превод на индонезийски"
 
-#: data/core/about.cfg:1210
+#: data/core/about.cfg:1209
 msgid "Italian Translation"
 msgstr "Превод на италиански"
 
-#: data/core/about.cfg:1241
+#: data/core/about.cfg:1240
 msgid "Japanese Translation"
 msgstr "Превод на японски"
 
-#: data/core/about.cfg:1264
+#: data/core/about.cfg:1263
 msgid "Korean Translation"
 msgstr "Превод на корейски"
 
-#: data/core/about.cfg:1271
+#: data/core/about.cfg:1270
 msgid "Latin Translation"
 msgstr "Превод на латински"
 
-#: data/core/about.cfg:1278
+#: data/core/about.cfg:1277
 msgid "Lithuanian Translation"
 msgstr "Превод на литовски"
 
-#: data/core/about.cfg:1285
+#: data/core/about.cfg:1284
 msgid "Norwegian Translation"
 msgstr "Превод на норвежки"
 
-#: data/core/about.cfg:1307
+#: data/core/about.cfg:1306
 msgid "Polish Translation"
 msgstr "Превод на полски"
 
-#: data/core/about.cfg:1351
+#: data/core/about.cfg:1350
 msgid "Portuguese Translation"
 msgstr "Превод на португалски"
 
-#: data/core/about.cfg:1358
+#: data/core/about.cfg:1357
 msgid "Portuguese (Brazil) Translation"
 msgstr "Превод на португалски (Бразилия)"
 
-#: data/core/about.cfg:1393
+#: data/core/about.cfg:1392
 msgid "Russian Translation"
 msgstr "Превод на руски"
 
-#: data/core/about.cfg:1425
+#: data/core/about.cfg:1424
 msgid "Serbian Translation"
 msgstr "Превод на сръбски"
 
-#: data/core/about.cfg:1440
+#: data/core/about.cfg:1439
 msgid "Slovak Translation"
 msgstr "Превод на словашки"
 
-#: data/core/about.cfg:1454
+#: data/core/about.cfg:1453
 msgid "Slovenian Translation"
 msgstr "Превод на словенски"
 
-#: data/core/about.cfg:1464
+#: data/core/about.cfg:1463
 msgid "Spanish Translation"
 msgstr "Превод на испански"
 
-#: data/core/about.cfg:1506
+#: data/core/about.cfg:1505
 msgid "Swedish Translation"
 msgstr "Превод на шведски"
 
-#: data/core/about.cfg:1532
+#: data/core/about.cfg:1531
 msgid "Turkish Translation"
 msgstr "Превод на турски"
 
-#: data/core/about.cfg:1551
+#: data/core/about.cfg:1550
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Превод на валенсиански"
 
-#: data/core/about.cfg:1561
+#: data/core/about.cfg:1560
 msgid "Bots"
 msgstr "Ботове"
 
@@ -4793,8 +4786,8 @@ msgid "End Turn"
 msgstr "Край на хода"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2611
-#: src/unit.cpp:2910
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2603
+#: src/unit.cpp:2901
 msgid "HP"
 msgstr "Здраве"
 
@@ -5820,7 +5813,7 @@ msgstr "Ниво"
 msgid "unit list^Traits"
 msgstr "Качества"
 
-#: src/menu_events.cpp:325 src/unit.cpp:2644 src/unit.cpp:2918
+#: src/menu_events.cpp:325 src/unit.cpp:2636 src/unit.cpp:2909
 msgid "Moves"
 msgstr "Ходове"
 
@@ -6319,12 +6312,12 @@ msgid "Normal"
 msgstr "Нормално"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2948
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2939
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2955
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2946
 msgid ")"
 msgstr ")"
 
@@ -7026,19 +7019,19 @@ msgstr "Зареди статистика"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогнете на Уеснот, като ни пращате информация"
 
-#: src/unit.cpp:371 src/unit.cpp:1150 src/unit.cpp:2530
+#: src/unit.cpp:372 src/unit.cpp:1152 src/unit.cpp:2522
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2574 src/unit.cpp:2898 src/unit.cpp:2953
+#: src/unit.cpp:2566 src/unit.cpp:2889 src/unit.cpp:2944
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2662 src/unit.cpp:2926
+#: src/unit.cpp:2654 src/unit.cpp:2917
 msgid "XP to advance"
 msgstr "Опит, оставащ до повишение"
 
-#: src/unit.cpp:2932
+#: src/unit.cpp:2923
 msgid "/level"
 msgstr "/ниво"
 
@@ -7050,15 +7043,15 @@ msgstr "поражение"
 msgid "strikes"
 msgstr "точни попадения"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "chaotic"
 msgstr "хаотичен"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "lawful"
 msgstr "праведен"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "neutral"
 msgstr "неутрален"
 
@@ -7090,6 +7083,13 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Позволи качване на обобщения"
+
+#~ msgid ""
+#~ "and other people\n"
+#~ "this list is very incomplete\n"
+#~ msgstr ""
+#~ "и други хора\n"
+#~ "този списък далеч не е изчерпателен\n"
 
 #~ msgid "Replace with "
 #~ msgstr "Замени със"

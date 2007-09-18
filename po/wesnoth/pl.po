@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 01:37+0200\n"
+"POT-Creation-Date: 2007-09-18 22:36+0200\n"
 "PO-Revision-Date: 2007-09-18 12:27+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -53,11 +53,11 @@ msgstr "-- Księga Wesnoth"
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:27
 #: data/campaigns/Northern_Rebirth/_main.cfg:28
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:30
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 #: data/campaigns/The_South_Guard/_main.cfg:27
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33 data/core/about.cfg:417
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33 data/core/about.cfg:416
 msgid "Campaign Design"
 msgstr "Projektowanie kampanii"
 
@@ -67,6 +67,7 @@ msgstr "Projektowanie kampanii"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
 msgid "Campaign Maintenance"
 msgstr "Utrzymanie kampanii"
 
@@ -81,15 +82,21 @@ msgstr "Epilog i ciągłość kampanii"
 #: data/campaigns/Eastern_Invasion/_main.cfg:41
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:43
 #: data/campaigns/Northern_Rebirth/_main.cfg:34
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:42
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:50
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:40
-#: data/campaigns/The_South_Guard/_main.cfg:39
+#: data/campaigns/The_South_Guard/_main.cfg:47
 #: data/campaigns/Two_Brothers/_main.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:45
 msgid "Artwork and Graphics Design"
 msgstr "Grafika i projektowanie graficzne"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:55
+#: data/campaigns/Two_Brothers/_main.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:81
+msgid "Miscellaneous"
+msgstr "Różności"
+
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:547
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
 msgstr "Podziemie"
@@ -111,7 +118,7 @@ msgstr "Tłumacze"
 msgid "Code and Translation Assistance"
 msgstr "Pomoc w kodowaniu i tłumaczeniach"
 
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:34
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:35
 msgid "WML Assistance"
 msgstr "Pomoc przy kodowaniu WML"
 
@@ -123,22 +130,8 @@ msgstr "Koncepcja i pierwotny projekt"
 msgid "Completion and Maintenance"
 msgstr "Wykonanie i utrzymanie"
 
-#: data/campaigns/The_South_Guard/_main.cfg:51
-#: data/campaigns/Two_Brothers/_main.cfg:47
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:75
-msgid "Miscellaneous"
-msgstr "Różności"
-
-#: data/campaigns/The_South_Guard/_main.cfg:54
-msgid ""
-"and other people\n"
-"this list is very incomplete\n"
-msgstr ""
-"i inni\n"
-"ta lista jest wysoce niekompletna\n"
-
 #: data/campaigns/Two_Brothers/_main.cfg:54
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "I wielkie podziękowania wszystkim, których tu pominąłem."
 
@@ -158,171 +151,171 @@ msgstr "Grafika i rysunki"
 msgid "Sound Effects"
 msgstr "Efekty dźwiękowe"
 
-#: data/core/about.cfg:472
+#: data/core/about.cfg:471
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapy wieloosobowe i równoważenie"
 
-#: data/core/about.cfg:506
+#: data/core/about.cfg:505
 msgid "Packagers"
 msgstr "Pakujący"
 
-#: data/core/about.cfg:551 data/core/help.cfg:265
+#: data/core/about.cfg:550 data/core/help.cfg:265
 msgid "Contributors"
 msgstr "Współautorzy"
 
-#: data/core/about.cfg:666
+#: data/core/about.cfg:665
 msgid "Internationalization Managers"
 msgstr "Zarządcy internacjonalizacji"
 
-#: data/core/about.cfg:691
+#: data/core/about.cfg:690
 msgid "Afrikaans Translation"
 msgstr "Tłumaczenie afrikaans"
 
-#: data/core/about.cfg:708
+#: data/core/about.cfg:707
 msgid "Basque Translation"
 msgstr "Tłumaczenie baskijskie"
 
-#: data/core/about.cfg:722
+#: data/core/about.cfg:721
 msgid "Bulgarian Translation"
 msgstr "Tłumaczenie bułgarskie"
 
-#: data/core/about.cfg:741
+#: data/core/about.cfg:740
 msgid "Catalan Translation"
 msgstr "Tłumaczenie katalońskie"
 
-#: data/core/about.cfg:777
+#: data/core/about.cfg:776
 msgid "Chinese Translation"
 msgstr "Tłumaczenie chińskie"
 
-#: data/core/about.cfg:787
+#: data/core/about.cfg:786
 msgid "Czech Translation"
 msgstr "Tłumaczenie czeskie"
 
-#: data/core/about.cfg:832
+#: data/core/about.cfg:831
 msgid "Danish Translation"
 msgstr "Tłumaczenie duńskie"
 
-#: data/core/about.cfg:864
+#: data/core/about.cfg:863
 msgid "Dutch Translation"
 msgstr "Tłumaczenie holenderskie"
 
-#: data/core/about.cfg:904
+#: data/core/about.cfg:903
 msgid "English (GB) Translation"
 msgstr "Tłumaczenie brytyjskie"
 
-#: data/core/about.cfg:915
+#: data/core/about.cfg:914
 msgid "Esperanto Translation"
 msgstr "Tłumaczenie esperanto"
 
-#: data/core/about.cfg:934
+#: data/core/about.cfg:933
 msgid "Estonian Translation"
 msgstr "Tłumaczenie estońskie"
 
-#: data/core/about.cfg:941
+#: data/core/about.cfg:940
 msgid "Filipino Translation"
 msgstr "Tłumaczenie filipińskie"
 
-#: data/core/about.cfg:948
+#: data/core/about.cfg:947
 msgid "Finnish Translation"
 msgstr "Tłumaczenie fińskie"
 
-#: data/core/about.cfg:976
+#: data/core/about.cfg:975
 msgid "French Translation"
 msgstr "Tłumaczenie francuskie"
 
-#: data/core/about.cfg:1079
+#: data/core/about.cfg:1078
 msgid "Galician Translation"
 msgstr "Tłumaczenie galicyjskie"
 
-#: data/core/about.cfg:1086
+#: data/core/about.cfg:1085
 msgid "German Translation"
 msgstr "Tłumaczenie niemieckie"
 
-#: data/core/about.cfg:1131
+#: data/core/about.cfg:1130
 msgid "Greek Translation"
 msgstr "Tłumaczenie greckie"
 
-#: data/core/about.cfg:1156
+#: data/core/about.cfg:1155
 msgid "Hebrew Translation"
 msgstr "Tłumaczenie hebrajskie"
 
-#: data/core/about.cfg:1166
+#: data/core/about.cfg:1165
 msgid "Hungarian Translation"
 msgstr "Tłumaczenie węgierskie"
 
-#: data/core/about.cfg:1203
+#: data/core/about.cfg:1202
 msgid "Indonesian Translation"
 msgstr "Tłumaczenie estońskie"
 
-#: data/core/about.cfg:1210
+#: data/core/about.cfg:1209
 msgid "Italian Translation"
 msgstr "Tłumaczenie włoskie"
 
-#: data/core/about.cfg:1241
+#: data/core/about.cfg:1240
 msgid "Japanese Translation"
 msgstr "Tłumaczenie japońskie"
 
-#: data/core/about.cfg:1264
+#: data/core/about.cfg:1263
 msgid "Korean Translation"
 msgstr "Tłumaczenie koreańskie"
 
-#: data/core/about.cfg:1271
+#: data/core/about.cfg:1270
 msgid "Latin Translation"
 msgstr "Tłumaczenie łacińskie"
 
-#: data/core/about.cfg:1278
+#: data/core/about.cfg:1277
 msgid "Lithuanian Translation"
 msgstr "Tłumaczenie litewskie"
 
-#: data/core/about.cfg:1285
+#: data/core/about.cfg:1284
 msgid "Norwegian Translation"
 msgstr "Tłumaczenie norweskie"
 
-#: data/core/about.cfg:1307
+#: data/core/about.cfg:1306
 msgid "Polish Translation"
 msgstr "Tłumaczenie polskie"
 
-#: data/core/about.cfg:1351
+#: data/core/about.cfg:1350
 msgid "Portuguese Translation"
 msgstr "Tłumaczenie portugalskie"
 
-#: data/core/about.cfg:1358
+#: data/core/about.cfg:1357
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tłumaczenie portugalskie (brazylijskie)"
 
-#: data/core/about.cfg:1393
+#: data/core/about.cfg:1392
 msgid "Russian Translation"
 msgstr "Tłumaczenie rosyjskie"
 
-#: data/core/about.cfg:1425
+#: data/core/about.cfg:1424
 msgid "Serbian Translation"
 msgstr "Tłumaczenie serbskie"
 
-#: data/core/about.cfg:1440
+#: data/core/about.cfg:1439
 msgid "Slovak Translation"
 msgstr "Tłumaczenie słowackie"
 
-#: data/core/about.cfg:1454
+#: data/core/about.cfg:1453
 msgid "Slovenian Translation"
 msgstr "Tłumaczenie słoweńskie"
 
-#: data/core/about.cfg:1464
+#: data/core/about.cfg:1463
 msgid "Spanish Translation"
 msgstr "Tłumaczenie hiszpańskie"
 
-#: data/core/about.cfg:1506
+#: data/core/about.cfg:1505
 msgid "Swedish Translation"
 msgstr "Tłumaczenie szwedzkie"
 
-#: data/core/about.cfg:1532
+#: data/core/about.cfg:1531
 msgid "Turkish Translation"
 msgstr "Tłumaczenie tureckie"
 
-#: data/core/about.cfg:1551
+#: data/core/about.cfg:1550
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tłumaczenie walenckie (południowy kataloński)"
 
-#: data/core/about.cfg:1561
+#: data/core/about.cfg:1560
 msgid "Bots"
 msgstr "Boty"
 
@@ -4745,8 +4738,8 @@ msgid "End Turn"
 msgstr "Zakończ turę"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2611
-#: src/unit.cpp:2910
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2603
+#: src/unit.cpp:2901
 msgid "HP"
 msgstr "PŻ"
 
@@ -5768,7 +5761,7 @@ msgstr "Poz."
 msgid "unit list^Traits"
 msgstr "Cechy"
 
-#: src/menu_events.cpp:325 src/unit.cpp:2644 src/unit.cpp:2918
+#: src/menu_events.cpp:325 src/unit.cpp:2636 src/unit.cpp:2909
 msgid "Moves"
 msgstr "Liczba ruchów"
 
@@ -6260,12 +6253,12 @@ msgid "Normal"
 msgstr "Normalny"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2948
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2939
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2955
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2946
 msgid ")"
 msgstr ")"
 
@@ -6969,19 +6962,19 @@ msgstr "Wyślij statystyki"
 msgid "Help Wesnoth by sending us information"
 msgstr "Pomóż Wesnoth, wysyłając nam informacje"
 
-#: src/unit.cpp:371 src/unit.cpp:1150 src/unit.cpp:2530
+#: src/unit.cpp:372 src/unit.cpp:1152 src/unit.cpp:2522
 msgid "Unknown unit type '$type|'"
 msgstr "Nieznany typ jednostki '$type|'"
 
-#: src/unit.cpp:2574 src/unit.cpp:2898 src/unit.cpp:2953
+#: src/unit.cpp:2566 src/unit.cpp:2889 src/unit.cpp:2944
 msgid "; "
 msgstr ";"
 
-#: src/unit.cpp:2662 src/unit.cpp:2926
+#: src/unit.cpp:2654 src/unit.cpp:2917
 msgid "XP to advance"
 msgstr "PD do awansu"
 
-#: src/unit.cpp:2932
+#: src/unit.cpp:2923
 msgid "/level"
 msgstr "/poziom"
 
@@ -6993,15 +6986,15 @@ msgstr "obrażenia"
 msgid "strikes"
 msgstr "ciosy"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "chaotic"
 msgstr "chaotyczny"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "lawful"
 msgstr "praworządny"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "neutral"
 msgstr "neutralny"
 
@@ -7032,6 +7025,13 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Włącz wysyłanie podsumowań"
+
+#~ msgid ""
+#~ "and other people\n"
+#~ "this list is very incomplete\n"
+#~ msgstr ""
+#~ "i inni\n"
+#~ "ta lista jest wysoce niekompletna\n"
 
 #~ msgid "Replace with "
 #~ msgstr "Zastąp przez"

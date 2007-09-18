@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 01:37+0200\n"
+"POT-Creation-Date: 2007-09-18 22:36+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -52,11 +52,11 @@ msgstr "——韦诺宝典"
 #: data/campaigns/Eastern_Invasion/_main.cfg:23
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:27
 #: data/campaigns/Northern_Rebirth/_main.cfg:28
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:30
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:29
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
 #: data/campaigns/The_South_Guard/_main.cfg:27
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33 data/core/about.cfg:417
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33 data/core/about.cfg:416
 #, fuzzy
 msgid "Campaign Design"
 msgstr "战役设计"
@@ -67,6 +67,7 @@ msgstr "战役设计"
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:30
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
 #, fuzzy
 msgid "Campaign Maintenance"
 msgstr "战役设计"
@@ -82,16 +83,22 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/_main.cfg:41
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:43
 #: data/campaigns/Northern_Rebirth/_main.cfg:34
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:42
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:50
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:40
-#: data/campaigns/The_South_Guard/_main.cfg:39
+#: data/campaigns/The_South_Guard/_main.cfg:47
 #: data/campaigns/Two_Brothers/_main.cfg:38
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:45
 #, fuzzy
 msgid "Artwork and Graphics Design"
 msgstr "艺术与图像设计"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:537
+#: data/campaigns/Heir_To_The_Throne/_main.cfg:55
+#: data/campaigns/Two_Brothers/_main.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:81
+msgid "Miscellaneous"
+msgstr "其它"
+
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:547
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
 msgstr "地下"
@@ -115,7 +122,7 @@ msgstr "捷克语"
 msgid "Code and Translation Assistance"
 msgstr "韩语"
 
-#: data/campaigns/Sceptre_of_Fire/credits.cfg:34
+#: data/campaigns/Sceptre_of_Fire/_main.cfg:35
 #, fuzzy
 msgid "WML Assistance"
 msgstr "抗性"
@@ -128,20 +135,8 @@ msgstr ""
 msgid "Completion and Maintenance"
 msgstr ""
 
-#: data/campaigns/The_South_Guard/_main.cfg:51
-#: data/campaigns/Two_Brothers/_main.cfg:47
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:75
-msgid "Miscellaneous"
-msgstr "其它"
-
-#: data/campaigns/The_South_Guard/_main.cfg:54
-msgid ""
-"and other people\n"
-"this list is very incomplete\n"
-msgstr ""
-
 #: data/campaigns/Two_Brothers/_main.cfg:54
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:85
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr ""
 
@@ -164,175 +159,175 @@ msgstr "+艺术与图像设计师"
 msgid "Sound Effects"
 msgstr "音效"
 
-#: data/core/about.cfg:472
+#: data/core/about.cfg:471
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "多人对战地图"
 
-#: data/core/about.cfg:506
+#: data/core/about.cfg:505
 msgid "Packagers"
 msgstr "游戏打包人员"
 
-#: data/core/about.cfg:551 data/core/help.cfg:265
+#: data/core/about.cfg:550 data/core/help.cfg:265
 msgid "Contributors"
 msgstr "贡献者"
 
-#: data/core/about.cfg:666
+#: data/core/about.cfg:665
 msgid "Internationalization Managers"
 msgstr "国际化管理员"
 
-#: data/core/about.cfg:691
+#: data/core/about.cfg:690
 msgid "Afrikaans Translation"
 msgstr "南非荷兰语"
 
-#: data/core/about.cfg:708
+#: data/core/about.cfg:707
 msgid "Basque Translation"
 msgstr "巴斯克语"
 
-#: data/core/about.cfg:722
+#: data/core/about.cfg:721
 msgid "Bulgarian Translation"
 msgstr "保加利亚语"
 
-#: data/core/about.cfg:741
+#: data/core/about.cfg:740
 msgid "Catalan Translation"
 msgstr "加泰罗尼亚语"
 
-#: data/core/about.cfg:777
+#: data/core/about.cfg:776
 msgid "Chinese Translation"
 msgstr "简体中文"
 
-#: data/core/about.cfg:787
+#: data/core/about.cfg:786
 msgid "Czech Translation"
 msgstr "捷克语"
 
-#: data/core/about.cfg:832
+#: data/core/about.cfg:831
 msgid "Danish Translation"
 msgstr "丹麦语"
 
-#: data/core/about.cfg:864
+#: data/core/about.cfg:863
 msgid "Dutch Translation"
 msgstr "荷兰语"
 
-#: data/core/about.cfg:904
+#: data/core/about.cfg:903
 msgid "English (GB) Translation"
 msgstr "英语(英国)"
 
-#: data/core/about.cfg:915
+#: data/core/about.cfg:914
 msgid "Esperanto Translation"
 msgstr "世界语"
 
-#: data/core/about.cfg:934
+#: data/core/about.cfg:933
 msgid "Estonian Translation"
 msgstr "爱沙尼亚语"
 
-#: data/core/about.cfg:941
+#: data/core/about.cfg:940
 msgid "Filipino Translation"
 msgstr "菲律宾语"
 
-#: data/core/about.cfg:948
+#: data/core/about.cfg:947
 msgid "Finnish Translation"
 msgstr "芬兰语"
 
-#: data/core/about.cfg:976
+#: data/core/about.cfg:975
 msgid "French Translation"
 msgstr "法语"
 
-#: data/core/about.cfg:1079
+#: data/core/about.cfg:1078
 #, fuzzy
 msgid "Galician Translation"
 msgstr "巴伦西亚语"
 
-#: data/core/about.cfg:1086
+#: data/core/about.cfg:1085
 msgid "German Translation"
 msgstr "德语"
 
-#: data/core/about.cfg:1131
+#: data/core/about.cfg:1130
 msgid "Greek Translation"
 msgstr "希腊语"
 
-#: data/core/about.cfg:1156
+#: data/core/about.cfg:1155
 msgid "Hebrew Translation"
 msgstr "希伯来语"
 
-#: data/core/about.cfg:1166
+#: data/core/about.cfg:1165
 msgid "Hungarian Translation"
 msgstr "匈牙利语"
 
-#: data/core/about.cfg:1203
+#: data/core/about.cfg:1202
 msgid "Indonesian Translation"
 msgstr "印度尼西亚语"
 
-#: data/core/about.cfg:1210
+#: data/core/about.cfg:1209
 msgid "Italian Translation"
 msgstr "意大利语"
 
-#: data/core/about.cfg:1241
+#: data/core/about.cfg:1240
 msgid "Japanese Translation"
 msgstr "日语"
 
-#: data/core/about.cfg:1264
+#: data/core/about.cfg:1263
 msgid "Korean Translation"
 msgstr "韩语"
 
-#: data/core/about.cfg:1271
+#: data/core/about.cfg:1270
 msgid "Latin Translation"
 msgstr "拉丁语"
 
-#: data/core/about.cfg:1278
+#: data/core/about.cfg:1277
 #, fuzzy
 msgid "Lithuanian Translation"
 msgstr "意大利语"
 
-#: data/core/about.cfg:1285
+#: data/core/about.cfg:1284
 msgid "Norwegian Translation"
 msgstr "挪威语"
 
-#: data/core/about.cfg:1307
+#: data/core/about.cfg:1306
 msgid "Polish Translation"
 msgstr "波兰语"
 
-#: data/core/about.cfg:1351
+#: data/core/about.cfg:1350
 msgid "Portuguese Translation"
 msgstr "葡萄牙语"
 
-#: data/core/about.cfg:1358
+#: data/core/about.cfg:1357
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙语(巴西)"
 
-#: data/core/about.cfg:1393
+#: data/core/about.cfg:1392
 msgid "Russian Translation"
 msgstr "俄语"
 
-#: data/core/about.cfg:1425
+#: data/core/about.cfg:1424
 msgid "Serbian Translation"
 msgstr "塞尔维亚语"
 
-#: data/core/about.cfg:1440
+#: data/core/about.cfg:1439
 msgid "Slovak Translation"
 msgstr "斯洛伐克语"
 
-#: data/core/about.cfg:1454
+#: data/core/about.cfg:1453
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚语"
 
-#: data/core/about.cfg:1464
+#: data/core/about.cfg:1463
 msgid "Spanish Translation"
 msgstr "西班牙语"
 
-#: data/core/about.cfg:1506
+#: data/core/about.cfg:1505
 msgid "Swedish Translation"
 msgstr "瑞典语"
 
-#: data/core/about.cfg:1532
+#: data/core/about.cfg:1531
 msgid "Turkish Translation"
 msgstr "土耳其语"
 
-#: data/core/about.cfg:1551
+#: data/core/about.cfg:1550
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "巴伦西亚语"
 
-#: data/core/about.cfg:1561
+#: data/core/about.cfg:1560
 #, fuzzy
 msgid "Bots"
 msgstr "电脑"
@@ -4034,8 +4029,8 @@ msgid "End Turn"
 msgstr "结束回合"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2611
-#: src/unit.cpp:2910
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2603
+#: src/unit.cpp:2901
 msgid "HP"
 msgstr "生命值"
 
@@ -5069,7 +5064,7 @@ msgstr "等级"
 msgid "unit list^Traits"
 msgstr "特质"
 
-#: src/menu_events.cpp:325 src/unit.cpp:2644 src/unit.cpp:2918
+#: src/menu_events.cpp:325 src/unit.cpp:2636 src/unit.cpp:2909
 msgid "Moves"
 msgstr "移动"
 
@@ -5574,12 +5569,12 @@ msgid "Normal"
 msgstr "普通"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2948
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2939
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2955
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2946
 msgid ")"
 msgstr "）"
 
@@ -6299,19 +6294,19 @@ msgstr "统计"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:371 src/unit.cpp:1150 src/unit.cpp:2530
+#: src/unit.cpp:372 src/unit.cpp:1152 src/unit.cpp:2522
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2574 src/unit.cpp:2898 src/unit.cpp:2953
+#: src/unit.cpp:2566 src/unit.cpp:2889 src/unit.cpp:2944
 msgid "; "
 msgstr "； "
 
-#: src/unit.cpp:2662 src/unit.cpp:2926
+#: src/unit.cpp:2654 src/unit.cpp:2917
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2932
+#: src/unit.cpp:2923
 #, fuzzy
 msgid "/level"
 msgstr "等级"
@@ -6324,15 +6319,15 @@ msgstr "伤害"
 msgid "strikes"
 msgstr "打击"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "chaotic"
 msgstr "混乱"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "lawful"
 msgstr "善良"
 
-#: src/unit_types.cpp:967
+#: src/unit_types.cpp:968
 msgid "neutral"
 msgstr "中立"
 
