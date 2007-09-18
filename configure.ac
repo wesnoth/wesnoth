@@ -336,6 +336,17 @@ fi
 
 AM_CONDITIONAL([X11], [test "$have_libx11" = 'yes'])
 
+# We need pngmeta for the tinygui option
+
+AC_PATH_PROGS([PNGMETA], [pngmeta], [none])
+
+if test \( "x$PNGMETA" = "xnone" \) -a \( "x$TINYGUI" = xyes \); then
+
+	AC_MSG_ERROR([*** The pngmeta utility is required when building
+with the tinygui option.])
+
+fi
+
 # SDL_CONFIG
 
 AC_PATH_PROGS([SDL_CONFIG], [sdl-config sdl11-config], [none])
