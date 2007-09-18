@@ -1,5 +1,5 @@
 if MANUALUPDATE
-dist_noinst_DATA = images/main-menu.jpg images/recruit.jpg styles/manual.css
+dist_noinst_DATA = styles/manual.css
 
 XSLTOPTS = --nonet \
   --stringparam callout.graphics 0 \
