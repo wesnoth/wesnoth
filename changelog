@@ -116,6 +116,7 @@
    * topic with an id starting with a "." are not shown in the left-panel
    * the encountered units list is now correctly updated when using ":debug"
      and ":nodebug" commands
+   * faster inital loading of the help.
    * fix some incorrect "open section" UI sound when cliking on links
  * WML engine:
    * new event "turn refresh" occurs after healing, calculating income, and
@@ -143,11 +144,10 @@
    * various bug fixes and code cleanups
    * remove some useless messages from the standard output
    * user-made campaign translations now work again for Windows (bug #9926)
-   * faster inital loading of the help.
    * fix TC imagepath function for non-playing side and add-on/campaigns icons
    * remove a 500ms delay between AI turns
    * switch to observer viewpoint in linger mode in multiplayer (bug #4072)
-   * optimize unit's moves on map with shroud but no fog
+   * optimize unit's moves on map with shroud or fog
 
 Version 1.3.7:
  * Campaigns
