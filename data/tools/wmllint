@@ -735,6 +735,7 @@ def hack_syntax(filename, lines):
             if radius_danger:
                 lines = lines[:startline] + [wspace + "[and]\n"] + to_indent +[
                     wspace + "[/and]\n"] + no_indent + lines[scopeIter.lineno:]
+		radius_pos.lines = lines
                 modcount += 1
                 #backup to rescan
                 radius_pos.seek(startline-1)
