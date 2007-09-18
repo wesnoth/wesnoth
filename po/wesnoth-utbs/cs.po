@@ -4,14 +4,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team, Yeti <yeti@physics.muni.cz> et al, 2004.
-# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2006.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2006, 2007.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-18 01:00+0200\n"
-"PO-Revision-Date: 2007-06-16 18:27+0100\n"
+"PO-Revision-Date: 2007-09-18 01:06+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,6 @@ msgid "Desert Prowler"
 msgstr "Pouštní slídič"
 
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#, fuzzy
 msgid ""
 "In the distant future a small band of elves struggles to survive amidst the "
 "ruins of fallen empires. Lead your people out of the desert on an epic "
@@ -74,7 +73,7 @@ msgstr ""
 "padlých říší. Veď svůj lid pryč z pouště na epické výpravě za novým "
 "domovem.\n"
 "\n"
-"(Obtížnost: expert, 16 scénářů)\n"
+"(Obtížnost: expert, 11 scénářů)\n"
 "\n"
 "Kampaň je upravována; některé scénáře se mohou lišit od původních verzí, být "
 "nevyvážené, nebo dokonce nehratelné.\n"
@@ -1112,7 +1111,6 @@ msgstr ""
 "denní výhní a nočním chladem."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:293
-#, fuzzy
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1121,10 +1119,11 @@ msgid ""
 "refreshing at an oasis (any shallow water hex) at the start of your turn, "
 "your units will regain full attack strength and some of the lost hitpoints."
 msgstr ""
-"Během dne (svítání, dopoledne, poledne, odpoledne a soumraku) poklesne každé "
-"tvé jednotce stojící na konci kola na písku, cestě, smetí nebo pouštních "
-"dunách zranění útoků; magické útoky však nebudou ovlivněny. Každé jednotce "
-"stojící v oáze (mělká voda) se na začátku kola útoky plně obnoví."
+"Během dne (svítání, dopoledne, poledne, odpoledne a soumraku) všechny tvé "
+"jednotky stojící na konci kola na písku, cestě, smetí nebo pouštních dunách "
+"utrpí kvůli žízni ztrátu $dehydration_loss životů a jejich útoky zeslábnou. "
+"Toto zranění nedokáží šamanky vyléčit. Pouze pokud na konci kola stojí v "
+"oáze (mělké vodě), obnoví se jim síla útoků a část životů."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:299
 msgid ""
@@ -1214,7 +1213,6 @@ msgstr ""
 "ve dne pouštním horkem."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:576
-#, fuzzy
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
 "strength and rest safely on the grass during the heat of the day."
@@ -1237,17 +1235,22 @@ msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
 msgstr ""
+"Tiše, před námi jsou obři. Hned za touhle dunou, k oáze se nedostaneme jinak "
+"než přes ně."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:650
 msgid "No chance to sneak around?"
-msgstr ""
+msgstr "Opravdu je nejde obejít?"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:654
+#, fuzzy
 msgid ""
 "We would have to cover extra distance in difficult terrain. If you want to "
 "bypas them I suggest going straight north in the hopes of finding an oasis "
 "there."
 msgstr ""
+"Museli bychom ujít další kus cesty v nepříjemném terénu. Pokud se jim chceme "
+"vyhnout, bylo by nejlepší jít přímo na sever hledat třetí oázu."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:669
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:694
@@ -1315,9 +1318,8 @@ msgstr ""
 "Pojďme, ráda bych se dostala do oázy co nejrychleji."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:840
-#, fuzzy
 msgid "Black Lieutenant"
-msgstr "Bandita Černé Ruky"
+msgstr "Poručík Černé Ruky"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:844
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:847
@@ -1335,7 +1337,6 @@ msgid "Black Hand Bandit"
 msgstr "Bandita Černé Ruky"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:910
-#, fuzzy
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
@@ -1536,9 +1537,8 @@ msgid "Yuck, there's still dried blood on the stones. It's kind of spooky."
 msgstr "Fuj, na kamení je stále zaschlá krev. Vypadá to docela strašidelně."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1478
-#, fuzzy
 msgid "This land belongs to the Black Hand. Trespass and you will die."
-msgstr "Tahle značka říká: Tato země patří Černé ruce. Vstupte a zemřete."
+msgstr "Tato země patří Černé ruce. Vstupte a zemřete."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1484
 msgid "Bandits. If they get in our way, they're going to be sorry."
@@ -1580,7 +1580,6 @@ msgstr ""
 "jsem už příliš dlouho na píscích."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1627
-#, fuzzy
 msgid ""
 "So, the outlaws have made a base around Pinnacle Rock. It's a good location, "
 "but we will drive them from it all the same."
@@ -1667,13 +1666,13 @@ msgstr ""
 "kousek na sever. Měli bychom být schopní tam najít vodu a odpočinout si."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1930
-#, fuzzy
 msgid "thirst"
-msgstr "ostny"
+msgstr "žízeň"
 
+# co jiného?
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1944
 msgid "refreshed"
-msgstr ""
+msgstr "obnovení"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2152
 msgid ""
@@ -1963,13 +1962,12 @@ msgstr "Ale tábořiště našich lidí jsou v nebezpečí, pobijí je hordy nem
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:129
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:134
-#, fuzzy
 msgid ""
 "There's no way we can marshal our people to escape the battle in time. We "
 "must protect our people's $village_counter encampments from the undead."
 msgstr ""
 "Není možné odvést náš lid včas, aby unikl bitvě. Musíme bránit našich "
-"jedenáct tábořišť před nemrtvými."
+"$village_counter tábořišť před nemrtvými."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:140
 msgid ""
@@ -5272,7 +5270,6 @@ msgstr ""
 "vytesal tu runu a proč?"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_Hunting_Dwarves.cfg:2242
-#, fuzzy
 msgid ""
 "Based on the runes covering the walls this must be the tomb of some ancient "
 "dwarf. The tomb seems empty except for this ornate stone coffin. The "
@@ -12534,7 +12531,6 @@ msgstr ""
 "situace jakkoliv vážná. Jak mi chybí její smích, její úsměv, její..."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:291
-#, fuzzy
 msgid ""
 "Zhul's funeral was a huge ceremony, like those she told us about from ages "
 "ago. I led a procession of our few remaining priestesses and all of the "
@@ -13398,7 +13394,6 @@ msgstr ""
 "je téměř neměřitelná, i když poněkud zaostávají v boji nablízko."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:34
-#, fuzzy
 msgid ""
 "Desert Sentinels patrol the sands; they are trained to avoid enemies when it "
 "is advantageous. They can cripple opponents with their bolas and are deadly "
@@ -14032,7 +14027,6 @@ msgstr ""
 "protivníky překvapivě snadno."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Sentinel.cfg:33
-#, fuzzy
 msgid ""
 "Desert Sentinels patrol the sands; they are trained to avoid enemies when it "
 "is advantageous. They can cripple opponents with their bolas and are deadly "
@@ -14078,7 +14072,7 @@ msgstr "vlna chladu"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Spider_Lich.cfg:45
 msgid "shadow wave"
-msgstr ""
+msgstr "vlna tmy"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Troll_Shaman.cfg:4
 msgid "Troll Shaman"
@@ -14204,9 +14198,8 @@ msgid "Human Ship"
 msgstr "Lidská loď"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:86
-#, fuzzy
 msgid "Campfire"
-msgstr "oheň"
+msgstr "Oheň"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:18
 msgid "First Dawn"
@@ -14268,43 +14261,6 @@ msgstr "Dlouhá tma (3)"
 msgid "The Long Dark (4)"
 msgstr "Dlouhá tma (4)"
 
-#~ msgid "Necromancer"
-#~ msgstr "Nekromant"
-
-# pův. "černé magie"
-#~ msgid ""
-#~ "One of the greatest circles of what is considered 'black magic' is the "
-#~ "art of necromancy, the terrible ability to awaken the dead with false "
-#~ "life. It was a discovery that had terrible ramifications and caused "
-#~ "humanity's condemnation of black magic, for it has given fear a vast new "
-#~ "arsenal.\n"
-#~ "\n"
-#~ "This ability, in all aspects, is the first step towards cheating death of "
-#~ "its ultimate prize. It is the highest degree of power a dark mage can "
-#~ "attain without losing grip on humanity itself, but pales to the lethal "
-#~ "power wielded by Liches. Their mortal bodies are also made sturdier by "
-#~ "their magic, in contrast to the frail decayed form of a Lich.\n"
-#~ "\n"
-#~ "Special Notes: the necromancer's ranged attacks are magical and always "
-#~ "have a high chance of hitting an opponent. The staff of a necromancer is "
-#~ "marked with the plague, and any foe struck down by it will rise again in "
-#~ "unlife."
-#~ msgstr ""
-#~ "Jednou z nejvyšších dovedností nauky temné magie je umění nekromancie, "
-#~ "hrozivá schopnost pozvednout mrtvé k falešnému životu. Objev tohoto umění "
-#~ "přinesl hrůzné následky a zapříčinil odsouzení černé magie lidmi. Jejich "
-#~ "strach se však stal ohromnou novou zbraní v rukou černé magie.\n"
-#~ "\n"
-#~ "Tato schopnost se ve všech svých aspektech stala prvním krokem na cestě k "
-#~ "oklamání smrti. Je nejvyšším stupněm moci temných mágů bez ztráty své "
-#~ "lidské podstaty. I tak však bledne před mocí, kterou vládnou Lichové. "
-#~ "Jejich smrtelná těla se ale mocí magie stávají silnější a odolnější, na "
-#~ "rozdíl od těl Lichů, která jsou křehká a práchniví.\n"
-#~ "\n"
-#~ "Zvláštní rysy: útok nekromantů na dálku je magický a má vysokou šanci na "
-#~ "úspěch. jeho hůl pak roznáší stopy nákazy, takže holí zabitý protivník je "
-#~ "znovu pozvednut jako nemrtvý."
-
 #~ msgid ""
 #~ "There's no way we can marshal our people to escape the battle in time. We "
 #~ "must protect our people's twelve encampments from the undead."
@@ -14312,67 +14268,5 @@ msgstr "Dlouhá tma (4)"
 #~ "Není možné odvést náš lid včas, aby unikl bitvě. Musíme bránit našich "
 #~ "dvanáct tábořišť před nemrtvými."
 
-#~ msgid ""
-#~ "Please, have mercy on us. We'm just trying to survive in this horrible "
-#~ "land."
-#~ msgstr ""
-#~ "Prosím, mějte s námi slitování. Jen se snažíme přežít v téhle strašné "
-#~ "zemi."
-
-#~ msgid "cold"
-#~ msgstr "chlad"
-
-#~ msgid "blade"
-#~ msgstr "čepel"
-
-#~ msgid "pierce"
-#~ msgstr "bodnutí"
-
-#~ msgid "impact"
-#~ msgstr "úder"
-
-#~ msgid "arcane"
-#~ msgstr "nezemský"
-
-#~ msgid "web"
-#~ msgstr "síť"
-
-#~ msgid ""
-#~ "Desert Druids are powerful masters of the sands. Brilliant at ensnaring "
-#~ "unwary opponents, they also use the herbs of the forest to heal allies. "
-#~ "Druids are excellent supporting units in any Elvish army."
-#~ msgstr ""
-#~ "Pouštní druidky jsou mocné paní písků. Dokáží jak nečekaně polapit "
-#~ "překvapené nepřátele, tak i využít pouštní byliny k léčení spojeneckých "
-#~ "jednotek. Druidky proto skvěle doplňují a podpoří jakoukoliv elfí armádu."
-
-#~ msgid ""
-#~ "Shydes are elves that are devoted to nature and their faerie side. "
-#~ "Dragonfly wings sprout from their backs and change them into beautiful "
-#~ "creatures. They are capable of gliding unencumbered across almost any "
-#~ "terrain. The one exception is deep water, a terrain which the desert "
-#~ "elves rarely encounter. Their magical powers have been adapted to a life "
-#~ "among the sands, and so it does not work over deep water."
-#~ msgstr ""
-#~ "Pouštní víly jsou elfí kněžky oddané přírodě a magii. Z jejich zad "
-#~ "vyrůstají křídla ne nepodobná vážčím, která je proměňují v nádherná "
-#~ "stvoření. Dokáží díky nim bez problémů přelétat přes téměř jakýkoliv "
-#~ "terén, s výjimkou hluboké vody, s níž se pouštní elfové nesetkávají "
-#~ "příliš často. Jejich magické síly se po dlouhém životě na písku "
-#~ "přizpůsobily poušti, a tak nad hlubokou vodou selhávají."
-
-#~ msgid ""
-#~ "Desert Stars are Shydes that have becomes so powerful and holy that they "
-#~ "shine forth the light of Eloh, even in the darkest places. Like Shydes, "
-#~ "they are capable of gliding unencumbered across almost any terrain except "
-#~ "deep water. The hex they occupy and all adjacent hexes are illuminated so "
-#~ "that the never experience night. As a result, when a unit is adjacent to "
-#~ "a Desert Star, it will fight as if it were day when it is dusk, and as if "
-#~ "it were dusk when it is night. Eloh's power also reduces the wounds that "
-#~ "Desert Stars suffer when attacked. "
-#~ msgstr ""
-#~ "Pouštní hvězdy jsou víly, které se staly tak mocnými a svatými, že "
-#~ "vyzařují světlo Eloh i na nejtemnějších místech; okolní políčka jsou "
-#~ "osvětleny a hvězdy tak nikdy nezažívají noc. Jednotky bojující po boku "
-#~ "hvězd tak v noci bojují jako za soumraku a během něj jako ve dne. Přízeň "
-#~ "Eloh také zmenšuje zranění, které utrpí hvězdy v boji."
+#~ msgid "Necromancer"
+#~ msgstr "Nekromant"

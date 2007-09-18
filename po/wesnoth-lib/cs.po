@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-18 00:58+0200\n"
-"PO-Revision-Date: 2007-06-08 23:10+0100\n"
+"PO-Revision-Date: 2007-09-16 16:45+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -22,9 +22,8 @@ msgstr ""
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
 #: data/core/terrain.cfg:13
-#, fuzzy
 msgid "None"
-msgstr "Ne"
+msgstr "Nic"
 
 #: data/core/terrain.cfg:20
 msgid "Shroud"
@@ -143,7 +142,7 @@ msgstr "Rokle"
 
 #: data/core/terrain.cfg:521
 msgid "Lava chasm"
-msgstr ""
+msgstr "Lávová rokle"
 
 #: data/core/terrain.cfg:531
 msgid "Lava"
@@ -316,15 +315,15 @@ msgstr "Změň velikost"
 
 #: src/editor/editor_dialogs.cpp:387
 msgid "X offset:"
-msgstr ""
+msgstr "offset X:"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "Y offset:"
-msgstr ""
+msgstr "offset Y:"
 
 #: src/editor/editor_dialogs.cpp:467
 msgid "Smart expand"
-msgstr ""
+msgstr "Chytré rozšíření"
 
 #: src/editor/editor_dialogs.cpp:556
 msgid "X-Axis"
@@ -464,7 +463,7 @@ msgstr "Rotace země"
 
 #: src/game_preferences_display.cpp:185
 msgid "Sound effects"
-msgstr "Zobrazuj halo efekty"
+msgstr "Zvukové efekty"
 
 #: src/game_preferences_display.cpp:186
 msgid "Music"
@@ -496,7 +495,7 @@ msgstr "Použij"
 
 #: src/game_preferences_display.cpp:195
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Zobrazovat náhodné animace jednotek"
 
 #: src/game_preferences_display.cpp:197
 msgid "Music Volume:"
@@ -525,7 +524,7 @@ msgstr "Vzorkovací frekvence (Hz):"
 
 #: src/game_preferences_display.cpp:203
 msgid "Frequency:"
-msgstr ""
+msgstr "Frekvence:"
 
 #: src/game_preferences_display.cpp:226
 msgid "Sound effects on/off"
@@ -601,13 +600,12 @@ msgid "Units move and fight speed"
 msgstr "Rychlost pohybu a boje jednotek"
 
 #: src/game_preferences_display.cpp:321
-#, fuzzy
 msgid "Show unit idle animations"
-msgstr "Přeskočit animaci"
+msgstr "Zobrazovat náhodné animace jednotek"
 
 #: src/game_preferences_display.cpp:327
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "Frekvence náhodných animací jednotek"
 
 #: src/game_preferences_display.cpp:330
 msgid "Do not animate AI units moving"
@@ -758,7 +756,6 @@ msgid "New theme will take effect on next new or loaded game."
 msgstr "Nové téma se projeví na další nové, nebo načtené hře."
 
 #: src/game_preferences_display.cpp:1135
-#, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Žádná známá témata. Zkus změnit během existující hry."
 
@@ -931,17 +928,16 @@ msgid "Next Side"
 msgstr "Další strana"
 
 #: src/hotkeys.cpp:96
-#, fuzzy
 msgid "Full map"
-msgstr "Otoč mapu"
+msgstr "Celá mapa"
 
 #: src/hotkeys.cpp:98
 msgid "Each team"
-msgstr ""
+msgstr "Všechny týmy"
 
 #: src/hotkeys.cpp:100
 msgid "Team 1"
-msgstr ""
+msgstr "Tým 1"
 
 #: src/hotkeys.cpp:101
 msgid "Skip animation"
@@ -1016,7 +1012,6 @@ msgid "Refresh Image Cache"
 msgstr "Obnov obrazovou paměť"
 
 #: src/hotkeys.cpp:121
-#, fuzzy
 msgid "Delay transition updates"
 msgstr "Pozdrž překreslování přechodů"
 
@@ -1065,17 +1060,16 @@ msgid "Enter user command"
 msgstr "Vlož uživatelský příkaz"
 
 #: src/hotkeys.cpp:135
-#, fuzzy
 msgid "Clear messages"
-msgstr "Smaž popisek"
+msgstr "Smaž zprávy"
 
 #: src/hotkeys.cpp:137
 msgid "User-Command#2"
-msgstr ""
+msgstr "Uživatelský příkaz #2"
 
 #: src/hotkeys.cpp:138
 msgid "User-Command#3"
-msgstr ""
+msgstr "Uživatelský příkaz #3"
 
 #: src/hotkeys.cpp:491 src/hotkeys.cpp:808
 msgid "Do you really want to quit?"
@@ -1186,7 +1180,7 @@ msgstr "Chyba"
 
 #: src/terrain_translation.cpp:753
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-msgstr ""
+msgstr "Nalezen nepoužitelný terén, pravděpodobně verze 1.2; vstup: "
 
 #~ msgid "Elven Castle"
 #~ msgstr "Elfský hrad"
@@ -1215,3 +1209,6 @@ msgstr ""
 
 #~ msgid "Desert road"
 #~ msgstr "Pouštní cesta"
+
+#~ msgid "Stone path"
+#~ msgstr "Kamenný chodník"
