@@ -12,7 +12,7 @@
 #ifdef HAVE_CONFIG_H
 # include "config.h"
 #else
-# define VERSION "1.3.7+svn"
+# define VERSION "1.3.8"
 # define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
