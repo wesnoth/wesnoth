@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-18 01:37+0200\n"
-"PO-Revision-Date: 2007-09-16 23:59+0200\n"
+"PO-Revision-Date: 2007-09-18 21:52+0200\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -2692,7 +2692,6 @@ msgid "plague"
 msgstr "peste"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2700,9 +2699,10 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Peste :\n"
-"Une unité tuée par une telle attaque est remplacée par une unité identique "
-"appartenant à la même armée que celle ayant la peste (Ne fonctionne pas sur "
-"les morts-vivants ou sur les unités situées dans les villages)."
+"Une unité tuée par une telle attaque est remplacée par une unité de type "
+"identique, appartenant à la même armée que celle ayant la peste (Ne "
+"fonctionne pas sur les morts-vivants ou sur les unités situées dans les "
+"villages)."
 
 #: data/core/macros/abilities.cfg:503
 msgid ""
@@ -2766,14 +2766,14 @@ msgid "magical"
 msgstr "magique"
 
 #: data/core/macros/abilities.cfg:551
-#, fuzzy
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 "Magique :\n"
-"Cette attaque a toujours 70 % de chance d'atteindre sa cible."
+"Cette attaque a toujours 70 % de chance d'atteindre sa cible quelque soit la "
+"configuration défensive de l'ennemi."
 
 #: data/core/macros/abilities.cfg:562
 msgid "swarm"
@@ -2837,7 +2837,6 @@ msgid "poison"
 msgstr "empoisonnement"
 
 #: data/core/macros/abilities.cfg:611
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2845,9 +2844,10 @@ msgid ""
 "a unit."
 msgstr ""
 "Empoisonnement :\n"
-"Cette attaque empoisonne la cible. Les unités empoisonnées perdent 8 points "
-"de vie à chaque tour jusqu'à ce qu'elles soient guéries ou qu'elles n'aient "
-"plus qu'un seul point de vie."
+"Cette attaque empoisonne le cibles vivantes. Les unités empoisonnées perdent "
+"8 points de vie à chaque tour jusqu'à ce qu'elles soient guéries ou qu'elles "
+"n'aient plus qu'un seul point de vie. Le poison ne peut pas tuer tout seul "
+"une unité"
 
 #: data/core/macros/amla.cfg:10
 msgid ", MAX XP +25%"
@@ -6874,9 +6874,8 @@ msgid "Abort game"
 msgstr "Annuler le jeu"
 
 #: src/playturn.cpp:208 src/playturn.cpp:220
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Remplacer par un joueur local"
+msgstr "Remplacer par $player"
 
 #: src/playturn.cpp:226
 msgid "$player has left the game. What do you want to do?"
