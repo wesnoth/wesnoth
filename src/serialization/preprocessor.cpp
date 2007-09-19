@@ -613,17 +613,22 @@ bool preprocessor_data::get_chunk()
 				std::string::const_iterator i_bra = val.value.end();
 				int macro_num = val.linenum;
 				std::string macro_textdomain = val.textdomain;
+				bool quoting = false;
 				for(std::string::const_iterator i = val.value.begin(),
 				    i_end = val.value.end(); i != i_end; ++i) {
 					char c = *i;
-					if (c == '\n')
+					if (c == '\n') {
 						++macro_num;
+					} else if (c == '"') {
+						quoting = !quoting;
+					}
+
 					if (c == '{') {
 						if (i_bra != i_end)
 							buffer->write(&*i_bra - 1, i - i_bra + 1);
 						i_bra = i + 1;
 					} else if (i_bra == i_end) {
-						if (c == '#') {
+						if (c == '#' && !quoting) {
 							// keep track of textdomain changes in the body of the
 							// macro so they can be restored after each substitution
 							// of a macro argument
@@ -636,6 +641,15 @@ bool preprocessor_data::get_chunk()
 									++i_beg;
 								macro_textdomain = std::string(i_beg, i);
 								*buffer << "#textdomain " << macro_textdomain;
+								++macro_num;
+								c = '\n';
+							} else if((i_end - i_beg < 6 || !std::equal(i_beg, i_beg + 6, "define"))
+							&& (i_end - i_beg < 5 || (!std::equal(i_beg, i_beg + 5, "ifdef") 
+							&& !std::equal(i_beg, i_beg + 5, "endif") && !std::equal(i_beg, i_beg + 5, "undef")))
+							&& (i_end - i_beg < 4 || !std::equal(i_beg, i_beg + 4, "else"))) {
+								//check for define, ifdef, endif, undef, else
+								//otherwise, this is a comment and should be skipped
+								i = std::find(i_beg, i_end, '\n');
 								++macro_num;
 								c = '\n';
 							}

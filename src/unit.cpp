@@ -518,7 +518,7 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 	}
 
 
-	if(cfg_["random_traits"].empty() || utils::string_bool(cfg_["random_traits"])) {
+	if(utils::string_bool(cfg_["random_traits"], true)) {
 		generate_traits(!use_traits);
 	} else {
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
@@ -1272,7 +1272,7 @@ void unit::read(const config& cfg, bool use_traits)
 	}
 	if(!type_set) {
 		backup_state();
-		if(cfg["random_traits"].empty() || utils::string_bool(cfg["random_traits"])) {
+		if(utils::string_bool(cfg_["random_traits"], true)) {
 			generate_traits(!use_traits);
 		}
 		apply_modifications();
