@@ -15,7 +15,7 @@
 #include "../global.hpp"
 
 #include "game.hpp"
-#include "log.hpp"
+#include "../log.hpp"
 #include "../util.hpp"
 #include "../wassert.hpp"
 
