@@ -21,7 +21,11 @@ endif
 finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
 	 $(findmoredata) )
 finddatadirs=(cd $(top_srcdir) && find data fonts sounds -type d \! \( -name .svn -prune \) -print; $(findmoredatadirs) )
-findnoinst=(cd $(top_srcdir) && find utils -name .svn -prune -o -name ".\#*" -o -type d -o -print && find MANUAL* && find doc/manual -name "*.html" && find doc/manual/images -name "*.jpg" && find doc/manual/images -name "*.png")
+findnoinst=(cd $(top_srcdir) && find utils -name .svn -prune -o -name ".\#*" -o -type d -o -print && find MANUAL* )
+
+finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" )
+finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
+finddocdirs=(cd $(top_srcdir)/doc && find manual -type d \! \( -name .svn -prune \) -print; )
 
 w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  case $$p in \
@@ -67,6 +71,15 @@ if INSTALLDATA
 	  echo $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
+	test -z "$(docdir)" || $(mkdir_p) "$(DESTDIR)$(docdir)"
+	( $(finddocdirs) ) | while read p; do \
+	  $(mkdir_p) "$(DESTDIR)$(docdir)/$$p"; \
+	done; \
+	( $(finddoc) ) | while read p; do \
+	  cd doc && $(w_preparefileinstall) \
+	  echo $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(docdir)/$$f"; \
+	  $(INSTALL_DATA) "$$d$$p" "$(DESTDIR)$(docdir)/$$f"; cd ..; \
+	done
 if DUMMYLOCALES
 	$(mkdir_p) "$(DESTDIR)$(pkgdatadir)/locales"
 	if test -d "$(DESTDIR)$(pkgdatadir)/locales/C" ; then rm -r "$(DESTDIR)$(pkgdatadir)/locales/C" ; fi
@@ -108,11 +121,23 @@ if INSTALLDATA
 	  echo " rm -f '$(DESTDIR)$(pkgdatadir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
+	( $(finddoc) ) | while read p; do \
+	  case $$p in \
+	    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+	    *) f=$$p;; \
+	  esac; \
+	  echo " rm -f '$(DESTDIR)$(docadir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(docdir)/$$f"; \
+	done
+	( $(finddocdirs) | sed -e 's/ /\n/g' | sort -r ) | while read p; do \
+	  d=$(DESTDIR)$(docdir)/$$p && \
+	  if test -d $$d ; then echo "rmdir $$d"; echo `rmdir $$d` ; fi \
+	done
 endif
 
 dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
-	( $(finddata); $(findnoinst) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
+	( $(finddata); $(finddocdist); $(findnoinst) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
 dist_noinst_DATA = copyright changelog players_changelog wesnoth.dev editor.dev server.dev wesnoth.kdevelop campaign_server.dsp map_editor.dsp server.dsp wesnoth.dsp wesnoth.dsw
 
@@ -121,6 +146,7 @@ uninstall-hook:
 	if test -d $(bindir) ; then echo `rmdir $(bindir)` ; fi
 	if test -d $(datadir) ; then echo `rmdir $(datadir)` ; fi
 	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi
+	if test -d $(docdir) ; then echo `rmdir $(docdir)` ; fi
 
 clean-local:
 	rm -rf translations po/stamp* po/*/stamp*

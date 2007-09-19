@@ -1,6 +1,4 @@
 if MANUALUPDATE
-dist_noinst_DATA = styles/manual.css
-
 XSLTOPTS = --nonet \
   --stringparam callout.graphics 0 \
   --stringparam navig.graphics 0 \
