@@ -28,27 +28,55 @@
 
 
 terrain_type::terrain_type() :
-		minimap_image_("void"), editor_image_("void"),
+		minimap_image_("void"), 
+		editor_image_("void"),
+		id_(),
+		name_(),
 		number_(t_translation::VOID_TERRAIN),
 		mvt_type_(1, t_translation::VOID_TERRAIN),
 		def_type_(1, t_translation::VOID_TERRAIN),
 		union_type_(1, t_translation::VOID_TERRAIN),
-        height_adjust_(0), submerge_(0.0), light_modification_(0),
-        heals_(0), village_(false), castle_(false), keep_(false)
+        height_adjust_(0), 
+		submerge_(0.0), 
+		light_modification_(0),
+        heals_(0), 
+		village_(false), 
+		castle_(false), 
+		keep_(false),
+		income_description_(),
+		income_description_ally_(),
+		income_description_enemy_(),
+		income_description_own_(),
+		editor_group_()
 {}
 
-terrain_type::terrain_type(const config& cfg)
+terrain_type::terrain_type(const config& cfg) :
+		minimap_image_(cfg["symbol_image"]),
+		editor_image_(cfg["editor_image"]),
+		id_(cfg["id"]),
+		name_(cfg["name"]),
+		number_(t_translation::read_letter(cfg["string"])),
+		mvt_type_(),
+		def_type_(),
+		union_type_(),
+		height_adjust_(atoi(cfg["unit_height_adjust"].c_str())),
+		submerge_(atof(cfg["submerge"].c_str())),
+		light_modification_(atoi(cfg["light"].c_str())),
+		heals_(lexical_cast_default<int>(cfg["heals"], 0)),
+		village_(utils::string_bool(cfg["gives_income"])),
+		castle_(utils::string_bool(cfg["recruit_onto"])),
+		keep_(utils::string_bool(cfg["recruit_from"])),
+		income_description_(),
+		income_description_ally_(),
+		income_description_enemy_(),
+		income_description_own_(),
+		editor_group_(cfg["editor_group"])
 {
-	minimap_image_ = cfg["symbol_image"];
 
-	editor_image_ = cfg["editor_image"];
 	if(editor_image_.empty()) {
 		editor_image_ = minimap_image_;
 	}
 
-	name_ = cfg["name"];
-	id_ = cfg["id"];
-	number_ = t_translation::read_letter(cfg["string"]);
 	wassert(number_ != t_translation::NONE_TERRAIN);
 
 	mvt_type_.push_back(number_);
@@ -82,18 +110,10 @@ terrain_type::terrain_type(const config& cfg)
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
-	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
-	submerge_ = atof(cfg["submerge"].c_str());
 #ifdef USE_TINY_GUI
 	height_adjust_ /= 2;
 #endif
-	light_modification_ = atoi(cfg["light"].c_str());
 
-	heals_ = lexical_cast_default<int>(cfg["heals"], 0);
-
-	village_ = utils::string_bool(cfg["gives_income"]);
-	castle_ = utils::string_bool(cfg["recruit_onto"]);
-	keep_ = utils::string_bool(cfg["recruit_from"]);
 
 	//mouse over message are only shown on villages
 	if(village_) {
@@ -117,8 +137,6 @@ terrain_type::terrain_type(const config& cfg)
 			income_description_own_ = _("Owned village");
 		}
 	}
-
-	editor_group_ = cfg["editor_group"];
 }
 
 void create_terrain_maps(const std::vector<config*>& cfgs,
