@@ -143,16 +143,23 @@ t_letter::t_letter(const std::string& b, const std::string& o) :
 {}
 
 t_match::t_match() :
-	has_wildcard(false), is_empty(true)
+	terrain(),
+	mask(),
+	masked_terrain(),
+	has_wildcard(false),
+	is_empty(true)
 {}
 
-t_match::t_match(const std::string& str, const t_layer filler):
-	terrain(t_translation::read_list(str, filler))
+t_match::t_match(const std::string& str, const t_layer filler) :
+	terrain(t_translation::read_list(str, filler)),
+	mask(),
+	masked_terrain(),
+	has_wildcard(t_translation::has_wildcard(terrain)),
+	is_empty(terrain.empty())
+
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
-	has_wildcard = t_translation::has_wildcard(terrain);
-	is_empty = terrain.empty();
 
 	for(size_t i = 0; i < terrain.size(); i++) {
 		mask[i] = t_translation::get_mask_(terrain[i]);
@@ -161,12 +168,14 @@ t_match::t_match(const std::string& str, const t_layer filler):
 }
 
 t_match::t_match(const t_letter& letter):
-	terrain(t_list(1, letter))
+	terrain(t_list(1, letter)),
+	mask(),
+	masked_terrain(),
+	has_wildcard(t_translation::has_wildcard(terrain)),
+	is_empty(terrain.empty())
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
-	has_wildcard = t_translation::has_wildcard(terrain);
-	is_empty = terrain.empty();
 
 	for(size_t i = 0; i < terrain.size(); i++) {
 		mask[i] = t_translation::get_mask_(terrain[i]);
