@@ -322,7 +322,7 @@ void connect_operation::run()
 	}
 #elif !defined(__BEOS__)
 	int flags;
-	flags = fcntl(((_TCPsocket*)sock)->channel, F_GETFL, 0);
+	flags = fcntl((reinterpret_cast<_TCPsocket*>(sock))->channel, F_GETFL, 0);
 #if defined(O_NONBLOCK)
 	flags |= O_NONBLOCK;
 #elif defined(O_NDELAY)
@@ -330,7 +330,7 @@ void connect_operation::run()
 #elif defined(FNDELAY)
 	flags |= FNDELAY;
 #endif
-	if(fcntl(((_TCPsocket*)sock)->channel, F_SETFL, flags) == -1) {
+	if(fcntl((reinterpret_cast<_TCPsocket*>(sock))->channel, F_SETFL, flags) == -1) {
 		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
 		return;
 	}
@@ -540,7 +540,7 @@ bool disconnect(connection s)
 		remove_connection(s);
 	} else {
 		if(sockets.size() == 1) {
-			LOG_NW << "valid socket: " << (int)*sockets.begin() << "\n";
+			LOG_NW << "valid socket: " << static_cast<int>(*sockets.begin()) << "\n";
 		}
 	}
 
