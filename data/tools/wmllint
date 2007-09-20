@@ -746,7 +746,7 @@ def hack_syntax(filename, lines):
     # Check for duplicated attack names -- may be a result of a naive
     # boucman conversion.
     if boucmanized:
-        name_pos = wmlfind("name=", WmlIterator(lines))
+        name_pos = wmlfind("name=", WmlIterator(lines, filename))
         duplist = {}
         while name_pos is not None:
             key = lines[name_pos.lineno].strip()
