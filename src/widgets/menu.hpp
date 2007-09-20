@@ -96,7 +96,7 @@ public:
 		double normal_alpha2_, selected_alpha2_, heading_alpha2_;
 		struct bg_cache
 		{
-			bg_cache() : width(-1), height(-1)
+			bg_cache() : surf(), width(-1), height(-1)
 			{}
 
 			surface surf;
@@ -112,11 +112,11 @@ public:
 
 	struct item
 	{
-		item() : id(0)
+		item() : fields(), help(), id(0)
 		{}
 
 		item(const std::vector<std::string>& fields, size_t id)
-			: fields(fields), id(id)
+			: fields(fields), help(), id(id)
 		{}
 
 		std::vector<std::string> fields;
