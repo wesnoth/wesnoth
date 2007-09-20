@@ -52,7 +52,7 @@ private:
 			"TARGETS"
 		};
 
-		XInternAtoms(dpy(), (char**)atoms, 6, false, atomTable_);
+		XInternAtoms(dpy(), const_cast<char**>(reinterpret_cast<const char**>(atoms)), 6, false, atomTable_);
 
 		release();
 	}
@@ -215,7 +215,7 @@ void handle_system_event(const SDL_Event& event)
 
 				XChangeProperty(x11->dpy(), responseEvent.xselection.requestor,
 					xev.xselectionrequest.property, XA_ATOM, 32, PropModeReplace,
-					(unsigned char*)supported, 4);
+					const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(supported)), 4);
 			}
 
 			// The encoding of XA_TEXT and XA_COMPOUND_TEXT is not specified
@@ -229,7 +229,7 @@ void handle_system_event(const SDL_Event& event)
 				XChangeProperty(x11->dpy(), responseEvent.xselection.requestor,
 					xev.xselectionrequest.property,
 					xev.xselectionrequest.target, 8, PropModeReplace,
-					(const unsigned char*) clipboard_string.c_str(), clipboard_string.length());
+					reinterpret_cast<const unsigned char*>(clipboard_string.c_str()), clipboard_string.length());
 			}
 
 			XSendEvent(x11->dpy(), xev.xselectionrequest.requestor, False, NoEventMask,
@@ -304,7 +304,7 @@ static bool try_grab_target(Atom target, std::string& ret)
 					                   &typeRet, &formatRet, &length, &remaining, &data);
 
 					if (data && length) {
-						ret = (char*)data;
+						ret = reinterpret_cast<char*>(data);
 						XFree(data);
 						return true;
 					} else {
