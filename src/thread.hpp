@@ -205,7 +205,8 @@ public:
 
 	enum RESULT { COMPLETED, ABORTED };
 
-	async_operation() : aborted_(false), finishedVar_(false) {}
+	async_operation() : 
+		aborted_(false), finished_(), finishedVar_(false), mutex_() {}
 	virtual ~async_operation() {}
 
 	RESULT execute(waiter& wait);
