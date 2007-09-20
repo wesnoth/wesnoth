@@ -3,7 +3,7 @@
 # Hack this if our location in the Wesnoth source tree changes.
 # It needs to point to the top-level directory, e.g. with data/images/sounds
 # directly beneath it. 
-TOPDIR = ../../data/core ../data/{multiplayer,themes} ../../data/campaigns/*
+TOPDIR = ../../data/core ../../data/{multiplayer,themes} ../../data/campaigns/*
 # Define this to point to a local copy of UMC to run checks on.
 # Note, this needs to expand to a list with one subdirectory per UMC campaign,
 # otherwise the visibility checks aren't going to work right.
@@ -13,7 +13,7 @@ sanity-check: unresolved check-obsolete
 
 check-obsolete:
 	# Check for obsolete WML
-	wmllint --dryrun  $(TOPDIR) $(UMC)
+	./wmllint --dryrun $(TOPDIR) $(UMC)
 
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
