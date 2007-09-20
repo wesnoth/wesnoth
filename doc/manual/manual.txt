@@ -511,16 +511,16 @@ The following table shows the effects of different times of the day on
 the damage dealt by lawful and chaotic units:
 
 .Time of the day and damage
-`-----`---------------------`-------`------
-Turn  Day-phase             Lawful  Chaotic
--------------------------------------------
-1     Dawn                  --      --
-2     Day (morning)         +25%    -25%
-3     Day (afternoon)       +25%    -25%
-4     Dusk                  --      --
-5     Night (first watch)   -25%    +25%
-6     Night (second watch)  -25%    +25%
--------------------------------------------
+`-----`----------------------------------`---------------------`-------`------
+Turn  Image                              Day-phase             Lawful  Chaotic
+------------------------------------------------------------------------------
+1     image:images/time-dawn.png[]       Dawn                  --      --     
+2     image:images/time-morning.png[]    Day (morning)         +25%    -25%   
+3     image:images/time-afternoon.png[]  Day (afternoon)       +25%    -25%    
+4     image:images/time-dusk.png[]       Dusk                  --      --     
+5     image:images/time-firstw.png[]     Night (first watch)   -25%    +25%   
+6     image:images/time-secondw.png[]    Night (second watch)  -25%    +25%   
+------------------------------------------------------------------------------
 
 For example: consider a fight between a Lawful and a Chaotic unit when
 both have a base damage of 12. At dawn and dusk, both will do 12 points
