@@ -129,24 +129,35 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 	return originalRes;
 }
 
-unit_race::unit_race() : ntraits_(0), chain_size_(0), traits_(&empty_traits), global_traits_(true)
+unit_race::unit_race() : 
+		id_(),
+		name_(),
+		description_(),
+		ntraits_(0), 
+		chain_size_(0), 
+		traits_(&empty_traits), 
+		global_traits_(true)
 {
 }
 
-unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg["num_traits"].c_str())),
-										  traits_(&cfg.get_children("trait")), global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
+unit_race::unit_race(const config& cfg) : 
+		id_(cfg["id"]),
+		name_(cfg["name"]), 
+		description_(cfg["description"]),
+		ntraits_(atoi(cfg["num_traits"].c_str())),
+		chain_size_(atoi(cfg["markov_chain_size"].c_str())),
+		traits_(&cfg.get_children("trait")), 
+		global_traits_(!utils::string_bool(cfg["ignore_global_traits"]))
+
 {
-	id_ = cfg["id"];
 	if(id_.empty()) {
 		// This code is only for compatibility with old race defs.
 		id_ = (cfg["name"]);
 	}
-	description_ = cfg["description"];
 	
 	names_[MALE] = utils::split(cfg["male_names"]);
 	names_[FEMALE] = utils::split(cfg["female_names"]);
 
-	chain_size_ = atoi(cfg["markov_chain_size"].c_str());
 	if(chain_size_ <= 0)
 		chain_size_ = 2;
 
