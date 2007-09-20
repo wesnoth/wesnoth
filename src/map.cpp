@@ -148,7 +148,9 @@ std::string gamemap::location::write_direction(gamemap::location::DIRECTION dir)
 	}
 }
 
-gamemap::location::location(const config& cfg, const variable_set *variables)
+gamemap::location::location(const config& cfg, const variable_set *variables) :
+		x(-1000),
+		y(-1000)
 {
 	std::string xs = cfg["x"], ys = cfg["y"];
 	if (variables)
@@ -269,7 +271,14 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 }
 
 gamemap::gamemap(const config& cfg, const std::string& data) :
-		tiles_(1), w_(-1), h_(-1)
+		tiles_(1), 
+		terrainList_(),
+		letterToTerrain_(),
+		villages_(),
+		borderCache_(),
+		terrainFrequencyCache_(),
+		w_(-1), 
+		h_(-1)
 {
 	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
