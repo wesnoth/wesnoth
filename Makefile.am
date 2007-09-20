@@ -199,8 +199,8 @@ endif
 endif
 
 if MANUALUPDATE
-manual:
-	@cd doc/manual && make html || exit $?
+manual-en:
+	@cd doc/manual && make manual.en.html || exit $?
 endif
 
 # latest graph-includes.pl can be found currently at http://ydirson.free.fr/soft/wesnoth/graphs/
