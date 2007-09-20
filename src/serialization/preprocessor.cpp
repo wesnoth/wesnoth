@@ -141,6 +141,14 @@ int preprocessor_streambuf::underflow()
 	return static_cast<unsigned char>(*(begin + sz));
 }
 
+/**
+ * preprocessor
+ * 
+ * this is the base class for all input to be parsed by the preprocessor
+ * when initialized, it will inform the stream (target_) that it is the current scope
+ * when it reaches its end of its scope, the stream will delete it, and
+ * when it is deleted, it will manage the stream to cause the previous scope to resume
+ */
 preprocessor::preprocessor(preprocessor_streambuf &t)
 	: old_preprocessor_(t.current_), target_(t)
 {
@@ -181,6 +189,12 @@ preprocessor::~preprocessor()
 	--target_.depth_;
 }
 
+/**
+ *  preprocessor_file
+ *
+ *  This represents a WML element that resolves to a directory or file inclusion, 
+ *  such as '{themes/}'
+ */
 class preprocessor_file: preprocessor
 {
 	std::vector< std::string > files_;
@@ -194,6 +208,7 @@ class preprocessor_data: preprocessor
 {
 	struct token_desc
 	{
+		//FIXME: add enum for token type, with explanation of the different types
 		char type;
 		int stack_pos;
 		int linenum;
@@ -202,7 +217,9 @@ class preprocessor_data: preprocessor
 	std::string directory_;
 	std::vector< std::string > strings_;
 	std::vector< token_desc > tokens_;
-	int slowpath_, skipping_, linenum_;
+	int slowpath_, //FIXME: add explanation of this variable
+		skipping_, //FIXME: add explanation of this variable
+		linenum_;
 
 	std::string read_word();
 	std::string read_line();
@@ -231,6 +248,12 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 	end_ = files_.end();
 }
 
+/**
+ * preprocessor_file::get_chunk()
+ *
+ * inserts and processes the next file in the list of included files
+ * return false if there is none
+ */
 bool preprocessor_file::get_chunk()
 {
 	while (pos_ != end_) {
@@ -392,6 +415,7 @@ bool preprocessor_data::get_chunk()
 		++linenum_;
 	token_desc &token = tokens_.back();
 	if (!in_->good()) {
+		//The end of file was reached. Make sure we don't have any incomplete tokens
 		char const *s;
 		switch (token.type) {
 		case '*': return false; // everything is fine
