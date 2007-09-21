@@ -20,12 +20,14 @@ def wmlfind(element, wmlItor):
 
 def wmlfindin(element, scopeElement, wmlItor):
     """Find an element inside a particular type of scope element"""
-    if not scopeElement:
-        return wmlfind(element, wmlItor)
     for itor in wmlItor.copy():
-        if element == itor.element\
-        and itor.scopes and scopeElement == itor.scopes[-1].element:
-            return itor
+        if element == itor.element:
+            if itor.scopes:
+                if scopeElement == itor.scopes[-1].element:
+                    return itor
+            elif not scopeElement:
+                # allow searching in the empty scope
+                return itor
     return None
 
 def parseQuotes(lines, fname, lineno):
@@ -117,15 +119,15 @@ def printScopeError(elementType, fname, lineno):
     printError(fname, 'attempt to close empty scope at', elementType, 'line', lineno+1)
 
 def parseElements(text, fname, lineno, scopes):
-    """Remove any closed scopes, return a tuple of element names
+    """Remove any closed scopes, return a list of element names
     and list of new unclosed scopes    
 Element Types:
     tags: one of "[tag_name]" or "[/tag_name]"
         [tag_name] - opens a scope
         [/tag_name] - closes a scope
-    keys: either "key=" or "key1,key2=" (multi-assignment)
+    keys: either "key=" or ("key1=", "key2=") for multi-assignment
         key= - does not affect the scope
-        (key1=, key2=) - multi-assignment returns multiple elements
+        key1,key2= - multi-assignment returns multiple elements
     directives: one of "#ifdef", "#else", "#endif", "#define", "#enddef"
         #ifdef - opens a scope
         #else - closes a scope, also opens a new scope
@@ -205,7 +207,22 @@ class WmlIterator(object):
     """Return an iterable WML navigation object.
     note: if changes are made to lines while iterating, this may produce
     unexpected results. In such case, seek() to the linenumber of a
-    scope behind where changes were made."""
+    scope behind where changes were made.
+Important Attributes:
+    lines - this is an internal list of all the physical lines
+    scopes - this is an internal list of all open scopes (as iterators)
+             note: when retreiving an iterator from this list, always
+             use a copy to perform seek() or next(), and not the original
+    element - the wml tag, key, or macro name for this logical line
+              (in complex cases, this may be a tuple of elements...
+              see parseElements for list of possible values)
+    text - the exact text of this logical line, as it appears in the
+           original source, and ending with a newline
+           note: the logical line also includes multi-line quoted strings
+    span - the number of physical lines in this logical line:
+           always 1, unless text contains a multi-line quoted string
+    lineno - a zero-based line index marking where this text begins
+    """
     def __init__(self, lines, fname=None, begin=-1, endScope=None):
         "Initialize a new WmlIterator"
         self.lines = lines
@@ -292,12 +309,11 @@ class WmlIterator(object):
         self.element, nextScopes = parseElements(self.text, self.fname, self.lineno, self.scopes)
         self.nextScopes = []
         for elem in nextScopes:
-            assert elem
+	    # remember scopes by storing a copy of the iterator
             copyItor = self.copy()
             copyItor.element = elem
-            copyItor.scopes = self.scopes[:]
             self.nextScopes.append(copyItor)
-            copyItor.nextScopes = self.nextScopes[:]
+            copyItor.nextScopes.append(copyItor)
         if(len(self.element) == 1):
             # currently we only wish to handle simple single assignment syntax
             self.element = self.element[0]
@@ -317,8 +333,10 @@ if __name__ == '__main__':
     """Perform a test run on a file or directory"""
     import os, glob
     didSomething = False
-    print 'Current directory is', os.getcwd()
-    flist = glob.glob(os.path.join(os.getcwd(), raw_input('Which file(s) would you like to test?\n')))
+    flist = sys.argv[1:]
+    if not flist:
+        print 'Current directory is', os.getcwd()
+        flist = glob.glob(os.path.join(os.getcwd(), raw_input('Which file(s) would you like to test?\n')))
     while flist:
         fname = flist.pop()
         if os.path.isdir(fname):
