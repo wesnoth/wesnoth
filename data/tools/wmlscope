@@ -89,7 +89,9 @@ class CrossRefLister(CrossRef):
     "Cross-reference generator with reporting functions"
     def xrefdump(self, pred=None):
         "Report resolved macro references."
-        for name in self.xref:
+        sorted = self.xref.keys()
+        sorted.sort()
+        for name in sorted:
             for defn in self.xref[name]:
                 if pred and not pred(name, defn):
                     continue
@@ -103,7 +105,10 @@ class CrossRefLister(CrossRef):
                 else:
                     print "%s: %s macro %s is used in %d files:" % (defn, type, name, nrefs)
                 defn.dump_references()
-        for (name, defloc) in self.fileref.items():
+        sorted = self.fileref.keys()
+        sorted.sort()
+        for name in sorted:
+            defloc = self.fileref[name]
             if pred and not pred(name, defloc):
                 continue
             nrefs = len(defloc.references)
@@ -123,11 +128,16 @@ class CrossRefLister(CrossRef):
                 print "%s -> %s" % (reference, name)
     def deflist(self, pred=None):
         "List all resource definitions."
-        for name in self.xref:
+        sorted = self.xref.keys()
+        sorted.sort()
+        for name in sorted:
             for defn in self.xref[name]:
                 if not pred or pred(name, defn):
                     print name
-        for (name, defloc) in self.fileref.items():
+        sorted = self.fileref.keys()
+        sorted.sort()
+        for name in sorted:
+            defloc = self.fileref[name]
             if not pred or pred(name, defloc):
                 print name
     def extracthelp(self, pref, fp):
