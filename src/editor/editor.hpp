@@ -232,11 +232,8 @@ private:
 	/// Insert the currently selected locations in the clipboard.
 	void insert_selection_in_clipboard();
 
-	/// Return the hex with the given offset from loc. Make calculations
-	/// so the result with have the same _appearance_ as when the offset
-	/// was calculated ,not the same representation.
-	gamemap::location get_hex_with_offset(const gamemap::location loc,
-										  const int x_offset, const int y_offset);
+	/// Commit a selection filling.
+	void perform_fill_selection(map_undo_action &undo_action);
 
 	/// Commit the movement of a selection.
 	void perform_selection_move();
@@ -292,18 +289,25 @@ private:
 	// Load the tooltips for each button
 	void load_tooltips(void);
 
-	/// An item in the clipboard. Consists of the copied terrain and an
+	/// An item in the buffer. Consists of the copied terrain and an
 	/// offset. When pasting stuff, the offset is used to calculate
-	/// where to put the pasted hex when calculating from the one
-	/// selected when the paste takes place.
-	struct clipboard_item {
-		clipboard_item(int xo, int yo, t_translation::t_letter t, int start_side) :
-			x_offset(xo), y_offset(yo), terrain(t),
-			starting_side(start_side){}
-		int x_offset, y_offset;
+	/// where to put the pasted hex
+	struct buffer_item {
+		buffer_item(const gamemap::location &o, t_translation::t_letter t, int start_side) :
+			offset(o), terrain(t), starting_side(start_side) {}
+		gamemap::location offset;
 		t_translation::t_letter terrain;
 		int starting_side;
 	};
+
+	// map_buffer is used for clipboard and other map operations
+	typedef std::vector<buffer_item> map_buffer;
+
+	void copy_buffer(map_buffer& buffer, const std::set<gamemap::location> &locs,
+			 const gamemap::location &origin);
+ 	void paste_buffer(const map_buffer& buffer, const gamemap::location &loc,
+ 			map_undo_action &undo_action);
+ 	void clear_buffer(map_buffer& buffer) {buffer.clear();};
 
 	editor_display &gui_;
 	editormap &map_;
@@ -331,8 +335,8 @@ private:
 	std::vector<gamemap::location> starting_positions_;
 	std::set<gamemap::location> mouse_over_hexes_;
 	std::set<gamemap::location> selected_hexes_;
-	std::vector<clipboard_item> clipboard_;
-	gamemap::location clipboard_offset_loc_;
+	map_buffer clipboard_;
+	
 	LEFT_BUTTON_HELD_FUNC l_button_held_func_;
 	gamemap::location selection_move_start_;
 

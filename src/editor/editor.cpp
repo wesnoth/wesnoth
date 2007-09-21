@@ -633,56 +633,23 @@ void map_editor::edit_load_map() {
 
 void map_editor::edit_fill_selection() {
 	map_undo_action undo_action;
-	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
-		 it != selected_hexes_.end(); it++) {
-		if (map_.on_board(*it)) {
-			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_fg_terrain(), *it);
-			map_.set_terrain(*it, palette_.selected_fg_terrain());
-		}
-	}
-	terrain_changed(selected_hexes_);
+	perform_fill_selection(undo_action);
 	save_undo_action(undo_action);
 }
 
 void map_editor::edit_cut() {
-	clipboard_.clear();
-	insert_selection_in_clipboard();
+	edit_copy();
 	edit_fill_selection();
 }
 
 void map_editor::edit_copy() {
-	clipboard_.clear();
+	clear_buffer(clipboard_);
 	insert_selection_in_clipboard();
 }
 
 void map_editor::perform_paste() {
 	map_undo_action undo_action;
-	std::set<gamemap::location> filled;
-	gamemap::location start_hex = selected_hex_;
-	clear_highlighted_hexes_in_gui();
-	for (std::vector<clipboard_item>::const_iterator it = clipboard_.begin();
-		 it != clipboard_.end(); it++) {
-		gamemap::location l(clipboard_offset_loc_.x + (*it).x_offset,
-							clipboard_offset_loc_.y + (*it).y_offset);
-		const int x_offset = start_hex.x - clipboard_offset_loc_.x;
-		const int y_offset = start_hex.y - clipboard_offset_loc_.y;
-		gamemap::location target = get_hex_with_offset(l, x_offset, y_offset);
-		if (map_.on_board(target)) {
-			undo_action.add_terrain(map_.get_terrain(target), (*it).terrain, target);
-			map_.set_terrain(target, (*it).terrain);
-			const int start_side = (*it).starting_side;
-			if (start_side != -1) {
-				undo_action.add_starting_location(start_side, start_side,
-					map_.starting_position(start_side), target);
-				map_.set_starting_position(start_side, target);
-			}
-			filled.insert(target);
-			gui_.add_highlighted_loc(target);
-		}
-	}
-	undo_action.set_selection(selected_hexes_, filled);
-	terrain_changed(filled);
-	selected_hexes_ = filled;
+	paste_buffer(clipboard_, selected_hex_, undo_action);
 	save_undo_action(undo_action);
 }
 
@@ -786,28 +753,76 @@ hotkey::ACTION_STATE map_editor::get_action_state(hotkey::HOTKEY_COMMAND command
 	return command_executor::get_action_state(command);
 }
 
-void map_editor::insert_selection_in_clipboard() {
-	if (selected_hexes_.empty()) {
-		return;
-	}
-	gamemap::location offset_hex = *(selected_hexes_.begin());
+void map_editor::copy_buffer(map_buffer& buffer, const std::set<gamemap::location> &locs, const gamemap::location &origin)
+{
 	std::set<gamemap::location>::const_iterator it;
-	// Find the hex that is closest to the selected one,
-	// use this as the one to calculate the offset from.
-	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
-		if (distance_between(selected_hex_, *it) <
-			distance_between(selected_hex_, offset_hex)) {
-			offset_hex = *it;
+	for (it = locs.begin(); it != locs.end(); it++) {
+		t_translation::t_letter terrain = map_.get_terrain(*it);
+		buffer.push_back(buffer_item(*it-origin, terrain, starting_side_at(map_, *it)));
+	}
+}
+
+void map_editor::paste_buffer(const map_buffer &buffer, const gamemap::location &loc, map_undo_action &undo_action)
+{
+	std::set<gamemap::location> filled;
+	std::vector<buffer_item>::const_iterator it;
+	for (it = buffer.begin(); it != buffer.end(); it++) {
+		//the addition of locations is not commutative !
+		gamemap::location target = it->offset + loc;
+
+		if (map_.on_board(target)) {
+			undo_action.add_terrain(map_.get_terrain(target), it->terrain, target);
+			map_.set_terrain(target, it->terrain);
+			const int start_side = it->starting_side;
+			if (start_side != -1) {
+				undo_action.add_starting_location(start_side, start_side,
+					map_.starting_position(start_side), target);
+				map_.set_starting_position(start_side, target);
+			}
+			filled.insert(target);
 		}
 	}
-	clipboard_offset_loc_ = offset_hex;
+
+	terrain_changed(filled);
+	undo_action.set_selection(selected_hexes_, filled);
+	selected_hexes_ = filled;
+	highlight_selected_hexes(true);
+}
+
+void map_editor::insert_selection_in_clipboard() {
+
+	// Find the hex that is closest to the selected one,
+	// use this as origin
+	gamemap::location origin(1000,1000);
+	std::set<gamemap::location>::const_iterator it;
 	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
-		const int x_offset = (*it).x - offset_hex.x;
-		const int y_offset = (*it).y - offset_hex.y;
-		t_translation::t_letter terrain = map_.get_terrain(*it);
-		clipboard_.push_back(clipboard_item(x_offset, y_offset, terrain,
-		                     starting_side_at(map_, *it)));
+		if (distance_between(selected_hex_, *it) <
+			distance_between(selected_hex_, origin)) {
+			origin = *it;
+		}
 	}
+
+	copy_buffer(clipboard_, selected_hexes_, origin);
+}
+
+void map_editor::perform_fill_selection(map_undo_action &undo_action) {
+	std::set<gamemap::location>::const_iterator it;
+	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
+		if (map_.on_board(*it)) {
+			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_bg_terrain(), *it);
+			map_.set_terrain(*it, palette_.selected_bg_terrain());
+		}
+	}
+	terrain_changed(selected_hexes_);
+}
+
+void map_editor::perform_selection_move() {
+	map_undo_action undo_action;
+	map_buffer buf;
+	copy_buffer(buf, selected_hexes_, selection_move_start_);
+	perform_fill_selection(undo_action);
+	paste_buffer(buf,selected_hex_, undo_action);
+	save_undo_action(undo_action);
 }
 
 
@@ -1042,15 +1057,6 @@ void map_editor::set_file_to_save_as(const std::string filename, bool from_scena
 	from_scenario_ = from_scenario;
 }
 
-gamemap::location map_editor::get_hex_with_offset(const gamemap::location loc,
-                                                  const int x_offset, const int y_offset) {
-	gamemap::location new_loc(loc.x + x_offset, loc.y + y_offset);
-	if (new_loc.x % 2 != loc.x % 2 && is_odd(new_loc.x)) {
-		new_loc.y--;
-	}
-	return new_loc;
-}
-
 void map_editor::left_button_down(const int mousex, const int mousey) {
 	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
 	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
@@ -1101,14 +1107,12 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	}
 	else if (l_button_held_func_ == MOVE_SELECTION) {
 		reset_mouseover_overlay();
-		const int x_diff = hex.x - selection_move_start_.x;
-		const int y_diff = hex.y - selection_move_start_.y;
+		//(*it-selection_move_start_) + hex
 		// No other selections should be active when doing this.
 		gui_.clear_highlighted_locs();
-		for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
-			 it != selected_hexes_.end(); it++) {
-			const gamemap::location hl_loc =
-				get_hex_with_offset(*it, x_diff, y_diff);
+		std::set<gamemap::location>::const_iterator it;
+		for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
+			const gamemap::location hl_loc = (*it-selection_move_start_) + hex;
 			if (map_.on_board(hl_loc)) {
 				gui_.add_highlighted_loc(hl_loc);
 			}
@@ -1146,45 +1150,6 @@ void map_editor::draw_on_mouseover_hexes(const t_translation::t_letter terrain) 
 			}
 		}
 	}
-}
-
-void map_editor::perform_selection_move() {
-	map_undo_action undo_action;
-	const int x_diff = selected_hex_.x - selection_move_start_.x;
-	const int y_diff = selected_hex_.y - selection_move_start_.y;
-	clear_highlighted_hexes_in_gui();
-	std::set<gamemap::location> new_selection;
-	// Transfer the terrain to the new position.
-	std::set<gamemap::location>::const_iterator it;
-	for(it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
-		const gamemap::location hl_loc =
-			get_hex_with_offset(*it, x_diff, y_diff);
-		if (map_.on_board(hl_loc)) {
-			undo_action.add_terrain(map_.get_terrain(hl_loc), map_.get_terrain(*it), hl_loc);
-			gui_.add_highlighted_loc(hl_loc);
-			map_.set_terrain(hl_loc, map_.get_terrain(*it));
-			const int start_side = starting_side_at(map_, *it);
-			if (start_side != -1) {
-				// Starting side at the old location that needs transfering.
-				map_.set_starting_position(start_side, hl_loc);
-				undo_action.add_starting_location(start_side, start_side, *it, hl_loc);
-			}
-			new_selection.insert(hl_loc);
-		}
-	}
-
-	// Fill the selection with the selected terrain.
-	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
-		if (map_.on_board(*it) && new_selection.find(*it) == new_selection.end()) {
-			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_bg_terrain(), *it);
-			map_.set_terrain(*it, palette_.selected_bg_terrain());
-		}
-	}
-	undo_action.set_selection(selected_hexes_, new_selection);
-	terrain_changed(selected_hexes_);
-	selected_hexes_ = new_selection;
-	terrain_changed(selected_hexes_);
-	save_undo_action(undo_action);
 }
 
 void map_editor::draw_terrain(const t_translation::t_letter terrain,
