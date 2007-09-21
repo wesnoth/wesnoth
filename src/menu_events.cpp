@@ -2143,6 +2143,26 @@ private:
 					gui_->invalidate_unit();
 				}
 			}
+		} else if(game_config::debug && cmd == "buff") {
+			const unit_map::iterator i = current_unit(mousehandler);
+			if(i != units_.end()) {
+				// FIXME: 'data' is the trait.  Set it.
+
+				gui_->invalidate(i->first);
+				gui_->invalidate_unit();
+			}
+
+
+		} else if(game_config::debug && cmd == "unbuff") {
+			const unit_map::iterator i = current_unit(mousehandler);
+			if(i != units_.end()) {
+				// FIXME: 'data' is the trait.  Clear it.
+
+				gui_->invalidate(i->first);
+				gui_->invalidate_unit();
+			}
+
+
 		} else if(game_config::debug && cmd == "create" && map_.on_board(mousehandler.get_last_hex())) {
 			const game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.find(data);
 			if(i == gameinfo_.unit_types.end()) {
