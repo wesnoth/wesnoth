@@ -12,6 +12,9 @@
 
    See the COPYING file for more details.
 */
+
+//! @file serialization/preprocessor.hpp
+
 #ifndef SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
 #define SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
 
@@ -38,8 +41,9 @@ struct preproc_define
 
 typedef std::map< std::string, preproc_define > preproc_map;
 
-//function to use the WML preprocessor on a file, and returns the resulting
-//preprocessed file data. defines is a map of symbols defined.
+//! Function to use the WML preprocessor on a file, 
+//! and returns the resulting preprocessed file data. 
+//! defines is a map of symbols defined.
 std::istream *preprocess_file(std::string const &fname,
                               preproc_map *defines = NULL);
 

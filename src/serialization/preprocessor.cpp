@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file serialization/preprocessor.cpp
+//! WML preprocessor.
+
 #include "global.hpp"
 
 #include <algorithm>
@@ -100,18 +103,19 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
 {
 }
 
-//underflow is called when the internal buffer has been consumed so that more can be prepared
+// underflow is called when the internal buffer has been consumed 
+// so that more can be prepared
 int preprocessor_streambuf::underflow()
 {
 	unsigned sz = 0;
 	if (char *gp = gptr()) {
 		if (gp < egptr()) {
-			//sanity check: the internal buffer has not been totally consumed
-			//should we force the caller to use what remains first?
+			// Sanity check: the internal buffer has not been totally consumed,
+			// should we force the caller to use what remains first?
 			return *gp;
 		}
-		// the buffer has been completely read; fill it again
-		// keep part of the previous buffer, to ensure putback capabilities
+		// The buffer has been completely read; fill it again.
+		// Keep part of the previous buffer, to ensure putback capabilities.
 		sz = out_buffer_.size();
 		if (sz > 3) {
 			out_buffer_ = out_buffer_.substr(sz - 3);
@@ -121,17 +125,17 @@ int preprocessor_streambuf::underflow()
 		buffer_ << out_buffer_;
         buffer_size_ = out_buffer_.size();
 	} else {
-		//the internal get-data pointer is null
+		// The internal get-data pointer is null
 	}
 	const int desired_fill_amount = 2000;
 	while (current_ && buffer_size_ < desired_fill_amount) {
-		//process files and data chunks until the desired buffer size is reached
+		// Process files and data chunks until the desired buffer size is reached
 		if (!current_->get_chunk()) {
-			 //delete the current preprocessor item to restore its predecessor
+			 // Delete the current preprocessor item to restore its predecessor
 			delete current_;
 		}
 	}
-	//update the internal state and data pointers
+	// Update the internal state and data pointers
 	out_buffer_ = buffer_.str();
 	char *begin = &*out_buffer_.begin();
 	unsigned bs = out_buffer_.size();
@@ -144,10 +148,11 @@ int preprocessor_streambuf::underflow()
 /**
  * preprocessor
  * 
- * this is the base class for all input to be parsed by the preprocessor
- * when initialized, it will inform the stream (target_) that it is the current scope
- * when it reaches its end of its scope, the stream will delete it, and
- * when it is deleted, it will manage the stream to cause the previous scope to resume
+ * This is the base class for all input to be parsed by the preprocessor.
+ * When initialized, it will inform the stream (target_) that it is the current scope.
+ * When it reaches its end of its scope, the stream will delete it, 
+ * and when it is deleted, it will manage the stream 
+ * to cause the previous scope to resume.
  */
 preprocessor::preprocessor(preprocessor_streambuf &t)
 	: old_preprocessor_(t.current_), target_(t)
@@ -162,18 +167,18 @@ preprocessor::preprocessor(preprocessor_streambuf &t)
 namespace {
 void count_extra_digits(int const& line_number, int& buffer_size) {
 	for(int digit_mark = 10; line_number >= digit_mark; digit_mark *= 10) {
-		//the number is larger than one digit, calculate additional string size
+		// The number is larger than one digit, calculate additional string size
 		++buffer_size;
 	}
 }
-} //end anonymous namespace
+} // end anonymous namespace
 
 preprocessor::~preprocessor()
 {
 	wassert(target_.current_ == this);
-	target_.current_ = old_preprocessor_;
+	target_.current_  = old_preprocessor_;
 	target_.location_ = old_location_;
-	target_.linenum_ = old_linenum_;
+	target_.linenum_  = old_linenum_;
 	target_.textdomain_ = old_textdomain_;
 	if (!old_location_.empty()) {
 		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
@@ -208,7 +213,7 @@ class preprocessor_data: preprocessor
 {
 	struct token_desc
 	{
-		//FIXME: add enum for token type, with explanation of the different types
+		//! @todo FIXME: add enum for token type, with explanation of the different types
 		char type;
 		int stack_pos;
 		int linenum;
@@ -217,7 +222,7 @@ class preprocessor_data: preprocessor
 	std::string directory_;
 	std::vector< std::string > strings_;
 	std::vector< token_desc > tokens_;
-	int slowpath_, //FIXME: add explanation of this variable
+	int slowpath_, //! @todo FIXME: add explanation of this variable
 		skipping_, //FIXME: add explanation of this variable
 		linenum_;
 
@@ -251,8 +256,8 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 /**
  * preprocessor_file::get_chunk()
  *
- * inserts and processes the next file in the list of included files
- * return false if there is none
+ * Inserts and processes the next file in the list of included files.
+ * @return	false if there is no next file.
  */
 bool preprocessor_file::get_chunk()
 {
@@ -415,7 +420,8 @@ bool preprocessor_data::get_chunk()
 		++linenum_;
 	token_desc &token = tokens_.back();
 	if (!in_->good()) {
-		//The end of file was reached. Make sure we don't have any incomplete tokens
+		// The end of file was reached. 
+		// Make sure we don't have any incomplete tokens.
 		char const *s;
 		switch (token.type) {
 		case '*': return false; // everything is fine
@@ -616,8 +622,8 @@ bool preprocessor_data::get_chunk()
 				std::string::iterator b = symbol.begin(); // invalidated at each iteration
 				symbol.erase(b + pos, b + symbol.find('\n', pos + 1) + 1);
 			}
-			//if this is a known pre-processing symbol, then we insert
-			//it, otherwise we assume it's a file name to load
+			// If this is a known pre-processing symbol, then we insert it, 
+			// otherwise we assume it's a file name to load.
 			preproc_map::const_iterator macro = target_.defines_->find(symbol),
 			                            unknown_macro = target_.defines_->end();
 			if (macro != unknown_macro) {
@@ -653,9 +659,9 @@ bool preprocessor_data::get_chunk()
 						i_bra = i + 1;
 					} else if (i_bra == i_end) {
 						if (c == '#' && !quoting) {
-							// keep track of textdomain changes in the body of the
-							// macro so they can be restored after each substitution
-							// of a macro argument
+							// Keep track of textdomain changes in the body of the
+							// macro, so they can be restored after each substitution
+							// of a macro argument.
 							std::string::const_iterator i_beg = i + 1;
 							if (i_end - i_beg >= 13 &&
 							    std::equal(i_beg, i_beg + 10, "textdomain")) {
@@ -671,8 +677,8 @@ bool preprocessor_data::get_chunk()
 							&& (i_end - i_beg < 5 || (!std::equal(i_beg, i_beg + 5, "ifdef") 
 							&& !std::equal(i_beg, i_beg + 5, "endif") && !std::equal(i_beg, i_beg + 5, "undef")))
 							&& (i_end - i_beg < 4 || !std::equal(i_beg, i_beg + 4, "else"))) {
-								//check for define, ifdef, endif, undef, else
-								//otherwise, this is a comment and should be skipped
+								// Check for define, ifdef, endif, undef, else.
+								// Otherwise, this is a comment and should be skipped.
 								i = std::find(i_beg, i_end, '\n');
 								++macro_num;
 								c = '\n';
@@ -694,7 +700,7 @@ bool preprocessor_data::get_chunk()
 							break;
 						}
 						if (i_bra != i_end) {
-							// the bracketed text was no macro argument
+							// The bracketed text was no macro argument
 							buffer->write(&*i_bra - 1, sz + 2);
 							i_bra = i_end;
 						}
@@ -725,11 +731,11 @@ bool preprocessor_data::get_chunk()
 				std::string nfname;
 				std::string const &newfilename = symbol;
 				{
-					//if the filename begins with a '~', then look
-					//in the user's data directory. If the filename begins with
-					//a '@' then we look in the user's data directory,
-					//but default to the standard data directory if it's not found
-					//there.
+					// If the filename begins with a '~', 
+					//  then look in the user's data directory. 
+					// If the filename begins with a '@', 
+					//  then we look in the user's data directory,
+					// but default to the standard data directory if it's not found there.
 					if(newfilename != "" && (newfilename[0] == '~' || newfilename[0] == '@')) {
 						nfname = newfilename;
 						nfname.erase(nfname.begin(),nfname.begin()+1);
@@ -743,9 +749,9 @@ bool preprocessor_data::get_chunk()
 					} else
 					if(newfilename.size() >= 2 && newfilename[0] == '.' &&
 						newfilename[1] == '/' ) {
-						//if the filename begins with a "./", then look
-						//in the same directory as the file currrently
-						//being preprocessed
+						// If the filename begins with a "./", 
+						// then look in the same directory as the file 
+						// currrently being preprocessed.
 						nfname = newfilename;
 						nfname.erase(nfname.begin(),nfname.begin()+2);
 						nfname = directory_ + nfname;
@@ -810,8 +816,10 @@ std::istream *preprocess_file(std::string const &fname,
 	log_scope("preprocessing file...");
 	preproc_map *owned_defines = NULL;
 	if (!defines) {
-		// if no preproc_map has been given, create a new one, and ensure
-		// it is destroyed when the stream is by giving it to the deleter
+		// If no preproc_map has been given, create a new one, 
+		// and ensure it is destroyed when the stream is 
+// ??
+		// by giving it to the deleter.
 		owned_defines = new preproc_map;
 		defines = owned_defines;
 	}
@@ -819,3 +827,4 @@ std::istream *preprocess_file(std::string const &fname,
 	new preprocessor_file(*buf, fname);
 	return new preprocessor_deleter(buf, owned_defines);
 }
+
