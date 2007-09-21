@@ -1708,8 +1708,8 @@ void python_ai::initialize_python()
 	Py_Register(wesnoth_gamestatus_type, "gamestatus");
 }
 
-/* Invoke the named python script using Wesnoth's builtin Python interpreter.
- *
+/*** 
+ * Invoke the named python script using Wesnoth's builtin Python interpreter.
  */
 void python_ai::invoke(std::string name)
 {
@@ -1744,8 +1744,8 @@ python_ai::python_ai(ai_interface::info& info) : ai_interface(info), exception(Q
 
 python_ai::~python_ai()
 {
-	// This is called whenever the AI is destroyed after its turn - the Python
-	// interpreter itself will be auto cleaned up at program exit.
+	// This is called whenever the AI is destroyed after its turn - 
+	// the Python interpreter itself will be auto cleaned up at program exit.
 	LOG_AI << "Closing Python instance.\n";
 	running_instance = NULL;
 }
@@ -1756,8 +1756,8 @@ void python_ai::play_turn()
 
 	std::string script_name = current_team().ai_parameters()["python_script"];
 	if (script_name.substr(script_name.length() - 3) != ".py") {
-		// Make sure the script ends in .py here - Wesnoth will not execute any
-		// other files.
+		// Make sure the script ends in .py here - 
+		// Wesnoth will not execute any other files.
 		std::cerr << "\"" << script_name << "\" is not a valid script name.\n";
 		return;
 	}
@@ -1772,8 +1772,8 @@ void python_ai::play_turn()
 	if (!game_config::path.empty()) path = game_config::path;
 	LOG_AI << "Executing Python script \"" << script << "\".\n";
 	LOG_AI << " Python path: \"" << path << "/data/ais" << "\"\n";
-	// Run the python script. We actually execute a short inline python
-	// script, which sets up the module search path to the data path,
+	// Run the python script. We actually execute a short inline python script, 
+	// which sets up the module search path to the data path,
 	// runs the script, and then resets the path.
 	std::string python_code;
 	python_code +=
