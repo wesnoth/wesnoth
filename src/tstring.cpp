@@ -42,20 +42,22 @@ namespace {
 
 t_string::walker::walker(const t_string& string) :
 	string_(string.value_),
-	begin_(0)
+	begin_(0),
+	end_(string_.size()),
+	textdomain_(),
+	translatable_(false)
 {
-	if(!string.translatable_) {
-		begin_ = 0;
-		end_ = string_.size();
-		translatable_ = false;
-	} else {
+	if(string.translatable_) {
 		update();
 	}
 }
 
 t_string::walker::walker(const std::string& string) :
 	string_(string),
-	begin_(0)
+	begin_(0),
+	end_(string_.size()),
+	textdomain_(),
+	translatable_(false)
 {
 	update();
 }
@@ -139,7 +141,9 @@ void t_string::walker::update()
 
 t_string::t_string() :
 	translatable_(false),
-	value_()
+	last_untranslatable_(false),
+	value_(),
+	translated_value_()
 {
 }
 
@@ -153,14 +157,17 @@ t_string::t_string(const t_string& string) :
 
 t_string::t_string(const std::string& string) :
 	translatable_(false),
-	value_(string)
+	last_untranslatable_(false),
+	value_(string),
+	translated_value_()
 {
 }
 
 t_string::t_string(const std::string& string, const std::string& textdomain) :
 	translatable_(true),
 	last_untranslatable_(false),
-	value_(1, ID_TRANSLATABLE_PART)
+	value_(1, ID_TRANSLATABLE_PART),
+	translated_value_()
 {
 	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
 	unsigned int id;
@@ -180,7 +187,9 @@ t_string::t_string(const std::string& string, const std::string& textdomain) :
 
 t_string::t_string(const char* string) :
 	translatable_(false),
-	value_(string)
+	last_untranslatable_(false),
+	value_(string),
+	translated_value_()
 {
 }
 
