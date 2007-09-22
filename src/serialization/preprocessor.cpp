@@ -16,19 +16,19 @@
 //! @file serialization/preprocessor.cpp
 //! WML preprocessor.
 
-#include "global.hpp"
+#include "../global.hpp"
 
 #include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <vector>
 
-#include "filesystem.hpp"
-#include "log.hpp"
-#include "wassert.hpp"
-#include "wesconfig.h"
-#include "serialization/preprocessor.hpp"
-#include "serialization/string_utils.hpp"
+#include "../filesystem.hpp"
+#include "../log.hpp"
+#include "../wassert.hpp"
+#include "../wesconfig.h"
+#include "preprocessor.hpp"
+#include "string_utils.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_CF LOG_STREAM(info, config)
@@ -416,8 +416,6 @@ void preprocessor_data::put(std::string const &s)
 bool preprocessor_data::get_chunk()
 {
 	char c = in_->get();
-	if (c == '\n')
-		++linenum_;
 	token_desc &token = tokens_.back();
 	if (!in_->good()) {
 		// The end of file was reached. 
@@ -442,7 +440,8 @@ bool preprocessor_data::get_chunk()
 		pop_token();
 		throw preproc_config::error(error.str());
 	}
-
+	if (c == '\n')
+		++linenum_;
 	if (c == '\376') {
 		std::string buffer(1, c);
 		for(;;) {
@@ -503,9 +502,9 @@ bool preprocessor_data::get_chunk()
 			int found_enddef = 0;
 			std::string buffer;
 			for(;;) {
-				char d = in_->get();
 				if (!in_->good())
 					break;
+				char d = in_->get();
 				if (d == '\n')
 					++linenum_;
 				buffer += d;
