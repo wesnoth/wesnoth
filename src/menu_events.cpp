@@ -430,7 +430,7 @@ namespace events{
 
 		{
 			dialogs::unit_preview_pane unit_preview(*gui_, &map_, units_list);
-			unit_preview.set_selection(selected);
+
 			gui::dialog umenu(*gui_, _("Unit List"), "", gui::NULL_DIALOG);
 			umenu.set_menu(items, &sorter);
 			umenu.add_pane(&unit_preview);
@@ -1551,21 +1551,42 @@ private:
 	{
 		std::vector<std::string> options;
 		std::vector<unit> unit_choices;
+		const std::string heading = std::string(1,HEADING_PREFIX) +
+									_("Race")      + COLUMN_SEPARATOR +
+									_("Type");
+		options.push_back(heading);
+
 		for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
-			options.push_back(i->second.language_name());
+			std::stringstream row;
+
+			std::string race;
+			const race_map::const_iterator race_it = gameinfo_.races.find(i->second.race());
+			if (race_it != gameinfo_.races.end()) {
+				race = race_it->second.name();
+			}
+			row << race << COLUMN_SEPARATOR;
+			row << i->second.language_name() << COLUMN_SEPARATOR;
+
+			options.push_back(row.str());
 			unit_choices.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false));
 			unit_choices.back().new_turn();
 		}
 
 		int choice = 0;
-
 		{
-			dialogs::unit_preview_pane unit_preview(*gui_,&map_,unit_choices);
-			std::vector<gui::preview_pane*> preview_panes;
-			preview_panes.push_back(&unit_preview);
+			gui::menu::basic_sorter sorter;
+			sorter.set_alpha_sort(0).set_alpha_sort(1);
 
-			choice = gui::show_dialog(*gui_,NULL,"",dsgettext(PACKAGE "-lib","Create Unit (Debug!)"),
-									  gui::OK_CANCEL,&options,&preview_panes);
+			dialogs::unit_preview_pane unit_preview(*gui_, &map_, unit_choices);
+			gui::dialog umenu(*gui_, _("Create Unit (Debug!)"), "", gui::OK_CANCEL);
+			umenu.set_menu(options, &sorter);
+			umenu.add_pane(&unit_preview);
+			//sort by race then by type name
+			umenu.get_menu().sort_by(1);
+			umenu.get_menu().sort_by(0);
+			umenu.get_menu().reset_selection();
+			unit_preview.set_selection(umenu.get_menu().selection());
+			choice = umenu.show();
 		}
 
 		if (size_t(choice) < unit_choices.size()) {
