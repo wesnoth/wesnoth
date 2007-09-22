@@ -116,6 +116,7 @@ public:
 	virtual void edit_set_start_pos();
 	virtual void edit_flood_fill();
 	virtual void edit_fill_selection();
+	virtual void edit_rotate_selection();
 	virtual void edit_cut();
 	virtual void edit_copy();
 	virtual void edit_paste();

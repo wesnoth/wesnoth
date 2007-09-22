@@ -109,6 +109,7 @@ const struct {
 	{ hotkey::HOTKEY_EDIT_SET_START_POS, "editsetstartpos", N_("Set Player's keep"),true },
 	{ hotkey::HOTKEY_EDIT_FLOOD_FILL, "editfloodfill", N_("Flood Fill"),true },
 	{ hotkey::HOTKEY_EDIT_FILL_SELECTION, "editfillselection", N_("Fill Selection"),true },
+	{ hotkey::HOTKEY_EDIT_ROTATE_SELECTION, "editrotateselection", N_("Rotate Selection"),true },
 	{ hotkey::HOTKEY_EDIT_CUT, "editcut", N_("Cut"),true },
 	{ hotkey::HOTKEY_EDIT_COPY, "editcopy", N_("Copy"),true },
 	{ hotkey::HOTKEY_EDIT_PASTE, "editpaste", N_("Paste"),true },
@@ -677,6 +678,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			break;
 		 case HOTKEY_EDIT_FILL_SELECTION:
 			edit_fill_selection();
+			break;
+		 case HOTKEY_EDIT_ROTATE_SELECTION:
+			edit_rotate_selection();
 			break;
 		 case HOTKEY_EDIT_CUT:
 			edit_cut();

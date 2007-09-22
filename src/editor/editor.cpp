@@ -657,6 +657,46 @@ void map_editor::edit_paste() {
 	left_button_func_changed(PASTE);
 }
 
+void map_editor::edit_rotate_selection()
+{
+	if (selected_hexes_.empty()) {return;}
+
+	// we use the selected hex as center
+	gamemap::location center = selected_hex_;
+	if (!center.valid()) {
+		// except if invalid (e.g the mouse is in menu)
+		// then we search the "center of mass" 
+		center = gamemap::location(0,0);
+		std::set<gamemap::location>::const_iterator it;
+		for(it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
+			center = center + *it;
+		}
+		center.x = center.x / selected_hexes_.size();
+		center.y = center.y / selected_hexes_.size();
+	}
+
+	map_buffer buf;
+	copy_buffer(buf, selected_hexes_, center);
+
+	std::vector<buffer_item>::iterator it;
+	for(it = buf.begin(); it != buf.end(); it++) {
+		gamemap::location l(0,0);
+		int x = it->offset.x;
+		int y = it->offset.y;
+		// rotate the X-Y axes to SOUTH/SOUTH_EAST - SOUTH_WEST axes
+		// but if x is odd, simply using x/2 + x/2 will lack a step
+		l = l.get_direction(gamemap::location::SOUTH, (x+is_odd(x))/2);
+		l = l.get_direction(gamemap::location::SOUTH_EAST, (x-is_odd(x))/2 );
+		l = l.get_direction(gamemap::location::SOUTH_WEST, y);
+		it->offset = l;
+	}
+
+	map_undo_action undo_action;
+	terrain_changed(selected_hexes_);
+	paste_buffer(buf, center, undo_action);
+	save_undo_action(undo_action);
+}
+
 void map_editor::edit_revert() {
 	std::string new_map = read_file(filename_);
 	bool scenario;
@@ -847,6 +887,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command, int) const 
 	case hotkey::HOTKEY_EDIT_LOAD_MAP:
 	case hotkey::HOTKEY_EDIT_FLOOD_FILL:
 	case hotkey::HOTKEY_EDIT_FILL_SELECTION:
+	case hotkey::HOTKEY_EDIT_ROTATE_SELECTION:
 	case hotkey::HOTKEY_EDIT_COPY:
 	case hotkey::HOTKEY_EDIT_CUT:
 	case hotkey::HOTKEY_EDIT_PASTE:
