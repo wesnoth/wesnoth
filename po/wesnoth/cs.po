@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-19 00:26+0200\n"
-"PO-Revision-Date: 2007-09-18 01:29+0100\n"
+"PO-Revision-Date: 2007-09-18 02:03+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -2621,7 +2621,6 @@ msgid "plague"
 msgstr "nákaza"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2630,8 +2629,8 @@ msgid ""
 msgstr ""
 "Zamoření morem:\n"
 "Když je jednotka zabita morovou ranou, je nahrazena stejnou jednotkou avšak "
-"patřící na stranu jednotky, která jí zabila (Toto nefunguje u nemrtvých či "
-"jednotek umístěných ve vesnicích.)"
+"patřící na stranu jednotky, která ji zabila (Toto nefunguje u nemrtvých či "
+"jednotek umístěných ve vesnicích)."
 
 #: data/core/macros/abilities.cfg:503
 msgid ""
@@ -2694,14 +2693,14 @@ msgid "magical"
 msgstr "magické"
 
 #: data/core/macros/abilities.cfg:551
-#, fuzzy
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 "Magický:\n"
-"Tento útok je magický a má vždy 70% šanci zásahu."
+"Tento útok je magický a má vždy 70% šanci zásahu bez ohledu na obranné "
+"možnosti cílové jednotky."
 
 #: data/core/macros/abilities.cfg:562
 msgid "swarm"
@@ -2765,7 +2764,6 @@ msgid "poison"
 msgstr "otrava"
 
 #: data/core/macros/abilities.cfg:611
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2774,7 +2772,8 @@ msgid ""
 msgstr ""
 "Otrava:\n"
 "Tento útok otráví živé cíle. Otrávené jednotky ztrácejí 8 životů za kolo, "
-"dokud se nevyléčí, nebo počet životů neklesne na jeden."
+"dokud se nevyléčí, nebo počet životů neklesne na jeden - jed sám o sobě "
+"nemůže jednotku zabít."
 
 #: data/core/macros/amla.cfg:10
 msgid ", MAX XP +25%"
@@ -6747,9 +6746,8 @@ msgid "Abort game"
 msgstr "Ukončí hru"
 
 #: src/playturn.cpp:208 src/playturn.cpp:220
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Nahraď místním hráčem"
+msgstr "Nahraď hráčem $player"
 
 #: src/playturn.cpp:226
 msgid "$player has left the game. What do you want to do?"
