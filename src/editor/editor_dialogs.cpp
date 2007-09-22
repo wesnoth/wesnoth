@@ -132,7 +132,7 @@ std::string new_map_dialog(display& disp, const t_translation::t_letter fill_ter
 	if (random_map_generator == NULL) {
 		// Initialize the map generator if this is the first call,
 		// otherwise keep the settings and such.
-		const config* const toplevel_cfg = game_config.find_child("multiplayer","id","ranmap");
+		const config* const toplevel_cfg = game_config.find_child("multiplayer","id","multiplayer_Random_Map");
 		const config* const cfg = toplevel_cfg == NULL ? NULL : toplevel_cfg->child("generator");
 		if (cfg == NULL) {
 			config dummy_cfg;
