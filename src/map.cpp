@@ -218,15 +218,19 @@ gamemap::location& gamemap::location::operator-=(const gamemap::location &a)
 }
 
 gamemap::location gamemap::location::get_direction(
-                                     gamemap::location::DIRECTION dir) const
+			gamemap::location::DIRECTION dir, int n) const
 {
+	if (n < 0 ) {
+		dir = get_opposite_dir(dir);
+		n = -n;
+	}
 	switch(dir) {
-		case NORTH:      return gamemap::location(x,y-1);
-		case NORTH_EAST: return gamemap::location(x+1,y-is_even(x));
-		case SOUTH_EAST: return gamemap::location(x+1,y+is_odd(x));
-		case SOUTH:      return gamemap::location(x,y+1);
-		case SOUTH_WEST: return gamemap::location(x-1,y+is_odd(x));
-		case NORTH_WEST: return gamemap::location(x-1,y-is_even(x));
+		case NORTH:      return gamemap::location(x, y - n);
+		case SOUTH:      return gamemap::location(x, y + n);
+		case SOUTH_EAST: return gamemap::location(x + n, y + (n+is_odd(x))/2 );
+		case SOUTH_WEST: return gamemap::location(x - n, y + (n+is_odd(x))/2 );
+		case NORTH_EAST: return gamemap::location(x + n, y - (n+is_even(x))/2 );
+		case NORTH_WEST: return gamemap::location(x - n, y - (n+is_even(x))/2 );
 		default:
 			wassert(false);
 			return gamemap::location();

@@ -92,7 +92,8 @@ public:
 		location operator-(const location &a) const;
 		location &operator-=(const location &a);
 
-		location get_direction(DIRECTION d) const;
+		// do n step in the direction d 
+		location get_direction(DIRECTION d, int n = 1) const;
 		DIRECTION get_relative_dir(location loc) const;
 		static DIRECTION get_opposite_dir(DIRECTION d);
 
