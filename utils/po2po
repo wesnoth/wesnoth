@@ -33,7 +33,7 @@ then
     set -- `cat $BASEDIR/$SRCDOMAIN/LINGUAS`
 fi
 
-tmp=`tempfile`
+tmp=`mktemp`
 for LANG in "$@"
 do
     # merge the 2 files
