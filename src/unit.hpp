@@ -276,6 +276,7 @@ public:
 	void backup_state();
 	void apply_modifications();
 	void remove_temporary_modifications();
+	void add_trait(std::string trait);
 	void generate_traits(bool musthaveonly=false);
 	void generate_traits_description();
 	std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }

@@ -350,6 +350,13 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 	game_events::add_events(cfg_.get_children("event"),id_);
 }
 
+
+void unit::add_trait(std::string trait)
+{
+	//modifications_.add_child("trait", cfg);
+	apply_modifications();
+}
+
 // Apply mandatory traits (e.g. undead, mechanical) to a unit and then
 // fill out with avaiable (leaders have a restircted set of available traits)
 // traits until no more are available or the unit has its maximum number

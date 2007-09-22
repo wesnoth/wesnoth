@@ -2167,8 +2167,7 @@ private:
 		} else if(game_config::debug && cmd == "buff") {
 			const unit_map::iterator i = current_unit(mousehandler);
 			if(i != units_.end()) {
-				// FIXME: 'data' is the trait.  Set it.
-
+			  	i->second.add_trait(data);
 				gui_->invalidate(i->first);
 				gui_->invalidate_unit();
 			}
