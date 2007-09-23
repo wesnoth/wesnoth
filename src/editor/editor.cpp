@@ -425,7 +425,7 @@ void map_editor::left_click(const gamemap::location hex_clicked) {
 		l_button_held_func_ = DRAW_TERRAIN;
 	}
 	else if (l_button_func_ == FLOOD_FILL) {
-		perform_flood_fill();
+		perform_flood_fill(palette_.selected_fg_terrain());
 	}
 	else if (l_button_func_ == SET_STARTING_POSITION) {
 		perform_set_starting_pos();
@@ -441,6 +441,9 @@ void map_editor::right_click(const gamemap::location hex_clicked ) {
 		if(palette_.selected_fg_terrain() != terrain) {
 			palette_.select_bg_terrain(terrain);
 		}
+	}
+	else if (l_button_func_ == FLOOD_FILL) {
+		perform_flood_fill(palette_.selected_bg_terrain());
 	}
 }
 
@@ -570,9 +573,9 @@ void map_editor::edit_set_start_pos() {
 	left_button_func_changed(SET_STARTING_POSITION);
 }
 
-void map_editor::perform_flood_fill() {
+void map_editor::perform_flood_fill(const t_translation::t_letter fill_with) {
 	terrain_log log;
-	flood_fill(map_, selected_hex_, palette_.selected_fg_terrain(), &log);
+	flood_fill(map_, selected_hex_, fill_with, &log);
 	std::vector<gamemap::location> to_invalidate;
 	map_undo_action action;
 	for (terrain_log::iterator it = log.begin(); it != log.end(); it++) {

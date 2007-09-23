@@ -131,7 +131,7 @@ public:
 	virtual void edit_update();
 	virtual void edit_auto_update();
 
-	void perform_flood_fill();
+	void perform_flood_fill(const t_translation::t_letter fill_with);
 	void perform_paste();
 	void perform_set_starting_pos();
 
