@@ -8,13 +8,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 22:37+0200\n"
+"POT-Creation-Date: 2007-09-23 13:49+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: data/core/units/bats/Bat_Blood.cfg:4
+msgid "Blood Bat"
+msgstr "Bloed Vlêrmuis"
+
+#: data/core/units/bats/Bat_Blood.cfg:21
+msgid ""
+"Blood Bats are so-named because of their ruddy hue, which some mark as a "
+"symbol of their preferred diet. These creatures are fast and can drain the "
+"blood of those they attack, thereby gaining some of the health lost by their "
+"victims.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/core/units/monsters/Cave_Spider.cfg:36
+#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/monsters/Sea_Serpent.cfg:25
+#: data/core/units/goblins/Knight.cfg:35
+#: data/core/units/goblins/Wolf_Rider.cfg:51
+#: data/core/units/goblins/Direwolf_Rider.cfg:35
+#: data/core/units/bats/Bat_Blood.cfg:66
+#: data/core/units/bats/Bat_Vampire.cfg:80
+msgid "fangs"
+msgstr "slagtande"
+
+#: data/core/units/bats/Bat_Vampire.cfg:4
+msgid "Vampire Bat"
+msgstr "Vampier Vlêrmuis"
+
+#: data/core/units/bats/Bat_Vampire.cfg:20
+#, fuzzy
+msgid ""
+"Vampire bats are flying beasts that feed on the blood of other creatures. "
+"While their fangs are not very powerful, the health of victims is drained "
+"away along with their blood, and given to the Bats.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Vampier Vlêrmuise is lewende dooie gedrogte wat aanval deur hulle slagoffers "
+"te byt. Alhoewel hul slagtande nie baie sterk is nie - dreineer hulle die "
+"lewe uit hul slagoffers deur hul bloed uit te suig - en die slagoffer se "
+"bloed versterk dan die vlêrmuise."
 
 #: data/core/units/boats/Boat.cfg:4
 #, fuzzy
@@ -50,8 +93,8 @@ msgstr ""
 "behoort nie alleen te wees as hulle ver van die land is nie, verhoed liewer "
 "dat hulle gesink word deur hulle nie te oorlaai nie ..."
 
-#: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
+#: data/core/units/boats/Transport_Galleon.cfg:22
 msgid "ballista"
 msgstr "ballista"
 
@@ -80,30 +123,30 @@ msgid ""
 "and possessed of a tremendous fire."
 msgstr ""
 
-#: data/core/units/dwarves/Gryphon_Rider.cfg:29
-#: data/core/units/dwarves/Gryphon_Master.cfg:29
-#: data/core/units/monsters/Gryphon.cfg:27
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/drakes/Fire.cfg:70 data/core/units/drakes/Burner.cfg:63
-#: data/core/units/drakes/Armageddon.cfg:83
-#: data/core/units/drakes/Inferno.cfg:71
-#: data/core/units/goblins/Direwolf_Rider.cfg:44
 #: data/core/units/undead/Corpse_Necrophage.cfg:27
+#: data/core/units/undead/Corpse_Ghoul.cfg:58
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:55
 #: data/core/units/undead/Spirit_Shadow.cfg:29
-#: data/core/units/undead/Corpse_Ghoul.cfg:58
+#: data/core/units/drakes/Fire.cfg:70 data/core/units/drakes/Burner.cfg:63
+#: data/core/units/drakes/Inferno.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:83
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/goblins/Direwolf_Rider.cfg:44
+#: data/core/units/gryphons/Gryphon_Master.cfg:29
+#: data/core/units/gryphons/Gryphon.cfg:28
+#: data/core/units/gryphons/Gryphon_Rider.cfg:29
 msgid "claws"
 msgstr "kloue"
 
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:93 data/core/units/drakes/Fire.cfg:79
-#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
-#: data/core/units/drakes/Glider.cfg:86
-#: data/core/units/drakes/Armageddon.cfg:92
-#: data/core/units/drakes/Flameheart.cfg:89
-#: data/core/units/drakes/Hurricane.cfg:103 data/core/units/drakes/Sky.cfg:102
 #: data/core/units/drakes/Blademaster.cfg:77
-#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Fire.cfg:79 data/core/units/drakes/Warrior.cfg:81
+#: data/core/units/drakes/Fighter.cfg:74 data/core/units/drakes/Flare.cfg:93
+#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Inferno.cfg:80
+#: data/core/units/drakes/Armageddon.cfg:92 data/core/units/drakes/Sky.cfg:102
+#: data/core/units/drakes/Glider.cfg:86
+#: data/core/units/drakes/Flameheart.cfg:89
+#: data/core/units/drakes/Hurricane.cfg:103
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "vuurasem"
 
@@ -121,37 +164,37 @@ msgstr ""
 "Hierdie drake watr swaarde bemeester word besweer to 'n spesiale orde. Die "
 "wesens se merk is die swart en wit oorlogsverf wat hulle wys in 'n stryd."
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:30
-#: data/core/units/elves/Avenger.cfg:62 data/core/units/elves/Marksman.cfg:54
-#: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:35
-#: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Outrider.cfg:32
-#: data/core/units/elves/Archer.cfg:24 data/core/units/elves/Captain.cfg:36
-#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:23
-#: data/core/units/elves/Sharpshooter.cfg:48
-#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:84
+#: data/core/units/orcs/Leader.cfg:30 data/core/units/orcs/Grunt.cfg:59
+#: data/core/units/drakes/Clasher.cfg:79
+#: data/core/units/drakes/Blademaster.cfg:68
+#: data/core/units/drakes/Warrior.cfg:72 data/core/units/drakes/Flare.cfg:84
 #: data/core/units/drakes/Enforcer.cfg:67
-#: data/core/units/drakes/Warrior.cfg:72
 #: data/core/units/drakes/Gladiator.cfg:66
 #: data/core/units/drakes/Flameheart.cfg:80
-#: data/core/units/drakes/Blademaster.cfg:68
-#: data/core/units/drakes/Clasher.cfg:79
-#: data/core/units/humans/Loyalist_Longbowman.cfg:26
-#: data/core/units/humans/Loyalist_General.cfg:45
-#: data/core/units/humans/Loyalist_Sergeant.cfg:34
-#: data/core/units/humans/Horse_Grand_Knight.cfg:26
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:26
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:27
-#: data/core/units/humans/Horse_Knight.cfg:25
-#: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:53
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
-#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Fighter.cfg:25
+#: data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
+#: data/core/units/humans/Loyalist_Longbowman.cfg:26
+#: data/core/units/humans/Horse_Knight.cfg:25
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
+#: data/core/units/humans/Loyalist_Swordsman.cfg:27
+#: data/core/units/humans/Loyalist_General.cfg:45
+#: data/core/units/humans/Horse_Grand_Knight.cfg:26
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
+#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:40
+#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:26
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+#: data/core/units/elves/Sharpshooter.cfg:48
+#: data/core/units/elves/Marshal.cfg:35 data/core/units/elves/Avenger.cfg:62
+#: data/core/units/elves/Fighter.cfg:23 data/core/units/elves/Scout.cfg:33
+#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Hero.cfg:22
+#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Archer.cfg:24
+#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Marksman.cfg:54
+#: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Captain.cfg:36
 msgid "sword"
 msgstr "swaard"
 
@@ -210,34 +253,34 @@ msgstr ""
 "ontbreek die krygers van die swakhede wat hulle soort het, soos die "
 "vatbaarheid vir spiese en pyle."
 
-#: data/core/units/saurians/Skirmisher.cfg:32
-#: data/core/units/saurians/Skirmisher.cfg:41
+#: data/core/units/merfolk/Javelineer.cfg:24
+#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
+#: data/core/units/merfolk/Spearman.cfg:23
+#: data/core/units/merfolk/Spearman.cfg:31
+#: data/core/units/merfolk/Netcaster.cfg:25
+#: data/core/units/merfolk/Entangler.cfg:26
+#: data/core/units/undead/Skele_Chocobone.cfg:27
 #: data/core/units/saurians/Flanker.cfg:30
 #: data/core/units/saurians/Flanker.cfg:39
 #: data/core/units/saurians/Ambusher.cfg:29
 #: data/core/units/saurians/Ambusher.cfg:38
-#: data/core/units/dwarves/Stalwart.cfg:36
-#: data/core/units/dwarves/Guardsman.cfg:33
-#: data/core/units/dwarves/Sentinel.cfg:41
-#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
-#: data/core/units/merfolk/Netcaster.cfg:25
-#: data/core/units/merfolk/Entangler.cfg:26
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:31
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/saurians/Skirmisher.cfg:32
+#: data/core/units/saurians/Skirmisher.cfg:41
+#: data/core/units/drakes/Clasher.cfg:88
 #: data/core/units/drakes/Enforcer.cfg:85
 #: data/core/units/drakes/Gladiator.cfg:75
-#: data/core/units/drakes/Clasher.cfg:88
-#: data/core/units/humans/Horseman.cfg:26
-#: data/core/units/humans/Loyalist_Javelineer.cfg:29
+#: data/core/units/dwarves/Guardsman.cfg:33
+#: data/core/units/dwarves/Sentinel.cfg:41
+#: data/core/units/dwarves/Stalwart.cfg:36
 #: data/core/units/humans/Loyalist_Spearman.cfg:64
-#: data/core/units/goblins/Rouser.cfg:43
+#: data/core/units/humans/Loyalist_Javelineer.cfg:29
+#: data/core/units/humans/Horseman.cfg:26
 #: data/core/units/goblins/Spearman.cfg:25
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/goblins/Impaler.cfg:26
 #: data/core/units/goblins/Impaler.cfg:42
-#: data/core/units/undead/Skele_Chocobone.cfg:27
+#: data/core/units/goblins/Rouser.cfg:43
 msgid "spear"
 msgstr "spies"
 
@@ -258,10 +301,10 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
-#: data/core/units/humans/Outlaw_Bandit.cfg:36
 #: data/core/units/humans/Outlaw.cfg:24
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
+#: data/core/units/humans/Outlaw_Bandit.cfg:36
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Outlaw_Highwayman.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:31
 msgid "mace"
@@ -392,8 +435,8 @@ msgstr ""
 "die vooruitsig om by die geledere van die Lugdrake, wat so hoog vlieg, aan "
 "te sluit."
 
-#: data/core/units/drakes/Glider.cfg:77
-#: data/core/units/drakes/Hurricane.cfg:94 data/core/units/drakes/Sky.cfg:93
+#: data/core/units/drakes/Sky.cfg:93 data/core/units/drakes/Glider.cfg:77
+#: data/core/units/drakes/Hurricane.cfg:94
 msgid "slam"
 msgstr "slaan toe"
 
@@ -475,8 +518,8 @@ msgstr ""
 "hulle stamina en verdedigingsvermoëns verbeter, wat 'n groot voordeel is wat "
 "hulle oor hulle neefs die Gladiators het."
 
-#: data/core/units/drakes/Warden.cfg:77 data/core/units/drakes/Warden.cfg:86
 #: data/core/units/drakes/Slasher.cfg:71 data/core/units/drakes/Slasher.cfg:80
+#: data/core/units/drakes/Warden.cfg:77 data/core/units/drakes/Warden.cfg:86
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
 #: data/core/units/humans/Loyalist_Halberdier.cfg:43
 msgid "halberd"
@@ -531,8 +574,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/dwarves/Berserker.cfg:33
 #: data/core/units/dwarves/Ulfserker.cfg:33
+#: data/core/units/dwarves/Berserker.cfg:33
 msgid "berserker frenzy"
 msgstr "beserker woede"
 
@@ -559,19 +602,20 @@ msgstr ""
 "hierdie wapens wat die wagte va die groot Dwergstede bekend is en voor "
 "gevrees word; wapens wat al magtige krygers met een hou neergevel het."
 
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
-#: data/core/units/orcs/Slayer.cfg:29
-#: data/core/units/dwarves/Dragonguard.cfg:25
-#: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:25
-#: data/core/units/humans/Outlaw_Assassin.cfg:30
-#: data/core/units/humans/Outlaw_Poacher.cfg:36
-#: data/core/units/humans/Outlaw_Rogue.cfg:29
-#: data/core/units/humans/Outlaw_Thief.cfg:178
-#: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Trapper.cfg:71
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
+#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
+#: data/core/units/orcs/Slayer.cfg:29
+#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Thunderer.cfg:41
+#: data/core/units/humans/Outlaw_Trapper.cfg:71
+#: data/core/units/humans/Outlaw_Rogue.cfg:29
+#: data/core/units/humans/Woodsman.cfg:28
+#: data/core/units/humans/Outlaw_Thief.cfg:178
+#: data/core/units/humans/Outlaw_Poacher.cfg:36
+#: data/core/units/humans/Outlaw_Assassin.cfg:30
+#: data/core/units/humans/Outlaw_Huntsman.cfg:38
 msgid "dagger"
 msgstr "dolk"
 
@@ -595,47 +639,19 @@ msgstr ""
 "en ook ondergronds. Al is hulle nie rats nie, vergoed hulle krag en "
 "deursettingsvermoë daarvoor."
 
-#: data/core/units/dwarves/Fighter.cfg:35
-#: data/core/units/undead/Skele_Deathblade.cfg:44
-#: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:108
 #: data/core/units/undead/Skele_Draug.cfg:32
+#: data/core/units/undead/Skele_Deathblade.cfg:44
+#: data/core/units/undead/Skele_Revenant.cfg:31
+#: data/core/units/dwarves/Fighter.cfg:35
 msgid "axe"
 msgstr "byl"
 
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Warrior.cfg:29
+#: data/core/units/dwarves/Fighter.cfg:43 data/core/units/dwarves/Lord.cfg:39
 #: data/core/units/dwarves/Steelclad.cfg:38
-#: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
-#: data/core/units/trolls/Warrior.cfg:29 data/core/units/trolls/Great.cfg:29
 msgid "hammer"
 msgstr "hamer"
-
-#: data/core/units/dwarves/Gryphon_Master.cfg:4
-msgid "Gryphon Master"
-msgstr "Grifon Meester"
-
-#: data/core/units/dwarves/Gryphon_Master.cfg:19
-#, fuzzy
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-"Grifon Meesters het baie ervaring as dit kom by Grifone vlieg en later voel "
-"dit soos tweede natuur vir hulle. Hierdie spesiale verhouding maak die mense "
-"op die grond skrikkerig, wnat hierdie pare kan van enige plek aanval."
-
-#: data/core/units/dwarves/Gryphon_Rider.cfg:4
-msgid "Gryphon Rider"
-msgstr "Grifon Ruiter"
-
-#: data/core/units/dwarves/Gryphon_Rider.cfg:19
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"Net 'n paar kan met Grifone versoen word. Hulle word dan later die Grifon "
-"Ryers en verken die wêreld deur rond te vlieg op die Grifon se rug."
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
@@ -652,11 +668,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/dwarves/Guardsman.cfg:42
 #: data/core/units/dwarves/Sentinel.cfg:50
-#: data/core/units/humans/Loyalist_Javelineer.cfg:40
+#: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/humans/Loyalist_Spearman.cfg:76
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #, fuzzy
 msgid "javelin"
 msgstr "Spiesgooier"
@@ -678,9 +694,9 @@ msgstr ""
 "verskeie meters. Alhoewel stadig te voet, is hierdie dwerge 'n kenmerk van "
 "die vernuftigheid van hul ras."
 
-#: data/core/units/dwarves/Steelclad.cfg:29
-#: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:52
+#: data/core/units/dwarves/Lord.cfg:30
+#: data/core/units/dwarves/Steelclad.cfg:29
 msgid "battle axe"
 msgstr "strydbyl"
 
@@ -776,8 +792,8 @@ msgstr ""
 "nie, besef hoe gelukkig hulle is om nie langer teen die dwerge te veg nie. "
 "Hulle het ook 'n eed afgelê om nooit weer teen die dwerge te baklei nie."
 
-#: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
+#: data/core/units/dwarves/Thunderer.cfg:50
 msgid "thunderstick"
 msgstr "donderstok"
 
@@ -847,25 +863,26 @@ msgstr ""
 "ervaring hul ietwat kwesbaar maak, is dit hulle natuurlike grasie wat "
 "verseker dat hulle beter is as enige nuwe mense-rekruite."
 
+#: data/core/units/undead/Skele_Banebow.cfg:41
+#: data/core/units/undead/Skeleton_Archer.cfg:42
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:40
 #: data/core/units/orcs/Sovereign.cfg:38 data/core/units/orcs/Archer.cfg:80
-#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:39 data/core/units/orcs/Ruler.cfg:37
-#: data/core/units/elves/Avenger.cfg:71 data/core/units/elves/Scout.cfg:42
-#: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Ranger.cfg:68
-#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Archer.cfg:33
-#: data/core/units/elves/Captain.cfg:45 data/core/units/elves/Rider.cfg:43
-#: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Champion.cfg:32
-#: data/core/units/elves/Fighter.cfg:32
-#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Ruler.cfg:37
+#: data/core/units/orcs/Warlord.cfg:34 data/core/units/orcs/Leader.cfg:39
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
-#: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:62
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
 #: data/core/units/humans/Outlaw_Trapper.cfg:80
-#: data/core/units/undead/Skeleton_Archer.cfg:42
-#: data/core/units/undead/Skele_Banebow.cfg:41
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:40
+#: data/core/units/humans/Woodsman.cfg:37
+#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
+#: data/core/units/humans/Outlaw_Huntsman.cfg:47
+#: data/core/units/humans/Outlaw_Ranger.cfg:62
+#: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Avenger.cfg:71
+#: data/core/units/elves/Fighter.cfg:32 data/core/units/elves/Scout.cfg:42
+#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Hero.cfg:31
+#: data/core/units/elves/Champion.cfg:32 data/core/units/elves/Archer.cfg:33
+#: data/core/units/elves/Rider.cfg:43 data/core/units/elves/Ranger.cfg:68
+#: data/core/units/elves/Captain.cfg:45
 msgid "bow"
 msgstr "boog"
 
@@ -980,21 +997,21 @@ msgstr ""
 "en veroorsaak dat hulle een keer minder slaan gedurende 'n geveg. "
 "Bostoordokters kan eenhede rondom hul gesondmaak en genees van gif."
 
-#: data/core/units/elves/Enchantress.cfg:27 data/core/units/elves/Druid.cfg:29
-#: data/core/units/elves/Shaman.cfg:31 data/core/units/elves/Sorceress.cfg:29
-#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/merfolk/Priestess.cfg:64
+#: data/core/units/merfolk/Initiate.cfg:29
+#: data/core/units/merfolk/Enchantress.cfg:26
+#: data/core/units/merfolk/Diviner.cfg:67
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:27
 #: data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
-#: data/core/units/merfolk/Priestess.cfg:64
-#: data/core/units/merfolk/Enchantress.cfg:26
-#: data/core/units/merfolk/Initiate.cfg:29
-#: data/core/units/merfolk/Diviner.cfg:67 data/core/units/humans/Mage.cfg:52
+#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/humans/Mage_Red.cfg:52 data/core/units/humans/Mage.cfg:52
 #: data/core/units/humans/Mage_White.cfg:119
 #: data/core/units/humans/Mage_Great.cfg:31
 #: data/core/units/humans/Mage_Silver.cfg:37
-#: data/core/units/humans/Mage_Arch.cfg:30
-#: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:27
+#: data/core/units/humans/Mage_Arch.cfg:30 data/core/units/elves/Shaman.cfg:31
+#: data/core/units/elves/Druid.cfg:29 data/core/units/elves/Sorceress.cfg:29
+#: data/core/units/elves/Enchantress.cfg:27
 msgid "staff"
 msgstr "staf"
 
@@ -1021,13 +1038,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/elves/Enchantress.cfg:37
 #: data/core/units/elves/Shaman.cfg:40 data/core/units/elves/Sorceress.cfg:39
+#: data/core/units/elves/Enchantress.cfg:37
 msgid "entangle"
 msgstr "verstrengel"
 
+#: data/core/units/elves/Sylph.cfg:54 data/core/units/elves/Sorceress.cfg:50
 #: data/core/units/elves/Enchantress.cfg:48
-#: data/core/units/elves/Sorceress.cfg:50 data/core/units/elves/Sylph.cfg:54
 msgid "faerie fire"
 msgstr "feë vuur"
 
@@ -1093,8 +1110,8 @@ msgstr ""
 "Spesiale Nota's: Hulle skietkuns bring mee dat die elwe 'n hoë "
 "waarskynlikheid het om hulle vyand te tref, maar slegs as hulle aanval."
 
-#: data/core/units/elves/Marksman.cfg:63
 #: data/core/units/elves/Sharpshooter.cfg:57
+#: data/core/units/elves/Marksman.cfg:63
 msgid "longbow"
 msgstr "grootboog"
 
@@ -1306,7 +1323,7 @@ msgstr ""
 "hule een hou minder slaan gedurende 'n geveg. Shydes kan eenhede rondom hul "
 "genees, en heeltemak ontslae raak van gif."
 
-#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:29
+#: data/core/units/elves/Sylph.cfg:29 data/core/units/elves/Shyde.cfg:29
 msgid "faerie touch"
 msgstr "feë aanraking"
 
@@ -1380,17 +1397,6 @@ msgstr ""
 "Spesiale Nota's: Enigeen wat deur 'n skrikwolf se kloue gekrap word sal "
 "vergiftig word en sal die slagoffers van die gif aanhou om skade op te doen "
 "totdat hulle by 'n dorp of geneser genees kan word."
-
-#: data/core/units/monsters/Wolf.cfg:49
-#: data/core/units/monsters/Cave_Spider.cfg:36
-#: data/core/units/monsters/Sea_Serpent.cfg:25
-#: data/core/units/goblins/Wolf_Rider.cfg:51
-#: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:35
-#: data/core/units/undead/Bat_Blood.cfg:65
-#: data/core/units/undead/Bat_Vampire.cfg:79
-msgid "fangs"
-msgstr "slagtande"
 
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
@@ -1552,6 +1558,48 @@ msgstr ""
 "moeilik vind om oor berge te kom, is die berg-terrein maklik vir wolwe, maar "
 "die wolwe sukkel weer deur water en woude."
 
+#: data/core/units/gryphons/Gryphon.cfg:4
+msgid "Gryphon"
+msgstr "Grifon"
+
+#: data/core/units/gryphons/Gryphon.cfg:18
+msgid ""
+"These majestic and powerful creatures are masters of the sky. Gryphons are "
+"both dangerous and wary of other intelligent creatures, and thus should not "
+"be disturbed without a good reason."
+msgstr ""
+"Hierdie majestieuse en kragtige wesens is meesters in die lug. Grifone is "
+"beide gevaarlik en versigtig vir ander intelligente wesens, en moet dus nie "
+"gepla word sonder goeie rede nie."
+
+#: data/core/units/gryphons/Gryphon_Master.cfg:4
+msgid "Gryphon Master"
+msgstr "Grifon Meester"
+
+#: data/core/units/gryphons/Gryphon_Master.cfg:19
+#, fuzzy
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty flyers may strike from anywhere."
+msgstr ""
+"Grifon Meesters het baie ervaring as dit kom by Grifone vlieg en later voel "
+"dit soos tweede natuur vir hulle. Hierdie spesiale verhouding maak die mense "
+"op die grond skrikkerig, wnat hierdie pare kan van enige plek aanval."
+
+#: data/core/units/gryphons/Gryphon_Rider.cfg:4
+msgid "Gryphon Rider"
+msgstr "Grifon Ruiter"
+
+#: data/core/units/gryphons/Gryphon_Rider.cfg:19
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+"Net 'n paar kan met Grifone versoen word. Hulle word dan later die Grifon "
+"Ryers en verken die wêreld deur rond te vlieg op die Grifon se rug."
+
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
 msgstr "Groot Ridder"
@@ -1570,10 +1618,10 @@ msgstr ""
 "Grootridder aan die voorpunt van 'n stormloop is 'n skrikwekkende gesig vir "
 "voetsoldate en is gewoonlik genoeg om regdeur 'n verdedigingslinie te breek."
 
-#: data/core/units/humans/Horseman.cfg:22
-#: data/core/units/humans/Horse_Grand_Knight.cfg:22
 #: data/core/units/humans/Horse_Knight.cfg:21
+#: data/core/units/humans/Horse_Grand_Knight.cfg:22
 #: data/core/units/humans/Horse_Lancer.cfg:22
+#: data/core/units/humans/Horseman.cfg:22
 #, fuzzy
 msgid ""
 "\n"
@@ -1581,10 +1629,10 @@ msgid ""
 "Special Notes:"
 msgstr "Spesiaal"
 
-#: data/core/units/humans/Horse_Grand_Knight.cfg:35
 #: data/core/units/humans/Horse_Knight.cfg:34
-#: data/core/units/humans/Horse_Paladin.cfg:49
+#: data/core/units/humans/Horse_Grand_Knight.cfg:35
 #: data/core/units/humans/Horse_Lancer.cfg:26
+#: data/core/units/humans/Horse_Paladin.cfg:49
 msgid "lance"
 msgstr "lans"
 
@@ -1722,18 +1770,18 @@ msgstr ""
 "op baie vyande toe te slaan en hulle dapperheid het al die gang van die "
 "grootste gevegte in die geskiedenis omgekeer."
 
+#: data/core/units/undead/Skele_Death_Knight.cfg:61
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:39
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:50
 #: data/core/units/humans/Loyalist_Duelist.cfg:80
 #: data/core/units/humans/Loyalist_General.cfg:54
-#: data/core/units/humans/Loyalist_Sergeant.cfg:43
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:39
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:44
 #: data/core/units/humans/Loyalist_Cavalier.cfg:47
+#: data/core/units/humans/Loyalist_Sergeant.cfg:43
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:44
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:50
-#: data/core/units/undead/Skele_Death_Knight.cfg:61
 msgid "crossbow"
 msgstr "kruisboog"
 
@@ -1816,9 +1864,9 @@ msgstr ""
 "Spesiale Nota's: Hulle skermvaardighede laat hierdie skermers toe om by "
 "teenstanders verby te glip en die beheersones te ignoreer."
 
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:30
 #: data/core/units/humans/Loyalist_Duelist.cfg:71
 #: data/core/units/humans/Loyalist_Fencer.cfg:126
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:30
 #, fuzzy
 msgid "sabre"
 msgstr "steek"
@@ -2368,9 +2416,9 @@ msgstr ""
 "Spesiale Nota's: Die hooftowenaar se vuurballe besit toorkrag en het altyd "
 "'n baie goeie kans om 'n teenstander te tref."
 
+#: data/core/units/humans/Mage_Red.cfg:61
 #: data/core/units/humans/Mage_Great.cfg:40
 #: data/core/units/humans/Mage_Arch.cfg:39
-#: data/core/units/humans/Mage_Red.cfg:61
 msgid "fireball"
 msgstr "vuurbal"
 
@@ -2625,10 +2673,10 @@ msgstr ""
 "Misdadigers hou nie daarvan om helder oordag te veg nie, en is meer tuis in "
 "die skadu's van die nag."
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:32
-#: data/core/units/humans/Outlaw_Fugitive.cfg:40
 #: data/core/units/trolls/Rocklobber.cfg:38
+#: data/core/units/humans/Outlaw.cfg:32
+#: data/core/units/humans/Outlaw_Footpad.cfg:33
+#: data/core/units/humans/Outlaw_Fugitive.cfg:40
 msgid "sling"
 msgstr "slinger"
 
@@ -2665,8 +2713,8 @@ msgstr ""
 "Hulle gooimesse is ook met gif besmeer wat voortdurend die vyand se krag sal "
 "laat kwyn."
 
-#: data/core/units/humans/Outlaw_Assassin.cfg:42
 #: data/core/units/humans/Outlaw_Rogue.cfg:41
+#: data/core/units/humans/Outlaw_Assassin.cfg:42
 msgid "knife"
 msgstr "mes"
 
@@ -2713,10 +2761,10 @@ msgstr ""
 "kennis kom dan handig te pas in 'n geveg. Ten spyte van hul karige wapens, "
 "is hulle handig gedurende die nag, waneer hulle die vyand goed kan verpes. "
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
-#: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:28 data/core/units/trolls/Hero.cfg:28
+#: data/core/units/humans/Outlaw_Ruffian.cfg:23
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
+#: data/core/units/humans/Outlaw_Thug.cfg:24
 msgid "club"
 msgstr "knuppel"
 
@@ -2756,6 +2804,19 @@ msgstr ""
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Huntsman.cfg:5
+#, fuzzy
+msgid "Huntsman"
+msgstr "Ruiter"
+
+#: data/core/units/humans/Outlaw_Huntsman.cfg:25
+msgid ""
+"Huntsmen have spent their lives in the backwoods and swamps of their "
+"wilderness homes. They track anything that moves in their territory, "
+"including people. Bandit gangs hire them for their ability to bring down any "
+"prey."
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Poacher.cfg:4
@@ -2972,9 +3033,9 @@ msgstr ""
 "Spesiale Nota's: Die waterspuite van die meerminne besit towerkrag en staan "
 "altyd 'n goeie kans om hulle teenstanders te tref."
 
-#: data/core/units/merfolk/Siren.cfg:42
-#: data/core/units/merfolk/Enchantress.cfg:35
 #: data/core/units/merfolk/Initiate.cfg:38
+#: data/core/units/merfolk/Enchantress.cfg:35
+#: data/core/units/merfolk/Siren.cfg:42
 msgid "water spray"
 msgstr "water sproei"
 
@@ -3016,10 +3077,10 @@ msgstr ""
 "Vaardige wesens van die see, is Meermanne sterk en vinnig in enige water-"
 "agtige omgewing, maar hulle sukkel om op land te beweeg."
 
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
-#: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:37
+#: data/core/units/merfolk/Warrior.cfg:23
+#: data/core/units/merfolk/Fighter.cfg:24
+#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 msgid "trident"
 msgstr "seevurk"
 
@@ -3289,8 +3350,8 @@ msgstr ""
 "Die beste manier om 'n geveg met hierdie monsters te oorleef is om aan land "
 "te bly."
 
-#: data/core/units/monsters/Tentacle.cfg:63
 #: data/core/units/monsters/Cuttle_Fish.cfg:36
+#: data/core/units/monsters/Tentacle.cfg:63
 msgid "tentacle"
 msgstr "tentakel"
 
@@ -3339,11 +3400,11 @@ msgstr ""
 "grond en water. Hulle val aan deur bolle modder op hulle vyande te spoeg of "
 "deur hulle met hulle vuiste by te dam."
 
-#: data/core/units/monsters/Yeti.cfg:35
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Whelp.cfg:28
 #: data/core/units/undead/Skeleton_Archer.cfg:33
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Yeti.cfg:35
 msgid "fist"
 msgstr "vuis"
 
@@ -3374,20 +3435,6 @@ msgstr "angel"
 #: data/core/units/monsters/Giant_Scorpion.cfg:38
 msgid "pincers"
 msgstr "knypers"
-
-#: data/core/units/monsters/Gryphon.cfg:4
-msgid "Gryphon"
-msgstr "Grifon"
-
-#: data/core/units/monsters/Gryphon.cfg:17
-msgid ""
-"These majestic and powerful creatures are masters of the sky. Gryphons are "
-"both dangerous and wary of other intelligent creatures, and thus should not "
-"be disturbed without a good reason."
-msgstr ""
-"Hierdie majestieuse en kragtige wesens is meesters in die lug. Grifone is "
-"beide gevaarlik en versigtig vir ander intelligente wesens, en moet dus nie "
-"gepla word sonder goeie rede nie."
 
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
@@ -3708,8 +3755,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:29
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:28
+#: data/core/units/orcs/Sovereign.cfg:29 data/core/units/orcs/Warrior.cfg:23
+#: data/core/units/orcs/Ruler.cfg:28 data/core/units/orcs/Warlord.cfg:25
 #, fuzzy
 msgid "greatsword"
 msgstr "swaard"
@@ -3833,9 +3880,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/saurians/Soothsayer.cfg:47
 #: data/core/units/saurians/Augur.cfg:47
 #: data/core/units/saurians/Oracle.cfg:47
+#: data/core/units/saurians/Soothsayer.cfg:47
 msgid "curse"
 msgstr "vloek"
 
@@ -4054,38 +4101,6 @@ msgstr ""
 "Spesiale Nota's: Trolle besit 'n regenerasie vermoë wat hulle laat herstel "
 "asof hul op 'n dorpie rus."
 
-#: data/core/units/undead/Bat_Blood.cfg:4
-msgid "Blood Bat"
-msgstr "Bloed Vlêrmuis"
-
-#: data/core/units/undead/Bat_Blood.cfg:20
-msgid ""
-"Blood Bats are so-named because of their ruddy hue, which some mark as a "
-"symbol of their preferred diet. These creatures are fast and can drain the "
-"blood of those they attack, thereby gaining some of the health lost by their "
-"victims.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Bat_Vampire.cfg:4
-msgid "Vampire Bat"
-msgstr "Vampier Vlêrmuis"
-
-#: data/core/units/undead/Bat_Vampire.cfg:19
-#, fuzzy
-msgid ""
-"Vampire bats are flying beasts that feed on the blood of other creatures. "
-"While their fangs are not very powerful, the health of victims is drained "
-"away along with their blood, and given to the Bats.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"Vampier Vlêrmuise is lewende dooie gedrogte wat aanval deur hulle slagoffers "
-"te byt. Alhoewel hul slagtande nie baie sterk is nie - dreineer hulle die "
-"lewe uit hul slagoffers deur hul bloed uit te suig - en die slagoffer se "
-"bloed versterk dan die vlêrmuise."
-
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
 msgstr "Gees"
@@ -4151,11 +4166,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/undead/Corpse_Walking.cfg:50
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:37
-#: data/core/units/undead/Spirit_Ghost.cfg:26
-#: data/core/units/undead/Necro_Lich.cfg:36
 #: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Necro_Lich.cfg:36
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:37
+#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Spirit_Ghost.cfg:26
 msgid "touch"
 msgstr "aanraak"
 
@@ -4197,16 +4212,16 @@ msgstr ""
 "'n baie hoë kans om 'n teenstander te tref. Die aanraking van 'n lich "
 "dreineer die slagoffer se liggaam om die lig te laat hernuwe."
 
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:49
 #: data/core/units/undead/Necro_Lich.cfg:48
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:49
 #, fuzzy
 msgid "chill tempest"
 msgstr "rillingsgolf"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:44
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:61
-#: data/core/units/undead/Necro_Lich.cfg:60
 #: data/core/units/undead/Necromancer.cfg:51
+#: data/core/units/undead/Necro_Lich.cfg:60
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:61
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
 #, fuzzy
 msgid "shadow wave"
@@ -4563,8 +4578,8 @@ msgstr ""
 "nogal stadig oor oop water."
 
 #: data/core/units/undead/Spirit_Wraith.cfg:33
-#: data/core/units/undead/Spirit_Ghost.cfg:38
 #: data/core/units/undead/Spirit_Spectre.cfg:58
+#: data/core/units/undead/Spirit_Ghost.cfg:38
 msgid "wail"
 msgstr "kla"
 
@@ -4713,8 +4728,8 @@ msgstr ""
 "gebruik, wat beteken dat hulle nie in dorpe bymekaar hoef te kom om voedsel "
 "of hulp te kry nie."
 
-#: data/core/units/wose/Wose.cfg:32 data/core/units/wose/Ancient.cfg:94
-#: data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Ancient.cfg:94 data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Wose.cfg:32
 msgid "crush"
 msgstr "verpletter"
 
@@ -4788,6 +4803,28 @@ msgstr ""
 "maak en sodoende het hulle nie nodig om na die dorpies te gaan vir hulp of "
 "vir voeding nie."
 
+#~ msgid "dummy"
+#~ msgstr "pop"
+
+#~ msgid "cold"
+#~ msgstr "koue"
+
+#, fuzzy
+#~ msgid "arcane"
+#~ msgstr "afstandgeveg"
+
+#~ msgid "impact"
+#~ msgstr "impak"
+
+#~ msgid "fire"
+#~ msgstr "vuur"
+
+#~ msgid "blade"
+#~ msgstr "lem"
+
+#~ msgid "pierce"
+#~ msgstr "steek"
+
 #, fuzzy
 #~ msgid ""
 #~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
@@ -4806,25 +4843,3 @@ msgstr ""
 #~ "Spesiale Nota's: Nekromante se kloue is met gif bedek, en alle slagoffers "
 #~ "se lewenspunte sal daal as gevolg van die gif, totdat hulle kan genees "
 #~ "word deur 'n dorpie of 'n geneser."
-
-#~ msgid "pierce"
-#~ msgstr "steek"
-
-#~ msgid "blade"
-#~ msgstr "lem"
-
-#~ msgid "fire"
-#~ msgstr "vuur"
-
-#~ msgid "impact"
-#~ msgstr "impak"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "afstandgeveg"
-
-#~ msgid "cold"
-#~ msgstr "koue"
-
-#~ msgid "dummy"
-#~ msgstr "pop"

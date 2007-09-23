@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 22:37+0200\n"
+"POT-Creation-Date: 2007-09-23 13:49+0200\n"
 "PO-Revision-Date: 2006-12-15 16:18+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -158,6 +158,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.0.2\n"
+
+#: data/core/units/bats/Bat_Blood.cfg:4
+msgid "Blood Bat"
+msgstr "Νυχτερίδα Αίματος"
+
+#: data/core/units/bats/Bat_Blood.cfg:21
+msgid ""
+"Blood Bats are so-named because of their ruddy hue, which some mark as a "
+"symbol of their preferred diet. These creatures are fast and can drain the "
+"blood of those they attack, thereby gaining some of the health lost by their "
+"victims.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/core/units/monsters/Cave_Spider.cfg:36
+#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/monsters/Sea_Serpent.cfg:25
+#: data/core/units/goblins/Knight.cfg:35
+#: data/core/units/goblins/Wolf_Rider.cfg:51
+#: data/core/units/goblins/Direwolf_Rider.cfg:35
+#: data/core/units/bats/Bat_Blood.cfg:66
+#: data/core/units/bats/Bat_Vampire.cfg:80
+msgid "fangs"
+msgstr "δαγκάνες"
+
+#: data/core/units/bats/Bat_Vampire.cfg:4
+msgid "Vampire Bat"
+msgstr "Νυχτερίδα βαμπίρ"
+
+#: data/core/units/bats/Bat_Vampire.cfg:20
+msgid ""
+"Vampire bats are flying beasts that feed on the blood of other creatures. "
+"While their fangs are not very powerful, the health of victims is drained "
+"away along with their blood, and given to the Bats.\n"
+"\n"
+"Special Notes:"
+msgstr ""
 
 #: data/core/units/boats/Boat.cfg:4
 #, fuzzy
@@ -189,8 +227,8 @@ msgid ""
 "cargo."
 msgstr ""
 
-#: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
+#: data/core/units/boats/Transport_Galleon.cfg:22
 msgid "ballista"
 msgstr "βαλλίστρα"
 
@@ -219,30 +257,30 @@ msgid ""
 "and possessed of a tremendous fire."
 msgstr ""
 
-#: data/core/units/dwarves/Gryphon_Rider.cfg:29
-#: data/core/units/dwarves/Gryphon_Master.cfg:29
-#: data/core/units/monsters/Gryphon.cfg:27
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/drakes/Fire.cfg:70 data/core/units/drakes/Burner.cfg:63
-#: data/core/units/drakes/Armageddon.cfg:83
-#: data/core/units/drakes/Inferno.cfg:71
-#: data/core/units/goblins/Direwolf_Rider.cfg:44
 #: data/core/units/undead/Corpse_Necrophage.cfg:27
+#: data/core/units/undead/Corpse_Ghoul.cfg:58
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:55
 #: data/core/units/undead/Spirit_Shadow.cfg:29
-#: data/core/units/undead/Corpse_Ghoul.cfg:58
+#: data/core/units/drakes/Fire.cfg:70 data/core/units/drakes/Burner.cfg:63
+#: data/core/units/drakes/Inferno.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:83
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/goblins/Direwolf_Rider.cfg:44
+#: data/core/units/gryphons/Gryphon_Master.cfg:29
+#: data/core/units/gryphons/Gryphon.cfg:28
+#: data/core/units/gryphons/Gryphon_Rider.cfg:29
 msgid "claws"
 msgstr "νύχια"
 
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:93 data/core/units/drakes/Fire.cfg:79
-#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
-#: data/core/units/drakes/Glider.cfg:86
-#: data/core/units/drakes/Armageddon.cfg:92
-#: data/core/units/drakes/Flameheart.cfg:89
-#: data/core/units/drakes/Hurricane.cfg:103 data/core/units/drakes/Sky.cfg:102
 #: data/core/units/drakes/Blademaster.cfg:77
-#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Fire.cfg:79 data/core/units/drakes/Warrior.cfg:81
+#: data/core/units/drakes/Fighter.cfg:74 data/core/units/drakes/Flare.cfg:93
+#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Inferno.cfg:80
+#: data/core/units/drakes/Armageddon.cfg:92 data/core/units/drakes/Sky.cfg:102
+#: data/core/units/drakes/Glider.cfg:86
+#: data/core/units/drakes/Flameheart.cfg:89
+#: data/core/units/drakes/Hurricane.cfg:103
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "ανάσα Φωτιάς"
 
@@ -261,37 +299,37 @@ msgstr ""
 "ένα ειδικό τάγμα. Το έμβλημά του είναι ασπρόμαυρη πολεμική μπογιά πού φορούν "
 "στή μάχη."
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:30
-#: data/core/units/elves/Avenger.cfg:62 data/core/units/elves/Marksman.cfg:54
-#: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:35
-#: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Outrider.cfg:32
-#: data/core/units/elves/Archer.cfg:24 data/core/units/elves/Captain.cfg:36
-#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:23
-#: data/core/units/elves/Sharpshooter.cfg:48
-#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:84
+#: data/core/units/orcs/Leader.cfg:30 data/core/units/orcs/Grunt.cfg:59
+#: data/core/units/drakes/Clasher.cfg:79
+#: data/core/units/drakes/Blademaster.cfg:68
+#: data/core/units/drakes/Warrior.cfg:72 data/core/units/drakes/Flare.cfg:84
 #: data/core/units/drakes/Enforcer.cfg:67
-#: data/core/units/drakes/Warrior.cfg:72
 #: data/core/units/drakes/Gladiator.cfg:66
 #: data/core/units/drakes/Flameheart.cfg:80
-#: data/core/units/drakes/Blademaster.cfg:68
-#: data/core/units/drakes/Clasher.cfg:79
-#: data/core/units/humans/Loyalist_Longbowman.cfg:26
-#: data/core/units/humans/Loyalist_General.cfg:45
-#: data/core/units/humans/Loyalist_Sergeant.cfg:34
-#: data/core/units/humans/Horse_Grand_Knight.cfg:26
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:26
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:27
-#: data/core/units/humans/Horse_Knight.cfg:25
-#: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:53
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
-#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Fighter.cfg:25
+#: data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
+#: data/core/units/humans/Loyalist_Longbowman.cfg:26
+#: data/core/units/humans/Horse_Knight.cfg:25
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
+#: data/core/units/humans/Loyalist_Swordsman.cfg:27
+#: data/core/units/humans/Loyalist_General.cfg:45
+#: data/core/units/humans/Horse_Grand_Knight.cfg:26
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
+#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:40
+#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:26
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+#: data/core/units/elves/Sharpshooter.cfg:48
+#: data/core/units/elves/Marshal.cfg:35 data/core/units/elves/Avenger.cfg:62
+#: data/core/units/elves/Fighter.cfg:23 data/core/units/elves/Scout.cfg:33
+#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Hero.cfg:22
+#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Archer.cfg:24
+#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Marksman.cfg:54
+#: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Captain.cfg:36
 msgid "sword"
 msgstr "σπαθί"
 
@@ -336,34 +374,34 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/saurians/Skirmisher.cfg:32
-#: data/core/units/saurians/Skirmisher.cfg:41
+#: data/core/units/merfolk/Javelineer.cfg:24
+#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
+#: data/core/units/merfolk/Spearman.cfg:23
+#: data/core/units/merfolk/Spearman.cfg:31
+#: data/core/units/merfolk/Netcaster.cfg:25
+#: data/core/units/merfolk/Entangler.cfg:26
+#: data/core/units/undead/Skele_Chocobone.cfg:27
 #: data/core/units/saurians/Flanker.cfg:30
 #: data/core/units/saurians/Flanker.cfg:39
 #: data/core/units/saurians/Ambusher.cfg:29
 #: data/core/units/saurians/Ambusher.cfg:38
-#: data/core/units/dwarves/Stalwart.cfg:36
-#: data/core/units/dwarves/Guardsman.cfg:33
-#: data/core/units/dwarves/Sentinel.cfg:41
-#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
-#: data/core/units/merfolk/Netcaster.cfg:25
-#: data/core/units/merfolk/Entangler.cfg:26
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:31
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/saurians/Skirmisher.cfg:32
+#: data/core/units/saurians/Skirmisher.cfg:41
+#: data/core/units/drakes/Clasher.cfg:88
 #: data/core/units/drakes/Enforcer.cfg:85
 #: data/core/units/drakes/Gladiator.cfg:75
-#: data/core/units/drakes/Clasher.cfg:88
-#: data/core/units/humans/Horseman.cfg:26
-#: data/core/units/humans/Loyalist_Javelineer.cfg:29
+#: data/core/units/dwarves/Guardsman.cfg:33
+#: data/core/units/dwarves/Sentinel.cfg:41
+#: data/core/units/dwarves/Stalwart.cfg:36
 #: data/core/units/humans/Loyalist_Spearman.cfg:64
-#: data/core/units/goblins/Rouser.cfg:43
+#: data/core/units/humans/Loyalist_Javelineer.cfg:29
+#: data/core/units/humans/Horseman.cfg:26
 #: data/core/units/goblins/Spearman.cfg:25
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/goblins/Impaler.cfg:26
 #: data/core/units/goblins/Impaler.cfg:42
-#: data/core/units/undead/Skele_Chocobone.cfg:27
+#: data/core/units/goblins/Rouser.cfg:43
 msgid "spear"
 msgstr "δόρυ"
 
@@ -380,10 +418,10 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
-#: data/core/units/humans/Outlaw_Bandit.cfg:36
 #: data/core/units/humans/Outlaw.cfg:24
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
+#: data/core/units/humans/Outlaw_Bandit.cfg:36
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Outlaw_Highwayman.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:31
 msgid "mace"
@@ -474,8 +512,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/drakes/Glider.cfg:77
-#: data/core/units/drakes/Hurricane.cfg:94 data/core/units/drakes/Sky.cfg:93
+#: data/core/units/drakes/Sky.cfg:93 data/core/units/drakes/Glider.cfg:77
+#: data/core/units/drakes/Hurricane.cfg:94
 msgid "slam"
 msgstr ""
 
@@ -535,8 +573,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/drakes/Warden.cfg:77 data/core/units/drakes/Warden.cfg:86
 #: data/core/units/drakes/Slasher.cfg:71 data/core/units/drakes/Slasher.cfg:80
+#: data/core/units/drakes/Warden.cfg:77 data/core/units/drakes/Warden.cfg:86
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
 #: data/core/units/humans/Loyalist_Halberdier.cfg:43
 msgid "halberd"
@@ -580,8 +618,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/dwarves/Berserker.cfg:33
 #: data/core/units/dwarves/Ulfserker.cfg:33
+#: data/core/units/dwarves/Berserker.cfg:33
 msgid "berserker frenzy"
 msgstr ""
 
@@ -601,19 +639,20 @@ msgid ""
 "mightiest of warriors in a single blow."
 msgstr ""
 
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
-#: data/core/units/orcs/Slayer.cfg:29
-#: data/core/units/dwarves/Dragonguard.cfg:25
-#: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:25
-#: data/core/units/humans/Outlaw_Assassin.cfg:30
-#: data/core/units/humans/Outlaw_Poacher.cfg:36
-#: data/core/units/humans/Outlaw_Rogue.cfg:29
-#: data/core/units/humans/Outlaw_Thief.cfg:178
-#: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Trapper.cfg:71
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
+#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
+#: data/core/units/orcs/Slayer.cfg:29
+#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Thunderer.cfg:41
+#: data/core/units/humans/Outlaw_Trapper.cfg:71
+#: data/core/units/humans/Outlaw_Rogue.cfg:29
+#: data/core/units/humans/Woodsman.cfg:28
+#: data/core/units/humans/Outlaw_Thief.cfg:178
+#: data/core/units/humans/Outlaw_Poacher.cfg:36
+#: data/core/units/humans/Outlaw_Assassin.cfg:30
+#: data/core/units/humans/Outlaw_Huntsman.cfg:38
 msgid "dagger"
 msgstr "στιλέτο"
 
@@ -633,49 +672,19 @@ msgid ""
 "than compensate."
 msgstr ""
 
-#: data/core/units/dwarves/Fighter.cfg:35
-#: data/core/units/undead/Skele_Deathblade.cfg:44
-#: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:108
 #: data/core/units/undead/Skele_Draug.cfg:32
+#: data/core/units/undead/Skele_Deathblade.cfg:44
+#: data/core/units/undead/Skele_Revenant.cfg:31
+#: data/core/units/dwarves/Fighter.cfg:35
 msgid "axe"
 msgstr "τσεκούρι"
 
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Warrior.cfg:29
+#: data/core/units/dwarves/Fighter.cfg:43 data/core/units/dwarves/Lord.cfg:39
 #: data/core/units/dwarves/Steelclad.cfg:38
-#: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
-#: data/core/units/trolls/Warrior.cfg:29 data/core/units/trolls/Great.cfg:29
 msgid "hammer"
 msgstr "σφυρί"
-
-#: data/core/units/dwarves/Gryphon_Master.cfg:4
-msgid "Gryphon Master"
-msgstr "Αφέντης Γρυπαετού "
-
-#: data/core/units/dwarves/Gryphon_Master.cfg:19
-#, fuzzy
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-"Οι αφέντες γρυπαετού έχουν μεγάλη εμπειρία στό πέταγμα μέ τους γρυπαετούς, "
-"πού έχουν γίνει μιά επέκταση του εαυτού τους. Αυτή η ειδική σχέση κάνει την "
-"καρδιά αυτών πού είναι δεμένοι μέ τη γή νά τρέμει, μιά καί αυτά τά ισχυρά "
-"ζευγάρια μπορούν να εμφανιστούν καί να χτυπήσουν από τό πουθενά."
-
-#: data/core/units/dwarves/Gryphon_Rider.cfg:4
-msgid "Gryphon Rider"
-msgstr "Καβαλλάρης Γρυπαετού"
-
-#: data/core/units/dwarves/Gryphon_Rider.cfg:19
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"Μόνο λίγοι είναι ικανοί να δεθούν μέ τούς πανίσχυρους γρυπαετούς. Αυτοί πού "
-"τά καταφέρνουν μπορούν νά γίνουν καβαλλάρηδες γρυπαετού καί να ανακαλύψουν "
-"τόν κόσμο των ουρανών στίς πλάτες αυτών των ιπτάμενων ζώων."
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
@@ -692,11 +701,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/dwarves/Guardsman.cfg:42
 #: data/core/units/dwarves/Sentinel.cfg:50
-#: data/core/units/humans/Loyalist_Javelineer.cfg:40
+#: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/humans/Loyalist_Spearman.cfg:76
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #, fuzzy
 msgid "javelin"
 msgstr "Ακοντιστής"
@@ -713,9 +722,9 @@ msgid ""
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
 
-#: data/core/units/dwarves/Steelclad.cfg:29
-#: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:52
+#: data/core/units/dwarves/Lord.cfg:30
+#: data/core/units/dwarves/Steelclad.cfg:29
 msgid "battle axe"
 msgstr "πολεμικό τσεκούρι"
 
@@ -795,8 +804,8 @@ msgid ""
 "made moreso by the secrecy which dwarves hold about their workings."
 msgstr ""
 
-#: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
+#: data/core/units/dwarves/Thunderer.cfg:50
 msgid "thunderstick"
 msgstr ""
 
@@ -846,25 +855,26 @@ msgid ""
 "recruits."
 msgstr ""
 
+#: data/core/units/undead/Skele_Banebow.cfg:41
+#: data/core/units/undead/Skeleton_Archer.cfg:42
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:40
 #: data/core/units/orcs/Sovereign.cfg:38 data/core/units/orcs/Archer.cfg:80
-#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:39 data/core/units/orcs/Ruler.cfg:37
-#: data/core/units/elves/Avenger.cfg:71 data/core/units/elves/Scout.cfg:42
-#: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Ranger.cfg:68
-#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Archer.cfg:33
-#: data/core/units/elves/Captain.cfg:45 data/core/units/elves/Rider.cfg:43
-#: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Champion.cfg:32
-#: data/core/units/elves/Fighter.cfg:32
-#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Ruler.cfg:37
+#: data/core/units/orcs/Warlord.cfg:34 data/core/units/orcs/Leader.cfg:39
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
-#: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:62
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
 #: data/core/units/humans/Outlaw_Trapper.cfg:80
-#: data/core/units/undead/Skeleton_Archer.cfg:42
-#: data/core/units/undead/Skele_Banebow.cfg:41
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:40
+#: data/core/units/humans/Woodsman.cfg:37
+#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
+#: data/core/units/humans/Outlaw_Huntsman.cfg:47
+#: data/core/units/humans/Outlaw_Ranger.cfg:62
+#: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Avenger.cfg:71
+#: data/core/units/elves/Fighter.cfg:32 data/core/units/elves/Scout.cfg:42
+#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Hero.cfg:31
+#: data/core/units/elves/Champion.cfg:32 data/core/units/elves/Archer.cfg:33
+#: data/core/units/elves/Rider.cfg:43 data/core/units/elves/Ranger.cfg:68
+#: data/core/units/elves/Captain.cfg:45
 msgid "bow"
 msgstr "τόξο"
 
@@ -940,21 +950,21 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/elves/Enchantress.cfg:27 data/core/units/elves/Druid.cfg:29
-#: data/core/units/elves/Shaman.cfg:31 data/core/units/elves/Sorceress.cfg:29
-#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/merfolk/Priestess.cfg:64
+#: data/core/units/merfolk/Initiate.cfg:29
+#: data/core/units/merfolk/Enchantress.cfg:26
+#: data/core/units/merfolk/Diviner.cfg:67
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:27
 #: data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
-#: data/core/units/merfolk/Priestess.cfg:64
-#: data/core/units/merfolk/Enchantress.cfg:26
-#: data/core/units/merfolk/Initiate.cfg:29
-#: data/core/units/merfolk/Diviner.cfg:67 data/core/units/humans/Mage.cfg:52
+#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/humans/Mage_Red.cfg:52 data/core/units/humans/Mage.cfg:52
 #: data/core/units/humans/Mage_White.cfg:119
 #: data/core/units/humans/Mage_Great.cfg:31
 #: data/core/units/humans/Mage_Silver.cfg:37
-#: data/core/units/humans/Mage_Arch.cfg:30
-#: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:27
+#: data/core/units/humans/Mage_Arch.cfg:30 data/core/units/elves/Shaman.cfg:31
+#: data/core/units/elves/Druid.cfg:29 data/core/units/elves/Sorceress.cfg:29
+#: data/core/units/elves/Enchantress.cfg:27
 msgid "staff"
 msgstr "ραβδί"
 
@@ -981,13 +991,13 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/elves/Enchantress.cfg:37
 #: data/core/units/elves/Shaman.cfg:40 data/core/units/elves/Sorceress.cfg:39
+#: data/core/units/elves/Enchantress.cfg:37
 msgid "entangle"
 msgstr ""
 
+#: data/core/units/elves/Sylph.cfg:54 data/core/units/elves/Sorceress.cfg:50
 #: data/core/units/elves/Enchantress.cfg:48
-#: data/core/units/elves/Sorceress.cfg:50 data/core/units/elves/Sylph.cfg:54
 msgid "faerie fire"
 msgstr ""
 
@@ -1032,8 +1042,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/elves/Marksman.cfg:63
 #: data/core/units/elves/Sharpshooter.cfg:57
+#: data/core/units/elves/Marksman.cfg:63
 msgid "longbow"
 msgstr "μακρύ τόξο"
 
@@ -1189,7 +1199,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:29
+#: data/core/units/elves/Sylph.cfg:29 data/core/units/elves/Shyde.cfg:29
 msgid "faerie touch"
 msgstr "νεραιδοάγγιγμα"
 
@@ -1247,17 +1257,6 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-
-#: data/core/units/monsters/Wolf.cfg:49
-#: data/core/units/monsters/Cave_Spider.cfg:36
-#: data/core/units/monsters/Sea_Serpent.cfg:25
-#: data/core/units/goblins/Wolf_Rider.cfg:51
-#: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:35
-#: data/core/units/undead/Bat_Blood.cfg:65
-#: data/core/units/undead/Bat_Vampire.cfg:79
-msgid "fangs"
-msgstr "δαγκάνες"
 
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
@@ -1393,6 +1392,50 @@ msgstr ""
 "μονάδες εύκολα περνάνε βουνά. Όμως ούτε καί αυτές μπορούν να κινηθούν "
 "γρήγορα στό νερό καί τά δάση. "
 
+#: data/core/units/gryphons/Gryphon.cfg:4
+msgid "Gryphon"
+msgstr "Γρυπαετός"
+
+#: data/core/units/gryphons/Gryphon.cfg:18
+msgid ""
+"These majestic and powerful creatures are masters of the sky. Gryphons are "
+"both dangerous and wary of other intelligent creatures, and thus should not "
+"be disturbed without a good reason."
+msgstr ""
+"Αυτά τά αρχοντικά καί ισχυρά πλάσματα είναι οι άρχοντες των αιθέρων. Οι "
+"γρυπαετοί είναι τόσο έξυπνοι, όσο καί καχύποπτοι απέναντι σέ άλλα έξυπνα "
+"πλάσματα καί συνεπώς δέν θά πρέπει να ενοχλούνται χωρίς σοβαρό λόγο. "
+
+#: data/core/units/gryphons/Gryphon_Master.cfg:4
+msgid "Gryphon Master"
+msgstr "Αφέντης Γρυπαετού "
+
+#: data/core/units/gryphons/Gryphon_Master.cfg:19
+#, fuzzy
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty flyers may strike from anywhere."
+msgstr ""
+"Οι αφέντες γρυπαετού έχουν μεγάλη εμπειρία στό πέταγμα μέ τους γρυπαετούς, "
+"πού έχουν γίνει μιά επέκταση του εαυτού τους. Αυτή η ειδική σχέση κάνει την "
+"καρδιά αυτών πού είναι δεμένοι μέ τη γή νά τρέμει, μιά καί αυτά τά ισχυρά "
+"ζευγάρια μπορούν να εμφανιστούν καί να χτυπήσουν από τό πουθενά."
+
+#: data/core/units/gryphons/Gryphon_Rider.cfg:4
+msgid "Gryphon Rider"
+msgstr "Καβαλλάρης Γρυπαετού"
+
+#: data/core/units/gryphons/Gryphon_Rider.cfg:19
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+"Μόνο λίγοι είναι ικανοί να δεθούν μέ τούς πανίσχυρους γρυπαετούς. Αυτοί πού "
+"τά καταφέρνουν μπορούν νά γίνουν καβαλλάρηδες γρυπαετού καί να ανακαλύψουν "
+"τόν κόσμο των ουρανών στίς πλάτες αυτών των ιπτάμενων ζώων."
+
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
 msgstr "Μέγας Ιππότης"
@@ -1412,20 +1455,20 @@ msgstr ""
 "επίθεσης μέ κοντάρια είναι μιά τρομακτική θέα γιά το πεζικό καί συχνά αρκετό "
 "γιά νά σπάσει την γραμμή άμυνας."
 
-#: data/core/units/humans/Horseman.cfg:22
-#: data/core/units/humans/Horse_Grand_Knight.cfg:22
 #: data/core/units/humans/Horse_Knight.cfg:21
+#: data/core/units/humans/Horse_Grand_Knight.cfg:22
 #: data/core/units/humans/Horse_Lancer.cfg:22
+#: data/core/units/humans/Horseman.cfg:22
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/humans/Horse_Grand_Knight.cfg:35
 #: data/core/units/humans/Horse_Knight.cfg:34
-#: data/core/units/humans/Horse_Paladin.cfg:49
+#: data/core/units/humans/Horse_Grand_Knight.cfg:35
 #: data/core/units/humans/Horse_Lancer.cfg:26
+#: data/core/units/humans/Horse_Paladin.cfg:49
 msgid "lance"
 msgstr "λόγχη"
 
@@ -1545,18 +1588,18 @@ msgid ""
 "of many a tale and song."
 msgstr ""
 
+#: data/core/units/undead/Skele_Death_Knight.cfg:61
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:39
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:50
 #: data/core/units/humans/Loyalist_Duelist.cfg:80
 #: data/core/units/humans/Loyalist_General.cfg:54
-#: data/core/units/humans/Loyalist_Sergeant.cfg:43
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:39
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:44
 #: data/core/units/humans/Loyalist_Cavalier.cfg:47
+#: data/core/units/humans/Loyalist_Sergeant.cfg:43
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:44
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:50
-#: data/core/units/undead/Skele_Death_Knight.cfg:61
 msgid "crossbow"
 msgstr "βαλλίστρα"
 
@@ -1616,9 +1659,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:30
 #: data/core/units/humans/Loyalist_Duelist.cfg:71
 #: data/core/units/humans/Loyalist_Fencer.cfg:126
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:30
 msgid "sabre"
 msgstr ""
 
@@ -2003,9 +2046,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
+#: data/core/units/humans/Mage_Red.cfg:61
 #: data/core/units/humans/Mage_Great.cfg:40
 #: data/core/units/humans/Mage_Arch.cfg:39
-#: data/core/units/humans/Mage_Red.cfg:61
 msgid "fireball"
 msgstr "μπάλλα φωτιάς"
 
@@ -2177,10 +2220,10 @@ msgid ""
 "nightfall."
 msgstr ""
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:32
-#: data/core/units/humans/Outlaw_Fugitive.cfg:40
 #: data/core/units/trolls/Rocklobber.cfg:38
+#: data/core/units/humans/Outlaw.cfg:32
+#: data/core/units/humans/Outlaw_Footpad.cfg:33
+#: data/core/units/humans/Outlaw_Fugitive.cfg:40
 msgid "sling"
 msgstr "σφεντόνα"
 
@@ -2203,8 +2246,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/humans/Outlaw_Assassin.cfg:42
 #: data/core/units/humans/Outlaw_Rogue.cfg:41
+#: data/core/units/humans/Outlaw_Assassin.cfg:42
 msgid "knife"
 msgstr "μαχαίρι"
 
@@ -2239,10 +2282,10 @@ msgid ""
 "especially under cover of darkness."
 msgstr ""
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
-#: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:28 data/core/units/trolls/Hero.cfg:28
+#: data/core/units/humans/Outlaw_Ruffian.cfg:23
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
+#: data/core/units/humans/Outlaw_Thug.cfg:24
 msgid "club"
 msgstr "ρόπαλο"
 
@@ -2282,6 +2325,19 @@ msgstr ""
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
+msgstr ""
+
+#: data/core/units/humans/Outlaw_Huntsman.cfg:5
+#, fuzzy
+msgid "Huntsman"
+msgstr "ιππέας"
+
+#: data/core/units/humans/Outlaw_Huntsman.cfg:25
+msgid ""
+"Huntsmen have spent their lives in the backwoods and swamps of their "
+"wilderness homes. They track anything that moves in their territory, "
+"including people. Bandit gangs hire them for their ability to bring down any "
+"prey."
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Poacher.cfg:4
@@ -2459,9 +2515,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/merfolk/Siren.cfg:42
-#: data/core/units/merfolk/Enchantress.cfg:35
 #: data/core/units/merfolk/Initiate.cfg:38
+#: data/core/units/merfolk/Enchantress.cfg:35
+#: data/core/units/merfolk/Siren.cfg:42
 msgid "water spray"
 msgstr "πίδακες νερού  "
 
@@ -2490,10 +2546,10 @@ msgid ""
 "environment, but lose most of their mobility on land."
 msgstr ""
 
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
-#: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:37
+#: data/core/units/merfolk/Warrior.cfg:23
+#: data/core/units/merfolk/Fighter.cfg:24
+#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 msgid "trident"
 msgstr "τρίαινα"
 
@@ -2681,8 +2737,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/monsters/Tentacle.cfg:63
 #: data/core/units/monsters/Cuttle_Fish.cfg:36
+#: data/core/units/monsters/Tentacle.cfg:63
 msgid "tentacle"
 msgstr "πλοκάμι"
 
@@ -2731,11 +2787,11 @@ msgstr ""
 "είναι μαγικές κατασκευές από χώμα καί νερό. Επιτίθενται ρίχνοντας κομμάτια "
 "λάσπη στόν εχθρο, η χτυπώντας τον μέ τις γροθιές τους."
 
-#: data/core/units/monsters/Yeti.cfg:35
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Whelp.cfg:28
 #: data/core/units/undead/Skeleton_Archer.cfg:33
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Yeti.cfg:35
 msgid "fist"
 msgstr "γροθιά"
 
@@ -2763,20 +2819,6 @@ msgstr "κεντρί"
 #: data/core/units/monsters/Giant_Scorpion.cfg:38
 msgid "pincers"
 msgstr "δαγκάνες"
-
-#: data/core/units/monsters/Gryphon.cfg:4
-msgid "Gryphon"
-msgstr "Γρυπαετός"
-
-#: data/core/units/monsters/Gryphon.cfg:17
-msgid ""
-"These majestic and powerful creatures are masters of the sky. Gryphons are "
-"both dangerous and wary of other intelligent creatures, and thus should not "
-"be disturbed without a good reason."
-msgstr ""
-"Αυτά τά αρχοντικά καί ισχυρά πλάσματα είναι οι άρχοντες των αιθέρων. Οι "
-"γρυπαετοί είναι τόσο έξυπνοι, όσο καί καχύποπτοι απέναντι σέ άλλα έξυπνα "
-"πλάσματα καί συνεπώς δέν θά πρέπει να ενοχλούνται χωρίς σοβαρό λόγο. "
 
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
@@ -3029,8 +3071,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:29
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:28
+#: data/core/units/orcs/Sovereign.cfg:29 data/core/units/orcs/Warrior.cfg:23
+#: data/core/units/orcs/Ruler.cfg:28 data/core/units/orcs/Warlord.cfg:25
 msgid "greatsword"
 msgstr "μέγαξίφος"
 
@@ -3141,9 +3183,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/saurians/Soothsayer.cfg:47
 #: data/core/units/saurians/Augur.cfg:47
 #: data/core/units/saurians/Oracle.cfg:47
+#: data/core/units/saurians/Soothsayer.cfg:47
 msgid "curse"
 msgstr "κατάρα"
 
@@ -3303,33 +3345,6 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/undead/Bat_Blood.cfg:4
-msgid "Blood Bat"
-msgstr "Νυχτερίδα Αίματος"
-
-#: data/core/units/undead/Bat_Blood.cfg:20
-msgid ""
-"Blood Bats are so-named because of their ruddy hue, which some mark as a "
-"symbol of their preferred diet. These creatures are fast and can drain the "
-"blood of those they attack, thereby gaining some of the health lost by their "
-"victims.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Bat_Vampire.cfg:4
-msgid "Vampire Bat"
-msgstr "Νυχτερίδα βαμπίρ"
-
-#: data/core/units/undead/Bat_Vampire.cfg:19
-msgid ""
-"Vampire bats are flying beasts that feed on the blood of other creatures. "
-"While their fangs are not very powerful, the health of victims is drained "
-"away along with their blood, and given to the Bats.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
 msgstr ""
@@ -3381,11 +3396,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/undead/Corpse_Walking.cfg:50
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:37
-#: data/core/units/undead/Spirit_Ghost.cfg:26
-#: data/core/units/undead/Necro_Lich.cfg:36
 #: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Necro_Lich.cfg:36
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:37
+#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Spirit_Ghost.cfg:26
 msgid "touch"
 msgstr "Αγγιγμα"
 
@@ -3414,15 +3429,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:49
 #: data/core/units/undead/Necro_Lich.cfg:48
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:49
 msgid "chill tempest"
 msgstr ""
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:44
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:61
-#: data/core/units/undead/Necro_Lich.cfg:60
 #: data/core/units/undead/Necromancer.cfg:51
+#: data/core/units/undead/Necro_Lich.cfg:60
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:61
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
 msgid "shadow wave"
 msgstr ""
@@ -3679,8 +3694,8 @@ msgid ""
 msgstr ""
 
 #: data/core/units/undead/Spirit_Wraith.cfg:33
-#: data/core/units/undead/Spirit_Ghost.cfg:38
 #: data/core/units/undead/Spirit_Spectre.cfg:58
+#: data/core/units/undead/Spirit_Ghost.cfg:38
 msgid "wail"
 msgstr "Στριγγλιά"
 
@@ -3768,8 +3783,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/wose/Wose.cfg:32 data/core/units/wose/Ancient.cfg:94
-#: data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Ancient.cfg:94 data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Wose.cfg:32
 msgid "crush"
 msgstr "συντριβή"
 
@@ -3814,21 +3829,21 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#~ msgid "pierce"
-#~ msgstr "τρύπημα"
-
-#~ msgid "blade"
-#~ msgstr "λεπίδα"
-
-#~ msgid "fire"
-#~ msgstr "φωτιά"
-
-#~ msgid "impact"
-#~ msgstr "κρούση"
+#~ msgid "cold"
+#~ msgstr "κρύο"
 
 #, fuzzy
 #~ msgid "arcane"
 #~ msgstr "εξ αποστάσεως"
 
-#~ msgid "cold"
-#~ msgstr "κρύο"
+#~ msgid "impact"
+#~ msgstr "κρούση"
+
+#~ msgid "fire"
+#~ msgstr "φωτιά"
+
+#~ msgid "blade"
+#~ msgstr "λεπίδα"
+
+#~ msgid "pierce"
+#~ msgstr "τρύπημα"

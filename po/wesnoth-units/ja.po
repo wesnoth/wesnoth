@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 22:37+0200\n"
+"POT-Creation-Date: 2007-09-23 13:49+0200\n"
 "PO-Revision-Date: 2007-09-09 13:03+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -20,6 +20,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: KBabel 1.11.2\n"
+
+#: data/core/units/bats/Bat_Blood.cfg:4
+msgid "Blood Bat"
+msgstr "吸血コウモリ"
+
+#: data/core/units/bats/Bat_Blood.cfg:21
+msgid ""
+"Blood Bats are so-named because of their ruddy hue, which some mark as a "
+"symbol of their preferred diet. These creatures are fast and can drain the "
+"blood of those they attack, thereby gaining some of the health lost by their "
+"victims.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/core/units/monsters/Cave_Spider.cfg:36
+#: data/core/units/monsters/Wolf.cfg:49
+#: data/core/units/monsters/Sea_Serpent.cfg:25
+#: data/core/units/goblins/Knight.cfg:35
+#: data/core/units/goblins/Wolf_Rider.cfg:51
+#: data/core/units/goblins/Direwolf_Rider.cfg:35
+#: data/core/units/bats/Bat_Blood.cfg:66
+#: data/core/units/bats/Bat_Vampire.cfg:80
+msgid "fangs"
+msgstr "牙"
+
+#: data/core/units/bats/Bat_Vampire.cfg:4
+msgid "Vampire Bat"
+msgstr "ヴァンパイアバット"
+
+#: data/core/units/bats/Bat_Vampire.cfg:20
+#, fuzzy
+msgid ""
+"Vampire bats are flying beasts that feed on the blood of other creatures. "
+"While their fangs are not very powerful, the health of victims is drained "
+"away along with their blood, and given to the Bats.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"ヴァンパイアバットは不死の飛行動物で、 その獲物を噛んで攻撃します。 その牙は"
+"それほど強力ではありませんが、 獲物の血とともに 体力を奪い、 それを自身のもの"
+"とします。\n"
+"\n"
+"特記事項:"
 
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
@@ -54,8 +98,8 @@ msgstr ""
 "船は陸地から遠く離れて単独でいるべきではありません。重量超過によって沈むのを"
 "防ぐために……"
 
-#: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
+#: data/core/units/boats/Transport_Galleon.cfg:22
 msgid "ballista"
 msgstr "バリスタ"
 
@@ -83,30 +127,30 @@ msgid ""
 "and possessed of a tremendous fire."
 msgstr ""
 
-#: data/core/units/dwarves/Gryphon_Rider.cfg:29
-#: data/core/units/dwarves/Gryphon_Master.cfg:29
-#: data/core/units/monsters/Gryphon.cfg:27
-#: data/core/units/monsters/Skeletal_Dragon.cfg:42
-#: data/core/units/drakes/Fire.cfg:70 data/core/units/drakes/Burner.cfg:63
-#: data/core/units/drakes/Armageddon.cfg:83
-#: data/core/units/drakes/Inferno.cfg:71
-#: data/core/units/goblins/Direwolf_Rider.cfg:44
 #: data/core/units/undead/Corpse_Necrophage.cfg:27
+#: data/core/units/undead/Corpse_Ghoul.cfg:58
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:55
 #: data/core/units/undead/Spirit_Shadow.cfg:29
-#: data/core/units/undead/Corpse_Ghoul.cfg:58
+#: data/core/units/drakes/Fire.cfg:70 data/core/units/drakes/Burner.cfg:63
+#: data/core/units/drakes/Inferno.cfg:71
+#: data/core/units/drakes/Armageddon.cfg:83
+#: data/core/units/monsters/Skeletal_Dragon.cfg:42
+#: data/core/units/goblins/Direwolf_Rider.cfg:44
+#: data/core/units/gryphons/Gryphon_Master.cfg:29
+#: data/core/units/gryphons/Gryphon.cfg:28
+#: data/core/units/gryphons/Gryphon_Rider.cfg:29
 msgid "claws"
 msgstr "かぎ爪"
 
-#: data/core/units/monsters/Fire_Dragon.cfg:46
-#: data/core/units/drakes/Flare.cfg:93 data/core/units/drakes/Fire.cfg:79
-#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Warrior.cfg:81
-#: data/core/units/drakes/Glider.cfg:86
-#: data/core/units/drakes/Armageddon.cfg:92
-#: data/core/units/drakes/Flameheart.cfg:89
-#: data/core/units/drakes/Hurricane.cfg:103 data/core/units/drakes/Sky.cfg:102
 #: data/core/units/drakes/Blademaster.cfg:77
-#: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
+#: data/core/units/drakes/Fire.cfg:79 data/core/units/drakes/Warrior.cfg:81
+#: data/core/units/drakes/Fighter.cfg:74 data/core/units/drakes/Flare.cfg:93
+#: data/core/units/drakes/Burner.cfg:72 data/core/units/drakes/Inferno.cfg:80
+#: data/core/units/drakes/Armageddon.cfg:92 data/core/units/drakes/Sky.cfg:102
+#: data/core/units/drakes/Glider.cfg:86
+#: data/core/units/drakes/Flameheart.cfg:89
+#: data/core/units/drakes/Hurricane.cfg:103
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid "fire breath"
 msgstr "火炎のブレス"
 
@@ -124,37 +168,37 @@ msgstr ""
 "剣の扱いの達人であるドレークは特別な階級に就任します。この印が彼等が 戦いにお"
 "いて示す黒と白の戦闘塗装です。"
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:30
-#: data/core/units/elves/Avenger.cfg:62 data/core/units/elves/Marksman.cfg:54
-#: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:35
-#: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Outrider.cfg:32
-#: data/core/units/elves/Archer.cfg:24 data/core/units/elves/Captain.cfg:36
-#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Hero.cfg:22
-#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:23
-#: data/core/units/elves/Sharpshooter.cfg:48
-#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Fighter.cfg:25 data/core/units/drakes/Flare.cfg:84
+#: data/core/units/orcs/Leader.cfg:30 data/core/units/orcs/Grunt.cfg:59
+#: data/core/units/drakes/Clasher.cfg:79
+#: data/core/units/drakes/Blademaster.cfg:68
+#: data/core/units/drakes/Warrior.cfg:72 data/core/units/drakes/Flare.cfg:84
 #: data/core/units/drakes/Enforcer.cfg:67
-#: data/core/units/drakes/Warrior.cfg:72
 #: data/core/units/drakes/Gladiator.cfg:66
 #: data/core/units/drakes/Flameheart.cfg:80
-#: data/core/units/drakes/Blademaster.cfg:68
-#: data/core/units/drakes/Clasher.cfg:79
-#: data/core/units/humans/Loyalist_Longbowman.cfg:26
-#: data/core/units/humans/Loyalist_General.cfg:45
-#: data/core/units/humans/Loyalist_Sergeant.cfg:34
-#: data/core/units/humans/Horse_Grand_Knight.cfg:26
-#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:26
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
-#: data/core/units/humans/Loyalist_Swordsman.cfg:27
-#: data/core/units/humans/Horse_Knight.cfg:25
-#: data/core/units/humans/Horse_Paladin.cfg:40
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:53
-#: data/core/units/humans/Loyalist_Cavalier.cfg:38
-#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Fighter.cfg:25
+#: data/core/units/nagas/Myrmidon.cfg:29
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
+#: data/core/units/humans/Loyalist_Longbowman.cfg:26
+#: data/core/units/humans/Horse_Knight.cfg:25
+#: data/core/units/humans/Loyalist_Royal_Guard.cfg:28
+#: data/core/units/humans/Loyalist_Swordsman.cfg:27
+#: data/core/units/humans/Loyalist_General.cfg:45
+#: data/core/units/humans/Horse_Grand_Knight.cfg:26
+#: data/core/units/humans/Loyalist_Cavalier.cfg:38
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:52
+#: data/core/units/humans/Loyalist_Sergeant.cfg:34
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:35
+#: data/core/units/humans/Horse_Paladin.cfg:40
+#: data/core/units/humans/Loyalist_Dragoon.cfg:37
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:26
+#: data/core/units/humans/Outlaw_Ranger.cfg:53
+#: data/core/units/elves/Sharpshooter.cfg:48
+#: data/core/units/elves/Marshal.cfg:35 data/core/units/elves/Avenger.cfg:62
+#: data/core/units/elves/Fighter.cfg:23 data/core/units/elves/Scout.cfg:33
+#: data/core/units/elves/Outrider.cfg:32 data/core/units/elves/Hero.cfg:22
+#: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Archer.cfg:24
+#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Marksman.cfg:54
+#: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Captain.cfg:36
 msgid "sword"
 msgstr "剣"
 
@@ -212,34 +256,34 @@ msgstr ""
 "いくつかをなくすことができます。すなわち、槍や矢に対する大きな弱点の ようなも"
 "のです。"
 
-#: data/core/units/saurians/Skirmisher.cfg:32
-#: data/core/units/saurians/Skirmisher.cfg:41
+#: data/core/units/merfolk/Javelineer.cfg:24
+#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
+#: data/core/units/merfolk/Spearman.cfg:23
+#: data/core/units/merfolk/Spearman.cfg:31
+#: data/core/units/merfolk/Netcaster.cfg:25
+#: data/core/units/merfolk/Entangler.cfg:26
+#: data/core/units/undead/Skele_Chocobone.cfg:27
 #: data/core/units/saurians/Flanker.cfg:30
 #: data/core/units/saurians/Flanker.cfg:39
 #: data/core/units/saurians/Ambusher.cfg:29
 #: data/core/units/saurians/Ambusher.cfg:38
-#: data/core/units/dwarves/Stalwart.cfg:36
-#: data/core/units/dwarves/Guardsman.cfg:33
-#: data/core/units/dwarves/Sentinel.cfg:41
-#: data/core/units/merfolk/Hunter.cfg:24 data/core/units/merfolk/Hunter.cfg:32
-#: data/core/units/merfolk/Netcaster.cfg:25
-#: data/core/units/merfolk/Entangler.cfg:26
-#: data/core/units/merfolk/Spearman.cfg:23
-#: data/core/units/merfolk/Spearman.cfg:31
-#: data/core/units/merfolk/Javelineer.cfg:24
-#: data/core/units/merfolk/Javelineer.cfg:32
+#: data/core/units/saurians/Skirmisher.cfg:32
+#: data/core/units/saurians/Skirmisher.cfg:41
+#: data/core/units/drakes/Clasher.cfg:88
 #: data/core/units/drakes/Enforcer.cfg:85
 #: data/core/units/drakes/Gladiator.cfg:75
-#: data/core/units/drakes/Clasher.cfg:88
-#: data/core/units/humans/Horseman.cfg:26
-#: data/core/units/humans/Loyalist_Javelineer.cfg:29
+#: data/core/units/dwarves/Guardsman.cfg:33
+#: data/core/units/dwarves/Sentinel.cfg:41
+#: data/core/units/dwarves/Stalwart.cfg:36
 #: data/core/units/humans/Loyalist_Spearman.cfg:64
-#: data/core/units/goblins/Rouser.cfg:43
+#: data/core/units/humans/Loyalist_Javelineer.cfg:29
+#: data/core/units/humans/Horseman.cfg:26
 #: data/core/units/goblins/Spearman.cfg:25
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/goblins/Impaler.cfg:26
 #: data/core/units/goblins/Impaler.cfg:42
-#: data/core/units/undead/Skele_Chocobone.cfg:27
+#: data/core/units/goblins/Rouser.cfg:43
 msgid "spear"
 msgstr "槍"
 
@@ -260,10 +304,10 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
-#: data/core/units/humans/Outlaw_Bandit.cfg:36
 #: data/core/units/humans/Outlaw.cfg:24
-#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
+#: data/core/units/humans/Outlaw_Bandit.cfg:36
+#: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Outlaw_Highwayman.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:31
 msgid "mace"
@@ -389,8 +433,8 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/drakes/Glider.cfg:77
-#: data/core/units/drakes/Hurricane.cfg:94 data/core/units/drakes/Sky.cfg:93
+#: data/core/units/drakes/Sky.cfg:93 data/core/units/drakes/Glider.cfg:77
+#: data/core/units/drakes/Hurricane.cfg:94
 msgid "slam"
 msgstr "強打"
 
@@ -476,8 +520,8 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/drakes/Warden.cfg:77 data/core/units/drakes/Warden.cfg:86
 #: data/core/units/drakes/Slasher.cfg:71 data/core/units/drakes/Slasher.cfg:80
+#: data/core/units/drakes/Warden.cfg:77 data/core/units/drakes/Warden.cfg:86
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
 #: data/core/units/humans/Loyalist_Halberdier.cfg:43
 msgid "halberd"
@@ -531,8 +575,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/dwarves/Berserker.cfg:33
 #: data/core/units/dwarves/Ulfserker.cfg:33
+#: data/core/units/dwarves/Berserker.cfg:33
 msgid "berserker frenzy"
 msgstr "狂戦"
 
@@ -558,19 +602,20 @@ msgstr ""
 "す。いずれにしても、偉大なドワーフの要塞の衛兵が 有名かつ恐れらているのは、一"
 "振りで最も強力な戦士達さえも倒すという、 この武器のためなのです。"
 
-#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
-#: data/core/units/orcs/Slayer.cfg:29
-#: data/core/units/dwarves/Dragonguard.cfg:25
-#: data/core/units/dwarves/Thunderer.cfg:41
-#: data/core/units/dwarves/Thunderguard.cfg:25
-#: data/core/units/humans/Outlaw_Assassin.cfg:30
-#: data/core/units/humans/Outlaw_Poacher.cfg:36
-#: data/core/units/humans/Outlaw_Rogue.cfg:29
-#: data/core/units/humans/Outlaw_Thief.cfg:178
-#: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Trapper.cfg:71
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
+#: data/core/units/orcs/Archer.cfg:71 data/core/units/orcs/Assassin.cfg:72
+#: data/core/units/orcs/Slayer.cfg:29
+#: data/core/units/dwarves/Thunderguard.cfg:25
+#: data/core/units/dwarves/Dragonguard.cfg:25
+#: data/core/units/dwarves/Thunderer.cfg:41
+#: data/core/units/humans/Outlaw_Trapper.cfg:71
+#: data/core/units/humans/Outlaw_Rogue.cfg:29
+#: data/core/units/humans/Woodsman.cfg:28
+#: data/core/units/humans/Outlaw_Thief.cfg:178
+#: data/core/units/humans/Outlaw_Poacher.cfg:36
+#: data/core/units/humans/Outlaw_Assassin.cfg:30
+#: data/core/units/humans/Outlaw_Huntsman.cfg:38
 msgid "dagger"
 msgstr "ダガー"
 
@@ -593,47 +638,19 @@ msgstr ""
 "せます。彼らは山岳や地下の地形で優れています。俊敏ではありませんが 頑健で、彼"
 "らの耐久力は鈍足であることを十分補います。"
 
-#: data/core/units/dwarves/Fighter.cfg:35
-#: data/core/units/undead/Skele_Deathblade.cfg:44
-#: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:108
 #: data/core/units/undead/Skele_Draug.cfg:32
+#: data/core/units/undead/Skele_Deathblade.cfg:44
+#: data/core/units/undead/Skele_Revenant.cfg:31
+#: data/core/units/dwarves/Fighter.cfg:35
 msgid "axe"
 msgstr "斧"
 
+#: data/core/units/trolls/Great.cfg:29 data/core/units/trolls/Warrior.cfg:29
+#: data/core/units/dwarves/Fighter.cfg:43 data/core/units/dwarves/Lord.cfg:39
 #: data/core/units/dwarves/Steelclad.cfg:38
-#: data/core/units/dwarves/Lord.cfg:39 data/core/units/dwarves/Fighter.cfg:43
-#: data/core/units/trolls/Warrior.cfg:29 data/core/units/trolls/Great.cfg:29
 msgid "hammer"
 msgstr "ハンマー"
-
-#: data/core/units/dwarves/Gryphon_Master.cfg:4
-msgid "Gryphon Master"
-msgstr "グリフォンマスター"
-
-#: data/core/units/dwarves/Gryphon_Master.cfg:19
-msgid ""
-"Gryphon Masters have long experience flying the Gryphons, which have become "
-"an extension of themselves. This special relationship makes the heart of the "
-"earth-bound tremble, for these mighty flyers may strike from anywhere."
-msgstr ""
-"グリフォンマスターはグリフォンで飛行した長い経験があり、これにより グリフォン"
-"を彼らの身体の一部のように扱うことができます。この特別な関係に よって、このペ"
-"アはどこへでも出撃して、地上の生物の心をおののかせます。"
-
-#: data/core/units/dwarves/Gryphon_Rider.cfg:4
-msgid "Gryphon Rider"
-msgstr "グリフォンライダー"
-
-#: data/core/units/dwarves/Gryphon_Rider.cfg:19
-msgid ""
-"Only a few are able to bond with the mighty Gryphons. Those who do may "
-"become Gryphon Riders, and discover the world of the skies upon the backs of "
-"these flying beasts."
-msgstr ""
-"強力なグリフォンと強固な絆を結ぶことができる者はほとんどいません。 グリフォン"
-"ライダーとなった者はグリフォンの背にまたがって、空の世界を 見い出すことでしょ"
-"う。"
 
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
@@ -650,11 +667,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/dwarves/Guardsman.cfg:42
 #: data/core/units/dwarves/Sentinel.cfg:50
-#: data/core/units/humans/Loyalist_Javelineer.cfg:40
+#: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/humans/Loyalist_Spearman.cfg:76
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
 msgid "javelin"
 msgstr "投げ槍"
 
@@ -673,9 +690,9 @@ msgstr ""
 "技で斧や鉄槌をふるい、離れた相手に斧を標的に投げつけて命中させる こともできま"
 "す。足は遅いですが、これらのドワーフ達は親族の武勇の象徴です。"
 
-#: data/core/units/dwarves/Steelclad.cfg:29
-#: data/core/units/dwarves/Lord.cfg:30
 #: data/core/units/undead/Skele_Death_Knight.cfg:52
+#: data/core/units/dwarves/Lord.cfg:30
+#: data/core/units/dwarves/Steelclad.cfg:29
 msgid "battle axe"
 msgstr "戦斧"
 
@@ -769,8 +786,8 @@ msgstr ""
 "なかったので、ドワーフともう戦わなくてもよい幸運を理解し、二度と そのようなこ"
 "とはするまいと誓ったのです。"
 
-#: data/core/units/dwarves/Thunderer.cfg:50
 #: data/core/units/dwarves/Thunderguard.cfg:34
+#: data/core/units/dwarves/Thunderer.cfg:50
 msgid "thunderstick"
 msgstr "雷撃棒"
 
@@ -839,25 +856,26 @@ msgstr ""
 "この武器を装備します。比較的戦闘に未経験なためいくぶん弱味には なりますが、彼"
 "等生来の優雅さがどんな人間の新米もかなわないことを確かにします。"
 
+#: data/core/units/undead/Skele_Banebow.cfg:41
+#: data/core/units/undead/Skeleton_Archer.cfg:42
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:40
 #: data/core/units/orcs/Sovereign.cfg:38 data/core/units/orcs/Archer.cfg:80
-#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:39 data/core/units/orcs/Ruler.cfg:37
-#: data/core/units/elves/Avenger.cfg:71 data/core/units/elves/Scout.cfg:42
-#: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Ranger.cfg:68
-#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Archer.cfg:33
-#: data/core/units/elves/Captain.cfg:45 data/core/units/elves/Rider.cfg:43
-#: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Champion.cfg:32
-#: data/core/units/elves/Fighter.cfg:32
-#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Ruler.cfg:37
+#: data/core/units/orcs/Warlord.cfg:34 data/core/units/orcs/Leader.cfg:39
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
-#: data/core/units/humans/Woodsman.cfg:37
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:62
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
 #: data/core/units/humans/Outlaw_Trapper.cfg:80
-#: data/core/units/undead/Skeleton_Archer.cfg:42
-#: data/core/units/undead/Skele_Banebow.cfg:41
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:40
+#: data/core/units/humans/Woodsman.cfg:37
+#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
+#: data/core/units/humans/Outlaw_Huntsman.cfg:47
+#: data/core/units/humans/Outlaw_Ranger.cfg:62
+#: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Avenger.cfg:71
+#: data/core/units/elves/Fighter.cfg:32 data/core/units/elves/Scout.cfg:42
+#: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Hero.cfg:31
+#: data/core/units/elves/Champion.cfg:32 data/core/units/elves/Archer.cfg:33
+#: data/core/units/elves/Rider.cfg:43 data/core/units/elves/Ranger.cfg:68
+#: data/core/units/elves/Captain.cfg:45
 msgid "bow"
 msgstr "弓"
 
@@ -965,21 +983,21 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/elves/Enchantress.cfg:27 data/core/units/elves/Druid.cfg:29
-#: data/core/units/elves/Shaman.cfg:31 data/core/units/elves/Sorceress.cfg:29
-#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/merfolk/Priestess.cfg:64
+#: data/core/units/merfolk/Initiate.cfg:29
+#: data/core/units/merfolk/Enchantress.cfg:26
+#: data/core/units/merfolk/Diviner.cfg:67
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:27
 #: data/core/units/saurians/Augur.cfg:38
 #: data/core/units/saurians/Oracle.cfg:38
-#: data/core/units/merfolk/Priestess.cfg:64
-#: data/core/units/merfolk/Enchantress.cfg:26
-#: data/core/units/merfolk/Initiate.cfg:29
-#: data/core/units/merfolk/Diviner.cfg:67 data/core/units/humans/Mage.cfg:52
+#: data/core/units/saurians/Soothsayer.cfg:38
+#: data/core/units/humans/Mage_Red.cfg:52 data/core/units/humans/Mage.cfg:52
 #: data/core/units/humans/Mage_White.cfg:119
 #: data/core/units/humans/Mage_Great.cfg:31
 #: data/core/units/humans/Mage_Silver.cfg:37
-#: data/core/units/humans/Mage_Arch.cfg:30
-#: data/core/units/humans/Mage_Red.cfg:52
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:27
+#: data/core/units/humans/Mage_Arch.cfg:30 data/core/units/elves/Shaman.cfg:31
+#: data/core/units/elves/Druid.cfg:29 data/core/units/elves/Sorceress.cfg:29
+#: data/core/units/elves/Enchantress.cfg:27
 msgid "staff"
 msgstr "杖"
 
@@ -1013,13 +1031,13 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/elves/Enchantress.cfg:37
 #: data/core/units/elves/Shaman.cfg:40 data/core/units/elves/Sorceress.cfg:39
+#: data/core/units/elves/Enchantress.cfg:37
 msgid "entangle"
 msgstr "巻きつき"
 
+#: data/core/units/elves/Sylph.cfg:54 data/core/units/elves/Sorceress.cfg:50
 #: data/core/units/elves/Enchantress.cfg:48
-#: data/core/units/elves/Sorceress.cfg:50 data/core/units/elves/Sylph.cfg:54
 msgid "faerie fire"
 msgstr "妖精の炎"
 
@@ -1080,8 +1098,8 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/elves/Marksman.cfg:63
 #: data/core/units/elves/Sharpshooter.cfg:57
+#: data/core/units/elves/Marksman.cfg:63
 msgid "longbow"
 msgstr "大弓"
 
@@ -1278,7 +1296,7 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:29
+#: data/core/units/elves/Sylph.cfg:29 data/core/units/elves/Shyde.cfg:29
 msgid "faerie touch"
 msgstr "妖精の接触"
 
@@ -1362,17 +1380,6 @@ msgstr ""
 "る一撃となります。\n"
 "\n"
 "特記事項:"
-
-#: data/core/units/monsters/Wolf.cfg:49
-#: data/core/units/monsters/Cave_Spider.cfg:36
-#: data/core/units/monsters/Sea_Serpent.cfg:25
-#: data/core/units/goblins/Wolf_Rider.cfg:51
-#: data/core/units/goblins/Knight.cfg:35
-#: data/core/units/goblins/Direwolf_Rider.cfg:35
-#: data/core/units/undead/Bat_Blood.cfg:65
-#: data/core/units/undead/Bat_Vampire.cfg:79
-msgid "fangs"
-msgstr "牙"
 
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
@@ -1523,6 +1530,47 @@ msgstr ""
 "着たゴブリンを担ぐのは簡単です。馬とはまったく違って、 狼は山を楽に横切ること"
 "ができますが、水や森は彼らの歩みを遅くするでしょう。"
 
+#: data/core/units/gryphons/Gryphon.cfg:4
+msgid "Gryphon"
+msgstr "グリフォン"
+
+#: data/core/units/gryphons/Gryphon.cfg:18
+msgid ""
+"These majestic and powerful creatures are masters of the sky. Gryphons are "
+"both dangerous and wary of other intelligent creatures, and thus should not "
+"be disturbed without a good reason."
+msgstr ""
+"この荘厳で力強い生物は空の支配者です。グリフォンは危険で他の知的種族に 対して"
+"用心深いため、しかるべき理由なしに彼らに干渉すべきではありません。"
+
+#: data/core/units/gryphons/Gryphon_Master.cfg:4
+msgid "Gryphon Master"
+msgstr "グリフォンマスター"
+
+#: data/core/units/gryphons/Gryphon_Master.cfg:19
+msgid ""
+"Gryphon Masters have long experience flying the Gryphons, which have become "
+"an extension of themselves. This special relationship makes the heart of the "
+"earth-bound tremble, for these mighty flyers may strike from anywhere."
+msgstr ""
+"グリフォンマスターはグリフォンで飛行した長い経験があり、これにより グリフォン"
+"を彼らの身体の一部のように扱うことができます。この特別な関係に よって、このペ"
+"アはどこへでも出撃して、地上の生物の心をおののかせます。"
+
+#: data/core/units/gryphons/Gryphon_Rider.cfg:4
+msgid "Gryphon Rider"
+msgstr "グリフォンライダー"
+
+#: data/core/units/gryphons/Gryphon_Rider.cfg:19
+msgid ""
+"Only a few are able to bond with the mighty Gryphons. Those who do may "
+"become Gryphon Riders, and discover the world of the skies upon the backs of "
+"these flying beasts."
+msgstr ""
+"強力なグリフォンと強固な絆を結ぶことができる者はほとんどいません。 グリフォン"
+"ライダーとなった者はグリフォンの背にまたがって、空の世界を 見い出すことでしょ"
+"う。"
+
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
 msgstr "近衛騎士"
@@ -1540,10 +1588,10 @@ msgstr ""
 "す。責任の長にあたる近衛騎士は歩兵隊にとっては恐しい存在で、 しばしば防御線を"
 "直ちに突破してしまうほどです。"
 
-#: data/core/units/humans/Horseman.cfg:22
-#: data/core/units/humans/Horse_Grand_Knight.cfg:22
 #: data/core/units/humans/Horse_Knight.cfg:21
+#: data/core/units/humans/Horse_Grand_Knight.cfg:22
 #: data/core/units/humans/Horse_Lancer.cfg:22
+#: data/core/units/humans/Horseman.cfg:22
 msgid ""
 "\n"
 "\n"
@@ -1553,10 +1601,10 @@ msgstr ""
 "\n"
 "特記事項"
 
-#: data/core/units/humans/Horse_Grand_Knight.cfg:35
 #: data/core/units/humans/Horse_Knight.cfg:34
-#: data/core/units/humans/Horse_Paladin.cfg:49
+#: data/core/units/humans/Horse_Grand_Knight.cfg:35
 #: data/core/units/humans/Horse_Lancer.cfg:26
+#: data/core/units/humans/Horse_Paladin.cfg:49
 msgid "lance"
 msgstr "ランス"
 
@@ -1686,18 +1734,18 @@ msgstr ""
 "ている偉大な戦いには、彼らの勇猛さによって、戦いの流れが変わった ものがいくつ"
 "かあります。"
 
+#: data/core/units/undead/Skele_Death_Knight.cfg:61
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
 #: data/core/units/orcs/Slurbow.cfg:45
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:39
+#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:50
 #: data/core/units/humans/Loyalist_Duelist.cfg:80
 #: data/core/units/humans/Loyalist_General.cfg:54
-#: data/core/units/humans/Loyalist_Sergeant.cfg:43
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:39
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:44
 #: data/core/units/humans/Loyalist_Cavalier.cfg:47
+#: data/core/units/humans/Loyalist_Sergeant.cfg:43
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:44
 #: data/core/units/humans/Loyalist_Dragoon.cfg:46
-#: data/core/units/humans/Loyalist_Grand_Marshal.cfg:50
-#: data/core/units/undead/Skele_Death_Knight.cfg:61
 msgid "crossbow"
 msgstr "クロスボウ"
 
@@ -1776,9 +1824,9 @@ msgstr ""
 "\n"
 "特記事項:"
 
+#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:30
 #: data/core/units/humans/Loyalist_Duelist.cfg:71
 #: data/core/units/humans/Loyalist_Fencer.cfg:126
-#: data/core/units/humans/Loyalist_Master_at_Arms.cfg:30
 msgid "sabre"
 msgstr "サーベル"
 
@@ -2279,9 +2327,9 @@ msgstr ""
 "\n"
 "特記事項:"
 
+#: data/core/units/humans/Mage_Red.cfg:61
 #: data/core/units/humans/Mage_Great.cfg:40
 #: data/core/units/humans/Mage_Arch.cfg:39
-#: data/core/units/humans/Mage_Red.cfg:61
 msgid "fireball"
 msgstr "ファイアボール"
 
@@ -2510,10 +2558,10 @@ msgstr ""
 "しょうが、無法者は武器の致命的な許容量や攻撃手段の有効性をよく心得ています。 "
 "無法者は昼間の戦闘にはいくらかの不安があり、日暮れに包まれるのを好みます。"
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:32
-#: data/core/units/humans/Outlaw_Fugitive.cfg:40
 #: data/core/units/trolls/Rocklobber.cfg:38
+#: data/core/units/humans/Outlaw.cfg:32
+#: data/core/units/humans/Outlaw_Footpad.cfg:33
+#: data/core/units/humans/Outlaw_Fugitive.cfg:40
 msgid "sling"
 msgstr "スリング"
 
@@ -2545,8 +2593,8 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/humans/Outlaw_Assassin.cfg:42
 #: data/core/units/humans/Outlaw_Rogue.cfg:41
+#: data/core/units/humans/Outlaw_Assassin.cfg:42
 msgid "knife"
 msgstr "ナイフ"
 
@@ -2591,10 +2639,10 @@ msgstr ""
 "は戦闘においても同様に活躍し、みじめな武器しかないにも関わらず、彼等は、 特に"
 "闇に隠れて、敵を悩ますのが極めて得意です。"
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:24
-#: data/core/units/humans/Outlaw_Ruffian.cfg:23
-#: data/core/units/humans/Outlaw_Thug.cfg:24
 #: data/core/units/trolls/Troll.cfg:28 data/core/units/trolls/Hero.cfg:28
+#: data/core/units/humans/Outlaw_Ruffian.cfg:23
+#: data/core/units/humans/Outlaw_Footpad.cfg:24
+#: data/core/units/humans/Outlaw_Thug.cfg:24
 msgid "club"
 msgstr "棍棒"
 
@@ -2636,6 +2684,19 @@ msgid ""
 msgstr ""
 "重いメイスで武装しており、公道の追いはぎは夜の人気のない道で最も会いたくない"
 "者たちです。"
+
+#: data/core/units/humans/Outlaw_Huntsman.cfg:5
+#, fuzzy
+msgid "Huntsman"
+msgstr "騎兵"
+
+#: data/core/units/humans/Outlaw_Huntsman.cfg:25
+msgid ""
+"Huntsmen have spent their lives in the backwoods and swamps of their "
+"wilderness homes. They track anything that moves in their territory, "
+"including people. Bandit gangs hire them for their ability to bring down any "
+"prey."
+msgstr ""
 
 #: data/core/units/humans/Outlaw_Poacher.cfg:4
 msgid "Poacher"
@@ -2843,9 +2904,9 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/merfolk/Siren.cfg:42
-#: data/core/units/merfolk/Enchantress.cfg:35
 #: data/core/units/merfolk/Initiate.cfg:38
+#: data/core/units/merfolk/Enchantress.cfg:35
+#: data/core/units/merfolk/Siren.cfg:42
 msgid "water spray"
 msgstr "水撃"
 
@@ -2883,10 +2944,10 @@ msgstr ""
 "水域に慣れた生物であるマーマンは、水の環境では力強く素早いですが、 陸上ではも"
 "がくようにしか移動できません。"
 
-#: data/core/units/merfolk/Warrior.cfg:23
-#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
-#: data/core/units/merfolk/Fighter.cfg:24
 #: data/core/units/merfolk/Hoplite.cfg:37
+#: data/core/units/merfolk/Warrior.cfg:23
+#: data/core/units/merfolk/Fighter.cfg:24
+#: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
 msgid "trident"
 msgstr "トライデント"
 
@@ -3142,8 +3203,8 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/monsters/Tentacle.cfg:63
 #: data/core/units/monsters/Cuttle_Fish.cfg:36
+#: data/core/units/monsters/Tentacle.cfg:63
 msgid "tentacle"
 msgstr "触手"
 
@@ -3191,11 +3252,11 @@ msgstr ""
 "巨大泥蟲は泥蟲よりも大きく、魔法によって土と水から造られました。 彼らは敵に泥"
 "のかたまりを噴射するか、あるいは拳で打ちつけることで攻撃します。"
 
-#: data/core/units/monsters/Yeti.cfg:35
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
 #: data/core/units/trolls/Rocklobber.cfg:29
 #: data/core/units/trolls/Whelp.cfg:28
 #: data/core/units/undead/Skeleton_Archer.cfg:33
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Yeti.cfg:35
 msgid "fist"
 msgstr "拳"
 
@@ -3228,19 +3289,6 @@ msgstr "毒針"
 #: data/core/units/monsters/Giant_Scorpion.cfg:38
 msgid "pincers"
 msgstr "ハサミ"
-
-#: data/core/units/monsters/Gryphon.cfg:4
-msgid "Gryphon"
-msgstr "グリフォン"
-
-#: data/core/units/monsters/Gryphon.cfg:17
-msgid ""
-"These majestic and powerful creatures are masters of the sky. Gryphons are "
-"both dangerous and wary of other intelligent creatures, and thus should not "
-"be disturbed without a good reason."
-msgstr ""
-"この荘厳で力強い生物は空の支配者です。グリフォンは危険で他の知的種族に 対して"
-"用心深いため、しかるべき理由なしに彼らに干渉すべきではありません。"
 
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
@@ -3556,8 +3604,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:29
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:28
+#: data/core/units/orcs/Sovereign.cfg:29 data/core/units/orcs/Warrior.cfg:23
+#: data/core/units/orcs/Ruler.cfg:28 data/core/units/orcs/Warlord.cfg:25
 msgid "greatsword"
 msgstr "大剣"
 
@@ -3692,9 +3740,9 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/saurians/Soothsayer.cfg:47
 #: data/core/units/saurians/Augur.cfg:47
 #: data/core/units/saurians/Oracle.cfg:47
+#: data/core/units/saurians/Soothsayer.cfg:47
 msgid "curse"
 msgstr "呪い"
 
@@ -3932,39 +3980,6 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/undead/Bat_Blood.cfg:4
-msgid "Blood Bat"
-msgstr "吸血コウモリ"
-
-#: data/core/units/undead/Bat_Blood.cfg:20
-msgid ""
-"Blood Bats are so-named because of their ruddy hue, which some mark as a "
-"symbol of their preferred diet. These creatures are fast and can drain the "
-"blood of those they attack, thereby gaining some of the health lost by their "
-"victims.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-
-#: data/core/units/undead/Bat_Vampire.cfg:4
-msgid "Vampire Bat"
-msgstr "ヴァンパイアバット"
-
-#: data/core/units/undead/Bat_Vampire.cfg:19
-#, fuzzy
-msgid ""
-"Vampire bats are flying beasts that feed on the blood of other creatures. "
-"While their fangs are not very powerful, the health of victims is drained "
-"away along with their blood, and given to the Bats.\n"
-"\n"
-"Special Notes:"
-msgstr ""
-"ヴァンパイアバットは不死の飛行動物で、 その獲物を噛んで攻撃します。 その牙は"
-"それほど強力ではありませんが、 獲物の血とともに 体力を奪い、 それを自身のもの"
-"とします。\n"
-"\n"
-"特記事項:"
-
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
 msgstr "グール"
@@ -4027,11 +4042,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/undead/Corpse_Walking.cfg:50
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:37
-#: data/core/units/undead/Spirit_Ghost.cfg:26
-#: data/core/units/undead/Necro_Lich.cfg:36
 #: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Necro_Lich.cfg:36
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:37
+#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Spirit_Ghost.cfg:26
 msgid "touch"
 msgstr "接触"
 
@@ -4070,15 +4085,15 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:49
 #: data/core/units/undead/Necro_Lich.cfg:48
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:49
 msgid "chill tempest"
 msgstr "冷気の大嵐"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:44
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:61
-#: data/core/units/undead/Necro_Lich.cfg:60
 #: data/core/units/undead/Necromancer.cfg:51
+#: data/core/units/undead/Necro_Lich.cfg:60
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:61
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
 msgid "shadow wave"
 msgstr "影の波動"
@@ -4438,8 +4453,8 @@ msgstr ""
 "特記事項:"
 
 #: data/core/units/undead/Spirit_Wraith.cfg:33
-#: data/core/units/undead/Spirit_Ghost.cfg:38
 #: data/core/units/undead/Spirit_Spectre.cfg:58
+#: data/core/units/undead/Spirit_Ghost.cfg:38
 msgid "wail"
 msgstr "叫び声"
 
@@ -4571,8 +4586,8 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#: data/core/units/wose/Wose.cfg:32 data/core/units/wose/Ancient.cfg:94
-#: data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Ancient.cfg:94 data/core/units/wose/Elder.cfg:93
+#: data/core/units/wose/Wose.cfg:32
 msgid "crush"
 msgstr "粉砕"
 
@@ -4640,133 +4655,53 @@ msgstr ""
 "\n"
 "特記事項:"
 
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with beast-like ferocity. When they are sated with "
-#~ "the flesh of their victims, they simply shrug off all damage sustained as "
-#~ "if they had been freshly summoned, to begin their search for flesh "
-#~ "again.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "死肉にひどく飢え、ネクロファージは獣のような凶暴さで彼らの期待している 食"
-#~ "料を攻撃します。彼らが犠牲者の肉を堪能するとき、あたかも新しく召喚されたか"
-#~ "の ように彼らは被ったすべてのダメージを単純に脱し、再び肉を探し始めま"
-#~ "す。\n"
-#~ "\n"
-#~ "特記事項:"
-
-#~ msgid "pierce"
-#~ msgstr "貫通"
-
-#~ msgid "blade"
-#~ msgstr "斬撃"
-
-#~ msgid "fire"
-#~ msgstr "火炎"
-
-#~ msgid "impact"
-#~ msgstr "打撃"
-
-#~ msgid "arcane"
-#~ msgstr "神聖"
-
-#~ msgid "cold"
-#~ msgstr "冷気"
-
-#~ msgid "dummy"
-#~ msgstr "模造"
-
-#~ msgid "Soul Shooter"
-#~ msgstr "ソウルシューター"
-
 #, fuzzy
 #~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it by the common man. Dark sorcerers have begun to unlock the "
-#~ "secrets of life and death, the latter of which is all too easy to "
-#~ "inflict.\n"
+#~ "Blood Bats are fast and can drain the blood of those they attack, thereby "
+#~ "gaining some of the health lost by their victims. Such is their fury that "
+#~ "the pelts of these undead flying beasts are often tainted red with the "
+#~ "blood of their victims.\n"
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "黒魔術から思い起こされる恐怖は主に、一般人にはそれがほとんど知られて いな"
-#~ "いことから来ています。 黒魔術師は生命と死の秘密の扉を開き、 すぐに痛みと苦"
-#~ "しみを与える達人になろうとしています。\n"
-#~ "\n"
-#~ "暗黒の技の究極の目標とは死と生命の完全な支配です。 黒魔術師は、死体や 骸骨"
-#~ "や霊魂を生き返らせることで、ついには生命と死の操り方を学ぶでしょう。 堕落"
-#~ "と力への渇望により、リッチ敵なものへの変身と恐ろしい不死の達成を通して、 "
-#~ "死を完全に克服しようと試みることでしょう。\n"
-#~ "\n"
-#~ "特記事項:"
-
-#~ msgid ""
-#~ "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
-#~ "all defense in exchange for massive damage against their enemies.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "ドワーフは、強力な戦士である古代の種族です。彼等の狂戦士は、敵に対して 強"
-#~ "大なダメージを与えることと引き換えに、全ての防御を忘れてしまいます。\n"
+#~ "吸血コウモリは素早く、相手の血を吸い取ることで、餌食から奪った体力の 一部"
+#~ "を得ることができます。 この不死の空飛ぶ獣が彼らの犠牲者の血によって 赤く汚"
+#~ "れていることこそが、凶暴性の証です。\n"
 #~ "\n"
 #~ "特記事項:"
 
 #, fuzzy
 #~ msgid ""
-#~ "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
-#~ "Slow and without a strong attack, they guard the Army's flank,  hurling "
-#~ "heavy spears for defense and frequently soaking up the enemy's most "
-#~ "punishing attacks without harm.\n"
+#~ "Orcish Sovereigns are the chieftains of the largest and most powerful "
+#~ "tribes. They make the important decisions and lead their people into "
+#~ "battle. They carry a bow out of necessity, but are much more skilled with "
+#~ "the sword; all in all, they are powerful fighters. Their natural "
+#~ "leadership skills make them very precious in battle: if the Sovereign is "
+#~ "lost, so usually is the battle.\n"
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "もっとも屈強なドワーフは警護兵として軍隊に参加することがあります。強力な "
-#~ "攻撃なしで遅い彼らは軍隊の側面を守備し、多くのダメージに耐え、防御のため "
-#~ "大槍を敵に投げつけます。\n"
-#~ "\n"
-#~ "特記事項:"
-
-#~ msgid ""
-#~ "The Sentinel, with his tower shield and great courage, refuses to yield "
-#~ "under even the strongest of enemy attacks.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "この防御兵はタワーシールドと大いなる勇気を持っており、敵の強力な攻撃にさ"
-#~ "え、 屈することはありません。\n"
-#~ "\n"
-#~ "特記事項:"
-
-#~ msgid ""
-#~ "Stalwarts, after years in battle, have fashioned new shields and strong "
-#~ "armor from the ruins of their enemies. While slow, they are feared for "
-#~ "their resilience and strength.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "何年もの戦争の後、守備兵は新しい楯と強力な鎧を敵の廃墟から造り出しまし"
-#~ "た。 移動は遅いですが、彼らはその頑強さと強力な力で恐れられています。\n"
+#~ "オークの君主は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には 彼"
+#~ "らの民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に 長け"
+#~ "ており、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは 非"
+#~ "常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
 #~ "\n"
 #~ "特記事項:"
 
 #, fuzzy
 #~ msgid ""
-#~ "Mermaid Priestesses pursue their calling with a fervor that leaves their "
-#~ "human counterparts somewhat taken aback. This may have its roots in a "
-#~ "legend they recite, telling of a nameless, shadowy horror which was once "
-#~ "the bane of their people. Though little is told about it, it is clear "
-#~ "that it was the power of the light in the hands of Priesteses which "
-#~ "defeated it and made their people safe.  They carry forward that trust to "
-#~ "this day.\n"
+#~ "Orcish Rulers are the chieftains of their tribes. They make the important "
+#~ "decisions and lead their people into battle. They carry a bow out of "
+#~ "necessity, but are much more skilled with the sword; all in all, they are "
+#~ "powerful fighters. Their natural leadership skills make them very "
+#~ "precious in battle: if the Ruler is lost, so usually is the battle.\n"
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "マーメイドの司祭は、人間の同等の者をいくぶん驚かすほどの情熱をもって 天職"
-#~ "を見い出します。これは彼らが暗唱しているある伝説が起源なのかも知れませ"
-#~ "ん。 彼らの民族をかつて破滅させた、言い表すことのできない謎の恐怖を物語る"
-#~ "伝説です。 このことについて語られることはほとんどありませんが、それをどう"
-#~ "にか打ち負かし、 彼らの民族を安泰にしたのは光の力であったことは明らかで"
-#~ "す。\n"
+#~ "オークの支配者は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には "
+#~ "彼らの民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に 長"
+#~ "けており、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは "
+#~ "非常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
 #~ "\n"
 #~ "特記事項:"
 
@@ -4793,50 +4728,130 @@ msgstr ""
 
 #, fuzzy
 #~ msgid ""
-#~ "Orcish Rulers are the chieftains of their tribes. They make the important "
-#~ "decisions and lead their people into battle. They carry a bow out of "
-#~ "necessity, but are much more skilled with the sword; all in all, they are "
-#~ "powerful fighters. Their natural leadership skills make them very "
-#~ "precious in battle: if the Ruler is lost, so usually is the battle.\n"
+#~ "Mermaid Priestesses pursue their calling with a fervor that leaves their "
+#~ "human counterparts somewhat taken aback. This may have its roots in a "
+#~ "legend they recite, telling of a nameless, shadowy horror which was once "
+#~ "the bane of their people. Though little is told about it, it is clear "
+#~ "that it was the power of the light in the hands of Priesteses which "
+#~ "defeated it and made their people safe.  They carry forward that trust to "
+#~ "this day.\n"
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "オークの支配者は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には "
-#~ "彼らの民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に 長"
-#~ "けており、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは "
-#~ "非常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
+#~ "マーメイドの司祭は、人間の同等の者をいくぶん驚かすほどの情熱をもって 天職"
+#~ "を見い出します。これは彼らが暗唱しているある伝説が起源なのかも知れませ"
+#~ "ん。 彼らの民族をかつて破滅させた、言い表すことのできない謎の恐怖を物語る"
+#~ "伝説です。 このことについて語られることはほとんどありませんが、それをどう"
+#~ "にか打ち負かし、 彼らの民族を安泰にしたのは光の力であったことは明らかで"
+#~ "す。\n"
+#~ "\n"
+#~ "特記事項:"
+
+#~ msgid ""
+#~ "Stalwarts, after years in battle, have fashioned new shields and strong "
+#~ "armor from the ruins of their enemies. While slow, they are feared for "
+#~ "their resilience and strength.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "何年もの戦争の後、守備兵は新しい楯と強力な鎧を敵の廃墟から造り出しまし"
+#~ "た。 移動は遅いですが、彼らはその頑強さと強力な力で恐れられています。\n"
+#~ "\n"
+#~ "特記事項:"
+
+#~ msgid ""
+#~ "The Sentinel, with his tower shield and great courage, refuses to yield "
+#~ "under even the strongest of enemy attacks.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "この防御兵はタワーシールドと大いなる勇気を持っており、敵の強力な攻撃にさ"
+#~ "え、 屈することはありません。\n"
 #~ "\n"
 #~ "特記事項:"
 
 #, fuzzy
 #~ msgid ""
-#~ "Orcish Sovereigns are the chieftains of the largest and most powerful "
-#~ "tribes. They make the important decisions and lead their people into "
-#~ "battle. They carry a bow out of necessity, but are much more skilled with "
-#~ "the sword; all in all, they are powerful fighters. Their natural "
-#~ "leadership skills make them very precious in battle: if the Sovereign is "
-#~ "lost, so usually is the battle.\n"
+#~ "The most resilient dwarves sometimes join the Dwarvish army as Guardsmen. "
+#~ "Slow and without a strong attack, they guard the Army's flank,  hurling "
+#~ "heavy spears for defense and frequently soaking up the enemy's most "
+#~ "punishing attacks without harm.\n"
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "オークの君主は彼らの部族の族長です。彼らは重要な決定を下し、戦闘時には 彼"
-#~ "らの民を統率します。 彼らは必要に応じて弓も使用しますが、剣技に非常に 長け"
-#~ "ており、全員が強力な戦士です。生来の統率技能によって、戦闘時には彼らは 非"
-#~ "常に貴重な存在となります。この支配者が死亡したら、戦闘も敗北です。\n"
+#~ "もっとも屈強なドワーフは警護兵として軍隊に参加することがあります。強力な "
+#~ "攻撃なしで遅い彼らは軍隊の側面を守備し、多くのダメージに耐え、防御のため "
+#~ "大槍を敵に投げつけます。\n"
+#~ "\n"
+#~ "特記事項:"
+
+#~ msgid ""
+#~ "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
+#~ "all defense in exchange for massive damage against their enemies.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "ドワーフは、強力な戦士である古代の種族です。彼等の狂戦士は、敵に対して 強"
+#~ "大なダメージを与えることと引き換えに、全ての防御を忘れてしまいます。\n"
 #~ "\n"
 #~ "特記事項:"
 
 #, fuzzy
 #~ msgid ""
-#~ "Blood Bats are fast and can drain the blood of those they attack, thereby "
-#~ "gaining some of the health lost by their victims. Such is their fury that "
-#~ "the pelts of these undead flying beasts are often tainted red with the "
-#~ "blood of their victims.\n"
+#~ "The dread inspired by black magic comes chiefly from how little is known "
+#~ "about it by the common man. Dark sorcerers have begun to unlock the "
+#~ "secrets of life and death, the latter of which is all too easy to "
+#~ "inflict.\n"
 #~ "\n"
 #~ "Special Notes:"
 #~ msgstr ""
-#~ "吸血コウモリは素早く、相手の血を吸い取ることで、餌食から奪った体力の 一部"
-#~ "を得ることができます。 この不死の空飛ぶ獣が彼らの犠牲者の血によって 赤く汚"
-#~ "れていることこそが、凶暴性の証です。\n"
+#~ "黒魔術から思い起こされる恐怖は主に、一般人にはそれがほとんど知られて いな"
+#~ "いことから来ています。 黒魔術師は生命と死の秘密の扉を開き、 すぐに痛みと苦"
+#~ "しみを与える達人になろうとしています。\n"
+#~ "\n"
+#~ "暗黒の技の究極の目標とは死と生命の完全な支配です。 黒魔術師は、死体や 骸骨"
+#~ "や霊魂を生き返らせることで、ついには生命と死の操り方を学ぶでしょう。 堕落"
+#~ "と力への渇望により、リッチ敵なものへの変身と恐ろしい不死の達成を通して、 "
+#~ "死を完全に克服しようと試みることでしょう。\n"
+#~ "\n"
+#~ "特記事項:"
+
+#~ msgid "Soul Shooter"
+#~ msgstr "ソウルシューター"
+
+#~ msgid "dummy"
+#~ msgstr "模造"
+
+#~ msgid "cold"
+#~ msgstr "冷気"
+
+#~ msgid "arcane"
+#~ msgstr "神聖"
+
+#~ msgid "impact"
+#~ msgstr "打撃"
+
+#~ msgid "fire"
+#~ msgstr "火炎"
+
+#~ msgid "blade"
+#~ msgstr "斬撃"
+
+#~ msgid "pierce"
+#~ msgstr "貫通"
+
+#~ msgid ""
+#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
+#~ "their hoped-for food with beast-like ferocity. When they are sated with "
+#~ "the flesh of their victims, they simply shrug off all damage sustained as "
+#~ "if they had been freshly summoned, to begin their search for flesh "
+#~ "again.\n"
+#~ "\n"
+#~ "Special Notes:"
+#~ msgstr ""
+#~ "死肉にひどく飢え、ネクロファージは獣のような凶暴さで彼らの期待している 食"
+#~ "料を攻撃します。彼らが犠牲者の肉を堪能するとき、あたかも新しく召喚されたか"
+#~ "の ように彼らは被ったすべてのダメージを単純に脱し、再び肉を探し始めま"
+#~ "す。\n"
 #~ "\n"
 #~ "特記事項:"
