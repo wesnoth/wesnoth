@@ -947,7 +947,7 @@ void map_editor::undo() {
 				to_invalidate.push_back((*it).first);
 			}
 		}
-		invalidate_all_and_adjacent(to_invalidate);
+		terrain_changed(to_invalidate);
 		if (action.map_data_set()) {
 			throw new_map_exception(action.old_map_data(), filename_, from_scenario_);
 		}
@@ -981,7 +981,7 @@ void map_editor::redo() {
 				to_invalidate.push_back((*it).first);
 			}
 		}
-		invalidate_all_and_adjacent(to_invalidate);
+		terrain_changed(to_invalidate);
 		 if (action.map_data_set()) {
 			throw new_map_exception(action.new_map_data(), filename_, from_scenario_);
 		}
@@ -1216,7 +1216,17 @@ void map_editor::terrain_changed(const gamemap::location &hex)
 
 void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes)
 {
-	invalidate_all_and_adjacent(hexes);
+	if (!auto_update_) {
+		std::vector<gamemap::location>::const_iterator it;
+		for (it = hexes.begin(); it != hexes.end(); it++) {
+			gui_.rebuild_terrain(*it);
+			gui_.invalidate(*it);
+		}
+	} else {
+		// will be rebuilded by the main loop
+		invalidate_all_and_adjacent(hexes);
+	}
+	map_dirty_ = true;
 }
 
 void map_editor::terrain_changed(const std::set<gamemap::location> &hexes) {
