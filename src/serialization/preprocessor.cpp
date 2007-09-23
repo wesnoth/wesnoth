@@ -89,17 +89,35 @@ public:
 	preprocessor_streambuf(preproc_map *);
 };
 
-preprocessor_streambuf::preprocessor_streambuf(preproc_map *def)
-	: streambuf(), out_buffer_(""), buffer_(), current_(NULL), defines_(def),
-          textdomain_(PACKAGE), location_(""), linenum_(0), depth_(0),
-          buffer_size_(0), quoted_(false)
+preprocessor_streambuf::preprocessor_streambuf(preproc_map *def) :
+	streambuf(), 
+	out_buffer_(""), 
+	buffer_(), 
+	current_(NULL), 
+	defines_(def),
+	default_defines_(),
+	textdomain_(PACKAGE), 
+	location_(""), 
+	linenum_(0), 
+	depth_(0),
+	buffer_size_(0), 
+	quoted_(false)
 {
 }
 
-preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t)
-	: streambuf(), out_buffer_(""), buffer_(), current_(NULL), defines_(t.defines_),
-	  textdomain_(PACKAGE), location_(""), linenum_(0), depth_(t.depth_),
-          buffer_size_(0), quoted_(t.quoted_)
+preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) :
+	streambuf(),
+	out_buffer_(""),
+	buffer_(),
+	current_(NULL),
+	defines_(t.defines_),
+	default_defines_(),
+	textdomain_(PACKAGE),
+	location_(""),
+	linenum_(0),
+	depth_(t.depth_),
+	buffer_size_(0), 
+	quoted_(t.quoted_)
 {
 }
 
@@ -154,12 +172,13 @@ int preprocessor_streambuf::underflow()
  * and when it is deleted, it will manage the stream 
  * to cause the previous scope to resume.
  */
-preprocessor::preprocessor(preprocessor_streambuf &t)
-	: old_preprocessor_(t.current_), target_(t)
+preprocessor::preprocessor(preprocessor_streambuf &t) :
+	old_preprocessor_(t.current_),
+	old_textdomain_(t.textdomain_),
+	old_location_(t.location_),
+	old_linenum_(t.linenum_),
+	target_(t)
 {
-	old_location_ = target_.location_;
-	old_linenum_ = target_.linenum_;
-	old_textdomain_ = target_.textdomain_;
 	++target_.depth_;
 	target_.current_ = this;
 }
@@ -242,8 +261,12 @@ public:
 	virtual bool get_chunk();
 };
 
-preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string const &name)
-	: preprocessor(t)
+preprocessor_file::preprocessor_file(preprocessor_streambuf &t,
+		std::string const &name) :
+	preprocessor(t),
+	files_(),
+	pos_(),
+	end_()
 {
 	if (is_directory(name))
 		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH, DO_REORDER);
@@ -273,10 +296,16 @@ bool preprocessor_file::get_chunk()
 }
 
 preprocessor_data::preprocessor_data(preprocessor_streambuf &t, std::istream *i,
-                                     std::string const &history,
-                                     std::string const &name, int linenum,
-                                     std::string const &directory, std::string const &domain)
-	: preprocessor(t), in_(i), directory_(directory), slowpath_(0), skipping_(0), linenum_(linenum)
+		std::string const &history, std::string const &name, int linenum, 
+		std::string const &directory, std::string const &domain) :
+	preprocessor(t), 
+	in_(i), 
+	directory_(directory),
+	strings_(),
+	tokens_(),
+	slowpath_(0), 
+	skipping_(0), 
+	linenum_(linenum)
 {
 	std::ostringstream s;
 
