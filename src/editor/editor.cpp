@@ -636,7 +636,7 @@ void map_editor::edit_load_map() {
 
 void map_editor::edit_fill_selection() {
 	map_undo_action undo_action;
-	perform_fill_selection(undo_action);
+	perform_fill_hexes(selected_hexes_, palette_.selected_bg_terrain(), undo_action);
 	save_undo_action(undo_action);
 }
 
@@ -833,7 +833,6 @@ void map_editor::paste_buffer(const map_buffer &buffer, const gamemap::location 
 }
 
 void map_editor::insert_selection_in_clipboard() {
-
 	// Find the hex that is closest to the selected one,
 	// use this as origin
 	gamemap::location origin(1000,1000);
@@ -848,23 +847,33 @@ void map_editor::insert_selection_in_clipboard() {
 	copy_buffer(clipboard_, selected_hexes_, origin);
 }
 
-void map_editor::perform_fill_selection(map_undo_action &undo_action) {
+void map_editor::perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
+	const t_translation::t_letter terrain, map_undo_action &undo_action) {
 	std::set<gamemap::location>::const_iterator it;
-	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
+	for (it = fill_hexes.begin(); it != fill_hexes.end(); it++) {
 		if (map_.on_board(*it)) {
-			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_bg_terrain(), *it);
-			map_.set_terrain(*it, palette_.selected_bg_terrain());
+			undo_action.add_terrain(map_.get_terrain(*it), terrain, *it);
+			map_.set_terrain(*it, terrain);
 		}
 	}
-	terrain_changed(selected_hexes_);
+	terrain_changed(fill_hexes);
 }
 
 void map_editor::perform_selection_move() {
 	map_undo_action undo_action;
+	std::set<gamemap::location> old_selection = selected_hexes_;
+
 	map_buffer buf;
 	copy_buffer(buf, selected_hexes_, selection_move_start_);
-	perform_fill_selection(undo_action);
 	paste_buffer(buf,selected_hex_, undo_action);
+
+	std::set<gamemap::location>::const_iterator it;
+	for (it = old_selection.begin(); it != old_selection.end(); it++) {
+		if (selected_hexes_.find(*it) != selected_hexes_.end())
+			old_selection.erase(*it);
+	}
+	perform_fill_hexes(old_selection, palette_.selected_bg_terrain(),undo_action);
+
 	save_undo_action(undo_action);
 }
 

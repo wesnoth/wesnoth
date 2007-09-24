@@ -233,9 +233,10 @@ private:
 	/// Insert the currently selected locations in the clipboard.
 	void insert_selection_in_clipboard();
 
-	/// Commit a selection filling.
-	void perform_fill_selection(map_undo_action &undo_action);
-
+	/// Commit hexes filling.
+	void perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
+		const t_translation::t_letter terrain, map_undo_action &undo_action);
+	
 	/// Commit the movement of a selection.
 	void perform_selection_move();
 
