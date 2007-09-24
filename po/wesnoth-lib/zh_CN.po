@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 00:58+0200\n"
+"POT-Creation-Date: 2007-09-24 11:04+0200\n"
 "PO-Revision-Date: 2007-04-28 15:23+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: none\n"
@@ -304,7 +304,7 @@ msgid "Hotkeys"
 msgstr "快捷键"
 
 #: src/editor/editor_dialogs.cpp:383 src/editor/editor_dialogs.cpp:495
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Resize Map"
 msgstr "改变地图大小"
 
@@ -989,105 +989,110 @@ msgid "Fill Selection"
 msgstr "填充选择区域"
 
 #: src/hotkeys.cpp:112
+#, fuzzy
+msgid "Rotate Selection"
+msgstr "填充选择区域"
+
+#: src/hotkeys.cpp:113
 msgid "Cut"
 msgstr "剪切"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Copy"
 msgstr "复制"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Revert from Disk"
 msgstr "重新读取文件"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Flip Map"
 msgstr "翻转地图"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Select All"
 msgstr "全选"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Draw Terrain"
 msgstr "绘制地形"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Refresh Image Cache"
 msgstr "刷新图像缓存"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 #, fuzzy
 msgid "Delay transition updates"
 msgstr "暂缓刷新覆盖物"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Update transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Delay Shroud Updates"
 msgstr "暂缓刷新覆盖物"
 
 # personally i like the original translation阴影区域, gonna discuss about this
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Update Shroud Now"
 msgstr "立即刷新覆盖物"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Continue Move"
 msgstr "继续移动"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Find Label or Unit"
 msgstr "查找标记或单位"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Speak to Ally"
 msgstr "与盟友聊天"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Speak to All"
 msgstr "与所有人聊天"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Help"
 msgstr "帮助"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "View Chat Log"
 msgstr "察看聊天纪录"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Change the language"
 msgstr "切换语言"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Enter user command"
 msgstr "输入用户命令"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 #, fuzzy
 msgid "Clear messages"
 msgstr "清除所有标记"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Do you really want to quit?"
 msgstr "您要退出吗？"
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Quit"
 msgstr "退出"
 
@@ -1189,7 +1194,7 @@ msgstr "选择分辨率"
 msgid "Error"
 msgstr "错误"
 
-#: src/terrain_translation.cpp:753
+#: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 

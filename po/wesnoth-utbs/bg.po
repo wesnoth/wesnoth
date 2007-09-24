@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-19 00:28+0200\n"
+"POT-Creation-Date: 2007-09-24 11:07+0200\n"
 "PO-Revision-Date: 2007-05-15 02:44+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -178,7 +178,7 @@ msgstr "Ним"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:866
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:880
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:186
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:780
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:785
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:433
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_Hunting_Dwarves.cfg:283
 msgid "Starting Objectives:"
@@ -192,8 +192,8 @@ msgstr "Спасяване на оцелелите елфи"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:173
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:1021
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:192
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1467
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:797
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1681
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:802
 msgid "Death of Kaleh, Nym, Garak or Zhul"
 msgstr "Смърт на Кейлъх, Ним, Гейрак или Жюл"
 
@@ -441,6 +441,7 @@ msgid "Is anyone still alive?"
 msgstr "Останал ли е някой жив?"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:702
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3840
 msgid "Zhul"
 msgstr "Жюл"
 
@@ -629,8 +630,8 @@ msgstr ""
 "Елфите Кеноти!"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:1010
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1272
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3467
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1280
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3480
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_Final.cfg:1393
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1288
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1431
@@ -639,8 +640,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4123
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4865
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5010
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1456
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:246
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1670
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:251
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1514
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1555
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:3015
@@ -984,7 +985,7 @@ msgstr ""
 "поемем беше на север."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:188
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1459
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1673
 msgid "Kaleh Must Reach the Northern Edge of the Desert"
 msgstr "Кейлъх трябва да достигне северния край на Пустинята"
 
@@ -1113,29 +1114,38 @@ msgstr ""
 "В такъв случай, колкото по-бързо достигнем Островърхата Скала, толкова по-"
 "добре. Напред!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:430
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:536
+#, fuzzy
+msgid "thirst"
+msgstr "бодли"
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:550
+msgid "refreshed"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:621
 msgid "Traveler's Ring"
 msgstr "Пътнически пръстен"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:432
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:623
 msgid "At the end of each turn, this unit takes no damage from the desert."
 msgstr ""
 "В края на всеки ход, тази единица няма да понася никакво поражение, "
 "причинено от пустинята."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:466
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:657
 msgid "Wait. I think I spotted something ahead of us..."
 msgstr "Почакайте. Мисля, че забелязах нещо пред нас..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:661
 msgid "What? I don't see a thing."
 msgstr "Какво? Не виждам нищо."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:474
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:665
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr "Виждате ли блясъците напред? Скорпиони. Големи. Цяло гнездо."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:672
 msgid ""
 "Do you want us to fight? We can still avoid them, but they are between us "
 "and the next oasis."
@@ -1143,11 +1153,11 @@ msgstr ""
 "Искаш ли да се бием? Можем да ги избегнем, но те са между насс и следващият "
 "оазис."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:498
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:689
 msgid "Scorpions! We must have stumbled across a nest of them."
 msgstr "Скорпиони! Сигурно сме попаднали на тяхно гнездо."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:532
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:723
 msgid ""
 "The scorpions were devouring some poor person's body. There doesn't seem to "
 "be much of him or her left, but wait...what's this? It looks like a tiny "
@@ -1164,7 +1174,7 @@ msgstr ""
 "студът. Чувал съм да се говори за такива магически предмети, а точно сега "
 "един такъв ще ни дойде много добре."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:537
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:728
 msgid ""
 "One unit wearing this ring is immune to any damage caused during the day by "
 "the heat of the desert."
@@ -1172,7 +1182,7 @@ msgstr ""
 "Единица, която носи този пръстен, е защитена от всички поражения, причинени "
 "през деня от пустинната жега."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:563
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:754
 #, fuzzy
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
@@ -1182,33 +1192,33 @@ msgstr ""
 "възстановят силата, а останалите могат да си почиват в безопасност на "
 "тревата, защитени от дневната жега."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:598
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:817
 msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:602
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:821
 msgid "No chance to sneak around?"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:606
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:825
 msgid ""
 "We would have to cover extra distance in difficult terrain. If you want to "
 "bypas them I suggest going straight north in the hopes of finding an oasis "
 "there."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:621
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:646
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:840
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:864
 msgid "Fresh meat!"
 msgstr "Прясно месо!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:641
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:859
 msgid "Ogre ambush!"
 msgstr "Попаднахме на засада от огрета!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:651
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:869
 msgid ""
 "Ugh, they smell as bad as they look. And they're huge! Well, the bigger they "
 "are, the harder they fall."
@@ -1216,7 +1226,7 @@ msgstr ""
 "Ъх, вонята им е ужасна като вида им. И са огромни! Но, какво пък, колкото са "
 "по-големи, толкова по-тежко ще паднат."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:698
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:892
 msgid ""
 "That's the last of them. This looks like a hunting party, they must have a "
 "camp around here somewhere."
@@ -1224,7 +1234,7 @@ msgstr ""
 "Този е последният. Мисля, че това беше малък ловен отряд. Сигурно имат лагер "
 "някъде наоколо."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:712
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:906
 msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what's inside..."
@@ -1232,29 +1242,29 @@ msgstr ""
 "Хей! Вижте там, изпуснаха нещо. Каменна бутилка, запечатана. Чудя се какво "
 "има вътре."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:725
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:919
 msgid "Nym! No! don't open..."
 msgstr "Ним! Не! не отваряй..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:735
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:929
 msgid ""
 "Too late. And it's just sand inside. Not worth... Whoa! What's happening?!"
 msgstr "Късно. И има само пясък вътре. Не си струв... Ааа! Какво става?!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:741
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:935
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:4
 msgid "Dust Devil"
 msgstr "Прашен демон"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:754
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:948
 msgid "It's a dust devil, but I have never seen one so small before."
 msgstr "Това е прашен демон, но не бях виждал толкова малък преди."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:798
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:992
 msgid "It seems to like you, looks like you just got yourself a pet."
 msgstr "Изглежда те харесва, май си намери домашен любимец."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:803
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:997
 #, fuzzy
 msgid ""
 "Girl, I told you not to open it. Let's go, I'd really like to get to an "
@@ -1263,7 +1273,7 @@ msgstr ""
 "Без \"но\", момиче, казах ти, да я отваряш. Да вървим, наистина искам да "
 "стигнем скоро до оазис."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:864
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1062
 #, fuzzy
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
@@ -1272,32 +1282,32 @@ msgstr ""
 "И си мислех, че ще е още един скучен патрул. Ти, там! Елфе! Този оазис си е "
 "наш и ние ще го напоим с вашата кръв."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:869
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:904
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:951
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1067
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1102
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1167
 msgid ""
 "We need that water, and if we have to go through you to get it, so be it."
 msgstr ""
 "Тази вода ни трябва и ако трябва да минем през вас, за да си я вземем, така "
 "да бъде."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:899
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:946
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1097
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1162
 msgid ""
 "We don't know who you are, and we don't much care. Tremble before the might "
 "of the Black Hand!"
 msgstr ""
 "Не ви знаем кои сте и не ни интересува. Треперете пред мощта на Черната Ръка!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1027
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1266
 msgid "Elyssa"
 msgstr "Елиса "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1092
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1331
 msgid "Back, you fiends! Or I'll kill you a second time!"
 msgstr "Назад, изчадия! Или ще ви убия втори път!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1099
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1338
 msgid ""
 "You have defied our master for the last time. Now you shall die! And I shall "
 "personally make it slow and painful, to thank you for that scorching you "
@@ -1306,31 +1316,31 @@ msgstr ""
 "За последен път се противопоставяш на господаря ми. Сега ще умреш! И аз "
 "лично ще се погрижа да умреш бавно и мъчително, задето ме изгори. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1106
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1345
 msgid "You have defied our master for the last time. Now you shall die!"
 msgstr "За последен път се противопоставяш на господаря ми. Сега ще умреш!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1113
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1352
 msgid "Stupid undead, they never listen. Then have a taste of my flame!"
 msgstr "Глупави немъртви, никога не слушат. Е, тогава ще опитат пламъците ми!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1118
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1357
 msgid "She looks like she's in trouble. We should help her."
 msgstr "Мисля, че тя е в беда. Трябва да й помогнем."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1145
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1384
 msgid "Whew! Looks like that's the last of them."
 msgstr "Пфу! Май този беше последният."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1150
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1389
 msgid "Thanks for the help! That was a little too close for comfort."
 msgstr "Благодаря за помощта! Бяха почнали малко да ме притесняват."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1394
 msgid "That was a lot of undead. Why were they coming after you?"
 msgstr "Това бяха доста немъртви. Защо те преследваха?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1160
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1399
 msgid ""
 "I accidentally managed to anger a powerful necromancer a while ago...it's a "
 "long story. But who are you? You almost look like elves."
@@ -1338,7 +1348,7 @@ msgstr ""
 "Преди време успях да си навлека гнева на един могъщ некромант без да искам … "
 "това е дълга история. А вие кои сте? Доста приличате на елфи."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1165
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1404
 msgid ""
 "We are, we're the Quenoth Elves and we are traveling north. You look like "
 "you're a mage, but I thought your kind were all gone."
@@ -1346,7 +1356,7 @@ msgstr ""
 "Ние сме елфите Кеноти и пътуваме на север. А ти приличаш на магьосница, но "
 "мислех, че те всички вече са изчезнали."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1170
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1409
 msgid ""
 "I am, I'm a fire mage. I've been traveling for quite a while now, exploring "
 "and learning. But these sands seem particularly inhospitable! I've been "
@@ -1358,11 +1368,11 @@ msgstr ""
 "негостоприемни. Затова се канех да проверя планините на север. Ще имате ли "
 "нещо против, ако пътувам с вас за известно време."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1175
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1414
 msgid "We'd be glad to have the help of someone with the mastery of fire."
 msgstr "Ще се хубаво да разполагаме с подкрепата на някой, който владее огъня."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1421
 msgid ""
 "The undead are defeated, but we lost her in the fight as well. Darn, if only "
 "we could have saved her."
@@ -1370,11 +1380,11 @@ msgstr ""
 "Победихме немъртвите, но и тя падна в битката. Жалко, че не успяхме да я "
 "спасим."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1270
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1484
 msgid "Vengeful Lord"
 msgstr "Отмъстителен лорд"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1289
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1503
 msgid ""
 "The most hated living in my castle! To me! To me stray souls of the deserts! "
 "Let's cleanse this pollution!"
@@ -1382,7 +1392,7 @@ msgstr ""
 "Най-мразените живеят в замъка ми. За мен! За мен заблудени души на "
 "пустините! Нека да прочистим това замърсяване."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1294
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1508
 msgid ""
 "Elf with a bow, I remember you. You thought me defeated, but I am back even "
 "more powerful than before. Death reigns eternal, your scorched bones and "
@@ -1392,24 +1402,24 @@ msgstr ""
 "победили, но ето ме тук отново, по-силен от преди. Смъртта е вечна и "
 "обгорените ти кости и безжизненото ти тяло, ще се присъединят към мен. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1299
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1513
 msgid ""
 "Still singing the same tune. We defeated you once before, we can do so again!"
 msgstr "Все същата песен пееш. Веднъж те сразихме и ще го направим отново!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1311
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1525
 msgid "Nooo... (fades)"
 msgstr "Неее... (затихва)"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1320
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1534
 msgid "Searching his castle, we found a chest filled with gold."
 msgstr "Докато претърсвахме замъка му, попаднахме на ковчеже пълно с злато."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1365
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1579
 msgid "Elves! Kill them all!"
 msgstr "Елфи! Избийте ги!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1372
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1586
 msgid ""
 "This ruined castle must be where the ogres make their home. Well, if it's a "
 "fight they want, it's a fight they'll get. "
@@ -1417,32 +1427,32 @@ msgstr ""
 "Огретата сигурно са се настанили в руините на онзи замък. Е ако си търсят "
 "боя, точно това ще получат. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1394
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1608
 msgid ""
 "That's the last of those stinking beasts. They should trouble us no more."
 msgstr ""
 "Приключихме с тези вонящи чудовища. Вече не би трябвало да ни безпокоят."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1399
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1613
 msgid "Y'know, this ruin looks oddly familiar."
 msgstr "Да зна'йте, тия съборетини, много са ми познати."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1404
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1618
 msgid "Yuck, there's still dried blood on the stones. It's kind of spooky."
 msgstr "Ух, по камъните още има засъхнала кръв. Зловещо си е."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1650
 #, fuzzy
 msgid "This land belongs to the Black Hand. Trespass and you will die."
 msgstr ""
 "Тук пише: Тази земя принадлежи на Черната Ръка. Нарушителите ще платят с "
 "живота си."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1442
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1656
 msgid "Bandits. If they get in our way, they're going to be sorry."
 msgstr "Разбойници. Ако ни се изпречат на пътя, ще съжаляват."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1447
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1661
 msgid ""
 "There's no way we can get all our people safely across the desert with "
 "outlaws harassing us. We must defeat them before we can continue."
@@ -1451,7 +1461,7 @@ msgstr ""
 "всичките си хора, докато се измъкнем от пустинята. Най-добре да се справим с "
 "бандитите преди да продължим."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1452
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1666
 msgid ""
 "Did you see that? I think I just saw someone disappear behind that dune over "
 "there. I think we're being watched. I suspect there are more of these "
@@ -1461,15 +1471,15 @@ msgstr ""
 "Май че ни следят. Изглежда сред тия дюни се промъкват повече бандити, "
 "отколкото мислехме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1463
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1677
 msgid "Defeat Outlaw Leader"
 msgstr "Побеждаване на водача на разбойниците"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1475
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1689
 msgid "Thorn"
 msgstr "Разкъсан "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1568
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1766
 msgid ""
 "Dang. I was sure I saw an oasis here. Must have been a mirage. I've been out "
 "in the sand for too long."
@@ -1477,7 +1487,7 @@ msgstr ""
 "Дрън. Стори ми се, че видях оазис тук. Сигурно е било мираж, твърде дълго "
 "вече съм на слънце."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1589
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1787
 #, fuzzy
 msgid ""
 "So, the outlaws have made a base around Pinnacle Rock. It's a good location, "
@@ -1486,11 +1496,11 @@ msgstr ""
 "Изглежда разбойниците са си устроили база около Островърхата скала. Мястото "
 "е добро, наистина, но ние ще ги прогоним оттам"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1809
 msgid "Pure Water"
 msgstr "Чиста вода"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1613
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1811
 msgid ""
 "This water will make your melee weapons holy, and thus especially powerful "
 "against the undead."
@@ -1498,18 +1508,18 @@ msgstr ""
 "Тази вода ще освети оръжията ви за близък бой и ще ги направи особено "
 "ефективни срещу немъртвите."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1639
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1837
 msgid "I surrender! I mean we surrender. Just please don't kill me."
 msgstr "Предавам се! Т.е., ние всички се предаваме, само моля не ме убивайте."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1646
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1658
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1844
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1856
 msgid ""
 "Please, have mercy on us. We're just trying to survive in this horrible land."
 msgstr ""
 "Моля ви, имайте милост, ние само се опитваме да оцелеем в тази ужасна земя."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1651
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1849
 msgid ""
 "I will not kill you in cold blood. But leave these lands, and never darken "
 "our path again. Or I will show you no mercy."
@@ -1517,7 +1527,7 @@ msgstr ""
 "Няма да ви убия без причина, но напуснете тези земи и никога повече не "
 "заставайте на пътя ни. Защото няма да проявим милост втори път."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1669
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1867
 msgid ""
 "Here, take this vial of holy water. You'll need it with all the undead "
 "around."
@@ -1525,7 +1535,7 @@ msgstr ""
 "Ето, вземете тази стъкленица със светена вода. При всички тия немъртви "
 "наоколо, ще ви бъде полезна."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1674
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1872
 msgid ""
 "I will take this vial, in exchange for your life. But leave these lands, and "
 "never darken our path again. Or I will show you no mercy."
@@ -1534,7 +1544,7 @@ msgstr ""
 "и никога повече не заставайте на пътя ни. Защото няма да проявя милост втори "
 "път."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1877
 msgid ""
 "It's Holy Water. When anointed on a weapon it makes it deadly to magical "
 "creatures. Vials such as these are rare and valuable. We should choose "
@@ -1544,7 +1554,7 @@ msgstr ""
 "създания. Стъкленици като тази са редки и ценни. Трябва внимателно да "
 "преценим, кой да я използва."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1718
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1916
 msgid ""
 "The Black Hand outlaws still threaten the others. While their leader still "
 "fights we won't be able to get all our people across the sands safely. We "
@@ -1555,7 +1565,7 @@ msgstr ""
 "безпроблемно. Трябва да се разправим с Черната Ръка, преди да можем да "
 "продължим."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1727
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1925
 msgid ""
 "The outlaws are defeated and we've made it across these blasted sands. The "
 "hills are just a few miles to the north. We should be able to find water and "
@@ -1565,16 +1575,7 @@ msgstr ""
 "на няколко мили на север. Там би трябвало да намерим вода и да успеем да си "
 "починем."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1892
-#, fuzzy
-msgid "thirst"
-msgstr "бодли"
-
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1906
-msgid "refreshed"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2114
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2120
 msgid ""
 "Now that we have a moment of peace, I have to ask you, Elyssa, what were you "
 "really doing out in the middle of the desert? It's a rather barren place to "
@@ -1584,7 +1585,7 @@ msgstr ""
 "всъщност правеше сама насред пустинята? Тя не е най-подходящото място за "
 "пътешествия."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2119
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2125
 msgid ""
 "I've been searching for secrets from the past. Did you know that this entire "
 "land used to be a huge empire? Apparently this used to all be great plains "
@@ -1594,7 +1595,7 @@ msgstr ""
 "била огромна империя. Изглежда, че преди пясъка да затрупа всичко, това са "
 "били обширни равнини и ферми."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2124
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2130
 msgid ""
 "It's hard to imagine. There's barely enough rain here now to support these "
 "tiny cacti, let alone crops."
@@ -1602,7 +1603,7 @@ msgstr ""
 "Трудно може да си го представи човек. Дъждът тук, едва стига за тези дребни "
 "кактуси, какво остава за цели реколти."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2129
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2135
 msgid ""
 "And yet the great ruins that I have seen scattered across these sands are a "
 "testament that something was here before us. Perhaps in a time long ago when "
@@ -1612,7 +1613,7 @@ msgstr ""
 "пясъци, доказват, че преди нас тук е имало нещо друго. Може би в древни "
 "времена, когато земята не е била толкова жестока."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2140
 msgid ""
 "Before the great fall, there were huge cities, with great schools of magery, "
 "libraries of books, vast repositories of knowledge. Most of it was destroyed "
@@ -1625,11 +1626,11 @@ msgstr ""
 "всичко е било унищожено в последвалия хаос и дългите години на разруха, но "
 "аз търся дребните останки. Например, чувал ли си за Огнения Скиптър?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2139
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2145
 msgid "No, I haven't. What is it?"
 msgstr "Не съм. Какво е това?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2144
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2150
 msgid ""
 "I'm not sure. I've read various references to it, but nothing specific. I've "
 "been searching for it for a long time. All I know is that it was a very "
@@ -1643,14 +1644,14 @@ msgstr ""
 "никаква представа къде може да е сега. И така, пътувам и научавам всичко, "
 "което мога за старите дни. Сигурна съм, че скиптърът трябва да е все някъде."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2149
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2155
 msgid ""
 "Perhaps. But it has been so long, and so much has been lost. Who can say?"
 msgstr ""
 "Може би, но е минало толкова време и толкова неща са изгубени. Кой може да "
 "каже?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2162
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2168
 msgid ""
 "We've run out of provisions and our people are exhausted. We've taken too "
 "long crossing the desert, I fear we shall never reach the other side. "
@@ -1658,7 +1659,7 @@ msgstr ""
 "Провизиите ни свършиха и хората ни са изтощени. Твърде дълго ни отне "
 "прекосяването на пустинята, опасявам се, че никога няма да излезем от нея. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2347
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2353
 msgid ""
 "The sands are haunted with the spirits of tortured souls long since dead. At "
 "dusk they rise again, and during the Long Dark they can be particularly "
@@ -1670,7 +1671,7 @@ msgstr ""
 "Дългия мрак могат да са много неприятни. Изчезват в зори и лично аз "
 "предпочитам дневната жега пред нощните ужаси."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2352
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2358
 msgid ""
 "The combination of the heat of the day and the rising undead make dusk a "
 "particularly dangerous time of day."
@@ -1679,21 +1680,21 @@ msgstr ""
 "време почват да се надигат немъртвите. Това прави здрачаването особено "
 "опасен период."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2367
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2373
 msgid "You come and rise again, spirits? Have we not defeated you before?"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2372
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2378
 msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2438
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2444
 msgid "What happened? The undead spirits all just disappeared."
 msgstr "Какво стана? Всички немъртви духове изведнъж изчезнаха."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2443
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2449
 msgid ""
 "These spirits are weak. They seek to prey on the helpless, but when they "
 "encounter strong resistance they flee."
@@ -1701,16 +1702,16 @@ msgstr ""
 "Тези духове са слаби. Възползват се от безпомощните, но ако срещнат силна "
 "съпротива бягат."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2450
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:2456
 msgid "Flee, you craven spirits, and leave us in peace!"
 msgstr "Бягайте страхливи духове и ни оставете на мира!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:12
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:13
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:14
 msgid "A Stirring in the Night"
 msgstr "Нощно безпокойство "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:37
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:38
 msgid ""
 "Chapter 3: As we continued north through the desert, the looming hills and "
 "mountains promised blessed relief from the seemingly never-ending sand. Soon "
@@ -1727,7 +1728,7 @@ msgstr ""
 "живот бях живял сред пясъка, той беше моят дом и скалистите хълмове и "
 "блестящите бели върхове на планините ми се струваха чужди и заплашителни."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:42
 msgid ""
 "I worried if I was doing the right thing, leading my people to strange "
 "lands. Despite Eloh's promises, I was not as confident as Zhul was that it "
@@ -1744,7 +1745,7 @@ msgstr ""
 "отколкото духовните дела. Но кой бях аз да се съмнявам във волята на "
 "богинята?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:45
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:46
 msgid ""
 "That night, as I slept, I dreamt again, for the first time since that first "
 "fateful night. Eloh came to me again, and this time she appeared in a vision "
@@ -1775,35 +1776,35 @@ msgstr ""
 "ще си инструмент на моята воля. Накажи неверниците. Иди и не се бой от мрака."
 "\" И отново, както и първия път ме събудиха викове в нощта."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:58
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:59
 msgid "Kaleh, wake up! Scouts report movement out in the sands."
 msgstr ""
 "Кейлъх, събуди се! Разузнавачите казват, че в пясъците има раздвижване."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:63
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:64
 msgid "Is it orc raiders?"
 msgstr "Орки ли са?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:68
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:69
 msgid "I don't think so..."
 msgstr "Не, не мисля..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:73
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:74
 msgid "We meet again Ystara."
 msgstr "Отново се срещаме, Истара."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:78
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:79
 msgid "You think you can take me, Azkotep?"
 msgstr "Мислиш, че можеш да ме надвиеш Азкотеп?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:83
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:84
 msgid ""
 "My champion, Zur shall slice you to shreds like the puny adept you once were."
 msgstr ""
 "Моят първенец Жюр ще те накълца на парчета, като хилав ученик, какъв беше "
 "някога."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:88
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:89
 msgid ""
 "You always were an arrogant little bastard. Grek will swallow your soul "
 "first, or what's left of it."
@@ -1811,7 +1812,7 @@ msgstr ""
 "Ти винаги си бил арогантно малко копеленце. Но Грак първи ще погълне душата "
 "ти или, каквото е останало от нея."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:93
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:94
 msgid ""
 "You spurned me once; I will make you pay. But enough of the past--to battle, "
 "my minions! Behold the wrath of the dead!"
@@ -1819,7 +1820,7 @@ msgstr ""
 "Ти ме отблъсна веднъж, но ще си платиш. Но стига сме говорили за минали "
 "работи - на бой верни мои слуги! Усетете гнева на мъртвите!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:98
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:99
 msgid ""
 "Great, ringside seats for an all-out battle between two undead lords. You "
 "really know how to pick a campsite, Kaleh."
@@ -1827,13 +1828,13 @@ msgstr ""
 "Страхотно, имаме места на първия ред за абсолютния двубой между двама "
 "немъртви лорда. Ама и теб те бива да избираш място за лагер, Кейлъх."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:103
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:104
 msgid ""
 "Where did they come from? I swear those castles weren't there at sunset."
 msgstr ""
 "Откъде се взеха тези? Кълна се, преди залез тия замъци изобщо ги нямаше там?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:108
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:109
 msgid ""
 "Many strange things can happen during the long dark. But despite their "
 "wraith-like forms, I have no doubt that their cold steel can still bite "
@@ -1842,7 +1843,7 @@ msgstr ""
 "Много странни неща се случват по време на Дългия мрак. И макар да изглеждат "
 "съвсем призрачно, не се съмнявам, че стоманените им остриета са смъртоносни."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:113
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:114
 msgid ""
 "Like I haven't killed enough undead recently. Why can't these guys just stay "
 "dead?"
@@ -1850,7 +1851,7 @@ msgstr ""
 "Сякаш не ми стигат немъртвите, с които се бих напоследък. Защо не може "
 "просто да си останат мъртви?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:118
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:119
 msgid ""
 "Our encampment is out of the direct line of attack, so we should be somewhat "
 "safe, at least."
@@ -1858,7 +1859,7 @@ msgstr ""
 "Поне лагерът ни не е съвсем на линията на атаката им, та би трябвало да сме "
 "относително защитени."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:123
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:124
 msgid ""
 "But our people's encampments are in danger, they'll be slaughtered by the "
 "undead hordes!"
@@ -1866,8 +1867,8 @@ msgstr ""
 "Но останалите лагери на хората ни са застрашени, немъртвите орди ще ги "
 "избият!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:129
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:130
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:135
 #, fuzzy
 msgid ""
 "There's no way we can marshal our people to escape the battle in time. We "
@@ -1876,7 +1877,7 @@ msgstr ""
 "Няма начин да организираме хората си да избягат от битката на време. Трябва "
 "да защитим всичките единадесет лагера от немъртвите."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:140
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:141
 msgid ""
 "If the undead forces reach our encampments first, they will surely be "
 "destroyed. I fear that if we lose more than half our encampments we will not "
@@ -1888,23 +1889,23 @@ msgstr ""
 "да продължим. Гейрак, събуди хората си, трябва да задържим немъртвите до "
 "зазоряване."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:145
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:146
 msgid "To arms my people, to arms!"
 msgstr "На оръжие, мъже, на оръжие!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:156
 msgid "Eloh protect us, what has he done?"
 msgstr "Елох да ни пази, какво направи той?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:160
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:161
 msgid "I live again! I can feel!"
 msgstr "Отново съм жив! Мога да чувствам!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:165
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:166
 msgid "Garak?"
 msgstr "Гейрак?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:170
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:171
 msgid ""
 "Hahahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again my minions and feast in the slaughter!"
@@ -1912,7 +1913,7 @@ msgstr ""
 "Хахахаха! Свършено е с хилавия ти приятел. С помощта на неговото тяло ще "
 "смажа всички ви. Вдигнете се, верни мои слуги, и се насладете на клането!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:175
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:180
 msgid ""
 "But look, dawn is nigh, our salvation is almost at hand. Even the Long Dark "
 "cannot last forever, and with the light of the sun the undeads' dark power "
@@ -1922,7 +1923,7 @@ msgstr ""
 "вечен, а със слънчевата светлина тъмната сила на немъртвите отслабва и "
 "магията им се разпилява!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:180
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:185
 msgid ""
 "No! I shall have my vengeance upon you all. Darkness shall reign until I "
 "have triumphed!"
@@ -1930,8 +1931,8 @@ msgstr ""
 "Не! Ще отмъстя на всички ви. Тук ще цари мрак, докато не постигна своята "
 "победа!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:192
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:199
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:197
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:204
 msgid ""
 "In this I shall support you, the sun shall not rise until one of us is "
 "victorious."
@@ -1939,7 +1940,7 @@ msgstr ""
 "Тук ще се съглася с теб, слънцето няма да изгрее, докато единият от нас не "
 "излезе победител."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:206
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:211
 msgid ""
 "Maybe I spoke too soon. Curse Uria, they have even blotted out the stars, "
 "all is darkness. Kaleh, our course is clear, we must destroy one of these "
@@ -1953,11 +1954,11 @@ msgstr ""
 "фантом, един от двамата трябва да умре, за да свърши тази битка. Нямаме "
 "избор."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:211
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:216
 msgid "But to kill Garak? How can we?"
 msgstr "Но да убием Гейрак? Как бихме могли?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:216
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:221
 msgid ""
 "That thing is not Garak. This night has lasted long enough, and too many of "
 "our people have died. How many more would you sacrifice for Garak's sake? "
@@ -1973,31 +1974,31 @@ msgstr ""
 "създания, каквото и да ни струва това. Не смятам да позволя на това ... нещо "
 "да продължи да се гаври с тялото на приятеля ни."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:228
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:235
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:233
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:240
 msgid "The stench of death is in the air."
 msgstr "Вонята на смърт изпълва въздуха."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:242
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:247
 msgid "Yes, let us end this once and for all."
 msgstr "Да, нека да приключим с това веднъж завинаги."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:249
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:254
 msgid "Kill Possessed Garak (or)"
 msgstr "Убиване на обладания Гейрак (или) "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:254
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:259
 msgid "Defeat remaining Undead Lord"
 msgstr "Побеждаване на другия Немъртъв Лорд"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:259
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:792
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:264
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:797
 msgid "You Control Less Than 6 Villages"
 msgstr "Контролирате по-малко от 6 селища"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Orcish_Foothills.cfg:295
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_Hunting_Trolls.cfg:225
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:264
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:269
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:443
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1521
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1562
@@ -2007,7 +2008,7 @@ msgstr "Контролирате по-малко от 6 селища"
 msgid "Death of Kaleh, Nym or Zhul"
 msgstr "Смъртта на Кейлъх, Ним или Жюл"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:278
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:283
 msgid ""
 "You have triumphed for the moment, but think not that the dark lords can be "
 "so easily vanquished. We shall return, and shall rule long after your bones "
@@ -2018,7 +2019,7 @@ msgstr ""
 "са са превърнали в прах. Това е нашата земя и никой няма да си тръгне оттук "
 "невредим."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:283
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:288
 msgid ""
 "You fought so hard to protect your precious people, young elf. No great deed "
 "should go unpunished."
@@ -2026,34 +2027,34 @@ msgstr ""
 "Ти се би толкова храбро, за да защитиш хората си, млади елфе. Никое добро "
 "дело не трябва да остава ненаказано."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:288
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:293
 msgid "A token to remember us by..."
 msgstr "Ето един малък жест, с който да ни помниш..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:293
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:298
 msgid "Aaaauuugggghhhh!"
 msgstr "Ааааууугггхххх!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:298
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:303
 msgid "He just collapsed!"
 msgstr "Той просто се свлече на земята!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:350
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:355
 msgid "The undead lords are defeated at last."
 msgstr "Най-после немъртвите лордове са разгромени."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:357
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:362
 msgid "Finally. It is over."
 msgstr "Свърши се, най-после."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:370
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:375
 msgid ""
 "There's too many of them and the night is almost gone. Pull back you "
 "wretches, pull back!"
 msgstr ""
 "Те са твърде многобройни, а нощта почти преваля. Назад, отрепки, назад!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:377
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:382
 msgid ""
 "I can see the first rays of Naia shining over the horizon. She never looked "
 "so beautiful. The undead forces have crumbled into dust and the remaining "
@@ -2063,15 +2064,15 @@ msgstr ""
 "е струвала толкова прекрасна. Силите на немъртвите отново се превърнаха в "
 "прах с идването на зората, а орките се оттеглиха. Но какво стана с Гейрак?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:382
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:387
 msgid "He's...He's still breathing!"
 msgstr "Той ... той още диша!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:387
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:392
 msgid "Protect the boy for me Zhul, (cough) I go to a better place."
 msgstr "Пази момчето вместо мен, Жюл, (кашля) аз отивам да по-добро място."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:398
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:403
 msgid ""
 "From the sands he came, to the sands he will return. We remember and honor "
 "his sacrifice, and I vow that his death will not be in vain. "
@@ -2079,16 +2080,16 @@ msgstr ""
 "Той дойде от пясъците и се връща в тях. Ще помним и почитаме саможертвата "
 "му, заклевам се, че тя няма да се окаже напразна. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:403
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:408
 msgid "Goodbye old friend, may Eloh shine her light eternal upon you."
 msgstr "Сбогом, стари приятелю, дано Елох те приеме във вечната си светлина."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:408
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:413
 msgid ""
 "He was as brave and valiant a fighter as I have ever seen in my travels."
 msgstr "Той беше най-смелия е достоен войн, когото съм срещал по пътя си."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:413
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:418
 msgid ""
 "He was a bastard at times.... But...but why did he have to die? It...it just "
 "doesn't make sense. "
@@ -2096,7 +2097,7 @@ msgstr ""
 "Понякога той беше направо непоносим ... Но... защо трябваше да умре? Това... "
 "е напълно безсмислено. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:430
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:435
 msgid ""
 "That was a very brave thing you did, Kaleh, defeating both of those Undead "
 "Lords. It took great courage and strength. Because of your daring attack, we "
@@ -2110,8 +2111,8 @@ msgstr ""
 "себе си. А и много повече от хората ни щяха да загинат, ако битката се беше "
 "проточила през цялата дълга нощ."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:435
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:461
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:440
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:466
 msgid ""
 "Though we saved almost all our people this time, we won't always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2124,19 +2125,19 @@ msgstr ""
 "помогнат, ако броят ни намалее, ще ни струва все по-скъпо да набираме нови "
 "войници. Вероятно ще е добре да заделим малко злато за такива случаи."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:456
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:461
 msgid "Miraculously, all of our encampments survived the night."
 msgstr "Като по чудо всичките ни лагери оцеляха тази нощ."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:473
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:478
 msgid "Well, only $village_counter encampments remain, but we shall survive."
 msgstr "Е, останаха само $village_counter лагера, но все пак ще се оправим."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:478
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:483
 msgid "Yes, but at what cost?"
 msgstr "Да, но на каква цена?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:490
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:495
 msgid ""
 "Though we saved almost all our people this time, we won't always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2150,7 +2151,7 @@ msgstr ""
 "набираме нови войници. Вероятно ще е добре да заделим малко злато за такива "
 "случаи."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:509
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:514
 msgid ""
 "We have suffered losses, but we we are not broken yet. We have saved most of "
 "our people tonight. But while elves who have fought with you in the past "
@@ -2164,7 +2165,7 @@ msgstr ""
 "скъпо да набираме нови войници. Вероятно ще е добре да заделим малко злато "
 "за такива случаи."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:521
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:526
 msgid ""
 "We have suffered grievous losses, but we we are not broken yet. Long will "
 "this slaughter be remembered by our people. Where was Eloh during the "
@@ -2179,7 +2180,7 @@ msgstr ""
 "нуждаем от тях, ще ни струва все по-скъпо да набираме нови войници. Вероятно "
 "ще е добре да заделим малко злато за такива случаи."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:539
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:544
 msgid ""
 "All this death and destruction. What were those shades arguing over? Was "
 "this all just some sort of demented game?"
@@ -2187,7 +2188,7 @@ msgstr ""
 "Цялата тази смърт и унищожение. За какво спореха онези два демона? Това само "
 "някаква извратена игра ли беше?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:544
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:549
 msgid ""
 "The lords of the dead are powerful and twisted indeed. Only Eloh knows the "
 "truth of what happened tonight."
@@ -2195,7 +2196,7 @@ msgstr ""
 "Лордовете на немъртвите наистина са могъщи и извратени. Само Елох знае какво "
 "наистина стана тази нощ."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:549
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:554
 msgid ""
 "I don't want to be here tomorrow night to find out. The hills to the north "
 "are close. Let's be far away before another nightfall."
@@ -2203,40 +2204,39 @@ msgstr ""
 "Не искам да съм тук и утре вечер, за да си изясня. Северните хълмове са "
 "съвсем близо. Да е постараем да се отдалечим максимално преди следващата нощ."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:571
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1573
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1449
 msgid "Azkotep"
 msgstr "Азкотеп"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:632
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1653
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:637
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1532
 msgid "Ystara"
 msgstr "Истара"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:782
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:787
 msgid "Survive Until Dawn (or)"
 msgstr "Оцеляване до зората (или) "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:792
 msgid "Defeat all Undead Leaders"
 msgstr "Побеждаване на всички Немъртви водачи"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:924
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:929
 msgid "Zur"
 msgstr "Жюр"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:927
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:929
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:931
 msgid "Grak"
 msgstr "Грак"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:975
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:976
 msgid "Curse you! I will not forget this. You will rue this night."
 msgstr ""
 "Проклет да си! Няма да забравя това, а тази нощ ти ще се разкайваш за "
 "стореното!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:998
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:999
 msgid "Noooooo! I shall have my revenge!"
 msgstr "Нееееееееее! Аз ще постигна своето отмъщение!"
 
@@ -2283,23 +2283,17 @@ msgstr ""
 "Ако някои от онези нападатели завладеят лагерите ни, опасявам се, че съдбата "
 "на хората, няма да е много по-добра, отколкото ако ги завладеят немъртвите."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1219
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1768
-msgid "They're raising the corpses of our slain people! What a horrible fate!"
-msgstr "Те въздигат телата на падналите ни другари! Каква ужасна съдба!"
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1208
+msgid "Possessed Garak"
+msgstr "Обсебеният Гейрак"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1224
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1773
-msgid "Then we shall have to give them a proper cremation."
-msgstr "Тогава е най-добре да ги кремираме."
-
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1264
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1336
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1411
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1276
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1301
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1334
 msgid "I can just barely see the sun poking over the dunes. It is almost dawn!"
 msgstr "Почти мога да видя как слънцето се показва над дюните. Почти е утро!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1269
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1281
 msgid ""
 "No! This contest is not over yet, Azkotep. I shall show you a taste of my "
 "true power."
@@ -2307,13 +2301,7 @@ msgstr ""
 "Не! Тази надпревара още не е приключила, Азкотеп. Ще ти покажа истинската си "
 "мощ."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1317
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1389
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1461
-msgid "Possessed Garak"
-msgstr "Обсебеният Гейрак"
-
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1341
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1306
 msgid ""
 "No, I shall have my revenge. I shall show you that darkness is strongest "
 "just before dawn. I call upon the lord of death and decay, grant me my "
@@ -2323,7 +2311,7 @@ msgstr ""
 "зората. Призовавам те боже на смъртта и разрухата, помогни ми да бъда "
 "отмъстен!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1416
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1339
 msgid ""
 "No, I shall have my revenge. I shall show you that darkness is strongest "
 "just before dawn. I call upon the powers of disease and despair, grant me my "
@@ -2333,20 +2321,20 @@ msgstr ""
 "зората. Призовавам силите на отчаянието и страданието, помогнете ми да "
 "постигна победата!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1496
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1532
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1372
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1408
 msgid ""
 "Hah, now you have learned the flesh is always weaker than the powers of the "
 "undead."
 msgstr ""
 "Ха, ето сега научи, че плътта винаги е по-слаба от силата на немъртвите."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1514
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1390
 msgid "My undead zombies shall always defeat the living."
 msgstr "Немъртвите ми зомбита винаги ще надвиват живите."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1580
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1456
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1540
 msgid ""
 "You think you have defeated me, don't you? Foolish boy, I shall assume a new "
 "form more powerful and horrible than you could ever imagine!"
@@ -2354,8 +2342,8 @@ msgstr ""
 "Мислиш, че си ме надвил, така ли, глупаво момче? Ще приема нова форма - по-"
 "могъща и ужасна, отколкото можеш да си представиш."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1585
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1461
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1545
 msgid ""
 "How dare you interfere in our contest! I did not need your help. I shall "
 "teach you not to cross a lord of darkness."
@@ -2363,8 +2351,8 @@ msgstr ""
 "Как смееш да се намесваш в битката помежду ни! Не ми е нужна помощта ти. Ще "
 "ти покажа веднъж завинаги, че не трябва да пресичаш пътя на един тъмен лорд."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1599
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1478
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1562
 msgid ""
 "See, I told you I was more powerful. This game is over, now I can leave this "
 "shell of a body."
@@ -2372,7 +2360,15 @@ msgstr ""
 "Видя ли, казах ти, че аз съм по-силен. Край на играта, вече мога да изоставя "
 "това кухо тяло."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1816
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1650
+msgid "They're raising the corpses of our slain people! What a horrible fate!"
+msgstr "Те въздигат телата на падналите ни другари! Каква ужасна съдба!"
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1655
+msgid "Then we shall have to give them a proper cremation."
+msgstr "Тогава е най-добре да ги кремираме."
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1698
 msgid ""
 "Too many of our people have been killed. We will surely be overwhelmed by "
 "the undead now. All is lost!"
@@ -2380,7 +2376,7 @@ msgstr ""
 "Твърде много от хората ни са убити. Сега вече немъртвите със сигурност ще ни "
 "надвият. Всичко е изгубено!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1832
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:1714
 msgid ""
 "This darkness will never end, and the undead will soon overwhelm us. I'm "
 "sorry Garak, we couldn't save you."
@@ -6180,7 +6176,7 @@ msgstr "Е, колкото по-бързо се измъкнем от тук, т
 msgid "Wait, did you feel that?"
 msgstr "Момент, усетихте ли това?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1075
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1083
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:1056
 msgid "What?"
 msgstr "Кое?"
@@ -7595,7 +7591,7 @@ msgstr ""
 "пясъчни дюни, но в центъра си е равна. Там изглежда има някакво селище. А "
 "далеч на север виждам нещо искрящо, но не знам какво е то."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1027
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1035
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_Final.cfg:541
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1893
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4418
@@ -8557,17 +8553,17 @@ msgid "Blood is Thicker than Water"
 msgstr "Кръвта вода не става"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:67
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3707
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3720
 msgid "Darius"
 msgstr "Дариъс"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:207
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3685
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3698
 msgid "Zelgant"
 msgstr "Зелгант"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:262
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3663
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3676
 msgid "Alastra"
 msgstr "Аластра"
 
@@ -8635,14 +8631,14 @@ msgid "Rescue at least two merfolk by turn 16"
 msgstr "Спасяване на поне двама океаниди до ход 16"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:656
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1278
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3473
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1286
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3486
 msgid "Three merfolk must survive"
 msgstr "Трима океанди трябва да оцелеят"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:660
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1282
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3477
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1290
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3490
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:731
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1294
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Island.cfg:1437
@@ -8760,27 +8756,15 @@ msgstr "Някой идва. Бързо, скрийте се!"
 msgid "What? Huh?"
 msgstr "Какво? А?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:798
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:799
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:911
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:915
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:916
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:920
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:924
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:928
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:932
-msgid "Human Scout"
-msgstr "Човешки разузнавач"
-
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:803
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:811
 msgid "Hey, what do we have here?"
 msgstr "Хей, какво с имаме тук?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:816
 msgid "Uh....Uh..."
 msgstr "Ъъ...ъъ..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:813
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:821
 msgid ""
 "It's another one of those fish creatures. It must have come back to try to "
 "rescue its friends. "
@@ -8788,7 +8772,7 @@ msgstr ""
 "Това е още едно от ония рибешки създания. Сигурно е дошло да се опита да "
 "спаси приятелите си. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:818
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:826
 msgid ""
 "Ha, stupid creature. But we're in luck, the council was looking for the last "
 "of these spies."
@@ -8796,7 +8780,7 @@ msgstr ""
 "Ха, глупаво създание. Ние обаче сме късметлии, съветът издирва последния от "
 "тия шпиони."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:823
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:831
 msgid ""
 "We'd better get him back to the base. They're going to sacrifice them all in "
 "some big holy ceremony at dawn just two days from now."
@@ -8804,34 +8788,34 @@ msgstr ""
 "Най-добре да го занесем в базата. Само след два дни по изгрев ще ги принесат "
 "всички в жертва по време на някаква голяма свещена церемония."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:828
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:836
 msgid "Yeah, we'll be heroes!"
 msgstr "Да, ще станем герои!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:834
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:842
 msgid "Not if we gut you first. Attack!"
 msgstr "Не ако ние ви докопаме първи. Атака!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:839
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:847
 msgid "The Dark Lady protect us, they're elves!"
 msgstr "Тъмната Господарка да ни е на помощ, това са елфи!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:844
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:852
 msgid "There's tons of them! Flee, we must warn the others!"
 msgstr "Страшно са много! Бягайте, трябва да предупредим останалите!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:872
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:880
 msgid "Well, so much for the element of surprise."
 msgstr "Тъй, сега вече няма да можем да ги изненадаме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:877
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:885
 msgid ""
 "Thank you. I'm sorry, I don't know what came over me. They just jumped out "
 "of nowhere."
 msgstr ""
 "Благодаря. Съжалявам, не знам какво ми стана, те просто изскочиха отникъде."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:883
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:891
 msgid ""
 "It's okay, you're not used to being on dry ground, and you've been through a "
 "lot. Even if the humans know we're coming, we can still take them. Just be "
@@ -8841,7 +8825,7 @@ msgstr ""
 "Въпреки, че няма да можем да ги нападнем изненадващо, все още имаме шанс да "
 "победим хората. Само внимавай и стой отзад, докато стигнем водата."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:888
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:896
 msgid ""
 "I sure will look forward to that. I'm afraid my scales have all dried out "
 "again. It itches something terrible."
@@ -8849,7 +8833,7 @@ msgstr ""
 "Нямам търпение да се върна във водата. Люспите ми отново напълно изсъхнаха и "
 "ужасно много ме сърби."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:894
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:902
 msgid ""
 "Well if we're going to save those merfolk, then we don't have any time to "
 "lose. The humans said they would be sacrificed in just two days. We'd better "
@@ -8861,26 +8845,36 @@ msgstr ""
 "направим лагер тук и да тръгнем на северозапад възможно най-бързо. Дано само "
 "успеем да стигнем навреме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:938
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:941
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:944
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:947
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:919
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:923
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:924
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:928
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:932
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:936
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:940
+msgid "Human Scout"
+msgstr "Човешки разузнавач"
+
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:946
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:949
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:952
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:955
 msgid "Human Soldier"
 msgstr "Човешки войник"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:989
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:997
 msgid "Tanstafaal"
 msgstr "Танстафал"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1004
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1012
 msgid "Hail, my brothers, I have returned!"
 msgstr "Привет, братя мои, върнах се!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1010
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1018
 msgid "Tanstafaal, where have you been? We have been looking for you."
 msgstr "Танстафал, къде беше, търсихме те?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1015
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1023
 msgid ""
 "I have gone on a journey and I have seen the light. No longer will I blindly "
 "follow in your footsteps, Kaleh. I have come back to lead our people on the "
@@ -8891,53 +8885,53 @@ msgstr ""
 "Върнах се, за да поведа хората ни по правия път. Тя ми проговори и аз съм "
 "вече само инструмент на нейната божествена воля."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1021
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1029
 msgid "Who has spoken to you?"
 msgstr "Кой ти е проговорил?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1039
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1047
 msgid ""
 "Behold, our goddess has returned to us. All bow down to Eloh, our savior!"
 msgstr ""
 "Чуйте, нашата богиня се върна при нас. Поклонете се всички на Елох, нашата "
 "спасителка!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1045
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1053
 msgid "The Goddess!"
 msgstr "Богинята!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1051
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1059
 msgid "Forgive me my sins!"
 msgstr "Прости ми греховете ми!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1057
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1065
 msgid "That I am so blessed to gaze upon Eloh herself..."
 msgstr "Какво благоволение, да видя самата Елох..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1063
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1071
 msgid ""
 "Hail my people. In your time of trial I appear to you, to save you yet again."
 msgstr ""
 "Привет, народе мой, Сега, в тези трудни времена, аз ви се явявам, за да ви "
 "спася отново."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1069
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1077
 msgid ""
 "I come to you with dire news: one of you has betrayed me, and is a traitor "
 "to your cause."
 msgstr ""
 "Нося ви обаче лоши новини: един от вас ме предаде и измени на каузата ви."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1081
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1089
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Fish.cfg:377
 msgid "No!"
 msgstr "Не!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1087
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1095
 msgid "Who?"
 msgstr "Кой?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1093
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1101
 msgid ""
 "Did I not say that I would deliver you from evil and bring you to the "
 "promised land? I have shepherded you out of the harsh deserts and under the "
@@ -8947,7 +8941,7 @@ msgstr ""
 "земя? Насочвах стъпките ви през суровата пустиня и под планините. Спасението "
 "ви беше почти постигнато."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1099
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1107
 msgid ""
 "But there was one who grew corrupted by his power and rejected my divine "
 "plan. He sought to usurp my authority. He had no faith and believed that he "
@@ -8961,7 +8955,7 @@ msgstr ""
 "от поколения. Той искаше да ви отклони от правия път. В тези опасни земи, "
 "съдбата на вашето пътуване виси на косъм, една грешка и всичко ще пропадне."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1105
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1113
 msgid ""
 "Yes, I speak of your so-called leader, Kaleh. I did call out to him "
 "initially because I thought he was one of the faithful, but he betrayed my "
@@ -8977,7 +8971,7 @@ msgstr ""
 "Ако го последвате, той ще ви накара да се кланяте на ужасния бог на морските "
 "хора."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1111
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1119
 msgid ""
 "That is why I called out to Tanstafaal, one of my loyal followers. All is "
 "not yet lost. Follow him and I can still deliver you from your peril. But "
@@ -8989,7 +8983,7 @@ msgstr ""
 "първо се върнете при мен, спрете боя с тези хора и убийте еретика Кейлъх и "
 "неговите сподвижници."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1124
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1132
 msgid ""
 "Wait, my people, do not be deceived. This thing that appears by Tanstafaal's "
 "side is not our god. I too was fooled at first, but I have come to realize "
@@ -9009,7 +9003,7 @@ msgstr ""
 "подчиня на хората, иначе щяла да ме унищожи. Елох никога не е заплашвала "
 "някой от нас, нито ни е нареждала как да постъпваме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1130
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1138
 msgid ""
 "Why should we trust you? We have not heard Eloh's words directly. Only now "
 "that you have led us into this folly has Eloh appeared to us."
@@ -9018,7 +9012,7 @@ msgstr ""
 "ти си чул от нея. Едва сега, когато ти ни забърка в тази лудост, Елох се "
 "явява пред нас."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1144
 msgid ""
 "She claims to be the one who has shepherded us during his journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -9040,7 +9034,7 @@ msgstr ""
 "елфите винаги сме били свободни да вземаме сами решения. Ние не сме роби и "
 "няма сляпо да следваме нито хора, нито измамни богове."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1144
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1152
 msgid ""
 "Wait, my people, do not be deceived. This thing that appears by Tanstafaal's "
 "side is not our god. I too was fooled at first, but I have come to realize "
@@ -9060,7 +9054,7 @@ msgstr ""
 "на хората, иначе щяла да ме унищожи. Елох никога не е заплашвала някой от "
 "нас, нито ни е нареждала как да постъпваме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1151
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1159
 msgid ""
 "Why should we trust you? We have not heard these words directly. Only now "
 "that you have led us into this folly has she appeared to us. "
@@ -9069,7 +9063,7 @@ msgstr ""
 "ти си чул от нея. Едва сега, когато ти ни забърка в тази лудост, Елох се "
 "явява пред нас. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1157
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1165
 msgid ""
 "She claims to be the one who has shepherded us during his journey, but who "
 "protected you across the harsh sands, who fought the orcs and led you under "
@@ -9091,7 +9085,7 @@ msgstr ""
 "елфите винаги сме били свободни да вземаме сами решения. Ние не сме роби и "
 "няма сляпо да следваме нито хора, нито измамни богове."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1164
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1172
 msgid ""
 "Your words are meaningless, Kaleh. My brethren, Eloh has appeared to you. "
 "She has spoken. Defy her at your own peril. I declare all who oppose Eloh "
@@ -9102,7 +9096,7 @@ msgstr ""
 "всички, които отричат Елох за еретици.Всички вие, които сте верни на "
 "богинята, присъединете се към мен и да унищожим измамниците."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1170
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1178
 msgid ""
 "Eloh would never ask elf to kill elf. But it seems I have little choice. My "
 "people, I have led you this far, join with me and help me crush this new "
@@ -9112,7 +9106,7 @@ msgstr ""
 "избор. Събратя мои, доведох ви чак до тук, присъединете се към мен и ми "
 "помогнете да прекратим това отцепничество!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1176
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1184
 msgid ""
 "I have followed you this far Kaleh, I will not abandon you now. But I admit "
 "that my faith is shaken. If that is not our god, than what is it?"
@@ -9121,7 +9115,7 @@ msgstr ""
 "призная, че вярата ми е разклатена. Ако това не е нашата богиня, тогава коя "
 "е?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1190
 msgid ""
 "I do not know, but given what I have seen of the humans, I think following "
 "her would lead us down a dark road indeed. One that I personally do not want "
@@ -9131,13 +9125,13 @@ msgstr ""
 "пропаднем в мрака. Лично аз не бих искал да видя накъде ще ме отведе подобна "
 "мрачна пътека."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1188
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1196
 msgid ""
 "Forgive me, Kaleh. I do not know what to believe. I...I have to ponder this."
 msgstr ""
 "Прости ми, Кейлъх, не знам в какво да вярвам. Аз...аз трябва да обмисля това."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1201
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1209
 msgid ""
 "The chieftain told me to serve you, and it will take more than this to "
 "shatter my confidence in you, lad. But those elves must be out on a "
@@ -9147,7 +9141,7 @@ msgstr ""
 "да разклати доверието ми в теб, момко. Обаче останалите елфи трябва да се "
 "намират на отделен остров, как ще прекосим дълбоката вода?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1209
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1217
 msgid ""
 "Great Leader told $ally_name to serve you, and so $ally_name will still "
 "follow your command. But other elves must be out on a separate island. How "
@@ -9157,7 +9151,7 @@ msgstr ""
 "слуша твоята дума. Но другите елфи трябва да са на отделен остров. Как ще "
 "прекосим дълбоката вода?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1218
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1226
 msgid ""
 "I believe that in this we can help. We are very grateful for all you have "
 "done for us Kaleh, and though we assure that we mean you no harm, you are "
@@ -9173,7 +9167,7 @@ msgstr ""
 "към острова, където би трябвало да се останалите елфи. Ще ти покажем тези "
 "бродове, за да преминеш и потушиш този бунт."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1254
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1262
 msgid ""
 "Thank you, I'm sure you will be very useful in the shallow waters. All right "
 "people, I don't want to kill any more than I have to. Too much blood has "
@@ -9186,7 +9180,7 @@ msgstr ""
 "трябва да спрем Танстафал и безумното му деяние преди да ни е унищожил "
 "всички."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1260
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1268
 msgid ""
 "We who have fought by your side before will stand with you Kaleh, but many "
 "of our people are fleeing and joining Tanstafaal. I'm afraid that while you "
@@ -9197,30 +9191,30 @@ msgstr ""
 "за тази битка, ще можеш да привикаш само стари войници, но не и да набереш "
 "нови."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1266
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1274
 msgid "Then we will make do with those few that we have."
 msgstr "Тогава ще трябва да се справим с малкото, с които разполагаме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1274
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1282
 msgid "Defeat Tanstafaal and Eloh"
 msgstr "Побеждаване на Танстафал и Елох"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1298
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1300
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1302
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1304
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1306
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1308
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1310
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1312
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1314
 msgid "Elvish Rebel"
 msgstr "Елф бунтовник"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1402
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1410
 msgid ""
 "Wonderful! We have rescued all of my band from the humans. I cannot thank "
 "you enough."
 msgstr ""
 "Чудесно, спасихме цялата ми група от хората, не знам как да ви благодаря."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1407
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1415
 msgid ""
 "Indeed, we owe you a great debt. You have done well Esanoo, better than I "
 "could have hoped."
@@ -9228,7 +9222,7 @@ msgstr ""
 "Наистина, ние сме ви длъжници. Справи се добре, Есану, по-добре, отколкото "
 "очаквах."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1415
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1423
 msgid ""
 "Esanoo said there were five merfolk left in his band. I think we have "
 "rescued them all!"
@@ -9236,7 +9230,7 @@ msgstr ""
 "Есану каза, че освен него в групата му е имало още петима океаниди, мисля, "
 "че ги спасихме всички!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1420
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1428
 msgid ""
 "Indeed, I think you have now freed all of us. We owe you a great debt. We "
 "are sorry that Esanoo has fallen, but we will honor him and tell everyone "
@@ -9248,7 +9242,7 @@ msgstr ""
 "сме, че той ви откри и ви доведе при нас. Дори най-малката рибка понякога "
 "може да преобърне морето."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1441
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1449
 msgid ""
 "Curse them! The elves have freed the merfolk. We will be have our vengeance. "
 "Keep fighting, and execute plan C!"
@@ -9256,36 +9250,36 @@ msgstr ""
 "Проклети да са! Елфите освободиха океанидите. Но ние ще си отмъстим. Битката "
 "продължава, минаваме към план С!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1446
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1576
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2771
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2901
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1454
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1585
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2780
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2910
 msgid "I must go report to the Iron Council. Keep fighting!"
 msgstr "Трябва да отида да докладвам на Железния Съвет. Поддържайте боя!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1468
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1552
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2793
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2877
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1476
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1561
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2802
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2886
 msgid ""
 "I go to marshall reinforcements. Do not lose heart, we will crush these puny "
 "elves."
 msgstr "Ще осигуря подкрепления. Не губете кураж, ще смажем тези хилави елфи."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1492
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2817
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1500
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2826
 msgid "I must leave for now, fight on in my stead."
 msgstr "За сега трябва да ви оставя, бийте се и заради мен."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1518
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2567
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2843
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3263
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1526
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2852
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3276
 msgid "Hekuba"
 msgstr "Хекуба"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1522
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2847
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1531
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2856
 msgid ""
 "Curse them! The elves have stolen our offering to the Lady. We will have our "
 "vengeance. Keep fighting and execute plan C!"
@@ -9293,13 +9287,13 @@ msgstr ""
 "Проклети да са! Елфите отмъкнаха онези, които щяхме да принесем в жертва на "
 "Господарката. Но ние ще си отмъстим. Битката продължава, минаваме към план С!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1534
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2859
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1543
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2868
 msgid "Who was that?"
 msgstr "Кой беше това?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1539
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2864
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1548
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2873
 msgid ""
 "That was one of the Iron Triad. Rarely do they leave their sanctuary. They "
 "prefer to let their minions do the dirty work."
@@ -9307,21 +9301,21 @@ msgstr ""
 "Това беше един от Желязната Троица. Те толкова рядко напускат светилището. "
 "Предпочитат слугите им да им вършат мръсната работа."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1657
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1666
 msgid "Urruga"
 msgstr "Уруга"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1683
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1692
 msgid ""
 "Free at last. Thanks be to the Sea God. But wait a minute, you're elves!?! "
 msgstr ""
 "Най-после свободни, слава на Морския бог. Но я чакайте малко, вие сте "
 "елфи!?! "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1688
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1802
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1921
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2035
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1697
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1811
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1930
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2044
 msgid ""
 "I have returned with the elves we sought. They have agreed to help me rescue "
 "the rest of our group from the foul humans."
@@ -9329,10 +9323,10 @@ msgstr ""
 "Върнах се с елфите, които търсехме. Те се съгласиха да ми помогнат да спасим "
 "останалите от нашата група от ръцете на проклетите човеци."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1693
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1807
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1926
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2040
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1702
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1816
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1935
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2049
 msgid ""
 "Indeed you have done well, far better than I could have hoped. We shall talk "
 "more later, but for now we have to free the rest of our brethren."
@@ -9340,10 +9334,10 @@ msgstr ""
 "Добре си се справил. По-добре, отколкото очаквах. Ще поговорим повече по-"
 "късно, но сега трябва да освободим и останалите си събратя."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1701
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1815
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1934
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2048
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1710
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1824
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1943
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2057
 msgid ""
 "Greetings. Esanoo told us that you were looking for us, and he bravely led "
 "us here. Though he has fallen in combat, we have come to rescue the rest of "
@@ -9352,10 +9346,10 @@ msgstr ""
 "Привет. Есану ни каза, че ни търсите, и храбро ни доведе тук. Той падна в "
 "боя, но въпреки това ние дойдохме, за да спасим вас."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1706
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1820
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1939
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2053
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1715
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1829
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1948
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2062
 msgid ""
 "Yes, I recognize your face, young elf. We will remember Esanoo's sacrifice. "
 "But for now we must rescue the rest of my brethren before they too are slain "
@@ -9364,21 +9358,21 @@ msgstr ""
 "Да, разпознавам лицето ти, млади елфе. Ще запомним саможертвата на Есану. Но "
 "сега трябва да спасим останалите ми събратя, преди хората да са ги погубили."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1712
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1826
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1945
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2059
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1721
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1954
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2068
 msgid "How could he recognize your face? We've never seen him before."
 msgstr "Как тъй разпознава лицето ти? Та ние не сме се срещали преди."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1718
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1832
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1951
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2065
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1727
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1841
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1960
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2074
 msgid "We'll ask later, for now we've got to keep fighting."
 msgstr "Ще го попитаме по-късно, сега битката още не е приключила."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1727
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1736
 msgid ""
 "Thank you for rescuing me. We'll show those humans the true fury of the "
 "merfolk!"
@@ -9386,11 +9380,11 @@ msgstr ""
 "Благодаря, че ме спасихте. Ще покажем на тези човеци истинската сила на "
 "разгневените океаниди!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1776
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1785
 msgid "Nuvassa"
 msgstr "Нюваса"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1841
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1850
 msgid ""
 "Thank you for rescuing me. You elves are very skilled at fighting on the dry "
 "land. I envy you."
@@ -9398,15 +9392,15 @@ msgstr ""
 "Благодаря, че ме спасихте. Вие елфите толкова умело се биете на сушата, "
 "завиждам ви."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1846
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1855
 msgid "As I envy your kind's prowess when fighting in the water."
 msgstr "Аз пък завиждам на вашето майсторство при битките във водата."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1895
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1904
 msgid "Yantili"
 msgstr "Янтили"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1960
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:1969
 msgid ""
 "Thank you for rescuing me. I never imagined that we would actually be able "
 "to find you elves. Our master was right after all. But more of that later..."
@@ -9414,11 +9408,11 @@ msgstr ""
 "Благодаря, че ме спасихте. Не вярвах, че ще успеем да ви открием, елфи. "
 "Господарката ни беше права все пак. Но по-късно ще говорим повече..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2009
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2018
 msgid "Il-tian"
 msgstr "Ил-тян"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2074
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2083
 msgid ""
 "Thank you for rescuing me. May the Sea God's bounty bless you and protect "
 "you. If you have any wounded I can help heal them. The blades of the vile "
@@ -9427,26 +9421,26 @@ msgstr ""
 "Благодаря, че ме спасихте. Дано Морския бог ви благослови и закриля. Ако "
 "имате ранени, аз мога да ги излекувам. Човешките остриета са наистина ужасни."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2119
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2128
 msgid "What a dark nasty place. Something smells horrible."
 msgstr "Какво ужасно тъмно място. Нещо вони ужасно."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2123
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2124
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2126
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2127
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2133
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2136
 msgid "Undead Warden"
 msgstr "Немъртъв пазач"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2164
 msgid "We-jial"
 msgstr "Уе-джайл"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2168
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2177
 msgid "Thank you for rescuing me. How did you manage to escape?"
 msgstr "Благодаря, че ме спасихте. Как успяхте да избягате?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2173
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2182
 msgid ""
 "Esanoo found the elves that we were searching for. He brought them back and "
 "they helped free us. I can't believe the humans imprisoned you in such a "
@@ -9458,7 +9452,7 @@ msgstr ""
 "място. Да прекараш толкова време в мрака с всички тези немъртви. Ще ги "
 "накараме да си платят за всичко, което са ти причинили."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2178
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2187
 msgid ""
 "Do not worry yourself, now that I am free all will be set to rights. It is "
 "not our mission to defeat all the evil in this world. Protecting the elves "
@@ -9468,11 +9462,11 @@ msgstr ""
 "се очаква да победим всяко зло в този свят. Най-важното е да защитим елфите "
 "и да ги заведем при Господарката. Всичко друго е по-маловажно."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2183
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2192
 msgid "Yes, you are right, of course. Pardon me."
 msgstr "Така е, прав си, извини ме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2250
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2259
 msgid ""
 "No, too many merfolk have died! There are not enough of them left to divine "
 "the location of their master. We should have protected the merfolk more "
@@ -9482,7 +9476,7 @@ msgstr ""
 "местонахождението на господарката си. Трябваше да ги пазим по-внимателно. "
 "Сега нямаме надежда да я открием."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2313
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2322
 msgid ""
 "Too many merfolk have died! Even if we save the rest, there will not be "
 "enough for them to divine the location of their master. We should have "
@@ -9492,7 +9486,7 @@ msgstr ""
 "достатъчно да открият местонахождението на господарката си. Трябваше да ги "
 "пазим по-внимателно. Сега нямаме надежда да я открием."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2374
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2383
 msgid ""
 "Woah, this water is warm. Imagine if we had this back home, more water than "
 "I could drink in a lifetime! Hey...wait a minute. Paugh! This water is "
@@ -9504,7 +9498,7 @@ msgstr ""
 "чакай. Пфу! Тази вода е солена! Има ужасен вкус и не мога да я пия! Каква "
 "полза от толкова вода, ако не може да се пие?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2409
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2418
 msgid ""
 "It really is beautiful out here, looking out over the sparkling water. If I "
 "didn't have vile humans and traitorous elves at my back I could spend all "
@@ -9516,7 +9510,7 @@ msgstr ""
 "можех да прекарам тук. Но трябва да се връщам към битката. Ех, животът не е "
 "лек."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2416
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2425
 msgid ""
 "It really is beautiful out here, looking out over the sparkling water. If I "
 "didn't have vile humans and Eloh knows what else at my back I could spend "
@@ -9528,7 +9522,7 @@ msgstr ""
 "цял ден можех да прекарам тук. Но трябва да се връщам към битката. Ех, "
 "животът не е лек."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2435
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2444
 msgid ""
 "If I was a landwalker, I might think the view from this sandbar to be "
 "amazing. But I am a creature of the sea and I see views like this every day."
@@ -9537,7 +9531,7 @@ msgstr ""
 "от тази пясъчна ивица е изумителна. Но аз съм морско същество и подобни "
 "гледки са ми всеки ден пред очите."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2458
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2467
 msgid ""
 "You trespass upon our land at your own peril. All who oppose the will of the "
 "Iron Council shall be crushed!"
@@ -9545,7 +9539,7 @@ msgstr ""
 "Навлизате на наша територия на собствена отговорност. Всеки, който се "
 "противопостави на волята на Железния Съвет, ще бъде смазан!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2481
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2490
 msgid ""
 "Foolish elves. We have heard of your pitiful kind. You are but worms "
 "compared to the might of the Dark Lady. Coming here shall be your undoing."
@@ -9553,7 +9547,7 @@ msgstr ""
 "Глупави елфи, чували сме за вашия жалък род. Вие сте червеи в сравнение с "
 "мощта на Тъмната Господарка. Тук ще намерите гибелта си."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2504
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2513
 msgid ""
 "She said you would come. You may be able to defeat us, but none can defy "
 "her. You will bow down in the end. It is your destiny."
@@ -9561,7 +9555,7 @@ msgstr ""
 "Тя каза, че вие ще се появите. Може да успеете да ни победите, но нея никой "
 "не може да победи. Накрая ще й се поклоните, това е съдбата, която ви чака."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2554
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2563
 msgid ""
 "The time has come. On this most holy day, let us sacrifice these infidels "
 "unto the Dark Lady. Their suffering shall be a testament to her power and "
@@ -9571,7 +9565,7 @@ msgstr ""
 "на Тъмната Господарка. Тяхното страдание ще е свидетелство за нейната сила и "
 "мощ!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2571
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2580
 msgid ""
 "The time has come, my brethren. On this most holy day, let us sacrifice "
 "these infidels unto The Dark Lady. Their suffering shall be a testament to "
@@ -9581,7 +9575,7 @@ msgstr ""
 "неверници в жертва на Тъмната Господарка. Тяхното страдание ще е "
 "свидетелство за нейната сила и мощ!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2623
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2632
 msgid ""
 "Oh no! Our enchantress, We-jial. Where did they hide her? What horrible fate "
 "has befallen her? If only we could have saved her in time. "
@@ -9589,7 +9583,7 @@ msgstr ""
 "О, не! Нашата заклинателка, Уе-джайл, къде ли са я скрили? Каква ли ужасна "
 "съдба я е сполетяла? Само ако бяхме успели да я спасим навреме. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2628
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2637
 msgid ""
 "The Sea God will carry her soul out to sea and bear it to the deeps. May he "
 "watch over her until the day we are all together again."
@@ -9597,7 +9591,7 @@ msgstr ""
 "Морският бог ще пренесе душата й в морето и ще я положи в дълбините му. Дано "
 "той се погрижи за нея до деня, когато всички ще сме отново заедно."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2636
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2645
 msgid ""
 "Esanoo said there were five merfolk captured. We only found four. Where did "
 "they hide the last one? What horrible fate has befallen her?"
@@ -9606,7 +9600,7 @@ msgstr ""
 "четирима. Къде ли са сложили последната от тях? Каква ли ужасна съдба я е "
 "сполетяла?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2641
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2650
 msgid ""
 "They took We-jial, our enchantress, away from us. But she is at peace now. "
 "The Sea God will carry her soul out to sea and bear it to the deeps. May he "
@@ -9617,18 +9611,18 @@ msgstr ""
 "дълбините му. Дано той се погрижи за нея до деня, когато всички ще сме "
 "отново заедно."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2651
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2660
 msgid "The bars of the cages are smoking and glowing red hot!"
 msgstr "Решетките на клетките димят и са нагряти до червено!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2662
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2671
 msgid ""
 "May the Sea God protect us. They are being burnt alive! It's terrible, I "
 "can't bear to watch."
 msgstr "Морският бог да ни пази, изгарят ги живи. Ужасно е, не мога да гледам."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2667
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2676
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2689
 msgid ""
 "The Sea God will carry their souls out to sea and bear them to the deeps. "
 "May he watch over them until the day we are all together again."
@@ -9636,7 +9630,7 @@ msgstr ""
 "Морският бог ще пренесе душите им в морето и ще и положи в дълбините му. "
 "Дано той се погрижи за тях до деня, когато всички ще сме отново заедно."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2675
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2684
 msgid ""
 "Eloh protect us. They are being burnt alive! I do not know what the purpose "
 "of the unholy sacrifice is, but it is sickening to watch."
@@ -9644,11 +9638,11 @@ msgstr ""
 "Елох да ни пази, изгарят ги живи! Не знам каква е целта на това нечестиво "
 "жертвоприношение, но от гледката ми прилошава."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2723
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2732
 msgid "They are all dead. We were too late. Forgive me master."
 msgstr "Закъсняхме, всички са мъртви. Прости ми, господарке."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2738
 msgid ""
 "We couldn't save enough of the merfolk. We have failed. Now we shall never "
 "be able to meet the merfolk's leader!"
@@ -9656,7 +9650,7 @@ msgstr ""
 "Провалихме се, не успяхме да спасим достатъчно от океанидите. Сега вече "
 "никога няма да се срещнем с господарката им!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2745
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2754
 msgid ""
 "Oh Master, forgive me. I could not save them all in time. Vile humans, you "
 "shall pay twice over for what you have done!"
@@ -9664,7 +9658,7 @@ msgstr ""
 "О, Господарке, прости ми, не можах да ги спася всички навреме. Зли човеци, "
 "ще си платите двойно за всичко, което сторихте!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2766
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2775
 msgid ""
 "The stinkin' elves have freed some of the merfolk. And still they fight on. "
 "Execute plan B. And kill those merfolk!"
@@ -9672,7 +9666,7 @@ msgstr ""
 "Противните елфи освободиха част от океанидите и продължават да настъпват. "
 "Минаваме към план В. И избийте тия океаниди!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2984
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2993
 msgid ""
 "I'm sorry Kaleh, I cannot let our people slaughter each other. There must be "
 "a way to stop this."
@@ -9680,15 +9674,15 @@ msgstr ""
 "Съжалявам, Кейлъх, не мога да позволя хората ни да се избиват помежду си, "
 "трябва да има начин да се спре това."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2990
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2999
 msgid "No, don't..."
 msgstr "Не, недей..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:2996
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3005
 msgid "I have no choice, goodbye."
 msgstr "Нямам избор, сбогом."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3009
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3018
 msgid ""
 "Oh Eloh, you know how long I have faithfully served you. I ask you now a "
 "boon in return. Do not kill the boy Kaleh, he is just doing what his heart "
@@ -9699,7 +9693,7 @@ msgstr ""
 "подсказва сърцето му. Не ни ли учеше самата ти, че както на елфите е присъщо "
 "да грешат, на боговете е присъщо да прощават. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3014
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3023
 msgid ""
 "You dare to lecture me? I am a god and you are but a mortal. You of all "
 "people should know that your position is to enforce my will, not question it!"
@@ -9708,7 +9702,7 @@ msgstr ""
 "добре от всички трябва да разбираш, че ролята ти е да налагаш волята ми, а "
 "не да я оспорваш!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3020
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3029
 msgid ""
 "But you yourself can see that many of our people's faith is wavering. You "
 "cannot gain their loyalty by slaughtering the boy and his friends. Be "
@@ -9720,7 +9714,7 @@ msgstr ""
 "милостива, както винаги си била и няма да има нужда от този самоунищожителен "
 "конфликт."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3025
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3034
 msgid ""
 "Times have changed, mercy is a sign of weakness. Let this be a lesson to "
 "everyone, absolute loyalty is absolute strength. It is clear that you do not "
@@ -9734,11 +9728,11 @@ msgstr ""
 "създадем империя на силата, вярността и славата! Ще подаря на всички, които "
 "са ми верни вечен живот и ще триумфираме над всички врагове!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3031
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3040
 msgid "No, I..."
 msgstr "Не, аз..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3036
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3045
 msgid ""
 "No, I don't think you shall pester me any more. You shall be as a statue, "
 "forced to watch events unfold and helpless to interfere. Yes, I think this "
@@ -9750,54 +9744,45 @@ msgstr ""
 "подходящо наказание за теб. Може би след това ще се научиш да не подлагаш на "
 "съмнение божествената ми воля."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3071
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3080
 msgid "Aaarrrgggh! Voices in my head, make them stop!"
 msgstr "Аааааааррррррггггх! Гласовете в главата ми, накарай ги да спрат!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3077
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3086
 msgid "What? What do you hear?"
 msgstr "Какво? Какво чуваш?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3082
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3091
 msgid "Must...Can't...Must...Help me!"
 msgstr "Трябва...Не мога...Трябва...Помощ!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3100
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3109
 msgid "Must obey...Can't resist...I...Yes, Mistress, I am yours."
 msgstr ""
 "Трябва да се подчиня...Не мога да устоя...Аз...Да, Господарке, предавам ти "
 "се."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3105
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3114
 msgid "Pretty lady say elves bad. Kill elves. Kill!"
 msgstr "Красива дама казва елфи лоши. Убива елфи. Убива!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3141
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3142
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3143
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3165
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3166
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3167
-msgid "Angry Crab"
-msgstr "Ядосан рак"
-
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3147
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3158
 msgid "Aaaargh! Fresh meat!"
 msgstr "Ааааргх! Прясно месо!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3152
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3163
 msgid "Where did those things come from? They look dangerous."
 msgstr "Откъде се появиха тези неща? Изглеждат опасни."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3171
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3184
 msgid "Gaaaggghhh! Kill!"
 msgstr "Гааааааааггггггггххххх! Убива!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3176
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3189
 msgid "What are those things? They looked like ticked off giant crabs."
 msgstr "Какви са тези създания, приличат на вбесени огромни раци."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3188
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3201
 msgid ""
 "It is finished. See, my people, Tanstafaal has been killed by his own hand, "
 "and the thing pretending to be our god is gone."
@@ -9805,7 +9790,7 @@ msgstr ""
 "Свърши се, братя мои, Танстафал сам отне живота си, а натрапницата, която "
 "твърди, че е нашата богиня изчезна."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3194
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3207
 msgid ""
 "You who call yourself Eloh, I challenge you, if you are truly our god, then "
 "show yourself, and strike me down where I stand!"
@@ -9813,7 +9798,7 @@ msgstr ""
 "Ти, която се назоваваш Елох, предизвиквам те, ако наистина си нашата богиня, "
 "покажи се и ме порази тук на място!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3204
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3217
 msgid ""
 "Nothing. Eloh may still watch over us, but that thing was not her. And yet, "
 "I do not hold a grudge against all of you who rebelled. I too was deceived "
@@ -9830,7 +9815,7 @@ msgstr ""
 "напред заедно. С или без божия помощ, аз ще направя всичко, за да си открием "
 "нов дом, ако трябва ще дам и живота си за това."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3211
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3224
 msgid ""
 "I think I speak for all of us when I say that we accept your offer of "
 "amnesty and will follow you again. You have proved yourself capable as a "
@@ -9842,7 +9827,7 @@ msgstr ""
 "от цялото това кръвопролитие. Като гледаме сега назад, трябва да сме "
 "сгрешили за Елох и Танстафал. Ще трябва дълго и упорито да премислим това."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3243
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3256
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
 "friends. If it is possible, I would like to meet with your master. Your "
@@ -9852,27 +9837,27 @@ msgstr ""
 "Ако е възможно искам да се срещна с господарката ви. По вашето поведение "
 "съдя, че мога да имам доверие на вашия народ."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3248
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3261
 msgid "Thank you."
 msgstr "Благодаря."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3277
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3290
 msgid "Zilchis"
 msgstr "Зилчис"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3290
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3303
 msgid "Sultaria"
 msgstr "Султария"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3301
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3314
 msgid "And what about us, little elf, did you forget about us?"
 msgstr "А ние, малки елфе, забрави ли за нас?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3307
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3320
 msgid "I could never forget what you did to those merfolk."
 msgstr "Никога няма да забравя какво причинихте на онези океаниди."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3312
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3325
 msgid ""
 "Good, for that is just a taste. You are fools to interfere with our affairs, "
 "and the Iron Council does not tolerate fools. The Dark Lady shall swallow "
@@ -9889,18 +9874,18 @@ msgstr ""
 "помогнат да прекосим. Като чума, ние ще понесем и ще погнем неверниците пред "
 "нас!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3357
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3358
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3359
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3360
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3370
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3371
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3372
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3373
 msgid "Arisen Warrior"
 msgstr "Въздигнат Войн"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3365
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3378
 msgid "Gosh, just when things were starting to calm down."
 msgstr "Боже, тъкмо, когато нещата почнаха да се поуспокояват."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3371
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3384
 msgid ""
 "Our people are scattered and exhausted, where will we go now Kaleh? Shall we "
 "retreat back into the dunes?"
@@ -9908,7 +9893,7 @@ msgstr ""
 "Хората ни са разпръснати и изтощени. Накъде да отидем, Кейлъх, дали да се "
 "оттеглим отново сред дюните?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3377
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3390
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your master, if she dwells far beneath the sea?"
@@ -9916,7 +9901,7 @@ msgstr ""
 "Преди да реша имам един въпрос: океаниди, щом вашата господарка се намира "
 "дълбоко някъде в морето, как вие планирахте да ни заведете при нея?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3382
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3395
 msgid ""
 "Actually we prefer to dwell in the shallow waters, where we may frolic in "
 "the great coral reefs under the sun and moon. But I digress, we realize that "
@@ -9927,7 +9912,7 @@ msgstr ""
 "въпроса. Истина е, че вие не можете да плувате като нас, но мисля че имаме "
 "решение на този проблем."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3387
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3400
 msgid ""
 "The humans of the Iron Council dwell in a large island to the northwest; I "
 "was taken there several times for interrogation. It is a fearsome place, "
@@ -9941,7 +9926,7 @@ msgstr ""
 "няколко кораба, които можем да използваме, за да придвижим хората ви през "
 "вълните."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3393
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3406
 msgid ""
 "Across the waves!?! We are a people of the desert, we know nothing of "
 "piloting such vessels. And I do not like the idea of putting my life at the "
@@ -9951,7 +9936,7 @@ msgstr ""
 "тези съдове. И не ми харесва идеята да поверявам живота си на някакви "
 "кораби, построени от хората."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3398
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3411
 msgid ""
 "We have often spied on the humans and have picked up some knowledge of "
 "piloting. We also have some magical skills that allow us to control the "
@@ -9968,7 +9953,7 @@ msgstr ""
 "върнем тук, ще мине твърде много време, а няма никакъв друг начин да ви "
 "заведем при нея."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3404
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3417
 msgid ""
 "We have already gone to many strange places and survived. I trust the "
 "merfolk, if they believe that they can transport us safely across the "
@@ -9978,15 +9963,15 @@ msgstr ""
 "могат да ни помогнат да пътуваме безопасно по вълните, аз им вярвам и "
 "оставям живота си в техни ръце."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3410
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3423
 msgid "Wherever you go Kaleh, I will follow."
 msgstr "Където и да отидеш, Кейлъх, аз ще те последвам."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3416
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3429
 msgid "Very well. You have not led us astray so far, I will not leave you now."
 msgstr "Добре тогава. Успя да ни доведеш до тук, ще те следвам и занапред."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3429
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3442
 msgid ""
 "Ach, being stuck between the water and the sun is a terrible place to be, "
 "but where you go I will follow."
@@ -9994,7 +9979,7 @@ msgstr ""
 "Ъх, ужасно е да си натикан между водата и слънцето, но където и да отидеш, "
 "аз ще те последвам."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3437
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3450
 msgid ""
 " $ally_name scared of big water and bright sun, but $ally_name will not "
 "dishonor Great Leader. Great Leader say follow Kaleh, and $ally_name will do "
@@ -10004,7 +9989,7 @@ msgstr ""
 "да потъпче волята на Великия водач. Великият водач каза на $ally_name да "
 "следва Кейлъх и $ally_name ще го следва."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3444
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3457
 msgid ""
 "We have attacked the humans in the past, when their boats trespass in our "
 "waters, and so they fear us greatly. Their dark mages have cast protective "
@@ -10021,7 +10006,7 @@ msgstr ""
 "късно след като избягаме с ваша помощ мисля, че ще успеем да измислим как да "
 "премахнем защитата. Засега, ваша задача е да заловете корабите сами."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3449
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3462
 msgid ""
 "There are four boats in the lagoon. Once you have captured each of the four "
 "then we can help you steer them out into the open water and to freedom. Then "
@@ -10034,11 +10019,11 @@ msgstr ""
 "брега, където на борда ще могат да се качат и останалите ви хора. За да "
 "съберем всички хора обаче, наистина ще ни трябват всичките четири кораба. "
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3455
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3468
 msgid "Truly, there are not as many of us as there once were."
 msgstr "Наистина, не сме толкова многобройни, колкото бяхме преди."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3461
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3474
 msgid ""
 "Though the cost be high, we do what we must. Come let us go capture those "
 "boats."
@@ -10046,18 +10031,18 @@ msgstr ""
 "Макар цената да е висока, правим, каквото трябва. Да вървим да завладеем "
 "онези кораби."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3469
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3482
 msgid "Capture all 4 human ships"
 msgstr "Завладяване на всички 4 човешки кораба"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3740
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3753
 msgid ""
 "You think you can strike me down. This is just a small part of my true power."
 msgstr ""
 "Мислите, че можете да ме повалите, но това е само малка част от истинската "
 "ми сила."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3746
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3759
 msgid ""
 "Small part or no, if it is mortally possible to destroy you, I shall. Your "
 "hands are stained in our blood, you are not our god."
@@ -10066,15 +10051,15 @@ msgstr ""
 "ще го направя. Ти не си нашата истинска богиня и ръцете ти са изцапани с "
 "нашата кръв."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3768
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3781
 msgid "Don't worry Kaleh, we will see each other again...I promise."
 msgstr "Не се тревожи, Кейлъх, ще се срещнем отново...обещавам."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3779
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3792
 msgid "She freaks me out, but at least it seems that she can be destroyed."
 msgstr "Тръпки ме побиват от нея, но поне изглежда, че може да бъде унищожена."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3785
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3798
 msgid ""
 "That was just an apparition, but if we meet again I will make her pay for "
 "all that she has done."
@@ -10082,7 +10067,7 @@ msgstr ""
 "Това беше само видение, но ако тя се появи отново, ще се погрижа тя да си "
 "плати за всичко, което ни стори."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3797
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3810
 msgid ""
 "Mistress gone, must follow commands, but Nym master too, Nym say must "
 "protect elves, but mistress say must kill elves, but must protect, must "
@@ -10092,17 +10077,17 @@ msgstr ""
 "защитава елфи, но господарка казва трябва убие елфи, но трябва защитава, "
 "трябва убие, защитава, убие, защитава, убие, аааауууууугггггхххх!!!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3808
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3821
 msgid ""
 "He just collapsed, the conflicting orders must have been too much for him."
 msgstr ""
 "Той просто припадна, противоречащите си заповеди явно са му дошли в повече."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3813
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3826
 msgid "Poor Kromph, at least he's finally at rest."
 msgstr "Горкия Кромф, дано сега поне намери покой."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3833
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3848
 msgid ""
 "I'm sorry, Kaleh. My faith clouded my reason. But I wanted so very much to "
 "believe."
@@ -10110,7 +10095,7 @@ msgstr ""
 "Съжалявам, Кейлъх, вярата помрачи разума ми, но толкова ми се искаше да "
 "вярвам."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3839
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3854
 msgid ""
 "You do not need to apologize. What you did was very brave. I wish to...to "
 "whatever god still watches over us, that this bloodshed was not necessary. "
@@ -10123,7 +10108,7 @@ msgstr ""
 "привлечени на страната на онова нещо. Колкото и ужасно да звучи, има и по-"
 "лоши неща от смъртта."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3845
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3860
 msgid ""
 "So when you had the strange encounter with that human Durstrag and his "
 "guards, just after we escaped the caves, you were talking to Eloh, or "
@@ -10133,7 +10118,7 @@ msgstr ""
 "след като бяхме излезли от пещерите, ти си говорел с Елох, или каквото там е "
 "това създание?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3851
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3866
 msgid ""
 "Yes, she appeared only to me and demanded that I surrender to the humans. "
 "When I refused she threatened me, saying she would kill me if I refused. "
@@ -10143,7 +10128,7 @@ msgstr ""
 "заплаши да ме убие заради неподчинението ми. Именно тогава почнах да "
 "подозирам нещо нередно."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3857
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3872
 msgid ""
 "It is clear that that thing was not our god. I do not know what it was, but "
 "I have to keep believing that Eloh is out there somewhere. Without our "
@@ -10153,11 +10138,11 @@ msgstr ""
 "продължавам да вярвам, че Елох е някъде там. Защото ако изгубим вярата си, "
 "какво ни остава?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3863
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3878
 msgid "We have each other."
 msgstr "Това, че все още сме заедно."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3869
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3884
 msgid ""
 "That's not enough. Look, you're a wonderful girl Nym, and Kaleh, you've "
 "shown yourself to be a great leader, but our actions have to mean something "
@@ -10169,13 +10154,13 @@ msgstr ""
 "ежедневната борба за оцеляване. Трябва да има някакъв висш промисъл, Елох "
 "трябва да има план за нас. Трябва да продължим да вярваме."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3875
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3890
 msgid "Peace Zhul, we can discuss theology later. We still have work to do."
 msgstr ""
 "Успокой се, Жюл, можем да обсъждаме теологията по-късно. Сега имаме работа "
 "за вършене."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3909
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3924
 msgid ""
 "You cannot defeat me, I am protected by the goddess now. Finally, Kaleh, I "
 "will show everyone who is stronger!"
@@ -10183,21 +10168,21 @@ msgstr ""
 "Не можете да ме победите, богинята ме защитава. Най-после, Кейлъх всички ще "
 "видят кой е по-силен."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3915
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3930
 msgid "Oh Tanstafaal, I pity you. This battle was never about you."
 msgstr "О, Танстафал, съжалявам те. Тази битка нямаше нищо общо с теб."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3936
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3951
 msgid ""
 "No, do not kill him. He may deserve it, but he will not die at my hands."
 msgstr ""
 "Не, не го убивай. Може да го е заслужил, но няма да умре от моите ръце."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3941
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3956
 msgid "Never Kaleh. I will not be your lackey again!"
 msgstr "Никога, Кейлъх, няма пак да стана твой слуга!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3952
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3967
 msgid ""
 "Why did he have to kill himself? Oh poor misguided Tanstafaal. We have lost "
 "too many elves today."
@@ -10205,26 +10190,26 @@ msgstr ""
 "Защо му трябваше да се убива? Горкият заблуден Танстафал. Твърде много елфи "
 "загубихме днес."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3958
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3973
 msgid "Do not blame yourself too much, it is Eloh who persuaded him to rebel."
 msgstr "Не се самообвинявай, Елох го принуди да се разбунтува."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3964
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:3979
 msgid "Yes, she too will pay for her part in all of this."
 msgstr "Да и тя ще си плати за всичко това."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4056
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4071
 msgid ""
 "We've run out of time. The humans are gaining strength and will surely "
 "overwhelm us now."
 msgstr ""
 "Нямаме време. Хората събират силите си и сега със сигурност ще ни надвият."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4072
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4087
 msgid "We've captured all four boats!"
 msgstr "Заловихме всички четири кораба!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4078
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4093
 msgid ""
 "Good, then let's get out of here. The merfolk will help you guide the ships. "
 "I'll marshall the rest of our people and retreat from this bloody "
@@ -10241,7 +10226,7 @@ msgstr ""
 "на евентуална контраатака от страна на хората, ще можем да качим и "
 "останалите хора на корабите."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4083
+#: data/campaigns/Under_the_Burning_Suns/scenarios/09_Water.cfg:4098
 msgid ""
 "Then by the Sea God's hand I call forth the winds. May they confound our "
 "enemies and blow these ships to safety!"
@@ -14340,6 +14325,14 @@ msgstr "Човешки кораб"
 msgid "Campfire"
 msgstr "огън"
 
+#: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:97
+msgid "Phantom Castle"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:110
+msgid "Phantom Keep"
+msgstr ""
+
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:18
 msgid "First Dawn"
 msgstr "Ранна зора"
@@ -14399,6 +14392,9 @@ msgstr "Дълъг мрак (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:184
 msgid "The Long Dark (4)"
 msgstr "Дълъг мрак (4)"
+
+#~ msgid "Angry Crab"
+#~ msgstr "Ядосан рак"
 
 #~ msgid "Vecnu"
 #~ msgstr "Векну"

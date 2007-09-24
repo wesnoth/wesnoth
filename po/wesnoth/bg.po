@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-19 00:26+0200\n"
+"POT-Creation-Date: 2007-09-24 11:03+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -2099,7 +2099,7 @@ msgstr ""
 "света, където климатът е по-топъл. За целите на играта, този терен е "
 "идентичен на <ref>dst=terrain_grassland text='Тревист терен'</ref>."
 
-#: data/core/help.cfg:539 src/terrain.cpp:102
+#: data/core/help.cfg:539 src/terrain.cpp:122
 msgid "Village"
 msgstr "Селище"
 
@@ -2934,8 +2934,10 @@ msgid "Holy Water"
 msgstr "Светена вода"
 
 #: data/core/macros/items.cfg:415
-msgid "This water will make melee weapons holy."
-msgstr "Тази вода ще освети оръжията за близък бой."
+msgid ""
+"This water will make melee weapons have the 'arcane' damage type until the "
+"end of the current scenario."
+msgstr ""
 
 #: data/core/macros/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3008,6 +3010,169 @@ msgid "Zap"
 msgstr "Унищожение"
 
 #: data/core/macros/names.cfg:3
+msgid ""
+"Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
+"Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
+"Garadin,Krall Ohn,Merkush,Gridda,Garlan,Græt Ihn,Ka,Karron,Markinos,Gashöl,"
+"Grenn ohn,Gegchi,Gadé Ihn,Marrito,Grelnit,Kraslar,Marritos,Kran Kor,Kerath "
+"Kor,Kerath Ihn,Galsh,Garrutin,Gray,Garlin ohn,Merritos Gark,Gark,Gelknick,"
+"Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
+"Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
+"Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
+"Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
+msgstr ""
+"Крааг,Джилиан,Гишари,Кариган,Грон их,Крънли,Кегрид,Мах Тоа,Гриш,Гейруши,"
+"Гауши,Мър,Гейкре Ом,Кан Их,Кан,Гарчин,Оматейке,Краш,Грейда,Морасте,Гарейдин,"
+"Крал Он,Меркуш,Грайда,Гарлан,Грайт Ин,Ка,Карон,Маркинос,Гашол,Грен он,Гърчи,"
+"Гейде Ин,Марито,Грълнит,Крейслар,Маритос,Крейн Кор,КиратКор,Кират Ин,Гейлш,"
+"Гейратин,Грей,Гарлин он,Меритос Гарк,Гарк,Гълкник, Гойст,Грейвлан,Марилдиан,"
+"Марджиан,Гарт'ло,Решан,Мал,Кари Кон,Кон Гарейше,Игар,Елч,Мар Он,Джилка Кон,"
+"Маркан,Грътз,Гейшинар,Грибъл,Влейднир,Велник,Вейшит,Виралон,Въртик,Върмей,"
+"Въркон,Вират,Върлин,Вирамо,Грейшън,Гейлък,Гаустан,Мейра Ди'лък,Клаш,Крагън,"
+"Касп,Върдит,Га'аш"
+
+#: data/core/macros/names.cfg:4
+msgid ""
+"Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
+"Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
+"Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
+msgstr ""
+"Велисп,Валнит,Вуштин,Еший,Дел,Валин,Демла,Ауглан,Аугинет Ка,Велин Ка, Омаге,"
+"Оридей,Уещер,Уилнис,Уера,Дамел,Динзил,Оридан,Ошиби,Валнира, Олат,Омагра,"
+"Ашижт,Ален Ка,Алинаш Мал,Ора Ка"
+
+#: data/core/macros/names.cfg:8
+msgid ""
+"Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
+"Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
+"Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,Trithdurol,Glamcatil,Augthail,"
+"Trithduril,Dulthalos,Glamthasol,Aldrsol,Glamaithol,Glamalil,Analus,Nardril,"
+"Augating,Dulaithsol,Aldrlos,Alalus,Aigcatsol,Ancatas,Trithdris,Pelatol,"
+"Aigthasil,Anthais,Narcatis,Trithatil,Aigaithing,Althail,Trithaithil,"
+"Naraithol,Duldrlos,Gomatas,Alcatis,Naraithsil,Althalos,Aigdursol,Glamalsil,"
+"Nardrus,Aigalis,Aldurlos,Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,"
+"Glamthaas,Dulcatsol,Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,"
+"Peldrsol,Pelalsol,Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,"
+"Augdris,Anthasol,Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,"
+"Pelalis,Gomatlos,Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,"
+"Gomcatil,Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
+"Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
+"Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,Trithdring,"
+"Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,Dulaithlos,"
+"Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,Trithcatlos,"
+"Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,Aldurol,Aigatsil,"
+"Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,Althaol,Aldrsol,"
+"Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,Glamthaol,Ancatus,"
+"Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,Naraithsil,Aldris,"
+"Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,Aigdurlos,Aigaithol,"
+"Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,Anthaing,Aigcatis,"
+"Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,Gomdursil,Nardras,"
+"Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,Anatol,Augdrsil,"
+"Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,Augaling,Alating,Glamatil,"
+"Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,Gomdursol,Naraithus,"
+"Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,Aigduras,Nardrol,Nardurol,"
+"Pelalil,Gomalil,Aigatis,Analil,Dulthaus,Gomaithil,Alduras,Trithduril,Ancatol,"
+"Alduras,Pelduril,Narcatsol,Pelating,Dulcatsil,Augatol,Glamthasil,Gomthasol,"
+"Naraithsil,Alatsil,Dulcatol,Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,"
+"Trithatas,Aigthais,Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,"
+"Gomdras,Naraithsol,Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,"
+"Gomating,Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
+"Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
+"Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,Augcatsil,"
+"Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,Pelaling,"
+"Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,Augthalos,"
+"Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,Triththail,"
+"Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,Glamalsil,"
+"Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,Dulatsol,Naralus,"
+"Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,Naraithil,Aigatsil,"
+"Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,Pelcatlos,Glamduris,"
+"Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,Pelthasil,Gomatis,Aldril,"
+"Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,Narduras,Dulaithlos,Duldris,"
+"Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,Anduril,Alaithol,Aigalis,"
+"Trithaithas,Aigcatil,Trithaithil,Naraithing,Augatsol,Trithaithol,Dulalsil,"
+"Dulthasol,Glamcatas,Glamthaol,Gomaithsol,Dulaithing,Naratlos,Naraithol,"
+"Gomthasol,Ancatas,Aigcatsil,Pelduris,Trithdrus,Andurus,Trithdring,Glamthaas,"
+"Aigcating,Nardrsol,Glamaithol,Dulaithsol,Althaus,Augduras,Aigaithas,"
+"Gomdurlos,Glamalus,Gomdrsil,Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,"
+"Glamaling,Dulduras,Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,"
+"Trithduring,Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,"
+"Naratlos,Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
+"Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
+"Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
+"Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
+"Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
+"Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
+"Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,Glamcatil,"
+"Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,Narcatis,"
+"Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,Aigatsil,"
+"Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
+"Pelaithil,Gomaithsol,Augaithsil"
+msgstr ""
+"Алтеас,Глоумин,Гламкейтъс,Тритейтис,Гомдрол,Андарус,Пилайтол,Тритейтус,"
+"Андрис,Тритейтсол,Гомкейтис,Пилкатол,Огкейтил,Алейтинг,Огейтинг,Антеас,"
+"Гомейтсол,Тритейтас,Айгдрис,Алтейлос,Анейлил,Тритдарол,Гламкейтил,Огтайл,"
+"Тритдарил,Далтейлос,Гламтейсол,Алдрсол,Гламейтол,Глеймалил,Анейлус,Нардрил,"
+"Огейтинг,Далейтсол,Алдрлос,Алейлус,Айгкатсол,Анкейтас,Тритдрис,Пилейтол,"
+"Айгтейсил,Антайс,Наркейтис,Тритейтил,Айгайтинг,Алтайл,Тритайтил,Нарайтол,"
+"Далдрлос,Гомейтас,Алкейтис,Нарайтсил,Алтейлос,Айгдарсол,Гламейсил,Нардрус,"
+"Айгейлис,Алдарлос,Огкейтсил,Айгтайнг,Огдарил,Айгайтас,Антайс,Гламтеас,"
+"Далкейтсол,Гомейтил,Гомкейтлос,Огдрсил,Тритдрил,Далдрсил,Далдрол,Пълдрсол,"
+"Пелейлсол,Гомтеас,Далкейтсил,Айгкейтинг,Алдрил,Гламкейтинг,Анейтсол,Огдрис,"
+"Антейсол,Гламкейтсил,Алдрас,Айгейтсол,Нарайтол,Антос,Гомдрсил,Пелейлис,"
+"Гомейтлос,Наркейтинг,Тритдрлос,Айгдрлос,Наркейтсил,Гламдрас,Айгтайнг,"
+"Гомкейтил,Андарус,Пълтайл,Тритаус,Огейлас,Алейлол,Айгейлас,Пълейтис,Анейтинг,"
+"Алайтсол,Андрас,Айгалсил,Далейтил,Айгдрис,Огейтсил,Гламдаринг,Тритдарил,"
+"Тритдрсол,Алейлус,Гламейтус,Алдрол,Глеймдрил,Пълкейтсил,Гламайтис,Тритдринг,"
+"Пълдрил,Тритдарус,Гомайтил,Триткейтсол,Гламдрсол,Огтайс,Далайтлос,Алтейсил,"
+"Айгайтил,Андрлос,Далейтил,далейлас,Далейтсол,Анейлол,Триткейтлос,Алтейсол,"
+"Алкейтис,Гламдарил,Пелдарсол,Пелейлус,Гламтеас,Алдарол,Айгейтсил,Айгейтус,"
+"Тритдарил,Пелайтсол,Айгкейтис,Андарсол,Нарейлсил,Алтоал,Алдрсол,Далейлас,"
+"Тритеас,Огейтол,Пелейлинг,Далкейтлос,Огдарил,Гламтоал,Анкейтас,Огкейтол,"
+"Пелдрас,Пелейтил,Гомкейтил,Анейлос,Анайтинг,Нарайтсил,Алдрис,Гомдрис,Андрил,"
+"Нарейтсил,Айгкейтинг,Тритеас,Нардарил,Айгдарлос,Айгайтол,Гламайтол,Пелейтил,"
+"Нардрис,Огтаол,Огейтол,Гламейлос,Антайнг,Айгкейтс,Пелтейсил,Далкейтил,"
+"Далейтол,Далдаринг,Алейлил,Пелдрас,Гомдарсил,Нардрас,Пелдрил,Гомкейтлос,"
+"Гомейлис,Гламтаус,Далдарус,Далкейтинг,Анейтол,Огдрсил,Анейлсил,Тритдрус,"
+"Огайтус,Тротайтсол,Айгкейтус,Огейлинг,Алейтинг,Гламейтил,Анайтас,Гомайтис,"
+"Огдрис,Пелайтинг,Огайтинг,Гомдарсол,Нарайтус,Тритейтсол,Анкейтил,Гламайтил,"
+"Огдарус,Гомейлус,Айгдурас,Нардол,Нардарол,Пелейлил,Гомейлил,Айгейтис,Анейлил,"
+"Далтаус,Гомайтил,Алдурас,Тритдарил,Анкейтол,Алдурас,Пелдарил,Наркейтсол,"
+"Пелейтинг,Далкейтсил,Агейтол,Гламтейсил,Гомтейсол,Нарайтсил,Алейтсил,"
+"Далкейтол,Гомтейлос,Айгейлинг,Айгкейтас,Пелейлус,ОгкейтсилТритейтас,Айгтайс,"
+"Гомайтас,Алкейтсил,Анкейтус,Пелейтис,Анкейтас,Далейтинг,Гомдрас,Нарайтсол,"
+"Огкейтис,Алайтис,Пелейлсол,Далдарсил,Пелкейтинг,Далейлинг,Гомейтинг,Айгайтол,"
+"Алайтас,Пелдрас,Тритайнг,Огдарол,Огайтас,Огкейтсил,Гламдрлос,Пелдарол,"
+"Айгдрис,Пелайтас,Огкейтас,Алейлас,Антайнг,Нарейтлос,Огдарлос,Гомдрил,"
+"Далкейтлос,Антейсил,Тритасол,Нарейлас,Пелтеас,Огкейтсил,Анайтис,Андарус,"
+"Гомдринг,Гламдарас,Пелейлсил,Огтейлос,Огдарас,Пелейлинг,Гомейлис,Огейлол,"
+"Гомдрис,Гламейлис,Огдрас,Алейтлос,Тритдрил,Огтейлос,Гламдрил,Айгейтлос,"
+"Алейтас,Пелайтсол,Антаус,Тритдрил,Алдрсол,Тритайл,Гламайтсол,Огдаринг,"
+"Айгтаус,Анайтсил,Пелейтус,Нарейтол,Гламейлсил,Триткейтус,Тритейтил,Анейлос,"
+"Огдрас,Тритайтсил,Нардарил,Далейтсол,Нарейлус,Наркейтол,Алкейтлос,Тритейлол,"
+"Далтейсил,Андрас,Пелдаринг,Нарайтил,Айгейтсил,Тритдарлос,Огдарсол,Тритайтол,"
+"Гомейтол,Айгкейтас,Пелкейтлос,Гламдарис,Анайтас,Пелдарас,Гламдарис,Нарейлил,"
+"Тритдарсил,Пелтейсил,Гомейтис,Алдрил,Огейтол,Анайтас,Анейтсол,Тритайтлос,"
+"Далдрас,Нардурас,Далайтлос,Далдрис,Далайтсил,Антайс,Гомдарис,Нартейлос,"
+"Анкейтас,Андарил,Алайтол,Айгейлис,Тритайтас,Айгкейтил,Тритайтил,Нарайтинг,"
+"Огейтсол,Тритайтол,Далейлсил,Далтейсол,Гламкейтас,Гламтаол,Гомайтсол,"
+"Далайтинг,Нарейтлос,Нарайтол,Гомтейсол,Анкейтас,Айгкейтсил,Пелдарис,Тритдрас,"
+"Андарас,Тритдринг,Гламтеас,Айгкейтинг,Нардрсол,Гламайтол,Далайтсол,Алтаус,"
+"Аугдурас,Айгайтас,Гомдарлос,Гламейлус,Гомдрсил,Тритдрол,Пелейтинг,Пелейтус,"
+"Айгдрсол,Тритдарол,Гламейлинг,Далдурас,Далейтинг,Нарайтинг,Далейлис,Алайтас,"
+"Гомдарус,Гламкейтус,Тритдаринг,Анейтис,Анайтсил,Гламдарил,Гомдарсол,"
+"Наркейтол,Тритайтис,Нарейтлос,Нардринг,Айгейлол,Алтайл,Анейтас,Антейсол,"
+"Айгейтус,Дулайтил,Алтейлос,Алдринг,Глемейлил,Анейтинг,Айгдринг,Далдрил,"
+"Андарол,Пелайтсил,Гомдарас,Гомкейтил,Гламтеас,Алейлсол,Огдарас,Тритдарил,"
+"Антаол,Огейлас,Пелкейтол,Нардрсил,Алейтил,Гламдрсол,Алайтлос,Пелейтсил,"
+"Гомдарас,Далейтус,Алейлсол,Гламейлинг,Далейтус,Алкейтил,Айгтаус,Далдрил,"
+"Пелайтлос,Пелайтис,Далейтил,Тритейлис,Нарайтол,Пелейтинг,Огкейтол,Гомейтис,"
+"Андрас,Пелдарис,Айгдрсил,Алейтлос,Огдрсил,Андарил,Гомайтол,Гламдарсол,"
+"Тритайтил,Гомдрил,Гламкейтил,Тритдрас,Нарейлас,Далейтол,Анайтил,Анейтол,"
+"Огейтинг,Пелдарсол,Наркейтис,Гламейтус,Айгайтас,Айгейтас,Тритейтлос,Гомейтил,"
+"Гомтейлос,Далейлинг,Айгейтсил,Огкейтас,Тритайтас,Гомкейтлос,Айгайтол,"
+"Нарейтсил,Нартаол,Наркейтол,Огейтлос, Пелайтил,Гомайтсол,Огайтсил"
+
+#: data/core/macros/names.cfg:12
 #, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
@@ -3132,7 +3297,7 @@ msgstr ""
 "Нил-Гар, Ворфиндъл,Кандър,Ярандуъл,Гейлалдър,Каландуъл,Корфъл,Белиондъл,"
 "Ейнъл, Еймитрариън,Кейлъд,Леджилад"
 
-#: data/core/macros/names.cfg:4
+#: data/core/macros/names.cfg:13
 msgid ""
 "Vil-Gandra,Legaraclya,Tináclya,Elvowien,Delydien,Celilith,Tinil-Gawiel,"
 "Niodien,Uniodë,Tinithrathiel,Unorfiwen,Fathien,Urebriclya,Unil-Gadia,"
@@ -3264,7 +3429,15 @@ msgstr ""
 "Колайнд, Белаклия,Нарейния,Джуън,Елорфитиън,Сейдриърит,Ейнин,Тейдриърит,"
 "Дилетиън, Юатиъл,Айзен,Лигондра,Селорфилинд"
 
-#: data/core/macros/names.cfg:8
+#: data/core/macros/names.cfg:18
+msgid "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
+msgstr ""
+
+#: data/core/macros/names.cfg:19
+msgid "Kiira,Keyya,Kayya,Korra,Kaasa"
+msgstr ""
+
+#: data/core/macros/names.cfg:23
 msgid ""
 "Cunry,Bluran,Marcyn,Addraenvan,Gudd,Aetheollyn,Rhenyc,Gyllyn,Dircyn,Owaecyn,"
 "Blollyn,Glyran,Vygwyn,Yracyn,Rhaecyn,Rheor,Aethagwyn,Vennyn,Yryrcyn,Glynvan,"
@@ -3365,7 +3538,7 @@ msgstr ""
 "Глиран,Ейдръдри, Кабрин,Виосин, Кейрин,Демир,Тад,Роумир,Ленван,Глайлин,Сенин,"
 "Рейнри,Бленин, Гуайдин,Сайнван,Тод,Тегуин"
 
-#: data/core/macros/names.cfg:9
+#: data/core/macros/names.cfg:24
 msgid ""
 "Jongwen,Dullyra,Alena,Nwryan,Elycla,Sulonna,Bruryan,Caengwen,Nwvyan,Lwcla,"
 "Jarka,Rwlla,Alwcla,Breall,Nylyan,Cylyan,Syssa,Jolla,Gwoll,Lynoic,Elwllyra,"
@@ -3468,7 +3641,32 @@ msgstr ""
 "Брийна,Усура,Ейлолона,Нийла,Неса,Сувиан,Кора,Лариан,Джейна,Мирайкла,Джинойк,"
 "Сена,Елола,Джайна,Джулона"
 
-#: data/core/macros/names.cfg:13
+#: data/core/macros/names.cfg:28
+msgid ""
+"Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
+"Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
+"Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,Jezzix,"
+"Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,Flixta,"
+"Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,Xartrez,"
+"Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,Hesz,Xasz,"
+"Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,Ssorix,Ssexur,"
+"Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,Lixeez,Sklizle,"
+"Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
+"Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
+msgstr ""
+"Арикс,Кец,Плаксис,Крекс,Трец,Тейрекс,Фрайкс,Къркс,Тайрикс,Миракс,Спрайц, "
+"Сейтрас,Ейнитраз,Хъцис,Плисайкс,Пръш,Тайракс,Тайраш,Сейпрац,Айрикс,Айнексис,"
+"Ейнъксир, Врайс,Уакс,Фейцис,Стирайц,Крейракс,Кърсиц,Крайнекс,Кринарекс,Джиц,"
+"Хикс,Джецикс, Хефъз,Тейлърез,Крайсъс,Зедрикс,Мъксис,Ейксиз,Зилрикс,Амприкста,"
+"Цалкз,Фликста, Моксанц,Бц'кза,Флайцъл,Таникс,Ксерксикс,Ксайрас,Ксайртрас,"
+"Ксирз,Ксир,Ксейртръз, Ксайртръз,Кърникс,Къртрас,Кърксеникс,Нейксис,"
+"Хъртрейцир,Хецир,Хас,Хъс,Ксас, Ксейзтъкс,Тицаз,Никс,Ксафрас,Фицтракс,Зайцас,"
+"Сзас,Сайзър,Соурикс,Сексур, Скръз,Злап,Пъкс,Къпс,Запди,Венъц,Клъц,Клъзикс,"
+"Скийзикс,Лайксийз,Склайзъл, Слайзилкс,Скейликс,Скейрикс,Лайзикс,Скийли,"
+"Сейлик,Скейндикс,Лейзки,Сайлик,Сейланикс, Клийзи,Кейлиъз,Фрицъл,Чеймил,"
+"Зейндлър,Сейндикс"
+
+#: data/core/macros/names.cfg:32
 msgid ""
 "Neptune,Poseidon,Triton,Oceanus,Nereus,Pontus,Phorcys,Scylla,Thaumas,"
 "Tangaroa,Tangaloa,Kulullu,Nethuns,Proteus,Okeanos,Maui,Ryujin,Njord,"
@@ -3486,7 +3684,7 @@ msgstr ""
 "Роруа,Поупоа,Тиниро,Тайни,Ро,Кайнилу,Сайнилу,Тайнилу,Надимъд, Тагалоа,Лабюна,"
 "Джин,Лот,Раджа,Айкатийра,Нюада,Над,Лад"
 
-#: data/core/macros/names.cfg:14
+#: data/core/macros/names.cfg:33
 msgid ""
 "Derceto,Mama Wata,Jengu,Miranda,Lori Lamaris,Ariel,Amphitrite,Atargatis,Rân,"
 "Sedna,Tirgata,Aphrodite,Pelagia,Delphine,Marina,Stella Maris,Miriam,"
@@ -3498,7 +3696,57 @@ msgstr ""
 "Аглаофемия,Писино,Молпе,Люкозия,Лигия,Партенопа,Химеропа, Калипсо,Електра,"
 "Галатея,Вед-Ава,Вете-ема,Вийн емо,Ватея,Диктина"
 
-#: data/core/macros/names.cfg:18
+#: data/core/macros/names.cfg:37
+msgid ""
+"Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
+"Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
+"Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,Sassalia,"
+"Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,Grissilai,"
+"Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,Zsekp,Kzap,"
+"Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
+"Klez,Zlek,Trixzed"
+msgstr ""
+"Ксамалия,Брайсал,Саксиала,Лябра,Риа,Гриама,Гаксмейл,Харксас,Аксмейлия, "
+"Саксрайрия,Вланиса,Малина,Нилдласи,Ксиназия,Ксина,Майла,Милбра,Бли,Блиана, "
+"Брейсас,Вилейла,Алайъс,Амейлис,Хейна,Хейла,Ламай,Ламайса,Майса,Сасейлия, "
+"Лайлин,Линейса,Инай,Иналай,Айсалай,Вайсалай,Блай,Бланейлия,Гриса,Грисилай, "
+"Срал,Скал,Слей,Сал,Срак,Сзак,Псен,Псал,сек,Снилия,Скепц,Зпсек,Зсекп,Кзап, "
+"Пзакп,Крезксп,Залсп,Крас,Ксабрак,Лекспък,Кснамас,Ксопкне,Окспъл,Хюзи,"
+"Пониазъл, Клез,Злек,Триксзед"
+
+#: data/core/macros/names.cfg:38
+msgid ""
+"Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
+"Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
+"Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,Ineii,Inaloss,"
+"Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,Slell,Soill,Sorkol,"
+"Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
+"Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
+msgstr ""
+"Абраксас,Ксамалел,Брис,Саксил,Лобор,Реи,Гриам,Гаксмол,Харксос,Аксмайл,"
+"Саксрирей,Силас,Вланис,Малинос,Нилдлос,Ксинас,Милей,Милбор,Бло,Брес,Вилайл,"
+"Алейс, Амайл,Хайнос,Хайлос,Ламей,Ламаис,Майсол,Сейсал,Линес,Иней,Иналос, "
+"Исал,Висал,Блей,Бланал,Грис,Грисилей,Срел,Скел,Слел,Сойл,Соркол, Псон,Псел,"
+"Секол,Снол,Скепц,Спсек,Секп,Кзап,Пзакп,Керзкпс,Залсп,Карс,Ксабрак, Лекспек,"
+"Кснамос,Ксопкон,Окспей,Хузел,Пониац,Клезел,Злек,Триксоз"
+
+#: data/core/macros/names.cfg:42
+msgid ""
+"Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
+"Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
+"Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,Borkuk,Orkut,"
+"Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,Kramak,Goruk,Krog,"
+"Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
+"Urkar"
+msgstr ""
+"Блокар,Мъркник,Акоарак,Делкак,Калкникс,Акзалк,Коркар,Рекнак,Крукрак,Маркар, "
+"Келкрар,Килкрар,Грак,Наргак,Каргнак,Коргнак,Гнук,Кукнук,Куркур,Кингрок, "
+"Таколак,Колк,Корк,Кирк,Карак,Курмак,Маркук,Керта,Трабук,Букак,Боркук,Оркут, "
+"Тракон,Макрон,Кокан,Акорт,Уркарк,Клуд,Олк,Гаркук,Комак,Крамак,Горук,Крог, "
+"Крумук,Картерак,Аркарм,Булрук,Баркук,Карбук,Корк,Гурк,Корук,Гурм,Кайрак, "
+"Уркар"
+
+#: data/core/macros/names.cfg:46
 msgid ""
 "Erang,Bugdish,Eradash,Vrigor,Gruol,Gugdush,Gort,Grunk,Rurag,Poshnak,Goshnak,"
 "Rarbag,Prirbag,Biol,Vridish,Erok,Grurt,Vrorg,Grirk,Rodush,Pruk,Hunk,Goshnak,"
@@ -3589,172 +3837,20 @@ msgstr ""
 "Грайгор,Ханк,Хул,Ранг,Гролг,Хадиш,Гейшнак,Гадиш,Пайдаш,Пълг,Вринг,Вураг,"
 "Врарг,Рилг,Пигдаш,Хейгор"
 
-#: data/core/macros/names.cfg:22
+#: data/core/macros/names.cfg:50
+#, fuzzy
 msgid ""
-"Althaas,Glomin,Glamcatus,Trithaithis,Gomdrol,Andurus,Pelaithol,Trithaithus,"
-"Andris,Trithatsol,Gomcatis,Pelcatol,Augcatil,Alating,Augaithing,Anthaas,"
-"Gomaithsol,Trithaithas,Aigdris,Althalos,Analil,Trithdurol,Glamcatil,Augthail,"
-"Trithduril,Dulthalos,Glamthasol,Aldrsol,Glamaithol,Glamalil,Analus,Nardril,"
-"Augating,Dulaithsol,Aldrlos,Alalus,Aigcatsol,Ancatas,Trithdris,Pelatol,"
-"Aigthasil,Anthais,Narcatis,Trithatil,Aigaithing,Althail,Trithaithil,"
-"Naraithol,Duldrlos,Gomatas,Alcatis,Naraithsil,Althalos,Aigdursol,Glamalsil,"
-"Nardrus,Aigalis,Aldurlos,Augcatsil,Aigthaing,Augduril,Aigaithas,Anthais,"
-"Glamthaas,Dulcatsol,Gomatil,Gomcatlos,Augdrsil,Trithdril,Duldrsil,Duldrol,"
-"Peldrsol,Pelalsol,Gomthaas,Dulcatsil,Aigcating,Aldril,Glamcating,Anatsol,"
-"Augdris,Anthasol,Glamcatsil,Aldras,Aigatsol,Naraithol,Anthaus,Gomdrsil,"
-"Pelalis,Gomatlos,Narcating,Trithdrlos,Aigdrlos,Narcatsil,Glamdras,Aigthaing,"
-"Gomcatil,Andurus,Pelthail,Triththaus,Augalas,Alalol,Aigalas,Pelatis,Anating,"
-"Alaithsol,Andrus,Aigalsil,Dulatil,Aigdris,Augatsil,Glamduring,Trithduril,"
-"Trithdrsol,Alalus,Glamatus,Aldrol,Glamdril,Pelcatsil,Glamaithis,Trithdring,"
-"Peldril,Trithdurus,Gomaithil,Trithcatsol,Glamdrsol,Augthais,Dulaithlos,"
-"Althasil,Aigaithil,Andrlos,Dulatil,Dulalas,Dulatsol,Analol,Trithcatlos,"
-"Althasol,Alcatis,Glamduril,Peldursol,Pelalus,Glamthaas,Aldurol,Aigatsil,"
-"Aigatus,Trithduril,Pelaithsol,Aigcatis,Andursol,Naralsil,Althaol,Aldrsol,"
-"Dulalas,Triththaas,Augatol,Pelaling,Dulcatlos,Augduril,Glamthaol,Ancatus,"
-"Augcatol,Peldrus,Pelatil,Gomcatil,Anallos,Anaithing,Naraithsil,Aldris,"
-"Gomdris,Andril,Naratsil,Aigcating,Triththaas,Narduril,Aigdurlos,Aigaithol,"
-"Glamaithol,Pelatil,Nardris,Augthaol,Augatol,Glamallos,Anthaing,Aigcatis,"
-"Pelthasil,Dulcatil,Dulatol,Dulduring,Alalil,Peldrus,Gomdursil,Nardras,"
-"Peldril,Gomcatlos,Gomalis,Glamthaus,Duldurus,Dulcating,Anatol,Augdrsil,"
-"Analsil,Trithdrus,Augaithus,Trithaithsol,Aigcatus,Augaling,Alating,Glamatil,"
-"Anaithus,Gomatis,Augdris,Pelaithing,Augaithing,Gomdursol,Naraithus,"
-"Trithatsol,Ancatil,Glamaithil,Augdurus,Gomalus,Aigduras,Nardrol,Nardurol,"
-"Pelalil,Gomalil,Aigatis,Analil,Dulthaus,Gomaithil,Alduras,Trithduril,Ancatol,"
-"Alduras,Pelduril,Narcatsol,Pelating,Dulcatsil,Augatol,Glamthasil,Gomthasol,"
-"Naraithsil,Alatsil,Dulcatol,Gomthalos,Aigaling,Aigcatas,Pelalus,Augcatsil,"
-"Trithatas,Aigthais,Gomaithas,Alcatsil,Ancatus,Pelatis,Ancatas,Dulating,"
-"Gomdras,Naraithsol,Augcatis,Alaithis,Pelalsol,Duldursil,Pelcating,Dulaling,"
-"Gomating,Aigaithol,Alaithas,Peldras,Triththaing,Augdurol,Augaithas,Augcatsil,"
-"Glamdrlos,Peldurol,Aigdris,Pelaithas,Augcatas,Alalas,Anthaing,Naratlos,"
-"Augdursol,Gomdril,Dulcatlos,Anthasil,Triththasol,Naralus,Pelthaas,Augcatsil,"
-"Anaithis,Andurus,Gomdring,Glamduras,Pelalsil,Augthalos,Augduras,Pelaling,"
-"Gomalis,Augalol,Gomdris,Glamalis,Augdrus,Alatlos,Trithdril,Augthalos,"
-"Glamdril,Aigatlos,Alatas,Pelaithsol,Anthaus,Trithdril,Aldrsol,Triththail,"
-"Glamaithsol,Augduring,Aigthaus,Anaithsil,Pelatus,Naratol,Glamalsil,"
-"Trithcatus,Trithatil,Anallos,Augdras,Trithaithsil,Narduril,Dulatsol,Naralus,"
-"Narcatol,Alcatlos,Trithalol,Dulthasil,Andrus,Pelduring,Naraithil,Aigatsil,"
-"Trithdurlos,Augdursol,Trithaithol,Gomatol,Aigcatas,Pelcatlos,Glamduris,"
-"Anaithas,Peldurus,Glamduris,Naralil,Trithdursil,Pelthasil,Gomatis,Aldril,"
-"Augatol,Anaithus,Anatsol,Trithaithlos,Duldrus,Narduras,Dulaithlos,Duldris,"
-"Dulaithsil,Anthais,Gomduris,Narthalos,Ancatus,Anduril,Alaithol,Aigalis,"
-"Trithaithas,Aigcatil,Trithaithil,Naraithing,Augatsol,Trithaithol,Dulalsil,"
-"Dulthasol,Glamcatas,Glamthaol,Gomaithsol,Dulaithing,Naratlos,Naraithol,"
-"Gomthasol,Ancatas,Aigcatsil,Pelduris,Trithdrus,Andurus,Trithdring,Glamthaas,"
-"Aigcating,Nardrsol,Glamaithol,Dulaithsol,Althaus,Augduras,Aigaithas,"
-"Gomdurlos,Glamalus,Gomdrsil,Trithdrol,Pelating,Pelatus,Aigdrsol,Trithdurol,"
-"Glamaling,Dulduras,Dulating,Naraithing,Dulalis,Alaithus,Gomdurus,Glamcatus,"
-"Trithduring,Anatis,Anaithsil,Glamduril,Gomdursol,Narcatol,Trithaithis,"
-"Naratlos,Nardring,Aigalol,Althail,Anatas,Anthasol,Aigatus,Dulaithil,Althalos,"
-"Aldring,Glamalil,Anating,Aigdring,Duldril,Andurol,Pelaithsil,Gomdurus,"
-"Gomcatil,Glamthaas,Alalsol,Augdurus,Trithduril,Anthaol,Augalas,Pelcatol,"
-"Nardrsil,Alatil,Glamdrsol,Alaithlos,Pelatsil,Gomdurus,Dulatus,Alalsol,"
-"Glamaling,Dulatus,Alcatil,Aigthaus,Duldril,Pelaithlos,Pelaithis,Dulatil,"
-"Trithalis,Naraithol,Pelating,Augcatol,Gomatis,Andrus,Pelduris,Aigdrsil,"
-"Alatlos,Augdrsil,Anduril,Gomaithol,Glamdursol,Trithaithil,Gomdril,Glamcatil,"
-"Trithdrus,Naralas,Dulatol,Anaithil,Anatol,Augating,Peldursol,Narcatis,"
-"Glamatus,Aigaithas,Aigatas,Trithatlos,Gomatil,Gomthalos,Dulaling,Aigatsil,"
-"Augcatus,Trithaithus,Gomcatlos,Aigaithol,Naratsil,Narthaol,Narcatol,Augatlos,"
-"Pelaithil,Gomaithsol,Augaithsil"
+"Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
+"Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
+"Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Алтеас,Глоумин,Гламкейтъс,Тритейтис,Гомдрол,Андарус,Пилайтол,Тритейтус,"
-"Андрис,Тритейтсол,Гомкейтис,Пилкатол,Огкейтил,Алейтинг,Огейтинг,Антеас,"
-"Гомейтсол,Тритейтас,Айгдрис,Алтейлос,Анейлил,Тритдарол,Гламкейтил,Огтайл,"
-"Тритдарил,Далтейлос,Гламтейсол,Алдрсол,Гламейтол,Глеймалил,Анейлус,Нардрил,"
-"Огейтинг,Далейтсол,Алдрлос,Алейлус,Айгкатсол,Анкейтас,Тритдрис,Пилейтол,"
-"Айгтейсил,Антайс,Наркейтис,Тритейтил,Айгайтинг,Алтайл,Тритайтил,Нарайтол,"
-"Далдрлос,Гомейтас,Алкейтис,Нарайтсил,Алтейлос,Айгдарсол,Гламейсил,Нардрус,"
-"Айгейлис,Алдарлос,Огкейтсил,Айгтайнг,Огдарил,Айгайтас,Антайс,Гламтеас,"
-"Далкейтсол,Гомейтил,Гомкейтлос,Огдрсил,Тритдрил,Далдрсил,Далдрол,Пълдрсол,"
-"Пелейлсол,Гомтеас,Далкейтсил,Айгкейтинг,Алдрил,Гламкейтинг,Анейтсол,Огдрис,"
-"Антейсол,Гламкейтсил,Алдрас,Айгейтсол,Нарайтол,Антос,Гомдрсил,Пелейлис,"
-"Гомейтлос,Наркейтинг,Тритдрлос,Айгдрлос,Наркейтсил,Гламдрас,Айгтайнг,"
-"Гомкейтил,Андарус,Пълтайл,Тритаус,Огейлас,Алейлол,Айгейлас,Пълейтис,Анейтинг,"
-"Алайтсол,Андрас,Айгалсил,Далейтил,Айгдрис,Огейтсил,Гламдаринг,Тритдарил,"
-"Тритдрсол,Алейлус,Гламейтус,Алдрол,Глеймдрил,Пълкейтсил,Гламайтис,Тритдринг,"
-"Пълдрил,Тритдарус,Гомайтил,Триткейтсол,Гламдрсол,Огтайс,Далайтлос,Алтейсил,"
-"Айгайтил,Андрлос,Далейтил,далейлас,Далейтсол,Анейлол,Триткейтлос,Алтейсол,"
-"Алкейтис,Гламдарил,Пелдарсол,Пелейлус,Гламтеас,Алдарол,Айгейтсил,Айгейтус,"
-"Тритдарил,Пелайтсол,Айгкейтис,Андарсол,Нарейлсил,Алтоал,Алдрсол,Далейлас,"
-"Тритеас,Огейтол,Пелейлинг,Далкейтлос,Огдарил,Гламтоал,Анкейтас,Огкейтол,"
-"Пелдрас,Пелейтил,Гомкейтил,Анейлос,Анайтинг,Нарайтсил,Алдрис,Гомдрис,Андрил,"
-"Нарейтсил,Айгкейтинг,Тритеас,Нардарил,Айгдарлос,Айгайтол,Гламайтол,Пелейтил,"
-"Нардрис,Огтаол,Огейтол,Гламейлос,Антайнг,Айгкейтс,Пелтейсил,Далкейтил,"
-"Далейтол,Далдаринг,Алейлил,Пелдрас,Гомдарсил,Нардрас,Пелдрил,Гомкейтлос,"
-"Гомейлис,Гламтаус,Далдарус,Далкейтинг,Анейтол,Огдрсил,Анейлсил,Тритдрус,"
-"Огайтус,Тротайтсол,Айгкейтус,Огейлинг,Алейтинг,Гламейтил,Анайтас,Гомайтис,"
-"Огдрис,Пелайтинг,Огайтинг,Гомдарсол,Нарайтус,Тритейтсол,Анкейтил,Гламайтил,"
-"Огдарус,Гомейлус,Айгдурас,Нардол,Нардарол,Пелейлил,Гомейлил,Айгейтис,Анейлил,"
-"Далтаус,Гомайтил,Алдурас,Тритдарил,Анкейтол,Алдурас,Пелдарил,Наркейтсол,"
-"Пелейтинг,Далкейтсил,Агейтол,Гламтейсил,Гомтейсол,Нарайтсил,Алейтсил,"
-"Далкейтол,Гомтейлос,Айгейлинг,Айгкейтас,Пелейлус,ОгкейтсилТритейтас,Айгтайс,"
-"Гомайтас,Алкейтсил,Анкейтус,Пелейтис,Анкейтас,Далейтинг,Гомдрас,Нарайтсол,"
-"Огкейтис,Алайтис,Пелейлсол,Далдарсил,Пелкейтинг,Далейлинг,Гомейтинг,Айгайтол,"
-"Алайтас,Пелдрас,Тритайнг,Огдарол,Огайтас,Огкейтсил,Гламдрлос,Пелдарол,"
-"Айгдрис,Пелайтас,Огкейтас,Алейлас,Антайнг,Нарейтлос,Огдарлос,Гомдрил,"
-"Далкейтлос,Антейсил,Тритасол,Нарейлас,Пелтеас,Огкейтсил,Анайтис,Андарус,"
-"Гомдринг,Гламдарас,Пелейлсил,Огтейлос,Огдарас,Пелейлинг,Гомейлис,Огейлол,"
-"Гомдрис,Гламейлис,Огдрас,Алейтлос,Тритдрил,Огтейлос,Гламдрил,Айгейтлос,"
-"Алейтас,Пелайтсол,Антаус,Тритдрил,Алдрсол,Тритайл,Гламайтсол,Огдаринг,"
-"Айгтаус,Анайтсил,Пелейтус,Нарейтол,Гламейлсил,Триткейтус,Тритейтил,Анейлос,"
-"Огдрас,Тритайтсил,Нардарил,Далейтсол,Нарейлус,Наркейтол,Алкейтлос,Тритейлол,"
-"Далтейсил,Андрас,Пелдаринг,Нарайтил,Айгейтсил,Тритдарлос,Огдарсол,Тритайтол,"
-"Гомейтол,Айгкейтас,Пелкейтлос,Гламдарис,Анайтас,Пелдарас,Гламдарис,Нарейлил,"
-"Тритдарсил,Пелтейсил,Гомейтис,Алдрил,Огейтол,Анайтас,Анейтсол,Тритайтлос,"
-"Далдрас,Нардурас,Далайтлос,Далдрис,Далайтсил,Антайс,Гомдарис,Нартейлос,"
-"Анкейтас,Андарил,Алайтол,Айгейлис,Тритайтас,Айгкейтил,Тритайтил,Нарайтинг,"
-"Огейтсол,Тритайтол,Далейлсил,Далтейсол,Гламкейтас,Гламтаол,Гомайтсол,"
-"Далайтинг,Нарейтлос,Нарайтол,Гомтейсол,Анкейтас,Айгкейтсил,Пелдарис,Тритдрас,"
-"Андарас,Тритдринг,Гламтеас,Айгкейтинг,Нардрсол,Гламайтол,Далайтсол,Алтаус,"
-"Аугдурас,Айгайтас,Гомдарлос,Гламейлус,Гомдрсил,Тритдрол,Пелейтинг,Пелейтус,"
-"Айгдрсол,Тритдарол,Гламейлинг,Далдурас,Далейтинг,Нарайтинг,Далейлис,Алайтас,"
-"Гомдарус,Гламкейтус,Тритдаринг,Анейтис,Анайтсил,Гламдарил,Гомдарсол,"
-"Наркейтол,Тритайтис,Нарейтлос,Нардринг,Айгейлол,Алтайл,Анейтас,Антейсол,"
-"Айгейтус,Дулайтил,Алтейлос,Алдринг,Глемейлил,Анейтинг,Айгдринг,Далдрил,"
-"Андарол,Пелайтсил,Гомдарас,Гомкейтил,Гламтеас,Алейлсол,Огдарас,Тритдарил,"
-"Антаол,Огейлас,Пелкейтол,Нардрсил,Алейтил,Гламдрсол,Алайтлос,Пелейтсил,"
-"Гомдарас,Далейтус,Алейлсол,Гламейлинг,Далейтус,Алкейтил,Айгтаус,Далдрил,"
-"Пелайтлос,Пелайтис,Далейтил,Тритейлис,Нарайтол,Пелейтинг,Огкейтол,Гомейтис,"
-"Андрас,Пелдарис,Айгдрсил,Алейтлос,Огдрсил,Андарил,Гомайтол,Гламдарсол,"
-"Тритайтил,Гомдрил,Гламкейтил,Тритдрас,Нарейлас,Далейтол,Анайтил,Анейтол,"
-"Огейтинг,Пелдарсол,Наркейтис,Гламейтус,Айгайтас,Айгейтас,Тритейтлос,Гомейтил,"
-"Гомтейлос,Далейлинг,Айгейтсил,Огкейтас,Тритайтас,Гомкейтлос,Айгайтол,"
-"Нарейтсил,Нартаол,Наркейтол,Огейтлос, Пелайтил,Гомайтсол,Огайтсил"
+"Крак,Гарк,Трок,Нук Кар,Ка,Хак,Тух,Тур,Рук,Дак,Труф,Фрок,Кух,Тук Рух,Грар,Шуф,"
+"Стух,Хот,Нак,Урк,Лок,Ху Ках,Лук,Хаск,Гулк,Тог,Ург,Торг,Тарг,Борб,Уг,Сарк,"
+"Дрог,Гах,Рок,Рек,Шак,Браг,Круг,Брок,Грок,Браг,Гох,Зог,Хуг,Бах,Куб,Тохг,Агх,"
+"Зоф Та,Тсо,Ва,Зууг,Паг,Бог Ах,Ух,Аг,Га,Нарф,Грумф,Ургх"
 
-#: data/core/macros/names.cfg:26
-msgid ""
-"Xamalia,Brissal,Saxiala,Liabra,Riaa,Griama,Gaxmail,Harxias,Axmailia,"
-"Saxririaa,Vlanissa,Malina,Nildlasi,Xinasia,Xina,Mila,Milbra,Bli,Bliana,"
-"Brassas,Vilaila,Aliasse,Amailis,Haina,Haila,Lamai,Lamaissa,Maissa,Sassalia,"
-"Lilin,Linassa,Inai,Inalai,Issalai,Vissalai,Blai,Blanalai,Grissa,Grissilai,"
-"Sral,Skal,Sla,Sall,Srak,Szak,Psen,Psal,Sek,Snelia,Skepz,Zpsek,Zsekp,Kzap,"
-"Pzakp,Krezkps,Zalsp,Kras,Xabrak,Lexpek,Xnamas,Xopkne,Oxpel,Huzi,Poniazal,"
-"Klez,Zlek,Trixzed"
-msgstr ""
-"Ксамалия,Брайсал,Саксиала,Лябра,Риа,Гриама,Гаксмейл,Харксас,Аксмейлия, "
-"Саксрайрия,Вланиса,Малина,Нилдласи,Ксиназия,Ксина,Майла,Милбра,Бли,Блиана, "
-"Брейсас,Вилейла,Алайъс,Амейлис,Хейна,Хейла,Ламай,Ламайса,Майса,Сасейлия, "
-"Лайлин,Линейса,Инай,Иналай,Айсалай,Вайсалай,Блай,Бланейлия,Гриса,Грисилай, "
-"Срал,Скал,Слей,Сал,Срак,Сзак,Псен,Псал,сек,Снилия,Скепц,Зпсек,Зсекп,Кзап, "
-"Пзакп,Крезксп,Залсп,Крас,Ксабрак,Лекспък,Кснамас,Ксопкне,Окспъл,Хюзи,"
-"Пониазъл, Клез,Злек,Триксзед"
-
-#: data/core/macros/names.cfg:27
-msgid ""
-"Abraxas,Xamalel,Briss,Saxil,Lobor,Reii,Griam,Gaxmol,Harxos,Axmail,Saxrireii,"
-"Silas,Vlanis,Malinos,Nildloss,Xinas,Mileii,Milbor,Blo,Bress,Vilail,Aleiss,"
-"Amail,Hainoss,Hailoss,Lameii,Lamaiss,Maissol,Sassal,Liness,Ineii,Inaloss,"
-"Issal,Vissal,Bleii,Blanal,Griss,Grissileii,Srell,Skell,Slell,Soill,Sorkol,"
-"Pson,Psell,Sekol,Snol,Skepz,Zpsek,Zsekp,Kzap,Pzakp,Krezkps,Zalsp,Kras,Xabrak,"
-"Lexpek,Xnamos,Xopkon,Oxpeii,Huzel,Poniaz,Klezel,Zlek,Trixoz"
-msgstr ""
-"Абраксас,Ксамалел,Брис,Саксил,Лобор,Реи,Гриам,Гаксмол,Харксос,Аксмайл,"
-"Саксрирей,Силас,Вланис,Малинос,Нилдлос,Ксинас,Милей,Милбор,Бло,Брес,Вилайл,"
-"Алейс, Амайл,Хайнос,Хайлос,Ламей,Ламаис,Майсол,Сейсал,Линес,Иней,Иналос, "
-"Исал,Висал,Блей,Бланал,Грис,Грисилей,Срел,Скел,Слел,Сойл,Соркол, Псон,Псел,"
-"Секол,Снол,Скепц,Спсек,Секп,Кзап,Пзакп,Керзкпс,Залсп,Карс,Ксабрак, Лекспек,"
-"Кснамос,Ксопкон,Окспей,Хузел,Пониац,Клезел,Злек,Триксоз"
-
-#: data/core/macros/names.cfg:31
+#: data/core/macros/names.cfg:54
 msgid ""
 "Buomdumdenlol,Muldondindal,Lolmandindel,Danmonlulbam,Nunmaldildun,"
 "Dolmannumbil,Nanmildaldum,Wonrunmaldin,Bolwuldelman,Landunwonbam,"
@@ -3782,92 +3878,7 @@ msgstr ""
 "Гуладроамадоак,Боладрумбадрум, Елмарумадрум,Гумабеладрелм,Грелмадрумбумадум,"
 "Удадунопл"
 
-#: data/core/macros/names.cfg:35
-msgid ""
-"Blokkar,Merknik,Akoark,Delkkak,Kalknix,Akzalk,Corkkar,Reknak,Krukrak,Markaak,"
-"Kelkrar,Kilkrar,Grak,Nargak,Kargnak,Korgnak,Gnukk,Kuknuk,Kurkur,Kingrok,"
-"Takolak,Kolk,Kork,Kirk,Karak,Kurmak,Markuk,Kerta,Trabuk,Bukkak,Borkuk,Orkut,"
-"Trakkon,Makron,Kokkan,Akort,Urkark,Klud,Olk,Garkuk,Komak,Kramak,Goruk,Krog,"
-"Krumuk,Karterak,Arkarm,Bulruk,Barkuk,Karbuk,Kork,Gurk,Koruck,Gurm,Kayrak,"
-"Urkar"
-msgstr ""
-"Блокар,Мъркник,Акоарак,Делкак,Калкникс,Акзалк,Коркар,Рекнак,Крукрак,Маркар, "
-"Келкрар,Килкрар,Грак,Наргак,Каргнак,Коргнак,Гнук,Кукнук,Куркур,Кингрок, "
-"Таколак,Колк,Корк,Кирк,Карак,Курмак,Маркук,Керта,Трабук,Букак,Боркук,Оркут, "
-"Тракон,Макрон,Кокан,Акорт,Уркарк,Клуд,Олк,Гаркук,Комак,Крамак,Горук,Крог, "
-"Крумук,Картерак,Аркарм,Булрук,Баркук,Карбук,Корк,Гурк,Корук,Гурм,Кайрак, "
-"Уркар"
-
-#: data/core/macros/names.cfg:39
-msgid ""
-"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
-"Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
-"Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
-"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
-msgstr ""
-"Крак,Гарк,Трок,Нук Кар,Ка,Хак,Тух,Тур,Рук,Дак,Труф,Фрок,Кух,Тук Рух,Грар,Шуф,"
-"Стух,Хот,Нак,Урк,Лок,Ху Ках,Лук,Хаск,Гулк,Тог,Ург,Торг,Тарг,Борб,Уг,Сарк,"
-"Дрог,Гах,Рок,Рек,Шак,Браг,Круг,Брок,Грок,Браг,Гох,Зог,Хуг,Бах,Куб,Тохг,Агх,"
-"Зоф Та,Тсо,Ва,Зууг,Паг,Бог Ах,Ух,Аг,Га,Нарф,Грумф,Ургх"
-
-#: data/core/macros/names.cfg:43
-msgid ""
-"Arix,Kezz,Plaxis,Krex,Trezz,Tarex,Frikes,Klexaz,Kerx,Tirix,Merax,Sprizz,"
-"Satras,Anitraz,Hezzis,Plesix,Presch,Tirax,Tirasch,Saprazz,Irix,Inexis,Anexir,"
-"Vriss,Waks,Fazzis,Sterizz,Krarax,Kersezz,Krinex,Krenarex,Jizz,Hix,Jezzix,"
-"Heffez,Talerez,Krisess,Zedrix,Mexiss,Axiz,Zilrix,Amprixta,Zzalkz,Flixta,"
-"Moxanzz,Bzz'Kza,Flizzil,Tarnix,Xerxix,Xirasz,Xirtras,Xirz,Xirr,Xartrez,"
-"Xirtrez,Kernix,Kertrasz,Kerxenix,Naxisz,Hertrazzir,Hezzir,Hasz,Hesz,Xasz,"
-"Xaztex,Tezzaz,Nix,Xaffrasz,Fizztrax,Zizzasz,Sszasz,Ssizer,Ssorix,Ssexur,"
-"Skrez,Zslap,Pekzs,Kepzs,Zzupde,Venezz,Clezz,Klezyx,Skeezix,Lixeez,Sklizle,"
-"Slizilx,Skalix,Skazix,Laizix,Skeely,Salik,Skandix,Lazki,Sailik,Salanix,"
-"Cleezi,Kaliez,Frizzle,Chamil,Zandler,Sandix"
-msgstr ""
-"Арикс,Кец,Плаксис,Крекс,Трец,Тейрекс,Фрайкс,Къркс,Тайрикс,Миракс,Спрайц, "
-"Сейтрас,Ейнитраз,Хъцис,Плисайкс,Пръш,Тайракс,Тайраш,Сейпрац,Айрикс,Айнексис,"
-"Ейнъксир, Врайс,Уакс,Фейцис,Стирайц,Крейракс,Кърсиц,Крайнекс,Кринарекс,Джиц,"
-"Хикс,Джецикс, Хефъз,Тейлърез,Крайсъс,Зедрикс,Мъксис,Ейксиз,Зилрикс,Амприкста,"
-"Цалкз,Фликста, Моксанц,Бц'кза,Флайцъл,Таникс,Ксерксикс,Ксайрас,Ксайртрас,"
-"Ксирз,Ксир,Ксейртръз, Ксайртръз,Кърникс,Къртрас,Кърксеникс,Нейксис,"
-"Хъртрейцир,Хецир,Хас,Хъс,Ксас, Ксейзтъкс,Тицаз,Никс,Ксафрас,Фицтракс,Зайцас,"
-"Сзас,Сайзър,Соурикс,Сексур, Скръз,Злап,Пъкс,Къпс,Запди,Венъц,Клъц,Клъзикс,"
-"Скийзикс,Лайксийз,Склайзъл, Слайзилкс,Скейликс,Скейрикс,Лайзикс,Скийли,"
-"Сейлик,Скейндикс,Лейзки,Сайлик,Сейланикс, Клийзи,Кейлиъз,Фрицъл,Чеймил,"
-"Зейндлър,Сейндикс"
-
-#: data/core/macros/names.cfg:47
-msgid ""
-"Kraag,Gillan,Gisharri,Karigan,Gron ih,Krenli,Kegrid,Mah Toa,Grish,Garushi,"
-"Gaushii,Murr,Gakré Ohm,Kahn Ih,Kun,Garchin,Omataké,Krash,Grada,Morusté,"
-"Garadin,Krall Ohn,Merkush,Gridda,Garlan,Græt Ihn,Ka,Karron,Markinos,Gashöl,"
-"Grenn ohn,Gegchi,Gadé Ihn,Marrito,Grelnit,Kraslar,Marritos,Kran Kor,Kerath "
-"Kor,Kerath Ihn,Galsh,Garrutin,Gray,Garlin ohn,Merritos Gark,Gark,Gelknick,"
-"Goyst,Gravlan,Marhildian,Margian,Gart'lo,Reshan,Mal,Karri Kon,Kon Garashé,"
-"Egar,Elch,Mar Ohn,Gelka Kon,Markan,Gretz,Gashinar,Gribbel,Vladnir,Velnick,"
-"Vashitt,Veralon,Vertick,Vermay,Verkon,Verath,Verlinn,Veramo,Grashen,Galeck,"
-"Gaustun,Marra Di'lek,Klash,Kruggen,Kasp,Verditt,Ga'ash"
-msgstr ""
-"Крааг,Джилиан,Гишари,Кариган,Грон их,Крънли,Кегрид,Мах Тоа,Гриш,Гейруши,"
-"Гауши,Мър,Гейкре Ом,Кан Их,Кан,Гарчин,Оматейке,Краш,Грейда,Морасте,Гарейдин,"
-"Крал Он,Меркуш,Грайда,Гарлан,Грайт Ин,Ка,Карон,Маркинос,Гашол,Грен он,Гърчи,"
-"Гейде Ин,Марито,Грълнит,Крейслар,Маритос,Крейн Кор,КиратКор,Кират Ин,Гейлш,"
-"Гейратин,Грей,Гарлин он,Меритос Гарк,Гарк,Гълкник, Гойст,Грейвлан,Марилдиан,"
-"Марджиан,Гарт'ло,Решан,Мал,Кари Кон,Кон Гарейше,Игар,Елч,Мар Он,Джилка Кон,"
-"Маркан,Грътз,Гейшинар,Грибъл,Влейднир,Велник,Вейшит,Виралон,Въртик,Върмей,"
-"Въркон,Вират,Върлин,Вирамо,Грейшън,Гейлък,Гаустан,Мейра Ди'лък,Клаш,Крагън,"
-"Касп,Върдит,Га'аш"
-
-#: data/core/macros/names.cfg:48
-msgid ""
-"Velisp,Valnitt,Vushtin,Eshyi,Dell,Vallin,Demla,Auuglann,Auginet Ka,Vellin Ka,"
-"Omage,Orriday,Weshter,Wilniss,Werra,Damell,Dinsill,Orridan,Oshibi,Valnirra,"
-"Olath,Omagrra,Ashijt,Alen Ka,Alinash Mal,Orra Ka"
-msgstr ""
-"Велисп,Валнит,Вуштин,Еший,Дел,Валин,Демла,Ауглан,Аугинет Ка,Велин Ка, Омаге,"
-"Оридей,Уещер,Уилнис,Уера,Дамел,Динзил,Оридан,Ошиби,Валнира, Олат,Омагра,"
-"Ашижт,Ален Ка,Алинаш Мал,Ора Ка"
-
-#: data/core/macros/names.cfg:52
+#: data/core/macros/names.cfg:58
 msgid ""
 "Ox,Hol,Il,Del,El,York,Corn,Hel,Sel,Sil,Sal,Bal,Water,Sen,Sed,Hex,Hox,Fox,Bal,"
 "Wet,Earl,Fren,Kin,Tal,Gel,Nam,Sam,Olf,Old,New,Ol,Nes,Cam,Rook,Rock,Oul"
@@ -4196,75 +4207,80 @@ msgstr "Кафяв"
 msgid "Teal"
 msgstr "Синьо-зелено"
 
-#: data/core/units.cfg:41 data/hardwired/english.cfg:18
-#, fuzzy
-msgid "race^Elves"
-msgstr "Джуджета"
-
-#: data/core/units.cfg:50 data/hardwired/english.cfg:32
-msgid "race^Woses"
-msgstr "Узи"
-
-#: data/core/units.cfg:58 data/hardwired/english.cfg:19
-#, fuzzy
-msgid "race^Humans"
-msgstr "Хора"
-
-#: data/core/units.cfg:65 data/hardwired/english.cfg:22
-msgid "race^Dwarves"
-msgstr "Джуджета"
-
-#: data/core/units.cfg:73 data/hardwired/english.cfg:20
-#, fuzzy
-msgid "race^Orcs"
-msgstr "Огрета "
-
-#: data/core/units.cfg:80 data/hardwired/english.cfg:24
-msgid "race^Goblins"
-msgstr "Гоблини"
-
-#: data/core/units.cfg:87 data/hardwired/english.cfg:21
-msgid "race^Undead"
-msgstr "Немъртви"
-
-#: data/core/units.cfg:95
+#: data/core/units.cfg:43
 #, fuzzy
 msgid "race^Bats"
 msgstr "Змиеподобни"
 
-#: data/core/units.cfg:101 data/hardwired/english.cfg:30
-msgid "race^Ogres"
-msgstr "Огрета "
-
-#: data/core/units.cfg:108 data/hardwired/english.cfg:27
-msgid "race^Mermen"
-msgstr "Океаниди"
-
-#: data/core/units.cfg:115 data/hardwired/english.cfg:29
-msgid "race^Nagas"
-msgstr "Змиеподобни"
-
-#: data/core/units.cfg:121 data/hardwired/english.cfg:28
-msgid "race^Monsters"
-msgstr "Чудовища"
-
-#: data/core/units.cfg:127 data/hardwired/english.cfg:31
-msgid "race^Trolls"
-msgstr "Тролове "
-
-#: data/core/units.cfg:139 data/hardwired/english.cfg:23
+#: data/core/units.cfg:49 data/hardwired/english.cfg:23
 #, fuzzy
 msgid "race^Drakes"
 msgstr "Джуджета"
 
-#: data/core/units.cfg:146
+#: data/core/units.cfg:56 data/hardwired/english.cfg:22
+msgid "race^Dwarves"
+msgstr "Джуджета"
+
+#: data/core/units.cfg:64 data/hardwired/english.cfg:18
+#, fuzzy
+msgid "race^Elves"
+msgstr "Джуджета"
+
+#: data/core/units.cfg:73 data/hardwired/english.cfg:24
+msgid "race^Goblins"
+msgstr "Гоблини"
+
+#: data/core/units.cfg:80
+#, fuzzy
+msgid "race^Gryphons"
+msgstr "Гоблини"
+
+#: data/core/units.cfg:87 data/hardwired/english.cfg:19
+#, fuzzy
+msgid "race^Humans"
+msgstr "Хора"
+
+#: data/core/units.cfg:94
 #, fuzzy
 msgid "race^Saurians"
 msgstr "Змиеподобни"
 
-#: data/core/units.cfg:154 data/hardwired/english.cfg:26
+#: data/core/units.cfg:102 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
 msgstr "Механични"
+
+#: data/core/units.cfg:111 data/hardwired/english.cfg:27
+msgid "race^Mermen"
+msgstr "Океаниди"
+
+#: data/core/units.cfg:118 data/hardwired/english.cfg:28
+msgid "race^Monsters"
+msgstr "Чудовища"
+
+#: data/core/units.cfg:124 data/hardwired/english.cfg:29
+msgid "race^Nagas"
+msgstr "Змиеподобни"
+
+#: data/core/units.cfg:131 data/hardwired/english.cfg:30
+msgid "race^Ogres"
+msgstr "Огрета "
+
+#: data/core/units.cfg:138 data/hardwired/english.cfg:20
+#, fuzzy
+msgid "race^Orcs"
+msgstr "Огрета "
+
+#: data/core/units.cfg:145 data/hardwired/english.cfg:31
+msgid "race^Trolls"
+msgstr "Тролове "
+
+#: data/core/units.cfg:157 data/hardwired/english.cfg:21
+msgid "race^Undead"
+msgstr "Немъртви"
+
+#: data/core/units.cfg:165 data/hardwired/english.cfg:32
+msgid "race^Woses"
+msgstr "Узи"
 
 #: data/hardwired/english.cfg:3
 msgid "Easy"
@@ -4408,7 +4424,7 @@ msgstr "Списък единици на Уеснот"
 msgid "Based on version"
 msgstr "Въз основа на версия"
 
-#: data/hardwired/english.cfg:64
+#: data/hardwired/english.cfg:64 src/menu_events.cpp:1555
 msgid "Race"
 msgstr "Раса"
 
@@ -4786,8 +4802,8 @@ msgid "End Turn"
 msgstr "Край на хода"
 
 #: data/themes/default.cfg:203 data/themes/dfool.cfg:230
-#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2603
-#: src/unit.cpp:2901
+#: data/themes/experimental.cfg:181 src/menu_events.cpp:322 src/unit.cpp:2610
+#: src/unit.cpp:2908
 msgid "HP"
 msgstr "Здраве"
 
@@ -5629,6 +5645,7 @@ msgid "unit help^Name"
 msgstr "Име"
 
 #: src/help.cpp:1386 src/menu_events.cpp:319 src/menu_events.cpp:1075
+#: src/menu_events.cpp:1556
 msgid "Type"
 msgstr "Тип"
 
@@ -5813,7 +5830,7 @@ msgstr "Ниво"
 msgid "unit list^Traits"
 msgstr "Качества"
 
-#: src/menu_events.cpp:325 src/unit.cpp:2636 src/unit.cpp:2909
+#: src/menu_events.cpp:325 src/unit.cpp:2643 src/unit.cpp:2916
 msgid "Moves"
 msgstr "Ходове"
 
@@ -6061,27 +6078,31 @@ msgstr ""
 msgid "Rename Unit"
 msgstr "Преименувай единица"
 
-#: src/menu_events.cpp:1600
+#: src/menu_events.cpp:1581
+msgid "Create Unit (Debug!)"
+msgstr ""
+
+#: src/menu_events.cpp:1621
 msgid "Place Label"
 msgstr "Обозначи"
 
-#: src/menu_events.cpp:1603 src/menu_events.cpp:1606
+#: src/menu_events.cpp:1624 src/menu_events.cpp:1627
 msgid "Label:"
 msgstr "Знак:"
 
-#: src/menu_events.cpp:1609
+#: src/menu_events.cpp:1630
 msgid "Team only"
 msgstr "Само отбора"
 
-#: src/menu_events.cpp:1710
+#: src/menu_events.cpp:1731
 msgid "Search"
 msgstr "Търсене"
 
-#: src/menu_events.cpp:1753
+#: src/menu_events.cpp:1774
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Команди: whisper list emote. Напишете /help [команда] за помощ."
 
-#: src/menu_events.cpp:1804
+#: src/menu_events.cpp:1825
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6089,16 +6110,16 @@ msgstr ""
 "Праща лично съобщение. Не може да пращате съобщения до играчи, които "
 "контролират някоя страна в игра. Употреба: /whisper [псевдоним] [съобщение]"
 
-#: src/menu_events.cpp:1808
+#: src/menu_events.cpp:1829
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Добавяне играч към списъка с приятелите. Употреба: /list addfriend [аргумент]"
 
-#: src/menu_events.cpp:1810
+#: src/menu_events.cpp:1831
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Добавяне играч към черният списък. Употреба: /list ignore [аргумент]"
 
-#: src/menu_events.cpp:1812
+#: src/menu_events.cpp:1833
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6106,20 +6127,20 @@ msgstr ""
 "Премахване на играч от черният списък или списъка с приятели. Употреба: /"
 "list remove [аргумент]"
 
-#: src/menu_events.cpp:1814
+#: src/menu_events.cpp:1835
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 "Изчистване на черният списък и списъка с приятели. Употреба: /list clear"
 
-#: src/menu_events.cpp:1816
+#: src/menu_events.cpp:1837
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Показване на черният списък и списъка с приятели: /list display"
 
-#: src/menu_events.cpp:1818
+#: src/menu_events.cpp:1839
 msgid "Unknown subcommand"
 msgstr "Непозната подкоманда "
 
-#: src/menu_events.cpp:1821
+#: src/menu_events.cpp:1842
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6131,56 +6152,56 @@ msgstr ""
 "(незадължително) Подкоманди: addfriend addignore remove display clear. "
 "Напишете /help list [подкоманда] за повече информация."
 
-#: src/menu_events.cpp:1824
+#: src/menu_events.cpp:1845
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Пращане на емоция или действие в разговор. Употреба /emote [ съобщение]"
 
-#: src/menu_events.cpp:1826
+#: src/menu_events.cpp:1847
 msgid "Unknown command"
 msgstr "Непозната команда"
 
-#: src/menu_events.cpp:1838
+#: src/menu_events.cpp:1859
 msgid "Added to ignore list: "
 msgstr "Добавен към черният списък: "
 
-#: src/menu_events.cpp:1840 src/menu_events.cpp:1847 src/menu_events.cpp:1854
+#: src/menu_events.cpp:1861 src/menu_events.cpp:1868 src/menu_events.cpp:1875
 msgid "Invalid username: "
 msgstr "Невалиден потребител: "
 
-#: src/menu_events.cpp:1845
+#: src/menu_events.cpp:1866
 msgid "Added to friends list: "
 msgstr "Добавен към списъка с приятели: "
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1873
 msgid "Removed from list: "
 msgstr "Премахнат от списъка с приятели: "
 
-#: src/menu_events.cpp:1878
+#: src/menu_events.cpp:1899
 msgid "There are no players on your friends or ignore list."
 msgstr "Няма играчи в списъка с приятели или черният списък."
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1909
 msgid "Removed from ignore list: "
 msgstr "Премахнат от черният списък: "
 
-#: src/menu_events.cpp:1891
+#: src/menu_events.cpp:1912
 msgid "Removed from friends list: "
 msgstr "Премахнат от списъка с приятели: "
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1919
 msgid "Unknown command: "
 msgstr "Непозната команда: "
 
-#: src/menu_events.cpp:2012
+#: src/menu_events.cpp:2033
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Не бе открит знак или единица съдържащ/а текста '$search'."
 
-#: src/menu_events.cpp:2167
+#: src/menu_events.cpp:2207
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/menu_events.cpp:2186
+#: src/menu_events.cpp:2226
 msgid "User-Command#3"
 msgstr "Команди"
 
@@ -6312,12 +6333,12 @@ msgid "Normal"
 msgstr "Нормално"
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2939
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:451 src/unit.cpp:2946
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:357 src/multiplayer_connect.cpp:454
-#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2946
+#: src/multiplayer_wait.cpp:443 src/multiplayer_wait.cpp:454 src/unit.cpp:2953
 msgid ")"
 msgstr ")"
 
@@ -6905,15 +6926,15 @@ msgstr "включен от "
 msgid "$error at $pos"
 msgstr "$error на $pos"
 
-#: src/terrain.cpp:107
+#: src/terrain.cpp:127
 msgid "Allied village"
 msgstr "Приятелско селище"
 
-#: src/terrain.cpp:112
+#: src/terrain.cpp:132
 msgid "Enemy village"
 msgstr "Противниково селище"
 
-#: src/terrain.cpp:117
+#: src/terrain.cpp:137
 msgid "Owned village"
 msgstr "Собствено селище"
 
@@ -7019,19 +7040,19 @@ msgstr "Зареди статистика"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогнете на Уеснот, като ни пращате информация"
 
-#: src/unit.cpp:372 src/unit.cpp:1152 src/unit.cpp:2522
+#: src/unit.cpp:379 src/unit.cpp:1159 src/unit.cpp:2529
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2566 src/unit.cpp:2889 src/unit.cpp:2944
+#: src/unit.cpp:2573 src/unit.cpp:2896 src/unit.cpp:2951
 msgid "; "
 msgstr "; "
 
-#: src/unit.cpp:2654 src/unit.cpp:2917
+#: src/unit.cpp:2661 src/unit.cpp:2924
 msgid "XP to advance"
 msgstr "Опит, оставащ до повишение"
 
-#: src/unit.cpp:2923
+#: src/unit.cpp:2930
 msgid "/level"
 msgstr "/ниво"
 
@@ -7083,6 +7104,9 @@ msgstr "Помогнете ни да направим Уеснот по-добъ
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Позволи качване на обобщения"
+
+#~ msgid "This water will make melee weapons holy."
+#~ msgstr "Тази вода ще освети оръжията за близък бой."
 
 #~ msgid ""
 #~ "and other people\n"

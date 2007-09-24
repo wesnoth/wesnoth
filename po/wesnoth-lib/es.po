@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 00:58+0200\n"
+"POT-Creation-Date: 2007-09-24 11:04+0200\n"
 "PO-Revision-Date: 2007-08-11 22:14+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -307,7 +307,7 @@ msgid "Hotkeys"
 msgstr "Accesos rápidos"
 
 #: src/editor/editor_dialogs.cpp:383 src/editor/editor_dialogs.cpp:495
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Resize Map"
 msgstr "Cambiar el tamaño del mapa"
 
@@ -989,102 +989,107 @@ msgid "Fill Selection"
 msgstr "Rellenar selección"
 
 #: src/hotkeys.cpp:112
+#, fuzzy
+msgid "Rotate Selection"
+msgstr "Rellenar selección"
+
+#: src/hotkeys.cpp:113
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Revert from Disk"
 msgstr "Cargar de nuevo desde disco"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Flip Map"
 msgstr "Voltear mapa"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Draw Terrain"
 msgstr "Dibujar terreno"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Refresh Image Cache"
 msgstr "Refrescar caché de imagen"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Delay transition updates"
 msgstr "Retraso entre las actualizaciones de la transición"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Update transitions"
 msgstr "Actualizar transiciones"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Delay Shroud Updates"
 msgstr "Retardar actualización de zonas oscuras"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Update Shroud Now"
 msgstr "Actualizar zonas oscuras"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Continue Move"
 msgstr "Continuar moviendo"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Find Label or Unit"
 msgstr "Buscar etiqueta o unidad"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Speak to Ally"
 msgstr "Hablar con aliados"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Speak to All"
 msgstr "Hablar con todos"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Help"
 msgstr "Ayuda"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "View Chat Log"
 msgstr "Ver el registro de conversaciones"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Change the language"
 msgstr "Cambia el idioma"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Enter user command"
 msgstr "Introduzca una orden"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Clear messages"
 msgstr "Borrar mensajes"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "User-Command#2"
 msgstr "Orden-de-usuario#2"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "User-Command#3"
 msgstr "Orden-de-usuario#3"
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Do you really want to quit?"
 msgstr "¿Está seguro de que quiere salir?"
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Quit"
 msgstr "Salir"
 
@@ -1186,7 +1191,7 @@ msgstr "Seleccione resolución"
 msgid "Error"
 msgstr "Error"
 
-#: src/terrain_translation.cpp:753
+#: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 "Se encontró un terreno no válido, probablemente se trate de un terreno en "

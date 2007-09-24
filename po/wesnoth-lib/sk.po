@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 00:58+0200\n"
+"POT-Creation-Date: 2007-09-24 11:04+0200\n"
 "PO-Revision-Date: 2007-01-08 22:55+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -306,7 +306,7 @@ msgid "Hotkeys"
 msgstr "Klávesy"
 
 #: src/editor/editor_dialogs.cpp:383 src/editor/editor_dialogs.cpp:495
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Resize Map"
 msgstr "Zmeň veľkosť mapy"
 
@@ -994,104 +994,109 @@ msgid "Fill Selection"
 msgstr "Vyplň označené"
 
 #: src/hotkeys.cpp:112
+#, fuzzy
+msgid "Rotate Selection"
+msgstr "Vyplň označené"
+
+#: src/hotkeys.cpp:113
 msgid "Cut"
 msgstr "Vystrihni"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Copy"
 msgstr "Kopíruj"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Paste"
 msgstr "Vlož"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Revert from Disk"
 msgstr "Znovunačítaj z disku"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Flip Map"
 msgstr "Prevráť mapu"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Select All"
 msgstr "Označ všetko"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Draw Terrain"
 msgstr "Kresli terén"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Refresh Image Cache"
 msgstr "Obnov pamäť obrázkov"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 #, fuzzy
 msgid "Delay transition updates"
 msgstr "Pozastav odkrývanie mapy"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Update transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Delay Shroud Updates"
 msgstr "Pozastav odkrývanie mapy"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Update Shroud Now"
 msgstr "Vykresli odkrytú mapu"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Continue Move"
 msgstr "Pokračuj v pohybe"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Find Label or Unit"
 msgstr "Nájdi značku alebo jednotku"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Speak to Ally"
 msgstr "Povedz spojencom"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Speak to All"
 msgstr "Povedz všetkým"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "View Chat Log"
 msgstr "Ukáž záznam rozhovoru"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Change the language"
 msgstr "Zmeň jazyk"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Enter user command"
 msgstr "Zadaj užívateľský príkaz"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 #, fuzzy
 msgid "Clear messages"
 msgstr "Vymaž značky"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "User-Command#2"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Do you really want to quit?"
 msgstr "Chceš naozaj vypnúť?"
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Quit"
 msgstr "Vypni"
 
@@ -1194,7 +1199,7 @@ msgstr "Vyber si rozlíšenie"
 msgid "Error"
 msgstr "Chyba"
 
-#: src/terrain_translation.cpp:753
+#: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 

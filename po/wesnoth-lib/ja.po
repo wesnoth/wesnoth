@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-18 00:58+0200\n"
+"POT-Creation-Date: 2007-09-24 11:04+0200\n"
 "PO-Revision-Date: 2007-09-09 11:43+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -307,7 +307,7 @@ msgid "Hotkeys"
 msgstr "ホットキー"
 
 #: src/editor/editor_dialogs.cpp:383 src/editor/editor_dialogs.cpp:495
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Resize Map"
 msgstr "マップのサイズ変更"
 
@@ -974,102 +974,107 @@ msgid "Fill Selection"
 msgstr "選択領域を塗りつぶす"
 
 #: src/hotkeys.cpp:112
+#, fuzzy
+msgid "Rotate Selection"
+msgstr "選択領域を塗りつぶす"
+
+#: src/hotkeys.cpp:113
 msgid "Cut"
 msgstr "切り取り"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Copy"
 msgstr "コピー"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Revert from Disk"
 msgstr "保存ディスクから復帰"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Flip Map"
 msgstr "マップを裏返す"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Select All"
 msgstr "全て選択"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Draw Terrain"
 msgstr "地形を描く"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Refresh Image Cache"
 msgstr "イメージキャッシュを更新"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Delay transition updates"
 msgstr "変化の更新を遅らせる"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Update transitions"
 msgstr "変化を更新する"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Delay Shroud Updates"
 msgstr "幕の更新を遅らせる"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Update Shroud Now"
 msgstr "幕を今すぐ更新する"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Continue Move"
 msgstr "移動を続ける"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Find Label or Unit"
 msgstr "ラベルとユニットの検索"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Speak to Ally"
 msgstr "同盟軍に話す"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Speak to All"
 msgstr "全員に話す"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Help"
 msgstr "ヘルプ"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "View Chat Log"
 msgstr "チャットログ表示"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Enter user command"
 msgstr "ユーザーコマンドを入力してください"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Clear messages"
 msgstr "メッセージをクリアする"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "User-Command#2"
 msgstr "ユーザーコマンド#2"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:491 src/hotkeys.cpp:808
+#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Quit"
 msgstr "終了"
 
@@ -1171,7 +1176,7 @@ msgstr "解像度を選択して下さい"
 msgid "Error"
 msgstr "エラー"
 
-#: src/terrain_translation.cpp:753
+#: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 "不正な地形が見つかりました。おそらくバージョン 1.2 の地形フォーマットです。地"
