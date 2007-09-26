@@ -206,14 +206,17 @@ bool show_intro_part(display &disp, const config& part,
 			surface img(image::get_image(image_name));
 			if(img.null()) continue;
 
-			if ((**i)["flip"] == "yes")
-				img.assign(image::reverse_image(img));
 
 			SDL_Rect image_rect;
 			image_rect.x = x + dstrect.x;
 			image_rect.y = y + dstrect.y;
 			image_rect.w = img->w;
 			image_rect.h = img->h;
+
+			if ((**i)["centered"] == "yes"){
+				image_rect.x -= image_rect.w/2;
+				image_rect.y -= image_rect.h/2;
+			}
 
 			SDL_BlitSurface(img,NULL,video.getSurface(),&image_rect);
 
