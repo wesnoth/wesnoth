@@ -818,7 +818,7 @@ campaign_preview_pane::campaign_preview_pane(CVideo &video,std::vector<std::pair
 #ifdef USE_TINY_GUI
 	set_measurements(160, 200);
 #else
-	set_measurements(420, 430);
+	set_measurements(430, 440);
 #endif
 }
 
