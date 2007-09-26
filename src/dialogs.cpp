@@ -814,10 +814,11 @@ namespace {
 
 campaign_preview_pane::campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(video),descriptions_(desc),index_(0)
 {
+// size of the campaign info window with the campaign description and image in pixel
 #ifdef USE_TINY_GUI
 	set_measurements(160, 200);
 #else
-	set_measurements(350, 400);
+	set_measurements(420, 430);
 #endif
 }
 
