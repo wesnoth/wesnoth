@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-24 11:05+0200\n"
-"PO-Revision-Date: 2007-01-05 12:22+0100\n"
+"PO-Revision-Date: 2007-09-26 21:57+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Bookmarks: 841,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-Language: Dutch\n"
-"X-Poedit-Country: NETHERLANDS\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/multiplayer/_main.cfg:5
 msgid "User Map"
@@ -82,7 +82,7 @@ msgstr "2p - Blitz"
 #: data/multiplayer/scenarios/2p_Charge.cfg:7
 #: data/multiplayer/scenarios/2p_Blitz.cfg:7
 msgid "A duel map for super fast play."
-msgstr ""
+msgstr "Een duelkaart voor supersnel spel."
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
@@ -105,11 +105,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 #: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:6
-#, fuzzy
 msgid " Recommended setting of 2 gold per village."
-msgstr ""
-"Kleine kaart voor twee tegen twee. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+msgstr " Aanbevolen wordt 2 goud per dorp in te stellen."
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:47
@@ -413,35 +410,28 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Slagveld Cynsaun"
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
-#, fuzzy
 msgid " Recommended settings of 150 gold and 2 gold per village."
-msgstr ""
-"Kleine kaart voor twee tegen twee. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+msgstr " Aanbevolen wordt 150 startgoud en 2 goud per dorp in te stellen."
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
-#, fuzzy
 msgid ""
 "There is much to explore in this vast battlefront, designed for players who "
 "favor epic, large-scale duel matches."
 msgstr ""
 "Er valt veel te ontdekken in dit uitgestrekte strijdperk, ontworpen voor "
-"spelers die houden van grote, epische duellen. Aanbevolen wordt 1 goud per "
-"dorp in te stellen, en 150 goud als startbedrag."
+"spelers die houden van grote, epische duellen."
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
 msgstr "2p - De Diepten van Onis"
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where players must find the balance between force and subterfuge."
 msgstr ""
 "Om elke hoek schuilt gevaar in dit ondergrondse strijdperk. Een duelkaart "
-"waar kracht en taktiek samenspelen. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+"waar kracht en tactiek samen in balans moeten zijn."
 
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
@@ -449,42 +439,36 @@ msgstr "2p - Gehuchtjes"
 
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
 "Krijgskunst verandert een vredige regio met eenvoudige boerderijen en "
-"dorpjes in een subtiel geschakeerd strijdperk. Aanbevolen wordt 2 goud per "
-"dorp in te stellen."
+"dorpjes in een subtiel geschakeerd strijdperk."
 
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:5
 msgid "2p - Hornshark Island"
 msgstr "2p - Hoornhaai-eiland"
 
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
-#, fuzzy
 msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr ""
 "Spelers moeten hun weg vinden over het gemêleerde terrein van dit kleine "
-"maar topografisch rijke eiland. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+"maar topografisch rijke eiland."
 
 #: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:5
 msgid "2p - Meteor Lake"
 msgstr "2p - Meteoormeer"
 
 #: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:6
-#, fuzzy
 msgid ""
 "Long ago, a great meteor fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
 "Lang geleden viel er een grote meteoor vanuit de hemel, die zijn sporen "
-"achterliet in dit naaldbosgebied. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+"achter liet in dit naaldbosgebied."
 
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
 #: data/multiplayer/scenarios/4p_Clash.cfg:40
@@ -528,54 +512,48 @@ msgid "2p - Sablestone Delta"
 msgstr "2p - Sabelsteendelta"
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
 "Twee legers botsen op het gebroken kustlandschap bestaande uit verborgen "
-"grotten en bochtige rivieren. Aanbevolen wordt 2 goud per dorp in te stellen."
+"grotten en bochtige rivieren."
 
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
 msgid "2p - Silverhead Crossing"
 msgstr "2p - Kruispunt Zilverkop"
 
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
 "Spelers moeten door allerlei soorten terrein manoeuvreren in de jacht op de "
-"overwinning op deze duelkaart. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+"overwinning op deze duelkaart."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:20
-#, fuzzy
 msgid "statue"
-msgstr "Status"
+msgstr "standbeeld"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:21
 msgid "This is a sculpture made of stone."
-msgstr ""
+msgstr "Dit is een sculptuur gemaakt uit steen."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:35
 msgid "2p - Sullas Ruins"
 msgstr "2p - Sulla's Ruïnes"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
 "Overstroomd door de zeeën en verweerd door de winterstormen, resten er "
-"alleen nog ruïnes, water en ijs in de schaduw van dit ooit zo machtige rijk. "
-"Aanbevolen wordt 2 goud per dorp in te stellen."
+"alleen nog ruïnes, water en ijs in de schaduw van dit ooit zo machtige rijk."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:76
 msgid "Statue of Sulla"
-msgstr ""
+msgstr "Standbeeld van Sulla"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:78
 msgid ""
@@ -583,38 +561,41 @@ msgid ""
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
+"Een uit steen gehouwen beeltenis van Sulla de Grote, ook bekend als Sulla de "
+"Tiran, Sulla de Juiste, Keizer van de gezonken toren, Sulla de Trotse, "
+"Heerser van de stromende gletsjer en Sulla de Rechtvaardige."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:81
 msgid "Statue of Lhun-dup"
-msgstr ""
+msgstr "Standbeeld van Lhun-dup"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:82
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
-msgstr ""
+msgstr "Een uit steen gehouwen beeltenis van Lhun-dup, diener van Sulla."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:85
 msgid "Statue of Ri-nzen"
-msgstr ""
+msgstr "Standbeeld van Ri-nzen"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
-msgstr ""
+msgstr "Een uit steen gehouwen beeltenis van Ri-nzen, diener van Sulla."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
 msgid "Statue of Ten-zin"
-msgstr ""
+msgstr "Standbeeld van Ten-zin"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:90
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
-msgstr ""
+msgstr "Een uit steen gehouwen beeltenis van Ten-zin, diener van Sulla."
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
 msgid "Statue of Lo-bsang"
-msgstr ""
+msgstr "Standbeeld van Lo-bsang"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:94
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
-msgstr ""
+msgstr "Een uit steen gehouwen beeltenis van Lo-bsang, diener van Sulla."
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
 msgid "2p - Wesbowl"
@@ -692,13 +673,12 @@ msgid "3p - Island of the Horatii"
 msgstr "3p - Het eiland van de Horatii"
 
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
 msgid ""
 "Controlling the central island is often the key to victory in this 21x21hex "
 "3 player free for all map."
 msgstr ""
 "Beheersing van het centrale eiland is op deze kaart vaak de sleutel tot de "
-"overwinning. Aanbevolen wordt 2 goud per dorp in te stellen."
+"overwinning op deze 21*21hex 3 spelers vrij voor alle kaart."
 
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
 msgid "3p - Morituri"
@@ -788,19 +768,17 @@ msgstr "4p - Confrontatie"
 
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "Kleine kaart voor 2 tegen 2."
 
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
-#, fuzzy
 msgid "4p - Hamlets"
-msgstr "2p - Gehuchtjes"
+msgstr "4p - Gehuchten"
 
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p - Isar's Cross"
 msgstr "4p - Isars Kruis"
 
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-#, fuzzy
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -841,22 +819,17 @@ msgid "4p - King of the Hill"
 msgstr "4p - Koning van de Heuvel"
 
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-#, fuzzy
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 36X36 "
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "De beheersing over het gebied rond de centrale donjon is zeer winstgevend op "
-"deze kaart. Er kan ook met teams gespeeld worden. Aanbevolen wordt 2 goud "
-"per dorp in te stellen."
+"deze kaart. Er kan ook met teams gespeeld worden. Er zijn 36 dorpen."
 
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr ""
-"Kleine kaart voor twee tegen twee. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+msgstr " Aanbevolen wordt 2 goud per dorp in te stellen en 150 startgoud."
 
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:37
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:48
@@ -883,54 +856,42 @@ msgstr "4p - Lagune"
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:27
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
-#, fuzzy
 msgid " Recommended setting of 1 gold per village."
-msgstr ""
-"Kleine kaart voor twee tegen twee. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+msgstr " Aanbevolen wordt 1 goudstuk per dorp in te stellen."
 
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
-#, fuzzy
 msgid "Four factions contend for dominance over this watery settlement."
 msgstr ""
-"Vier facties wedijveren voor de heerschappij over deze waterige "
-"nederzetting. Aanbevolen wordt 2 goud per dorp in te stellen."
+"Vier facties wedijveren voor de heerschappij over deze waterige nederzetting."
 
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
 msgid "4p - Loris River"
 msgstr "4p - Lorisrivier"
 
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#, fuzzy
 msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
 "Een 2-tegen-2 kaart gesitueerd rond een rivier met donjons in "
-"tegenovergestelde hoeken. Ontworpen voor teams 1&4 tegen 2&3. Aanbevolen "
-"wordt 2 goud per dorp in te stellen."
+"tegenovergestelde hoeken. Ontworpen voor teams 1&4 tegen 2&3. Er zijn 28 "
+"dorpen."
 
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
 msgid "4p - Morituri"
 msgstr "4p - Morituri"
 
 #: data/multiplayer/scenarios/4p_Morituri.cfg:7
-#, fuzzy
 msgid "Who will emerge from the confines of this perilous battlefield?"
-msgstr ""
-"Wie zal aan de gevangenschap in dit gevaarlijke slagveld ontsnappen? "
-"Aanbevolen wordt 2 goud per dorp in te stellen."
+msgstr "Wie zal aan de gevangenschap in dit gevaarlijke slagveld ontsnappen?"
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:7
 msgid "4p - Paths of Daggers"
 msgstr "4p - Dolkwegen"
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-#, fuzzy
 msgid " Recommended setting of 2 gold per village, 28 villages."
-msgstr ""
-"Kleine kaart voor twee tegen twee. Aanbevolen wordt 2 goud per dorp in te "
-"stellen."
+msgstr " Aanbevolen wordt 2 goud per dorp in te stellen, 28 dorpen."
 
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 #, fuzzy
@@ -970,7 +931,6 @@ msgstr ""
 "dorp in te stellen."
 
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:80
-#, fuzzy
 msgid "Monsters"
 msgstr "Monsters"
 
@@ -997,29 +957,24 @@ msgid ""
 msgstr ""
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
-#, fuzzy
 msgid "teamname^Northeast"
-msgstr "Noordoosten"
+msgstr "Noordoosters"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
-#, fuzzy
 msgid "teamname^Southeast"
-msgstr "Zuidwesten"
+msgstr "Zuidoosters"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
-#, fuzzy
 msgid "teamname^Southwest"
-msgstr "Zuidwesten"
+msgstr "Zuidwesters"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
-#, fuzzy
 msgid "teamname^Northwest"
-msgstr "Noordwesten"
+msgstr "Noordwesters"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
-#, fuzzy
 msgid "teamname^Center"
-msgstr "Westen"
+msgstr "Middenlanders"
 
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
@@ -1067,36 +1022,32 @@ msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2-tegen-2 of 3-tegen-3 teamspel."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:167
-#, fuzzy
 msgid "Turn 2: Loyalists"
-msgstr "Loyalisten"
+msgstr "Beurt 2: Loyalisten"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:168
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "Beurt 5: Knalgas"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:169
-#, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "Rebellen"
+msgstr "Beurt 8: Rebellen"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:170
-#, fuzzy
 msgid "Turn 11: Northerners"
-msgstr "Noorderlingen"
+msgstr "Beurt 11: Noorderlingen"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:171
-#, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "Orkaandraakling"
+msgstr "Beurt 14: Draken"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:172
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "Beurt 17: Ondoden"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:173
 msgid "Tower of Doom"
-msgstr ""
+msgstr "Toren van verderf"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:304
 msgid "6p - Team Survival"
@@ -1108,7 +1059,7 @@ msgstr ""
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "Overleef 32 beurten."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
@@ -1120,7 +1071,7 @@ msgstr ""
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:316
 msgid "Death of your team leaders."
-msgstr ""
+msgstr "Dood van een van de teamleiders."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:338
 msgid ""
@@ -1153,17 +1104,12 @@ msgid "6p - The Manzivan Traps"
 msgstr ""
 
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:9
-#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"Een zeer kleine 2-tegen-2 kaart. Vechten op de vierkante meter betekent dat "
-"slim roteren van eenheden en plannen van zetten belangrijk zijn. Teams zijn "
-"spelers 1&4 tegen 2&3 (noordoost tegen zuidwest). Ontworpen voor 75 "
-"goudstukken, 20 dorpen."
 
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
 msgid "6p - Waterloo Sunset"
@@ -1180,7 +1126,7 @@ msgstr ""
 "Een grote (40x30 vakjes) 3-tegen-3 kaart. Flexibele coördinatie binnen je "
 "team is een vereiste om niet omsingeld te raken. Teams zijn spelers 135 "
 "tegen 246 (noord tegen zuid), maar 136 tegen 146 is ook leuk. Ontworpen voor "
-"150g."
+"150 startgoud, heeft 44 dorpen."
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
 #, fuzzy
@@ -1197,17 +1143,15 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:40
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:62
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:95
-#, fuzzy
 msgid "teamname^east"
-msgstr "Westen"
+msgstr "Oosterlingen"
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:29
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:51
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:73
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:84
-#, fuzzy
 msgid "teamname^west"
-msgstr "Westen"
+msgstr "Westerlingen"
 
 #: data/multiplayer/scenarios/8p_Morituri.cfg:5
 msgid "8p - Morituri"

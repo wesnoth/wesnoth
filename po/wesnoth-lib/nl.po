@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-24 11:04+0200\n"
-"PO-Revision-Date: 2007-08-26 19:22+0100\n"
+"PO-Revision-Date: 2007-09-26 21:25+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -370,28 +370,24 @@ msgid "Skip AI Moves"
 msgstr "Computerzetten overslaan"
 
 #: src/game_preferences_display.cpp:161
-#, fuzzy
 msgid "Save Replays"
-msgstr " bewaren"
+msgstr "Herhalingen bewaren"
 
 #: src/game_preferences_display.cpp:162
 msgid "Delete Autosaves"
-msgstr ""
+msgstr "Verwijder autosaves"
 
 #: src/game_preferences_display.cpp:163
-#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr "Toon geen lobby"
+msgstr "Toon geen lobby binnenkomsten"
 
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr "Toon enkel lobby van vrienden"
+msgstr "Toon enkel lobby binnenkomsten van vrienden"
 
 #: src/game_preferences_display.cpp:165
-#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr "Toon alle lobby"
+msgstr "Toon alle lobby binnenkomsten"
 
 #: src/game_preferences_display.cpp:166
 msgid "Sort Lobby List"
@@ -480,7 +476,7 @@ msgstr "Normaal"
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
-msgstr ""
+msgstr "Gebruikersinterface geluiden"
 
 #: src/game_preferences_display.cpp:193
 msgid "Custom"
@@ -503,9 +499,8 @@ msgid "SFX Volume:"
 msgstr "SFX Volume:"
 
 #: src/game_preferences_display.cpp:198
-#, fuzzy
 msgid "UI Sound Volume:"
-msgstr "volume:"
+msgstr "UI geluid volume:"
 
 #: src/game_preferences_display.cpp:199
 msgid "Bell Volume:"
@@ -521,7 +516,7 @@ msgstr "Bemonsteringsfrequentie (Hz):"
 
 #: src/game_preferences_display.cpp:203
 msgid "Frequency:"
-msgstr ""
+msgstr "Frequentie:"
 
 #: src/game_preferences_display.cpp:226
 msgid "Sound effects on/off"
@@ -556,7 +551,6 @@ msgid "Change the sample rate"
 msgstr "De bemonsteringsfrequentie veranderen"
 
 #: src/game_preferences_display.cpp:261
-#, fuzzy
 msgid "User defined sample rate"
 msgstr "Ingestelde bemonsteringsfrequentie"
 
@@ -600,7 +594,7 @@ msgstr "Vecht- en beweegsnelheid eenheden"
 #: src/game_preferences_display.cpp:321
 #, fuzzy
 msgid "Show unit idle animations"
-msgstr "Animatie overslaan"
+msgstr "Toon eenheid animaties"
 
 #: src/game_preferences_display.cpp:327
 msgid "Set the frequency of unit idle animations"
@@ -612,11 +606,11 @@ msgstr "Zetten van computerspelers niet animeren"
 
 #: src/game_preferences_display.cpp:333
 msgid "Save replays at scenario end."
-msgstr ""
+msgstr "Bewaar herhalingen bij einde scenario"
 
 #: src/game_preferences_display.cpp:336
 msgid "Automatically delete autosaves at the end of a scenario"
-msgstr ""
+msgstr "Verwijder automatisch autosaves bij het einde van een scenario"
 
 #: src/game_preferences_display.cpp:338
 msgid "Overlay a grid onto the map"
@@ -631,17 +625,14 @@ msgid "Show icons in front of the player names in the lobby."
 msgstr "Toon iconen voor de spelersnamen in de lobby."
 
 #: src/game_preferences_display.cpp:347
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Toon geen berichten over spelers die de multiplayer lobby binnenkomen"
 
 #: src/game_preferences_display.cpp:349
-#, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Toon berichten over je vrienden die de multiplayer lobby binnenkomen"
 
 #: src/game_preferences_display.cpp:351
-#, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Toon berichten over alle spelers die de multiplayer lobby binnenkomen"
 
@@ -759,10 +750,9 @@ msgid "New theme will take effect on next new or loaded game."
 msgstr "Het nieuwe thema wordt gebruikt zodra je een nieuw spel begint."
 
 #: src/game_preferences_display.cpp:1135
-#, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
-"Er zijn geen thema's. Probeer het thema vanuit een bestaand spel te "
+"Geen bestaande thema's. Probeer het thema vanuit een bestaand spel te "
 "veranderen."
 
 #: src/hotkeys.cpp:51
@@ -986,9 +976,8 @@ msgid "Fill Selection"
 msgstr "Selectie opvullen"
 
 #: src/hotkeys.cpp:112
-#, fuzzy
 msgid "Rotate Selection"
-msgstr "Selectie opvullen"
+msgstr "Selectie roteren"
 
 #: src/hotkeys.cpp:113
 msgid "Cut"
@@ -1023,13 +1012,12 @@ msgid "Refresh Image Cache"
 msgstr "Cache afbeelding vernieuwen"
 
 #: src/hotkeys.cpp:122
-#, fuzzy
 msgid "Delay transition updates"
-msgstr "Sluier achteraf bijwerken"
+msgstr "Verlaat transitie updates"
 
 #: src/hotkeys.cpp:123
 msgid "Update transitions"
-msgstr ""
+msgstr "Update transities"
 
 #: src/hotkeys.cpp:125
 msgid "Delay Shroud Updates"
@@ -1193,6 +1181,7 @@ msgstr "Fout"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+"Ongeldig terrein gevonden, waarschijnlijk een 1.2 terreinformaat, terrein ="
 
 #~ msgid "Elven Castle"
 #~ msgstr "Elfenkasteel"
