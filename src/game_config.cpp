@@ -182,6 +182,7 @@ namespace game_config
 			defense_color_scale.push_back(0x00FFFF00);
 		}
 
+		server_list.clear();
 		const std::vector<config *> &servers = v.get_children("server");
 		std::vector<config *>::const_iterator server;
 		for(server = servers.begin(); server != servers.end(); ++server) {

@@ -1677,6 +1677,9 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 				read_game_cfg(defines_map_, game_config_, use_caching_);
 			} else {
 				game_config_.reset_translation();
+				// we may have translatable strings in [game_config]
+				// e.g. team color names are defined there
+				game_config::load_config(game_config_.child("game_config"));
 			}
 
 			const config* const units = game_config_.child("units");
