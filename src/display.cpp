@@ -1191,12 +1191,17 @@ void display::draw_minimap()
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
+	// and the possible difference between real map and outside off-map
+	SDL_Rect map_rect = map_area();
+	SDL_Rect map_out_rect = map_outside_area();
 	double border = theme_.border().size;
+	double shift_x = - border*hex_width() - (map_out_rect.w - map_rect.w) / 2;
+	double shift_y = - (border+0.25)*hex_size() - (map_out_rect.h - map_rect.h) / 2;
 
-	int view_x = static_cast<int>((xpos_ - border*hex_width()) * xscaling);
-	int view_y = static_cast<int>((ypos_ - (border+0.25)*hex_size()) * yscaling);
-	int view_w = static_cast<int>(map_outside_area().w * xscaling);
-	int view_h = static_cast<int>(map_outside_area().h * yscaling);
+	int view_x = static_cast<int>((xpos_ + shift_x) * xscaling);
+	int view_y = static_cast<int>((ypos_ + shift_y) * yscaling);
+	int view_w = static_cast<int>(map_out_rect.w * xscaling);
+	int view_h = static_cast<int>(map_out_rect.h * yscaling);
 
 	const Uint32 box_color = SDL_MapRGB(minimap_->format,0xFF,0xFF,0xFF);
 	draw_rectangle(minimap_location_.x + view_x - 1,
