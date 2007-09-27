@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-24 11:03+0200\n"
-"PO-Revision-Date: 2007-09-26 10:23+0100\n"
+"PO-Revision-Date: 2007-09-27 11:25+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch translation <foppe.benedictus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -1508,7 +1508,7 @@ msgstr ""
 #: data/core/help.cfg:319
 #, fuzzy
 msgid "Fearless"
-msgstr "Onverschrokking"
+msgstr "Onverschrokken"
 
 #: data/core/help.cfg:320
 msgid "Aversion to light and dark holds no sway over these brave individuals."
@@ -2072,7 +2072,7 @@ msgstr ""
 
 #: data/core/help.cfg:551
 msgid "Submerged Village"
-msgstr ""
+msgstr "Gezonken dorp"
 
 #: data/core/help.cfg:556
 msgid ""
@@ -2086,6 +2086,14 @@ msgid ""
 "Merfolk and Nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defence."
 msgstr ""
+"Gezonken dorpen zijn de woningen van Meermensen en Nagas. Terwijl "
+"waterbewoners er thuis zijn landbewoners hebben het lastig om deze dorpen te "
+"verdedigen. Zoals ieder dorp bieden ze aan alle wezens de mogelijkheid om "
+"hun wonden te laten helen. Iedere eenheid zal 8 HP helen of genezen van een "
+"vergiftiging.\n"
+"\n"
+"Meermensen en Nagas hebben 60% verdediging in gezonken dorpen, terwijl "
+"landbewoners meestal een lage verdediging hebben."
 
 #: data/core/help.cfg:561
 msgid "Chasm"
@@ -4079,7 +4087,7 @@ msgstr "gezond"
 
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
-msgstr ""
+msgstr "Kan rusten onder het bewegen"
 
 #: data/core/macros/traits.cfg:146 data/core/macros/traits.cfg:158
 msgid "fearless"
@@ -4091,7 +4099,7 @@ msgstr ""
 
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:160
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "Vecht normaal gesproken tijdens ongunstige tijden van de dag/nacht"
 
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:71
 msgid "Red"
@@ -4151,7 +4159,7 @@ msgstr "Kobolds"
 
 #: data/core/units.cfg:80
 msgid "race^Gryphons"
-msgstr ""
+msgstr "Grifioenen"
 
 #: data/core/units.cfg:87 data/hardwired/english.cfg:19
 msgid "race^Humans"
@@ -4195,7 +4203,7 @@ msgstr "Ondoden"
 
 #: data/core/units.cfg:165 data/hardwired/english.cfg:32
 msgid "race^Woses"
-msgstr ""
+msgstr "Enten"
 
 #: data/hardwired/english.cfg:3
 msgid "Easy"
@@ -4862,18 +4870,16 @@ msgid "Ambushed!"
 msgstr "Hinderlaag!"
 
 #: src/actions.cpp:2097
-#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Bevriende eenheid in zicht!"
-msgstr[1] "Bevriende eenheid in zicht!"
+msgstr[1] "Bevriende eenheden in zicht!"
 
 #: src/actions.cpp:2100
-#, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vijandelijke eenheid in zicht!"
-msgstr[1] "Vijandelijke eenheid in zicht!"
+msgstr[1] "Vijandelijke eenheden in zicht!"
 
 #: src/actions.cpp:2105
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
@@ -4884,16 +4890,14 @@ msgstr[1] ""
 #: src/actions.cpp:2106
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "vijand"
+msgstr[1] "vijanden"
 
 #: src/actions.cpp:2107
-#, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Troepen gesignaleerd! (($friends bevriende, $enemies vijandelijke)"
 
 #: src/actions.cpp:2116
-#, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(druk $hotkey om door te gaan)"
 
@@ -4919,7 +4923,7 @@ msgstr "Het spel verlaten"
 
 #: src/dialogs.cpp:240
 msgid "Ignore All"
-msgstr ""
+msgstr "Negeer alles"
 
 #: src/dialogs.cpp:257
 msgid "Overwrite?"
@@ -5076,11 +5080,8 @@ msgstr ""
 "toch geladen.\n"
 
 #: src/game.cpp:710 src/multiplayer_connect.cpp:1267
-#, fuzzy
 msgid "This save is from a version too old to be loaded."
-msgstr ""
-"Dit opgeslagen spel is van een andere versie van Strijd om Wesnoth. Wil je "
-"proberen het te laden?"
+msgstr "Dit opgeslagen spel is van een te oude versie om te laden."
 
 #: src/game.cpp:716 src/multiplayer_connect.cpp:1274
 msgid ""
@@ -5253,7 +5254,6 @@ msgid "Remote host disconnected."
 msgstr "'Remote host' brak verbinding af."
 
 #: src/game.cpp:1262
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
@@ -5266,9 +5266,8 @@ msgid "Connection timed out"
 msgstr "Connectie timed out"
 
 #: src/game.cpp:1277
-#, fuzzy
 msgid "The server responded with an error: \"$error|\""
-msgstr "De server antwoordde met een fout: \""
+msgstr "De server antwoordde met een fout: \"$error|\""
 
 #: src/game.cpp:1284
 msgid "Terms"
@@ -5315,9 +5314,8 @@ msgid "Local Game"
 msgstr "Lokaal spel"
 
 #: src/game.cpp:1382
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Speel een multiplayer-spel op één computer."
+msgstr "Speel een multiplayer-spel met de AI of mensen op één computer"
 
 #: src/game.cpp:1390 src/multiplayer.cpp:232
 msgid "Login: "
@@ -5344,10 +5342,8 @@ msgid "Choose your preferred language:"
 msgstr "Kies een taal:"
 
 #: src/game.cpp:1623
-#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
-msgstr ""
-"De volgende add-on veldtochten bevatten fouten en konden niet worden geladen:"
+msgstr "De volgende add-on(s) bevat fouten en konden niet worden geladen:"
 
 #: src/game.cpp:1628
 msgid "ERROR DETAILS:"
@@ -5382,9 +5378,8 @@ msgid "Loading title screen."
 msgstr "Inladen titelscherm."
 
 #: src/game_config.cpp:248
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "Ongeldige kleur"
+msgstr "Ongeldige kleurbereik:"
 
 #: src/game_events.cpp:882
 msgid "Victory:"
@@ -5505,7 +5500,6 @@ msgid "Units having this special attack:"
 msgstr "Eenheden met deze specifieke aanval:"
 
 #: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580 src/help.cpp:1633
-#, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Allerlei"
 
@@ -5547,11 +5541,11 @@ msgstr "Benodigde XP: "
 
 #: src/help.cpp:1378
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "Aanvallen"
 
 #: src/help.cpp:1385
 msgid "unit help^Name"
-msgstr ""
+msgstr "Naam"
 
 #: src/help.cpp:1386 src/menu_events.cpp:319 src/menu_events.cpp:1075
 #: src/menu_events.cpp:1556
@@ -5723,7 +5717,6 @@ msgid "Statistics"
 msgstr "Statistieken"
 
 #: src/menu_events.cpp:321
-#, fuzzy
 msgid "Level^Lv."
 msgstr "Rang"
 
@@ -5736,7 +5729,6 @@ msgid "Moves"
 msgstr "Zetten"
 
 #: src/menu_events.cpp:326
-#, fuzzy
 msgid "Location^Loc."
 msgstr "Locatie"
 
@@ -5772,7 +5764,7 @@ msgstr "Dorpen"
 
 #: src/menu_events.cpp:490
 msgid "status^Units"
-msgstr ""
+msgstr "Eenheden"
 
 #: src/menu_events.cpp:491
 msgid "Upkeep"
@@ -5987,16 +5979,15 @@ msgstr "Label:"
 
 #: src/menu_events.cpp:1630
 msgid "Team only"
-msgstr ""
+msgstr "Team alleen"
 
 #: src/menu_events.cpp:1731
 msgid "Search"
 msgstr "Zoeken"
 
 #: src/menu_events.cpp:1774
-#, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
-msgstr "Commando's: whisper ignore emote. Typ /help [command] voor meer hulp."
+msgstr "Commando's: whisper ignore emote. Type /help [command] voor meer hulp."
 
 #: src/menu_events.cpp:1825
 msgid ""
@@ -6007,48 +5998,45 @@ msgstr ""
 "sturen. Gebruik: /whisper [nick] [message]"
 
 #: src/menu_events.cpp:1829
-#, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
-msgstr "Speler toevoegen aan de ignore-lijst. Gebruik: /ignore add [argument]"
+msgstr ""
+"Speler toevoegen aan je vrienden lijst. Gebruik: /list addfriend [argument]"
 
 #: src/menu_events.cpp:1831
-#, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
-msgstr "Speler toevoegen aan de ignore-lijst. Gebruik: /ignore add [argument]"
+msgstr "Speler toevoegen aan de negeer lijst. Gebruik: /list ignore [argument]"
 
 #: src/menu_events.cpp:1833
-#, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
-"Speler van de ignore-lijst verwijderen. Gebruik: /ignore remove [argument]"
+"Speler van de negeer of vrienden lijst verwijderen. Gebruik: /ignore remove "
+"[argument]"
 
 #: src/menu_events.cpp:1835
-#, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
-msgstr "Ignore-lijst leegmaken. Gebruik: /ignore clear"
+msgstr "Negeer en vrienden lijst leegmaken. Gebruik: /list clear"
 
 #: src/menu_events.cpp:1837
-#, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
-msgstr "Ignore-lijst weergeven. Gebruik: /ignore list"
+msgstr "Negeer en vrienden lijst weergeven. Gebruik: /list display"
 
 #: src/menu_events.cpp:1839
 msgid "Unknown subcommand"
 msgstr "Onbekend subcommando"
 
 #: src/menu_events.cpp:1842
-#, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
 "addfriend addignore remove display clear. Type /help list [subcommand] for "
 "more info."
 msgstr ""
-"Negeer berichten van spelers op deze lijst. Gebruik: /ignore [subcommand] "
-"[argument](optional) Subcommand: add remove list clear. Typ /help ignore "
-"[subcommand] voor meer informatie."
+"Negeer berichten van spelers op de negeer lijst en markeer spelers op de "
+"vrienden lijst. Gebruik: /ignore [subcommando's] [argument](optioneel) "
+"Subcommando's: add remove list clear. Type /help ignore [subcommando's] voor "
+"meer informatie."
 
 #: src/menu_events.cpp:1845
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
@@ -6076,9 +6064,8 @@ msgid "Removed from list: "
 msgstr "Verwijderd van lijst: "
 
 #: src/menu_events.cpp:1899
-#, fuzzy
 msgid "There are no players on your friends or ignore list."
-msgstr "Er zijn geen spelers in je vrienden of *?* lijst"
+msgstr "Er zijn geen spelers in je vrienden of negeer lijst"
 
 #: src/menu_events.cpp:1909
 msgid "Removed from ignore list: "
@@ -6114,9 +6101,8 @@ msgid "Defender"
 msgstr "verdediger"
 
 #: src/mouse_events.cpp:217
-#, fuzzy
 msgid "Expected Battle Result (HP)"
-msgstr "verwacht resultaat (hp)"
+msgstr "Verwacht strijdresultaat (hp)"
 
 #: src/mouse_events.cpp:309
 msgid " resistance vs "
@@ -6148,7 +6134,7 @@ msgstr "Geen bruikbaar wapen"
 
 #: src/mouse_events.cpp:356
 msgid "Chance of being unscathed"
-msgstr "kans ongedeerd te blijven"
+msgstr "Kans ongedeerd te blijven"
 
 #: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
 msgid "Damage Calculations"
@@ -6172,7 +6158,7 @@ msgstr "Lijst van servers"
 
 #: src/multiplayer.cpp:107
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "Kies een bekende server uit de lijst"
 
 #: src/multiplayer.cpp:110
 msgid "Address"
@@ -6424,7 +6410,7 @@ msgstr "Gebruik de standaardinstellingen van de kaart"
 
 #: src/multiplayer_create.cpp:169
 msgid "Randomize time of day in begin"
-msgstr ""
+msgstr "Willekeurig tijd van de dag in het begin"
 
 #: src/multiplayer_create.cpp:172
 msgid "Enemy units cannot be seen unless they are in range of your units"
@@ -6501,7 +6487,7 @@ msgstr "Goud per dorp: "
 
 #: src/multiplayer_create.cpp:376
 msgid "Exp. Mod.: "
-msgstr ""
+msgstr "Exp. Mod.: "
 
 #: src/multiplayer_create.cpp:507
 msgid "Players: "
@@ -6577,11 +6563,11 @@ msgstr "Ongeldige kleur"
 
 #: src/multiplayer_ui.cpp:361
 msgid "Send a private message to "
-msgstr ""
+msgstr "Stuur een privebericht naar"
 
 #: src/multiplayer_ui.cpp:362
 msgid "Whisper"
-msgstr ""
+msgstr "Fluister"
 
 #: src/multiplayer_ui.cpp:363
 msgid "Message: "
@@ -6729,6 +6715,8 @@ msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr ""
+"Je zult het volgende scenario beginnen met $gold of met het minimale "
+"startgoud, wat maar hoger is."
 
 #: src/playsingle_controller.cpp:389
 msgid ""
@@ -6936,7 +6924,7 @@ msgstr "Help Wesnoth door ons informatie toe te sturen"
 
 #: src/unit.cpp:379 src/unit.cpp:1159 src/unit.cpp:2529
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "Onbekende eenheid '$type|'"
 
 #: src/unit.cpp:2573 src/unit.cpp:2896 src/unit.cpp:2951
 msgid "; "
