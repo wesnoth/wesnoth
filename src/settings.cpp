@@ -26,14 +26,15 @@ namespace settings {
 
 int get_turns(const std::string& value)
 {
-	// Special case, -1 is also allowed, which are unlimited turns
+	// Special case, -1 is also allowed, which means unlimited turns
 	int val = lexical_cast_default<int>(value);
 
 	if(val == -1) {
-		return 100;
+		return turns_max;
 	}
 
-	return lexical_cast_in_range<int>(value, 100, 20, 100);
+	return lexical_cast_in_range<int>
+		(value, turns_default, turns_min, turns_max);
 }
 
 int get_village_gold(const std::string& value)

@@ -119,8 +119,9 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 		maps_menu_.move_selection(preferences::map());
 	maps_menu_.set_numeric_keypress_selection(false);
 
-	turns_slider_.set_min(20);
-	turns_slider_.set_max(100);
+	turns_slider_.set_min(settings::turns_min);
+	turns_slider_.set_max(settings::turns_max);
+	turns_slider_.set_increment(settings::turns_step);
 	turns_slider_.set_value(preferences::turns());
 	turns_slider_.set_help_string(_("The maximum number of turns the game can last"));
 

@@ -39,6 +39,10 @@ namespace settings {
 	 *  @returns		the number of turns
 	 */
 	int get_turns(const std::string& value);
+	const int turns_min = 1;		//< minimum number of turns
+	const int turns_max = 100;		//< maximum number of turns
+	const int turns_default = 100;	//< default number of turns
+	const int turns_step = 1;		//< slider step size for turns
 
 	/**
 	 *  Gets the village gold.
