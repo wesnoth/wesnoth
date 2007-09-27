@@ -80,6 +80,7 @@ private:
 
 	unsigned int item_height_;
 	int margin_;
+	int minimap_size_;
 	int h_padding_;
 	int header_height_;
 	size_t selected_;

@@ -39,7 +39,7 @@ namespace mp {
 	time_limit_icon_locator_("misc/sand-clock.png"),
 	observer_icon_locator_("misc/eye.png"),
 	no_observer_icon_locator_("misc/no_observer.png"), map_hashes_(map_hashes),
-	item_height_(100), margin_(5), h_padding_(5),
+	item_height_(100), margin_(5), minimap_size_(item_height_ - 2*margin_),  h_padding_(5),
 	header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
 	double_clicked_(false), ignore_next_doubleclick_(false), last_was_doubleclick_(false)
 {
@@ -106,8 +106,10 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	int ypos = item_rect.y + margin_;
 
 	//draw minimaps
-	video().blit_surface(xpos, ypos, game.mini_map);
-	xpos += item_height_ + margin_;
+	int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
+	int minimap_y = ypos + (minimap_size_ - game.mini_map->h)/2;
+	video().blit_surface(minimap_x, minimap_y, game.mini_map);
+	xpos += minimap_size_ + margin_;
 
 	//set font color
 	SDL_Color font_color;
@@ -391,7 +393,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				if (!found) {
 					// parsing the map and generating the minimap are both cpu expensive
 					gamemap map(game_config, games_.back().map_data);
-					games_.back().mini_map = image::getMinimap(item_height_ - margin_, item_height_ - 2 * margin_, map, 0);
+					games_.back().mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
 					games_.back().map_info_size = lexical_cast_default<std::string, int>(map.w(), "??")
 						+ std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");
 				}
