@@ -248,4 +248,10 @@ void draw_rectangle(int x, int y, int w, int h, Uint32 colour, surface tg);
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
 				 double alpha, surface target);
+
+// blit the image on the center of the rectangle
+// and a add a colored background
+void draw_centered_on_background(surface surf, const SDL_Rect& rect,
+	const SDL_Color& color, surface target);
+
 #endif

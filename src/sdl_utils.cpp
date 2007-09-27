@@ -1343,3 +1343,20 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 	SDL_Rect rect = {x,y,w,h};
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
+
+void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_Color& color, surface target)
+{
+	clip_rect_setter clip_setter(target, rect);
+
+	Uint32 col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.unused);
+	//TODO: only draw background outside the image
+	SDL_Rect r = rect;
+	SDL_FillRect(target, &r, col);
+
+	if (surf != NULL) {
+		r.x = rect.x + (rect.w-surf->w)/2;
+		r.y = rect.y + (rect.h-surf->h)/2;
+		SDL_BlitSurface(surf, NULL, target, &r);
+	}
+	update_rect(rect);
+}

@@ -118,7 +118,7 @@ private:
 	//! Function to invalidate animated terrains which may have changed.
 	void invalidate_animations();
 
-	virtual void draw_minimap_units(int x, int y, int w, int h);
+	virtual void draw_minimap_units();
 
 public:
 	//! Temporarily place a unit on map (moving: can overlap others).

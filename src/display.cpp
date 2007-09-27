@@ -69,7 +69,8 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	theme_(theme_cfg,screen_area()),
 	zoom_(DefaultZoom), last_zoom_(SmallZoom),
 	builder_(cfg, level, map, theme_.border().tile_image),
-	minimap_(NULL), redrawMinimap_(false), redraw_background_(true),
+	minimap_(NULL), minimap_location_(empty_rect),
+	redrawMinimap_(false), redraw_background_(true),
 	invalidateAll_(true), grid_(false),
 	diagnostic_label_(0), panelsDrawn_(false),
 	turbo_speed_(2), turbo_(false),
@@ -322,17 +323,21 @@ int display::get_location_y(const gamemap::location& loc) const
 
 gamemap::location display::minimap_location_on(int x, int y)
 {
-	const SDL_Rect rect = minimap_area();
+	//TODO: don't return location for this,
+	// instead directly scroll to the clicked pixel position
 
-	if(x < rect.x || y < rect.y ||
-	   x >= rect.x + rect.w || y >= rect.y + rect.h) {
+	if (!point_in_rect(x, y, minimap_location_)) {
 		return gamemap::location();
 	}
 
-	const double xdiv = double(rect.w) / double(map_.w());
-	const double ydiv = double(rect.h) / double(map_.h());
+	// we transfom the coordinates from minimap to the full map image
+	// probably more adjustements to do (border, minimap shift...)
+	// but the mouse and human capacity to evaluate the rectangle center
+	// is not pixel precise.
+	int px = (x - minimap_location_.x) * map_.w()*hex_width() / minimap_location_.w;
+	int py = (y - minimap_location_.y) * map_.h()*hex_size() / minimap_location_.h;
 
-	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
+	return pixel_position_to_hex(px, py);
 }
 
 void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
@@ -962,8 +967,7 @@ void display::draw_wrap(bool update,bool force,bool changed)
 
 	if(redrawMinimap_) {
 		redrawMinimap_ = false;
-		const SDL_Rect area = minimap_area();
-		draw_minimap(area.x,area.y,area.w,area.h);
+		draw_minimap();
 		changed = true;
 	}
 
@@ -1067,19 +1071,6 @@ void display::announce(const std::string message, const SDL_Color& colour)
 				 font::CENTER_ALIGN);
 }
 
-surface display::get_minimap(int w, int h)
-{
-	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
-		minimap_ = NULL;
-	}
-
-	if(minimap_ == NULL) {
-		minimap_ = image::getMinimap(w, h, map_, viewpoint_);
-	}
-
-	return minimap_;
-}
-
 void display::draw_border(const gamemap::location& loc, const int xpos, const int ypos)
 {
 	/**
@@ -1172,42 +1163,46 @@ void display::draw_border(const gamemap::location& loc, const int xpos, const in
 	}
 }
 
-void display::draw_minimap(int x, int y, int w, int h)
+void display::draw_minimap()
 {
-	const surface surf(get_minimap(w,h));
-	if(surf == NULL) {
-		return;
+	const SDL_Rect& area = minimap_area();
+	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
+		minimap_ = image::getMinimap(area.w, area.h, map_, viewpoint_);
 	}
 
-	SDL_Rect minimap_location = {x,y,w,h};
-
-	clip_rect_setter clip_setter(video().getSurface(),minimap_location);
-
-	SDL_Rect loc = minimap_location;
-	SDL_BlitSurface(surf,NULL,video().getSurface(),&loc);
-
-	int map_w = map_.w(), map_h = map_.h();
-
-	draw_minimap_units(x, y, w, h);
-
-	const double xscaling = double(surf->w) / map_w;
-	const double yscaling = double(surf->h) / map_h;
-
-	const int tile_width = hex_width();
-
-	const int xbox = static_cast<int>(xscaling*(xpos_-tile_width)/tile_width);
-	const int ybox = static_cast<int>(yscaling*(ypos_-zoom_)/zoom_);
-
-	// The magic numbers experimentally determined, like in display::map_area()
-	const int wbox = static_cast<int>(xscaling*(map_area().w+(4.0/3.0)*tile_width)/tile_width - xscaling);
-	const int hbox = static_cast<int>(yscaling*(map_area().h+1.5*zoom_)/zoom_ - yscaling);
-
-	const Uint32 boxcolour = SDL_MapRGB(surf->format,0xFF,0xFF,0xFF);
 	const surface screen(screen_.getSurface());
+	clip_rect_setter clip_setter(screen, area);
 
-	draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
+	SDL_Color back_color = {0,0,0,255};
+	draw_centered_on_background(minimap_, area, back_color, screen);
 
-	update_rect(minimap_location);
+	//update the minimap location for mouse and units functions
+	minimap_location_.x = area.x + (area.w - minimap_->w) / 2;
+	minimap_location_.y = area.y + (area.h - minimap_->h) / 2;
+	minimap_location_.w = minimap_->w;
+	minimap_location_.h = minimap_->h;
+
+	draw_minimap_units();
+
+	// calculate the visible portion of the map:
+	// scaling between minimap and full map images
+	double xscaling = 1.0*minimap_->w / (map_.w()*hex_width());
+	double yscaling = 1.0*minimap_->h / (map_.h()*hex_size());
+
+	// we need to shift with the border size
+	// and the 0.25 from the minimap balanced drawing
+	double border = theme_.border().size;
+
+	int view_x = static_cast<int>((xpos_ - border*hex_width()) * xscaling);
+	int view_y = static_cast<int>((ypos_ - (border+0.25)*hex_size()) * yscaling);
+	int view_w = static_cast<int>(map_outside_area().w * xscaling);
+	int view_h = static_cast<int>(map_outside_area().h * yscaling);
+
+	const Uint32 box_color = SDL_MapRGB(minimap_->format,0xFF,0xFF,0xFF);
+	draw_rectangle(minimap_location_.x + view_x - 1,
+                   minimap_location_.y + view_y - 1,
+                   view_w + 2, view_h + 2,
+                   box_color, screen);
 }
 
 void display::scroll(int xmove, int ymove)
@@ -1572,16 +1567,6 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 
 		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
 	}
-}
-
-void display::recalculate_minimap()
-{
-	if(minimap_ != NULL) {
-		minimap_.assign(NULL);
-	}
-
-	redraw_minimap();
-	// Remove unit after invalidating...
 }
 
 void display:: set_report_content(const reports::TYPE which_report, const std::string &content) {

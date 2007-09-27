@@ -179,9 +179,7 @@ public:
 
 	// Will be overridden in the display subclass
 	virtual void invalidate(const gamemap::location& loc) {invalidated_.insert(loc);};
-	virtual void draw_minimap_units(int /* x */, int /* y */, int /* w */, int /* h */) {};
-	// this surface must be freed by the caller
-	surface get_minimap(int w, int h);
+	virtual void draw_minimap_units() {};
 
 	const gamemap& get_map()const { return map_;}
 
@@ -325,7 +323,7 @@ public:
 
 	//! Schedule the minimap for recalculation.
 	//! Useful if any terrain in the map has changed.
-	void recalculate_minimap();
+	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; };
 
 	//! Schedule the minimap to be redrawn.
 	//! Useful if units have moved about on the map.
@@ -354,7 +352,7 @@ protected:
 	virtual void draw_border(const gamemap::location& loc,
 		const int xpos, const int ypos);
 
-	void draw_minimap(int x, int y, int w, int h);
+	void draw_minimap();
 
 	virtual void zoom_redraw_hook() {};
 
@@ -378,6 +376,7 @@ protected:
 	int last_zoom_;
 	terrain_builder builder_;
 	surface minimap_;
+	SDL_Rect minimap_location_;
 	bool redrawMinimap_;
 	bool redraw_background_;
 	bool invalidateAll_;

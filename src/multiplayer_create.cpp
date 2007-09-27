@@ -486,11 +486,8 @@ void create::process_event()
 #ifndef USE_TINY_GUI
 		if(map.get() != NULL) {
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,*map,0));
-			if(mini != NULL) {
-				SDL_Rect rect = minimap_rect_;
-				SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
-				update_rect(rect);
-			}
+			SDL_Color back_color = {0,0,0,255};
+			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
 		}
 #endif
 
@@ -619,11 +616,8 @@ void create::hide_children(bool hide)
 
 #ifndef USE_TINY_GUI
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
-			if(mini != NULL) {
-				SDL_Rect rect = minimap_rect_;
-				SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
-				update_rect(rect);
-			}
+			SDL_Color back_color = {0,0,0,255};
+			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
 #endif
 		} catch(gamemap::incorrect_format_exception& e) {
 			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";

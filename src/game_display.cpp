@@ -529,8 +529,11 @@ void game_display::draw_sidebar()
 	}
 }
 
-void game_display::draw_minimap_units(int x, int y, int w, int h)
+void game_display::draw_minimap_units()
 {
+	double xscaling = 1.0 * minimap_location_.w / map_.w();
+	double yscaling = 1.0 * minimap_location_.h / map_.h();
+
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(fogged(u->first) ||
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
@@ -541,10 +544,18 @@ void game_display::draw_minimap_units(int x, int y, int w, int h)
 		const int side = u->second.side();
 		const SDL_Color col = team::get_minimap_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-		SDL_Rect rect = { x + (u->first.x * w) / map_.w(),
-		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_.h(),
-		                  w / map_.w(), h / map_.h() };
-		SDL_FillRect(video().getSurface(),&rect,mapped_col);
+
+		double u_x = u->first.x * xscaling;
+		double u_y = (u->first.y + (is_odd(u->first.x) ? 1 : -1)/4.0) * yscaling;
+ 		// use 4/3 to compensate the horizontal hexes imbrication
+		double u_w = 4.0 / 3.0 * xscaling;
+		double u_h = yscaling;
+
+		SDL_Rect r = { minimap_location_.x + round_double(u_x),
+                       minimap_location_.y + round_double(u_y),
+                       round_double(u_w), round_double(u_h) };
+
+		SDL_FillRect(video().getSurface(), &r, mapped_col);
 	}
 }
 

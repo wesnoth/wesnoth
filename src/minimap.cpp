@@ -98,34 +98,26 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 
 				wassert(surf != NULL);
 
-				SDL_Rect maprect = {x*scale*3/4,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
+				// we need a balanced shift up and down of the hexes.
+				// if not, only the bottom half-hexes are clipped
+				// and it looks asymetrical.
+
+				// also do 1-pixel shift because the scaling
+				// function seems to do it with its rounding
+				SDL_Rect maprect = {x * scale*3/4 - 1,
+					y*scale + scale/4 * (is_odd(x) ? 1 : -1) - 1,
+					0, 0};
 				SDL_BlitSurface(surf, NULL, minimap, &maprect);
 			}
 		}
 	}
 
-	if((minimap->w != w || minimap->h != h) && w != 0 && h != 0) {
-		const surface surf(minimap);
-
-#if 0
-		// preserve the aspect ratio of the original map rather than
-		// distorting it to fit the minimap window.
-		//
-		// This needs more work.  There are at least two issues:
-		// (1) the part of the minimap window outside the scaled map
-		// needs to be blacked out/invalidated.
-		// (2) the rather nasty code in draw_minimap_units needs to 
-		// change.
-		float sw = 1.0, sh = 1.0;
-
-		if (minimap->h < minimap->w) sh = (minimap->h*1.0)/minimap->w;
-		if (minimap->w < minimap->h) sw = (minimap->w*1.0)/minimap->h;
-		w = int(w * sw);
-		h = int(h * sh);
-#endif
-
-		minimap = surface(scale_surface(surf,w,h));
-	}
+	double wratio = w*1.0 / minimap->w;
+	double hratio = h*1.0 / minimap->h;
+	double ratio = minimum<double>(wratio, hratio);
+	
+	minimap = scale_surface(minimap,
+		static_cast<int>(minimap->w * ratio), static_cast<int>(minimap->h * ratio));
 
 	LOG_DP << "done generating minimap\n";
 
