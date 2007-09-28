@@ -528,6 +528,7 @@ config connect::side::get_config() const
 	}
 
 	if(enabled_) {
+		if ( preferences::mp_female_leaders_flag() && controller_ == CNTR_LOCAL || controller_ == CNTR_COMPUTER ) res["gender"] = "female";
 		if (leader_.empty()) {
 			res["type"] = llm_.get_leader();
 		} else {

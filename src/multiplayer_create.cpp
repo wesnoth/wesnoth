@@ -480,6 +480,7 @@ void create::process_event()
 			side["side"] = lexical_cast<std::string>(pos+1);
 			side["team_name"] = lexical_cast<std::string>(pos+1);
 			side["canrecruit"] = "1";
+			if ( preferences::mp_female_leaders_flag() ) side["gender"] = "female";
 			side["controller"] = "human";
 		}
 

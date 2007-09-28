@@ -555,6 +555,11 @@ bool compress_saves()
 	return utils::string_bool(preferences::get("compress_saves"), true);
 }
 
+bool mp_female_leaders_flag()
+{
+	return utils::string_bool(preferences::get("mp_female_leaders"), false);
+}
+
 bool chat_timestamp()
 {
 	return utils::string_bool(preferences::get("chat_timestamp"), false);
