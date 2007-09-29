@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-24 11:03+0200\n"
-"PO-Revision-Date: 2007-09-23 17:01+0200\n"
+"PO-Revision-Date: 2007-09-29 00:35+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -388,7 +388,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Questa unità ti è sconosciuta al momento. Devi scoprirla durante il gioco "
+"Questa unità ti è sconosciuta al momento. Devi scoprirla durante il gioco "
 "per poter vedere la sua descrizione."
 
 #: data/core/help.cfg:85
@@ -2066,7 +2066,6 @@ msgid "Mushroom Grove"
 msgstr "Campo di funghi"
 
 #: data/core/help.cfg:526
-#, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2603,7 +2602,7 @@ msgstr ""
 "\n"
 "Le unità nemiche non possono vedere questa unità se è nella foresta, a meno "
 "che non abbiano unità adiacenti ad essa. L'unità nemica che scopre per prima "
-"quasta unità perde immediatamente tutti i punti movimento rimanenti."
+"questa unità perde immediatamente tutti i punti movimento rimanenti."
 
 #: data/core/macros/abilities.cfg:389 data/core/macros/abilities.cfg:394
 msgid "nightstalk"
@@ -2623,7 +2622,7 @@ msgstr ""
 "\n"
 "Le unità nemiche non possono vedere questa unità durante la notte, a meno "
 "che non abbiano unità adiacenti ad essa. L'unità nemica che scopre per prima "
-"quasta unità perde immediatamente tutti i punti movimento rimanenti."
+"questa unità perde immediatamente tutti i punti movimento rimanenti."
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
 msgid "concealment"
@@ -2646,7 +2645,7 @@ msgstr ""
 "\n"
 "Le unità nemiche non possono né vedere né attaccare questa unità quando si "
 "trova in un villaggio, a meno che non abbiano unità di fianco ad essa. "
-"L'unità nemica che scopre per prima quasta unità perde immediatamente tutti "
+"L'unità nemica che scopre per prima questa unità perde immediatamente tutti "
 "i punti movimento rimanenti."
 
 #: data/core/macros/abilities.cfg:437 data/core/macros/abilities.cfg:442
@@ -2654,7 +2653,6 @@ msgid "submerge"
 msgstr "sommersione"
 
 #: data/core/macros/abilities.cfg:441 data/core/macros/abilities.cfg:446
-#, fuzzy
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -2665,11 +2663,12 @@ msgid ""
 msgstr ""
 "Sommersione:\n"
 "Questa unità può nascondersi nelle acque profonde e non può essere "
-"individuata dai suoi nemici.\n"
+"individuata dai nemici.\n"
 "\n"
 "Le unità nemiche non possono né vedere né attaccare questa unità quando si "
-"trova in alto mare, tranne nel turno immediatamente successivo a un attacco "
-"da parte dell'unità nascosta."
+"trova in alto mare, a meno che non abbiano già unità di fianco ad essa."
+"L'unità nemica che scopre per prima questa unità perde immediatamente tutti "
+"i punti movimento rimanenti."
 
 #: data/core/macros/abilities.cfg:463
 msgid "berserk"
@@ -2707,7 +2706,6 @@ msgid "plague"
 msgstr "contagio"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2715,9 +2713,9 @@ msgid ""
 "doesn't work on Undead or units in villages."
 msgstr ""
 "Contagio:\n"
-"Quando un'unità viene uccisa da un attacco Contagio, essa viene sostituita "
-"da un'unità identica e della stessa squadra dell'unità con l'attacco "
-"Contagio (Non funziona sui non morti e sulle unità nei villaggi)."
+"Quando un'unità viene uccisa da un attacco Contagio, viene sostituita da "
+"un'unità identica e della stessa squadra dell'unità con l'attacco Contagio. "
+"Non funziona sui non morti e sulle unità nei villaggi."
 
 #: data/core/macros/abilities.cfg:503
 msgid ""
@@ -2781,14 +2779,14 @@ msgid "magical"
 msgstr "magico"
 
 #: data/core/macros/abilities.cfg:551
-#, fuzzy
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 "Magico:\n"
-"Questo attacco ha sempre una probabilità del 70% di andare a segno."
+"Questo attacco ha sempre una probabilità del 70% di andare a segno, "
+"indipendentemente dalle capacità difensive dell'unità attaccata."
 
 #: data/core/macros/abilities.cfg:562
 msgid "swarm"
@@ -2854,7 +2852,6 @@ msgid "poison"
 msgstr "veleno"
 
 #: data/core/macros/abilities.cfg:611
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2862,8 +2859,9 @@ msgid ""
 "a unit."
 msgstr ""
 "Veleno:\n"
-"Questo attacco avvelena il bersaglio. Le unità avvelenate perdono 8 PF per "
-"turno finché non sono curate o finché non arrivano a un solo PF."
+"Questo attacco avvelena i bersagli viventi. Le unità avvelenate perdono 8 PF "
+"per turno finché non sono curate o finché non arrivano a un solo PF. Il "
+"veleno da solo non può uccidere un'unità."
 
 #: data/core/macros/amla.cfg:10
 msgid ", MAX XP +25%"
@@ -2917,7 +2915,7 @@ msgstr ""
 
 #: data/core/macros/items.cfg:314
 msgid "Don't make a wish."
-msgstr "Nessun desiderio."
+msgstr "Non esprimere desideri."
 
 #: data/core/macros/items.cfg:336
 msgid "Potion of Healing"
@@ -2929,7 +2927,7 @@ msgstr "Una sensazione di benessere pervade colui che la beve."
 
 #: data/core/macros/items.cfg:340
 msgid "You are not worthy of healing."
-msgstr "Non hai bisogno di essere guarito."
+msgstr "Non sei degno di essere guarito."
 
 #: data/core/macros/items.cfg:374
 msgid "Poison"
@@ -2948,6 +2946,8 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
+"Quest'acqua infonderà alle armi bianche il tipo di danno «arcano» fino alla "
+"fine dello scenario."
 
 #: data/core/macros/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3441,11 +3441,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:18
 msgid "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
-msgstr ""
+msgstr "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
 
 #: data/core/macros/names.cfg:19
 msgid "Kiira,Keyya,Kayya,Korra,Kaasa"
-msgstr ""
+msgstr "Kiira,Keyya,Kayya,Korra,Kaasa"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3850,17 +3850,16 @@ msgstr ""
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/core/macros/names.cfg:50
-#, fuzzy
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
 "Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
-"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -4228,9 +4227,8 @@ msgid "Teal"
 msgstr "Verde-azzurro"
 
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bats"
-msgstr "Naga"
+msgstr "Pipistrelli"
 
 #: data/core/units.cfg:49 data/hardwired/english.cfg:23
 msgid "race^Drakes"
@@ -4249,9 +4247,8 @@ msgid "race^Goblins"
 msgstr "Goblin"
 
 #: data/core/units.cfg:80
-#, fuzzy
 msgid "race^Gryphons"
-msgstr "Goblin"
+msgstr "Grifoni"
 
 #: data/core/units.cfg:87 data/hardwired/english.cfg:19
 msgid "race^Humans"
@@ -5353,7 +5350,7 @@ msgstr "Estensione installata"
 
 #: src/game.cpp:1255
 msgid "The add-on has been installed."
-msgstr "L'estensione è stato installata."
+msgstr "L'estensione è stata installata."
 
 #: src/game.cpp:1258
 msgid "Network communication error."
@@ -5845,7 +5842,6 @@ msgid "Moves"
 msgstr "Mosse"
 
 #: src/menu_events.cpp:326
-#, fuzzy
 msgid "Location^Loc."
 msgstr "Luogo"
 
@@ -5912,14 +5908,17 @@ msgstr "Fazione"
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "Oro"
+msgstr ""
+"Oro\n"
+"iniziale"
 
 #: src/menu_events.cpp:592
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "Inizia scenario"
+msgstr ""
+"Reddito\n"
+"base"
 
 #: src/menu_events.cpp:593
 msgid ""
@@ -6085,7 +6084,7 @@ msgstr "Rinomina unità"
 
 #: src/menu_events.cpp:1581
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Crea unità (Debug!)"
 
 #: src/menu_events.cpp:1621
 msgid "Place Label"
@@ -6871,14 +6870,12 @@ msgid "Abort game"
 msgstr "Abbandona il gioco"
 
 #: src/playturn.cpp:208 src/playturn.cpp:220
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Rimpiazza con un giocatore locale"
+msgstr "Rimpiazza con $player"
 
 #: src/playturn.cpp:226
-#, fuzzy
 msgid "$player has left the game. What do you want to do?"
-msgstr " ha abbandonato il gioco. Cosa vuoi fare?"
+msgstr "$player ha abbandonato il gioco. Che cosa vuoi fare?"
 
 #: src/serialization/parser.cpp:102
 msgid "Unexpected characters at line start"
@@ -7093,17 +7090,16 @@ msgid "neutral"
 msgstr "neutrale"
 
 #: src/upload_log.cpp:290
-#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
 "help us improve game play by giving permission to send these summaries "
 "(anonymously) to wesnoth.org.\n"
 msgstr ""
-"Wesnoth si basa sui volontari come te per essere testato, specialmente da "
-"nuovi giocatori e principianti. Wesnoth tiene una lista delle tue partite: "
-"puoi aiutarci a migliorare il gioco dandoci il permesso di mandare queste "
-"liste (in maniera anonima) a wesnoth.org.\n"
+"Wesnoth si affida su volontari come te per ricevere commenti, specialmente "
+"da nuovi giocatori e principianti. Wesnoth tiene una lista delle tue "
+"partite: puoi aiutarci a migliorare il gioco dandoci il permesso di mandare "
+"queste liste (in maniera anonima) a wesnoth.org.\n"
 
 #: src/upload_log.cpp:291
 msgid "Summaries are stored here:"
