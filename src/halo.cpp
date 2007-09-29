@@ -126,8 +126,20 @@ bool effect::render()
 		return false;
 	}
 
-	if(loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_)) {
-		return false;
+	if(loc_.x != -1 && loc_.y != -1) {
+		if(disp->shrouded(loc_)) {
+			return false;
+		} else {
+			// The location of a halo is an x,y value and not a map location. 
+			// This means when a map is zoomed the halo's won't move, this glitch
+			// is most visible on [item] haloes. This workaround always 
+			// recalculates the location of the halo (item haloes have a location
+			// parameter to hide them under the shroud) and reapplies that location.
+			// It might be optimized by storing and comparing the zoom value.
+			set_location(
+				disp->get_location_x(loc_) + disp->hex_size() / 2, 
+				disp->get_location_y(loc_) + disp->hex_size() / 2);			
+		}
 	}
 
 	images_.update_last_draw_time();
