@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file halo.hpp 
+//!
+
 #ifndef HALO_HPP_INCLUDED
 #define HALO_HPP_INCLUDED
 
@@ -37,22 +40,20 @@ private:
 enum ORIENTATION { NORMAL, HREVERSE, VREVERSE, HVREVERSE };
 const int NO_HALO = 0;
 
-///function to add a haloing effect using 'image'
-///centered on (x,y)
-///returns the handle to the halo object
-///0 is the invalid handle
-//
-// if the halo is attached to an item it needs to be hidden if the shroud is
-// active. (Note it will be shown with the fog active.) If it's not attached
-// to an iten the location should be set to -1, -1
+//! Add a haloing effect using 'image centered on (x,y).
+//! @return 	The handle to the halo object.
+//! @retval 	0 is the invalid handle.
+//!
+//! If the halo is attached to an item, it needs to be hidden if the 
+//! shroud is active.  (Note it will be shown with the fog active.) 
+//! If it is not attached to an item, the location should be set to -1, -1
 int add(int x, int y, const std::string& image, const gamemap::location& loc,
 		ORIENTATION orientation=NORMAL, bool infinite=true);
 
-///function to set the position of an existing haloing
-///effect, according to its handle
+//! Set the position of an existing haloing effect, according to its handle.
 void set_location(int handle, int x, int y);
 
-///function to remove the halo with the given handle
+//! Remove the halo with the given handle.
 void remove(int handle);
 
 struct remover
@@ -60,12 +61,12 @@ struct remover
 	void operator()(int handle) const { remove(handle); }
 };
 
-///functions to render and unrender haloes. Which haloes are rendered
-// is determined by invalidated_locations and the internal state in
-// the control sets (in halo.cpp)
+//! Render and unrender haloes. 
+//! Which haloes are rendered is determined by invalidated_locations 
+//! and the internal state in the control sets (in halo.cpp).
 void unrender(std::set<gamemap::location> invalidated_locations);
 void render();
 
-}
+} // end namespace halo
 
 #endif
