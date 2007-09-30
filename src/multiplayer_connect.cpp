@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file multiplayer_connect.cpp 
+//! Prepare to join a multiplayer-game.
+
 #include "global.hpp"
 
 #include "dialogs.hpp"
@@ -71,7 +74,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		controller_ = parent_->default_controller_;
 	} else {
 		size_t i = CNTR_NETWORK;
-		//if player isn't allowed, network controller doesn't make sense
+		// If player isn't allowed, network controller doesn't make sense
 		if (!allow_player_)
 			++i;
 		for(; i != CNTR_LAST; ++i) {
@@ -106,7 +109,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	id_ = ""; // Id is reset, and not imported from loading savegames
 	save_id_ = cfg_["save_id"];
 	faction_ = lexical_cast_default<int>(cfg_["faction"], 0);
-	std::vector<std::string>::const_iterator itor = std::find(parent_->team_names_.begin(), parent_->team_names_.end(), cfg_["team_name"]);
+	std::vector<std::string>::const_iterator itor = std::find(parent_->team_names_.begin(), 
+													parent_->team_names_.end(), cfg_["team_name"]);
 	if(itor == parent_->team_names_.end()) {
 		wassert(!parent_->team_names_.empty());
 		team_ = 0;
@@ -134,9 +138,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_faction_.set_items(pseudo_factions);
 		combo_faction_.set_selected(0);
 
-		// Hack: if there is a unit which can recruit, use it as a
-		// leader. Necessary to display leader information when loading
-		// saves.
+		// Hack: if there is a unit which can recruit, use it as a leader. 
+		// Necessary to display leader information when loading saves.
 		config::const_child_itors side_units = cfg.child_range("unit");
 		std::string leader_type;
 		for(;side_units.first != side_units.second; ++side_units.first) {
@@ -160,7 +163,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_leader_.set_items(leader_name_pseudolist);
 		combo_leader_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
-		//gold, income, team, and colour are only suggestions unless explicitly locked
+		// gold, income, team, and colour are only suggestions unless explicitly locked
 		if(utils::string_bool(cfg_["gold_lock"], false)) {
 			slider_gold_.enable(false);
 			label_gold_.enable(false);
@@ -176,7 +179,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			combo_colour_.enable(false);
 		}
 
-		//set the leader
+		// Set the leader
 		leader_ = cfg_["type"];
 		if(!leader_.empty()) {
 			combo_leader_.enable(false);
@@ -192,20 +195,21 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			combo_leader_.set_selected(0);
 		}
 
-		//try to pick a faction for the sake of appearance and for filling in the blanks
+		// Try to pick a faction for the sake of appearance 
+		// and for filling in the blanks
 		if(faction_ == 0) {
 			std::vector<std::string> find;
 			std::string search_field;
 			if(!cfg_["faction"].empty()) {
-				//choose based on faction
+				// Choose based on faction
 				find.push_back(cfg_["faction"]);
 				search_field = "id";
 			} else if(!cfg_["recruit"].empty()) {
-				//choose based on recruit
+				// Choose based on recruit
 				find = utils::split(cfg_["recruit"]);
 				search_field = "recruit";
 			} else if(!leader_.empty()) {
-				//choose based on leader
+				// Choose based on leader
 				find.push_back(leader_);
 				search_field = "leader";
 			}
@@ -228,7 +232,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 					++faction;
 					faction_index++;
 				}
-				//exit outmost loop if we've found a faction
+				// Exit outmost loop if we've found a faction
 				if(!combo_faction_.enabled()) {
 					break;
 				}
@@ -264,18 +268,19 @@ connect::side::side(const side& a) :
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 {
-	pane.add_widget(&player_number_, 0, 5 + pos);
+	pane.add_widget(&player_number_,     0, 5 + pos);
 	pane.add_widget(&combo_controller_, 20, 5 + pos);
-	pane.add_widget(&orig_controller_, 20 + (combo_controller_.width() - orig_controller_.width()) / 2, 35 + pos + (combo_leader_.height() - orig_controller_.height()) / 2);
+	pane.add_widget(&orig_controller_,  20 + (combo_controller_.width() - orig_controller_.width()) / 2,
+									    35 + pos + (combo_leader_.height() - orig_controller_.height()) / 2);
 	pane.add_widget(&combo_ai_algorithm_, 20, 35 + pos);
 	pane.add_widget(&combo_faction_, 135, 5 + pos);
-	pane.add_widget(&combo_leader_, 135, 35 + pos);
-	pane.add_widget(&combo_team_, 250, 5 + pos);
-	pane.add_widget(&combo_colour_, 365, 5 + pos);
-	pane.add_widget(&slider_gold_, 475, 5 + pos);
-	pane.add_widget(&label_gold_, 475, 35 + pos);
-	pane.add_widget(&slider_income_, 475 + slider_gold_.width(), 5 + pos);
-	pane.add_widget(&label_income_, 475 + slider_gold_.width(), 35 + pos);
+	pane.add_widget(&combo_leader_,  135, 35 + pos);
+	pane.add_widget(&combo_team_,    250, 5 + pos);
+	pane.add_widget(&combo_colour_,  365, 5 + pos);
+	pane.add_widget(&slider_gold_,   475, 5 + pos);
+	pane.add_widget(&label_gold_,    475, 35 + pos);
+	pane.add_widget(&slider_income_, 475 + slider_gold_.width(),  5 + pos);
+	pane.add_widget(&label_income_,  475 + slider_gold_.width(), 35 + pos);
 }
 
 void connect::side::process_event()
@@ -405,11 +410,11 @@ void connect::side::hide_ai_algorithm_combo(bool invis)
 	{
 		if(controller_ == CNTR_COMPUTER)
 		{
-			//computer selected, show AI combo
+			// Computer selected, show AI combo
 			orig_controller_.hide(true);
 			combo_ai_algorithm_.hide(false);
 		} else {
-			//computer de-selected, hide AI combo
+			// Computer de-selected, hide AI combo
 			combo_ai_algorithm_.hide(true);
 			orig_controller_.hide(false);
 		}
@@ -464,8 +469,8 @@ config connect::side::get_config() const
 {
 	config res(cfg_);
 
-	// If the user is allowed to change type, faction, leader etc, then
-	// import their new values in the config.
+	// If the user is allowed to change type, faction, leader etc, 
+	// then import their new values in the config.
 	if(enabled_ && !parent_->era_sides_.empty()) {
 		// Merge the faction data to res
 		res.append(*(parent_->era_sides_[faction_]));
@@ -590,7 +595,7 @@ config connect::side::get_config() const
 		trimmed["income"] = "";
 		trimmed["allow_changes"] = "";
 		if(controller_ != CNTR_COMPUTER) {
-			//only override names for computer controlled players
+			// Only override names for computer controlled players
 			trimmed["user_description"] = "";
 		}
 		trimmed.prune();
@@ -721,7 +726,7 @@ void connect::side::resolve_random()
 			const int lchoice = rand() % types.size();
 			leader_ = types[lchoice];
 		} else {
-			// if random_leader= doesn't exists, we use leader=
+			// If random_leader= doesn't exists, we use leader=
 			types = utils::split(fact["leader"]);
 			if (!types.empty()) {
 				const int lchoice = rand() % types.size();
@@ -767,8 +772,8 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 	create_game["name"] = params.name;
 
 	load_game();
-	//The number of human-controlled sides is important to know to let the server decide,
-	//how many players can join this game
+	// The number of human-controlled sides is important to know 
+	// to let the server decide how many players can join this game
 	int human_sides = 0;
 	config::child_list cfg_sides = current_config()->get_children("side");
 	for (config::child_list::const_iterator side = cfg_sides.begin(); side != cfg_sides.end(); side++){
@@ -790,7 +795,7 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 		throw config::error(_("The scenario is invalid because it has no sides."));
 	}
 
-	//take the first available side or available side with id == login
+	// Take the first available side or available side with id == login
 	int side_choice = -1;
 	for(side_list::const_iterator s = sides_.begin(); s != sides_.end(); ++s) {
 		if (s->allow_player()) {
@@ -842,8 +847,8 @@ void connect::process_event()
 			set_result(mp::ui::PLAY);
 	}
 
-	// If something has changed in the level config, send it to the
-	// network:
+	// If something has changed in the level config, 
+	// send it to the network:
 	if (changed) {
 		update_playerlist_state();
 		update_and_send_diff();
@@ -956,8 +961,8 @@ void connect::process_network_data(const config& data, const network::connection
 		// Assigns this user to a side
 		if(side_taken >= 0 && side_taken < int(sides_.size())) {
 			if(!sides_[side_taken].available()) {
-				// This side is already taken. Try to reassing the player to a
-				// different position
+				// This side is already taken. 
+				// Try to reassing the player to a different position.
 				side_list::const_iterator itor;
 				side_taken = 0;
 				for (itor = sides_.begin(); itor != sides_.end();
@@ -1040,10 +1045,10 @@ void connect::process_network_data(const config& data, const network::connection
 
 void connect::process_network_error(network::error& error)
 {
-	//if the problem isn't related to any specific connection,
-	//it's a general error and we should just re-throw the error
-	//likewise if we are not a server, we cannot afford any connection
-	//to go down, so also re-throw the error
+	// If the problem isn't related to any specific connection,
+	// it's a general error and we should just re-throw the error.
+	// Likewise if we are not a server, we cannot afford any connection
+	// to go down, so also re-throw the error.
 	if(!error.socket || !network::is_server()) {
 		error.disconnect();
 		throw network::error(error.message);
@@ -1051,7 +1056,7 @@ void connect::process_network_error(network::error& error)
 
 	bool changes = false;
 
-	//a socket has disconnected. Remove it, and resets its side
+	// A socket has disconnected. Remove it, and resets its side
 	connected_user_list::iterator user;
 	for(user = users_.begin(); user != users_.end(); ++user) {
 		if(user->connection == error.socket) {
@@ -1069,11 +1074,11 @@ void connect::process_network_error(network::error& error)
 		update_user_combos();
 	}
 
-	//now disconnect the socket
+	// Now disconnect the socket
 	error.disconnect();
 
-	//if there have been changes to the positions taken,
-	//then notify other players
+	// If there have been changes to the positions taken,
+	// then notify other players
 	if(changes) {
 		update_and_send_diff();
 		update_playerlist_state();
@@ -1114,10 +1119,10 @@ void connect::layout_children(const SDL_Rect& rect)
 	size_t top = ca.y;
 	size_t bottom = ca.y + ca.h;
 
-	//Buttons
-	right_button->set_location(right - right_button->width(),
+	// Buttons
+	right_button->set_location(right  - right_button->width(),
 	                           bottom - right_button->height());
-	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding,
+	left_button->set_location(right  - right_button->width() - left_button->width() - gui::ButtonHPadding,
 	                          bottom - left_button->height());
 
 	waiting_label_.set_location(left + 8, bottom-left_button->height() + 4);
@@ -1139,23 +1144,25 @@ void connect::layout_children(const SDL_Rect& rect)
 
 void connect::lists_init()
 {
-	//Options
+	// Options
 	player_types_.push_back(_("Network Player"));
 	player_types_.push_back(_("Local Player"));
 	player_types_.push_back(_("Computer Player"));
 	player_types_.push_back(_("Empty"));
 
-	for(std::vector<config*>::const_iterator faction = era_sides_.begin(); faction != era_sides_.end(); ++faction) {
+	for(std::vector<config*>::const_iterator faction = era_sides_.begin(); 
+													   faction != era_sides_.end(); 
+													   ++faction) {
 		player_factions_.push_back((**faction)["name"]);
 	}
 
-	//AI algorithms
+	// AI algorithms
     ai_algorithms_ = get_available_ais();
 
-	//Factions
+	// Factions
 	const config::child_itors sides = current_config()->child_range("side");
 
-	//Teams
+	// Teams
 	config::child_iterator sd;
 	if(params_.use_map_settings) {
 		for(sd = sides.first; sd != sides.second; ++sd) {
@@ -1171,7 +1178,8 @@ void connect::lists_init()
 				user_team_name = team_name;
 			}
 
-			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
+			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), 
+															team_names_.end(), team_name);
 			if(itor == team_names_.end()) {
 				team_names_.push_back(team_name);
 				user_team_names_.push_back(user_team_name);
@@ -1187,7 +1195,8 @@ void connect::lists_init()
 			if(team_name.empty())
 				team_name = side_num;
 
-			std::vector<std::string>::const_iterator itor = std::find(map_team_names.begin(), map_team_names.end(), team_name);
+			std::vector<std::string>::const_iterator itor = std::find(map_team_names.begin(), 
+															map_team_names.end(), team_name);
 			if(itor == map_team_names.end()) {
 				map_team_names.push_back(team_name);
 				team_name = lexical_cast<std::string>(map_team_names.size());
@@ -1226,12 +1235,13 @@ void connect::lists_init()
 	}
 }
 
-// Called by the constructor to initialize the game from a create::parameters structure.
+//! Called by the constructor to initialize the game from a create::parameters structure.
 void connect::load_game()
 {
 	if(params_.saved_game) {
 		bool show_replay = false;
-		const std::string game = dialogs::load_game_dialog(disp(), game_config(), game_data_, &show_replay);
+		const std::string game = dialogs::load_game_dialog(disp(), 
+								 game_config(), game_data_, &show_replay);
 		if(game.empty()) {
 			set_result(QUIT);
 			return;
@@ -1259,8 +1269,8 @@ void connect::load_game()
 		}
 
 		if(state_.version != game_config::version) {
-			// do not load if too old, if either the savegame or the current game
-			// has the version 'test' allow loading
+			// Do not load if too old, but if either the savegame or 
+			// the current game has the version 'test' allow loading.
 			if(state_.version < game_config::min_savegame_version &&
 					game_config::test_version.full != state_.version &&
 					game_config::test_version.full != game_config::version) {
@@ -1298,8 +1308,8 @@ void connect::load_game()
 		level_["observer"] = state_.snapshot["observer"];
 		level_.add_child("snapshot") = state_.snapshot;
 
-		// Adds the replay data, and the replay start, to the level, so
-		// clients can receive it.
+		// Adds the replay data, and the replay start, to the level, 
+		// so clients can receive it.
 		level_.add_child("replay") = state_.replay_data;
 		if(!state_.starting_pos.empty())
 			level_.add_child("replay_start") = state_.starting_pos;
@@ -1353,7 +1363,7 @@ void connect::load_game()
 	level_["mp_fog"] = params_.fog_game ? "yes" : "no";
 	level_["mp_shroud"] = params_.shroud_game ? "yes" : "no";
 
-	//this will force connecting clients to be using the same version number as us.
+	// This will force connecting clients to be using the same version number as us.
 	level_["version"] = game_config::version;
 
 	level_["observer"] = params_.allow_observers ? "yes" : "no";
@@ -1368,11 +1378,11 @@ config* connect::current_config(){
 	config* cfg_level = NULL;
 
 	if (level_.child("snapshot") != NULL){
-		//savegame
+		// Savegame
 		cfg_level = level_.child("snapshot");
 	}
 	else{
-		//fresh game, no snapshot available
+		// Fresh game, no snapshot available
 		cfg_level = &level_;
 	}
 
@@ -1421,15 +1431,16 @@ void connect::update_playerlist_state(bool silent)
 	waiting_label_.set_text(sides_available() ? _("Waiting for players to join...") : "");
 	launch_.enable(!sides_available());
 
-	// If the "gamelist_" variable has users, use it. Else, extracts the
-	// user list from the actual player list.
+	// If the "gamelist_" variable has users, use it. 
+	// Else, extracts the user list from the actual player list.
 	if (gamelist().child("user") != NULL) {
 		ui::gamelist_updated(silent);
 	} else {
 		// Updates the player list
 		std::vector<std::string> playerlist;
-		for(connected_user_list::const_iterator itor = users_.begin(); itor != users_.end();
-				++itor) {
+		for(connected_user_list::const_iterator itor = users_.begin(); 
+													   itor != users_.end(); 
+													   ++itor) {
 			playerlist.push_back(itor->name);
 		}
 		set_user_list(playerlist, silent);
@@ -1463,7 +1474,8 @@ int connect::find_player_side(const std::string& id) const
 
 void connect::update_user_combos()
 {
-	for (side_list::iterator itor = sides_.begin(); itor != sides_.end(); ++itor) {
+	for (side_list::iterator itor = sides_.begin(); 
+									itor != sides_.end(); ++itor) {
 		itor->update_user_list();
 	}
 }
@@ -1477,8 +1489,8 @@ void connect::kick_player(const std::string& name)
 	if(player->controller != CNTR_NETWORK)
 		return;
 
-	// If we are the server, kick the user ourselves; else, ask the server
-	// to do so.
+	// If we are the server, kick the user ourselves; 
+	// else, ask the server to do so.
 	if(network::is_server()) {
 		network::disconnect(player->connection);
 	} else {
@@ -1498,4 +1510,5 @@ void connect::kick_player(const std::string& name)
 	update_user_combos();
 }
 
-}
+} // end namespace mp
+
