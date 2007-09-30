@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-30 12:14+0200\n"
-"PO-Revision-Date: 2007-07-25 13:44+0200\n"
+"PO-Revision-Date: 2007-09-30 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "Vis kampe"
 
 #: data/_main.cfg:57
 msgid "Animate Map"
-msgstr ""
+msgstr "»Levende« kort"
 
 #: data/_main.cfg:64
 msgid "Mouse Scrolling"
@@ -68,17 +68,16 @@ msgstr "Kampagne design"
 #: data/campaigns/The_South_Guard/_main.cfg:33
 #: data/campaigns/Two_Brothers/_main.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:39
-#, fuzzy
 msgid "Campaign Maintenance"
-msgstr "Færdiggørelse og vedligeholdelse"
+msgstr "Kampagne vedligeholdelse"
 
 #: data/campaigns/Descent_Into_Darkness/utils/global-events.cfg:21
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 maks liv"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 msgid "Campaign Epilog and Continuity"
-msgstr ""
+msgstr "Kampagne epilog og fortsættelse"
 
 #: data/campaigns/Eastern_Invasion/_main.cfg:41
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:43
@@ -88,7 +87,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/_main.cfg:47
 #: data/campaigns/Two_Brothers/_main.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:45
-#, fuzzy
 msgid "Artwork and Graphics Design"
 msgstr "Illustrationer og grafik"
 
@@ -122,9 +120,8 @@ msgid "Code and Translation Assistance"
 msgstr "Kodning og oversættelseassistance"
 
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:36
-#, fuzzy
 msgid "WML Assistance"
-msgstr "Modstandskraft"
+msgstr "WML-assistance"
 
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "Conception and Original Design"
@@ -137,7 +134,7 @@ msgstr "Færdiggørelse og vedligeholdelse"
 #: data/campaigns/Two_Brothers/_main.cfg:54
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:91
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr ""
+msgstr "Og også en tak til alle som jeg har glemt at nævne."
 
 #: data/core/about.cfg:7
 msgid "Programming"
@@ -316,9 +313,8 @@ msgid "Turkish Translation"
 msgstr "Tyrkisk oversættelse"
 
 #: data/core/about.cfg:1554
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Valencisk oversættelse"
+msgstr "Valencisk (sydlig katalansk) oversættelse"
 
 #: data/core/about.cfg:1564
 msgid "Bots"
@@ -376,9 +372,8 @@ msgstr ""
 "listet her efterhånden som du støder på dem."
 
 #: data/core/help.cfg:74
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Ukendt scenarie"
+msgstr "Ukendt enhed"
 
 #: data/core/help.cfg:77
 msgid ""
@@ -387,6 +382,10 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Denne enhed er for nuværende ukendt. Du må opdage den i spillet for at kunne "
+"se dens beskrivelse."
 
 #: data/core/help.cfg:85
 msgid ""
@@ -765,7 +764,6 @@ msgid "Shroud and Fog of War"
 msgstr "Sløring og krigståge"
 
 #: data/core/help.cfg:162
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -790,7 +788,7 @@ msgstr ""
 "kan bruges hver for sig eller sammen. Sløring dækker både terrænet og alle "
 "enheder på en lokation. Når først området er afdækket vil du dog altid kunne "
 "se lokationen. Krigståge skjuler kun enheder og ejerskab af landsbyer (andre "
-"end dine og dine allieredes). Krigståge afdækkes midlertidigt når du har "
+"end dine og dine allieredes). Krigståge afdækkes midlertidigt, når du har "
 "enheder i området, men returnerer når du forlader området. Både sløring og "
 "krigståge afdækkes af enhedr. Hver enhed afdækker felter der er inden for en "
 "rundes bevægelesmulighed (ignorerer kontrolzoner og fjendtlige enheder).\n"
@@ -1115,7 +1113,6 @@ msgstr ""
 "til."
 
 #: data/core/help.cfg:227
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1305,7 +1302,6 @@ msgstr ""
 "per runde."
 
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1316,11 +1312,12 @@ msgid ""
 "leader."
 msgstr ""
 "\n"
-"Der er en vigtig undtagelse til vedligeholdelse: Enheder med loyal "
-"karaktertrækket har aldrig vedligeholdelse. Enheder som du begynder "
-"scenariet med (så som Konrad eller Delfador), eller enheder, som slutter sig "
-"til dig under et scenarie (så som rytteren i det andet scenarie af "
-"Tronarvingen), vil normalt have loyal karaktertrækket."
+"Der er to vigtige undtagelser til vedligeholdelse: Enheder med loyal "
+"karaktertrækket og ledere har aldrig vedligeholdelse. Enheder som du "
+"begynder scenariet med (så som Delfador), eller enheder, som slutter sig til "
+"dig under et scenarie (så som rytteren i det andet scenarie af "
+"Tronarvingen), vil normalt have loyal karaktertrækket. Enheden du spiller "
+"(så som Konrad) vil næsten altid også være en leder."
 
 #: data/core/help.cfg:259
 msgid "Wrap Up"
@@ -1688,7 +1685,6 @@ msgid "Forest"
 msgstr "Skov"
 
 #: data/core/help.cfg:390
-#, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1987,7 +1983,6 @@ msgid "Illuminated Cave"
 msgstr "Oplyst hule"
 
 #: data/core/help.cfg:516
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2004,7 +1999,6 @@ msgid "Mushroom Grove"
 msgstr "Champignonskov"
 
 #: data/core/help.cfg:526
-#, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2192,14 +2186,13 @@ msgid "Impassable Mountain"
 msgstr "Ufremkommelig bjerg"
 
 #: data/core/help.cfg:606
-#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
 "Ufremkommelige bjerge er så høje og stejle, at de konstant er omgivet af "
-"skyer.  At krydse sådanne bjerge er så godt som umuligt. Selv ikke flyvende "
+"skyer. At krydse sådanne bjerge er så godt som umuligt. Selv ikke flyvende "
 "væsner kan navigere blandt bjergenes tinder på grund af højden."
 
 #: data/core/help.cfg:611
@@ -2556,12 +2549,10 @@ msgstr ""
 "straks alle tilbageværende bevægelsespoint."
 
 #: data/core/macros/abilities.cfg:413 data/core/macros/abilities.cfg:418
-#, fuzzy
 msgid "concealment"
-msgstr "Lejr"
+msgstr "skjul"
 
 #: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:422
-#, fuzzy
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -2571,13 +2562,13 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Baghold:\n"
-"Denne enhed kan gemme sig i dybt vand og forblive uset af fjender.\n"
+"Skjul:\n"
+"Denne enhed kan gemme sig i landsbyer (med undtagelse af havlandsbyer) og "
+"forblive uset af dens fjender, med undtagelse af dem som står nærved.\n"
 "\n"
-"Fjendtlige enheder kan ikke se denne enhed så længe den opholder sig dybt "
-"under overfladen, med mindre de står ved siden af enheden. Enhver fjendtlig "
-"enhed som opdager denne enhed mister straks alle tilbageværende "
-"bevægelsespoint."
+"Fjendtlige enheder kan ikke se denne enhed så længe den opholder sig i en "
+"landsby, med mindre de står ved siden af enheden. Enhver fjendtlig enhed som "
+"opdager denne enhed mister straks alle tilbageværende bevægelsespoint."
 
 #: data/core/macros/abilities.cfg:437 data/core/macros/abilities.cfg:442
 msgid "submerge"
@@ -2637,7 +2628,6 @@ msgid "plague"
 msgstr "pest"
 
 #: data/core/macros/abilities.cfg:491
-#, fuzzy
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2647,7 +2637,7 @@ msgstr ""
 "Pest:\n"
 "Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af en "
 "enhed der er identisk med og på den samme side som enheden der har "
-"pestangrebet. (Dette gælder ikke for udøde eller enheder i landsbyer.)"
+"pestangrebet. Dette gælder ikke for udøde eller enheder i landsbyer."
 
 #: data/core/macros/abilities.cfg:503
 msgid ""
@@ -2666,7 +2656,6 @@ msgid "slows"
 msgstr "langsom"
 
 #: data/core/macros/abilities.cfg:515
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2677,7 +2666,8 @@ msgstr ""
 "Langsom:\n"
 "Dette angreb gør ofret langsomt indtil det afslutter en runde. Langsom "
 "halverer den skade der medfølger af et angreb og et offers "
-"bevægelsesomkostningfordobles."
+"bevægelsesomkostningfordobles. En enhed som er gjort langsom vil have en "
+"lille ikon på dens informationssidepanel når den vælges."
 
 #: data/core/macros/abilities.cfg:524
 msgid "stones"
@@ -2710,14 +2700,14 @@ msgid "magical"
 msgstr "magisk"
 
 #: data/core/macros/abilities.cfg:551
-#, fuzzy
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
 "Magisk:\n"
-"Dette angreb har altid en træfsikkerhed på 70 %."
+"Dette angreb har altid en træfsikkerhed på 70 % uanset forsvarsevnen hos den "
+"enhed som bliver angrebet."
 
 #: data/core/macros/abilities.cfg:562
 msgid "swarm"
@@ -2783,7 +2773,6 @@ msgid "poison"
 msgstr "gift"
 
 #: data/core/macros/abilities.cfg:611
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2792,7 +2781,8 @@ msgid ""
 msgstr ""
 "Gift:\n"
 "Dette angreb forgifter ofret. Forgiftede enheder taber 8 liv per runde "
-"indtil de bliver kureret eller når ned på 1 liv. "
+"indtil de bliver kureret eller når ned på 1 liv. Gift kan ikke, af sig selv, "
+"dræbe en enhed."
 
 #: data/core/macros/amla.cfg:10
 msgid ", MAX XP +25%"
@@ -2877,6 +2867,8 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
+"Dette vand vil gøre at nærkampsvåben har »mystisk« skadetypen indtil "
+"afslutningen af det nuværende scenarie."
 
 #: data/core/macros/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3112,7 +3104,6 @@ msgstr ""
 "Pelaithil,Gomaithsol,Augaithsil"
 
 #: data/core/macros/names.cfg:12
-#, fuzzy
 msgid ""
 "Tinarariand,Elándil,Mebrin,Tinindil,Deléng,Isirion,Pyldur,Caladrielas,"
 "Elebrindel,Unárion,Unadrier,Isorfindir,Urymir,Celóril,Unaril,Horfindel,"
@@ -3232,7 +3223,7 @@ msgstr ""
 "Galadrieldor,Elorfilad,Eäraralad,Eäreng,Thril-Gandir,Belán,Gelad,Nil-Galith,"
 "Eäromir,Delorfilith,Tylad,Eliomir,Vebrinduil,Pamir,Amilmaldur,Nil-Gar,"
 "Vorfindil,Cándir,Eäránduil,Galuldur,Calénduil,Corfil,Beliondil,Anol,"
-"Amithrarion,Cálad,Legilad"
+"Amithrarion,Cálad,Legilad,Linduilas"
 
 #: data/core/macros/names.cfg:13
 msgid ""
@@ -3370,11 +3361,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:18
 msgid "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
-msgstr ""
+msgstr "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
 
 #: data/core/macros/names.cfg:19
 msgid "Kiira,Keyya,Kayya,Korra,Kaasa"
-msgstr ""
+msgstr "Kiira,Keyya,Kayya,Korra,Kaasa"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3779,17 +3770,16 @@ msgstr ""
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/core/macros/names.cfg:50
-#, fuzzy
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
 "Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
-"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -3936,13 +3926,12 @@ msgstr ""
 "enten den eller dens fjende er død."
 
 #: data/core/macros/special-notes.cfg:45
-#, fuzzy
 msgid ""
 " If there is an enemy of the target on the opposite side of the target. This "
 "unit may backstab, inflicting double damage, by creeping around behind that "
 "enemy."
 msgstr ""
-"  Hvis nogen med den samme loyalitet afleder fjenden kan denne enhed anvende "
+" Hvis nogen med den samme loyalitet afleder fjenden kan denne enhed anvende "
 "et bagholdsangreb som giver dobbelt skade ved at flytte sig rundt om fjenden."
 
 #: data/core/macros/special-notes.cfg:48
@@ -4157,42 +4146,36 @@ msgid "Teal"
 msgstr "Grønblå"
 
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bats"
-msgstr "Nagaer"
+msgstr "Flagermus"
 
 #: data/core/units.cfg:49 data/hardwired/english.cfg:23
-#, fuzzy
 msgid "race^Drakes"
-msgstr "Dværge"
+msgstr "Hestedrager"
 
 #: data/core/units.cfg:56 data/hardwired/english.cfg:22
 msgid "race^Dwarves"
 msgstr "Dværge"
 
 #: data/core/units.cfg:64 data/hardwired/english.cfg:18
-#, fuzzy
 msgid "race^Elves"
-msgstr "Dværge"
+msgstr "Elver"
 
 #: data/core/units.cfg:73 data/hardwired/english.cfg:24
 msgid "race^Goblins"
 msgstr "Gobliner"
 
 #: data/core/units.cfg:80
-#, fuzzy
 msgid "race^Gryphons"
-msgstr "Gobliner"
+msgstr "Grifer"
 
 #: data/core/units.cfg:87 data/hardwired/english.cfg:19
-#, fuzzy
 msgid "race^Humans"
 msgstr "Mennesker"
 
 #: data/core/units.cfg:94
-#, fuzzy
 msgid "race^Saurians"
-msgstr "Nagaer"
+msgstr "Øgler"
 
 #: data/core/units.cfg:102 data/hardwired/english.cfg:26
 msgid "race^Mechanical"
@@ -4215,9 +4198,8 @@ msgid "race^Ogres"
 msgstr "Ogretrolde"
 
 #: data/core/units.cfg:138 data/hardwired/english.cfg:20
-#, fuzzy
 msgid "race^Orcs"
-msgstr "Ogretrolde"
+msgstr "Orker"
 
 #: data/core/units.cfg:145 data/hardwired/english.cfg:31
 msgid "race^Trolls"
@@ -4491,7 +4473,6 @@ msgstr ""
 "deres runde."
 
 #: data/hardwired/tips.cfg:11
-#, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -4712,7 +4693,6 @@ msgstr ""
 "Placer musen over et af disse for at få en forklaring eller beskrivelse."
 
 #: data/hardwired/tips.cfg:37
-#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -4721,7 +4701,7 @@ msgid ""
 msgstr ""
 "Du kan sende et anonymt sammendrag af dine spil til Wesnoth projektet ved at "
 "anvende Hjælp Wesnoth knappen (markeret ved et ikon tæt på det nedre/højre "
-"hjørne af spillets hovedskærm).  Denne information er vigtig i forbindelse "
+"hjørne af spillets hovedskærm). Denne information er vigtig i forbindelse "
 "med tilpasning af kampagnesværhedsgraden."
 
 #: data/hardwired/tips.cfg:38
@@ -5194,16 +5174,15 @@ msgstr "Vælg ønsket udvidelsesmodul til fjernelse."
 
 #: src/game.cpp:972
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "Er du sikker på at du ønsker at fjerne udvidelsesmodul '$addon|'?"
 
 #: src/game.cpp:976
 msgid "Confirm"
 msgstr "Bekræft"
 
 #: src/game.cpp:999
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "Udvidelsesmodul slettet"
+msgstr "Udvidelsesmodul '$addon|' slettet"
 
 #: src/game.cpp:1004
 msgid "Add-on deleted"
@@ -5303,11 +5282,11 @@ msgid "Remote host disconnected."
 msgstr "Vært mistede forbindelsen"
 
 #: src/game.cpp:1262
-#, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
-"Kunne ikke lave de nødvendige filer for at denne kampagne kan installeres."
+"Kunne ikke lave de nødvendige filer for at dette udvidelsesmodul kan "
+"installeres."
 
 #: src/game.cpp:1274 src/game.cpp:1316 src/game.cpp:1343
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:432
@@ -5315,9 +5294,8 @@ msgid "Connection timed out"
 msgstr "Forbindelsen afbrudt"
 
 #: src/game.cpp:1277
-#, fuzzy
 msgid "The server responded with an error: \"$error|\""
-msgstr "Serveren gav fejlen: \""
+msgstr "Serveren gav fejlen: \"$error|\""
 
 #: src/game.cpp:1284
 msgid "Terms"
@@ -5344,9 +5322,8 @@ msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log på den officielle Wesnoth multiplayer server"
 
 #: src/game.cpp:1375
-#, fuzzy
 msgid "Connect to Host/Server"
-msgstr "Tilslut server"
+msgstr "Tilslut til vært/server"
 
 #: src/game.cpp:1376
 msgid "Join a server or hosted game"
@@ -5365,7 +5342,6 @@ msgid "Local Game"
 msgstr "Lokalt spil"
 
 #: src/game.cpp:1382
-#, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Spil flere sammen hvor computeren og spillerne deler den samme maskine"
 
@@ -5394,9 +5370,9 @@ msgid "Choose your preferred language:"
 msgstr "Vælg dit foretrukne sprog:"
 
 #: src/game.cpp:1623
-#, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
-msgstr "Følgende kampagne(r) indeholder fejl og kunne derfor ikke indlæses:"
+msgstr ""
+"Følgende udvidelsesmodul(er) indeholder fejl og kunne derfor ikke indlæses:"
 
 #: src/game.cpp:1628
 msgid "ERROR DETAILS:"
@@ -5404,7 +5380,7 @@ msgstr "FEJL-DETALJER:"
 
 #: src/game.cpp:1642
 msgid "Warning: Errors occurred while loading game configuration files: '"
-msgstr "Advarsel: Fejl under indlæsning af spillets konfigurationsfiler:-'"
+msgstr "Advarsel: Fejl under indlæsning af spillets konfigurationsfiler: '"
 
 #: src/game.cpp:1694
 msgid "Error loading game configuration files: '"
@@ -5431,9 +5407,8 @@ msgid "Loading title screen."
 msgstr "Henter titelskærm."
 
 #: src/game_config.cpp:249
-#, fuzzy
 msgid "Invalid color range: "
-msgstr "Ugyldig farve"
+msgstr "Ugyldig farveskala: "
 
 #: src/game_events.cpp:882
 msgid "Victory:"
@@ -5499,9 +5474,8 @@ msgid "stone: "
 msgstr "sten: "
 
 #: src/generate_report.cpp:167
-#, fuzzy
 msgid "Resistances: "
-msgstr "Modstandskræfter"
+msgstr "Modstandskræfter: "
 
 #: src/generate_report.cpp:184 src/multiplayer_create.cpp:379
 msgid "Experience Modifier: "
@@ -5553,20 +5527,19 @@ msgstr "Hjælp"
 
 #: src/help.cpp:1087
 msgid "Units having this special attack:"
-msgstr ""
+msgstr "Enheder med dette angreb:"
 
 #: src/help.cpp:1137 src/help.cpp:1334 src/help.cpp:1580 src/help.cpp:1633
-#, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Diverse"
 
 #: src/help.cpp:1143 src/help.cpp:1639
 msgid "Units of this race:"
-msgstr ""
+msgstr "Enheder af denne race:"
 
 #: src/help.cpp:1209
 msgid "Units having this ability:"
-msgstr ""
+msgstr "Enheder med denne evne:"
 
 #: src/help.cpp:1274
 msgid "Advances from: "
@@ -5577,9 +5550,8 @@ msgid "Advances to: "
 msgstr "Forfremmes til: "
 
 #: src/help.cpp:1336
-#, fuzzy
 msgid "Race: "
-msgstr "Race"
+msgstr "Race: "
 
 #: src/help.cpp:1343
 msgid "Abilities: "
@@ -5755,36 +5727,28 @@ msgid "Damage Taken (EV)"
 msgstr "Skade taget (EV)"
 
 #: src/menu_events.cpp:250 src/menu_events.cpp:254
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "Vil du virkelig slette dette gemte spil?"
+msgstr "Vil du virkelig slette ham?"
 
 #: src/menu_events.cpp:250
-#, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
-"Min herre, denne enhed er erfaren med et højt niveau! Vil du virkelig "
-"afskedige $noun?"
+msgstr "Min herre, denne enhed er erfaren med et højt niveau! "
 
 #: src/menu_events.cpp:251 src/menu_events.cpp:255
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "Vil du virkelig slette dette gemte spil?"
+msgstr "Vil du virkelig slette hende?"
 
 #: src/menu_events.cpp:254
-#, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
-msgstr ""
-"Herre, denne enhed er tæt på forfremmelse! Vil du virkelig bortsende $noun?"
+msgstr "Herre, denne enhed er tæt på forfremmelse! "
 
 #: src/menu_events.cpp:311
 msgid "Statistics"
 msgstr "Statistik"
 
 #: src/menu_events.cpp:321
-#, fuzzy
 msgid "Level^Lv."
-msgstr "Level"
+msgstr "L."
 
 #: src/menu_events.cpp:324
 msgid "unit list^Traits"
@@ -5795,14 +5759,12 @@ msgid "Moves"
 msgstr "Bevægelser"
 
 #: src/menu_events.cpp:326
-#, fuzzy
 msgid "Location^Loc."
-msgstr "Placering"
+msgstr "Plac."
 
 #: src/menu_events.cpp:327
-#, fuzzy
 msgid "Status"
-msgstr "Statistik"
+msgstr "Status"
 
 #: src/menu_events.cpp:434
 msgid "Unit List"
@@ -5810,7 +5772,7 @@ msgstr "Enhedsliste"
 
 #: src/menu_events.cpp:437 src/menu_events.cpp:457
 msgid "Scroll To"
-msgstr ""
+msgstr "Rul til"
 
 #: src/menu_events.cpp:486
 msgid "Leader"
@@ -5844,68 +5806,64 @@ msgid "Income"
 msgstr "Indkomst"
 
 #: src/menu_events.cpp:569
-#, fuzzy
 msgid "Current Status"
-msgstr "Nuværende vedligeholder"
+msgstr "Nuværende status"
 
 #: src/menu_events.cpp:570
-#, fuzzy
 msgid "More >"
-msgstr "Mere"
+msgstr "Mere >"
 
 #: src/menu_events.cpp:588
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "Start scenario"
+msgstr "Leder"
 
 #: src/menu_events.cpp:590
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "Start scenario"
+msgstr "Side"
 
 #: src/menu_events.cpp:591
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "Start scenario"
+msgstr ""
+"Start\n"
+"Guld"
 
 #: src/menu_events.cpp:592
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "Start scenario"
+msgstr ""
+"Base\n"
+"Indkomst"
 
 #: src/menu_events.cpp:593
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
+"Guld per\n"
+"Landsby"
 
 #: src/menu_events.cpp:594
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "Start scenario"
+msgstr "Tåge"
 
 #: src/menu_events.cpp:595
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "Start scenario"
+msgstr "Sløring"
 
 #: src/menu_events.cpp:640 src/menu_events.cpp:641
-#, fuzzy
 msgid "no"
-msgstr "Sne"
+msgstr "nej"
 
 #: src/menu_events.cpp:640 src/menu_events.cpp:641
 msgid "yes"
-msgstr ""
+msgstr "ja"
 
 #: src/menu_events.cpp:648
-#, fuzzy
 msgid "Scenario Settings"
-msgstr "Start scenario"
+msgstr "Scenarie indstillinger"
 
 #: src/menu_events.cpp:680 src/playcampaign.cpp:525
 msgid "Name:"
@@ -5969,9 +5927,8 @@ msgid "Send to allies only"
 msgstr "Send kun til allierede"
 
 #: src/menu_events.cpp:866
-#, fuzzy
 msgid "Send to observers only"
-msgstr "Send kun til allierede"
+msgstr "Send kun til observatører"
 
 #: src/menu_events.cpp:946
 msgid "unit^Gold"
@@ -6042,7 +5999,7 @@ msgstr "Omdøb enhed"
 
 #: src/menu_events.cpp:1581
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Opret enhed (fejlsøgning!)"
 
 #: src/menu_events.cpp:1621
 msgid "Place Label"
@@ -6161,9 +6118,8 @@ msgid "prompt^Command:"
 msgstr "Kommando:"
 
 #: src/menu_events.cpp:2226
-#, fuzzy
 msgid "User-Command#3"
-msgstr "Kommandoer"
+msgstr "Brugerkommando#3"
 
 #: src/mouse_events.cpp:198 src/mouse_events.cpp:308
 msgid "Attacker"
@@ -6444,9 +6400,8 @@ msgid "Settings..."
 msgstr "Indstillinger..."
 
 #: src/multiplayer_create.cpp:93
-#, fuzzy
 msgid "Load Game..."
-msgstr "Indlæs spil"
+msgstr "Indlæs spil..."
 
 #: src/multiplayer_create.cpp:126
 msgid "The maximum number of turns the game can last"
@@ -6570,9 +6525,8 @@ msgid "Players: "
 msgstr "Spillere: "
 
 #: src/multiplayer_create.cpp:507
-#, fuzzy
 msgid "Size: "
-msgstr "Størrelse"
+msgstr "Størrelse: "
 
 #: src/multiplayer_lobby.cpp:99
 msgid "--no games open--"
@@ -6591,9 +6545,8 @@ msgid "Unknown scenario"
 msgstr "Ukendt scenarie"
 
 #: src/multiplayer_lobby.cpp:449
-#, fuzzy
 msgid "Turn "
-msgstr "Runde"
+msgstr "Runde "
 
 #: src/multiplayer_lobby.cpp:453
 msgid "Vacant Slot:"
@@ -6709,9 +6662,8 @@ msgid "You have been defeated!"
 msgstr "Du er blevet besejret!"
 
 #: src/playcampaign.cpp:369
-#, fuzzy
 msgid "Error while reading the WML: "
-msgstr "Fejl under spillet: "
+msgstr "Fejl under læsning af WML: "
 
 #: src/playcampaign.cpp:393
 msgid "The replay could not be saved"
@@ -6730,9 +6682,8 @@ msgid "Do you want to save your game?"
 msgstr "Vil du gemme dit spil?"
 
 #: src/playcampaign.cpp:549
-#, fuzzy
 msgid "Unknown scenario: '$scenario|'"
-msgstr "Ukendt scenarie: '"
+msgstr "Ukendt scenarie: '$scenario|'"
 
 #: src/playmp_controller.cpp:359
 msgid ""
@@ -6794,6 +6745,8 @@ msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr ""
+"Du vil starte det næste scenarie med $gold eller scenariets minimums guld "
+"såfremt denne er højere."
 
 #: src/playsingle_controller.cpp:389
 msgid ""
@@ -6804,9 +6757,8 @@ msgstr ""
 "gemme spillet?"
 
 #: src/playsingle_controller.cpp:517
-#, fuzzy
 msgid "It is now $name|'s turn"
-msgstr "Det er din tur"
+msgstr "Det er nu $name|s runde"
 
 #: src/playturn.cpp:201
 msgid "Replace with AI"
@@ -6821,14 +6773,12 @@ msgid "Abort game"
 msgstr "Afbryd spil"
 
 #: src/playturn.cpp:208 src/playturn.cpp:220
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Erstat med lokal spiller"
+msgstr "Erstat med $player"
 
 #: src/playturn.cpp:226
-#, fuzzy
 msgid "$player has left the game. What do you want to do?"
-msgstr "har forladt spillet. Hvad vil du gøre?"
+msgstr "$player har forladt spillet. Hvad vil du gøre?"
 
 #: src/serialization/parser.cpp:102
 msgid "Unexpected characters at line start"
@@ -6927,28 +6877,24 @@ msgid "TitleScreen button^Preferences"
 msgstr "Indstillinger"
 
 #: src/titlescreen.cpp:310
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "Afslut"
+msgstr "Rulletekster"
 
 #: src/titlescreen.cpp:311
 msgid "TitleScreen button^Quit"
 msgstr "Afslut"
 
 #: src/titlescreen.cpp:314
-#, fuzzy
 msgid "TitleScreen button^More"
-msgstr "Indlæs"
+msgstr "Mere"
 
 #: src/titlescreen.cpp:315
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "Indlæs"
+msgstr "Hjælp"
 
 #: src/titlescreen.cpp:317
-#, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "Indlæs"
+msgstr "Hjælp Wesnoth"
 
 #: src/titlescreen.cpp:319
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -6992,17 +6938,15 @@ msgstr "Afslut spillet"
 
 #: src/titlescreen.cpp:328
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Vis næste dagens tip"
 
 #: src/titlescreen.cpp:329
-#, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Hjælp til Kampen om Wesnoth"
 
 #: src/titlescreen.cpp:330
-#, fuzzy
 msgid "Upload statistics"
-msgstr "Statistik"
+msgstr "Send statistik"
 
 #: src/titlescreen.cpp:382
 msgid "Help Wesnoth by sending us information"
@@ -7010,7 +6954,7 @@ msgstr "Hjælp Wesnoth ved at sende os information"
 
 #: src/unit.cpp:379 src/unit.cpp:1159 src/unit.cpp:2529
 msgid "Unknown unit type '$type|'"
-msgstr ""
+msgstr "Ukendt enhedstype '$type|'"
 
 #: src/unit.cpp:2573 src/unit.cpp:2896 src/unit.cpp:2951
 msgid "; "
@@ -7045,7 +6989,6 @@ msgid "neutral"
 msgstr "neutral"
 
 #: src/upload_log.cpp:290
-#, fuzzy
 msgid ""
 "Wesnoth relies on volunteers like yourself for feedback, especially "
 "beginners and new players. Wesnoth keeps summaries of your games: you can "
@@ -7072,77 +7015,6 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
-
-#~ msgid "This water will make melee weapons holy."
-#~ msgstr "Dette vand gør nærkampsvåben hellige."
-
-#~ msgid "Replace with "
-#~ msgstr "Erstat med "
-
-#, fuzzy
-#~ msgid "Races"
-#~ msgstr "Race"
-
-#~ msgid "Campaign Designer"
-#~ msgstr "Kampagne designer"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "Nuværende vedligeholder"
-
-#~ msgid "Music Development"
-#~ msgstr "Musik udvikling"
-
-#~ msgid "WML Contributors"
-#~ msgstr "WML-bidragere"
-
-#~ msgid "Elves"
-#~ msgstr "Elvere"
-
-#~ msgid "Orcs"
-#~ msgstr "Orker"
-
-#~ msgid "her"
-#~ msgstr "hende"
-
-#~ msgid "him"
-#~ msgstr "ham"
-
-#, fuzzy
-#~ msgid "You will start the next scenario with "
-#~ msgstr "80 % af guldet overføres til næste scenarie"
-
-#, fuzzy
-#~ msgid "Back"
-#~ msgstr "Sort"
-
-#, fuzzy
-#~ msgid "game settings^Fog"
-#~ msgstr "Brug kort-indstillinger"
-
-#~ msgid "Can't set abilities yet, sorry."
-#~ msgstr "Evner kan desværre ikke sættes endnu."
-
-#, fuzzy
-#~ msgid "Map size: "
-#~ msgstr "Kort gemt."
-
-#~ msgid "Credits"
-#~ msgstr "Rulletekster"
-
-#~ msgid "Prose-doctoring and preparation for mainline"
-#~ msgstr "Tekstprøvning og forberedelse til hovedspillet"
-
-#~ msgid "Unit art"
-#~ msgstr "Enhedstype"
-
-#~ msgid "Map art"
-#~ msgstr "Kortkunst"
-
-#~ msgid "Portrait Art"
-#~ msgstr "Portrætkunst"
-
-#~ msgid "Fugitive"
-#~ msgstr "Flygtning"
 
 #~ msgid ""
 #~ "Veteran criminals become notorious among the authorities for both their "
