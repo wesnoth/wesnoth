@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-24 11:05+0200\n"
+"POT-Creation-Date: 2007-09-30 12:15+0200\n"
 "PO-Revision-Date: 2007-02-12 23:13+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -84,52 +84,35 @@ msgstr "Мятежники"
 msgid "Undead"
 msgstr "Мертвецы"
 
-#: data/multiplayer/scenarios/2p_Blitz.cfg:5
-msgid "2p - Blitz"
-msgstr "2и — Блиц"
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:32
+msgid "2p - Caves of the Basilisk"
+msgstr "2и — Пещеры Василиска"
 
-#: data/multiplayer/scenarios/2p_Charge.cfg:7
-#: data/multiplayer/scenarios/2p_Blitz.cfg:7
-msgid "A duel map for super fast play."
-msgstr "Дуэльная карта для сверхбыстрой игры."
-
-#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
-#: data/multiplayer/scenarios/4p_Clash.cfg:7
-#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
-#: data/multiplayer/scenarios/8p_Morituri.cfg:7
-#: data/multiplayer/scenarios/3p_Morituri.cfg:6
-#: data/multiplayer/scenarios/2p_Charge.cfg:7
-#: data/multiplayer/scenarios/2p_Blitz.cfg:7
-#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:6
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
-#: data/multiplayer/scenarios/4p_Morituri.cfg:7
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
-#: data/multiplayer/scenarios/2p_Hamlets.cfg:6
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:6
-msgid " Recommended setting of 2 gold per village."
-msgstr "Рекомендуемые настройки — 2 золота на деревню."
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:34
+#, fuzzy
+msgid ""
+"Players must maneuver their units through the divisive terrain of this long-"
+"feared region, once the home of a legendary Elder Basilisk. The road to "
+"victory is littered with the petrified forms of some of Wesnoth's greatest "
+"heroes."
+msgstr ""
+"Игроки должны передвигать свои соединения сквозь разрозненные земли этого "
+"пустынного региона, некогда дома Древнего Василиска. Путь к победе отмечен "
+"окаменевшими телами великих героев Веснота."
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:47
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:20
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Morituri.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:32
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:44
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:80
-#: data/multiplayer/scenarios/2p_Charge.cfg:20
-#: data/multiplayer/scenarios/2p_Blitz.cfg:20
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:20
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:31
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:20
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:20
 #: data/multiplayer/scenarios/4p_Morituri.cfg:18
@@ -149,13 +132,13 @@ msgstr "север"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:59
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:31
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
-#: data/multiplayer/scenarios/2p_Charge.cfg:31
-#: data/multiplayer/scenarios/2p_Blitz.cfg:31
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:33
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:20
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:31
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:31
 #: data/multiplayer/scenarios/4p_Morituri.cfg:29
 #: data/multiplayer/scenarios/4p_Morituri.cfg:40
@@ -166,22 +149,6 @@ msgstr "север"
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:53
 msgid "teamname^South"
 msgstr "юг"
-
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:32
-msgid "2p - Caves of the Basilisk"
-msgstr "2и — Пещеры Василиска"
-
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:34
-#, fuzzy
-msgid ""
-"Players must maneuver their units through the divisive terrain of this long-"
-"feared region, once the home of a legendary Elder Basilisk. The road to "
-"victory is littered with the petrified forms of some of Wesnoth's greatest "
-"heroes."
-msgstr ""
-"Игроки должны передвигать свои соединения сквозь разрозненные земли этого "
-"пустынного региона, некогда дома Древнего Василиска. Путь к победе отмечен "
-"окаменевшими телами великих героев Веснота."
 
 # оставлено как есть, это стихотворение
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -406,10 +373,6 @@ msgstr ""
 "\n"
 "(написано MJQ)"
 
-#: data/multiplayer/scenarios/2p_Charge.cfg:5
-msgid "2p - Charge"
-msgstr "2и — Бросок"
-
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
 msgstr "2и — Поле битвы Цинзауна"
@@ -440,6 +403,81 @@ msgstr ""
 "Опасность скрывается в каждом закоулке этого подземного поля битвы, дуэльной "
 "карты, где встречаются сила и хитрость."
 
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
+#: data/multiplayer/scenarios/4p_Clash.cfg:7
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
+#: data/multiplayer/scenarios/8p_Morituri.cfg:7
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
+#: data/multiplayer/scenarios/3p_Morituri.cfg:6
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
+#: data/multiplayer/scenarios/4p_Morituri.cfg:7
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:6
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
+msgid " Recommended setting of 2 gold per village."
+msgstr "Рекомендуемые настройки — 2 золота на деревню."
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
+#, fuzzy
+msgid "2p - Fallenstar Lake"
+msgstr "2и — Метеоритное озеро"
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
+#, fuzzy
+msgid ""
+"Long ago, a great star fell from the heavens, leaving its mark on this "
+"coniferous region."
+msgstr ""
+"Давным давно, огромный метеорит упал с небес, оставив свою отметину на этой "
+"поросшей хвойными лесами земле."
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:20
+#: data/multiplayer/scenarios/4p_Clash.cfg:18
+#: data/multiplayer/scenarios/4p_Clash.cfg:40
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:32
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:44
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:80
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
+#: data/multiplayer/scenarios/3p_Morituri.cfg:42
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:21
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
+msgid "teamname^West"
+msgstr "запад"
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:31
+#: data/multiplayer/scenarios/4p_Clash.cfg:29
+#: data/multiplayer/scenarios/4p_Clash.cfg:51
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:20
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:56
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:68
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
+#: data/multiplayer/scenarios/3p_Morituri.cfg:31
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:29
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
+msgid "teamname^East"
+msgstr "восток"
+
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
 msgstr "2и — Деревушки"
@@ -464,55 +502,6 @@ msgid ""
 msgstr ""
 "Игроки должны передвигаться по пересеченной местности этого маленького но "
 "топографически насыщенного острова."
-
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:5
-msgid "2p - Meteor Lake"
-msgstr "2и — Метеоритное озеро"
-
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:6
-msgid ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region."
-msgstr ""
-"Давным давно, огромный метеорит упал с небес, оставив свою отметину на этой "
-"поросшей хвойными лесами земле."
-
-#: data/multiplayer/scenarios/4p_Clash.cfg:18
-#: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:32
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:44
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:80
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
-#: data/multiplayer/scenarios/3p_Morituri.cfg:42
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:42
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:21
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:20
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
-#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:20
-msgid "teamname^West"
-msgstr "запад"
-
-#: data/multiplayer/scenarios/4p_Clash.cfg:29
-#: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:20
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:56
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:68
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
-#: data/multiplayer/scenarios/3p_Morituri.cfg:31
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:31
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:29
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:31
-msgid "teamname^East"
-msgstr "восток"
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
@@ -605,6 +594,21 @@ msgstr "Статуя Ло-бзанга"
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Каменное изваяние Ло-бзанга, слуги Суллы."
 
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
+#, fuzzy
+msgid "2p - The Freelands"
+msgstr "4и — Дикие земли"
+
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
+msgid "A duel map for super fast play."
+msgstr "Дуэльная карта для сверхбыстрой игры."
+
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
+#, fuzzy
+msgid "2p - Weldyn Channel"
+msgstr "2и — Бросок"
+
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
 msgid "2p - Wesbowl"
 msgstr "2и — Кубок Веснота"
@@ -674,6 +678,14 @@ msgstr "Красная команда выиграла! Финальный сч�
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "Ничья! Финальный счет: $redscore — $bluescore"
 
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
+msgid "3p - Alirok Marsh"
+msgstr ""
+
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
+msgid "Three players come head to head on this water-cut battlefield."
+msgstr "Три игрока сходятся лицом к лицу на этом водяном боевом пространстве."
+
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3и — Остров Хоратии"
@@ -697,14 +709,6 @@ msgid ""
 msgstr ""
 "Только одна сторона будет признана победительницей на этой карте  для трех "
 "игроков со сжатыми границами."
-
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:5
-msgid "3p - Triple Blitz"
-msgstr "3и — Тройной Блиц"
-
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:6
-msgid "Three players come head to head on this water-cut battlefield."
-msgstr "Три игрока сходятся лицом к лицу на этом водяном боевом пространстве."
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
@@ -1283,6 +1287,12 @@ msgid ""
 msgstr ""
 "Тестирование Веснота, использует --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "2p - Blitz"
+#~ msgstr "2и — Блиц"
+
+#~ msgid "3p - Triple Blitz"
+#~ msgstr "3и — Тройной Блиц"
 
 #, fuzzy
 #~ msgid "Defeat enemy leader"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-24 11:05+0200\n"
+"POT-Creation-Date: 2007-09-30 12:15+0200\n"
 "PO-Revision-Date: 2007-09-17 22:27+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -171,7 +171,7 @@ msgstr ""
 "De bland drakfolket som bemästrar svärdet tas upp i en särskild orden. "
 "Ordens tecken är den svarta och vita krigsmålning som de bär i strid."
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:30
+#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:36
 #: data/core/units/elves/Avenger.cfg:62 data/core/units/elves/Marksman.cfg:54
 #: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:35
 #: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Outrider.cfg:32
@@ -198,7 +198,7 @@ msgstr ""
 #: data/core/units/humans/Horse_Knight.cfg:25
 #: data/core/units/humans/Horse_Paladin.cfg:40
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:53
+#: data/core/units/humans/Outlaw_Ranger.cfg:35
 #: data/core/units/humans/Loyalist_Cavalier.cfg:38
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
@@ -307,12 +307,12 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
-#: data/core/units/humans/Outlaw_Bandit.cfg:36
-#: data/core/units/humans/Outlaw.cfg:24
+#: data/core/units/humans/Outlaw_Bandit.cfg:41
+#: data/core/units/humans/Outlaw.cfg:29
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
-#: data/core/units/humans/Outlaw_Highwayman.cfg:31
-#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "spikklubba"
 
@@ -614,8 +614,8 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Rogue.cfg:29
 #: data/core/units/humans/Outlaw_Thief.cfg:178
 #: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Huntsman.cfg:38
-#: data/core/units/humans/Outlaw_Trapper.cfg:71
+#: data/core/units/humans/Outlaw_Huntsman.cfg:32
+#: data/core/units/humans/Outlaw_Trapper.cfg:76
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
 msgid "dagger"
@@ -876,9 +876,9 @@ msgstr ""
 "detta så till den grad att de överträffar även de bästa bland människornas "
 "rekryter."
 
-#: data/core/units/orcs/Sovereign.cfg:38 data/core/units/orcs/Archer.cfg:80
+#: data/core/units/orcs/Sovereign.cfg:44 data/core/units/orcs/Archer.cfg:80
 #: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:39 data/core/units/orcs/Ruler.cfg:37
+#: data/core/units/orcs/Leader.cfg:45 data/core/units/orcs/Ruler.cfg:43
 #: data/core/units/elves/Avenger.cfg:71 data/core/units/elves/Scout.cfg:42
 #: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Ranger.cfg:68
 #: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Archer.cfg:33
@@ -889,10 +889,10 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:62
+#: data/core/units/humans/Outlaw_Ranger.cfg:44
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/humans/Outlaw_Huntsman.cfg:47
-#: data/core/units/humans/Outlaw_Trapper.cfg:80
+#: data/core/units/humans/Outlaw_Huntsman.cfg:41
+#: data/core/units/humans/Outlaw_Trapper.cfg:85
 #: data/core/units/undead/Skeleton_Archer.cfg:42
 #: data/core/units/undead/Skele_Banebow.cfg:41
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:40
@@ -2570,7 +2570,7 @@ msgstr "Ljusets magiker"
 msgid "Outlaw"
 msgstr "Fredlös"
 
-#: data/core/units/humans/Outlaw.cfg:19
+#: data/core/units/humans/Outlaw.cfg:24
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -2588,13 +2588,13 @@ msgstr ""
 "dagsljus, utan föredrar att strida i nattens mörker."
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:32
-#: data/core/units/humans/Outlaw_Fugitive.cfg:40
+#: data/core/units/humans/Outlaw.cfg:37
+#: data/core/units/humans/Outlaw_Fugitive.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:38
 msgid "sling"
 msgstr "slunga"
 
-#: data/core/units/humans/Outlaw.cfg:106
+#: data/core/units/humans/Outlaw.cfg:111
 msgid "female^Outlaw"
 msgstr "Fredlös"
 
@@ -2634,7 +2634,7 @@ msgstr "Lönnmördare"
 msgid "Bandit"
 msgstr "Bandit"
 
-#: data/core/units/humans/Outlaw_Bandit.cfg:19
+#: data/core/units/humans/Outlaw_Bandit.cfg:24
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
 "the strong arm of any organized group of criminals, and though they may lack "
@@ -2675,7 +2675,7 @@ msgstr ""
 msgid "club"
 msgstr "klubba"
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:117
+#: data/core/units/humans/Outlaw_Footpad.cfg:165
 msgid "female^Footpad"
 msgstr "Stigman"
 
@@ -2683,7 +2683,7 @@ msgstr "Stigman"
 msgid "Fugitive"
 msgstr "Flykting"
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+#: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
 "Veteran criminals become notorious among the authorities for both their "
 "battle prowess and ability to elude capture. Dangerous and ruthless, they "
@@ -2694,11 +2694,11 @@ msgstr ""
 "förmåga att undkomma. De är farliga och skoningslösa i sina rätta element, "
 "men ingen riktig match för yrkesarbetande upprätthållare av lag och ordning."
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:138
+#: data/core/units/humans/Outlaw_Fugitive.cfg:135
 msgid "female^Fugitive"
 msgstr "Flykting"
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:141
+#: data/core/units/humans/Outlaw_Fugitive.cfg:138
 msgid ""
 "Veteran criminals become notorious among the authorities for both their "
 "battle prowess and ability to elude capture. Beautiful and dangerous, their "
@@ -2711,7 +2711,7 @@ msgstr ""
 msgid "Highwayman"
 msgstr "Stråtrövare"
 
-#: data/core/units/humans/Outlaw_Highwayman.cfg:26
+#: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
@@ -2723,7 +2723,7 @@ msgstr ""
 msgid "Huntsman"
 msgstr "Jägare"
 
-#: data/core/units/humans/Outlaw_Huntsman.cfg:25
+#: data/core/units/humans/Outlaw_Huntsman.cfg:19
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes. They track anything that moves in their territory, "
@@ -2757,7 +2757,7 @@ msgstr ""
 msgid "Outlaw Ranger"
 msgstr "Fredlös jägare"
 
-#: data/core/units/humans/Outlaw_Ranger.cfg:25
+#: data/core/units/humans/Outlaw_Ranger.cfg:19
 msgid ""
 "Rangers are wild men and masters of forest and hills. They are excellent "
 "trackers, scouts, and archers, moving freely through the countryside under "
@@ -2793,7 +2793,7 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/humans/Outlaw_Rogue.cfg:116
+#: data/core/units/humans/Outlaw_Rogue.cfg:143
 msgid "female^Rogue"
 msgstr "Rövare"
 
@@ -2865,7 +2865,7 @@ msgstr ""
 msgid "Trapper"
 msgstr "Pälsjägare"
 
-#: data/core/units/humans/Outlaw_Trapper.cfg:22
+#: data/core/units/humans/Outlaw_Trapper.cfg:27
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
 "sizable group of bandits. They can track both man and beast, notice things "
@@ -3639,7 +3639,7 @@ msgstr ""
 msgid "Orcish Leader"
 msgstr "Orchledare"
 
-#: data/core/units/orcs/Leader.cfg:21
+#: data/core/units/orcs/Leader.cfg:27
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -3660,7 +3660,7 @@ msgstr ""
 msgid "Orcish Ruler"
 msgstr "Orchhövding"
 
-#: data/core/units/orcs/Ruler.cfg:20
+#: data/core/units/orcs/Ruler.cfg:26
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
@@ -3678,8 +3678,8 @@ msgstr ""
 "\n"
 "Anmärkning:"
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:29
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:28
+#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:35
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:34
 msgid "greatsword"
 msgstr "bredsvärd"
 
@@ -3735,7 +3735,7 @@ msgstr ""
 msgid "Orcish Sovereign"
 msgstr "Orchhärskare"
 
-#: data/core/units/orcs/Sovereign.cfg:21
+#: data/core/units/orcs/Sovereign.cfg:27
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
 "over his ilk. If they are also strong and cunning, they will inevitably find "

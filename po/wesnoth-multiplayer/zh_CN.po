@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-24 11:05+0200\n"
+"POT-Creation-Date: 2007-09-30 12:15+0200\n"
 "PO-Revision-Date: 2007-04-28 12:18+0800\n"
 "Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -77,52 +77,34 @@ msgstr "反叛者"
 msgid "Undead"
 msgstr "不死族"
 
-#: data/multiplayer/scenarios/2p_Blitz.cfg:5
-msgid "2p - Blitz"
-msgstr "2p - 闪电战"
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:32
+msgid "2p - Caves of the Basilisk"
+msgstr "2p - 蛇怪之穴"
 
-#: data/multiplayer/scenarios/2p_Charge.cfg:7
-#: data/multiplayer/scenarios/2p_Blitz.cfg:7
-msgid "A duel map for super fast play."
-msgstr "2v2对战地图，适合速战速决"
-
-#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
-#: data/multiplayer/scenarios/4p_Clash.cfg:7
-#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
-#: data/multiplayer/scenarios/8p_Morituri.cfg:7
-#: data/multiplayer/scenarios/3p_Morituri.cfg:6
-#: data/multiplayer/scenarios/2p_Charge.cfg:7
-#: data/multiplayer/scenarios/2p_Blitz.cfg:7
-#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:6
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
-#: data/multiplayer/scenarios/4p_Morituri.cfg:7
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
-#: data/multiplayer/scenarios/2p_Hamlets.cfg:6
-#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:6
-msgid " Recommended setting of 2 gold per village."
-msgstr " 建议设置每座村庄提供2个金币。"
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:34
+#, fuzzy
+msgid ""
+"Players must maneuver their units through the divisive terrain of this long-"
+"feared region, once the home of a legendary Elder Basilisk. The road to "
+"victory is littered with the petrified forms of some of Wesnoth's greatest "
+"heroes."
+msgstr ""
+"玩家要控制自己的部队通过这片支离破碎的地域。这里自古以来就令人生畏，是传说中"
+"远古蛇怪的巢穴。在通往胜利的道路上时不时会碰到化为石头的韦诺英雄。"
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:47
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:20
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Morituri.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:32
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:44
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:80
-#: data/multiplayer/scenarios/2p_Charge.cfg:20
-#: data/multiplayer/scenarios/2p_Blitz.cfg:20
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:20
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:31
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:20
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:20
 #: data/multiplayer/scenarios/4p_Morituri.cfg:18
@@ -142,13 +124,13 @@ msgstr "北部"
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:59
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:31
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:20
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
-#: data/multiplayer/scenarios/2p_Charge.cfg:31
-#: data/multiplayer/scenarios/2p_Blitz.cfg:31
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:33
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:20
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:31
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:31
 #: data/multiplayer/scenarios/4p_Morituri.cfg:29
 #: data/multiplayer/scenarios/4p_Morituri.cfg:40
@@ -159,21 +141,6 @@ msgstr "北部"
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:53
 msgid "teamname^South"
 msgstr "南部"
-
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:32
-msgid "2p - Caves of the Basilisk"
-msgstr "2p - 蛇怪之穴"
-
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:34
-#, fuzzy
-msgid ""
-"Players must maneuver their units through the divisive terrain of this long-"
-"feared region, once the home of a legendary Elder Basilisk. The road to "
-"victory is littered with the petrified forms of some of Wesnoth's greatest "
-"heroes."
-msgstr ""
-"玩家要控制自己的部队通过这片支离破碎的地域。这里自古以来就令人生畏，是传说中"
-"远古蛇怪的巢穴。在通往胜利的道路上时不时会碰到化为石头的韦诺英雄。"
 
 # verses are, in my opinion, untranslatable. anyone interested may want to give a try...
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -305,10 +272,6 @@ msgid ""
 "(inscribed by MJQ)"
 msgstr ""
 
-#: data/multiplayer/scenarios/2p_Charge.cfg:5
-msgid "2p - Charge"
-msgstr "2p - 冲刺"
-
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:5
 msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Cynsaun战场"
@@ -336,6 +299,79 @@ msgid ""
 msgstr ""
 "这是一幅供2人决斗的地图，危险隐藏于地下战场的每个角落，武力与诡计针锋相对。"
 
+#: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
+#: data/multiplayer/scenarios/6p_Amohsad_Caldera.cfg:6
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
+#: data/multiplayer/scenarios/4p_Clash.cfg:7
+#: data/multiplayer/scenarios/4p_Hamlets.cfg:6
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
+#: data/multiplayer/scenarios/8p_Morituri.cfg:7
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
+#: data/multiplayer/scenarios/3p_Morituri.cfg:6
+#: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:6
+#: data/multiplayer/scenarios/4p_Morituri.cfg:7
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:36
+#: data/multiplayer/scenarios/2p_Hamlets.cfg:6
+#: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
+msgid " Recommended setting of 2 gold per village."
+msgstr " 建议设置每座村庄提供2个金币。"
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
+#, fuzzy
+msgid "2p - Fallenstar Lake"
+msgstr "2p - 流星湖"
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
+#, fuzzy
+msgid ""
+"Long ago, a great star fell from the heavens, leaving its mark on this "
+"coniferous region."
+msgstr "很久以前，一颗来自太空的大陨石落下来，在这片针叶林中留下了印记。"
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:20
+#: data/multiplayer/scenarios/4p_Clash.cfg:18
+#: data/multiplayer/scenarios/4p_Clash.cfg:40
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:32
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:44
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:80
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
+#: data/multiplayer/scenarios/3p_Morituri.cfg:42
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:21
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
+#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
+msgid "teamname^West"
+msgstr "西部"
+
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:31
+#: data/multiplayer/scenarios/4p_Clash.cfg:29
+#: data/multiplayer/scenarios/4p_Clash.cfg:51
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:20
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:56
+#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:68
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
+#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
+#: data/multiplayer/scenarios/3p_Morituri.cfg:31
+#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
+#: data/multiplayer/scenarios/2p_Wesbowl.cfg:29
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:31
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
+#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
+msgid "teamname^East"
+msgstr "东部"
+
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:5
 msgid "2p - Hamlets"
 msgstr "2p - 小村"
@@ -356,53 +392,6 @@ msgid ""
 "Players must navigate the dispersive terrain of this small but "
 "topographically dense island."
 msgstr "玩家必须驾驭这座麻雀虽小、五脏俱全的岛屿上丰富的地形。"
-
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:5
-msgid "2p - Meteor Lake"
-msgstr "2p - 流星湖"
-
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:6
-msgid ""
-"Long ago, a great meteor fell from the heavens, leaving its mark on this "
-"coniferous region."
-msgstr "很久以前，一颗来自太空的大陨石落下来，在这片针叶林中留下了印记。"
-
-#: data/multiplayer/scenarios/4p_Clash.cfg:18
-#: data/multiplayer/scenarios/4p_Clash.cfg:40
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:32
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:44
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:80
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:20
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:53
-#: data/multiplayer/scenarios/3p_Morituri.cfg:42
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:42
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:21
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:20
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
-#: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:31
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:20
-msgid "teamname^West"
-msgstr "西部"
-
-#: data/multiplayer/scenarios/4p_Clash.cfg:29
-#: data/multiplayer/scenarios/4p_Clash.cfg:51
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:20
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:56
-#: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:68
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:31
-#: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:42
-#: data/multiplayer/scenarios/3p_Morituri.cfg:31
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:31
-#: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
-#: data/multiplayer/scenarios/2p_Wesbowl.cfg:29
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:31
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
-#: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
-#: data/multiplayer/scenarios/2p_Meteor_Lake.cfg:31
-msgid "teamname^East"
-msgstr "东部"
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
 msgid "2p - Sablestone Delta"
@@ -490,6 +479,21 @@ msgstr "Lo-bsang之像"
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Sulla的侍从Lo-bsang的石像。"
 
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
+#, fuzzy
+msgid "2p - The Freelands"
+msgstr "4p - 蛮荒之地"
+
+#: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
+msgid "A duel map for super fast play."
+msgstr "2v2对战地图，适合速战速决"
+
+#: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
+#, fuzzy
+msgid "2p - Weldyn Channel"
+msgstr "2p - 冲刺"
+
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
 msgid "2p - Wesbowl"
 msgstr "2p - 韦诺球"
@@ -559,6 +563,14 @@ msgstr "红队获胜！最终比分是：$redscore-$bluescore"
 msgid "Draw! Final score: $redscore-$bluescore"
 msgstr "平局！最终比分是：$redscore-$bluescore"
 
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
+msgid "3p - Alirok Marsh"
+msgstr ""
+
+#: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
+msgid "Three players come head to head on this water-cut battlefield."
+msgstr "3位玩家在这个被水面割裂的战场上对峙。"
+
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
 msgid "3p - Island of the Horatii"
 msgstr "3p - 荷拉斯兄弟之岛"
@@ -578,14 +590,6 @@ msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
 msgstr "只有一个派别能够在这个紧凑的3人对战地图中取胜。"
-
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:5
-msgid "3p - Triple Blitz"
-msgstr "3p - 三重闪电战"
-
-#: data/multiplayer/scenarios/3p_Triple_Blitz.cfg:6
-msgid "Three players come head to head on this water-cut battlefield."
-msgstr "3位玩家在这个被水面割裂的战场上对峙。"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
 msgid "4p - Blue Water Province"
@@ -1147,3 +1151,9 @@ msgid ""
 msgstr ""
 "这是一幅韦诺测试标准图，用法 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#~ msgid "2p - Blitz"
+#~ msgstr "2p - 闪电战"
+
+#~ msgid "3p - Triple Blitz"
+#~ msgstr "3p - 三重闪电战"

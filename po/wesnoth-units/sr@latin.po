@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-24 11:05+0200\n"
+"POT-Creation-Date: 2007-09-30 12:15+0200\n"
 "PO-Revision-Date: 2007-27-07 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -174,7 +174,7 @@ msgstr ""
 "Zmagovi koji zagospodare upotrebom mača, bivaju uvedeni u poseban red. Beleg "
 "su im crne i bele ratničke boje koje s ponosom nose u bitku."
 
-#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:30
+#: data/core/units/orcs/Grunt.cfg:59 data/core/units/orcs/Leader.cfg:36
 #: data/core/units/elves/Avenger.cfg:62 data/core/units/elves/Marksman.cfg:54
 #: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:35
 #: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Outrider.cfg:32
@@ -201,7 +201,7 @@ msgstr ""
 #: data/core/units/humans/Horse_Knight.cfg:25
 #: data/core/units/humans/Horse_Paladin.cfg:40
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:53
+#: data/core/units/humans/Outlaw_Ranger.cfg:35
 #: data/core/units/humans/Loyalist_Cavalier.cfg:38
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
@@ -309,12 +309,12 @@ msgstr ""
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
-#: data/core/units/humans/Outlaw_Bandit.cfg:36
-#: data/core/units/humans/Outlaw.cfg:24
+#: data/core/units/humans/Outlaw_Bandit.cfg:41
+#: data/core/units/humans/Outlaw.cfg:29
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:25
-#: data/core/units/humans/Outlaw_Highwayman.cfg:31
-#: data/core/units/humans/Outlaw_Fugitive.cfg:31
+#: data/core/units/humans/Outlaw_Highwayman.cfg:25
+#: data/core/units/humans/Outlaw_Fugitive.cfg:28
 msgid "mace"
 msgstr "topuz"
 
@@ -621,8 +621,8 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Rogue.cfg:29
 #: data/core/units/humans/Outlaw_Thief.cfg:178
 #: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Huntsman.cfg:38
-#: data/core/units/humans/Outlaw_Trapper.cfg:71
+#: data/core/units/humans/Outlaw_Huntsman.cfg:32
+#: data/core/units/humans/Outlaw_Trapper.cfg:76
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
 msgid "dagger"
@@ -885,9 +885,9 @@ msgstr ""
 "ih izvesno neiskustvo u borbi čini donekle ranjivima, njihova prirodna "
 "skladnost osiguraće da mogu nadmašiti i najbolje ljudske novajlije."
 
-#: data/core/units/orcs/Sovereign.cfg:38 data/core/units/orcs/Archer.cfg:80
+#: data/core/units/orcs/Sovereign.cfg:44 data/core/units/orcs/Archer.cfg:80
 #: data/core/units/orcs/Archer.cfg:89 data/core/units/orcs/Warlord.cfg:34
-#: data/core/units/orcs/Leader.cfg:39 data/core/units/orcs/Ruler.cfg:37
+#: data/core/units/orcs/Leader.cfg:45 data/core/units/orcs/Ruler.cfg:43
 #: data/core/units/elves/Avenger.cfg:71 data/core/units/elves/Scout.cfg:42
 #: data/core/units/elves/Marshal.cfg:44 data/core/units/elves/Ranger.cfg:68
 #: data/core/units/elves/Outrider.cfg:41 data/core/units/elves/Archer.cfg:33
@@ -898,10 +898,10 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:62
+#: data/core/units/humans/Outlaw_Ranger.cfg:44
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/humans/Outlaw_Huntsman.cfg:47
-#: data/core/units/humans/Outlaw_Trapper.cfg:80
+#: data/core/units/humans/Outlaw_Huntsman.cfg:41
+#: data/core/units/humans/Outlaw_Trapper.cfg:85
 #: data/core/units/undead/Skeleton_Archer.cfg:42
 #: data/core/units/undead/Skele_Banebow.cfg:41
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:40
@@ -2571,7 +2571,7 @@ msgstr "maga svetlosti"
 msgid "Outlaw"
 msgstr "odmetnik"
 
-#: data/core/units/humans/Outlaw.cfg:19
+#: data/core/units/humans/Outlaw.cfg:24
 msgid ""
 "After some years of service, former 'footpads' rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -2589,13 +2589,13 @@ msgstr ""
 "bore u po bela dana, već im više odgovara zaklon noći."
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
-#: data/core/units/humans/Outlaw.cfg:32
-#: data/core/units/humans/Outlaw_Fugitive.cfg:40
+#: data/core/units/humans/Outlaw.cfg:37
+#: data/core/units/humans/Outlaw_Fugitive.cfg:37
 #: data/core/units/trolls/Rocklobber.cfg:38
 msgid "sling"
 msgstr "praćka"
 
-#: data/core/units/humans/Outlaw.cfg:106
+#: data/core/units/humans/Outlaw.cfg:111
 msgid "female^Outlaw"
 msgstr "odmetnica"
 
@@ -2635,7 +2635,7 @@ msgstr "ubica"
 msgid "Bandit"
 msgstr "razbojnik"
 
-#: data/core/units/humans/Outlaw_Bandit.cfg:19
+#: data/core/units/humans/Outlaw_Bandit.cfg:24
 msgid ""
 "Bandits are a motley collection of men, most of dubious background. They are "
 "the strong arm of any organized group of criminals, and though they may lack "
@@ -2677,7 +2677,7 @@ msgstr ""
 msgid "club"
 msgstr "batina"
 
-#: data/core/units/humans/Outlaw_Footpad.cfg:117
+#: data/core/units/humans/Outlaw_Footpad.cfg:165
 msgid "female^Footpad"
 msgstr "potrčkica"
 
@@ -2685,7 +2685,7 @@ msgstr "potrčkica"
 msgid "Fugitive"
 msgstr "begunac"
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:26
+#: data/core/units/humans/Outlaw_Fugitive.cfg:20
 #, fuzzy
 msgid ""
 "Veteran criminals become notorious among the authorities for both their "
@@ -2698,11 +2698,11 @@ msgstr ""
 "nemilosrdni, mogu biti zastrašujući u svom prirodnom okruženju, ali ipak "
 "nisu dorasli profesionalnim snagama reda i zakona."
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:138
+#: data/core/units/humans/Outlaw_Fugitive.cfg:135
 msgid "female^Fugitive"
 msgstr "begunica"
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:141
+#: data/core/units/humans/Outlaw_Fugitive.cfg:138
 #, fuzzy
 msgid ""
 "Veteran criminals become notorious among the authorities for both their "
@@ -2717,7 +2717,7 @@ msgstr ""
 msgid "Highwayman"
 msgstr "drumaš"
 
-#: data/core/units/humans/Outlaw_Highwayman.cfg:26
+#: data/core/units/humans/Outlaw_Highwayman.cfg:20
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
@@ -2730,7 +2730,7 @@ msgstr ""
 msgid "Huntsman"
 msgstr "konjanik"
 
-#: data/core/units/humans/Outlaw_Huntsman.cfg:25
+#: data/core/units/humans/Outlaw_Huntsman.cfg:19
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
 "wilderness homes. They track anything that moves in their territory, "
@@ -2766,7 +2766,7 @@ msgstr ""
 msgid "Outlaw Ranger"
 msgstr "odmetnik-brđan"
 
-#: data/core/units/humans/Outlaw_Ranger.cfg:25
+#: data/core/units/humans/Outlaw_Ranger.cfg:19
 #, fuzzy
 msgid ""
 "Rangers are wild men and masters of forest and hills. They are excellent "
@@ -2802,7 +2802,7 @@ msgstr ""
 "\n"
 "Posebne napomene:"
 
-#: data/core/units/humans/Outlaw_Rogue.cfg:116
+#: data/core/units/humans/Outlaw_Rogue.cfg:143
 msgid "female^Rogue"
 msgstr "nitkovica"
 
@@ -2874,7 +2874,7 @@ msgstr ""
 msgid "Trapper"
 msgstr "traper"
 
-#: data/core/units/humans/Outlaw_Trapper.cfg:22
+#: data/core/units/humans/Outlaw_Trapper.cfg:27
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
 "sizable group of bandits. They can track both man and beast, notice things "
@@ -3652,7 +3652,7 @@ msgstr ""
 msgid "Orcish Leader"
 msgstr "orko-glavnik"
 
-#: data/core/units/orcs/Leader.cfg:21
+#: data/core/units/orcs/Leader.cfg:27
 #, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
@@ -3674,7 +3674,7 @@ msgstr ""
 msgid "Orcish Ruler"
 msgstr "orko-vladar"
 
-#: data/core/units/orcs/Ruler.cfg:20
+#: data/core/units/orcs/Ruler.cfg:26
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
@@ -3692,8 +3692,8 @@ msgstr ""
 "\n"
 "Posebne napomene:"
 
-#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:29
-#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:28
+#: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:35
+#: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:34
 msgid "greatsword"
 msgstr "veliki mač"
 
@@ -3748,7 +3748,7 @@ msgstr ""
 msgid "Orcish Sovereign"
 msgstr "orko-suveren"
 
-#: data/core/units/orcs/Sovereign.cfg:21
+#: data/core/units/orcs/Sovereign.cfg:27
 #, fuzzy
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "

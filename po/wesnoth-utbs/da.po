@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-24 11:07+0200\n"
+"POT-Creation-Date: 2007-09-30 12:18+0200\n"
 "PO-Revision-Date: 2007-09-14 22:43+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -162,7 +162,7 @@ msgstr "Red overlevende elver"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:173
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_Morning_After.cfg:1021
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:192
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1681
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1691
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:802
 msgid "Death of Kaleh, Nym, Garak or Zhul"
 msgstr "Kaleh, Nym, Garak eller Zhuls død"
@@ -570,7 +570,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4123
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:4865
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Frying_Pan.cfg:5010
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1670
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1680
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Long_Night.cfg:251
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1514
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_Struggle.cfg:1555
@@ -877,7 +877,7 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:188
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1673
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1683
 msgid "Kaleh Must Reach the Northern Edge of the Desert"
 msgstr "Kaleh skal nå det nordlige hjørne af ørkenen"
 
@@ -948,10 +948,11 @@ msgstr ""
 msgid ""
 "During the daytime (Dawn, Morning, Mid-day, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
-"dune hex will suffer from thirst, losing $dehydration_loss hitpoints and "
-"weaking attack damage. Your shamans cannot heal this damage. Only by "
-"refreshing at an oasis (any shallow water hex) at the start of your turn, "
-"your units will regain full attack strength and some of the lost hitpoints."
+"dune hex will suffer from thirst. Each turn of thirst reduces a unit's "
+"attack damage and causes $dehydration_loss hitpoints of dehydration damage "
+"that cannot be healed by your shamans or druids. Only by refreshing at an "
+"oasis (any shallow water hex) at the start of your turn will your units "
+"regain full attack strength and some of the lost hitpoints."
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:299
@@ -967,36 +968,36 @@ msgstr ""
 msgid "Well, the sooner we reach Pinnacle Rock, the better. Onwards!"
 msgstr "Jo før vi når Pinnacle Sten desto bedre. Fremad!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:536
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:546
 msgid "thirst"
 msgstr "tørst"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:550
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:560
 msgid "refreshed"
 msgstr "opfrisket"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:631
 msgid "Traveler's Ring"
 msgstr "Rejsendes ring"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:623
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:633
 msgid "At the end of each turn, this unit takes no damage from the desert."
 msgstr ""
 "Ved afslutningen af hver runde tager denne enhed ikke skade af ørkenen."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:657
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:667
 msgid "Wait. I think I spotted something ahead of us..."
 msgstr "Vent. Jeg tror jeg har opdatet noget foran os..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:671
 msgid "What? I don't see a thing."
 msgstr "Hvad? Jeg kan intet se."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:675
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:672
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:682
 msgid ""
 "Do you want us to fight? We can still avoid them, but they are between us "
 "and the next oasis."
@@ -1004,11 +1005,11 @@ msgstr ""
 "Ønsker du at vi skal kæmpe? Vi kan stadig undgå dem, men de er imellem os og "
 "den næste oase."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:689
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:699
 msgid "Scorpions! We must have stumbled across a nest of them."
 msgstr "Skorpioner! Vi må være faldet over en rede med dem."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:723
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:733
 msgid ""
 "The scorpions were devouring some poor person's body. There doesn't seem to "
 "be much of him or her left, but wait...what's this? It looks like a tiny "
@@ -1018,7 +1019,7 @@ msgid ""
 "magical items, and we can certainly use it now."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:728
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:738
 msgid ""
 "One unit wearing this ring is immune to any damage caused during the day by "
 "the heat of the desert."
@@ -1026,7 +1027,7 @@ msgstr ""
 "En enhed, som bærer denne ring, er immun overfor skade udløst af ørkenens "
 "varme om dagen."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:754
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:764
 msgid ""
 "Look, an oasis! Its refreshing water will allow our people to regain "
 "strength and rest safely on the grass during the heat of the day."
@@ -1034,33 +1035,33 @@ msgstr ""
 "Se en oase! Dets friske vand vil gøre at vort folk vil genfinde sin styrke "
 "og de kan hvile sikkert på græsset under dagens hede."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:817
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:827
 msgid ""
 "Shh... Ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:821
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:831
 msgid "No chance to sneak around?"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:825
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:835
 msgid ""
 "We would have to cover extra distance in difficult terrain. If you want to "
 "bypas them I suggest going straight north in the hopes of finding an oasis "
 "there."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:840
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:864
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:874
 msgid "Fresh meat!"
 msgstr "Frisk kød!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:859
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:869
 msgid "Ogre ambush!"
 msgstr "Ogretrold baghold!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:869
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:879
 msgid ""
 "Ugh, they smell as bad as they look. And they're huge! Well, the bigger they "
 "are, the harder they fall."
@@ -1068,7 +1069,7 @@ msgstr ""
 "Ad, de lugter lige så dårligt som de ser ud. Og de er enorme! Tja jo større "
 "de er desto hårdere falder de."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:892
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:902
 msgid ""
 "That's the last of them. This looks like a hunting party, they must have a "
 "camp around here somewhere."
@@ -1076,36 +1077,36 @@ msgstr ""
 "Det var den sidste af dem. Det ligner et røverselskab. De må have en lejr et "
 "sted i nærheden."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:906
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:916
 msgid ""
 "Hey! Look there, they dropped something... A stone bottle, sealed. I wonder "
 "what's inside..."
 msgstr ""
 "Se der. De tabte noget... En forseglet stenflaske. Hvad mon der er i den..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:919
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:929
 msgid "Nym! No! don't open..."
 msgstr "Nym! Nej! åben den ikke..."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:929
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:939
 msgid ""
 "Too late. And it's just sand inside. Not worth... Whoa! What's happening?!"
 msgstr "For sent. Og der er kun sand indeni. Ikke værd... Vov! Hvad sker der?!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:935
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:945
 #: data/campaigns/Under_the_Burning_Suns/units/Dust_Devil.cfg:4
 msgid "Dust Devil"
 msgstr "Støvdjævel"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:948
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:958
 msgid "It's a dust devil, but I have never seen one so small before."
 msgstr "Det er en støvdjævel, men jeg har aldrig set en så lille en før."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:992
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1002
 msgid "It seems to like you, looks like you just got yourself a pet."
 msgstr "Den ser ud til at kunne li' dig, ser ud til at du har fået et kæledyr."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:997
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1007
 #, fuzzy
 msgid ""
 "Girl, I told you not to open it. Let's go, I'd really like to get to an "
@@ -1114,7 +1115,7 @@ msgstr ""
 "Ingen indvendinger pige, jeg sagde du ikke skulle åbne den. Lad os gå; jeg "
 "vil gerne meget snart være i en oase."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1062
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1072
 msgid ""
 "And I thought it was going to be another boring patrol. You there! Elf! This "
 "is our oasis, and we will water it with your blood!"
@@ -1122,31 +1123,31 @@ msgstr ""
 "Og jeg troede at det ville være endnu en kedelig patrulje. Du der! Elv! "
 "Dette er vores oase og vi vil vande den med dit blod!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1067
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1102
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1167
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1077
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1112
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1177
 msgid ""
 "We need that water, and if we have to go through you to get it, so be it."
 msgstr ""
 "Vi skal bruge det vand, og hvis vi skal igennem dig for at få det, så lad "
 "det ske."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1097
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1162
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1107
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1172
 msgid ""
 "We don't know who you are, and we don't much care. Tremble before the might "
 "of the Black Hand!"
 msgstr "Vi ved ikke hvem i er, og vi er ligeglade. Frygt Den sorte Hånds magt!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1266
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1276
 msgid "Elyssa"
 msgstr "Elyssa"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1331
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1341
 msgid "Back, you fiends! Or I'll kill you a second time!"
 msgstr "Tilbage dit udyr! Eller jeg dræber dig endnu engang!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1338
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1348
 msgid ""
 "You have defied our master for the last time. Now you shall die! And I shall "
 "personally make it slow and painful, to thank you for that scorching you "
@@ -1156,31 +1157,31 @@ msgstr ""
 "personligt sørge for at den bliver langsom og smertefuld, som tak for den "
 "skade du gav mig."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1355
 msgid "You have defied our master for the last time. Now you shall die!"
 msgstr "Du har trodset vores herre for den sidste gang. Nu skal du dø!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1352
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1362
 msgid "Stupid undead, they never listen. Then have a taste of my flame!"
 msgstr "Dumme udøde, de lytter aldrig. Så smag da min flamme!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1357
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1367
 msgid "She looks like she's in trouble. We should help her."
 msgstr "Hun ser ud til at være i nød. Vi bør hjælpe hende."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1384
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1394
 msgid "Whew! Looks like that's the last of them."
 msgstr "Det var vist den sidste af dem."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1389
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1399
 msgid "Thanks for the help! That was a little too close for comfort."
 msgstr "Tak for hjælpen! Det var lige lidt for tæt på."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1394
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1404
 msgid "That was a lot of undead. Why were they coming after you?"
 msgstr "Det var en stor gruppe af udøde. Hvorfor var de efter dig?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1399
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1409
 msgid ""
 "I accidentally managed to anger a powerful necromancer a while ago...it's a "
 "long story. But who are you? You almost look like elves."
@@ -1188,7 +1189,7 @@ msgstr ""
 "Jeg fik ved et tilfælde gjort en magtfuld åndemaner vred for et stykke tid "
 "siden... det er en lang historie. Men hvem er i? I ligner næsten elver."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1404
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1414
 msgid ""
 "We are, we're the Quenoth Elves and we are traveling north. You look like "
 "you're a mage, but I thought your kind were all gone."
@@ -1196,7 +1197,7 @@ msgstr ""
 "Det er vi, vi er Quenoth elver og vi rejser mod nord. Du ligner en "
 "troldmand, men jeg troede at jeres slags var forsvundet."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1409
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1419
 msgid ""
 "I am, I'm a fire mage. I've been traveling for quite a while now, exploring "
 "and learning. But these sands seem particularly inhospitable! I've been "
@@ -1208,11 +1209,11 @@ msgstr ""
 "har haft planlagt at undersøge de nordlige bjerge; gør det noget at jeg "
 "slutter mig til jer for en del af jeres rejse?"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1414
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1424
 msgid "We'd be glad to have the help of someone with the mastery of fire."
 msgstr "Vi vil være glad for at få hjælp fra en med kompetance inden for ild."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1421
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1431
 msgid ""
 "The undead are defeated, but we lost her in the fight as well. Darn, if only "
 "we could have saved her."
@@ -1220,11 +1221,11 @@ msgstr ""
 "De udøde er besejret, men vi mistede hende i kampen. Pokkers hvis bare vi "
 "kunne have reddet hende."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1484
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1494
 msgid "Vengeful Lord"
 msgstr "Hævngerrig lensherre"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1503
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1513
 msgid ""
 "The most hated living in my castle! To me! To me stray souls of the deserts! "
 "Let's cleanse this pollution!"
@@ -1232,7 +1233,7 @@ msgstr ""
 "Den mest hadede i min borg! Kom til mig! Til mig herreløse sjæle fra "
 "ørkenen! Lad os rense denne forurening!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1508
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1518
 msgid ""
 "Elf with a bow, I remember you. You thought me defeated, but I am back even "
 "more powerful than before. Death reigns eternal, your scorched bones and "
@@ -1242,24 +1243,24 @@ msgstr ""
 "tilbage endnu stærkere end før. Døden regerer for evigt, dine svedne knogler "
 "og livløse krop vil slutte sig til min vært."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1513
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1523
 msgid ""
 "Still singing the same tune. We defeated you once before, we can do so again!"
 msgstr "Stadig den samme sang. Vi har besejret dig før. Vi kan gøre det igen!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1525
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1535
 msgid "Nooo... (fades)"
 msgstr "Neeej... (forsvinder)"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1534
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1544
 msgid "Searching his castle, we found a chest filled with gold."
 msgstr "Under gennemsøgning af borgen fandt vi denne kiste fyldt med guld."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1579
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1589
 msgid "Elves! Kill them all!"
 msgstr "Elver! Dræb dem alle!"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1586
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1596
 msgid ""
 "This ruined castle must be where the ogres make their home. Well, if it's a "
 "fight they want, it's a fight they'll get. "
@@ -1267,30 +1268,30 @@ msgstr ""
 "Denne ruinborg må være stedet hvor ogretroldene har deres hjem. Hvis det er "
 "en kamp de ønsker så skal de få det."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1608
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1618
 msgid ""
 "That's the last of those stinking beasts. They should trouble us no more."
 msgstr ""
 "Det var den sidste af disse lugtende bæster. De vil ikke give os flere "
 "problemer."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1613
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1623
 msgid "Y'know, this ruin looks oddly familiar."
 msgstr "Du ved denne ruin ser mærkelig bekendt ud."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1618
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1628
 msgid "Yuck, there's still dried blood on the stones. It's kind of spooky."
 msgstr "Ad bad. Der er stadig blodstænk på stenene. Det er ret uhyggeligt."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1650
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1660
 msgid "This land belongs to the Black Hand. Trespass and you will die."
 msgstr "Dette land tilhører Den sorte Hånd. Indgang medfører døden."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1656
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1666
 msgid "Bandits. If they get in our way, they're going to be sorry."
 msgstr "Banditter. Hvis de går i vejen for os, kommer de til at fortryde det."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1671
 msgid ""
 "There's no way we can get all our people safely across the desert with "
 "outlaws harassing us. We must defeat them before we can continue."
@@ -1298,22 +1299,22 @@ msgstr ""
 "Der er ingen måde vi kan få hele vort folk over ørkenen med de fredløse "
 "efter os. Vi må besejre dem før vi kan fortsætte."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1676
 msgid ""
 "Did you see that? I think I just saw someone disappear behind that dune over "
 "there. I think we're being watched. I suspect there are more of these "
 "bandits lurking in these dunes than we originally thought."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1687
 msgid "Defeat Outlaw Leader"
 msgstr "Besejr den fredløse leder"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1689
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1699
 msgid "Thorn"
 msgstr "Thorn"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1766
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1776
 msgid ""
 "Dang. I was sure I saw an oasis here. Must have been a mirage. I've been out "
 "in the sand for too long."
@@ -1321,7 +1322,7 @@ msgstr ""
 "Dang. Jeg var sikker på at jeg så en oase her. Må have været et fatamorgana. "
 "Jeg har været ude i ørkenen for længe."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1787
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1797
 msgid ""
 "So, the outlaws have made a base around Pinnacle Rock. It's a good location, "
 "but we will drive them from it all the same."
@@ -1329,11 +1330,11 @@ msgstr ""
 "Så de fredløse har etableret en lejr omkring Pinnacle Sten. Det er et godt "
 "sted, men vi vil fordrive dem alligevel."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1809
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1819
 msgid "Pure Water"
 msgstr "Rent vand"
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1811
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1821
 msgid ""
 "This water will make your melee weapons holy, and thus especially powerful "
 "against the undead."
@@ -1341,18 +1342,18 @@ msgstr ""
 "Dette vand vil gøre dit nærkampsvåben hellig, og derfor speciel magtfuldt "
 "over for udøde."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1837
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1847
 msgid "I surrender! I mean we surrender. Just please don't kill me."
 msgstr "Jeg overgiver mig! Jeg mener vi overgiver os. Slå mig ikke ihjel."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1844
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1856
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1854
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1866
 msgid ""
 "Please, have mercy on us. We're just trying to survive in this horrible land."
 msgstr ""
 "Vær venlig og vis nåde. Vi prøver kun at overleve i dette frygtelige land."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1849
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1859
 msgid ""
 "I will not kill you in cold blood. But leave these lands, and never darken "
 "our path again. Or I will show you no mercy."
@@ -1360,7 +1361,7 @@ msgstr ""
 "Jeg vil ikke dræbe dig med koldt blod. Men forlade dette land, og trods "
 "aldrig vores vej igen. Ellers vil jeg ikke vise nogen nåde."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1867
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1877
 msgid ""
 "Here, take this vial of holy water. You'll need it with all the undead "
 "around."
@@ -1368,7 +1369,7 @@ msgstr ""
 "Tag denne flaske med helligt vand. Du får brug for den med alle disse udøde "
 "omkring."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1872
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1882
 msgid ""
 "I will take this vial, in exchange for your life. But leave these lands, and "
 "never darken our path again. Or I will show you no mercy."
@@ -1376,21 +1377,21 @@ msgstr ""
 "Jeg tager denne flaske i bytte for dit liv. Men forlad dette land og formørk "
 "aldrig vores vej igen. Ellers viser jeg ingen nåde."
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1877
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1887
 msgid ""
 "It's Holy Water. When anointed on a weapon it makes it deadly to magical "
 "creatures. Vials such as these are rare and valuable. We should choose "
 "carefully who will use it."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1916
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1926
 msgid ""
 "The Black Hand outlaws still threaten the others. While their leader still "
 "fights we won't be able to get all our people across the sands safely. We "
 "must deal with the Black Hand before we can progress further."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1925
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Harsh_Sands.cfg:1935
 msgid ""
 "The outlaws are defeated and we've made it across these blasted sands. The "
 "hills are just a few miles to the north. We should be able to find water and "
@@ -10868,10 +10869,10 @@ msgstr ""
 "velbevaret hemmelighed som holdes af vismændene i Wesnoth. Og den er ikke "
 "rar. Tip: Det involverer en masse frugtjuice."
 
-#: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/Darawf.cfg:20
 #: data/campaigns/Under_the_Burning_Suns/units/Small_Mudcrawler.cfg:45
-#: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/Troll_Shaman.cfg:31
 msgid "fist"
 msgstr "næve"
@@ -11289,15 +11290,15 @@ msgstr ""
 msgid "Divine Avatar"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:20
+#: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:19
 msgid ""
 "Divine Avatars only appear in time of great need. Forms of the Gods "
 "themselves, made real in this world for a time, blessed are those who are "
 "lucky enough to view such images of power and perfection."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:33
-#: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/Divine_Avatar.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:32
 msgid "lightbeam"
 msgstr "lysrække"
 
@@ -11305,7 +11306,7 @@ msgstr "lysrække"
 msgid "Divine Incarnation"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:20
+#: data/campaigns/Under_the_Burning_Suns/units/Divine_Incarnation.cfg:19
 msgid ""
 "Divine Incarnations are said to be the closest thing to a god's actual "
 "presence in this world. They can be both awe-inspiring and terrifying."
