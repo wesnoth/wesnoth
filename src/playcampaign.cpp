@@ -198,7 +198,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	//yes => this must be a savegame
 	//no  => we are starting a fresh scenario
 	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
-		recorder.set_save_info_completion(gamestate.completion = "running");
+		gamestate.completion = "running";
+		recorder.set_save_info_completion(gamestate.completion);
 		//campaign or multiplayer?
 		//if the gamestate already contains a starting_pos, then we are
 		//starting a fresh multiplayer game. Otherwise this is the start

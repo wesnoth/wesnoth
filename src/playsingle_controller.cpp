@@ -255,10 +255,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				return DEFEAT;
 			else
 				return QUIT;
-		} else if (end_level.result == VICTORY ||
-				   end_level.result == LEVEL_CONTINUE ||
-				   end_level.result == LEVEL_CONTINUE_NO_SAVE) {
-			gamestate_.completion = "victory";
+		} else if (end_level.result == VICTORY
+		|| end_level.result == LEVEL_CONTINUE 
+		|| end_level.result == LEVEL_CONTINUE_NO_SAVE) {
+			if(end_level.result == LEVEL_CONTINUE_NO_SAVE) {
+				gamestate_.completion = "running";
+			} else {
+				gamestate_.completion = "victory";
+			}
 			recorder.set_save_info_completion(gamestate_.completion);
 			try {
 				game_events::fire("victory");
