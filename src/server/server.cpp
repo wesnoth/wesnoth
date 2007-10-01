@@ -82,9 +82,11 @@ config construct_server_message(const std::string& message, const game& g)
 void truncate_message(t_string& str)
 {
 	const size_t max_message_length = 256;
-	std::string newstr = str.str();
+	// The string send can contain utf-8 so truncate as wide_string otherwise
+	// an corrupted utf-8 string can be returned.
+	wide_string newstr = utils::string_to_wstring(str.str());
 	newstr.resize(minimum<size_t>(str.size(),max_message_length));
-	str = newstr;
+	str = utils::wstring_to_string(newstr);
 }
 
 } // end anon namespace
