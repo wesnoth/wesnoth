@@ -2356,7 +2356,15 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 			msg = message;
 			action = false;
 		}
-		msg = font::word_wrap_text(msg,font::SIZE_SMALL,mapx()*3/4);
+
+		try {
+			// We've had a joker who send an invalid utf-8 message to crash clients
+			// so now catch the exception and ignore the message.
+			msg = font::word_wrap_text(msg,font::SIZE_SMALL,mapx()*3/4);
+		} catch (utils::invalid_utf8_exception&) {
+			LOG_STREAM(err, engine) << "Invalid utf-8 found, chat message is ignored.\n";
+			return;
+		}
 
 		int ypos = chat_message_x;
 		for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
