@@ -10,6 +10,8 @@ Version 1.2.6+svn:
    * fixed a crash if the client recieves invalid utf-8
  * misc:
    * really fix the trait OOS so it works correctly on Windows as well
+   * map label length is correctly determined for multibyte 
+     characters (bug #6855)
 
 Version 1.2.6:
  * WML engine

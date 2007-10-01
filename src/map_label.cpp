@@ -88,10 +88,14 @@ const std::string& map_labels::get_label(const gamemap::location& loc) const
 
 void map_labels::set_label(const gamemap::location& loc, const std::string& str, const SDL_Color colour)
 {
-	std::string text = str;
-	if(text.size() > max_label_size) {
-		text.resize(max_label_size);
+	// The actual data is wide_strings so test in wide_string mode
+	// also cutting a wide_string at an arbritary place gives odd 
+	// problems. 
+	wide_string tmp = utils::string_to_wstring(str);
+	if(tmp.size() > max_label_size) {
+		tmp.resize(max_label_size);
 	}
+	std::string text = utils::wstring_to_string(tmp);
 
 	const label_map::iterator current_label = labels_.find(loc);
 	if(current_label != labels_.end()) {
