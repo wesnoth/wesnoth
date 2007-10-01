@@ -493,6 +493,8 @@ def validate_stack(stack, filename, lineno):
         ancestors = map(lambda x: x[0], tagstack)
         if tag == "sound" and "attack" in ancestors:
             print '"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1)
+        if tag == 'frame' and ancestors[-2] == 'attack':
+            print '"%s", line %d: cannot lift [frame] directly within [attack] tag' % (filename, lineno+1)
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
