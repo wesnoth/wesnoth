@@ -797,7 +797,31 @@ def hack_syntax(filename, lines):
             if len(linenos) > 1:
                 print 'warning: duplicated attack %s at:' % key
                 for dup in linenos:
-                    print '"%s", %d: %s' % (filename, dup, key) 
+                    print '"%s", %d: %s' % (filename, dup, key)
+    if future:
+        # Lift obsolete image_short and image_long tags
+        expanded = """[animation]
+apply_to=attack
+[frame]
+duration=300
+image=%s
+[/frame]
+[attack_filter]
+range=%s
+[/attack_filter]
+[/animation]
+"""
+        for i in range(len(lines)):
+            if "no-syntax-rewrite" in lines[i]:
+                break
+            m = re.search(r"(\s)image_short=(.*)", lines[i])
+            if m:
+                image_block = expanded.replace("\n", "\n" + m.group(1))
+                lines[i] = m.group(1) + image_block % (m.group(2), "melee")
+            m = re.search(r"(\s)image_long=(.*)", lines[i])
+            if m:
+                image_block = expanded.replace("\n", "\n" + m.group(1))
+                lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
     # More syntax transformations would go here.
     return (lines, modcount)
 
