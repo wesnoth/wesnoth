@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-09-30 12:14+0200\n"
-"PO-Revision-Date: 2007-09-18 10:36+0200\n"
+"PO-Revision-Date: 2007-10-01 23:06+0200\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: data/_main.cfg:36
 msgid "Female leaders on MP (if available)"
-msgstr ""
+msgstr "Kvinnliga ledare vid gruppspel (om möjligt)"
 
 #: data/_main.cfg:43
 msgid "Binary Saves"
@@ -2872,6 +2872,8 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
+"Detta vatten ger närstridsvapen förmågan att vålla 'ockult' skada under "
+"resten av scenariot."
 
 #: data/core/macros/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3363,11 +3365,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:18
 msgid "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
-msgstr ""
+msgstr "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
 
 #: data/core/macros/names.cfg:19
 msgid "Kiira,Keyya,Kayya,Korra,Kaasa"
-msgstr ""
+msgstr "Kiira,Keyya,Kayya,Korra,Kaasa"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3772,17 +3774,16 @@ msgstr ""
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/core/macros/names.cfg:50
-#, fuzzy
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
 "Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
-"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -4160,9 +4161,8 @@ msgid "race^Goblins"
 msgstr "Vättar"
 
 #: data/core/units.cfg:80
-#, fuzzy
 msgid "race^Gryphons"
-msgstr "Vättar"
+msgstr "Gripar"
 
 #: data/core/units.cfg:87 data/hardwired/english.cfg:19
 msgid "race^Humans"
@@ -5979,7 +5979,7 @@ msgstr "Döp om truppen"
 
 #: src/menu_events.cpp:1581
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Skapa trupp (debugläge)"
 
 #: src/menu_events.cpp:1621
 msgid "Place Label"
@@ -7004,13 +7004,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
-
-#~ msgid "This water will make melee weapons holy."
-#~ msgstr "Detta vatten gör närstridsvapen heliga."
-
-#~ msgid ""
-#~ "and other people\n"
-#~ "this list is very incomplete\n"
-#~ msgstr ""
-#~ "och många andra\n"
-#~ "denna lista är långt ifrån fullständig\n"
