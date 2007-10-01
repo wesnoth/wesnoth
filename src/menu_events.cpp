@@ -2133,7 +2133,7 @@ private:
 		} else if(cmd == "nosaves") {
 			game_config::disable_autosave = (data != "off") ? true : false;
 		} else if(cmd == "n" && game_config::debug) {
-			throw end_level_exception(VICTORY);
+			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 		} else if(cmd == "debug" && network::nconnections() == 0) {
 			game_config::debug = true;
 		} else if(cmd == "nodebug") {
