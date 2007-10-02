@@ -11,27 +11,42 @@ This script facilitates moving or deleting units (referenced by their
 sounds).  It may be run from the Wesnoth top-level directory or
 anywhere beneath.
 
-The source unit must be specified as a pathname beginning with either
-data/ or a campaign subdirectory name.  The destination may be the
-name of a campaign or the special name "core", indicating the images
-and sounds directories in data/core. All resource files (images and
-sounds) referenced in the unit .cfg and included near it move with it.
+For purposes of this command, a "namespace identifier" is either the
+basename of a campaign subdirectory or the special name "core",
+indicating the units, images and sounds directories in data/core.  A
+source must be a namespace identifier, followed by "::", followed by a
+relative path to a unit.  A destination must be a namespace
+identifier.
 
+The script generates a sequence of shell commands.  These commands
+will move the unit and all its resources to appropriate places under
+the target campaign or core directories.  Subversion move commands
+will be used on version-controlled files.
+
+A resource is considered to belong to a unit (and moves with it) if the
+resource is included in the unit .cfg and leives near the unit .cfg.
 "Near" for a unit in the core data means anywhere in the core data,
 but not in a campaign directory.  "Near" for a unit under a
 data/campaign directory means anywhere in that same campaign
 directory, but not in core data or any other campaign directory.
 
-The script generates a sequence of shell commands.  These commands
-will move the unit and all its resources are moved to appropriate
-places under the target campaign or core directories.  Subversion move
-commands will be used on version-controlled files.
-
 The --revert option generates commands used to revert the result of a 
 previous move, undoing version-control operations as needed.
 
-Note: After performing a move generated with this command, use wmlscope
-to check that you have not left any references to the moved units dangling.
+The --delete option removes a unit and its associated resources.
+
+The --listspaces option lists all namespace identifiers.
+
+The --imageclass option may be used to insert a directory path
+segment into each destination filename just before the basename.
+This is useful for moves to core; you typically will need to say
+(for example) --imageclass monsters or --imageclass undead to get
+images associated with a campaign to the right subdirectory of
+core/images/units.
+
+Note: After performing a move generated with this command, use
+wmlscope to check that you have not left any references to the moved
+units dangling.
 
 Also be aware that this tool does nothing to update the unit
 translation files.
@@ -90,7 +105,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if listspaces:
-        print " ".join(map(os.path.basename, scopelist()))
+        print "\n".join(map(os.path.basename, scopelist()))
         sys.exit(0)
 
     # Locate the unit .cfgs to be moved.
