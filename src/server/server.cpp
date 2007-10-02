@@ -81,7 +81,7 @@ void truncate_message(t_string& str)
 	// The string send can contain utf-8 so truncate as wide_string otherwise
 	// an corrupted utf-8 string can be returned.
 	wide_string newstr = utils::string_to_wstring(str.str());
-	newstr.resize(minimum<size_t>(str.size(),max_message_length));
+	newstr.resize(minimum<size_t>(newstr.size(), max_message_length));
 	str = utils::wstring_to_string(newstr);
 }
 
