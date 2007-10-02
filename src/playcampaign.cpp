@@ -13,6 +13,9 @@
    See the COPYING file for more details.
 */
 
+//! @file playcampaign.cpp 
+//! Controls setup, play, (auto)save and replay of campaigns.
+
 #include "global.hpp"
 
 #include <map>
@@ -54,7 +57,7 @@ struct player_controller
 
 typedef std::map<std::string, player_controller> controller_map;
 
-}
+} // end anon namespace 
 
 void play_replay(display& disp, game_state& gamestate, const config& game_config,
 		const game_data& units_data, CVideo& video)
@@ -65,11 +68,11 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 
 	config const* scenario = NULL;
 
-	//'starting_pos' will contain the position we start the game from.
+	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
 	if (gamestate.starting_pos.empty()){
-		//backwards compatibility code for 1.2 and 1.2.1
+		// Backwards compatibility code for 1.2 and 1.2.1
 		scenario = game_config.find_child(type,"id",gamestate.scenario);
 		gamestate.starting_pos = *scenario;
 	}
@@ -78,7 +81,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	scenario = &starting_pos;
 
 	try {
-		// preserve old label eg. replay
+		// Preserve old label eg. replay
 		if (gamestate.label.empty())
 			gamestate.label = (*scenario)["name"];
 
@@ -168,8 +171,8 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 			}
 		}
 
-	// tell all clients that the campaign won't continue
-	// why isn't this done on VICTORY as well?
+	// Tell all clients that the campaign won't continue.
+	//! @todo Why isn't this done on VICTORY as well?
 	if (res==QUIT || res==DEFEAT) {
 		config end;
 		end.add_child("end_scenarios");
@@ -189,21 +192,21 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 	config const* scenario = NULL;
 
-	//'starting_pos' will contain the position we start the game from.
+	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
 	recorder.set_save_info(gamestate);
 
-	//do we have any snapshot data?
-	//yes => this must be a savegame
-	//no  => we are starting a fresh scenario
+	// Do we have any snapshot data?
+	// yes => this must be a savegame
+	// no  => we are starting a fresh scenario
 	if(gamestate.snapshot.child("side") == NULL || !recorder.at_end()) {
 		gamestate.completion = "running";
 		recorder.set_save_info_completion(gamestate.completion);
-		//campaign or multiplayer?
-		//if the gamestate already contains a starting_pos, then we are
-		//starting a fresh multiplayer game. Otherwise this is the start
-		//of a campaign scenario.
+		// Campaign or Multiplayer?
+		// If the gamestate already contains a starting_pos, 
+		// then we are starting a fresh multiplayer game. 
+		// Otherwise this is the start of a campaign scenario.
 		if(gamestate.starting_pos.empty() == false) {
 			LOG_G << "loading starting position...\n";
 			starting_pos = gamestate.starting_pos;
@@ -218,23 +221,23 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 	} else {
-		//This game was started from a savegame
+		// This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
 		starting_pos = gamestate.starting_pos;
 		scenario = &gamestate.snapshot;
-		// when starting wesnoth --multiplayer there might be
+		// When starting wesnoth --multiplayer there might be
 		// no variables which leads to a segfault
 		if(gamestate.snapshot.child("variables") != NULL) {
 			gamestate.set_variables(*gamestate.snapshot.child("variables"));
 		}
 		gamestate.set_menu_items(gamestate.snapshot.get_children("menu_item"));
-		//Replace game label with that from snapshot
+		// Replace game label with that from snapshot
 		if (!gamestate.snapshot["label"].empty()){
 			gamestate.label = gamestate.snapshot["label"];
 		}
 		{
-			//get the current gold values of players so they don't start with the amount
-			//they had at the start of the scenario
+			// Get the current gold values of players, so they don't start 
+			// with the amount they had at the start of the scenario
 			const std::vector<config*>& player_cfg = gamestate.snapshot.get_children("player");
 			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
 				std::string save_id = (**p)["save_id"];
@@ -245,7 +248,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			}
 		}
 		{
-			//also get the recruitment list if there are some specialties in this scenario
+			// Also get the recruitment list if there are some specialties in this scenario
 			const std::vector<config*>& player_cfg = gamestate.snapshot.get_children("side");
 			for (std::vector<config*>::const_iterator p = player_cfg.begin(); p != player_cfg.end(); p++){
 				std::string save_id = (**p)["save_id"];
@@ -277,7 +280,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	}
 
 	while(scenario != NULL) {
-		//If we are a multiplayer client, tweak the controllers
+		// If we are a multiplayer client, tweak the controllers
 		if(io_type == IO_CLIENT) {
 			if(scenario != &starting_pos) {
 				starting_pos = *scenario;
@@ -308,11 +311,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		LEVEL_RESULT res = LEVEL_CONTINUE;
 
 		try {
-			// preserve old label eg. replay
+			// Preserve old label eg. replay
 			if (gamestate.label.empty())
 				gamestate.label = (*scenario)["name"];
 
-			//if the entire scenario should be randomly generated
+			// If the entire scenario should be randomly generated
 			if((*scenario)["scenario_generation"] != "") {
 				LOG_G << "randomly generating scenario...\n";
 				const cursor::setter cursor_setter(cursor::WAIT);
@@ -329,13 +332,14 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				map_data = read_map((*scenario)["map"]);
 			}
 
-			//if the map should be randomly generated
+			// If the map should be randomly generated
 			if(map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
 				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
 
-				//since we've had to generate the map, make sure that when we save the game,
-				//it will not ask for the map to be generated again on reload
+				// Since we've had to generate the map, 
+				// make sure that when we save the game, 
+				// it will not ask for the map to be generated again on reload
 				static config new_level;
 				new_level = *scenario;
 				new_level.values["map_data"] = map_data;
@@ -375,8 +379,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		// Temporary fix:
 		// Only apply preferences for replays and autosave
-		// deletes on victory.  We need to rethink what this
-		// code should be doing.
+		// deletes on victory.  
+		//! @todo We need to rethink what this code should be doing.
 		if(res == VICTORY) {
 			const std::string orig_scenario = gamestate.scenario;
 			gamestate.scenario = current_scenario;
@@ -401,16 +405,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		recorder.clear();
 		gamestate.replay_data.clear();
 
-		//on DEFEAT, QUIT, or OBSERVER_END, we're done now
+		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 		if(res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE)
 			return res;
 
-		//continue without saving is like a victory, but the
-		//save game dialog isn't displayed
+		// Continue without saving is like a victory, 
+		// but the save game dialog isn't displayed
 		if(res == LEVEL_CONTINUE_NO_SAVE)
 			save_game_after_scenario = false;
 
-		//if the scenario hasn't been set in-level, set it now.
+		// If the scenario hasn't been set in-level, set it now.
 		if(gamestate.scenario == current_scenario)
 			gamestate.scenario = next_scenario;
 
@@ -422,8 +426,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				msg = _("Receiving data...");
 			else
 				msg = _("Downloading next scenario...");
-			// FIXME: If the host (IO_SERVER) changes mid-game we're waiting forever on
-			// the next scenario data, because the newly chosen host doesn't know about
+			//! @todo FIXME: If the host (IO_SERVER) changes mid-game,
+			// we're waiting forever on the next scenario data, 
+			// because the newly chosen host doesn't know about
 			// its new status. (see bug #6332)
 			do {
 				cfg.clear();
@@ -461,15 +466,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 						continue;
 					}
 
-					/*Update side info to match current_player info to
-					  allow it taking the side in next scenario and to be
-					  set in the players list on side server */
+					/* Update side info to match current_player info 
+					 * to allow it taking the side in next scenario 
+					 * and to be set in the players list on side server 
+					 */
 					controller_map::const_iterator ctr = controllers.find(id);
 					if(ctr != controllers.end()) {
 						player_info *player = gamestate.get_player(id);
 						if (player) {
 							(**side)["current_player"] = player->name;
-							//TODO : remove (see TODO line 276 in server/game.cpp)
+							//! @todo TODO : remove (see TODO line 276 in server/game.cpp)
 							(**side)["user_description"] = player->name;
 						}
 						(**side)["controller"] = ctr->second.controller;
@@ -494,20 +500,19 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		}
 
 		if(scenario != NULL) {
-			// update the label
+			// Update the label
 			std::string oldlabel = gamestate.label;
 			gamestate.label = (*scenario)["name"];
 
-			//if this isn't the last scenario, then save the game
+			// If this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
 
-				// For multiplayer, we want the save to
-				// contain the starting position.  For
-				// campaigns however, this is the
+				// For multiplayer, we want the save
+				// to contain the starting position.  
+				// For campaigns however, this is the
 				// start-of-scenario save and the
-				// starting position needs to be empty
-				// to force a reload of the scenario
-				// config.
+				// starting position needs to be empty,
+				// to force a reload of the scenario config.
 				if (gamestate.campaign_type == "multiplayer"){
 					gamestate.starting_pos = *scenario;
 				}
