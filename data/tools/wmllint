@@ -779,8 +779,10 @@ def hack_syntax(filename, lines):
                             + ws + "[attack_filter]\n" \
                             + ws + baseindent + "name=" + attackname +" \n" \
                             + ws + "[/attack_filter]\n"
-                lines[i] = insertion + lines[i]
+                lines[i] = insertion + lines[i].replace("animation", "attack_anim")
                 modcount += 1
+            elif converting and "[/animation]" in lines[i]:
+                lines[i] = lines[i].replace("animation", "attack_anim")
     # Lift [frame] declarations directly within attacks
     # Note: This assumes that the frame sequence goes last in the [attack] WML
     # with nothing after it, and will fail if that is not true.
@@ -796,7 +798,7 @@ def hack_syntax(filename, lines):
             in_attack = True
         elif "[/attack]" in lines[i]:
             if converting:
-                lines[i] = lines[i].replace("/attack", "/animation")
+                lines[i] = lines[i].replace("/attack", "/attack_anim")
                 converting = 0
             in_attack = False
         elif "[frame]" in lines[i] and in_attack and converting == 0:
@@ -805,7 +807,7 @@ def hack_syntax(filename, lines):
             ws = leader(lines[i])
             outer = outdent(ws)
             insertion = outer + "[/attack]\n" \
-                        + outer + "[animation]\n" \
+                        + outer + "[attack_anim]\n" \
                         + ws + "[attack_filter]\n" \
                         + ws + baseindent + "name=" + attackname +" \n" \
                         + ws + "[/attack_filter]\n"
