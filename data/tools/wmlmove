@@ -52,7 +52,7 @@ translation files.
 
 Here is an example:
 
-   wmlmove --imageclass elves-wood Heir_To_The_Throne::Elvish_Lord Heir_To_The_Throne::Elvish_High_Lord Heir_To_The_Throne::Elvish_Lady core 
+   wmlmove --imageclass=elves-wood Heir_To_The_Throne::Elvish_Lord Heir_To_The_Throne::Elvish_High_Lord Heir_To_The_Throne::Elvish_Lady core 
 
 ''' 
 
@@ -61,7 +61,7 @@ from wesnoth.wmltools import *
 
 if __name__ == "__main__":
     # Process options.
-    (options, arguments) = getopt.getopt(sys.argv[1:], "dhi:lLr", ['delete', 'help', 'imageclass', 'list', 'listspaces', 'revert'])
+    (options, arguments) = getopt.getopt(sys.argv[1:], "dhi:lLr", ['delete', 'help', 'imageclass=', 'list', 'listspaces', 'revert'])
     listem = False
     listspaces = False
     iclass = None
@@ -118,8 +118,8 @@ if __name__ == "__main__":
         try:
             (namespace, resource) = src.split("::")
         except ValueError:
-            sys.stderr.write("wmlmove: source name must be in the form "
-                             "namespace::resource.\n")
+            sys.stderr.write(
+                "wmlmove: source name %s not in the form namespace::resource.\n" % src)
             sys.exit(1)
         if not is_namespace(namespace):
             sys.stderr.write("wmlmove: no such scope as %s.\n" % namespace)
