@@ -801,9 +801,9 @@ def hack_syntax(filename, lines):
                 lines[i] = lines[i].replace("/attack", "/attack_anim")
                 converting = 0
             in_attack = False
-        elif "[frame]" in lines[i] and in_attack and converting == 0:
+        elif ("[frame]" in lines[i] or "[missile_frame]" in lines[i]) and in_attack and converting == 0:
             assert attackname != None
-            print '"%s", line %d: converting [frame] in [attack] '%(filename, i+1)
+            print '"%s", line %d: converting frame in [attack] '%(filename, i+1)
             ws = leader(lines[i])
             outer = outdent(ws)
             insertion = outer + "[/attack]\n" \
