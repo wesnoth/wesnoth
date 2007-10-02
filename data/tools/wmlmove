@@ -14,9 +14,8 @@ anywhere beneath.
 For purposes of this command, a "namespace identifier" is either the
 basename of a campaign subdirectory or the special name "core",
 indicating the units, images and sounds directories in data/core.  A
-source must be a namespace identifier, followed by "::", followed by a
-relative path to a unit.  A destination must be a namespace
-identifier.
+source must be a namespace identifier, followed by "::", followed by
+the name of a unit (the basename of its path without the .cfg extwension).  A destination must be a namespace identifier.  
 
 The script generates a sequence of shell commands.  These commands
 will move the unit and all its resources to appropriate places under
@@ -31,7 +30,7 @@ data/campaign directory means anywhere in that same campaign
 directory, but not in core data or any other campaign directory.
 
 The --revert option generates commands used to revert the result of a 
-previous move, undoing version-control operations as needed.
+specified move, undoing version-control operations as needed.
 
 The --delete option removes a unit and its associated resources.
 
@@ -50,6 +49,11 @@ units dangling.
 
 Also be aware that this tool does nothing to update the unit
 translation files.
+
+Here is an example:
+
+   wmlmove --imageclass elves-wood Heir_To_The_Throne::Elvish_Lord Heir_To_The_Throne::Elvish_High_Lord Heir_To_The_Throne::Elvish_Lady core 
+
 ''' 
 
 import sys, os, time, re, getopt, sre_constants, md5
