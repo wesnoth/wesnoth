@@ -642,14 +642,11 @@ private:
 	 *                  the rule list. Rule indices are used for seeding
 	 *                  the pseudo-random-number generator used for
 	 *                  probability calculations.
-	 * @param check_loc If this parameter is set to false, the "location"
-	 *                  of the rule (ie, whether all constraints's terrain
-	 *                  types do actually match) will be assumed to be
-	 *                  already checked, only flags and probability
-	 *                  will be checked.
+	 * @param type_checked The constraint which we already know that its
+	 *                  terrain types matches.
 	 */
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc,
-			const int rule_index, const bool check_loc) const;
+			const int rule_index, const constraint_set::const_iterator type_checked) const;
 
 	/**
 	 * Applies a rule at a given location: applies the result of a
@@ -660,24 +657,6 @@ private:
 	 * @param loc       The location to which to apply the rule.
 	 */
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
-
-	/**
-	 * Returns the "size" of a constraint, that is, the number of tiles,
-	 * in the current map, on which this constraint may possibly match.
-	 * This is used to exclude positions where the rule has
-	 * no change to match from being checked for.
-	 *
-	 * The terrain_by_type_ array
-	 * must be initialized before this method is called.
-	 *
-	 * @param rule       The rule to check for
-	 * @param constraint The constraint to check for
-	 *
-	 * @return			The number of tiles in the current map, on which
-	 *					the current constraint may match.
-	 *			INT_MAX means "all of them" or "unable to determine".
-	 */
-	int get_constraint_size(const terrain_constraint& constraint);
 
 	/**
 	 * Calculates the list of terrains, and fills the tile_map_ member,

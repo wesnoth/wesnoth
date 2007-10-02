@@ -787,27 +787,10 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
-		const gamemap::location &loc, const int rule_index, const bool check_loc) const
+		const gamemap::location &loc, const int rule_index, const constraint_set::const_iterator type_checked) const
 {
 	if(rule.location_constraints.valid() && rule.location_constraints != loc) {
 		return false;
-	}
-
-	if(check_loc) {
-		for(constraint_set::const_iterator cons = rule.constraints.begin();
-				cons != rule.constraints.end(); ++cons) {
-
-			// Translated location
-			const gamemap::location tloc = loc + cons->second.loc;
-
-			if(!tile_map_.on_map(tloc)) {
-				return false;
-			}
-            //std::cout << "testing..." << builder_letter(map_.get_terrain(tloc))
-			if(!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types_match)) {
-				return false;
-			}
-		}
 	}
 
 	if(rule.probability != -1) {
@@ -826,11 +809,21 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 	for(constraint_set::const_iterator cons = rule.constraints.begin();
 			cons != rule.constraints.end(); ++cons) {
 
+		// Translated location
 		const gamemap::location tloc = loc + cons->second.loc;
 
 		if(!tile_map_.on_map(tloc)) {
 			return false;
 		}
+
+		//std::cout << "testing..." << builder_letter(map_.get_terrain(tloc))
+
+		// check if terrain matches except if we already know that it does
+		if(cons != type_checked &&
+				!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types_match)) {
+			return false;
+		}
+
 		const tile& btile = tile_map_[tloc];
 
 		std::vector<std::string>::const_iterator itor;
@@ -882,39 +875,6 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	}
 }
 
-// Returns the "size" of a constraint: that is, the number of map tiles
-// on which this constraint may possibly match.
-// INT_MAX means "I don't know / all of them".
-int terrain_builder::get_constraint_size(const terrain_constraint& constraint)
-{
-	const t_translation::t_list& types = constraint.terrain_types_match.terrain;
-
-	if(types.empty()) {
-		return INT_MAX;
-	}
-	if(types.front() == t_translation::NOT) {
-		return INT_MAX;
-	}
-	if(std::find(types.begin(), types.end(), t_translation::STAR) != types.end()) {
-		return INT_MAX;
-	}
-	// As soon as the list has 1 wildcard we bail out.
-	// It might be better to try some more testing
-	// before bailing out.
-	if(constraint.terrain_types_match.has_wildcard) {
-		return INT_MAX;
-	}
-
-	int constraint_size = 0;
-
-	for(t_translation::t_list::const_iterator itor = types.begin();
-			itor != types.end(); ++itor) {
-		constraint_size += terrain_by_type_[*itor].size();
-	}
-
-	return constraint_size;
-}
-
 void terrain_builder::build_terrains()
 {
 	log_scope("terrain_builder::build_terrains");
@@ -930,60 +890,68 @@ void terrain_builder::build_terrains()
 	}
 
 	int rule_index = 0;
-	building_ruleset::const_iterator rule;
+	building_ruleset::const_iterator r;
 
-	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
+	for(r = building_rules_.begin(); r != building_rules_.end(); ++r) {
 
-		if (rule->second.location_constraints.valid()) {
-			apply_rule(rule->second, rule->second.location_constraints);
+		const building_rule& rule = r->second;
+
+		if (rule.location_constraints.valid()) {
+			apply_rule(rule, rule.location_constraints);
 			continue;
 		}
 
-		constraint_set::const_iterator constraint;
-
 		// Find the constraint that contains the less terrain of all terrain rules.
-		constraint_set::const_iterator smallest_constraint;
-		int smallest_constraint_size = INT_MAX;
+		// We will keep a track of the matching terrains of this constraint
+		// and later try to apply the rule only on them
+		size_t min_size = INT_MAX;
+		t_translation::t_list min_types;
+		constraint_set::const_iterator min_constraint = rule.constraints.end();
 
-		for(constraint = rule->second.constraints.begin();
-		    constraint != rule->second.constraints.end(); ++constraint) {
+		for(constraint_set::const_iterator constraint = rule.constraints.begin();
+		    	constraint != rule.constraints.end(); ++constraint) {
 
-			int size = get_constraint_size(constraint->second);
-			if(size < smallest_constraint_size) {
-				smallest_constraint_size = size;
-				smallest_constraint = constraint;
-			}
+		    const t_translation::t_match& match = constraint->second.terrain_types_match;
+			t_translation::t_list matching_types;
+			size_t constraint_size = 0;
 
-		}
+			for (terrain_by_type_map::iterator type_it = terrain_by_type_.begin();
+					 type_it != terrain_by_type_.end(); type_it++) {
 
-		if(smallest_constraint_size != INT_MAX) {
-			const t_translation::t_list& types = smallest_constraint->second.terrain_types_match.terrain;
-			const gamemap::location loc = smallest_constraint->second.loc;
-
-			for(t_translation::t_list::const_iterator c = types.begin();
-					c != types.end(); ++c) {
-
-				const std::vector<gamemap::location>* locations;
-				locations = &terrain_by_type_[*c];
-
-				for(std::vector<gamemap::location>::const_iterator itor = locations->begin();
-						itor != locations->end(); ++itor) {
-					if(rule_matches(rule->second, *itor - loc, rule_index,true)) {
-						apply_rule(rule->second, *itor - loc);
+				const t_translation::t_letter t = type_it->first;
+				if (terrain_matches(t, match)) {
+					const size_t match_size = type_it->second.size();
+					constraint_size += match_size;
+					if (constraint_size >= min_size) {
+						break; // not a minimum, bail out
 					}
+					matching_types.push_back(t);
 				}
 			}
-		} else {
-			//! @todo
-			// Some overlays fail but (probably their map size) this is
-			// fixed by changing the start position from -1 to -2.
-			// So it's no real fix but a hack, so still need
-			// to figure out the best number -- Mordante
-			for(int x = -2; x <= map_.w(); ++x) {
-				for(int y = -2; y <= map_.h(); ++y) {
-					const gamemap::location loc(x,y);
-					if(rule_matches(rule->second, loc, rule_index, true))
-						apply_rule(rule->second, loc);
+
+			if (constraint_size < min_size) {
+				min_size = constraint_size;
+				min_types = matching_types;
+				min_constraint = constraint;
+				if (min_size == 0) {
+				 	// a constraint is never matched on this map
+				 	// we break with a empty type list
+					break;
+				}
+			}
+		}
+
+		for(t_translation::t_list::const_iterator t = min_types.begin();
+				t != min_types.end(); ++t) {
+
+			const std::vector<gamemap::location>* locations = &terrain_by_type_[*t];
+
+			for(std::vector<gamemap::location>::const_iterator itor = locations->begin();
+					itor != locations->end(); ++itor) {
+				const gamemap::location loc = *itor - min_constraint->second.loc;
+
+				if(rule_matches(rule, loc, rule_index, min_constraint)) {
+					apply_rule(rule, loc);
 				}
 			}
 		}
