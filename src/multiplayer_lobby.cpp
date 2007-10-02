@@ -412,8 +412,6 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.back().map_info += " ";
 		if((**game)["mp_scenario"] != "" && map_hashes_) {
 			const config* level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
-			if(level_cfg == NULL)
-				level_cfg = game_config.find_child("multiplayer", "id", (**game)["mp_scenario"]);
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
 				const std::string& hash = (**game)["hash"];
@@ -430,7 +428,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 					verified = false;
 				}
 			} else {
-				games_.back().map_info += _("Unknown scenario");
+				utils::string_map symbols;
+				symbols["scenario_id"] = (**game)["mp_scenario"];
+				games_.back().map_info += vgettext("Unknown scenario: $scenario_id", symbols);
 				verified = false;
 			}
 		} else {
