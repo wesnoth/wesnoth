@@ -493,8 +493,6 @@ def validate_stack(stack, filename, lineno):
         ancestors = map(lambda x: x[0], tagstack)
         if tag == "sound" and "attack" in ancestors:
             print '"%s", line %d: deprecated [sound] within [attack] tag' % (filename, lineno+1)
-        if tag == 'frame' and ancestors[-2] == 'attack':
-            print '"%s", line %d: cannot lift [frame] directly within [attack] tag' % (filename, lineno+1)
 
 def validate_on_pop(tagstack, closer, filename, lineno):
     "Validate the stack at the time a new close tag is seen."
@@ -519,6 +517,8 @@ def outdent(s):
     "Outdent line by one level."
     if s.startswith(baseindent):
         return s[len(baseindent):]
+    elif s.endswith("\t"):
+        return s[:-1] + baseindent
     else:
         return s
 
@@ -744,6 +744,8 @@ def hack_syntax(filename, lines):
         if nullattack:
             lines = lines[:i] + lines[i+2:]
     # Lift new_attack animation blocks within [effect] tags
+    # Note: This assumes that the animation WML goes last in the [effect] WML
+    # with nothing after it, and will fail if that is not true.
     if future:
         in_effect = False
         attackname = None
@@ -778,6 +780,42 @@ def hack_syntax(filename, lines):
                             + ws + "[/attack_filter]\n"
                 lines[i] = insertion + lines[i]
                 modcount += 1
+    # Lift [frame] declarations directly within attacks
+    # Note: This assumes that the frame sequence goes last in the [attack] WML
+    # with nothing after it, and will fail if that is not true.
+    in_attack = False
+    attackname = None
+    converting = 0
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        elif "[attack]" in lines[i]:
+            in_attack = True
+        elif "[/attack]" in lines[i]:
+            if converting:
+                lines[i] = lines[i].replace("/attack", "/animation")
+                converting = 0
+            in_attack = False
+        elif in_attack and not attackname:
+            fields = lines[i].strip().split('#')
+            syntactic = fields[0]
+            comment = ""
+            if len(fields) > 1:
+                comment = fields[1]
+            if syntactic.strip().startswith("name"):
+                attackname = syntactic.split("=")[1].strip()
+        elif "[frame]" in lines[i] and converting == 0:
+            print '"%s", line %d: converting [frame] in [attack] '%(filename, i+1)
+            ws = leader(lines[i])
+            outer = outdent(ws)
+            insertion = outer + "[/attack]\n" \
+                        + outer + "[animation]\n" \
+                        + ws + "[attack_filter]\n" \
+                        + ws + baseindent + "name=" + attackname +" \n" \
+                        + ws + "[/attack_filter]\n"
+            lines[i] = insertion + lines[i]
+            converting += 1
+            modcount += 1
     # Upconvert old radius usage
     if "1.3.7" in versions and "older" not in versions:
         radius_pos = wmlfind("radius=", WmlIterator(lines, filename))
