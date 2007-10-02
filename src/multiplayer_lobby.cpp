@@ -364,10 +364,12 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.push_back(game_item());
 		if((**game)["mp_era"] != "") {
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
+			utils::string_map symbols;
+			symbols["era_id"] = (**game)["mp_era"];
 			if (era_cfg != NULL) {
 				games_.back().map_info = era_cfg->get_attribute("name");
 			} else {
-				games_.back().map_info = _("Unknown era");
+				games_.back().map_info = vgettext("Unknown era: $era_id", symbols);
 				verified = false;
 			}
 		} else {
