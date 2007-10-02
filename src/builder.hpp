@@ -267,12 +267,6 @@ public:
 		 */
 		std::string last_tod;
 
-		/**
-		 * The 6 adjacent terrains of this tile,
-		 * and the terrain on this tile.
-		 */
-		t_translation::t_letter adjacents[7];
-
 	};
 
 private:
@@ -668,43 +662,22 @@ private:
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
 
 	/**
-	 * Returns the number of constraints adjacent to a given constraint
-	 * in a rule.
-	 * For example, if the rule map is something like that
-	 *  1   .
-	 *    2
-	 *  .   3
-	 * The constraint corresponding to the "1", and the one corresponding
-	 * to the "3", will each have 1 adjacent contraint, whereas the
-	 * constraint corresponding to the "2" will have 2.
-	 *
-	 * @param rule	The rule this applies to
-	 * @param loc	The location of the constraint to check for
-	 *					adjacent constraints
-	 *
-	 * @return			the number of constraints adjacent to the location loc
-	 */
-	int get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc);
-
-	/**
 	 * Returns the "size" of a constraint, that is, the number of tiles,
 	 * in the current map, on which this constraint may possibly match.
 	 * This is used to exclude positions where the rule has
 	 * no change to match from being checked for.
 	 *
-	 * The terrain_by_type_border_ and terrain_by_type_ arrays
+	 * The terrain_by_type_ array
 	 * must be initialized before this method is called.
 	 *
 	 * @param rule       The rule to check for
 	 * @param constraint The constraint to check for
-	 * @param border     (out) Set to true if this constraint applies to a non-isolated tile
 	 *
 	 * @return			The number of tiles in the current map, on which
 	 *					the current constraint may match.
 	 *			INT_MAX means "all of them" or "unable to determine".
 	 */
-	int get_constraint_size(const building_rule& rule, const terrain_constraint& constraint,
-			bool& border);
+	int get_constraint_size(const terrain_constraint& constraint);
 
 	/**
 	 * Calculates the list of terrains, and fills the tile_map_ member,
@@ -732,11 +705,6 @@ private:
 	 * A map representing all locations whose terrain is of a given type.
 	 */
 	terrain_by_type_map terrain_by_type_;
-	/**
-	 * A map representing all locations whose terrain
-	 * is adjacent to a terrain of a given type.
-	 */
-	terrain_by_type_map terrain_by_type_border_;
 
 	building_ruleset building_rules_;
 

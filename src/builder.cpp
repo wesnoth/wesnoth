@@ -51,10 +51,7 @@ terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_ima
 	layer(layer), basex(x), basey(y), global_image(global_image)
 {}
 
-terrain_builder::tile::tile() : last_tod("invalid_tod")
-{
-	memset(adjacents, 0, sizeof(adjacents));
-}
+terrain_builder::tile::tile() : last_tod("invalid_tod") {}
 
 void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor)
 {
@@ -100,7 +97,6 @@ void terrain_builder::tile::clear()
 	images_foreground.clear();
 	images_background.clear();
 	last_tod = "invalid_tod";
-	memset(adjacents, 0, sizeof(adjacents));
 }
 
 void terrain_builder::tilemap::reset()
@@ -219,7 +215,6 @@ void terrain_builder::rebuild_all()
 {
 	tile_map_.reset();
 	terrain_by_type_.clear();
-	terrain_by_type_border_.clear();
 	build_terrains();
 }
 
@@ -887,26 +882,10 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	}
 }
 
-int terrain_builder::get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc)
-{
-	int res = 0;
-
-	gamemap::location adj[6];
-	int i;
-	get_adjacent_tiles(loc, adj);
-
-	for(i = 0; i < 6; ++i) {
-		if(rule.constraints.find(adj[i]) != rule.constraints.end()) {
-			res++;
-		}
-	}
-	return res;
-}
-
 // Returns the "size" of a constraint: that is, the number of map tiles
 // on which this constraint may possibly match.
 // INT_MAX means "I don't know / all of them".
-int terrain_builder::get_constraint_size(const building_rule& rule, const terrain_constraint& constraint, bool& border)
+int terrain_builder::get_constraint_size(const terrain_constraint& constraint)
 {
 	const t_translation::t_list& types = constraint.terrain_types_match.terrain;
 
@@ -926,41 +905,11 @@ int terrain_builder::get_constraint_size(const building_rule& rule, const terrai
 		return INT_MAX;
 	}
 
-	gamemap::location adj[6];
-	get_adjacent_tiles(constraint.loc, adj);
-
-	border = false;
-
-	// If the current constraint only applies to a non-isolated tile,
-	// the "border" flag can be set.
-	for(int i = 0; i < 6; ++i) {
-		if(rule.constraints.find(adj[i]) != rule.constraints.end()) {
-			const t_translation::t_list& atypes =
-				rule.constraints.find(adj[i])->second.terrain_types_match.terrain;
-
-			t_translation::t_list::const_iterator itor = types.begin();
-			for(; itor != types.end(); ++itor) {
-				if(!terrain_matches(*itor, atypes)) {
-					border = true;
-					break;
-				}
-
-			}
-		}
-		if(border == true) {
-			break;
-		}
-	}
-
 	int constraint_size = 0;
 
 	for(t_translation::t_list::const_iterator itor = types.begin();
 			itor != types.end(); ++itor) {
-		if(border) {
-			constraint_size += terrain_by_type_border_[*itor].size();
-		} else {
-			constraint_size += terrain_by_type_[*itor].size();
-		}
+		constraint_size += terrain_by_type_[*itor].size();
 	}
 
 	return constraint_size;
@@ -977,25 +926,6 @@ void terrain_builder::build_terrains()
 			const t_translation::t_letter t = map_.get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
-			gamemap::location adj[6];
-			int i;
-			bool border = false;
-
-			get_adjacent_tiles(loc, adj);
-
-			tile_map_[loc].adjacents[0] = t;
-			for(i = 0; i < 6; ++i) {
-				// Updates the list of adjacents for this tile
-				tile_map_[loc].adjacents[i+1] = map_.get_terrain(adj[i]);
-
-				// Determines if this tile is a border tile
-				if(map_.get_terrain(adj[i]) != t) {
-					border = true;
-				}
-
-			}
-			if(border)
-				terrain_by_type_border_[t].push_back(loc);
 		}
 	}
 
@@ -1013,86 +943,32 @@ void terrain_builder::build_terrains()
 
 		// Find the constraint that contains the less terrain of all terrain rules.
 		constraint_set::const_iterator smallest_constraint;
-		constraint_set::const_iterator constraint_most_adjacents;
 		int smallest_constraint_size = INT_MAX;
-		int biggest_constraint_adjacent = -1;
-		bool smallest_constraint_border = false;
 
 		for(constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
-			bool border;
-			int size = get_constraint_size(rule->second, constraint->second, border);
+			int size = get_constraint_size(constraint->second);
 			if(size < smallest_constraint_size) {
 				smallest_constraint_size = size;
 				smallest_constraint = constraint;
-				smallest_constraint_border = border;
-			}
-
-			int nadjacents = get_constraint_adjacents(rule->second, constraint->second.loc);
-			if(nadjacents > biggest_constraint_adjacent) {
-				biggest_constraint_adjacent = nadjacents;
-				constraint_most_adjacents = constraint;
-			}
-		}
-
-		util::array<t_translation::t_list, 7> adjacent_types;
-
-		if(biggest_constraint_adjacent > 0) {
-			gamemap::location loc[7];
-			loc[0] = constraint_most_adjacents->second.loc;
-			get_adjacent_tiles(loc[0], loc+1);
-			for(int i = 0; i < 7; ++i) {
-				constraint_set::const_iterator cons = rule->second.constraints.find(loc[i]) ;
-				if(cons != rule->second.constraints.end()) {
-					adjacent_types[i] = cons->second.terrain_types_match.terrain;
-				} else {
-					adjacent_types[i] = t_translation::read_list("", t_translation::WILDCARD);
-				}
 			}
 
 		}
+
 		if(smallest_constraint_size != INT_MAX) {
 			const t_translation::t_list& types = smallest_constraint->second.terrain_types_match.terrain;
 			const gamemap::location loc = smallest_constraint->second.loc;
-			const gamemap::location aloc = constraint_most_adjacents->second.loc;
 
 			for(t_translation::t_list::const_iterator c = types.begin();
 					c != types.end(); ++c) {
 
 				const std::vector<gamemap::location>* locations;
-				if(smallest_constraint_border) {
-					locations = &terrain_by_type_border_[*c];
-				} else {
-					locations = &terrain_by_type_[*c];
-				}
+				locations = &terrain_by_type_[*c];
 
 				for(std::vector<gamemap::location>::const_iterator itor = locations->begin();
 						itor != locations->end(); ++itor) {
-
-					if(biggest_constraint_adjacent > 0) {
-						const gamemap::location pos = (*itor - loc) + aloc;
-						if(!tile_map_.on_map(pos))
-							continue;
-
-						const t_translation::t_letter *adjacents = tile_map_[pos].adjacents;
-						int i;
-
-						for(i = 0; i < 7; ++i) {
-							if(!terrain_matches(adjacents[i], adjacent_types[i])) {
-								break;
-							}
-						}
-						// propagates the break
-						if (i < 7)
-							continue;
-					}
-
-					if(rule_matches(rule->second, *itor - loc, rule_index,
-								static_cast<size_t>
-                                (biggest_constraint_adjacent + 1) !=
-                                rule->second.constraints.size())) {
-
+					if(rule_matches(rule->second, *itor - loc, rule_index,true)) {
 						apply_rule(rule->second, *itor - loc);
 					}
 				}
