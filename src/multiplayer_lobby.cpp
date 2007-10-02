@@ -106,9 +106,11 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	int ypos = item_rect.y + margin_;
 
 	//draw minimaps
-	int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
-	int minimap_y = ypos + (minimap_size_ - game.mini_map->h)/2;
-	video().blit_surface(minimap_x, minimap_y, game.mini_map);
+	if (game.mini_map != NULL) {
+		int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
+		int minimap_y = ypos + (minimap_size_ - game.mini_map->h)/2;
+		video().blit_surface(minimap_x, minimap_y, game.mini_map);
+	}
 	xpos += minimap_size_ + margin_;
 
 	//set font color
