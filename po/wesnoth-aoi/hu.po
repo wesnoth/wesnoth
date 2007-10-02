@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-05-06 04:35+0200\n"
+"POT-Creation-Date: 2007-10-02 20:28+0200\n"
 "PO-Revision-Date: 2005-07-11 14:01+0100\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none\n"
@@ -11,54 +11,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: An_Orcish_Incursion.cfg:10
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:9
 msgid "An Orcish Incursion"
 msgstr "Ork betörés"
 
-#: An_Orcish_Incursion.cfg:13
-msgid "(hardest)"
-msgstr "(legnehezebb)"
-
-#: An_Orcish_Incursion.cfg:13
-msgid "High Lord"
-msgstr "Nagyúr"
-
-#: An_Orcish_Incursion.cfg:13
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:13
 msgid "Fighter"
 msgstr "Harcos"
 
-#: An_Orcish_Incursion.cfg:13
-msgid "(easiest)"
-msgstr "(legkönnyebb)"
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:13
+msgid "(Beginner)"
+msgstr ""
 
-#: An_Orcish_Incursion.cfg:13
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:14
+msgid "(Normal)"
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:14
 msgid "Lord"
 msgstr "Előljáró"
 
-#: An_Orcish_Incursion.cfg:15
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:15
+msgid "High Lord"
+msgstr "Nagyúr"
+
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:15
+msgid "(Challenging)"
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:19
+#, fuzzy
 msgid ""
 "Defend the forests of the elves against marauding orcs, learning valuable "
-"tactics as you do so."
+"tactics as you do so.\n"
+"\n"
+"(Novice level, 7 scenarios.)"
 msgstr ""
 "Oltalmazd a tündék erdejét a portyázó orkoktól, miközben tovább csiszolhatod "
 "harci taktikáidat."
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:3
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:30
+msgid "Campaign Design"
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/_main.cfg:36
+msgid "Adaptation for mainline"
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:3
 msgid "Defend the Forest"
 msgstr "Az erdő megvédése"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:113
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:126
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:21
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:27
 #, fuzzy
 msgid "Erlornas"
 msgstr "Erlornas elesik"
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:156
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:49
 #, fuzzy
 msgid "Urugha"
 msgstr "Legyőzöd Urughát"
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:169
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:62
 msgid ""
 "Hint:\n"
 "Elves can move fast and safely among the trees. Pick off the enemy grunts "
@@ -68,84 +83,132 @@ msgstr ""
 "A tündék gyorsan és biztonságosan közlekednek az erdőben. Íjászaid az erdő "
 "oltalmából könnyen kilőhetik az ellenséges közkatonákat."
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:172
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:65
 msgid "Defeat Urugha"
 msgstr "Legyőzöd Urughát"
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:210
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:158
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:170
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:190
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:187
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:169
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:176
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:118
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:58
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:68
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:98
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:87
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:59
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:69
 msgid "Death of Erlornas"
 msgstr "Erlornas elesik"
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:214
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:166
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:174
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:194
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:195
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:173
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:180
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:122
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:66
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:72
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:102
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:95
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:63
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:73
 msgid "Time runs out"
 msgstr "Túlléped a körök számát"
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:214
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:120
 msgid ""
-"Look, Erlornas! A war party of orcs has encamped to the north. They are "
-"destroying the forest there!"
+"The arrival of humans and orcs sent shockwaves through the settled peoples "
+"of the Great Continent. Elves, dwarves, and others who had reached "
+"equilibrium with one another and become accustomed for centuries to at most "
+"small-scale clashes - little more, in truth, than armed squabbles - found "
+"themselves required to gird for warfare of unaccustomed intensity."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:125
+msgid ""
+"Perhaps most affected were the elves.  Eldest and wisest of the Speaking "
+"Peoples, their first encounters with humans went less well than either side "
+"might have wished. "
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:129
+msgid ""
+"But humans, though crude and thrusting, at least had in them a spark of song "
+"and grace which elves could recognize as kindred to their own nature. Not so "
+"with orcs."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:134
+msgid ""
+"For a score of years after Haldric's people landed, orcs remained scarce "
+"more than a rumor to trouble the green fastnesses of the elves.  That was, "
+"until the day that an elvish noble of ancient line, Erlornas by name, "
+"encountered the new foe."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:146
+msgid ""
+"The orcs were sighted at the northern marches of the great forest of Wesmere."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:199
+#, fuzzy
+msgid ""
+"My lord Erlornas! A party of orcs has encamped to the north. That is the "
+"stench of their burnings drifting on the wind!"
 msgstr ""
 "Nézd, Erlornas! Egy ork szabadcsapat tábort vert ott, északra. Az erdőt "
 "pusztítják arrafelé!"
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:219
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:203
 msgid ""
-"I see them... we should be able to drive them off. All the same, you had "
-"best send for reinforcements, Lomarfel."
+"What blasphemy is this? I have heard it said that Orcs are despoilers, tree-"
+"killers...but I did not believe any could be so wantonly filthy as the "
+"reports made them."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:207
+msgid ""
+"We see the truth of it here, my lord.  They make great fires, not of "
+"deadfall wood but of the new-murdered corpses of the singing trees. They "
+"trample the greensward into mud and do not even bury their foul dung."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:211
+#, fuzzy
+msgid ""
+"They are a blight on our forests, and must not be permitted into Wesmere. I "
+"shall arm the folk; we should be able to drive them off.  All the same, you "
+"had best ride for reinforcements, Lomarfel."
 msgstr ""
 "Látom őket... szerintem el tudjuk őket kergetni. Bárhogy is, az lesz a "
 "legjobb, ha küldünk erősítésért, Lomarfel."
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:224
-msgid "Yes, sir!"
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:215
+#, fuzzy
+msgid "Yes, my lord!"
 msgstr "Igenis, uram!"
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:257
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:247
+#, fuzzy
 msgid ""
-"A thousand curses on you, elfling! You will suffer... My master, Rualsha, "
-"approaches. He will wipe your people from the face of this earth!"
+"A thousand curses on you, tree-shagger! You will suffer... My master, "
+"Rualsha, approaches. He will wipe your people from the face of this earth!"
 msgstr ""
 "Ezer átok szálljon rátok, tündeszerzetek! Szenvedni fogtok... Mesterem, "
 "Rualsha, már úton van. El fog titeket takarítani a föld színéről!"
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:262
+#: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:251
+#, fuzzy
 msgid ""
-"Hmmm... Who is this Rualsha, I wonder? I will have to take a small "
-"exploration party north to see what is afoot there..."
+"Hmmm... Who is this Rualsha, I wonder? I will have to take a scouting party "
+"north to see what is afoot there..."
 msgstr ""
 "Hmm... Vajon ki is lehet ez a Rualsha? Az lesz a legjobb, ha küldök egy kis "
 "felderítő csapatot északra, hogy kiderüljön, hogy mi folyik ott."
 
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:271
-msgid "Far in the north of Wesnoth was an Elven forest."
-msgstr ""
-
-#: An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:283
-msgid "One sunny day, orcs were sighted in the Elven forest."
-msgstr ""
-
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:3
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:3
 msgid "Assassins"
 msgstr "Orgyilkosok"
 
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:138
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:36
 #, fuzzy
 msgid "Gharlsa"
 msgstr "Legyőzöd Gharlsát"
 
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:163
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:61
 msgid ""
 "Hint:\n"
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
@@ -157,40 +220,63 @@ msgstr ""
 "támadójukat. Érdemes közel maradnod a falvakhoz, ahol meggógyíthatod a "
 "megmérgezett egységeidet, és ellenfelednek a folyóból kell támadnia."
 
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:166
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:64
 msgid "Defeat Gharlsa"
 msgstr "Legyőzöd Gharlsát"
 
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:210
-msgid "Gharlsa sees elves... yes... fresh meat, yes, yes..."
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:109
+msgid "The orcs left a stinking spoor straight to this place."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:114
+msgid ""
+"There is some sort of keep ahead, here where we thought no people with the "
+"wit to raise such a pile dwelt."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:119
+#, fuzzy
+msgid "Gharlsa sees elves... yes... fresh meat for our wolves, yes, yes..."
 msgstr "Gharlsa tündéket lát... igen.. friss hús, igen, igen..."
 
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:215
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:124
+#, fuzzy
 msgid ""
-"Does that demented creature really think he can kill us... let us teach him "
-"a lesson!"
+"Does that demented creature really think he can kill us? Let us teach him a "
+"lesson!"
 msgstr ""
 "Ez az együgyű tényleg azt hiszi legyőzhet minket... leckéztessük csak meg!"
 
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:220
-msgid "Be careful... he may be more dangerous than he appears."
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:129
+#, fuzzy
+msgid "Have a care...he may be more dangerous than he appears."
 msgstr ""
 "Légy óvatos... lehet hogy veszélyesebb számunkra, mint amilyennek látszik."
 
-#: An_Orcish_Incursion/scenarios/2_Assassins.cfg:238
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:147
 msgid "Yes... yes... slay them, my assassins!"
 msgstr "Igen... igen... vágjátok őket, orgyilkosaim!"
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:3
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:265
+msgid "Aiieeee!  I die, but Rualsha's vengeance shall fall upon you!"
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:269
+msgid ""
+"Whoever Rualsha is not here to take it, wretch. Perhaps we will find him "
+"further north."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:3
 msgid "Wasteland"
 msgstr "Pusztaság"
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:150
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:40
 #, fuzzy
 msgid "Gnargha"
 msgstr "Legyőzöd Gnarghát"
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:162
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:52
 msgid ""
 "Hint:\n"
 "There are no villages in this scenario - you must use healers instead. Use "
@@ -201,19 +287,20 @@ msgstr ""
 "Eredményes lehet a cserbenhagyásos támadás, hogy meggyengítsd a felgyógyulni "
 "nem tudó ellenséges egységeket."
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:165
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:55
 msgid "Defeat Gnargha"
 msgstr "Legyőzöd Gnarghát"
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:207
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:97
+#, fuzzy
 msgid ""
-"The foul orcs have devastated this area, destroying the trees and driving "
-"out the peaceful folk... it saddens me to see such waste."
+"The foul orcs have devastated this area, destroying the trees and "
+"slaughtering the animals for sport... it saddens me to see such waste."
 msgstr ""
 "Az ostoba orkok letarolták ezt a környéket, kiírtották a fákat és elüldözték "
 "a békeszerető lakosokat... szomorú ennek a kietlen pusztaságnak a látványa."
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:212
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:102
 msgid ""
 "Greetings, Erlornas! I am Gnargha, the brother of Urugha whom you slew but "
 "few nights ago. Know this: Lord Rualsha has permitted me to be the agent of "
@@ -223,7 +310,7 @@ msgstr ""
 "lemészároltál. Tudd: Rualsha úr felhatalmazott, hogy végrehajtsam a "
 "bosszúját."
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:217
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:107
 msgid ""
 "I have no quarrel with you, Gnargha, nor with your leader Rualsha - but I "
 "cannot permit you to invade our lands. Leave now, and we shall be at peace."
@@ -232,15 +319,16 @@ msgstr ""
 "hagyhatom, hogy megszálljátoka mi területünket. Ha most elmész, békében "
 "távozhattok."
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:222
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:112
+#, fuzzy
 msgid ""
-"Peace?! Bah! You are weaker than I thought. Now prepare yourself for a slow "
-"and painful death!"
+"Peace?! Bah! You elves are even weaker than we guessed. Now prepare yourself "
+"for a slow and painful death!"
 msgstr ""
 "Béke?! Áá! Gyengébb vagy mint gondoltam. Készülj hosszadalmas és fájdalmas "
 "halálra!"
 
-#: An_Orcish_Incursion/scenarios/3_Wasteland.cfg:234
+#: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:124
 msgid ""
 "Gnargha and his troops must have come down out of that valley to the "
 "north... that is where we will go next!"
@@ -248,19 +336,19 @@ msgstr ""
 "Gnargha és csapatai minden bizonnyal onnan, az északi völgyből jöttek le... "
 "folytassuk arra utunkat!"
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:3
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:3
 msgid "Valley of Trolls"
 msgstr "A trollok völgye"
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:141
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:49
 msgid "Gurk"
 msgstr ""
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:179
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:87
 msgid "Hrugu"
 msgstr ""
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:203
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:111
 msgid ""
 "Hint:\n"
 "Trolls are very dangerous if they can attack as a group. Use the cave-mouths "
@@ -271,19 +359,20 @@ msgstr ""
 "Használd a barlangszájakat, mintha üvegek szájai lennének, hogy egyessével "
 "intézhesd el őket."
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:206
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:114
 msgid "Defeat all enemy leaders"
 msgstr "Legyőzöd valamennyi ellenséges vezért"
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:248
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:156
+#, fuzzy
 msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
-"the forest. Why do we not return to our post?"
+"the forest. Why do we not return home?"
 msgstr ""
 "Már távol vagyunk hazánktól, Erlornas, és már kiüldöztük az orkokat ez "
 "erdőből. Miért nem térünk vissza az állásainkhoz?"
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:253
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:160
 msgid ""
 "You heard what the orcs said - this Rualsha is more than a mere marauding "
 "warlord in search of pillage.  He is planning an invasion, I'm sure of it. "
@@ -293,7 +382,24 @@ msgstr ""
 "zsákmányra éhes portyázó hadúr. Egy inváziót tervezett, ebben biztos vagyok. "
 "Többet meg kell tudnunk ezekről a tervekről mielőtt visszatérnénk."
 
-#: An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:258
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:164
+msgid ""
+"And there is more, as well. The earth currents are perturbed here.  I think "
+"there is a mage dwelling somewhere nearby. Or perhaps more than one; the "
+"traces are mixed, and some of them have an unwholesome flavor."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:168
+msgid ""
+"It would be dire indeed for us if these orcs have magic to add to their "
+"battle-might."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:172
+msgid "We must discover if this is so."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:176
 msgid ""
 "Information will do us no good if we are killed before we return with it! "
 "These mountains look like troll territory."
@@ -301,21 +407,21 @@ msgstr ""
 "Ezek az értesülések semmire se lesznek jók, ha szétvernek minket még mielőtt "
 "visszatérhetnénk velük! Ezek a hegyek troll területeknek látszanak."
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:3
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:3
 msgid "Linaera the Quick"
 msgstr "Szélsebes Linaera"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:147
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:47
 #, fuzzy
 msgid "Krughnar"
 msgstr "Legyőzöd Krughnart"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:167
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:67
 #, fuzzy
 msgid "Linaera"
 msgstr "Linaera elesik"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:180
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:80
 msgid ""
 "Hint:\n"
 "This enemy is too strong for you to defeat alone. Use mounted units, and "
@@ -326,24 +432,41 @@ msgstr ""
 "és Linaera teleportációs képességét, hogy kis, cserbenhagyásos ütéseket "
 "ejthess."
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:183
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:83
 msgid "Defeat Krughnar"
 msgstr "Legyőzöd Krughnart"
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:162
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:191
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:62
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:91
 msgid "Death of Linaera"
 msgstr "Linaera elesik"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:279
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:179
+#, fuzzy
 msgid ""
-"We have come into the lands of the humans, Erlornas! See, there is one "
-"living in that tower to the west."
+"We are far from the lands granted to humans, my lord Erlornas! But there is "
+"plainly one living in that tower to the west."
 msgstr ""
 "Az emberek földjeihez értünk, Erlornas! Nézd, az egyik ott lakik nyugatra, "
 "abban a toronyban."
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:284
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:183
+msgid ""
+"Some of our mages crave solitude for their studies.  Humans are, perhaps, "
+"likewise."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:187
+msgid "It trepasses, and should be driven out!"
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:191
+msgid ""
+"Hold.  It is only one human, or a few of them at most.  Time enough to speak "
+"of driving it out when we are not fighting orcs."
+msgstr ""
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:195
 msgid ""
 "Help! A great army of orcs has come down from the north, and has been laying "
 "seige to my tower for weeks... we are nearly out of supplies. Our people "
@@ -353,7 +476,7 @@ msgstr ""
 "ostromolják a tornyomat... már alig maradt a készleteinkből. Népeink mindig "
 "is jó viszonyban voltak - segítenétek rajtunk?"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:289
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:200
 msgid ""
 "Yes, of course! But... I wish to defeat the vile orcs and drive them away "
 "from our borders. Will you join us in attacking them?"
@@ -361,13 +484,13 @@ msgstr ""
 "Igen, ez természetes! De... le akarom győzni az aljas szörnyetegeket, és "
 "messzire üldözni őket a határainktól. Segíteni fogtok a támadásban?"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:294
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:205
 msgid ""
 "Nothing would please me better! I will place all my powers at your command."
 msgstr ""
 "Semmi sem tenne boldogabbá! A parancsnoklatod alá helyezem minden erőnket."
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:372
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:283
 msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
@@ -375,7 +498,7 @@ msgstr ""
 "Uram... nem bízhatunk az emberekben! Mindig annak az oldalára állnak, "
 "ahonnan többet remélhetnek!"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:377
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:288
 msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
@@ -384,15 +507,16 @@ msgstr ""
 "szükségünk van az ő segítségükre: nagy túlerővel állnánk szemben, ha egyedül "
 "mérkőznénk meg ezzel az ork csapattal."
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:393
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:304
+#, fuzzy
 msgid ""
-"Oh no! Without Linaera's help, I cannot hope to defeat such a great force of "
-"orcs. I must return to my post and await reinforcements."
+"Oh, no! Without Linaera's help, I cannot hope to defeat such a great force "
+"of orcs. I must return to Wesmere and bring reinforcements."
 msgstr ""
 "Ó, nem! Linaera nélkül nem hinném, hogy le tudnánk győzni ezt az ork "
 "sereget. Vissza kell húzódnom az állásunkba, és megvárni az erősítést."
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:404
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:315
 msgid ""
 "Thank you, Linaera. I couldn't have defeated the orcs without your help... "
 "How can I repay you?"
@@ -400,30 +524,32 @@ msgstr ""
 "Köszönöm, Linaera. Nélküled nem sikerült volna legyőzni az orkokat... Hogyan "
 "fizethetném vissza?"
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:409
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:320
+#, fuzzy
 msgid ""
 "There is one other thing... an evil power infests the swamps to the east of "
-"here. I had meant to deal with it myself, but perhaps you would like to help "
-"us once again?"
+"here. I had meant to deal with it myself, but if you elves revere the green "
+"earth I think you will want it abolished as much as do I."
 msgstr ""
 "Van még valami... egy gonosz hatalom háborgatja az ingoványt, innen keletre. "
 "Egyedül gondoltam elintézni a dolgot, de talán egyszer még szívesen "
 "segítenél minket."
 
-#: An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:414
-msgid "Very well... to the east!"
-msgstr "Nagyon jó... irány kelet!"
+#: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:325
+msgid ""
+"Ah.  I have felt this thing's taint in the earth.  Very well... to the east!"
+msgstr ""
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:3
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:3
 msgid "A Detour through the Swamp"
 msgstr "Kitérő az ingovány felé"
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:138
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:38
 #, fuzzy
 msgid "Keremal"
 msgstr "Legyőzöd Keremalt"
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:151
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:51
 msgid ""
 "Hint:\n"
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
@@ -433,11 +559,11 @@ msgstr ""
 "Az élőholtak ellenállóak a fizikai támadásokkal szemben. Használj mágusokat "
 "ellenük, valamint tündékkel védd meg és támogasd őket."
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:154
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:54
 msgid "Defeat Keremal"
 msgstr "Legyőzöd Keremalt"
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:203
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:103
 #, fuzzy
 msgid ""
 "The evil spirits who have settled in this wetland have turned it into a vile "
@@ -448,7 +574,7 @@ msgstr ""
 "A tanítványimnak és nekem megvan az erőnk, hogy kiűzzük őket, de meg kell "
 "hogy védjetek minket a fegyvereiktől."
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:220
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:120
 msgid ""
 "All is lost! Without Linaera's help, I cannot hope to defeat these "
 "horrifying appraritions!"
@@ -456,7 +582,7 @@ msgstr ""
 "Minden elveszett! Linaera nélkül semmi esélyünk, hogy legyőzzük ezeket a "
 "rémisztő teremtményeket!"
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:235
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:135
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in persuit of the orcs."
@@ -465,7 +591,7 @@ msgstr ""
 "gondolom néhány tanítványom szívesen elkísérne északra, tovább üldözni az "
 "orkokat."
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:240
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:140
 msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please come with you?"
@@ -473,20 +599,20 @@ msgstr ""
 "Mindig is találkozni akartam egy tündével, és most mellettük harclhattam! "
 "Kérlek, hadd tartsak veletek!"
 
-#: An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:245
+#: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:145
 msgid "Certainly... I shall be glad of your help."
 msgstr "Persze... szívesen fogadjuk a segítségeteket."
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:3
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:3
 msgid "Showdown"
 msgstr "Leszámolás"
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:169
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:77
 #, fuzzy
 msgid "Rualsha-Tan"
 msgstr "Legyőzöd Rualsha-Tant"
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:183
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:91
 msgid ""
 "Hint:\n"
 "Your enemy is well defended against attacks from the south. Use rangers to "
@@ -496,11 +622,11 @@ msgstr ""
 "Az ellenfél keményen felkészült a délről érkező támadások ellen. Használd a "
 "vadászaidat, hogy az erdőn átlopakodva északról meglephesd őket."
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:186
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:94
 msgid "Defeat Rualsha-Tan"
 msgstr "Legyőzöd Rualsha-Tant"
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:285
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:193
 msgid ""
 "My lord! We have ridden hard for five days to catch up with you! The council "
 "has deliberated, and asks you to defeat Rualsha quickly before he can muster "
@@ -510,7 +636,7 @@ msgstr ""
 "téged bízott meg Rualsha elpusztításával, még mielőtt felállíthatna egy "
 "teljes lerohanáshoz szükséges haderőt."
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:290
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:198
 msgid ""
 "Puny elves! My full army will be here soon, and then we will crush you. You "
 "will beg for a quick death!"
@@ -518,7 +644,7 @@ msgstr ""
 "Hitvány tündék! Hamarosan itt lesz az egész seregem, és akkor eltiprunk "
 "titeket. A minnél gyorsabb halálért fogtok könyörögni!"
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:305
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:213
 #, fuzzy
 msgid ""
 "You may slay me, Erlornas, but my people live on. They will not forget! They "
@@ -528,29 +654,50 @@ msgstr ""
 "elfelejteni! Fel fognak téged kutatni, és csúnyán meg fogsz ezért lakolni. "
 "Mi majd... me... öö..."
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:311
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:219
+#, fuzzy
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
-"they scattered, and fled from the elves back to their homes in the far north."
+"they scattered, and fled from the elves back to their fastnesses in the far "
+"north."
 msgstr ""
 "De Rualsha túlbecsülte csapatainak elszántságát. Vezérüket holtan látva, "
 "felbomlottak, és fejvesztve menekültek a tündék elől északi otthonaikba."
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:323
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:231
 #, fuzzy
-msgid ""
-"It grieves me to take life, even of a barbarian such as Rualsha. He led the "
-"orcs in a more organised way than I have ever known of before."
+msgid "It grieves me to take life, even of a barbarian such as Rualsha."
 msgstr ""
 "Elszomorít az életek kioltása, még ha egy olyan barbár lényről is van szó, "
 "mint Rualsha. Sokkal jobban megszervezte az orkok támadását, mint bármelyik "
 "elődje, akiről tudok."
 
-#: An_Orcish_Incursion/scenarios/7_Showdown.cfg:328
-#, fuzzy
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:236
 msgid ""
-"Let us hope the orcs never again produce such a leader! Now, Erlornas, we "
-"must return home - the council will well reward you!"
+"If the orcs press us, and we shall need to become more accustomed to "
+"fighting."
 msgstr ""
-"Reménykedjünk, hogy soha többé nem lesz még egy ilyen vezérük! Most pedig, "
-"Erlornas, nekünk haza kell térünk - a tanács jutalmazni fogja helytállásod!"
+
+#: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:241
+msgid ""
+"I fear it will be so.  We have won a first victory here, but dark times come "
+"upon its heels."
+msgstr ""
+
+#~ msgid "(hardest)"
+#~ msgstr "(legnehezebb)"
+
+#~ msgid "(easiest)"
+#~ msgstr "(legkönnyebb)"
+
+#~ msgid "Very well... to the east!"
+#~ msgstr "Nagyon jó... irány kelet!"
+
+#, fuzzy
+#~ msgid ""
+#~ "Let us hope the orcs never again produce such a leader! Now, Erlornas, we "
+#~ "must return home - the council will well reward you!"
+#~ msgstr ""
+#~ "Reménykedjünk, hogy soha többé nem lesz még egy ilyen vezérük! Most "
+#~ "pedig, Erlornas, nekünk haza kell térünk - a tanács jutalmazni fogja "
+#~ "helytállásod!"
