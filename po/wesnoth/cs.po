@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-02 20:25+0200\n"
-"PO-Revision-Date: 2007-09-24 19:54+0100\n"
+"PO-Revision-Date: 2007-10-02 22:10+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -22,9 +22,10 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
+# !!!! zkontrolovat jestli se to vejde do okna
 #: data/_main.cfg:36
 msgid "Female leaders on MP (if available)"
-msgstr ""
+msgstr "Ženské varianty vůdců ve hře více hráčů (pokud existují)"
 
 #: data/_main.cfg:43
 msgid "Binary Saves"
@@ -76,7 +77,6 @@ msgstr "Návrh tažení"
 msgid "Campaign Maintenance"
 msgstr "Údržba tažení"
 
-# ?!
 #: data/campaigns/Eastern_Invasion/_main.cfg:35
 msgid "Campaign Epilog and Continuity"
 msgstr "Epilog tažení a návaznost"
@@ -4209,7 +4209,7 @@ msgstr "Stromový lid"
 
 #: data/core/units/elves/Elvish_High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "Vysoký elfí lord"
 
 #: data/core/units/elves/Elvish_High_Lord.cfg:18
 msgid ""
@@ -4218,6 +4218,9 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Vůdcové elfů s rostoucím věkem neblednou ani neslábnou. Místo toho dosahují "
+"svého skutečného potenciálu. Klidný a rozjímající v dobách míru, rozhněvaný "
+"Vysoký lord je vskutku strašlivý a hrůzu nahánějící pohled."
 
 #: data/core/units/elves/Elvish_High_Lord.cfg:60
 #: data/core/units/elves/Elvish_Lord.cfg:23
@@ -4227,12 +4230,11 @@ msgstr "meč"
 #: data/core/units/elves/Elvish_High_Lord.cfg:69
 #: data/core/units/elves/Elvish_Lord.cfg:32
 msgid "faerie fire"
-msgstr ""
+msgstr "kouzelný oheň"
 
 #: data/core/units/elves/Elvish_Lady.cfg:5
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "zdravá"
+msgstr "Elfí dáma"
 
 #: data/core/units/elves/Elvish_Lady.cfg:20
 msgid ""
@@ -4241,10 +4243,14 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Elfové volí své vůdce pro jejich schopnosti a moudrost; jejich prozíravost "
+"je to, co je chrání v nejistých dobách. Jejich spravedlivá vláda je odměněna "
+"bezmeznou věrností svých lidí, což je největší dar, jaký si jen vůdce může "
+"přát."
 
 #: data/core/units/elves/Elvish_Lord.cfg:4
 msgid "Elvish Lord"
-msgstr ""
+msgstr "Elfí lord"
 
 #: data/core/units/elves/Elvish_Lord.cfg:17
 msgid ""
@@ -4252,6 +4258,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Elfí šlechta si svoje postavení ve společnosti plně zasluhuje. Elfí lordi "
+"jsou nejmoudřejšími a nejsilnějšími ze všech elfů a jejich schopnost "
+"ovládání magie nahání hrůzu."
 
 #: data/hardwired/english.cfg:3
 msgid "Easy"
@@ -6573,9 +6582,8 @@ msgid "--no games open--"
 msgstr "--žádné volné hry--"
 
 #: src/multiplayer_lobby.cpp:374
-#, fuzzy
 msgid "Unknown era: $era_id"
-msgstr "Neznámý věk"
+msgstr "Neznámý věk: $era_id"
 
 #: src/multiplayer_lobby.cpp:378
 msgid "Unknown era"
