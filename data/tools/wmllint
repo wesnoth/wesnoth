@@ -449,41 +449,6 @@ def maptransform2(filename, baseline, inmap, y):
             # There's only one kind of underground keep at present.
             inmap[y][x] = inmap[y][x].replace("Ku", "Kud")
 
-# The following two functions are not expected to work yet.
-# They are placeholders for when Mordante's user-defined borders land.
-
-def outermap(func, inmap):
-    "Apply a transformation based on neighborhood to the outermost ring."
-    for i in range(len(inmap[0])):
-        inmap[0][i] = func(neighborhood(i,0, inmap))
-        inmap[len(inmap[0])-1][i] = func(neighborhood(i,len(inmap[0])-1, inmap))
-    for i in range(1, len(inmap)-1):
-        inmap[i][0] = func(neighborhood(0,i, inmap))
-        inmap[i][len(inmap)-1] = func(neighborhood(len(inmap-1), i, inmap))
-
-def maptransform3(filename, baseline, inmap, y):
-    "Add outer ring of inaccessible terrain to a map that doesn't have one."
-    if "off" in imap[0][0]:	# If it already has an outer ring...
-        return			# ...do nothing
-    # Start by duplicating the current outermost ring
-    inmap = [inmap[0]] + inmap + [inmap[-1]]
-    for i in range(len(inmap)):
-        inmap[i] = [inmap[i][0]] + inmap[i] + [inmap[i][-1]]
-    # Strip villages out of the edges
-    inmap = outermap(lambda n: re.sub(n[0], r"\^V[a-z]*", "")) 
-    # Strip keeps out of the edges
-    inmap = outermap(lambda n: re.sub(n[0], r"K([a-z]*)", r"C\1"))
-    # Voidify problematic corners
-    for (y, x) in ((0, 0), (len(inmap)-1, 0),
-                   (0, len(inmap[0])-1), (len(inmap)-1, len(inmap[0])-1)):
-        cn = neigborhood(x, y, inmap)
-        # All three neighbors must be equal, otherwise punt.
-        if cn[1] != cn[2] or cn[2] !=cn [3]  or cn[3] !=cn [1]:
-            print "warning: voidifying corner %s[%d, %d]" % (filename, x, y)
-            inmap[y][x] = "_s"
-    # Finally, add the off-map prefix
-    inmap = outermap(lambda n: "off^" + n[0], inmap)
-
 def validate_stack(stack, filename, lineno):
     "Check the stack for deprecated WML syntax."
     if verbose >= 3:
@@ -963,6 +928,15 @@ class maptransform_error:
 
 tagstack = []	# For tracking tag nesting
 
+def outermap(func, inmap):
+    "Apply a transformation based on neighborhood to the outermost ring."
+    for i in range(len(inmap[0])):
+        inmap[0][i] = func(inmap[0][i])
+        inmap[len(inmap[0])-1][i] = func(inmap[len(inmap[0])-1][i])
+    for i in range(1, len(inmap)-1):
+        inmap[i][0] = func(inmap[i][0])
+        inmap[i][len(inmap)-1] = func(inmap[i][len(inmap)-1])
+
 def translator(filename, mapxforms, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
     global tagstack
@@ -985,6 +959,8 @@ def translator(filename, mapxforms, textxform):
     newdata = []
     lineno = baseline = 0
     validate = True
+    add_border = True
+    have_header = False
     while mfile:
         if not map_only:
             line = mfile.pop(0)
@@ -1014,7 +990,12 @@ def translator(filename, mapxforms, textxform):
                 if verbose >= 3:
                     sys.stdout.write(line + terminator)
                 lineno += 1
-                if len(line) == 0 or line[0] == '#':
+                # This code supports ignoring comments and header lines
+                if len(line) == 0 or line[0] == '#' or '=' in line:
+                    if '=' in line:
+                        have_header = True
+                    if 'border_size' in line:
+                        add_border = False
                     newdata.append(line + terminator)
                     continue
                 if '"' in line:
@@ -1034,9 +1015,30 @@ def translator(filename, mapxforms, textxform):
             for transform in mapxforms:
                 for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
+            # Next two lines should be removed when the map-border code lands.
+            if not future:
+                add_border = False
+            if add_border:
+                if verbose:
+                    print "adding border..."
+                newdata.append("border_size=1" + terminator)
+                have_header = True
+                # Start by duplicating the current outermost ring
+                outmap = [outmap[0]] + outmap + [outmap[-1]]
+                for i in range(len(outmap)):
+                    outmap[i] = [outmap[i][0]] + outmap[i] + [outmap[i][-1]]
+                # Strip villages out of the edges
+                outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap) 
+                # Strip keeps out of the edges
+                outermap(lambda n: re.sub(r"K([a-z]+)", r"C\1", n), outmap)
+                # Turn big trees on the edges to ordinary forest hexes
+                outermap(lambda n: n.replace(r"Gg^Fet", r"Gg^Fp"), outmap)
+                modified = True
+            if have_header:
+                newdata.append(terminator)
             for y in range(len(outmap)):
                 newdata.append(",".join(outmap[y]) + terminator)
-                if original[y] != outmap[y]:
+                if not modified and original[y] != outmap[y]:
                     modified = True
             # All lines of the map are processed, add the appropriate trailer
             if not map_only:
@@ -1382,7 +1384,7 @@ if __name__ == '__main__':
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
                     raise exc_type, exc_value, exc_traceback
             # Time for map file renames
-            if not fn.endswith(".map") and is_map(fn):
+            if not revert and not fn.endswith(".map") and is_map(fn):
                 mover = vcmove(fn, fn + ".map")
                 print mover
                 if not dryrun:
