@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-02 20:25+0200\n"
-"PO-Revision-Date: 2007-09-18 12:27+0100\n"
+"PO-Revision-Date: 2007-10-04 18:39+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: data/_main.cfg:36
 msgid "Female leaders on MP (if available)"
-msgstr ""
+msgstr "Przywódczynie w grze wieloosobowej (jeśli są dostępne)"
 
 #: data/_main.cfg:43
 msgid "Binary Saves"
@@ -2895,6 +2895,8 @@ msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
+"Dzięki tej wodzie, broń do walki wręcz będzie do końca bieżącego scenariusza "
+"zadawać obrażenia ataku astralnego."
 
 #: data/core/macros/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3386,11 +3388,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:18
 msgid "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
-msgstr ""
+msgstr "Kaaa,Korro,Kassshh,Kuu,Kraa,Kessshh,Kzaaa,Kzuuu,Greaa,Graa,Gree"
 
 #: data/core/macros/names.cfg:19
 msgid "Kiira,Keyya,Kayya,Korra,Kaasa"
-msgstr ""
+msgstr "Kiira,Keyya,Kayya,Korra,Kaasa"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3795,17 +3797,16 @@ msgstr ""
 "Hudish,Gashnak,Ragdish,Pidush,Pulg,Vring,Vurag,Vrurg,Rilg,Pigdush,Hagor"
 
 #: data/core/macros/names.cfg:50
-#, fuzzy
 msgid ""
 "Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
 "Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 msgstr ""
-"Krak,Gark,Trok,Nuk Kar,Ka,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
+"Krak,Gark,Trok,Nuk Kar,Kak,Hak,Tuh,Thur,Ruk,Dak,Thruf,Frok,Kuh,Tuk Ruh,Grar,"
 "Shuf,Stuh,Hoth,Nak,Urk,Lok,Hu Kah,Luk,Hask,Gulk,Thog,Urg,Torg,Targ,Borb,Ugg,"
 "Sark,Drog,Gah,Rok,Reck,Shak,Brag,Krug,Brok,Grokk,Brag Goh,Zog,Hug Bah,Kub,"
-"Tohg,Agh,Zof Tä,Tso,Va,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
+"Tohg,Agh,Zog,Tsok,Vak,Zuug,Pag,Bog Äh,Üh,Äg,Ga,Gnarf,Grumph,Urgh"
 
 #: data/core/macros/names.cfg:54
 msgid ""
@@ -4196,9 +4197,8 @@ msgid "race^Goblins"
 msgstr "Gobliny"
 
 #: data/core/units.cfg:80
-#, fuzzy
 msgid "race^Gryphons"
-msgstr "Gobliny"
+msgstr "Gryfy"
 
 #: data/core/units.cfg:87 data/hardwired/english.cfg:19
 msgid "race^Humans"
@@ -4246,7 +4246,7 @@ msgstr "Drzewce"
 
 #: data/core/units/elves/Elvish_High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "Wielki władca elfów"
 
 #: data/core/units/elves/Elvish_High_Lord.cfg:18
 msgid ""
@@ -4255,6 +4255,10 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Przywódcy elfów nie słabną z wiekiem. Wręcz przeciwnie - dopiero w sile "
+"wieku ukazują swój pełen potencjał. Choć w czasie pokoju wielki władca elfów "
+"bywa raczej cichy i zamyślony, to rozgniewany budzi grozę w każdym, kto go "
+"ujrzy."
 
 #: data/core/units/elves/Elvish_High_Lord.cfg:60
 #: data/core/units/elves/Elvish_Lord.cfg:23
@@ -4264,12 +4268,11 @@ msgstr "miecz"
 #: data/core/units/elves/Elvish_High_Lord.cfg:69
 #: data/core/units/elves/Elvish_Lord.cfg:32
 msgid "faerie fire"
-msgstr ""
+msgstr "płomień wróżek"
 
 #: data/core/units/elves/Elvish_Lady.cfg:5
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "zdrowa"
+msgstr "Władczyni elfów"
 
 #: data/core/units/elves/Elvish_Lady.cfg:20
 msgid ""
@@ -4278,10 +4281,14 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Elfy wybierają swych przywódców dla siły i mądrości, gdyż to umiejętność "
+"przewidywania nieraz ocaliła ich lud w niepewnych czasach. Sprawiedliwe "
+"rządy wynagradzane są niezachwianym posłuszeństwem ludu, co jest "
+"najwspanialszym darem dla każdego przywódcy."
 
 #: data/core/units/elves/Elvish_Lord.cfg:4
 msgid "Elvish Lord"
-msgstr ""
+msgstr "Władca elfów"
 
 #: data/core/units/elves/Elvish_Lord.cfg:17
 msgid ""
@@ -4289,6 +4296,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Zalety szlachetnie urodzonych elfów uzasadniają ich pozycję społeczną. "
+"Elficcy władcy są najmędrszymi i najsilniejszymi spośród swego ludu, a ich "
+"biegłość w magii budzi postrach."
 
 #: data/hardwired/english.cfg:3
 msgid "Easy"
@@ -6071,7 +6081,7 @@ msgstr "Przemianuj jednostkę"
 
 #: src/menu_events.cpp:1581
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Utwórz jednostkę (debugowanie!)"
 
 #: src/menu_events.cpp:1621
 msgid "Place Label"
@@ -6608,9 +6618,8 @@ msgid "--no games open--"
 msgstr "--brak otwartych gier--"
 
 #: src/multiplayer_lobby.cpp:374
-#, fuzzy
 msgid "Unknown era: $era_id"
-msgstr "Nieznana era"
+msgstr "Nieznana era: $era_id"
 
 #: src/multiplayer_lobby.cpp:378
 msgid "Unknown era"
