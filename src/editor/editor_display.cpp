@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file editor/editor_display.cpp 
+//! Draw the screen for the map-editor.
+
 #include "global.hpp"
 
 #include "display.hpp"
@@ -34,7 +37,7 @@ editor_display::editor_display(CVideo& video, const gamemap& map,
 		const config& level) :
 	display(video, map, theme_cfg, cfg, level)
 {
-	//clear the screen contents
+	// Clear the screen contents
 	surface const disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
 	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
@@ -81,12 +84,12 @@ void editor_display::draw(bool update,bool force)
 			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_BACKGROUND));
 			tile_stack_append(get_terrain_images(*it,nodarken,image_type,ADJACENT_FOREGROUND));
 
-			// draw the grid, if that's been enabled
+			// Draw the grid, if it has been enabled
 			if(grid_ && map_.on_board(*it)) {
 				tile_stack_append(image::get_image(game_config::grid_image, image::SCALED_TO_HEX));
 			}
 
-			// paint selection and mouseover overlays
+			// Paint selection and mouseover overlays
 			if(*it == selectedHex_ && map_.on_board(selectedHex_) && selected_hex_overlay_ != NULL)
 				tile_stack_append(selected_hex_overlay_);
 			if(*it == mouseoverHex_ && map_.on_board(mouseoverHex_) && mouseover_hex_overlay_ != NULL)
@@ -100,7 +103,7 @@ void editor_display::draw(bool update,bool force)
 		wassert(invalidated_.empty());
 	}
 
-	// fill in the terrain report
+	// Fill in the terrain report
 	if(map_.on_board(mouseoverHex_)) {
 		const t_translation::t_letter terrain = map_.get_terrain(mouseoverHex_);
 		const t_translation::t_list& underlying = map_.underlying_union_terrain(terrain);
