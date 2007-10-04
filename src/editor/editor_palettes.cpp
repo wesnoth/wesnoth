@@ -12,6 +12,9 @@
   See the COPYING file for more details.
 */
 
+//! @file editor/editor_palettes.cpp
+//! Manage the terrain-palette in the editor.
+
 #include "SDL.h"
 #include "SDL_keysym.h"
 
@@ -48,30 +51,30 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button")
 {
 
-	// get the available terrains temporary in terrains_
+	// Get the available terrains temporary in terrains_
 	terrains_ = map_.get_terrain_list();
 	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
 					terrains_.end());
 
-	// get the available groups and add them to the structure
+	// Get the available groups and add them to the structure
     const config::child_list& groups = cfg.get_children("editor_group");
 	config::child_list::const_iterator g_itor = groups.begin();
 	for(; g_itor != groups.end(); ++ g_itor) {
 		terrain_groups_.push_back(terrain_group(**g_itor, gui));
 
-		// by default the all button is pressed
+		// By default the 'all'-button is pressed
 		if(terrain_groups_.back().id == "all") {
 			terrain_groups_.back().button.set_check(true);
 			checked_group_btn_ = &terrain_groups_.back().button;
 		}
 	}
-	// the rest of the code assumes this is a valid pointer
+	// The rest of the code assumes this is a valid pointer
 	wassert(checked_group_btn_ != 0);
 
-	// add the groups for all terrains to the map
+	// Add the groups for all terrains to the map
 	t_translation::t_list::const_iterator t_itor = terrains_.begin();
 	for(; t_itor != terrains_.end(); ++t_itor) {
-		// add the terrain to the requested groups
+		// Add the terrain to the requested groups
 		const std::vector<std::string>& key =
 			utils::split(map_.get_terrain_info(*t_itor).editor_group());
 
@@ -81,11 +84,11 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 			terrain_map_[*k_itor].push_back(*t_itor);
 		}
 
-		// add the terrain to the default group
+		// Add the terrain to the default group
 		terrain_map_["all"].push_back(*t_itor);
 	}
 
-	// set the default group
+	// Set the default group
 	terrains_ = terrain_map_["all"];
 
 	if(terrains_.empty()) {
@@ -105,13 +108,13 @@ void terrain_palette::adjust_size() {
 	const size_t button_height = 24;
 	const size_t button_palette_padding = 8;
 
-	//values for the group buttons fully hardcoded for now
-	//will be fixed later
-	const size_t group_button_height = 24;
-	const size_t group_button_padding = 2;
-	const size_t group_buttons_per_row = 5;
+	// Values for the group buttons fully hardcoded for now
+	//! @todo will be fixed later
+	const size_t group_button_height   = 24;
+	const size_t group_button_padding  =  2;
+	const size_t group_buttons_per_row =  5;
 
-	//determine number of theme button rows
+	// Determine number of theme button rows
 	size_t group_rows = terrain_groups_.size() / group_buttons_per_row;
 	if(terrain_groups_.size() % group_buttons_per_row != 0) {
 		++group_rows;
@@ -522,8 +525,7 @@ void brush_bar::draw(bool force) {
 	const SDL_Rect loc = location();
 	int x = loc.x;
 	// Everything will be redrawn even though only one little part may
-	// have changed, but that happens so seldom so we'll settle with
-	// this.
+	// have changed, but that happens so seldom so we'll settle with this.
 	SDL_Surface* const screen = gui_.video().getSurface();
 	for (int i = 1; i <= total_brush_; i++) {
 		std::stringstream filename;
@@ -577,4 +579,5 @@ int brush_bar::selected_index(const int x, const int y) const {
 	return -1;
 }
 
-}
+} // end namespace map_editor
+
