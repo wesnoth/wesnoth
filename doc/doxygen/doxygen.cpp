@@ -175,7 +175,7 @@ For this to work, key_event() must be called whenever a keyboard event happens.
 //	namespace image
 // ===========================================================================
 
-/* - already documented
+/*- already documented
 
 @namespace image	Cache of images.
 
@@ -197,7 +197,7 @@ images come in a number of varieties:
 //	namespace mp
 // ===========================================================================
 
-/**
+/*- already documented
 
 @namespace mp	Multiplayer meeting place and game creation.
 
@@ -428,10 +428,10 @@ int divide(int a,int b) {
 /**	@file language.hpp */
 /**	-file log.hpp */
 /**	@file mapgen_dialog.hpp */
-/**	@file mapgen.hpp */
-/**	@file map.hpp */
+/**	-file mapgen.hpp */
+/**	-file map.hpp */
 /**	-file multiplayer_client.hpp */
-/**	@file multiplayer_connect.hpp */
+/**	-file multiplayer_connect.hpp */
 /**	@file multiplayer.hpp */
 /**	-file pathfind.hpp */
 /**	-file playlevel.hpp */

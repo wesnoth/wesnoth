@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+/** @file multiplayer_lobby.cpp 
+ * A section on the server where players can chat, create and join games.
+ */
+
 #include "global.hpp"
 #include "filesystem.hpp"
 #include "marked-up_text.hpp"
@@ -105,7 +109,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	int xpos = item_rect.x + margin_;
 	int ypos = item_rect.y + margin_;
 
-	//draw minimaps
+	// Draw minimaps
 	if (game.mini_map != NULL) {
 		int minimap_x = xpos + (minimap_size_ - game.mini_map->w)/2;
 		int minimap_y = ypos + (minimap_size_ - game.mini_map->h)/2;
@@ -113,7 +117,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	}
 	xpos += minimap_size_ + margin_;
 
-	//set font color
+	// Set font color
 	SDL_Color font_color;
 	if (game.vacant_slots > 0) {
 		if (!game.started) {
@@ -133,63 +137,63 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	    font::SIZE_NORMAL, font_color));
 	const int status_text_width = status_text ? status_text->w : 0;
 
-	// first line: draw game name
+	// First line: draw game name
 	const surface name_surf(font::get_rendered_text(
 	    font::make_text_ellipsis(game.name, font::SIZE_PLUS,
 	        (item_rect.x + item_rect.w) - xpos - margin_ - status_text_width - h_padding_),
 	    font::SIZE_PLUS, font_color));
 	video().blit_surface(xpos, ypos, name_surf);
 
-	// draw status text
+	// Draw status text
 	if(status_text) {
-		// align the bottom of the text with the game name
+		// Align the bottom of the text with the game name
 		video().blit_surface(item_rect.x + item_rect.w - margin_ - status_text_width,
 		    ypos + name_surf->h - status_text->h, status_text);
 	}
 
-	// second line
+	// Second line
 	ypos = item_rect.y + item_rect.h/2;
 
-	// draw map info
+	// Draw map info
 	const surface map_info_surf(font::get_rendered_text(
 	    font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL,
 	        (item_rect.x + item_rect.w) - xpos - margin_),
 	    font::SIZE_NORMAL, font::NORMAL_COLOUR));
 	video().blit_surface(xpos, ypos - map_info_surf->h/2, map_info_surf);
 
-	// third line
+	// Third line
 	ypos = item_rect.y + item_rect.h  - margin_;
 
-	// draw observer icon
+	// Draw observer icon
 	const surface observer_icon(image::get_image(game.observers
 	    ? observer_icon_locator_ : no_observer_icon_locator_));
 	video().blit_surface(xpos, ypos - observer_icon->h, observer_icon);
 
-	// set ypos to the middle of the line
-	// so that all text and icons can be aligned symmetrical to it
+	// Set ypos to the middle of the line, so that 
+	// all text and icons can be aligned symmetrical to it
 	ypos -= observer_icon->h/2;
 	xpos += observer_icon->w + 2 * h_padding_;
 
-	// draw gold icon
+	// Draw gold icon
 	const surface gold_icon(image::get_image(gold_icon_locator_));
 	video().blit_surface(xpos, ypos - gold_icon->h/2, gold_icon);
 
 	xpos += gold_icon->w + h_padding_;
 
-	// draw gold text
+	// Draw gold text
 	const surface gold_text(font::get_rendered_text(game.gold, font::SIZE_NORMAL,
 	    game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
 	video().blit_surface(xpos, ypos - gold_text->h/2, gold_text);
 
 	xpos += gold_text->w + 2 * h_padding_;
 
-	// draw xp icon
+	// Draw xp icon
 	const surface xp_icon(image::get_image(xp_icon_locator_));
 	video().blit_surface(xpos, ypos - xp_icon->h/2, xp_icon);
 
 	xpos += xp_icon->w + h_padding_;
 
-	// draw xp text
+	// Draw xp text
 	const surface xp_text(font::get_rendered_text(game.xp, font::SIZE_NORMAL,
 	    font::NORMAL_COLOUR));
 	video().blit_surface(xpos, ypos - xp_text->h/2, xp_text);
@@ -197,13 +201,13 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	xpos += xp_text->w + 2 * h_padding_;
 
 	if(!game.time_limit.empty()) {
-		// draw time icon
+		// Draw time icon
 		const surface time_icon(image::get_image(time_limit_icon_locator_));
 		video().blit_surface(xpos, ypos - time_icon->h/2, time_icon);
 
 		xpos += time_icon->w + h_padding_;
 
-		// draw time text
+		// Draw time text
 		const surface time_text(font::get_rendered_text(game.time_limit,
 		    font::SIZE_NORMAL, font::NORMAL_COLOUR));
 		video().blit_surface(xpos, ypos - time_text->h/2, time_text);
@@ -211,13 +215,13 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		xpos += time_text->w + 2 * h_padding_;
 	}
 
-	// draw vision icon
+	// Draw vision icon
 	const surface vision_icon(image::get_image(vision_icon_locator_));
 	video().blit_surface(xpos, ypos - vision_icon->h/2, vision_icon);
 
 	xpos += vision_icon->w + h_padding_;
 
-	// draw vision text
+	// Draw vision text
 	const surface vision_text(font::get_rendered_text(
 	    font::make_text_ellipsis(game.vision, font::SIZE_NORMAL,
 	        (item_rect.x + item_rect.w) - xpos - margin_),
@@ -225,7 +229,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	    game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
 	video().blit_surface(xpos, ypos - vision_text->h/2, vision_text);
 
-	// draw map settings text
+	// Draw map settings text
 	if (game.use_map_settings) {
 		xpos += vision_text->w + 4 * h_padding_;
 		const surface map_settings_text(font::get_rendered_text(
@@ -321,6 +325,7 @@ void gamebrowser::handle_event(const SDL_Event& event)
 				// If we have a double click as the next event, it means
 				// this double click was generated from a click that
 				// already has helped in generating a double click.
+				// ??
 				SDL_Event ev;
 				SDL_PeepEvents(&ev, 1, SDL_PEEKEVENT,
 							   SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
@@ -347,7 +352,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 
 	item_height_ = 100;
 
-	// don't throw the rendered minimaps away
+	// Don't throw the rendered minimaps away
 	std::vector<minimap_cache_item> minimap_cache;
 	for(std::vector<game_item>::iterator oldgame = games_.begin(); oldgame != games_.end(); ++oldgame) {
 		minimap_cache_item item;
@@ -395,7 +400,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 					}
 				}
 				if (!found) {
-					// parsing the map and generating the minimap are both cpu expensive
+					// Parsing the map and generating the minimap are both cpu expensive
 					gamemap map(game_config, games_.back().map_data);
 					games_.back().mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
 					games_.back().map_info_size = lexical_cast_default<std::string, int>(map.w(), "??")
@@ -480,7 +485,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().shroud = false;
 		}
 		if((**game)["mp_countdown"] == "yes" ) {
-			games_.back().time_limit = (**game)["mp_countdown_init_time"] + " / +"
+			games_.back().time_limit =   (**game)["mp_countdown_init_time"] + " / +"
 			                           + (**game)["mp_countdown_turn_bonus"] + " "
 			                           + (**game)["mp_countdown_action_bonus"];
 		} else {
@@ -493,7 +498,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	set_full_size(games_.size());
 	set_shown_size(inner_location().h / row_height());
 
-	// try to preserve the game selection
+	// Try to preserve the game selection
 	if (!selected_game.empty()) {
 		for (unsigned int i=0; i < games_.size(); i++) {
 			if (games_[i].id == selected_game) {
@@ -508,7 +513,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	if (scrolled_to_max) {
 		set_position(get_max_position());
 	} else {
-		// keep the selected game visible if it was visible before
+		// Keep the selected game visible if it was visible before
 		if (selection_visible && (visible_range_.first > selected_
 								  || visible_range_.second < selected_)) {
 			set_position(selected_);
@@ -634,16 +639,16 @@ void lobby::layout_children(const SDL_Rect& rect)
 	int yborder   = 7;
 #endif
 
-	// align to the left border
+	// Align to the left border
 	join_game_.set_location(xscale(xborder), yscale(yborder));
 	observe_game_.set_location(join_game_.location().x + join_game_.location().w + btn_space, yscale(yborder));
 	create_game_.set_location(observe_game_.location().x + observe_game_.location().w + btn_space, yscale(yborder));
 
 #ifndef USE_TINY_GUI
-	// align 'Quit' to the right border
+	// Align 'Quit' to the right border
 	quit_game_.set_location(xscale(xscale_base - xborder) - quit_game_.location().w, yscale(yborder));
 
-	// align in the middle between the right and left buttons
+	// Align in the middle between the right and left buttons
 	int space = (quit_game_.location().x - create_game_.location().x - create_game_.location().w
 	             - skip_replay_.location().w - game_preferences_.location().w - btn_space) / 2;
 	if (space < btn_space) space = btn_space;
@@ -745,8 +750,9 @@ void lobby::process_network_data(const config& data, const network::connection s
 {
 	ui::process_network_data(data, sock);
 
-	// invalidate game selection for the player list
+	// Invalidate game selection for the player list
 	last_selected_game_ = -1;
 }
 
-}
+} // end namespace mp
+
