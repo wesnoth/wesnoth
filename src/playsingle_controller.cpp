@@ -561,9 +561,15 @@ void playsingle_controller::linger(upload_log& log)
 	LOG_NG << "beginning end-of-scenario linger";
 	browse_ = true;
 	linger_ = true;
-	// this is actually for after linger mode is over -- we don't want to
-	// stay stuck in linger state when the *next* scenario is over.
+
+	// this is actually for after linger mode is over -- we don't
+	// want to stay stuck in linger state when the *next* scenario
+	// is over.
 	gamestate_.completion = "running";
+
+	//FIXME: Change the button text
+	//gui::button* b = gui_->find_button("button-endturn");
+
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
 		u->second.set_user_end_turn(true);
