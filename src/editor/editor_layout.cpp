@@ -12,6 +12,9 @@
   See the COPYING file for more details.
 */
 
+//! @file editor/editor_layout.cpp 
+//! Set various sizes for the screen-layout of the map editor.
+
 #include "editor_layout.hpp"
 #include "util.hpp"
 
@@ -20,6 +23,7 @@ namespace {
 	const size_t default_terrain_size = 36;
 	const size_t default_palette_width = 3;
 }
+
 namespace map_editor {
 
 size_specs::size_specs() {
@@ -45,4 +49,5 @@ void adjust_sizes(const display &disp, size_specs &sizes) {
 	sizes.palette_h = disp.h() - sizes.palette_y - 60;
 }
 
-}
+} // end namespace map_editor
+
