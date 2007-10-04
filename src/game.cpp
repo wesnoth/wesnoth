@@ -1091,17 +1091,9 @@ void game_controller::download_campaigns(std::string host)
 			std::string version   = (**i)["version"],
 			            author    = (**i)["author"];
 
-			if(title.size() > 20) {
-				title.resize(20);
-			}
-
-			if(version.size() > 12) {
-				version.resize(12);
-			}
-
-			if(author.size() > 16) {
-				author.resize(16);
-			}
+			utils::truncate_as_wstring(title, 20);
+			utils::truncate_as_wstring(version, 12);
+			utils::truncate_as_wstring(author, 16);
 
 			//add negative sizes to reverse the sort order
 			sizes.push_back(-atoi((**i)["size"].c_str()));

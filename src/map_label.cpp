@@ -504,14 +504,7 @@ void terrain_label::check_text_length()
 	// The actual data is wide_strings so test in wide_string mode
 	// also cutting a wide_string at an arbritary place gives odd 
 	// problems. 
-	//
-	//! @todo It might be an option to use wide_string as type for
-	// the labels to avoid this conversion
-	wide_string tmp = utils::string_to_wstring(text_);
-	if(tmp.size() >  parent_->get_max_chars()) {
-		tmp.resize(parent_->get_max_chars());
-		text_ = utils::wstring_to_string(tmp);
-	}
+	utils::truncate_as_wstring(text_, parent_->get_max_chars());
 }
 
 void terrain_label::clear()

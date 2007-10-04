@@ -740,6 +740,24 @@ utf8_string lowercase(const utf8_string& s)
 	return s;
 }
 
+//! Truncates a string.
+//!
+//! If the string send has more than size utf-8 characters it will be truncated
+//! to this size. No assumptions can be made about the actual size of the 
+//! string.
+//! 
+//! @param str[in]      String which can be converted to utf-8.
+//! @param str[out]     String which contains maximal size utf-8 characters.
+//! @param size         The size to truncate at.
+void truncate_as_wstring(std::string& str, const size_t size)
+{
+	wide_string utf8_str = utils::string_to_wstring(str);
+	if(utf8_str.size() > size) {
+		utf8_str.resize(size);
+		str = utils::wstring_to_string(utf8_str);
+	}
+}
+
 // match using '*' as any number of characters (including none), and '?' as any one character
 bool wildcard_string_match(const std::string& str, const std::string& match)
 {
