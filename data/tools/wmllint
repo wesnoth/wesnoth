@@ -802,18 +802,36 @@ def hack_syntax(filename, lines):
             if in_sound:
                 lines[i] = ""
     # Upconvert ancient ability declarations from 1.x
-    converting = False
     level = None
     abilities = []
+    specials = []
     lastability = None
-    # TODO: special=plague(unitname) -> {WEAPON_SPECIAL_PLAGUE_TYPE unitype}
-    # TODO: special=plague -> {WEAPON_SPECIAL_PLAGUE}
+    lastspecial = None
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
             break
         if "[unit]" in lines[i]:
             abilities = []
-            converting = True
+        if "[attack]" in lines[i]:
+            specials = []
+        elif "[/attack]" in lines[i]:
+            if specials:
+                if verbose:
+                    print "Lifting obsolete specials:", " ".join(specials)
+                ws = leader(lines[i])
+                insertion = ws + baseindent + "[specials]\n"
+                for special in specials:
+                    if special.startswith("plague("):
+                        insertion += ws + baseindent*2 + "{SPECIAL_PLAGUE_TYPE " + special[7:-1] + "}\n"
+                    elif special in ("backstab", "berserk", "charge", "drain",
+                                     "firstrtrike", "magical", "plague",
+                                     "poison", "slow", "stone", "swarm",):
+                        insertion += ws + baseindent*2 + "{SPECIAL_" + special.upper() + "}\n"
+                    else:
+                        print "Don't know how to convert '%s'" % special
+                insertion += ws + baseindent + "[/specials]\n"
+                lines[lastspecial] = insertion
+                modcount += 1
         elif "[/unit]" in lines[i]:
             if abilities:
                 if verbose:
@@ -829,13 +847,12 @@ def hack_syntax(filename, lines):
                     elif ability in ("cures", "heals", "regenerates",
                                      "skirmisher", "illuminates",
                                      "teleport", "ambush",):
-                        insertion += ws + baseindent*2 + "{ABILITY_" + + "}\n"
+                        insertion += ws + baseindent*2 + "{ABILITY_" + ability.upper() + "}\n"
                     else:
-                        print "Don't know how to convert '%d'" % ability
+                        print "Don't know how to convert '%s'" % ability
                 insertion += ws + baseindent + "[/abilities]\n"
                 lines[lastability] = insertion
                 modcount += 1
-            converting = False
         elif lines[i].count("=") == 1:
             (tag, value) = lines[i].strip().split("=")
             if tag == "level":
@@ -845,8 +862,9 @@ def hack_syntax(filename, lines):
                 lastability = i
                 lines[i] = ""
             if tag == "special":
-                print "%s, line %d, %s: can't translate 1.x-style specials" \
-                      % (filename, i+1, `lines[i].strip()`)
+                specials.append(value)
+                lastspecial = i
+                lines[i] = ""
     # Upconvert old radius usage
     if "1.3.7" in versions and "older" not in versions:
         radius_pos = wmlfind("radius=", WmlIterator(lines, filename))
