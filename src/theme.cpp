@@ -724,8 +724,26 @@ std::vector<std::string> theme::get_known_themes(){
         return(names);
 }
 
-theme::menu* theme::refresh_title(std::string id, const std::string new_title){
+theme::menu* theme::refresh_title(const std::string& id, const std::string& new_title){
 	theme::menu* res = NULL;
+
+	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
+		if (m->get_id() == id) { 
+			res = &(*m); 
+			res->set_title(new_title);
+		}
+	}
+
+	return res;
+}
+
+theme::menu* theme::refresh_title2(const std::string& id, const std::string& title_tag){
+	theme::menu* res = NULL;
+	std::string new_title = "";
+
+	config& cfg = find_ref(id, cfg_, false);
+	if (! cfg[title_tag].empty())
+		new_title = cfg[title_tag];
 
 	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
 		if (m->get_id() == id) { 

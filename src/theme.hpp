@@ -203,7 +203,8 @@ public:
 
 	//Changes the title of a menu entry, identified by its id.
 	//If no menu entry is found, an empty menu object is being returned.
-	menu* refresh_title(std::string id, const std::string new_title);
+	menu* refresh_title(const std::string& id, const std::string& new_title);
+	menu* refresh_title2(const std::string& id, const std::string& title_tag);
 
 	const status_item* get_status_item(const std::string& item) const;
 
