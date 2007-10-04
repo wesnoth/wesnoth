@@ -2570,11 +2570,11 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 								first_attack = false;
 							} else {
 								if (!times)
-									description += t_string(N_("; "), "wesnoth");
+									description += t_string(N_(" and "), "wesnoth");
 							}
 
 							if (!times)
-								description += t_string(a->name(), "wesnoth") + " " + desc;
+								description += t_string(a->name(), "wesnoth") + ": " + desc;
 						}
 					}
 				} else if(apply_to == "hitpoints") {
@@ -2640,7 +2640,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						if (!times)
 							description += (increase[0] != '-' ? "+" : "") +
 								increase + " " +
-								t_string(N_("Moves"), "wesnoth");
+								t_string(N_("moves"), "wesnoth");
 
 						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
 					}
@@ -2893,10 +2893,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						if(first_attack) {
 							first_attack = false;
 						} else {
-							description += t_string(N_("; "), "wesnoth");
+							description += t_string(N_(" and "), "wesnoth");
 						}
 
-						description += t_string(a->name(), "wesnoth") + " " + desc;
+						description += t_string(a->name(), "wesnoth") + ": " + desc;
 					}
 				}
 			} else if(apply_to == "hitpoints") {
@@ -2912,8 +2912,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 				if(increase.empty() == false) {
 					description += (increase[0] != '-' ? "+" : "") +
-						increase + " " +
-						t_string(N_("Moves"), "wesnoth");
+						increase + t_string(N_(" move"), "wesnoth");
 				}
 			} else if(apply_to == "max_experience") {
 				const std::string& increase = (**i.first)["increase"];
@@ -2927,7 +2926,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		}
 
 		if (apply_times == "per level" && !times)
-			description += t_string(N_("/level"), "wesnoth");
+			description += t_string(N_(" per level"), "wesnoth");
 
 		if(!description.empty())
 			effects_description.push_back(description);
@@ -2943,14 +2942,14 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	}
 
 	if(effects_description.empty() == false) {
-		description += t_string(N_("("), "wesnoth");
+		//description += t_string(N_("("), "wesnoth");
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
 			description += *i;
 			if(i+1 != effects_description.end())
-				description += t_string(N_("; "), "wesnoth");
+				description += t_string(N_(" and "), "wesnoth");
 		}
-		description += t_string(N_(")"), "wesnoth");
+		//description += t_string(N_(")"), "wesnoth");
 	}
 
 	description += "\n";
