@@ -724,3 +724,15 @@ std::vector<std::string> theme::get_known_themes(){
         return(names);
 }
 
+theme::menu* theme::refresh_title(std::string id, const std::string new_title){
+	theme::menu* res = NULL;
+
+	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m){
+		if (m->get_id() == id) { 
+			res = &(*m); 
+			res->set_title(new_title);
+		}
+	}
+
+	return res;
+}

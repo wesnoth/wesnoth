@@ -182,6 +182,8 @@ public:
 		const std::string& image() const { return image_; }
 
 		const std::vector<std::string>& items() const { return items_; }
+
+		void set_title(const std::string new_title) { title_ = new_title; }
 	private:
 		bool context_;
 		std::string title_, tooltip_, image_, type_;
@@ -198,6 +200,10 @@ public:
 
 	const menu* context_menu() const
 		{ return context_.is_context() ? &context_ : NULL; }
+
+	//Changes the title of a menu entry, identified by its id.
+	//If no menu entry is found, an empty menu object is being returned.
+	menu* refresh_title(std::string id, const std::string new_title);
 
 	const status_item* get_status_item(const std::string& item) const;
 
