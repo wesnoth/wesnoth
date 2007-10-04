@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file multiplayer_create.hpp
+//!
+
 #ifndef MULTIPLAYER_CREATE_HPP_INCLUDED
 #define MULTIPLAYER_CREATE_HPP_INCLUDED
 
@@ -69,8 +73,8 @@ public:
 
 		bool saved_game;
 
-		// If the game is to be randomly generated, the map generator
-		// will create the scenario data in this variable:
+		//! If the game is to be randomly generated, the map generator
+		//! will create the scenario data in this variable
 		config scenario_data;
 	};
 
@@ -141,7 +145,7 @@ private:
 	parameters parameters_;
 };
 
-}
+} // end namespace mp
 
 #endif
 

@@ -12,6 +12,10 @@
    See the COPYING file for more details.
 */
 
+/** @file multiplayer_create.cpp 
+ *  Create a multiplayer-game: select map, players, options etc.
+ */
+
 #include "global.hpp"
 
 #include <memory>
@@ -83,16 +87,16 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	minimap_rect_(null_rect),
 	generator_(NULL)
 {
-	//build the list of scenarios to play
+	// Build the list of scenarios to play
 
-	//add the 'load game' option
+	// Add the 'load game' option
 	std::string markup_txt = "`~";
 	std::string help_sep = " ";
 	help_sep[0] = HELP_STRING_SEPARATOR;
 	std::string menu_help_str = help_sep + _("Load Game");
 	map_options_.push_back(markup_txt + _("Load Game...") + menu_help_str);
 
-	//user maps
+	// User maps
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
 
 	for(unsigned int i = 0; i < user_maps_.size(); i++)
@@ -101,7 +105,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 		map_options_.push_back(user_maps_[i] + menu_help_str);
 	}
 
-	//standard maps
+	// Standard maps
 	const config::child_list& levels = cfg.get_children("multiplayer");
 	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j)
 	{
@@ -113,7 +117,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 		}
 	}
 
-	//create the scenarios menu
+	// Create the scenarios menu
 	maps_menu_.set_items(map_options_);
 	if (size_t(preferences::map()) < map_options_.size())
 		maps_menu_.move_selection(preferences::map());
@@ -215,7 +219,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 
 create::~create()
 {
-	// only save the settings if 'accepted' the dialog
+	// Only save the settings if the dialog was 'accepted'
 	if(get_result() != CREATE) {
 		return;
 	}
@@ -231,10 +235,10 @@ create::~create()
 	preferences::set_countdown_turn_bonus(parameters_.mp_countdown_turn_bonus);
 	preferences::set_countdown_reservoir_time(parameters_.mp_countdown_reservoir_time);
 	preferences::set_countdown_action_bonus(parameters_.mp_countdown_action_bonus);
-	preferences::set_era(era_combo_.selected()); // FIXME: may be broken if new eras are added
+	preferences::set_era(era_combo_.selected()); //! @todo FIXME: may be broken if new eras are added
 	preferences::set_map(map_selection_);
 
-	// When using map settings, the following variables are determined by the map
+	// When using map settings, the following variables are determined by the map,
 	// so don't store them as the new preferences.
 	if(!parameters_.use_map_settings) {
 		preferences::set_fog(parameters_.fog_game);
@@ -263,15 +267,15 @@ create::parameters& create::get_parameters()
 	if(mp_countdown_reservoir_time_val > 0 && mp_countdown_init_time_val > mp_countdown_reservoir_time_val)
 		mp_countdown_init_time_val = mp_countdown_reservoir_time_val;
 
-	// Updates the values in the "parameters_" member to match the values
-	// selected by the user with the widgets:
+	// Updates the values in the "parameters_" member to match 
+	// the values selected by the user with the widgets:
 	parameters_.name = name_entry_.text();
 	if (size_t(era_combo_.selected()) >= era_list.size()) {
 		throw config::error(_("Invalid era selected"));
 	}
 	parameters_.era = (*era_list[era_combo_.selected()])["id"];
 	parameters_.num_turns = turns;
-	//CHECK
+	// CHECK
 	parameters_.mp_countdown_init_time = mp_countdown_init_time_val;
 	parameters_.mp_countdown_turn_bonus = mp_countdown_turn_bonus_val;
 	parameters_.mp_countdown_reservoir_time = mp_countdown_reservoir_time_val;
@@ -363,13 +367,13 @@ void create::process_event()
 	countdown_action_bonus_label_.set_text(buf.str());
 
 
-	//Villages can produce between 1 and 10 gold a turn
+	// Villages can produce between 1 and 10 gold a turn
 	const int village_gold = village_gold_slider_.value();
 	buf.str("");
 	buf << _("Village Gold: ") << village_gold;
 	village_gold_label_.set_text(buf.str());
 
-	//experience modifier
+	// Experience modifier
 	const int xpmod = xp_modifier_slider_.value();
 	buf.str("");
 
@@ -413,7 +417,7 @@ void create::process_event()
 					map_data = read_map(parameters_.scenario_data["map"]);
 				}
 
-				//if the map should be randomly generated
+				// If the map should be randomly generated
 				if(parameters_.scenario_data["map_generation"] != "") {
 					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));
 				}
@@ -441,12 +445,13 @@ void create::process_event()
 	if(generator_ != NULL && (map_changed || regenerate_map_.pressed())) {
 		const cursor::setter cursor_setter(cursor::WAIT);
 
-		//generate the random map
+		// Generate the random map
 		cursor::setter cur(cursor::WAIT);
 		parameters_.scenario_data = generator_->create_scenario(std::vector<std::string>());
 		map_changed = true;
 
-		//set the scenario to have placing of sides based on the terrain they prefer
+		// Set the scenario to have placing of sides 
+		// based on the terrain they prefer
 		parameters_.scenario_data["modify_placing"] = "true";
 	}
 
@@ -470,8 +475,8 @@ void create::process_event()
 
 		launch_game_.enable(map.get() != NULL);
 
-		//if there are less sides in the configuration than there are starting
-		//positions, then generate the additional sides
+		// If there are less sides in the configuration than there are 
+		// starting positions, then generate the additional sides
 		const int map_positions = map.get() != NULL ? map->num_valid_starting_positions() : 0;
 
 		for(int pos =  parameters_.scenario_data.get_children("side").size(); pos < map_positions; ++pos) {
@@ -515,8 +520,8 @@ void create::process_event()
 	if(map_changed || use_map_settings_.pressed()) {
 		const bool map_settings = use_map_settings_.checked();
 
-		// if the map settings are wanted use them if not properly defined
-		// fall back to the default settings
+		// If the map settings are wanted use them,
+		// if not properly defined fall back to the default settings
 		turns_slider_.set_value(map_settings ?
 			settings::get_turns(parameters_.scenario_data["turns"]) :
 			preferences::turns());
@@ -529,10 +534,11 @@ void create::process_event()
 			settings::use_random_start_time(parameters_.scenario_data["random_start_time"]) :
 			preferences::random_start_time());
 
-		// These are per player, always show of player 1 this might not be 100% correct,
-		// but at the moment it's not possible to show the fog and shroud per player.
+		// These are per player, always show values of player 1.
+		//! @todo This might not be 100% correct, but at the moment 
+		//! it is not possible to show the fog and shroud per player.
 		// This might change in the future.
-		// NOTE when 'load game' is selected there are no sides
+		// NOTE when 'load game' is selected there are no sides.
 		if(parameters_.scenario_data.get_children("side").size()) {
 
 			village_gold_slider_.set_value(map_settings ?
@@ -551,7 +557,7 @@ void create::process_event()
 				preferences::shroud());
 		}
 
-		// set the widget states
+		// Set the widget states
 		turns_slider_.enable(!map_settings);
 		village_gold_slider_.enable(!map_settings);
 		xp_modifier_slider_.enable(!map_settings);
@@ -696,7 +702,7 @@ void create::layout_children(const SDL_Rect& rect)
 	maps_menu_.set_items(map_options_);
 	maps_menu_.move_selection(mapsel_save);
 
-	// Third column: big buch of options
+	// Third column: big bunch of options
 	ypos = ypos_columntop;
 	xpos += 200 + column_border_size;
 
@@ -840,7 +846,7 @@ void create::layout_children(const SDL_Rect& rect)
 	// Second column: map menu
 	ypos = ypos_columntop;
 	xpos += column_border_size;
-	// Third column: big buch of options
+	// Third column: big list of options
 	ypos = ypos_columntop;
 
 	xpos += 93 + column_border_size;
@@ -913,4 +919,5 @@ void create::layout_children(const SDL_Rect& rect)
 
 #endif
 
-}
+} // namespace mp
+
