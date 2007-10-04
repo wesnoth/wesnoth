@@ -743,11 +743,11 @@ utf8_string lowercase(const utf8_string& s)
 //! Truncates a string.
 //!
 //! If the string send has more than size utf-8 characters it will be truncated
-//! to this size. No assumptions can be made about the actual size of the 
-//! string.
+//! to this size. 
+//! No assumptions can be made about the actual size of the string.
 //! 
-//! @param str[in]      String which can be converted to utf-8.
-//! @param str[out]     String which contains maximal size utf-8 characters.
+//! @param[in]  str     String which can be converted to utf-8.
+//! @param[out] str     String which contains maximal size utf-8 characters.
 //! @param size         The size to truncate at.
 void truncate_as_wstring(std::string& str, const size_t size)
 {
@@ -758,13 +758,14 @@ void truncate_as_wstring(std::string& str, const size_t size)
 	}
 }
 
-// match using '*' as any number of characters (including none), and '?' as any one character
+//! Match using '*' as any number of characters (including none), 
+//! and '?' as any one character.
 bool wildcard_string_match(const std::string& str, const std::string& match)
 {
 	const bool wild_matching = (!match.empty() && match[0] == '*');
 	const std::string::size_type solid_begin = match.find_first_not_of('*');
 	const bool have_solids = (solid_begin != std::string::npos);
-	//check the simple case first
+	// Check the simple case first
 	if(str.empty() || !have_solids) {
 		return wild_matching || str == match;
 	}
@@ -775,7 +776,7 @@ bool wildcard_string_match(const std::string& str, const std::string& match)
 	bool matches;
 	do {
 		matches = true;
-		//now try to place the str into the solid space
+		// Now try to place the str into the solid space
 		const std::string::size_type test_len = str.length() - current;
 		for(std::string::size_type i=0; i < solid_len && matches; ++i) {
 			char solid_c = match[solid_begin + i];
@@ -784,7 +785,7 @@ bool wildcard_string_match(const std::string& str, const std::string& match)
 			}
 		}
 		if(matches) {
-			//the solid space matched, now consume it and attempt to find more
+			// The solid space matched, now consume it and attempt to find more
 			const std::string consumed_match = (solid_begin+solid_len < match.length())
 				? match.substr(solid_end) : "";
 			const std::string consumed_str = (solid_len < test_len)
