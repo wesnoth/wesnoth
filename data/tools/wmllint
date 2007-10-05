@@ -946,12 +946,12 @@ def hack_syntax(filename, lines):
                 break
             m = re.search(r"(\s+)image_short=(.*)", lines[i])
             if m:
-                image_block = expanded.replace("\n", "\n" + m.group(1))
+                image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
                 lines[i] = m.group(1) + image_block % (m.group(2), "melee")
                 modcount += 1
             m = re.search(r"(\s+)image_long=(.*)", lines[i])
             if m:
-                image_block = expanded.replace("\n", "\n" + m.group(1))
+                image_block = expanded.replace("\n", "\n" + m.group(1)) + "\n"
                 lines[i] = m.group(1) + image_block % (m.group(2), "ranged")
                 modcount += 1
     # More syntax transformations would go here.
