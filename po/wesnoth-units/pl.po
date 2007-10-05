@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-09-30 12:15+0200\n"
+"POT-Creation-Date: 2007-10-05 14:05+0200\n"
 "PO-Revision-Date: 2007-10-04 19:54+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -184,7 +184,8 @@ msgstr ""
 #: data/core/units/elves/Scout.cfg:33 data/core/units/elves/Marshal.cfg:35
 #: data/core/units/elves/Ranger.cfg:59 data/core/units/elves/Outrider.cfg:32
 #: data/core/units/elves/Archer.cfg:24 data/core/units/elves/Captain.cfg:36
-#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Hero.cfg:22
+#: data/core/units/elves/Rider.cfg:34 data/core/units/elves/Lord.cfg:23
+#: data/core/units/elves/High_Lord.cfg:60 data/core/units/elves/Hero.cfg:22
 #: data/core/units/elves/Champion.cfg:23 data/core/units/elves/Fighter.cfg:23
 #: data/core/units/elves/Sharpshooter.cfg:48
 #: data/core/units/nagas/Warrior.cfg:28 data/core/units/nagas/Myrmidon.cfg:29
@@ -1077,7 +1078,8 @@ msgstr ""
 msgid "entangle"
 msgstr "oplątanie"
 
-#: data/core/units/elves/Enchantress.cfg:48
+#: data/core/units/elves/Enchantress.cfg:48 data/core/units/elves/Lord.cfg:32
+#: data/core/units/elves/High_Lord.cfg:69
 #: data/core/units/elves/Sorceress.cfg:50 data/core/units/elves/Sylph.cfg:54
 msgid "faerie fire"
 msgstr "płomień wróżek"
@@ -1113,6 +1115,44 @@ msgstr ""
 "kompetentnego wojownika w mistrza walki. Wojownicy uznani za bohaterów "
 "świetnie radzą sobie zarówno z mieczem, jak i łukiem, a ich umiejętności "
 "nigdy się nie pogarszają z powodu braku ćwiczeń."
+
+#: data/core/units/elves/High_Lord.cfg:4
+#, fuzzy
+msgid "Elvish High Lord"
+msgstr "Elficki wojownik"
+
+#: data/core/units/elves/High_Lord.cfg:18
+msgid ""
+"The leaders of the elves do not fall sallow and frail with age. Rather, it "
+"is then that they grow to their true potential. Quiet and contemplative in "
+"times of peace, a High Lord in the full of his wrath is an awesome sight "
+"indeed."
+msgstr ""
+
+#: data/core/units/elves/Lady.cfg:5
+#, fuzzy
+msgid "female^Elvish Lady"
+msgstr "Elficka druidka"
+
+#: data/core/units/elves/Lady.cfg:20
+msgid ""
+"Elves choose their leaders for their power and wisdom; foresight is what has "
+"protected them in times of uncertainty. Their just reign is rewarded by the "
+"unflagging fealty of their people, which is the greatest gift any ruler "
+"could ask for."
+msgstr ""
+
+#: data/core/units/elves/Lord.cfg:4
+#, fuzzy
+msgid "Elvish Lord"
+msgstr "Krasnoludzki władca"
+
+#: data/core/units/elves/Lord.cfg:17
+msgid ""
+"The nobility of the elves are possessed of merit to match their standing in "
+"society. Elvish Lords are the wisest and strongest of their people, and are "
+"fearsome in their command of magic."
+msgstr ""
 
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
