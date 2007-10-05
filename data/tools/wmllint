@@ -715,45 +715,44 @@ def hack_syntax(filename, lines):
     # Lift new_attack animation blocks within [effect] tags
     # Note: This assumes that the animation WML goes last in the [effect] WML
     # with nothing after it, and will fail if that is not true.
-    if future:
-        in_effect = False
-        attackname = None
-        converting = False
-        for i in range(len(lines)):
-            if "no-syntax-rewrite" in lines[i]:
-                break
-            elif "[effect]" in lines[i]:
-                in_effect = True
-            elif "apply_to=new_attack" in lines[i]:
-                converting = True
-            elif "[/effect]" in lines[i]:
-                converting = in_effect = False
-            elif in_effect and not attackname:
-                #print filename + ":" + `i+1` + ";" + `lines[i]` 
-                fields = lines[i].strip().split('#')
-                syntactic = fields[0]
-                comment = ""
-                if len(fields) > 1:
-                    comment = fields[1]
-                if syntactic.strip().startswith("name"):
-                    attackname = syntactic.split("=")[1].strip()
-            elif converting and "[animation]" in lines[i]:
-                print '"%s", line %d: converting [animation] in [effect] '%(filename, i+1)
-                ws = leader(lines[i])
-                outer = outdent(ws)
-                assert attackname != None
-                before = outer + "[/effect]\n" \
-                         + outer + "[effect]\n" \
-                         + ws + "apply_to=new_animation\n"
-                after = ws + baseindent + "[attack_filter]\n" \
-                        + ws + baseindent*2 + "name=" + attackname +" \n" \
-                        + ws + baseindent + "[/attack_filter]\n"
-                lines[i] = before \
-                           + lines[i].replace("animation", "attack_anim") \
-                           + after
-                modcount += 1
-            elif converting and "[/animation]" in lines[i]:
-                lines[i] = lines[i].replace("animation", "attack_anim")
+    in_effect = False
+    attackname = None
+    converting = False
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        elif "[effect]" in lines[i]:
+            in_effect = True
+        elif "apply_to=new_attack" in lines[i]:
+            converting = True
+        elif "[/effect]" in lines[i]:
+            converting = in_effect = False
+        elif in_effect and not attackname:
+            #print filename + ":" + `i+1` + ";" + `lines[i]` 
+            fields = lines[i].strip().split('#')
+            syntactic = fields[0]
+            comment = ""
+            if len(fields) > 1:
+                comment = fields[1]
+            if syntactic.strip().startswith("name"):
+                attackname = syntactic.split("=")[1].strip()
+        elif converting and "[animation]" in lines[i]:
+            print '"%s", line %d: converting [animation] in [effect] '%(filename, i+1)
+            ws = leader(lines[i])
+            outer = outdent(ws)
+            assert attackname != None
+            before = outer + "[/effect]\n" \
+                     + outer + "[effect]\n" \
+                     + ws + "apply_to=new_animation\n"
+            after = ws + baseindent + "[attack_filter]\n" \
+                    + ws + baseindent*2 + "name=" + attackname +" \n" \
+                    + ws + baseindent + "[/attack_filter]\n"
+            lines[i] = before \
+                       + lines[i].replace("animation", "attack_anim") \
+                       + after
+            modcount += 1
+        elif converting and "[/animation]" in lines[i]:
+            lines[i] = lines[i].replace("animation", "attack_anim")
     # Lift [frame] declarations directly within attacks
     # Note: This assumes that the frame sequence goes last in the [attack] WML
     # with nothing after it, and will fail if that is not true.
