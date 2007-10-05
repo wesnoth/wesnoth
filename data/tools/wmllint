@@ -742,13 +742,15 @@ def hack_syntax(filename, lines):
                 ws = leader(lines[i])
                 outer = outdent(ws)
                 assert attackname != None
-                insertion = outer + "[/effect]\n" \
-                            + outer + "[effect]\n" \
-                            + ws + "apply_to=new_animation\n" \
-                            + ws + "[attack_filter]\n" \
-                            + ws + baseindent + "name=" + attackname +" \n" \
-                            + ws + "[/attack_filter]\n"
-                lines[i] = insertion + lines[i].replace("animation", "attack_anim")
+                before = outer + "[/effect]\n" \
+                         + outer + "[effect]\n" \
+                         + ws + "apply_to=new_animation\n"
+                after = ws + "[attack_filter]\n" \
+                        + ws + baseindent + "name=" + attackname +" \n" \
+                        + ws + "[/attack_filter]\n"
+                lines[i] = before \
+                           + lines[i].replace("animation", "attack_anim") \
+                           + after
                 modcount += 1
             elif converting and "[/animation]" in lines[i]:
                 lines[i] = lines[i].replace("animation", "attack_anim")
