@@ -745,9 +745,9 @@ def hack_syntax(filename, lines):
                 before = outer + "[/effect]\n" \
                          + outer + "[effect]\n" \
                          + ws + "apply_to=new_animation\n"
-                after = ws + "[attack_filter]\n" \
-                        + ws + baseindent + "name=" + attackname +" \n" \
-                        + ws + "[/attack_filter]\n"
+                after = ws + baseindent + "[attack_filter]\n" \
+                        + ws + baseindent*2 + "name=" + attackname +" \n" \
+                        + ws + baseindent + "[/attack_filter]\n"
                 lines[i] = before \
                            + lines[i].replace("animation", "attack_anim") \
                            + after
