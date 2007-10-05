@@ -42,7 +42,7 @@ class unit_animation:public animated<unit_frame>
 		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
 		// only to support all [attack_anim] format, to remove at 1.3.10 time
-		void back_compat_add_name(const std::string name);
+		void back_compat_add_name(const std::string name="",const std::string range ="");
 		const animated<unit_frame> &get_missile_anim() const {return missile_anim_;} 
 	private:
 		t_translation::t_list terrain_types_;

@@ -40,7 +40,7 @@ class attack_type
 public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
-	attack_type(const config& cfg, const std::string& id, const std::string& image_fighting, bool with_animations=true);
+	attack_type(const config& cfg, const std::string& id, bool with_animations=true);
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }
@@ -240,7 +240,6 @@ public:
 
 private:
 	void operator=(const unit_type& o);
-	const std::string& image_fighting(attack_type::RANGE range) const;
 
 	unit_type* gender_types_[2];
 

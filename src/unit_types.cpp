@@ -53,7 +53,7 @@ std::string unit_id_test(const std::string& id)
 	return id;
 }
 
-attack_type::attack_type(const config& cfg,const std::string& id, const std::string& image_fighting, bool with_animations)
+attack_type::attack_type(const config& cfg,const std::string& id, bool with_animations)
 {
 	cfg_ = cfg;
 	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
@@ -77,8 +77,6 @@ attack_type::attack_type(const config& cfg,const std::string& id, const std::str
 				animation_.back().back_compat_add_name(cfg["name"]);
 			}
 		}
-		animation_.push_back(unit_animation(-150,unit_frame(image_fighting,300),"attack",unit_animation::DEFAULT_ANIM));
-		animation_.back().back_compat_add_name(cfg["name"]);
 	}
 
 	id_ = unit_id_test(cfg["name"]);
@@ -780,6 +778,16 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		// this has been detected elsewhere, no deprecation message needed here
 	}
 	animations_.push_back(unit_animation(-150,unit_frame(image(),300),"attack",unit_animation::DEFAULT_ANIM));
+	if(!cfg_["image_short"].empty()) {
+		animations_.push_back(unit_animation(-150,unit_frame(image::locator(cfg_["image_short"]),300),"attack",unit_animation::DEFAULT_ANIM));
+		animations_.back().back_compat_add_name("","melee");
+		lg::wml_error<<"image_short is deprecated, support will be removed in 1.3.10 (in unit "<<id()<<")\n";
+	}
+	if(!cfg_["image_long"].empty()) {
+		animations_.push_back(unit_animation(-150,unit_frame(image::locator(cfg_["image_long"]),300),"attack",unit_animation::DEFAULT_ANIM));
+		animations_.back().back_compat_add_name("","ranged");
+		lg::wml_error<<"image_long is deprecated, support will be removed in 1.3.10 (in unit "<<id()<<")\n";
+	}
 	// always have an attack animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
 	const config::child_list& deaths = expanded_cfg.get_children("death");
@@ -882,22 +890,6 @@ const std::string& unit_type::name() const
 #endif
 
 
-const std::string& unit_type::image_fighting(attack_type::RANGE range) const
-{
-	static const std::string short_range("image_short");
-	static const std::string long_range("image_long");
-
-	const std::string& str = range == attack_type::LONG_RANGE ?
-	                                  long_range : short_range;
-	const std::string& val = cfg_[str];
-
-	if(!val.empty())
-		//lg::wml_error<<"image_short and image_long are deprecated, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
-		return val;
-	else
-		return image();
-}
-
 
 const std::string& unit_type::image_profile() const
 {
@@ -925,7 +917,7 @@ std::vector<attack_type> unit_type::attacks(bool with_animations) const
 	std::vector<attack_type> res;
 	for(config::const_child_itors range = cfg_.child_range("attack");
 	    range.first != range.second; ++range.first) {
-		res.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE), with_animations));
+		res.push_back(attack_type(**range.first,id(), with_animations));
 	}
 
 	return res;

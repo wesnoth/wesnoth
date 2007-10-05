@@ -267,10 +267,16 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 }
 
 
-void unit_animation::back_compat_add_name(const std::string name)
+void unit_animation::back_compat_add_name(const std::string name,const std::string range)
 {
 	config tmp;
-	tmp["name"] = name;
 	event_.push_back("attack");
-	primary_attack_filter_.push_back(tmp);
+	if(!name.empty()) {
+		tmp["name"] = name;
+		primary_attack_filter_.push_back(tmp);
+	}
+	if(!range.empty()) {
+		tmp["range"] = range;
+		primary_attack_filter_.push_back(tmp);
+	}
 }

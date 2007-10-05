@@ -1237,7 +1237,7 @@ void unit::read(const config& cfg, bool use_traits)
 			t_atks.merge_with(u_atks);
 			for(range = t_atks.child_range("attack");
 				range.first != range.second; ++range.first) {
-				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+				attacks_.push_back(attack_type(**range.first,id()));
 			}
 			std::vector<attack_type>::iterator at;
 			for(at = attacks_.begin(); at != attacks_.end(); ++at) {
@@ -1249,7 +1249,7 @@ void unit::read(const config& cfg, bool use_traits)
 		} else {
 			for(config::const_child_itors range = cfg.child_range("attack");
 				range.first != range.second; ++range.first) {
-				attacks_.push_back(attack_type(**range.first,id(),image_fighting((**range.first)["range"] == "ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+				attacks_.push_back(attack_type(**range.first,id()));
 			}
 		}
 	} else {
@@ -1679,7 +1679,6 @@ void unit::set_defending(const game_display &disp,const gamemap::location& loc, 
 void unit::set_extra_anim(const game_display &disp,const gamemap::location& loc, std::string flag)
 {
 	state_ =  STATE_EXTRA;
-	printf("aaaaa %s\n",flag.c_str());
 	start_animation(disp,loc,choose_animation(disp,loc,flag),false);
 
 }
@@ -2541,7 +2540,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if(!description.empty()) cfg_["unit_description"] = description;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
-					attacks_.push_back(attack_type(**i.first,id(),image_fighting((**i.first)["range"]=="ranged" ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE)));
+					attacks_.push_back(attack_type(**i.first,id()));
 					// TODO backward compat code, to be removed in 1.3.10, support for old attack format ([animation] in [attack] )
 					animations_.insert(animations_.end(),attacks_.back().animation_.begin(),attacks_.back().animation_.end());
 				} else if(apply_to == "remove_attacks") {
