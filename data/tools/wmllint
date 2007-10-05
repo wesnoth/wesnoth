@@ -939,7 +939,7 @@ def hack_syntax(filename, lines):
     [attack_filter]
         range=%s
     [/attack_filter]
-[/animation]
+[/animation]\
 """
         for i in range(len(lines)):
             if "no-syntax-rewrite" in lines[i]:
