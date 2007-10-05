@@ -312,11 +312,9 @@ static void unit_attack_ranged(
 		damage >0)
 	     ){
 		const unit_frame& missile_frame = missile_animation.get_current_frame();
-		double pos = missile_frame.offset(missile_animation.get_current_frame_time());
-		if(pos == -20.0) {
-			pos = double(animation_time -missile_animation.get_begin_time())/
-				double(missile_animation.get_end_time()-missile_animation.get_begin_time());
-		}
+		double pos = missile_frame.offset(missile_animation.get_current_frame_time(),
+				double(animation_time -missile_animation.get_begin_time())/
+				double(missile_animation.get_end_time()-missile_animation.get_begin_time()));
 		disp->invalidate(b);
 		disp->invalidate(a);
 		if(leader_loc.valid()) disp->invalidate(leader_loc);

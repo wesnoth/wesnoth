@@ -1847,8 +1847,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		}
 	}
 
-	double tmp_offset = current_frame.offset(anim_->get_current_frame_time());
-	if(tmp_offset == -20.0) tmp_offset = offset_;
+	double tmp_offset = current_frame.offset(anim_->get_current_frame_time(),offset_);
 	int d2 = disp.hex_size() / 2;
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2 - height_adjust;
@@ -2080,8 +2079,7 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 
 	// Very early calls, anim not initialized yet
 	double tmp_offset=offset_;
-	if(anim_)tmp_offset= anim_->get_current_frame().offset(anim_->get_animation_time());
-	if(tmp_offset == -20.0) tmp_offset = offset_;
+	if(anim_)tmp_offset= anim_->get_current_frame().offset(anim_->get_animation_time(),offset_);
 
 	// Invalidate adjacent neighbours if we don't stay in our hex
 	if(tmp_offset != 0) {

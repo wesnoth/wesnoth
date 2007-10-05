@@ -86,8 +86,8 @@ class unit_frame {
 		fixed_t highlight_ratio(int current_time) const
 			{  return ftofxp(highlight_ratio_.get_current_element(current_time)); }
 
-		double offset(int current_time) const
-			{ return offset_.get_current_element(current_time); }
+		double offset(int current_time,double default_val =0.0) const
+			{ return offset_.get_current_element(current_time) == -20 ? default_val : offset_.get_current_element(current_time) ; }
 
 		bool does_not_change() const;
 	private:
