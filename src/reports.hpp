@@ -26,9 +26,9 @@
 //various game and unit statistics
 namespace reports {
 
-       enum TYPE { UNIT_DESCRIPTION, UNIT_TYPE, UNIT_LEVEL, UNIT_AMLA,
+	enum TYPE { UNIT_DESCRIPTION, UNIT_TYPE, UNIT_LEVEL, UNIT_AMLA,
 		    UNIT_TRAITS, UNIT_STATUS,
-	            UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP,
+		    UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP,
 		    UNIT_ADVANCEMENT_OPTIONS, UNIT_MOVES, UNIT_WEAPONS,
 		    UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
 		    TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES,
@@ -45,7 +45,7 @@ namespace reports {
 		// Invariant: either text or image should be empty
 		// It would be okay to create a class for this, but it's a pretty simple
 		// invariant so I left it like the original report class.
-	        image::locator image;
+		image::locator image;
 		std::string text;
 
 		std::string tooltip;
@@ -88,11 +88,11 @@ namespace reports {
 	report generate_report(TYPE type,
 			       std::map<reports::TYPE, std::string> report_contents,
 			       const gamemap& map, unit_map& units,
-	                       const std::vector<team>& teams, const team& current_team,
-	                       unsigned int current_side, int unsigned active_side,
-	                       const gamemap::location& loc, const gamemap::location& mouseover,
-	                       const gamestatus& status, const std::set<std::string>& observers,
-	                       const config& level);
+			       const std::vector<team>& teams, const team& current_team,
+			       unsigned int current_side, int unsigned active_side,
+			       const gamemap::location& loc, const gamemap::location& mouseover,
+			       const gamestatus& status, const std::set<std::string>& observers,
+			       const config& level);
 }
 
 #endif

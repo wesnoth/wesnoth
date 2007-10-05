@@ -75,8 +75,8 @@ struct player_info
 {
 	player_info():gold(-1) {}
 
-	std::string name;	/** < Stores the current_player name */
-	int gold;			/** < Amount of gold the player has saved */
+	std::string name;                  /** < Stores the current_player name */
+	int gold;                          /** < Amount of gold the player has saved */
 	std::vector<unit> available_units; /** < Units the player may recall */
 	std::set<std::string> can_recruit; /** < Units the player has the ability to recruit */
 };
@@ -91,15 +91,15 @@ public:
 	~game_state();
 	game_state& operator=(const game_state& state);
 
-	std::string label;			//!< Name of the game (e.g. name of save file).
-	std::string version;		//!< Version game was created with.
-	std::string campaign_type;	//!< Type of the game - campaign, multiplayer etc.
+	std::string label;                               //!< Name of the game (e.g. name of save file).
+	std::string version;                             //!< Version game was created with.
+	std::string campaign_type;                       //!< Type of the game - campaign, multiplayer etc.
 
-	std::string campaign_define; //! If there is a define the campaign uses to customize data
-	std::vector<std::string> campaign_xtra_defines; // more customization of data
+	std::string campaign_define;                     //! If there is a define the campaign uses to customize data
+	std::vector<std::string> campaign_xtra_defines;  // more customization of data
 
-	std::string campaign;	//!< the campaign being played
-	std::string scenario;	//!< the scenario being played
+	std::string campaign;   //!< the campaign being played
+	std::string scenario;   //!< the scenario being played
 	std::string completion; //!< running. victory, or defeat
 
 	//! Information about campaign players who carry resources

@@ -78,6 +78,7 @@ public:
 		std::string team_name;
 		std::string user_team_name;
 		std::string save_id;
+		// 'id' of the current player (not necessarily unique)
 		std::string current_player;
 		std::string countdown_time;
 		int action_bonus_count;
