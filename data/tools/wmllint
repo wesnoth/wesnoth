@@ -256,7 +256,10 @@ filemoves = {
 	("Halbardier" , "Halberdier"),
     ),
     "1.3.7" : (),
-    "1.3.8" : (),
+    "1.3.8" : (
+    ("{ABILITY_HEALS}", "{ABILITY_HEALS 4}")
+    ("{ABILITY_CURES}", "{ABILITY_CURES_POISON}{ABILITY_HEALS 8}")
+    ),
     # An empty sentinel value at end is required.
     "trunk" : (),
 }
