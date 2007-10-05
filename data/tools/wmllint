@@ -1084,7 +1084,7 @@ def translator(filename, mapxforms, textxform):
                 for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
             # Next two lines should be removed when the map-border code lands.
-            if not future:
+            if not maplift:
                 add_border = False
             if add_border:
                 if verbose:
@@ -1242,6 +1242,7 @@ if __name__ == '__main__':
             "revert",
             "diffs",
             "stripcr",
+            "maplift",
             ])
     except getopt.GetoptError:
         help()
@@ -1254,6 +1255,7 @@ if __name__ == '__main__':
     diffs = False
     revert = False
     stripcr = False
+    maplift = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -1275,6 +1277,8 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
+        elif switch == 'maplift':
+            maplift = True
 
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
