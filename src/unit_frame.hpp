@@ -33,7 +33,7 @@ class progressive_string {
 	public:
 		progressive_string(const std::string& data = "",int duration = 0);
 		int duration() const;
-		const std::string & get_current_element(int time) const;
+		const std::string & get_current_element(int time,const std::string& default_val="") const;
 		bool does_not_change() const { return data_.size() <= 1; }
 	private:
 		std::vector<std::pair<std::string,int> > data_;
@@ -46,7 +46,7 @@ class progressive_
 public:
 	progressive_(const std::string& data = "", int duration = 0);
 	int duration() const;
-	const T get_current_element(int time) const;
+	const T get_current_element(int time, const T default_val = 0) const;
 	bool does_not_change() const;
 };
 
@@ -87,7 +87,7 @@ class unit_frame {
 			{  return ftofxp(highlight_ratio_.get_current_element(current_time)); }
 
 		double offset(int current_time,double default_val =0.0) const
-			{ return offset_.get_current_element(current_time) == -20 ? default_val : offset_.get_current_element(current_time) ; }
+			{ return offset_.get_current_element(current_time,default_val)  ; }
 
 		bool does_not_change() const;
 	private:

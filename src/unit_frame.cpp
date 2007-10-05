@@ -48,13 +48,12 @@ int progressive_string::duration() const
 	return total;
 
 }
-const std::string grr;
 
-const std::string& progressive_string::get_current_element(int current_time)const
+const std::string& progressive_string::get_current_element(int current_time,const std::string& default_val)const
 {
 	int time = 0;
 	unsigned int sub_halo = 0;
-	if(data_.empty()) return grr;
+	if(data_.empty()) return default_val;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		sub_halo++;
@@ -94,11 +93,11 @@ progressive_<T>::progressive_(const std::string &data, int duration)
 }
 
 template <class T>
-const T progressive_<T>::get_current_element(int current_time) const
+const T progressive_<T>::get_current_element(int current_time,const T default_val) const
 {
 	int time = 0;
 	unsigned int sub_halo = 0;
-	if(data_.empty()) return T();
+	if(data_.empty()) return default_val;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		sub_halo++;
@@ -151,7 +150,7 @@ unit_frame::unit_frame() :
 	 image_(), image_diagonal_(),halo_(), sound_(),
 	halo_x_(), halo_y_(), duration_(0),
 	blend_with_(0),blend_ratio_(),
-	highlight_ratio_("1.0"),offset_("-20")
+	highlight_ratio_("1.0"),offset_("")
 {
 }
 
@@ -166,11 +165,9 @@ unit_frame::unit_frame(const image::locator& image, int duration,
 	halo_y_(haloy,duration),
 	duration_(duration),
 	blend_with_(blend_color), blend_ratio_(blend_rate,duration),
-	highlight_ratio_(highlight,duration)
+	highlight_ratio_(highlight,duration),offset_(offset,duration)
 {
 	// let's decide of duration ourselves
-	if(offset.empty()) offset_=progressive_double("-20",duration);
-	else offset_=progressive_double(offset,duration);
 	duration_ = maximum<int>(duration_, highlight_ratio_.duration());
 	duration_ = maximum<int>(duration_, blend_ratio_.duration());
 	duration_ = maximum<int>(duration_, halo_.duration());
@@ -194,7 +191,7 @@ unit_frame::unit_frame(const config& cfg)
 	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
 	blend_ratio_ = progressive_double(cfg["blend_ratio"],duration_);
 	highlight_ratio_ = progressive_double(cfg["alpha"].empty()?"1.0":cfg["alpha"],duration_);
-	offset_ = progressive_double(cfg["offset"].empty()?"-20":cfg["offset"],duration_);
+	offset_ = progressive_double(cfg["offset"],duration_);
 
 }
 
