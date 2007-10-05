@@ -234,6 +234,10 @@ void playmp_controller::linger(upload_log& log)
 	}
 	beep_warning_time_=-1;
 
+	// change the end-turn button text to its alternate label
+	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title2"));
+	gui_->invalidate_theme();
+
 	// switch to observer viewpoint
 	gui_->set_team(0,true);
 	gui_->recalculate_minimap();
@@ -255,6 +259,11 @@ void playmp_controller::linger(upload_log& log)
                 log.quit(status_.turn());
                 throw;
         }
+
+	// revert the end-turn button text to its normal label
+	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
+	gui_->invalidate_theme();
+
         LOG_NG << "ending end-of-scenario linger";
 }
 

@@ -567,8 +567,9 @@ void playsingle_controller::linger(upload_log& log)
 	// is over.
 	gamestate_.completion = "running";
 
-	//FIXME: Change the button text
-	//gui::button* b = gui_->find_button("button-endturn");
+	// change the end-turn button text to its alternate label
+	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title2"));
+	gui_->invalidate_theme();
 
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
@@ -588,6 +589,11 @@ void playsingle_controller::linger(upload_log& log)
 		log.quit(status_.turn());
 		throw;
 	}
+
+	// revert the end-turn button text to its normal label
+	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
+	gui_->invalidate_theme();
+
 	LOG_NG << "ending end-of-scenario linger";
 }
 
