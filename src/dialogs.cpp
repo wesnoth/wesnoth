@@ -876,7 +876,11 @@ void campaign_preview_pane::draw_contents()
 		src_rect.w = minimum<int>(area.w,img->w);
 		src_rect.h = minimum<int>(max_height,img->h);
 		dst_rect.x = area.x+(area.w-src_rect.w)/2;
-		dst_rect.y = txt_area.y+(max_height-src_rect.h)/2;
+		dst_rect.y = txt_area.y+((max_height-src_rect.h)*8)/13;
+		if(dst_rect.y - area.y >= 400) {
+			//for really tall dialogs, just put it under the text
+			dst_rect.y = txt_area.y + font::get_max_height(font::SIZE_SMALL)*5;
+		}
 
 		SDL_BlitSurface(img,&src_rect,video().getSurface(),&dst_rect);
 
