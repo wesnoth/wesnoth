@@ -1000,12 +1000,14 @@ tagstack = []	# For tracking tag nesting
 
 def outermap(func, inmap):
     "Apply a transformation based on neighborhood to the outermost ring."
+    # Top and bottom rows
     for i in range(len(inmap[0])):
         inmap[0][i] = func(inmap[0][i])
-        inmap[len(inmap[0])-1][i] = func(inmap[len(inmap[0])-1][i])
+        inmap[len(inmap)-1][i] = func(inmap[len(inmap)-1][i])
+    # Leftmost and rightmost columns excluding top and bottom rows
     for i in range(1, len(inmap)-1):
         inmap[i][0] = func(inmap[i][0])
-        inmap[i][len(inmap)-1] = func(inmap[i][len(inmap)-1])
+        inmap[i][len(inmap[0])-1] = func(inmap[i][len(inmap[0])-1])
 
 def translator(filename, mapxforms, textxform):
     "Apply mapxform to map lines and textxform to non-map lines."
@@ -1279,7 +1281,7 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
-        elif switch == 'maplift':
+        elif switch == '--maplift':
             maplift = True
 
     if clean and revert:
