@@ -855,7 +855,7 @@ void campaign_preview_pane::draw_contents()
 	/* description text */
 	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,font::SIZE_SMALL,area.w-2*campaign_preview_border);
 	const std::vector<std::string> lines = utils::split(desc_text, '\n',utils::STRIP_SPACES);
-	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y,0,0 };
+	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y+campaign_preview_border,0,0 };
 
 	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
 	  txt_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,txt_area.x,txt_area.y);
@@ -877,7 +877,7 @@ void campaign_preview_pane::draw_contents()
 		src_rect.h = minimum<int>(max_height,img->h);
 		dst_rect.x = area.x+(area.w-src_rect.w)/2;
 		dst_rect.y = txt_area.y+((max_height-src_rect.h)*8)/13;
-		if(dst_rect.y - area.y >= 200) {
+		if(dst_rect.y - txt_area.h - txt_area.y >= 120) {
 			//for really tall dialogs, just put it under the text
 			dst_rect.y = txt_area.y + font::get_max_height(font::SIZE_SMALL)*5;
 		}
