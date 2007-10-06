@@ -472,8 +472,8 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 
 	// Prevent the menu to be larger than the screen
 	dim.menu_width = menu_->width();
-	if(dim.menu_width + image_width + padding_width > size_t(scr->w))
-		dim.menu_width = scr->w - image_width - padding_width;
+	if(dim.menu_width + image_width + padding_width + left_preview_pane_width + right_preview_pane_width > static_cast<size_t>(scr->w))
+		dim.menu_width = scr->w - image_width - padding_width - left_preview_pane_width - right_preview_pane_width;
 	if(dim.menu_width > text_width)
 		text_width = dim.menu_width;
 
