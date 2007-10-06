@@ -842,9 +842,9 @@ void campaign_preview_pane::draw_contents()
 
 	const SDL_Rect area = {
 		location().x+campaign_preview_border,
-		location().y+campaign_preview_border*5,
+		location().y,
 		location().w-campaign_preview_border*2,
-		location().h-campaign_preview_border*6 };
+		location().h };
 
 	/* background frame */
 	gui::dialog_frame f(video(), "", gui::dialog_frame::preview_style, false);

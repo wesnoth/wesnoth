@@ -35,6 +35,7 @@
 #include "language.hpp"
 #include "loadscreen.hpp"
 #include "widgets/menu.hpp"
+#include "marked-up_text.hpp"
 #include "multiplayer.hpp"
 #include "network.hpp"
 #include "playcampaign.hpp"
@@ -811,31 +812,35 @@ bool game_controller::new_campaign()
 		campaign_desc.push_back(std::pair<std::string,std::string>(desc,image));
 	}
 
-	int res = 0;
-
 	dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
 	if(campaign_names.size() <= 0) {
 		return false;
 	}
-
-	gui::dialog cmenu(disp(),_("Campaign"),
-				_("Choose the campaign you want to play:"),
-				gui::OK_CANCEL);
+	gui::dialog cmenu(disp(), _("Play a campaign"), " ", gui::OK_CANCEL);
 	cmenu.set_menu(campaign_names);
 	cmenu.add_pane(&campaign_preview);
-	cmenu.layout();
+	gui::dialog::dimension_measurements dim = cmenu.layout();
 	Uint16 screen_width = screen_area().w;
 	Uint16 dialog_width = cmenu.get_frame().get_layout().exterior.w;
 	if(screen_width < 850 && screen_width - dialog_width > 20) {
 		// On small resolutions, reduce the amount of unused horizontal space
-		campaign_preview.set_width(campaign_preview.width() + screen_width - dialog_width - 20); 
+		campaign_preview.set_width(campaign_preview.width() + screen_width - dialog_width - 20);
+		dim = cmenu.layout();
 	}
-	res = cmenu.show();
-	if(res == -1) {
+	SDL_Rect& preview_loc = dim.panes[&campaign_preview];
+	preview_loc.y = dim.menu_y;
+	if(dim.menu_height > 0) {
+		preview_loc.h = dim.menu_height;
+	} else {
+		preview_loc.h = cmenu.get_menu().height();
+	}
+	cmenu.set_layout(dim);
+
+	if(cmenu.show() == -1) {
 		return false;
 	}
 
-	const config& campaign = *campaigns[res];
+	const config& campaign = *campaigns[cmenu.result()];
 
 	state_.campaign = campaign["id"];
 	state_.scenario = campaign["first_scenario"];
