@@ -491,11 +491,11 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 
 	const size_t text_and_image_height = image_height > total_text_height ? image_height : total_text_height;
 
-	int total_height = text_and_image_height + padding_height + menu_->height() +
+	const int total_height = text_and_image_height + padding_height + menu_->height() +
 		text_widget_height + check_button_height;
 
 	dim.interior.w = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
-	dim.interior.h = maximum<int>(total_height,int(preview_pane_height));
+	dim.interior.h = maximum<int>(total_height,static_cast<int>(preview_pane_height));
 	dim.interior.x = maximum<int>(0,dim.x >= 0 ? dim.x : scr->w/2 - (dim.interior.w + left_preview_pane_width + right_preview_pane_width)/2);
 	dim.interior.y = maximum<int>(0,dim.y >= 0 ? dim.y : scr->h/2 - (dim.interior.h + above_preview_pane_height)/2);
 
@@ -551,6 +551,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 
 			if(pane->show_above() == false) {
 				area.y = dim.y;
+				area.h = dim.interior.h;
 				if(pane->left_side()) {
 					area.x = left_preview_pane;
 					left_preview_pane += area.w;
@@ -560,6 +561,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 				}
 			} else {
 				area.y = dim.interior.y;
+				area.h = above_preview_pane_height;
 				if(pane->left_side()) {
 					area.x = above_left_preview_pane - area.w;
 					above_left_preview_pane -= area.w;
