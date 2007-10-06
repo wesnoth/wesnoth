@@ -215,6 +215,7 @@ public:
 	void set_layout(dimension_measurements &new_dim);
 	dimension_measurements get_layout() const { return dim_; }
 	dialog_frame& get_frame();
+	void set_basic_behavior(DIALOG_TYPE type) { type_ = type; }
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
@@ -252,17 +253,17 @@ private:
 	//Members
 	display &disp_;
 	dialog_image *image_;
-	const std::string title_;
+	std::string title_;
 	const style& style_;
 	label *title_widget_, *message_;
-	const DIALOG_TYPE type_;
+	DIALOG_TYPE type_;
 	gui::menu *menu_;
 	std::vector<preview_pane*> preview_panes_;
 	std::vector< std::pair<dialog_button*,BUTTON_LOCATION> > button_pool_;
 	std::vector<dialog_button*> standard_buttons_;
 	std::vector<dialog_button*> extra_buttons_;
 	std::vector<button*> frame_buttons_;
-	const std::string topic_;
+	std::string topic_;
 	dialog_button *help_button_;
 	dialog_textbox *text_widget_;
 	dialog_frame *frame_;

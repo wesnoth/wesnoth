@@ -430,6 +430,7 @@ namespace events{
 
 		{
 			dialogs::unit_preview_pane unit_preview(*gui_, &map_, units_list);
+			unit_preview.set_selection(selected);
 
 			gui::dialog umenu(*gui_, _("Unit List"), "", gui::NULL_DIALOG);
 			umenu.set_menu(items, &sorter);
@@ -438,6 +439,7 @@ namespace events{
 			                 gui::dialog::BUTTON_STANDARD);
 			umenu.add_button(new gui::standard_dialog_button(gui_->video(), _("Close"), 1, true),
 			                 gui::dialog::BUTTON_STANDARD);
+			umenu.set_basic_behavior(gui::OK_CANCEL);
 			selected = umenu.show();
 		} // this will kill the dialog before scrolling
 
