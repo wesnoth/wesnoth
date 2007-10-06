@@ -74,6 +74,7 @@ public:
 	static const int title_border_w, title_border_h;
 	static const style default_style;
 	static const style message_style;
+	static const style preview_style;
 	static const style titlescreen_style;
 
 	dialog_frame(CVideo &video, const std::string& title="",

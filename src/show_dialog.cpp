@@ -61,6 +61,7 @@ const int ButtonVPadding = 10;
 //note: style names are directly related to the panel image file names
 const dialog_frame::style dialog_frame::default_style("opaque", 0);
 const dialog_frame::style dialog_frame::message_style("translucent65", 3);
+const dialog_frame::style dialog_frame::preview_style("../misc/selection", 0);
 const dialog_frame::style dialog_frame::titlescreen_style("translucent54", 0);
 
 const int dialog_frame::title_border_w = 10;
@@ -252,10 +253,10 @@ void dialog_frame::draw_border()
 		return;
 	}
 
-	video_.blit_surface(dim_.interior.x - top_left_->w, dim_.interior.y - top_left_->h, top_left_);
-	video_.blit_surface(dim_.interior.x - bot_left_->w, dim_.interior.y + dim_.interior.h, bot_left_);
-	video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y - top_right_->h, top_right_);
-	video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y + dim_.interior.h, bot_right_);
+	video_.blit_surface(dim_.interior.x - left_->w, dim_.interior.y - top_->h, top_left_);
+	video_.blit_surface(dim_.interior.x - left_->w, dim_.interior.y + dim_.interior.h + bot_->h - bot_left_->h, bot_left_);
+	video_.blit_surface(dim_.interior.x + dim_.interior.w + right_->w - top_right_->w, dim_.interior.y - top_->h, top_right_);
+	video_.blit_surface(dim_.interior.x + dim_.interior.w + right_->w - bot_right_->w, dim_.interior.y + dim_.interior.h + bot_->h - bot_right_->h, bot_right_);
 }
 
 void dialog_frame::clear_background()

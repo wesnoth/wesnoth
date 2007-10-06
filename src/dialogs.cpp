@@ -847,7 +847,7 @@ void campaign_preview_pane::draw_contents()
 		location().h-campaign_preview_border*6 };
 
 	/* background frame */
-	gui::dialog_frame f(video(), "", gui::dialog_frame::message_style, false);
+	gui::dialog_frame f(video(), "", gui::dialog_frame::preview_style, false);
 	f.layout(area);
 	f.draw_background();
 	f.draw_border();
