@@ -2934,6 +2934,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 	// Punctuation should be translatable: not all languages use latin punctuation.
 	// (However, there maybe is a better way to do it)
+	if (!mod["name"].empty()) {
+		description += mod["name"] + t_string(N_(": "), "wesnoth");
+	}
+
 	if (!mod["description"].empty()) {
 		description += mod["description"] + " ";
 	}
@@ -3009,15 +3013,6 @@ void unit::apply_modifications()
 	reset_modifications();
 	modification_descriptions_.clear();
 
-	for(size_t i = 0; i != NumModificationTypes; ++i) {
-		const std::string& mod = ModificationTypes[i];
-		const config::child_list& mods = modifications_.get_children(mod);
-		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
-			log_scope("add mod");
-			add_modification(ModificationTypes[i],**j,true);
-		}
-	}
-
 	traits_description_ = "";
 
 	std::vector< t_string > traits;
@@ -3031,10 +3026,21 @@ void unit::apply_modifications()
 		t_string const &gender_specific_name = (**j)[gender_string];
 		if (!gender_specific_name.empty()) {
 			traits.push_back(gender_specific_name);
+			(**j)["name"] = gender_specific_name;
 		} else {
 			t_string const &name = (**j)["name"];
-			if (!name.empty())
+			if (!name.empty()) {
 				traits.push_back(name);
+			}
+		}
+	}
+
+	for(size_t i = 0; i != NumModificationTypes; ++i) {
+		const std::string& mod = ModificationTypes[i];
+		const config::child_list& mods = modifications_.get_children(mod);
+		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
+			log_scope("add mod");
+			add_modification(ModificationTypes[i],**j,true);
 		}
 	}
 
