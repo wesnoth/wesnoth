@@ -823,6 +823,13 @@ bool game_controller::new_campaign()
 				gui::OK_CANCEL);
 	cmenu.set_menu(campaign_names);
 	cmenu.add_pane(&campaign_preview);
+	cmenu.layout();
+	Uint16 screen_width = screen_area().w;
+	Uint16 dialog_width = cmenu.get_frame().get_layout().exterior.w;
+	if(screen_width < 850 && screen_width - dialog_width > 20) {
+		// On small resolutions, reduce the amount of unused horizontal space
+		campaign_preview.set_width(campaign_preview.width() + screen_width - dialog_width - 20); 
+	}
 	res = cmenu.show();
 	if(res == -1) {
 		return false;

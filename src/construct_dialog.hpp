@@ -214,6 +214,7 @@ public:
 	virtual dimension_measurements layout(int xloc=-1, int yloc=-1);
 	void set_layout(dimension_measurements &new_dim);
 	dimension_measurements get_layout() const { return dim_; }
+	dialog_frame& get_frame();
 
 	//Launching the dialog
 	//show - the return value of this method should be the same as result()
@@ -238,7 +239,6 @@ protected:
 	void refresh();
 
 	label& get_message() const { return *message_; }
-	dialog_frame& get_frame();
 
 private:
 	void clear_background();
