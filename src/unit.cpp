@@ -2558,21 +2558,28 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 					bool first_attack = true;
 
+					std::string attack_names;
+					std::string desc;
 					for(std::vector<attack_type>::iterator a = attacks_.begin();
 						a != attacks_.end(); ++a) {
-						std::string desc;
 						bool affected = a->apply_modification(**i.first,&desc);
 						if(affected && desc != "") {
 							if(first_attack) {
 								first_attack = false;
 							} else {
 								if (!times)
-									description += t_string(N_(" and "), "wesnoth");
+									attack_names += t_string(N_(" and "), "wesnoth");
 							}
 
 							if (!times)
-								description += t_string(a->name(), "wesnoth") + ": " + desc;
+								attack_names += t_string(a->name(), "wesnoth");
 						}
+					}
+					if (attack_names.empty() == false) {
+						utils::string_map symbols;
+						symbols["attack_list"] = attack_names;
+						symbols["effect_description"] = desc;
+						description += vgettext("$attack_list|: $effect_description", symbols);
 					}
 				} else if(apply_to == "hitpoints") {
 					LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
@@ -2922,37 +2929,44 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			}
 		}
 
-		if (apply_times == "per level" && !times)
-			description += t_string(N_(" per level"), "wesnoth");
-
+		if (apply_times == "per level" && !times) {
+			utils::string_map symbols;
+			symbols["effect_description"] = description;
+			description = vgettext("$effect_description per level", symbols);
+		}
 		if(!description.empty())
 			effects_description.push_back(description);
 
 	}
 
 	t_string& description = modification_descriptions_[type];
+	t_string trait_description;
 
 	// Punctuation should be translatable: not all languages use latin punctuation.
 	// (However, there maybe is a better way to do it)
-	if (!mod["name"].empty()) {
-		description += mod["name"] + t_string(N_(": "), "wesnoth");
-	}
-
 	if (!mod["description"].empty()) {
-		description += mod["description"] + " ";
+		trait_description += mod["description"] + " ";
 	}
-
 	if(effects_description.empty() == false) {
-		//description += t_string(N_("("), "wesnoth");
+		//trait_description += t_string(N_("("), "wesnoth");
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
-			description += *i;
+			trait_description += *i;
 			if(i+1 != effects_description.end())
-				description += t_string(N_(" and "), "wesnoth");
+				trait_description += t_string(N_(" and "), "wesnoth");
 		}
-		//description += t_string(N_(")"), "wesnoth");
+		//trait_description += t_string(N_(")"), "wesnoth");
 	}
-
+	
+	if (!mod["name"].empty()) {
+		utils::string_map symbols;
+		symbols["trait_name"] = mod["name"];
+		symbols["trait_description"] = trait_description;
+		description += vgettext("$trait_name|: $trait_description ", symbols);
+	} else if (!trait_description.empty()) {
+		description += trait_description;
+	}
+	
 	description += "\n";
 }
 
