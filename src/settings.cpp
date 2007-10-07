@@ -54,7 +54,7 @@ bool use_fog(const std::string& value)
 
 bool use_random_start_time(const std::string& value)
 {
-	return utils::string_bool(value, true);
+	return utils::string_bool(value, false);
 }
 
 bool use_shroud(const std::string& value)
