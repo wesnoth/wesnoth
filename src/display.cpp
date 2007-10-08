@@ -326,7 +326,7 @@ gamemap::location display::minimap_location_on(int x, int y)
 	//TODO: don't return location for this,
 	// instead directly scroll to the clicked pixel position
 
-	if (!point_in_rect(x, y, minimap_location_)) {
+	if (!point_in_rect(x, y, minimap_area())) {
 		return gamemap::location();
 	}
 
@@ -337,7 +337,18 @@ gamemap::location display::minimap_location_on(int x, int y)
 	int px = (x - minimap_location_.x) * map_.w()*hex_width() / minimap_location_.w;
 	int py = (y - minimap_location_.y) * map_.h()*hex_size() / minimap_location_.h;
 
-	return pixel_position_to_hex(px, py);
+	gamemap::location loc = pixel_position_to_hex(px, py);
+	if (loc.x < 0)
+		loc.x = 0;
+	else if (loc.x >= map_.w())
+		loc.x = map_.w() - 1;
+	
+	if (loc.y < 0)
+		loc.y = 0;
+	else if (loc.y >= map_.h())
+		loc.y = map_.h() - 1;
+
+	return loc;
 }
 
 void display::get_visible_hex_bounds(gamemap::location &topleft, gamemap::location &bottomright) const
