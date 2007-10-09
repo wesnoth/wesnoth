@@ -26,7 +26,7 @@ Version 1.3.8+svn:
         your side.
       * A bit of dialogue polishing in 'The Coward'.
     * An Orcish Incursion
-      * Campaign hheavily revised and added to the distribution
+      * Campaign heavily revised and added to the distribution
 
   * Graphics
     * New animations: Rogue death, Orcish Leader line leadership.
@@ -38,6 +38,12 @@ Version 1.3.8+svn:
   * Map editor
     * A right click in floodfill mode now performs a flood fill.
     * A new village and castle icon has been made.
+    * New rotate function : copy&rotate selected area using mouse cursor as
+      center (or "center of mass" if the cursor is not on map).
+    * Optimization of the builder engine (which recalculate transitions
+      after a map change).
+    * Fix several bugs with the "delay transition update" option.
+    * Restore the random map generator.
 
   * Multiplayer
     * Renamed maps
@@ -52,11 +58,16 @@ Version 1.3.8+svn:
     * Display the scenario id for unknown scenarios in the lobby.
 
   * Unit changes and balancing
-    * Created undead variations for the 'bat' and 'gryphon' race.
+    * Created undead variations for the 'bat' and 'gryphon' race. 
+
+  * User interface:
+    * Preserve aspect ratio of the minimap.
+    * The "Create unit" dialog have now two columns (race and type)
 
   * Miscellaneous and bug fixes
     * Map label length is properly calculated and has been reduced 
-      to 32 characters.  
+      to 32 characters.
+    * Optimize the random map generator (especially for high village density)
 
 Version 1.3.8:
   * Campaigns
