@@ -428,9 +428,8 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 					}
 				}
 				if(!hash_found) {
-					utils::string_map symbols;
-					symbols["scenario_name"] = level_cfg->get_attribute("name");
-					games_.back().map_info += vgettext("$scenario_name (Remote scenario)", symbols);
+					games_.back().map_info += " - ";
+					games_.back().map_info += _("Remote scenario");
 					verified = false;
 				}
 			} else {
