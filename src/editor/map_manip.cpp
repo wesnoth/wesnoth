@@ -310,7 +310,7 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 		unsigned int i;
 		// Get the starting point.
 		for (i = 1; i <= d; i++) {
-			loc = loc.get_direction(gamemap::location::NORTH);
+			loc = loc.get_direction(gamemap::location::NORTH, 1);
 		}
 		// Get all the tiles clockwise with distance d.
 		const gamemap::location::DIRECTION direction[6] =
@@ -318,7 +318,7 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 			 gamemap::location::NORTH_WEST, gamemap::location::NORTH, gamemap::location::NORTH_EAST};
 		for (i = 0; i < 6; i++) {
 			for (unsigned int j = 1; j <= d; j++) {
-				loc = loc.get_direction(direction[i]);
+				loc = loc.get_direction(direction[i], 1);
 				if (map.on_board(loc)) {
 					res.push_back(loc);
 				}
