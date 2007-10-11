@@ -120,14 +120,19 @@ sub login($) {
 	# server asks for the version string or tells us to login right away
 	if (&wml::has_child($response, 'version')) {
 		&write_packet($sock, &wml::read_text($VERSION_RESPONSE));
-		$response = &read_packet($sock);
-		# server asks for a login
-		if (&wml::has_child($response, 'mustlogin')) {
-			&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
-		} elsif (my $error = &wml::has_child($response, 'error')) {
-			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
-		} else {
-			print STDERR "Error: Server didn't ask us to log in and gave no error.\n" . Dumper($response) and die;
+		# packets can get mixed up, so check several packets for the expected response
+		for(1..10)  {
+			# server asks for a login
+			$response = &read_packet($sock))
+			if (&wml::has_child($response, 'mustlogin')) {
+				&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
+			} elsif (my $error = &wml::has_child($response, 'error')) {
+				print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
+			} else {
+				# ignore the response hopefully the packet order just got mixed up.
+				print STDERR "Warning: Server didn't ask us to log in and gave no error. ($_)\n" . Dumper($response);
+				if ($_ == 10) print STDERR "Giving up...\n" and die;
+			}
 		}
 	} elsif (my $error = &wml::has_child($response, 'error')) {
 		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
@@ -137,30 +142,37 @@ sub login($) {
 		print STDERR "Error: Server didn't ask for version or login and gave no error.\n" . Dumper($response) and die;
 	}
 
-	# server sends the join lobby response
-	$response = &read_packet($sock);
-	if (&wml::has_child($response, 'join_lobby')) {
-	} elsif (my $error = &wml::has_child($response, 'error')) {
-		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
-	} else {
-		print STDERR "Error: Server didn't ask us to join the lobby and gave no error.\n" . Dumper($response) and die;
-	}
-
-	# server sends the initial list of games and players
-	$response = &read_packet($sock);
-	#print STDERR Dumper($response);
-	if (&wml::has_child($response, 'gamelist')) {
-		foreach (@ {$response->{'children'}}) {
-			if ($_->{'name'} eq 'gamelist') {
-				@games = @ {$_->{'children'}};
-			} elsif ($_->{'name'} eq 'user') {
-				$users[@users] = $_;
-			}
+	# packets can get mixed up, so check several packets for the expected response
+	for(1..10)  {
+		# server sends the join lobby response
+		$response = &read_packet($sock);
+		if (&wml::has_child($response, 'join_lobby')) {
+		} elsif (my $error = &wml::has_child($response, 'error')) {
+			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
+		} else {
+			print STDERR "Warning: Server didn't ask us to join the lobby and gave no error. ($_)\n" . Dumper($response);
+			if ($_ == 10) print STDERR "Giving up...\n" and die;
 		}
-	} elsif (my $error = &wml::has_child($response, 'error')) {
-		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
-	} else {
-		print STDERR "Error: Server didn't send the initial gamelist and gave no error.\n" . Dumper($response) and die;
+	}
+	# packets can get mixed up, so check several packets for the expected response
+	for(1..10)  {
+		# server sends the initial list of games and players
+		$response = &read_packet($sock);
+		#print STDERR Dumper($response);
+		if (&wml::has_child($response, 'gamelist')) {
+			foreach (@ {$response->{'children'}}) {
+				if ($_->{'name'} eq 'gamelist') {
+					@games = @ {$_->{'children'}};
+				} elsif ($_->{'name'} eq 'user') {
+					$users[@users] = $_;
+				}
+			}
+		} elsif (my $error = &wml::has_child($response, 'error')) {
+			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
+		} else {
+			print STDERR "Warning: Server didn't send the initial gamelist and gave no error. ($_)\n" . Dumper($response);
+			if ($_ == 10) print STDERR "Giving up...\n" and die;
+		}
 	}
 	my $userlist = @users . " users:";
 	foreach (@users) {
