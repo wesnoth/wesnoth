@@ -50,9 +50,12 @@
 #include <unistd.h>
 #endif
 
+// fatal and directly server related errors/warnings,
+// ie not caused by erroneous client data
 #define ERR_SERVER LOG_STREAM(err, general)
-// abuse the warn level for normal logging
+// we abuse the warn level for normal logging
 #define WRN_SERVER LOG_STREAM(warn, general)
+// debugging messages
 #define LOG_SERVER LOG_STREAM(info, general)
 
 namespace {
@@ -293,9 +296,11 @@ std::string server::process_command(const std::string& cmd)
 			const int seconds = time_connected%60;
 			const int minutes = (time_connected/60)%60;
 			const int hours = time_connected/(60*60);
-			out << "'" << i->second.name() << "' @ " << network::ip_address(i->first) << " connected for " << hours << ":" << minutes << ":" << seconds << " sent " << stats.bytes_sent << " bytes, received " << stats.bytes_received << " bytes\n";
+			out << "'" << i->second.name() << "' @ " << network::ip_address(i->first)
+				<< " connected for " << hours << ":" << minutes << ":" << seconds
+				<< " sent " << stats.bytes_sent << " bytes, received "
+				<< stats.bytes_received << " bytes\n";
 		}
-
 		out << "---";
 	} else if(command == "metrics") {
 		out << metrics_;
@@ -697,34 +702,33 @@ void server::process_login(const network::connection sock, const config& data)
 
 void server::process_query(const network::connection sock, const config& query)
 {
+	const player_map::iterator pl = players_.find(sock);
+	if(pl == players_.end()) {
+		LOG_SERVER << "ERROR: Could not find player socket.\n";
+		return;
+	}
 	// Process queries from clients in here
 	std::ostringstream response;
+
 	if(query["type"] == "metrics") {
 		// A query for server data from a player
 		response << metrics_;
 	} else if(admin_passwd_.empty() == false && query["type"] == admin_passwd_) {
 		admins_.insert(sock);
 		response << "You are now recognized as an administrator";
-		WRN_SERVER << "New Admin recognized:";
-		WRN_SERVER << "\tIP: "<< network::ip_address(sock);
-		std::map<network::connection, player>::iterator temp = players_.find(sock);
-		WRN_SERVER << "\tnick: "<< temp->second.name();
-		WRN_SERVER << std::endl;
+		WRN_SERVER << "New Admin recognized:" << "\tIP: "
+			<< network::ip_address(sock) << "\tnick: "
+			<< pl->second.name() << std::endl;
 	} else if(admins_.count(sock) != 0) {
 		response << process_command(query["type"]);
-		WRN_SERVER << "Admin Command:";
-		WRN_SERVER << "\ttype: " << query["type"];
-		WRN_SERVER << "\tIP: "<< network::ip_address(sock);
-		std::map<network::connection, player>::iterator temp = players_.find(sock);
-		WRN_SERVER << "\tnick: "<< temp->second.name();
-		WRN_SERVER << std::endl;
+		WRN_SERVER << "Admin Command:" << "\ttype: " << query["type"]
+			<< "\tIP: "<< network::ip_address(sock) 
+			<< "\tnick: "<< pl->second.name() << std::endl;
 	} else if(admin_passwd_.empty() == false) {
-	  WRN_SERVER << "FAILED Admin attempt:";
-	  WRN_SERVER << "\tIP: "<< network::ip_address(sock);
-	  std::map<network::connection, player>::iterator temp = players_.find(sock);
-	  WRN_SERVER << "\tnick: "<< temp->second.name();
-	  WRN_SERVER << std::endl;
-	  response << "Error: unrecognized query";
+		WRN_SERVER << "FAILED Admin attempt:" << "\tIP: "
+			<< network::ip_address(sock) << "\tnick: "
+			<< pl->second.name() << std::endl;
+		response << "Error: unrecognized query";
 	} else {
 		response << "Error: unrecognized query";
 	}
@@ -734,6 +738,11 @@ void server::process_query(const network::connection sock, const config& query)
 
 void server::process_whisper(const network::connection sock, const config& whisper)
 {
+	const player_map::iterator pl = players_.find(sock);
+	if(pl == players_.end()) {
+		LOG_SERVER << "ERROR: Could not find player socket.\n";
+		return;
+	}
 	bool sent = false;
 	bool do_send = true;
 	std::vector<game>::iterator g;
@@ -782,17 +791,16 @@ void server::process_whisper(const network::connection sock, const config& whisp
 
 void server::process_data_from_player_in_lobby(const network::connection sock, config& data)
 {
-	//LOG_SERVER << "in process_data_from_player_in_lobby...\n";
-	const config* const create_game = data.child("create_game");
+	LOG_SERVER << "in process_data_from_player_in_lobby...\n";
 
 	const player_map::iterator pl = players_.find(sock);
 	if(pl == players_.end()) {
-		LOG_SERVER << "ERROR: Could not find player in map\n";
+		LOG_SERVER << "ERROR: Could not find player socket.\n";
+		return;
 	}
 
+	const config* const create_game = data.child("create_game");
 	if(create_game != NULL) {
-
-		//LOG_SERVER << "creating game...\n";
 
 		// Create the new game, remove the player from the lobby
 		// and put him/her in the game they have created
@@ -808,11 +816,9 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		games_.back().level()["id"] = converter.str();
 
 		// Mark the player as unavailable in the lobby
-		if(pl != players_.end()) {
-			pl->second.mark_available(games_.back().level()["id"],
-			                          games_.back().level()["name"]);
-			lobby_players_.send_data(sync_initial_response());
-		}
+		pl->second.mark_available(games_.back().level()["id"],
+		                          games_.back().level()["name"]);
+		lobby_players_.send_data(sync_initial_response());
 
 		return;
 	}
@@ -832,15 +838,28 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 			cfg.add_child("leave_game");
 			network::send_data(cfg,sock);
 
-			LOG_SERVER << "attempt to join unknown game\n";
+			LOG_SERVER << "Attempt to join unknown game: " << id
+				<< " by: " << pl->second.name() << "\n";
 			return;
 		}
 
 		if(it->player_is_banned(sock)) {
+			LOG_SERVER << "Reject banned player: " << pl->second.name()
+				<< " from game: \"" << (*it->description())["name"] 
+				<< "\" (" << id << ").\n";
 			network::send_data(construct_error("You are banned from this game"),sock);
 			return;
 		}
 
+		if(str_observer == "yes") {
+			WRN_SERVER << pl->second.name() << " joined game: \""
+				<< (*it->description())["name"] << "\" (" << id
+				<< ") as an observer.\n";
+		} else {
+			WRN_SERVER << pl->second.name() << " joined game: \""
+				<< (*it->description())["name"] << "\" (" << id
+				<< ").\n";
+		}
 		lobby_players_.remove_player(sock);
 
 		// Send them the game data
@@ -849,35 +868,32 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		it->add_player(sock, str_observer == "yes");
 
 		// Mark the player as unavailable in the lobby
-		const player_map::iterator pl = players_.find(sock);
-		if(pl != players_.end()) {
-			pl->second.mark_available((*it->description())["id"],
-			                          (*it->description())["name"]);
-
-			lobby_players_.send_data(sync_initial_response());
-		} else {
-			LOG_SERVER << "ERROR: Could not find player in map\n";
-		}
+		pl->second.mark_available((*it->description())["id"],
+		                          (*it->description())["name"]);
+		lobby_players_.send_data(sync_initial_response());
 	}
 
 	// See if it's a message, in which case we add the name of the sender,
 	// and forward it to all players in the lobby
 	config* const message = data.child("message");
 	if(message != NULL) {
-		const player_map::iterator p = players_.find(sock);
-		wassert(p != players_.end());
-
-		if(p->second.silenced()) {
+		if(pl->second.silenced()) {
 			return;
-		} else if(p->second.is_message_flooding()) {
+		} else if(pl->second.is_message_flooding()) {
 			network::send_data(construct_server_message("Warning: you are sending too many messages too fast. Your message has not been relayed.",
-			                                            lobby_players_),p->first);
+			                                            lobby_players_),pl->first);
 			return;
 		}
 
-		(*message)["sender"] = p->second.name();
-
+		(*message)["sender"] = pl->second.name();
 		truncate_message((*message)["message"]);
+
+		std::string msg = (*message)["message"].base_str();
+		if(msg.substr(0,3) == "/me") {
+			WRN_SERVER << "<" << pl->second.name() << msg.substr(3) << ">\n";
+		} else {
+			WRN_SERVER << "<" << pl->second.name() << "> " << msg << "\n";
+		}
 
 		lobby_players_.send_data(data,sock);
 	}
@@ -886,16 +902,20 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	// for example when cancelling the create game dialog
 	config* const refresh = data.child("refresh_lobby");
 	if (refresh != NULL){
-		const player_map::iterator p = players_.find(sock);
-		wassert(p != players_.end());
-
 		network::send_data(initial_response_, sock);
 	}
 }
 
 void server::process_data_from_player_in_game(const network::connection sock, config& data, config& gamelist)
 {
-	//LOG_SERVER << "in process_data_from_player_in_game...\n";
+	LOG_SERVER << "in process_data_from_player_in_game...\n";
+
+	const player_map::iterator pl = players_.find(sock);
+	if(pl == players_.end()) {
+		LOG_SERVER << "ERROR: Could not find player socket.\n";
+		return;
+	}
+
 	std::vector<game>::iterator g;
 	for(g = games_.begin(); g != games_.end(); ++g) {
 		if(g->is_member(sock))
@@ -903,7 +923,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	}
 
 	if(g == games_.end()) {
-		LOG_SERVER << "ERROR: unknown socket " << games_.size() << "\n";
+		LOG_SERVER << "ERROR: Could not find game for player: " << pl->second.name() << "\n";
 		return;
 	}
 
@@ -995,7 +1015,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 	}
 
-	// If the owner is banning someone from the game
+	// The owner is kicking/banning someone from the game.
 	if(g->is_owner(sock) && (data.child("ban") != NULL || data.child("kick") != NULL)) {
 		std::string name;
 		bool ban = false;
@@ -1024,14 +1044,16 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				const config& p_msg = construct_server_message(pl->second.name() + " has been banned",*g);
 				g->send_data(p_msg);
 				g->ban_player(pl->first);
-				WRN_SERVER << owner << " banned: " << name << " from game: " << g->id() << "\n";
+				WRN_SERVER << owner << " banned: " << name << " from game: "
+					<< (*g->description())["name"] << "\" (" << g->id() << ")\n";
 			} else {
 				const config& msg = construct_server_message("You have been kicked",*g);
 				network::send_data(msg, pl->first);
 				const config& p_msg = construct_server_message(pl->second.name() + " has been kicked",*g);
 				g->send_data(p_msg);
 				g->remove_player(pl->first);
-				WRN_SERVER << owner << " kicked: " << name << " from game: " << g->id() << "\n";
+				WRN_SERVER << owner << " kicked: " << name << " from game: \""
+					<< (*g->description())["name"] << "\" (" << g->id() << ")\n";
 			}
 
 			config leave_game;
@@ -1120,6 +1142,9 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->update_side_data();
 			g->describe_slots();
 
+			WRN_SERVER << pl->second.name() << " creates game: \""
+				<< (*g->description())["name"] << "\" (" << g->id() << ").\n";
+
 			// Send all players in the lobby the update to the list of games
 			lobby_players_.send_data(sync_initial_response());
 		} else {
@@ -1150,7 +1175,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		} else {
 			// next_scenario sent while the scenario was not initialized.
 			// Something's broken here.
-			ERR_SERVER << "Error: next_scenario sent while the scenario is not yet initialized";
+			WRN_SERVER << "Error: next_scenario sent while the scenario is not yet initialized";
 			return;
 		}
 	}
@@ -1186,6 +1211,9 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// the [start_game] message has been sent
 		g->send_data(data,sock);
 
+		WRN_SERVER << "game: \"" << (*g->description())["name"] 
+			<< "\" (" << g->id() << ") started.\n";
+
 		g->start_game();
 		lobby_players_.send_data(sync_initial_response());
 		return;
@@ -1202,6 +1230,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			config cfg;
 			cfg.add_child("leave_game");
 			g->send_data(cfg);
+			WRN_SERVER << "game: \"" << (*g->description())["name"]
+				<< "\" (" << g->id() << ") ended.\n";
 
 			// Delete the game's description
 			config* const gamelist = initial_response_.child("gamelist");
@@ -1235,12 +1265,14 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			// Now sync players in the lobby again, to remove the game
 			lobby_players_.send_data(sync_initial_response());
 		} else {
-			const player_map::iterator pl = players_.find(sock);
-			if(pl != players_.end() && !obs) {
+			if(!obs) {
 				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
 				g->send_data(msg);
+				WRN_SERVER << pl->second.name() << " has left game: \""
+					<< (*g->description())["name"] << "\" (" << g->id() << ").\n";
 			} else {
-				LOG_SERVER << "ERROR: Could not find player in map\n";
+				WRN_SERVER << "observer: " << pl->second.name() << " has left game: \""
+					<< (*g->description())["name"] << "\" (" << g->id() << ").\n";
 			}
 
 			if (needed){
@@ -1253,12 +1285,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			}
 		}
 		// Mark the player as available in the lobby
-		const player_map::iterator pl = players_.find(sock);
-		if(pl != players_.end()) {
-			pl->second.mark_available();
-		} else {
-			LOG_SERVER << "ERROR: Could not find player in map\n";
-		}
+		pl->second.mark_available();
 		lobby_players_.add_player(sock);
 
 		// Send the player who has quit the game list
@@ -1304,8 +1331,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			// Force the description to be correct,
 			// to prevent spoofing of messages
-			const player_map::const_iterator pl = players_.find(sock);
-			wassert(pl != players_.end());
 			if ((g->all_observers_muted() && g->is_observer(sock)) || g->is_muted_observer(sock)){
 				const config& msg = construct_server_message("You have been muted, others can't see your message!",*g);
 				network::send_data(msg, pl->first);
