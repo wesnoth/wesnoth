@@ -120,7 +120,7 @@ sub login($) {
 	# server asks for the version string or tells us to login right away
 	if (&wml::has_child($response, 'version')) {
 		&write_packet($sock, &wml::read_text($VERSION_RESPONSE));
-		# packets can get mixed up, so check several packets for the expected response
+		# we may get messages about other not-yet-logged-in users logging in
 		for(1..10)  {
 			# server asks for a login
 			$response = &read_packet($sock))
@@ -142,7 +142,7 @@ sub login($) {
 		print STDERR "Error: Server didn't ask for version or login and gave no error.\n" . Dumper($response) and die;
 	}
 
-	# packets can get mixed up, so check several packets for the expected response
+	# we may get messages about other not-yet-logged-in users logging in
 	for(1..10)  {
 		# server sends the join lobby response
 		$response = &read_packet($sock);
