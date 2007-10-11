@@ -50,6 +50,9 @@
 #include <unistd.h>
 #endif
 
+#define ERR_SERVER LOG_STREAM(err, general)
+// abuse the warn level for normal logging
+#define WRN_SERVER LOG_STREAM(warn, general)
 #define LOG_SERVER LOG_STREAM(info, general)
 
 namespace {
@@ -228,7 +231,7 @@ bool server::is_ip_banned(const std::string& ip)
 	for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
 		LOG_SERVER << "comparing for ban '" << *i << "' vs '" << ip << "'\n";
 		if(utils::wildcard_string_match(ip,*i)) {
-			std::cerr << ip << " is banned\n";
+			WRN_SERVER << ip << " is banned\n";
 			return true;
 		}
 		LOG_SERVER << "not banned\n";
@@ -257,7 +260,7 @@ void server::dump_stats()
 	time_t old_stats = last_stats_;
 	last_stats_ = time(NULL);
 
-	std::cout <<
+	WRN_SERVER <<
 		"Statistics\n"
 		"\tnumber_of_games = " << games_.size() << "\n"
 		"\tnumber_of_players = " << players_.size() << "\n"
@@ -396,7 +399,7 @@ void server::run()
 			// Process admin commands
 			std::string admin_cmd;
 			if(input_.read_line(admin_cmd)) {
-				std::cout << process_command(admin_cmd) << std::endl;
+				WRN_SERVER << process_command(admin_cmd) << std::endl;
 			}
 
 			// Make sure we log stats every 5 minutes
@@ -410,11 +413,11 @@ void server::run()
 			if(sock) {
 				const std::string& ip = network::ip_address(sock);
 				if(is_ip_banned(ip)) {
-					std::cerr << "rejected banned user '" << ip << "'\n";
+					WRN_SERVER << "rejected banned user '" << ip << "'\n";
 					network::send_data(construct_error("You are banned."),sock);
 					network::disconnect(sock);
 				} else if(ip_exceeds_connection_limit(ip)) {
-					std::cerr << "rejected ip '" << ip << "' due to excessive connections\n";
+					WRN_SERVER << "rejected ip '" << ip << "' due to excessive connections\n";
 					network::send_data(construct_error("Too many connections from your IP."),sock);
 					network::disconnect(sock);
 				} else {
@@ -433,7 +436,7 @@ void server::run()
 
 		} catch(network::error& e) {
 			if(!e.socket) {
-				std::cerr << "fatal network error: " << e.message << "\n";
+				ERR_SERVER << "fatal network error: " << e.message << "\n";
 				break;
 			} else {
 				LOG_SERVER << "socket closed: " << e.message << "\n";
@@ -447,7 +450,7 @@ void server::run()
 						initial_response_.remove_child("user",index);
 
 					players_.erase(pl_it);
-					std::cerr << "'" << pl_name << "' (" << network::ip_address(e.socket) << ") has logged off\n";
+					WRN_SERVER << "'" << pl_name << "' (" << network::ip_address(e.socket) << ") has logged off\n";
 				}
 
 				not_logged_in_.remove_player(e.socket);
@@ -522,7 +525,7 @@ void server::run()
 
 			continue;
 		} catch(config::error& e) {
-			std::cerr << "error in received data: " << e.message << "\n";
+			ERR_SERVER << "error in received data: " << e.message << "\n";
 			continue;
 		}
 
@@ -566,7 +569,7 @@ void server::process_login(const network::connection sock, const config& data)
 			}
 		}
 		if(accepted) {
-			std::cerr << "player joined using accepted version " << version_str << ": telling them to log in\n";
+			WRN_SERVER << "player joined using accepted version " << version_str << ": telling them to log in\n";
 			network::send_data(login_response_,sock);
 		} else {
 			std::map<std::string,config>::const_iterator redirect = redirected_versions_.end();
@@ -577,7 +580,7 @@ void server::process_login(const network::connection sock, const config& data)
 				}
 			}
 			if(redirect != redirected_versions_.end()) {
-				std::cerr << "player joined using version " << version_str << ": redirecting them to "
+				WRN_SERVER << "player joined using version " << version_str << ": redirecting them to "
 				          << redirect->second["host"] << ":" << redirect->second["port"] << "\n";
 				config response;
 				response.add_child("redirect",redirect->second);
@@ -592,20 +595,20 @@ void server::process_login(const network::connection sock, const config& data)
 				}
 
 				if(proxy != proxy_versions_.end()) {
-					std::cerr << "player joined using version " << version_str << ": connecting them by proxy to "
+					WRN_SERVER << "player joined using version " << version_str << ": connecting them by proxy to "
 					          << proxy->second["host"] << ":" << proxy->second["port"] << "\n";
 
 					proxy::create_proxy(sock,proxy->second["host"],lexical_cast_default<int>(proxy->second["port"],15000));
 				} else {
 
-					std::cerr << "player joined using unknown version " << version_str << ": rejecting them\n";
+					WRN_SERVER << "player joined using unknown version " << version_str << ": rejecting them\n";
 					config response;
 					if(accepted_versions_.empty() == false) {
 						response["version"] = *accepted_versions_.begin();
 					} else if(redirected_versions_.empty() == false) {
 						response["version"] = redirected_versions_.begin()->first;
 					} else {
-						std::cerr << "this server doesn't accept any versions at all\n";
+						ERR_SERVER << "this server doesn't accept any versions at all\n";
 						response["version"] = "null";
 					}
 
@@ -685,7 +688,7 @@ void server::process_login(const network::connection sock, const config& data)
 	// Send other players in the lobby the update that the player has joined
 	lobby_players_.send_data(sync_initial_response(),sock);
 
-	std::cerr << "'" << username << "' (" << network::ip_address(sock) << ") has logged on\n";
+	WRN_SERVER << "'" << username << "' (" << network::ip_address(sock) << ") has logged on\n";
 
 	for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
 		g->send_data_observers(construct_server_message(username + " has logged into the lobby",*g));
@@ -702,25 +705,25 @@ void server::process_query(const network::connection sock, const config& query)
 	} else if(admin_passwd_.empty() == false && query["type"] == admin_passwd_) {
 		admins_.insert(sock);
 		response << "You are now recognized as an administrator";
-		std::cerr << "New Admin recognized:";
-		std::cerr << "\tIP: "<< network::ip_address(sock);
+		WRN_SERVER << "New Admin recognized:";
+		WRN_SERVER << "\tIP: "<< network::ip_address(sock);
 		std::map<network::connection, player>::iterator temp = players_.find(sock);
-		std::cerr << "\tnick: "<< temp->second.name();
-		std::cerr << std::endl;
+		WRN_SERVER << "\tnick: "<< temp->second.name();
+		WRN_SERVER << std::endl;
 	} else if(admins_.count(sock) != 0) {
 		response << process_command(query["type"]);
-		std::cerr << "Admin Command:";
-		std::cerr << "\ttype: " << query["type"];
-		std::cerr << "\tIP: "<< network::ip_address(sock);
+		WRN_SERVER << "Admin Command:";
+		WRN_SERVER << "\ttype: " << query["type"];
+		WRN_SERVER << "\tIP: "<< network::ip_address(sock);
 		std::map<network::connection, player>::iterator temp = players_.find(sock);
-		std::cerr << "\tnick: "<< temp->second.name();
-		std::cerr << std::endl;
+		WRN_SERVER << "\tnick: "<< temp->second.name();
+		WRN_SERVER << std::endl;
 	} else if(admin_passwd_.empty() == false) {
-	  std::cerr << "FAILED Admin attempt:";
-	  std::cerr << "\tIP: "<< network::ip_address(sock);
+	  WRN_SERVER << "FAILED Admin attempt:";
+	  WRN_SERVER << "\tIP: "<< network::ip_address(sock);
 	  std::map<network::connection, player>::iterator temp = players_.find(sock);
-	  std::cerr << "\tnick: "<< temp->second.name();
-	  std::cerr << std::endl;
+	  WRN_SERVER << "\tnick: "<< temp->second.name();
+	  WRN_SERVER << std::endl;
 	  response << "Error: unrecognized query";
 	} else {
 		response << "Error: unrecognized query";
@@ -779,7 +782,7 @@ void server::process_whisper(const network::connection sock, const config& whisp
 
 void server::process_data_from_player_in_lobby(const network::connection sock, config& data)
 {
-	//std::cerr << "in process_data_from_player_in_lobby...\n";
+	//LOG_SERVER << "in process_data_from_player_in_lobby...\n";
 	const config* const create_game = data.child("create_game");
 
 	const player_map::iterator pl = players_.find(sock);
@@ -789,7 +792,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 	if(create_game != NULL) {
 
-		//std::cerr << "creating game...\n";
+		//LOG_SERVER << "creating game...\n";
 
 		// Create the new game, remove the player from the lobby
 		// and put him/her in the game they have created
@@ -892,7 +895,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 void server::process_data_from_player_in_game(const network::connection sock, config& data, config& gamelist)
 {
-	//std::cerr << "in process_data_from_player_in_game...\n";
+	//LOG_SERVER << "in process_data_from_player_in_game...\n";
 	std::vector<game>::iterator g;
 	for(g = games_.begin(); g != games_.end(); ++g) {
 		if(g->is_member(sock))
@@ -1021,14 +1024,14 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				const config& p_msg = construct_server_message(pl->second.name() + " has been banned",*g);
 				g->send_data(p_msg);
 				g->ban_player(pl->first);
-				std::cerr << owner << " banned: " << name << " from game: " << g->id() << "\n";
+				WRN_SERVER << owner << " banned: " << name << " from game: " << g->id() << "\n";
 			} else {
 				const config& msg = construct_server_message("You have been kicked",*g);
 				network::send_data(msg, pl->first);
 				const config& p_msg = construct_server_message(pl->second.name() + " has been kicked",*g);
 				g->send_data(p_msg);
 				g->remove_player(pl->first);
-				std::cerr << owner << " kicked: " << name << " from game: " << g->id() << "\n";
+				WRN_SERVER << owner << " kicked: " << name << " from game: " << g->id() << "\n";
 			}
 
 			config leave_game;
@@ -1147,7 +1150,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		} else {
 			// next_scenario sent while the scenario was not initialized.
 			// Something's broken here.
-			std::cerr << "Error: next_scenario sent while the scenario is not yet initialized";
+			ERR_SERVER << "Error: next_scenario sent while the scenario is not yet initialized";
 			return;
 		}
 	}
@@ -1388,10 +1391,10 @@ int main(int argc, char** argv)
 			try {
 				read(configuration,*stream,&errors);
 				if(errors.empty() == false) {
-					std::cerr << "WARNING: errors reading configuration file: " << errors << "\n";
+					ERR_SERVER << "WARNING: errors reading configuration file: " << errors << "\n";
 				}
 			} catch(config::error& e) {
-				std::cerr << "ERROR: could not read configuration file: '" << e.message << "'\n";
+				ERR_SERVER << "ERROR: could not read configuration file: '" << e.message << "'\n";
 				return -1;
 			}
 		} else if(val == "--verbose" || val == "-v") {
@@ -1415,12 +1418,12 @@ int main(int argc, char** argv)
 			return 0;
 		} else if(val == "--daemon" || val == "-d") {
 #ifdef WIN32
-			std::cerr << "Running as a daemon is not supported on this platform\n";
+			ERR_SERVER << "Running as a daemon is not supported on this platform\n";
 			return -1;
 #else
 			const pid_t pid = fork();
 			if(pid < 0) {
-				std::cerr << "Could not fork and run as a daemon\n";
+				ERR_SERVER << "Could not fork and run as a daemon\n";
 				return -1;
 			} else if(pid > 0) {
 				std::cout << "Started wesnothd as a daemon with process id " << pid << "\n";
@@ -1437,19 +1440,22 @@ int main(int argc, char** argv)
 		} else if((val == "--max-threads" || val == "-T") && arg+1 != argc) {
 			max_threads = atoi(argv[++arg]);
 		} else if(val[0] == '-') {
-			std::cerr << "unknown option: " << val << "\n";
+			ERR_SERVER << "unknown option: " << val << "\n";
 			return 0;
 		} else {
 			port = atoi(argv[arg]);
 		}
 	}
+	// show 'warnings' by default
+	lg::set_log_domain_severity("general",1);
+	lg::timestamps(true);
 
 	input_stream input(fifo_path);
 
 	try {
 		server(port,input,configuration,min_threads,max_threads).run();
 	} catch(network::error& e) {
-		std::cerr << "caught network error while server was running. aborting.: " << e.message << "\n";
+		ERR_SERVER << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;
 	}
 
