@@ -204,7 +204,7 @@ void chat::update_textbox(gui::textbox& textbox)
 std::string chat::format_message(const msg& message)
 {
 	if(message.message.substr(0,3) == "/me") {
-		return "<" + message.user + " " + message.message.substr(3) + ">\n";
+		return "<" + message.user + message.message.substr(3) + ">\n";
 	} else {
 		return "<" + message.user + ">" + message.message + "\n";
 	}
