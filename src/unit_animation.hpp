@@ -41,6 +41,20 @@ class unit_animation:public animated<unit_frame>
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
 		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
+		image::locator image() const { return get_current_frame().image() ; }
+		image::locator image_diagonal() const { return get_current_frame().image_diagonal() ; }
+		std::string sound() const { return get_current_frame().sound() ; };
+		const std::string &halo(const std::string&default_val ="") const;
+		int halo_x(const int default_val = 0) const;
+		int halo_y(const int default_val = 0) const;
+		//int duration() const { return get_current_frame().duration(); }
+		Uint32 blend_with() const;
+		double blend_ratio(const double default_val = 0) const;
+		fixed_t highlight_ratio(const float default_val = 1.0) const;
+		double offset(double default_val =0.0) const;
+
+		bool need_update() const;
+
 		// only to support all [attack_anim] format, to remove at 1.3.10 time
 		void back_compat_add_name(const std::string name="",const std::string range ="");
 		const animated<unit_frame> &get_missile_anim() const {return missile_anim_;} 
@@ -58,6 +72,16 @@ class unit_animation:public animated<unit_frame>
 		std::vector<hit_type> hits_;
 		std::vector<int> swing_num_;
 		animated<unit_frame> missile_anim_;
+		// prevent people from using the current frame directly
+		const unit_frame& get_current_frame() const { return animated<unit_frame>::get_current_frame(); }
+		//animation params that can be locally overridden by frames
+		progressive_string halo_;
+		progressive_int halo_x_;
+		progressive_int halo_y_;
+		Uint32 blend_with_;
+		progressive_double blend_ratio_;
+		progressive_double highlight_ratio_;
+		progressive_double offset_;
 };
 
 

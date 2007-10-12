@@ -150,7 +150,7 @@ unit_frame::unit_frame() :
 	 image_(), image_diagonal_(),halo_(), sound_(),
 	halo_x_(), halo_y_(), duration_(0),
 	blend_with_(0),blend_ratio_(),
-	highlight_ratio_("1.0"),offset_("")
+	highlight_ratio_(""),offset_()
 {
 }
 
@@ -190,7 +190,7 @@ unit_frame::unit_frame(const config& cfg)
 	std::vector<std::string> tmp_blend=utils::split(cfg["blend_color"]);
 	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
 	blend_ratio_ = progressive_double(cfg["blend_ratio"],duration_);
-	highlight_ratio_ = progressive_double(cfg["alpha"].empty()?"1.0":cfg["alpha"],duration_);
+	highlight_ratio_ = progressive_double(cfg["alpha"],duration_);
 	offset_ = progressive_double(cfg["offset"],duration_);
 
 }
@@ -203,5 +203,17 @@ bool unit_frame::does_not_change() const
 		blend_ratio_.does_not_change() &&
 		highlight_ratio_.does_not_change() &&
 		offset_.does_not_change();
+}
+bool unit_frame::need_update() const
+{
+	if(!halo_.does_not_change() ||
+			!halo_x_.does_not_change() ||
+			!halo_y_.does_not_change() ||
+			!blend_ratio_.does_not_change() ||
+			!highlight_ratio_.does_not_change() ||
+			!offset_.does_not_change() ) {
+			return true;
+	}
+	return false;
 }
 

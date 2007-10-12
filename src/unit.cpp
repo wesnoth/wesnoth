@@ -1653,7 +1653,7 @@ const surface unit::still_image(bool scaled) const
 void unit::set_standing(const game_display &disp,const gamemap::location& loc, bool with_bars)
 {
 	state_ = STATE_STANDING;
-	start_animation(disp,loc,choose_animation(disp,loc,"standing"),with_bars);
+	start_animation(disp,loc,choose_animation(disp,loc,"standing"),with_bars,true);
 }
 void unit::set_defending(const game_display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
 {
@@ -1768,7 +1768,7 @@ void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 	start_animation(disp,loc,choose_animation(disp,loc,"idling"),true);
 }
 
-void unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars)
+void unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles)
 {
 	if(!animation) {
 		set_standing(disp,loc,with_bars);
@@ -1778,7 +1778,7 @@ void unit::start_animation(const game_display &disp, const gamemap::location &lo
 	offset_=0;
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
-	anim_->start_animation(anim_->get_begin_time(), false, disp.turbo_speed());
+	anim_->start_animation(anim_->get_begin_time(), cycles, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp.idle_anim()) {
 		next_idling_ = get_current_animation_tick()
@@ -1838,16 +1838,15 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if(!anim_) {
 		set_standing(disp,loc);
 	}
-	const unit_frame& current_frame = anim_->get_current_frame();
 
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
-		if(!current_frame.sound().empty()) {
-			sound::play_sound(current_frame.sound());
+		if(!anim_->sound().empty()) {
+			sound::play_sound(anim_->sound());
 		}
 	}
 
-	double tmp_offset = current_frame.offset(anim_->get_current_frame_time(),offset_);
+	double tmp_offset = anim_->offset(offset_);
 	int d2 = disp.hex_size() / 2;
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2 - height_adjust;
@@ -1864,19 +1863,18 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		halo::remove(unit_anim_halo_);
 		unit_anim_halo_ = halo::NO_HALO;
 	}
-	if(!current_frame.halo(anim_->get_current_frame_time()).empty()) {
-		int ft = anim_->get_current_frame_time();
-		int dx = static_cast<int>(current_frame.halo_x(ft) * disp.get_zoom_factor());
-		int dy = static_cast<int>(current_frame.halo_y(ft) * disp.get_zoom_factor());
+	if(!anim_->halo().empty()) {
+		int dx = static_cast<int>(anim_->halo_x() * disp.get_zoom_factor());
+		int dy = static_cast<int>(anim_->halo_y() * disp.get_zoom_factor());
 		if (facing_west) dx = -dx;
 		unit_anim_halo_ = halo::add(x + dx, y + dy,
-			current_frame.halo(ft), gamemap::location(-1, -1),
+			anim_->halo(), gamemap::location(-1, -1),
 			facing_west ? halo::HREVERSE : halo::NORMAL);
 	}
 
 
 	image::locator image_loc;
-	image_loc = current_frame.image();
+	image_loc = anim_->image();
 	if(image_loc.is_void()) {
 		image_loc = absolute_image();
 	}
@@ -1902,7 +1900,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 
 	bool stoned = utils::string_bool(get_state("stoned"));
 
-	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),current_frame.highlight_ratio(anim_->get_current_frame_time()));
+	fixed_t highlight_ratio = minimum<fixed_t>(alpha(),anim_->highlight_ratio());
 	if(invisible(loc,disp.get_units(),disp.get_teams()) &&
 			highlight_ratio > ftofxp(0.5)) {
 		highlight_ratio = ftofxp(0.5);
@@ -1911,8 +1909,8 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		highlight_ratio = ftofxp(1.5);
 	}
 
-	Uint32 blend_with = current_frame.blend_with();
-	double blend_ratio = current_frame.blend_ratio(anim_->get_current_frame_time());
+	Uint32 blend_with = anim_->blend_with();
+	double blend_ratio = anim_->blend_ratio();
 	//if(blend_ratio == 0) { blend_with = disp.rgb(0,0,0); }
 	if (utils::string_bool(get_state("poisoned")) && blend_ratio == 0){
 		blend_with = disp.rgb(0,255,0);
@@ -2079,7 +2077,7 @@ std::set<gamemap::location> unit::overlaps(const gamemap::location &loc) const
 
 	// Very early calls, anim not initialized yet
 	double tmp_offset=offset_;
-	if(anim_)tmp_offset= anim_->get_current_frame().offset(anim_->get_animation_time(),offset_);
+	if(anim_)tmp_offset= anim_->offset(offset_);
 
 	// Invalidate adjacent neighbours if we don't stay in our hex
 	if(tmp_offset != 0) {

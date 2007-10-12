@@ -78,6 +78,7 @@ public:
 	const T& get_first_frame() const;
 	const T& get_last_frame() const;
 	int get_frames_count() const;
+	void force_change() {does_not_change_ = false ; }
 	const bool does_not_change() const {return does_not_change_;}
 
 	static const T void_value_; //MSVC: the frame constructor below requires this to be public

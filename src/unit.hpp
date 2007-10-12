@@ -249,7 +249,7 @@ public:
 				STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
 				STATE_RECRUITED, STATE_HEALED, STATE_POISONED,
 				STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
-	void start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars);
+	void start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false);
 
 	//! The name of the file to game_display (used in menus).
 	const std::string& absolute_image() const { return cfg_["image"]; }

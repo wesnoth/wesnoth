@@ -64,32 +64,33 @@ class unit_frame {
 	// Constructors
 		unit_frame();
 		explicit unit_frame(const image::locator& image, int duration=0,
-				const std::string& highlight="1.0",const std::string& offset="",
-				Uint32 blend_color = 0, const std::string& blend_rate = "0",
+				const std::string& highlight="",const std::string& offset="",
+				Uint32 blend_color = 0, const std::string& blend_rate = "",
 				const std::string & in_halo = "",
 				const std::string & halox = "",const std::string & haloy = "",
 				const image::locator & diag ="");
 		explicit unit_frame(const config& cfg);
 		image::locator image() const { return image_ ;}
 		image::locator image_diagonal() const { return image_diagonal_ ; }
-		const std::string &halo(int current_time) const
-			{ return halo_.get_current_element(current_time); }
+		const std::string &halo(int current_time,const std::string& default_val="") const
+			{ return halo_.get_current_element(current_time,default_val); }
 
 		std::string sound() const { return sound_ ; };
-		int halo_x(int current_time) const { return halo_x_.get_current_element(current_time); }
-		int halo_y(int current_time) const { return halo_y_.get_current_element(current_time); }
+		int halo_x(int current_time,const int default_val=0) const { return halo_x_.get_current_element(current_time,default_val); }
+		int halo_y(int current_time,const int default_val=0) const { return halo_y_.get_current_element(current_time,default_val); }
 		int duration() const { return duration_; }
 		Uint32 blend_with() const { return blend_with_; }
-		double blend_ratio(int current_time) const
-			{ return blend_ratio_.get_current_element(current_time); }
+		double blend_ratio(int current_time,const fixed_t default_val=0.0) const
+			{ return blend_ratio_.get_current_element(current_time,default_val); }
 
-		fixed_t highlight_ratio(int current_time) const
-			{  return ftofxp(highlight_ratio_.get_current_element(current_time)); }
+		fixed_t highlight_ratio(int current_time,double default_val =0.0) const
+			{  return ftofxp(highlight_ratio_.get_current_element(current_time,default_val)); }
 
 		double offset(int current_time,double default_val =0.0) const
 			{ return offset_.get_current_element(current_time,default_val)  ; }
 
 		bool does_not_change() const;
+		bool need_update() const;
 	private:
 		image::locator image_;
 		image::locator image_diagonal_;

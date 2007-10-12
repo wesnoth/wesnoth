@@ -10,7 +10,7 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
-*/
+   */
 
 #include "global.hpp"
 
@@ -76,7 +76,7 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 				// copy the end of the anim "as is" other if will be treated later
 				while(child != analyzed_anim.ordered_end()) {
 					for(std::vector<config>::iterator itor= to_add.begin(); itor != to_add.end();itor++) {
-							itor->add_child(*(*child).first,*(*child).second);
+						itor->add_child(*(*child).first,*(*child).second);
 
 					}
 					child++;
@@ -116,6 +116,23 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	for(; range.first != range.second; ++range.first) {
 		unit_frame tmp_frame(**range.first);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
+	}
+	halo_ = progressive_string(cfg["halo"],get_animation_duration());
+	halo_x_ = progressive_int(cfg["halo_x"],get_animation_duration());
+	halo_y_ = progressive_int(cfg["halo_y"],get_animation_duration());
+	std::vector<std::string> tmp_blend=utils::split(cfg["blend_color"]);
+	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
+	blend_ratio_ = progressive_double(cfg["blend_ratio"],get_animation_duration());
+	highlight_ratio_ = progressive_double(cfg["alpha"],get_animation_duration());
+	offset_ = progressive_double(cfg["offset"],get_animation_duration());
+
+	if(!halo_.does_not_change() ||
+			!halo_x_.does_not_change() ||
+			!halo_y_.does_not_change() ||
+			!blend_ratio_.does_not_change() ||
+			!highlight_ratio_.does_not_change() ||
+			!offset_.does_not_change() ) {
+			force_change();
 	}
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
@@ -279,4 +296,54 @@ void unit_animation::back_compat_add_name(const std::string name,const std::stri
 		tmp["range"] = range;
 		primary_attack_filter_.push_back(tmp);
 	}
+}
+
+
+
+const std::string &unit_animation::halo(const std::string&default_val ) const
+{
+	return get_current_frame().halo(get_current_frame_time(),halo_.get_current_element(get_animation_time(),default_val));
+}
+
+int unit_animation::halo_x(const int default_val) const 
+{
+	return get_current_frame().halo_x(get_current_frame_time(),halo_x_.get_current_element(get_animation_time(),default_val));
+}
+int unit_animation::halo_y(const int default_val) const 
+{
+	return get_current_frame().halo_y(get_current_frame_time(),halo_y_.get_current_element(get_animation_time(),default_val)); 
+}
+Uint32 unit_animation::blend_with() const 
+{
+#warning TBSL: "this should become a progressive param somehow..."
+	return get_current_frame().blend_with(); 
+}
+double unit_animation::blend_ratio(const double default_val) const
+{
+	return get_current_frame().blend_ratio(get_current_frame_time(),blend_ratio_.get_current_element(get_animation_time(),default_val)); 
+}
+
+fixed_t unit_animation::highlight_ratio(const float default_val) const
+{
+	return get_current_frame().highlight_ratio(get_current_frame_time(),highlight_ratio_.get_current_element(get_animation_time(),default_val));
+}
+
+double unit_animation::offset(double default_val) const
+{
+	return get_current_frame().offset(get_current_frame_time(),offset_.get_current_element(get_animation_time(),default_val))  ; 
+}
+
+bool unit_animation::need_update() const
+{
+	if(animated<unit_frame>::need_update()) return true;
+	if(get_current_frame().need_update()) return true;
+	if(!halo_.does_not_change() ||
+			!halo_x_.does_not_change() ||
+			!halo_y_.does_not_change() ||
+			!blend_ratio_.does_not_change() ||
+			!highlight_ratio_.does_not_change() ||
+			!offset_.does_not_change() ) {
+			return true;
+	}
+	return false;
 }
