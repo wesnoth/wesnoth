@@ -91,7 +91,7 @@ bool game::filter_commands(network::connection player, config& cfg)
 			} else if(observers_can_chat() && (*i)->child("speak") != NULL && (*i)->all_children().size() == 1) {
 				;
 			} else {
-				std::cerr << "removing observer's illegal command\n";
+				LOG_SERVER << "removing observer's illegal command\n";
 				marked.push_back(index - marked.size());
 			}
 
@@ -247,7 +247,7 @@ void game::update_side_data()
 	for(user_vector::const_iterator player = users.begin(); player != users.end(); ++player) {
 		player_map::const_iterator info = player_info_->find(*player);
 		if (info == player_info_->end()) {
-			std::cerr << "Error: unable to find player info for connection " << *player << "\n";
+			LOG_SERVER << "Error: unable to find player info for connection " << *player << "\n";
 			continue;
 		}
 
@@ -577,13 +577,13 @@ void game::ban_player(network::connection sock)
 
 bool game::process_commands(const config& cfg)
 {
-	//std::cerr << "processing commands: '" << cfg.write() << "'\n";
+	//LOG_SERVER << "processing commands: '" << cfg.write() << "'\n";
 	bool res = false;
 	const config::child_list& cmd = cfg.get_children("command");
 	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {
 		if((**i).child("end_turn") != NULL) {
 			res = res || end_turn();
-			//std::cerr << "res: " << (res ? "yes" : "no") << "\n";
+			//LOG_SERVER << "res: " << (res ? "yes" : "no") << "\n";
 		}
 	}
 
