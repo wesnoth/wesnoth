@@ -85,7 +85,7 @@ unit::unit(const unit& o):
            abilities_b_(o.abilities_b_),
 
            advances_to_(o.advances_to_),
-           id_(unit_id_test(o.id_)),
+           id_(o.id_),
            race_(o.race_),
            name_(o.name_),
            description_(o.description_),
@@ -519,7 +519,7 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 	bool do_heal = false; // Track whether unit should get fully healed.
 	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
 		do_heal = true; // Can't heal until after mods applied.
-		id_ = unit_id_test(t->id());
+		id_ = t->id();
 		cfg_["id"] = id_;
 		cfg_["gender_id"] = cfg_["gender"];
 	}
@@ -1173,9 +1173,9 @@ void unit::read(const config& cfg, bool use_traits)
 		}
 	}
 	if(cfg_["id"]=="") {
-		id_ = unit_id_test(cfg_["type"]);
+		id_ = cfg_["type"];
 	} else {
-		id_ = unit_id_test(cfg_["id"]);
+		id_ = cfg_["id"];
 	}
 	if(!type_set || cfg["race"] != "") {
 		const race_map::const_iterator race_it = gamedata_->races.find(cfg["race"]);

@@ -31,8 +31,6 @@ class game_data;
 class gamestatus;
 class team;
 
-//! Temporary compatibility hack
-std::string unit_id_test(const std::string& id);
 
 //and how much damage it does.
 class attack_type
