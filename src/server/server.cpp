@@ -196,6 +196,7 @@ server::server(int port, input_stream& input, const config& cfg, size_t min_thre
 		}
 	} else {
 		accepted_versions_.insert(game_config::version);
+		accepted_versions_.insert("test");
 	}
 
 	const config::child_list& redirects = cfg_.get_children("redirect");
