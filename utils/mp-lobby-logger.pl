@@ -116,50 +116,30 @@ sub logtimestamp {
 
 sub login($) {
 	my $sock = shift;
-	my $response = &read_packet($sock);
-	# server asks for the version string or tells us to login right away
-	if (&wml::has_child($response, 'version')) {
-		&write_packet($sock, &wml::read_text($VERSION_RESPONSE));
-		# we may get messages about other not-yet-logged-in users logging in
-		for(1..10)  {
-			# server asks for a login
-			$response = &read_packet($sock))
-			if (&wml::has_child($response, 'mustlogin')) {
-				&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
-			} elsif (my $error = &wml::has_child($response, 'error')) {
-				print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
-			} else {
-				# ignore the response hopefully the packet order just got mixed up.
-				print STDERR "Warning: Server didn't ask us to log in and gave no error. ($_)\n" . Dumper($response);
-				if ($_ == 10) print STDERR "Giving up...\n" and die;
-			}
-		}
-	} elsif (my $error = &wml::has_child($response, 'error')) {
-		print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
-	} elsif (&wml::has_child($response, 'mustlogin')) {
-		&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
-	} else {
-		print STDERR "Error: Server didn't ask for version or login and gave no error.\n" . Dumper($response) and die;
-	}
-
-	# we may get messages about other not-yet-logged-in users logging in
-	for(1..10)  {
-		# server sends the join lobby response
-		$response = &read_packet($sock);
-		if (&wml::has_child($response, 'join_lobby')) {
-		} elsif (my $error = &wml::has_child($response, 'error')) {
-			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
-		} else {
-			print STDERR "Warning: Server didn't ask us to join the lobby and gave no error. ($_)\n" . Dumper($response);
-			if ($_ == 10) print STDERR "Giving up...\n" and die;
-		}
-	}
-	# packets can get mixed up, so check several packets for the expected response
-	for(1..10)  {
-		# server sends the initial list of games and players
+	my $response;
+	my $tries = 0;
+	my $logged_in = 'no';
+	until($logged_in eq 'yes')  {
+		$tries++;
 		$response = &read_packet($sock);
 		#print STDERR Dumper($response);
-		if (&wml::has_child($response, 'gamelist')) {
+		# server asks for the version string
+		if (&wml::has_child($response, 'version')) {
+			$logged_in = 'version';
+			$tries = 0;
+			&write_packet($sock, &wml::read_text($VERSION_RESPONSE));
+		# server asks for a login name
+		} elsif (&wml::has_child($response, 'mustlogin')) {
+			$logged_in = 'mustlogin';
+			$tries = 0;
+			&write_packet($sock, &wml::read_text($LOGIN_RESPONSE));
+		# server sends the join lobby response
+		} elsif (&wml::has_child($response, 'join_lobby')) {
+			$logged_in = 'join_lobby';
+			$tries = 0;
+		# server sends the initial list of games and players
+		} elsif (&wml::has_child($response, 'gamelist')) {
+			$logged_in = 'yes';
 			foreach (@ {$response->{'children'}}) {
 				if ($_->{'name'} eq 'gamelist') {
 					@games = @ {$_->{'children'}};
@@ -170,8 +150,17 @@ sub login($) {
 		} elsif (my $error = &wml::has_child($response, 'error')) {
 			print STDERR "Error: $error->{'attr'}->{'message'}.\n" and die;
 		} else {
-			print STDERR "Warning: Server didn't send the initial gamelist and gave no error. ($_)\n" . Dumper($response);
-			if ($_ == 10) print STDERR "Giving up...\n" and die;
+			if ($logged_in eq 'no') {
+				print STDERR "Warning: Server didn't ask for version or login yet and gave no error. ($tries)\n" . Dumper($response);
+			} elsif ($logged_in eq 'version') {
+				print STDERR "Warning: Server didn't ask us to log in yet and gave no error. ($tries)\n" . Dumper($response);
+			} elsif ($logged_in eq 'mustlogin') {
+				print STDERR "Warning: Server didn't ask us to join the lobby yet and gave no error. ($tries)\n" . Dumper($response);
+			} elsif ($logged_in eq 'join_lobby') {
+				print STDERR "Warning: Server didn't send the initial gamelist yet and gave no error. ($tries)\n" . Dumper($response);
+			}
+			# give up after 10 unknown packets
+			print STDERR "Giving up...\n" if $tries == 10 and die;
 		}
 	}
 	my $userlist = @users . " users:";
