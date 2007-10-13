@@ -415,22 +415,29 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info += " - ??x??";
 		}
 		games_.back().map_info += " ";
-		if((**game)["mp_scenario"] != "" && map_hashes_) {
-			const config* level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
+		if((**game)["mp_scenario"] != "") {
+			// check if it's a multiplayer scenario
+			const config* level_cfg = game_config.find_child("multiplayer", "id", (**game)["mp_scenario"]);
+			if(level_cfg == NULL) {
+				// check if it's a user map
+				level_cfg = game_config.find_child("generic_multiplayer", "id", (**game)["mp_scenario"]);
+			}
 			if(level_cfg) {
 				games_.back().map_info += level_cfg->get_attribute("name");
-				const std::string& hash = (**game)["hash"];
-				bool hash_found = false;
-				for(string_map::const_iterator i = map_hashes_->values.begin(); i != map_hashes_->values.end(); ++i) {
-					if(i->first == (**game)["mp_scenario"] && i->second == hash) {
-						hash_found = true;
-						break;
+				if(map_hashes_) {
+					const std::string& hash = (**game)["hash"];
+					bool hash_found = false;
+					for(string_map::const_iterator i = map_hashes_->values.begin(); i != map_hashes_->values.end(); ++i) {
+						if(i->first == (**game)["mp_scenario"] && i->second == hash) {
+							hash_found = true;
+							break;
+						}
 					}
-				}
-				if(!hash_found) {
-					games_.back().map_info += " - ";
-					games_.back().map_info += _("Remote scenario");
-					verified = false;
+					if(!hash_found) {
+						games_.back().map_info += " - ";
+						games_.back().map_info += _("Remote scenario");
+						verified = false;
+					}
 				}
 			} else {
 				utils::string_map symbols;
