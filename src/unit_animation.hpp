@@ -37,20 +37,20 @@ class unit_animation
 		static config prepare_animation(const config &cfg,const std::string animation_tag);
 
 		unit_animation(){};
-		explicit unit_animation(const config& cfg,const std::string frame_string ="frame");
+		explicit unit_animation(const config& cfg,const std::string frame_string ="");
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
 		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
 		image::locator image() const { return unit_anim_.get_current_frame().image() ; }
 		image::locator image_diagonal() const { return unit_anim_.get_current_frame().image_diagonal() ; }
 		std::string sound() const { return unit_anim_.get_current_frame().sound() ; };
-		const std::string &halo(const std::string&default_val ="") const;
-		int halo_x(const int default_val = 0) const;
-		int halo_y(const int default_val = 0) const;
-		Uint32 blend_with() const;
-		double blend_ratio(const double default_val = 0) const;
-		fixed_t highlight_ratio(const float default_val = 1.0) const;
-		double offset(double default_val =0.0) const;
+		Uint32 blend_with() const{ return unit_anim_.get_current_frame().blend_with() ; };
+		const std::string &halo(const std::string&default_val ="") const{ return unit_anim_.halo(default_val); };
+		int halo_x(const int default_val = 0) const{ return unit_anim_.halo_x(default_val); };
+		int halo_y(const int default_val = 0) const{ return unit_anim_.halo_y(default_val); };
+		double blend_ratio(const double default_val = 0) const{ return unit_anim_.blend_ratio(default_val); };
+		fixed_t highlight_ratio(const float default_val = 1.0) const{ return unit_anim_.highlight_ratio(default_val); };
+		double offset(double default_val =0.0) const{ return unit_anim_.offset(default_val); };
 
 		bool need_update() const{return unit_anim_.need_update();};
 		bool animation_finished() const{ return unit_anim_.animation_finished() ; };
@@ -74,14 +74,22 @@ class unit_animation
 			explicit crude_animation(int start_time=0):animated<unit_frame>(start_time){};
 			explicit crude_animation(const config& cfg,const std::string frame_string ="frame");
 			bool need_update() const;
+			const std::string &halo(const std::string&default_val ="") const;
+			int halo_x(const int default_val = 0) const;
+			int halo_y(const int default_val = 0) const;
+			double blend_ratio(const double default_val = 0) const;
+			fixed_t highlight_ratio(const float default_val = 1.0) const;
+			double offset(double default_val =0.0) const;
+		private:
+
 			//animation params that can be locally overridden by frames
+			progressive_double offset_;
 			progressive_string halo_;
 			progressive_int halo_x_;
 			progressive_int halo_y_;
 			Uint32 blend_with_;
 			progressive_double blend_ratio_;
 			progressive_double highlight_ratio_;
-			progressive_double offset_;
 
 	};
 		t_translation::t_list terrain_types_;

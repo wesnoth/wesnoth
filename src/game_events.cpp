@@ -2100,7 +2100,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			screen->scroll_to_tile(u->first);
 
 			u->second.set_extra_anim(*screen,u->first,cfg["flag"]);
-			while(!u->second.get_animation()->animation_finished()) {
+			while(!u->second.get_animation()->animation_would_finish()) {
 				screen->invalidate(u->first);
 				screen->draw();
 				events::pump();

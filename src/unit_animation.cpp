@@ -104,7 +104,7 @@ unit_animation::unit_animation(int start_time,const unit_frame & frame , const s
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ) :
 	terrain_types_(t_translation::read_list(cfg["terrain"])),base_score_(0),
-	missile_anim_(cfg,"missile_frame"),unit_anim_(cfg,frame_string)
+	missile_anim_(cfg,"missile_"),unit_anim_(cfg,frame_string)
 {
 	event_ =utils::split(cfg["apply_to"]);
 
@@ -267,37 +267,32 @@ void unit_animation::back_compat_add_name(const std::string name,const std::stri
 
 
 
-const std::string &unit_animation::halo(const std::string&default_val ) const
+const std::string &unit_animation::crude_animation::halo(const std::string&default_val ) const
 {
-	return unit_anim_.get_current_frame().halo(unit_anim_.get_current_frame_time(),unit_anim_.halo_.get_current_element(unit_anim_.get_animation_time(),default_val));
+	return get_current_frame().halo(get_current_frame_time(),halo_.get_current_element(get_animation_time(),default_val));
 }
 
-int unit_animation::halo_x(const int default_val) const 
+int unit_animation::crude_animation::halo_x(const int default_val) const 
 {
-	return unit_anim_.get_current_frame().halo_x(unit_anim_.get_current_frame_time(),unit_anim_.halo_x_.get_current_element(unit_anim_.get_animation_time(),default_val));
+	return get_current_frame().halo_x(get_current_frame_time(),halo_x_.get_current_element(get_animation_time(),default_val));
 }
-int unit_animation::halo_y(const int default_val) const 
+int unit_animation::crude_animation::halo_y(const int default_val) const 
 {
-	return unit_anim_.get_current_frame().halo_y(unit_anim_.get_current_frame_time(),unit_anim_.halo_y_.get_current_element(unit_anim_.get_animation_time(),default_val)); 
+	return get_current_frame().halo_y(get_current_frame_time(),halo_y_.get_current_element(get_animation_time(),default_val)); 
 }
-Uint32 unit_animation::blend_with() const 
+double unit_animation::crude_animation::blend_ratio(const double default_val) const
 {
-#warning TBSL: "this should become a progressive param somehow..."
-	return unit_anim_.get_current_frame().blend_with(); 
-}
-double unit_animation::blend_ratio(const double default_val) const
-{
-	return unit_anim_.get_current_frame().blend_ratio(unit_anim_.get_current_frame_time(),unit_anim_.blend_ratio_.get_current_element(unit_anim_.get_animation_time(),default_val)); 
+	return get_current_frame().blend_ratio(get_current_frame_time(),blend_ratio_.get_current_element(get_animation_time(),default_val)); 
 }
 
-fixed_t unit_animation::highlight_ratio(const float default_val) const
+fixed_t unit_animation::crude_animation::highlight_ratio(const float default_val) const
 {
-	return unit_anim_.get_current_frame().highlight_ratio(unit_anim_.get_current_frame_time(),unit_anim_.highlight_ratio_.get_current_element(unit_anim_.get_animation_time(),default_val));
+	return get_current_frame().highlight_ratio(get_current_frame_time(),highlight_ratio_.get_current_element(get_animation_time(),default_val));
 }
 
-double unit_animation::offset(double default_val) const
+double unit_animation::crude_animation::offset(double default_val) const
 {
-	return unit_anim_.get_current_frame().offset(unit_anim_.get_current_frame_time(),unit_anim_.offset_.get_current_element(unit_anim_.get_animation_time(),default_val))  ; 
+	return get_current_frame().offset(get_current_frame_time(),offset_.get_current_element(get_animation_time(),default_val))  ; 
 }
 
 bool unit_animation::crude_animation::need_update() const
@@ -317,25 +312,25 @@ bool unit_animation::crude_animation::need_update() const
 
 unit_animation::crude_animation::crude_animation(const config& cfg,const std::string frame_string ) 
 {
-	config::const_child_itors range = cfg.child_range(frame_string);
-	if(cfg["start_time"].empty() &&range.first != range.second) {
+	config::const_child_itors range = cfg.child_range(frame_string+"frame");
+	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
 		starting_frame_time_ = atoi((**range.first)["begin"].c_str());
 	} else {
-		starting_frame_time_ = atoi(cfg["start_time"].c_str());
+		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
 	}
 
 	for(; range.first != range.second; ++range.first) {
 		unit_frame tmp_frame(**range.first);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());
 	}
-	halo_ = progressive_string(cfg["halo"],get_animation_duration());
-	halo_x_ = progressive_int(cfg["halo_x"],get_animation_duration());
-	halo_y_ = progressive_int(cfg["halo_y"],get_animation_duration());
-	std::vector<std::string> tmp_blend=utils::split(cfg["blend_color"]);
+	halo_ = progressive_string(cfg[frame_string+"halo"],get_animation_duration());
+	halo_x_ = progressive_int(cfg[frame_string+"halo_x"],get_animation_duration());
+	halo_y_ = progressive_int(cfg[frame_string+"halo_y"],get_animation_duration());
+	std::vector<std::string> tmp_blend=utils::split(cfg[frame_string+"blend_color"]);
 	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
-	blend_ratio_ = progressive_double(cfg["blend_ratio"],get_animation_duration());
-	highlight_ratio_ = progressive_double(cfg["alpha"],get_animation_duration());
-	offset_ = progressive_double(cfg["offset"],get_animation_duration());
+	blend_ratio_ = progressive_double(cfg[frame_string+"blend_ratio"],get_animation_duration());
+	highlight_ratio_ = progressive_double(cfg[frame_string+"alpha"],get_animation_duration());
+	offset_ = progressive_double(cfg[frame_string+"offset"],get_animation_duration());
 
 	if(!halo_.does_not_change() ||
 			!halo_x_.does_not_change() ||
@@ -346,3 +341,6 @@ unit_animation::crude_animation::crude_animation(const config& cfg,const std::st
 			force_change();
 	}
 }
+
+
+

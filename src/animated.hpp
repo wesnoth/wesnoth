@@ -66,7 +66,6 @@ public:
 	bool animation_would_finish() const;
 	int get_animation_time() const;
 
-	//! @todo For the moment, all the following functions dont't use (or incorrectly use) acceleration
 	const int get_animation_duration() const;
 	const T& get_current_frame() const;
 	//! Get the next frame (or the current + shift frames)
