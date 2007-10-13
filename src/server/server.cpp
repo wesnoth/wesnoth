@@ -927,6 +927,216 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		LOG_SERVER << "ERROR: Could not find game for player: " << pl->second.name() << "\n";
 		return;
 	}
+	// If this is data describing the level for a game.
+	else if(g->is_owner(sock) && data.child("side") != NULL) {
+
+		const bool is_init = g->level_init();
+
+		// If this game is having its level data initialized
+		// for the first time, and is ready for players to join.
+		// We should currently have a summary of the game in g->level().
+		// We want to move this summary to the initial_response_, and
+		// place a pointer to that summary in the game's description.
+		// g->level() should then receive the full data for the game.
+		if(!is_init) {
+
+			// If there is no shroud, then tell players in the lobby
+			// what the map looks like
+			if((*data.child("side"))["shroud"] != "yes") {
+				g->level().values["map_data"] = data["map_data"];
+				g->level().values["map"] = data["map"];
+			}
+
+			g->level().values["mp_era"] = data.child("era") != NULL ? data.child("era")->get_attribute("id") : "";
+			g->level().values["mp_scenario"] = data["id"];
+			g->level().values["mp_use_map_settings"] = data["mp_use_map_settings"];
+			g->level().values["mp_village_gold"] = data["mp_village_gold"];
+			g->level().values["mp_fog"] = data["mp_fog"];
+			g->level().values["mp_shroud"] = data["mp_shroud"];
+			g->level().values["experience_modifier"] = data["experience_modifier"];
+			g->level().values["mp_countdown"] = data["mp_countdown"];
+			g->level().values["mp_countdown_init_time"] = data["mp_countdown_init_time"];
+			g->level().values["mp_countdown_turn_bonus"] = data["mp_countdown_turn_bonus"];
+			g->level().values["mp_countdown_reservoir_time"] = data["mp_countdown_reservoir_time"];
+			g->level().values["mp_countdown_action_bonus"] = data["mp_countdown_action_bonus"];
+
+			// Update our config object which describes the open games,
+			// and notifies the game of where its description is located at
+			config& desc = gamelist.add_child("game",g->level());
+			g->set_description(&desc);
+			desc["hash"] = data["hash"];
+
+			// Record the full description of the scenario in g->level()
+			g->level() = data;
+			g->update_side_data();
+			g->describe_slots();
+
+			WRN_SERVER << pl->second.name() << " creates game: \""
+				<< (g->description() ? (*g->description())["name"] : "Warning: Game has no desccription.")
+				<< "\" (" << g->id() << ").\n";
+
+			// Send all players in the lobby the update to the list of games
+			lobby_players_.send_data(sync_initial_response());
+		} else {
+
+			// We've already initialized this scenario, but clobber
+			// its old contents with the new ones given here
+			g->level() = data;
+			g->update_side_data();
+			// advancing to the next scenario?
+			WRN_SERVER << pl->second.name() << " advances game: \""
+				<< (g->description() ? (*g->description())["name"] : "Warning: Game has no description.")
+				<< "\" (" << g->id() << ") to the next scenario.\n";
+			// Send the update of the game description to the lobby
+			lobby_players_.send_data(sync_initial_response());
+		}
+
+		// Send the new data to all players in the level (except the sender).
+		g->send_data(data,sock);
+		return;
+	}
+
+	// If this is data telling us that the scenario did change.
+	else if(g->is_owner(sock) && data.child("next_scenario") != NULL) {
+		config* scenario = data.child("next_scenario");
+
+		if(g->level_init()) {
+			g->level() = *scenario;
+			g->reset_history();
+			g->update_side_data();
+			// Send the update of the game description to the lobby
+			lobby_players_.send_data(sync_initial_response());
+		} else {
+			// next_scenario sent while the scenario was not initialized.
+			// Something's broken here.
+			WRN_SERVER << "Error: next_scenario sent while the scenario is not yet initialized";
+			return;
+		}
+	}
+
+	std::string game_name = g->description() ? (*g->description())["name"] : "Warning: Game has no description.";
+
+	const string_map::const_iterator side = data.values.find("side");
+	if(side != data.values.end()) {
+		const bool res = g->take_side(sock,data);
+		config response;
+		if(res) {
+			LOG_SERVER << "player joined side\n";
+			response["side_secured"] = side->second;
+
+			// Update the number of available slots
+			const bool res = g->describe_slots();
+			if(res) {
+				lobby_players_.send_data(sync_initial_response());
+			}
+		} else if (g->is_observer(sock)) {
+			const config& p_msg = construct_server_message("Sorry " + g->find_player(sock)->name() + ", someone else entered before you.",*g);
+			network::send_data(p_msg, sock);
+			return;
+		} else {
+			response["failed"] = "yes";
+		}
+
+		network::send_data(response,sock);
+		return;
+	}
+
+	if(data.child("start_game")) {
+		// Send notification of the game starting immediately.
+		// g->start_game() will send data that assumes
+		// the [start_game] message has been sent
+		g->send_data(data,sock);
+
+		WRN_SERVER << "game: \"" << game_name 
+			<< "\" (" << g->id() << ") started.\n";
+
+		g->start_game();
+		lobby_players_.send_data(sync_initial_response());
+		return;
+	} else if(data.child("leave_game")) {
+		const bool needed = g->is_needed(sock);
+		bool obs = g->is_observer(sock);
+		g->remove_player(sock);
+		g->describe_slots();
+
+		if( (g->nplayers() == 0) || (needed && (!g->started())) ) {
+
+			// Tell all other players the game is over,
+			// because the last player has left
+			config cfg;
+			cfg.add_child("leave_game");
+			g->send_data(cfg);
+			WRN_SERVER << "game: \"" << game_name
+				<< "\" (" << g->id() << ") ended.\n";
+
+			// Delete the game's description
+			config* const gamelist = initial_response_.child("gamelist");
+			wassert(gamelist != NULL);
+			const config::child_itors vg = gamelist->child_range("game");
+
+			const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
+			if(desc != vg.second) {
+				gamelist->remove_child("game",desc - vg.first);
+			}
+
+			// Update the state of the lobby to players in it.
+			// We have to sync the state of the lobby,
+			// so we can send it to the players leaving the game.
+			lobby_players_.send_data(sync_initial_response());
+
+			// set the availability status for all quitting players
+			for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+				if(g->is_member(pl->first)) {
+					pl->second.mark_available();
+				}
+			}
+
+			// Put the players back in the lobby and send them
+			// the game list and user list again
+			g->send_data(initial_response_);
+			metrics_.game_terminated(g->termination_reason());
+			lobby_players_.add_players(*g);
+			games_.erase(g);
+
+			// Now sync players in the lobby again, to remove the game
+			lobby_players_.send_data(sync_initial_response());
+		} else {
+			if(!obs) {
+				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
+				g->send_data(msg);
+				WRN_SERVER << pl->second.name() << " has left game: \""
+					<< game_name << "\" (" << g->id() << ").\n";
+			} else {
+				WRN_SERVER << "observer: " << pl->second.name() << " has left game: \""
+					<< game_name << "\" (" << g->id() << ").\n";
+			}
+
+			if (needed){
+				// Transfer game control to another player
+				const player* player = g->transfer_game_control();
+				if (player != NULL){
+					const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
+					g->send_data(msg);
+				}
+			}
+		}
+		// Mark the player as available in the lobby
+		pl->second.mark_available();
+		lobby_players_.add_player(sock);
+
+		// Send the player who has quit the game list
+		network::send_data(initial_response_,sock);
+
+		// Send all other players in the lobby the update to the lobby
+		lobby_players_.send_data(sync_initial_response(),sock);
+
+		return;
+	} else if(data["side_secured"].empty() == false) {
+		return;
+	} else if(data["failed"].empty() == false) {
+		LOG_SERVER << "ERROR: Failure to get side\n";
+		return;
+	}
 
 	// If info is being provided about the game state
 	if(data.child("info") != NULL) {
@@ -1046,7 +1256,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				g->send_data(p_msg);
 				g->ban_player(pl->first);
 				WRN_SERVER << owner << " banned: " << name << " from game: "
-					<< (*g->description())["name"] << "\" (" << g->id() << ")\n";
+					<< game_name << "\" (" << g->id() << ")\n";
 			} else {
 				const config& msg = construct_server_message("You have been kicked",*g);
 				network::send_data(msg, pl->first);
@@ -1054,7 +1264,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				g->send_data(p_msg);
 				g->remove_player(pl->first);
 				WRN_SERVER << owner << " kicked: " << name << " from game: \""
-					<< (*g->description())["name"] << "\" (" << g->id() << ")\n";
+					<< game_name << "\" (" << g->id() << ")\n";
 			}
 
 			config leave_game;
@@ -1099,209 +1309,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		lobby_players_.send_data(sync_initial_response());
 	}
 
-	// If this is data describing the level for a game.
-	else if(g->is_owner(sock) && data.child("side") != NULL) {
-
-		const bool is_init = g->level_init();
-
-		// If this game is having its level data initialized
-		// for the first time, and is ready for players to join.
-		// We should currently have a summary of the game in g->level().
-		// We want to move this summary to the initial_response_, and
-		// place a pointer to that summary in the game's description.
-		// g->level() should then receive the full data for the game.
-		if(!is_init) {
-
-			// If there is no shroud, then tell players in the lobby
-			// what the map looks like
-			if((*data.child("side"))["shroud"] != "yes") {
-				g->level().values["map_data"] = data["map_data"];
-				g->level().values["map"] = data["map"];
-			}
-
-			g->level().values["mp_era"] = data.child("era") != NULL ? data.child("era")->get_attribute("id") : "";
-			g->level().values["mp_scenario"] = data["id"];
-			g->level().values["mp_use_map_settings"] = data["mp_use_map_settings"];
-			g->level().values["mp_village_gold"] = data["mp_village_gold"];
-			g->level().values["mp_fog"] = data["mp_fog"];
-			g->level().values["mp_shroud"] = data["mp_shroud"];
-			g->level().values["experience_modifier"] = data["experience_modifier"];
-			g->level().values["mp_countdown"] = data["mp_countdown"];
-			g->level().values["mp_countdown_init_time"] = data["mp_countdown_init_time"];
-			g->level().values["mp_countdown_turn_bonus"] = data["mp_countdown_turn_bonus"];
-			g->level().values["mp_countdown_reservoir_time"] = data["mp_countdown_reservoir_time"];
-			g->level().values["mp_countdown_action_bonus"] = data["mp_countdown_action_bonus"];
-
-			// Update our config object which describes the open games,
-			// and notifies the game of where its description is located at
-			config& desc = gamelist.add_child("game",g->level());
-			g->set_description(&desc);
-			desc["hash"] = data["hash"];
-
-			// Record the full description of the scenario in g->level()
-			g->level() = data;
-			g->update_side_data();
-			g->describe_slots();
-
-			WRN_SERVER << pl->second.name() << " creates game: \""
-				<< (*g->description())["name"] << "\" (" << g->id() << ").\n";
-
-			// Send all players in the lobby the update to the list of games
-			lobby_players_.send_data(sync_initial_response());
-		} else {
-
-			// We've already initialized this scenario, but clobber
-			// its old contents with the new ones given here
-			g->level() = data;
-			g->update_side_data();
-			// Send the update of the game description to the lobby
-			lobby_players_.send_data(sync_initial_response());
-		}
-
-		// Send the new data to all players in the level (except the sender).
-		g->send_data(data,sock);
-		return;
-	}
-
-	// If this is data telling us that the scenario did change.
-	else if(g->is_owner(sock) && data.child("next_scenario") != NULL) {
-		config* scenario = data.child("next_scenario");
-
-		if(g->level_init()) {
-			g->level() = *scenario;
-			g->reset_history();
-			g->update_side_data();
-			// Send the update of the game description to the lobby
-			lobby_players_.send_data(sync_initial_response());
-		} else {
-			// next_scenario sent while the scenario was not initialized.
-			// Something's broken here.
-			WRN_SERVER << "Error: next_scenario sent while the scenario is not yet initialized";
-			return;
-		}
-	}
-
-	const string_map::const_iterator side = data.values.find("side");
-	if(side != data.values.end()) {
-		const bool res = g->take_side(sock,data);
-		config response;
-		if(res) {
-			LOG_SERVER << "player joined side\n";
-			response["side_secured"] = side->second;
-
-			// Update the number of available slots
-			const bool res = g->describe_slots();
-			if(res) {
-				lobby_players_.send_data(sync_initial_response());
-			}
-		} else if (g->is_observer(sock)) {
-			const config& p_msg = construct_server_message("Sorry " + g->find_player(sock)->name() + ", someone else entered before you.",*g);
-			network::send_data(p_msg, sock);
-			return;
-		} else {
-			response["failed"] = "yes";
-		}
-
-		network::send_data(response,sock);
-		return;
-	}
-
-	if(data.child("start_game")) {
-		// Send notification of the game starting immediately.
-		// g->start_game() will send data that assumes
-		// the [start_game] message has been sent
-		g->send_data(data,sock);
-
-		WRN_SERVER << "game: \"" << (*g->description())["name"] 
-			<< "\" (" << g->id() << ") started.\n";
-
-		g->start_game();
-		lobby_players_.send_data(sync_initial_response());
-		return;
-	} else if(data.child("leave_game")) {
-		const bool needed = g->is_needed(sock);
-		bool obs = g->is_observer(sock);
-		g->remove_player(sock);
-		g->describe_slots();
-
-		if( (g->nplayers() == 0) || (needed && (!g->started())) ) {
-
-			// Tell all other players the game is over,
-			// because the last player has left
-			config cfg;
-			cfg.add_child("leave_game");
-			g->send_data(cfg);
-			WRN_SERVER << "game: \"" << (*g->description())["name"]
-				<< "\" (" << g->id() << ") ended.\n";
-
-			// Delete the game's description
-			config* const gamelist = initial_response_.child("gamelist");
-			wassert(gamelist != NULL);
-			const config::child_itors vg = gamelist->child_range("game");
-
-			const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
-			if(desc != vg.second) {
-				gamelist->remove_child("game",desc - vg.first);
-			}
-
-			// Update the state of the lobby to players in it.
-			// We have to sync the state of the lobby,
-			// so we can send it to the players leaving the game.
-			lobby_players_.send_data(sync_initial_response());
-
-			// set the availability status for all quitting players
-			for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-				if(g->is_member(pl->first)) {
-					pl->second.mark_available();
-				}
-			}
-
-			// Put the players back in the lobby and send them
-			// the game list and user list again
-			g->send_data(initial_response_);
-			metrics_.game_terminated(g->termination_reason());
-			lobby_players_.add_players(*g);
-			games_.erase(g);
-
-			// Now sync players in the lobby again, to remove the game
-			lobby_players_.send_data(sync_initial_response());
-		} else {
-			if(!obs) {
-				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
-				g->send_data(msg);
-				WRN_SERVER << pl->second.name() << " has left game: \""
-					<< (*g->description())["name"] << "\" (" << g->id() << ").\n";
-			} else {
-				WRN_SERVER << "observer: " << pl->second.name() << " has left game: \""
-					<< (*g->description())["name"] << "\" (" << g->id() << ").\n";
-			}
-
-			if (needed){
-				// Transfer game control to another player
-				const player* player = g->transfer_game_control();
-				if (player != NULL){
-					const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
-					g->send_data(msg);
-				}
-			}
-		}
-		// Mark the player as available in the lobby
-		pl->second.mark_available();
-		lobby_players_.add_player(sock);
-
-		// Send the player who has quit the game list
-		network::send_data(initial_response_,sock);
-
-		// Send all other players in the lobby the update to the lobby
-		lobby_players_.send_data(sync_initial_response(),sock);
-
-		return;
-	} else if(data["side_secured"].empty() == false) {
-		return;
-	} else if(data["failed"].empty() == false) {
-		LOG_SERVER << "ERROR: Failure to get side\n";
-		return;
-	}
 
 	config* const turn = data.child("turn");
 	if(turn != NULL) {
