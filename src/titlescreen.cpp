@@ -285,14 +285,14 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 		std::string(" ") + game_config::version + rev;
 
 	const SDL_Rect version_area = font::draw_text(NULL, screen_area(),
-								  font::SIZE_TINY, font::NORMAL_COLOUR,
+								  font::SIZE_TINY, font::YELLOW_COLOUR,
 								  version_str,0,0);
-	const size_t versiony = screen.h() - version_area.h;
+	const size_t versiony = screen.h() - version_area.h - 20;
 
 	if(versiony < size_t(screen.h())) {
 		font::draw_text(&screen.video(),screen.screen_area(),
-				font::SIZE_TINY, font::NORMAL_COLOUR,
-				version_str,0,versiony);
+				font::SIZE_TINY, font::YELLOW_COLOUR,
+				version_str,22,versiony);
 	}
 
 	LOG_DP << "drew version number\n";
