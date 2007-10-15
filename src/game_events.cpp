@@ -255,6 +255,10 @@ bool internal_conditional_passed(const unit_map* units,
 		&& (utils::string_bool(value) != utils::string_bool(boolean_equals))) {
 			return false;
 		}
+		const std::string contains = values["contains"];
+		if(values.get_attribute("contains") != "" && value.find(contains) == std::string::npos) {
+			return false;
+		}
 	}
 	return true;
 }
