@@ -21,7 +21,7 @@ endif
 finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
 	 $(findmoredata) )
 finddatadirs=(cd $(top_srcdir) && find data fonts sounds -type d \! \( -name .svn -prune \) -print; $(findmoredatadirs) )
-findnoinst=(cd $(top_srcdir) && find utils -name .svn -prune -o -name ".\#*" -o -type d -o -print && find MANUAL* )
+findnoinst=(cd $(top_srcdir) && find utils -name .svn -prune -o -name ".\#*" -o -type d -o -print )
 
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
 finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
