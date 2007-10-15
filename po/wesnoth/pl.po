@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-10 12:38+0200\n"
-"PO-Revision-Date: 2007-10-04 18:39+0100\n"
+"PO-Revision-Date: 2007-10-12 17:10+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -4755,9 +4755,8 @@ msgid "End Turn"
 msgstr "Zakończ turę"
 
 #: data/themes/default.cfg:146 data/themes/dfool.cfg:162
-#, fuzzy
 msgid "End Scenario"
-msgstr "Zdalny scenariusz"
+msgstr "Zakończ scenariusz"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
 #: data/themes/experimental.cfg:182 src/menu_events.cpp:322 src/unit.cpp:2614
@@ -5152,7 +5151,6 @@ msgid "File I/O Error while reading the game"
 msgstr "Błąd odczytu pliku podczas wczytywania gry"
 
 #: src/game.cpp:819
-#, fuzzy
 msgid "Play a campaign"
 msgstr "Kampania"
 
@@ -6580,9 +6578,8 @@ msgid "Remote scenario"
 msgstr "Zdalny scenariusz"
 
 #: src/multiplayer_lobby.cpp:438
-#, fuzzy
 msgid "Unknown scenario: $scenario_id"
-msgstr "Nieznany scenariusz: '$scenario|'"
+msgstr "Nieznany scenariusz: $scenario_id"
 
 #: src/multiplayer_lobby.cpp:442
 msgid "Unknown scenario"
@@ -7004,35 +7001,32 @@ msgid "Unknown unit type '$type|'"
 msgstr "Nieznany typ jednostki '$type|'"
 
 #: src/unit.cpp:2571 src/unit.cpp:2900 src/unit.cpp:2956
-#, fuzzy
 msgid " and "
-msgstr "Piasek"
+msgstr " i "
 
 #: src/unit.cpp:2582
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2647
-#, fuzzy
 msgid "moves"
-msgstr "Liczba ruchów"
+msgstr "liczba ruchów"
 
 #: src/unit.cpp:2665 src/unit.cpp:2927
 msgid "XP to advance"
 msgstr "PD do awansu"
 
 #: src/unit.cpp:2919
-#, fuzzy
 msgid " move"
-msgstr "Liczba ruchów"
+msgstr " ruch"
 
 #: src/unit.cpp:2935
 msgid "$effect_description per level"
-msgstr ""
+msgstr "$effect_description na poziom"
 
 #: src/unit.cpp:2965
 msgid "$trait_name|: $trait_description "
-msgstr ""
+msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:202 src/unit_types.cpp:242
 msgid "damage"
