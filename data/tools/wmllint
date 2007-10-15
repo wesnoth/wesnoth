@@ -28,6 +28,9 @@
 # have a single subdirectory that mixes old-style and new-style
 # terrain coding it might get confused.
 #
+# Standalone terrain mask files *must* have "mask" somewhere in their name
+# or they'll have an incorrect usage=map generated into them.
+#
 # Note: You can shut wmllint up about custom terrains by having a comment
 # on the same line that includes the string "wmllint: ignore".
 # You can also prevent description insertions with "wmllint: no-icon".
@@ -1032,7 +1035,9 @@ def translator(filename, mapxforms, textxform):
     lineno = baseline = 0
     validate = True
     add_border = True
+    add_usage = True
     have_header = False
+    maptype = None
     while mfile:
         if not map_only:
             line = mfile.pop(0)
@@ -1043,10 +1048,20 @@ def translator(filename, mapxforms, textxform):
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
         # refer to map files which will be checked separately.
-        if map_only or ("map_data=" in line
+        if map_only or (("map_data=" in line or "mask=" in line)
                         and line.count('"') in (1, 2)
                         and line.count("{") == 0
                         and  line.count("}") == 0):
+            if map_only:
+                if "mask" in filename:
+                    maptype = "map"
+                else:
+                    maptype = "mask"
+            else:
+                if "map_data" in line:
+                    maptype = "map"
+                elif "mask" in line:
+                    maptype = "mask"
             baseline = 0
             cont = True
             if verbose >= 3:
@@ -1068,6 +1083,8 @@ def translator(filename, mapxforms, textxform):
                         have_header = True
                     if 'border_size' in line:
                         add_border = False
+                    if "usage" in line:
+                        add_usage = False
                     newdata.append(line + terminator)
                     continue
                 if '"' in line:
@@ -1081,14 +1098,17 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = map(lambda x: x, line)
                     outmap.append(fields)
-            if not map_only: 
-                newdata.append("map_data=\"" + terminator)
+            if not map_only:
+                if maptype == "map":
+                    newdata.append("map_data=\"" + terminator)
+                elif maptype == "mask":
+                    newdata.append("mask=\"" + terminator)
             original = copy.deepcopy(outmap)
             for transform in mapxforms:
                 for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
-            # Next two lines should be removed when the map-border code lands.
-            if not maplift:
+            # Second disjunct should be removed when the map-border code lands.
+            if maptype == "mask" or not maplift:
                 add_border = False
             if add_border:
                 if verbose:
@@ -1106,6 +1126,9 @@ def translator(filename, mapxforms, textxform):
                 # Turn big trees on the edges to ordinary forest hexes
                 outermap(lambda n: n.replace(r"Gg^Fet", r"Gg^Fp"), outmap)
                 modified = True
+            if add_usage:
+                newdata.append("usage=" + maptype + terminator)
+                have_header = True
             if have_header:
                 newdata.append(terminator)
             for y in range(len(outmap)):
@@ -1460,7 +1483,8 @@ if __name__ == '__main__':
                     (exc_type, exc_value, exc_traceback) = sys.exc_info()
                     raise exc_type, exc_value, exc_traceback
             # Time for map file renames
-            if not revert and not fn.endswith(".map") and is_map(fn):
+            # FIXME: We should make some effort to rename mask files.
+            if not revert and not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
                 mover = vcmove(fn, fn + ".map")
                 print mover
                 if not dryrun:
