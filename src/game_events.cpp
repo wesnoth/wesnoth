@@ -690,7 +690,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	// Modifications of some attributes of a side: gold, income, team name
 	else if(cmd == "modify_side") {
-		std::cerr << "modifying side...\n";
+		LOG_NG << "modifying side...\n";
 		std::string side = cfg["side"];
 		std::string income = cfg["income"];
 		std::string team_name = cfg["team_name"];
@@ -701,9 +701,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const size_t team_index = side_num-1;
 
 		if(team_index < teams->size()) {
-			std::cerr << "modifying team: " << side_num << "\n";
+			LOG_NG << "modifying team: " << side_num << "\n";
 			if(!team_name.empty()) {
-				std::cerr << "change team to team_name '" << team_name << "'\n";
+				LOG_NG << "change team to team_name '" << team_name << "'\n";
 				(*teams)[team_index].change_team(team_name,
 												 user_team_name);
 			}
