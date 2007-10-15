@@ -23,7 +23,7 @@
 #   and the reports.  Use relative paths, that doesn't contain spaces, it wouldn't work if a space is found.
 #   Run the script, no parameters needed.
 #
-# Version: 1.0 (14 Apr 2007)
+# Version: 1.1 (28 Apr 2007)
 # Author: Miguel Zapico (elricz.m@gmail.com)
 
 # -- Options --
@@ -31,13 +31,17 @@
 my $html_gen = 1;
 # This option will determine if the html files translations are generated, and it will create the folders
 #   based on the contents of the po folder of Wesnoth
-my $translate = 1;
+my $translate = 0;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
 my $images = 1;
 # This option will determine if the html report on made animations is generated
-my $animations = 0;
+my $animations = 1;
 # This is the version number that will appear on the unit trees
-my $version = '1.3.2+svn';
+my $version = '1.3.8';
+# These option will try to process the user made Eras
+my $ime = 1; # Imperial Era
+my $exe = 1; # Extended Era
+my $eom = 1; # Era of Myths
 # If the script is run on Windows, set this option to 1
 my $windows = 1;
 
@@ -45,8 +49,8 @@ use Tie::File;
 use File::Copy;
 
 # -- Paths --
-my ($wesnoth_dir, $data_dir, $html_dir, $report_dir);
-$wesnoth_dir = '../../..';
+my ($wesnoth_dir, $data_dir, $html_dir, $report_dir, $base_dir, $units_dir, $base_report_dir, $link_back);
+$wesnoth_dir = '../Wesnoth';
 $html_dir = 'files';
 $report_dir = 'reports';
 
@@ -55,7 +59,9 @@ unless (-e $html_dir) {mkdir $html_dir or die "$html_dir directory cannot be cre
 unless (-e $report_dir) {mkdir $report_dir or die "$report_dir directory cannot be created: $!\n";};
 unless (-e "$html_dir/attacks") {mkdir "$html_dir/attacks" or die "$html_dir/attacks directory cannot be created: $!\n";};
 unless (-e "$html_dir/units") {mkdir "$html_dir/units" or die "$html_dir/units directory cannot be created: $!\n";};
-$data_dir = "$wesnoth_dir/data";
+$data_dir = "$wesnoth_dir/data/core"; 
+$base_dir = $wesnoth_dir; $base_report_dir = $report_dir;
+$units_dir = $data_dir . "/units";
 
 # Variables used to generate the html
 my ($i, $html, %types, %unit_id, @adv);
@@ -69,59 +75,16 @@ my %races = qw/race Race drake Drakes dwarf race^Dwarves elf Elves goblin race^G
 my $att_html = "<tr>\n\t<td><img src={icon}></td>\n\t";
 $att_html .= "<td>{name}</td>\n\t<td>{type}</td>\n\t<td>{damage}-{number}</td>\n\t<td>{range}</td>\n\t<td>{special}<!-- -->&nbsp;</td>\n</tr>\n";
 
-# -- HTML files and raw data reports generation --
-print "Starting the generation of unit files\n";
 # Information on the units.cfg file
-&ProcessTypes();
-
-#Files that will contain the units data
-open (UNITS, "> $report_dir/units.txt") or die "Couldn't create units.txt: $!\n";
-open (RES, "> $report_dir/resistances.txt") or die "Couldn't create resistances.txt: $!\n";
-open (ADV, "> $report_dir/advances.txt") or die "Couldn't create advances.txt: $!\n";
-open (ATTACK, "> $report_dir/attacks.txt") or die "Couldn't create attacks.txt: $!\n";
-open (FACT, "> $report_dir/factions.txt") or die "Couldn't create factions.txt: $!\n";
-# Headers
-print UNITS "id\tname\trace\thitpoints\tmovement_type\tmovement\texperience\tlevel\talignment\timage\tcost\tusage\tabilities\n";
-print RES "id\tVariable\tValue\tCategory\n";
-print ADV "id\tAdvanceTo\n";
-print ATTACK "id\tname\ttype\trange\tdamage\tnumber\ticon\tspecial\n";
-
-# Load HTML template
-open (HTML, "unit.html");
-$html .= $_ while (<HTML>);
-close HTML;
-
-# Now all the unit files in the data/units directory
-# chdir ($data_dir) or die "Can't chdir to $dir $!";
-my @units = glob("$data_dir/units/*.cfg");
-&ProcessUnit($_) foreach @units;
-
-# Factions, populates the factions file
-my @factions = glob("$data_dir/factions/*");
-my %mp;
-foreach (@factions) {
-	&ProcessFaction ($_) if (/cfg$/);
-}
-
-close UNITS;
-close RES;
-close ADV;
-close ATTACK;
-close FACT;
+&ProcessTypes('units.cfg');
+# -- HTML files and raw data reports generation --
+&ProduceDataFiles("unit.html");
 
 # Multiplayer
-# Check advances to not miss any unit
-tie @adv, 'Tie::File', "$report_dir/advances.txt" or die "Couldn't open advances.txt: $!\n";
-for (@adv) {
-	my ($id, $adv) = split /\t/;
-	$mp{$adv}++ if $mp{$id}; # List the units that will be processed as MP
-	s/\t([A-Za-z ]+)/\t$unit_id{$1}/; # Changes names to ids in the advance file
-}
-untie @adv;
 # Print multiplayer units
 open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
 open (MP, "> $report_dir/mp_units.txt") or die "Couldn't create mp_units.txt: $!\n";
-print MP "id\tname\trace\thitpoints\tmovement_type\tmovement\texperience\tlevel\talignment\timage\tcost\tusage\tabilities\n";
+print MP "id\tname\trace\thitpoints\tmovement_type\tmovement\texperience\tlevel\talignment\timage\tcost\tusage\tabilities\tfull_name\n";
 while (<UNITS>) {
 	my $unit = $_;
 	my ($none, $id, @other) = split /\t/; # We have names, not ids, on the %mp hash
@@ -131,131 +94,7 @@ close MP;
 close UNITS;
 
 # -- Tree generation --
-if ($html_gen) {
-	print "Starting the generation of unit trees\n";
-	copy('units.css',"$html_dir/units.css");
-	# Load HTML templates
-	open (HTML, "tree_header.html") or die "Couldn't open header: $!\n";
-	my @header = <HTML>;
-	s/X.X.X/$version/ foreach @header;
-	close HTML;
-	open (HTML, "tree_footer.html") or die "Couldn't open footer: $!\n";
-	my @footer = <HTML>;
-	@footer[2] =~ s/date/gmtime(time)/e; # Generation time
-	close HTML;
-	
-	# Get the advances for each unit
-	open (ADV, "$report_dir/advances.txt") or die "Couldn't open advances.txt: $!\n";
-	while (<ADV>) {
-		chomp;
-		my ($id, $adv) = split /\t/;
-		$spaces{$id}++; # Used on the rowspan
-		$adv_from{$adv} = $id;
-		push @{$adv{$id}}, $adv;
-	}
-	close ADV;
-	
-	# Calculate the correct row span for each unit
-	foreach (sort keys %spaces) {
-		if ($spaces{$_} > 1 and $adv_from{$_}) {
-			$spaces{$adv_from{$_}} += $spaces{$_} - 1;
-		}
-	}
-	
-	# Units information
-	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
-	while (<UNITS>) {
-		chomp;
-		my ($id, @stats) = split /\t/;
-		$units{$id} = [ @stats ];
-		$units_id{$stats[0]} = $id;
-	}
-	close UNITS;
-	
-	# Attacks information
-	open (ATT, "$report_dir/attacks.txt") or die "Couldn't open attacks.txt: $!\n";
-	while (<ATT>) {
-		chomp;
-		my ($id, @stats) = split /\t/;
-		$att_id{$id}++; # Numeral for the hash, there may be better ways to do it
-		$attacks{$id}[$att_id{$id}-1] = [ @stats ];
-	}
-	close ATT;
-	
-	# Tree by race
-	open (INDEX, "> $html_dir/tree_race.html") or die "Couldn't create tree_race.html: $!\n";
-	open (HTML, "tree_race_header.html") or die "Couldn't open header: $!\n";
-	while (<HTML>) {s/X.X.X/$version/; print INDEX;}
-	close HTML;
-	foreach $race (sort keys %races) {
-		if ($race ne "race") {
-			open ($race, ">", "$html_dir/tree_$race.html") or die "Couldn't create $race.html: $!\n"; # Use the variable as the filehandle
-			print $race @header;
-			print INDEX "\n<tr>\n<td class='race' id=\"$race\" colspan=5>$races{$race}</td>\n</tr>\n";
-			print $race "\n<tr>\n<td class='race' id=\"$race\" colspan=5>$races{$race}</td>\n</tr>\n";
-			foreach (sort keys %units) {
-				if ($race eq $units{$_}[1]) { # Only process units for the current race
-					if ($units{$_}[12] eq '') {
-						&PrintUnitTree($_, *INDEX) unless $adv_from{$_};
-						&PrintUnitTree($_, $race) unless $adv_from{$_};
-					}
-				}
-			}
-			print $race @footer;
-			close $race;
-		}
-	}
-	print INDEX @footer;
-	close INDEX;
-	
-	# Update Advance From on each file
-	&UpdateAdvanceFrom;
-
-	# Tree by faction
-	# Load factions
-	open (INDEX, "> $html_dir/tree_faction.html") or die "Couldn't create tree_faction.html: $!\n";
-	open (HTML, "tree_fact_header.html") or die "Couldn't open header: $!\n";
-	while (<HTML>) {s/X.X.X/$version/; print INDEX;}
-	close HTML;
-	# Delete the advances from the units in the factions, so the tree can be built
-	my @delete_adv = qw/Thug Footpad Spearman Bowman Poacher Lieutenant/;
-	delete($adv_from{$units_id{$_}}) foreach @delete_adv;
-	open (FACTIONS, "$report_dir/factions.txt") or die "Couldn't open factions.txt: $!\n";
-	while (<FACTIONS>) {
-		chomp;
-		my ($faction, @stats) = split /\t/;
-		if ($faction =~ /(\w+)-default/) { # The standard factions came with "default" in their name
-			$factions{$1} = [ @stats ];
-			open ($faction, ">", "$html_dir/tree_$faction.html") or die "Couldn't create $faction.html: $!\n";
-			print $faction @header;
-			my $faction_name = ucfirst($1);
-			# Adjust the name of the factions to get them translated
-			$faction_name = 'Knalgan Alliance' if $faction_name eq 'Knalgans';
-			print INDEX "\n<tr>\n<td class='race' id=\"$1\" colspan=5>$faction_name</td>\n</tr>\n";
-			foreach (@stats) {
-				&PrintUnitTree($units_id{$_}, *INDEX) unless $adv_from{$units_id{$_}};
-				&PrintUnitTree($units_id{$_}, $faction) unless $adv_from{$units_id{$_}};
-			}
-			print $faction @footer;
-			close $faction;
-		}
-	}
-	close FACTIONS;
-	# Load footer
-	print INDEX @footer;
-	close INDEX;
-	
-	# Copy the index file before translating
-	if ($translate) {
-		open (HTML, 'index_languages.html') or die "Couldn't open index_languages.html: $!\n";
-	} else {
-		open (HTML, 'index_base.html') or die "Couldn't open index_base.html: $!\n";
-	}
-	open (INDEX, "> $html_dir/index.html") or die "Couldn't create index.html: $!\n";
-	while (<HTML>) {s/X.X.X/$version/; print INDEX;}
-	close HTML;
-	close INDEX;
-}
+&GenerateTree;
 
 # -- Translate file --
 &TranslateUnits if $translate;
@@ -264,99 +103,203 @@ print "Removing English comments\n";
 &RemoveComments if $html_gen;
 
 # -- Copy images --
-if ($images) {
-	# Attacks images
-	print "Copying attack icons\n";
-	open (ATT, "$report_dir/attacks.txt") or die "Couldn't open attacks.txt: $!\n";
-	while (<ATT>) {
-		chomp;
-		my (@stats) = split /\t/;
-		copy ("$wesnoth_dir/images/$stats[6]","$html_dir/$stats[6]");
-		print "$wesnoth_dir/images/$stats[6]\t$html_dir/$stats[6]\n";
-	}
-	close ATT;
-
-	# Unit images, to be colorized
-	print "Copying and colorizing units\n";
-	# Prepare folders
-	my @unit_images = glob("$wesnoth_dir/images/units/*");
-	foreach $unit_image (@unit_images) {
-		$unit_image =~ s(.*\/)(); # Take only the folder name
-		if ($unit_image !~ /\./) {
-			unless (-e "$html_dir/units/$unit_image") {mkdir "$html_dir/units/$unit_image" or die "$unit_image directory cannot be created: $!\n";};
-		}
-	}
-	# Unit images
-	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
-	my $colorizer = "TeamColorizer.pl";
-	$colorizer = './' . $colorizer unless $windows;
-	while (<UNITS>) {
-		chomp;
-		my @stats = split /\t/;
-		(my $image = $stats[9]);
-		$image =~ s/"//g;
-		system ("$colorizer $wesnoth_dir/images/$image $html_dir/$image");
-		$image =~ s/.png/+female.png/;
-		system ("$colorizer $wesnoth_dir/images/$image $html_dir/$image");
-	}
-	close UNITS;
-	# zombie units
-	my @zombies = qw/drake mounted saurian swimmer troll wose/;
-	foreach $zombie (@zombies) {
-		system ("$colorizer $wesnoth_dir/images/units/undead/zombie-$zombie.png $html_dir/units/undead/zombie-$zombie.png");
-		system ("$colorizer $wesnoth_dir/images/units/undead/soulless-$zombie.png $html_dir/units/undead/soulless-$zombie.png");
-	}
-}
+&CopyImages if ($images);
 
 # -- Generate animation information
-if ($animations) {
-	print "Generating animation information\n";
-	my %tags;
-	my @anim = qw/animation death defend healing_anim idle_anim leading_anim movement_anim recruit_anim/;
-	my $re_anim = "(";
-	$re_anim .= "$_|" foreach @anim;
-	$re_anim =~ s/\|$/)/;
-	
-	# Load HTML templates
-	open (HTML, "anim_header.html") or die "Couldn't open header: $!\n";
-	my @header = <HTML>;
-	close HTML;
-	open (HTML, "tree_footer.html") or die "Couldn't open footer: $!\n";
-	my @footer = <HTML>;
-	@footer[2] =~ s/date/gmtime(time)/e; # Generation time
-	close HTML;
-	open (INDEX, "> $html_dir/animations.html") or die "Couldn't create animations.html: $!\n";
-	
-	# Load units information
-	my @units = glob("$data_dir/units/*.cfg");
-	foreach $unit (@units) {
-		my ($id,$tag,$in,$images);
-		open (UNIT, "<$unit") or die "Can't open $unit: $!\n";
-		while (<UNIT>) {
-			chomp; s/^\s*//;
-			$id = $1 if /id=(.+)/;
-			($tag,$in,$images) = ($1,1,0) if /\[$re_anim\]/;
-			$images++ if ($in && /image=/);
-			if (m{\[\/$re_anim\]}) {
-				$tags{$id}{$tag} += $images;
-				($in,$images) = (0,0);
-			}
-		}
+&GenerateAnimationInfo if ($animations);
+
+# Extended Era
+if ($exe) {
+	$i=300; $version = 'x.31.0';
+	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
+	$unit_id{AdvanceTo} = 'AdvanceTo';
+	$link_back = '../';
+	$wesnoth_dir = $base_dir . '/userdata/data/campaigns/Extended_Era';
+	$data_dir = $wesnoth_dir;
+	$units_dir = $data_dir . "/units/standard";
+	$html_dir = "$html_dir/EXE";
+	$report_dir = "$html_dir/data";
+	unless (-e $html_dir) {mkdir $html_dir or die "$html_dir directory cannot be created: $!\n";};
+	unless (-e $report_dir) {mkdir $report_dir or die "$html_dir directory cannot be created: $!\n";};
+	print "Processing Extended Era\n";
+	foreach ( glob("$data_dir/races/*.cfg") ) {
+		s|$data_dir\/||;
+		&ProcessTypes($_);
 	}
-	# Print information
-	print INDEX @header;
-	foreach $unit (sort keys %tags) {
-		print INDEX "<tr>\n\t<td>$unit</td>\n";
-		foreach $tag (@anim) {
-			print INDEX "\t<td" . ($tags{$unit}{$tag} ? " class=\"yes\">$tags{$unit}{$tag}" : ">~") . "</td>\n";
-		}
-		print INDEX "</tr>\n";
+	&ProduceDataFiles("unit_exe.html");
+	# Get races
+	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
+	while (<UNITS>) {
+		my (@stats) = split /\t/;
+		$races{$stats[2]} = ucfirst($stats[2]);
 	}
-	print INDEX @footer;
+	close UNITS;
+
+	&GenerateTree ('_exe');
+	&RemoveComments() if $html_gen;
+	&GenerateAnimationInfo if ($animations);
+	# Move the html files to the main html folder
+	foreach ( glob("$html_dir/*.html") ) {
+		(my $new_file = $_) =~ s|EXE\/||;
+		move($_,$new_file) unless /tree_|index|animation/;
+	}
+	&RemoveComments(1) if $html_gen;
+	$html_dir =~ s|(.+)\/EXE|$1|;
+	&CopyImages if ($images);
 }
 
+# Imperial Era
+if ($ime) {
+	$i=600; $version = '0.16.3';
+	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
+	$unit_id{AdvanceTo} = 'AdvanceTo';
+	$link_back = '';
+	$wesnoth_dir = $base_dir . '/userdata/data/campaigns/Imperial_Era';
+	$data_dir = $wesnoth_dir;
+	$units_dir = $data_dir . "/units";
+	$html_dir = "$html_dir/IME";
+	$report_dir = "$html_dir/data";
+	unless (-e $html_dir) {mkdir $html_dir or die "$html_dir directory cannot be created: $!\n";};
+	unless (-e $report_dir) {mkdir $report_dir or die "$html_dir directory cannot be created: $!\n";};
+	print "Processing Imperial Era\n";
+	&ProcessTypes('units/various.cfg');
+	&ProduceDataFiles("unit_IME.html");
+	# Get races
+	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
+	while (<UNITS>) {
+		my (@stats) = split /\t/;
+		$races{$stats[2]} = ucfirst($stats[2]);
+	}
+	close UNITS;
 
-# -- Subroutines used in the code--
+	&GenerateTree ('_ime');
+	&RemoveComments(1) if $html_gen;
+	&GenerateAnimationInfo if ($animations);
+	$html_dir =~ s|(.+)\/IME|$1|;
+	&CopyImages if ($images);
+}
+
+# Era of Myths
+if ($eom) {
+	$i=900; $version = 'Beta 8';
+	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
+	$unit_id{AdvanceTo} = 'AdvanceTo';
+	$link_back = '';
+	$wesnoth_dir = $base_dir . '/userdata/data/campaigns/Era_of_Myths';
+	$data_dir = $wesnoth_dir;
+	$units_dir = $data_dir . "/units";
+	$html_dir = "$html_dir/EOM";
+	$report_dir = "$html_dir/data";
+	unless (-e $html_dir) {mkdir $html_dir or die "$html_dir directory cannot be created: $!\n";};
+	unless (-e $report_dir) {mkdir $report_dir or die "$html_dir directory cannot be created: $!\n";};
+	print "Processing Era of Myths\n";
+	&ProcessTypes('units/EOM_Movetypes.cfg');
+	&ProduceDataFiles("unit_EOM.html");
+	# Get races
+	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
+	while (<UNITS>) {
+		my (@stats) = split /\t/;
+		$races{$stats[2]} = ucfirst($stats[2]);
+	}
+	close UNITS;
+
+	&GenerateTree ('_eom');
+	&RemoveComments(1) if $html_gen;
+	&GenerateAnimationInfo if ($animations);
+	$html_dir =~ s|(.+)\/EOM|$1|;
+	&CopyImages if ($images);
+}
+
+# ----------------------------------
+# -- Subroutines used in the code --
+# ----------------------------------
+# Sub to produce the data and HTML files
+sub ProduceDataFiles {
+	my $html_unit = shift;
+	print "Starting the generation of unit files\n";
+	
+	#Files that will contain the units data
+	open (UNITS, "> $report_dir/units.txt") or die "Couldn't create units.txt: $!\n";
+	open (RES, "> $report_dir/resistances.txt") or die "Couldn't create resistances.txt: $!\n";
+	open (ADV, "> $report_dir/advances.txt") or die "Couldn't create advances.txt: $!\n";
+	open (ATTACK, "> $report_dir/attacks.txt") or die "Couldn't create attacks.txt: $!\n";
+	open (FACT, "> $report_dir/factions.txt") or die "Couldn't create factions.txt: $!\n";
+	# Headers
+	print UNITS "id\tname\trace\thitpoints\tmovement_type\tmovement\texperience\tlevel\talignment\timage\tcost\tusage\tabilities\tfull_name\n";
+	print RES "id\tVariable\tValue\tCategory\n";
+	print ADV "id\tAdvanceTo\n";
+	print ATTACK "id\tname\ttype\trange\tdamage\tnumber\ticon\tspecial\n";
+	
+	# Load HTML template
+	open (HTML, $html_unit);
+	$html = '';
+	$html .= $_ while (<HTML>);
+	close HTML;
+	
+	# Now all the unit files in the data/units directory
+	my @units = glob("$units_dir/*.cfg");
+	&ProcessUnit($_) foreach @units;
+	# For units stored in folders
+    my @camps = glob("$units_dir/*");
+    foreach (@camps) {
+		unless (/cfg$/) {
+		($camp = $_) =~ s/(.*)\///;
+		@units = glob($_ . '/*.cfg');
+		&ProcessUnit ($_) foreach @units;
+		}
+    }
+
+	
+	# Factions, populates the factions file
+	my @factions;
+	if ($html_unit eq 'unit.html') { 
+		@factions = glob("$wesnoth_dir/data/multiplayer/factions/*");
+	} else {
+		@factions = glob("$wesnoth_dir/factions/*");
+	}
+	my %mp;
+	foreach (@factions) {
+		&ProcessFaction ($_) if (/cfg$/);
+	}
+	
+	if ($html_dir =~ /EXE$/) { # Merge mainline units for extended era
+		open (MAIN_UNITS, "$base_report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
+		while (<MAIN_UNITS>) {
+			print UNITS unless /^id/;
+			my ($id, $name) = split /\t/;
+			$unit_id{$name} = $id;
+		}
+		close MAIN_UNITS;
+		
+		open (MAIN_ATT, "$base_report_dir/attacks.txt") or die "Couldn't open attacks.txt: $!\n";
+		while (<MAIN_ATT>) {print ATTACK unless /^id/;}
+		close MAIN_ATT;	
+	}
+
+	close UNITS;
+	close RES;
+	close ADV;
+	close ATTACK;
+	close FACT;
+
+	# Check advances to not miss any unit
+	tie @adv, 'Tie::File', "$report_dir/advances.txt" or die "Couldn't open advances.txt: $!\n";
+	for (@adv) {
+		my ($id, $adv) = split /\t/;
+		$mp{$adv}++ if $mp{$id}; # List the units that will be processed as MP
+		s/\t([0-9A-Za-z_ ]+)/\t$unit_id{$1}/; # Changes names to ids in the advance file
+	}
+	if ($html_dir =~ /EXE$/) { # Merge mainline units for extended era
+		open (MAIN_ADV, "$base_report_dir/advances.txt") or die "Couldn't open advances.txt: $!\n";
+		while (<MAIN_ADV>) {
+			chomp;
+			push @adv, $_ unless /^id/;
+		}
+		close MAIN_ADV;
+	}
+	untie @adv;	
+}
+
 # Sub to parse the unit file, and print both the text files and the html
 sub ProcessUnit {
 	$unit = shift;
@@ -376,6 +319,7 @@ sub ProcessUnit {
 	    if (/=/ and $flag == 1) {
 			my ($prop,$value) = split /=/;
 			$unit{$prop} = $value unless $unit{$prop}; # The first value encountered is the one that last
+			$unit{$prop} = $value if $unit{$prop} eq 'null'; # Unless we have a null value stored before
 		}
 		# Abilities, single regular expresion
 	    $unit{abilities} .= lc("$1 ") if (/{ABILITY_(.*?)(_.*)?}/ and $flag == 1);
@@ -415,6 +359,7 @@ sub ProcessUnit {
 			$flag = 1;
 			$attack{icon} = "attacks/$attack{name}.png" unless $attack{icon}; # If the value is not present, make it equal to the name
 			print ATTACK "$i\t$attack{name}\t$attack{type}\t$attack{range}\t$attack{damage}\t$attack{number}\t$attack{icon}\t$attack{special}\n";
+			$attack{icon} = "attacks/" . $attack{icon} unless $attack{icon} =~ /^attacks/; # Fix the path to the images folder
 			($att .= $att_html) =~ s/{(\w+?)}/$attack{$1}/eg; # Construct the html for the attack
 			%attack = '';
 		}
@@ -428,9 +373,12 @@ sub ProcessUnit {
     }
     # Print to match the headers, there may be empty elements
     $unit{abilities} =~ s/\s$//; # Fix the extra space in the abilities
-    print UNITS "$i\t$unit{id}\t$unit{race}\t$unit{hitpoints}\t$unit{movement_type}\t$unit{movement}\t$unit{experience}";
-    print UNITS "\t$unit{level}\t$unit{alignment}\t$unit{image}\t$unit{cost}\t$unit{usage}\t$unit{abilities}\n";
-	$unit{image} = $unit{image2} if $unit{image2};
+    $unit{name} =~ s/^.+?"(.+)"$/$1/; # Fix the name
+    if ($unit{id}) {
+		print UNITS "$i\t$unit{id}\t$unit{race}\t$unit{hitpoints}\t$unit{movement_type}\t$unit{movement}\t$unit{experience}";
+		print UNITS "\t$unit{level}\t$unit{alignment}\t$unit{image}\t$unit{cost}\t$unit{usage}\t$unit{abilities}\t$unit{name}\n";
+		$unit{image} = $unit{image2} if $unit{image2};
+	}
 
 	# Advances
 	$unit_id{$unit{id}} = $i;
@@ -466,10 +414,246 @@ sub ProcessUnit {
 	}
 }
 
+# Sub to generate the unit trees
+sub GenerateTree {
+	if ($html_gen) {
+		my $era_file = shift;
+		print "Starting the generation of unit trees\n";
+		copy('units.css',"$html_dir/units.css");
+		# Load HTML templates
+		open (HTML, "tree_header$era_file.html") or die "Couldn't open header: $!\n";
+		my @header = <HTML>;
+		s/X.X.X/$version/ foreach @header;
+		close HTML;
+		open (HTML, "tree_footer.html") or die "Couldn't open footer: $!\n";
+		my @footer = <HTML>;
+		@footer[2] =~ s/date/gmtime(time)/e; # Generation time
+		close HTML;
+		
+		# Get the advances for each unit
+		open (ADV, "$report_dir/advances.txt") or die "Couldn't open advances.txt: $!\n";
+		while (<ADV>) {
+			chomp;
+			my ($id, $adv) = split /\t/;
+			$spaces{$id}++; # Used on the rowspan
+			$adv_from{$adv} = $id;
+			push @{$adv{$id}}, $adv;
+		}
+		close ADV;
+		
+		# Calculate the correct row span for each unit
+		foreach (sort keys %spaces) {
+			if ($spaces{$_} > 1 and $adv_from{$_}) {
+				$spaces{$adv_from{$_}} += $spaces{$_} - 1;
+			}
+		}
+    foreach $id (sort keys %spaces) {
+      my $expected;
+      foreach $i (0..$#{ $adv{$id} }) {
+        $expected += $spaces{$adv{$id}[$i]};
+      }
+      $spaces{$id}=$expected if $spaces{$id}<$expected;
+    }
+		
+		# Units information
+		open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
+		while (<UNITS>) {
+			chomp;
+			my ($id, @stats) = split /\t/;
+			$units{$id} = [ @stats ];
+			$units_id{$stats[0]} = $id;
+      $adv_to{$stats[0]} = $stats[-1];
+		}
+		close UNITS;
+		
+		# Attacks information
+		open (ATT, "$report_dir/attacks.txt") or die "Couldn't open attacks.txt: $!\n";
+		while (<ATT>) {
+			chomp;
+			my ($id, @stats) = split /\t/;
+			$att_id{$id}++; # Numeral for the hash, there may be better ways to do it
+			$attacks{$id}[$att_id{$id}-1] = [ @stats ];
+		}
+		close ATT;
+		
+		# Tree by race
+		open (INDEX, "> $html_dir/tree_race.html") or die "Couldn't create tree_race.html: $!\n";
+		open (HTML, "tree_race_header$era_file.html") or die "Couldn't open header: $!\n";
+		while (<HTML>) {s/X.X.X/$version/; print INDEX;}
+		close HTML;
+		foreach $race (sort keys %races) {
+			if ($race ne "race") {
+				open ($race, ">", "$html_dir/tree_$race.html") or die "Couldn't create $race.html: $!\n"; # Use the variable as the filehandle
+				print $race @header;
+				print INDEX "\n<tr>\n<td class='race' id=\"$race\" colspan=6>$races{$race}</td>\n</tr>\n";
+				print $race "\n<tr>\n<td class='race' id=\"$race\" colspan=5>$races{$race}</td>\n</tr>\n";
+				foreach (sort keys %units) {
+					if ($race eq $units{$_}[1]) { # Only process units for the current race
+						&PrintUnitTree($_, *INDEX) unless $adv_from{$_};
+						&PrintUnitTree($_, $race) unless $adv_from{$_};
+					}
+				}
+				print $race @footer;
+				close $race;
+			}
+		}
+		print INDEX @footer;
+		close INDEX;
+		
+		# Update Advance From on each file
+		&UpdateAdvanceFrom;
+	
+		# Tree by faction
+		# Load factions
+		open (INDEX, "> $html_dir/tree_faction.html") or die "Couldn't create tree_faction.html: $!\n";
+		open (HTML, "tree_fact_header$era_file.html") or die "Couldn't open header: $!\n";
+		while (<HTML>) {s/X.X.X/$version/; print INDEX;}
+		close HTML;
+		# Delete the advances from the units in the factions, so the tree can be built
+		my @delete_adv = qw/Thug Footpad Spearman Bowman Poacher Lieutenant/;
+		delete($adv_from{$units_id{$_}}) foreach @delete_adv;
+		open (FACTIONS, "$report_dir/factions.txt") or die "Couldn't open factions.txt: $!\n";
+		while (<FACTIONS>) {
+			chomp;
+			my ($faction, @stats) = split /\t/;
+      # Identify the standard factions for each Era
+			if ($faction =~ /(\w+)-default/ || $faction =~ /^imper-(\w+)/ || $faction =~ /(\w+)-extended/ || $faction =~ /(\w+)-EOM/) { 
+				$factions{$1} = [ @stats ];
+				open ($faction, ">", "$html_dir/tree_$faction.html") or die "Couldn't create $faction.html: $!\n";
+				print $faction @header;
+				my $faction_name = ucfirst($1);
+				# Adjust the name of the factions to get them translated
+				$faction_name = 'Knalgan Alliance' if $faction_name eq 'Knalgans';
+				print INDEX "\n<tr>\n<td class='race' id=\"$1\" colspan=5>$faction_name</td>\n</tr>\n";
+				foreach (@stats) {
+					&PrintUnitTree($units_id{$_}, *INDEX) unless $adv_from{$units_id{$_}};
+					&PrintUnitTree($units_id{$_}, $faction) unless $adv_from{$units_id{$_}};
+				}
+				print $faction @footer;
+				close $faction;
+			}
+		}
+		close FACTIONS;
+		# Load footer
+		print INDEX @footer;
+		close INDEX;
+		
+		# Copy the index file before translating
+		if ($translate) {
+			open (HTML, 'index_languages.html') or die "Couldn't open index_languages.html: $!\n";
+		} else {
+			open (HTML, "index_base$era_file.html") or die "Couldn't open index_base.html: $!\n";
+		}
+		open (INDEX, "> $html_dir/index.html") or die "Couldn't create index.html: $!\n";
+		while (<HTML>) {s/X.X.X/$version/; print INDEX;}
+		close HTML;
+		close INDEX;
+	}
+}
+
+# Sub to copy images
+sub CopyImages {
+  # Era of Myths images
+  my ($att_folder, $unit_folder, @unit_images); 
+  if ($wesnoth_dir =~ /Era_of_Myths/) {
+    $att_folder = 'attacks/';
+    $unit_folder = 'units/';
+  }
+	# Attacks images
+	print "Copying attack icons\n";
+	open (ATT, "$report_dir/attacks.txt") or die "Couldn't open attacks.txt: $!\n";
+	while (<ATT>) {
+		chomp;
+		my (@stats) = split /\t/;
+		copy ("$data_dir/images/$stats[6]","$html_dir/$att_folder$stats[6]");
+		print "$data_dir/images/$stats[6]\t$html_dir/$att_folder$stats[6]\n";
+	}
+	close ATT;
+
+	# Unit images, to be colorized
+	print "Copying and colorizing units\n";
+	# Prepare folders
+	@unit_images = glob("$data_dir/images/units/*");
+	@unit_images = glob("$data_dir/images/*") if ($wesnoth_dir =~ /Era_of_Myths/); 
+	foreach $unit_image (@unit_images) {
+		$unit_image =~ s(.*\/)(); # Take only the folder name
+		if ($unit_image !~ /\./) {
+			unless (-e "$html_dir/units/$unit_image") {mkdir "$html_dir/units/$unit_image" or die "$unit_image directory cannot be created: $!\n";};
+		}
+	}
+	# Unit images
+	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
+	my $colorizer = "TeamColorizer.pl";
+	$colorizer = './' . $colorizer unless $windows;
+	while (<UNITS>) {
+		chomp;
+		my @stats = split /\t/;
+		(my $image = $stats[9]);
+		$image =~ s/"//g;
+		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
+		$image =~ s/.png/+female.png/;
+		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
+	}
+	close UNITS;
+	# zombie units
+	my @zombies = qw/drake mounted saurian swimmer troll wose/;
+	foreach $zombie (@zombies) {
+		system ("$colorizer $data_dir/images/units/undead/zombie-$zombie.png $html_dir/units/undead/zombie-$zombie.png");
+		system ("$colorizer $data_dir/images/units/undead/soulless-$zombie.png $html_dir/units/undead/soulless-$zombie.png");
+	}
+}
+
+# Sub to generate animation information
+sub GenerateAnimationInfo {
+	print "Generating animation information\n";
+	my %tags;
+	my @anim = qw/animation death defend healing_anim idle_anim leading_anim movement_anim recruit_anim/;
+	my $re_anim = "(";
+	$re_anim .= "$_|" foreach @anim;
+	$re_anim =~ s/\|$/)/;
+	
+	# Load HTML templates
+	open (HTML, "anim_header.html") or die "Couldn't open header: $!\n";
+	my @header = <HTML>;
+	close HTML;
+	open (HTML, "tree_footer.html") or die "Couldn't open footer: $!\n";
+	my @footer = <HTML>;
+	@footer[2] =~ s/date/gmtime(time)/e; # Generation time
+	close HTML;
+	open (INDEX, "> $html_dir/animations.html") or die "Couldn't create animations.html: $!\n";
+	
+	# Load units information
+	my @units = glob("$units_dir/*.cfg");
+	foreach $unit (@units) {
+		my ($id,$tag,$in,$images);
+		open (UNIT, "<$unit") or die "Can't open $unit: $!\n";
+		while (<UNIT>) {
+			chomp; s/^\s*//;
+			$id = $1 if /id=(.+)/;
+			($tag,$in,$images) = ($1,1,0) if /\[$re_anim\]/;
+			$images++ if ($in && /image=/);
+			if (m{\[\/$re_anim\]}) {
+				$tags{$id}{$tag} += $images;
+				($in,$images) = (0,0);
+			}
+		}
+	}
+	# Print information
+	print INDEX @header;
+	foreach $unit (sort keys %tags) {
+		print INDEX "<tr>\n\t<td>$unit</td>\n";
+		foreach $tag (@anim) {
+			print INDEX "\t<td" . ($tags{$unit}{$tag} ? " class=\"yes\">$tags{$unit}{$tag}" : ">~") . "</td>\n";
+		}
+		print INDEX "</tr>\n";
+	}
+	print INDEX @footer;
+}
+
 # Sub to process the move types data from the units.cfg file
 sub ProcessTypes {
 	my ($flag, $id);
-	open (TYPES, "<$data_dir/units.cfg") or die "Can't open units.cfg: $!\n";
+	open (TYPES, "<$data_dir/$_[0]") or die "Can't open units.cfg: $!\n";
 	open (REPORT, ">$report_dir/types.txt") or die "Can't open $unit: $!\n";
 	print REPORT "Mov_type\tVariable\tValue\tCategory\n";
 	while (<TYPES>) {
@@ -511,7 +695,7 @@ sub ProcessFaction {
 		$faction =~ s/factions\/(.+)\.cfg/$1/;
 		$unit_list .= "$1," if /^(?:leader|recruit)=(.+)/; # Only get the leaders and recruit, and all in the same line
 	}
-	$unit_list =~ s/,/\t/g;
+	$unit_list =~ s/,\s?/\t/g;
 	$mp{$_}++ foreach split (/\t/, $unit_list); # Feed the %mp hash with the units
 	$faction =~ s(.*\/)(); # Take only the faction name
 	print FACT "$faction\t$unit_list\n";
@@ -555,8 +739,8 @@ sub PrintUnitTree {
 sub PrintUnit {
 	my $unit = shift; my $fh = shift;
 	(my $filename = $units{$unit}[0]) =~ s/\s/_/g;
-	print $fh "<a href=$filename.html><img src=$units{$unit}[8] alt=\"$units{$unit}[0]\"></a>";
-	print $fh "<br>\n<a href=$filename.html>$units{$unit}[0]</a>";
+	print $fh "<a href=$link_back$filename.html><img src=$units{$unit}[8] alt=\"$units{$unit}[0]\"></a>";
+	print $fh "<br>\n<a href=$link_back$filename.html>$units{$unit}[0]</a>";
 	print $fh "<br>\n<!-- -->$units{$unit}[7]";
 	print $fh "<br>\nHP:$units{$unit}[2]";
 	print $fh "&nbsp;&nbsp;MP:$units{$unit}[4]";
@@ -583,6 +767,7 @@ sub UpdateAdvanceFrom {
 				$adv_html = "<a href=$filename.html>$units{$adv_from{$id}}[0]</a>";
 			}
 			s/--advancefrom--/$adv_html/;
+			s{>([^<]+)</a}{>$adv_to{$1}</a} if ($html_dir =~ /EOM$/); # Change the advance_to name
 			last if (/<b>HP: <\/b>/); # Stop processing the file here
 		}
 		untie @html;
@@ -599,6 +784,8 @@ sub RemoveComments {
 			s/<!-- -->//g;
 			s|\.\./unit|unit|;
 			s|race\^||;
+			s|src=("?)|src=$1../|g if $_[0];
+			s{src="../(?!units)}{src="../units/}g if ($html_dir =~ /EOM$/); # Change links for EOM
 		}
 		untie @html;
 	}
