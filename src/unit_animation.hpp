@@ -56,8 +56,8 @@ class unit_animation
 		bool animation_finished() const{ return unit_anim_.animation_finished() ; };
 		bool animation_would_finish() const{ return unit_anim_.animation_would_finish() ; };
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };
-		void add_frame(int duration, const unit_frame& value,bool force_change =false){ return unit_anim_.add_frame(duration,value,force_change) ; };
-		void start_animation(int start_time, bool cycles=false, double acceleration=1){ return unit_anim_.start_animation(start_time, cycles, acceleration);};
+		void add_frame(int duration, const unit_frame& value,bool force_change =false){ unit_anim_.add_frame(duration,value,force_change) ; };
+		void start_animation(int start_time, bool cycles=false, double acceleration=1){ unit_anim_.start_animation(start_time, cycles, acceleration);};
 		int get_begin_time() const{ return unit_anim_.get_begin_time() ; };
 		void update_last_draw_time(){unit_anim_.update_last_draw_time();};
 		const int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
