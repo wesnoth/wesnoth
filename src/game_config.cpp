@@ -36,7 +36,7 @@ namespace game_config
 	int recall_cost = 20;
 	int kill_experience = 8;
 	unsigned lobby_refresh = 2000;
-	const std::string version = VERSION;
+	const std::string version = "1.3.9"; //VERSION;
 #ifdef SVNREV
 	const std::string svnrev = SVNREV;
 #else

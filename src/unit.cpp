@@ -2723,10 +2723,11 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					ab_effect = (**i.first).child("abilities");
 					if (ab_effect) {
 						for(config::child_map::const_iterator j = ab_effect->all_children().begin(); j != ab_effect->all_children().end(); ++j) {
-							for (config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-								if (!has_ability_by_id((**k)["id"])) {
+							config::child_list::const_iterator k = j->second.begin();
+							if(k != j->second.end() && !has_ability_by_id((**k)["id"])) {
+								do {
 									ab->add_child(j->first, **k);
-								}
+								} while(++k != j->second.end());
 							}
 						}
 					}
