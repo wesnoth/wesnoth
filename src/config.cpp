@@ -209,6 +209,32 @@ void config::clear_children(const std::string& key)
 	}
 }
 
+config::all_children_iterator config::erase(const config::all_children_iterator& i)
+{
+	config* found_config = NULL;
+	std::vector<child_pos>::iterator erase_pos, j, j_end = ordered_children.end();
+	for(j = ordered_children.begin(); j != j_end; ++j) {
+		if(i.get_key() == j->pos->first) {
+			if(i.get_index() == j->index) {
+				erase_pos = j;
+				found_config = *(j->pos->second.begin() + j->index);
+			} else if(i.get_index() < j->index) {
+				//decrement subsequent child indeces of the same key
+				j->index--;
+			}
+		}
+	}
+	child_list& vec = children[i.get_key()];
+	if(!found_config || erase_pos->index >= vec.size()) {
+		ERR_CF << "Error: attempting to delete non-existing child: "
+			<< i.get_key() << "[" << i.get_index() << "]\n";
+		return ordered_end();
+	}
+	delete found_config;
+	vec.erase(vec.begin()+i.get_index());
+	return all_children_iterator(ordered_children.erase(erase_pos));
+}
+
 void config::remove_child(const std::string& key, size_t index)
 {
 	// Remove from the ordering
@@ -344,6 +370,26 @@ config::all_children_iterator config::all_children_iterator::operator++(int)
 std::pair<const std::string*,const config*> config::all_children_iterator::operator*() const
 {
 	return std::pair<const std::string*,const config*>(&(i_->pos->first),i_->pos->second[i_->index]);
+}
+
+config::all_children_iterator::pointer config::all_children_iterator::operator->() const
+{
+	return pointer(new std::pair<const std::string*,const config*>(&(i_->pos->first),i_->pos->second[i_->index]));
+}
+
+const std::string& config::all_children_iterator::get_key() const
+{
+	return i_->pos->first;
+}
+
+const config& config::all_children_iterator::get_child() const
+{
+	return *(i_->pos->second[i_->index]);
+}
+
+size_t config::all_children_iterator::get_index() const
+{
+	return i_->index;
 }
 
 bool config::all_children_iterator::operator==(all_children_iterator i) const
@@ -563,36 +609,6 @@ void config::merge_with(const config& c)
 		}
 	}
 }
-/*
-// Create a new config tree as a copy of 'this' overridden by 'c'.
-// Nodes are matched up by name and with name by order.
-// Nodes in 'c', but not in 'this' are added at the end,
-// in the order they appeared in 'c'.
-config config::merge_with(const config& c) const
-{
-	config n;
-	for(string_map::const_iterator j = this->values.begin();
-	    j != this->values.end(); ++j) {
-		n.values[j->first] = j->second;
-	}
-	// This ends up copying values twice (in config initialization
-	// and append), but is simpler than dealing with the guts of m.
-	config m(c);
-	for(all_children_iterator i = this->ordered_begin();
-	    i != this->ordered_end(); ++i) {
-		const std::pair<const std::string*,const config*>& value = *i;
-		config *mc = m.child(*value.first);
-		if (mc == NULL) {
-			n.add_child(*value.first, *value.second);
-		}
-		else {
-			n.add_child(*value.first, value.second->merge_with(*mc));
-			m.remove_child(*value.first, 0);
-		}
-	}
-	n.append(m);
-	return n;
-}*/
 
 bool config::matches(const config &filter) const
 {

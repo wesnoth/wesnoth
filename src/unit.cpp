@@ -771,14 +771,12 @@ void unit::remove_ability_by_id(const std::string &ability)
 {
 	config* abil = cfg_.child("abilities");
 	if(abil) {
-		for(config::child_map::const_iterator i = abil->all_children().begin(); i != abil->all_children().end(); ++i) {
-			int offset = 0;
-			for(config::child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j, ++offset) {
-				if((**j)["id"] == ability) {
-					abil->remove_child(i->first, offset);
-					return; /* Abilities are unique by id, so we won't find another. */
-							/* Besides, we just wrecked our iterator. Bye. */
-				}
+		config::all_children_iterator i = abil->ordered_begin(), i_end = abil->ordered_end();
+		while(i != i_end) {
+			if(i.get_child()["id"] == ability) {
+				i = abil->erase(i);
+			} else {
+				++i;
 			}
 		}
 	}
@@ -2722,23 +2720,21 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 					ab_effect = (**i.first).child("abilities");
 					if (ab_effect) {
-						for(config::child_map::const_iterator j = ab_effect->all_children().begin(); j != ab_effect->all_children().end(); ++j) {
-							config::child_list::const_iterator k = j->second.begin();
-							if(k != j->second.end() && !has_ability_by_id((**k)["id"])) {
-								do {
-									ab->add_child(j->first, **k);
-								} while(++k != j->second.end());
+						config to_append;
+						config::all_children_iterator j, j_end = ab_effect->ordered_end();
+						for(j = ab_effect->ordered_begin(); j != j_end; ++j) {
+							if(!has_ability_by_id(j.get_child()["id"])) {
+								to_append.add_child(j.get_key(), j.get_child());
 							}
 						}
+						ab->append(to_append);
 					}
 				} else if (apply_to == "remove_ability") {
 					config *ab_effect = (**i.first).child("abilities");
-					config *ab = cfg_.child("abilities");
-					if (ab && ab_effect) {
-						for(config::child_map::const_iterator j = ab_effect->all_children().begin(); j != ab_effect->all_children().end(); ++j) {
-							for (config::child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
-								remove_ability_by_id((**k)["id"]);
-							}
+					if (ab_effect) {
+						config::all_children_iterator j, j_end = ab_effect->ordered_end();
+						for(j = ab_effect->ordered_begin(); j != j_end; ++j) {
+							remove_ability_by_id(j.get_child()["id"]);
 						}
 					}
 				} else if (apply_to == "image_mod") {

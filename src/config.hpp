@@ -108,15 +108,20 @@ public:
 		typedef std::pair<const std::string*,const config*> value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
-		typedef value_type* pointer;
+		typedef std::auto_ptr<value_type> pointer;
 		typedef value_type& reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
-		explicit all_children_iterator(Itor i);
+		explicit all_children_iterator(Itor i=Itor());
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
 
 		value_type operator*() const;
+		pointer operator->() const;
+
+		const std::string& get_key() const;
+		size_t get_index() const;
+		const config& get_child() const;
 
 		bool operator==(all_children_iterator i) const;
 		bool operator!=(all_children_iterator i) const;
@@ -128,6 +133,7 @@ public:
 	//! In-order iteration over all children.
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
+	all_children_iterator erase(const all_children_iterator& i);
 
 	//! A function to get the differences between this object,
 	//! and 'c', as another config object.
