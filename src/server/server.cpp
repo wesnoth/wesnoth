@@ -446,7 +446,7 @@ void server::run()
 				break;
 			} else {
 				LOG_SERVER << "socket closed: " << e.message << "\n";
-
+				const std::string ip = network::ip_address(e.socket);
 				const std::map<network::connection,player>::iterator pl_it = players_.find(e.socket);
 				const std::string pl_name = pl_it != players_.end() ? pl_it->second.name() : "";
 				if(pl_it != players_.end()) {
@@ -466,12 +466,12 @@ void server::run()
 						const bool obs = g->is_observer(e.socket);
 						g->remove_player(e.socket);
 						if(obs) {
-							WRN_SERVER << pl_name << " (" << network::ip_address(e.socket)
+							WRN_SERVER << pl_name << " (" << ip
 								<< ") has left game: \"" << game_name
 								<< "\" (" << g->id() << ") as an observer and disconnected.\n";
 						} else {
 							g->send_data(construct_server_message(pl_name + " has disconnected",*g));
-							WRN_SERVER << pl_name << " (" << network::ip_address(e.socket)
+							WRN_SERVER << pl_name << " (" << ip
 								<< ") has left game: \"" << game_name
 								<< "\" (" << g->id() << ") and disconnected.\n";
 						}
@@ -481,7 +481,7 @@ void server::run()
 							config cfg;
 							cfg.add_child("leave_game");
 							g->send_data(cfg);
-							WRN_SERVER << pl_name << " (" << network::ip_address(e.socket)
+							WRN_SERVER << pl_name << " (" << ip
 								<< ") ended game: \"" << game_name
 								<< "\" (" << g->id() << ") and disconnected.\n";
 
@@ -530,8 +530,9 @@ void server::run()
 						}
 					}
 				}
-				WRN_SERVER << "'" << pl_name << "' (" << network::ip_address(e.socket) << ") has logged off\n";
-
+				if(pl_it != players_.end()) {
+					WRN_SERVER << "'" << pl_name << "' (" << ip << ") has logged off\n";
+				}
 				if(e.socket) {
 					if(proxy::is_proxy(e.socket)) {
 						proxy::disconnect(e.socket);
