@@ -688,7 +688,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		//lg::wml_error<<"levelout animations  are deprecate, support will be removed in 1.3.8 (in unit "<<id()<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelout flag\n";
 	}
-	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelin",unit_animation::DEFAULT_ANIM));
+	animations_.push_back(unit_animation(0,unit_frame(image(),600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelout",unit_animation::DEFAULT_ANIM));
 	// Always have a levelout animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
 	const config::child_list& healing_anims = expanded_cfg.get_children("healing_anim");
