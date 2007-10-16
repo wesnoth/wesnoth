@@ -7,3 +7,8 @@ Just dump whatever you want to have mentioned in the release notes here.
 
 The release team should empty this file after each release.
 
+
+terrain_mask maps which are stored in a separate file should use the extension
+'.mask' instead of '.map'. This way wmllint can properly convert the maps to
+the new format. Obviously this should be done before running wmllint on the
+data.
