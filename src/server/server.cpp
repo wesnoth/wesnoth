@@ -235,7 +235,7 @@ bool server::is_ip_banned(const std::string& ip)
 	for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
 		LOG_SERVER << "comparing for ban '" << *i << "' vs '" << ip << "'\n";
 		if(utils::wildcard_string_match(ip,*i)) {
-			WRN_SERVER << ip << " is banned\n";
+			LOG_SERVER << ip << " is banned\n";
 			return true;
 		}
 		LOG_SERVER << "not banned\n";
@@ -456,37 +456,41 @@ void server::run()
 						initial_response_.remove_child("user",index);
 
 					players_.erase(pl_it);
-					WRN_SERVER << "'" << pl_name << "' (" << network::ip_address(e.socket) << ") has logged off\n";
 				}
-
 				not_logged_in_.remove_player(e.socket);
 				lobby_players_.remove_player(e.socket);
-				for(std::vector<game>::iterator i = games_.begin(); i != games_.end(); ++i) {
-					if(i->is_needed(e.socket)) {
-						//! @todo FIXME: When the host disconnects, a new one should be chosen
-						//and the game shouldn't end (see the handling of [leave_game])
-						delete_game(i);
-						e.socket = 0;
-						break;
-					} else if(i->is_member(e.socket)) {
-						if(pl_name != "" && i->is_player(e.socket)) {
-							i->send_data(construct_server_message(pl_name + " has disconnected",*i));
+				for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
+					if(g->is_member(e.socket)) {
+						const std::string game_name = g->description() ? (*g->description())["name"] : "Warning: Game has no description.";
+						const bool needed = g->is_needed(e.socket);
+						const bool obs = g->is_observer(e.socket);
+						g->remove_player(e.socket);
+						if(obs) {
+							WRN_SERVER << pl_name << " (" << network::ip_address(e.socket)
+								<< ") has left game: \"" << game_name
+								<< "\" (" << g->id() << ") as an observer and disconnected.\n";
+						} else {
+							g->send_data(construct_server_message(pl_name + " has disconnected",*g));
+							WRN_SERVER << pl_name << " (" << network::ip_address(e.socket)
+								<< ") has left game: \"" << game_name
+								<< "\" (" << g->id() << ") and disconnected.\n";
 						}
-						i->remove_player(e.socket);
-						if(i->nplayers() == 0) {
-
-							// Tell all other players the game is over,
+						if( (g->nplayers() == 0) || (needed && !g->started()) ) {
+							// Tell observers the game is over,
 							// because the last player has left
 							config cfg;
 							cfg.add_child("leave_game");
-							i->send_data(cfg);
+							g->send_data(cfg);
+							WRN_SERVER << pl_name << " (" << network::ip_address(e.socket)
+								<< ") ended game: \"" << game_name
+								<< "\" (" << g->id() << ") and disconnected.\n";
 
 							// Delete the game's description
 							config* const gamelist = initial_response_.child("gamelist");
 							wassert(gamelist != NULL);
 							const config::child_itors vg = gamelist->child_range("game");
 
-							const config::child_iterator desc = std::find(vg.first,vg.second,i->description());
+							const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
 							if(desc != vg.second) {
 								gamelist->remove_child("game",desc - vg.first);
 							}
@@ -498,24 +502,35 @@ void server::run()
 
 							//set the availability status for all quitting players
 							for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-								if(i->is_member(pl->first)) {
+								if(g->is_member(pl->first)) {
 									pl->second.mark_available();
 								}
 							}
 
 							// Put the players back in the lobby, and send
 							// them the game list and user list again
-							i->send_data(initial_response_);
-							metrics_.game_terminated(i->termination_reason());
-							lobby_players_.add_players(*i);
-							games_.erase(i);
+							g->send_data(initial_response_);
+							metrics_.game_terminated(g->termination_reason());
+							lobby_players_.add_players(*g);
+							games_.erase(g);
 
 							// Now sync players in the lobby again, to remove the game
 							lobby_players_.send_data(sync_initial_response());
 							break;
+						} else if(needed) {
+							// Transfer game control to another player
+							const player* player = g->transfer_game_control();
+							if (player != NULL) {
+								g->send_data(construct_server_message(player->name() + " has been chosen as new host", *g));
+							}
+							// else?
+
+							e.socket = 0; // is this needed?
+							break;
 						}
 					}
 				}
+				WRN_SERVER << "'" << pl_name << "' (" << network::ip_address(e.socket) << ") has logged off\n";
 
 				if(e.socket) {
 					if(proxy::is_proxy(e.socket)) {
@@ -575,7 +590,7 @@ void server::process_login(const network::connection sock, const config& data)
 			}
 		}
 		if(accepted) {
-			WRN_SERVER << "player joined using accepted version " << version_str << ": telling them to log in\n";
+			WRN_SERVER << "player (" << network::ip_address(sock) << ") joined using accepted version " << version_str << ": telling them to log in\n";
 			network::send_data(login_response_,sock);
 		} else {
 			std::map<std::string,config>::const_iterator redirect = redirected_versions_.end();
@@ -586,8 +601,10 @@ void server::process_login(const network::connection sock, const config& data)
 				}
 			}
 			if(redirect != redirected_versions_.end()) {
-				WRN_SERVER << "player joined using version " << version_str << ": redirecting them to "
-				          << redirect->second["host"] << ":" << redirect->second["port"] << "\n";
+				WRN_SERVER << "player (" << network::ip_address(sock)
+					<< ") joined using version " << version_str
+					<< ": redirecting them to " << redirect->second["host"]
+					<< ":" << redirect->second["port"] << "\n";
 				config response;
 				response.add_child("redirect",redirect->second);
 				network::send_data(response,sock);
@@ -601,13 +618,17 @@ void server::process_login(const network::connection sock, const config& data)
 				}
 
 				if(proxy != proxy_versions_.end()) {
-					WRN_SERVER << "player joined using version " << version_str << ": connecting them by proxy to "
-					          << proxy->second["host"] << ":" << proxy->second["port"] << "\n";
+					WRN_SERVER << "player (" << network::ip_address(sock)
+						<< ") joined using version " << version_str
+						<< ": connecting them by proxy to " << proxy->second["host"]
+						<< ":" << proxy->second["port"] << "\n";
 
 					proxy::create_proxy(sock,proxy->second["host"],lexical_cast_default<int>(proxy->second["port"],15000));
 				} else {
 
-					WRN_SERVER << "player joined using unknown version " << version_str << ": rejecting them\n";
+					WRN_SERVER << "player (" << network::ip_address(sock)
+						<< ") joined using unknown version " << version_str
+						<< ": rejecting them\n";
 					config response;
 					if(accepted_versions_.empty() == false) {
 						response["version"] = *accepted_versions_.begin();
@@ -747,7 +768,7 @@ void server::process_whisper(const network::connection sock, const config& whisp
 	bool sent = false;
 	bool do_send = true;
 	std::vector<game>::iterator g;
-	if ((whisper["receiver"]!="") && (whisper["message"]!="") && (whisper["sender"]!="")){
+	if ((whisper["receiver"]!="") && (whisper["message"]!="") && (whisper["sender"]!="")) {
 		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 			if(i->second.name() == whisper["receiver"]) {
 				for(g = games_.begin(); g != games_.end(); ++g) {
@@ -776,7 +797,7 @@ void server::process_whisper(const network::connection sock, const config& whisp
 		sent = true;
 	}
 
-	if (sent == false){
+	if (sent == false) {
 		config msg;
 		config data;
 		if(do_send == false) {
@@ -839,23 +860,24 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 			cfg.add_child("leave_game");
 			network::send_data(cfg,sock);
 
-			LOG_SERVER << "Attempt to join unknown game: " << id
-				<< " by: " << pl->second.name() << "\n";
+			LOG_SERVER << pl->second.name() << " (" << network::ip_address(sock)
+				<< ") attempted to join unknown game: " << id << "\n";
 			return;
 		}
 
 		if(it->player_is_banned(sock)) {
 			LOG_SERVER << "Reject banned player: " << pl->second.name()
-				<< " from game: \"" << (*it->description())["name"] 
+				<< " (" << network::ip_address(sock)
+				<< ") from game: \"" << (*it->description())["name"]
 				<< "\" (" << id << ").\n";
 			network::send_data(construct_error("You are banned from this game"),sock);
 			return;
 		}
 
 		if(str_observer == "yes") {
-			WRN_SERVER << pl->second.name() << " joined game: \""
-				<< (*it->description())["name"] << "\" (" << id
-				<< ") as an observer.\n";
+			WRN_SERVER << pl->second.name() << " (" << network::ip_address(sock)
+				<< ") joined game: \"" << (*it->description())["name"]
+				<< "\" (" << id << ") as an observer.\n";
 		} else {
 			WRN_SERVER << pl->second.name() << " joined game: \""
 				<< (*it->description())["name"] << "\" (" << id
@@ -891,9 +913,11 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 		std::string msg = (*message)["message"].base_str();
 		if(msg.substr(0,3) == "/me") {
-			WRN_SERVER << "<" << pl->second.name() << msg.substr(3) << ">\n";
+			WRN_SERVER << network::ip_address(sock) << ": <"
+				<< pl->second.name() << msg.substr(3) << ">\n";
 		} else {
-			WRN_SERVER << "<" << pl->second.name() << "> " << msg << "\n";
+			WRN_SERVER << network::ip_address(sock) << ": <"
+				<< pl->second.name() << "> " << msg << "\n";
 		}
 
 		lobby_players_.send_data(data,sock);
@@ -902,7 +926,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	// Player requests update of lobby content,
 	// for example when cancelling the create game dialog
 	config* const refresh = data.child("refresh_lobby");
-	if (refresh != NULL){
+	if (refresh != NULL) {
 		network::send_data(initial_response_, sock);
 	}
 }
@@ -928,7 +952,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	}
 	// If this is data describing the level for a game.
-	else if(g->is_owner(sock) && data.child("side") != NULL) {
+	if(g->is_owner(sock) && data.child("side") != NULL) {
 
 		const bool is_init = g->level_init();
 
@@ -971,7 +995,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->update_side_data();
 			g->describe_slots();
 
-			WRN_SERVER << pl->second.name() << " creates game: \""
+			WRN_SERVER << pl->second.name() << " (" << network::ip_address(sock) << ") created game: \""
 				<< (g->description() ? (*g->description())["name"] : "Warning: Game has no desccription.")
 				<< "\" (" << g->id() << ").\n";
 
@@ -984,7 +1008,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->level() = data;
 			g->update_side_data();
 			// advancing to the next scenario?
-			WRN_SERVER << pl->second.name() << " advances game: \""
+			WRN_SERVER << pl->second.name() << " (" << network::ip_address(sock) << ") advanced game: \""
 				<< (g->description() ? (*g->description())["name"] : "Warning: Game has no description.")
 				<< "\" (" << g->id() << ") to the next scenario.\n";
 			// Send the update of the game description to the lobby
@@ -996,8 +1020,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	}
 
+	const std::string game_name = g->description() ? (*g->description())["name"] : "Warning: Game has no description.";
+
 	// If this is data telling us that the scenario did change.
-	else if(g->is_owner(sock) && data.child("next_scenario") != NULL) {
+	if(g->is_owner(sock) && data.child("next_scenario") != NULL) {
 		config* scenario = data.child("next_scenario");
 
 		if(g->level_init()) {
@@ -1009,19 +1035,23 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		} else {
 			// next_scenario sent while the scenario was not initialized.
 			// Something's broken here.
-			WRN_SERVER << "Error: next_scenario sent while the scenario is not yet initialized";
+			WRN_SERVER << "Warning: " << pl->second.name() << " ("
+				<< network::ip_address(sock)
+				<< ") sent [next_scenario] in game: \""
+				<< game_name << "\" (" << g->id()
+				<< ") while the scenario is not yet initialized";
 			return;
 		}
 	}
-
-	std::string game_name = g->description() ? (*g->description())["name"] : "Warning: Game has no description.";
 
 	const string_map::const_iterator side = data.values.find("side");
 	if(side != data.values.end()) {
 		const bool res = g->take_side(sock,data);
 		config response;
 		if(res) {
-			LOG_SERVER << "player joined side\n";
+			LOG_SERVER << pl->second.name() << " ("
+				<< network::ip_address(sock) << ") joined a side in game: "
+				<< game_name << "\" (" << g->id() << ").\n";
 			response["side_secured"] = side->second;
 
 			// Update the number of available slots
@@ -1030,11 +1060,14 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				lobby_players_.send_data(sync_initial_response());
 			}
 		} else if (g->is_observer(sock)) {
-			const config& p_msg = construct_server_message("Sorry " + g->find_player(sock)->name() + ", someone else entered before you.",*g);
-			network::send_data(p_msg, sock);
+			network::send_data(construct_server_message("Sorry " + pl->second.name() + ", someone else entered before you.",*g), sock);
 			return;
 		} else {
 			response["failed"] = "yes";
+			LOG_SERVER << "Warning: " << pl->second.name()
+				<< " (" << network::ip_address(sock)
+				<< ") failed to get a side in game: \""
+				<< game_name << "\" (" << g->id() << ").\n";
 		}
 
 		network::send_data(response,sock);
@@ -1047,27 +1080,29 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// the [start_game] message has been sent
 		g->send_data(data,sock);
 
-		WRN_SERVER << "game: \"" << game_name 
-			<< "\" (" << g->id() << ") started.\n";
+		WRN_SERVER << pl->second.name() << " ("
+			<< network::ip_address(sock) << ") started game: \""
+			<< game_name << "\" (" << g->id() << ").\n";
 
 		g->start_game();
 		lobby_players_.send_data(sync_initial_response());
 		return;
 	} else if(data.child("leave_game")) {
 		const bool needed = g->is_needed(sock);
-		bool obs = g->is_observer(sock);
+		const bool obs = g->is_observer(sock);
 		g->remove_player(sock);
 		g->describe_slots();
 
-		if( (g->nplayers() == 0) || (needed && (!g->started())) ) {
+		if( (g->nplayers() == 0) || (needed && !g->started()) ) {
 
-			// Tell all other players the game is over,
+			// Tell observers the game is over,
 			// because the last player has left
 			config cfg;
 			cfg.add_child("leave_game");
 			g->send_data(cfg);
-			WRN_SERVER << "game: \"" << game_name
-				<< "\" (" << g->id() << ") ended.\n";
+			WRN_SERVER << pl->second.name() << " ("
+				<< network::ip_address(sock) << ") ended game: \""
+				<< game_name << "\" (" << g->id() << ").\n";
 
 			// Delete the game's description
 			config* const gamelist = initial_response_.child("gamelist");
@@ -1102,19 +1137,21 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			lobby_players_.send_data(sync_initial_response());
 		} else {
 			if(!obs) {
-				const config& msg = construct_server_message(pl->second.name() + " has left the game",*g);
-				g->send_data(msg);
-				WRN_SERVER << pl->second.name() << " has left game: \""
-					<< game_name << "\" (" << g->id() << ").\n";
+				g->send_data(construct_server_message(pl->second.name() + " has left the game",*g));
+				WRN_SERVER << pl->second.name() << " ("
+					<< network::ip_address(sock)
+					<< ") has left game: \"" << game_name
+					<< "\" (" << g->id() << ").\n";
 			} else {
-				WRN_SERVER << "observer: " << pl->second.name() << " has left game: \""
-					<< game_name << "\" (" << g->id() << ").\n";
+				WRN_SERVER << pl->second.name() << " ("
+					<< network::ip_address(sock)
+					<< ") has left game: \"" << game_name
+					<< "\" (" << g->id() << ") as an observer.\n";
 			}
-
-			if (needed){
+			if (needed) {
 				// Transfer game control to another player
 				const player* player = g->transfer_game_control();
-				if (player != NULL){
+				if (player != NULL) {
 					const config& msg = construct_server_message(player->name() + " has been chosen as new host", *g);
 					g->send_data(msg);
 				}
@@ -1131,11 +1168,24 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		lobby_players_.send_data(sync_initial_response(),sock);
 
 		return;
-	} else if(data["side_secured"].empty() == false) {
+	} else if(data.child("side_secured")) {
 		return;
-	} else if(data["failed"].empty() == false) {
-		LOG_SERVER << "ERROR: Failure to get side\n";
+	} else if(data.child("failed")) {
 		return;
+	}
+
+	// If this is data describing changes to a game.
+	else if(g->is_owner(sock) && data.child("scenario_diff")) {
+		g->level().apply_diff(*data.child("scenario_diff"));
+		config* cfg_change = data.child("scenario_diff")->child("change_child");
+		if ((cfg_change != NULL) && (cfg_change->child("side") != NULL)) {
+			g->update_side_data();
+		}
+
+		const bool lobby_changes = g->describe_slots();
+		if (lobby_changes) {
+			lobby_players_.send_data(sync_initial_response());
+		}
 	}
 
 	// If info is being provided about the game state
@@ -1147,35 +1197,33 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	}
 
 	// If the owner is changing the controller for a side
-	if (data.child("change_controller") != NULL){
+	if (data.child("change_controller") != NULL) {
 		const config& change = *data.child("change_controller");
 		// The player is either host of the game or gives away his own side
 		if(g->is_owner(sock) || change["own_side"] == "yes") {
 			const std::string& result = g->transfer_side_control(change);
 			if(result == "") {
-				const config& msg = construct_server_message(change["player"] + " takes control of side " + change["side"],*g);
-				g->send_data(msg);
+				g->send_data(construct_server_message(change["player"] + " takes control of side " + change["side"], *g));
 			} else {
-				const config& msg = construct_server_message(result,*g);
-				network::send_data(msg,sock);
+				network::send_data(construct_server_message(result,*g), sock);
 			}
-			g->describe_slots();
-			lobby_players_.send_data(sync_initial_response());
+			const bool lobby_changes = g->describe_slots();
+			if (lobby_changes) {
+				lobby_players_.send_data(sync_initial_response());
+			}
 			return;
 		}
 	}
 
 	// If all observers are muted
-	if (g->is_owner(sock) && data.child("muteall") != NULL){
-		if (!g->all_observers_muted()){
+	if (g->is_owner(sock) && data.child("muteall") != NULL) {
+		if (!g->all_observers_muted()) {
 			g->mute_all_observers(true);
-			const config& p_msg = construct_server_message("all observers have been muted",*g);
-			g->send_data(p_msg);
+			g->send_data(construct_server_message("all observers have been muted", *g));
 		}
 		else{
 			g->mute_all_observers(false);
-			const config& p_msg = construct_server_message("mute of all observers is removed",*g);
-			g->send_data(p_msg);
+			g->send_data(construct_server_message("mute of all observers is removed", *g));
 		}
 	}
 
@@ -1187,7 +1235,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		lower_name.resize(name.size());
 		std::transform(name.begin(), name.end(), lower_name.begin(), tolower);
 
-		if (!name.empty()){
+		if (!name.empty()) {
 			player_map::iterator pl;
 			for(pl = players_.begin(); pl != players_.end(); ++pl) {
 				if(pl->second.name() == name) {
@@ -1196,33 +1244,28 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			}
 			if(pl->first != sock && pl != players_.end() && g->is_observer(pl->first)) {
 				const player* player = g->mute_observer(pl->first);
-				if (player != NULL){
-					const config& msg = construct_server_message("You have been muted",*g);
-					network::send_data(msg, pl->first);
-
-					const config& p_msg = construct_server_message(pl->second.name() + " has been muted",*g);
-					g->send_data(p_msg, pl->first);
+				if (player != NULL) {
+					network::send_data(construct_server_message("You have been muted", *g), pl->first);
+					g->send_data(construct_server_message(pl->second.name() + " has been muted", *g), pl->first);
 				}
 			}
 		}
-		else{
+		else {
 			std::string muted_nicks = "";
 			user_vector users = g->all_game_users();
 			const player* player;
 
-			for (user_vector::const_iterator user = users.begin(); user != users.end(); user++){
+			for (user_vector::const_iterator user = users.begin(); user != users.end(); user++) {
 				if ((g->all_observers_muted() && g->is_observer(*user))
-					|| (!g->all_observers_muted() && g->is_muted_observer(*user))){
+					|| (!g->all_observers_muted() && g->is_muted_observer(*user))) {
 					player = g->find_player(*user);
-					if (player != NULL){
+					if (player != NULL) {
 						if (muted_nicks != "") { muted_nicks += ", "; }
 						muted_nicks += player->name();
 					}
 				}
 			}
-
-			const config& p_msg = construct_server_message("muted observers: " + muted_nicks,*g);
-			g->send_data(p_msg);
+			g->send_data(construct_server_message("muted observers: " + muted_nicks, *g));
 		}
 	}
 
@@ -1240,6 +1283,9 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			ban = false;
 		}
 
+		std::string owner = pl->second.name();
+
+		// new player_map iterator that masks the one of the sender
 		player_map::iterator pl;
 		for(pl = players_.begin(); pl != players_.end(); ++pl) {
 			if(pl->second.name() == name) {
@@ -1248,28 +1294,27 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 
 		if(pl->first != sock && pl != players_.end()) {
-			std::string owner = g->find_player(sock)->name();
 			if (ban) {
-				const config& msg = construct_server_message("You have been banned",*g);
-				network::send_data(msg, pl->first);
-				const config& p_msg = construct_server_message(pl->second.name() + " has been banned",*g);
-				g->send_data(p_msg);
+				network::send_data(construct_server_message("You have been banned", *g), pl->first);
+				g->send_data(construct_server_message(name + " has been banned", *g));
 				g->ban_player(pl->first);
-				WRN_SERVER << owner << " banned: " << name << " from game: "
+				WRN_SERVER << owner << " ("
+					<< network::ip_address(sock)
+					<< ") banned: " << name << " from game: "
 					<< game_name << "\" (" << g->id() << ")\n";
 			} else {
-				const config& msg = construct_server_message("You have been kicked",*g);
-				network::send_data(msg, pl->first);
-				const config& p_msg = construct_server_message(pl->second.name() + " has been kicked",*g);
-				g->send_data(p_msg);
+				network::send_data(construct_server_message("You have been kicked", *g), pl->first);
+				g->send_data(construct_server_message(name + " has been kicked", *g));
 				g->remove_player(pl->first);
-				WRN_SERVER << owner << " kicked: " << name << " from game: \""
+				WRN_SERVER << owner << " ("
+					<< network::ip_address(sock)
+					<< ") kicked: " << name << " from game: \""
 					<< game_name << "\" (" << g->id() << ")\n";
 			}
 
 			config leave_game;
 			leave_game.add_child("leave_game");
-			network::send_data(leave_game,pl->first);
+			network::send_data(leave_game, pl->first);
 
 			g->describe_slots();
 			lobby_players_.add_player(pl->first);
@@ -1278,41 +1323,26 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			pl->second.mark_available();
 
 			// Send the player who was banned the lobby game list
-			network::send_data(initial_response_,pl->first);
+			network::send_data(initial_response_, pl->first);
 
 			// Send all other players in the lobby the update to the lobby
-			lobby_players_.send_data(sync_initial_response(),sock);
+			lobby_players_.send_data(sync_initial_response(), sock);
 		} else if(pl == players_.end()) {
-			const config& response = construct_server_message(
-			             "Kick/ban failed: user '" + name + "' not found",*g);
-			network::send_data(response,sock);
+			network::send_data(construct_server_message("Kick/ban failed: user '" + name + "' not found", *g), sock);
 		}
 	} else if(data.child("ban")) {
 		const config& response = construct_server_message(
-		             "You cannot ban: not the game host",*g);
+		             "You cannot ban: not the game host", *g);
 		network::send_data(response,sock);
 	} else if(data.child("kick")) {
 		const config& response = construct_server_message(
-		             "You cannot kick: not the game host",*g);
+		             "You cannot kick: not the game host", *g);
 		network::send_data(response,sock);
 	}
 
-	// If this is data describing changes to a game.
-	else if(g->is_owner(sock) && data.child("scenario_diff")) {
-		g->level().apply_diff(*data.child("scenario_diff"));
-		config* cfg_change = data.child("scenario_diff")->child("change_child");
-		if ((cfg_change != NULL) && (cfg_change->child("side") != NULL)){
-			g->update_side_data();
-		}
-
-		/*const bool lobby_changes = */g->describe_slots();
-		lobby_players_.send_data(sync_initial_response());
-	}
-
-
 	config* const turn = data.child("turn");
 	if(turn != NULL) {
-		g->filter_commands(sock,*turn);
+		g->filter_commands(sock, *turn);
 
 		// Notify the game of the commands, and if it changes
 		// the description, then sync the new description
@@ -1334,16 +1364,14 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				++nother;
 				continue;
 			}
-
+			if ((g->all_observers_muted() && g->is_observer(sock)) || g->is_muted_observer(sock)) {
+				network::send_data(construct_server_message("You have been muted, others can't see your message!", *g), pl->first);
+				return;
+			}
 			truncate_message((*speak)["message"]);
 
 			// Force the description to be correct,
 			// to prevent spoofing of messages
-			if ((g->all_observers_muted() && g->is_observer(sock)) || g->is_muted_observer(sock)){
-				const config& msg = construct_server_message("You have been muted, others can't see your message!",*g);
-				network::send_data(msg, pl->first);
-				return;
-			}
 			(*speak)["description"] = pl->second.name();
 
 			if((*speak)["team_name"] == "") {
@@ -1358,9 +1386,9 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// just forward them on to the client that should receive them.
 		if(nprivate > 0 && npublic == 0 && nother == 0) {
 			if (team_name == game_config::observer_team_name) {
-				g->send_data_observers(data,sock);
+				g->send_data_observers(data, sock);
 			} else {
-				g->send_data_team(data,team_name,sock);
+				g->send_data_team(data, team_name, sock);
 			}
 			return;
 		}
@@ -1373,7 +1401,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 	// Forward data to all players who are in the game,
 	// except for the original data sender
-	g->send_data(data,sock);
+	g->send_data(data, sock);
 
 	if(g->started()) {
 		g->record_data(data);
@@ -1388,10 +1416,10 @@ void server::delete_game(std::vector<game>::iterator i)
 	config* const gamelist = initial_response_.child("gamelist");
 	wassert(gamelist != NULL);
 	const config::child_itors vg = gamelist->child_range("game");
-	const config::child_list::iterator g = std::find(vg.first,vg.second,i->description());
+	const config::child_list::iterator g = std::find(vg.first, vg.second, i->description());
 	if(g != vg.second) {
 		const size_t index = g - vg.first;
-		gamelist->remove_child("game",index);
+		gamelist->remove_child("game", index);
 	}
 
 	i->disconnect();
@@ -1480,13 +1508,13 @@ int main(int argc, char** argv)
 		}
 	}
 	// show 'warnings' by default
-	lg::set_log_domain_severity("general",1);
+	lg::set_log_domain_severity("general", 1);
 	lg::timestamps(true);
 
 	input_stream input(fifo_path);
 
 	try {
-		server(port,input,configuration,min_threads,max_threads).run();
+		server(port, input, configuration, min_threads, max_threads).run();
 	} catch(network::error& e) {
 		ERR_SERVER << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;
