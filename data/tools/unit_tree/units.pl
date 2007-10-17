@@ -37,20 +37,20 @@ my $images = 1;
 # This option will determine if the html report on made animations is generated
 my $animations = 1;
 # This is the version number that will appear on the unit trees
-my $version = '1.3.8';
+my $version = '1.3.9+svn';
 # These option will try to process the user made Eras
-my $ime = 1; # Imperial Era
-my $exe = 1; # Extended Era
-my $eom = 1; # Era of Myths
+my $ime = 0; # Imperial Era
+my $exe = 0; # Extended Era
+my $eom = 0; # Era of Myths
 # If the script is run on Windows, set this option to 1
-my $windows = 1;
+my $windows = 0;
 
 use Tie::File;
 use File::Copy;
 
 # -- Paths --
 my ($wesnoth_dir, $data_dir, $html_dir, $report_dir, $base_dir, $units_dir, $base_report_dir, $link_back);
-$wesnoth_dir = '../Wesnoth';
+$wesnoth_dir = '../../..';
 $html_dir = 'files';
 $report_dir = 'reports';
 
@@ -793,7 +793,7 @@ sub RemoveComments {
 
 # Translate the html using the gettext module
 sub TranslateUnits {
-	use Locale::Maketext::Gettext;
+	#use Locale::Maketext::Gettext;
 	my @countries = glob("$wesnoth_dir/po/*");
 	
 	foreach $country (@countries) {
