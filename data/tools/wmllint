@@ -1129,8 +1129,10 @@ def translator(filename, mapxforms, textxform):
             if add_usage:
                 newdata.append("usage=" + maptype + terminator)
                 have_header = True
+                modified = True
             if have_header:
                 newdata.append(terminator)
+                modified = True
             for y in range(len(outmap)):
                 newdata.append(",".join(outmap[y]) + terminator)
                 if not modified and original[y] != outmap[y]:
