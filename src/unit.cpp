@@ -771,8 +771,8 @@ void unit::remove_ability_by_id(const std::string &ability)
 {
 	config* abil = cfg_.child("abilities");
 	if(abil) {
-		config::all_children_iterator i = abil->ordered_begin(), i_end = abil->ordered_end();
-		while(i != i_end) {
+		config::all_children_iterator i = abil->ordered_begin();
+		while(i != abil->ordered_end()) {
 			if(i.get_child()["id"] == ability) {
 				i = abil->erase(i);
 			} else {
