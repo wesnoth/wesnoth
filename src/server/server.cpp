@@ -1032,10 +1032,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 	// If this is data telling us that the scenario did change.
 	if(g->is_owner(sock) && data.child("next_scenario") != NULL) {
-		config* scenario = data.child("next_scenario");
-
 		if(g->level_init()) {
-			g->level() = *scenario;
+			g->level() = data.child("next_scenario");
 			g->reset_history();
 			g->update_side_data();
 			// Send the update of the game description to the lobby

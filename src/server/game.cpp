@@ -156,7 +156,7 @@ void game::start_game()
 
 bool game::take_side(network::connection player, const config& cfg)
 {
-	wassert(is_member(player));
+	if (!is_member(player)) return false;
 
 	//verify that side is a side id
 	const std::string& side = cfg["side"];

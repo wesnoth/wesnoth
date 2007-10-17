@@ -55,6 +55,7 @@
 
 #define LOG_NW LOG_STREAM(info, network)
 #define WRN_NW LOG_STREAM(warn, network)
+#define ERR_NW LOG_STREAM(err, network)
 // Only warnings and not errors to avoid DoS by log flooding
 
 namespace {
@@ -198,7 +199,7 @@ manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 #endif
 
 	if(SDLNet_Init() == -1) {
-		LOG_STREAM(err, network) << "could not initialize SDLNet; throwing error...\n";
+		ERR_NW << "could not initialize SDLNet; throwing error...\n";
 		throw error(SDL_GetError());
 	}
 
@@ -641,10 +642,7 @@ connection receive_data(config& cfg, connection connection_num)
 		}
 	}
 
-	if(result == 0) {
-		assert(false);
-		return result;
-	}
+	wassert(result != 0);
 	waiting_sockets.insert(result);
 
 	return result;
