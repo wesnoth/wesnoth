@@ -1228,7 +1228,8 @@ private:
 			std::vector<gamemap::location> route = action.route;
 			std::reverse(route.begin(),route.end());
 			const unit_map::iterator u = units_.find(route.front());
-			if(u == units_.end()) {
+			const unit_map::iterator u_end = units_.find(route.back());
+			if(u == units_.end() || u_end != units_.end()) {
 				//this can actually happen if the scenario designer has abused the [allow_undo] command
 				LOG_STREAM(err, engine) << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
 				return;
