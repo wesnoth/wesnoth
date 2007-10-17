@@ -403,8 +403,15 @@ void server::run()
 			}
 
 			//make sure we log stats every 5 minutes
-			if((loop%100) == 0 && last_stats_+5*60 < time(NULL)) {
+			time_t now = time(NULL);
+			if ((loop%100) == 0 && last_stats_+5*60 < now) {
 				dump_stats();
+				// send a 'ping' to all players to detect ghosts
+				config ping;
+				ping["ping"] = lexical_cast<std::string>(now);
+				for (player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+					network::queue_data(ping, i->first);
+				}
 			}
 
 			network::process_send_queue();
