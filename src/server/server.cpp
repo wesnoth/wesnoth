@@ -658,11 +658,11 @@ void server::process_login(const network::connection sock, const config& data)
 		return;
 	}
 
-	// Check if the username is valid (all alpha-numeric plus underscore)
+	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	std::string username = (*login)["username"];
 	if(!utils::isvalid_username(username)) {
 		network::send_data(construct_error(
-		                   "This username contains invalid characters. Only alpha-numeric characters and underscores are allowed."),sock);
+		                   "This username contains invalid characters. Only alpha-numeric characters, underscores and hyphens are allowed."),sock);
 		return;
 	}
 
