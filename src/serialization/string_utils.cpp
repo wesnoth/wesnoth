@@ -293,12 +293,19 @@ bool string_bool(const std::string& str,bool def)
 	return def;
 }
 
+bool isvalid_char(char c)
+{
+	return ((c == '_') || (c == '-'));
+}
+
+//! Check if the username is valid
+//! (all alpha-numeric plus underscore and hyphen)
 bool isvalid_username(const std::string& username)
 {
 	//check if the username is valid (all alpha-numeric plus underscore)
 	const size_t alnum = std::count_if(username.begin(),username.end(),isalnum);
-	const size_t underscore = std::count(username.begin(),username.end(),'_');
-	if((alnum + underscore != username.size()) || underscore == username.size() || username.empty() ) {
+	const size_t valid_char = std::count_if(username.begin(),username.end(),isvalid_char);
+	if((alnum + valid_char != username.size()) || valid_char == username.size() || username.empty() ) {
 		return false;
 	}
 	return true;
