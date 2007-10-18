@@ -71,6 +71,13 @@
 #include <sstream>
 #include <string>
 
+#define ERR_CONFIG LOG_STREAM(err, config)
+#define WRN_CONFIG LOG_STREAM(warn, config)
+#define LOG_CONFIG LOG_STREAM(info, config)
+#define LOG_GENERAL LOG_STREAM(info, general)
+#define ERR_NET LOG_STREAM(err, network)
+#define LOG_NET LOG_STREAM(info, network)
+#define ERR_FS LOG_STREAM(err, filesystem)
 
 static bool less_campaigns_rank(const config* a, const config* b) {
 	return lexical_cast_default<int>((*a)["rank"],1000) <
@@ -471,7 +478,7 @@ bool game_controller::play_multiplayer_mode()
 	}
 
 	std::string era = "era_default";
-	std::string scenario = "multiplayer_Charge";
+	std::string scenario = "multiplayer_The_Freelands";
 	std::map<int,std::string> side_types, side_controllers, side_algorithms;
 	std::map<int,string_map> side_parameters;
 	std::string turns = "50";
@@ -735,28 +742,28 @@ bool game_controller::load_game()
 	recorder.start_replay();
 	recorder.set_skip(false);
 
-	std::cerr << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
+	LOG_CONFIG << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
 
 	if(state_.snapshot.child("side") == NULL) {
 		// No snapshot; this is a start-of-scenario
 		if (show_replay) {
 			// There won't be any turns to replay, but the
 			// user gets to watch the intro sequence again ...
-			std::cerr << "replaying (start of scenario)\n";
+			LOG_CONFIG << "replaying (start of scenario)\n";
 		} else {
-			std::cerr << "skipping...\n";
+			LOG_CONFIG << "skipping...\n";
 			recorder.set_skip(false);
 		}
 	} else {
 		// We have a snapshot. But does the user want to see a replay?
 		if(show_replay) {
 			statistics::clear_current_scenario();
-			std::cerr << "replaying (snapshot)\n";
+			LOG_CONFIG << "replaying (snapshot)\n";
 		} else {
-			std::cerr << "setting replay to end...\n";
+			LOG_CONFIG << "setting replay to end...\n";
 			recorder.set_to_end();
 			if(!recorder.at_end()) {
-				std::cerr << "recorder is not at the end!!!\n";
+				WRN_CONFIG << "recorder is not at the end!!!\n";
 			}
 		}
 	}
@@ -1312,7 +1319,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	data.clear();
 	data.add_child("upload",cfg).add_child("data",campaign_data);
 
-	std::cerr << "uploading campaign...\n";
+	LOG_NET << "uploading campaign...\n";
 	network::send_data(data,sock);
 
 	sock = dialogs::network_send_dialog(disp(),_("Sending add-on"),data,sock);
@@ -1432,23 +1439,23 @@ bool game_controller::play_multiplayer()
 	} catch(game::game_error& e) {
 		gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
-		std::cerr << "caught network::error";
+		ERR_NET << "caught network::error";
 		if(e.message != "") {
-			std::cerr << ": " << e.message;
+			ERR_NET << ": " << e.message;
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::dialog dlg(disp(),"",e.message,gui::OK_ONLY);
 			dlg.show();
 		}
-		std::cerr << "\n";
+		ERR_NET << "\n";
 	} catch(config::error& e) {
-		std::cerr << "caught config::error";
+		ERR_CONFIG << "caught config::error";
 		if(e.message != "") {
-			std::cerr << ": " << e.message;
+			ERR_CONFIG << ": " << e.message;
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::dialog dlg2(disp(),"",e.message,gui::OK_ONLY);
 			dlg2.show();
 		}
-		std::cerr << "\n";
+		ERR_CONFIG << "\n";
 	} catch(gamemap::incorrect_format_exception& e) {
 		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(game::load_game_exception& e) {
@@ -1547,30 +1554,30 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 						dir_checksum = file_tree_checksum(checksum_cfg);
 					}
 				} catch(config::error&) {
-					std::cerr << "cache checksum is corrupt\n";
+					ERR_CONFIG << "cache checksum is corrupt\n";
 				} catch(io_exception&) {
-					std::cerr << "error reading cache checksum\n";
+					ERR_CONFIG << "error reading cache checksum\n";
 				}
 			}
 
 			if(force_valid_cache_)
-				std::cerr << "skipping cache validation (forced)\n";
+				LOG_CONFIG << "skipping cache validation (forced)\n";
 
 			if(use_cache && file_exists(fname) && (force_valid_cache_ || file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum())) {
-				std::cerr << "found valid cache at '" << fname << "' using it\n";
+				LOG_CONFIG << "found valid cache at '" << fname << "' using it\n";
 				log_scope("read cache");
 				try {
 					scoped_istream stream = istream_file(fname);
 					read_compressed(cfg, *stream);
 					return;
 				} catch(config::error&) {
-					std::cerr << "cache is corrupt. Loading from files\n";
+					ERR_CONFIG << "cache is corrupt. Loading from files\n";
 				} catch(io_exception&) {
-					std::cerr << "error reading cache. Loading from files\n";
+					ERR_CONFIG << "error reading cache. Loading from files\n";
 				}
 			}
 
-			std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
+			LOG_CONFIG << "no valid cache found. Writing cache to '" << fname << "'\n";
 
 			preproc_map defines_map(defines);
 
@@ -1612,12 +1619,12 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 						error_campaigns.push_back(*uc);
 					}
 				} catch(config::error& err) {
-					std::cerr << "error reading usermade add-on '" << *uc << "'\n";
+					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 					error_campaigns.push_back(*uc);
 
 					user_error_log += err.message + "\n";
 				} catch(io_exception&) {
-					std::cerr << "error reading usermade add-on '" << *uc << "'\n";
+					ERR_CONFIG << "error reading usermade add-on '" << *uc << "'\n";
 					error_campaigns.push_back(*uc);
 				}
 			}
@@ -1655,7 +1662,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 					scoped_ostream checksum = ostream_file(fname_checksum);
 					write(*checksum, checksum_cfg);
 				} catch(io_exception&) {
-					std::cerr << "could not write to cache '" << fname << "'\n";
+					ERR_FS << "could not write to cache '" << fname << "'\n";
 				}
 			}
 
@@ -1663,7 +1670,7 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 		}
 	}
 
-	std::cerr << "caching cannot be done. Reading file\n";
+	ERR_CONFIG << "caching cannot be done. Reading file\n";
 	preproc_map defines_map(defines);
 	scoped_istream stream = preprocess_file("data/", &defines_map);
 	read(cfg, *stream);
@@ -1694,7 +1701,7 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 			old_defines_map_ = defines_map_;
 		}
 	} catch(config::error& e) {
-		std::cerr << "Error loading game configuration files\n";
+		ERR_CONFIG << "Error loading game configuration files\n";
 		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
 		                        e.message + _("' (The game will now exit)"));
 		throw e;
@@ -2015,7 +2022,7 @@ static int play_game(int argc, char** argv)
 	delete loadscreen::global_loadscreen;
 	loadscreen::global_loadscreen = NULL;
 
-	std::cerr << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
+	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 	for(;;) {
 		//make sure the game config is always set to how it should be at the title screen
 		game.reset_game_cfg();
@@ -2046,7 +2053,7 @@ static int play_game(int argc, char** argv)
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
 		if(res == gui::QUIT_GAME) {
-			std::cerr << "quitting game...\n";
+			LOG_GENERAL << "quitting game...\n";
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
 			if(game.load_game() == false) {
@@ -2118,7 +2125,7 @@ int main(int argc, char** argv)
 		std::cerr << "Started on " << ctime(&t) << "\n";
 
 		const int res = play_game(argc,argv);
-		std::cerr << "exiting with code " << res << "\n";
+		LOG_GENERAL << "exiting with code " << res << "\n";
 #ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
 	        SDL_Quit();
 #endif

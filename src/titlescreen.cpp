@@ -48,6 +48,8 @@
 #define LOG_DP LOG_STREAM(info, display)
 //! Log error-messages to stdout during the game, mainly for debugging
 #define ERR_DP LOG_STREAM(err, display)
+#define LOG_CONFIG LOG_STREAM(info, config)
+#define ERR_CONFIG LOG_STREAM(err, config)
 
 //! Fade-in the wesnoth-logo.
 //!
@@ -161,12 +163,12 @@ static const config get_tips_of_day()
 {
 	config cfg;
 
-	std::cerr << "Loading tips of day\n";
+	LOG_CONFIG << "Loading tips of day\n";
 	try {
 		scoped_istream stream = preprocess_file("data/hardwired/tips.cfg");
 		read(cfg, *stream);
 	} catch(config::error&) {
-		std::cerr << "Could not read tips.cfg\n";
+		ERR_CONFIG << "Could not read data/hardwired/tips.cfg\n";
 	}
 
 	return cfg;
