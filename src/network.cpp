@@ -687,7 +687,7 @@ void send_data(const config& cfg, connection connection_num)
 
 	const schema_map::iterator schema = schemas.find(connection_num);
 	if (schema != schemas.end()) {
-		ERR_NW << "Warning: socket: " << connection_num << "\tnot found in schemas. Not sending...\n";
+		WRN_NW << "Warning: socket: " << connection_num << "\tnot found in schemas. Not sending...\n";
 		return;
 	}
 
