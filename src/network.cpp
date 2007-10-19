@@ -51,6 +51,7 @@
 
 #define LOG_NW LOG_STREAM(info, network)
 #define WRN_NW LOG_STREAM(warn, network)
+#define ERR_NW LOG_STREAM(err, network)
 // only warnings and not errors to avoid DoS by log flooding
 
 namespace {
@@ -704,8 +705,8 @@ void send_data(const config& cfg, connection connection_num)
 	buf.back() = 0;
 
 	const connection_map::iterator info = connections.find(connection_num);
-	if (info != connections.end()) {
-		WRN_NW << "Warning: socket: " << connection_num << "\tnot found in connection_map. Not sending...\n";
+	if (info == connections.end()) {
+		ERR_NW << "Error: socket: " << connection_num << "\tnot found in connection_map. Not sending...\n";
 		return;
 	}
 
