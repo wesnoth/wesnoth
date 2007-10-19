@@ -23,7 +23,7 @@
 #   and the reports.  Use relative paths, that doesn't contain spaces, it wouldn't work if a space is found.
 #   Run the script, no parameters needed.
 #
-# Version: 1.1 (28 Apr 2007)
+# Version: 1.3 (18 Oct 2007)
 # Author: Miguel Zapico (elricz.m@gmail.com)
 
 # -- Options --
@@ -242,7 +242,7 @@ sub ProduceDataFiles {
 	# For units stored in folders
     my @camps = glob("$units_dir/*");
     foreach (@camps) {
-		unless (/cfg$/) {
+		unless (/(fake|cfg)$/) {
 		($camp = $_) =~ s/(.*)\///;
 		@units = glob($_ . '/*.cfg');
 		&ProcessUnit ($_) foreach @units;
@@ -384,6 +384,7 @@ sub ProcessUnit {
 	$unit_id{$unit{id}} = $i;
     if ($unit{advanceto} ne 'null') {
 		foreach (split (/,/,$unit{advanceto})) {
+			s/^\s*//;
 			print ADV "$i\t$_\n";
 			(my $link = $_) =~ s/\s/_/g;
 			$unit{advancetohtml} .= "<a href=$link.html>$_</a>&nbsp\n";
