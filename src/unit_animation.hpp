@@ -67,6 +67,7 @@ class unit_animation
 		// only to support all [attack_anim] format, to remove at 1.3.10 time
 		void back_compat_add_name(const std::string name="",const std::string range ="");
 		const animated<unit_frame> &get_missile_anim() const {return missile_anim_;} 
+		static void back_compat_initialize_anims( std::vector<unit_animation> & animations, const config & cfg, std::vector<attack_type> tmp_attacks);
 	private:
 		class crude_animation:public animated<unit_frame>
 	{
