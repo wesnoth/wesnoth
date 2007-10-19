@@ -126,8 +126,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout);
 //! Throws error.
 void send_data(const config& cfg, connection connection_num=0);
 
-//! Function to queue data to be sent.
-//! queue_data(cfg,sock) is equivalent to send_data(cfg,sock,0,QUEUE_ONLY)
+//! Function to queue data to be sent. (deprecated)
+//! queue_data(cfg,sock) is equivalent to send_data(cfg,sock)
 void queue_data(const config& cfg, connection connection_num=0);
 
 //! Function to send any data that is in a connection's send_queue,

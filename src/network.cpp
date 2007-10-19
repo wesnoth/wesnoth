@@ -667,13 +667,14 @@ void send_data(const config& cfg, connection connection_num)
 			LOG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
 			send_data(cfg,*i);
 		}
-
 		return;
 	}
 
-
 	const connection_map::iterator info = connections.find(connection_num);
-	wassert(info != connections.end());
+	if (info != connections.end()) {
+		WRN_NW << "Warning: socket: " << connection_num << "\tnot found. Not sending...\n";
+		return;
+	}
 
 	network_worker_pool::queue_data(info->second.sock,cfg);
 }
