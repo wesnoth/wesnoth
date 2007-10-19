@@ -712,7 +712,7 @@ void server::process_login(const network::connection sock, const config& data)
 	//send other players in the lobby the update that the player has joined
 	lobby_players_.send_data(sync_initial_response(),sock);
 
-	WRN_SERVER << network::ip_address(sock) << "\t" << username << "\thas logged on.\n";
+	WRN_SERVER << network::ip_address(sock) << "\t" << username << "\thas logged on. (socket: " << sock << ")\n";
 
 	for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
 		g->send_data_observers(construct_server_message(username + " has logged into the lobby",*g));
@@ -1280,8 +1280,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				break;
 			}
 		}
+		if(pl != players_.end() && pl->first != sock) {
+			// is the player even in this game?
+			if(!g->is_member(pl->first)) return;
 
-		if(pl->first != sock && pl != players_.end()) {
 			if (ban) {
 				network::send_data(construct_server_message("You have been banned", *g), pl->first);
 				g->send_data(construct_server_message(name + " has been banned", *g));
@@ -1313,17 +1315,21 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			//send all other players in the lobby the update to the lobby
 			lobby_players_.send_data(sync_initial_response(), sock);
+			return;
 		} else if(pl == players_.end()) {
 			network::send_data(construct_server_message("Kick/ban failed: user '" + name + "' not found", *g), sock);
+			return;
 		}
 	} else if(data.child("ban")) {
 		const config& response = construct_server_message(
 		             "You cannot ban: not the game host", *g);
 		network::send_data(response,sock);
+		return;
 	} else if(data.child("kick")) {
 		const config& response = construct_server_message(
 		             "You cannot kick: not the game host", *g);
 		network::send_data(response,sock);
+		return;
 	}
 
 	config* const turn = data.child("turn");

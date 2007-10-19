@@ -682,12 +682,14 @@ void send_data(const config& cfg, connection connection_num)
 			LOG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
 			send_data(cfg,*i);
 		}
-
 		return;
 	}
 
 	const schema_map::iterator schema = schemas.find(connection_num);
-	wassert(schema != schemas.end());
+	if (schema != schemas.end()) {
+		ERR_NW << "Warning: socket: " << connection_num << "\tnot found in schemas. Not sending...\n";
+		return;
+	}
 
 	std::ostringstream compressor;
 	write_compressed(compressor, cfg, schema->second.outgoing);
@@ -702,7 +704,10 @@ void send_data(const config& cfg, connection connection_num)
 	buf.back() = 0;
 
 	const connection_map::iterator info = connections.find(connection_num);
-	wassert(info != connections.end());
+	if (info != connections.end()) {
+		WRN_NW << "Warning: socket: " << connection_num << "\tnot found in connection_map. Not sending...\n";
+		return;
+	}
 
 	network_worker_pool::queue_data(info->second.sock,buf);
 }

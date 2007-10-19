@@ -111,7 +111,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout);
 //to all peers if connection_num is 0. throws error.
 void send_data(const config& cfg, connection connection_num=0);
 
-//function to queue data to be sent. queue_data(cfg,sock) is equivalent to send_data(cfg,sock,0,QUEUE_ONLY)
+//! Function to queue data to be sent. (deprecated)
+//! queue_data(cfg,sock) is equivalent to send_data(cfg,sock)
 void queue_data(const config& cfg, connection connection_num=0);
 
 //function to send any data that is in a connection's send_queue, up to a maximum
