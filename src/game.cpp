@@ -1862,7 +1862,7 @@ static int play_game(int argc, char** argv)
 			<< "                               --multiplayer to have the desired effect.\n"
 			<< "  --parm<number>=name:value    sets additional parameters for this side.\n"
 			<< "  --scenario=value             selects a multiplayer scenario. The default\n"
-			<< "                               scenario is \"multiplayer_Charge\".\n"
+			<< "                               scenario is \"multiplayer_The_Freelands\".\n"
 			<< "  --side<number>=value         selects a faction of the current era for this side\n"
 			<< "                               by id.\n"
 			<< "  --turns=value                sets the number of turns. The default is \"50\".\n"
