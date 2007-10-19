@@ -43,7 +43,7 @@
 #include <ctime>
 #include <vector>
 
-#include <signal.h>
+#include <csignal>
 
 #ifndef WIN32
 #include <sys/types.h>
@@ -57,6 +57,13 @@
 #define WRN_SERVER LOG_STREAM(warn, general)
 // debugging messages
 #define LOG_SERVER LOG_STREAM(info, general)
+
+sig_atomic_t config_reload = 0;
+
+void reload_config(int signal) {
+	wassert(signal == SIGHUP);
+	config_reload = 1;
+}
 
 namespace {
 
@@ -100,7 +107,7 @@ void truncate_message(t_string& str)
 class server
 {
 public:
-	server(int port, input_stream& input, const config& cfg, size_t min_threads,size_t max_threads);
+	server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
 	void process_data(network::connection sock, config& data, config& gamelist);
@@ -140,8 +147,11 @@ private:
 	input_stream& input_;
 
 	metrics metrics_;
-
-	const config& cfg_;
+	
+	const std::string config_file_;
+	config cfg_;
+	void load_config();
+	config read_config();
 
 	size_t default_max_messages_;
 	size_t default_time_period_;
@@ -151,7 +161,7 @@ private:
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
-
+	
 	bool ip_exceeds_connection_limit(const std::string& ip);
 
 	bool is_ip_banned(const std::string& ip);
@@ -164,13 +174,20 @@ private:
 	std::string motd_;
 };
 
-server::server(int port, input_stream& input, const config& cfg, size_t min_threads,size_t max_threads) : net_manager_(min_threads,max_threads), server_(port),
-    not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), cfg_(cfg), admin_passwd_(cfg["passwd"]), motd_(cfg["motd"])
+server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads) : net_manager_(min_threads,max_threads), server_(port),
+    not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input), config_file_(config_file)
 {
 	version_query_response_.add_child("version");
-
 	login_response_.add_child("mustlogin");
+	join_lobby_response_.add_child("join_lobby");
+	cfg_ = read_config();
+	load_config();
+	signal(SIGHUP, reload_config);
+}
 
+void server::load_config() {
+	admin_passwd_ = cfg_["passwd"];
+	motd_ = cfg_["motd"];
 	if(cfg_["disallow_names"] == "") {
 		disallowed_names_.push_back("*admin*");
 		disallowed_names_.push_back("*admln*");
@@ -214,8 +231,24 @@ server::server(int port, input_stream& input, const config& cfg, size_t min_thre
 			proxy_versions_[*j] = **p;
 		}
 	}
+}
 
-	join_lobby_response_.add_child("join_lobby");
+config server::read_config() {
+	config configuration;
+	if(config_file_ == "") return configuration;
+	scoped_istream stream = istream_file(config_file_);
+	std::string errors;
+	try {
+		read(configuration, *stream, &errors);
+		if(errors.empty() == false) {
+			ERR_SERVER << "WARNING: errors reading configuration file: " << errors << "\n";
+		} else {
+			WRN_SERVER << "Server configuration from file: '" << config_file_ << "' read.\n";
+		}
+	} catch(config::error& e) {
+		ERR_SERVER << "ERROR: could not read configuration file: '" << config_file_ << "': '" << e.message << "'\n";
+	}
+	return configuration;
 }
 
 bool server::ip_exceeds_connection_limit(const std::string& ip)
@@ -401,7 +434,12 @@ void server::run()
 				lobby_players_.send_data(sync_initial_response());
 				sync_scheduled = false;
 			}
-
+			
+			if(config_reload == 1) {
+				cfg_ = read_config();
+				load_config();
+				config_reload = 0;
+			}
 			// Process admin commands
 			std::string admin_cmd;
 			if(input_.read_line(admin_cmd)) {
@@ -1428,7 +1466,7 @@ int main(int argc, char** argv)
 	size_t min_threads = 5;
 	size_t max_threads = 0;
 
-	config configuration;
+	std::string config_file;
 
 #ifndef FIFODIR
 # define FIFODIR "/var/run/wesnothd"
@@ -1442,18 +1480,7 @@ int main(int argc, char** argv)
 		}
 
 		if((val == "--config" || val == "-c") && arg+1 != argc) {
-			scoped_istream stream = istream_file(argv[++arg]);
-
-			std::string errors;
-			try {
-				read(configuration,*stream,&errors);
-				if(errors.empty() == false) {
-					ERR_SERVER << "WARNING: errors reading configuration file: " << errors << "\n";
-				}
-			} catch(config::error& e) {
-				ERR_SERVER << "ERROR: could not read configuration file: '" << e.message << "'\n";
-				return -1;
-			}
+			config_file = argv[++arg];
 		} else if(val == "--verbose" || val == "-v") {
 			lg::set_log_domain_severity("all",2);
 		} else if((val == "--port" || val == "-p") && arg+1 != argc) {
@@ -1510,7 +1537,7 @@ int main(int argc, char** argv)
 	input_stream input(fifo_path);
 
 	try {
-		server(port, input, configuration, min_threads, max_threads).run();
+		server(port, input, config_file, min_threads, max_threads).run();
 	} catch(network::error& e) {
 		ERR_SERVER << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;

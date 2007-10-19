@@ -671,8 +671,8 @@ void send_data(const config& cfg, connection connection_num)
 	}
 
 	const connection_map::iterator info = connections.find(connection_num);
-	if (info != connections.end()) {
-		WRN_NW << "Warning: socket: " << connection_num << "\tnot found. Not sending...\n";
+	if (info == connections.end()) {
+		ERR_NW << "Error: socket: " << connection_num << "\tnot found in connection_map. Not sending...\n";
 		return;
 	}
 
