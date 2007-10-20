@@ -412,7 +412,7 @@ static int process_queue(void*)
 					read_compressed(received_data_queue.back().config_buf, stream, compress);
 				} catch(config::error &e) {
 					//throw back the error in the parent thread
-					received_data_queue.back().config_error =e.message;
+					received_data_queue.back().config_error = e.message;
 
 				}
 			}
@@ -507,8 +507,9 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 		return NULL;
 	} else if (!itor->config_error.empty()){
 		// throw the error in parent thread
+		std::string error = itor->config_error;
 		received_data_queue.erase(itor);
-		throw config::error(itor->config_error);
+		throw config::error(error);
 	} else {
 		cfg = itor->config_buf;
 		const TCPsocket res = itor->sock;
