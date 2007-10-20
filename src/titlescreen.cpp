@@ -321,7 +321,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
 						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
-						    N_("Load a single player saved game"),
+						    N_("Load a saved game"),
 						    N_("Download usermade campaigns, eras, or map packs"),
 						    N_("Change the language"),
 						    N_("Configure the game's settings"),
