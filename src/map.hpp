@@ -164,13 +164,13 @@ public:
 	//on the map. Should be called before indexing using []
 	bool on_board(const location& loc) const
 	{
-		return loc.valid() && loc.x < w() && loc.y < h();
+		return loc.valid(w_, h_);
 	}
 
 	//function to tell if the map is of 0 size.
 	bool empty() const
 	{
-		return w() == 0 || h() == 0;
+		return w_ == 0 || h_ == 0;
 	}
 
 	//function to return a list of the locations of villages on the map
