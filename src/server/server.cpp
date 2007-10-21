@@ -317,29 +317,36 @@ std::string server::process_command(const std::string& cmd)
 
 		out << "message '" << msg << "' relayed to players\n";
 	} else if(command == "status") {
-		out << "STATUS REPORT\n---\n";
-		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
-			const network::connection_stats& stats = network::get_connection_stats(i->first);
-			const int time_connected = stats.time_connected/1000;
-			const int seconds = time_connected%60;
-			const int minutes = (time_connected/60)%60;
-			const int hours = time_connected/(60*60);
-			out << "'" << i->second.name() << "' @ " << network::ip_address(i->first)
-				<< " connected for " << hours << ":" << minutes << ":" << seconds
-				<< " sent " << stats.bytes_sent << " bytes, received "
-				<< stats.bytes_received << " bytes\n";
+		std::string mask;
+		bool all = true;
+		if(i != cmd.end()) {
+			all = false;
+			mask = std::string(i+1,cmd.end());
 		}
-		out << "---";
+		//out << "STATUS REPORT\n---\n";
+		for(player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+			if(all || mask == pl->second.name()) {
+				const network::connection_stats& stats = network::get_connection_stats(pl->first);
+				const int time_connected = stats.time_connected/1000;
+				const int seconds = time_connected%60;
+				const int minutes = (time_connected/60)%60;
+				const int hours = time_connected/(60*60);
+				out << "'" << pl->second.name() << "' @ " << network::ip_address(pl->first)
+					<< " connected for " << hours << ":" << minutes << ":" << seconds
+					<< " sent " << stats.bytes_sent << " bytes, received "
+					<< stats.bytes_received << " bytes\n";
+			}
+		}
+		//out << "---";
 	} else if(command == "metrics") {
 		out << metrics_;
-	} else if(command == "ban" || command == "kban") {
-
+	} else if(command == "ban" || command == "bans" || command == "kban") {
 		if(i == cmd.end()) {
-			out << "BAN LIST\n---\n";
+			//out << "BAN LIST\n---\n";
 			for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
 				out << *i << "\n";
 			}
-			out << "---";
+			//out << "---";
 		} else {
 			std::string mask(i+1,cmd.end());
 
@@ -386,8 +393,9 @@ std::string server::process_command(const std::string& cmd)
 
 		for(player_map::const_iterator j = players_.begin(); j != players_.end(); ++j) {
 			if(j->second.name() == nick) {
+				std::string ip(network::ip_address(j->first));
 				network::queue_disconnect(j->first);
-				return "kicked " + nick;
+				return "kicked " + nick + " (" + ip + ")";
 			}
 		}
 
@@ -408,7 +416,7 @@ std::string server::process_command(const std::string& cmd)
 
 	} else {
 		out << "command '" << command << "' is not recognized";
-		out << "available commands are: msg <message>, motd <message>, status, metrics, ban [<nick>], unban <nick>, kick <nick>, kban <nick> ";
+		out << "available commands are: msg <message>, motd <message>, status [<nick>], metrics, ban(s) [<nick>], unban <nick>, kick <nick>, kban <nick> ";
 	}
 
 	return out.str();
