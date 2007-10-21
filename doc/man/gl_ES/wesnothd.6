@@ -1,0 +1,156 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2006 wesnothd "Daemon de rede multixogador de Battle for Wesnoth"
+.
+.SH NOME
+.
+wesnothd \- Daemon de rede multixogador de Battle for \fBWesnoth\fP
+.
+.SH SINOPSE
+.
+\fBwesnothd\fP [\|\fB\-dvV\fP\|] [\|\fB\-c\fP \fIruta\fP\|] [\|\fB\-p\fP \fIporto\fP\|] [\|\fB\-t\fP
+\fInúmero\fP\|] [\|\fB\-T\fP \fInúmero\fP\|]
+.
+.SH DESCRICIÓN
+.
+Manages Battle for Wesnoth multiplayer games. See
+http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
+accepts via the wesnoth client or the socket.
+.
+.SH OPCIÓNS
+.
+.TP 
+\fB\-c,\ \-\-config\fP\fI\ ruta\fP
+dille a wesnothd onde atopar o ficheiro de configuración a usar. Consulta a
+sección \fBCONFIGURACIÓN DO SERVIDOR\fP embaixo para ver a sintaxe.
+.TP 
+\fB\-d,\ \-\-daemon\fP
+executa wesnothd coma un daemon.
+.TP 
+\fB\-h,\ \-\-help\fP
+diche que fan as opcións de liña de comandos.
+.TP 
+\fB\-p,\ \-\-port\fP\fI\ porto\fP
+asocia o servidor ó porto especificado. Se non se especifica un porto,
+usarase o porto 15000.
+.TP 
+\fB\-t,\ \-\-threads\fP\fI\ número\fP
+sets the maximum number of waiting worker threads for network I/O to n
+(default: 5, max: 30).
+.TP 
+\fB\-T,\ \-\-max\-threads\fP\fI\ número\fP
+sets the maximum number of worker threads that will be created if set to 0
+there will be no limit (default: 0).
+.TP 
+\fB\-V,\ \-\-version\fP
+amosa o número de versión e sae.
+.TP 
+\fB\-v,\ \-\-verbose\fP
+activa un rexistro máis detallado.
+.
+.SH "CONFIGURACIÓN DO SERVIDOR"
+.
+.SS "A sintaxe xeral é:"
+.
+.P
+[\fIetiqueta\fP]
+.IP
+clave="\fIvalor\fP"
+.IP
+clave="\fIvalor\fP,\fIvalor\fP,..."
+.P
+[/\fIetiqueta\fP]
+.
+.SS "Claves globais:"
+.
+.TP 
+\fBconnections_allowed\fP
+O número de conexións permitidas dende o mesmo IP. (por defecto: 5)
+.TP 
+\fBdisallow_names\fP
+Names/nicks that are not accepted by the server. `*' and `?' from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+`*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
+.TP 
+\fBmax_messages\fP
+O número de mensaxes permitidas en \fBmessages_time_period\fP. (por defecto: 4)
+.TP 
+\fBmessages_time_period\fP
+The time period (in seconds) message flooding is detected in. (default: 10
+seconds)
+.TP 
+\fBmotd\fP
+A mensaxe do día.
+.TP 
+\fBpasswd\fP
+O contrasinal que se usa para obter privilexios de
+administrador. Normalmente comeza por "admin ".
+.TP 
+\fBversions_accepted\fP
+A comma separated list of version strings to be accepted by the server. `*'
+and `?' from wildcard patterns are supported.  (defaults to the
+corresponding wesnoth version)
+.br
+Exemplo: versions_accepted="*" acepta calquera cadea de versión.
+.
+.SS "Etiquetas globais:"
+.
+.P
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to.
+.RS
+.TP 
+\fBhost\fP
+The address of the server to redirect to.
+.TP 
+\fBport\fP
+O porto ó que se conectar.
+.TP 
+\fBversion\fP
+A comma separated list of versions to redirect. Behaves the same way as
+\fBversions_accepted\fP in regard to wildcard patterns.
+.RE
+.P
+\fB[proxy]\fP A tag to tell the server to act as a proxy and forward the
+connected client's requests to the specified server.  Accepts the same keys
+as [redirect].
+.
+.SH AUTOR
+.
+Escrito por David White <davidnwhite@verizon.net>.  Editado por Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> e
+Soliton <soliton@sonnenkinder.org>.  Esta páxina de manual
+escribiuna orixinalmente Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visite o sitio oficial: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2006 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH "CONSULTE TAMÉN"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

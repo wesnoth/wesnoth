@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-16 14:37+0200\n"
+"POT-Creation-Date: 2007-10-21 12:41+0200\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -4288,8 +4288,8 @@ msgid "End Scenario"
 msgstr "Onbekende scenario: '"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:322 src/unit.cpp:2610
-#: src/unit.cpp:2907
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:322 src/unit.cpp:2454
+#: src/unit.cpp:2633
 msgid "HP"
 msgstr "LP"
 
@@ -4538,7 +4538,7 @@ msgstr "#(Ongeldig)"
 msgid "Campaign"
 msgstr "Veldtog"
 
-#: src/dialogs.cpp:468 src/game.cpp:1392
+#: src/dialogs.cpp:468 src/game.cpp:1399
 msgid "Multiplayer"
 msgstr "Veelspeler"
 
@@ -4604,7 +4604,7 @@ msgstr "Vee Gestoorde Lêer Uit"
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:566 src/game.cpp:1077 src/menu_events.cpp:320
+#: src/dialogs.cpp:566 src/game.cpp:1084 src/menu_events.cpp:320
 #: src/menu_events.cpp:1078 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Naam"
@@ -4646,7 +4646,7 @@ msgstr "Skuiwe: "
 msgid "Cancel"
 msgstr "Kanselleer"
 
-#: src/dialogs.cpp:930 src/game.cpp:888
+#: src/dialogs.cpp:930 src/game.cpp:895
 msgid "KB"
 msgstr "KB"
 
@@ -4654,24 +4654,24 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Skermkopie"
 
-#: src/game.cpp:429 src/game.cpp:1487
+#: src/game.cpp:436 src/game.cpp:1494
 msgid "The Battle for Wesnoth"
 msgstr "Die Stryd om Wesnoth"
 
-#: src/game.cpp:674
+#: src/game.cpp:681
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Waarskuwing: Die lêer wat jy probeer laai het is beskadig. Laai in elk "
 "geval.\n"
 
-#: src/game.cpp:711 src/multiplayer_connect.cpp:1279
+#: src/game.cpp:718 src/multiplayer_connect.cpp:1279
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
 "laai?"
 
-#: src/game.cpp:717 src/multiplayer_connect.cpp:1286
+#: src/game.cpp:724 src/multiplayer_connect.cpp:1286
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -4679,186 +4679,186 @@ msgstr ""
 "Hierdie lêer is van 'n ander weergawe van die spel. Wil jy probeer om dit te "
 "laai?"
 
-#: src/game.cpp:725 src/game.cpp:728 src/multiplayer_connect.cpp:1257
+#: src/game.cpp:732 src/game.cpp:735 src/multiplayer_connect.cpp:1257
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die lêer wat jy probeer laai het, is beskadig: '"
 
-#: src/game.cpp:731
+#: src/game.cpp:738
 msgid "File I/O Error while reading the game"
 msgstr "Lêer fout tydens inlees van spel"
 
-#: src/game.cpp:819
+#: src/game.cpp:826
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Veldtog"
 
-#: src/game.cpp:859
+#: src/game.cpp:866
 msgid "Difficulty"
 msgstr "Moeilikheidsgraad"
 
-#: src/game.cpp:860
+#: src/game.cpp:867
 msgid "Select difficulty level:"
 msgstr "Kies moeilikheidsgraad:"
 
-#: src/game.cpp:885
+#: src/game.cpp:892
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:891
+#: src/game.cpp:898
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:921
+#: src/game.cpp:928
 msgid "Connect to Server"
 msgstr "Konnekteer aan Bediener"
 
-#: src/game.cpp:922
+#: src/game.cpp:929
 #, fuzzy
 msgid "You will now connect to a server to download add-ons."
 msgstr ""
 "Jy gaan nou konnekteer aan 'n veldtog bediener om veldtogte af te laai."
 
-#: src/game.cpp:924
+#: src/game.cpp:931
 msgid "Server: "
 msgstr "Bediener: "
 
-#: src/game.cpp:925 src/game.cpp:973
+#: src/game.cpp:932 src/game.cpp:980
 msgid "Remove Add-ons"
 msgstr ""
 
-#: src/game.cpp:960
+#: src/game.cpp:967
 #, fuzzy
 msgid "You have no Add-ons installed."
 msgstr "Die veldtog is geïnstalleer"
 
-#: src/game.cpp:973
+#: src/game.cpp:980
 #, fuzzy
 msgid "Choose the add-on to remove."
 msgstr "Kies 'n veldtog om af te laai."
 
-#: src/game.cpp:984
+#: src/game.cpp:991
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/game.cpp:988
+#: src/game.cpp:995
 msgid "Confirm"
 msgstr ""
 
-#: src/game.cpp:1011
+#: src/game.cpp:1018
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Veldtog geïnstalleer"
 
-#: src/game.cpp:1016
+#: src/game.cpp:1023
 #, fuzzy
 msgid "Add-on deleted"
 msgstr "Veldtog geïnstalleer"
 
-#: src/game.cpp:1022
+#: src/game.cpp:1029
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1022 src/menu_events.cpp:687 src/menu_events.cpp:700
+#: src/game.cpp:1029 src/menu_events.cpp:687 src/menu_events.cpp:700
 #: src/multiplayer_create.cpp:513
 msgid "Error"
 msgstr "Fout"
 
-#: src/game.cpp:1043 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1050 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Besig om te konnekteer aan Bediener..."
 
-#: src/game.cpp:1046
+#: src/game.cpp:1053
 msgid "Could not connect to host."
 msgstr "Kon nie aan gasheer koppel nie."
 
-#: src/game.cpp:1055
+#: src/game.cpp:1062
 msgid "Asking for list of add-ons"
 msgstr ""
 
-#: src/game.cpp:1068
+#: src/game.cpp:1075
 msgid "Error communicating with the server."
 msgstr "Kommunikasie probleme met die bediener."
 
-#: src/game.cpp:1077 src/titlescreen.cpp:284
+#: src/game.cpp:1084 src/titlescreen.cpp:286
 msgid "Version"
 msgstr "Uitgawe"
 
-#: src/game.cpp:1078
+#: src/game.cpp:1085
 msgid "Author"
 msgstr "Skepper"
 
-#: src/game.cpp:1078
+#: src/game.cpp:1085
 msgid "Downloads"
 msgstr "Aflaai"
 
-#: src/game.cpp:1078
+#: src/game.cpp:1085
 msgid "Size"
 msgstr "Grootte"
 
-#: src/game.cpp:1130
+#: src/game.cpp:1137
 #, fuzzy
 msgid "Publish add-on: "
 msgstr "Publiseer veldtog: "
 
-#: src/game.cpp:1134
+#: src/game.cpp:1141
 #, fuzzy
 msgid "Delete add-on: "
 msgstr "Vee veldtog uit: "
 
-#: src/game.cpp:1138
+#: src/game.cpp:1145
 #, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 "Daar is geen veldtogte beskikbaar op hierdie bediener wat kan afgelaai word "
 "nie."
 
-#: src/game.cpp:1145
+#: src/game.cpp:1152
 msgid "Get Add-ons"
 msgstr ""
 
-#: src/game.cpp:1146
+#: src/game.cpp:1153
 #, fuzzy
 msgid "Choose the add-on to download."
 msgstr "Kies 'n veldtog om af te laai."
 
-#: src/game.cpp:1189
+#: src/game.cpp:1196
 #, fuzzy
 msgid "Dependencies"
 msgstr "Prinses"
 
-#: src/game.cpp:1190
+#: src/game.cpp:1197
 msgid "This add-on requires the following additional dependencies:"
 msgstr ""
 
-#: src/game.cpp:1192
+#: src/game.cpp:1199
 #, fuzzy
 msgid "Do you still want to download it?"
 msgstr "Wil jy regtig hierdie spel uitvee?"
 
-#: src/game.cpp:1201
+#: src/game.cpp:1208
 #, fuzzy
 msgid "Downloading add-on..."
 msgstr "Besig om veldtog af te laai..."
 
-#: src/game.cpp:1259
+#: src/game.cpp:1266
 #, fuzzy
 msgid "Add-on Installed"
 msgstr "Veldtog geïnstalleer"
 
-#: src/game.cpp:1259
+#: src/game.cpp:1266
 #, fuzzy
 msgid "The add-on has been installed."
 msgstr "Die veldtog is geïnstalleer"
 
-#: src/game.cpp:1262
+#: src/game.cpp:1269
 msgid "Network communication error."
 msgstr "Netwerk kommunikasie fout."
 
-#: src/game.cpp:1264
+#: src/game.cpp:1271
 msgid "Remote host disconnected."
 msgstr "Afgeleë bediener het ontkoppel."
 
-#: src/game.cpp:1266
+#: src/game.cpp:1273
 #, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
@@ -4866,129 +4866,129 @@ msgstr ""
 "Daar was 'n probleem tydens die skep van die benodigde lêers om hierdie "
 "veldtog te installeer."
 
-#: src/game.cpp:1278 src/game.cpp:1320 src/game.cpp:1347
+#: src/game.cpp:1285 src/game.cpp:1327 src/game.cpp:1354
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:438
 msgid "Connection timed out"
 msgstr "Verbindingtyd het verstryk"
 
-#: src/game.cpp:1281
+#: src/game.cpp:1288
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Die bediener het 'n foutboodskap gestuur: \""
 
-#: src/game.cpp:1288
+#: src/game.cpp:1295
 msgid "Terms"
 msgstr "Voorwaardes"
 
-#: src/game.cpp:1318
+#: src/game.cpp:1325
 #, fuzzy
 msgid "Sending add-on"
 msgstr "Besig om veldtog af te laai..."
 
-#: src/game.cpp:1322 src/game.cpp:1349
+#: src/game.cpp:1329 src/game.cpp:1356
 msgid "The server responded with an error: \""
 msgstr "Die bediener het 'n foutboodskap gestuur: \""
 
-#: src/game.cpp:1326 src/game.cpp:1353 src/multiplayer_wait.cpp:346
+#: src/game.cpp:1333 src/game.cpp:1360 src/multiplayer_wait.cpp:346
 msgid "Response"
 msgstr "Antwoord"
 
-#: src/game.cpp:1376
+#: src/game.cpp:1383
 msgid "Join Official Server"
 msgstr "Sluit by Amptelike Bediener aan"
 
-#: src/game.cpp:1377
+#: src/game.cpp:1384
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Teken in op die amptelike Wesnoth veelspeler bediener"
 
-#: src/game.cpp:1379
+#: src/game.cpp:1386
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Konnekteer aan Bediener"
 
-#: src/game.cpp:1380
+#: src/game.cpp:1387
 msgid "Join a server or hosted game"
 msgstr "Sluit aan by 'n bediener of bediener spel"
 
-#: src/game.cpp:1382
+#: src/game.cpp:1389
 msgid "Host Networked Game"
 msgstr "Wees 'n bediener vir 'n Netwerk Spel"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1390
 msgid "Host a game without using a server"
 msgstr "Bied 'n spel aan sonder om van 'n bediener gebruik te maak"
 
-#: src/game.cpp:1385
+#: src/game.cpp:1392
 #, fuzzy
 msgid "Local Game"
 msgstr "Laai Spel"
 
-#: src/game.cpp:1386
+#: src/game.cpp:1393
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Speel 'n veelspelerspel op dieselfde rekenaar"
 
-#: src/game.cpp:1394 src/multiplayer.cpp:232
+#: src/game.cpp:1401 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Teken in: "
 
-#: src/game.cpp:1431 src/playcampaign.cpp:95 src/playcampaign.cpp:364
+#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:364
 msgid "The game could not be loaded: "
 msgstr "Die spel kon nie gelaai word nie: "
 
-#: src/game.cpp:1433 src/playcampaign.cpp:97 src/playcampaign.cpp:367
+#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:367
 msgid "Error while playing the game: "
 msgstr "Fout tydens speel van spel: "
 
-#: src/game.cpp:1453 src/playcampaign.cpp:99 src/playcampaign.cpp:370
+#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:370
 msgid "The game map could not be loaded: "
 msgstr "Die spelkaart kon nie gelaai word nie: "
 
-#: src/game.cpp:1477
+#: src/game.cpp:1484
 msgid "Language"
 msgstr "Taal"
 
-#: src/game.cpp:1478
+#: src/game.cpp:1485
 msgid "Choose your preferred language:"
 msgstr "Dui jou taalvoorkeur aan:"
 
-#: src/game.cpp:1627
+#: src/game.cpp:1634
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Die volgende bykomende veldtogte kon nie gelaai word nie weens foute:"
 
-#: src/game.cpp:1632
+#: src/game.cpp:1639
 msgid "ERROR DETAILS:"
 msgstr "FOUT BESONDERHEDE:"
 
-#: src/game.cpp:1646
+#: src/game.cpp:1653
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Waarskuwing: Foute het voorgekom tydens die laai van spelkonfigurasie lêers: "
 "'"
 
-#: src/game.cpp:1698
+#: src/game.cpp:1705
 msgid "Error loading game configuration files: '"
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1699
+#: src/game.cpp:1706
 msgid "' (The game will now exit)"
 msgstr "' (Die spel gaan nou sluit)"
 
-#: src/game.cpp:1866
+#: src/game.cpp:1873
 msgid "Battle for Wesnoth"
 msgstr "Stryd om Wesnoth"
 
-#: src/game.cpp:1993
+#: src/game.cpp:2000
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Fout met laai van konfigurasie lêers: '"
 
-#: src/game.cpp:1999
+#: src/game.cpp:2006
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:2014
+#: src/game.cpp:2021
 msgid "Loading title screen."
 msgstr ""
 
@@ -5174,7 +5174,7 @@ msgid "unit help^Name"
 msgstr "Verlaat die spel"
 
 #: src/help.cpp:1386 src/menu_events.cpp:319 src/menu_events.cpp:1077
-#: src/menu_events.cpp:1558
+#: src/menu_events.cpp:1559
 msgid "Type"
 msgstr "Tipe"
 
@@ -5602,83 +5602,83 @@ msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 msgstr[1] "Jy moet ten minste $cost goudstukke hê om 'n eenheid te herroep"
 
-#: src/menu_events.cpp:1466
+#: src/menu_events.cpp:1467
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Jy het nog nie jou beurt begin nie. Wil jy rerig jou beurt stop?"
 
-#: src/menu_events.cpp:1474 src/menu_events.cpp:1479
+#: src/menu_events.cpp:1475 src/menu_events.cpp:1480
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Sommige eenhede het bewegings oor. Wil jy rerig jou beurt stop?"
 
-#: src/menu_events.cpp:1520
+#: src/menu_events.cpp:1521
 msgid "Rename Unit"
 msgstr "Herdoop Eenheid"
 
-#: src/menu_events.cpp:1557
+#: src/menu_events.cpp:1558
 #, fuzzy
 msgid "Race"
 msgstr "knuppel"
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1584
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1623
+#: src/menu_events.cpp:1624
 msgid "Place Label"
 msgstr "Plaas Plakker"
 
-#: src/menu_events.cpp:1626 src/menu_events.cpp:1629
+#: src/menu_events.cpp:1627 src/menu_events.cpp:1630
 msgid "Label:"
 msgstr "Plakker:"
 
-#: src/menu_events.cpp:1632
+#: src/menu_events.cpp:1633
 #, fuzzy
 msgid "Team only"
 msgstr "Span"
 
-#: src/menu_events.cpp:1733
+#: src/menu_events.cpp:1734
 msgid "Search"
 msgstr "Soek"
 
-#: src/menu_events.cpp:1776
+#: src/menu_events.cpp:1777
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1828
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1831
+#: src/menu_events.cpp:1832
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1833
+#: src/menu_events.cpp:1834
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1835
+#: src/menu_events.cpp:1836
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 
-#: src/menu_events.cpp:1837
+#: src/menu_events.cpp:1838
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 
-#: src/menu_events.cpp:1839
+#: src/menu_events.cpp:1840
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 
-#: src/menu_events.cpp:1841
+#: src/menu_events.cpp:1842
 #, fuzzy
 msgid "Unknown subcommand"
 msgstr "Onbekende scenario: '"
 
-#: src/menu_events.cpp:1844
+#: src/menu_events.cpp:1845
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5686,58 +5686,58 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1849
+#: src/menu_events.cpp:1850
 #, fuzzy
 msgid "Unknown command"
 msgstr "Onbekende scenario: '"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1862
 msgid "Added to ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1863 src/menu_events.cpp:1870 src/menu_events.cpp:1877
+#: src/menu_events.cpp:1864 src/menu_events.cpp:1871 src/menu_events.cpp:1878
 #, fuzzy
 msgid "Invalid username: "
 msgstr "Onwettige tag naam"
 
-#: src/menu_events.cpp:1868
+#: src/menu_events.cpp:1869
 msgid "Added to friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1875
+#: src/menu_events.cpp:1876
 msgid "Removed from list: "
 msgstr ""
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1902
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1911
+#: src/menu_events.cpp:1912
 msgid "Removed from ignore list: "
 msgstr ""
 
-#: src/menu_events.cpp:1914
+#: src/menu_events.cpp:1915
 msgid "Removed from friends list: "
 msgstr ""
 
-#: src/menu_events.cpp:1921
+#: src/menu_events.cpp:1922
 #, fuzzy
 msgid "Unknown command: "
 msgstr "Onbekende scenario: '"
 
-#: src/menu_events.cpp:2035
+#: src/menu_events.cpp:2036
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon nie die plakker of eenheid met die string '$search' kry nie."
 
-#: src/menu_events.cpp:2209
+#: src/menu_events.cpp:2210
 msgid "prompt^Command:"
 msgstr "Bevel:"
 
-#: src/menu_events.cpp:2228
+#: src/menu_events.cpp:2229
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Bevelvoerder"
@@ -6287,19 +6287,19 @@ msgstr "Besig om speldata te lees..."
 msgid "Choose your side:"
 msgstr "Kies aan watter kant jy wil wees:"
 
-#: src/network.cpp:100
+#: src/network.cpp:101
 msgid "invalid network handle"
 msgstr "ongeldige netwerk naam"
 
-#: src/network.cpp:133
+#: src/network.cpp:134
 msgid "Client disconnected"
 msgstr "Kliënt ontkoppel"
 
-#: src/network.cpp:480
+#: src/network.cpp:481
 msgid "Could not add socket to socket set"
 msgstr "Kon nie die socket by socket-stel byvoeg nie"
 
-#: src/network.cpp:491
+#: src/network.cpp:492
 msgid "Could not send initial handshake"
 msgstr "Kon nie die aanvanklike 'handshake' stuur nie"
 
@@ -6519,68 +6519,68 @@ msgstr "Vyandelike dorpie"
 msgid "Owned village"
 msgstr "Jou dorpie"
 
-#: src/titlescreen.cpp:303
+#: src/titlescreen.cpp:305
 msgid "TitleScreen button^Tutorial"
 msgstr "Onderrig"
 
-#: src/titlescreen.cpp:304
+#: src/titlescreen.cpp:306
 msgid "TitleScreen button^Campaign"
 msgstr "Veldtog"
 
-#: src/titlescreen.cpp:305
+#: src/titlescreen.cpp:307
 msgid "TitleScreen button^Multiplayer"
 msgstr "Veelspeler"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:308
 msgid "TitleScreen button^Load"
 msgstr "Laai"
 
-#: src/titlescreen.cpp:307
+#: src/titlescreen.cpp:309
 #, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Laai"
 
-#: src/titlescreen.cpp:308
+#: src/titlescreen.cpp:310
 msgid "TitleScreen button^Language"
 msgstr "Taal"
 
-#: src/titlescreen.cpp:309
+#: src/titlescreen.cpp:311
 msgid "TitleScreen button^Preferences"
 msgstr "Voorkeure"
 
-#: src/titlescreen.cpp:310
+#: src/titlescreen.cpp:312
 #, fuzzy
 msgid "TitleScreen button^Credits"
 msgstr "Verlaat"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:313
 msgid "TitleScreen button^Quit"
 msgstr "Verlaat"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:316
 #, fuzzy
 msgid "TitleScreen button^More"
 msgstr "Laai"
 
-#: src/titlescreen.cpp:315
+#: src/titlescreen.cpp:317
 #, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "Laai"
 
-#: src/titlescreen.cpp:317
+#: src/titlescreen.cpp:319
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Laai"
 
-#: src/titlescreen.cpp:319
+#: src/titlescreen.cpp:321
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Begin met onderrig sodat jy die spel kan verstaan."
 
-#: src/titlescreen.cpp:320
+#: src/titlescreen.cpp:322
 msgid "Start a new single player campaign"
 msgstr "Begin 'n nuwe enkel speler veldtog"
 
-#: src/titlescreen.cpp:321
+#: src/titlescreen.cpp:323
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -6588,80 +6588,81 @@ msgstr ""
 "Speel veelspeler (hot-seat, LAN, internet) of 'n enkel speler veldtog teen "
 "die rekenaar"
 
-#: src/titlescreen.cpp:322
-msgid "Load a single player saved game"
+#: src/titlescreen.cpp:324
+#, fuzzy
+msgid "Load a saved game"
 msgstr "Laai 'n enkel speler gestoorde spel"
 
-#: src/titlescreen.cpp:323
+#: src/titlescreen.cpp:325
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 
-#: src/titlescreen.cpp:324
+#: src/titlescreen.cpp:326
 msgid "Change the language"
 msgstr "Verander die taal"
 
-#: src/titlescreen.cpp:325
+#: src/titlescreen.cpp:327
 msgid "Configure the game's settings"
 msgstr "Konfigureer die spel se opsies"
 
-#: src/titlescreen.cpp:326
+#: src/titlescreen.cpp:328
 msgid "View the credits"
 msgstr "Lees die name van die Ontwikkelaars"
 
-#: src/titlescreen.cpp:327
+#: src/titlescreen.cpp:329
 msgid "Quit the game"
 msgstr "Verlaat die spel"
 
-#: src/titlescreen.cpp:328
+#: src/titlescreen.cpp:330
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:329
+#: src/titlescreen.cpp:331
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Die Stryd om Wesnoth Hulp"
 
-#: src/titlescreen.cpp:330
+#: src/titlescreen.cpp:332
 #, fuzzy
 msgid "Upload statistics"
 msgstr "Statistieke"
 
-#: src/titlescreen.cpp:382
+#: src/titlescreen.cpp:384
 msgid "Help Wesnoth by sending us information"
 msgstr ""
 
-#: src/unit.cpp:379 src/unit.cpp:1157 src/unit.cpp:2522
+#: src/unit.cpp:379 src/unit.cpp:1157 src/unit.cpp:2366
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2567 src/unit.cpp:2895 src/unit.cpp:2951
+#: src/unit.cpp:2411 src/unit.cpp:2621 src/unit.cpp:2677
 #, fuzzy
 msgid " and "
 msgstr "Sand"
 
-#: src/unit.cpp:2578
+#: src/unit.cpp:2422
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2643
+#: src/unit.cpp:2487
 #, fuzzy
 msgid "moves"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2661 src/unit.cpp:2922
+#: src/unit.cpp:2505 src/unit.cpp:2648
 msgid "XP to advance"
 msgstr "EP om te bevorder"
 
-#: src/unit.cpp:2914
+#: src/unit.cpp:2640
 #, fuzzy
 msgid " move"
 msgstr "Skuiwe"
 
-#: src/unit.cpp:2930
+#: src/unit.cpp:2656
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2960
+#: src/unit.cpp:2686
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -6673,15 +6674,15 @@ msgstr "skade"
 msgid "strikes"
 msgstr "trefhoue"
 
-#: src/unit_types.cpp:941
+#: src/unit_types.cpp:766
 msgid "chaotic"
 msgstr "chaoties"
 
-#: src/unit_types.cpp:941
+#: src/unit_types.cpp:766
 msgid "lawful"
 msgstr "wettig"
 
-#: src/unit_types.cpp:941
+#: src/unit_types.cpp:766
 msgid "neutral"
 msgstr "neutraal"
 
