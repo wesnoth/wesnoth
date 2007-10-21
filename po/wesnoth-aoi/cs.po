@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-16 14:39+0200\n"
-"PO-Revision-Date: 2006-09-05 13:53+0200\n"
-"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
+"PO-Revision-Date: 2007-10-17 22:20+0100\n"
+"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;X-"
 "Generator: KBabel 1.11.2\n"
 "X-Generator: KBabel 1.11.2\n"
+"X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\\\n"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:9
 msgid "An Orcish Incursion"
@@ -33,11 +34,11 @@ msgstr "Bojovník"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:13
 msgid "(Beginner)"
-msgstr ""
+msgstr "(lehoučká)"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:14
 msgid "(Normal)"
-msgstr ""
+msgstr "(normální)"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:14
 msgid "Lord"
@@ -49,24 +50,27 @@ msgstr "Velký lord"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:15
 msgid "(Challenging)"
-msgstr ""
+msgstr "(nelehká)"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:19
-#, fuzzy
 msgid ""
 "Defend the forests of the elves against the first orcs to reach the Great "
 "Continent, learning valuable tactics as you do so.\n"
 "\n"
 "(Novice level, 7 scenarios.)"
-msgstr "Braň elfí lesy před nájezdy skřetů. Naučíš se přitom užitečné taktiky."
+msgstr ""
+"Braň elfí lesy před nájezdy prvních skřetů na Velkém kontinentu. Naučíš se "
+"přitom užitečné taktiky.\n"
+"\n"
+"(Obtížnost: začátečník, 7 scénářů)"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:30
 msgid "Campaign Design"
-msgstr ""
+msgstr "Návrh tažení"
 
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:36
 msgid "Adaptation for mainline"
-msgstr ""
+msgstr "Příprava pro oficializaci"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:3
 msgid "Defend the Forest"
@@ -117,7 +121,7 @@ msgstr "Dojdou tahy"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:78
 msgid "Lomarfel"
-msgstr ""
+msgstr "Lomarfel"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:119
 msgid ""
@@ -127,6 +131,11 @@ msgid ""
 "small-scale clashes - little more, in truth, than armed squabbles - found "
 "themselves required to gird for warfare of unaccustomed intensity."
 msgstr ""
+"Příchod lidí a skřetů otřásl usazenými národy Velkého kontinentu. Elfové, "
+"trpaslíci a další, kdo po se dlouhé časy těšili z léty dosažené stability a "
+"míru, si zvykli na klidný život, nepřerušovaný ničím víc než příhraničními "
+"roztržkami - spíše ozbrojenými půtkami. Teď však ve víru událostí museli "
+"náhle horečně zbrojit v nevídaném měřítku."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:124
 msgid ""
@@ -156,13 +165,12 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:197
-#, fuzzy
 msgid ""
 "My lord Erlornas! A party of orcs has encamped to the north. That is the "
 "stench of their burnings drifting on the wind!"
 msgstr ""
-"Podívej, Erlornasi! Na severu se utábořila válečná skupina skřetů. Ničí tam "
-"les!"
+"Můj pane Erlornasi! Na severu se utábořila válečná skupina skřetů. Ten "
+"zápach vzniká, jak tam ničí tam les!"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:201
 msgid ""
@@ -189,26 +197,23 @@ msgstr ""
 "Lomarfele."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:213
-#, fuzzy
 msgid "Yes, my lord!"
-msgstr "Ano, pane!"
+msgstr "Ano, můj pane!"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:245
-#, fuzzy
 msgid ""
 "A thousand curses on you, tree-shagger! You will suffer... My master, "
 "Rualsha, approaches. He will wipe your people from the face of this earth!"
 msgstr ""
-"Buď proklet tisíckrát, elfátko! Budeš trpět... Můj pán, Rualsha, se blíží. "
+"Buď proklet tisíckrát, elfátko! Budeš trpět... Můj pán, Rualša, se blíží. "
 "Smete tvůj lid z tváře země!"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:249
-#, fuzzy
 msgid ""
 "Hmmm... Who is this Rualsha, I wonder? I will have to take a scouting party "
 "north to see what is afoot there..."
 msgstr ""
-"Hmmm... Zajímalo by mě, kdo je Rualsha? Budu muset podniknout malou "
+"Hmmm... Zajímalo by mě, kdo je Rualša? Budu muset podniknout malou "
 "průzkumnou výpravu na sever, abych zjistil, co se tam chystá..."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:3
@@ -243,26 +248,25 @@ msgstr "Poraz Gharlšu"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:119
 msgid "The orcs left a stinking spoor straight to this place."
-msgstr ""
+msgstr "Stopa skřetího smradu vede přímo sem."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:124
 msgid ""
 "There is some sort of keep ahead, here where we thought no people with the "
 "wit to raise such a pile dwelt."
 msgstr ""
+"Před námi je nějaké opevnění, v místech kde jsme neočekávali nic než "
+"pustinu. Kdo jej vybudoval?"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:129
-#, fuzzy
 msgid "Gharlsa sees elves... yes... fresh meat for our wolves, yes, yes..."
-msgstr "Gharlša vidět elfy... jiště... čerstvý maso, jiště, jiště..."
+msgstr "Gharlša vidět elfy... jiště... čerstvý maso pro vlky, jiště, jiště..."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:134
-#, fuzzy
 msgid ""
 "Does that demented creature really think he can kill us? Let us teach him a "
 "lesson!"
-msgstr ""
-"Opravdu si to pitomé stvoření myslí, že nás může zabít... dáme mu lekci!"
+msgstr "Opravdu si to pitomé stvoření myslí, že nás může zabít? Dáme mu lekci!"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:139
 #, fuzzy
@@ -337,14 +341,14 @@ msgid ""
 "his revenge!"
 msgstr ""
 "Zdravíčko, Erlornasi! Jsem Gnargha, bratr Urughy, kterého jsi zabil před "
-"několika dny. Poslouchej: Lord Rualsha mi povolil být poslem jeho pomsty!"
+"několika dny. Poslouchej: Lord Rualša mi povolil být poslem jeho pomsty!"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:116
 msgid ""
 "I have no quarrel with you, Gnargha, nor with your leader Rualsha - but I "
 "cannot permit you to invade our lands. Leave now, and we shall be at peace."
 msgstr ""
-"Nemám s tebou žádný spor, Gnargho, ani s tvým vůdcem Rualshou - ale nemohu "
+"Nemám s tebou žádný spor, Gnargho, ani s tvým vůdcem Rualšou - ale nemohu "
 "vám dovolit napadnout naši zemi. Odejdi a bude mezi námi mír."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:121
@@ -354,8 +358,8 @@ msgid ""
 "are even weaker than we guessed. And you, you killed my brother; prepare "
 "yourself for a slow and painful death!"
 msgstr ""
-"Mír?! Pch! Jsi slabší než jsem si myslel. Teď se připrav na pomalou a "
-"bolestivou smrt."
+"Mír?! Pch! Elfové jsou slabší než jsem si myslel. Teď se připrav na pomalou "
+"a bolestivou smrt."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:133
 msgid ""
@@ -367,7 +371,7 @@ msgstr ""
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:3
 msgid "Valley of Trolls"
-msgstr "Trolí údolí"
+msgstr "Trollí údolí"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:56
 msgid "Gurk"
@@ -384,7 +388,7 @@ msgid ""
 "as bottlenecks to fight them one at a time."
 msgstr ""
 "Tip:\n"
-"Když trolové mohou zaútočit ve skupině, jsou velmi nebezpeční. Použij ústí "
+"Když trollové mohou zaútočit ve skupině, jsou velmi nebezpeční. Použij ústí "
 "jeskyní, abys s nimi mohl bojovat jednotlivě."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:125
@@ -392,7 +396,6 @@ msgid "Defeat all enemy leaders"
 msgstr "Poraz všechny nepřátelské vůdce."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:167
-#, fuzzy
 msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
 "the forest. Why do we not return home?"
@@ -401,14 +404,13 @@ msgstr ""
 "Proč se nevracíme na naše stanoviště?"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:171
-#, fuzzy
 msgid ""
 "You heard what the orcs said - this Rualsha is more than a mere marauding "
 "warlord in search of pillage. He is planning an invasion, I'm sure of it. We "
 "must gather more information about his plans before we go back."
 msgstr ""
-"Slyšel jsi, co říkali skřeti - tenhle Rualsha je víc než nějaký nájezdnický "
-"pán hledající lup.  Plánuje invazi, tím si jsem jistý. Než se vrátíme musíme "
+"Slyšel jsi, co říkali skřeti - tenhle Rualša je víc než nějaký nájezdnický "
+"pán hledající lup. Plánuje invazi, tím si jsem jistý. Než se vrátíme, musíme "
 "získat více informací o jeho plánech."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:175
@@ -434,7 +436,7 @@ msgid ""
 "These mountains look like troll territory."
 msgstr ""
 "Informace nám moc nepomůžou, pokud nás než se s nimi vrátíme zabijí! Tyhle "
-"hory vypadají jako území trolů."
+"hory vypadají jako území trollů."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:3
 msgid "Linaera the Quick"
@@ -469,26 +471,27 @@ msgstr "Linaera zemře"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:105
 msgid "Ceoddyn"
-msgstr ""
+msgstr "Ceoddyn"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:113
 msgid "Midry"
-msgstr ""
+msgstr "Midry"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:148
-#, fuzzy
 msgid ""
 "We are far from the lands granted to humans, my lord Erlornas! But there is "
 "plainly one living in that tower to the west."
 msgstr ""
-"Přišli jsem do zemí lidí, Erlornasi! Podívej, támhle na západě bydlí jeden "
-"ve věži."
+"Jsme stále daleko od zemí vyhrazených lidem, můj pane Erlornasi! Ale támhle "
+"na západě zřejmě bydlí jeden ve věži."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:152
 msgid ""
 "Some of our mages crave solitude for their studies. Humans are, perhaps, "
 "likewise."
 msgstr ""
+"Někteří z našich mágů vyhledávají pro své studia osamění. U lidí je to asi "
+"stejné."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:156
 msgid "It trepasses, and should be driven out!"
@@ -540,13 +543,12 @@ msgstr ""
 "mohli potřebovat její pomoc: před námi čeká velké vojsko skřetů."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:273
-#, fuzzy
 msgid ""
 "Oh, no! Without Linaera's help, I cannot hope to defeat such a great force "
 "of orcs. I must return to Wesmere and bring reinforcements."
 msgstr ""
-"Ne! Bez Linaeřiny pomoci nemohu doufat, že porazím takovou armádu skřetů. "
-"Musím se stáhnout na své stanoviště a počkat na posily."
+"Ach ne! Bez Linaeřiny pomoci nemohu doufat, že porazím takovou armádu "
+"skřetů. Musím se stáhnout do Wesmere a přivést posily."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:284
 msgid ""
@@ -637,7 +639,7 @@ msgstr "Odhalení plánů"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:75
 msgid "Rualsha-Tan"
-msgstr "Rualsha-Tan"
+msgstr "Rualša-Tan"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:92
 msgid ""
@@ -651,7 +653,7 @@ msgstr ""
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:95
 msgid "Defeat Rualsha-Tan"
-msgstr "Poraz Rualshu-Tana"
+msgstr "Poraz Rualšu-Tana"
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:194
 msgid ""
@@ -660,7 +662,7 @@ msgid ""
 "a full invasion force."
 msgstr ""
 "Můj pane! Hnali jsme koně jsme pět dní, abychom tě dohnali! Rada se usnesla "
-"a žádá tě, abys rychle porazil Rualshu, než stihne shromáždit plnou útočnou "
+"a žádá tě, abys rychle porazil Rualšu, než stihne shromáždit plnou útočnou "
 "sílu."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:199
@@ -680,21 +682,18 @@ msgstr ""
 "Přinutí tě pykat, úplně tě zničí... budeme... my... arrgh..."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:220
-#, fuzzy
 msgid ""
 "But Rualsha overestimated the will of his troops. With their leader dead, "
 "they scattered, and fled from the elves back to their fastnesses in the far "
 "north."
 msgstr ""
-"Ale Rualsha přecenil odhodlanost svých jednotek. Když jejich vůdce zemřel, "
+"Ale Rualša přecenil odhodlanost svých jednotek. Když jejich vůdce zemřel, "
 "rozprchli se a utekli od elfů pryč do svých domovů daleko na severu."
 
+# pův. na konci ještě: "Vedl skřety spořádaněji než kdokoli před ním."
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:232
-#, fuzzy
 msgid "It grieves me to take life, even of a barbarian such as Rualsha."
-msgstr ""
-"Trápí mě zabíjet, dokonce i takového barbara jako Rualshu. Vedl skřety "
-"spořádaněji než kdokoli před ním."
+msgstr "Trápí mě zabíjet, dokonce i takového barbara jako Rualšu."
 
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:237
 msgid ""
