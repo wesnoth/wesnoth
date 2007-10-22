@@ -24,7 +24,7 @@
 #include "network.hpp"
 #include "network_worker.hpp"
 #include "thread.hpp"
-#include "util.hpp"
+//#include "util.hpp"
 #include "wassert.hpp"
 
 #include "SDL_net.h"

@@ -46,6 +46,9 @@ public:
 	config();
 
 	config(const config& cfg);
+	
+	// Create a config with an empty child of name 'child'.
+	config(const std::string& child);
 	~config();
 
 	config& operator=(const config& cfg);

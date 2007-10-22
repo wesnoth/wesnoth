@@ -32,9 +32,14 @@ config::config() : values(), children(), ordered_children()
 {
 }
 
-config::config(const config& cfg)  : values(), children(), ordered_children()
+config::config(const config& cfg) : values(), children(), ordered_children()
 {
 	append(cfg);
+}
+
+config::config(const std::string& child) : values(), children(), ordered_children()
+{
+	add_child(child);
 }
 
 config::~config()
