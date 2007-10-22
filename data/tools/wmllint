@@ -1053,10 +1053,10 @@ def translator(filename, mapxforms, textxform):
                         and line.count("{") == 0
                         and  line.count("}") == 0):
             if map_only:
-                if "mask" in filename:
-                    maptype = "map"
-                else:
+                if filename.endswith(".mask"):
                     maptype = "mask"
+                else:
+                    maptype = "map"
             else:
                 if "map_data" in line:
                     maptype = "map"
