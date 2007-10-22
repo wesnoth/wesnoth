@@ -1126,7 +1126,7 @@ def translator(filename, mapxforms, textxform):
                 # Turn big trees on the edges to ordinary forest hexes
                 outermap(lambda n: n.replace(r"Gg^Fet", r"Gg^Fp"), outmap)
                 modified = True
-            if add_usage:
+            if add_usage and maplift:
                 newdata.append("usage=" + maptype + terminator)
                 have_header = True
                 modified = True
@@ -1164,10 +1164,11 @@ def translator(filename, mapxforms, textxform):
             # Now do warnings based on the state of the tag stack
             fields = newline.split("#")
             trimmed = fields[0]
+            destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
             comment = ""
             if len(fields) > 1:
                 comment = fields[1]
-            for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", trimmed):
+            for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                 tag = instance.group(1)
                 attributes = []
                 closer = instance.group(0)[1] == '/'
