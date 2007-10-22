@@ -1512,12 +1512,6 @@ void unit::set_defending(const game_display &disp,const gamemap::location& loc, 
 		hit_type = unit_animation::MISS;
 	}
 	start_animation(disp,loc,choose_animation(disp,loc,"defend",damage,hit_type,attack,secondary_attack,swing_num),true);
-
-	// Add a blink on damage effect
-	const image::locator image_loc = anim_->get_last_frame().image();
-	if(damage) {
-		anim_->add_frame(100,unit_frame(image_loc,100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
-	}
 }
 
 void unit::set_extra_anim(const game_display &disp,const gamemap::location& loc, std::string flag)

@@ -374,8 +374,19 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	const config::child_list& defends = expanded_cfg.get_children("defend");
 	for(anim_itor = defends.begin(); anim_itor != defends.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="defend";
-		(**anim_itor)["value"]=(**anim_itor)["damage"];
-		animations.push_back(unit_animation(**anim_itor));
+		if(!(**anim_itor)["damage"].empty()) {
+			(**anim_itor)["value"]=(**anim_itor)["damage"];
+			animations.push_back(unit_animation(**anim_itor));
+			if(atoi((**anim_itor)["value"].c_str()) != 0) {
+				animations.back().add_frame(100,unit_frame(animations.back().get_last_frame().image(),100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
+			}
+		} else {
+			(**anim_itor)["value"]="0";
+			animations.push_back(unit_animation(**anim_itor)),
+			(**anim_itor)["value"]="";
+			animations.push_back(unit_animation(**anim_itor)),
+			animations.back().add_frame(100,unit_frame(animations.back().get_last_frame().image(),100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
+		}
 		//lg::wml_error<<"defend animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=defend flag\n";
 	}
