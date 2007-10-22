@@ -1487,7 +1487,7 @@ if __name__ == '__main__':
                     raise exc_type, exc_value, exc_traceback
             # Time for map file renames
             # FIXME: We should make some effort to rename mask files.
-            if not revert and not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
+            if not revert and not diffs and not fn.endswith(".map") and not fn.endswith(".mask") and is_map(fn):
                 mover = vcmove(fn, fn + ".map")
                 print mover
                 if not dryrun:
