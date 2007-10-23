@@ -123,6 +123,7 @@ private:
 
 	const std::string config_file_;
 	config cfg_;
+	//! Read the server config from file 'config_file_'.
 	config read_config();
 	
 	// settings from the server config
@@ -136,6 +137,7 @@ private:
 	size_t default_max_messages_;
 	size_t default_time_period_;
 	size_t concurrent_connections_;
+	//! Parse the server config into local variables.
 	void load_config();
 	
 	bool ip_exceeds_connection_limit(const std::string& ip);
@@ -170,7 +172,7 @@ private:
 server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
 	: net_manager_(min_threads,max_threads), server_(port), not_logged_in_(players_),
 	lobby_players_(players_), input_(input), config_file_(config_file),
-	version_query_response_("version"),	login_response_("mustlogin"),
+	version_query_response_("version"), login_response_("mustlogin"),
 	join_lobby_response_("join_lobby"), last_stats_(time(NULL))
 {
 	cfg_ = read_config();
@@ -851,14 +853,12 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		return;
 	}
 
-	const config* const create_game = data.child("create_game");
-	if(create_game != NULL) {
-
+	if(data.child("create_game") != NULL) {
 		// Create the new game, remove the player from the lobby
 		// and put him/her in the game they have created
-		game g(players_);
-		games_.push_back(g);
-		g.level() = *create_game;
+		games_.push_back(game(players_));
+		game& g = games_.back();
+		g.level() = (*data.child("create_game"));
 		lobby_players_.remove_player(sock);
 		g.set_owner(sock);
 		g.add_player(sock);
