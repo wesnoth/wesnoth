@@ -634,7 +634,7 @@ void game::add_player(network::connection player, bool observer)
 		cfg.add_child("start_game");
 		network::queue_data(cfg, player);
 
-		//send observer join of all the observers in the game to player
+		//send observer join of all the observers in the game to players
 		for(std::vector<network::connection>::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
 			if(*ob != player) {
 				info = player_info_->find(*ob);
