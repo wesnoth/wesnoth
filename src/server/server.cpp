@@ -174,7 +174,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	lobby_players_(players_), input_(input), config_file_(config_file),
 	cfg_(read_config()), version_query_response_("version"),
 	login_response_("mustlogin"), join_lobby_response_("join_lobby"),
-	initial_response_(), old_initial_response_(initial_response_),
+	initial_response_("gamelist"), old_initial_response_(initial_response_),
 	last_stats_(time(NULL))
 {
 	load_config();

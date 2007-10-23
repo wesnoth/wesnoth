@@ -217,8 +217,6 @@ static bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off,
 	return true;
 }
 
-typedef gamemap::location location;
-
 //! River generation.
 //! Rivers have a source, and then keep on flowing
 //! until they meet another body of water, which they flow into,

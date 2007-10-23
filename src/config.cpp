@@ -145,7 +145,7 @@ const config* config::child(const std::string& key) const
 
 config& config::add_child(const std::string& key)
 {
-	std::vector<config*>& v = children[key];
+	child_list& v = children[key];
 	v.push_back(new config());
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
@@ -153,7 +153,7 @@ config& config::add_child(const std::string& key)
 
 config& config::add_child(const std::string& key, const config& val)
 {
-	std::vector<config*>& v = children[key];
+	child_list& v = children[key];
 	v.push_back(new config(val));
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
