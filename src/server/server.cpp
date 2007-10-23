@@ -149,7 +149,6 @@ private:
 	const config join_lobby_response_;
 	config initial_response_;
 	config old_initial_response_;
-
 	config gamelist_diff();
 
 	metrics metrics_;
@@ -157,25 +156,27 @@ private:
 	time_t last_stats_;
 	void dump_stats();
 
-	void process_data(network::connection sock, config& data, config& gamelist);
+	void process_data(network::connection sock, config& data);
 	void process_login(network::connection sock, const config& data);
 	//! Handle queries from clients.
 	void process_query(network::connection sock, const config& query);
 	//! Process commands from admins and users.
 	std::string process_command(const std::string& cmd);
+	//! Handle private messages between players.
 	void process_whisper(const network::connection sock, const config& whisper);
 	void process_data_from_player_in_lobby(network::connection sock, config& data);
-	void process_data_from_player_in_game(network::connection sock, config& data, config& gamelist);
+	void process_data_from_player_in_game(network::connection sock, config& data);
 	void delete_game(std::vector<game>::iterator i);
 };
 
 server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
 	: net_manager_(min_threads,max_threads), server_(port), not_logged_in_(players_),
 	lobby_players_(players_), input_(input), config_file_(config_file),
-	version_query_response_("version"), login_response_("mustlogin"),
-	join_lobby_response_("join_lobby"), last_stats_(time(NULL))
+	cfg_(read_config()), version_query_response_("version"),
+	login_response_("mustlogin"), join_lobby_response_("join_lobby"),
+	initial_response_(), old_initial_response_(initial_response_),
+	last_stats_(time(NULL))
 {
-	cfg_ = read_config();
 	load_config();
 	signal(SIGHUP, reload_config);
 }
@@ -291,9 +292,6 @@ void server::dump_stats() {
 
 void server::run()
 {
-	config& gamelist = initial_response_.add_child("gamelist");
-	old_initial_response_ = initial_response_;
-
 	bool sync_scheduled = false;
 	for(int loop = 0;; ++loop) {
 		try {
@@ -349,7 +347,7 @@ void server::run()
 			config data;
 			while((sock = network::receive_data(data)) != network::null_connection) {
 				metrics_.service_request();
-				process_data(sock,data,gamelist);
+				process_data(sock,data);
 			}
 
 			metrics_.no_requests();
@@ -465,7 +463,7 @@ void server::run()
 	}
 }
 
-void server::process_data(const network::connection sock, config& data, config& gamelist)
+void server::process_data(const network::connection sock, config& data)
 {
 	if(proxy::is_proxy(sock)) {
 		proxy::received_data(sock,data);
@@ -481,7 +479,7 @@ void server::process_data(const network::connection sock, config& data, config& 
 	} else if(lobby_players_.is_observer(sock)) {
 		process_data_from_player_in_lobby(sock,data);
 	} else {
-		process_data_from_player_in_game(sock,data,gamelist);
+		process_data_from_player_in_game(sock,data);
 	}
 }
 
@@ -789,7 +787,6 @@ std::string server::process_command(const std::string& query) {
 	return out.str();
 }
 
-//! Handle private messages between players.
 void server::process_whisper(const network::connection sock, const config& whisper)
 {
 	const player_map::iterator pl = players_.find(sock);
@@ -956,7 +953,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	}
 }
 
-void server::process_data_from_player_in_game(const network::connection sock, config& data, config& gamelist)
+void server::process_data_from_player_in_game(const network::connection sock, config& data)
 {
 	LOG_SERVER << "in process_data_from_player_in_game...\n";
 
@@ -1011,7 +1008,9 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			// Update our config object which describes the open games,
 			// and notifies the game of where its description is located at
-			config& desc = gamelist.add_child("game",g->level());
+			config* const gamelist = initial_response_.child("gamelist");
+			wassert(gamelist != NULL);
+			config& desc = gamelist->add_child("game",g->level());
 			g->set_description(&desc);
 			desc["hash"] = data["hash"];
 
