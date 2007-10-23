@@ -41,24 +41,12 @@ then
 
 Do this 
 
- $ autogen.sh
+ $ ./configure
  $ make
- $ sudo make install
+ $ make install
 
 to compile the wesnoth binary and install it along with the game
-data to the default prefix, which is probably /usr/local.  You
-can pass configure options to the autogen.sh call
-
-After your first build, it should not be necessary to call autogen.sh 
-again.  You can do
-
- $ configure
- $ make
- $ sudo make install
-
-If you see lots of messages like "Type 'svnversion --help' for usage.",
-you have a Subversion client installed but it is not implementing the 
--n option of svnversion. Time to update it.
+data to the default prefix, which is probably /usr/local.
 
 If you want to build wesnoth_editor too add the --enable-editor
 configure option.
@@ -67,6 +55,10 @@ The --enable-display-revision option enables code that shows the SVN
 revision number on the main screen -- useful for detecting old builds
 you might happen to have in your path, but probably not what you want
 in a production release.
+
+If you see lots of messages like "Type 'svnversion --help' for usage.",
+you have a Subversion client installed but it is not implementing the 
+-n option of svnversion. Time to update it.
 
 In case you want wesnothd to be built you should add:
 --enable-server --localstatedir=/var --with-server-uid=user
@@ -77,14 +69,14 @@ created owned by user:group. This is relevant if you want to be able
 to communicate with wesnothd through a fifo file named socket.
 You have to run wesnothd with the user specified while configuring in
 order for it to work.
-You most likely want to change the default localstatedir since it will
-probably default to PREFIX/var.
 You can also specify the fifodir directly by using --with-fifodir
 This way localstatedir won't be used.
 
 If you want to install several versions of wesnoth you should use the
 --with-preferences-dir= parameter to get distinct preferences directories.
 The default is '.wesnoth'.
+
+See './configure --help' for all available options.
 
 Rebuilding:
 
