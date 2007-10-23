@@ -30,12 +30,24 @@ namespace gui {
 struct dialog_process_info
 {
 public:
-	dialog_process_info() : left_button(true), right_button(true), key_down(true),
-		first_time(true), double_clicked(false), selection(-1), clear_buttons_(false)
+	dialog_process_info() : 
+		key(),
+		left_button(true), 
+		right_button(true), 
+		key_down(true),
+		first_time(true), 
+		double_clicked(false),
+		new_left_button(false),
+		new_right_button(false),
+		new_key_down(false),
+		selection(-1), 
+		clear_buttons_(false)
 	{}
+
 	void clear_buttons() {
 		clear_buttons_ = true;
 	}
+
 	void cycle() {
 		if(clear_buttons_) {
 			left_button = true;

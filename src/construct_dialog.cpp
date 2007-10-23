@@ -81,8 +81,24 @@ std::vector<std::string> empty_string_vector;
 
 namespace gui {
 
-dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior(empty_rect),
-	message(empty_rect), textbox(empty_rect), menu_height(-1)
+dialog::dimension_measurements::dimension_measurements() :
+	x(-1), 
+	y(-1), 
+	interior(empty_rect),
+	message(empty_rect), 
+	textbox(empty_rect),
+	menu_width(0),
+	panes(),
+	label_x(-1),
+	label_y(-1),
+	menu_x(-1),
+	menu_y(-1),
+	menu_height(-1),
+	image_x(-1),
+	image_y(-1),
+	caption_x(-1),
+	caption_y(-1),
+	buttons()
 {
 	//note: this is not defined in the header file to C++ ODR (one-definition rule)
 	//since each inclusion of the header file uses a different version of empty_rect
@@ -90,11 +106,26 @@ dialog::dimension_measurements::dimension_measurements() :x(-1), y(-1), interior
 }
 
 dialog::dialog(display &disp, const std::string& title, const std::string& message,
-				const DIALOG_TYPE type, const style& dialog_style) : disp_(disp), image_(NULL),
-				title_(title), style_(dialog_style), title_widget_(NULL), message_(NULL),
-				type_(type), menu_(NULL),
-				help_button_(NULL),  text_widget_(NULL),
-				frame_(NULL), result_(CONTINUE_DIALOG)
+		const DIALOG_TYPE type, const style& dialog_style) : 
+	disp_(disp), 
+	image_(NULL),
+	title_(title),
+	style_(dialog_style),
+	title_widget_(NULL),
+	message_(NULL),
+	type_(type),
+	menu_(NULL),
+	preview_panes_(),
+	button_pool_(),
+	standard_buttons_(),
+	extra_buttons_(),
+	frame_buttons_(),
+	topic_(),
+	help_button_(NULL),
+	text_widget_(NULL),
+	frame_(NULL),
+	result_(CONTINUE_DIALOG),
+	dim_()
 {
 	CVideo& screen = disp_.video();
 
