@@ -141,9 +141,9 @@ private:
 	const config version_query_response_;
 	const config login_response_;
 	const config join_lobby_response_;
-	config initial_response_;
-	config old_initial_response_;
-	config gamelist_diff();
+	config games_and_users_list_;
+	config old_games_and_users_list_;
+	config games_and_users_list_diff();
 
 	metrics metrics_;
 
@@ -168,7 +168,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	lobby_players_(players_), input_(input), config_file_(config_file),
 	cfg_(read_config()), version_query_response_("version"),
 	login_response_("mustlogin"), join_lobby_response_("join_lobby"),
-	initial_response_("gamelist"), old_initial_response_(initial_response_),
+	games_and_users_list_("gamelist"), old_games_and_users_list_(games_and_users_list_),
 	last_stats_(time(NULL))
 {
 	load_config();
@@ -262,10 +262,10 @@ bool server::is_ip_banned(const std::string& ip) {
 	return false;
 }
 
-config server::gamelist_diff() {
+config server::games_and_users_list_diff() {
 	config res;
-	res.add_child("gamelist_diff",initial_response_.get_diff(old_initial_response_));
-	old_initial_response_ = initial_response_;
+	res.add_child("gamelist_diff",games_and_users_list_.get_diff(old_games_and_users_list_));
+	old_games_and_users_list_ = games_and_users_list_;
 	return res;
 }
 
@@ -290,7 +290,7 @@ void server::run()
 			if(sync_scheduled) {
 				//send all players the information that a player has logged
 				//out of the system
-				lobby_players_.send_data(gamelist_diff());
+				lobby_players_.send_data(games_and_users_list_diff());
 				sync_scheduled = false;
 			}
 			
@@ -354,10 +354,10 @@ void server::run()
 				const player_map::iterator pl_it = players_.find(e.socket);
 				const std::string pl_name = pl_it != players_.end() ? pl_it->second.name() : "";
 				if(pl_it != players_.end()) {
-					const config::child_list& users = initial_response_.get_children("user");
+					const config::child_list& users = games_and_users_list_.get_children("user");
 					const size_t index = std::find(users.begin(),users.end(),pl_it->second.config_address()) - users.begin();
 					if(index < users.size())
-						initial_response_.remove_child("user",index);
+						games_and_users_list_.remove_child("user",index);
 
 					players_.erase(pl_it);
 				}
@@ -386,7 +386,7 @@ void server::run()
 								<< "\" (" << g->id() << ") and disconnected.\n";
 
 							//delete the game's description
-							config* const gamelist = initial_response_.child("gamelist");
+							config* const gamelist = games_and_users_list_.child("gamelist");
 							wassert(gamelist != NULL);
 							const config::child_itors vg = gamelist->child_range("game");
 
@@ -398,7 +398,7 @@ void server::run()
 							//update the state of the lobby to players in it.
 							//We have to sync the state of the lobby so we can
 							//send it to the players leaving the game
-							lobby_players_.send_data(gamelist_diff());
+							lobby_players_.send_data(games_and_users_list_diff());
 
 							//set the availability status for all quitting players
 							for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
@@ -409,13 +409,13 @@ void server::run()
 
 							//put the players back in the lobby and send
 							//them the game list and user list again
-							g->send_data(initial_response_);
+							g->send_data(games_and_users_list_);
 							metrics_.game_terminated(g->termination_reason());
 							lobby_players_.add_players(*g);
 							games_.erase(g);
 
 							//now sync players in the lobby again, to remove the game
-							lobby_players_.send_data(gamelist_diff());
+							lobby_players_.send_data(games_and_users_list_diff());
 							break;
 						} else if(needed) {
 							// Transfer game control to another player
@@ -593,7 +593,7 @@ void server::process_login(const network::connection sock, const config& data)
 
 	network::send_data(join_lobby_response_, sock);
 
-	config* const player_cfg = &initial_response_.add_child("user");
+	config* const player_cfg = &games_and_users_list_.add_child("user");
 
 	const player new_player(username,*player_cfg,default_max_messages_,default_time_period_);
 
@@ -605,14 +605,14 @@ void server::process_login(const network::connection sock, const config& data)
 	lobby_players_.add_player(sock);
 
 	//send the new player the entire list of games and players
-	network::send_data(initial_response_,sock);
+	network::send_data(games_and_users_list_,sock);
 
 	if(motd_ != "") {
 		network::send_data(construct_server_message(motd_,lobby_players_),sock);
 	}
 
 	//send other players in the lobby the update that the player has joined
-	lobby_players_.send_data(gamelist_diff(),sock);
+	lobby_players_.send_data(games_and_users_list_diff(),sock);
 
 	WRN_SERVER << network::ip_address(sock) << "\t" << username << "\thas logged on. (socket: " << sock << ")\n";
 
@@ -859,7 +859,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 		// Mark the player as unavailable in the lobby
 		pl->second.mark_available(false,g.level()["name"]);
-		lobby_players_.send_data(gamelist_diff());
+		lobby_players_.send_data(games_and_users_list_diff());
 
 		return;
 	}
@@ -907,7 +907,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 		// Mark the player as unavailable in the lobby
 		pl->second.mark_available(false,(*g->description())["name"]);
-		lobby_players_.send_data(gamelist_diff());
+		lobby_players_.send_data(games_and_users_list_diff());
 	}
 
 	//see if it's a message, in which case we add the name
@@ -941,7 +941,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 	//the create game dialog
 	config* const refresh = data.child("refresh_lobby");
 	if (refresh != NULL) {
-		network::send_data(initial_response_, sock);
+		network::send_data(games_and_users_list_, sock);
 	}
 }
 
@@ -970,12 +970,12 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 		const bool is_init = g->level_init();
 
-		//if this game is having its level data initialized
-		//for the first time, and is ready for players to join.
-		//We should currently have a summary of the game in g->level().
-		//we want to move this summary to the initial_response_, and
-		//place a pointer to that summary in the game's description.
-		//g->level() should then receive the full data for the game.
+		// If this game is having its level data initialized
+		// for the first time, and is ready for players to join.
+		// We should currently have a summary of the game in g->level().
+		// We want to move this summary to the games_and_users_list_, and
+		// place a pointer to that summary in the game's description.
+		// g->level() should then receive the full data for the game.
 		if(!is_init) {
 
 			//if there is no shroud, then tell players in the lobby what the map looks like
@@ -1000,7 +1000,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//update our config object which describes the
 			//open games, and notifies the game of where its description
 			//is located at
-			config* const gamelist = initial_response_.child("gamelist");
+			config* const gamelist = games_and_users_list_.child("gamelist");
 			wassert(gamelist != NULL);
 			config& desc = gamelist->add_child("game",g->level());
 			g->set_description(&desc);
@@ -1016,7 +1016,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				<< "\" (" << g->id() << ").\n";
 
 			// Send all players in the lobby the update to the list of games
-			lobby_players_.send_data(gamelist_diff());
+			lobby_players_.send_data(games_and_users_list_diff());
 		} else {
 
 			//we've already initialized this scenario, but clobber its old
@@ -1029,7 +1029,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				<< "\" (" << g->id() << ") to the next scenario.\n";
 
 			// Send all players in the lobby the update to the list of games
-			lobby_players_.send_data(gamelist_diff());
+			lobby_players_.send_data(games_and_users_list_diff());
 		}
 
 		//send all players in the level, except the sender, the new data
@@ -1048,7 +1048,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->reset_history();
 			g->update_side_data();
 			// Send the update of the game description to the lobby
-			lobby_players_.send_data(gamelist_diff());
+			lobby_players_.send_data(games_and_users_list_diff());
 		} else {
 			// next_scenario sent while the scenario was not
 			// initialized. Something's broken here.
@@ -1072,7 +1072,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//update the number of available slots
 			const bool res = g->describe_slots();
 			if(res) {
-				lobby_players_.send_data(gamelist_diff());
+				lobby_players_.send_data(games_and_users_list_diff());
 			}
 		} else if (g->is_observer(sock)) {
 			network::send_data(construct_server_message("Sorry " + pl->second.name() + ", someone else entered before you.",*g), sock);
@@ -1098,7 +1098,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			<< "\tstarted game: \"" << game_name << "\" (" << g->id() << ").\n";
 
 		g->start_game();
-		lobby_players_.send_data(gamelist_diff());
+		lobby_players_.send_data(games_and_users_list_diff());
 		return;
 	} else if(data.child("leave_game")) {
 		const bool needed = g->is_needed(sock);
@@ -1116,7 +1116,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				<< "\tended game: \"" << game_name << "\" (" << g->id() << ").\n";
 
 			//delete the game's description
-			config* const gamelist = initial_response_.child("gamelist");
+			config* const gamelist = games_and_users_list_.child("gamelist");
 			wassert(gamelist != NULL);
 			const config::child_itors vg = gamelist->child_range("game");
 
@@ -1128,7 +1128,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			//update the state of the lobby to players in it.
 			//We have to sync the state of the lobby so we can
 			//send it to the players leaving the game
-			lobby_players_.send_data(gamelist_diff());
+			lobby_players_.send_data(games_and_users_list_diff());
 
 			//set the availability status for all quitting players
 			for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
@@ -1139,13 +1139,13 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			//put the players back in the lobby and send
 			//them the game list and user list again
-			g->send_data(initial_response_);
+			g->send_data(games_and_users_list_);
 			metrics_.game_terminated(g->termination_reason());
 			lobby_players_.add_players(*g);
 			games_.erase(g);
 
 			//now sync players in the lobby again, to remove the game
-			lobby_players_.send_data(gamelist_diff());
+			lobby_players_.send_data(games_and_users_list_diff());
 		} else {
 			if(!obs) {
 				g->send_data(construct_server_message(pl->second.name() + " has left the game",*g));
@@ -1171,10 +1171,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		lobby_players_.add_player(sock);
 
 		//send the player who has quit the game list
-		network::send_data(initial_response_,sock);
+		network::send_data(games_and_users_list_,sock);
 
 		//send all other players in the lobby the update to the lobby
-		lobby_players_.send_data(gamelist_diff(),sock);
+		lobby_players_.send_data(games_and_users_list_diff(),sock);
 
 		return;
 	} else if(data.child("side_secured")) {
@@ -1193,7 +1193,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 		const bool lobby_changes = g->describe_slots();
 		if (lobby_changes) {
-			lobby_players_.send_data(gamelist_diff());
+			lobby_players_.send_data(games_and_users_list_diff());
 		}
 	}
 
@@ -1218,7 +1218,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			}
 			const bool lobby_changes = g->describe_slots();
 			if (lobby_changes) {
-				lobby_players_.send_data(gamelist_diff());
+				lobby_players_.send_data(games_and_users_list_diff());
 			}
 			return;
 		}
@@ -1331,10 +1331,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			pl->second.mark_available(true,"");
 
 			//send the player who was banned the lobby game list
-			network::send_data(initial_response_, pl->first);
+			network::send_data(games_and_users_list_, pl->first);
 
 			//send all other players in the lobby the update to the lobby
-			lobby_players_.send_data(gamelist_diff(), sock);
+			lobby_players_.send_data(games_and_users_list_diff(), sock);
 			return;
 		} else if(pl == players_.end()) {
 			network::send_data(construct_server_message("Kick/ban failed: user '" + name + "' not found", *g), sock);
@@ -1361,7 +1361,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		//to players in the lobby
 		const bool res = g->process_commands(*turn);
 		if(res) {
-			lobby_players_.send_data(gamelist_diff());
+			lobby_players_.send_data(games_and_users_list_diff());
 		}
 
 		//any private 'speak' commands must be repackaged separate
@@ -1421,7 +1421,7 @@ void server::delete_game(std::vector<game>::iterator i)
 	metrics_.game_terminated(i->termination_reason());
 
 	//delete the game's configuration
-	config* const gamelist = initial_response_.child("gamelist");
+	config* const gamelist = games_and_users_list_.child("gamelist");
 	wassert(gamelist != NULL);
 	const config::child_itors vg = gamelist->child_range("game");
 	const config::child_list::iterator g = std::find(vg.first, vg.second, i->description());
