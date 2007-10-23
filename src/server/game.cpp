@@ -147,7 +147,7 @@ void game::start_game()
 	//send [observer] tags for all observers that have already joined.
 	//we can do this by re-joining all players that don't have sides, and aren't
 	//the first player (game creator)
-	for(std::vector<network::connection>::const_iterator pl = observers_.begin(); pl != observers_.end(); ++pl) {
+	for(user_vector::const_iterator pl = observers_.begin(); pl != observers_.end(); ++pl) {
 		if(sides_.count(*pl) == 0) {
 			add_player(*pl);
 		}
@@ -638,7 +638,7 @@ void game::add_player(network::connection player, bool observer)
 		network::queue_data(cfg, player);
 
 		//send observer join of all the observers in the game to players
-		for(std::vector<network::connection>::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
+		for(user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
 			if(*ob != player) {
 				info = player_info_->find(*ob);
 				if(info != player_info_->end()) {
@@ -830,7 +830,7 @@ bool game::player_on_team(const std::string& team, network::connection player) c
 
 void game::send_data_team(const config& data, const std::string& team, network::connection exclude)
 {
-	for(std::vector<network::connection>::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+	for(user_vector::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if(*i != exclude && player_on_team(team,*i)) {
 			network::queue_data(data,*i);
 		}
@@ -839,7 +839,7 @@ void game::send_data_team(const config& data, const std::string& team, network::
 
 void game::send_data_observers(const config& data, network::connection exclude)
 {
-	for(std::vector<network::connection>::const_iterator i = observers_.begin(); i != observers_.end(); ++i) {
+	for(user_vector::const_iterator i = observers_.begin(); i != observers_.end(); ++i) {
 		if (*i != exclude) {
 			network::queue_data(data,*i);
 		}
