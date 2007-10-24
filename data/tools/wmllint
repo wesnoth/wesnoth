@@ -911,6 +911,32 @@ def hack_syntax(filename, lines):
                 #pass the inserted content
                 radius_pos.seek(startline+len(to_indent)+1)
             radius_pos = wmlfind("radius=", radius_pos)
+    # Boucmanize death animations
+    if future:
+        in_death = None
+        frame_start = frame_end = None
+        for i in range(len(lines)):
+            if "no-syntax-rewrite" in lines[i]:
+                break
+            elif "[death]" in lines[i]:
+                in_death = i
+            elif "[/death]" in lines[i]:
+                if frame_start is None:
+                    print >>sys.stderr, '"%s", %d: [death] with no frames' % (filename, i)
+                    continue
+                lines[i] = lines[i].replace("death", "animation")
+                lines[in_death] = lines[in_death].replace("death", "animation") \
+                                  + leader(lines[in_death])+baseindent \
+                                  + "apply_to=death" + "\n"
+                inner = leader(lines[frame_start]) + baseindent
+                lines[frame_start] += inner+"duration=600\n"+inner+"alpha=1~0\n"
+                #print "Last frame: %d %d %d" % (in_death, frame_start, frame_end)
+                in_death = frame_start = frame_end = None
+                modcount += 1
+            elif in_death and "[frame]" in lines[i]:
+                frame_start = i
+            elif in_death and "[/frame]" in lines[i]:
+                frame_end = i
     # Check for duplicated attack names -- may be a result of a naive
     # boucman conversion.
     if boucmanized:
