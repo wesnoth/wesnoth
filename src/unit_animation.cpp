@@ -475,7 +475,9 @@ int unit_animation::crude_animation::halo_y(const int default_val) const
 }
 double unit_animation::crude_animation::blend_ratio(const double default_val) const
 {
-	return get_current_frame().blend_ratio(get_current_frame_time(),blend_ratio_.get_current_element(get_animation_time(),default_val)); 
+	return get_current_frame().blend_ratio(
+		get_current_frame_time(),
+		ftofxp(blend_ratio_.get_current_element(get_animation_time(),default_val))); 
 }
 
 fixed_t unit_animation::crude_animation::highlight_ratio(const float default_val) const
