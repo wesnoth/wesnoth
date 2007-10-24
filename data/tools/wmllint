@@ -1029,15 +1029,10 @@ def translator(filename, mapxforms, textxform):
         mfile.append(line)
         if "map_data" in line:
             map_only = False
-    cont = False
-    outmap = []
-    newdata = []
     lineno = baseline = 0
+    cont = False
     validate = True
-    add_border = True
-    add_usage = True
-    have_header = False
-    maptype = None
+    newdata = []
     while mfile:
         if not map_only:
             line = mfile.pop(0)
@@ -1052,6 +1047,11 @@ def translator(filename, mapxforms, textxform):
                         and line.count('"') in (1, 2)
                         and line.count("{") == 0
                         and  line.count("}") == 0):
+            outmap = []
+            add_border = True
+            add_usage = True
+            have_header = False
+            maptype = None
             if map_only:
                 if filename.endswith(".mask"):
                     maptype = "mask"
