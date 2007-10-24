@@ -57,7 +57,6 @@ public:
 	std::string& textdomain();
 private:
 	void next_char();
-	int get_char();
 	int peek_char();
 	bool is_space(int c);
 	bool is_alnum(int c);
