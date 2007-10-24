@@ -124,8 +124,8 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	help_button_(NULL),
 	text_widget_(NULL),
 	frame_(NULL),
-	result_(CONTINUE_DIALOG),
-	dim_()
+	dim_(),
+	result_(CONTINUE_DIALOG)
 {
 	CVideo& screen = disp_.video();
 
