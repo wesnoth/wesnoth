@@ -149,7 +149,10 @@ uninstall-hook:
 	if test -d $(docdir) ; then echo `rmdir $(docdir)` ; fi
 
 clean-local:
-	rm -rf translations po/stamp* po/*/stamp*
+	rm -rf po/stamp* po/*/stamp*
+
+distclean-local:
+	rm -rf translations
 
 BINARY_STAGING=/tmp/$(PACKAGE)-$(VERSION)-staging
 BINARY_DIST=/tmp/$(PACKAGE)-binary-$(VERSION).tar.gz
