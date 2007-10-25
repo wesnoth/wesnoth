@@ -1065,6 +1065,15 @@ def translator(filename, mapxforms, textxform):
             if verbose >= 3:
                 sys.stdout.write(line + terminator)
             lineno += 1
+        # Check for one certain error condition
+        if "mask" in line and line.count("{") and line.count("}"):
+            maskname = line[line.find("{"):line.rfind("}")]
+            # Ignore all-caps macro arguments.
+            if maskname != maskname.upper() and not maskname.endswith(".mask"):
+                print >>sys.stderr, \
+                      '"%s", line %d: fatal error, mask file without .mask extension' \
+                      % (filename, lineno+1, line[:line.find("}")])
+                sys.exit(1)
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
         # pathological and the parse won't handle them, the latter
