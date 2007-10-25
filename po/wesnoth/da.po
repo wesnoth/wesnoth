@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-21 12:41+0200\n"
-"PO-Revision-Date: 2007-09-30 13:44+0200\n"
+"PO-Revision-Date: 2007-10-25 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+# uafklaret hvad MP står for.
 #: data/_main.cfg:36
 msgid "Female leaders on MP (if available)"
-msgstr ""
+msgstr "Kvindelige ledere på MP (hvis tilgængelig)"
 
 #: data/_main.cfg:43
 msgid "Binary Saves"
@@ -4716,9 +4717,8 @@ msgid "End Turn"
 msgstr "Afslut runde"
 
 #: data/themes/default.cfg:146 data/themes/dfool.cfg:162
-#, fuzzy
 msgid "End Scenario"
-msgstr "Ekstern scenarie"
+msgstr "Afslut scenarie"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
 #: data/themes/experimental.cfg:182 src/menu_events.cpp:322 src/unit.cpp:2454
@@ -5109,9 +5109,8 @@ msgid "File I/O Error while reading the game"
 msgstr "I/O-filfejl under læsning af spillet"
 
 #: src/game.cpp:826
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Kampagne"
+msgstr "Spil en kampagne"
 
 #: src/game.cpp:866
 msgid "Difficulty"
@@ -6519,9 +6518,8 @@ msgid "--no games open--"
 msgstr "--ingen spil er i gang--"
 
 #: src/multiplayer_lobby.cpp:379
-#, fuzzy
 msgid "Unknown era: $era_id"
-msgstr "Ukendt æra"
+msgstr "Ukendt æra: $era_id"
 
 #: src/multiplayer_lobby.cpp:383
 msgid "Unknown era"
@@ -6532,9 +6530,8 @@ msgid "Remote scenario"
 msgstr "Ekstern scenarie"
 
 #: src/multiplayer_lobby.cpp:445
-#, fuzzy
 msgid "Unknown scenario: $scenario_id"
-msgstr "Ukendt scenarie: '$scenario|'"
+msgstr "Ukendt scenarie: $scenario_id"
 
 #: src/multiplayer_lobby.cpp:449
 msgid "Unknown scenario"
@@ -6909,9 +6906,8 @@ msgstr ""
 "computeren."
 
 #: src/titlescreen.cpp:324
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Indlæs et gemt single player spil"
+msgstr "Indlæs et gemt spil"
 
 #: src/titlescreen.cpp:325
 msgid "Download usermade campaigns, eras, or map packs"
@@ -6954,35 +6950,32 @@ msgid "Unknown unit type '$type|'"
 msgstr "Ukendt enhedstype '$type|'"
 
 #: src/unit.cpp:2411 src/unit.cpp:2621 src/unit.cpp:2677
-#, fuzzy
 msgid " and "
-msgstr "Sand"
+msgstr " og "
 
 #: src/unit.cpp:2422
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2487
-#, fuzzy
 msgid "moves"
-msgstr "Bevægelser"
+msgstr "bevægelser"
 
 #: src/unit.cpp:2505 src/unit.cpp:2648
 msgid "XP to advance"
 msgstr "Erfaring til forfremmelse"
 
 #: src/unit.cpp:2640
-#, fuzzy
 msgid " move"
-msgstr "Bevægelser"
+msgstr " bevægelse"
 
 #: src/unit.cpp:2656
 msgid "$effect_description per level"
-msgstr ""
+msgstr "$effect_description per niveau"
 
 #: src/unit.cpp:2686
 msgid "$trait_name|: $trait_description "
-msgstr ""
+msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:183 src/unit_types.cpp:223
 msgid "damage"
@@ -7046,20 +7039,6 @@ msgstr "Slå sending af resumer til"
 
 #~ msgid "Choose the campaign you want to play:"
 #~ msgstr "Vælg hvilken kampagne du vil spille:"
-
-#, fuzzy
-#~ msgid " per level"
-#~ msgstr "level"
-
-#~ msgid "sword"
-#~ msgstr "sværd"
-
-#, fuzzy
-#~ msgid "female^Elvish Lady"
-#~ msgstr "sund"
-
-#~ msgid "; "
-#~ msgstr "; "
 
 #~ msgid "/level"
 #~ msgstr "/level"
