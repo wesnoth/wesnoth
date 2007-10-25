@@ -97,8 +97,11 @@ const T progressive_<T>::get_current_element(int current_time,const T default_va
 {
 	int time = 0;
 	unsigned int sub_halo = 0;
+	int searched_time = current_time;
+	if(searched_time < 0) searched_time = 0;
+	if(searched_time > duration()) searched_time = duration();
 	if(data_.empty()) return default_val;
-	while(time < current_time&& sub_halo < data_.size()) {
+	while(time < searched_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		sub_halo++;
 
@@ -109,13 +112,13 @@ const T progressive_<T>::get_current_element(int current_time,const T default_va
 	}
 	if(sub_halo >= data_.size()) {
 		sub_halo = data_.size();
-		time = current_time; // Never more than max allowed
+		time = searched_time; // Never more than max allowed
 	}
 
 	const T first =  data_[sub_halo].first.first;
 	const T second =  data_[sub_halo].first.second;
 
-	return T((static_cast<double>(current_time - time) /
+	return T((static_cast<double>(searched_time - time) /
 		static_cast<double>(data_[sub_halo].second)) *
 		(second - first) + first);
 }
