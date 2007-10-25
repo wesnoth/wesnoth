@@ -27,22 +27,25 @@ public:
 	static const std::string random_enemy_picture;
 
 	leader_list_manager(const config::child_list& side_list, const game_data* data,
-			gui::combo* combo = NULL);
+			gui::combo* leader_combo = NULL, gui::combo* gender_combo = NULL);
 
-	void set_combo(gui::combo* combo);
+	void set_leader_combo(gui::combo* combo);
+	void set_gender_combo(gui::combo* combo);
 	void update_leader_list(int side);
+	void update_gender_list(const std::string& leader);
 	std::string get_leader() const;
+	std::string get_gender() const;
 	void set_leader(const std::string& leader);
-	bool is_leader_ok(std::string leader);
+	void set_gender(const std::string& gender);
 
 private:
-	void populate_combo(int selected_index);
-
+	void populate_leader_combo(int selected_index);
 	std::vector<std::string> leaders_;
+	std::vector<std::string> genders_;
 	config::child_list side_list_;
 	const game_data* data_;
-	gui::combo* combo_;
-
+	gui::combo* leader_combo_;
+	gui::combo* gender_combo_;
 };
 
 #endif

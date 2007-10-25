@@ -57,6 +57,7 @@ private:
 		bool left_side() const;
 		void set_selection(int index);
 		std::string get_selected_leader();
+		std::string get_selected_gender();
 
 		handler_vector handler_members();
 	private:
@@ -65,6 +66,7 @@ private:
 
 		const config::child_list side_list_;
 		gui::combo leader_combo_; // Must appear before the leader_list_manager
+		gui::combo gender_combo_; // Must appear before the leader_list_manager
 		leader_list_manager leaders_;
 		size_t  selection_;
 		const game_data* data_;

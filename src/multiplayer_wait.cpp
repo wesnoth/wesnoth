@@ -47,7 +47,8 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp, const game_da
 	gui::preview_pane(disp.video()),
 	side_list_(side_list),
 	leader_combo_(disp, std::vector<std::string>()),
-	leaders_(side_list, data, &leader_combo_),
+	gender_combo_(disp, std::vector<std::string>()),
+	leaders_(side_list, data, &leader_combo_, &gender_combo_),
 	selection_(0), data_(data)
 {
 	set_location(leader_pane_position);
@@ -55,7 +56,7 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp, const game_da
 
 void wait::leader_preview_pane::process_event()
 {
-	if (leader_combo_.changed()) {
+	if (leader_combo_.changed() || gender_combo_.changed()) {
 		set_dirty();
 	}
 }
@@ -86,6 +87,7 @@ void wait::leader_preview_pane::draw_contents()
 				faction = faction.substr(p+1);
 		}
 		std::string leader = leaders_.get_leader();
+
 
 		const game_data::unit_type_map& utypes = data_->unit_types;
 		std::string leader_name;
@@ -121,14 +123,15 @@ void wait::leader_preview_pane::draw_contents()
 			SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
 		}
 
-		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
+		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 110, area.y + 60);
 		const SDL_Rect leader_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
-				_("Leader: "),area.x, area.y + 80);
+				_("Leader: "),area.x, area.y + 110);
 		font::draw_wrapped_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
-				_("Recruits: ") + recruit_string.str(),area.x, area.y + 102,
+				_("Recruits: ") + recruit_string.str(),area.x, area.y + 132,
 				area.w);
 
 		leader_combo_.set_location(leader_rect.x + leader_rect.w + 10, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
+		gender_combo_.set_location(leader_rect.x + leader_rect.w + 10, leader_rect.y + 30 + (leader_rect.h - leader_combo_.height()) / 2);
 	}
 }
 
@@ -154,9 +157,15 @@ std::string wait::leader_preview_pane::get_selected_leader()
 	return leaders_.get_leader();
 }
 
+std::string wait::leader_preview_pane::get_selected_gender()
+{
+	return leaders_.get_gender();
+}
+
 handler_vector wait::leader_preview_pane::handler_members() {
 	handler_vector h;
 	h.push_back(&leader_combo_);
+	h.push_back(&gender_combo_);
 	return h;
 }
 
@@ -220,7 +229,7 @@ void wait::join_game(bool observe)
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
-		std::string leader_choice;
+		std::string leader_choice, gender_choice;
 		size_t faction_choice = 0;
 
 		//we take the side now so noone will take it while we choose a faction
@@ -229,6 +238,7 @@ void wait::join_game(bool observe)
 		cfg["name"] = preferences::login();
 		cfg["faction"] = "random";
 		cfg["leader"] = "random";
+		cfg["gender"] = "random";
 		network::send_data(cfg);
 
 		if(allow_changes) {
@@ -265,6 +275,7 @@ void wait::join_game(bool observe)
 			}
 			faction_choice = res;
 			leader_choice = leader_selector.get_selected_leader();
+			gender_choice = leader_selector.get_selected_gender();
 
 			wassert(faction_choice < possible_sides.size());
 
@@ -273,6 +284,7 @@ void wait::join_game(bool observe)
 			change["name"] = preferences::login();
 			change["faction"] = lexical_cast<std::string>(faction_choice);
 			change["leader"] = leader_choice;
+			change["gender"] = gender_choice;
 			network::send_data(faction);
 		}
 

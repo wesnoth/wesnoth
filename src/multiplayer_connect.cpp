@@ -60,6 +60,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), parent.player_factions_),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
+	combo_gender_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), parent.player_teams_),
 	combo_colour_(parent.disp(), parent.player_colours_),
 	slider_gold_(parent.video()),
@@ -68,7 +69,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	allow_player_(utils::string_bool(cfg_["allow_player"], true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
-	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL)
+	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
 	if(allow_player_ && enabled_) {
 		controller_ = parent_->default_controller_;
@@ -99,6 +100,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	combo_faction_.enable(enabled_);
 	combo_leader_.enable(enabled_);
+	combo_gender_.enable(enabled_);
 	combo_team_.enable(enabled_);
 	combo_colour_.enable(enabled_);
 	slider_gold_.hide(!enabled_);
@@ -183,7 +185,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		leader_ = cfg_["type"];
 		if(!leader_.empty()) {
 			combo_leader_.enable(false);
-			llm_.set_combo(NULL);
+			llm_.set_leader_combo(NULL);
+			llm_.set_gender_combo(NULL);
 			std::vector<std::string> leader_name_pseudolist;
 			game_data::unit_type_map::const_iterator leader_name = parent_->game_data_.unit_types.find(leader_);
 			if(leader_name == parent_->game_data_.unit_types.end()) {
@@ -252,18 +255,20 @@ connect::side::side(const side& a) :
 	controller_(a.controller_),
 	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
 	gold_(a.gold_), income_(a.income_), leader_(a.leader_), /* taken_(a.taken_), */
+	gender_(a.gender_),
 	ai_algorithm_(a.ai_algorithm_),
 	player_number_(a.player_number_), combo_controller_(a.combo_controller_),
 	orig_controller_(a.orig_controller_),
 	combo_ai_algorithm_(a.combo_ai_algorithm_),
-	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_),
+	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_), combo_gender_(a.combo_gender_),
 	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
 	slider_gold_(a.slider_gold_), slider_income_(a.slider_income_),
 	label_gold_(a.label_gold_), label_income_(a.label_income_),
 	allow_player_(a.allow_player_), enabled_(a.enabled_),
 	changed_(a.changed_), llm_(a.llm_)
 {
-	llm_.set_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
+	llm_.set_leader_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
+	llm_.set_gender_combo((enabled_ && leader_.empty()) ? &combo_gender_ : NULL);
 }
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
@@ -275,6 +280,7 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&combo_ai_algorithm_, 20, 35 + pos);
 	pane.add_widget(&combo_faction_, 135, 5 + pos);
 	pane.add_widget(&combo_leader_,  135, 35 + pos);
+	pane.add_widget(&combo_gender_,  250, 35 + pos);
 	pane.add_widget(&combo_team_,    250, 5 + pos);
 	pane.add_widget(&combo_colour_,  365, 5 + pos);
 	pane.add_widget(&slider_gold_,   475, 5 + pos);
@@ -332,6 +338,7 @@ void connect::side::process_event()
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
 		faction_ = combo_faction_.selected();
 		llm_.update_leader_list(faction_);
+		llm_.update_gender_list(llm_.get_leader());
 		changed_ = true;
 	}
 	if (combo_ai_algorithm_.changed() && combo_ai_algorithm_.selected() >= 0) {
@@ -339,6 +346,11 @@ void connect::side::process_event()
 		changed_ = true;
 	}
 	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
+		llm_.update_gender_list(llm_.get_leader());
+		changed_ = true;
+	}
+	if (combo_gender_.changed() && combo_gender_.selected() >= 0) {
+		llm_.set_leader_combo(&combo_leader_);
 		changed_ = true;
 	}
 	if (combo_team_.changed() && combo_team_.selected() >= 0) {
@@ -533,12 +545,18 @@ config connect::side::get_config() const
 	}
 
 	if(enabled_) {
-		if ( preferences::mp_female_leaders_flag() && ( controller_ == CNTR_LOCAL || controller_ == CNTR_COMPUTER) )
-			res["gender"] = "female";
 		if (leader_.empty()) {
 			res["type"] = llm_.get_leader();
 		} else {
 			res["type"] = leader_;
+		}
+		if (gender_.empty()) {
+			res["gender"] = llm_.get_gender();
+		} else {
+			// If no genders could be resolved, let the unit engine use
+			// the default gender
+			if (gender_ != "null")
+				res["gender"] = gender_;
 		}
 		// res["team"] = lexical_cast<std::string>(team_);
 		res["team_name"] = parent_->team_names_[team_];
@@ -674,6 +692,7 @@ void connect::side::import_network_user(const config& data)
 		}
 		if(combo_leader_.enabled()) {
 			llm_.set_leader(data["leader"]);
+			llm_.set_gender(data["gender"]);
 		}
 	}
 
@@ -738,6 +757,39 @@ void connect::side::resolve_random()
 			}
 		}
 	}
+
+	// Resolve random genders "very much" like standard unit code
+	if (llm_.get_gender() == "random") {
+		const game_data::unit_type_map& utypes = parent_->game_data_.unit_types;
+		if (utypes.find(leader_) != utypes.end()) {
+
+			const std::vector<unit_race::GENDER> possible_genders = utypes.find(leader_)->second.genders();
+			if (possible_genders.size() >= 2) {
+				switch ( possible_genders[rand() % possible_genders.size()] )
+				{
+					case unit_race::FEMALE:
+						gender_ = "female";
+						break;
+					case unit_race::MALE:
+						gender_ = "male";
+						break;
+					default:
+						gender_ = "null";
+				}
+			} else {
+				// Otherwise we can't do it; set it to only available value, if any.
+				if (! possible_genders.empty()) {
+					if (possible_genders.front() == unit_race::FEMALE)
+						gender_ = "female";
+					else
+						gender_ = "male";
+				} else
+					gender_ = "null";
+			}
+		} else
+			// FIXME: assert would be better?
+			gender_ = "null";
+	}
 }
 
 connect::connect(game_display& disp, const config& game_config, const game_data& data,
@@ -758,7 +810,7 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 	scroll_pane_(video()),
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	faction_title_label_(video(), _("Faction"), font::SIZE_SMALL, font::LOBBY_COLOUR),
-	team_title_label_(video(), _("Team"), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	team_title_label_(video(), _("Team/Gender"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	colour_title_label_(video(), _("Color"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	gold_title_label_(video(), _("Gold"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	income_title_label_(video(), _("Income"), font::SIZE_SMALL, font::LOBBY_COLOUR),
@@ -862,7 +914,7 @@ const game_state& connect::get_state()
 
 void connect::start_game()
 {
-	// Resolves the "random faction" and "random message"
+	// Resolves the "random faction", "random gender" and "random message"
 	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
 			++itor) {
 
@@ -961,7 +1013,7 @@ void connect::process_network_data(const config& data, const network::connection
 		// Assigns this user to a side
 		if(side_taken >= 0 && side_taken < int(sides_.size())) {
 			if(!sides_[side_taken].available()) {
-				// This side is already taken. 
+				// This side is already taken.
 				// Try to reassing the player to a different position.
 				side_list::const_iterator itor;
 				side_taken = 0;

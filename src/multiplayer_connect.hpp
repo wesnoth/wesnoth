@@ -117,6 +117,7 @@ public:
 		int gold_;
 		int income_;
 		std::string leader_;
+		std::string gender_;
 		std::string ai_algorithm_;
 		//bool taken_;
 
@@ -127,6 +128,7 @@ public:
 		gui::combo combo_ai_algorithm_;
 		gui::combo combo_faction_;
 		gui::combo combo_leader_;
+		gui::combo combo_gender_;
 		gui::combo combo_team_;
 		gui::combo combo_colour_;
 		gui::slider slider_gold_;

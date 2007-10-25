@@ -24,21 +24,32 @@
 const std::string leader_list_manager::random_enemy_picture("random-enemy.png");
 
 leader_list_manager::leader_list_manager(const config::child_list& side_list,
-		const game_data* data, gui::combo* combo) :
-	side_list_(side_list), data_(data), combo_(combo)
+		const game_data* data, gui::combo* leader_combo , gui::combo* gender_combo):
+	side_list_(side_list), data_(data), leader_combo_(leader_combo), gender_combo_(gender_combo)
 {
 }
 
-void leader_list_manager::set_combo(gui::combo* combo)
+void leader_list_manager::set_leader_combo(gui::combo* combo)
 {
-	int selected = combo_ != NULL ? combo_->selected() : 0;
-	combo_ = combo;
+	int selected = leader_combo_ != NULL ? leader_combo_->selected() : 0;
+	leader_combo_ = combo;
 
-	if(combo_ != NULL) {
+	if(leader_combo_ != NULL) {
 		if(leaders_.empty()) {
 			update_leader_list(0);
 		} else {
-			populate_combo(selected);
+			populate_leader_combo(selected);
+		}
+	}
+}
+
+void leader_list_manager::set_gender_combo(gui::combo* combo)
+{
+	gender_combo_ = combo;
+
+	if(gender_combo_ != NULL) {
+		if(!leaders_.empty()) {
+			update_gender_list(get_leader());
 		}
 	}
 }
@@ -50,17 +61,19 @@ void leader_list_manager::update_leader_list(int side_index)
 	leaders_.clear();
 
 	if(side["random_faction"] == "yes") {
-		if(combo_ != NULL) {
+		if(leader_combo_ != NULL) {
 			std::vector<std::string> dummy;
 			dummy.push_back("-");
-			combo_->enable(false);
-			combo_->set_items(dummy);
-			combo_->set_selected(0);
+			leader_combo_->enable(false);
+			leader_combo_->set_items(dummy);
+			leader_combo_->set_selected(0);
 		}
 		return;
 	} else {
-		if(combo_ != NULL)
-			combo_->enable(true);
+		if(leader_combo_ != NULL)
+			leader_combo_->enable(true);
+		if(gender_combo_ != NULL)
+			gender_combo_->enable(true);
 	}
 
 	if(!side["leader"].empty()) {
@@ -84,10 +97,37 @@ void leader_list_manager::update_leader_list(int side_index)
 	}
 
 	leaders_.push_back("random");
-	populate_combo(default_index);
+	populate_leader_combo(default_index);
 }
 
-void leader_list_manager::populate_combo(int selected_index) {
+void leader_list_manager::update_gender_list(const std::string& leader)
+{
+	int gender_index = gender_combo_ != NULL ? gender_combo_->selected() : 0;
+	genders_.clear();
+	const game_data::unit_type_map& utypes = data_->unit_types;
+	if (utypes.find(leader) != utypes.end()) {
+		const std::vector<unit_race::GENDER> genders = utypes.find(leader)->second.genders();
+		if (genders.size() < 2) {
+			gender_combo_->enable(false);
+		} else {
+			genders_.push_back("random");
+			gender_combo_->enable(true);
+		}
+		for (std::vector<unit_race::GENDER>::const_iterator i=genders.begin(); i != genders.end(); ++i) {
+			genders_.push_back(*i == unit_race::FEMALE ? "female" : "male");
+		}
+		gender_combo_->set_items(genders_);
+		gender_index %= genders_.size();
+		gender_combo_->set_selected(gender_index);	
+	} else {
+		genders_.push_back("random");
+		gender_combo_->enable(false);
+		gender_combo_->set_items(genders_);
+		gender_combo_->set_selected(0);	
+	}
+}
+
+void leader_list_manager::populate_leader_combo(int selected_index) {
 	std::vector<std::string>::const_iterator itor;
 	std::vector<std::string> leader_strings;
 	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
@@ -96,13 +136,23 @@ void leader_list_manager::populate_combo(int selected_index) {
 
 		//const std::string name = data_->unit_types->find(*itor).language_name();
 		if (utypes.find(*itor) != utypes.end()) {
-			const std::string name =  utypes.find(*itor)->second.language_name();
-			const std::string image = utypes.find(*itor)->second.image();
+			const unit_type* ut;
+			ut = &(utypes.find(*itor)->second);
+			if (gender_combo_ != NULL && !genders_.empty() && size_t(gender_combo_->selected()) < genders_.size()) {
+				// TODO: add support for translating these in the UI!!!
+				if (leaders_[leader_combo_->selected()] == "male"){
+					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::MALE));
+				} else if (leaders_[leader_combo_->selected()] == "female") {
+					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::FEMALE));
+				}
+			}
+			const std::string name =  ut->language_name();
+			const std::string image = ut->image();
 
 #ifdef LOW_MEM
 			leader_strings.push_back(IMAGE_PREFIX + image + COLUMN_SEPARATOR + name);
 #else
-			leader_strings.push_back(IMAGE_PREFIX + image + std::string("~RC(" + utypes.find(*itor)->second.flag_rgb() + ">1)") + COLUMN_SEPARATOR + name);
+			leader_strings.push_back(IMAGE_PREFIX + image + std::string("~RC(" + ut->flag_rgb() + ">1)") + COLUMN_SEPARATOR + name);
 #endif
 		} else {
 			if(*itor == "random") {
@@ -113,39 +163,61 @@ void leader_list_manager::populate_combo(int selected_index) {
 		}
 	}
 
-	if(combo_ != NULL) {
-		combo_->set_items(leader_strings);
-		combo_->set_selected(selected_index);
+	if(leader_combo_ != NULL) {
+		leader_combo_->set_items(leader_strings);
+		leader_combo_->set_selected(selected_index);
 	}
 }
 
 void leader_list_manager::set_leader(const std::string& leader)
 {
-	if(combo_ == NULL)
+	if(leader_combo_ == NULL)
 		return;
 
 	int leader_index = 0;
 	for(std::vector<std::string>::const_iterator itor = leaders_.begin();
 			itor != leaders_.end(); ++itor) {
 		if(leader == *itor) {
-			combo_->set_selected(leader_index);
+			leader_combo_->set_selected(leader_index);
 			return;
 		}
 		++leader_index;
 	}
 }
 
+void leader_list_manager::set_gender(const std::string& gender)
+{
+	if(gender_combo_ == NULL)
+		return;
+
+	int gender_index = 0;
+	for(std::vector<std::string>::const_iterator itor = genders_.begin();
+			itor != genders_.end(); ++itor) {
+		if(gender == *itor) {
+			gender_combo_->set_selected(gender_index);
+			return;
+		}
+		++gender_index;
+	}
+}
+
 std::string leader_list_manager::get_leader() const
 {
-	if(combo_ == NULL)
+	if(leader_combo_ == NULL)
 		return _("?");
 
 	if(leaders_.empty())
 		return "random";
 
-	if(size_t(combo_->selected()) >= leaders_.size())
+	if(size_t(leader_combo_->selected()) >= leaders_.size())
 		return _("?");
 
-	return leaders_[combo_->selected()];
+	return leaders_[leader_combo_->selected()];
 }
 
+std::string leader_list_manager::get_gender() const
+{
+	if(gender_combo_ == NULL || genders_.empty() || size_t(gender_combo_->selected()) >= genders_.size())
+		return "?";
+	return genders_[gender_combo_->selected()];
+}
