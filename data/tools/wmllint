@@ -916,6 +916,7 @@ def hack_syntax(filename, lines):
         in_death = None
         frame_commented = in_death_commented = False
         frame_start = frame_end = None
+        image = None
         for i in range(len(lines)):
             if "no-syntax-rewrite" in lines[i]:
                 break
@@ -926,24 +927,35 @@ def hack_syntax(filename, lines):
                 if frame_start is None:
                     print >>sys.stderr, '"%s", %d: [death] with no frames' % (filename, i)
                     continue
-                # Clear out some old tags
+                # Find the image tag
                 for inside in range(frame_start, frame_end):
-                    for remove in ('begin', 'end', 'duration', 'alpha'):
-                        if remove + "=" in lines[inside]:
-                            lines[inside] = ""
-                # Modify the death weapper
+                    if "image=" in lines[inside]:
+                        image = lines[inside].strip().split("=")[1]
+                        break
+                else:
+                    print >>sys.stderr,'"%s", line %d: no image in last frame'\
+                          % (filename, i)
+                    continue
+                # Modify the death wrapper
                 lines[i] = lines[i].replace("death", "animation")
                 inner = leader(lines[in_death])+baseindent
                 if in_death_commented:
                     inner = "#" + inner
                 lines[in_death] = lines[in_death].replace("death", "animation") \
                                   + inner + "apply_to=death" + "\n"
-                # Modify the last frame in the death animation
-                inner = leader(lines[frame_start]) + baseindent
+                # Add a new last frame to the death animation
+                outer = leader(lines[frame_start])
+                if frame_commented:
+                    outer = "#" + outer
+                inner = outer + baseindent
                 if frame_commented:
                     inner = "#" + inner
-                lines[frame_start] += inner+"duration=600\n"+inner+"alpha=1~0\n"
-                #print "Last frame: %d %d %d" % (in_death, frame_start, frame_end)
+                insertion = outer + "[frame]\n" + \
+                            inner + "duration=600\n" + \
+                            inner + "alpha=1~0\n" + \
+                            inner + "image=" + image + "\n" + \
+                            outer + "[/frame]\n"
+                lines[i] = insertion + lines[i]
                 in_death = frame_start = frame_end = None
                 frame_commented = in_death_commented = False
                 modcount += 1
@@ -968,7 +980,7 @@ def hack_syntax(filename, lines):
             name_pos = wmlfind("name=", name_pos)
         for (key, linenos) in duplist.items():
             if len(linenos) > 1:
-                print 'warning: duplicated attack %s at:' % key
+                print >>sys.stderr, 'warning: duplicated attack %s at:' % key
                 for dup in linenos:
                     print '"%s", %d: %s' % (filename, dup, key)
     # Lift obsolete image_short and image_long tags
