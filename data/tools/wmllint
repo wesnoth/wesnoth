@@ -1059,6 +1059,7 @@ def translator(filename, mapxforms, textxform):
     cont = False
     validate = True
     newdata = []
+    refname = None
     while mfile:
         if not map_only:
             line = mfile.pop(0)
@@ -1066,13 +1067,15 @@ def translator(filename, mapxforms, textxform):
                 sys.stdout.write(line + terminator)
             lineno += 1
         # Check for one certain error condition
-        if "mask" in line and line.count("{") and line.count("}"):
-            maskname = line[line.find("{"):line.rfind("}")]
+        if line.count("{") and line.count("}"):
+            refname = line[line.find("{"):line.rfind("}")]            
             # Ignore all-caps macro arguments.
-            if maskname != maskname.upper() and not maskname.endswith(".mask"):
+            if refname == refname.upper():
+                refname = None
+            if 'mask' in line and refname and not refname.endswith(".mask"):
                 print >>sys.stderr, \
-                      '"%s", line %d: fatal error, mask file without .mask extension' \
-                      % (filename, lineno+1, line[:line.find("}")])
+                      '"%s", line %d: fatal error, mask file without .mask extension (%s)' \
+                      % (filename, lineno+1, refname)
                 sys.exit(1)
         # Exclude map_data= lines that are just 1 line without
         # continuation, or which contain {}.  The former are
@@ -1086,6 +1089,7 @@ def translator(filename, mapxforms, textxform):
             add_border = True
             add_usage = True
             have_header = False
+            maskwarn = False
             maptype = None
             if map_only:
                 if filename.endswith(".mask"):
@@ -1133,6 +1137,11 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = map(lambda x: x, line)
                     outmap.append(fields)
+                    if not maskwarn and maptype == 'map' and "_s" in line:
+                        print >>sys.stderr, \
+                              '"%s", line %d: warning, fog in map file' \
+                              % (filename, lineno+1)
+                        maskwarn = True
             if not map_only:
                 if maptype == "map":
                     newdata.append("map_data=\"" + terminator)
