@@ -926,12 +926,19 @@ def hack_syntax(filename, lines):
                 if frame_start is None:
                     print >>sys.stderr, '"%s", %d: [death] with no frames' % (filename, i)
                     continue
+                # Clear out some old tags
+                for inside in range(frame_start, frame_end):
+                    for remove in ('begin', 'end', 'duration', 'alpha'):
+                        if remove + "=" in lines[inside]:
+                            lines[inside] = ""
+                # Modify the death weapper
                 lines[i] = lines[i].replace("death", "animation")
                 inner = leader(lines[in_death])+baseindent
                 if in_death_commented:
                     inner = "#" + inner
                 lines[in_death] = lines[in_death].replace("death", "animation") \
                                   + inner + "apply_to=death" + "\n"
+                # Modify the last frame in the death animation
                 inner = leader(lines[frame_start]) + baseindent
                 if frame_commented:
                     inner = "#" + inner
