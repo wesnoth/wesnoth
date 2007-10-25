@@ -1,23 +1,25 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
 #
+# Automatically generated, 2004.
+# Santtu Pajukanta <santtu@pajukanta.fi>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
+"Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-21 12:41+0200\n"
-"PO-Revision-Date: 2007-09-29 11:24+0200\n"
-"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2007-10-23 14:11+0300\n"
+"Last-Translator: Santtu Pajukanta <santtu@pajukanta.fi>\n"
+"Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: data/_main.cfg:36
 msgid "Female leaders on MP (if available)"
-msgstr ""
+msgstr "Naispuoliset johtajat moninpelissä (jos saatavilla)"
 
 #: data/_main.cfg:43
 msgid "Binary Saves"
@@ -4699,9 +4701,8 @@ msgid "End Turn"
 msgstr "Lopeta vuoro"
 
 #: data/themes/default.cfg:146 data/themes/dfool.cfg:162
-#, fuzzy
 msgid "End Scenario"
-msgstr "Toisella koneella oleva skenaario"
+msgstr "Lopeta skenaario"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
 #: data/themes/experimental.cfg:182 src/menu_events.cpp:322 src/unit.cpp:2454
@@ -5089,9 +5090,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
 #: src/game.cpp:826
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Kampanja"
+msgstr "Pelaa kampanjaa"
 
 #: src/game.cpp:866
 msgid "Difficulty"
@@ -6501,9 +6501,8 @@ msgid "--no games open--"
 msgstr "--ei avoimia pelejä--"
 
 #: src/multiplayer_lobby.cpp:379
-#, fuzzy
 msgid "Unknown era: $era_id"
-msgstr "Tuntematon aikakausi"
+msgstr "Tuntematon aikakausi: $era_id"
 
 #: src/multiplayer_lobby.cpp:383
 msgid "Unknown era"
@@ -6514,9 +6513,8 @@ msgid "Remote scenario"
 msgstr "Toisella koneella oleva skenaario"
 
 #: src/multiplayer_lobby.cpp:445
-#, fuzzy
 msgid "Unknown scenario: $scenario_id"
-msgstr "Tuntematon skenaario: '$scenario|'"
+msgstr "Tuntematon skenaario: $scenario_id"
 
 #: src/multiplayer_lobby.cpp:449
 msgid "Unknown scenario"
@@ -6892,9 +6890,8 @@ msgstr ""
 "tietokonetta vastaan."
 
 #: src/titlescreen.cpp:324
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Lataa tallennettu yksinpeli."
+msgstr "Lataa tallennettu peli"
 
 #: src/titlescreen.cpp:325
 msgid "Download usermade campaigns, eras, or map packs"
@@ -6937,13 +6934,12 @@ msgid "Unknown unit type '$type|'"
 msgstr "Tuntematon yksikkötyyppi '$type|'"
 
 #: src/unit.cpp:2411 src/unit.cpp:2621 src/unit.cpp:2677
-#, fuzzy
 msgid " and "
-msgstr "hiekkaa"
+msgstr " ja "
 
 #: src/unit.cpp:2422
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2487
 #, fuzzy
@@ -6961,11 +6957,11 @@ msgstr "Liike"
 
 #: src/unit.cpp:2656
 msgid "$effect_description per level"
-msgstr ""
+msgstr "$effect_description tasoa kohden"
 
 #: src/unit.cpp:2686
 msgid "$trait_name|: $trait_description "
-msgstr ""
+msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:183 src/unit_types.cpp:223
 msgid "damage"
@@ -7014,213 +7010,3 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lataaminen"
-
-#~ msgid "race^Lizards"
-#~ msgstr "Liskot"
-
-#~ msgid "Wesnoth unit list"
-#~ msgstr "Wesnothin yksikkölista"
-
-#~ msgid "Based on version"
-#~ msgstr "Perustuu versioon"
-
-#~ msgid "Advance from:"
-#~ msgstr "Ylenee yksiköstä:"
-
-#~ msgid "Choose the campaign you want to play:"
-#~ msgstr "Valitse kampanja, jota haluat pelata:"
-
-#, fuzzy
-#~ msgid " per level"
-#~ msgstr "taso"
-
-#~ msgid "sword"
-#~ msgstr "miekka"
-
-#, fuzzy
-#~ msgid "female^Elvish Lady"
-#~ msgstr "elinvoimainen"
-
-#~ msgid "; "
-#~ msgstr "."
-
-#~ msgid "/level"
-#~ msgstr "/taso"
-
-#~ msgid "+1 max HP"
-#~ msgstr "+1 max EP"
-
-#~ msgid "This water will make melee weapons holy."
-#~ msgstr "Tämä vesi tekee lähitaisteluaseet pyhiksi."
-
-#~ msgid ""
-#~ "and other people\n"
-#~ "this list is very incomplete\n"
-#~ msgstr ""
-#~ "ja muut osallistuneet\n"
-#~ "tämä lista on erittäin epätäydellinen\n"
-
-#~ msgid "Replace with "
-#~ msgstr "Korvaa pelaajalla "
-
-#, fuzzy
-#~ msgid "Races"
-#~ msgstr "Laji"
-
-#~ msgid "Campaign Designer"
-#~ msgstr "Kampanjasuunnittelija"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "Tämänhetkinen ylläpitäjä"
-
-#~ msgid "Music Development"
-#~ msgstr "Musiikkikehitys"
-
-#~ msgid "WML Contributors"
-#~ msgstr "WML-ohjelmoijat"
-
-#~ msgid "Elves"
-#~ msgstr "Haltiat"
-
-#~ msgid "Orcs"
-#~ msgstr "Örkit"
-
-#~ msgid "her"
-#~ msgstr "hänet"
-
-#~ msgid "him"
-#~ msgstr "hänet"
-
-#, fuzzy
-#~ msgid "You will start the next scenario with "
-#~ msgstr "80% kullasta säilyy seuraavaan taisteluun."
-
-#, fuzzy
-#~ msgid "Back"
-#~ msgstr "Musta"
-
-#, fuzzy
-#~ msgid "game settings^Fog"
-#~ msgstr "Kartan asetukset:"
-
-#~ msgid "Can't set abilities yet, sorry."
-#~ msgstr "Pahoittelen, erikoistaitoja ei voi vielä säätää."
-
-#~ msgid "Map size: "
-#~ msgstr "Kartan koko:"
-
-#~ msgid "Credits"
-#~ msgstr "Tekijät"
-
-#, fuzzy
-#~ msgid "Unit art"
-#~ msgstr "Yksiköiden lista"
-
-#, fuzzy
-#~ msgid "Map art"
-#~ msgstr "Kartta"
-
-#~ msgid "mace"
-#~ msgstr "helanuija"
-
-#~ msgid "sling"
-#~ msgstr "linko"
-
-#, fuzzy
-#~ msgid "female^Fugitive"
-#~ msgstr "Soturi"
-
-#, fuzzy
-#~ msgid "Highwayman"
-#~ msgstr "Keihäsmies"
-
-#, fuzzy
-#~ msgid "Outlaw Ranger"
-#~ msgstr "Lainsuojaton"
-
-#~ msgid "bow"
-#~ msgstr "jousi"
-
-#~ msgid "None"
-#~ msgstr "Ei mitään"
-
-#~ msgid "Elven Castle"
-#~ msgstr "Haltialinna"
-
-#~ msgid "Dwarven Castle"
-#~ msgstr "kääpiölinna"
-
-#~ msgid "Ruin"
-#~ msgstr "raunioita"
-
-#~ msgid "Sunken Ruin"
-#~ msgstr "uponneita raunioita"
-
-#~ msgid "Swamp Ruin"
-#~ msgstr "soistuneita raunioita"
-
-#~ msgid "Encampment keep"
-#~ msgstr "Leiri"
-
-#~ msgid "Keep"
-#~ msgstr "linnake"
-
-#~ msgid "Elven Keep"
-#~ msgstr "Haltialinnake"
-
-#~ msgid "Dwarven keep"
-#~ msgstr "kääpiölinnake"
-
-#~ msgid "Ruined keep"
-#~ msgstr "Raunioitunut linnake"
-
-#~ msgid "Sunken keep"
-#~ msgstr "Uponnut linnake"
-
-#~ msgid "Swamp keep"
-#~ msgstr "Suolinnake"
-
-#~ msgid "Crater"
-#~ msgstr "Kraateri"
-
-#~ msgid "Rubble"
-#~ msgstr "Kivimurska"
-
-#~ msgid "Oasis"
-#~ msgstr "keidas"
-
-#~ msgid "Snow Forest"
-#~ msgstr "lumista metsää"
-
-#~ msgid "Great Tree"
-#~ msgstr "suuri puu"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "trooppista metsää"
-
-#~ msgid "Snow Hills"
-#~ msgstr "lumisia mäkiä"
-
-#~ msgid "Dunes"
-#~ msgstr "hiekkadyynejä"
-
-#~ msgid "Desert road"
-#~ msgstr "Aavikkotie"
-
-#~ msgid "Dirt"
-#~ msgstr "mutaa"
-
-#~ msgid "Farmland"
-#~ msgstr "Peltomaa"
-
-#~ msgid "Cave Lit"
-#~ msgstr "valoisa luola"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Valaistu louhikkoluola"
-
-#~ msgid "Impassable Mountains"
-#~ msgstr "ylitsepääsemätön vuoristo"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Ylitsepääsemätön aavikkovuoristo"
