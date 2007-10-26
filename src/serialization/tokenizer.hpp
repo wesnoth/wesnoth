@@ -46,31 +46,62 @@ struct token
 	std::string value;
 };
 
+//! Abstract baseclass for the tokenizer
 class tokenizer
 {
 public:
-	tokenizer(std::istream& in);
+	tokenizer();
+	virtual ~tokenizer() {}
 
 	const token& next_token();
 	const token& current_token();
 	std::string get_line();
 	std::string& textdomain();
+
+protected:
+	int current_;
+	size_t lineno_;
+
+	virtual void next_char() = 0;
+	virtual int peek_char() = 0;
 private:
-	void next_char();
-	int peek_char();
 	bool is_space(int c);
 	bool is_alnum(int c);
 	void skip_comment();
 
-	std::istream& in_;
-	int current_;
-
 	std::string textdomain_;
 	std::string file_;
 	size_t tokenstart_lineno_;
-	size_t lineno_;
 	token token_;
 };
 
+//! tokenizer which uses an istream as input
+class tokenizer_stream : public tokenizer
+{
+public:
+	tokenizer_stream(std::istream& in);
+
+protected:
+	void next_char();
+	int peek_char();
+
+private:
+	std::istream& in_;
+};
+
+//! tokenizer which uses an string as input
+class tokenizer_string : public tokenizer
+{
+public:
+	tokenizer_string(std::string& in);
+
+protected:
+	void next_char();
+	int peek_char();
+
+private:
+	std::string& in_;
+	size_t offset_;
+};
 #endif
 

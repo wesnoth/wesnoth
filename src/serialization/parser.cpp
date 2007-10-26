@@ -46,8 +46,13 @@ namespace {
 
 class parser
 {
+	parser();
+	parser(const parser&);
+	parser& operator=(const parser&);
 public:
 	parser(config& cfg, std::istream& in);
+	parser(config& cfg, std::string& in);
+	~parser();
 	void operator() (std::string* error_log=NULL);
 
 private:
@@ -59,7 +64,7 @@ private:
 	void error(const std::string& message);
 
 	config& cfg_;
-	tokenizer tok_;
+	tokenizer *tok_;
 
 	struct element {
 		element(config *cfg, std::string const &name, std::string const &start_line)
@@ -76,8 +81,20 @@ private:
 };
 
 parser::parser(config &cfg, std::istream &in)
-	: cfg_(cfg), tok_(in)
+	: cfg_(cfg), tok_(new tokenizer_stream(in))
 {
+}
+
+parser::parser(config &cfg, std::string &in)
+	: cfg_(cfg), tok_(new tokenizer_string(in))
+{
+}
+
+parser::~parser()
+{
+	if(tok_) {
+		delete tok_;
+	}
 }
 
 void parser::operator()(std::string* error_log)
@@ -87,9 +104,9 @@ void parser::operator()(std::string* error_log)
 
 	do {
 		try {
-			tok_.next_token();
+			tok_->next_token();
 
-			switch(tok_.current_token().type) {
+			switch(tok_->current_token().type) {
 			case token::LF:
 				continue;
 			case '[':
@@ -109,15 +126,15 @@ void parser::operator()(std::string* error_log)
 				throw;
 
 			// On error, dump tokens to the next LF
-			while(tok_.current_token().type != token::LF &&
-					tok_.current_token().type != token::END) {
-				tok_.next_token();
+			while(tok_->current_token().type != token::LF &&
+					tok_->current_token().type != token::END) {
+				tok_->next_token();
 			}
 
 			*error_log += e.message + '\n';
 		}
 		increment_parser_progress();
-	} while (tok_.current_token().type != token::END);
+	} while (tok_->current_token().type != token::END);
 
 	// The main element should be there. If it is not, this is a parser error.
 	wassert(!elements.empty());
@@ -132,28 +149,28 @@ void parser::operator()(std::string* error_log)
 
 void parser::parse_element()
 {
-	tok_.next_token();
+	tok_->next_token();
 	std::string elname;
 	config* current_element = NULL;
 	std::map<std::string, config*>::const_iterator last_element_itor;
 
-	switch(tok_.current_token().type) {
+	switch(tok_->current_token().type) {
 	case token::STRING: // [element]
-		elname = tok_.current_token().value;
-		if (tok_.next_token().type != ']')
+		elname = tok_->current_token().value;
+		if (tok_->next_token().type != ']')
 			error(_("Unterminated [element] tag"));
 
 		// Add the element
 		current_element = &(elements.top().cfg->add_child(elname));
 		elements.top().last_element_map[elname] = current_element;
-		elements.push(element(current_element, elname, tok_.get_line()));
+		elements.push(element(current_element, elname, tok_->get_line()));
 		break;
 
 	case '+': // [+element]
-		if (tok_.next_token().type != token::STRING)
+		if (tok_->next_token().type != token::STRING)
 			error(_("Invalid tag name"));
-		elname = tok_.current_token().value;
-		if (tok_.next_token().type != ']')
+		elname = tok_->current_token().value;
+		if (tok_->next_token().type != ']')
 			error(_("Unterminated [+element] tag"));
 
 		// Find the last child of the current element whose name is
@@ -165,14 +182,14 @@ void parser::parse_element()
 			current_element = last_element_itor->second;
 		}
 		elements.top().last_element_map[elname] = current_element;
-		elements.push(element(current_element, elname, tok_.get_line()));
+		elements.push(element(current_element, elname, tok_->get_line()));
 		break;
 
 	case '/': // [/element]
-		if(tok_.next_token().type != token::STRING)
+		if(tok_->next_token().type != token::STRING)
 			error(_("Invalid closing tag name"));
-		elname = tok_.current_token().value;
-		if(tok_.next_token().type != ']')
+		elname = tok_->current_token().value;
+		if(tok_->next_token().type != ']')
 			error(_("Unterminated closing tag"));
 		if(elements.size() <= 1)
 			error(_("Unexpected closing tag"));
@@ -197,12 +214,12 @@ void parser::parse_variable()
 	std::vector<std::string> variables;
 	variables.push_back("");
 
-	while (tok_.current_token().type != '=') {
-		switch(tok_.current_token().type) {
+	while (tok_->current_token().type != '=') {
+		switch(tok_->current_token().type) {
 		case token::STRING:
 			if(!variables.back().empty())
 				variables.back() += ' ';
-			variables.back() += tok_.current_token().value;
+			variables.back() += tok_->current_token().value;
 			break;
 		case ',':
 			if(variables.back().empty()) {
@@ -215,7 +232,7 @@ void parser::parse_variable()
 			error(_("Unexpected characters after variable name (expected , or =)"));
 			break;
 		}
-		tok_.next_token();
+		tok_->next_token();
 	}
 	if(variables.back().empty())
 		error(_("Empty variable name"));
@@ -230,10 +247,10 @@ void parser::parse_variable()
 
 	bool ignore_next_newlines = false;
 	while(1) {
-		tok_.next_token();
+		tok_->next_token();
 		wassert(curvar != variables.end());
 
-		switch (tok_.current_token().type) {
+		switch (tok_->current_token().type) {
 		case ',':
 			if ((curvar+1) != variables.end()) {
 				curvar++;
@@ -244,17 +261,17 @@ void parser::parse_variable()
 			}
 			break;
 		case '_':
-			tok_.next_token();
-			switch (tok_.current_token().type) {
+			tok_->next_token();
+			switch (tok_->current_token().type) {
 			case token::UNTERMINATED_QSTRING:
 				error(_("Unterminated quoted string"));
 				break;
 			case token::QSTRING:
-				cfg[*curvar] += t_string(tok_.current_token().value, tok_.textdomain());
+				cfg[*curvar] += t_string(tok_->current_token().value, tok_->textdomain());
 				break;
 			default:
 				cfg[*curvar] += "_";
-				cfg[*curvar] += tok_.current_token().value;
+				cfg[*curvar] += tok_->current_token().value;
 				break;
 			case token::END:
 			case token::LF:
@@ -265,10 +282,10 @@ void parser::parse_variable()
 			// Ignore this
 			break;
 		default:
-			cfg[*curvar] += tok_.current_token().leading_spaces + tok_.current_token().value;
+			cfg[*curvar] += tok_->current_token().leading_spaces + tok_->current_token().value;
 			break;
 		case token::QSTRING:
-			cfg[*curvar] += tok_.current_token().value;
+			cfg[*curvar] += tok_->current_token().value;
 			break;
 		case token::UNTERMINATED_QSTRING:
 			error(_("Unterminated quoted string"));
@@ -281,9 +298,9 @@ void parser::parse_variable()
 			return;
 		}
 
-		if (tok_.current_token().type == '+') {
+		if (tok_->current_token().type == '+') {
 			ignore_next_newlines = true;
-		} else if (tok_.current_token().type != token::LF) {
+		} else if (tok_->current_token().type != token::LF) {
 			ignore_next_newlines = false;
 		}
 	}
@@ -314,15 +331,20 @@ void parser::error(const std::string& error_type)
 	i18n_symbols["error"] = error_type;
 
 	throw config::error(
-		lineno_string(i18n_symbols, tok_.get_line(),
+		lineno_string(i18n_symbols, tok_->get_line(),
 		              N_("$error at $pos")));
 }
 
 } // end anon namespace
 
-void read(config &cfg, std::istream &data_in, std::string* error_log)
+void read(config &cfg, std::istream &in, std::string* error_log)
 {
-	parser(cfg, data_in)(error_log);
+	parser(cfg, in)(error_log);
+}
+
+void read(config &cfg, std::string &in, std::string* error_log)
+{
+	parser(cfg, in)(error_log);
 }
 
 static char const *AttributeEquals = "=";

@@ -23,15 +23,14 @@
 #include <iostream>
 #include <sstream>
 
-tokenizer::tokenizer(std::istream& in) :
-	in_(in),
-	lineno_(1)
+tokenizer::tokenizer() :
+	current_(EOF),
+	lineno_(1),
+	textdomain_(),
+	file_(),
+	tokenstart_lineno_(),
+	token_()
 {
-	if(in_.good()) {
-		current_ = in_.get();
-	} else {
-		current_ = EOF;
-	}
 }
 
 void tokenizer::skip_comment()
@@ -142,24 +141,6 @@ const token& tokenizer::current_token()
 	return token_;
 }
 
-void tokenizer::next_char()
-{
-	if (current_ == '\n')
-		lineno_++;
-
-	do {
-		if(in_.good()) {
-			current_ = in_.get();
-		} else {
-			current_ = EOF;
-		}
-	} while(current_ == '\r');
-}
-
-int tokenizer::peek_char()
-{
-	return in_.peek();
-}
 
 bool tokenizer::is_space(int c)
 {
@@ -182,3 +163,62 @@ std::string& tokenizer::textdomain()
 {
 	return textdomain_;
 }
+
+
+tokenizer_string::tokenizer_string(std::string& in) :
+	in_(in),
+	offset_(0)
+{
+	next_char();
+}
+
+
+tokenizer_stream::tokenizer_stream(std::istream& in) :
+	in_(in)
+{
+	if(in_.good()) {
+		current_ = in_.get();
+	}
+}
+
+void tokenizer_stream::next_char()
+{
+	if (current_ == '\n')
+		lineno_++;
+
+	do {
+		if(in_.good()) {
+			current_ = in_.get();
+		} else {
+			current_ = EOF;
+		}
+	} while(current_ == '\r');
+}
+
+int tokenizer_stream::peek_char()
+{
+	return in_.peek();
+}
+
+
+void tokenizer_string::next_char()
+{
+
+	if (current_ == '\n')
+		lineno_++;
+
+	do {
+		if(offset_ + 1< in_.size()) {
+			current_ = in_[++offset_];
+		} else {
+			current_ = EOF;
+		}
+	} while(current_ == '\r');
+	
+}
+
+int tokenizer_string::peek_char()
+{
+	return in_[offset_ + 1];
+}
+
