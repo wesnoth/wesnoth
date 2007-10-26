@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-26 15:26+0200\n"
-"PO-Revision-Date: 2007-10-21 11:47+0100\n"
+"PO-Revision-Date: 2007-10-26 18:36+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,6 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 
-# !!!! zkontrolovat jestli se to vejde do okna
 #: data/_main.cfg:36
 msgid "Female leaders on MP (if available)"
 msgstr "Ženské varianty vůdců ve hře více hráčů (pokud existují)"
@@ -6275,10 +6274,10 @@ msgstr "Hráč/Typ"
 msgid "Faction"
 msgstr "Frakce"
 
+# a něco neutrálnějšího by nebylo?
 #: src/multiplayer_connect.cpp:813
-#, fuzzy
 msgid "Team/Gender"
-msgstr "Obránce"
+msgstr "Tým / pohlaví"
 
 #: src/multiplayer_connect.cpp:814
 msgid "Color"
@@ -6909,9 +6908,8 @@ msgstr ""
 "Hrej hru více hráčů (horké křeslo, LAN nebo Internet) nebo proti počítači"
 
 #: src/titlescreen.cpp:324
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Načtení hry pro jednoho hráče"
+msgstr "Načtení uložené hry"
 
 #: src/titlescreen.cpp:325
 msgid "Download usermade campaigns, eras, or map packs"
@@ -6962,7 +6960,6 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2481
-#, fuzzy
 msgid "moves"
 msgstr "kroků"
 
@@ -6971,7 +6968,6 @@ msgid "XP to advance"
 msgstr "zkušenostních bodů k postupu"
 
 #: src/unit.cpp:2634
-#, fuzzy
 msgid " move"
 msgstr " krok"
 
