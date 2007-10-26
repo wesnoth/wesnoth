@@ -124,25 +124,39 @@ public:
 	bool is_keep(const location& loc) const
 		{ return on_board(loc) && is_keep(get_terrain(loc)); }
 
+	enum tborder {
+		NO_BORDER = 0,
+		SINGLE_TILE_BORDER
+		};
+	
+	enum tusage {
+		IS_MAP,
+		IS_MASK
+		};
+
 	//loads a map, with the given terrain configuration.
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
 	//and will be of type keep.
-	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
-	void read(const std::string& data);
+	gamemap(const config& terrain_cfg, const std::string& data,
+		const tborder border_tiles, const tusage usage); //throw(incorrect_format_exception)
+	void read(const std::string& data, const tborder border_tiles, const tusage usage);
 
 	std::string write() const;
 
 	//overlays another map onto this one at the given position.
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
 
-	//dimensions of the map.
+	// effective dimensions of the map.
 	int w() const { return w_; }
 	int h() const { return h_; }
 
-	//allows lookup of terrain at a particular location.
-	const t_translation::t_list& operator[](int index) const
-		{ return tiles_[index]; }
+	// real dimension of the map, including borders
+	int total_width() const { return total_width_; }
+	int total_height() const { return total_height_; }
+
+	const t_translation::t_letter operator[](const gamemap::location& loc) const
+		{ return tiles_[loc.x + border_size_][loc.y + border_size_]; }
 
 	//looks up terrain at a particular location. Hexes off the map
 	//may be looked up, and their 'emulated' terrain will also be returned.
@@ -162,10 +176,7 @@ public:
 
 	//function which, given a location, will tell if that location is
 	//on the map. Should be called before indexing using []
-	bool on_board(const location& loc) const
-	{
-		return loc.valid(w_, h_);
-	}
+	bool on_board(const location& loc, const bool include_border = false) const;
 
 	//function to tell if the map is of 0 size.
 	bool empty() const
@@ -206,6 +217,15 @@ public:
 	//STARTING_POSITIONS - 1
 	enum { STARTING_POSITIONS = 10 };
 
+	//! Retuns the usage of the map.
+	tusage get_usage() const { return usage_; }
+
+	//! The default map header, needed for maps created with 
+	//! terrain_translation::write_game_map().
+	static const std::string default_map_header;
+	//! The default border style for a map
+	static const tborder default_border = SINGLE_TILE_BORDER;
+
 protected:
 	t_translation::t_map tiles_;
 	location startingPositions_[STARTING_POSITIONS];
@@ -214,9 +234,18 @@ protected:
 	 * Clears the border cache, needed for the editor
 	 */
 	void clear_border_cache() { borderCache_.clear(); }
+
+	//! Sizes of the map including the borders.
+	int total_width_;
+	int total_height_;
+
 private:
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
+
+	//allows lookup of terrain at a particular location.
+	const t_translation::t_list operator[](int index) const
+		{ return tiles_[index + border_size_]; }
 
 	t_translation::t_list terrainList_;
 	std::map<t_translation::t_letter, terrain_type> letterToTerrain_;
@@ -225,8 +254,14 @@ private:
 	mutable std::map<location, t_translation::t_letter> borderCache_;
 	mutable std::map<t_translation::t_letter, size_t> terrainFrequencyCache_;
 
+	//! Sizes of the map area.
 	int w_;
 	int h_;
+
+	//! The size of the border around the map.
+	int border_size_;
+	//! The kind of map is being loaded.
+	tusage usage_;
 };
 
 class viewpoint

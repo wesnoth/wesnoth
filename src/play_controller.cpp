@@ -39,7 +39,7 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
 	generator_setter(&recorder), statistics_context_(level["name"]), gameinfo_(gameinfo), level_(level), game_config_(game_config),
 	gamestate_(state_of_game), status_(level, num_turns, &state_of_game),
-	map_(game_config, level["map_data"]), ticks_(ticks),
+	map_(game_config, level["map_data"], gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP), ticks_(ticks),
 	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1), player_number_(1),
@@ -144,7 +144,7 @@ static int placing_score(const config& side, const gamemap& map, const gamemap::
 			const gamemap::location pos(i,j);
 			if(map.on_board(pos)) {
 				++positions;
-				if(std::count(terrain.begin(),terrain.end(),map[i][j])) {
+				if(std::count(terrain.begin(),terrain.end(),map[pos])) {
 					++liked;
 				}
 			}

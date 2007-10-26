@@ -155,15 +155,13 @@ void editormap::swap_starting_position(const size_t x1, const size_t y1,
 void editormap::add_tiles_right(
 	const unsigned count, const t_translation::t_letter& filler)
 {
-//	std::cerr << "add right " << count << '\n';
-
 	for(size_t x = 1; x <= count; ++x) {
-		t_translation::t_list one_row(h());
+		t_translation::t_list one_row(total_height_);
 		for(size_t y = 0; y < tiles_[1].size(); ++y) {
 			one_row[y] =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
-				get_terrain(gamemap::location(x - 1, y));
+				tiles_[x - 1][y];
 
 			wassert(one_row[y] != t_translation::NONE_TERRAIN);
 		}
@@ -174,15 +172,13 @@ void editormap::add_tiles_right(
 void editormap::add_tiles_left(
 	const unsigned count, const t_translation::t_letter& filler)
 {
-//	std::cerr << "add left " << count << '\n';
-
 	for(size_t i = 1; i <= count; ++i) {
-		t_translation::t_list one_row(h());
+		t_translation::t_list one_row(total_height_);
 		for(size_t y = 0; y < tiles_[1].size(); ++y) {
 			one_row[y] =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
-				get_terrain(gamemap::location(-1, y));
+				tiles_[0][y];
 
 			wassert(one_row[y] != t_translation::NONE_TERRAIN);
 		}
@@ -193,8 +189,6 @@ void editormap::add_tiles_left(
 
 void editormap::remove_tiles_right(const unsigned count)
 {
-//	std::cerr << "remove right " << count << '\n';
-
 	if(count > tiles_.size()) {
 		std::stringstream sstr;
 		sstr << _("Can't resize the map, the requested size is bigger "
@@ -209,8 +203,6 @@ void editormap::remove_tiles_right(const unsigned count)
 
 void editormap::remove_tiles_left(const unsigned count)
 {
-//	std::cerr << "remove left " << count << '\n';
-
 	if(count > tiles_.size()) {
 		std::stringstream sstr;
 		sstr << _("Can't resize the map, the requested size is bigger "
@@ -226,14 +218,12 @@ void editormap::remove_tiles_left(const unsigned count)
 void editormap::add_tiles_top(
 	const unsigned count, const t_translation::t_letter& filler)
 {
-//	std::cerr << "add top " << count << '\n';
-
 	for(size_t i =  1; i <= count; ++i) {
 		for(size_t y = 0; y < tiles_.size(); ++y) {
 			t_translation::t_letter terrain =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
-				get_terrain(gamemap::location(y, -1));
+				tiles_[y][0];
 
 			wassert(terrain != t_translation::NONE_TERRAIN);
 			tiles_[y].insert(tiles_[y].begin(), 1, terrain);
@@ -245,14 +235,12 @@ void editormap::add_tiles_top(
 void editormap::add_tiles_bottom(
 	const unsigned count, const t_translation::t_letter& filler)
 {
-//	std::cerr << "add bottom " << count << '\n';
-
 	for(size_t i =  1; i <= count; ++i) {
 		for(size_t x = 0; x < tiles_.size(); ++x) {
 			t_translation::t_letter terrain =
 				filler != t_translation::NONE_TERRAIN ?
 				filler :
-				get_terrain(gamemap::location(x, i - 1));
+				tiles_[x][i - 1];
 
 			wassert(terrain != t_translation::NONE_TERRAIN);
 			tiles_[x].push_back(terrain);
@@ -262,8 +250,6 @@ void editormap::add_tiles_bottom(
 
 void editormap::remove_tiles_top(const unsigned count)
 {
-//	std::cerr << "remove top " << count << '\n';
-
 	if(count > tiles_[0].size()) {
 		std::stringstream sstr;
 		sstr << _("Can't resize the map, the requested size is bigger "
@@ -280,8 +266,6 @@ void editormap::remove_tiles_top(const unsigned count)
 
 void editormap::remove_tiles_bottom(const unsigned count)
 {
-//	std::cerr << "remove bottom " << count << '\n';
-
 	if(count > tiles_[0].size()) {
 		std::stringstream sstr;
 		sstr << _("Can't resize the map, the requested size is bigger "
@@ -319,7 +303,7 @@ std::vector<gamemap::location> get_tiles(const gamemap &map,
 		for (i = 0; i < 6; i++) {
 			for (unsigned int j = 1; j <= d; j++) {
 				loc = loc.get_direction(direction[i], 1);
-				if (map.on_board(loc)) {
+				if (map.on_board(loc, true)) {
 					res.push_back(loc);
 				}
 			}
@@ -368,7 +352,7 @@ std::set<gamemap::location> get_component(const gamemap &map,
 		std::vector<gamemap::location> adj = get_tiles(map, loc, 2);
 		for (std::vector<gamemap::location>::iterator it2 = adj.begin();
 			 it2 != adj.end(); it2++) {
-			if (map.on_board(*it2) && map.get_terrain(*it2) == terrain_to_fill
+			if (map.on_board(*it2, true) && map.get_terrain(*it2) == terrain_to_fill
 				&& filled.find(*it2) == filled.end()) {
 				to_fill.insert(*it2);
 			}
@@ -394,7 +378,7 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	// Create a map and see if we get an exception. Not very efficient,
 	// but simple as things are implemented now.
 	try {
-		const gamemap m(cfg, data);
+		const gamemap m(cfg, data, gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
 		// Having a zero size map may cause floating point exceptions
 		// at some places later on.
 		res = m.w() != 0 && m.h() != 0;
@@ -410,7 +394,10 @@ std::string new_map(const size_t width, const size_t height, const t_translation
 	const t_translation::t_list column(height, filler);
 	const t_translation::t_map map(width, column);
 
-	return t_translation::write_game_map(map);
+	// @todo these should be parameters
+	const std::string& header = "border_size = 1\nusage = map";
+
+	return header + "\n\n" + t_translation::write_game_map(map);
 
 }
 

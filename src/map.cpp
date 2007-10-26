@@ -24,6 +24,7 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/parser.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -40,6 +41,8 @@ std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 }
 
 gamemap::location gamemap::location::null_location;
+
+const std::string gamemap::default_map_header = "usage = map\nborder_size=1\n\n";
 
 const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
 {
@@ -274,32 +277,131 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 	}
 }
 
-gamemap::gamemap(const config& cfg, const std::string& data) :
+//! gamemap constructor
+//! 
+//! @param cfg          the game config
+//! @param data			the mapdata to load
+//! @param border_tiles the type of border the map has
+//!                     @todo parameter will be removed in 1.3.14 
+//! @param usage        the type of map it being read
+//!                     @todo parameter will be removed in 1.3.14 
+gamemap::gamemap(const config& cfg, const std::string& data,
+	 const tborder border_tiles, const tusage usage) : 
 		tiles_(1), 
+		total_width_(0),
+		total_height_(0),
 		terrainList_(),
 		letterToTerrain_(),
 		villages_(),
 		borderCache_(),
 		terrainFrequencyCache_(),
 		w_(-1), 
-		h_(-1)
+		h_(-1),
+		border_size_(border_tiles),
+		usage_(usage) 
 {
 	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainList_,letterToTerrain_);
 
-	read(data);
+	read(data, border_tiles, usage);
 }
 
-void gamemap::read(const std::string& data)
+//! Reads a map 
+//!
+//! @param data			the mapdata to load
+//! @param border_tiles the type of border the map has
+//!                     @todo parameter will be removed in 1.3.14 
+//! @param usage        the type of map it being read
+//!                     @todo parameter will be removed in 1.3.14 
+void gamemap::read(const std::string& data, const tborder border_tiles, const tusage usage)
 {
+	// Initial stuff
 	tiles_.clear();
 	villages_.clear();
-	std::fill(startingPositions_,startingPositions_+sizeof(startingPositions_)/sizeof(*startingPositions_),location());
+	std::fill(startingPositions_, startingPositions_ + 
+		sizeof(startingPositions_) / sizeof(*startingPositions_), location());
 	std::map<int, t_translation::coordinate> starting_positions;
 
+	if(data.empty()) {
+		return;
+	}
+
+	// Test whether there's a header section
+	const size_t header_offset = data.find("\n\n");
+	const size_t comma_offset = data.find(",");
+	bool add_tiles = false;
+	std::string map;
+	// the header shouldn't contain comma's so if the comma is found before the header
+	// we hit a \n\n inside or after a map. This is no header so don't parse it as it would be.
+	if(header_offset == std::string::npos || comma_offset < header_offset) {
+		// The cutoff for backwards compatibility is longer as normal,
+		// because after the compatibility is removed the minimum 
+		// savegame version should be set to 1.3.10
+		lg::wml_error<<"A map without a header section is deprecated, support will be removed in 1.3.14\n";
+
+		border_size_ = border_tiles;
+		usage_ = usage;
+		add_tiles = (border_size_ != 0);
+		map = data;
+	} else {
+
+		std::string header_str(std::string(data, 0, header_offset + 1));
+		config header;
+		::read(header, header_str);
+
+		border_size_ = lexical_cast_default<int>(header["border_size"], 0);
+		const std::string usage = header["usage"];
+
+		if(usage == "map") {
+			usage_ = IS_MAP;
+		} else if(usage == "mask") {
+			usage_ = IS_MASK;
+		} else if(usage == "") {
+			throw incorrect_format_exception("Map has a header but no usage");
+		} else {
+			std::string msg = "Map has a header but an unknown usage:" + usage;
+			throw incorrect_format_exception(msg.c_str());
+		}
+
+		map = std::string(data, header_offset + 2);
+	}
+
 	try {
-		tiles_ = t_translation::read_game_map(data, starting_positions);
+		tiles_ = t_translation::read_game_map(map, starting_positions);
+
+		if(border_tiles && add_tiles) {
+			// deprecated code remove at 1.3.14, there already has been a warning.
+				
+			// add the tiles at the top and bottom
+			for(std::vector<std::vector<t_translation::t_letter> >::iterator itor = 
+					tiles_.begin(); itor != tiles_.end(); ++itor) {
+
+				itor->insert(itor->begin(), t_translation::OFF_MAP_USER);
+				itor->push_back(t_translation::OFF_MAP_USER);
+			}
+
+			// add the tiles at the left and right side
+			if(tiles_.size() != 0) {
+				std::vector<t_translation::t_letter> 
+					column(tiles_[0].size(), t_translation::OFF_MAP_USER);
+
+				tiles_.insert(tiles_.begin(), column);
+				tiles_.push_back(column);
+			}
+		} else {
+			// Fix the starting positions, this code will still be needed after
+			// 1.3.14, but can be merged with the conversion of the starting
+			// positions array.
+			for(std::map<int, t_translation::coordinate>::iterator itor1 =
+					starting_positions.begin(); 
+					itor1 != starting_positions.end(); ++itor1) {
+				
+				--(itor1->second.x);
+				--(itor1->second.y);
+			}
+		}
+
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error. 
 		// Since all codepaths test for this, it's the least work.
@@ -317,7 +419,8 @@ void gamemap::read(const std::string& data)
 		// so the offset 0 in the array is never used.
 		if(itor->first < 1 || itor->first >= STARTING_POSITIONS) {
 			ERR_CF << "Starting position " << itor->first << " out of range\n";
-			throw incorrect_format_exception("Illegal starting position found in map. The scenario cannot be loaded.");
+			throw incorrect_format_exception("Illegal starting position found"
+				" in map. The scenario cannot be loaded.");
 		}
 
 		// Add to the starting position array
@@ -325,12 +428,13 @@ void gamemap::read(const std::string& data)
 	}
 
 	// Post processing on the map
-	const int width = tiles_.size();
-	const int height = width > 0 ? tiles_[0].size() : 0;
-	w_ = width;
-	h_ = height;
-	for(int x = 0; x < width; ++x) {
-		for(int y = 0; y < height; ++y) {
+	total_width_ = tiles_.size();
+	total_height_ = total_width_ > 0 ? tiles_[0].size() : 0;
+	w_ = total_width_ - 2 * border_size_;
+	h_ = total_height_ - 2 * border_size_;
+
+	for(int x = 0; x < total_width_; ++x) {
+		for(int y = 0; y < total_height_; ++y) {
 			
 			// Is the terrain valid? 
 			if(letterToTerrain_.count(tiles_[x][y]) == 0) {
@@ -340,7 +444,9 @@ void gamemap::read(const std::string& data)
 			}
 
 			// Is it a village?
-			if(is_village(tiles_[x][y])) {
+			if(x >= border_size_ && x < w_ && y >= border_size_ && y < h_ &&
+					is_village(tiles_[x][y])) {
+
 				villages_.push_back(location(x, y));
 			}
 		}
@@ -362,7 +468,10 @@ std::string gamemap::write() const
 	}
 
 	// Let the low level convertor do the conversion
-	return t_translation::write_game_map(tiles_, starting_positions);
+	const std::string& data = t_translation::write_game_map(tiles_, starting_positions);
+	const std::string& header = "border_size = " + lexical_cast<std::string>(border_size_) 
+		+ "\nusage = " + (usage_ == IS_MAP ? "map" : "mask");
+	return header + "\n\n" + data;
 }
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos, const int ypos)
@@ -381,8 +490,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 			if (y2 < 0 || y2 >= h()) {
 				continue;
 			}
-			const t_translation::t_letter t = m[x1][y1];
-			const t_translation::t_letter current = (*this)[x2][y2];
+			const t_translation::t_letter t = m[x1][y1 + m.border_size_];
+			const t_translation::t_letter current = (*this)[x2][y2 + border_size_];
 
 			if(t == t_translation::FOGGED || t == t_translation::VOID_TERRAIN) {
 				continue;
@@ -450,8 +559,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos,
 t_translation::t_letter gamemap::get_terrain(const gamemap::location& loc) const
 {
 
-	if(on_board(loc)) {
-		return tiles_[loc.x][loc.y];
+	if(on_board(loc, true)) {
+		return tiles_[loc.x + border_size_][loc.y + border_size_];
 	}
 
 	const std::map<location, t_translation::t_letter>::const_iterator itor = borderCache_.find(loc);
@@ -546,6 +655,18 @@ void gamemap::set_starting_position(int side, const gamemap::location& loc)
 	}
 }
 
+bool gamemap::on_board(const location& loc, const bool include_border) const
+{
+	if(!include_border) {
+		return loc.valid() && loc.x < w_ && loc.y < h_;
+	} else if(tiles_.empty()) {
+		return false;
+	} else {
+		return loc.x >= (0 - border_size_) && loc.x < (w_ + border_size_) && 
+			loc.y >= (0 - border_size_) && loc.y < (h_ + border_size_);
+	}
+}
+
 const terrain_type& gamemap::get_terrain_info(const t_translation::t_letter terrain) const
 {
 	static const terrain_type default_terrain;
@@ -620,8 +741,10 @@ bool gamemap::location::matches_range(const std::string& xloc, const std::string
 
 void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_letter terrain)
 {
-	if(!on_board(loc))
+	if(!on_board(loc, true)) {
+		// off the map ignore request
 		return;
+	}
 
 	const bool old_village = is_village(loc);
 	const bool new_village = is_village(terrain);
@@ -632,14 +755,9 @@ void gamemap::set_terrain(const gamemap::location& loc, const t_translation::t_l
 		villages_.push_back(loc);
 	}
 
-	tiles_[loc.x][loc.y] = terrain;
+	tiles_[loc.x + border_size_][loc.y + border_size_] = terrain;
 
-	// Temp hack, since the border can have multiple tiles.
-	// Depending on each other, every change has to invalidate the cache. 
-	// Once the border tiles are part of the map, this hack is no longer required.
-	borderCache_.clear();
-	return;
-
+	// update the off map autogenerated tiles
 	location adj[6];
 	get_adjacent_tiles(loc,adj);
 

@@ -301,7 +301,7 @@ int main(int argc, char** argv)
 	::init_textdomains(cfg);
 
 	if(mapdata.empty()) {
-		mapdata = map_editor::new_map(20, 20, t_translation::GRASS_LAND);
+		mapdata = map_editor::new_map(22, 22, t_translation::GRASS_LAND);
 	}
 
 	srand(time(NULL));
@@ -319,7 +319,8 @@ int main(int argc, char** argv)
 	while (!done) {
 		try {
 			std::cerr << "creating map...\n";
-			editormap map(cfg, mapdata);
+			//! @todo allow the editor to also create mask maps
+			editormap map(cfg, mapdata, gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
 
 			const config dummy_cfg;
 			editor_display gui(video, map, *theme_cfg, cfg, dummy_cfg);

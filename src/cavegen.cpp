@@ -39,6 +39,9 @@ cave_map_generator::cave_map_generator(const config* cfg) : wall_(t_translation:
 
 	width_ = atoi((*cfg_)["map_width"].c_str());
 	height_ = atoi((*cfg_)["map_height"].c_str());
+	width_ += 2 * gamemap::default_border;
+	height_ += 2 * gamemap::default_border;
+
 	village_density_ = atoi((*cfg_)["village_density"].c_str());
 
 	const int r = rand()%100;
@@ -103,7 +106,8 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 
 	LOG_NG << "outputting map....\n";
 
-	res_["map_data"] = t_translation::write_game_map(map_, starting_positions_);
+	res_["map_data"] = gamemap::default_map_header + 
+		t_translation::write_game_map(map_, starting_positions_);
 
 	LOG_NG << "returning result...\n";
 

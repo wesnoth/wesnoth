@@ -1885,7 +1885,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 	std::vector<gamemap::location>::const_iterator step;
 	std::string ambushed_string;
 	for(step = route.begin()+1; step != route.end(); ++step) {
-		const t_translation::t_letter terrain = map[step->x][step->y];
+		const t_translation::t_letter terrain = map[*step];
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
@@ -1974,7 +1974,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		gamemap::location const &loc = steps.back();
 		if (units.count(loc) == 0)
 			break;
-		moves_left += ui->second.movement_cost(map[loc.x][loc.y]);
+		moves_left += ui->second.movement_cost(map[loc]);
 		steps.pop_back();
 	}
 
@@ -2158,7 +2158,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 				}
 			}
 
-			if(u.movement_cost(map[locs[n].x][locs[n].y]) <= u.movement_left()) {
+			if(u.movement_cost(map[locs[n]]) <= u.movement_left()) {
 				return true;
 			}
 		}

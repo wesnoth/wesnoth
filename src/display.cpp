@@ -1179,6 +1179,9 @@ void display::draw_minimap()
 	const SDL_Rect& area = minimap_area();
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
 		minimap_ = image::getMinimap(area.w, area.h, map_, viewpoint_);
+		if(minimap_ == NULL) {
+			return;
+		}
 	}
 
 	const surface screen(screen_.getSurface());

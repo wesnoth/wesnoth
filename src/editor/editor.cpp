@@ -339,13 +339,13 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 		}
 		if (button == SDL_BUTTON_LEFT) {
 			gamemap::location hex_clicked = gui_.hex_clicked_on(mousex, mousey);
-			if (map_.on_board(hex_clicked)) {
+			if (map_.on_board(hex_clicked, true)) {
 				left_click(hex_clicked);
 			}
 		}
 		if (button == SDL_BUTTON_RIGHT) {
 			gamemap::location hex_clicked = gui_.hex_clicked_on(mousex, mousey);
-			if (map_.on_board(hex_clicked)) {
+			if (map_.on_board(hex_clicked, true)) {
 				right_click(hex_clicked);
 			}
 		}
@@ -489,7 +489,7 @@ void map_editor::change_language() {
 	hotkey::load_descriptions();
 
 	// To reload the terrain names, we need to reload the configuration file
-	editormap new_map(game_config_, map_.write());
+	editormap new_map(game_config_, map_.write(), gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
 	map_ = new_map;
 
 	// Update the selected terrain strings
@@ -813,7 +813,7 @@ void map_editor::paste_buffer(const map_buffer &buffer, const gamemap::location 
 		//the addition of locations is not commutative !
 		gamemap::location target = it->offset + loc;
 
-		if (map_.on_board(target)) {
+		if (map_.on_board(target, true)) {
 			undo_action.add_terrain(map_.get_terrain(target), it->terrain, target);
 			map_.set_terrain(target, it->terrain);
 			const int start_side = it->starting_side;
@@ -851,7 +851,7 @@ void map_editor::perform_fill_hexes(std::set<gamemap::location> &fill_hexes,
 	const t_translation::t_letter terrain, map_undo_action &undo_action) {
 	std::set<gamemap::location>::const_iterator it;
 	for (it = fill_hexes.begin(); it != fill_hexes.end(); it++) {
-		if (map_.on_board(*it)) {
+		if (map_.on_board(*it, true)) {
 			undo_action.add_terrain(map_.get_terrain(*it), terrain, *it);
 			map_.set_terrain(*it, terrain);
 		}
@@ -1166,7 +1166,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 		std::set<gamemap::location>::const_iterator it;
 		for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
 			const gamemap::location hl_loc = (*it-selection_move_start_) + hex;
-			if (map_.on_board(hl_loc)) {
+			if (map_.on_board(hl_loc, true)) {
 				gui_.add_highlighted_loc(hl_loc);
 			}
 		}
@@ -1175,22 +1175,21 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 
 void map_editor::draw_on_mouseover_hexes(const t_translation::t_letter terrain) {
 	const gamemap::location hex = selected_hex_;
-	if(map_.on_board(hex)) {
-		const t_translation::t_letter old_terrain = map_[hex.x][hex.y];
+	if(map_.on_board(hex, true)) {
+		const t_translation::t_letter old_terrain = map_[hex];
 		// Optimize for common case
 		if(brush_.selected_brush_size() == 1) {
 			if(terrain != old_terrain) {
 				draw_terrain(terrain, hex);
 			}
-		}
-		else {
+		} else {
 			std::vector<gamemap::location> locs =
 				get_tiles(map_, hex, brush_.selected_brush_size());
 			map_undo_action action;
 			std::vector<gamemap::location> to_invalidate;
 			for(std::vector<gamemap::location>::const_iterator it = locs.begin();
 				it != locs.end(); ++it) {
-				if(terrain != map_[it->x][it->y]) {
+				if(terrain != map_.get_terrain(*it)) {
 					to_invalidate.push_back(*it);
 					action.add_terrain(map_.get_terrain(*it), terrain, *it);
 					map_.set_terrain(*it, terrain);
@@ -1264,7 +1263,7 @@ void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location
 	}
 	std::set<gamemap::location>::const_iterator its;
 	for (its = to_invalidate.begin(); its != to_invalidate.end(); its++) {
-		if (!map_.on_board(*its)) {
+		if (!map_.on_board(*its, true)) {
 			t_translation::t_letter terrain_before = map_.get_terrain(*its);
 			map_.remove_from_border_cache(*its);
 			t_translation::t_letter terrain_after = map_.get_terrain(*its);

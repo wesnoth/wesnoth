@@ -622,7 +622,7 @@ double ai::power_projection(const gamemap::location& loc,  const move_map& dstsr
 			continue;
 		}
 
-		const t_translation::t_letter terrain = map_[locs[i].x][locs[i].y];
+		const t_translation::t_letter terrain = map_[locs[i]];
 
 		typedef move_map::const_iterator Itor;
 		typedef std::pair<Itor,Itor> Range;

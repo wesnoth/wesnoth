@@ -323,10 +323,11 @@ static std::string output_map(const terrain_map& terrain,
 	// Remember that we only want the middle 1/9th of the map.
 	// All other segments of the map are there only to give
 	// the important middle part some context.
-	const size_t begin_x = terrain.size()/3;
-	const size_t end_x = begin_x*2;
-	const size_t begin_y = terrain.front().size()/3;
-	const size_t end_y = begin_y*2;
+	// We also have a border so also adjust for that.
+	const size_t begin_x = terrain.size() / 3 - gamemap::default_border ;
+	const size_t end_x = terrain.size() * 2 / 3 + gamemap::default_border;
+	const size_t begin_y = terrain.front().size() / 3 - gamemap::default_border;
+	const size_t end_y = terrain.front().size() * 2 / 3 + gamemap::default_border;
 
 	terrain_map map;
 	map.resize(end_x - begin_x);
@@ -347,7 +348,7 @@ static std::string output_map(const terrain_map& terrain,
 		itor->second.y -= begin_y;
 	}
 
-	return t_translation::write_game_map(map, starting_positions);
+	return gamemap::default_map_header + t_translation::write_game_map(map, starting_positions);
 }
 
 namespace {

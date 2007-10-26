@@ -59,7 +59,7 @@ struct move_cost_calculator : cost_calculator
 		*/
 		wassert(map_.on_board(loc));
 
-		const t_translation::t_letter terrain = map_[loc.x][loc.y];
+		const t_translation::t_letter terrain = map_[loc];
 
 		const double modifier = 1.0; //move_type_.defense_modifier(map_,terrain);
 		const double move_cost = unit_.movement_cost(terrain);//move_type_[terrain];

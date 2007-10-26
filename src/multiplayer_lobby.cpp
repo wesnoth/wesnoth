@@ -401,7 +401,8 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				}
 				if (!found) {
 					// Parsing the map and generating the minimap are both cpu expensive
-					gamemap map(game_config, games_.back().map_data);
+					gamemap map(game_config, games_.back().map_data, 
+						gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
 					games_.back().mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
 					games_.back().map_info_size = lexical_cast_default<std::string, int>(map.w(), "??")
 						+ std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");

@@ -161,7 +161,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 				continue;
 
 			// Find the terrain of the adjacent location
-			const t_translation::t_letter terrain = map[currentloc.x][currentloc.y];
+			const t_translation::t_letter terrain = map[currentloc];
 
 			// Find the movement cost of this type onto the terrain
 			const int move_cost = u.movement_cost(terrain);
@@ -232,7 +232,7 @@ int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
 	    i != rt.steps.end(); ++i) {
 		wassert(map.on_board(*i));
-		const int move_cost = u.movement_cost(map[i->x][i->y]);
+		const int move_cost = u.movement_cost(map[*i]);
 		movement -= move_cost;
 
 		if (movement < 0) {
@@ -295,7 +295,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	if (team_.shrouded(loc.x, loc.y))
 		return getNoPathValue();
 
-	int const base_cost = unit_.movement_cost(map_[loc.x][loc.y]);
+	int const base_cost = unit_.movement_cost(map_[loc]);
 	wassert(base_cost >= 1); // Pathfinding heuristic: the cost must be at least 1
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
@@ -346,5 +346,5 @@ double emergency_path_calculator::cost(const gamemap::location&,const gamemap::l
 {
 	wassert(map_.on_board(loc));
 
-	return unit_.movement_cost(map_[loc.x][loc.y]);
+	return unit_.movement_cost(map_[loc]);
 }

@@ -1350,7 +1350,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gamemap mask(*game_map);
 
 		try {
-			mask.read(cfg["mask"]);
+			mask.read(cfg["mask"], gamemap::NO_BORDER, gamemap::IS_MASK);
 		} catch(gamemap::incorrect_format_exception&) {
 			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 			return rval;

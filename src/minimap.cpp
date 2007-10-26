@@ -50,8 +50,8 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 	cache_map& cache = mini_terrain_cache;
 	cache_map& fog_cache = mini_fogged_terrain_cache;
 
-	for(int y = 0; y != map.h(); ++y) {
-		for(int x = 0; x != map.w(); ++x) {
+	for(int y = 0; y != map.total_height(); ++y) {
+		for(int x = 0; x != map.total_width(); ++x) {
 
 			surface surf(NULL);
 
@@ -59,7 +59,8 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 			if(map.on_board(loc)) {
 				const bool shrouded = vw != NULL && vw->shrouded(x,y);
 				const bool fogged = vw != NULL && vw->fogged(x,y) && !shrouded;
-				const t_translation::t_letter terrain = shrouded ? t_translation::VOID_TERRAIN : map[x][y];
+				const t_translation::t_letter terrain = shrouded ? 
+					t_translation::VOID_TERRAIN : map[loc];
 
 				cache_map::iterator i;
 				bool need_fogging = false;
