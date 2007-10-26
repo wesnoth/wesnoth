@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2007-01-08 22:55+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -218,25 +218,25 @@ msgstr ""
 msgid "Cave Wall"
 msgstr "Stena jaskyne"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Áno"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Nie"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "Storno"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Zavri"
 
@@ -297,7 +297,7 @@ msgstr "Celá obrazovka (zapni/vypni)"
 msgid "Show Grid"
 msgstr "Ukáž mriežku"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Režim obrazovky"
 
@@ -450,6 +450,11 @@ msgstr "Farebný kurzor"
 msgid "Show Haloing Effects"
 msgstr "Žiarivé efekty"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Vyber si rozlíšenie"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Téma"
@@ -475,12 +480,12 @@ msgid "Chat Timestamping"
 msgstr "Čas pri rozhovore"
 
 #: src/game_preferences_display.cpp:188
-msgid "Advanced Mode"
-msgstr "Rozšírený režim"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
-msgstr "Normálny režim"
+msgid "sound^Standard Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
@@ -1202,6 +1207,12 @@ msgstr "Chyba"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Rozšírený režim"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Normálny režim"
 
 #~ msgid "Dwarven Castle"
 #~ msgstr "Trpasličí hrad"

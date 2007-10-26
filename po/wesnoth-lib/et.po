@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2007-01-14 16:37+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -216,25 +216,25 @@ msgstr ""
 msgid "Cave Wall"
 msgstr "Koopa sein"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Jah"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Ei"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "Tühista"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Sulge"
 
@@ -295,7 +295,7 @@ msgstr "Täisekraan"
 msgid "Show Grid"
 msgstr "Näita võret"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Video režiim"
 
@@ -442,6 +442,11 @@ msgstr "Näita värvilisi kursoreid"
 msgid "Show Haloing Effects"
 msgstr "Näita haloefekte"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Vali eraldusvõime"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Teema"
@@ -467,12 +472,12 @@ msgid "Chat Timestamping"
 msgstr "Näita vestlustes aega"
 
 #: src/game_preferences_display.cpp:188
-msgid "Advanced Mode"
-msgstr "Režiim edasijõudnutele"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
-msgstr "Tavarežiim"
+msgid "sound^Standard Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
@@ -1180,6 +1185,12 @@ msgstr "Viga"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Režiim edasijõudnutele"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Tavarežiim"
 
 #~ msgid "Dwarven Castle"
 #~ msgstr "Päkapikkude kindlus"

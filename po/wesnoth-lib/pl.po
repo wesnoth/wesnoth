@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2007-10-04 18:47+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -218,25 +218,25 @@ msgstr "Nieprzebyte góry pustynne"
 msgid "Cave Wall"
 msgstr "Ściana jaskini"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "OK"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Tak"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Nie"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Zamknij"
 
@@ -297,7 +297,7 @@ msgstr "Przełącz pełny ekran"
 msgid "Show Grid"
 msgstr "Pokaż siatkę"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Tryb graficzny"
 
@@ -442,6 +442,11 @@ msgstr "Użyj kolorowych kursorów"
 msgid "Show Haloing Effects"
 msgstr "Pokaż efekty halo"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Wybierz rozdzielczość"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Motyw"
@@ -467,12 +472,12 @@ msgid "Chat Timestamping"
 msgstr "Znaczniki czasowe wiadomości"
 
 #: src/game_preferences_display.cpp:188
-msgid "Advanced Mode"
-msgstr "Tryb zaawansowany"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
-msgstr "Tryb normalny"
+msgid "sound^Standard Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
@@ -1184,6 +1189,12 @@ msgstr "Błąd"
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 "Znaleziono niepoprawny teren, prawdopodobnie w formacie wersji 1.2, teren = "
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Tryb zaawansowany"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Tryb normalny"
 
 #~ msgid "Elven Castle"
 #~ msgstr "Elficki zamek"

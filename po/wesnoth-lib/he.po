@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -221,25 +221,25 @@ msgstr ""
 msgid "Cave Wall"
 msgstr "קיר מערה"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "אשר"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "כן"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "לא"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "בטל"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "סגור"
 
@@ -300,7 +300,7 @@ msgstr "החלף מצב מסך מלא"
 msgid "Show Grid"
 msgstr "הצג סריג"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "אופן תצוגה"
 
@@ -453,6 +453,11 @@ msgstr "הצג סמנים ציבעוניים"
 msgid "Show Haloing Effects"
 msgstr "הצג אפקט הילה"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "בחירת רזולוציה"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "ערכת נושא"
@@ -478,12 +483,11 @@ msgid "Chat Timestamping"
 msgstr "חתימת זמן בשיחה"
 
 #: src/game_preferences_display.cpp:188
-#, fuzzy
-msgid "Advanced Mode"
-msgstr "מתקדם"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
+msgid "sound^Standard Options"
 msgstr ""
 
 #: src/game_preferences_display.cpp:190
@@ -1207,6 +1211,10 @@ msgstr "שגיאה"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#, fuzzy
+#~ msgid "Advanced Mode"
+#~ msgstr "מתקדם"
 
 #~ msgid "Dwarven Castle"
 #~ msgstr "טירת גמדים"

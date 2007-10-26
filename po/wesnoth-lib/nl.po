@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2007-09-26 21:25+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -217,25 +217,25 @@ msgstr "Onoverbrugbare woestijnbergen"
 msgid "Cave Wall"
 msgstr "Grotwand"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "Ok"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Ja"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Nee"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Sluiten"
 
@@ -296,7 +296,7 @@ msgstr "Volledig scherm"
 msgid "Show Grid"
 msgstr "Raster"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Videomode"
 
@@ -442,6 +442,11 @@ msgstr "Kleurencursors"
 msgid "Show Haloing Effects"
 msgstr "Aura-effecten"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Kies een resolutie"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Thema"
@@ -467,12 +472,12 @@ msgid "Chat Timestamping"
 msgstr "Chat tijdmerken"
 
 #: src/game_preferences_display.cpp:188
-msgid "Advanced Mode"
-msgstr "Geavanceerd"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
-msgstr "Normaal"
+msgid "sound^Standard Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
@@ -1182,6 +1187,12 @@ msgstr "Fout"
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 "Ongeldig terrein gevonden, waarschijnlijk een 1.2 terreinformaat, terrein ="
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Geavanceerd"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Normaal"
 
 #~ msgid "Elven Castle"
 #~ msgstr "Elfenkasteel"

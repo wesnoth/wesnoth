@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2006-06-12 14:28+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -222,25 +222,25 @@ msgstr ""
 msgid "Cave Wall"
 msgstr "Mağara duvarı"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "Tamam"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Evet"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Hayır"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Kapat"
 
@@ -301,7 +301,7 @@ msgstr "Tam ekran aç-kapa"
 msgid "Show Grid"
 msgstr "Izgarayı göster"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Video modu"
 
@@ -454,6 +454,11 @@ msgstr "Renkli imleçleri göster"
 msgid "Show Haloing Effects"
 msgstr "Nur efektlerini göster"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Çözünürlüğü seç"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Tema"
@@ -479,12 +484,11 @@ msgid "Chat Timestamping"
 msgstr "Yazışma zaman bilgisi"
 
 #: src/game_preferences_display.cpp:188
-#, fuzzy
-msgid "Advanced Mode"
-msgstr "Gelişmiş"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
+msgid "sound^Standard Options"
 msgstr ""
 
 #: src/game_preferences_display.cpp:190
@@ -1213,6 +1217,10 @@ msgstr "Hata"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#, fuzzy
+#~ msgid "Advanced Mode"
+#~ msgstr "Gelişmiş"
 
 #~ msgid "Dwarven Castle"
 #~ msgstr "Cüce kalesi"

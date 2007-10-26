@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -217,25 +217,25 @@ msgstr "Непроходими пустинни планини"
 msgid "Cave Wall"
 msgstr "Пещерна стена"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "ОК "
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Да"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Не"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "Отказ"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Затваряне"
 
@@ -296,7 +296,7 @@ msgstr "Цял екран"
 msgid "Show Grid"
 msgstr "Мрежа"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Графичен режим"
 
@@ -442,6 +442,11 @@ msgstr "Показване на цветни курсори"
 msgid "Show Haloing Effects"
 msgstr "Ефекти "
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Избор на резолюция"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Тема"
@@ -467,12 +472,12 @@ msgid "Chat Timestamping"
 msgstr "Времеви маркери на разговорите"
 
 #: src/game_preferences_display.cpp:188
-msgid "Advanced Mode"
-msgstr "Допълнителни"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
-msgstr "Стандартни"
+msgid "sound^Standard Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
@@ -1186,6 +1191,12 @@ msgstr "Грешка"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Допълнителни"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Стандартни"
 
 #~ msgid "Elven Castle"
 #~ msgstr "Елфски замък"

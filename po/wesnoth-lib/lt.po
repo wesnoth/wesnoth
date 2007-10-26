@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2007-10-10 16:09+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lietuvių <komp_lt@konf.lt>\n"
@@ -215,25 +215,25 @@ msgstr "Nepraeinami dykumos kalnai"
 msgid "Cave Wall"
 msgstr "Urvo siena"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "Gerai"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Taip"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Ne"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Užverti"
 
@@ -294,7 +294,7 @@ msgstr ""
 msgid "Show Grid"
 msgstr "Rodyti tinklelį"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Video režimas"
 
@@ -439,6 +439,11 @@ msgstr "Rodyti spalvotu žymeklius"
 msgid "Show Haloing Effects"
 msgstr ""
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Pasirinkite raišką"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Tema"
@@ -464,12 +469,12 @@ msgid "Chat Timestamping"
 msgstr ""
 
 #: src/game_preferences_display.cpp:188
-msgid "Advanced Mode"
-msgstr "Išsamus režimas"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
-msgstr "Normalus režimas"
+msgid "sound^Standard Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
@@ -1167,3 +1172,9 @@ msgstr "Klaida"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Išsamus režimas"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Normalus režimas"

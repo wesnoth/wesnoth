@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2007-07-10 19:57+0200\n"
 "Last-Translator: Széll Tamás <tomi A digiflex POINT hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -228,25 +228,25 @@ msgstr ""
 msgid "Cave Wall"
 msgstr ""
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "Oké"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Igen"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Nem"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Bezár"
 
@@ -307,7 +307,7 @@ msgstr "Teljes képernyős mód beállítása"
 msgid "Show Grid"
 msgstr "Rács megjelenítése"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "Videó mód"
 
@@ -453,6 +453,11 @@ msgstr "Színes kurzor megjelenítése"
 msgid "Show Haloing Effects"
 msgstr "Haloing effektusok mutatása"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "Felbontás kiválasztása"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "Téma"
@@ -478,12 +483,12 @@ msgid "Chat Timestamping"
 msgstr "Csevegés sorainak időbélyegzése"
 
 #: src/game_preferences_display.cpp:188
-msgid "Advanced Mode"
-msgstr "Szakértői mód"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
-msgstr "Normál mód"
+msgid "sound^Standard Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "User Interface Sounds"
@@ -1206,6 +1211,12 @@ msgstr "Hiba"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#~ msgid "Advanced Mode"
+#~ msgstr "Szakértői mód"
+
+#~ msgid "Normal Mode"
+#~ msgstr "Normál mód"
 
 #~ msgid "Show Lobby Minimaps"
 #~ msgstr "Pályák mutatása a játékcsarnokban"

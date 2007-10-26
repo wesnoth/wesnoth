@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-07 19:34+0200\n"
+"POT-Creation-Date: 2007-10-26 15:26+0200\n"
 "PO-Revision-Date: 2006-03-21 12:58-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -216,25 +216,25 @@ msgstr ""
 msgid "Cave Wall"
 msgstr "동굴 벽"
 
-#: src/construct_dialog.cpp:107 src/construct_dialog.cpp:114
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
 msgstr "확인"
 
-#: src/construct_dialog.cpp:110
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "예"
 
-#: src/construct_dialog.cpp:111
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "아니오"
 
-#: src/construct_dialog.cpp:115 src/construct_dialog.cpp:118
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:421
 msgid "Cancel"
 msgstr "취소"
 
-#: src/construct_dialog.cpp:121
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "닫기"
 
@@ -295,7 +295,7 @@ msgstr "전체 화면 전환"
 msgid "Show Grid"
 msgstr "격자 표시"
 
-#: src/editor/editor_dialogs.cpp:294 src/game_preferences_display.cpp:179
+#: src/editor/editor_dialogs.cpp:294
 msgid "Video Mode"
 msgstr "비디오 모드"
 
@@ -448,6 +448,11 @@ msgstr "커서 색 표시"
 msgid "Show Haloing Effects"
 msgstr "데미지 라벨 표시"
 
+#: src/game_preferences_display.cpp:179
+#, fuzzy
+msgid "Change Resolution"
+msgstr "해상도를 선택하십시오"
+
 #: src/game_preferences_display.cpp:180
 msgid "Theme"
 msgstr "테마"
@@ -473,12 +478,11 @@ msgid "Chat Timestamping"
 msgstr "채팅 시간 표시"
 
 #: src/game_preferences_display.cpp:188
-#, fuzzy
-msgid "Advanced Mode"
-msgstr "고급"
+msgid "sound^Advanced Options"
+msgstr ""
 
 #: src/game_preferences_display.cpp:189
-msgid "Normal Mode"
+msgid "sound^Standard Options"
 msgstr ""
 
 #: src/game_preferences_display.cpp:190
@@ -1192,3 +1196,7 @@ msgstr "에러"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
+
+#, fuzzy
+#~ msgid "Advanced Mode"
+#~ msgstr "고급"
