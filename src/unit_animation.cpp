@@ -462,32 +462,32 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 
 const std::string &unit_animation::crude_animation::halo(const std::string&default_val ) const
 {
-	return get_current_frame().halo(get_current_frame_time(),halo_.get_current_element(get_animation_time(),default_val));
+	return get_current_frame().halo(get_current_frame_time(),halo_.get_current_element(get_animation_time() - get_begin_time(),default_val));
 }
 
 int unit_animation::crude_animation::halo_x(const int default_val) const 
 {
-	return get_current_frame().halo_x(get_current_frame_time(),halo_x_.get_current_element(get_animation_time(),default_val));
+	return get_current_frame().halo_x(get_current_frame_time(),halo_x_.get_current_element(get_animation_time() - get_begin_time(),default_val));
 }
 int unit_animation::crude_animation::halo_y(const int default_val) const 
 {
-	return get_current_frame().halo_y(get_current_frame_time(),halo_y_.get_current_element(get_animation_time(),default_val)); 
+	return get_current_frame().halo_y(get_current_frame_time(),halo_y_.get_current_element(get_animation_time() - get_begin_time(),default_val)); 
 }
 double unit_animation::crude_animation::blend_ratio(const double default_val) const
 {
 	return get_current_frame().blend_ratio(
 		get_current_frame_time(),
-		ftofxp(blend_ratio_.get_current_element(get_animation_time(),default_val))); 
+		ftofxp(blend_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val))); 
 }
 
 fixed_t unit_animation::crude_animation::highlight_ratio(const float default_val) const
 {
-	return get_current_frame().highlight_ratio(get_current_frame_time(),highlight_ratio_.get_current_element(get_animation_time(),default_val));
+	return get_current_frame().highlight_ratio(get_current_frame_time(),highlight_ratio_.get_current_element(get_animation_time() - get_begin_time(),default_val));
 }
 
 double unit_animation::crude_animation::offset(double default_val) const
 {
-	return get_current_frame().offset(get_current_frame_time(),offset_.get_current_element(get_animation_time(),default_val))  ; 
+	return get_current_frame().offset(get_current_frame_time(),offset_.get_current_element(get_animation_time() - get_begin_time(),default_val))  ; 
 }
 
 bool unit_animation::crude_animation::need_update() const
