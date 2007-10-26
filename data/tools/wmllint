@@ -1179,7 +1179,7 @@ def translator(filename, mapxforms, textxform):
                 for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
             # Second disjunct should be removed when the map-border code lands.
-            if maptype == "mask" or not maplift:
+            if maptype == "mask":
                 add_border = False
             if add_border:
                 if verbose:
@@ -1197,7 +1197,7 @@ def translator(filename, mapxforms, textxform):
                 # Turn big trees on the edges to ordinary forest hexes
                 outermap(lambda n: n.replace(r"Gg^Fet", r"Gg^Fp"), outmap)
                 modified = True
-            if add_usage and maplift:
+            if add_usage:
                 newdata.append("usage=" + maptype + terminator)
                 have_header = True
                 modified = True
@@ -1343,7 +1343,6 @@ if __name__ == '__main__':
             "revert",
             "diffs",
             "stripcr",
-            "maplift",
             ])
     except getopt.GetoptError:
         help()
@@ -1356,7 +1355,6 @@ if __name__ == '__main__':
     diffs = False
     revert = False
     stripcr = False
-    maplift = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -1378,9 +1376,6 @@ if __name__ == '__main__':
             revert = True
         elif switch in ('-s', '--stripcr'):
             stripcr = True
-        elif switch == '--maplift':
-            maplift = True
-
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
