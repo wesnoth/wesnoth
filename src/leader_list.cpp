@@ -140,9 +140,9 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 			ut = &(utypes.find(*itor)->second);
 			if (gender_combo_ != NULL && !genders_.empty() && size_t(gender_combo_->selected()) < genders_.size()) {
 				// TODO: add support for translating these in the UI!!!
-				if (leaders_[leader_combo_->selected()] == "male"){
+				if (genders_[gender_combo_->selected()] == "male"){
 					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::MALE));
-				} else if (leaders_[leader_combo_->selected()] == "female") {
+				} else if (genders_[gender_combo_->selected()] == "female") {
 					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::FEMALE));
 				}
 			}

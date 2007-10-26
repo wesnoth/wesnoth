@@ -757,7 +757,7 @@ void connect::side::resolve_random()
 			}
 		}
 	}
-
+	std::cout << "HALLO! and it's " << llm_.get_gender() << " !!!!" << std::endl;
 	// Resolve random genders "very much" like standard unit code
 	if (llm_.get_gender() == "random") {
 		const game_data::unit_type_map& utypes = parent_->game_data_.unit_types;
@@ -777,6 +777,7 @@ void connect::side::resolve_random()
 						gender_ = "null";
 				}
 			} else {
+				std::cout << "possible genders are " << possible_genders.size();
 				// Otherwise we can't do it; set it to only available value, if any.
 				if (! possible_genders.empty()) {
 					if (possible_genders.front() == unit_race::FEMALE)

@@ -126,12 +126,13 @@ void wait::leader_preview_pane::draw_contents()
 		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 110, area.y + 60);
 		const SDL_Rect leader_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Leader: "),area.x, area.y + 110);
+		const SDL_Rect gender_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+				_("Gender: "),area.x, leader_rect.y + 30 + (leader_rect.h - leader_combo_.height()) / 2);
 		font::draw_wrapped_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
-				_("Recruits: ") + recruit_string.str(),area.x, area.y + 132,
+				_("Recruits: ") + recruit_string.str(),area.x, area.y + 132 + 30 + (leader_rect.h - leader_combo_.height()) / 2,
 				area.w);
-
 		leader_combo_.set_location(leader_rect.x + leader_rect.w + 10, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
-		gender_combo_.set_location(leader_rect.x + leader_rect.w + 10, leader_rect.y + 30 + (leader_rect.h - leader_combo_.height()) / 2);
+		gender_combo_.set_location(leader_rect.x + leader_rect.w + 10, gender_rect.y + (gender_rect.h - gender_combo_.height()) / 2);
 	}
 }
 
@@ -149,6 +150,7 @@ void wait::leader_preview_pane::set_selection(int selection)
 {
 	selection_ = selection;
 	leaders_.update_leader_list(selection_);
+	leaders_.update_gender_list(leaders_.get_leader());
 	set_dirty();
 }
 
