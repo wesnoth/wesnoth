@@ -134,6 +134,11 @@ namespace preferences {
 	void set_ask_delete_saves(bool value);
 	bool ask_delete_saves();
 
+	void set_savemax(int value);
+	int savemax();
+
+	const int INFINITE_SAVES = 61;
+
 	bool show_floating_labels();
 	void set_show_floating_labels(bool value);
 

@@ -445,6 +445,16 @@ bool ask_delete_saves()
 	return utils::string_bool(preferences::get("ask_delete"), true);
 }
 
+int savemax()
+{
+	return lexical_cast_default<int>(preferences::get("save_max"), preferences::INFINITE_SAVES);
+}
+
+void set_savemax(int value)
+{
+	preferences::set("save_max", lexical_cast<std::string>(value));
+}
+
 std::string client_type()
 {
 	return preferences::get("client_type") == "ai" ? "ai" : "human";
