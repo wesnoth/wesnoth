@@ -100,13 +100,14 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 	}
 }
 
-static void clean_autosaves(const std::string &label)
+static void clean_saves(const std::string &label)
 {
 	std::vector<save_info> games = get_saves_list();
-	std::string prefix = label + "-" + _("Auto-Save");
-	std::cerr << "Cleaning autosaves with prefix '" << prefix << "'\n";
+	std::cerr << "Cleaning saves with prefix '" << label << "'\n";
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
-		if (i->name.compare(0,prefix.length(),prefix) == 0) {
+		if (i->name.compare(0,i->name.length(),label) == 0)
+			continue;	// Never delete scenario-start saves
+		if (i->name.compare(0,label.length(),label) == 0) {
 			std::cerr << "Deleting autosave '" << i->name << "'\n";
 			delete_game(i->name);
 		}
@@ -377,18 +378,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		gamestate.snapshot = config();
 
-		// Temporary fix:
-		// Only apply preferences for replays and autosave
-		// deletes on victory.  
-		//! @todo We need to rethink what this code should be doing.
+		// Only apply prefs for deleting old savegames and 
+		// saving replays on victory.  
 		if(res == VICTORY) {
 			const std::string orig_scenario = gamestate.scenario;
 			gamestate.scenario = current_scenario;
 
-			std::string label = gamestate.label + _(" replay");
-			if (preferences::delete_autosaves())
-				clean_autosaves(gamestate.label);
+			if (preferences::delete_saves())
+				clean_saves(gamestate.label);
 
+			std::string label = gamestate.label + _(" replay");
 			if(preferences::save_replays()) {
 				try {
 					config snapshot;
@@ -561,8 +560,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	}
 
 	if (gamestate.campaign_type == "scenario"){
-		if (preferences::delete_autosaves())
-			clean_autosaves(gamestate.label);
+		if (preferences::delete_saves())
+			clean_saves(gamestate.label);
 	}
 	return VICTORY;
 }

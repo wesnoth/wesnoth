@@ -30,6 +30,10 @@ Version 1.3.9+svn:
 
   * User interface
     * Changed the mute hotkey from ctrl-m to ctrl-alt-m.
+    * On victory, all old saves for the scenario except the start one
+      are now deleted (rather than just autosaves as formerly). This
+      is done before replay saving, if that is enabled. The preference
+      name has changed from delete_autosaves to delete_saves.
 
 Version 1.3.9:
   * Campaigns

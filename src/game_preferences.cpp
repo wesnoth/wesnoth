@@ -425,14 +425,14 @@ bool save_replays()
 	return utils::string_bool(preferences::get("save_replays"), true);
 }
 
-void set_delete_autosaves(bool value)
+void set_delete_saves(bool value)
 {
-	preferences::set("delete_autosaves", value ? "yes" : "no");
+	preferences::set("delete_saves", value ? "yes" : "no");
 }
 
-bool delete_autosaves()
+bool delete_saves()
 {
-	return utils::string_bool(preferences::get("delete_autosaves"), false);
+	return utils::string_bool(preferences::get("delete_saves"), false);
 }
 
 void set_ask_delete_saves(bool value)

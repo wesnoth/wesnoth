@@ -106,7 +106,7 @@ private:
 	  buffer_size_slider_, idle_anim_slider_, savemax_slider_;
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
-			show_grid_button_, save_replays_button_, delete_autosaves_button_,
+			show_grid_button_, save_replays_button_, delete_saves_button_,
 			show_lobby_joins_button1_,
 			show_lobby_joins_button2_,
 			show_lobby_joins_button3_,
@@ -160,8 +160,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
-	  save_replays_button_(disp.video(), _("Save Replays"), gui::button::TYPE_CHECK),
-	  delete_autosaves_button_(disp.video(), _("Delete Autosaves"), gui::button::TYPE_CHECK),
+	  save_replays_button_(disp.video(), _("Save Replay on Victory"), gui::button::TYPE_CHECK),
+	  delete_saves_button_(disp.video(), _("Delete Saves on Victory"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button1_(disp.video(), _("Do Not Show Lobby Joins"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button2_(disp.video(), _("Show Lobby Joins Of Friends Only"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button3_(disp.video(), _("Show All Lobby Joins"), gui::button::TYPE_CHECK),
@@ -341,8 +341,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	save_replays_button_.set_check(save_replays());
 	save_replays_button_.set_help_string(_("Save replays at scenario end."));
 
-	delete_autosaves_button_.set_check(delete_autosaves());
-	delete_autosaves_button_.set_help_string(_("Automatically delete autosaves at the end of a scenario"));
+	delete_saves_button_.set_check(delete_saves());
+	delete_saves_button_.set_help_string(_("Automatically delete saves on victory"));
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
@@ -417,7 +417,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&idle_anim_button_);
 	h.push_back(&show_ai_moves_button_);
 	h.push_back(&save_replays_button_);
-	h.push_back(&delete_autosaves_button_);
+	h.push_back(&delete_saves_button_);
 	h.push_back(&show_grid_button_);
 	h.push_back(&sort_list_by_group_button_);
 	h.push_back(&iconize_list_button_);
@@ -507,7 +507,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
 	ypos += short_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
-	ypos += short_interline; delete_autosaves_button_.set_location(rect.x, ypos);
+	ypos += short_interline; delete_saves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; savemax_slider_label_.set_location(rect.x, ypos);
 	SDL_Rect savemax_rect = { rect.x, ypos+short_interline,
 				  rect.w - right_border, 0};
@@ -665,8 +665,8 @@ void preferences_dialog::process_event()
 			set_grid(show_grid_button_.checked());
 		if (save_replays_button_.pressed())
 			set_save_replays(save_replays_button_.checked());
-		if (delete_autosaves_button_.pressed())
-			set_delete_autosaves(delete_autosaves_button_.checked());
+		if (delete_saves_button_.pressed())
+			set_delete_saves(delete_saves_button_.checked());
 		if (turn_dialog_button_.pressed())
 			set_turn_dialog(turn_dialog_button_.checked());
 		if (show_team_colours_button_.pressed())
@@ -1019,7 +1019,7 @@ void preferences_dialog::set_selection(int index)
 	show_team_colours_button_.hide(hide_general);
 	show_grid_button_.hide(hide_general);
 	save_replays_button_.hide(hide_general);
-	delete_autosaves_button_.hide(hide_general);
+	delete_saves_button_.hide(hide_general);
 	savemax_slider_label_.hide(hide_general);
 	savemax_slider_label_.enable(!hide_general);
 	//savemax_slider_.hide(hide_general);
