@@ -1022,8 +1022,8 @@ void preferences_dialog::set_selection(int index)
 	delete_saves_button_.hide(hide_general);
 	savemax_slider_label_.hide(hide_general);
 	savemax_slider_label_.enable(!hide_general);
-	//savemax_slider_.hide(hide_general);
-	//savemax_slider_.enable(!hide_general);
+	savemax_slider_.hide(hide_general);
+	savemax_slider_.enable(!hide_general);
 
 	const bool hide_display = tab_ != DISPLAY_TAB;
 	gamma_label_.hide(hide_display);
