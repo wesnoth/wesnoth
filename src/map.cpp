@@ -42,7 +42,7 @@ std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 
 gamemap::location gamemap::location::null_location;
 
-const std::string gamemap::default_map_header = "usage = map\nborder_size=1\n\n";
+const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
 
 const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
 {
@@ -350,8 +350,19 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 		config header;
 		::read(header, header_str);
 
-		border_size_ = lexical_cast_default<int>(header["border_size"], 0);
-		const std::string usage = header["usage"];
+		// FIXME ugly work-around hack for a bug in the parser, just to get trunk up and running again
+		border_size_ = lexical_cast_default<int>(header["order_size"], -1);
+		if(border_size_ == -1) {
+			border_size_ = lexical_cast_default<int>(header["border_size"], 0);
+		}
+
+		/*const*/ std::string usage = header["usage"];
+		if(usage == "") {
+			usage = header["sage"];
+		}
+
+		std::cerr << "header: " << header_str << "\n\n\n";
+		std::cerr << "usage: " << usage << "\tborder: " << border_size_ << "\n";
 
 		if(usage == "map") {
 			usage_ = IS_MAP;
@@ -469,8 +480,8 @@ std::string gamemap::write() const
 
 	// Let the low level convertor do the conversion
 	const std::string& data = t_translation::write_game_map(tiles_, starting_positions);
-	const std::string& header = "border_size = " + lexical_cast<std::string>(border_size_) 
-		+ "\nusage = " + (usage_ == IS_MAP ? "map" : "mask");
+	const std::string& header = "border_size=" + lexical_cast<std::string>(border_size_) 
+		+ "\nusage=" + (usage_ == IS_MAP ? "map" : "mask");
 	return header + "\n\n" + data;
 }
 

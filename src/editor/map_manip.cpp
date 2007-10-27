@@ -394,10 +394,7 @@ std::string new_map(const size_t width, const size_t height, const t_translation
 	const t_translation::t_list column(height, filler);
 	const t_translation::t_map map(width, column);
 
-	// @todo these should be parameters
-	const std::string& header = "border_size = 1\nusage = map";
-
-	return header + "\n\n" + t_translation::write_game_map(map);
+	return gamemap::default_map_header + t_translation::write_game_map(map);
 
 }
 
