@@ -159,6 +159,10 @@ static SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
 		const int res = SDLNet_TCP_Send(sock, &buf[upto], static_cast<int>(size - upto));
 
 		if(res == static_cast<int>(size - upto)) {
+			{
+				const threading::lock lock(*global_mutex);
+				transfer_stats[sock].first.transfer(static_cast<size_t>(res));
+			}
 			return SOCKET_READY;
 		}
 #if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)

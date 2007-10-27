@@ -275,7 +275,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = leading_anims.begin(); anim_itor != leading_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="leading";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"leading animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"leading animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=leading flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150),"leading",unit_animation::DEFAULT_ANIM));
@@ -284,7 +284,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = recruit_anims.begin(); anim_itor != recruit_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="recruited";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"recruit animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"recruit animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=recruited flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"0~1:600"),"recruited",unit_animation::DEFAULT_ANIM));
@@ -293,7 +293,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = standing_anims.begin(); anim_itor != standing_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="standing";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"standing animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"standing animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=standing flag\n";
 	}
 	// Always have a standing animation
@@ -303,7 +303,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = idle_anims.begin(); anim_itor != idle_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="idling";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"idling animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"idling animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=idling flag\n";
 	}
 	// Idle anims can be empty
@@ -312,7 +312,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = levelin_anims.begin(); anim_itor != levelin_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="levelin";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"levelin animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"levelin animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelin flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1.0","",display::rgb(255,255,255),"1~0:600"),"levelin",unit_animation::DEFAULT_ANIM));
@@ -322,7 +322,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = levelout_anims.begin(); anim_itor != levelout_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="levelout";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"levelout animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"levelout animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=levelout flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1.0","",display::rgb(255,255,255),"0~1:600"),"levelout",unit_animation::DEFAULT_ANIM));
@@ -333,7 +333,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 		(**anim_itor)["apply_to"] ="healing";
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"healing animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"healing animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healing flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),500),"healing",unit_animation::DEFAULT_ANIM));
@@ -344,7 +344,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 		(**anim_itor)["apply_to"] ="healed";
 		(**anim_itor)["value"]=(**anim_itor)["healing"];
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"healed animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"healed animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healed flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30"),"healed",unit_animation::DEFAULT_ANIM));
@@ -355,7 +355,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 		(**anim_itor)["apply_to"] ="poison";
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"poison animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"poison animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=poison flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"),"poison",unit_animation::DEFAULT_ANIM));
@@ -365,7 +365,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = movement_anims.begin(); anim_itor != movement_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="movement";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"movement animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"movement animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=movement flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150),"movement",unit_animation::DEFAULT_ANIM));
@@ -387,7 +387,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 			animations.push_back(unit_animation(**anim_itor)),
 			animations.back().add_frame(100,unit_frame(animations.back().get_last_frame().image(),100,"1.0","",game_display::rgb(255,0,0),"0.5:50,0.0:50"));
 		}
-		//lg::wml_error<<"defend animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"defend animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=defend flag\n";
 	}
 	animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image"]),300),"defend",unit_animation::DEFAULT_ANIM));
@@ -397,7 +397,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(config::child_list::const_iterator d = attack_anims.begin(); d != attack_anims.end(); ++d) {
 		(**d)["apply_to"] ="attack";
 		animations.push_back(unit_animation(**d));
-		//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=attack flag\n";
 	}
 	// get old animation format, to be removed circum 1.3.10
@@ -424,8 +424,8 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 		animations.push_back(unit_animation(**anim_itor));
 		image::locator image_loc = animations.back().get_last_frame().image();
 		animations.back().add_frame(600,unit_frame(image_loc,600,"1~0:600"));
-		//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
-		//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
+		lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
+		lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1~0:600"),"death",unit_animation::DEFAULT_ANIM));
 	// Always have a defensive animation
@@ -434,7 +434,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = victory_anims.begin(); anim_itor != victory_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="victory";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"victory animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"victory animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=victory flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),1),"victory",unit_animation::DEFAULT_ANIM));
@@ -444,7 +444,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = extra_anims.begin(); anim_itor != extra_anims.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] =(**anim_itor)["flag"];
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"extra animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"extra animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=extra flag\n";
 	}
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
@@ -452,7 +452,7 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 	for(anim_itor = teleports.begin(); anim_itor != teleports.end(); ++anim_itor) {
 		(**anim_itor)["apply_to"] ="teleport";
 		animations.push_back(unit_animation(**anim_itor));
-		//lg::wml_error<<"teleport animations  are deprecate, support will be removed in 1.3.8 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"teleport animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=teleport flag\n";
 	}
 	animations.push_back(unit_animation(-20,unit_frame(image::locator(cfg["image"]),40),"teleport",unit_animation::DEFAULT_ANIM));
