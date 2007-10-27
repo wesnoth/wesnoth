@@ -424,8 +424,8 @@ void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> &
 		animations.push_back(unit_animation(**anim_itor));
 		image::locator image_loc = animations.back().get_last_frame().image();
 		animations.back().add_frame(600,unit_frame(image_loc,600,"1~0:600"));
-		lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
-		lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
+		//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
+		//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1~0:600"),"death",unit_animation::DEFAULT_ANIM));
 	// Always have a defensive animation
