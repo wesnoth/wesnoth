@@ -119,7 +119,10 @@ public:
 	struct rule_image_variant {
 		/** Shorthand constructor for this structure */
 		rule_image_variant(const std::string &image_string, const std::string &tod) :
-			image_string(image_string), tod(tod) {};
+			image_string(image_string),
+			image(),
+			tod(tod) 
+			{};
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -196,9 +199,23 @@ public:
 	 */
 	struct terrain_constraint
 	{
-		terrain_constraint() : loc() {};
+		terrain_constraint() : 
+			loc(),
+			terrain_types_match(),
+			set_flag(),
+			no_flag(),
+			has_flag(),
+			images()
+			{};
 
-		terrain_constraint(gamemap::location loc) : loc(loc) {};
+		terrain_constraint(gamemap::location loc) : 
+			loc(loc),
+			terrain_types_match(),
+			set_flag(),
+			no_flag(),
+			has_flag(),
+			images()
+			{};
 
 		gamemap::location loc;
 		t_translation::t_match terrain_types_match;
@@ -280,6 +297,13 @@ private:
 	 */
 	struct building_rule
 	{
+		building_rule() :
+			constraints(),
+			location_constraints(),
+			probability(0),
+			precedence(0)
+		{}
+
 		/**
 		 * The set of [tile] constraints of this rule.
 		 */

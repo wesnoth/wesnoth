@@ -48,10 +48,20 @@ static const int UNITPOS = 36 + 18;
 static const int BASE_Y_INTERVAL = 100000;
 
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image) :
-	layer(layer), basex(x), basey(y), global_image(global_image)
+	layer(layer),
+	basex(x),
+	basey(y),
+	global_image(global_image),
+	variants()
 {}
 
-terrain_builder::tile::tile() : last_tod("invalid_tod") {}
+terrain_builder::tile::tile() :
+	flags(),
+	images(),
+	images_foreground(),
+	images_background(),
+	last_tod("invalid_tod")
+{}
 
 void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor)
 {
@@ -128,8 +138,11 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap
 }
 
 terrain_builder::terrain_builder(const config& cfg, const config& level,
-	const gamemap& map, const std::string& offmap_image) :
-		map_(map), tile_map_(map.w(), map.h())
+		const gamemap& map, const std::string& offmap_image) :
+	map_(map), 
+	tile_map_(map.w(), map.h()),
+	terrain_by_type_(),
+	building_rules_()
 {
 	// Make sure there's nothing left in the cache,
 	// since it might give problems (or not?)
