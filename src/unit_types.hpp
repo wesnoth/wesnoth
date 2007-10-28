@@ -36,14 +36,12 @@ class team;
 class attack_type
 {
 public:
-	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
 	attack_type(const config& cfg, const std::string& id, bool with_animations=true);
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }
 	const std::string& icon() const { return icon_; }
-	RANGE range_type() const { return range_type_; }
 	const std::string& range() const { return range_; }
 	int damage() const { return damage_; }
 	int num_attacks() const { return num_attacks_; }
@@ -97,7 +95,6 @@ private:
 	std::string id_;
 	std::string type_;
 	std::string icon_;
-	RANGE range_type_;
 	std::string range_;
 	int damage_;
 	int num_attacks_;

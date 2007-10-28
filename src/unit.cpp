@@ -2686,21 +2686,6 @@ const t_string& unit::modification_description(const std::string& type) const
 	}
 }
 
-const std::string& unit::image_fighting(attack_type::RANGE range) const
-{
-	static const std::string short_range("image_short");
-	static const std::string long_range("image_long");
-
-	const std::string& str = range == attack_type::LONG_RANGE ?
-									  long_range : short_range;
-	const std::string& val = cfg_[str];
-
-	if(!val.empty()) {
-		return val;
-	} else {
-		return absolute_image();
-	}
-}
 
 
 const unit_animation* unit::choose_animation(const game_display& disp, const gamemap::location& loc,const std::string& event,const int value,const unit_animation::hit_type hit,const attack_type* attack,const attack_type* second_attack, int swing_num) const

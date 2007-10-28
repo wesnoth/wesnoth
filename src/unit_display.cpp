@@ -211,132 +211,6 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 	}
 }
 
-static void unit_attack_ranged(
-                        const gamemap::location& a, const gamemap::location& b,
-			int damage, const attack_type& attack, const attack_type* secondary_attack, int swing,std::string hit_text)
-
-{
-	game_display* disp = game_display::get_singleton();
-	if(!disp) return;
-	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)
-		|| preferences::show_combat() == false ;
-
-	unit_map& units = disp->get_units();
-	log_scope("unit_attack_range");
-
-	const unit_map::iterator att = units.find(a);
-	wassert(att != units.end());
-	unit& attacker = att->second;
-
-	const unit_map::iterator def = units.find(b);
-	wassert(def != units.end());
-	bool def_was_hidden = def->second.get_hidden();
-	def->second.set_hidden(true);
-	unit defender = def->second;
-	disp->place_temporary_unit(defender,b);
-	defender.set_hidden(false);
-
-
-
-
-	gamemap::location update_tiles[6];
-	get_adjacent_tiles(b,update_tiles);
-
-
-
-
-	// Start leader and attacker animation, wait for attacker animation to end
-	 attacker.set_attacking(*disp,a,damage,attack,secondary_attack,swing);
-	const gamemap::location leader_loc = under_leadership(units,a);
-	unit_map::iterator leader = units.end();
-	if(leader_loc.valid()){
-		LOG_DP << "found leader at " << leader_loc << '\n';
-		leader = units.find(leader_loc);
-		wassert(leader != units.end());
-		leader->second.set_facing(leader_loc.get_relative_dir(a));
-		leader->second.set_leading(*disp,leader_loc);
-	}
-	int animation_time;
-
-
-	halo::ORIENTATION orientation;
-	const gamemap::location::DIRECTION attack_ori = a.get_relative_dir(b);
-	switch(attack_ori)
-	{
-		case gamemap::location::NORTH:
-		case gamemap::location::NORTH_EAST:
-			orientation = halo::NORMAL;
-			break;
-		case gamemap::location::SOUTH_EAST:
-		case gamemap::location::SOUTH:
-			orientation = halo::VREVERSE;
-			break;
-		case gamemap::location::SOUTH_WEST:
-			orientation = halo::HVREVERSE;
-			break;
-		case gamemap::location::NORTH_WEST:
-			orientation = halo::HREVERSE;
-			break;
-		case gamemap::location::NDIRECTIONS:
-		default:
-			orientation = halo::NORMAL;
-			break;
-	}
-
-	defender.set_defending(*disp,b,damage,&attack,secondary_attack,swing);
-	// Min of attacker, defender, missile and -200
-	int start_time = -200;
-	start_time = minimum<int>(start_time,defender.get_animation()->get_begin_time());
-	start_time = minimum<int>(start_time,attacker.get_animation()->get_begin_time());
-	defender.restart_animation(*disp,start_time);
-	attacker.restart_animation(*disp,start_time);
-	animation_time = defender.get_animation()->get_animation_time();
-	bool sound_played = false ;
-	int missile_frame_halo = halo::NO_HALO;
-	int missile_halo = halo::NO_HALO;
-	while(!hide && (
-		!attacker.get_animation()->animation_would_finish() ||
-		!defender.get_animation()->animation_would_finish() ||
-		(leader_loc.valid() && !leader->second.get_animation()->animation_finished()) ||
-		damage >0)
-	     ){
-		if(!sound_played && animation_time > 0) {
-			sound_played = true;
-			std::string text ;
-			if(damage) text = lexical_cast<std::string>(damage);
-			if(!hit_text.empty()) {
-				text.insert(text.begin(),hit_text.size()/2,' ');
-				text = text + "\n" + hit_text;
-			}
-			sound::play_sound(defender.get_hit_sound());
-			disp->float_label(b,text,255,0,0);
-			disp->invalidate_unit();
-		}
-		if(damage > 0 && animation_time > 0) {
-			defender.take_hit(1);
-			damage--;
-			disp->invalidate_unit();
-		}
-		disp->draw();
-		events::pump();
-		disp->delay(10);
-		// We use missile animation because it's the only one
-		// not reseted in the middle to go to standing
-		animation_time = attacker.get_animation()->get_animation_time();
-	}
-
-	halo::remove(missile_halo);
-	missile_halo = halo::NO_HALO;
-	halo::remove(missile_frame_halo);
-	missile_frame_halo = halo::NO_HALO;
-
-	if(leader_loc.valid()) leader->second.set_standing(*disp,leader_loc);
-	att->second.set_standing(*disp,a);
-	def->second.set_standing(*disp,b);
-	def->second.set_hidden(def_was_hidden);
-	disp->remove_temporary_unit();
-
-}
 
 void unit_attack(
                  const gamemap::location& a, const gamemap::location& b, int damage,
@@ -364,10 +238,6 @@ void unit_attack(
 
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
-	if(attack.range_type() == attack_type::LONG_RANGE) {
-		unit_attack_ranged(  a, b, damage, attack,secondary_attack, swing, hit_text);
-		return;
-	}
 
 	int start_time = 500;
 	int end_time = 0;
@@ -416,23 +286,6 @@ void unit_attack(
 		damage > 0)
 	     ){
 
-		double pos = 0.0;
-
-	        if(animation_time < attacker.get_animation()->get_begin_time()) {
-		  	// attack animation has not yet started:
-		  	// can happen if defenders's or leader's
-			// animation has started but attacker's has not.
-			pos = 0.0;
-		} else if( animation_time > 0 && end_time > 0) {
-			// after impact, attacker slides backward
-			pos = 1.0-double(animation_time)/double(end_time);
-		} else {
-			// before impact, attacker slides forward
-			pos = 1.0 - double(animation_time)/double(minimum<int>(attacker.get_animation()->get_begin_time(),-150));
-		}
-		if(pos > 0.0) {
-			attacker.set_offset(pos*0.6);
-		}
 		if(!sound_played && animation_time > 0) {
 			sound_played = true;
 			std::string text ;

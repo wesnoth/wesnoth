@@ -412,6 +412,9 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	const config::child_list& attack_anims = expanded_cfg.get_children("attack_anim");
 	for(config::child_list::const_iterator d = attack_anims.begin(); d != attack_anims.end(); ++d) {
 		(**d)["apply_to"] ="attack";
+		if((**d)["offset"].empty() && (**d).get_children("missile_frame").empty()) {
+			(**d)["offset"] ="0~0.6,0.6~0";
+		}
 		animations.push_back(unit_animation(**d));
 		//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=attack flag\n";

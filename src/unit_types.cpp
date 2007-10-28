@@ -37,11 +37,6 @@
 attack_type::attack_type(const config& cfg,const std::string& id, bool with_animations)
 {
 	cfg_ = cfg;
-	if(cfg["range"] == "long" || cfg["range"] == "ranged") {
-		range_type_ = LONG_RANGE;
-	} else {
-		range_type_ = SHORT_RANGE;
-	}
 	if (with_animations) {
 		const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
 		// TODO: prepare animation should be privatized once the code is removed
