@@ -1138,6 +1138,7 @@ def translator(filename, mapxforms, textxform):
                     mfile.insert(0, fields[1])
                 if len(fields) == 3:
                     mfile.insert(1, '"')
+            # Gather the map header (if any) and data lines
             while cont and mfile:
                 line = mfile.pop(0)
                 if verbose >= 3:
@@ -1169,6 +1170,12 @@ def translator(filename, mapxforms, textxform):
                               '"%s", line %d: warning, fog in map file' \
                               % (filename, lineno+1)
                         maskwarn = True
+            # Checking the outmap length here is a bit of a crock;
+            # the one-line map we don't want to mess with is in the
+            # NO_MAP macro.
+            if len(outmap) == 1:
+                add_border = add_usage = False
+            # Deduce the map type
             if not map_only:
                 if maptype == "map":
                     newdata.append("map_data=\"" + terminator)
