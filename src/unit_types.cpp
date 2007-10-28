@@ -44,6 +44,7 @@ attack_type::attack_type(const config& cfg,const std::string& id, bool with_anim
 	}
 	if (with_animations) {
 		const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
+		// TODO: prepare animation should be privatized once the code is removed
 		const config::child_list& animations = expanded_cfg.get_children("animation");
 		for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
 			lg::wml_error<<"attack animation directly in attack is deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
@@ -627,13 +628,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	experience_needed_=lexical_cast_default<int>(cfg_["experience"],500);
 
-	config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
-	const config::child_list& animations = expanded_cfg.get_children("animation");
-	config::child_list::const_iterator anim_itor;
-	for(anim_itor = animations.begin(); anim_itor != animations.end(); ++anim_itor) {
-		animations_.push_back(unit_animation(**anim_itor));
-	}
-	unit_animation::back_compat_initialize_anims(animations_,cfg,attacks(true));
+	unit_animation::initialize_anims(animations_,cfg,attacks(true));
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
 	// Deprecation messages, only seen when unit is parsed for the first time.

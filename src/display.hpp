@@ -234,9 +234,9 @@ public:
 	//! submerged: the amount of the unit out of 1.0 that is submerged
 	//!            (presumably under water) and thus shouldn't be drawn
 	void render_unit_image(int x, int y, surface image,
-			bool reverse=false, bool greyscale=false,
+			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
-			double blend_ratio=0, double submerged=0.0);
+			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
 
 	const theme::menu* menu_pressed();
 

@@ -112,6 +112,7 @@ private:
 	double acceleration_;
 	int last_update_tick_;
 	int current_frame_key_;
+	int last_frame_key_;
 
 };
 

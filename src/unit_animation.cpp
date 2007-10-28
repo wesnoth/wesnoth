@@ -19,12 +19,14 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "halo.hpp"
 #include "pathutils.hpp"
 #include "unit.hpp"
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"
 #include "variable.hpp"
+#include "sound.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -104,8 +106,14 @@ unit_animation::unit_animation(int start_time,const unit_frame & frame , const s
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ) :
 	terrain_types_(t_translation::read_list(cfg["terrain"])),base_score_(0),
-	missile_anim_(cfg,"missile_"),unit_anim_(cfg,frame_string)
+	unit_anim_(cfg,frame_string)
 {
+	config::child_map::const_iterator frame_itor =cfg.all_children().begin();
+	for( /*null*/; frame_itor != cfg.all_children().end() ; frame_itor++) {
+		if(frame_itor->first == frame_string) continue;
+		if(frame_itor->first.find("_frame",frame_itor->first.size() -6 ) == std::string::npos) continue;
+		sub_anims_[frame_itor->first] = crude_animation(cfg,frame_itor->first.substr(0,frame_itor->first.size() -5));
+	}
 	event_ =utils::split(cfg["apply_to"]);
 
 	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
@@ -266,10 +274,18 @@ void unit_animation::back_compat_add_name(const std::string name,const std::stri
 }
 
 
-void unit_animation::back_compat_initialize_anims( std::vector<unit_animation> & animations, const config & cfg, std::vector<attack_type> tmp_attacks)
+void unit_animation::initialize_anims( std::vector<unit_animation> & animations, const config & cfg, std::vector<attack_type> tmp_attacks)
 {
 	config expanded_cfg;
 	config::child_list::const_iterator anim_itor;
+
+	expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
+	const config::child_list& parsed_animations = expanded_cfg.get_children("animation");
+	for(anim_itor = parsed_animations.begin(); anim_itor != parsed_animations.end(); ++anim_itor) {
+		animations.push_back(unit_animation(**anim_itor));
+	}
+
+
 	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
 	const config::child_list& leading_anims = expanded_cfg.get_children("leading_anim");
 	for(anim_itor = leading_anims.begin(); anim_itor != leading_anims.end(); ++anim_itor) {
@@ -513,6 +529,10 @@ unit_animation::crude_animation::crude_animation(const config& cfg,const std::st
 	} else {
 		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
 	}
+	if(frame_string == "missile_") {
+		// lg::wml_error To be deprecated eventually
+		add_frame(1,unit_frame("",1),true);
+	}
 
 	for(; range.first != range.second; ++range.first) {
 		unit_frame tmp_frame(**range.first);
@@ -526,6 +546,14 @@ unit_animation::crude_animation::crude_animation(const config& cfg,const std::st
 	blend_ratio_ = progressive_double(cfg[frame_string+"blend_ratio"],get_animation_duration());
 	highlight_ratio_ = progressive_double(cfg[frame_string+"alpha"],get_animation_duration());
 	offset_ = progressive_double(cfg[frame_string+"offset"],get_animation_duration());
+	if(offset_.does_not_change() && frame_string == "missile_") {
+		// lg::wml_error To be deprecated eventually
+		offset_=progressive_double("0~0.8",get_animation_duration());
+	}
+	if( frame_string == "missile_") {
+		// lg::wml_error To be deprecated eventually
+		add_frame(1,unit_frame("",1),true);
+	}
 
 	if(!halo_.does_not_change() ||
 			!halo_x_.does_not_change() ||
@@ -539,3 +567,166 @@ unit_animation::crude_animation::crude_animation(const config& cfg,const std::st
 
 
 
+bool unit_animation::need_update() const
+{
+	if(unit_anim_.need_update()) return true;
+	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		if(anim_itor->second.need_update()) return true;
+	}
+	return false;
+};
+bool unit_animation::animation_finished() const
+{
+	if(!unit_anim_.animation_finished()) return false;
+	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		if(!anim_itor->second.animation_finished()) return false;
+	}
+	return true;
+};
+bool unit_animation::animation_would_finish() const
+{
+	if(!unit_anim_.animation_would_finish()) return false;
+	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		if(!anim_itor->second.animation_would_finish()) return false;
+	}
+	return true;
+};
+void unit_animation::update_last_draw_time() 
+{
+	unit_anim_.update_last_draw_time();
+	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.update_last_draw_time();
+	}
+};
+int unit_animation::get_end_time() const
+{
+	int result = unit_anim_.get_end_time();
+	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.end();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		result= minimum<int>(result,anim_itor->second.get_end_time());
+	}
+	return result;
+};
+int unit_animation::get_begin_time() const
+{
+	int result = unit_anim_.get_begin_time();
+	std::map<std::string,crude_animation>::const_iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		result= minimum<int>(result,anim_itor->second.get_begin_time());
+	}
+	return result;
+};
+void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, double acceleration)
+{
+	unit_anim_.start_animation(start_time, src, dst, cycles, acceleration);
+	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.start_animation(start_time,src,dst,cycles,acceleration);
+	}
+}
+void unit_animation::redraw()
+{
+	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
+	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
+		anim_itor->second.redraw();
+	}
+}
+void unit_animation::crude_animation::redraw()
+{
+	const int xsrc = game_display::get_singleton()->get_location_x(src_);
+	const int ysrc = game_display::get_singleton()->get_location_y(src_);
+	const int xdst = game_display::get_singleton()->get_location_x(dst_);
+	const int ydst = game_display::get_singleton()->get_location_y(dst_);
+	const gamemap::location::DIRECTION direction = src_.get_relative_dir(dst_);
+
+	double tmp_offset = offset();
+	int d2 = game_display::get_singleton()->hex_size() / 2;
+	const unit_frame& current_frame= get_current_frame();
+	if(!current_frame.sound().empty() &&  get_current_frame_begin_time() != last_frame_begin_time_ ) {
+			sound::play_sound(current_frame.sound());
+	}
+	last_frame_begin_time_ = get_current_frame_begin_time();
+	image::locator image_loc;
+	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
+		image_loc = current_frame.image_diagonal();
+	} 
+	if(image_loc.is_void()) { // invalid diag image, or not diagonal
+		image_loc = current_frame.image();
+	}
+
+	surface image;
+	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
+		image=image::get_image(image_loc,
+				image::SCALED_TO_ZOOM,
+				false
+				);
+	}
+	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2 ;
+	const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc) + d2;
+	if (image != NULL) {
+		bool facing_west = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::SOUTH_WEST;
+		bool facing_north = direction == gamemap::location::NORTH_WEST || direction == gamemap::location::NORTH || direction == gamemap::location::NORTH_EAST;
+		game_display::get_singleton()->render_unit_image(x- image->w/2, y - image->h/2, image, facing_west, false,
+				highlight_ratio(), blend_with_, blend_ratio(),0,!facing_north);
+	}
+	halo::remove(halo_id_);
+	halo_id_ = halo::NO_HALO;
+	if(!halo().empty()) {
+		halo::ORIENTATION orientation;
+		switch(direction)
+		{
+			case gamemap::location::NORTH:
+			case gamemap::location::NORTH_EAST:
+				orientation = halo::NORMAL;
+				break;
+			case gamemap::location::SOUTH_EAST:
+			case gamemap::location::SOUTH:
+				orientation = halo::VREVERSE;
+				break;
+			case gamemap::location::SOUTH_WEST:
+				orientation = halo::HVREVERSE;
+				break;
+			case gamemap::location::NORTH_WEST:
+				orientation = halo::HREVERSE;
+				break;
+			case gamemap::location::NDIRECTIONS:
+			default:
+				orientation = halo::NORMAL;
+				break;
+		}
+		if(direction != gamemap::location::SOUTH_WEST && direction != gamemap::location::NORTH_WEST) {
+			halo_id_ = halo::add(x+halo_x(),
+					y+halo_y(),
+					halo(),
+					gamemap::location(-1, -1),
+					orientation);
+		} else {
+			halo_id_ = halo::add(x-halo_x(),
+					y+halo_y(),
+					halo(),
+					gamemap::location(-1, -1),
+					orientation);
+		}
+	}
+	update_last_draw_time();
+}
+unit_animation::crude_animation::~crude_animation()
+{
+	halo::remove(halo_id_);
+	halo_id_ = halo::NO_HALO;
+}
+void unit_animation::crude_animation::start_animation(int start_time,const gamemap::location &src,const gamemap::location &dst, bool cycles, double acceleration)
+{
+	halo::remove(halo_id_);
+	halo_id_ = halo::NO_HALO;
+	animated<unit_frame>::start_animation(start_time,cycles,acceleration);
+	last_frame_begin_time_ = get_begin_time() -1;
+	if(src != gamemap::location::null_location || dst != gamemap::location::null_location) {
+		src_ = src;
+		dst_ = dst;
+	}
+};

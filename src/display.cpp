@@ -829,8 +829,8 @@ void display::clear_hex_overlay(const gamemap::location& loc)
 }
 
 void display::render_unit_image(int x, int y, surface image,
-		bool reverse, bool greyscale, fixed_t alpha,
-		Uint32 blendto, double blend_ratio, double submerged)
+		bool hreverse, bool greyscale, fixed_t alpha,
+		Uint32 blendto, double blend_ratio, double submerged,bool vreverse)
 {
 
 	if (image==NULL)
@@ -843,8 +843,11 @@ void display::render_unit_image(int x, int y, surface image,
 
 	surface surf(image);
 
-	if(reverse) {
+	if(hreverse) {
 		surf = image::reverse_image(surf);
+	}
+	if(vreverse) {
+		surf = flop_surface(surf);
 	}
 
 	if(greyscale) {

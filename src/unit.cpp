@@ -1320,12 +1320,7 @@ void unit::read(const config& cfg, bool use_traits)
 			animations_ = ut->animations_;
 			cfg_.clear_children("animation");
 		} else {
-			const config::child_list& animations = cfg_.get_children("animation");
-			config::child_list::const_iterator d;
-			for(d = animations.begin(); d != animations.end(); ++d) {
-				animations_.push_back(unit_animation(**d));
-			}
-			unit_animation::back_compat_initialize_anims(animations_,cfg_,type()->attacks(true));
+			unit_animation::initialize_anims(animations_,cfg_,type()->attacks(true));
 		}
 	} else {
 		// Remove animations from private cfg, since they're not needed there now
@@ -1614,7 +1609,7 @@ void unit::start_animation(const game_display &disp, const gamemap::location &lo
 	offset_=0;
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
-	anim_->start_animation(anim_->get_begin_time(), cycles, disp.turbo_speed());
+	anim_->start_animation(anim_->get_begin_time(),loc, loc.get_direction(facing_), cycles, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp.idle_anim()) {
 		next_idling_ = get_current_animation_tick()
@@ -1624,9 +1619,9 @@ void unit::start_animation(const game_display &disp, const gamemap::location &lo
 	}
 }
 
-void unit::restart_animation(const game_display& disp,int start_time) {
+void unit::restart_animation(const game_display& disp,int start_time, bool cycles) {
 	if(!anim_) return;
-	anim_->start_animation(start_time,false,disp.turbo_speed());
+	anim_->start_animation(start_time,gamemap::location::null_location, gamemap::location::null_location, cycles, disp.turbo_speed());
 	frame_begin_time_ = start_time -1;
 }
 
@@ -1868,6 +1863,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		}
 	}
 
+	anim_->redraw();
 	refreshing_ = false;
 	anim_->update_last_draw_time();
 }
@@ -2590,13 +2586,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					game_config::add_color_info(**i.first);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					// TODO most of this is to keep backward compatibility, to be removed in due time...
-					const config::child_list& animations = (**i.first).get_children("animation");
-					config::child_list::const_iterator d;
-					for(d = animations.begin(); d != animations.end(); ++d) {
-						animations_.push_back(unit_animation(**d));
-					}
-					unit_animation::back_compat_initialize_anims(animations_,**i.first,std::vector<attack_type>());
+					unit_animation::initialize_anims(animations_,**i.first,std::vector<attack_type>());
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions

@@ -190,7 +190,7 @@ public:
 	void set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
 	void set_poisoned(const game_display& disp,const gamemap::location& loc,int damage);
 	void set_idling(const game_display& disp,const gamemap::location& loc);
-	void restart_animation(const game_display& disp,int start_time);
+	void restart_animation(const game_display& disp,int start_time, bool cycles = false);
 	const unit_animation* get_animation() const {  return anim_;};
 	void set_offset(double offset){offset_ = offset;}
 	void set_facing(gamemap::location::DIRECTION dir);

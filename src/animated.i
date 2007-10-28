@@ -51,7 +51,8 @@ animated<T,T_void_value>::animated(int start_time) :
 	cycles_(false),
 	acceleration_(1),
 	last_update_tick_(0),
-	current_frame_key_(0)
+	current_frame_key_(0),
+        last_frame_key_(-1)
 {
 }
 
@@ -64,7 +65,8 @@ animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, in
 	cycles_(false),
 	acceleration_(1),
 	last_update_tick_(0),
-	current_frame_key_(0)
+	current_frame_key_(0),
+        last_frame_key_(-1)
 {
 
 	typename std::vector< std::pair<int,T> >::const_iterator itor = cfg.begin();
@@ -101,6 +103,8 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 	if(acceleration_ <=0) acceleration_ = 1;
 	current_frame_key_= 0;
 	update_last_draw_time();
+        // need to force last frame key in the case of starting anim...
+        last_frame_key_ = -1;
 }
 
 
@@ -108,6 +112,7 @@ template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::update_last_draw_time()
 {
 	last_update_tick_ = current_ticks;
+        last_frame_key_ = current_frame_key_;
 	if(does_not_change_)
 		return;
 
@@ -124,6 +129,7 @@ void animated<T,T_void_value>::update_last_draw_time()
 		while(get_animation_time() > get_end_time()){  // cut extra time
 			start_tick_ += static_cast<int>(get_end_time()/acceleration_);
 			current_frame_key_ = 0;
+                        last_frame_key_ = -1;
 		}
 	}
 	if(get_current_frame_end_time() < get_animation_time() &&  // catch up
