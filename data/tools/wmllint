@@ -1178,7 +1178,6 @@ def translator(filename, mapxforms, textxform):
             for transform in mapxforms:
                 for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
-            # Second disjunct should be removed when the map-border code lands.
             if maptype == "mask":
                 add_border = False
             if add_border:
