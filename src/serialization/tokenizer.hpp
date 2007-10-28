@@ -54,8 +54,8 @@ public:
 	virtual ~tokenizer() {}
 
 	const token& next_token();
-	const token& current_token();
-	std::string get_line();
+	const token& current_token() const;
+	std::string get_line() const;
 	std::string& textdomain();
 
 protected:
@@ -63,10 +63,10 @@ protected:
 	size_t lineno_;
 
 	virtual void next_char() = 0;
-	virtual int peek_char() = 0;
+	virtual int peek_char() const = 0;
 private:
-	bool is_space(int c);
-	bool is_alnum(int c);
+	bool is_space(const int c) const;
+	bool is_alnum(const int c) const;
 	void skip_comment();
 
 	std::string textdomain_;
@@ -83,7 +83,7 @@ public:
 
 protected:
 	void next_char();
-	int peek_char();
+	int peek_char() const;
 
 private:
 	std::istream& in_;
@@ -97,7 +97,7 @@ public:
 
 protected:
 	void next_char();
-	int peek_char();
+	int peek_char() const;
 
 private:
 	std::string& in_;

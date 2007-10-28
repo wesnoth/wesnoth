@@ -136,23 +136,24 @@ const token& tokenizer::next_token()
 	return token_;
 }
 
-const token& tokenizer::current_token()
+const token& tokenizer::current_token() const
 {
 	return token_;
 }
 
 
-bool tokenizer::is_space(int c)
+bool tokenizer::is_space(const int c) const
 {
 	return c == ' ' || c == '\t';
 }
 
-bool tokenizer::is_alnum(int c)
+bool tokenizer::is_alnum(const int c) const
 {
-	return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_';
+	return (c >= 'a' && c <= 'z') 
+		|| (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_';
 }
 
-std::string tokenizer::get_line()
+std::string tokenizer::get_line() const
 {
 	std::ostringstream s;
 	s << tokenstart_lineno_ << ' ' << file_;
@@ -195,7 +196,7 @@ void tokenizer_stream::next_char()
 	} while(current_ == '\r');
 }
 
-int tokenizer_stream::peek_char()
+int tokenizer_stream::peek_char() const
 {
 	return in_.peek();
 }
@@ -217,7 +218,7 @@ void tokenizer_string::next_char()
 	
 }
 
-int tokenizer_string::peek_char()
+int tokenizer_string::peek_char() const
 {
 	return in_[offset_];
 }
