@@ -208,8 +208,8 @@ void tokenizer_string::next_char()
 		lineno_++;
 
 	do {
-		if(offset_ + 1< in_.size()) {
-			current_ = in_[++offset_];
+		if(offset_ < in_.size()) {
+			current_ = in_[offset_++];
 		} else {
 			current_ = EOF;
 		}
@@ -219,6 +219,6 @@ void tokenizer_string::next_char()
 
 int tokenizer_string::peek_char()
 {
-	return in_[offset_ + 1];
+	return in_[offset_];
 }
 
