@@ -353,9 +353,6 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 		border_size_ = lexical_cast_default<int>(header["border_size"], 0);
 		const std::string usage = header["usage"];
 
-		std::cerr << "header: " << header_str << "\n\n\n";
-		std::cerr << "usage: " << usage << "\tborder: " << border_size_ << "\n";
-
 		if(usage == "map") {
 			usage_ = IS_MAP;
 		} else if(usage == "mask") {
