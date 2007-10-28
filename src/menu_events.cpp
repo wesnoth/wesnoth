@@ -45,6 +45,22 @@
 
 namespace {
 
+static void remove_old_saves()
+{
+	int countdown = preferences::savemax();
+	if (countdown == preferences::INFINITE_SAVES)
+		return;
+
+	std::vector<save_info> games = get_saves_list();
+	std::cerr << "Removing old saves.\n";
+	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
+		if (countdown-- < 0) {
+			std::cerr << "Deleting savegame '" << i->name << "'\n";
+			//delete_game(i->name);
+		}
+	}
+}
+
 std::vector<std::string> create_unit_table(const game_data& gameinfo, const statistics::stats::str_int_map& m, unsigned int team)
 {
 	std::vector<std::string> table;
@@ -833,6 +849,8 @@ private:
 		}
 		end = SDL_GetTicks();
 		std::cerr << "Milliseconds to save " << savename << ": " << end - start << "\n";
+
+		remove_old_saves();
 	}
 
 	void menu_handler::load_game(){
