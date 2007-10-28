@@ -62,7 +62,7 @@ namespace {
 struct connection_details {
 	connection_details(TCPsocket sock, const std::string& host, int port)
 		: sock(sock), host(host), port(port), remote_handle(0),
-	      connected_at(SDL_GetTicks()), sent(0), received(0)
+	      connected_at(SDL_GetTicks())
 	{}
 
 	TCPsocket sock;
@@ -74,7 +74,6 @@ struct connection_details {
 	int remote_handle;
 
 	int connected_at;
-	int sent, received;
 };
 
 typedef std::map<network::connection,connection_details> connection_map;
@@ -169,7 +168,7 @@ connection_stats::connection_stats(int sent, int received, int connected_at)
 connection_stats get_connection_stats(connection connection_num)
 {
 	connection_details& details = get_connection_details(connection_num);
-	return connection_stats(details.sent,details.received,details.connected_at);
+	return connection_stats(get_send_stats(connection_num).total,get_receive_stats(connection_num).total,details.connected_at);
 }
 
 error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
