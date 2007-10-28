@@ -286,6 +286,8 @@ void server::run()
 {
 	bool sync_scheduled = false;
 	for(int loop = 0;; ++loop) {
+		SDL_Delay(20);
+
 		try {
 			if(sync_scheduled) {
 				//send all players the information that a player has logged
@@ -346,7 +348,11 @@ void server::run()
 
 		} catch(network::error& e) {
 			if(!e.socket) {
+				// "Could not send initial handshake" really fatal?
 				ERR_SERVER << "fatal network error: " << e.message << "\n";
+				if (e.message == "Could not send initial handshake")
+					continue;
+				throw e;
 				break;
 			} else {
 				LOG_SERVER << "socket closed: " << e.message << "\n";
@@ -450,8 +456,6 @@ void server::run()
 			ERR_SERVER << "error in received data: " << e.message << "\n";
 			continue;
 		}
-
-		SDL_Delay(20);
 	}
 }
 
