@@ -288,8 +288,6 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 gamemap::gamemap(const config& cfg, const std::string& data,
 	 const tborder border_tiles, const tusage usage) : 
 		tiles_(1), 
-		total_width_(0),
-		total_height_(0),
 		terrainList_(),
 		letterToTerrain_(),
 		villages_(),
@@ -297,6 +295,8 @@ gamemap::gamemap(const config& cfg, const std::string& data,
 		terrainFrequencyCache_(),
 		w_(-1), 
 		h_(-1),
+		total_width_(0),
+		total_height_(0),
 		border_size_(border_tiles),
 		usage_(usage) 
 {

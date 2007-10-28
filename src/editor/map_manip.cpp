@@ -155,8 +155,12 @@ void editormap::swap_starting_position(const size_t x1, const size_t y1,
 void editormap::add_tiles_right(
 	const unsigned count, const t_translation::t_letter& filler)
 {
+	// We can no longer 'trust' the map stats so need to get the info from
+	// the tiles_. After adding the size() will change so use a temp variable.
+	const size_t size = tiles_.size();
+
 	for(size_t x = 1; x <= count; ++x) {
-		t_translation::t_list one_row(total_height_);
+		t_translation::t_list one_row(size);
 		for(size_t y = 0; y < tiles_[1].size(); ++y) {
 			one_row[y] =
 				filler != t_translation::NONE_TERRAIN ?
@@ -172,8 +176,12 @@ void editormap::add_tiles_right(
 void editormap::add_tiles_left(
 	const unsigned count, const t_translation::t_letter& filler)
 {
+	// We can no longer 'trust' the map stats so need to get the info from
+	// the tiles_. After adding the size() will change so use a temp variable.
+	const size_t size = tiles_.size();
+
 	for(size_t i = 1; i <= count; ++i) {
-		t_translation::t_list one_row(total_height_);
+		t_translation::t_list one_row(size);
 		for(size_t y = 0; y < tiles_[1].size(); ++y) {
 			one_row[y] =
 				filler != t_translation::NONE_TERRAIN ?

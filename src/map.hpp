@@ -235,10 +235,6 @@ protected:
 	 */
 	void clear_border_cache() { borderCache_.clear(); }
 
-	//! Sizes of the map including the borders.
-	int total_width_;
-	int total_height_;
-
 private:
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
@@ -257,6 +253,10 @@ private:
 	//! Sizes of the map area.
 	int w_;
 	int h_;
+
+	//! Sizes of the map including the borders.
+	int total_width_;
+	int total_height_;
 
 	//! The size of the border around the map.
 	int border_size_;
