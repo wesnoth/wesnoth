@@ -1194,6 +1194,8 @@ def translator(filename, mapxforms, textxform):
                 outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap) 
                 # Strip keeps out of the edges
                 outermap(lambda n: re.sub(r"K([a-z]+)", r"C\1", n), outmap)
+                # Strip the starting positions out of the edges
+                outermap(lambda n: re.sub(r"[1-9] ", r"", n), outmap)
                 # Turn big trees on the edges to ordinary forest hexes
                 outermap(lambda n: n.replace(r"Gg^Fet", r"Gs^Fp"), outmap)
                 modified = True
