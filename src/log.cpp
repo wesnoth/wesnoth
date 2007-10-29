@@ -15,7 +15,7 @@
 
 //! @file log.cpp
 //! Logger for debugging.
-//! See also wesnoth-commandline-params --logdomains and --log-error="".
+//! See also wesnoth-commandline-params --logdomains and --log-<level>="domain".
 
 #include "global.hpp"
 
@@ -54,10 +54,10 @@ namespace lg {
 
 void timestamps(bool t) { timestamp = t; }
 
-logger err("error", 0), warn("warning", 1), info("info", 2);
+logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
 log_domain general("general"), ai("ai"), config("config"), display("display"),
-	   engine("engine"), network("network"), filesystem("filesystem"),
-	   audio("audio"), paths("paths");
+	   engine("engine"), network("network"), mp_server("server"),
+	   filesystem("filesystem"), audio("audio"), paths("paths");
 
 log_domain::log_domain(char const *name) : domain_(log_domains.size())
 {

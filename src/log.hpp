@@ -47,8 +47,8 @@ public:
 
 void timestamps(bool);
 
-extern logger err, warn, info;
-extern log_domain general, ai, config, display, engine, network, filesystem, audio, paths;
+extern logger err, warn, info, debug;
+extern log_domain general, ai, config, display, engine, network, mp_server, filesystem, audio, paths;
 
 class scope_logger
 {
