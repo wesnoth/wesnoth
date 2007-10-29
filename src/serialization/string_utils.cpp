@@ -198,9 +198,10 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-// Splits a function based either on a separator
-// where text within paranthesis is protected from splitting,
-// (note that one can use the same character for both the left and right paranthesis)
+// Splits a string based either on a separator where text within paranthesis
+// is protected from splitting (the paranthesis get removed; note that one can
+// use the same character for both the left and right paranthesis and in this
+// mode it usually makes only sense to have )
 // or if the separator == 0 it splits a string into an odd number of parts:
 // - The part before the first '(',
 // - the part between the first '('
@@ -220,6 +221,7 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 {
 	std::vector< std::string > res;
 	std::vector<char> part;
+	bool in_paranthesis = false;
 
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2 = val.begin();
@@ -233,8 +235,16 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 	}
 
 	while (i2 != val.end()) {
-		if(separator && *i2 == separator){
-			std::string new_val(i1, i2);
+		if(!in_paranthesis && separator && *i2 == separator){
+			std::string::const_iterator end = i2;
+			// Remove the right paranthesis at the end of the new string.
+			for(size_t i=0; i < rp.size(); i++){
+				if (*(i2 - 1) == rp[i]) {
+					end = i2 - 1;
+					break;
+				}
+			}
+			std::string new_val(i1, end);
 			if (flags & STRIP_SPACES)
 				strip(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
@@ -243,6 +253,15 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 			if (flags & STRIP_SPACES) {
 				while (i2 != val.end() && *i2 == ' ')
 					++i2;
+			}
+			// Remove the left paranthesis at the start of the next string.
+			for(size_t i=0; i < lp.size(); i++){
+				if (*i2 == lp[i]) {
+					++i2;
+					in_paranthesis = true;
+					part.push_back(rp[i]);
+					break;
+				}
 			}
 			i1=i2;
 			continue;
@@ -257,6 +276,8 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 				++i2;
 				i1=i2;
 			}else{
+				if (part.size() == 0)
+					in_paranthesis = false;
 				++i2;
 			}
 			continue;
@@ -280,11 +301,20 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 			}
 		}
 		if(!found){
-				++i2;
+			++i2;
+		} else
+			in_paranthesis = true;
+	}
+
+	std::string::const_iterator end = i2;
+	for(size_t i=0; i < rp.size(); i++){
+		if (*(i2 - 1) == rp[i]) {
+			end = i2 - 1;
+			break;
 		}
 	}
 
-	std::string new_val(i1, i2);
+	std::string new_val(i1, end);
 	if (flags & STRIP_SPACES)
 		strip(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())

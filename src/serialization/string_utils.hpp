@@ -67,8 +67,7 @@ std::string &strip(std::string &str);
 bool has_value(std::string const &values, std::string const &val);
 bool string_bool(const std::string& str,bool def=false);
 
-//	Checks the username is valid (all alpha-numeric or space (but no space at ends)).
-//	Does not check length, disallow-list, or already in use */
+//! Check if the username contains only valid characters.
 bool isvalid_username(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
