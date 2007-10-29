@@ -1798,6 +1798,7 @@ private:
 		unsigned int argc = 0;
 		std::string cmd, arg1, arg2;
 
+		// Use utils::split()?
 		if(is_command){
 			std::string::size_type sp1 = message.find_first_of(' ');
 			cmd = message.substr(0,sp1);
@@ -1951,7 +1952,6 @@ private:
 		}
 	}
 
-
 	void menu_handler::send_chat_message(const std::string& message, bool allies_only)
 	{
 		config cfg;
@@ -2066,31 +2066,31 @@ private:
 			image::flush_cache();
 			gui_->redraw_everything();
 		} else if (cmd == "droid") {
-			const unsigned int side = lexical_cast_default<unsigned int>(data, 1);
-			const size_t index = static_cast<size_t>(side - 1);
-			if (index >= teams_.size() || teams_[index].is_network()) {
-				//do nothing
-			} else if (teams_[index].is_human()) {
+			// default to the current side
+			const unsigned int side = lexical_cast_default<unsigned int>(data, team_num);
+			if (side < 1 || side > teams_.size() || teams_[side - 1].is_network()) {
+				return;
+			} else if (teams_[side - 1].is_human()) {
 				//this is our side, so give it to AI
-				teams_[index].make_ai();
+				teams_[side - 1].make_ai();
 				textbox_info_.close(*gui_);
 				if(team_num == side) {
-				//if it is our turn at the moment, we have to indicate to the
+					//if it is our turn at the moment, we have to indicate to the
 					//play_controller, that we are no longer in control
 					throw end_turn_exception(side);
 				}
-			} else if (teams_[index].is_ai()) {
-				teams_[index].make_human();
+			} else if (teams_[side - 1].is_ai()) {
+				teams_[side - 1].make_human();
 			}
 		} else if (cmd == "theme") {
 		  preferences::show_theme_dialog(*gui_);
-		} else if(cmd == "ban" || cmd == "kick") {
+		} else if((cmd == "ban" || cmd == "kick") && network::nconnections() != 0) {
 			config cfg;
 			config& ban = cfg.add_child(cmd);
 			ban["username"] = data;
 
 			network::send_data(cfg);
-		} else if (cmd == "mute") {
+		} else if (cmd == "mute" && network::nconnections() != 0) {
 			config cfg;
 			config& mute = cfg.add_child(cmd);
 			if (!data.empty()) {
@@ -2098,40 +2098,40 @@ private:
 			}
 
 			network::send_data(cfg);
-		} else if (cmd == "muteall") {
-			config cfg;
-			cfg.add_child(cmd);
-
-			network::send_data(cfg);
+		} else if (cmd == "muteall" && network::nconnections() != 0) {
+			network::send_data(config(cmd));
 		} else if(cmd == "control" && network::nconnections() != 0) {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
-			if(j != data.end()) {
-				const std::string side(data.begin(),j);
-				const std::string player(j+1,data.end());
-				unsigned int side_num;
-				try {
-					side_num = lexical_cast<unsigned int, std::string>(side);
-				} catch(bad_lexical_cast&) {
+			if(j == data.end())
+				return;
+			const std::string side(data.begin(),j);
+			const std::string player(j+1,data.end());
+			unsigned int side_num;
+			try {
+				side_num = lexical_cast<unsigned int, std::string>(side);
+			} catch(bad_lexical_cast&) {
+				return;
+			}
+			if (side_num < 1 || side_num > teams_.size()) {
+				return;
+			}
+			//if this is our side we are always allowed to change the controller
+			if(teams_[side_num - 1].is_human()){
+				if (player == preferences::login())
 					return;
+				change_side_controller(side,player,true);
+				teams_[side_num - 1].make_network();
+				textbox_info_.close(*gui_);
+				if(team_num == side_num) {
+					//if it is our turn at the moment, we have to indicate to the
+					//play_controller, that we are no longer in control
+					gui_->set_team(0);
+					throw end_turn_exception(side_num);
 				}
-				if(side_num > 0 && side_num <= teams_.size()) {
-					if(teams_[static_cast<size_t>(side_num - 1)].is_human()) {
-						//if this is our side we are always allowed to change the controller
-						change_side_controller(side,player,true);
-						teams_[static_cast<size_t>(side_num - 1)].make_network();
-						textbox_info_.close(*gui_);
-						if(team_num == side_num) {
-							//if it is our turn at the moment, we have to indicate to the
-							//play_controller, that we are no longer in control
-							gui_->set_team(0);
-							throw end_turn_exception(side_num);
-						}
-					} else {
-						//it is not our side, the server will decide if we can change the
-						//controller (that is if we are host of the game)
-						change_side_controller(side,player);
-					}
-				}
+			} else {
+				//it is not our side, the server will decide if we can change the
+				//controller (that is if we are host of the game)
+				change_side_controller(side,player);
 			}
 		} else if(cmd == "clear") {
 			gui_->clear_chat_messages();
