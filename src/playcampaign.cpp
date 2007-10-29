@@ -108,7 +108,7 @@ static void clean_saves(const std::string &label)
 		if (i->name.compare(0,i->name.length(),label) == 0)
 			continue;	// Never delete scenario-start saves
 		if (i->name.compare(0,label.length(),label) == 0) {
-			std::cerr << "Deleting autosave '" << i->name << "'\n";
+			std::cerr << "Deleting savegame '" << i->name << "'\n";
 			delete_game(i->name);
 		}
 	}
