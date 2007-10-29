@@ -194,6 +194,7 @@ public:
 	double aggression() const { return aggression_; }
 	double caution() const { return caution_; }
 
+	team_info::CONTROLLER controller() const { return info_.controller; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
 	bool is_network() const { return info_.controller == team_info::NETWORK; }
 	bool is_ai() const { return info_.controller == team_info::AI; }

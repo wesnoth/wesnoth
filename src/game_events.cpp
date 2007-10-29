@@ -734,9 +734,20 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const size_t team_index = side_num-1;
 		if(team_index < teams->size()) {
 			if(cmd == "store_side") {
+				config side_data;
+				(*teams)[team_index].write(side_data);
+				state_of_game->get_variable(var_name+".controller") = side_data["controller"];
+				state_of_game->get_variable(var_name+".recruit") = side_data["recruit"];
+				state_of_game->get_variable(var_name+".fog") = side_data["fog"];
+				state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
+				
 				state_of_game->get_variable(var_name+".income") = lexical_cast_default<std::string>((*teams)[team_index].income(),"");
 				state_of_game->get_variable(var_name+".name") = (*teams)[team_index].name();
 				state_of_game->get_variable(var_name+".team_name") = (*teams)[team_index].team_name();
+				state_of_game->get_variable(var_name+".user_team_name") = (*teams)[team_index].user_team_name();
+				//state_of_game->get_variable(var_name+".recruit") = lexical_cast_default<std::string>((*teams)[team_index]
+				state_of_game->get_variable(var_name+".colour") = (*teams)[team_index].map_colour_to();
+
 				gold_store = &state_of_game->get_variable(var_name+".gold");
 			} else {
 				gold_store = &state_of_game->get_variable(var_name);
