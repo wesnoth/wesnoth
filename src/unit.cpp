@@ -354,7 +354,7 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 }
 
 
-void unit::add_trait()
+void unit::add_trait(std::string /*trait*/)
 {
 	//modifications_.add_child("trait", cfg);
 	apply_modifications();
