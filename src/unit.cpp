@@ -218,6 +218,9 @@ void unit::clear_status_caches()
 unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
+	// Once random gender is used, don't do it again.
+	// Such as when restoring a saved character.
+	cfg_["random_gender"] = "no";
 	if(genders.empty() == false) {
 		return gen ? genders[get_random()%genders.size()] : genders.front();
 	} else {
@@ -228,8 +231,8 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 //! Initializes a unit from a unit type.
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
            const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t,
-           int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
-           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false),
+           int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
+           variation_(variation), gender_(dummy_unit ? gender : generate_gender(*t,use_traits)), resting_(false),
            state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
            gamedata_(gamedata),units_(unitmap),map_(map),gamestatus_(game_status),teams_(teams)
 {
@@ -269,8 +272,8 @@ unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
 	unit_halo_ = halo::NO_HALO;
 	unit_anim_halo_ = halo::NO_HALO;
 }
-unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
-           gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
+unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender, std::string variation) :
+           variation_(variation),gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
            state_(STATE_STANDING),facing_(gamemap::location::NORTH_EAST),draw_bars_(false),
            gamedata_(NULL), units_(NULL),map_(NULL),gamestatus_(NULL),teams_(NULL)
 {
@@ -351,7 +354,7 @@ void unit::set_game_context(const game_data* gamedata, unit_map* unitmap, const 
 }
 
 
-void unit::add_trait(std::string trait)
+void unit::add_trait()
 {
 	//modifications_.add_child("trait", cfg);
 	apply_modifications();
@@ -517,13 +520,17 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 	backup_state();
 
 	bool do_heal = false; // Track whether unit should get fully healed.
+
+	if(utils::string_bool(cfg_["random_gender"], false)) {
+		generate_gender(*t,true);
+	}
+
 	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
 		do_heal = true; // Can't heal until after mods applied.
 		id_ = t->id();
 		cfg_["id"] = id_;
 		cfg_["gender_id"] = cfg_["gender"];
 	}
-
 
 	if(utils::string_bool(cfg_["random_traits"], true)) {
 		generate_traits(!use_traits);
@@ -1151,6 +1158,7 @@ void unit::read(const config& cfg, bool use_traits)
 	if(!(cfg["type"].empty() || cfg["type"] == cfg["id"]) || cfg["gender"] != cfg["gender_id"]) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
+			
 			advance_to(&i->second.get_gender_unit_type(gender_), use_traits);
 			type_set = true;
 		} else {
@@ -1213,6 +1221,7 @@ void unit::read(const config& cfg, bool use_traits)
 
 	std::map<std::string,unit_type>::const_iterator uti = gamedata_->unit_types.find(cfg["type"]);
 	const unit_type* ut = NULL;
+
 	if(uti != gamedata_->unit_types.end()) {
 		ut = &uti->second.get_gender_unit_type(gender_).get_variation(variation_);
 	}

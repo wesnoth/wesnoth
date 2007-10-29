@@ -61,8 +61,8 @@ public:
 	unit(const game_data& gamedata, const config& cfg, bool use_traits=false);
 	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const config& cfg, bool use_traits=false);
 	// Initilizes a unit from a unit type
-	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
-	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
+	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
+	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
 	virtual ~unit();
 	unit& operator=(const unit&);
 
@@ -275,7 +275,7 @@ public:
 	void backup_state();
 	void apply_modifications();
 	void remove_temporary_modifications();
-	void add_trait(std::string trait);
+	void add_trait();
 	void generate_traits(bool musthaveonly=false);
 	void generate_traits_description();
 	std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }

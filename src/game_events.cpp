@@ -774,6 +774,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string side = cfg["side"];
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
+		std::string variation = cfg["variation"];
 		wassert(state_of_game != NULL);
 
 		size_t side_num = lexical_cast_default<int>(side,1)-1;
@@ -786,7 +787,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			wassert(units != NULL);
 			wassert(game_map != NULL);
 			wassert(status_ptr != NULL);
-			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,side_num+1,false,true,gender);
+			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,side_num+1,false,true,gender,variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
 			std::vector<gamemap::location> path;
