@@ -56,7 +56,7 @@ static void remove_old_saves()
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
 		if (countdown-- < 0) {
 			std::cerr << "Deleting savegame '" << i->name << "'\n";
-			//delete_game(i->name);
+			delete_game(i->name);
 		}
 	}
 }
