@@ -213,10 +213,12 @@ void show_objectives(game_display& disp, const config& level, const std::string&
 {
 	static const std::string no_objectives(_("No objectives available"));
 	const std::string& name = level["name"];
+	const std::string& campaign_name = level["campaign"];
 
-	gui::message_dialog(disp, "", "*~" + name + "\n" +
-	                 (objectives.empty() ? no_objectives : objectives)
-	                 ).show();
+	gui::message_dialog(disp, "", "*~" + name +
+			(campaign_name.empty() ? "\n" : " - " + campaign_name + "\n") +
+	                (objectives.empty() ? no_objectives : objectives)
+	                ).show();
 }
 
 int get_save_name(display & disp,const std::string& message, const std::string& txt_label,
@@ -226,9 +228,9 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 	static int quit_prompt = 0;
 	const std::string& tmp_title = (title.empty()) ? _("Save Game") : title;
 	bool ignore_opt = false;
-    int overwrite=0;
-    int res=0;
-    do {
+	int overwrite=0;
+	int res=0;
+	do {
 		gui::dialog d(disp, tmp_title, message, dialog_type);
 		d.set_textbox(txt_label, *fname);
 		if(has_exit_button) {
@@ -259,7 +261,7 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 		} else {
 			overwrite = 0;
 		}
-    } while ((res==0)&&(overwrite!=0));
+	} while ((res==0)&&(overwrite!=0));
 	if(ignore_opt) {
 		quit_prompt = -1;
 	}
@@ -463,7 +465,9 @@ void save_preview_pane::draw_contents()
 		str << "\n";
 
 		if(campaign_type == "scenario") {
-			str << _("Campaign");
+			utils::string_map symbols;
+			symbols["campaign_name"] = summary["campaign"];
+			str << vgettext("Campaign: $campaign_name", symbols);
 		} else if(campaign_type == "multiplayer") {
 			str << _("Multiplayer");
 		} else if(campaign_type == "tutorial") {

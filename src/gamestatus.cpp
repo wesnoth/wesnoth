@@ -959,6 +959,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["label"] = cfg_save["label"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
 	cfg_summary["scenario"] = cfg_save["scenario"];
+	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["difficulty"] = cfg_save["difficulty"];
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";
