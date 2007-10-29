@@ -1834,9 +1834,10 @@ static int play_game(int argc, char** argv)
 			<< "  -h, --help                   prints this message and exits.\n"
 			<< "  --load SAVEGAME              loads the file SAVEGAME from the standard save\n"
 			<< "                               game directory.\n"
-			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
+			<< "  --log-<level>=\"domain1,domain2,...\"\n"
 			<< "                               sets the severity level of the debug domains.\n"
 			<< "                               \"all\" can be used to match any debug domain.\n"
+			<< "                               Available levels: error, warning, info, debug.\n"
 			<< "  --logdomains                 List defined log domains and exit.\n"
 			<< "  --nocache                    disables caching of game data.\n"
 			<< "  --validcache                 assume that cache is valid (dangerous)\n"
@@ -1893,6 +1894,7 @@ static int play_game(int argc, char** argv)
 			if (s == "error") severity = 0;
 			else if (s == "warning") severity = 1;
 			else if (s == "info") severity = 2;
+			else if (s == "debug") severity = 3;
 			else {
 				std::cerr << "unknown debug level: " << s << '\n';
 				return 0;
