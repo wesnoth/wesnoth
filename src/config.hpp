@@ -90,7 +90,7 @@ public:
 	void clear();
 	bool empty() const;
 
-	void debug(std::ostream& outstream=std::cerr) const;
+	std::string debug() const;
 	std::string hash() const;
 
 	struct error {

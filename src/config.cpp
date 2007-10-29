@@ -687,8 +687,9 @@ void config::reset_translation() const
 	}
 }
 
-void config::debug(std::ostream& outstream) const
+std::string config::debug() const
 {
+	std::ostringstream outstream;
 	static int i = 0;
 	i++;
 	for(string_map::const_iterator val = values.begin(); val != values.end(); ++val) {
@@ -699,11 +700,12 @@ void config::debug(std::ostream& outstream) const
 	for(all_children_iterator list = ordered_begin(); list != ordered_end(); ++list) {
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
 		outstream << "[" << *(*list).first << "]\n";
-		(*list).second->debug(outstream);
+		outstream << (*list).second->debug();
 		{ for (int j = 0; j < i-1; j++){ outstream << char(9); } }
 		outstream << "[/" << *(*list).first << "]\n";
 	}
 	i--;
+	return outstream.str();
 }
 
 std::string config::hash() const

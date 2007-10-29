@@ -1131,7 +1131,7 @@ game_state::~game_state() {
 void game_state::set_variables(const config& vars) {
 	if(!variables.empty()) {
 		WRN_NG << "clobbering the game_state variables\n";
-		variables.debug(WRN_NG);
+		WRN_NG << variables.debug();
 	}
 	variables = vars;
 }
