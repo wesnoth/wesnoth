@@ -4,6 +4,8 @@ Version 1.3.9+svn:
      * Fixed bug #10195, related to Holy Amulet's description
    * Northern Rebirth
      * Balancing polishing and bug fixing.
+     * Disabled undead branch for the upcoming 1.4 string freeze, as it is far
+       from finished right now, and will not change before the string freeze.
      * Made auto recalled units loyal.
    * Under the Burning Suns
      * renamed the files to reflect scenario titles
@@ -42,6 +44,9 @@ Version 1.3.9+svn:
  * WML engine:
    * new key "contains=" in [variable] conditions to check the presence of a 
      substring in a variable value
+   * new key "variation=" in [move_unit_fake] statements to add the possibility
+     of making a fake unit look like one of its variation while moving - this also
+     reflects in a change to the MOVE_UNIT macro, which now can use gender and variation too.
    * maps now have a user definable border
    * Changed the mute hotkey from ctrl-m to ctrl-alt-m.
    * On victory, all old saves for the scenario except the start one
