@@ -264,6 +264,9 @@ filemoves = {
     #("{ABILITY_HEALS}", "{ABILITY_HEALS 4}"),
     #("{ABILITY_CURES}", "{ABILITY_CURES_POISON}{ABILITY_HEALS 8}"),
     ),
+    "1.3.9" : (
+	("Outlaw Ranger", "Ranger"),
+    ),
     # An empty sentinel value at end is required.
     "trunk" : (),
 }
@@ -1115,7 +1118,7 @@ def translator(filename, mapxforms, textxform):
             outmap = []
             add_border = True
             add_usage = True
-            have_header = False
+            have_header = have_delimiter = False
             maskwarn = False
             maptype = None
             if map_only:
@@ -1152,6 +1155,8 @@ def translator(filename, mapxforms, textxform):
                         add_border = False
                     if "usage" in line:
                         add_usage = False
+                    if len(line) == 0:
+                        have_delimiter = True
                     newdata.append(line + terminator)
                     continue
                 if '"' in line:
@@ -1209,7 +1214,7 @@ def translator(filename, mapxforms, textxform):
                 newdata.append("usage=" + maptype + terminator)
                 have_header = True
                 modified = True
-            if have_header:
+            if have_header and not have_delimiter:
                 newdata.append(terminator)
                 modified = True
             for y in range(len(outmap)):
