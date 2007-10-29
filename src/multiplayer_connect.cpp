@@ -29,6 +29,7 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "ai.hpp"
+#include "random.hpp"
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -757,7 +758,6 @@ void connect::side::resolve_random()
 			}
 		}
 	}
-	std::cout << "HALLO! and it's " << llm_.get_gender() << " !!!!" << std::endl;
 	// Resolve random genders "very much" like standard unit code
 	if (llm_.get_gender() == "random") {
 		const game_data::unit_type_map& utypes = parent_->game_data_.unit_types;
@@ -765,7 +765,8 @@ void connect::side::resolve_random()
 
 			const std::vector<unit_race::GENDER> possible_genders = utypes.find(leader_)->second.genders();
 			if (possible_genders.size() >= 2) {
-				switch ( possible_genders[rand() % possible_genders.size()] )
+				const int gchoice = get_random() % possible_genders.size();
+				switch ( possible_genders[gchoice] )
 				{
 					case unit_race::FEMALE:
 						gender_ = "female";
@@ -777,7 +778,6 @@ void connect::side::resolve_random()
 						gender_ = "null";
 				}
 			} else {
-				std::cout << "possible genders are " << possible_genders.size();
 				// Otherwise we can't do it; set it to only available value, if any.
 				if (! possible_genders.empty()) {
 					if (possible_genders.front() == unit_race::FEMALE)
