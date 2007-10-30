@@ -127,14 +127,14 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 
 namespace utils {
 
-bool isnewline(char c)
+bool isnewline(const char c)
 {
 	return c == '\r' || c == '\n';
 }
 
 // Make sure that we can use Mac, DOS, or Unix style text files on any system
 // and they will work, by making sure the definition of whitespace is consistent
-bool portable_isspace(char c)
+bool portable_isspace(const char c)
 {
 	// returns true only on ASCII spaces
 	if (static_cast<unsigned char>(c) >= 128)
@@ -144,11 +144,12 @@ bool portable_isspace(char c)
 
 // Make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
 // all consider these differently.
-bool notspace(char c)
+bool notspace(const char c)
 {
 	return !portable_isspace(c);
 }
 
+//! Remove whitespace from the front and back of the string 'str'.
 std::string &strip(std::string &str)
 {
 	// If all the string contains is whitespace,
@@ -163,14 +164,12 @@ std::string &strip(std::string &str)
 	return str;
 }
 
-std::string &strip_char(std::string &str, char c)
-{
-	std::string::iterator it = std::remove(str.begin(), str.end(), c);
-	if (it == str.end())
-		return str;
-	str.erase(str.begin(), it);
-	str.erase(std::find_if(str.rbegin(), str.rend(), notspace).base(), str.end());
-
+//! Removes character 'c' from the first and last position of the string 'str'.
+std::string& strip_char(std::string &str, const char c) {
+	if (*str.begin() == c)
+		str.erase(str.begin(), str.begin() + 1);
+	if (*(str.end() - 1) == c)
+		str.erase(str.end() - 1, str.end());
 	return str;
 }
 
@@ -407,6 +406,7 @@ bool string_bool(const std::string& str,bool def)
 	return def;
 }
 
+//! Test for additional valid username characters.
 bool isvalid_char(char c)
 {
 	return ((c == '_') || (c == '-'));

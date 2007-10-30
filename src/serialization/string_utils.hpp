@@ -49,8 +49,8 @@ bool portable_isspace(char c);
 bool notspace(char c);
 
 enum { REMOVE_EMPTY = 0x01,	//!< REMOVE_EMPTY : remove empty elements
-	  STRIP_SPACES  = 0x02		//!< STRIP_SPACES : strips leading and trailing blank spaces
-	 };
+	  STRIP_SPACES  = 0x02	//!< STRIP_SPACES : strips leading and trailing blank spaces
+};
 
 std::vector< std::string > split(std::string const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
 std::vector< std::string > paranthetical_split(std::string const &val, const char separator = 0 , std::string const &left="(", std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
@@ -63,7 +63,10 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 std::string &escape(std::string &str, const std::string& special_chars);
 std::string &escape(std::string &str);
 std::string &unescape(std::string &str);
+//! Remove whitespace from the front and back of the string 'str'.
 std::string &strip(std::string &str);
+//! Removes character 'c' from the first and last position of the string 'str'.
+std::string& strip_char(std::string &str, const char c);
 bool has_value(std::string const &values, std::string const &val);
 bool string_bool(const std::string& str,bool def=false);
 
