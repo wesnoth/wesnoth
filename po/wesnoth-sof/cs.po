@@ -1,19 +1,33 @@
+# translation of cs.po to Czech
+# David Novotny [Draqen] <Dragen@seznam.cz>,
+# Vladimír Slávik <slavik.vladimir@seznam.cz>,
+# 2007
+#
+# Český překlad Sceptre of Fire, tažení ke hře
+# Bitva o Wesnoth, http://www.wesnoth.org/
+#
+# Czech translation of The Sceptre of Fire,
+# official campaign of Battle of Wesnoth
+#
+# This file is distributed under the same licence
+# as Battle for Wesnoth
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-26 15:27+0200\n"
-"PO-Revision-Date: 2005-04-29 20:50+0200\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2007-10-30 15:14+0100\n"
+"Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\\\n"
 
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:8
 msgid "The Sceptre of Fire"
-msgstr ""
+msgstr "Ohnivé žezlo"
 
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:13
 msgid "Fighter"
@@ -24,8 +38,9 @@ msgid "(Normal)"
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:14
+#, fuzzy
 msgid "Steelclad"
-msgstr ""
+msgstr "Pancéřovaný"
 
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:14
 msgid "(Challenging)"
@@ -36,6 +51,7 @@ msgid "(Difficult)"
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:15
+#, fuzzy
 msgid "Lord"
 msgstr "Lord"
 
@@ -59,18 +75,19 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:16
 msgid "Rugnur"
-msgstr ""
+msgstr "Rugnur"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:31
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:25
 msgid "Haldric II"
-msgstr ""
+msgstr "Haldrik II."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:71
 msgid "Glildur"
-msgstr ""
+msgstr "Glildur"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:86
+#, fuzzy
 msgid ""
 "Ay, the Sceptre of Fire. The sceptre has a long, glorious, and fearful "
 "history. But I am not here to tell you how the jewel within it was brought "
@@ -78,6 +95,10 @@ msgid ""
 "and the challenge he set, or that of Konrad, king of Wesnoth by virtue of "
 "the Sceptre."
 msgstr ""
+"Aa, Ohnivé žezlo. Žezlo má dlouhou, slavnou a děsivou historii. Ale nejsem "
+"tu, abych vám vyprávěl, jak Haldrik Velký přivezl tento klenot přes oceán. A "
+"ani vám nebudu vyprávět příběh Gararda prvního, a výzvě kterou vytvoříl, "
+"nebo to o Konradu, krály Wesnothu z moci žezla."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:89
 msgid ""
@@ -94,12 +115,14 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:109
+#, fuzzy
 msgid "Transport 5 caravans full of silver back to the dwarvish castle"
-msgstr ""
+msgstr "Doprav 5 karavan plných stříbra zpět do trpasličího hradu"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:111
+#, fuzzy
 msgid "Transport 4 caravans full of silver back to the dwarvish castle"
-msgstr ""
+msgstr "Dostaň 4 karavany plné střibra zpět do Dwarvish citadely."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:116
 msgid "Bring Alanin, who has the Ruby of Fire, to the dwarvish castle"
@@ -125,11 +148,11 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:350
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:518
 msgid "Death of Rugnur"
-msgstr ""
+msgstr "Rugnur zemře"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:124
 msgid "Death of Haldric II"
-msgstr ""
+msgstr "Haldrika II. zemře"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:128
 msgid "Capture (death) of a caravan"
@@ -150,6 +173,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:116
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:366
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:538
+#, fuzzy
 msgid "Time runs out"
 msgstr "Vyprší počet kol"
 
@@ -158,8 +182,9 @@ msgid "Humans, halt! Don't come any closer, we dwarves don't like company..."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:171
+#, fuzzy
 msgid "We come to make a deal with you."
-msgstr ""
+msgstr "Přisli jsem jsme, aby jsme se s tebou dohodli."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:175
 msgid ""
@@ -295,7 +320,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:274
 msgid "Alanin"
-msgstr ""
+msgstr "Alanin"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:284
 msgid "Thats right. I'll be coming over along with the silver."
@@ -416,7 +441,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:33
 msgid "Glindur"
-msgstr ""
+msgstr "Glindur"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:50
 msgid ""
@@ -431,8 +456,9 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:71
+#, fuzzy
 msgid "Kill all elves in the caves after the gates are closed"
-msgstr ""
+msgstr "Zabij všechny elfi než nekterý unikne z jeskyně."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:79
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:532
@@ -440,7 +466,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:358
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:526
 msgid "Death of Baglur"
-msgstr ""
+msgstr "Baglur zemře"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:159
 msgid ""
@@ -481,7 +507,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:229
 msgid "Baglur"
-msgstr ""
+msgstr "Baglur"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:240
 msgid ""
@@ -624,7 +650,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:25
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:26
 msgid "Durstorn"
-msgstr ""
+msgstr "Durstorn"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:37
 msgid ""
@@ -642,27 +668,27 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:58
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:57
 msgid "Neglur"
-msgstr ""
+msgstr "Neglur"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:71
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:69
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:68
 msgid "Glinar"
-msgstr ""
+msgstr "Glinar"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:83
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:162
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:80
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:79
 msgid "Noiraran"
-msgstr ""
+msgstr "Noiraran"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:94
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:172
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:91
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:90
 msgid "Kuhnar"
-msgstr ""
+msgstr "Kuhnar"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:107
 msgid ""
@@ -832,7 +858,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:354
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:522
 msgid "Death of Alanin"
-msgstr ""
+msgstr "Alanin zemře"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:156
 msgid ""
@@ -932,11 +958,11 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:362
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:530
 msgid "Death of Krawg"
-msgstr ""
+msgstr "Krawg zemře"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:378
 msgid "Kawn"
-msgstr ""
+msgstr "Kawn"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:397
 msgid "I see a house in the distance!"
@@ -957,7 +983,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:394
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:440
 msgid "Thursagan"
-msgstr ""
+msgstr "Thursagan"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:450
 msgid "What do you people want!? Leave me alone!"
@@ -1043,7 +1069,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:91
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:534
 msgid "Death of Thursagan"
-msgstr ""
+msgstr "Thursagan zemře"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:554
 msgid "Well, now we are in the caves again! Come on, back south, to the city."
@@ -1179,11 +1205,11 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:216
 msgid "Kinan"
-msgstr ""
+msgstr "Kinan"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:222
 msgid "Rynan"
-msgstr ""
+msgstr "Rynan"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:225
 msgid "Two runesmiths from the academy have joined you!"
@@ -1201,8 +1227,9 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:3
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:11
+#, fuzzy
 msgid "Gathering Materials"
-msgstr ""
+msgstr "Schromážděné materiály"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:20
 msgid ""
@@ -1363,7 +1390,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:161
 msgid "Theganli"
-msgstr ""
+msgstr "Teganli"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:165
 msgid "I'm coming... coming... stop pounding on the door..."
@@ -1402,8 +1429,9 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:200
+#, fuzzy
 msgid "Well, do you have anything yet?!"
-msgstr ""
+msgstr "Dobra, maš už něco?"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/4t_The_Jeweler.cfg:204
 msgid ""
@@ -1479,7 +1507,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:32
 msgid "Glonoin"
-msgstr ""
+msgstr "Glonoin"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:94
 msgid ""
@@ -1490,8 +1518,9 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:114
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:360
+#, fuzzy
 msgid "Defeat Glonoin, the Shorbear clan leader"
-msgstr ""
+msgstr "Poraž Glonoina, vůdce klanu Shorbear "
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:134
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:384
@@ -1586,7 +1615,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:262
 msgid "Two thousand, and I'll go no lower!"
-msgstr ""
+msgstr "Dva tisíce a níž už nepůjdu."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:266
 msgid "(whispered) What are we going to do? We can't go much higher!"
@@ -1631,12 +1660,13 @@ msgid "You're making a mistake, Durstorn."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:302
+#, fuzzy
 msgid "Shut up, all of you! Attack them!"
-msgstr ""
+msgstr "Ztichněte všichni! Zautočte!"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:312
 msgid "Lyndar"
-msgstr ""
+msgstr "Lyndar"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:319
 msgid ""
@@ -1758,20 +1788,21 @@ msgid "Gaanngh..."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:3
+#, fuzzy
 msgid "Towards the Caves"
-msgstr ""
+msgstr "Směrem k jeskyním."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:30
 msgid "Gaenlar"
-msgstr ""
+msgstr "Gaenlar"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:60
 msgid "Glinan"
-msgstr ""
+msgstr "Glinan"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:87
 msgid "Kalnar"
-msgstr ""
+msgstr "Kalnar"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:107
 msgid ""
@@ -1798,8 +1829,9 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:130
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:369
+#, fuzzy
 msgid "Move Rugnur to the northeast cave entrance"
-msgstr ""
+msgstr "Dostan Rugnura do severovýchodního vstupu do jeskyně."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:134
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:458
@@ -2008,7 +2040,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:72
 msgid "Reach the Wesnothian outpost in the south"
-msgstr ""
+msgstr "Dosáhni Wesnothské předsunuté základny na jihu."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:95
 msgid ""
@@ -2024,23 +2056,23 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:108
 msgid "Lord Asaeri"
-msgstr ""
+msgstr "Lord Asaeri"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:119
 msgid "Gaelir"
-msgstr ""
+msgstr "Gaelir"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:130
 msgid "Salira"
-msgstr ""
+msgstr "Salira"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:141
 msgid "Losnin"
-msgstr ""
+msgstr "Losnin"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:152
 msgid "Ealin"
-msgstr ""
+msgstr "Ealin"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:168
 msgid ""
@@ -2049,12 +2081,13 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:172
+#, fuzzy
 msgid "We shall see about that!"
-msgstr ""
+msgstr "No uvidíme."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:181
 msgid "Raesil"
-msgstr ""
+msgstr "Raesil"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:198
 msgid ""
@@ -2064,7 +2097,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:203
 msgid "Rolin"
-msgstr ""
+msgstr "Rolin"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:208
 msgid "We will certainly help any warrior of Wesnoth who needs our help!"
@@ -2072,9 +2105,10 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:235
 msgid "Hadlin"
-msgstr ""
+msgstr "Hadlin"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_of_Outriders.cfg:240
+#, fuzzy
 msgid "Who goes there?"
 msgstr "Kdo tam jde?"
 
@@ -2097,11 +2131,11 @@ msgstr "Drak"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:27
 msgid "Landar"
-msgstr ""
+msgstr "Landar"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:46
 msgid "Khrakrahs"
-msgstr "Khrakrahs"
+msgstr "Krakraš"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:64
 msgid ""
@@ -2113,7 +2147,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:81
 msgid "Get all heroes to the end of the tunnel"
-msgstr ""
+msgstr "Dostaň všechny hrdiny na konec tunelu."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:177
 msgid ""
@@ -2142,22 +2176,26 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:198
+#, fuzzy
 msgid ""
 "So we're running away, eh? I don't like that, but it seems it's our only "
 "option."
 msgstr ""
+"Takže utíkáme pryč, eh? Nerad, ale zdá se, že je to naše jediná možnost."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:202
 msgid "If it makes you feel any better, we'll probably die this way, too."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:215
+#, fuzzy
 msgid "Look, there's a dragon in these caves!"
-msgstr ""
+msgstr "Podívej, v těchle těch jeskyních sídlí drak."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:219
+#, fuzzy
 msgid "Ah, fresh meat!"
-msgstr ""
+msgstr "Ah, čerstvé maso."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:223
 msgid "And which of the great dragons are you?"
@@ -2193,12 +2231,14 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:268
+#, fuzzy
 msgid "That pretty metal rock is mine! Get away from it!"
-msgstr ""
+msgstr "Ten pěkny kovový kus skály je můj! Běž od něj!"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:273
+#, fuzzy
 msgid "Move Thursagan to the forge"
-msgstr ""
+msgstr "Dojdi s Thursaganem do pevnosti."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:277
 msgid "Defend Thursagan until the sceptre is complete"
@@ -2211,12 +2251,14 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:312
+#, fuzzy
 msgid "Survive for 9 turns"
-msgstr ""
+msgstr "Přežij devět tahu."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:324
+#, fuzzy
 msgid "An enemy moves onto the forge"
-msgstr ""
+msgstr "Nepřítel se pohybuje k pevnosti."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:345
 msgid "You fool, you let the enemy get at me as I was unarmed!"
@@ -2234,18 +2276,22 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:381
+#, fuzzy
 msgid ""
 "Good. Now, let's get out of this cave, before the elves, dwarves or bats "
 "kill us!"
 msgstr ""
+"Dobrá. Ted vypadnem z této jeskyně dřiv než nás elfové, trpaslíci či "
+"netopýři pozabíjí."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:396
 msgid "In $turnsleft more turns I will have completed the sceptre."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:3
+#, fuzzy
 msgid "Caverns of Flame"
-msgstr ""
+msgstr "Jeskyně ohně"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:130
 msgid ""
@@ -2261,8 +2307,9 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:152
+#, fuzzy
 msgid "Explore as much of the cave as possible"
-msgstr ""
+msgstr "Prozkoumej co největši čast jeskyně, jak jen to bude možné."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:224
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:232
@@ -2271,7 +2318,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:256
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:264
 msgid "Guardian"
-msgstr ""
+msgstr "Strážce"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:269
 msgid ""
@@ -2291,8 +2338,9 @@ msgid "This sounds... attemptable."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:281
+#, fuzzy
 msgid "Yes, an interesting plan. How do you propose we do this?"
-msgstr ""
+msgstr "Ano zajímavý plan. Jak to cheš provést?"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:285
 msgid ""
@@ -2302,28 +2350,31 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:289
+#, fuzzy
 msgid "Very well. We will continue to explore until we find it."
-msgstr ""
+msgstr "Velmi dobře. Budeme pokračovat v průzkumu dokud to nenajdeme."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:294
 msgid "Krawg sme' o'cz in iz 'ave!"
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:298
+#, fuzzy
 msgid "Indeed, there may be orcs lurking here. We should beware of them."
-msgstr ""
+msgstr "Vskutku zde mouhou být skryti orkové. Měli by jsme být napozoru."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:327
 msgid "Aendan"
-msgstr ""
+msgstr "Aendan"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:333
 msgid "We have caught up to the dwarves. Now, prepare to destroy them!"
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:372
+#, fuzzy
 msgid "Thursagan! The elves are right on our tail; what should we do?"
-msgstr ""
+msgstr "Thursagan! Elfove jsou hned za námi. Co máme dělat?"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:376
 msgid ""
@@ -2333,16 +2384,19 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:435
+#, fuzzy
 msgid "These orcs appear to be guarding something."
-msgstr ""
+msgstr "Tito orkové vypadají jako kdyby něco hlídali."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:439
+#, fuzzy
 msgid "It is probably the magical object. Attack them!"
-msgstr ""
+msgstr "Pravděpodobně je to ten magický předmět. Napadněte je!"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:444
+#, fuzzy
 msgid "Move onto the glyph in the center of the volcano"
-msgstr ""
+msgstr "Dojdi na ozdobný symbol v centru vulkánu."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:507
 msgid "That's it! The volcano will erupt soon now that you've triggered it."
@@ -2360,8 +2414,9 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:533
+#, fuzzy
 msgid "Now, we must fight the orcs until we die, it's our only option."
-msgstr ""
+msgstr "Ted musí bojovat s orky do vymření, je to naše jedina možnost."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:539
 msgid ""
@@ -2383,12 +2438,14 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:595
+#, fuzzy
 msgid "I must go report to my superiors!"
-msgstr ""
+msgstr "Musím to jít nahlásít memu nadřízenému."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:600
+#, fuzzy
 msgid "We have allowed an enemy to escape; we have failed."
-msgstr ""
+msgstr "Nechali jsem nepřítele uniknout. Selhali jsme."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:657
 msgid ""
@@ -2402,8 +2459,9 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:817
+#, fuzzy
 msgid "Kill all of the elves before one of them escapes from the caves"
-msgstr ""
+msgstr "Zabij všechny elfi než nekterý unikne z jeskyně."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:924
 msgid "Hm... Me le' no'w!"
@@ -2434,15 +2492,15 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:79
 msgid "Guard Captain"
-msgstr ""
+msgstr "Kapitán stráže"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:96
 msgid "Gatekeeper"
-msgstr ""
+msgstr "Strážce brány"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:112
 msgid "Halt! What is your business in Weldyn, capital of Wesnoth?"
-msgstr ""
+msgstr "Zastav! Co pohledáváš ve Weldynu, hlavním městě Wesnothu?"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:116
 msgid ""
@@ -2452,12 +2510,13 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:120
 msgid "Very well. You may pass."
-msgstr ""
+msgstr "Dobře tedy. Mužes projít."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:125
 msgid ""
 "I hear you desire to speak to the king, Alanin. What do you have to tell him?"
 msgstr ""
+"Slyšel jsem, že by jsi chtěl mluvit s králem, Alanine. Co mu chceš říci?"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:129
 msgid ""
@@ -2467,7 +2526,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:133
 msgid "Enter, Alanin, and give the king your message."
-msgstr ""
+msgstr "Vstup, Alanine, a předej králi tvou zprávu."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:160
 msgid ""
@@ -2477,7 +2536,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:164
 msgid "Well, was the Sceptre completed? Do you have it? Give it to me!"
-msgstr ""
+msgstr "Bylo žezlo zkompletováno? Máš ho? Dej mi ho!"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:168
 msgid ""
@@ -2499,7 +2558,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:180
 msgid "Why were you returning without the sceptre, then?"
-msgstr ""
+msgstr "A proč se tedy vracíš bez žezla?"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:184
 msgid ""
@@ -2518,7 +2577,7 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:192
 msgid "I will let Krawg explain that."
-msgstr ""
+msgstr "Nechám Krawga vystvětlit to."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:196
 msgid "Who?"
@@ -2541,8 +2600,9 @@ msgid "Ya, ya! Meh seah za zeptahur. Hrugnaar ha ee. Lozeet enda caav."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:232
+#, fuzzy
 msgid "What the devil is he saying?"
-msgstr ""
+msgstr "Co to sakra říká?"
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:236
 msgid ""
@@ -2579,8 +2639,9 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:257
+#, fuzzy
 msgid "Very well, my lord."
-msgstr ""
+msgstr "Velmi dobře, můj pane."
 
 #: data/campaigns/Sceptre_of_Fire/scenarios/Epilogue.cfg:261
 msgid ""
@@ -2614,18 +2675,24 @@ msgid "Kraa..."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:4
+#, fuzzy
 msgid "Caravan"
-msgstr ""
+msgstr "Karavana je prázdna"
 
 #: data/campaigns/Sceptre_of_Fire/units/Caravan.cfg:14
+#, fuzzy
 msgid ""
 "Caravans are used to carry gold or supplies long distances. Because of the "
 "immense weight of the cargo this caravan carries, it moves very slowly."
 msgstr ""
+"Karavany jsou užívané pro převoz zlata nebo zásob na dlouhé vzdálenosti. "
+"Tato karavan je již náložena a kvůli nesmírné váze nákladu, se pohybuje "
+"velmi pomalu."
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:4
+#, fuzzy
 msgid "Dwarvish Arcanister"
-msgstr ""
+msgstr "Tajemný trpaslík"
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Arcanister.cfg:21
 msgid ""
@@ -2643,7 +2710,7 @@ msgstr "kladivo"
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:4
 msgid "Dwarvish Miner"
-msgstr ""
+msgstr "Trpasličí horník"
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:14
 msgid ""
@@ -2654,13 +2721,15 @@ msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Miner.cfg:19
 msgid "pick"
-msgstr ""
+msgstr "krumpáč"
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:4
+#, fuzzy
 msgid "Dwarvish Runemaster"
 msgstr "Trpasličí mistr run"
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runemaster.cfg:21
+#, fuzzy
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
 "runecrafter can rise to is that of the Dwarvish Runemaster. Striking blows "
@@ -2669,18 +2738,30 @@ msgid ""
 "their runes cause the physical blows of their enemies to deal less damage "
 "than would be expected."
 msgstr ""
+"S výjimkou těch s téměř nadpřirozenou schopností, nejvyšší hodnost, kterou "
+"může runový kovář dosáhnout je trpasličí runový mistr. Úder má skoro tak "
+"silný, jak ti nejlepší z válečníků. Hrůzu by naháněli i bez jeho runového "
+"umění, ale od dob kdy jejich runy dokáží, že nepřátelé způsobují menší "
+"zranění než by kdokoliv očekával, jsou runový mistři blízko naprosté "
+"nepřemožitelnosti."
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:4
+#, fuzzy
 msgid "Dwarvish Runesmith"
-msgstr ""
+msgstr "Trpasličí runový kovář"
 
 #: data/campaigns/Sceptre_of_Fire/units/Dwarvish_Runesmith.cfg:24
+#, fuzzy
 msgid ""
 "Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
 "their weapons and armor. These runes infuse the runesmith's blows with power "
 "and accuracy, and disrupt the blows of their enemies, causing them to strike "
 "softly, weakly and on the armor of the defender."
 msgstr ""
+"Runový trpasličí kováři, neustále zlepšují své umění, vkováním tajemných run "
+"do jejich zbraní a brnění. Tyto runy  zesilují a zpřesňují jejích údery, a "
+"naopak naruší útoky nepřatel tak, že oslabý a znepřesní výpady na břnení "
+"trpaslíka."
 
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:4
 msgid "King"
@@ -2691,13 +2772,12 @@ msgid "King of Wesnoth."
 msgstr ""
 
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
-#, fuzzy
 msgid "sword"
-msgstr "Lord"
+msgstr "meč"
 
 #: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "Vlk"
 
 #: data/campaigns/Sceptre_of_Fire/units/Wolf.cfg:21
 msgid "bite"
@@ -2707,11 +2787,81 @@ msgstr "kousnutí"
 msgid "claws"
 msgstr "drápy"
 
+#~ msgid "(easiest)"
+#~ msgstr "(nejjednodušší)"
+
+#~ msgid "(hardest)"
+#~ msgstr "(nejobtížnější)"
+
+#~ msgid "Well, have we found any tunnels yet?"
+#~ msgstr "Tak už jsme našli nejaké tunely?"
+
+#~ msgid "Its safer in Thursagan's hands than in yours, Durstorn."
+#~ msgstr "Je to bezpečnejsí v rukách Thursagana, než v tvých Durstorne."
+
+#~ msgid "strong, dexterous"
+#~ msgstr "silný, obratný"
+
+#~ msgid "strong, quick"
+#~ msgstr "silný, rychlý"
+
+#~ msgid "strong, resilient"
+#~ msgstr "silný, houževnatý"
+
+#~ msgid "quick, resilient"
+#~ msgstr "rychlý, houževnatý"
+
+#~ msgid "intelligent, resilient"
+#~ msgstr "inteligentní, houževnatý"
+
+#~ msgid "strong, intelligent"
+#~ msgstr "silný, inteligentní"
+
+#~ msgid "quick, intelligent"
+#~ msgstr "rychlý, inteligentní"
+
+#~ msgid ""
+#~ "Caravans are used to carry gold or supplies over long distances. This one "
+#~ "is waiting to be stocked."
+#~ msgstr ""
+#~ "Karavany jsou užívané pro převoz zlata nebo zásob na dlouhé vzdálenosti. "
+#~ "Tato karavan čeká na náklad."
+
+#~ msgid "none"
+#~ msgstr "žádná"
+
 #~ msgid "impact"
 #~ msgstr "úder"
 
+#~ msgid "Loaded Caravan"
+#~ msgstr "Karavana naložena"
+
+#~ msgid "magical"
+#~ msgstr "magické"
+
 #~ msgid "pierce"
 #~ msgstr "bodnutí"
+
+#~ msgid "tough"
+#~ msgstr "dotek"
+
+#~ msgid "Dwarvish Smith"
+#~ msgstr "Trpsličí kovář"
+
+#~ msgid ""
+#~ "More wise than strong, some Dwarves devote their lives to the study of "
+#~ "magical runes. These Dwarvish smiths, novices at the art of runecrafting, "
+#~ "are not yet skilled enough to harness the pure magic of their weapons. "
+#~ "Their runed hammers, however, still strike fear into their enemies' "
+#~ "hearts. Without their hammer, they are among the weaker, but more "
+#~ "skilled, of the dwarves."
+#~ msgstr ""
+#~ "Více moudří než silní jsou někteří trpaslící, kteří věnují své životy "
+#~ "studiu magických run. Tito trpasličí kováři,  nováčci v umění runového "
+#~ "řemesla, nejsou zatím dost zkušený na to, aby spojili čisté kouzlo s "
+#~ "jejich zbraněmi. Nicméně, jejich runová kladiva, i přesto vnáší strach do "
+#~ "srdcí nepřátel. Často jsou  zkušenejší než bežný trpaslík, ale bez jejich "
+#~ "runových zbraní jsou slabými protivníky."
 
 #~ msgid "blade"
 #~ msgstr "čepel"
