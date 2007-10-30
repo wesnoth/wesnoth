@@ -378,9 +378,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		gamestate.snapshot = config();
 
-		// Only apply prefs for deleting old savegames and 
-		// saving replays on victory.  
-		if(res == VICTORY) {
+		// Save-nagement ioptions fire on game end.
+		// This means: (a) we have a victory, or
+		// or (b) we're multiplayer live, in which
+		// case defeat is also game end.  Someday, 
+		// if MP campaigns ever work again, we might
+		// need to change this test.
+		if(res == VICTORY || io_type != IO_NONE) {
 			const std::string orig_scenario = gamestate.scenario;
 			gamestate.scenario = current_scenario;
 
