@@ -339,10 +339,10 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_ai_moves_button_.set_help_string(_("Do not animate AI units moving"));
 
 	save_replays_button_.set_check(save_replays());
-	save_replays_button_.set_help_string(_("Save replays at scenario end."));
+	save_replays_button_.set_help_string(_("Save replays on SP victory or SP/MP defeat."));
 
 	delete_saves_button_.set_check(delete_saves());
-	delete_saves_button_.set_help_string(_("Automatically delete saves on victory"));
+	delete_saves_button_.set_help_string(_("Automatically delete saves on SP victory or SP/MP defeat"));
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
