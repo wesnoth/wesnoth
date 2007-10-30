@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
 # jan2xue <75jan@163.com>, 2005
-# Huang huan <unicon221@gmail.com>, 2005. (unicon)
+# Huang huan <unicon221@gmail.com>, 2005.
+# Dionysus <huang.wei.bhu@gmail.com>, 2007. (unicon)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-26 15:27+0200\n"
-"PO-Revision-Date: 2007-04-28 12:18+0800\n"
-"Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
+"PO-Revision-Date: 2007-10-30 12:22+0800\n"
+"Last-Translator: Dionysus <huang.wei.bhu@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Bookmarks: 1407,1408,842,859,896,937,1003,1025,1091,1309\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 
 #: data/multiplayer/_main.cfg:5
@@ -29,7 +29,7 @@ msgstr "随机"
 
 #: data/multiplayer/eras.cfg:12
 msgid "Default"
-msgstr "缺省"
+msgstr "默认"
 
 #: data/multiplayer/eras.cfg:25
 msgid "Age of Heroes"
@@ -70,7 +70,7 @@ msgstr "北方民族"
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
-msgstr "反叛者"
+msgstr "反抗者"
 
 #: data/multiplayer/factions/undead-default.cfg:4
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -82,14 +82,13 @@ msgid "2p - Caves of the Basilisk"
 msgstr "2p - 蛇怪之穴"
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:33
-#, fuzzy
 msgid ""
 "Players must maneuver their units through the divisive terrain of this long-"
 "feared region, once the home of a legendary Elder Basilisk. The caves and "
 "the stark wilderness surrounding them are filled with the petrified forms of "
 "some of Wesnoth's greatest heroes."
 msgstr ""
-"玩家要控制自己的部队通过这片支离破碎的地域。这里自古以来就令人生畏，是传说中"
+"玩家要控制自己的部队通过这片支离破碎的地域。这里自古以来就令人生畏，传说中是"
 "远古蛇怪的巢穴。在通往胜利的道路上时不时会碰到化为石头的韦诺英雄。"
 
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:20
@@ -326,6 +325,8 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
+"Talael Ryndoc将军到这里来与伟大的Marshal Aethec Corryn决斗,但是他们两一直没有"
+"找到对方."
 
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
 msgid "Aethec Corryn"
@@ -384,9 +385,8 @@ msgid "2p - Cynsaun Battlefield"
 msgstr "2p - Cynsaun战场"
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
-#, fuzzy
 msgid " Recommended settings of 150 gold and 2 gold per village."
-msgstr " 建议设置150个金币的起始资源，每座村庄提供1个金币。"
+msgstr " 建议设置为150个金币的起始资源，每座村庄每回合提供2个金币。"
 
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:7
 msgid ""
@@ -399,12 +399,12 @@ msgid "2p - Den of Onis"
 msgstr "2p - Onis的巢穴"
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:6
-#, fuzzy
 msgid ""
 "Danger lurks around every corner in this underground battlefield, a duel map "
 "where players must find the balance between force and subterfuge."
 msgstr ""
-"这是一幅供2人决斗的地图，危险隐藏于地下战场的每个角落，武力与诡计针锋相对。"
+"这是一幅供2人决斗的地图，危险隐藏于地下战场的每个角落，你必须在武力与诡计中找"
+"到平衡点。"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
@@ -431,16 +431,14 @@ msgid " Recommended setting of 2 gold per village."
 msgstr " 建议设置每座村庄提供2个金币。"
 
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
-#, fuzzy
 msgid "2p - Fallenstar Lake"
-msgstr "2p - 流星湖"
+msgstr "2p - 坠星湖"
 
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
-#, fuzzy
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
-msgstr "很久以前，一颗来自太空的大陨石落下来，在这片针叶林中留下了印记。"
+msgstr "很久以前，一颗来自天堂的星辰坠落下来，在这片针叶林中留下了印记。"
 
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:20
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
@@ -544,7 +542,6 @@ msgid "Statue of Sulla"
 msgstr "Sulla之像"
 
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:78
-#, fuzzy
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
@@ -587,9 +584,8 @@ msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Sulla的侍从Lo-bsang的石像。"
 
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:5
-#, fuzzy
 msgid "2p - The Freelands"
-msgstr "4p - 蛮荒之地"
+msgstr "2p - 自由之地"
 
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:7
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:7
@@ -599,7 +595,7 @@ msgstr "2v2对战地图，适合速战速决"
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 #, fuzzy
 msgid "2p - Weldyn Channel"
-msgstr "2p - 冲刺"
+msgstr "2p -  "
 
 #: data/multiplayer/scenarios/2p_Wesbowl.cfg:4
 msgid "2p - Wesbowl"
@@ -672,7 +668,7 @@ msgstr "平局！最终比分是：$redscore-$bluescore"
 
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:5
 msgid "3p - Alirok Marsh"
-msgstr ""
+msgstr "3p - Alirok沼泽"
 
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 msgid "Three players come head to head on this water-cut battlefield."
@@ -703,15 +699,14 @@ msgid "4p - Blue Water Province"
 msgstr "4p - 蓝水省"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:6
-#, fuzzy
 msgid ""
 "Historians write that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"据说蓝水省曾被摧毁并重建了20多次。现在，军队再一次结集在这个小小的省份里岩石"
-"突兀的河流和白雪皑皑的山脉上，村民们似乎已不再在意。"
+"历史上蓝水省曾被摧毁并重建了20多次。现在，军队再一次结集在这个有着岩石突兀的"
+"河流和白雪皑皑的山脉小小的省份里，村民们似乎已完全不在意。"
 
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:20
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:53
@@ -910,24 +905,24 @@ msgid ""
 msgstr "一大片布满野生动物、森林、洞穴、河流和古老关隘遗迹的区域。"
 
 #: data/multiplayer/scenarios/4p_The_Wilderlands.cfg:80
-#, fuzzy
 msgid "Monsters"
 msgstr "怪物"
 
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:7
+#, fuzzy
 msgid "4p - Xanthe Chaos"
-msgstr ""
+msgstr "4p - 赞西混沌"
 
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
-msgstr ""
+msgstr "这是一副24X28的2v2地图, 地图中央有辅助城堡和经常性的战斗."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
 #, fuzzy
 msgid "5p - Auction-X"
-msgstr "动作"
+msgstr "5p - "
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 msgid ""
@@ -936,31 +931,30 @@ msgid ""
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
+"这幅地图上,4个玩家环绕中心城堡分布,可以以生存模式,自由对抗或者4v1模式进行游"
+"戏. 在FFA模式或者4v1模式中,中央的玩家需要更多的金币, 决定这个额外金币数值的最"
+"好方法是拍卖, 最低出价者获得中央位置. 地图不大, 所以其他4个玩家的推荐初始资金"
+"为75金币."
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:21
-#, fuzzy
 msgid "teamname^Northeast"
 msgstr "东北"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
-#, fuzzy
 msgid "teamname^Southeast"
-msgstr "西南"
+msgstr "东南"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:45
-#, fuzzy
 msgid "teamname^Southwest"
 msgstr "西南"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
-#, fuzzy
 msgid "teamname^Northwest"
 msgstr "西北"
 
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
-#, fuzzy
 msgid "teamname^Center"
-msgstr "西部"
+msgstr "中部"
 
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
 msgid "5p - Forest of Fear"
@@ -1008,13 +1002,14 @@ msgid "Turn 2: Loyalists"
 msgstr "保皇派"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:168
+#, fuzzy
 msgid "Turn 5: Knalgans"
-msgstr ""
+msgstr "纳尔迦联盟"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:169
 #, fuzzy
 msgid "Turn 8: Rebels"
-msgstr "回合数： "
+msgstr "反抗者"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:170
 #, fuzzy
@@ -1024,19 +1019,20 @@ msgstr "北方民族"
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:171
 #, fuzzy
 msgid "Turn 14: Drakes"
-msgstr "飓风龙战士"
+msgstr "龙族"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:172
+#, fuzzy
 msgid "Turn 17: Undead"
-msgstr ""
+msgstr "不死族"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:173
 msgid "Tower of Doom"
-msgstr ""
+msgstr "末日之塔"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:304
 msgid "6p - Team Survival"
-msgstr ""
+msgstr "6p - 团队生存"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:307
 msgid "Scenario where the objective is to survive for as long as possible."
@@ -1044,19 +1040,19 @@ msgstr ""
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 msgid "Survive for 32 turns."
-msgstr ""
+msgstr "生存32回合."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:314
 msgid "Hint: Learning the enemy spawnpoints and types helps alot."
-msgstr ""
+msgstr "提示:观察敌人刷新点和种类会有很大帮助."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:315
 msgid "Survive all enemy attacks."
-msgstr ""
+msgstr "撑过所有波次的攻击."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:316
 msgid "Death of your team leaders."
-msgstr ""
+msgstr "团队领袖们死亡."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:338
 msgid ""
@@ -1064,12 +1060,14 @@ msgid ""
 "impossible. Frankly, I haven't got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
+"祝贺你在这个地图中生存了下来,尽管这被许多人认为是个不可能达成的任务. 坦白的"
+"说,我无法想像你是怎么做到的. 所以请把录像寄给 roze@roze.mine.nu 非常感谢!"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:341
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
-msgstr ""
+msgstr "你失败了,不过别气馁.你随时可以再试一次,再一次,再一次...*Muahahaha*"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:347
 msgid "Attacker"
@@ -1089,15 +1087,14 @@ msgid "6p - The Manzivan Traps"
 msgstr "6p - Manzivan陷阱"
 
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:9
-#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"这是一幅40x20的3v3对战地图。Manzivan陷阱以让人困惑犯难的地形而著称，在这种地"
-"形上很容易失去位置或过分扩张。玩家1、4、5组队对阵玩家2、3、6（东部对阵西"
+"这是一幅40x20的3v3对战地图。Manzivan陷阱以让人迷惑的困难地形而著称，在这种地"
+"形上很容易失去据点或过分扩张。玩家1、4、5组队对阵玩家2、3、6（东部对阵西"
 "部）。适合100金币的起始资源。图上有33座村庄。"
 
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -1116,29 +1113,28 @@ msgstr ""
 "也很有意思。适合150金币的起始资源。图上有44座村庄。"
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5
-#, fuzzy
 msgid "8p - Mokena Prairie"
-msgstr "8p - 濒临死亡"
+msgstr "8p - 摩科纳大草原"
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:7
 msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
+"根据从Morituri中得到的灵感,这个8人地图创造了一个史诗战争的场景,需要两个团队分"
+"别加入进攻方和防守方."
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:18
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:40
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:62
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:95
-#, fuzzy
 msgid "teamname^east"
-msgstr "西部"
+msgstr "东部"
 
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:29
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:51
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:73
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:84
-#, fuzzy
 msgid "teamname^west"
 msgstr "西部"
 
@@ -1258,9 +1254,3 @@ msgid ""
 msgstr ""
 "这是一幅韦诺测试标准图，用法 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
-
-#~ msgid "2p - Blitz"
-#~ msgstr "2p - 闪电战"
-
-#~ msgid "3p - Triple Blitz"
-#~ msgstr "3p - 三重闪电战"

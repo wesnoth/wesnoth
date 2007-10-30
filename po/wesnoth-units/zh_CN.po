@@ -3,20 +3,20 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
 # jan2xue <75jan@163.com>, 2005
-# Huang huan <unicon221@gmail.com>, 2005. (unicon)
+# Huang huan <unicon221@gmail.com>, 2005.
+# Dionysus <huang.wei.bhu@gmail.com>, 2007.  (unicon)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-26 15:26+0200\n"
-"PO-Revision-Date: 2007-04-28 12:18+0800\n"
-"Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
+"PO-Revision-Date: 2007-10-30 12:27+0800\n"
+"Last-Translator: Dionysus <huang.wei.bhu@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Bookmarks: 1407,1408,842,859,896,937,1003,1025,1091,1309\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
 
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -32,6 +32,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"血色蝙蝠以他们深红的颜色得名, 这种明显的特征某种程度上也反应了他们对食物的要"
+"求. 这些生物行动迅速并且可以在攻击时吸血, 因此可以从他们的以受害者损失生命的"
+"一部分来治疗自己.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/bats/Bat_Blood.cfg:66
 #: data/core/units/bats/Bat_Vampire.cfg:80
@@ -49,7 +54,6 @@ msgid "Vampire Bat"
 msgstr "吸血蝙蝠"
 
 #: data/core/units/bats/Bat_Vampire.cfg:20
-#, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -57,21 +61,21 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"吸血蝙蝠是不死族的飞行兽，攻击对手的方式是嘶咬。虽然他们的牙并不太强力，受害"
-"者的血液却会被吸血蝙蝠吸食，并用以治疗自己。\n"
+"吸血蝙蝠是以鲜血为食的飞禽。虽然他们的牙的撕咬并不能造成很大伤害，吸血蝙蝠却"
+"会吸食受害者的血液，并用以治疗自己。\n"
 "\n"
-"特别提示："
+"特别提示:"
 
 #: data/core/units/boats/Boat.cfg:4
-#, fuzzy
 msgid "Boat"
-msgstr "血色蝙蝠"
+msgstr "小艇"
 
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
 "Often propelled by oars or small sails, boats are used to travel short "
 "distances and in shallows where large ships cannot navigate."
 msgstr ""
+"一般以浆或者小型帆做为动力, 小艇用于短途旅行或者在大船无法航行的浅水航行."
 
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
@@ -79,21 +83,20 @@ msgstr "大帆船"
 
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr ""
+msgstr "大帆船是为商业和运输制造的海船."
 
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr "海盗大帆船"
+msgstr "海盗船"
 
 #: data/core/units/boats/Pirate_Galleon.cfg:18
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "onboard are more than happy to help relieve other ships of their weighty "
 "cargo."
 msgstr ""
-"如果说运输船是羊，海盗的大帆船就是狼。满载货物的船只不应该独自远离海岸航行。"
-"要不然就帮他们卸货，避免超载……"
+"如果说运输船是羊，海盗船就是狼。船上的海道们很乐意帮那些满载货物独自远离海岸"
+"航行的船只卸下货物，避免超载……"
 
 #: data/core/units/boats/Transport_Galleon.cfg:22
 #: data/core/units/boats/Pirate_Galleon.cfg:21
@@ -113,9 +116,8 @@ msgstr ""
 "斗。"
 
 #: data/core/units/drakes/Armageddon.cfg:4
-#, fuzzy
 msgid "Armageddon Drake"
-msgstr "火龙战士"
+msgstr "末日龙战士"
 
 #: data/core/units/drakes/Armageddon.cfg:26
 msgid ""
@@ -124,6 +126,9 @@ msgid ""
 "creatures known as 'Armageddon Drakes' are towering things, both immune to "
 "and possessed of a tremendous fire."
 msgstr ""
+"如果不是他们身着盔甲的话, 有些龙战士很难与真正的巨龙区别开来, 至少对一般人来"
+"说是如此. 这些被称为'末日龙战士'的生物高耸入云, 他们不但对火焰完全免疫, 而且"
+"拥有可怕的火焰吐息. "
 
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:29
@@ -150,14 +155,13 @@ msgstr "爪"
 #: data/core/units/drakes/Blademaster.cfg:77
 #: data/core/units/drakes/Inferno.cfg:80 data/core/units/drakes/Fighter.cfg:74
 msgid "fire breath"
-msgstr "火焰呼吸"
+msgstr "火焰吐息"
 
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
 msgstr "龙族剑圣"
 
 #: data/core/units/drakes/Blademaster.cfg:19
-#, fuzzy
 msgid ""
 "The drakes who master the use of a sword are sworn into a special order. The "
 "mark of their initiation is the black-and-white warpaint they display in "
@@ -205,22 +209,20 @@ msgid "Drake Burner"
 msgstr "喷火龙战士"
 
 #: data/core/units/drakes/Burner.cfg:19
-#, fuzzy
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
-"喷火龙战士人数少，性格高傲，他们继承了远古祖先的强大力量，特别是吐火的能力。"
-"结合他们高大的身材和尖利的爪子，喷火龙战士在战场上真是可怕的对手。"
+"喷火龙战士人数少,性格高傲.继承自远古祖先的最纯正的血统和力量给与了他们强大火"
+"焰吐息。结合他们高大的身材和尖利的爪子，喷火龙战士在战场上是可怕的对手。"
 
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr "冲击龙战士"
 
 #: data/core/units/drakes/Clasher.cfg:23
-#, fuzzy
 msgid ""
 "A Drake Clasher is incapable of either flight and fire-breathing, and most "
 "assume their relegation to melee combat is because of disability - an "
@@ -239,14 +241,15 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"冲击龙战士不善飞行，没有火焰呼吸，他们运用近战的战斗模式也是由于他们的无能——"
-"只是尽量的变废为宝而已。他们可能是稍微缺乏某些技能，但持这种理论的人往往忽视"
-"了他们在同族内战中的作用。\n"
+"冲击龙战士不善飞行也不会火焰吐息，并且大多人认为他们使用近战是由于他们的残疾"
+"——只是尽量的变废为宝而已。他们可能是稍微缺乏某些技能，但持这种理论的人往往忽"
+"视了他们在同族内战中的作用。\n"
 "\n"
 "他们实际上是龙族社会阶层中的执法者。他们的武器基本上只是做仪式用的，但不管怎"
 "么说还是有点用处。在与弱小种族的遭遇中，他们发现自己天生的大个头和力量就是强"
-"有力的武器，再加上身上的那点盔甲，使他们避开了其他族人的弱点，也就是及其害怕"
-"矛和箭。"
+"有力的武器，同时他们身上的盔甲，使他们避免了其他族人害怕矛和箭的弱点。\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/saurians/Skirmisher.cfg:32
 #: data/core/units/saurians/Skirmisher.cfg:41
@@ -284,14 +287,13 @@ msgid "Drake Enforcer"
 msgstr "龙族执行者"
 
 #: data/core/units/drakes/Enforcer.cfg:21
-#, fuzzy
 msgid ""
 "The great Drake Enforcers epitomize the raw strength of their kind. Long "
 "hours at the forge have equipped them with a bristling array of weaponry, "
 "and they are clad them head to toe in shining armor of proof."
 msgstr ""
-"伟岸的龙族执行者代表了龙族的力量。他们长时间在锻造车间工作，为自己制造了很多"
-"锋利的武器，而且从头到脚都披着闪亮的铠甲。"
+"伟岸的龙族执行者代表了龙族的力量。他们在锻造车间的长时间工作为他们制造了成排"
+"的锋利武器，和从头到脚覆盖全身的闪亮铠甲。"
 
 #: data/core/units/drakes/Enforcer.cfg:76
 #: data/core/units/drakes/Gladiator.cfg:84
@@ -309,15 +311,14 @@ msgid "Drake Fighter"
 msgstr "龙族战士"
 
 #: data/core/units/drakes/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars, and possess the fire breathing skills "
 "of their ancestors. They can also fly, which is troubling to any foe. Their "
 "great strength, coupled with their hardened scales, is rightly frightening "
 "to swordsman of any other race."
 msgstr ""
-"龙族战士使用弯刀的技巧足以致命，他们还掌握着祖传的火焰呼吸。最强力的龙族战士"
-"加入了龙族勇士的精英部队。"
+"龙族战士使用弯刀的技巧足以致命,他们还掌握着祖传的火焰呼吸. 他们飞翔的能力足以"
+"让任何敌人头疼.  他们巨大的力量和坚硬的盔甲足以让任何种族的军队望而生畏."
 
 #: data/core/units/drakes/Fighter.cfg:65
 msgid "scimitar"
@@ -328,13 +329,12 @@ msgid "Fire Drake"
 msgstr "火龙战士"
 
 #: data/core/units/drakes/Fire.cfg:18
-#, fuzzy
 msgid ""
 "The great fire-drakes are masters of their internal fire. Clad in shining "
 "armor, they belch columns of flame at any who oppose them, a testament to "
 "the strength and majesty of their kind."
 msgstr ""
-"火龙战士都是善于用体内的火焰作战的大师。他们穿着光亮的铠甲，对敌人喷出一片火"
+"火龙战士都是善于用体内的火焰作战的大师。他们穿着光亮的铠甲，向敌阵播洒片片火"
 "海，简直就是龙族力量与威严的象征。"
 
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -342,7 +342,6 @@ msgid "Drake Flameheart"
 msgstr "火焰之心"
 
 #: data/core/units/drakes/Flameheart.cfg:28
-#, fuzzy
 msgid ""
 "It is said that the eldest lines of drakes - the direct descendants of the "
 "dragons themselves - have veins which course with fire rather than blood. "
@@ -352,8 +351,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "据说他们是最古老的龙族血脉——古代巨龙的直系后代，体内流动的不是血液而是火焰。"
-"他们能够随意吐火的事实为这种说法提供了证据，不过，由于某种原因，从来没有人尝"
-"试着切开火焰之心的皮肤去验证。\n"
+"他们能够随意吐火的事实为这种说法提供了证据，不过由于某种原因，从来没有人尝试"
+"着切开火焰之心的皮肤去验证这一点。\n"
 "\n"
 "特别提示："
 
@@ -379,7 +378,6 @@ msgid "Drake Gladiator"
 msgstr "龙族角斗士"
 
 #: data/core/units/drakes/Gladiator.cfg:19
-#, fuzzy
 msgid ""
 "The Gladiator has taken a completely different path from the Slashers. "
 "Rather than emphasize training, they have chosen to focus on the craft of "
@@ -389,16 +387,15 @@ msgid ""
 "on their weapons confers offensive capability at the cost of a slight "
 "reduction in their defensive abilities."
 msgstr ""
-"龙族角斗士与龙族劈裂者截然不同。他们不强调训练，而是强调武器的制造工艺。他们"
-"是龙族社会的铁匠。据说他们拥有最棒的武器——锋利的剑和矛，还有锦上添花的铁锤。"
-"他们对武器过度执着，导致防御能力有所削弱。"
+"龙族角斗士与龙族劈裂者截然不同。他们更强调武器的制造工艺而不是士兵的训练。他"
+"们是龙族社会的铁匠。据说他们拥有最棒的武器——锋利的剑和矛，还有锦上添花的铁"
+"锤。他们对武器过度执着，导致防御能力有所削弱。"
 
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
 msgstr "滑翔龙战士"
 
 #: data/core/units/drakes/Glider.cfg:22
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little encumberment as possible, freeing themselves to "
 "fly to their full ability. These Drakes are competent fighters, possessing "
@@ -409,10 +406,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"滑翔龙战士穿着极少的铠甲，使他们离开洞穴后能快速的从敌人单位身边逃走。他们是"
-"得力的战士，能操纵龙族普遍拥有的满腔热火。他们也能有效的利用速度和武力制服敌"
-"人。最优秀的滑翔龙战士能够加入翱翔蓝天的天空龙战士部队。他们从高空可以看穿大"
-"多数防御伪装，借助飞行能力他们能精确打击隐蔽的敌人。\n"
+"滑翔龙战士几乎不着铠甲，以便他们能够在飞翔中彻底发挥自己的能力。他们是得力的"
+"战士，能操纵龙族普遍拥有的火焰吐息。他们也能有效的利用速度制服敌人。他们从高"
+"空可以看穿大多数防御伪装，借助飞行能力他们能精确打击这些伪装下的敌人。\n"
 "\n"
 "特别提示："
 
@@ -426,7 +422,6 @@ msgid "Hurricane Drake"
 msgstr "飓风龙战士"
 
 #: data/core/units/drakes/Hurricane.cfg:31
-#, fuzzy
 msgid ""
 "Masters of the aerial realm, the Hurricane Drakes are the elite among those "
 "drakes which are gifted with flight. Soaring high in the air, they can see "
@@ -434,15 +429,16 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"飓风龙战士是飞行大师，是善于飞行的龙战士中的精英。在高高的云天之中，他们能洞"
-"穿大部分防御伪装，在自己毫发无损的情况下向敌人倾泻火雨。"
+"作为天空的征服者,飓风龙战士是是善于飞行的龙战士中的精英。在高高的云天之中，他"
+"们能洞穿大部分防御伪装，在自己毫发无损的情况下向敌人倾泻火雨。\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
 msgstr "地狱龙战士"
 
 #: data/core/units/drakes/Inferno.cfg:19
-#, fuzzy
 msgid ""
 "The flying conflagrations known as Drake Infernos are the masters of the "
 "fire they breathe, and rival their predecessors the Dragons in their ability "
@@ -450,16 +446,15 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
-"这些被称为地狱龙战士的“飞行器”是操纵火焰呼吸的高手，更他们的祖先巨龙不相上"
-"下。这种天赋使他们几乎对火焰免疫。他们身着火红闪亮的盔甲，代表着他们高傲而强"
-"大的阶层，是同族们崇拜与向往的对象。"
+"这些被称为地狱龙战士的'飞行火焰'是操纵火焰呼吸的高手，更他们的祖先巨龙不相上"
+"下。这种天赋使他们几乎对火焰免疫。他们身上火红闪亮的盔甲代表着他们高傲而强大"
+"的阶层，令同族们崇拜与向往。"
 
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
 msgstr "天空龙战士"
 
 #: data/core/units/drakes/Sky.cfg:30
-#, fuzzy
 msgid ""
 "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 "stooping dive and and their fire breath combine into a terrible weapon. By "
@@ -469,9 +464,8 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"天空龙战士是真正的空中之王。他们的冲击力和火焰呼吸是敌人的祸根。他们能快速向"
-"猎物俯冲，并在任何人能阻止他们之前逍遥离去。从空中他们能精确的向本来防御极佳"
-"的敌人喷射火焰。\n"
+"天空龙战士是真正的天空之王。他们从高空俯冲的可怕冲击力配合火焰呼吸成为了可怕"
+"的武器。从空中他们能用火焰对本来防御极佳的敌人进行精确地打击。\n"
 "\n"
 "特别提示："
 
@@ -480,7 +474,6 @@ msgid "Drake Slasher"
 msgstr "龙族劈裂者"
 
 #: data/core/units/drakes/Slasher.cfg:21
-#, fuzzy
 msgid ""
 "Slashers are Clashers who have chosen to master the use of a halberd instead "
 "of carrying a sword and the spear. Their great size allows them to use a "
@@ -491,8 +484,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "龙族劈裂者是一群选择用戟来代替剑和矛作为主要武器的斗士。由于他们身形伟岸，使"
-"用的武器也可以很大，刺穿一匹马就像人类串烧野猪一样。他们接受的训练提高了他们"
-"的耐力和防御能力，这是他们同龙族角斗士相比最大的优势。\n"
+"用的武器也很大，刺穿一匹马就像人类串烧野猪一样。他们接受的训练提高了他们的耐"
+"力和防御能力，这是他们同龙族角斗士相比最大的优势。\n"
 "\n"
 "特别提示："
 
@@ -527,14 +520,13 @@ msgid "Drake Warrior"
 msgstr "龙族勇士"
 
 #: data/core/units/drakes/Warrior.cfg:18
-#, fuzzy
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike devastating blows, and to withstand punishment in equal measure."
 msgstr ""
 "龙族勇士的剑术很高，并从祖先那里继承了火焰呼吸。龙族强大的力量让他们能够进行"
-"摧毁性的打击，并能承受巨大的伤害。"
+"摧毁性的打击，并能承受同样巨大的伤害。"
 
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
@@ -548,6 +540,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"狂战士是矮人中稀少的一个群体, 他们在战斗中会变得异常狂暴. 这些战士从不防御, "
+"他们的传奇中充满着永无止境的攻击. \n"
+"\n"
+"特别提示:"
 
 #: data/core/units/dwarves/Berserker.cfg:33
 #: data/core/units/dwarves/Ulfserker.cfg:33
@@ -637,15 +633,19 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"矮人一族总是以他们制造工艺而出名, 而他们的许多战士的装备也从中获益匪浅. 矮人"
+"卫兵带着塔盾和长矛在战斗中长驱直入. 大部分时候他们的任务是维持战线, 并且对尝"
+"试突破的人造成巨大伤害.  随着战线的推进, 他们保护着战场上来之不易的优势.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/dwarves/Stalwart.cfg:45
 #: data/core/units/dwarves/Guardsman.cfg:42
 #: data/core/units/dwarves/Sentinel.cfg:50
 #: data/core/units/humans/Loyalist_Javelineer.cfg:41
 #: data/core/units/humans/Loyalist_Spearman.cfg:76
-#, fuzzy
 msgid "javelin"
-msgstr "标枪兵"
+msgstr "标枪"
 
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
@@ -677,7 +677,6 @@ msgid "Dwarvish Runemaster"
 msgstr "矮人符文大师"
 
 #: data/core/units/dwarves/Runemaster.cfg:19
-#, fuzzy
 msgid ""
 "Dwarven magic most often manifests itself by the inscription of runes in the "
 "surface of an object, which by their mere presence somehow imbue it with "
@@ -709,6 +708,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"矮人哨卫是矮人部队中的佼佼者, 他们组成组成的战线本身就是一座堡垒. 正面攻击由"
+"他们维持的防线是愚蠢的不但收效甚微, 而且简直就是自杀. 这些矮人是白刃战的精"
+"英, 他们可以像橡树一样牢牢地钉在土地上.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
@@ -723,6 +727,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"对诡计的经验和训练让矮人卫兵变成杰出的士兵. 矮人坚守者部队的装备与他们的技艺"
+"相称, 即使面对最可怕的攻击他们也能坚守阵地. 在这样的部队面前失去阵地是一件非"
+"常危险的事情, 因为你很可能再也无法夺回它.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
@@ -739,7 +748,6 @@ msgid "Dwarvish Thunderer"
 msgstr "矮人雷霆战士"
 
 #: data/core/units/dwarves/Thunderer.cfg:19
-#, fuzzy
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -788,7 +796,6 @@ msgstr "矮人双手斧战士"
 
 # don't really know why ulfserker is called so. what does "ulf" mean?
 #: data/core/units/dwarves/Ulfserker.cfg:21
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
@@ -844,7 +851,7 @@ msgstr "弓"
 
 #: data/core/units/elves/Archer.cfg:167
 msgid "female^Elvish Archer"
-msgstr "女性精灵弓箭手"
+msgstr "精灵弓箭手"
 
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
@@ -875,14 +882,13 @@ msgstr ""
 
 #: data/core/units/elves/Avenger.cfg:178
 msgid "female^Elvish Avenger"
-msgstr "女性精灵复仇者"
+msgstr "精灵复仇者"
 
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
 msgstr "精灵指挥官"
 
 #: data/core/units/elves/Captain.cfg:27
-#, fuzzy
 msgid ""
 "Elves, unlike many other races, will quickly acknowledge and follow any of "
 "their peers who have experience in combat. In this they differ greatly from "
@@ -893,9 +899,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"不像其他种族，精灵十分愿意承认并更随那些有战斗经验的同伴。这与人类截然不同，"
+"不像其他种族，精灵十分愿意承认并跟随那些有战斗经验的同伴。这与人类截然不同，"
 "从不靠威逼利诱来建立权威。他们了与选择智者与能力出众的人作领袖。这是精灵种种"
-"低调的强势之一。\n"
+"低调的力量之一。\n"
 "\n"
 "特别提示："
 
@@ -905,7 +911,6 @@ msgstr "精灵斗士"
 
 # i don't actually understand this "purity of form"
 #: data/core/units/elves/Champion.cfg:19
-#, fuzzy
 msgid ""
 "Those few elves who deliberately hone themselves into weapons of war become "
 "something which belies the rather docile reputation of their race. "
@@ -922,7 +927,6 @@ msgid "female^Elvish Druid"
 msgstr "精灵德鲁伊"
 
 #: data/core/units/elves/Druid.cfg:22
-#, fuzzy
 msgid ""
 "The magic of the wood-elves is poorly suited for combat, but effective "
 "nonetheless. The forests in which they live can be quickened by a word of "
@@ -971,7 +975,6 @@ msgid "female^Elvish Enchantress"
 msgstr "精灵魔女"
 
 #: data/core/units/elves/Enchantress.cfg:20
-#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -1018,7 +1021,6 @@ msgid "Elvish Hero"
 msgstr "精灵英雄"
 
 #: data/core/units/elves/Hero.cfg:18
-#, fuzzy
 msgid ""
 "A relatively small amount of experience will turn an elf from a competent "
 "fighter into a master of combat. Those who are honored as heroes are strong "
@@ -1029,9 +1031,8 @@ msgstr ""
 "不会随着时间流逝而荒废。"
 
 #: data/core/units/elves/High_Lord.cfg:4
-#, fuzzy
 msgid "Elvish High Lord"
-msgstr "精灵战士"
+msgstr "高阶精灵王"
 
 #: data/core/units/elves/High_Lord.cfg:18
 msgid ""
@@ -1040,11 +1041,13 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"精灵的领袖并不随着岁月的流失而变得衰老脆弱. 相反, 他们在这个过程中逐渐发挥出"
+"他们全部的潜力. 尽管高阶精灵王在和平时代总是沉浸在平静和沉思之中, 但是他们满"
+"腔怒火时的样子可以令任何人感到恐惧."
 
 #: data/core/units/elves/Lady.cfg:5
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "精灵德鲁伊"
+msgstr "精灵女性"
 
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
@@ -1053,11 +1056,13 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"精灵以智慧和力量来选择来选择他们的领袖; 在混乱的年代里, 预见未来的能力一次又"
+"一次地保护过精灵族. 精灵们以无言的忠诚来回报他们公正的统治, 显然这是任何统治"
+"者所能要求的最高礼物."
 
 #: data/core/units/elves/Lord.cfg:4
-#, fuzzy
 msgid "Elvish Lord"
-msgstr "矮人领主"
+msgstr "精灵王"
 
 #: data/core/units/elves/Lord.cfg:17
 msgid ""
@@ -1065,13 +1070,14 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"这些精灵高贵的血统与他们的社会地位相称. 精灵王是最智慧而强大的精灵, 并且对魔"
+"法有着可怕的控制力."
 
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
 msgstr "精灵神射手"
 
 #: data/core/units/elves/Marksman.cfg:23
-#, fuzzy
 msgid ""
 "One of the things which contributes to their skill with the bow is the "
 "unusually clear vision of elves. An elf practiced at archery can hit targets "
@@ -1097,14 +1103,13 @@ msgstr "长弓"
 
 #: data/core/units/elves/Marksman.cfg:173
 msgid "female^Elvish Marksman"
-msgstr "女性精灵神射手"
+msgstr "精灵神射手"
 
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
 msgstr "精灵元帅"
 
 #: data/core/units/elves/Marshal.cfg:28
-#, fuzzy
 msgid ""
 "The longevity and natural intelligence of elves make them apt for military "
 "matters, enough even to counter their general distaste for such things. "
@@ -1115,9 +1120,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"长寿和天资聪颖的精灵对军事技能的掌握程度近乎邪恶，甚至超越了他们对战争普遍的"
-"厌恶。精灵比人类记事更清楚，并能领悟到别人需要训练才能掌握的技能。所以，在少"
-"数情况下某个精灵开始思考关于战争的问题，他制定的战略就必然是杰作。\n"
+"长寿和天生的聪颖让精灵对军事技能非常敏锐，甚至可以抵消他们对战争的普遍厌恶。"
+"精灵比人类记事更清楚，并能领悟到别人需要训练才能掌握的技能。所以，在少数情况"
+"下某个精灵开始思考关于战争的问题，他制定的战略就必然是杰作。\n"
 "\n"
 "特别提示："
 
@@ -1126,7 +1131,6 @@ msgid "Elvish Outrider"
 msgstr "精灵骑卫兵"
 
 #: data/core/units/elves/Outrider.cfg:22
-#, fuzzy
 msgid ""
 "Elvish Outriders are trained as the royal couriers of the elven kingdoms. "
 "Despite the peaceful nature of their people, their experience makes them "
@@ -1142,15 +1146,14 @@ msgstr ""
 "善战。他们在马背上使用弓箭的技术无人可比——事实上，大多数人就是站在平地上也很"
 "难比过他们。\n"
 "\n"
-"这些士兵速度很快，在自己的家园中可以随时随地自由选择攻守，这也让他们自己保全"
-"了性命。"
+"这些士兵速度很快，在自己的家园中可以随时随地自由选择攻守，这种技能保全了他们"
+"中许多人的生命。"
 
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
 msgstr "精灵游侠"
 
 #: data/core/units/elves/Ranger.cfg:21
-#, fuzzy
 msgid ""
 "Though a man might spend years in the forest, he will never shake the "
 "feeling that he is a guest in a place he is not truly a part of. With elves, "
@@ -1168,14 +1171,13 @@ msgstr ""
 
 #: data/core/units/elves/Ranger.cfg:175
 msgid "female^Elvish Ranger"
-msgstr "女性精灵游侠"
+msgstr "精灵游侠"
 
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
 msgstr "精灵骑兵"
 
 #: data/core/units/elves/Rider.cfg:23
-#, fuzzy
 msgid ""
 "The master horsemen of the elves are able to move through forests at a speed "
 "which would be suicidal for any human. Awe of the rider is quite justified - "
@@ -1189,14 +1191,13 @@ msgstr ""
 "确让人们对骑手肃然起敬，人们也怀疑他们的马的血统特殊，因为它们的表现实在是超"
 "凡脱俗。\n"
 "\n"
-"难以置信的移动速度和强大的战斗力的结合是精灵族在战争中最宝贵的资产之一。"
+"难以置信的移动速度和强大的战斗力的结合是精灵族在战争中最宝贵的财富之一。"
 
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
 msgstr "精灵侦察兵"
 
 #: data/core/units/elves/Scout.cfg:22
-#, fuzzy
 msgid ""
 "The horsemen of the wood elves have some skill with bow and sword, but their "
 "true skill lies in their horsemanship. Even other elves are impressed by "
@@ -1213,7 +1214,6 @@ msgid "female^Elvish Shaman"
 msgstr "精灵萨满"
 
 #: data/core/units/elves/Shaman.cfg:24
-#, fuzzy
 msgid ""
 "Being partly faerie in nature, elves have an inherent capability for magic. "
 "This is realized in their affinity with the natural world, which they can "
@@ -1239,7 +1239,6 @@ msgid "Elvish Sharpshooter"
 msgstr "精灵狙击手"
 
 #: data/core/units/elves/Sharpshooter.cfg:22
-#, fuzzy
 msgid ""
 "There was a legend of an elf who stopped an arrow by shooting it out of the "
 "air with one of his own. It is a testament to the skill of the elves that "
@@ -1255,7 +1254,7 @@ msgstr ""
 
 #: data/core/units/elves/Sharpshooter.cfg:155
 msgid "female^Elvish Sharpshooter"
-msgstr "女性精灵狙击手"
+msgstr "精灵狙击手"
 
 # what is a shyde?
 #: data/core/units/elves/Shyde.cfg:4
@@ -1310,7 +1309,6 @@ msgid "female^Elvish Sylph"
 msgstr "空气精灵"
 
 #: data/core/units/elves/Sylph.cfg:22
-#, fuzzy
 msgid ""
 "Rarely seen, the sage-like Sylphs are masters of both their faerie and "
 "mundane natures. They are possessed of wondrous, and sometimes terrifying "
@@ -1334,7 +1332,6 @@ msgid "Direwolf Rider"
 msgstr "恐怖巨狼骑士"
 
 #: data/core/units/goblins/Direwolf_Rider.cfg:23
-#, fuzzy
 msgid ""
 "'Dire wolves' differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1364,7 +1361,6 @@ msgid "Goblin Impaler"
 msgstr "地精穿刺兵"
 
 #: data/core/units/goblins/Impaler.cfg:21
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
 "line. Those who manage to survive their first few battles equip themselves "
@@ -1384,7 +1380,6 @@ msgid "Goblin Knight"
 msgstr "地精骑士"
 
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin 'Knights' have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1404,7 +1399,6 @@ msgid "Goblin Pillager"
 msgstr "地精掠夺者"
 
 #: data/core/units/goblins/Pillager.cfg:21
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -1433,7 +1427,6 @@ msgid "Goblin Rouser"
 msgstr "地精煽动者"
 
 #: data/core/units/goblins/Rouser.cfg:28
-#, fuzzy
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1454,7 +1447,6 @@ msgid "Goblin Spearman"
 msgstr "地精长矛兵"
 
 #: data/core/units/goblins/Spearman.cfg:20
-#, fuzzy
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called 'Goblins' and are looked down on by the rest of "
@@ -1477,7 +1469,6 @@ msgid "Wolf Rider"
 msgstr "狼骑士"
 
 #: data/core/units/goblins/Wolf_Rider.cfg:36
-#, fuzzy
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1515,7 +1506,6 @@ msgid "Gryphon Master"
 msgstr "狮鹫大师"
 
 #: data/core/units/gryphons/Gryphon_Master.cfg:19
-#, fuzzy
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -1578,7 +1568,6 @@ msgid "Knight"
 msgstr "骑士"
 
 #: data/core/units/humans/Horse_Knight.cfg:19
-#, fuzzy
 msgid ""
 "Horsemen of skill and discipline are promoted to Knights. Veterans of "
 "combat, they have seen the often-fatal results of a failed charge, and have "
@@ -1597,7 +1586,6 @@ msgid "Lancer"
 msgstr "长枪骑兵"
 
 #: data/core/units/humans/Horse_Lancer.cfg:20
-#, fuzzy
 msgid ""
 "Lancers are among the bravest and most feared riders in all of Wesnoth. Clad "
 "in minimal armor, they free themselves to ride swiftly, faster than any of "
@@ -1615,7 +1603,6 @@ msgid "Paladin"
 msgstr "圣骑士"
 
 #: data/core/units/humans/Horse_Paladin.cfg:22
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have sworn themselves to semi-"
 "monastic vows, pledging their might to the cause of righteousness. Though "
@@ -1637,7 +1624,6 @@ msgid "Horseman"
 msgstr "骑手"
 
 #: data/core/units/humans/Horseman.cfg:20
-#, fuzzy
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -1657,7 +1643,6 @@ msgid "Bowman"
 msgstr "弓箭手"
 
 #: data/core/units/humans/Loyalist_Bowman.cfg:21
-#, fuzzy
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -1676,18 +1661,17 @@ msgstr "短剑"
 
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr "骑兵"
+msgstr "禁卫骑兵"
 
 #: data/core/units/humans/Loyalist_Cavalier.cfg:21
-#, fuzzy
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
 "both sword and crossbow from horseback. This is fearsome when combined with "
 "their mobility; such might, and the daring deeds it fosters, are the subject "
 "of many a tale and song."
 msgstr ""
-"骑兵是马背上的剑术和弩弓高手，在战场上看到他们就看到了胜利。结合他们移动迅速"
-"的特点，他们成为了令人生畏的兵种。这种战斗精神也为许多传说和歌曲所传颂。"
+"禁卫骑兵是马背上的剑术和弩弓高手，在战场上看到他们就看到了胜利。结合他们移动"
+"迅速的特点，他们成为了令人生畏的兵种。这种战斗精神也为许多传说和歌曲所传颂。"
 
 #: data/core/units/orcs/Crossbowman.cfg:33
 #: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Slurbow.cfg:36
@@ -1709,7 +1693,6 @@ msgid "Cavalryman"
 msgstr "骑兵"
 
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:23
-#, fuzzy
 msgid ""
 "Cavalrymen are distinguished from horsemen by their tactics and equipment. A "
 "cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -1747,7 +1730,6 @@ msgid "Duelist"
 msgstr "决斗者"
 
 #: data/core/units/humans/Loyalist_Duelist.cfg:21
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth's nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -1770,8 +1752,8 @@ msgstr ""
 "\n"
 "这些老练的剑术家，如果不是贵族出生，看上去也很像贵族。他们随身携带弩弓，能够"
 "方便地藏在外套或斗篷下面。虽然装载缓慢，用于战斗时又让人觉得胜之不武，弩弓实"
-"际上还是很有用的。凡是活得足够长的老剑客，出于实用主义和求生本能，总是会使用"
-"弩弓的，不顾对自己的高贵气质做出妥协。\n"
+"际上还是很有用的。尽管使用弓弩被认为有损他们高贵的气质，但凡是活得足够长的老"
+"剑客，都会对实用主义和求生本能作出妥协。\n"
 "\n"
 "特别提示："
 
@@ -1786,7 +1768,6 @@ msgid "Fencer"
 msgstr "剑客"
 
 #: data/core/units/humans/Loyalist_Fencer.cfg:22
-#, fuzzy
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -1801,9 +1782,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"剑客一派的人认为战场上士兵穿戴的铠甲是士兵自己最大的敌人。铠甲只能降低伤害，"
-"躲闪才能让防守者毫发无损。躲避攻击是拥有合格体质的人才能幻想的奢侈，要想能真"
-"正做到这点，还需要经受严格的训练。\n"
+"剑客一脉认为战场上士兵穿戴的铠甲是士兵自己最大的敌人。铠甲只能降低伤害，躲闪"
+"才能让防守者毫发无损。躲避攻击是拥有合格体质的人才能幻想的奢侈，要想能真正做"
+"到这点，还需要经受严格的训练。\n"
 "\n"
 "剑客仅仅配备了一柄匕首和一把双刃长剑，步伐轻便，在某些情形下，身着铠甲的战士"
 "处于弱势，而他们依然可以大有作为。他们喜好在象重甲步兵这样的部队周围跳舞，嘲"
@@ -1816,7 +1797,6 @@ msgid "General"
 msgstr "将军"
 
 #: data/core/units/humans/Loyalist_General.cfg:31
-#, fuzzy
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn "
@@ -1834,7 +1814,6 @@ msgid "Grand Marshal"
 msgstr "大元帅"
 
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:27
-#, fuzzy
 msgid ""
 "The rank of Grand Marshal is one of the most esteemed in the armies of "
 "humanity, and those who bear its title have survived many trials by fire, "
@@ -1905,7 +1884,6 @@ msgid "Iron Mauler"
 msgstr "铁槌人"
 
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:19
-#, fuzzy
 msgid ""
 "Iron Maulers are given their name for reasons which are all too obvious to "
 "their foes. The men within these suits of armor can match ogres in contests "
@@ -1968,7 +1946,6 @@ msgid "Longbowman"
 msgstr "长弓手"
 
 #: data/core/units/humans/Loyalist_Longbowman.cfg:20
-#, fuzzy
 msgid ""
 "Longbows are fearsome weapons, but too difficult for beginning archers to "
 "wield. It takes great strength to draw one, and the added range and power it "
@@ -1985,7 +1962,6 @@ msgid "Master Bowman"
 msgstr "大师弓箭手"
 
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:20
-#, fuzzy
 msgid ""
 "Master bowmen have reached the zenith of their art, inasmuch as any human is "
 "capable. Armed with both a sword, and a great yew bow, these warriors crown "
@@ -2006,7 +1982,6 @@ msgid "Master at Arms"
 msgstr "武器大师"
 
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:22
-#, fuzzy
 msgid ""
 "Master fencers have an envied place in life. Though the journey to their "
 "station was a dangerous way of life, they have reached the time wherein they "
@@ -2037,7 +2012,6 @@ msgid "Pikeman"
 msgstr "长矛兵"
 
 #: data/core/units/humans/Loyalist_Pikeman.cfg:20
-#, fuzzy
 msgid ""
 "Promising spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -2083,21 +2057,19 @@ msgid "Sergeant"
 msgstr "军士"
 
 #: data/core/units/humans/Loyalist_Sergeant.cfg:25
-#, fuzzy
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
-"军士是皇家卫队中的军官。他们虽然受过正规教育，却还欠缺战斗经验，因而他们的领"
-"导能力还不稳定，也得不到认可。"
+"军士是皇家卫队中的低阶军官。他们虽然受过正规教育，却还欠缺战斗经验，因而他们"
+"的领导能力还不稳定，也得不到认可。"
 
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
 msgstr "震慑步兵"
 
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:16
-#, fuzzy
 msgid ""
 "Shock troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -2123,7 +2095,6 @@ msgid "Spearman"
 msgstr "矛兵"
 
 #: data/core/units/humans/Loyalist_Spearman.cfg:21
-#, fuzzy
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -2146,7 +2117,6 @@ msgid "Swordsman"
 msgstr "剑士"
 
 #: data/core/units/humans/Loyalist_Swordsman.cfg:18
-#, fuzzy
 msgid ""
 "An experienced soldier will often save enough to equip himseld with a suit "
 "of scale or chain armor, and a sturdy broadsword. Though trading their "
@@ -2164,7 +2134,6 @@ msgid "Mage"
 msgstr "法师"
 
 #: data/core/units/humans/Mage.cfg:25
-#, fuzzy
 msgid ""
 "Humans have often pondered the workings of the world in which they live. "
 "Some endeavor to take this beyond idle musing, to set it as the primary "
@@ -2208,7 +2177,7 @@ msgstr "魔法飞弹"
 
 #: data/core/units/humans/Mage.cfg:165
 msgid "female^Mage"
-msgstr "女法师"
+msgstr "法师"
 
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
@@ -2248,7 +2217,7 @@ msgstr "火球"
 
 #: data/core/units/humans/Mage_Arch.cfg:125
 msgid "female^Arch Mage"
-msgstr "女性大法师"
+msgstr "大法师"
 
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
@@ -2281,14 +2250,13 @@ msgstr ""
 
 #: data/core/units/humans/Mage_Great.cfg:126
 msgid "female^Great Mage"
-msgstr "女性高阶大法师"
+msgstr "高阶大法师"
 
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
 msgstr "红袍法师"
 
 #: data/core/units/humans/Mage_Red.cfg:22
-#, fuzzy
 msgid ""
 "Upon the successful culmination of their apprenticeship, a mage is stripped "
 "of the brown robes of an apprentice and given the ruddy cloak of a master. "
@@ -2317,14 +2285,13 @@ msgstr ""
 
 #: data/core/units/humans/Mage_Red.cfg:147
 msgid "female^Red Mage"
-msgstr "女性红袍法师"
+msgstr "红袍法师"
 
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
 msgstr "银袍法师"
 
 #: data/core/units/humans/Mage_Silver.cfg:25
-#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2364,14 +2331,13 @@ msgstr ""
 
 #: data/core/units/humans/Mage_Silver.cfg:151
 msgid "female^Silver Mage"
-msgstr "女性银袍法师"
+msgstr "银袍法师"
 
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
 msgstr "白袍法师"
 
 #: data/core/units/humans/Mage_White.cfg:22
-#, fuzzy
 msgid ""
 "Some magi, as they learn about the world around them, and learn the truth of "
 "the suffering and squalor in which humanity too often lives, find that they "
@@ -2404,14 +2370,13 @@ msgstr "光束"
 
 #: data/core/units/humans/Mage_White.cfg:263
 msgid "female^White Mage"
-msgstr "女性白袍法师"
+msgstr "白袍法师"
 
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
 msgstr "光明法师"
 
 #: data/core/units/humans/Mage_of_Light.cfg:24
-#, fuzzy
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "spiritual powers. By strict devotion to the path of the light, they can call "
@@ -2432,7 +2397,7 @@ msgstr ""
 
 #: data/core/units/humans/Mage_of_Light.cfg:234
 msgid "female^Mage of Light"
-msgstr "女性光明法师"
+msgstr "光明法师"
 
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
@@ -2462,14 +2427,13 @@ msgstr "投石器"
 
 #: data/core/units/humans/Outlaw.cfg:111
 msgid "female^Outlaw"
-msgstr "女亡命徒"
+msgstr "亡命之徒"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "刺客"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:22
-#, fuzzy
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim's belongings. Masters of knife-fighting and uncannily light on their "
@@ -2493,7 +2457,7 @@ msgstr "匕首"
 
 #: data/core/units/humans/Outlaw_Assassin.cfg:171
 msgid "female^Assassin"
-msgstr "女刺客"
+msgstr "刺客"
 
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
@@ -2516,7 +2480,6 @@ msgid "Footpad"
 msgstr "拦路强盗"
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
-#, fuzzy
 msgid ""
 "These petty criminals are often derisively called 'footpads' by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -2538,7 +2501,7 @@ msgstr "木棒"
 
 #: data/core/units/humans/Outlaw_Footpad.cfg:165
 msgid "female^Footpad"
-msgstr "女拦路强盗"
+msgstr "拦路强盗"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
@@ -2553,9 +2516,8 @@ msgid ""
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:111
-#, fuzzy
 msgid "female^Fugitive"
-msgstr "女法师"
+msgstr ""
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:114
 msgid ""
@@ -2575,9 +2537,8 @@ msgid ""
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Huntsman.cfg:5
-#, fuzzy
 msgid "Huntsman"
-msgstr "骑手"
+msgstr ""
 
 #: data/core/units/humans/Outlaw_Huntsman.cfg:19
 msgid ""
@@ -2592,7 +2553,6 @@ msgid "Poacher"
 msgstr "偷猎者"
 
 #: data/core/units/humans/Outlaw_Poacher.cfg:22
-#, fuzzy
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of bandits will need a few "
@@ -2610,9 +2570,8 @@ msgstr ""
 "这些猎人经验丰富，适于夜间及在森林和沼泽中作战。"
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:5
-#, fuzzy
 msgid "Outlaw Ranger"
-msgstr "亡命之徒"
+msgstr ""
 
 #: data/core/units/humans/Outlaw_Ranger.cfg:19
 msgid ""
@@ -2645,12 +2604,11 @@ msgstr ""
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:143
 msgid "female^Rogue"
-msgstr "女歹徒"
+msgstr "歹徒"
 
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
-#, fuzzy
 msgid "Ruffian"
-msgstr "遗迹"
+msgstr "流氓"
 
 #: data/core/units/humans/Outlaw_Ruffian.cfg:18
 msgid ""
@@ -2659,13 +2617,15 @@ msgid ""
 "stick, are known as 'Ruffians'. With enough luck and experience, they "
 "sometimes manage to avoid the stockade that awaits most of their colleagues."
 msgstr ""
+"有些人没有任何特别的技能, 因而无法通过诚实劳动维持生计. 那些试图以敲诈勒索为"
+"生的人们被称作'流氓'. 如果有足够的运气和经验的话, 有事他们也能躲过那些为他们"
+"准备的牢房."
 
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
 msgstr "盗贼"
 
 #: data/core/units/humans/Outlaw_Thief.cfg:22
-#, fuzzy
 msgid ""
 "For as long as anyone can remember, the members of the various 'guilds' of "
 "rat-catchers that spring up in any larger city have had a curious practice "
@@ -2686,14 +2646,13 @@ msgstr ""
 
 #: data/core/units/humans/Outlaw_Thief.cfg:222
 msgid "female^Thief"
-msgstr "女贼"
+msgstr "盗贼"
 
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
 msgstr "暴徒"
 
 #: data/core/units/humans/Outlaw_Thug.cfg:19
-#, fuzzy
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -2710,7 +2669,6 @@ msgid "Trapper"
 msgstr "陷井猎人"
 
 #: data/core/units/humans/Outlaw_Trapper.cfg:27
-#, fuzzy
 msgid ""
 "Master woodsmen are useful allies to any army, and indispensable for any "
 "sizable group of bandits. They can track both man and beast, notice things "
@@ -2732,7 +2690,6 @@ msgid "Peasant"
 msgstr "农民"
 
 #: data/core/units/humans/Peasant.cfg:20
-#, fuzzy
 msgid ""
 "Peasants are the backbone of the rural economy, and the soldiers of last "
 "resort. While not warlike by nature, they will stubbornly defend their "
@@ -2747,9 +2704,8 @@ msgid "pitchfork"
 msgstr "耙子"
 
 #: data/core/units/humans/Woodsman.cfg:4
-#, fuzzy
 msgid "Woodsman"
-msgstr "剑士"
+msgstr "山民"
 
 #: data/core/units/humans/Woodsman.cfg:19
 msgid ""
@@ -2757,6 +2713,8 @@ msgid ""
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
+"山民是猎人,伐木工,烧炭工,和其他在人类社会边缘的荒野中艰难度日的人们. 智慧和关"
+"于森林的知识经常在武器无法帮助他们的时候给与他们支持."
 
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
@@ -2779,7 +2737,6 @@ msgid "female^Mermaid Enchantress"
 msgstr "人鱼女巫"
 
 #: data/core/units/merfolk/Enchantress.cfg:21
-#, fuzzy
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -2827,11 +2784,11 @@ msgid "Merman Fighter"
 msgstr "人鱼战士"
 
 #: data/core/units/merfolk/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
-msgstr "人鱼是大海中的生物，在任何水域中都是快速和强大的，但想登陆却困难重重。"
+msgstr ""
+"人鱼是大海中的生物，在任何水域中都是快速和强大的，但登陆之后却困难重重。"
 
 #: data/core/units/merfolk/Warrior.cfg:23
 #: data/core/units/merfolk/Triton.cfg:24 data/core/units/merfolk/Triton.cfg:32
@@ -2845,7 +2802,6 @@ msgid "Merman Hoplite"
 msgstr "人鱼重甲兵"
 
 #: data/core/units/merfolk/Hoplite.cfg:22
-#, fuzzy
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -2938,7 +2894,6 @@ msgid "female^Mermaid Priestess"
 msgstr "人鱼女祭司"
 
 #: data/core/units/merfolk/Priestess.cfg:24
-#, fuzzy
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -2991,7 +2946,6 @@ msgid "Merman Spearman"
 msgstr "人鱼矛兵"
 
 #: data/core/units/merfolk/Spearman.cfg:18
-#, fuzzy
 msgid ""
 "Archery is little favored by the mermen, for whom javelinry serves a similar "
 "function. Though thrown javelins are of little use under the water, they are "
@@ -3009,7 +2963,6 @@ msgid "Merman Triton"
 msgstr "人鱼三叉戟战士"
 
 #: data/core/units/merfolk/Triton.cfg:19
-#, fuzzy
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -3035,7 +2988,6 @@ msgid "Giant Spider"
 msgstr "巨型蜘蛛"
 
 #: data/core/units/monsters/Cave_Spider.cfg:19
-#, fuzzy
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They have a vicious bite, made worse by the fact that it is poisoned, and "
@@ -3044,7 +2996,9 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "据说，巨型蜘蛛生活在纳尔迦的深处，吞食了很多可怜的受害者。它们能用毒素在近战"
-"中打击对手，也能从远程用蜘蛛网来减慢对手的速度。"
+"中打击对手，也能从远程用蜘蛛网来减慢对手的速度。\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/monsters/Cave_Spider.cfg:48
 msgid "web"
@@ -3094,6 +3048,13 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"巨龙是传说中的生物, 一般来世只会在幻想小说中出现. 他们非常稀少. 或许是因为巨"
+"龙独力摧毁整个城镇的记载, 巨龙仅仅被做为一个神话. 民间传奇关于巨龙的破坏力的"
+"描述非常详细; 展现了他们的力量, 速度, 超自然的狡诈和最重要的——他们体内燃烧的"
+"恐怖火焰.\n"
+"\n"
+"与巨龙作战被认为是世界上最危险的事情, 只有那些蠢货, 或者最勇敢的骑士们才会挑"
+"战巨龙的威严."
 
 #: data/core/units/monsters/Fire_Dragon.cfg:27
 msgid "bite"
@@ -3108,7 +3069,6 @@ msgid "Giant Mudcrawler"
 msgstr "巨型黏土怪"
 
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:18
-#, fuzzy
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
@@ -3135,7 +3095,6 @@ msgid "Giant Scorpion"
 msgstr "巨蝎"
 
 #: data/core/units/monsters/Giant_Scorpion.cfg:21
-#, fuzzy
 msgid ""
 "A normal scorpion is dangerous enough - the deadliness of one the size of a "
 "man needs little explanation.\n"
@@ -3199,7 +3158,6 @@ msgid "Tentacle of the Deep"
 msgstr "深渊触手"
 
 #: data/core/units/monsters/Tentacle.cfg:23
-#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves.\n"
@@ -3212,7 +3170,7 @@ msgstr ""
 
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "狼"
 
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
@@ -3252,7 +3210,6 @@ msgid "Naga Myrmidon"
 msgstr "娜迦忠勇武士"
 
 #: data/core/units/nagas/Myrmidon.cfg:20
-#, fuzzy
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -3285,7 +3242,6 @@ msgid "Naga Warrior"
 msgstr "娜迦勇士"
 
 #: data/core/units/nagas/Warrior.cfg:19
-#, fuzzy
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
 "second blade. Their martial practice of using twin blades is wholly unlike "
@@ -3295,7 +3251,7 @@ msgid ""
 "greatly impedes the technique."
 msgstr ""
 "大多年轻的娜迦勇士都渴望有朝一日能获得配得上第二把刀的荣誉。他们在战场上使用"
-"双刀，这完全不同于兽人或其他种族；他们开始学习利用自己设性的身体，通过闪转腾"
+"双刀，这完全不同于兽人或其他种族；他们开始学习利用自己蛇形的身体，通过闪转腾"
 "挪来躲避攻击。这使他们在陆地上很强大，但水的阻力却影响了他们的闪躲动作。"
 
 #: data/core/units/nagas/Warrior.cfg:69
@@ -3303,7 +3259,6 @@ msgid "Nagini Warrior"
 msgstr "娜迦勇士"
 
 #: data/core/units/nagas/Warrior.cfg:72
-#, fuzzy
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3312,9 +3267,9 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
-"大多年轻的娜迦勇士都渴望有朝一日能获得配得上第二把刀的荣誉。他们在战场上使用"
-"双刀，这完全不同于兽人或其他种族；他们开始学习利用自己设性的身体，通过闪转腾"
-"挪来躲避攻击。这使他们在陆地上很强大，但水的阻力却影响了他们的闪躲动作。"
+"年轻的娜迦勇士们都渴望有朝一日能获得配得上第二把刀的荣誉。他们在战场上使用双"
+"刀，这完全不同于兽人或其他种族；他们开始学习利用自己蛇形的身体，通过闪转腾挪"
+"来躲避攻击。这使他们在陆地上很强大，但水的阻力却影响了他们的闪躲动作。"
 
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
@@ -3339,7 +3294,6 @@ msgid "Young Ogre"
 msgstr "食人魔幼兽"
 
 #: data/core/units/ogres/Young_Ogre.cfg:21
-#, fuzzy
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -3360,13 +3314,15 @@ msgid ""
 "semblance of training. Even as poorly handled as they are, their weapons can "
 "still be quite deadly, and the wielders thereof rarely march alone."
 msgstr ""
+"在兽人中, 弓箭被认为是怯懦者使用的武器; 但是即使是兽人, 特别是年轻的和体型瘦"
+"小的, 也会向现实主义投降. 兽人弓箭手装备参差不齐, 并且没有受过像样的训练. 即"
+"使如此, 他们的武器仍然可以致命, 更何况他们很少独自行动."
 
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
 msgstr "兽人刺客"
 
 #: data/core/units/orcs/Assassin.cfg:24
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -3398,6 +3354,9 @@ msgid ""
 "enough to wield them are capable warriors, and what they lack in finesse, "
 "they make up for in numbers."
 msgstr ""
+"兽人的十字弩是人类和矮人制品的粗糙纺织品; 尽管如此, 无论用以什么做成, 十字弩"
+"总是一个威力相当强大的武器. 有权使用这种武器的兽人都是有力的战士, 而他们管用"
+"数量来弥补他们技巧的不足."
 
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
@@ -3417,7 +3376,6 @@ msgid "Orcish Leader"
 msgstr "兽人领袖"
 
 #: data/core/units/orcs/Leader.cfg:27
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -3447,6 +3405,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"任何可以保持一个庞大部落不陷入不和和内战的兽人都往往是非常智慧和和有威信的, "
+"当然也是非常强壮的. 他们对剑和弓同样擅长, 不过他们真正的才干在于他们领导其他"
+"兽人,发出命令,让兽人们忠诚而无畏的跟随自己的稀有能力.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/orcs/Warrior.cfg:23 data/core/units/orcs/Sovereign.cfg:35
 #: data/core/units/orcs/Warlord.cfg:25 data/core/units/orcs/Ruler.cfg:34
@@ -3458,7 +3421,6 @@ msgid "Orcish Slayer"
 msgstr "兽人杀手"
 
 #: data/core/units/orcs/Slayer.cfg:24
-#, fuzzy
 msgid ""
 "The larger or more skilled orcish assassins are called 'Slayers' by their "
 "enemies. Slayers are fast on their feet, and quite nimble in combat, "
@@ -3490,6 +3452,12 @@ msgid ""
 "Orcs prize any such weapons they can manage to plunder, and they invariably "
 "end up in the hands of their strongest and most cunning archers."
 msgstr ""
+"最基础的十字弩设计逐渐发展成了劲弩或重弩; 一种更加复杂的弩机, 金属绞弦器完善"
+"了这种武器, 同时它一般还配备了复合弓弦, 并以复合板或者骨头制成弩体. 这种弩机"
+"易于操作, 并且威力比简易的十字弩强大得多; 当然, 它远远不是兽人的工艺所能制造"
+"的.\n"
+"\n"
+"兽人珍视这些他们设法抢劫来的武器, 最终他们都会落到最强壮和狡诈的弓手手里. "
 
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
@@ -3506,6 +3474,12 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"有些时候, 会出现一个对其部族有着超凡魅力和控制力的兽人. 如果他又足够强壮和狡"
+"诈, 那么他不可避免地会领导出一个拥有众多勇士的强大部落, 同样, 他也会不可避免"
+"地对世界上的其他文明种族造成大量的麻烦和威胁. 对付这样一直军队的最可靠的办法"
+"就是杀死那个可以将兽人们凝聚在一起的稀有品种.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
@@ -3538,7 +3512,6 @@ msgid "Saurian Ambusher"
 msgstr "蜥蜴人伏击者"
 
 #: data/core/units/saurians/Ambusher.cfg:21
-#, fuzzy
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this is combined with experience, strength, "
@@ -3562,7 +3535,6 @@ msgid "Saurian Augur"
 msgstr "蜥蜴人占卜师"
 
 #: data/core/units/saurians/Augur.cfg:23
-#, fuzzy
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
@@ -3586,7 +3558,6 @@ msgid "Saurian Flanker"
 msgstr "蜥蜴人侧卫"
 
 #: data/core/units/saurians/Flanker.cfg:22
-#, fuzzy
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven, or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -3607,7 +3578,6 @@ msgid "Saurian Oracle"
 msgstr "蜥蜴人先知"
 
 #: data/core/units/saurians/Oracle.cfg:23
-#, fuzzy
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -3630,7 +3600,6 @@ msgid "Saurian Skirmisher"
 msgstr "蜥蜴人游击兵"
 
 #: data/core/units/saurians/Skirmisher.cfg:24
-#, fuzzy
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
 "of this, they are very, very agile. In combat, their size allows them to "
@@ -3657,7 +3626,6 @@ msgid "Saurian Soothsayer"
 msgstr "蜥蜴人预言者"
 
 #: data/core/units/saurians/Soothsayer.cfg:23
-#, fuzzy
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious. It is clear that some of them are particularly "
@@ -3696,7 +3664,6 @@ msgid "Troll Hero"
 msgstr "巨魔英雄"
 
 #: data/core/units/trolls/Hero.cfg:20
-#, fuzzy
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
@@ -3735,7 +3702,6 @@ msgid "Troll"
 msgstr "巨魔"
 
 #: data/core/units/trolls/Troll.cfg:20
-#, fuzzy
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -3758,7 +3724,6 @@ msgid "Troll Warrior"
 msgstr "巨魔勇士"
 
 #: data/core/units/trolls/Warrior.cfg:22
-#, fuzzy
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large 'sticks and stones' serve them all too well. However, "
@@ -3784,7 +3749,6 @@ msgid "Troll Whelp"
 msgstr "巨魔幼崽"
 
 #: data/core/units/trolls/Whelp.cfg:21
-#, fuzzy
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -3794,7 +3758,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"用小崽子来形容幼年巨魔似乎是自相矛盾的，因为巨魔幼崽的体格已经比成年人还强壮"
+"用幼崽来形容幼年巨魔似乎是自相矛盾的，因为巨魔幼崽的体格已经比成年人还强壮"
 "了。他们很笨拙，步履蹒跚，只能用四肢来爬行，但其种族天生的力量弥补了这些缺"
 "陷。\n"
 "\n"
@@ -3805,7 +3769,6 @@ msgid "Ghoul"
 msgstr "食尸鬼"
 
 #: data/core/units/undead/Corpse_Ghoul.cfg:22
-#, fuzzy
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. The "
@@ -3857,6 +3820,11 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"很不幸, 操控尸体的方法在黑暗世界中广为流传; 死灵巫师们经常使用这种方法从毫无"
+"意志的尸体中获得仆人和士兵. 这些蹒跚而行的家伙们经常数量庞大, 但是脆弱易碎; "
+"战斗的到来会唤醒他们, 尽管他们远远称不上可怕.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/undead/Corpse_Walking.cfg:50
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:37
@@ -3871,7 +3839,6 @@ msgid "Walking Corpse"
 msgstr "僵尸"
 
 #: data/core/units/undead/Corpse_Walking.cfg:23
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -3889,7 +3856,6 @@ msgid "Ancient Lich"
 msgstr "远古巫妖"
 
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:26
-#, fuzzy
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death.\n"
@@ -3949,7 +3915,7 @@ msgstr "冷冻波"
 
 #: data/core/units/undead/Necro_Dark_Adept.cfg:201
 msgid "female^Dark Adept"
-msgstr "女性黑暗狂徒"
+msgstr "黑暗狂徒"
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
@@ -3975,9 +3941,20 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+"普通人对黑魔法的恐惧主要来自于对此类魔法的无知. 黑暗巫师早已开始探索生命与死"
+"亡的秘密, 而相比之下后者实在太容易实现. 这项工作首先给揭密灵魂和物质的联系带"
+"来了一线曙光,并且带来了成功结合这两者的实验. 隐藏在死亡背后的可怕奥秘的惊鸿一"
+"现, 并且终将不可避免地被彻底揭开.\n"
+"\n"
+"除去黑暗巫师各种可能的企图,比如将自己的生命从自然的掌握中夺走之外, 他们研究的"
+"第一项结果立刻就有了一项恶心的应用. 他们注入死尸的生命可以为他们创造仆人, 这"
+"些仆人可以工作, 可以杀人, 对他们主人的命令从不犹豫. 这些'造物'有着任何暴君都"
+"会梦寐以求的忠诚, 同时, 这对那些哪怕对力量有着一点点渴望的人, 都有着无与伦比"
+"的吸引力.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:179
-#, fuzzy
 msgid "Dark Sorceress"
 msgstr "黑暗巫师"
 
@@ -3986,7 +3963,6 @@ msgid "Lich"
 msgstr "巫妖"
 
 #: data/core/units/undead/Necro_Lich.cfg:25
-#, fuzzy
 msgid ""
 "A lich is the physical embodiment of black magic's first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -4015,7 +3991,6 @@ msgid "Necromancer"
 msgstr "死灵法师"
 
 #: data/core/units/undead/Necromancer.cfg:23
-#, fuzzy
 msgid ""
 "One of the pinnacles of what is considered 'black magic' is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -4031,8 +4006,8 @@ msgstr ""
 "发现为制造恐怖的人提供了全新的武器库，导致了各种可怕的后果，因此遭到人类的谴"
 "责与唾弃。\n"
 "\n"
-"这个能力迈出了欺骗死亡的第一步。这是黑暗法师在不失掉其人性的同时能掌握的最高"
-"力量，但在巫妖的致命法术面前还是显得十分苍白。与巫妖脆弱腐朽的身形不同，黑暗"
+"这个能力迈出了欺骗死亡的第一步。这是死灵法师在不失掉其人性的同时能掌握的最高"
+"力量，但在巫妖的致命法术面前还是显得十分苍白。与巫妖脆弱腐朽的身形不同，死灵"
 "法师的魔法使他们的肉身变得更加强壮。\n"
 "\n"
 "特别提示："
@@ -4042,17 +4017,14 @@ msgid "plague staff"
 msgstr "瘟疫法杖"
 
 #: data/core/units/undead/Necromancer.cfg:141
-#, fuzzy
 msgid "female^Necromancer"
 msgstr "死灵法师"
 
 #: data/core/units/undead/Skele_Banebow.cfg:4
-#, fuzzy
 msgid "Banebow"
-msgstr "弓"
+msgstr "毁灭射手"
 
 #: data/core/units/undead/Skele_Banebow.cfg:19
-#, fuzzy
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4062,9 +4034,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"不死族的弓箭手生前就都是弓箭手。他们在战场上徘徊，带着对过去技艺淡淡的回忆，"
-"全然不知自己的目的与敌人，对此也毫不在乎。空虚而不连贯的生命带给他们的痛苦驱"
-"使他们战斗。\n"
+"不死族最强大的弓箭手总是那些生前就是弓箭大师的死灵们。他们在战场上徘徊，带着"
+"过去技艺在身体中留下的痕迹，全然不知自己的目的与敌人，对此也毫不在乎。空虚而"
+"不连贯的生命带给他们的痛苦驱使他们战斗。\n"
 "\n"
 "特别提示："
 
@@ -4073,7 +4045,6 @@ msgid "Bone Shooter"
 msgstr "枯骨射手"
 
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:18
-#, fuzzy
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. The potency of their un-life is given equipment to match; "
@@ -4096,7 +4067,6 @@ msgid "Chocobone"
 msgstr "骷髅骑士"
 
 #: data/core/units/undead/Skele_Chocobone.cfg:22
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -4105,14 +4075,15 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "骷髅骑士的坐骑是驼鸟一般大的鸟的骨架，是某个失落文明的产物。骷髅骑士比普通骑"
-"兵移动速度要快。"
+"兵移动速度要快。\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
 msgstr "死亡骑士"
 
 #: data/core/units/undead/Skele_Death_Knight.cfg:33
-#, fuzzy
 msgid ""
 "Tales are told of the mightiest warriors and generals, who, cursed with hate "
 "and stung by betrayal, have come back to this world as Death Knights. "
@@ -4131,7 +4102,6 @@ msgid "Deathblade"
 msgstr "死亡剑士"
 
 #: data/core/units/undead/Skele_Deathblade.cfg:20
-#, fuzzy
 msgid ""
 "In life, the abominations known as 'Deathblades' were masters of combat, "
 "soldiers who were both lithe and deadly. Their new masters, recognizing "
@@ -4152,7 +4122,6 @@ msgid "Draug"
 msgstr "战魂"
 
 #: data/core/units/undead/Skele_Draug.cfg:20
-#, fuzzy
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -4214,7 +4183,6 @@ msgid "Skeleton Archer"
 msgstr "骷髅弓箭手"
 
 #: data/core/units/undead/Skeleton_Archer.cfg:19
-#, fuzzy
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it - it is a sin against nature, a warrior raised from the dead to "
@@ -4235,7 +4203,6 @@ msgid "Ghost"
 msgstr "鬼魂"
 
 #: data/core/units/undead/Spirit_Ghost.cfg:21
-#, fuzzy
 msgid ""
 "It is one of the greater mercies of creation that a human soul is immutable, "
 "and cannot be destroyed. However, the many things a necromancer can do in "
@@ -4305,7 +4272,6 @@ msgid "Spectre"
 msgstr "幽鬼"
 
 #: data/core/units/undead/Spirit_Spectre.cfg:21
-#, fuzzy
 msgid ""
 "Sometimes called the 'hollow men', spectres form the right arm of their "
 "masters' powers. They are an unholy terror to the living, for they are quite "
@@ -4335,7 +4301,6 @@ msgid "Wraith"
 msgstr "幽灵"
 
 #: data/core/units/undead/Spirit_Wraith.cfg:18
-#, fuzzy
 msgid ""
 "These shades of what were once warriors are among the most terrifying things "
 "a necromancer can create, for a sword will cleave right through them as if "
@@ -4357,7 +4322,6 @@ msgid "Ancient Wose"
 msgstr "远古树人"
 
 #: data/core/units/wose/Ancient.cfg:22
-#, fuzzy
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -4389,7 +4353,6 @@ msgid "Elder Wose"
 msgstr "树人长者"
 
 #: data/core/units/wose/Elder.cfg:21
-#, fuzzy
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -4419,7 +4382,6 @@ msgid "Wose"
 msgstr "树人"
 
 #: data/core/units/wose/Wose.cfg:22
-#, fuzzy
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -4442,64 +4404,3 @@ msgstr ""
 "他们完全不好战，但拥有强大的力量。然而他们不善于迅速的移动。\n"
 "\n"
 "特别提示："
-
-#~ msgid "dummy"
-#~ msgstr "傀儡"
-
-#~ msgid "cold"
-#~ msgstr "寒冷"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "远程"
-
-#~ msgid "impact"
-#~ msgstr "冲击"
-
-#~ msgid "fire"
-#~ msgstr "火焰"
-
-#~ msgid "blade"
-#~ msgstr "剑刃"
-
-#~ msgid "pierce"
-#~ msgstr "穿刺"
-
-#, fuzzy
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it by the common man. Dark sorcerers have begun to unlock the "
-#~ "secrets of life and death, quickly becoming masters of inflicting pain "
-#~ "and anguish.\n"
-#~ "\n"
-#~ "The ultimate prize of the dark arts is complete domination of death and "
-#~ "life. Dark Sorcerers may eventually learn how to manipulate life and "
-#~ "death by reanimating corpses, skeletons, and spirits. The most corrupt "
-#~ "and power-hungry will attempt to completely conquer death through "
-#~ "transformation to lichdom and attainment of a dreadful immortality.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "普通人对黑暗魔法知之甚少，因此也对它倍感恐惧。黑暗巫师已经开始解开生命与死"
-#~ "亡的秘密，迅速成为制造痛苦和哀愁的高手。\n"
-#~ "\n"
-#~ "黑暗艺术的终极回报在于对死亡和生命的全盘掌控。黑暗巫师最终也许能掌握操纵生"
-#~ "死的法术，使死尸、骷髅和幽灵重生。他们之中最腐朽、最渴望力量的成员会尝试成"
-#~ "为征服死亡的巫妖，从而获得令人畏惧的不死之身。\n"
-#~ "\n"
-#~ "特别提示："
-
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with beast-like ferocity. When they are sated with "
-#~ "the flesh of their victims, they simply shrug off all damage sustained as "
-#~ "if they had been freshly summoned, to begin their search for flesh "
-#~ "again.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "死灵食尸鬼，出于对腐肉疯狂而邪恶的渴望，向野兽一样残暴的攻击他们期待的食"
-#~ "物。当他们食用受害者的肉后，就会完全恢复，就像刚刚召唤出来一样。接着他们就"
-#~ "继续寻找新的食物来源。\n"
-#~ "\n"
-#~ "特别提示："
