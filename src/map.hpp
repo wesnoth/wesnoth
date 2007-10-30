@@ -224,7 +224,7 @@ public:
 	//! terrain_translation::write_game_map().
 	static const std::string default_map_header;
 	//! The default border style for a map
-	static const tborder default_border = SINGLE_TILE_BORDER;
+	static const tborder default_border;
 
 protected:
 	t_translation::t_map tiles_;

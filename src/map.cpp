@@ -43,6 +43,7 @@ std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 gamemap::location gamemap::location::null_location;
 
 const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
+const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
 
 const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_letter terrain) const
 {
@@ -364,7 +365,7 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 			throw incorrect_format_exception(msg.c_str());
 		}
 
-		map = std::string(data, header_offset + 2);
+		map = std::string(data, 0, header_offset + 2);
 	}
 
 	try {
