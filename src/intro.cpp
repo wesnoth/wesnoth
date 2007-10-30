@@ -112,28 +112,17 @@ bool show_intro_part(display &disp, const config& part,
 	SDL_Rect dstrect;
 
 	if(background.null() || background->w*background->h == 0) {
-		background.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+		background.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,video.getx(),video.gety(),32,0xFF0000,0xFF00,0xFF,0xFF000000));
 	}
 
-	const int source_aspect = (background->w*1000)/background->h;
-	const int dest_aspect = (video.getx()*1000)/video.gety();
+	double xscale = 1.0 * video.getx() / background->w;
+	double yscale = 1.0 * video.gety() / background->h;
+	double scale = minimum<double>(xscale,yscale);
 
-	int xscale = video.getx();
-	int yscale = video.gety();
+	background = scale_surface(background, background->w*scale, background->h*scale);
 
-	if(dest_aspect >= source_aspect) {
-		xscale = (background->w*yscale)/background->h;
-	} else {
-		yscale = (background->h*xscale)/background->w;
-	}
-
-	const int map_w = background->w;
-	const int map_h = background->h;
-
-	background = scale_surface(background,xscale,yscale);
-
-	dstrect.x = video.getx()/2 - background->w/2;
-	dstrect.y = video.gety()/2 - background->h/2;
+	dstrect.x = (video.getx() - background->w) / 2;
+	dstrect.y = (video.gety() - background->h) / 2;
 	dstrect.w = background->w;
 	dstrect.h = background->h;
 
@@ -191,21 +180,21 @@ bool show_intro_part(display &disp, const config& part,
 		bool pass = false;
 
 		for(std::vector<config*>::const_iterator i = images.begin(); i != images.end(); ++i){
-			const std::string& xloc = (**i)["x"];
-			const std::string& yloc = (**i)["y"];
 			const std::string& image_name = (**i)["file"];
-			const std::string& delay_str = (**i)["delay"];
-			const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
-			const int x = (atoi(xloc.c_str())*background->w)/map_w;
-			const int y = (atoi(yloc.c_str())*background->h)/map_h;
-
-			if(x < 0 || x >= background->w || y < 0 || y >= background->h)
-				continue;
-
 			if(image_name == "") continue;
 			surface img(image::get_image(image_name));
 			if(img.null()) continue;
 
+			const std::string& xloc = (**i)["x"];
+			const std::string& yloc = (**i)["y"];
+			const std::string& delay_str = (**i)["delay"];
+			const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
+			const int x = static_cast<int>(atoi(xloc.c_str())*scale);
+			const int y = static_cast<int>(atoi(yloc.c_str())*scale);
+
+			if ((**i)["scaled"] == "yes"){
+				img = scale_surface(img, img->w*scale, img->h*scale);
+			}
 
 			SDL_Rect image_rect;
 			image_rect.x = x + dstrect.x;
