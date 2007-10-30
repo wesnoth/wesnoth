@@ -163,6 +163,17 @@ std::string &strip(std::string &str)
 	return str;
 }
 
+std::string &strip_char(std::string &str, char c)
+{
+	std::string::iterator it = std::remove(str.begin(), str.end(), c);
+	if (it == str.end())
+		return str;
+	str.erase(str.begin(), it);
+	str.erase(std::find_if(str.rbegin(), str.rend(), notspace).base(), str.end());
+
+	return str;
+}
+
 std::vector< std::string > split(std::string const &val, char c, int flags)
 {
 	std::vector< std::string > res;
@@ -198,25 +209,24 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-// Splits a string based either on a separator where text within paranthesis
-// is protected from splitting (the paranthesis get removed; note that one can
-// use the same character for both the left and right paranthesis and in this
-// mode it usually makes only sense to have )
-// or if the separator == 0 it splits a string into an odd number of parts:
-// - The part before the first '(',
-// - the part between the first '('
-// - and the matching right ')', etc ...
-// and the remainder of the string.
-// Note that this will find the first matching char in the left string
-// and match against the corresponding char in the right string.
-// In this mode, a correctly processed string should return with
-// an odd number of elements to the vector and
-// an empty elements are never removed as they are placeholders.
-// hence REMOVE EMPTY only works for the separator split.
-//
-// parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
-// a vector of <"a","b","c","d","e","f{g}","h">
-
+//! Splits a string based either on a separator where text within paranthesis
+//! is protected from splitting (Note that one can use the same character for
+//! both the left and right paranthesis. In this mode it usually makes only
+//! sense to have one character for the left and right paranthesis.)
+//! or if the separator == 0 it splits a string into an odd number of parts:
+//! - The part before the first '(',
+//! - the part between the first '('
+//! - and the matching right ')', etc ...
+//! and the remainder of the string.
+//! Note that this will find the first matching char in the left string
+//! and match against the corresponding char in the right string.
+//! In this mode, a correctly processed string should return with
+//! an odd number of elements to the vector and
+//! an empty elements are never removed as they are placeholders.
+//! hence REMOVE EMPTY only works for the separator split.
+//!
+//! parenthetical_split("a(b)c{d}e(f{g})h",0,"({",")}") should return
+//! a vector of <"a","b","c","d","e","f{g}","h">
 std::vector< std::string > paranthetical_split(std::string const &val, const char separator, std::string const &left, std::string const &right,int flags)
 {
 	std::vector< std::string > res;
@@ -236,15 +246,7 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 
 	while (i2 != val.end()) {
 		if(!in_paranthesis && separator && *i2 == separator){
-			std::string::const_iterator end = i2;
-			// Remove the right paranthesis at the end of the new string.
-			for(size_t i=0; i < rp.size(); i++){
-				if (*(i2 - 1) == rp[i]) {
-					end = i2 - 1;
-					break;
-				}
-			}
-			std::string new_val(i1, end);
+			std::string new_val(i1, i2);
 			if (flags & STRIP_SPACES)
 				strip(new_val);
 			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
@@ -253,15 +255,6 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 			if (flags & STRIP_SPACES) {
 				while (i2 != val.end() && *i2 == ' ')
 					++i2;
-			}
-			// Remove the left paranthesis at the start of the next string.
-			for(size_t i=0; i < lp.size(); i++){
-				if (*i2 == lp[i]) {
-					++i2;
-					in_paranthesis = true;
-					part.push_back(rp[i]);
-					break;
-				}
 			}
 			i1=i2;
 			continue;
@@ -306,15 +299,7 @@ std::vector< std::string > paranthetical_split(std::string const &val, const cha
 			in_paranthesis = true;
 	}
 
-	std::string::const_iterator end = i2;
-	for(size_t i=0; i < rp.size(); i++){
-		if (*(i2 - 1) == rp[i]) {
-			end = i2 - 1;
-			break;
-		}
-	}
-
-	std::string new_val(i1, end);
+	std::string new_val(i1, i2);
 	if (flags & STRIP_SPACES)
 		strip(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
