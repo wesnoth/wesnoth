@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-26 15:26+0200\n"
+"POT-Creation-Date: 2007-10-31 20:52+0100\n"
 "PO-Revision-Date: 2007-10-30 14:25+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -221,6 +221,10 @@ msgstr "Neschůdné pouštní hory"
 msgid "Cave Wall"
 msgstr "Jeskynní hradba"
 
+#: data/core/terrain.cfg:925
+msgid "Void"
+msgstr ""
+
 #: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
 msgid "OK"
@@ -287,16 +291,16 @@ msgstr "Zavři okno"
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:199
+#: src/editor/editor_dialogs.cpp:253 src/game_preferences_display.cpp:201
 msgid "Scroll Speed:"
 msgstr "Rychlost posouvání:"
 
-#: src/editor/editor_dialogs.cpp:280 src/game_preferences_display.cpp:157
+#: src/editor/editor_dialogs.cpp:280 src/game_preferences_display.cpp:159
 #: src/hotkeys.cpp:61
 msgid "Toggle Full Screen"
 msgstr "Okno/Celá obrazovka"
 
-#: src/editor/editor_dialogs.cpp:287 src/game_preferences_display.cpp:160
+#: src/editor/editor_dialogs.cpp:287 src/game_preferences_display.cpp:162
 msgid "Show Grid"
 msgstr "Zobrazuj mřížku"
 
@@ -304,7 +308,7 @@ msgstr "Zobrazuj mřížku"
 msgid "Video Mode"
 msgstr "Grafický mód"
 
-#: src/editor/editor_dialogs.cpp:297 src/game_preferences_display.cpp:181
+#: src/editor/editor_dialogs.cpp:297 src/game_preferences_display.cpp:183
 msgid "Hotkeys"
 msgstr "Klávesové zkratky"
 
@@ -367,399 +371,412 @@ msgstr "Složku se nezdařilo vytvořit."
 msgid "player"
 msgstr "hráč"
 
-#: src/game_preferences_display.cpp:158
+#: src/game_preferences_display.cpp:160
 msgid "Accelerated Speed"
 msgstr "Zrychleno"
 
-#: src/game_preferences_display.cpp:159
+#: src/game_preferences_display.cpp:161
 msgid "Skip AI Moves"
 msgstr "Přeskakuj tahy počítače"
 
-#: src/game_preferences_display.cpp:161
-msgid "Save Replays"
-msgstr "Ukládej záznamy"
-
-#: src/game_preferences_display.cpp:162
-msgid "Delete Autosaves"
-msgstr "Mazání auto-uložení"
-
 #: src/game_preferences_display.cpp:163
+msgid "Save Replay on SP/MP Victory or MP Defeat"
+msgstr ""
+
+#: src/game_preferences_display.cpp:164
+msgid "Delete Saves on SP/MP Victory or MP Defeat"
+msgstr ""
+
+#: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
 msgstr "Neukazuj připojení uživatelů"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:166
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Ukaž pouze připojení přátel"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:167
 msgid "Show All Lobby Joins"
 msgstr "Ukaž všechna připojení uživatelů"
 
 # seznam připojení?
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:168
 msgid "Sort Lobby List"
 msgstr "Seřaď seznam v čekárně"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:169
 msgid "Iconize Lobby List"
 msgstr "Ikony v čekárně"
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:170
 msgid "Friends List"
 msgstr "Seznam přátel"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:171
 msgid "Multiplayer Options"
 msgstr "Nastavení hry více hráčů"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:172
 msgid "Add As Friend"
 msgstr "Přidej jako přítele"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:173
 msgid "Add As Ignore"
 msgstr "Přidej jako otrapu"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:174
 msgid "Remove"
 msgstr "Odstraň"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:175
 msgid "Show Floating Labels"
 msgstr "Zobrazuj plovoucí popisky"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:176
 msgid "Turn Dialog"
 msgstr "Dialog Ano/Ne"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:177
 msgid "Turn Bell"
 msgstr "Zvonek Ano/Ne"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:178
 msgid "Show Team Colors"
 msgstr "Zobrazuj barvy týmů"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:179
 msgid "Show Color Cursors"
 msgstr "Zobrazuj barevné kurzory"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:180
 msgid "Show Haloing Effects"
 msgstr "Zobrazuj halo efekty"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:181
 msgid "Change Resolution"
 msgstr "Změna rozlišení"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:182
 msgid "Theme"
 msgstr "Téma"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:184
 msgid "Adjust Gamma"
 msgstr "Gama korekce"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:185
 msgid "Reverse Time Graphics"
 msgstr "Rotace země"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:187
 msgid "Sound effects"
 msgstr "Zvukové efekty"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:188
 msgid "Music"
 msgstr "Hudba"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:189
 msgid "Chat Timestamping"
 msgstr "Časování chatu"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
 msgstr "Pokročilé nastavení"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
 msgstr "Jednoduché nastavení"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
 msgstr "Zvuky uživatelského rozhraní"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:195
 msgid "Custom"
 msgstr "Vlastní"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:196
 msgid "Apply"
 msgstr "Použij"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:197
 msgid "Show Unit Idle Animations"
 msgstr "Zobrazovat náhodné animace jednotek"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "Music Volume:"
 msgstr "Hlasitost hudby:"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:199
 msgid "SFX Volume:"
 msgstr "Hlasitost zvuků:"
 
 # !!!! zkontrolovat délku
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:200
 msgid "UI Sound Volume:"
 msgstr "Hlasitost zvuků uživatelského rozhraní:"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:201
 msgid "Bell Volume:"
 msgstr "Hlasitost zvonku:"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:202
 msgid "Gamma:"
 msgstr "Gama:"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:204
 msgid "Sample Rate (Hz):"
 msgstr "Vzorkovací frekvence (Hz):"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:205
 msgid "Frequency:"
 msgstr "Frekvence:"
 
-#: src/game_preferences_display.cpp:226
+#: src/game_preferences_display.cpp:229
 msgid "Sound effects on/off"
 msgstr "Zvukové efekty zapnuty/vypnuty"
 
-#: src/game_preferences_display.cpp:230
+#: src/game_preferences_display.cpp:233
 msgid "Change the sound effects volume"
 msgstr "Změna hlasitosti zvukových efektů"
 
-#: src/game_preferences_display.cpp:233
+#: src/game_preferences_display.cpp:236
 msgid "Music on/off"
 msgstr "Hudba zapnuta/vypnuta"
 
-#: src/game_preferences_display.cpp:237
+#: src/game_preferences_display.cpp:240
 msgid "Change the music volume"
 msgstr "Změna hlasitosti hudebního doprovodu"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:246
 msgid "Change the bell volume"
 msgstr "Změna hlasitosti zvonku na konci kola"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:249
 msgid "Turn menu and button sounds on/off"
 msgstr "Zapne/vypne zvukové efekty menu a tlačítek"
 
-#: src/game_preferences_display.cpp:250
+#: src/game_preferences_display.cpp:253
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Změna hlasitosti pro zvukové efekty klikání na tlačítka atd."
 
-#: src/game_preferences_display.cpp:252
+#: src/game_preferences_display.cpp:255
 msgid "Change the sample rate"
 msgstr "Změna vzorkovací frekvence"
 
 # vlastní?
-#: src/game_preferences_display.cpp:261
+#: src/game_preferences_display.cpp:264
 msgid "User defined sample rate"
 msgstr "Uživatelská vzorkovací frekvence"
 
-#: src/game_preferences_display.cpp:270 src/game_preferences_display.cpp:274
+#: src/game_preferences_display.cpp:273 src/game_preferences_display.cpp:277
 msgid "Change the buffer size"
 msgstr "Změna velikosti vyrovnávací paměti"
 
-#: src/game_preferences_display.cpp:272 src/game_preferences_display.cpp:798
+#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:821
 msgid "Buffer Size: "
 msgstr "Velikost vyrovnávací paměti: "
 
-#: src/game_preferences_display.cpp:279
+#: src/game_preferences_display.cpp:282
 msgid "Change the speed of scrolling around the map"
 msgstr "Změna rychlosti posouvání mapy"
 
-#: src/game_preferences_display.cpp:284 src/game_preferences_display.cpp:286
+#: src/game_preferences_display.cpp:287 src/game_preferences_display.cpp:289
 msgid "Set the amount of chat lines shown"
 msgstr "Nastav počet zobrazovaných řádek chatu"
 
-#: src/game_preferences_display.cpp:289
+#: src/game_preferences_display.cpp:292
 msgid "Add a timestamp to chat messages"
 msgstr "Přiřaď čas k chatové zprávě"
 
-#: src/game_preferences_display.cpp:292 src/game_preferences_display.cpp:297
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:300
 msgid "Change the brightness of the display"
 msgstr "Změna nastavení jasu"
 
-#: src/game_preferences_display.cpp:300
+#: src/game_preferences_display.cpp:303
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Má-li hra běžet v okně, nebo přes celou obrazovku"
 
-#: src/game_preferences_display.cpp:303
+#: src/game_preferences_display.cpp:306
 msgid "Make units move and fight faster"
 msgstr "Jednotky se pohybují a bojují rychleji"
 
-#: src/game_preferences_display.cpp:318
+#: src/game_preferences_display.cpp:321
 msgid "Units move and fight speed"
 msgstr "Rychlost pohybu a boje jednotek"
 
-#: src/game_preferences_display.cpp:321
+#: src/game_preferences_display.cpp:324
 msgid "Show unit idle animations"
 msgstr "Zobrazovat náhodné animace jednotek"
 
-#: src/game_preferences_display.cpp:327
+#: src/game_preferences_display.cpp:330
 msgid "Set the frequency of unit idle animations"
 msgstr "Frekvence náhodných animací jednotek"
 
-#: src/game_preferences_display.cpp:330
+#: src/game_preferences_display.cpp:335
+msgid "Set maximum saves to be retained"
+msgstr ""
+
+#: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
 msgstr "Neanimuj jednotky ovládané počítačem"
 
-#: src/game_preferences_display.cpp:333
-msgid "Save replays at scenario end."
-msgstr "Ukládej na konci scénářů záznamy"
+#: src/game_preferences_display.cpp:342
+msgid "Save replays on SP victory or SP/MP defeat."
+msgstr ""
 
-#: src/game_preferences_display.cpp:336
-msgid "Automatically delete autosaves at the end of a scenario"
+#: src/game_preferences_display.cpp:345
+#, fuzzy
+msgid "Automatically delete saves on SP victory or SP/MP defeat"
 msgstr "Maž automatické uložené pozice při zakončení scénáře"
 
-#: src/game_preferences_display.cpp:338
+#: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
 msgstr "Nakresli přes mapu mřížku"
 
-#: src/game_preferences_display.cpp:341
+#: src/game_preferences_display.cpp:350
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Seřaď seznam hráčů v čekárně podle skupin"
 
-#: src/game_preferences_display.cpp:344
+#: src/game_preferences_display.cpp:353
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Ukazuj ikony před jmény hráčů v čekárně"
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:356
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Neukazuj zprávy o hráčích, kteří se připojili k serveru"
 
-#: src/game_preferences_display.cpp:349
+#: src/game_preferences_display.cpp:358
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Ukazuj zprávy o tvých přátelích, kteří se připojili k serveru"
 
-#: src/game_preferences_display.cpp:351
+#: src/game_preferences_display.cpp:360
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Ukazuj zprávy o všech hráčích, kteří se připojili k serveru"
 
-#: src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
 msgstr "Zobraz a uprav seznam přátel a otrapů"
 
 # do, na, k ?
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:363
 msgid "Back to the multiplayer options"
 msgstr "Zpět do nastavení hry více hráčů"
 
-#: src/game_preferences_display.cpp:355
+#: src/game_preferences_display.cpp:364
 msgid "Add this username to your friends list"
 msgstr "Přidej tuto přezdívku do seznamu přátel"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:365
 msgid "Add this username to your ignores list"
 msgstr "Přidej tuto přezdívku do seznamu otrapů"
 
-#: src/game_preferences_display.cpp:357
+#: src/game_preferences_display.cpp:366
 msgid "Remove this username from your list"
 msgstr "Odstraň tuto přezdívku ze seznamu"
 
-#: src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:369
 msgid "Insert a username"
 msgstr "Vlož přezdívku"
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:372
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Ukazuj při zásahu nad jednotkou, jak velké zranění utrpěla"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:374
 msgid "Change the resolution the game runs at"
 msgstr "Změna rozlišení, ve kterém hra běží"
 
-#: src/game_preferences_display.cpp:366
+#: src/game_preferences_display.cpp:375
 msgid "Change the theme the game runs with"
 msgstr "Změna tématu, ve kterém hra běží"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:378
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Zobraz dialog na začátku tvého kola"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:381
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Zvonek na začátku tvého kola"
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:384
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 "Zobrazuj pod jednotkou barevnou kružnici ukazující, za kterou stranu hraje"
 
-#: src/game_preferences_display.cpp:378
+#: src/game_preferences_display.cpp:387
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Zvol, zda-li se má slunce pohybovat zleva doprava, nebo zprava doleva"
 
-#: src/game_preferences_display.cpp:381
+#: src/game_preferences_display.cpp:390
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Používej barevné kursory myši (může zpomalovat)"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:393
 msgid "Use graphical special effects (may be slower)"
 msgstr "Používej speciální grafické efekty (může zpomalovat)"
 
-#: src/game_preferences_display.cpp:386
+#: src/game_preferences_display.cpp:395
 msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové zkratky"
 
-#: src/game_preferences_display.cpp:668
+#: src/game_preferences_display.cpp:684
 msgid "Speed: "
 msgstr "Rychlost: "
 
-#: src/game_preferences_display.cpp:840
+#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
+msgid "Maximum Saves: "
+msgstr ""
+
+#: src/game_preferences_display.cpp:689
+msgid "infinite"
+msgstr ""
+
+#: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
 msgstr "Řádek chatu:"
 
-#: src/game_preferences_display.cpp:936
+#: src/game_preferences_display.cpp:959
 msgid "yes"
 msgstr "ano"
 
-#: src/game_preferences_display.cpp:938
+#: src/game_preferences_display.cpp:961
 msgid "no"
 msgstr "ne"
 
-#: src/game_preferences_display.cpp:1086
+#: src/game_preferences_display.cpp:1113
 msgid "Prefs section^General"
 msgstr "Obecné"
 
-#: src/game_preferences_display.cpp:1087
+#: src/game_preferences_display.cpp:1114
 msgid "Prefs section^Display"
 msgstr "Zobrazení"
 
-#: src/game_preferences_display.cpp:1088
+#: src/game_preferences_display.cpp:1115
 msgid "Prefs section^Sound"
 msgstr "Zvuky"
 
-#: src/game_preferences_display.cpp:1089
+#: src/game_preferences_display.cpp:1116
 msgid "Prefs section^Multiplayer"
 msgstr "Multiplayer"
 
-#: src/game_preferences_display.cpp:1090
+#: src/game_preferences_display.cpp:1117
 msgid "Advanced section^Advanced"
 msgstr "Pokročilé nastavení"
 
-#: src/game_preferences_display.cpp:1125
+#: src/game_preferences_display.cpp:1152
 msgid "Saved Theme Preference: "
 msgstr "Uložené nastavení tématu: "
 
-#: src/game_preferences_display.cpp:1131
+#: src/game_preferences_display.cpp:1158
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nové téma se projeví na další nové, nebo načtené hře."
 
-#: src/game_preferences_display.cpp:1135
+#: src/game_preferences_display.cpp:1162
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Žádná známá témata. Zkus změnit během existující hry."
 
@@ -1189,6 +1206,15 @@ msgstr "Chyba"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Nalezen nepoužitelný terén, pravděpodobně verze 1.2; vstup: "
+
+#~ msgid "Save Replays"
+#~ msgstr "Ukládej záznamy"
+
+#~ msgid "Delete Autosaves"
+#~ msgstr "Mazání auto-uložení"
+
+#~ msgid "Save replays at scenario end."
+#~ msgstr "Ukládej na konci scénářů záznamy"
 
 #~ msgid "Advanced Mode"
 #~ msgstr "Pokročilý mód"

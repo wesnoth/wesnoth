@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-26 15:27+0200\n"
+"POT-Creation-Date: 2007-10-31 20:55+0100\n"
 "PO-Revision-Date: 2007-09-13 19:07+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: polski <pl@li.org>\n"
@@ -54,15 +54,15 @@ msgid "(Nightmare)"
 msgstr "(Koszmar)"
 
 #: data/campaigns/Northern_Rebirth/_main.cfg:21
+#, fuzzy
 msgid ""
 "For the people of Dwarven Doors the choice was stark: either drudge as "
 "downtrodden slaves for the orcs until the end of their brief and miserable "
 "lives, or risk all for freedom and rise up against their cruel overlords. "
 "Little did they suspect that their struggle would be the hinge of great "
-"events that might either restore the Northlands to the glory they had once "
-"known, or doom them to an eternity of bloody chaos.\n"
+"events that might restore the Northlands to the glory they had once known.\n"
 "\n"
-"(Expert level, 14 scenarios, one incomplete branch.)"
+"(Expert level, 14 scenarios.)"
 msgstr ""
 "Dla ludu Krasnoludzkich Wrót sytuacja była tragicznie jasna: mogli harować "
 "jako uciśnieni niewolnicy orków do końca swego krótkiego, nędznego żywota, "
@@ -307,7 +307,7 @@ msgstr "Garrugch"
 msgid "Defeat enemy leaders"
 msgstr "Pokonaj wrogich przywódców"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:774
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:779
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:483
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:508
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:409
@@ -322,10 +322,10 @@ msgstr "Pokonaj wrogich przywódców"
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:58
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:190
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:436
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:722
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1225
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1393
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1468
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:721
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1224
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1392
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1467
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:821
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:41
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:127
@@ -340,8 +340,8 @@ msgstr "Śmierć Tallina"
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:62
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:203
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:449
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1406
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1481
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1405
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1480
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:132
 msgid "Turns run out"
 msgstr "Koniec czasu"
@@ -826,7 +826,7 @@ msgstr "Przesuń Tallina do krasnoludzkiej twierdzy lub..."
 msgid "Clear the Caves (Bonus)"
 msgstr "Oczyść jaskinie (premia)"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:778
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:783
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:413
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:957
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:982
@@ -834,7 +834,7 @@ msgstr "Oczyść jaskinie (premia)"
 msgid "Death of Hamel"
 msgstr "Śmierć Hamela"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:782
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:787
 #: data/campaigns/Northern_Rebirth/scenarios/02_Infested_Caves.cfg:417
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:829
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:779
@@ -1364,7 +1364,7 @@ msgstr "Patrzcie, oto nasze mięso! Chłopaki, ruszamy po obiad!"
 msgid "I don't think so, buddy."
 msgstr "Nie licz na to, koleś."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:796
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:801
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_The_Mines.cfg:194
 msgid "No! Without the dwarvish weapons we have no hope!"
 msgstr "Nie! Bez krasnoludzkiej broni nie mamy szans!"
@@ -1410,17 +1410,118 @@ msgstr "Porządki w kopalniach"
 msgid "Malifor"
 msgstr "Malifor"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:497
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:97
+msgid "But my my, what do we have here - Tallin."
+msgstr "Ale ale, co my tu mamy - Tallin!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:103
+msgid "He knows your name, Tallin. I don't like the looks of this."
+msgstr "Tallin, on zna twoje imię. To mi się nie podoba."
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:108
+msgid ""
+"Oh yes, I know you, Tallin. I have been watching you for a long time. You "
+"are a perfect candidate to become one of my immortal generals."
+msgstr ""
+"O tak, znam się, Tallinie, obserwuję cię już od dłuższego czasu. Jesteś "
+"idealnym kandydatem na jednego z moich nieśmiertelnych generałów."
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:113
+msgid "....!"
+msgstr "....!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:118
+msgid ""
+"Look around you Tallin, see all the power, see all of the wealth, the glory, "
+"the pleasure that the realm of death has to offer. Think of the great empire "
+"of Knalga; it can be yours. Come share it with me!"
+msgstr ""
+"Rozejrzyj się wokół, Tallinie, podziwiaj bogactwo, chwałę i przyjemności, "
+"jakie niesie za sobą życie w krainie śmierci. Pomyśl o potężnym knalgańskim "
+"imperium - ono może być twoje! Będziemy nim rządzić wspólnie!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:124
+msgid "Tallin, are you OK?!"
+msgstr "Tallin, dobrze się czujesz?!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:129
+#, fuzzy
+msgid ""
+"It's very easy, Tallin, see that little vermin by your side? Take out your "
+"knife...... cut his throat .......feel his hot blood pump over your "
+"hands..... sacrifice him to death!"
+msgstr ""
+"Tallin, to bardzo proste. Widzisz tego małego szkodnika u twojego boku? "
+"Wyjmij nóż... poderżnij mu gardło... poczujesz jak jego gorąca krew tryska "
+"na twoje dłonie... złóż go w ofierze śmierci!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:132
+msgid "......die.... you..... little.....dwarf.....vermin!"
+msgstr "... giń... ty... mały... krasnoludzki... szkodniku!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:137
+msgid "Tallin! No!"
+msgstr "Tallin! Nie!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:142
+msgid "Tallin, what are you doing?"
+msgstr "Tallin, co ty robisz?"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:147
+msgid ".....Death!..... Blood!...."
+msgstr "... Śmierci! ... Krwi!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:166
+msgid "Ahhh! Treacherous human! Kill him, men!"
+msgstr "Argh! Podstępny człowiek! Zabić go!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:171
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2135
+msgid "HAHAHAHAHAHAHA!"
+msgstr "HAHAHAHAHAHAHA!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:207
+msgid "What the! Where did he go?"
+msgstr "Co u licha... Gdzie on się podział?"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:212
+msgid "Right here with me, fools! He is mine now."
+msgstr "Tutaj, ze mną, głupcy! Teraz jest mój."
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:241
+msgid ""
+" *Shakes head* I reject your evil. Attack, men! Let us rid the good green "
+"world of this rotting filth!"
+msgstr ""
+"*Kręci głową* Odrzucam twoje zło. Żołnierze, do ataku! Oczyśćmy piękny "
+"zielony świat z tego zgniłego plugastwa!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:245
+msgid ""
+"Aye! That's the way of it, lad! For the murdered dwarves of Knalga! Attack!"
+msgstr ""
+"Ano! Tako należy czynić, mój chłopcze! Za pomordowane krasnoludy z Knalgi! "
+"Do ataku!"
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:250
+msgid "You fool! You will pay for your folly with your life."
+msgstr "Głupcze! Zapłacisz życiem za swą lekkomyślność."
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:255
+msgid "Yeah, right, buddy."
+msgstr "Niedoczekanie, koleś."
+
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:665
 msgid "When the party finally reached the mines they were not disappointed."
 msgstr ""
 "Gdy wyprawa w końcu dotarła do kopalń, ich oczom ukazał się niezwykły widok."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:503
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:671
 #, fuzzy
 msgid "Behold! The Dwarven Mines."
 msgstr "Oto i one! Kopalnie krasnoludów!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:508
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:676
 #, fuzzy
 msgid ""
 "Look at yon canal. Dwarves built it to transport mined metals deeper into "
@@ -1433,7 +1534,7 @@ msgstr ""
 "zachodzie i południowym wschodzie? Gdybyśmy je zdobyli, zyskalibyśmy znaczną "
 "przewagę taktyczną."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:514
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:682
 msgid ""
 "Grim gods of darkness! The whole place is swarming with undead! They have "
 "raised corpses to do their work."
@@ -1441,7 +1542,7 @@ msgstr ""
 "Na posępnych bogów ciemności! Tu się aż roi od nieumarłych! Wskrzesili "
 "umarłych do pracy."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:519
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:687
 msgid ""
 "And they seem to have good security, too. Look, most of the fortifications "
 "are repaired and they have those nasty skeletons everywhere."
@@ -1449,41 +1550,41 @@ msgstr ""
 "Zadbali też o bezpieczeństwo. Patrzcie, odbudowali większość fortyfikacji, a "
 "wszędzie kłębią się te obrzydliwe szkielety."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:525
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:693
 msgid ""
 "Fortunately, this entrance seems to be in disrepair. It doesn't look like "
 "they have noticed us yet."
 msgstr "Na szczęście zaniedbali to wejście. Chyba jeszcze nas nie zauważyli."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:530
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:698
 msgid "WHO GOES THERE?"
 msgstr "KTO IDZIE?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:536
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:704
 msgid "Oops, I spoke too soon."
 msgstr "Oj, chyba nie w porę się odezwałem."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:541
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:709
 msgid " *wince* You can turn the volume down, pal."
 msgstr "*krzywiąc się* Może byś trochę ściszył, kolego?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:546
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:714
 msgid "Maybe he needs a fireball..."
 msgstr "Przydałaby mu się ognista kula..."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:551
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:719
 msgid "YOU DO NOT ANSWER. ALERT THE MASTER!"
 msgstr "NIE ODPOWIADAĆ. ZAWIADOMIĆ PANA!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:567
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:735
 msgid "Who goes there? Ahhh, more slaves, I see."
 msgstr "Kto idzie? Ach, nowi niewolnicy, jak widzę."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:572
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:740
 msgid "Others have made that mistake before. Who are you?"
 msgstr "Inni też popełnili ten błąd. Kim jesteś?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:577
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:745
 msgid ""
 "Who am I? *CACKLES WILDLY* I am Malifor the Great, the master of death! "
 "These tunnels, haunted by the ghosts of the dead dwarves of Knalga, are the "
@@ -1493,14 +1594,14 @@ msgstr ""
 "Moim królestwem są te tunele, nawiedzane przez duchy poległych krasnoludów z "
 "Knalgi."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:582
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:750
 msgid ""
 "You dared disturb the rest of those brave dwarves? You shall pay in blood!"
 msgstr ""
 "Ośmieliłeś się zakłócić wieczny spokój tych dzielnych krasnoludów? Zapłacisz "
 "za to krwią!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:587
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:755
 msgid ""
 "HAHAHAHA! Your petty temper tantrums are most amusing, you puny dwarf. Soon "
 "I will finish the slaughter that the orcs have begun so promisingly, and "
@@ -1512,123 +1613,22 @@ msgstr ""
 "moja! Stąd wyruszę oczyścić całe ziemie Północy ze wszystkich żywych "
 "stworzeń, a potem cała moja potęga spadnie na Wesnoth!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:592
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:760
 msgid ""
 "Quit your ranting, you wretched bag of bones! Prepare to return to the dust!"
 msgstr ""
 "Dość już tej tyrady, ty parszywy worku kości! Przygotuj się na powrót do "
 "prochu!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:597
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:765
 msgid "HAHAHAHAHAHA! Such vast threats from one so small? HAHAHAHA!"
 msgstr "HAHAHAHAHAHA! Wielkie pogróżki jak na tak małego stworka! HAHAHAHA!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:602
-msgid "But my my, what do we have here - Tallin."
-msgstr "Ale ale, co my tu mamy - Tallin!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:608
-msgid "He knows your name, Tallin. I don't like the looks of this."
-msgstr "Tallin, on zna twoje imię. To mi się nie podoba."
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:613
-msgid ""
-"Oh yes, I know you, Tallin. I have been watching you for a long time. You "
-"are a perfect candidate to become one of my immortal generals."
-msgstr ""
-"O tak, znam się, Tallinie, obserwuję cię już od dłuższego czasu. Jesteś "
-"idealnym kandydatem na jednego z moich nieśmiertelnych generałów."
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:618
-msgid "....!"
-msgstr "....!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:623
-msgid ""
-"Look around you Tallin, see all the power, see all of the wealth, the glory, "
-"the pleasure that the realm of death has to offer. Think of the great empire "
-"of Knalga; it can be yours. Come share it with me!"
-msgstr ""
-"Rozejrzyj się wokół, Tallinie, podziwiaj bogactwo, chwałę i przyjemności, "
-"jakie niesie za sobą życie w krainie śmierci. Pomyśl o potężnym knalgańskim "
-"imperium - ono może być twoje! Będziemy nim rządzić wspólnie!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:629
-msgid "Tallin, are you OK?!"
-msgstr "Tallin, dobrze się czujesz?!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:634
-#, fuzzy
-msgid ""
-"It's very easy, Tallin, see that little vermin by your side? Take out your "
-"knife...... cut his throat .......feel his hot blood pump over your "
-"hands..... sacrifice him to death!"
-msgstr ""
-"Tallin, to bardzo proste. Widzisz tego małego szkodnika u twojego boku? "
-"Wyjmij nóż... poderżnij mu gardło... poczujesz jak jego gorąca krew tryska "
-"na twoje dłonie... złóż go w ofierze śmierci!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:637
-msgid "......die.... you..... little.....dwarf.....vermin!"
-msgstr "... giń... ty... mały... krasnoludzki... szkodniku!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:642
-msgid "Tallin! No!"
-msgstr "Tallin! Nie!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:647
-msgid "Tallin, what are you doing?"
-msgstr "Tallin, co ty robisz?"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:652
-msgid ".....Death!..... Blood!...."
-msgstr "... Śmierci! ... Krwi!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:671
-msgid "Ahhh! Treacherous human! Kill him, men!"
-msgstr "Argh! Podstępny człowiek! Zabić go!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:676
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2135
-msgid "HAHAHAHAHAHAHA!"
-msgstr "HAHAHAHAHAHAHA!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:712
-msgid "What the! Where did he go?"
-msgstr "Co u licha... Gdzie on się podział?"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:717
-msgid "Right here with me, fools! He is mine now."
-msgstr "Tutaj, ze mną, głupcy! Teraz jest mój."
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:746
-msgid ""
-" *Shakes head* I reject your evil. Attack, men! Let us rid the good green "
-"world of this rotting filth!"
-msgstr ""
-"*Kręci głową* Odrzucam twoje zło. Żołnierze, do ataku! Oczyśćmy piękny "
-"zielony świat z tego zgniłego plugastwa!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:750
-msgid ""
-"Aye! That's the way of it, lad! For the murdered dwarves of Knalga! Attack!"
-msgstr ""
-"Ano! Tako należy czynić, mój chłopcze! Za pomordowane krasnoludy z Knalgi! "
-"Do ataku!"
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:755
-msgid "You fool! You will pay for your folly with your life."
-msgstr "Głupcze! Zapłacisz życiem za swą lekkomyślność."
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:760
-msgid "Yeah, right, buddy."
-msgstr "Niedoczekanie, koleś."
-
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:769
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:774
 msgid "Clear the Mines"
 msgstr "Oczyść kopalnie"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:812
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:817
 msgid ""
 "HAHAHAHA, you puny weaklings think you can destroy me? FOOLS! You will all "
 "soon be serving me!"
@@ -1636,11 +1636,11 @@ msgstr ""
 "HAHAHAHA! Myślicie, że zdołacie mnie zniszczyć, żałośni słabeusze? GŁUPCY! "
 "Niedługo wszyscy będziecie mi służyć!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:819
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:824
 msgid "Oh no, he just.... disappeared."
 msgstr "O nie, on po prostu... zniknął."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:837
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:842
 #, fuzzy
 msgid ""
 "We have finally secured the mines. But what should we do about that foul "
@@ -1649,7 +1649,7 @@ msgstr ""
 "Nareszcie mamy kontrolę nad kopalniami. Ale co zrobimy z tym podłym liczem? "
 "Zagraża nam wszystkim i musimy się z nim rozprawić."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:842
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:847
 msgid ""
 "Aye! We'll have to lay both his skeletons and himself to final rest before "
 "these caves will be fit for dwarvenkind again."
@@ -1657,7 +1657,7 @@ msgstr ""
 "Ano! Jeśli krasnoludy mają znów bezpiecznie żyć w tych jaskiniach, musimy "
 "odesłać jego i wszystkich jego nieumarłych na wieczny odpoczynek."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:847
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:852
 #, fuzzy
 msgid ""
 "But I'm sore vexed. We need better weapons, Luck and spirit can carry us "
@@ -1666,7 +1666,7 @@ msgstr ""
 "Nadal jednak nęka mnie niepokój. Potrzebujemy lepszej broni - nie możemy bez "
 "końca polegać na samym szczęściu i odwadze."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:852
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:857
 #, fuzzy
 msgid ""
 "Aye. We must do both. I'm thinking it might be best if I muster my folk to "
@@ -1679,11 +1679,11 @@ msgstr ""
 "pościg na liczem. Gdy już się z nim rozprawicie i powrócicie tutaj, "
 "powinniśmy już mieć pierwsze owoce naszego rzemiosła."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:857
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:862
 msgid "So it shall be."
 msgstr "Niech tak będzie."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:867
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:872
 #, fuzzy
 msgid ""
 "With all respect, Lord Hamel, some o' us would like to fare forth with "
@@ -1693,18 +1693,18 @@ msgstr ""
 "Tallinem. Fortuna mu sprzyja - czy raczej potrafi on jej wyroki obracać na "
 "swoją korzyść."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:872
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:877
 msgid ""
 "And so it shall be. You've my leave and welcome. Try to keep the lad safe..."
 msgstr ""
 "Niechaj tak będzie. Macie moje pozwolenie i przychylność. Uważajcie, by temu "
 "młodzieńcowi nic się nie stało..."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:877
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:882
 msgid "Thank you, Lord Hamel."
 msgstr "Dziękuję, Lordzie Hamel."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:905
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:910
 msgid ""
 "These little vermin are making progress! This is unacceptable. Rise my "
 "minions - gorge on the flesh of these scurrying little rats!"
@@ -1712,7 +1712,7 @@ msgstr ""
 "Te małe szkodniki posuwają się coraz dalej! Tak być nie może. Powstańcie, "
 "moi słudzy, pożywcie się mięsem tych nędznych szczurów!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:927
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:932
 msgid ""
 "Look out everyone, something is coming out of the canals! Already the water "
 "is churning and clogging with their filth. Get back and brace yourselves."
@@ -1720,15 +1720,15 @@ msgstr ""
 "Uwaga, coś wychodzi z tych kanałów! Już teraz woda mętnieje i pieni się od "
 "tego plugastwa. Cofnijcie się i przygotujcie do walki."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:985
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:990
 msgid "FOOOOOOOD!"
 msgstr "JEDZEEEENIE!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:991
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:996
 msgid "Holly Lords of Light, what kind of vile creation are those things!"
 msgstr "Na świętych władców światłości, co to za odrażające stworzenia?!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:1002
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:1007
 msgid ""
 "Out of all of a necromancer's creations, I must say those things are the "
 "most tortured and vilest. They have an insatiable hunger for flesh and "
@@ -1740,7 +1740,7 @@ msgstr ""
 "do niego dążyć nie zważając na zadawane im ciosy. Nawet moje ogniste kule "
 "zadają im nieco mniejsze obrażenia."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:1007
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:1012
 msgid ""
 "Oh, and try to stay away from their claws. If you get even one scratch, and "
 "don't get it treated quickly, you will soon find yourself week, sick and "
@@ -1749,7 +1749,7 @@ msgstr ""
 "A, i uważajcie na ich pazury. Wystarczy jedno nieopatrzone draśnięcie, a "
 "wkrótce będziesz słaby, chory i niezdolny do dalszej walki."
 
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:1014
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:1019
 msgid ""
 "Pah! They look like fat slugs to me. Come on boys, lets chop them to pieces "
 "before they can leave the canal."
@@ -4421,7 +4421,7 @@ msgstr ""
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:580
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1082
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:795
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:794
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:1039
 msgid " *snicker*"
 msgstr ""
@@ -4842,10 +4842,10 @@ msgstr "Uratuj księżniczkę"
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:999
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:194
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:440
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:726
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1229
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1397
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1472
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:725
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1228
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1396
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1471
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:771
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:796
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:821
@@ -4859,10 +4859,10 @@ msgstr "Śmierć Ro'Arthiana"
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:1003
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:198
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:444
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:730
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1233
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1401
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1476
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:729
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1232
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1400
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1475
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:775
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:800
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:825
@@ -6315,354 +6315,354 @@ msgstr "Glu"
 
 #: data/campaigns/Northern_Rebirth/scenarios/11a_Eastern_Flank.cfg:236
 #: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:580
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:833
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1266
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:832
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1265
 msgid "Hidel"
 msgstr "Hidel"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:671
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:670
 msgid "Upon emerging from the tunnels, the party found themselves surrounded."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:677
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:676
 #, fuzzy
 msgid "Haha, suckers! We got you now!"
 msgstr "Mamy twoje klucze. Nie możesz się teraz przed nami ukryć."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:682
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:681
 msgid "Hahaha! They walked right into our trap."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:687
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:686
 msgid "And we have already sent the gold ahead to the Master!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:692
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:691
 msgid "Now let's make mush out of these puny creatures!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:697
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:696
 #, fuzzy
 msgid "Oh no, we are surrounded!"
 msgstr "O nie! Co powinniśmy uczynić?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:702
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:701
 msgid "Heart shall be the harder as our strength lessens. Kill them all!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:707
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:706
 #, fuzzy
 msgid "Yeeeahhhh! I like it!"
 msgstr "Nie wierzę, że to ma się tak skończyć!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:713
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:712
 msgid "Defeat the enemy leaders or"
 msgstr "Pokonaj wrogich przywódców lub"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:717
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1220
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:716
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1219
 msgid "Resist as long as you can"
 msgstr "Stawiaj opór tak długo, jak możesz"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:755
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:754
 #, fuzzy
 msgid "Pew, they are defeated at last."
 msgstr "Nieumarli lordowie zostali wreszcie pokonani."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:760
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:759
 msgid "Hidel, let me introduce to you my saviour: Tallin."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:765
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:764
 #, fuzzy
 msgid "It is an honor to meet you Tallin."
 msgstr "Służenie ci, panie, to dla mnie przyjemność i wielki zaszczyt."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:770
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:769
 #, fuzzy
 msgid "The honor is mine, sir."
 msgstr ""
 "Howgh! Jeśli $outlaw_name mówi, że jesteś jego przyjacielem, to jesteś też "
 "moim."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:775
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:774
 msgid ""
 "We have heard much of your intelligence and courage. The number of humans "
 "over the centuries who have earned the respect and admiration of the "
 "Northern Elves extremely few, but let it be known that you are one of them."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:780
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:779
 msgid ""
 "I am honored sir, and I hope that I will live up to the trust that the "
 "Northern Elves have bestowed upon me."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:785
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:784
 msgid "I am sure you will Tallin. The trust of the elves is seldom misplaced."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:790
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:789
 msgid "If you guys are quite finished exchanging pleasantries..."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:800
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:799
 msgid ""
 "...the road ahead is clear and I am eager to blast some more orcs. Shall we "
 "proceed?"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:805
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:804
 #, fuzzy
 msgid "Right. Onward men!"
 msgstr "Racja. Czekaj, chyba je znalazłem."
 
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:705
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:852
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:851
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:154
 msgid "Sisal"
 msgstr "Sisal"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:899
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:898
 msgid ""
 "Princess! We have finally found you! Thank god you are free! Your father had "
 "originally sent us to rescue you."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:904
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:903
 msgid ""
 "Yes, or so I have heard. You honor me, but this brave man reached the mark "
 "before you."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:909
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:908
 #, fuzzy
 msgid "You must be the famous Tallin."
 msgstr "Popatrz! To muszą być elfy!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:914
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:913
 #, fuzzy
 msgid "At your service."
 msgstr "Wyświetlanie okienka informującego o rozpoczęciu twojej tury"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:919
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:918
 msgid ""
 "We have heard much of your intelligence and courage. The number of humans "
 "over the centuries who have earned the respect and admiration of the "
 "Northern Elves extremely few, but you are one of them."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:924
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:923
 msgid ""
 "I am honored, sir, and I hope that I will live up to the trust that the "
 "Northern Elves have bestowed upon me."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:929
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:928
 msgid ""
 "I am sure you will, Tallin. The trust of the elves is seldom misplaced. Also "
 "know that the Northern Enclaves will always be open to you."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:934
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:933
 #, fuzzy
 msgid "Thank you, sir."
 msgstr "Ale sierżancie, za panem..."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:939
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:938
 #, fuzzy
 msgid "What is the status of our troops, Hidel?"
 msgstr "Ja również. Ale co się dzieje w naszej wsi?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:944
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:943
 msgid ""
 "They are all here, princess! Hand picked by your father - the finest and "
 "bravest elvish troops in the entire Northlands."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:949
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:948
 msgid ""
 "Excellent! We shall assist Tallin to the fullest in crushing the orcish "
 "host. Not only are we in debt to him but by doing so we will be serving our "
 "cause as well as we serve his."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:954
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:953
 #, fuzzy
 msgid "As you wish, princess."
 msgstr "Ojcze, żałuję, że cię tu nie ma..."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:959
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:958
 msgid "Very well, people. The road ahead is clear, onward to victory!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1005
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1004
 msgid " *sniff sniff*"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1010
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1009
 #, fuzzy
 msgid "What's up big guy?"
 msgstr "Sie masz, Bjarn? Cóż to za zamieszanie?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1015
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1014
 msgid " *flap flap flap*"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1052
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1051
 #, fuzzy
 msgid "Hey! Where is he going?"
 msgstr "Gdzie jest Delfador? Mam nadzieję że jest bezpieczny!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1057
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1056
 msgid "Krash man, you are gonna miss all the fun!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1062
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1061
 msgid "I think he has decided that it is time for him to part ways with us."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1067
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1066
 msgid "Such a fierce yet gentle creature. He will be sorely missed."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1072
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1071
 msgid "Farewell, Krash, may the lords of light guide your path."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1111
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1110
 msgid "Singe"
 msgstr "Singe"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1123
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1122
 #, fuzzy
 msgid "Bak'man"
 msgstr "Człowiek-krab"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1131
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1130
 msgid "Halk"
 msgstr "Halk"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1146
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1145
 #, fuzzy
 msgid "Hey! Look who's back!"
 msgstr "Spójrz, więcej mrówek!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1153
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1152
 msgid "And look, he brought his friends too!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1158
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1157
 msgid "GRRRRRRR!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1163
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1162
 msgid "ROOOAAARRRR!!!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1168
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1167
 msgid "Hurry, friends, let's set up camp!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1173
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1172
 msgid "Yeah, man! I knew we could count on you!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1178
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1177
 msgid ""
 "Hmmm, he must have smelled the scent of other drakes and gone to them to "
 "convince them to help us."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1183
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1182
 #, fuzzy
 msgid "Awww, what a darling!"
 msgstr "Co to jest?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1188
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1187
 #, fuzzy
 msgid "Tell that to the trolls."
 msgstr "Na północy. Więcej nie jestem w stanie stwierdzić."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1193
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1192
 #, fuzzy
 msgid "What! Drakes! Fire! Ahhhhhh!"
 msgstr "Berło Ognia? Co to takiego?"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1198
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1197
 #, fuzzy
 msgid "Shut your mouth, you coward!"
 msgstr "Dziękuję za twoją uprzejmość."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1216
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1215
 #, fuzzy
 msgid "Help Tallin defeat the enemy leaders or"
 msgstr "Pokonaj wrogich dowódców, znajdź oba klucze."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1331
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1330
 #, fuzzy
 msgid "Princess! We have finally found you!"
 msgstr "(wyczerpany) W końcu... (dyszy) was znaleźliśmy!"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1336
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1335
 msgid "Good work, Hidel! How do your forces march?"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1341
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1340
 msgid ""
 "They are all here, princess! Hand picked by your father - the finest and "
 "bravest elvish troops in the entire Northlands. We will follow you to the "
 "end of the world if need be."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1346
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1345
 msgid ""
 "Very good. Or first task is to give brave Tallin here full support in "
 "defeating these trolls."
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1351
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1350
 msgid "With pleasure, Princess! Quickly men, set up a base!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1368
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1367
 msgid ""
 "Oh no! Those blasted elves have just joined forces with the humans! This is "
 "hopeless! Flee! Flee!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1373
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1448
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1372
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1447
 msgid "Hmmm, should we let the trolls run away or should we finish them now?"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1376
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1451
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1375
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1450
 msgid "Hey! Stand your ground, you cowards!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1381
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1380
 msgid "You are a fool, human! We shall crush and destroy you!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1388
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1387
 #, fuzzy
 msgid "Help Tallin defeat the enemy leaders"
 msgstr "Pokonaj wszystkich wrogich przywódców (premia)"
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1414
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1489
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1413
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1488
 #, fuzzy
 msgid "Haha! Look at them run!"
 msgstr "Ani trochę nie podoba mi się wygląd tej sadzawki."
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1443
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1442
 msgid ""
 "Oh no! The elves have just given the humans a hoard of gold! This is "
 "hopeless! Flee! Flee!"
 msgstr ""
 
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1456
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1455
 msgid "You are a fool, human! Watch how we will crush and destroy you!"
 msgstr ""
 
@@ -6671,7 +6671,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:940
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:965
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:990
-#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1463
+#: data/campaigns/Northern_Rebirth/scenarios/10a_Stolen_Gold.cfg:1462
 #, fuzzy
 msgid "Defeat the enemy leaders"
 msgstr "Pokonaj wrogich przywódców"

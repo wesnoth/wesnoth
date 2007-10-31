@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-26 15:26+0200\n"
+"POT-Creation-Date: 2007-10-31 20:52+0100\n"
 "PO-Revision-Date: 2007-10-10 12:36+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -158,10 +158,10 @@ msgstr ""
 #: data/core/units/drakes/Armageddon.cfg:83
 #: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:44
-#: data/core/units/undead/Corpse_Necrophage.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:55
 #: data/core/units/undead/Spirit_Shadow.cfg:29
-#: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Ghoul.cfg:28
 msgid "claws"
 msgstr "Klauen"
 
@@ -208,6 +208,7 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:80
 #: data/core/units/drakes/Blademaster.cfg:68
 #: data/core/units/drakes/Clasher.cfg:79
+#: data/core/units/humans/Woodsman_Ranger.cfg:37
 #: data/core/units/humans/Loyalist_Longbowman.cfg:26
 #: data/core/units/humans/Loyalist_General.cfg:45
 #: data/core/units/humans/Loyalist_Sergeant.cfg:34
@@ -219,7 +220,6 @@ msgstr ""
 #: data/core/units/humans/Horse_Knight.cfg:25
 #: data/core/units/humans/Horse_Paladin.cfg:40
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:35
 #: data/core/units/humans/Loyalist_Cavalier.cfg:38
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
@@ -646,12 +646,12 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:41
 #: data/core/units/dwarves/Thunderguard.cfg:25
 #: data/core/units/humans/Outlaw_Assassin.cfg:30
-#: data/core/units/humans/Outlaw_Poacher.cfg:36
 #: data/core/units/humans/Outlaw_Rogue.cfg:29
+#: data/core/units/humans/Woodsman_Trapper.cfg:76
 #: data/core/units/humans/Outlaw_Thief.cfg:178
 #: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Huntsman.cfg:32
-#: data/core/units/humans/Outlaw_Trapper.cfg:76
+#: data/core/units/humans/Woodsman_Huntsman.cfg:37
+#: data/core/units/humans/Woodsman_Poacher.cfg:36
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
 msgid "dagger"
@@ -940,14 +940,14 @@ msgstr ""
 #: data/core/units/elves/Captain.cfg:45 data/core/units/elves/Rider.cfg:43
 #: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Champion.cfg:32
 #: data/core/units/elves/Fighter.cfg:32
-#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/humans/Woodsman_Trapper.cfg:85
+#: data/core/units/humans/Woodsman_Ranger.cfg:46
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:44
+#: data/core/units/humans/Woodsman_Huntsman.cfg:46
+#: data/core/units/humans/Woodsman_Poacher.cfg:45
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/humans/Outlaw_Huntsman.cfg:41
-#: data/core/units/humans/Outlaw_Trapper.cfg:85
 #: data/core/units/undead/Skeleton_Archer.cfg:42
 #: data/core/units/undead/Skele_Banebow.cfg:41
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:40
@@ -2819,6 +2819,30 @@ msgstr "Schleuder"
 msgid "female^Outlaw"
 msgstr "Geächtete"
 
+#: data/core/units/humans/Outlaw.cfg:114
+#, fuzzy
+msgid ""
+"female^After some years of service, former 'footpads' rise up in the ranks "
+"of their fellow outlaws. Having proven themselves in combat, they are given "
+"more dangerous tasks, and a greater share of the spoils. Though many "
+"opponents would mock their choice of weaponry, the outlaws are well aware of "
+"its deadly capacity, and also of the ready availability of ammunition. "
+"Outlaws are somewhat ill at ease fighting during the day, preferring the "
+"cover of nightfall."
+msgstr ""
+"Nach einigen Jahren der niederen Dienste, steigen einige der Straßenräuber "
+"in den Rang von Geächteten auf. Da sie schon wiederholt ihr Können bei "
+"kleineren Beutezügen gezeigt haben, überträgt die Gilde nun größere Aufgaben "
+"an sie oder erlaubt es ihnen sogar, eine Gruppe von Straßenräubern in einem "
+"Beutezug anzuführen. Bogenschützen und Krieger brechen über die Wahl ihrer "
+"Waffen in schallendes Gelächter aus, doch wenn sie ihnen bei Nacht "
+"gegenüberstehen, ändert sich das oftmals schlagartig. Wo ein Bogenschütze "
+"ohne Pfeile fast wehrlos ist, liegt die Munition der Geächteten praktisch "
+"auf jeder Straße. Doch versteckt er sich bei Anbruch des Tages lieber, um "
+"von den Vertretern des Gesetzes nicht gefunden zu werden. Denn meist ist ein "
+"hohes Kopfgeld auf ihn ausgesetzt und den hohen Herren genügt es, einzig den "
+"Kopf zu sehen, um diesen Preis zu zahlen."
+
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "Attentäter"
@@ -2909,34 +2933,58 @@ msgstr "Keule"
 msgid "female^Footpad"
 msgstr "Straßenräuberin"
 
+#: data/core/units/humans/Outlaw_Footpad.cfg:168
+#, fuzzy
+msgid ""
+"female^These petty criminals are often derisively called 'footpads' by their "
+"superiors, for they are tasked with any job that requires a great deal of "
+"running around, often being employed as couriers, or scouts. The endurance "
+"and agility they gain from this serves them well in combat, and despite "
+"their inferior weaponry they are quite good at harrying their enemies, "
+"especially under cover of darkness."
+msgstr ""
+"Diese Kleinkriminellen werden von den angeseheneren Mitgliedern der "
+"Diebesgilde nicht als Straßenräuber, sondern eher als Laufburschen "
+"angesehen. An sie werden meist jene Aufgaben übertragen, die viel Laufarbeit "
+"erfordern, wie beispielsweise Botendienste oder das Auskundschaften von "
+"neuen Zielen. Da sie gut zu Fuß sind, werden sie weit weniger von Gardisten "
+"aufgegriffen, als andere Schurken. Trotz allem stellen sie, dank ihrer wenig "
+"durchschlagskräftigen Waffen, für einen Krieger keine ernstzunehmende Gefahr "
+"da. Sie sind eher lästig, wie eine Fliege, die ständig um einen herum "
+"fliegt. In größeren Gruppen jedoch und vor allem des Nachts können sie zu "
+"einer ziemlichen Bedrohung für einen jeden Geldbeutel werden."
+
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr "Vagant"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
+#, fuzzy
 msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture. Dangerous and ruthless, they "
-"can be fearful in their element but no real match for professional law "
-"enforcment forces."
+"Veteran criminals become notorious for both their ruthlessness and ability "
+"to elude capture. They can be dangerous and rightly fearful in their "
+"element, but are no match for the sheer numbers that law-abiding soldiery "
+"can throw at them."
 msgstr ""
 "Vaganten bekleiden meist den Posten eines Bandenführers, da sie über genug "
 "Erfahrung und kriminelle Energie verfügen. Bei ihnen paaren sich "
 "Ruchlosigkeit, Gefährlichkeit und Intelligenz zu einer gefährlichen Mischung."
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:111
+#: data/core/units/humans/Outlaw_Fugitive.cfg:112
 msgid "female^Fugitive"
 msgstr "Vagantin"
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:114
+#: data/core/units/humans/Outlaw_Fugitive.cfg:115
+#, fuzzy
 msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture. Beautiful and dangerous, their "
-"beauty is exceeded only by their dangerousness."
+"female^Veteran criminals become notorious for both their ruthlessness and "
+"ability to elude capture. They can be dangerous and rightly fearful in their "
+"element, but are no match for the sheer numbers that law-abiding soldiery "
+"can throw at them."
 msgstr ""
-"Vagantinen bekleiden meist den Posten einer Bandenführerin, da sie über "
-"genug Erfahrung und kriminelle Energie verfügen. Bei ihnen paaren sich "
-"Schönheit, Gefährlichkeit und Intelligenz zu einer gefährlichen Mischung."
+"Vaganten bekleiden meist den Posten eines Bandenführers, da sie über genug "
+"Erfahrung und kriminelle Energie verfügen. Bei ihnen paaren sich "
+"Ruchlosigkeit, Gefährlichkeit und Intelligenz zu einer gefährlichen Mischung."
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
@@ -2949,65 +2997,6 @@ msgid ""
 msgstr ""
 "Ausgerüstet mir Streitkolben sind Straßenräuber die letzten Leute, denen man "
 "des Nachts auf einer verlassenen Straße begegnen möchte."
-
-#: data/core/units/humans/Outlaw_Huntsman.cfg:5
-msgid "Huntsman"
-msgstr "Waidmann"
-
-#: data/core/units/humans/Outlaw_Huntsman.cfg:19
-msgid ""
-"Huntsmen have spent their lives in the backwoods and swamps of their "
-"wilderness homes. They track anything that moves in their territory, "
-"including people. Bandit gangs hire them for their ability to bring down any "
-"prey."
-msgstr ""
-"Jäger haben den größten Teil ihres Lebens in den tiefen Wäldern und Sümpfen "
-"der Wildnis, die ihre Heimat ist, verbracht. Sie sind in der Lage einer "
-"Sumpfratte das Auge aus zu schießen und verfolgen die Spuren von allem, was "
-"sich in ihrem Gebiet bewegt."
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:4
-msgid "Poacher"
-msgstr "Wilddieb"
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:22
-msgid ""
-"Though not trained as warriors, the skills possessed by a hunter (especially "
-"those of archery) are useful in battle. Any group of bandits will need a few "
-"poachers in their employ, not merely for hunting but for lending a hand in "
-"any serious fight.\n"
-"\n"
-"Because of their experience, these hunters are unusually capable at night, "
-"and in forests and swamps."
-msgstr ""
-"Obwohl sie nicht als Krieger ausgebildet sind, können die Fertigkeiten eines "
-"Jägers, im besonderen die Kunst des Bogenschießens, im Kampfe nützlich sein. "
-"Diese Fertigkeiten gegen die eigenen Leute einzusetzen, kann vielerlei "
-"Gründe haben. Vielleicht war die letzte Jagd schlecht oder das Gold, was man "
-"ihnen geboten hat, war höher, als das, was ihnen ihr früherer Herr zahlte, "
-"um im Wald nach dem Rechten zu sehen. Eine Bande von Banditen ist immer auf "
-"einige Wilddiebe in ihren Reihen angewiesen, sei es nun dass sie ihnen das "
-"Fleisch für das Abendmahl beschaffen oder mit ihren Bögen im Kampf zur Seite "
-"stehen.\n"
-"\n"
-"Durch ihre frühere Erfahrung bewegen sich Wilddiebe sehr geschickt durch "
-"Wälder und Sümpfe und sind den Kampf und die Jagd in der Nacht gewöhnt."
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:5
-msgid "Outlaw Ranger"
-msgstr "Pelzjäger"
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:19
-msgid ""
-"Rangers are wild men and masters of forest and hills. They are excellent "
-"trackers, scouts, and archers, moving freely through the countryside under "
-"the cover of night. Most rulers are afraid of rangers and would rather put "
-"them in the dungeon than put their abilities to use."
-msgstr ""
-"Pelzjäger stellen die letzte Stufe der Ruchlosigkeit im Bezug auf "
-"Wildverbrechen da. Während Ihre Kameraden nur Tiere töten, um zu überleben, "
-"interessiert den Pelzjäger nur der Pelz des erlegten Tieres, um diesen für "
-"gutes Geld zu verkaufen."
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
@@ -3117,29 +3106,6 @@ msgstr ""
 "wurden. Strolche schließen sich oft mit anderen Schurken zusammen, um sich "
 "mit diversen Verbrechen über Wasser zu halten."
 
-#: data/core/units/humans/Outlaw_Trapper.cfg:4
-msgid "Trapper"
-msgstr "Fallensteller"
-
-#: data/core/units/humans/Outlaw_Trapper.cfg:27
-msgid ""
-"Master woodsmen are useful allies to any army, and indispensable for any "
-"sizable group of bandits. They can track both man and beast, notice things "
-"most others would overlook, and are often the only ones who can find food "
-"for the table, be it animal or vegetable.\n"
-"\n"
-"Their skill at hunting is very useful in combat, and also leaves them "
-"unusually competent at night, and in forests and swamps."
-msgstr ""
-"Fallensteller sind sowohl für eine Armee umso mehr für eine Gruppe Banditen "
-"überlebenswichtig. Sie können Menschen und Tiere stellen, da ihnen oft Dinge "
-"ins Auge stechen, die andere einfach nicht bemerken und sind meist die "
-"einzigen, die Nahrung, seien es nun Tiere oder Früchte, finden können.\n"
-"\n"
-"Ihre Kenntnis der Jagd erweisen sich als nützlich im Kampf. Zudem sind sie "
-"an nächtliche Verhältnisse gewöhnt, sowie die Durchquerung von Wald und "
-"Sumpf."
-
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "Bauer"
@@ -3172,6 +3138,102 @@ msgid ""
 msgstr ""
 "Förster verdingen sich als Jäger, Holzfäller, Köhler oder mit anderen "
 "Tätigkeiten um sich durchs Leben zu schlagen."
+
+#: data/core/units/humans/Woodsman_Huntsman.cfg:5
+msgid "Huntsman"
+msgstr "Waidmann"
+
+#: data/core/units/humans/Woodsman_Huntsman.cfg:23
+msgid ""
+"Hunting is a popular sport of noblemen, but it can also be a livelihood for "
+"commoners.  Like any other craft, it has men of masterful skill in its "
+"practice.  Huntsmen know all the tricks of their trade, and are skilled at "
+"navigating the wilderness, at tracking, and at the use of the bow.  They are "
+"a fair shot at moving targets, and targets hiding under brush and cover; a "
+"skill wrought from years of practice at shooting game, and one which "
+"garrisoned bowmen often lack.\n"
+"\n"
+"Master hunters are employed by any group living in or passing through wild "
+"country, be they men of the law, or those working against it.  Even nature "
+"itself can have deadly surprises, and any commander who fails to hire a such "
+"a guide can lose his men to nothing more than terrain.  Good woodsmen can "
+"save lives, ease travel, provide food, and their skill with a bow is "
+"capitally useful in a fight.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Poacher.cfg:4
+msgid "Poacher"
+msgstr "Wilddieb"
+
+#: data/core/units/humans/Woodsman_Poacher.cfg:22
+#, fuzzy
+msgid ""
+"Though not trained as warriors, the skills possessed by a hunter (especially "
+"those of archery) are useful in battle. Any group of soldiers or bandits "
+"travelling through the wild will need a few poachers in their employ, not "
+"merely for hunting but for lending a hand in any serious fight.\n"
+"\n"
+"Because of their experience, these hunters are unusually capable at night, "
+"and in forests and swamps."
+msgstr ""
+"Obwohl sie nicht als Krieger ausgebildet sind, können die Fertigkeiten eines "
+"Jägers, im besonderen die Kunst des Bogenschießens, im Kampfe nützlich sein. "
+"Diese Fertigkeiten gegen die eigenen Leute einzusetzen, kann vielerlei "
+"Gründe haben. Vielleicht war die letzte Jagd schlecht oder das Gold, was man "
+"ihnen geboten hat, war höher, als das, was ihnen ihr früherer Herr zahlte, "
+"um im Wald nach dem Rechten zu sehen. Eine Bande von Banditen ist immer auf "
+"einige Wilddiebe in ihren Reihen angewiesen, sei es nun dass sie ihnen das "
+"Fleisch für das Abendmahl beschaffen oder mit ihren Bögen im Kampf zur Seite "
+"stehen.\n"
+"\n"
+"Durch ihre frühere Erfahrung bewegen sich Wilddiebe sehr geschickt durch "
+"Wälder und Sümpfe und sind den Kampf und die Jagd in der Nacht gewöhnt."
+
+#: data/core/units/humans/Woodsman_Ranger.cfg:5
+#, fuzzy
+msgid "Ranger"
+msgstr "Dolch"
+
+#: data/core/units/humans/Woodsman_Ranger.cfg:21
+msgid ""
+"Rangers are wild men and wanderers, who have chosen to shun the company of "
+"their fellow men for myriad reasons. They have spent the better part of "
+"their lives in the thick of nature, and know many of its secrets.  They are "
+"excellent pathfinders and explorers, and can find food and shelter where "
+"other men would find only sticks and stones.\n"
+"\n"
+"The presence of these men troubles the more authoritarian of rulers; they "
+"are an element that knights and landed armies cannot control.  They are men "
+"of dubious motives, and are the first to scoff at any royal decree, if they "
+"even hear of it at all.  Rangers can be hired, but they are just as likely "
+"to be in the employ of bandits, as they are to be in the king's service."
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Trapper.cfg:4
+msgid "Trapper"
+msgstr "Fallensteller"
+
+#: data/core/units/humans/Woodsman_Trapper.cfg:27
+#, fuzzy
+msgid ""
+"Master woodsmen are useful allies to any army, and indispensable for any "
+"sizable group of people living in the wilderness. They can track both man "
+"and beast, notice things most others would overlook, and are often the only "
+"ones who can find food for the table, be it animal or vegetable.\n"
+"\n"
+"Their skill at hunting is very useful in combat, and also leaves them "
+"unusually competent at night, and in forests and swamps."
+msgstr ""
+"Fallensteller sind sowohl für eine Armee umso mehr für eine Gruppe Banditen "
+"überlebenswichtig. Sie können Menschen und Tiere stellen, da ihnen oft Dinge "
+"ins Auge stechen, die andere einfach nicht bemerken und sind meist die "
+"einzigen, die Nahrung, seien es nun Tiere oder Früchte, finden können.\n"
+"\n"
+"Ihre Kenntnis der Jagd erweisen sich als nützlich im Kampf. Zudem sind sie "
+"an nächtliche Verhältnisse gewöhnt, sowie die Durchquerung von Wald und "
+"Sumpf."
 
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
@@ -4422,7 +4484,7 @@ msgstr ""
 msgid "Ghoul"
 msgstr "Ghul"
 
-#: data/core/units/undead/Corpse_Ghoul.cfg:22
+#: data/core/units/undead/Corpse_Ghoul.cfg:23
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. The "
@@ -4451,7 +4513,7 @@ msgstr ""
 msgid "Necrophage"
 msgstr "Leichenfresser"
 
-#: data/core/units/undead/Corpse_Necrophage.cfg:22
+#: data/core/units/undead/Corpse_Necrophage.cfg:23
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -4477,7 +4539,7 @@ msgstr ""
 msgid "Soulless"
 msgstr "Seelenloser"
 
-#: data/core/units/undead/Corpse_Soulless.cfg:23
+#: data/core/units/undead/Corpse_Soulless.cfg:22
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -4496,11 +4558,11 @@ msgstr ""
 "\n"
 "Anmerkung:"
 
-#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Corpse_Walking.cfg:49
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:37
 #: data/core/units/undead/Spirit_Ghost.cfg:26
 #: data/core/units/undead/Necro_Lich.cfg:36
-#: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Corpse_Soulless.cfg:47
 msgid "touch"
 msgstr "Berührung"
 
@@ -4508,7 +4570,7 @@ msgstr "Berührung"
 msgid "Walking Corpse"
 msgstr "Wandelnde Leiche"
 
-#: data/core/units/undead/Corpse_Walking.cfg:23
+#: data/core/units/undead/Corpse_Walking.cfg:22
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -4605,6 +4667,37 @@ msgstr "Frostwelle"
 msgid "female^Dark Adept"
 msgstr "Dunkle Adeptin"
 
+#: data/core/units/undead/Necro_Dark_Adept.cfg:207
+#, fuzzy
+msgid ""
+"female^To attract any practitioners, the lure of black magic must be a great "
+"prize indeed, for anyone caught practicing the art in the civilized world is "
+"subject to a death sentence. And yet there are those who pursue this art, "
+"for the prize offered is nothing less than immortality. Hidden away in "
+"secret cults, or initiated into the dark orders of the underworld, the "
+"training which these fanatics must endure often drives them to exhaustion "
+"and enfeeblement.\n"
+"\n"
+"In such condition, their only weapon is the craft they have so committed "
+"themselves to learning.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Da sich immer wieder neue Schüler dem Kreis der Nekromanten anschließen, "
+"muss die Macht, die man durch das Erlernen der schwarzen Magie erlangt, so "
+"verlockend sein, dass diese selbst ihr Leben dafür riskieren. Denn jeden, "
+"dem man das Benutzen dieser Magierichtung nachweisen kann, erwartet in der "
+"zivilisierten Welt die Todesstrafe. Diejenigen, denen es gelungen ist, einem "
+"der schwarzmagischen Zirkel beizutreten, erwartet eine Ausbildung, die sie "
+"körperlich meist vollkommen auszehrt und an den Rand der vollkommenen "
+"Erschöpfung bringt. Viele Schüler überleben einzig dadurch, dass ihre Gier "
+"nach Macht stärker ist, als alles, was ihre Lehrmeister ihnen abverlangen.\n"
+"\n"
+"In diesem Zustand, in dem sie kaum mehr als eine Hülle sind, können sie sich "
+"nur mit den bisher erlernten Zaubersprüchen verteidigen.\n"
+"\n"
+"Anmerkung:"
+
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "Schwarzer Magier"
@@ -4650,6 +4743,45 @@ msgstr ""
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:179
 msgid "Dark Sorceress"
 msgstr "Schwarze Magierin"
+
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:186
+#, fuzzy
+msgid ""
+"The dread inspired by black magic comes chiefly from how little is known "
+"about it by the common man. Dark sorceresses have begun to unlock the "
+"secrets of life and death, the latter of which is all too easy to inflict. "
+"This labor gives the first glimmerings of the connection between the soul "
+"and inert matter, and the first successful experiments in manipulating this "
+"bond. The terrible unknown that lurks beyond death is glimpsed, and will "
+"inevitably be fathomed.\n"
+"\n"
+"Despite any design they may have of using this to wrest their own "
+"immortality from nature's grasp, the first results of their work have "
+"immediate, and unpleasant applications. The life they breathe into dead "
+"matter can create servants for them, servants which will work, but which "
+"will also kill, and will never question their mistress. These creations have "
+"a loyalty any tyrant would dream of, and it is tempting to those with even "
+"the merest desire for power.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"Seit jeher sind die Magier von Wesnoth auf der Suche, nach dem Geheimnis des "
+"ewigen Lebens. Der erste Schritt den Tod zu überwinden, sollte mit den "
+"Künsten der Nekromantie - das Erwecken von Toten - erreicht werden. "
+"Schließlich stellte sich aber heraus, dass diese Magierichtung die "
+"Erwartungen nicht erfüllte. Zwar konnte man die Toten wieder zum Leben "
+"erwecken, jedoch waren die Wiedererweckten danach nicht mehr als "
+"Marionetten. Ihnen fehlte der eigene Wille, dem jeden Lebewesen inne ist. "
+"Als die Magier erkannten, was diese Kunst in den falschen Händen anrichten "
+"konnte, vernichten sie alle Aufzeichnungen über ihre Versuche und ließen die "
+"Nutzung der Nekromantie im ganzen Land verbieten.\n"
+"\n"
+"Jedoch wollten sich einige Magier nicht von dieser Macht trennen und so "
+"verschwanden sie mit ihren Unterlagen in Gebiete fernab der Zivilisation. "
+"Sie schlossen sich bald in einem eigenen Zirkel zusammen und begannen damit, "
+"im Verborgenen Zöglinge anzuwerben und auszubilden.\n"
+"\n"
+"Anmerkung:"
 
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
@@ -5178,6 +5310,40 @@ msgstr ""
 "hüten, etwas zu tun, was sie erzürnen könnte.\n"
 "\n"
 "Anmerkung:"
+
+#~ msgid ""
+#~ "Veteran criminals become notorious among the authorities for both their "
+#~ "battle prowess and ability to elude capture. Beautiful and dangerous, "
+#~ "their beauty is exceeded only by their dangerousness."
+#~ msgstr ""
+#~ "Vagantinen bekleiden meist den Posten einer Bandenführerin, da sie über "
+#~ "genug Erfahrung und kriminelle Energie verfügen. Bei ihnen paaren sich "
+#~ "Schönheit, Gefährlichkeit und Intelligenz zu einer gefährlichen Mischung."
+
+#~ msgid ""
+#~ "Huntsmen have spent their lives in the backwoods and swamps of their "
+#~ "wilderness homes. They track anything that moves in their territory, "
+#~ "including people. Bandit gangs hire them for their ability to bring down "
+#~ "any prey."
+#~ msgstr ""
+#~ "Jäger haben den größten Teil ihres Lebens in den tiefen Wäldern und "
+#~ "Sümpfen der Wildnis, die ihre Heimat ist, verbracht. Sie sind in der Lage "
+#~ "einer Sumpfratte das Auge aus zu schießen und verfolgen die Spuren von "
+#~ "allem, was sich in ihrem Gebiet bewegt."
+
+#~ msgid "Outlaw Ranger"
+#~ msgstr "Pelzjäger"
+
+#~ msgid ""
+#~ "Rangers are wild men and masters of forest and hills. They are excellent "
+#~ "trackers, scouts, and archers, moving freely through the countryside "
+#~ "under the cover of night. Most rulers are afraid of rangers and would "
+#~ "rather put them in the dungeon than put their abilities to use."
+#~ msgstr ""
+#~ "Pelzjäger stellen die letzte Stufe der Ruchlosigkeit im Bezug auf "
+#~ "Wildverbrechen da. Während Ihre Kameraden nur Tiere töten, um zu "
+#~ "überleben, interessiert den Pelzjäger nur der Pelz des erlegten Tieres, "
+#~ "um diesen für gutes Geld zu verkaufen."
 
 #~ msgid "dummy"
 #~ msgstr "Platzhalter"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-26 15:26+0200\n"
+"POT-Creation-Date: 2007-10-31 20:52+0100\n"
 "PO-Revision-Date: 2007-10-30 12:27+0800\n"
 "Last-Translator: Dionysus <huang.wei.bhu@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -138,10 +138,10 @@ msgstr ""
 #: data/core/units/drakes/Armageddon.cfg:83
 #: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:44
-#: data/core/units/undead/Corpse_Necrophage.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:55
 #: data/core/units/undead/Spirit_Shadow.cfg:29
-#: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Ghoul.cfg:28
 msgid "claws"
 msgstr "爪"
 
@@ -186,6 +186,7 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:80
 #: data/core/units/drakes/Blademaster.cfg:68
 #: data/core/units/drakes/Clasher.cfg:79
+#: data/core/units/humans/Woodsman_Ranger.cfg:37
 #: data/core/units/humans/Loyalist_Longbowman.cfg:26
 #: data/core/units/humans/Loyalist_General.cfg:45
 #: data/core/units/humans/Loyalist_Sergeant.cfg:34
@@ -197,7 +198,6 @@ msgstr ""
 #: data/core/units/humans/Horse_Knight.cfg:25
 #: data/core/units/humans/Horse_Paladin.cfg:40
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:35
 #: data/core/units/humans/Loyalist_Cavalier.cfg:38
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
@@ -576,12 +576,12 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:41
 #: data/core/units/dwarves/Thunderguard.cfg:25
 #: data/core/units/humans/Outlaw_Assassin.cfg:30
-#: data/core/units/humans/Outlaw_Poacher.cfg:36
 #: data/core/units/humans/Outlaw_Rogue.cfg:29
+#: data/core/units/humans/Woodsman_Trapper.cfg:76
 #: data/core/units/humans/Outlaw_Thief.cfg:178
 #: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Huntsman.cfg:32
-#: data/core/units/humans/Outlaw_Trapper.cfg:76
+#: data/core/units/humans/Woodsman_Huntsman.cfg:37
+#: data/core/units/humans/Woodsman_Poacher.cfg:36
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
 msgid "dagger"
@@ -835,14 +835,14 @@ msgstr ""
 #: data/core/units/elves/Captain.cfg:45 data/core/units/elves/Rider.cfg:43
 #: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Champion.cfg:32
 #: data/core/units/elves/Fighter.cfg:32
-#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/humans/Woodsman_Trapper.cfg:85
+#: data/core/units/humans/Woodsman_Ranger.cfg:46
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:44
+#: data/core/units/humans/Woodsman_Huntsman.cfg:46
+#: data/core/units/humans/Woodsman_Poacher.cfg:45
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/humans/Outlaw_Huntsman.cfg:41
-#: data/core/units/humans/Outlaw_Trapper.cfg:85
 #: data/core/units/undead/Skeleton_Archer.cfg:42
 #: data/core/units/undead/Skele_Banebow.cfg:41
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:40
@@ -2429,6 +2429,22 @@ msgstr "投石器"
 msgid "female^Outlaw"
 msgstr "亡命之徒"
 
+#: data/core/units/humans/Outlaw.cfg:114
+#, fuzzy
+msgid ""
+"female^After some years of service, former 'footpads' rise up in the ranks "
+"of their fellow outlaws. Having proven themselves in combat, they are given "
+"more dangerous tasks, and a greater share of the spoils. Though many "
+"opponents would mock their choice of weaponry, the outlaws are well aware of "
+"its deadly capacity, and also of the ready availability of ammunition. "
+"Outlaws are somewhat ill at ease fighting during the day, preferring the "
+"cover of nightfall."
+msgstr ""
+"为团伙效力多年后，“拦路强盗”在同伙中的地位有所提升。他们已经证明了自己在战斗"
+"中的价值，所以被委以更加危险的任务，并能分到更大比例的赃物。虽然许多对手嘲笑"
+"他们的武器，他们自己却很清楚它们的致命威力，武器补给也来源广泛。亡命之徒不善"
+"于白天作战，而是喜欢在夜幕掩护之下行动。"
+
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "刺客"
@@ -2503,27 +2519,42 @@ msgstr "木棒"
 msgid "female^Footpad"
 msgstr "拦路强盗"
 
+#: data/core/units/humans/Outlaw_Footpad.cfg:168
+#, fuzzy
+msgid ""
+"female^These petty criminals are often derisively called 'footpads' by their "
+"superiors, for they are tasked with any job that requires a great deal of "
+"running around, often being employed as couriers, or scouts. The endurance "
+"and agility they gain from this serves them well in combat, and despite "
+"their inferior weaponry they are quite good at harrying their enemies, "
+"especially under cover of darkness."
+msgstr ""
+"匪徒们常常戏称那些小偷小摸的人为“拦路强盗”。他们的职责往往需要他们四处奔波，"
+"如信使或侦察兵。由此而来的脚力在战斗中对他们的帮助很大。他们尽管武器很烂，却"
+"善于骚扰敌人，特别是在夜幕的掩护之下。"
+
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture. Dangerous and ruthless, they "
-"can be fearful in their element but no real match for professional law "
-"enforcment forces."
+"Veteran criminals become notorious for both their ruthlessness and ability "
+"to elude capture. They can be dangerous and rightly fearful in their "
+"element, but are no match for the sheer numbers that law-abiding soldiery "
+"can throw at them."
 msgstr ""
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:111
+#: data/core/units/humans/Outlaw_Fugitive.cfg:112
 msgid "female^Fugitive"
 msgstr ""
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:114
+#: data/core/units/humans/Outlaw_Fugitive.cfg:115
 msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture. Beautiful and dangerous, their "
-"beauty is exceeded only by their dangerousness."
+"female^Veteran criminals become notorious for both their ruthlessness and "
+"ability to elude capture. They can be dangerous and rightly fearful in their "
+"element, but are no match for the sheer numbers that law-abiding soldiery "
+"can throw at them."
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
@@ -2534,51 +2565,6 @@ msgstr ""
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Huntsman.cfg:5
-msgid "Huntsman"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Huntsman.cfg:19
-msgid ""
-"Huntsmen have spent their lives in the backwoods and swamps of their "
-"wilderness homes. They track anything that moves in their territory, "
-"including people. Bandit gangs hire them for their ability to bring down any "
-"prey."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:4
-msgid "Poacher"
-msgstr "偷猎者"
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:22
-msgid ""
-"Though not trained as warriors, the skills possessed by a hunter (especially "
-"those of archery) are useful in battle. Any group of bandits will need a few "
-"poachers in their employ, not merely for hunting but for lending a hand in "
-"any serious fight.\n"
-"\n"
-"Because of their experience, these hunters are unusually capable at night, "
-"and in forests and swamps."
-msgstr ""
-"虽然没有经过战士的正规训练，猎人的技艺，特别是射箭的技术在战场上很有用处。有"
-"时他们受人雇佣，或因天性谨慎，或是出于其他原因，他们会把这些本领用在自己同胞"
-"的身上。土匪团伙需要一些偷猎者为其服务，以便从附近的农场里盗猎晚餐；在斗殴的"
-"场合也有他们出手的机会。\n"
-"\n"
-"这些猎人经验丰富，适于夜间及在森林和沼泽中作战。"
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:5
-msgid "Outlaw Ranger"
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:19
-msgid ""
-"Rangers are wild men and masters of forest and hills. They are excellent "
-"trackers, scouts, and archers, moving freely through the countryside under "
-"the cover of night. Most rulers are afraid of rangers and would rather put "
-"them in the dungeon than put their abilities to use."
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -2664,27 +2650,6 @@ msgstr ""
 "民。很快，他们为了活命而成为了暴徒。无论他们背景如何，他们都善于用大木棒进行"
 "攻击。"
 
-#: data/core/units/humans/Outlaw_Trapper.cfg:4
-msgid "Trapper"
-msgstr "陷井猎人"
-
-#: data/core/units/humans/Outlaw_Trapper.cfg:27
-msgid ""
-"Master woodsmen are useful allies to any army, and indispensable for any "
-"sizable group of bandits. They can track both man and beast, notice things "
-"most others would overlook, and are often the only ones who can find food "
-"for the table, be it animal or vegetable.\n"
-"\n"
-"Their skill at hunting is very useful in combat, and also leaves them "
-"unusually competent at night, and in forests and swamps."
-msgstr ""
-"狩猎高手是人人都想要的盟友，对任何稍具规模的土匪团伙更是不可或缺。他们能够跟"
-"踪人或野兽，观察到大多数人容易忽视的线索，也常常是唯一能找到食物（不论荤素）"
-"的人。\n"
-"\n"
-"他们狩猎的技巧在战场上非常有用，在夜间，以及在森林和沼泽中的能力超乎一般的强"
-"大。"
-
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "农民"
@@ -2715,6 +2680,94 @@ msgid ""
 msgstr ""
 "山民是猎人,伐木工,烧炭工,和其他在人类社会边缘的荒野中艰难度日的人们. 智慧和关"
 "于森林的知识经常在武器无法帮助他们的时候给与他们支持."
+
+#: data/core/units/humans/Woodsman_Huntsman.cfg:5
+msgid "Huntsman"
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Huntsman.cfg:23
+msgid ""
+"Hunting is a popular sport of noblemen, but it can also be a livelihood for "
+"commoners.  Like any other craft, it has men of masterful skill in its "
+"practice.  Huntsmen know all the tricks of their trade, and are skilled at "
+"navigating the wilderness, at tracking, and at the use of the bow.  They are "
+"a fair shot at moving targets, and targets hiding under brush and cover; a "
+"skill wrought from years of practice at shooting game, and one which "
+"garrisoned bowmen often lack.\n"
+"\n"
+"Master hunters are employed by any group living in or passing through wild "
+"country, be they men of the law, or those working against it.  Even nature "
+"itself can have deadly surprises, and any commander who fails to hire a such "
+"a guide can lose his men to nothing more than terrain.  Good woodsmen can "
+"save lives, ease travel, provide food, and their skill with a bow is "
+"capitally useful in a fight.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Poacher.cfg:4
+msgid "Poacher"
+msgstr "偷猎者"
+
+#: data/core/units/humans/Woodsman_Poacher.cfg:22
+#, fuzzy
+msgid ""
+"Though not trained as warriors, the skills possessed by a hunter (especially "
+"those of archery) are useful in battle. Any group of soldiers or bandits "
+"travelling through the wild will need a few poachers in their employ, not "
+"merely for hunting but for lending a hand in any serious fight.\n"
+"\n"
+"Because of their experience, these hunters are unusually capable at night, "
+"and in forests and swamps."
+msgstr ""
+"虽然没有经过战士的正规训练，猎人的技艺，特别是射箭的技术在战场上很有用处。有"
+"时他们受人雇佣，或因天性谨慎，或是出于其他原因，他们会把这些本领用在自己同胞"
+"的身上。土匪团伙需要一些偷猎者为其服务，以便从附近的农场里盗猎晚餐；在斗殴的"
+"场合也有他们出手的机会。\n"
+"\n"
+"这些猎人经验丰富，适于夜间及在森林和沼泽中作战。"
+
+#: data/core/units/humans/Woodsman_Ranger.cfg:5
+#, fuzzy
+msgid "Ranger"
+msgstr "匕首"
+
+#: data/core/units/humans/Woodsman_Ranger.cfg:21
+msgid ""
+"Rangers are wild men and wanderers, who have chosen to shun the company of "
+"their fellow men for myriad reasons. They have spent the better part of "
+"their lives in the thick of nature, and know many of its secrets.  They are "
+"excellent pathfinders and explorers, and can find food and shelter where "
+"other men would find only sticks and stones.\n"
+"\n"
+"The presence of these men troubles the more authoritarian of rulers; they "
+"are an element that knights and landed armies cannot control.  They are men "
+"of dubious motives, and are the first to scoff at any royal decree, if they "
+"even hear of it at all.  Rangers can be hired, but they are just as likely "
+"to be in the employ of bandits, as they are to be in the king's service."
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Trapper.cfg:4
+msgid "Trapper"
+msgstr "陷井猎人"
+
+#: data/core/units/humans/Woodsman_Trapper.cfg:27
+#, fuzzy
+msgid ""
+"Master woodsmen are useful allies to any army, and indispensable for any "
+"sizable group of people living in the wilderness. They can track both man "
+"and beast, notice things most others would overlook, and are often the only "
+"ones who can find food for the table, be it animal or vegetable.\n"
+"\n"
+"Their skill at hunting is very useful in combat, and also leaves them "
+"unusually competent at night, and in forests and swamps."
+msgstr ""
+"狩猎高手是人人都想要的盟友，对任何稍具规模的土匪团伙更是不可或缺。他们能够跟"
+"踪人或野兽，观察到大多数人容易忽视的线索，也常常是唯一能找到食物（不论荤素）"
+"的人。\n"
+"\n"
+"他们狩猎的技巧在战场上非常有用，在夜间，以及在森林和沼泽中的能力超乎一般的强"
+"大。"
 
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
@@ -3768,7 +3821,7 @@ msgstr ""
 msgid "Ghoul"
 msgstr "食尸鬼"
 
-#: data/core/units/undead/Corpse_Ghoul.cfg:22
+#: data/core/units/undead/Corpse_Ghoul.cfg:23
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. The "
@@ -3793,7 +3846,7 @@ msgstr ""
 msgid "Necrophage"
 msgstr "死灵食尸鬼"
 
-#: data/core/units/undead/Corpse_Necrophage.cfg:22
+#: data/core/units/undead/Corpse_Necrophage.cfg:23
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -3811,7 +3864,7 @@ msgstr ""
 msgid "Soulless"
 msgstr "无魂怪"
 
-#: data/core/units/undead/Corpse_Soulless.cfg:23
+#: data/core/units/undead/Corpse_Soulless.cfg:22
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -3826,11 +3879,11 @@ msgstr ""
 "\n"
 "特别提示:"
 
-#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Corpse_Walking.cfg:49
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:37
 #: data/core/units/undead/Spirit_Ghost.cfg:26
 #: data/core/units/undead/Necro_Lich.cfg:36
-#: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Corpse_Soulless.cfg:47
 msgid "touch"
 msgstr "触碰"
 
@@ -3838,7 +3891,7 @@ msgstr "触碰"
 msgid "Walking Corpse"
 msgstr "僵尸"
 
-#: data/core/units/undead/Corpse_Walking.cfg:23
+#: data/core/units/undead/Corpse_Walking.cfg:22
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -3917,6 +3970,30 @@ msgstr "冷冻波"
 msgid "female^Dark Adept"
 msgstr "黑暗狂徒"
 
+#: data/core/units/undead/Necro_Dark_Adept.cfg:207
+#, fuzzy
+msgid ""
+"female^To attract any practitioners, the lure of black magic must be a great "
+"prize indeed, for anyone caught practicing the art in the civilized world is "
+"subject to a death sentence. And yet there are those who pursue this art, "
+"for the prize offered is nothing less than immortality. Hidden away in "
+"secret cults, or initiated into the dark orders of the underworld, the "
+"training which these fanatics must endure often drives them to exhaustion "
+"and enfeeblement.\n"
+"\n"
+"In such condition, their only weapon is the craft they have so committed "
+"themselves to learning.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"黑暗魔法的诱惑一定很大，才能引诱人们去研习，因为在文明社会，谁学习黑暗魔法被"
+"发现了，是可以处以死刑的。但总还是有人去学，因为学成以后就可以永生不死。疯狂"
+"的学徒们隐身于密教，藏匿于地下的黑暗教会，承受着使自身虚弱枯竭的训练。\n"
+"\n"
+"在这种身体条件下，他们只能使用自己的法术创造出来的武器。\n"
+"\n"
+"特别提示："
+
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
 msgstr "黑暗巫师"
@@ -3957,6 +4034,40 @@ msgstr ""
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:179
 msgid "Dark Sorceress"
 msgstr "黑暗巫师"
+
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:186
+#, fuzzy
+msgid ""
+"The dread inspired by black magic comes chiefly from how little is known "
+"about it by the common man. Dark sorceresses have begun to unlock the "
+"secrets of life and death, the latter of which is all too easy to inflict. "
+"This labor gives the first glimmerings of the connection between the soul "
+"and inert matter, and the first successful experiments in manipulating this "
+"bond. The terrible unknown that lurks beyond death is glimpsed, and will "
+"inevitably be fathomed.\n"
+"\n"
+"Despite any design they may have of using this to wrest their own "
+"immortality from nature's grasp, the first results of their work have "
+"immediate, and unpleasant applications. The life they breathe into dead "
+"matter can create servants for them, servants which will work, but which "
+"will also kill, and will never question their mistress. These creations have "
+"a loyalty any tyrant would dream of, and it is tempting to those with even "
+"the merest desire for power.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+"普通人对黑魔法的恐惧主要来自于对此类魔法的无知. 黑暗巫师早已开始探索生命与死"
+"亡的秘密, 而相比之下后者实在太容易实现. 这项工作首先给揭密灵魂和物质的联系带"
+"来了一线曙光,并且带来了成功结合这两者的实验. 隐藏在死亡背后的可怕奥秘的惊鸿一"
+"现, 并且终将不可避免地被彻底揭开.\n"
+"\n"
+"除去黑暗巫师各种可能的企图,比如将自己的生命从自然的掌握中夺走之外, 他们研究的"
+"第一项结果立刻就有了一项恶心的应用. 他们注入死尸的生命可以为他们创造仆人, 这"
+"些仆人可以工作, 可以杀人, 对他们主人的命令从不犹豫. 这些'造物'有着任何暴君都"
+"会梦寐以求的忠诚, 同时, 这对那些哪怕对力量有着一点点渴望的人, 都有着无与伦比"
+"的吸引力.\n"
+"\n"
+"特别提示:"
 
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"

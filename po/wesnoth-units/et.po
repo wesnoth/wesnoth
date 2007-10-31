@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-26 15:26+0200\n"
+"POT-Creation-Date: 2007-10-31 20:52+0100\n"
 "PO-Revision-Date: 2007-01-13 00:26+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -126,10 +126,10 @@ msgstr ""
 #: data/core/units/drakes/Armageddon.cfg:83
 #: data/core/units/drakes/Inferno.cfg:71
 #: data/core/units/goblins/Direwolf_Rider.cfg:44
-#: data/core/units/undead/Corpse_Necrophage.cfg:27
+#: data/core/units/undead/Corpse_Necrophage.cfg:28
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:55
 #: data/core/units/undead/Spirit_Shadow.cfg:29
-#: data/core/units/undead/Corpse_Ghoul.cfg:27
+#: data/core/units/undead/Corpse_Ghoul.cfg:28
 msgid "claws"
 msgstr "küünised"
 
@@ -174,6 +174,7 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:80
 #: data/core/units/drakes/Blademaster.cfg:68
 #: data/core/units/drakes/Clasher.cfg:79
+#: data/core/units/humans/Woodsman_Ranger.cfg:37
 #: data/core/units/humans/Loyalist_Longbowman.cfg:26
 #: data/core/units/humans/Loyalist_General.cfg:45
 #: data/core/units/humans/Loyalist_Sergeant.cfg:34
@@ -185,7 +186,6 @@ msgstr ""
 #: data/core/units/humans/Horse_Knight.cfg:25
 #: data/core/units/humans/Horse_Paladin.cfg:40
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:35
 #: data/core/units/humans/Loyalist_Cavalier.cfg:38
 #: data/core/units/humans/Loyalist_Dragoon.cfg:37
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:41
@@ -502,12 +502,12 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:41
 #: data/core/units/dwarves/Thunderguard.cfg:25
 #: data/core/units/humans/Outlaw_Assassin.cfg:30
-#: data/core/units/humans/Outlaw_Poacher.cfg:36
 #: data/core/units/humans/Outlaw_Rogue.cfg:29
+#: data/core/units/humans/Woodsman_Trapper.cfg:76
 #: data/core/units/humans/Outlaw_Thief.cfg:178
 #: data/core/units/humans/Woodsman.cfg:28
-#: data/core/units/humans/Outlaw_Huntsman.cfg:32
-#: data/core/units/humans/Outlaw_Trapper.cfg:76
+#: data/core/units/humans/Woodsman_Huntsman.cfg:37
+#: data/core/units/humans/Woodsman_Poacher.cfg:36
 #: data/core/units/undead/Skele_Banebow.cfg:32
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:31
 msgid "dagger"
@@ -722,14 +722,14 @@ msgstr ""
 #: data/core/units/elves/Captain.cfg:45 data/core/units/elves/Rider.cfg:43
 #: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Champion.cfg:32
 #: data/core/units/elves/Fighter.cfg:32
-#: data/core/units/humans/Outlaw_Poacher.cfg:45
+#: data/core/units/humans/Woodsman_Trapper.cfg:85
+#: data/core/units/humans/Woodsman_Ranger.cfg:46
 #: data/core/units/humans/Loyalist_Longbowman.cfg:35
 #: data/core/units/humans/Woodsman.cfg:37
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:35
-#: data/core/units/humans/Outlaw_Ranger.cfg:44
+#: data/core/units/humans/Woodsman_Huntsman.cfg:46
+#: data/core/units/humans/Woodsman_Poacher.cfg:45
 #: data/core/units/humans/Loyalist_Bowman.cfg:34
-#: data/core/units/humans/Outlaw_Huntsman.cfg:41
-#: data/core/units/humans/Outlaw_Trapper.cfg:85
 #: data/core/units/undead/Skeleton_Archer.cfg:42
 #: data/core/units/undead/Skele_Banebow.cfg:41
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:40
@@ -1986,6 +1986,17 @@ msgstr "ling"
 msgid "female^Outlaw"
 msgstr "Lindprii"
 
+#: data/core/units/humans/Outlaw.cfg:114
+msgid ""
+"female^After some years of service, former 'footpads' rise up in the ranks "
+"of their fellow outlaws. Having proven themselves in combat, they are given "
+"more dangerous tasks, and a greater share of the spoils. Though many "
+"opponents would mock their choice of weaponry, the outlaws are well aware of "
+"its deadly capacity, and also of the ready availability of ammunition. "
+"Outlaws are somewhat ill at ease fighting during the day, preferring the "
+"cover of nightfall."
+msgstr ""
+
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
 msgstr "Palgamõrvar"
@@ -2048,28 +2059,39 @@ msgstr "nui"
 msgid "female^Footpad"
 msgstr "Kannupoiss"
 
+#: data/core/units/humans/Outlaw_Footpad.cfg:168
+msgid ""
+"female^These petty criminals are often derisively called 'footpads' by their "
+"superiors, for they are tasked with any job that requires a great deal of "
+"running around, often being employed as couriers, or scouts. The endurance "
+"and agility they gain from this serves them well in combat, and despite "
+"their inferior weaponry they are quite good at harrying their enemies, "
+"especially under cover of darkness."
+msgstr ""
+
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
 msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture. Dangerous and ruthless, they "
-"can be fearful in their element but no real match for professional law "
-"enforcment forces."
+"Veteran criminals become notorious for both their ruthlessness and ability "
+"to elude capture. They can be dangerous and rightly fearful in their "
+"element, but are no match for the sheer numbers that law-abiding soldiery "
+"can throw at them."
 msgstr ""
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:111
+#: data/core/units/humans/Outlaw_Fugitive.cfg:112
 #, fuzzy
 msgid "female^Fugitive"
 msgstr "Maag"
 
-#: data/core/units/humans/Outlaw_Fugitive.cfg:114
+#: data/core/units/humans/Outlaw_Fugitive.cfg:115
 msgid ""
-"Veteran criminals become notorious among the authorities for both their "
-"battle prowess and ability to elude capture. Beautiful and dangerous, their "
-"beauty is exceeded only by their dangerousness."
+"female^Veteran criminals become notorious for both their ruthlessness and "
+"ability to elude capture. They can be dangerous and rightly fearful in their "
+"element, but are no match for the sheer numbers that law-abiding soldiery "
+"can throw at them."
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
@@ -2080,47 +2102,6 @@ msgstr ""
 msgid ""
 "Armed with heavy mace, Highwaymen are the last people you want to meet on a "
 "deserted road late at night."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Huntsman.cfg:5
-#, fuzzy
-msgid "Huntsman"
-msgstr "Hobusemees"
-
-#: data/core/units/humans/Outlaw_Huntsman.cfg:19
-msgid ""
-"Huntsmen have spent their lives in the backwoods and swamps of their "
-"wilderness homes. They track anything that moves in their territory, "
-"including people. Bandit gangs hire them for their ability to bring down any "
-"prey."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:4
-msgid "Poacher"
-msgstr "Salakütt"
-
-#: data/core/units/humans/Outlaw_Poacher.cfg:22
-msgid ""
-"Though not trained as warriors, the skills possessed by a hunter (especially "
-"those of archery) are useful in battle. Any group of bandits will need a few "
-"poachers in their employ, not merely for hunting but for lending a hand in "
-"any serious fight.\n"
-"\n"
-"Because of their experience, these hunters are unusually capable at night, "
-"and in forests and swamps."
-msgstr ""
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:5
-#, fuzzy
-msgid "Outlaw Ranger"
-msgstr "Lindprii"
-
-#: data/core/units/humans/Outlaw_Ranger.cfg:19
-msgid ""
-"Rangers are wild men and masters of forest and hills. They are excellent "
-"trackers, scouts, and archers, moving freely through the countryside under "
-"the cover of night. Most rulers are afraid of rangers and would rather put "
-"them in the dungeon than put their abilities to use."
 msgstr ""
 
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
@@ -2190,21 +2171,6 @@ msgid ""
 "victims with large clubs."
 msgstr ""
 
-#: data/core/units/humans/Outlaw_Trapper.cfg:4
-msgid "Trapper"
-msgstr "Kütt"
-
-#: data/core/units/humans/Outlaw_Trapper.cfg:27
-msgid ""
-"Master woodsmen are useful allies to any army, and indispensable for any "
-"sizable group of bandits. They can track both man and beast, notice things "
-"most others would overlook, and are often the only ones who can find food "
-"for the table, be it animal or vegetable.\n"
-"\n"
-"Their skill at hunting is very useful in combat, and also leaves them "
-"unusually competent at night, and in forests and swamps."
-msgstr ""
-
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
 msgstr "Talumees"
@@ -2231,6 +2197,81 @@ msgid ""
 "Woodsmen are hunters, woodcutters, charcoalburners, and others who eke out a "
 "living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Huntsman.cfg:5
+#, fuzzy
+msgid "Huntsman"
+msgstr "Hobusemees"
+
+#: data/core/units/humans/Woodsman_Huntsman.cfg:23
+msgid ""
+"Hunting is a popular sport of noblemen, but it can also be a livelihood for "
+"commoners.  Like any other craft, it has men of masterful skill in its "
+"practice.  Huntsmen know all the tricks of their trade, and are skilled at "
+"navigating the wilderness, at tracking, and at the use of the bow.  They are "
+"a fair shot at moving targets, and targets hiding under brush and cover; a "
+"skill wrought from years of practice at shooting game, and one which "
+"garrisoned bowmen often lack.\n"
+"\n"
+"Master hunters are employed by any group living in or passing through wild "
+"country, be they men of the law, or those working against it.  Even nature "
+"itself can have deadly surprises, and any commander who fails to hire a such "
+"a guide can lose his men to nothing more than terrain.  Good woodsmen can "
+"save lives, ease travel, provide food, and their skill with a bow is "
+"capitally useful in a fight.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Poacher.cfg:4
+msgid "Poacher"
+msgstr "Salakütt"
+
+#: data/core/units/humans/Woodsman_Poacher.cfg:22
+msgid ""
+"Though not trained as warriors, the skills possessed by a hunter (especially "
+"those of archery) are useful in battle. Any group of soldiers or bandits "
+"travelling through the wild will need a few poachers in their employ, not "
+"merely for hunting but for lending a hand in any serious fight.\n"
+"\n"
+"Because of their experience, these hunters are unusually capable at night, "
+"and in forests and swamps."
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Ranger.cfg:5
+#, fuzzy
+msgid "Ranger"
+msgstr "pistoda"
+
+#: data/core/units/humans/Woodsman_Ranger.cfg:21
+msgid ""
+"Rangers are wild men and wanderers, who have chosen to shun the company of "
+"their fellow men for myriad reasons. They have spent the better part of "
+"their lives in the thick of nature, and know many of its secrets.  They are "
+"excellent pathfinders and explorers, and can find food and shelter where "
+"other men would find only sticks and stones.\n"
+"\n"
+"The presence of these men troubles the more authoritarian of rulers; they "
+"are an element that knights and landed armies cannot control.  They are men "
+"of dubious motives, and are the first to scoff at any royal decree, if they "
+"even hear of it at all.  Rangers can be hired, but they are just as likely "
+"to be in the employ of bandits, as they are to be in the king's service."
+msgstr ""
+
+#: data/core/units/humans/Woodsman_Trapper.cfg:4
+msgid "Trapper"
+msgstr "Kütt"
+
+#: data/core/units/humans/Woodsman_Trapper.cfg:27
+msgid ""
+"Master woodsmen are useful allies to any army, and indispensable for any "
+"sizable group of people living in the wilderness. They can track both man "
+"and beast, notice things most others would overlook, and are often the only "
+"ones who can find food for the table, be it animal or vegetable.\n"
+"\n"
+"Their skill at hunting is very useful in combat, and also leaves them "
+"unusually competent at night, and in forests and swamps."
 msgstr ""
 
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -3090,7 +3131,7 @@ msgstr ""
 msgid "Ghoul"
 msgstr "Kodukäija"
 
-#: data/core/units/undead/Corpse_Ghoul.cfg:22
+#: data/core/units/undead/Corpse_Ghoul.cfg:23
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a ghoul, and it is a secret they are not telling. The "
@@ -3108,7 +3149,7 @@ msgstr ""
 msgid "Necrophage"
 msgstr "Surnusööja"
 
-#: data/core/units/undead/Corpse_Necrophage.cfg:22
+#: data/core/units/undead/Corpse_Necrophage.cfg:23
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -3126,7 +3167,7 @@ msgstr ""
 msgid "Soulless"
 msgstr "Hingetu"
 
-#: data/core/units/undead/Corpse_Soulless.cfg:23
+#: data/core/units/undead/Corpse_Soulless.cfg:22
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -3136,11 +3177,11 @@ msgid ""
 "Special Notes:"
 msgstr ""
 
-#: data/core/units/undead/Corpse_Walking.cfg:50
+#: data/core/units/undead/Corpse_Walking.cfg:49
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:37
 #: data/core/units/undead/Spirit_Ghost.cfg:26
 #: data/core/units/undead/Necro_Lich.cfg:36
-#: data/core/units/undead/Corpse_Soulless.cfg:48
+#: data/core/units/undead/Corpse_Soulless.cfg:47
 msgid "touch"
 msgstr "puudutus"
 
@@ -3148,7 +3189,7 @@ msgstr "puudutus"
 msgid "Walking Corpse"
 msgstr "Kõndiv laip"
 
-#: data/core/units/undead/Corpse_Walking.cfg:23
+#: data/core/units/undead/Corpse_Walking.cfg:22
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one's "
@@ -3215,6 +3256,22 @@ msgstr "külmajudin"
 msgid "female^Dark Adept"
 msgstr "Pimeduse kuninganna"
 
+#: data/core/units/undead/Necro_Dark_Adept.cfg:207
+msgid ""
+"female^To attract any practitioners, the lure of black magic must be a great "
+"prize indeed, for anyone caught practicing the art in the civilized world is "
+"subject to a death sentence. And yet there are those who pursue this art, "
+"for the prize offered is nothing less than immortality. Hidden away in "
+"secret cults, or initiated into the dark orders of the underworld, the "
+"training which these fanatics must endure often drives them to exhaustion "
+"and enfeeblement.\n"
+"\n"
+"In such condition, their only weapon is the craft they have so committed "
+"themselves to learning.\n"
+"\n"
+"Special Notes:"
+msgstr ""
+
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 #, fuzzy
 msgid "Dark Sorcerer"
@@ -3245,6 +3302,27 @@ msgstr ""
 #, fuzzy
 msgid "Dark Sorceress"
 msgstr "Tuld purskav lohe"
+
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:186
+msgid ""
+"The dread inspired by black magic comes chiefly from how little is known "
+"about it by the common man. Dark sorceresses have begun to unlock the "
+"secrets of life and death, the latter of which is all too easy to inflict. "
+"This labor gives the first glimmerings of the connection between the soul "
+"and inert matter, and the first successful experiments in manipulating this "
+"bond. The terrible unknown that lurks beyond death is glimpsed, and will "
+"inevitably be fathomed.\n"
+"\n"
+"Despite any design they may have of using this to wrest their own "
+"immortality from nature's grasp, the first results of their work have "
+"immediate, and unpleasant applications. The life they breathe into dead "
+"matter can create servants for them, servants which will work, but which "
+"will also kill, and will never question their mistress. These creations have "
+"a loyalty any tyrant would dream of, and it is tempting to those with even "
+"the merest desire for power.\n"
+"\n"
+"Special Notes:"
+msgstr ""
 
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
@@ -3579,6 +3657,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Outlaw Ranger"
+#~ msgstr "Lindprii"
 
 #~ msgid "dummy"
 #~ msgstr "fiktiivne"
