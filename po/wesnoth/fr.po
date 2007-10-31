@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:51+0100\n"
-"PO-Revision-Date: 2007-10-30 22:31+0100\n"
+"PO-Revision-Date: 2007-10-31 21:47+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -2263,7 +2263,6 @@ msgid "General commands"
 msgstr "Commandes générales"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2273,7 +2272,6 @@ msgstr ""
 "Efface les messages de la discussion."
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2284,7 +2282,7 @@ msgstr ""
 "\n"
 "Bascule le contrôle d'un camp entre un humain et l'IA. Cette commande doit "
 "être exécutée par le joueur/client qui contrôle ce camp. Sans précision, le "
-"camp par défaut est '1'.\n"
+"camp par défaut est le joueur actif.\n"
 
 #: data/core/help.cfg:621
 msgid ""
@@ -2329,9 +2327,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Active/Desactive l'affichage du nombre d'images par seconde.\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2340,7 +2340,7 @@ msgid ""
 msgstr ""
 "\n"
 "Passe en mode débug (cela ne fonctionne pas en mode multijoueur). Le mode "
-"débug est désactivé à la fin de la partie.\n"
+"débug est désactivé à la fin de la partie ou par la commande :nodebug.\n"
 
 #: data/core/help.cfg:637
 msgid "Bring up theme selection menu."
@@ -2351,7 +2351,6 @@ msgid "Multiplayer commands"
 msgstr "Commandes multijoueurs"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2400,7 +2399,6 @@ msgstr ""
 "des utilisateurs ignorés.\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -3928,13 +3926,12 @@ msgstr ""
 "guérir du poison."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Cette unité est capable de prodiguer des soins de base, mais ne peut que "
-"retarder les effets du poison sans les guérir complètement."
+" Cette unité est capable de neutraliser les effets du poison sur les unités "
+"adjacentes."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -5065,9 +5062,8 @@ msgid "#(Invalid)"
 msgstr "#(Invalide)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Maintenance de la campagne"
+msgstr "Campagne : $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1399
 msgid "Multiplayer"
@@ -5435,6 +5431,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Héberger une partie à partir du serveur interne. Pas bien maintenu, il vaut "
+"mieux utiliser « wesnothd », le serveur dédié."
 
 #: src/game.cpp:1392
 msgid "Local Game"
@@ -5777,11 +5775,11 @@ msgstr "Aléatoire"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Feminine ♀"
-msgstr ""
+msgstr "♀ Feminin"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Masculine ♂"
-msgstr ""
+msgstr "♂ Masculin"
 
 #: src/leader_list.cpp:242 src/leader_list.cpp:248
 msgid "?"
@@ -6751,9 +6749,8 @@ msgid "Leader: "
 msgstr "Chef : "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Chef : "
+msgstr "Sexe : "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6788,9 +6785,9 @@ msgid "Could not send initial handshake"
 msgstr "Impossible d'envoyer le signal d'établissement de la liaison"
 
 #: src/play_controller.cpp:397
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Le fichier sauvegardé est corrompu"
+msgstr ""
+"Le fichier que vous essayez de charger est corrompu. Voulez-vous continuer ?"
 
 #: src/play_controller.cpp:770
 msgid "Back to start"

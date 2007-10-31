@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:52+0100\n"
-"PO-Revision-Date: 2007-10-30 22:33+0100\n"
+"PO-Revision-Date: 2007-10-31 21:37+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -218,7 +218,7 @@ msgstr "Mur de caverne"
 
 #: data/core/terrain.cfg:925
 msgid "Void"
-msgstr ""
+msgstr "Vide"
 
 #: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
@@ -376,10 +376,14 @@ msgstr "Sauter les déplacements de l'IA"
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
+"Sauver le film en cas de victoire monojoueur ou multijoueur ou de défaite "
+"multijoueur"
 
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
 msgstr ""
+"Supprimer les sauvegardes en cas de victoire monojoueur ou multijoueur ou de "
+"défaite multijoueur"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -607,7 +611,7 @@ msgstr "Configurer la fréquence des animations de désœuvrement des unités"
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "Configurer le nombre maximal de sauvegardes à conserver"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -616,11 +620,14 @@ msgstr "Ne pas animer les déplacements des unités de l'ordinateur"
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
 msgstr ""
+"Sauver le film en cas de victoire monojoueur ou de défaite monojoueur ou "
+"multijoueur"
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Supprimer les sauvegardes automatiques à la fin du scénario"
+msgstr ""
+"Supprimer les sauvegardes automatiques en cas de victoire monojoueur ou de "
+"défaite monojoueur ou multijoueur"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -718,11 +725,11 @@ msgstr "Vitesse : "
 
 #: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "Nombre maximum de sauvegardes :"
 
 #: src/game_preferences_display.cpp:689
 msgid "infinite"
-msgstr ""
+msgstr "infini"
 
 #: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
