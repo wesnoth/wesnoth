@@ -59,6 +59,11 @@
 // debugging messages
 #define LOG_SERVER LOG_STREAM(info, general)
 
+//compatibility code for MS compilers
+#ifndef SIGHUP
+#define SIGHUP 20
+#endif
+
 sig_atomic_t config_reload = 0;
 
 void reload_config(int signal) {
@@ -956,6 +961,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 void server::process_data_from_player_in_game(const network::connection sock, config& data)
 {
 	LOG_SERVER << "in process_data_from_player_in_game...\n";
+	bool push_immediately = true;
 
 	const player_map::iterator pl = players_.find(sock);
 	if(pl == players_.end()) {
@@ -1047,9 +1053,11 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	const std::string game_name = g->description() ? (*g->description())["name"] : "Warning: Game has no description.";
 
 	// If this is data telling us that the scenario did change.
-	if(g->is_owner(sock) && data.child("next_scenario") != NULL) {
+	if(g->is_owner(sock) && data.child("store_next_scenario") != NULL) {
+		config* scenario = data.child("store_next_scenario");
+
 		if(g->level_init()) {
-			g->level() = (*data.child("next_scenario"));
+			g->level() = (*data.child("store_next_scenario"));
 			g->reset_history();
 			g->update_side_data();
 			// Send the update of the game description to the lobby
@@ -1063,6 +1071,11 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				<< ") while the scenario is not yet initialized.";
 			return;
 		}
+
+		//Pushing immediately does not comply with linger mode for mp campaigns.
+		//Here the clients need to determine by themselves, when to get the data
+		//for the next scenario.
+		push_immediately = false;
 	}
 
 	const string_map::const_iterator side = data.values.find("side");
@@ -1416,9 +1429,28 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// respect not displaying the message.
 	}
 
+	// If a player advances to the next scenario of a mp campaign
+	if(data.child("notify_next_scenario") != NULL) {
+		const config& info = *data.child("notify_next_scenario");
+		const std::string player_name = g->find_player(sock)->name();
+		g->send_data(construct_server_message(player_name + " advanced to the next scenario", *g), sock);
+	}
+
+	//A mp client sends a request for the next scenario of a mp campaign.
+	if (data.child("load_next_scenario") != NULL) {
+		config cfg_scenario;
+
+		cfg_scenario.add_child("next_scenario", g->level());
+		network::send_data(cfg_scenario, sock);
+		//Since every client decides himself when to get the data of the next
+		//scenario, we must not push this to other players.
+		push_immediately = false;
+	}
+
 	// Forward data to all players who are in the game,
 	// except for the original data sender
-	g->send_data(data, sock);
+	if (push_immediately)
+		g->send_data(data,sock);
 
 	if(g->started()) {
 		g->record_data(data);

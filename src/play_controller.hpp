@@ -144,6 +144,7 @@ protected:
 	unsigned int player_number_;
 	unsigned int first_player_;
 	unsigned int start_turn_;
+	bool is_host_;
 	bool skip_replay_;
 	bool browse_;
 	bool linger_;

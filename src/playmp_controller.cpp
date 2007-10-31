@@ -26,11 +26,12 @@ unsigned int playmp_controller::replay_last_turn_ = 0;
 
 playmp_controller::playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
 									 const int ticks, const int num_turns, const config& game_config, CVideo& video,
-									 bool skip_replay)
+									 bool skip_replay, bool is_host)
 	: playsingle_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay)
 {
 	beep_warning_time_ = 0;
 	turn_data_ = NULL;
+	is_host_ = is_host;
 }
 
 playmp_controller::~playmp_controller() {
@@ -144,7 +145,8 @@ void playmp_controller::think_about_countdown(int ticks) {
 void playmp_controller::play_human_turn(){
 	int cur_ticks = SDL_GetTicks();
 
-	gui_->enable_menu("endturn", true);
+	if ((!linger_) || (is_host_))
+		gui_->enable_menu("endturn", true);
 	while(!end_turn_) {
 
 		try {
@@ -215,7 +217,7 @@ void playmp_controller::play_human_turn(){
 	menu_handler_.clear_undo_stack(player_number_);
 }
 
-void playmp_controller::linger(upload_log& log)
+void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 {
         LOG_NG << "beginning end-of-scenario linger";
         browse_ = true;
@@ -234,8 +236,12 @@ void playmp_controller::linger(upload_log& log)
 	}
 	beep_warning_time_=-1;
 
-	// change the end-turn button text to its alternate label
-	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title2"));
+	//Modify the end-turn button
+	if (! is_host_){
+		gui::button* btn_end = gui_->find_button("button-endturn");
+		btn_end->enable(false);
+	}
+	gui_->get_theme().refresh_title("button-endturn", "End scenario");
 	gui_->invalidate_theme();
 
 	// switch to observer viewpoint
@@ -258,6 +264,10 @@ void playmp_controller::linger(upload_log& log)
                 // Loading a new game is effectively a quit.
                 log.quit(status_.turn());
                 throw;
+		} catch(end_level_exception& e) {
+			//Catch this error here so mp players quitting unexpectedly are not thrown back
+			//to the title screen
+			result = e.result;
         }
 
 	// revert the end-turn button text to its normal label

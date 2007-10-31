@@ -27,7 +27,8 @@ class playmp_controller : public playsingle_controller, public events::pump_moni
 {
 public:
 	playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-		const int ticks, const int num_turns, const config& game_config, CVideo& video, bool skip_replay);
+		const int ticks, const int num_turns, const config& game_config, CVideo& video, 
+		bool skip_replay, bool is_host);
 	~playmp_controller();
 
 	static unsigned int replay_last_turn() { return replay_last_turn_; }
@@ -36,7 +37,7 @@ public:
 	bool counting_down();
 	void think_about_countdown(int ticks);
 	void process(events::pump_info &info);
-	void linger(upload_log&);
+	void linger(upload_log&, LEVEL_RESULT result);
 
 protected:
 	virtual void handle_generic_event(const std::string& name);

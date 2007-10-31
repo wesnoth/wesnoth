@@ -44,7 +44,8 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1), player_number_(1),
 	first_player_ (lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1),
-	start_turn_(status_.turn()), skip_replay_(skip_replay), browse_(false), linger_(false), scrolling_(false)
+	start_turn_(status_.turn()), skip_replay_(skip_replay), browse_(false), linger_(false), scrolling_(false),
+	is_host_(true)
 {
 	status_.teams = &teams_;
 	game_config::add_color_info(level);

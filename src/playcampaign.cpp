@@ -149,11 +149,13 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 
 LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_config,
 		config const* level, display& disp, game_state& state_of_game,
-		const config::child_list& story, upload_log& log, bool skip_replay)
+		const config::child_list& story, upload_log& log, bool skip_replay,
+		io_type_t io_type)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
-	playmp_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
+	playmp_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, 
+		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
 
 	if (res == DEFEAT) {
@@ -165,22 +167,25 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 
 	if (res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
 		try {
-			playcontroller.linger(log);
+			playcontroller.linger(log, res);
 		} catch(end_level_exception& e) {
 			if (e.result == QUIT) {
 				return QUIT;
 			}
 		}
 
-	// Tell all clients that the campaign won't continue.
-	//! @todo Why isn't this done on VICTORY as well?
-	if (res==QUIT || res==DEFEAT) {
-		config end;
-		end.add_child("end_scenarios");
-		network::send_data(end);
-	}
-
 	return res;
+}
+
+void notify_next_scenario(const io_type_t io_type){
+	//Tell the other clients that this player advanced to the next scenario
+	config cfg;
+	config& cfg_notify = cfg.add_child("notify_next_scenario");
+	if (io_type == IO_SERVER)
+		cfg_notify["is_host"] = "1";
+	else
+		cfg_notify["is_host"] = "0";
+	network::send_data(cfg);
 }
 
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
@@ -358,7 +363,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(units_data,game_config,scenario,disp,gamestate,story,log, skip_replay);
+				res = playmp_scenario(units_data,game_config,scenario,disp,gamestate,story,log, skip_replay, io_type);
 				break;
 			}
 		} catch(game::load_game_failed& e) {
@@ -409,8 +414,20 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		gamestate.replay_data.clear();
 
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
-		if(res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE)
-			return res;
+		if (res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE 
+			&& res != LEVEL_CONTINUE)
+		{
+			//In case we are the host, notify the other players so they can leave linger mode
+			if (io_type == IO_SERVER)
+				notify_next_scenario(IO_SERVER);
+
+			if (res != OBSERVER_END || next_scenario.empty())
+				return res;
+
+			const int dlg_res = gui::dialog(disp,"Game Over",_("This scenario has ended. Do you want to continue the campaign?"), gui::YES_NO).show();
+			if (dlg_res != 0)
+				return res;
+		}
 
 		// Continue without saving is like a victory, 
 		// but the save game dialog isn't displayed
@@ -422,35 +439,34 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			gamestate.scenario = next_scenario;
 
 		if(io_type == IO_CLIENT) {
-			config cfg;
+			if (!next_scenario.empty()){
+				//notifies the clients that this player advanced to the next scenario
+				notify_next_scenario(IO_CLIENT);
 
-			std::string msg;
-			if (gamestate.scenario.empty())
-				msg = _("Receiving data...");
-			else
-				msg = _("Downloading next scenario...");
-			//! @todo FIXME: If the host (IO_SERVER) changes mid-game,
-			// we're waiting forever on the next scenario data, 
-			// because the newly chosen host doesn't know about
-			// its new status. (see bug #6332)
-			do {
-				cfg.clear();
-				network::connection data_res = dialogs::network_receive_dialog(disp,
-						msg, cfg);
-				if(!data_res)
-					throw network::error(_("Connection timed out"));
-			} while(cfg.child("next_scenario") == NULL &&
-					cfg.child("end_scenarios") == NULL);
+				config cfg;
+				std::string msg = _("Downloading next scenario...");
+				config cfg_load = cfg.add_child("load_next_scenario");
+				network::send_data(cfg);
 
-			if(cfg.child("next_scenario")) {
-				starting_pos = (*cfg.child("next_scenario"));
-				scenario = &starting_pos;
-				gamestate = game_state(units_data, starting_pos);
-			} else if(scenario->child("end_scenarios")) {
-				scenario = NULL;
-				gamestate.scenario = "null";
-			} else {
-				return QUIT;
+				//! @todo FIXME: If the host (IO_SERVER) changes mid-game,
+				// we're waiting forever on the next scenario data, 
+				// because the newly chosen host doesn't know about
+				// its new status. (see bug #6332)
+				do {
+					cfg.clear();
+					network::connection data_res = dialogs::network_receive_dialog(disp,
+							msg, cfg);
+					if(!data_res)
+						throw network::error(_("Connection timed out"));
+				} while(cfg.child("next_scenario") == NULL);
+
+				if(cfg.child("next_scenario")) {
+					starting_pos = (*cfg.child("next_scenario"));
+					scenario = &starting_pos;
+					gamestate = game_state(units_data, starting_pos);
+				} else {
+					return QUIT;
+				}
 			}
 
 		} else {
@@ -487,18 +503,17 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				// Sends scenario data
 				config cfg;
-				cfg.add_child("next_scenario", *scenario);
+				cfg.add_child("store_next_scenario", *scenario);
 
 				// Adds player information, and other state
 				// information, to the configuration object
-				wassert(cfg.child("next_scenario") != NULL);
-				write_game(gamestate, *cfg.child("next_scenario"), WRITE_SNAPSHOT_ONLY);
+				wassert(cfg.child("store_next_scenario") != NULL);
+				write_game(gamestate, *cfg.child("store_next_scenario"), WRITE_SNAPSHOT_ONLY);
 				network::send_data(cfg);
 
-			} else if(io_type == IO_SERVER && scenario == NULL) {
-				config end;
-				end.add_child("end_scenarios");
-				network::send_data(end);
+				//notifies the clients that the host advanced to the next scenario
+				notify_next_scenario(IO_SERVER);
+
 			}
 		}
 

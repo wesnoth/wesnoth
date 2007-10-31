@@ -21,6 +21,7 @@
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "menu_events.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "team.hpp"
@@ -252,6 +253,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				take_side(side_str, "human");
 
 				return PROCESS_RESTART_TURN;
+			case 2:
+				//The user pressed "end game". Don't throw a network error here or he will get
+				//thrown back to the title screen.
+				throw end_level_exception(QUIT);
 			default:
 				if (action > 2) {
 					const size_t index = static_cast<size_t>(action - 3);
@@ -274,6 +279,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				break;
 		}
 		throw network::error("");
+	}
+	if (const config* cfg_notify = cfg.child("notify_next_scenario")){
+		if ( (*cfg_notify)["is_host"] == "1"){
+			gui::button* btn_end = gui_.find_button("button-endturn");
+			btn_end->enable(true);
+		}
 	}
 
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;
