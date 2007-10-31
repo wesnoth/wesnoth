@@ -39,7 +39,7 @@ class SVN:
     checkout the root of the local checkout eg /src/wesnoth
     do not include a trailing slash!
     """
-    def __init__(self, checkout, verbose = False):
+    def __init__(self, checkout, log_level = 1):
         self.checkout_path = checkout
     
         """status masks
@@ -57,20 +57,31 @@ class SVN:
         self.STATUS_FLAG_NON_SVN = 0x10
         self.STATUS_FLAG_NON_EXISTANT = 0x20
 
-        self.verbose = verbose
+    
+        self.LOG_LEVEL_ERROR = 0
+        self.LOG_LEVEL_WARNING = 1
+        self.LOG_LEVEL_INFO = 2
+        self.LOG_LEVEL_DEBUG = 3
+
+        self.log_level = log_level
         self.out = ""
         self.err = ""
     
 
-    """V makes a new checkout
+    """V Makes a new checkout.
     
-    repo the repo to checkout eg http://svn.gna.org/svn/wesnoth/trunk 
-    returns a result object (note if an checkout was already there it always returns 1
-    no indication whether something is updated)
+    repo                The repo to checkout eg 
+                        http://svn.gna.org/svn/wesnoth/trunk
+    returns             A result object (note if an checkout was already there
+                        it always returns 1 no indication whether something is 
+                        updated).
     """
-    def checkout(self, repo):
+    def svn_checkout(self, repo):
 
-        out, err = self.execute("svn co --non-interactive " + repo + " " + self.checkout_path)
+        self.log(self.LOG_LEVEL_DEBUG, "checkout " + repo)
+
+        out, err = self.execute("svn co --non-interactive " + repo + " " + 
+            self.checkout_path)
 
         if(err != ""):
             return result(-1, out, err)
@@ -78,16 +89,18 @@ class SVN:
         return result(1, out)
 
 
-    """V commits the changes
+    """V Commits the changes
 
-    after deleting a local file and committing that change the file remains
-    we also clean those files
-    msg is the commit message
-    files optional list with files/directories to check in if ommitted
-    all modifications are send.
-    returns a result object
+    After deleting a local file and committing that change the file remains.
+    msg                 The commit message.
+    files               Optional list with files/directories to check in if 
+                        ommitted all modifications are send.
+    returns             A result object.
     """
-    def commit(self, msg, files = None):
+    def svn_commit(self, msg, files = None):
+
+        self.log(self.LOG_LEVEL_DEBUG, "commit msg " + msg)
+
         command = "svn commit --non-interactive -m " + '"' + msg + '"'
         if(files != None):
             command += " " + files
@@ -103,16 +116,14 @@ class SVN:
             # no output nothing committed
             return result(0, out)
 
-    """T updates the local checkout
+    """V updates the local checkout
 
-    rev revision to update to
-    files optional list of files to update
-    returns a result object, if no files are changed with the update the
-    result is 0. After the update the status if the confilicting files is checked
-    conflicts in properties is ignored (note both should never happen not even sure
-    we should test it... for now ignore it we'll fail on an update)
+    rev                 Revision to update to, if ommitted updates to HEAD.
+    files               Optional list of files to update, if ommitted the
+                        checkout is updated.
+    returns             A result object, returns 0 if no changes were made.
     """
-    def update(self, rev = None, files = None):
+    def svn_update(self, rev = None, files = None):
         command = "svn up --non-interactive "
         if(rev != None):
             command += "-r " + rev + " "
@@ -125,197 +136,61 @@ class SVN:
         if(err != ""):
             return result(-1, out, err)
 
+        if(out.count('\n') == 1):
+            return result(0, out)
+
         return result(1, out)
 
-
-    """T syncs local files into a local checkout adds new files and removes files
-    not in the local files and updates the others.
-
-    sync_dir to with files to sync with
-    exclude files in the checkout directory which should not be touched
-
-    returns a result object
+    """T Copies local files to an svn checkout.
+    
+    src                 Directory with the source files.
+    exclude             List with names to ignore.
+    returns             A result object, returns 0 if no changes are made after 
+                        the copy operation.
     """
-    def sync(self, src, exclude = None):
+    def copy_to_svn(self, src, exclude):# = None):
+
+        self.log(self.LOG_LEVEL_DEBUG, "copy_to_svn :\n\tsvn = " 
+            + self.checkout_path + "\n\tsrc = " + src)
 
         # check whether the status of the repo is clean
         out, err = self.execute("svn st " + self.checkout_path)
-
-#        print ("root = " + self.checkout_path + "\nsync_dir = " + src)
-
+        
+        # if not clean or an error bail out
         if(err != ""):
             return result(-1, out, err)
         elif(out != ""):
             return result(-1, out, "checkout not clean:\n" + out)
 
+        # update
+        res = self.sync_dir(src, self.checkout_path, False, exclude)
 
-        return self.sync_dir(src, self.checkout_path, exclude)
+        # Only if if the status is 1 it might change to 0
+        if(res.status != 1) :
+            return res
 
-
-    def sync2(self, sync_dir, exclude = None):
-
-        # check whether the status of the repo is clean
+        # no error, test whether clean or not, if clean we need to set the
+        # status to 0
         out, err = self.execute("svn st " + self.checkout_path)
+        if(out == ""):
+            res.status = 0
+        return res
 
-        print ("root = " + self.checkout_path + "\nsync_dir = " + sync_dir)
+    """T Syncronizes two directories.
 
+    src                 The source directory.
+    dest                The destination directory.
+    src_svn             Either the source or the target is a svn checkout
+                        if True the source is, else the destination.
+    exclude             List with names to ignore.
+    returns             A result object, 0 if nothing has been done, if 
+                        something is copied it returns 1 and doesn't check
+                        whether source and target file are different.
+    """
+    def sync_dir(self, src, dest, src_svn, exclude ):#= None):
 
-        if(err != ""):
-            return result(-1, out, err)
-        elif(out != ""):
-            return result(-1, out, "checkout not clean:\n" + out)
-
-
-        # check for files in the checkout but not in the sync dir
-        # these files should be removed
-        print "REMOVE"
-        out_result = ""
-        base_len = len(self.checkout_path)
-        for root, dirs, files in os.walk(self.checkout_path):
-            # ignore the .svn dirs
-            if '.svn' in dirs:
-                dirs.remove('.svn')  
-
-            # first remove directories, since files are handled recursively
-            for dir in dirs:
-                print "walked into dir: " + dir
-
-                # is the directory in the exclude list? FIXME implant
-                if(False):
-                    continue
-
-
-                # if the directory doesn't exist remove it and don't
-                # walk further into it
-                if(not(os.path.isfile(sync_dir + dir))):
-                    print "removing dir: " + root + "/" + dir
-                    res = self.remove(root + "/" + dir)
-                    out_result += res.out
-                    if(res.status == -1):
-                        return result(-1, out_result, res.err)
-                    dirs.remove(dir)
-
-            # now test the files
-            for file in files:
-
-                dir = root[base_len:]
-                if(dir != ""):
-                    dir += "/"
-
-                print "walked into file: " + dir + " " + file
-
-                # is the file in the exclude list? FIXME implant
-                if(False):
-                    continue
-
-                # if the file doesn't exist remove it
-                if(not(os.path.isfile(sync_dir + dir + file))):
-                    print "removing file: " + root + "/" + file
-                    out, err = self.remove(root + "/" + file)
-                    out_result += out
-                    if(err != ""):
-                        return result(-1, out_result, err)
-
-        # check for files in the sync dir but not in the checkout
-        # these files should be added
-        print "ADD"
-        base_len = len(sync_dir)
-        add_list = []
-        for root, dirs, files in os.walk(sync_dir):
-            # ignore the .svn dirs
-            if '.svn' in dirs:
-                dirs.remove('.svn')  
-
-            # first add directories, since files are handled recursively
-            for dir in dirs:
-                print "walked into dir: " + dir
-
-                # is the directory in the exclude list? FIXME implant
-                if(False):
-                    continue
-
-
-                # if the directory doesn't exist add it and don't
-                # walk further into it
-                if(not(os.path.isfile(self.checkout_path + dir))):
-                    print "adding dir: " + root + "/" + dir
-                    add_list.append(self.checkout_path + dir)
-                    dirs.remove(dir)
-
-            # now test the files
-            for file in files:
-
-                dir = root[base_len:]
-                if(dir != ""):
-                    dir += "/"
-
-                print "walked into file: " + dir + " " + file
-
-                # is the file in the exclude list? FIXME implant
-                if(False):
-                    continue
-
-                # if the file doesn't exist add it
-                if(not(os.path.isfile(self.checkout_path + dir + file))):
-                    print "adding file: " + root + "/" + file
-                    add_list.append(self.checkout_path + dir + file)
-
-
-        # copy the files from the sync dir to the checkout
-        print "COPY"
-        base_len = len(sync_dir)
-        for root, dirs, files in os.walk(sync_dir):
-            # ignore the .svn dirs
-            if '.svn' in dirs:
-                dirs.remove('.svn')  
-
-            # first add directories, since files are handled recursively
-            for dir in dirs:
-                print "walked into dir: " + dir
-
-                # is the directory in the exclude list? FIXME implant
-                if(False):
-                    continue
-
-
-                # if the directory doesn't exist add it
-                if(not(os.path.isfile(self.checkout_path + dir))):
-#                    print "creating dir: " + root + "/" + dir
-#                    os.mkdir(root + "/" + dir)
-                    
-                    print "creating dir: " + self.checkout_path + "/" + dir
-                    os.mkdir(self.checkout_path + "/" + dir)
-
-            # now test the files
-            for file in files:
-
-                dir = root[base_len:]
-                if(dir != ""):
-                    dir += "/"
-
-                print "walked into file: " + dir + " " + file
-
-                # is the file in the exclude list? FIXME implant
-                if(False):
-                    continue
-
-                # copy the file
-                shutil.copy(root + file, self.checkout_path + dir + file)
-
-        print "ADD REALLY this time"
-        for file in add_list:
-            res = self.add(file)
-            out_result += res.out
-            if(res.status == -1):
-                return result(-1, out_result, res.err)
-
-        print "DONE"
-        return result(1, out_result)
-
-
-    def sync_dir(self, src, dest, exclude = None):
-
-#        print "Syncing dir " + src + " and " + dest
+        self.log(self.LOG_LEVEL_DEBUG, "sync_dir :\n\tsrc = " 
+            + src + "\n\tdest = " + dest)
 
         src_dirs, src_files = self.get_dir_contents(src, exclude)
         dest_dirs, dest_files = self.get_dir_contents(dest, exclude)
@@ -328,34 +203,24 @@ class SVN:
 
         # If a directory exists in both, it needs to be scanned recursively.
 
-
         for dir in src_dirs:
-#            print "Testing directory " + dest + "/" + dir
             if(os.path.isdir(dest + "/" + dir) == False):
                 # src only
-#                print ("> not found")
-                res = self.dir_add(src + "/" + dir, dest + "/" + dir)
+                res = self.dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
                 if(res.status == -1):
                     return res
             else:
                 # in both
-#                print ("> found")
-                res = self.sync_dir(src + "/" + dir, dest + "/" + dir, exclude)
+                res = self.sync_dir(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
                 if(res.status == -1):
                     return res
 
         for dir in dest_dirs:
-#            print "Testing directory " + src + "/" + dir
             if(os.path.isdir(src + "/" + dir) == False):
                 # dest only
-#                print ("> not found")
-                res = self.dir_remove(dest + "/" + dir)
+                res = self.dir_remove(dest + "/" + dir, not(src_svn))
                 if(res.status == -1):
                     return res
-            else:
-                # in both
-#                print ("> found")
-                pass
                 
         # If a file exists in the src but not in the dest, it needs to be copied.
 
@@ -365,113 +230,156 @@ class SVN:
         # If a file exists in both it needs to be copied.
 
         for file in src_files:
-#            print "Testing file" + dest + "/" + file
             if(os.path.isfile(dest + "/" + file) == False):
                 # src only
-#                print ("> not found")
-                res = self.file_add(src + "/" + file, dest + "/" + file)
+                res = self.file_add(src + "/" + file, dest + "/" + file, src_svn)
                 if(res.status == -1):
                     return res
             else:
                 # in both
-#                print ("> found")
                 res = self.file_copy(src + "/" + file, dest + "/" + file)
                 if(res.status == -1):
                     return result
 
         for file in dest_files:
-#            print "Testing file" + src + "/" + file
             if(os.path.isfile(src + "/" + file) == False):
                 # dest only
-#                print ("> not found")
-                res = self.file_remove(dest + "/" + file)
+                res = self.file_remove(dest + "/" + file, not(src_svn))
                 if(res.status == -1):
                     return res
-            else:
-                # in both
-#                print ("> found")
-                pass
 
         # FIXME we didn't accumulate the output
         return result(1)
 
 
-    """\ Foo
+    """V Gets a list with files and directories.
+
+    The function always ignores .svn entries. Items which aren't a directory 
+    are assumed a file.
+    dir                 The directory to get the info from.
+    exclude             List with names to ignore.
+    returns             A list with directories and a list with files.
     """
-    def get_dir_contents(self, dir, exclude = None):
-#        if(self.verbose):
-#            print("walked into directory " + dir)
+    def get_dir_contents(self, dir, exclude ):#= None):
+
+        self.log(self.LOG_LEVEL_DEBUG, "get dir :\n\tdir = " + dir)
+        if(exclude != None):
+            self.log(self.LOG_LEVEL_DEBUG, "\t exclude = ")
+            self.log(self.LOG_LEVEL_DEBUG, exclude)
 
         items = os.listdir(dir)
         dirs = []
         files = []
 
         for item in items:
+            self.log(self.LOG_LEVEL_DEBUG, "\tTesting item " + item)
 
             # ignore .svn dirs
-            if(item == '.svn'):
+            if(item == ".svn"):
+                self.log(self.LOG_LEVEL_DEBUG, "\t\tIgnore .svn")
                 continue
 
-            # FIXME ignore exclude list
+            # ignore exclude list
+            if(exclude != None and item in exclude):
+                self.log(self.LOG_LEVEL_DEBUG, "\t\tIgnore on the exclude list")
+                continue
             
-
             # an item is either a directory or not, in the latter case it's
             # assumed to be a file.
             if(os.path.isdir(dir + "/" + item)):
+                self.log(self.LOG_LEVEL_DEBUG, "\t\tAdded directory")
                 dirs.append(item)
             else:
+                self.log(self.LOG_LEVEL_DEBUG, "\t\tAdded file")
                 files.append(item)
 
         return dirs, files
 
-    def dir_add(self, src, dest):
-        print "Add dir " + src + " to " + dest
+    """T creates a duplicate of a directory.
+
+    The destination directory shouldn't exist.
+    src                 The source directory.
+    dest                The destination directory.
+    src_svn             Either the source or the target is a svn checkout
+                        if True the source is, else the destination.
+    exclude             List with names to ignore.
+    returns             A result object, 0 if nothing has been done, if 
+                        something is copied it returns 1 and doesn't check
+                        whether source and target file are different.
+    """
+    def dir_add(self, src, dest, src_svn, exclude ):#= None):
+
+        self.log(self.LOG_LEVEL_DEBUG, "dir_add :\n\tsvn = " 
+            + self.checkout_path + "\n\tsrc = " + src)
 
         # add parent
         os.mkdir(dest)
-        res = self.add(dest)
-        if(res.status == -1):
-            return res
+        if(src_svn == False):
+            res = self.svn_add(dest)
+            if(res.status == -1):
+                return res
 
         # get sub items
-        dirs, files = self.get_dir_contents(src)
+        dirs, files = self.get_dir_contents(src, exclude)
 
         # copy files
         for file in files:
-            res = self.file_add(src + "/" + file, dest + "/" + file)
+            res = self.file_add(src + "/" + file, dest + "/" + file, src_svn)
             if(res.status == -1):
                 return res
            
         # copy dirs
         for dir in dirs:
-            res = self.dir_add(src + "/" + dir, dest + "/" + dir)
+            res = self.dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
             if(res.status == -1):
                 return res
 
         return result(1)
 
+    """ FIXME IMPLEMENT 
+    """
     def dir_remove(self, dir):
-#        print "Remove dir " + dir
         return result(1)
 
-    """ FIXME we assume we copy to svn 
-    """
-    def file_add(self, src, dest):
-#        print "Add file " + src + " to " + dest
-        shutil.copy(src, dest)
-        return self.add(dest)
+    """T Adds a file.
 
+    If src_svn is True it does the same as copy file.
+    src                 The source directory.
+    dest                The destination directory.
+    src_svn             Either the source or the target is a svn checkout
+                        if True the source is, else the destination.
+    returns             A result object.
+    """
+    def file_add(self, src, dest, src_svn):
+        shutil.copy(src, dest)
+
+        if(src_svn):
+            return (1)
+        else:
+            return self.svn_add(dest)
+
+    """T Copies a file.
+
+    src                 The source directory.
+    dest                The destination directory.
+    returns             A result object.
+    """
     def file_copy(self, src, dest):
-#        print "Copy file " + src + " to " + dest
         shutil.copy(src, dest)
         return result(1)
 
+    """ T Removes a file
 
-    """ FIXME we assume we remove from svn 
+    file                The file to remove.
+    is_svn              Is the file in an svn checkout.
+    returns             A result object.
     """
-    def file_remove(self, file):
-#        print "Remove file " + file
-        return self.remove(file)
+    def file_remove(self, file, is_svn):
+        if(is_svn):
+            return self.svn_remove(file)
+        else:
+            os.remove(file)
+            return result(1)
 
     """T adds a file to the repo
 
@@ -484,7 +392,7 @@ class SVN:
     but if scheduled for removal but not commited 
     svn info still returns info :/
     """
-    def add(self, file):
+    def svn_add(self, file):
 
         # FIXME  we should test whether the file is already in the repo
         
@@ -500,7 +408,7 @@ class SVN:
     """T removes a file from the repo
 
     """
-    def remove(self, file):
+    def svn_remove(self, file):
         # FIXME  we should test whether the file is in the repo
 
         # execute (repo not required)
@@ -518,7 +426,7 @@ class SVN:
 
     """
     # note the mask should be send by reference
-    def status(self, file, mask = None):
+    def svn_status(self, file, mask = None):
         result_mask = 0
 
         # if a file is send we only look after that file
@@ -552,12 +460,15 @@ class SVN:
 
         return result(1, out, err)
 
-    """X Tests whether a file in the local checkout exists (private)
-    
-    returns True of False
+    """\ Cleans up a checkout
+
+    After a commit where a directory is removed the client doesn't remove
+    this directory. This routine removes all files with the '?' flag.
+    returns             A result object.
     """
-    def file_exists(self, file):
-        return result(-1, "", "not implanted")
+    def svn_cleanup(self):
+        # FIXME do something
+        pass
 
     """V Executes the command (private)
     
@@ -565,8 +476,7 @@ class SVN:
     """
     def execute(self, command):
         
-        if(self.verbose):
-            print "Execute: " +  command
+        self.log(self.LOG_LEVEL_DEBUG, "Execute: " + command)
 
         stdin, stdout, stderr =  os.popen3(command)
         stdin.close()
@@ -576,4 +486,8 @@ class SVN:
         stdout.close()
 
         return out, err
+
+    def log(self, level, msg):
+        if(level <= self.log_level):
+            print msg
 

@@ -104,6 +104,8 @@ if __name__ == "__main__":
             sys.exit(2)
 
         if(target == None):
+            # FIXME this should be an optional parameter, if ommitted
+            # use a temp dir which gets cleared after termination
             print("No target specified.")
             sys.exit(2)
 
@@ -112,14 +114,19 @@ if __name__ == "__main__":
             sys.exit(2)
 
         extract(server,  options.upload, target)
-        svn = libsvn.SVN(wescamp + "/" + options.upload, verbose)
-        res = svn.sync(target)
+        svn = libsvn.SVN(wescamp + "/" + options.upload, 3) # debug level hard coded
+        res = svn.svn_update()
+        if(res == -1):
+            print res.err
+            sys.exit(1)
+    
+        res = svn.copy_to_svn(target, ["translations"])
 
         if(res.err != ""):
             print "Error :" + res.err
             sys.exit(1)
 
-        res = svn.commit("wescamp.py automatic update")
+        res = svn.svn_commit("wescamp.py automatic update")
         if(res.err != ""):
             print "Error :" + res.err
             sys.exit(1)
