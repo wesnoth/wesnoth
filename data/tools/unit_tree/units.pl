@@ -69,9 +69,9 @@ my ($i, $html, %types, %unit_id, @adv);
 $unit_id{AdvanceTo} = 'AdvanceTo';
 # Variables used on the tree generation
 my (%spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id);
-my %races = qw/race Race drake Drakes dwarf race^Dwarves elf Elves goblin race^Goblins human Humans lizard race^Lizards 
-	mechanical race^Mechanical merman race^Mermen monster race^Monsters naga race^Nagas ogre race^Ogres
-	orc Orcs troll race^Trolls undead race^Undead wose race^Woses/;
+my %races = qw/race Race bats race^Bats drake race^Drakes dwarf race^Dwarves elf race^Elves goblin race^Goblins gryphon race^Gryphons 
+	human race^Humans lizard race^Lizards mechanical race^Mechanical merman race^Mermen monster race^Monsters naga race^Nagas ogre race^Ogres
+	orc race^Orcs troll race^Trolls undead race^Undead wose race^Woses/;
 # HTML code for each attack
 my $att_html = "<tr>\n\t<td><img src={icon}></td>\n\t";
 $att_html .= "<td>{name}</td>\n\t<td>{type}</td>\n\t<td>{damage}-{number}</td>\n\t<td>{range}</td>\n\t<td>{special}<!-- -->&nbsp;</td>\n</tr>\n";
