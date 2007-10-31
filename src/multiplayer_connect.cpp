@@ -230,6 +230,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 						if(*itor == *search) {
 							faction_ = faction_index;
 							llm_.update_leader_list(faction_);
+							llm_.update_gender_list(llm_.get_leader());
 							combo_faction_.enable(false);
 						}
 					}
@@ -270,6 +271,9 @@ connect::side::side(const side& a) :
 {
 	llm_.set_leader_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
 	llm_.set_gender_combo((enabled_ && leader_.empty()) ? &combo_gender_ : NULL);
+	// FIXME: this is an ugly hack to force updating the gender list when the side
+	// widget is initialized. Need an optimal way. -- shadowmaster
+	llm_.update_gender_list(llm_.get_leader());
 }
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
@@ -690,9 +694,12 @@ void connect::side::import_network_user(const config& data)
 			if(faction_ > int(parent_->era_sides_.size()))
 				faction_ = 0;
 			llm_.update_leader_list(faction_);
+			llm_.update_gender_list(llm_.get_leader());
 		}
 		if(combo_leader_.enabled()) {
 			llm_.set_leader(data["leader"]);
+		}
+		if (combo_gender_.enabled()) {
 			llm_.set_gender(data["gender"]);
 		}
 	}
@@ -710,6 +717,8 @@ void connect::side::reset(mp::controller controller)
 			faction_ = 0;
 		if(combo_leader_.enabled())
 			llm_.update_leader_list(0);
+		if (combo_gender_.enabled())
+			llm_.update_gender_list(llm_.get_leader());
 	}
 
 	update_ui();

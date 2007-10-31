@@ -104,23 +104,59 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 {
 	int gender_index = gender_combo_ != NULL ? gender_combo_->selected() : 0;
 	genders_.clear();
+	gender_ids_.clear();
+	if (leader == "random" || leader == "-" || leader == "?") {
+		// Assume random/unknown leader/faction == unknown gender
+		gender_ids_.push_back("null");
+		genders_.push_back("-");
+		gender_combo_->enable(false);
+		gender_combo_->set_items(genders_);
+		gender_combo_->set_selected(0);
+		return;
+	}
+
 	const game_data::unit_type_map& utypes = data_->unit_types;
 	if (utypes.find(leader) != utypes.end()) {
-		const std::vector<unit_race::GENDER> genders = utypes.find(leader)->second.genders();
+		const unit_type* ut;
+		const unit_type* utg;
+		ut = &(utypes.find(leader)->second);
+		const std::vector<unit_race::GENDER> genders = ut->genders();
 		if (genders.size() < 2) {
 			gender_combo_->enable(false);
 		} else {
-			genders_.push_back("random");
+			gender_ids_.push_back("random");
+			genders_.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("Random"));
 			gender_combo_->enable(true);
 		}
 		for (std::vector<unit_race::GENDER>::const_iterator i=genders.begin(); i != genders.end(); ++i) {
-			genders_.push_back(*i == unit_race::FEMALE ? "female" : "male");
+			utg = &(ut->get_gender_unit_type(*i));
+
+			// Make the internationalized titles for each gender, along with the WML ids
+			if (*i == unit_race::FEMALE)
+			{
+				gender_ids_.push_back("female");
+#ifdef LOW_MEM
+				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Feminine ♀"));
+#else
+				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + ut->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Feminine ♀"));
+#endif
+			}
+			else
+			{
+				gender_ids_.push_back("male");
+#ifdef LOW_MEM
+				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Masculine ♂"));
+#else
+				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + ut->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Masculine ♂"));
+#endif
+			}
 		}
 		gender_combo_->set_items(genders_);
 		gender_index %= genders_.size();
 		gender_combo_->set_selected(gender_index);	
 	} else {
-		genders_.push_back("random");
+		gender_ids_.push_back("random");
+		genders_.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("Random"));
 		gender_combo_->enable(false);
 		gender_combo_->set_items(genders_);
 		gender_combo_->set_selected(0);	
@@ -139,10 +175,9 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 			const unit_type* ut;
 			ut = &(utypes.find(*itor)->second);
 			if (gender_combo_ != NULL && !genders_.empty() && size_t(gender_combo_->selected()) < genders_.size()) {
-				// TODO: add support for translating these in the UI!!!
-				if (genders_[gender_combo_->selected()] == "male"){
+				if (gender_ids_[gender_combo_->selected()] == "male"){
 					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::MALE));
-				} else if (genders_[gender_combo_->selected()] == "female") {
+				} else if (gender_ids_[gender_combo_->selected()] == "female") {
 					ut = &(utypes.find(*itor)->second.get_gender_unit_type(unit_race::FEMALE));
 				}
 			}
@@ -218,6 +253,6 @@ std::string leader_list_manager::get_leader() const
 std::string leader_list_manager::get_gender() const
 {
 	if(gender_combo_ == NULL || genders_.empty() || size_t(gender_combo_->selected()) >= genders_.size())
-		return "?";
-	return genders_[gender_combo_->selected()];
+		return "null";
+	return gender_ids_[gender_combo_->selected()];
 }

@@ -42,6 +42,7 @@ private:
 	void populate_leader_combo(int selected_index);
 	std::vector<std::string> leaders_;
 	std::vector<std::string> genders_;
+	std::vector<std::string> gender_ids_;
 	config::child_list side_list_;
 	const game_data* data_;
 	gui::combo* leader_combo_;
