@@ -365,7 +365,7 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 			throw incorrect_format_exception(msg.c_str());
 		}
 
-		map = std::string(data, 0, header_offset + 2);
+		map = std::string(data, header_offset + 2, std::string::npos);
 	}
 
 	try {
