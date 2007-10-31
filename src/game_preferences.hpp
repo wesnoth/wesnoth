@@ -166,7 +166,6 @@ namespace preferences {
 	void set_chat_lines(int lines);
 
 	bool compress_saves();
-	bool mp_female_leaders_flag();
 
 	std::set<std::string> &encountered_units();
 	std::set<t_translation::t_letter> &encountered_terrains();
