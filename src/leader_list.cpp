@@ -138,7 +138,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 #ifdef LOW_MEM
 				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Feminine ♀"));
 #else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + ut->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Feminine ♀"));
+				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Feminine ♀"));
 #endif
 			}
 			else
@@ -147,7 +147,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 #ifdef LOW_MEM
 				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Masculine ♂"));
 #else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + ut->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Masculine ♂"));
+				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Masculine ♂"));
 #endif
 			}
 		}
@@ -226,8 +226,8 @@ void leader_list_manager::set_gender(const std::string& gender)
 		return;
 
 	int gender_index = 0;
-	for(std::vector<std::string>::const_iterator itor = genders_.begin();
-			itor != genders_.end(); ++itor) {
+	for(std::vector<std::string>::const_iterator itor = gender_ids_.begin();
+			itor != gender_ids_.end(); ++itor) {
 		if(gender == *itor) {
 			gender_combo_->set_selected(gender_index);
 			return;

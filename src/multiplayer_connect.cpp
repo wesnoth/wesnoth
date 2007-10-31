@@ -698,6 +698,9 @@ void connect::side::import_network_user(const config& data)
 		}
 		if(combo_leader_.enabled()) {
 			llm_.set_leader(data["leader"]);
+			// FIXME: not optimal, but this hack is necessary to do after updating
+			// the leader selection. Otherwise, gender gets always forced to "male".
+			llm_.update_gender_list(llm_.get_leader());
 		}
 		if (combo_gender_.enabled()) {
 			llm_.set_gender(data["gender"]);

@@ -56,7 +56,10 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp, const game_da
 
 void wait::leader_preview_pane::process_event()
 {
+
 	if (leader_combo_.changed() || gender_combo_.changed()) {
+		leaders_.set_leader_combo(&leader_combo_);
+		leaders_.update_gender_list(leaders_.get_leader());
 		set_dirty();
 	}
 }
@@ -87,22 +90,33 @@ void wait::leader_preview_pane::draw_contents()
 				faction = faction.substr(p+1);
 		}
 		std::string leader = leaders_.get_leader();
-
+		std::string gender = leaders_.get_gender();
 
 		const game_data::unit_type_map& utypes = data_->unit_types;
 		std::string leader_name;
 		std::string image;
 
-		if (utypes.find(leader) != utypes.end()) {
-			leader_name = utypes.find(leader)->second.language_name();
+		const unit_type* ut;
+		const unit_type* utg;
 
+		if (utypes.find(leader) != utypes.end() && leader != "random") {
+			ut = &(utypes.find(leader)->second);
+			if (!gender.empty()) {
+				if (gender == "female")
+					utg = &(ut->get_gender_unit_type(unit_race::FEMALE));
+				else
+					utg = &(ut->get_gender_unit_type(unit_race::MALE));
+			} else
+				utg = ut;
+
+			leader_name = utg->language_name();
 #ifdef LOW_MEM
-			image = utypes.find(leader)->second.image();
+			image = utg->image();
 #else
-			image = utypes.find(leader)->second.image() + "~RC(" + utypes.find(leader)->second.flag_rgb() + ">1)";
+			image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">1)");
 #endif
-
 		}
+
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
 				itor != recruit_list.end(); ++itor) {
 
@@ -131,8 +145,8 @@ void wait::leader_preview_pane::draw_contents()
 		font::draw_wrapped_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Recruits: ") + recruit_string.str(),area.x, area.y + 132 + 30 + (leader_rect.h - leader_combo_.height()) / 2,
 				area.w);
-		leader_combo_.set_location(leader_rect.x + leader_rect.w + 10, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
-		gender_combo_.set_location(leader_rect.x + leader_rect.w + 10, gender_rect.y + (gender_rect.h - gender_combo_.height()) / 2);
+		leader_combo_.set_location(leader_rect.x + leader_rect.w + 16, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
+		gender_combo_.set_location(leader_rect.x + leader_rect.w + 16, gender_rect.y + (gender_rect.h - gender_combo_.height()) / 2);
 	}
 }
 
@@ -406,6 +420,7 @@ void wait::generate_menu()
 
 		t_string side_name = sd["name"];
 		std::string leader_type = sd["type"];
+		std::string gender_id = sd["gender"];
 
 		// Hack: if there is a unit which can recruit, use it as a
 		// leader. Necessary to display leader information when loading
@@ -424,17 +439,28 @@ void wait::generate_menu()
 		std::string leader_name;
 		std::string leader_image;
 		const game_data::unit_type_map& utypes = game_data_.unit_types;
-		if (utypes.find(leader_type) != utypes.end()) {
-			leader_name = utypes.find(leader_type)->second.language_name();
+		const unit_type* ut;
+		const unit_type* utg;
 
+		if (utypes.find(leader_type) != utypes.end() && leader_type != "random") {
+			ut = &(utypes.find(leader_type)->second);
+			if (!gender_id.empty()) {
+				if (gender_id == "female")
+					utg = &(ut->get_gender_unit_type(unit_race::FEMALE));
+				else
+					// FIXME: this will make it look male, even if it's random. But all this
+					// code will be wiped out when the MP UI gets unified, anyway.
+					utg = &(ut->get_gender_unit_type(unit_race::MALE));
+			} else
+				utg = ut;
+
+			leader_name = utg->language_name();
 #ifdef LOW_MEM
-			leader_image = utypes.find(leader_type)->second.image();
+			leader_image = utg->image();
 #else
-			leader_image = utypes.find(leader_type)->second.image() + std::string("~RC(") + std::string(utypes.find(leader_type)->second.flag_rgb() + ">" + sd["side"] + ")");
+			leader_image = utg->image() + std::string("~RC(") + std::string(utg->flag_rgb() + ">" + sd["side"] + ")");
 #endif
-
 		} else {
-
 			leader_image = leader_list_manager::random_enemy_picture;
 		}
 		if (!leader_image.empty()) {
