@@ -833,7 +833,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		   map_.on_board(new_hex)) {
 
 			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
-				current_route_ = get_route(selected_unit, dest, current_team());
+				current_route_ = get_route(selected_unit, dest, teams_[selected_unit->second.side()-1]);
 				if(!browse) {
 					(*gui_).set_route(&current_route_);
 				}
@@ -1182,7 +1182,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 	//otherwise we're trying to move to a hex
 	else if(!commands_disabled && !browse && selected_hex_.valid() && selected_hex_ != hex &&
-		     u != units_.end() && !enemy_paths_ &&
+		     u != units_.end() && u->second.side() == team_num_ &&
 		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 		move_unit_along_current_route(check_shroud);
@@ -1199,23 +1199,33 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 		u = clicked_u;
 
-		if(u != units_.end() && u->second.side() == team_num_ && !gui_->fogged(u->first)) {
+		if(u != units_.end() && !gui_->fogged(u->first)) {
 			const bool teleport = u->second.get_ability_bool("teleport",u->first);
-			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
-								   false,teleport,viewing_team(),path_turns_);
 
-			next_unit_ = u->first;
+			if (u->second.side() == team_num_) {
+				current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
+							   false,teleport,viewing_team(),path_turns_);
+				show_attack_options(u);
+				gui_->highlight_reach(current_paths_);
 
-			show_attack_options(u);
+				next_unit_ = u->first;
 
-			gui_->highlight_reach(current_paths_);
-
-			const gamemap::location go_to = u->second.get_goto();
-			if(map_.on_board(go_to)) {
-				paths::route route = get_route(u, go_to, current_team());
-				gui_->set_route(&route);
+				const gamemap::location go_to = u->second.get_goto();
+				if(map_.on_board(go_to)) {
+					paths::route route = get_route(u, go_to, current_team());
+					gui_->set_route(&route);
+				}
+				game_events::fire("select",hex);
+			} else {
+				unit_movement_resetter move_reset(u->second);
+				current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
+							   false,teleport,viewing_team(),path_turns_);
+				gui_->highlight_reach(current_paths_);
+				// the highlight now comes from selection
+				// and not anymore from the mouseover on an enemy
+				enemy_paths_ = false; 
 			}
-			game_events::fire("select",hex);
+
 		}
 	}
 }
