@@ -833,6 +833,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		   map_.on_board(new_hex)) {
 
 			if(selected_unit != units_.end() && !selected_unit->second.incapacitated()) {
+				// the movement_reset is active only if it's not the unit's turn
+				unit_movement_resetter move_reset(selected_unit->second,
+						selected_unit->second.side() != team_num_); 
 				current_route_ = get_route(selected_unit, dest, teams_[selected_unit->second.side()-1]);
 				if(!browse) {
 					(*gui_).set_route(&current_route_);
