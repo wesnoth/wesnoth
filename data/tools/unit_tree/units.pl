@@ -59,7 +59,8 @@ unless (-e $html_dir) {mkdir $html_dir or die "$html_dir directory cannot be cre
 unless (-e $report_dir) {mkdir $report_dir or die "$report_dir directory cannot be created: $!\n";};
 unless (-e "$html_dir/attacks") {mkdir "$html_dir/attacks" or die "$html_dir/attacks directory cannot be created: $!\n";};
 unless (-e "$html_dir/units") {mkdir "$html_dir/units" or die "$html_dir/units directory cannot be created: $!\n";};
-$data_dir = "$wesnoth_dir/data/core"; 
+$data_dir = "$wesnoth_dir/data/core";
+$data_dir = "$wesnoth_dir/data" if $version =~ /^1.2/;
 $base_dir = $wesnoth_dir; $base_report_dir = $report_dir;
 $units_dir = $data_dir . "/units";
 
@@ -78,7 +79,11 @@ $att_html .= "<td>{name}</td>\n\t<td>{type}</td>\n\t<td>{damage}-{number}</td>\n
 # Information on the units.cfg file
 &ProcessTypes('units.cfg');
 # -- HTML files and raw data reports generation --
-&ProduceDataFiles("unit.html");
+if ($version =~ /^1.2/) {
+	&ProduceDataFiles("unit_1.2.html");
+} else {
+	&ProduceDataFiles("unit.html");
+}
 
 # Multiplayer
 # Print multiplayer units
@@ -560,6 +565,7 @@ sub CopyImages {
     $att_folder = 'attacks/';
     $unit_folder = 'units/';
   }
+    $data_dir = $wesnoth_dir if $version =~ /^1.2/;
 	# Attacks images
 	print "Copying attack icons\n";
 	open (ATT, "$report_dir/attacks.txt") or die "Couldn't open attacks.txt: $!\n";
