@@ -751,7 +751,8 @@ void connect::side::resolve_random()
 	}
 
 	if (llm_.get_leader() == "random") {
-		// Choose a random leader type.
+		// Choose a random leader type, and force gender to be random
+		llm_.set_gender("random");
 		const config& fact = *parent_->era_sides_[faction_];
 		std::vector<std::string> types = utils::split(fact["random_leader"]);
 		if (!types.empty()) {
@@ -772,13 +773,15 @@ void connect::side::resolve_random()
 	}
 	// Resolve random genders "very much" like standard unit code
 	if (llm_.get_gender() == "random") {
-		const game_data::unit_type_map& utypes = parent_->game_data_.unit_types;
-		if (utypes.find(leader_) != utypes.end()) {
+		game_data::unit_type_map::const_iterator ut = parent_->game_data_.unit_types.find(leader_.empty() ? llm_.get_leader() : leader_);
 
-			const std::vector<unit_race::GENDER> possible_genders = utypes.find(leader_)->second.genders();
-			if (possible_genders.size() >= 2) {
-				const int gchoice = get_random() % possible_genders.size();
-				switch ( possible_genders[gchoice] )
+		if (ut != parent_->game_data_.unit_types.end()) {
+			const std::vector<unit_race::GENDER> glist = ut->second.genders();
+			if (!glist.empty()) {
+				const int gchoice = get_random() % glist.size();
+				// Pick up a gender, using the random 'gchoice' index
+				unit_race::GENDER sgender = glist[gchoice];
+				switch (sgender)
 				{
 					case unit_race::FEMALE:
 						gender_ = "female";
@@ -789,18 +792,8 @@ void connect::side::resolve_random()
 					default:
 						gender_ = "null";
 				}
-			} else {
-				// Otherwise we can't do it; set it to only available value, if any.
-				if (! possible_genders.empty()) {
-					if (possible_genders.front() == unit_race::FEMALE)
-						gender_ = "female";
-					else
-						gender_ = "male";
-				} else
-					gender_ = "null";
-			}
+			} else gender_ = "null";
 		} else
-			// FIXME: assert would be better?
 			gender_ = "null";
 	}
 }
