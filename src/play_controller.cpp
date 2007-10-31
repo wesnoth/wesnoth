@@ -31,21 +31,24 @@
 
 #define LOG_NG LOG_STREAM(info, engine)
 
-play_controller::play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-	int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay) :
+play_controller::play_controller(const config& level, const game_data& gameinfo,
+	game_state& state_of_game, int ticks, int num_turns, const config& game_config,
+	CVideo& video, bool skip_replay) :
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
-	help_manager_(&game_config, &gameinfo, &map_),
-	mouse_handler_(gui_, teams_, units_, map_, status_, gameinfo, undo_stack_, redo_stack_, state_of_game),
-	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config, status_, state_of_game, undo_stack_, redo_stack_),
-	generator_setter(&recorder), statistics_context_(level["name"]), gameinfo_(gameinfo), level_(level), game_config_(game_config),
+	help_manager_(&game_config, &gameinfo, &map_), mouse_handler_(gui_, teams_,
+		units_, map_, status_, gameinfo, undo_stack_, redo_stack_, state_of_game),
+	menu_handler_(gui_, units_, teams_, level, gameinfo, map_, game_config,
+		status_, state_of_game, undo_stack_, redo_stack_),
+	generator_setter(&recorder), statistics_context_(level["name"]),
+	gameinfo_(gameinfo), level_(level), game_config_(game_config),
 	gamestate_(state_of_game), status_(level, num_turns, &state_of_game),
 	map_(game_config, level["map_data"], gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP), ticks_(ticks),
 	xp_mod_(atoi(level["experience_modifier"].c_str()) > 0 ? atoi(level["experience_modifier"].c_str()) : 100),
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1), player_number_(1),
 	first_player_ (lexical_cast_default<unsigned int,std::string>(level_["playing_team"], 0) + 1),
-	start_turn_(status_.turn()), skip_replay_(skip_replay), browse_(false), linger_(false), scrolling_(false),
-	is_host_(true)
+	start_turn_(status_.turn()), skip_replay_(skip_replay), browse_(false),
+	linger_(false), is_host_(true), scrolling_(false),
 {
 	status_.teams = &teams_;
 	game_config::add_color_info(level);
