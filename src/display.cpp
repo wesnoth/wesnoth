@@ -174,6 +174,11 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 		if ((x_mod * 2 + y_mod) < (s / 2)) {
 			x_modifier = -1;
 			y_modifier = -1;
+		// @todo this hack allows the editor to modify the odd border tiles
+		// but the selection still has glitches.
+		} else if (y_mod < 0 && (x_mod * 2 - y_mod) < (s * 3 / 2)) {			
+			x_modifier = 0;
+			y_modifier = -1;
 		} else if ((x_mod * 2 - y_mod) < (s * 3 / 2)) {
 			x_modifier = 0;
 			y_modifier = 0;
