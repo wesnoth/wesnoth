@@ -48,6 +48,7 @@ void unit_attack(
                  const attack_type& attack, const attack_type* secondary_attack,
 		 int swing,std::string hit_text);
 void unit_recruited(gamemap::location& loc);
+void unit_selected(gamemap::location& loc);
 
 
 //! Set healer_loc to an invalid location if there are no healers.

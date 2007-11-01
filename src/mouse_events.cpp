@@ -29,6 +29,7 @@
 #include "unit_abilities.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
+#include "unit_display.hpp"
 #include "sdl_utils.hpp"
 
 #include <cstdlib>
@@ -1219,6 +1220,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 					paths::route route = get_route(u, go_to, current_team());
 					gui_->set_route(&route);
 				}
+				unit_display::unit_selected(u->first);
 				sound::play_sound("select-unit.wav");
 				game_events::fire("select",hex);
 			} else {

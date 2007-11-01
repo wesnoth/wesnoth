@@ -417,4 +417,29 @@ void unit_healing(unit& healed_p,gamemap::location& healed_loc, std::vector<unit
 	disp->update_display();
 	events::pump();
 }
+
+
+void unit_selected(gamemap::location& loc)
+{
+	game_display* disp = game_display::get_singleton();
+	if(!disp || disp->video().update_locked() ||disp->fogged(loc)) return;
+	unit_map::iterator u = disp->get_units().find(loc);
+	if(u == disp->get_units().end()) return;
+
+	u->second.set_hidden(true);
+	disp->scroll_to_tile(loc,game_display::ONSCREEN);
+	disp->draw();
+	u->second.start_animation(*disp,loc,u->second.choose_animation(*disp,loc,"selected"),true);
+	u->second.set_hidden(false);
+	while(!u->second.get_animation()->animation_finished()) {
+
+		disp->invalidate(loc);
+		disp->draw();
+		events::pump();
+		disp->delay(10);
+	}
+	u->second.set_standing(*disp,loc);
+	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
+}
+
 } // end unit_display namespace
