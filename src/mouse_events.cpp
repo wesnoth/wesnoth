@@ -1221,7 +1221,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 					gui_->set_route(&route);
 				}
 				unit_display::unit_selected(u->first);
-				sound::play_sound("select-unit.wav");
+				sound::play_UI_sound("select-unit.wav");
 				game_events::fire("select",hex);
 			} else {
 				unit_movement_resetter move_reset(u->second);
