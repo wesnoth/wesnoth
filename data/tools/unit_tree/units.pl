@@ -599,7 +599,7 @@ sub CopyImages {
 		$image =~ s/"//g;
 		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
 		$image =~ s/.png/+female.png/;
-		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
+		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image") unless (! -e $image);
 	}
 	close UNITS;
 	# zombie units

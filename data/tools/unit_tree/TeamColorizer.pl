@@ -64,5 +64,5 @@ foreach(@fill){
     $convert="$convert $_";
 }
 $convert = "$convert $infilename $outfilename";
-print "$convert\n";
+#print "$convert\n";
 system($convert);
