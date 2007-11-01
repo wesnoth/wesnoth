@@ -632,6 +632,9 @@ void menu::handle_event(const SDL_Event& event)
 				} else {
 					double_clicked_ = true;
 					last_was_doubleclick_ = true;
+					if(!silent_) {
+						sound::play_UI_sound(game_config::sounds::button_press);
+					}
 				}
 			} else if (last_was_doubleclick_) {
 				// If we have a double click as the next event, it means
