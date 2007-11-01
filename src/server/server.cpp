@@ -350,8 +350,6 @@ void server::run()
 			if(!e.socket) {
 				// "Could not send initial handshake" really fatal?
 				ERR_SERVER << "fatal network error: " << e.message << "\n";
-				if (e.message == "Could not send initial handshake")
-					continue;
 				throw e;
 				break;
 			} else {
