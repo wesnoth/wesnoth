@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
 # jan2xue <75jan@163.com>, 2005
-# Huang huan <unicon221@gmail.com>, 2005. (unicon)
+# Huang huan <unicon221@gmail.com>, 2005.
+# Dionysus <Dionysus.China@gmail.com>, 2007.(unicon)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-01 13:52+0200\n"
-"PO-Revision-Date: 2007-04-28 12:18+0800\n"
-"Last-Translator: Huang Lechuan (allblue_dream) <whateverwilliam@gmail.com>\n"
+"PO-Revision-Date: 2007-11-01 15:57+0800\n"
+"Last-Translator: Dionysus <Dionysus.China@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,8 +38,9 @@ msgstr ""
 "治疗+4：\n"
 "允许单位在每回合开始时治疗相邻受伤的友好单位，或阻止毒药在该回合发作。\n"
 "\n"
-"一个单位每回合最多可以恢复4点生命值，或阻止毒药在该回合发作。\n"
-"一个中毒单位不能被治愈，必须进入村庄或靠近一个治疗者。"
+"本单位每回合可以为附近每个单位恢复最多4点生命值，或阻止毒药在该回合发作。\n"
+"'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
+"位可以解毒"
 
 #: data/abilities.cfg:27
 msgid "heals +8"
@@ -59,8 +61,9 @@ msgstr ""
 "本单位将魔法与草药混合来加快治疗效果。一般情况下在战场上是没有如此快的恢复速"
 "度的。\n"
 "\n"
-"一个单位每回合最多可以恢复8点生命值，或阻止毒药在该回合发作。\n"
-"一个中毒单位不能被治愈，必须进入村庄或靠近一个治疗者。"
+"本单位每回合可以为附近每个单位恢复最多8点生命值，或阻止毒药在该回合发作。\n"
+"'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
+"位可以解毒"
 
 #: data/abilities.cfg:42
 msgid "cures"
@@ -73,7 +76,8 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "治愈：\n"
-"一个治疗师可以治愈单位的中毒效果，但不会在本回合恢复这个单位额外的生命值。"
+"拥有'治愈'能力的单位可以解除附近单位的中毒效果，但是该回合不会再为该单位恢复"
+"生命"
 
 #: data/abilities.cfg:57
 msgid "regenerates"
@@ -100,7 +104,7 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 "坚定：\n"
-"本单位具有双倍抗性，在防御时最多达到50%。这并不影响他的弱点。"
+"本单位具有双倍抗性，最高50%。该单位的弱点不受此能力影响"
 
 #: data/abilities.cfg:87 data/abilities.cfg:107 data/abilities.cfg:139
 #: data/abilities.cfg:183 data/abilities.cfg:239
@@ -136,7 +140,7 @@ msgid ""
 "Zones of Control."
 msgstr ""
 "游击：\n"
-"本单位善于从敌人旁边迅速通过，且能忽略所有敌人单位的可控制区域。"
+"本单位善于从敌人旁边迅速通过，且能忽略所有敌人单位的控制区域。"
 
 #: data/abilities.cfg:317
 msgid "illuminates"
@@ -152,7 +156,7 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "照明：\n"
-"本单位照亮附近区域，使善良（混乱）单位更好（差）地战斗\n"
+"本单位照亮附近区域，使守序（混乱）单位更好（差）地战斗\n"
 "\n"
 "任何相邻的单位在战斗时，处于晚上（黄昏）的都相当于是黄昏（白天）。"
 
@@ -238,7 +242,7 @@ msgid ""
 msgstr ""
 "狂暴：\n"
 "无论是用于攻击还是防御，这轮将攻击一直持续进行，直到一个战斗单位被杀死，或持"
-"续攻击达到30回合。"
+"续攻击达到30次。"
 
 #: data/abilities.cfg:415
 msgid "backstab"
@@ -275,7 +279,6 @@ msgid "slows"
 msgstr "减速"
 
 #: data/abilities.cfg:445
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -308,7 +311,7 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "精准：\n"
-"攻击时，本攻击至少有60%的击中率。"
+"进攻时，本攻击至少有60%的击中率。"
 
 #: data/abilities.cfg:472
 msgid "magical"
@@ -320,7 +323,7 @@ msgid ""
 "This attack always has a 70% chance to hit."
 msgstr ""
 "魔法：\n"
-"本攻击总是有70%的击中率。"
+"本攻击总是有70%的命中率。"
 
 #: data/abilities.cfg:482
 msgid "swarm"
@@ -362,7 +365,7 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "吸血：\n"
-"通过吸食活着的单位的生命来治疗自己，能治疗造成伤害一半的生命值(向下舍入)。"
+"通过吸食生物单位的生命来治疗自己，能治疗造成伤害一半的生命值(向下舍入)。"
 
 #: data/abilities.cfg:511
 msgid "firststrike"
@@ -374,11 +377,11 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "先机：\n"
-"使用本攻击方式，本单位每次攻击都能率先出击，即使是处于防御状态也不例外。"
+"使用本攻击方式，本单位每次攻击都能率先出击，即使是处于受到攻击时也不例外。"
 
 #: data/abilities.cfg:520
 msgid "poison"
-msgstr "中毒"
+msgstr "毒素"
 
 #: data/abilities.cfg:522
 msgid ""
@@ -386,7 +389,7 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
-"中毒：\n"
+"毒素：\n"
 "本攻击使目标中毒，中毒单位每回合失去8点生命值，直到他们被治愈或生命值降到1。"
 
 #: data/about.cfg:6 data/campaigns/Eastern_Invasion.cfg:26
@@ -407,7 +410,7 @@ msgstr "音效"
 
 #: data/about.cfg:84
 msgid "Scenario Designers"
-msgstr "剧本设计"
+msgstr "场景设计"
 
 #: data/about.cfg:101
 msgid "Multiplayer Developers"
@@ -449,7 +452,7 @@ msgstr "加泰罗尼亚语"
 
 #: data/about.cfg:203
 msgid "Chinese Translation"
-msgstr "简体中文"
+msgstr "汉语"
 
 #: data/about.cfg:211
 msgid "Czech Translation"
@@ -906,7 +909,7 @@ msgstr "当前维护者"
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:3
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:123
 msgid "female^Battle Princess"
-msgstr "战地公主"
+msgstr "姬武士"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:30
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:149
@@ -916,7 +919,7 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
-"公主出身高贵，从师最伟大的将军学习剑术，跟随最伟大的哲人学习战术，成为厉害的"
+"公主出身高贵，从师最伟大的将军学习剑术，跟随最伟大的哲人学习战术，成为勇猛的"
 "战士，有力的领袖。现在的她久经沙场，意志坚强，能够支持身边的人进行战斗。"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:33
@@ -1182,7 +1185,7 @@ msgstr "权杖"
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:3
 #: data/tutorial/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
-msgstr "法师长老"
+msgstr "长老法师"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:22
 #: data/tutorial/units/Elder_Mage.cfg:22
@@ -1191,7 +1194,7 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
-"法师长老经历了太多的征战，力量以稍不如前。但是敌人还是惧怕他那强有力的闪电。"
+"长老法师经历了太多的征战，力量以稍不如前。但是敌人还是惧怕他那强有力的闪电。"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elder_Mage.cfg:24
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Outlaw_Princess.cfg:90
@@ -1225,7 +1228,7 @@ msgstr "闪电"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr "高贵精灵君主"
+msgstr "高阶精灵君主"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_High_Lord.cfg:18
 msgid ""
@@ -1246,7 +1249,7 @@ msgstr "仙境之火"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr "精灵夫人"
+msgstr "精灵女性"
 
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Lady.cfg:18
 msgid ""
@@ -1306,7 +1309,7 @@ msgid ""
 "level units."
 msgstr ""
 "君主是许多军队的高贵统领，在近战中特别强而有力，并不乏射术。像指挥官一样，君"
-"主拥有领导技能，并让相邻的低级单位更好的战斗。"
+"主拥有领导能力，并让相邻的低级单位更好的战斗。"
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:3
 msgid "female^Princess"
@@ -1321,9 +1324,9 @@ msgid ""
 "fight better due to her presence. The Princess is also nimble and dextrous, "
 "having skills like that of a thief."
 msgstr ""
-"公主出身高贵，从师最伟大的将军学习剑术，跟随最伟大的哲人学习战术，成为厉害的"
-"战士，有力的领袖。公主身边的单位也会因为她的存在而更好的战斗。公主也十分灵活"
-"和敏捷，有着如盗贼般的技能。"
+"公主出身高贵，从师最伟大的将军学习剑术，跟随最伟大的哲人学习战术，成为勇猛的"
+"战士，有力的领袖。公主身边的单位也会因为她的存在而更好的战斗。公主也十分机智"
+"和敏捷，有着如盗贼般的能力。"
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:99
 msgid "Princess"
@@ -1368,7 +1371,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Youth.cfg:21
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:24
 msgid "training sword"
-msgstr "木剑"
+msgstr "竹剑"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
@@ -1390,7 +1393,7 @@ msgstr ""
 "几个世纪见不到一条龙也是正常的事。通常他们也不过是像影子一样从远方飞过。传说"
 "对火龙带来的破坏描述得十分具体。他们飞行的速度之快让人心中不适，他们那皮革的"
 "翅膀展开有100英尺宽；他们从空中俯冲下来，像猎物喷出地狱般的烈焰。从巨龙的火焰"
-"呼吸下逃脱的人还要小心他残暴的撕咬和能够粉碎一切的尾巴。火龙既狡诈又残酷，为"
+"吐息下逃脱的人还要小心他残暴的撕咬和能够粉碎一切的尾巴。火龙既狡诈又残酷，为"
 "了取胜常常还带着一群帮手。"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fire_Dragon.cfg:23
@@ -1409,7 +1412,7 @@ msgstr "尾"
 #: data/units/Drake_Inferno.cfg:135 data/units/Drake_Sky.cfg:176
 #: data/units/Drake_Warrior.cfg:136
 msgid "fire breath"
-msgstr "火焰呼吸"
+msgstr "火焰吐息"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Fireball.cfg:4
 msgid "Fireball"
@@ -1422,7 +1425,7 @@ msgstr "这是一个火球。除了用作“伪装移动单位”外，千万别
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr "高贵指挥官"
+msgstr "贵族指挥官"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:26
 msgid ""
@@ -1432,13 +1435,13 @@ msgid ""
 "with the sword, although they also carry a bow to use when necessary. If the "
 "Commander is lost, so is the battle."
 msgstr ""
-"高贵指挥官是由在战场上指挥团队作战的人担当的。他们拥有领导能力，能让相邻的低"
+"贵族指挥官是由在战场上指挥团队作战的人担当的。他们拥有领导能力，能让相邻的低"
 "级单位更好的作战。指挥官非常善于剑术，虽然需要的时候也会用弓箭。如果指挥官死"
 "亡，战斗也会失败。"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr "高贵战士"
+msgstr "贵族战士"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:21
 msgid ""
@@ -1450,11 +1453,11 @@ msgstr ""
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr "高贵君主"
+msgstr "贵族领主"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr "高贵少年"
+msgstr "贵族少年"
 
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Youth.cfg:21
 msgid ""
@@ -1612,7 +1615,7 @@ msgstr "冷冻风暴"
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:4
 #: data/units/Human_Mage_Arch.cfg:116
 msgid "female^Arch Mage"
-msgstr "女性大法师"
+msgstr "大法师"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Arch_Mage.cfg:26
 msgid ""
@@ -1655,7 +1658,7 @@ msgstr "火球"
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:4
 #: data/units/Human_Mage_Great.cfg:117
 msgid "female^Great Mage"
-msgstr "女性高阶大法师"
+msgstr "高阶大法师"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Great_Mage.cfg:27
 msgid ""
@@ -1685,7 +1688,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:4
 #: data/units/Human_Mage_Red.cfg:138
 msgid "female^Red Mage"
-msgstr "女性红袍法师"
+msgstr "红袍法师"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Red_Mage.cfg:26
 msgid ""
@@ -1718,7 +1721,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:4
 #: data/units/Human_Mage_Silver.cfg:142
 msgid "female^Silver Mage"
-msgstr "女性银袍法师"
+msgstr "银袍法师"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Elyssa_Silver_Mage.cfg:25
 msgid ""
@@ -1829,7 +1832,7 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"善良单位善于在白天战斗，不善于在晚上战斗。\n"
+"守序单位善于在白天战斗，不善于在晚上战斗。\n"
 "\n"
 "白天：+25%伤害\n"
 "晚上：-25%伤害"
@@ -2020,7 +2023,7 @@ msgstr "不死族"
 
 #: data/fonts.cfg:6
 msgid "DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-msgstr "DejaVuSans.ttf,FreeSans.ttf,gkai00mp.ttf,sazanami-gothic.ttf"
+msgstr "gkai00mp.ttf,DejaVuSans.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/game.cfg:37
 msgid "Binary Saves"
@@ -2035,13 +2038,12 @@ msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
 
 #: data/game.cfg:58
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "加入官方服务器"
+msgstr "官方服务器"
 
 #: data/game.cfg:62
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "可选服务器"
 
 #: data/help.cfg:9
 msgid "Introduction"
@@ -2061,7 +2063,7 @@ msgstr "单位"
 
 #: data/help.cfg:37
 msgid "Abilities"
-msgstr "技能"
+msgstr "能力"
 
 #: data/help.cfg:45
 msgid "Weapon Specials"
@@ -2085,8 +2087,8 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
-"某些单位有一些技能，可以直接影响其他单位，或影响那单位与其他单位的互动。这篇"
-"文章将讨论这些技能。"
+"某些单位有一些能力，可以直接作用于其他单位，或影响该单位与其他单位的互动。这"
+"文将讨论这些能力。"
 
 #: data/help.cfg:74
 msgid ""
@@ -2106,7 +2108,7 @@ msgstr ""
 
 #: data/help.cfg:79
 msgid "Fundamentals of Gameplay"
-msgstr "游戏基本玩法"
+msgstr "游戏基本知识"
 
 #: data/help.cfg:80
 msgid ""
@@ -2133,10 +2135,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"开始玩时，建议您在主菜单选择<italic>text=教学模式</italic>。您将来到一个能与"
-"您互动的学习环境，在其中学习韦诺的基本战略。在这之后，建议您先玩战役：“续位者"
-"之战”。先选<italic>text=战役</italic>，再选<italic>text=“续位者之战”</"
-"italic>。“韦诺之战”挑战性很高，因此建议您开始先选<italic>text=容易</italic>。"
+"开始玩时，建议您在主菜单选择<italic>text=教程</italic>。您将来到一个能与您互"
+"动的学习环境，在其中学习韦诺的基本战略。在这之后，建议您先玩战役：“继位者”。"
+"先选<italic>text=战役</italic>，再选<italic>text=“继位者”</italic>。“韦诺之"
+"战”挑战性很高，因此建议您开始先选<italic>text=容易</italic>。"
 
 #: data/help.cfg:85
 msgid ""
@@ -2145,9 +2147,9 @@ msgid ""
 "will be shown explaining each item. This is especially useful when you "
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
-"在游戏中请记住：将鼠标指向游戏中许多物品时，一些信息会显示在状态条上，并附有"
-"简短的描述信息。这一功能在您第一次看到新<ref>dst=abilities text=技能</ref>时"
-"非常有用。"
+"请记住：在游戏中，将鼠标指向许多东西时，相关信息会显示在状态条上，并附有简短"
+"的描述。这一功能在您看到没见过的<ref>dst=abilities text=能力</ref>时非常有"
+"用。"
 
 #: data/help.cfg:90
 msgid "About the Game"
@@ -2163,7 +2165,7 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"本游戏由一系列的战斗组合而成，每次战斗称作一个剧本。每个剧本会让您的部队和一"
+"本游戏由一系列的战斗组合而成，每次战斗称作一个场景。每个场景会让您的部队和一"
 "个或更多的对手作战。您可以选择和电脑或朋友在同一台电脑上对战（同台竞技模"
 "式）。如果您的电脑在局域网内，您也可以和其他局域网内的人对战。如果您的电脑能"
 "上网，则可以和其他能上网的人对战。"
@@ -2180,7 +2182,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"每个剧本都会有一些目标，并在剧本开始的时候显示。这些目标会以列表的形式显示您"
+"每个场景都会有一些目标，并在场景开始的时候显示。这些目标会以列表的形式显示您"
 "需要什么才能赢得游戏或您应该做什么以避免失败。通常这些目标是击败所有敌人，但"
 "有时您需要到达某地去拯救某人，解决迷题，或仅仅要求在一定回合内存活下来。"
 
@@ -2195,8 +2197,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"战役讲述着一个故事，是由一系列环环相扣的剧本组成的，您常常得更小心谨慎，确保"
-"最精良的部队存活下来，能够在战役中的下个剧本里继续战斗。"
+"战役讲述着一个故事，是由一系列环环相扣的场景组成的，您常常得更小心谨慎，确保"
+"最精良的部队存活下来，能够在战役中的下个场景里继续战斗。"
 
 #: data/help.cfg:100
 msgid "Recruiting and Recalling"
@@ -2400,10 +2402,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"移动时，您还需要记住“可控制区域”的概念。每个单位都控制他旁边周围的格子，敌军"
-"如进入那些格子，将立即耗尽移动点数。学习如何利用可控制区域，是玩韦诺的一个重"
-"点。只有<ref>dst=ability_skirmisher text='游击'</ref>技能可以忽视可控制区域的"
-"影响。"
+"移动时，您还需要记住“控制区域”的概念。每个单位都控制他旁边周围的格子，敌军如"
+"进入那些格子，将立即耗尽移动点数。学习如何利用控制区域，是玩韦诺的一个重点。"
+"只有<ref>dst=ability_skirmisher text='游击'</ref>能力可以忽视控制区域的影响。"
 
 #: data/help.cfg:143
 msgid ""
@@ -2420,7 +2421,7 @@ msgstr ""
 
 #: data/help.cfg:148
 msgid "Shroud and Fog of War"
-msgstr "覆盖物和战争迷雾"
+msgstr "战场黑幕和战争迷雾"
 
 #: data/help.cfg:149
 msgid ""
@@ -2434,11 +2435,11 @@ msgid ""
 "locations adjacent to those within one turn's move (ignoring zones of "
 "control and enemy units)."
 msgstr ""
-"某些战役的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。覆盖物会"
-"隐藏这个区域的地形和任何单位。但是，一旦被侦测，您时时刻刻都能看见这个区域。"
-"战争迷雾只会隐藏（不是您的或盟友的）单位和村庄的归属。在附近有您的单位时迷雾"
-"会消失，当他们离去后会再次笼罩。每个单位都能清除本回合移动所经过区域和区域附"
-"近的覆盖物和迷雾（忽略敌人部队和敌人可控制区域）。"
+"某些战役的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
+"会隐藏这个区域的地形和任何单位。但是，一旦被侦测，您时时刻刻都能看见这个区"
+"域。战争迷雾只会隐藏（不是您的或盟友的）单位和村庄的归属。在附近有您的单位时"
+"迷雾会消失，当他们离去后会再次笼罩。每个单位都能清除本回合移动所经过区域和区"
+"域附近的战场黑幕和迷雾（忽略敌人部队和敌人控制区域）。"
 
 #: data/help.cfg:154
 msgid "Combat"
@@ -2578,8 +2579,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"少数单位拥有特别的<ref>dst=abilities text=技能</ref>，会影响在战斗中的伤害输"
-"出。通常拥有<ref>dst=weaponspecial_charge text=冲锋</ref>技能的单位会使战斗中"
+"少数单位拥有特别的<ref>dst=abilities text=能力</ref>，会影响在战斗中的伤害输"
+"出。通常拥有<ref>dst=weaponspecial_charge text=冲锋</ref>能力的单位会使战斗中"
 "的进攻方和防守方都输出双倍的伤害。"
 
 #: data/help.cfg:176
@@ -2650,7 +2651,7 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "一天中的时刻对不同种类的单位的攻击输出有不同的影响，具体如下：\n"
-" 善良单位在白天有+25%的伤害加乘，晚上有-25%的伤害减少。\n"
+" 守序单位在白天有+25%的伤害加乘，晚上有-25%的伤害减少。\n"
 " 混乱单位在晚上有-25%的伤害加乘，晚上有+25%的伤害减少。\n"
 " 中立单位不受时间的影响。"
 
@@ -2695,7 +2696,7 @@ msgstr "后半夜"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr "记住，一些剧本是发生在地下的，那里一直是晚上。"
+msgstr "记住，一些场景是发生在地下的，那里一直是晚上。"
 
 #: data/help.cfg:207
 msgid "Experience and Advancement"
@@ -2836,7 +2837,7 @@ msgstr ""
 "\n"
 "\n"
 "休息能和其它治疗方式叠加，但是村庄，恢复，治疗和治愈效果则不能互相叠加。游戏"
-"会自动选择最优治疗方式。最后，单位能在剧本与剧本之间完全恢复生命值。"
+"会自动选择最优治疗方式。最后，单位能在进入下一个场景时完全恢复生命值。"
 
 #: data/help.cfg:233
 msgid "Income and Upkeep"
@@ -2850,7 +2851,7 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "韦诺中，仅仅征兵并战斗是不够的。您得注意您的金币，特别是在战役中，您能将多余"
-"的金币携带到下一个剧本中。关于金币有两个方面：收入和维护费用。"
+"的金币携带到下一个场景中。关于金币有两个方面：收入和维护费用。"
 
 #: data/help.cfg:236
 msgid ""
@@ -2908,7 +2909,7 @@ msgid ""
 msgstr ""
 "\n"
 "维护费用的支付规则中有一个重要的例外：即具有忠诚特质的单位不需支付维护费用。"
-"剧本开始时您拥有的单位（比如Konrad或Delfador），或在剧本中加入己方的单位（如"
+"场景开始时您拥有的单位（比如Konrad或Delfador），或在场景中加入己方的单位（如"
 "在“续位者之战”第二幕中加入的骑兵）通常都具有忠诚特质。"
 
 #: data/help.cfg:246
@@ -2924,7 +2925,7 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 "韦诺之战的基本规则就此结束。您可能需要阅读基本的游戏策略，或再熟悉一下"
-"<ref>dst=traits text=特质</ref>和<ref>dst=abilities text=技能</ref>。现在您已"
+"<ref>dst=traits text=特质</ref>和<ref>dst=abilities text=能力</ref>。现在您已"
 "经有足够的经验去玩《继位者之战》这个战役了。祝您好运，玩得开心！"
 
 #: data/help.cfg:258
@@ -2953,7 +2954,7 @@ msgstr ""
 "\n"
 "\n"
 "除了不死族之外所有可能的特质是：<ref>dst=traits_intelligent text=聪慧</ref>，"
-"<ref>dst=traits_quick text=敏捷</ref>，<ref>dst=traits_resilient text=坚韧</"
+"<ref>dst=traits_quick text=迅捷</ref>，<ref>dst=traits_resilient text=坚韧</"
 "ref>和<ref>dst=traits_strong text=强壮</ref>。"
 
 #: data/help.cfg:269
@@ -2997,7 +2998,7 @@ msgstr ""
 
 #: data/help.cfg:282
 msgid "Quick"
-msgstr "敏捷"
+msgstr "迅捷"
 
 #: data/help.cfg:283
 msgid "Quick units have 1 extra movement point, but 10% less HP than usual."
@@ -3454,7 +3455,7 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in Caves, whereas dwarves have 50%."
 msgstr ""
-"明亮的洞穴是指地面上的光线能照射到的一小片洞穴。这为善良单位提供了攻击加乘，"
+"明亮的洞穴是指地面上的光线能照射到的一小片洞穴。这为守序单位提供了攻击加乘，"
 "并移除了混乱单位的攻击加乘。就其他方面来说，采天光的洞穴与其它洞穴并无二"
 "致。\n"
 "\n"
@@ -3550,7 +3551,7 @@ msgid ""
 "for lawful units and removes the attack bonus from chaotic units."
 msgstr ""
 "穿越熔岩是一件非常危险的事。这种地形只有那些能飞得相当高的单位才可以通过。熔"
-"岩发射出光辉，照亮了它的上空。这位善良单位提供了攻击加乘，同时消除了混乱单位"
+"岩发射出光辉，照亮了它的上空。这位守序单位提供了攻击加乘，同时消除了混乱单位"
 "的攻击加乘。"
 
 #: data/help.cfg:530 data/terrain.cfg:52
@@ -3616,7 +3617,7 @@ msgid ""
 "Quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"退出剧本（无提示窗口）。"
+"退出场景（无提示窗口）。"
 
 #: data/help.cfg:558
 msgid ""
@@ -3632,7 +3633,7 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"保存游戏并退出剧本（无提示窗口）。"
+"保存游戏并退出场景（无提示窗口）。"
 
 #: data/help.cfg:564
 msgid ""
@@ -3826,7 +3827,7 @@ msgstr "戒指会让持有人每回合恢复一些生命值。"
 
 #: data/items.cfg:555
 msgid "Can't set abilities yet, sorry."
-msgstr "抱歉，还不能设置技能。"
+msgstr "抱歉，还不能设置能力。"
 
 #: data/items.cfg:576
 msgid "Ring of Slowness"
@@ -3865,6 +3866,7 @@ msgid "storm trident"
 msgstr "风暴三叉戟"
 
 #: data/items.cfg:742
+#, fuzzy
 msgid "Zap"
 msgstr "刷"
 
@@ -5125,16 +5127,15 @@ msgid "6p - The Manzivan Traps"
 msgstr "6p - Manzivan陷阱"
 
 #: data/scenarios/multiplayer/6p_The_Manzivan_Traps.cfg:7
-#, fuzzy
 msgid ""
 "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"这是一幅40x20的3v3对战地图。Manzivan陷阱以让人困惑犯难的地形而著称，在这种地"
-"形上很容易失去位置或过分扩张。玩家1、4、5组队对阵玩家2、3、6（东部对阵西"
-"部）。适合100金币的起始资源。图上有33座村庄。"
+"这是一幅40x20的3v3对战地图。Manzivan陷阱以让人迷惑的困难地形而著称，在这种地"
+"形上很容易因失去据点或过分扩张而失败。玩家1、4、5组队对阵玩家2、3、6（东部对"
+"阵西部）。适合100金币的起始资源。图上有33座村庄。"
 
 #: data/scenarios/multiplayer/6p_Waterloo_Sunset.cfg:5
 msgid "6p - Waterloo Sunset"
@@ -5258,7 +5259,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:6
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "韦诺测试标准图：穿越覆盖物"
+msgstr "韦诺测试标准图：穿越迷雾"
 
 #: data/scenarios/multiplayer/Wesbench_Shroud_Walk.cfg:7
 msgid ""
@@ -5304,8 +5305,7 @@ msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-"本单位可以自动恢复生命值，因此可以治疗自己受到的伤害，仿佛一直处在村庄里一"
-"样。"
+"本单位具有'恢复'能力，因此可以治疗自己受到的伤害，就像一直处在村庄里一样。"
 
 #: data/special-notes.cfg:17
 msgid ""
@@ -5325,28 +5325,27 @@ msgstr ""
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
-msgstr ""
-"本单位离群作战的能力使其能够忽视敌人的可控制区域，随意绕行至对方的身后。"
+msgstr "本单位游击能力使其能够忽视敌人的控制区域，随意绕行至对方的身后。"
 
 #: data/special-notes.cfg:26
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr "照明的能力增加相邻区域的亮度。"
+msgstr "'照明'能力增加相邻区域的亮度。"
 
 #: data/special-notes.cfg:29
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
-"本单位可以瞬间从一座村庄移动到另一座村庄，条件是玩家必须对这两座村庄都具有控"
-"制权，且村庄没有被单位占据。"
+"本单位可以瞬间从一座村庄移动到另一座村庄，条件是这两座村庄都归玩家所有，且目"
+"的村庄中没有单位驻守。"
 
 #: data/special-notes.cfg:32
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-"在树林中，本单位的伏击技能让敌人无法侦测到自己的存在，除非敌人就在相邻区域"
-"内。本单位在攻击时也会暴露自己。"
+"在树林中，本单位的伏击能力让敌人无法侦测到自己的存在，除非敌人就在相邻格子"
+"里。本单位在攻击时也会暴露自己。"
 
 #: data/special-notes.cfg:35
 msgid " This unit is able to hide at night, leaving no trace of its presence."
@@ -5355,32 +5354,35 @@ msgstr "本单位能够在夜晚隐身，不留蛛丝马迹。"
 #: data/special-notes.cfg:38
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
-msgstr "本单位可以在深水中潜行而不被敌人侦测到，潜行时不需要到水面换气。"
+msgstr "本单位可以在深水中潜行不需要到水面换气，因此在深水中不会被敌人发现。"
 
 #: data/special-notes.cfg:41
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-"无论何时，只要使用狂暴技能，本单位就会一直攻击敌人，直到自己或敌人倒下为止。"
+"无论何时，只要使用带有狂暴属性的攻击，本单位就会一直攻击敌人，直到自己或敌人"
+"倒下为止。"
 
 #: data/special-notes.cfg:44
 msgid ""
 "  If someone with the same allegiance distracts an enemy, this unit may "
 "backstab, inflicting double damage, by creeping around behind that enemy."
 msgstr ""
-"如果同盟的某个单位分散了敌人的注意力，本单位就可以偷偷绕到敌人背后进行背刺攻"
-"击，造成双倍伤害。"
+"如果同盟的某个单位分散了敌人的注意力，本单位就可以从敌人背后进行背刺攻击，造"
+"成双倍伤害。"
 
 #: data/special-notes.cfg:47
 msgid " Foes who lose their life to the plague will rise again in unlife."
-msgstr "被瘟疫攻击击毙的敌方单位会重生为不死族的单位。"
+msgstr "被瘟疫攻击击毙的敌方单位会重生为攻击者一方的不死族的单位。"
 
 #: data/special-notes.cfg:50
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
-msgstr "本单位能够减缓敌人的行动，使其移动速度和攻击输出减半，直到本回合结束。"
+msgstr ""
+"本单位的'减速'攻击能够减缓敌人的行动，使其移动速度和攻击输出减半，直到本回合"
+"结束。"
 
 #: data/special-notes.cfg:53
 msgid ""
@@ -5391,7 +5393,7 @@ msgstr "把敌人化为石头的能力使本单位变得非常可怕。"
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
-msgstr "本单位的神射术保证其具有很高的命中率，但这只是在进攻时有效。"
+msgstr "本单位的'精准'攻击保证其具有很高的命中率，但这只是在进攻时有效。"
 
 #: data/special-notes.cfg:59
 msgid ""
@@ -5403,14 +5405,16 @@ msgstr "本单位的远程攻击属于魔法攻击，总是有较高的命中率
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr "本单位的连击能力在自己受伤的情况下会被削弱。"
+msgstr "本单位的'连击'攻击在自己受伤的情况下会被削弱。"
 
 #: data/special-notes.cfg:65
+#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"使用冲锋技能会带来双倍的攻击输出，也会遭到双倍的伤害。但这不会影响防守反击。"
+"使用带有冲锋属性的攻击会带来双倍的伤害输出，也会受到双倍的伤害。但这不会影响"
+"防守反击。"
 
 #: data/special-notes.cfg:68
 msgid ""
@@ -5422,15 +5426,15 @@ msgstr "本单位在作战时可以从对手身上吸血以补充自己的生命
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
-msgstr "本单位修长的武器使其能够在战斗中率先出击，即使在防守时也不例外。"
+msgstr "本单位修长的武器使其能够在战斗中率先出击，即使在受攻击时也不例外。"
 
 #: data/special-notes.cfg:74
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-"本单位毒药的受害者将受到持续伤害，直到他们移入村庄或被拥有治愈能力的单位治好"
-"为止。"
+"本单位‘毒素’攻击的受害者将受到持续伤害，直到他们移入村庄或被拥有治愈能力的单"
+"位治好为止。"
 
 #: data/team-colors.cfg:4
 msgid "Red"
@@ -5472,7 +5476,7 @@ msgstr "青"
 #: src/multiplayer_create.cpp:69 src/multiplayer_lobby.cpp:423
 #: src/multiplayer_lobby.cpp:429
 msgid "Shroud"
-msgstr "覆盖物"
+msgstr "战场黑幕"
 
 #: data/terrain.cfg:18 data/themes/macros.cfg:148
 #: src/multiplayer_lobby.cpp:419
@@ -5493,7 +5497,7 @@ msgstr "沙丘"
 
 #: data/terrain.cfg:334
 msgid "Snow Hills"
-msgstr "雪丘"
+msgstr "雪山"
 
 #: data/terrain.cfg:381
 msgid "Tropical Forest"
@@ -5607,7 +5611,7 @@ msgstr "行动"
 
 #: data/themes/default.cfg:569
 msgid "short end-turn^End"
-msgstr "结束"
+msgstr "结束回合"
 
 #: data/themes/dfool.cfg:218
 msgid "MP"
@@ -5659,7 +5663,7 @@ msgstr "下一边"
 
 #: data/themes/macros.cfg:124
 msgid "play side turn"
-msgstr "播放本边回合"
+msgstr "播放本方回合"
 
 #: data/themes/macros.cfg:160
 msgid "Skip animation"
@@ -5670,13 +5674,13 @@ msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
-"善良单位在白天更善于战斗，混乱单位在晚上更善于战斗，中立单位不受时间的影响。"
+"守序单位在白天更善于战斗，混乱单位在晚上更善于战斗，中立单位不受时间的影响。"
 
 #: data/tips.cfg:2
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
-msgstr "在战役中，通过“召回”选项，您能使用上个剧本中战斗过有经验的单位。"
+msgstr "在战役中，通过“召回”选项，您能使用上个场景中战斗过有经验的单位。"
 
 #: data/tips.cfg:3
 msgid ""
@@ -5707,8 +5711,8 @@ msgid ""
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
-"中毒的单位每回合损失8点生命值，但不会中毒而死。毒素影响不会使生命值降到1点以"
-"下。中毒的单位可以通过移动到村庄或有“治愈”能力的单位旁来治愈中毒影响。"
+"中毒的单位每回合损失8点生命值，但不会中毒而死。毒素最多让单位生命值降到1点。"
+"中毒的单位可以通过移动到村庄或有“治愈”能力的单位旁来治愈中毒影响。"
 
 #: data/tips.cfg:6
 msgid ""
@@ -5716,8 +5720,8 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"您可以通过游戏菜单中的“召回”选项来调用上个剧本中的单位。通过不停的召回同一个"
-"单位，您可以建立一支强力而经验值丰富的军队。"
+"您可以通过游戏菜单中的“召回”选项来调用上个场景中的单位。通过不停的召回单位，"
+"您可以建立一支强力而经验值丰富的军队。"
 
 #: data/tips.cfg:7
 msgid ""
@@ -5726,9 +5730,9 @@ msgid ""
 "turn. Level 0 units are too frail to control a zone; and skirmisher units "
 "are skilled enough to ignore these zones."
 msgstr ""
-"每个单位旁的格子是他的可控制区域。如果单位移动到敌人的可控制区域，他在本回合"
-"将不能再移动。0级单位太弱小，没有可控制区域；游击战士则能通过技巧忽略这些区"
-"域。"
+"每个单位旁的格子是他的控制区域。如果单位移动到敌人的控制区域，他在本回合将不"
+"能再移动。0级单位太弱小，没有可控制区域；拥有'游击'技能的战士则能忽略控制区域"
+"的影响。"
 
 #: data/tips.cfg:8
 msgid ""
@@ -5738,7 +5742,7 @@ msgid ""
 "least 60% chance to hit when attacking."
 msgstr ""
 "击中单位的几率依赖于这个单位在所处位置的防御力。不过魔法攻击和防守反击时都有"
-"70%的命中率，而精准射击至少有60%的命中率。"
+"70%的命中率，而精准射击在进攻时至少有60%的命中率。"
 
 #: data/tips.cfg:9
 msgid ""
@@ -5749,7 +5753,7 @@ msgstr "驻扎在村庄的单位每回合开始前可以恢复8点生命值。"
 msgid ""
 "Units rest if they do not move or attack during their turn.  They will "
 "recover 2 hitpoints at the beginning of their next turn."
-msgstr "单位在本回合休息，不移动或攻击，则能在下回合开始前恢复2点生命值。"
+msgstr "单位在本回合休息，即不移动也不攻击，则能在下回合开始前恢复2点生命值。"
 
 #: data/tips.cfg:11
 msgid ""
@@ -5772,7 +5776,7 @@ msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
-msgstr "杀敌是获得经验值最好的方式。单位杀敌会获得8x敌人等级的经验值。"
+msgstr "杀敌是获得经验值最好的方式。杀死敌人会获得8x敌人等级的经验值。"
 
 #: data/tips.cfg:14
 msgid ""
@@ -5792,7 +5796,7 @@ msgstr ""
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
-msgstr "如果您多面受敌，最好的方式是让可以损失的单位去拖延敌人。"
+msgstr "如果您多面受敌，最好的策略是让可以损失的单位去拖延敌人。"
 
 #: data/tips.cfg:17
 msgid ""
@@ -5816,21 +5820,21 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"您的领袖可以从城堡要塞中征募或召回单位——不仅仅是剧本开始时的要塞——您可以征服"
-"敌人的要塞，并从那里征募单位。有些盟友愿意在他们的要塞里腾出让您征募单位的空"
-"间。"
+"您的领袖可以从城堡的要塞中征募或召回单位——不仅仅是场景开始时的要塞——您可以征"
+"服敌人的要塞，并从那里征募单位。有些盟友愿意在他们的要塞里腾出让您征募单位的"
+"空间。"
 
 #: data/tips.cfg:20
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and holy attacks."
-msgstr "骷髅对穿刺和剑刃攻击具有抗性，但却容易受冲击、火焰和神圣伤害。"
+msgstr "骷髅对穿刺和剑刃攻击具有较强抗性，但却容易受冲击、火焰和神圣伤害。"
 
 #: data/tips.cfg:21
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
-msgstr "有领导能力的单位会让相邻同一阵营的低级单位获得更好的攻击。"
+msgstr "有'领导'能力的单位会提升同一方相邻低级单位的攻击力。"
 
 #: data/tips.cfg:22
 msgid ""
@@ -5838,8 +5842,8 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
-"一般来说不要让您的单位停在一个未占领的村庄旁边，因为敌人单位会移到村庄里并攻"
-"击您的单位，同时享受村庄带给他的防御和治疗优势。"
+"一般来说不要让您的单位停在一个无人驻守的村庄旁边，因为敌人单位会移到村庄里并"
+"攻击您的单位，同时享受村庄带给他的防御和治疗优势。"
 
 #: data/tips.cfg:23
 msgid ""
@@ -5849,7 +5853,7 @@ msgstr "当把鼠标放到能力或特质上时，您会看到有关的详细描
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
-msgstr "用单位组成战线，以掩护那些受伤害的单位，让他们恢复。"
+msgstr "用单位组成战线，以掩护那些受伤害的单位，让他们得到恢复。"
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
@@ -5880,7 +5884,7 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"“减速”攻击技能会让敌人单位移动减速， 并让他们的伤害输出减半，直到本回合结束。"
+"“减速”攻击会让敌人单位移动减速， 并让他们的伤害输出减半，直到本回合结束。"
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -5896,7 +5900,7 @@ msgstr "单位升级时都会得到治疗效果。精明利用升级将会扭转
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
-msgstr "能够冲刺的单位最好用来对付那些能一击必杀的敌人。"
+msgstr "具有'冲锋'攻击的单位最好用来对付那些能一击必杀的敌人。"
 
 #: data/tips.cfg:33
 msgid ""
@@ -5914,8 +5918,8 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
-"开启覆盖物或战争迷雾时，在地图上每个单位的视野由他的最大移动步数决定。在考虑"
-"使用什么兵种进行何种地形的侦查时，请牢记这点。"
+"开启战场黑幕或战争迷雾时，在地图上每个单位的视野由他的最大移动步数决定。在考"
+"虑使用什么兵种进行何种地形的侦查时，请牢记这点。"
 
 #: data/tips.cfg:35
 msgid ""
@@ -5956,11 +5960,11 @@ msgstr "强壮"
 
 #: data/traits.cfg:41
 msgid "dextrous"
-msgstr "灵敏"
+msgstr "灵巧"
 
 #: data/traits.cfg:53
 msgid "quick"
-msgstr "敏捷"
+msgstr "迅捷"
 
 #: data/traits.cfg:68
 msgid "intelligent"
@@ -5982,7 +5986,7 @@ msgstr "刺靶"
 msgid ""
 "Quintains are used to practice swordplay and jousting on.  It would be "
 "extremely unusual to be attacked by one."
-msgstr "刺靶是用来训练剑术和长枪的。被刺靶攻击是件难得一见的事。"
+msgstr "刺靶是用来训练剑术和长枪的。被刺靶攻击实在是不可思议。"
 
 #: data/tutorial/units/Quintain.cfg:20
 msgid "flail"
@@ -5999,8 +6003,8 @@ msgid ""
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
-"尽管人们乐于呆在家园，但最终还是需要一些渡海的手段，即使仅仅用来捕鱼或进行贸"
-"易。大帆船很适合这些用途：速度快，结构坚韧，能适应多种不同的用途，但不适合作"
+"尽管人们乐于呆在家园，但最终还是需要一些航海的工具，即使仅仅用来捕鱼或进行贸"
+"易。大帆船很适合这些用途：速度快，结构坚固，能适应多种不同的用途，但不适合作"
 "战。"
 
 #: data/units/Boat_Galleon.cfg:22
@@ -6083,7 +6087,7 @@ msgid ""
 "weaknesses of their kind, such as the strong vulnerability to spears and "
 "arrows."
 msgstr ""
-"冲击龙战士不善飞行，没有火焰呼吸，他们运用近战的战斗模式也是由于他们的无能——"
+"冲击龙战士不善飞行，没有火焰吐息，他们运用近战的战斗模式也是由于他们的无能——"
 "只是尽量的变废为宝而已。他们可能是稍微缺乏某些技能，但持这种理论的人往往忽视"
 "了他们在同族内战中的作用。\n"
 "\n"
@@ -6115,7 +6119,7 @@ msgid ""
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
-"龙族战士使用弯刀的技巧足以致命，他们还掌握着祖传的火焰呼吸。最强力的龙族战士"
+"龙族战士使用弯刀的技巧足以致命，他们还掌握着祖传的火焰吐息。最强力的龙族战士"
 "加入了龙族勇士的精英部队。"
 
 #: data/units/Drake_Fighter.cfg:63
@@ -6149,8 +6153,8 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "据说他们是最古老的龙族血脉——古代巨龙的直系后代，体内流动的不是血液而是火焰。"
-"他们能够随意吐火的事实为这种说法提供了证据，不过，由于某种原因，从来没有人尝"
-"试着切开火焰之心的皮肤去验证。\n"
+"他们能够随意吐火的事实为这种说法提供了证据，不过由于某种原因，从来没有人尝试"
+"着切开火焰之心的皮肤去验证这一点。\n"
 "\n"
 "特别提示："
 
@@ -6184,9 +6188,9 @@ msgid ""
 "maces which complement their already impressive array. Their intense focus "
 "on their weapons comes at the slight expense of their defensive abilities."
 msgstr ""
-"龙族角斗士与龙族劈裂者截然不同。他们不强调训练，而是强调武器的制造工艺。他们"
-"是龙族社会的铁匠。据说他们拥有最棒的武器——锋利的剑和矛，还有锦上添花的铁锤。"
-"他们对武器过度执着，导致防御能力有所削弱。"
+"龙族角斗士与龙族劈裂者截然不同。他们更强调武器的制造工艺而不是对士兵的训练。"
+"他们是龙族社会的铁匠。据说他们拥有最棒的武器——锋利的剑和矛，还有锦上添花的铁"
+"锤。他们对武器过度执着，导致防御能力有所削弱。"
 
 #: data/units/Drake_Glider.cfg:3
 msgid "Drake Glider"
@@ -6229,8 +6233,10 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"飓风龙战士是飞行大师，是善于飞行的龙战士中的精英。在高高的云天之中，他们能洞"
-"穿大部分防御伪装，在自己毫发无损的情况下向敌人倾泻火雨。"
+"作为天空的统治者,飓风龙战士是是善于飞行的龙战士中的精英。在高高的云天之中，他"
+"们能洞穿大部分防御伪装，在自己毫发无损的情况下向敌人倾泻火雨。\n"
+"\n"
+"特别提示:"
 
 #: data/units/Drake_Inferno.cfg:3
 msgid "Inferno Drake"
@@ -6244,9 +6250,9 @@ msgid ""
 "shining, flame-colored armor is a mark of their proud and powerful caste, "
 "the ideal to which their brethren aspire."
 msgstr ""
-"这些被称为地狱龙战士的“飞行器”是操纵火焰呼吸的高手，更他们的祖先巨龙不相上"
-"下。这种天赋使他们几乎对火焰免疫。他们身着火红闪亮的盔甲，代表着他们高傲而强"
-"大的阶层，是同族们崇拜与向往的对象。"
+"这些被称为地狱龙战士的“飞行烈焰”是操纵火焰吐息的高手，更他们的祖先巨龙不相上"
+"下。这种天赋使他们几乎对火焰免疫。他们身上火红闪亮的盔甲代表着他们高傲而强大"
+"的阶层，令同族们崇拜与向往。"
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -6263,7 +6269,7 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"天空龙战士是真正的空中之王。他们的冲击力和火焰呼吸是敌人的祸根。他们能快速向"
+"天空龙战士是真正的空中之王。他们的冲击力和火焰吐息是敌人的祸根。他们能快速向"
 "猎物俯冲，并在任何人能阻止他们之前逍遥离去。从空中他们能精确的向本来防御极佳"
 "的敌人喷射火焰。\n"
 "\n"
@@ -6284,7 +6290,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "龙族劈裂者是一群选择用戟来代替剑和矛作为主要武器的斗士。由于他们身形伟岸，使"
-"用的武器也可以很大，刺穿一匹马就像人类串烧野猪一样。他们接受的训练提高了他们"
+"用的武器也很大，刺穿一匹马就像人类串烧一只乳猪一样。他们接受的训练提高了他们"
 "的耐力和防御能力，这是他们同龙族角斗士相比最大的优势。\n"
 "\n"
 "特别提示："
@@ -6325,7 +6331,7 @@ msgid ""
 "skills of their ancestors. The great strength of their kind allows them to "
 "strike withering blows, and to withstand punishment in equal measure."
 msgstr ""
-"龙族勇士的剑术很高，并从祖先那里继承了火焰呼吸。龙族强大的力量让他们能够进行"
+"龙族勇士的剑术很高，并从祖先那里继承了火焰吐息。龙族强大的力量让他们能够进行"
 "摧毁性的打击，并能承受巨大的伤害。"
 
 #: data/units/Dwarvish_Berserker.cfg:3
@@ -6596,13 +6602,13 @@ msgid ""
 "their natural grace ensures that they can best any of humanity's fresh "
 "recruits."
 msgstr ""
-"精灵总是以善于箭术而闻名，这就像是与生俱来的技能。即使是以脆弱之躯手握弓箭也"
-"能变得非常致命。在战争中，许多精灵都会拿起弓箭。虽然他们没什么战斗经验，在战"
-"斗中有些脆弱，但天性优雅的他们绝对能够击败人类的新兵。"
+"精灵总是以善于箭术而闻名，这像是与生俱来的技能。即使是以脆弱之躯手握弓箭也能"
+"变得非常致命。在战争中，许多精灵都会拿起弓箭。虽然他们没什么战斗经验，在战斗"
+"中有些脆弱，但天性优雅的他们绝对能够击败人类的新兵。"
 
 #: data/units/Elvish_Archer.cfg:201
 msgid "female^Elvish Archer"
-msgstr "女性精灵弓箭手"
+msgstr "精灵弓箭手"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -6633,7 +6639,7 @@ msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:217
 msgid "female^Elvish Avenger"
-msgstr "女性精灵复仇者"
+msgstr "精灵复仇者"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -6650,9 +6656,9 @@ msgid ""
 "\n"
 "Special Notes:"
 msgstr ""
-"不像其他种族，精灵十分愿意承认并更随那些有战斗经验的同伴。这与人类截然不同，"
+"不像其他种族，精灵十分愿意承认并跟随那些有战斗经验的同伴。这与人类截然不同，"
 "从不靠威逼利诱来建立权威。他们了与选择智者与能力出众的人作领袖。这是精灵种种"
-"低调的强势之一。\n"
+"低调的力量之一。\n"
 "\n"
 "特别提示："
 
@@ -6671,7 +6677,7 @@ msgid ""
 "stare at with wonder."
 msgstr ""
 "少数刻意磨练战斗技巧的精灵与整个精灵族平和的性格有所不符。他们的专著精神和技"
-"艺，连同纯净的状态，使他们的剑术无可匹敌。即使是作为次要技能的射术，他们研习"
+"艺，连同纯净的状态，使他们的剑术无可匹敌。即使是作为次要技能的箭术，他们研习"
 "的也可谓炉火纯青，以至于人类只能对之叹为观止。"
 
 #: data/units/Elvish_Druid.cfg:3
@@ -6692,7 +6698,7 @@ msgstr ""
 "森林精灵所掌握的魔法不太适合战斗，但也有一定的用处。他们的一句命令就能激发他"
 "们所居住的森林，打击那些破坏和平的人。\n"
 "\n"
-"他们的主要技能是治疗，精灵德鲁伊正是由于这种技能被精灵们所敬重。\n"
+"他们的主要能力是治疗，精灵德鲁伊正是由于这种能力被精灵们所敬重。\n"
 "\n"
 "特别提示："
 
@@ -6776,7 +6782,7 @@ msgstr ""
 "精灵锐利的目光是他们善于射术的原因之一。有经验的精灵能射中人类看都看不到的目"
 "标，即使在晚上也不含糊，而且能接二连三的发射。\n"
 "\n"
-"这惊人的技能的代价是他们不擅长剑术。\n"
+"这惊人的能力的代价是他们不擅长剑术。\n"
 "\n"
 "特别提示："
 
@@ -6786,7 +6792,7 @@ msgstr "长弓"
 
 #: data/units/Elvish_Marksman.cfg:212
 msgid "female^Elvish Marksman"
-msgstr "女性精灵神射手"
+msgstr "精灵神射手"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -6829,8 +6835,8 @@ msgstr ""
 "善战。他们在马背上使用弓箭的技术无人可比——事实上，大多数人就是站在平地上也很"
 "难比过他们。\n"
 "\n"
-"这些士兵速度很快，在自己的家园中可以随时随地自由选择攻守，这也让他们自己保全"
-"了性命。"
+"这些士兵速度很快，在自己的家园中可以随时随地自由选择攻守，这种技能保全了他们"
+"中许多人的生命。"
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
@@ -6854,7 +6860,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:214
 msgid "female^Elvish Ranger"
-msgstr "女性精灵游侠"
+msgstr "精灵游侠"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -6913,7 +6919,7 @@ msgstr ""
 "运用自然力量来战斗。敌人在森林里很快会发觉自己被脚下的树根缠绕住，他们的带来"
 "的威胁自然也就大减了。\n"
 "\n"
-"精灵的治疗技能也很出色，在战斗中的用处很大。\n"
+"精灵的治疗能力也很出色，在战斗中的用处很大。\n"
 "\n"
 "特别提示："
 
@@ -6937,7 +6943,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:216
 msgid "female^Elvish Sharpshooter"
-msgstr "女性精灵狙击手"
+msgstr "精灵狙击手"
 
 # what is a shyde?
 #: data/units/Elvish_Shyde.cfg:3
@@ -7216,7 +7222,7 @@ msgstr ""
 
 #: data/units/Human_Horse_Grand_Knight.cfg:3
 msgid "Grand Knight"
-msgstr "大骑士"
+msgstr "高阶骑士"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:19
 msgid ""
@@ -7226,9 +7232,9 @@ msgid ""
 "head of a charge is a terrifying sight for infantry, and is often enough to "
 "break right through a defensive line."
 msgstr ""
-"大骑士达到了剑术和长矛技能的顶峰。他们全身披着板甲，身下坐骑的力量甚至优于速"
-"度。这些勇士就是骑兵部队的核心力量。带头冲锋的大骑士让所有步兵畏惧，并能一次"
-"冲破防线。"
+"高阶骑士达到了剑术和长矛能力的顶峰。他们全身披着板甲，身下坐骑的力量甚至优于"
+"速度。这些勇士就是骑兵部队的核心力量。带头冲锋的大骑士让所有步兵畏惧，并能一"
+"次冲破防线。"
 
 #: data/units/Human_Horse_Grand_Knight.cfg:21
 #: data/units/Human_Horse_Knight.cfg:20 data/units/Human_Horse_Lancer.cfg:21
@@ -7261,8 +7267,8 @@ msgid ""
 "patience, are far safer than a charge. Their lances are still at the ready, "
 "however, and growing experience with these weapons is only to their benefit."
 msgstr ""
-"技艺精湛、纪律严明的骑手将晋升为骑士。他们战斗经验丰富，了解冲刺失败的危险，"
-"运用冲刺技能时也更为谨慎。因此骑士还随身携带佩剑，用心练习比冲刺更加安全的战"
+"技艺精湛、纪律严明的骑手将晋升为骑士。他们战斗经验丰富，了解冲锋失败的危险，"
+"运用冲锋技能时也更为谨慎。因此骑士还随身携带佩剑，用心练习比冲锋更加安全的战"
 "术。他们的长枪也时刻准备就绪，常年使用长枪的经验仍然是他们的优势。"
 
 #: data/units/Human_Horse_Lancer.cfg:3
@@ -7346,7 +7352,7 @@ msgstr ""
 
 #: data/units/Human_Loyalist_Cavalier.cfg:3
 msgid "Cavalier"
-msgstr "骑兵"
+msgstr "近卫骑兵"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:19
 msgid ""
@@ -7354,8 +7360,8 @@ msgid ""
 "both sword and crossbow from horseback. This is fearsome when combined with "
 "their mobility, and such mettle is the subject of tale and song."
 msgstr ""
-"骑兵是马背上的剑术和弩弓高手，在战场上看到他们就看到了胜利。结合他们移动迅速"
-"的特点，他们成为了令人生畏的兵种。这种战斗精神也为许多传说和歌曲所传颂。"
+"近卫骑兵是马背上的剑术和弩弓高手，在战场上看到他们就看到了胜利。结合他们移动"
+"迅速的特点，他们成为了令人生畏的兵种。这种战斗精神也为许多传说和歌曲所传颂。"
 
 #: data/units/Human_Loyalist_Cavalier.cfg:103
 #: data/units/Human_Loyalist_Dragoon.cfg:102
@@ -7434,9 +7440,9 @@ msgstr ""
 "是根据这种陋习而起的。\n"
 "\n"
 "这些老练的剑术家，如果不是贵族出生，看上去也很像贵族。他们随身携带弩弓，能够"
-"方便地藏在外套或斗篷下面。虽然装载缓慢，用于战斗时又让人觉得胜之不武，弩弓实"
-"际上还是很有用的。凡是活得足够长的老剑客，出于实用主义和求生本能，总是会使用"
-"弩弓的，不顾对自己的高贵气质做出妥协。\n"
+"方便地藏在外套或斗篷下面。虽然装载缓慢，用于战斗时又让人觉得胜之不武，弓弩实"
+"际上还是很有用的。凡是活得足够长的老剑客，总是会向实用主义和求生本能妥协，而"
+"舍弃自己的高贵气质的。\n"
 "\n"
 "特别提示："
 
@@ -7675,7 +7681,7 @@ msgid ""
 "Special Notes:"
 msgstr ""
 "剑术大师有着令人羡慕的人生。虽然这是刺激和危险的一生，但是他们已经走到了收获"
-"的季节。这些绅士以高超的技能和潇洒的风度而闻名，有着天生贵族的气质，吸引着诸"
+"的季节。这些绅士以高超的能力和潇洒的风度而闻名，有着天生贵族的气质，吸引着诸"
 "多贵妇人的目光。\n"
 "\n"
 "剑术大师拥有自由选择任务的权利，只要他们愿意，就可以四处任意遨游。他们常常担"
@@ -7843,7 +7849,7 @@ msgstr ""
 
 #: data/units/Human_Mage.cfg:156
 msgid "female^Mage"
-msgstr "女法师"
+msgstr "法师"
 
 #: data/units/Human_Mage_Arch.cfg:3
 msgid "Arch Mage"
@@ -8013,7 +8019,7 @@ msgstr "光束"
 
 #: data/units/Human_Mage_White.cfg:260
 msgid "female^White Mage"
-msgstr "女性白袍法师"
+msgstr "白袍法师"
 
 #: data/units/Human_Mage_of_Light.cfg:3
 msgid "Mage of Light"
@@ -8063,7 +8069,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw.cfg:114
 msgid "female^Outlaw"
-msgstr "女亡命徒"
+msgstr "亡命之徒"
 
 #: data/units/Human_Outlaw_Assassin.cfg:3
 msgid "Assassin"
@@ -8094,7 +8100,7 @@ msgstr "匕首"
 
 #: data/units/Human_Outlaw_Assassin.cfg:196
 msgid "female^Assassin"
-msgstr "女刺客"
+msgstr "刺客"
 
 #: data/units/Human_Outlaw_Bandit.cfg:3
 msgid "Bandit"
@@ -8136,7 +8142,7 @@ msgstr "木棒"
 
 #: data/units/Human_Outlaw_Footpad.cfg:134
 msgid "female^Footpad"
-msgstr "女拦路强盗"
+msgstr "拦路强盗"
 
 #: data/units/Human_Outlaw_Poacher.cfg:3
 msgid "Poacher"
@@ -8184,7 +8190,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Rogue.cfg:114
 msgid "female^Rogue"
-msgstr "女歹徒"
+msgstr "歹徒"
 
 #: data/units/Human_Outlaw_Thief.cfg:3
 msgid "Thief"
@@ -8211,7 +8217,7 @@ msgstr ""
 
 #: data/units/Human_Outlaw_Thief.cfg:231
 msgid "female^Thief"
-msgstr "女贼"
+msgstr "盗贼"
 
 #: data/units/Human_Outlaw_Thug.cfg:3
 msgid "Thug"
@@ -9038,7 +9044,6 @@ msgid "Saurian Oracle"
 msgstr "蜥蜴人先知"
 
 #: data/units/Saurian_Oracle.cfg:22
-#, fuzzy
 msgid ""
 "Certain saurians are seen, dressed in considerable regalia, and covered head "
 "to toe in horrifying, esoteric shapes and markings, both with paint and "
@@ -9388,7 +9393,7 @@ msgstr "暗影波"
 
 #: data/units/Undead_Necro_Dark_Adept.cfg:170
 msgid "female^Dark Adept"
-msgstr "女性黑暗狂徒"
+msgstr "黑暗狂徒"
 
 #: data/units/Undead_Necro_Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
@@ -10362,7 +10367,7 @@ msgstr "升级为： "
 
 #: src/help.cpp:1135
 msgid "Abilities: "
-msgstr "技能： "
+msgstr "能力： "
 
 #: src/help.cpp:1154
 msgid "Cost: "
@@ -10839,12 +10844,10 @@ msgid "Expected Battle Result (HP)"
 msgstr "战斗结果期望（生命值）"
 
 #: src/mouse_events.cpp:301
-#, fuzzy
 msgid " resistance vs "
 msgstr " vs"
 
 #: src/mouse_events.cpp:302
-#, fuzzy
 msgid " vulnerability vs "
 msgstr " vs"
 
@@ -10889,20 +10892,20 @@ msgid "Choose weapon:"
 msgstr "选择武器："
 
 #: src/multiplayer.cpp:100
+#, fuzzy
 msgid "Address"
-msgstr ""
+msgstr "地址"
 
 #: src/multiplayer.cpp:112
-#, fuzzy
 msgid "List of Servers"
-msgstr "连接到服务器"
+msgstr "服务器列表"
 
 #: src/multiplayer.cpp:113
+#, fuzzy
 msgid "Choose a known server from the list"
-msgstr ""
+msgstr "从列表中选择一个已知服务器"
 
 #: src/multiplayer.cpp:140
-#, fuzzy
 msgid "View List"
 msgstr "单位列表"
 
@@ -11534,7 +11537,7 @@ msgstr "伤害类型："
 
 #: src/reports.cpp:329
 msgid "Lawful units: "
-msgstr "善良单位： "
+msgstr "守序单位： "
 
 #: src/reports.cpp:331
 msgid "Neutral units: "
@@ -11735,7 +11738,7 @@ msgstr "混乱"
 
 #: src/unit_types.cpp:1073
 msgid "lawful"
-msgstr "善良"
+msgstr "守序"
 
 #: src/unit_types.cpp:1073
 msgid "neutral"
