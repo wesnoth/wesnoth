@@ -415,6 +415,14 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		if((**d)["offset"].empty() && (**d).get_children("missile_frame").empty()) {
 			(**d)["offset"] ="0~0.6,0.6~0";
 		}
+		if(!(**d).get_children("missile_frame").empty()) {
+			if( (**d)["missile_offset"].empty())(**d)["missile_offset"] = "0~0.8";
+			config tmp;
+			tmp["duration"]="1";
+			(**d).add_child("missile_frame",tmp);
+			(**d).add_child_at("missile_frame",tmp,0);
+		}
+
 		animations.push_back(unit_animation(**d));
 		//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=attack flag\n";
@@ -532,10 +540,6 @@ unit_animation::crude_animation::crude_animation(const config& cfg,const std::st
 	} else {
 		starting_frame_time_ = atoi(cfg[frame_string+"start_time"].c_str());
 	}
-	if(frame_string == "missile_") {
-		// lg::wml_error To be deprecated eventually
-		add_frame(1,unit_frame("",1),true);
-	}
 
 	for(; range.first != range.second; ++range.first) {
 		unit_frame tmp_frame(**range.first);
@@ -549,14 +553,6 @@ unit_animation::crude_animation::crude_animation(const config& cfg,const std::st
 	blend_ratio_ = progressive_double(cfg[frame_string+"blend_ratio"],get_animation_duration());
 	highlight_ratio_ = progressive_double(cfg[frame_string+"alpha"],get_animation_duration());
 	offset_ = progressive_double(cfg[frame_string+"offset"],get_animation_duration());
-	if(offset_.does_not_change() && frame_string == "missile_") {
-		// lg::wml_error To be deprecated eventually
-		offset_=progressive_double("0~0.8",get_animation_duration());
-	}
-	if( frame_string == "missile_") {
-		// lg::wml_error To be deprecated eventually
-		add_frame(1,unit_frame("",1),true);
-	}
 
 	if(!halo_.does_not_change() ||
 			!halo_x_.does_not_change() ||

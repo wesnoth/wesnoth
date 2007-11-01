@@ -173,18 +173,18 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 }
 
 void unit_die(const gamemap::location& loc, unit& loser,
-const attack_type* attack,const attack_type* secondary_attack, unit* winner)
+		const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
-		const std::string& die_sound = loser.die_sound();
-		if(die_sound != "" && die_sound != "null") {
-			sound::play_sound(die_sound);
-		}
+	const std::string& die_sound = loser.die_sound();
+	if(die_sound != "" && die_sound != "null") {
+		sound::play_sound(die_sound);
+	}
 
-		loser.set_dying(*disp,loc,attack,secondary_attack);
+	loser.set_dying(*disp,loc,attack,secondary_attack);
 	if(winner == NULL) { // Test to see if there is no victor.
 
 		while(!loser.get_animation()->animation_finished()) {
@@ -194,7 +194,7 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 			events::pump();
 			disp->delay(10);
 		}
-	return;
+		return;
 	}
 	winner->set_victorious(*disp,loc,attack,secondary_attack);
 	int start_time = minimum<int>(loser.get_animation()->get_begin_time(),winner->get_animation()->get_begin_time());
@@ -204,10 +204,10 @@ const attack_type* attack,const attack_type* secondary_attack, unit* winner)
 
 	while((!loser.get_animation()->animation_would_finish()) || ((!winner->get_animation()->animation_would_finish()))) {
 
-			disp->invalidate(loc);
-			disp->draw();
-			events::pump();
-			disp->delay(10);
+		disp->invalidate(loc);
+		disp->draw();
+		events::pump();
+		disp->delay(10);
 	}
 }
 
