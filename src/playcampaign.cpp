@@ -134,7 +134,7 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 				    ).show();
 	}
 
-	if (res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
+	if (!disp.video().faked() && res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
 		try {
 			playcontroller.linger(log);
 		} catch(end_level_exception& e) {
@@ -165,7 +165,7 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 				    ).show();
 	}
 
-	if (res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
+	if (!disp.video().faked() && res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
 		try {
 			playcontroller.linger(log, res);
 		} catch(end_level_exception& e) {
