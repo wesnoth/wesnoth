@@ -154,7 +154,8 @@ std::string new_map_dialog(display& disp, const t_translation::t_letter fill_ter
 				 confirm_modification_disposal(disp))
 				|| !confirmation_needed) {
 
-				return map_editor::new_map(width_slider.value(), height_slider.value(), fill_terrain);
+				return map_editor::new_map(width_slider.value() + 2 * gamemap::default_border, 
+					height_slider.value() + 2 * gamemap::default_border, fill_terrain);
 			}
 		}
 		if(random_map_setting_button.pressed()) {
