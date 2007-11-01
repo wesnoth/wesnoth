@@ -802,7 +802,7 @@ void display::draw_text_in_hex(const gamemap::location& loc, const std::string& 
 	);
 
 	surface text_surf = font::get_rendered_text(text, font_sz, color);
-	surface back_surf = font::get_rendered_text(text, font_sz, font::DARK_COLOUR);
+	surface back_surf = font::get_rendered_text(text, font_sz, font::BLACK_COLOUR);
 	const int x = get_location_x(loc) - text_surf->w/2
 	              + static_cast<int>(x_in_hex* hex_size());
 	const int y = get_location_y(loc) - text_surf->h/2
