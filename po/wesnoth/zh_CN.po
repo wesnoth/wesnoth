@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:51+0100\n"
-"PO-Revision-Date: 2007-10-30 12:20+0800\n"
-"Last-Translator: Dionysus <huang.wei.bhu@gmail.com>\n"
+"PO-Revision-Date: 2007-11-01 15:56+0800\n"
+"Last-Translator: Dionysus <Dionysus.China@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -323,7 +323,7 @@ msgstr "电脑"
 
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
+msgstr "gkai00mp.ttf,DejaVuSans.ttf,sazanami-gothic.ttf"
 
 #: data/core/help.cfg:10
 msgid "Introduction"
@@ -343,7 +343,7 @@ msgstr "单位"
 
 #: data/core/help.cfg:40
 msgid "Abilities"
-msgstr "技能"
+msgstr "能力"
 
 #: data/core/help.cfg:48
 msgid "Weapon Specials"
@@ -367,8 +367,8 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
-"某些单位有一些技能，可以直接影响其他单位，或影响那单位与其他单位的互动。这篇"
-"文章将讨论这些技能。"
+"某些单位有一些能力，可以直接影响其他单位，或影响那单位与其他单位的互动。这篇"
+"文章将讨论这些能力。"
 
 #: data/core/help.cfg:74
 msgid "Unknown Unit"
@@ -431,9 +431,9 @@ msgstr ""
 "\n"
 "\n"
 "开始玩时，建议您在主菜单选择<italic>text=教学模式</italic>。您将来到一个能与"
-"您互动的学习环境，在其中学习韦诺的基本战略。在这之后，建议您先玩战役：“续位者"
-"之战”。先选<italic>text=战役</italic>，再选<italic>text=“续位者之战”</"
-"italic>。“韦诺之战”挑战性很高，因此建议您开始先选<italic>text=容易</italic>。"
+"您互动的学习环境，在其中学习韦诺的基本战略。在这之后，建议您先玩战役：“继位"
+"者”。先选<italic>text=战役</italic>，再选<italic>text=“继位者”</italic>。“韦"
+"诺之战”挑战性很高，因此建议您开始先选<italic>text=容易</italic>。"
 
 #: data/core/help.cfg:96
 msgid ""
@@ -443,7 +443,7 @@ msgid ""
 "encounter new <ref>dst=abilities text=abilities</ref> for the first time."
 msgstr ""
 "在游戏中请记住：将鼠标指向游戏中许多物品时，一些信息会显示在状态条上，并附有"
-"简短的描述信息。这一功能在您第一次看到新<ref>dst=abilities text=技能</ref>时"
+"简短的描述信息。这一功能在您第一次看到新<ref>dst=abilities text=能力</ref>时"
 "非常有用。"
 
 #: data/core/help.cfg:101
@@ -512,11 +512,10 @@ msgid ""
 "to see its statistics, then press the recruit button to recruit it."
 msgstr ""
 "在游戏开始后，每边要塞里都会有一个领袖。开战之前以及战斗中，您需要为您的部队"
-"征募<ref>dst=units text=单位</ref>。因此，您得有领袖(例如，在“续位者之战”战役"
-"中的Konrad)在<ref>dst=terrain_castle text=城堡</ref>中。然后在菜单中选择征兵"
-"或右键点击一个六边形空格选择<italic>text=征兵</italic>。这样会有一个可供征兵"
-"的列表，旁边有所需金币的数额。点击一个单位查看他的状态，然后点征兵按钮就可征"
-"募。"
+"征募<ref>dst=units text=单位</ref>。因此，您得有领袖(例如，在“继位者”战役中的"
+"Konrad)在<ref>dst=terrain_castle text=城堡</ref>中。然后在菜单中选择征兵或右"
+"键点击一个六边形空格选择<italic>text=征兵</italic>。这样会有一个可供征兵的列"
+"表，旁边有所需金币的数额。点击一个单位查看他的状态，然后点征兵按钮就可征募。"
 
 #: data/core/help.cfg:114
 msgid ""
@@ -699,7 +698,7 @@ msgstr ""
 "\n"
 "移动时，您还需要记住“控制区域”的概念。每个单位都控制他旁边周围的格子，敌军如"
 "进入那些格子，将立即耗尽移动点数。学习如何利用控制区域，是玩韦诺的一个重点。"
-"只有<ref>dst=ability_skirmisher text='游击'</ref>技能可以忽视控制区域的影响。"
+"只有<ref>dst=ability_skirmisher text='游击'</ref>能力可以忽视控制区域的影响。"
 
 #: data/core/help.cfg:154
 msgid ""
@@ -883,8 +882,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"少数单位拥有特别的<ref>dst=abilities text=技能</ref>，会影响在战斗中的伤害输"
-"出。通常拥有<ref>dst=weaponspecial_charge text=冲锋</ref>技能的单位会使战斗中"
+"少数单位拥有特别的<ref>dst=abilities text=能力</ref>，会影响在战斗中的伤害输"
+"出。通常拥有<ref>dst=weaponspecial_charge text=冲锋</ref>能力的单位会使战斗中"
 "的进攻方和防守方都输出双倍的伤害。"
 
 #: data/core/help.cfg:189
@@ -1216,7 +1215,7 @@ msgstr ""
 "\n"
 "维护费用的支付规则中有一个重要的例外：即具有忠诚特质的单位不需支付维护费用。"
 "剧本开始时您拥有的单位（比如Konrad或Delfador），或在剧本中加入己方的单位（如"
-"在“续位者之战”第二幕中加入的骑兵）通常都具有忠诚特质。"
+"在“继位者”第二幕中加入的骑兵）通常都具有忠诚特质。"
 
 #: data/core/help.cfg:259
 msgid "Wrap Up"
@@ -1231,7 +1230,7 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 "韦诺之战的基本规则就此结束。您可能需要阅读基本的游戏策略，或再熟悉一下"
-"<ref>dst=traits text=特质</ref>和<ref>dst=abilities text=技能</ref>。现在您已"
+"<ref>dst=traits text=特质</ref>和<ref>dst=abilities text=能力</ref>。现在您已"
 "经有足够的经验去玩《继位者之战》这个战役了。祝您好运，玩得开心！"
 
 #: data/core/help.cfg:271
@@ -1273,7 +1272,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"单位能获得的其它特质是：<ref>dst=traits_dextrous text=灵敏</ref>，"
+"单位能获得的其它特质是：<ref>dst=traits_dextrous text=灵巧</ref>，"
 "<ref>dst=traits_loyal text=忠诚</ref>，和<ref>dst=traits_undead text=不死</"
 "ref> 。"
 
@@ -1467,7 +1466,7 @@ msgstr ""
 
 #: data/core/help.cfg:349
 msgid "Dextrous"
-msgstr "灵敏"
+msgstr "灵巧"
 
 #: data/core/help.cfg:350
 msgid ""
@@ -2175,7 +2174,7 @@ msgstr ""
 "允许单位在每回合开始时治疗相邻受伤的友好单位，或阻止毒药在该回合发作。\n"
 "\n"
 "本单位每回合可以为附近每个单位恢复最多4点生命值，或阻止毒药在该回合发作。\n"
-"'治疗+4'技能无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'技能的单"
+"'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
 "位可以解毒"
 
 #: data/core/macros/abilities.cfg:29
@@ -2198,7 +2197,7 @@ msgstr ""
 "度的。\n"
 "\n"
 "本单位每回合可以为附近每个单位恢复最多8点生命值，或阻止毒药在该回合发作。\n"
-"'治疗+4'技能无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'技能的单"
+"'治疗+4'能力无法解除附近单位的中毒效果,只有进入村庄或者靠近拥有'治愈'能力的单"
 "位可以解毒"
 
 #: data/core/macros/abilities.cfg:49
@@ -2212,7 +2211,7 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "治愈：\n"
-"拥有'治愈'技能的单位可以解除附近单位的中毒效果，但是该回合不会再为该单位恢复"
+"拥有'治愈'能力的单位可以解除附近单位的中毒效果，但是该回合不会再为该单位恢复"
 "生命"
 
 #: data/core/macros/abilities.cfg:73
@@ -2240,7 +2239,7 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 "坚定：\n"
-"本单位具有双倍抗性，最高50%。该单位的弱点不受此技能影响"
+"本单位具有双倍抗性，最高50%。该单位的弱点不受此能力影响"
 
 #: data/core/macros/abilities.cfg:107 data/core/macros/abilities.cfg:129
 #: data/core/macros/abilities.cfg:163 data/core/macros/abilities.cfg:209
@@ -2482,7 +2481,7 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "精准：\n"
-"攻击时，本攻击至少有60%的击中率。"
+"进攻时，本攻击至少有60%的命中率。"
 
 #: data/core/macros/abilities.cfg:559
 msgid "magical"
@@ -2537,7 +2536,7 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "吸血：\n"
-"通过吸食活着的单位的生命来治疗自己，能治疗造成伤害一半的生命值(向下舍入)。"
+"通过吸食生物单位的生命来治疗自己，能治疗造成伤害一半的生命值(向下舍入)。"
 
 #: data/core/macros/abilities.cfg:608
 msgid "firststrike"
@@ -2549,7 +2548,7 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "先机：\n"
-"使用本攻击方式，本单位每次攻击都能率先出击，即使是处于防御状态也不例外。"
+"使用本攻击方式，本单位每次攻击都能率先出击，即使是处于受到攻击时也不例外。"
 
 #: data/core/macros/abilities.cfg:619
 msgid "poison"
@@ -3232,7 +3231,7 @@ msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
-"本单位具有'恢复'技能，因此可以治疗自己受到的伤害，就像一直处在村庄里一样。"
+"本单位具有'恢复'能力，因此可以治疗自己受到的伤害，就像一直处在村庄里一样。"
 
 #: data/core/macros/special-notes.cfg:21
 msgid ""
@@ -3252,26 +3251,26 @@ msgstr ""
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
-msgstr "本单位离群作战的能力使其能够忽视敌人的控制区域，随意绕行至对方的身后。"
+msgstr "本单位游击能力使其能够忽视敌人的控制区域，随意绕行至对方的身后。"
 
 #: data/core/macros/special-notes.cfg:30
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr "照明的能力增加相邻区域的亮度。"
+msgstr "'照明'能力增加相邻区域的亮度。"
 
 #: data/core/macros/special-notes.cfg:33
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
-"本单位可以瞬间从一座村庄移动到另一座村庄，条件是玩家必须对这两座村庄都具有控"
-"制权，且村庄没有被单位占据。"
+"本单位可以瞬间从一座村庄移动到另一座村庄，条件是这两座村庄都归玩家所有，且目"
+"的村庄中没有单位驻守。"
 
 #: data/core/macros/special-notes.cfg:36
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-"在树林中，本单位的伏击技能让敌人无法侦测到自己的存在，除非敌人就在相邻区域"
+"在树林中，本单位的伏击能力让敌人无法侦测到自己的存在，除非敌人就在相邻区域"
 "内。本单位在攻击时也会暴露自己。"
 
 #: data/core/macros/special-notes.cfg:39
@@ -3281,14 +3280,15 @@ msgstr "本单位能够在夜晚隐身，不留蛛丝马迹。"
 #: data/core/macros/special-notes.cfg:42
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
-msgstr "本单位可以在深水中潜行而不被敌人侦测到，潜行时不需要到水面换气。"
+msgstr "本单位可以在深水中潜行不需要到水面换气，因此在深水中不会被敌人发现。"
 
 #: data/core/macros/special-notes.cfg:45
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
-"无论何时，只要使用狂暴技能，本单位就会一直攻击敌人，直到自己或敌人倒下为止。"
+"无论何时，只要使用带有狂暴属性的攻击，本单位就会一直攻击敌人，直到自己或敌人"
+"倒下为止。"
 
 #: data/core/macros/special-notes.cfg:48
 msgid ""
@@ -3296,18 +3296,20 @@ msgid ""
 "unit may backstab, inflicting double damage, by creeping around behind that "
 "enemy."
 msgstr ""
-" 如果同盟的某个单位分散了敌人的注意力，本单位就可以偷偷绕到敌人背后进行背刺攻"
-"击，造成双倍伤害。"
+"如果同盟的某个单位分散了敌人的注意力，本单位就可以从敌人背后进行背刺攻击，造"
+"成双倍伤害。"
 
 #: data/core/macros/special-notes.cfg:51
 msgid " Foes who lose their life to the plague will rise again in unlife."
-msgstr "被瘟疫攻击击毙的敌方单位会重生为不死族的单位。"
+msgstr "被瘟疫攻击击毙的敌方单位会重生为攻击者一方的不死族的单位。"
 
 #: data/core/macros/special-notes.cfg:54
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
-msgstr "本单位能够减缓敌人的行动，使其移动速度和攻击输出减半，直到本回合结束。"
+msgstr ""
+"本单位的'减速'攻击能够减缓敌人的行动，使其移动速度和攻击输出减半，直到本回合"
+"结束。"
 
 #: data/core/macros/special-notes.cfg:57
 msgid ""
@@ -3318,7 +3320,7 @@ msgstr "把敌人化为石头的能力使本单位变得非常可怕。"
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
-msgstr "本单位的神射术保证其具有很高的命中率，但这只是在进攻时有效。"
+msgstr "本单位的'精准'攻击保证其具有很高的命中率，但这只是在进攻时有效。"
 
 #: data/core/macros/special-notes.cfg:63
 msgid ""
@@ -3330,14 +3332,16 @@ msgstr "本单位的远程攻击属于魔法攻击，总是有较高的命中率
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr "本单位的连击能力在自己受伤的情况下会被削弱。"
+msgstr "本单位的'连击'攻击在自己受伤的情况下会被削弱。"
 
 #: data/core/macros/special-notes.cfg:69
+#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"使用冲锋技能会带来双倍的攻击输出，也会遭到双倍的伤害。但这不会影响防守反击。"
+"使用带有冲锋属性的攻击会带来双倍的攻击输出，也会遭到双倍的伤害。但这不会影响"
+"防守反击。"
 
 #: data/core/macros/special-notes.cfg:72
 msgid ""
@@ -3349,7 +3353,9 @@ msgstr "本单位在作战时可以从对手身上吸血以补充自己的生命
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
-msgstr "本单位修长的武器使其能够在战斗中率先出击，即使在防守时也不例外。"
+msgstr ""
+"本单位'毒素'攻击的受害者将受到持续伤害，直到他们移入村庄或被拥有治愈能力的单"
+"位治好为止。"
 
 #: data/core/macros/special-notes.cfg:78
 msgid ""
@@ -3401,11 +3407,11 @@ msgstr "强壮"
 
 #: data/core/macros/traits.cfg:70
 msgid "dextrous"
-msgstr "灵敏"
+msgstr "灵巧"
 
 #: data/core/macros/traits.cfg:71
 msgid "female^dextrous"
-msgstr "灵敏"
+msgstr "灵巧"
 
 #: data/core/macros/traits.cfg:84
 msgid "quick"
@@ -3729,8 +3735,8 @@ msgid ""
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
-"中毒的单位每回合损失8点生命值，但不会中毒而死。毒素影响不会使生命值降到1点以"
-"下。中毒的单位可以通过移动到村庄或有“治愈”能力的单位旁来治愈中毒影响。"
+"中毒的单位每回合损失8点生命值，但不会中毒而死。毒素最多让单位生命值降到1点。"
+"中毒的单位可以通过移动到村庄或有“治愈”能力的单位旁来治愈中毒影响。"
 
 #: data/hardwired/tips.cfg:7
 msgid ""
@@ -3738,8 +3744,8 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"您可以通过游戏菜单中的“召回”选项来调用上个剧本中的单位。通过不停的召回同一个"
-"单位，您可以建立一支强力而经验值丰富的军队。"
+"您可以通过游戏菜单中的“召回”选项来调用上个剧本中的单位。通过不停的召回单位，"
+"您可以建立一支强力而经验值丰富的军队。"
 
 #: data/hardwired/tips.cfg:8
 msgid ""
@@ -3749,7 +3755,8 @@ msgid ""
 "are skilled enough to ignore these zones."
 msgstr ""
 "每个单位旁的格子是他的控制区域。如果单位移动到敌人的控制区域，他在本回合将不"
-"能再移动。0级单位太弱小，没有控制区域；游击战士则能通过技巧忽略这些区域。"
+"能再移动。0级单位太弱小，没有可控制区域；拥有'游击'技能的战士则能忽略控制区域"
+"的影响。"
 
 #: data/hardwired/tips.cfg:9
 msgid ""
@@ -3759,7 +3766,7 @@ msgid ""
 "least 60% chance to hit when attacking."
 msgstr ""
 "击中单位的几率依赖于这个单位在所处位置的防御力。不过魔法攻击和防守反击时都有"
-"70%的命中率，而精准射击至少有60%的命中率。"
+"70%的命中率，而精准射击在进攻时至少有60%的命中率。"
 
 #: data/hardwired/tips.cfg:10
 msgid ""
@@ -3770,7 +3777,7 @@ msgstr "驻扎在村庄的单位每回合开始前可以恢复8点生命值。"
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
 "recover 2 hitpoints at the beginning of their next turn."
-msgstr "单位在本回合休息，即不移动或攻击，则能在下回合开始前恢复2点生命值。"
+msgstr "单位在本回合休息，即不移动也不攻击，则能在下回合开始前恢复2点生命值。"
 
 #: data/hardwired/tips.cfg:12
 msgid ""
@@ -3793,7 +3800,7 @@ msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
-msgstr "杀敌是获得经验值最好的方式。单位杀敌会获得8x敌人等级的经验值。"
+msgstr "杀敌是获得经验值最好的方式。杀死敌人会获得8x敌人等级的经验值。"
 
 #: data/hardwired/tips.cfg:15
 msgid ""
@@ -3813,7 +3820,7 @@ msgstr ""
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
-msgstr "如果您多面受敌，最好的方式是让可以损失的单位去拖延敌人。"
+msgstr "如果您多面受敌，最好的策略是让可以损失的单位去拖延敌人。"
 
 #: data/hardwired/tips.cfg:18
 msgid ""
@@ -3837,9 +3844,9 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"您的领袖可以从城堡要塞中征募或召回单位——不仅仅是剧本开始时的要塞——您可以征服"
-"敌人的要塞，并从那里征募单位。有些盟友愿意在他们的要塞里腾出让您征募单位的空"
-"间。"
+"您的领袖可以从城堡的要塞中征募或召回单位——不仅仅是剧本开始时的要塞——您可以征"
+"服敌人的要塞，并从那里征募单位。有些盟友愿意在他们的要塞里腾出让您征募单位的"
+"空间。"
 
 #: data/hardwired/tips.cfg:21
 msgid ""
@@ -3851,7 +3858,7 @@ msgstr "骷髅对穿刺和剑刃攻击具有较强抗性，但却容易受冲击
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
-msgstr "有领导能力的单位会让相邻同一阵营的低级单位获得更好的攻击。"
+msgstr "有'领导'能力的单位会提升同一方相邻低级单位的攻击力。"
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -3859,8 +3866,8 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
-"一般来说不要让您的单位停在一个未占领的村庄旁边，因为敌人单位会移到村庄里并攻"
-"击您的单位，同时享受村庄带给他的防御和治疗优势。"
+"一般来说不要让您的单位停在一个无人驻守的村庄旁边，因为敌人单位会移到村庄里并"
+"攻击您的单位，同时享受村庄带给他的防御和治疗优势。"
 
 #: data/hardwired/tips.cfg:24
 msgid ""
@@ -3870,7 +3877,7 @@ msgstr "当把鼠标放到能力或特质上时，您会看到有关的详细描
 
 #: data/hardwired/tips.cfg:25
 msgid "Use lines of units to screen injured units to let them recover."
-msgstr "用单位组成战线，以掩护那些受伤害的单位，让他们恢复。"
+msgstr "用单位组成战线，以掩护那些受伤害的单位，让他们得到恢复。"
 
 #: data/hardwired/tips.cfg:26
 msgid "Read the hotkeys list in the preferences menu."
@@ -3901,7 +3908,7 @@ msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
-"“减速”攻击技能会让敌人单位移动减速， 并让他们的伤害输出减半，直到本回合结束。"
+"“减速”攻击会让敌人单位移动减速， 并让他们的伤害输出减半，直到本回合结束。"
 
 #: data/hardwired/tips.cfg:31
 msgid "Arcane attacks are very powerful against undead."
@@ -3917,7 +3924,7 @@ msgstr "单位升级时生命值会恢复全满。精明利用升级将会扭转
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
-msgstr "具有冲锋能力的单位最好用来对付那些能一击必杀的敌人。"
+msgstr "具有'冲锋'攻击的单位最好用来对付那些能一击必杀的敌人。"
 
 #: data/hardwired/tips.cfg:34
 msgid ""
@@ -4038,6 +4045,7 @@ msgstr "移动点数"
 
 # havn't seen this in action
 #: data/themes/default.cfg:567
+#, fuzzy
 msgid "Act."
 msgstr "行动"
 
@@ -4359,7 +4367,7 @@ msgstr "警告：您试图载入的文件已损坏。继续尝试载入。\n"
 
 #: src/game.cpp:718 src/multiplayer_connect.cpp:1344
 msgid "This save is from a version too old to be loaded."
-msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
+msgstr "这个存档来自于太早之前的游戏，无法载入。"
 
 #: src/game.cpp:724 src/multiplayer_connect.cpp:1351
 msgid ""
@@ -4798,7 +4806,7 @@ msgstr "种族"
 
 #: src/help.cpp:1343
 msgid "Abilities: "
-msgstr "技能： "
+msgstr "能力： "
 
 #: src/help.cpp:1362
 msgid "Cost: "
