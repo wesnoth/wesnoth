@@ -793,8 +793,10 @@ void connect::side::resolve_random()
 						gender_ = "null";
 				}
 			} else gender_ = "null";
-		} else
+		} else {
+			ERR_CF << "cannot obtain genders for invalid leader '" << (leader_.empty() ? llm_.get_leader() : leader_) << "'.\n";
 			gender_ = "null";
+		}
 	}
 }
 
