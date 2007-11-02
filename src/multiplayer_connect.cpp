@@ -558,7 +558,9 @@ config connect::side::get_config() const
 			res["type"] = leader_;
 		}
 		if (gender_.empty()) {
-			res["gender"] = llm_.get_gender();
+			std::string dummy = llm_.get_gender();
+			if (!dummy.empty() && dummy != "null" && dummy != "?")
+				res["gender"] = dummy;
 		} else {
 			// If no genders could be resolved, let the unit engine use
 			// the default gender
