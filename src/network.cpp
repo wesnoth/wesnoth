@@ -53,6 +53,7 @@
 #define SOCKET int
 #endif
 
+#define DBG_NW LOG_STREAM(debug, network)
 #define LOG_NW LOG_STREAM(info, network)
 #define WRN_NW LOG_STREAM(warn, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -233,7 +234,7 @@ server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(fa
 			}
 		}
 
-		LOG_NW << "server socket initialized: " << server_socket << "\n";
+		DBG_NW << "server socket initialized: " << server_socket << "\n";
 		free_ = true;
 	}
 }
@@ -361,10 +362,10 @@ void connect_operation::run()
 
 	// No blocking operations from here on
 	const threading::lock l(get_mutex());
-	LOG_NW << "sent handshake...\n";
+	DBG_NW << "sent handshake...\n";
 
 	if(is_aborted()) {
-		LOG_NW << "connect operation aborted by calling thread\n";
+		DBG_NW << "connect operation aborted by calling thread\n";
 		SDLNet_TCP_Close(sock);
 		return;
 	}
@@ -425,7 +426,7 @@ connection accept_connection()
 
 	const TCPsocket sock = SDLNet_TCP_Accept(server_socket);
 	if(sock) {
-		LOG_NW << "received connection. Pending handshake...\n";
+		DBG_NW << "received connection. Pending handshake...\n";
 		pending_sockets.push_back(sock);
 		if(pending_socket_set == 0) {
 			pending_socket_set = SDLNet_AllocSocketSet(512);
@@ -445,7 +446,7 @@ connection accept_connection()
 		return 0;
 	}
 
-	LOG_NW << "pending socket activity...\n";
+	DBG_NW << "pending socket activity...\n";
 
 	for(std::vector<TCPsocket>::iterator i = pending_sockets.begin(); i != pending_sockets.end(); ++i) {
 		if(!SDLNet_SocketReady(*i)) {
@@ -460,7 +461,7 @@ connection accept_connection()
 		SDLNet_TCP_DelSocket(pending_socket_set,sock);
 		pending_sockets.erase(i);
 
-		LOG_NW << "receiving data from pending socket...\n";
+		DBG_NW << "receiving data from pending socket...\n";
 
 		const int len = SDLNet_TCP_Recv(sock,buf,4);
 		if(len != 4) {
@@ -471,7 +472,7 @@ connection accept_connection()
 
 		const int handle = SDLNet_Read32(buf);
 
-		LOG_NW << "received handshake from client: '" << handle << "'\n";
+		DBG_NW << "received handshake from client: '" << handle << "'\n";
 
 		const int res = SDLNet_TCP_AddSocket(socket_set,sock);
 		if(res == -1) {
@@ -540,7 +541,7 @@ bool disconnect(connection s)
 		remove_connection(s);
 	} else {
 		if(sockets.size() == 1) {
-			LOG_NW << "valid socket: " << static_cast<int>(*sockets.begin()) << "\n";
+			DBG_NW << "valid socket: " << static_cast<int>(*sockets.begin()) << "\n";
 		}
 	}
 
@@ -649,21 +650,23 @@ connection receive_data(config& cfg, connection connection_num)
 
 void send_data(const config& cfg, connection connection_num)
 {
-	LOG_NW << "in send_data()...\n";
+	DBG_NW << "in send_data()...\n";
+	
 	if(cfg.empty()) {
 		return;
 	}
+	LOG_NW << "SENDING to: " << connection_num << ": " << cfg.debug();
 
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
 		return;
 	}
 
-	log_scope2(network, "sending data");
+//	log_scope2(network, "sending data");
 	if(!connection_num) {
-		LOG_NW << "sockets: " << sockets.size() << "\n";
+		DBG_NW << "sockets: " << sockets.size() << "\n";
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
-			LOG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
+			DBG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
 			send_data(cfg,*i);
 		}
 		return;

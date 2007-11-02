@@ -1451,11 +1451,15 @@ int main(int argc, char** argv) {
 		} else if (val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
 				<< " [-dvV] [-c path] [-m n] [-p port] [-t n]\n"
-				<< "  -c  --config path          Tells wesnothd where to find the config file to use.\n"
-				<< "  -d  --daemon               Runs wesnothd as a daemon.\n"
-				<< "  -h  --help                 Shows this usage message.\n"
-				<< "  -p, --port port            Binds the server to the specified port.\n"
-				<< "  -t, --threads n            Uses n worker threads for network I/O (default: 5).\n"
+				<< "  -c, --config <path>        Tells wesnothd where to find the config file to use.\n"
+				<< "  -d, --daemon               Runs wesnothd as a daemon.\n"
+				<< "  -h, --help                 Shows this usage message.\n"
+				<< "  --log-<level>="<domain1>,<domain2>,..."
+				<< "                             sets the severity level of the debug domains.
+				<< "                             \"all\" can be used to match any debug domain.
+				<< "                             Available levels: error, warning, info, debug.
+				<< "  -p, --port <port>          Binds the server to the specified port.\n"
+				<< "  -t, --threads <n>          Uses n worker threads for network I/O (default: 5).\n"
 				<< "  -v  --verbose              Turns on more verbose logging.\n"
 				<< "  -V, --version              Returns the server version.\n";
 			return 0;

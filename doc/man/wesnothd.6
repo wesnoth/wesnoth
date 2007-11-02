@@ -45,13 +45,17 @@ on what commands the server accepts via the wesnoth client or the socket.
 .BI -c,\ --config \ path
 tells wesnothd where to find the config file to use. See the section 
 .B SERVER CONFIG 
-below for the syntax.
+below for the syntax. You can reload the config with sending SIGHUP to the server process.
 .TP
 .B -d,\ --daemon
 runs wesnothd as a daemon.
 .TP
 .B -h,\ --help
 tells you what the command line options do.
+.TP
+.BR --log-<level>="domain1,domain2,..."
+sets the severity level of the debug domains. "all" can be used to match                                                                                                          
+any debug domain. Available levels: error, warning, info, debug.
 .TP
 .BI -p,\ --port \ port
 binds the server to the specified port. If no port is specified, port

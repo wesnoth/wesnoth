@@ -69,9 +69,10 @@
 #  endif
 #endif
 
-
+#define DBG_NW LOG_STREAM(debug, network)
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
+
 namespace {
 struct _TCPsocket {
 	int ready;
@@ -303,7 +304,7 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 
 static int process_queue(void*)
 {
-	LOG_NW << "thread started...\n";
+	DBG_NW << "thread started...\n";
 	for(;;) {
 
 		//if we find a socket to send data to, sent_buf will be non-NULL. If we find a socket
@@ -323,7 +324,7 @@ static int process_queue(void*)
 
 			}
 			if(min_threads && waiting_threads >= min_threads) {
-					LOG_NW << "worker thread exiting... not enough job\n";
+					DBG_NW << "worker thread exiting... not enough job\n";
 					to_clear.push_back(threading::get_current_thread_id());
 					return 0;
 			}
@@ -363,7 +364,7 @@ static int process_queue(void*)
 				}
 
 				if(managed == false) {
-					LOG_NW << "worker thread exiting...\n";
+					DBG_NW << "worker thread exiting...\n";
 					waiting_threads--;
 					to_clear.push_back(threading::get_current_thread_id());
 					return 0;
@@ -384,7 +385,7 @@ static int process_queue(void*)
 
 		wassert(sock);
 
-		LOG_NW << "thread found a buffer...\n";
+		DBG_NW << "thread found a buffer...\n";
 
 		SOCKET_STATE result = SOCKET_READY;
 		std::vector<char> buf;
@@ -457,9 +458,9 @@ manager::~manager()
 		cond->notify_all();
 
 		for(std::map<Uint32,threading::thread*>::const_iterator i = threads.begin(); i != threads.end(); ++i) {
-			LOG_NW << "waiting for thread " << i->first << " to exit...\n";
+			DBG_NW << "waiting for thread " << i->first << " to exit...\n";
 			delete i->second;
-			LOG_NW << "thread exited...\n";
+			DBG_NW << "thread exited...\n";
 		}
 
 		threads.clear();
@@ -472,7 +473,7 @@ manager::~manager()
 		sockets_locked.clear();
 		transfer_stats.clear();
 
-		LOG_NW << "exiting manager::~manager()\n";
+		DBG_NW << "exiting manager::~manager()\n";
 	}
 }
 
@@ -524,7 +525,7 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 
 void queue_data(TCPsocket sock,const  config& buf)
 {
-	LOG_NW << "queuing  data...\n";
+	DBG_NW << "queuing data...\n";
 
 	{
 		const threading::lock lock(*global_mutex);

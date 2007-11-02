@@ -68,18 +68,13 @@ at, in a corner of the screen.
 .BR -h ", " --help
 displays a summary of command line options to standard output, and exits.
 .TP
-.BI --load \ savegame
+.BI --load \ <savegame>
 loads the file savegame from the standard save game directory.
 .TP
-.BR --log-error="domain1,domain2,..." ", " --log-warning="..." ", " --log-info="..."
+.BR --log-<level>="domain1,domain2,..."
 sets the severity level of the debug domains. "all" can be used to match
-any debug domain.
-.B --log-info
-shows all messages,
-.B --log-warning
-only warnings and errors, and
-.B --log-error
-just errors.
+any debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP
 .B --logdomains
 Dumps a list of all log domains and exits.
@@ -118,6 +113,11 @@ runs the game in windowed mode.
 .BR --no-delay
 runs the game without any delays for graphic benchmarking.  This is automatically enabled by --nogui.
 .TP
+.B --nogui
+runs the game without the GUI. Must appear before
+.B --multiplayer
+to have the desired effect.
+.TP
 .BR --exit-at-end
 exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.  This is also used for scriptable benchmarking.
 .
@@ -138,11 +138,6 @@ selects the controller for this side. Available values: "human" and "ai".
 use this option to play in the selected era instead of the "Default"
 era. The era is chosen by an id. Eras are described in the
 data/multiplayer.cfg file.
-.TP
-.B --nogui
-runs the game without the GUI. Must appear before
-.B --multiplayer
-to have the desired effect.
 .TP
 .B --parm<number>=name:value
 sets additional parameters for this side. This parameter depends on the
