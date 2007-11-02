@@ -366,7 +366,7 @@ void create::process_event()
 	countdown_action_bonus_label_.set_text(buf.str());
 
 
-	// Villages can produce between 1 and 10 gold a turn
+	// Villages can produce between 1 and 5 gold a turn
 	const int village_gold = village_gold_slider_.value();
 	buf.str("");
 	buf << _("Village Gold: ") << village_gold;
