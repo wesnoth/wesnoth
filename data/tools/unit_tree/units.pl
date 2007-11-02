@@ -33,7 +33,7 @@ my $html_gen = 1;
 #   based on the contents of the po folder of Wesnoth
 my $translate = 0;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
-my $images = 0;
+my $images = 1;
 # This option will determine if the html report on made animations is generated
 my $animations = 1;
 # This is the version number that will appear on the unit trees
@@ -599,7 +599,7 @@ sub CopyImages {
 		$image =~ s/"//g;
 		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
 		$image =~ s/.png/+female.png/;
-		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
+		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image") unless (! -e $image);
 	}
 	close UNITS;
 	# zombie units
