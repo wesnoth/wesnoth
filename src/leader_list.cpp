@@ -125,7 +125,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 			gender_combo_->enable(false);
 		} else {
 			gender_ids_.push_back("random");
-			genders_.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("Random"));
+			genders_.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("gender^Random"));
 			gender_combo_->enable(true);
 		}
 		for (std::vector<unit_race::GENDER>::const_iterator i=genders.begin(); i != genders.end(); ++i) {
