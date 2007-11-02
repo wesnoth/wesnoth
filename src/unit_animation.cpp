@@ -452,6 +452,8 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		animations.push_back(unit_animation(**anim_itor));
 		image::locator image_loc = animations.back().get_last_frame().image();
 		animations.back().add_frame(600,unit_frame(image_loc,600,"1~0:600"));
+		animations.back().sub_anims_["_death_sound"] = crude_animation();
+		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
 		//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
 	}

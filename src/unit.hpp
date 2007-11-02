@@ -256,7 +256,6 @@ public:
 	const std::string& image_halo() const { return cfg_["halo"]; }
 
 	const std::string& get_hit_sound() const { return cfg_["get_hit_sound"]; }
-	const std::string& die_sound() const { return cfg_["die_sound"]; }
 	const std::string& image_ellipse() const { return cfg_["ellipse"]; }
 
 	const std::string& usage() const { return cfg_["usage"]; }

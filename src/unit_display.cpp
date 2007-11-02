@@ -179,10 +179,6 @@ void unit_die(const gamemap::location& loc, unit& loser,
 	if(!disp ||disp->video().update_locked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
-	const std::string& die_sound = loser.die_sound();
-	if(die_sound != "" && die_sound != "null") {
-		sound::play_sound(die_sound);
-	}
 
 	loser.set_dying(*disp,loc,attack,secondary_attack);
 	if(winner == NULL) { // Test to see if there is no victor.

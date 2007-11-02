@@ -68,7 +68,7 @@ class unit_frame {
 				Uint32 blend_color = 0, const std::string& blend_rate = "",
 				const std::string & in_halo = "",
 				const std::string & halox = "",const std::string & haloy = "",
-				const image::locator & diag ="");
+				const image::locator & diag ="",const std::string & sound = "");
 		explicit unit_frame(const config& cfg);
 		image::locator image() const { return image_ ;}
 		image::locator image_diagonal() const { return image_diagonal_ ; }

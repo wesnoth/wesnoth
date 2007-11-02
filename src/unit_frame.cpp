@@ -161,14 +161,15 @@ unit_frame::unit_frame(const image::locator& image, int duration,
 		const std::string& highlight, const std::string& offset,
 		Uint32 blend_color, const std::string& blend_rate,
 		const std::string& in_halo, const std::string& halox, const std::string& haloy,
-		const image::locator & diag) :
+		const image::locator & diag,const std::string & sound) :
 	 image_(image),image_diagonal_(diag),
 	halo_(in_halo,duration),
 	halo_x_(halox,duration),
 	halo_y_(haloy,duration),
 	duration_(duration),
 	blend_with_(blend_color), blend_ratio_(blend_rate,duration),
-	highlight_ratio_(highlight,duration),offset_(offset,duration)
+	highlight_ratio_(highlight,duration),offset_(offset,duration),
+	sound_(sound)
 {
 	// let's decide of duration ourselves
 	duration_ = maximum<int>(duration_, highlight_ratio_.duration());
