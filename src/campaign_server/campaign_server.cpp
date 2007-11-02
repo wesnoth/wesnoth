@@ -449,7 +449,10 @@ namespace {
 							continue;
 						}
 
-						if((*campaign)["passphrase"] != (*erase)["passphrase"]) {
+						if((*campaign)["passphrase"] != (*erase)["passphrase"] 
+								&& (campaigns()["master_password"] == ""
+								|| campaigns()["master_password"] != (*erase)["passphrase"])) {
+
 							network::send_data(construct_error("The passphrase is incorrect."),sock);
 							continue;
 						}
