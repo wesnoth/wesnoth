@@ -33,7 +33,7 @@ my $html_gen = 1;
 #   based on the contents of the po folder of Wesnoth
 my $translate = 0;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
-my $images = 1;
+my $images = 0;
 # This option will determine if the html report on made animations is generated
 my $animations = 1;
 # This is the version number that will appear on the unit trees
@@ -80,9 +80,9 @@ $att_html .= "<td>{name}</td>\n\t<td>{type}</td>\n\t<td>{damage}-{number}</td>\n
 &ProcessTypes('units.cfg');
 # -- HTML files and raw data reports generation --
 if ($version =~ /^1.2/) {
-	&ProduceDataFiles("unit_1.2.html");
+	&ProduceDataFiles("templates/unit_1.2.html");
 } else {
-	&ProduceDataFiles("unit.html");
+	&ProduceDataFiles("templates/unit.html");
 }
 
 # Multiplayer
@@ -115,7 +115,7 @@ print "Removing English comments\n";
 
 # Extended Era
 if ($exe) {
-	$i=300; $version = 'x.31.0';
+	$i=300; $version = 'x.31 (unstable)';
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '../';
@@ -131,7 +131,7 @@ if ($exe) {
 		s|$data_dir\/||;
 		&ProcessTypes($_);
 	}
-	&ProduceDataFiles("unit_exe.html");
+	&ProduceDataFiles("templates/unit_exe.html");
 	# Get races
 	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
 	while (<UNITS>) {
@@ -155,7 +155,7 @@ if ($exe) {
 
 # Imperial Era
 if ($ime) {
-	$i=600; $version = '0.16.3';
+	$i=600; $version = '0.16.5';
 	($html, %unit_id, @adv, %spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id, %races) = ();
 	$unit_id{AdvanceTo} = 'AdvanceTo';
 	$link_back = '';
@@ -168,7 +168,7 @@ if ($ime) {
 	unless (-e $report_dir) {mkdir $report_dir or die "$html_dir directory cannot be created: $!\n";};
 	print "Processing Imperial Era\n";
 	&ProcessTypes('units/various.cfg');
-	&ProduceDataFiles("unit_IME.html");
+	&ProduceDataFiles("templates/unit_IME.html");
 	# Get races
 	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
 	while (<UNITS>) {
@@ -199,7 +199,7 @@ if ($eom) {
 	unless (-e $report_dir) {mkdir $report_dir or die "$html_dir directory cannot be created: $!\n";};
 	print "Processing Era of Myths\n";
 	&ProcessTypes('units/EOM_Movetypes.cfg');
-	&ProduceDataFiles("unit_EOM.html");
+	&ProduceDataFiles("templates/unit_EOM.html");
 	# Get races
 	open (UNITS, "$report_dir/units.txt") or die "Couldn't open units.txt: $!\n";
 	while (<UNITS>) {
@@ -257,7 +257,7 @@ sub ProduceDataFiles {
 	
 	# Factions, populates the factions file
 	my @factions;
-	if ($html_unit eq 'unit.html') { 
+	if ($html_unit eq 'templates/unit.html') { 
 		@factions = glob("$wesnoth_dir/data/multiplayer/factions/*");
 	} else {
 		@factions = glob("$wesnoth_dir/factions/*");
@@ -427,11 +427,11 @@ sub GenerateTree {
 		print "Starting the generation of unit trees\n";
 		copy('units.css',"$html_dir/units.css");
 		# Load HTML templates
-		open (HTML, "tree_header$era_file.html") or die "Couldn't open header: $!\n";
+		open (HTML, "templates/tree_header$era_file.html") or die "Couldn't open header: $!\n";
 		my @header = <HTML>;
 		s/X.X.X/$version/ foreach @header;
 		close HTML;
-		open (HTML, "tree_footer.html") or die "Couldn't open footer: $!\n";
+		open (HTML, "templates/tree_footer.html") or die "Couldn't open footer: $!\n";
 		my @footer = <HTML>;
 		@footer[2] =~ s/date/gmtime(time)/e; # Generation time
 		close HTML;
@@ -484,7 +484,7 @@ sub GenerateTree {
 		
 		# Tree by race
 		open (INDEX, "> $html_dir/tree_race.html") or die "Couldn't create tree_race.html: $!\n";
-		open (HTML, "tree_race_header$era_file.html") or die "Couldn't open header: $!\n";
+		open (HTML, "templates/tree_race_header$era_file.html") or die "Couldn't open header: $!\n";
 		while (<HTML>) {s/X.X.X/$version/; print INDEX;}
 		close HTML;
 		foreach $race (sort keys %races) {
@@ -512,7 +512,7 @@ sub GenerateTree {
 		# Tree by faction
 		# Load factions
 		open (INDEX, "> $html_dir/tree_faction.html") or die "Couldn't create tree_faction.html: $!\n";
-		open (HTML, "tree_fact_header$era_file.html") or die "Couldn't open header: $!\n";
+		open (HTML, "templates/tree_fact_header$era_file.html") or die "Couldn't open header: $!\n";
 		while (<HTML>) {s/X.X.X/$version/; print INDEX;}
 		close HTML;
 		# Delete the advances from the units in the factions, so the tree can be built
@@ -546,9 +546,9 @@ sub GenerateTree {
 		
 		# Copy the index file before translating
 		if ($translate) {
-			open (HTML, 'index_languages.html') or die "Couldn't open index_languages.html: $!\n";
+			open (HTML, 'templates/index_languages.html') or die "Couldn't open index_languages.html: $!\n";
 		} else {
-			open (HTML, "index_base$era_file.html") or die "Couldn't open index_base.html: $!\n";
+			open (HTML, "templates/index_base$era_file.html") or die "Couldn't open index_base.html: $!\n";
 		}
 		open (INDEX, "> $html_dir/index.html") or die "Couldn't create index.html: $!\n";
 		while (<HTML>) {s/X.X.X/$version/; print INDEX;}
@@ -599,7 +599,7 @@ sub CopyImages {
 		$image =~ s/"//g;
 		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
 		$image =~ s/.png/+female.png/;
-		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image") unless (! -e $image);
+		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
 	}
 	close UNITS;
 	# zombie units
@@ -620,10 +620,10 @@ sub GenerateAnimationInfo {
 	$re_anim =~ s/\|$/)/;
 	
 	# Load HTML templates
-	open (HTML, "anim_header.html") or die "Couldn't open header: $!\n";
+	open (HTML, "templates/anim_header.html") or die "Couldn't open header: $!\n";
 	my @header = <HTML>;
 	close HTML;
-	open (HTML, "tree_footer.html") or die "Couldn't open footer: $!\n";
+	open (HTML, "templates/tree_footer.html") or die "Couldn't open footer: $!\n";
 	my @footer = <HTML>;
 	@footer[2] =~ s/date/gmtime(time)/e; # Generation time
 	close HTML;
