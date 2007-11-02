@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:51+0100\n"
-"PO-Revision-Date: 2007-10-25 13:44+0200\n"
+"PO-Revision-Date: 2007-11-01 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -1382,7 +1382,7 @@ msgstr ""
 
 #: data/core/help.cfg:287
 msgid "Intelligent"
-msgstr "Intelligent"
+msgstr "Intelligens"
 
 #: data/core/help.cfg:288
 msgid "Intelligent units require 20% less experience than usual to advance."
@@ -1459,8 +1459,8 @@ msgstr ""
 "\n"
 "Ukuelige enheder er brugbare på alle tidspunkter i en kampagne, og det er et "
 "nyttig karaktertræk for alle enheder. Ukuelig er ofte mest egnet som et "
-"karaktertræk når den indgår hos en enhed som har en kombination af få liv, "
-"godt forsvar, eller høj modstandskraft. Ukuelige enheder er specielt egnet "
+"karaktertræk, når den indgår hos en enhed, som har en kombination af få liv, "
+"godt forsvar, eller høj modstandskraft. Ukuelige enheder er specielt egnede "
 "til at holde strategiske positioner over for modstanderne."
 
 #: data/core/help.cfg:311
@@ -1560,8 +1560,8 @@ msgstr ""
 "\n"
 "\n"
 "Udøde kroppe har normalt »udød« som deres eneste karaktertræk. Da udøde "
-"enheder er kroppen af døde, der er tilbagekaldt for at kæmpe igen har gift "
-"ingen effekt på dem. Det kan gøre dem uvurderlige når der skal håndteres "
+"enheder er kroppe af døde, der er tilbagekaldt for at kæmpe igen, har gift "
+"ingen effekt på dem. Det kan gøre dem uvurderlige, når der skal håndteres "
 "fjender som bruger gift i forbindelse med deres angreb."
 
 #: data/core/help.cfg:341
@@ -1613,7 +1613,7 @@ msgstr ""
 "\n"
 "Behændighed er et karaktertræk som kun indehaves af elvere. Elverne er kendt "
 "for deres overnaturlige elegance og store færdighed med buen. Nogle er dog, "
-"begavet ned et naturtalent der overgår deres brødre. Disse elvere giver et "
+"begavet ned et naturtalent, der overgår deres brødre. Disse elvere giver et "
 "ekstra skadespoint med hver pil."
 
 #: data/core/help.cfg:357
@@ -1637,7 +1637,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Sunde enheder har 2 flere liv end normalt og får 2 ekstra liv efter hver "
+"Sunde enheder har 2 flere liv end normalt, og får 2 ekstra liv efter hver "
 "runde de ikke kæmper."
 
 # kunne også være græs 
@@ -2197,17 +2197,16 @@ msgid "General commands"
 msgstr "Generelle kommandoer"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Slet snakkebeskeder."
+"Slet snakkebeskeder.\n"
+"\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2217,8 +2216,8 @@ msgid ""
 msgstr ""
 "\n"
 "Skift spilleren mellem menneske og computer. Spilleren/klienten som "
-"kontrollerer denne side må give denne kommando. Hvis du ikke angiver side "
-"antages »1« som værende gældende.\n"
+"kontrollerer denne side må give denne kommando. Standard er den nuværende "
+"aktive side.\n"
 "\n"
 
 #: data/core/help.cfg:621
@@ -2267,9 +2266,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Skifter det nuværende antal billeder per sekund.\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2278,7 +2279,7 @@ msgid ""
 msgstr ""
 "\n"
 "Slå fejlsøgning til (virker ikke i flerspiller). Fejlsøgning slukkes når "
-"spillet forlades.\n"
+"spillet forlades eller ved :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:637
@@ -2290,7 +2291,6 @@ msgid "Multiplayer commands"
 msgstr "Flerspiller kommandoer"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2298,7 +2298,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Smid en spiller i flerspiller ud og bandlys denne og dennes IP-adresse\n"
+"Smid en spiller i flerspiller ud og bandlys denne og dennes IP-adresse.\n"
 "\n"
 
 #: data/core/help.cfg:649
@@ -2340,14 +2340,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Slå stilhed til/fra for alle observatører.\n"
-"\n"
+"Slå stilhed til/fra for alle observatører."
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -2367,10 +2365,10 @@ msgstr ""
 "Helbreder +4:\n"
 "Tillader enheden at helbrede enheder ved dens side i starten af hver runde.\n"
 "\n"
-"En enhed som bliver behandlet af denne helbreder opnår op til 4 liv per "
-"runde, eller også stopper en forgiftnings effekt for den aktuelle runde.\n"
-"En forgiftet enhed kan helbredes for sin gift af en healer, og må søge "
-"behandlingi en landsby eller fra en enhed som har denne evne."
+"En enhed som bliver behandlet af denne naturlæge opnår op til 4 liv per "
+"runde, eller også stopper en forgiftningseffekt for den aktuelle runde.\n"
+"En forgiftet enhed kan ikke helbredes for sin gift af en naturlæge, og må "
+"søge behandling i en landsby, eller fra en enhed som har denne evne."
 
 #: data/core/macros/abilities.cfg:29
 msgid "heals +8"
@@ -2388,13 +2386,13 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Helbreder +8:\n"
-"Denne enhed bruger magisk naturmedicin til at helbrede enheder hurtigereend "
+"Denne enhed bruger magisk naturmedicin til at helbrede enheder hurtigere end "
 "det ellers normalt er muligt på slagmarken.\n"
 "\n"
-"En enhed som bliver behandlet af denne helbreder opnår op til 8 liv per "
-"runde, eller også stopper en forgiftnings effekt for den aktuelle runde.\n"
-"En forgiftet enhed kan helbredes for sin gift af en healer, og må søge "
-"behandling i en landsby eller fra en enhed som har denne evne."
+"En enhed som bliver behandlet af denne naturlæge opnår op til 8 liv per "
+"runde, eller også stopper en forgiftningseffekt for den aktuelle runde.\n"
+"En forgiftet enhed kan ikke helbredes for sin gift af en naturlæge, og må "
+"søge behandling i en landsby eller fra en enhed som har denne evne."
 
 #: data/core/macros/abilities.cfg:49
 msgid "cures"
@@ -2498,7 +2496,7 @@ msgstr ""
 "enheder kæmper bedre og lyssky enheder kæmper dårligere.\n"
 "\n"
 "Alle enheder tæt på denne enhed vil kæmpe som om, at det er tusmørke, når "
-"det er mørkt, og som om, at det er nat, når det er tusmørke."
+"det er mørkt, og som om, at det er dag, når det er tusmørke."
 
 #: data/core/macros/abilities.cfg:364
 msgid "teleport"
@@ -2592,7 +2590,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Baghold:\n"
+"Dykke:\n"
 "Denne enhed kan gemme sig i dybt vand og forblive uset af fjender.\n"
 "\n"
 "Fjendtlige enheder kan ikke se denne enhed så længe den opholder sig dybt "
@@ -2628,8 +2626,8 @@ msgid ""
 "to stone)."
 msgstr ""
 "Snigangreb:\n"
-"Dette angreb yder dobbelt skade hvis der er en fjende på den modsatte side "
-"af enheden, der bliver angrebet med denne evne og denne enhed ikke er "
+"Dette angreb yder dobbelt skade, hvis der er en fjende på den modsatte side "
+"af enheden, der bliver angrebet med denne evne, og denne enhed ikke er "
 "paralyseret (det vil sige gjort til sten)."
 
 #: data/core/macros/abilities.cfg:499 data/core/macros/abilities.cfg:511
@@ -2657,7 +2655,7 @@ msgid ""
 msgstr ""
 "Pest:\n"
 "Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af et "
-"gående lig på den samme side som enheden der har pestangrebet. Dette gælder "
+"gående lig på den samme side som enheden, der har pestangrebet. Dette gælder "
 "ikke for udøde eller enheder i landsbyer."
 
 #: data/core/macros/abilities.cfg:523
@@ -2675,8 +2673,8 @@ msgstr ""
 "Langsom:\n"
 "Dette angreb gør ofret langsomt indtil det afslutter en runde. Langsom "
 "halverer den skade der medfølger af et angreb og et offers "
-"bevægelsesomkostningfordobles. En enhed som er gjort langsom vil have en "
-"lille ikon på dens informationssidepanel når den vælges."
+"bevægelsesomkostningfordobles. En enhed, som er gjort langsom, vil have en "
+"lille ikon på dens informationssidepanel, når den vælges."
 
 #: data/core/macros/abilities.cfg:534
 msgid "stones"
@@ -2689,7 +2687,7 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Sten:\n"
-"Dette angreb gør målet til sten. Enheder der er gjort til sten kan ikke "
+"Dette angreb gør målet til sten. Enheder, der er gjort til sten, kan ikke "
 "bevæge sig eller angribe."
 
 #: data/core/macros/abilities.cfg:545
@@ -2732,7 +2730,7 @@ msgid ""
 msgstr ""
 "Antallet af denne slags angreb falder når enheden er såret. Antallet af "
 "angreb er proportionalt med % af liv/maksimal liv enheden har. For eksempel "
-"vil en enhed der har 3/4 af sit maksimale liv have 3/4 af sine normale "
+"vil en enhed, der har 3/4 af sit maksimale liv have 3/4 af sine normale "
 "angreb."
 
 # kan også være angrib
@@ -2752,7 +2750,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:597
 msgid "drains"
-msgstr "dræner"
+msgstr "dræn"
 
 #: data/core/macros/abilities.cfg:599
 msgid ""
@@ -2789,7 +2787,7 @@ msgid ""
 "a unit."
 msgstr ""
 "Gift:\n"
-"Dette angreb forgifter ofret. Forgiftede enheder taber 8 liv per runde "
+"Dette angreb forgifter ofret. Forgiftede enheder taber 8 liv per runde, "
 "indtil de bliver kureret eller når ned på 1 liv. Gift kan ikke, af sig selv, "
 "dræbe en enhed."
 
@@ -3860,13 +3858,12 @@ msgid ""
 msgstr " Denne enhed kan helbrede enheder omkring den, og rense dem for gift."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Denne enhed er i stand til at foretage elementær helbredelse, men kan kun "
-"forsinke effekten af gift, ikke helbrede en forgiftning fuldstændig."
+" Denne enhed er i stand til at neutralisre effekten af gift i enheder "
+"omkring den."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -4629,7 +4626,7 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Brug helbredere til at støtte dine angreb - de kan vinde slag for dig uden "
+"Brug naturlæger til at støtte dine angreb - de kan vinde slag for dig uden "
 "selv at angribe noget som helst."
 
 #: data/hardwired/tips.cfg:30
@@ -4981,9 +4978,8 @@ msgid "#(Invalid)"
 msgstr "#(Ugyldig)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Kampagne vedligeholdelse"
+msgstr "Kampagne: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1399
 msgid "Multiplayer"
@@ -5341,6 +5337,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Vær vært for et spil igennem den indbyggede server. Ikke vedligeholdt, brug "
+"hellere den dedikerede server »wesnothd«."
 
 #: src/game.cpp:1392
 msgid "Local Game"
@@ -5673,11 +5671,11 @@ msgstr "Tilfældig"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Feminine ♀"
-msgstr ""
+msgstr "Kvinde ♀"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Masculine ♂"
-msgstr ""
+msgstr "Mand ♂"
 
 #: src/leader_list.cpp:242 src/leader_list.cpp:248
 msgid "?"
@@ -6314,9 +6312,8 @@ msgid "Faction"
 msgstr "Deling"
 
 #: src/multiplayer_connect.cpp:826
-#, fuzzy
 msgid "Team/Gender"
-msgstr "Forsvarer"
+msgstr "Hold/køn"
 
 #: src/multiplayer_connect.cpp:827
 msgid "Color"
@@ -6637,9 +6634,8 @@ msgid "Leader: "
 msgstr "Leder: "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Leder: "
+msgstr "Køn: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6674,9 +6670,8 @@ msgid "Could not send initial handshake"
 msgstr "Kunne ikke starte håndtryk"
 
 #: src/play_controller.cpp:397
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Filen du forsøgte at indlæse er korrupt"
+msgstr "Filen du forsøgte at indlæse er korrupt. Fortsæt alligevel?"
 
 #: src/play_controller.cpp:770
 msgid "Back to start"
