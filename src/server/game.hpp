@@ -25,87 +25,94 @@
 #include <set>
 #include <vector>
 
-typedef std::vector<network::connection> user_vector;
 typedef std::map<network::connection,player> player_map;
+typedef std::vector<network::connection> user_vector;
+typedef std::vector<network::connection> side_vector;
 
 class game
 {
 public:
 	game(const player_map& info);
 
-	void set_owner(const network::connection player);
-	bool is_owner(const network::connection player) const;
-	bool is_member(const network::connection player) const;
-	bool is_needed(const network::connection player) const;
+	int id() const { return id_; }
+
+	void set_owner(const network::connection player) { owner_ = player; }
+	bool is_owner(const network::connection player) const { return (player == owner_); }
+	bool is_member(const network::connection player) const
+	{ return is_player(player) || is_observer(player); }
 	bool is_observer(const network::connection player) const;
 	bool is_muted_observer(const network::connection player) const;
 	bool is_player(const network::connection player) const;
-	bool all_observers_muted() const;
+	bool player_is_banned(const network::connection player) const;
 
-	bool observers_can_label() const;
-	bool observers_can_chat() const;
+	size_t nplayers() const { return players_.size(); }
+	size_t nobservers() const { return observers_.size(); }
+
+	const player* mute_observer(network::connection player);
+	bool mute_all_observers() { return all_observers_muted_ = !all_observers_muted_; }
+	bool all_observers_muted() const { return all_observers_muted_; }
+	bool observers_can_label() const { return false; }
+	bool observers_can_chat() const { return true; }
+
+	bool started() const { return started_; }
+
+	bool empty() const { return players_.empty() && observers_.empty();	}
 
 	//function which filters commands sent by a player to remove commands
 	//that they don't have permission to execute.
 	//Returns true iff there are still some commands left
-	bool filter_commands(network::connection player, config& cfg);
+	bool filter_commands(const network::connection player, config& cfg) const;
 
 	void start_game();
-
-	bool take_side(network::connection player, const config& cfg);
+	//! Make everyone leave the game and clean up.
+	void end_game();
 
 	void update_side_data();
+	bool take_side(const network::connection player, const config& cfg = config());
+	//! Let's a player owning a side give it to another player or observer.
+	void transfer_side_control(const network::connection sock, const config& cfg);
 
-	const std::string& transfer_side_control(const config& cfg);
-
-	//function to set the description to the number of slots
-	//returns true if the number of slots has changed
+	//! Set the description to the number of slots.
+	//! Returns true if the number of slots has changed.
 	bool describe_slots();
 
-	bool player_is_banned(network::connection player) const;
-	void ban_player(network::connection player);
-	const player* mute_observer(network::connection player);
-	void mute_all_observers(bool mute);
+	//! Ban and kick a player. He doesn't need to be in this game.
+	void ban_player(const network::connection player);
 
-	void add_player(network::connection player, bool observer = false);
-	void remove_player(network::connection player, bool notify_creator=true);
+	void add_player(const network::connection player, const bool observer = false);
+	void remove_player(const network::connection player, const bool notify_creator=true);
+	//adds players and observers into one vector and returns that
+	const user_vector all_game_users() const;
 
-	int id() const;
+	const player* find_player(const network::connection sock) const;
 
-	config construct_server_message(const std::string& message);
-	void send_data(const config& data, network::connection exclude=0);
-	void send_data_team(const config& data, const std::string& team, network::connection exclude=0);
-	void send_data_observers(const config& data, network::connection exclude=0);
+	//! Adds players from one game to another. This is used to add players and
+	//! observers from a game to the lobby (which is also implemented as a game),
+	//! if that game ends. The second parameter controls, wether the players are
+	//! added to the players_ or observers_ vector (default observers_).
+	void add_players(const game& other_game, const bool observer = true);
+
+	config construct_server_message(const std::string& message) const;
+	void send_data(const config& data, const network::connection exclude=0) const;
+	void send_data_team(const config& data, const std::string& team,
+		const network::connection exclude=0) const;
+	void send_data_observers(const config& data, const network::connection exclude=0) const;
 
 	void record_data(const config& data);
 	void reset_history();
 
 	//the full scenario data
-	bool level_init() const;
-	config& level();
-	bool empty() const;
-	void disconnect();
+	bool level_init() const { return level_.child("side") != NULL; }
+	config& level() { return level_; }
 
 	//functions to set/get the address of the game's summary description as
 	//sent to players in the lobby
-	void set_description(config* desc);
-	config* description();
-
-	//adds players from one game to another. This is used to add players and
-	//observers from a game to the lobby (which is also implemented as a game),
-	//if that game ends. The second parameter controls, wether the players are
-	//added to the players_ or observers_ vector (default observers_).
-	void add_players(const game& other_game, bool observer = true);
+	void set_description(config* desc) { description_ = desc; }
+	config* description() const { return description_; }
 
 	//function which will process game commands and update the state of the
 	//game accordingly. Will return true iff the game's description changes.
 	bool process_commands(const config& cfg);
-
-	bool started() const;
-
-	size_t nplayers() const { return players_.size(); }
-
-	size_t nobservers() const { return observers_.size(); }
 
 	const std::string& termination_reason() const {
 		static const std::string aborted = "aborted";
@@ -113,25 +120,19 @@ public:
 	}
 
 	void set_termination_reason(const std::string& reason) {
-		if(termination_.empty()) { termination_ = reason; }
+		if (termination_.empty()) { termination_ = reason; }
 	}
-
-	//adds players and observers into one vector and returns that
-	const user_vector all_game_users() const;
-
-	const player* find_player(network::connection sock) const;
-
-	const player* transfer_game_control();
 
 private:
 	//returns an iterator on the users vector if sock is found
-	user_vector::iterator find_connection(network::connection sock, user_vector& users);
+	user_vector::iterator find_connection(const network::connection sock,
+		user_vector& users) const;
 
 	//helps debugging player and observer lists
 	std::string debug_player_info() const;
 
 	//function which returns true iff 'player' is on 'team'.
-	bool player_on_team(const std::string& team, network::connection player) const;
+	bool player_on_team(const std::string& team, const network::connection player) const;
 
 	//function which should be called every time a player ends their turn
 	//(i.e. [end_turn] received). This will update the 'turn' attribute for
@@ -141,7 +142,7 @@ private:
 
 	//function to send a list of users to all clients. Only sends data before
 	//the game has started.
-	void send_user_list();
+	void send_user_list(const network::connection exclude=0) const;
 
 	const player_map* player_info_;
 
@@ -151,7 +152,7 @@ private:
 	user_vector players_;
 	user_vector observers_;
 	user_vector muted_observers_;
-	std::multimap<network::connection,size_t> sides_;
+	side_vector sides_;
 	std::vector<bool> sides_taken_;
 	std::vector<std::string> side_controllers_;
 	bool started_;
@@ -181,8 +182,7 @@ private:
 	std::string termination_;
 };
 
-struct game_id_matches
-{
+struct game_id_matches {
 	game_id_matches(int id) : id_(id) {}
 	bool operator()(const game& g) const { return g.id() == id_; }
 

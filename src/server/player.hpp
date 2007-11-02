@@ -24,26 +24,27 @@
 class player
 {
 public:
-	player(const std::string& n, config& cfg,size_t max_messages=4,size_t time_period=10);
+	player(const std::string& n, config& cfg, const size_t max_messages=4, const size_t time_period=10);
 
 	// mark a player as member of the game 'game_id' or as located in the lobby
 	void mark_available(std::string game_id="", std::string location="");
 
-	const std::string& name() const;
 
-	config* config_address();
+	const std::string& name() const { return name_; }
 
-	bool silenced() const;
+	config* config_address() const { return &cfg_; }
+
+	bool silenced() const { return messages_since_flood_start_ > MaxMessages; }
 	bool is_message_flooding();
 
 private:
-	std::string name_;
+	const std::string name_;
 	config& cfg_;
 
 	time_t flood_start_;
 	unsigned int messages_since_flood_start_;
-	size_t MaxMessages;
-	time_t TimePeriod;
+	const size_t MaxMessages;
+	const time_t TimePeriod;
 };
 
 #endif
