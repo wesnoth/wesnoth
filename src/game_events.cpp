@@ -54,6 +54,10 @@
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
+#define LOG_NO LOG_STREAM(info, notifs)
+#define WRN_NO LOG_STREAM(warn, notifs)
+#define ERR_NO LOG_STREAM(err, notifs)
+
 namespace {
 
 game_display* screen = NULL;
@@ -1565,6 +1569,17 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		// Note: no need to translate the string, since only used for deprecated things.
 		const std::string message = cfg["message"];
 		lg::wml_error << message << '\n';
+	}
+	
+	else if(cmd == "debug_message") {
+		const std::string log_level = cfg["logger"];
+		const std::string log_message = cfg["message"];
+		if (log_level == "err")
+			ERR_NO << log_message << "'\n";
+		else if (log_level == "warn" || log_level == "wrn")
+			WRN_NO << log_message << "'\n";
+		else
+			LOG_NO << log_message << "'\n";
 	}
 
 	// Display a message dialog
