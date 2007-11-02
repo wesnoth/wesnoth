@@ -52,12 +52,13 @@ bool game::filter_commands(const network::connection player, config& cfg) const 
 		int index = 0;
 
 		const config::child_list& children = cfg.get_children("command");
-		for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
-
-			if(observers_can_label() && (*i)->child("label") != NULL && (*i)->all_children().size() == 1) {
-				;
-			} else if(observers_can_chat() && (*i)->child("speak") != NULL && (*i)->all_children().size() == 1) {
-				;
+		for(config::child_list::const_iterator i = children.begin();
+			i != children.end(); ++i)
+		{
+			if ((observers_can_label() && (*i)->child("label") != NULL)
+				|| (observers_can_chat() && (*i)->child("speak") != NULL)
+				&& (*i)->all_children().size() == 1)
+			{
 			} else {
 				DBG_GAME << "removing observer's illegal command\n";
 				marked.push_back(index - marked.size());
@@ -167,7 +168,7 @@ bool game::take_side(network::connection player, const config& cfg)
 	}
 	//else take the current side
 	if (player == owner_ && started_ && !cfg["controller"].empty()) {
-		//if the owner have transfer side to an ai or an human in game
+		//if the owner transfered a side to an ai or a human in game
 		//fake a "change_controller" command so other player update controller name
 		config fake;
 		config& change = fake.add_child("change_controller");
@@ -178,7 +179,7 @@ bool game::take_side(network::connection player, const config& cfg)
 		//send a server message displaying new controller name
 		send_data(construct_server_message(cfg["name"] + " takes control of side " + side));
 
-		//update level_ so observer who join display the good player name
+		//update level_ so observers who join get the new player name
 		config::child_itors it = level_.child_range("side");
 		it.first += side_num - 1;
 		wassert(it.first != it.second);
@@ -189,6 +190,7 @@ bool game::take_side(network::connection player, const config& cfg)
 		side_controllers_[side_num - 1] = "network";
 	sides_[side_num - 1] = player;
 	sides_taken_[side_num - 1] = true;
+	// Send the taken side to the host.
 	network::queue_data(cfg, owner_);
 	return true;
 }
@@ -281,16 +283,19 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		return;
 	}
 	const std::string& newplayer_name = cfg["player"];
+	//find the player that is passed control
 	player_map::const_iterator newplayer;
 	for (newplayer = player_info_->begin(); newplayer != player_info_->end(); newplayer++) {
 		if (newplayer->second.name() == newplayer_name) {
 			break;
 		}
 	}
+	// Is he in this game?
 	if (newplayer == player_info_->end() || !is_member(newplayer->first)) {
 		network::send_data(construct_server_message("Player/Observer not in this game."), sock);
 		return;
 	}
+	// Check the side number.
 	const std::string& side = cfg["side"];
 	size_t side_num;
 	try {
@@ -305,8 +310,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		network::send_data(construct_server_message("Not a side number."), sock);
 		return;
 	}
-	const size_t nsides = level_.get_children("side").size();
-	if(side_num > nsides) {
+	if (side_num > level_.get_children("side").size()) {
 		network::send_data(construct_server_message("Invalid side number."), sock);
 		return;
 	}
@@ -342,8 +346,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		config observer_join;
 		observer_join.add_child("observer").values["name"] = find_player(sock)->name();
 		send_data(observer_join, sock);
-
-		
+		// If this player was the host of the game, choose another player.
 		if (sock == owner_) {
 			host_leave = true;
 			if (!players_.empty()) {
@@ -409,27 +412,26 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		+ " takes control of side " + side + "."));
 }
 
-bool game::describe_slots()
-{
-	if(description() == NULL)
+bool game::describe_slots() {
+	if (started_ || description_ == NULL)
 		return false;
 
 	int available_slots = 0;
-	char buf[50];
 	int num_sides = level_.get_children("side").size();
 	int i = 0;
 	for(config::child_list::const_iterator it = level_.get_children("side").begin(); it != level_.get_children("side").end(); ++it, ++i) {
-		if((**it)["allow_player"] == "no" || (**it)["controller"] == "null") {
+		if ((**it)["allow_player"] == "no" || (**it)["controller"] == "null") {
 			num_sides--;
 		} else {
-			if(!sides_taken_[i])
+			if (!sides_taken_[i])
 				available_slots++;
 		}
 	}
+	char buf[50];
 	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
 
-	if(buf != (*description())["slots"]) {
-		description()->values["slots"] = buf;
+	if (buf != (*description_)["slots"]) {
+		description_->values["slots"] = buf;
 		return true;
 	} else {
 		return false;
@@ -507,12 +509,10 @@ bool game::end_turn() {
 
 	const size_t turn = end_turn_/nsides + 1;
 
-	config* const desc = description();
-	if(desc == NULL) {
+	if (description_ == NULL) {
 		return false;
 	}
-
-	desc->values["turn"] = describe_turns(int(turn),level()["turns"]);
+	description_->values["turn"] = describe_turns(int(turn), level()["turns"]);
 
 	return true;
 }
