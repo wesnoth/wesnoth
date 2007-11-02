@@ -426,11 +426,7 @@ void unit_selected(gamemap::location& loc)
 	unit_map::iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 
-	u->second.set_hidden(true);
-	disp->scroll_to_tile(loc,game_display::ONSCREEN);
-	disp->draw();
 	u->second.start_animation(*disp,loc,u->second.choose_animation(*disp,loc,"selected"),true);
-	u->second.set_hidden(false);
 	while(!u->second.get_animation()->animation_finished()) {
 
 		disp->invalidate(loc);
