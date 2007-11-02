@@ -319,6 +319,8 @@ void connect::side::process_event()
 
 			// If the selected user already was attributed to
 			// another side, find its side, and switch users.
+			//! todo Let one player get several sides like it is
+			//! already possible once the game started.
 			const std::string new_id = parent_->users_[user].name;
 			if (new_id != id_) {
 				int old_side = parent_->find_player_side(new_id);
@@ -826,12 +828,19 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 	launch_(video(), _("I'm Ready")),
 	cancel_(video(), _("Cancel"))
 {
+	load_game();
+
+	if(get_result() == QUIT)
+		return;
+	lists_init();
+	if(sides_.empty()) {
+		throw config::error(_("The scenario is invalid because it has no sides."));
+	}
 	// Send Initial information
 	config response;
 	config& create_game = response.add_child("create_game");
 	create_game["name"] = params.name;
-
-	load_game();
+/*
 	// The number of human-controlled sides is important to know 
 	// to let the server decide how many players can join this game
 	int human_sides = 0;
@@ -841,20 +850,12 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 			human_sides++;
 		}
 	}
-	create_game["human_sides"] = lexical_cast<std::string>(human_sides);
+	create_game["human_sides"] = lexical_cast<std::string>(human_sides);*/
 	network::send_data(response);
-
-	if(get_result() == QUIT)
-		return;
-	lists_init();
 
 	// Adds the current user as default user.
 	users_.push_back(connected_user(preferences::login(), CNTR_LOCAL, 0));
 	update_user_combos();
-	if(sides_.empty()) {
-		throw config::error(_("The scenario is invalid because it has no sides."));
-	}
-
 	// Take the first available side or available side with id == login
 	int side_choice = -1;
 	for(side_list::const_iterator s = sides_.begin(); s != sides_.end(); ++s) {
@@ -939,9 +940,7 @@ void connect::start_game()
 	// Build the gamestate object after updating the level
 	level_to_gamestate(level_, state_, params_.saved_game);
 
-	config cfg;
-	cfg.add_child("start_game");
-	network::send_data(cfg);
+	network::send_data(config("start_game"));
 }
 
 void connect::hide_children(bool hide)
@@ -998,6 +997,7 @@ void connect::process_network_data(const config& data, const network::connection
 			config response;
 			response.values["failed"] = "yes";
 			network::send_data(response,sock);
+			ERR_CF << "ERROR: No username provided with the side.\n";
 			return;
 		}
 
@@ -1042,6 +1042,7 @@ void connect::process_network_data(const config& data, const network::connection
 					network::send_data(res);
 					update_user_combos();
 					update_and_send_diff();
+					ERR_CF << "ERROR: Couldn't assign a side to '" << name << "'\n";
 					return;
 				}
 			}
@@ -1156,9 +1157,7 @@ void connect::process_network_connection(const network::connection sock)
 {
 	ui::process_network_connection(sock);
 
-	config cfg;
-	cfg.add_child("join_game");
-	network::send_data(cfg);
+	network::send_data(config("join_game"));
 
 	network::send_data(level_, sock);
 }
