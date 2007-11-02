@@ -22,6 +22,7 @@ Version 1.3.9+svn:
  * graphics:
    * polished ankh prop picture from Liberty, and moved to core replacing
      old ankh-necklace.png used by Eastern Invasion
+   * updated unit graphics: Necromancer, Dark Adept, Dark Sorcerer, Fugitive, Huntsman
    * various shadow under units updates for consistency
  * language and i18n:
    * updated translations: Chinese, Czech, Danish, Finnish, French, Galician,
@@ -42,7 +43,7 @@ Version 1.3.9+svn:
  * sound
    * "Legends of the North" (legends_of_the_north.ogg) moved from NR to mainline
  * units:
-   * created female variation for L3 Necromancer (needs graphics)
+   * created female variation for L3 Necromancer
    * balancing changes:
      * increased the movement points over tundra (snow) and deep water from 1
        to 2 for 'drakefly'
@@ -53,6 +54,7 @@ Version 1.3.9+svn:
    * renamed "Advanced Mode" button on sound preferences to "Advanced Options",
      and "Normal Mode" to "Standard Options"
  * WML engine:
+   * extended [store_side] behavior
    * new key "contains=" in [variable] conditions to check the presence of a 
      substring in a variable value
    * new key "variation=" in [move_unit_fake] statements to add the possibility
