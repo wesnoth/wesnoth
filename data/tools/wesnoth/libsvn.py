@@ -354,7 +354,7 @@ class SVN:
         shutil.copy(src, dest)
 
         if(src_svn):
-            return (1)
+            return result(1)
         else:
             return self.svn_add(dest)
 

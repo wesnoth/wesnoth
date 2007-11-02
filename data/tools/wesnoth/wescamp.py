@@ -19,7 +19,7 @@ This utility provides two tools
 * update the translations in a campaign (in the packed campaign)
 """
 
-import sys, os, optparse, tempfile
+import sys, os, optparse, tempfile, shutil
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 import wmldata as wmldata
@@ -68,6 +68,8 @@ if __name__ == "__main__":
 
     optionparser.add_option("-v", "--verbose", action = "store_true", help = "show more verbose output") # \
 
+    optionparser.add_option("-P", "--password", help = "The master password for the campaigne server") # \
+
     options, args = optionparser.parse_args()
 
     server = "localhost"
@@ -83,6 +85,10 @@ if __name__ == "__main__":
         wescamp = options.wescamp_checkout
 
     verbose = options.verbose
+
+    password = ""
+    if(options.password):
+        password = options.password
 
     if(options.list):
         if(server == None):
@@ -132,9 +138,55 @@ if __name__ == "__main__":
             sys.exit(1)
 
     elif(options.download != None):
-        print("function not implemented")
-        sys.exit(2)
-        pass
+        if(server == None):
+            print("No server specified")
+
+        if(target == None):
+            # FIXME also allow temp dir
+            print("No target specified.")
+            sys.exit(2)
+
+        extract(server, options.extract, target)
+        if(wescamp == None):
+            print("No wescamp checkout specified")
+            sys.exit(2)
+
+        # update the wescamp checkout for the translation, 
+        # if nothing changed we're done.
+        # Test the entire archive now and use that, might get optimized later
+
+        svn = libsvn.SVN(wescamp + "/" + options.download, 3) # debug level hard coded
+
+        res = svn.svn_update()
+        if(res.status == 0):
+#            sys.exit(0) FIXME reenable
+            pass
+        elif(res.status == -1):
+            sys.exit(1)
+
+        # test whether the svn has a translations dir, if not we can stop
+
+        # extract the campaign from the server
+        extract(server, options.download, target)
+
+        # delete translations
+        if(os.path.isdir(target + "/" + options.download + "/translations")):
+            shutil.rmtree(target + "/" + options.download + "/translations")
+
+        # copy the new translations
+        if(os.path.isdir(target + "/" + options.download + "/translations") == False):
+            os.mkdir(target + "/" + options.download + "/translations")
+
+        res = svn.sync_dir(svn.checkout_path + "/" + options.download + "/translations" , 
+            target + "/" + options.download + "/translations", True, None) 
+
+        # upload to the server
+        wml = libwml.CampaignClient(server)
+        wml.put_campaign("", options.download, "", password, "", "", "",  
+            target + "/" + options.download + ".cfg",
+            target + "/" + options.download)
+
+        
 
     elif(options.extract != None):
         if(server == None):
