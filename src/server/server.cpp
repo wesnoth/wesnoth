@@ -383,7 +383,7 @@ void server::run() {
 			const player_map::iterator pl_it = players_.find(e.socket);
 			if (pl_it == players_.end()) {
 				if (not_logged_in_.is_observer(e.socket)) {
-					WRN_SERVER << ip << "\tNot logged in user disconnected.\n";
+					DBG_SERVER << ip << "\tNot logged in user disconnected.\n";
 					not_logged_in_.remove_player(e.socket);
 				} else {
 					WRN_SERVER << ip << "\tWarning: User disconnected right after the connection was accepted.\n";
