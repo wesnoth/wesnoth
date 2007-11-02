@@ -378,12 +378,43 @@ namespace {
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
 							network::send_data(construct_error("No add-on data was supplied."),sock);
-						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
-							network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."),sock);
 						} else if(campaign_name_legal((*upload)["name"]) == false) {
 							network::send_data(construct_error("The name of the add-on is invalid"),sock);
 						} else if(check_names_legal(*data) == false) {
 							network::send_data(construct_error("The add-on contains an illegal file or directory name."),sock);
+						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
+							// the user password failed, now test for the master password, in master password
+							// mode the upload behaves different since it's only intended to update translations.
+							// In a later version the translations will be separated from the addon.
+							if(campaigns()["master_password"] == ""
+									&& campaigns()["master_password"] != (*upload)["passphrase"]) {
+
+								std::string message = "Add-on accepted.";
+
+								std::string filename = (*campaign)["filename"];
+								(*data)["title"] = (*campaign)["title"];
+								(*data)["name"] = "";
+								(*data)["campaign_name"] = (*campaign)["name"];
+								(*data)["author"] = (*campaign)["author"];
+								(*data)["description"] = (*campaign)["description"];
+								(*data)["version"] = (*campaign)["version"];
+								(*data)["timestamp"] = (*campaign)["timestamp"];
+								(*data)["icon"] = (*campaign)["icon"];
+								(*campaign).clear_children("translation");
+								find_translations(*data, *campaign);
+
+								scoped_ostream campaign_file = ostream_file(filename);
+								write_compressed(*campaign_file, *data);
+
+								(*campaign)["size"] = lexical_cast<std::string>(
+										file_size(filename));
+								scoped_ostream cfgfile = ostream_file(file_);
+								write(*cfgfile, cfg_);
+								network::send_data(construct_message(message),sock);
+
+							} else {
+								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."),sock);
+							}
 						} else if(! fire("hook_pre_upload")) {
 							if(out_ == "") {
 								network::send_data(construct_error("The add-on failed with unknown error in pre-upload hook."),sock);
