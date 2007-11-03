@@ -150,10 +150,10 @@ template class progressive_<double>;
 #include "unit_frame.hpp"
 
 unit_frame::unit_frame() :
-	 image_(), image_diagonal_(),halo_(), sound_(),
+	image_(), image_diagonal_(),halo_(), sound_(),
 	halo_x_(), halo_y_(), duration_(0),
 	blend_with_(0),blend_ratio_(),
-	highlight_ratio_(""),offset_()
+	highlight_ratio_(""), offset_()
 {
 }
 
@@ -162,14 +162,14 @@ unit_frame::unit_frame(const image::locator& image, int duration,
 		Uint32 blend_color, const std::string& blend_rate,
 		const std::string& in_halo, const std::string& halox, const std::string& haloy,
 		const image::locator & diag,const std::string & sound) :
-	 image_(image),image_diagonal_(diag),
+	image_(image),image_diagonal_(diag),
 	halo_(in_halo,duration),
+	sound_(sound),
 	halo_x_(halox,duration),
 	halo_y_(haloy,duration),
 	duration_(duration),
 	blend_with_(blend_color), blend_ratio_(blend_rate,duration),
-	highlight_ratio_(highlight,duration),offset_(offset,duration),
-	sound_(sound)
+	highlight_ratio_(highlight,duration),offset_(offset,duration)
 {
 	// let's decide of duration ourselves
 	duration_ = maximum<int>(duration_, highlight_ratio_.duration());
