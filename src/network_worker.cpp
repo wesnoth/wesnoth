@@ -324,7 +324,7 @@ static int process_queue(void*)
 
 			}
 			if(min_threads && waiting_threads >= min_threads) {
-					DBG_NW << "worker thread exiting... not enough job\n";
+					DBG_NW << "worker thread exiting... not enough jobs\n";
 					to_clear.push_back(threading::get_current_thread_id());
 					return 0;
 			}
