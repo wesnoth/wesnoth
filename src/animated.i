@@ -52,8 +52,7 @@ animated<T,T_void_value>::animated(int start_time) :
 	cycles_(false),
 	acceleration_(1),
 	last_update_tick_(0),
-	current_frame_key_(0),
-        last_frame_key_(-1)
+	current_frame_key_(0)
 {
 }
 
@@ -67,8 +66,7 @@ animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, in
 	cycles_(false),
 	acceleration_(1),
 	last_update_tick_(0),
-	current_frame_key_(0),
-        last_frame_key_(-1)
+	current_frame_key_(0)
 {
 
 	typename std::vector< std::pair<int,T> >::const_iterator itor = cfg.begin();
@@ -105,9 +103,6 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 	if(acceleration_ <=0) acceleration_ = 1;
 	current_frame_key_= 0;
 	need_first_update_ = !frames_.empty();
-	//update_last_draw_time();
-        // need to force last frame key in the case of starting anim...
-        last_frame_key_ = -1;
 }
 
 
@@ -115,7 +110,6 @@ template<typename T,  typename T_void_value>
 void animated<T,T_void_value>::update_last_draw_time()
 {
 	last_update_tick_ = current_ticks;
-        last_frame_key_ = current_frame_key_;
 	if (need_first_update_) {
 		need_first_update_ = false;
 		return;
@@ -136,7 +130,6 @@ void animated<T,T_void_value>::update_last_draw_time()
 		while(get_animation_time() > get_end_time()){  // cut extra time
 			start_tick_ += static_cast<int>(get_end_time()/acceleration_);
 			current_frame_key_ = 0;
-                        last_frame_key_ = -1;
 		}
 	}
 	if(get_current_frame_end_time() < get_animation_time() &&  // catch up
@@ -219,21 +212,6 @@ const T& animated<T,T_void_value>::get_current_frame() const
 	if(frames_.empty() )
 		return void_value_;
 	return frames_[current_frame_key_].value_;
-}
-
-template<typename T,  typename T_void_value>
-const T& animated<T,T_void_value>::get_next_frame(int shift) const
-{
-	if(frames_.empty() )
-		return void_value_;
-	int next_frame_key = current_frame_key_ + shift;;
-	if (!cycles_) {
-		if (next_frame_key < 0)
-			return get_first_frame();
-		else if (next_frame_key >= get_frames_count())
-			return get_last_frame();
-	}
-	return frames_[next_frame_key % get_frames_count()].value_;
 }
 
 template<typename T,  typename T_void_value>

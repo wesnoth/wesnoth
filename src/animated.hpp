@@ -68,8 +68,6 @@ public:
 
 	const int get_animation_duration() const;
 	const T& get_current_frame() const;
-	//! Get the next frame (or the current + shift frames)
-	const T& get_next_frame(int shift = 1) const;
 	const int get_current_frame_begin_time() const;
 	const int get_current_frame_end_time() const;
 	const int get_current_frame_duration() const;
@@ -113,7 +111,6 @@ private:
 	double acceleration_;
 	int last_update_tick_;
 	int current_frame_key_;
-	int last_frame_key_;
 
 };
 
