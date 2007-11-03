@@ -1220,8 +1220,8 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 					paths::route route = get_route(u, go_to, current_team());
 					gui_->set_route(&route);
 				}
-				unit_display::unit_selected(u->first);
 				sound::play_UI_sound("select-unit.wav");
+				u->second.set_selecting(*gui_, u->first);
 				game_events::fire("select",hex);
 			} else {
 				unit_movement_resetter move_reset(u->second);

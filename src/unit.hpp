@@ -124,7 +124,7 @@ public:
 	void new_level();
 	//! Called on every draw
 	void refresh(const game_display& disp,const gamemap::location& loc) {
-		if (state_ == STATE_IDLING && anim_ && anim_->animation_would_finish()) {
+		if ((state_ == STATE_IDLING || state_ == STATE_SELECTING) && anim_ && anim_->animation_would_finish()) {
 			set_standing(disp, loc);
 			return;
 		}
@@ -190,6 +190,7 @@ public:
 	void set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
 	void set_poisoned(const game_display& disp,const gamemap::location& loc,int damage);
 	void set_idling(const game_display& disp,const gamemap::location& loc);
+	void set_selecting(const game_display& disp,const gamemap::location& loc);
 	void restart_animation(const game_display& disp,int start_time, bool cycles = false);
 	const unit_animation* get_animation() const {  return anim_;};
 	void set_offset(double offset){offset_ = offset;}
@@ -248,7 +249,7 @@ public:
 				STATE_LEVELIN, STATE_LEVELOUT,
 				STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
 				STATE_RECRUITED, STATE_HEALED, STATE_POISONED,
-				STATE_IDLEIN, STATE_IDLING, STATE_VICTORIOUS};
+				STATE_IDLING, STATE_SELECTING, STATE_VICTORIOUS};
 	void start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false);
 
 	//! The name of the file to game_display (used in menus).
