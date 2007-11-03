@@ -104,6 +104,7 @@ private:
 
 	bool does_not_change_;	// Optimization for 1-frame permanent animations
 	bool started_;
+	bool need_first_update_;
 	std::vector<frame> frames_;
 
 	// These are only valid when anim is started

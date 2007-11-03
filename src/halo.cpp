@@ -107,9 +107,6 @@ effect::effect(int xpos, int ypos, const animated<std::string>::anim_description
 
 	images_.start_animation(0,infinite);
 
-	if(!images_.animation_finished()) {
-		images_.update_last_draw_time();
-	}
 }
 
 void effect::set_location(int x, int y)

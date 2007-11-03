@@ -1681,6 +1681,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	if(!anim_) {
 		set_standing(disp,loc);
 	}
+	anim_->update_last_draw_time();
 
 	if(frame_begin_time_ != anim_->get_current_frame_begin_time()) {
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
@@ -1877,7 +1878,6 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 
 	anim_->redraw();
 	refreshing_ = false;
-	anim_->update_last_draw_time();
 }
 
 void unit::clear_haloes()

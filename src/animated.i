@@ -47,6 +47,7 @@ animated<T,T_void_value>::animated(int start_time) :
 	starting_frame_time_(start_time),
 	does_not_change_(true),
 	started_(false),
+	need_first_update_(false),
 	start_tick_(0),
 	cycles_(false),
 	acceleration_(1),
@@ -61,6 +62,7 @@ animated<T,T_void_value>::animated(const std::vector<std::pair<int,T> > &cfg, in
 	starting_frame_time_(start_time),
 	does_not_change_(true),
 	started_(false),
+	need_first_update_(false),
 	start_tick_(0),
 	cycles_(false),
 	acceleration_(1),
@@ -102,7 +104,8 @@ void animated<T,T_void_value>::start_animation(int start_time, bool cycles, doub
 	acceleration_ = acceleration;
 	if(acceleration_ <=0) acceleration_ = 1;
 	current_frame_key_= 0;
-	update_last_draw_time();
+	need_first_update_ = !frames_.empty();
+	//update_last_draw_time();
         // need to force last frame key in the case of starting anim...
         last_frame_key_ = -1;
 }
@@ -113,6 +116,10 @@ void animated<T,T_void_value>::update_last_draw_time()
 {
 	last_update_tick_ = current_ticks;
         last_frame_key_ = current_frame_key_;
+	if (need_first_update_) {
+		need_first_update_ = false;
+		return;
+	}
 	if(does_not_change_)
 		return;
 
@@ -141,6 +148,9 @@ void animated<T,T_void_value>::update_last_draw_time()
 template<typename T,  typename T_void_value>
 bool animated<T,T_void_value>::need_update() const
 {
+	if(need_first_update_) {
+		return true;
+	}
 	if(does_not_change_) {
 		return false;
 	}
