@@ -124,7 +124,7 @@ public:
 	void new_level();
 	//! Called on every draw
 	void refresh(const game_display& disp,const gamemap::location& loc) {
-		if (state_ == STATE_IDLING && anim_ && anim_->animation_finished()) {
+		if (state_ == STATE_IDLING && anim_ && anim_->animation_would_finish()) {
 			set_standing(disp, loc);
 			return;
 		}
