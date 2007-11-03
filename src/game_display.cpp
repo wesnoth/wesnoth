@@ -944,14 +944,14 @@ void game_display::invalidate_animations()
 
 	unit_map::iterator unit;
 	for(unit=units_.begin() ; unit != units_.end() ; unit++) {
+		temp_unit_->refresh(*this, temp_unit_loc_);
 		if (unit->second.get_animation() && unit->second.get_animation()->need_update())
 			invalidate(unit->first);
-		unit->second.refresh(*this,unit->first);
 	}
 	if (temp_unit_ ) {
+		temp_unit_->refresh(*this, temp_unit_loc_);
 		if (temp_unit_->get_animation() && temp_unit_->get_animation()->need_update())
 			invalidate(temp_unit_loc_);
-		temp_unit_->refresh(*this, temp_unit_loc_);
 	}
 
 	if (!preferences::animate_map()) {return;}
