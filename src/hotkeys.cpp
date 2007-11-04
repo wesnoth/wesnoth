@@ -823,12 +823,12 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 	}
 }
 
-void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
+void command_executor::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui)
 {
 	std::vector<std::string> items = items_arg;
 	if (can_execute_command(hotkey::get_hotkey(items.front()).get_id(), 0)){
 		//if just one item is passed in, that means we should execute that item
-		if(items.size() == 1 && items_arg.size() == 1) {
+		if(!context_menu && items.size() == 1 && items_arg.size() == 1) {
 			hotkey::execute_command(gui,hotkey::get_hotkey(items.front()).get_id(),this);
 			return;
 		}
