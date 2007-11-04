@@ -350,7 +350,7 @@ void server::run()
 			if(!e.socket) {
 				// "Could not send initial handshake" really fatal?
 				ERR_SERVER << "fatal network error: " << e.message << "\n";
-				throw e;
+				throw;
 				break;
 			} else {
 				LOG_SERVER << "socket closed: " << e.message << "\n";
@@ -1512,7 +1512,11 @@ int main(int argc, char** argv)
 	try {
 		server(port, input, config_file, nthreads).run();
 	} catch(network::error& e) {
-		ERR_SERVER << "caught network error while server was running. aborting.: " << e.message << "\n";
+		ERR_SERVER << "Caught network error while server was running. Aborting.: "
+			<< e.message << "\n";
+		return -1;
+	} catch(...) {
+		ERR_SERVER << "Caught unknown error while server was running. Aborting.\n";
 		return -1;
 	}
 
