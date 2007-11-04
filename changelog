@@ -35,6 +35,8 @@ Version 1.3.9+svn:
  * map editor:
    * fixed a bug when two dimensions of a map were modified, the editor 
      could crash (bug #10216)
+   * fixed a bug when shifting the map, the starting positions weren't
+     updated correctly (bug #10216)
  * multiplayer:
    * revised maps: Den of Onis, Silverhead Crossing, Sulla's Ruins,
      Weldyn Channel, Blue Water Province

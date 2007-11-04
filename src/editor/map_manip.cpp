@@ -81,6 +81,17 @@ std::string editormap::resize(const size_t width, const size_t height,
 		remove_tiles_top(-top_resize);
 	}
 
+	// fix the starting positions
+	if(x_offset || y_offset) {
+		for(size_t i = 0; i < STARTING_POSITIONS; ++i) {
+			if(startingPositions_[i] != gamemap::location()) {
+				startingPositions_[i].x -= x_offset;
+				startingPositions_[i].y -= y_offset;
+			}
+		}
+	}
+
+
 	return write();
 }
 
