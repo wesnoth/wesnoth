@@ -119,7 +119,7 @@ bool show_intro_part(display &disp, const config& part,
 	double yscale = 1.0 * video.gety() / background->h;
 	double scale = minimum<double>(xscale,yscale);
 
-	background = scale_surface(background, background->w*scale, background->h*scale);
+	background = scale_surface(background, static_cast<int>(background->w*scale), static_cast<int>(background->h*scale));
 
 	dstrect.x = (video.getx() - background->w) / 2;
 	dstrect.y = (video.gety() - background->h) / 2;
@@ -193,7 +193,7 @@ bool show_intro_part(display &disp, const config& part,
 			const int y = static_cast<int>(atoi(yloc.c_str())*scale);
 
 			if ((**i)["scaled"] == "yes"){
-				img = scale_surface(img, img->w*scale, img->h*scale);
+				img = scale_surface(img, static_cast<int>(img->w*scale), static_cast<int>(img->h*scale));
 			}
 
 			SDL_Rect image_rect;
