@@ -1,12 +1,15 @@
-#
+# translation of hu-editor.po to Hungarian
+# Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>, 2007.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
+"Project-Id-Version: hu-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:52+0100\n"
-"PO-Revision-Date: 2005-12-23 16:01+0100\n"
-"Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
-"Language-Team: none <hu@gnome.hu>\n"
+"PO-Revision-Date: 2007-11-04 00:27+0100\n"
+"Last-Translator: Kádár-Németh Krisztián <krisztian.7@vizslamail.hu>\n"
+"Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,46 +17,43 @@ msgstr ""
 
 #: data/core/editor-groups.cfg:11
 msgid "all"
-msgstr ""
+msgstr "mind"
 
 #: data/core/editor-groups.cfg:17
-#, fuzzy
 msgid "water"
-msgstr "Beillesztés"
+msgstr "víz"
 
 #: data/core/editor-groups.cfg:29
 msgid "flat"
-msgstr ""
+msgstr "síkság"
 
 #: data/core/editor-groups.cfg:35
 msgid "desert"
-msgstr ""
+msgstr "sivatag"
 
 #: data/core/editor-groups.cfg:41
 msgid "forest"
-msgstr ""
+msgstr "erdő"
 
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
-msgstr ""
+msgstr "fagyott"
 
 #: data/core/editor-groups.cfg:53
 msgid "rough"
-msgstr ""
+msgstr "rögös"
 
 #: data/core/editor-groups.cfg:59
 msgid "cave"
-msgstr ""
+msgstr "barlang"
 
 #: data/core/editor-groups.cfg:65
-#, fuzzy
 msgid "village"
-msgstr "Falvak:"
+msgstr "falu"
 
 #: data/core/editor-groups.cfg:71
-#, fuzzy
 msgid "castle"
-msgstr "Beillesztés"
+msgstr "vár"
 
 #: data/themes/editor.cfg:539
 msgid "File"
@@ -113,11 +113,11 @@ msgstr "Pálya tükrözése"
 
 #: src/editor/editor.cpp:256
 msgid "Update transitions"
-msgstr ""
+msgstr "Áttűnések frissítése"
 
 #: src/editor/editor.cpp:258
 msgid "Delay transition updates"
-msgstr ""
+msgstr "Áttűnés frissítésének késleltetése"
 
 #: src/editor/editor.cpp:468
 msgid "Language"
@@ -141,7 +141,7 @@ msgstr "A pálya már létezik. Felül akarod írni?"
 
 #: src/editor/editor.cpp:544
 msgid "None"
-msgstr ""
+msgstr "Egyik sem"
 
 #: src/editor/editor.cpp:549 src/editor/editor.cpp:1425
 msgid "Player"
@@ -204,8 +204,10 @@ msgstr "Jobb gomb"
 msgid ""
 "Can't resize the map, the requested size is bigger than the maximum, size="
 msgstr ""
+"A térképet nem lehet átméretezni, mert a megadott méret nagyobb, mint a "
+"maximum érték, ami jelen esetben="
 
 #: src/editor/map_manip.cpp:203 src/editor/map_manip.cpp:217
 #: src/editor/map_manip.cpp:264 src/editor/map_manip.cpp:280
 msgid " maximum="
-msgstr ""
+msgstr " maximum="
