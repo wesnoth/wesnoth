@@ -995,18 +995,8 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 		dragging_ = false;
 		dragging_started_ = false;
 		cursor::set_dragging(false);
-		if (gui_->viewing_team() == team_num_-1	&& selected_hex_.valid()
-				&& find_unit(selected_hex_) != units_.end()) {
-			selected_hex_ = gamemap::location();
-			gui_->select_hex(gamemap::location());
-			gui_->set_mouseover_hex_overlay(NULL);
-			gui_->clear_attack_indicator();
-			gui_->unhighlight_reach();
-			current_paths_ = paths();
-			current_route_.steps.clear();
-			gui_->set_route(NULL);
-
-			cursor::set(cursor::NORMAL);
+		if (selected_hex_.valid() && find_unit(selected_hex_) != units_.end()) {
+			select_hex(gamemap::location(), browse);
 		} else {
 			gui_->draw(); // redraw highlight (and maybe some more)
 			const theme::menu* const m = gui_->get_theme().context_menu();
@@ -1204,7 +1194,7 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 	gui_->set_route(NULL);
 
 	unit_map::iterator u = find_unit(hex);
-	if(u != units_.end() ) {
+	if(hex.valid() && u != units_.end() ) {
 		next_unit_ = u->first;
 
 		// if it's not the unit's turn, we reset its moves
