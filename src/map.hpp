@@ -97,7 +97,7 @@ public:
 		DIRECTION get_relative_dir(location loc) const;
 		static DIRECTION get_opposite_dir(DIRECTION d);
 
-		static location null_location;
+		static const location null_location;
 	};
 	const t_translation::t_list& underlying_mvt_terrain(const location& loc) const
 		{ return underlying_mvt_terrain(get_terrain(loc)); }

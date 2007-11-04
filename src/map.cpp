@@ -40,7 +40,7 @@ std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 	return s;
 }
 
-gamemap::location gamemap::location::null_location;
+const gamemap::location gamemap::location::null_location;
 
 const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
 const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
