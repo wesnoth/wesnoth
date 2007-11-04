@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:52+0100\n"
-"PO-Revision-Date: 2007-10-28 20:46+0100\n"
+"PO-Revision-Date: 2007-11-01 18:47+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -220,7 +220,7 @@ msgstr "Ściana jaskini"
 
 #: data/core/terrain.cfg:925
 msgid "Void"
-msgstr ""
+msgstr "Otchłań"
 
 #: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
@@ -377,10 +377,14 @@ msgstr "Pomiń ruchy komputera"
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
+"Zapisz powtórkę po zwycięstwie (gra jedno/wieloosobowa) lub porażce (gra "
+"wieloosobowa)"
 
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
 msgstr ""
+"Usuń zapisane gry po zwycięstwie (gra jedno/wieloosobowa) lub porażce (gra "
+"wieloosobowa)"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -608,7 +612,7 @@ msgstr "Częstotliwość animacji bezczynności jednostek"
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "Ustaw maksymalną liczbę zapisanych gier"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -617,12 +621,14 @@ msgstr "Nie animuj ruchu jednostek komputera"
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
 msgstr ""
+"Zapisz powtórkę po zwycięstwie (gra jednoosobowa) lub porażce (gra jedno/"
+"wieloosobowa)"
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
 msgstr ""
-"Automatyczne usuwanie automatycznie zapisanych gier pod koniec scenariusza"
+"Usuń zapisane gry po zwycięstwie (gra jednoosobowa) lub porażce (gra jedno/"
+"wieloosobowa)"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -727,11 +733,11 @@ msgstr "Szybkość:"
 
 #: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "Maksymalna liczba zapisanych gier: "
 
 #: src/game_preferences_display.cpp:689
 msgid "infinite"
-msgstr ""
+msgstr "bez ograniczeń"
 
 #: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "

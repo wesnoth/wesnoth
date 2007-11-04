@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:51+0100\n"
-"PO-Revision-Date: 2007-10-28 21:01+0100\n"
+"PO-Revision-Date: 2007-11-01 18:41+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -2234,17 +2234,16 @@ msgid "General commands"
 msgstr "Komendy ogólne"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Usuń widoczne wiadomości."
+"Usuń wiadomości rozmowy.\n"
+"\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2253,9 +2252,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Przełączanie kontrolera gracza strony \"side\" między człowiekiem a "
-"komputerem. Komendę tę musi wydać gracz kontrolujący daną stronę. Jeżeli "
-"strona nie zostanie podana, wartością domyślną jest \"1\".\n"
+"Przełączanie gracza kontrolującego daną stronę między człowiekiem a "
+"komputerem. Komendę tę musi wydać gracz/klient kontrolujący daną stronę. "
+"Jeżeli strona nie zostanie podana, wartością domyślną jest stroną aktualnie "
+"aktywna.\n"
 "\n"
 
 #: data/core/help.cfg:621
@@ -2304,9 +2304,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Przełącza wyświetlanie aktualnej liczby klatek na sekundę.\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2314,8 +2316,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Przełącz w tryb debugowania (nie działa w grze wieloosobowej). Wyłączyć go "
-"można tylko wychodząc z gry.\n"
+"Przełącz w tryb debugowania (nie działa w grze wieloosobowej). Tryb "
+"debugowania można wyłączyć wychodząc z gry lub wpisując polecenie :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:637
@@ -2327,7 +2329,6 @@ msgid "Multiplayer commands"
 msgstr "Komendy gry wieloosobowej"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2335,8 +2336,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Wyrzuć na stałe użytkownika \"user\" z gry wieloosobowej oraz zablokuj "
-"dostęp z adresu IP mu odpowiadającego.\n"
+"Wyrzuć użytkownika z gry wieloosobowej oraz zablokuj dostęp z adresu IP "
+"przez niego używanego.\n"
 "\n"
 
 #: data/core/help.cfg:649
@@ -2378,14 +2379,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Odbierz/daj głos obserwatorom.\n"
-"\n"
+"Odbierz/daj głos obserwatorom."
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -3894,13 +3893,12 @@ msgstr ""
 "potrafi wyleczyć je z zatrucia."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Jednostka posiada podstawowe umiejętności leczenia, choć nie potrafi "
-"wyleczyć z zatrucia, a jedynie spowolnić jego efekty."
+" Ta jednostka potrafi neutralizować skutki zatrucia u jednostek z nią "
+"sąsiadujących."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -5002,9 +5000,8 @@ msgid "#(Invalid)"
 msgstr "#(Niepoprawny)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Utrzymanie kampanii"
+msgstr "Kampania: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1399
 msgid "Multiplayer"
@@ -5362,6 +5359,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Załóż grę korzystając z lokalnego serwera. Nie jest to zalecane - lepiej "
+"skorzystać z osobnego serwera \"wesnothd\"."
 
 #: src/game.cpp:1392
 msgid "Local Game"
@@ -5700,11 +5699,11 @@ msgstr "Losowa"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Feminine ♀"
-msgstr ""
+msgstr "Żeńska ♀"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Masculine ♂"
-msgstr ""
+msgstr "Męska ♂"
 
 #: src/leader_list.cpp:242 src/leader_list.cpp:248
 msgid "?"
@@ -6668,9 +6667,8 @@ msgid "Leader: "
 msgstr "Przywódca:"
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Przywódca:"
+msgstr "Płeć: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6705,9 +6703,8 @@ msgid "Could not send initial handshake"
 msgstr "Nie udało się rozpocząć negocjacji połączenia"
 
 #: src/play_controller.cpp:397
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Wczytywany plik jest uszkodzony"
+msgstr "Wczytywany plik jest uszkodzony. Kontynuować grę?"
 
 #: src/play_controller.cpp:770
 msgid "Back to start"
