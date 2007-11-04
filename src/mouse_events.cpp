@@ -1193,47 +1193,44 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 		move_unit_along_current_route(check_shroud);
 	} else {
 		// we select a (maybe empty) hex
-		gui_->unhighlight_reach();
-		gui_->clear_attack_indicator();
-		current_paths_ = paths();
+		select_hex(hex, browse);
+	}
+}
 
-		selected_hex_ = hex;
-		gui_->select_hex(hex);
-		current_route_.steps.clear();
+void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) {
+	selected_hex_ = hex;
+	gui_->select_hex(hex);
+	gui_->clear_attack_indicator();
+	gui_->set_route(NULL);
+
+	unit_map::iterator u = find_unit(hex);
+	if(u != units_.end() ) {
+		next_unit_ = u->first;
+
+		// if it's not the unit's turn, we reset its moves
+		unit_movement_resetter move_reset(u->second, u->second.side() != team_num_);
+		const bool teleport = u->second.get_ability_bool("teleport",u->first);
+		current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
+						   false,teleport,viewing_team(),path_turns_);
+		show_attack_options(u);
+		gui_->highlight_reach(current_paths_);
+		// the highlight now comes from selection
+		// and not from the mouseover on an enemy
+		enemy_paths_ = false;
 		gui_->set_route(NULL);
 
-		u = clicked_u;
+		// selection have impact only if we are not observing and it's our unit
+		if (!browse && u->second.side() == gui_->viewing_team()+1) {
+			sound::play_UI_sound("select-unit.wav");
+			u->second.set_selecting(*gui_, u->first);
 
-		if(u != units_.end() && !gui_->fogged(u->first)) {
-			const bool teleport = u->second.get_ability_bool("teleport",u->first);
-
-			if (u->second.side() == team_num_) {
-				current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
-							   false,teleport,viewing_team(),path_turns_);
-				show_attack_options(u);
-				gui_->highlight_reach(current_paths_);
-
-				next_unit_ = u->first;
-
-				const gamemap::location go_to = u->second.get_goto();
-				if(map_.on_board(go_to)) {
-					paths::route route = get_route(u, go_to, current_team());
-					gui_->set_route(&route);
-				}
-				sound::play_UI_sound("select-unit.wav");
-				u->second.set_selecting(*gui_, u->first);
-				game_events::fire("select",hex);
-			} else {
-				unit_movement_resetter move_reset(u->second);
-				current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
-							   false,teleport,viewing_team(),path_turns_);
-				gui_->highlight_reach(current_paths_);
-				// the highlight now comes from selection
-				// and not anymore from the mouseover on an enemy
-				enemy_paths_ = false; 
-			}
-
+			game_events::fire("select", selected_hex_);
 		}
+
+	} else {
+		gui_->unhighlight_reach();
+		current_paths_ = paths();
+		current_route_.steps.clear();
 	}
 }
 
@@ -1476,7 +1473,7 @@ const unit_map::const_iterator itx = it;\
 const unit_map::const_iterator begin = units_.begin();\
 const unit_map::const_iterator end = units_.end()
 
-void mouse_handler::cycle_units()
+void mouse_handler::cycle_units(const bool browse)
 {
 	LOCAL_VARIABLES;
 
@@ -1488,11 +1485,17 @@ void mouse_handler::cycle_units()
 			if (it == end) it = begin;
 		} while (it != itx && !unit_in_cycle(it));
 	}
+	if (it!=itx) {
+		gui_->scroll_to_tile(it->first,game_display::WARP);
+		select_hex(it->first, browse);
+	} else {
+		next_unit_ = gamemap::location();
+	}
 
-	select_unit(it, itx);
+	mouse_update(browse);
 }
 
-void mouse_handler::cycle_back_units()
+void mouse_handler::cycle_back_units(const bool browse)
 {
 	LOCAL_VARIABLES;
 
@@ -1506,32 +1509,14 @@ void mouse_handler::cycle_back_units()
 		} while (it != itx && !unit_in_cycle(it));
 	}
 
-	select_unit(it, itx);
-}
-
-inline void mouse_handler::select_unit(const unit_map::const_iterator &it,
-									   const unit_map::const_iterator &itx) {
-	if (it != itx && !gui_->fogged(it->first)) {
-		const bool teleport = it->second.get_ability_bool("teleport",it->first);
-		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,false,teleport,viewing_team(),path_turns_);
-		gui_->highlight_reach(current_paths_);
-
+	if (it!=itx) {
 		gui_->scroll_to_tile(it->first,game_display::WARP);
+		select_hex(it->first, browse);
+	} else {
+		next_unit_ = gamemap::location();
 	}
 
-	if (it == itx) {
-		next_unit_ = gamemap::location();
-	} else {
-		next_unit_ = it->first;
-		selected_hex_ = next_unit_;
-		gui_->select_hex(selected_hex_);
-		gui_->highlight_hex(selected_hex_);
-		current_route_.steps.clear();
-		gui_->set_route(NULL);
-		mouse_update(true);
-		show_attack_options(it);
-		game_events::fire("select",selected_hex_);
-	}
+	mouse_update(browse);
 }
 
 void mouse_handler::set_current_paths(paths new_paths) {

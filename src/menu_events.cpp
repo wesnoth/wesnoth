@@ -1722,7 +1722,7 @@ private:
 
 			if(un->second.hold_position()) {
 				un->second.set_user_end_turn(true);
-				mousehandler.cycle_units();
+				mousehandler.cycle_units(false);
 			}
 		}
 	}
@@ -1741,7 +1741,7 @@ private:
 			gui_->draw();
 
 			if(un->second.user_end_turn()) {
-				mousehandler.cycle_units();
+				mousehandler.cycle_units(false);
 			}
 		}
 	}

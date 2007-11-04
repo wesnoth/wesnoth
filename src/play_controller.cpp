@@ -231,11 +231,11 @@ void play_controller::preferences(){
 }
 
 void play_controller::cycle_units(){
-	mouse_handler_.cycle_units();
+	mouse_handler_.cycle_units(browse_);
 }
 
 void play_controller::cycle_back_units(){
-	mouse_handler_.cycle_back_units();
+	mouse_handler_.cycle_back_units(browse_);
 }
 
 void play_controller::show_chat_log(){

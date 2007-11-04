@@ -44,8 +44,8 @@ public:
 	// update the mouse with a fake mouse motion
 	void mouse_update(const bool browse);
 	void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
-	void cycle_units();
-	void cycle_back_units();
+	void cycle_units(const bool browse);
+	void cycle_back_units(const bool browse);
 
 	int get_path_turns() const { return path_turns_; }
 	paths get_current_paths() { return current_paths_; }
@@ -73,6 +73,7 @@ private:
 	bool is_middle_click(const SDL_MouseButtonEvent& event);
 	bool is_right_click(const SDL_MouseButtonEvent& event);
 	void left_click(const SDL_MouseButtonEvent& event, const bool browse);
+	void select_hex(const gamemap::location& hex, const bool browse);
 	void clear_undo_stack();
 	bool move_unit_along_current_route(bool check_shroud=true);
 	// wrapper to catch bad_alloc so this should be called
@@ -84,7 +85,6 @@ private:
 	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
 	unit_map::iterator find_unit(const gamemap::location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
-	void select_unit(const unit_map::const_iterator &it, const unit_map::const_iterator &bound);
 
 	game_display* gui_;
 	std::vector<team>& teams_;
