@@ -69,13 +69,13 @@ in a corner of the screen.
 \fB\-h\fP, \fB\-\-help\fP
 displays a summary of command line options to standard output, and exits.
 .TP 
-\fB\-\-load\fP\fI\ savegame\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 loads the file savegame from the standard save game directory.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
 sets the severity level of the debug domains. "all" can be used to match any
-debug domain.  \fB\-\-log\-info\fP shows all messages, \fB\-\-log\-warning\fP only
-warnings and errors, and \fB\-\-log\-error\fP just errors.
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Dumps a list of all log domains and exits.
@@ -113,6 +113,10 @@ runs the game in windowed mode.
 runs the game without any delays for graphic benchmarking.  This is
 automatically enabled by \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+runs the game without the GUI. Must appear before \fB\-\-multiplayer\fP to have
+the desired effect.
+.TP 
 \fB\-\-exit\-at\-end\fP
 exits once the scenario is over, without displaying victory/defeat dialog
 which requires the user to click OK.  This is also used for scriptable
@@ -137,10 +141,6 @@ use this option to play in the selected era instead of the "Default"
 era. The era is chosen by an id. Eras are described in the
 data/multiplayer.cfg file.
 .TP 
-\fB\-\-nogui\fP
-runs the game without the GUI. Must appear before \fB\-\-multiplayer\fP to have
-the desired effect.
-.TP 
 \fB\-\-parm<number>=name:value\fP
 sets additional parameters for this side. This parameter depends on the
 options used with \fB\-\-controller\fP and \fB\-\-algorithm.\fP It should only be
@@ -157,9 +157,9 @@ an id. Factions are described in the data/multiplayer.cfg file.
 \fB\-\-turns=value\fP
 sets the number of turns for the chosen scenario. The default is "50".
 .TP 
-Example to test your own AI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTHOR
 .

@@ -58,12 +58,13 @@ Battle for \fBWesnoth\fPはターン制のファンタジー戦略ゲームです。
 \fB\-h\fP, \fB\-\-help\fP
 標準出力にコマンドラインオプションの要約を表示して、終了する。
 .TP 
-\fB\-\-load\fP\fI\ savegame\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 ファイル savegame を標準のセーブゲームディレクトリから読み込む。
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-デバッグ領域(domain)の厳密さのレベルを設定する。 "all" は、どのデバッグ領域にも対応させるために利用できる。 \fB\-\-log\-info\fP
-は全てのメッセージを表示し、 \fB\-\-log\-warning\fP は警告とエラーだけを、そして \fB\-\-log\-error\fP はエラーのみを表示する。
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Dumps a list of all log domains and exits.
@@ -99,6 +100,9 @@ between the 1 and 1000, the default is 50.
 \fB\-\-no\-delay\fP
 グラフィックベンチマーク用にディレイなしでゲームを実行する。これは \-\-nogui では自動的に有効になる。
 .TP 
+\fB\-\-nogui\fP
+GUIなしでゲームを実行する。要望の効果を得るためには \fB\-\-multiplayer\fP より前になければならない。
+.TP 
 \fB\-\-exit\-at\-end\fP
 シナリオが終わると、ユーザがOKをクリックする必要のある勝利／敗北のダイアログを表示せずに終了する。これはスクリプト化可能なベンチマークにも利用される。
 .
@@ -118,9 +122,6 @@ between the 1 and 1000, the default is 50.
 "Default" の代わりの時代を選択してプレイするためにこのオプションを使用する。時代はIDによって選択される。時代はファイル
 data/multiplayer.cfg の中に記述されている。
 .TP 
-\fB\-\-nogui\fP
-GUIなしでゲームを実行する。要望の効果を得るためには \fB\-\-multiplayer\fP より前になければならない。
-.TP 
 \fB\-\-parm<number>=name:value\fP
 このサイドの追加的なパラメータを設定する。このパラメータは、\fB\-\-controller\fP と \fB\-\-algorithm\fP
 とともに使用されるオプションに依存する。自作のAI設計者にのみ有用と思われる。(まだ完全には文書化されていない)
@@ -135,9 +136,9 @@ selects a multiplayer scenario. The default scenario is
 \fB\-\-turns=value\fP
 選択されたシナリオのターン数を設定する。 既定値は "50"。
 .TP 
-Example to test your own AI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH 著者
 .

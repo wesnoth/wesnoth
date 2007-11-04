@@ -39,14 +39,19 @@ serveren accepterer via wesnoth\-klienten eller soklen.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ sti\fP
-fortæller wesnothd hvor den skal finde konfigurationsfilen. Se afsnittet
-\fBSERVERINDSTILLING\fP nedenfor for syntaks.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 kør wesnothd som en dæmon.
 .TP 
 \fB\-h,\ \-\-help\fP
 fortæller dig hvad kommandolinje\-tilvalgene gør.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 tildeler serveren til den specificerede port. Hvis ingen port er

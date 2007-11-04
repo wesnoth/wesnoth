@@ -72,14 +72,13 @@ wy?wietla bie??c? liczb? klatek na sekund? w rogu ekranu.
 wy?wietla podsumowanie opcji wiersza polece? na standardowym wyj?ciu i
 ko?czy dzia?anie.
 .TP 
-\fB\-\-load\fP\fI\ plikzapisu\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 ?aduje plik zapisu z domy?lnego katalogu zapisu gry.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-okre?la poziom istotno?ci domen debugowania. "all" mo?e zosta? u?yte do
-wy?wietlenia wsztstkich domen debugowania. Prze??cznik \fB\-\-log\-info\fP
-wy?wietla wszystkie wiadomo?ci, \fB\-\-log\-warning\fP tylko ostrze?enia i b??dy,
-a \fB\-\-log\-error\fP tylko b??dy.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 dokonuje zrzutu wszystkich domen dzienników i ko?czy dzia?anie.
@@ -117,6 +116,10 @@ uruchamia gr? w oknie.
 uruchamia gr? bez opó?nie? w celu wykonania testów grafiki. Ta opcja jest
 domy?lnie w??czana przez prze??cznik \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+uruchamia gr? bez graficznego interfejsu u?ytkownika (GUI). Aby osi?gna?
+planowany rezultat, nale?y u?y? tej flagi przed opcj? \fB\-\-multiplayer\fP.
+.TP 
 \fB\-\-exit\-at\-end\fP
 ko?czy dzia?anie programu po zako?czeniu scenariusza, bez wy?wietlania
 tabeli zwyci?stwa/pora?ki, która wymaga klikni?cia OK przez
@@ -143,10 +146,6 @@ tej opcji nale?y u?y?, aby zagra? w wybranej erze zamiast w erze
 "Default". Ery wybierane s? na podstawie identyfikatora i s? opisane w pliku
 data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-uruchamia gr? bez graficznego interfejsu u?ytkownika (GUI). Aby osi?gna?
-planowany rezultat, nale?y u?y? tej flagi przed opcj? \fB\-\-multiplayer\fP.
-.TP 
 \fB\-\-parm<numer>=nazwa:warto??\fP
 ustawia dodatkowe parametry dla danej strony. Warto?? ta jest zale?na od
 opcji u?ytych z flagami \fB\-\-controller\fP i \fB\-\-algorithm.\fP. Z regu?y
@@ -166,9 +165,9 @@ data/multiplayer.cfg.
 ustala maksymaln? liczb? tur dla danego scenariusza. Warto?? domy?lna to
 "50".
 .TP 
-Przyk?ad testowania w?asnej SI:
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTOR
 .

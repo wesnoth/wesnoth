@@ -39,14 +39,19 @@ toegestane commandos.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ path\fP
-vertelt wesnothd waar het het configuratiebestand kan vinden. Lees de sectie
-\fBSERVER CONFIG\fP hieronder voor de syntax.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 draait wesntohd als een daemon.
 .TP 
 \fB\-h,\ \-\-help\fP
 veklaart de opties voor command line.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 verbind de server met de opgegeven poort. Als geen poort is opgegeven, poort

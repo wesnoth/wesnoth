@@ -72,15 +72,14 @@ juego actualmente, en una esquina de la pantalla.
 muestra un resumen de las opciones de línea de órdenes en la salida
 estándar, y finaliza.
 .TP 
-\fB\-\-load\fP\fI\ savegame\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 carga un fichero de partida guardada desde el directorio estándar de juegos
 guardados.
 .TP 
-\fB\-\-log\-error="dominio1,dominio2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-establece el nivel de gravedad de los dominios de depuración. "all" puede
-usarse para seleccionar todos los dominios.  \fB\-\-log\-info\fP muestra todos los
-mensajes, \fB\-\-log\-warning\fP sólo alertas y errores, y \fB\-\-log\-error\fP
-solamente errores.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Vuelca una lista de todos los dominios de registro y sale.
@@ -118,6 +117,10 @@ ejecuta el juego en una ventana.
 ejecuta el juego sin tomar un tiempo para hacer una prueba de rendimiento
 gráfico.  Esto se activa automáticamente con \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+ejecuta el juego sin el interfaz gráfico. Debe aparecer antes de
+\fB\-\-multiplayer\fP para que tenga el efecto deseado.
+.TP 
 \fB\-\-exit\-at\-end\fP
 finaliza una vez se ha completado el escenario, sin mostrar un diálogo de
 victoria o derrota que requiere que el usuario pulse en Aceptar.  Esto se
@@ -145,10 +148,6 @@ defecto (denominada "Default"). La era se selecciona usando un número de
 identificación (id). Las eras se describen en el fichero
 data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-ejecuta el juego sin el interfaz gráfico. Debe aparecer antes de
-\fB\-\-multiplayer\fP para que tenga el efecto deseado.
-.TP 
 \fB\-\-parm<número>=nombre:valor\fP
 establece parámetros adicionales para este bando. Este parámetro depende de
 las opciones empleadas con \fB\-\-controller\fP y \fB\-\-algorithm.\fP Sólo debería
@@ -168,9 +167,9 @@ en el fichero data/multiplayer.cfg.
 establece el número de turnos para el escenario elegido. Por defecto es
 "50".
 .TP 
-Ejemplo para probar tu propia inteligencia artificial: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTOR
 .

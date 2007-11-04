@@ -71,14 +71,13 @@ exibe o número de frames por segundo atual do jogo em um canto da tela.
 exibe um resumo das opções de linha de comando para a saída padrão, e
 termina.
 .TP 
-\fB\-\-load\fP\fI\ jogo salvo\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 carrega o arquivo de jogo do diretório padrão de jogos salvos.
 .TP 
-\fB\-\-log\-error="domínio1,domínio2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-configura o nível de importância de cada domínios de debug. "all" pode ser
-usado para escolher todos os domínios. \fB\-\-log\-info\fP mostra todas as
-mensagens, <B\-\-log\-warning> mostra apenas avisos e erros, e \fB\-\-log\-error\fP
-mostra apenas os erros.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Imprime uma lista de todos os domínios de log e termina.
@@ -116,6 +115,10 @@ executa o jogo em modo janela.
 executa o jogo sem atrasos para benchmark de gráficos. Isto é selecionado
 automaticamente pela opção \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+executa o jogo sem a GUI. Deve ser usado antes de \fB\-\-multiplayer\fP para ter
+o efeito desejado.
+.TP 
 \fB\-\-exit\-at\-end\fP
 sai do jogo quando o cenário terminar, sem mostrar uma tela de
 vitória/derrota que requer que o usuário aperte OK. Isto pode ser usado para
@@ -140,10 +143,6 @@ use esta opção para jogar na era selecionada, ao invéz da era "Padrão". Você
 escolhe a era pelo seu númedo de identificação (id). As eras disponíveis
 estão listadas no arquivo data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-executa o jogo sem a GUI. Deve ser usado antes de \fB\-\-multiplayer\fP para ter
-o efeito desejado.
-.TP 
 \fB\-\-parm<número>=nome:valor\fP
 configura parâmetros extras para este time. Esta opção depende das opções
 usadas com \fB\-\-controller\fP e \fB\-\-algorithm.\fP Ela só tem utilidade para
@@ -161,9 +160,9 @@ data/multiplayer.cfg.
 \fB\-\-turns=valor\fP
 define o número de turnos para o cenário escolhido. O padrão é "50".
 .TP 
-Exemplo para testar sua própria AI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2python_script:py/meu_script_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTOR
 .

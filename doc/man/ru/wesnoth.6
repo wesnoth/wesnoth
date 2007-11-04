@@ -69,14 +69,13 @@ http://www.wesnoth.org/ для информации о командном режиме).
 \fB\-h\fP, \fB\-\-help\fP
 вывести список параметров командной строки в стандартный вывод и выйти.
 .TP 
-\fB\-\-load\fP\fI\ savegame\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 загрузить файл сохранения из стандартного каталога файлов сохранения игры.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-установить уровень для отладочных доменов. "all" может соответствовать
-любому отладочному домену. \fB\-\-log\-info\fP отображает все сообщения,
-\fB\-\-log\-warning\fP только предупреждения и ошибки, \fB\-\-log\-error\fP только
-ошибки.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Dumps a list of all log domains and exits.
@@ -114,6 +113,10 @@ between the 1 and 1000, the default is 50.
 запустить игру без задержки для графического бенчмаркинга. Автоматически
 включается при использовании \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+запустить игру без GUI. Должен указываться до \fB\-\-multiplayer\fP для
+достижения желаемого эффекта.
+.TP 
 \fB\-\-exit\-at\-end\fP
 выйти по завершению сценария, без отображения диалога победы/поражения,
 требующего от пользователя подтверждения. Это также используется для
@@ -137,10 +140,6 @@ AI. Доступные значения: "idle_ai" и "sample_ai".
 используйте этот параметр для игры в выбранной эре вместо эры "Default". Эра
 выбирается по ее id. Они описаны в файле data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-запустить игру без GUI. Должен указываться до \fB\-\-multiplayer\fP для
-достижения желаемого эффекта.
-.TP 
 \fB\-\-parm<число>=имя:значение\fP
 установить дополнительные параметры для данной стороны. Этот параметр
 зависит от параметров, использованных в \fB\-\-controller\fP и \fB\-\-algorithm\fP. Он
@@ -158,9 +157,9 @@ selects a multiplayer scenario. The default scenario is
 \fB\-\-turns=значение\fP
 установить число ходов для выбранного сценария. По умолчанию 50.
 .TP 
-Пример для тестирования собственного AI:
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH АВТОР
 .

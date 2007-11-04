@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-31 20:51+0100\n"
+"POT-Creation-Date: 2007-11-04 18:03+0100\n"
 "PO-Revision-Date: 2007-09-16 00:51+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -22,34 +22,30 @@ msgstr ""
 "X-Generator: KBabel 1.11.2\n"
 
 #: data/_main.cfg:36
-msgid "Female leaders on MP (if available)"
-msgstr ""
-
-#: data/_main.cfg:43
 msgid "Binary Saves"
 msgstr "バイナリ保存"
 
-#: data/_main.cfg:50
+#: data/_main.cfg:43
 msgid "Show Combat"
 msgstr "戦闘を表示"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:50
 msgid "Animate Map"
 msgstr "マップのアニメーション"
 
-#: data/_main.cfg:64
+#: data/_main.cfg:57
 msgid "Mouse Scrolling"
 msgstr "マウススクロール"
 
-#: data/_main.cfg:71
+#: data/_main.cfg:64
 msgid "Official Wesnoth Server"
 msgstr "公式サーバー"
 
-#: data/_main.cfg:75
+#: data/_main.cfg:68
 msgid "Alternate Wesnoth Server"
 msgstr "代わりの Wesnoth サーバー"
 
-#: data/_main.cfg:160
+#: data/_main.cfg:153
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Wesnothの書"
 
@@ -4642,8 +4638,8 @@ msgid "End Scenario"
 msgstr "リモートシナリオ"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2456
-#: src/unit.cpp:2629
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2462
+#: src/unit.cpp:2635
 msgid "HP"
 msgstr "HP"
 
@@ -4755,8 +4751,8 @@ msgstr "視点"
 msgid "Skip animation"
 msgstr "アニメーションを省略"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:381
-#: src/multiplayer_connect.cpp:478 src/multiplayer_wait.cpp:493
+#: src/about.cpp:46 src/multiplayer_connect.cpp:383
+#: src/multiplayer_connect.cpp:480 src/multiplayer_wait.cpp:493
 msgid "+"
 msgstr "+"
 
@@ -4983,7 +4979,7 @@ msgstr "経験: "
 msgid "Moves: "
 msgstr "移動: "
 
-#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:832
+#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:831
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:192
 msgid "Cancel"
 msgstr "キャンセル"
@@ -4992,7 +4988,7 @@ msgstr "キャンセル"
 msgid "KB"
 msgstr "Kバイト"
 
-#: src/display.cpp:369
+#: src/display.cpp:374
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
@@ -5004,17 +5000,17 @@ msgstr "The Battle for Wesnoth"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告: 読み込もうとしたファイルは壊れています。とにかく読み込みます。\n"
 
-#: src/game.cpp:718 src/multiplayer_connect.cpp:1344
+#: src/game.cpp:718 src/multiplayer_connect.cpp:1340
 msgid "This save is from a version too old to be loaded."
 msgstr "この保存データのバージョンは古すぎます。ロードすることができません。"
 
-#: src/game.cpp:724 src/multiplayer_connect.cpp:1351
+#: src/game.cpp:724 src/multiplayer_connect.cpp:1347
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "この保存データはゲームとは異なるバージョンです。 ロードしてみますか？"
 
-#: src/game.cpp:732 src/game.cpp:735 src/multiplayer_connect.cpp:1322
+#: src/game.cpp:732 src/game.cpp:735 src/multiplayer_connect.cpp:1318
 msgid "The file you have tried to load is corrupt: '"
 msgstr "ロードしようとしたファイルは壊れています: '"
 
@@ -5183,7 +5179,7 @@ msgstr ""
 "このアドオンを導入するのに 必要なファイルを作成する際に、 問題がありました。"
 
 #: src/game.cpp:1285 src/game.cpp:1327 src/game.cpp:1354
-#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:441
+#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:460
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
@@ -5245,15 +5241,15 @@ msgstr "同一マシンを共用して AI もしくは人間とマルチプレ�
 msgid "Login: "
 msgstr "ログイン: "
 
-#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:365
+#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:370
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:368
+#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:373
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:371
+#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:376
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
@@ -5305,15 +5301,15 @@ msgstr "タイトル画面を読み込んでいます。"
 msgid "Invalid color range: "
 msgstr "無効な色範囲:"
 
-#: src/game_events.cpp:898
+#: src/game_events.cpp:903
 msgid "Victory:"
 msgstr "勝利条件:"
 
-#: src/game_events.cpp:901
+#: src/game_events.cpp:906
 msgid "Defeat:"
 msgstr "敗北条件:"
 
-#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:394
+#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:399
 msgid " replay"
 msgstr "リプレイ"
 
@@ -5395,7 +5391,7 @@ msgstr "武器の射程:"
 msgid "damage type: "
 msgstr "ダメージの種類:"
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1361
 msgid "vs"
 msgstr "対"
 
@@ -5556,8 +5552,9 @@ msgstr "完"
 msgid "System default language"
 msgstr "システムデフォルト言語"
 
-#: src/leader_list.cpp:128 src/leader_list.cpp:159 src/leader_list.cpp:194
-msgid "Random"
+#: src/leader_list.cpp:128
+#, fuzzy
+msgid "gender^Random"
 msgstr "ランダム"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
@@ -5567,6 +5564,10 @@ msgstr ""
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Masculine ♂"
 msgstr ""
+
+#: src/leader_list.cpp:159 src/leader_list.cpp:194
+msgid "Random"
+msgstr "ランダム"
 
 #: src/leader_list.cpp:242 src/leader_list.cpp:248
 msgid "?"
@@ -5680,11 +5681,11 @@ msgstr "スクロールする"
 msgid "Leader"
 msgstr "リーダー"
 
-#: src/menu_events.cpp:505 src/multiplayer_connect.cpp:817
+#: src/menu_events.cpp:505 src/multiplayer_connect.cpp:816
 msgid "Team"
 msgstr "チーム"
 
-#: src/menu_events.cpp:506 src/multiplayer_connect.cpp:828
+#: src/menu_events.cpp:506 src/multiplayer_connect.cpp:827
 #: src/multiplayer_wait.cpp:487
 msgid "Gold"
 msgstr "所持金"
@@ -5701,7 +5702,7 @@ msgstr "ユニット"
 msgid "Upkeep"
 msgstr "維持"
 
-#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:829
+#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:828
 #: src/multiplayer_wait.cpp:491
 msgid "Income"
 msgstr "収入"
@@ -5766,7 +5767,7 @@ msgstr "はい"
 msgid "Scenario Settings"
 msgstr "シナリオ設定"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:534
+#: src/menu_events.cpp:698 src/playcampaign.cpp:549
 msgid "Name:"
 msgstr "名前:"
 
@@ -5786,7 +5787,7 @@ msgstr "保存された"
 msgid "The game has been saved"
 msgstr "ゲームを保存しました。"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:542
+#: src/menu_events.cpp:716 src/playcampaign.cpp:557
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
@@ -5806,7 +5807,7 @@ msgstr "マップを保存しました。"
 msgid "Could not save the map: $msg"
 msgstr "マップを保存することができませんでした: $msg"
 
-#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:766
+#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:770
 msgid "Auto-Save"
 msgstr "自動保存"
 
@@ -6026,59 +6027,59 @@ msgstr "コマンド:"
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "攻撃側"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "防御側"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr "想定される戦闘結果 (HP)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr "抵抗力:"
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr "弱点:"
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "遅くなった"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "時刻"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "統率"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "総ダメージ"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "使用できる武器がありません"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "無傷でいられる可能性"
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1378
 msgid "Damage Calculations"
 msgstr "ダメージ計算"
 
-#: src/mouse_events.cpp:1375
+#: src/mouse_events.cpp:1389
 msgid "Attack Enemy"
 msgstr "敵を攻撃する"
 
-#: src/mouse_events.cpp:1376
+#: src/mouse_events.cpp:1390
 msgid "Choose weapon:"
 msgstr "武器の選択:"
 
@@ -6149,104 +6150,104 @@ msgstr "無効な時代"
 msgid "No multiplayer sides found"
 msgstr "マルチプレイヤー側は見つからない"
 
-#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:383
-#: src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:385
+#: src/multiplayer_connect.cpp:482
 msgid "Normal"
 msgstr "ノーマル"
 
-#: src/multiplayer_connect.cpp:379 src/multiplayer_connect.cpp:476
+#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:478
 #: src/multiplayer_wait.cpp:483 src/multiplayer_wait.cpp:491
 msgid "("
 msgstr "（"
 
-#: src/multiplayer_connect.cpp:379 src/multiplayer_connect.cpp:476
+#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:478
 #: src/multiplayer_wait.cpp:483 src/multiplayer_wait.cpp:494
 msgid ")"
 msgstr "）"
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "Default AI"
 msgstr "デフォルト AI"
 
-#: src/multiplayer_connect.cpp:506
+#: src/multiplayer_connect.cpp:508
 msgid "(Vacant slot)"
 msgstr "(空スロット)"
 
-#: src/multiplayer_connect.cpp:512
+#: src/multiplayer_connect.cpp:514
 msgid "Anonymous local player"
 msgstr "匿名ローカルプレイヤー"
 
-#: src/multiplayer_connect.cpp:533
+#: src/multiplayer_connect.cpp:535
 msgid "Computer player"
 msgstr "コンピュータプレイヤー"
 
-#: src/multiplayer_connect.cpp:536
+#: src/multiplayer_connect.cpp:538
 msgid "(Empty slot)"
 msgstr "(空スロット)"
 
-#: src/multiplayer_connect.cpp:747
+#: src/multiplayer_connect.cpp:751
 msgid "No non-random sides in the current era"
 msgstr "この時代にはランダム以外のチームはありません。"
 
-#: src/multiplayer_connect.cpp:769
+#: src/multiplayer_connect.cpp:774
 msgid "Unable to find a leader type for faction $faction"
 msgstr "党派 $faction のリーダーのタイプが見つかりません。"
 
-#: src/multiplayer_connect.cpp:811 src/multiplayer_lobby.cpp:601
+#: src/multiplayer_connect.cpp:810 src/multiplayer_lobby.cpp:601
 #: src/multiplayer_wait.cpp:190
 msgid "Game Lobby"
 msgstr "ゲームロビー"
 
-#: src/multiplayer_connect.cpp:824
+#: src/multiplayer_connect.cpp:823
 msgid "Player/Type"
 msgstr "プレイヤー"
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:824
 msgid "Faction"
 msgstr "党派"
 
-#: src/multiplayer_connect.cpp:826
+#: src/multiplayer_connect.cpp:825
 #, fuzzy
 msgid "Team/Gender"
 msgstr "防御側"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:826
 msgid "Color"
 msgstr "色"
 
-#: src/multiplayer_connect.cpp:831
+#: src/multiplayer_connect.cpp:830
 msgid "I'm Ready"
 msgstr "準備完了"
 
-#: src/multiplayer_connect.cpp:860
+#: src/multiplayer_connect.cpp:839
 msgid "The scenario is invalid because it has no sides."
 msgstr "チームがないため、 シナリオは無効です。"
 
-#: src/multiplayer_connect.cpp:1213
+#: src/multiplayer_connect.cpp:1209
 msgid "Network Player"
 msgstr "ネットプレイヤー"
 
-#: src/multiplayer_connect.cpp:1214
+#: src/multiplayer_connect.cpp:1210
 msgid "Local Player"
 msgstr "ローカルプレイヤー"
 
-#: src/multiplayer_connect.cpp:1215
+#: src/multiplayer_connect.cpp:1211
 msgid "Computer Player"
 msgstr "コンピュータ"
 
-#: src/multiplayer_connect.cpp:1216
+#: src/multiplayer_connect.cpp:1212
 msgid "Empty"
 msgstr "なし"
 
-#: src/multiplayer_connect.cpp:1330
+#: src/multiplayer_connect.cpp:1326
 msgid "This is not a multiplayer save"
 msgstr "マルチプレイヤーのセーブデータではありません"
 
-#: src/multiplayer_connect.cpp:1418
+#: src/multiplayer_connect.cpp:1414
 msgid "Cannot find era $era"
 msgstr "$era の時代が見つかりません"
 
-#: src/multiplayer_connect.cpp:1437
+#: src/multiplayer_connect.cpp:1433
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6254,7 +6255,7 @@ msgstr ""
 "勝利条件\n"
 "@敵のリーダー（達）を打ち負かす"
 
-#: src/multiplayer_connect.cpp:1496
+#: src/multiplayer_connect.cpp:1492
 msgid "Waiting for players to join..."
 msgstr "プレイヤーの参加待ち..."
 
@@ -6550,68 +6551,68 @@ msgstr "ゲームデータ入手中..."
 msgid "Choose your side:"
 msgstr "あなたのつく側を選んで下さい:"
 
-#: src/network.cpp:100
+#: src/network.cpp:101
 msgid "invalid network handle"
 msgstr "不正なネットワークハンドル"
 
-#: src/network.cpp:133
+#: src/network.cpp:134
 msgid "Client disconnected"
 msgstr "リモートホストと切断しました"
 
-#: src/network.cpp:480
+#: src/network.cpp:481
 msgid "Could not add socket to socket set"
 msgstr "ホストに接続できませんでした"
 
-#: src/network.cpp:491
+#: src/network.cpp:492
 msgid "Could not send initial handshake"
 msgstr "初期応答確認を送れませんでした"
 
-#: src/play_controller.cpp:397
+#: src/play_controller.cpp:401
 #, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
-#: src/play_controller.cpp:770
+#: src/play_controller.cpp:774
 msgid "Back to start"
 msgstr "最初に戻る"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:776
 msgid "Back to turn "
 msgstr "戻るターン : "
 
-#: src/playcampaign.cpp:132 src/playcampaign.cpp:161
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:163
 msgid "Defeat"
 msgstr "敗北"
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:162
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:164
 msgid "You have been defeated!"
 msgstr "あなたは敗れました！"
 
-#: src/playcampaign.cpp:375
+#: src/playcampaign.cpp:380
 msgid "Error while reading the WML: "
 msgstr "WML 読み込み中のエラー: "
 
-#: src/playcampaign.cpp:401
+#: src/playcampaign.cpp:406
 msgid "The replay could not be saved"
 msgstr "リプレイは保存できませんでした"
 
-#: src/playcampaign.cpp:429
-msgid "Receiving data..."
-msgstr "データ入手中..."
+#: src/playcampaign.cpp:427
+msgid "This scenario has ended. Do you want to continue the campaign?"
+msgstr ""
 
-#: src/playcampaign.cpp:431
+#: src/playcampaign.cpp:447
 msgid "Downloading next scenario..."
 msgstr "次のシナリオをダウンロード中..."
 
-#: src/playcampaign.cpp:533
+#: src/playcampaign.cpp:548
 msgid "Do you want to save your game?"
 msgstr "このゲームを本当に保存しますか？"
 
-#: src/playcampaign.cpp:558
+#: src/playcampaign.cpp:573
 msgid "Unknown scenario: '$scenario|'"
 msgstr "不明のシナリオ: '$scenario|'"
 
-#: src/playmp_controller.cpp:368
+#: src/playmp_controller.cpp:378
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6691,24 +6692,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "$name| ののターンです"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with AI"
 msgstr "AIと交代する"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Replace with local player"
 msgstr "ローカルプレイヤーと交代する"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:204
 msgid "Abort game"
 msgstr "ゲームを中断する"
 
-#: src/playturn.cpp:208 src/playturn.cpp:220
+#: src/playturn.cpp:209 src/playturn.cpp:221
 #, fuzzy
 msgid "Replace with $player"
 msgstr "ローカルプレイヤーと交代する"
 
-#: src/playturn.cpp:226
+#: src/playturn.cpp:227
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr " はゲームを去りました。 どうしますか？"
@@ -6887,38 +6888,38 @@ msgstr "統計情報をアップロードします"
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
-#: src/unit.cpp:382 src/unit.cpp:1168 src/unit.cpp:2368
+#: src/unit.cpp:382 src/unit.cpp:1168 src/unit.cpp:2374
 msgid "Unknown unit type '$type|'"
 msgstr "不明のユニットタイプ '$type|'"
 
-#: src/unit.cpp:2413 src/unit.cpp:2617 src/unit.cpp:2673
+#: src/unit.cpp:2419 src/unit.cpp:2623 src/unit.cpp:2679
 #, fuzzy
 msgid " and "
 msgstr "砂地"
 
-#: src/unit.cpp:2424
+#: src/unit.cpp:2430
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2489
+#: src/unit.cpp:2495
 #, fuzzy
 msgid "moves"
 msgstr "移動"
 
-#: src/unit.cpp:2507 src/unit.cpp:2644
+#: src/unit.cpp:2513 src/unit.cpp:2650
 msgid "XP to advance"
 msgstr "レベルアップに必要な経験値"
 
-#: src/unit.cpp:2636
+#: src/unit.cpp:2642
 #, fuzzy
 msgid " move"
 msgstr "移動"
 
-#: src/unit.cpp:2652
+#: src/unit.cpp:2658
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2682
+#: src/unit.cpp:2688
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -6969,6 +6970,9 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
+
+#~ msgid "Receiving data..."
+#~ msgstr "データ入手中..."
 
 #~ msgid "Campaign"
 #~ msgstr "キャンペーン"

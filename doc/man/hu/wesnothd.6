@@ -39,14 +39,19 @@ http://www.wesnoth.org/wiki/ServerAdministration
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ útvonal\fP
-megadja a wesnothd programnak, hogy hol keresse a konfigurációs fájlt. A
-szintakszisról lásd a \fBKISZOLGÁLÓ BEÁLLÍTÁSA\fP részt lentebb.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 démon szolgáltatásként futtatja a wesnothd programot.
 .TP 
 \fB\-h,\ \-\-help\fP
 kiírja, hogy mire jók az egyes parancssori opciók.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 a megadott portra köti a kiszolgálót. Ha más nincsen meghatározva, akkor a

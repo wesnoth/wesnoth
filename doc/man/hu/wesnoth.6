@@ -71,15 +71,14 @@ azaz a képerny?frissítések másodpercenkénti számát).
 \fB\-h\fP, \fB\-\-help\fP
 megjeleníti a parancssori opciók rövid leírását és kilép.
 .TP 
-\fB\-\-load\fP\fI\ mentett_állás\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 A mentett_állás néven elmentett játékot tölti be a mentéseket tároló
 könyvtárból.
 .TP 
-\fB\-\-log\-error="tartomány1,tartomány2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-beállítja a hibakeresési tartomány szintjét. Az "all" minden hibakeresési
-tartományra illeszkedik.  \fB\-\-log\-info\fP megmutat minden üzenetet. 
-\fB\-\-log\-warning\fP csak a figyelmeztetéseket (warning) és a hibákat (error). 
-\fB\-\-log\-error\fP csak a hibákat (error).
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Kilistázza a naplófájlok helyét majd kilép.
@@ -117,6 +116,10 @@ a játékot ablakos módban indítja el.
 a játékot minden grafikai késleltetés nélkül indítja el, tesztelési
 célból. Ez önm?köd?en bekapcsolódik a \-\-nogui kapcsoló használatakor is.
 .TP 
+\fB\-\-nogui\fP
+elindítja a játékot grafikus felhasználói interfész (GUI) nélkül. A
+\fB\-\-multiplayer\fP opció el?tt kell beírnod, hogy a kívánt hatást érd el.
+.TP 
 \fB\-\-exit\-at\-end\fP
 a mérk?zés után azonnal kilép, nem jelenít meg semmilyen gy?zelmi vagy
 vereséget jelz? üzenetet, ami a felhasználótól az Oké gomb megnyomását várná
@@ -141,10 +144,6 @@ ezzel az opcióval kiválaszthatod, hogy melyik korszakban szeretnél játszani
 az "Alapértelmezett" korszak helyett. A korszakot egy azonosíthatóval
 adhatod meg.  A korszakok a data/multiplayer.cfg fájlban vannak leírva.
 .TP 
-\fB\-\-nogui\fP
-elindítja a játékot grafikus felhasználói interfész (GUI) nélkül. A
-\fB\-\-multiplayer\fP opció el?tt kell beírnod, hogy a kívánt hatást érd el.
-.TP 
 \fB\-\-parm<szám>=név:érték\fP
 további paramétereket ad meg az adott csapatnak. Ez a paraméter függ a
 \fB\-\-controller\fP és a \fB\-\-algorithm\fP kapcsolónak megadott értékekt?l. Ezt
@@ -162,9 +161,9 @@ azonosító jelöli. Ezek a data/multiplayer.cfg fájlban vannak leírva.
 \fB\-\-turns=érték\fP
 megadja a mérk?zésnek a maximális körök számát. Alapérttelmezetten "50".
 .TP 
-Pálda a saját lészítés? MI tesztelésére: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH SZERZ?
 .

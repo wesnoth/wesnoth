@@ -68,13 +68,13 @@ prikazuje broj kadrova po sekundi dok te?e igra, u uglu ekrana.
 \fB\-h\fP, \fB\-\-help\fP
 prikazuje sa?etak opcija komandne linije na standarnom izlazu.
 .TP 
-\fB\-\-load\fP\fI\ sa?uvigra\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 u?itava sa?uvanu igru iz standarnog direktorijuma za sa?uvane igre.
 .TP 
-\fB\-\-log\-error="domen1,domen2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-postavlja nivo stro?ine ispravlja?kih domena. ?all? se mo?e upotrebiti za
-poklapanje svih domena. \fB\-\-log\-info\fP prikazuje sve poruke, \fB\-\-log\-warning\fP
-samo upozorenja i gre?ke, a \fB\-\-log\-error\fP samo gre?ke.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 ispisuje sve domene bele?enja i izlazi.
@@ -112,6 +112,10 @@ pokre?e igru unutar prozora.
 pokre?e igru bez ikakvih zastoja, za probu grafi?kih performansi. Ovo je
 automatski ugklju?eno ako se zada \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+pokre?e igru bez grafi?kog su?elja. Mora se javiti pre \fB\-\-multiplayer\fP da
+bi imalo ?eljeni efekat.
+.TP 
 \fB\-\-exit\-at\-end\fP
 izlazi po?to se scenario okon?a, bez prikazivanja prozora o pobedi/porazu na
 koji bi korisnik morao da odgovori. Ovo se tako?e koristi za skriptovanje
@@ -136,10 +140,6 @@ upotrebite ovo za igranje u izabranoj epohi umesto podrazumevane
 (?Default?). Epoha se bira preko identifikatora; mogu?e vrednosti opisane su
 u datoteci data/multiplayer.cfg
 .TP 
-\fB\-\-nogui\fP
-pokre?e igru bez grafi?kog su?elja. Mora se javiti pre \fB\-\-multiplayer\fP da
-bi imalo ?eljeni efekat.
-.TP 
 \fB\-\-parm<broj>=broj:vrednost\fP
 postavlja dodatne parametre za ovu stranu, koji zavise od opcija
 upotrebljenih uz \fB\-\-controller\fP i \fB\-\-algorithm\fP. Obi?no korisno onima koji
@@ -156,9 +156,9 @@ identifikatora; mogu?e vrednosti opisane su u datoteci data/multiplayer.cfg
 \fB\-\-turns=vrednost\fP
 postavlja broj poteza za izabrani scenario. Podrazumevano je ?50?.
 .TP 
-Primer za isprobavanje va?e VI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTOR
 .

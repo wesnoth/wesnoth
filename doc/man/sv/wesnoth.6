@@ -71,14 +71,14 @@ av fönstret.
 \fB\-h\fP, \fB\-\-help\fP
 visar en sammanfattning av möjliga kommandoradsflaggor.
 .TP 
-\fB\-\-load\fP\fI\ fil\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 kör spelet som finns sparat i filen \fIfil\fP, som finns i spelets standardmapp
 för sparade spel.
 .TP 
-\fB\-\-log\-error="domän1,domän2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-anger loggningsnivån för debug\-domänerna. För att se allt kan "all"
-användas.  \fB\-\-log\-info\fP visar alla meddelanden, \fB\-\-log\-warning\fP bara
-varningar och fel, och \fB\-\-log\-error\fP endast fel.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 visar en lista över loggningsdomänerna.
@@ -116,6 +116,10 @@ kör spelet i fönsterläge.
 kör spelet utan fördröjningar för prestandatest av grafiken. Detta används
 automatiskt om \-\-nogui används.
 .TP 
+\fB\-\-nogui\fP
+kör spelet utan det grafiska användargränssnittet. Måste anges före
+\fB\-\-multiplayer\fP för att ha önskad effekt.
+.TP 
 \fB\-\-exit\-at\-end\fP
 avslutar spelet så snart scenariot är över, utan att visa
 seger\-/nederlagsdialogen, som kräver att användaren klickar OK. Detta
@@ -139,10 +143,6 @@ väljer hur sidan skall kontrolleras. Möjliga värden är "human" och "ai".
 väljer vilken era som skall användas istället för "standarderan". Eran väljs
 genom ett id\-nummer. Valen finns beskrivna i filen data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-kör spelet utan det grafiska användargränssnittet. Måste anges före
-\fB\-\-multiplayer\fP för att ha önskad effekt.
-.TP 
 \fB\-\-parm<nummer>=namn:värde\fP
 anger extra parametrar för den valda sidan. Denna parameter beror på vilka
 flaggor som använts med \fB\-\-controller\fP och \fB\-\-algorithm\fP. Detta torde
@@ -160,9 +160,9 @@ ett id\-nummer. Fraktionerna finns beskrivna i filen data/multiplayer.cfg.
 \fB\-\-turns=värde\fP
 anger antalet drag för det valda scenariot. Standardvärdet är 50.
 .TP 
-Exempel för att testa en egen AI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH FÖRFATTARE
 .

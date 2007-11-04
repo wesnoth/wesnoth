@@ -39,14 +39,19 @@ Wesnoth. См. http://www.wesnoth.org/wiki/ServerAdministration, чтобы узнать
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ path\fP
-указать wesnothd конфигурационный файл для использования. См. раздел
-\fBКОНФИГУРАЦИЯ СЕРВЕРА\fP для описания.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 запустить wesnothd в качестве демона.
 .TP 
 \fB\-h,\ \-\-help\fP
 сообщает, какие принимаются параметры командной строки.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ порт\fP
 указать серверу порт для прослушивания. Если порт не указан, используется

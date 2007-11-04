@@ -39,13 +39,19 @@ http://www.wesnoth.org/wiki/ServerAdministration を参照。
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ path\fP
-wesnothd が使用する設定ファイルがどこにあるかを伝える。文法については後述の \fBサーバー設定\fP の章を参照。
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 wesnothd をデーモンとして実行する。
 .TP 
 \fB\-h,\ \-\-help\fP
 コマンドラインオプションで何が行えるかを表示する。
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 指定ポートにサーバをバインドする。 もしポートが指定されないなら、 15000番ポートが使用される。

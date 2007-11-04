@@ -40,14 +40,19 @@ acepta el servidor a través del cliente de wesnoth o del socket.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ ruta\fP
-indica a wesnothd donde encontrar el fichero de configuración que debe
-usar. Vea la sección \fBSERVER CONFIG\fP más abajo para conocer la sintaxis.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 ejecuta wesnothd como demonio.
 .TP 
 \fB\-h,\ \-\-help\fP
 muestra las opciones de línea de órdenes.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ puerto\fP
 conecta al servidor al puerto especificado. Si no se especifica ningún

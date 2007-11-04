@@ -69,14 +69,13 @@ obrazovky.
 \fB\-h\fP, \fB\-\-help\fP
 zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 .TP 
-\fB\-\-load\fP\fI\ soubor_se_hrou\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 nahraje ulo¾enou hru ze souboru ze standardního adresáøe pro ulo¾ené hry.
 .TP 
-\fB\-\-log\-error="kategorie1,kategorie2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-nastavuje úroveò záva¾nosti, od které se mají vypisovat logovací hlá¹ky pro
-jednotlivé kategorie. "all" znamená, ¾e bude vypisováno v¹e z dané
-kategorie.\fB\-\-log\-info\fP zobrazuje v¹echny hlá¹ky, \fB\-\-log\-warning\fP pouze
-varování a chyby, a \fB\-\-log\-error\fP pouze chyby.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Vypí¹e seznam v¹ech kategorií logování a skonèí.
@@ -114,6 +113,10 @@ spustí hry v oknì.
 vypustí testování grafiky bìhem startu. Tato volba je automaticky pou¾ita
 pou¾itím \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+spou¹tí hru bez GUI. Musí být pou¾ito pøed \fB\-\-multiplayer\fP pro docílení
+ký¾eného efektu.
+.TP 
 \fB\-\-exit\-at\-end\fP
 skonèí hru pøi konci scénáøe, tedy bez zobrazení okénka s informací o
 vítìzství/prohøe, které vy¾aduje u¾ivatelskou akci \- stisk tlaèítka OK. Tato
@@ -137,10 +140,6 @@ pou¾ij tuto volbu pro hraní ve specifické éøe místo "Default" éry. Éra je
 vybrána pomocí svého id. V¹echny éry jsou popsány v souboru
 data/multiplayer.cfg
 .TP 
-\fB\-\-nogui\fP
-spou¹tí hru bez GUI. Musí být pou¾ito pøed \fB\-\-multiplayer\fP pro docílení
-ký¾eného efektu.
-.TP 
 \fB\-\-parm<strana>=jméno:hodnota\fP
 nastavuje dal¹í parametry pro tuto stranu. Jméno a hodnota parametru závisí
 na hodnotách voleb \fB\-\-controller\fP a \fB\-\-algorithm.\fP Mìlo by být pou¾ito
@@ -157,9 +156,9 @@ ID. Frakce jsou popsány v souboru data/multiplayer.cfg
 \fB\-\-turns=hodnota\fP
 nastavuje poèet kol pro vybraný scénáø, implicitnì je "50".
 .TP 
-Pøíklad testování va¹í vlastní AI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/moje_vlastní_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTOØI
 .

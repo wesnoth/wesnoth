@@ -39,14 +39,19 @@ prihvata preko klijenta ili soketa.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ putanja\fP
-kazuje domaru gde se nalazi datoteka sa pode?avanjima. Za sintaksu
-pogledajte odeljak \fBPODE?AVANJA SERVERA\fP ispod.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 pokre?e wesnothd kao domar.
 .TP 
 \fB\-h,\ \-\-help\fP
 govori vam ?ta ?ine opcije komandne linije.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 vezuje server za navedeni port. Ako se port ne navede, podrazumevano se

@@ -73,15 +73,14 @@ jeu.
 affiche un résumé des options de ligne de commande sur la sortie standard et
 quitte le programme.
 .TP 
-\fB\-\-load\fP\fI\ sauvegarde\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 charge le fichier de sauvegarde à partir du répertoire de sauvegarde par
 défaut.
 .TP 
-\fB\-\-log\-error="domaine1,domaine2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-définit le niveau d'alerte du débogueur. "all" permet de suivre tous les
-niveaux. \fB\-\-log\-info\fP affiche tous les messages, \fB\-\-log\-warning\fP n'affiche
-que les avertissements et les erreurs et \fB\-\-log\-error\fP n'affiche que les
-erreurs.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Affiche la liste de tous les types d'alerte et quitte.
@@ -119,6 +118,10 @@ lance le jeu dans une fenêtre séparée.
 lance le jeu sans délai pour la mesure des performances
 graphiques. Automatique avec \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+lance le jeu sans interface graphique. Doit apparaître avant
+\fB\-\-multiplayer\fP.
+.TP 
 \fB\-\-exit\-at\-end\fP
 quitte le programme à la fin du scénario, sans afficher le message
 victoire/défaite qui nécessite un click sur OK de la part du
@@ -144,10 +147,6 @@ utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère « Par
 défaut ». Cette ère est sélectionnée par un identifiant. Les ères sont
 décrites dans le fichier data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-lance le jeu sans interface graphique. Doit apparaître avant
-\fB\-\-multiplayer\fP.
-.TP 
 \fB\-\-parm<nombre>=nom:valeur\fP
 ajoute des paramètres spécifiques à ce camp. Ces paramètres dépendent des
 options utilisées avec \fB\-\-controller\fP et \fB\-\-algorithm\fP. Ne devrait être
@@ -165,9 +164,9 @@ camps sont décrits dans le fichier data/multiplayer.cfg.
 \fB\-\-turns=valeur\fP
 défini le nombre de tours du scénario. Valeur par défaut\ : « 50 ».
 .TP 
-Exemple pour tester votre propre IA\ : 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTEUR
 .

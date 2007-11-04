@@ -74,14 +74,13 @@ gioco sta generando attualmente.
 mostra un riepilogo delle opzioni tramite riga di comando verso un output
 standard ed esce.
 .TP 
-\fB\-\-load\fP\fI\ savegame\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 carica il file savegame dalla cartella standard di salvataggio.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-imposta il livello di severità dei domini di debug. Puoi usare "all" per
-qualsiasi dominio di debug. \fB\-\-log\-info\fP mostra tutti i messaggi,
-\fB\-\-log\-warning\fP solo gli avvertimenti e gli errori, e \fB\-\-log\-error\fP solo
-gli errori.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Stampa l'elenco di tutti i domini di log ed esce.
@@ -119,6 +118,10 @@ Carica il gioco in una finestra.
 esegue il gioco senza ritardi per stabilire le prestazioni del
 sistema. Questa opzione è abilitata automaticamente da \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+esegue il gioco senza GUI. Deve apparire prima di \fB\-\-multiplayer\fP per avere
+l'effetto desiderato.
+.TP 
 \fB\-\-exit\-at\-end\fP
 esce quando lo scenario è finito, senza mostrare la finestra delle
 vittorie/sconfitte, che richiede che l'utente prema il pulsante OK. Anche
@@ -144,10 +147,6 @@ usa questa opzione per giocare nell'era selezionata invece che in quella
 predefinita. L'era è scelta per ID. Le ere sono descritte nel file
 data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-esegue il gioco senza GUI. Deve apparire prima di \fB\-\-multiplayer\fP per avere
-l'effetto desiderato.
-.TP 
 \fB\-\-parm<numero>=nome:valore\fP
 imposta parametri aggiuntivi per questa fazione. Questo parametro dipende
 dalle opzioni usate con \fB\-\-controller\fP e \fB\-\-algorithm.\fP Dovrebbe essere
@@ -166,9 +165,9 @@ scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg.
 imposta il numero di turni per lo scenario scelto. L'impostazione standard è
 "50"
 .TP 
-Esempio per verificare il funzionamento della tua IA: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTORE
 .

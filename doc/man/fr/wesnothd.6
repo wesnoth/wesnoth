@@ -39,14 +39,19 @@ http://www.wesnoth.org/wiki/ServerAdministration.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ chemin\fP
-indique le fichier de configuration à utiliser par wesnothd. Voir la syntaxe
-ci\-dessous dans la section \fBCONFIGURATION DU SERVEUR\fP.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 exécute wesnothd en tant que démon.
 .TP 
 \fB\-h,\ \-\-help\fP
 aide sur les options de la ligne de commande.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 lie le serveur au port spécifié. Valeur par défaut\ : 15000.

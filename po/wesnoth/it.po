@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-31 20:51+0100\n"
+"POT-Creation-Date: 2007-11-04 18:03+0100\n"
 "PO-Revision-Date: 2007-10-26 17:51+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -26,34 +26,30 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: data/_main.cfg:36
-msgid "Female leaders on MP (if available)"
-msgstr "Condottieri femminili in MG (se disponibili)"
-
-#: data/_main.cfg:43
 msgid "Binary Saves"
 msgstr "Salvataggi binari"
 
-#: data/_main.cfg:50
+#: data/_main.cfg:43
 msgid "Show Combat"
 msgstr "Mostra i combattimenti"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:50
 msgid "Animate Map"
 msgstr "Anima la mappa"
 
-#: data/_main.cfg:64
+#: data/_main.cfg:57
 msgid "Mouse Scrolling"
 msgstr "Scrolling del mouse"
 
-#: data/_main.cfg:71
+#: data/_main.cfg:64
 msgid "Official Wesnoth Server"
 msgstr "Server ufficiale di Wesnoth"
 
-#: data/_main.cfg:75
+#: data/_main.cfg:68
 msgid "Alternate Wesnoth Server"
 msgstr "Server alternativo di Wesnoth"
 
-#: data/_main.cfg:160
+#: data/_main.cfg:153
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Il Tomo di Wesnoth"
 
@@ -4824,8 +4820,8 @@ msgid "End Scenario"
 msgstr "Fine scenario"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2456
-#: src/unit.cpp:2629
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2462
+#: src/unit.cpp:2635
 msgid "HP"
 msgstr "PF"
 
@@ -4937,8 +4933,8 @@ msgstr "Punto di vista"
 msgid "Skip animation"
 msgstr "Salta le animazioni"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:381
-#: src/multiplayer_connect.cpp:478 src/multiplayer_wait.cpp:493
+#: src/about.cpp:46 src/multiplayer_connect.cpp:383
+#: src/multiplayer_connect.cpp:480 src/multiplayer_wait.cpp:493
 msgid "+"
 msgstr "+"
 
@@ -5169,7 +5165,7 @@ msgstr "PE: "
 msgid "Moves: "
 msgstr "Mosse: "
 
-#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:832
+#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:831
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:192
 msgid "Cancel"
 msgstr "Annulla"
@@ -5178,7 +5174,7 @@ msgstr "Annulla"
 msgid "KB"
 msgstr "KB"
 
-#: src/display.cpp:369
+#: src/display.cpp:374
 msgid "Screenshot"
 msgstr "Anteprima"
 
@@ -5192,12 +5188,12 @@ msgstr ""
 "Attenzione: Il file che hai provato a caricare è danneggiato. Cerco di "
 "caricarlo comunque.\n"
 
-#: src/game.cpp:718 src/multiplayer_connect.cpp:1344
+#: src/game.cpp:718 src/multiplayer_connect.cpp:1340
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Questo salvataggio è di una versione troppo vecchia per riuscire a caricarlo."
 
-#: src/game.cpp:724 src/multiplayer_connect.cpp:1351
+#: src/game.cpp:724 src/multiplayer_connect.cpp:1347
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -5205,7 +5201,7 @@ msgstr ""
 "Questo salvataggio è di una versione differente del gioco. Vuoi provare a "
 "caricarlo?"
 
-#: src/game.cpp:732 src/game.cpp:735 src/multiplayer_connect.cpp:1322
+#: src/game.cpp:732 src/game.cpp:735 src/multiplayer_connect.cpp:1318
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Il file che hai provato a caricare è danneggiato: '"
 
@@ -5375,7 +5371,7 @@ msgstr ""
 "questa estensione."
 
 #: src/game.cpp:1285 src/game.cpp:1327 src/game.cpp:1354
-#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:441
+#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:460
 msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
@@ -5439,15 +5435,15 @@ msgstr ""
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:365
+#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:370
 msgid "The game could not be loaded: "
 msgstr "La partita non può essere caricata: "
 
-#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:368
+#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:373
 msgid "Error while playing the game: "
 msgstr "Errore mentre si gioca la partita: "
 
-#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:371
+#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:376
 msgid "The game map could not be loaded: "
 msgstr "La mappa non può essere caricata: "
 
@@ -5501,15 +5497,15 @@ msgstr "Caricamento schermata dei titoli"
 msgid "Invalid color range: "
 msgstr "Gamma di colori non valida: "
 
-#: src/game_events.cpp:898
+#: src/game_events.cpp:903
 msgid "Victory:"
 msgstr "Vittoria:"
 
-#: src/game_events.cpp:901
+#: src/game_events.cpp:906
 msgid "Defeat:"
 msgstr "Sconfitta:"
 
-#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:394
+#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:399
 msgid " replay"
 msgstr " replay"
 
@@ -5593,7 +5589,7 @@ msgstr "portata dell'arma: "
 msgid "damage type: "
 msgstr "Tipo di danno: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1361
 msgid "vs"
 msgstr "contro"
 
@@ -5754,8 +5750,9 @@ msgstr "Fine"
 msgid "System default language"
 msgstr "Lingua di sistema"
 
-#: src/leader_list.cpp:128 src/leader_list.cpp:159 src/leader_list.cpp:194
-msgid "Random"
+#: src/leader_list.cpp:128
+#, fuzzy
+msgid "gender^Random"
 msgstr "Casuale"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
@@ -5765,6 +5762,10 @@ msgstr ""
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Masculine ♂"
 msgstr ""
+
+#: src/leader_list.cpp:159 src/leader_list.cpp:194
+msgid "Random"
+msgstr "Casuale"
 
 #: src/leader_list.cpp:242 src/leader_list.cpp:248
 msgid "?"
@@ -5878,11 +5879,11 @@ msgstr "Spostati verso"
 msgid "Leader"
 msgstr "Condottiero"
 
-#: src/menu_events.cpp:505 src/multiplayer_connect.cpp:817
+#: src/menu_events.cpp:505 src/multiplayer_connect.cpp:816
 msgid "Team"
 msgstr "Squadra"
 
-#: src/menu_events.cpp:506 src/multiplayer_connect.cpp:828
+#: src/menu_events.cpp:506 src/multiplayer_connect.cpp:827
 #: src/multiplayer_wait.cpp:487
 msgid "Gold"
 msgstr "Oro"
@@ -5899,7 +5900,7 @@ msgstr "Unità"
 msgid "Upkeep"
 msgstr "Mantenimento"
 
-#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:829
+#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:828
 #: src/multiplayer_wait.cpp:491
 msgid "Income"
 msgstr "Entrate"
@@ -5964,7 +5965,7 @@ msgstr "sì"
 msgid "Scenario Settings"
 msgstr "Impostazioni dello scenario"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:534
+#: src/menu_events.cpp:698 src/playcampaign.cpp:549
 msgid "Name:"
 msgstr "Nome:"
 
@@ -5984,7 +5985,7 @@ msgstr "Salvato"
 msgid "The game has been saved"
 msgstr "La partita è stata salvata"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:542
+#: src/menu_events.cpp:716 src/playcampaign.cpp:557
 msgid "The game could not be saved"
 msgstr "La partita non può essere salvata"
 
@@ -6004,7 +6005,7 @@ msgstr "Mappa salvata."
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:766
+#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:770
 msgid "Auto-Save"
 msgstr "Salvataggio automatico"
 
@@ -6232,59 +6233,59 @@ msgstr "Comando:"
 msgid "User-Command#3"
 msgstr "Comando-utente#3"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Attaccante"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Difensore"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr "Probabile esito della battaglia (PF)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr " resistenza a "
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr " vulnerabilità a "
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "Rallentato"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "Periodo del giorno"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "Comando"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "Danno totale"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Arma non utilizzabile"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Probabilità di essere indenne"
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1378
 msgid "Damage Calculations"
 msgstr "Calcolo dei danni"
 
-#: src/mouse_events.cpp:1375
+#: src/mouse_events.cpp:1389
 msgid "Attack Enemy"
 msgstr "Attacca il nemico"
 
-#: src/mouse_events.cpp:1376
+#: src/mouse_events.cpp:1390
 msgid "Choose weapon:"
 msgstr "Scegli l'arma:"
 
@@ -6355,103 +6356,103 @@ msgstr "Era non disponibile"
 msgid "No multiplayer sides found"
 msgstr "Nessuna fazione per il gioco in rete trovata"
 
-#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:383
-#: src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:385
+#: src/multiplayer_connect.cpp:482
 msgid "Normal"
 msgstr "Normale"
 
-#: src/multiplayer_connect.cpp:379 src/multiplayer_connect.cpp:476
+#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:478
 #: src/multiplayer_wait.cpp:483 src/multiplayer_wait.cpp:491
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:379 src/multiplayer_connect.cpp:476
+#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:478
 #: src/multiplayer_wait.cpp:483 src/multiplayer_wait.cpp:494
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "Default AI"
 msgstr "IA predefinita"
 
-#: src/multiplayer_connect.cpp:506
+#: src/multiplayer_connect.cpp:508
 msgid "(Vacant slot)"
 msgstr "(Casella disponibile)"
 
-#: src/multiplayer_connect.cpp:512
+#: src/multiplayer_connect.cpp:514
 msgid "Anonymous local player"
 msgstr "Giocatore locale anonimo"
 
-#: src/multiplayer_connect.cpp:533
+#: src/multiplayer_connect.cpp:535
 msgid "Computer player"
 msgstr "Computer"
 
-#: src/multiplayer_connect.cpp:536
+#: src/multiplayer_connect.cpp:538
 msgid "(Empty slot)"
 msgstr "(Casella Vuota)"
 
-#: src/multiplayer_connect.cpp:747
+#: src/multiplayer_connect.cpp:751
 msgid "No non-random sides in the current era"
 msgstr "Nessuno schieramento non-casuale nell'era corrente"
 
-#: src/multiplayer_connect.cpp:769
+#: src/multiplayer_connect.cpp:774
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Impossibile trovare un tipo di condottiero per la fazione $faction"
 
-#: src/multiplayer_connect.cpp:811 src/multiplayer_lobby.cpp:601
+#: src/multiplayer_connect.cpp:810 src/multiplayer_lobby.cpp:601
 #: src/multiplayer_wait.cpp:190
 msgid "Game Lobby"
 msgstr "Game Lobby"
 
-#: src/multiplayer_connect.cpp:824
+#: src/multiplayer_connect.cpp:823
 msgid "Player/Type"
 msgstr "Giocatore/Tipo"
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:824
 msgid "Faction"
 msgstr "Fazione"
 
-#: src/multiplayer_connect.cpp:826
+#: src/multiplayer_connect.cpp:825
 msgid "Team/Gender"
 msgstr "Squadra/sesso"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:826
 msgid "Color"
 msgstr "Colore"
 
-#: src/multiplayer_connect.cpp:831
+#: src/multiplayer_connect.cpp:830
 msgid "I'm Ready"
 msgstr "Sono pronto"
 
-#: src/multiplayer_connect.cpp:860
+#: src/multiplayer_connect.cpp:839
 msgid "The scenario is invalid because it has no sides."
 msgstr "Lo scenario non è valido perché non ha alcuno schieramento."
 
-#: src/multiplayer_connect.cpp:1213
+#: src/multiplayer_connect.cpp:1209
 msgid "Network Player"
 msgstr "Giocatore remoto"
 
-#: src/multiplayer_connect.cpp:1214
+#: src/multiplayer_connect.cpp:1210
 msgid "Local Player"
 msgstr "Giocatore locale"
 
-#: src/multiplayer_connect.cpp:1215
+#: src/multiplayer_connect.cpp:1211
 msgid "Computer Player"
 msgstr "Computer"
 
-#: src/multiplayer_connect.cpp:1216
+#: src/multiplayer_connect.cpp:1212
 msgid "Empty"
 msgstr "Vuoto"
 
-#: src/multiplayer_connect.cpp:1330
+#: src/multiplayer_connect.cpp:1326
 msgid "This is not a multiplayer save"
 msgstr "Questo non è un salvataggio per multigiocatori"
 
-#: src/multiplayer_connect.cpp:1418
+#: src/multiplayer_connect.cpp:1414
 msgid "Cannot find era $era"
 msgstr "Non è stato possibile trovare l'era $era"
 
-#: src/multiplayer_connect.cpp:1437
+#: src/multiplayer_connect.cpp:1433
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6459,7 +6460,7 @@ msgstr ""
 "Vittoria:\n"
 "@Sconfiggi il o i condottieri nemici"
 
-#: src/multiplayer_connect.cpp:1496
+#: src/multiplayer_connect.cpp:1492
 msgid "Waiting for players to join..."
 msgstr "In attesa degli altri giocatori..."
 
@@ -6756,68 +6757,68 @@ msgstr "Acquisizione dati della partita..."
 msgid "Choose your side:"
 msgstr "Scegli il tuo esercito:"
 
-#: src/network.cpp:100
+#: src/network.cpp:101
 msgid "invalid network handle"
 msgstr "handle di rete non valido"
 
-#: src/network.cpp:133
+#: src/network.cpp:134
 msgid "Client disconnected"
 msgstr "Client disconnesso"
 
-#: src/network.cpp:480
+#: src/network.cpp:481
 msgid "Could not add socket to socket set"
 msgstr "Impossibile aggiungere un socket"
 
-#: src/network.cpp:491
+#: src/network.cpp:492
 msgid "Could not send initial handshake"
 msgstr "Impossibile inviare l'handshake iniziale"
 
-#: src/play_controller.cpp:397
+#: src/play_controller.cpp:401
 #, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "Il file che hai provato a caricare è corrotto"
 
-#: src/play_controller.cpp:770
+#: src/play_controller.cpp:774
 msgid "Back to start"
 msgstr "Torna all'inizio"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:776
 msgid "Back to turn "
 msgstr "Torno al turno"
 
-#: src/playcampaign.cpp:132 src/playcampaign.cpp:161
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:163
 msgid "Defeat"
 msgstr "Sconfitta"
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:162
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:164
 msgid "You have been defeated!"
 msgstr "Sei stato sconfitto!"
 
-#: src/playcampaign.cpp:375
+#: src/playcampaign.cpp:380
 msgid "Error while reading the WML: "
 msgstr "Errore di lettura del WML: "
 
-#: src/playcampaign.cpp:401
+#: src/playcampaign.cpp:406
 msgid "The replay could not be saved"
 msgstr "Il replay non può essere salvato"
 
-#: src/playcampaign.cpp:429
-msgid "Receiving data..."
-msgstr "Ricezione dati..."
+#: src/playcampaign.cpp:427
+msgid "This scenario has ended. Do you want to continue the campaign?"
+msgstr ""
 
-#: src/playcampaign.cpp:431
+#: src/playcampaign.cpp:447
 msgid "Downloading next scenario..."
 msgstr "Scaricamento scenario successivo..."
 
-#: src/playcampaign.cpp:533
+#: src/playcampaign.cpp:548
 msgid "Do you want to save your game?"
 msgstr "Vuoi salvare questa partita?"
 
-#: src/playcampaign.cpp:558
+#: src/playcampaign.cpp:573
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Scenario sconosciuto: «$scenario|»"
 
-#: src/playmp_controller.cpp:368
+#: src/playmp_controller.cpp:378
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6897,23 +6898,23 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Adesso è il turno di «$name|»"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with AI"
 msgstr "Rimpiazza con il computer"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Replace with local player"
 msgstr "Rimpiazza con un giocatore locale"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:204
 msgid "Abort game"
 msgstr "Abbandona il gioco"
 
-#: src/playturn.cpp:208 src/playturn.cpp:220
+#: src/playturn.cpp:209 src/playturn.cpp:221
 msgid "Replace with $player"
 msgstr "Rimpiazza con $player"
 
-#: src/playturn.cpp:226
+#: src/playturn.cpp:227
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player ha abbandonato il gioco. Che cosa vuoi fare?"
 
@@ -7093,35 +7094,35 @@ msgstr "Invia le statistiche"
 msgid "Help Wesnoth by sending us information"
 msgstr "Aiuta Wesnoth mandandoci delle informazioni"
 
-#: src/unit.cpp:382 src/unit.cpp:1168 src/unit.cpp:2368
+#: src/unit.cpp:382 src/unit.cpp:1168 src/unit.cpp:2374
 msgid "Unknown unit type '$type|'"
 msgstr "Tipo di unità «$type|» sconosciuto"
 
-#: src/unit.cpp:2413 src/unit.cpp:2617 src/unit.cpp:2673
+#: src/unit.cpp:2419 src/unit.cpp:2623 src/unit.cpp:2679
 msgid " and "
 msgstr " e "
 
-#: src/unit.cpp:2424
+#: src/unit.cpp:2430
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2489
+#: src/unit.cpp:2495
 msgid "moves"
 msgstr "mosse"
 
-#: src/unit.cpp:2507 src/unit.cpp:2644
+#: src/unit.cpp:2513 src/unit.cpp:2650
 msgid "XP to advance"
 msgstr "PE per avanzare"
 
-#: src/unit.cpp:2636
+#: src/unit.cpp:2642
 msgid " move"
 msgstr " mossa"
 
-#: src/unit.cpp:2652
+#: src/unit.cpp:2658
 msgid "$effect_description per level"
 msgstr "$effect_description per livello"
 
-#: src/unit.cpp:2682
+#: src/unit.cpp:2688
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -7172,6 +7173,12 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
+
+#~ msgid "Female leaders on MP (if available)"
+#~ msgstr "Condottieri femminili in MG (se disponibili)"
+
+#~ msgid "Receiving data..."
+#~ msgstr "Ricezione dati..."
 
 #~ msgid "Campaign"
 #~ msgstr "Campagna"

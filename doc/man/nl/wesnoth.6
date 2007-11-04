@@ -69,13 +69,13 @@ spel momenteel draait.
 \fB\-h\fP, \fB\-\-help\fP
 toont een samenvatting van command line opties en sluit af.
 .TP 
-\fB\-\-load\fP\fI\ savegame\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 laad het bewaarde bestand vanuit de standaard save game map.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-stelt het meldingsniveau van de debug in. \fB\-\-log\-info\fP toont alle
-berichten, \fB\-\-log\-warning\fP enkel waarschuwingen en fouten en \fB\-\-log\-error\fP
-alleen fouten.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Dumps a list of all log domains and exits.
@@ -113,6 +113,10 @@ start het spel in een venster.
 start het spel zonder enige vertraging voor grafische benchmarking. Dit is
 automatisch ingeschakeld bij \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+draait het spel zonder GUI. Dient voor \fB\-\-multiplayer\fP geplaatst om het
+gewenste effect te hebben.
+.TP 
 \fB\-\-exit\-at\-end\fP
 sluit af als het scenario afgelopen is, zonder overwinning/verlies scherm te
 tonen waarbij de gebruiker op ok dient te drukken.
@@ -137,10 +141,6 @@ gebruik deze optie om in het geselecteerde tijdperk te spelen in plaats van
 de "Default". De  is gekozen door een id. zijn beschreven in het bestand
 data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-draait het spel zonder GUI. Dient voor \fB\-\-multiplayer\fP geplaatst om het
-gewenste effect te hebben.
-.TP 
 \fB\-\-parm<nummer>=name:value\fP
 stelt aanvullende parameters in voor deze zijde. Deze parameter hangt van de
 opties gebruikt bij \fB\-\-controller\fP en \fB\-\-algorithm.\fP af. Het zou nuttig
@@ -159,9 +159,9 @@ data/multiplayer.cfg bestand.
 \fB\-\-turns=value\fP
 stelt het aantal zetten in voor het gekozen scenario. Standaard is "50".
 .TP 
-Voorbeeld om eigen AI te testen:
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTEUR
 .

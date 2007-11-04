@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-10-31 20:51+0100\n"
+"POT-Creation-Date: 2007-11-04 18:03+0100\n"
 "PO-Revision-Date: 2007-08-19 23:59+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -26,34 +26,30 @@ msgstr ""
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 
 #: data/_main.cfg:36
-msgid "Female leaders on MP (if available)"
-msgstr ""
-
-#: data/_main.cfg:43
 msgid "Binary Saves"
 msgstr "Двоичные сохранения"
 
-#: data/_main.cfg:50
+#: data/_main.cfg:43
 msgid "Show Combat"
 msgstr "Показать битву"
 
-#: data/_main.cfg:57
+#: data/_main.cfg:50
 msgid "Animate Map"
 msgstr ""
 
-#: data/_main.cfg:64
+#: data/_main.cfg:57
 msgid "Mouse Scrolling"
 msgstr "Прокрутка мыши"
 
-#: data/_main.cfg:71
+#: data/_main.cfg:64
 msgid "Official Wesnoth Server"
 msgstr "Официальный сервер Wesnoth"
 
-#: data/_main.cfg:75
+#: data/_main.cfg:68
 msgid "Alternate Wesnoth Server"
 msgstr "Альтернативный сервер Wesnoth"
 
-#: data/_main.cfg:160
+#: data/_main.cfg:153
 msgid "-- The Tome of Wesnoth"
 msgstr "— Великая книга Веснота"
 
@@ -4752,8 +4748,8 @@ msgid "End Scenario"
 msgstr "Удаленный сценарий"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2456
-#: src/unit.cpp:2629
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2462
+#: src/unit.cpp:2635
 msgid "HP"
 msgstr "ЗД"
 
@@ -4865,8 +4861,8 @@ msgstr "точка просмотра"
 msgid "Skip animation"
 msgstr "пропустить анимацию"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:381
-#: src/multiplayer_connect.cpp:478 src/multiplayer_wait.cpp:493
+#: src/about.cpp:46 src/multiplayer_connect.cpp:383
+#: src/multiplayer_connect.cpp:480 src/multiplayer_wait.cpp:493
 msgid "+"
 msgstr "+"
 
@@ -5101,7 +5097,7 @@ msgstr "ОП: "
 msgid "Moves: "
 msgstr "Ходов: "
 
-#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:832
+#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:831
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:192
 msgid "Cancel"
 msgstr "Отмена"
@@ -5110,7 +5106,7 @@ msgstr "Отмена"
 msgid "KB"
 msgstr "кб"
 
-#: src/display.cpp:369
+#: src/display.cpp:374
 msgid "Screenshot"
 msgstr "Скриншот"
 
@@ -5122,17 +5118,17 @@ msgstr "Битва за Веснот"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Внимание: загружаемый файл поврежден. Пробуем загрузить.\n"
 
-#: src/game.cpp:718 src/multiplayer_connect.cpp:1344
+#: src/game.cpp:718 src/multiplayer_connect.cpp:1340
 msgid "This save is from a version too old to be loaded."
 msgstr "Данное сохранение от слишком старой версии."
 
-#: src/game.cpp:724 src/multiplayer_connect.cpp:1351
+#: src/game.cpp:724 src/multiplayer_connect.cpp:1347
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Данное сохранение из другой версии игры. Попробовать его загрузить?"
 
-#: src/game.cpp:732 src/game.cpp:735 src/multiplayer_connect.cpp:1322
+#: src/game.cpp:732 src/game.cpp:735 src/multiplayer_connect.cpp:1318
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Загружаемый файл поврежден: \""
 
@@ -5304,7 +5300,7 @@ msgstr ""
 "кампании."
 
 #: src/game.cpp:1285 src/game.cpp:1327 src/game.cpp:1354
-#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:441
+#: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:460
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
@@ -5370,15 +5366,15 @@ msgstr ""
 msgid "Login: "
 msgstr "Имя пользователя: "
 
-#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:365
+#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:370
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:368
+#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:373
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:371
+#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:376
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
@@ -5431,15 +5427,15 @@ msgstr "Загрузка заглавного изображения."
 msgid "Invalid color range: "
 msgstr "Неверный цвет:"
 
-#: src/game_events.cpp:898
+#: src/game_events.cpp:903
 msgid "Victory:"
 msgstr "Победа:"
 
-#: src/game_events.cpp:901
+#: src/game_events.cpp:906
 msgid "Defeat:"
 msgstr "Поражение:"
 
-#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:394
+#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:399
 msgid " replay"
 msgstr " повтор"
 
@@ -5529,7 +5525,7 @@ msgstr "диапазон действия оружия: "
 msgid "damage type: "
 msgstr "тип повреждений: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1347
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1361
 msgid "vs"
 msgstr "против"
 
@@ -5692,8 +5688,9 @@ msgstr "Конец"
 msgid "System default language"
 msgstr "Язык по умолчанию"
 
-#: src/leader_list.cpp:128 src/leader_list.cpp:159 src/leader_list.cpp:194
-msgid "Random"
+#: src/leader_list.cpp:128
+#, fuzzy
+msgid "gender^Random"
 msgstr "Случайная"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
@@ -5703,6 +5700,10 @@ msgstr ""
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Masculine ♂"
 msgstr ""
+
+#: src/leader_list.cpp:159 src/leader_list.cpp:194
+msgid "Random"
+msgstr "Случайная"
 
 #: src/leader_list.cpp:242 src/leader_list.cpp:248
 msgid "?"
@@ -5826,11 +5827,11 @@ msgstr ""
 msgid "Leader"
 msgstr "Лидер"
 
-#: src/menu_events.cpp:505 src/multiplayer_connect.cpp:817
+#: src/menu_events.cpp:505 src/multiplayer_connect.cpp:816
 msgid "Team"
 msgstr "Команда"
 
-#: src/menu_events.cpp:506 src/multiplayer_connect.cpp:828
+#: src/menu_events.cpp:506 src/multiplayer_connect.cpp:827
 #: src/multiplayer_wait.cpp:487
 msgid "Gold"
 msgstr "Золото"
@@ -5847,7 +5848,7 @@ msgstr "Соединения"
 msgid "Upkeep"
 msgstr "Содержание"
 
-#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:829
+#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:828
 #: src/multiplayer_wait.cpp:491
 msgid "Income"
 msgstr "Доход"
@@ -5916,7 +5917,7 @@ msgstr ""
 msgid "Scenario Settings"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:534
+#: src/menu_events.cpp:698 src/playcampaign.cpp:549
 msgid "Name:"
 msgstr "Название:"
 
@@ -5936,7 +5937,7 @@ msgstr "Сохранено"
 msgid "The game has been saved"
 msgstr "Игра успешно сохранена"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:542
+#: src/menu_events.cpp:716 src/playcampaign.cpp:557
 msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
@@ -5956,7 +5957,7 @@ msgstr "Карта сохранена."
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:766
+#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:770
 msgid "Auto-Save"
 msgstr "автосохр"
 
@@ -6187,59 +6188,59 @@ msgstr "Команда:"
 msgid "User-Command#3"
 msgstr "Пользовательская команда № 3"
 
-#: src/mouse_events.cpp:198 src/mouse_events.cpp:308
+#: src/mouse_events.cpp:200 src/mouse_events.cpp:310
 msgid "Attacker"
 msgstr "Атакующий"
 
-#: src/mouse_events.cpp:199 src/mouse_events.cpp:307
+#: src/mouse_events.cpp:201 src/mouse_events.cpp:309
 msgid "Defender"
 msgstr "Защитник"
 
-#: src/mouse_events.cpp:217
+#: src/mouse_events.cpp:219
 msgid "Expected Battle Result (HP)"
 msgstr "Ожидаемый результат битвы (ЗД)"
 
-#: src/mouse_events.cpp:309
+#: src/mouse_events.cpp:311
 msgid " resistance vs "
 msgstr " стоек против "
 
-#: src/mouse_events.cpp:310
+#: src/mouse_events.cpp:312
 msgid " vulnerability vs "
 msgstr " уязвим против "
 
-#: src/mouse_events.cpp:320
+#: src/mouse_events.cpp:322
 msgid "Slowed"
 msgstr "Замедлен"
 
-#: src/mouse_events.cpp:327
+#: src/mouse_events.cpp:329
 msgid "Time of day"
 msgstr "Время суток"
 
-#: src/mouse_events.cpp:337
+#: src/mouse_events.cpp:339
 msgid "Leadership"
 msgstr "Лидерство"
 
-#: src/mouse_events.cpp:344
+#: src/mouse_events.cpp:346
 msgid "Total damage"
 msgstr "Всего повреждений"
 
-#: src/mouse_events.cpp:351
+#: src/mouse_events.cpp:353
 msgid "No usable weapon"
 msgstr "Нет подходящего оружия"
 
-#: src/mouse_events.cpp:356
+#: src/mouse_events.cpp:358
 msgid "Chance of being unscathed"
 msgstr "Шанс быть не ударенным"
 
-#: src/mouse_events.cpp:661 src/mouse_events.cpp:1364
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1378
 msgid "Damage Calculations"
 msgstr "Вычисление ущерба"
 
-#: src/mouse_events.cpp:1375
+#: src/mouse_events.cpp:1389
 msgid "Attack Enemy"
 msgstr "Атаковать противника"
 
-#: src/mouse_events.cpp:1376
+#: src/mouse_events.cpp:1390
 msgid "Choose weapon:"
 msgstr "Выберите оружие:"
 
@@ -6309,104 +6310,104 @@ msgstr "Эра не доступна"
 msgid "No multiplayer sides found"
 msgstr "Нет сетевых игроков"
 
-#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:383
-#: src/multiplayer_connect.cpp:480
+#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:385
+#: src/multiplayer_connect.cpp:482
 msgid "Normal"
 msgstr "Нормально"
 
-#: src/multiplayer_connect.cpp:379 src/multiplayer_connect.cpp:476
+#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:478
 #: src/multiplayer_wait.cpp:483 src/multiplayer_wait.cpp:491
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:379 src/multiplayer_connect.cpp:476
+#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:478
 #: src/multiplayer_wait.cpp:483 src/multiplayer_wait.cpp:494
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:454
+#: src/multiplayer_connect.cpp:456
 msgid "Default AI"
 msgstr "AI по умолчанию"
 
-#: src/multiplayer_connect.cpp:506
+#: src/multiplayer_connect.cpp:508
 msgid "(Vacant slot)"
 msgstr "(Свободный слот)"
 
-#: src/multiplayer_connect.cpp:512
+#: src/multiplayer_connect.cpp:514
 msgid "Anonymous local player"
 msgstr "Анонимный локальный игрок"
 
-#: src/multiplayer_connect.cpp:533
+#: src/multiplayer_connect.cpp:535
 msgid "Computer player"
 msgstr "Компьютерный игрок"
 
-#: src/multiplayer_connect.cpp:536
+#: src/multiplayer_connect.cpp:538
 msgid "(Empty slot)"
 msgstr "(Пустой слот)"
 
-#: src/multiplayer_connect.cpp:747
+#: src/multiplayer_connect.cpp:751
 msgid "No non-random sides in the current era"
 msgstr "Только случайные стороны могут быть в текущей эре"
 
-#: src/multiplayer_connect.cpp:769
+#: src/multiplayer_connect.cpp:774
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Не могу найти тип лидера для фракции $faction"
 
-#: src/multiplayer_connect.cpp:811 src/multiplayer_lobby.cpp:601
+#: src/multiplayer_connect.cpp:810 src/multiplayer_lobby.cpp:601
 #: src/multiplayer_wait.cpp:190
 msgid "Game Lobby"
 msgstr "Холл игры"
 
-#: src/multiplayer_connect.cpp:824
+#: src/multiplayer_connect.cpp:823
 msgid "Player/Type"
 msgstr "Игрок/Тип"
 
-#: src/multiplayer_connect.cpp:825
+#: src/multiplayer_connect.cpp:824
 msgid "Faction"
 msgstr "Фракция"
 
-#: src/multiplayer_connect.cpp:826
+#: src/multiplayer_connect.cpp:825
 #, fuzzy
 msgid "Team/Gender"
 msgstr "Защитник"
 
-#: src/multiplayer_connect.cpp:827
+#: src/multiplayer_connect.cpp:826
 msgid "Color"
 msgstr "Цвет"
 
-#: src/multiplayer_connect.cpp:831
+#: src/multiplayer_connect.cpp:830
 msgid "I'm Ready"
 msgstr "Я готов"
 
-#: src/multiplayer_connect.cpp:860
+#: src/multiplayer_connect.cpp:839
 msgid "The scenario is invalid because it has no sides."
 msgstr "Этот сценарий неправильный, потому что в нем нет сторон."
 
-#: src/multiplayer_connect.cpp:1213
+#: src/multiplayer_connect.cpp:1209
 msgid "Network Player"
 msgstr "Сетевой игрок"
 
-#: src/multiplayer_connect.cpp:1214
+#: src/multiplayer_connect.cpp:1210
 msgid "Local Player"
 msgstr "Локальный игрок"
 
-#: src/multiplayer_connect.cpp:1215
+#: src/multiplayer_connect.cpp:1211
 msgid "Computer Player"
 msgstr "Компьютер"
 
-#: src/multiplayer_connect.cpp:1216
+#: src/multiplayer_connect.cpp:1212
 msgid "Empty"
 msgstr "Пусто"
 
-#: src/multiplayer_connect.cpp:1330
+#: src/multiplayer_connect.cpp:1326
 msgid "This is not a multiplayer save"
 msgstr "Это не сетевое сохранение"
 
-#: src/multiplayer_connect.cpp:1418
+#: src/multiplayer_connect.cpp:1414
 msgid "Cannot find era $era"
 msgstr "Не могу найти эру $era"
 
-#: src/multiplayer_connect.cpp:1437
+#: src/multiplayer_connect.cpp:1433
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6414,7 +6415,7 @@ msgstr ""
 "Победа\n"
 "@Убейте лидера(ов) противника"
 
-#: src/multiplayer_connect.cpp:1496
+#: src/multiplayer_connect.cpp:1492
 msgid "Waiting for players to join..."
 msgstr "Ждем подключения игроков..."
 
@@ -6714,69 +6715,69 @@ msgstr "Получаем данные игры..."
 msgid "Choose your side:"
 msgstr "Выберите сторону:"
 
-#: src/network.cpp:100
+#: src/network.cpp:101
 msgid "invalid network handle"
 msgstr "неверный сетевой оператор"
 
-#: src/network.cpp:133
+#: src/network.cpp:134
 msgid "Client disconnected"
 msgstr "Клиент отключен"
 
-#: src/network.cpp:480
+#: src/network.cpp:481
 msgid "Could not add socket to socket set"
 msgstr "Не могу добавить сокет к набору сокетов"
 
-#: src/network.cpp:491
+#: src/network.cpp:492
 msgid "Could not send initial handshake"
 msgstr "Не могу отправить данные для инициализации"
 
-#: src/play_controller.cpp:397
+#: src/play_controller.cpp:401
 #, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
-#: src/play_controller.cpp:770
+#: src/play_controller.cpp:774
 msgid "Back to start"
 msgstr "Назад к старту"
 
-#: src/play_controller.cpp:772
+#: src/play_controller.cpp:776
 msgid "Back to turn "
 msgstr "Назад к ходу "
 
-#: src/playcampaign.cpp:132 src/playcampaign.cpp:161
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:163
 msgid "Defeat"
 msgstr "Поражение"
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:162
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:164
 msgid "You have been defeated!"
 msgstr "Вы проиграли!"
 
-#: src/playcampaign.cpp:375
+#: src/playcampaign.cpp:380
 msgid "Error while reading the WML: "
 msgstr "Возникла ошибка при чтении WML:"
 
-#: src/playcampaign.cpp:401
+#: src/playcampaign.cpp:406
 msgid "The replay could not be saved"
 msgstr "Повтор не может быть сохранен"
 
-#: src/playcampaign.cpp:429
-msgid "Receiving data..."
-msgstr "Получение данных..."
+#: src/playcampaign.cpp:427
+msgid "This scenario has ended. Do you want to continue the campaign?"
+msgstr ""
 
-#: src/playcampaign.cpp:431
+#: src/playcampaign.cpp:447
 msgid "Downloading next scenario..."
 msgstr "Скачивание следующего уровеня..."
 
-#: src/playcampaign.cpp:533
+#: src/playcampaign.cpp:548
 msgid "Do you want to save your game?"
 msgstr "Вы хотите сохранить эту игру?"
 
-#: src/playcampaign.cpp:558
+#: src/playcampaign.cpp:573
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Неизвестный сценарий: \""
 
-#: src/playmp_controller.cpp:368
+#: src/playmp_controller.cpp:378
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6854,24 +6855,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Сейчас Ваш ход"
 
-#: src/playturn.cpp:201
+#: src/playturn.cpp:202
 msgid "Replace with AI"
 msgstr "Заменить компьютером"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Replace with local player"
 msgstr "Заменить локальным игроком"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:204
 msgid "Abort game"
 msgstr "Завершить игру"
 
-#: src/playturn.cpp:208 src/playturn.cpp:220
+#: src/playturn.cpp:209 src/playturn.cpp:221
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Заменить локальным игроком"
 
-#: src/playturn.cpp:226
+#: src/playturn.cpp:227
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "вышел из игры. Что Вы будете делать?"
@@ -7049,38 +7050,38 @@ msgstr "Загрузить статистику"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогите Весноту, отправив нам информацию"
 
-#: src/unit.cpp:382 src/unit.cpp:1168 src/unit.cpp:2368
+#: src/unit.cpp:382 src/unit.cpp:1168 src/unit.cpp:2374
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2413 src/unit.cpp:2617 src/unit.cpp:2673
+#: src/unit.cpp:2419 src/unit.cpp:2623 src/unit.cpp:2679
 #, fuzzy
 msgid " and "
 msgstr "Песок"
 
-#: src/unit.cpp:2424
+#: src/unit.cpp:2430
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2489
+#: src/unit.cpp:2495
 #, fuzzy
 msgid "moves"
 msgstr "Ходы"
 
-#: src/unit.cpp:2507 src/unit.cpp:2644
+#: src/unit.cpp:2513 src/unit.cpp:2650
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2636
+#: src/unit.cpp:2642
 #, fuzzy
 msgid " move"
 msgstr "Ходы"
 
-#: src/unit.cpp:2652
+#: src/unit.cpp:2658
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2682
+#: src/unit.cpp:2688
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -7131,6 +7132,9 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
+
+#~ msgid "Receiving data..."
+#~ msgstr "Получение данных..."
 
 #~ msgid "Campaign"
 #~ msgstr "Кампания"

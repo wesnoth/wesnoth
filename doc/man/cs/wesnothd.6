@@ -39,14 +39,19 @@ server akceptuje, a to jak pøes soket, tak pøímo od klienta wesnoth.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ cesta\fP
-specifikuje cestu, kde má wesnothd hledat konfiguraèní soubor. Syntaxe
-souboru je popsána v sekci \fBKONFIGURACE SERVERU\fP ní¾e.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 spou¹tí wesnothd jako démona.
 .TP 
 \fB\-h,\ \-\-help\fP
 zobrazuje nápovìdu k parametrùm pøíkazové øádky.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 urèuje, který port má wesnothd pou¾ívat. Implicitní hodnota je 15000.

@@ -69,13 +69,13 @@ skærmen.
 viser et overblik over kommandolinjemuligheder til standard uddata, og
 afslutter.
 .TP 
-\fB\-\-load\fP\fI\ gemtspil\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 henter det gemte spil fra standardkataloget for gemte spil.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-indstiller strenghedsniveauet på fejlsøgningsdomænerne. "all" kan bruges til
-alle fejlsøgningsdomæner. \fB\-\-log\-info\fP viser alle beskeder,
-\fB\-\-log\-warning\fP viser kun advarsler og fejl og \fB\-\-log\-error\fP kun fejl.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Gemmer en liste med alle logdomæner og afslutter.
@@ -113,6 +113,10 @@ afvikler spillet i et vindue.
 afvikler spillet uden forsinkelser på grund af grafiske
 sammenligninger. Dette sættes automatisk på ved hjælp af \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+afvikler spillet uden GUI. Skal anføres før \fB\-\-multiplayer\fP for at have den
+ønskede effekt.
+.TP 
 \fB\-\-exit\-at\-end\fP
 afslutter når scenariet er slut uden at vise sejr/nederlag vinduet, som
 kræver at brugeren klikker o.k. Dette bruges også til skript sammenligning.
@@ -136,10 +140,6 @@ brug dette tilvalg for at spille i den valgte æra fremfor i "Default"
 æraen. Æra vælges via dens id. Æraerne er beskrevet i data/multiplayer.cfg
 filen.
 .TP 
-\fB\-\-nogui\fP
-afvikler spillet uden GUI. Skal anføres før \fB\-\-multiplayer\fP for at have den
-ønskede effekt.
-.TP 
 \fB\-\-parm<nummer>=navn:værdi\fP
 sætter yderligere indstillinger for denne side. Denne indstilling er
 afhængig af valgene for \fB\-\-controller\fP og \fB\-\-algorithm.\fP Den er beregnet
@@ -157,9 +157,9 @@ via en id. Fraktioner er beskrevet i data/multiplayer.cfg filen.
 \fB\-\-turns=værdi\fP
 indstiller antallet af runder for det valgte scenarie. Standarden er "50".
 .TP 
-Eksempel som kan teste din egen computerspiller: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH FORFATTER
 .

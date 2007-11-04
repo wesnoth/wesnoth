@@ -32,7 +32,7 @@ wesnoth \- Battle for Wesnoth, ein rundenbasiertes Strategiespiel
 Battle for \fBWesnoth\fP ist ein rundenbasiertes Strategiespiel in einem
 Fantasy\-Szenario.
 
-Schlüpfen Sie in die Rolle eines Herrführers und führen Sie Ihre Armee zum
+Schlüpfen Sie in die Rolle eines Heerführers und führen Sie Ihre Armee zum
 Sieg.  Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen
 Fertigkeiten, Waffen und Sprüchen aus und zerschmettern Sie Ihre Gegner.
 .
@@ -64,14 +64,14 @@ Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
 \fB\-h\fP, \fB\-\-help\fP
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
-\fB\-\-load\fP\fI\ Spielstand\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 Lädt die Datei `Spielstand' aus dem Standardverzeichnis für gespeicherte
 Spiele.
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche
-Meldungen auszugeben.  \fB\-\-log\-info\fP zeigt alle Meldungen, \fB\-\-log\-warning\fP
-zeigt nur Warnungen und Fehler und \fB\-\-log\-error\fP nur Fehler.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Gibt eine Liste der Protokollbereiche aus und beendet das Programm.
@@ -113,6 +113,10 @@ Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum ausführen grafischer
 Leistungsvergleiche verwendet. Diese Option ist standardmässig aktiviert,
 wenn die Option \-\-nogui gesetzt ist.
 .TP 
+\fB\-\-nogui\fP
+Das Spiel startet ohne grafische Oberfläche. Muss vor \fB\-\-multiplayer\fP in
+der Befehlszeile angegeben werden.
+.TP 
 \fB\-\-exit\-at\-end\fP
 Beendet das Spiel am Ende eines Szenarios ohne die Sieg/Niederlage Übersicht
 anzuzeigen, da der Benutzer hier »Ok« auswählen müsste, damit das Spiel
@@ -140,10 +144,6 @@ Bestimmt, welche Ära für diese Partie genutzt werden soll. Die Ära wird per
 "id" bestimmt. Eine genaue Beschreibung der Rassen und Epochen ist in der
 Datei data/multiplayer.cfg zu finden.
 .TP 
-\fB\-\-nogui\fP
-Das Spiel startet ohne grafische Oberfläche. Muss vor \fB\-\-multiplayer\fP in
-der Befehlszeile angegeben werden.
-.TP 
 \fB\-\-parm<NUMMER>=NAME:WERT\fP
 Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter
 hängen davon ab, welche Optionen für \fB\-\-controller\fP und \fB\-\-algorithm\fP
@@ -163,9 +163,9 @@ der Rassen und Epochen ist in der Datei data/multiplayer.cfg zu finden.
 \fB\-\-turns=WERT\fP
 Bestimmt die Anzahl der Runden. Standard ist "50".
 .TP 
-Beispielbefehl zum Testen einer eigenen KI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTOR
 .

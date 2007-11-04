@@ -69,13 +69,13 @@ zobrazí momentálnu rýchlos» hry, poèet snímok za sekundu, v rohu obrazovky.
 \fB\-h\fP, \fB\-\-help\fP
 vypí¹e súhrn mo¾ností príkazového riadku do ¹tandardného výstupu, a skonèí.
 .TP 
-\fB\-\-load\fP\fI\ ulo¾ená_hra\fP
+\fB\-\-load\fP\fI\ <savegame>\fP
 naèíta ulo¾enú hru z daného súboru v ¹tandardnom adresári ulo¾ených hier
 .TP 
-\fB\-\-log\-error="domain1,domain2,..."\fP, \fB\-\-log\-warning="..."\fP, \fB\-\-log\-info="..."\fP
-nastaví úroveò záva¾nosti ladiacich domén. mo¾no pou¾i» "all" na ladenie
-v¹etkých domén. \fB\-\-log\-info\fP zobrazuje v¹etky správy, \fB\-\-log\-warning\fP iba
-varovania a chyby, a \fB\-\-log\-error\fP iba chyby.
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug. By default the
+error level is used.
 .TP 
 \fB\-\-logdomains\fP
 Dumps a list of all log domains and exits.
@@ -113,6 +113,10 @@ spustí hru v grafickom okne.
 spustí hru bez akýchkoµvek páuz, kvôli meraniu rýchlosti grafiky. Toto je
 automatické pri \-\-nogui.
 .TP 
+\fB\-\-nogui\fP
+spustí hru bez grafického u¾ívateµského rozhrania. Musí by» uvedené pred
+\fB\-\-multiplayer\fP, ak má správne fungova».
+.TP 
 \fB\-\-exit\-at\-end\fP
 vypne sa po skonèení scény, bez zobrazenia dialógu o ví»azstve alebo
 porá¾ke, ktorý by od pou¾ívateµa vy¾adoval kliknutie OK. Toto sa tie¾
@@ -137,10 +141,6 @@ nastaví ovládanie pre danú stranu. Mo¾né hodnoty: "human" (èlovek) a "ai"
 táto mo¾nos» umo¾òuje hra» v inej ako "¹tandardnej" ére. Éra sa zadáva ako
 id. Éry sú definované v súbore data/multiplayer.cfg.
 .TP 
-\fB\-\-nogui\fP
-spustí hru bez grafického u¾ívateµského rozhrania. Musí by» uvedené pred
-\fB\-\-multiplayer\fP, ak má správne fungova».
-.TP 
 \fB\-\-parm<èíslo>=názov:hodnota\fP
 nastaví tejto strane dodatoèné parametre. Tento parameter závisí na
 mo¾nostiach uvedených pri \fB\-\-controller\fP a \fB\-\-algorithm\fP. Je to u¾itoèné
@@ -158,9 +158,9 @@ id. Frakcie sú popísané v súbore data/multiplayer.cfg.
 \fB\-\-turns=hodnota\fP
 nastaví poèet »ahov pre danú scénu. ©tandardná hodnota je "50".
 .TP 
-Example to test your own AI: 
-wesnoth \-\-multiplayer \-\-controller2=python_ai \-\-algorithm2=python_ai
-\-\-parm2=python_script:py/my_own_python_ai.py \-\-side2=Rebels
+Example to test your own AI against the default AI without starting the GUI:
+wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTOR
 .
