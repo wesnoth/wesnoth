@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:51+0100\n"
-"PO-Revision-Date: 2007-10-30 14:09+0100\n"
+"PO-Revision-Date: 2007-11-03 20:45+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -348,7 +348,7 @@ msgstr "Schopnosti"
 
 #: data/core/help.cfg:48
 msgid "Weapon Specials"
-msgstr "Druhy útoků"
+msgstr "Speciální druhy útoků"
 
 #: data/core/help.cfg:55
 msgid "Terrains"
@@ -1337,7 +1337,7 @@ msgstr ""
 "Tím jsme uzavřeli základy Wesnothu. Možná se budete chtít podívat na "
 "Základní Strategii nebo se seznámit s <ref>dst=traits text=Vlastnostmi</ref> "
 "a <ref>dst=abilities text=Schopnostmi</ref>, ale nyní víte vše, co "
-"potřebujete k hraní Dědice trůnu. Dobře se bavte a mnoho štěstí!"
+"potřebujete k hraní tažení „Dědic trůnu“. Dobře se bavte a mnoho štěstí!"
 
 #: data/core/help.cfg:271
 msgid "License"
@@ -1351,7 +1351,7 @@ msgid ""
 "randomly assigned to a unit when it is recruited."
 msgstr ""
 "Většina jednotek má dvě vlastnosti. Samozřejmě, nemrtvým jednotkám je "
-"přiřazena pouze jediná, a to 'Nemrtví' a Stromoví muži nezískávají "
+"přiřazena pouze jediná, a to „Nemrtví“ a Stromoví muži nezískávají "
 "vlastnosti žádné. Vlastnosti jsou úpravami, které jemně mění atributy "
 "jednotek. Jsou obvykle náhodně přiřazeny jednotce při jejím naverbování."
 
@@ -1407,11 +1407,11 @@ msgstr ""
 "\n"
 "\n"
 "Inteligentní jednotky jsou velmi užitečné na začátku tažení, neboť mohou "
-"rychle zvyšovat svoji úroveň. V pozdějších taženích nejsou chytré jednotky "
-"zas tak užitečné, neboť dosáhnutí maxima svých schopností (AMLA) není zas "
-"tak důležité jako zvýšení své úrovně. Pokud máte hodně jednotek 'na hranici' "
-"svých možností, možná budete chtít zavolat jednotky s vhodnějšími "
-"vlastnostmi."
+"rychle zvyšovat svoji úroveň. V pozdějších scénářích tažení již však nejsou "
+"chytré jednotky tak užitečné, neboť dosáhnutí maxima svých schopností (AMLA) "
+"není až tak významná výhoda ve srovnání se zvýšením úrovně. Pokud máte hodně "
+"jednotek na hranici jejich možností, možná budete chtít přivolat jednotky s "
+"vhodnějšími vlastnostmi."
 
 #: data/core/help.cfg:295
 msgid "Quick"
@@ -1435,11 +1435,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rychlost je velmi nápadnou vlastností, zejména v porovnání s pomalejším "
-"pohybem jednotek jako jsou trollové nebo těžká pěchota. Jednotky s touto "
-"vlastností často zvyšují mobilitu v těžkém terénu, která může být důležitá "
-"při rozmísťování svých sil. Rychlé jednotky nejsou tak silné jako jednotky "
-"bez této vlastnosti a jsou také slabší při udržování bojových pozic."
+"Rychlost je velmi nápadnou vlastností, zejména u pomaleji se pohybujících "
+"jednotek jako trollové nebo těžká pěchota. Jednotky s touto vlastností mají "
+"často mnohem vyšší mobilitu v těžkém terénu, která může být důležitá při "
+"rozmísťování Vašich sil. Rychlé jednotky nejsou tak silné jako jednotky bez "
+"této vlastnosti a jsou také slabší při udržování bojových pozic."
 
 #: data/core/help.cfg:303
 msgid "Resilient"
@@ -2196,17 +2196,16 @@ msgid "General commands"
 msgstr "Obecné příkazy"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Smaže zprávy rozhovoru."
+"Smaže zprávy rozhovoru.\n"
+"\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2216,7 +2215,8 @@ msgid ""
 msgstr ""
 "\n"
 "Přepíná hráče mezi režimem člověk/počítač. Hráč/klient, který ovládá tuto "
-"stranu, musí změnu povolit. Pokud neudáte stranu, je vybrána strana '1'.\n"
+"stranu, musí změnu povolit. Pokud neudáte stranu, je vybrána aktivní "
+"strana.\n"
 "\n"
 
 #: data/core/help.cfg:621
@@ -2265,9 +2265,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Přepíná zobrazování překreslovací rychlosti (FPS).\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2276,7 +2278,7 @@ msgid ""
 msgstr ""
 "\n"
 "Zapni ladící režim (nefunguje ve hře více hráčů). Ladící režim je vypnut "
-"ukončením hry.\n"
+"ukončením hry nebo příkazem :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:637
@@ -2288,7 +2290,6 @@ msgid "Multiplayer commands"
 msgstr "Příkazy pro Hru více hráčů"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2339,14 +2340,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Zapíná/vypíná umlčení všech pozorovatelů.\n"
-"\n"
+"Zapíná/vypíná umlčení všech pozorovatelů."
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -3863,13 +3862,10 @@ msgstr ""
 "Tato jednotka je schopna jednak léčit, ale také uzdravit jednotky z otravy."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
-"Tato jednotka je schopna ošetřovat, ale není schopna uzdravit jednotku z "
-"otravy."
+msgstr "Tato jednotka dokáže uzdravovat okolní jednotky z otravy."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -4660,7 +4656,7 @@ msgid ""
 "best to scout specific types of terrain."
 msgstr ""
 "Na mapách, kde je použito zahalení tmou či mlha, je pohled jednotky omezen "
-"možností jejího pohybu. Pamatuj na to při výběru nejlepšího zvěda pro ten "
+"možností jejího pohybu. Pamatujte na to při výběru nejlepšího zvěda pro ten "
 "který terén. "
 
 #: data/hardwired/tips.cfg:36
@@ -4965,9 +4961,8 @@ msgid "#(Invalid)"
 msgstr "#(Neplatné)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Údržba tažení"
+msgstr "Tažení: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1399
 msgid "Multiplayer"
@@ -5322,6 +5317,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Hostuj síťovou hru za použití vestavěného serveru. Vzhledem k chybovosti je "
+"lepší použít oddělený server v programu „wesnothd“."
 
 #: src/game.cpp:1392
 msgid "Local Game"
@@ -5581,6 +5578,7 @@ msgstr "Údery"
 msgid "Range"
 msgstr "Dosah"
 
+# tabulka útoků
 #: src/help.cpp:1389
 msgid "Special"
 msgstr "Zvláštnosti"
@@ -5659,11 +5657,11 @@ msgstr "Náhodný"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Feminine ♀"
-msgstr ""
+msgstr "Ženské ♀"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Masculine ♂"
-msgstr ""
+msgstr "Mužské ♂"
 
 #: src/leader_list.cpp:242 src/leader_list.cpp:248
 msgid "?"
@@ -6634,9 +6632,8 @@ msgid "Leader: "
 msgstr "Vůdce: "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Vůdce: "
+msgstr "Pohlaví: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6671,9 +6668,8 @@ msgid "Could not send initial handshake"
 msgstr "Nemohu poslat žádost o spojení"
 
 #: src/play_controller.cpp:397
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Soubor, který se snažíš načíst, je poškozený."
+msgstr "Soubor, který se snažíš načíst, je poškozený. Pokračovat ve hře?"
 
 #: src/play_controller.cpp:770
 msgid "Back to start"

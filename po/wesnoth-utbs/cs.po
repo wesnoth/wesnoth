@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:56+0100\n"
-"PO-Revision-Date: 2007-10-30 15:10+0100\n"
+"PO-Revision-Date: 2007-11-03 14:38+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -13751,29 +13751,26 @@ msgid "flaming sword"
 msgstr "ohnivý meč"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:89
-#, fuzzy
 msgid "Kaleh of the Quenoth Elves"
-msgstr "Jsem Kaleh, vůdce elfů z Quenothu."
+msgstr "Kaleh z Quenothu"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:129
-#, fuzzy
 msgid "Desert Youth"
-msgstr "Pouštní průzkumník"
+msgstr ""
 
+# tyto řetězce jsou v seznamu pod otázkou ve stylu "čím se má stát jednotka?" - proto 7. pád
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:291
 msgid "a leader in battle"
 msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:298
-#, fuzzy
 msgid "a better swordsman"
-msgstr "Pouštní těžká jízda"
+msgstr "lepším šrmířem"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:304
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:311
-#, fuzzy
 msgid "a better archer"
-msgstr "Pouštní lučištník"
+msgstr "lepším lukostřelcem"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:317
 msgid "a marksman with the bow"
@@ -13790,7 +13787,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:344
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:345
 msgid "camouflage"
-msgstr ""
+msgstr "kamufláž"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:349
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:353
@@ -13803,6 +13800,13 @@ msgid ""
 "mountains, except if they have units next to it. Any enemy unit that first "
 "discovers this unit immediately loses all its remaining movement."
 msgstr ""
+"Kamufláž:\n"
+"Tato jednotka se může ukrýt v pouštních horách a dunách a zůstat "
+"nepovšimnuta nepřáteli.\n"
+"\n"
+"Nepřátelské jednotky nemohou tuto jednotku v pouštních horách a dunách "
+"spatřit, pouze jsou-li na sousedních polích. Nepřátelská jednotka, která ji "
+"nalezne jako první, ztrácí všechny své zbývající body pohybu."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:365
 msgid "gain +20% resistance under the sun"
@@ -13833,19 +13837,22 @@ msgid ""
 "This unit's blade, pierce and impact resistances are increased by 10%."
 msgstr ""
 
+# vejde se to do okna?
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:410
 msgid "a charismatic leader - all adjacent units pay no upkeep"
-msgstr ""
+msgstr "charismatický vůdce - sousední jednotky nevyžadují žold"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:419
 msgid "charisma"
-msgstr ""
+msgstr "charisma"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:421
 msgid ""
 "Charisma:\n"
 "Adjacent units will be treated loyal and not pay upkeep."
 msgstr ""
+"Charisma:\n"
+"Jednotky na sousedních polích se chovají jako věrné a nevyžadují tak žold."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:428
 msgid "gain a stunning attack that disrupts enemy ZOC"

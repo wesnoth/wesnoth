@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-10-31 20:52+0100\n"
-"PO-Revision-Date: 2007-10-30 14:25+0100\n"
+"PO-Revision-Date: 2007-11-03 14:34+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -221,9 +221,10 @@ msgstr "Neschůdné pouštní hory"
 msgid "Cave Wall"
 msgstr "Jeskynní hradba"
 
+# nicota?
 #: data/core/terrain.cfg:925
 msgid "Void"
-msgstr ""
+msgstr "Prázdnota"
 
 #: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:422
@@ -379,13 +380,15 @@ msgstr "Zrychleno"
 msgid "Skip AI Moves"
 msgstr "Přeskakuj tahy počítače"
 
+# !!!! délka
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Ukládej záznamy při jakémkoliv vítězství a prohře ve hře více hráčů"
 
+# !!!! délka
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Maž uložené pozice při jakémkoliv vítězství a prohře ve hře více hráčů"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -615,22 +618,24 @@ msgstr "Zobrazovat náhodné animace jednotek"
 msgid "Set the frequency of unit idle animations"
 msgstr "Frekvence náhodných animací jednotek"
 
+# !!!! délka
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "Nastav maximální počet uložených her k ponechání"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
 msgstr "Neanimuj jednotky ovládané počítačem"
 
+# !!!! délka
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
+msgstr "Ukládej záznamy při jakékoliv prohře a vítězství v tažení"
 
+# !!!! délka
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Maž automatické uložené pozice při zakončení scénáře"
+msgstr "Maž automaticky uložené pozice při zakončení scénáře"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -730,11 +735,11 @@ msgstr "Rychlost: "
 
 #: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "Maximum uložených pozic: "
 
 #: src/game_preferences_display.cpp:689
 msgid "infinite"
-msgstr ""
+msgstr "nekonečno"
 
 #: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
