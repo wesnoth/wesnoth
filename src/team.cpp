@@ -485,6 +485,21 @@ bool team::calculate_is_enemy(size_t index) const
 	return std::find(info_.enemies.begin(),info_.enemies.end(),int(index+1)) != info_.enemies.end();
 }
 
+void team::change_controller(const std::string& controller)
+{
+	team::team_info::CONTROLLER cid;
+	if (controller == "human")
+		cid = team::team_info::HUMAN;
+	else if (controller == "network")
+		cid = team::team_info::NETWORK;
+	else if (controller == "null")
+		cid = team::team_info::EMPTY;
+	else
+		cid = team::team_info::AI;
+
+	info_.controller = cid;
+}
+
 void team::change_team(const std::string& name, const std::string& user_name)
 {
 	info_.team_name = name;

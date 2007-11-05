@@ -698,30 +698,54 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	// Modifications of some attributes of a side: gold, income, team name
 	else if(cmd == "modify_side") {
-		LOG_NG << "modifying side...\n";
 		std::string side = cfg["side"];
 		std::string income = cfg["income"];
+		std::string name = cfg["name"];
 		std::string team_name = cfg["team_name"];
 		std::string user_team_name = cfg["user_team_name"];
 		std::string gold = cfg["gold"];
+		std::string controller = cfg["controller"];
+		// TODO? std::string recruit = cfg["recruit"];
+		// I don't know if we should implement the [set_recruit] behavior here
+		std::string fog = cfg["fog"];
+		std::string shroud = cfg["shroud"];
+		std::string village_gold = cfg["village_gold"];
+		// TODO? std::string colour = cfg["colour"];
+		
 		wassert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 
 		if(team_index < teams->size()) {
-			LOG_NG << "modifying team: " << side_num << "\n";
+			LOG_NG << "modifying side: " << side_num << "\n";
 			if(!team_name.empty()) {
-				LOG_NG << "change team to team_name '" << team_name << "'\n";
+				LOG_NG << "change side's team to team_name '" << team_name << "'\n";
 				(*teams)[team_index].change_team(team_name,
 												 user_team_name);
 			}
-
+			// Modify income
 			if(!income.empty()) {
 				(*teams)[team_index].set_income(lexical_cast_default<int>(income));
 			}
-
+			// Modify total gold
 			if(!gold.empty()) {
 				(*teams)[team_index].spend_gold((*teams)[team_index].gold()-lexical_cast_default<int>(gold));
+			}
+			// Set controller
+			if(!controller.empty()) {
+				(*teams)[team_index].change_controller(controller);
+			}
+			// Set shroud
+			if (!shroud.empty()) {
+				(*teams)[team_index].set_shroud( utils::string_bool(shroud, true) );
+			}
+			// Set fog
+			if (!fog.empty()) {
+				(*teams)[team_index].set_fog( utils::string_bool(fog, true) );
+			}
+			// Set income per village
+			if (!village_gold.empty()) {
+				(*teams)[team_index].set_village_gold(lexical_cast_default<int>(village_gold));
 			}
 		}
 	}

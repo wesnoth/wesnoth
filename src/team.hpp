@@ -135,6 +135,7 @@ public:
 	int base_income() const
 		{ return atoi(info_.income.c_str()) + game_config::base_income; }
 	int village_gold() const { return info_.income_per_village; }
+	void set_village_gold(int income) { info_.income_per_village = income; }
 	int income() const
 		{ return atoi(info_.income.c_str()) + villages_.size()*info_.income_per_village+game_config::base_income; }
 	void new_turn() { gold_ += income(); }
@@ -205,6 +206,10 @@ public:
 	void make_human() { info_.controller = team_info::HUMAN; }
 	void make_network() { info_.controller = team_info::NETWORK; }
 	void make_ai() { info_.controller = team_info::AI; }
+	// Should make the above make_*() functions obsolete, as it accepts controller
+	// by lexical or numerical id
+	void change_controller(team_info::CONTROLLER controller) { info_.controller = controller; }
+	void change_controller(const std::string& controller);
 
 	const std::string& team_name() const { return info_.team_name; }
 	const std::string& user_team_name() const { return info_.user_team_name; }
@@ -220,7 +225,9 @@ public:
 	void set_ai_memory(const config& ai_mem);
 
 	double leader_value() const { return info_.leader_value; }
+	void set_leader_value(double value) { info_.leader_value = value; }
 	double village_value() const { return info_.village_value; }
+	void set_village_value(double value) { info_.village_value = value; }
 
 	int villages_per_scout() const { return info_.villages_per_scout; }
 
