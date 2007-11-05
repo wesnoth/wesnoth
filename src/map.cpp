@@ -325,6 +325,8 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 	std::map<int, t_translation::coordinate> starting_positions;
 
 	if(data.empty()) {
+		w_ = 0;
+		h_ = 0;
 		return;
 	}
 
