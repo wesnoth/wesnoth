@@ -937,6 +937,10 @@ bool display::draw_init()
 {
 	bool changed = false;
 
+	if (map_.empty()) {
+		return changed;
+	}
+
 	if(benchmark) {
 		redraw_background_ = true;
 		invalidateAll_ = true;
@@ -962,7 +966,7 @@ bool display::draw_init()
 		invalidateAll_ = true;
 	}
 
-	if(invalidateAll_ && !map_.empty()) {
+	if(invalidateAll_) {
 		INFO_DP << "draw() with invalidateAll\n";
 		gamemap::location topleft;
 		gamemap::location bottomright;
