@@ -61,9 +61,15 @@ Version 1.3.9+svn:
    * renamed "Advanced Mode" button on sound preferences to "Advanced Options",
      and "Normal Mode" to "Standard Options"
  * WML engine:
-   * extended [store_side] behavior
+   * extended [store_side] behavior, so that it additionally writes the following:
+     fog, shroud, colour, user_team_name, controller, recruit (the recruit list),
+     village_gold (the income per-village).
+   * extended [modify_side] behavior, to contemplate fog, shroud, controller,
+     recruit and village_gold settings.
    * new key "contains=" in [variable] conditions to check the presence of a 
      substring in a variable value
+   * new tag [debug_message], which takes as paramaters "logger=" and "message="
+     to silently output messages to stdout or stderr.
    * new key "variation=" in [move_unit_fake] statements to add the possibility
      of making a fake unit look like one of its variation while moving - this
      also reflects in a change to the MOVE_UNIT macro, which now can use gender
