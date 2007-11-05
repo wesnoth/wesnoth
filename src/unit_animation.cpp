@@ -284,7 +284,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	for(anim_itor = parsed_animations.begin(); anim_itor != parsed_animations.end(); ++anim_itor) {
 		animations.push_back(unit_animation(**anim_itor));
 	}
-	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),300,"","",display::rgb(255,255,255),"0.0~0.6:100,0.6~0.0:200"),"selected",unit_animation::DEFAULT_ANIM));
+	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),300,"","",display::rgb(255,255,255),"0.0~0.3:100,0.3~0.0:200"),"selected",unit_animation::DEFAULT_ANIM));
 
 
 	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
