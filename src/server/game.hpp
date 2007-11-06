@@ -99,7 +99,6 @@ public:
 	void send_data_team(const config& data, const std::string& team,
 		const network::connection exclude=0) const;
 	void send_data_observers(const config& data, const network::connection exclude=0) const;
-	void send_data_player(const config& data, network::connection sock);
 
 	void record_data(const config& data);
 	void reset_history();

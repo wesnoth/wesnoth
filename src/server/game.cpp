@@ -421,7 +421,7 @@ void game::notify_new_host(){
 		cfg_host_transfer["name"] = get_host()->second.name();
 		cfg_host_transfer["value"] = "1";
 		const player_map::const_iterator it_host = find_player(get_host()->second.name());
-		send_data_player(cfg, it_host->first);
+		network::queue_data(cfg, it_host->first);
 	}
 }
 
@@ -729,16 +729,6 @@ void game::send_user_list(const network::connection exclude) const {
 	}
 }
 
-
-void game::send_data_player(const config& data, network::connection sock)
-{
-	const user_vector users = all_game_users();
-	for(user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
-		if(*i == sock) {
-			network::queue_data(data,*i);
-		}
-	}
-}
 
 void game::send_data(const config& data, const network::connection exclude) const
 {
