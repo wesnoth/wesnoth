@@ -451,7 +451,7 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 			if(x >= border_size_ && x < w_ && y >= border_size_ && y < h_ &&
 					is_village(tiles_[x][y])) {
 
-				villages_.push_back(location(x-1, y-1));
+				villages_.push_back(location(x-border_size_, y-border_size_));
 			}
 		}
 	}
