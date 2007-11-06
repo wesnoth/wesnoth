@@ -367,7 +367,7 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 			current_team.spend_gold(expense);
 		}
 
-		calculate_healing((*gui_),map_,units_,player_number_,teams_, !recorder.is_skipping());
+		calculate_healing((*gui_),map_,units_,player_number_,teams_, !skip_replay_);
 		reset_resting(units_, player_number_);
 	}
 	if(turn_refresh || real_side_change) {
