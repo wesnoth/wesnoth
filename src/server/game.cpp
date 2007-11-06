@@ -645,6 +645,20 @@ void game::remove_player(const network::connection player, const bool notify_cre
 			observer = true;
 		}
 	}
+	if (observer) {
+		const player_map::const_iterator obs = player_info_->find(player);
+		if (obs == player_info_->end()) {
+			ERR_GAME << "ERROR: Could not find observer in player_info_. (socket: "
+				<< player << ")\n";
+			return;
+		}
+		//they're just an observer, so send them having quit to clients
+		config observer_quit;
+		observer_quit.add_child("observer_quit").values["name"] = obs->second.name();
+		send_data(observer_quit);
+		return;
+	}
+
 	// If the player was host choose a new one.
 	if (host && !players_.empty() && started_) {
 		owner_ = players_.front();
@@ -677,9 +691,8 @@ void game::remove_player(const network::connection player, const bool notify_cre
 	}
 
 	//look for all sides the player controlled and drop them
-	for (side_vector::iterator side = sides_.begin(); side != sides_.end();
-		 side = std::find(side, sides_.end(), player))
-	{
+	for (side_vector::iterator side = sides_.begin(); side != sides_.end(); ++side)	{
+		if (*side != player) continue;
 		//send the host a notification of removal of this side
 		if (notify_creator && players_.empty() == false) {
 			config drop;
@@ -696,21 +709,6 @@ void game::remove_player(const network::connection player, const bool notify_cre
 		notify_new_host();
 
 	send_user_list(player);
-	if (!observer) {
-		return;
-	}
-
-	const player_map::const_iterator obs = player_info_->find(player);
-	if (obs == player_info_->end()) {
-		ERR_GAME << "ERROR: Could not find observer in player_info_. (socket: "
-			<< player << ")\n";
-		return;
-	}
-
-	//they're just an observer, so send them having quit to clients
-	config observer_quit;
-	observer_quit.add_child("observer_quit").values["name"] = obs->second.name();
-	send_data(observer_quit);
 }
 
 void game::send_user_list(const network::connection exclude) const {
