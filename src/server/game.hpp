@@ -71,6 +71,8 @@ public:
 	bool take_side(const network::connection player, const config& cfg = config());
 	//! Let's a player owning a side give it to another player or observer.
 	void transfer_side_control(const network::connection sock, const config& cfg);
+	//! In case of a host transfer, notify the new host about it's status
+	void notify_new_host();
 
 	//! Set the description to the number of slots.
 	//! Returns true if the number of slots has changed.
@@ -97,6 +99,7 @@ public:
 	void send_data_team(const config& data, const std::string& team,
 		const network::connection exclude=0) const;
 	void send_data_observers(const config& data, const network::connection exclude=0) const;
+	void send_data_player(const config& data, network::connection sock);
 
 	void record_data(const config& data);
 	void reset_history();
@@ -127,6 +130,11 @@ private:
 	//returns an iterator on the users vector if sock is found
 	user_vector::iterator find_connection(const network::connection sock,
 		user_vector& users) const;
+
+	//convenience function for finding a player by name
+	const player_map::const_iterator find_player(const std::string& name) const;
+	//convenience function for finding the host
+	const player_map::const_iterator get_host() const;
 
 	//helps debugging player and observer lists
 	std::string debug_player_info() const;

@@ -31,6 +31,8 @@ public:
 		bool skip_replay, bool is_host);
 	~playmp_controller();
 
+	const bool is_host() { return is_host_; }
+
 	static unsigned int replay_last_turn() { return replay_last_turn_; }
 	static void set_replay_last_turn(unsigned int turn);
 

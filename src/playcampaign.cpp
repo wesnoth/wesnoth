@@ -150,13 +150,17 @@ LEVEL_RESULT playsingle_scenario(const game_data& gameinfo, const config& game_c
 LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_config,
 		config const* level, display& disp, game_state& state_of_game,
 		const config::child_list& story, upload_log& log, bool skip_replay,
-		io_type_t io_type)
+		io_type_t& io_type)
 {
 	const int ticks = SDL_GetTicks();
 	const int num_turns = atoi((*level)["turns"].c_str());
 	playmp_controller playcontroller(*level, gameinfo, state_of_game, ticks, num_turns, 
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	const LEVEL_RESULT res = playcontroller.play_scenario(story, log, skip_replay);
+
+	//Check if the player started as mp client and changed to host
+	if (io_type == IO_CLIENT && playcontroller.is_host())
+		io_type = IO_SERVER;
 
 	if (res == DEFEAT) {
 		gui::message_dialog(disp,
@@ -448,10 +452,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				config cfg_load = cfg.add_child("load_next_scenario");
 				network::send_data(cfg);
 
-				//! @todo FIXME: If the host (IO_SERVER) changes mid-game,
-				// we're waiting forever on the next scenario data, 
-				// because the newly chosen host doesn't know about
-				// its new status. (see bug #6332)
 				do {
 					cfg.clear();
 					network::connection data_res = dialogs::network_receive_dialog(disp,
@@ -467,6 +467,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				} else {
 					return QUIT;
 				}
+			}
+			else{
+				return res;
 			}
 
 		} else {
@@ -504,6 +507,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// Sends scenario data
 				config cfg;
 				cfg.add_child("store_next_scenario", *scenario);
+				(*scenario).debug();
 
 				// Adds player information, and other state
 				// information, to the configuration object

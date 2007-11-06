@@ -107,6 +107,7 @@ void playmp_controller::before_human_turn(bool save){
 	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
 		*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
 	turn_data_->replay_error().attach_handler(this);
+	turn_data_->host_transfer().attach_handler(this);
 }
 
 bool playmp_controller::counting_down() {
@@ -256,6 +257,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 		turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
 				        *gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
 		turn_data_->replay_error().attach_handler(this);
+		turn_data_->host_transfer().attach_handler(this);
 
 		play_human_turn();
 		after_human_turn();
@@ -293,6 +295,7 @@ void playmp_controller::after_human_turn(){
 	turn_data_->send_data();
 	if (turn_data_ != NULL){
 		turn_data_->replay_error().detach_handler(this);
+		turn_data_->host_transfer().detach_handler(this);
 		delete turn_data_;
 		turn_data_ = NULL;
 	}
@@ -325,6 +328,7 @@ void playmp_controller::play_network_turn(){
 	turn_info turn_data(gameinfo_,gamestate_,status_,*gui_,
 				map_,teams_,player_number_,units_, replay_sender_, undo_stack_);
 	turn_data.replay_error().attach_handler(this);
+	turn_data.host_transfer().attach_handler(this);
 
 	for(;;) {
 
@@ -368,6 +372,7 @@ void playmp_controller::play_network_turn(){
 	}
 
 	turn_data.replay_error().detach_handler(this);
+	turn_data.host_transfer().detach_handler(this);
 	LOG_NG << "finished networked...\n";
 	return;
 }
@@ -401,6 +406,14 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	}
 	else if (name == "network_replay_error"){
 		process_oos(replay::last_replay_error);
+	}
+	else if (name == "host_transfer"){
+		is_host_ = true;
+		if (linger_){
+			gui::button* btn_end = gui_->find_button("button-endturn");
+			btn_end->enable(true);
+			gui_->invalidate_theme();
+		}
 	}
 }
 

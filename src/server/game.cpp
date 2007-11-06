@@ -385,6 +385,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	(**it.first)["current_player"] = newplayer_name;
 
 	//if the host left and there are ai sides, transfer them to the new host
+	//and notify the new host's client about its new status
 	if (host_leave) {
 		for (unsigned int i = 0; i < side_controllers_.size(); i++) {
 			if (side_controllers_[i] == "ai") {
@@ -394,6 +395,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 				sides_[side_num - 1] = owner_;
 			}
 		}
+		notify_new_host();
 	}
 
 	// If we gave the new side to an observer add him to players_.
@@ -412,8 +414,20 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		+ " takes control of side " + side + "."));
 }
 
-bool game::describe_slots() {
-	if (started_ || description_ == NULL)
+void game::notify_new_host(){
+	if (get_host() != NULL){
+		config cfg;
+		config& cfg_host_transfer = cfg.add_child("host_transfer");
+		cfg_host_transfer["name"] = get_host()->second.name();
+		cfg_host_transfer["value"] = "1";
+		const player_map::const_iterator it_host = find_player(get_host()->second.name());
+		send_data_player(cfg, it_host->first);
+	}
+}
+
+bool game::describe_slots()
+{
+	if(description() == NULL)
 		return false;
 
 	int available_slots = 0;
@@ -678,6 +692,8 @@ void game::remove_player(const network::connection player, const bool notify_cre
 		sides_[side - sides_.begin()] = 0;
 	}
 	DBG_GAME << debug_player_info();
+	if (host)
+		notify_new_host();
 
 	send_user_list(player);
 	if (!observer) {
@@ -715,7 +731,19 @@ void game::send_user_list(const network::connection exclude) const {
 	}
 }
 
-void game::send_data(const config& data, const network::connection exclude) const {
+
+void game::send_data_player(const config& data, network::connection sock)
+{
+	const user_vector users = all_game_users();
+	for(user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
+		if(*i == sock) {
+			network::queue_data(data,*i);
+		}
+	}
+}
+
+void game::send_data(const config& data, const network::connection exclude) const
+{
 	const user_vector users = all_game_users();
 	for(user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
 		if (*i != exclude) {
@@ -841,7 +869,28 @@ user_vector::iterator game::find_connection(const network::connection sock,
 	return std::find(users.begin(), users.end(), sock);
 }
 
-config game::construct_server_message(const std::string& message) const {
+const player_map::const_iterator game::find_player(const std::string& name) const{
+	player_map::const_iterator p;
+	for (p = player_info_->begin(); p != player_info_->end(); p++){
+		if ((*p).second.name() == name)
+			return p;
+	}
+
+	return player_info_->end();
+}
+
+const player_map::const_iterator game::get_host() const{
+	player_map::const_iterator p;
+	for (p = player_info_->begin(); p != player_info_->end(); p++){
+		if ((*p).first == owner_)
+			return p;
+	}
+
+	return player_info_->end();
+}
+
+config game::construct_server_message(const std::string& message) const
+{
 	config turn;
 	if(started()) {
 		config& cmd = turn.add_child("turn");

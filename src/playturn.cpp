@@ -34,7 +34,8 @@ turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
   : gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), undo_stack_(undo_stack),
-	replay_sender_(replay_sender), replay_error_("network_replay_error")
+	replay_sender_(replay_sender), replay_error_("network_replay_error"),
+	host_transfer_("host_transfer")
 {}
 
 turn_info::~turn_info(){
@@ -280,10 +281,19 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 		throw network::error("");
 	}
+
+	//The host has ended linger mode in a campaign -> enable the "End scenario" button
 	if (const config* cfg_notify = cfg.child("notify_next_scenario")){
 		if ( (*cfg_notify)["is_host"] == "1"){
 			gui::button* btn_end = gui_.find_button("button-endturn");
 			btn_end->enable(true);
+		}
+	}
+
+	//If this client becomes the new host, notify the play_controller object about it
+	if (const config* cfg_host_transfer = cfg.child("host_transfer")){
+		if ( (*cfg_host_transfer)["value"] == "1"){
+			host_transfer_.notify_observers();
 		}
 	}
 
