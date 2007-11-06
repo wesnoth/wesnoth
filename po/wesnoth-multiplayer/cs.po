@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-04 17:57+0100\n"
-"PO-Revision-Date: 2007-10-30 14:31+0100\n"
+"PO-Revision-Date: 2007-11-06 16:12+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -569,9 +569,8 @@ msgstr ""
 
 # pův.: "Přežívačka"
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
-#, fuzzy
 msgid "2p - Dark Forecast (Survival)"
-msgstr "6p - Týmové přežití"
+msgstr "2p - Temná předpověď (přežití)"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
 msgid ""
@@ -580,6 +579,9 @@ msgid ""
 "enemy waves.  During the course of gameplay, the terrain will change based "
 "on random weather effects."
 msgstr ""
+"Temná předpověď je scénář, hraný na přežití v jednom nebo dvou hráčích "
+"bojujících proti náhodným jednotkám. Vítězství je dosaženo po pobití všech "
+"nepřátelských vln. Během hry se terén nepředvídatelně mění podle počasí."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:490
 msgid ""
@@ -587,57 +589,61 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"Výkřiky a prosby o milost konečně utichají, když vytahuješ potřísněnou čepel "
+"z posledního rebela. Místní chátra se již neodváží stavět na odpor. Konečně "
+"zažije tvá vláda období klidu."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:852
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"Poslední a nejnebezpečnější tvorové jsou již skoro u nás. Cítím, že když je "
+"dokážeme porazit rychle, zvítězíme."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1024
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "Sněhová vánice"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1038
 msgid "Snowfall"
-msgstr ""
+msgstr "Sníh"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1058
 msgid "Heavy Rains"
-msgstr ""
+msgstr "Přívalové deště"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1072
 msgid "Drought"
-msgstr ""
+msgstr "Sucho"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1080
 msgid "Clear Weather"
-msgstr ""
+msgstr "Slunečno"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1429
 msgid "Single player mode - uses the reduced strength spawns."
-msgstr ""
+msgstr "Mód jednoho hráče - slabší nepřátelé."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
 msgid "Two player mode - uses the full strength spawns."
-msgstr ""
+msgstr "Mód dvou hráčů - silnější nepřátelé."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
 msgid "Survive and defeat the waves of opposition."
-msgstr ""
+msgstr "Přežij a poraz nepřátele"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
 msgid "Defeat all waves"
-msgstr ""
+msgstr "Poraz všechny vlny nepřátel"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
-#, fuzzy
 msgid "Lose all your team's leaders"
 msgstr "Vůdci tvých týmů zemřou."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1470
 msgid "Dark Forecast - a random survival scenario"
-msgstr ""
+msgstr "Temná předpověď - náhodný přežívací scénář"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1491
 msgid ""
@@ -665,10 +671,30 @@ msgid ""
 "@Rhuvaen\n"
 "- WML implementation"
 msgstr ""
+"Vaším cílem je přežít vlny objevivších se nepřátel a zničit závěrečné "
+"protivníky.\n"
+"\n"
+"Vlny nepřátel jsou vytvářeny náhodně a budou se lišit pokaždé, když je Temná "
+"předpověď hrána.\n"
+"Objevují se na všešch okrajích hromě východního, ale nejpravděpodobněji na "
+"západě. Intervaly mezi nimi jsou částečně pravidelné.\n"
+"\n"
+"\n"
+"Počasí se také mění náhodně a ovlivňuje terén mapy.\n"
+"\n"
+"\n"
+"\n"
+"Temnou předpověď vytvořili:\n"
+"\n"
+"@jb\n"
+"- návrh mapy, sestavy skupinek nepřátel a koncepce scénáře\n"
+"\n"
+"@Rhuvaen\n"
+"- kódování WML"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1495
 msgid "So this is the accursed valley - a land ours for the taking."
-msgstr ""
+msgstr "Takže toto je to prokleté údolí. Země, kterou zabereme."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
 msgid ""
@@ -676,24 +702,30 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
+"Proslýchá se, že obyvatele tvoří zvláštní spojenectví lidí a nestvůr; náš "
+"zábor nezůstane bez odpovědi. Musíme se připravit na překvapení, které nám "
+"tato země přichystá."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1503
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
-msgstr ""
+msgstr "Zjistíme, kdo a co na nás čeká, a naučíme je nestavět se nám na odpor."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1541
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
+"Ech! Je to možné? Porazili mě takovíto barbaři, mí bozi mne museli opustit..."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1555
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
+"Poslední, co slyšíš, ještě než tě opustí smysly navždy, je jásavý řev "
+"nepřátel. Jejich radost tě na poslední okamžik plní nejčistší nenávistí."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1577
 msgid ""
@@ -701,6 +733,9 @@ msgid ""
 "ghostly wisps drain away your will, you realize that your time in this land "
 "is over."
 msgstr ""
+"Jak nepřátelé jásají, ze země se zvedá temná mlha, obalující tě. Uvědomuješ "
+"si, že čas tvé vlády v těchto zemích je u konce, a přízračná chapadla "
+"tmavého mračna dusí poslední zbytky tvé vůle."
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
