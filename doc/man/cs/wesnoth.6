@@ -69,13 +69,13 @@ obrazovky.
 \fB\-h\fP, \fB\-\-help\fP
 zobrazuje nápovìdu k parametrùm pøíkazové øádky.
 .TP 
-\fB\-\-load\fP\fI\ <savegame>\fP
+\fB\-\-load\fP\fI\ <soubor_se_hrou>\fP
 nahraje ulo¾enou hru ze souboru ze standardního adresáøe pro ulo¾ené hry.
 .TP 
-\fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug. By default the
-error level is used.
+\fB\-\-log\-<level>="kategorie1,kategorie2,..."\fP
+nastavuje úroveò záva¾nosti pro jednotlivé kategorie. "all" znamená, ¾e
+budou vypisovány v¹echny kategorie. Dostupné kategorie: error, warning,
+info, debug. Implicitnì je aktivována kategorie "error".
 .TP 
 \fB\-\-logdomains\fP
 Vypí¹e seznam v¹ech kategorií logování a skonèí.
@@ -156,9 +156,9 @@ ID. Frakce jsou popsány v souboru data/multiplayer.cfg
 \fB\-\-turns=hodnota\fP
 nastavuje poèet kol pro vybraný scénáø, implicitnì je "50".
 .TP 
-Example to test your own AI against the default AI without starting the GUI:
+Pøíklad pro testování Va¹í vlastní AI proti vestavìné bez pou¾ití grafického rozhraní:
 wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
-\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/moje_vlastní_ai_v_pythonu.py
 .
 .SH AUTOØI
 .

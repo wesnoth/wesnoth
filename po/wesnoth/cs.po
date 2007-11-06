@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-04 18:03+0100\n"
+"POT-Creation-Date: 2007-11-06 20:12+0100\n"
 "PO-Revision-Date: 2007-11-04 22:15+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -5388,11 +5388,11 @@ msgstr "Načítám hlavní obrazovku."
 msgid "Invalid color range: "
 msgstr "Neplatná barva: "
 
-#: src/game_events.cpp:903
+#: src/game_events.cpp:927
 msgid "Victory:"
 msgstr "Vítězství:"
 
-#: src/game_events.cpp:906
+#: src/game_events.cpp:930
 msgid "Defeat:"
 msgstr "Prohra:"
 
@@ -5483,7 +5483,7 @@ msgstr "dosah zbraně: "
 msgid "damage type: "
 msgstr "druh poškození: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1361
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
 msgid "vs"
 msgstr "proti"
 
@@ -5651,11 +5651,21 @@ msgstr "Implicitní jazyk"
 msgid "gender^Random"
 msgstr "Náhodné"
 
-#: src/leader_list.cpp:139 src/leader_list.cpp:141
+#: src/leader_list.cpp:139
+#, fuzzy
+msgid "Female ♀"
+msgstr "Ženské ♀"
+
+#: src/leader_list.cpp:141
 msgid "Feminine ♀"
 msgstr "Ženské ♀"
 
-#: src/leader_list.cpp:148 src/leader_list.cpp:150
+#: src/leader_list.cpp:148
+#, fuzzy
+msgid "Male ♂"
+msgstr "Mužské ♂"
+
+#: src/leader_list.cpp:150
 msgid "Masculine ♂"
 msgstr "Mužské ♂"
 
@@ -6169,15 +6179,15 @@ msgstr "Žádná použitelná zbraň"
 msgid "Chance of being unscathed"
 msgstr "Šance přečkat bez zranění"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
 msgid "Damage Calculations"
 msgstr "Výpočet poškození"
 
-#: src/mouse_events.cpp:1389
+#: src/mouse_events.cpp:1379
 msgid "Attack Enemy"
 msgstr "Napadni nepřítele"
 
-#: src/mouse_events.cpp:1390
+#: src/mouse_events.cpp:1380
 msgid "Choose weapon:"
 msgstr "Vyber si zbraň:"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-04 18:03+0100\n"
+"POT-Creation-Date: 2007-11-06 20:12+0100\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -4999,11 +4999,11 @@ msgstr "Laster hovedmeny."
 msgid "Invalid color range: "
 msgstr "Ugyldig farge"
 
-#: src/game_events.cpp:903
+#: src/game_events.cpp:927
 msgid "Victory:"
 msgstr "Seier:"
 
-#: src/game_events.cpp:906
+#: src/game_events.cpp:930
 msgid "Defeat:"
 msgstr "Nederlag:"
 
@@ -5095,7 +5095,7 @@ msgstr "våpenrekkevidde: "
 msgid "damage type: "
 msgstr "skadetype: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1361
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
 msgid "vs"
 msgstr "mot"
 
@@ -5265,11 +5265,19 @@ msgstr "Systemstyrt språkvalg"
 msgid "gender^Random"
 msgstr "Tilfeldig"
 
-#: src/leader_list.cpp:139 src/leader_list.cpp:141
+#: src/leader_list.cpp:139
+msgid "Female ♀"
+msgstr ""
+
+#: src/leader_list.cpp:141
 msgid "Feminine ♀"
 msgstr ""
 
-#: src/leader_list.cpp:148 src/leader_list.cpp:150
+#: src/leader_list.cpp:148
+msgid "Male ♂"
+msgstr ""
+
+#: src/leader_list.cpp:150
 msgid "Masculine ♂"
 msgstr ""
 
@@ -5825,15 +5833,15 @@ msgstr "Ingen brukbare våpen"
 msgid "Chance of being unscathed"
 msgstr "Sjanse for å være uskadet"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
 msgid "Damage Calculations"
 msgstr "Skadeberegninger"
 
-#: src/mouse_events.cpp:1389
+#: src/mouse_events.cpp:1379
 msgid "Attack Enemy"
 msgstr "Angrip fiende"
 
-#: src/mouse_events.cpp:1390
+#: src/mouse_events.cpp:1380
 msgid "Choose weapon:"
 msgstr "Velg våpen:"
 

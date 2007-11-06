@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-04 18:03+0100\n"
+"POT-Creation-Date: 2007-11-06 20:12+0100\n"
 "PO-Revision-Date: 2006-06-27 13:27+0200\n"
 "Last-Translator: Mark Polo <markpolo@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -4998,11 +4998,11 @@ msgstr "Revocans scrinium tituli."
 msgid "Invalid color range: "
 msgstr "Color invalidus"
 
-#: src/game_events.cpp:903
+#: src/game_events.cpp:927
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:906
+#: src/game_events.cpp:930
 msgid "Defeat:"
 msgstr "Clades:"
 
@@ -5089,7 +5089,7 @@ msgstr "iactus teli: "
 msgid "damage type: "
 msgstr "genus damni:"
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1361
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
 msgid "vs"
 msgstr "contra"
 
@@ -5259,11 +5259,19 @@ msgstr "Lingua solita computatri"
 msgid "gender^Random"
 msgstr "Fortituita"
 
-#: src/leader_list.cpp:139 src/leader_list.cpp:141
+#: src/leader_list.cpp:139
+msgid "Female ♀"
+msgstr ""
+
+#: src/leader_list.cpp:141
 msgid "Feminine ♀"
 msgstr ""
 
-#: src/leader_list.cpp:148 src/leader_list.cpp:150
+#: src/leader_list.cpp:148
+msgid "Male ♂"
+msgstr ""
+
+#: src/leader_list.cpp:150
 msgid "Masculine ♂"
 msgstr ""
 
@@ -5812,15 +5820,15 @@ msgstr "Nullum telum utibile"
 msgid "Chance of being unscathed"
 msgstr "Probabilitas damnum effugendi"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
 msgid "Damage Calculations"
 msgstr "Rationes Damni"
 
-#: src/mouse_events.cpp:1389
+#: src/mouse_events.cpp:1379
 msgid "Attack Enemy"
 msgstr "Hostem Oppugnare"
 
-#: src/mouse_events.cpp:1390
+#: src/mouse_events.cpp:1380
 msgid "Choose weapon:"
 msgstr "Telum eligere: "
 

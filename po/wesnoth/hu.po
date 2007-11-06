@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-04 18:03+0100\n"
+"POT-Creation-Date: 2007-11-06 20:12+0100\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -5070,11 +5070,11 @@ msgstr "Kezdőképernyő betöltése"
 msgid "Invalid color range: "
 msgstr "Érvénytelen szín"
 
-#: src/game_events.cpp:903
+#: src/game_events.cpp:927
 msgid "Victory:"
 msgstr "Győzöl, ha:"
 
-#: src/game_events.cpp:906
+#: src/game_events.cpp:930
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
@@ -5164,7 +5164,7 @@ msgstr "fegyver hatósugara: "
 msgid "damage type: "
 msgstr "sebzés: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1361
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
 msgid "vs"
 msgstr "kontra"
 
@@ -5334,11 +5334,19 @@ msgstr "Rendszer alapértelmezett nyelve"
 msgid "gender^Random"
 msgstr "Véletlenszerű"
 
-#: src/leader_list.cpp:139 src/leader_list.cpp:141
+#: src/leader_list.cpp:139
+msgid "Female ♀"
+msgstr ""
+
+#: src/leader_list.cpp:141
 msgid "Feminine ♀"
 msgstr ""
 
-#: src/leader_list.cpp:148 src/leader_list.cpp:150
+#: src/leader_list.cpp:148
+msgid "Male ♂"
+msgstr ""
+
+#: src/leader_list.cpp:150
 msgid "Masculine ♂"
 msgstr ""
 
@@ -5885,15 +5893,15 @@ msgstr "Nincsen használható fegyver"
 msgid "Chance of being unscathed"
 msgstr "Sértetlenül maradás esélye"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1378
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
 msgid "Damage Calculations"
 msgstr "Sebzés előszámítások"
 
-#: src/mouse_events.cpp:1389
+#: src/mouse_events.cpp:1379
 msgid "Attack Enemy"
 msgstr "Ellenség megtámadása"
 
-#: src/mouse_events.cpp:1390
+#: src/mouse_events.cpp:1380
 msgid "Choose weapon:"
 msgstr "Válassz fegyvert:"
 
