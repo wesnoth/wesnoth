@@ -1155,6 +1155,14 @@ def translator(filename, mapxforms, textxform):
                         add_border = False
                     if "usage" in line:
                         add_usage = False
+                        usage = line.split("=")[1].strip()
+                        if usage == 'mask':
+                            add_border = False
+                            if filename.endswith(".map"):
+                                print "warning: usage=mask in file with .map extension"
+                        elif usage == 'map':
+                            if filename.endswith(".mask"):
+                                print "warning: usage=map in file with .mask extension"
                     if len(line) == 0:
                         have_delimiter = True
                     newdata.append(line + terminator)
