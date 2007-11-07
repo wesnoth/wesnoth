@@ -647,6 +647,8 @@ void unit_animation::crude_animation::redraw()
 
 	double tmp_offset = offset();
 	int d2 = game_display::get_singleton()->hex_size() / 2;
+
+	update_last_draw_time();
 	const unit_frame& current_frame= get_current_frame();
 	if(!current_frame.sound().empty() &&  get_current_frame_begin_time() != last_frame_begin_time_ ) {
 			sound::play_sound(current_frame.sound());
@@ -714,7 +716,6 @@ void unit_animation::crude_animation::redraw()
 					orientation);
 		}
 	}
-	update_last_draw_time();
 }
 unit_animation::crude_animation::~crude_animation()
 {
