@@ -452,12 +452,18 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		animations.push_back(unit_animation(**anim_itor));
 		image::locator image_loc = animations.back().get_last_frame().image();
 		animations.back().add_frame(600,unit_frame(image_loc,600,"1~0:600"));
-		animations.back().sub_anims_["_death_sound"] = crude_animation();
-		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
+		if(!cfg["die_sound"].empty()) {
+			animations.back().sub_anims_["_death_sound"] = crude_animation();
+			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
+		}
 		//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=death flag\n";
 	}
 	animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1~0:600"),"death",unit_animation::DEFAULT_ANIM));
+	if(!cfg["die_sound"].empty()) {
+		animations.back().sub_anims_["_death_sound"] = crude_animation();
+		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
+	}
 	// Always have a defensive animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
 	const config::child_list& victory_anims = expanded_cfg.get_children("victory_anim");
