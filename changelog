@@ -62,10 +62,16 @@ Version 1.3.9+svn:
      * added the 'fearless' trait to the Ghoul line
  * user interface:
    * selecting your own unit makes it flash briefly and emit a select sound
+   * you can now also select enemy units and see their possible path, terrain
+     defense and turn to reach.
    * changed the mute hotkey from ctrl-m to ctrl-alt-m
    * renamed "Advanced Mode" button on graphics preferences to "Change Resolution"
    * renamed "Advanced Mode" button on sound preferences to "Advanced Options",
      and "Normal Mode" to "Standard Options"
+   * fix some inconsistencies between mouse selection and "next unit" selection
+   * double-click in dialog now trigger a "press button" sound
+   * fix an exploit using the "black stripes" of a unit with teleport ability
+     to detect enemy villages under fog
  * WML engine:
    * extended [store_side] behavior, so that it additionally writes the following:
      fog, shroud, colour, user_team_name, controller, recruit (the recruit list),
@@ -91,6 +97,9 @@ Version 1.3.9+svn:
      frame names
    * a new type of animation is triggered when a unit is selected. (WML
      support to come shortly)
+   * in story [image,] a new key scaled=yes/no (default=no) allow to scale the
+     image like the background is.
+   * prevent some illegal select events on enemy units.
  * miscellaneous and bug fixes:
    * added a new log domain 'mp_server'
    * added a new log level 'debug'
