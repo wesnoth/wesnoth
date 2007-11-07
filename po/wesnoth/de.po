@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-06 20:12+0100\n"
-"PO-Revision-Date: 2007-10-10 12:04+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2007-11-07 18:35+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2278,17 +2278,16 @@ msgid "General commands"
 msgstr "Generelle Kommandos"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Löschen der Unterhaltungsnachrichten"
+"Löschen der Gespräche.\n"
+"\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2299,8 +2298,8 @@ msgstr ""
 "\n"
 "Wechselt die Kontrolle einer Fraktion zwischen KI und einem normalen Spieler "
 "hin und her. Der Spieler, der die zu ändernde Seite kontrolliert, muss "
-"dieses Kommando ausführen. Wenn keine Seite angegeben wird, wird »1« als "
-"Wert verwendet.\n"
+"dieses Kommando ausführen. Wenn keine Seite angegeben wird, wird die "
+"momentan aktive verwendet.\n"
 "\n"
 
 #: data/core/help.cfg:621
@@ -2349,9 +2348,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Aktiviert/deaktiviert die Anzeige der Bilder pro Sekunde im Spiel.\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2360,7 +2361,8 @@ msgid ""
 msgstr ""
 "\n"
 "Schaltet den Debugmodus an (funktioniert nicht im Mehrspielermodus). Der "
-"Debugmodus wird abgeschaltet, sobald das Spiel beendet wird.\n"
+"Debugmodus wird abgeschaltet, sobald das Spiel beendet oder der Befehl :"
+"nodebug genutzt wird.\n"
 "\n"
 
 #: data/core/help.cfg:637
@@ -2372,7 +2374,6 @@ msgid "Multiplayer commands"
 msgstr "Mehrspieler Kommandos"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2380,8 +2381,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Kickt und verbannt einen Spieler sowie dessen verwendete IP-Adresse aus dem "
-"Mehrspielermodus.\n"
+"Verbannt die dem Namen des Spielers zugeordnete IP-Adresse aus dem "
+"Mehrspielermodus und wirft ihn vom Server.\n"
 "\n"
 
 #: data/core/help.cfg:649
@@ -2424,7 +2425,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -3971,14 +3971,12 @@ msgstr ""
 "kurieren."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
-"Einheiten von ihren Wunden zu heilen. Sie ist jedoch nicht in der Lage, die "
-"Wirkung eines Giftes aufzuheben."
+" Diese Einheit ist in der Lage die Wirkung eines Giftes bei allen "
+"befreundeten, direkt benachbarten Einheiten aufzuheben."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -5110,9 +5108,8 @@ msgid "#(Invalid)"
 msgstr "#(Ungültig)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Betreuung"
+msgstr "Kampagne: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1399
 msgid "Multiplayer"
@@ -5470,6 +5467,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Eine Netzwerkpartie mit dem integrierten Server starten. Nutzt besser der "
+"dedizierten Server 'wesnothd'."
 
 #: src/game.cpp:1392
 msgid "Local Game"
@@ -5803,13 +5802,12 @@ msgid "System default language"
 msgstr "Systemvorgabe"
 
 #: src/leader_list.cpp:128
-#, fuzzy
 msgid "gender^Random"
 msgstr "Zufall"
 
 #: src/leader_list.cpp:139
 msgid "Female ♀"
-msgstr ""
+msgstr "Weiblich ♀"
 
 #: src/leader_list.cpp:141
 msgid "Feminine ♀"
@@ -5817,7 +5815,7 @@ msgstr ""
 
 #: src/leader_list.cpp:148
 msgid "Male ♂"
-msgstr ""
+msgstr "Männlich ♂"
 
 #: src/leader_list.cpp:150
 msgid "Masculine ♂"
@@ -6485,9 +6483,8 @@ msgid "Faction"
 msgstr "Fraktion"
 
 #: src/multiplayer_connect.cpp:825
-#, fuzzy
 msgid "Team/Gender"
-msgstr "Verteidiger"
+msgstr "Team/Geschlecht"
 
 #: src/multiplayer_connect.cpp:826
 msgid "Color"
@@ -6811,9 +6808,8 @@ msgid "Leader: "
 msgstr "Heerführer:"
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Heerführer:"
+msgstr "Geschlecht: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6848,9 +6844,9 @@ msgid "Could not send initial handshake"
 msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
 #: src/play_controller.cpp:401
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
+msgstr ""
+"Die Datei, die Ihr laden wolltet, ist beschädigt. Wollt ihr weiterspielen?"
 
 #: src/play_controller.cpp:774
 msgid "Back to start"
@@ -6878,7 +6874,7 @@ msgstr "Die Wiederholung konnte nicht gespeichert werden"
 
 #: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr ""
+msgstr "Dieses Szenario ist beendet. Möchtet ihr mit der Kampagne fortfahren?"
 
 #: src/playcampaign.cpp:447
 msgid "Downloading next scenario..."
@@ -7128,9 +7124,8 @@ msgstr ""
 "spielen"
 
 #: src/titlescreen.cpp:324
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Gespeichertes Einzelspielerspiel laden"
+msgstr "Gespeichertes Spiel laden"
 
 #: src/titlescreen.cpp:325
 msgid "Download usermade campaigns, eras, or map packs"

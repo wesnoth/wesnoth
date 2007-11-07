@@ -71,14 +71,13 @@ av fönstret.
 \fB\-h\fP, \fB\-\-help\fP
 visar en sammanfattning av möjliga kommandoradsflaggor.
 .TP 
-\fB\-\-load\fP\fI\ <savegame>\fP
+\fB\-\-load\fP\fI\ <sparat spel>\fP
 kör spelet som finns sparat i filen \fIfil\fP, som finns i spelets standardmapp
 för sparade spel.
 .TP 
-\fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug. By default the
-error level is used.
+\fB\-\-log\-<nivå>="domän1,domän2,..."\fP
+anger loggningsnivån för debug\-domänerna. För att se allt kan "all"
+användas. Möjliga nivåer: error, warning, info, debug. Standardnivå: error.
 .TP 
 \fB\-\-logdomains\fP
 visar en lista över loggningsdomänerna.
@@ -160,7 +159,7 @@ ett id\-nummer. Fraktionerna finns beskrivna i filen data/multiplayer.cfg.
 \fB\-\-turns=värde\fP
 anger antalet drag för det valda scenariot. Standardvärdet är 50.
 .TP 
-Example to test your own AI against the default AI without starting the GUI:
+Exempel för att testa en egen AI mot standard\-AI:n utan att starta det grafiska gränssnittet:
 wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
 \-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .

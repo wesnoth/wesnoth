@@ -64,14 +64,14 @@ Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
 \fB\-h\fP, \fB\-\-help\fP
 Gibt die möglichen Kommandozeilenoptionen aus.
 .TP 
-\fB\-\-load\fP\fI\ <savegame>\fP
+\fB\-\-load\fP\fI\ <Spielstand>\fP
 Lädt die Datei `Spielstand' aus dem Standardverzeichnis für gespeicherte
 Spiele.
 .TP 
-\fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug. By default the
-error level is used.
+\fB\-\-log\-<Stufel>="Domäne1,Domäne2,..."\fP
+Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche Domänen
+zu verwebden. Verfügbare Stufen: error, warning, info, debug. Standardmäßig
+wird die Stufe error verwendet.
 .TP 
 \fB\-\-logdomains\fP
 Gibt eine Liste der Protokollbereiche aus und beendet das Programm.
@@ -152,7 +152,7 @@ eigene KI entwickeln wollen. (bisher ist noch keine vollständige
 Dokumentation verfügbar)
 .TP 
 \fB\-\-scenario=WERT\fP
-selects a multiplayer scenario. The default scenario is
+Bestimmt das Szenario, das geladen werden soll. Standard ist
 "multiplayer_The_Freelands".
 .TP 
 \fB\-\-side<NUMMER>=WERT\fP
@@ -163,7 +163,7 @@ der Rassen und Epochen ist in der Datei data/multiplayer.cfg zu finden.
 \fB\-\-turns=WERT\fP
 Bestimmt die Anzahl der Runden. Standard ist "50".
 .TP 
-Example to test your own AI against the default AI without starting the GUI:
+Beispiel zum Test einer eigenen KI gegen die Standard KI ohne die Spieloberfläche zu starten:
 wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
 \-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-11-04 17:59+0100\n"
-"PO-Revision-Date: 2007-09-15 13:11+0100\n"
+"PO-Revision-Date: 2007-11-07 19:10+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -195,9 +195,9 @@ msgstr "Gibt die möglichen Kommandozeilenoptionen aus."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--load>I<\\ E<lt>savegameE<gt>>"
-msgstr "B<--load>I<\\ Spielstand>"
+msgstr "B<--load>I<\\ E<lt>SpielstandE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -210,19 +210,18 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:73 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
-msgstr ""
+msgstr "B<--log-E<lt>StufelE<gt>=\"Domäne1,Domäne2,...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:78
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug. By default "
 "the error level is used."
 msgstr ""
 "Setzt die Stufe der Debugausgabe. Verwenden Sie \"all\", um sämtliche "
-"Meldungen auszugeben.  B<--log-info> zeigt alle Meldungen, B<--log-warning> "
-"zeigt nur Warnungen und Fehler und B<--log-error> nur Fehler."
+"Domänen zu verwebden. Verfügbare Stufen: error, warning, info, debug. "
+"Standardmäßig wird die Stufe error verwendet."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:78 ../../doc/man/wesnoth_editor.6:72
@@ -486,13 +485,12 @@ msgstr "B<--scenario=WERT>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:153
-#, fuzzy
 msgid ""
 "selects a multiplayer scenario. The default scenario is "
 "\"multiplayer_The_Freelands\"."
 msgstr ""
 "Bestimmt das Szenario, das geladen werden soll. Standard ist "
-"\"multiplayer_Charge\"."
+"\"multiplayer_The_Freelands\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:153
@@ -526,17 +524,16 @@ msgstr "Bestimmt die Anzahl der Runden. Standard ist \"50\"."
 #: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
-msgstr ""
+msgstr "Beispiel zum Test einer eigenen KI gegen die Standard KI ohne die Spieloberfläche zu starten:"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy
 msgid ""
 "wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 msgstr ""
-"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
-"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+"wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:165 ../../doc/man/wesnoth_editor.6:76
@@ -818,14 +815,15 @@ msgstr "B<-c,\\ --config>I<\\ Pfad>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
-#, fuzzy
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
 "sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im "
-"Abschnitt B<SERVER KONFIGURATION> unterhalb für den genauen Syntax."
+"Abschnitt B<SERVER KONFIGURATION> unterhalb für den genauen Syntax. Sie "
+"können die Konfigurationsdatei durch senden eines SIGHUP an den "
+"Serverprozess neuladen."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -846,14 +844,12 @@ msgstr "B<-h,\\ --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug."
 msgstr ""
 "Setzt die Stufe der Debugausgabe. Verwenden Sie \"all\", um sämtliche "
-"Meldungen auszugeben.  B<--log-info> zeigt alle Meldungen, B<--log-warning> "
-"zeigt nur Warnungen und Fehler und B<--log-error> nur Fehler."
+"Domänen zu verwebden. Verfügbare Stufen: error, warning, info, debug."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59
@@ -1152,7 +1148,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:161
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "Example to test your own AI: "
-#~ msgstr "Beispielbefehl zum Testen einer eigenen KI: "

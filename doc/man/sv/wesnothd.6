@@ -39,9 +39,9 @@ kommandon servern accepterar via wesnoth\-klienten eller sockeln.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ sökväg\fP
-tells wesnothd where to find the config file to use. See the section
-\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
-sending SIGHUP to the server process.
+anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om
+\fBSERVERKONFIGURATION\fP nedan för syntaxen. Konfigurationen laddas om när
+signalen SIGHUP skickas till serverprocessen.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 kör wesnothd som en daemon.
@@ -49,9 +49,9 @@ kör wesnothd som en daemon.
 \fB\-h,\ \-\-help\fP
 visar en sammanfattning av möjliga kommandoradsflaggor.
 .TP 
-\fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug.
+\fB\-\-log\-<nivå>="domän1,domän2,..."\fP
+anger nivån för debug\-domänerna. För att se allt kan "all" användas. Möjliga
+nivåer: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 knyter servern till den specificerade porten. Om ingen port anges så används
