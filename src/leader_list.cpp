@@ -138,7 +138,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 #ifdef LOW_MEM
 				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Female ♀"));
 #else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Feminine ♀"));
+				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Female ♀"));
 #endif
 			}
 			else
@@ -147,7 +147,7 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 #ifdef LOW_MEM
 				genders_.push_back(IMAGE_PREFIX + utg->image() + COLUMN_SEPARATOR + _("Male ♂"));
 #else
-				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Masculine ♂"));
+				genders_.push_back(IMAGE_PREFIX + utg->image() + std::string("~RC(" + utg->flag_rgb() + ">1)") + COLUMN_SEPARATOR + _("Male ♂"));
 #endif
 			}
 		}
