@@ -1366,7 +1366,8 @@ void game_controller::remove_campaign(const std::string& campaign)
 {
 	const std::string campaign_dir = get_user_data_dir() + "/data/campaigns/" + campaign;
 	delete_directory(campaign_dir);
-	delete_directory(campaign_dir + ".cfg");
+	if (file_exists(campaign_dir + ".cfg"))
+		delete_directory(campaign_dir + ".cfg");
 }
 
 bool game_controller::play_multiplayer()
@@ -1596,16 +1597,23 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 			//load usermade add-ons
 			const std::string user_campaign_dir = get_user_data_dir() + "/data/campaigns/";
 			std::vector<std::string> user_campaigns, error_campaigns;
-			get_files_in_dir(user_campaign_dir,&user_campaigns,NULL,ENTIRE_FILE_PATH);
+			get_files_in_dir(user_campaign_dir,NULL,&user_campaigns,ENTIRE_FILE_PATH);
 			for(std::vector<std::string>::const_iterator uc = user_campaigns.begin(); uc != user_campaigns.end(); ++uc) {
-				static const std::string extension = ".cfg";
-				if(uc->size() < extension.size() || std::equal(uc->end() - extension.size(),uc->end(),extension.begin()) == false) {
+				std::string oldstyle_cfg = *uc + ".cfg";
+				std::string main_cfg = *uc + "/_main.cfg";
+				std::string toplevel;
+				std::cout << "Checking " << *uc << "\n";
+				if (file_exists(oldstyle_cfg))
+					toplevel = oldstyle_cfg;
+				else if (file_exists(main_cfg))
+					toplevel = main_cfg;
+				else
 					continue;
-				}
+				std::cout << "Survived " << toplevel << "\n";
 
 				try {
 					preproc_map user_defines_map(defines_map);
-					scoped_istream stream = preprocess_file(*uc,&user_defines_map);
+					scoped_istream stream = preprocess_file(toplevel,&user_defines_map);
 
 					std::string campaign_error_log;
 
