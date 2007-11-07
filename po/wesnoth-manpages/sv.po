@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "POT-Creation-Date: 2007-11-04 17:59+0100\n"
-"PO-Revision-Date: 2007-10-22 19:52+0200\n"
+"PO-Revision-Date: 2007-11-06 23:33+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -207,9 +207,9 @@ msgstr "visar en sammanfattning av möjliga kommandoradsflaggor."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--load>I<\\ E<lt>savegameE<gt>>"
-msgstr "B<--load>I<\\ fil>"
+msgstr "B<--load>I<\\ E<lt>sparat spelE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -222,19 +222,17 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:73 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
-msgstr ""
+msgstr "B<--log-E<lt>nivåE<gt>=\"domän1,domän2,...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:78
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug. By default "
 "the error level is used."
 msgstr ""
 "anger loggningsnivån för debug-domänerna. För att se allt kan \"all\" "
-"användas.  B<--log-info> visar alla meddelanden, B<--log-warning> bara "
-"varningar och fel, och B<--log-error> endast fel."
+"användas. Möjliga nivåer: error, warning, info, debug. Standardnivå: error."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:78 ../../doc/man/wesnoth_editor.6:72
@@ -527,17 +525,16 @@ msgstr "anger antalet drag för det valda scenariot. Standardvärdet är 50."
 #: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
-msgstr ""
+msgstr "Exempel för att testa en egen AI mot standard-AI:n utan att starta det grafiska gränssnittet:"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy
 msgid ""
 "wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 msgstr ""
-"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
-"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+"wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:165 ../../doc/man/wesnoth_editor.6:76
@@ -805,14 +802,14 @@ msgstr "B<-c,\\ --config>I<\\ sökväg>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
-#, fuzzy
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
 "anger var wesnothd skall leta efter konfigurationsfilen. Se avsnittet om "
-"B<SERVERKONFIGURATION> nedan för syntaxen."
+"B<SERVERKONFIGURATION> nedan för syntaxen. Konfigurationen laddas om när "
+"signalen SIGHUP skickas till serverprocessen."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -833,14 +830,12 @@ msgstr "B<-h,\\ --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug."
 msgstr ""
-"anger loggningsnivån för debug-domänerna. För att se allt kan \"all\" "
-"användas.  B<--log-info> visar alla meddelanden, B<--log-warning> bara "
-"varningar och fel, och B<--log-error> endast fel."
+"anger nivån för debug-domänerna. För att se allt kan \"all\" användas. "
+"Möjliga nivåer: error, warning, info, debug."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59
@@ -1131,7 +1126,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:161
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "Example to test your own AI: "
-#~ msgstr "Exempel för att testa en egen AI: "

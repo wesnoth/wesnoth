@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-06 20:12+0100\n"
-"PO-Revision-Date: 2007-10-31 11:03+0100\n"
+"PO-Revision-Date: 2007-11-07 00:10+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -2204,17 +2204,16 @@ msgid "General commands"
 msgstr "Allmänna kommandon"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Töm skärmen på chatmeddelanden."
+"Töm skärmen på chatmeddelanden.\n"
+"\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2224,7 +2223,8 @@ msgid ""
 msgstr ""
 "\n"
 "Växla till/från att sidan spelas av AI:n. Endast spelaren/klienten som "
-"kontrollerar aktuell sida kan välja detta. Om ingen sida anges, antas '1'.\n"
+"kontrollerar aktuell sida kan välja detta. Om ingen sida anges, antas "
+"nuvarande sida.\n"
 "\n"
 
 #: data/core/help.cfg:621
@@ -2273,9 +2273,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Sätt på/stäng av visning av antal ramar per sekund.\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2284,7 +2286,7 @@ msgid ""
 msgstr ""
 "\n"
 "Byt till debugläge (fungerar ej i gruppspel). Debugläge stängs av genom att "
-"avsluta spelet.\n"
+"avsluta spelet eller genom att ange :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:637
@@ -2296,7 +2298,6 @@ msgid "Multiplayer commands"
 msgstr "Gruppspelskommandon"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2304,7 +2305,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Sparka ut och bannlys en användare från gruppspel samt IP-adressen som "
+"Sparka ut och bannlys en användare från gruppspel genom IP-adressen som "
 "används av aktuell användare.\n"
 "\n"
 
@@ -2347,14 +2348,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Växla till/från att ignorera åskådares inlägg.\n"
-"\n"
+"Växla till/från att ignorera åskådares inlägg."
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -3860,13 +3859,10 @@ msgid ""
 msgstr " Denna trupp kan hela intillstående trupper och bota dem från gift."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
-" Denna trupp kan hela trupper, men inte bota förgiftning, utan bara bromsa "
-"giftets utbredning."
+msgstr " Denna trupp kan neutralisera förgiftning i intillstående trupper."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -4951,9 +4947,8 @@ msgid "#(Invalid)"
 msgstr "#(Ogiltigt)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Kampanjunderhåll"
+msgstr "Kampanj: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1399
 msgid "Multiplayer"
@@ -5311,6 +5306,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Var värd för ett spel med den inbyggda servern. Den är inte välunderhållen, "
+"så det är bättre att använda den riktiga servern 'wesnothd'."
 
 #: src/game.cpp:1392
 msgid "Local Game"
@@ -5641,25 +5638,24 @@ msgid "System default language"
 msgstr "Systemets standardspråk"
 
 #: src/leader_list.cpp:128
-#, fuzzy
 msgid "gender^Random"
 msgstr "Slumpval"
 
 #: src/leader_list.cpp:139
 msgid "Female ♀"
-msgstr ""
+msgstr "Kvinna ♀"
 
 #: src/leader_list.cpp:141
 msgid "Feminine ♀"
-msgstr ""
+msgstr "Feminin ♀"
 
 #: src/leader_list.cpp:148
 msgid "Male ♂"
-msgstr ""
+msgstr "Man ♂"
 
 #: src/leader_list.cpp:150
 msgid "Masculine ♂"
-msgstr ""
+msgstr "Maskulin ♂"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
 msgid "Random"
@@ -6630,9 +6626,8 @@ msgid "Leader: "
 msgstr "Ledare: "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Ledare: "
+msgstr "Kön: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6667,9 +6662,8 @@ msgid "Could not send initial handshake"
 msgstr "Kunde inte utföra handskakning"
 
 #: src/play_controller.cpp:401
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Filen du försöker öppna är felaktig"
+msgstr "Filen du försöker öppna är felaktig. Vill du fortsätta spela?"
 
 #: src/play_controller.cpp:774
 msgid "Back to start"
@@ -6697,7 +6691,7 @@ msgstr "Reprisen kunde inte sparas"
 
 #: src/playcampaign.cpp:427
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr ""
+msgstr "Scenariot är slut. Vill du fortsätta spela kampanjen?"
 
 #: src/playcampaign.cpp:447
 msgid "Downloading next scenario..."
@@ -7064,15 +7058,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
-
-#~ msgid "Female leaders on MP (if available)"
-#~ msgstr "Kvinnliga ledare vid gruppspel (om möjligt)"
-
-#~ msgid "Receiving data..."
-#~ msgstr "Tar emot data..."
-
-#~ msgid "Campaign"
-#~ msgstr "Kampanj"
-
-#~ msgid "Host a game without using a server"
-#~ msgstr "Var värd för ett spel utan att använda en server"

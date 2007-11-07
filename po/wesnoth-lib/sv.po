@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-04 17:57+0100\n"
-"PO-Revision-Date: 2007-10-31 11:05+0100\n"
+"PO-Revision-Date: 2007-11-07 00:16+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -220,7 +220,7 @@ msgstr "Grottvägg"
 
 #: data/core/terrain.cfg:925
 msgid "Void"
-msgstr ""
+msgstr "Tomhet"
 
 #: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:423
@@ -376,11 +376,12 @@ msgstr "Visa ej datorns steg"
 
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Spara repris vid singel-/gruppspelsseger eller gruppspelsnederlag"
 
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
 msgstr ""
+"Radera sparade spel vid singel-/gruppspelsseger eller gruppspelsnederlag"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -608,7 +609,7 @@ msgstr "Ange frekvensen för truppernas stillastående animeringar"
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "Ange maximalt antal sparade spel som skall behållas"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -616,12 +617,13 @@ msgstr "Animera ej de förflyttningar som datorns trupper gör"
 
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
+msgstr "Spara repris vid singelspelsseger eller singel-/gruppspelsnederlag"
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Radera autosparade spel vid scenariots slut automatiskt"
+msgstr ""
+"Radera sparade spel vid singelspelsseger eller singel-/gruppspelsnederlag "
+"automatiskt"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -724,11 +726,11 @@ msgstr "Fart: "
 
 #: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "Maximalt antal sparade spel: "
 
 #: src/game_preferences_display.cpp:689
 msgid "infinite"
-msgstr ""
+msgstr "oändligt"
 
 #: src/game_preferences_display.cpp:863
 msgid "Chat Lines: "
@@ -1200,12 +1202,3 @@ msgstr "Fel"
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 "Ogiltig terräng identifierad, troligtvis version 1.2-format; terrängkod "
-
-#~ msgid "Save Replays"
-#~ msgstr "Spara repriser"
-
-#~ msgid "Delete Autosaves"
-#~ msgstr "Radera autosparade spel"
-
-#~ msgid "Save replays at scenario end."
-#~ msgstr "Spara repriser vid scenariots slut."
