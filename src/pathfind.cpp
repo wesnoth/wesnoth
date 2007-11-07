@@ -221,8 +221,8 @@ paths::paths(gamemap const &map, gamestatus const &status,
 		allow_teleport,additional_turns,true,viewing_team, see_all);
 }
 
-int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
-		const unit_map &units, const std::vector<team>& teams)
+int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing_team,
+							const unit_map& units, const std::vector<team>& teams, const gamemap& map)
 {
 	if(rt.steps.empty())
 		return 0;
@@ -249,7 +249,7 @@ int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
 			get_adjacent_tiles(*i, adj);
 
 			for (size_t j = 0; j != 6; ++j) {
-				unit_map::const_iterator enemy_unit = find_visible_unit(units, adj[j], map, teams, teams[u.side()-1]);
+				unit_map::const_iterator enemy_unit = find_visible_unit(units, adj[j], map, teams, viewing_team);
 				if (enemy_unit != units.end() && teams[u.side()-1].is_enemy(enemy_unit->second.side())
 					&& enemy_unit->second.emits_zoc()) {
 					 movement = 0;
@@ -273,7 +273,7 @@ int route_turns_to_complete(const unit &u, const gamemap &map, paths::route &rt,
 
 shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t, unit_map const &units,
                                                    std::vector<team> const &teams, gamemap const &map)
-	: unit_(u), team_(t), units_(units), teams_(teams), map_(map),
+	: unit_(u), viewing_team_(t), units_(units), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),
 	  total_movement_(unit_.total_movement())
 {
@@ -292,7 +292,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	// #4 is a bad criteria!  It should be that moving into a ZOC
 	// uses up the rest of your moves
 
-	if (team_.shrouded(loc.x, loc.y))
+	if (viewing_team_.shrouded(loc.x, loc.y))
 		return getNoPathValue();
 
 	int const base_cost = unit_.movement_cost(map_[loc]);
@@ -301,10 +301,10 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 		return getNoPathValue();
 
 	unit_map::const_iterator
-		enemy_unit = find_visible_unit(units_, loc, map_, teams_, team_),
+		enemy_unit = find_visible_unit(units_, loc, map_, teams_, viewing_team_),
 		units_end = units_.end();
 
-	if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()))
+	if (enemy_unit != units_end && teams_[unit_.side()-1].is_enemy(enemy_unit->second.side()))
 		return getNoPathValue();
 
 	// Compute how many movement points are left in the game turn
@@ -324,8 +324,8 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	  get_adjacent_tiles(loc, adj);
 
 	  for (size_t i = 0; i != 6; ++i) {
-	    enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, team_);
-	    if (enemy_unit != units_end && team_.is_enemy(enemy_unit->second.side()) &&
+	    enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, viewing_team_);
+	    if (enemy_unit != units_end && teams_[unit_.side()-1].is_enemy(enemy_unit->second.side()) &&
 		   enemy_unit->second.emits_zoc()){
 		 // Should cost us remaining movement.
 		 //		 return getNoPathValue();

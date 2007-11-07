@@ -838,7 +838,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				// the movement_reset is active only if it's not the unit's turn
 				unit_movement_resetter move_reset(selected_unit->second,
 						selected_unit->second.side() != team_num_); 
-				current_route_ = get_route(selected_unit, dest, teams_[selected_unit->second.side()-1]);
+				current_route_ = get_route(selected_unit, dest, viewing_team());
 				if(!browse) {
 					(*gui_).set_route(&current_route_);
 				}
@@ -966,7 +966,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 	}
 
 	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
-	route.move_left = route_turns_to_complete(un->second,map_,route,units_,teams_);
+	route.move_left = route_turns_to_complete(un->second, route, viewing_team(), units_,teams_,map_);
 
 	return route;
 }
