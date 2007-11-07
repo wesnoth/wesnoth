@@ -277,7 +277,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	DBG_GAME << "transfer_side_control...\n";
 
 	//check, if this socket belongs to a player
-	const user_vector::iterator pl = find_connection(sock, players_);
+	const user_vector::iterator pl = std::find(players_.begin(), players_.end(), sock);
 	if (pl == players_.end()) {
 		ERR_GAME << "ERROR: Not a player of this game. (socket: " << sock << ")\n";
 		return;
@@ -339,19 +339,19 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	if (std::find(sides_.begin(), sides_.end(), sock) == sides_.end()) {
 		observers_.push_back(*pl);
 		players_.erase(pl);
+		const std::string& name = player_info_->find(sock)->second.name();
 		// Tell others that the player becomes an observer.
-		send_data(construct_server_message(find_player(sock)->name()
-			+ " becomes an observer."));
+		send_data(construct_server_message(name	+ " becomes an observer."));
 		// Update the client side observer list for everyone except player.
 		config observer_join;
-		observer_join.add_child("observer").values["name"] = find_player(sock)->name();
+		observer_join.add_child("observer").values["name"] = name;
 		send_data(observer_join, sock);
 		// If this player was the host of the game, choose another player.
 		if (sock == owner_) {
 			host_leave = true;
 			if (!players_.empty()) {
 				owner_ = players_.front();
-				send_data(construct_server_message(find_player(owner_)->name()
+				send_data(construct_server_message(name
 					+ " has been chosen as the new host."));
 			} else {
 				owner_ = newplayer->first;
@@ -415,19 +415,18 @@ void game::transfer_side_control(const network::connection sock, const config& c
 }
 
 void game::notify_new_host(){
-	if (get_host() != NULL){
+	const player_map::const_iterator it_host = player_info_->find(owner_);
+	if (it_host != player_info_->end()){
 		config cfg;
 		config& cfg_host_transfer = cfg.add_child("host_transfer");
-		cfg_host_transfer["name"] = get_host()->second.name();
+		cfg_host_transfer["name"] = it_host->second.name();
 		cfg_host_transfer["value"] = "1";
-		const player_map::const_iterator it_host = find_player(get_host()->second.name());
-		network::queue_data(cfg, it_host->first);
+		network::queue_data(cfg, owner_);
 	}
 }
 
-bool game::describe_slots()
-{
-	if(description() == NULL)
+bool game::describe_slots() {
+	if(started_ || description_ == NULL)
 		return false;
 
 	int available_slots = 0;
@@ -456,16 +455,13 @@ bool game::player_is_banned(const network::connection sock) const {
 	if(bans_.empty()) {
 		return false;
 	}
-
-	const player_map::const_iterator itor = player_info_->find(sock);
-	if(itor == player_info_->end()) {
+	const player_map::const_iterator pl = player_info_->find(sock);
+	if(pl == player_info_->end()) {
 		return false;
 	}
-
-	const player& info = itor->second;
 	const std::string& ipaddress = network::ip_address(sock);
 	for(std::vector<ban>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-		if(info.name() == i->username || ipaddress == i->ipaddress) {
+		if(pl->second.name() == i->username || ipaddress == i->ipaddress) {
 			return true;
 		}
 	}
@@ -473,15 +469,46 @@ bool game::player_is_banned(const network::connection sock) const {
 	return false;
 }
 
-const player* game::mute_observer(const network::connection sock) {
-	const player* muted_observer = NULL;
-	player_map::const_iterator it = player_info_->find(sock);
-	if (it != player_info_->end() && ! is_muted_observer(sock)){
-		muted_observers_.push_back(sock);
-		muted_observer = &it->second;
+//! Mute an observer or give a message of all currently muted observers if no
+//! name is given.
+void game::mute_observer(const network::connection sock, const config& mute) {
+	const std::string name = mute["username"];
+	if (name.empty()) {
+		if (all_observers_muted_) {
+			send_data(construct_server_message("All observers are muted."));
+			return;
+		}
+		std::string muted_nicks = "";
+		for (user_vector::const_iterator muted_obs = muted_observers_.begin();
+			 muted_obs != muted_observers_.end(); ++muted_obs)
+		{
+			if (muted_nicks != "") {
+				muted_nicks += ", ";
+			}
+			muted_nicks += player_info_->find(*muted_obs)->second.name();
+		}
+		send_data(construct_server_message("Muted observers: " + muted_nicks));
+		return;
 	}
-
-	return muted_observer;
+	const player_map::const_iterator pl = find_player(name);
+		//! FIXME: Maybe rather save muted nicks as a vector of strings and also
+		//! allow muting of observers not in the game.
+	if (pl == player_info_->end() || !is_observer(pl->first)) {
+		network::send_data(construct_server_message(
+			"Observer not found."), sock);
+	}
+	if (!is_muted_observer(sock)) {
+		network::send_data(construct_server_message(pl->second.name()
+			+ " is already muted."), sock);
+	}
+	//! Prevent muting ourselves.
+	if (pl->first != sock) {
+		muted_observers_.push_back(pl->first);
+		network::send_data(construct_server_message(
+			"You have been muted."), pl->first);
+		send_data(construct_server_message(pl->second.name()
+			+ " has been muted."), pl->first);
+	}
 }
 
 void game::ban_player(const network::connection sock) {
@@ -841,39 +868,13 @@ std::string game::debug_player_info() const {
 	return result.str();
 }
 
-const player* game::find_player(const network::connection sock) const {
-	const player* result = NULL;
-	for (player_map::const_iterator info = player_info_->begin(); info != player_info_->end(); info++){
-		if (info->first == sock){
-			result = &info->second;
-		}
+//! Find a player by name.
+const player_map::const_iterator game::find_player(const std::string& name) const {
+	player_map::const_iterator pl;
+	for (pl = player_info_->begin(); pl != player_info_->end(); pl++) {
+		if (pl->second.name() == name)
+			return pl;
 	}
-	return result;
-}
-
-user_vector::iterator game::find_connection(const network::connection sock,
-	user_vector& users) const
-{
-	return std::find(users.begin(), users.end(), sock);
-}
-
-const player_map::const_iterator game::find_player(const std::string& name) const{
-	player_map::const_iterator p;
-	for (p = player_info_->begin(); p != player_info_->end(); p++){
-		if ((*p).second.name() == name)
-			return p;
-	}
-
-	return player_info_->end();
-}
-
-const player_map::const_iterator game::get_host() const{
-	player_map::const_iterator p;
-	for (p = player_info_->begin(); p != player_info_->end(); p++){
-		if ((*p).first == owner_)
-			return p;
-	}
-
 	return player_info_->end();
 }
 

@@ -48,15 +48,11 @@ public:
 	size_t nplayers() const { return players_.size(); }
 	size_t nobservers() const { return observers_.size(); }
 
-	const player* mute_observer(network::connection player);
+	void mute_observer(const network::connection sock, const config& mute);
 	bool mute_all_observers() { return all_observers_muted_ = !all_observers_muted_; }
 	bool all_observers_muted() const { return all_observers_muted_; }
-	bool observers_can_label() const { return false; }
-	bool observers_can_chat() const { return true; }
 
 	bool started() const { return started_; }
-
-	bool empty() const { return players_.empty() && observers_.empty();	}
 
 	//function which filters commands sent by a player to remove commands
 	//that they don't have permission to execute.
@@ -71,8 +67,6 @@ public:
 	bool take_side(const network::connection player, const config& cfg = config());
 	//! Let's a player owning a side give it to another player or observer.
 	void transfer_side_control(const network::connection sock, const config& cfg);
-	//! In case of a host transfer, notify the new host about it's status
-	void notify_new_host();
 
 	//! Set the description to the number of slots.
 	//! Returns true if the number of slots has changed.
@@ -83,10 +77,6 @@ public:
 
 	void add_player(const network::connection player, const bool observer = false);
 	void remove_player(const network::connection player, const bool notify_creator=true);
-	//adds players and observers into one vector and returns that
-	const user_vector all_game_users() const;
-
-	const player* find_player(const network::connection sock) const;
 
 	//! Adds players from one game to another. This is used to add players and
 	//! observers from a game to the lobby (which is also implemented as a game),
@@ -126,19 +116,16 @@ public:
 	}
 
 private:
-	//returns an iterator on the users vector if sock is found
-	user_vector::iterator find_connection(const network::connection sock,
-		user_vector& users) const;
-
-	//convenience function for finding a player by name
+	//! Adds players and observers into one vector and returns that.
+	const user_vector all_game_users() const;
+	//! In case of a host transfer, notify the new host about its status.
+	void notify_new_host();
+	//! Convenience function for finding a player by name.
 	const player_map::const_iterator find_player(const std::string& name) const;
-	//convenience function for finding the host
-	const player_map::const_iterator get_host() const;
 
-	//helps debugging player and observer lists
-	std::string debug_player_info() const;
-
-	//function which returns true iff 'player' is on 'team'.
+	bool observers_can_label() const { return false; }
+	bool observers_can_chat() const { return true; }
+	//! Function which returns true iff 'player' is on 'team'.
 	bool player_on_team(const std::string& team, const network::connection player) const;
 
 	//function which should be called every time a player ends their turn
@@ -150,6 +137,9 @@ private:
 	//function to send a list of users to all clients. Only sends data before
 	//the game has started.
 	void send_user_list(const network::connection exclude=0) const;
+
+	//! Helps debugging player and observer lists.
+	std::string debug_player_info() const;
 
 	const player_map* player_info_;
 
@@ -175,6 +165,7 @@ private:
 	bool allow_observers_;
 	bool all_observers_muted_;
 
+	//! FIXME: Why ban by ip *and* name?
 	struct ban {
 		ban(const std::string& name, const std::string& address)
 		      : username(name), ipaddress(address)

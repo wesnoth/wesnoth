@@ -1141,15 +1141,12 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		if (g->describe_slots()) {
 			lobby_players_.send_data(games_and_users_list_diff());
 		}
-	// If the owner is changing the controller for a side.
+	// If the owner of a side is changing the controller.
 	} else if (data.child("change_controller") != NULL) {
 		const config& change = *data.child("change_controller");
-		// The player is either host of the game or gives away his own side.
-		if (g->is_owner(sock) || change["own_side"] == "yes") {
-			g->transfer_side_control(sock, change);
-			if (g->describe_slots()) {
-				lobby_players_.send_data(games_and_users_list_diff());
-			}
+		g->transfer_side_control(sock, change);
+		if (g->describe_slots()) {
+			lobby_players_.send_data(games_and_users_list_diff());
 		}
 		return;
 	// If all observers should be muted. (toggles)
@@ -1161,50 +1158,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 	// If an observer should be muted.
 	} else if (g->is_owner(sock) && data.child("mute") != NULL) {
-		const config& u = *data.child("mute");
-		std::string name = u["username"];
-		//! @todo All this processing should be done in mute_observer().
-		if (!name.empty()) {
-			player_map::const_iterator pl;
-			for (pl = players_.begin(); pl != players_.end(); ++pl) {
-				if (pl->second.name() == name) {
-					break;
-				}
-			}
-			if (pl != players_.end() && pl->first != sock
-				&& pl != players_.end() && g->is_observer(pl->first))
-			{
-				const player* player = g->mute_observer(pl->first);
-				if (player != NULL) {
-					network::send_data(construct_server_message(
-						"You have been muted.", *g), pl->first);
-					g->send_data(construct_server_message(pl->second.name()
-						+ " has been muted.", *g), pl->first);
-				}
-			}
-		}
-		else {
-			std::string muted_nicks = "";
-			user_vector users = g->all_game_users();
-			const player* player;
-
-			for (user_vector::const_iterator user = users.begin();
-				user != users.end(); user++)
-			{
-				if ((g->all_observers_muted() && g->is_observer(*user))
-					|| (!g->all_observers_muted() && g->is_muted_observer(*user))) {
-					player = g->find_player(*user);
-					if (player != NULL) {
-						if (muted_nicks != "") { muted_nicks += ", "; }
-						muted_nicks += player->name();
-					}
-				}
-			}
-			g->send_data(construct_server_message("Muted observers: "
-				+ muted_nicks, *g));
-		}
+		g->mute_observer(sock, *data.child("mute"));
 	// The owner is kicking/banning someone from the game.
 	} else if (g->is_owner(sock) && (data.child("ban") || data.child("kick"))) {
+		//! @todo All this processing should be done in game.cpp.
 		std::string name;
 		bool ban = false;
 		if (data.child("ban") != NULL) {
@@ -1218,41 +1175,40 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 
 		std::string owner = pl->second.name();
-
-		// new player_map iterator that masks the one of the sender
-		player_map::iterator pl;
-		for (pl = players_.begin(); pl != players_.end(); ++pl) {
-			if (pl->second.name() == name) {
+		
+		player_map::iterator banned_pl = players_.begin();
+		for (; banned_pl != players_.end(); banned_pl++) {
+			if (banned_pl->second.name() == name) {
 				break;
 			}
 		}
-		if (pl != players_.end() && pl->first != sock) {
+		if (banned_pl != players_.end() && banned_pl->first != sock) {
 			if (ban) {
 				LOG_SERVER << network::ip_address(sock) << "\t"
 					<< owner << "\tbanned: " << name << "\tfrom game:\t"
 					<< game_name << "\" (" << g->id() << ")\n";
-				g->ban_player(pl->first);
+				g->ban_player(banned_pl->first);
 			} else {
 				LOG_SERVER << network::ip_address(sock) << "\t"
 					<< owner << "\tkicked: " << name << " from game:\t\""
 					<< game_name << "\" (" << g->id() << ")\n";
 				network::send_data(construct_server_message(
-					"You have been kicked.", *g), pl->first);
+					"You have been kicked.", *g), banned_pl->first);
 				g->send_data(construct_server_message(name + " has been kicked.", *g));
-				g->remove_player(pl->first);
+				g->remove_player(banned_pl->first);
 			}
-			network::send_data(config("leave_game"), pl->first);
+			network::send_data(config("leave_game"), banned_pl->first);
 
 			g->describe_slots();
-			lobby_players_.add_player(pl->first, true);
+			lobby_players_.add_player(banned_pl->first, true);
 			// Mark the player as available in the lobby.
-			pl->second.mark_available();
+			banned_pl->second.mark_available();
 			// Send the player who was banned the lobby game list.
-			network::send_data(games_and_users_list_, pl->first);
+			network::send_data(games_and_users_list_, banned_pl->first);
 			// Send all other players in the lobby the update to the lobby.
 			lobby_players_.send_data(games_and_users_list_diff(), sock);
 			return;
-		} else if (pl == players_.end()) {
+		} else if (banned_pl == players_.end()) {
 			network::send_data(construct_server_message("Kick/ban failed: user '"
 				+ name + "' not found.", *g), sock);
 			return;
