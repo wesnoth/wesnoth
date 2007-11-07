@@ -130,16 +130,16 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 		    current_team.owns_village(loc) &&
 			(starting_pos || find_visible_unit(units, loc, map,
 										teams, viewing_team,see_all) == units.end())) {
-			const std::vector<gamemap::location>& villages = map.villages();
+			
 
-			// If we are on a village, see all friendly villages
+			// If we are on a village, search all known empty friendly villages
 			// that we can teleport to
-			for(std::vector<gamemap::location>::const_iterator t = villages.begin();
-			    t != villages.end(); ++t) {
-				if (!current_team.owns_village(*t) || units.count(*t))
-					continue;
-
-				locs.push_back(*t);
+			const std::set<gamemap::location>& villages = current_team.villages();
+			for(std::set<gamemap::location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
+				if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(t->x,t->y))
+						&& find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end()) {
+					locs.push_back(*t);
+				}
 			}
 		}
 

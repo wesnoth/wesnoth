@@ -946,21 +946,27 @@ gamemap::location mouse_handler::current_unit_attacks_from(const gamemap::locati
 paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::location go_to, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
-	unit u = un->second;
-	const shortest_path_calculator calc(u,team,units_,teams_,map_);
+	const shortest_path_calculator calc(un->second,team,units_,teams_,map_);
 
-	const std::set<gamemap::location>* teleports = NULL;
 	std::set<gamemap::location> allowed_teleports;
-	if(u.get_ability_bool("teleport",un->first)) {
-		allowed_teleports = vacant_villages(team.villages(),units_);
-		teleports = &allowed_teleports;
-		if(team.villages().count(un->first))
-			allowed_teleports.insert(un->first);
 
+	if(un->second.get_ability_bool("teleport",un->first)) {
+		// search all known empty friendly villages
+		for(std::set<gamemap::location>::const_iterator i = team.villages().begin();
+				i != team.villages().end(); ++i) {
+			if (viewing_team().is_enemy(un->second.side()) && viewing_team().fogged(i->x,i->y))
+				continue;
+
+			unit_map::const_iterator occupant = find_unit(*i);
+			if (occupant != units_.end() && occupant != un)
+				continue;
+			
+			allowed_teleports.insert(*i);
+		}
 	}
 
-	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), teleports);
-	route.move_left = route_turns_to_complete(u,map_,route,units_,teams_);
+	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+	route.move_left = route_turns_to_complete(un->second,map_,route,units_,teams_);
 
 	return route;
 }
