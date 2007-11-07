@@ -85,6 +85,7 @@ public:
 	void add_players(const game& other_game, const bool observer = true);
 
 	config construct_server_message(const std::string& message) const;
+	//! Send data to all players in this game except 'exclude'.
 	void send_data(const config& data, const network::connection exclude=0) const;
 	void send_data_team(const config& data, const std::string& team,
 		const network::connection exclude=0) const;
