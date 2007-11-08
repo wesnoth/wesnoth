@@ -228,6 +228,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 		return 0;
 
 	int turns = 0, movement = u.movement_left();
+	const team& unit_team = teams[u.side()-1];
 
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
 	    i != rt.steps.end(); ++i) {
@@ -250,7 +251,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 
 			for (size_t j = 0; j != 6; ++j) {
 				unit_map::const_iterator enemy_unit = find_visible_unit(units, adj[j], map, teams, viewing_team);
-				if (enemy_unit != units.end() && teams[u.side()-1].is_enemy(enemy_unit->second.side())
+				if (enemy_unit != units.end() && unit_team.is_enemy(enemy_unit->second.side())
 					&& enemy_unit->second.emits_zoc()) {
 					 movement = 0;
 				}
@@ -258,15 +259,25 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 		}
 	}
 
-
 	// Add "end-of-path" to waypoints.
+	const gamemap::location& new_turn_step = *(rt.steps.end()-1);
+	int turn_number = 0;
 	if (turns > 0) {
-		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), turns+1));
-	} else if (movement==0 || map.is_village(*(rt.steps.end()-1))) {
-		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), 1));
-	} else {
-		rt.turn_waypoints.insert(std::make_pair(*(rt.steps.end()-1), 0));
+		turn_number = turns+1;
+	} else if (movement==0) {
+		turn_number = 1;
+	} else if (map.is_village(new_turn_step)) {
+		// if it's an enemy unit and a fogged village, we assume a capture 
+		// (if he already owns it, we can't know that)
+		// if it's not an enemy, we can always know if he owns the village
+		if ( (viewing_team.is_enemy(u.side()) && viewing_team.fogged(new_turn_step.x, new_turn_step.y))
+				|| !unit_team.owns_village(new_turn_step) ) {
+			turn_number = 1;
+		}
 	}
+
+	rt.turn_waypoints.insert(std::make_pair(new_turn_step, turn_number));
+
 	return turns;
 }
 
