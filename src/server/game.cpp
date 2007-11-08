@@ -305,9 +305,10 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	try {
 		side_num = lexical_cast<size_t, std::string>(side);
 		if(side_num < 1 || side_num > gamemap::MAX_PLAYERS) {
-			network::send_data(construct_server_message(
-				"The side number has to be between 1 and 9."), sock); // FIXME: Derive from MAX_PLAYERS
-
+			std::ostringstream msg;
+			msg << "The side number has to be between 1 and " 
+			    << gamemap::MAX_PLAYERS << ".";
+			network::send_data(construct_server_message(msg.str()),sock);
 			return;
 		}
 	}
