@@ -118,7 +118,7 @@ Version 1.3.9:
   * Heir to the Throne
     * new graphics for the battle princess
     * in 'Crossroads', the orc ambushers now hide immobile on the map from 
-	  the beginning of the scenario, instead of being spawned randomly when
+      the beginning of the scenario, instead of being spawned randomly when
       stepping on hills
   * Liberty
     * new story images
@@ -127,14 +127,14 @@ Version 1.3.9:
   * Northern Rebirth
     * New map for Eastern Flank
     * Fixed bug where Father Marcus regenerates in the wrong place 
-	  in one the death events.
+      in one the death events.
     * Rescaled Rakshas' portrait to the proper size.
     * Balancing of opening event in 'Settling Disputes'
     * Various minor polishing and bug-fixes.
     * Extensive balancing, polishing and bug fixing on undead branch.
   * Son of the Black Eye
     * Fixed bug in 'The Coward' where an enemy unit speaks as if 
-	  he is on your side.
+      he is on your side.
     * A bit of dialogue polishing in 'The Coward'
     * Jetto now joins you even if you don't release him during the scenario
   * An Orcish Incursion
@@ -244,9 +244,9 @@ Version 1.3.8:
      * fixed the missing dialogue parts of elves fighting mud crawlers
        in 'The Morning After'.
      * made all tent villages yield elvish refugees (possibly) 
-	   in 'The Morning After'.
+       in 'The Morning After'.
      * fixed the stables encounter dialogue to always appear in order 
-	   in 'The Morning After'
+       in 'The Morning After'
      * 'Across the Harsh Sands' - dehydration causes incurable damage (except
         through visiting an oasis) and fractional loss of attack strength.
      *  Adjusted some of the encounters and rewrote the Lost Soul appearance
@@ -295,7 +295,7 @@ Version 1.3.8:
      * decreased the ranged attack of the Fugitive from 8-4 to 7-4
      * changed the race of the Vampire Bat line from 'undead' to 'bats'
      * changed the movement type of the Vampire Bat line from 'undeadfly' 
-	   to 'fly' (with adjustments)
+       to 'fly' (with adjustments)
      * added a magical ranged 7-2 arcane attack to the Dark Adept
      * added a magical ranged 9-2 arcane attack to the Dark Sorcerer
      * added a magical ranged 12-2 arcane attack to the Necromancer
@@ -339,7 +339,7 @@ Version 1.3.8:
    * new effect apply_to=new_animation to add animations to unit
    * the [race] tag has now an "id" key for WML operations. The old "name" is
      now used for user display purposes (currently only in help sections). 
-	 If id is missing, name will be used. There is also a new "description" key
+     If id is missing, name will be used. There is also a new "description" key
      displayed in the race help page (but currently not used by mainline races)
    * new potentially useful global macros: FULL_HEAL, HIGHLIGHT_IMAGE,
      CLEAR_FOG, NO_SCROLL_TO_AI_LEADER
@@ -356,7 +356,7 @@ Version 1.3.7:
  * Campaigns
    * Son of the Black Eye
      * Fixed bug in 'Saving Inarix' where no user_description 
-	   is generated for Inarix
+       is generated for Inarix
    * Northern Rebirth
      * Colored portraits for Sister Theta and Ro'Arthian
      * Fixed bug in Anita's death event where Tallin speaks instead of her.
@@ -654,7 +654,7 @@ Version 1.3.4:
        scenario identification keys and the order of the scenarios
      * added the map of "Cliffs of Thoria"
      * changed one of the Orcish Warlords into a Sovereign and another one
-	   into a Slurbow for the variety in "Dwarven Doors"
+       into a Slurbow for the variety in "Dwarven Doors"
      * fixed the bug that made the undead leader unable to recruit because of a
        misspelled unit type in his recruit list in "The Lost General"
    * The Rise of Wesnoth
@@ -665,11 +665,11 @@ Version 1.3.4:
      * Reduced the difficulty of "Northern Outpost" scenario by making the
        villages spawn averagely 1 less outlaws per village
      * Changed the way Ovaec joins the protagonist in "Two Paths".
-	   Now he keeps all the XP he might get in "Northern Outpost"
+       Now he keeps all the XP he might get in "Northern Outpost"
    * Descent into Darkness
      * Fixed the unknown unit type bug in "Forever and ever, amen", the bug
-	   that made the Foolish heroes have 30 hitpoints and a broken dialog,
-	   all in the same scenario
+       that made the Foolish heroes have 30 hitpoints and a broken dialog,
+       all in the same scenario
  * map editor
    * the minimum map size is reduced to 1
    * fixed the random map generator
@@ -682,7 +682,7 @@ Version 1.3.4:
    * added a blur effect to most ingame dialogs
    * new animations: troll whelp idle, young ogre idle, skeleton idle,
      human loyalist general idle, human loyalist pikeman idle,
-	 elvish fighter idle, master at arms crossbow and defend
+     elvish fighter idle, master at arms crossbow and defend
    * small improvements of footsteps: no time-of-the-day coloring and
      better scaling
  * language and i18n:
@@ -693,7 +693,7 @@ Version 1.3.4:
    * added a wolf "monster"
    * balancing changes:
      * healthy units now can rest even when they move
-	   instead of having a double resting bonus.
+       instead of having a double resting bonus.
      * increased the HP of the Skeleton Archer from 30 to 31
  * WML engine
    * removed deprecated keys image_healing and image_halo_healing
@@ -840,9 +840,9 @@ Version 1.3.3:
      after import to mainline.
    * Old campaign_delete.pl and campaigns_client.pl have been replaced
      with a new campaigns_client.py.  Main new features are
-	 (a) you can download sets of campaigns using RE wildcards, and
-	 (b) It's possible to give a BfW version in place of a port number
-	 and it will select the right port.
+     (a) you can download sets of campaigns using RE wildcards, and
+     (b) It's possible to give a BfW version in place of a port number
+     and it will select the right port.
  * Miscellaneous and bugfixes
    * 1.2 savegames are no longer compatible and thus not loaded
    * fixed a crash if an invalid scenario was loaded (bug #9049)
@@ -924,7 +924,7 @@ Version 1.3.2:
  * units:
     * balancing changes:
       * converted the cold resistance of the Elvish Sorceress line
-	    to a holy resistance
+        to a holy resistance
       * decreased the holy resistance of the Orcish Assassin line from 20% to 0%
       * remove the 'quick' trait from the Clasher line
       * decreased the holy resistance of the Sky Drake from 20% to -30%
@@ -1002,7 +1002,7 @@ Version 1.3.2:
    * removes the scaling handling in the halo, removing quite some code
    * fixed various problems found by valgrind, note some invalid access
      are now protected by asserts, so there might be more crashes instead
-	 of silent memory corruptions (bug #8715, bug #8756 and bug #8839)
+     of silent memory corruptions (bug #8715, bug #8756 and bug #8839)
    * fixed beginning-of-scenario saves containing scenario WML (bug #8698)
    * fixed "End Turn" button clickable after Ctrl-F (bug #6556)
    * fixed autosaves not getting deleted for last campaign scenario and
@@ -1038,14 +1038,14 @@ Version 1.3.1:
        but in a normal castle tile
    * The South Guard
      * Proven by the Sword: tell Deoran to go to Westin if the citadel
-	   is secured (fixes #7360)
+       is secured (fixes #7360)
    * Two Brothers
      * updated the portrait of Bjarn to match the new mage colors
      * removed Skeletons as enemies in the first mission on easy, and
        Skeleton Archer as enemy on hard
      * added Ghouls as enemies for all undeads
      * some map updates to make them easier (2nd mission) or look better
-	   (all the other missions)
+       (all the other missions)
  * editor
    * allow maps to be loaded from scenario files and written back to them
    * upon entering a new starting position the underlaying terrain
@@ -1059,7 +1059,7 @@ Version 1.3.1:
    * the brush size in non-drawing mode is ignored
    * added an alpha blended preview of the selected terrains
      upon drawing. The optimal alpha value needs some tuning, so
-	 there's a setting, which is not stored in the preferences
+     there's a setting, which is not stored in the preferences
  * graphics
    * missiles now take unit_height_adjust into account
    * improved layering system for terrain graphics
@@ -1078,9 +1078,9 @@ Version 1.3.1:
    * unit art
      * added a recruit animation for Skeleton
      * new death animations: Orcish Assassin, Grunt, Undead Ghoul,
-	   Ancient Wose, Elder Wose, Thief
+       Ancient Wose, Elder Wose, Thief
      * changed name on Dwarvish Warrior art files to Dwarvish Steelclad,
-	   to conform to unit .cfg file name
+       to conform to unit .cfg file name
      * new attack icons: undead axes, undead crossbow, pick axe, glaive,
        elven staff, mace-and-chain
      * new baseframes: all Mages, Footpad
@@ -1108,7 +1108,7 @@ Version 1.3.1:
      (bug #8161)
    * moved the translation for campaign-specific units into the
      campaign textdomain (some campaigns did still use the
-	 wesnoth textdomain for their units)
+     wesnoth textdomain for their units)
    * made the unit generated names translatable
    * switch to mainly using single space
  * multiplayer
@@ -1123,7 +1123,7 @@ Version 1.3.1:
      * sped up the lobby, the lag is much lower now (patch #676 and patch #677)
    * scenarios
      * scenarios can set faction, recruit, leader, and some other
-	   initial settings previously ignored in multiplayer
+       initial settings previously ignored in multiplayer
      * added option to have random time of day in begin of multiplayer game
    * maps:
      * new multiplayer maps: The Manzivan Traps, 4p Hamlets
@@ -1246,7 +1246,7 @@ Version 1.3.1:
      before it is displayed.
    * added ability to define color ranges and palettes in scenario, units,
      and unit modification effects.  Added ability to add image modifications
-	 in a unit modification [effect] tag
+     in a unit modification [effect] tag
    * SUF can now filter on anything that is also available throught
      unit variables, using a [wml_filter] block
    * overhaul of the team coloring engine.  Now it is possible to apply
@@ -1272,7 +1272,7 @@ Version 1.3.1:
      gradually to another value over time)
    * new progressive parameters: 'alpha' (opacity of a frame),
      'offset' (the position relative to the faced hex), 'blend_color'
-	 and 'blend_ratio' (to mix a given color with the frame)
+     and 'blend_ratio' (to mix a given color with the frame)
    * units can now have a recruit animations that will be played on unit recruit
    * units now have idle animations, played when they've been idle for some time
    * units now have leveling up animations
@@ -1375,7 +1375,7 @@ Version 1.1.14:
      * fixed bad glitches in the map Rise of Wesnoth
    * The South Guard:
      * made it possible to finish "Into the Depths"
-	   even without enough gold to pay the trolls
+       even without enough gold to pay the trolls
  * graphics:
    * terrain:
      * new special transition between chasm and dwarvish castle
@@ -1384,7 +1384,7 @@ Version 1.1.14:
      * resolved all glitches with cave walls
    * units:
      * new teamcolored baseframes: Halberdier, Heavy Infanfantry,
-	   Pikeman, Shocktrooper, Siegetrooper
+       Pikeman, Shocktrooper, Siegetrooper
      * new baseframe: Yeti
      * some new skulls for skeleton units
    * misc:
@@ -1469,7 +1469,7 @@ Version 1.1.12:
    * updated DejaVuSans font to 2.11
  * multiplayer maps:
     * revised multiplayer maps: Hamlets, Meteor Lake, Sulla's Ruins,
-	  Silverhead Crossing, Isar's Cross, Paths of Daggers
+      Silverhead Crossing, Isar's Cross, Paths of Daggers
  * engine changes
     * fixed the terrain defense alias to be used properly
     * fixed aggression calculations (bug #7432)
@@ -1503,7 +1503,7 @@ Version 1.1.10:
  * campaigns:
    * Heir to the Throne
      * made it a lot harder to kill Li'sar in Ford of Abez
-	   by giving her reinforcements more often
+       by giving her reinforcements more often
    * The South Guard
      * Animation for Deoran's Mace attack (from special AMLA)
  * language and i18n:
@@ -1538,7 +1538,7 @@ Version 1.1.9:
      * Isle of the Damned: removed merman recall on HARD
    * Two Brothers
      * fixed showing the objective "kill the mage to get the key"
-	   if you already obtained the key (#6704)
+       if you already obtained the key (#6704)
  * multiplayer maps:
    * revised multiplayer maps: Sablestone Delta, Den of Onis
  * language and i18n:
@@ -1555,8 +1555,8 @@ Version 1.1.9:
      because it interferes with several common window managers
    * changed the hotkey for 'repeat recruit' from 'ctrl+shift+r' to
      'ctrl+alt+r' since shift toggles accelerated mode and produced
-	 an animation glitch with this hotkey; this needs to be considered
-	 for future hotkey changes/additions (see bug #6312)
+     an animation glitch with this hotkey; this needs to be considered
+     for future hotkey changes/additions (see bug #6312)
  * misc
    * fixed --with-desktopdir and --with-icondir,
      it still needs --with-kde or --with-gnome (#6499)
@@ -1624,7 +1624,7 @@ Version 1.1.7:
      * lowered turn limits on Scepter of Fire to something sane
  * language and i18n:
     * updated translations: French, German, Portuguese (Brazil),
-	  Spanish, Swedish
+      Spanish, Swedish
  * multiplayer maps:
     * revised multiplayer maps: Amohsad Caldera
  * units
@@ -1649,7 +1649,7 @@ Version 1.1.6:
    * Heir to the Throne
      * added a secret, powerful item to one of the later scenarios
      * ensured minimum gold of 500 to start campaign climax scenarios
-	   (after Elven Council)
+       (after Elven Council)
      * expanded list of units that can obtain the Fire Sword
      * added an option dialog to let you choose who gets the Fire Sword
    * The Rise of Wesnoth
@@ -1660,12 +1660,12 @@ Version 1.1.6:
    * renamed Smallolof to Amohsad Caldera
    * revised multiplayer maps: Caves of the Basilisk, Cynsaun Battlefield,
      Sulla's Ruins, Hornshark Island, 3p Morituri, Blue Water Province,
-	 Castle Hopping Isle, Forest of Fear, Amohsad Caldera, Hexcake
+     Castle Hopping Isle, Forest of Fear, Amohsad Caldera, Hexcake
  * units
    * balancing changes:
      * removed special defense values from the Merman Fighter line
      * decreased impact resistance from 30% to 10% for the
-	   Heavy Infantryman line
+       Heavy Infantryman line
  * graphics
    * updated armor sprite
    * new attack icons: Cleaver, Pitchfork, Quarterstuff, Wooden Sword
@@ -1695,7 +1695,7 @@ Version 1.1.5:
      * the hero icon is explained
    * Heir to the Throne
      * not being able to recruit gryphons is further explained
-	   in Northern Winter
+       in Northern Winter
      * made Dwarven Doors entrance accessible to mountedfoot
    * The Rise of Wesnoth
      * gave hero icons to unkillable heroes (possibly missing some)
@@ -1715,7 +1715,7 @@ Version 1.1.5:
      * Increased melee damage of the Outlaw from 7-2 to 8-2
      * Added marksmanship to the Drake Glider branch
      * Hurrican and Sky Drakes now have same defense and movement costs
-	   on fungus and in caves like other drakes.
+       on fungus and in caves like other drakes.
  * music & sound
    * new or improved sounds: holy magic, thorns, pincers
  * miscellaneous
@@ -1733,12 +1733,12 @@ Version 1.1.4:
  * help menu
    * It is now possible to specify generated topic sorting by title
      separate from sorting all of the topics. This allows a sorted list
-	 of generated topics to be placed after a fixed list of topics.
+     of generated topics to be placed after a fixed list of topics.
    * The Abilities and Traits sections were changed so that the overviews
      come first
    * Fixed a bug where the wrong ability description could be extracted
      from a unit type with multiple abilities. This was causing an
-	 incorrect description for Illuminate in Help.
+     incorrect description for Illuminate in Help.
    * Units are now sorted first by race and then by name.
  * WML engine
    * modify ranged animation timing, all animations (attack, defend,
@@ -1755,11 +1755,11 @@ Version 1.1.3:
  * campaigns
    * Two Brothers
      * made the 2nd scenario easier on easy: more starting gold,
-	   4 extra villages, +10 income, less villages for the ai
+       4 extra villages, +10 income, less villages for the ai
      * added a hero icon for the dark adept
      * improved dialogs in the 2nd scenario
      * added a move_unit_fake to have Brenda not appear out of nowhere
-	   (easy only)
+       (easy only)
      * improved dialogs in the 3rd scenario
    * The South Guard
      * improved/additional dialog
@@ -1914,7 +1914,7 @@ Version 1.1.2:
    * Under the Burning Suns
      * new unit images: Crawling Horror
      * copying other Desert Elves, increased melee damage and
-	   decreased ranged damage for Desert Shaman/Druid/Shyde/Star line
+       decreased ranged damage for Desert Shaman/Druid/Shyde/Star line
      * increased cost of Desert Fighters from 14 to 15
      * increased melee damage of the Desert Horseman from 6-5 to 7-5
      * The below changes echo mainline elf edits listed in units section:
@@ -1954,14 +1954,14 @@ Version 1.1.2:
    * new translations: Korean, Vietnamese
    * updated translations: British English, Catalan, Czech, Dutch,
      German, Finnish, French, Hebrew, Italian, Norwegian, Polish,
-	 Portuguese (Brazil), Spanish, Swedish, Turkish
+     Portuguese (Brazil), Spanish, Swedish, Turkish
    * updated man pages: Swedish
  * multiplayer maps:
    * all multiplayer maps now use a playlist to specify their music
    * revised multiplayer maps: Blitz, Charge, Cynsaun Battlefield,
      Den of Onis, Divide and Conquer, Hamlets, Hornshark Island,
-	 Meteor Lake, Silverhead Crossing, Triple Blitz, Bluewater Province,
-	 Clash, Siege Castles, Hexcake, The Wilderlands
+     Meteor Lake, Silverhead Crossing, Triple Blitz, Bluewater Province,
+     Clash, Siege Castles, Hexcake, The Wilderlands
  * music & sound
    * multiplayer no longer uses faction specific music, music is now
      specified per scenario like it is done in the singleplayer mode
@@ -1975,7 +1975,7 @@ Version 1.1.2:
      3 new merfolk hit&die
    * sound added to units:
      * death sounds: all drakes, dwarves, orcs & goblins, all humans,
-	   monsters, merfolk, nagas, saurians, trolls, all skeletons, woses
+       monsters, merfolk, nagas, saurians, trolls, all skeletons, woses
      * lightbeam attacks, elves, gryphons, some ghost attacks
  * units
    * back in mainline: Orcish Leader, Orcish Ruler, Orcish Sovereign
@@ -2087,7 +2087,7 @@ Version 1.1.2:
    * added [modify_turns] to [event]. Takes 'value' and 'add' as keys.
    * added new key to [side]: allow_player; if set to 'no' then this side
      will not appear in the creation screen. Some maps with more sides
-	 than starting positions may be broken.
+     than starting positions may be broken.
    * added [store_side] tag, which takes 'variable' and 'side' as keys,
      and stores data to variable.gold, variable.income, variable.name,
      and variable.team_name.
@@ -2135,7 +2135,7 @@ Version 1.1.1:
      * Text cleanups
    * The Rise of Wesnoth
      * replaced Sea Orc with Naga Fighter in Final Spring, Clearwater Port,
-	   and Rise of Wesnoth
+       and Rise of Wesnoth
      * Fire dragon is a level 5 unit
      * Text cleanups
    * migrated unique units, scenarios, maps, and images to data/campaigns
@@ -2163,7 +2163,7 @@ Version 1.1.1:
    * new manual: Indonesian
    * updated translations: British English, Chinese, German, Hebrew,
      Italian, Norwegian, Polish, Portuguese (Brazil), Russian, Slovenian,
-	 Swedish, Turkish
+     Swedish, Turkish
    * updated man pages: English, German, Swedish
  * multiplayer maps:
    * revised multiplayer maps: Blitz, Charge, Den of Onis, Silverhead Crossing,
@@ -2192,7 +2192,7 @@ Version 1.1.1:
      * increased Pikeman HP from 52 to 55
      * increased Swordsman HP from 52 to 55
      * increased the ranged attack of the Cavalier and Master at Arms
-	   from 17-1 to 20-1
+       from 17-1 to 20-1
      * increased Orcish Archer fire attack damage from 6-2 to 7-2
      * decreased the melee attack of the Orcish Slayer from 12-2 to 10-2
      * decreased the XP requirement for the Footpad from 42 to 36
@@ -2203,16 +2203,16 @@ Version 1.1.1:
      * increased Dwarvish Stalwart HP from 39 to 48
      * increased Dwarvish Sentinel HP from 45 to 56
      * increased Dwarvish Sentinel resistances to blade and pierce
-	   from 20% to 30%
+       from 20% to 30%
      * decreased the grassland defense from 50% to 40% for the Sentinel
      * decreased the village defense from 60% to 50% for the Stalwart
-	   and Sentinel
+       and Sentinel
      * increased the forest and sand defense from 30% to 40% for the
-	   Stalwart and Sentinel
+       Stalwart and Sentinel
      * added Elder Wose, Saurian Icecaster and Soothsayer as leaders
-	   in default era but not as random_leader
+       in default era but not as random_leader
      * added many level 2 units and the Ancient Wose as leaders in AoH
-	   but not as random_leader
+       but not as random_leader
    * flags in status bar are now properly team colored
  * user interface
    * added new image in advancement tag that is displayed in advancement dialog
@@ -2307,7 +2307,7 @@ Version 1.1:
      * Lost General: side 2 ally allows you to recruit guardsmen (for dwarf
        balancing)
      * Choice Must be Made: used swamp village instead of cave villages,
-	   story, music
+       story, music
      * Snow plains: music key added
      * Swamp of Dread: used swamp village instead of cave village, music
      * Home of the North Elves: rebalanced to make you RUN! rather than fight;
@@ -2362,7 +2362,7 @@ Version 1.1:
      Tentacle of the Deep, most Drake units
    * new tiles: swamp, cave wall, paved road, variable-width canyon (#8817),
      snow village (human & elven), underground village, mountains, hills,
-	 snow hills, dwarven village, additional elven and human village variants
+     snow hills, dwarven village, additional elven and human village variants
    * bilinear interpolation of images (better interpolation at high zoom level)
    * new movement animation: elvish fighter
  * language and i18n:
@@ -2545,7 +2545,7 @@ Version 1.0rc1:
  * language and i18n:
    * updated translations: Afrikaans, Bulgarian, Catalan, Finnish,
      German, Greek, Hungarian, Japanese, Portuguese (Brazil), Russian,
-	 Slovenian, Spanish, Turkish
+     Slovenian, Spanish, Turkish
    * new manual: Hungarian, updated manual: English, Swedish
    * updated man pages: English, German, Swedish
  * campaigns:
@@ -2644,7 +2644,7 @@ Version 0.9.6:
        Nagini Fighter, Orcish Assassin, Royal Guard, Saurian Skirmisher
    * revised unit images and/or animations for Direwolf Rider, Duelist,
        Elvish Shyde, Fencer, Grand Knight, Heavy Infantryman, Horseman,
-	   Knight, Lancer, Master at Arms, Paladin, Shock Trooper
+       Knight, Lancer, Master at Arms, Paladin, Shock Trooper
    * fixed missing storm trident image (#14111)
    * new observer icon
    * fixed wrong ice missile image used by Elvish High Lord (#14132)
@@ -2753,7 +2753,7 @@ Version 0.9.4:
  * language and i18n:
    * updated translations:
      * Basque, British English, Catalan, Chinese, Dutch, French,
-	   German, Hungarian, Russian, Swedish, Turkish
+       German, Hungarian, Russian, Swedish, Turkish
    * fixed help description of income and upkeep (#13565)
    * updated several unit descriptions
    * standardized on "magi" as plural of "mage"
@@ -3185,9 +3185,9 @@ Version 0.9.0:
  * unit graphics and sound improvements
    * updated images for several units: Cave Spider, Haldric, Lady Jessica, 
      Mermaid Priestess, Mermaid Diviner, Merman Hunter, Merman Javelineer, 
-	 Merman Spearman,Walking Corpse, Elvish Fighter, Captain, Marshal, Hero, 
-	 Champion, Archer, Marksman, Sharpshooter, Ranger, Avenger, Shyde, Orcish Archer, 
-	 Orcish Crossbowman, Human Spearman
+     Merman Spearman,Walking Corpse, Elvish Fighter, Captain, Marshal, Hero, 
+     Champion, Archer, Marksman, Sharpshooter, Ranger, Avenger, Shyde, Orcish Archer, 
+     Orcish Crossbowman, Human Spearman
    * added drake, mounted, saurian, swimmer, troll, and wose variations to Walking Corpse
    * updated Haldric's portrait in The Rise of Wesnoth
    * added graphics for generic Lich-Lords, the Archmages in 'The Sewer of Southbay', 
