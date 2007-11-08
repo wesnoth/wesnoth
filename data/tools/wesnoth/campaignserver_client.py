@@ -319,7 +319,10 @@ class CampaignClient:
                 data.insert(sub)
             return data
 
-        data.insert(put_file(name + ".cfg", file(cfgfile)))
+	# Only used if it's an old-style campaign directory
+        # with an external config.
+        if os.path.exists(cfgfile):
+            data.insert(put_file(name + ".cfg", file(cfgfile)))
         data.insert(put_dir(name, directory))
         request.insert(data)
 
