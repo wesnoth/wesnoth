@@ -1653,7 +1653,7 @@ private:
 		if(!d.show()) {
 			std::string team_name;
 			SDL_Color colour = font::LABEL_COLOUR;
-			const std::string last_team_id = "9";
+			const std::string last_team_id = "9"; // FIXME: Derive from MAX_PLAYERS
 			std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(last_team_id);
 
 			if ((has_team() || (old_label && team_only)) && d.option_checked()) {

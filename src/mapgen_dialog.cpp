@@ -149,8 +149,6 @@ void default_map_generator::user_config(display& disp)
 	castlesize_rect.y = villages_rect.y + iterations_rect.h + vertical_margin;
 	landform_rect.y = castlesize_rect.y + villages_rect.h + vertical_margin;
 
-	const int max_players = 9;
-
 	const int right_space = 150;
 
 	const int slider_left = text_right + 10;
@@ -159,7 +157,7 @@ void default_map_generator::user_config(display& disp)
 	gui::slider players_slider(screen);
 	players_slider.set_location(slider_rect);
 	players_slider.set_min(2);
-	players_slider.set_max(max_players);
+	players_slider.set_max(gamemap::MAX_PLAYERS);
 	players_slider.set_value(nplayers_);
 
 	const int min_width = 20;

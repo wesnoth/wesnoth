@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "global.hpp"
 #include "color_range.hpp"
+#include "map.hpp"
 #include "serialization/string_utils.hpp"
 #include "wassert.hpp"
 
@@ -161,7 +162,7 @@ std::string rgb2highlight(Uint32 rgb)
 
 int color_range::index() const
 {
-	for(int i = 1; i < 10; ++i) {
+	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
 		if(*this==(game_config::color_info(lexical_cast<std::string>(i)))) {
 			return i;
 		}

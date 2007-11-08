@@ -211,11 +211,10 @@ public:
 	void remove_from_border_cache(const location &loc)
 		{ borderCache_.erase(loc); }
 
-	//the size of the starting positions array
-	//the positions themselves are numbered from
-	//1. Thus max_starting positions is
-	//STARTING_POSITIONS - 1
-	enum { STARTING_POSITIONS = 10 };
+	//Maximum number of players supported. 
+	//The size of the starting positions array is greater by 1, 
+	//because the positions themselves are numbered from 1.
+	enum { MAX_PLAYERS = 9 };
 
 	//! Retuns the usage of the map.
 	tusage get_usage() const { return usage_; }
@@ -228,7 +227,7 @@ public:
 
 protected:
 	t_translation::t_map tiles_;
-	location startingPositions_[STARTING_POSITIONS];
+	location startingPositions_[MAX_PLAYERS+1];
 
 	/**
 	 * Clears the border cache, needed for the editor

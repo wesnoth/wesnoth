@@ -1272,7 +1272,7 @@ void connect::lists_init()
 	}
 
 	// Colours
-	for(int i = 0; i < 9; ++i) {
+	for(int i = 0; i < gamemap::MAX_PLAYERS; ++i) {
 		player_colours_.push_back(get_colour_string(i));
 	}
 

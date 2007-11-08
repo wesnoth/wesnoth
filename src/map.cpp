@@ -421,7 +421,7 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 		// Check for valid position, 
 		// the first valid position is 1,
 		// so the offset 0 in the array is never used.
-		if(itor->first < 1 || itor->first >= STARTING_POSITIONS) {
+		if(itor->first < 1 || itor->first >= MAX_PLAYERS+1) {
 			ERR_CF << "Starting position " << itor->first << " out of range\n";
 			throw incorrect_format_exception("Illegal starting position found"
 				" in map. The scenario cannot be loaded.");
@@ -462,7 +462,7 @@ std::string gamemap::write() const
 	std::map<int, t_translation::coordinate> starting_positions = std::map<int, t_translation::coordinate>();
 
 	// Convert the starting positions to a map
-	for(int i = 0; i < STARTING_POSITIONS; ++i) {
+	for(int i = 0; i < MAX_PLAYERS+1; ++i) {
 	if(on_board(startingPositions_[i])) {
 			const struct t_translation::coordinate position =
 				{startingPositions_[i].x + border_size_, startingPositions_[i].y + border_size_};

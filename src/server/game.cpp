@@ -15,6 +15,7 @@
 #include "../global.hpp"
 
 #include "game.hpp"
+#include "../map.hpp"
 #include "../log.hpp"
 #include "../util.hpp"
 #include "../wassert.hpp"
@@ -28,8 +29,11 @@
 
 int game::id_num = 1;
 
-game::game(const player_map& pl) : player_info_(&pl), id_(id_num++), sides_(9),
-	sides_taken_(9), side_controllers_(9), started_(false), description_(NULL),
+game::game(const player_map& pl) : player_info_(&pl), id_(id_num++), 
+				   sides_(gamemap::MAX_PLAYERS),
+				   sides_taken_(gamemap::MAX_PLAYERS), 
+				   side_controllers_(gamemap::MAX_PLAYERS), 
+				   started_(false), description_(NULL),
 	end_turn_(0), allow_observers_(true), all_observers_muted_(false)
 {}
 
@@ -133,7 +137,7 @@ bool game::take_side(network::connection player, const config& cfg)
 
 	//verify that side is a side id
 	const std::string& side = cfg["side"];
-	size_t side_num = lexical_cast_in_range<size_t, std::string>(side, 1, 1, 9);
+	size_t side_num = lexical_cast_in_range<size_t, std::string>(side, 1, 1, gamemap::MAX_PLAYERS);
 
 	//if the side is already taken, see if we can give the player
 	//another side instead
@@ -145,7 +149,7 @@ bool game::take_side(network::connection player, const config& cfg)
 				//don't allow players to take sides in games with invalid side numbers
 				try {
 					side_num = lexical_cast<size_t, std::string>((**i)["side"]);
-					if(side_num < 1 || side_num > 9)
+					if(side_num < 1 || side_num > gamemap::MAX_PLAYERS)
 						return false;
 				}
 				catch(bad_lexical_cast&) {
@@ -201,9 +205,9 @@ void game::update_side_data() {
 	const user_vector users = all_game_users();
 
 	sides_taken_.clear();
-	sides_taken_.resize(9);
+	sides_taken_.resize(gamemap::MAX_PLAYERS);
 	sides_.clear();
-	sides_.resize(9);
+	sides_.resize(gamemap::MAX_PLAYERS);
 	players_.clear();
 	observers_.clear();
 
@@ -228,7 +232,7 @@ void game::update_side_data() {
 		{
 			try {
 				side_num = lexical_cast<size_t, std::string>((**sd)["side"]);
-				if(side_num < 1 || side_num > 9)
+				if(side_num < 1 || side_num > gamemap::MAX_PLAYERS)
 					continue;
 			}
 			catch(bad_lexical_cast&) {
@@ -300,9 +304,10 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	size_t side_num;
 	try {
 		side_num = lexical_cast<size_t, std::string>(side);
-		if(side_num < 1 || side_num > 9) {
+		if(side_num < 1 || side_num > gamemap::MAX_PLAYERS) {
 			network::send_data(construct_server_message(
-				"The side number has to be between 1 and 9."), sock);
+				"The side number has to be between 1 and 9."), sock); // FIXME: Derive from MAX_PLAYERS
+
 			return;
 		}
 	}

@@ -54,7 +54,6 @@
 #include <cmath>
 
 namespace {
-	const int num_players = gamemap::STARTING_POSITIONS - 1;
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
 	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
@@ -64,7 +63,7 @@ namespace {
 	// or -1 if none has.
 	int starting_side_at(const gamemap& map, const gamemap::location hex) {
 		int start_side = -1;
-		for (int i = 0; i < gamemap::STARTING_POSITIONS; i++) {
+		for (int i = 0; i < gamemap::MAX_PLAYERS+1; i++) {
 			if (map.starting_position(i) == hex) {
 				start_side = i;
 			}
@@ -544,7 +543,7 @@ void map_editor::perform_set_starting_pos() {
 	none_str << _("None");
 	players.push_back(none_str.str());
 
-	for (int i = 0; i < num_players; i++) {
+	for (int i = 0; i < gamemap::MAX_PLAYERS; i++) {
 		std::stringstream str;
 		str << _("Player") << " " << i + 1;
 		players.push_back(str.str());
@@ -1418,7 +1417,7 @@ void map_editor::recalculate_starting_pos_labels() {
 	}
 	starting_positions_.clear();
 	// Set new labels.
-	for (int i = 1; i < gamemap::STARTING_POSITIONS; i++) {
+	for (int i = 1; i < gamemap::MAX_PLAYERS+1; i++) {
 		gamemap::location loc = map_.starting_position(i);
 		if (loc.valid()) {
 			std::stringstream ss;
