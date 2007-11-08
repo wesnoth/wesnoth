@@ -5,7 +5,7 @@ Version 1.3.9+svn:
      (not finished yet)
    * You can now supply a .pbl file within the directory for a campaign
      as _server.pbl, rather than externally at the same level as the directory.
-     Both the client code in the game and the Python client in utils/ havebeen
+     Both the client code in the game and the Python client in utils/ have been
      enhanced to allow this.
  * campaigns:
    * Eastern Invasion
@@ -19,7 +19,7 @@ Version 1.3.9+svn:
      * 'Gathering Materials' now has more varied terrain, an early finish bonus,
        and the gold and coal piles now behave better: each pile now only gives
        one load, miners carrying a load have an icon on them and when dying they
-       drop their load so another miner can pick it up
+       drop their load, so another miner can pick it up
      * Khrakrahs is no longer allied with the hostile elves and dwarves
    * Under the Burning Suns
      * Kaleh now uses AMLA's for custom advancement
@@ -32,7 +32,7 @@ Version 1.3.9+svn:
        Water (bug #10254)
      * bugfix for blocker in 'In the Tunnels of the Trolls'
  * graphics:
-   * polished ankh prop picture from Liberty, and moved to core replacing
+   * polished ankh prop picture from Liberty, and moved to core, replacing
      old ankh-necklace.png used by Eastern Invasion
    * updated unit graphics: Necromancer, Dark Adept, Dark Sorcerer, Fugitive,
      Huntsman
@@ -102,8 +102,8 @@ Version 1.3.9+svn:
      frame names
    * a new type of animation is triggered when a unit is selected. (WML
      support to come shortly)
-   * in story [image,] a new key scaled=yes/no (default=no) allow to scale the
-     image like the background is.
+   * in story [image,] a new key scaled=yes/no (default=no) allows to scale 
+     the image like the background.
    * prevent some illegal select events on enemy units.
  * miscellaneous and bug fixes:
    * added a new log domain 'mp_server'
@@ -117,8 +117,8 @@ Version 1.3.9:
       village you had lost
   * Heir to the Throne
     * new graphics for the battle princess
-    * in 'Crossroads', the orc ambushers now hide immobile on the map from the
-      beginning of the scenario, instead of being spawned randomly when
+    * in 'Crossroads', the orc ambushers now hide immobile on the map from 
+	  the beginning of the scenario, instead of being spawned randomly when
       stepping on hills
   * Liberty
     * new story images
@@ -126,15 +126,15 @@ Version 1.3.9:
     * music changed in several scenarios
   * Northern Rebirth
     * New map for Eastern Flank
-    * Fixed big where Father Marcus regenerates in the wrong place in one the
-      death events.
+    * Fixed bug where Father Marcus regenerates in the wrong place 
+	  in one the death events.
     * Rescaled Rakshas' portrait to the proper size.
     * Balancing of opening event in 'Settling Disputes'
     * Various minor polishing and bug-fixes.
     * Extensive balancing, polishing and bug fixing on undead branch.
   * Son of the Black Eye
-    * Fixed bug in 'The Coward' where an enemy unit speaks as if he is on your
-      side.
+    * Fixed bug in 'The Coward' where an enemy unit speaks as if 
+	  he is on your side.
     * A bit of dialogue polishing in 'The Coward'
     * Jetto now joins you even if you don't release him during the scenario
   * An Orcish Incursion
@@ -152,7 +152,7 @@ Version 1.3.9:
    * new icon for: village, castle
    * new rotate function (FR/bug #3870): copy&rotate selected area using mouse
      cursor as center (or "center of mass" if the cursor is not on map)
-   * important optimization of the builder engine (which recalculate
+   * important optimization of the builder engine (which recalculates
      transitions after a map change)
    * restore the random map generator (was broken in 1.3.8)
    * fix several bugs with the "delay transition update" option (undo and
@@ -164,10 +164,10 @@ Version 1.3.9:
     "~FL(horiz/vert)" instead
  * user interface:
    * preserve aspect ratio of the minimap (FR/bug #9999)
-   * the debug "Create unit" dialog have now two columns (race and type) and is
-     correctly sorted.
-   * progressive parameters can be specified both in [animation] and in
-   [frame]
+   * the debug "Create unit" dialog have now two columns (race and type) 
+     and is correctly sorted.
+   * progressive parameters can be specified both in [animation] 
+     and in [frame]
    * The linger mode "Next Scenario" button renamed to "End Scenario"
    * improved the display of the trait descriptions
  * multiplayer:
@@ -180,8 +180,8 @@ Version 1.3.9:
    * minimum number of turns reduced to 1
    * new option to allow female leaders by default instead of male leaders
    * fixed a crash if the client receives invalid utf-8
-   * fixed a server side bug with could cause invalid utf-8 being send to a
-     client.
+   * fixed a server side bug with could cause invalid utf-8 
+     being send to a client.
    * display the era id for not installed eras in the lobby.
    * display the scenario id for unknown scenarios in the lobby.
  * units:
@@ -195,8 +195,8 @@ Version 1.3.9:
    * now using :n in debug mode will skip past linger mode as intended
    * fix a bug with [endlevel] result=continue_no_save
    * fixed a bug where some strings were resized in utf-8 unaware mode
-   * fix bug #9021 (team color names not directly translated when switching
-     language)
+   * fix bug #9021 (team color names not directly translated when 
+     switching language)
    * optimize the random map generator (especially for high village density)
 
 Version 1.3.8:
@@ -243,10 +243,10 @@ Version 1.3.8:
    * Under the Burning Suns
      * fixed the missing dialogue parts of elves fighting mud crawlers
        in 'The Morning After'.
-     * made all tent villages yield elvish refugees (possibly) in 'The Morning
-       After'.
-     * fixed the stables encounter dialogue to always appear in order in 'The
-       Morning After'
+     * made all tent villages yield elvish refugees (possibly) 
+	   in 'The Morning After'.
+     * fixed the stables encounter dialogue to always appear in order 
+	   in 'The Morning After'
      * 'Across the Harsh Sands' - dehydration causes incurable damage (except
         through visiting an oasis) and fractional loss of attack strength.
      *  Adjusted some of the encounters and rewrote the Lost Soul appearance
@@ -262,22 +262,22 @@ Version 1.3.8:
    * new graphics for the highwayman
    * nicer image for the illuminates aura and a new campfire aura
    * no more idle animations for units next to an enemy unit
-   * new button and slider in preferences to switch unit idle animations on
-     and off and set their frequency
+   * new button and slider in preferences to switch unit idle animations 
+     on and off and set their frequency
    * no grid on off-map tiles
    * nicer transitioning between desert road, desert and desert villages
    * a new alternative terrain for lava, one which isn't drawn in a pit
  * language and i18n:
-   * manual: switched to a brand new manual, now using some strange format to
-     generate it and ending in a nice .html page
+   * manual: switched to a brand new manual, now using some strange format 
+     to generate it and ending in a nice .html page
    * updated translations: Bulgarian, Danish, Dutch, Finnish, French, German,
      Hungarian, Italian, Japanese, Polish, Portuguese (Brazil), Russian,
      Swedish, Valencian
    * new translation: Serbian (Latin version)
    * added sazanami-gothic font (needed for the Japanese translation)
    * updated DejaVu font to 2.20 (no new characters)
-   * made all keeps be called "Keep", all castles be called "Castle" and all
-     roads be called "Road", instead of using variant names (such as
+   * made all keeps be called "Keep", all castles be called "Castle" and 
+     all roads be called "Road", instead of using variant names (such as
      "Elven Castle" or "Desert road")
  * multiplayer:
    * revised maps: Charge, Den of Onis, Meteor Lake, Silverhead Crossing,
@@ -294,8 +294,8 @@ Version 1.3.8:
      * decreased the melee attack of the Fugitive from 12-2 to 11-2
      * decreased the ranged attack of the Fugitive from 8-4 to 7-4
      * changed the race of the Vampire Bat line from 'undead' to 'bats'
-     * changed the movement type of the Vampire Bat line from 'undeadfly' to
-       'fly' (with adjustments)
+     * changed the movement type of the Vampire Bat line from 'undeadfly' 
+	   to 'fly' (with adjustments)
      * added a magical ranged 7-2 arcane attack to the Dark Adept
      * added a magical ranged 9-2 arcane attack to the Dark Sorcerer
      * added a magical ranged 12-2 arcane attack to the Necromancer
@@ -305,15 +305,15 @@ Version 1.3.8:
      * increased the arcane resistance of the Ghost line from -30 to -10%
  * user interface:
    * OK in the status menu replaced with more informative "Scroll To".
-   * add an "Animate Map" option in advanced preferences, to switch flag and
-     terrain animation off
+   * add an "Animate Map" option in advanced preferences, to switch flag 
+     and terrain animation off
    * in menus, remove the lingering mouseover highlighting when mouse leave it
    * for the unit preview in recruit/recall dialog, use the same text coloring
      as in the main side panel.
  * help system:
    * the unit list is now organized by race sub-sections.
-   * each ability, special weapon and race description page, display a list of
-     hyperlinks to the related units (bug #9567)
+   * each ability, special weapon and race description page, display a 
+     list of hyperlinks to the related units (bug #9567)
    * unit pages have now a field "race" with a link to related race page.
    * hide the "Unknown Unit" page from the left-panel
    * topic with an id starting with a "." are not shown in the left-panel
@@ -338,8 +338,8 @@ Version 1.3.8:
      the [unit] block
    * new effect apply_to=new_animation to add animations to unit
    * the [race] tag has now an "id" key for WML operations. The old "name" is
-     now used for user display purposes (currently only in help sections). If
-     id is missing, name will be used. There is also a new "description" key
+     now used for user display purposes (currently only in help sections). 
+	 If id is missing, name will be used. There is also a new "description" key
      displayed in the race help page (but currently not used by mainline races)
    * new potentially useful global macros: FULL_HEAL, HIGHLIGHT_IMAGE,
      CLEAR_FOG, NO_SCROLL_TO_AI_LEADER
@@ -355,8 +355,8 @@ Version 1.3.8:
 Version 1.3.7:
  * Campaigns
    * Son of the Black Eye
-     * Fixed bug in 'Saving Inarix' where no user_description is generated for
-       Inarix
+     * Fixed bug in 'Saving Inarix' where no user_description 
+	   is generated for Inarix
    * Northern Rebirth
      * Colored portraits for Sister Theta and Ro'Arthian
      * Fixed bug in Anita's death event where Tallin speaks instead of her.
@@ -373,8 +373,8 @@ Version 1.3.7:
      will not try to create the default install directory for python
      stuff when it isn't needed. Otherwise if you aren't root, make
      errors out.
-   * If --enable-display-revision isn't enabled SVNREV is no longer defined
-     in the build process.
+   * If --enable-display-revision isn't enabled SVNREV is no longer 
+     defined in the build process.
  * language and i18n:
    * updated translations: Danish, Finnish, French, German, Greek, Japanese,
      Lithuanian, Polish, Portuguese (Brazil), Russian, Serbian, Spanish,
@@ -3154,7 +3154,8 @@ Version 0.9.0:
    * made help use single click instead of double click
  * campaign modifications
    * tutorial polishing
-   * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
+   * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten',
+     and 'A Final Spring' to use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
    * modified the behaviour of the thieves in 'The Siege of Elensefar' (Heir to the Throne)
    * updated Heir to the Throne and The Rise of Wesnoth to use the ruined keeps where appropriate
    * dialog improvements in Eastern Invasion
@@ -3169,7 +3170,8 @@ Version 0.9.0:
    * split the map and scenario file for 'An Island'
    * disabled debug mode for multiplayer games
    * made it possible to join games using eras which only are on the host-side
-   * made it possible for the server to redirect the clients to another host (client-side support only for now)
+   * made it possible for the server to redirect the clients to another host 
+     (client-side support only for now)
  * terrain improvements
    * improved transitions:
      * swamp
@@ -3181,11 +3183,17 @@ Version 0.9.0:
      * river ford
      * lava
  * unit graphics and sound improvements
-   * updated images for several units: Cave Spider, Haldric, Lady Jessica, Mermaid Priestess, Mermaid Diviner, Merman Hunter, Merman Javelineer, Merman Spearman,Walking Corpse, Elvish Fighter, Captain, Marshal, Hero, Champion, Archer, Marksman, Sharpshooter, Ranger, Avenger, Shyde, Orcish Archer, Orcish Crossbowman, Human Spearman
+   * updated images for several units: Cave Spider, Haldric, Lady Jessica, 
+     Mermaid Priestess, Mermaid Diviner, Merman Hunter, Merman Javelineer, 
+	 Merman Spearman,Walking Corpse, Elvish Fighter, Captain, Marshal, Hero, 
+	 Champion, Archer, Marksman, Sharpshooter, Ranger, Avenger, Shyde, Orcish Archer, 
+	 Orcish Crossbowman, Human Spearman
    * added drake, mounted, saurian, swimmer, troll, and wose variations to Walking Corpse
    * updated Haldric's portrait in The Rise of Wesnoth
-   * added graphics for generic Lich-Lords, the Archmages in 'The Sewer of Southbay', and the Lady Outlaw (The Rise of Wesnoth)
-   * added support for animated deaths, and added animations for Skeleton and Revenant, and all Walking Corpse variations
+   * added graphics for generic Lich-Lords, the Archmages in 'The Sewer of Southbay', 
+     and the Lady Outlaw (The Rise of Wesnoth)
+   * added support for animated deaths, and added animations for Skeleton and 
+     Revenant, and all Walking Corpse variations
    * fixed several image files being referred to by wrong name
    * removed sound of thrown spear from Drake Clasher spear melee attack
    * added get_hit_sounds to Elder Mage (Delfador) and Elvish Lady (Parandra)
@@ -3263,7 +3271,8 @@ Version 0.9.0:
  * changed plague to allow plague(unit_type) as well as undead_variation
  * more progress towards a completely-usable 320x240 PDA port (campaigns should now be playable)
  * fixed bug that made the ai recruit badly
- * fixed auto-move using up all of the remaining moves when there are no empty hexes on the unit's path (#9649)
+ * fixed auto-move using up all of the remaining moves when 
+   there are no empty hexes on the unit's path (#9649)
  * fixed merged castles in random maps (#8848)
  * fixed villages in the rightmost column not getting a name (#11152)
  * fixed drawing error in the titlescreen (#12534)
@@ -3277,7 +3286,8 @@ Version 0.9.0:
  * improved threading of campaign server
  * fixed the dialog menus being larger than the screen
  * made the game remember the last server used for downloading campaings
- * when building out of the source tree, configure now creates the translations/ directory in the source tree, but does not attempt to do so if it is read-only
+ * when building out of the source tree, configure now creates the translations/ 
+   directory in the source tree, but does not attempt to do so if it is read-only
  * code refactoring and dependency cleanups
  * various bug fixes and code cleanups
 
@@ -3293,7 +3303,9 @@ Version 0.8.11:
    * Latin
    * Slovenian
    * Swedish
- * in language-selection dialog, consistently use native name for all languages, with the (hopefully) official latin transcription for those that cannot be displayed in the default font (russian, bulgarian, greek)
+ * in language-selection dialog, consistently use native name for all languages, 
+   with the (hopefully) official latin transcription for those that cannot be displayed 
+   in the default font (russian, bulgarian, greek)
  * language fixes and polishing (English)
  * fixed slovene being wrongly localized as sl_SL insteof sl_SI
  * campaign fixes and changes:
@@ -3316,8 +3328,10 @@ Version 0.8.11:
    * made all mages use staff (impact) as melee attack
    * added support for directional attack animations
  * fixed zipios support so that user campaigns custom images and sounds can be loaded
- * fixed locale-dependent numeric input/output bug, it allowed units to walk on the water, and prevented the AI from being correctly configured in campaigns
- * use fixed-point arithmetics in critical functions, so that wesnoth can reasonably run on an FPU-less machine (eg. ipaq PDA)
+ * fixed locale-dependent numeric input/output bug, it allowed units to walk on the water, 
+   and prevented the AI from being correctly configured in campaigns
+ * use fixed-point arithmetics in critical functions, so that wesnoth can 
+   reasonably run on an FPU-less machine (eg. ipaq PDA)
  * fixed the width of 'HP' and 'XP' in the right side panel
  * fixed some multiplayer connect bugs
  * fixed the AI not going through the no-ZoC of lv0 units when it should have
@@ -3410,7 +3424,8 @@ Version 0.8.9:
  * unit balancing:
    * Naga fighter: increased hitpoints from 27 to 30
    * Merman Hoplite: increased resistances and damage
-   * Mermaid Initiate/Enchantress/Siren: reduced number of attacks, increased damage, removed special resistances
+   * Mermaid Initiate/Enchantress/Siren: reduced number of attacks, 
+     increased damage, removed special resistances
    * Mermaid Initiate: increased experience needed to level, other minor tweaks
    * Swordsman: increase resistance to blade and impact
    * Royal guard: increase resistance to blade and impact
@@ -3439,7 +3454,8 @@ Version 0.8.9:
    * The Isle of Anduin- Extend shallow water around the Isle, remove the Saurians in favour of Goblins
    * The Bay of Pearls- Flip the map so the Ocean is on the West side
    * Muff Malal's Peninsula- Make it a peninsula, give Konrad the option of fighting (bonus) or fleeing
-   * Isle of the Damned- Touched up the map so it is clear that the islands are islands, made the islands tropical, and moved the temples
+   * Isle of the Damned- Touched up the map so it is clear that the islands 
+     are islands, made the islands tropical, and moved the temples
    * The Siege of Elensefar- New map, and other changes
    * The Crossroads- New map, weaker more diffuse ambushes, and less gold for the Orcs
    * The Princess of Wesnoth- Minor map changes, and made the scenario harder
@@ -3447,7 +3463,8 @@ Version 0.8.9:
  * scenario revisions in The Rise of Wesnoth:
    * fixed {CROSS} in 'Temple of the Deep'
    * fixed sign glitch
-   * reduced the difficulty of TRoW on 'Hard' particularly, and reduce the difficulty slightly on 'Easy' & 'Normal'
+   * reduced the difficulty of TRoW on 'Hard' particularly, and reduce 
+     the difficulty slightly on 'Easy' & 'Normal'
    * A New Land - Sync with the map from Bay of Pearls
    * Cursed Isle- Sync with the map from Isle of the Damned, make the temples match locations
    * Made 'Peoples in Decline' and 'Rough Landing' look tropical
@@ -3464,11 +3481,15 @@ Version 0.8.9:
  * added a "droid" game command, and allow for computer player to do a campaign
  * added a "canrecruit" filter
  * updated manpages and added support for translating them
- * "," is no longer the column separator, it does not have to be escaped anymore in some translations, "=" is the new separator (#10368)
- * take advantage of libzipios++ if available, to read cfg files, maps, images, sound effects, and fonts from zip files.  Call "make zip-install" to install data zipped.
+ * "," is no longer the column separator, it does not have to be escaped 
+   anymore in some translations, "=" is the new separator (#10368)
+ * take advantage of libzipios++ if available, to read cfg files, 
+   maps, images, sound effects, and fonts from zip files. 
+   Call "make zip-install" to install data zipped.
  * removed drain allowing to go past maximum hp
  * removed long-range attacks (Pirate Galleon, Transport Galleon, Wall Guard, Watch Tower)
- * fixed various bugs with respect to multiplayer game setup (#10896, #11236, #11265, #11442, #11527)
+ * fixed various bugs with respect to multiplayer game setup 
+   (#10896, #11236, #11265, #11442, #11527)
  * added new pathfinder (Redsun)
  * fixed some pathfinding bugs
  * fixed untranslatable strings
@@ -3687,7 +3708,8 @@ Version 0.8.7:
  * improved network threading
  * added server facility to record the way games end
  * improved 'Out of Sync' detection
- * imported SDL_ttf into the Wesnoth source tree, removed the dependency to SDL_ttf, added a dependency to libfreetype2
+ * imported SDL_ttf into the Wesnoth source tree, removed the dependency 
+   to SDL_ttf, added a dependency to libfreetype2
  * fixed memory corruption errors on font rendering in SDL_ttf
  * image and data-file cleanups
  * code cleanups
@@ -3699,7 +3721,8 @@ Version 0.8.6:
    * attack frames
    * grassland-to-water transitions
    * pier, bridge-ends
- * increased experience required to advance for Haldric and Jessica (both from The Rise of Wesnoth campaign)
+ * increased experience required to advance for Haldric and Jessica 
+   (both from The Rise of Wesnoth campaign)
  * reduced 'Elvish High Lord' movement to 6
  * tweaks for 'undeadfly' movetype: neutralized blade, pierce and impact resistances
  * tweaks for 'spirit' movetype: increased resistance against blade, pierce and impact
@@ -3755,7 +3778,8 @@ Version 0.8.6:
  * fixed holywater bug in 'The Rise of Wesnoth: Cursed Isle'
  * fixed top toolbar leaking ownership information for villages under fog of war
  * fixed victory conditions for 'Son of the Black-Eye: Silent Forest'
- * fixed victory conditions for 'The Rise of Wesnoth: Sewer of Southbay' and 'The Rise of Wesnoth: Fallen Lich Point'
+ * fixed victory conditions for 'The Rise of Wesnoth: Sewer of Southbay'
+   and 'The Rise of Wesnoth: Fallen Lich Point'
  * support for bridges ending on water
  * switched using gettext-standard multi-textdomain
  * suppressed warnings from msgfmt
@@ -3841,7 +3865,8 @@ Version 0.8.5:
  * fixed 'make uninstall' not working because of syntax error
  * fixed 'system default language' selection
  * fixed several graphic glitches
- * fixed a bug where tiles from terrain_graphics rule did not have the per-rule image when only defined through [map]
+ * fixed a bug where tiles from terrain_graphics rule did not have 
+   the per-rule image when only defined through [map]
  * fixed bug with [not] tags in filters
  * fixed missing semicolon in sound.cpp
  * fixed tutorial talking of elves having 70% defense on grass
@@ -3872,9 +3897,11 @@ Version 0.8.5:
  * fixed 'Messanger 0f Doom' in 'The Eastern Invasion: Weldyn under Attack' scenario
  * restored "Ambushed!" text in 'Heir to the Throne: Crossroads' scenario
  * added a way to specify the actual position of multi-hex tiles
- * added option to preferences file, 'unit_genders', which determines whether units with different genders should be used
+ * added option to preferences file, 'unit_genders', which determines 
+   whether units with different genders should be used
  * added internationalization parameter for Mac OS X
- * automatic computation of font sizes relatively to SIZE_NORMAL; make TINY mode really tiny to better help with UI downsizing work
+ * automatic computation of font sizes relatively to SIZE_NORMAL; 
+   make TINY mode really tiny to better help with UI downsizing work
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
  * enabled gamestart speedup by not unnecessarily loading campaigns
@@ -3885,7 +3912,8 @@ Version 0.8.5:
 
 Version 0.8.4:
  * changed vision range based on potential move
- * changed charge, backstab and steadfast abilities use true doubling and halving rather than additive percentage calculations
+ * changed charge, backstab and steadfast abilities use true doubling 
+   and halving rather than additive percentage calculations
  * more sound effects
  * new and improved graphics:
    * snow forest tiles
@@ -3922,16 +3950,21 @@ Version 0.8.4:
    * dwarves: switched movetype to 'dwarvishfoot'
    * treefolk (Woses): reduced pierce, impact and cold resistances
    * undeadfoot: "deep walking" (movement in deep water)
-   * Dwarvish Guardsman: reduced blade, pierce, impact, fire and cold resistances, reduced cost, reduced number of ranged attacks
-   * Dwarvish Stalwart: reduced blade, pierce, impact, fire and cold resistances, reduced number of ranged attack, increased ranged damage
+   * Dwarvish Guardsman: reduced blade, pierce, impact, fire and cold resistances,
+     reduced cost, reduced number of ranged attacks
+   * Dwarvish Stalwart: reduced blade, pierce, impact, fire and cold resistances, 
+     reduced number of ranged attack, increased ranged damage
    * Ghost: switched movetype to 'spirit', halved hitpoints, reduced movement
    * Lich: increased cost
    * Necromancer: increased cost
-   * Nightgaunt: switched movetype to 'spirit', halved hitpoints, reduced movement, reduced number of attacks, backstab
+   * Nightgaunt: switched movetype to 'spirit', halved hitpoints, 
+     reduced movement, reduced number of attacks, backstab
    * Orcish Archer: reduced cost
    * Peasant: increased cost, increased melee damage
-   * Spectre: switched movetype to 'spirit', halved hitpoints, reduced movement, backstab
-   * Shadow: switched movetype to 'spirit', halved hitpoints, reduced movement, reduced number of attacks, backstab
+   * Spectre: switched movetype to 'spirit', halved hitpoints, 
+     reduced movement, backstab
+   * Shadow: switched movetype to 'spirit', halved hitpoints, 
+     reduced movement, reduced number of attacks, backstab
    * Vampire Bat: increased cost
    * Walking Corpse: increased hitpoints, increased melee damage
    * Wose: reduced melee damage
@@ -3958,7 +3991,8 @@ Version 0.8.4:
    * restored Thug to Knalgan Alliance on default era
    * added many 2nd level units to factions on 'Age of Heroes' era
  * made hosting games work elegantly when wesnothd is running on the same machine
- * added new @ prefix to {inclusion} in config files to make it search both in the user's preferences dir and in the main data dir
+ * added new @ prefix to {inclusion} in config files to make it search both 
+   in the user's preferences dir and in the main data dir
  * fixed typo causing 'Troll Whelp' being recruitable in 'The Dark Hordes: A New Chance' scenario
  * fixed alignment and abilities not being shown in panel
  * fixed hitpoints and experience being not translatable in default theme
@@ -3977,7 +4011,8 @@ Version 0.8.4:
  * fixed Delfador appearing in 'The Dark Hordes: Inside The Tower'
  * fixed about/credits not being translatable
  * fixed 'Orcish Ruler' appearing in 'The Rise of Wesnoth' campaign
- * fixed 'Heavy Infantryman' recruiting bug in 'The Eastern Invasion: Mal-Ravanals Capital' scenario
+ * fixed 'Heavy Infantryman' recruiting bug in 'The Eastern Invasion: 
+   Mal-Ravanals Capital' scenario
  * fixed editor not being translatable
  * fixed Parandra missing in 'Heir to the Throne: The Elven Council' scenario
  * fixed king going to swimming on 'The Rise of Wesnoth: A Final Spring' scenario
@@ -4008,7 +4043,8 @@ Version 0.8.3:
  * added damage taken and inflicted with expected values to statistics
  * new and improved graphics:
    * dwarvish castle
-   * swamp, deep water, shallow water, snow, cave wall, cave floor, ice, lava, dirt, forest, bridge, road
+   * swamp, deep water, shallow water, snow, cave wall, cave floor, 
+     ice, lava, dirt, forest, bridge, road
    * chest, nest
    * portraits and unit animations
    * preferences icons
@@ -4033,10 +4069,12 @@ Version 0.8.3:
    * Bone Shooter: reduced experience required to level
    * Dwarvish Fighter: gave hammer attack
    * Dwarvish Steelclad: gave hammer attack, increased experience required to level
-   * Elvish Lord: changed to 2nd level unit, reduced hitpoints, reduced cost, reduced melee and ranged damages, advances to Elvish High Lord
+   * Elvish Lord: changed to 2nd level unit, reduced hitpoints, reduced cost, 
+     reduced melee and ranged damages, advances to Elvish High Lord
    * Soul Shooter: increased ranged damage
    * Woses: reduced cold resistance
-   * mountainfoot (Dwarves, Giant Spider): reduced movement cost on forest, sand, shallow water and swamp
+   * mountainfoot (Dwarves, Giant Spider): reduced movement cost on forest, 
+     sand, shallow water and swamp
  * new units
    * Dwarvish Guardsman
    * Dwarvish Stalwart
@@ -4048,7 +4086,8 @@ Version 0.8.3:
    * norwegian
    * spanish
  * multiplayer improvements:
-   * turn_cmd preferences option which can be pointed to a command executed at the start of the player's turn
+   * turn_cmd preferences option which can be pointed to a command executed 
+     at the start of the player's turn
    * replace AI or local player with observer
    * allowed recruiting Ghoul
  * Great War (multiplayer era) changes:
@@ -4070,13 +4109,16 @@ Version 0.8.3:
  * fixed call to non-existing macro in 'Heir to the Throne: Valley of Death'
  * fixed lacking ids in the female part of units files (#10065)
  * fixed conflict in terrain-graphics.cfg
- * fixed multi-hex images loading incorrectly when first loaded under an different zoom level than the standard one
+ * fixed multi-hex images loading incorrectly when first loaded 
+   under an different zoom level than the standard one
  * fixed map labels appearing during story
  * fixed missing #ifdef around config.h inclusion
  * fixed poisoned units not looking poisoned when selected (#10094)
- * fixed unit with 'non-living=yes' attacking a unit with a plague attack, and the unit with the plague attack kills it, a new plague unit will be created (#10049)
+ * fixed unit with 'non-living=yes' attacking a unit with a plague attack,
+   and the unit with the plague attack kills it, a new plague unit will be created (#10049)
  * fixed displaying 'hit t to continue' even when unit has finished movement
- * fixed shroud being revealed at the beginning of movement while sometimes it was revelead at the end of movement (#10046)
+ * fixed shroud being revealed at the beginning of movement while sometimes 
+   it was revelead at the end of movement (#10046)
  * fixed bad ifdefs in 'The Dark Hordes: Inside the Tower' scenario
  * fixed bugs in menu scrolling
  * fixed {RANDOM} bug in 'The Rise of Wesnoth' scenarios
@@ -4090,7 +4132,8 @@ Version 0.8.3:
  * reverted sound quality improvement as it caused instability on some systems
  * help system shows everything when wesnoth is running in debug mode
  * added support for 2- and 3-sided transitions on the TERRAIN_ADJACENT_NORTH macro
- * added possiblity for terrains to be defined as 2-layered, with a base part and an overlay part
+ * added possiblity for terrains to be defined as 2-layered, 
+   with a base part and an overlay part
  * added possibility to flip overlayed image
  * optimized menu scrolling
  * other minor speed optimizations
@@ -4133,8 +4176,10 @@ Version 0.8.2:
    * Noble Lord: reduced hitpoints, reduced melee and ranged damage
    * Noble Youth: increased hitpoints, increased movement, increased melee damage
    * Outlaw: reduced hitpoints, reduced number of melee attacks, increased ranged damage
-   * Outlaw Princess: reduced hitpoints, reduced experience required to level, reduced number of melee attacks, increased ranged damage, replaced 'ambush' with 'skirmisher'
-   * Outlaw Queen: increased hitpoints, replaced 'ambush' with 'skirmisher', reduced number of melee attacks, increased ranged damage and number of ranged attacks
+   * Outlaw Princess: reduced hitpoints, reduced experience required to level,
+     reduced number of melee attacks, increased ranged damage, replaced 'ambush' with 'skirmisher'
+   * Outlaw Queen: increased hitpoints, replaced 'ambush' with 'skirmisher', 
+     reduced number of melee attacks, increased ranged damage and number of ranged attacks
    * Soulless: increased melee damage
    * Thug: increased melee damage and reduced number of attacks
    * Walking Corpse: increased melee damage
@@ -4152,17 +4197,20 @@ Version 0.8.2:
    * banning for multiplayer server games
  * language fixes and polishing (english)
  * support for multi-animation attacks
- * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
+ * support for per-scenario configurable village flags, 
+   sample black-eyed banner for Son of the Black Eye campaign
  * support for relative {./includes} in WML files
  * added recruit event
  * fixed enemies being on wrong side in 'The Dark Hordes: A New Chance' scenario
  * fixed image::locator not building on MSVC6
  * fixed sending incorrect packet length causing wesnoth and wesnothd to abort
  * fixed a bug where a network user may crash other game abusing recursion
- * fixed a bug where a network user may crash other games using specially crafted packets, reading out-of-bounds data
+ * fixed a bug where a network user may crash other games using specially 
+   crafted packets, reading out-of-bounds data
  * fixed segfault when a [story] background image was not found
  * fixed narrator messages not being displayed sometimes
- * fixed autoconf macro for checking OGG support in SDL_mixer (it depended on private symbols not always included by distributions)
+ * fixed autoconf macro for checking OGG support in SDL_mixer 
+   (it depended on private symbols not always included by distributions)
  * fixed markovian name generation not playing well with UTF-8 names
  * fixed map border not getting changed when using [terrain] to change terrain (#9840)
  * fixed extraneous dots path (#9903)
@@ -4272,7 +4320,8 @@ Version 0.8.1:
  * switched all scenarios to new [story] syntax
  * added exploder and cutter tools
  * fixed the bug with multiplying help sections
- * fixed the problem where the forward and back button was shown brifly when opening the help browser
+ * fixed the problem where the forward and back button was shown briefly 
+   when opening the help browser
  * fixed --disable-debug not working as expected
  * fixed victory condition bug in 'Saving Inarix'
  * fixed problem where the editor would go slower and slower the more it was used
@@ -4288,7 +4337,8 @@ Version 0.8.1:
  * fixed attack animation not being complete
  * fixed absence of animation when units without attack frame perform attack
  * fixed obsolete Heavy Infantry unit still used in multiplayer
- * fixed colour cursor not reappearing on some window-managers when the user re-enters a Wesnoth window
+ * fixed colour cursor not reappearing on some window-managers 
+   when the user re-enters a Wesnoth window
  * fixed duplicate units: Cavalry, Cavalryman, Scout
  * fixed 'layers' not working as intended in built terrains
  * fixed terrain glitches, added a default base-terrain
@@ -4319,9 +4369,11 @@ Version 0.8.1:
  * added proper support for animated time-of-day alternative images
  * added support for animated terrain images
  * added support for animated flags on villages
- * cleaned the terrain-graphics.cfg - terrain graphics rule precedence is now depracated, use terrain layers
+ * cleaned the terrain-graphics.cfg - terrain graphics rule precedence 
+   is now deprecated, use terrain layers
  * reverted castle tiles not being expanded to the border
- * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface
+ * replacing all SDL_Surface*, and scoped_sdl_surface, 
+   with shared_sdl_surface, which was renamed surface
  * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
  * inlining some stuff for performance reasons
  * optimizing halo movement when unit moves
@@ -4381,13 +4433,15 @@ Version 0.7.11:
  * fixed human village not fitting within the mask
  * fixed clashing msg ids
  * fixed isolated keeps having void graphics
- * fixed tile overlays not displaying in grey if the tile is out of range of the selected unit's movement
+ * fixed tile overlays not displaying in grey if the tile is out of range 
+   of the selected unit's movement
  * fixed bugs with roles not working properly
  * fixed coherence of usage for elves:
    * Archer, Marksman, Sharpshooter -> archer
    * Ranger, Avenger -> mixed fighter
    * Hero, Captain, Champion, Marshal -> fighter
- * non-editable multi-line textboxes can have areas of text highlighted (and thus copied and pasted)
+ * non-editable multi-line textboxes can have areas of text highlighted 
+   (and thus copied and pasted)
  * support for defensive animations
  * tweaks to terrain graphic ordering
  * added engine support for max-level units advancing further
@@ -4440,7 +4494,8 @@ Version 0.7.10:
    * added some command line flags, such as --datadir
  * enabled alternate castle/keep tiles: encampment
  * gate "unit" (stripped from The Eastern Invasion/Captured scenario)
- * [binary_path] WML element which allows specification of a path where binary files may appear
+ * [binary_path] WML element which allows specification of a path 
+   where binary files may appear
  * made WML {inclusion} non-recursive
  * fixed segfault when filtering units at invalid locations
  * fixed SDL version checking bug in Mac OS X
@@ -4484,7 +4539,8 @@ Version 0.7.9:
    * skip AI moves option
    * show haloing effects option
    * resized some dialogs
- * improved and added new graphics: units, attacks animations, healing animations, attack icons, encampment, castle, haloes
+ * improved and added new graphics: units, attacks animations, 
+   healing animations, attack icons, encampment, castle, haloes
  * scenario balancing for 'Heir to the Throne' campaign:
    * Elves Besieged
    * Isle of Anduin
@@ -4511,7 +4567,8 @@ Version 0.7.9:
    * Silver Mage
    * Vampire Lady
    * Young Ogre
- * removed Dark Apprentice, Evil Necromancer and Soldier as they are no longer used (replaced by Initiate, Deathmaster and Spearman)
+ * removed Dark Apprentice, Evil Necromancer and Soldier as they are no longer used 
+   (replaced by Initiate, Deathmaster and Spearman)
  * Yeti's race changed to monster
  * nenamed 'Cavalry' to 'Cavalryman'
  * renamed 'Goblin Direwolver' to 'Direwolf Rider'
@@ -4564,8 +4621,10 @@ Version 0.7.9:
    * new brush image, file chooser folder image
    * changed menu names to 'file' and 'edit'
    * delete file button in file chooser
-   * two terrains may now be selected in the palette, one is used for filling when moving selections and cutting/pasting and will be used when drawing with the right button
-   * removed context menu, function of the left button is chosen in the right panel and operations that do not need a location to work are chosen from an additional menu
+   * two terrains may now be selected in the palette, one is used for filling when 
+     moving selections and cutting/pasting and will be used when drawing with the right button
+   * removed context menu, function of the left button is chosen in the right panel 
+     and operations that do not need a location to work are chosen from an additional menu
    * added a new level of brightened images
    * support for translations
    * fixed proper checks for validity not being done when loading or reverting a map
@@ -4573,13 +4632,16 @@ Version 0.7.9:
    * fixed BeOS crash in map editor
    * fixed the problem where the same sequence of random maps was generated
    * fixed a problem where the hotkeys from the game would appear in the editor
-   * fixed a problem where the selected terrain and brush size was not remembered through operations that affected the whole map, such as flip and resize
-   * fixed a problem where the palettes in the editor would not refresh correctly after the windows was resized
+   * fixed a problem where the selected terrain and brush size was 
+     not remembered through operations that affected the whole map, such as flip and resize
+   * fixed a problem where the palettes in the editor would not refresh 
+     correctly after the windows was resized
    * fixed editor handing different color depths incorrectly
  * new item: trapdoor
  * continue_no_save feature
  * added WML feature to append an element to another using [+element] syntax
- * made userdata/data/utils loaded in early in game.cfg to allow scenario designers to define utility files
+ * made userdata/data/utils loaded in early in game.cfg to allow 
+   scenario designers to define utility files
  * names for Nagas
  * fixed multiline text box not wrapping lines at word boundaries
  * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text
@@ -4603,7 +4665,8 @@ Version 0.7.9:
  * added XCF source files and some tools for castle building, these can be found in tools/
  * moved weapon icons to their own hierarchy: images/attacks/
  * moved projectiles/missiles to their own hierarchy: images/projectiles/
- * increased the horizontal padding of button widgets when having a label that is wider than the minimum width
+ * increased the horizontal padding of button widgets 
+   when having a label that is wider than the minimum width
  * added a trigger to the test map, when activated Orc leader can recruit
  * decreased size of saved games by removing some unnecessary information
  * converted all scenarios to new AI syntax
@@ -4613,7 +4676,8 @@ Version 0.7.8:
  * changed experience gauge, it is now shown next to hitpoints bar
  * search works with coordinates, use it like: /30,15
  * weapon type's tooltip shows its effectiveness against all known enemies on the battlefield
- * improved and added new character portraits, unit images, attack icons, missile images, fog and shroud images
+ * improved and added new character portraits, unit images, attack icons, 
+   missile images, fog and shroud images
  * halo effects
  * new sounds
  * enhanced blade, impact and cold resistance for Cavalry and Dragoon
@@ -4661,14 +4725,18 @@ Version 0.7.8:
  * fixed segfault in random map generation
  * fixed Out of Sync bugs
  * fixed bug where pressing 'n' while a unit is attacking would transfer damage to another unit
- * fixed entering a chat message while the message is selected would keep the area selected, and cause a crash upon next keypress (#9114)
+ * fixed entering a chat message while the message is selected would keep 
+   the area selected, and cause a crash upon next keypress (#9114)
  * fixed chat messages being dropped
  * fixed text ellipsis (triple dot being added after too long text) not being UTF-8-aware
- * fixed invalid UTF-8 sequences being generated by wstring_to_utf8, causing display bugs with some accented characters on some platforms
+ * fixed invalid UTF-8 sequences being generated by wstring_to_utf8,
+   causing display bugs with some accented characters on some platforms
  * fixed word_wrap_text not being UTF-8 aware
- * ignore unicode value of cursor-moving keys in text boxes (arrow keys, home, end); so they do not cause problems in platforms where SDL puts one (that is: MacOSX)
+ * ignore unicode value of cursor-moving keys in text boxes (arrow keys, home, end); 
+   so they do not cause problems in platforms where SDL puts one (that is: MacOSX)
  * removed alpha keyword from unit data, changed image files to have it
- * added font::make_text_ellipsis function, that works like word_wrap_text, but instead adds ellipsis on too long text
+ * added font::make_text_ellipsis function, that works like word_wrap_text,
+   but instead adds ellipsis on too long text
  * changed portable_isspace() so it only returns true on ASCII spaces
  * including a directory in WML will recurse into subdirs
  * WML support for '~' notation to include files in ~/.wesnoth/data
@@ -4746,14 +4814,16 @@ Version 0.7.7:
    * code cleanups
  * implemented multi-hex tiles
  * implemented 'not' tags in WML unit filters
- * fixed 'show enemy moves' and 'best possible enemy moves' showing in context menu when no enemies visible
+ * fixed 'show enemy moves' and 'best possible enemy moves' 
+   showing in context menu when no enemies visible
  * fixed resizing window in the title screen not working properly
  * fixed basic hotkeys not working in title screen
  * fixed terrain type and position problems with 800x600 resolution
  * fixed game creator not getting ally messages
  * fixed font redrawing for the font used in the slovak and polish translations
  * fixed typos in 'Shan Taum the Smug' that caused scenario to have only two turns
- * fixed crashes when units with invalid sides appear, by rejecting such invalide sides in the unit's constructor
+ * fixed crashes when units with invalid sides appear, by rejecting such 
+   invalide sides in the unit's constructor
  * fixed bug where 'cancel' button would appear under multiplayer games
  * fixed preferences widgets disappearing when changing video mode
  * fixed tooltips from game setup appearing in-game
@@ -4761,7 +4831,8 @@ Version 0.7.7:
  * fixed assertion failure in playturn.cpp
  * fixed deleting units from recall list not updating unit preview pane
  * changed all WML files to UTF-8, code now assumes all WML files being UTF-8
- * made input of search strings and messages use a textbox that overlays the map, which allows these operations to be performed asynchronously
+ * made input of search strings and messages use a textbox that overlays the map,
+   which allows these operations to be performed asynchronously
  * added caching of data files to speed game loading
  * added a "fire_event" in [kill] tags that allow die events to be processed if specified
  * re-ordered attacks: short range attacks are now always before long range attack on all units
@@ -4803,7 +4874,8 @@ Version 0.7.6:
    * fixed dynamically generated terrain not showing correctly
    * fixed filename being not correctly remembered on load and save as
    * code cleanups and refactoring
- * added [store_unit], [unstore_unit], [while], [store_starting_location], [store_locations] and [store_gold] tags to WML
+ * added [store_unit], [unstore_unit], [while], [store_starting_location], 
+   [store_locations] and [store_gold] tags to WML
  * added idle AI
  * added image_healing' and 'image_leading' animation code
  * added floating labels to indicate healing/poisoning of units
@@ -4811,8 +4883,10 @@ Version 0.7.6:
  * added support for action images
  * changed toggleable menu items use the checkbox graphics
  * fixed Li'sar dying in Hasty Alliance not resulting in a loss
- * fixed game creator being able to click [I'm Ready] before all networked players have joined when loading game from save
- * fixed first player gold reset to 100 in multiplayer games when starting gold set less than 100
+ * fixed game creator being able to click [I'm Ready] before all 
+   networked players have joined when loading game from save
+ * fixed first player gold reset to 100 in multiplayer games 
+   when starting gold set less than 100
  * fixed character's name overlapping their profile when they speak
  * fixed teleporting units not clearing shroud/fow when they teleport
  * fixed Orcish Ruler movetype not being orcishfoot
@@ -4822,16 +4896,20 @@ Version 0.7.6:
  * fixed cycling units not showing attack options
  * fixed units with drain not getting more than the max hitpoints
  * fixed Battle Princess not being able to get Scepter
- * fixed "invalid font characters" for slovak translation by adding 'font=Bepa-Roman.ttf', translators should ensure this line is preserved when upgrading translations
+ * fixed "invalid font characters" for slovak translation by adding 
+   'font=Bepa-Roman.ttf', translators should ensure this line is preserved 
+   when upgrading translations
  * fixed support for UTF-8 languages on text-boxes
- * fixed wesnoth.desktop (FreeDesktop shortcut definition file), which did contain invalid UTF-8 sequences
+ * fixed wesnoth.desktop (FreeDesktop shortcut definition file),
+   which did contain invalid UTF-8 sequences
  * fixed experience modifier not working correctly when loading saved multiplayer game
  * fixed pressing escape key not closing dialogs which had only 'ok' button
  * fixed observers getting victory/defeat message at the end of the game
  * fixed statistics not working correctly when loading with replay
  * fixed screen menu flickering when dialog is cancelled
  * fixed negative numbers not displaying minus in front of them
- * fixed bug (u$win only) which caused defeat at the end of Valley of Death, even when you should have been victorious
+ * fixed bug (u$win only) which caused defeat at the end of Valley of Death,
+   even when you should have been victorious
  * fix to preprocessor
  * fixed some compile warnings
  * various improvements to wesnothd
@@ -4839,7 +4917,8 @@ Version 0.7.6:
  * relocated 'The Dark Hordes' scenarios to data/scenarios/The_Dark_Hordes/
  * added ability to remove tiles from the border cache
  * added definitions of new pure virtual methods in hotkey.hpp
- * added wstring_to_string and string_to_wstring routines in language.cpp, which convert strings according to the current charset()
+ * added wstring_to_string and string_to_wstring routines in language.cpp,
+   which convert strings according to the current charset()
  * added toggleable action support to hotkey.[c|h]pp & playturn.[c|h]pp
  * added code to wesnothd to prevent spoofing of messages
  * added code to wesnothd to stop malicious observer clients issuing commands for players
@@ -4897,8 +4976,10 @@ Version 0.7.4:
  * fixed statistics showing incorrectly on all but scenario 1
  * fixed infliced damage labels being not always displayed
  * fixed strange name-endings in name generator
- * fixed bug where Scepter of Fire scenario is loaded instead of scenarios after the Scepter of Fire
- * fixed Scepter of Fire being winnable by killing all enemies, now you need to get the scepter
+ * fixed bug where Scepter of Fire scenario is loaded instead 
+   of scenarios after the Scepter of Fire
+ * fixed Scepter of Fire being winnable by killing all enemies, 
+   now you need to get the scepter
  * fixed messages and options not found by make_translation (#7415)
  * fixed keeps located on the border of the screen having broken graphics
  * fixed bug in Desert of Death scenario
@@ -4961,7 +5042,8 @@ Version 0.7.3:
  * new time of day image masks which get laid over hexes when it's that time of day
  * fixed on-map labels not printing black on light coloured terrains
  * fixed ellipses not fading when a unit dies
- * fixed bug where if the host changed their name, it would show that name to users connecting to the game
+ * fixed bug where if the host changed their name, it would show that name 
+   to users connecting to the game
  * fixed bug in lobby where top-left of screen would not be drawn properly
  * fixed bug with AI not getting villages
  * fixed some compiler warnings
@@ -4991,7 +5073,8 @@ Version 0.7.2:
  * fixed attack miscalculation for offensive units which ignored time of day
  * fixed typo in Toward Mountains of Haag
  * fixed many 'end of line' warnings
- * fixed active player not receiveing labels and messages immidiately while it was his/her turn
+ * fixed active player not receiveing labels and messages immediately 
+   while it was his/her turn
  * fixed networking problems which caused out-of-syncs
  * made mountains 'dark terrain'
  * made on-map labels disappear on end of level
@@ -5007,7 +5090,8 @@ Version 0.7.1:
  * 'Sword of Fire' changed melee weapon with fire damage
  * made the game more interactive during the AI's turn
  * added and improved unit images, missile images and attack icons
- * merman and swamp villages, ice terrain, dirt and swamp transitions, trash heap (minor terrain item)
+ * merman and swamp villages, ice terrain, dirt and swamp transitions, 
+   trash heap (minor terrain item)
  * new fog of war images
  * underground daytime images
  * fading effect between daytime changes
@@ -5101,7 +5185,8 @@ Version 0.7:
  * fixed swedish
 
 Version 0.6.99.5:
- * many of the unit images were drawn using a SNES game graphics as basis: all images which we thought might be considered as derived work have been redrawn
+ * many of the unit images were drawn using a SNES game graphics as basis:
+   all images which we thought might be considered as derived work have been redrawn
  * theme update, scrollbars
  * added new sounds, unit images and attack icons
  * invisibility "wears off" when enemy unit comes adjacent (#6879)
@@ -5160,11 +5245,13 @@ Version 0.6.99.5:
  * fixed crash when you press escape when a menu is displayed (#7863)
  * fixed unit descriptions leaking thru fog of war (#7843)
  * fixed bug where units would regain hitpoints after reloading the game (#7842)
- * fixed slow down right before a unit arrives at its destination hex, due to redrawing of the minimap
+ * fixed slow down right before a unit arrives at its destination hex,
+   due to redrawing of the minimap
  * fixed ghosted usernames on server (#7655)
  * fixed focus not returning Konrad on new turn (#7188)
  * fixed wrapping of text in opening sequence (#7878)
- * fixed bug where on large maps, the cursor wouldn't point at the correct hex toward the eastern side of the map
+ * fixed bug where on large maps, the cursor wouldn't point at the correct hex
+   toward the eastern side of the map
  * fixed scroll speeds being set to insane values
  * fixed bug where AI could see potential movement of invisible enemy units
  * fixed bug where Blackwater Port was easier than it was meant to be on 'normal' level
@@ -5178,7 +5265,8 @@ Version 0.6.99.5:
  * made it easier for different AI algorithms to be added
  * added Doxygen documentation to ai_interface
  * autotools fix: 'make uninstall' removes data directories if they are empty
- * slacknoth script does a 'make clean' before compiling source, strips binaries and adds package info
+ * slacknoth script does a 'make clean' before compiling source,
+   strips binaries and adds package info
  * refactored widget class
  * removed some debug cerrs
  * added VC++6 project files to CVS
@@ -5295,7 +5383,8 @@ Version 0.6.99.2:
  * escape save game filenames to allow special characters on them
  * removed show_ai_move options, since there is a serious bug with it
  * fixed poison healing bug
- * fixed bug where killing an enemy that caused an [endlevel] event to occur prevented advancement by the unit killing
+ * fixed bug where killing an enemy that caused an [endlevel] event 
+   to occur prevented advancement by the unit killing
  * fixed bug where commander would carry over movement from previous level
  * fixed storyline image for Isle of the Damned
  * fixed adjacent terrain for pier terrain
@@ -5305,7 +5394,8 @@ Version 0.6.99.2:
  * fixed crashing on missing intro image
  * fix to bug in tiles_adjacent()
  * fixed "Leving" -> "Leaving" in Shadow description
- * fixed problem where after being disconnected from the server, players would be unable to reconnect without quitting the client
+ * fixed problem where after being disconnected from the server,
+   players would be unable to reconnect without quitting the client
  * fixed game not notifying when save game failed
  * fixed round indicator does not show completely (#7500)
  * attempt to fix STL-related compile error on Slackware
@@ -5320,7 +5410,8 @@ Version 0.6.99.1:
    * support for themes
    * enhanced support for resolutions below 1024x768 (e.g. 800x600)
    * very simple chatting is now possible in-game (mouse right-click menu -> speak)
-   * new time of day images, attack icons, new buttons, checkboxes, panel has been split to top and right-side panel...
+   * new time of day images, attack icons, new buttons, checkboxes, 
+     panel has been split to top and right-side panel...
  * medium difficulty level is used by default when starting new campaign
  * snapshot saving, faster loading if you skip replay
  * more unit graphics, animations and sounds
@@ -5328,13 +5419,17 @@ Version 0.6.99.1:
  * undeads can not be drained anymore
  * new units:
    * Shadow
- * dart damage type changed from pierce to blade, this affects 'Orcish Assassin' and 'Orcish Slayer'
+ * dart damage type changed from pierce to blade, 
+   this affects 'Orcish Assassin' and 'Orcish Slayer'
  * fixed description for 'Wolf Rider'
  * changed 'Evil Necromancer' advanceto 'Lich'
- * Mage stats changed: hitpoints increased to 24, ranged attack does now 6-3 (magic), 60 experience needed to advance
+ * Mage stats changed: hitpoints increased to 24, ranged attack does now 6-3 (magic),
+   60 experience needed to advance
  * reduced movement for Arch Mage and Great Mage to 4
- * Dwarvish Lord changes: renamed 'tomahawk' to 'hatchet', removed leadership, increased resistance against blade, piercing and impact
- * Necromancer changed to 'human' (movement_type is now 'smallfoot'), experience needed to advance increased to 80
+ * Dwarvish Lord changes: renamed 'tomahawk' to 'hatchet', removed leadership,
+   increased resistance against blade, piercing and impact
+ * Necromancer changed to 'human' (movement_type is now 'smallfoot'),
+   experience needed to advance increased to 80
  * Lich experience needed to advance increased to 250
  * 'Ancient Lich' Melee damage decreased to 8-4
  * free units don't get traits anymore, however they are free in future scenarios
@@ -5351,12 +5446,14 @@ Version 0.6.99.1:
    * The Skull of Agarash
  * units will stop moving when they see new units (shroud/fow)
  * moves that do not reveal shroud/fow are undoable
- * when a leader dies all villages for that side become neutral and you can not anymore capture villages, you can still "neutralize" villages of other players
+ * when a leader dies, all villages for that side become neutral and you 
+   can not anymore capture villages, you can still "neutralize" villages of other players
  * 'show team colours' now uses colored circles to identify units sides
  * added 'show team colours' option to preferences dialog
  * added some explanatory tooltips for some unit attributes on sidebar
  * added in flag to show whose turn it currently is
- * added end turn confirmation when units can still move (requires editing preferences-file - see WesnothPreferences on http://wiki.wesnoth.org for more information)
+ * added end turn confirmation when units can still move (requires 
+   editing preferences-file - see WesnothPreferences on http://wiki.wesnoth.org for more information)
  * added 'unit list' to context menu
  * restored 'save game' in the context menu (#7172)
  * multiplayer improvements:
@@ -5364,7 +5461,8 @@ Version 0.6.99.1:
    * random maps
    * made basic messaging possible using 'Speak' from main menu
    * 'delayed map sharing' between allies
-   * when player quits or gets disconnected from multiplayer game, game creator chooses to replace them with ai/local player or abort
+   * when player quits or gets disconnected from multiplayer game, 
+     game creator chooses to replace them with ai/local player or abort
    * loaded games should now start properly and with right settings
    * there are now flags (and colors) for 10 teams
    * minimap shows FoW and units
@@ -5423,8 +5521,11 @@ Version 0.6.99.1:
  * fixed bug where capturing a village with a leader would not change the village to your side
  * fixed bug where scenario objectives in loaded games would sometimes have weird boxes on the end
  * fixed bug which could cause a crash when a unit advances
- * fixed problem where changing between fullscreen/windowed mode in preferences could do strange things
- * fixed start game in windowed mode -> tutorial -> ctrl-f to change to fullscreen -> quit to main menu -> preferences -> click button to change to full screen -> close preferences dialog -> crash
+ * fixed problem where changing between fullscreen/windowed mode in preferences 
+   could do strange things
+ * fixed start game in windowed mode -> tutorial 
+   -> ctrl-f to change to fullscreen -> quit to main menu -> preferences 
+   -> click button to change to full screen -> close preferences dialog -> crash
  * fixed bug where very large dialogs could crash the game
  * fixed some problems with too-large dialog boxes
  * fixed bug where an invalid side specification for a unit could crash the game
@@ -5448,7 +5549,8 @@ Version 0.6.99.1:
    * removed autoconf version 2.57 prerequisite
    * adding autogen.sh, so CVS users don't need autotools installed
  * a workaround to allow users not using 16 bpp to change video mode
- * changed drawing routines to use more SDL routines, and less direct manipulation of surfaces
+ * changed drawing routines to use more SDL routines, 
+   and less direct manipulation of surfaces
  * removed unnecessary diagnostics
  * code refactoring and cleanups
 
@@ -5468,11 +5570,13 @@ Version 0.6.1:
  * fixed 'A Choice Must Be Made' defeat conditions
  * fixed bug causing crash on scenario completion
  * fixed 'Storm Trident' mislocation on 'Bay of Pearls'
- * fixed resetting player starting gold, gold per village, player race, and player type when loading multiplayer game
+ * fixed resetting player starting gold, gold per village, player race, 
+   and player type when loading multiplayer game
  * change the way images are handled to fix resizing (and other potential) bugs
  * fixed problem where gold was reset to 100 on some scenarios
  * made it so both holy water items in the valley of death work properly
- * fixed bug where using items such as the 'Storm Trident' and 'Sceptre of Fire' could crash the game
+ * fixed bug where using items such as the 'Storm Trident' and 
+   'Sceptre of Fire' could crash the game
  * fixed bug that occurred when the display was zoomed very far out
  * fixed reference counting problem
  * code cleanups
@@ -5540,7 +5644,8 @@ Version 0.6:
  * changed 'Red Mage' to neutral alignment
  * removed 'Elvish Outrider' as evolution from Horseman
  * Scout has been renamed to Cavalry
- * Cavalry stats adjusted, increased cost by one, reduced movement by one, reduced experience needed to advance
+ * Cavalry stats adjusted, increased cost by one, reduced movement by one, 
+   reduced experience needed to advance
  * Horseman now needs more experience to advance
  * 'Vampire Bat' now needs more experience to advance and costs more
  * 'Mage of Light' attack is now a bit more powerful
@@ -5575,7 +5680,8 @@ Version 0.6:
    * added [allow_recruit]
    * added [teleport]
  * added in support for some special effects: flashing and scrolling/tremors
- * added coding support for displaying different terrain images (particularly useful for villages) at different times of the day
+ * added coding support for displaying different terrain images 
+   (particularly useful for villages) at different times of the day
  * fixed minor bugs in unit configuration files for Elvish Sharpshooter and Fencer
  * fixed problem where 'goto numbers' can overwrite part of the right panel
  * footsteps disappear as you walk over them
@@ -5596,11 +5702,13 @@ Version 0.6:
  * fixed compile error with older versions of SDL
  * made time of day images update properly
  * fixed assertion failures
- * fixed problem where slamming screen against right side and holding down right cursor key would cause hexes to shift around
+ * fixed problem where slamming screen against right side and holding down
+   right cursor key would cause hexes to shift around
  * made mouse wheel and middle-click work again
  * resolved conflicts in game.cfg
  * made it so flags are overlayed on top of villages properly
- * made image cache flush occur when switching video modes, in an effort to solve colour distortion problem on MacOSX
+ * made image cache flush occur when switching video modes,
+   in an effort to solve colour distortion problem on MacOSX
  * fixed seg fault bug
  * fixed energy bar images
  * changed energy movement orbs
@@ -5615,7 +5723,8 @@ Version 0.6:
  * fix hitpoint bar problem on MacOSX
  * added diagnostic to attack calculations
  * added error logging and correction for combat related syncing errors
- * client_type=ai in preferences-file make player join networked multiplayer games as AI player
+ * client_type=ai in preferences-file make player join 
+   networked multiplayer games as AI player
  * added some comments to code
  * added icon to Windows distribution
 
@@ -5637,7 +5746,8 @@ Version 0.5.1:
  * map file format is now correctly oriented
 
 Version 0.5:
- * low traffic wesnoth-releases mailing-list, subscribe at http://mail.nongnu.org/mailman/listinfo/wesnoth-releases
+ * low traffic wesnoth-releases mailing-list, 
+   subscribe at http://mail.nongnu.org/mailman/listinfo/wesnoth-releases
  * network multiplayer
  * wesnoth server
  * more sound effects and musics
@@ -5659,9 +5769,11 @@ Version 0.5:
    * Soldier
  * Swordsman was changed to level 2 unit
  * Gryphon claws attack is now blade
- * reduced movement for Dwarvish Berserker, Dwarvish Lord, Orcish Assassin, Orcish Slayer and Orcish Crossbow
+ * reduced movement for Dwarvish Berserker, Dwarvish Lord, 
+   Orcish Assassin, Orcish Slayer and Orcish Crossbow
  * elven units are now neutral
- * changed 'night vision' to ambush ("invisibility" at forest) for Elvish Ranger and Elvish Avenger
+ * changed 'night vision' to ambush ("invisibility" at forest)
+   for Elvish Ranger and Elvish Avenger
  * changed Elvish Outrider weapon to sword (no more charging)
  * human units are now lawful
  * renamed Assasin to Assassin
@@ -5674,7 +5786,8 @@ Version 0.5:
  * allow keystroke repeat when holding down in text entry fields
  * added toggling of grid with control-g
  * fixed cycling to goto units
- * made it so when unit is selected, pressing a number n on the keyboard will show how far that unit can move in n turns
+ * made it so when unit is selected, pressing a number n on the keyboard 
+   will show how far that unit can move in n turns
  * added mousewheel support
  * added center-on-middle click
  * fixed bug with replays and moving onto villages
@@ -5692,7 +5805,9 @@ Version 0.5:
  * added new dialogs and right-side panel
  * path highlighting (footsteps)
  * menu borders updated
- * added in showing of how many turns a goto command will take. Mousing over terrain with unit selected will show defense % of the terrain and movement cost for that unit
+ * added in showing of how many turns a goto command will take.
+   Mousing over terrain with unit selected will show defense % of the terrain 
+   and movement cost for that unit
  * made preferences accessible from the title screen
  * added configurable scrolling speed
  * added in colour cycling for day/night
@@ -5714,7 +5829,8 @@ Version 0.4.8:
  * AI improvements - grouping, waiting for reinforcements
  * new tile graphics for grassland, shallow water, deep water, sand and keep
  * more unit animations, sounds and descriptions
- * reduced movement for advanced units, they don't need to be both more powerful and faster than lesser units
+ * reduced movement for advanced units, they don't need to be both 
+   more powerful and faster than lesser units
  * horseman is now neutral unit
  * paladin sword attack is now holy
  * wolf rider, goblin knight, vampire bat and blood bat attack is now blade
@@ -5730,7 +5846,8 @@ Version 0.4.8:
  * validate saved games with version number
  * screen resolution can be changed in preferences
  * allow window to be dynamically resized when running windowed
- * use video hardware surfaces where possible (Windows seems to have trouble with hardware surfaces so game always uses software surfaces when running on Windows)
+ * use video hardware surfaces where possible (Windows seems to have trouble 
+   with hardware surfaces so game always uses software surfaces when running on Windows)
  * code cleanups
  * lots of compiler warning eliminated
  * sourcecode moved to src/
@@ -5740,17 +5857,28 @@ Version 0.4.7:
  * made it so the game will dump core if it segfaults
  * fixed crash reported by zas when a unit attacks
  * you can now zoom in and out when the AI is moving
- * added improved keyboard control that allows keys to be set in the locale settings. Keyboard shortcuts (in the English locale) changed
- * added ability to make different game-paths - e.g. the scenario you play could be determined by how you won last scenario. Dialogs can now be popped up which ask the player to make a selection, and the selection they make determines how the game progresses. (But no part of the game actually uses this feature yet)
+ * added improved keyboard control that allows keys to be set in the locale settings.
+   Keyboard shortcuts (in the English locale) changed
+ * added ability to make different game-paths - e.g. the scenario 
+   you play could be determined by how you won last scenario. 
+   Dialogs can now be popped up which ask the player to make a selection, 
+   and the selection they make determines how the game progresses. 
+   (But no part of the game actually uses this feature yet)
  * added scenario objectives in scenario 10
- * now when the AI attacks an enemy and doesn't kill it, it will move other nearby units toward the place where the combat took place
- * if an AI sees only combats that result in loss nearby, it will request reinforcements from nearby
- * made it so that if the macro WESNOTH_PATH is defined, the game will look for its data files at that path. You can thus compile with e.g.  -DWESNOTH_PATH=\"/usr/local/games/wesnoth\" -- the Makefile does not currently take advantage of this
+ * now when the AI attacks an enemy and doesn't kill it, it will move 
+   other nearby units toward the place where the combat took place
+ * if an AI sees only combats that result in loss nearby, 
+   it will request reinforcements from nearby
+ * made it so that if the macro WESNOTH_PATH is defined, the game 
+   will look for its data files at that path. You can thus compile with 
+   e.g.  -DWESNOTH_PATH=\"/usr/local/games/wesnoth\" 
+   -- the Makefile does not currently take advantage of this
  * added benchmarking of times to perform various operations in the game
  * made leaders start in a 'keep'. (But need a better image for the keep
  * added difficulty level settings for scenarios up to scenario 9
  * added (partially done) Italian translation
- * added 'skip turn' option, accessible by pressing space - will end the selected unit's turn, and go to the next unit that has moves left
+ * added 'skip turn' option, accessible by pressing space - 
+   will end the selected unit's turn, and go to the next unit that has moves left
 
 Version 0.4.6:
  * converted over to using png images instead of bmp
@@ -5758,18 +5886,22 @@ Version 0.4.6:
  * made it so healing animations and sounds don't play during replays
  * removed name generation code, since it wasn't fast enough
  * added sounds to a number of Elvish units
- * made it so that when the attack-selection dialog is displayed, the attacking unit is displayed in the right side bar, so that one can easily compare the attacking and defending units
+ * made it so that when the attack-selection dialog is displayed, the 
+   attacking unit is displayed in the right side bar, 
+   so that one can easily compare the attacking and defending units
  * fixed bug where after a scenario is loaded, on new turn it wouldn't scroll to the leader
  * made the display area for units bigger when recalling, to fit in units like the Druid
  * reduced Mage's hitpoints from 25 -> 18
- * added in plague ability and gave it to walking corpse and wraith. A unit with plague will create a new unit of their own type whenever they kill an enemy unit
+ * added in plague ability and gave it to walking corpse and wraith.
+   A unit with plague will create a new unit of their own type whenever they kill an enemy unit
  * tweaked recruitment pattern on scenario 6
  * made marksman and sharpshooter both very bad at close range
  * increased power of Mage of Light's attack
  * made it so you get a gold bonus when you complete scenario 9
  * fixed scenario 7 to say 'survive for 2 days'
  * changed Swordman -> Swordsman and Beserker -> Berserker
- * made some speed changes which will hopefully help for people who are finding it slow on startup and after selecting difficulty levels
+ * made some speed changes which will hopefully help for people who 
+   are finding it slow on startup and after selecting difficulty levels
  * fixed display problem where background of menus that had scroll arrows looked displaced
  * corrected facing of dwarvern units
  * added transition hexes at the edge of the scenario to make the edges of the map look nicer
@@ -5784,39 +5916,63 @@ Version 0.4.5:
  * added two new images from fmunoz to introduction sequence
  * added new preferences dialog, which contains volume controls for music and sound effects
  * got rid of flicker on title screen when you cancel selection of a dialog box
- * fixed a number of drawing bugs which caused strange lines to appear across the screen sometimes, and caused the game to display badly when zoomed out alot. Zooming out should now work perfectly
+ * fixed a number of drawing bugs which caused strange lines to appear 
+   across the screen sometimes, and caused the game to display badly when zoomed out alot.
+   Zooming out should now work perfectly
  * marksman (trait) to hit chance reduced to 60 %
  * night vision (trait) added to Elvish Ranger and Elvish Avenger
 
 Version 0.4.4:
- * fixed assertion failure if you try to start a campaign and then cancel on the difficulty level settings
- * added 'merge_translations' tool which will merge an old version of a foreign language translation to the current English translation, making a new translation that has foreign language strings where they are available, and English strings otherwise
- * fixed crash if you opened a menu that had some empty strings in it (for instance clicking preferences in the French version)
- * changed recruitment so that now a leader can only recruit if they are on a starting location. They can recruit units on any vacant castle tile connected to the starting location they are on. The player can choose a location to recruit onto by selecting it when accessing the recruit menu. TODO - Need a graphic to distinguish the starting hex from other castle hexes
+ * fixed assertion failure if you try to start a campaign and then cancel 
+   on the difficulty level settings
+ * added 'merge_translations' tool which will merge an old version of a 
+   foreign language translation to the current English translation, making a 
+   new translation that has foreign language strings where they are available, 
+   and English strings otherwise
+ * fixed crash if you opened a menu that had some empty strings in it 
+   (for instance clicking preferences in the French version)
+ * changed recruitment so that now a leader can only recruit if they are on 
+   a starting location. They can recruit units on any vacant castle tile connected
+   to the starting location they are on. The player can choose a location 
+   to recruit onto by selecting it when accessing the recruit menu. TODO - 
+   Need a graphic to distinguish the starting hex from other castle hexes
  * changed maximum items displayed in a menu before up/down buttons appear from 10 to 18
  * fixed bug in scenario 8 where objectives would not be displayed
  * fixed bug in scenario 9 where major characters could die without loss
- * changed it so that when writing a configuration file, [/element-name] will be used to end an element instead of [end]
+ * changed it so that when writing a configuration file,
+   [/element-name] will be used to end an element instead of [end]
  * fixed corrupted save file bug reported by miyo
- * made the White Mages that join you in level 7 leave you at the end of the level, as they are meant to
+ * made the White Mages that join you in level 7 leave you 
+   at the end of the level, as they are meant to
  * changed advancement animation colour to black for chaotic units
- * made it so that when an AI-controlled unit moves, its details are displayed on the sidebar, as suggested by miyo
- * implemented algorithm so that if an AI is moving and the map has to be scrolled, frames will be skipped if necessary to make the AI moving at a decent speed
+ * made it so that when an AI-controlled unit moves,
+   its details are displayed on the sidebar, as suggested by miyo
+ * implemented algorithm so that if an AI is moving and the map has to be scrolled, 
+   frames will be skipped if necessary to make the AI moving at a decent speed
  * added Danish translation
  * added improved French translation
- * made it so that if you mouse-over a unit, it will be displayed in the unit details on the sidebar
- * changed healing so that a healer can only heal up to 12 hitpoints per turn.  Added animations and sound effects to healing
- * added in AI type 'guardian', which is a unit that will stay in position until enemies come in range at which point it attacks. Now in scenario 3 there is a cage with many mermen in it that has 2 naga guardians around it
+ * made it so that if you mouse-over a unit, it will be displayed 
+   in the unit details on the sidebar
+ * changed healing so that a healer can only heal up to 12 hitpoints per turn.
+   Added animations and sound effects to healing
+ * added in AI type 'guardian', which is a unit that will stay in position 
+   until enemies come in range at which point it attacks.  Now in scenario 3 
+   there is a cage with many mermen in it that has 2 naga guardians around it
  * added scenario 10 provided by Shroud and scenario 11 provided by fmunoz
- * added in test version of a naming algorithm that will automatically name created units that was submitted as a patch by a wesnoth user
+ * added in test version of a naming algorithm that will automatically name 
+   created units that was submitted as a patch by a wesnoth user
 
 Version 0.4.3:
- * made it so that when a directory is scanned for files, only files ending in .cfg will be used. This is mainly to stop vim swap files from being used
+ * made it so that when a directory is scanned for files,
+   only files ending in .cfg will be used. 
+   This is mainly to stop vim swap files from being used
  * changed AI's movement routines to make it slightly more intelligent
  * added in difficulty levels - easy, medium, and hard
  * scenarios 1 and 2 now have easy/medium/hard difficulty levels implemented for them
  * when an enemy dies, its energy bar now fades out with it
- * added 'turbo' mode in preferences area. In turbo mode, the operation of the shift key is inverted. Turbo mode and full screen mode settings are now saved to the preferences file
+ * added 'turbo' mode in preferences area. 
+   In turbo mode, the operation of the shift key is inverted. 
+   Turbo mode and full screen mode settings are now saved to the preferences file
  * made the time of day go dawn - day - day - dusk - night - night as suggested by miyo
  * fixed up bugs in the AI's pathfinding, the AI should now be substantially smarter
  * allowed setting of custom target units for the AI
@@ -5831,27 +5987,38 @@ Version 0.4.2:
  * added setting of window title as suggested by zas
  * changed so that holding shift skips fading in recruiting units
  * increased cost of Naga from 8 -> 11 gold to make scenario 3 easier
- * fixed bug with recalling in mid-level saved games - should save alot of game corruption issues
+ * fixed bug with recalling in mid-level saved games - 
+   should save alot of game corruption issues
  * made it so attack sounds do not play while loading game
  * added animations for Goblin Knight, Wolf Rider, and Troll Whelp
  * made it so Glordorf in Scenario 2 doesn't join the player
  * added in new missile images done by fmunoz
- * fixed bug where merman's storm trident would run out when the merman advances, or at the end of the level
+ * fixed bug where merman's storm trident would run out when the merman advances, 
+   or at the end of the level
  * page up and page down can be used to maneuver through menus
- * fixed bug reported by Jaramir, where exiting a multiplayer game would cause the save state to be remembered
- * fixed bug reported by Jaramir, where recruiting or recalling a unit wouldn't update your gold immediately
- * added better guarantees that when an AI attacks a unit, the unit being attacked won't be mostly off the screen
+ * fixed bug reported by Jaramir, where exiting a multiplayer game 
+   would cause the save state to be remembered
+ * fixed bug reported by Jaramir, where recruiting or recalling a unit 
+   wouldn't update your gold immediately
+ * added better guarantees that when an AI attacks a unit, 
+   the unit being attacked won't be mostly off the screen
  * changed Necromancer to level 2
- * fixed bug where quitting the game by pressing escape during opening dialog sequence would cause the game to crash
- * added facility suggested by miyo where an entire directory can be scanned to look for configuration files. Re-arranged files in data/ to utilize this
- * changed configuration files to allow [/tagname] to end a tag instead of [end]. Added better error handling for bad configuration files
- * added utility make_translation which when run, will construct a sample translation with all the strings that can be translated in it
+ * fixed bug where quitting the game by pressing escape during 
+   opening dialog sequence would cause the game to crash
+ * added facility suggested by miyo where an entire directory can be scanned 
+   to look for configuration files. Re-arranged files in data/ to utilize this
+ * changed configuration files to allow [/tagname] to end a tag instead of [end]. 
+   Added better error handling for bad configuration files
+ * added utility make_translation which when run, will construct a 
+   sample translation with all the strings that can be translated in it
  * removed Outrider's spear/charge attack and replaced it with a sword
  * added sorting to recall list
 
 Version 0.4.1:
- * added music and sound support. The game has one song, provided by ZhayTee+.  Added some sample sounds for Elvish Fighter attacking
- * fixed up bug where if you loaded a mid-level game, and then saved at the end of level, the save would be corrupt
+ * added music and sound support. The game has one song, provided by ZhayTee+.  
+   Added some sample sounds for Elvish Fighter attacking
+ * fixed up bug where if you loaded a mid-level game, and then saved 
+   at the end of level, the save would be corrupt
  * fixed bug where the display mode would always be displayed as 'windowed'
  * make the game report an error message if switching between windowed/full screen fails
  * make the game handle switches between windowed and full screen even if exact colour depth can't be matched
@@ -5863,15 +6030,19 @@ Version 0.4:
  * fixed a bug with unit description images being messed up if you zoom in
  * fixed time to load a game
  * fixed missiles up to point in the correct direction
- * fixed naming of Shallow Water and Deep Water (used to be 'ocean' and 'coast' and not internationalized properly)
+ * fixed naming of Shallow Water and Deep Water (used to be 'ocean' and 'coast' 
+   and not internationalized properly)
  * removed bug where a dialog could overwrite part of the sidebar on the right
  * now you have to 'kill' Li'sar in scenario 6 before she'll surrender
  * added more cleaning in Makefile
  * use new dynamically generated buttons based
  * use anti-aliased fonts
  * addition of a multi-player mode that allows hot seat multiplayer games to be played
- * added button 'n' which takes you to the 'next' unmoved unit. You can cycle through all your unmoved units by pressing 'n' repeatedly
- * added 'preferences' item in options menu. The one preference at the moment is to be able to toggle between windowed and full-screen from within the game
+ * added button 'n' which takes you to the 'next' unmoved unit. 
+   You can cycle through all your unmoved units by pressing 'n' repeatedly
+ * added 'preferences' item in options menu. 
+   The one preference at the moment is to be able to toggle between windowed 
+   and full-screen from within the game
  * changed rectangle on the map of Wesnoth to cross
  * completed scenario 9
  * added gryphon rider unit and put them in scenario 9
@@ -5879,11 +6050,13 @@ Version 0.4:
  * added unit descriptions to many more units
  * when a unit is recruited, it now fades in
  * AI leaders will now attack you if you move next to them
- * the ai now targets units that are close to advancing more, and tries to protect and advance its own units better
+ * the ai now targets units that are close to advancing more, 
+   and tries to protect and advance its own units better
  * mage's attack changed to 8-2
  * human fencer unit added
  * wraith's damage taken up from 7 to 8
- * changed movement of red mage, arch mage, and great mage from 7 to 6. With teleporting, 7 movement is too powerful. May even reduce to 5 later
+ * changed movement of red mage, arch mage, and great mage from 7 to 6.
+   With teleporting, 7 movement is too powerful. May even reduce to 5 later
 
 Version 0.3.4:
  * fixed display bug which kept the game from working on many machines
@@ -5922,5 +6095,6 @@ Version 0.2.1:
  * new scenarios added
  * many new graphics added that were contributed by Paco
  * infinite recall bug fixed
- * recalling now costs 20 gold pieces. Gold from previous scenarios carries over, and there is a bonus for finishing a scenario early
+ * recalling now costs 20 gold pieces. Gold from previous scenarios carries over, 
+   and there is a bonus for finishing a scenario early
  * better transitions between tiles added (graphics for this not complete though)
