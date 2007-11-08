@@ -399,7 +399,8 @@ void reset_sound() {
 
 	if (music || sound || bell || UI_sound) {
 		sound::close_sound();
-		sound::init_sound();
+		if (!sound::init_sound())
+			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << "\n";
 		if (!music)
 			sound::stop_music();
 		if (!sound)

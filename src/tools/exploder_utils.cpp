@@ -228,6 +228,6 @@ void save_image(surface surf, const std::string &filename)
 	//cleans everything
 	png_write_end(png_ptr, info_ptr);
 	png_destroy_write_struct(&png_ptr, &info_ptr);
-	delete row_pointers;
+	delete [] row_pointers;
 }
 
