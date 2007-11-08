@@ -550,8 +550,7 @@ Intelligent::
   can advance to higher levels more quickly. Later in campaigns Intelligent
   is not quite as useful because the After Maximum Level Advancement (AMLA)
   is not as significant a change as advancing a level. If you have many 
-  'maximum level' units you may wish to recall units with more desirable 
-  traits.
+  'maximum level' units you may wish to recall units with more useful traits.
 Quick::
   Quick units have 1 extra movement point, but 5% less HP than usual.
   Quick is the most noticeable trait, particularly in slower moving units 
@@ -609,16 +608,14 @@ Loyal::
   such units or to send them to a foolish death.
 Undead::
   Undead units are immune to poison, also drain and plague doesn't work on them.
-  Undead units generally have 'Undead' as their only trait. Since Undead units 
-  are the bodies of the dead, risen to fight again, poison has no effect upon 
-  them. This can make them invaluable in dealing with foes who use poison in 
+  Undead units generally have 'Undead' as their only trait. Since Undead units
+  are the bodies of the dead, risen to fight again, poison has no effect upon
+  them. This can make them invaluable in dealing with foes who use poison in
   conjunction with their attacks.
 Mechanical::
-  Mechanical units are immune to poison, also drain and plague doesn't work on
-  them.
-  Mechanical units generally have 'Mechanical' as their only trait. Since 
-  mechanical units don't really have life, drain, poison and plague has no 
-  effect upon them.
+  Mechanical units aren't alive and thus are immune to poison, also drain and
+  plague doesn't work on them.
+  Mechanical units generally have 'Mechanical' as their only trait.
 
 Unit Specialties
 ^^^^^^^^^^^^^^^^
@@ -795,8 +792,9 @@ destination which is beyond reach in the current turn, the unit will
 move as far as it can in the current turn and enter 'goto-mode'. In
 'goto-mode' your unit will continue moving towards its destination in
 subsequent turns. You can easily undo goto movements at the beginning
-of your next turn; you may also change a unit's destination by selecting
-that unit and choosing a new destination.
+of your next turn. You may also change a unit's destination by selecting
+that unit and choosing a new destination or clicking the unit again to
+cancel the 'goto'.
 
 Moving onto a village that is neutral or owned by an enemy will take
 ownership of it and end your move for that unit.
@@ -940,7 +938,7 @@ recover up to a total of 10 hit points per turn.
 There are two basic ways for a unit to be healed:
 
  - Resting in a village. The unit will heal 8 hitpoints every turn.
- - Being adjacent to units with the 'heals' abilitiy. The number of
+ - Being adjacent to units with the 'heals' ability. The number of
    hitpoints healed is specified in the unit's ability description. This
    is invariably 'heals +4' or 'heals +8'.
 
@@ -957,8 +955,8 @@ Poison
 ^^^^^^
 
 Some attacks can inflict poison damage on your unit. When this happens
-you will take 8 damage each turn until it is cured. Poison can be
-cured by resting on a village or being next to a unit with the 'cures'
+the poisoned unit will take 8 damage each turn until it is cured. Poison
+can be cured by resting on a village or being next to a unit with the 'cures'
 ability. Units with the 'heals' ability can only prevent the poison from
 causing damage that turn, not cure it. When poison is cured the unit does
 not gain or lose hitpoints on that turn due to healing/poisoning. A unit
@@ -1125,7 +1123,7 @@ strikes next turn, it is often wise to attack at the range that
 allows the enemy to do least damage to you, rather than choosing the
 maximum expected damage to the enemy. 
 
-In particualar, use your ranged weapons if the enemy has no ranged
+In particular, use your ranged weapons if the enemy has no ranged
 attack. The computer's default choice only looks for the most damage
 you can deal, so using it will often result in your units taking more 
 damage than necessary.
@@ -1208,22 +1206,22 @@ During the scenario
 ^^^^^^^^^^^^^^^^^^^
 
  - Try to capture and keep control of as many villages as possible to
-   keep the gold coming in
+   keep the gold coming in.
  - Keep units in packs so the enemy cannot attack from as many sides, and
    so you can outnumber each enemy unit. Put your units in a line so that
    the enemy cannot attack any one of your units from more than two sides.
  - Different units have different strengths and weaknesses depending
    on terrain and who they are attacking; right click on units and select
-   "Describe unit" to learn more
+   "Unit Description" to learn more.
  - You can use lower level units as cannon fodder, to slow down
    enemy. e.g. you can use them to block enemy reaching your important units
  - You can cause damage to enemies with advanced units and then finish
    them with lower level units - to give them more experience (and finally
-   make them advance to next level)
+   make them advance to next level).
  - When you have a White Mage (advances from Mage) or Druid (advances
    from Shaman), put it in the middle of a circle of units to heal them
-   as they move across the map (Shamans can do this too, but not as well)
- - Losing units is expected, even advanced units
+   as they move across the map (Shamans can do this too, but not as well).
+ - Losing units is expected, even advanced units.
  - Time of day really matters:
     * lawful units do more damage at day and less damage at night
     * chaotic units do more damage at night and less damage at day
