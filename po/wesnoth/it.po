@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-08 18:43+0100\n"
-"PO-Revision-Date: 2007-10-26 17:51+0200\n"
+"PO-Revision-Date: 2007-11-06 16:08+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2272,14 +2272,14 @@ msgid "General commands"
 msgstr "Comandi generali"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Cancella i messaggi di chat."
+"Cancella i messaggi di chat.\n"
+"\n"
 
 #: data/core/help.cfg:618
 #, fuzzy
@@ -2341,9 +2341,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Mostra o nasconde i quadri al secondo attuali.\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2352,7 +2354,7 @@ msgid ""
 msgstr ""
 "\n"
 "Attiva la modalità di debug (non funziona in multiplayer). La modalità debug "
-"si disattiva abbandonando la partita.\n"
+"si disattiva abbandonando la partita o usando :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:637
@@ -2364,7 +2366,6 @@ msgid "Multiplayer commands"
 msgstr "Comandi per il multigiocatore"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2372,8 +2373,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Scaccia e bandisce dal multigiocatore un utente e l'indirizzo IP utilizzato "
-"da quell'utente.\n"
+"Scaccia e bandisce dal multigiocatore un utente usando il suo indirizzo IP.\n"
 "\n"
 
 #: data/core/help.cfg:649
@@ -3942,13 +3942,12 @@ msgstr ""
 "veleno."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-" Questa unità è in grado di offrire cure di base, tuttavia può solo "
-"rallentare gli effetti del veleno, non può curarlo del tutto."
+" Questa unità è in grado di neutralizzare gli effetti del veleno nelle unità "
+"che la circondano."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -5058,9 +5057,8 @@ msgid "#(Invalid)"
 msgstr "#(non valido)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Manutenzione delle campagne"
+msgstr "Campagna: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1400
 msgid "Multiplayer"
@@ -5751,17 +5749,18 @@ msgid "System default language"
 msgstr "Lingua di sistema"
 
 #: src/leader_list.cpp:128
-#, fuzzy
 msgid "gender^Random"
 msgstr "Casuale"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
+#, fuzzy
 msgid "Female ♀"
-msgstr ""
+msgstr "Femminile ♀"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
+#, fuzzy
 msgid "Male ♂"
-msgstr ""
+msgstr "Maschile ♂"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
 msgid "Random"
@@ -6414,7 +6413,7 @@ msgstr "Fazione"
 
 #: src/multiplayer_connect.cpp:825
 msgid "Team/Gender"
-msgstr "Squadra/sesso"
+msgstr "Squadra/genere"
 
 #: src/multiplayer_connect.cpp:826
 msgid "Color"
@@ -6737,9 +6736,8 @@ msgid "Leader: "
 msgstr "Condottiero: "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Condottiero: "
+msgstr "Genere: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6774,9 +6772,9 @@ msgid "Could not send initial handshake"
 msgstr "Impossibile inviare l'handshake iniziale"
 
 #: src/play_controller.cpp:401
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Il file che hai provato a caricare è corrotto"
+msgstr ""
+"Il file che hai provato a caricare è danneggiato. Vuoi continuare a giocare?"
 
 #: src/play_controller.cpp:774
 msgid "Back to start"
@@ -6804,7 +6802,7 @@ msgstr "Il replay non può essere salvato"
 
 #: src/playcampaign.cpp:431
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr ""
+msgstr "Questo scenario è terminato. Vuoi continuare la campagna?"
 
 #: src/playcampaign.cpp:451
 msgid "Downloading next scenario..."
