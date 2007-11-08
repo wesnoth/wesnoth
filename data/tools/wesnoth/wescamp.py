@@ -33,12 +33,13 @@ import wesnoth.libsvn as libsvn
 class tempdir:
     def __init__(self):
         self.path = tempfile.mkdtemp()
+    
+        # for some reason we need to need a variable to shutil
+        # otherwise the __del__() will fail
+        self.dummy = shutil
 
     def __del__(self):
-        """ not sure whether does cleanup but figure that out later"""
-        # NOTE disabled for debugging
-#        os.rmdir(self.path)
-
+        self.dummy.rmtree(self.path)
 
 if __name__ == "__main__":
 
@@ -77,8 +78,11 @@ if __name__ == "__main__":
         server = options.server
 
     target = None
+    tmp = tempdir()
     if(options.target != None):
         target = options.target
+    else:
+        target = tmp.path
 
     wescamp = None
     if(options.wescamp_checkout):
