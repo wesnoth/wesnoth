@@ -181,6 +181,8 @@ static void archive_dir(const std::string& path, const std::string& dirname, con
 	std::vector<std::string> files, dirs;
 	get_files_in_dir(dir,&files,&dirs);
 	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
+	  if (ends_with(*i, "~")||ends_with(*i, "-bak")||(*i).find(".pbl")!=std::string::npos)
+			continue;
 		archive_file(dir,*i,cfg.add_child("file"));
 	}
 

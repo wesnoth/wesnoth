@@ -298,7 +298,7 @@ namespace {
 #include <CoreFoundation/CFBase.h>
 #endif
 
-static bool ends_with(const std::string& str, const std::string& suffix)
+bool ends_with(const std::string& str, const std::string& suffix)
 {
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
 }

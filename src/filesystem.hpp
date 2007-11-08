@@ -108,6 +108,8 @@ const file_tree_checksum& data_tree_checksum();
 //! Returns the size of a file, or -1 if the file doesn't exist.
 int file_size(const std::string& fname);
 
+bool ends_with(const std::string& str, const std::string& suffix);
+
 //! Returns the base filename of a file, with directory name stripped. 
 //! Equivalent to a portable basename() function.
 std::string file_name(const std::string& file);
