@@ -3,6 +3,10 @@ Version 1.3.9+svn:
    * it's now possible to delete a campaign with the master password
    * added initial support for the wescamp translation integration
      (not finished yet)
+   * You can now supply a .pbl file within the directory for a campaign
+     as _server.pbl, rather than externally at the same level as the directory.
+     Both the client code in the game and the Python client in utils/ havebeen
+     enhanced to allow this.
  * campaigns:
    * Eastern Invasion
      * Fixed bug #10195, related to Holy Amulet's description
