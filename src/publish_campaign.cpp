@@ -36,7 +36,17 @@ static void setup_dirs()
 
 void get_campaign_info(const std::string& campaign_name, config& cfg)
 {
-	scoped_istream stream = istream_file(campaign_dir() + "/" + campaign_name + ".pbl");
+	// Cope with old-style or new-style file organization 
+	std::string exterior = campaign_dir() + "/" + campaign_name + ".pbl";
+	std::string interior = campaign_dir() + "/" + campaign_name + "/_server.pbl";
+	std::string pbl_file;
+
+	if (file_exists(exterior))
+		pbl_file = exterior;
+	else
+		pbl_file = interior;
+
+	scoped_istream stream = istream_file(pbl_file);
 	read(cfg, *stream);
 }
 
