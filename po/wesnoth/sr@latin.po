@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-06 20:12+0100\n"
+"POT-Creation-Date: 2007-11-08 18:43+0100\n"
 "PO-Revision-Date: 2007-24-07 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -4917,7 +4917,7 @@ msgstr "#(neispravno)"
 msgid "Campaign: $campaign_name"
 msgstr "Dovršavanje i održavanje"
 
-#: src/dialogs.cpp:472 src/game.cpp:1399
+#: src/dialogs.cpp:472 src/game.cpp:1400
 msgid "Multiplayer"
 msgstr "Više igrača"
 
@@ -5033,7 +5033,7 @@ msgstr "kB"
 msgid "Screenshot"
 msgstr "Snimak ekrana"
 
-#: src/game.cpp:436 src/game.cpp:1494
+#: src/game.cpp:436 src/game.cpp:1495
 msgid "The Battle for Wesnoth"
 msgstr "Boj za Vesnot"
 
@@ -5252,102 +5252,102 @@ msgstr "Server je odgovorio greškom: \""
 msgid "Response"
 msgstr "Odziv"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1384
 msgid "Join Official Server"
 msgstr "Na zvaničan server"
 
-#: src/game.cpp:1384
+#: src/game.cpp:1385
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Prijavite se na zvanični Vesnotov višeigrački server."
 
-#: src/game.cpp:1386
+#: src/game.cpp:1387
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Poveži se na server"
 
-#: src/game.cpp:1387
+#: src/game.cpp:1388
 msgid "Join a server or hosted game"
 msgstr "Pridružite se serveru ili domaćinu"
 
-#: src/game.cpp:1389
+#: src/game.cpp:1390
 msgid "Host Networked Game"
 msgstr "Domaćin mrežnoj igri"
 
-#: src/game.cpp:1390
+#: src/game.cpp:1391
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1392
+#: src/game.cpp:1393
 msgid "Local Game"
 msgstr "Lokalna igra"
 
-#: src/game.cpp:1393
+#: src/game.cpp:1394
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Zaigrajte igru protiv VI ili više ljudi koji dele isti računar"
 
-#: src/game.cpp:1401 src/multiplayer.cpp:232
+#: src/game.cpp:1402 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "prijava: "
 
-#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:370
+#: src/game.cpp:1439 src/playcampaign.cpp:95 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Igru nije moguće učitati: "
 
-#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:373
+#: src/game.cpp:1441 src/playcampaign.cpp:97 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Greška prilikom igranja igre: "
 
-#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:376
+#: src/game.cpp:1461 src/playcampaign.cpp:99 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Mapu igre nije moguće učitati: "
 
-#: src/game.cpp:1484
+#: src/game.cpp:1485
 msgid "Language"
 msgstr "Jezik"
 
-#: src/game.cpp:1485
+#: src/game.cpp:1486
 msgid "Choose your preferred language:"
 msgstr "Izaberite jezik koji želite:"
 
-#: src/game.cpp:1634
+#: src/game.cpp:1640
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Sledeći dodatni pohodi imaju grešku i ne mogu se učitati:"
 
-#: src/game.cpp:1639
+#: src/game.cpp:1645
 msgid "ERROR DETAILS:"
 msgstr "DETALJI GREŠKE:"
 
-#: src/game.cpp:1653
+#: src/game.cpp:1659
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Upozorenje: Došlo je do grešaka prilikom učitavanja konfiguracionih datoteka "
 "igre: '"
 
-#: src/game.cpp:1705
+#: src/game.cpp:1711
 msgid "Error loading game configuration files: '"
 msgstr "Greška pri učitavanju konfiguracionih datoteka igre: '"
 
-#: src/game.cpp:1706
+#: src/game.cpp:1712
 msgid "' (The game will now exit)"
 msgstr "' (igra će se sad ugasiti)"
 
-#: src/game.cpp:1874
+#: src/game.cpp:1880
 msgid "Battle for Wesnoth"
 msgstr "Boj za Vesnot"
 
-#: src/game.cpp:2002
+#: src/game.cpp:2008
 msgid "Loading game configuration."
 msgstr "Učitavam podešavanja igre."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2014
 msgid "Re-initialize fonts for the current language."
 msgstr "Vaspostavljam fontove za tekući jezik."
 
-#: src/game.cpp:2023
+#: src/game.cpp:2029
 msgid "Loading title screen."
 msgstr "Učitavam naslovni ekran."
 
@@ -5363,7 +5363,7 @@ msgstr "pobeda:"
 msgid "Defeat:"
 msgstr "poraz:"
 
-#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:399
+#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:403
 msgid " replay"
 msgstr " snimak"
 
@@ -5450,7 +5450,7 @@ msgstr "domet oružja: "
 msgid "damage type: "
 msgstr "vid štete: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1359
 msgid "vs"
 msgstr "pr."
 
@@ -5618,20 +5618,12 @@ msgstr "Sistemski jezik"
 msgid "gender^Random"
 msgstr "nasumično"
 
-#: src/leader_list.cpp:139
+#: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:141
-msgid "Feminine ♀"
-msgstr ""
-
-#: src/leader_list.cpp:148
+#: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Male ♂"
-msgstr ""
-
-#: src/leader_list.cpp:150
-msgid "Masculine ♂"
 msgstr ""
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
@@ -5850,7 +5842,7 @@ msgstr ""
 msgid "Scenario Settings"
 msgstr "početak scenarija"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:549
+#: src/menu_events.cpp:698 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "Ime:"
 
@@ -5870,7 +5862,7 @@ msgstr "Sačuvano"
 msgid "The game has been saved"
 msgstr "Igra je sačuvana"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:557
+#: src/menu_events.cpp:716 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "Igru nije bilo moguće sačuvati"
 
@@ -6157,15 +6149,15 @@ msgstr "bez pogodnog oružja"
 msgid "Chance of being unscathed"
 msgstr "izgledi da prođe bez ozleda"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1376
 msgid "Damage Calculations"
 msgstr "Računanje štete"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1387
 msgid "Attack Enemy"
 msgstr "Napadni"
 
-#: src/mouse_events.cpp:1380
+#: src/mouse_events.cpp:1388
 msgid "Choose weapon:"
 msgstr "Izbor oružja:"
 
@@ -6666,41 +6658,41 @@ msgstr "Nazad na početak"
 msgid "Back to turn "
 msgstr "Nazad na potez"
 
-#: src/playcampaign.cpp:132 src/playcampaign.cpp:163
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:167
 msgid "Defeat"
 msgstr "Poraz"
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:164
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:168
 msgid "You have been defeated!"
 msgstr "Poraženi ste!"
 
-#: src/playcampaign.cpp:380
+#: src/playcampaign.cpp:384
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "Greška prilikom igranja igre: "
 
-#: src/playcampaign.cpp:406
+#: src/playcampaign.cpp:410
 msgid "The replay could not be saved"
 msgstr "Snimak nije bilo moguće sačuvati"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:431
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:447
+#: src/playcampaign.cpp:451
 msgid "Downloading next scenario..."
 msgstr "Preuzimam sledeći scenario..."
 
-#: src/playcampaign.cpp:548
+#: src/playcampaign.cpp:552
 msgid "Do you want to save your game?"
 msgstr "Želite li da sačuvate igru?"
 
-#: src/playcampaign.cpp:573
+#: src/playcampaign.cpp:577
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Nepoznat scenario: '"
 
-#: src/playmp_controller.cpp:378
+#: src/playmp_controller.cpp:383
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6779,24 +6771,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Vi ste na redu"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Replace with AI"
 msgstr "Zameni sa VI"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:204
 msgid "Replace with local player"
 msgstr "Zameni lokalnim igračem"
 
-#: src/playturn.cpp:204
+#: src/playturn.cpp:205
 msgid "Abort game"
 msgstr "Prekini igru"
 
-#: src/playturn.cpp:209 src/playturn.cpp:221
+#: src/playturn.cpp:210 src/playturn.cpp:222
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Zameni lokalnim igračem"
 
-#: src/playturn.cpp:227
+#: src/playturn.cpp:228
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "napusti igru. Šta želite da učinite?"

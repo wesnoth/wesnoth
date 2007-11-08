@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-06 20:12+0100\n"
+"POT-Creation-Date: 2007-11-08 18:43+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -5047,7 +5047,7 @@ msgstr "#(Невалидно)"
 msgid "Campaign: $campaign_name"
 msgstr "Изпълнение и поддръжка"
 
-#: src/dialogs.cpp:472 src/game.cpp:1399
+#: src/dialogs.cpp:472 src/game.cpp:1400
 msgid "Multiplayer"
 msgstr "Игра в мрежа"
 
@@ -5163,7 +5163,7 @@ msgstr "КБ"
 msgid "Screenshot"
 msgstr "Снимка на екрана"
 
-#: src/game.cpp:436 src/game.cpp:1494
+#: src/game.cpp:436 src/game.cpp:1495
 msgid "The Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
@@ -5379,101 +5379,101 @@ msgstr "Сървърът отвърна с грешка: \""
 msgid "Response"
 msgstr "Отговор"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1384
 msgid "Join Official Server"
 msgstr "Присъединяване към официален сървър"
 
-#: src/game.cpp:1384
+#: src/game.cpp:1385
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Влизане в официалният сървър на Уеснот за мрежова игра"
 
-#: src/game.cpp:1386
+#: src/game.cpp:1387
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Свързване със сървър"
 
-#: src/game.cpp:1387
+#: src/game.cpp:1388
 msgid "Join a server or hosted game"
 msgstr "Присъединяване към игра на сървъра"
 
-#: src/game.cpp:1389
+#: src/game.cpp:1390
 msgid "Host Networked Game"
 msgstr "Създаване на мрежова игра"
 
-#: src/game.cpp:1390
+#: src/game.cpp:1391
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1392
+#: src/game.cpp:1393
 msgid "Local Game"
 msgstr "Локална игра"
 
-#: src/game.cpp:1393
+#: src/game.cpp:1394
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Игра за няколко играча (хора или компютри), като се ползва една машина"
 
-#: src/game.cpp:1401 src/multiplayer.cpp:232
+#: src/game.cpp:1402 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Вход: "
 
-#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:370
+#: src/game.cpp:1439 src/playcampaign.cpp:95 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Играта не може да се зареди: "
 
-#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:373
+#: src/game.cpp:1441 src/playcampaign.cpp:97 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:376
+#: src/game.cpp:1461 src/playcampaign.cpp:99 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Картата не може да се зареди: "
 
-#: src/game.cpp:1484
+#: src/game.cpp:1485
 msgid "Language"
 msgstr "Език"
 
-#: src/game.cpp:1485
+#: src/game.cpp:1486
 msgid "Choose your preferred language:"
 msgstr "Избор на език:"
 
-#: src/game.cpp:1634
+#: src/game.cpp:1640
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Следните допълнителни кампании имаха грешки и не бяха заредени:"
 
-#: src/game.cpp:1639
+#: src/game.cpp:1645
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ЗА ГРЕШКАТА:"
 
-#: src/game.cpp:1653
+#: src/game.cpp:1659
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Внимание: Възникнаха грешки при зареждане на файловете с настройките: '"
 
-#: src/game.cpp:1705
+#: src/game.cpp:1711
 msgid "Error loading game configuration files: '"
 msgstr "Грешка при зареждане на файловете с настройките: '"
 
-#: src/game.cpp:1706
+#: src/game.cpp:1712
 msgid "' (The game will now exit)"
 msgstr "' (Следва изход от играта)"
 
-#: src/game.cpp:1874
+#: src/game.cpp:1880
 msgid "Battle for Wesnoth"
 msgstr "Битката за Уеснот"
 
-#: src/game.cpp:2002
+#: src/game.cpp:2008
 msgid "Loading game configuration."
 msgstr "Зареждане на настройките на играта."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2014
 msgid "Re-initialize fonts for the current language."
 msgstr "Обновяване на шрифтовете за текущият език."
 
-#: src/game.cpp:2023
+#: src/game.cpp:2029
 msgid "Loading title screen."
 msgstr "Зареждане на главният екран."
 
@@ -5489,7 +5489,7 @@ msgstr "Победа:"
 msgid "Defeat:"
 msgstr "Загуба:"
 
-#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:399
+#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:403
 msgid " replay"
 msgstr " повторение"
 
@@ -5573,7 +5573,7 @@ msgstr "обхват на оръжието: "
 msgid "damage type: "
 msgstr "тип поражение: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1359
 msgid "vs"
 msgstr "с/у "
 
@@ -5741,20 +5741,12 @@ msgstr "Език по подразбиране за системата"
 msgid "gender^Random"
 msgstr "Случайна"
 
-#: src/leader_list.cpp:139
+#: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:141
-msgid "Feminine ♀"
-msgstr ""
-
-#: src/leader_list.cpp:148
+#: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Male ♂"
-msgstr ""
-
-#: src/leader_list.cpp:150
-msgid "Masculine ♂"
 msgstr ""
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
@@ -5972,7 +5964,7 @@ msgstr ""
 msgid "Scenario Settings"
 msgstr "Начало на мисията"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:549
+#: src/menu_events.cpp:698 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "Име:"
 
@@ -5992,7 +5984,7 @@ msgstr "Запазена"
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:557
+#: src/menu_events.cpp:716 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "Играта не бе запазена"
 
@@ -6279,15 +6271,15 @@ msgstr "Няма използваемо оръжие"
 msgid "Chance of being unscathed"
 msgstr "Шанс да остане невредим"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1376
 msgid "Damage Calculations"
 msgstr "Оценка на щетите"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1387
 msgid "Attack Enemy"
 msgstr "Атакувай противника"
 
-#: src/mouse_events.cpp:1380
+#: src/mouse_events.cpp:1388
 msgid "Choose weapon:"
 msgstr "Избери оръжие:"
 
@@ -6791,40 +6783,40 @@ msgstr "Обратно в началото"
 msgid "Back to turn "
 msgstr "Обратно към ход"
 
-#: src/playcampaign.cpp:132 src/playcampaign.cpp:163
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:167
 msgid "Defeat"
 msgstr "Загуба"
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:164
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:168
 msgid "You have been defeated!"
 msgstr "Изгубихте!"
 
-#: src/playcampaign.cpp:380
+#: src/playcampaign.cpp:384
 msgid "Error while reading the WML: "
 msgstr "Грешка при четене на WML:"
 
-#: src/playcampaign.cpp:406
+#: src/playcampaign.cpp:410
 msgid "The replay could not be saved"
 msgstr "Повторението не бе запазено"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:431
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:447
+#: src/playcampaign.cpp:451
 msgid "Downloading next scenario..."
 msgstr "Сваляне на следващата мисия..."
 
-#: src/playcampaign.cpp:548
+#: src/playcampaign.cpp:552
 msgid "Do you want to save your game?"
 msgstr "Искате ли да запазите играта?"
 
-#: src/playcampaign.cpp:573
+#: src/playcampaign.cpp:577
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Непозната мисия: '"
 
-#: src/playmp_controller.cpp:378
+#: src/playmp_controller.cpp:383
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6902,24 +6894,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Вие сте на ход"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Replace with AI"
 msgstr "Замяна с компютър"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:204
 msgid "Replace with local player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:204
+#: src/playturn.cpp:205
 msgid "Abort game"
 msgstr "Прекъсване на играта"
 
-#: src/playturn.cpp:209 src/playturn.cpp:221
+#: src/playturn.cpp:210 src/playturn.cpp:222
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:227
+#: src/playturn.cpp:228
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "излезе от играта. Как ще постъпите?"

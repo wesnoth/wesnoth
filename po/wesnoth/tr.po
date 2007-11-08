@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-06 20:12+0100\n"
+"POT-Creation-Date: 2007-11-08 18:43+0100\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -4519,7 +4519,7 @@ msgstr "#(Geçersiz)"
 msgid "Campaign: $campaign_name"
 msgstr "Kampanya Tasarımcısı"
 
-#: src/dialogs.cpp:472 src/game.cpp:1399
+#: src/dialogs.cpp:472 src/game.cpp:1400
 msgid "Multiplayer"
 msgstr "Çokoyuncu"
 
@@ -4635,7 +4635,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: src/game.cpp:436 src/game.cpp:1494
+#: src/game.cpp:436 src/game.cpp:1495
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -4858,102 +4858,102 @@ msgstr "Server bir hata ile karşılık verdi: "
 msgid "Response"
 msgstr "Karşılık"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1384
 msgid "Join Official Server"
 msgstr "Resmi sunucuya gir"
 
-#: src/game.cpp:1384
+#: src/game.cpp:1385
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Resmi Wesnoth multiplayer sunucusuna gir"
 
-#: src/game.cpp:1386
+#: src/game.cpp:1387
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Suncuya bağlan"
 
-#: src/game.cpp:1387
+#: src/game.cpp:1388
 msgid "Join a server or hosted game"
 msgstr "Bir sunucuya veya sunulu oyuna gir"
 
-#: src/game.cpp:1389
+#: src/game.cpp:1390
 msgid "Host Networked Game"
 msgstr "Network üzeri oyun host et"
 
-#: src/game.cpp:1390
+#: src/game.cpp:1391
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1392
+#: src/game.cpp:1393
 #, fuzzy
 msgid "Local Game"
 msgstr "Oyun yükle"
 
-#: src/game.cpp:1393
+#: src/game.cpp:1394
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Aynı makina üzerinde bir çok oyunculu oyun oyna."
 
-#: src/game.cpp:1401 src/multiplayer.cpp:232
+#: src/game.cpp:1402 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Giriş: "
 
-#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:370
+#: src/game.cpp:1439 src/playcampaign.cpp:95 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Oyun yüklenemedi: "
 
-#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:373
+#: src/game.cpp:1441 src/playcampaign.cpp:97 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Oyunu oynarken hata: "
 
-#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:376
+#: src/game.cpp:1461 src/playcampaign.cpp:99 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Oyun haritası yüklenemedi: "
 
-#: src/game.cpp:1484
+#: src/game.cpp:1485
 msgid "Language"
 msgstr "Dil"
 
-#: src/game.cpp:1485
+#: src/game.cpp:1486
 msgid "Choose your preferred language:"
 msgstr "Tercih ettiğin dili seç:"
 
-#: src/game.cpp:1634
+#: src/game.cpp:1640
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Şu ek kampanya(lar) hatalı ve yüklenemedi: "
 
-#: src/game.cpp:1639
+#: src/game.cpp:1645
 msgid "ERROR DETAILS:"
 msgstr "HATA DETAYLARI:"
 
-#: src/game.cpp:1653
+#: src/game.cpp:1659
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Uyarı : Oyun konfigürasyon dosyalarını yüklerken hata oluştu : '"
 
-#: src/game.cpp:1705
+#: src/game.cpp:1711
 msgid "Error loading game configuration files: '"
 msgstr "Oyun konfigürasyon dosyalarını yüklerken Hata: '"
 
-#: src/game.cpp:1706
+#: src/game.cpp:1712
 msgid "' (The game will now exit)"
 msgstr "' (Oyun şimdi bitiyor)"
 
-#: src/game.cpp:1874
+#: src/game.cpp:1880
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:2002
+#: src/game.cpp:2008
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Oyun konfigürasyon dosyalarını yüklerken Hata: '"
 
-#: src/game.cpp:2008
+#: src/game.cpp:2014
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:2023
+#: src/game.cpp:2029
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
@@ -4970,7 +4970,7 @@ msgstr "Galibiyet:"
 msgid "Defeat:"
 msgstr "Mağlubiyet:"
 
-#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:399
+#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:403
 msgid " replay"
 msgstr " tekrar"
 
@@ -5053,7 +5053,7 @@ msgstr "Silah mesafesi:"
 msgid "damage type: "
 msgstr "hasar tipi:"
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1359
 msgid "vs"
 msgstr "karşı"
 
@@ -5223,20 +5223,12 @@ msgstr "Sistem varsayılan dili"
 msgid "gender^Random"
 msgstr "Rastgele"
 
-#: src/leader_list.cpp:139
+#: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Female ♀"
 msgstr ""
 
-#: src/leader_list.cpp:141
-msgid "Feminine ♀"
-msgstr ""
-
-#: src/leader_list.cpp:148
+#: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Male ♂"
-msgstr ""
-
-#: src/leader_list.cpp:150
-msgid "Masculine ♂"
 msgstr ""
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
@@ -5457,7 +5449,7 @@ msgstr ""
 msgid "Scenario Settings"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:549
+#: src/menu_events.cpp:698 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "İsim:"
 
@@ -5477,7 +5469,7 @@ msgstr "Kaydedildi"
 msgid "The game has been saved"
 msgstr "Oyun kaydedildi"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:557
+#: src/menu_events.cpp:716 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "Oyun kaydedilemedi"
 
@@ -5772,15 +5764,15 @@ msgstr "Kullanılabilir Silah yok"
 msgid "Chance of being unscathed"
 msgstr "Yarasız kurtulma şansı"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1376
 msgid "Damage Calculations"
 msgstr "Hasar hesaplamaları"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1387
 msgid "Attack Enemy"
 msgstr "Düşmana saldır"
 
-#: src/mouse_events.cpp:1380
+#: src/mouse_events.cpp:1388
 msgid "Choose weapon:"
 msgstr "Silah seç:"
 
@@ -6288,44 +6280,44 @@ msgstr "Başa geri dön"
 msgid "Back to turn "
 msgstr "sıraya geri dön"
 
-#: src/playcampaign.cpp:132 src/playcampaign.cpp:163
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:167
 msgid "Defeat"
 msgstr "Yenilgi"
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:164
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:168
 msgid "You have been defeated!"
 msgstr "Yenildin!"
 
-#: src/playcampaign.cpp:380
+#: src/playcampaign.cpp:384
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "Oyunu oynarken hata: "
 
-#: src/playcampaign.cpp:406
+#: src/playcampaign.cpp:410
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "Oyun kaydedilemedi"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:431
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:447
+#: src/playcampaign.cpp:451
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Bir sonraki seviye indiriliyor..."
 
-#: src/playcampaign.cpp:548
+#: src/playcampaign.cpp:552
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 
-#: src/playcampaign.cpp:573
+#: src/playcampaign.cpp:577
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Bilinmeyen Senaryo: '"
 
-#: src/playmp_controller.cpp:378
+#: src/playmp_controller.cpp:383
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6404,24 +6396,24 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Şimdi senin sıran"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Replace with AI"
 msgstr "YZ ile değiştir"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:204
 msgid "Replace with local player"
 msgstr "Mahalli oyuncu ile değiştir"
 
-#: src/playturn.cpp:204
+#: src/playturn.cpp:205
 msgid "Abort game"
 msgstr "Oyunu boz"
 
-#: src/playturn.cpp:209 src/playturn.cpp:221
+#: src/playturn.cpp:210 src/playturn.cpp:222
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Mahalli oyuncu ile değiştir"
 
-#: src/playturn.cpp:227
+#: src/playturn.cpp:228
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "oyunu terketti. Ne yapmak istersin?"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-06 20:12+0100\n"
+"POT-Creation-Date: 2007-11-08 18:43+0100\n"
 "PO-Revision-Date: 2007-11-07 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -4976,7 +4976,7 @@ msgstr "#(Ugyldig)"
 msgid "Campaign: $campaign_name"
 msgstr "Kampagne: $campaign_name"
 
-#: src/dialogs.cpp:472 src/game.cpp:1399
+#: src/dialogs.cpp:472 src/game.cpp:1400
 msgid "Multiplayer"
 msgstr "Flerspiller"
 
@@ -5092,7 +5092,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Skærmbillede"
 
-#: src/game.cpp:436 src/game.cpp:1494
+#: src/game.cpp:436 src/game.cpp:1495
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
@@ -5307,27 +5307,27 @@ msgstr "Serveren gav fejlen: \""
 msgid "Response"
 msgstr "Svar"
 
-#: src/game.cpp:1383
+#: src/game.cpp:1384
 msgid "Join Official Server"
 msgstr "Tilslut dig den officielle server"
 
-#: src/game.cpp:1384
+#: src/game.cpp:1385
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Log på den officielle Wesnoth multiplayer server"
 
-#: src/game.cpp:1386
+#: src/game.cpp:1387
 msgid "Connect to Host/Server"
 msgstr "Tilslut til vært/server"
 
-#: src/game.cpp:1387
+#: src/game.cpp:1388
 msgid "Join a server or hosted game"
 msgstr "Tilslut et server eller værtsmaskine spil"
 
-#: src/game.cpp:1389
+#: src/game.cpp:1390
 msgid "Host Networked Game"
 msgstr "Vær vært for et netværksspil"
 
-#: src/game.cpp:1390
+#: src/game.cpp:1391
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
@@ -5335,72 +5335,72 @@ msgstr ""
 "Vær vært for et spil igennem den indbyggede server. Ikke vedligeholdt, brug "
 "hellere den dedikerede server »wesnothd«."
 
-#: src/game.cpp:1392
+#: src/game.cpp:1393
 msgid "Local Game"
 msgstr "Lokalt spil"
 
-#: src/game.cpp:1393
+#: src/game.cpp:1394
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Spil flere sammen hvor computeren og spillerne deler den samme maskine"
 
-#: src/game.cpp:1401 src/multiplayer.cpp:232
+#: src/game.cpp:1402 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Brugernavn: "
 
-#: src/game.cpp:1438 src/playcampaign.cpp:95 src/playcampaign.cpp:370
+#: src/game.cpp:1439 src/playcampaign.cpp:95 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke indlæses: "
 
-#: src/game.cpp:1440 src/playcampaign.cpp:97 src/playcampaign.cpp:373
+#: src/game.cpp:1441 src/playcampaign.cpp:97 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Fejl under spillet: "
 
-#: src/game.cpp:1460 src/playcampaign.cpp:99 src/playcampaign.cpp:376
+#: src/game.cpp:1461 src/playcampaign.cpp:99 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Kortet kunne ikke indlæses: "
 
-#: src/game.cpp:1484
+#: src/game.cpp:1485
 msgid "Language"
 msgstr "Sprog"
 
-#: src/game.cpp:1485
+#: src/game.cpp:1486
 msgid "Choose your preferred language:"
 msgstr "Vælg dit foretrukne sprog:"
 
-#: src/game.cpp:1634
+#: src/game.cpp:1640
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr ""
 "Følgende udvidelsesmodul(er) indeholder fejl og kunne derfor ikke indlæses:"
 
-#: src/game.cpp:1639
+#: src/game.cpp:1645
 msgid "ERROR DETAILS:"
 msgstr "FEJL-DETALJER:"
 
-#: src/game.cpp:1653
+#: src/game.cpp:1659
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Advarsel: Fejl under indlæsning af spillets konfigurationsfiler: '"
 
-#: src/game.cpp:1705
+#: src/game.cpp:1711
 msgid "Error loading game configuration files: '"
 msgstr "Fejl ved indlæsning af spillets konfigurationsfiler: '"
 
-#: src/game.cpp:1706
+#: src/game.cpp:1712
 msgid "' (The game will now exit)"
 msgstr "' (Spillet afsluttes)"
 
-#: src/game.cpp:1874
+#: src/game.cpp:1880
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:2002
+#: src/game.cpp:2008
 msgid "Loading game configuration."
 msgstr "Indlæser spillets konfiguration."
 
-#: src/game.cpp:2008
+#: src/game.cpp:2014
 msgid "Re-initialize fonts for the current language."
 msgstr "Genindlæser fonte for det nuværende sprog."
 
-#: src/game.cpp:2023
+#: src/game.cpp:2029
 msgid "Loading title screen."
 msgstr "Henter titelskærm."
 
@@ -5416,7 +5416,7 @@ msgstr "Sejr:"
 msgid "Defeat:"
 msgstr "Nederlag:"
 
-#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:399
+#: src/gamestatus.cpp:690 src/gamestatus.cpp:692 src/playcampaign.cpp:403
 msgid " replay"
 msgstr " omspil"
 
@@ -5499,7 +5499,7 @@ msgstr "våben rækkevidde: "
 msgid "damage type: "
 msgstr "skade type: "
 
-#: src/generate_report.cpp:293 src/mouse_events.cpp:1351
+#: src/generate_report.cpp:293 src/mouse_events.cpp:1359
 msgid "vs"
 msgstr "vs."
 
@@ -5664,21 +5664,13 @@ msgstr "Systemets standardsprog"
 msgid "gender^Random"
 msgstr "Tilfældig"
 
-#: src/leader_list.cpp:139
+#: src/leader_list.cpp:139 src/leader_list.cpp:141
 msgid "Female ♀"
 msgstr "Kvinde ♀"
 
-#: src/leader_list.cpp:141
-msgid "Feminine ♀"
-msgstr "Kvindelig ♀"
-
-#: src/leader_list.cpp:148
+#: src/leader_list.cpp:148 src/leader_list.cpp:150
 msgid "Male ♂"
 msgstr "Mand ♂"
-
-#: src/leader_list.cpp:150
-msgid "Masculine ♂"
-msgstr "Maskulin ♂"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
 msgid "Random"
@@ -5882,7 +5874,7 @@ msgstr "ja"
 msgid "Scenario Settings"
 msgstr "Scenarie indstillinger"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:549
+#: src/menu_events.cpp:698 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "Navn:"
 
@@ -5902,7 +5894,7 @@ msgstr "Gemt"
 msgid "The game has been saved"
 msgstr "Spillet er gemt"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:557
+#: src/menu_events.cpp:716 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "Spillet kunne ikke gemmes"
 
@@ -6185,15 +6177,15 @@ msgstr "Intet brugbar våben"
 msgid "Chance of being unscathed"
 msgstr "Risiko for at være uskadt"
 
-#: src/mouse_events.cpp:663 src/mouse_events.cpp:1368
+#: src/mouse_events.cpp:663 src/mouse_events.cpp:1376
 msgid "Damage Calculations"
 msgstr "Skadesudregninger"
 
-#: src/mouse_events.cpp:1379
+#: src/mouse_events.cpp:1387
 msgid "Attack Enemy"
 msgstr "Angrib fjende"
 
-#: src/mouse_events.cpp:1380
+#: src/mouse_events.cpp:1388
 msgid "Choose weapon:"
 msgstr "Vælg våben:"
 
@@ -6688,39 +6680,39 @@ msgstr "Tilbage til start"
 msgid "Back to turn "
 msgstr "Tilbage til runde "
 
-#: src/playcampaign.cpp:132 src/playcampaign.cpp:163
+#: src/playcampaign.cpp:132 src/playcampaign.cpp:167
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:164
+#: src/playcampaign.cpp:133 src/playcampaign.cpp:168
 msgid "You have been defeated!"
 msgstr "Du er blevet besejret!"
 
-#: src/playcampaign.cpp:380
+#: src/playcampaign.cpp:384
 msgid "Error while reading the WML: "
 msgstr "Fejl under læsning af WML: "
 
-#: src/playcampaign.cpp:406
+#: src/playcampaign.cpp:410
 msgid "The replay could not be saved"
 msgstr "Omspillet kunne ikke gemmes"
 
-#: src/playcampaign.cpp:427
+#: src/playcampaign.cpp:431
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Dette scenarie er slut. Ønsker ud at fortsætte med kampagnen?"
 
-#: src/playcampaign.cpp:447
+#: src/playcampaign.cpp:451
 msgid "Downloading next scenario..."
 msgstr "Henter næste scenarie..."
 
-#: src/playcampaign.cpp:548
+#: src/playcampaign.cpp:552
 msgid "Do you want to save your game?"
 msgstr "Vil du gemme dit spil?"
 
-#: src/playcampaign.cpp:573
+#: src/playcampaign.cpp:577
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ukendt scenarie: '$scenario|'"
 
-#: src/playmp_controller.cpp:378
+#: src/playmp_controller.cpp:383
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -6799,23 +6791,23 @@ msgstr ""
 msgid "It is now $name|'s turn"
 msgstr "Det er nu $name|s runde"
 
-#: src/playturn.cpp:202
+#: src/playturn.cpp:203
 msgid "Replace with AI"
 msgstr "Erstat med computer"
 
-#: src/playturn.cpp:203
+#: src/playturn.cpp:204
 msgid "Replace with local player"
 msgstr "Erstat med lokal spiller"
 
-#: src/playturn.cpp:204
+#: src/playturn.cpp:205
 msgid "Abort game"
 msgstr "Afbryd spil"
 
-#: src/playturn.cpp:209 src/playturn.cpp:221
+#: src/playturn.cpp:210 src/playturn.cpp:222
 msgid "Replace with $player"
 msgstr "Erstat med $player"
 
-#: src/playturn.cpp:227
+#: src/playturn.cpp:228
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player har forladt spillet. Hvad vil du gøre?"
 
@@ -7070,6 +7062,12 @@ msgstr "Hjælp os med at gøre Wesnoth bedre for dig!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Slå sending af resumer til"
+
+#~ msgid "Feminine ♀"
+#~ msgstr "Kvindelig ♀"
+
+#~ msgid "Masculine ♂"
+#~ msgstr "Maskulin ♂"
 
 # uafklaret hvad MP står for.
 #~ msgid "Female leaders on MP (if available)"
