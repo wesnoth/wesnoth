@@ -64,11 +64,13 @@ std::vector<std::string> available_campaigns()
 	get_files_in_dir(campaign_dir(),&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		const std::string oldstyle_cfg_file = *i + ".cfg";
-		const std::string main_cfg_file = *i + "/_main.cfg";
-		const std::string publish_file = *i + ".pbl";
-		if((std::find(files.begin(),files.end(),oldstyle_cfg_file) != files.end() || file_exists(campaign_dir() + "/" + main_cfg_file)) &&
-		   std::find(files.begin(),files.end(),publish_file) != files.end()) {
+		const std::string external_cfg_file = *i + ".cfg";
+		const std::string internal_cfg_file = *i + "/_main.cfg";
+		const std::string external_pbl_file = *i + ".pbl";
+		const std::string internal_pbl_file = *i + "/_server.pbl";
+		std::cout << "Checking " << campaign_dir() + "/" + internal_pbl_file << "\n";
+		if((std::find(files.begin(),files.end(),external_cfg_file) != files.end() || file_exists(campaign_dir() + "/" + internal_cfg_file)) &&
+		   (std::find(files.begin(),files.end(),external_pbl_file) != files.end() || (file_exists(campaign_dir() + "/" + internal_pbl_file)))) {
 			res.push_back(*i);
 		}
 	}
@@ -85,9 +87,9 @@ std::vector<std::string> installed_campaigns()
 	get_files_in_dir(campaign_dir(),&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
-		const std::string oldstyle_cfg_file = *i + ".cfg";
-		const std::string main_cfg_file = *i + "/_main.cfg";
-		if(std::find(files.begin(),files.end(),oldstyle_cfg_file) != files.end() || file_exists(campaign_dir() + "/" + main_cfg_file)) {
+		const std::string external_cfg_file = *i + ".cfg";
+		const std::string internal_cfg_file = *i + "/_main.cfg";
+		if(std::find(files.begin(),files.end(),external_cfg_file) != files.end() || file_exists(campaign_dir() + "/" + internal_cfg_file)) {
 			res.push_back(*i);
 		}
 	}
@@ -190,10 +192,10 @@ static void archive_dir(const std::string& path, const std::string& dirname, con
 
 void archive_campaign(const std::string& campaign_name, config& cfg)
 {
-	// Oldstyle .cfg may not exist; newer campaigns have a _main.cfg
-	std::string oldstyle_cfg = campaign_name + ".cfg";
-	if (file_exists(campaign_dir() + oldstyle_cfg))
-		archive_file(campaign_dir(), oldstyle_cfg,cfg.add_child("file"));
+	// External .cfg may not exist; newer campaigns have a _main.cfg
+	std::string external_cfg = campaign_name + ".cfg";
+	if (file_exists(campaign_dir() + external_cfg))
+		archive_file(campaign_dir(), external_cfg,cfg.add_child("file"));
 	archive_dir(campaign_dir(),campaign_name,cfg.add_child("dir"));
 }
 
