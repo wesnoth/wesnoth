@@ -212,8 +212,8 @@ public:
 		{ borderCache_.erase(loc); }
 
 	//Maximum number of players supported. 
-	//The size of the starting positions array is greater by 1, 
-	//because the positions themselves are numbered from 1.
+	//Warning: when you increase this, you need to add more definitions
+	//to the team_colors.cfg file.
 	enum { MAX_PLAYERS = 9 };
 
 	//! Retuns the usage of the map.
@@ -227,6 +227,8 @@ public:
 
 protected:
 	t_translation::t_map tiles_;
+	//The size of the starting positions array is MAX_PLAYERS + 1, 
+	//because the positions themselves are numbered from 1.
 	location startingPositions_[MAX_PLAYERS+1];
 
 	/**
