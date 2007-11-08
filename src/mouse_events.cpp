@@ -966,6 +966,8 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 	}
 
 	paths::route route = a_star_search(un->first, go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
+	//FIXME: this is wrong, the function return a number of turns, not the moves left
+	//but we seems not to use it for the moment
 	route.move_left = route_turns_to_complete(un->second, route, viewing_team(), units_,teams_,map_);
 
 	return route;
