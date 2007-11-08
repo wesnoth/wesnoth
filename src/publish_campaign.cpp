@@ -68,7 +68,6 @@ std::vector<std::string> available_campaigns()
 		const std::string internal_cfg_file = *i + "/_main.cfg";
 		const std::string external_pbl_file = *i + ".pbl";
 		const std::string internal_pbl_file = *i + "/_server.pbl";
-		std::cout << "Checking " << campaign_dir() + "/" + internal_pbl_file << "\n";
 		if((std::find(files.begin(),files.end(),external_cfg_file) != files.end() || file_exists(campaign_dir() + "/" + internal_cfg_file)) &&
 		   (std::find(files.begin(),files.end(),external_pbl_file) != files.end() || (file_exists(campaign_dir() + "/" + internal_pbl_file)))) {
 			res.push_back(*i);

@@ -110,7 +110,7 @@ if __name__ == "__main__":
 
     def get_info(name):
         """
-        Get info for a locally installed campaign. If expects a direct path
+        Get info for a locally installed campaign. It expects a direct path
         to the info.cfg file.
         """
         if not os.path.exists(name): return None, None

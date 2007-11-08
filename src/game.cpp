@@ -1602,14 +1602,12 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 				std::string oldstyle_cfg = *uc + ".cfg";
 				std::string main_cfg = *uc + "/_main.cfg";
 				std::string toplevel;
-				std::cout << "Checking " << *uc << "\n";
 				if (file_exists(oldstyle_cfg))
 					toplevel = oldstyle_cfg;
 				else if (file_exists(main_cfg))
 					toplevel = main_cfg;
 				else
 					continue;
-				std::cout << "Survived " << toplevel << "\n";
 
 				try {
 					preproc_map user_defines_map(defines_map);
