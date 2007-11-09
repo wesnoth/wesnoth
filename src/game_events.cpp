@@ -774,7 +774,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				state_of_game->get_variable(var_name+".name") = (*teams)[team_index].name();
 				state_of_game->get_variable(var_name+".team_name") = (*teams)[team_index].team_name();
 				state_of_game->get_variable(var_name+".user_team_name") = (*teams)[team_index].user_team_name();
-				//state_of_game->get_variable(var_name+".recruit") = lexical_cast_default<std::string>((*teams)[team_index]
 				state_of_game->get_variable(var_name+".colour") = (*teams)[team_index].map_colour_to();
 
 				gold_store = &state_of_game->get_variable(var_name+".gold");
