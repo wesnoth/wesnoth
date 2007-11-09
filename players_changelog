@@ -5,21 +5,21 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 Version 1.3.9+svn:
   * Campaigns
     * Eastern Invasion
-      * Fixed Holy Amulet's description to read 'arcane' damage type instead of
-        'holy'.
+      * Fixed Holy Amulet's description to read 'arcane' damage type 
+        instead of 'holy'.
     * Northern Rebirth
-      * Disabled undead branch.
+      * Disabled undead branch (unfinished, not ready for next release).
       * Balancing polishing and bug fixing.
-      * Made auto recalled units loyal.
+      * Made auto-recalled units loyal.
     * Under the Burning Suns
-      * Cleaning-up of filenames and scenario id's - breaks compatibility with
-        older save games.
+      * Cleaning-up of filenames and scenario id's - breaks compatibility 
+        with older save games.
       * Kaleh now uses an RPG-style custom advancement tree.
       * New title image and some initial story images.
       * Redesigned and less powerful Dust Devil unit.
       * Made Elyssa move across sand with 1 MP.
-      * Fixed AI recruitment in 'Across the Harsh Sands', made Lost Souls easier
-        to beat back on MEDIUM and HARD, and fixed the bug with
+      * Fixed AI recruitment in 'Across the Harsh Sands', made Lost Souls 
+        easier to beat back on MEDIUM and HARD, and fixed the bug with
         Holy Water (bug #10254).
       * Bugfix for a blocker bug in 'In the Tunnels of the Trolls'.
 
@@ -37,22 +37,22 @@ Version 1.3.9+svn:
   * Multiplayer
     * Revised maps: Cynsaun Battlefield, Den of Onis, Hamlets, Silverhead
       Crossing, Sulla's Ruins, Weldyn Channel, Blue Water Province.
-    * New multiplayer scenario added: Dark Forecast, a random survival for up to
-      two players.
+    * New multiplayer scenario added: Dark Forecast, a random survival 
+      for up to two players.
     * Added the possibility to choose the leader's gender for a multiplayer
       side, both for the game host and the clients.
 
   * Unit changes and balancing:
     * Necromancer can now be female when advanced from Dark Sorceress.
-    * Increased the movement points over tundra (snow) and deep water from 1
-      to 2 for all flying drakes.
+    * Increased the movement points over tundra (snow) and deep water 
+      from 1 to 2 for all flying drakes.
     * Added the 'fearless' trait to the Ghoul line.
 
   * User interface
-    * Your own units, when selected, are now animated with a brief flash and a
-      sound.
-    * You can now also select enemy units and see their possible path, terrain
-      defense and turn to reach.
+    * Your own units, when selected, are now animated with a brief flash 
+      and a sound.
+    * You can now also select enemy units and see their possible path, 
+      terrain defense and turn to reach.
     * Other various fixed inconsistencies about the unit seletion.
     * Changed the mute hotkey from ctrl-m to ctrl-alt-m.
     * On victory, all old saves for the scenario except the start one
@@ -65,8 +65,8 @@ Version 1.3.9+svn:
 Version 1.3.9:
   * Campaigns
     * Descent into Darkness
-      * In 'Peaceful Valley', goblins may no longer spawn when you recapture a
-        village you had lost.
+      * In 'Peaceful Valley', goblins may no longer spawn 
+        when you recapture a village you had lost.
     * Heir to the Throne
       * New graphics for the Battle Princess.
       * In 'Crossroads', the orc ambushers now behave as if they had the ambush
@@ -76,18 +76,18 @@ Version 1.3.9:
       * New story images.
       * Now uses a proper map of Wesnoth in story screens.
     * Northern Rebirth
-      * Fixed bug where Father Marcus regenerates in the wrong place in one of
-        the death events.
+      * Fixed bug where Father Marcus regenerates in the wrong place 
+        in one of the death events.
       * Rescaled Rakshas' portrait to the proper size.
       * Balancing of opening event in 'Settling Disputes'
       * Various minor bug-fixes.
       * Extensive polishing, balancing and bug fixing in undead branch.
     * Son of the Black Eye
-      * Fixed bug in 'The Coward' where an enemy unit speaks as if he is on
-        your side.
+      * Fixed bug in 'The Coward' where an enemy unit speaks 
+        as if he is on your side.
       * A bit of dialogue polishing in 'The Coward'.
-      * In 'The Siege of Barag Gor', Jetto now joins you even if you don't
-        release him during the scenario.
+      * In 'The Siege of Barag Gor', Jetto now joins you 
+        even if you don't release him during the scenario.
     * An Orcish Incursion
       * Campaign heavily revised and added to the distribution
 
@@ -95,14 +95,14 @@ Version 1.3.9:
     * New animations: Rogue death, Orcish Leader line leadership.
 
   * Language and translations
-    * Updated translations: Czech, Danish, Dutch, Finnish, French, German,
-      Italian, Lithuanian, Polish, Swedish.
+    * Updated translations: Czech, Danish, Dutch, Finnish, French, 
+      German, Italian, Lithuanian, Polish, Swedish.
 
   * Map editor
     * A right click in floodfill mode now performs a flood fill.
     * A new village and castle icon has been made.
-    * New rotate function : copy&rotate selected area using mouse cursor as
-      center (or "center of mass" if the cursor is not on map).
+    * New rotate function : copy&rotate selected area using mouse cursor 
+      as center (or "center of mass" if the cursor is not on map).
     * Optimization of the builder engine (which recalculate transitions
       after a map change).
     * Fix several bugs with the "delay transition update" option.
@@ -116,7 +116,7 @@ Version 1.3.9:
       * Triple Blitz to Alirok Marsh
     * Revised maps: Caves of the Basilisk, Weldyn Channel.
     * Minimum number of turns reduced to 1.
-    * Fixed a crash if the client recieves invalid utf-8.
+    * Fixed a crash if the client receives invalid utf-8.
     * Display the era id for not installed eras in the lobby.
     * Display the scenario id for unknown scenarios in the lobby.
 
@@ -125,11 +125,11 @@ Version 1.3.9:
 
   * User interface:
     * Preserve aspect ratio of the minimap.
-    * The "Create unit" dialog have now two columns (race and type)
+    * The "Create unit" dialog has now two columns (race and type)
 
   * Miscellaneous and bug fixes
-    * Map label length is properly calculated and has been reduced
-      to 32 characters.
+    * Map label length is properly calculated and 
+      has been reduced to 32 characters.
     * Optimize the random map generator (especially for high village density)
 
 Version 1.3.8:
@@ -171,14 +171,14 @@ Version 1.3.8:
         also the appearance of the Lost Souls.
       * Fixed the dialogue for the outlaw patrol in 'Across the Harsh Sands',
         and adjusted the appearance of the patrol.
-      * 'A Stirring in the Night' - village events work correctly now (bugs
-        #9947 and #9915). Added impassable, animated campfire terrain.
+      * 'A Stirring in the Night' - village events work correctly now 
+        (bugs #9947 and #9915). Added impassable, animated campfire terrain.
 
   * Graphics
     * New graphics for Highwayman.
     * Nicer image for the illuminates aura.
-    * New button and slider in preferences to switch unit idle animations on
-      and off and set their frequency.
+    * New button and slider in preferences to switch unit idle animations 
+      on and off and set their frequency.
 
   * Language and translations
     * Updated translations: Bulgarian, Danish, Dutch, Finnish, French, German,
@@ -198,8 +198,8 @@ Version 1.3.8:
     * Decreased the melee attack of the Fugitive from 12-2 to 11-2.
     * Decreased the ranged attack of the Fugitive from 8-4 to 7-4.
     * Changed the race of the Vampire Bat line from 'undead' to 'bats'.
-    * Changed the movement type of the Vampire Bat line from 'undeadfly' to
-      'fly' (with adjustments).
+    * Changed the movement type of the Vampire Bat line from 'undeadfly' 
+      to 'fly' (with adjustments).
     * Added a magical ranged 7-2 arcane attack to the Dark Adept.
     * Added a magical ranged 9-2 arcane attack to the Dark Sorcerer.
     * Added a magical ranged 12-2 arcane attack to the Necromancer.
@@ -210,10 +210,10 @@ Version 1.3.8:
 
   * User interface
     * OK in the status menu replaced with more informative "Scroll To".
-    * Add an "Animate Map" option in advanced preferences, to switch flag and
-      terrain animation off.
-    * Various improvements of the help system (race subsections, list of units
-      having an ability, loading speed...)
+    * Add an "Animate Map" option in advanced preferences, to switch flag 
+      and terrain animation off.
+    * Various improvements of the help system (race subsections, 
+      list of units having an ability, loading speed...)
 
   * Miscellaneous and bugfixes
     * Small optimizations of fog or shroud and delay between AI turns.
@@ -222,8 +222,8 @@ Version 1.3.8:
 Version 1.3.7:
   * Campaigns
     * Son of the Black Eye
-      * Fixed bug in 'Saving Inarix' where no user_description is generated
-        for Inarix
+      * Fixed bug in 'Saving Inarix' where no user_description 
+        is generated for Inarix
     * Northern Rebirth
       * Colored portraits for Sister Theta and Ro'Arthian
       * Fixed bug in Anita's death event where Tallin speaks instead of her.
@@ -256,10 +256,10 @@ Version 1.3.7:
     * New map: Mokena Prairie.
     * Revised maps: Hamlets, Meteor Lake, 4p Hamlets, Paths of Daggers,
       Loris River.
-    * Fixed a OOS message when recruiting which happened if the players use
-      different languages.
-    * Show the (possibly bogus) gold per village and fog settings of games with
-      "Use map settings" on in a darker font. (patch #771 by uso)
+    * Fixed a OOS message when recruiting which happened if the players 
+      use different languages.
+    * Show the (possibly bogus) gold per village and fog settings of games 
+      with "Use map settings" on in a darker font. (patch #771 by uso)
     * The random starting time of day setting is will now be remembered if
       "Use map settings" is used.
     * The "Soul Shooter" is now renamed to "Banebow".
@@ -283,8 +283,8 @@ Version 1.3.7:
       screen that displays the size of the selected map. (patch #776 by uso)
     * End-of-scenario no longer takes you immediately to the
       next scenario or the lobby. Instead, you linger in browse mode --
-      menu commands for chat, saving games, etc. are available.  Clicking
-      end-of-turn ends the linger and takes you out.
+      menu commands for chat, saving games, etc. are available.  
+      Clicking end-of-turn ends the linger and takes you out.
     * The 'more' and 'help' button in the title screen now have a tooltip.
     * Added a hotkey for clearing the chat messages.
     * Fixed the black corners on some maps.
@@ -293,17 +293,17 @@ Version 1.3.7:
     * The sidebar HP tooltip now show resistances of the current unit
     * In help, the links to unencountered units now works but have a "(?)"
       and point to an "Unknown Unit" page explaining why.
-    * The default zoom key now toggles between default and last used zoom. The
-      switch is also faster (cached).
-    * Various improvement of the attack direction indicator and the "attack
-      from the last highlighted hex" system.
+    * The default zoom key now toggles between default and last used zoom. 
+      The switch is also faster (cached).
+    * Various improvement of the attack direction indicator and 
+      the "attack from the last highlighted hex" system.
     * The unit list now colors the stats of units.
     * In tiny-gui, now the movement hint also displays the terrain defense.
 
   * Miscellaneous and bugfixes
     * Isle of Anduin renamed to Isle of Alduin to avoid copyright problems.
-    * The assertion 'str.size() <= 4' no longer happens instead the terrain is
-      read as 'void' and an ingame message is shown.
+    * The assertion 'str.size() <= 4' no longer happens instead the terrain 
+      is read as 'void' and an ingame message is shown.
     * Fixed bug #9646: ToD changes not applied to mainmap in replay mode.
     * Fixed incorrect displayed reachable zone when moving next to an enemy
       in special ZoC cases (skirmish or lvl0)
@@ -318,17 +318,17 @@ Version 1.3.6:
     * The random starting time of day setting is will now be remembered.
     * Fixed a bug which could lead to the map in the lobby to become invisible.
     * Fixed an OOS which happened when a unit was recruited.
-    * Fixed an OOS which was caused by different traits. This only happened if
-      the players use different languages. A related problem which causes the
-      names to differ and also cause OOS errors hasn't been fixed yet.
+    * Fixed an OOS which was caused by different traits. This only happened 
+      if the players use different languages. A related problem which causes 
+      the names to differ and also cause OOS errors hasn't been fixed yet.
 
 
 Version 1.3.5:
   * Campaigns
     * Northern Rebirth
       * New scenario - Judgement.
-      * Balancing for scenarios: Infested Caves, To the Mines, Clearing the
-        Mines.
+      * Balancing for scenarios: Infested Caves, To the Mines,
+        Clearing the Mines.
     * Heir to the Throne
       * The Elvish Lord's and Elvish High Lord's faerie fire attacks have been
         changed from cold to arcane and reduced from 8-3 and 8-5 to 7-3 and 7-5
@@ -363,39 +363,39 @@ Version 1.3.5:
     * Increased the melee attack of the Ruffian from 4-2 to 5-2.
 
   * User interface
-    * Bug in delete_autosave preference fixed (thank you to jimm for spotting
-      this).
+    * Bug in delete_autosave preference fixed 
+      (thank you to jimm for spotting this).
     * The frequency of unit idle animations has been halved.
     * Help now has an "advance from" entry for units.
-    * Added experimental new transition between map and background. The
-      scrolling speed penalty introduced in 1.3.4 is gone.
+    * Added experimental new transition between map and background. 
+      The scrolling speed penalty introduced in 1.3.4 is gone.
     * Added colors to the statistics of units in help (Hajo's patch #764).
 
 
 Version 1.3.4:
   * Campaigns
     * Two Brothers
-      * Modified guards events to delay the 2nd event if the player ends in a
-        fight in the first one.
-      * Added one row of terrain in the 3rd and 4th scenario to make it look
-        better with the new map border style.
+      * Modified guards events to delay the 2nd event 
+        if the player ends in a fight in the first one.
+      * Added one row of terrain in the 3rd and 4th scenario 
+        to make it look better with the new map border style.
     * Heir to the Throne
       * The maps of the following scenarios have been edited: "The Elves
         Besieged", "Blackwater Port", "Bay of Pearls", "Crossroads", "The Siege
         of Elensefar", "Dwarven Doors", "The Lost General", "Elven Council".
-      * In "Dwarven Doors", one of the Orcish Warlords has been changed into a
-        Sovereign and another one into a Slurbow for variety .
+      * In "Dwarven Doors", one of the Orcish Warlords has been changed into 
+        a Sovereign and another one into a Slurbow for variety .
       * In "The Lost General", fixed the bug that made the undead leader unable
         to recruit.
     * The Rise of Wesnoth
-      * The outlaws in the campaign (not elsewhere in the game) can now level up
-        to level 3.
+      * The outlaws in the campaign (not elsewhere in the game) 
+        can now level up to level 3.
       * Added 2 extra turns to finish "Temple of the Deep" on all difficulties.
     * Eastern Invasion
       * The difficulty of "Northern Outpost" has been reduced by making the
         villages spawn less outlaws.
-      * Changed the way Owaec joins the protagonist in "Two Paths". Now he keeps
-        all the XP he might get in "Northern Outpost".
+      * Changed the way Owaec joins the protagonist in "Two Paths". 
+        Now he keeps all the XP he might get in "Northern Outpost".
     * Descent into Darkness
       * The unknown unit type (Royal Swordsman) bug in "Forever and ever, amen",
         the bug that made the Foolish Heroes all have 30 hitpoints and a broken
@@ -403,18 +403,18 @@ Version 1.3.4:
 
   * Graphics
     * Changed how the edges of the map are drawn, making small maps display
-      better on large resolutions. Not fully completed so it doesn't look
+      better on large resolutions. Not fully completed, so it doesn't look
       perfect yet.
     * Added a blur effect to most ingame dialogs.
     * New animations: troll whelp idle, young ogre idle, elvish fighter idle,
-      skeleton idle, general idle, master at armscrossbow & defend, pikeman
-      idle.
-    * Small improvements of footsteps: no time-of-the-day coloring and better
-      scaling.
+      skeleton idle, general idle, master at armscrossbow & defend, 
+      pikeman idle.
+    * Small improvements of footsteps: no time-of-the-day coloring 
+      and better scaling.
 
   * Language and translations
-    * Updated translations: Czech, Danish, French, German, Italian, Japanese,
-      Polish, Spanish, Swedish.
+    * Updated translations: Czech, Danish, French, German, Italian, 
+      Japanese, Polish, Spanish, Swedish.
     * New translations: Lithuanian.
 
   * Map editor
@@ -438,19 +438,19 @@ Version 1.3.4:
    * Added a new experimental way of drawing map edges, this is under evaluation
      but causes a rather severe performance penalty especially while scrolling.
      This will be fixed once the decision of the final version has been made.
-   * The movement hint on the pointed hex displays terrain defense and turns to
-     reach better and in colors.
-   * The movement hint now display "(1)" turns to reach when the unit has no
-     moves left.
+   * The movement hint on the pointed hex displays terrain defense and 
+     turns to reach better and in colors.
+   * The movement hint now display "(1)" turns to reach 
+     when the unit has no moves left.
    * Improve the behavior of the units list dialog.
-   * Right-click outside of a cancelable dialog closes it (useful with the
-     attack dialog).
+   * Right-click outside of a cancelable dialog closes it 
+     (useful with the attack dialog).
    * Allow to select an item in a context menu with right-clicking.
    * Restore search of no-team-only map labels.
 
   * Unit changes and balancing
-    * Units with the 'healthy' trait now rest even when they move (but not
-      attack/be attacked) instead of having a double resting bonus.
+    * Units with the 'healthy' trait now rest even when they move (but 
+      not attack/be attacked) instead of having a double resting bonus.
     * Increased the HP of the Skeleton Archer from 30 to 31.
 
   * Miscellaneous and bugfixes
@@ -461,17 +461,17 @@ Version 1.3.4:
 
 Version 1.3.3:
   * Campaigns
-    * New mainline campaigns: Northern Rebirth, Sceptre of Fire, Son of the
-      Black Eye, Descent into Darkness.
+    * New mainline campaigns: Northern Rebirth, Sceptre of Fire, 
+      Son of the Black Eye, Descent into Darkness.
     * Under the Burning Suns
-     * Rewrite of the campaign started and in progress, which means the campaign
-       might be broken or unplayable in some parts.
+     * Rewrite of the campaign started and in progress, which means 
+       the campaign might be broken or unplayable in some parts.
 
   * Graphics
     * Fixed a graphical glitch with the leader crown and HP/XP bars.
     * Fixed graphical glitches some terrains had in the topmost row of the map.
-    * Made the village flags taller so they don't get hidden behind units so
-      easily.
+    * Made the village flags taller, so they don't get hidden behind units 
+      so easily.
 
   * Sound and music
     * New or revised sounds: troll hit & die.
@@ -493,8 +493,8 @@ Version 1.3.3:
     * Changed the cold melee attack of the Lich and Ancient Lich to arcane.
     * Decreased the melee attack of the Wraith from 7-4 to 6-4.
     * Removed the 'fearless' trait from humans, orcs and mermen.
-    * Added the 'firstrike' weapon special to the pierce attack of the Drake
-      Clasher.
+    * Added the 'firstrike' weapon special to the pierce attack 
+      of the Drake Clasher.
     * Decreased the arcane ranged attack of the White Mage from 8-4 to 7-4.
     * Decreased the arcane ranged attack of the Mage of Light from 10-4 to 9-4.
 
@@ -506,8 +506,8 @@ Version 1.3.3:
      * The teams are now set correctly in Team Survival.
 
   * Miscellaneous and bugfixes
-    * Savegames from Wesnoth 1.2.x are no longer compatible and thus cannot be
-      loaded.
+    * Savegames from Wesnoth 1.2.x are no longer compatible 
+      and thus cannot be loaded.
     * Fixed a crash when an invalid scenario was loaded (bug #9049).
     * Fixed a bug which allowed undo after a recruit of a traitless unit
       revealed fogged or shrouded map areas.
@@ -520,8 +520,8 @@ Version 1.3.2:
         computer-controlled.
       * Updated images for Delfador.
       * Added defense and melee attack animations for the Dark Queen.
-      * Made the narrator talk about gryphons at the end of Northern Winter only
-        if the player has actually gotten the eggs.
+      * Made the narrator talk about gryphons at the end of Northern Winter 
+        only if the player has actually gotten the eggs.
     * The Rise of Wesnoth
       * 'Temple in the Deep' often crashed when the Lich killed a unit.
       * Added a hint about how to unstone the lich in 'Fallen Lich Point'.
@@ -531,21 +531,21 @@ Version 1.3.2:
       * Some graphical enhancements including a new portrait for Ethiliel.
       * Fixed Ethiliel not showing up in 'Vengeance'.
     * Tutorial
-      * Updated all unit images that are used in the tutorial to fit the
-        originals used in HttT.
+      * Updated all unit images that are used in the tutorial 
+        to fit the originals used in HttT.
       * Increased number of turns from 20 to 26 in the 2nd scenario.
-    * Made some bogus units, such as invisible helper units and duplicates of
-      the desert elves, not appear in the unit help anymore.
+    * Made some bogus units, such as invisible helper units and duplicates 
+      of the desert elves, not appear in the unit help anymore.
 
   * Graphics
     * Added the --max-fps command line switch.
-    * Improved the look of the main menu and tips of the day boxes in the title
-      screen.
+    * Improved the look of the main menu and tips of the day boxes 
+      in the title screen.
     * Added some more speed optimizations.
-    * Units and movement text are scaled properly when zooming, also with tiny
-      gui.
-    * Haloes in tiny gui are now scaled (before unscaled, thus a factor 2 bigger
-      as intended).
+    * Units and movement text are scaled properly when zooming, 
+      also with tiny gui.
+    * Haloes in tiny gui are now scaled (before unscaled, 
+      thus a factor 2 bigger as intended).
     * Fixed some glitches when scrolling or zooming the map.
     * Flying units are no longer buried in a castle.
     * Fixed the position of some halos when a unit was in a keep or castle.
@@ -560,8 +560,8 @@ Version 1.3.2:
     * Experimental ambient sounds for when night falls and morning arrives.
 
   * Units changes and balancing:
-    * Converted the cold resistance of the Elvish Sorceress line to a holy
-      resistance.
+    * Converted the cold resistance of the Elvish Sorceress line 
+      to a holy resistance.
     * Decreased the holy resistance of the Orcish Assassin line from 20% to 0%.
     * Decreased the holy resistance of the Sky Drake from 20% to -30%.
     * Decreased the holy resistance of the Hurricane Drake from 20% to -30%.
@@ -579,15 +579,15 @@ Version 1.3.2:
     * Made the total amount of visible villages be shown in the villages panel.
     * The numeric pad Enter key should now behave exactly like Return.
     * Enabled drag & drop to be used for moving units.
-    * Mousewheel now by default scrolls vertically, and horizontally if alt is
-      pressed.
+    * Mousewheel now by default scrolls vertically, 
+      and horizontally if alt is pressed.
     * Added support for horizontal mousewheel.
 
   * Language and translations
     * Renamed the damage type holy to arcane.
-    * Updated translations: Bulgarian, Chinese, Czech, Danish, Dutch, French, German,
-      Greek, Hungarian, Italian, Norwegian, Polish, Portuguese (Brazil), Spanish,
-      Swedish.
+    * Updated translations: Bulgarian, Chinese, Czech, Danish, Dutch, 
+      French, German, Greek, Hungarian, Italian, Norwegian, Polish, 
+      Portuguese (Brazil), Spanish, Swedish.
     * New translations: Indonesian
     * Observers can again save a replay of the observed game.
 
@@ -597,8 +597,8 @@ Version 1.3.2:
   * Multiplayer:
     * Maps
       * Revised maps: Castle Hopping Isle
-    * The countdown timer is now coloured properly when the remaining time is
-      less than 2 minutes.
+    * The countdown timer is now coloured properly when 
+      the remaining time is less than 2 minutes.
 
   * Miscellaneous bugfixes
     * Fixed a bug that caused the killing unit's death sound to play instead of
@@ -609,10 +609,10 @@ Version 1.3.2:
     * Fixed a bug that caused units to slide past their opponent on (melee)
       finishing blows.
     * Fixed crashes which could occur when attacking with a unit with drain attack,
-      this would happen if the unit could win the fight with more than it's maximum
-      amount of HP.
-    * Fixed autosaves not getting deleted for last campaign scenario and
-      multiplayer.
+      this would happen if the unit could win the fight with more than it's 
+      maximum amount of HP.
+    * Fixed autosaves not getting deleted for last campaign scenario 
+      and multiplayer.
     * Fixed beginning-of-scenario saves containing scenario WML.
 
 
@@ -622,12 +622,12 @@ Version 1.3.1:
       * Drowned Plains: the dragon now starts on grassland.
       * The Crossing: fixed a bug which prevented the undead leader spawned
         at turn 8 from having a keep.
-      * The Duel: the keep is now replaced by a castle tile instead of
-        grassland.
+      * The Duel: the keep is now replaced by a castle tile 
+        instead of grassland.
     * Heir to the Throne
       * Battle for Wesnoth: allowed Asheviere to recruit non-scout units.
-      * Elven Council: the leaders are no longer standing in keeps but on normal
-        castle tiles.
+      * Elven Council: the leaders are no longer standing in keeps, 
+        but on normal castle tiles.
     * Two Brothers
       * Updated the portrait of Bjarn to match the new mage colors.
     * Under the Burning Suns
@@ -636,29 +636,29 @@ Version 1.3.1:
   * Graphics
     * New unit graphics: the entire Mage line.
     * Added a recruit animation for Skeleton.
-    * Added death animations for Orcish Assassin, Orcish Grunt, Ghoul, Ancient
-      and Elder Wose, Thief.
-    * Other new animations: improved Elvish Hero melee attack, magic shield for Elvish
-      Sorceress line.
-    * New attack icons: undead axe, undead crossbow, pick axe, glaive, elven
-      staff, mace-and-chain.
+    * Added death animations for Orcish Assassin, Orcish Grunt, Ghoul, 
+      Ancient and Elder Wose, Thief.
+    * Other new animations: improved Elvish Hero melee attack, 
+      magic shield for Elvish Sorceress line.
+    * New attack icons: undead axe, undead crossbow, pick axe, glaive, 
+      elven staff, mace-and-chain.
     * Fixed misaligned animations of gryphon units.
     * Fixed some female versions of units using male images in some animations.
     * Item graphic improvements including an animatable campfire.
     * Added visible peaks to the impassable mountains.
     * Improved the hex grid.
     * Crown icons for heroes and expendable allied leaders.
-    * New terrains: farmland, Elvish castle, bridges crossing swamp and deep
-      water.
+    * New terrains: farmland, Elvish castle, bridges crossing swamp and 
+      deep water.
     * Updated terrain: added peaks to the impassable mountains.
     * Items with a halo have their halo hidden when under a shroud.
-    * Units with a hide ability now properly show where they're hidden and
-      the mouseover also gives the right indication.
+    * Units with a hide ability now properly show where they're hidden 
+      and the mouseover also gives the right indication.
 
   * Sound
     * New or revised sound effects: morning star, holy magic.
-    * Added an advanced sound tab to preferences, allowing one to specify the
-      values used for sample rate and buffer size.
+    * Added an advanced sound tab to preferences, allowing one 
+      to specify the values used for sample rate and buffer size.
 
   * Language and translations
     * Updated translations: British English, Catalan, Czech, Danish, Dutch,
@@ -678,10 +678,10 @@ Version 1.3.1:
     * Added the paste option to the edit menu.
     * The terrains are now split in groups to the list of terrains per group
       is a more friendly list.
-    * When not in drawing mode the brush setting is ignored and drawn with
-      the size of one tile.
-    * Added the an alpha blended preview of the selected terrains upon
-      drawing.
+    * When not in drawing mode, the brush setting is ignored 
+      and drawn with the size of one tile.
+    * Added the an alpha blended preview of the selected terrains 
+      upon drawing.
 
   * Multiplayer
     * Maps
@@ -692,13 +692,13 @@ Version 1.3.1:
     * Wesbowl: the respawned units are fully healed again.
 
   * Terrain system
-    * The entire underlaying system has been converted to a new system (this
-      might render some user-made content broken, read this forum thread for
-      more details: http://www.wesnoth.org/forum/viewtopic.php?t=14910).
+    * The entire underlaying system has been converted to a new system 
+      (this might render some user-made content broken, read this forum thread 
+      for more details: http://www.wesnoth.org/forum/viewtopic.php?t=14910).
 
   * Unit changes and balancing
-    * New traits: healthy (+3 HP, +4 rest healing), fearless (ignore
-      unfavourable time of day).
+    * New traits: healthy (+3 HP, +4 rest healing), 
+      fearless (ignore unfavourable time of day).
     * Dark Adepts no longer get the 'strong' trait.
     * Added the 'skirmisher' ability to the Shadow line.
     * Increased the HP of the Longbowman from 45 to 51.
