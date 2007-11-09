@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-08 18:43+0100\n"
+"POT-Creation-Date: 2007-11-09 20:26+0100\n"
 "PO-Revision-Date: 2007-11-07 00:10+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -6004,15 +6004,15 @@ msgstr "Etikett: "
 msgid "Team only"
 msgstr "Endast laget"
 
-#: src/menu_events.cpp:1752
+#: src/menu_events.cpp:1753
 msgid "Search"
 msgstr "Sök"
 
-#: src/menu_events.cpp:1795
+#: src/menu_events.cpp:1796
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Kommandon: whisper list emote. Skriv /help [kommando] för mer hjälp."
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6020,18 +6020,18 @@ msgstr ""
 "Skicka ett privat meddelande. Du kan inte skicka meddelanden till spelare "
 "som kontrollerar en sida i spelet. Syntax: /whisper [spelare] [meddelande]"
 
-#: src/menu_events.cpp:1851
+#: src/menu_events.cpp:1852
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Lägg till spelare till din lista över vänner. Syntax: /list addfriend "
 "[argument]"
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1854
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Lägg till spelare till din ignoreralista. Syntax: /list ignore [argument]"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1856
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6039,19 +6039,19 @@ msgstr ""
 "Ta bort spelare från listan över vänner eller ignorerade. Syntax: /list "
 "remove [argument]"
 
-#: src/menu_events.cpp:1857
+#: src/menu_events.cpp:1858
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Rensa dina listor över vänner och ignorerade. Syntax: /list clear"
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Visa dina listor över vänner och ignorerade. Syntax: /list display"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1862
 msgid "Unknown subcommand"
 msgstr "Okänt underkommando"
 
-#: src/menu_events.cpp:1864
+#: src/menu_events.cpp:1865
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6063,56 +6063,56 @@ msgstr ""
 "(valfritt)]. Underkommandon: addfriend addignore remove display clear. "
 "Skriv /help list [underkommando] för mer information."
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1868
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Skicka en smiley. Syntax: /emote [message]"
 
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1870
 msgid "Unknown command"
 msgstr "Okänt kommando"
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1882
 msgid "Added to ignore list: "
 msgstr "Lagd i ignoreralistan: "
 
-#: src/menu_events.cpp:1883 src/menu_events.cpp:1890 src/menu_events.cpp:1897
+#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
 msgid "Invalid username: "
 msgstr "Ogiltigt användarnamn: "
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1889
 msgid "Added to friends list: "
 msgstr "Lagd i vänlistan: "
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1896
 msgid "Removed from list: "
 msgstr "Borttagen från listan: "
 
-#: src/menu_events.cpp:1921
+#: src/menu_events.cpp:1922
 msgid "There are no players on your friends or ignore list."
 msgstr "Det finns inga spelare på dina listor över vänner och ignorerade."
 
-#: src/menu_events.cpp:1931
+#: src/menu_events.cpp:1932
 msgid "Removed from ignore list: "
 msgstr "Borttagen från ignoreralistan: "
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:1935
 msgid "Removed from friends list: "
 msgstr "Borttagen från vänlistan: "
 
-#: src/menu_events.cpp:1941
+#: src/menu_events.cpp:1942
 msgid "Unknown command: "
 msgstr "Okänt kommando: "
 
-#: src/menu_events.cpp:2054
+#: src/menu_events.cpp:2055
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Kunde inte finna etikett eller trupp som innehöll textsträngen '$search'."
 
-#: src/menu_events.cpp:2228
+#: src/menu_events.cpp:2232
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/menu_events.cpp:2247
+#: src/menu_events.cpp:2251
 msgid "User-Command#3"
 msgstr "Användarkommandon #3"
 
@@ -6753,19 +6753,26 @@ msgstr "Guld: "
 msgid "Retained Gold: "
 msgstr "Bibehållet guld: "
 
-#: src/playsingle_controller.cpp:365
+#: src/playsingle_controller.cpp:370
+#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr ""
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Du startar nästa scenario med $gold guldstycken eller scenariots minimala "
+"mängd startguld, om denna är högre."
+msgstr[1] ""
 "Du startar nästa scenario med $gold guldstycken eller scenariots minimala "
 "mängd startguld, om denna är högre."
 
-#: src/playsingle_controller.cpp:383 src/playsingle_controller.cpp:434
+#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/playsingle_controller.cpp:393
+#: src/playsingle_controller.cpp:397
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6773,7 +6780,7 @@ msgstr ""
 "Anslutningen har kopplats ner och spelet kan inte fortsätta. Vill du spara "
 "spelet?"
 
-#: src/playsingle_controller.cpp:521
+#: src/playsingle_controller.cpp:525
 msgid "It is now $name|'s turn"
 msgstr "Nu är det $name|s drag"
 

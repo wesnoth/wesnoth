@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-08 18:43+0100\n"
+"POT-Creation-Date: 2007-11-09 20:26+0100\n"
 "PO-Revision-Date: 2007-10-10 20:49+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -5841,31 +5841,31 @@ msgstr "Etiqueta"
 msgid "Team only"
 msgstr "Equipo"
 
-#: src/menu_events.cpp:1752
+#: src/menu_events.cpp:1753
 msgid "Search"
 msgstr ""
 
-#: src/menu_events.cpp:1795
+#: src/menu_events.cpp:1796
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1851
+#: src/menu_events.cpp:1852
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Engade un xogador á túa lista de amigos. Uso: /list addfriend [argumento]"
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1854
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Engade un xogador á túa lista de ignorados. Uso: /list ignore [argumento]"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1856
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -5873,19 +5873,19 @@ msgstr ""
 "Elimina a un xogador da túa lista de amigos ou da de ignorados. Uso: /list "
 "remove [argumento]"
 
-#: src/menu_events.cpp:1857
+#: src/menu_events.cpp:1858
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Baleira a túa lista de amigos e de ignorados. Uso: /list clear"
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Amosa a túa lista de ignorados e de amigos. Uso: /list display"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1862
 msgid "Unknown subcommand"
 msgstr "Subcomando descoñecido"
 
-#: src/menu_events.cpp:1864
+#: src/menu_events.cpp:1865
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -5897,57 +5897,57 @@ msgstr ""
 "[argumento](opcional) Subcomandos: add remove list clear. Introduce /help "
 "ignore [subcomando] para obter máis información."
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1868
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1870
 msgid "Unknown command"
 msgstr "Comando descoñecido"
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1882
 msgid "Added to ignore list: "
 msgstr "Engadidos á lista de ignorados: "
 
-#: src/menu_events.cpp:1883 src/menu_events.cpp:1890 src/menu_events.cpp:1897
+#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
 msgid "Invalid username: "
 msgstr "Nome de usuario incorrecto: "
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1889
 msgid "Added to friends list: "
 msgstr "Engadidos á lista de amigos: "
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1896
 msgid "Removed from list: "
 msgstr "Eliminados da lista: "
 
-#: src/menu_events.cpp:1921
+#: src/menu_events.cpp:1922
 msgid "There are no players on your friends or ignore list."
 msgstr "Non hai xogadores na túa lista de amigos ou ignorados."
 
-#: src/menu_events.cpp:1931
+#: src/menu_events.cpp:1932
 msgid "Removed from ignore list: "
 msgstr "Eliminados da lista de ignorados: "
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:1935
 msgid "Removed from friends list: "
 msgstr "Eliminados da lista de amigos: "
 
-#: src/menu_events.cpp:1941
+#: src/menu_events.cpp:1942
 msgid "Unknown command: "
 msgstr "Comando descoñecido: "
 
-#: src/menu_events.cpp:2054
+#: src/menu_events.cpp:2055
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Non se puido atopar ningunha etiqueta nin unidade que conteña a cadea "
 "'$search'."
 
-#: src/menu_events.cpp:2228
+#: src/menu_events.cpp:2232
 msgid "prompt^Command:"
 msgstr "Comando:"
 
-#: src/menu_events.cpp:2247
+#: src/menu_events.cpp:2251
 msgid "User-Command#3"
 msgstr ""
 
@@ -6589,17 +6589,21 @@ msgstr "Ouro:"
 msgid "Retained Gold: "
 msgstr "Ouro Retido: "
 
-#: src/playsingle_controller.cpp:365
+#: src/playsingle_controller.cpp:370
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr ""
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/playsingle_controller.cpp:383 src/playsingle_controller.cpp:434
+#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
 msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que intentou cargar está corrompido"
 
-#: src/playsingle_controller.cpp:393
+#: src/playsingle_controller.cpp:397
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6607,7 +6611,7 @@ msgstr ""
 "Houbo unha interrupción da rede, e o xogo non pode continuar. Desexas gardar "
 "a partida?"
 
-#: src/playsingle_controller.cpp:521
+#: src/playsingle_controller.cpp:525
 msgid "It is now $name|'s turn"
 msgstr "Agora é o turno de $name|"
 

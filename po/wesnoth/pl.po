@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-08 18:43+0100\n"
+"POT-Creation-Date: 2007-11-09 20:26+0100\n"
 "PO-Revision-Date: 2007-11-01 18:41+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -6059,17 +6059,17 @@ msgstr "Etykieta:"
 msgid "Team only"
 msgstr "Tylko drużyna"
 
-#: src/menu_events.cpp:1752
+#: src/menu_events.cpp:1753
 msgid "Search"
 msgstr "Szukaj"
 
-#: src/menu_events.cpp:1795
+#: src/menu_events.cpp:1796
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Komendy: whisper list emote. Wpisz /help [komenda], aby uzyskać więcej "
 "informacji."
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6077,15 +6077,15 @@ msgstr ""
 "Wysyła prywatne wiadomości. Nie możesz wysyłać ich do graczy, którzy "
 "kontrolują stronę w grze. Użycie: /whisper [nick] [wiadomość]"
 
-#: src/menu_events.cpp:1851
+#: src/menu_events.cpp:1852
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Dodanie gracza do listy przyjaciół. Użycie: /list addfriend [argument]"
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1854
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Dodanie gracza do listy ignorowanych. Użycie: /list ignore [argument]"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1856
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6093,19 +6093,19 @@ msgstr ""
 "Usunięcie gracza z listy ignorowanych lub przyjaciół. Użycie: /list remove "
 "[argument]"
 
-#: src/menu_events.cpp:1857
+#: src/menu_events.cpp:1858
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Wyczyszczenie listy ignorowanych i przyjaciół. Użycie: /list clear"
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Wyświetlenie listy ignorowanych i przyjaciół. Użycie: /list display"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1862
 msgid "Unknown subcommand"
 msgstr "Nieznana podkomenda"
 
-#: src/menu_events.cpp:1864
+#: src/menu_events.cpp:1865
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6118,55 +6118,55 @@ msgstr ""
 "addignore remove display clear. Aby uzyskać więcej informacji, wpisz: /help "
 "list [podkomenda]."
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1868
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Wykonaj akcję w czacie. Użycie: /emote [wiadomość]"
 
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1870
 msgid "Unknown command"
 msgstr "Nieznana komenda"
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1882
 msgid "Added to ignore list: "
 msgstr "Dodano do listy ignorowanych: "
 
-#: src/menu_events.cpp:1883 src/menu_events.cpp:1890 src/menu_events.cpp:1897
+#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
 msgid "Invalid username: "
 msgstr "Zła nazwa użytkownika: "
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1889
 msgid "Added to friends list: "
 msgstr "Dodano do listy przyjaciół: "
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1896
 msgid "Removed from list: "
 msgstr "Usunięto z listy: "
 
-#: src/menu_events.cpp:1921
+#: src/menu_events.cpp:1922
 msgid "There are no players on your friends or ignore list."
 msgstr "Na liście ignorowanych lub przyjaciół nie ma żadnych graczy."
 
-#: src/menu_events.cpp:1931
+#: src/menu_events.cpp:1932
 msgid "Removed from ignore list: "
 msgstr "Usunięto z listy ignorowanych: "
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:1935
 msgid "Removed from friends list: "
 msgstr "Usunięto z listy przyjaciół: "
 
-#: src/menu_events.cpp:1941
+#: src/menu_events.cpp:1942
 msgid "Unknown command: "
 msgstr "Nieznana komenda: "
 
-#: src/menu_events.cpp:2054
+#: src/menu_events.cpp:2055
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nie znaleziono etykiety ani jednostki zawierającej '$search'."
 
-#: src/menu_events.cpp:2228
+#: src/menu_events.cpp:2232
 msgid "prompt^Command:"
 msgstr "Polecenie:"
 
-#: src/menu_events.cpp:2247
+#: src/menu_events.cpp:2251
 msgid "User-Command#3"
 msgstr "User-Command#3"
 
@@ -6805,27 +6805,39 @@ msgstr "Złoto:"
 msgid "Retained Gold: "
 msgstr "Zachowane złoto: "
 
-#: src/playsingle_controller.cpp:365
+#: src/playsingle_controller.cpp:370
+#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr ""
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Następny scenariusz rozpoczniesz z $gold sztukami złota lub minimalną "
+"ilością początkową dla następnego scenariusza, zależnie od tego, która "
+"wartość jest większa."
+msgstr[1] ""
+"Następny scenariusz rozpoczniesz z $gold sztukami złota lub minimalną "
+"ilością początkową dla następnego scenariusza, zależnie od tego, która "
+"wartość jest większa."
+msgstr[2] ""
 "Następny scenariusz rozpoczniesz z $gold sztukami złota lub minimalną "
 "ilością początkową dla następnego scenariusza, zależnie od tego, która "
 "wartość jest większa."
 
-#: src/playsingle_controller.cpp:383 src/playsingle_controller.cpp:434
+#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
 msgid "The file you have tried to load is corrupt"
 msgstr "Wczytywany plik jest uszkodzony"
 
-#: src/playsingle_controller.cpp:393
+#: src/playsingle_controller.cpp:397
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Nastąpiło rozłączenie sieci i gra nie może być kontynuowana. Czy zapisać grę?"
 
-#: src/playsingle_controller.cpp:521
+#: src/playsingle_controller.cpp:525
 msgid "It is now $name|'s turn"
 msgstr "Tura gracza $name|"
 

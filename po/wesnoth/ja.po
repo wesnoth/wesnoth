@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-08 18:43+0100\n"
+"POT-Creation-Date: 2007-11-09 20:26+0100\n"
 "PO-Revision-Date: 2007-09-16 00:51+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -5917,17 +5917,17 @@ msgstr "ラベル:"
 msgid "Team only"
 msgstr "チームのみ"
 
-#: src/menu_events.cpp:1752
+#: src/menu_events.cpp:1753
 msgid "Search"
 msgstr "検索"
 
-#: src/menu_events.cpp:1795
+#: src/menu_events.cpp:1796
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "コマンド: whisper list emote。詳しいヘルプは /help [コマンド] と入力してくだ"
 "さい。"
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5936,34 +5936,34 @@ msgstr ""
 "ヤーにはメッセージを送ることができません。使い方: /whisper [ニックネーム] "
 "[メッセージ]"
 
-#: src/menu_events.cpp:1851
+#: src/menu_events.cpp:1852
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "友人リストにプレイヤーを追加します。使い方: /list addfriend [引数]"
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1854
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "無視リストにプレイヤーを追加します。使い方: /list ignore [引数]"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1856
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
 msgstr ""
 "無視リスト、友人リストからプレイヤーを削除します。使い方: /list remove [引数]"
 
-#: src/menu_events.cpp:1857
+#: src/menu_events.cpp:1858
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "無視リスト、友人リストを消去します。使い方: /list clear"
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "無視リスト、友人リストを表示します。使い方: /list display"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1862
 msgid "Unknown subcommand"
 msgstr "不明のサブコマンド"
 
-#: src/menu_events.cpp:1864
+#: src/menu_events.cpp:1865
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5975,55 +5975,55 @@ msgstr ""
 "[引数](オプション) サブコマンド: addfriend addignore remove display clear。詳"
 "しくは /help ignore [サブコマンド] と入力してください。"
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1868
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "チャットで、感情や個人的な行動を送る。 使い方: /emote [メッセージ]"
 
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1870
 msgid "Unknown command"
 msgstr "不明のコマンド"
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1882
 msgid "Added to ignore list: "
 msgstr "無視リストに追加されました:"
 
-#: src/menu_events.cpp:1883 src/menu_events.cpp:1890 src/menu_events.cpp:1897
+#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
 msgid "Invalid username: "
 msgstr "無効なユーザ名:"
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1889
 msgid "Added to friends list: "
 msgstr "友人リストに追加されました:"
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1896
 msgid "Removed from list: "
 msgstr "リストから削除されました:"
 
-#: src/menu_events.cpp:1921
+#: src/menu_events.cpp:1922
 msgid "There are no players on your friends or ignore list."
 msgstr "友人リスト、無視リストにプレイヤーはいません。"
 
-#: src/menu_events.cpp:1931
+#: src/menu_events.cpp:1932
 msgid "Removed from ignore list: "
 msgstr "無視リストから削除されました:"
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:1935
 msgid "Removed from friends list: "
 msgstr "友人リストから削除されました:"
 
-#: src/menu_events.cpp:1941
+#: src/menu_events.cpp:1942
 msgid "Unknown command: "
 msgstr "不明のコマンド:"
 
-#: src/menu_events.cpp:2054
+#: src/menu_events.cpp:2055
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "文字「 $search 」を含む ラベル名や ユニットは見つかりませんでした。"
 
-#: src/menu_events.cpp:2228
+#: src/menu_events.cpp:2232
 msgid "prompt^Command:"
 msgstr "コマンド:"
 
-#: src/menu_events.cpp:2247
+#: src/menu_events.cpp:2251
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
@@ -6668,19 +6668,23 @@ msgstr "所持金額: "
 msgid "Retained Gold: "
 msgstr "保持金額: "
 
-#: src/playsingle_controller.cpp:365
+#: src/playsingle_controller.cpp:370
+#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr ""
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
 "次のシナリオの開始ゴールドは $gold あるいは次のシナリオに設定されている最小の"
 "開始ゴールドのどちらか高い方になります。"
 
-#: src/playsingle_controller.cpp:383 src/playsingle_controller.cpp:434
+#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
-#: src/playsingle_controller.cpp:393
+#: src/playsingle_controller.cpp:397
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6688,7 +6692,7 @@ msgstr ""
 "ネットワークが切断されたため、 ゲームを続けられません。 このゲームを保存しま"
 "すか？"
 
-#: src/playsingle_controller.cpp:521
+#: src/playsingle_controller.cpp:525
 msgid "It is now $name|'s turn"
 msgstr "$name| ののターンです"
 

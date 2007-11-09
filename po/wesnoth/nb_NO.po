@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-08 18:43+0100\n"
+"POT-Creation-Date: 2007-11-09 20:26+0100\n"
 "PO-Revision-Date: 2006-12-22 21:30+0100\n"
 "Last-Translator: YbeRn00b <asgeiraakre@gmail.com>\n"
 "Language-Team: None\n"
@@ -5648,11 +5648,11 @@ msgstr "Merkelapp:"
 msgid "Team only"
 msgstr "Turkis"
 
-#: src/menu_events.cpp:1752
+#: src/menu_events.cpp:1753
 msgid "Search"
 msgstr "Søk"
 
-#: src/menu_events.cpp:1795
+#: src/menu_events.cpp:1796
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
@@ -5661,7 +5661,7 @@ msgstr ""
 "spillere'emote' beskriv handlinger i meldinger\n"
 "'/help [kommando]' for mer hjelp med en av kommandoene"
 
-#: src/menu_events.cpp:1847
+#: src/menu_events.cpp:1848
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5670,21 +5670,21 @@ msgstr ""
 "som kontrollerer lag i aktive spill.\n"
 "'/whisper [brukernavn] [melding]'"
 
-#: src/menu_events.cpp:1851
+#: src/menu_events.cpp:1852
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Legger til en spiller på ignoreringslisten.\n"
 "'/ignore add [brukernavn]'"
 
-#: src/menu_events.cpp:1853
+#: src/menu_events.cpp:1854
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Legger til en spiller på ignoreringslisten.\n"
 "'/ignore add [brukernavn]'"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1856
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -5693,25 +5693,25 @@ msgstr ""
 "Fjern en spiller fra ignoreringslisten.\n"
 "'/ignore remove [brukernavn]'"
 
-#: src/menu_events.cpp:1857
+#: src/menu_events.cpp:1858
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 "Fjern alle navn på ignoreringslisten.\n"
 "'/ignore clear'"
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1860
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr ""
 "Viser listen over ignorerte brukere.\n"
 "'/ignore list'"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1862
 msgid "Unknown subcommand"
 msgstr "Ukjent underkommando"
 
-#: src/menu_events.cpp:1864
+#: src/menu_events.cpp:1865
 #, fuzzy
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
@@ -5722,60 +5722,60 @@ msgstr ""
 "Ignorer meldinger fra spillere på listen.\n"
 "'/help ignore' for mer hjelp om denne kommandoen"
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1868
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Sender en personlig handling.\n"
 "'/emote [message]' for å vise \"Brukernavn [message]\" i snakkevinduet"
 
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1870
 msgid "Unknown command"
 msgstr "Ukjent kommando"
 
-#: src/menu_events.cpp:1881
+#: src/menu_events.cpp:1882
 msgid "Added to ignore list: "
 msgstr "Lagt til på ignoreringsliste:"
 
-#: src/menu_events.cpp:1883 src/menu_events.cpp:1890 src/menu_events.cpp:1897
+#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
 msgid "Invalid username: "
 msgstr "Ugyldig brukernavn: "
 
-#: src/menu_events.cpp:1888
+#: src/menu_events.cpp:1889
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Lagt til på ignoreringsliste:"
 
-#: src/menu_events.cpp:1895
+#: src/menu_events.cpp:1896
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Fjernet fra ignoreringsliste:"
 
-#: src/menu_events.cpp:1921
+#: src/menu_events.cpp:1922
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1931
+#: src/menu_events.cpp:1932
 msgid "Removed from ignore list: "
 msgstr "Fjernet fra ignoreringsliste:"
 
-#: src/menu_events.cpp:1934
+#: src/menu_events.cpp:1935
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Fjernet fra ignoreringsliste:"
 
-#: src/menu_events.cpp:1941
+#: src/menu_events.cpp:1942
 msgid "Unknown command: "
 msgstr "Ukjent kommando: "
 
-#: src/menu_events.cpp:2054
+#: src/menu_events.cpp:2055
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kunne ikke finne merke eller enhet som inneholdt '$search'."
 
-#: src/menu_events.cpp:2228
+#: src/menu_events.cpp:2232
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/menu_events.cpp:2247
+#: src/menu_events.cpp:2251
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Kommandoer"
@@ -6434,17 +6434,21 @@ msgstr "Gull: "
 msgid "Retained Gold: "
 msgstr "Beholdte gullstykker: "
 
-#: src/playsingle_controller.cpp:365
+#: src/playsingle_controller.cpp:370
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr ""
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/playsingle_controller.cpp:383 src/playsingle_controller.cpp:434
+#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
 msgid "The file you have tried to load is corrupt"
 msgstr "Det er noe galt med filen du prøvde å laste"
 
-#: src/playsingle_controller.cpp:393
+#: src/playsingle_controller.cpp:397
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6452,7 +6456,7 @@ msgstr ""
 "Det har skjedd en frakobling fra nettverket, og spillet kan ikke fortsette. "
 "Vil du lagre spillet?"
 
-#: src/playsingle_controller.cpp:521
+#: src/playsingle_controller.cpp:525
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Det er din tur"
