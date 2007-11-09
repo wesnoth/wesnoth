@@ -2193,8 +2193,6 @@ private:
 				gui_->invalidate(i->first);
 				gui_->invalidate_unit();
 			}
-
-
 		} else if(game_config::debug && cmd == "unbuff") {
 			const unit_map::iterator i = current_unit(mousehandler);
 			if(i != units_.end()) {
@@ -2203,8 +2201,6 @@ private:
 				gui_->invalidate(i->first);
 				gui_->invalidate_unit();
 			}
-
-
 		} else if(game_config::debug && cmd == "create" && map_.on_board(mousehandler.get_last_hex())) {
 			const game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.find(data);
 			if(i == gameinfo_.unit_types.end()) {
@@ -2215,6 +2211,10 @@ private:
 			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false)));
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
+		} else if(game_config::debug && cmd == "fog") {
+			teams_[team_num - 1].set_fog( !teams_[team_num - 1].uses_fog() );
+			recalculate_fog(map_,status_,gameinfo_,units_,teams_, team_num - 1);
+			gui_->redraw_everything();
 		} else if(game_config::debug && cmd == "gold") {
 			teams_[team_num - 1].spend_gold(-lexical_cast_default<int>(data,1000));
 			gui_->redraw_everything();
