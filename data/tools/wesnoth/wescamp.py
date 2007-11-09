@@ -19,7 +19,7 @@ This utility provides two tools
 * update the translations in a campaign (in the packed campaign)
 """
 
-import sys, os, optparse, tempfile, shutil
+import sys, os, optparse, tempfile, shutil, logging
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 import wmldata as wmldata
@@ -34,8 +34,9 @@ class tempdir:
     def __init__(self):
         self.path = tempfile.mkdtemp()
     
-        # for some reason we need to need a variable to shutil
-        # otherwise the __del__() will fail
+        # for some reason we need to need a variable to shutil otherwise the 
+        #__del__() will fail. This is caused by import of campaignserver_client
+        # or libsvn, according to esr it's a bug in Python.
         self.dummy = shutil
 
     def __del__(self):
@@ -43,94 +44,104 @@ class tempdir:
 
 if __name__ == "__main__":
 
-    def extract(server, campaign, path):
+    """Download an addon from the server.
+
+    server              The url of the addon server eg 
+                        campaigns.wesnoth.org:15003.
+    addon               The name of the addon.
+    path                Directory to unpack the campaign in.
+    returns             Nothing, errors are not detected.
+    """
+    def extract(server, addon, path):
+        
+        logging.debug("extract addon server = '%s' addon = '%s' path = '%s'",
+            server, addon, path)
+
         wml = libwml.CampaignClient(server)
-        data = wml.get_campaign(campaign)
-        wml.unpackdir(data, path, 0, True)
-    
+        data = wml.get_campaign(addon)
+        wml.unpackdir(data, path)
 
-    optionparser = optparse.OptionParser("%prog [options]")
 
-    optionparser.add_option("-u", "--upload", help = "upload a campaign to wescamp") # T
+    """Get a list of addons on the server.
 
-    optionparser.add_option("-d", "--download", help = "download the translations from wescamp") # 
-
-    optionparser.add_option("-x", "--extract", help = "downloads and extracts a file from the campaign server") # T
-
-    optionparser.add_option("-l", "--list", action = "store_true", help = "list available campaigns") # T
-
-    optionparser.add_option("--execute", help = "executes a program on the data directory (read wmllint)") # 
-
-    optionparser.add_option("-s", "--server", help = "server to connect to") # T
-
-    optionparser.add_option("-t", "--target", help = "directory to write data to / read data from") # T
-
-    optionparser.add_option("-w", "--wescamp-checkout", help = "the directory containing the wescamp checkout root") # \
-
-    optionparser.add_option("-v", "--verbose", action = "store_true", help = "show more verbose output") # \
-
-    optionparser.add_option("-P", "--password", help = "The master password for the campaigne server") # \
-
-    options, args = optionparser.parse_args()
-
-    server = "localhost"
-    if(options.server != None):
-        server = options.server
-
-    target = None
-    tmp = tempdir()
-    if(options.target != None):
-        target = options.target
-    else:
-        target = tmp.path
-
-    wescamp = None
-    if(options.wescamp_checkout):
-        wescamp = options.wescamp_checkout
-
-    verbose = options.verbose
-
-    password = ""
-    if(options.password):
-        password = options.password
-
-    if(options.list):
-        if(server == None):
-            print("No server specified")
-            sys.exit(2)
+    server              The url of the addon server eg 
+                        campaigns.wesnoth.org:15003.
+    translatable_only   If True only returns translatable addons.
+    returns             A dictonary with the addon as key and the translatable
+                        status as value
+    """
+    def list(server, translatable_only):
+        
+        logging.debug("list addons server = '%s' translatable_only = %s",
+            server, translatable_only)
 
         wml = libwml.CampaignClient(server)
         data = wml.list_campaigns()
-        data.debug(True)
 
         # Item [0] hardcoded seems to work
         campaigns = data.data[0]
+        result = {}
         for c in campaigns.get_all("campaign"):
-            print c.get_text_val("title")
+            translatable = c.get_text_val("translate")
+            if(translatable == "true"):
+                result[c.get_text_val("title")] = True
+            else:
+                # when the campaign isn't marked for translation skip it
+                if(translatable_only):
+                    continue
+                else:
+                    result[c.get_text_val("title")] = False
 
-    elif(options.upload != None):
-        if(server == None):
-            print("No server specified")
-            sys.exit(2)
+        return result
 
-        if(target == None):
-            # FIXME this should be an optional parameter, if ommitted
-            # use a temp dir which gets cleared after termination
-            print("No target specified.")
-            sys.exit(2)
+    """Upload a addon from the server to wescamp.
+    
+    server              The url of the addon server eg 
+                        campaigns.wesnoth.org:15003.
+    addon               The name of the addon.
+    temp_dir            The directory where the unpacked campaign can be stored.
+    svn_dir             The directory containing a checkout of wescamp.
+    """
+    def upload(server, addon, temp_dir, svn_dir):
 
-        if(wescamp == None):
-            print("No wescamp checkout specified")
-            sys.exit(2)
+        logging.debug("upload addon to wescamp server = '%s' addon = '%s' "
+            + "temp_dir = '%s' svn_dir = '%s'", 
+            server, addon, temp_dir, svn_dir)
 
-        extract(server,  options.upload, target)
-        svn = libsvn.SVN(wescamp + "/" + options.upload, 3) # debug level hard coded
+        # Is the addon in the list with campaigns to be translated.
+        campaigns = list(server, True)
+        if((addon in campaigns) == False):
+            logging.info("Addon '%s' is not marked as translatable "
+                + "upload aborted.", addon)
+            return
+
+        # Download the addon.
+        extract(server,  addon, temp_dir)
+
+        # If the directory in svn doesn't exist we need to create and commit it.
+        message = "wescamp.py automatic update"
+        if(os.path.isdir(svn_dir + "/" + addon) == False):
+            
+            logging.info("Creating directory in svn '%s'", 
+                svn_dir + "/" + addon)
+
+            svn = libsvn.SVN(svn_dir)
+
+            # Don't update we're in the root and if we update the status of all
+            # other campaigns is lost and no more updates are executed.
+            os.mkdir(svn_dir + "/" + addon)
+            res = svn.svn_add(svn_dir + "/" + addon)
+            res = svn.svn_commit("Adding directory for initial wescamp inclusion")
+
+        # Update the directory
+        svn = libsvn.SVN(svn_dir + "/" + addon)
         res = svn.svn_update()
         if(res == -1):
-            print res.err
+            logging.error("svn update of '%s' failed with message: %s",
+                svn_dir + "/" + addon, res.err)
             sys.exit(1)
     
-        res = svn.copy_to_svn(target, ["translations"])
+        res = svn.copy_to_svn(temp_dir, ["translations"])
 
         if(res.err != ""):
             print "Error :" + res.err
@@ -141,29 +152,34 @@ if __name__ == "__main__":
             print "Error :" + res.err
             sys.exit(1)
 
-    elif(options.download != None):
-        if(server == None):
-            print("No server specified")
+    """Update the translations from wescamp to the server.
+    
+    server              The url of the addon server eg 
+                        campaigns.wesnoth.org:15003.
+    addon               The name of the addon.
+    temp_dir            The directory where the unpacked campaign can be stored.
+    svn_dir             The directory containing a checkout of wescamp.
+    password            The master upload password.
+    """
+    def download(server, addon, temp_dir, svn_dir, password):
 
-        if(target == None):
-            # FIXME also allow temp dir
-            print("No target specified.")
-            sys.exit(2)
+        logging.debug("download addon from wescamp server = '%s' addon = '%s' "
+            + "temp_dir = '%s' svn_dir = '%s' password is not shown", 
+            server, addon, temp_dir, svn_dir)
 
-        extract(server, options.extract, target)
-        if(wescamp == None):
-            print("No wescamp checkout specified")
-            sys.exit(2)
+
+        extract(server, addon, temp_dir)
 
         # update the wescamp checkout for the translation, 
         # if nothing changed we're done.
         # Test the entire archive now and use that, might get optimized later
 
-        svn = libsvn.SVN(wescamp + "/" + options.download, 3) # debug level hard coded
+        svn = libsvn.SVN(wescamp + "/" + addon)
 
         res = svn.svn_update()
         if(res.status == 0):
-#            sys.exit(0) FIXME reenable
+            logging.info("svn Up to date, nothing to send to server")
+            sys.exit(0)
             pass
         elif(res.status == -1):
             sys.exit(1)
@@ -171,38 +187,125 @@ if __name__ == "__main__":
         # test whether the svn has a translations dir, if not we can stop
 
         # extract the campaign from the server
-        extract(server, options.download, target)
+        extract(server, addon, target)
 
         # delete translations
-        if(os.path.isdir(target + "/" + options.download + "/translations")):
-            shutil.rmtree(target + "/" + options.download + "/translations")
+        if(os.path.isdir(target + "/" + addon + "/translations")):
+            shutil.rmtree(target + "/" + addon + "/translations")
 
         # copy the new translations
-        if(os.path.isdir(target + "/" + options.download + "/translations") == False):
-            os.mkdir(target + "/" + options.download + "/translations")
+        if(os.path.isdir(target + "/" + addon + "/translations") == False):
+            os.mkdir(target + "/" + addon + "/translations")
 
-        res = svn.sync_dir(svn.checkout_path + "/" + options.download + "/translations" , 
-            target + "/" + options.download + "/translations", True, None) 
+        res = svn.sync_dir(svn.checkout_path + "/" + addon + "/translations" , 
+            target + "/" + addon + "/translations", True, None) 
 
         # upload to the server
         wml = libwml.CampaignClient(server)
-        wml.put_campaign("", options.download, "", password, "", "", "",  
-            target + "/" + options.download + ".cfg",
-            target + "/" + options.download)
+        wml.put_campaign("", addon, "", password, "", "", "",  
+            target + "/" + addon + ".cfg", target + "/" + addon)
 
+
+    optionparser = optparse.OptionParser("%prog [options]")
+
+    optionparser.add_option("-u", "--upload", help = "upload a addon to wescamp") # V
+
+    optionparser.add_option("-d", "--download", help = "download the translations from wescamp") #
+
+    optionparser.add_option("-D", "--download-all", action = "store_true", help = "download all translations from wescamp") # \
+
+    optionparser.add_option("-l", "--list", action = "store_true", help = "list available campaigns" ) # V
+
+    optionparser.add_option("-L", "--list-translatable", action = "store_true", help = "list campaigns available for translation") # V
+
+    optionparser.add_option("-s", "--server", help = "server to connect to") # V
+
+    optionparser.add_option("-p", "--port", help = "port on the server to connect to") # V
+
+    optionparser.add_option("-t", "--temp-dir", help = "directory to store the tempory data, if omitted a tempdir is created and destroyed after usage, if specified the data is left in the tempdir") # V
+
+    optionparser.add_option("-w", "--wescamp-checkout", help = "the directory containing the wescamp checkout root") # V
+
+    optionparser.add_option("-v", "--verbose", action = "store_true", help = "show more verbose output") # V
+
+    optionparser.add_option("-P", "--password", help = "The master password for the campaigne server") # V
+
+    options, args = optionparser.parse_args()
+
+    server = "localhost"
+    if(options.server != None):
+        server = options.server
+
+    if(options.port != None):
+        server += ":" + options.port
+
+    target = None
+    tmp = tempdir()
+    if(options.temp_dir != None):
+        target = options.temp_dir
+    else:
+        target = tmp.path
+
+    wescamp = None
+    if(options.wescamp_checkout):
+        wescamp = options.wescamp_checkout
+
+    if(options.verbose):
+        logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s] %(message)s')
+    else:
+        logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
+
+    password = options.password
+
+    # List the addons on the server and optional filter on translatable
+    # addons.
+    if(options.list or options.list_translatable):
+
+        addons = list(server, options.list_translatable)
+        for k, v in addons.iteritems():
+            if(v):
+                print k + " translatable"
+            else:
+                print k
+
+    # Upload an addon to wescamp.
+    elif(options.upload != None):
+
+        if(wescamp == None):
+            logging.error("No wescamp checkout specified")
+            sys.exit(2)
+
+        upload(server, options.upload, target, wescamp)
+
+    # Download an addon from wescamp.
+    elif(options.download != None):
+
+        if(wescamp == None):
+            logging.error("No wescamp checkout specified")
+            sys.exit(2)
+
+        if(password == None):
+            logging.error("No upload password specified")
+            sys.exit(2)
+
+        download(server, options.download, target, wescamp, password)
+
+    # Download all addons from wescamp.
+    elif(options.download_all != None):
+
+        if(wescamp == None):
+            logging.error("No wescamp checkout specified")
+            sys.exit(2)
+
+        if(password == None):
+            logging.error("No upload password specified")
+            sys.exit(2)
+
+        addons = list(server, True)
+        for k, v in addons.iteritems():
+            download(server, k, target, wescamp, password)
+            # FIXME clear the tmp dir
         
-
-    elif(options.extract != None):
-        if(server == None):
-            print("No server specified")
-            sys.exit(2)
-
-        if(target == None):
-            print("No target specified.")
-            sys.exit(2)
-
-        extract(server, options.extract, target)
-
     else:
         optionparser.print_help()
 

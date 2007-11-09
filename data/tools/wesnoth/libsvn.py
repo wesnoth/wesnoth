@@ -17,7 +17,7 @@ This library provides an interface to svn, the interface is build upon
 the command line svn tool. 
 """
 
-import os, shutil;
+import os, shutil, logging;
 
 class result:
     """V Result object for most svn functions
@@ -39,9 +39,9 @@ class SVN:
     checkout the root of the local checkout eg /src/wesnoth
     do not include a trailing slash!
     """
-    def __init__(self, checkout, log_level = 1):
+    def __init__(self, checkout):
         self.checkout_path = checkout
-    
+
         """status masks
         A = add
         D = delete
@@ -57,16 +57,6 @@ class SVN:
         self.STATUS_FLAG_NON_SVN = 0x10
         self.STATUS_FLAG_NON_EXISTANT = 0x20
 
-    
-        self.LOG_LEVEL_ERROR = 0
-        self.LOG_LEVEL_WARNING = 1
-        self.LOG_LEVEL_INFO = 2
-        self.LOG_LEVEL_DEBUG = 3
-
-        self.log_level = log_level
-        self.out = ""
-        self.err = ""
-    
 
     """V Makes a new checkout.
     
@@ -78,7 +68,7 @@ class SVN:
     """
     def svn_checkout(self, repo):
 
-        self.log(self.LOG_LEVEL_DEBUG, "checkout " + repo)
+        logging.debug("checkout " + repo)
 
         out, err = self.execute("svn co --non-interactive " + repo + " " + 
             self.checkout_path)
@@ -99,7 +89,7 @@ class SVN:
     """
     def svn_commit(self, msg, files = None):
 
-        self.log(self.LOG_LEVEL_DEBUG, "commit msg " + msg)
+        logging.debug("commit msg " + msg)
 
         command = "svn commit --non-interactive -m " + '"' + msg + '"'
         if(files != None):
@@ -150,7 +140,7 @@ class SVN:
     """
     def copy_to_svn(self, src, exclude):# = None):
 
-        self.log(self.LOG_LEVEL_DEBUG, "copy_to_svn :\n\tsvn = " 
+        logging.debug("copy_to_svn :\n\tsvn = " 
             + self.checkout_path + "\n\tsrc = " + src)
 
         # check whether the status of the repo is clean
@@ -189,8 +179,7 @@ class SVN:
     """
     def sync_dir(self, src, dest, src_svn, exclude ):#= None):
 
-        self.log(self.LOG_LEVEL_DEBUG, "sync_dir :\n\tsrc = " 
-            + src + "\n\tdest = " + dest)
+        logging.debug("sync_dir :\n\tsrc = " + src + "\n\tdest = " + dest)
 
         src_dirs, src_files = self.get_dir_contents(src, exclude)
         dest_dirs, dest_files = self.get_dir_contents(dest, exclude)
@@ -262,35 +251,35 @@ class SVN:
     """
     def get_dir_contents(self, dir, exclude ):#= None):
 
-        self.log(self.LOG_LEVEL_DEBUG, "get dir :\n\tdir = " + dir)
+        logging.debug("get dir :\n\tdir = " + dir)
         if(exclude != None):
-            self.log(self.LOG_LEVEL_DEBUG, "\t exclude = ")
-            self.log(self.LOG_LEVEL_DEBUG, exclude)
+            logging.debug("\t exclude = ")
+            logging.debug(exclude)
 
         items = os.listdir(dir)
         dirs = []
         files = []
 
         for item in items:
-            self.log(self.LOG_LEVEL_DEBUG, "\tTesting item " + item)
+            logging.debug("\tTesting item " + item)
 
             # ignore .svn dirs
             if(item == ".svn"):
-                self.log(self.LOG_LEVEL_DEBUG, "\t\tIgnore .svn")
+                logging.debug("\t\tIgnore .svn")
                 continue
 
             # ignore exclude list
             if(exclude != None and item in exclude):
-                self.log(self.LOG_LEVEL_DEBUG, "\t\tIgnore on the exclude list")
+                logging.debug("\t\tIgnore on the exclude list")
                 continue
             
             # an item is either a directory or not, in the latter case it's
             # assumed to be a file.
             if(os.path.isdir(dir + "/" + item)):
-                self.log(self.LOG_LEVEL_DEBUG, "\t\tAdded directory")
+                logging.debug("\t\tAdded directory")
                 dirs.append(item)
             else:
-                self.log(self.LOG_LEVEL_DEBUG, "\t\tAdded file")
+                logging.debug("\t\tAdded file")
                 files.append(item)
 
         return dirs, files
@@ -309,8 +298,7 @@ class SVN:
     """
     def dir_add(self, src, dest, src_svn, exclude ):#= None):
 
-        self.log(self.LOG_LEVEL_DEBUG, "dir_add :\n\tsvn = " 
-            + self.checkout_path + "\n\tsrc = " + src)
+        logging.debug("dir_add :\n\tsvn = " + self.checkout_path + "\n\tsrc = " + src)
 
         # add parent
         os.mkdir(dest)
@@ -476,7 +464,7 @@ class SVN:
     """
     def execute(self, command):
         
-        self.log(self.LOG_LEVEL_DEBUG, "Execute: " + command)
+        logging.debug("Execute: " + command)
 
         stdin, stdout, stderr =  os.popen3(command)
         stdin.close()
@@ -486,8 +474,3 @@ class SVN:
         stdout.close()
 
         return out, err
-
-    def log(self, level, msg):
-        if(level <= self.log_level):
-            print msg
-
