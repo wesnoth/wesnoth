@@ -2215,6 +2215,9 @@ private:
 			teams_[team_num - 1].set_fog( !teams_[team_num - 1].uses_fog() );
 			recalculate_fog(map_,status_,gameinfo_,units_,teams_, team_num - 1);
 			gui_->redraw_everything();
+		} else if(game_config::debug && cmd == "shroud") {
+			teams_[team_num - 1].set_shroud( !teams_[team_num - 1].uses_shroud() );
+			gui_->redraw_everything();
 		} else if(game_config::debug && cmd == "gold") {
 			teams_[team_num - 1].spend_gold(-lexical_cast_default<int>(data,1000));
 			gui_->redraw_everything();
