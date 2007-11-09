@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file map.hpp 
+//! 
+
 #ifndef MAP_H_INCLUDED
 #define MAP_H_INCLUDED
 
@@ -33,34 +36,37 @@ class unit_map;
 
 #define MAX_MAP_AREA	65536
 
-//class which encapsulates the map of the game. Although the game is hexagonal,
-//the map is stored as a grid. Each type of terrain is represented by a letter.
+//! Encapsulates the map of the game. 
+//! Although the game is hexagonal, the map is stored as a grid. 
+//! Each type of terrain is represented by a letter.
+//! @todo Update for new map-format.
 class gamemap
 {
 public:
 
-	//the name of the terrain is the terrain itself, the underlying terrain
-	//is the name of the terrain for game-logic purposes. I.e. if the terrain
-	//is simply an alias, the underlying terrain name is the name of the
-	//terrain that it's aliased to
+	// The name of the terrain is the terrain itself, 
+	// The underlying terrain is the name of the terrain for game-logic purposes. 
+	// I.e. if the terrain is simply an alias, the underlying terrain name 
+	// is the name of the terrain that it's aliased to.
 	const t_translation::t_list& underlying_mvt_terrain(t_translation::t_letter terrain) const;
 	const t_translation::t_list& underlying_def_terrain(t_translation::t_letter terrain) const;
 	const t_translation::t_list& underlying_union_terrain(t_translation::t_letter terrain) const;
 
-	//exception thrown if the map file is not in the correct format.
+	//! Throws exception if the map file is not in the correct format.
 	struct incorrect_format_exception {
 		incorrect_format_exception(const char* msg) : msg_(msg) {}
 		const char* const msg_;
 	};
 
-	//structure which represents a location on the map.
+	//! Represents a location on the map.
 	struct location {
-		//any valid direction which can be moved in in our hexagonal world.
+		//! Valid directions which can be moved in our hexagonal world.
 		enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
 		                 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
 
 		static DIRECTION parse_direction(const std::string& str);
-		//parse_directions takes a comma-separated list and filters out any invalid directions
+		//! Parse_directions takes a comma-separated list,
+		//! and filters out any invalid directions
 		static std::vector<DIRECTION> parse_directions(const std::string& str);
 		static std::string write_direction(DIRECTION dir);
 
@@ -92,7 +98,7 @@ public:
 		location operator-(const location &a) const;
 		location &operator-=(const location &a);
 
-		// do n step in the direction d 
+		// Do n step in the direction d 
 		location get_direction(DIRECTION d, int n = 1) const;
 		DIRECTION get_relative_dir(location loc) const;
 		static DIRECTION get_opposite_dir(DIRECTION d);
@@ -134,89 +140,91 @@ public:
 		IS_MASK
 		};
 
-	//loads a map, with the given terrain configuration.
-	//data should be a series of lines, with each character representing
-	//one hex on the map. Starting locations are represented by numbers,
-	//and will be of type keep.
+	//! Loads a map, with the given terrain configuration.
+	//! Data should be a series of lines, with each character 
+	//! representing one hex on the map. 
+	//! Starting locations are represented by numbers, 
+	//! and will be of type keep.
 	gamemap(const config& terrain_cfg, const std::string& data,
 		const tborder border_tiles, const tusage usage); //throw(incorrect_format_exception)
 	void read(const std::string& data, const tborder border_tiles, const tusage usage);
 
 	std::string write() const;
 
-	//overlays another map onto this one at the given position.
+	//! Overlays another map onto this one at the given position.
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
 
-	// effective dimensions of the map.
+	//! Effective dimensions of the map.
 	int w() const { return w_; }
 	int h() const { return h_; }
 
-	// real dimension of the map, including borders
-	int total_width() const { return total_width_; }
+	//! Real dimension of the map, including borders
+	int total_width()  const { return total_width_; }
 	int total_height() const { return total_height_; }
 
 	const t_translation::t_letter operator[](const gamemap::location& loc) const
 		{ return tiles_[loc.x + border_size_][loc.y + border_size_]; }
 
-	//looks up terrain at a particular location. Hexes off the map
-	//may be looked up, and their 'emulated' terrain will also be returned.
-	//this allows proper drawing of the edges of the map
+	//! Looks up terrain at a particular location. 
+	//! Hexes off the map may be looked up, 
+	//! and their 'emulated' terrain will also be returned.
+	//! This allows proper drawing of the edges of the map.
 	t_translation::t_letter get_terrain(const location& loc) const;
 
-	//writes the terrain at loc to cfg
+	//! Writes the terrain at loc to cfg.
 	void write_terrain(const gamemap::location &loc, config& cfg) const;
 
 
-	//functions to manipulate starting positions of the different sides.
+	//! Manipulate starting positions of the different sides.
 	const location& starting_position(int side) const;
 	int is_starting_position(const location& loc) const;
 	int num_valid_starting_positions() const;
 
 	void set_starting_position(int side, const location& loc);
 
-	//function which, given a location, will tell if that location is
-	//on the map. Should be called before indexing using []
+	//! Tell if a location is on the map. 
+	//! Should be called before indexing using [].
 	bool on_board(const location& loc, const bool include_border = false) const;
 
-	//function to tell if the map is of 0 size.
+	//! Tell if the map is of 0 size.
 	bool empty() const
 	{
 		return w_ == 0 || h_ == 0;
 	}
 
-	//function to return a list of the locations of villages on the map
+	//! Return a list of the locations of villages on the map
 	const std::vector<location>& villages() const { return villages_; }
 
-	//function to get the corresponding terrain_type information object
-	//for a given type of terrain
+	//! Get the corresponding terrain_type information object
+	//! for a given type of terrain.
 	const terrain_type& get_terrain_info(const t_translation::t_letter terrain) const;
 
-	//shortcut to get_terrain_info(get_terrain(loc))
+	//! Shortcut to get_terrain_info(get_terrain(loc)).
 	const terrain_type& get_terrain_info(const location &loc) const
 		{ return get_terrain_info(get_terrain(loc)); }
 
-	//gets the list of terrains
+	//! Gets the list of terrains.
 	const t_translation::t_list& get_terrain_list() const
 		{ return terrainList_; }
 
-	//clobbers over the terrain at location 'loc', with the given terrain
+	//! Clobbers over the terrain at location 'loc', with the given terrain.
 	void set_terrain(const location& loc, const t_translation::t_letter terrain);
 
-	//function which returns a list of the frequencies of different terrain
-	//types on the map, with terrain nearer the center getting weighted higher
+	//! Returns a list of the frequencies of different terrain types on the map, 
+	//! with terrain nearer the center getting weighted higher.
 	const std::map<t_translation::t_letter, size_t>& get_weighted_terrain_frequencies() const;
-	//remove the cached border terrain at loc. Needed by the editor
-	//to make tiles at the border update correctly when drawing
-	//other tiles.
+	//! Remove the cached border terrain at loc. 
+	//! Needed by the editor to make tiles at the border update correctly 
+	//! when drawing other tiles.
 	void remove_from_border_cache(const location &loc)
 		{ borderCache_.erase(loc); }
 
-	//Maximum number of players supported. 
-	//Warning: when you increase this, you need to add more definitions
-	//to the team_colors.cfg file.
+	//! Maximum number of players supported. 
+	//! Warning: when you increase this, you need to add 
+	//! more definitions to the team_colors.cfg file.
 	enum { MAX_PLAYERS = 9 };
 
-	//! Retuns the usage of the map.
+	//! Returns the usage of the map.
 	tusage get_usage() const { return usage_; }
 
 	//! The default map header, needed for maps created with 
@@ -227,8 +235,8 @@ public:
 
 protected:
 	t_translation::t_map tiles_;
-	//The size of the starting positions array is MAX_PLAYERS + 1, 
-	//because the positions themselves are numbered from 1.
+	//! The size of the starting positions array is MAX_PLAYERS + 1, 
+	//! because the positions themselves are numbered from 1.
 	location startingPositions_[MAX_PLAYERS+1];
 
 	/**
@@ -240,7 +248,7 @@ private:
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 
-	//allows lookup of terrain at a particular location.
+	//! Allows lookup of terrain at a particular location.
 	const t_translation::t_list operator[](int index) const
 		{ return tiles_[index + border_size_]; }
 
@@ -273,12 +281,11 @@ public:
 	virtual ~viewpoint() {};
 };
 
-//a utility function which parses ranges of locations
-//into a vector of locations
+//! Parses ranges of locations into a vector of locations.
 std::vector<gamemap::location> parse_location_range(const std::string& xvals,
 	const std::string& yvals, const gamemap *const map=NULL);
 
-//dump a position on a stream for debug purposes
+//! Dumps a position on a stream, for debug purposes.
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l);
 
 #endif
