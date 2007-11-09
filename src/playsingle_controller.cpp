@@ -361,8 +361,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 								   << (remaining_gold+finishing_bonus);
 						}
 						report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player->gold;
-
-						std::string goldmsg = _("You will start the next scenario with $gold or its defined minimum starting gold, whichever is higher.");
+						
+						// Inclusion of number tempts one to translate uncountable "gold" as something
+						// else, preferably countable. Thus plural. It does not matter that this
+						// string isn't pluralizable (?) in English, translations are likely to be.
+						// Note that both strings are the same in english, but they are supposed to be
+						// different in the resultant translation files, for the languages that require it.
+						std::string goldmsg = _n("You will start the next scenario with $gold or its defined minimum starting gold, whichever is higher.","You will start the next scenario with $gold or its defined minimum starting gold, whichever is higher.",player->gold);
 						utils::string_map symbols;
 						symbols["gold"] = lexical_cast_default<std::string>(player->gold);
 						goldmsg = utils::interpolate_variables_into_string(goldmsg, &symbols);  
