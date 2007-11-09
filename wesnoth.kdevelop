@@ -25,16 +25,16 @@
       <useconfiguration>debug</useconfiguration>
     </general>
     <run>
-      <mainprogram>/home/shadowm/src/wesnoth/./src/wesnoth</mainprogram>
+      <mainprogram>./src/wesnoth</mainprogram>
       <terminal>false</terminal>
       <directoryradio>executable</directoryradio>
       <customdirectory>/</customdirectory>
       <programargs>-d -w ..</programargs>
       <autocompile>true</autocompile>
       <envvars/>
-      <globaldebugarguments/>
-      <globalcwd>/home/shadowm/src/wesnoth/.</globalcwd>
-      <useglobalprogram>false</useglobalprogram>
+      <globaldebugarguments></globaldebugarguments>
+      <globalcwd>.</globalcwd>
+      <useglobalprogram>true</useglobalprogram>
       <autoinstall>false</autoinstall>
       <autokdesu>false</autokdesu>
     </run>
@@ -99,7 +99,7 @@
       <abortonerror>false</abortonerror>
       <numberofjobs>1</numberofjobs>
       <dontact>false</dontact>
-      <makebin/>
+      <makebin></makebin>
       <runmultiplejobs>false</runmultiplejobs>
       <prio>0</prio>
     </make>
@@ -265,9 +265,9 @@
   </kdevdebugger>
   <kdevdocumentation>
     <projectdoc>
-      <docsystem/>
-      <docurl/>
-      <usermanualurl/>
+      <docsystem></docsystem>
+      <docurl></docurl>
+      <usermanualurl></usermanualurl>
     </projectdoc>
   </kdevdocumentation>
 </kdevelop>
