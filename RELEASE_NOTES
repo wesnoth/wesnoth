@@ -13,8 +13,16 @@ terrain_mask maps which are stored in a separate file should use the extension
 the new format. Obviously this should be done before running wmllint on the
 data.
 
-Added a new combobox to the multiplayer side set-up screen, both for the client
-and the host, to select the leader's gender (male/female). It even reflects the
-graphical changes in the UI. It has been a wanted feature for a long time, but
-in a cooperative effort by Noyga and Shadow Master, it's ready. A test implementation
-was hidden in 1.3.9 anyway.
+Added a new combobox to the multiplayer side set-up screen, both for
+the client and the host, to select the leader's gender
+(male/female). It even reflects the graphical changes in the UI. It
+has been a wanted feature for a long time, but in a cooperative effort
+by Noyga and Shadow Master, it's ready. A test implementation was
+hidden in 1.3.9 anyway.
+
+Server metadata for a campaign can now be inside the campaign directory 
+as a file named _server.pbl.
+
+The upload client code now skip filenames ending in ~ or -bak or containing
+the string .pbl.  This is to avoid shopping backups or a .pbl file that might
+contain a passphrase.
