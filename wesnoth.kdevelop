@@ -16,6 +16,7 @@
     <ignoreparts/>
     <secondaryLanguages/>
     <projectname>wesnoth</projectname>
+    <defaultencoding/>
   </general>
   <kdevautoproject>
     <general>
@@ -38,7 +39,7 @@
         <cxxcompiler>kdevgppoptions</cxxcompiler>
         <f77compiler>kdevg77options</f77compiler>
         <cxxflags>-O2 -g0</cxxflags>
-        <configargs>--enable-editor</configargs>
+        <configargs>--enable-editor --enable-server --enable-editor --enable-tools --prefix=/opt/wesnoth-svn</configargs>
         <topsourcedir/>
         <cppflags/>
         <ldflags/>
@@ -47,9 +48,10 @@
         <f77compilerbinary/>
         <cflags/>
         <f77flags/>
+        <envvars/>
       </optimized>
       <debug>
-        <configargs>--enable-debug=full --enable-editor</configargs>
+        <configargs>--enable-server --enable-editor --enable-tools --prefix=/opt/wesnoth-svn --enable-debug --enable-dummy-locales</configargs>
         <builddir>.</builddir>
         <ccompiler>kdevgccoptions</ccompiler>
         <cxxcompiler>kdevgppoptions</cxxcompiler>
@@ -63,9 +65,10 @@
         <f77compilerbinary/>
         <cflags/>
         <f77flags/>
+        <envvars/>
       </debug>
       <default>
-        <configargs>--enable-editor</configargs>
+        <configargs>--enable-editor --enable-server --enable-editor --enable-tools --prefix=/opt/wesnoth-svn</configargs>
         <builddir>.</builddir>
         <topsourcedir/>
         <cppflags/>
@@ -79,6 +82,7 @@
         <cflags/>
         <cxxflags/>
         <f77flags/>
+        <envvars/>
       </default>
     </configurations>
     <make>
@@ -199,17 +203,32 @@
       <usePermanentCaching>true</usePermanentCaching>
       <alwaysIncludeNamespaces>false</alwaysIncludeNamespaces>
       <includePaths>.;</includePaths>
+      <parseMissingHeadersExperimental>false</parseMissingHeadersExperimental>
+      <resolveIncludePathsUsingMakeExperimental>false</resolveIncludePathsUsingMakeExperimental>
     </codecompletion>
     <qt>
       <used>false</used>
       <version>3</version>
       <includestyle>3</includestyle>
-      <root></root>
+      <root>/usr/lib/qt3</root>
       <designerintegration>EmbeddedKDevDesigner</designerintegration>
       <qmake>/usr/bin/qmake</qmake>
       <designer>/usr/bin/designer</designer>
       <designerpluginpaths/>
     </qt>
+    <creategettersetter>
+      <prefixGet/>
+      <prefixSet>set</prefixSet>
+      <prefixVariable>m_,_</prefixVariable>
+      <parameterName>theValue</parameterName>
+      <inlineGet>true</inlineGet>
+      <inlineSet>true</inlineSet>
+    </creategettersetter>
+    <splitheadersource>
+      <enabled>false</enabled>
+      <synchronize>true</synchronize>
+      <orientation>Vertical</orientation>
+    </splitheadersource>
   </kdevcppsupport>
   <cppsupportpart>
     <filetemplates>
@@ -232,6 +251,14 @@
     <display>
       <staticmembers>true</staticmembers>
       <demanglenames>true</demanglenames>
+      <outputradix>10</outputradix>
     </display>
   </kdevdebugger>
+  <kdevdocumentation>
+    <projectdoc>
+      <docsystem/>
+      <docurl/>
+      <usermanualurl/>
+    </projectdoc>
+  </kdevdocumentation>
 </kdevelop>
