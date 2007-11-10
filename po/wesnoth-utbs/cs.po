@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-08 18:45+0100\n"
-"PO-Revision-Date: 2007-11-05 21:51+0100\n"
+"PO-Revision-Date: 2007-11-10 19:18+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -726,7 +726,6 @@ msgstr ""
 "našich zdí. Hrozím se při pomyšlení na to, co se jim asi stalo."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1187
-#, fuzzy
 msgid "Python"
 msgstr "Pythos"
 
@@ -1580,12 +1579,11 @@ msgid "Pure Water"
 msgstr "Svatá voda"
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1884
-#, fuzzy
 msgid ""
 "This water will make your melee weapons arcane, and thus especially powerful "
 "against the undead."
 msgstr ""
-"Tato voda učiní tvé ruční zbraně svatými, tudíž velmi účinnými proti "
+"Tato voda učiní tvé ruční zbraně nezemskými, tudíž velmi účinnými proti "
 "nemrtvým."
 
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1913
@@ -13205,7 +13203,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:405
 #: data/campaigns/Under_the_Burning_Suns/units/Nym_Hunter.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:50
-#, fuzzy
 msgid "bolas"
 msgstr "bola"
 
@@ -13888,34 +13885,34 @@ msgstr "Kaleh z Quenothu"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:137
 msgid "Desert Youth"
-msgstr ""
+msgstr "Pouštní mladík"
 
 # tyto řetězce jsou v seznamu pod otázkou ve stylu "čím se má stát jednotka?" - proto 7. pád
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:362
 msgid "a leader in battle"
-msgstr ""
+msgstr "vůdce"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:369
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:375
 msgid "a better swordsman"
-msgstr "lepším šrmířem"
+msgstr "lepší šermíř"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:381
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:388
 msgid "a better archer"
-msgstr "lepším lukostřelcem"
+msgstr "lepší lukostřelec"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:394
 msgid "a marksman with the bow"
-msgstr ""
+msgstr "skvělý lukostřelec"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:403
 msgid "trained by Nym in using the bolas"
-msgstr ""
+msgstr "trénovaný v použití bol"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:417
 msgid "skilled in surviving the desert"
-msgstr ""
+msgstr "zkušený v přežití v poušti"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:421
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:422
@@ -13960,11 +13957,11 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:442
 msgid "gain +20% resistance under the sun"
-msgstr ""
+msgstr "o 20% vyšší odolnost na slunci"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:457
 msgid "sustenance"
-msgstr ""
+msgstr "světlomilný"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:459
 msgid ""
@@ -13972,10 +13969,13 @@ msgid ""
 "This unit's resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
 msgstr ""
+"Světlomilný:\n"
+"Kladné odolnosti této jednotky jsou na denním světle zvýšeny o 20%. Záporné "
+"nejsou ovlivněny."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:466
 msgid "gain +10% resistance to blade, pierce and impact"
-msgstr ""
+msgstr "+10% odolnost proti čepelím, bodání a úderům"
 
 # vejde se to do okna?
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:487
@@ -13996,12 +13996,12 @@ msgstr ""
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:505
 msgid "gain a stunning attack that disrupts enemy ZOC"
-msgstr ""
+msgstr "útok omračující nepřítele"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:517
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:520
 msgid "stun"
-msgstr ""
+msgstr "omráčení"
 
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:519
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:522
@@ -14011,7 +14011,12 @@ msgid ""
 "is landed. The attacker is exposing himself to attack and will be slowed as "
 "a result of the effort. Not active on defense."
 msgstr ""
+"Omráčení:\n"
+"Tento útok je veden velkou silou; pokud je nepřítel zasažen, omráčí jej - "
+"stane se zpomaleným a jeho oblast kontroly přestane platit (po jedno kolo). "
+"K omráčení může dojít pouze při ofenzivním použití útoku, ne při obraně."
 
+# turned inwards for answers and guidance - najít nějaké lepší vyjádření, odpovídající původnímu úmyslu
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:530
 msgid ""
 "Kaleh is still a young Elf of the Quenoth, on the verge of adulthood. He "
@@ -14021,6 +14026,11 @@ msgid ""
 "inwards for answers and guidance, not knowing how much his people would look "
 "towards him for guidance in times to come."
 msgstr ""
+"Kaleh je mladý elf z Quenothu na prahu dospělosti. V boji s mečem a lukem "
+"jej trénoval jeho otec na menších cestách a výpadech. Když o otce přišel, "
+"stal se Kaleh vážnějším a zamyšlenějším než ostatní, žijící pod dvěma "
+"slunci. Když teď musí vést svůj lid a neví, jestli jej přijme jako vůdce, "
+"obrací se pro odpovědi a rady do svého nitra."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Lava_Monster.cfg:26
 msgid ""
@@ -14126,6 +14136,10 @@ msgid ""
 "with quick wits and strong will. Her high spirits are a great boon in dark "
 "times."
 msgstr ""
+"Nym je už od dětství Kalehova přítelkyně. Následuje tradice pouštních lovců, "
+"pokud ovšem lze v souvislosti s mladou rebelkou mluvit o nějakých tradicích. "
+"Mezi její zbraně patří ostrovtip, silná vůle a dobrá nálada, neocenitelná v "
+"těžkých časech."
 
 #: data/campaigns/Under_the_Burning_Suns/units/Small_Mudcrawler.cfg:5
 msgid "Small Mudcrawler"

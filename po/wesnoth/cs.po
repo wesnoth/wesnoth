@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-10 22:09+0100\n"
-"PO-Revision-Date: 2007-11-04 22:15+0100\n"
+"PO-Revision-Date: 2007-11-10 18:26+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -5151,7 +5151,7 @@ msgstr "Vyber rozšíření k odebrání."
 
 #: src/game.cpp:991
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr "Opravdu chcete odstranit rozšíření '$addon|'?"
+msgstr "Opravdu chcete odstranit rozšíření „$addon|“?"
 
 #: src/game.cpp:995
 msgid "Confirm"
@@ -5159,7 +5159,7 @@ msgstr "Potvrdit"
 
 #: src/game.cpp:1018
 msgid "Add-on '$addon|' deleted."
-msgstr "Rozšíření '$addon|' smazáno"
+msgstr "Rozšíření „$addon|“ smazáno"
 
 #: src/game.cpp:1023
 msgid "Add-on deleted"
@@ -5270,7 +5270,7 @@ msgstr "Časový limit pro připojení vypršel"
 
 #: src/game.cpp:1288
 msgid "The server responded with an error: \"$error|\""
-msgstr "Server odpověděl chybou: \"$error|\""
+msgstr "Server odpověděl chybou: „$error|“"
 
 #: src/game.cpp:1295
 msgid "Terms"
@@ -5362,11 +5362,11 @@ msgstr "Upozornění: Při načítání konfiguračních souborů se vyskytly ch
 
 #: src/game.cpp:1711
 msgid "Error loading game configuration files: '"
-msgstr "Chyba při nahrávání konfiguračních souborů: '"
+msgstr "Chyba při nahrávání konfiguračních souborů: „"
 
 #: src/game.cpp:1712
 msgid "' (The game will now exit)"
-msgstr "' (Hra se ukončí)"
+msgstr "“ (Hra se ukončí)"
 
 #: src/game.cpp:1880
 msgid "Battle for Wesnoth"
@@ -5652,12 +5652,10 @@ msgid "gender^Random"
 msgstr "Náhodné"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
-#, fuzzy
 msgid "Female ♀"
 msgstr "Ženské ♀"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
-#, fuzzy
 msgid "Male ♂"
 msgstr "Mužské ♂"
 
@@ -6711,7 +6709,7 @@ msgstr "Přeješ si uložit hru?"
 
 #: src/playcampaign.cpp:577
 msgid "Unknown scenario: '$scenario|'"
-msgstr "Neznámý scénář: '$scenario|'"
+msgstr "Neznámý scénář: „$scenario|“"
 
 # !!!!
 #: src/playmp_controller.cpp:245
@@ -6776,7 +6774,6 @@ msgid "Retained Gold: "
 msgstr "Zůstalo zlatých: "
 
 #: src/playsingle_controller.cpp:370
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6784,13 +6781,13 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
-"Příští scénář zahájíš buď se $gold zlatými nebo jeho definovaným minimem; "
+"Příští scénář zahájíš buď s $gold zlatým nebo jeho definovaným minimem; "
 "použita je vyšší částka."
 msgstr[1] ""
 "Příští scénář zahájíš buď se $gold zlatými nebo jeho definovaným minimem; "
 "použita je vyšší částka."
 msgstr[2] ""
-"Příští scénář zahájíš buď se $gold zlatými nebo jeho definovaným minimem; "
+"Příští scénář zahájíš buď s $gold zlatými nebo jeho definovaným minimem; "
 "použita je vyšší částka."
 
 #: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
@@ -7003,7 +7000,7 @@ msgstr "Pomozte Wesnothu tím, že nám odešlete informace"
 
 #: src/unit.cpp:382 src/unit.cpp:1168 src/unit.cpp:2374
 msgid "Unknown unit type '$type|'"
-msgstr "Neznámá jednotka '$type|'"
+msgstr "Neznámá jednotka „$type|“"
 
 #: src/unit.cpp:2419 src/unit.cpp:2623 src/unit.cpp:2679
 msgid " and "
