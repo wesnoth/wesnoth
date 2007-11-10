@@ -1507,6 +1507,11 @@ if __name__ == '__main__':
                         # 1.3.1 to 1.3.2 conversion
                         for (old, new) in conversion2.items():
                             transformed = old.sub(new, transformed)
+        # Check for things marked translated that aren't strings
+        if re.match(r'[=(]\s*_\s*[^"]', transformed):
+            msg = "%s, line %d: translatability mark before non-string" % \
+                  (filename, lineno+1)
+            print >>sys.stderr, msg
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
