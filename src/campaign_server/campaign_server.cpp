@@ -578,6 +578,9 @@ int main(int argc, char**argv)
 	} catch(io_exception& /*e*/) {
 		std::cerr << "File I/O error\n";
 		return 2;
+	} catch(network::error& e) {
+		std::cerr << "Aborted with network error: " << e.message << '\n';
+		return 3;
 	}
 	return 0;
 }
