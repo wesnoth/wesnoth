@@ -242,7 +242,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 		gui::button* btn_end = gui_->find_button("button-endturn");
 		btn_end->enable(false);
 	}
-	gui_->get_theme().refresh_title("button-endturn", _ "End scenario");
+	gui_->get_theme().refresh_title("button-endturn", _("End scenario"));
 	gui_->invalidate_theme();
 
 	// switch to observer viewpoint
