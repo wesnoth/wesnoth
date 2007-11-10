@@ -400,6 +400,7 @@ namespace {
 								(*data)["version"] = (*campaign)["version"];
 								(*data)["timestamp"] = (*campaign)["timestamp"];
 								(*data)["icon"] = (*campaign)["icon"];
+								(*data)["translate"] = (*campaign)["translate"];
 								(*campaign).clear_children("translation");
 								find_translations(*data, *campaign);
 
@@ -435,6 +436,7 @@ namespace {
 							(*campaign)["description"] = (*upload)["description"];
 							(*campaign)["version"] = (*upload)["version"];
 							(*campaign)["icon"] = (*upload)["icon"];
+							(*campaign)["translate"] = (*upload)["translate"];
 							(*campaign)["dependencies"] = (*upload)["dependencies"];
 
 							if((*campaign)["downloads"].empty()) {
