@@ -1475,7 +1475,7 @@ if __name__ == '__main__':
             # Maybe we lose...
             if not oldstyle and not newstyle:
                 print '"%s", line %d: leaving ambiguous terrain value %s alone.' \
-                      % (filename, lineno+1, value)
+                      % (filename, lineno, value)
             else:
                 if oldstyle:
                     # 1.2.x to 1.3.2 conversions
@@ -1508,14 +1508,15 @@ if __name__ == '__main__':
                         for (old, new) in conversion2.items():
                             transformed = old.sub(new, transformed)
         # Check for things marked translated that aren't strings
-        if re.match(r'[=(]\s*_\s*[^"]', transformed):
-            msg = "%s, line %d: translatability mark before non-string" % \
-                  (filename, lineno+1)
+        m = re.search(r'[=(]\s*_\s*("?)', transformed)
+        if m and not m.group(1):
+            msg = '"%s", line %d: translatability mark before non-string' % \
+                  (filename, lineno)
             print >>sys.stderr, msg
         # Report the changes
         if verbose > 0 and transformed != line:
             msg = "%s, line %d: %s -> %s" % \
-                  (filename, lineno+1, line.strip(), transformed.strip())
+                  (filename, lineno, line.strip(), transformed.strip())
             print msg
         return transformed
 
