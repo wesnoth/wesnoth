@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:27+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-01-08 22:55+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -578,7 +578,7 @@ msgstr "Frekvencia podľa používateľa"
 msgid "Change the buffer size"
 msgstr "Nastav veľkosť zásobníka"
 
-#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:821
+#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Veľkosť zásobníka: "
 
@@ -732,60 +732,69 @@ msgstr "Používaj špeciálne grafické efekty (môžu byť pomalšie)"
 msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové skratky"
 
-#: src/game_preferences_display.cpp:684
+#: src/game_preferences_display.cpp:685
 #, fuzzy
 msgid "Speed: "
 msgstr "Rýchlosť rolovania:"
 
-#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
+#: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:689
+#: src/game_preferences_display.cpp:690
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:863
+#: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
 msgstr "Riadky rozhovoru: "
 
-#: src/game_preferences_display.cpp:959
+#: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
+#: src/game_preferences_display.cpp:907
+msgid "Invalid username"
+msgstr ""
+
+#: src/game_preferences_display.cpp:967
 msgid "yes"
 msgstr "áno"
 
-#: src/game_preferences_display.cpp:961
+#: src/game_preferences_display.cpp:969
 msgid "no"
 msgstr "nie"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1003
+msgid "(empty list)"
+msgstr ""
+
+#: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
 msgstr "Všeobecné"
 
-#: src/game_preferences_display.cpp:1114
+#: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Display"
 msgstr "Obrazovka"
 
-#: src/game_preferences_display.cpp:1115
+#: src/game_preferences_display.cpp:1123
 msgid "Prefs section^Sound"
 msgstr "Zvuk"
 
-#: src/game_preferences_display.cpp:1116
+#: src/game_preferences_display.cpp:1124
 msgid "Prefs section^Multiplayer"
 msgstr "Zápas"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1125
 msgid "Advanced section^Advanced"
 msgstr "Rozšírené"
 
-#: src/game_preferences_display.cpp:1152
+#: src/game_preferences_display.cpp:1160
 msgid "Saved Theme Preference: "
 msgstr "Uložená zvolená téma: "
 
-#: src/game_preferences_display.cpp:1158
+#: src/game_preferences_display.cpp:1166
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Nová téma sa prejaví až pri najbližšom spustení alebo načítaní hry."
 
-#: src/game_preferences_display.cpp:1162
+#: src/game_preferences_display.cpp:1170
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nepoznám žiadnu tému. Skús ju nastaviť vnútri existujúcej hry."

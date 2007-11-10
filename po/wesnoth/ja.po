@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:26+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-09-16 00:51+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -5301,11 +5301,11 @@ msgstr "タイトル画面を読み込んでいます。"
 msgid "Invalid color range: "
 msgstr "無効な色範囲:"
 
-#: src/game_events.cpp:927
+#: src/game_events.cpp:926
 msgid "Victory:"
 msgstr "勝利条件:"
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:929
 msgid "Defeat:"
 msgstr "敗北条件:"
 
@@ -6611,6 +6611,11 @@ msgstr "このゲームを本当に保存しますか？"
 #: src/playcampaign.cpp:577
 msgid "Unknown scenario: '$scenario|'"
 msgstr "不明のシナリオ: '$scenario|'"
+
+#: src/playmp_controller.cpp:245
+#, fuzzy
+msgid "End scenario"
+msgstr "リモートシナリオ"
 
 #: src/playmp_controller.cpp:383
 msgid ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:27+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-10-09 22:30+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -571,7 +571,7 @@ msgstr "Frecuencia de mostraxe definida polo usuario"
 msgid "Change the buffer size"
 msgstr "Cambiar o tamaño do buffer"
 
-#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:821
+#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Tamaño do Buffer: "
 
@@ -723,59 +723,69 @@ msgstr "Usar efectos gráficos especiais (pode ir máis lento)"
 msgid "View and configure keyboard shortcuts"
 msgstr "Ver e configurar os atallos de teclado"
 
-#: src/game_preferences_display.cpp:684
+#: src/game_preferences_display.cpp:685
 msgid "Speed: "
 msgstr "Velocidade:"
 
-#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
+#: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:689
+#: src/game_preferences_display.cpp:690
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:863
+#: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
 msgstr "Liñas de Conversa:"
 
-#: src/game_preferences_display.cpp:959
+#: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
+#: src/game_preferences_display.cpp:907
+#, fuzzy
+msgid "Invalid username"
+msgstr "Inserir un nome de usuario"
+
+#: src/game_preferences_display.cpp:967
 msgid "yes"
 msgstr "si"
 
-#: src/game_preferences_display.cpp:961
+#: src/game_preferences_display.cpp:969
 msgid "no"
 msgstr "non"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1003
+msgid "(empty list)"
+msgstr ""
+
+#: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
 msgstr "Xeral"
 
-#: src/game_preferences_display.cpp:1114
+#: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Display"
 msgstr "Visualización"
 
-#: src/game_preferences_display.cpp:1115
+#: src/game_preferences_display.cpp:1123
 msgid "Prefs section^Sound"
 msgstr "Son"
 
-#: src/game_preferences_display.cpp:1116
+#: src/game_preferences_display.cpp:1124
 msgid "Prefs section^Multiplayer"
 msgstr "Multixogador"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1125
 msgid "Advanced section^Advanced"
 msgstr "Avanzado"
 
-#: src/game_preferences_display.cpp:1152
+#: src/game_preferences_display.cpp:1160
 msgid "Saved Theme Preference: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:1158
+#: src/game_preferences_display.cpp:1166
 msgid "New theme will take effect on next new or loaded game."
 msgstr "O novo tema terá efecto na próxima partida cargada ou nova."
 
-#: src/game_preferences_display.cpp:1162
+#: src/game_preferences_display.cpp:1170
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 

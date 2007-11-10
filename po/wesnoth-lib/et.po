@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:27+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-01-14 16:37+0200\n"
 "Last-Translator: Priit Laes <plaes@plaes.org>\n"
 "Language-Team: none\n"
@@ -567,7 +567,7 @@ msgstr "Kasutajapoolse sämplimissageduse tarvitamine"
 msgid "Change the buffer size"
 msgstr "Muuda puhvri suurust"
 
-#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:821
+#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Puhvri suurus:"
 
@@ -714,59 +714,69 @@ msgstr "Kasuta graafilisi eriefekte (võib olla aeglane)"
 msgid "View and configure keyboard shortcuts"
 msgstr "Vaata ja seadista klaviatuuri kiirvalikuid"
 
-#: src/game_preferences_display.cpp:684
+#: src/game_preferences_display.cpp:685
 msgid "Speed: "
 msgstr "Kiirus:"
 
-#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
+#: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:689
+#: src/game_preferences_display.cpp:690
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:863
+#: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:959
+#: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
+#: src/game_preferences_display.cpp:907
+#, fuzzy
+msgid "Invalid username"
+msgstr "Sisesta kasutajanimi"
+
+#: src/game_preferences_display.cpp:967
 msgid "yes"
 msgstr "jah"
 
-#: src/game_preferences_display.cpp:961
+#: src/game_preferences_display.cpp:969
 msgid "no"
 msgstr "ei"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1003
+msgid "(empty list)"
+msgstr ""
+
+#: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
 msgstr "Üldine"
 
-#: src/game_preferences_display.cpp:1114
+#: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Display"
 msgstr "Pilt"
 
-#: src/game_preferences_display.cpp:1115
+#: src/game_preferences_display.cpp:1123
 msgid "Prefs section^Sound"
 msgstr "Heli"
 
-#: src/game_preferences_display.cpp:1116
+#: src/game_preferences_display.cpp:1124
 msgid "Prefs section^Multiplayer"
 msgstr "Mitu mängijat"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1125
 msgid "Advanced section^Advanced"
 msgstr "Edasijõudnutele"
 
-#: src/game_preferences_display.cpp:1152
+#: src/game_preferences_display.cpp:1160
 msgid "Saved Theme Preference: "
 msgstr "Salvestatud teema eelistus:"
 
-#: src/game_preferences_display.cpp:1158
+#: src/game_preferences_display.cpp:1166
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Uus teema ei rakendub kas uue mängu alustamisel või mängu laadimisel."
 
-#: src/game_preferences_display.cpp:1162
+#: src/game_preferences_display.cpp:1170
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Teemasid ei leitud. Proovi teemat muuta olemasolevast mängust."

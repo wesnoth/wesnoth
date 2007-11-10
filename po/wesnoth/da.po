@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:26+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-11-07 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -4426,9 +4426,9 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"Du kan anvende enheder fra et tidligere scenarie ved at vælge »tilbagekald« "
-"i spilmenuen. Ved at tilbagekalde den samme enhed igen kan du opbygge en "
-"stærk og erfaren hær."
+"Du kan anvende enheder fra et tidligere scenarie ved at vælge »tilbagekald« i "
+"spilmenuen. Ved at tilbagekalde den samme enhed igen kan du opbygge en stærk "
+"og erfaren hær."
 
 #: data/hardwired/tips.cfg:8
 msgid ""
@@ -5408,11 +5408,11 @@ msgstr "Henter titelskærm."
 msgid "Invalid color range: "
 msgstr "Ugyldig farveskala: "
 
-#: src/game_events.cpp:927
+#: src/game_events.cpp:926
 msgid "Victory:"
 msgstr "Sejr:"
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:929
 msgid "Defeat:"
 msgstr "Nederlag:"
 
@@ -6711,6 +6711,11 @@ msgstr "Vil du gemme dit spil?"
 #: src/playcampaign.cpp:577
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ukendt scenarie: '$scenario|'"
+
+#: src/playmp_controller.cpp:245
+#, fuzzy
+msgid "End scenario"
+msgstr "Afslut scenarie"
 
 #: src/playmp_controller.cpp:383
 msgid ""

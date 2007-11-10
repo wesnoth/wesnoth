@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:27+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-05-02 22:38+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
@@ -566,7 +566,7 @@ msgstr "Честота на дискретизация "
 msgid "Change the buffer size"
 msgstr "Промяна размера на буфера"
 
-#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:821
+#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr "Размер на буфера"
 
@@ -719,59 +719,69 @@ msgstr "Използване не графични специални ефект
 msgid "View and configure keyboard shortcuts"
 msgstr "Преглед и настройка на горещите клавиши"
 
-#: src/game_preferences_display.cpp:684
+#: src/game_preferences_display.cpp:685
 msgid "Speed: "
 msgstr "Скорост: "
 
-#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
+#: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:689
+#: src/game_preferences_display.cpp:690
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:863
+#: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
 msgstr "Редове: "
 
-#: src/game_preferences_display.cpp:959
+#: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
+#: src/game_preferences_display.cpp:907
+#, fuzzy
+msgid "Invalid username"
+msgstr "Добавяне на потребител"
+
+#: src/game_preferences_display.cpp:967
 msgid "yes"
 msgstr "да"
 
-#: src/game_preferences_display.cpp:961
+#: src/game_preferences_display.cpp:969
 msgid "no"
 msgstr "не"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1003
+msgid "(empty list)"
+msgstr ""
+
+#: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
 msgstr "Общи"
 
-#: src/game_preferences_display.cpp:1114
+#: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Display"
 msgstr "Графика"
 
-#: src/game_preferences_display.cpp:1115
+#: src/game_preferences_display.cpp:1123
 msgid "Prefs section^Sound"
 msgstr "Звук"
 
-#: src/game_preferences_display.cpp:1116
+#: src/game_preferences_display.cpp:1124
 msgid "Prefs section^Multiplayer"
 msgstr "Мрежова игра"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1125
 msgid "Advanced section^Advanced"
 msgstr "Допълнителни"
 
-#: src/game_preferences_display.cpp:1152
+#: src/game_preferences_display.cpp:1160
 msgid "Saved Theme Preference: "
 msgstr "Запазена предпочитана тема: "
 
-#: src/game_preferences_display.cpp:1158
+#: src/game_preferences_display.cpp:1166
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Новата тема ще влезе в действие в следващата нова или заредена игра."
 
-#: src/game_preferences_display.cpp:1162
+#: src/game_preferences_display.cpp:1170
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Няма намерени теми. Пробвайте да смените тема в съществуваща игра."

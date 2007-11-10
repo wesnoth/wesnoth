@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:27+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2006-06-28 17:44+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català <wesnoth-ca@lists.ettin.org>\n"
@@ -580,7 +580,7 @@ msgstr "Canvia l'idioma"
 msgid "Change the buffer size"
 msgstr "Canvia el volum de la música"
 
-#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:821
+#: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
 msgstr ""
 
@@ -732,62 +732,71 @@ msgstr "Activa efectes gràfics especials (pot ser lent)"
 msgid "View and configure keyboard shortcuts"
 msgstr "Configura les dreceres del teclat"
 
-#: src/game_preferences_display.cpp:684
+#: src/game_preferences_display.cpp:685
 #, fuzzy
 msgid "Speed: "
 msgstr "Velocitat de desplaçament"
 
-#: src/game_preferences_display.cpp:689 src/game_preferences_display.cpp:691
+#: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
 msgstr ""
 
-#: src/game_preferences_display.cpp:689
+#: src/game_preferences_display.cpp:690
 msgid "infinite"
 msgstr ""
 
-#: src/game_preferences_display.cpp:863
+#: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
 msgstr "Línies de xat: "
 
-#: src/game_preferences_display.cpp:959
+#: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
+#: src/game_preferences_display.cpp:907
+msgid "Invalid username"
+msgstr ""
+
+#: src/game_preferences_display.cpp:967
 msgid "yes"
 msgstr "Sí"
 
-#: src/game_preferences_display.cpp:961
+#: src/game_preferences_display.cpp:969
 msgid "no"
 msgstr "No"
 
-#: src/game_preferences_display.cpp:1113
+#: src/game_preferences_display.cpp:1003
+msgid "(empty list)"
+msgstr ""
+
+#: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
 msgstr "General"
 
-#: src/game_preferences_display.cpp:1114
+#: src/game_preferences_display.cpp:1122
 msgid "Prefs section^Display"
 msgstr "Visualització"
 
-#: src/game_preferences_display.cpp:1115
+#: src/game_preferences_display.cpp:1123
 msgid "Prefs section^Sound"
 msgstr "So"
 
-#: src/game_preferences_display.cpp:1116
+#: src/game_preferences_display.cpp:1124
 msgid "Prefs section^Multiplayer"
 msgstr "Multijugador"
 
-#: src/game_preferences_display.cpp:1117
+#: src/game_preferences_display.cpp:1125
 msgid "Advanced section^Advanced"
 msgstr "Avançat"
 
-#: src/game_preferences_display.cpp:1152
+#: src/game_preferences_display.cpp:1160
 msgid "Saved Theme Preference: "
 msgstr "Tema actual: "
 
-#: src/game_preferences_display.cpp:1158
+#: src/game_preferences_display.cpp:1166
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 "El canvi de tema es farà efectiu en tornar a carregar o en la propera "
 "partida."
 
-#: src/game_preferences_display.cpp:1162
+#: src/game_preferences_display.cpp:1170
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""

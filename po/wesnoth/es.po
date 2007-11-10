@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:26+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-10-01 17:44+0200\n"
 "Last-Translator: Roberto Romero <sildurin@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -4798,9 +4798,9 @@ msgid ""
 "ability to undo."
 msgstr ""
 "No puedes deshacer un movimiento que haya mostrado una parte del terreno "
-"oculta debido a la oscuridad o la niebla. Activa la opción «Retardar "
-"refresco de zonas oscuras» cuando quieras mover unidades y a la vez "
-"preservar tu capacidad de deshacer movimientos."
+"oculta debido a la oscuridad o la niebla. Activa la opción «Retardar refresco "
+"de zonas oscuras» cuando quieras mover unidades y a la vez preservar tu "
+"capacidad de deshacer movimientos."
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -5501,11 +5501,11 @@ msgstr "Cargando pantalla inicial."
 msgid "Invalid color range: "
 msgstr "Rango de color inválido: "
 
-#: src/game_events.cpp:927
+#: src/game_events.cpp:926
 msgid "Victory:"
 msgstr "Victoria:"
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:929
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -6829,6 +6829,11 @@ msgstr "¿Desea guardar su partida?"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario desconocido: '$scenario|'"
 
+#: src/playmp_controller.cpp:245
+#, fuzzy
+msgid "End scenario"
+msgstr "Escenario desconocido"
+
 #: src/playmp_controller.cpp:383
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
@@ -6981,8 +6986,7 @@ msgstr "Nombre de variable vacío"
 #: src/serialization/parser.cpp:232
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
-"Caracteres inesperados detrás del nombre de variable (se esperaban «,» o "
-"«=» )"
+"Caracteres inesperados detrás del nombre de variable (se esperaban «,» o «=» )"
 
 #: src/serialization/parser.cpp:267 src/serialization/parser.cpp:291
 msgid "Unterminated quoted string"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-09 20:26+0100\n"
+"POT-Creation-Date: 2007-11-10 22:09+0100\n"
 "PO-Revision-Date: 2007-11-04 22:15+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -5388,11 +5388,11 @@ msgstr "Načítám hlavní obrazovku."
 msgid "Invalid color range: "
 msgstr "Neplatná barva: "
 
-#: src/game_events.cpp:927
+#: src/game_events.cpp:926
 msgid "Victory:"
 msgstr "Vítězství:"
 
-#: src/game_events.cpp:930
+#: src/game_events.cpp:929
 msgid "Defeat:"
 msgstr "Prohra:"
 
@@ -6712,6 +6712,12 @@ msgstr "Přeješ si uložit hru?"
 #: src/playcampaign.cpp:577
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Neznámý scénář: '$scenario|'"
+
+# !!!!
+#: src/playmp_controller.cpp:245
+#, fuzzy
+msgid "End scenario"
+msgstr "Ukončit scénář"
 
 #: src/playmp_controller.cpp:383
 msgid ""
