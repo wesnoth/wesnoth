@@ -1509,7 +1509,7 @@ if __name__ == '__main__':
                             transformed = old.sub(new, transformed)
         # Check for things marked translated that aren't strings
         if "_" in transformed and not "wmllint: ignore" in transformed:
-            m = re.search(r'[=(]\s*_\s*("?)', transformed)
+            m = re.search(r'[=(]\s*_\s+("?)', transformed)
             if m and not m.group(1):
                 msg = '"%s", line %d: translatability mark before non-string' % \
                       (filename, lineno)
