@@ -633,6 +633,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	} else {
 		friends_xpos = rect.x+  friends_input_.width() + 20;
 	}
+	friends_.set_max_width(friends_xpos - rect.x - 1);
 
 	friends_add_friend_button_.set_location(friends_xpos,ypos);
 	ypos += short_interline+3; friends_add_ignore_button_.set_location(friends_xpos,ypos);
@@ -867,7 +868,7 @@ void preferences_dialog::process_event()
 	}
 
 	if (tab_ == FRIENDS_TAB) {
-		if(friends_.selection() != friends_selection_) {
+		if(friends_.double_clicked() || friends_.selection() != friends_selection_) {
 			friends_selection_ = friends_.selection();
 			std::stringstream ss;
 			ss << friends_names_[friends_.selection()];
@@ -876,12 +877,13 @@ void preferences_dialog::process_event()
 		}
 		if (friends_back_button_.pressed())
 			set_selection(MULTIPLAYER_TAB);
+
 		if (friends_add_friend_button_.pressed()) {
 			if (preferences::_set_relationship(friends_input_.text(), "friend")) {
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-		friends_input_.set_text("Invalid username");
+				gui::dialog(disp_, "", _("Invalid username")).show();;
             }
         }
 		if (friends_add_ignore_button_.pressed()) {
@@ -889,15 +891,21 @@ void preferences_dialog::process_event()
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
-		friends_input_.set_text("Invalid username");
+				gui::dialog(disp_, "", _("Invalid username")).show();;
             }
         }
 		if (friends_remove_button_.pressed()) {
-			if (preferences::_set_relationship(friends_input_.text(), "no")) {
-				friends_input_.clear();
-				set_friends_menu();
-			} else {
-		friends_input_.set_text("Invalid username");
+			std::string to_remove = friends_input_.text();
+			if(to_remove.empty() && friends_.selection() >= 0 && friends_names_[friends_.selection()] != "(empty list)") {
+				to_remove = friends_names_[friends_.selection()];
+			}
+			if(!to_remove.empty()) {
+				if (preferences::_set_relationship(to_remove, "no")) {
+					friends_input_.clear();
+					set_friends_menu();
+				} else {
+					gui::dialog(disp_, "", _("Invalid username")).show();
+				}
             }
         }
 		return;
@@ -992,7 +1000,7 @@ void preferences_dialog::set_friends_menu()
 		}
 	}
 	if (friends_items.empty()) {
-		friends_items.push_back("(empty list)");
+		friends_items.push_back(_("(empty list)"));
 		friends_names.push_back("(empty list)");
 	}
 	friends_names_ = friends_names;
