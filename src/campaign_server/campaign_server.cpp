@@ -68,7 +68,7 @@ namespace {
 			 * Fires a script, if no script defined it will always return true
 			 * If a script is defined but can't be executed it will return false
 			 */
-			bool fire(const std::string& hook, const std::string& addon);
+			void fire(const std::string& hook, const std::string& addon);
 			int load_config(); // return the server port
 			const config& campaigns() const { return *cfg_.child("campaigns"); }
 			config& campaigns() { return *cfg_.child("campaigns"); }
@@ -80,77 +80,39 @@ namespace {
 
 	};
 
-	bool campaign_server::fire(const std::string& hook, const std::string& addon)
+	void campaign_server::fire(const std::string& hook, const std::string& addon)
 	{
 		const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
-		if(itor == hooks_.end()) return true;
+		if(itor == hooks_.end()) return;
 
 		const std::string& script = itor->second;
-		if(script == "") return true;
+		if(script == "") return;
 
 #if (defined(_WIN32))
-		construct_error("Tried to execute a script on a not supporting platform");
-		return false;
+		LOG_CS << "ERROR: Tried to execute a script on a not supporting platform\n";
+		return;
 #else
-
-		int fd_out[2], fd_err[2];
 		pid_t childpid;
 
-		pipe(fd_out);
-		pipe(fd_err);
-
 		if((childpid = fork()) == -1) {
-			construct_error("fork failed");
-			return false;
+			LOG_CS << "ERROR fork failed while updating campaign " << addon << "\n";
+			return;
 		}
 
 		if(childpid == 0) {
 			/*** We're the child process ***/
 
-			// close input side of pipe
-			close(fd_out[0]);
-			close(fd_err[0]);
-
-			// redirect stdout and stderr
-			dup2(fd_out[1], 1);
-			dup2(fd_err[1], 2);
-
-			// execute the script
+			// execute the script, we run is a separate thread and share the 
+			// output which will make the logging look ugly.
 			execlp(script.c_str(), script.c_str(), addon.c_str(), (char *)NULL);
 
 			// exec() and family never return if they do we have a problem
-			std::cerr << "exec failed errno = " << errno << "\n";
+			std::cerr << "ERROR exec failed for addon " << addon 
+				<< " with errno = " << errno << "\n";
 			exit(errno);
 
 		} else {
-
-			/*** We're the parent process ***/
-
-			// close the output side of the pipe
-			close(fd_out[1]);
-			close(fd_err[1]);
-
-			// wait for our child to finish
-			int status;
-			wait(&status);
-
-
-			// write the message for the log
-			char buf;
-			std::string error;
-			std::string out;
-
-			while (read(fd_out[0], &buf, 1) > 0) out += buf;
-			LOG_CS << "Execution results\ncout: ";
-			std::cerr << out << "\ncerr: " ;
-
-			while (read(fd_err[0], &buf, 1) > 0) error += buf;
-			std::cerr << error << "\n";
-			LOG_CS << "End of results\n";
-			if(!error.empty()) construct_error(error);
-
-			// if terminated with a error code of 0 we succeeded
-			return (status == 0);
+			return;
 		}
 
 #endif
