@@ -68,7 +68,7 @@ namespace {
 			 * Fires a script, if no script defined it will always return true
 			 * If a script is defined but can't be executed it will return false
 			 */
-			bool fire(const std::string& hook);
+			bool fire(const std::string& hook, const std::string& addon);
 			int load_config(); // return the server port
 			const config& campaigns() const { return *cfg_.child("campaigns"); }
 			config& campaigns() { return *cfg_.child("campaigns"); }
@@ -80,7 +80,7 @@ namespace {
 
 	};
 
-	bool campaign_server::fire(const std::string& hook)
+	bool campaign_server::fire(const std::string& hook, const std::string& addon)
 	{
 		const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
 		if(itor == hooks_.end()) return true;
@@ -116,7 +116,7 @@ namespace {
 			dup2(fd_err[1], 2);
 
 			// execute the script
-			execlp(script.c_str(), script.c_str(), (char *)NULL);
+			execlp(script.c_str(), script.c_str(), addon.c_str(), (char *)NULL);
 
 			// exec() and family never return if they do we have a problem
 			std::cerr << "exec failed errno = " << errno << "\n";
@@ -465,7 +465,7 @@ namespace {
 							write(*cfgfile, cfg_);
 							network::send_data(construct_message(message),sock);
 
-							fire("hook_post_upload");
+							fire("hook_post_upload", (*upload)["name"]);
 						}
 					} else if(const config* erase = data.child("delete")) {
 						LOG_CS << "deleting campaign " << network::ip_address(sock) << "\n";
