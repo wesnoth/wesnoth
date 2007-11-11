@@ -288,7 +288,6 @@ while (1) {
 									$era         = $game->{'attr'}->{'mp_era'} if $game->{'attr'}->{'mp_era'};
 									my $scenario = "unknown";   # some scenarios don't set the id
 									$scenario    = $game->{'attr'}->{'mp_scenario'} if $game->{'attr'}->{'mp_scenario'};
-									my $players  = $game->{'attr'}->{'human_sides'};
 									my $xp       = "100%";      # scenarios might not set XP
 									$xp          = $game->{'attr'}->{'experience_modifier'} if $game->{'attr'}->{'experience_modifier'};
 									my $gpv      = $game->{'attr'}->{'mp_village_gold'};
@@ -299,7 +298,7 @@ while (1) {
 									my $observer = $game->{'attr'}->{'observer'};
 									print STDERR &timestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $showgames;
 									print LOG &logtimestamp . "+++ A new game has been created: \"$gamename\" ($gamelistindex, $gameid).\n" if $logfile;
-									my $settings = "Settings:  map: \"$scenario\"  era: \"$era\"  players: $players  XP: $xp  GPV: $gpv  fog: $fog  shroud: $shroud  observers: $observer  timer: $timer";
+									my $settings = "Settings:  map: \"$scenario\"  era: \"$era\"  XP: $xp  GPV: $gpv  fog: $fog  shroud: $shroud  observers: $observer  timer: $timer";
 									if ($timer =~ "yes") {
 										my $treservoir = "-";
 										$treservoir    = $game->{'attr'}->{'mp_countdown_reservoir_time'} if $game->{'attr'}->{'mp_countdown_reservoir_time'};
