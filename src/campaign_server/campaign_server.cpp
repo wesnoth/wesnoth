@@ -78,14 +78,10 @@ namespace {
 			const network::server_manager server_manager_;
 			std::map<std::string, std::string> hooks_;
 
-			// use a variable to store the output
-			std::string out_;
 	};
 
 	bool campaign_server::fire(const std::string& hook)
 	{
-		out_.resize(0);
-
 		const std::map<std::string, std::string>::const_iterator itor = hooks_.find(hook);
 		if(itor == hooks_.end()) return true;
 
@@ -142,12 +138,16 @@ namespace {
 			// write the message for the log
 			char buf;
 			std::string error;
+			std::string out;
+
+			while (read(fd_out[0], &buf, 1) > 0) out += buf;
+			LOG_CS << "Execution results\ncout: ";
+			std::cerr << out << "\ncerr: " ;
 
 			while (read(fd_err[0], &buf, 1) > 0) error += buf;
+			std::cerr << error << "\n";
+			LOG_CS << "End of results\n";
 			if(!error.empty()) construct_error(error);
-
-			// read the message for the user
-			while (read(fd_out[0], &buf, 1) > 0) out_ += buf;
 
 			// if terminated with a error code of 0 we succeeded
 			return (status == 0);
@@ -171,7 +171,6 @@ namespace {
 		}
 
 		// load the hooks
-		hooks_.insert(std::make_pair(std::string("hook_pre_upload"), cfg_["hook_pre_upload"]));
 		hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
 	}
 
@@ -415,12 +414,6 @@ namespace {
 
 							} else {
 								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."),sock);
-							}
-						} else if(! fire("hook_pre_upload")) {
-							if(out_ == "") {
-								network::send_data(construct_error("The add-on failed with unknown error in pre-upload hook."),sock);
-							} else {
-								network::send_data(construct_error("The add-on failed with error:" + out_),sock);
 							}
 						} else {
 							std::string message = "Add-on accepted.";
