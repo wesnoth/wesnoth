@@ -195,7 +195,7 @@ void archive_campaign(const std::string& campaign_name, config& cfg)
 {
 	// External .cfg may not exist; newer campaigns have a _main.cfg
 	std::string external_cfg = campaign_name + ".cfg";
-	if (file_exists(campaign_dir() + external_cfg))
+	if (file_exists(campaign_dir() + "/" + external_cfg))
 		archive_file(campaign_dir(), external_cfg,cfg.add_child("file"));
 	archive_dir(campaign_dir(),campaign_name,cfg.add_child("dir"));
 }
