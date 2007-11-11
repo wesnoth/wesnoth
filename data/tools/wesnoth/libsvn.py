@@ -427,11 +427,15 @@ class SVN:
         
         logging.debug("execute command = '%s'", command)
 
-        stdin, stdout, stderr =  os.popen3(command)
+        stdin, stdout, stderr = os.popen3(command)
         stdin.close()
-        err = stderr.read()
-        stderr.close()
+        # reading stdout before the stderr seems to avoid 'hanging' not 100% sure
+        # why but it might be that the stdout buffer is full and thus everything
+        # blocks, so this fix might not be 100% but the documentation doesn't tell
+        # much more. All examples on the web don't mention this case as well.
         out = stdout.read()
         stdout.close()
+        err = stderr.read()
+        stderr.close()
 
         return out, err
