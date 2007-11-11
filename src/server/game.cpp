@@ -775,11 +775,11 @@ void game::send_data(const config& data, const network::connection exclude) cons
 
 bool game::player_on_team(const std::string& team, const network::connection player) const {
 	for (side_vector::const_iterator side = sides_.begin(); side != sides_.end();
-		 side = std::find(side, sides_.end(), player))
+		 side++)
 	{
 		const config* const side_cfg = level_.find_child("side", "side",
 			lexical_cast<std::string, size_t>(side - sides_.begin() + 1));
-		if (side_cfg != NULL && (*side_cfg)["team_name"] == team) {
+		if (*side == player && side_cfg != NULL && (*side_cfg)["team_name"] == team) {
 			return true;
 		}
 	}
