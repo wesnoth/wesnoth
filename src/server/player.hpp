@@ -27,7 +27,7 @@ public:
 	player(const std::string& n, config& cfg, const size_t max_messages=4, const size_t time_period=10);
 
 	// mark a player as member of the game 'game_id' or as located in the lobby
-	void mark_available(std::string game_id="", std::string location="");
+	void mark_available(const int game_id=0, const std::string location="");
 
 
 	const std::string& name() const { return name_; }

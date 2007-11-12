@@ -28,14 +28,22 @@
 
 int game::id_num = 1;
 
-game::game(player_map& players, const network::connection host)
-	: player_info_(&players), id_(id_num++), owner_(host),
+game::game(player_map& players, const network::connection host, const std::string name)
+	: player_info_(&players), id_(id_num++), name_(name), owner_(host),
 	sides_(gamemap::MAX_PLAYERS), sides_taken_(gamemap::MAX_PLAYERS),
 	side_controllers_(gamemap::MAX_PLAYERS), started_(false),
 	description_(NULL),	end_turn_(0), allow_observers_(true),
 	all_observers_muted_(false)
 {
-	players_.push_back(host);
+	players_.push_back(owner_);
+	const player_map::iterator pl = player_info_->find(owner_);
+	if (pl == player_info_->end()) {
+		ERR_GAME << "ERROR: Could not find host in player_info_. (socket: "
+			<< owner_ << ")\n";
+	}
+	// Mark the host as unavailable in the lobby.
+	pl->second.mark_available(id_, name_);
+
 }
 
 bool game::is_observer(const network::connection player) const {
@@ -219,7 +227,7 @@ void game::update_side_data() {
 	// * Find the side this player name corresponds to
 	//! @todo: Should iterate over sides_ then over users.
 	for(user_vector::const_iterator player = users.begin(); player != users.end(); ++player) {
-		player_map::const_iterator info = player_info_->find(*player);
+		const player_map::const_iterator info = player_info_->find(*player);
 		if (info == player_info_->end()) {
 			ERR_GAME << "Error: unable to find player info for connection: "
 				<< *player << "\n";
@@ -576,38 +584,28 @@ void game::add_player(const network::connection player, const bool observer) {
 		return;
 	}
 
+	const player_map::iterator user = player_info_->find(player);
+	if (user == player_info_->end()) {
+		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
+			<< owner_ << ")\n";
+		return;
+	}
+
 	//if the game has already started, we add the player as an observer
 	if(started_) {
 		if(!allow_observers_) {
 			return;
 		}
-
-		player_map::const_iterator info = player_info_->find(player);
-		if(info != player_info_->end()) {
-			config observer_join;
-			observer_join.add_child("observer").values["name"] = info->second.name();
-			//send observer join to everyone except player
-			send_data(observer_join, player);
-		}
-
 		//tell this player that the game has started
 		network::queue_data(config("start_game"), player);
-
-		//send observer join of all the observers in the game to players
-		for(user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
-			if(*ob != player) {
-				info = player_info_->find(*ob);
-				if(info != player_info_->end()) {
-					config cfg;
-					cfg.add_child("observer").values["name"] = info->second.name();
-					network::queue_data(cfg, player);
-				}
-			}
-		}
+		// Send the player the history of the game to-date.
+		network::queue_data(history_,player);
 	}
+	user->second.mark_available(id_, name_);
 
 	//Check first if there are available sides
 	//If not, add the player as observer
+	//! @todo Instead take_side() should be used.
 	unsigned int human_sides = 0;
 	if (level_.get_children("side").size() > 0 && !observer){
 		config::child_list sides = level_.get_children("side");
@@ -617,11 +615,6 @@ void game::add_player(const network::connection player, const bool observer) {
 			}
 		}
 	}
-	else{
-		if (level_.get_attribute("human_sides") != ""){
-			human_sides = lexical_cast<unsigned int>(level_["human_sides"]);
-		}
-	}
 	DBG_GAME << debug_player_info();
 	if (human_sides > players_.size()){
 		DBG_GAME << "adding player...\n";
@@ -629,19 +622,27 @@ void game::add_player(const network::connection player, const bool observer) {
 	} else{
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
-		player_map::const_iterator info = player_info_->find(player);
-		if(info != player_info_->end()) {
-			config observer_join;
-			observer_join.add_child("observer").values["name"] = info->second.name();
-			//send observer join to everyone except player
-			send_data(observer_join, player);
+		config observer_join;
+		observer_join.add_child("observer").values["name"] = user->second.name();
+		//send observer join to everyone except player
+		send_data(observer_join, player);
+	}
+	// Send observer join of all the observers in the game to the new player.
+	for(user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
+		if(*ob != player) {
+			const player_map::const_iterator obs = player_info_->find(*ob);
+			if(obs != player_info_->end()) {
+				config cfg;
+				cfg.add_child("observer").values["name"] = obs->second.name();
+				network::queue_data(cfg, player);
+			}
 		}
 	}
 	DBG_GAME << debug_player_info();
 	send_user_list();
 
-	//send the player the history of the game to-date
-	network::queue_data(history_,player);
+	// Send the user the game data.
+	network::send_data(level_, player);
 }
 
 void game::remove_player(const network::connection player, const bool notify_creator) {
@@ -681,16 +682,17 @@ void game::remove_player(const network::connection player, const bool notify_cre
 			observer = true;
 		}
 	}
+	const player_map::iterator user = player_info_->find(player);
+	if (user == player_info_->end()) {
+		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
+			<< owner_ << ")\n";
+		return;
+	}
+	user->second.mark_available();
 	if (observer) {
-		const player_map::const_iterator obs = player_info_->find(player);
-		if (obs == player_info_->end()) {
-			ERR_GAME << "ERROR: Could not find observer in player_info_. (socket: "
-				<< player << ")\n";
-			return;
-		}
 		//they're just an observer, so send them having quit to clients
 		config observer_quit;
-		observer_quit.add_child("observer_quit").values["name"] = obs->second.name();
+		observer_quit.add_child("observer_quit").values["name"] = user->second.name();
 		send_data(observer_quit);
 		return;
 	}
@@ -698,13 +700,7 @@ void game::remove_player(const network::connection player, const bool notify_cre
 	// If the player was host choose a new one.
 	if (host && !players_.empty() && started_) {
 		owner_ = players_.front();
-		const player_map::const_iterator host = player_info_->find(owner_);
-		if (host == player_info_->end()) {
-			ERR_GAME << "ERROR: Could not find new host in player_info_. (socket: "
-				<< owner_ << ")\n";
-			return;
-		}
-		send_data(construct_server_message(host->second.name()
+		send_data(construct_server_message(user->second.name()
 			+ " has been chosen as new host"));
 		//check for ai sides first and drop them, too, if the host left
 		bool ai_transfer = false;

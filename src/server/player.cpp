@@ -25,10 +25,10 @@ player::player(const std::string& n, config& cfg, const size_t max_messages, con
 }
 
 // keep 'available' and game name ('location') for backward compatibility
-void player::mark_available(const std::string game_id, const std::string location)
+void player::mark_available(const int game_id, const std::string location)
 {
-	cfg_.values["available"] = game_id.empty() ? "yes" : "no";
-	cfg_.values["game_id"]   = game_id;
+	cfg_.values["available"] = (game_id == 0) ? "yes" : "no";
+	cfg_.values["game_id"]   = lexical_cast<std::string>(game_id);
 	cfg_.values["location"]  = location;
 }
 

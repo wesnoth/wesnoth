@@ -32,9 +32,10 @@ typedef std::vector<network::connection> side_vector;
 class game
 {
 public:
-	game(player_map& players, const network::connection host=0);
+	game(player_map& players, const network::connection host=0, const std::string name="");
 
 	int id() const { return id_; }
+	const std::string& name() const { return name_; }
 
 	bool is_owner(const network::connection player) const { return (player == owner_); }
 	bool is_member(const network::connection player) const
@@ -145,6 +146,7 @@ private:
 
 	static int id_num;
 	int id_;
+	std::string name_;
 	network::connection owner_;
 	user_vector players_;
 	user_vector observers_;
