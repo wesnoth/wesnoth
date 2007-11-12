@@ -833,10 +833,9 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 			<< ".\n";
 		// Create the new game, remove the player from the lobby
 		// and set the player as the host/owner.
-		games_.push_back(game(players_));
+		games_.push_back(game(players_, sock));
 		game& g = games_.back();
 		g.level() = (*data.child("create_game"));
-		g.set_owner(sock);
 
 		// do we need this?
 		g.level()["id"] = lexical_cast<std::string>(g.id());
@@ -1007,8 +1006,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 
 			// Record the full description of the scenario in g->level()
 			g->level() = data;
-			// Add the owner only once we have the level data.
-			g->add_player(sock);
+			// Let the owner take a side once we have the level data.
+			g->take_side(sock);
 			g->update_side_data();
 			g->describe_slots();
 

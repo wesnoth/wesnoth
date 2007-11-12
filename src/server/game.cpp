@@ -28,12 +28,15 @@
 
 int game::id_num = 1;
 
-game::game(player_map& players) : player_info_(&players), id_(id_num++),
+game::game(player_map& players, const network::connection host)
+	: player_info_(&players), id_(id_num++), owner_(host),
 	sides_(gamemap::MAX_PLAYERS), sides_taken_(gamemap::MAX_PLAYERS),
 	side_controllers_(gamemap::MAX_PLAYERS), started_(false),
 	description_(NULL),	end_turn_(0), allow_observers_(true),
 	all_observers_muted_(false)
-{}
+{
+	players_.push_back(host);
+}
 
 bool game::is_observer(const network::connection player) const {
 	return std::find(observers_.begin(),observers_.end(),player) != observers_.end();
@@ -827,14 +830,6 @@ void game::end_game() {
 				<< *user << ")\n";
 		}
 
-	}
-	// Make sure the host is marked in case he wasn't added yet.
-	const player_map::iterator pl = player_info_->find(owner_);
-	if (pl != player_info_->end()) {
-		pl->second.mark_available();
-	} else {
-		ERR_GAME << "ERROR: Could not find host in player_info_. (socket: "
-			<< owner_ << ")\n";
 	}
 	send_data(config("leave_game"));
 	players_.clear();
