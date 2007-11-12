@@ -594,6 +594,8 @@ void game::add_player(const network::connection player, const bool observer) {
 		return;
 	}
 
+	// Send the user the game data.
+	network::send_data(level_, player);
 	//if the game has already started, we add the player as an observer
 	if(started_) {
 		if(!allow_observers_) {
@@ -643,9 +645,6 @@ void game::add_player(const network::connection player, const bool observer) {
 	}
 	DBG_GAME << debug_player_info();
 	send_user_list();
-
-	// Send the user the game data.
-	network::send_data(level_, player);
 }
 
 void game::remove_player(const network::connection player, const bool notify_creator) {
