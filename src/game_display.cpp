@@ -695,6 +695,8 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	}
 	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
 
+	surface teleport = NULL;
+
 	// We draw 2 half-hex (with possibly different directions),
 	// but skip the first for the first step.
 	const int first_half = (i == route_.steps.begin()) ? 1 : 0;
@@ -702,10 +704,15 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	const int second_half = (i+1 == route_.steps.end()) ? 0 : 1;
 
 	for (int h = first_half; h <= second_half; h++) {
-		std::string rotate;
+		if (!tiles_adjacent(*(i-1+h), *(i+h))) {
+			teleport = image::get_image("footsteps/teleport-step.png", image::UNMASKED);
+			continue;
+		}
 
 		// In function of the half, use the incoming or outgoing direction
 		gamemap::location::DIRECTION dir = (i-1+h)->get_relative_dir(*(i+h));
+
+		std::string rotate;
 		if (dir > gamemap::location::SOUTH_EAST) {
 			// No image, take the opposite direction and do a 180 rotation
 			dir = i->get_opposite_dir(dir);
@@ -718,6 +725,9 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 
 		res.push_back(image::get_image(image, image::UNMASKED));
 	}
+
+	// we draw teleport image (if any) in last
+	if (teleport != NULL) res.push_back(teleport);
 
 	return res;
 }
