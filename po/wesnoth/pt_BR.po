@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-10 22:09+0100\n"
-"PO-Revision-Date: 2007-10-29 01:23+0900\n"
+"PO-Revision-Date: 2007-11-13 00:41+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -2237,17 +2237,16 @@ msgid "General commands"
 msgstr "Comandos Gerais"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Limpar o histórico das mensagens."
+"Limpa o histórico das mensagens.\n"
+"\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2257,8 +2256,8 @@ msgid ""
 msgstr ""
 "\n"
 "Alterna o controlador do time entre Humano e Computador. O jogador/cliente "
-"que controla o lado em questão tem que escolher este comando. Se você não "
-"indicar o time, assume-se que se trata do time '1'.\n"
+"que controla o lado em questão tem que escolher este comando. O valor padrão "
+"é o time ativo atualmente.\n"
 "\n"
 
 #: data/core/help.cfg:621
@@ -2307,9 +2306,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Liga/Desliga o mostrador do número de frames por segundo.\n"
+"\n"
 
 #: data/core/help.cfg:636
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). Debug mode is turned "
@@ -2317,8 +2318,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Ligar o modo de debug (não funciona em modo multijogador). O modo de debug é "
-"desligado ao sair do jogo.\n"
+"Liga o modo de debug (não funciona em modo multijogador). O modo de debug é "
+"desligado ao sair do jogo ou ao usar :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:637
@@ -2330,7 +2331,6 @@ msgid "Multiplayer commands"
 msgstr "Comandos para Multijogador"
 
 #: data/core/help.cfg:646
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
@@ -2338,8 +2338,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Expulsa e bane um jogador em um jogo multijogador, assim como o endereço de "
-"IP usado por esse jogador.\n"
+"Expulsa e bane um jogador em um jogo multijogador pelo seu endereco de IP.\n"
 "\n"
 
 #: data/core/help.cfg:649
@@ -2381,14 +2380,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Alterna silenciar todos os observadores entre ligar e desligar.\n"
-"\n"
+"Liga/Desliga o modo de silenciar todos os observadores."
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -3911,13 +3908,12 @@ msgstr ""
 "envenenamento."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-"Esta unidade possui habilidades básicas de cura, embora ela possa apenas "
-"retardar os efeitos de envenenamento, e não eliminá-los completamente."
+" Esta unidade é capaz de neutralizar o efeito de envenenamento nas unidades "
+"ao seu redor."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -5022,9 +5018,8 @@ msgid "#(Invalid)"
 msgstr "#(Invalid)"
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Manutenção da Campanha"
+msgstr "Campanha: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1400
 msgid "Multiplayer"
@@ -5382,6 +5377,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Hospeda um jogo utilizando o servidor embutido. Este servidor não tem "
+"recebido boa manutenção, é melhor usar o servidor dedicado, 'wesnothd'."
 
 #: src/game.cpp:1393
 msgid "Local Game"
@@ -5718,12 +5715,14 @@ msgid "gender^Random"
 msgstr "Mapa aleatório"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
+#, fuzzy
 msgid "Female ♀"
-msgstr ""
+msgstr "Feminino"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
+#, fuzzy
 msgid "Male ♂"
-msgstr ""
+msgstr "Masculino"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
 msgid "Random"
@@ -6372,9 +6371,8 @@ msgid "Faction"
 msgstr "Facção"
 
 #: src/multiplayer_connect.cpp:825
-#, fuzzy
 msgid "Team/Gender"
-msgstr "Defensor"
+msgstr "Time/Sexo"
 
 #: src/multiplayer_connect.cpp:826
 msgid "Color"
@@ -6696,9 +6694,8 @@ msgid "Leader: "
 msgstr "Líder: "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Líder: "
+msgstr "Sexo: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6733,9 +6730,8 @@ msgid "Could not send initial handshake"
 msgstr "Não pode enviar mensagem inicial"
 
 #: src/play_controller.cpp:401
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "O Arquivo que você tentou carregar está corrompido"
+msgstr "O Arquivo que você tentou carregar está corrompido. Continuar o jogo?"
 
 #: src/play_controller.cpp:774
 msgid "Back to start"
@@ -7148,9 +7144,3 @@ msgstr "Permitir o envio de resumos"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Recebendo dados..."
-
-#~ msgid "Campaign"
-#~ msgstr "Campanha"
-
-#~ msgid "Host a game without using a server"
-#~ msgstr "Hospedar um jogo sem usar um servidor"
