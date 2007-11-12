@@ -1357,6 +1357,7 @@ void connect::load_game()
 		// Probably not needed.
 		level_["turn"] = state_.snapshot["turn_at"];
 		level_["turn_at"] = state_.snapshot["turn_at"];
+		level_["turns"] = state_.snapshot["turns"];
 		level_["mp_use_map_settings"] = state_.snapshot["mp_use_map_settings"];
 		level_["mp_village_gold"] = state_.snapshot["mp_village_gold"];
 		level_["mp_fog"] = state_.snapshot["mp_fog"];
