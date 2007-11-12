@@ -35,11 +35,14 @@ game::game(player_map& players, const network::connection host, const std::strin
 	description_(NULL),	end_turn_(0), allow_observers_(true),
 	all_observers_muted_(false)
 {
+	// Hack to handle the pseudo games lobby_players_ and not_logged_in_.
+	if (owner_ == 0) return;
 	players_.push_back(owner_);
 	const player_map::iterator pl = player_info_->find(owner_);
 	if (pl == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find host in player_info_. (socket: "
 			<< owner_ << ")\n";
+		return;
 	}
 	// Mark the host as unavailable in the lobby.
 	pl->second.mark_available(id_, name_);
@@ -229,7 +232,7 @@ void game::update_side_data() {
 	for(user_vector::const_iterator player = users.begin(); player != users.end(); ++player) {
 		const player_map::const_iterator info = player_info_->find(*player);
 		if (info == player_info_->end()) {
-			ERR_GAME << "Error: unable to find player info for connection: "
+			ERR_GAME << "Game: " << id_ << " ERROR: unable to find player info for connection: "
 				<< *player << "\n";
 			continue;
 		}
@@ -575,7 +578,7 @@ bool game::end_turn() {
 
 void game::add_player(const network::connection player, const bool observer) {
 	// Hack to handle the pseudo games lobby_players_ and not_logged_in_.
-	if (id_ <= 2) {
+	if (owner_ == 0) {
 		observers_.push_back(player);
 		return;
 	}
@@ -647,7 +650,7 @@ void game::add_player(const network::connection player, const bool observer) {
 
 void game::remove_player(const network::connection player, const bool notify_creator) {
 	// Hack to handle the pseudo games lobby_players_ and not_logged_in_.
-	if (id_ <= 2) {
+	if (owner_ == 0) {
 		const user_vector::iterator itor =
 			std::find(observers_.begin(), observers_.end(), player);
 		if (itor != observers_.end()) {
