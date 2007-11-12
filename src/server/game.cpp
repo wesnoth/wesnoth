@@ -132,15 +132,22 @@ void game::start_game()
 
 	allow_observers_ = level_["observer"] != "no";
 
-	//send [observer] tags for all observers that have already joined.
-	//we can do this by re-joining all players that don't have sides, and aren't
-	//the first player (game creator)
-	// Observer tags should have already been sent at the appropriate times.
-/*	for(user_vector::const_iterator pl = observers_.begin(); pl != observers_.end(); ++pl) {
-		if(sides_.count(*pl) == 0) {
-			add_player(*pl);
+	// Send [observer] tags for all observers that are already in the game.
+	for(user_vector::const_iterator ob = observers_.begin();
+		ob != observers_.end(); ++ob)
+	{
+		const player_map::const_iterator obs = player_info_->find(*ob);
+		if (obs == player_info_->end()) {
+			ERR_GAME << "Game: " << id_
+				<< " ERROR: Can not find observer in player_info_. (socket: "
+				<< *ob << ")\n";
+			continue;
 		}
-	}*/
+		config observer_join;
+		observer_join.add_child("observer").values["name"] = obs->second.name();
+		// Send observer join to everyone except the new observer.
+		send_data(observer_join, player);
+	}
 }
 
 bool game::take_side(network::connection player, const config& cfg)
@@ -605,6 +612,23 @@ void game::add_player(const network::connection player, const bool observer) {
 		network::queue_data(config("start_game"), player);
 		// Send the player the history of the game to-date.
 		network::queue_data(history_,player);
+		// Send observer join of all the observers in the game to the new player
+		// only once the game started. The client forgets about it anyway
+		// otherwise.
+		for(user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
+			if(*ob != player) {
+				const player_map::const_iterator obs = player_info_->find(*ob);
+				if(obs != player_info_->end()) {
+					config cfg;
+					cfg.add_child("observer").values["name"] = obs->second.name();
+					network::queue_data(cfg, player);
+				}
+			}
+		}
+		config observer_join;
+		observer_join.add_child("observer").values["name"] = user->second.name();
+		// Send observer join to everyone except the new observer.
+		send_data(observer_join, player);
 	}
 	user->second.mark_available(id_, name_);
 
@@ -627,21 +651,6 @@ void game::add_player(const network::connection player, const bool observer) {
 	} else{
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
-		config observer_join;
-		observer_join.add_child("observer").values["name"] = user->second.name();
-		//send observer join to everyone except player
-		send_data(observer_join, player);
-	}
-	// Send observer join of all the observers in the game to the new player.
-	for(user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
-		if(*ob != player) {
-			const player_map::const_iterator obs = player_info_->find(*ob);
-			if(obs != player_info_->end()) {
-				config cfg;
-				cfg.add_child("observer").values["name"] = obs->second.name();
-				network::queue_data(cfg, player);
-			}
-		}
 	}
 	DBG_GAME << debug_player_info();
 	send_user_list();

@@ -931,12 +931,10 @@ void connect::start_game()
 
 		itor->resolve_random();
 	}
-
+	// Make other clients not show the results of resolve_random().
 	config lock;
 	lock.add_child("stop_updates");
 	network::send_data(lock);
-
-	// Re-sends the whole level
 	update_and_send_diff(true);
 
 	// Build the gamestate object after updating the level
