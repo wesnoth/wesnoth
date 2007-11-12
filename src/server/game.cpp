@@ -600,7 +600,30 @@ void game::add_player(const network::connection player, const bool observer) {
 			<< owner_ << ")\n";
 		return;
 	}
+	user->second.mark_available(id_, name_);
 
+	//Check first if there are available sides
+	//If not, add the player as observer
+	//! @todo Instead take_side() should be used.
+	unsigned int human_sides = 0;
+	if (level_.get_children("side").size() > 0 && !observer){
+		config::child_list sides = level_.get_children("side");
+		for (config::child_list::const_iterator side = sides.begin(); side != sides.end(); side++){
+			if (((**side)["controller"] == "human") || ((**side)["controller"] == "network")){
+				human_sides++;
+			}
+		}
+	}
+	DBG_GAME << debug_player_info();
+	if (human_sides > players_.size()){
+		DBG_GAME << "adding player...\n";
+		players_.push_back(player);
+	} else{
+		DBG_GAME << "adding observer...\n";
+		observers_.push_back(player);
+	}
+	DBG_GAME << debug_player_info();
+	send_user_list();
 	// Send the user the game data.
 	network::send_data(level_, player);
 	//if the game has already started, we add the player as an observer
@@ -630,30 +653,6 @@ void game::add_player(const network::connection player, const bool observer) {
 		// Send observer join to everyone except the new observer.
 		send_data(observer_join, player);
 	}
-	user->second.mark_available(id_, name_);
-
-	//Check first if there are available sides
-	//If not, add the player as observer
-	//! @todo Instead take_side() should be used.
-	unsigned int human_sides = 0;
-	if (level_.get_children("side").size() > 0 && !observer){
-		config::child_list sides = level_.get_children("side");
-		for (config::child_list::const_iterator side = sides.begin(); side != sides.end(); side++){
-			if (((**side)["controller"] == "human") || ((**side)["controller"] == "network")){
-				human_sides++;
-			}
-		}
-	}
-	DBG_GAME << debug_player_info();
-	if (human_sides > players_.size()){
-		DBG_GAME << "adding player...\n";
-		players_.push_back(player);
-	} else{
-		DBG_GAME << "adding observer...\n";
-		observers_.push_back(player);
-	}
-	DBG_GAME << debug_player_info();
-	send_user_list();
 }
 
 void game::remove_player(const network::connection player, const bool notify_creator) {
