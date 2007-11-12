@@ -644,12 +644,14 @@ void game::add_player(const network::connection player, const bool observer) {
 void game::remove_player(const network::connection player, const bool notify_creator) {
 	// Hack to handle the pseudo games lobby_players_ and not_logged_in_.
 	if (id_ <= 2) {
-		const user_vector::iterator itor = std::find(observers_.begin(), observers_.end(), player);
-		if (itor != players_.end())
+		const user_vector::iterator itor =
+			std::find(observers_.begin(), observers_.end(), player);
+		if (itor != observers_.end()) {
 			observers_.erase(itor);
-		else
-			DBG_GAME << "ERROR: Player is not in this game. (socket: "
+		} else {
+			ERR_GAME << "ERROR: Player is not in this game. (socket: "
 			<< player << ")\n";
+		}
 		return;
 	}
 	DBG_GAME << debug_player_info();
