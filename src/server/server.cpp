@@ -43,10 +43,12 @@
 
 #include <csignal>
 
-// fatal and directly server related errors/warnings,
-// ie not caused by erroneous client data
+//! fatal and directly server related errors/warnings,
+//! ie not caused by erroneous client data
 #define ERR_SERVER LOG_STREAM(err, mp_server)
+//! clients send wrong/unexpected data
 #define WRN_SERVER LOG_STREAM(warn, mp_server)
+//! normal events
 #define LOG_SERVER LOG_STREAM(info, mp_server)
 #define DBG_SERVER LOG_STREAM(debug, mp_server)
 #define ERR_CONFIG LOG_STREAM(err, config)
@@ -821,7 +823,8 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 	const player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
-		DBG_SERVER << "ERROR: Could not find player socket.\n";
+		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
+			<< sock << ")\n";
 		return;
 	}
 
@@ -861,16 +864,10 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 			network::send_data(construct_error("You are banned from this game."), sock);
 			return;
 		}
+		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+			<< "\tjoined game:\t\"" << g->name()
+			<< "\" (" << id << (observer ? ") as an observer.\n" : ").\n");
 
-		if (observer) {
-			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tjoined game:\t\"" << g->name()
-				<< "\" (" << id << ") as an observer.\n";
-		} else {
-			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tjoined game:\t\"" << g->name()
-				<< "\" (" << id << ").\n";
-		}
 		lobby_players_.remove_player(sock);
 		g->add_player(sock, observer);
 
@@ -922,7 +919,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	bool push_immediately = true;
 	const player_map::const_iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
-		DBG_SERVER << "ERROR: Could not find player in players_. (socket: "
+		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
 			<< sock << ")\n";
 		return;
 	}
@@ -933,8 +930,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			break;
 	}
 	if (g == games_.end()) {
-		DBG_SERVER << "ERROR: Could not find game for player: "
-			<< pl->second.name() << "\n";
+		ERR_SERVER << "ERROR: Could not find game for player: "
+			<< pl->second.name() << ". (socket:" << sock << ")\n";
 		return;
 	}
 
@@ -1026,7 +1023,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		} else {
 			// next_scenario sent while the scenario was not initialized.
 			// Something's broken here.
-			WRN_SERVER << "Warning: " << network::ip_address(sock) << "\t"
+			WRN_SERVER << network::ip_address(sock) << "\tWarning: "
 				<< pl->second.name() << "\tsent [next_scenario] in game:\t\""
 				<< g->name() << "\" (" << g->id()
 				<< ") while the scenario is not yet initialized.";
@@ -1091,17 +1088,9 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				<< "\tended game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
 			delete_game(g);
 		} else {
-			if (!obs) {
-				g->send_data(construct_server_message(pl->second.name()
-					+ " has left the game",*g));
-				LOG_SERVER << network::ip_address(sock) << "\t"
-					<< pl->second.name() << "\thas left game:\t\""
-					<< g->name() << "\" (" << g->id() << ").\n";
-			} else {
-				LOG_SERVER << network::ip_address(sock) << "\t"
-					<< pl->second.name() << "\thas left game:\t\""
-					<< g->name() << "\" (" << g->id() << ") as an observer.\n";
-			}
+			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\thas left game:\t\"" << g->name() << "\" (" << g->id()
+				<< (obs ? ") as an observer.\n" : ").\n");
 		}
 		// Send the player who has quit the game list
 		network::send_data(games_and_users_list_,sock);
@@ -1126,6 +1115,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		if (g->describe_slots()) {
 			lobby_players_.send_data(games_and_users_list_diff());
 		}
+		// FIXME: Why not save it in the history_? (if successful)
 		return;
 	// If all observers should be muted. (toggles)
 	} else if (g->is_owner(sock) && data.child("muteall") != NULL) {
@@ -1183,6 +1173,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			network::send_data(games_and_users_list_, banned_pl->first);
 			// Send all other players in the lobby the update to the lobby.
 			lobby_players_.send_data(games_and_users_list_diff(), sock);
+			// FIXME: Why not save it in the history_?
 			return;
 		} else if (banned_pl == players_.end()) {
 			network::send_data(construct_server_message("Kick/ban failed: user '"

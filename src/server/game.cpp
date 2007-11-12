@@ -695,13 +695,16 @@ void game::remove_player(const network::connection player, const bool notify_cre
 		observer_quit.add_child("observer_quit").values["name"] = user->second.name();
 		send_data(observer_quit);
 		return;
+	} else {
+		send_data(construct_server_message(user->second.name()
+			+ " has left the game."));
 	}
 
 	// If the player was host choose a new one.
 	if (host && !players_.empty() && started_) {
 		owner_ = players_.front();
 		send_data(construct_server_message(user->second.name()
-			+ " has been chosen as new host"));
+			+ " has been chosen as new host."));
 		//check for ai sides first and drop them, too, if the host left
 		bool ai_transfer = false;
 		//can't do this with an iterator, because it doesn't know the side_num - 1
