@@ -146,7 +146,7 @@ void game::start_game()
 		config observer_join;
 		observer_join.add_child("observer").values["name"] = obs->second.name();
 		// Send observer join to everyone except the new observer.
-		send_data(observer_join, player);
+		send_data(observer_join, *ob);
 	}
 }
 
