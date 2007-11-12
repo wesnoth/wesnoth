@@ -591,7 +591,7 @@ void server::process_login(const network::connection sock, const config& data) {
 		<< "\thas logged on. (socket: " << sock << ")\n";
 
 	for (std::vector<game>::const_iterator g = games_.begin(); g != games_.end(); ++g) {
-		g->send_data_observers(construct_server_message(username
+		g->send_data(construct_server_message(username
 			+ " has logged into the lobby",*g));
 	}
 }
