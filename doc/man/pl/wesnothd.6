@@ -40,9 +40,10 @@ http://www.wesnoth.org/wiki/ServerAdministration.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ ?cie?ka\fP
-tells wesnothd where to find the config file to use. See the section
-\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
-sending SIGHUP to the server process.
+informuje demona wesnothd o lokalizacji pliku konfiguracyjnego. Zobacz
+rozdzia? \fBKONFIGURACJA SERWERA\fP poni?ej, aby uzyska? informacje o
+sk?adni. Konfiguracj? mo?na prze?adowa? wysy?aj?c procesowi serwera proces
+SIGHUP.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 uruchamia wesnothd w trybie demona.
@@ -50,9 +51,10 @@ uruchamia wesnothd w trybie demona.
 \fB\-h,\ \-\-help\fP
 wy?wietla informacje o opcjach wiersza polece?.
 .TP 
-\fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug.
+\fB\-\-log\-<poziom>="domena1,domena2,..."\fP
+okre?la poziom istotno?ci domen debugowania. "all" oznacza dopasowanie
+wszystkich domen debugowania. Dost?pne poziomy: error (b??dy), warning
+(ostrze?enia), info (informacje), debug (debugowanie).
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ port\fP
 przypisuje serwer do okre?lonego portu. Je?li nie podano ?adnego portu,

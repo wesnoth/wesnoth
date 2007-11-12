@@ -72,13 +72,14 @@ wy?wietla bie??c? liczb? klatek na sekund? w rogu ekranu.
 wy?wietla podsumowanie opcji wiersza polece? na standardowym wyj?ciu i
 ko?czy dzia?anie.
 .TP 
-\fB\-\-load\fP\fI\ <savegame>\fP
+\fB\-\-load\fP\fI\ <plikzapisu>\fP
 ?aduje plik zapisu z domy?lnego katalogu zapisu gry.
 .TP 
-\fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug. By default the
-error level is used.
+\fB\-\-log\-<poziom>="domena1,domena2,..."\fP
+okre?la poziom istotno?ci domen debugowania. "all" oznacza dopasowanie
+wszystkich domen debugowania. Dost?pne poziomy: error (b??dy), warning
+(ostrze?enia), info (informacje), debug (debugowanie). Poziom domy?lny to
+error (b??dy).
 .TP 
 \fB\-\-logdomains\fP
 dokonuje zrzutu wszystkich domen dzienników i ko?czy dzia?anie.
@@ -165,9 +166,9 @@ data/multiplayer.cfg.
 ustala maksymaln? liczb? tur dla danego scenariusza. Warto?? domy?lna to
 "50".
 .TP 
-Example to test your own AI against the default AI without starting the GUI:
+Przyk?ad do testowania w?asnego AI przeciwko domy?lnemu AI bez uruchamiania GUI:
 wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
-\-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
+\-\-algorithm2=python_ai \-\-parm2=python_script:py/moje_ai_w_pythonie.py
 .
 .SH AUTOR
 .
