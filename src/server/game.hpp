@@ -22,7 +22,7 @@
 
 //#include <algorithm>
 #include <map>
-#include <set>
+//#include <set>
 #include <vector>
 
 typedef std::map<network::connection,player> player_map;
@@ -32,7 +32,7 @@ typedef std::vector<network::connection> side_vector;
 class game
 {
 public:
-	game(const player_map& info);
+	game(player_map& players);
 
 	int id() const { return id_; }
 
@@ -142,7 +142,7 @@ private:
 	//! Helps debugging player and observer lists.
 	std::string debug_player_info() const;
 
-	const player_map* player_info_;
+	player_map* player_info_;
 
 	static int id_num;
 	int id_;

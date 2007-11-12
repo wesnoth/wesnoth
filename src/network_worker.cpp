@@ -19,7 +19,7 @@
 #include "network.hpp"
 #include "thread.hpp"
 #include "wassert.hpp"
-#include "wesconfig.h"
+//#include "wesconfig.h"
 #include "serialization/binary_wml.hpp"
 
 #include <algorithm>

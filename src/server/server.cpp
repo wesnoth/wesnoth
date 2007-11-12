@@ -21,13 +21,12 @@
 #include "../game_config.hpp"
 #include "../log.hpp"
 #include "../network.hpp"
-//#include "../util.hpp"
+#include "../filesystem.hpp"
 #include "../wassert.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
+#include "../serialization/parser.hpp"
+#include "../serialization/string_utils.hpp"
 
 #include "game.hpp"
-#include "filesystem.hpp"
 #include "input_stream.hpp"
 #include "metrics.hpp"
 #include "player.hpp"
@@ -35,21 +34,14 @@
 
 #include <algorithm>
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 #include <map>
+#include <set>
 #include <sstream>
-#include <ctime>
 #include <vector>
 
 #include <csignal>
-
-// not needed anymore?
-//#include "SDL.h"
-
-//#ifndef WIN32
-//#include <sys/types.h>
-//#include <unistd.h>
-//#endif
 
 // fatal and directly server related errors/warnings,
 // ie not caused by erroneous client data
@@ -398,8 +390,8 @@ void server::run() {
 			if (index < users.size()) {
 				games_and_users_list_.remove_child("user",index);
 			} else {
-				ERR_SERVER << ip << "ERROR: Could not find user: " << pl_it->second.name()
-					<< " in games_and_users_list_.";
+				ERR_SERVER << ip << "ERROR: Could not find user: "
+					<< pl_it->second.name() << " in games_and_users_list_.\n";
 			}
 			sync_scheduled = true;
 			// Was the player in the lobby or a game?
@@ -407,11 +399,14 @@ void server::run() {
 				lobby_players_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name() << "\thas logged off.\n";
 			} else {
-				for (std::vector<game>::iterator g = games_.begin();	g != games_.end(); ++g)	{
+				for (std::vector<game>::iterator g = games_.begin();
+					g != games_.end(); ++g)
+				{
 					if (!g->is_member(e.socket)) {
 						continue;
 					}
-					const std::string game_name = g->description() ? (*g->description())["name"] : "";
+					const std::string game_name =
+						g->description() ? (*g->description())["name"] : g->level()["name"];
 					const bool host = g->is_owner(e.socket);
 					const bool obs = g->is_observer(e.socket);
 					g->remove_player(e.socket);
@@ -868,7 +863,8 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 			network::send_data(config("leave_game"),sock);
 			return;
 		}
-		const std::string game_name = g->level()["name"];
+		const std::string game_name =
+			g->description() ? (*g->description())["name"] : g->level()["name"];
 		if (g->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << game_name
@@ -956,7 +952,8 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			<< pl->second.name() << "\n";
 		return;
 	}
-	const std::string game_name = g->level()["name"];
+	const std::string game_name =
+		g->description() ? (*g->description())["name"] : g->level()["name"];
 
 	// If this is data describing the level for a game.
 	if (g->is_owner(sock) && data.child("side") != NULL) {
@@ -971,7 +968,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// g->level() should then receive the full data for the game.
 		if (!is_init) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tcreated game:\t\"" << g->level()["name"] << "\" ("
+				<< "\tcreated game:\t\"" << game_name << "\" ("
 				<< g->id() << ").\n";
 
 			// Update our config object which describes the open games,
@@ -1023,7 +1020,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->level() = data;
 			g->update_side_data();
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tadvanced game:\t\"" << g->level()["name"] << "\" ("
+				<< "\tadvanced game:\t\"" << game_name << "\" ("
 				<< g->id() << ") to the next scenario.\n";
 			// Send the update of the game description to the lobby.
 			//lobby_players_.send_data(games_and_users_list_diff());
@@ -1048,7 +1045,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			// Something's broken here.
 			WRN_SERVER << "Warning: " << network::ip_address(sock) << "\t"
 				<< pl->second.name() << "\tsent [next_scenario] in game:\t\""
-				<< g->level()["name"] << "\" (" << g->id()
+				<< game_name << "\" (" << g->id()
 				<< ") while the scenario is not yet initialized.";
 			return;
 		}
@@ -1336,13 +1333,9 @@ void server::delete_game(std::vector<game>::iterator game_it) {
 		const size_t index = g - games.first;
 		gamelist->remove_child("game", index);
 	} else {
-		ERR_SERVER << "ERROR: Could not find game to delete in games_and_users_list_.";
-	}
-	//set the availability status for all quitting players
-	for (player_map::iterator pl = players_.begin(); pl != players_.end(); pl++)	{
-		if (game_it->is_member(pl->first)) {
-			pl->second.mark_available();
-		}
+		// Can happen when the game ends before the scenario was transfered.
+		DBG_SERVER << "Could not find game (" << game_it->id()
+			<< ") to delete in games_and_users_list_.\n";
 	}
 	// Put the players back in the lobby, and send
 	// them the games_and_users_list_ again.

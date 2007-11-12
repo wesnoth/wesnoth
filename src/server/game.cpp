@@ -17,7 +17,6 @@
 #include "game.hpp"
 #include "../map.hpp"
 #include "../log.hpp"
-#include "../util.hpp"
 #include "../wassert.hpp"
 
 #include <iostream>
@@ -29,12 +28,11 @@
 
 int game::id_num = 1;
 
-game::game(const player_map& pl) : player_info_(&pl), id_(id_num++), 
-				   sides_(gamemap::MAX_PLAYERS),
-				   sides_taken_(gamemap::MAX_PLAYERS), 
-				   side_controllers_(gamemap::MAX_PLAYERS), 
-				   started_(false), description_(NULL),
-	end_turn_(0), allow_observers_(true), all_observers_muted_(false)
+game::game(player_map& players) : player_info_(&players), id_(id_num++),
+	sides_(gamemap::MAX_PLAYERS), sides_taken_(gamemap::MAX_PLAYERS),
+	side_controllers_(gamemap::MAX_PLAYERS), started_(false),
+	description_(NULL),	end_turn_(0), allow_observers_(true),
+	all_observers_muted_(false)
 {}
 
 bool game::is_observer(const network::connection player) const {
@@ -814,6 +812,28 @@ void game::reset_history() {
 }
 
 void game::end_game() {
+	const user_vector& users = all_game_users();
+	// Set the availability status for all quitting players.
+	for (user_vector::const_iterator user = users.begin();
+		user != users.end(); user++)
+	{
+		const player_map::iterator pl = player_info_->find(*user);
+		if (pl != player_info_->end()) {
+			pl->second.mark_available();
+		} else {
+			ERR_GAME << "ERROR: Could not find player in player_info_. (socket: "
+				<< *user << ")\n";
+		}
+
+	}
+	// Make sure the host is marked in case he wasn't added yet.
+	const player_map::iterator pl = player_info_->find(owner_);
+	if (pl != player_info_->end()) {
+		pl->second.mark_available();
+	} else {
+		ERR_GAME << "ERROR: Could not find host in player_info_. (socket: "
+			<< owner_ << ")\n";
+	}
 	send_data(config("leave_game"));
 	players_.clear();
 	observers_.clear();
