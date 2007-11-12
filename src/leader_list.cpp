@@ -109,9 +109,11 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		// Assume random/unknown leader/faction == unknown gender
 		gender_ids_.push_back("null");
 		genders_.push_back("-");
-		gender_combo_->enable(false);
-		gender_combo_->set_items(genders_);
-		gender_combo_->set_selected(0);
+		if (gender_combo_ != NULL) {
+			gender_combo_->enable(false);
+			gender_combo_->set_items(genders_);
+			gender_combo_->set_selected(0);
+		}
 		return;
 	}
 
@@ -121,12 +123,12 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 		const unit_type* utg;
 		ut = &(utypes.find(leader)->second);
 		const std::vector<unit_race::GENDER> genders = ut->genders();
-		if (genders.size() < 2) {
+		if ( (genders.size() < 2) && (gender_combo_ != NULL) ) {
 			gender_combo_->enable(false);
 		} else {
 			gender_ids_.push_back("random");
 			genders_.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("gender^Random"));
-			gender_combo_->enable(true);
+			if (gender_combo_ != NULL) gender_combo_->enable(true);
 		}
 		for (std::vector<unit_race::GENDER>::const_iterator i=genders.begin(); i != genders.end(); ++i) {
 			utg = &(ut->get_gender_unit_type(*i));
@@ -151,15 +153,19 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 #endif
 			}
 		}
-		gender_combo_->set_items(genders_);
-		gender_index %= genders_.size();
-		gender_combo_->set_selected(gender_index);	
+		if (gender_combo_ != NULL) {
+			gender_combo_->set_items(genders_);
+			gender_index %= genders_.size();
+			gender_combo_->set_selected(gender_index);	
+		}
 	} else {
 		gender_ids_.push_back("random");
 		genders_.push_back(IMAGE_PREFIX + random_enemy_picture + COLUMN_SEPARATOR + _("Random"));
-		gender_combo_->enable(false);
-		gender_combo_->set_items(genders_);
-		gender_combo_->set_selected(0);	
+		if (gender_combo_ != NULL) {
+			gender_combo_->enable(false);
+			gender_combo_->set_items(genders_);
+			gender_combo_->set_selected(0);	
+		}
 	}
 }
 
