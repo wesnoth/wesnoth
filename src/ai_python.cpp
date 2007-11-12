@@ -686,7 +686,7 @@ static void wesnoth_location_dealloc(wesnoth_location* self)
 {
 	delete self->location_;
 	self->location_ = NULL;
-	self->ob_type->tp_free(reinterpret_cast<PyObject*>(self));
+	PyObject_Del(reinterpret_cast<PyObject*>(self));
 }
 
 static PyObject* location_get_x(wesnoth_location* location, void* /*closure*/)
@@ -787,7 +787,7 @@ static PyTypeObject wesnoth_location_type = {
 	NULL
 };
 
-static PyObject* wrap_location(const gamemap::location& loc)
+static PyObject *wrap_location(const gamemap::location& loc)
 {
 	wesnoth_location* location;
 	location = reinterpret_cast<wesnoth_location*>(PyObject_NEW(wesnoth_location, &wesnoth_location_type));
@@ -1252,7 +1252,7 @@ static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
 {
 	PyObject* dict = PyDict_New();
 	PyObject* list;
-	PyObject* loc;
+	PyObject *loc, *loc2;
 	ai_interface::move_map::const_iterator pos;
 	for (pos = wrap.begin(); pos != wrap.end(); pos++)
 	{
@@ -1261,10 +1261,12 @@ static PyObject* wrap_move_map(const ai_interface::move_map& wrap)
 		if (!list)
 		{
 			list = PyList_New(0);
-			PyDict_SetItem(dict,loc,list);
+			PyDict_SetItem(dict, loc, list);
 			Py_DECREF(list);
 		}
-		PyList_Append(list,wrap_location(pos->second));
+		loc2 = wrap_location(pos->second);
+		PyList_Append(list, loc2);
+		Py_DECREF(loc2);
 		Py_DECREF(loc);
 	}
 	return dict;
@@ -1461,7 +1463,11 @@ PyObject* python_ai::wrapper_get_adjacent_tiles(PyObject* /*self*/, PyObject* ar
 	get_adjacent_tiles(*where->location_,loc);
 	for ( int tile = 0; tile < 6; tile++ )
 		if (loc[tile].valid(map.w(), map.h()))
-			PyList_Append(list,wrap_location(loc[tile]));
+		{
+		    PyObject *o = wrap_location(loc[tile]);
+			PyList_Append(list, o);
+			Py_DECREF(o);
+		}
 	return list;
 }
 
@@ -1692,8 +1698,9 @@ static PyMethodDef wesnoth_python_methods[] = {
 
 void python_ai::initialize_python()
 {
-	if (init_) return;
-		init_ = true;
+    if (init_) return;
+        init_ = true;
+
 	Py_Initialize( );
 	PyObject* module = Py_InitModule3(CC("wesnoth"), wesnoth_python_methods,
 		CC("This is the wesnoth AI module. "
@@ -1771,15 +1778,16 @@ void python_ai::play_turn()
 	std::string path(".");
 	if (!game_config::path.empty()) path = game_config::path;
 	LOG_AI << "Executing Python script \"" << script << "\".\n";
-	LOG_AI << " Python path: \"" << path << "/data/ais" << "\"\n";
+	LOG_AI << "Python path: \"" << path << "/data/ais" << "\"\n";
 	// Run the python script. We actually execute a short inline python script, 
 	// which sets up the module search path to the data path,
 	// runs the script, and then resets the path.
 	std::string python_code;
 	python_code +=
-		"err = \"\"\n"
+		"err = \"unknown error\"\n"
 		"try:\n"
 		"\timport sys, traceback\n"
+		"\tsys.stderr = file(\"pyerr.txt\", \"wb\")\n"
 		"\tbackup = sys.path[:]\n"
 		"\tsys.path.append(\"" + path + "/data/ais\")\n"
 		"\ttry:\n"
