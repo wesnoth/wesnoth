@@ -837,22 +837,28 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		games_.push_back(game(players_, sock, game_name));
 		game& g = games_.back();
 		g.level() = (*data.child("create_game"));
-
 		lobby_players_.remove_player(sock);
 		lobby_players_.send_data(games_and_users_list_diff());
 		return;
 	}
 
 	// See if the player is joining a game
-	const config* const join = data.child("join");
-	if (join != NULL) {
-		const std::string& id = (*join)["id"];
-		const bool observer = ((*join)["observe"] == "yes");
-		const int game_id = lexical_cast<int>(id);
+	if (data.child("join")) {
+		const std::string& id = (*data.child("join"))["id"];
+		const bool observer = ((*data.child("join"))["observe"] == "yes");
+		int game_id;
+		try {
+			game_id = lexical_cast<int>(id);
+		} catch(bad_lexical_cast&) {
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tattempted to join invalid game:\t" << id << "\n";
+			network::send_data(config("leave_game"),sock);
+			return;
+		}			
 		const std::vector<game>::iterator g =
 			std::find_if(games_.begin(),games_.end(), game_id_matches(game_id));
 		if (g == games_.end()) {
-			DBG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join unknown game:\t" << id << "\n";
 			network::send_data(config("leave_game"),sock);
 			return;
@@ -957,6 +963,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			wassert(gamelist != NULL);
 			config& desc = gamelist->add_child("game",g->level());
 			g->set_description(&desc);
+			desc["id"] = lexical_cast<std::string>(g->id());
 			desc["hash"] = data["hash"];
 			// If there is no shroud, then tell players in the lobby
 			// what the map looks like
