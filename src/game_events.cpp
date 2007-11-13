@@ -705,8 +705,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string user_team_name = cfg["user_team_name"];
 		std::string gold = cfg["gold"];
 		std::string controller = cfg["controller"];
-		// TODO? std::string recruit = cfg["recruit"];
-		// I don't know if we should implement the [set_recruit] behavior here
+		std::string recruit_str = cfg["recruit"];
 		std::string fog = cfg["fog"];
 		std::string shroud = cfg["shroud"];
 		std::string village_gold = cfg["village_gold"];
@@ -722,6 +721,20 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				LOG_NG << "change side's team to team_name '" << team_name << "'\n";
 				(*teams)[team_index].change_team(team_name,
 												 user_team_name);
+			}
+			// Modify recruit list
+			if (!recruit_str.empty()) {
+				std::vector<std::string> recruit = utils::split(recruit_str);
+				if (recruit.size() == 1 && recruit.back() == "")
+					recruit.clear();
+
+				std::set<std::string>& rlist_set = (*teams)[team_index].recruits();
+				rlist_set.clear();
+				
+				std::copy( recruit.begin(), recruit.end(), std::inserter(rlist_set,rlist_set.end()) );
+				player_info *player = state_of_game->get_player((*teams)[team_index].save_id());
+				
+				if (player) player->can_recruit = rlist_set;
 			}
 			// Modify income
 			if(!income.empty()) {
