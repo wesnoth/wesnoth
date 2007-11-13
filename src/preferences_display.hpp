@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file preferences_display.hpp 
+//!
+
 #ifndef PREFERENCES_DISPLAY_HPP_INCLUDED
 #define PREFERENCES_DISPLAY_HPP_INCLUDED
 
@@ -33,7 +37,7 @@ namespace preferences {
 	void set_turbo_speed(double speed);
 	void set_colour_cursors(bool value);
 
-	// control unit idle animations
+	// Control unit idle animations
 	void set_idle_anim(bool ison);
 	void set_idle_anim_rate(int rate);
 
@@ -41,9 +45,9 @@ namespace preferences {
 	bool show_video_mode_dialog(display& disp);
 	bool show_theme_dialog(display& disp);
 
-	// If prefs is non-null, save the hotkeys in that config instead of
-	// the default.
+	// If prefs is non-null, save the hotkeys in that config 
+	// instead of the default.
 	void show_hotkeys_dialog (display & disp, config *prefs=NULL);
-}
+} // end namespace preferences
 
 #endif

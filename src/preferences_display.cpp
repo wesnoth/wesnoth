@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file preferences_display.cpp 
+//! Manage display-related preferences, e.g. screen-size, gamma etc.
+
 #include "global.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -77,7 +81,7 @@ void set_fullscreen(bool ison)
 			} else {
 				gui::message_dialog(*disp,"",_("The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen.")).show();
 			}
-			// we reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
+			// We reinit color cursors, because SDL on Mac seems to forget the SDL_Cursor
 			set_colour_cursors(preferences::get("colour_cursors") == "yes");
 		}
 	}
@@ -89,10 +93,10 @@ void set_resolution(const std::pair<int,int>& resolution)
 
 	// - Ayin: disabled the following code. Why would one want to enforce that?
 	// Some 16:9, or laptop screens, may have resolutions which do not
-	// comply to this rule (see bug 10630). I'm commenting this until it
-	// proves absolutely necessary.
+	// comply to this rule (see bug 10630). 
+	// I'm commenting this until it proves absolutely necessary.
 	//
-	//make sure resolutions are always divisible by 4
+	// Make sure resolutions are always divisible by 4
 	//res.first &= ~3;
 	//res.second &= ~3;
 
@@ -139,7 +143,7 @@ void set_turbo_speed(double speed)
 
 void set_adjust_gamma(bool val)
 {
-	//if we are turning gamma adjustment off, then set it to '1.0'
+	// If we are turning gamma adjustment off, then set it to '1.0'
 	if(val == false && adjust_gamma()) {
 		CVideo& video = disp->video();
 		video.setGamma(1.0);
@@ -198,7 +202,7 @@ public:
 private:
 	bool escape_pressed_;
 };
-} //end anonymous namespace
+} // end anonymous namespace
 
 void show_hotkeys_dialog (display & disp, config *save_config)
 {
@@ -209,10 +213,10 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	const int centerx = disp.w()/2;
 	const int centery = disp.h()/2;
 #ifdef USE_TINY_GUI
-	const int width = 300;			  // FIXME: should compute this, but using what data ?
+	const int width  = 300;			  //! @todo FIXME: We should compute this, but using what data ?
 	const int height = 220;
 #else
-	const int width = 700;
+	const int width  = 700;
 	const int height = 500;
 #endif
 	const int xpos = centerx  - width/2;
@@ -241,7 +245,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		name << i->get_description();
 		str << name.str();
 		str << COLUMN_SEPARATOR;
-		// this trick allow to display char identical to markup character
+		// This trick allows to display chars identical to markup characters
 		str << font::NULL_MARKUP << i->get_name();
 		menu_items.push_back(str.str());
 	}
@@ -292,7 +296,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			disp.update_display();
 			SDL_Event event;
 			event.type = 0;
-			int character=0,keycode=0; //just to avoid warning
+			int character=0,keycode=0; // Just to avoid warning
 			int mod=0;
 			while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
 			do {
@@ -359,14 +363,14 @@ bool show_video_mode_dialog(display& disp)
 
 	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
 
-	//the SDL documentation says that a return value of -1 if all dimensions
-	//are supported/possible.
+	// The SDL documentation says that a return value of -1 
+	// means that all dimensions are supported/possible.
 	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
 		std::cerr << "Can support any video mode\n";
-		// SDL says that all modes are possible so it's OK to use a
-		// hardcoded list here.
+		// SDL says that all modes are possible, 
+		// so it's OK to use a hardcoded list here.
 		static const SDL_Rect scr_modes[] = {
-			{ 0, 0, 800, 600 },
+			{ 0, 0,  800, 600 },
 			{ 0, 0, 1024, 768 },
 			{ 0, 0, 1280, 960 },
 			{ 0, 0, 1280, 1024 },
@@ -421,4 +425,5 @@ bool show_video_mode_dialog(display& disp)
 	}
 }
 
-}
+} // end namespace preferences
+
