@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file leader_list.hpp 
+//!
+
 #ifndef LEADER_LIST_HPP_INCLUDED
 #define LEADER_LIST_HPP_INCLUDED
 

@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file leader_list.cpp 
+//! Manage the selection of a leader, and select his/her gender.
+
 #include "global.hpp"
 
 #include "gettext.hpp"
