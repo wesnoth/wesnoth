@@ -1361,7 +1361,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 			 << font::BOLD_TEXT << attw.name() << "\n" << att.damage << "-"
 			 << att.num_blows << " "  << " (" << att.chance_to_hit << "%)\n"
 			 << attw.weapon_specials() << special_pad
-			 << COLUMN_SEPARATOR << "<140,140,140>" << "- " << range << " -" << COLUMN_SEPARATOR
+			 << COLUMN_SEPARATOR << "<245,230,193>" << "- " << range << " -" << COLUMN_SEPARATOR
 			 << font::BOLD_TEXT << defw.name() << "\n" << def.damage << "-"
 			 << def.num_blows << " "  << " (" << def.chance_to_hit << "%)\n"
 			 << defw.weapon_specials() << special_pad << COLUMN_SEPARATOR
