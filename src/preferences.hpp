@@ -11,6 +11,10 @@
 
    See the COPYING file for more details.
 */
+
+//! @file preferences.hpp 
+//!
+
 #ifndef PREFERENCES_HPP_INCLUDED
 #define PREFERENCES_HPP_INCLUDED
 
@@ -25,7 +29,7 @@ class display;
 #include <utility>
 #include <set>
 
-// only there temporary
+// Only there temporary
 #ifdef USE_TINY_GUI
 const int min_allowed_width = 320;
 const int min_allowed_height = 240;
@@ -42,7 +46,7 @@ namespace preferences {
 		~base_manager();
 	};
 
-	// low-level, should be seen only by preferences_display ?
+	// Low-level, should be seen only by preferences_display ?
 	void set(std::string key, std::string value);
 	const std::string get(const std::string key);
 	void erase(const std::string key);
@@ -72,8 +76,8 @@ namespace preferences {
 	const std::string& language();
 	void set_language(const std::string& s);
 
-	// don't rename it to sound() because of a gcc-3.3 branch bug
-	// which will cause it to conflict with the sound namespace
+	// Don't rename it to sound() because of a gcc-3.3 branch bug,
+	// which will cause it to conflict with the sound namespace.
 	bool sound_on();
 	bool set_sound(bool ison);
 
@@ -106,7 +110,7 @@ namespace preferences {
 
 	bool message_bell();
 
-	// proxies for preferences_dialog
+	// Proxies for preferences_dialog
 	void load_hotkeys();
 	void save_hotkeys();
 
@@ -126,6 +130,6 @@ namespace preferences {
 
 	bool grid();
 	void _set_grid(bool ison);
-}
+} // end namespace preferences
 
 #endif

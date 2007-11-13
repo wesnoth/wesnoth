@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file preferences.cpp 
+//! Get and set user-preferences.
+
 #include "global.hpp"
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -108,7 +111,7 @@ std::pair<int,int> resolution()
 		std::pair<int,int> res (maximum(atoi(x->second.c_str()),min_allowed_width),
 		                        maximum(atoi(y->second.c_str()),min_allowed_height));
 
-		//make sure resolutions are always divisible by 4
+		// Make sure resolutions are always divisible by 4
 		//res.first &= ~3;
 		//res.second &= ~3;
 		return res;
@@ -209,8 +212,8 @@ void _set_grid(bool ison)
 
 size_t sound_buffer_size()
 {
-	//sounds don't sound good on Windows unless the buffer size is 4k,
-	//but this seems to cause crashes on other systems...
+	// Sounds don't sound good on Windows unless the buffer size is 4k,
+	// but this seems to cause crashes on other systems...
 	#ifdef WIN32
 		const size_t buf_size = 4096;
 	#else
@@ -500,8 +503,9 @@ void save_sample_rate(const unsigned int rate)
 
 	preferences::set("sample_rate", lexical_cast<std::string>(rate));
 
-	//if audio is open we have to re set sample rate
+	// If audio is open, we have to re set sample rate
 	sound::reset_sound();
 }
 
-}
+} // end namespace preferences
+
