@@ -152,10 +152,16 @@ surface scale_surface(surface const &surf, int w, int h)
 	if(w == surf->w && h == surf->h) {
 		return surf;
 	}
-	wassert(w != 0);
-	wassert(h != 0);
+	wassert(w >= 0);
+	wassert(h >= 0);
 
 	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+		
+	if (w == 0 || h ==0) {
+		std::cerr << "Create an empty image\n";
+		return create_optimized_surface(dst);
+	}
+
 	surface src(make_neutral_surface(surf));
 	// Now both surfaces are always in the "neutral" pixel format
 
@@ -303,8 +309,16 @@ surface scale_surface_blended(surface const &surf, int w, int h)
 	if(w == surf->w && h == surf->h) {
 		return surf;
 	}
+	wassert(w >= 0);
+	wassert(h >= 0);
 
 	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+
+	if (w == 0 || h ==0) {
+		std::cerr << "Create an empty image\n";
+		return create_optimized_surface(dst);
+	}
+
 	surface src(make_neutral_surface(surf));
 
 	if(src == NULL || dst == NULL) {
@@ -511,11 +525,11 @@ surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb){
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-		Uint8 red, green, blue, alpha;
-	SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
+			Uint8 red, green, blue, alpha;
+			SDL_GetRGBA(*beg,nsurf->format,&red,&green,&blue,&alpha);
 
 			if(alpha){	// don't recolor invisible pixels.
-		Uint32 oldrgb = (red<<16) + (green<<8) + (blue);
+				Uint32 oldrgb = (red<<16) + (green<<8) + (blue);
 				for(std::map<Uint32, Uint32>::const_iterator i=map_rgb.begin(); i!= map_rgb.end(); i++){
 					if(oldrgb==i->first){
 						Uint32 new_rgb = i->second;
