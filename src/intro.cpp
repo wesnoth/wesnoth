@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+//! @file intro.cpp 
+//! Introduction sequence at start of a scenario, End-screen after end of campaign.
+
 #include "global.hpp"
 
 #include "display.hpp"
@@ -41,11 +44,12 @@
 static bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario);
 
+//! Show an introduction sequence at the start of a scenario.
 void show_intro(display &disp, const config& data, const config& level)
 {
 	LOG_NG << "showing intro sequence...\n";
 
-	//stop the screen being resized while we're in this function
+	// Stop the screen being resized while we're in this function
 	const resize_lock stop_resizing;
 	const events::event_context context;
 
@@ -83,7 +87,7 @@ bool show_intro_part(display &disp, const config& part,
 	CVideo &video = disp.video();
 	const std::string& music_file = part["music"];
 
-	//play music if available
+	// Play music if available
 	if(music_file != "") {
 		sound::play_music_repeatedly(music_file);
 	}
@@ -132,7 +136,7 @@ bool show_intro_part(display &disp, const config& part,
 	textx = 10;
 	int xbuttons = video.getx() - 50;
 
-	// use the whole screen for text
+	// Use the whole screen for text
 	texty = 0;
 #else
 	int xbuttons;
@@ -148,7 +152,7 @@ bool show_intro_part(display &disp, const config& part,
 	texty = dstrect.y + dstrect.h - 200;
 #endif
 
-	//darken the area for the text and buttons to be drawn on
+	// Darken the area for the text and buttons to be drawn on
 	if(show_title == false) {
 		draw_solid_tinted_rectangle(0,texty,video.getx(),video.gety()-texty,0,0,0,0.5,video.getSurface());
 	}
@@ -161,7 +165,7 @@ bool show_intro_part(display &disp, const config& part,
 	skip_button.set_location(xbuttons,dstrect.y+dstrect.h-40);
 #endif
 
-	//draw title if needed
+	// Draw title if needed
 	if(show_title) {
 		const SDL_Rect area = {0,0,video.getx(),video.gety()};
 		font::draw_text(NULL,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,0,0);
@@ -174,7 +178,7 @@ bool show_intro_part(display &disp, const config& part,
 	disp.flip();
 
 	if(!background.null()) {
-		//draw images
+		// Draw images
 		const config::child_list& images = part.get_children("image");
 
 		bool pass = false;
@@ -266,7 +270,7 @@ bool show_intro_part(display &disp, const config& part,
 	int xpos = textx, ypos = texty + 20;
 #endif
 
-	//the maximum position that text can reach before wrapping
+	// The maximum position that text can reach before wrapping
 	size_t height = 0;
 
 	for(;;) {
@@ -277,8 +281,8 @@ bool show_intro_part(display &disp, const config& part,
 				++itor;
 			}
 
-			// output the character
-			// FIXME: this is broken: it does not take kerning into account.
+			// Output the character
+			//! @todo  FIXME: this is broken: it does not take kerning into account.
 			std::string tmp;
 			tmp.append(itor.substr().first, itor.substr().second);
 			if(lang_rtl)
@@ -330,6 +334,7 @@ bool show_intro_part(display &disp, const config& part,
 	return true;
 }
 
+//! Black screen with "The End", shown at the end of a campaign.
 void the_end(display &disp)
 {
 	SDL_Rect area = screen_area();
@@ -359,3 +364,4 @@ void the_end(display &disp)
 
 	disp.delay(4000);
 }
+
