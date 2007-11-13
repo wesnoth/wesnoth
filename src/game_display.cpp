@@ -704,8 +704,11 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 	const int second_half = (i+1 == route_.steps.end()) ? 0 : 1;
 
 	for (int h = first_half; h <= second_half; h++) {
+		const std::string sense( h==0 ? "-in" : "-out" );
+	
 		if (!tiles_adjacent(*(i-1+h), *(i+h))) {
-			teleport = image::get_image("footsteps/teleport-step.png", image::UNMASKED);
+			std::string teleport_image = "footsteps/teleport" + sense + ".png";
+			teleport = image::get_image(teleport_image, image::UNMASKED);
 			continue;
 		}
 
@@ -720,7 +723,7 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 		}
 
 		const std::string image = foot_speed_prefix
-			+ (h==0 ? "-in-" : "-out-") + i->write_direction(dir)
+			+ sense + "-" + i->write_direction(dir)
 			+ ".png" + rotate;
 
 		res.push_back(image::get_image(image, image::UNMASKED));
