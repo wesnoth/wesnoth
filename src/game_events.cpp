@@ -1438,7 +1438,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			if(player != NULL) {
 				player->available_units.push_back(new_unit);
 			} else {
-				ERR_NG << "Cannot create unit: location is not on the map, and player "
+			  ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
 					<< new_unit.side() << " has no recall list.\n";
 			}
 		}
