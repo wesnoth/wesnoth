@@ -954,6 +954,7 @@ void terrain_builder::build_terrains()
 			}
 		}
 
+		//NOTE: if min_types is not empty, we have found a valid min_constraint;
 		for(t_translation::t_list::const_iterator t = min_types.begin();
 				t != min_types.end(); ++t) {
 
