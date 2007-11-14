@@ -45,6 +45,8 @@ public:
 
 	static size_t get_max_chars();
 
+	const terrain_label* get_label(const gamemap::location& loc, const std::string& team_name);
+	// search a team-only label, if fails then try public labels
 	const terrain_label* get_label(const gamemap::location& loc);
 	const terrain_label* set_label(const gamemap::location& loc,
 							   const std::string& text,

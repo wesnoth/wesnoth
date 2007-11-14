@@ -94,29 +94,26 @@ size_t map_labels::get_max_chars()
 	return max_label_size;
 }
 
+const terrain_label* map_labels::get_label(const gamemap::location& loc, const std::string& team_name)
+{
+	team_label_map::const_iterator label_map = labels_.find(team_name);
+	if (label_map != labels_.end()) {
+		map_labels::label_map::const_iterator itor = label_map->second.find(loc);;	
+		if (itor != label_map->second.end())
+			return itor->second;
+	}
+	return NULL;
+}
+
 const terrain_label* map_labels::get_label(const gamemap::location& loc)
 {
-	team_label_map::const_iterator label_map;
-	map_labels::label_map::const_iterator itor;
-
-	label_map = labels_.find(team_name());
-	if (label_map != labels_.end())
-		itor = label_map->second.find(loc);
-
-	//if no team label search global label
-	if (team_name() != "" &&
-		(label_map == labels_.end() || itor == label_map->second.end()))
-	{
-		label_map = labels_.find("");
-		if (label_map != labels_.end())
-			itor = label_map->second.find(loc);
+	const terrain_label* res = get_label(loc, team_name());
+	// no such team label, we try global label, except if it's what we just did
+	// NOTE: This also avoid infinite recursion
+	if (res == NULL && team_name() != "") {
+		return get_label(loc, "");
 	}
-
-	if (label_map != labels_.end() && itor != label_map->second.end()) {
-		return itor->second;
-	} else {
-		return 0;
-	}
+	return res;
 }
 
 
