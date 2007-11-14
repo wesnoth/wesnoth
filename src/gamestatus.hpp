@@ -70,15 +70,15 @@ struct wml_menu_item
 	config command;
 };
 
-/** Information on a particular player of the game. */
+//! Information on a particular player of the game. 
 struct player_info
 {
 	player_info():gold(-1) {}
 
-	std::string name;                  /** < Stores the current_player name */
-	int gold;                          /** < Amount of gold the player has saved */
-	std::vector<unit> available_units; /** < Units the player may recall */
-	std::set<std::string> can_recruit; /** < Units the player has the ability to recruit */
+	std::string name;                  //!< Stores the current_player name 
+	int gold;                          //!< Amount of gold the player has saved 
+	std::vector<unit> available_units; //!< Units the player may recall 
+	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit 
 };
 
 class game_state : public variable_set
@@ -174,7 +174,7 @@ public:
 	void modify_turns(const std::string& mod);
 	void add_turns(int num);
 
-	//! function to move to the next turn.
+	//! Function to move to the next turn.
 	//! Returns true iff time has expired.
 	bool next_turn();
 
@@ -208,7 +208,7 @@ private:
 };
 
 //! Holds all the data needed to start a scenario.
-//! i.e. this is the object serialized to disk when saving/loading a game.
+//! I.e. this is the object serialized to disk when saving/loading a game.
 //! It is also the object which needs to be created to start a new game.
 struct save_info {
 	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
