@@ -41,6 +41,7 @@
 #include <iterator>
 #include <sstream>
 
+#define DBG_NG lg::debug(lg::engine)
 #define LOG_NG lg::info(lg::engine)
 #define WRN_NG lg::warn(lg::engine)
 #define ERR_NG lg::err(lg::engine)
@@ -523,6 +524,7 @@ static void write_player(const player_info& player, config& cfg)
 		config new_cfg;
 		i->write(new_cfg);
 		cfg.add_child("unit",new_cfg);
+		DBG_NG << "added unit " << new_cfg["user_description"] << " to side\n";
 	}
 
 	std::stringstream can_recruit;
