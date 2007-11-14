@@ -524,7 +524,7 @@ static void write_player(const player_info& player, config& cfg)
 		config new_cfg;
 		i->write(new_cfg);
 		cfg.add_child("unit",new_cfg);
-		DBG_NG << "added unit " << new_cfg["user_description"] << " to side\n";
+		DBG_NG << "added unit '" << new_cfg["description"] << "' to player '" << player.name << "'\n";
 	}
 
 	std::stringstream can_recruit;
