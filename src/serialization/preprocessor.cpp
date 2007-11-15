@@ -455,7 +455,7 @@ bool preprocessor_data::get_chunk()
 		case 'i':
 		case 'I':
 		case 'j':
-		case 'J': s = "#ifdef"; break;
+		case 'J': s = "#ifdef or #ifndef"; break;
 		case '"': s = "quoted string"; break;
 		case '[':
 		case '{': s = "macro substitution"; break;
@@ -564,6 +564,14 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool skip = target_.defines_->count(symbol) == 0;
+			LOG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
+			if (skip)
+				++skipping_;
+			push_token(skip ? 'J' : 'i');
+		} else if (command == "ifndef") {
+			skip_spaces();
+			std::string const &symbol = read_word();
+			bool skip = target_.defines_->count(symbol) != 0;
 			LOG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
 			if (skip)
 				++skipping_;
