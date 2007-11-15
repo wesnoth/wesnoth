@@ -399,7 +399,8 @@ void server::run() {
 			// Was the player in the lobby or a game?
 			if (lobby_players_.is_observer(e.socket)) {
 				lobby_players_.remove_player(e.socket);
-				LOG_SERVER << ip << "\t" << pl_it->second.name() << "\thas logged off.\n";
+				LOG_SERVER << ip << "\t" << pl_it->second.name()
+					<< "\thas logged off. (socket: " << e.socket << ")\n";
 			} else {
 				for (std::vector<game>::iterator g = games_.begin();
 					g != games_.end(); ++g)
@@ -415,19 +416,17 @@ void server::run() {
 					if ( (g->nplayers() == 0) || (host && !g->started()) ) {
 						LOG_SERVER << ip << "\t" << pl_it->second.name()
 							<< "\tended game:\t\"" << g->name() << "\" ("
-							<< g->id() << ") and disconnected.\n";
+							<< g->id() << ") and disconnected. (socket: "
+							<< e.socket << ")\n";
 						delete_game(g);
 						break;
-					}
-					if (obs) {
-						LOG_SERVER << ip << "\t" << pl_it->second.name()
-							<< "\thas left game:\t\"" << g->name() << "\" ("
-							<< g->id() << ") as an observer and disconnected.\n";
-					} else {
-						g->send_data(construct_server_message(pl_it->second.name() + " has disconnected",*g));
-						LOG_SERVER << ip << "\t" << pl_it->second.name()
-							<< "\thas left game:\t\"" << g->name() << "\" ("
-							<< g->id() << ") and disconnected.\n";
+					LOG_SERVER << ip << "\t" << pl_it->second.name()
+						<< "\thas left game:\t\"" << g->name() << "\" ("
+						<< g->id() << (obs ? ") as an observer" : ")")
+						<< " and disconnected. (socket: " << e.socket << ")\n";
+					if (!obs) {
+						g->send_data(construct_server_message(pl_it->second.name()
+							+ " has disconnected",*g));
 					}
 					break;
 				}
