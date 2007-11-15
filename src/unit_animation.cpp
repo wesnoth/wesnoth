@@ -259,22 +259,7 @@ int unit_animation::matches(const game_display &disp,const gamemap::location& lo
 }
 
 
-void unit_animation::back_compat_add_name(const std::string name,const std::string range)
-{
-	config tmp;
-	event_.push_back("attack");
-	if(!name.empty()) {
-		tmp["name"] = name;
-		primary_attack_filter_.push_back(tmp);
-	}
-	if(!range.empty()) {
-		tmp["range"] = range;
-		primary_attack_filter_.push_back(tmp);
-	}
-}
-
-
-void unit_animation::initialize_anims( std::vector<unit_animation> & animations, const config & cfg, std::vector<attack_type> tmp_attacks)
+void unit_animation::initialize_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
 	config expanded_cfg;
 	config::child_list::const_iterator anim_itor;
@@ -428,22 +413,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		//lg::wml_error<<"attack animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=attack flag\n";
 	}
-	// get old animation format, to be removed circum 1.3.10
-	for(std::vector<attack_type>::iterator attacks_itor = tmp_attacks.begin() ; attacks_itor!= tmp_attacks.end();attacks_itor++) {
-		animations.insert(animations.end(),attacks_itor->animation_.begin(),attacks_itor->animation_.end());
-		// this has been detected elsewhere, no deprecation message needed here
-	}
 	animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image"]),300),"attack",unit_animation::DEFAULT_ANIM));
-	if(!cfg["image_short"].empty()) {
-		animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image_short"]),300),"attack",unit_animation::DEFAULT_ANIM));
-		animations.back().back_compat_add_name("","melee");
-		lg::wml_error<<"image_short is deprecated, support will be removed in 1.3.10 (in unit "<<cfg["name"]<<")\n";
-	}
-	if(!cfg["image_long"].empty()) {
-		animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image_long"]),300),"attack",unit_animation::DEFAULT_ANIM));
-		animations.back().back_compat_add_name("","ranged");
-		lg::wml_error<<"image_long is deprecated, support will be removed in 1.3.10 (in unit "<<cfg["name"]<<")\n";
-	}
 	// always have an attack animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
 	const config::child_list& deaths = expanded_cfg.get_children("death");

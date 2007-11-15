@@ -508,7 +508,7 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 	max_hit_points_ = t->hitpoints();
 	max_movement_ = t->movement();
 	emit_zoc_ = t->level();
-	attacks_ = t->attacks(true);
+	attacks_ = t->attacks();
 	unit_value_ = t->cost();
 	flying_ = t->movement_type().is_flying();
 
@@ -1248,28 +1248,13 @@ void unit::read(const config& cfg, bool use_traits)
 			t_atks.merge_with(u_atks);
 			for(range = t_atks.child_range("attack");
 				range.first != range.second; ++range.first) {
-				attacks_.push_back(attack_type(**range.first,id()));
-			}
-			std::vector<attack_type>::iterator at;
-			for(at = attacks_.begin(); at != attacks_.end(); ++at) {
-				at->get_cfg().clear_children("animation");
-			}
-			for(at = attacks_b_.begin(); at != attacks_b_.end(); ++at) {
-				at->get_cfg().clear_children("animation");
+				attacks_.push_back(attack_type(**range.first));
 			}
 		} else {
 			for(config::const_child_itors range = cfg.child_range("attack");
 				range.first != range.second; ++range.first) {
-				attacks_.push_back(attack_type(**range.first,id()));
+				attacks_.push_back(attack_type(**range.first));
 			}
-		}
-	} else {
-		std::vector<attack_type>::iterator at;
-		for(at = attacks_.begin(); at != attacks_.end(); ++at) {
-			at->get_cfg().clear_children("animation");
-		}
-		for(at = attacks_b_.begin(); at != attacks_b_.end(); ++at) {
-			at->get_cfg().clear_children("animation");
 		}
 	}
 	cfg_.clear_children("attack");
@@ -1333,7 +1318,7 @@ void unit::read(const config& cfg, bool use_traits)
 			animations_ = ut->animations_;
 			cfg_.clear_children("animation");
 		} else {
-			unit_animation::initialize_anims(animations_,cfg_,type()->attacks(true));
+			unit_animation::initialize_anims(animations_,cfg_);
 		}
 	} else {
 		// Remove animations from private cfg, since they're not needed there now
@@ -2387,9 +2372,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if(!description.empty()) cfg_["unit_description"] = description;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
-					attacks_.push_back(attack_type(**i.first,id()));
-					// TODO backward compat code, to be removed in 1.3.10, support for old attack format ([animation] in [attack] )
-					animations_.insert(animations_.end(),attacks_.back().animation_.begin(),attacks_.back().animation_.end());
+					attacks_.push_back(attack_type(**i.first));
 				} else if(apply_to == "remove_attacks") {
 					int num_attacks= attacks_.size();
 					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
@@ -2605,7 +2588,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					game_config::add_color_info(**i.first);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					unit_animation::initialize_anims(animations_,**i.first,std::vector<attack_type>());
+					unit_animation::initialize_anims(animations_,**i.first);
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions

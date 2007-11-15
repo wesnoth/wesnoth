@@ -37,7 +37,7 @@ class attack_type
 {
 public:
 
-	attack_type(const config& cfg, const std::string& id, bool with_animations=true);
+	attack_type(const config& cfg);
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }
@@ -184,7 +184,7 @@ public:
     const std::string& flag_rgb() const { return flag_rgb_; }
 
 	int hitpoints() const { return atoi(cfg_["hitpoints"].c_str()); }
-	std::vector<attack_type> attacks(bool with_animations = false) const;
+	std::vector<attack_type> attacks() const;
 	const unit_movement_type& movement_type() const { return movementType_; }
 
 	int experience_needed(bool with_acceleration=true) const;

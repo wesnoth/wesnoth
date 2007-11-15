@@ -1338,7 +1338,7 @@ bool mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		const battle_context::unit_stats& att = bc_vector[i].get_attacker_stats();
 		const battle_context::unit_stats& def = bc_vector[i].get_defender_stats();
 		config tmp_config;
-		attack_type no_weapon(tmp_config, "fake_attack", false);
+		attack_type no_weapon(tmp_config);
 		const attack_type& attw = attack_type(*att.weapon);
 		const attack_type& defw = attack_type(def.weapon ? *def.weapon : no_weapon);
 

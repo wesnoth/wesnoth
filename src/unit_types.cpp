@@ -34,28 +34,9 @@
 
 
 
-attack_type::attack_type(const config& cfg,const std::string& id, bool with_animations)
+attack_type::attack_type(const config& cfg)
 {
 	cfg_ = cfg;
-	if (with_animations) {
-		const config expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
-		// TODO: prepare animation should be privatized once the code is removed
-		const config::child_list& animations = expanded_cfg.get_children("animation");
-		for(config::child_list::const_iterator d = animations.begin(); d != animations.end(); ++d) {
-			lg::wml_error<<"attack animation directly in attack is deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
-			lg::wml_error<<"please put it with an [attack_anim] tag in the [unit] and filter on the attack name\n";
-			animation_.push_back(unit_animation(**d));
-			animation_.back().back_compat_add_name(cfg["name"]);
-		}
-		if(cfg.child("frame") || cfg.child("missile_frame") || cfg.child("sound")) {
-			lg::wml_error<<"using frame directly in attack is VERY deprecated, support will be removed in 1.3.10 (in unit "<<id<<")\n";
-			if(animation_.empty()) {
-				animation_.push_back(unit_animation(cfg));
-				animation_.back().back_compat_add_name(cfg["name"]);
-			}
-		}
-	}
-
 	id_ = cfg["name"];
 	description_ = cfg["description"];
 	if (description_.empty())
@@ -627,7 +608,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	experience_needed_=lexical_cast_default<int>(cfg_["experience"],500);
 
-	unit_animation::initialize_anims(animations_,cfg,attacks(true));
+	unit_animation::initialize_anims(animations_,cfg);
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
 	// Deprecation messages, only seen when unit is parsed for the first time.
@@ -712,12 +693,12 @@ const t_string& unit_type::unit_description() const
 }
 
 
-std::vector<attack_type> unit_type::attacks(bool with_animations) const
+std::vector<attack_type> unit_type::attacks() const
 {
 	std::vector<attack_type> res;
 	for(config::const_child_itors range = cfg_.child_range("attack");
 	    range.first != range.second; ++range.first) {
-		res.push_back(attack_type(**range.first,id(), with_animations));
+		res.push_back(attack_type(**range.first));
 	}
 
 	return res;

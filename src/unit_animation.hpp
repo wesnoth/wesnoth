@@ -34,7 +34,7 @@ class unit_animation
 	public:
 		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1};
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
-		static void initialize_anims( std::vector<unit_animation> & animations, const config & cfg, std::vector<attack_type> tmp_attacks);
+		static void initialize_anims( std::vector<unit_animation> & animations, const config & cfg);
 
 		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
@@ -53,11 +53,6 @@ class unit_animation
 		const int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw();
 
-		// only to support all [attack_anim] format, to remove at 1.3.10 time
-		void back_compat_add_name(const std::string name="",const std::string range ="");
-		// to be privatized post 1.3.10
-		static config prepare_animation(const config &cfg,const std::string animation_tag);
-		explicit unit_animation(const config& cfg,const std::string frame_string ="");
 	friend class unit;
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
@@ -72,6 +67,8 @@ class unit_animation
 		fixed_t highlight_ratio(const float default_val = 1.0) const{ return unit_anim_.highlight_ratio(default_val); };
 		double offset(double default_val =0.0) const{ return unit_anim_.offset(default_val); };
 	private:
+		static config prepare_animation(const config &cfg,const std::string animation_tag);
+		explicit unit_animation(const config& cfg,const std::string frame_string ="");
 		unit_animation(){};
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
 		class crude_animation:public animated<unit_frame>
