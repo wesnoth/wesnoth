@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-10 22:09+0100\n"
-"PO-Revision-Date: 2007-10-31 11:22+0100\n"
+"PO-Revision-Date: 2007-11-15 00:44+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -535,9 +535,8 @@ msgstr ""
 "spelare som hellre spelar episka storslagna dueller."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
-#, fuzzy
 msgid "2p - Dark Forecast (Survival)"
-msgstr "6s - Överlevnad"
+msgstr "2s - Vädrets makter (Överlevnad)"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:6
 msgid ""
@@ -546,6 +545,10 @@ msgid ""
 "enemy waves.  During the course of gameplay, the terrain will change based "
 "on random weather effects."
 msgstr ""
+"Vädrets makter är ett överlevnadsscenario för en eller två spelare mot "
+"slumpvalda AI-trupper. Segern vinns genom att överleva alla anfallsvågor. "
+"Under spelets gång ändras terrängen som följd av olika slumpmässiga "
+"ändringar i vädret."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:490
 msgid ""
@@ -553,57 +556,61 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"Skriken och bönerna efter nåd tystnar till slut, när du lösgör ditt "
+"blodfläckade svärd från den sista av rebellerna. Det här packet kommer inte "
+"att orsaka mer problem. Ditt styre får äntligen sitt grepp."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:853
 msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"De sista och mäktigaste av dessa varelser är snart här. Om vi kan dräpa dem "
+"i tid, så kommer vi att segra."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1025
 msgid "Heavy Snowfall"
-msgstr ""
+msgstr "Kraftigt snöfall"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1039
 msgid "Snowfall"
-msgstr ""
+msgstr "Snöfall"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1059
 msgid "Heavy Rains"
-msgstr ""
+msgstr "Ösregn"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1073
 msgid "Drought"
-msgstr ""
+msgstr "Torka"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1081
 msgid "Clear Weather"
-msgstr ""
+msgstr "Klart väder"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1430
 msgid "Single player mode - uses the reduced strength spawns."
-msgstr ""
+msgstr "Ensamspel - fiendernas styrka reduceras."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1433
 msgid "Two player mode - uses the full strength spawns."
-msgstr ""
+msgstr "Spel för två - fienderna har full styrka."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1453
 msgid "Survive and defeat the waves of opposition."
-msgstr ""
+msgstr "Överlev och besegra anfallsvågorna"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1455
 msgid "Defeat all waves"
-msgstr ""
+msgstr "Besegra alla anfallsvågor"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1459
-#, fuzzy
 msgid "Lose all your team's leaders"
-msgstr "Dina lags ledare dör."
+msgstr "Dina ledare dör"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1471
 msgid "Dark Forecast - a random survival scenario"
-msgstr ""
+msgstr "Vädrets makter - ett slumpmässigt överlevnadsscenario"
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1492
 msgid ""
@@ -631,10 +638,32 @@ msgid ""
 "@Rhuvaen\n"
 "- WML implementation"
 msgstr ""
+"Ditt mål är att överleva fiendens anfallsvågor och besegra de slutliga "
+"ärkefienderna.\n"
+"\n"
+"Anfallsvågorna genereras slumpmässigt och är olika varje gång Vädrets makter "
+"spelas.\n"
+"\n"
+"\n"
+"Anfallsvågorna kommer från kartans norra, södra och västra kanter - "
+"troligast västerifrån. De uppstår med någorlunda regelbundet intervall. \n"
+"\n"
+"\n"
+"Vädret ändras också slumpmässigt, och påverkar kartans utseende.\n"
+"\n"
+"\n"
+"\n"
+"#Vädrets makter skrevs av:\n"
+"\n"
+"@jb\n"
+"- kartdesign, regenerationsgrupper and scenariokoncept\n"
+"\n"
+"@Rhuvaen\n"
+"- WML-implementation "
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1496
 msgid "So this is the accursed valley - a land ours for the taking."
-msgstr ""
+msgstr "Så detta är den fördömda dalen - alldeles öppet för oss att ta över."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1500
 msgid ""
@@ -642,24 +671,33 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
+"Invånarna ryktas vara en märklig allians mellan människor och djur, och vårt "
+"anspråk kommer inte att stå oemotsagt. Vi måste vara redo för de "
+"överraskningar vi kan möta här."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1504
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr ""
+"Låt oss då utröna vad som väntar på oss, och lära dem att inte protestera "
+"mot vårt anspråk."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1542
 msgid ""
 "Ugh!  How can this be?  Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr ""
+"Argh! Hur gick det här till? Besegrad av simpla barbarer! Mina gudar har "
+"övergivit mig..."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1556
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr ""
+"Dina fienders jubel är det sista du hör när du glider in i döden... Deras "
+"glädje fyller dina sista ögonblick med brännande hat."
 
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1578
 msgid ""
@@ -667,6 +705,9 @@ msgid ""
 "ghostly wisps drain away your will, you realize that your time in this land "
 "is over."
 msgstr ""
+"Fienden jublar och en mörk dimma reser sig ur marken och omvärver dig. "
+"Spöklika dimstråk tömmer din vilja och du inser att din tid i detta land är "
+"slut."
 
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:5
 msgid "2p - Den of Onis"
@@ -1350,7 +1391,7 @@ msgstr "Dina lags ledare dör."
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:338
 msgid "Faery"
-msgstr ""
+msgstr "Fevärld"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:338
 msgid ""
@@ -1363,9 +1404,8 @@ msgstr ""
 "skicka en repris per epost till roze@roze.mine.nu. Tack!"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:341
-#, fuzzy
 msgid "Death"
-msgstr "Standard"
+msgstr "Döden"
 
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:341
 msgid ""
