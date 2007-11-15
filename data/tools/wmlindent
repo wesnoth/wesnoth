@@ -49,7 +49,7 @@ from wesnoth import wmltools
 
 def is_directive(str):
     "Identify things that shouldn't be indented."
-    for prefix in ("#ifdef", "#else", "#endif", "#define", "#enddef"):
+    for prefix in ("#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef"):
         if str.startswith(prefix):
             return True
     return False
