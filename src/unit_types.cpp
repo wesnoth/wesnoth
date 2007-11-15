@@ -176,7 +176,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		damage_ = utils::apply_modifier(damage_, increase_damage, 1);
 
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << " " << _("damage");
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage 
+				<< " " << _n("damage","damage",lexical_cast<int>(increase_damage));
 		}
 	}
 
@@ -184,7 +185,8 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		num_attacks_ = utils::apply_modifier(num_attacks_, increase_attacks, 1);
 
 		if(description != NULL) {
-			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks << " " << _("strikes");
+			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks 
+				<< " " << _n("strike","strikes",lexical_cast<int>(increase_attacks));
 		}
 	}
 
@@ -216,13 +218,15 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 	if(increase_damage.empty() == false) {
 		if(description != NULL) {
-			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage << " " << _("damage");
+			desc << (increase_damage[0] == '-' ? "" : "+") << increase_damage 
+				<< " " << _n("damage","damage",lexical_cast<int>(increase_damage));
 		}
 	}
 
 	if(increase_attacks.empty() == false) {
 		if(description != NULL) {
-			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks << " " << _("strikes");
+			desc << (increase_attacks[0] == '-' ? "" : "+") << increase_attacks 
+				<< " " << _n("strike","strikes",lexical_cast<int>(increase_attacks));
 		}
 	}
 
