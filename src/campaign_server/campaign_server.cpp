@@ -134,6 +134,7 @@ namespace {
 
 		// load the hooks
 		hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
+		hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
 	}
 
 	void find_translations(const config& cfg, config& campaign)
@@ -316,8 +317,7 @@ namespace {
 						LOG_CS << "sending campaign " << (*req)["name"] << " to " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 						if(campaign == NULL) {
-							network::send_data(construct_error("Add-on not found."),sock);
-							LOG_CS << " not found\n";
+							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock);
 						} else {
 							config cfg;
 							scoped_istream stream = istream_file((*campaign)["filename"]);
@@ -455,6 +455,9 @@ namespace {
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
 						network::send_data(construct_message("Add-on deleted."),sock);
+
+						fire("hook_post_erase", (*erase)["name"]);
+
 					} else if(const config* cpass = data.child("change_passphrase")) {
 						config* campaign = campaigns().find_child("campaign","name",(*cpass)["name"]);
 						if(campaign == NULL) {
