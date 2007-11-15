@@ -85,15 +85,41 @@ if __name__ == "__main__":
         for c in campaigns.get_all("campaign"):
             translatable = c.get_text_val("translate")
             if(translatable == "true"):
-                result[c.get_text_val("title")] = True
+                result[c.get_text_val("name")] = True
             else:
                 # when the campaign isn't marked for translation skip it
                 if(translatable_only):
                     continue
                 else:
-                    result[c.get_text_val("title")] = False
+                    result[c.get_text_val("name")] = False
 
         return result
+
+    """Get the timestamp of a campaign on the server.
+
+    server              The url of the addon server eg 
+                        campaigns.wesnoth.org:15003.
+    addon               The name of the addon.
+    returns             The timestamp of the campaign, -1 if not on the server.
+    """
+    def get_timestamp(server, addon):
+
+        logging.debug("get_timestamp server = '%s' addon = %s",
+            server, addon)
+
+        wml = libwml.CampaignClient(server)
+        data = wml.list_campaigns()
+
+        # Item [0] hardcoded seems to work
+        campaigns = data.data[0]
+        result = {}
+        for c in campaigns.get_all("campaign"):
+            if(c.get_text_val("name") != addon):
+                continue
+
+            return int(c.get_text_val("timestamp"))
+
+        return -1
 
     """Upload a addon from the server to wescamp.
     
@@ -154,8 +180,15 @@ if __name__ == "__main__":
     temp_dir            The directory where the unpacked campaign can be stored.
     svn_dir             The directory containing a checkout of wescamp.
     password            The master upload password.
+    stamp               Only upload if the timestamp is equal to this value
+                        if None it's ignored. This is needed to avoid an upload
+                        of wescamp overwriting a campaign authors fresh upload,
+                        there's still a small possibility of a race condition
+                        but it would be really bad luck if that happens.
+    returns             if stamp is used it returns False if the upload failed
+                        due to a newer version on the server, True otherwise.
     """
-    def download(server, addon, temp_dir, svn_dir, password):
+    def download(server, addon, temp_dir, svn_dir, password, stamp = None):
 
         logging.debug("download addon from wescamp server = '%s' addon = '%s' "
             + "temp_dir = '%s' svn_dir = '%s' password is not shown", 
@@ -172,8 +205,10 @@ if __name__ == "__main__":
 
         if(svn.svn_update() == False):
             logging.info("svn up to date, nothing to send to server")
-            sys.exit(0)
-            pass
+            if(stamp == None):
+                return
+            else:
+                return True
 
         # test whether the svn has a translations dir, if not we can stop
 
@@ -193,15 +228,46 @@ if __name__ == "__main__":
 
         # upload to the server
         wml = libwml.CampaignClient(server)
-        wml.put_campaign("", addon, "", password, "", "", "",  
-            target + "/" + addon + ".cfg", target + "/" + addon)
+        if(stamp == None):
+            wml.put_campaign("", addon, "", password, "", "", "",  
+                target + "/" + addon + ".cfg", target + "/" + addon)
+        else:
+            if(stamp == get_timestamp(server, addon)):
+                wml.put_campaign("", addon, "", password, "", "", "",  
+                    target + "/" + addon + ".cfg", target + "/" + addon)
+                return True
+            else:
+                return False
 
+    def erase(addon, svn_dir):
+
+        logging.debug("Erase addon from wescamp addon = '%s' svn_dir = '%s'",
+            addon, svn_dir)
+
+        svn = libsvn.SVN(wescamp)
+
+        svn.svn_update(None, addon) 
+
+        svn.svn_remove(wescamp + "/" + addon) # FIXME the addition of wescamp is a bug
+
+        svn.svn_commit("Erasing addon " + addon)
 
     optionparser = optparse.OptionParser("%prog [options]")
+
+    optionparser.add_option("-l", "--list", action = "store_true", 
+        help = "List available addons. Usage [SERVER [PORT] [VERBOSE]")
+
+    optionparser.add_option("-L", "--list-translatable", action = "store_true", 
+        help = "List addons available for translation. "
+        + "Usage [SERVER [PORT] [VERBOSE]")
 
     optionparser.add_option("-u", "--upload", 
         help = "Upload a addon to wescamp. Usage: 'addon' WESCAMP-CHECKOUT "
         + "[SERVER [PORT]] [TEMP-DIR] [VERBOSE]")
+
+    optionparser.add_option("-U", "--upload-all", action = "store_true", 
+        help = "Upload all addons to wescamp. Usage WESCAMP-CHECKOUT "
+        + " [SERVER [PORT]] [VERBOSE]")
 
     optionparser.add_option("-d", "--download", 
         help = "Download the translations from wescamp and upload to the addon "
@@ -210,14 +276,12 @@ if __name__ == "__main__":
 
     optionparser.add_option("-D", "--download-all", action = "store_true", 
         help = "Download all translations from wescamp and upload them to the "
-        + "addon server. Usage WESCAMP-CHECKOUT PASSWORD [SERVER [PORT]] "                 + " [VERBOSE]")
+        + "addon server. Usage WESCAMP-CHECKOUT PASSWORD [SERVER [PORT]] "
+        + " [VERBOSE]")
 
-    optionparser.add_option("-l", "--list", action = "store_true", 
-        help = "List available addons. Usage [SERVER [PORT] [VERBOSE]")
-
-    optionparser.add_option("-L", "--list-translatable", action = "store_true", 
-        help = "List addons available for translation. "
-        + "Usage [SERVER [PORT] [VERBOSE]")
+    optionparser.add_option("-e", "--erase",
+        help = "Erase an addon from wescamp. Usage 'addon' WESCAMP-CHECKOUT "
+                + "[VERBOSE]")
 
     optionparser.add_option("-s", "--server", 
         help = "Server to connect to [localhost]")
@@ -260,7 +324,11 @@ if __name__ == "__main__":
         if(options.download_all != None):
             logging.error("TEMP-DIR not allowed for DOWNLOAD-ALL.")
             sys.exit(2)
-            
+
+        if(options.upload_all != None):
+            logging.error("TEMP-DIR not allowed for UPLOAD-ALL.")
+            sys.exit(2)
+
         target = options.temp_dir
     else:
         target = tmp.path
@@ -306,6 +374,31 @@ if __name__ == "__main__":
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
+    # Upload all addons from wescamp.
+    elif(options.upload_all != None):
+
+        if(wescamp == None):
+            logging.error("No wescamp checkout specified.")
+            sys.exit(2)
+
+        error = False
+        addons = list(server, True)
+        for k, v in addons.iteritems():
+            try:
+                logging.info("Processing addon '%s'", k)
+                # Create a new temp dir for every upload.
+                tmp = tempdir()
+                upload(server, k, tmp.path, wescamp)
+            except libsvn.error, e:
+                print "[ERROR svn] in addon '" + k + "'" + str(e)
+                error = True
+            except IOError, e:
+                print "Unexpected error occured: " + str(e)
+                error = True
+        
+        if(error):
+            sys.exit(1)
+
     # Download an addon from wescamp.
     elif(options.download != None):
 
@@ -341,9 +434,40 @@ if __name__ == "__main__":
         addons = list(server, True)
         for k, v in addons.iteritems():
             try:
-                # Create a new temp dir for every download.
-                tmp = tempdir()
-                download(server, k, tmp.path, wescamp, password)
+                # since we modify the data on the campaign server and the author
+                # can do the same we need to try to minimize the odds of our
+                # upload to wipe out the new upload
+
+                logging.info("Processing addon '%s'", k)
+                while(True): # download loop
+
+                    timestamp = 0
+                    while(True): # upload loop
+                        
+                        # get the upload timestamp of the addon
+                        timestamp = get_timestamp(server, k)
+
+                        # upload in wescamp
+                        tmp = tempdir()
+                        upload(server, k , tmp.path, wescamp)
+
+                        # if the timestamp has changed we need to download again
+                        if(get_timestamp(server, k) == timestamp):
+                            break
+                        else:
+                            logging.warning("Addon '%s' has been modified on "
+                                + "the campaign server, force another" 
+                                + "wescamp sync", k)
+
+                    # Create a new temp dir for every download.
+                    tmp = tempdir()
+                    if(download(server, k, tmp.path, wescamp, password, timestamp)):
+                        break
+                    else:
+                        logging.warning("Addon '%s' has been modified on "
+                            + "the campaign server and isn't uploaded "
+                            + "force another full sync cycle", k)
+
             except libsvn.error, e:
                 print "[ERROR svn] in addon '" + k + "'" + str(e)
                 error = True
@@ -353,6 +477,23 @@ if __name__ == "__main__":
         
         if(error):
             sys.exit(1)
+
+    # Erase an addon from wescamp
+    elif(options.erase != None):
+
+        if(wescamp == None):
+            logging.error("No wescamp checkout specified.")
+            sys.exit(2)
+
+        try:
+            erase(options.erase, wescamp)
+        except libsvn.error, e:
+            print "[ERROR svn] " + str(e)
+            sys.exit(1)
+        except IOError, e:
+            print "Unexpected error occured: " + str(e)
+            sys.exit(e[0])
+
     else:
         optionparser.print_help()
 

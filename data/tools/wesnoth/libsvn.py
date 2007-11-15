@@ -17,6 +17,18 @@ This library provides an interface to svn, the interface is build upon
 the command line svn tool. 
 """
 
+# TODO make private methods
+# public
+#   checkout
+#   update
+#   add
+#   remove
+#   commit
+#   sync
+# the others private, public methods send relative items
+# for usage, private use the full path
+
+
 import os, shutil, logging;
 
 class error(Exception):
@@ -31,6 +43,9 @@ class SVN:
     do not include a trailing slash!
     """
     def __init__(self, checkout):
+
+        logging.debug("SVN constructor path = '%s'", checkout)
+
         self.checkout_path = checkout
 
         """status masks
@@ -110,10 +125,12 @@ class SVN:
         if(rev != None):
             command += "-r " + rev + " "
         if(files != None):
-            command += files
+            command += self.checkout_path + "/" + files
+        else:
+            command += self.checkout_path
 
         # execute
-        out, err = self.execute(command + self.checkout_path)
+        out, err = self.execute(command)
 
         if(err != ""):
             raise error("update failed with message:" +err)
@@ -360,7 +377,7 @@ class SVN:
     """
     def svn_remove(self, item):
 
-        logging.debug("svn_add item = '%s'", item)
+        logging.debug("svn_remove item = '%s'", item) #typo fix
 
         # execute (repo not required)
         out, err = self.execute("svn remove --non-interactive " + item)
