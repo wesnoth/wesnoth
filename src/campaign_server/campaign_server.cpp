@@ -27,7 +27,7 @@
 
 #include <iostream>
 #include <map>
-
+#include <algorithm>	// Required for gcc 4.3.0
 
 // the fork execute is unix specific only tested on Linux quite sure it won't
 // work on Windows not sure which other platforms have a problem with it.
