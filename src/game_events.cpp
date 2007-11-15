@@ -2002,6 +2002,48 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
 
 				if(player) {
+
+					// Test whether the recall list has duplicates if so warn.
+					// This might be removed at some point but the uniqueness of 
+					// the description is needed to avoid the recall duplication
+					// bugs. Duplicates here might cause the wrong unit being 
+					// replaced by the wrong unit.
+					if(player->available_units.size() > 1) {
+						std::vector<std::string> desciptions;
+						for(std::vector<unit>::const_iterator citor =
+								player->available_units.begin();
+								citor != player->available_units.end(); ++citor) {
+
+							const std::string desciption = 
+								citor->underlying_description();
+							if(std::find(desciptions.begin(), desciptions.end(), 
+									desciption) != desciptions.end()) {
+	
+								lg::wml_error << "Recall list has duplicate unit "
+									"description '" << desciption
+									<< "' unstore_unit may not work as expected.\n";
+							} else {
+								desciptions.push_back(desciption);
+							}
+						}
+					}
+
+					// Avoid duplicates in the list.
+					//! @todo it would be better to change available_units from
+					//! a vector to a map and use the underlying_description 
+					//! as key.
+					const std::string key = u.underlying_description();
+					for(std::vector<unit>::iterator itor = 
+							player->available_units.begin();
+							itor != player->available_units.end(); ++itor) {
+
+						LOG_NG << "Replaced unit '" 
+							<< key << "' on the recall list\n";
+						if(itor->underlying_description() == key) {
+							player->available_units.erase(itor);
+							break;
+						}
+					}
 					player->available_units.push_back(u);
 				} else {
 					ERR_NG << "Cannot unstore unit: no recall list for player " << u.side()

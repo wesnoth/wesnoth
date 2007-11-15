@@ -10,6 +10,7 @@ Version 1.3.10+svn:
  * WML engine:
    * implemented the #ifndef directive, the opposite of #ifdef, in the preprocessor,
      to parse the following block only when the symbol is not defined
+   * fix the recall list duplication bug (bug #10183)
  * units:
    * balancing changes:
      * increased the melee attack of the Saurian Oracle from 5-2 to 4-3
