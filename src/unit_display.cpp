@@ -32,6 +32,8 @@
 #include "util.hpp"
 #include "wassert.hpp"
 
+#include <climits>
+
 #define LOG_DP LOG_STREAM(info, display)
 
 static void teleport_unit_between( const gamemap::location& a, const gamemap::location& b, unit& temp_unit)

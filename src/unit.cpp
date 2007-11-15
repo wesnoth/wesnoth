@@ -40,6 +40,7 @@
 #include "terrain_filter.hpp"
 #include "variable.hpp"
 
+#include <climits>
 #include <ctime>
 #include <algorithm>
 #include <cstdlib>
