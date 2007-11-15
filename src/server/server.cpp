@@ -397,7 +397,7 @@ void server::run() {
 			}
 			sync_scheduled = true;
 			// Was the player in the lobby or a game?
-			if (lobby_players_.is_observer(e.socket)) {
+			if (lobby_players_.is_member(e.socket)) {
 				lobby_players_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name()
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
@@ -420,6 +420,7 @@ void server::run() {
 							<< e.socket << ")\n";
 						delete_game(g);
 						break;
+					}
 					LOG_SERVER << ip << "\t" << pl_it->second.name()
 						<< "\thas left game:\t\"" << g->name() << "\" ("
 						<< g->id() << (obs ? ") as an observer" : ")")
@@ -1315,7 +1316,7 @@ void server::delete_game(std::vector<game>::iterator game_it) {
 	// Put the players back in the lobby, and send
 	// them the games_and_users_list_ again.
 	game_it->send_data(games_and_users_list_);
-	lobby_players_.add_players(*game_it);
+	lobby_players_.add_players(*game_it, true);
 	game_it->end_game();
 	games_.erase(game_it);
 }
