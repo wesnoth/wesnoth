@@ -197,7 +197,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 		eras.push_back((**er)["name"]);
 	}
 	if(eras.empty()) {
-		gui::message_dialog(disp, "", _("No multiplayer sides.")).show();
+		gui::message_dialog(disp, "", _("No eras found.")).show();
 		throw config::error(_("No eras found"));
 	}
 	era_combo_.set_items(eras);

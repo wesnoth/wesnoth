@@ -1440,23 +1440,23 @@ bool game_controller::play_multiplayer()
 	} catch(game::game_error& e) {
 		gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
-		ERR_NET << "caught network::error";
 		if(e.message != "") {
-			ERR_NET << ": " << e.message;
+			ERR_NET << "caught network::error: " << e.message << "\n";
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::dialog dlg(disp(),"",e.message,gui::OK_ONLY);
 			dlg.show();
+		} else {
+			ERR_NET << "caught network::error\n";
 		}
-		ERR_NET << "\n";
 	} catch(config::error& e) {
-		ERR_CONFIG << "caught config::error";
 		if(e.message != "") {
-			ERR_CONFIG << ": " << e.message;
+			ERR_CONFIG << "caught config::error: " << e.message << "\n";
 			/* GCC-3.3 needs a temp var otherwise compilation fails */
 			gui::dialog dlg2(disp(),"",e.message,gui::OK_ONLY);
 			dlg2.show();
+		} else {
+			ERR_CONFIG << "caught config::error\n";
 		}
-		ERR_CONFIG << "\n";
 	} catch(gamemap::incorrect_format_exception& e) {
 		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(game::load_game_exception& e) {
