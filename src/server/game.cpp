@@ -594,7 +594,7 @@ network::connection game::ban_user(const config& ban) {
 		return user->first;
 	}
 	// Don't return the user if he wasn't in this game.
-	return 0
+	return 0;
 }
 
 bool game::process_commands(const config& cfg) {
