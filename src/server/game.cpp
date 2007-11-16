@@ -35,7 +35,7 @@ game::game(player_map& players, const network::connection host, const std::strin
 	description_(NULL),	end_turn_(0), allow_observers_(true),
 	all_observers_muted_(false)
 {
-	// Hack to handle the pseudo games lobby_players_ and not_logged_in_.
+	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) return;
 	players_.push_back(owner_);
 	const player_map::iterator pl = player_info_->find(owner_);
@@ -581,15 +581,19 @@ network::connection game::ban_user(const config& ban) {
 		<< owner_ << "\tbanned: " << name << "\tfrom game:\t"
 		<< name_ << "\" (" << id_ << ")\n";
 	bans_.push_back(network::ip_address(user->first));
-	network::send_data(construct_server_message("You have been banned."),
-		user->first);
 	const config& msg = construct_server_message(name + " has been banned.");
 	send_data(msg, user->first);
 	record_data(msg);
-	// Tell the user to leave the game.
-	network::send_data(config("leave_game"), user->first);
-	remove_player(user->first);
-	return user->first;
+	if (is_member(user->first)) {
+		network::send_data(construct_server_message("You have been banned."),
+			user->first);
+		// Tell the user to leave the game.
+		network::send_data(config("leave_game"), user->first);
+		remove_player(user->first);
+		return user->first;
+	}
+	// Don't return the user if he wasn't in this game.
+	return 0
 }
 
 bool game::process_commands(const config& cfg) {
@@ -627,16 +631,18 @@ bool game::end_turn() {
 }
 
 void game::add_player(const network::connection player, const bool observer) {
-	// Hack to handle the pseudo games lobby_players_ and not_logged_in_.
+	//if the player is already in the game, don't add them.
+	if(is_member(player)) {
+		ERR_GAME << "ERROR: Player is already in this game. (socket: "
+			<< player << ")\n";
+		return;
+	}
+
+	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) {
 		observers_.push_back(player);
 		return;
 	}
-	//if the player is already in the game, don't add them.
-	if(is_member(player)) {
-		return;
-	}
-
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
@@ -699,14 +705,19 @@ void game::add_player(const network::connection player, const bool observer) {
 }
 
 void game::remove_player(const network::connection player, const bool notify_creator) {
-	// Hack to handle the pseudo games lobby_players_ and not_logged_in_.
+	if (!is_member(player)) {
+		ERR_GAME << "ERROR: User is not in this game. (socket: "
+			<< player << ")\n";
+		return;
+	}
+	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) {
 		const user_vector::iterator itor =
 			std::find(observers_.begin(), observers_.end(), player);
 		if (itor != observers_.end()) {
 			observers_.erase(itor);
 		} else {
-			ERR_GAME << "ERROR: Player is not in this game. (socket: "
+			ERR_GAME << "ERROR: Observer is not in this game. (socket: "
 			<< player << ")\n";
 		}
 		return;
@@ -714,8 +725,6 @@ void game::remove_player(const network::connection player, const bool notify_cre
 	DBG_GAME << debug_player_info();
 	DBG_GAME << "removing player...\n";
 
-	if (!is_member(player))
-		return;
 	bool host = (player == owner_);
 	bool observer = true;
 	{
@@ -906,7 +915,6 @@ const user_vector game::all_game_users() const {
 
 std::string game::debug_player_info() const {
 	std::stringstream result;
-	if (id_ < 3) return result.str();
 	result << "---------------------------------------\n";
 	result << "game id: " << id_ << "\n";
 	result << "players_.size: " << players_.size() << "\n";
