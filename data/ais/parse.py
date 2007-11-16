@@ -1,7 +1,8 @@
 import re, os, safe
 
-whitelisted = ["wesnoth", "heapq", "random"]
+whitelisted = ["wesnoth", "heapq", "random", "math", "string", "re"]
 rex = re.compile(r"^import\s+(.*)", re.M)
+modules = {}
 
 def include(matchob):
     """
@@ -11,7 +12,9 @@ def include(matchob):
     names = [x.strip() for x in matchob.group(1).split(",")]
     r = ""
     for name in names:
-        if name in whitelisted: continue
+        if name in whitelisted:
+            modules[name] = __import__(name)
+            continue
         for path in pathes:
             includefile = os.path.join(path, name)
             try:
@@ -36,8 +39,12 @@ def parse_file(name):
     code = rex.sub(include, code)
     return code
 
+# If you want to disable safe python, use this instead:
+#
+# def parse(name): return open(name).read(), {}
 def parse(name):
-    global already
+    global already, modules
     already = {}
-    return parse_file(name)
+    modules = {}
+    return parse_file(name), modules
 

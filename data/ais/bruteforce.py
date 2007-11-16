@@ -1,6 +1,6 @@
 #!WPY
 
-#import wesnoth,random
+import wesnoth, random
 
 ##    Copyright 2006 by Michael Schmahl
 ##    This code is available under the latest version of the GNU Public License.

@@ -124,7 +124,10 @@ def safe_run(code,context=None):
         _builtin_restore()
         raise
 
-def safe_exec(code,context = None):
+# If you want to disable safe python, use this instead:
+#
+# def safe_exec(code, context = None): exec code in context
+def safe_exec(code, context = None):
     """Check the code to be safe, then run it with only safe builtins on."""
     safe_check(code)
     safe_run(code,context)
