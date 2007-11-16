@@ -1891,7 +1891,6 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		const t_translation::t_letter terrain = map[*step];
 
 		const unit_map::const_iterator enemy_unit = units.find(*step);
-		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
 
 		const int mv = ui->second.movement_cost(terrain);
 		if(discovered_unit || continue_move == false && seen_units.empty() == false ||
@@ -1899,10 +1898,6 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 			break;
 		} else {
 			moves_left -= mv;
-		}
-
-		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,ui->second.side())) {
-			moves_left = 0;
 		}
 
 		// If we use fog or shroud, see if we have sighted an enemy unit,
@@ -1945,6 +1940,11 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 				move_recorder->add_movement(route.front(),*step);
 			}
 			return (step - route.begin());
+		}
+
+		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
+		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,ui->second.side())) {
+			moves_left = 0;
 		}
 
 		// Check if we have discovered an invisible enemy unit
