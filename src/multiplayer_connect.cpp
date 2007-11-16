@@ -753,6 +753,7 @@ void connect::side::resolve_random()
 
 		faction_ = nonrandom_sides[rand() % nonrandom_sides.size()];
 	}
+	bool solved_random_leader = false;
 
 	if (llm_.get_leader() == "random") {
 		// Choose a random leader type, and force gender to be random
@@ -774,9 +775,10 @@ void connect::side::resolve_random()
 				throw config::error(vgettext("Unable to find a leader type for faction $faction", i18n_symbols));
 			}
 		}
+		solved_random_leader = true;
 	}
 	// Resolve random genders "very much" like standard unit code
-	if (llm_.get_gender() == "random") {
+	if (llm_.get_gender() == "random" || solved_random_leader) {
 		game_data::unit_type_map::const_iterator ut = parent_->game_data_.unit_types.find(leader_.empty() ? llm_.get_leader() : leader_);
 
 		if (ut != parent_->game_data_.unit_types.end()) {
