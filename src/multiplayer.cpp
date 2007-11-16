@@ -102,7 +102,7 @@ public:
 protected:
 	int action(gui::dialog_process_info &dp_info)
 	{
-		//diaplay a dialog with a list of known servers
+		//display a dialog with a list of known servers
 		gui::dialog server_dialog(dialog()->get_display(), _("List of Servers"),
 			_("Choose a known server from the list"), gui::OK_CANCEL);
 		std::vector<std::string> servers;
@@ -383,9 +383,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, gam
 	case mp::ui::QUIT:
 	default:
 		//update lobby content
-		config request;
-		request.add_child("refresh_lobby");
-		network::send_data(request);
+		network::send_data(config("refresh_lobby"));
 		break;
 	}
 }
@@ -405,41 +403,27 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 		case mp::ui::JOIN:
 			try {
 				enter_wait_mode(disp, game_config, data, chat, gamelist, false);
-			} catch(network::error& error) {
+			} catch(config::error& error) {
 				if(!error.message.empty()) {
-					if(error.message == _("No multiplayer sides available in this game") ||
-					   error.message == _("Era not available") ||
-					   error.message == _("No multiplayer sides found")) {
-						gui::show_error_message(disp, error.message);
-						break;
-					}
+					gui::show_error_message(disp, error.message);
 				}
-				throw error;
 			}
 			break;
 		case mp::ui::OBSERVE:
 			try {
 				enter_wait_mode(disp, game_config, data, chat, gamelist, true);
-			} catch(network::error& error) {
+			} catch(config::error& error) {
 				if(!error.message.empty()) {
-					if(error.message == _("No multiplayer sides available in this game") ||
-					   error.message == _("Era not available") ||
-					   error.message == _("No multiplayer sides found")) {
-						gui::show_error_message(disp, error.message);
-						break;
-					}
+					gui::show_error_message(disp, error.message);
 				}
-				throw error;
 			}
 			break;
 		case mp::ui::CREATE:
 			try {
 				enter_create_mode(disp, game_config, data, chat, gamelist, mp::CNTR_NETWORK, false);
-			} catch(network::error& error) {
+			} catch(config::error& error) {
 				if (!error.message.empty())
 					gui::show_error_message(disp, error.message);
-				// Exit the lobby on network errors
-				return;
 			}
 			break;
 		case mp::ui::QUIT:
@@ -449,9 +433,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 				const preferences::display_manager disp_manager(&disp);
 				preferences::show_preferences_dialog(disp,game_config);
 				//update lobby content
-				config request;
-				request.add_child("refresh_lobby");
-				network::send_data(request);
+				network::send_data(config("refresh_lobby"));
 			}
 			break;
 		default:

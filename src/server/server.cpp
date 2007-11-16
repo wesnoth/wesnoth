@@ -836,7 +836,10 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		} catch(bad_lexical_cast&) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join invalid game:\t" << id << "\n";
-			network::send_data(config("leave_game"),sock);
+			network::send_data(config("leave_game"), sock);
+			network::send_data(lobby_.construct_server_message(
+				"Attempt to join invalid game."), sock);
+			network::send_data(games_and_users_list_, sock);
 			return;
 		}			
 		const std::vector<game>::iterator g =
@@ -844,25 +847,27 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 		if (g == games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join unknown game:\t" << id << "\n";
-			network::send_data(config("leave_game"),sock);
+			network::send_data(config("leave_game"), sock);
+			network::send_data(lobby_.construct_server_message(
+				"Attempt to join unknown game."), sock);
+			network::send_data(games_and_users_list_, sock);
 			return;
 		}
 		if (g->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << g->name()
 				<< "\" (" << id << ").\n";
-			network::send_data(config("leave_game"),sock);
+			network::send_data(config("leave_game"), sock);
 			network::send_data(lobby_.construct_server_message(
 				"You are banned from this game."), sock);
+			network::send_data(games_and_users_list_, sock);
 			return;
 		}
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tjoined game:\t\"" << g->name()
 			<< "\" (" << id << (observer ? ") as an observer.\n" : ").\n");
-
 		lobby_.remove_player(sock);
 		g->add_player(sock, observer);
-
 		lobby_.send_data(games_and_users_list_diff());
 	}
 

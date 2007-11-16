@@ -211,7 +211,10 @@ void wait::join_game(bool observe)
 		network::connection data_res = dialogs::network_receive_dialog(disp(),
 				_("Getting game data..."), level_);
 		check_response(data_res, level_);
-
+		if(level_.child("leave_game")) {
+			set_result(QUIT);
+			return;
+		}
 		//if we have got valid side data
 		//the first condition is to make sure that we don't have another
 		//WML message with a side-tag in it
@@ -224,7 +227,7 @@ void wait::join_game(bool observe)
 
 		if(sides_list.empty()) {
 			set_result(QUIT);
-			throw network::error(_("No multiplayer sides available in this game"));
+			throw config::error(_("No multiplayer sides available in this game"));
 			return;
 		}
 
@@ -262,12 +265,12 @@ void wait::join_game(bool observe)
 
 			const config* era = level_.child("era");
 			if(era == NULL)
-				throw network::error(_("Era not available"));
+				throw config::error(_("Era not available"));
 			const config::child_list& possible_sides =
 				era->get_children("multiplayer_side");
 			if(possible_sides.empty()) {
 				set_result(QUIT);
-				throw network::error(_("No multiplayer sides found"));
+				throw config::error(_("No multiplayer sides found"));
 				return;
 			}
 
