@@ -1091,9 +1091,11 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		const bool host = g->is_owner(sock);
 		const bool obs = g->is_observer(sock);
 		g->remove_player(sock);
-		g->send_data(g->construct_server_message(pl->second.name()
-			+ " has left the game."));
 		lobby_.add_player(sock, true);
+		if (!obs) {
+			g->send_data(g->construct_server_message(pl->second.name()
+			+ " has left the game."));
+		}
 		g->describe_slots();
 		//! @todo This should be done in remove_player().
 		if ( (g->nplayers() == 0) || (host && !g->started()) ) {
