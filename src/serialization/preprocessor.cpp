@@ -709,11 +709,12 @@ bool preprocessor_data::get_chunk()
 								*buffer << "#textdomain " << macro_textdomain;
 								++macro_num;
 								c = '\n';
-							} else if((i_end - i_beg < 6 || !std::equal(i_beg, i_beg + 6, "define"))
+							} else if((i_end - i_beg < 6 || (!std::equal(i_beg, i_beg + 6, "define")
+							&& !std::equal(i_beg, i_beg + 6, "ifndef")))
 							&& (i_end - i_beg < 5 || (!std::equal(i_beg, i_beg + 5, "ifdef") 
 							&& !std::equal(i_beg, i_beg + 5, "endif") && !std::equal(i_beg, i_beg + 5, "undef")))
 							&& (i_end - i_beg < 4 || !std::equal(i_beg, i_beg + 4, "else"))) {
-								// Check for define, ifdef, endif, undef, else.
+								// Check for define, ifdef, ifndef, endif, undef, else.
 								// Otherwise, this is a comment and should be skipped.
 								i = std::find(i_beg, i_end, '\n');
 								++macro_num;
