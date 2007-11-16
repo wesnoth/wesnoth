@@ -233,11 +233,6 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					if(res != 0 || login.empty()) {
 						return ABORT_SERVER;
 					}
-					if(login.size() > mp::max_login_size) {
-						gui::show_error_message(disp, _("The login name you chose is too long, please use a login with less than 18 characters"));
-						return ABORT_SERVER;
-					}
-
 					preferences::set_login(login);
 				}
 
