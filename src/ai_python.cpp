@@ -58,7 +58,7 @@
 
 #define LOG_AI LOG_STREAM(info, ai)
 
-#ifndef Py_ssize_t
+#if PY_MAJOR_VERSION == 2 && PY_MINOR_VERSION == 4
 #define Py_ssize_t int
 #endif
 
