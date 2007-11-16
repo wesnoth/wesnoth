@@ -181,7 +181,7 @@ error::error(const std::string& msg, connection sock) : message(msg), socket(soc
 
 void error::disconnect()
 {
-	network::disconnect(socket);
+	if(socket) network::disconnect(socket);
 }
 
 manager::manager(size_t min_threads, size_t max_threads) : free_(true)
