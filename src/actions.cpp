@@ -1862,10 +1862,9 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 
 	ui->second.set_goto(gamemap::location());
 
-	const size_t team_num = ui->second.side()-1;
-
-
+	size_t team_num = ui->second.side()-1;
 	team& team = teams[team_num];
+
 	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
 		(team.uses_shroud() || team.uses_fog());
 
@@ -1941,6 +1940,9 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 			}
 			return (step - route.begin());
 		}
+		// we also refreh its side, just in case if an event change it
+		team_num = ui->second.side()-1;
+		team = teams[team_num];
 
 		const bool skirmisher = ui->second.get_ability_bool("skirmisher",*step);
 		if(!skirmisher && enemy_zoc(map,units,teams,*step,team,ui->second.side())) {
@@ -1957,7 +1959,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 				continue;
 
 			const unit_map::const_iterator it = units.find(adjacent[i]);
-			if(it != units.end() && teams[ui->second.side()-1].is_enemy(it->second.side()) &&
+			if(it != units.end() && team.is_enemy(it->second.side()) &&
 			   it->second.invisible(it->first,units,teams)) {
 				discovered_unit = true;
 				unit_ability_list hides = it->second.get_abilities("hides",it->first);
@@ -2087,7 +2089,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 				}
 
 				LOG_NG << "processed...\n";
-				teams[team_num].see(u->second.side()-1);
+				team.see(u->second.side()-1);
 			}
 
 			// The message we display is different depending on
