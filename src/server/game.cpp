@@ -528,7 +528,7 @@ void game::mute_observer(const config& mute) {
 }
 
 //! Kick a member by name.
-//! @return the network handle of the kicked player
+//! @return the network handle of the removed member if successful, '0' otherwise.
 network::connection game::kick_member(const config& kick) {
 	const std::string name = kick["username"];
 	const player_map::const_iterator user = find_user(name);
@@ -558,7 +558,8 @@ network::connection game::kick_member(const config& kick) {
 
 //! Ban a user by name.
 //! The user does not need to be in this game but logged in.
-//! @return the network handle of the banned player
+//! @return the network handle of the banned player if he was in this game, '0'
+//! otherwise.
 network::connection game::ban_user(const config& ban) {
 	const std::string name = ban["username"];
 	const player_map::const_iterator user = find_user(name);
@@ -631,13 +632,11 @@ bool game::end_turn() {
 }
 
 void game::add_player(const network::connection player, const bool observer) {
-	//if the player is already in the game, don't add them.
 	if(is_member(player)) {
 		ERR_GAME << "ERROR: Player is already in this game. (socket: "
 			<< player << ")\n";
 		return;
 	}
-
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) {
 		observers_.push_back(player);
