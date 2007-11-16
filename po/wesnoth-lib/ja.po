@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-10 22:09+0100\n"
+"POT-Creation-Date: 2007-11-16 16:24+0100\n"
 "PO-Revision-Date: 2007-09-09 11:43+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -176,50 +176,55 @@ msgstr "照らされた洞窟"
 msgid "Mushroom Grove"
 msgstr "キノコの森"
 
-#: data/core/terrain.cfg:655
+#: data/core/terrain.cfg:644
+#, fuzzy
+msgid "Mushroom Grove Lit"
+msgstr "キノコの森"
+
+#: data/core/terrain.cfg:654
 msgid "Rockbound Cave"
 msgstr "岩に囲まれた洞窟"
 
-#: data/core/terrain.cfg:665
+#: data/core/terrain.cfg:664
 msgid "Rockbound Cave Lit"
 msgstr "岩に囲まれ照らされた洞窟"
 
-#: data/core/terrain.cfg:682 data/core/terrain.cfg:693
-#: data/core/terrain.cfg:706 data/core/terrain.cfg:717
-#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
-#: data/core/terrain.cfg:751 data/core/terrain.cfg:762
-#: data/core/terrain.cfg:773 data/core/terrain.cfg:784
-#: data/core/terrain.cfg:797 data/core/terrain.cfg:808
-#: data/core/terrain.cfg:821 data/core/terrain.cfg:836
-#: data/core/terrain.cfg:847
+#: data/core/terrain.cfg:681 data/core/terrain.cfg:692
+#: data/core/terrain.cfg:705 data/core/terrain.cfg:716
+#: data/core/terrain.cfg:729 data/core/terrain.cfg:740
+#: data/core/terrain.cfg:750 data/core/terrain.cfg:761
+#: data/core/terrain.cfg:772 data/core/terrain.cfg:783
+#: data/core/terrain.cfg:796 data/core/terrain.cfg:807
+#: data/core/terrain.cfg:820 data/core/terrain.cfg:835
+#: data/core/terrain.cfg:846
 msgid "Village"
 msgstr "村"
 
-#: data/core/terrain.cfg:862
+#: data/core/terrain.cfg:861
 msgid "Deep Water"
 msgstr "深水"
 
-#: data/core/terrain.cfg:872
+#: data/core/terrain.cfg:871
 msgid "Shallow Water"
 msgstr "浅瀬"
 
-#: data/core/terrain.cfg:882
+#: data/core/terrain.cfg:881
 msgid "River Ford"
 msgstr "川の浅瀬"
 
-#: data/core/terrain.cfg:897
+#: data/core/terrain.cfg:896
 msgid "Impassable Mountains"
 msgstr "通れない山"
 
-#: data/core/terrain.cfg:906
+#: data/core/terrain.cfg:905
 msgid "Impassable Desert Mountains"
 msgstr "通れない砂漠の山"
 
-#: data/core/terrain.cfg:916
+#: data/core/terrain.cfg:915
 msgid "Cave Wall"
 msgstr "洞窟の壁"
 
-#: data/core/terrain.cfg:925
+#: data/core/terrain.cfg:924
 msgid "Void"
 msgstr ""
 
@@ -280,7 +285,7 @@ msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
 #: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:100
-#: src/preferences_display.cpp:221
+#: src/preferences_display.cpp:225
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
@@ -1158,7 +1163,7 @@ msgstr "内陸"
 msgid "Island"
 msgstr "島"
 
-#: src/preferences_display.cpp:78 src/preferences_display.cpp:111
+#: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1168,39 +1173,39 @@ msgstr ""
 "ウィンドウマネージャを16ビット／ピクセルに設定しなければなりません。フルスク"
 "リーンで実行するには1024x768x16の画面をサポートしなければなりません。"
 
-#: src/preferences_display.cpp:225
+#: src/preferences_display.cpp:229
 msgid "Hotkey Settings"
 msgstr "ホットキーの設定"
 
-#: src/preferences_display.cpp:231 src/preferences_display.cpp:290
+#: src/preferences_display.cpp:235 src/preferences_display.cpp:294
 msgid "Press desired Hotkey"
 msgstr "希望のホットキーを押して下さい"
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:254
 msgid "Action"
 msgstr "動作"
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:254
 msgid "Binding"
 msgstr "割り当て"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:266
 msgid "Change Hotkey"
 msgstr "ホットキーの変更"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:269
 msgid "Save Hotkeys"
 msgstr "ホットキーを保存"
 
-#: src/preferences_display.cpp:317
+#: src/preferences_display.cpp:321
 msgid "This Hotkey is already in use."
 msgstr "このホットキーは既に使用されています。"
 
-#: src/preferences_display.cpp:385
+#: src/preferences_display.cpp:389
 msgid "There are no alternative video modes available"
 msgstr "変更可能な画面モードはありません"
 
-#: src/preferences_display.cpp:414
+#: src/preferences_display.cpp:418
 msgid "Choose Resolution"
 msgstr "解像度を選択して下さい"
 

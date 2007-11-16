@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-10 22:09+0100\n"
+"POT-Creation-Date: 2007-11-16 16:24+0100\n"
 "PO-Revision-Date: 2007-10-12 13:31+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -176,50 +176,55 @@ msgstr ""
 msgid "Mushroom Grove"
 msgstr "Colonia de Cogomelos"
 
-#: data/core/terrain.cfg:655
+#: data/core/terrain.cfg:644
+#, fuzzy
+msgid "Mushroom Grove Lit"
+msgstr "Colonia de Cogomelos"
+
+#: data/core/terrain.cfg:654
 msgid "Rockbound Cave"
 msgstr ""
 
-#: data/core/terrain.cfg:665
+#: data/core/terrain.cfg:664
 msgid "Rockbound Cave Lit"
 msgstr ""
 
-#: data/core/terrain.cfg:682 data/core/terrain.cfg:693
-#: data/core/terrain.cfg:706 data/core/terrain.cfg:717
-#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
-#: data/core/terrain.cfg:751 data/core/terrain.cfg:762
-#: data/core/terrain.cfg:773 data/core/terrain.cfg:784
-#: data/core/terrain.cfg:797 data/core/terrain.cfg:808
-#: data/core/terrain.cfg:821 data/core/terrain.cfg:836
-#: data/core/terrain.cfg:847
+#: data/core/terrain.cfg:681 data/core/terrain.cfg:692
+#: data/core/terrain.cfg:705 data/core/terrain.cfg:716
+#: data/core/terrain.cfg:729 data/core/terrain.cfg:740
+#: data/core/terrain.cfg:750 data/core/terrain.cfg:761
+#: data/core/terrain.cfg:772 data/core/terrain.cfg:783
+#: data/core/terrain.cfg:796 data/core/terrain.cfg:807
+#: data/core/terrain.cfg:820 data/core/terrain.cfg:835
+#: data/core/terrain.cfg:846
 msgid "Village"
 msgstr "Vila"
 
-#: data/core/terrain.cfg:862
+#: data/core/terrain.cfg:861
 msgid "Deep Water"
 msgstr "Auga Profunda"
 
-#: data/core/terrain.cfg:872
+#: data/core/terrain.cfg:871
 msgid "Shallow Water"
 msgstr "Auga Superficial"
 
-#: data/core/terrain.cfg:882
+#: data/core/terrain.cfg:881
 msgid "River Ford"
 msgstr "Vao nun Río"
 
-#: data/core/terrain.cfg:897
+#: data/core/terrain.cfg:896
 msgid "Impassable Mountains"
 msgstr "Montañas Infranqueables"
 
-#: data/core/terrain.cfg:906
+#: data/core/terrain.cfg:905
 msgid "Impassable Desert Mountains"
 msgstr "Montañas Desérticas Infranqueables"
 
-#: data/core/terrain.cfg:916
+#: data/core/terrain.cfg:915
 msgid "Cave Wall"
 msgstr "Parede de Cova"
 
-#: data/core/terrain.cfg:925
+#: data/core/terrain.cfg:924
 msgid "Void"
 msgstr ""
 
@@ -280,7 +285,7 @@ msgid "Map creation failed."
 msgstr "Fallou a creación do mapa."
 
 #: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:100
-#: src/preferences_display.cpp:221
+#: src/preferences_display.cpp:225
 msgid "Close Window"
 msgstr "Pechar Ventá"
 
@@ -1162,7 +1167,7 @@ msgstr "Interior"
 msgid "Island"
 msgstr "Illa"
 
-#: src/preferences_display.cpp:78 src/preferences_display.cpp:111
+#: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 #, fuzzy
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -1174,39 +1179,39 @@ msgstr ""
 "pantalla               debe soportar 1024x768x16 para poder executar o xogo "
 "a pantalla completa."
 
-#: src/preferences_display.cpp:225
+#: src/preferences_display.cpp:229
 msgid "Hotkey Settings"
 msgstr "Preferencias de Atallos de Teclado"
 
-#: src/preferences_display.cpp:231 src/preferences_display.cpp:290
+#: src/preferences_display.cpp:235 src/preferences_display.cpp:294
 msgid "Press desired Hotkey"
 msgstr "Prema as Teclas desexadas"
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:254
 msgid "Action"
 msgstr "Acción"
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:254
 msgid "Binding"
 msgstr "Combinación"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:266
 msgid "Change Hotkey"
 msgstr "Cambiar o Atallo de Teclado"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:269
 msgid "Save Hotkeys"
 msgstr "Gardar os Atallos de Teclado"
 
-#: src/preferences_display.cpp:317
+#: src/preferences_display.cpp:321
 msgid "This Hotkey is already in use."
 msgstr "Este Atallo de Teclado xa se está usando."
 
-#: src/preferences_display.cpp:385
+#: src/preferences_display.cpp:389
 msgid "There are no alternative video modes available"
 msgstr "Non hai dispoñibles modos de video alternativos"
 
-#: src/preferences_display.cpp:414
+#: src/preferences_display.cpp:418
 msgid "Choose Resolution"
 msgstr "Escoller Resolución"
 

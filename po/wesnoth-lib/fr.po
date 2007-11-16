@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-10 22:09+0100\n"
+"POT-Creation-Date: 2007-11-16 16:24+0100\n"
 "PO-Revision-Date: 2007-11-10 23:10+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -173,50 +173,55 @@ msgstr "Caverne éclairée"
 msgid "Mushroom Grove"
 msgstr "Forêt de champignons"
 
-#: data/core/terrain.cfg:655
+#: data/core/terrain.cfg:644
+#, fuzzy
+msgid "Mushroom Grove Lit"
+msgstr "Forêt de champignons"
+
+#: data/core/terrain.cfg:654
 msgid "Rockbound Cave"
 msgstr "Caverne accidentée"
 
-#: data/core/terrain.cfg:665
+#: data/core/terrain.cfg:664
 msgid "Rockbound Cave Lit"
 msgstr "Caverne accidentée éclairée"
 
-#: data/core/terrain.cfg:682 data/core/terrain.cfg:693
-#: data/core/terrain.cfg:706 data/core/terrain.cfg:717
-#: data/core/terrain.cfg:730 data/core/terrain.cfg:741
-#: data/core/terrain.cfg:751 data/core/terrain.cfg:762
-#: data/core/terrain.cfg:773 data/core/terrain.cfg:784
-#: data/core/terrain.cfg:797 data/core/terrain.cfg:808
-#: data/core/terrain.cfg:821 data/core/terrain.cfg:836
-#: data/core/terrain.cfg:847
+#: data/core/terrain.cfg:681 data/core/terrain.cfg:692
+#: data/core/terrain.cfg:705 data/core/terrain.cfg:716
+#: data/core/terrain.cfg:729 data/core/terrain.cfg:740
+#: data/core/terrain.cfg:750 data/core/terrain.cfg:761
+#: data/core/terrain.cfg:772 data/core/terrain.cfg:783
+#: data/core/terrain.cfg:796 data/core/terrain.cfg:807
+#: data/core/terrain.cfg:820 data/core/terrain.cfg:835
+#: data/core/terrain.cfg:846
 msgid "Village"
 msgstr "Village"
 
-#: data/core/terrain.cfg:862
+#: data/core/terrain.cfg:861
 msgid "Deep Water"
 msgstr "Eau profonde"
 
-#: data/core/terrain.cfg:872
+#: data/core/terrain.cfg:871
 msgid "Shallow Water"
 msgstr "Eau peu profonde"
 
-#: data/core/terrain.cfg:882
+#: data/core/terrain.cfg:881
 msgid "River Ford"
 msgstr "Gué"
 
-#: data/core/terrain.cfg:897
+#: data/core/terrain.cfg:896
 msgid "Impassable Mountains"
 msgstr "Montagnes infranchissables"
 
-#: data/core/terrain.cfg:906
+#: data/core/terrain.cfg:905
 msgid "Impassable Desert Mountains"
 msgstr "Montagnes désertiques infranchissables"
 
-#: data/core/terrain.cfg:916
+#: data/core/terrain.cfg:915
 msgid "Cave Wall"
 msgstr "Mur de caverne"
 
-#: data/core/terrain.cfg:925
+#: data/core/terrain.cfg:924
 msgid "Void"
 msgstr "Vide"
 
@@ -277,7 +282,7 @@ msgid "Map creation failed."
 msgstr "La création de la carte a échoué."
 
 #: src/editor/editor_dialogs.cpp:245 src/mapgen_dialog.cpp:100
-#: src/preferences_display.cpp:221
+#: src/preferences_display.cpp:225
 msgid "Close Window"
 msgstr "Fermer la fenêtre"
 
@@ -1166,7 +1171,7 @@ msgstr "Continental"
 msgid "Island"
 msgstr "Insulaire"
 
-#: src/preferences_display.cpp:78 src/preferences_display.cpp:111
+#: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -1177,39 +1182,39 @@ msgstr ""
 "Votre écran doit supporter une résolution de 1024x768x16 pour lancer le jeu "
 "en plein écran."
 
-#: src/preferences_display.cpp:225
+#: src/preferences_display.cpp:229
 msgid "Hotkey Settings"
 msgstr "Configuration des raccourcis clavier"
 
-#: src/preferences_display.cpp:231 src/preferences_display.cpp:290
+#: src/preferences_display.cpp:235 src/preferences_display.cpp:294
 msgid "Press desired Hotkey"
 msgstr "Pressez le raccourci désiré"
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:254
 msgid "Action"
 msgstr "Action"
 
-#: src/preferences_display.cpp:250
+#: src/preferences_display.cpp:254
 msgid "Binding"
 msgstr "Raccourci"
 
-#: src/preferences_display.cpp:262
+#: src/preferences_display.cpp:266
 msgid "Change Hotkey"
 msgstr "Modifier le raccourci"
 
-#: src/preferences_display.cpp:265
+#: src/preferences_display.cpp:269
 msgid "Save Hotkeys"
 msgstr "Sauver les raccourcis"
 
-#: src/preferences_display.cpp:317
+#: src/preferences_display.cpp:321
 msgid "This Hotkey is already in use."
 msgstr "Ce raccourci est déja utilisé."
 
-#: src/preferences_display.cpp:385
+#: src/preferences_display.cpp:389
 msgid "There are no alternative video modes available"
 msgstr "Il n'y a pas d'autres modes vidéo disponibles"
 
-#: src/preferences_display.cpp:414
+#: src/preferences_display.cpp:418
 msgid "Choose Resolution"
 msgstr "Choisissez une résolution"
 
