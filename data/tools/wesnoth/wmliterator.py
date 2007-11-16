@@ -60,7 +60,7 @@ def isDirective(elem):
     "Identify things that shouldn't be indented."
     if isinstance(elem, WmlIterator):
         elem = elem.element
-    for prefix in ("#ifdef", "#else", "#endif", "#define", "#enddef"):
+    for prefix in ("#ifdef", "#ifndef", "#else", "#endif", "#define", "#enddef"):
         if elem.startswith(prefix):
             return True
     return False
