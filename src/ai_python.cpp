@@ -54,6 +54,8 @@
 
 #include <fstream>
 
+#include <marshal.h>
+
 #define LOG_AI LOG_STREAM(info, ai)
 
 static python_ai* running_instance;
@@ -1587,14 +1589,33 @@ PyObject* python_ai::wrapper_unit_attack_statistics(wesnoth_unit* self, PyObject
 
 PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 {
-	char const *variable, *value;
-	if (!PyArg_ParseTuple(args, CC("ss"), &variable, &value))
+	char const *variable;
+	PyObject *value;
+	if (!PyArg_ParseTuple(args, CC("sO"), &variable, &value))
 		return NULL;
 	config const &old_memory = running_instance->current_team().ai_memory();
 	config new_memory(old_memory);
-	new_memory[variable] = value;
-	running_instance->current_team().set_ai_memory(new_memory);
+	PyObject *so = PyMarshal_WriteObjectToString(value, Py_MARSHAL_VERSION);
+	if (so)
+	{
+	    char *cs;
+        int len;
+	    PyString_AsStringAndSize(so, &cs, &len);
+	    std::string s;
+	    char const *digits[] = {
+	        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+	        "a", "b", "c", "d", "e", "f"};
+	    int i;
+	    for (i = 0; i < len; i++)
+	    {
+	        unsigned char x = cs[i];
+	        s += std::string(digits[x >> 4]) + std::string(digits[x & 15]);
+	    }
+	    new_memory[variable] = s;
+	    running_instance->current_team().set_ai_memory(new_memory);
 
+	    Py_DECREF(so);
+    }
 	Py_INCREF(Py_None);
 	return Py_None;
 }
@@ -1605,7 +1626,25 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	if (!PyArg_ParseTuple(args, STRINGVALUE, &variable))
 		return NULL;
 	config const &memory = running_instance->current_team().ai_memory();
-	return Py_BuildValue(STRINGVALUE, memory[variable].c_str());
+	char const *s = memory[variable].c_str();
+	if (s && s[0])
+	{
+	    int i;
+	    int len = strlen(s);
+	    char data[len / 2];
+	    for (i = 0; i < len; i += 2)
+	    {
+	        int v1 = s[i] - '0';
+	        int v2 = s[i + 1] - '0';
+	        if (v1 > 9) v1 += 10 + '0' - 'a';
+	        if (v2 > 9) v2 += 10 + '0' - 'a';
+	        char c = v1 * 16 + v2;
+	        data[i / 2] = c;
+	    }
+        return PyMarshal_ReadObjectFromString(data, len / 2);
+    }
+    Py_INCREF(Py_None);
+	return Py_None;
 }
 
 PyObject* python_ai::wrapper_get_version(PyObject* /*self*/, PyObject* args)
@@ -1677,12 +1716,13 @@ static PyMethodDef wesnoth_python_methods[] = {
     MDEF("set_variable", python_ai::wrapper_set_variable,
 		"Parameters: variable, value\n"
 		"Sets a persistent variable 'variable' to 'value'. This can be "
-		"used to make the AI save strings over multiple turns.")
+		"used to make the AI save strings (and other python values which can "
+		"be marshalled) over multiple turns.")
     MDEF("get_variable", python_ai::wrapper_get_variable,
 		"Parameters: variable\n"
 		"Returns: value\n"
 		"Retrieves a persistent variable 'variable' from the AI, which has "
-		"previously been set with set_variable.")
+		"previously been set with set_variable - or None if it can't be found.")
     MDEF("get_version", python_ai::wrapper_get_version,
 		"Returns a string containing current Wesnoth version")
 		{ NULL, NULL, 0, NULL}
