@@ -342,11 +342,9 @@ void server::run() {
 			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
 		} catch(network::error& e) {
 			if (!e.socket) {
-				// "Could not send initial handshake" really fatal?
-				ERR_SERVER << "fatal network error: " << e.message << "\n";
-				exit(1);
-				throw;
-				break;
+				ERR_SERVER << "network error: " << e.message << "\n";
+				e.disconnect();
+				continue;
 			}
 			DBG_SERVER << "socket closed: " << e.message << "\n";
 			const std::string ip = network::ip_address(e.socket);
@@ -419,6 +417,10 @@ void server::run() {
 			players_.erase(pl_it);
 			e.disconnect();
 			DBG_SERVER << "done closing socket...\n";
+		// In case we miss to catch an error somewhere, don't die.
+		} catch(...) {
+			ERR_SERVER << "Caught unknown error while server was running. Continuing.\n";
+			continue;
 		}
 	}
 }
