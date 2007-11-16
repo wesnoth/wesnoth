@@ -1778,7 +1778,10 @@ bool clear_shroud_unit(const gamemap& map,
 		if(sighted != units.end() &&
 		  (sighted->second.invisible(*it,units,teams) == false
 		  || teams[team].is_enemy(sighted->second.side()) == false)) {
-			if(!(seen_units == NULL || known_units == NULL) && known_units->count(*it) == 0) {
+			//check if we know this unit, but we always know oursefl
+			//just in case we managed to move on a fogged hex (teleport)
+			if(!(seen_units == NULL || known_units == NULL)
+					&& known_units->count(*it) == 0 && *it != loc) {
 				if (!utils::string_bool(sighted->second.get_state("stoned")))
 				{
 					seen_units->insert(*it);
@@ -1906,7 +1909,10 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		// in which case we should stop immediately.
 		// Cannot use check shroud, because also need to check if delay shroud is on.
 		if(should_clear_shroud && (team.uses_shroud() || team.uses_fog())) {
-			if(units.count(*step) == 0 && !map.is_village(*step)) {
+			//we don't want to interrupt our move when we are on an other unit
+			//or a uncaptured village (except if it was our plan to end there)
+			if( units.count(*step) == 0 &&
+				(!map.is_village(*step) || team.owns_village(*step) || step+1==route.end()) ) {
 				LOG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
 				// Temporarily reset the unit's moves to full
