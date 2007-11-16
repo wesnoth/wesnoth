@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-10 22:09+0100\n"
-"PO-Revision-Date: 2007-10-09 22:30+0100\n"
+"PO-Revision-Date: 2007-10-12 13:31+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/core/terrain.cfg:13
+#, fuzzy
 msgid "None"
-msgstr ""
+msgstr "Nada"
 
 #: data/core/terrain.cfg:20
 msgid "Shroud"
-msgstr ""
+msgstr "Manto do descoñecido"
 
 #: data/core/terrain.cfg:27
 msgid "Fog"
@@ -61,7 +62,7 @@ msgstr "Ruina"
 
 #: data/core/terrain.cfg:202
 msgid "Sunken Ruin"
-msgstr ""
+msgstr "Ruína Sumerxida"
 
 #: data/core/terrain.cfg:214
 msgid "Swamp Ruin"
@@ -136,7 +137,7 @@ msgstr "Montañas"
 
 #: data/core/terrain.cfg:513
 msgid "Chasm"
-msgstr ""
+msgstr "Abismo"
 
 #: data/core/terrain.cfg:521
 msgid "Lava chasm"
@@ -212,7 +213,7 @@ msgstr "Montañas Infranqueables"
 
 #: data/core/terrain.cfg:906
 msgid "Impassable Desert Mountains"
-msgstr ""
+msgstr "Montañas Desérticas Infranqueables"
 
 #: data/core/terrain.cfg:916
 msgid "Cave Wall"
@@ -408,7 +409,7 @@ msgstr "Lista de Amigos"
 
 #: src/game_preferences_display.cpp:171
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "Opcións Multixogador"
 
 #: src/game_preferences_display.cpp:172
 msgid "Add As Friend"
@@ -416,7 +417,7 @@ msgstr "Engadir Coma Amigo"
 
 #: src/game_preferences_display.cpp:173
 msgid "Add As Ignore"
-msgstr ""
+msgstr "Engadir Coma Ignorado"
 
 #: src/game_preferences_display.cpp:174
 msgid "Remove"
@@ -514,9 +515,8 @@ msgid "UI Sound Volume:"
 msgstr "Volume do Son da IU:"
 
 #: src/game_preferences_display.cpp:201
-#, fuzzy
 msgid "Bell Volume:"
-msgstr "Volume SFX:"
+msgstr "Volume da Campá:"
 
 #: src/game_preferences_display.cpp:202
 msgid "Gamma:"
@@ -547,9 +547,8 @@ msgid "Change the music volume"
 msgstr "Cambiar o volume da música"
 
 #: src/game_preferences_display.cpp:246
-#, fuzzy
 msgid "Change the bell volume"
-msgstr "Cambiar o volume da música"
+msgstr "Cambiar o volume da campá"
 
 #: src/game_preferences_display.cpp:249
 msgid "Turn menu and button sounds on/off"
@@ -600,14 +599,12 @@ msgid "Make units move and fight faster"
 msgstr "Fai que as unidades se movan e loiten máis rápido"
 
 #: src/game_preferences_display.cpp:321
-#, fuzzy
 msgid "Units move and fight speed"
-msgstr "Fai que as unidades se movan e loiten máis rápido"
+msgstr "As unidades móvense e loiten máis rápido"
 
 #: src/game_preferences_display.cpp:324
-#, fuzzy
 msgid "Show unit idle animations"
-msgstr "Saltar a animación"
+msgstr ""
 
 #: src/game_preferences_display.cpp:330
 msgid "Set the frequency of unit idle animations"
@@ -626,8 +623,11 @@ msgid "Save replays on SP victory or SP/MP defeat."
 msgstr ""
 
 #: src/game_preferences_display.cpp:345
+#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
 msgstr ""
+"Eliminar automáticamente ó rematar un escenario as partidas gardadas "
+"automáticamente"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -655,7 +655,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Ver e editar a túa lista de amigos e ignorados"
 
 #: src/game_preferences_display.cpp:363
 msgid "Back to the multiplayer options"
@@ -667,7 +667,7 @@ msgstr "Engadir este nome de usuario á súa lista de amigos"
 
 #: src/game_preferences_display.cpp:365
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Engadir este nome de usuario á túa lista de ignorados"
 
 #: src/game_preferences_display.cpp:366
 msgid "Remove this username from your list"
@@ -919,15 +919,15 @@ msgstr "Saír da partida"
 
 #: src/hotkeys.cpp:85
 msgid "Set Team Label"
-msgstr ""
+msgstr "Establecer Etiqueta de Equipo"
 
 #: src/hotkeys.cpp:86
 msgid "Set Label"
-msgstr ""
+msgstr "Establecer Etiqueta"
 
 #: src/hotkeys.cpp:87
 msgid "Clear Labels"
-msgstr ""
+msgstr "Limpar Etiquetas"
 
 #: src/hotkeys.cpp:88
 msgid "Show Enemy Moves"
@@ -943,7 +943,7 @@ msgstr "Reproducir"
 
 #: src/hotkeys.cpp:91
 msgid "Reset"
-msgstr ""
+msgstr "Restablecer"
 
 #: src/hotkeys.cpp:92
 msgid "Stop"
@@ -959,11 +959,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:96
 msgid "Full map"
-msgstr ""
+msgstr "Mapa completo"
 
 #: src/hotkeys.cpp:98
 msgid "Each team"
-msgstr ""
+msgstr "Cada equipo"
 
 #: src/hotkeys.cpp:100
 msgid "Team 1"
@@ -1011,7 +1011,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:112
 msgid "Rotate Selection"
-msgstr ""
+msgstr "Rotar a Selección"
 
 #: src/hotkeys.cpp:113
 msgid "Cut"
@@ -1031,7 +1031,7 @@ msgstr "Recuperar do Disco"
 
 #: src/hotkeys.cpp:118
 msgid "Flip Map"
-msgstr ""
+msgstr "Virar o Mapa"
 
 #: src/hotkeys.cpp:119
 msgid "Select All"
@@ -1046,12 +1046,13 @@ msgid "Refresh Image Cache"
 msgstr "Actualizar a Caché de Imaxes"
 
 #: src/hotkeys.cpp:122
+#, fuzzy
 msgid "Delay transition updates"
-msgstr ""
+msgstr "Retrasar as actualizacións de transición"
 
 #: src/hotkeys.cpp:123
 msgid "Update transitions"
-msgstr ""
+msgstr "Actualizar as transicións"
 
 #: src/hotkeys.cpp:125
 msgid "Delay Shroud Updates"
@@ -1067,7 +1068,7 @@ msgstr "Continuar o Movemento"
 
 #: src/hotkeys.cpp:128
 msgid "Find Label or Unit"
-msgstr ""
+msgstr "Buscar Etiqueta ou Unidade"
 
 #: src/hotkeys.cpp:129
 msgid "Speak to Ally"
@@ -1095,7 +1096,7 @@ msgstr "Introducir comando de usuario"
 
 #: src/hotkeys.cpp:136
 msgid "Clear messages"
-msgstr ""
+msgstr "Limpar as mensaxes"
 
 #: src/hotkeys.cpp:138
 msgid "User-Command#2"
@@ -1162,11 +1163,16 @@ msgid "Island"
 msgstr "Illa"
 
 #: src/preferences_display.cpp:78 src/preferences_display.cpp:111
+#, fuzzy
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+"Non se pode cambiar o modo de vídeo. O teu xestor de ventás debe estar "
+"configurado con 16 bits por píxel para executar o xogo nunha ventá. A túa "
+"pantalla               debe soportar 1024x768x16 para poder executar o xogo "
+"a pantalla completa."
 
 #: src/preferences_display.cpp:225
 msgid "Hotkey Settings"
@@ -1212,18 +1218,14 @@ msgstr "Erro"
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 
-#, fuzzy
-#~ msgid "Save Replays"
-#~ msgstr "Gardar os Atallos de Teclado"
-
-#~ msgid "Save replays at scenario end."
-#~ msgstr "Gardar reproducións ó rematar o escenario."
-
 #~ msgid "Advanced Mode"
 #~ msgstr "Modo Avanzado"
 
 #~ msgid "Normal Mode"
 #~ msgstr "Modo Normal"
+
+#~ msgid "Save replays at scenario end."
+#~ msgstr "Gardar reproducións ó rematar o escenario."
 
 #~ msgid "Elven Castle"
 #~ msgstr "Castelo dos Elfos"

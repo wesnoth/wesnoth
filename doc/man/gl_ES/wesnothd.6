@@ -31,22 +31,27 @@ wesnothd \- Daemon de rede multixogador de Battle for \fBWesnoth\fP
 .
 .SH DESCRICIÓN
 .
-Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client or the socket.
+Administra partidas multixogador de Battle for Wesnoth. Consulte
+http://www.wesnoth.org/wiki/ServerAdministration para ver os comandos que
+acepta o servidor a través do cliente wesnoth ou do socket.
 .
 .SH OPCIÓNS
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ ruta\fP
-dille a wesnothd onde atopar o ficheiro de configuración a usar. Consulta a
-sección \fBCONFIGURACIÓN DO SERVIDOR\fP embaixo para ver a sintaxe.
+tells wesnothd where to find the config file to use. See the section
+\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
+sending SIGHUP to the server process.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 executa wesnothd coma un daemon.
 .TP 
 \fB\-h,\ \-\-help\fP
 diche que fan as opcións de liña de comandos.
+.TP 
+\fB\-\-log\-<level>="domain1,domain2,..."\fP
+sets the severity level of the debug domains. "all" can be used to match any
+debug domain. Available levels: error, warning, info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ porto\fP
 asocia o servidor ó porto especificado. Se non se especifica un porto,
@@ -120,7 +125,7 @@ to.
 .RS
 .TP 
 \fBhost\fP
-The address of the server to redirect to.
+O enderezo do servidor ó que se redirixe.
 .TP 
 \fBport\fP
 O porto ó que se conectar.

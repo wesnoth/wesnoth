@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-09 20:27+0100\n"
-"PO-Revision-Date: 2007-10-09 22:30+0100\n"
+"PO-Revision-Date: 2007-10-12 13:20+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "bosque"
 
 #: data/core/editor-groups.cfg:47
 msgid "frozen"
-msgstr ""
+msgstr "conxelado"
 
 #: data/core/editor-groups.cfg:53
 msgid "rough"
@@ -74,7 +74,7 @@ msgstr "Preferencias"
 
 #: src/editor/editor.cpp:233
 msgid "Draw tiles"
-msgstr ""
+msgstr "Debuxar hexágonos"
 
 #: src/editor/editor.cpp:235
 msgid "Fill"
@@ -113,17 +113,17 @@ msgid "Resize the map"
 msgstr "Redimensionar o mapa"
 
 #: src/editor/editor.cpp:253
-#, fuzzy
 msgid "Flip map"
 msgstr "Virar o mapa"
 
 #: src/editor/editor.cpp:255
 msgid "Update transitions"
-msgstr ""
+msgstr "Actualizar as transicións"
 
 #: src/editor/editor.cpp:257
+#, fuzzy
 msgid "Delay transition updates"
-msgstr ""
+msgstr "Retrasar as actualizacións das transicións"
 
 #: src/editor/editor.cpp:467
 msgid "Language"
@@ -147,7 +147,7 @@ msgstr "O mapa xa existe. Desexa sobrescribilo?"
 
 #: src/editor/editor.cpp:543
 msgid "None"
-msgstr ""
+msgstr "Ningún"
 
 #: src/editor/editor.cpp:548 src/editor/editor.cpp:1424
 msgid "Player"
@@ -207,11 +207,15 @@ msgstr ""
 
 #: src/editor/map_manip.cpp:205 src/editor/map_manip.cpp:219
 #: src/editor/map_manip.cpp:266 src/editor/map_manip.cpp:282
+#, fuzzy
 msgid ""
 "Can't resize the map, the requested size is bigger than the maximum, size="
 msgstr ""
+"Non se puido redimensionar o mapa, o tamaño solicitado é maior có máximo, "
+"size="
 
 #: src/editor/map_manip.cpp:206 src/editor/map_manip.cpp:220
 #: src/editor/map_manip.cpp:267 src/editor/map_manip.cpp:283
+#, fuzzy
 msgid " maximum="
-msgstr ""
+msgstr " maximum="

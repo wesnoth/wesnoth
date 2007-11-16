@@ -1,4 +1,3 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Galician translations for Battle for Wesnoth package.
 # Copyright (C) 2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -12,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-10 22:09+0100\n"
-"PO-Revision-Date: 2007-10-10 20:49+0100\n"
+"PO-Revision-Date: 2007-11-05 14:53+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -636,6 +635,11 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
+"Cada unidade ten un certo número de puntos de vida (Hitpoints ou HP). Se os "
+"puntos de vida dunha unidade baixan de 1, a unidade morre. Cada unidade ten "
+"tamén un certo número de puntos de experiencia (experience point ou XP). "
+"Unha unidade acabada de recrutar comeza sen puntos de experiencia, e "
+"consigue experiencia loitando contra inimigos."
 
 #: data/core/help.cfg:141
 msgid ""
@@ -643,6 +647,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"Os puntos de vida e os puntos de experiencia indícanse no panel de estado "
+"usando dous números (o valor actual e o valor máximo que a unidade pode ter)."
 
 #: data/core/help.cfg:142
 msgid ""
@@ -651,6 +657,11 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst=experience_and_advancement text=advance</ref>."
 msgstr ""
+"Os puntos de vida indícanse tamén usando unha barra de enerxía preto de cada "
+"unidade, que é verde, amarela ou vermella. Unha unidade con alomenos 1 punto "
+"de experiencia ten unha barra de experiencia azul, que se pon branca cando a "
+"unidade está a piques de <ref>dst=experience_and_advancement text=avanzar</"
+"ref>."
 
 #: data/core/help.cfg:147
 msgid "Movement"
@@ -1100,7 +1111,7 @@ msgstr ""
 "\n"
 "As unidades teñen unha certa cantidade de experiencia necesaria para avanzar "
 "(isto é un 20% menos para as unidades co trazo intelixente). Unha vez que "
-"acadan esta cantidade, avanzan inmediatamente ó seguinte nivel, sanando "
+"acadan esta cantidade, avanzan inmediatamente ó seguinte nivel, sandando "
 "totalmente no proceso. Nalgúns casos, daráseche a escoller entre varias "
 "opcións de avance."
 
@@ -1144,7 +1155,7 @@ msgstr ""
 
 #: data/core/help.cfg:232
 msgid "Healing"
-msgstr "Sanación"
+msgstr "Sandación"
 
 #: data/core/help.cfg:233
 msgid ""
@@ -1155,7 +1166,7 @@ msgid ""
 "take place at the beginning of your turn, before you take action."
 msgstr ""
 "No combate, as túas unidades sufrirán danos inevitablemente. Cando unha "
-"unidade <ref>dst=experience_and_advancement text=avance</ref>, sanará "
+"unidade <ref>dst=experience_and_advancement text=avance</ref>, sandará "
 "completamente. Isto pode ocorrer cando remate de loitar cun inimigo, sexa o "
 "teu turno ou non. Wesnoth ofrece varios xeitos para que as túas unidades "
 "sanen, tendo lugar todas elas ó comezo do teu turno, antes de que fagas nada."
@@ -1169,7 +1180,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Descanso: Unha unidade que nin se move, nin ataca, nin é atacada sanará 2HP "
+"Descanso: Unha unidade que nin se move, nin ataca, nin é atacada sandará 2HP "
 "no seu seguinte turno."
 
 #: data/core/help.cfg:236
@@ -1178,7 +1189,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Vilas: Unha unidade que comeza o seu turno nunha vila sanará 8HP."
+"Vilas: Unha unidade que comeza o seu turno nunha vila sandará 8HP."
 
 #: data/core/help.cfg:237
 msgid ""
@@ -1188,7 +1199,7 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst=ability_regenerates text=Rexeneración</ref>: Certas unidades (coma "
-"os Trolls) sanan automaticamente 8HP cada turno."
+"os Trolls) sandan automaticamente 8HP cada turno."
 
 #: data/core/help.cfg:238
 msgid ""
@@ -1198,9 +1209,9 @@ msgid ""
 "prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Unidades sanadoras: As unidades ca capacidade de <ref>dst=ability_heals "
-"text=Sanar</ref> sanarán a calquera unidade aliada adxacente, normalmente en "
-"4 ou 8HP por turno, ou evitarán que o Veleno lles faga dano ás unidades."
+"Unidades sandadoras: As unidades ca capacidade de <ref>dst=ability_heals "
+"text=Sandar</ref> sandarán a calquera unidade aliada adxacente, normalmente "
+"en 4 ou 8HP por turno, ou evitarán que o Veleno lles faga dano ás unidades."
 
 #: data/core/help.cfg:239
 msgid ""
@@ -1212,7 +1223,7 @@ msgstr ""
 "\n"
 "Unidades curadoras: As unidades ca capacidade de <ref>dst=ability_cures "
 "text=Curación</ref> curarán o Veleno en tódalas unidades aliadas adxacentes "
-"(en vez de sanar, se tamén tivera esa capacidade)."
+"(en vez de sandar, se tamén tivera esa capacidade)."
 
 #: data/core/help.cfg:241
 msgid ""
@@ -1224,9 +1235,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"O descanso pódese combinar con outros xeitos de sanar, pero as vilas, a "
-"rexeneración, a sanación e a curación non se poden combinar entre elas: "
-"usarase a mellor opción. Por último as unidades sanan totalmente entre os "
+"O descanso pódese combinar con outros xeitos de sandar, pero as vilas, a "
+"rexeneración, a sandación e a curación non se poden combinar entre elas: "
+"usarase a mellor opción. Por último as unidades sandan totalmente entre os "
 "escenarios."
 
 #: data/core/help.cfg:246
@@ -1299,6 +1310,7 @@ msgstr ""
 "recibirias serían 10 de ouro por turno."
 
 #: data/core/help.cfg:254
+#, fuzzy
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1308,6 +1320,13 @@ msgid ""
 "trait. The unit you are playing (such as Konrad) will almost always be a "
 "leader."
 msgstr ""
+"\n"
+"Hai dúas excepcións importantes ó Mantemento: as unidades con trazo Leal e "
+"os líderes nunca precisan mantemento. As unidades cas que comezas un "
+"escenario (coma Delfador), ou as unidades que se unen a ti durante un "
+"escenario (coma o            Horseman          do segundo escenario de "
+"Herdeiro ó Trono) normalmente terán o trazo Leal. A unidade ca que estás "
+"xogando (coma Konrad) será case sempre un líder."
 
 #: data/core/help.cfg:259
 msgid "Wrap Up"
@@ -1338,6 +1357,11 @@ msgid ""
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
+"A maioría das unidades teñen dous trazos. Ainda así, as unidades Non Mortas "
+"só teñen asignado o trazo 'Non Morto', e os Woses non teñen ningún trazo. Os "
+"trazos son modificacións que cambian lixeiramente os atributos dunha "
+"unidade. Normalmente asígnanse de xeito aleatorio a unha unidade cando está "
+"se recruta."
 
 #: data/core/help.cfg:280
 msgid ""
@@ -1389,6 +1413,14 @@ msgid ""
 "significant a change as advancing a level. If you have many 'maximum level' "
 "units you may wish to recall units with more desirable traits."
 msgstr ""
+"\n"
+"\n"
+"As unidades intelixentes son moi útiles ó comezo dunha campaña xa que poden "
+"avanzar a niveis superiores máis rápido. Ó avanzar nas campañas as unidades "
+"Intelixentes non son tan útiles xa que o Avance Posterior ó Nivel Máximo "
+"(AMLA) non é un cambio tan significativo coma avanzar un nivel. Se tes "
+"moitas unidades de 'nivel máximo' pode que desexes volver chamar unidades "
+"con trazos máis desexables."
 
 #: data/core/help.cfg:295
 msgid "Quick"
@@ -1397,6 +1429,8 @@ msgstr "Rápido"
 #: data/core/help.cfg:296
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
+"As unidades rápidas teñen 1 punto de movemento a maiores, pero un 5% menos "
+"HP do normal."
 
 #: data/core/help.cfg:298
 msgid ""
@@ -1417,6 +1451,7 @@ msgstr "Resistente"
 #: data/core/help.cfg:304
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
+"As unidades resistentes teñen 4 HP máis 1 HP por nivel a maiores do normal."
 
 #: data/core/help.cfg:306
 #, fuzzy
@@ -1447,6 +1482,8 @@ msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
 msgstr ""
+"As unidades fortes inflixen 1 máis de dano en cada golpe que acade ó inimigo "
+"nun combate corpo a corpo, e teñen 1 HP a maiores."
 
 #: data/core/help.cfg:314
 msgid ""
@@ -1534,12 +1571,16 @@ msgid "trait^Mechanical"
 msgstr "Mecánico"
 
 #: data/core/help.cfg:342
+#, fuzzy
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
+"As unidades mecánicas son inmunes ó veleno, e            tampouco funcionan "
+"con eles."
 
 #: data/core/help.cfg:344
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1547,6 +1588,12 @@ msgid ""
 "mechanical units don't really have life, drain, poison and plague has no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"As unidades mecánicas normalmente teñen 'Mecánico' coma o seu único trazo. "
+"Xa que as unidades mecánicas en realidade non teñen vida,           "
+"drain,     veleno e      poison and plague                non teñen efecto "
+"nelas."
 
 #: data/core/help.cfg:349
 msgid "Dextrous"
@@ -1728,7 +1775,6 @@ msgid "Swamp"
 msgstr "Braña"
 
 #: data/core/help.cfg:420
-#, fuzzy
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1739,19 +1785,21 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, Naga, and Saurians "
 "all generally enjoy 60%."
 msgstr ""
-"As brañas representarn calquera tipo de terras húmidas. As brañas fan ir "
-"máis lento a case todos, e inhiben a súa capacidade de defensa. Unha "
-"excepción a isto é calquera das razas con corpo afeito a moverse pola auga; "
-"estes teñen liberdade de movemento e un plus de defensa. Aqueles que viven "
-"nas terras húmidas soen usar este terreo coma abeiro.\n"
+"As brañas representan calquera tipo de terras húmidas. As brañas fan ir máis "
+"lento a case todos, e inhiben a súa capacidade de defensa. Unha excepción a "
+"isto é calquera das razas con corpo afeito a moverse pola auga; estes teñen "
+"liberdade de movemento e un plus de defensa. Aqueles que viven nas terras "
+"húmidas soen usar este terreo coma abeiro.\n"
 "\n"
-"A maioría das unidades teñen un 30% de defensa nas brañas.   "
+"A maioría das unidades teñen un 30% de defensa nas brañas. Os sirénidos, os "
+"Naga e os Saurios normalmente gozan do 60%."
 
 #: data/core/help.cfg:425
 msgid "Shallow Water"
 msgstr "Auga Superficial"
 
 #: data/core/help.cfg:430
+#, fuzzy
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1763,12 +1811,23 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "Naga and Mermen enjoy 60%."
 msgstr ""
+"A auga superficial representa calquera porción          de auga o "
+"suficientemente profunda     coma para cubrir como moito ata o peito dun "
+"home        . Isto é dabondo para ralentizar a case todos e "
+"deixalos            desprotexidos.         Os ananos, dado que a "
+"auga          lles chega case ata a cabeza       . A excepción a isto é "
+"calquera raza con corpo      para nadar, polo que teñen un plus de defensa "
+"considerable e liberdade total de movemento.\n"
+"\n"
+"A maioría das unidades teñen entre un 20 e un 30% de defensa nas augas "
+"superficiais, onde tanto os Naga coma os Sirénidos gozan dun 60%."
 
 #: data/core/help.cfg:435
 msgid "Deep Water"
 msgstr "Auga Profunda"
 
 #: data/core/help.cfg:440
+#, fuzzy
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1776,6 +1835,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"A auga profunda representa calquera porción           de auga profunda "
+"dabondo para cubrir a cabeza dun home. A maioría das unidades no poden "
+"entrar na auga profunda: é o dominio das unidades que ou poden voar, ou "
+"nadadores excepcionais.\n"
+"\n"
+"Os Sirénidos e os Naga teñen un 50% de defensa na auga profunda, con total "
+"liberdade de movemento."
 
 #: data/core/help.cfg:445
 msgid "Snow"
@@ -2126,25 +2192,30 @@ msgid "Impassable Mountain"
 msgstr "Montaña Infranqueable"
 
 #: data/core/help.cfg:606
+#, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
 "creatures cannot navigate the jagged peaks at such rarified heights."
 msgstr ""
+"As montañas infranqueables son tan altas e           que están "
+"constantemente          cubertas polas nubes.            Cruzar estas "
+"montañas é practicamente imposible. Ata as criaturas voadoras non "
+"poden             os picos a tan grandes         alturas."
 
 #: data/core/help.cfg:611
 msgid "General commands"
 msgstr "Comandos Xerais"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Limpar as mensaxes da conversa."
+"Limpar as mensaxes da conversa.\n"
+"\n"
 
 #: data/core/help.cfg:618
 msgid ""
@@ -2224,12 +2295,17 @@ msgid "Multiplayer commands"
 msgstr "Comandos multixogador"
 
 #: data/core/help.cfg:646
+#, fuzzy
 msgid ""
 "\n"
 "Ban a user in multiplayer by the IP address used by that username and kick "
 "him.\n"
 "\n"
 msgstr ""
+"\n"
+"Expulsar e vedar a un usuario en multixogador, e mailo enderezo IP que usaba "
+"ese nome de usuario.\n"
+"\n"
 
 #: data/core/help.cfg:649
 msgid ""
@@ -2247,6 +2323,11 @@ msgid ""
 "difficulties.\n"
 "\n"
 msgstr ""
+"\n"
+"Expulsar a un xogador en multixogador. Poderase volver unir á partida. "
+"Normalmente é unha forma de eliminar a alguén que ten problemas ca conexión "
+"ou outras dificultades.\n"
+"\n"
 
 #: data/core/help.cfg:655
 msgid ""
@@ -2264,7 +2345,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr "sana +4"
+msgstr "sanda +4"
 
 #: data/core/macros/abilities.cfg:15
 msgid ""
@@ -2277,18 +2358,18 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Sana +4:\n"
-"Permite ás unidades sanar ás unidades amigas adxacentes ó comezo de cada "
+"Sanda +4:\n"
+"Permite ás unidades sandar ás unidades amigas adxacentes ó comezo de cada "
 "turno. \n"
 "\n"
-"A unidade á que sanan recupera ata 4 HP por turno, ou parar os efectos do "
+"A unidade á que sandan recupera ata 4 HP por turno, ou parar os efectos do "
 "veleno nese turno.\n"
-"Un sanador non pode curar a unha unidade envelenada, e esta debe buscar os "
+"Un sandador non pode curar a unha unidade envelenada, e esta debe buscar os "
 "coidados dunha vila ou dunha unidade que poida curalo."
 
 #: data/core/macros/abilities.cfg:29
 msgid "heals +8"
-msgstr "sana +8"
+msgstr "sanda +8"
 
 #: data/core/macros/abilities.cfg:34
 msgid ""
@@ -2301,13 +2382,13 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Sana +8:\n"
-"Esta unidade combina remedios de herbas con maxia para sanar unidades máis "
+"Sanda +8:\n"
+"Esta unidade combina remedios de herbas con maxia para sandar unidades máis "
 "rápido do normal na batalla.\n"
 "\n"
-"A unidade coidada por este sanador pode sanar ata 8 HP por turno, ou parar o "
-"efecto do veleno durante ese turno.\n"
-"Un sanador non pode curar a unha unidade envelenada, e esta debe buscar os "
+"A unidade coidada por este sandador pode sandar ata 8 HP por turno, ou parar "
+"o efecto do veleno durante ese turno.\n"
+"Un sandador non pode curar a unha unidade envelenada, e esta debe buscar os "
 "coidados dunha vila ou dunha unidade que poida curalo."
 
 #: data/core/macros/abilities.cfg:49
@@ -2322,7 +2403,7 @@ msgid ""
 msgstr ""
 "Cura:\n"
 "Un curador pode curar ás unidades envelenadas, ainda que esas unidades non "
-"recibirán máis sanación no turno no que as curan do veleno."
+"recibirán máis sandación no turno no que as curan do veleno."
 
 #: data/core/macros/abilities.cfg:73
 msgid "regenerates"
@@ -2336,7 +2417,7 @@ msgid ""
 msgstr ""
 "Rexeneración:\n"
 "A unidade sánase a si mesma 8 HP por turno. Se está envelenada, pode "
-"eliminar o veleno en vez de sanarse."
+"eliminar o veleno en vez de sandarse."
 
 #: data/core/macros/abilities.cfg:92
 msgid "steadfast"
@@ -2383,7 +2464,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:335
 #, fuzzy
 msgid "skirmisher"
-msgstr "hostigar"
+msgstr "hostigar   FUSTRIGAR"
 
 #: data/core/macros/abilities.cfg:337
 #, fuzzy
@@ -2616,19 +2697,17 @@ msgstr ""
 "non pode moverse ou atacar."
 
 #: data/core/macros/abilities.cfg:545
-#, fuzzy
 msgid "marksman"
 msgstr "tirador"
 
 #: data/core/macros/abilities.cfg:547
-#, fuzzy
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Tirador:\n"
-"Cando se usa ofensivamente, este ataque sempre un 60% de posibilidades como "
-"mínimo de darlle."
+"Cando se usa de forma ofensiva, este ataque sempre ten como mínimo un 60% de "
+"posibilidades de acadar."
 
 #: data/core/macros/abilities.cfg:559
 msgid "magical"
@@ -2676,7 +2755,7 @@ msgid ""
 msgstr ""
 "Carga:\n"
 "Este ataque produce o dobre de dano no obxectivo. Isto tamén fai que a "
-"unidade reciba o dobre de dano do contraataque do obxectivo."
+"unidade reciba o dobre de dano no contraataque do obxectivo."
 
 #: data/core/macros/abilities.cfg:597
 #, fuzzy
@@ -2711,7 +2790,6 @@ msgid "poison"
 msgstr "veleno"
 
 #: data/core/macros/abilities.cfg:621
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2719,8 +2797,9 @@ msgid ""
 "a unit."
 msgstr ""
 "Veleno:\n"
-"Este ataque envelena ó obxectivo. As unidades envelenadas perden 8 HP cada "
-"turno ata que as curan ou cheguen a ter só 1HP."
+"Este ataque envelena ós obxectivos vivos. As unidades envelenadas perden 8 "
+"HP cada turno ata que se curan ou cheguen a ter só 1 HP. O veleno por si só "
+"non pode matar unha unidade."
 
 #: data/core/macros/amla.cfg:10
 #, fuzzy
@@ -2734,7 +2813,7 @@ msgstr "Max HP bonus +"
 
 #: data/core/macros/amla.cfg:30
 msgid "Full Heal"
-msgstr "Sanación Total"
+msgstr "Sandación Total"
 
 #: data/core/macros/items.cfg:265
 msgid ""
@@ -2824,11 +2903,12 @@ msgstr ""
 
 #: data/core/macros/items.cfg:533
 msgid "Ring of Regeneration"
-msgstr ""
+msgstr "Anel de Rexeneración"
 
 #: data/core/macros/items.cfg:536
+#, fuzzy
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "Este anel sanará ó portador       un pouco cada turno."
 
 #: data/core/macros/items.cfg:573
 msgid "Ring of Slowness"
@@ -2860,7 +2940,7 @@ msgstr ""
 
 #: data/core/macros/items.cfg:653
 msgid "Only the mermen can use this item!"
-msgstr ""
+msgstr "Só os sirénidos poden usar este elemento!"
 
 #: data/core/macros/items.cfg:666
 msgid "storm trident"
@@ -3807,28 +3887,38 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:30
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " A iluminación incrementa o nivel de luz en áreas adxacentes."
 
 #: data/core/macros/special-notes.cfg:33
 msgid ""
 " This unit can teleport between any two villages instantly, though the "
 "player must control both, and the destination village must be unoccupied."
 msgstr ""
+" Esta unidade pode teletransportar entre dúas vilas calquera de xeito "
+"instantáneo, ainda que o xogador debe controlar ámbalas dúas, e a vila "
+"destino debe estar sen ocupar."
 
 #: data/core/macros/special-notes.cfg:36
 msgid ""
 " In woodlands, this unit's ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" Nos bosques, a habilidade de emboscar desta unidade convértea en invisible "
+"para os inimigos a non ser que estea xusto ó lado deles ou se revelara "
+"atacándoos."
 
 #: data/core/macros/special-notes.cfg:39
 msgid " This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
+" Esta unidade é capaz de agocharse pola noite, non deixando rastro ningún da "
+"súa presencia."
 
 #: data/core/macros/special-notes.cfg:42
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" Esta unidade pode moverse sen ser vista na auga profunda, sen precisar aire "
+"da superficie."
 
 #: data/core/macros/special-notes.cfg:45
 msgid ""
@@ -3861,6 +3951,8 @@ msgstr ""
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
+" A habilidade de converter ós vivos en pedras fai que esta unidade sexa moi "
+"perigosa."
 
 #: data/core/macros/special-notes.cfg:60
 msgid ""
@@ -3873,6 +3965,8 @@ msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr ""
+" Os ataques a distancia desta unidade son máxicos, e sempre teñen unha alta "
+"probabilidade de acadar ó opoñente."
 
 #: data/core/macros/special-notes.cfg:66
 msgid ""
@@ -3897,6 +3991,8 @@ msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" A lonxitude da arma desta unidade permítelle golpear primeiro no corpo a "
+"corpo, incluso cando se defende."
 
 #: data/core/macros/special-notes.cfg:78
 msgid ""
@@ -3904,7 +4000,7 @@ msgid ""
 "can be cured in town or by a unit which cures."
 msgstr ""
 " As víctimas do veleno desta unidade sufrirán dano continuamente ata que se "
-"curen nunha vila ou unha unidade sanadora as cure."
+"curen nunha vila ou unha unidade sandadora as cure."
 
 #: data/core/macros/traits.cfg:9
 msgid "loyal"
@@ -4069,15 +4165,15 @@ msgstr "Humanos"
 
 #: data/core/units.cfg:94
 msgid "race^Saurians"
-msgstr ""
+msgstr "Saurios"
 
 #: data/core/units.cfg:102
 msgid "race^Mechanical"
-msgstr ""
+msgstr "Máquinas"
 
 #: data/core/units.cfg:111
 msgid "race^Mermen"
-msgstr ""
+msgstr "Sirénidos"
 
 #: data/core/units.cfg:118
 msgid "race^Monsters"
@@ -4277,6 +4373,10 @@ msgid ""
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cures' ability."
 msgstr ""
+"As unidades envelenadas perden 8 puntos de vida cada turno, pero non morren "
+"por mor do veleno: o veleno nunca reducirá os seus puntos de vida por "
+"debaixo de 1. As unidades envelenadas poden curarse movéndoas a unha vila, "
+"ou situándoas preto dunha unidade ca habilidade 'cura'."
 
 #: data/hardwired/tips.cfg:7
 msgid ""
@@ -4297,17 +4397,24 @@ msgid ""
 msgstr ""
 
 #: data/hardwired/tips.cfg:9
+#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
 "chance to hit both when attacking and defending. Marksman attacks have at "
 "least 60% chance to hit when attacking."
 msgstr ""
+"A probabilidade de acadarlle a unha unidade normalmente depende do ben que "
+"esa unidade pode defenderse no terreo no que está, ainda así os ataques "
+"máxicos teñen unha probabilidade do 70% de acadar tanto no ataque coma na "
+"defensa. Os ataques de                Tirador          teñen como mínimo "
+"unha probabilidade do 60% de acadar ó atacar."
 
 #: data/hardwired/tips.cfg:10
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
+"As unidades situadas en vilas sandan 8 puntos de vida ó comezo do seu turno."
 
 #: data/hardwired/tips.cfg:11
 msgid ""
@@ -4323,6 +4430,9 @@ msgid ""
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
+"A maioría das unidades a pé deféndense mellor en vilas e castelos ca na "
+"maioría dos outros terreos, mentres que a maioría das unidades montadas non "
+"obteñen ningunha vantaxe defensiva nas vilas e nos castelos."
 
 #: data/hardwired/tips.cfg:13
 msgid ""
@@ -4416,7 +4526,7 @@ msgid ""
 "the village."
 msgstr ""
 "Normalmente evita moverte preto dunha vila sen ocupar. Unha unidade inimiga "
-"pode moverse á vila e atacarte, mentres goza da defensa e da sanación da "
+"pode moverse á vila e atacarte, mentres goza da defensa e da sandación da "
 "vila."
 
 #: data/hardwired/tips.cfg:24
@@ -4424,6 +4534,8 @@ msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
+"Manter o cursor do rato enriba dunha habilidade ou trazo fai que se mostre "
+"unha descrición desa habilidade ou trazo."
 
 #: data/hardwired/tips.cfg:25
 msgid "Use lines of units to screen injured units to let them recover."
@@ -4470,7 +4582,7 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"As unidades sanan cando avanzan un nivel. Usado con siso, isto darlle a "
+"As unidades sandan cando avanzan un nivel. Usado con siso, isto darlle a "
 "volta a unha loita."
 
 #: data/hardwired/tips.cfg:33
@@ -4495,6 +4607,9 @@ msgid ""
 "limited by its maximum movement. Remember this when deciding what unit is "
 "best to scout specific types of terrain."
 msgstr ""
+"Nos mapas nos que se activou o manto do descoñecido ou a néboa de guerra, a "
+"vista dunha unidade está limitada polo seu movemento máximo. Lembra isto "
+"cando decidas que unidade é mellor para explorar certos tipos de terreo."
 
 #: data/hardwired/tips.cfg:36
 #, fuzzy
@@ -4513,6 +4628,10 @@ msgid ""
 "hand corner of the game main screen). This information is vital so we can "
 "adjust campaign difficulty."
 msgstr ""
+"Podes enviarlle ó Proxecto Wesnoth un resumo anónimo do teu progreso usando "
+"o botón Axuda a Wesnoth (indicado pola icona do sobre na esquina inferior "
+"dereita da pantalla principal do xogo). Esta información é vital para que "
+"poidamos axustar o nivel de dificultade das campañas."
 
 #: data/hardwired/tips.cfg:38
 msgid ""
@@ -4520,13 +4639,18 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
+"Para facer avanzar rápido ás unidades de niveis inferiores, ponas preto "
+"dunha unidade veterana e usa ó veterano para danar un obxectivo compartido o "
+"suficiente para que a unidade inferior poida matar ó obxectivo."
 
 #: data/hardwired/tips.cfg:39
+#, fuzzy
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
+"Non podes desfacer un movemento que descobre néboa ou manto do descoñecido. "
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -4543,15 +4667,14 @@ msgid "End Turn"
 msgstr "Rematar o Turno"
 
 #: data/themes/default.cfg:146 data/themes/dfool.cfg:162
-#, fuzzy
 msgid "End Scenario"
-msgstr "Escenario descoñecido"
+msgstr "Rematar Escenario"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
 #: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2462
 #: src/unit.cpp:2635
 msgid "HP"
-msgstr ""
+msgstr "HP"
 
 #: data/themes/default.cfg:213 data/themes/dfool.cfg:243
 #: data/themes/experimental.cfg:191 src/menu_events.cpp:339
@@ -4722,18 +4845,18 @@ msgstr[1] "Albiscáronse $enemies inimigos!"
 #: src/actions.cpp:2105
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 amigo"
+msgstr[1] "$friends amigos"
 
 #: src/actions.cpp:2106
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 inimigo"
+msgstr[1] "$enemies inimigos"
 
 #: src/actions.cpp:2107
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr ""
+msgstr "Unidades albiscadas! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2116
 msgid "(press $hotkey to keep moving)"
@@ -4761,7 +4884,7 @@ msgstr "Saír do Xogo"
 
 #: src/dialogs.cpp:242
 msgid "Ignore All"
-msgstr ""
+msgstr "Ignorar Todo"
 
 #: src/dialogs.cpp:259
 msgid "Overwrite?"
@@ -4769,7 +4892,7 @@ msgstr "Sobrescribir?"
 
 #: src/dialogs.cpp:260
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr ""
+msgstr "O ficheiro xa existe. Desexas sobrescribilo?"
 
 #: src/dialogs.cpp:294
 msgid "Do you really want to delete this game?"
@@ -4789,9 +4912,8 @@ msgid "#(Invalid)"
 msgstr ""
 
 #: src/dialogs.cpp:470
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Mantemento de Campañas"
+msgstr "Campaña: $campaign_name"
 
 #: src/dialogs.cpp:472 src/game.cpp:1400
 msgid "Multiplayer"
@@ -4803,7 +4925,7 @@ msgstr "Titorial"
 
 #: src/dialogs.cpp:482
 msgid "replay"
-msgstr ""
+msgstr "reproducir"
 
 #: src/dialogs.cpp:484 src/menu_events.cpp:689
 msgid "Turn"
@@ -4942,9 +5064,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Erro de E/S no ficheiro mentres se lia a partida"
 
 #: src/game.cpp:826
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Campaña"
+msgstr "Xogar unha campaña"
 
 #: src/game.cpp:866
 msgid "Difficulty"
@@ -5105,7 +5226,7 @@ msgstr ""
 #: src/game.cpp:1285 src/game.cpp:1327 src/game.cpp:1354
 #: src/multiplayer.cpp:252 src/multiplayer_ui.cpp:68 src/playcampaign.cpp:460
 msgid "Connection timed out"
-msgstr ""
+msgstr "A conexión expirou"
 
 #: src/game.cpp:1288
 msgid "The server responded with an error: \"$error|\""
@@ -5113,7 +5234,7 @@ msgstr "O servidor respondeu cun erro: \"$error|\""
 
 #: src/game.cpp:1295
 msgid "Terms"
-msgstr ""
+msgstr "Termos"
 
 #: src/game.cpp:1325
 msgid "Sending add-on"
@@ -5145,7 +5266,7 @@ msgstr ""
 
 #: src/game.cpp:1390
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Aloxar Partida en Rede"
 
 #: src/game.cpp:1391
 msgid ""
@@ -5272,6 +5393,12 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Esta unidade está envelenada. Perderá 8 HP cada turno ata que poida atopar "
+"unha cura para o veleno nunha vila ou dunha unidade amiga ca habilidade "
+"'cura'.\n"
+"\n"
+"As unidades non morren só por culpa do veleno. O veleno non reducirá os seus "
+"HP por debaixo de 1."
 
 #: src/generate_report.cpp:107
 msgid "poisoned: "
@@ -5481,12 +5608,14 @@ msgid "gender^Random"
 msgstr "Aleatorio"
 
 #: src/leader_list.cpp:139 src/leader_list.cpp:141
+#, fuzzy
 msgid "Female ♀"
-msgstr ""
+msgstr "Feminino ♀"
 
 #: src/leader_list.cpp:148 src/leader_list.cpp:150
+#, fuzzy
 msgid "Male ♂"
-msgstr ""
+msgstr "Masculino ♂"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:194
 msgid "Random"
@@ -5558,7 +5687,7 @@ msgstr "Desexas descartalo?"
 
 #: src/menu_events.cpp:266
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr ""
+msgstr "Meu señor, esta unidade ten experiencia, avanzou niveis!"
 
 #: src/menu_events.cpp:267 src/menu_events.cpp:271
 msgid "Do you really want to dismiss her?"
@@ -5647,18 +5776,16 @@ msgid "scenario settings^Side"
 msgstr "Bando"
 
 #: src/menu_events.cpp:609
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "Comezo de Escenario"
+msgstr ""
 
 #: src/menu_events.cpp:610
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "Comezo de Escenario"
+msgstr ""
 
 #: src/menu_events.cpp:611
 msgid ""
@@ -5667,14 +5794,12 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:612
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "Usar a configuración específica do escenario"
+msgstr "Néboa"
 
 #: src/menu_events.cpp:613
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "Usar a configuración específica do escenario"
+msgstr "Manto do descoñecido"
 
 #: src/menu_events.cpp:658 src/menu_events.cpp:659
 msgid "no"
@@ -5697,6 +5822,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Os nomes non poden conter comas, barras nin contrabarras. Elixa un nome "
+"diferente."
 
 #: src/menu_events.cpp:713
 msgid "Saved"
@@ -5830,20 +5957,19 @@ msgstr ""
 
 #: src/menu_events.cpp:1642
 msgid "Place Label"
-msgstr ""
+msgstr "Establecer Etiqueta"
 
 #: src/menu_events.cpp:1645 src/menu_events.cpp:1648
 msgid "Label:"
 msgstr "Etiqueta"
 
 #: src/menu_events.cpp:1651
-#, fuzzy
 msgid "Team only"
-msgstr "Equipo"
+msgstr "Só equipo"
 
 #: src/menu_events.cpp:1753
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: src/menu_events.cpp:1796
 msgid "Commands: whisper list emote. Type /help [command] for more help."
@@ -5899,7 +6025,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1868
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
-msgstr ""
+msgstr "Envía unha emoción ou acción persoal á conversa. Uso: /emote [message]"
 
 #: src/menu_events.cpp:1870
 msgid "Unknown command"
@@ -6040,6 +6166,8 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
+"O servidor require a versión '$version1' e ti estás usando a versión "
+"'$version2'"
 
 #: src/multiplayer.cpp:199
 msgid "Server-side redirect loop"
@@ -6124,12 +6252,11 @@ msgstr "Xogador/Tipo"
 
 #: src/multiplayer_connect.cpp:824
 msgid "Faction"
-msgstr ""
+msgstr "Facción"
 
 #: src/multiplayer_connect.cpp:825
-#, fuzzy
 msgid "Team/Gender"
-msgstr "Defensor"
+msgstr "Equipo/Xénero"
 
 #: src/multiplayer_connect.cpp:826
 msgid "Color"
@@ -6214,7 +6341,7 @@ msgstr "Néboa de Guerra"
 #: src/multiplayer_create.cpp:77 src/multiplayer_lobby.cpp:481
 #: src/multiplayer_lobby.cpp:487
 msgid "Shroud"
-msgstr ""
+msgstr "Manto do descoñecido"
 
 #: src/multiplayer_create.cpp:78
 msgid "Observers"
@@ -6379,9 +6506,8 @@ msgid "Remote scenario"
 msgstr "Escenario remoto"
 
 #: src/multiplayer_lobby.cpp:446
-#, fuzzy
 msgid "Unknown scenario: $scenario_id"
-msgstr "Escenario descoñecido: '$scenario|'"
+msgstr "Escenario descoñecido: $scenario_id"
 
 #: src/multiplayer_lobby.cpp:450
 msgid "Unknown scenario"
@@ -6452,9 +6578,8 @@ msgid "Leader: "
 msgstr "Líder: "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Líder: "
+msgstr "Xénero: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6482,16 +6607,16 @@ msgstr "Cliente desconectado"
 
 #: src/network.cpp:481
 msgid "Could not add socket to socket set"
-msgstr ""
+msgstr "Non se puido engadir o socket ó grupo de sockets"
 
 #: src/network.cpp:492
 msgid "Could not send initial handshake"
 msgstr ""
 
 #: src/play_controller.cpp:401
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "O ficheiro que intentou cargar está corrompido"
+msgstr ""
+"O ficheiro que intentou cargar está corrompido. Desexa continuar xogando?"
 
 #: src/play_controller.cpp:774
 msgid "Back to start"
@@ -6510,9 +6635,8 @@ msgid "You have been defeated!"
 msgstr "Derrotáronte!"
 
 #: src/playcampaign.cpp:384
-#, fuzzy
 msgid "Error while reading the WML: "
-msgstr "Erro de E/S no ficheiro mentres se lia a partida"
+msgstr "Erro ó ler o WML: "
 
 #: src/playcampaign.cpp:410
 msgid "The replay could not be saved"
@@ -6537,7 +6661,7 @@ msgstr "Escenario descoñecido: '$scenario|'"
 #: src/playmp_controller.cpp:245
 #, fuzzy
 msgid "End scenario"
-msgstr "Escenario descoñecido"
+msgstr "Rematar Escenario"
 
 #: src/playmp_controller.cpp:383
 msgid ""
@@ -6566,9 +6690,8 @@ msgid "You have emerged victorious!"
 msgstr "Venciches!"
 
 #: src/playsingle_controller.cpp:350
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Ouro restante: "
+msgstr "Ouro conservado: "
 
 #: src/playsingle_controller.cpp:353
 msgid "Early finish bonus: "
@@ -6771,9 +6894,8 @@ msgid ""
 msgstr ""
 
 #: src/titlescreen.cpp:324
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Carga unha partida dun só xogador xa gardada"
+msgstr "Cargar unha partida gardada"
 
 #: src/titlescreen.cpp:325
 msgid "Download usermade campaigns, eras, or map packs"
@@ -6816,27 +6938,24 @@ msgid "Unknown unit type '$type|'"
 msgstr "Tipo de unidade descoñecido '$type|'"
 
 #: src/unit.cpp:2419 src/unit.cpp:2623 src/unit.cpp:2679
-#, fuzzy
 msgid " and "
-msgstr "Area"
+msgstr " e "
 
 #: src/unit.cpp:2430
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2495
-#, fuzzy
 msgid "moves"
-msgstr "Movementos"
+msgstr "movementos"
 
 #: src/unit.cpp:2513 src/unit.cpp:2650
 msgid "XP to advance"
 msgstr "XP para avanzar"
 
 #: src/unit.cpp:2642
-#, fuzzy
 msgid " move"
-msgstr "Movementos"
+msgstr ""
 
 #: src/unit.cpp:2658
 msgid "$effect_description per level"
@@ -6844,7 +6963,7 @@ msgstr ""
 
 #: src/unit.cpp:2688
 msgid "$trait_name|: $trait_description "
-msgstr ""
+msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:179 src/unit_types.cpp:219
 msgid "damage"
@@ -6852,7 +6971,7 @@ msgstr "dano"
 
 #: src/unit_types.cpp:187 src/unit_types.cpp:225
 msgid "strikes"
-msgstr ""
+msgstr "golpes"
 
 #: src/unit_types.cpp:756
 msgid "chaotic"
@@ -6892,115 +7011,3 @@ msgstr "Activar a suba de resumos"
 
 #~ msgid "Receiving data..."
 #~ msgstr "Recibindo datos..."
-
-#~ msgid "Campaign"
-#~ msgstr "Campaña"
-
-#~ msgid "Wesnoth unit list"
-#~ msgstr "Lista de unidades de Wesnoth"
-
-#~ msgid "Based on version"
-#~ msgstr "Baseado na versión"
-
-#~ msgid "sword"
-#~ msgstr "espada"
-
-#~ msgid "Choose the campaign you want to play:"
-#~ msgstr "Elixe a campaña á que queres xogar:"
-
-#~ msgid "; "
-#~ msgstr "; "
-
-#~ msgid "Replace with "
-#~ msgstr "Substituir por "
-
-#~ msgid "Races"
-#~ msgstr "Razas"
-
-#~ msgid "Current Maintainer"
-#~ msgstr "Mantedor Actual"
-
-#~ msgid "Music Development"
-#~ msgstr "Desenvolvemento de Música"
-
-#~ msgid "WML Contributors"
-#~ msgstr "Contribuíntes de WML"
-
-#~ msgid "Elves"
-#~ msgstr "Elfos"
-
-#~ msgid "Orcs"
-#~ msgstr "Orcos"
-
-#~ msgid "You will start the next scenario with "
-#~ msgstr "Comezará o seguinte escenario con "
-
-#~ msgid "Back"
-#~ msgstr "Atrás"
-
-#~ msgid "Map size: "
-#~ msgstr "Tamaño do mapa: "
-
-#~ msgid "Credits"
-#~ msgstr "Créditos"
-
-#~ msgid "mace"
-#~ msgstr "maza"
-
-#~ msgid "Elven Castle"
-#~ msgstr "Castelo dos Elfos"
-
-#~ msgid "Dwarven Castle"
-#~ msgstr "Castelo dos Ananos"
-
-#, fuzzy
-#~ msgid "Encampment keep"
-#~ msgstr "Campamento"
-
-#~ msgid "Keep"
-#~ msgstr "Torre"
-
-#, fuzzy
-#~ msgid "Dwarven keep"
-#~ msgstr "Castelo dos Ananos"
-
-#, fuzzy
-#~ msgid "Swamp keep"
-#~ msgstr "Braña"
-
-#~ msgid "Crater"
-#~ msgstr "Cráter"
-
-#~ msgid "Oasis"
-#~ msgstr "Oasis"
-
-#~ msgid "Snow Forest"
-#~ msgstr "Bosque Nevado"
-
-#~ msgid "Great Tree"
-#~ msgstr "Árbore Grande"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "Selva Tropical"
-
-#~ msgid "Snow Hills"
-#~ msgstr "Outeiros Nevados"
-
-#~ msgid "Dunes"
-#~ msgstr "Dunas"
-
-#, fuzzy
-#~ msgid "Desert road"
-#~ msgstr "Deserto"
-
-#~ msgid "Dirt"
-#~ msgstr "Terra"
-
-#~ msgid "Farmland"
-#~ msgstr "Granxa"
-
-#~ msgid "Impassable Mountains"
-#~ msgstr "Montañas Infranqueables"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Montañas Desérticas Infranqueables"
