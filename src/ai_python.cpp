@@ -58,6 +58,10 @@
 
 #define LOG_AI LOG_STREAM(info, ai)
 
+#ifndef Py_ssize_t
+#define Py_ssize_t int
+#endif
+
 static python_ai* running_instance;
 bool python_ai::init_ = false;
 
@@ -1599,7 +1603,7 @@ PyObject* python_ai::wrapper_set_variable(PyObject* /*self*/, PyObject* args)
 	if (so)
 	{
 	    char *cs;
-        int len;
+        Py_ssize_t len;
 	    PyString_AsStringAndSize(so, &cs, &len);
 	    std::string s;
 	    char const *digits[] = {
