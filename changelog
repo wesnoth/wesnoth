@@ -8,6 +8,9 @@ Version 1.3.10+svn:
      pick-up items
  * language and i18n:
    * updated translations: Czech, Dutch, French, Polish, Portuguese (Brazil), Swedish
+ * multiplayer:
+   * fixed segmentation fault on loading saved games from the multiplayer user interface
+   * fixed random leaders not getting random genders as expected by design
  * WML engine:
    * implemented the #ifndef directive, the opposite of #ifdef, in the preprocessor,
      to parse the following block only when the symbol is not defined
@@ -20,7 +23,6 @@ Version 1.3.10+svn:
    * [modify_side] can now override the recruit list, just like [set_recruit]; should be
      the preferred method at some point.
  * miscellaneous and bug fixes:
-   * fixed segmentation fault on loading saved games from the multiplayer user interface
    * added some extra headers for gcc 4.3 (based on patch #842)
 
 Version 1.3.10:
