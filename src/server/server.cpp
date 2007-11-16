@@ -907,7 +907,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 void server::process_data_from_player_in_game(const network::connection sock, config& data) {
 	DBG_SERVER << "in process_data_from_player_in_game...\n";
 	
-	bool push_immediately = true;
+	//bool push_immediately = true;
 	const player_map::const_iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
@@ -927,10 +927,11 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	}
 
 	// If this is data describing the level for a game.
-	if (g->is_owner(sock) && data.child("side") != NULL) {
-
+	if (data.child("side") != NULL) {
+		if (!g->is_owner(sock)) {
+			return;
+		}
 		const bool is_init = g->level_init();
-
 		// If this game is having its level data initialized
 		// for the first time, and is ready for players to join.
 		// We should currently have a summary of the game in g->level().
@@ -941,91 +942,101 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tcreated game:\t\"" << g->name() << "\" ("
 				<< g->id() << ").\n";
-
 			// Update our config object which describes the open games,
-			// and notifies the game of where its description is located at
+			// and save a pointer to the description in the new game.
 			config* const gamelist = games_and_users_list_.child("gamelist");
 			wassert(gamelist != NULL);
 			config& desc = gamelist->add_child("game",g->level());
 			g->set_description(&desc);
 			desc["id"] = lexical_cast<std::string>(g->id());
-			desc["hash"] = data["hash"];
-			// If there is no shroud, then tell players in the lobby
-			// what the map looks like
-			if (data["mp_shroud"] != "yes") {
-				desc["map_data"] = data["map_data"];
-				desc["map"] = data["map"];
+		} else {
+			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tadvanced game:\t\"" << g->name() << "\" ("
+				<< g->id() << ") to the next scenario.\n";
+			if (g->description() == NULL) {
+				ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
+					<< g->name() << "\" (" << g->id()
+					<< ") is initialized but has no description_.\n";
+				return;
 			}
-			desc["observer"] = data["observer"];
-			desc["mp_era"] = data.child("era") != NULL ? data.child("era")->get_attribute("id") : "";
-			// map id
-			desc["mp_scenario"] = data["id"];
-			desc["mp_use_map_settings"] = data["mp_use_map_settings"];
-			desc["mp_village_gold"] = data["mp_village_gold"];
-			desc["mp_fog"] = data["mp_fog"];
-			desc["mp_shroud"] = data["mp_shroud"];
-			desc["experience_modifier"] = data["experience_modifier"];
-			desc["mp_countdown"] = data["mp_countdown"];
-			desc["mp_countdown_init_time"] = data["mp_countdown_init_time"];
-			desc["mp_countdown_turn_bonus"] = data["mp_countdown_turn_bonus"];
-			desc["mp_countdown_reservoir_time"] = data["mp_countdown_reservoir_time"];
-			desc["mp_countdown_action_bonus"] = data["mp_countdown_action_bonus"];
-			//desc["map_name"] = data["name"];
-			//desc["map_description"] = data["description"];
-			//desc[""] = data["objectives"];
-			//desc[""] = data["random_start_time"];
-			//desc[""] = data["turns"];
-			//desc["client_version"] = data["version"];
+		}
+		config& desc = *g->description();
+		// Update the game's description.
+		// If there is no shroud, then tell players in the lobby
+		// what the map looks like
+		if (data["mp_shroud"] != "yes") {
+			desc["map_data"] = data["map_data"];
+			desc["map"] = data["map"];
+		}
+		desc["mp_era"] = data.child("era") != NULL
+			? data.child("era")->get_attribute("id") : "";
+		// map id
+		desc["mp_scenario"] = data["id"];
+		desc["observer"] = data["observer"];
+		desc["mp_village_gold"] = data["mp_village_gold"];
+		desc["experience_modifier"] = data["experience_modifier"];
+		desc["mp_fog"] = data["mp_fog"];
+		desc["mp_shroud"] = data["mp_shroud"];
+		desc["mp_use_map_settings"] = data["mp_use_map_settings"];
+		desc["mp_countdown"] = data["mp_countdown"];
+		desc["mp_countdown_init_time"] = data["mp_countdown_init_time"];
+		desc["mp_countdown_turn_bonus"] = data["mp_countdown_turn_bonus"];
+		desc["mp_countdown_reservoir_time"] = data["mp_countdown_reservoir_time"];
+		desc["mp_countdown_action_bonus"] = data["mp_countdown_action_bonus"];
+		desc["hash"] = data["hash"];
+		//desc["map_name"] = data["name"];
+		//desc["map_description"] = data["description"];
+		//desc[""] = data["objectives"];
+		//desc[""] = data["random_start_time"];
+		//desc[""] = data["turns"];
+		//desc["client_version"] = data["version"];
 
-			// Record the full description of the scenario in g->level()
-			g->level() = data;
+		// Record the full scenario in g->level()
+		g->level() = data;
+		if (!is_init) {
 			// Let the owner take a side once we have the level data.
 			g->take_side(sock);
 			g->update_side_data();
 			g->describe_slots();
-
-			// Send all players in the lobby the update to the list of games.
-			lobby_.send_data(games_and_users_list_diff());
 		} else {
-			// We've already initialized this scenario, but clobber
-			// its old contents with the new ones given here.
-			g->level() = data;
-			g->update_side_data();
-			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tadvanced game:\t\"" << g->name() << "\" ("
-				<< g->id() << ") to the next scenario.\n";
-			// Send the update of the game description to the lobby.
-			//lobby_.send_data(games_and_users_list_diff());
-		}
-
-		// Send the new data to all players in the level (except the sender).
-		g->send_data(data,sock);
-		return;
-	}
-
-	// If this is data telling us that the scenario did change.
-	if(g->is_owner(sock) && data.child("store_next_scenario") != NULL) {
-		if(g->level_init()) {
-			g->level() = (*data.child("store_next_scenario"));
 			g->reset_history();
 			// Re-assign sides.
 			g->update_side_data();
-			// Send the update of the game description to the lobby
-			lobby_.send_data(games_and_users_list_diff());
-		} else {
-			// next_scenario sent while the scenario was not initialized.
-			// Something's broken here.
+		}
+		// Send the update of the game description to the lobby.
+		lobby_.send_data(games_and_users_list_diff());
+
+		//! @todo FIXME: Why return and not save the level data in the history_?
+		// Send the new data to all players in the level (except the sender).
+		g->send_data(data, sock);
+		return;
+	// If this is data telling us that the scenario did change.
+	} else if(data.child("store_next_scenario")) {
+		if(g->is_owner(sock) && !g->level_init()) {
 			WRN_SERVER << network::ip_address(sock) << "\tWarning: "
-				<< pl->second.name() << "\tsent [next_scenario] in game:\t\""
+				<< pl->second.name() << "\tsent [store_next_scenario] in game:\t\""
 				<< g->name() << "\" (" << g->id()
 				<< ") while the scenario is not yet initialized.";
-			return;
 		}
-
 		//Pushing immediately does not comply with linger mode for mp campaigns.
 		//Here the clients need to determine by themselves, when to get the data
 		//for the next scenario.
-		push_immediately = false;
+		//push_immediately = false;
+		return;
+	// If a player advances to the next scenario of a mp campaign.
+	} else if(data.child("notify_next_scenario") != NULL) {
+		g->send_data(g->construct_server_message(pl->second.name()
+			+ " advanced to the next scenario."), sock);
+		return;
+	// A mp client sends a request for the next scenario of a mp campaign.
+	} else if (data.child("load_next_scenario") != NULL) {
+		config cfg_scenario;
+		cfg_scenario.add_child("next_scenario", g->level());
+		network::send_data(cfg_scenario, sock);
+		//Since every client decides himself when to get the data of the next
+		//scenario, we must not push this to other players.
+		//push_immediately = false;
+		return;
 	}
 
 	//! @todo: The player has already joined and got a side or not. This is
@@ -1077,7 +1088,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			+ " has left the game."));
 		lobby_.add_player(sock, true);
 		g->describe_slots();
-		//! @todo this should be done in remove_player().
+		//! @todo This should be done in remove_player().
 		if ( (g->nplayers() == 0) || (host && !g->started()) ) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tended game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
@@ -1122,8 +1133,12 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 				"Mute of all observers has been removed."));
 		}
 	// If an observer should be muted.
-	} else if (g->is_owner(sock) && data.child("mute") != NULL) {
+	} else if (data.child("mute") != NULL) {
+		if (g->is_owner(sock)) {
+			return;
+		}
 		g->mute_observer(*data.child("mute"));
+		return;
 	// The owner is kicking/banning someone from the game.
 	} else if (data.child("kick") || data.child("ban")) {
 		bool ban = (data.child("ban") != NULL);
@@ -1149,6 +1164,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		if (info["type"] == "termination") {
 			g->set_termination_reason(info["condition"]);
 		}
+		return;
 	}
 
 	config* const turn = data.child("turn");
@@ -1214,29 +1230,11 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// respect not displaying the message.
 	}
 
-	// If a player advances to the next scenario of a mp campaign.
-	if(data.child("notify_next_scenario") != NULL) {
-		g->send_data(g->construct_server_message(pl->second.name()
-			+ " advanced to the next scenario."), sock);
-	}
-
-	// A mp client sends a request for the next scenario of a mp campaign.
-	if (data.child("load_next_scenario") != NULL) {
-		config cfg_scenario;
-
-		cfg_scenario.add_child("next_scenario", g->level());
-		network::send_data(cfg_scenario, sock);
-		//Since every client decides himself when to get the data of the next
-		//scenario, we must not push this to other players.
-		push_immediately = false;
-	}
-
 	// Forward data to all players who are in the game,
 	// except for the original data sender
 	// FIXME: Relaying arbitrary data that possibly didn't get handled at all
 	// seems like a bad idea.
-	if (push_immediately)
-		g->send_data(data,sock);
+	g->send_data(data,sock);
 
 	if (g->started()) {
 		g->record_data(data);
