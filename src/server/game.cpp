@@ -476,27 +476,16 @@ bool game::describe_slots() {
 	}
 }
 
+//! Checks whether the connection's ip address is banned.
 bool game::player_is_banned(const network::connection sock) const {
-	if(bans_.empty()) {
-		return false;
-	}
-	const player_map::const_iterator pl = player_info_->find(sock);
-	if(pl == player_info_->end()) {
-		return false;
-	}
-	const std::string& ipaddress = network::ip_address(sock);
-	for(std::vector<ban>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
-		if(pl->second.name() == i->username || ipaddress == i->ipaddress) {
-			return true;
-		}
-	}
-
-	return false;
+	std::vector<std::string>::const_iterator ban =
+		std::find(bans_.begin(), bans_.end(), network::ip_address(sock));
+	return ban != bans_.end();
 }
 
 //! Mute an observer or give a message of all currently muted observers if no
 //! name is given.
-void game::mute_observer(const network::connection sock, const config& mute) {
+void game::mute_observer(const config& mute) {
 	const std::string name = mute["username"];
 	if (name.empty()) {
 		if (all_observers_muted_) {
@@ -515,19 +504,21 @@ void game::mute_observer(const network::connection sock, const config& mute) {
 		send_data(construct_server_message("Muted observers: " + muted_nicks));
 		return;
 	}
-	const player_map::const_iterator pl = find_player(name);
-		//! FIXME: Maybe rather save muted nicks as a vector of strings and also
-		//! allow muting of observers not in the game.
+	const player_map::const_iterator pl = find_user(name);
+		//! @todo FIXME: Maybe rather save muted nicks as a vector of strings
+		//! and also allow muting of usernames not in the game.
 	if (pl == player_info_->end() || !is_observer(pl->first)) {
 		network::send_data(construct_server_message(
-			"Observer not found."), sock);
+			"Observer not found."), owner_);
+		return;
 	}
-	if (!is_muted_observer(sock)) {
+	if (is_muted_observer(pl->first)) {
 		network::send_data(construct_server_message(pl->second.name()
-			+ " is already muted."), sock);
+			+ " is already muted."), owner_);
+		return;
 	}
 	//! Prevent muting ourselves.
-	if (pl->first != sock) {
+	if (pl->first != owner_) {
 		muted_observers_.push_back(pl->first);
 		network::send_data(construct_server_message(
 			"You have been muted."), pl->first);
@@ -536,17 +527,69 @@ void game::mute_observer(const network::connection sock, const config& mute) {
 	}
 }
 
-void game::ban_player(const network::connection sock) {
-	const player_map::const_iterator itor = player_info_->find(sock);
-	if (itor != player_info_->end()) {
-		bans_.push_back(ban(itor->second.name(),network::ip_address(sock)));
-		network::send_data(construct_server_message("You have been banned."), sock);
-		send_data(construct_server_message(itor->second.name() + " has been banned."));
-		remove_player(sock);
-	} else {
-		ERR_GAME << "ERROR: Player not found in player_info_. (socket: " << sock << ")\n";
-		//! @todo: Should return something indicating the player wasn't found.
+//! Kick a member by name.
+//! @return the network handle of the kicked player
+network::connection game::kick_member(const config& kick) {
+	const std::string name = kick["username"];
+	const player_map::const_iterator user = find_user(name);
+	if (user == player_info_->end() || !is_member(user->first)) {
+		network::send_data(construct_server_message(
+			"Not a member of this game."), owner_);
+		return 0;
 	}
+	if (user->first == owner_) {
+		network::send_data(construct_server_message(
+			"Don't kick yourself, silly."), owner_);
+		return 0;
+	}
+	LOG_GAME << network::ip_address(owner_) << "\t"
+		<< owner_ << "\tkicked: " << user->second.name() << "\tfrom game:\t"
+		<< name_ << "\" (" << id_ << ")\n";
+	network::send_data(construct_server_message("You have been kicked."),
+		user->first);
+	const config msg = construct_server_message(name + " has been kicked.");
+	send_data(msg, user->first);
+	record_data(msg);
+	// Tell the user to leave the game.
+	network::send_data(config("leave_game"), user->first);
+	remove_player(user->first);
+	return user->first;
+}
+
+//! Ban a user by name.
+//! The user does not need to be in this game but logged in.
+//! @return the network handle of the banned player
+network::connection game::ban_user(const config& ban) {
+	const std::string name = ban["username"];
+	const player_map::const_iterator user = find_user(name);
+	if (user == player_info_->end()) {
+		network::send_data(construct_server_message(
+			"User not found."), owner_);
+		return 0;
+	}
+	if (user->first == owner_) {
+		network::send_data(construct_server_message(
+			"Don't ban yourself, silly."), owner_);
+		return 0;
+	}
+	if (player_is_banned(user->first)) {
+		network::send_data(construct_server_message(name
+			+ " is already banned."), owner_);
+		return 0;
+	}
+	LOG_GAME << network::ip_address(owner_) << "\t"
+		<< owner_ << "\tbanned: " << name << "\tfrom game:\t"
+		<< name_ << "\" (" << id_ << ")\n";
+	bans_.push_back(network::ip_address(user->first));
+	network::send_data(construct_server_message("You have been banned."),
+		user->first);
+	const config& msg = construct_server_message(name + " has been banned.");
+	send_data(msg, user->first);
+	record_data(msg);
+	// Tell the user to leave the game.
+	network::send_data(config("leave_game"), user->first);
+	remove_player(user->first);
+	return user->first;
 }
 
 bool game::process_commands(const config& cfg) {
@@ -705,9 +748,6 @@ void game::remove_player(const network::connection player, const bool notify_cre
 		observer_quit.add_child("observer_quit").values["name"] = user->second.name();
 		send_data(observer_quit);
 		return;
-	} else {
-		send_data(construct_server_message(user->second.name()
-			+ " has left the game."));
 	}
 
 	// If the player was host choose a new one.
@@ -900,8 +940,8 @@ std::string game::debug_player_info() const {
 	return result.str();
 }
 
-//! Find a player by name.
-const player_map::const_iterator game::find_player(const std::string& name) const {
+//! Find a user by name.
+player_map::const_iterator game::find_user(const std::string& name) const {
 	player_map::const_iterator pl;
 	for (pl = player_info_->begin(); pl != player_info_->end(); pl++) {
 		if (pl->second.name() == name)
@@ -913,7 +953,7 @@ const player_map::const_iterator game::find_player(const std::string& name) cons
 config game::construct_server_message(const std::string& message) const
 {
 	config turn;
-	if(started()) {
+	if(started_) {
 		config& cmd = turn.add_child("turn");
 		config& cfg = cmd.add_child("command");
 		config& msg = cfg.add_child("speak");

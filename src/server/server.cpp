@@ -411,7 +411,6 @@ void server::run() {
 					const bool host = g->is_owner(e.socket);
 					const bool obs = g->is_observer(e.socket);
 					g->remove_player(e.socket);
-					g->describe_slots();
 					// Did the last player leave?
 					if ( (g->nplayers() == 0) || (host && !g->started()) ) {
 						LOG_SERVER << ip << "\t" << pl_it->second.name()
@@ -420,14 +419,16 @@ void server::run() {
 							<< e.socket << ")\n";
 						delete_game(g);
 						break;
-					}
-					LOG_SERVER << ip << "\t" << pl_it->second.name()
-						<< "\thas left game:\t\"" << g->name() << "\" ("
-						<< g->id() << (obs ? ") as an observer" : ")")
-						<< " and disconnected. (socket: " << e.socket << ")\n";
-					if (!obs) {
-						g->send_data(construct_server_message(pl_it->second.name()
-							+ " has disconnected",*g));
+					} else {
+						LOG_SERVER << ip << "\t" << pl_it->second.name()
+							<< "\thas left game:\t\"" << g->name() << "\" ("
+							<< g->id() << (obs ? ") as an observer" : ")")
+							<< " and disconnected. (socket: " << e.socket << ")\n";
+						g->describe_slots();
+						if (!obs) {
+							g->send_data(g->construct_server_message(
+								pl_it->second.name() + " has disconnected."));
+						}
 					}
 					break;
 				}
@@ -867,7 +868,9 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << g->name()
 				<< "\" (" << id << ").\n";
-			network::send_data(construct_error("You are banned from this game."), sock);
+			network::send_data(config("leave_game"),sock);
+			network::send_data(construct_server_message(
+				"You are banned from this game.", lobby_players_), sock);
 			return;
 		}
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
@@ -1088,8 +1091,11 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		const bool host = g->is_owner(sock);
 		const bool obs = g->is_observer(sock);
 		g->remove_player(sock);
+		g->send_data(g->construct_server_message(pl->second.name()
+			+ " has left the game."));
 		lobby_players_.add_player(sock, true);
 		g->describe_slots();
+		//! @todo this should be done in remove_player().
 		if ( (g->nplayers() == 0) || (host && !g->started()) ) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tended game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
@@ -1133,69 +1139,25 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		}
 	// If an observer should be muted.
 	} else if (g->is_owner(sock) && data.child("mute") != NULL) {
-		g->mute_observer(sock, *data.child("mute"));
+		g->mute_observer(*data.child("mute"));
 	// The owner is kicking/banning someone from the game.
-	} else if (g->is_owner(sock) && (data.child("ban") || data.child("kick"))) {
-		//! @todo All this processing should be done in game.cpp.
-		std::string name;
-		bool ban = false;
-		if (data.child("ban") != NULL) {
-			const config& u = *data.child("ban");
-			name = u["username"];
-			ban = true;
-		} else {
-			const config& u = *data.child("kick");
-			name = u["username"];
-			ban = false;
+	} else if (data.child("kick") || data.child("ban")) {
+		bool ban = (data.child("ban") != NULL);
+		if (!g->is_owner(sock)) {
+			network::send_data(g->construct_server_message("You cannot "
+				+ *(ban ? "ban" : "kick") + *": not the game host."), sock);
+			return;
 		}
-
-		std::string owner = pl->second.name();
-		
-		player_map::iterator banned_pl = players_.begin();
-		for (; banned_pl != players_.end(); banned_pl++) {
-			if (banned_pl->second.name() == name) {
-				break;
-			}
-		}
-		if (banned_pl != players_.end() && banned_pl->first != sock) {
-			if (ban) {
-				LOG_SERVER << network::ip_address(sock) << "\t"
-					<< owner << "\tbanned: " << name << "\tfrom game:\t"
-					<< g->name() << "\" (" << g->id() << ")\n";
-				g->ban_player(banned_pl->first);
-			} else {
-				LOG_SERVER << network::ip_address(sock) << "\t"
-					<< owner << "\tkicked: " << name << " from game:\t\""
-					<< g->name() << "\" (" << g->id() << ")\n";
-				network::send_data(construct_server_message(
-					"You have been kicked.", *g), banned_pl->first);
-				g->send_data(construct_server_message(name + " has been kicked.", *g));
-				g->remove_player(banned_pl->first);
-			}
-			lobby_players_.add_player(banned_pl->first, true);
-			network::send_data(config("leave_game"), banned_pl->first);
-
+		const network::connection user = (ban ? g->ban_user(*data.child("ban"))
+			: g->kick_member(*data.child("kick")));
+		if (user) {
+			lobby_players_.add_player(user, true);
 			g->describe_slots();
-			// Send the player who was banned the lobby game list.
-			network::send_data(games_and_users_list_, banned_pl->first);
+			// Send the removed user the lobby game list.
+			network::send_data(games_and_users_list_, user);
 			// Send all other players in the lobby the update to the lobby.
 			lobby_players_.send_data(games_and_users_list_diff(), sock);
-			// FIXME: Why not save it in the history_?
-			return;
-		} else if (banned_pl == players_.end()) {
-			network::send_data(construct_server_message("Kick/ban failed: user '"
-				+ name + "' not found.", *g), sock);
-			return;
 		}
-	} else if (data.child("ban")) {
-		const config& response = construct_server_message(
-		             "You cannot ban: not the game host.", *g);
-		network::send_data(response,sock);
-		return;
-	} else if (data.child("kick")) {
-		const config& response = construct_server_message(
-		             "You cannot kick: not the game host.", *g);
-		network::send_data(response,sock);
 		return;
 	// If info is being provided about the game state.
 	} else if (data.child("info") != NULL) {

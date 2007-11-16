@@ -42,15 +42,29 @@ public:
 	{ return is_player(player) || is_observer(player); }
 	bool is_observer(const network::connection player) const;
 	bool is_muted_observer(const network::connection player) const;
+	bool all_observers_muted() const { return all_observers_muted_; }
 	bool is_player(const network::connection player) const;
 	bool player_is_banned(const network::connection player) const;
 
 	size_t nplayers() const { return players_.size(); }
 	size_t nobservers() const { return observers_.size(); }
 
-	void mute_observer(const network::connection sock, const config& mute);
 	bool mute_all_observers() { return all_observers_muted_ = !all_observers_muted_; }
-	bool all_observers_muted() const { return all_observers_muted_; }
+	//! Mute an observer by name.
+	void mute_observer(const config& mute);
+	//! Kick a member by name.
+	network::connection kick_member(const config& kick);
+	//! Ban and kick a user by name. He doesn't need to be in this game.
+	network::connection ban_user(const config& ban);
+
+	void add_player(const network::connection player, const bool observer = false);
+	void remove_player(const network::connection player, const bool notify_creator=true);
+
+	//! Adds players from one game to another. This is used to add players and
+	//! observers from a game to the lobby (which is also implemented as a game),
+	//! if that game ends. The second parameter controls, wether the players are
+	//! added to the players_ or observers_ vector (default observers_).
+	void add_players(const game& other_game, const bool observer = true);
 
 	bool started() const { return started_; }
 
@@ -71,18 +85,6 @@ public:
 	//! Set the description to the number of slots.
 	//! Returns true if the number of slots has changed.
 	bool describe_slots();
-
-	//! Ban and kick a player. He doesn't need to be in this game.
-	void ban_player(const network::connection player);
-
-	void add_player(const network::connection player, const bool observer = false);
-	void remove_player(const network::connection player, const bool notify_creator=true);
-
-	//! Adds players from one game to another. This is used to add players and
-	//! observers from a game to the lobby (which is also implemented as a game),
-	//! if that game ends. The second parameter controls, wether the players are
-	//! added to the players_ or observers_ vector (default observers_).
-	void add_players(const game& other_game, const bool observer = true);
 
 	config construct_server_message(const std::string& message) const;
 	//! Send data to all players in this game except 'exclude'.
@@ -121,8 +123,8 @@ private:
 	const user_vector all_game_users() const;
 	//! In case of a host transfer, notify the new host about its status.
 	void notify_new_host();
-	//! Convenience function for finding a player by name.
-	const player_map::const_iterator find_player(const std::string& name) const;
+	//! Convenience function for finding a user by name.
+	player_map::const_iterator find_user(const std::string& name) const;
 
 	bool observers_can_label() const { return false; }
 	bool observers_can_chat() const { return true; }
@@ -167,17 +169,7 @@ private:
 	bool allow_observers_;
 	bool all_observers_muted_;
 
-	//! FIXME: Why ban by ip *and* name?
-	struct ban {
-		ban(const std::string& name, const std::string& address)
-		      : username(name), ipaddress(address)
-		{}
-
-		std::string username;
-		std::string ipaddress;
-	};
-
-	std::vector<ban> bans_;
+	std::vector<std::string> bans_;
 
 	std::string termination_;
 };
