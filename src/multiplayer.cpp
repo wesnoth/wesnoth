@@ -407,6 +407,8 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 				if(!error.message.empty()) {
 					gui::show_error_message(disp, error.message);
 				}
+				//update lobby content
+				network::send_data(config("refresh_lobby"));
 			}
 			break;
 		case mp::ui::OBSERVE:
@@ -415,6 +417,8 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
 					gui::show_error_message(disp, error.message);
+				//update lobby content
+				network::send_data(config("refresh_lobby"));
 				}
 			}
 			break;
@@ -424,6 +428,8 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 			} catch(config::error& error) {
 				if (!error.message.empty())
 					gui::show_error_message(disp, error.message);
+				//update lobby content
+				network::send_data(config("refresh_lobby"));
 			}
 			break;
 		case mp::ui::QUIT:
