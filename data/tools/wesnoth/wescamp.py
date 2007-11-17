@@ -19,6 +19,10 @@ This utility provides two tools
 * update the translations in a campaign (in the packed campaign)
 """
 
+#TODO
+
+# catch socket error
+
 import sys, os, optparse, tempfile, shutil, logging
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
@@ -157,15 +161,15 @@ if __name__ == "__main__":
             # Don't update we're in the root and if we update the status of all
             # other campaigns is lost and no more updates are executed.
             os.mkdir(svn_dir + "/" + addon)
-            res = svn.svn_add(svn_dir + "/" + addon)
-            res = svn.svn_commit("wescamp_client: adding directory for initial "
+            res = svn.add(addon)
+            res = svn.commit("wescamp_client: adding directory for initial "
                 + "inclusion of addon '" + addon + "'")
 
         # Update the directory
         svn = libsvn.SVN(svn_dir + "/" + addon)
-        svn.svn_update()
+        svn.update()
         if(svn.copy_to_svn(temp_dir, ["translations"])):
-            svn.svn_commit("wescamp_client: automatic update of addon '"
+            svn.commit("wescamp_client: automatic update of addon '"
                 + addon + "'")
             logging.info("New version of addon '%s' uploaded.", addon)
         else:
@@ -203,7 +207,7 @@ if __name__ == "__main__":
 
         svn = libsvn.SVN(wescamp + "/" + addon)
 
-        if(svn.svn_update() == False):
+        if(svn.update() == False):
             logging.info("svn up to date, nothing to send to server")
             if(stamp == None):
                 return
@@ -246,11 +250,11 @@ if __name__ == "__main__":
 
         svn = libsvn.SVN(wescamp)
 
-        svn.svn_update(None, addon) 
+        svn.update(None, addon) 
 
-        svn.svn_remove(wescamp + "/" + addon) # FIXME the addition of wescamp is a bug
+        svn.remove(addon)
 
-        svn.svn_commit("Erasing addon " + addon)
+        svn.commit("Erasing addon " + addon)
 
     optionparser = optparse.OptionParser("%prog [options]")
 

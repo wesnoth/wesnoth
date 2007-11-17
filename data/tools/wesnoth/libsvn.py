@@ -17,17 +17,11 @@ This library provides an interface to svn, the interface is build upon
 the command line svn tool. 
 """
 
-# TODO make private methods
-# public
-#   checkout
-#   update
-#   add
-#   remove
-#   commit
-#   sync
-# the others private, public methods send relative items
-# for usage, private use the full path
 
+# test for escape quotes here and in the server code
+# for now added the repr but is it enough?
+# FIXME only did it add a few points not every
+# call to __execute
 
 import os, shutil, logging;
 
@@ -69,11 +63,11 @@ class SVN:
                         http://svn.gna.org/svn/wesnoth/trunk.
     returns             Nothing.
     """
-    def svn_checkout(self, repo):
+    def checkout(self, repo):
 
         logging.debug("checkout repo = '%s'", repo)
 
-        out, err = self.execute("svn co --non-interactive " + repo + " " + 
+        out, err = self.__execute("svn co --non-interactive " + repo + " " + 
             self.checkout_path)
 
         if(err != ""):
@@ -89,7 +83,9 @@ class SVN:
                         ommitted all modifications are send.
     returns             True if committed, False if nothing to commit.
     """
-    def svn_commit(self, msg, files = None):
+    def commit(self, msg, files = None):
+
+        # FIXME if files set use the root also make files []
 
         logging.debug("commit msg = '%s' files = '%s' ", msg, files)
 
@@ -98,7 +94,7 @@ class SVN:
             command += " " + files
 
         # execute
-        out, err = self.execute(command + " " + self.checkout_path)
+        out, err = self.__execute(command + " " + self.checkout_path)
 
         if(err != ""):
             raise error("commit failed with message:" +err)
@@ -117,7 +113,7 @@ class SVN:
                         checkout is updated.
     returns             True if update changed files, False otherwise.
     """
-    def svn_update(self, rev = None, files = None):
+    def update(self, rev = None, files = None):
 
         logging.debug("update rev = '%s' files = '%s'", rev, files)
 
@@ -130,7 +126,7 @@ class SVN:
             command += self.checkout_path
 
         # execute
-        out, err = self.execute(command)
+        out, err = self.__execute(command)
 
         if(err != ""):
             raise error("update failed with message:" +err)
@@ -142,6 +138,34 @@ class SVN:
         logging.debug("update output:" + out)
         return True
 
+    """Add an item to the repo.
+
+    The item can either be a file or directory, if the item is already added
+    this operation is a nop.
+
+    item                File or directory to add to svn.
+    returns             Nothing.
+    """
+    def add(self, item):
+
+        logging.debug("add item = '%s'", item)
+
+        self.__svn_add(self.checkout_path + "/" + item)
+
+    """Removes an item from the repo.
+
+    If an item is not in the repo it's silently ignored and the
+    operation is a nop.
+
+    item                File or directory to remove from svn.
+    returns             Nothing.
+    """
+    def remove(self, item):
+
+        logging.debug("remove item = '%s'", item)
+
+        self.__svn_remove(self.checkout_path + "/" + item)
+
     """Copies local files to an svn checkout.
     
     src                 Directory with the source files.
@@ -151,11 +175,11 @@ class SVN:
     """
     def copy_to_svn(self, src, exclude):
 
-        logging.debug("copy to svn src = '%s' exclude = '%s'",
+        logging.debug("copy_to_svn src = '%s' exclude = '%s'",
             src, exclude)
 
         # Check whether the status of the repo is clean.
-        out, err = self.execute("svn st " + self.checkout_path)
+        out, err = self.__execute("svn st " + self.checkout_path)
         
         # If not clean or an error bail out.
         if(err != ""):
@@ -164,12 +188,53 @@ class SVN:
             raise error("checout is not clean:" + out)
 
         # Update.
-        self.sync_dir(src, self.checkout_path, False, exclude)
+        self.__sync_dir(src, self.checkout_path, False, exclude)
 
         # Test whether the checkout is clean if not something is modified.
         # An error shouldn't occur, since we tested that before.
-        out, err = self.execute("svn st " + self.checkout_path)
+        out, err = self.__execute("svn st " + self.checkout_path)
         return (out != "")
+
+
+
+
+##### PRIVATE #####
+
+    """Add an item to the repo.
+
+    The item can either be a file or directory, if the item is already added
+    this operation is a nop.
+
+    item                File or directory to add to svn.
+    returns             Nothing.
+    """
+    def __svn_add(self, item):
+
+        logging.debug("__svn_add item = '%s'", item)
+
+        # execute (repo not required)
+        out, err = self.__execute( ("svn add " + repr(item)))
+
+        if(err != ""):
+            raise error("__svn_add failed with message:" + err)
+
+    """Removes an item from the repo.
+
+    If an item is not in the repo it's silently ignored and the
+    operation is a nop.
+
+    item                File or directory to remove from svn.
+    returns             Nothing.
+    """
+    def __svn_remove(self, item):
+
+        logging.debug("__svn_remove item = '%s'", item)
+
+        # execute (repo not required)
+        out, err = self.__execute("svn remove --non-interactive " + repr(item))
+
+        if(err != ""):
+            raise error("__svn_remove failed with message:" + err)
 
     """Syncronizes two directories.
 
@@ -180,13 +245,13 @@ class SVN:
     exclude             List with names to ignore.
     returns             Nothing.
     """
-    def sync_dir(self, src, dest, src_svn, exclude ):
+    def __sync_dir(self, src, dest, src_svn, exclude ):
 
-        logging.debug("sync_dir src = '%s' dest = '%s'", src, dest)
+        logging.debug("__sync_dir src = '%s' dest = '%s'", src, dest)
 
         # Get the contents of src and dest
-        src_dirs, src_files = self.get_dir_contents(src, exclude)
-        dest_dirs, dest_files = self.get_dir_contents(dest, exclude)
+        src_dirs, src_files = self.__get_dir_contents(src, exclude)
+        dest_dirs, dest_files = self.__get_dir_contents(dest, exclude)
 
         # If a directory exists in the src but not in the dest, the entire
         # thing needs to be copied recursively.
@@ -199,10 +264,10 @@ class SVN:
         for dir in src_dirs:
             if(os.path.isdir(dest + "/" + dir) == False):
                 # src only
-                self.dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
+                self.__dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
             else:
                 # in both
-                self.sync_dir(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
+                self.__sync_dir(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
 
         for dir in dest_dirs:
             if(os.path.isdir(src + "/" + dir) == False):
@@ -219,7 +284,7 @@ class SVN:
         for file in src_files:
             if(os.path.isfile(dest + "/" + file) == False):
                 # src only
-                self.file_add(src + "/" + file, dest + "/" + file, src_svn)
+                self.__file_add(src + "/" + file, dest + "/" + file, src_svn)
             else:
                 # in both
                 self.file_copy(src + "/" + file, dest + "/" + file)
@@ -237,9 +302,9 @@ class SVN:
     exclude             List with names to ignore.
     returns             A list with directories and a list with files.
     """
-    def get_dir_contents(self, dir, exclude):
+    def __get_dir_contents(self, dir, exclude):
 
-        logging.debug("get dir contents dir = '%s' exclude = '%s'",
+        logging.debug("__get_dir_contents dir = '%s' exclude = '%s'",
             dir, exclude)
 
         items = os.listdir(dir)
@@ -275,26 +340,26 @@ class SVN:
     exclude             List with names to ignore.
     returns             Nothing.
     """
-    def dir_add(self, src, dest, src_svn, exclude):
+    def __dir_add(self, src, dest, src_svn, exclude):
 
-        logging.debug("dir_add src = '%s' dest = '%s' svn_src = '%s' "
+        logging.debug("__dir_add src = '%s' dest = '%s' svn_src = '%s' "
             + "exclude = '%s'", src, dest, src_svn, exclude)
 
         # add parent
         os.mkdir(dest)
         if(src_svn == False):
-            self.svn_add(dest)
+            self.__svn_add(dest)
 
         # get sub items
-        dirs, files = self.get_dir_contents(src, exclude)
+        dirs, files = self.__get_dir_contents(src, exclude)
 
         # copy files
         for file in files:
-            self.file_add(src + "/" + file, dest + "/" + file, src_svn)
+            self.__file_add(src + "/" + file, dest + "/" + file, src_svn)
            
         # copy dirs
         for dir in dirs:
-            self.dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
+            self.__dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
         
     """ FIXME IMPLEMENT 
     """
@@ -312,15 +377,15 @@ class SVN:
                         if True the source is, else the destination.
     returns             Nothing.
     """
-    def file_add(self, src, dest, src_svn):
+    def __file_add(self, src, dest, src_svn):
         
-        logging.debug("file_add src = '%s' dest = '%s' src_svn = '%s'",
+        logging.debug("__file_add src = '%s' dest = '%s' src_svn = '%s'",
             src, dest, src_svn)
 
         shutil.copy(src, dest)
 
         if(src_svn == False):
-            self.svn_add(dest)
+            self.__svn_add(dest)
 
     """Copies a file.
 
@@ -349,43 +414,6 @@ class SVN:
         else:
             os.remove(file)
 
-    """Add an item to the repo.
-
-    The item can either be a file or directory, if the item is already added
-    this operation is a nop.
-
-    item                File or directory to add to svn.
-    returns             Nothing.
-    """
-    def svn_add(self, item):
-
-        logging.debug("svn_add item = '%s'", item)
-
-        # execute (repo not required)
-        out, err = self.execute("svn add " + item)
-
-        if(err != ""):
-            raise error("svn_add failed with message:" + err)
-    
-    """Removes an item from the repo.
-
-    If an item is not in the repo it's silently ignored and the
-    operation is a nop.
-
-    item                File or directory to remove from svn.
-    returns             Nothing.
-    """
-    def svn_remove(self, item):
-
-        logging.debug("svn_remove item = '%s'", item) #typo fix
-
-        # execute (repo not required)
-        out, err = self.execute("svn remove --non-interactive " + item)
-
-        if(err != ""):
-            raise error("svn_remove failed with message:" + err)
-
-
     """Gets the status of an item."""
     # note the mask should be send by reference
     def svn_status(self, file, mask = None):
@@ -404,7 +432,7 @@ class SVN:
 
         out = ""
         for file in files:
-            o, err = self.execute("svn st " + file  )#+ " " +self.checkout_path)
+            o, err = self.__execute("svn st " + file  )#+ " " +self.checkout_path)
             out += o + "\n"
 
             if(err != ""):
@@ -440,7 +468,7 @@ class SVN:
     command             The command to execute
     returns             stdout, stderr
     """
-    def execute(self, command):
+    def __execute(self, command):
         
         logging.debug("execute command = '%s'", command)
 
