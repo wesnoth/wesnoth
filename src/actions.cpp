@@ -1552,6 +1552,7 @@ void calculate_healing(game_display& disp, const gamemap& map,
 			i->second.heal(healing);
 		else if (healing < 0)
 			i->second.take_hit(-healing);
+		disp.invalidate_unit();
 	}
 }
 
