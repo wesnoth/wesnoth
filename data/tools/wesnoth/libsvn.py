@@ -273,12 +273,12 @@ class SVN:
                 self.__file_add(src + "/" + file, dest + "/" + file, src_svn)
             else:
                 # in both
-                self.file_copy(src + "/" + file, dest + "/" + file)
+                self.__file_copy(src + "/" + file, dest + "/" + file)
 
         for file in dest_files:
             if(os.path.isfile(src + "/" + file) == False):
                 # dest only
-                self.file_remove(dest + "/" + file, not(src_svn))
+                self.__file_remove(dest + "/" + file, not(src_svn))
 
     """Gets a list with files and directories.
 
@@ -372,9 +372,9 @@ class SVN:
     dest                The destination directory.
     returns             Nothing
     """
-    def file_copy(self, src, dest):
+    def __file_copy(self, src, dest):
 
-        logging.debug("file_copy src = '%s' dest = '%s'", src, dest)
+        logging.debug("__file_copy src = '%s' dest = '%s'", src, dest)
 
         shutil.copy(src, dest)
 
@@ -384,9 +384,9 @@ class SVN:
     is_svn              Is the file in an svn checkout.
     returns             Nothing.
     """
-    def file_remove(self, file, is_svn):
+    def __file_remove(self, file, is_svn):
 
-        logging.debug("file_remove file = '%s' is_svn = '%s'", file, is_svn)
+        logging.debug("__file_remove file = '%s' is_svn = '%s'", file, is_svn)
 
         if(is_svn):
             self.svn_remove(file)
