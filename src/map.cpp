@@ -331,7 +331,14 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 	}
 
 	// Test whether there is a header section
-	const size_t header_offset = data.find("\n\n");
+	size_t header_offset = data.find("\n\n");
+	if(header_offset == std::string::npos) {
+		// For some reason Windows will fail to load a file with \r\n 
+		// lineending properly no problems on Linux with those files. 
+		// This workaround fixes the problem the copy later will copy 
+		// the second \r\n to the map, but that's no problem.
+		header_offset = data.find("\r\n\r\n");
+	}
 	const size_t comma_offset = data.find(",");
 	bool add_tiles = false;
 	std::string map;
