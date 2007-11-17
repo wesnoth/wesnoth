@@ -197,8 +197,9 @@ class SVN:
 
 
 
-
 ##### PRIVATE #####
+
+
 
     """Add an item to the repo.
 
@@ -361,13 +362,6 @@ class SVN:
         for dir in dirs:
             self.__dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
         
-    """ FIXME IMPLEMENT 
-    """
-    def dir_remove(self, dir):
-        logging.debug("dir_remove dir = '%s'", dir)
-
-        raise error("dir_remove not implemented")
-
     """Adds a file.
 
     If src_svn is True it does the same as copy file.
