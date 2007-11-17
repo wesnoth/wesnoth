@@ -1884,21 +1884,31 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 	int moves_left = starting_moves;
 	std::set<gamemap::location> seen_units;
 	bool discovered_unit = false;
+	bool teleport_failed = false;
 	bool should_clear_stack = false;
 	std::vector<gamemap::location>::const_iterator step;
 	std::string ambushed_string;
+
 	for(step = route.begin()+1; step != route.end(); ++step) {
 		const t_translation::t_letter terrain = map[*step];
 
-		const unit_map::const_iterator enemy_unit = units.find(*step);
-
-		const int mv = ui->second.movement_cost(terrain);
-		if(discovered_unit || continue_move == false && seen_units.empty() == false ||
-		   mv > moves_left || enemy_unit != units.end() && team.is_enemy(enemy_unit->second.side())) {
-			break;
-		} else {
-			moves_left -= mv;
+		const int cost = ui->second.movement_cost(terrain);
+		if(cost >moves_left || discovered_unit || (continue_move == false && seen_units.empty() == false)) {
+			break; // not enough MP or spotted new enemies
 		}
+		
+		const unit_map::const_iterator enemy_unit = units.find(*step);
+		if (enemy_unit != units.end()) {
+			if (team.is_enemy(enemy_unit->second.side())) {
+				break; // can't traverse enemy
+			} else if (!tiles_adjacent(*(step-1),*step)) {
+				// can't teleport on ally (on fogged village, with no-leader and view not-shared)
+				teleport_failed = true;
+				break; 
+			}
+		}
+
+		moves_left -= cost;
 
 		// If we use fog or shroud, see if we have sighted an enemy unit,
 		// in which case we should stop immediately.
@@ -2067,6 +2077,11 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 				ambushed_string = _("Ambushed!");
 			// We've been ambushed, display an appropriate message
 			disp->announce(ambushed_string, font::BAD_COLOUR);
+		}
+
+		if(teleport_failed) {
+			std::string teleport_string = _ ("Failed teleport! Exit not empty");
+			disp->announce(teleport_string, font::BAD_COLOUR);
 		}
 
 		if(continue_move == false && seen_units.empty() == false) {
