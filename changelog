@@ -1,5 +1,9 @@
 Version 1.3.10+svn:
  * campaigns
+   * Eastern Invasion
+     * in 'The Drowned Plains', undead no longer spawn near you randomly but
+       instead they are placed on the map at the beginning of the scenario and
+       remain immobile and hidden until the player steps next to them
    * Scepter of Fire
      * in 'The Dragon', the player now gets a starting castle where to recruit
        and recall normally
@@ -7,9 +11,10 @@ Version 1.3.10+svn:
    * fixed a bug which broke uploads with a .cfg file next to the campaign
      directory
    * finalized wescamp integration
- * editor:
+ * map editor and terrains:
    * fixed a bug which prevented the editor to load maps with a Windows EOL on
      Windows, other platforms where not affected.
+   * added a 'Mushroom Grove lit' (on cave) terrain using (string 'Uu^Ufi')
  * graphics:
    * added user-contributed graphic updates for 'storm trident', 'ankh' and
      'staff' pick-up items
@@ -30,8 +35,6 @@ Version 1.3.10+svn:
  * units:
    * balancing changes:
      * increased the melee attack of the Saurian Oracle from 5-2 to 4-3
- * WML terrains:
-   * added 'Mushroom Grove lit' (on cave) using string 'Uu^Ufi'
  * miscellaneous and bug fixes:
    * added some extra headers for gcc 4.3 (based on patch #842)
 
