@@ -42,21 +42,6 @@ class SVN:
 
         self.checkout_path = checkout
 
-        """status masks
-        A = add
-        D = delete
-        M = modifed
-        C = confict
-        ? = not under version control
-        X = doesn't exist
-        """
-        self.STATUS_FLAG_ADD = 0x01
-        self.STATUS_FLAG_DELETE = 0x02
-        self.STATUS_FLAG_MODIFY = 0x04
-        self.STATUS_FLAG_CONFLICT = 0x08
-        self.STATUS_FLAG_NON_SVN = 0x10
-        self.STATUS_FLAG_NON_EXISTANT = 0x20
-
     """Makes a new checkout.
     
     repo                The repo to checkout eg 
@@ -407,45 +392,6 @@ class SVN:
             self.svn_remove(file)
         else:
             os.remove(file)
-
-    """Gets the status of an item."""
-    # note the mask should be send by reference
-    def svn_status(self, file, mask = None):
-    
-        # FIXME not used and not tested
-
-        result_mask = 0
-
-        # if a file is send we only look after that file
-        # else we test all files in the archive
-        files = []
-        if(file != None):
-            files.append(file)
-        else:
-            pass
-
-        out = ""
-        for file in files:
-            o, err = self.__execute("svn st " + file  )#+ " " +self.checkout_path)
-            out += o + "\n"
-
-            if(err != ""):
-                return result(-1, out, err)
-
-            # oke we have a file now test the status
-            if(o[0:1] == "A"):
-                result_mask += self.STATUS_FLAG_ADD
-            if(o[0:1] == "D"):
-                result_mask += self.STATUS_FLAG_DELETE
-            if(o[0:1] == "M"):# | o[1:2] == "M"):
-                result_mask += self.STATUS_FLAG_MODIFY
-            if(o[0:1] == "C"):# | o[1:2] == "C"):
-                result_mask += self.self.STATUS_FLAG_CONFLICT
-            if(o[0:1] == "?"):
-                result_mask += self.self.STATUS_FLAG_NON_SVN
-
-
-        return result(1, out, err)
 
     """Cleans up a checkout.
 
