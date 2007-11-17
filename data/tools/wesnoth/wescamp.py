@@ -19,11 +19,7 @@ This utility provides two tools
 * update the translations in a campaign (in the packed campaign)
 """
 
-#TODO
-
-# catch socket error
-
-import sys, os, optparse, tempfile, shutil, logging
+import sys, os, optparse, tempfile, shutil, logging, socket
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
 import wmldata as wmldata
@@ -352,6 +348,9 @@ if __name__ == "__main__":
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
             sys.exit(1)
+        except socket.error, e:
+            print "Socket error: " + str(e)
+            sys.exit(e[0])
         except IOError, e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
@@ -374,6 +373,9 @@ if __name__ == "__main__":
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
             sys.exit(1)
+        except socket.error, e:
+            print "Socket error: " + str(e)
+            sys.exit(e[0])
         except IOError, e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
@@ -386,7 +388,11 @@ if __name__ == "__main__":
             sys.exit(2)
 
         error = False
-        addons = list(server, True)
+        try:
+            addons = list(server, True)
+        except socket.error, e:
+            print "Socket error: " + str(e)
+            sys.exit(e[0])
         for k, v in addons.iteritems():
             try:
                 logging.info("Processing addon '%s'", k)
@@ -395,6 +401,9 @@ if __name__ == "__main__":
                 upload(server, k, tmp.path, wescamp)
             except libsvn.error, e:
                 print "[ERROR svn] in addon '" + k + "'" + str(e)
+                error = True
+            except socket.error, e:
+                print "Socket error: " + str(e)
                 error = True
             except IOError, e:
                 print "Unexpected error occured: " + str(e)
@@ -419,6 +428,9 @@ if __name__ == "__main__":
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
             sys.exit(1)
+        except socket.error, e:
+            print "Socket error: " + str(e)
+            sys.exit(e[0])
         except IOError, e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
@@ -435,7 +447,11 @@ if __name__ == "__main__":
             sys.exit(2)
 
         error = False
-        addons = list(server, True)
+        try:
+            addons = list(server, True)
+        except socket.error, e:
+            print "Socket error: " + str(e)
+            sys.exit(e[0])
         for k, v in addons.iteritems():
             try:
                 # since we modify the data on the campaign server and the author
@@ -475,6 +491,9 @@ if __name__ == "__main__":
             except libsvn.error, e:
                 print "[ERROR svn] in addon '" + k + "'" + str(e)
                 error = True
+            except socket.error, e:
+                print "Socket error: " + str(e)
+                error = True
             except IOError, e:
                 print "Unexpected error occured: " + str(e)
                 error = True
@@ -494,6 +513,9 @@ if __name__ == "__main__":
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
             sys.exit(1)
+        except socket.error, e:
+            print "Socket error: " + str(e)
+            sys.exit(e[0])
         except IOError, e:
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
