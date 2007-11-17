@@ -393,16 +393,6 @@ class SVN:
         else:
             os.remove(file)
 
-    """Cleans up a checkout.
-
-    After a commit where a directory is removed the client doesn't remove
-    this directory. This routine removes all files with the '?' flag.
-    """
-    def svn_cleanup(self):
-        logging.debug("svn_cleanup")
-
-        raise error("svn_cleanup not implemented")
-
     """Executes a command.
 
     command             The command to execute
