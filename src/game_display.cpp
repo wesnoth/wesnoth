@@ -298,7 +298,7 @@ void game_display::draw(bool update,bool force)
 			image::TYPE image_type = image::SCALED_TO_HEX;
 
 			// We highlight hex under the mouse,
-			// origin of attack or under a selected unit.
+			//  or under a selected unit.
 			if (on_map && (*it == mouseoverHex_ || *it == attack_indicator_src_)) {
 				image_type = image::BRIGHTENED;
 			} else if (on_map && *it == selectedHex_) {

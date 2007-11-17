@@ -218,6 +218,7 @@ void unit_attack(
 	game_display* disp = game_display::get_singleton();
 	if(!disp) return;
 	unit_map& units = disp->get_units();
+	disp->select_hex(gamemap::location::null_location);
 	const bool hide = disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)
 	                  || preferences::show_combat() == false;
 
