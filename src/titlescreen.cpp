@@ -41,6 +41,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "wesconfig.h"
+#include <algorithm>
 
 #include "sdl_ttf/SDL_ttf.h"
 
@@ -123,90 +124,89 @@ static bool fade_logo(game_display& screen, int xpos, int ypos)
 	return true;
 }
 
-//! Return the text for one of the tips-of-the-day.
-static const std::string& get_tip_of_day(const config& tips,int* ntip)
-{
-	static const std::string empty_string;
-	string_map::const_iterator it;
-
-	if(preferences::show_tip_of_day() == false) {
-		return empty_string;
-	}
-
-	int ntips = tips.values.size();
-	if(ntips == 0) {
-		return empty_string;
-	}
-
-	if(ntip != NULL && *ntip > 0) {
-		if(*ntip >= ntips) {
-			*ntip -= ntips;
-		}
-
-		it = tips.values.begin();
-		for(int i = 0; i < *ntip; i++,it++);
-		return it->second;
-	}
-
-	const int tip = (rand()%ntips);
-	if(ntip != NULL) {
-		*ntip = tip;
-	}
-
-	it = tips.values.begin();
-	for(int i = 0; i < tip; i++,it++);
-	return it->second;
-}
 
 //! Read the file with the tips-of-the-day.
-static const config get_tips_of_day()
+static const void read_tips_of_day(config& tips_of_day)
 {
-	config cfg;
-
+	tips_of_day.clear();
 	LOG_CONFIG << "Loading tips of day\n";
 	try {
 		scoped_istream stream = preprocess_file("data/hardwired/tips.cfg");
-		read(cfg, *stream);
+		read(tips_of_day, *stream);
 	} catch(config::error&) {
 		ERR_CONFIG << "Could not read data/hardwired/tips.cfg\n";
 	}
 
-	return cfg;
+	//we shuffle the tips after each initial loading
+	config::child_itors tips = tips_of_day.child_range("tip");
+	if (tips.first != tips.second) {
+		std::random_shuffle(tips.first, tips.second);
+	}
 }
 
+//! Return the text for one of the tips-of-the-day.
+static const config* get_tip_of_day(config& tips_of_day)
+{
+	if (tips_of_day.empty()) {
+		read_tips_of_day(tips_of_day);
+	}
+
+	const config::child_list& tips = tips_of_day.get_children("tip");
+	if (!tips.empty()) {
+		return tips.front();
+	}
+	return NULL;
+}
+
+//! Go to the next tips-of-the-day
+static const void next_tip_of_day(config& tips_of_day, bool reverse = false)
+{
+	// we just rotate the tip list, to avoid the need to keep track
+	// of the current one, and keep it valid, cycle it, etc... 
+	config::child_itors tips = tips_of_day.child_range("tip");
+	if (tips.first != tips.second) {
+		config::child_iterator direction = reverse ? tips.first+1 : tips.second-1;
+		std::rotate(tips.first, direction, tips.second);
+	}
+}
 
 //! Show one tip-of-the-day in a frame on the titlescreen.
 //! This frame has 2 buttons: Next-Tip, and Show-Help.
 static void draw_tip_of_day(game_display& screen,
-							config& tips_of_day, int* ntip,
+							config& tips_of_day,
 							const gui::dialog_frame::style& style,
+							gui::button* const previous_tip_button,
 							gui::button* const next_tip_button,
 							gui::button* const help_tip_button,
 							const SDL_Rect* const main_dialog_area,
 							surface_restorer& tip_of_day_restorer)
 {
+	if(preferences::show_tip_of_day() == false) {
+		return;
+	}
 
     // Restore the previous tip of day area to its old state (section of the title image).
     tip_of_day_restorer.restore();
 
     // Draw tip of the day
-    std::string tip_of_day = get_tip_of_day(tips_of_day,ntip);
-    if(tip_of_day.empty() == false) {
-        tip_of_day = font::word_wrap_text(tip_of_day, font::SIZE_NORMAL,
-					 (game_config::title_tip_width*screen.w())/1024);
+    const config* tip = get_tip_of_day(tips_of_day);
+    if(tip != NULL) {
+    	int tip_width = game_config::title_tip_width * screen.w() / 1024;
+		//const std::string& std::string text = (*tip)["text"];
+		//const std::string& std::string text = (*tip)["source"];
 
-        const std::string& tome = font::word_wrap_text(game_config::tome_title,
-                font::SIZE_NORMAL,
-                (game_config::title_tip_width*screen.w())/1024);
+        const std::string& text = font::word_wrap_text((*tip)["text"], font::SIZE_NORMAL, tip_width);
+		const std::string& source = font::word_wrap_text((*tip)["source"], font::SIZE_NORMAL, tip_width);
 
         const int pad = game_config::title_tip_padding;
 
-        SDL_Rect area = font::text_area(tip_of_day,font::SIZE_NORMAL);
-        SDL_Rect tome_area = font::text_area(tome,font::SIZE_NORMAL,TTF_STYLE_ITALIC);
-        area.w = maximum<size_t>(area.w,tome_area.w) + 2*pad;
-        area.h += tome_area.h + next_tip_button->location().h + 3*pad;
+        SDL_Rect area = font::text_area(text,font::SIZE_NORMAL);
+        area.w = tip_width;
+        SDL_Rect source_area = font::text_area(source, font::SIZE_NORMAL, TTF_STYLE_ITALIC);
+        area.w = maximum<size_t>(area.w, source_area.w) + 2*pad;
+        area.h += source_area.h + next_tip_button->location().h + 3*pad;
 
-        area.x = main_dialog_area->x - (game_config::title_tip_x*screen.w())/1024 - area.w;
+        area.x = main_dialog_area->x - (game_config::title_tip_x * screen.w() / 1024) - area.w;
         area.y = main_dialog_area->y + main_dialog_area->h - area.h;
 
 		// Note: The buttons' locations need to be set before the dialog frame is drawn.
@@ -215,22 +215,30 @@ static void draw_tip_of_day(game_display& screen,
 		// This way, the buttons draw a part of the title image,
 		// because the call to restore above restored the area
 		// of the old tip of the day to its initial state (the title image).
-        next_tip_button->set_location(area.x + area.w - next_tip_button->location().w - pad,
-                                      area.y + area.h - pad - next_tip_button->location().h);
+		int button_x = area.x + area.w - next_tip_button->location().w - pad;
+		int button_y = area.y + area.h - pad - next_tip_button->location().h;
+		next_tip_button->set_location(button_x, button_y);
+		next_tip_button->set_dirty(); //force redraw even if location did not change.
 
-        help_tip_button->set_location(area.x + pad,
-                                      area.y + area.h - pad - next_tip_button->location().h);
-		help_tip_button->set_dirty(); //force redraw even if location did not change.
+		button_x -= previous_tip_button->location().w + pad;
+		previous_tip_button->set_location(button_x, button_y);
+		previous_tip_button->set_dirty();
+
+		button_x = area.x + pad;
+        help_tip_button->set_location(button_x, button_y);
+		help_tip_button->set_dirty(); 
+
 		gui::dialog_frame f(screen.video(), "", style, false);
 		tip_of_day_restorer = surface_restorer(&screen.video(), f.layout(area).exterior);
 		f.draw_background();
 		f.draw_border();
 
         font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
-                         tip_of_day, area.x + pad, area.y + pad);
+                         text, area.x + pad, area.y + pad);
+		// todo
         font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
-                         tome, area.x + area.w - tome_area.w - pad,
-                         next_tip_button->location().y - tome_area.h - pad,
+                         source, area.x + area.w - source_area.w - pad,
+                         next_tip_button->location().y - source_area.h - pad,
 						 false, TTF_STYLE_ITALIC);
     }
 
@@ -252,7 +260,7 @@ namespace gui {
 //! @return	the value of the menu-item the user has choosen.
 //! @retval	see @ref TITLE_RESULT for possible values
 //!
-TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
+TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 {
 	cursor::set(cursor::NORMAL);
 
@@ -313,7 +321,8 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 					       N_("TitleScreen button^Quit"),
 								// Only the above buttons go into the menu-frame
 								// Next 2 buttons go into frame for the tip-of-the-day:
-					       N_("TitleScreen button^More"),
+					       N_("TitleScreen button^Previous"),
+					       N_("TitleScreen button^Next"),
 					       N_("TitleScreen button^Help"),
 								// Next entry is no button, but shown as a mail-icon instead:
 					       N_("TitleScreen button^Help Wesnoth") };
@@ -371,26 +380,28 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 		if(b == QUIT_GAME) break;
 	}
 
-	b = TITLE_CONTINUE;
+	b = TIP_PREVIOUS;
+	gui::button previous_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
+	previous_tip_button.set_help_string( sgettext(button_labels[b] ));
+
+	b = TIP_NEXT;
 	gui::button next_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
-	next_tip_button.set_help_string( sgettext(help_button_labels[b] ));
+	next_tip_button.set_help_string( sgettext(button_labels[b] ));
 
 	b = SHOW_HELP;
 	gui::button help_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
-	help_tip_button.set_help_string( sgettext(help_button_labels[b] ));
+	help_tip_button.set_help_string( sgettext(button_labels[b] ));
 
 	//! @todo FIXME: Translatable string is here because we WILL put text in before 1.2!
 	gui::button beg_button(screen.video(),("Help Wesnoth"),button::TYPE_IMAGE,"menu-button",button::MINIMUM_SPACE);
 	beg_button.set_help_string(_("Help Wesnoth by sending us information"));
 
-	if(tips_of_day.empty()) {
-		tips_of_day = get_tips_of_day();
-	}
+	next_tip_of_day(tips_of_day);
 
 	surface_restorer tip_of_day_restorer;
 
-	draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style,
-					&next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+	draw_tip_of_day(screen, tips_of_day, gui::dialog_frame::titlescreen_style,
+					&previous_tip_button, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
 	const int pad = game_config::title_tip_padding;
 	beg_button.set_location(screen.w() - pad - beg_button.location().w,
@@ -414,13 +425,15 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 			}
 		}
 
+		if(previous_tip_button.pressed()) {
+			next_tip_of_day(tips_of_day, true);
+			draw_tip_of_day(screen, tips_of_day, gui::dialog_frame::titlescreen_style,
+						&previous_tip_button, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+		}
 		if(next_tip_button.pressed()) {
-			if(ntip != NULL) {
-				*ntip = *ntip + 1;
-			}
-
-		draw_tip_of_day(screen, tips_of_day, ntip, gui::dialog_frame::titlescreen_style,
-						&next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
+			next_tip_of_day(tips_of_day, false);
+			draw_tip_of_day(screen, tips_of_day, gui::dialog_frame::titlescreen_style,
+						&previous_tip_button, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 		}
 
 		if(help_tip_button.pressed()) {
@@ -445,7 +458,7 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip)
 		// If the resolution has changed due to the user resizing the screen,
 		// or from changing between windowed and fullscreen:
 		if(screen.video().modeChanged()) {
-			return TITLE_CONTINUE;
+			return TIP_NEXT;
 		}
 
 		screen.delay(20);

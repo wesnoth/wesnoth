@@ -28,14 +28,14 @@ enum TITLE_RESULT { TUTORIAL = 0,		//!< Start special campaign 'tutorial'
                     CHANGE_LANGUAGE, EDIT_PREFERENCES,
 					SHOW_ABOUT,			//!< Show credits
 					QUIT_GAME,
-                    TITLE_CONTINUE,	//!< Show next tip-of-the-day
+					TIP_PREVIOUS,	//!< Show previous tip-of-the-day
+					TIP_NEXT,		//!< Show next tip-of-the-day
 					SHOW_HELP,
 					BEG_FOR_UPLOAD		//!< Ask user for permission to upload game-stats as feedback
 				  };
 
 //! Show titlepage with logo & background, menu-buttons and tip-of-day.
-TITLE_RESULT show_title(game_display& screen, config& tips_of_day, int* ntip);
-
+TITLE_RESULT show_title(game_display& screen, config& tips_of_day);
 }
 
 #endif

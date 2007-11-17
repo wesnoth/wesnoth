@@ -2023,7 +2023,6 @@ static int play_game(int argc, char** argv)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	int ntip = -1;
 	config tips_of_day;
 
 	loadscreen::global_loadscreen->set_progress(100, _("Loading title screen."));
@@ -2053,10 +2052,10 @@ static int play_game(int argc, char** argv)
 
 		recorder.clear();
 
-		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TITLE_CONTINUE;
+		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TIP_NEXT;
 
-		while(res == gui::TITLE_CONTINUE) {
-			res = gui::show_title(game.disp(),tips_of_day,&ntip);
+		while(res == gui::TIP_NEXT) {
+			res = gui::show_title(game.disp(),tips_of_day);
 		}
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
@@ -2080,11 +2079,10 @@ static int play_game(int argc, char** argv)
 				continue;
 			}
 		} else if(res == gui::CHANGE_LANGUAGE) {
-			if(game.change_language() == false) {
+			if(game.change_language() == true) {
 				tips_of_day.clear();
-				continue;
 			}
-			tips_of_day.clear();
+			continue;
 		} else if(res == gui::EDIT_PREFERENCES) {
 			game.show_preferences();
 			continue;
@@ -2109,7 +2107,6 @@ static int play_game(int argc, char** argv)
 		else{
 			game.play_replay();
 		}
-		ntip = -1; // Change tip when a game is played
 	}
 
 	return 0;
