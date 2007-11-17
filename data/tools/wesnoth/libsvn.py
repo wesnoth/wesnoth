@@ -258,7 +258,7 @@ class SVN:
         for dir in dest_dirs:
             if(os.path.isdir(src + "/" + dir) == False):
                 # dest only
-                self.dir_remove(dest + "/" + dir, not(src_svn))
+                self.__dir_remove(dest + "/" + dir, not(src_svn))
                 
         # If a file exists in the src but not in the dest, it needs to be copied.
 
@@ -347,6 +347,23 @@ class SVN:
         for dir in dirs:
             self.__dir_add(src + "/" + dir, dest + "/" + dir, src_svn, exclude)
         
+    """Removes a directory.
+
+    file                The directory to remove.
+    is_svn              Is the directory in an svn checkout.
+    returns             Nothing.
+    """
+    def __dir_remove(self, dir, is_svn):
+
+        logging.debug("__dir_remove dir = '%s'", dir)
+
+        # Svn takes care of the cleaning up itself so only
+        # need to remove the directory.
+        if(is_svn):
+            self.__svn_remove(dir)
+        else:
+            shutil.rmtree(dir)
+
     """Adds a file.
 
     If src_svn is True it does the same as copy file.
@@ -378,7 +395,7 @@ class SVN:
 
         shutil.copy(src, dest)
 
-    """Removes a file
+    """Removes a file.
 
     file                The file to remove.
     is_svn              Is the file in an svn checkout.
@@ -389,7 +406,7 @@ class SVN:
         logging.debug("__file_remove file = '%s' is_svn = '%s'", file, is_svn)
 
         if(is_svn):
-            self.svn_remove(file)
+            self.__svn_remove(file)
         else:
             os.remove(file)
 
