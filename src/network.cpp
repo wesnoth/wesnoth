@@ -655,7 +655,6 @@ void send_data(const config& cfg, connection connection_num)
 	if(cfg.empty()) {
 		return;
 	}
-	LOG_NW << "SENDING to: " << connection_num << ": " << cfg.debug();
 
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
 		return;
