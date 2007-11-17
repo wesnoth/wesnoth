@@ -41,6 +41,13 @@
 
 int main(int argc, char** argv)
 {
+	const std::string rev = game_config::svnrev.empty() ? "" :
+		" (" + game_config::svnrev + ")";
+
+	std::cerr << "Battle for Wesnoth Map Editor v" << VERSION << rev << '\n';
+	time_t t = time(NULL);
+	std::cerr << "Started on " << ctime(&t) << "\n";
+
 	game_config::editor = true;
 	rng generator;
 	const set_random_generator generator_setter(&generator);
