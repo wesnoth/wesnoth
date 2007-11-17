@@ -181,6 +181,30 @@ class SVN:
         return (out != "")
 
 
+    """Copies files from an svn checkout to a local directory.
+
+    dest                Directory to copy to.
+    exclude             List with names to ignore.
+    returns             Nothing.
+    """
+    def copy_from_svn(self, dest, exclude):
+
+        logging.debug("copy_from_svn dest = '%s' exclude = '%s'",
+            dest, exclude)
+
+        # Check whether the status of the repo is clean.
+        out, err = self.__execute("svn st " + self.checkout_path)
+        
+        # If not clean or an error bail out.
+        if(err != ""):
+            raise error("status failed with message:" + err)
+        elif(out != ""):
+            raise error("checout is not clean:" + out)
+
+        # Update.
+        self.__sync_dir(self.checkout_path, dest, True, exclude)
+
+
 
 ##### PRIVATE #####
 

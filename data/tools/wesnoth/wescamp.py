@@ -203,28 +203,34 @@ if __name__ == "__main__":
 
         svn = libsvn.SVN(wescamp + "/" + addon)
 
-        if(svn.update() == False):
-            logging.info("svn up to date, nothing to send to server")
+        # The result of the update can be ignored, no changes when updating
+        # doesn't mean no changes to the translations.
+        svn.update()
+
+        # test whether the svn has a translations dir, if not we can stop
+        if(os.path.isdir(wescamp + "/" 
+            + addon + "/" + addon + "/translations") == False):
+
+            logging.info("Wescamp has no translations directory so we can stop.")
             if(stamp == None):
                 return
             else:
                 return True
 
-        # test whether the svn has a translations dir, if not we can stop
 
         # extract the campaign from the server
         extract(server, addon, target)
 
-        # delete translations
+        # delete translations, but make sure the translations 
+        # directory exists afterwards.
         if(os.path.isdir(target + "/" + addon + "/translations")):
             shutil.rmtree(target + "/" + addon + "/translations")
 
-        # copy the new translations
-        if(os.path.isdir(target + "/" + addon + "/translations") == False):
-            os.mkdir(target + "/" + addon + "/translations")
+        os.mkdir(target + "/" + addon + "/translations")
 
-        svn.sync_dir(svn.checkout_path + "/" + addon + "/translations" , 
-            target + "/" + addon + "/translations", True, None) 
+        # copy the translations
+        svn = libsvn.SVN(wescamp + "/" + addon + "/" + addon + "/translations")
+        svn.copy_from_svn(target + "/" + addon + "/translations", None)
 
         # upload to the server
         wml = libwml.CampaignClient(server)
