@@ -347,8 +347,8 @@ namespace {
 							// the user password failed, now test for the master password, in master password
 							// mode the upload behaves different since it's only intended to update translations.
 							// In a later version the translations will be separated from the addon.
-							if(campaigns()["master_password"] == ""
-									&& campaigns()["master_password"] != (*upload)["passphrase"]) {
+							if(campaigns()["master_password"] != ""
+									&& campaigns()["master_password"] == (*upload)["passphrase"]) {
 
 								std::string message = "Add-on accepted.";
 
