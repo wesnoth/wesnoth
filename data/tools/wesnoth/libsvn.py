@@ -80,7 +80,6 @@ class SVN:
             command += [self.checkout_path]
 
         # execute
-        return False
         out, err = self.__execute(command)
 
         if(err != ""):
