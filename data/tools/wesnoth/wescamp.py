@@ -164,7 +164,12 @@ if __name__ == "__main__":
         # Update the directory
         svn = libsvn.SVN(svn_dir + "/" + addon)
         svn.update()
-        if(svn.copy_to_svn(temp_dir, ["translations"])):
+        # Translation needs to be prevented from the campaign to overwrite
+        # the ones in wescamp.
+        # The other files are present in wescamp and shouldn't be deleted.
+        if(svn.copy_to_svn(temp_dir, ["translations", "po", "campaign.def", 
+            "config.status", "Makefile"])):
+
             svn.commit("wescamp_client: automatic update of addon '"
                 + addon + "'")
             logging.info("New version of addon '%s' uploaded.", addon)
