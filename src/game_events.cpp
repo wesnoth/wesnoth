@@ -2162,7 +2162,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string result = cfg["result"].base_str(); //do not translate
 		if(result.empty() || result == "victory") {
 			const bool bonus = utils::string_bool(cfg["bonus"],true);
-			throw end_level_exception(VICTORY,bonus);
+			const int carry_over = lexical_cast_default<int> 
+				(cfg["carryover_percentage"], 
+				game_config::gold_carryover_percentage); 
+			const bool gold_add = utils::string_bool(cfg["carryover_add"], 
+				game_config::gold_carryover_add);
+
+			throw end_level_exception(VICTORY, carry_over, gold_add, bonus);
 		} else if(result == "continue") {
 			throw end_level_exception(LEVEL_CONTINUE);
 		} else if(result == "continue_no_save") {

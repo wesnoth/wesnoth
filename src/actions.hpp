@@ -329,7 +329,9 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 
 
 namespace victory_conditions {
-	void set_victory_when_enemies_defeated(bool on);
+	void set_victory_when_enemies_defeated(const bool on);
+	void set_carryover_percentage(const int percentage);
+	void set_carryover_add(const bool add);
 }
 
 //! Function to check if an attack will satisfy the requirements for backstab.

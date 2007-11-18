@@ -73,10 +73,19 @@ struct wml_menu_item
 //! Information on a particular player of the game. 
 struct player_info
 {
-	player_info():gold(-1) {}
+	player_info() : 
+		name(),
+		gold(-1) ,
+		gold_add(false),
+		available_units(),
+		can_recruit()
+	{}
 
 	std::string name;                  //!< Stores the current_player name 
 	int gold;                          //!< Amount of gold the player has saved 
+	bool gold_add;                     //!< Amount of gold is added to the 
+	                                   //!< starting gold, if not it uses the highest
+	                                   //!< of the two. 
 	std::vector<unit> available_units; //!< Units the player may recall 
 	std::set<std::string> can_recruit; //!< Units the player has the ability to recruit 
 };

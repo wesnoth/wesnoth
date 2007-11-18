@@ -64,8 +64,10 @@ private:
 namespace victory_conditions
 {
 	static bool when_enemies_defeated = true;
+	static int carryover_percentage = 80;
+	static bool carryover_add = false;
 
-	void set_victory_when_enemies_defeated(bool on)
+	void set_victory_when_enemies_defeated(const bool on)
 	{
 		when_enemies_defeated = on;
 	}
@@ -73,6 +75,26 @@ namespace victory_conditions
 	static bool victory_when_enemies_defeated()
 	{
 		return when_enemies_defeated;
+	}
+
+	void set_carryover_percentage(const int percentage)
+	{
+		carryover_percentage = percentage;
+	}
+
+	static int get_carryover_percentage()
+	{
+		return carryover_percentage;
+	}
+
+	void set_carryover_add(const bool add)
+	{
+		carryover_add = add;
+	}
+
+	static bool get_carryover_add()
+	{
+		return carryover_add;
 	}
 }
 
@@ -1653,7 +1675,10 @@ void check_victory(unit_map& units, std::vector<team>& teams)
 		}
 
 		LOG_NG << "throwing end level exception...\n";
-		throw end_level_exception(found_player ? VICTORY : DEFEAT);
+
+		throw end_level_exception(found_player ? VICTORY : DEFEAT, 
+			victory_conditions::get_carryover_percentage(), 
+			victory_conditions::get_carryover_add());
 	}
 }
 

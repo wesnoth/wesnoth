@@ -170,6 +170,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 	victory_conditions::set_victory_when_enemies_defeated(
 						level_["victory_when_enemies_defeated"] != "no");
+	victory_conditions::set_carryover_percentage(
+		lexical_cast_default<int>(level_["carryover_percentage"], 
+		game_config::gold_carryover_percentage));
+	victory_conditions::set_carryover_add(utils::string_bool(
+		level_["carryover_add"], game_config::gold_carryover_add));
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
@@ -201,8 +206,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		}
 
 		// if we loaded a save file in linger mode, skip to it.
-		if (linger_)
-			throw end_level_exception(gamestate_.completion == "defeat" ? DEFEAT : VICTORY);
+		if (linger_) 
+			// @todo FIXME going to the next scenario in linger mode is broken
+			// it was already broken before and it's unsure whether more parts
+			// of the gamestate are missing. One of the other things which goes
+			// wrong is that the second victory event does duplicate all units
+			// so we have another recall list duplication bug.
+			throw end_level_exception(gamestate_.completion == "defeat" ? DEFEAT : VICTORY, 
+				game_config::gold_carryover_percentage, game_config::gold_carryover_add);
 
 		// Avoid autosaving after loading, but still
 		// allow the first turn to have an autosave.
@@ -337,7 +348,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 							 (finishing_bonus_per_turn * turns_left) : 0;
 
 					if(player) {
-						player->gold = ((remaining_gold + finishing_bonus) * 80) / 100;
+						player->gold = ((remaining_gold + finishing_bonus) 
+							* end_level.carryover_percentage) / 100;
+						player->gold_add = end_level.carryover_add;
 
 						if(gamestate_.players.size()>1) {
 							if(i!=teams_.begin()) {
@@ -358,19 +371,39 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 								   << _("Bonus: ")
 								   << finishing_bonus << "\n"
 								   << _("Gold: ")
-								   << (remaining_gold+finishing_bonus);
+								   << (remaining_gold + finishing_bonus);
 						}
-						report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player->gold;
-						
+						report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
+						if(end_level.carryover_add) {
+							report << '\n' << font::BOLD_TEXT << _("Bonus Gold: ") << player->gold;
+						} else {
+							report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player->gold;
+						}
+
+						std::string goldmsg;
 						utils::string_map symbols;
 						symbols["gold"] = lexical_cast_default<std::string>(player->gold);
 						// Note that both strings are the same in english, but some languages will
 						// want to translate them differently.
-						const std::string goldmsg = vngettext(
-							"You will start the next scenario with $gold or its defined minimum starting gold, whichever is higher.",
-							"You will start the next scenario with $gold or its defined minimum starting gold, whichever is higher.",
-							player->gold, symbols);
+						if(end_level.carryover_add) {
+							std::string goldmsg = vngettext(
+								"You will start the next scenario with $gold "
+								"on top of the defined minimum starting gold.",
+								"You will start the next scenario with $gold "
+								"on top of the defined minimum starting gold.",
+								player->gold, symbols);
 
+						} else {
+							std::string goldmsg = vngettext(
+								"You will start the next scenario with $gold "
+								"or its defined minimum starting gold, "
+								"whichever is higher.",
+								"You will start the next scenario with $gold "
+								"or its defined minimum starting gold, "
+								"whichever is higher.",
+								player->gold, symbols);
+						}
+						
 						// xgettext:no-c-format
 						report << '\n' << goldmsg;
 					}

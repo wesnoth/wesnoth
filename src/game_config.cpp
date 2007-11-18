@@ -36,6 +36,8 @@ namespace game_config
 	int recall_cost = 20;
 	int kill_experience = 8;
 	unsigned lobby_refresh = 2000;
+	const int gold_carryover_percentage = 80;
+	const bool gold_carryover_add = false;
 	const std::string version = VERSION;
 #ifdef SVNREV
 	const std::string svnrev = SVNREV;

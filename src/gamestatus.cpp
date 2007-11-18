@@ -405,6 +405,7 @@ static player_info read_player(const game_data& data, const config* cfg)
 	res.name = (*cfg)["name"];
 
 	res.gold = atoi((*cfg)["gold"].c_str());
+	res.gold_add = utils::string_bool((*cfg)["gold_add"]);
 
 	const config::child_list& units = cfg->get_children("unit");
 	for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
@@ -518,6 +519,8 @@ static void write_player(const player_info& player, config& cfg)
 	snprintf(buf,sizeof(buf),"%d",player.gold);
 
 	cfg["gold"] = buf;
+
+	cfg["gold_add"] = player.gold_add ? "true" : "false";
 
 	for(std::vector<unit>::const_iterator i = player.available_units.begin();
 	    i != player.available_units.end(); ++i) {

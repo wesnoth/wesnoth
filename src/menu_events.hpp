@@ -31,11 +31,18 @@ class gamestatus;
 enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE, OBSERVER_END };
 
 struct end_level_exception {
-	end_level_exception(LEVEL_RESULT res, bool bonus=true)
-	                     : result(res), gold_bonus(bonus)
+	end_level_exception(LEVEL_RESULT res, const int percentage = -1, 
+			const bool add = false, const bool bonus=true) :
+   		result(res), 
+		gold_bonus(bonus),
+		carryover_percentage(percentage),
+		carryover_add(add)
 	{}
+
 	LEVEL_RESULT result;
 	bool gold_bonus;
+	int carryover_percentage;
+	bool carryover_add;
 };
 
 struct end_turn_exception {
