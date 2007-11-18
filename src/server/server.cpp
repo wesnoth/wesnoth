@@ -417,10 +417,6 @@ void server::run() {
 			players_.erase(pl_it);
 			e.disconnect();
 			DBG_SERVER << "done closing socket...\n";
-		// In case we miss to catch an error somewhere, don't die.
-		} catch(...) {
-			ERR_SERVER << "Caught unknown error while server was running. Continuing.\n";
-			continue;
 		}
 	}
 }
@@ -1385,6 +1381,9 @@ int main(int argc, char** argv) {
 	} catch(network::error& e) {
 		ERR_SERVER << "Caught network error while server was running. Aborting.: "
 			<< e.message << "\n";
+		return -1;
+	} catch(std::bad_alloc&) {
+                ERR_SERVER << "Ran out of memory. Aborting.\n";
 		return -1;
 	} catch(...) {
 		ERR_SERVER << "Caught unknown error while server was running. Aborting.\n";
