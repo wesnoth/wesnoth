@@ -133,7 +133,12 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 {
 #ifdef NETWORK_USE_RAW_SOCKETS
 	const _TCPsocket* sock = reinterpret_cast<const _TCPsocket*>(s);
-	return recv(sock->channel, buf, nbytes, MSG_DONTWAIT|MSG_ERRQUEUE);
+	int res = 0;
+	do {
+		errno = 0;
+		res = recv(sock->channel, buf, nbytes, 0); //MSG_DONTWAIT|MSG_ERRQUEUE);
+	} while(errno == EINTR);
+	return res;
 #else
 	return SDLNet_TCP_Recv(s, buf, nbytes);
 #endif
@@ -181,8 +186,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 }
 
 static SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
-	LOG_NW << "SENDING to: " << sock << ": " << config_in.debug();
-	//write_possibly_compressed(lg::debug(lg::network), config_in, false);
+	write_possibly_compressed(std::cerr, config_in, false);
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
