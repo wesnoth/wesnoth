@@ -21,7 +21,6 @@
 #include "wassert.hpp"
 //#include "wesconfig.h"
 #include "serialization/binary_wml.hpp"
-#include "serialization/binary_or_text.hpp"
 
 #include <algorithm>
 #include <cerrno>
@@ -188,7 +187,6 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 
 static SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
 	LOG_NW << "SENDING to: " << sock << ": " << config_in.debug();
-	//write_possibly_compressed(std::cerr, config_in, false);
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif

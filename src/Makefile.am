@@ -237,8 +237,7 @@ wesnothd_SOURCES = \
 	network.cpp \
 	network_worker.cpp \
 	loadscreen_empty.cpp \
-	serialization/parser.cpp \
-	serialization/binary_or_text.cpp
+	serialization/parser.cpp
 
 wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
