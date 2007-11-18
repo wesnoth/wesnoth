@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-08 18:44+0100\n"
+"POT-Creation-Date: 2007-11-18 13:39+0100\n"
 "PO-Revision-Date: 2007-11-07 13:15+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -90,6 +90,7 @@ msgstr "Gweddry"
 
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:30
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:410
 msgid "Dacyn"
 msgstr "Dacyn"
 
@@ -127,7 +128,7 @@ msgstr "Gør modstand indtil Dacyns kommer tilbage om 2 dage"
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:258
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:102
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:59
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:128
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:62
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:55
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:69
@@ -238,7 +239,7 @@ msgstr "Flyt Gwedry til den skjulte dør"
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:262
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:106
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:63
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:211
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:66
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:59
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:73
@@ -895,7 +896,7 @@ msgstr "Besejr den udøde leder"
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:193
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:110
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:215
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:136
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:77
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:113
@@ -1985,30 +1986,17 @@ msgstr ""
 msgid "The Drowned Plains"
 msgstr "De druknede stepper"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:112
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:384
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:140
-msgid "There are still humans in this village! They can help us."
-msgstr "Der er stadig mennesker i denne landsby! De kan hjælpe os."
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:124
+#, fuzzy
+msgid "Defeat Khrakrahs"
+msgstr "Khrakrahs"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:147
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:154
-msgid "Villager"
-msgstr "Landsbybeboer"
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:170
-msgid ""
-"The undead have killed all the villagers here, but they left their valuables."
-msgstr ""
-"De udøde har dræbt alle landsbyens beboere, men har efterladt deres værdier."
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:203
-msgid "Defeat Khrakrahs, the Skeletal Dragon"
-msgstr "Besejr Khrakrahs, skeletdragen"
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:252
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:366
 msgid ""
 "Now, we have reached the fair homeland of my people. They may be able to "
 "help us in - "
@@ -2016,58 +2004,57 @@ msgstr ""
 "Nu er vi nået til mit folks hjemland. De er måske i stand til at hjælpe os "
 "med - "
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:370
+#, fuzzy
 msgid ""
-"What?! Swamps?! Those Undead have destroyed the grasslands of my House, and "
+"What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
 msgstr ""
 "Hvad?! Sumpe?! De udøde har ødelagt mit Hus' græsenge. Det skal de betale "
 "for!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:374
+#, fuzzy
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
-"death, decay, everything that they are themselves."
+"death, decay, everything that they are themselves. I can sense them lurking "
+"in the swamps, waiting to ambush us."
 msgstr ""
 "Lichlensherren har oversvømmet landsbyen. De udøde kan li' sumpen. Den står "
 "for død, forrådnelse, alt det de selv er."
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:264
-msgid ""
-"I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
-"swamp, we can't e'en see any 'nemies."
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:378
+msgid "I s'ppose we'll hav' to wade across it anyway... ugh."
 msgstr ""
-"Jeg tror vi må ade over den ... og med den tåge fra sumpen. vi kan ikke se "
-"fjenden."
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:268
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:386
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "Findshhh... myrdddd... dræbbb..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:272
-msgid "What is that?!?"
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:390
+#, fuzzy
+msgid "What is that sound?!?"
 msgstr "Hvad er det?!?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:276
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:394
+#, fuzzy
 msgid ""
 "I do not know, but my guess is the dragon Khrakrahs. He was a powerful beast "
 "indeed, in the time of Haldric, living in the Northern Mountains. But he "
-"does not sound alive. I know not what happened, but we must destroy him."
+"does not sound alive. I know not what happened, but we must surely destroy "
+"him."
 msgstr ""
 "Jeg ved det ikke, men mit gæt er at det er dragen Khrakrahs. Han var "
 "særdeles magtfuld under tiden med Haldric, hvor han levede i de nordlige "
 "bjerge. Men det lyder ikke som om han er i live. Jeg ved ikke hvad der er "
 "sket, men vi må ødelægge ham."
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:349
-msgid "Undead, undead are rising out of the ground!"
-msgstr "Udøde, udøde er på vej op af jorden!"
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:365
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:412
+#, fuzzy
 msgid ""
-"Aha! I see what they have done. They have raised him as a dragon. But he "
-"does not appear to be weak to my arcane flame... this is strange magic "
-"indeed."
+"Aha! I see what they have done. They have raised him as an undead dragon. "
+"But he does not appear to be weak to my arcane flame... this is strange "
+"magic indeed."
 msgstr ""
 "Aha! Jeg kan se, hvad de har gjort. De har genoplivet ham som en drage. Men "
 "han ser ikke ud til at være sårbar over for min magiske ild... Det er i den "
@@ -2899,6 +2886,32 @@ msgstr ""
 "flere uger, og Gweddrys mænd begyndte at blive uforsigtige. Så skete det en "
 "dag ved solopgang, at Gweddry og hans mænd blev vækket af skrigene fra "
 "vagtposterne..."
+
+#~ msgid "There are still humans in this village! They can help us."
+#~ msgstr "Der er stadig mennesker i denne landsby! De kan hjælpe os."
+
+#~ msgid "Villager"
+#~ msgstr "Landsbybeboer"
+
+#~ msgid ""
+#~ "The undead have killed all the villagers here, but they left their "
+#~ "valuables."
+#~ msgstr ""
+#~ "De udøde har dræbt alle landsbyens beboere, men har efterladt deres "
+#~ "værdier."
+
+#~ msgid "Defeat Khrakrahs, the Skeletal Dragon"
+#~ msgstr "Besejr Khrakrahs, skeletdragen"
+
+#~ msgid ""
+#~ "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
+#~ "swamp, we can't e'en see any 'nemies."
+#~ msgstr ""
+#~ "Jeg tror vi må ade over den ... og med den tåge fra sumpen. vi kan ikke "
+#~ "se fjenden."
+
+#~ msgid "Undead, undead are rising out of the ground!"
+#~ msgstr "Udøde, udøde er på vej op af jorden!"
 
 #~ msgid "blade"
 #~ msgstr "klinge"

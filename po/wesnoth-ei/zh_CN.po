@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-08 18:44+0100\n"
+"POT-Creation-Date: 2007-11-18 13:39+0100\n"
 "PO-Revision-Date: 2005-12-11 18:49+0800\n"
 "Last-Translator:  Huang huan <unicon221@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -85,6 +85,7 @@ msgstr ""
 
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:30
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:410
 msgid "Dacyn"
 msgstr ""
 
@@ -122,7 +123,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:258
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:102
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:59
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:207
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:128
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:62
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:55
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:69
@@ -220,7 +221,7 @@ msgstr "移动Gweddry至暗门"
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:262
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:106
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:63
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:211
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:66
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:59
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:73
@@ -833,7 +834,7 @@ msgstr "打败不死族领袖"
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:193
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
 #: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:110
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:215
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:136
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:77
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:113
@@ -1832,84 +1833,69 @@ msgstr "我现在开始跟上你。希望你能带领我们到Weldyn，而让我
 msgid "The Drowned Plains"
 msgstr "溺死平原"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:111
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:112
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:384
 msgid "Khrakrahs"
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:140
-msgid "There are still humans in this village! They can help us."
-msgstr "这个村庄仍然有人类存在！他们能帮助我们。"
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:147
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:154
-msgid "Villager"
-msgstr "村民"
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:170
-msgid ""
-"The undead have killed all the villagers here, but they left their valuables."
-msgstr "不死族杀死了这儿的所有村民，但是留下了他们的重要物品。"
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:203
-msgid "Defeat Khrakrahs, the Skeletal Dragon"
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:124
+#, fuzzy
+msgid "Defeat Khrakrahs"
 msgstr "打败Khrakrahs，这个骨龙"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:252
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:366
 msgid ""
 "Now, we have reached the fair homeland of my people. They may be able to "
 "help us in - "
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:256
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:370
 #, fuzzy
 msgid ""
-"What?! Swamps?! Those Undead have destroyed the grasslands of my House, and "
+"What?! Swamps?! Those undead have destroyed the grasslands of my House, and "
 "they shall pay for it!"
 msgstr "什么... 沼泽？这些不死族毁坏了我的草原。他们应该为此付出代价！"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:260
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:374
 #, fuzzy
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
-"death, decay, everything that they are themselves."
+"death, decay, everything that they are themselves. I can sense them lurking "
+"in the swamps, waiting to ambush us."
 msgstr ""
 "巫妖王Mal-Ravanal必定会血洗溪谷。不死族就像沼泽。一切都已死亡，他们有的仅仅是"
 "他们自己。"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:264
-msgid ""
-"I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
-"swamp, we can't e'en see any 'nemies."
-msgstr "我想我们不得不涉水而穿过它...啊 沼泽起迷雾了，我们不能看见任何敌人。"
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:378
+msgid "I s'ppose we'll hav' to wade across it anyway... ugh."
+msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:268
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:386
 #, fuzzy
 msgid "Findshhhh... slayhhhh... killhhhh..."
 msgstr "找到了....死吧....杀死他们...."
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:272
-msgid "What is that?!?"
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:390
+#, fuzzy
+msgid "What is that sound?!?"
 msgstr "那是什么？！？"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:276
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:394
 #, fuzzy
 msgid ""
 "I do not know, but my guess is the dragon Khrakrahs. He was a powerful beast "
 "indeed, in the time of Haldric, living in the Northern Mountains. But he "
-"does not sound alive. I know not what happened, but we must destroy him."
+"does not sound alive. I know not what happened, but we must surely destroy "
+"him."
 msgstr ""
 "我不知道，但是听起来想是Khrakrahs龙。当他曾经存在是，是最强大的生物，生活在北"
 "部山脉。毫无疑问他去了东边，并被不死族复活。"
 
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:349
-msgid "Undead, undead are rising out of the ground!"
-msgstr "不死族，不死族到处都是！"
-
-#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:365
+#: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:412
 msgid ""
-"Aha! I see what they have done. They have raised him as a dragon. But he "
-"does not appear to be weak to my arcane flame... this is strange magic "
-"indeed."
+"Aha! I see what they have done. They have raised him as an undead dragon. "
+"But he does not appear to be weak to my arcane flame... this is strange "
+"magic indeed."
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:4
@@ -2640,6 +2626,26 @@ msgid ""
 msgstr ""
 "当国王的力量到来之后一起都很好。有好几周都没受到什么攻击，而Gweddry的人开始松"
 "懈起来。然后，在某天的黎明，Gweddry和他的人被守夜人惊恐的叫声唤醒..."
+
+#~ msgid "There are still humans in this village! They can help us."
+#~ msgstr "这个村庄仍然有人类存在！他们能帮助我们。"
+
+#~ msgid "Villager"
+#~ msgstr "村民"
+
+#~ msgid ""
+#~ "The undead have killed all the villagers here, but they left their "
+#~ "valuables."
+#~ msgstr "不死族杀死了这儿的所有村民，但是留下了他们的重要物品。"
+
+#~ msgid ""
+#~ "I s'ppose we'll hav' to wade across it... ugh. An' with dis mist from de "
+#~ "swamp, we can't e'en see any 'nemies."
+#~ msgstr ""
+#~ "我想我们不得不涉水而穿过它...啊 沼泽起迷雾了，我们不能看见任何敌人。"
+
+#~ msgid "Undead, undead are rising out of the ground!"
+#~ msgstr "不死族，不死族到处都是！"
 
 #~ msgid "blade"
 #~ msgstr "剑"

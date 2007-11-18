@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-16 16:23+0100\n"
+"POT-Creation-Date: 2007-11-18 13:38+0100\n"
 "PO-Revision-Date: 2007-01-08 22:45+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
@@ -3943,7 +3943,7 @@ msgstr "mráz"
 msgid "arcane"
 msgstr "na diaľku"
 
-#: data/hardwired/tips.cfg:2
+#: data/hardwired/tips.cfg:3
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
@@ -3951,7 +3951,11 @@ msgstr ""
 "Jednotky poriadku bojujú lepšie vo dne, jednotky chaosu zase v noci. Na "
 "neutrálne jednotka nemá noc a deň vplyv."
 
-#: data/hardwired/tips.cfg:3
+#: data/hardwired/tips.cfg:4
+msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:7
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
@@ -3959,7 +3963,20 @@ msgstr ""
 "Počas výpravy môžeš použiť skúsenejšie jednotky z predchádzajúcich máp "
 "pomocou voľby 'Privolaj'."
 
-#: data/hardwired/tips.cfg:4
+#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:14 data/hardwired/tips.cfg:18
+#: data/hardwired/tips.cfg:22 data/hardwired/tips.cfg:34
+#: data/hardwired/tips.cfg:38 data/hardwired/tips.cfg:50
+#: data/hardwired/tips.cfg:70 data/hardwired/tips.cfg:90
+#: data/hardwired/tips.cfg:98 data/hardwired/tips.cfg:102
+#: data/hardwired/tips.cfg:106 data/hardwired/tips.cfg:114
+#: data/hardwired/tips.cfg:122 data/hardwired/tips.cfg:130
+#: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
+#: data/hardwired/tips.cfg:142
+msgid "- The Wesnoth Tactical Guide"
+msgstr ""
+
+#: data/hardwired/tips.cfg:10
 #, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
@@ -3973,7 +3990,7 @@ msgstr ""
 "tlačidlom myši na jednotku, vyber si 'Popis jednotky' a potom 'Odolnosť', "
 "aby si videl nakoľko dokáže jednotka odolávať jednotlivým druhom útoku."
 
-#: data/hardwired/tips.cfg:5
+#: data/hardwired/tips.cfg:13
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -3984,7 +4001,7 @@ msgstr ""
 "zasiahne ju v boji. Miera obrany momentálne označenej jednotky na momentálne "
 "označenom teréne sa zobrazuje v pravom hornom rohu obrazovky."
 
-#: data/hardwired/tips.cfg:6
+#: data/hardwired/tips.cfg:17
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -3995,7 +4012,7 @@ msgstr ""
 "jed nikdy nezníži životy pod 1. Otrávené jednotky možno uzdraviť v dedine, "
 "alebo umiestnením vedľa jednotky so schopnosťou 'liečiť'."
 
-#: data/hardwired/tips.cfg:7
+#: data/hardwired/tips.cfg:21
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -4005,7 +4022,7 @@ msgstr ""
 "máp. Opakovaným privolávaním vybraných jednotiek si môžeš vytvoriť mocnú a "
 "skúsenú armádu."
 
-#: data/hardwired/tips.cfg:8
+#: data/hardwired/tips.cfg:25
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -4018,7 +4035,12 @@ msgstr ""
 "vedľajšie polia. Priebojné jednotky sú naopak príliš šikovné, a dokážu sa "
 "cez kontrolu prešmyknúť."
 
-#: data/hardwired/tips.cfg:9
+#: data/hardwired/tips.cfg:26 data/hardwired/tips.cfg:74
+#: data/hardwired/tips.cfg:82
+msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:29
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4030,12 +4052,16 @@ msgstr ""
 "pravdepodobnosť zásahu vždy 70%, pri útoku aj pri obrane. Útok ostrostrelca "
 "má pravdepodobnosť zásahu aspoň 60% pri útoku."
 
-#: data/hardwired/tips.cfg:10
+#: data/hardwired/tips.cfg:30
+msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:33
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr "Jednotky umiestnené v dedine sa na začiatku kola vyliečia o 8 životov."
 
-#: data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:37
 #, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
@@ -4044,7 +4070,7 @@ msgstr ""
 "Jednotky, ktoré sa počas kola nepohli ani neútočili, oddychujú. Na začiatku "
 "nasledujúceho kola získajú 2 body zdravia."
 
-#: data/hardwired/tips.cfg:12
+#: data/hardwired/tips.cfg:41
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -4054,7 +4080,11 @@ msgstr ""
 "teréne. Väčšina jazdeckých jednotiek nemá pri obrane v dedinách a hradoch "
 "žiadnu výhodu."
 
-#: data/hardwired/tips.cfg:13
+#: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
+msgid "- Sir Kaylan, 498YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:45
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -4063,7 +4093,11 @@ msgstr ""
 "Jazdecké jednotky sú zvyčajne odolné voči sečným a tupým zbraniam, ale sú "
 "zraniteľné pri útoku strelnými a vrhacími zbraňami ako šípy a oštepy."
 
-#: data/hardwired/tips.cfg:14
+#: data/hardwired/tips.cfg:46
+msgid "- Sir Kaylan, 502YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:49
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
@@ -4073,7 +4107,7 @@ msgstr ""
 "skúsenosti. Jednotka, ktorá zabije nepriateľa, získa 8 skúseností za každú "
 "úroveň zabitej jednotky."
 
-#: data/hardwired/tips.cfg:15
+#: data/hardwired/tips.cfg:53
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
@@ -4081,7 +4115,11 @@ msgstr ""
 "Elfie jednotky sa výborne pohybujú a bojujú v lese. Trpaslíčie jednotky sa "
 "výborne pohybujú a bojujú v kopcoch a v horách."
 
-#: data/hardwired/tips.cfg:16
+#: data/hardwired/tips.cfg:54
+msgid "- High Lord Kalenz, 470YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:57
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -4089,7 +4127,11 @@ msgstr ""
 "Trpezlivosť ruže prináša. Než útočiť v nevhodných podmienkach alebo s málo "
 "jednotkami, počkaj na lepšie podmienky a potom zaútoč."
 
-#: data/hardwired/tips.cfg:17
+#: data/hardwired/tips.cfg:58 data/hardwired/tips.cfg:150
+msgid "- King Konrad, 536YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:61
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -4097,13 +4139,21 @@ msgstr ""
 "Ak si napadnutý z viacerých strán, možno sa oplatí poslať niektorým smerom "
 "menej potrebné jednotky, aby spomalili nepriateľov postup."
 
-#: data/hardwired/tips.cfg:18
+#: data/hardwired/tips.cfg:62
+msgid "- King Konrad, 552YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:65
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
 "Neboj sa cúvnuť a zostaviť novú formáciu; často je to kľúčom k víťazstvu."
 
-#: data/hardwired/tips.cfg:19
+#: data/hardwired/tips.cfg:66
+msgid "- Meneldur, 123YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:69
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4114,7 +4164,7 @@ msgstr ""
 "závisí na počte dedín na mape a počte ušetrených kôl. Takto vždy získaš viac "
 "zlata, než keby si obsadil všetky dediny a vyčkával, až vyprší čas."
 
-#: data/hardwired/tips.cfg:20
+#: data/hardwired/tips.cfg:73
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -4126,7 +4176,7 @@ msgstr ""
 "odtiaľ. Možno ti aj niektorý spojenec poskytne miesto na verbovanie vo "
 "vlastnom hrade."
 
-#: data/hardwired/tips.cfg:21
+#: data/hardwired/tips.cfg:77
 #, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
@@ -4135,7 +4185,11 @@ msgstr ""
 "Kostlivci sú odolní voči strelným a sečným útokom, ale zraniteľní tupými, "
 "ohnivými a svätými útokmi."
 
-#: data/hardwired/tips.cfg:22
+#: data/hardwired/tips.cfg:78
+msgid "- Memoirs of Gweddry, 627YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:81
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
@@ -4143,7 +4197,7 @@ msgstr ""
 "Jednotky so schopnosťou veliť zlepšujú bojové schopnosti tvojich jednotiek "
 "nižšej úrovne na vedľajších poliach."
 
-#: data/hardwired/tips.cfg:23
+#: data/hardwired/tips.cfg:85
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -4153,7 +4207,11 @@ msgstr ""
 "jednotka môže vojsť do dediny a zaútočiť, pričom využije obranu a liečenie, "
 "ktoré jej dedina poskytuje."
 
-#: data/hardwired/tips.cfg:24
+#: data/hardwired/tips.cfg:86
+msgid "- Great Mage Delfador, 516YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:89
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
@@ -4161,16 +4219,20 @@ msgstr ""
 "Ak držíš kurzor myši nad schopnosťou alebo vlastnosťou, zobrazí sa popis "
 "tejto schopnosti či vlastnosti."
 
-#: data/hardwired/tips.cfg:25
+#: data/hardwired/tips.cfg:93
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Zoraďuj jednotky do línie, aby kryli zranené jednotky, kým sa zregenerujú."
 
-#: data/hardwired/tips.cfg:26
+#: data/hardwired/tips.cfg:94
+msgid "- Princess Li'sar, 515YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:97
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Pozri si nastavenie kláves v menu 'Nastavenia'."
 
-#: data/hardwired/tips.cfg:27
+#: data/hardwired/tips.cfg:101
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -4178,7 +4240,7 @@ msgstr ""
 "Ak pohneš jednotku, ale pritom nezaútočíš ani nezistíš žiadnu novú "
 "informáciu, môžeš vrátiť pohyb klávesom 'u'."
 
-#: data/hardwired/tips.cfg:28
+#: data/hardwired/tips.cfg:105
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -4186,7 +4248,7 @@ msgstr ""
 "Ak pohneš kurzor myši nad nepriateľskú jednotku, uvidíš, ako ďaleko sa môže "
 "hýbať."
 
-#: data/hardwired/tips.cfg:29
+#: data/hardwired/tips.cfg:109
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -4194,7 +4256,11 @@ msgstr ""
 "Pri útoku použi ako pomocné jednotky liečiteľov - pomôžu ti vyhrať boj, aj "
 "keď sami nebudú útočiť."
 
-#: data/hardwired/tips.cfg:30
+#: data/hardwired/tips.cfg:110
+msgid "- The Scroll of Chantal, 516YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:113
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -4202,12 +4268,16 @@ msgstr ""
 "Spomaľujúci útok spôsobí, že sa nepriateľská jednotka bude pomalšie "
 "pohybovať a bude spôsobovať polovičné zranenie."
 
-#: data/hardwired/tips.cfg:31
+#: data/hardwired/tips.cfg:117
 #, fuzzy
 msgid "Arcane attacks are very powerful against undead."
 msgstr "Sväté útoky sú zvlášť účinné proti nemŕtvym."
 
-#: data/hardwired/tips.cfg:32
+#: data/hardwired/tips.cfg:118
+msgid "- Great Sage Dacyn, 626YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:121
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -4215,7 +4285,7 @@ msgstr ""
 "Keď je jednotka povýšená na ďalšiu úroveň, vylieči sa. Ak to múdro využiješ, "
 "môžeš zvrátiť výsledok boja."
 
-#: data/hardwired/tips.cfg:33
+#: data/hardwired/tips.cfg:125
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -4223,7 +4293,7 @@ msgstr ""
 "Jednotky s výpadom sú najúčinnejšie proti nepriateľom, ktorých dokážu zabiť "
 "jednou ranou."
 
-#: data/hardwired/tips.cfg:34
+#: data/hardwired/tips.cfg:129
 msgid ""
 "Units can gain After Maximum Level Advancements (AMLAs), which usually "
 "increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
@@ -4236,7 +4306,7 @@ msgstr ""
 "povýšenie. Preto je zväčša užitočnejšie nechať povyšovať jednotky na nižších "
 "úrovniach."
 
-#: data/hardwired/tips.cfg:35
+#: data/hardwired/tips.cfg:133
 msgid ""
 "On maps where the shroud or fog of war has been enabled, a unit's sight is "
 "limited by its maximum movement. Remember this when deciding what unit is "
@@ -4246,7 +4316,7 @@ msgstr ""
 "ohraničený jej maximálnym pohybom. Pamätaj na to, keď budeš vyberať vhodnú "
 "jednotku na preskúmanie určitého terénu."
 
-#: data/hardwired/tips.cfg:36
+#: data/hardwired/tips.cfg:137
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -4254,7 +4324,7 @@ msgstr ""
 "Takmer každý obrázok a slovo na hernej obrazovke Wesnothu majú nápovedu. "
 "Umiestni kurzor myši nad obrázok alebo slovo a zobrazí sa vysvetlenie."
 
-#: data/hardwired/tips.cfg:37
+#: data/hardwired/tips.cfg:141
 #, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
@@ -4266,14 +4336,18 @@ msgstr ""
 "ako sa ti darilo počas hry. Táto informácia je pre nás veľmi dôležitá, aby "
 "sme vedeli prispôsobiť zložitosť jednotlivých častí hry."
 
-#: data/hardwired/tips.cfg:38
+#: data/hardwired/tips.cfg:145
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
 
-#: data/hardwired/tips.cfg:39
+#: data/hardwired/tips.cfg:146
+msgid "- Queen Li'sar, 528YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:149
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -4359,60 +4433,56 @@ msgstr "Koniec"
 msgid "MP"
 msgstr "Pohyb"
 
-#: data/themes/macros.cfg:14
-msgid "time left"
-msgstr "zostávajúci čas"
-
-#: data/themes/macros.cfg:52
+#: data/themes/macros.cfg:51
 msgid "Replay"
 msgstr "Záznam"
 
-#: data/themes/macros.cfg:67
+#: data/themes/macros.cfg:66
 msgid "Play"
 msgstr "Hraj"
 
-#: data/themes/macros.cfg:68
+#: data/themes/macros.cfg:67
 msgid "continous replay"
 msgstr "plynulé prehrávanie"
 
-#: data/themes/macros.cfg:81
+#: data/themes/macros.cfg:80
 msgid "Stop"
 msgstr "Stop"
 
-#: data/themes/macros.cfg:82
+#: data/themes/macros.cfg:81
 msgid "pause at end of turn"
 msgstr "pauza na konci kola"
 
-#: data/themes/macros.cfg:95
+#: data/themes/macros.cfg:94
 msgid "Reset"
 msgstr "Reštart"
 
-#: data/themes/macros.cfg:96
+#: data/themes/macros.cfg:95
 msgid "reset to beginning"
 msgstr "preskoč na začiatok"
 
-#: data/themes/macros.cfg:109
+#: data/themes/macros.cfg:108
 msgid "Next Turn"
 msgstr "Nasledujúce kolo"
 
-#: data/themes/macros.cfg:110
+#: data/themes/macros.cfg:109
 msgid "play turn"
 msgstr "prehraj ťah"
 
-#: data/themes/macros.cfg:123
+#: data/themes/macros.cfg:122
 msgid "Next Side"
 msgstr "Nasledujúca strana"
 
-#: data/themes/macros.cfg:124
+#: data/themes/macros.cfg:123
 msgid "play side turn"
 msgstr "prehraj ťah strany"
 
-#: data/themes/macros.cfg:136
+#: data/themes/macros.cfg:135
 #, fuzzy
 msgid "Point of view"
 msgstr "Nápoj rozkladu"
 
-#: data/themes/macros.cfg:148
+#: data/themes/macros.cfg:147
 msgid "Skip animation"
 msgstr "Preskoč animáciu"
 
@@ -4430,37 +4500,41 @@ msgstr "+  "
 msgid "Close"
 msgstr "Zavri"
 
-#: src/actions.cpp:116
+#: src/actions.cpp:138
 msgid "You don't have a leader to recruit with."
 msgstr "Nemáš veliteľa a tak nemôžeš verbovať."
 
-#: src/actions.cpp:123
+#: src/actions.cpp:145
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
 "veliteľa."
 
-#: src/actions.cpp:142
+#: src/actions.cpp:164
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
 
-#: src/actions.cpp:906 src/actions.cpp:1137
+#: src/actions.cpp:928 src/actions.cpp:1159
 msgid "poisoned"
 msgstr "otrávený"
 
-#: src/actions.cpp:910 src/actions.cpp:1141
+#: src/actions.cpp:932 src/actions.cpp:1163
 msgid "slowed"
 msgstr "spomalený"
 
-#: src/actions.cpp:916 src/actions.cpp:1147
+#: src/actions.cpp:938 src/actions.cpp:1169
 msgid "stone"
 msgstr "kameň"
 
-#: src/actions.cpp:2058
+#: src/actions.cpp:2102
 msgid "Ambushed!"
 msgstr "Prepad!"
 
-#: src/actions.cpp:2097
+#: src/actions.cpp:2108
+msgid "Failed teleport! Exit not empty"
+msgstr ""
+
+#: src/actions.cpp:2146
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
@@ -4468,7 +4542,7 @@ msgstr[0] "Vidím priateľskú jednotku"
 msgstr[1] "Vidím priateľskú jednotku"
 msgstr[2] "Vidím priateľskú jednotku"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2149
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
@@ -4476,26 +4550,26 @@ msgstr[0] "Vidím nepriateľskú jednotku!"
 msgstr[1] "Vidím nepriateľskú jednotku!"
 msgstr[2] "Vidím nepriateľskú jednotku!"
 
-#: src/actions.cpp:2105
+#: src/actions.cpp:2154
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/actions.cpp:2106
+#: src/actions.cpp:2155
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/actions.cpp:2107
+#: src/actions.cpp:2156
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Vidím jednotky! (priatelia: $friends, nepriatelia: $enemies)"
 
-#: src/actions.cpp:2116
+#: src/actions.cpp:2165
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(stlač $hotkey a pokračujeme)"
@@ -4789,7 +4863,7 @@ msgstr "Pýtam si zoznam doplnkov"
 msgid "Error communicating with the server."
 msgstr "Chyba pri komunikácii so serverom."
 
-#: src/game.cpp:1084 src/titlescreen.cpp:286
+#: src/game.cpp:1084 src/titlescreen.cpp:294
 msgid "Version"
 msgstr "Verzia"
 
@@ -4985,11 +5059,11 @@ msgstr "Načítavam nastavenia hry."
 msgid "Re-initialize fonts for the current language."
 msgstr "Znovunačítaj písmo pre aktuálny jazyk"
 
-#: src/game.cpp:2029
+#: src/game.cpp:2028
 msgid "Loading title screen."
 msgstr "Načítava sa úvodná obrazovka."
 
-#: src/game_config.cpp:249
+#: src/game_config.cpp:251
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Neplatná farba"
@@ -5002,11 +5076,11 @@ msgstr "Vyhráš, ak:"
 msgid "Defeat:"
 msgstr "Prehráš, ak:"
 
-#: src/gamestatus.cpp:693 src/gamestatus.cpp:695 src/playcampaign.cpp:403
+#: src/gamestatus.cpp:696 src/gamestatus.cpp:698 src/playcampaign.cpp:403
 msgid " replay"
 msgstr " záznam"
 
-#: src/gamestatus.cpp:805
+#: src/gamestatus.cpp:808
 msgid "Could not write to file"
 msgstr "Neviem zapísať do súboru"
 
@@ -6099,8 +6173,9 @@ msgid "Share None"
 msgstr "Nič spoločné"
 
 #: src/multiplayer_create.cpp:200
-msgid "No multiplayer sides."
-msgstr "Sieťová hra nemá určené strany."
+#, fuzzy
+msgid "No eras found."
+msgstr "Neviem nájsť éry"
 
 #: src/multiplayer_create.cpp:201
 msgid "No eras found"
@@ -6357,59 +6432,84 @@ msgstr "Scéna z iného počítača"
 
 #: src/playmp_controller.cpp:383
 msgid ""
-"The games are out of sync and will have to exit. Do you want to save an "
-"error log of your game?"
-msgstr "Hry sa rozladili a treba ich ukončiť. Mám uložiť chybovú správu z hry?"
+"The game is out of sync, and cannot continue. There are a number of reasons "
+"this could happen: this can occur if you or another player have modified "
+"their game settings. This may mean one of the players is attempting to "
+"cheat. It could also be due to a bug in the game, but this is less likely.\n"
+"\n"
+"Do you want to save an error log of your game?"
+msgstr ""
 
-#: src/playsingle_controller.cpp:237
+#: src/playsingle_controller.cpp:248
 msgid "Game Over"
 msgstr "Koniec hry"
 
-#: src/playsingle_controller.cpp:238
+#: src/playsingle_controller.cpp:249
 msgid "The game is over."
 msgstr "Hra skončila."
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:328
 msgid "Scenario Report"
 msgstr "Správa o scéne"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:330
 msgid "Victory"
 msgstr "Víťazstvo"
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:331
 msgid "You have emerged victorious!"
 msgstr "Zvíťazil si!"
 
-#: src/playsingle_controller.cpp:350
+#: src/playsingle_controller.cpp:363
 msgid "Remaining gold: "
 msgstr "Zostávajúce zlato:"
 
-#: src/playsingle_controller.cpp:353
+#: src/playsingle_controller.cpp:366
 msgid "Early finish bonus: "
 msgstr "Bonus za rýchly koniec:"
 
-#: src/playsingle_controller.cpp:355
+#: src/playsingle_controller.cpp:368
 msgid "per turn"
 msgstr "za ťah"
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:369
 msgid "Turns finished early: "
 msgstr "Ušetrené ťahy:"
 
-#: src/playsingle_controller.cpp:358
+#: src/playsingle_controller.cpp:371
 msgid "Bonus: "
 msgstr "Bonus:"
 
-#: src/playsingle_controller.cpp:360
+#: src/playsingle_controller.cpp:373
 msgid "Gold: "
 msgstr "Zlato:"
 
-#: src/playsingle_controller.cpp:363
+#: src/playsingle_controller.cpp:376
+msgid "Carry over percentage: "
+msgstr ""
+
+#: src/playsingle_controller.cpp:378
+#, fuzzy
+msgid "Bonus Gold: "
+msgstr "Bonus:"
+
+#: src/playsingle_controller.cpp:380
 msgid "Retained Gold: "
 msgstr "Ušetrené zlato:"
 
-#: src/playsingle_controller.cpp:370
+#: src/playsingle_controller.cpp:390
+#, fuzzy
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] "80% zlata sa prenáša do ďalšej mapy"
+msgstr[1] "80% zlata sa prenáša do ďalšej mapy"
+msgstr[2] "80% zlata sa prenáša do ďalšej mapy"
+
+#: src/playsingle_controller.cpp:398
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6420,18 +6520,18 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:420 src/playsingle_controller.cpp:471
 msgid "The file you have tried to load is corrupt"
 msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
-#: src/playsingle_controller.cpp:397
+#: src/playsingle_controller.cpp:430
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Prerušilo sa sieťové spojenie a hra nemôže pokračovať. Chceš ju uložiť?"
 
-#: src/playsingle_controller.cpp:525
+#: src/playsingle_controller.cpp:558
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Si na ťahu"
@@ -6526,68 +6626,73 @@ msgstr "Nepriateľská dedina"
 msgid "Owned village"
 msgstr "Naša dedina"
 
-#: src/titlescreen.cpp:305
+#: src/titlescreen.cpp:313
 msgid "TitleScreen button^Tutorial"
 msgstr "Výcvik"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:314
 msgid "TitleScreen button^Campaign"
 msgstr "Výprava"
 
-#: src/titlescreen.cpp:307
+#: src/titlescreen.cpp:315
 msgid "TitleScreen button^Multiplayer"
 msgstr "Zápas"
 
-#: src/titlescreen.cpp:308
-msgid "TitleScreen button^Load"
-msgstr "Načítaj hru"
-
-#: src/titlescreen.cpp:309
-#, fuzzy
-msgid "TitleScreen button^Add-ons"
-msgstr "Doplnky"
-
-#: src/titlescreen.cpp:310
-msgid "TitleScreen button^Language"
-msgstr "Jazyk"
-
-#: src/titlescreen.cpp:311
-msgid "TitleScreen button^Preferences"
-msgstr "Nastavenia"
-
-#: src/titlescreen.cpp:312
-#, fuzzy
-msgid "TitleScreen button^Credits"
-msgstr "Koniec"
-
-#: src/titlescreen.cpp:313
-msgid "TitleScreen button^Quit"
-msgstr "Koniec"
-
 #: src/titlescreen.cpp:316
-#, fuzzy
-msgid "TitleScreen button^More"
+msgid "TitleScreen button^Load"
 msgstr "Načítaj hru"
 
 #: src/titlescreen.cpp:317
 #, fuzzy
+msgid "TitleScreen button^Add-ons"
+msgstr "Doplnky"
+
+#: src/titlescreen.cpp:318
+msgid "TitleScreen button^Language"
+msgstr "Jazyk"
+
+#: src/titlescreen.cpp:319
+msgid "TitleScreen button^Preferences"
+msgstr "Nastavenia"
+
+#: src/titlescreen.cpp:320
+#, fuzzy
+msgid "TitleScreen button^Credits"
+msgstr "Koniec"
+
+#: src/titlescreen.cpp:321
+msgid "TitleScreen button^Quit"
+msgstr "Koniec"
+
+#: src/titlescreen.cpp:324
+#, fuzzy
+msgid "TitleScreen button^Previous"
+msgstr "Koniec"
+
+#: src/titlescreen.cpp:325
+#, fuzzy
+msgid "TitleScreen button^Next"
+msgstr "Koniec"
+
+#: src/titlescreen.cpp:326
+#, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "Načítaj hru"
 
-#: src/titlescreen.cpp:319
+#: src/titlescreen.cpp:328
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Načítaj hru"
 
-#: src/titlescreen.cpp:321
+#: src/titlescreen.cpp:330
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Spusti úvodný výcvik, v ktorom sa zoznámiš s touto hrou"
 
-#: src/titlescreen.cpp:322
+#: src/titlescreen.cpp:331
 msgid "Start a new single player campaign"
 msgstr "Spusti novú výpravu pre jedného hráča"
 
-#: src/titlescreen.cpp:323
+#: src/titlescreen.cpp:332
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -6595,46 +6700,46 @@ msgstr ""
 "Zápas medzi viacerými hráčmi (striedavo, na lokálnej sieti, na Internete), "
 "alebo proti počítaču"
 
-#: src/titlescreen.cpp:324
+#: src/titlescreen.cpp:333
 #, fuzzy
 msgid "Load a saved game"
 msgstr "Pokračuj v uloženej hre pre jedného hráča"
 
-#: src/titlescreen.cpp:325
+#: src/titlescreen.cpp:334
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Stiahni si príbehy, éry a balíky máp vytvorené hráčmi"
 
-#: src/titlescreen.cpp:326
+#: src/titlescreen.cpp:335
 msgid "Change the language"
 msgstr "Zmeň jazyk"
 
-#: src/titlescreen.cpp:327
+#: src/titlescreen.cpp:336
 msgid "Configure the game's settings"
 msgstr "Nastav rôzne možnosti hry"
 
-#: src/titlescreen.cpp:328
+#: src/titlescreen.cpp:337
 msgid "View the credits"
 msgstr "Zobraz informácie o autoroch hry"
 
-#: src/titlescreen.cpp:329
+#: src/titlescreen.cpp:338
 msgid "Quit the game"
 msgstr "Ukonči hru"
 
-#: src/titlescreen.cpp:330
+#: src/titlescreen.cpp:339
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:331
+#: src/titlescreen.cpp:340
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Návod k Bitke o Wesnoth"
 
-#: src/titlescreen.cpp:332
+#: src/titlescreen.cpp:341
 #, fuzzy
 msgid "Upload statistics"
 msgstr "Štatistika"
 
-#: src/titlescreen.cpp:384
+#: src/titlescreen.cpp:397
 msgid "Help Wesnoth by sending us information"
 msgstr "Podporte Wesnoth tým, že nám pošlete informácie"
 
@@ -6730,6 +6835,22 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
 
+#~ msgid "time left"
+#~ msgstr "zostávajúci čas"
+
+#~ msgid "No multiplayer sides."
+#~ msgstr "Sieťová hra nemá určené strany."
+
+#~ msgid ""
+#~ "The games are out of sync and will have to exit. Do you want to save an "
+#~ "error log of your game?"
+#~ msgstr ""
+#~ "Hry sa rozladili a treba ich ukončiť. Mám uložiť chybovú správu z hry?"
+
+#, fuzzy
+#~ msgid "TitleScreen button^More"
+#~ msgstr "Načítaj hru"
+
 #~ msgid ""
 #~ "The login name you chose is too long, please use a login with less than "
 #~ "18 characters"
@@ -6812,10 +6933,6 @@ msgstr "Umožni posielanie štatistík"
 
 #~ msgid "him"
 #~ msgstr "ho"
-
-#, fuzzy
-#~ msgid "You will start the next scenario with "
-#~ msgstr "80% zlata sa prenáša do ďalšej mapy"
 
 #, fuzzy
 #~ msgid "Back"

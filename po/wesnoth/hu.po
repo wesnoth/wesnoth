@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-16 16:23+0100\n"
+"POT-Creation-Date: 2007-11-18 13:38+0100\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -4013,7 +4013,7 @@ msgstr "hideg"
 msgid "arcane"
 msgstr "távolsági harc"
 
-#: data/hardwired/tips.cfg:2
+#: data/hardwired/tips.cfg:3
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
@@ -4021,7 +4021,11 @@ msgstr ""
 "Az igazságos egységek nappal, a törvénytelen egységek éjszaka harcolnak "
 "jobban. A semleges egységeket nem érinti a napszakok változása."
 
-#: data/hardwired/tips.cfg:3
+#: data/hardwired/tips.cfg:4
+msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:7
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
@@ -4029,7 +4033,20 @@ msgstr ""
 "Egy hadjárat során felhasználhatod veterán csapataidat, akik az előző "
 "pályákon harcoltak, a 'Veteránok visszahívása' paranccsal."
 
-#: data/hardwired/tips.cfg:4
+#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:14 data/hardwired/tips.cfg:18
+#: data/hardwired/tips.cfg:22 data/hardwired/tips.cfg:34
+#: data/hardwired/tips.cfg:38 data/hardwired/tips.cfg:50
+#: data/hardwired/tips.cfg:70 data/hardwired/tips.cfg:90
+#: data/hardwired/tips.cfg:98 data/hardwired/tips.cfg:102
+#: data/hardwired/tips.cfg:106 data/hardwired/tips.cfg:114
+#: data/hardwired/tips.cfg:122 data/hardwired/tips.cfg:130
+#: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
+#: data/hardwired/tips.cfg:142
+msgid "- The Wesnoth Tactical Guide"
+msgstr ""
+
+#: data/hardwired/tips.cfg:10
 #, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
@@ -4044,7 +4061,7 @@ msgstr ""
 "majd kattints az ellenállóképességre, hogy megtudd, hogy az adott egység "
 "mennyire tud ellenállni a bizonyos fajta támadásokkal szemben."
 
-#: data/hardwired/tips.cfg:5
+#: data/hardwired/tips.cfg:13
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -4056,7 +4073,7 @@ msgstr ""
 "védekezési értéke az egérmutató alatti területfajtán a képernyő jobb felső "
 "sarkában jelenik meg."
 
-#: data/hardwired/tips.cfg:6
+#: data/hardwired/tips.cfg:17
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -4068,7 +4085,7 @@ msgstr ""
 "életerőpontjuk. A megmérgezett egységeidet meggyógyíthatod, ha beviszed őket "
 "egy faluba vagy egy 'gyógyító' képességű egységed mellé állítod."
 
-#: data/hardwired/tips.cfg:7
+#: data/hardwired/tips.cfg:21
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -4078,7 +4095,7 @@ msgstr ""
 "parancsával. Visszahívva ugyanazokat az egységeket újra meg újra egy "
 "ütőképes és tapasztalt hadsereget tudsz felépíteni."
 
-#: data/hardwired/tips.cfg:8
+#: data/hardwired/tips.cfg:25
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -4091,7 +4108,12 @@ msgstr ""
 "megtartására, továbbá a mesteríjászok elég képzettek, hogy figyelmen kívül "
 "hagyhassák ezeket a területeket."
 
-#: data/hardwired/tips.cfg:9
+#: data/hardwired/tips.cfg:26 data/hardwired/tips.cfg:74
+#: data/hardwired/tips.cfg:82
+msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:29
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4104,14 +4126,18 @@ msgstr ""
 "találnak, valamint a mesterlövészeknek legalább 60% esélyük van a sikeres "
 "lövésre támadáskor."
 
-#: data/hardwired/tips.cfg:10
+#: data/hardwired/tips.cfg:30
+msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:33
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "A falvakban elhelyezett egységek minden kör elején 8 életerőpontot (ÉP) "
 "gyógyulnak."
 
-#: data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:37
 #, fuzzy
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
@@ -4120,7 +4146,7 @@ msgstr ""
 "Amely egységek nem támadnak és nem is mozognak egy körben, azok pihennek és "
 "a következő kör elején 2 életerőpontot (ÉP) gyógyulnak."
 
-#: data/hardwired/tips.cfg:12
+#: data/hardwired/tips.cfg:41
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -4130,7 +4156,11 @@ msgstr ""
 "mint bármely más terepen, míg a legtöbb lovas egység nem jut semmilyen "
 "előnyhöz ezekben."
 
-#: data/hardwired/tips.cfg:13
+#: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
+msgid "- Sir Kaylan, 498YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:45
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -4139,7 +4169,11 @@ msgstr ""
 "A lovas egységek ellenállnak a pengés és ütő fegyvereknek, de sebezhetőek "
 "páncéltörő fegyverekkel, többek közt nyilakkal és dárdákkal."
 
-#: data/hardwired/tips.cfg:14
+#: data/hardwired/tips.cfg:46
+msgid "- Sir Kaylan, 502YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:49
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
@@ -4149,7 +4183,7 @@ msgstr ""
 "tapasztalatszerzésnek. Azok az egységek akik megölnek valakit 8 tapasztalati "
 "pontot (TP) nyernek a legyőzött ellenséges egység minden szintje után."
 
-#: data/hardwired/tips.cfg:15
+#: data/hardwired/tips.cfg:53
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
@@ -4157,7 +4191,11 @@ msgstr ""
 "A tünde egységek kíválóan harcolnak és mozognak erdőkben. A törpök legjobb "
 "tudásukat dombokon és hegységekben mutatják meg."
 
-#: data/hardwired/tips.cfg:16
+#: data/hardwired/tips.cfg:54
+msgid "- High Lord Kalenz, 470YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:57
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -4166,7 +4204,11 @@ msgstr ""
 "lesznek a támadásra, minthogy rossz helyzetből, vagy kevés egységgel "
 "bocsátkozz csatába!"
 
-#: data/hardwired/tips.cfg:17
+#: data/hardwired/tips.cfg:58 data/hardwired/tips.cfg:150
+msgid "- King Konrad, 536YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:61
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -4174,13 +4216,21 @@ msgstr ""
 "Ha több irányból támadnak rád, jó ötlet lehet néhány feláldozható egység "
 "előreküldése különböző irányokba, hogy feltartsák az ellenséget."
 
-#: data/hardwired/tips.cfg:18
+#: data/hardwired/tips.cfg:62
+msgid "- King Konrad, 552YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:65
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
 "Ne félj visszavonulni és rendezni soraid, gyakran ez a győzelem kulcsa."
 
-#: data/hardwired/tips.cfg:19
+#: data/hardwired/tips.cfg:66
+msgid "- Meneldur, 123YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:69
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4192,7 +4242,7 @@ msgstr ""
 "aranyat nyersz ilyen módon, mintha falvakat foglalnál el és megvárnád, hogy "
 "elfogyjanak hátralévő köreid."
 
-#: data/hardwired/tips.cfg:20
+#: data/hardwired/tips.cfg:73
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -4204,7 +4254,7 @@ msgstr ""
 "vártornyát is, és toborozhatsz onnan, továbbá néhány szövetségesed is "
 "tarthat neked fenn helyet a várában, hogy ott vegyél fel új egységeket."
 
-#: data/hardwired/tips.cfg:21
+#: data/hardwired/tips.cfg:77
 #, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
@@ -4213,7 +4263,11 @@ msgstr ""
 "A csontvázak ellenállnak a páncéltörő és a pengés támadásoknak, de "
 "sebezhetőek ütő, tűz és szent támadásokkal."
 
-#: data/hardwired/tips.cfg:22
+#: data/hardwired/tips.cfg:78
+msgid "- Memoirs of Gweddry, 627YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:81
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
@@ -4221,7 +4275,7 @@ msgstr ""
 "A hadvezetés képességel rendelkező egységek a közelükben álló, velük "
 "harcoló, alacsonyabb szintű egységeket erősebbé teszik."
 
-#: data/hardwired/tips.cfg:23
+#: data/hardwired/tips.cfg:85
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -4231,7 +4285,11 @@ msgstr ""
 "elhelyezkedhet benne és megtámadhat, miközben az védelmet és gyógyulást ad "
 "számára."
 
-#: data/hardwired/tips.cfg:24
+#: data/hardwired/tips.cfg:86
+msgid "- Great Mage Delfador, 516YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:89
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
@@ -4239,17 +4297,21 @@ msgstr ""
 "Ha az egérmutatót egy képesség vagy jellemvonás fölé viszed a képernyő jobb "
 "oldalán, elolvashatod az adott képesség vagy jellemvonás részletes leírását."
 
-#: data/hardwired/tips.cfg:25
+#: data/hardwired/tips.cfg:93
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Állítsd egyégeidet harcvonalba, hogy a mögöttük lévő egységeket fedezzék, "
 "amíg felgyógyulnak!"
 
-#: data/hardwired/tips.cfg:26
+#: data/hardwired/tips.cfg:94
+msgid "- Princess Li'sar, 515YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:97
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Sokat segít a beállítások menüban a gyorsbillentyűk tanulmányozása."
 
-#: data/hardwired/tips.cfg:27
+#: data/hardwired/tips.cfg:101
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -4257,7 +4319,7 @@ msgstr ""
 "Ha lépsz egy egységgel, de nem támadsz vagy társz fel új körülményeket, "
 "visszvonhatod lépésed az 'u' billentyű segítségével."
 
-#: data/hardwired/tips.cfg:28
+#: data/hardwired/tips.cfg:105
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -4265,7 +4327,7 @@ msgstr ""
 "Ha az egérmutatót egy egység fölé viszed, láthatod milyen messzire tud lépni "
 "egy kör alatt."
 
-#: data/hardwired/tips.cfg:29
+#: data/hardwired/tips.cfg:109
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -4273,7 +4335,11 @@ msgstr ""
 "Használj gyógyító egységeket támadásaid segítésére - eldönthetik a csatát "
 "anélkül hogy bárkit is maguk kellene megtámadniuk."
 
-#: data/hardwired/tips.cfg:30
+#: data/hardwired/tips.cfg:110
+msgid "- The Scroll of Chantal, 516YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:113
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -4281,12 +4347,16 @@ msgstr ""
 "A 'lassító' támadás képessége lelassítja az ellenséget és megfelezi az "
 "általa kifejthető sebzést is, amíg az be nem fejezi saját körét."
 
-#: data/hardwired/tips.cfg:31
+#: data/hardwired/tips.cfg:117
 #, fuzzy
 msgid "Arcane attacks are very powerful against undead."
 msgstr "A szent támadások kifejezetten hatékonyak élőholt egységek ellen."
 
-#: data/hardwired/tips.cfg:32
+#: data/hardwired/tips.cfg:118
+msgid "- Great Sage Dacyn, 626YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:121
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -4294,7 +4364,7 @@ msgstr ""
 "Amikor egy egység szintet lép, akkor teljesen felgyógyul. Ez, ha bölcsen "
 "használod, eldöntheti a csatát."
 
-#: data/hardwired/tips.cfg:33
+#: data/hardwired/tips.cfg:125
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -4302,7 +4372,7 @@ msgstr ""
 "A rohamegységek azon ellenségekkel szemben a legjobbak, akiket első "
 "nekifutásra meg tudnak ölni."
 
-#: data/hardwired/tips.cfg:34
+#: data/hardwired/tips.cfg:129
 msgid ""
 "Units can gain After Maximum Level Advancements (AMLAs), which usually "
 "increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
@@ -4315,7 +4385,7 @@ msgstr ""
 "után. Ezért általában hasznosabb lehet, ha az alacsonyabb szintű egységeidet "
 "próbálod szintet léptetni."
 
-#: data/hardwired/tips.cfg:35
+#: data/hardwired/tips.cfg:133
 msgid ""
 "On maps where the shroud or fog of war has been enabled, a unit's sight is "
 "limited by its maximum movement. Remember this when deciding what unit is "
@@ -4325,7 +4395,7 @@ msgstr ""
 "egység látóterét a mozgási lehetőségei határozzák meg. Ne feledd ezt, amikor "
 "adott terephez választod ki a legmegfelelőbb felderítőt."
 
-#: data/hardwired/tips.cfg:36
+#: data/hardwired/tips.cfg:137
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -4333,7 +4403,7 @@ msgstr ""
 "A játék képernyőjén szinte minden ikonhoz és szóhoz tartozik segítség. A "
 "leírás vagy magyarázat megjelenítéséhez vidd az egérmutatót föléjük."
 
-#: data/hardwired/tips.cfg:37
+#: data/hardwired/tips.cfg:141
 #, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
@@ -4345,14 +4415,18 @@ msgstr ""
 "használatáról készült statisztikákat a Segíts te is! gomb segítségével. Ezek "
 "a statisztikák segítenek a hadjáratok nehézségének beállításában."
 
-#: data/hardwired/tips.cfg:38
+#: data/hardwired/tips.cfg:145
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
 
-#: data/hardwired/tips.cfg:39
+#: data/hardwired/tips.cfg:146
+msgid "- Queen Li'sar, 528YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:149
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -4437,61 +4511,56 @@ msgstr "Bef."
 msgid "MP"
 msgstr ""
 
-#: data/themes/macros.cfg:14
-#, fuzzy
-msgid "time left"
-msgstr "Időhatár"
-
-#: data/themes/macros.cfg:52
+#: data/themes/macros.cfg:51
 msgid "Replay"
 msgstr "Visszajátszás"
 
-#: data/themes/macros.cfg:67
+#: data/themes/macros.cfg:66
 msgid "Play"
 msgstr "Lejátszás"
 
-#: data/themes/macros.cfg:68
+#: data/themes/macros.cfg:67
 msgid "continous replay"
 msgstr "folyamatos visszajátszás"
 
-#: data/themes/macros.cfg:81
+#: data/themes/macros.cfg:80
 msgid "Stop"
 msgstr "Leállít"
 
-#: data/themes/macros.cfg:82
+#: data/themes/macros.cfg:81
 msgid "pause at end of turn"
 msgstr "kör végén leállítás"
 
-#: data/themes/macros.cfg:95
+#: data/themes/macros.cfg:94
 msgid "Reset"
 msgstr "Újrakezd"
 
-#: data/themes/macros.cfg:96
+#: data/themes/macros.cfg:95
 msgid "reset to beginning"
 msgstr "vissza a kezdéshez"
 
-#: data/themes/macros.cfg:109
+#: data/themes/macros.cfg:108
 msgid "Next Turn"
 msgstr "Következő kör"
 
-#: data/themes/macros.cfg:110
+#: data/themes/macros.cfg:109
 msgid "play turn"
 msgstr "kör lejátszása"
 
-#: data/themes/macros.cfg:123
+#: data/themes/macros.cfg:122
 msgid "Next Side"
 msgstr "Következő oldal"
 
-#: data/themes/macros.cfg:124
+#: data/themes/macros.cfg:123
 msgid "play side turn"
 msgstr "csapat körének lejátszása"
 
-#: data/themes/macros.cfg:136
+#: data/themes/macros.cfg:135
 #, fuzzy
 msgid "Point of view"
 msgstr "Romlásital üvegcse"
 
-#: data/themes/macros.cfg:148
+#: data/themes/macros.cfg:147
 msgid "Skip animation"
 msgstr "Megjelenítés átugrása"
 
@@ -4509,63 +4578,67 @@ msgstr "+  "
 msgid "Close"
 msgstr "Bezár"
 
-#: src/actions.cpp:116
+#: src/actions.cpp:138
 msgid "You don't have a leader to recruit with."
 msgstr "Nincs vezetőd, amely toborozhatna."
 
-#: src/actions.cpp:123
+#: src/actions.cpp:145
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "A vezetődnek a várban kell állnia, ahhoz hogy új egységeket toborozhass."
 
-#: src/actions.cpp:142
+#: src/actions.cpp:164
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nincs több üres hely a várban, ahova az új egységeket toborozhatnánk."
 
-#: src/actions.cpp:906 src/actions.cpp:1137
+#: src/actions.cpp:928 src/actions.cpp:1159
 msgid "poisoned"
 msgstr "megmérgezett"
 
-#: src/actions.cpp:910 src/actions.cpp:1141
+#: src/actions.cpp:932 src/actions.cpp:1163
 msgid "slowed"
 msgstr "lelassított"
 
-#: src/actions.cpp:916 src/actions.cpp:1147
+#: src/actions.cpp:938 src/actions.cpp:1169
 msgid "stone"
 msgstr "kővéváltoztatás"
 
-#: src/actions.cpp:2058
+#: src/actions.cpp:2102
 msgid "Ambushed!"
 msgstr "Rajtaütés!"
 
-#: src/actions.cpp:2097
+#: src/actions.cpp:2108
+msgid "Failed teleport! Exit not empty"
+msgstr ""
+
+#: src/actions.cpp:2146
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Szövetséges egység a láthatáron"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2149
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Ellenséges egység a láthatáron!"
 
-#: src/actions.cpp:2105
+#: src/actions.cpp:2154
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2106
+#: src/actions.cpp:2155
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2107
+#: src/actions.cpp:2156
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Egységek a láthatáron! ($friends szövetséges, $enemies ellenséges)"
 
-#: src/actions.cpp:2116
+#: src/actions.cpp:2165
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(a folytatáshoz nyomd le ezt: $hotkey)"
@@ -4862,7 +4935,7 @@ msgstr "Kiegészítések listájának lekérése"
 msgid "Error communicating with the server."
 msgstr "Hiba a kiszolgálóval történt kommunikációban."
 
-#: src/game.cpp:1084 src/titlescreen.cpp:286
+#: src/game.cpp:1084 src/titlescreen.cpp:294
 msgid "Version"
 msgstr "Verzió"
 
@@ -5061,11 +5134,11 @@ msgstr "Hiba a konfigurációs fájlok betöltésekor: '"
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:2029
+#: src/game.cpp:2028
 msgid "Loading title screen."
 msgstr "Kezdőképernyő betöltése"
 
-#: src/game_config.cpp:249
+#: src/game_config.cpp:251
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Érvénytelen szín"
@@ -5078,11 +5151,11 @@ msgstr "Győzöl, ha:"
 msgid "Defeat:"
 msgstr "Veszítesz, ha:"
 
-#: src/gamestatus.cpp:693 src/gamestatus.cpp:695 src/playcampaign.cpp:403
+#: src/gamestatus.cpp:696 src/gamestatus.cpp:698 src/playcampaign.cpp:403
 msgid " replay"
 msgstr " visszajátszás"
 
-#: src/gamestatus.cpp:805
+#: src/gamestatus.cpp:808
 msgid "Could not write to file"
 msgstr "Nem sikerült a fájlba írni"
 
@@ -6177,8 +6250,9 @@ msgid "Share None"
 msgstr "Nincs megosztás"
 
 #: src/multiplayer_create.cpp:200
-msgid "No multiplayer sides."
-msgstr "Nincs többjátékos oldal."
+#, fuzzy
+msgid "No eras found."
+msgstr "Nem találtam korszakot"
 
 #: src/multiplayer_create.cpp:201
 msgid "No eras found"
@@ -6437,61 +6511,82 @@ msgstr "Távoli pálya"
 
 #: src/playmp_controller.cpp:383
 msgid ""
-"The games are out of sync and will have to exit. Do you want to save an "
-"error log of your game?"
+"The game is out of sync, and cannot continue. There are a number of reasons "
+"this could happen: this can occur if you or another player have modified "
+"their game settings. This may mean one of the players is attempting to "
+"cheat. It could also be due to a bug in the game, but this is less likely.\n"
+"\n"
+"Do you want to save an error log of your game?"
 msgstr ""
-"A játékok elvesztették az összhangot, ezért ki kell lépni. Szeretnéd "
-"elmenteni a hibanaplót?"
 
-#: src/playsingle_controller.cpp:237
+#: src/playsingle_controller.cpp:248
 msgid "Game Over"
 msgstr "Játék vége"
 
-#: src/playsingle_controller.cpp:238
+#: src/playsingle_controller.cpp:249
 msgid "The game is over."
 msgstr "A játék véget ért."
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:328
 msgid "Scenario Report"
 msgstr "Pályavégi jelentés"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:330
 msgid "Victory"
 msgstr "Győzelem"
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:331
 msgid "You have emerged victorious!"
 msgstr "Győztél!"
 
-#: src/playsingle_controller.cpp:350
+#: src/playsingle_controller.cpp:363
 msgid "Remaining gold: "
 msgstr "Megmaradt arany: "
 
-#: src/playsingle_controller.cpp:353
+#: src/playsingle_controller.cpp:366
 msgid "Early finish bonus: "
 msgstr "Korai befejezés bónusz: "
 
-#: src/playsingle_controller.cpp:355
+#: src/playsingle_controller.cpp:368
 msgid "per turn"
 msgstr "körönként"
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:369
 msgid "Turns finished early: "
 msgstr "Kihasználatlan körök: "
 
-#: src/playsingle_controller.cpp:358
+#: src/playsingle_controller.cpp:371
 msgid "Bonus: "
 msgstr "Bónusz: "
 
-#: src/playsingle_controller.cpp:360
+#: src/playsingle_controller.cpp:373
 msgid "Gold: "
 msgstr "Arany: "
 
-#: src/playsingle_controller.cpp:363
+#: src/playsingle_controller.cpp:376
+msgid "Carry over percentage: "
+msgstr ""
+
+#: src/playsingle_controller.cpp:378
+#, fuzzy
+msgid "Bonus Gold: "
+msgstr "Bónusz: "
+
+#: src/playsingle_controller.cpp:380
 msgid "Retained Gold: "
 msgstr "Megőrzött arany: "
 
-#: src/playsingle_controller.cpp:370
+#: src/playsingle_controller.cpp:390
+#, fuzzy
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] "Az arany 80%-át megőrizzük a következő pályára"
+
+#: src/playsingle_controller.cpp:398
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6500,17 +6595,17 @@ msgid_plural ""
 "gold, whichever is higher."
 msgstr[0] ""
 
-#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:420 src/playsingle_controller.cpp:471
 msgid "The file you have tried to load is corrupt"
 msgstr "A fájl amit be próbáltál tölteni hibás"
 
-#: src/playsingle_controller.cpp:397
+#: src/playsingle_controller.cpp:430
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "A hálózat megszakadt, így a játék nem folytatható. Elmented az állást?"
 
-#: src/playsingle_controller.cpp:525
+#: src/playsingle_controller.cpp:558
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "A te köröd következik"
@@ -6607,114 +6702,119 @@ msgstr "Ellenséges falu"
 msgid "Owned village"
 msgstr "Elfoglalt falu"
 
-#: src/titlescreen.cpp:305
+#: src/titlescreen.cpp:313
 msgid "TitleScreen button^Tutorial"
 msgstr "Gyakorlás"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:314
 msgid "TitleScreen button^Campaign"
 msgstr "Hadjárat"
 
-#: src/titlescreen.cpp:307
+#: src/titlescreen.cpp:315
 msgid "TitleScreen button^Multiplayer"
 msgstr "Többjátékos"
 
-#: src/titlescreen.cpp:308
-msgid "TitleScreen button^Load"
-msgstr "Betölt"
-
-#: src/titlescreen.cpp:309
-#, fuzzy
-msgid "TitleScreen button^Add-ons"
-msgstr "Kiegészítések"
-
-#: src/titlescreen.cpp:310
-msgid "TitleScreen button^Language"
-msgstr "Nyelv"
-
-#: src/titlescreen.cpp:311
-msgid "TitleScreen button^Preferences"
-msgstr "Beállítások"
-
-#: src/titlescreen.cpp:312
-#, fuzzy
-msgid "TitleScreen button^Credits"
-msgstr "Kilép"
-
-#: src/titlescreen.cpp:313
-msgid "TitleScreen button^Quit"
-msgstr "Kilép"
-
 #: src/titlescreen.cpp:316
-#, fuzzy
-msgid "TitleScreen button^More"
+msgid "TitleScreen button^Load"
 msgstr "Betölt"
 
 #: src/titlescreen.cpp:317
 #, fuzzy
+msgid "TitleScreen button^Add-ons"
+msgstr "Kiegészítések"
+
+#: src/titlescreen.cpp:318
+msgid "TitleScreen button^Language"
+msgstr "Nyelv"
+
+#: src/titlescreen.cpp:319
+msgid "TitleScreen button^Preferences"
+msgstr "Beállítások"
+
+#: src/titlescreen.cpp:320
+#, fuzzy
+msgid "TitleScreen button^Credits"
+msgstr "Kilép"
+
+#: src/titlescreen.cpp:321
+msgid "TitleScreen button^Quit"
+msgstr "Kilép"
+
+#: src/titlescreen.cpp:324
+#, fuzzy
+msgid "TitleScreen button^Previous"
+msgstr "Kilép"
+
+#: src/titlescreen.cpp:325
+#, fuzzy
+msgid "TitleScreen button^Next"
+msgstr "Kilép"
+
+#: src/titlescreen.cpp:326
+#, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "Betölt"
 
-#: src/titlescreen.cpp:319
+#: src/titlescreen.cpp:328
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Betölt"
 
-#: src/titlescreen.cpp:321
+#: src/titlescreen.cpp:330
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Gyakorlópályák indítása, a játékkal való ismerkedéshez"
 
-#: src/titlescreen.cpp:322
+#: src/titlescreen.cpp:331
 msgid "Start a new single player campaign"
 msgstr "Új egyjátékos hadjárat indítása"
 
-#: src/titlescreen.cpp:323
+#: src/titlescreen.cpp:332
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
 "Többjátékos (hotseat, LAN vagy internet), vagy MI elleni összecsapás játszása"
 
-#: src/titlescreen.cpp:324
+#: src/titlescreen.cpp:333
 #, fuzzy
 msgid "Load a saved game"
 msgstr "Egyjátékos mentett állás betöltése"
 
-#: src/titlescreen.cpp:325
+#: src/titlescreen.cpp:334
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Játékosok által készített hadjáratok, korszakok, pályák letöltése"
 
-#: src/titlescreen.cpp:326
+#: src/titlescreen.cpp:335
 msgid "Change the language"
 msgstr "Nyelv megváltoztatása"
 
-#: src/titlescreen.cpp:327
+#: src/titlescreen.cpp:336
 msgid "Configure the game's settings"
 msgstr "Játék beállításainak áttekintése"
 
-#: src/titlescreen.cpp:328
+#: src/titlescreen.cpp:337
 msgid "View the credits"
 msgstr "Közreműködők listájának megtekintése"
 
-#: src/titlescreen.cpp:329
+#: src/titlescreen.cpp:338
 msgid "Quit the game"
 msgstr "Kilépés a játékból"
 
-#: src/titlescreen.cpp:330
+#: src/titlescreen.cpp:339
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:331
+#: src/titlescreen.cpp:340
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Harc Wesnoth-ért Súgó"
 
-#: src/titlescreen.cpp:332
+#: src/titlescreen.cpp:341
 #, fuzzy
 msgid "Upload statistics"
 msgstr "Statisztika"
 
-#: src/titlescreen.cpp:384
+#: src/titlescreen.cpp:397
 msgid "Help Wesnoth by sending us information"
 msgstr "Segítsd a Wesnoth fejlesztőit azzal, hogy információt küldesz!"
 
@@ -6806,6 +6906,24 @@ msgstr "Segíts a Wesnoth tökéletesítésében!"
 msgid "Enable summary uploads"
 msgstr "Összesítések feltöltésének engedélyezése"
 
+#, fuzzy
+#~ msgid "time left"
+#~ msgstr "Időhatár"
+
+#~ msgid "No multiplayer sides."
+#~ msgstr "Nincs többjátékos oldal."
+
+#~ msgid ""
+#~ "The games are out of sync and will have to exit. Do you want to save an "
+#~ "error log of your game?"
+#~ msgstr ""
+#~ "A játékok elvesztették az összhangot, ezért ki kell lépni. Szeretnéd "
+#~ "elmenteni a hibanaplót?"
+
+#, fuzzy
+#~ msgid "TitleScreen button^More"
+#~ msgstr "Betölt"
+
 #~ msgid ""
 #~ "The login name you chose is too long, please use a login with less than "
 #~ "18 characters"
@@ -6884,10 +7002,6 @@ msgstr "Összesítések feltöltésének engedélyezése"
 
 #~ msgid "him"
 #~ msgstr "őt"
-
-#, fuzzy
-#~ msgid "You will start the next scenario with "
-#~ msgstr "Az arany 80%-át megőrizzük a következő pályára"
 
 #, fuzzy
 #~ msgid "Back"

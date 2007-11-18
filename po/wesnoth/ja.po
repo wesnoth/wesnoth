@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-16 16:23+0100\n"
+"POT-Creation-Date: 2007-11-18 13:38+0100\n"
 "PO-Revision-Date: 2007-09-16 00:51+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -4283,7 +4283,7 @@ msgstr "冷気"
 msgid "arcane"
 msgstr "神聖"
 
-#: data/hardwired/tips.cfg:2
+#: data/hardwired/tips.cfg:3
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
@@ -4291,7 +4291,11 @@ msgstr ""
 "秩序ユニットは昼間の戦闘に強く、混沌ユニットは夜間の戦闘に強い。中立ユニット"
 "は昼夜の影響を受けない。"
 
-#: data/hardwired/tips.cfg:3
+#: data/hardwired/tips.cfg:4
+msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:7
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
@@ -4299,7 +4303,20 @@ msgstr ""
 "キャンペーンでは、「召還」オプションを使うことで、以前のシナリオから歴戦のユ"
 "ニットを使用することができる。"
 
-#: data/hardwired/tips.cfg:4
+#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:14 data/hardwired/tips.cfg:18
+#: data/hardwired/tips.cfg:22 data/hardwired/tips.cfg:34
+#: data/hardwired/tips.cfg:38 data/hardwired/tips.cfg:50
+#: data/hardwired/tips.cfg:70 data/hardwired/tips.cfg:90
+#: data/hardwired/tips.cfg:98 data/hardwired/tips.cfg:102
+#: data/hardwired/tips.cfg:106 data/hardwired/tips.cfg:114
+#: data/hardwired/tips.cfg:122 data/hardwired/tips.cfg:130
+#: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
+#: data/hardwired/tips.cfg:142
+msgid "- The Wesnoth Tactical Guide"
+msgstr ""
+
+#: data/hardwired/tips.cfg:10
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -4313,7 +4330,7 @@ msgstr ""
 "それぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ることができ"
 "る。"
 
-#: data/hardwired/tips.cfg:5
+#: data/hardwired/tips.cfg:13
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -4324,7 +4341,7 @@ msgstr ""
 "定する。選択中のユニットの選択中の地形における防御率は、画面の右上の隅に表示"
 "されている。"
 
-#: data/hardwired/tips.cfg:6
+#: data/hardwired/tips.cfg:17
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -4335,7 +4352,7 @@ msgstr ""
 "つまり、毒で 1ヒットポイント未満に下がることはない。毒を受けたユニットは、村"
 "か、「治療」能力をもつユニットの隣に置くことで、治療することができる。"
 
-#: data/hardwired/tips.cfg:7
+#: data/hardwired/tips.cfg:21
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -4345,7 +4362,7 @@ msgstr ""
 "とができる。同じユニットを何度も何度も召還することで、強力で経験を積んだ軍隊"
 "を築き上げることが可能となる。"
 
-#: data/hardwired/tips.cfg:8
+#: data/hardwired/tips.cfg:25
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -4357,7 +4374,12 @@ msgstr ""
 "ニットは 弱すぎて、 ゾーンを支配することはできず、 散兵ユニットは このゾーン"
 "を無視するスキルを持つ。"
 
-#: data/hardwired/tips.cfg:9
+#: data/hardwired/tips.cfg:26 data/hardwired/tips.cfg:74
+#: data/hardwired/tips.cfg:82
+msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:29
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4368,13 +4390,17 @@ msgstr ""
 "によるが、 魔法攻撃は攻撃と防御時のどちらも 70% の確率となる。 射撃攻撃は攻撃"
 "時に最低60%の確率となる。"
 
-#: data/hardwired/tips.cfg:10
+#: data/hardwired/tips.cfg:30
+msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:33
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "村に駐留したユニットは、 そのターンの開始時に、 8ヒットポイント回復する。"
 
-#: data/hardwired/tips.cfg:11
+#: data/hardwired/tips.cfg:37
 msgid ""
 "Units rest if they do not move or attack during their turn. They will "
 "recover 2 hitpoints at the beginning of their next turn."
@@ -4382,7 +4408,7 @@ msgstr ""
 "自分のターンの間に移動や攻撃をしないと、ユニットは休むことになる。そのユニッ"
 "トは、次のターンの開始時に 2ヒットポイント回復する。"
 
-#: data/hardwired/tips.cfg:12
+#: data/hardwired/tips.cfg:41
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -4391,7 +4417,11 @@ msgstr ""
 "ほとんどの徒歩ユニットは 村と城において、他のほとんどの地形におけるよりも防御"
 "が良くなるが、 乗馬ユニットは 村や城での防御上の利点は 全く得られない。"
 
-#: data/hardwired/tips.cfg:13
+#: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
+msgid "- Sir Kaylan, 498YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:45
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -4400,7 +4430,11 @@ msgstr ""
 "馬に乗ったユニットは全般的に、 斬撃や打撃の攻撃には耐えられるが、 弓や槍など"
 "の 貫通する武器での攻撃には弱い。"
 
-#: data/hardwired/tips.cfg:14
+#: data/hardwired/tips.cfg:46
+msgid "- Sir Kaylan, 502YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:49
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
@@ -4409,7 +4443,7 @@ msgstr ""
 "敵ユニットにとどめの一撃を与えることが、 経験を得る最も良い方法である。 敵を"
 "殺したユニットは、 その敵のレベルの 8倍の 経験値を得られる。"
 
-#: data/hardwired/tips.cfg:15
+#: data/hardwired/tips.cfg:53
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
@@ -4417,7 +4451,11 @@ msgstr ""
 "エルフのユニットは、 森における移動や戦闘が 得意である。 ドワーフのユニット"
 "は、 丘や山における移動や攻撃を 得意とする。"
 
-#: data/hardwired/tips.cfg:16
+#: data/hardwired/tips.cfg:54
+msgid "- High Lord Kalenz, 470YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:57
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -4425,7 +4463,11 @@ msgstr ""
 "忍耐はしばしば鍵となる。 悪条件や少数軍で攻撃するよりも、 より良い条件になる"
 "まで待ってから 攻撃するとよい。"
 
-#: data/hardwired/tips.cfg:17
+#: data/hardwired/tips.cfg:58 data/hardwired/tips.cfg:150
+msgid "- King Konrad, 536YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:61
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -4433,13 +4475,21 @@ msgstr ""
 "もし多方面からの攻撃を受けたなら、 敵ユニットを遅らせるため、 何方向かに 損害"
 "覚悟のユニットを送るのも 良い考えかもしれない。"
 
-#: data/hardwired/tips.cfg:18
+#: data/hardwired/tips.cfg:62
+msgid "- King Konrad, 552YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:65
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
 "退却や再編成することを怖れてはいけない。それは、しばしば勝利への鍵となる。"
 
-#: data/hardwired/tips.cfg:19
+#: data/hardwired/tips.cfg:66
+msgid "- Meneldur, 123YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:69
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4450,7 +4500,7 @@ msgstr ""
 "の数と、 早々に終了したターン数に応じて、受け取る。 こちらの方が、 村を占領し"
 "てターンがつきるまで待ったりするよりも 多くのゴールドを稼ぐことになるだろう。"
 
-#: data/hardwired/tips.cfg:20
+#: data/hardwired/tips.cfg:73
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -4462,7 +4512,7 @@ msgstr ""
 "できる。 また、 あなたの同盟軍のあるものは、 主塔の場所をあなたのために空け"
 "て、 そこから雇用できるように してくれるかもしれない。"
 
-#: data/hardwired/tips.cfg:21
+#: data/hardwired/tips.cfg:77
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks but vulnerable to "
 "impact, fire, and arcane attacks."
@@ -4470,7 +4520,11 @@ msgstr ""
 "スケルトンは、貫通や斬撃での攻撃に耐性があるが、打撃、火炎、神聖の攻撃には弱"
 "い。"
 
-#: data/hardwired/tips.cfg:22
+#: data/hardwired/tips.cfg:78
+msgid "- Memoirs of Gweddry, 627YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:81
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
@@ -4478,7 +4532,7 @@ msgstr ""
 "リーダーシップ能力をもつユニットは、 同陣営で 自分より低レベルの 隣接するユ"
 "ニットの戦闘力を より良くしてくれる。"
 
-#: data/hardwired/tips.cfg:23
+#: data/hardwired/tips.cfg:85
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -4488,7 +4542,11 @@ msgstr ""
 "移動してきて、その村での防御力と回復効果を享受しながら、あなたを攻撃してくる"
 "かもしれない。"
 
-#: data/hardwired/tips.cfg:24
+#: data/hardwired/tips.cfg:86
+msgid "- Great Mage Delfador, 516YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:89
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
@@ -4496,17 +4554,21 @@ msgstr ""
 "能力や特性の上にマウスカーソルをのせると、 その能力や特性についての説明が 示"
 "される。"
 
-#: data/hardwired/tips.cfg:25
+#: data/hardwired/tips.cfg:93
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "負傷したユニットを 回復のために ふるい分けるには、 ユニットのラインを 使うと"
 "よい。"
 
-#: data/hardwired/tips.cfg:26
+#: data/hardwired/tips.cfg:94
+msgid "- Princess Li'sar, 515YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:97
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "設定メニューのホットキーの一覧を 読んでみよ。"
 
-#: data/hardwired/tips.cfg:27
+#: data/hardwired/tips.cfg:101
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -4514,7 +4576,7 @@ msgstr ""
 "もし、ユニットを動かしても、 攻撃をしたり、 何も追加情報を発見していないな"
 "ら、 'u'を押して その移動を元に戻す(アンドゥ)ことができる。"
 
-#: data/hardwired/tips.cfg:28
+#: data/hardwired/tips.cfg:105
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -4522,7 +4584,7 @@ msgstr ""
 "敵ユニットがどれだけの距離を移動できるかは、 マウスカーソルをそのユニットの上"
 "に 当てることで、 見ることができる。"
 
-#: data/hardwired/tips.cfg:29
+#: data/hardwired/tips.cfg:109
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -4530,7 +4592,11 @@ msgstr ""
 "回復させる者を攻撃のサポートに用いよ - 彼等は自身では何も攻撃せずとも、 あな"
 "たを戦いに勝利させてくれるだろう。"
 
-#: data/hardwired/tips.cfg:30
+#: data/hardwired/tips.cfg:110
+msgid "- The Scroll of Chantal, 516YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:113
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -4538,11 +4604,15 @@ msgstr ""
 "「遅化」攻撃の能力は敵ユニットを遅くし、彼らのターンが終わるまで敵ユニットの"
 "攻撃によるダメージを半減させる。"
 
-#: data/hardwired/tips.cfg:31
+#: data/hardwired/tips.cfg:117
 msgid "Arcane attacks are very powerful against undead."
 msgstr "神聖な攻撃はアンデッドに対して大変強力である。"
 
-#: data/hardwired/tips.cfg:32
+#: data/hardwired/tips.cfg:118
+msgid "- Great Sage Dacyn, 626YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:121
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -4550,13 +4620,13 @@ msgstr ""
 "ユニットはレベルが上がると回復する。 これを賢く使えば、 戦いに逆転することも"
 "できる。"
 
-#: data/hardwired/tips.cfg:33
+#: data/hardwired/tips.cfg:125
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr "突撃ユニットは、 一撃で倒すことのできる 敵に対して 最も役立つ。"
 
-#: data/hardwired/tips.cfg:34
+#: data/hardwired/tips.cfg:129
 msgid ""
 "Units can gain After Maximum Level Advancements (AMLAs), which usually "
 "increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
@@ -4568,7 +4638,7 @@ msgstr ""
 "に、AMLA を得ることがだんだん難しくなる。従って、低いレベルのユニットを成長さ"
 "せるようにする方がたいていは有益である。"
 
-#: data/hardwired/tips.cfg:35
+#: data/hardwired/tips.cfg:133
 msgid ""
 "On maps where the shroud or fog of war has been enabled, a unit's sight is "
 "limited by its maximum movement. Remember this when deciding what unit is "
@@ -4578,7 +4648,7 @@ msgstr ""
 "大で移動できる範囲に制限されている。特定の地形を偵察させるユニットを決めると"
 "きにこのことを覚えておくように。"
 
-#: data/hardwired/tips.cfg:36
+#: data/hardwired/tips.cfg:137
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -4586,7 +4656,7 @@ msgstr ""
 "Wesntoh のゲーム画面にあるほとんどすべてのアイコンや単語にはツールティップが"
 "ある。マウスポインタをその上に置けば、説明や詳細を見ることができる。"
 
-#: data/hardwired/tips.cfg:37
+#: data/hardwired/tips.cfg:141
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -4598,7 +4668,7 @@ msgstr ""
 "封筒のアイコンであらわされています）。  この情報はキャンペーンの難しさを調整"
 "するのに不可欠です。"
 
-#: data/hardwired/tips.cfg:38
+#: data/hardwired/tips.cfg:145
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -4608,7 +4678,11 @@ msgstr ""
 "ムを組ませ、共通のターゲットに対してベテランにダメージを十分与えさせ、若手の"
 "パートナーに致死となる一撃を与えさせるのがよい。"
 
-#: data/hardwired/tips.cfg:39
+#: data/hardwired/tips.cfg:146
+msgid "- Queen Li'sar, 528YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:149
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -4695,59 +4769,55 @@ msgstr "E."
 msgid "MP"
 msgstr "MP"
 
-#: data/themes/macros.cfg:14
-msgid "time left"
-msgstr "残り時間"
-
-#: data/themes/macros.cfg:52
+#: data/themes/macros.cfg:51
 msgid "Replay"
 msgstr "リプレイ"
 
-#: data/themes/macros.cfg:67
+#: data/themes/macros.cfg:66
 msgid "Play"
 msgstr "プレイ"
 
-#: data/themes/macros.cfg:68
+#: data/themes/macros.cfg:67
 msgid "continous replay"
 msgstr "連続してリプレイ"
 
-#: data/themes/macros.cfg:81
+#: data/themes/macros.cfg:80
 msgid "Stop"
 msgstr "停止"
 
-#: data/themes/macros.cfg:82
+#: data/themes/macros.cfg:81
 msgid "pause at end of turn"
 msgstr "ターン終了時に一時停止"
 
-#: data/themes/macros.cfg:95
+#: data/themes/macros.cfg:94
 msgid "Reset"
 msgstr "リセット"
 
-#: data/themes/macros.cfg:96
+#: data/themes/macros.cfg:95
 msgid "reset to beginning"
 msgstr "始めに戻る"
 
-#: data/themes/macros.cfg:109
+#: data/themes/macros.cfg:108
 msgid "Next Turn"
 msgstr "次のターン"
 
-#: data/themes/macros.cfg:110
+#: data/themes/macros.cfg:109
 msgid "play turn"
 msgstr "ターンを再生"
 
-#: data/themes/macros.cfg:123
+#: data/themes/macros.cfg:122
 msgid "Next Side"
 msgstr "次のサイド"
 
-#: data/themes/macros.cfg:124
+#: data/themes/macros.cfg:123
 msgid "play side turn"
 msgstr "サイドのターンを再生"
 
-#: data/themes/macros.cfg:136
+#: data/themes/macros.cfg:135
 msgid "Point of view"
 msgstr "視点"
 
-#: data/themes/macros.cfg:148
+#: data/themes/macros.cfg:147
 msgid "Skip animation"
 msgstr "アニメーションを省略"
 
@@ -4765,61 +4835,65 @@ msgstr "+  "
 msgid "Close"
 msgstr "閉じる"
 
-#: src/actions.cpp:116
+#: src/actions.cpp:138
 msgid "You don't have a leader to recruit with."
 msgstr "雇用するためのリーダーがいません。"
 
-#: src/actions.cpp:123
+#: src/actions.cpp:145
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "ユニットを雇用したり 召還したりするためには、 リーダーが 主塔にいなければなり"
 "ません。"
 
-#: src/actions.cpp:142
+#: src/actions.cpp:164
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "ユニットを雇用するための 城タイルの空きがありません。"
 
-#: src/actions.cpp:906 src/actions.cpp:1137
+#: src/actions.cpp:928 src/actions.cpp:1159
 msgid "poisoned"
 msgstr "毒を受けた"
 
-#: src/actions.cpp:910 src/actions.cpp:1141
+#: src/actions.cpp:932 src/actions.cpp:1163
 msgid "slowed"
 msgstr "遅くなった"
 
-#: src/actions.cpp:916 src/actions.cpp:1147
+#: src/actions.cpp:938 src/actions.cpp:1169
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2058
+#: src/actions.cpp:2102
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions.cpp:2097
+#: src/actions.cpp:2108
+msgid "Failed teleport! Exit not empty"
+msgstr ""
+
+#: src/actions.cpp:2146
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見"
 
-#: src/actions.cpp:2100
+#: src/actions.cpp:2149
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！"
 
-#: src/actions.cpp:2105
+#: src/actions.cpp:2154
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "味方 $friends"
 
-#: src/actions.cpp:2106
+#: src/actions.cpp:2155
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "敵 $enemies"
 
-#: src/actions.cpp:2107
+#: src/actions.cpp:2156
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ ($friendphrase、$enemyphrase )"
 
-#: src/actions.cpp:2116
+#: src/actions.cpp:2165
 msgid "(press $hotkey to keep moving)"
 msgstr "(移動し続けるには $hotkey を押して下さい)"
 
@@ -5104,7 +5178,7 @@ msgstr "アドオンの一覧を要求中"
 msgid "Error communicating with the server."
 msgstr "サーバーとの通信エラー"
 
-#: src/game.cpp:1084 src/titlescreen.cpp:286
+#: src/game.cpp:1084 src/titlescreen.cpp:294
 msgid "Version"
 msgstr "バージョン"
 
@@ -5293,11 +5367,11 @@ msgstr "ゲーム設定を読み込んでいます。"
 msgid "Re-initialize fonts for the current language."
 msgstr "現在の言語でフォントを再初期化します。"
 
-#: src/game.cpp:2029
+#: src/game.cpp:2028
 msgid "Loading title screen."
 msgstr "タイトル画面を読み込んでいます。"
 
-#: src/game_config.cpp:249
+#: src/game_config.cpp:251
 msgid "Invalid color range: "
 msgstr "無効な色範囲:"
 
@@ -5309,11 +5383,11 @@ msgstr "勝利条件:"
 msgid "Defeat:"
 msgstr "敗北条件:"
 
-#: src/gamestatus.cpp:693 src/gamestatus.cpp:695 src/playcampaign.cpp:403
+#: src/gamestatus.cpp:696 src/gamestatus.cpp:698 src/playcampaign.cpp:403
 msgid " replay"
 msgstr "リプレイ"
 
-#: src/gamestatus.cpp:805
+#: src/gamestatus.cpp:808
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
@@ -6358,8 +6432,9 @@ msgid "Share None"
 msgstr "共有なし"
 
 #: src/multiplayer_create.cpp:200
-msgid "No multiplayer sides."
-msgstr "マルチプレイヤーの チームがありません。"
+#, fuzzy
+msgid "No eras found."
+msgstr "時代が見つかりません"
 
 #: src/multiplayer_create.cpp:201
 msgid "No eras found"
@@ -6608,61 +6683,84 @@ msgstr "リモートシナリオ"
 
 #: src/playmp_controller.cpp:383
 msgid ""
-"The games are out of sync and will have to exit. Do you want to save an "
-"error log of your game?"
+"The game is out of sync, and cannot continue. There are a number of reasons "
+"this could happen: this can occur if you or another player have modified "
+"their game settings. This may mean one of the players is attempting to "
+"cheat. It could also be due to a bug in the game, but this is less likely.\n"
+"\n"
+"Do you want to save an error log of your game?"
 msgstr ""
-"このゲームは 同期が取れなくなったため、 終了するしかありません。 ゲームのエ"
-"ラーログを保存しますか？"
 
-#: src/playsingle_controller.cpp:237
+#: src/playsingle_controller.cpp:248
 msgid "Game Over"
 msgstr "ゲームオーバー"
 
-#: src/playsingle_controller.cpp:238
+#: src/playsingle_controller.cpp:249
 msgid "The game is over."
 msgstr "ゲーム終了です。"
 
-#: src/playsingle_controller.cpp:317
+#: src/playsingle_controller.cpp:328
 msgid "Scenario Report"
 msgstr "シナリオレポート"
 
-#: src/playsingle_controller.cpp:319
+#: src/playsingle_controller.cpp:330
 msgid "Victory"
 msgstr "勝利"
 
-#: src/playsingle_controller.cpp:320
+#: src/playsingle_controller.cpp:331
 msgid "You have emerged victorious!"
 msgstr "あなたの勝利が明らかになりました！"
 
-#: src/playsingle_controller.cpp:350
+#: src/playsingle_controller.cpp:363
 msgid "Remaining gold: "
 msgstr "残っているゴールド: "
 
-#: src/playsingle_controller.cpp:353
+#: src/playsingle_controller.cpp:366
 msgid "Early finish bonus: "
 msgstr "早期終了ボーナス"
 
-#: src/playsingle_controller.cpp:355
+#: src/playsingle_controller.cpp:368
 msgid "per turn"
 msgstr "／ターン"
 
-#: src/playsingle_controller.cpp:356
+#: src/playsingle_controller.cpp:369
 msgid "Turns finished early: "
 msgstr "早期に終わったターン: "
 
-#: src/playsingle_controller.cpp:358
+#: src/playsingle_controller.cpp:371
 msgid "Bonus: "
 msgstr "ボーナス: "
 
-#: src/playsingle_controller.cpp:360
+#: src/playsingle_controller.cpp:373
 msgid "Gold: "
 msgstr "所持金額: "
 
-#: src/playsingle_controller.cpp:363
+#: src/playsingle_controller.cpp:376
+msgid "Carry over percentage: "
+msgstr ""
+
+#: src/playsingle_controller.cpp:378
+#, fuzzy
+msgid "Bonus Gold: "
+msgstr "ボーナス: "
+
+#: src/playsingle_controller.cpp:380
 msgid "Retained Gold: "
 msgstr "保持金額: "
 
-#: src/playsingle_controller.cpp:370
+#: src/playsingle_controller.cpp:390
+#, fuzzy
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"次のシナリオの開始ゴールドは $gold あるいは次のシナリオに設定されている最小の"
+"開始ゴールドのどちらか高い方になります。"
+
+#: src/playsingle_controller.cpp:398
 #, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
@@ -6674,11 +6772,11 @@ msgstr[0] ""
 "次のシナリオの開始ゴールドは $gold あるいは次のシナリオに設定されている最小の"
 "開始ゴールドのどちらか高い方になります。"
 
-#: src/playsingle_controller.cpp:387 src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:420 src/playsingle_controller.cpp:471
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは 壊れています。"
 
-#: src/playsingle_controller.cpp:397
+#: src/playsingle_controller.cpp:430
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6686,7 +6784,7 @@ msgstr ""
 "ネットワークが切断されたため、 ゲームを続けられません。 このゲームを保存しま"
 "すか？"
 
-#: src/playsingle_controller.cpp:525
+#: src/playsingle_controller.cpp:558
 msgid "It is now $name|'s turn"
 msgstr "$name| ののターンです"
 
@@ -6780,63 +6878,69 @@ msgstr "敵所有の村"
 msgid "Owned village"
 msgstr "自軍所有の村"
 
-#: src/titlescreen.cpp:305
+#: src/titlescreen.cpp:313
 msgid "TitleScreen button^Tutorial"
 msgstr "チュートリアル"
 
-#: src/titlescreen.cpp:306
+#: src/titlescreen.cpp:314
 msgid "TitleScreen button^Campaign"
 msgstr "キャンペーン"
 
-#: src/titlescreen.cpp:307
+#: src/titlescreen.cpp:315
 msgid "TitleScreen button^Multiplayer"
 msgstr "マルチプレイ"
 
-#: src/titlescreen.cpp:308
+#: src/titlescreen.cpp:316
 msgid "TitleScreen button^Load"
 msgstr "再開"
 
-#: src/titlescreen.cpp:309
+#: src/titlescreen.cpp:317
 msgid "TitleScreen button^Add-ons"
 msgstr "アドオン"
 
-#: src/titlescreen.cpp:310
+#: src/titlescreen.cpp:318
 msgid "TitleScreen button^Language"
 msgstr "言語"
 
-#: src/titlescreen.cpp:311
+#: src/titlescreen.cpp:319
 msgid "TitleScreen button^Preferences"
 msgstr "設定"
 
-#: src/titlescreen.cpp:312
+#: src/titlescreen.cpp:320
 msgid "TitleScreen button^Credits"
 msgstr "クレジット"
 
-#: src/titlescreen.cpp:313
+#: src/titlescreen.cpp:321
 msgid "TitleScreen button^Quit"
 msgstr "終了"
 
-#: src/titlescreen.cpp:316
-msgid "TitleScreen button^More"
-msgstr "次"
+#: src/titlescreen.cpp:324
+#, fuzzy
+msgid "TitleScreen button^Previous"
+msgstr "クレジット"
 
-#: src/titlescreen.cpp:317
+#: src/titlescreen.cpp:325
+#, fuzzy
+msgid "TitleScreen button^Next"
+msgstr "終了"
+
+#: src/titlescreen.cpp:326
 msgid "TitleScreen button^Help"
 msgstr "ヘルプ"
 
-#: src/titlescreen.cpp:319
+#: src/titlescreen.cpp:328
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Wesnoth への支援"
 
-#: src/titlescreen.cpp:321
+#: src/titlescreen.cpp:330
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "ゲームに慣れるためのチュートリアルを開始します"
 
-#: src/titlescreen.cpp:322
+#: src/titlescreen.cpp:331
 msgid "Start a new single player campaign"
 msgstr "新たに一人用キャンペーンを開始します"
 
-#: src/titlescreen.cpp:323
+#: src/titlescreen.cpp:332
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -6844,45 +6948,45 @@ msgstr ""
 "マルチプレイヤーゲーム（交互に一台か、LAN、あるいはインターネット）、またはAI"
 "との対戦で単一シナリオをプレイします"
 
-#: src/titlescreen.cpp:324
+#: src/titlescreen.cpp:333
 #, fuzzy
 msgid "Load a saved game"
 msgstr "シングルプレイヤーゲームを読み込みます"
 
-#: src/titlescreen.cpp:325
+#: src/titlescreen.cpp:334
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 "ユーザーが作成したキャンペーン、時代、マップのパッケージをダウンロードします"
 
-#: src/titlescreen.cpp:326
+#: src/titlescreen.cpp:335
 msgid "Change the language"
 msgstr "言語を変更します"
 
-#: src/titlescreen.cpp:327
+#: src/titlescreen.cpp:336
 msgid "Configure the game's settings"
 msgstr "ゲームの設定を行います"
 
-#: src/titlescreen.cpp:328
+#: src/titlescreen.cpp:337
 msgid "View the credits"
 msgstr "クレジットを表示します"
 
-#: src/titlescreen.cpp:329
+#: src/titlescreen.cpp:338
 msgid "Quit the game"
 msgstr "ゲームを終了します"
 
-#: src/titlescreen.cpp:330
+#: src/titlescreen.cpp:339
 msgid "Show next tip of the day"
 msgstr "次のヒントを表示します"
 
-#: src/titlescreen.cpp:331
+#: src/titlescreen.cpp:340
 msgid "Show Battle for Wesnoth help"
 msgstr "Battle for Wesnoth のヘルプを表示します"
 
-#: src/titlescreen.cpp:332
+#: src/titlescreen.cpp:341
 msgid "Upload statistics"
 msgstr "統計情報をアップロードします"
 
-#: src/titlescreen.cpp:384
+#: src/titlescreen.cpp:397
 msgid "Help Wesnoth by sending us information"
 msgstr "我々に情報を送って Wesnoth を支援してください"
 
@@ -6972,6 +7076,22 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
+
+#~ msgid "time left"
+#~ msgstr "残り時間"
+
+#~ msgid "No multiplayer sides."
+#~ msgstr "マルチプレイヤーの チームがありません。"
+
+#~ msgid ""
+#~ "The games are out of sync and will have to exit. Do you want to save an "
+#~ "error log of your game?"
+#~ msgstr ""
+#~ "このゲームは 同期が取れなくなったため、 終了するしかありません。 ゲームの"
+#~ "エラーログを保存しますか？"
+
+#~ msgid "TitleScreen button^More"
+#~ msgstr "次"
 
 #~ msgid ""
 #~ "The login name you chose is too long, please use a login with less than "
