@@ -132,12 +132,13 @@ std::vector<Uint32> to_clear;
 int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 {
 #ifdef NETWORK_USE_RAW_SOCKETS
-	const _TCPsocket* sock = reinterpret_cast<const _TCPsocket*>(s);
+	_TCPsocket* sock = reinterpret_cast<_TCPsocket*>(s);
 	int res = 0;
 	do {
 		errno = 0;
-		res = recv(sock->channel, buf, nbytes, 0); //MSG_DONTWAIT|MSG_ERRQUEUE);
+		res = recv(sock->channel, buf, nbytes, MSG_DONTWAIT);
 	} while(errno == EINTR);
+	sock->ready = 0;
 	return res;
 #else
 	return SDLNet_TCP_Recv(s, buf, nbytes);
