@@ -380,7 +380,7 @@ void playmp_controller::play_network_turn(){
 void playmp_controller::process_oos(const std::string& err_msg){
 	std::stringstream temp_buf;
 	std::vector<std::string> err_lines = utils::split(err_msg,'\n');
-	temp_buf << _("The games are out of sync and will have to exit. Do you want to save an error log of your game?");
+	temp_buf << _("The game is out of sync, and cannot continue. There are a number of reasons this could happen: this can occur if you or another player have modified their game settings. This may mean one of the players is attempting to cheat. It could also be due to a bug in the game, but this is less likely.\n\nDo you want to save an error log of your game?");
 	if(!err_msg.empty()) {
 		temp_buf << " \n \n"; //and now the "Details:"
 		for(std::vector<std::string>::iterator i=err_lines.begin(); i!=err_lines.end(); i++)
