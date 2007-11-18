@@ -266,12 +266,12 @@ config server::games_and_users_list_diff() {
 void server::dump_stats(const time_t& now) {
 //	time_t old_stats = last_stats_;
 	last_stats_ = now;
-	LOG_SERVER << "Statistics:\n"
-		"\tnumber_of_games   = " << games_.size() << "\n"
-		"\tnumber_of_players = " << players_.size() << "\n"
-		"\tlobby_players     = " << lobby_.nobservers() << "\n";
-//		"\tstart_interval    = " << old_stats << "\n"
-//		"\tend_interval      = " << last_stats_ << "\n";
+	LOG_SERVER << "Statistics:"
+		<< "\tnumber_of_games = " << games_.size()
+		<< "\tnumber_of_users = " << players_.size()
+		<< "\tlobby_users = " << lobby_.nobservers() << "\n";
+//		<< "\tstart_interval    = " << old_stats
+//		<< "\tend_interval      = " << last_stats_ << "\n";
 }
 
 void server::run() {
@@ -649,7 +649,9 @@ std::string server::process_command(const std::string& query) {
 			}
 		}
 	} else if (command == "metrics") {
-		out << metrics_;
+		out << metrics_ << "Current number of games = " << games_.size() << "\n"
+		"Total number of users = " << players_.size() << "\n"
+		"Number of users in the lobby = " << lobby_.nobservers() << "\n";
 	} else if (command == "ban" || command == "bans" || command == "kban") {
 		if (parameters == "") {
 			if (bans_.empty()) return "No bans set.";

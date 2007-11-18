@@ -59,7 +59,7 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 	const int days = time_up/(60*60*24);
 	const int requests_immediate = met.nrequests_ - met.nrequests_waited_;
 	const int percent_immediate = (requests_immediate*100)/(met.nrequests_ > 0 ? met.nrequests_ : 1);
-	out << "METRICS\n----\nUp " << days << " days, " << hours << " hours, "
+	out << "METRICS\nUp " << days << " days, " << hours << " hours, "
 	    << minutes << " minutes, " << seconds << " seconds\n"
 	    << met.nrequests_ << " requests serviced. " << requests_immediate
 	    << " (" << percent_immediate << "%) "
@@ -73,6 +73,5 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 		}
 	}
 
-	out << "----\n";
 	return out;
 }
