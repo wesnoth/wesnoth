@@ -9,6 +9,8 @@ The release team should empty this file after each release.
 
 The description key in [unit] should be unique, this key is used to avoid
 the recall duplication bug, which have been around for a while.
+(Note loading a lingermode savegame and continuing that one will still
+result in a duplication.)
 
 The bug that caused Wesnoth to crash when loading a saved multiplayer game from
 the create-game interface has been fixed.
