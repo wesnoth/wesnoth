@@ -136,7 +136,7 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 	int res = 0;
 	do {
 		errno = 0;
-		res = recv(sock->channel, buf, nbytes, MSG_DONTWAIT); //MSG_DONTWAIT|MSG_ERRQUEUE);
+		res = recv(sock->channel, buf, nbytes, 0); //MSG_DONTWAIT|MSG_ERRQUEUE);
 	} while(errno == EINTR);
 	return res;
 #else
