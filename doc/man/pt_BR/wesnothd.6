@@ -39,9 +39,9 @@ servidor aceita via o clitente wesnoth ou via socket.
 .
 .TP 
 \fB\-c,\ \-\-config\fP\fI\ caminho\fP
-tells wesnothd where to find the config file to use. See the section
-\fBSERVER CONFIG\fP below for the syntax. You can reload the config with
-sending SIGHUP to the server process.
+diz a wesnothd onde achar o arquivo de configuração a ser usado. Veja a
+seção \fBCONFIGURAÇÃO DO SERVIDOR\fP abaixo para a sintaxe. Você pode
+recarregar a configuração enviando SIGHUP para o processo do servidor.
 .TP 
 \fB\-d,\ \-\-daemon\fP
 executa wesnothd como um daemon.
@@ -50,8 +50,9 @@ executa wesnothd como um daemon.
 explica o que as opções de linha de comando fazem.
 .TP 
 \fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug.
+configura o nível de importância de cada domínios de debug. "all" pode ser
+usado para escolher qualquer domínio. Níveis disponíveis: error, warning,
+info, debug.
 .TP 
 \fB\-p,\ \-\-port\fP\fI\ porta\fP
 conecta o servidor à porta escolhida. Se nenhum número de porta for
@@ -91,9 +92,9 @@ chave="\fIvalor\fP,\fIvalor\fP,..."
 O número de conexões vindas do mesmo IP permitidas. (padrão: 5)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. `*' and `?' from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Nomes/apelidos que não são aceitos pelo servidor. `*'e `?' podem ser usados
+como coringas. Veja \fBglob\fP(7) para mais detalhes. O valor padrão (usado se
+nada for especificado) é:
 `*admin*,*admln*,*server*,ai,ai?,computer,human,network,player'.
 .TP 
 \fBmax_messages\fP

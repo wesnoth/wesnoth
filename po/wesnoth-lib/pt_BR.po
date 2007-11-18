@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-16 16:24+0100\n"
-"PO-Revision-Date: 2007-10-29 01:27+0900\n"
+"PO-Revision-Date: 2007-11-14 02:10+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "MIME-Version: 1.0\n"
@@ -223,7 +223,7 @@ msgstr "Parede de Caverna"
 
 #: data/core/terrain.cfg:924
 msgid "Void"
-msgstr ""
+msgstr "Vazio"
 
 #: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:423
@@ -379,11 +379,11 @@ msgstr "Não mostrar movimento do computador"
 
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Salvar Replay após uma vitória em SJ/MJ ou derrota em MJ"
 
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Apagar jogos salvos após vitória em SJ/MJ ou derrota em MJ"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -450,9 +450,8 @@ msgid "Show Haloing Effects"
 msgstr "Mostrar efeitos de halo"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Change Resolution"
-msgstr "Escolher a resolução"
+msgstr "Mudar a Resolução"
 
 #: src/game_preferences_display.cpp:182
 msgid "Theme"
@@ -480,11 +479,11 @@ msgstr "Registro de Tempo no Chat"
 
 #: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Opções Avançadas"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Opções Padrão"
 
 #: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
@@ -612,7 +611,7 @@ msgstr "Configura a frequência das animações de unidades inativas"
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "Configura o número máximo de jogos salvos a serem guardados"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -620,12 +619,12 @@ msgstr "Não mostrar animação das unidades do computador ao se moverem"
 
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
+msgstr "Salva replays após uma vitória em SJ ou derrota em SJ/MJ."
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Automaticamente deleta jogos salvos ao fim de um cenário"
+msgstr ""
+"Automaticamente deleta jogos salvos após uma vitória SJ ou derrota SJ/MJ"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -727,11 +726,11 @@ msgstr "Velocidade:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "Número Máximo de Jogos Salvos: "
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
-msgstr ""
+msgstr "infinito"
 
 #: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
@@ -739,9 +738,8 @@ msgstr "Linhas de Chat: "
 
 #: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
 #: src/game_preferences_display.cpp:907
-#, fuzzy
 msgid "Invalid username"
-msgstr "Insere um nome"
+msgstr "Nome inválido"
 
 #: src/game_preferences_display.cpp:967
 msgid "yes"
@@ -753,7 +751,7 @@ msgstr "não"
 
 #: src/game_preferences_display.cpp:1003
 msgid "(empty list)"
-msgstr ""
+msgstr "(lista vazia)"
 
 #: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
@@ -1213,18 +1211,3 @@ msgstr "Erro"
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Terreno Inválido encontrado, provavelmente da versão 1.2, terreno = "
-
-#~ msgid "Save Replays"
-#~ msgstr "Salvar Replays"
-
-#~ msgid "Delete Autosaves"
-#~ msgstr "Apagar Jogos Autosalvos"
-
-#~ msgid "Save replays at scenario end."
-#~ msgstr "Salva replays ao fim do cenário."
-
-#~ msgid "Advanced Mode"
-#~ msgstr "Modo Avançado"
-
-#~ msgid "Normal Mode"
-#~ msgstr "Modo Normal"

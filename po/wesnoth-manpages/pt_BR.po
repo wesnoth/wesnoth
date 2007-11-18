@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-11-04 17:59+0100\n"
-"PO-Revision-Date: 2007-08-25 10:46+0900\n"
+"PO-Revision-Date: 2007-11-14 02:23+0900\n"
 "Last-Translator: Claus Aranha\n"
 "Language-Team: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
@@ -205,9 +205,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--load>I<\\ E<lt>savegameE<gt>>"
-msgstr "B<--load>I<\\ jogo salvo>"
+msgstr "B<--load>I<\\ E<lt>jogo salvoE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
@@ -218,20 +218,18 @@ msgstr "carrega o arquivo de jogo do diretório padrão de jogos salvos."
 #: ../../doc/man/wesnoth.6:73 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
-msgstr ""
+msgstr "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:78
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug. By default "
 "the error level is used."
 msgstr ""
 "configura o nível de importância de cada domínios de debug. \"all\" pode ser "
-"usado para escolher todos os domínios. B<--log-info> mostra todas as "
-"mensagens, <B--log-warning> mostra apenas avisos e erros, e B<--log-error> "
-"mostra apenas os erros."
+"usado para escolher qualquer domínio de debug. Níveis disponíveis: error, "
+"warning, info, debug. Como padrão, o nível 'error' é utilizado."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:78 ../../doc/man/wesnoth_editor.6:72
@@ -486,12 +484,12 @@ msgstr "B<--scenario=valor>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:153
-#, fuzzy
 msgid ""
 "selects a multiplayer scenario. The default scenario is "
 "\"multiplayer_The_Freelands\"."
 msgstr ""
-"seleciona um cenário multijogador. O cenário padrão é \"multiplayer_Charge\"."
+"seleciona um cenário multijogador. O cenário padrão é "
+"\"multiplayer_The_Freelands\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:153
@@ -525,17 +523,16 @@ msgstr "define o número de turnos para o cenário escolhido. O padrão é \"50\
 #: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
-msgstr ""
+msgstr "Exemplo para testar sua própria IA contra a IA padrão sem inicializar a GUI:"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy
 msgid ""
 "wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 msgstr ""
-"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
-"parm2python_script:py/meu_script_python_ai.py --side2=Rebels"
+"wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/meu_script_python_ai.py"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:165 ../../doc/man/wesnoth_editor.6:76
@@ -806,14 +803,14 @@ msgstr "B<-c,\\ --config>I<\\ caminho>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
-#, fuzzy
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
 "diz a wesnothd onde achar o arquivo de configuração a ser usado. Veja a "
-"seção B<CONFIGURAÇÃO DO SERVIDOR> abaixo para a sintaxe."
+"seção B<CONFIGURAÇÃO DO SERVIDOR> abaixo para a sintaxe. Você pode "
+"recarregar a configuração enviando SIGHUP para o processo do servidor."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -834,15 +831,13 @@ msgstr "B<-h,\\ --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug."
 msgstr ""
 "configura o nível de importância de cada domínios de debug. \"all\" pode ser "
-"usado para escolher todos os domínios. B<--log-info> mostra todas as "
-"mensagens, <B--log-warning> mostra apenas avisos e erros, e B<--log-error> "
-"mostra apenas os erros."
+"usado para escolher qualquer domínio. Níveis disponíveis: error, warning, "
+"info, debug."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59
@@ -968,7 +963,6 @@ msgstr "B<disallow_names>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:101
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. `*' and `?' from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
@@ -977,7 +971,8 @@ msgid ""
 msgstr ""
 "Nomes/apelidos que não são aceitos pelo servidor. `*'e `?' podem ser usados "
 "como coringas. Veja B<glob>(7) para mais detalhes. O valor padrão (usado se "
-"nada for especificado) é: `server,ai,player,network,human,admin,computer'."
+"nada for especificado) é: `*admin*,*admln*,*server*,ai,ai?,computer,human,"
+"network,player'."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:101
@@ -1135,7 +1130,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:161
 msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
 msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "Example to test your own AI: "
-#~ msgstr "Exemplo para testar sua própria AI: "
