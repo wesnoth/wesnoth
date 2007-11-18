@@ -35,9 +35,18 @@ Version 1.3.10+svn:
    * the gold carryover can now be modified from wml (fr #10144)
  * units:
    * balancing changes:
-     * increased the melee attack of the Saurian Oracle from 5-2 to 4-3
+   * increased the melee attack of the Saurian Oracle from 5-2 to 4-3
+ * user interface:
+   * The attack dialog displays the range between weapon's info
+   * The footsteps of a teleporting unit shows haloes on teleport points
+   * More readable colors for dark map labels (bug #10271)
+   * Tips of the day have attributions, a "Previous" button and a fixed size.
  * miscellaneous and bug fixes:
    * added some extra headers for gcc 4.3 (based on patch #842)
+   * Fix bad fog update when passing by or stopping on a village
+   * Fix various bug when teleporting a unit to a fogged village (bug #10273)
+   * Display a message when a teleport fails (exit village has an hidden ally)
+   * Warning message on the standard output when using tiles with bad size
 
 Version 1.3.10:
  * campaign server
