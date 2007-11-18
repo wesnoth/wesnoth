@@ -421,14 +421,17 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if (res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE 
 			&& res != LEVEL_CONTINUE)
 		{
-			//In case we are the host, notify the other players so they can leave linger mode
-			if (io_type == IO_SERVER)
+			// In case we are the host and there is a next scenario, notify
+			// the other players so they can leave linger mode.
+			if (!next_scenario.empty() && io_type == IO_SERVER)
 				notify_next_scenario(IO_SERVER);
 
 			if (res != OBSERVER_END || next_scenario.empty())
 				return res;
 
-			const int dlg_res = gui::dialog(disp,"Game Over",_("This scenario has ended. Do you want to continue the campaign?"), gui::YES_NO).show();
+			const int dlg_res = gui::dialog(disp,"Game Over",
+				_("This scenario has ended. Do you want to continue the campaign?"),
+				gui::YES_NO).show();
 			if (dlg_res != 0)
 				return res;
 		}
