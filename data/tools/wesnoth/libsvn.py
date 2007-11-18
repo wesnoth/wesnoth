@@ -23,8 +23,8 @@ the command line svn tool.
 # FIXME only did it add a few points not every
 # call to __execute
 
-import os, shutil, logging;
-
+import os, shutil, logging
+from subprocess import Popen, PIPE 
 class error(Exception):
     """Base class for exceptions in this module."""
     pass
@@ -52,8 +52,8 @@ class SVN:
 
         logging.debug("checkout repo = '%s'", repo)
 
-        out, err = self.__execute("svn co --non-interactive " + repo + " " + 
-            self.checkout_path)
+        out, err = self.__execute(["svn", "co", "--non-interactive", 
+            repo, self.checkout_path])
 
         if(err != ""):
             raise error("checkout failed with message:" + err)
@@ -70,16 +70,18 @@ class SVN:
     """
     def commit(self, msg, files = None):
 
-        # FIXME if files set use the root also make files []
-
         logging.debug("commit msg = '%s' files = '%s' ", msg, files)
 
-        command = "svn commit --non-interactive -m " + '"' + msg + '"'
+        command = ["svn", "commit", "--non-interactive", "-m", msg]
         if(files != None):
-            command += " " + files
+            for file in files:
+                command += [self.checkout_path +"/" + file]
+        else:
+            command += [self.checkout_path]
 
         # execute
-        out, err = self.__execute(command + " " + self.checkout_path)
+        return False
+        out, err = self.__execute(command)
 
         if(err != ""):
             raise error("commit failed with message:" +err)
@@ -102,19 +104,20 @@ class SVN:
 
         logging.debug("update rev = '%s' files = '%s'", rev, files)
 
-        command = "svn up --non-interactive "
+        command = ["svn", "up", "--non-interactive"]
         if(rev != None):
-            command += "-r " + rev + " "
+            command += ["-r", rev]
         if(files != None):
-            command += self.checkout_path + "/" + files
+            # FIXME files should be []
+            command += [self.checkout_path + "/" + files]
         else:
-            command += self.checkout_path
+            command += [self.checkout_path]
 
         # execute
         out, err = self.__execute(command)
 
         if(err != ""):
-            raise error("update failed with message:" +err)
+            raise error("update failed with message:" + err)
 
         if(out.count('\n') == 1):
             logging.debug("update didn't change anything")
@@ -164,7 +167,7 @@ class SVN:
             src, exclude)
 
         # Check whether the status of the repo is clean.
-        out, err = self.__execute("svn st " + self.checkout_path)
+        out, err = self.__execute(["svn", "st", self.checkout_path])
         
         # If not clean or an error bail out.
         if(err != ""):
@@ -177,7 +180,7 @@ class SVN:
 
         # Test whether the checkout is clean if not something is modified.
         # An error shouldn't occur, since we tested that before.
-        out, err = self.__execute("svn st " + self.checkout_path)
+        out, err = self.__execute(["svn", "st", self.checkout_path])
         return (out != "")
 
 
@@ -193,7 +196,7 @@ class SVN:
             dest, exclude)
 
         # Check whether the status of the repo is clean.
-        out, err = self.__execute("svn st " + self.checkout_path)
+        out, err = self.__execute(["svn", "st", self.checkout_path])
         
         # If not clean or an error bail out.
         if(err != ""):
@@ -223,7 +226,7 @@ class SVN:
         logging.debug("__svn_add item = '%s'", item)
 
         # execute (repo not required)
-        out, err = self.__execute( ("svn add " + repr(item)))
+        out, err = self.__execute(["svn", "add", item])
 
         if(err != ""):
             raise error("__svn_add failed with message:" + err)
@@ -241,7 +244,7 @@ class SVN:
         logging.debug("__svn_remove item = '%s'", item)
 
         # execute (repo not required)
-        out, err = self.__execute("svn remove --non-interactive " + repr(item))
+        out, err = self.__execute(["svn", "remove", "--non-interactive", item])
 
         if(err != ""):
             raise error("__svn_remove failed with message:" + err)
@@ -440,18 +443,21 @@ class SVN:
     returns             stdout, stderr
     """
     def __execute(self, command):
-        
+
         logging.debug("execute command = '%s'", command)
 
-        stdin, stdout, stderr = os.popen3(command)
-        stdin.close()
-        # reading stdout before the stderr seems to avoid 'hanging' not 100% sure
-        # why but it might be that the stdout buffer is full and thus everything
-        # blocks, so this fix might not be 100% but the documentation doesn't tell
-        # much more. All examples on the web don't mention this case as well.
-        out = stdout.read()
-        stdout.close()
-        err = stderr.read()
-        stderr.close()
+        p = Popen(command, stdout=PIPE, stderr=PIPE, close_fds=True)
+        out = ""
+        err = ""
+        while(p.poll() == None):
+            out += p.stdout.read()
+            err += p.stderr.read()
+
+        out += p.stdout.read()
+        err += p.stderr.read()
+
+        logging.debug("===== stdout ====\n\n\n%s\n\n\n===== stdout ====", out)
+        logging.debug("===== stderr ====\n\n\n%s\n\n\n===== stderr ====", err)
 
         return out, err
+

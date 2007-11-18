@@ -159,7 +159,7 @@ if __name__ == "__main__":
             os.mkdir(svn_dir + "/" + addon)
             res = svn.add(addon)
             res = svn.commit("wescamp_client: adding directory for initial "
-                + "inclusion of addon '" + addon + "'")
+                + "inclusion of addon '" + addon + "'", [addon])
 
         # Update the directory
         svn = libsvn.SVN(svn_dir + "/" + addon)
