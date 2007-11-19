@@ -847,6 +847,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const t_string& t_gender = cfg["gender"];
 	const t_string& t_canrecruit = cfg["canrecruit"];
 	const t_string& t_level = cfg["level"];
+	const t_string& t_defense = cfg["defense"];
+	const t_string& t_movement_cost = cfg["movement_cost"];
 
 	const std::string& description = t_description;
 	const std::string& speaker = t_speaker;
@@ -860,6 +862,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	const std::string& gender = t_gender;
 	const std::string& canrecruit = t_canrecruit;
 	const std::string& level = t_level;
+	const std::string& defense = t_defense;
+	const std::string& mvt_cost = t_movement_cost;
 
 	if(description.empty() == false && description != this->underlying_description()) {
 		return false;
@@ -984,6 +988,14 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	}
 
 	if(level.empty() == false && level_ != lexical_cast_default<int>(level,-1)) {
+		return false;
+	}
+
+	if(defense.empty() == false && defense_modifier(map_->get_terrain(loc)) != lexical_cast_default<int>(defense,-1)) {
+		return false;
+	}
+
+	if(mvt_cost.empty() == false && movement_cost(map_->get_terrain(loc)) != lexical_cast_default<int>(mvt_cost,-1)) {
 		return false;
 	}
 
