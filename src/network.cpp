@@ -673,10 +673,12 @@ void send_data(const config& cfg, connection connection_num)
 
 	const connection_map::iterator info = connections.find(connection_num);
 	if (info == connections.end()) {
-		ERR_NW << "Error: socket: " << connection_num << "\tnot found in connection_map. Not sending...\n";
+		ERR_NW << "Error: socket: " << connection_num
+			<< "\tnot found in connection_map. Not sending...\n";
 		return;
 	}
 
+	LOG_NW << "SENDING to: " << connection_num << ": " << cfg.debug();
 	network_worker_pool::queue_data(info->second.sock,cfg);
 }
 

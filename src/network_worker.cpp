@@ -186,7 +186,6 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 }
 
 static SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
-	LOG_NW << "SENDING to: " << sock << ": " << config_in.debug();
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
