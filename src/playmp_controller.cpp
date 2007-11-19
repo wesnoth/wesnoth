@@ -24,14 +24,17 @@
 
 unsigned int playmp_controller::replay_last_turn_ = 0;
 
-playmp_controller::playmp_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-									 const int ticks, const int num_turns, const config& game_config, CVideo& video,
-									 bool skip_replay, bool is_host)
-	: playsingle_controller(level, gameinfo, state_of_game, ticks, num_turns, game_config, video, skip_replay)
+playmp_controller::playmp_controller(const config& level,
+	const game_data& gameinfo, game_state& state_of_game, const int ticks,
+	const int num_turns, const config& game_config, CVideo& video,
+	bool skip_replay, bool is_host)
+	: playsingle_controller(level, gameinfo, state_of_game, ticks, num_turns,
+		game_config, video, skip_replay)
 {
 	beep_warning_time_ = 0;
 	turn_data_ = NULL;
 	is_host_ = is_host;
+	last_ping_ = time(NULL);
 }
 
 playmp_controller::~playmp_controller() {
@@ -331,6 +334,14 @@ void playmp_controller::play_network_turn(){
 	turn_data.host_transfer().attach_handler(this);
 
 	for(;;) {
+		// Send a ping to the server every 10 seconds.
+		time_t now = time(NULL);
+		if (last_ping_+10 < now) {
+			last_ping_ = now;
+			config ping;
+			ping["ping"] = lexical_cast<std::string>(now);
+			network::send_data(ping);
+		}
 
 		bool have_data = false;
 		config cfg;
