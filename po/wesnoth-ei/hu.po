@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-18 13:39+0100\n"
+"POT-Creation-Date: 2007-11-19 13:41+0100\n"
 "PO-Revision-Date: 2007-07-10 19:52+0200\n"
 "Last-Translator: Széll Tamás <tomi A digiflex POINT hu>\n"
 "Language-Team:  <hu@gnome.hu>\n"
@@ -129,7 +129,7 @@ msgstr "Kitartasz Dacyn két nap múlva esedékes érkezéséig"
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:152
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:258
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:102
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:165
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:59
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:128
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:62
@@ -243,7 +243,7 @@ msgstr "Eljuttatod Gweddry-t a csapóajtóhoz"
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:189
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:156
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:262
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:106
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:169
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:66
@@ -729,7 +729,7 @@ msgstr ""
 "mérni rá?"
 
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:313
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:218
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:245
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:122
 msgid "Hmm..."
 msgstr "Hmm..."
@@ -915,7 +915,7 @@ msgstr "Legyőzöd az élőholt fővezért"
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:104
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:193
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:110
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:173
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:136
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:77
@@ -1808,32 +1808,32 @@ msgstr ""
 msgid "Varrak-Klar"
 msgstr "Varrak-Klar"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:47
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:56
 msgid "Unhk"
 msgstr "Unhk"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:60
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:77
 msgid "Ran-Lar"
 msgstr "Ran-Lar"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:94
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:161
 msgid "Destroy the bridge OR defeat all enemies"
 msgstr "Lerombolod a hidat VAGY legyőzöl minden ellenséget"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:98
-#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:101
-msgid "Get Gweddry to Weldyn"
-msgstr "Eljuttatod Gweddry-t Weldynbe"
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:176
+#, fuzzy
+msgid ""
+"Note: every unit not on the south side of the river when the bridge is "
+"destroyed will be lost"
+msgstr ""
+"Lerombolod a hidat (mindenki aki a folyó északi oldalán marad meg fog halni, "
+"beleértve a visszahívási listán lévőket is)"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:114
-msgid "Leave any of the three heroes on the north side of the river"
-msgstr "A három hős közül az egyik is a folyó északi oldalán marad"
-
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:185
 msgid "Engineer"
 msgstr "Mérnök"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:196
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...?!? Who are you?"
@@ -1841,7 +1841,7 @@ msgstr ""
 "Minden elveszett! El kell jutnunk Északföldre amilyen gyorsan csak lehet! "
 "Fussatok az - mi a manó?!? Ki vagy te?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:200
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
 "gonna want me to blow up that bridge ov'r theah."
@@ -1849,11 +1849,11 @@ msgstr ""
 "Én egy mérnök vagyok! Úgy hiszem szükségetek lesz a szolgálataimra. Fogadni "
 "mernék azt szeretnétek, hogy felrobbantsam azt a hidat ott!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:204
 msgid "Why would we want to do that?!?"
 msgstr "Miért kérnénk ilyesmit?!?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:208
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you to escape."
@@ -1861,11 +1861,11 @@ msgstr ""
 "Hát, látom az orkok üldöznek titeket, és ha felrobbantom a hidat, nem tudnak "
 "átkelni. Segíteni fog a menekülésben."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:185
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:212
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "Világos... Azt hiszem, jó ötlet megbízást adni neki. Mennyibe kerül?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:189
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:216
 msgid ""
 "I aint charging gold - I wants protecshun! Everywhere I go, I see orcs, "
 "undead. 'T'aint safe 'round 'ere!"
@@ -1873,7 +1873,7 @@ msgstr ""
 "Nem aranyért dolgozom - védelmet kérek tőletek az élőholtakkal szemben! "
 "Elpusztították az otthonom, és most sem vagyok sehol biztonságban tőlük."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:193
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:220
 msgid ""
 "Very well, we'll protect you from the undead. But we can't help you until we "
 "get across this river. Now let's go!"
@@ -1881,38 +1881,40 @@ msgstr ""
 "Rendben van, megvédünk az élőholtaktól, de addig nem segíthetünk, amíg nem "
 "jutottunk át a folyón. Induljunk!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:197
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:224
+#, fuzzy
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
-"my eq'pment is."
+"my eq'pment is. But ev'ryone not ov'r theah on that side when it blows w'll "
+"be killed by the orcs fa' sure!"
 msgstr ""
 "Áll az alku! Amint eljutok az útjelző táblához, ahol a felszerelésemet "
 "tartom, felrobbantom a hidat."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:214
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:241
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "Akkor robbanthatom a hidat, kapitányom?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:247
 msgid "Yes, blow it up."
 msgstr "Igen, robbantsd fel!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:251
 msgid "Alright! Blast'n time!"
 msgstr "Oké, akkor robbantsunk!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:237
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:264
 msgid "BOOM!!!"
 msgstr "BUMMM!!!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:257
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:284
 msgid ""
 "Good, we have escaped from these orcs. But where will we go? There are "
 "undead in Wesnoth."
 msgstr ""
 "Szerencsésen kiszabadultunk ezekből a sötét alagutakból! De hol vagyunk most?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:288
 msgid ""
 "It is not safe here, but we cannot go back north. The orcs are a more "
 "immediate threat."
@@ -1920,19 +1922,19 @@ msgstr ""
 "Itt nem biztonságos, de nem mehetünk vissza északra. Az orkok egyre "
 "fenyegetőbb veszélyt jelentenek."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:270
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:297
 msgid "No, wait until later."
 msgstr "Nem, várj még."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:274
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:301
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Hehh? Akkor várunk még?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:287
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:314
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "Nem döntöttük le a hidat időben! Az orkok mindannyiunkat megölnek!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:295
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:322
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "leave the northlands. More orcs will come. But where will we go? There are "
@@ -1942,11 +1944,11 @@ msgstr ""
 "felé. Több ork is fog érkezni hamarosan. De hova is mehetnénk? Wesnoth-ban "
 "élőholtak portyáznak."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:303
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:330
 msgid "So what do you propose?"
 msgstr "Mit ajánlasz?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:307
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:334
 msgid ""
 "We cannot go north, for that is where orcs are... we cannot go east, for "
 "that is where the undead come from... we cannot go west, for the ocean lies "
@@ -1958,7 +1960,7 @@ msgstr ""
 "az óceán van, és nincs hajónk. Túl kell élnünk egy ideig, azonban ha Wesnoth-"
 "ban maradunk, akkor az élőholtak meg fognak minket találni."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:311
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:338
 msgid ""
 "We could go south, and return to Wesnoth... but I do not know what that "
 "would accomplish."
@@ -1966,11 +1968,11 @@ msgstr ""
 "Délnek mehetünk, és visszatérhetünk Wesnoth-ba... de nem tudom, pontosan "
 "mire is mennénk vele."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:315
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:342
 msgid "It would accomplish nothing! The undead will kill us all!"
 msgstr "Nem oldana meg semmit! Az élőholtak megölnének mindnyájunkat!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:319
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:346
 msgid ""
 "Have you not heard what Dacyn said? Either the orcs or undead will kill us "
 "no matter what we do. Our only hope was to isolate ourselves on the Isle of "
@@ -1983,7 +1985,7 @@ msgstr ""
 "hogy visszatérjünk arra, és felébresztettük az orkok hordáját is. Nem "
 "próbálhatjuk meg mégyegyszer, tehát, ha nincs esélyünk..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:323
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:350
 msgid ""
 "There is still some hope left. If we return to Wesnoth, we may be able to "
 "aid the king in defeating these invaders. We saw them attack us. And, I "
@@ -1994,7 +1996,7 @@ msgstr ""
 "megtámadtak minket. És, vannak... fontos ismereteim. Ezeket átadnám a "
 "királynak. Talán tudom az élőholtak gyengeségét."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:327
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:354
 msgid ""
 "Very well. If returning to Wesnoth has any chance of success, it is our best "
 "option. We will go south."
@@ -2002,7 +2004,7 @@ msgstr ""
 "Nagyon jó. Ha a Wesnoth-ba való visszatérésre van bármi esélyünk, akkor ez a "
 "legjobb választásunk. Délnek megyünk."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:331
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:358
 msgid ""
 "I do not like this. But it appears we will die no matter our course of "
 "action."
@@ -2010,7 +2012,7 @@ msgstr ""
 "Nem tetszik ez nekem. De úgy tűnik, bármerre is indulunk, a halállal kell "
 "szembe néznünk."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:335
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:362
 msgid ""
 "I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
 "c'n stop runnin'..."
@@ -2116,6 +2118,10 @@ msgstr "Mal-un-Xadrux"
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:83
 msgid "Konrad II"
 msgstr "II. Konrad"
+
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:101
+msgid "Get Gweddry to Weldyn"
+msgstr "Eljuttatod Gweddry-t Weldynbe"
 
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:117
@@ -2893,6 +2899,9 @@ msgstr ""
 "hajnalban Gweddry-t és embereit az éjszakai őr elkeseredett kiáltása "
 "riasztotta fel..."
 
+#~ msgid "Leave any of the three heroes on the north side of the river"
+#~ msgstr "A három hős közül az egyik is a folyó északi oldalán marad"
+
 #~ msgid "There are still humans in this village! They can help us."
 #~ msgstr "Még vannak emberek ebben a faluban! Segítségünkre lehetnek."
 
@@ -3164,13 +3173,6 @@ msgstr ""
 
 #~ msgid "Gweddry, he's actually right... we have to hire him. How much?"
 #~ msgstr "Gweddry, igaza van... fel kell bérelnünk. Mennyiért dolgozol?"
-
-#~ msgid ""
-#~ "Destroy the bridge (everyone left on the north side of the river will "
-#~ "die, including those left on your recall list)"
-#~ msgstr ""
-#~ "Lerombolod a hidat (mindenki aki a folyó északi oldalán marad meg fog "
-#~ "halni, beleértve a visszahívási listán lévőket is)"
 
 #~ msgid "Get everyone possible across the river"
 #~ msgstr "Akit csak tudsz átjuttatsz a folyón"

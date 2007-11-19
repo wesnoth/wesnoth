@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-18 13:39+0100\n"
+"POT-Creation-Date: 2007-11-19 13:41+0100\n"
 "PO-Revision-Date: 2006-08-07 22:17+0200\n"
 "Last-Translator: Jussi Rautio <jrautio@niksula.hut.fi>\n"
 "Language-Team: none\n"
@@ -125,7 +125,7 @@ msgstr "Kestä kunnes Dacyn palaa kahden päivän kuluessa"
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:152
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:258
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:102
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:165
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:59
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:128
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:62
@@ -242,7 +242,7 @@ msgstr "Saata Gweddry salaluukulle"
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:189
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:156
 #: data/campaigns/Eastern_Invasion/scenarios/01.The_Outpost.cfg:262
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:106
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:169
 #: data/campaigns/Eastern_Invasion/scenarios/04a.An_Elven_Alliance.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:132
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:66
@@ -733,7 +733,7 @@ msgstr ""
 "yrittää kääntyä takaisin ja voittaa tämä pimeän taitaja?"
 
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:313
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:218
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:245
 #: data/campaigns/Eastern_Invasion/scenarios/04b.The_Undead_Border_Patrol.cfg:122
 msgid "Hmm..."
 msgstr "Hmm..."
@@ -919,7 +919,7 @@ msgstr "Kukista epäkuolleiden johtaja"
 #: data/campaigns/Eastern_Invasion/scenarios/05.Northern_Outpost.cfg:104
 #: data/campaigns/Eastern_Invasion/scenarios/12.Captured.cfg:193
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:160
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:110
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:173
 #: data/campaigns/Eastern_Invasion/scenarios/14.The_Drowned_Plains.cfg:136
 #: data/campaigns/Eastern_Invasion/scenarios/09.Training_the_Ogres.cfg:63
 #: data/campaigns/Eastern_Invasion/scenarios/06.Two_Paths.cfg:77
@@ -1819,32 +1819,29 @@ msgstr ""
 msgid "Varrak-Klar"
 msgstr "Varrak-Klar"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:47
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:56
 msgid "Unhk"
 msgstr "Unhk"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:60
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:77
 msgid "Ran-Lar"
 msgstr "Ran-Lar"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:94
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:161
 msgid "Destroy the bridge OR defeat all enemies"
 msgstr "Tuhoa silta TAI lyö kaikki viholliset."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:98
-#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:101
-msgid "Get Gweddry to Weldyn"
-msgstr "Saata Gweddry Weldyniin"
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:176
+msgid ""
+"Note: every unit not on the south side of the river when the bridge is "
+"destroyed will be lost"
+msgstr ""
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:114
-msgid "Leave any of the three heroes on the north side of the river"
-msgstr "Yksikin kolmesta sankarista jää joen pohjoiselle puolelle."
-
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:162
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:185
 msgid "Engineer"
 msgstr "Pioneeri"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:169
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:196
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...?!? Who are you?"
@@ -1852,7 +1849,7 @@ msgstr ""
 "Kaikki on mennyttä! Meidän täytyy päästä pois näiltä pohjoisilta mailta niin "
 "pian kuin mahdollista! Juoskaa henkenne e... mitä h...?!? Kuka sinä olet?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:173
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:200
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
 "gonna want me to blow up that bridge ov'r theah."
@@ -1860,11 +1857,11 @@ msgstr ""
 "Mie oon pinohiirj. Taijatta olla palveluksein tarpeess'. Suatatta tahtoo, "
 "että räjjäätän tuon sillan."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:177
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:204
 msgid "Why would we want to do that?!?"
 msgstr "Miksi haluaisimme tehdä niin?!?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:181
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:208
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you to escape."
@@ -1872,11 +1869,11 @@ msgstr ""
 "No, kah kun nuo örkit jahtaa teitii, nii jos mie räjjäätän ton sillan, hyö "
 "eivät piäsekkää ylitte. Sittepä piäsette pakkoon."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:185
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:212
 msgid "I see... I think it is a good idea to hire him. How much?"
 msgstr "Ymmärrän... Olisi hyvä ajatus palkata hänet. Kuinka paljon?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:189
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:216
 msgid ""
 "I aint charging gold - I wants protecshun! Everywhere I go, I see orcs, "
 "undead. 'T'aint safe 'round 'ere!"
@@ -1884,7 +1881,7 @@ msgstr ""
 "Mie en halluu rahhoo...mie tahon jotta työ suojeletta minnuu näilt' "
 "örkelöilt ja epäkuolleilt! Hyön takkia tiell ei oo turvallisna liikkuapi."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:193
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:220
 msgid ""
 "Very well, we'll protect you from the undead. But we can't help you until we "
 "get across this river. Now let's go!"
@@ -1892,31 +1889,33 @@ msgstr ""
 "Hyvä on, me suojelemme sinua epäkuolleilta. Mutta emme voi auttaa sinua "
 "ennen kuin pääsemme joen yli. Lähdetään!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:197
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:224
+#, fuzzy
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
-"my eq'pment is."
+"my eq'pment is. But ev'ryone not ov'r theah on that side when it blows w'll "
+"be killed by the orcs fa' sure!"
 msgstr ""
 "Soppii. Voin räjjäättää sillan kuha piäsen tuolle opastielle tuola. Sielä on "
 "miu varrustien."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:214
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:241
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "No, joko räjjäätettää, kapteen?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:220
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:247
 msgid "Yes, blow it up."
 msgstr "Kyllä, räjäytä se."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:224
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:251
 msgid "Alright! Blast'n time!"
 msgstr "Nonnii! Ampu tuli!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:237
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:264
 msgid "BOOM!!!"
 msgstr "PUUM!!!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:257
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:284
 msgid ""
 "Good, we have escaped from these orcs. But where will we go? There are "
 "undead in Wesnoth."
@@ -1924,7 +1923,7 @@ msgstr ""
 "Hyvä, pääsimme ulos noilta örkeiltä! Mutta missä olemme nyt? Wesnothissa on "
 "epäkuolleita."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:261
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:288
 msgid ""
 "It is not safe here, but we cannot go back north. The orcs are a more "
 "immediate threat."
@@ -1932,19 +1931,19 @@ msgstr ""
 "Täällä ei ole turvallista, mutta emme voi myöskään palata pohjoiseen. Örkit "
 "ovat suurempi uhka."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:270
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:297
 msgid "No, wait until later."
 msgstr "Ei, odota myöhempään."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:274
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:301
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Eekö viäl? Selevä, uotellaa."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:287
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:314
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "Emme sortaneet siltaa ajoissa! Örkit tappavat meidät kaikki!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:295
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:322
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "leave the northlands. More orcs will come. But where will we go? There are "
@@ -1954,11 +1953,11 @@ msgstr ""
 "meidän täytyy silti mennä etelään. Mutta minnepäin lähdemme? Toivottavasti "
 "epäkuolleet eivät ole vielä Wesnothissa."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:303
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:330
 msgid "So what do you propose?"
 msgstr "Mitä ehdotat?"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:307
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:334
 msgid ""
 "We cannot go north, for that is where orcs are... we cannot go east, for "
 "that is where the undead come from... we cannot go west, for the ocean lies "
@@ -1970,7 +1969,7 @@ msgstr ""
 "meillä ei ole laivoja. Voisimme selvitä siellä jonkin aikaa, mutta olisimme "
 "silti Wesnothissa ja epäkuolleet löytäisivät meidät."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:311
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:338
 #, fuzzy
 msgid ""
 "We could go south, and return to Wesnoth... but I do not know what that "
@@ -1979,11 +1978,11 @@ msgstr ""
 "Voisimme mennä etelään ja palata Wesnothiin... mutta en tiedä mitä "
 "saavuttaisimme sillä."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:315
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:342
 msgid "It would accomplish nothing! The undead will kill us all!"
 msgstr "Emme saavuttaisi sillä mitään. Epäkuolleet tappavat meidät kaikki!"
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:319
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:346
 msgid ""
 "Have you not heard what Dacyn said? Either the orcs or undead will kill us "
 "no matter what we do. Our only hope was to isolate ourselves on the Isle of "
@@ -1996,7 +1995,7 @@ msgstr ""
 "ovat nyt valppaina. Emme voi yrittää sitä uudelleen. Joten, jos meillä ei "
 "ole muita vaihtoehtoja..."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:323
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:350
 msgid ""
 "There is still some hope left. If we return to Wesnoth, we may be able to "
 "aid the king in defeating these invaders. We saw them attack us. And, I "
@@ -2006,7 +2005,7 @@ msgstr ""
 "nämä tunkeilijat. Me näimme heidän hyökkäävän kimppuumme. Ja minulla on... "
 "ehdotus, annettavaksi kuninkaalle. Saatan tietää epäkuolleiden heikon kohdan."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:327
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:354
 #, fuzzy
 msgid ""
 "Very well. If returning to Wesnoth has any chance of success, it is our best "
@@ -2015,7 +2014,7 @@ msgstr ""
 "Hyvä on. Jos paluumme Wesnothiin onnistuu, se on paras vaihtoehto. Menkäämme "
 "etelään."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:331
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:358
 #, fuzzy
 msgid ""
 "I do not like this. But it appears we will die no matter our course of "
@@ -2024,7 +2023,7 @@ msgstr ""
 "En pidä tästä. Mutta näyttää siltä että kuolemme, huolimatta mihin suuntaan "
 "menemme."
 
-#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:335
+#: data/campaigns/Eastern_Invasion/scenarios/13.Evacuation.cfg:362
 msgid ""
 "I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
 "c'n stop runnin'..."
@@ -2130,6 +2129,10 @@ msgstr "Mal-un-Xadrux"
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:83
 msgid "Konrad II"
 msgstr "Konrad II"
+
+#: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:101
+msgid "Get Gweddry to Weldyn"
+msgstr "Saata Gweddry Weldyniin"
 
 #: data/campaigns/Eastern_Invasion/scenarios/17.Weldyn_Under_Attack.cfg:164
 #: data/campaigns/Eastern_Invasion/scenarios/15.Approaching_Weldyn.cfg:117
@@ -2914,6 +2917,9 @@ msgstr ""
 "hyökkäyksiä ja Gweddryn miehet tulivat varomattomaksi. Sitten, eräänä "
 "aamuna, Gweddryn ja hänen miestensä korviin kantautuivat yövartijoiden "
 "pelästyneet huudot..."
+
+#~ msgid "Leave any of the three heroes on the north side of the river"
+#~ msgstr "Yksikin kolmesta sankarista jää joen pohjoiselle puolelle."
 
 #~ msgid "There are still humans in this village! They can help us."
 #~ msgstr "Tässä kylässä on vielä ihmisiä! He voivat auttaa meitä."
