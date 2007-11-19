@@ -268,6 +268,16 @@ then
 	AC_MSG_WARN([*** Python support disabled, suppressing installation of Python tools.])
 fi
 
+AC_ARG_ENABLE([raw-sockets],
+              AS_HELP_STRING([--enable-raw-sockets], [use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities]),
+	      [raw-sockets=$enableval],
+	      [raw-sockets=no])
+
+if test "x$raw-sockets" = "xyes"
+then
+	CPPFLAGS="$CPPFLAGS -DNETWORK_USE_RAW_SOCKETS"
+fi
+
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
 AM_CONDITIONAL([PYTHON_INSTALL], [test x$python_install = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
