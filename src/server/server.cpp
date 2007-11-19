@@ -188,6 +188,8 @@ config server::read_config() const {
 void server::load_config() {
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
+
+	disallowed_names_.clear();
 	if (cfg_["disallow_names"] == "") {
 		disallowed_names_.push_back("*admin*");
 		disallowed_names_.push_back("*admln*");
@@ -205,6 +207,7 @@ void server::load_config() {
 	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"],10);
 	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"],5);
 
+	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
 	if (versions.empty() == false) {
 		const std::vector<std::string> accepted(utils::split(versions));
@@ -216,6 +219,7 @@ void server::load_config() {
 		accepted_versions_.insert("test");
 	}
 
+	redirected_versions_.clear();
 	const config::child_list& redirects = cfg_.get_children("redirect");
 	for (config::child_list::const_iterator i = redirects.begin(); i != redirects.end(); ++i) {
 		const std::vector<std::string> versions(utils::split((**i)["version"]));
@@ -224,6 +228,7 @@ void server::load_config() {
 		}
 	}
 
+	proxy_versions_.clear();
 	const config::child_list& proxies = cfg_.get_children("proxy");
 	for (config::child_list::const_iterator p = proxies.begin(); p != proxies.end(); ++p) {
 		const std::vector<std::string> versions(utils::split((**p)["version"]));
