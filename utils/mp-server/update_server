@@ -1,0 +1,66 @@
+#!/bin/sh
+
+if [ $# -gt 2 -o $# -lt 1 ]; then
+	echo "Syntax: $0 <server version> [<revision>]"
+	exit 1
+fi
+
+SERVER=$1
+SERVERBASE=$HOME/servers/$SERVER
+BUILD=$HOME/servers/builds
+SOURCE=$HOME/source
+TRUNK=$SOURCE/trunk/
+STABLE=$SOURCE/1.2/
+SOCKET=$SERVERBASE/build/var/run/socket
+
+if ! [ -d $SERVERBASE ]; then
+	echo "$SERVER server not found."
+	exit 1
+fi
+
+if ! [ -d $SOURCE ]; then
+	echo "$SOURCE not found."
+	exit 1
+fi
+
+if [ "$SERVER" = "1.2" ]; then
+	cd $STABLE || exit 1
+else
+	cd $TRUNK  || exit 1
+fi
+
+REVISION=""
+if [ "$2" != "" ]; then
+	REVISION="-r $2"
+fi
+echo 'svn update...'
+rev=$(svn up $REVISION | tail -n 1 | sed -e 's/[^0-9]//g')
+if [ "$rev" == "" ]; then
+	echo "No revision information found."
+	exit 1
+fi
+# reminder for local changes
+echo "to $rev"
+svn status
+DIR=wesnothd-svn-${rev}_$SERVER
+mkdir $BUILD/$DIR
+
+echo 'autogen.sh and configure...'
+./autogen.sh > $BUILD/$DIR/autogen.log
+./configure --prefix=$BUILD/$DIR --program-suffix=-$SERVER --enable-server --enable-raw-sockets --disable-game --with-fifodir=$BUILD/$DIR/var/run --disable-nls --enable-debug --enable-lite > $BUILD/$DIR/configure.log 
+#CXXFLAGS='-DNETWORK_USE_RAW_SOCKETS'
+make clean > /dev/null
+
+echo 'make...'
+make > $BUILD/$DIR/make.log
+echo 'make install...'
+make install > $BUILD/$DIR/install.log
+
+cd $SERVERBASE
+if [ -p $SOCKET ]; then
+	rm -f oldbuild
+	mv build oldbuild
+else #the server under build has never been started, keep the oldbuild link to the (currently) running server
+	rm -f build
+fi
+ln -s ../builds/$DIR/ build

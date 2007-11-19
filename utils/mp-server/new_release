@@ -1,0 +1,28 @@
+#!/bin/bash
+if [ "$1" == "-n" ]; then
+	echo=echo
+else
+	echo=""
+fi
+shift
+if ! [ $# -ge 1 ]; then
+        echo "Syntax: $0 [-n] <new minor version>"
+        exit 1
+fi
+[ $1 -ge 2 ] || exit 1
+if ! ps -C wesnothd-1.3-prev>/dev/null; then
+	echo "Previous server isn't running!"
+	exit 1
+fi
+# update the motd
+$echo sed -i -e "s/motd=\(.*\)1\.3\.$(($1-1))/motd=\11.3.$1/g" ~/servers/1.3-prev/wesnothd.cfg
+$echo killall -SIGHUP wesnothd-1.3-prev || exit 1
+$echo sed -i -e "s/motd=\(.*\)1\.3\.$(($1-1))/motd=\11.3.$1/g" ~/servers/1.3/wesnothd.cfg
+$echo killall -SIGHUP wesnothd-1.3 || exit 1
+$echo send_server_command 1.3 msg Version 1.3.$1 released! New users with the previous version will be redirected to a temporary server that will run until binaries for all major OSs are out.
+# update dev server redirect; must be before updating the previous server redirect!
+$echo sed -i -e "/\[redirect\]/N;s/version=\(.*\)1\.3\.$(($1-1))/version=\11.3.$(($1+1))/g" ~/servers/trunk/wesnothd.cfg
+# update previous server redirect
+$echo sed -i -e "/\[redirect\]/N;s/version=\(.*\)1\.3\.$(($1-2))/version=\11.3.$(($1-1))/g" ~/servers/trunk/wesnothd.cfg
+# reload the config
+$echo killall -SIGHUP wesnothd-trunk

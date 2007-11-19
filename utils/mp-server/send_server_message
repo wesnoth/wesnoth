@@ -1,0 +1,28 @@
+#!/bin/sh
+if ! [ $# -ge 1 ]; then
+	echo "Syntax: $0 <server version> [message]"
+	exit 1
+fi
+shift
+if [ "$*" == "" ]; then
+	message="The server will get restarted now. Please don't forget to save your game!"
+	echo "Sending standard message: $message"
+else
+	message=$*
+fi
+
+SERVER=$1
+SERVERBASE=$HOME/servers/$SERVER
+SOCKET=$SERVERBASE/build/var/run/socket
+
+if ! [ -e $SOCKET ]; then
+	echo "$SOCKET not found, sending to the 'oldbuild'."
+	SOCKET=$SERVERBASE/oldbuild/var/run/socket
+fi
+if ! [ -p $SOCKET ]; then
+	echo "$SOCKET is not a named pipe (fifo)"
+	exit 1
+fi
+
+echo "msg $message" > $SOCKET
+
