@@ -270,10 +270,10 @@ fi
 
 AC_ARG_ENABLE([raw-sockets],
               AS_HELP_STRING([--enable-raw-sockets], [use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities]),
-	      [raw-sockets=$enableval],
-	      [raw-sockets=no])
+	      [raw_sockets=$enableval],
+	      [raw_sockets=no])
 
-if test "x$raw-sockets" = "xyes"
+if test "x$raw_sockets" = "xyes"
 then
 	CPPFLAGS="$CPPFLAGS -DNETWORK_USE_RAW_SOCKETS"
 fi
