@@ -666,7 +666,9 @@ void game::add_player(const network::connection player, const bool observer) {
 	if (human_sides > players_.size()){
 		DBG_GAME << "adding player...\n";
 		players_.push_back(player);
-	} else{
+	} else if (!allow_observers_) {
+		return; //false;
+	} else {
 		DBG_GAME << "adding observer...\n";
 		observers_.push_back(player);
 	}
@@ -676,9 +678,6 @@ void game::add_player(const network::connection player, const bool observer) {
 	network::send_data(level_, player);
 	//if the game has already started, we add the player as an observer
 	if(started_) {
-		if(!allow_observers_) {
-			return;
-		}
 		//tell this player that the game has started
 		network::queue_data(config("start_game"), player);
 		// Send the player the history of the game to-date.
@@ -696,11 +695,11 @@ void game::add_player(const network::connection player, const bool observer) {
 				}
 			}
 		}
-		config observer_join;
-		observer_join.add_child("observer").values["name"] = user->second.name();
-		// Send observer join to everyone except the new observer.
-		send_data(observer_join, player);
 	}
+	config observer_join;
+	observer_join.add_child("observer").values["name"] = user->second.name();
+	// Send observer join to everyone except the new observer.
+	send_data(observer_join, player);
 }
 
 void game::remove_player(const network::connection player, const bool notify_creator) {

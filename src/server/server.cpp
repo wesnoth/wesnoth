@@ -853,14 +853,22 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 				"Attempt to join unknown game."), sock);
 			network::send_data(games_and_users_list_, sock);
 			return;
-		}
-		if (g->player_is_banned(sock)) {
+		} else if (g->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << g->name()
 				<< "\" (" << id << ").\n";
 			network::send_data(config("leave_game"), sock);
 			network::send_data(lobby_.construct_server_message(
 				"You are banned from this game."), sock);
+			network::send_data(games_and_users_list_, sock);
+			return;
+		} else if (observer && !g->allow_observers()){
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tattempted to observe game:\t\"" << g->name() << "\" ("
+				<< id << ") which doesn't allow observers.\n";
+			network::send_data(config("leave_game"), sock);
+			network::send_data(lobby_.construct_server_message(
+				"Attempt to observe a game that doesn't allow observers."), sock);
 			network::send_data(games_and_users_list_, sock);
 			return;
 		}
@@ -931,6 +939,9 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			<< pl->second.name() << ". (socket:" << sock << ")\n";
 		return;
 	}
+	// Ignore client side pings for now.
+	const string_map::const_iterator ping = data.values.find("ping");
+	if (ping != data.values.end()) return;
 
 	// If this is data describing the level for a game.
 	if (data.child("side") != NULL) {
