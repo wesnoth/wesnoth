@@ -235,7 +235,7 @@ while (1) {
 						my $username = $user->{'attr'}->{'name'};
 						print STDERR &timestamp . "--> $username has logged on. ($userindex)\n" if $showjoins;
 						print LOG &logtimestamp . "--> $username has logged on. ($userindex)\n" if $logfile;
-						if ($userindex != @users) print STDERR "Warning: userlist out of sync: local index = @users vs remote index = $userindex\n"
+						print STDERR "Warning: userlist out of sync: local index = @users vs remote index = $userindex\n" if $userindex != @users;
 						$users[@users] = $user;
 						&serverstats() if $writestats;
 					} else {
