@@ -172,7 +172,7 @@ config server::read_config() const {
 	try {
 		read(configuration, *stream, &errors);
 		if (errors.empty()) {
-			WRN_CONFIG << "Server configuration from file: '" << config_file_
+			LOG_SERVER << "Server configuration from file: '" << config_file_
 				<< "' read.\n";
 		} else {
 			ERR_CONFIG << "ERROR: Errors reading configuration file: '"
