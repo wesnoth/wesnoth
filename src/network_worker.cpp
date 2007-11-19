@@ -164,7 +164,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 				if(++nsleeps == timeout_ms) {
 					return false;
 				}
-				usleep(1000);
+				SDL_Delay(1000);
 			} else {
 				return false;
 			}
