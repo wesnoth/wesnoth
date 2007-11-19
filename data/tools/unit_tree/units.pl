@@ -37,7 +37,7 @@ my $images = 1;
 # This option will determine if the html report on made animations is generated
 my $animations = 1;
 # This is the version number that will appear on the unit trees
-my $version = '1.3.10+svn';
+my $version = '1.3.11+svn';
 # These option will try to process the user made Eras
 my $ime = 0; # Imperial Era
 my $exe = 0; # Extended Era
