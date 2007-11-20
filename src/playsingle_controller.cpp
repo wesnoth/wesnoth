@@ -206,14 +206,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 		}
 
 		// if we loaded a save file in linger mode, skip to it.
-		if (linger_) 
-			// @todo FIXME going to the next scenario in linger mode is broken
-			// it was already broken before and it's unsure whether more parts
-			// of the gamestate are missing. One of the other things which goes
-			// wrong is that the second victory event does duplicate all units
-			// so we have another recall list duplication bug.
-			throw end_level_exception(gamestate_.completion == "defeat" ? DEFEAT : VICTORY, 
-				game_config::gold_carryover_percentage, game_config::gold_carryover_add);
+		if (linger_)
+			throw end_level_exception(SKIP_TO_LINGER);
 
 		// Avoid autosaving after loading, but still
 		// allow the first turn to have an autosave.
@@ -297,7 +291,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 					player->name = i->current_player();
 			}
 
-			// Add all the units that survived the scenario
+			// Add all the units that survived the scenario.  
 			for(unit_map::iterator un = units_.begin(); un != units_.end(); ++un) {
 				player_info *player=gamestate_.get_player(teams_[un->second.side()-1].save_id());
 
@@ -413,6 +407,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			gui::message_dialog(*gui_,
 				title, report.str()).show();
 
+			return VICTORY;
+		} else if (end_level.result == SKIP_TO_LINGER) {
+			LOG_NG << "resuming from loaded linger state...\n";
 			return VICTORY;
 		}
 	} // end catch

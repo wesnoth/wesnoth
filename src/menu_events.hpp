@@ -28,7 +28,7 @@
 class game_state;
 class gamestatus;
 
-enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE, OBSERVER_END };
+enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE, OBSERVER_END, SKIP_TO_LINGER };
 
 struct end_level_exception {
 	end_level_exception(LEVEL_RESULT res, const int percentage = -1, 
