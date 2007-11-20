@@ -24,6 +24,7 @@
 #include "../filesystem.hpp"
 #include "../wassert.hpp"
 #include "../serialization/parser.hpp"
+#include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
 
 #include "game.hpp"
@@ -167,7 +168,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 config server::read_config() const {
 	config configuration;
 	if (config_file_ == "") return configuration;
-	scoped_istream stream = istream_file(config_file_);
+	scoped_istream stream = preprocess_file(config_file_);
 	std::string errors;
 	try {
 		read(configuration, *stream, &errors);
