@@ -48,6 +48,11 @@ Do this
 to compile the wesnoth binary and install it along with the game
 data to the default prefix, which is probably /usr/local.
 
+Note: It has been reported (see https://gna.org/bugs/index.php?10326)
+that under gcc 3.3.6 you need to turn off optimizations or you will
+get a build that doesn't work for multiplayer.  We recommend building
+with gcc 4.
+
 If you want to build wesnoth_editor too add the --enable-editor
 configure option.
 
