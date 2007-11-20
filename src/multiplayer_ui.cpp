@@ -30,6 +30,7 @@
 #include "wml_separators.hpp"
 
 #define LOG_NG lg::info(lg::engine)
+#define DBG_NW LOG_STREAM(debug, network)
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
 
@@ -474,65 +475,56 @@ void ui::process_network_data(const config& data, const network::connection /*so
 {
 	if(data.child("error")) {
 		throw network::error((*data.child("error"))["message"]);
-	} else {
-		if(data.child("message")) {
-			const config& msg = *data.child("message");
-			config* cignore;
-			bool ignored = false;
-			if ((cignore = preferences::get_prefs()->child("relationship"))){
-				for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
-				i != cignore->values.end(); ++i){
-					if(msg["sender"] == i->first){
-						if (i->second == "ignored"){
-							ignored = true;
-						}
+	} else if(data.child("message")) {
+		const config& msg = *data.child("message");
+		config* cignore;
+		bool ignored = false;
+		if ((cignore = preferences::get_prefs()->child("relationship"))){
+			for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
+			i != cignore->values.end(); ++i){
+				if(msg["sender"] == i->first){
+					if (i->second == "ignored"){
+						ignored = true;
 					}
 				}
 			}
-
-			if (!ignored){
-				sound::play_UI_sound(game_config::sounds::receive_message);
-
-				chat_.add_message(msg["sender"], msg["message"]);
-				chat_.update_textbox(chat_textbox_);
-			}
 		}
-
-		if(data.child("whisper")){
-			const config& cwhisper = *data.child("whisper");
-
-			config* cignore;
-			bool ignored = false;
-			if ((cignore = preferences::get_prefs()->child("relationship"))){
-				for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
-				i != cignore->values.end(); ++i){
-					if(cwhisper["sender"] == i->first){
-						if (i->second == "ignored"){
-							ignored = true;
-						}
+		if (!ignored){
+			sound::play_UI_sound(game_config::sounds::receive_message);
+			chat_.add_message(msg["sender"], msg["message"]);
+			chat_.update_textbox(chat_textbox_);
+		}
+	} else if(data.child("whisper")){
+		const config& cwhisper = *data.child("whisper");
+		config* cignore;
+		bool ignored = false;
+		if ((cignore = preferences::get_prefs()->child("relationship"))){
+			for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
+			i != cignore->values.end(); ++i){
+				if(cwhisper["sender"] == i->first){
+					if (i->second == "ignored"){
+						ignored = true;
 					}
 				}
 			}
-
-			if (!ignored){
-				sound::play_UI_sound(game_config::sounds::receive_message);
-				chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
-				chat_.update_textbox(chat_textbox_);
-			}
 		}
-		if(data.child("gamelist")) {
-			const cursor::setter cursor_setter(cursor::WAIT);
-			if(!gamelist_initialized_)
-				gamelist_initialized_ = true;
-			gamelist_ = data;
-			gamelist_updated(false);
-			gamelist_refresh_ = false;
-			lobby_clock_ = SDL_GetTicks();
-		} else if(data.child("gamelist_diff")) {
-			if(gamelist_initialized_) {
-				gamelist_.apply_diff(*data.child("gamelist_diff"));
-				gamelist_refresh_ = true;
-			}
+		if (!ignored){
+			sound::play_UI_sound(game_config::sounds::receive_message);
+			chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
+			chat_.update_textbox(chat_textbox_);
+		}
+	} else if(data.child("gamelist")) {
+		const cursor::setter cursor_setter(cursor::WAIT);
+		if(!gamelist_initialized_)
+			gamelist_initialized_ = true;
+		gamelist_ = data;
+		gamelist_updated(false);
+		gamelist_refresh_ = false;
+		lobby_clock_ = SDL_GetTicks();
+	} else if(data.child("gamelist_diff")) {
+		if(gamelist_initialized_) {
+			gamelist_.apply_diff(*data.child("gamelist_diff"));
+			gamelist_refresh_ = true;
 		}
 	}
 }
@@ -745,4 +737,4 @@ const gui::widget& ui::title() const
 }
 
 
-}
+}// namespace mp
