@@ -165,6 +165,26 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		}
 		combo_leader_.set_items(leader_name_pseudolist);
 		combo_leader_.set_selected(0);
+		std::vector<std::string> gender_name_pseudolist;
+		gender_ = cfg_["gender"];
+		if (!gender_.empty()) {
+			if(leader_type.empty() || parent_->game_data_.unit_types.find(leader_type) == parent_->game_data_.unit_types.end()) {
+					gender_name_pseudolist.push_back("-");
+			} else {
+				if (gender_ == "female")
+					gender_name_pseudolist.push_back( _("Female ♀") );
+				else if (gender_ == "male")
+					gender_name_pseudolist.push_back( _("Male ♂") );
+				else if (gender_ == "random")
+					gender_name_pseudolist.push_back( _("gender^Random") );
+				else gender_name_pseudolist.push_back("?");
+			}
+		} else {
+			gender_name_pseudolist.push_back("-");
+			std::cerr << "CKJSADHFCKSAJFKDJFLDSKJ";
+		}
+		combo_gender_.set_items(gender_name_pseudolist);
+		combo_gender_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
 		// gold, income, team, and colour are only suggestions unless explicitly locked
 		if(utils::string_bool(cfg_["gold_lock"], false)) {
@@ -182,10 +202,12 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			combo_colour_.enable(false);
 		}
 
-		// Set the leader
+		// Set the leader and gender
 		leader_ = cfg_["type"];
+		gender_ = cfg_["gender"];
 		if(!leader_.empty()) {
 			combo_leader_.enable(false);
+			combo_gender_.enable(false);
 			llm_.set_leader_combo(NULL);
 			llm_.set_gender_combo(NULL);
 			std::vector<std::string> leader_name_pseudolist;
@@ -197,6 +219,22 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			}
 			combo_leader_.set_items(leader_name_pseudolist);
 			combo_leader_.set_selected(0);
+			std::vector<std::string> gender_name_pseudolist;
+			if (!gender_.empty()) {
+				if(leader_name == parent_->game_data_.unit_types.end()) {
+					gender_name_pseudolist.push_back("?");
+				} else {
+					if (gender_ == "female")
+						gender_name_pseudolist.push_back( _("Female ♀") );
+					else if (gender_ == "male")
+						gender_name_pseudolist.push_back( _("Male ♂") );
+					else if (gender_ == "random")
+						gender_name_pseudolist.push_back( _("gender^Random") );
+					else gender_name_pseudolist.push_back("?");
+				}
+			} else gender_name_pseudolist.push_back("?");
+			combo_gender_.set_items(gender_name_pseudolist);
+			combo_gender_.set_selected(0);
 		}
 
 		// Try to pick a faction for the sake of appearance 

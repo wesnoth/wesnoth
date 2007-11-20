@@ -24,7 +24,7 @@
 #include "widgets/combo.hpp"
 #include "widgets/menu.hpp"
 
-const std::string leader_list_manager::random_enemy_picture("random-enemy.png");
+const std::string leader_list_manager::random_enemy_picture("random-enemy.png~RC(magenta>1)");
 
 leader_list_manager::leader_list_manager(const config::child_list& side_list,
 		const game_data* data, gui::combo* leader_combo , gui::combo* gender_combo):
