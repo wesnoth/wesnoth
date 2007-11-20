@@ -47,8 +47,8 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 		return surface(NULL);
 
 	typedef mini_terrain_cache_map cache_map;
-	cache_map& cache = mini_terrain_cache;
-	cache_map& fog_cache = mini_fogged_terrain_cache;
+	cache_map *normal_cache = &mini_terrain_cache;
+	cache_map *fog_cache = &mini_fogged_terrain_cache;
 
 	for(int y = 0; y != map.total_height(); ++y) {
 		for(int x = 0; x != map.total_width(); ++x) {
@@ -58,26 +58,29 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 			const gamemap::location loc(x,y);
 			if(map.on_board(loc)) {
 				const bool shrouded = vw != NULL && vw->shrouded(x,y);
-				const bool fogged = vw != NULL && vw->fogged(x,y) && !shrouded;
+				// shrouded hex are not considered fogged (no need to fog a black image)
+				const bool fogged = vw != NULL && !shrouded && vw->fogged(x,y);
 				const t_translation::t_letter terrain = shrouded ? 
 					t_translation::VOID_TERRAIN : map[loc];
 
-				cache_map::iterator i;
 				bool need_fogging = false;
 
-				if (fogged) {
-					i = fog_cache.find(terrain);
-				}
-				if (!fogged || i == fog_cache.end()) {
-					i = cache.find(terrain);
-					need_fogging = fogged;
+				cache_map* cache = fogged ? fog_cache : normal_cache;
+				cache_map::iterator i = cache->find(terrain);
+
+				if (fogged && i == cache->end()) {
+					// we don't have the fogged version in cache
+					// try the normal cache and ask fogging the image
+					cache = normal_cache;
+					i = cache->find(terrain);
+					need_fogging = true;
 				}
 
-				if(i == cache.end()) {
+				if(i == cache->end()) {
 					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image() + ".png",image::HEXED));
 
 					if(tile == NULL) {
-						ERR_DP << "could not get image for terrrain '"
+						ERR_DP << "could not get image for terrain '"
 						          << terrain << "'\n";
 						continue;
 					}
@@ -87,21 +90,21 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 					if(surf == NULL) {
 						continue;
 					}
-					i = cache.insert(cache_map::value_type(terrain,surf)).first;
+					i = normal_cache->insert(cache_map::value_type(terrain,surf)).first;
 				}
 
 				surf = i->second;
 				
 				if (need_fogging) {
 					surf = surface(adjust_surface_colour(surf,-50,-50,-50));
-					fog_cache.insert(cache_map::value_type(terrain,surf));
+					fog_cache->insert(cache_map::value_type(terrain,surf));
 				}
 
 				wassert(surf != NULL);
 
 				// we need a balanced shift up and down of the hexes.
 				// if not, only the bottom half-hexes are clipped
-				// and it looks asymetrical.
+				// and it looks asymmetrical.
 
 				// also do 1-pixel shift because the scaling
 				// function seems to do it with its rounding
