@@ -18,6 +18,7 @@ PPREV_VERSION=$DEV_VERSION.$(($1-2))
 NEXT_VERSION=$DEV_VERSION.$(($1+1))
 DEV_SERVER_CONFIG=$HOME/servers/$DEV_VERSION/wesnothd.cfg
 PREV_SERVER_CONFIG=$HOME/servers/$DEV_VERSION-prev/wesnothd.cfg
+PREV_SERVER_REDIRECT=$HOME/servers/$DEV_VERSION-prev/redirect.cfg
 
 #if ! ps -C wesnothd-$DEV_VERSION-prev>/dev/null; then
 #	echo "Previous server isn't running!"
@@ -28,12 +29,12 @@ $echo sed -i -e "/versions_accepted=/s/$PPREV_VERSION/$PREV_VERSION/" $PREV_SERV
 $echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $PREV_SERVER_CONFIG
 # reload the config
 $echo killall -SIGHUP wesnothd-$DEV_VERSION-prev || exit 1
-# check if we currently allow the previous version
-$echo [ grep "versions_accepted=.*$PREV_VERSION"  ] || exit 1
+# check if we currently allow the previous version to prevent announcing the same version twice
+$echo [ grep "versions_accepted=.*$PREV_VERSION" ] || exit 1
 $echo sed -i -e "/versions_accepted=/s/$PREV_VERSION/$NEXT_VERSION/" $DEV_SERVER_CONFIG
 $echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $DEV_SERVER_CONFIG
 # update previous version redirect
-$echo sed -i -e "/\[redirect\]/N;/version=/s/$PPREV_VERSION/$PREV_VERSION/" $DEV_SERVER_CONFIG
+$echo sed -i -e "/\[redirect\]/N;/version=/s/$PPREV_VERSION/$PREV_VERSION/" $PREV_SERVER_REDIRECT
 # reload the config
-$echo killall -SIGHUP wesnothd-$DEV_VERSION || exit 1
+$echo killall -SIGHUP wesnothd-$DEV_VERSION wesnothd-trunk || exit 1
 $echo send_server_command $DEV_VERSION msg Version $NEW_VERSION released! New users with the previous version will be redirected to a temporary server that will run until binaries for all major OSs are out.
