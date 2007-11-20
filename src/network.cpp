@@ -137,6 +137,32 @@ static void check_error()
 	}
 }
 
+//! Stores the time of the last server ping we received.
+static time_t last_ping_, last_ping_check_ = 0;
+
+//! Check whether too much time since the last server ping has passed and we
+//! timed out. If the last check is too long ago reset the last_ping_ to '0'.
+//! This happens when we "freeze" the client one way or another or we just
+//! didn't try to receive data. We could reset last_ping_ to 'now' but that
+//! would assume that we always get a ping.
+static void check_timeout(const time_t& now)
+{
+	if (network::nconnections() == 0) {
+		last_ping_ = 0;
+		return;
+	}
+	DBG_NW << "Checking network lag. Last ping: " << last_ping_
+		<< " Current time: " << now << "\n";
+	// Reset last_ping_ if we didn't check for the last 15s.
+	if (last_ping_check_ + 15 <= now) last_ping_ = 0;
+	if (last_ping_ != 0 && last_ping_ + 30 <= now) {
+		throw network::error(
+			_("No server ping since 30 seconds. Connection timed out."));
+	}
+	last_ping_check_ = now;
+}
+
+
 namespace {
 
 SDLNet_SocketSet socket_set = 0;
@@ -576,6 +602,9 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 connection receive_data(config& cfg, connection connection_num)
 {
+	if(!is_server()) {
+		check_timeout(time(NULL));
+	}
 	if(!socket_set) {
 		return 0;
 	}
@@ -644,7 +673,14 @@ connection receive_data(config& cfg, connection connection_num)
 
 	wassert(result != 0);
 	waiting_sockets.insert(result);
-
+	if(!is_server()) {
+		const time_t& now = time(NULL);
+		const string_map::const_iterator ping = cfg.values.find("ping");
+		if (ping != cfg.values.end()) {
+			LOG_NW << "Lag: " << (now - lexical_cast<time_t>(cfg["ping"])) << "\n";
+			last_ping_ = now;
+		}
+	}
 	return result;
 }
 

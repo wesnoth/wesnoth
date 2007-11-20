@@ -302,7 +302,7 @@ void server::run() {
 			}
 
 			time_t now = time(NULL);
-			if ((loop%100) == 0 && last_ping_ + 60 <= now) {
+			if ((loop%100) == 0 && last_ping_ + 10 <= now) {
 				// Make sure we log stats every 5 minutes
 				if (last_stats_ + 5*60 <= now) dump_stats(now);
 				// send a 'ping' to all players to detect ghosts
