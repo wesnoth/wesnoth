@@ -3,6 +3,11 @@ if ! [ $# -ge 1 ]; then
 	echo "Syntax: $0 <server version> [message]"
 	exit 1
 fi
+
+SERVER=$1
+SERVERBASE=$HOME/servers/$SERVER
+SOCKET=$SERVERBASE/build/var/run/socket
+
 shift
 if [ "$*" == "" ]; then
 	message="The server will get restarted now. Please don't forget to save your game!"
@@ -10,10 +15,6 @@ if [ "$*" == "" ]; then
 else
 	message=$*
 fi
-
-SERVER=$1
-SERVERBASE=$HOME/servers/$SERVER
-SOCKET=$SERVERBASE/build/var/run/socket
 
 if ! [ -e $SOCKET ]; then
 	echo "$SOCKET not found, sending to the 'oldbuild'."
