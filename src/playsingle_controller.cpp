@@ -141,22 +141,14 @@ void playsingle_controller::user_command_3(){
 }
 #endif
 
-int playsingle_controller::report_victory(player_info *player, 
+void playsingle_controller::report_victory(
 		    std::stringstream& report,
-		    std::vector<team>::iterator i,
+		    player_info *player,
 		    end_level_exception& end_level,
 		    int remaining_gold, int finishing_bonus_per_turn, 
 		    int turns_left, int finishing_bonus)
 {
 	if(player) {
-		if(gamestate_.players.size()>1) {
-			if(i!=teams_.begin()) {
-				report << "\n";
-			}
-
-			report << font::BOLD_TEXT << i->current_player() << "\n";
-		}
-
 		report << _("Remaining gold: ")
 			   << remaining_gold << "\n";
 		if(end_level.gold_bonus) {
@@ -204,8 +196,6 @@ int playsingle_controller::report_victory(player_info *player,
 		// xgettext:no-c-format
 		report << '\n' << goldmsg;
 	}
-
-	return finishing_bonus;
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
@@ -413,7 +403,16 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 						player->gold = ((i->gold() + finishing_bonus) 
 								* end_level.carryover_percentage) / 100;
 						player->gold_add = end_level.carryover_add;
-						report_victory(player, report, i, end_level, remaining_gold, finishing_bonus_per_turn, turns_left, finishing_bonus);
+
+						if(gamestate_.players.size()>1) {
+							if(i!=teams_.begin()) {
+								report << "\n";
+							}
+
+							report << font::BOLD_TEXT << i->current_player() << "\n";
+						}
+
+						report_victory(report, player, end_level, remaining_gold, finishing_bonus_per_turn, turns_left, finishing_bonus);
 					}
 				}
 			}

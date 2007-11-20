@@ -79,9 +79,8 @@ protected:
 	bool player_type_changed_;
 	bool replaying_;
 private:
-	int report_victory(player_info *player, 
-		    std::stringstream& report,
-		    std::vector<team>::iterator i,
+	void report_victory(std::stringstream& report,
+		    player_info *player, 
 		    end_level_exception& end_level,
 		    int remaining_gold, int finishing_bonus_per_turn, 
 		    int turns_left, int finishing_bonus);
