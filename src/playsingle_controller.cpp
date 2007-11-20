@@ -141,7 +141,7 @@ void playsingle_controller::user_command_3(){
 }
 #endif
 
-void playsingle_controller::report_victory(player_info *player, 
+int playsingle_controller::report_victory(player_info *player, 
 		    std::stringstream& report,
 		    std::vector<team>::iterator i,
 		    end_level_exception& end_level)
@@ -155,10 +155,6 @@ void playsingle_controller::report_victory(player_info *player,
 			 (finishing_bonus_per_turn * turns_left) : 0;
 
 	if(player) {
-		player->gold = ((remaining_gold + finishing_bonus) 
-			* end_level.carryover_percentage) / 100;
-		player->gold_add = end_level.carryover_add;
-
 		if(gamestate_.players.size()>1) {
 			if(i!=teams_.begin()) {
 				report << "\n";
@@ -214,6 +210,8 @@ void playsingle_controller::report_victory(player_info *player,
 		// xgettext:no-c-format
 		report << '\n' << goldmsg;
 	}
+
+	return finishing_bonus;
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
@@ -408,7 +406,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 					player_info *player=gamestate_.get_player(i->save_id());
 
-					report_victory(player, report, i, end_level);
+					int finishing_bonus = report_victory(player, report, i, end_level);
+					if (player) {
+						player->gold = ((i->gold() + finishing_bonus) 
+								* end_level.carryover_percentage) / 100;
+						player->gold_add = end_level.carryover_add;
+					}
 				}
 			}
 

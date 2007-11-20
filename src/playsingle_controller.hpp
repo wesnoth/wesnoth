@@ -79,6 +79,10 @@ protected:
 	bool player_type_changed_;
 	bool replaying_;
 private:
+	int report_victory(player_info *player, 
+		    std::stringstream& report,
+		    std::vector<team>::iterator i,
+		    end_level_exception& end_level);
 };
 
 
