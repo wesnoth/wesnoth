@@ -14,16 +14,16 @@
 #include "../global.hpp"
 
 #include "../config.hpp"
+#include "../filesystem.hpp"
 #include "../game_config.hpp"
 #include "../log.hpp"
 #include "../network.hpp"
-//#include "../util.hpp"
 #include "../wassert.hpp"
-#include "serialization/parser.hpp"
-#include "serialization/string_utils.hpp"
+#include "../serialization/parser.hpp"
+#include "../serialization/preprocessor.hpp"
+#include "../serialization/string_utils.hpp"
 
 #include "game.hpp"
-#include "filesystem.hpp"
 #include "input_stream.hpp"
 #include "metrics.hpp"
 #include "player.hpp"
@@ -178,14 +178,16 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 config server::read_config() {
 	config configuration;
 	if(config_file_ == "") return configuration;
-	scoped_istream stream = istream_file(config_file_);
+	scoped_istream stream = preprocess_file(config_file_);
 	std::string errors;
 	try {
 		read(configuration, *stream, &errors);
-		if(errors.empty() == false) {
-			ERR_SERVER << "WARNING: errors reading configuration file: " << errors << "\n";
+		if (errors.empty()) {
+			LOG_SERVER << "Server configuration from file: '" << config_file_
+				<< "' read.\n";
 		} else {
-			WRN_SERVER << "Server configuration from file: '" << config_file_ << "' read.\n";
+			ERR_CONFIG << "ERROR: Errors reading configuration file: '"
+				<< errors << "'.\n";
 		}
 	} catch(config::error& e) {
 		ERR_SERVER << "ERROR: could not read configuration file: '" << config_file_ << "': '" << e.message << "'\n";
@@ -196,14 +198,18 @@ config server::read_config() {
 void server::load_config() {
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
-	if(cfg_["disallow_names"] == "") {
-		disallowed_names_.push_back("server");
-		disallowed_names_.push_back("ai");
+
+	disallowed_names_.clear();
+	if (cfg_["disallow_names"] == "") {
+		disallowed_names_.push_back("*admin*");
+		disallowed_names_.push_back("*admln*");
+		disallowed_names_.push_back("*server*");
 		disallowed_names_.push_back("player");
 		disallowed_names_.push_back("network");
 		disallowed_names_.push_back("human");
-		disallowed_names_.push_back("admin");
 		disallowed_names_.push_back("computer");
+		disallowed_names_.push_back("ai");
+		disallowed_names_.push_back("ai?");
 	} else {
 		disallowed_names_ = utils::split(cfg_["disallow_names"]);
 	}
@@ -211,6 +217,7 @@ void server::load_config() {
 	default_time_period_ = lexical_cast_default<int>(cfg_["messages_time_period"],10);
 	concurrent_connections_ = lexical_cast_default<int>(cfg_["connections_allowed"],5);
 
+	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
 	if(versions.empty() == false) {
 		const std::vector<std::string> accepted(utils::split(versions));
@@ -222,6 +229,7 @@ void server::load_config() {
 		accepted_versions_.insert("test");
 	}
 
+	redirected_versions_.clear();
 	const config::child_list& redirects = cfg_.get_children("redirect");
 	for(config::child_list::const_iterator i = redirects.begin(); i != redirects.end(); ++i) {
 		const std::vector<std::string> versions(utils::split((**i)["version"]));
@@ -230,6 +238,7 @@ void server::load_config() {
 		}
 	}
 
+	proxy_versions_.clear();
 	const config::child_list& proxies = cfg_.get_children("proxy");
 	for(config::child_list::const_iterator p = proxies.begin(); p != proxies.end(); ++p) {
 		const std::vector<std::string> versions(utils::split((**p)["version"]));
