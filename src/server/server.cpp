@@ -54,6 +54,7 @@
 #define WRN_SERVER LOG_STREAM(warn, general)
 // debugging messages
 #define LOG_SERVER LOG_STREAM(info, general)
+#define ERR_CONFIG LOG_STREAM(err, config)
 
 sig_atomic_t config_reload = 0;
 
