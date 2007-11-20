@@ -174,7 +174,7 @@ void playsingle_controller::report_victory(
 	// Note that both strings are the same in english, but some languages will
 	// want to translate them differently.
 	if(end_level.carryover_add) {
-		std::string goldmsg = vngettext(
+		goldmsg = vngettext(
 			"You will start the next scenario with $gold "
 			"on top of the defined minimum starting gold.",
 			"You will start the next scenario with $gold "
@@ -182,7 +182,7 @@ void playsingle_controller::report_victory(
 			player_gold, symbols);
 
 	} else {
-		std::string goldmsg = vngettext(
+		goldmsg = vngettext(
 			"You will start the next scenario with $gold "
 			"or its defined minimum starting gold, "
 			"whichever is higher.",
