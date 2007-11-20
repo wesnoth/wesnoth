@@ -143,59 +143,57 @@ void playsingle_controller::user_command_3(){
 
 void playsingle_controller::report_victory(
 		    std::stringstream& report,
-		    player_info *player,
 		    end_level_exception& end_level,
+		    int player_gold,
 		    int remaining_gold, int finishing_bonus_per_turn, 
 		    int turns_left, int finishing_bonus)
 {
-	if(player) {
-		report << _("Remaining gold: ")
-			   << remaining_gold << "\n";
-		if(end_level.gold_bonus) {
-			report << _("Early finish bonus: ")
-				   << finishing_bonus_per_turn
-				   << " " << _("per turn") << "\n"
-				   << font::BOLD_TEXT << _("Turns finished early: ")
-				   << turns_left << "\n"
-				   << _("Bonus: ")
-				   << finishing_bonus << "\n"
-				   << _("Gold: ")
-				   << (remaining_gold + finishing_bonus);
-		}
-		report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
-		if(end_level.carryover_add) {
-			report << '\n' << font::BOLD_TEXT << _("Bonus Gold: ") << player->gold;
-		} else {
-			report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player->gold;
-		}
-
-		std::string goldmsg;
-		utils::string_map symbols;
-		symbols["gold"] = lexical_cast_default<std::string>(player->gold);
-		// Note that both strings are the same in english, but some languages will
-		// want to translate them differently.
-		if(end_level.carryover_add) {
-			std::string goldmsg = vngettext(
-				"You will start the next scenario with $gold "
-				"on top of the defined minimum starting gold.",
-				"You will start the next scenario with $gold "
-				"on top of the defined minimum starting gold.",
-				player->gold, symbols);
-
-		} else {
-			std::string goldmsg = vngettext(
-				"You will start the next scenario with $gold "
-				"or its defined minimum starting gold, "
-				"whichever is higher.",
-				"You will start the next scenario with $gold "
-				"or its defined minimum starting gold, "
-				"whichever is higher.",
-				player->gold, symbols);
-		}
-
-		// xgettext:no-c-format
-		report << '\n' << goldmsg;
+	report << _("Remaining gold: ")
+		   << remaining_gold << "\n";
+	if(end_level.gold_bonus) {
+		report << _("Early finish bonus: ")
+			   << finishing_bonus_per_turn
+			   << " " << _("per turn") << "\n"
+			   << font::BOLD_TEXT << _("Turns finished early: ")
+			   << turns_left << "\n"
+			   << _("Bonus: ")
+			   << finishing_bonus << "\n"
+			   << _("Gold: ")
+			   << (remaining_gold + finishing_bonus);
 	}
+	report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
+	if(end_level.carryover_add) {
+		report << '\n' << font::BOLD_TEXT << _("Bonus Gold: ") << player_gold;
+	} else {
+		report << '\n' << font::BOLD_TEXT << _("Retained Gold: ") << player_gold;
+	}
+
+	std::string goldmsg;
+	utils::string_map symbols;
+	symbols["gold"] = lexical_cast_default<std::string>(player_gold);
+	// Note that both strings are the same in english, but some languages will
+	// want to translate them differently.
+	if(end_level.carryover_add) {
+		std::string goldmsg = vngettext(
+			"You will start the next scenario with $gold "
+			"on top of the defined minimum starting gold.",
+			"You will start the next scenario with $gold "
+			"on top of the defined minimum starting gold.",
+			player_gold, symbols);
+
+	} else {
+		std::string goldmsg = vngettext(
+			"You will start the next scenario with $gold "
+			"or its defined minimum starting gold, "
+			"whichever is higher.",
+			"You will start the next scenario with $gold "
+			"or its defined minimum starting gold, "
+			"whichever is higher.",
+			player_gold, symbols);
+	}
+
+	// xgettext:no-c-format
+	report << '\n' << goldmsg;
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& story, upload_log& log,
@@ -412,7 +410,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 							report << font::BOLD_TEXT << i->current_player() << "\n";
 						}
 
-						report_victory(report, player, end_level, remaining_gold, finishing_bonus_per_turn, turns_left, finishing_bonus);
+						report_victory(report, end_level, player->gold, remaining_gold, finishing_bonus_per_turn, turns_left, finishing_bonus);
 					}
 				}
 			}

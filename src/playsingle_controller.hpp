@@ -80,8 +80,8 @@ protected:
 	bool replaying_;
 private:
 	void report_victory(std::stringstream& report,
-		    player_info *player, 
 		    end_level_exception& end_level,
+		    int player_gold,
 		    int remaining_gold, int finishing_bonus_per_turn, 
 		    int turns_left, int finishing_bonus);
 };
