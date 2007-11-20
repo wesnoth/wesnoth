@@ -37,7 +37,7 @@ namespace network {
 // It must be destroyed only after all networking activity stops.
 
 // min_threads is the maximum number we allow to wait,
-// of more threads attempt to wait, they will die.
+// if more threads attempt to wait, they will die.
 // If min_threads == 0 no thread will ever be destroyed,
 // and we will stay at the max number of threads ever needed.
 
