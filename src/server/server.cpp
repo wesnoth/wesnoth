@@ -137,6 +137,7 @@ private:
 
 	metrics metrics_;
 
+	time_t last_ping_;
 	time_t last_stats_;
 	void dump_stats(const time_t& now);
 
@@ -159,7 +160,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	cfg_(read_config()), version_query_response_("version"),
 	login_response_("mustlogin"), join_lobby_response_("join_lobby"),
 	games_and_users_list_("gamelist"), old_games_and_users_list_(games_and_users_list_),
-	last_stats_(time(NULL))
+	last_ping_(time(NULL)), last_stats_(last_ping_)
 {
 	load_config();
 	signal(SIGHUP, reload_config);
@@ -270,14 +271,11 @@ config server::games_and_users_list_diff() {
 }
 
 void server::dump_stats(const time_t& now) {
-//	time_t old_stats = last_stats_;
 	last_stats_ = now;
 	LOG_SERVER << "Statistics:"
 		<< "\tnumber_of_games = " << games_.size()
 		<< "\tnumber_of_users = " << players_.size()
 		<< "\tlobby_users = " << lobby_.nobservers() << "\n";
-//		<< "\tstart_interval    = " << old_stats
-//		<< "\tend_interval      = " << last_stats_ << "\n";
 }
 
 void server::run() {
@@ -303,16 +301,19 @@ void server::run() {
 				LOG_SERVER << process_command(admin_cmd) << std::endl;
 			}
 
-			// Make sure we log stats every 5 minutes
 			time_t now = time(NULL);
-			if ((loop%100) == 0 && last_stats_+5*60 < now) {
-				dump_stats(now);
+			if ((loop%100) == 0 && last_ping_ + 60 <= now) {
+				// Make sure we log stats every 5 minutes
+				if (last_stats_ + 5*60 <= now) dump_stats(now);
 				// send a 'ping' to all players to detect ghosts
 				config ping;
 				ping["ping"] = lexical_cast<std::string>(now);
-				for (player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+				for (player_map::const_iterator i = players_.begin();
+					i != players_.end(); ++i)
+				{
 					network::queue_data(ping, i->first);
 				}
+				last_ping_ = now;
 			}
 
 			network::process_send_queue();
@@ -431,8 +432,10 @@ void server::process_data(const network::connection sock, config& data) {
 	if (proxy::is_proxy(sock)) {
 		proxy::received_data(sock, data);
 	}
-	// If someone who is not yet logged in
-	// is sending login details
+	// Ignore client side pings for now.
+	const string_map::const_iterator ping = data.values.find("ping");
+	if (ping != data.values.end()) return;
+	// If someone who is not yet logged in is sending login details.
 	else if (not_logged_in_.is_observer(sock)) {
 		process_login(sock, data);
 	} else if (const config* query = data.child("query")) {
@@ -945,9 +948,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			<< pl->second.name() << ". (socket:" << sock << ")\n";
 		return;
 	}
-	// Ignore client side pings for now.
-	const string_map::const_iterator ping = data.values.find("ping");
-	if (ping != data.values.end()) return;
 
 	// If this is data describing the level for a game.
 	if (data.child("side") != NULL) {
