@@ -82,7 +82,9 @@ private:
 	int report_victory(player_info *player, 
 		    std::stringstream& report,
 		    std::vector<team>::iterator i,
-		    end_level_exception& end_level);
+		    end_level_exception& end_level,
+		    int remaining_gold, int finishing_bonus_per_turn, 
+		    int turns_left, int finishing_bonus);
 };
 
 

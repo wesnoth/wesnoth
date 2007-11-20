@@ -144,16 +144,10 @@ void playsingle_controller::user_command_3(){
 int playsingle_controller::report_victory(player_info *player, 
 		    std::stringstream& report,
 		    std::vector<team>::iterator i,
-		    end_level_exception& end_level)
+		    end_level_exception& end_level,
+		    int remaining_gold, int finishing_bonus_per_turn, 
+		    int turns_left, int finishing_bonus)
 {
-	const int remaining_gold = i->gold();
-	const int finishing_bonus_per_turn =
-			 map_.villages().size() * game_config::village_income +
-			 game_config::base_income;
-	const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
-	const int finishing_bonus = end_level.gold_bonus ?
-			 (finishing_bonus_per_turn * turns_left) : 0;
-
 	if(player) {
 		if(gamestate_.players.size()>1) {
 			if(i!=teams_.begin()) {
@@ -406,11 +400,20 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 
 					player_info *player=gamestate_.get_player(i->save_id());
 
-					int finishing_bonus = report_victory(player, report, i, end_level);
+					const int remaining_gold = i->gold();
+					const int finishing_bonus_per_turn =
+							 map_.villages().size() * game_config::village_income +
+							 game_config::base_income;
+					const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
+					const int finishing_bonus = end_level.gold_bonus ?
+							 (finishing_bonus_per_turn * turns_left) : 0;
+
+
 					if (player) {
 						player->gold = ((i->gold() + finishing_bonus) 
 								* end_level.carryover_percentage) / 100;
 						player->gold_add = end_level.carryover_add;
+						report_victory(player, report, i, end_level, remaining_gold, finishing_bonus_per_turn, turns_left, finishing_bonus);
 					}
 				}
 			}
