@@ -141,10 +141,9 @@ static void check_error()
 static time_t last_ping_, last_ping_check_ = 0;
 
 //! Check whether too much time since the last server ping has passed and we
-//! timed out. If the last check is too long ago reset the last_ping_ to '0'.
+//! timed out. If the last check is too long ago reset the last_ping_ to 'now'.
 //! This happens when we "freeze" the client one way or another or we just
-//! didn't try to receive data. We could reset last_ping_ to 'now' but that
-//! would assume that we always get a ping.
+//! didn't try to receive data.
 static void check_timeout(const time_t& now)
 {
 	if (network::nconnections() == 0) {
@@ -154,7 +153,7 @@ static void check_timeout(const time_t& now)
 	DBG_NW << "Checking network lag. Last ping: " << last_ping_
 		<< " Current time: " << now << "\n";
 	// Reset last_ping_ if we didn't check for the last 15s.
-	if (last_ping_check_ + 15 <= now) last_ping_ = 0;
+	if (last_ping_ != 0 && last_ping_check_ + 15 <= now) last_ping_ = now;
 	if (last_ping_ != 0 && last_ping_ + 30 <= now) {
 		throw network::error(
 			_("No server ping since 30 seconds. Connection timed out."));
@@ -528,6 +527,7 @@ connection accept_connection()
 
 bool disconnect(connection s)
 {
+	if (!is_server()) last_ping_ = 0;
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			wassert(sockets.back() != 0);
