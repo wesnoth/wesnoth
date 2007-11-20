@@ -34,7 +34,6 @@ playmp_controller::playmp_controller(const config& level,
 	beep_warning_time_ = 0;
 	turn_data_ = NULL;
 	is_host_ = is_host;
-	last_ping_ = time(NULL);
 }
 
 playmp_controller::~playmp_controller() {
@@ -174,7 +173,6 @@ void playmp_controller::play_human_turn(){
 			throw e;
 		}
 
-
 		if (current_team().countdown_time() > 0 &&  ( level_["mp_countdown"] == "yes" ) && !linger_){
 			SDL_Delay(1);
 			const int ticks = SDL_GetTicks();
@@ -223,16 +221,16 @@ void playmp_controller::play_human_turn(){
 
 void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 {
-        LOG_NG << "beginning end-of-scenario linger";
-        browse_ = true;
-        linger_ = true;
-        // this is actually for after linger mode is over -- we don't want to
-        // stay stuck in linger state when the *next* scenario is over.
-        gamestate_.completion = "running";
-        // End all unit moves
-        for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
-                u->second.set_user_end_turn(true);
-        }
+	LOG_NG << "beginning end-of-scenario linger";
+	browse_ = true;
+	linger_ = true;
+	// this is actually for after linger mode is over -- we don't want to
+	// stay stuck in linger state when the *next* scenario is over.
+	gamestate_.completion = "running";
+	// End all unit moves
+	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
+			u->second.set_user_end_turn(true);
+	}
 	//current_team().set_countdown_time(0);
 	//halt and cancel the countdown timer
 	if(beep_warning_time_ < 0) {
@@ -255,31 +253,31 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	gui_->draw();
 	gui_->update_display();
 
-        try {
-		// reimplement parts of play_side()
-		turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
-				        *gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
-		turn_data_->replay_error().attach_handler(this);
-		turn_data_->host_transfer().attach_handler(this);
+	try {
+	// reimplement parts of play_side()
+	turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
+					*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
+	turn_data_->replay_error().attach_handler(this);
+	turn_data_->host_transfer().attach_handler(this);
 
-		play_human_turn();
-		after_human_turn();
+	play_human_turn();
+	after_human_turn();
 
-        } catch(game::load_game_exception&) {
-                // Loading a new game is effectively a quit.
-                log.quit(status_.turn());
-                throw;
-		} catch(end_level_exception& e) {
-			//Catch this error here so mp players quitting unexpectedly are not thrown back
-			//to the title screen
-			result = e.result;
-        }
+	} catch(game::load_game_exception&) {
+			// Loading a new game is effectively a quit.
+			log.quit(status_.turn());
+			throw;
+	} catch(end_level_exception& e) {
+		//Catch this error here so mp players quitting unexpectedly are not thrown back
+		//to the title screen
+		result = e.result;
+	}
 
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
 	gui_->invalidate_theme();
 
-        LOG_NG << "ending end-of-scenario linger";
+	LOG_NG << "ending end-of-scenario linger";
 }
 
 void playmp_controller::after_human_turn(){
@@ -334,14 +332,6 @@ void playmp_controller::play_network_turn(){
 	turn_data.host_transfer().attach_handler(this);
 
 	for(;;) {
-		// Send a ping to the server every 10 seconds.
-		time_t now = time(NULL);
-		if (last_ping_+10 < now) {
-			last_ping_ = now;
-			config ping;
-			ping["ping"] = lexical_cast<std::string>(now);
-			network::send_data(ping);
-		}
 
 		bool have_data = false;
 		config cfg;

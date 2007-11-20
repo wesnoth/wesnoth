@@ -63,7 +63,6 @@ protected:
 private:
 	void process_oos(const std::string& err_msg);
 	static unsigned int replay_last_turn_;
-	time_t last_ping_;
 };
 
 #endif
