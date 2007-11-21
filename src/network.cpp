@@ -152,11 +152,13 @@ static void check_timeout(const time_t& now)
 	}
 	DBG_NW << "Checking network lag. Last ping: " << last_ping_
 		<< " Current time: " << now << "\n";
-	// Reset last_ping_ if we didn't check for the last 15s.
-	if (last_ping_ != 0 && last_ping_check_ + 15 <= now) last_ping_ = now;
+	// Reset last_ping_ if we didn't check for the last 10s.
+	if (last_ping_ != 0 && last_ping_check_ + 10 <= now) last_ping_ = now;
 	if (last_ping_ != 0 && last_ping_ + 30 <= now) {
-		throw network::error(
-			_("No server ping since 30 seconds. Connection timed out."));
+		ERR_NW << "No server ping since " << (now - last_ping_)
+			<< " seconds. Connection timed out.\n";
+		throw network::error(_("No server ping since at least 30 seconds. "
+			"Connection timed out."));
 	}
 	last_ping_check_ = now;
 }
