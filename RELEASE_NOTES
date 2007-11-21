@@ -3,14 +3,11 @@ notes for the next release, it allows easy syncing with the release
 team, since you don't have to be around when the release takes
 place...
 
-Just dump whatever you want to have mentioned in the release notes here.
+Just dump whatever you want to have mentioned in the release notes here. Please
+take care that it is in a way that allows copy&paste to the release notes. That
+is making sure that spelling/grammer/whatever is usable and that you are using
+ complete sentences, not just single words.
 
 The release team should empty this file after each release.
 
-The description key in [unit] should be unique, this key is used to avoid
-the recall duplication bug, which have been around for a while.
-(Note loading a lingermode savegame and continuing that one will still
-result in a duplication.)
 
-The bug that caused Wesnoth to crash when loading a saved multiplayer game from
-the create-game interface has been fixed.
