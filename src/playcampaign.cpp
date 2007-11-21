@@ -322,8 +322,15 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 		try {
 			// Preserve old label eg. replay
-			if (gamestate.label.empty())
-				gamestate.label = (*scenario)["name"];
+			if (gamestate.label.empty()) {
+				if (gamestate.abbrev.empty())
+					gamestate.label = (*scenario)["name"];
+				else {
+					gamestate.label = gamestate.abbrev;
+					gamestate.label += "-";
+					gamestate.label += (*scenario)["name"];
+				}
+			}
 
 			// If the entire scenario should be randomly generated
 			if((*scenario)["scenario_generation"] != "") {

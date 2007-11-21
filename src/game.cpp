@@ -850,6 +850,7 @@ bool game_controller::new_campaign()
 	const config& campaign = *campaigns[cmenu.result()];
 
 	state_.campaign = campaign["id"];
+	state_.abbrev = campaign["abbrev"];
 	state_.scenario = campaign["first_scenario"];
 
 	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];

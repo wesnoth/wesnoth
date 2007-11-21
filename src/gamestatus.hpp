@@ -108,6 +108,7 @@ public:
 	std::vector<std::string> campaign_xtra_defines;  // more customization of data
 
 	std::string campaign;   //!< the campaign being played
+	std::string abbrev;	//!< the campaign abbreviation
 	std::string scenario;   //!< the scenario being played
 	std::string completion; //!< running. victory, or defeat
 
