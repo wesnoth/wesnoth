@@ -303,7 +303,7 @@ void set_UI_volume(int vol)
 
 bool turn_bell()
 {
-	return get("turn_bell") == "yes";
+	return utils::string_bool(get("turn_bell"), true);
 }
 
 bool set_turn_bell(bool ison)
@@ -414,27 +414,15 @@ namespace {
 
 int scroll_speed()
 {
-	static const int default_value = 50;
-	int value = 0;
-	const string_map::const_iterator i = prefs.values.find("scroll");
-	if(i != prefs.values.end() && i->second.empty() == false) {
-		value = atoi(i->second.c_str());
-	}
-
-	if(value < 1 || value > 100) {
-		value = default_value;
-	}
-
+	const int value = lexical_cast_in_range<int>(get("scroll"), 50, 1, 100);
 	scroll = value/100.0;
 
 	return value;
 }
 
-void set_scroll_speed(int new_speed)
+void set_scroll_speed(const int new_speed)
 {
-	std::stringstream stream;
-	stream << new_speed;
-	prefs["scroll"] = stream.str();
+	prefs["scroll"] = lexical_cast<std::string>(new_speed);
 	scroll = new_speed / 100.0;
 }
 
