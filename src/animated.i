@@ -169,10 +169,10 @@ bool animated<T,T_void_value>::animation_would_finish() const
 		return true;
 	if(!started_)
 		return true;
-	if(!cycles_ &&
-            ((static_cast<double>(current_ticks - start_tick_) *
+	if(cycles_ )
+                return true;
+        if(((static_cast<double>(current_ticks - start_tick_) *
             acceleration_) + starting_frame_time_) > get_end_time())
-
 		return true;
 
 	return false;
@@ -184,7 +184,9 @@ bool animated<T,T_void_value>::animation_finished() const
 		return true;
 	if(!started_)
 		return true;
-	if(!cycles_ && (get_animation_time() >  get_end_time()))
+        if(cycles_)
+                return true;
+	if(get_animation_time() >  get_end_time())
 		return true;
 
 	return false;
