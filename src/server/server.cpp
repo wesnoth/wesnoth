@@ -56,6 +56,11 @@
 #define LOG_SERVER LOG_STREAM(info, general)
 #define ERR_CONFIG LOG_STREAM(err, config)
 
+//compatibility code for MS compilers
+#ifndef SIGHUP
+#define SIGHUP 20
+#endif
+
 sig_atomic_t config_reload = 0;
 
 void reload_config(int signal) {
