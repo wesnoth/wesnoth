@@ -1449,7 +1449,14 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 	// If rectangle formed by corners loc1 and loc2
 	// is larger than map area, then just scroll to loc1.
 	if(diffx > map_area().w || diffy > map_area().h) {
-		scroll_to_tile(loc1,scroll_type,check_fogged);
+		if(!check_fogged || !fogged(loc1)) {
+			scroll_to_tile(loc1,scroll_type,check_fogged);
+		} else if(!fogged(loc2)) {
+			scroll_to_tile(loc2,scroll_type,check_fogged);
+		} else {
+			// we check fog, and both location are fogged => don't do anything
+		}
+		
 	} else {
 		// Only scroll if rectangle is not completely inside map area.
 		// Assume most paths are within rectangle.
@@ -1457,8 +1464,16 @@ void display::scroll_to_tiles(const gamemap::location& loc1, const gamemap::loca
 		// common cases to determine behaviour instead of exceptions.
 		if (outside_area(map_area(),minx,miny) ||
 		    outside_area(map_area(),maxx,maxy)) {
-			// Scroll to middle point of rectangle
-			scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
+			if(!check_fogged || ( !fogged(loc1) && !fogged(loc2))) {
+				// Scroll to middle point of rectangle
+				scroll_to_tile(gamemap::location((loc1.x+loc2.x)/2,(loc1.y+loc2.y)/2),scroll_type,check_fogged);
+			} else if(!fogged(loc1)) {
+				scroll_to_tile(loc1,scroll_type,check_fogged);
+			} else if(!fogged(loc2)) {
+				scroll_to_tile(loc2,scroll_type,check_fogged);
+			} else {
+				// we check fog, and both location are fogged => don't do anything
+			}
 		} // else don't scroll, rectangle is already on screen
 	}
 }
