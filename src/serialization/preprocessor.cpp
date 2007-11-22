@@ -657,6 +657,8 @@ bool preprocessor_data::get_chunk()
 					LOG_CF << "ignoring reference to '" << newfilename << "'\n";
 				} else
 #endif
+				// Ignore filenames with '..' in them.
+				if (newfilename.find("..") == std::string::npos) 
 				{
 #ifndef USE_ZIPIOS
 					//if the filename begins with a '~', then look
