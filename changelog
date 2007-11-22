@@ -4,6 +4,10 @@ Version 1.2.7+svn:
  * multiplayer:
    * the server sends a periodical 'ping' to all players to detect ghosts
    * implemented reloading of the server config on SIGHUP
+ * user interface:
+   * removed the turn_cmd preference option
+ * WML engine:
+   * the preprocessor now ignores filenames with '..' in them
 
 Version 1.2.7:
  * language and i18n:
