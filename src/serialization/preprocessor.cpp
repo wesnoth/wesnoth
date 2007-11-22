@@ -767,6 +767,8 @@ bool preprocessor_data::get_chunk()
 				std::string prefix;
 				std::string nfname;
 				std::string const &newfilename = symbol;
+				// Ignore filenames with '..' in them.
+				if (newfilename.find("..") == std::string::npos) 
 				{
 					// If the filename begins with a '~', 
 					//  then look in the user's data directory. 
