@@ -114,9 +114,6 @@ namespace preferences {
 	bool message_bell();
 	void set_message_bell(bool ison);
 
-	const std::string& turn_cmd();
-	void set_turn_cmd(const std::string& cmd);
-
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
 

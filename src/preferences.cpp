@@ -409,16 +409,6 @@ void set_turn_bell(bool ison)
 	prefs["turn_bell"] = (ison ? "yes" : "no");
 }
 
-const std::string& turn_cmd()
-{
-	return prefs["turn_cmd"];
-}
-
-void set_turn_cmd(const std::string& cmd)
-{
-	prefs["turn_cmd"] = cmd;
-}
-
 bool message_bell()
 {
 	return prefs["message_bell"] != "no";
