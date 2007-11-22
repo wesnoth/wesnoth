@@ -349,11 +349,6 @@ bool set_UI_sound(bool ison)
 	return true;
 }
 
-const std::string turn_cmd()
-{
-	return get("turn_cmd");
-}
-
 bool message_bell()
 {
 	return utils::string_bool(get("message_bell"), true);

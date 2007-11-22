@@ -570,11 +570,6 @@ void playsingle_controller::before_human_turn(bool save)
 		gui::message_dialog(*gui_, "", message).show();
 	}
 
-	const std::string& turn_cmd = preferences::turn_cmd();
-	if(turn_cmd.empty() == false) {
-		system(turn_cmd.c_str());
-	}
-
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<gamemap::location> gotos;
 

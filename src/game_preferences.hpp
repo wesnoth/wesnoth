@@ -68,8 +68,6 @@ namespace preferences {
 	bool mouse_scroll_enabled();
 	void enable_mouse_scroll(bool value);
 
-	const std::string turn_cmd();
-
 	bool turn_dialog();
 	void set_turn_dialog(bool ison);
 
