@@ -1605,14 +1605,18 @@ void unit::set_walking(const game_display &disp,const gamemap::location& loc)
 
 void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 {
-	state_ = STATE_IDLING;
-	start_animation(disp,loc,choose_animation(disp,loc,"idling"),true);
+	if (state_ == STATE_STANDING || state_ == STATE_IDLING || state_ == STATE_SELECTING) {
+		state_ = STATE_IDLING;
+		start_animation(disp,loc,choose_animation(disp,loc,"idling"),true);
+	}
 }
 
 void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
 {
-	state_ = STATE_SELECTING;
-	start_animation(disp,loc,choose_animation(disp,loc,"selected"),true);
+	if (state_ == STATE_STANDING || state_ == STATE_IDLING || state_ == STATE_SELECTING) {
+		state_ = STATE_SELECTING;
+		start_animation(disp,loc,choose_animation(disp,loc,"selected"),true);
+	}
 }
 
 void unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles)
