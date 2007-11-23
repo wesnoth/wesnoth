@@ -22,6 +22,7 @@
 class config;
 class game_state;
 class t_string;
+class unit_map;
 
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
