@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-19 13:40+0100\n"
-"PO-Revision-Date: 2007-11-06 16:08+0100\n"
+"PO-Revision-Date: 2007-11-10 17:21+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2282,7 +2282,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2293,7 +2292,7 @@ msgstr ""
 "\n"
 "Scambia la fazione tra giocatori e computer. Questo comando deve essere dato "
 "dal giocatore che controlla questa fazione. Se non indichi la fazione, si "
-"assume sia la fazione \"1\".\n"
+"assume sia quella attualmentye attiva.\n"
 
 #: data/core/help.cfg:621
 msgid ""
@@ -2415,14 +2414,12 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Attiva/Disattiva la modalità silenziosa per tutti gli osservatori.\n"
-"\n"
+"Attiva/Disattiva la modalità silenziosa per tutti gli osservatori."
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -5492,6 +5489,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Ospita una partita usando il server integrato. Non è mantenuto in "
+"funzionamento molto bene, è meglio usare «wesnothd» dedicato."
 
 #: src/game.cpp:1393
 msgid "Local Game"
@@ -5827,14 +5826,12 @@ msgid "gender^Random"
 msgstr "Casuale"
 
 #: src/leader_list.cpp:144 src/leader_list.cpp:146
-#, fuzzy
 msgid "Female ♀"
-msgstr "Femminile ♀"
+msgstr "Femmina ♀"
 
 #: src/leader_list.cpp:153 src/leader_list.cpp:155
-#, fuzzy
 msgid "Male ♂"
-msgstr "Maschile ♂"
+msgstr "Maschio ♂"
 
 #: src/leader_list.cpp:166 src/leader_list.cpp:203
 msgid "Random"
@@ -6789,7 +6786,7 @@ msgstr "Condottiero: "
 
 #: src/multiplayer_wait.cpp:144
 msgid "Gender: "
-msgstr "Genere: "
+msgstr "Sesso: "
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6968,7 +6965,6 @@ msgstr[1] ""
 "minimo iniziale, se è di più."
 
 #: src/playsingle_controller.cpp:398
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -7289,6 +7285,13 @@ msgstr "Abilita l'invio del sommario"
 #~ msgid "time left"
 #~ msgstr "Tempo rimasto"
 
+#~ msgid ""
+#~ "The login name you chose is too long, please use a login with less than "
+#~ "18 characters"
+#~ msgstr ""
+#~ "Il nome di login che hai utilizzato è troppo lungo, per favore usane uno "
+#~ "con meno di 18 caratteri."
+
 #~ msgid "No multiplayer sides."
 #~ msgstr "Nessun esercito multiplayer."
 
@@ -7301,13 +7304,6 @@ msgstr "Abilita l'invio del sommario"
 
 #~ msgid "TitleScreen button^More"
 #~ msgstr "Altro"
-
-#~ msgid ""
-#~ "The login name you chose is too long, please use a login with less than "
-#~ "18 characters"
-#~ msgstr ""
-#~ "Il nome di login che hai utilizzato è troppo lungo, per favore usane uno "
-#~ "con meno di 18 caratteri."
 
 #~ msgid "Female leaders on MP (if available)"
 #~ msgstr "Condottieri femminili in MG (se disponibili)"
