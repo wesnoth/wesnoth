@@ -1218,7 +1218,7 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 		gui_->set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
-		if (!browse && u->second.side() == gui_->viewing_team()+1) {
+		if (!browse && !commands_disabled && u->second.side() == gui_->viewing_team()+1) {
 			sound::play_UI_sound("select-unit.wav");
 			u->second.set_selecting(*gui_, u->first);
 
