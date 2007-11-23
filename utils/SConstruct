@@ -20,11 +20,12 @@ For details see the cross-compiling instructions on the Wiki.
 
 """
 
-sources = glob.glob("src/*.cpp") +\
-          glob.glob("src/widgets/*.cpp") +\
-          glob.glob("src/serialization/*.cpp") +\
-          glob.glob("src/sdl_ttf/*.c")
-sources.remove("src/loadscreen_empty.cpp")
+#sources = glob.glob("src/*.cpp") +\
+#          glob.glob("src/widgets/*.cpp") +\
+#          glob.glob("src/serialization/*.cpp") +\
+#          glob.glob("src/sdl_ttf/*.c")
+#sources.remove("src/loadscreen_empty.cpp")
+#sources.remove("src/animated_editor.cpp")
 
 def parse_automake(filename, variable):
     """Crude helper function to parse an automake file."""
@@ -47,6 +48,11 @@ def parse_automake(filename, variable):
             x += 1
         sources.append("src/" + name)
     return sources
+
+# read the sources from the automake file
+sources = parse_automake("src/Makefile.am", "libwesnoth_core_a_SOURCES")
+sources += parse_automake("src/Makefile.am", "wesnoth_SOURCES")
+sources = list(set(sources))
 
 # read editor sources from automake file
 editor_sources = parse_automake("src/Makefile.am", "libwesnoth_core_a_SOURCES")
