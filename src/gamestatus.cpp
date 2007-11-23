@@ -28,7 +28,6 @@
 #include "game_preferences.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
-#include "variable.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"

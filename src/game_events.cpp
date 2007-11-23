@@ -37,7 +37,6 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "gettext.hpp"
-#include "variable.hpp"
 #include "serialization/string_utils.hpp"
 #include "wesconfig.h"
 

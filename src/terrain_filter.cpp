@@ -22,7 +22,6 @@
 #include "pathfind.hpp"
 #include "terrain_filter.hpp"
 #include "util.hpp"
-#include "variable.hpp"
 #include "wassert.hpp"
 
 #include <algorithm>
