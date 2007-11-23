@@ -577,6 +577,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 {
 	log_scope("write_game");
 	cfg["label"] = gamestate.label;
+	cfg["abbrev"] = gamestate.abbrev;
 	cfg["version"] = game_config::version;
 
 	cfg["scenario"] = gamestate.scenario;
@@ -633,6 +634,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 {
 	log_scope("write_game");
 
+	out.write_key_val("abbrev", gamestate.abbrev);
 	out.write_key_val("label", gamestate.label);
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("scenario", gamestate.scenario);
@@ -1103,6 +1105,7 @@ game_state& game_state::operator=(const game_state& state)
 		return *this;
 	}
 
+	abbrev = state.abbrev;
 	label = state.label;
 	version = state.version;
 	campaign_type = state.campaign_type;

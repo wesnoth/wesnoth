@@ -84,6 +84,8 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		// Preserve old label eg. replay
 		if (gamestate.label.empty())
 			gamestate.label = (*scenario)["name"];
+		//if (gamestate.abbrev.empty())
+		//	gamestate.abbrev = (*scenario)["abbrev"];
 
 		play_replay_level(units_data,game_config,scenario,video,gamestate);
 
@@ -326,9 +328,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				if (gamestate.abbrev.empty())
 					gamestate.label = (*scenario)["name"];
 				else {
-					gamestate.label = gamestate.abbrev;
-					gamestate.label += "-";
-					gamestate.label += (*scenario)["name"];
+					gamestate.label = std::string(gamestate.abbrev);
+					gamestate.label.append("-");
+					gamestate.label.append((*scenario)["name"]);
 				}
 			}
 
@@ -534,7 +536,13 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if(scenario != NULL) {
 			// Update the label
 			std::string oldlabel = gamestate.label;
-			gamestate.label = (*scenario)["name"];
+			if (gamestate.abbrev.empty())
+				gamestate.label = (*scenario)["name"];
+			else {
+				gamestate.label = std::string(gamestate.abbrev);
+				gamestate.label.append("-");
+				gamestate.label.append((*scenario)["name"]);
+			}
 
 			// If this isn't the last scenario, then save the game
 			if(save_game_after_scenario) {
