@@ -39,6 +39,10 @@
 #include <map>
 #include <string>
 
+namespace {
+	static std::string wm_title_string;
+}
+
 int main(int argc, char** argv)
 {
 	const std::string rev = game_config::svnrev.empty() ? "" :
@@ -292,7 +296,11 @@ int main(int argc, char** argv)
 	}
 
 	// Set the caption of the window
-	SDL_WM_SetCaption(_("Battle for Wesnoth Map Editor"), NULL);
+	wm_title_string = _("Battle for Wesnoth Map Editor");
+	wm_title_string += " (";
+	wm_title_string += game_config::version;
+	wm_title_string += ")";
+	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 
 	//Read the configuration af
 	config cfg;

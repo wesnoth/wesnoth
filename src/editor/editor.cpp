@@ -54,6 +54,8 @@
 #include <cmath>
 
 namespace {
+	static std::string wm_title_string;
+
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
 	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
@@ -482,7 +484,11 @@ void map_editor::change_language() {
 	}
 
 	// Update the frame title
-	SDL_WM_SetCaption(_("Battle for Wesnoth Map Editor"), NULL);
+	wm_title_string = _("Battle for Wesnoth Map Editor");
+	wm_title_string += " (";
+	wm_title_string += game_config::version;
+	wm_title_string += ")";
+	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 
 	font::load_font_config();
 	hotkey::load_descriptions();
