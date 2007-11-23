@@ -167,13 +167,42 @@ static std::string unencode_binary(const std::string& str)
 	return res;
 }
 
+static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignore_patterns(const std::string& campaign_name) {
+	std::pair<std::vector<std::string>, std::vector<std::string> > patterns;
+	std::string exterior = campaign_dir() + "/" + campaign_name + ".ign";
+	std::string interior = campaign_dir() + "/" + campaign_name + "/_server.ign";
+	std::string ign_file;
+	if (file_exists(interior)) {
+		ign_file = interior;
+	} else if (file_exists(exterior)) {
+		ign_file = exterior;
+	} else { /* default patterns */
+		patterns.first.push_back("*~");
+		patterns.first.push_back("*-bak");
+		patterns.first.push_back("*.pbl");
+		patterns.first.push_back("*.ign");
+		return patterns;
+	}
+	std::istream *stream = istream_file(ign_file);
+	std::string line;
+	while (std::getline(*stream, line)) {
+		size_t l = line.size();
+		if (line[l - 1] == '/') { // directory; we strip the last /
+			patterns.second.push_back(line.substr(0, l - 1));
+		} else { // file
+			patterns.first.push_back(line);
+		}
+	}
+	return patterns;
+}
+
 static void archive_file(const std::string& path, const std::string& fname, config& cfg)
 {
 	cfg["name"] = fname;
 	cfg["contents"] = encode_binary(read_file(path + '/' + fname));
 }
 
-static void archive_dir(const std::string& path, const std::string& dirname, config& cfg)
+static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, std::pair<std::vector<std::string>, std::vector<std::string> >& ignore_patterns)
 {
 	cfg["name"] = dirname;
 	const std::string dir = path + '/' + dirname;
@@ -181,23 +210,41 @@ static void archive_dir(const std::string& path, const std::string& dirname, con
 	std::vector<std::string> files, dirs;
 	get_files_in_dir(dir,&files,&dirs);
 	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-		if (ends_with(*i, "~")||ends_with(*i, "-bak")||(*i).find(".pbl")!=std::string::npos)
-			continue;
-		archive_file(dir,*i,cfg.add_child("file"));
+		bool valid = true;
+		for(std::vector<std::string>::const_iterator p = ignore_patterns.first.begin(); p != ignore_patterns.first.end(); ++p) {
+			if (utils::wildcard_string_match(*i, *p)) {
+				valid = false;
+				break;
+			}
+		}
+		if (valid) {
+			archive_file(dir,*i,cfg.add_child("file"));
+		}
 	}
 
 	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-		archive_dir(dir,*j,cfg.add_child("dir"));
+		bool valid = true;
+		for(std::vector<std::string>::const_iterator p = ignore_patterns.second.begin(); p != ignore_patterns.second.end(); ++p) {
+			if (utils::wildcard_string_match(*j, *p)) {
+				valid = false;
+				break;
+			}
+		}
+		if (valid) {
+			archive_dir(dir,*j,cfg.add_child("dir"),ignore_patterns);
+		}
 	}
 }
 
 void archive_campaign(const std::string& campaign_name, config& cfg)
 {
+	std::pair<std::vector<std::string>, std::vector<std::string> > ignore_patterns;
 	// External .cfg may not exist; newer campaigns have a _main.cfg
 	std::string external_cfg = campaign_name + ".cfg";
 	if (file_exists(campaign_dir() + "/" + external_cfg))
 		archive_file(campaign_dir(), external_cfg,cfg.add_child("file"));
-	archive_dir(campaign_dir(),campaign_name,cfg.add_child("dir"));
+	ignore_patterns = read_ignore_patterns(campaign_name);
+	archive_dir(campaign_dir(),campaign_name,cfg.add_child("dir"),ignore_patterns);
 }
 
 static void unarchive_file(const std::string& path, const config& cfg)
