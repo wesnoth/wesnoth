@@ -24,7 +24,6 @@
 #include "network.hpp"
 #include "network_worker.hpp"
 #include "thread.hpp"
-//#include "util.hpp"
 #include "wassert.hpp"
 
 #include "SDL_net.h"
@@ -35,6 +34,7 @@
 #include <iostream>
 #include <set>
 #include <vector>
+#include <ctime>
 
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
