@@ -86,8 +86,6 @@ static bool less_campaigns_rank(const config* a, const config* b) {
 
 namespace {
 
-static std::string wm_title_string;
-
 class game_controller
 {
 public:
@@ -435,11 +433,10 @@ bool game_controller::init_language()
 		return false;
 
 	if(!no_gui_) {
-		wm_title_string = _("The Battle for Wesnoth");
-		wm_title_string += " (";
-		wm_title_string += game_config::version;
-		wm_title_string += ")";
-		
+		std::string wm_title_string = _("The Battle for Wesnoth");
+		wm_title_string += " - " + game_config::version
+			+ (game_config::svnrev.empty() ? "" :
+			" (" + game_config::svnrev + ")");
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 	}
 
