@@ -148,16 +148,6 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 {
 	int nsleeps = 0;
 	while(nbytes > 0) {
-#ifdef _WIN32
-		{
-			// if we are receiving the socket is in sockets_locked
-			// check if it is still locked
-			const threading::lock lock(*global_mutex);
-			if(sockets_locked[s] != SOCKET_LOCKED) {
-				return false;
-			}
-		}
-#endif //_WIN32
 		const int bytes_read = receive_bytes(s, buf, nbytes);
 		if(bytes_read == 0) {
 			return false;
@@ -167,10 +157,10 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 #elif defined(EWOULDBLOCK)
 			if(errno == EWOULDBLOCK)
 #else
-			if(false)
+			// Ignore the error.
+			if(true)
 #endif
 			{
-#ifdef _WIN32
 #ifdef USE_POLL
 				struct pollfd fd = { ((_TCPsocket*)s)->channel, POLLIN, 0 };
 				int poll_res;
@@ -195,17 +185,13 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 
 				if(retval > 0)
 					continue;
-#endif
-			}
-
-			return false;
-		}
-#else //_WIN32
+#elif
 				//TODO: consider replacing this with a select call
 				if(++nsleeps == timeout_ms) {
 					return false;
 				}
 				SDL_Delay(1000);
+#endif
 			} else {
 				return false;
 			}
@@ -214,16 +200,13 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 				return false;
 			}
 
-#endif //_WIN32
 			nbytes -= bytes_read;
 			buf += bytes_read;
 			if(update_stats) {
 				const threading::lock lock(*global_mutex);
 				transfer_stats[s].second.transfer(static_cast<size_t>(bytes_read));
 			}
-#ifndef _WIN32
 		}
-#endif
 	}
 
 	return true;
