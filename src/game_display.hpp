@@ -97,7 +97,6 @@ public:
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
-public:
 	//! Function to return 2 half-hex footsteps images for the given location.
 	//! Only loc is on the current route set by set_route.
 	std::vector<surface> footsteps_images(const gamemap::location& loc);
@@ -185,6 +184,20 @@ public:
 	virtual bool in_game() const { return in_game_; }
 	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, fixed_t alpha);
 
+	//! Sets the linger mode for the display.
+	//! There have been some discussions on what to do with fog and shroud
+	//! the extra variables make it easier to modify the behaviour. There
+	//! might even be a split between victory and defeat.
+	//
+	//! @todo if the current implementation is wanted we can change 
+	//! the stuff back to a boolean
+	enum tgame_mode { 
+		RUNNING,         //!< no linger overlay, show fog and shroud
+		LINGER_SP,       //!< linger overlay, show fog and shroud
+		LINGER_MP };     //!< linger overlay, show fog and shroud
+
+	void set_game_mode(const tgame_mode game_mode);
+
 private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
@@ -268,6 +281,8 @@ private:
 	reach_map reach_map_old_;
 	bool reach_map_changed_;
 	void process_reachmap_changes();
+
+	tgame_mode game_mode_;
 
 	// For debug mode
 	static std::map<gamemap::location,fixed_t> debugHighlights_;

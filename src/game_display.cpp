@@ -24,7 +24,6 @@
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "hotkeys.hpp"
@@ -64,10 +63,15 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		teams_(t),
 		level_(level),
 		invalidateUnit_(true),
-		currentTeam_(0), activeTeam_(0),
+		currentTeam_(0), 
+		activeTeam_(0),
 		sidebarScaling_(1.0),
-		first_turn_(true), in_game_(false),
-		tod_hex_mask1(NULL), tod_hex_mask2(NULL), reach_map_changed_(true)
+		first_turn_(true), 
+		in_game_(false),
+		tod_hex_mask1(NULL), 
+		tod_hex_mask2(NULL), 
+		reach_map_changed_(true),
+		game_mode_(RUNNING)
 {
 	singleton_ = this;
 
@@ -293,7 +297,7 @@ void game_display::draw(bool update,bool force)
 			// commented out code, but enabling it looks worse).
 			const bool on_map = map_.on_board(*it);
 			const bool off_map_tile = (map_.get_terrain(*it) == t_translation::OFF_MAP_USER);
-			const bool is_shrouded = shrouded(*it);
+			const bool is_shrouded = shrouded(*it); 
 
 			image::TYPE image_type = image::SCALED_TO_HEX;
 
@@ -318,7 +322,7 @@ void game_display::draw(bool update,bool force)
 
 			tile_stack_clear();
 
-			if(!is_shrouded /*|| !on_map*/) {
+			if(!is_shrouded) {
 				// unshrouded terrain (the normal case)
 				tile_stack_append(get_terrain_images(*it,tod.id, image_type, ADJACENT_BACKGROUND));
 
@@ -334,7 +338,7 @@ void game_display::draw(bool update,bool force)
 				}
 			}
 
-			if(!is_shrouded /*|| !on_map*/) {
+			if(!is_shrouded) {
 				tile_stack_append(get_terrain_images(*it,tod.id,image_type,ADJACENT_FOREGROUND));
 			}
 
@@ -389,13 +393,15 @@ void game_display::draw(bool update,bool force)
 				tile_stack_append(image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED));
 			}
 
-			// Apply shroud and fog
+			// Apply shroud, fog and linger overlay
 			if(is_shrouded) {
 				// We apply void also on off-map tiles
 				// to shroud the half-hexes too
 				tile_stack_append(image::get_image(shroud_image, image::SCALED_TO_HEX));
 			} else if(fogged(*it)) {
 				tile_stack_append(image::get_image(fog_image, image::SCALED_TO_HEX));
+			} else if(game_mode_ != RUNNING) {
+				tile_stack_append(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
 			}
 
 			if(!is_shrouded) {
@@ -621,6 +627,14 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos, size_t
 		const Uint32 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		const Uint8 r_alpha = minimum<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		fill_rect_alpha(filled_area,colour,r_alpha,video().getSurface());
+	}
+}
+
+void game_display::set_game_mode(const tgame_mode game_mode)
+{
+	if(game_mode != game_mode_) {
+		game_mode_ = game_mode;
+		invalidate_all();
 	}
 }
 

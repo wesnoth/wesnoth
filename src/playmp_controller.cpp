@@ -224,6 +224,10 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	LOG_NG << "beginning end-of-scenario linger";
 	browse_ = true;
 	linger_ = true;
+	// If we need to set the status depending on the completion state
+	// we're needed here.
+	gui_->set_game_mode(game_display::LINGER_MP);
+
 	// this is actually for after linger mode is over -- we don't want to
 	// stay stuck in linger state when the *next* scenario is over.
 	gamestate_.completion = "running";
@@ -276,6 +280,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
 	gui_->invalidate_theme();
+	gui_->set_game_mode(game_display::RUNNING);
 
 	LOG_NG << "ending end-of-scenario linger";
 }

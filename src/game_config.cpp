@@ -52,7 +52,8 @@ namespace game_config
 
 	std::string terrain_mask_image = "terrain/alphamask.png";
 	std::string grid_image = "terrain/grid.png";
-	std::string unreachable_image = "terrain/darken.png";
+	std::string unreachable_image = "terrain/darken.png";    //!< overlay image for unreachable tiles
+	std::string linger_image = "terrain/darken-linger.png";  //!< overlay image for tiles in linger mode
 
 	std::string energy_image = "misc/bar-energy.png";
 	std::string moved_ball_image = "misc/ball-moved.png";
