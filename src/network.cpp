@@ -86,6 +86,9 @@ connection_map connections;
 
 network::connection connection_id = 1;
 
+//! Stores the time of the last server ping we received.
+time_t last_ping, last_ping_check = 0;
+
 } // end anon namespace
 
 static int create_connection(TCPsocket sock, const std::string& host, int port)
@@ -137,30 +140,27 @@ static void check_error()
 	}
 }
 
-//! Stores the time of the last server ping we received.
-static time_t last_ping_, last_ping_check_ = 0;
-
 //! Check whether too much time since the last server ping has passed and we
-//! timed out. If the last check is too long ago reset the last_ping_ to 'now'.
+//! timed out. If the last check is too long ago reset the last_ping to 'now'.
 //! This happens when we "freeze" the client one way or another or we just
 //! didn't try to receive data.
 static void check_timeout(const time_t& now)
 {
 	if (network::nconnections() == 0) {
-		last_ping_ = 0;
+		last_ping = 0;
 		return;
 	}
-	DBG_NW << "Checking network lag. Last ping: " << last_ping_
+	DBG_NW << "Checking network lag. Last ping: " << last_ping
 		<< " Current time: " << now << "\n";
-	// Reset last_ping_ if we didn't check for the last 10s.
-	if (last_ping_ != 0 && last_ping_check_ + 10 <= now) last_ping_ = now;
-	if (last_ping_ != 0 && last_ping_ + 30 <= now) {
-		ERR_NW << "No server ping since " << (now - last_ping_)
+	// Reset last_ping if we didn't check for the last 10s.
+	if (last_ping != 0 && last_ping_check + 10 <= now) last_ping = now;
+	if (last_ping != 0 && last_ping + 30 <= now) {
+		ERR_NW << "No server ping since " << (now - last_ping)
 			<< " seconds. Connection timed out.\n";
 		throw network::error(_("No server ping since at least 30 seconds. "
 			"Connection timed out."));
 	}
-	last_ping_check_ = now;
+	last_ping_check = now;
 }
 
 
@@ -529,7 +529,7 @@ connection accept_connection()
 
 bool disconnect(connection s)
 {
-	if (!is_server()) last_ping_ = 0;
+	if (!is_server()) last_ping = 0;
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			wassert(sockets.back() != 0);
@@ -680,7 +680,7 @@ connection receive_data(config& cfg, connection connection_num)
 		const string_map::const_iterator ping = cfg.values.find("ping");
 		if (ping != cfg.values.end()) {
 			LOG_NW << "Lag: " << (now - lexical_cast<time_t>(cfg["ping"])) << "\n";
-			last_ping_ = now;
+			last_ping = now;
 		}
 	}
 	return result;
