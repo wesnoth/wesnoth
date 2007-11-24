@@ -256,4 +256,6 @@ config& save_summary(const std::string& save);
 
 void write_save_index();
 
+void replace_underbar2space(std::string &name);
+
 #endif

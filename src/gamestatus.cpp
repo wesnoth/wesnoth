@@ -89,7 +89,7 @@ void conv_ansi_utf8(std::string &name, bool a2u) {
 	return;
 }
 
-static void replace_underbar2space(std::string &name) {
+void replace_underbar2space(std::string &name) {
     LOG_NG << "conv(A2U)-from:[" << name << "]" << std::endl;
     conv_ansi_utf8(name, true);
     LOG_NG << "conv(A2U)-to:[" << name << "]" << std::endl;
@@ -107,7 +107,7 @@ static void replace_space2underbar(std::string &name) {
     LOG_NG << "replace_underbar2space-to:[" << name << "]" << std::endl;
 }
 #else /* ! _WIN32 */
-static void replace_underbar2space(std::string &name) {
+void replace_underbar2space(std::string &name) {
     std::replace(name.begin(),name.end(),'_',' ');
 }
 static void replace_space2underbar(std::string &name) {
