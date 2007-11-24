@@ -79,6 +79,15 @@ void show_intro(display &disp, const config& data, const config& level)
 	LOG_NG << "intro sequence finished...\n";
 }
 
+//! show_intro_part() is split into two parts, the second part can cause
+//! an utils::invalid_utf8_exception exception and it's to much code
+//! to indent. The solution is not very clean but the entire routine could
+//! use a cleanup.
+static bool show_intro_part_helper(display &disp, const config& part,
+		int textx, int texty,
+		gui::button& next_button, gui::button& skip_button,
+		CKey& key);
+
 bool show_intro_part(display &disp, const config& part,
 		const std::string& scenario)
 {
@@ -93,7 +102,6 @@ bool show_intro_part(display &disp, const config& part,
 	}
 
 	CKey key;
-	bool		lang_rtl = current_language_rtl();
 
 	gui::button next_button(video,_("Next") + std::string(">>>"));
 	gui::button skip_button(video,_("Skip"));
@@ -244,9 +252,30 @@ bool show_intro_part(display &disp, const config& part,
 			}
 		}
 	}
+	try {
+		return show_intro_part_helper(
+			disp, part, textx, texty, next_button, skip_button, key);
+
+	} catch (utils::invalid_utf8_exception&) {
+		LOG_STREAM(err, engine) << "Invalid utf-8 found, story message is ignored.\n";
+		// stop showing on an error, there might be more badly formed utf-8 messages
+		return false;
+	}
+}
+
+static bool show_intro_part_helper(display &disp, const config& part,
+		int textx, int texty,
+		gui::button& next_button, gui::button& skip_button,
+		CKey& key)
+{
+	bool lang_rtl = current_language_rtl();
+	CVideo &video = disp.video();
+
 
 	const int max_width = next_button.location().x - 10 - textx;
-	const std::string story = font::word_wrap_text(part["story"], font::SIZE_PLUS, max_width);
+	const std::string story = 
+		font::word_wrap_text(part["story"], font::SIZE_PLUS, max_width);
+
 	utils::utf8_iterator itor(story);
 
 	bool skip = false, last_key = true;

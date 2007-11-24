@@ -1551,14 +1551,20 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			// Redraw the unit, with its new stats
 			screen->draw();
 
-			const std::string duration_str = cfg["duration"];
-			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-			wml_event_dialog to_show(*screen,((surface.null())? caption : ""),text);
-			if(!surface.null()) {
-				to_show.set_image(surface, caption);
+			try {
+				const std::string duration_str = cfg["duration"];
+				const unsigned int lifetime = average_frame_time 
+					* lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
+					
+				wml_event_dialog to_show(*screen,((surface.null())? caption : ""),text);
+				if(!surface.null()) {
+					to_show.set_image(surface, caption);
+				}
+				to_show.layout();
+				to_show.show(lifetime);
+			} catch(utils::invalid_utf8_exception&) {
+				// we already had a warning so do nothing.
 			}
-			to_show.layout();
-			to_show.show(lifetime);
 		}
 
 		const vconfig::child_list commands = cfg.get_children(command_type);
@@ -1717,34 +1723,37 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
 			const SDL_Rect& map_area = screen->map_outside_area();
 
-			wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
-				msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
-			if(!surface.null()) {
-				to_show.set_image(surface, caption);
-			}
-			if(!options.empty()) {
-				to_show.set_menu(options);
-			}
-			gui::dialog::dimension_measurements dim = to_show.layout();
-			to_show.get_menu().set_width( dim.menu_width );
-			to_show.get_menu().set_max_width( dim.menu_width );
-			to_show.get_menu().wrap_words();
-			static const int dialog_top_offset = 26;
-			to_show.layout(-1, map_area.y + dialog_top_offset);
-			option_chosen = to_show.show(lifetime);
-			LOG_DP << "showed dialog...\n";
+			try {
+				wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
+					msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
+				if(!surface.null()) {
+					to_show.set_image(surface, caption);
+				}
+				if(!options.empty()) {
+					to_show.set_menu(options);
+				}
+				gui::dialog::dimension_measurements dim = to_show.layout();
+				to_show.get_menu().set_width( dim.menu_width );
+				to_show.get_menu().set_max_width( dim.menu_width );
+				to_show.get_menu().wrap_words();
+				static const int dialog_top_offset = 26;
+				to_show.layout(-1, map_area.y + dialog_top_offset);
+				option_chosen = to_show.show(lifetime);
+				LOG_DP << "showed dialog...\n";
 
-			if (option_chosen == gui::ESCAPE_DIALOG){
-				rval = false;
-			}
+				if (option_chosen == gui::ESCAPE_DIALOG){
+					rval = false;
+				}
 
-			if(options.empty() == false) {
-				recorder.choose_option(option_chosen);
+				if(options.empty() == false) {
+					recorder.choose_option(option_chosen);
+				}
+			} catch(utils::invalid_utf8_exception&) {
+				// we already had a warning so do nothing.
 			}
-		}
 
 		// Otherwise if a choice has to be made, get it from the replay data
-		else {
+		} else {
 			const config* action = get_replay_source().get_next_action();
 			if (action != NULL && !action->get_children("start").empty()){
 				action = get_replay_source().get_next_action();

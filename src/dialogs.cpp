@@ -857,7 +857,13 @@ void campaign_preview_pane::draw_contents()
 	f.draw_border();
 
 	/* description text */
-	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,font::SIZE_SMALL,area.w-2*campaign_preview_border);
+	std::string desc_text;
+	try {
+		desc_text = font::word_wrap_text((*descriptions_)[index_].first,
+			font::SIZE_SMALL, area.w - 2 * campaign_preview_border);
+	} catch (utils::invalid_utf8_exception&) {
+		LOG_STREAM(err, engine) << "Invalid utf-8 found, campaign description is ignored.\n";
+	}
 	const std::vector<std::string> lines = utils::split(desc_text, '\n',utils::STRIP_SPACES);
 	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y+campaign_preview_border,0,0 };
 
