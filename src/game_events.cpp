@@ -2162,6 +2162,17 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "endlevel") {
+		//remove 0-hp units from the unit map
+		unit_map::iterator u = units->begin();
+		while(u != units->end()) {
+			if(u->second.hitpoints() <= 0) {
+				units->erase(u++);
+				++unit_mutations;
+			} else {
+				++u;
+			}
+		}
+
 		const std::string next_scenario = cfg["next_scenario"];
 		if(next_scenario.empty() == false) {
 			state_of_game->scenario = next_scenario;
