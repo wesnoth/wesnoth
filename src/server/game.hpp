@@ -19,7 +19,7 @@
 
 #include "player.hpp"
 
-//#include <algorithm>
+#include <algorithm>
 #include <map>
 #include <set>
 #include <vector>
