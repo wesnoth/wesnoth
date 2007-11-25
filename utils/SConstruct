@@ -4,7 +4,7 @@ import glob
 """
 Runs this as:
 
-scons -f utils/SConstruct
+scons -f utils/SConstruct [editor=1] [server=1]
 
 from within the wesnoth toplevel directory. It expects to have all kinds of
 windows dependencies in the parent directory, like this:
@@ -19,6 +19,8 @@ and it will create/use a build directory in the parent folder as well:
 For details see the cross-compiling instructions on the Wiki.
 
 """
+editor = ARGUMENTS.get("editor", "")
+wesnothd = ARGUMENTS.get("server", "")
 
 #sources = glob.glob("src/*.cpp") +\
 #          glob.glob("src/widgets/*.cpp") +\
@@ -52,13 +54,18 @@ def parse_automake(filename, variable):
 # read the sources from the automake file
 sources = parse_automake("src/Makefile.am", "libwesnoth_core_a_SOURCES")
 sources += parse_automake("src/Makefile.am", "wesnoth_SOURCES")
+# there shouldn't be doubles, but well, let's remove them :)
 sources = list(set(sources))
 
 # read editor sources from automake file
 editor_sources = parse_automake("src/Makefile.am", "libwesnoth_core_a_SOURCES")
 editor_sources += parse_automake("src/Makefile.am", "wesnoth_editor_SOURCES")
-# there shouldn't be doubles, but well, let's remove them :)
 editor_sources = list(set(editor_sources))
+
+# read the server sources from the automake file
+wesnothd_sources = parse_automake("src/Makefile.am", "libwesnoth_core_a_SOURCES")
+wesnothd_sources += parse_automake("src/Makefile.am", "wesnothd_SOURCES")
+wesnothd_sources = list(set(wesnothd_sources))
 
 env = Environment()
 
@@ -92,5 +99,8 @@ env["PROGSUFFIX"] = ".exe"
 
 # Compile it!
 env.Program("wesnoth", ["../build/" + x[4:] for x in sources])
-env.Program("wesnoth_editor", ["../build/" + x[4:] for x in editor_sources])
+if editor:
+	env.Program("wesnoth_editor", ["../build/" + x[4:] for x in editor_sources])
+if wesnothd:
+	env.Program("wesnothd", ["../build/" + x[4:] for x in wesnothd_sources])
 
