@@ -2162,7 +2162,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "endlevel") {
-		//remove 0-hp units from the unit map
+		// Remove 0-hp units from the unit map to avoid the following problem:
+		// In case a die event triggers an endlevel the dead unit is still as a 
+		// 'ghost' in linger mode. After save loading in linger mode the unit 
+		// is fully visible again.
 		unit_map::iterator u = units->begin();
 		while(u != units->end()) {
 			if(u->second.hitpoints() <= 0) {
