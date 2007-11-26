@@ -6,7 +6,7 @@ DATA = ../../data
 #
 # The MAINLINE definition should expand to all directories considered  
 # to be part of the mainline distribution.
-MAINLINE = $(DATA)/core $(DATA)/{multiplayer,themes} $(DATA)/campaigns/*
+MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 #
 # Define UMC to point to a local copy of user-made content to run checks on.
 # Note, this needs to expand to a list with one subdirectory per UMC campaign,
