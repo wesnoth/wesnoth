@@ -414,8 +414,10 @@ void server::run() {
 							<< " and disconnected. (socket: " << e.socket << ")\n";
 						g->describe_slots();
 						if (!obs) {
-							g->send_data(g->construct_server_message(
-								pl_it->second.name() + " has disconnected."));
+							const config& msg = g->construct_server_message(
+								pl_it->second.name() + " has disconnected.");
+							g->send_data(msg);
+							g->record_data(msg);
 						}
 					}
 					break;
@@ -1104,16 +1106,18 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		lobby_.send_data(games_and_users_list_diff());
 		return;
 	} else if (data.child("leave_game")) {
+		//! @todo This should be done in remove_player().
 		const bool host = g->is_owner(sock);
 		const bool obs = g->is_observer(sock);
 		g->remove_player(sock);
 		lobby_.add_player(sock, true);
 		if (!obs) {
-			g->send_data(g->construct_server_message(pl->second.name()
-			+ " has left the game."));
+			const config& msg = g->construct_server_message(pl->second.name()
+				+ " has left the game.");
+			g->send_data(msg);
+			g->record_data(msg);
 		}
 		g->describe_slots();
-		//! @todo This should be done in remove_player().
 		if ( (g->nplayers() == 0) || (host && !g->started()) ) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tended game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
