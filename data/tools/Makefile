@@ -29,7 +29,7 @@ all:
 
 utils-unused:
 	@echo "# Report on unused utility macros"
-	@./wmlscope --crossreference --from $(DATA)/core/utils --refcount 0 $(MAINLINE) $(UMC)
+	@./wmlscope --crossreference --from $(DATA)/core/macros --refcount 0 $(MAINLINE) $(UMC)
 
 # References to terrain graphics go through so many layers of nasty
 # opaque macros that trying to reference-check them is hopeless.
@@ -41,7 +41,7 @@ all-unused:
 
 utils-macros:
 	@echo "# Report on usage of utility macros"
-	@./wmlscope --crossreference --from $(DATA)/core/utils $(MAINLINE) $(UMC)
+	@./wmlscope --crossreference --from $(DATA)/core/macros $(MAINLINE) $(UMC)
 
 collisions:
 	@echo "# Report on duplicate resource files."
