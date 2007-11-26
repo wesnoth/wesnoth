@@ -533,6 +533,12 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		return false;
 	}
 
+	std::map<std::string,std::string> title_stash;	
+	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+	  if (!m->title().empty())
+			title_stash[m->get_id()] = m->title();
+	}
+
 	panels_.clear();
 	labels_.clear();
 	status_.clear();
@@ -541,6 +547,10 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	const config& cfg = **current;
 	add_object(cfg);
 
+	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+		if (!title_stash[m->get_id()].empty())
+			m->set_title(title_stash[m->get_id()]); 
+	}
 	return result;
 }
 
