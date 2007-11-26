@@ -61,6 +61,8 @@ public:
 	void update_last_draw_time();
 	bool need_update() const;
 
+	bool cycles() const {return cycles_;};
+
 	//! Returns true if the current animation was finished.
 	bool animation_finished() const;
 	bool animation_would_finish() const;

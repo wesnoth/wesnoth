@@ -48,7 +48,7 @@ public:
 	bool render();
 	void unrender();
 
-	bool expired()     const { return images_.animation_finished(); }
+	bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 	bool need_update() const { return images_.need_update(); }
 	bool does_change() const { return !images_.does_not_change(); }
 	bool on_location(const std::set<gamemap::location>& locations) const;
