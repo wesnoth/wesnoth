@@ -871,7 +871,25 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	det.name = t->language_name();
 	det.level = t->level();
 	det.alignment = unit_type::alignment_description(t->alignment());
-	det.traits = ""; //undead ?
+
+	//FIXME: This probably must be move into a unit_type function
+	const std::vector<config*> traits = t->possible_traits();
+	for(std::vector<config*>::const_iterator i = traits.begin(); i != traits.end(); i++) {
+		if((**(i))["availability"] == "musthave") {
+			std::string gender_string = (!t->genders().empty() && t->genders().front()== unit_race::FEMALE) ? "female_name" : "male_name";
+			t_string name = (**i)[gender_string];
+			if (name.empty()) {
+				name = (**i)["name"];
+			}
+			if (!name.empty()) {
+				if (i != traits.begin()) {
+					det.traits += ", ";
+				}
+				det.traits += name;
+			}
+		}
+	}
+
 	det.abilities = t->abilities();
 	
 	det.hitpoints = t->hitpoints();
