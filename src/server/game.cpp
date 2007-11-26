@@ -745,7 +745,7 @@ void game::remove_player(const network::connection player, const bool notify_cre
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
-			<< owner_ << ")\n";
+			<< player << ")\n";
 		return;
 	}
 	user->second.mark_available();
@@ -760,7 +760,15 @@ void game::remove_player(const network::connection player, const bool notify_cre
 	// If the player was host choose a new one.
 	if (host && !players_.empty() && started_) {
 		owner_ = players_.front();
-		send_data(construct_server_message(user->second.name()
+		std::string owner_name = "";
+		const player_map::iterator owner = player_info_->find(owner_);
+		if (owner == player_info_->end()) {
+			ERR_GAME << "ERROR: Could not find new host in player_info_. (socket: "
+				<< owner_ << ")\n";
+		} else {
+			owner_name = owner->second.name();
+		}
+		send_data(construct_server_message(owner_name
 			+ " has been chosen as new host."));
 		//check for ai sides first and drop them, too, if the host left
 		bool ai_transfer = false;
