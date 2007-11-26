@@ -1185,6 +1185,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	// If info is being provided about the game state.
 	} else if (data.child("info") != NULL) {
+		if (g->is_observer(sock)) return;
 		const config& info = *data.child("info");
 		if (info["type"] == "termination") {
 			g->set_termination_reason(info["condition"]);
