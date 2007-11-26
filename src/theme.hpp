@@ -201,8 +201,8 @@ public:
 	const menu* context_menu() const
 		{ return context_.is_context() ? &context_ : NULL; }
 
-	//Changes the title of a menu entry, identified by its id.
-	//If no menu entry is found, an empty menu object is being returned.
+	//refresh_title2 changes the title of a menu entry, identified by id.
+	//If no menu entry is found, an empty menu object is returned.
 	menu* refresh_title(const std::string& id, const std::string& new_title);
 	menu* refresh_title2(const std::string& id, const std::string& title_tag);
 
