@@ -936,7 +936,7 @@ private:
 
 		team& current_team = teams_[team_num-1];
 
-		std::vector<unit> sample_units;
+		std::vector<const unit_type*> sample_units;
 
 		gui_->draw(); //clear the old menu
 		std::vector<std::string> item_keys;
@@ -952,21 +952,21 @@ private:
 
 			item_keys.push_back(*it);
 
-			const unit_type& type = u_type->second;
+			const unit_type* type = &u_type->second;
 
 			//display units that we can't afford to recruit in red
-			const char prefix = (type.cost() > current_team.gold() ? font::BAD_TEXT : font::NULL_MARKUP);
+			const char prefix = (type->cost() > current_team.gold() ? font::BAD_TEXT : font::NULL_MARKUP);
 
 			std::stringstream description;
-			description << font::IMAGE << type.image();
+			description << font::IMAGE << type->image();
 #ifndef LOW_MEM
-			description << "~RC(" << type.flag_rgb() << ">" << team::get_side_colour_index(team_num) << ")";
+			description << "~RC(" << type->flag_rgb() << ">" << team::get_side_colour_index(team_num) << ")";
 #endif
-			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type.language_name() << "\n"
-					<< prefix << type.cost() << " " << sngettext("unit^Gold", "Gold", type.cost());
+			description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->language_name() << "\n"
+					<< prefix << type->cost() << " " << sngettext("unit^Gold", "Gold", type->cost());
 
 			items.push_back(description.str());
-			sample_units.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&type,team_num));
+			sample_units.push_back(type);
 		}
 
 		if(sample_units.empty()) {
@@ -978,7 +978,7 @@ private:
 		int recruit_res = 0;
 
 		{
-			dialogs::units_list_preview_pane unit_preview(*gui_,&map_,sample_units);
+			dialogs::unit_types_preview_pane unit_preview(*gui_,&map_,sample_units,team_num);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
