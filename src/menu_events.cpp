@@ -445,7 +445,7 @@ namespace events{
 		}
 
 		{
-			dialogs::unit_preview_pane unit_preview(*gui_, &map_, units_list);
+			dialogs::units_list_preview_pane unit_preview(*gui_, &map_, units_list);
 			unit_preview.set_selection(selected);
 
 			gui::dialog umenu(*gui_, _("Unit List"), "", gui::NULL_DIALOG);
@@ -978,7 +978,7 @@ private:
 		int recruit_res = 0;
 
 		{
-			dialogs::unit_preview_pane unit_preview(*gui_,&map_,sample_units);
+			dialogs::units_list_preview_pane unit_preview(*gui_,&map_,sample_units);
 			std::vector<gui::preview_pane*> preview_panes;
 			preview_panes.push_back(&unit_preview);
 
@@ -1130,7 +1130,7 @@ private:
 			int res = 0;
 
 			{
-				dialogs::unit_preview_pane unit_preview(*gui_,&map_,recall_list);
+				dialogs::units_list_preview_pane unit_preview(*gui_,&map_,recall_list);
 				gui::dialog rmenu(*gui_,_("Recall"),
 						  _("Select unit:") + std::string("\n"),
 						  gui::OK_CANCEL,
@@ -1571,7 +1571,7 @@ private:
 	void menu_handler::create_unit(mouse_handler& mousehandler)
 	{
 		std::vector<std::string> options;
-		std::vector<unit> unit_choices;
+		std::vector<const unit_type*> unit_choices;
 		const std::string heading = std::string(1,HEADING_PREFIX) +
 									_("Race")      + COLUMN_SEPARATOR +
 									_("Type");
@@ -1589,8 +1589,7 @@ private:
 			row << i->second.language_name() << COLUMN_SEPARATOR;
 
 			options.push_back(row.str());
-			unit_choices.push_back(unit(&gameinfo_,&units_,&map_,&status_,&teams_,&i->second,1,false));
-			unit_choices.back().new_turn();
+			unit_choices.push_back(&(i->second));
 		}
 
 		int choice = 0;
@@ -1598,7 +1597,7 @@ private:
 			gui::menu::basic_sorter sorter;
 			sorter.set_alpha_sort(0).set_alpha_sort(1);
 
-			dialogs::unit_preview_pane unit_preview(*gui_, &map_, unit_choices);
+			dialogs::unit_types_preview_pane unit_preview(*gui_, &map_, unit_choices);
 			gui::dialog umenu(*gui_, _("Create Unit (Debug!)"), "", gui::OK_CANCEL);
 			umenu.set_menu(options, &sorter);
 			umenu.add_pane(&unit_preview);
@@ -1612,7 +1611,11 @@ private:
 
 		if (size_t(choice) < unit_choices.size()) {
 			units_.erase(mousehandler.get_last_hex());
-			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),unit_choices[choice]));
+
+			unit chosen(&gameinfo_,&units_,&map_,&status_,&teams_,unit_choices[choice],1,false);
+			chosen.new_turn();
+			units_.add(new std::pair<gamemap::location,unit>(mousehandler.get_last_hex(),chosen));
+
 			gui_->invalidate(mousehandler.get_last_hex());
 			gui_->invalidate_unit();
 		}

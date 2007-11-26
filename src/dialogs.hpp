@@ -62,29 +62,75 @@ class unit_preview_pane : public gui::preview_pane
 {
 public:
 	enum TYPE { SHOW_ALL, SHOW_BASIC };
+	struct details {
+		surface image;
+		std::string description, name;
+		int level;
+		std::string alignment, traits;
+		std::vector<std::string> abilities;
+		int hitpoints, max_hitpoints;
+		int experience, max_experience;
+		std::string hp_color, xp_color;
+		int movement_left, total_movement;
+		std::vector<attack_type> attacks;
+	};
 
-	unit_preview_pane(game_display &disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
-	unit_preview_pane(game_display &disp, const gamemap* map, std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(game_display &disp, const gamemap* map, TYPE type=SHOW_ALL, bool left_side=true);
 
 	bool show_above() const;
 	bool left_side() const;
 	void set_selection(int index);
 
 	handler_vector handler_members();
-private:
+
+protected:
 	game_display& disp_;
+	const gamemap* map_;
+	int index_;
+
+private:
+	virtual size_t size() const = 0;
+	virtual const details get_details() const = 0;
+	virtual const std::string get_profile() const = 0;
 
 	void draw_contents();
 	void process_event();
 
 	gui::button details_button_;
-	const gamemap* map_;
-	std::vector<unit>* units_;
-	std::vector<unit> unit_store_;
-	int index_;
 	bool left_;
 	bool weapons_;
 };
+
+class units_list_preview_pane : public dialogs::unit_preview_pane
+{
+public:
+	units_list_preview_pane(game_display &disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
+	units_list_preview_pane(game_display &disp, const gamemap* map, std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
+
+private:
+	size_t size() const;
+	const details get_details() const;
+	const std::string get_profile() const;
+
+	std::vector<unit>* units_;
+	std::vector<unit> unit_store_;
+};
+
+
+class unit_types_preview_pane : public dialogs::unit_preview_pane
+{
+public:
+	unit_types_preview_pane(game_display &disp, const gamemap* map, std::vector<const unit_type*>& unit_types, int side = 1, TYPE type=SHOW_ALL, bool left_side=true);
+
+private:
+	size_t size() const;
+	const details get_details() const;
+	const std::string get_profile() const;
+
+	std::vector<const unit_type*>* unit_types_;
+	int side_;
+};
+
 
 void show_unit_description(game_display &disp, const unit& u);
 

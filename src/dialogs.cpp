@@ -101,7 +101,7 @@ void advance_unit(const game_data& info,
 		res = rand()%lang_options.size();
 	} else if(lang_options.size() > 1) {
 
-		unit_preview_pane unit_preview(gui,&map,sample_units);
+		units_list_preview_pane unit_preview(gui,&map,sample_units);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
 
@@ -622,26 +622,17 @@ namespace {
 }
 
 //! Show unit-stats in a side-pane to unit-list, recall-list, etc.
-unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
-				    : gui::preview_pane(disp.video()), disp_(disp),
+
+unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map, TYPE type, bool on_left_side)
+				    : gui::preview_pane(disp.video()), disp_(disp), map_(map), index_(0),
 				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
-				      map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
-				      weapons_(type == SHOW_ALL)
+				      left_(on_left_side), weapons_(type == SHOW_ALL)
 {
 	unsigned w = font::relative_size(weapons_ ? 200 : 190);
 	unsigned h = font::relative_size(weapons_ ? 370 : 140);
 	set_measurements(w, h);
-	unit_store_.push_back(u);
 }
 
-unit_preview_pane::unit_preview_pane(game_display& disp, const gamemap* map, std::vector<unit>& units, TYPE type, bool on_left_side)
-                                    : gui::preview_pane(disp.video()), disp_(disp),
-				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
-				      map_(map), units_(&units), index_(0), left_(on_left_side),
-				      weapons_(type == SHOW_ALL)
-{
-	set_measurements(font::relative_size(200), font::relative_size(370));
-}
 
 handler_vector unit_preview_pane::handler_members()
 {
@@ -662,7 +653,7 @@ bool unit_preview_pane::left_side() const
 
 void unit_preview_pane::set_selection(int index)
 {
-	index = minimum<int>(int(units_->size()-1),index);
+	index = minimum<int>(int(size()-1),index);
 	if(index != index_ && index >= 0) {
 		index_ = index;
 		set_dirty();
@@ -674,11 +665,11 @@ void unit_preview_pane::set_selection(int index)
 
 void unit_preview_pane::draw_contents()
 {
-	if(index_ < 0 || index_ >= int(units_->size())) {
+	if(index_ < 0 || index_ >= int(size())) {
 		return;
 	}
 
-	unit& u = (*units_)[index_];
+	const details det = get_details();
 
 	const bool right_align = left_side();
 
@@ -690,7 +681,7 @@ void unit_preview_pane::draw_contents()
 	SDL_Rect clip_area = area;
 	const clip_rect_setter clipper(screen,clip_area);
 
-	surface unit_image = u.still_image();
+	surface unit_image = det.image;
 	if (!left_)
 		unit_image = image::reverse_image(unit_image);
 
@@ -712,9 +703,9 @@ void unit_preview_pane::draw_contents()
 
 	SDL_Rect description_rect = {image_rect.x,image_rect.y+image_rect.h+details_button_.location().h,0,0};
 
-	if(u.description().empty() == false) {
+	if(det.description.empty() == false) {
 		std::stringstream desc;
-		desc << font::NORMAL_TEXT << u.description();
+		desc << font::NORMAL_TEXT << det.description;
 		const std::string description = desc.str();
 		description_rect = font::text_area(description, font::SIZE_NORMAL);
 		description_rect = font::draw_text(&video(), area, 
@@ -724,62 +715,52 @@ void unit_preview_pane::draw_contents()
 							image_rect.y + image_rect.h + details_button_.location().h);
 	}
 
-//%%
-	std::stringstream details;
-	details << u.language_name()
-			<< "\n" 
-			<< font::BOLD_TEXT  
-			<< _("level") << " "
-			<< u.level() << "\n"
-			<< unit_type::alignment_description(u.alignment()) << "\n"
-			<< u.traits_description() << " \n";
+	std::stringstream text;
+	text << det.name << "\n"
+		<< font::BOLD_TEXT << _("level") << " " << det.level << "\n"
+		<< det.alignment << "\n"
+		<< det.traits << "\n";
 
-	const std::vector<std::string>& abilities = u.unit_ability_tooltips();
-	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
-		details << gettext(a->c_str());
-		if(a+2 != abilities.end()) {
-			details << ", ";
+	for(std::vector<std::string>::const_iterator a = det.abilities.begin(); a != det.abilities.end(); a++) {
+		if(a != det.abilities.begin()) {
+			text << ", ";
 		}
-		++a;
+		text << gettext(a->c_str());
 	}
-
-	details << " \n";
+	text << "\n";
 
 	// Use same coloring as in generate_report.cpp:
-	details << font::color2markup(u.hp_color()) << _("HP: ")
-			<< u.hitpoints() << "/" << u.max_hitpoints() << "\n";
+	text << det.hp_color << _("HP: ")
+		<< det.hitpoints << "/" << det.max_hitpoints << "\n";
 
-	details << font::color2markup(u.xp_color()) << _("XP: ")  
-			<< u.experience() << "/" << u.max_experience();
+	text << det.xp_color << _("XP: ")
+		<< det.experience << "/" << det.max_experience << "\n";
 
 	if(weapons_) {
-		details << "\n"
-				<< _("Moves: ") << u.movement_left() << "/"
-				<< u.total_movement()
-				<< "\n";
-//%%
-		std::vector<attack_type>& attacks = u.attacks();
-		for(std::vector<attack_type>::iterator at_it = attacks.begin();
-		    at_it != attacks.end(); ++at_it) {
-			at_it->set_specials_context(gamemap::location(),u);
+		text << _("Moves: ")
+			<< det.movement_left << "/" << det.total_movement << "\n";
 
-			details << "\n" 
-					<< "<245,230,193>" 		// see generate_report() in generate_report.cpp
-					<< at_it->name() 
-			        << " (" << gettext(at_it->type().c_str()) << ")\n";
+		for(std::vector<attack_type>::const_iterator at_it = det.attacks.begin();
+		    at_it != det.attacks.end(); ++at_it) {
+			// specials_context seems not needed here
+			//at_it->set_specials_context(gamemap::location(),u);
 
-			details << "<166,146,117>  "
-					<< at_it->weapon_specials(true);
-			details << "\n"
-					<< "<166,146,117>  "
-			        << at_it->damage() << "-" << at_it->num_attacks() << " -- "
-			        << _(at_it->range().c_str());
+			// see generate_report() in generate_report.cpp
+			text << "<245,230,193>" << at_it->name()
+				<< " (" << gettext(at_it->type().c_str()) << ")\n";
+
+			std::string special = at_it->weapon_specials(true);
+			if (!special.empty()) {
+				text << "<166,146,117>  " << special << "\n";
+			}
+			text << "<166,146,117>  " << at_it->damage() << "-" << at_it->num_attacks()
+				<< " -- " << _(at_it->range().c_str()) << "\n";
 		}
 	}
 
-	const std::string text = details.str();
-
-	const std::vector<std::string> lines = utils::split(text, '\n');
+	// we don't remove empty lines, so all fields stay at the same place
+	const std::vector<std::string> lines = utils::split(text.str(), '\n',
+		utils::STRIP_SPACES & !utils::REMOVE_EMPTY);
 
 	SDL_Rect cur_area = area;
 
@@ -801,15 +782,134 @@ void unit_preview_pane::draw_contents()
 
 void unit_preview_pane::process_event()
 {
-	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(units_->size())) {
-
-		show_unit_description(disp_, (*units_)[index_]);
+	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
+		help::show_help(disp_, get_profile());
 	}
 }
 
+units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
+					: unit_preview_pane(disp, map, type, on_left_side),
+					  units_(&unit_store_)
+{
+	unit_store_.push_back(u);
+}
+
+units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map, std::vector<unit>& units, TYPE type, bool on_left_side)
+					: unit_preview_pane(disp, map, type, on_left_side),
+					  units_(&units)
+{}
+
+size_t units_list_preview_pane::size() const
+{
+	return (units_!=NULL) ? units_->size() : 0;
+}
+
+//unit_preview_pane::
+const unit_preview_pane::details units_list_preview_pane::get_details() const
+{
+	unit& u = (*units_)[index_];
+	details det;
+
+	det.image = u.still_image();
+
+	det.description = u.description();
+	det.name = u.language_name();
+	det.level = u.level();
+	det.alignment = unit_type::alignment_description(u.alignment());
+	det.traits = u.traits_description();
+
+	//we filter to remove the tooltips (increment by 2)
+	const std::vector<std::string>& abilities = u.unit_ability_tooltips();
+	for(std::vector<std::string>::const_iterator a = abilities.begin();
+		 a != abilities.end(); a+=2) {
+		det.abilities.push_back(*a);
+	}
+	
+	det.hitpoints = u.hitpoints();
+	det.max_hitpoints = u.max_hitpoints();
+	det.hp_color = font::color2markup(u.hp_color());
+	
+	det.experience = u.experience();
+	det.max_experience = u.max_experience();
+	det.xp_color = font::color2markup(u.xp_color());
+
+	det.movement_left = u.movement_left();
+	det.total_movement= u.total_movement();
+
+	det.attacks = u.attacks();
+	return det;
+}
+
+const std::string units_list_preview_pane::get_profile() const
+{
+	unit& u = (*units_)[index_];
+	return "unit_" + u.id();
+}
+
+unit_types_preview_pane::unit_types_preview_pane(game_display& disp, const gamemap* map, std::vector<const unit_type*>& unit_types, int side, TYPE type, bool on_left_side)
+					: unit_preview_pane(disp, map, type, on_left_side),
+					  unit_types_(&unit_types), side_(side)
+{}
+
+size_t unit_types_preview_pane::size() const
+{
+	return (unit_types_!=NULL) ? unit_types_->size() : 0;
+}
+
+const unit_types_preview_pane::details unit_types_preview_pane::get_details() const
+{
+	const unit_type* t = (*unit_types_)[index_];
+	details det;
+
+	if (t==NULL)
+		return det;
+
+	std::string mod = "~RC(magenta>" + team::get_side_colour_index(side_) + ")";
+	det.image = image::get_image(t->image()+mod);
+
+	det.description = "";
+	det.name = t->language_name();
+	det.level = t->level();
+	det.alignment = unit_type::alignment_description(t->alignment());
+	det.traits = ""; //undead ?
+	det.abilities = t->abilities();
+	
+	det.hitpoints = t->hitpoints();
+	det.max_hitpoints = t->hitpoints();
+	det.hp_color = "<33,225,0>"; // from unit::hp_color()
+
+	det.experience = 0;
+	det.max_experience = t->experience_needed();
+	det.xp_color = "<0,160,225>"; // from unit::xp_color()
+
+	// Check if AMLA color is needed
+	// FIXME: not sure if it's fully accurate (but not very important for unit_type)
+	// xp_color also need a simpler function for doing this
+	const config::child_list& advances = t->modification_advancements();
+	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
+		if (!utils::string_bool((**i)["strict_amla"]) || !t->can_advance()) {
+			det.xp_color = "<100,0,150>"; // from unit::xp_color()
+			break;
+		}
+	}
+
+	det.movement_left = 0;
+	det.total_movement= t->movement();
+
+	det.attacks = t->attacks();
+	return det;
+}
+
+const std::string unit_types_preview_pane::get_profile() const
+{
+	const unit_type* t = (*unit_types_)[index_];
+	return "unit_" + t->id();
+}
+
+
 void show_unit_description(game_display &disp, const unit& u)
 {
-	help::show_help(disp,"unit_" + u.id());
+	help::show_help(disp, "unit_" + u.id());
 }
 
 
