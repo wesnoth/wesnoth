@@ -653,6 +653,12 @@ void theme::set_object_location(theme::object& element, std::string rect_str, st
 }
 
 void theme::modify(const config* cfg){
+	std::map<std::string,std::string> title_stash;	
+	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+	  if (!m->title().empty())
+			title_stash[m->get_id()] = m->title();
+	}
+
 	{
 		// changes to existing theme objects
 		const config::child_list& c = cfg->get_children("change");
@@ -678,6 +684,10 @@ void theme::modify(const config* cfg){
 		for(config::child_list::const_iterator j = c.begin(); j != c.end(); ++j) {
 			remove_object((**j)["id"]);
 		}
+	}
+	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+		if (!title_stash[m->get_id()].empty())
+			m->set_title(title_stash[m->get_id()]); 
 	}
 }
 
