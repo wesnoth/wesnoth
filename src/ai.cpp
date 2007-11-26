@@ -1588,6 +1588,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 
 	int sum = 0, weight_sum = 0;
 
+	// calculation of the average damage taken
 	bool steadfast = a.has_ability_by_id("steadfast");
 	bool living = !a.not_living();
 	const std::vector<attack_type>& attacks = b.attacks();
@@ -1601,22 +1602,21 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		// Do not look for filters or values, simply assume 70% if CTH is customized.
 		int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
 		int weight = i->damage() * i->num_attacks();
-		sum += cth * resistance * weight;
-		weight_sum += weight;
 		// if cth == 0 the division will do 0/0 so don't execute this part
 		if (living && cth != 0 && i->get_special_bool("poison", true)) {
 			// Compute the probability of not poisoning the unit.
-			int prob = 10000; // directly with the same unit as "cth * resistance"
+			int prob = 100;
 			for (int j = 0; j < i->num_attacks(); ++j)
-				prob = prob * (100 - cth) / 100;
+				prob = prob * (100 - cth);
 			// Assume poison works one turn.
-			int poison_damage = game_config::poison_amount * (10000 - prob);
-			// As poison works irrespective of the resistance, its relative damage
-			// (and hence weight) is "poison_damage / (cth * resistance)".
-			sum += poison_damage;
-			weight_sum += poison_damage / (cth * resistance);
+			weight += game_config::poison_amount * (100 - prob) / 100;
 		}
+		sum += cth * resistance * weight * weight; // average damage * weight
+		weight_sum += weight;
 	}
+
+	// normalize by HP
+	sum /= maximum<int>(1,minimum<int>(a.hitpoints(),1000)); // avoid values really out of range
 
 	// Catch division by zero here if the attacking unit
 	// has zero attacks and/or zero damage.
@@ -1687,7 +1687,7 @@ void ai::analyze_potential_recruit_combat()
 	}
 
 	// Recommend not to use units of a certain usage type
-	// if they have a score more than 1000 below
+	// if they have a score more than 600 below
 	// the best unit of that usage type.
 	for(i = recruits.begin(); i != recruits.end(); ++i) {
 		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
@@ -1695,7 +1695,7 @@ void ai::analyze_potential_recruit_combat()
 			continue;
 		}
 
-		if(unit_combat_scores_[*i] + 1000 < best_usage[info->second.usage()]) {
+		if(unit_combat_scores_[*i] + 600 < best_usage[info->second.usage()]) {
 			LOG_AI << "recommending not to use '" << *i << "' because of poor combat performance "
 				      << unit_combat_scores_[*i] << "/" << best_usage[info->second.usage()] << "\n";
 			not_recommended_units_.insert(*i);
