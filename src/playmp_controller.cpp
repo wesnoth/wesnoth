@@ -221,7 +221,7 @@ void playmp_controller::play_human_turn(){
 
 void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 {
-	LOG_NG << "beginning end-of-scenario linger";
+	LOG_NG << "beginning end-of-scenario linger\n";
 	browse_ = true;
 	linger_ = true;
 	// If we need to set the status depending on the completion state
@@ -284,7 +284,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);
 
-	LOG_NG << "ending end-of-scenario linger";
+	LOG_NG << "ending end-of-scenario linger\n";
 }
 
 void playmp_controller::after_human_turn(){

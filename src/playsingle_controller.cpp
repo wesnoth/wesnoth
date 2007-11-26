@@ -598,7 +598,7 @@ void playsingle_controller::play_human_turn(){
 
 void playsingle_controller::linger(upload_log& log)
 {
-	LOG_NG << "beginning end-of-scenario linger";
+	LOG_NG << "beginning end-of-scenario linger\n";
 	browse_ = true;
 	linger_ = true;
 
@@ -641,7 +641,7 @@ void playsingle_controller::linger(upload_log& log)
 	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);
 
-	LOG_NG << "ending end-of-scenario linger";
+	LOG_NG << "ending end-of-scenario linger\n";
 }
 
 void playsingle_controller::after_human_turn(){
