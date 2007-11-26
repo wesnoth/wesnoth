@@ -382,20 +382,18 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			if (gamestate_.players.size() > 0 &&
 					 (has_next_scenario ||
 					 gamestate_.campaign_type == "test")) {
+				const int finishing_bonus_per_turn =
+						 map_.villages().size() * game_config::village_income +
+						 game_config::base_income;
+				const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
+				const int finishing_bonus = end_level.gold_bonus ?
+						 (finishing_bonus_per_turn * turns_left) : 0;
+
 				for(i=teams_.begin(); i!=teams_.end(); ++i) {
 					if (!i->is_persistent())
 						continue;
 
 					player_info *player=gamestate_.get_player(i->save_id());
-
-					const int remaining_gold = i->gold();
-					const int finishing_bonus_per_turn =
-							 map_.villages().size() * game_config::village_income +
-							 game_config::base_income;
-					const int turns_left = maximum<int>(0,status_.number_of_turns() - status_.turn());
-					const int finishing_bonus = end_level.gold_bonus ?
-							 (finishing_bonus_per_turn * turns_left) : 0;
-
 
 					if (player) {
 						player->gold = ((i->gold() + finishing_bonus) 
@@ -410,7 +408,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 							report << font::BOLD_TEXT << i->current_player() << "\n";
 						}
 
-						report_victory(report, end_level, player->gold, remaining_gold, finishing_bonus_per_turn, turns_left, finishing_bonus);
+						report_victory(report, end_level, player->gold, i->gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
 					}
 				}
 			}
