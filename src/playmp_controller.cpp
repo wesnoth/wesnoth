@@ -249,6 +249,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	}
 	gui_->get_theme().refresh_title("button-endturn", _("End scenario"));
 	gui_->invalidate_theme();
+	gui_->redraw_everything();
 
 	// switch to observer viewpoint
 	gui_->set_team(0,true);
@@ -280,6 +281,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
 	gui_->invalidate_theme();
+	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);
 
 	LOG_NG << "ending end-of-scenario linger";

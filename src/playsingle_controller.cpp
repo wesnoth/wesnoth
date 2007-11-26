@@ -601,8 +601,9 @@ void playsingle_controller::linger(upload_log& log)
 	LOG_NG << "beginning end-of-scenario linger";
 	browse_ = true;
 	linger_ = true;
+
 	// If we need to set the status depending on the completion state
-	// we're needed here.
+	// the key to it is here.
 	gui_->set_game_mode(game_display::LINGER_SP);
 
 	// this is actually for after linger mode is over -- we don't
@@ -613,6 +614,7 @@ void playsingle_controller::linger(upload_log& log)
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title2"));
 	gui_->invalidate_theme();
+	gui_->redraw_everything();
 
 	// End all unit moves
 	for (unit_map::iterator u = units_.begin(); u != units_.end(); u++) {
@@ -636,6 +638,7 @@ void playsingle_controller::linger(upload_log& log)
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2(std::string("button-endturn"), std::string("title"));
 	gui_->invalidate_theme();
+	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);
 
 	LOG_NG << "ending end-of-scenario linger";
