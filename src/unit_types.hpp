@@ -152,23 +152,23 @@ public:
 
 	~unit_type();
 
-    // adds an additional advancement path to a unit type
-    // this is used to implement the [advancefrom] tag
-    void add_advancement(const unit_type &advance_to,int experience);
+	//! Adds an additional advancement path to a unit type.
+	//! This is used to implement the [advancefrom] tag.
+	void add_advancement(const unit_type &advance_to,int experience);
 
-	// Adds units that this unit advances from, for help file purposes.
+	//! Adds units that this unit advances from, for help file purposes.
 	void add_advancesfrom(const unit_type &advance_from);
 
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
-    //info on the type of unit that the unit reanimates as
-    const std::string& undead_variation() const { return cfg_["undead_variation"]; }
+	//! Info on the type of unit that the unit reanimates as.
+	const std::string& undead_variation() const { return cfg_["undead_variation"]; }
 
 	unsigned int num_traits() const { return (cfg_["num_traits"].size() ? atoi(cfg_["num_traits"].c_str()) : race_->num_traits()); }
 
 	std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }
 
-	//the name of the unit in the current language setting
+	//! The name of the unit in the current language setting.
 	const t_string& language_name() const { return cfg_["name"]; }
 
 	const std::string& id() const;
@@ -181,7 +181,7 @@ public:
 	const std::string& image_profile() const;
 	const t_string& unit_description() const;
 
-    const std::string& flag_rgb() const { return flag_rgb_; }
+	const std::string& flag_rgb() const { return flag_rgb_; }
 
 	int hitpoints() const { return atoi(cfg_["hitpoints"].c_str()); }
 	std::vector<attack_type> attacks() const;
