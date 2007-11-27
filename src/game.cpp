@@ -412,9 +412,12 @@ bool game_controller::init_config()
 	//everything.
 	old_defines_map_.clear();
 
-	reset_game_cfg();
+	//reset_game_cfg();
 
+	game_config_.clear();
+	read_game_cfg(defines_map_, game_config_, use_caching_);
 	game_config::load_config(game_config_.child("game_config"));
+	old_defines_map_ = defines_map_;
 
 	hotkey::load_hotkeys(game_config_);
 	paths_manager_.set_paths(game_config_);
@@ -2035,9 +2038,18 @@ static int play_game(int argc, char** argv)
 	loadscreen::global_loadscreen = NULL;
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
-	for(;;) {
-		//make sure the game config is always set to how it should be at the title screen
-		game.reset_game_cfg();
+	
+	//YogiHH:
+	//init_config already processed the configs, so we don't need to do it for the
+	//first loop pass. If for any reason calling reset_game_cfg is of any use then
+	//take back the comments.
+	for(int first_time = true;;first_time = false){
+		if (!first_time){
+			//YogiHH: Is there any sense in resetting a game config that isn't used at all
+			//        for the title screen (at least i can't see where)
+			//make sure the game config is always set to how it should be at the title screen
+			//game.reset_game_cfg();
+		}
 
 		// reset the TC, since a game can modify it, and it may be used
 		// by images in add-ons or campaigns dialogs
