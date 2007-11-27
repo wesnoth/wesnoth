@@ -463,13 +463,15 @@ bool game_controller::play_test()
 	state_.campaign_type = "test";
 	state_.scenario = "test";
 
+	refresh_game_cfg();
+
 	try {
 		upload_log nolog(false);
 		::play_game(disp(),state_,game_config_,units_data_,nolog);
 	} catch(game::load_game_exception& e) {
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
-
+		test_mode_ = false;
 		return true;
 	}
 
