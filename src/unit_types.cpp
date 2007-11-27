@@ -608,7 +608,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	experience_needed_=lexical_cast_default<int>(cfg_["experience"],500);
 
-	unit_animation::initialize_anims(animations_,cfg);
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
 	// Deprecation messages, only seen when unit is parsed for the first time.
@@ -692,6 +691,12 @@ const t_string& unit_type::unit_description() const
 		return desc;
 }
 
+const std::vector<unit_animation>& unit_type::animations() const {
+	if (animations_.empty()) {
+		unit_animation::initialize_anims(animations_,cfg_);
+	}
+	return animations_;
+}
 
 std::vector<attack_type> unit_type::attacks() const
 {

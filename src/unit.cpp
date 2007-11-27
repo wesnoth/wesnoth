@@ -514,7 +514,7 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 
 	max_attacks_ = lexical_cast_default<int>(t->cfg_["attacks"],1);
 
-	animations_ = t->animations_;
+	animations_ = t->animations();
 
 	flag_rgb_ = t->flag_rgb();
 
@@ -1327,7 +1327,7 @@ void unit::read(const config& cfg, bool use_traits)
 
 	if(!type_set) {
 		if(ut) {
-			animations_ = ut->animations_;
+			animations_ = ut->animations();
 			cfg_.clear_children("animation");
 		} else {
 			unit_animation::initialize_anims(animations_,cfg_);

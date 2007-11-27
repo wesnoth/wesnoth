@@ -181,6 +181,8 @@ public:
 	const std::string& image_profile() const;
 	const t_string& unit_description() const;
 
+	const std::vector<unit_animation>& animations() const;
+
 	const std::string& flag_rgb() const { return flag_rgb_; }
 
 	int hitpoints() const { return atoi(cfg_["hitpoints"].c_str()); }
@@ -267,8 +269,8 @@ private:
 
 	std::vector<unit_race::GENDER> genders_;
 
-	// animations
-	std::vector<unit_animation> animations_;
+	// animations are loaded only after the first animations() call
+	mutable std::vector<unit_animation> animations_;
 
 	std::string flag_rgb_;
 };
