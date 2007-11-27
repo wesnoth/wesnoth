@@ -20,10 +20,9 @@
 #
 # Usage: Select the amount of data to be generated using the flags on the Options section.
 #   Enter the appropriate paths for the Wesnoth directory, and the folders that will contain the html files
-#   and the reports.  Use relative paths, that doesn't contain spaces, it wouldn't work if a space is found.
+#   and the reports.  Use relative paths, that don't contain spaces, it wouldn't work if a space is found.
 #   Run the script, no parameters needed.
 #
-# Version: 1.3 (18 Oct 2007)
 # Author: Miguel Zapico (elricz.m@gmail.com)
 
 # -- Options --
@@ -816,7 +815,19 @@ sub TranslateUnits {
 				$dict{$newkey} = $dict{$key};
 			}
 		}
-		
+		# Add units information
+		$MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth-units.mo";
+		%dict_extra = read_mo($MOfile);
+		foreach $key (keys %dict_extra) {
+			$dict{$key} = $dict_extra{$key};
+		}
+		# Add factions information
+		$MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth-multiplayer.mo";
+		%dict_extra = read_mo($MOfile);
+		foreach $key (keys %dict_extra) {
+			$dict{$key} = $dict_extra{$key};
+		}
+				
 		# Process only the html files from the HTML folder
 		my @html_units = glob("$html_dir/*.html");
 		foreach $unit (@html_units) {
