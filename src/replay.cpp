@@ -41,8 +41,8 @@
 #include <set>
 #include <sstream>
 
-#define LOG_NW LOG_STREAM(info, network)
-#define ERR_NW LOG_STREAM(err, network)
+#define LOG_REPLAY LOG_STREAM(info, replay)
+#define ERR_REPLAY LOG_STREAM(err, replay)
 
 std::string replay::last_replay_error;
 
@@ -51,7 +51,7 @@ std::string replay::last_replay_error;
 static void verify(const unit_map& units, const config& cfg)
 	{
 		std::stringstream errbuf;
-		LOG_NW << "verifying unit structure...\n";
+		LOG_REPLAY << "verifying unit structure...\n";
 
 		const size_t nunits = atoi(cfg["num_units"].c_str());
 		if(nunits != units.size()) {
@@ -113,7 +113,7 @@ static void verify(const unit_map& units, const config& cfg)
 			}
 		}
 
-		LOG_NW << "verification passed\n";
+		LOG_REPLAY << "verification passed\n";
 	}
 
 namespace {
@@ -150,7 +150,7 @@ replay::replay(const config& cfg) : cfg_(cfg), pos_(0), current_(NULL), skip_(0)
 
 void replay::throw_error(const std::string& msg)
 {
-	ERR_NW << msg;
+	ERR_REPLAY << msg;
 	last_replay_error = msg;
 	if (!game_config::ignore_replay_errors) throw replay::error(msg);
 }
@@ -461,8 +461,11 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 void replay::undo()
 {
 	config::child_itors cmd = cfg_.child_range("command");
-	std::vector<config::child_iterator> async_cmds; // Remember cmds not yet synced and skip over them
-	while(cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no" || (**(cmd.second-1))["async"] == "yes") {
+	std::vector<config::child_iterator> async_cmds;
+	// Remember cmds not yet synced and skip over them
+	while(cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no"
+		|| (**(cmd.second-1))["async"] == "yes")
+	{
 		if ((**(cmd.second-1))["async"] == "yes")
 			async_cmds.push_back(cmd.second-1);
 		--cmd.second;
@@ -475,9 +478,12 @@ void replay::undo()
 		{
 			// A unit's move is being undone.
 			// Repair unsynced cmds whose locations depend on that unit's location.
-			gamemap::location dst(*(child->child("destination")), game_events::get_state_of_game());
-			gamemap::location src(*(child->child("source")), game_events::get_state_of_game());
-			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
+			gamemap::location dst(*(child->child("destination")),
+				game_events::get_state_of_game());
+			gamemap::location src(*(child->child("source")),
+				game_events::get_state_of_game());
+			for (std::vector<config::child_iterator>::iterator async_cmd =
+				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
 				if ((async_child = (***async_cmd).child("rename")) != NULL)
@@ -490,12 +496,14 @@ void replay::undo()
 				}
 			}
 		}
-		else if ((child = cmd_second.child("recruit")) != NULL || (child = cmd_second.child("recall")) != NULL)
+		else if ((child = cmd_second.child("recruit")) != NULL
+			|| (child = cmd_second.child("recall")) != NULL)
 		{
 			// A unit is being un-recruited or un-recalled.
 			// Remove unsynced commands that would act on that unit.
 			gamemap::location src(*child, game_events::get_state_of_game());
-			for (std::vector<config::child_iterator>::iterator async_cmd = async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
+			for (std::vector<config::child_iterator>::iterator async_cmd =
+				 async_cmds.begin(); async_cmd != async_cmds.end(); async_cmd++)
 			{
 				config* async_child;
 				if ((async_child = (***async_cmd).child("rename")) != NULL)
@@ -545,7 +553,7 @@ config* replay::get_next_action()
 	if(pos_ >= commands().size())
 		return NULL;
 
-	LOG_NW << "up to replay action " << pos_ << "/" << commands().size() << "\n";
+	LOG_REPLAY << "up to replay action " << pos_ << "/" << commands().size() << "\n";
 
 	current_ = commands()[pos_];
 	set_random(current_);
@@ -835,14 +843,14 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
 				replay::throw_error(errbuf.str());
 			}
-			LOG_NW << "recruit: team=" << team_num << " '" << u_type->second.id() << "' at (" << loc
+			LOG_REPLAY << "recruit: team=" << team_num << " '" << u_type->second.id() << "' at (" << loc
 			       << ") cost=" << u_type->second.cost() << " from gold=" << current_team.gold() << ' ';
 
 
 			statistics::recruit_unit(new_unit);
 
 			current_team.spend_gold(u_type->second.cost());
-			LOG_NW << "-> " << (current_team.gold()) << "\n";
+			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
 			fix_shroud = !replayer.is_skipping();
 			check_checksums(disp,units,*cfg);
 }
@@ -1025,7 +1033,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			int def_weapon_num = -1;
 			if (def_weapon.empty()) {
 				// Let's not gratuitously destroy backwards compat.
-				ERR_NW << "Old data, having to guess weapon\n";
+				ERR_REPLAY << "Old data, having to guess weapon\n";
 			} else {
 				def_weapon_num = atoi(def_weapon.c_str());
 			}
