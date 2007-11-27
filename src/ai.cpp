@@ -236,20 +236,24 @@ bool ai::recruit_usage(const std::string& usage)
 	LOG_AI << "recruiting " << usage << "\n";
 
 	std::vector<std::string> options;
-
+	bool found = false;
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
 	const std::set<std::string>& recruits = current_team().recruits();
 	for(std::map<std::string,unit_type>::const_iterator i =
-	    gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
-
+	    gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i)
+	{
 		const std::string& name = i->second.id();
 
-		if(i->second.usage() == usage && recruits.count(name)
-		   && current_team().gold() - i->second.cost() > min_gold
-		   && not_recommended_units_.count(name) == 0) {
-			LOG_AI << "recommending '" << name << "'\n";
-			options.push_back(name);
+		if (i->second.usage() == usage) {
+			found = true;
+			if(recruits.count(name)
+				&& current_team().gold() - i->second.cost() > min_gold
+				&& not_recommended_units_.count(name) == 0)
+			{
+				LOG_AI << "recommending '" << name << "'\n";
+				options.push_back(name);
+			}
 		}
 	}
 
@@ -258,9 +262,12 @@ bool ai::recruit_usage(const std::string& usage)
 		const int option = rand()%options.size();
 		return recruit(options[option]);
 	}
-
-	LOG_AI << "no available units to recruit that come under the price\n";
-
+	if (found) {
+		LOG_AI << "No available units to recruit that come under the price.\n";
+	} else {
+		WRN_AI << "Trying to recruit a: " << usage
+			<< " but no unit of that type (usage=) is available.\n";
+	}
 	return false;
 }
 
