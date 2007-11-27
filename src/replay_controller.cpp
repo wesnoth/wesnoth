@@ -36,7 +36,10 @@
 #include <iostream>
 #include <iterator>
 
-#define LOG_NG LOG_STREAM(info, engine)
+#define DBG_NG LOG_STREAM(debug, engine)
+#define DBG_REPLAY LOG_STREAM(debug, replay)
+#define LOG_REPLAY LOG_STREAM(info, replay)
+#define ERR_REPLAY LOG_STREAM(err, replay)
 
 LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_config,
 		const config* level, CVideo& video, game_state& state_of_game)
@@ -44,9 +47,9 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 	try{
 		const int ticks = SDL_GetTicks();
 		const int num_turns = atoi((*level)["turns"].c_str());
-		LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
+		DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 		replay_controller replaycontroller(*level, gameinfo, state_of_game, ticks, num_turns, game_config, video);
-		LOG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";
+		DBG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";
 		const events::command_disabler disable_commands;
 
 		//replay event-loop
@@ -55,7 +58,8 @@ LEVEL_RESULT play_replay_level(const game_data& gameinfo, const config& game_con
 		}
 	}
 	catch(end_level_exception&){
-		LOG_NG << "play_replay_level: end_level_exception\n";
+		DBG_NG << "play_replay_level: end_level_exception\n";
+	} catch (replay::error&) {
 	}
 
 	return LEVEL_CONTINUE;
@@ -80,19 +84,35 @@ replay_controller::~replay_controller(){
 }
 
 void replay_controller::init(){
-	LOG_NG << "in replay_controller::init()...\n";
+	DBG_REPLAY << "in replay_controller::init()...\n";
 
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
 	init_replay_display();
 
-	fire_prestart(true);
+	try {
+		fire_prestart(true);
+	} catch (replay::error&) {
+		if(gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
+			" Continue playing?"),gui::OK_CANCEL).show())
+		{
+			throw;
+		}
+	}
 	init_gui();
 	statistics::fresh_stats();
 
-	LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
+	DBG_REPLAY << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
-	fire_start(!loading_game_);
+	try {
+		fire_start(!loading_game_);
+	} catch (replay::error&) {
+		if(gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
+			" Continue playing?"),gui::OK_CANCEL).show())
+		{
+			throw;
+		}
+	}
 	update_gui();
 
 	units_start_ = units_;
@@ -100,7 +120,7 @@ void replay_controller::init(){
 }
 
 void replay_controller::init_gui(){
-	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
+	DBG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks_) << "\n";
 	play_controller::init_gui();
 
 	if (show_team_)
@@ -114,7 +134,7 @@ void replay_controller::init_gui(){
 }
 
 void replay_controller::init_replay_display(){
-	LOG_NG << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+	DBG_REPLAY << "initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 	const config* theme_cfg = get_theme(game_config_, level_["theme"]);
 	if (theme_cfg) {
 		const config* replay_theme_cfg = theme_cfg->child("resolution")->child("replay");
@@ -123,7 +143,7 @@ void replay_controller::init_replay_display(){
 		gui_->invalidate_theme();
 	}
 
-	LOG_NG << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
+	DBG_REPLAY << "done initializing replay-display... " << (SDL_GetTicks() - ticks_) << "\n";
 }
 
 void replay_controller::reset_replay(){
@@ -225,7 +245,7 @@ void replay_controller::play_replay(){
 	try{
 		is_playing_ = true;
 
-		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
+		DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(; !recorder.at_end() && is_playing_; first_player_ = 1
 			) {
 			try{
@@ -249,7 +269,7 @@ void replay_controller::play_turn(){
 		return;
 	}
 
-	LOG_NG << "turn: " << current_turn_ << "\n";
+	LOG_REPLAY << "turn: " << current_turn_ << "\n";
 
 	gui_->new_turn();
 	gui_->invalidate_game_status();
