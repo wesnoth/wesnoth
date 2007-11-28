@@ -2,7 +2,7 @@ import socket, struct, glob, sys, shutil, threading, os
 import wesnoth.wmldata as wmldata
 
 class CampaignClient:
-    # First port listed will bw used as default.
+    # First port listed will be used as default.
     portmap = (("15003", "1.3.x"), ("15004", "1.2.x"))
 
     def __init__(self, address = None):
@@ -91,8 +91,8 @@ class CampaignClient:
 
     def decode_WML(self, data):
         """
-        Given a block of binary data, decode it as binary WML and return it
-        as a WML object.
+        Given a block of binary data, decode it as binary WML 
+        and return it as a WML object.
 
         The binary WML format is a byte stream. The format is:
         0 3 <name> means a new element <name> is opened
@@ -164,8 +164,8 @@ class CampaignClient:
 
     def encode_WML(self, data):
         """
-        Given a WML object, encode it into binary WML and return it as
-        a python string.
+        Given a WML object, encode it into binary WML 
+        and return it as a python string.
         """
         packet = str("")
 
@@ -321,7 +321,7 @@ class CampaignClient:
                 data.insert(sub)
             return data
 
-	# Only used if it's an old-style campaign directory
+        # Only used if it's an old-style campaign directory
         # with an external config.
         if os.path.exists(cfgfile):
             data.insert(put_file(name + ".cfg", file(cfgfile)))
@@ -337,8 +337,8 @@ class CampaignClient:
 
     def get_campaign_async(self, name, raw = False):
         """
-        This is like get_campaign, but returns immediately, doing server
-        communications in a background thread.
+        This is like get_campaign, but returns immediately, 
+        doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
             def run(self):
@@ -364,8 +364,8 @@ class CampaignClient:
 
     def put_campaign_async(self, *args):
         """
-        This is like put_campaign, but returns immediately, doing server
-        communications in a background thread.
+        This is like put_campaign, but returns immediately, 
+        doing server communications in a background thread.
         """
         class MyThread(threading.Thread):
             def run(self):
@@ -389,9 +389,9 @@ class CampaignClient:
 
     def unpackdir(self, data, path, i = 0, verbose = False):
         """
-        Call this to unpack a campaign contained in a WML object to the
-        filesystem. The data parameter is the WML object, path is the path under
-        which it will be placed.
+        Call this to unpack a campaign contained in a WML object 
+        to the filesystem. The data parameter is the WML object, 
+        path is the path under which it will be placed.
         """
         try:
             os.mkdir(path)
@@ -413,3 +413,4 @@ class CampaignClient:
                 print i * " " + name
             self.unpackdir(dir, path + "/" + name, i + 2, verbose)
 
+# vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
