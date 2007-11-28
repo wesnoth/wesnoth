@@ -1199,8 +1199,8 @@ void server::process_data_game(const network::connection sock, const config& dat
 		return;
 	} else if (data.child("turn")) {
 		// Make a modifiable copy.
-		config data = data;
-		config* const turn = data.child("turn");
+		config mdata = data;
+		config* const turn = mdata.child("turn");
 		g->filter_commands(sock, *turn);
 
 		// Notify the game of the commands, and if it changes
@@ -1249,9 +1249,9 @@ void server::process_data_game(const network::connection sock, const config& dat
 		// just forward them on to the client that should receive them.
 		if (nprivate > 0 && npublic == 0 && nother == 0) {
 			if (team_name == game_config::observer_team_name) {
-				g->send_data_observers(data, sock);
+				g->send_data_observers(mdata, sock);
 			} else {
-				g->send_data_team(data, team_name, sock);
+				g->send_data_team(mdata, team_name, sock);
 			}
 			return;
 		}
@@ -1260,10 +1260,10 @@ void server::process_data_game(const network::connection sock, const config& dat
 		// then let them go through. It's exceedingly unlikely that
 		// this will happen anyway, and if it does, the client should
 		// respect not displaying the message.
-		g->send_data(data, sock);
+		g->send_data(mdata, sock);
 
 		if (g->started()) {
-			g->record_data(data);
+			g->record_data(mdata);
 		}
 		return;
 	}
