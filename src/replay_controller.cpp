@@ -252,11 +252,9 @@ void replay_controller::play_replay(){
 		is_playing_ = true;
 
 		DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-		for(; !recorder.at_end() && is_playing_; first_player_ = 1
-			) {
+		for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
 			try{
-			play_turn();
-			play_slice();
+				play_turn();
 			}
 			catch (replay::error&) //when user due to error want stop playing
 			{
@@ -285,6 +283,7 @@ void replay_controller::play_turn(){
 			(!recorder.at_end())){
 
 		play_side(player_number_ - 1, false);
+		play_slice();
 	}
 
 	player_number_ = 1;
@@ -305,7 +304,7 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 			DBG_REPLAY << "doing replay " << player_number_ << "\n";
 			try {
 				::do_replay(*gui_,map_,gameinfo_,units_,teams_,
-									  player_number_,status_,gamestate_);
+					player_number_,status_,gamestate_);
 			} catch(replay::error&) {
 				if(!continue_replay()) {
 					throw;

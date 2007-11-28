@@ -665,9 +665,8 @@ static void check_checksums(game_display& disp,const unit_map& units,const confi
 }
 
 bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo,
-               unit_map& units,
-	       std::vector<team>& teams, int team_num, const gamestatus& state,
-	       game_state& state_of_game, replay* obj)
+	unit_map& units, std::vector<team>& teams, int team_num,
+	const gamestatus& state, game_state& state_of_game, replay* obj)
 {
 	log_scope("do replay");
 

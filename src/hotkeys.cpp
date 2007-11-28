@@ -488,7 +488,7 @@ void basic_handler::handle_event(const SDL_Event& event)
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
 	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
-		std::cerr << "escape pressed..showing quit\n";
+		ERR_G << "escape pressed..showing quit\n";
 		const int res = gui::dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
 		if(res == 0) {
 			throw end_level_exception(QUIT);
@@ -808,7 +808,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		case HOTKEY_QUIT_GAME: {
 			if(disp.in_game()) {
-				std::cerr << "is in game -- showing quit message\n";
+				ERR_G << "is in game -- showing quit message\n";
 				const int res = gui::dialog(disp,_("Quit"),_("Do you really want to quit?"),gui::YES_NO).show();
 				if(res == 0) {
 					throw end_level_exception(QUIT);
@@ -818,7 +818,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		}
 		default:
-			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";
+			ERR_G << "command_executor: unknown command number " << command << ", ignoring.\n";
 			break;
 	}
 }

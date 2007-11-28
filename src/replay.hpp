@@ -145,9 +145,8 @@ extern replay recorder;
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
 bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo,
-               unit_map& units,
-	       std::vector<team>& teams, int team_num, const gamestatus& state,
-	       game_state& state_of_game, replay* obj=NULL);
+	unit_map& units, std::vector<team>& teams, int team_num,
+	const gamestatus& state, game_state& state_of_game, replay* obj=NULL);
 
 //an object which can be made to undo a recorded move
 //unless the transaction is confirmed
