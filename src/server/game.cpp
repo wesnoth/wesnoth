@@ -880,7 +880,7 @@ void game::reset_history() {
 	end_turn_ = 0;
 }
 
-void game::end_game() {
+void game::end_game(const config& games_and_users_list) {
 	const user_vector& users = all_game_users();
 	// Set the availability status for all quitting players.
 	for (user_vector::const_iterator user = users.begin();
@@ -896,6 +896,7 @@ void game::end_game() {
 
 	}
 	send_data(config("leave_game"));
+	send_data(games_and_users_list);
 	players_.clear();
 	observers_.clear();
 }

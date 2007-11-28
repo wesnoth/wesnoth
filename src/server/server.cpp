@@ -1297,9 +1297,8 @@ void server::delete_game(std::vector<game>::iterator game_it) {
 	}
 	// Put the players back in the lobby, and send
 	// them the games_and_users_list_ again.
-	game_it->send_data(games_and_users_list_);
 	lobby_.add_players(*game_it, true);
-	game_it->end_game();
+	game_it->end_game(games_and_users_list_);
 	games_.erase(game_it);
 }
 

@@ -76,7 +76,7 @@ public:
 
 	void start_game();
 	//! Make everyone leave the game and clean up.
-	void end_game();
+	void end_game(const config& games_and_users_list);
 
 	void update_side_data();
 	bool take_side(const network::connection player, const config& cfg = config());
