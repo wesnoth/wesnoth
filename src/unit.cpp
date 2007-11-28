@@ -1286,6 +1286,33 @@ void unit::read(const config& cfg, bool use_traits)
 		set_state("guardian","yes");
 	}
 	if(!type_set) {
+		if(ut) {
+			animations_ = ut->animations();
+		} else {
+			unit_animation::initialize_anims(animations_,cfg_,true);
+		}
+	} else {
+		//load default anims
+		unit_animation::initialize_anims(animations_,cfg_,true);
+	}
+	// Remove animations from private cfg, since they're not needed there now
+	cfg_.clear_children("animation");
+
+	cfg_.clear_children("defend");
+	cfg_.clear_children("teleport_anim");
+	cfg_.clear_children("extra_anim");
+	cfg_.clear_children("death");
+	cfg_.clear_children("movement_anim");
+	cfg_.clear_children("standing_anim");
+	cfg_.clear_children("healing_anim");
+	cfg_.clear_children("victory_anim");
+	cfg_.clear_children("idle_anim");
+	cfg_.clear_children("levelin_anim");
+	cfg_.clear_children("levelout_anim");
+	cfg_.clear_children("healed_anim");
+	cfg_.clear_children("poison_anim");
+
+	if(!type_set) {
 		backup_state();
 		if(utils::string_bool(cfg_["random_traits"], true)) {
 			generate_traits(!use_traits);
@@ -1325,31 +1352,6 @@ void unit::read(const config& cfg, bool use_traits)
 		cfg_["generate_description"] = "";
 	}
 
-	if(!type_set) {
-		if(ut) {
-			animations_ = ut->animations();
-			cfg_.clear_children("animation");
-		} else {
-			unit_animation::initialize_anims(animations_,cfg_);
-		}
-	} else {
-		// Remove animations from private cfg, since they're not needed there now
-		cfg_.clear_children("animation");
-
-		cfg_.clear_children("defend");
-		cfg_.clear_children("teleport_anim");
-		cfg_.clear_children("extra_anim");
-		cfg_.clear_children("death");
-		cfg_.clear_children("movement_anim");
-		cfg_.clear_children("standing_anim");
-		cfg_.clear_children("healing_anim");
-		cfg_.clear_children("victory_anim");
-		cfg_.clear_children("idle_anim");
-		cfg_.clear_children("levelin_anim");
-		cfg_.clear_children("levelout_anim");
-		cfg_.clear_children("healed_anim");
-		cfg_.clear_children("poison_anim");
-	}
 	game_events::add_events(cfg_.get_children("event"),id_);
 	cfg_.clear_children("event");
 	// Make the default upkeep "full"

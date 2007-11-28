@@ -34,7 +34,7 @@ class unit_animation
 	public:
 		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1};
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
-		static void initialize_anims( std::vector<unit_animation> & animations, const config & cfg);
+		static void initialize_anims( std::vector<unit_animation> & animations, const config & cfg,bool with_default = false);
 
 		int matches(const game_display &disp,const gamemap::location& loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int swing_num =0) const;
 
