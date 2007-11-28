@@ -136,7 +136,7 @@ private:
 
 	const unit_movement_type* parent_;
 
-	mutable config cfg_;
+	config cfg_;
 };
 
 typedef std::map<std::string,unit_movement_type> movement_type_map;

@@ -262,7 +262,7 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 
 const t_string& unit_movement_type::name() const
 {
-	const t_string& res = cfg_["name"];
+	const t_string& res = cfg_.get_attribute("name");
 	if(res == "" && parent_ != NULL)
 		return parent_->name();
 	else
