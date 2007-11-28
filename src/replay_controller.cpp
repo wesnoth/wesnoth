@@ -83,6 +83,11 @@ replay_controller::replay_controller(const config& level, const game_data& gamei
 replay_controller::~replay_controller(){
 }
 
+bool replay_controller::continue_replay() {
+	return !gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
+			" Continue playing?"),gui::OK_CANCEL).show();
+}
+
 void replay_controller::init(){
 	DBG_REPLAY << "in replay_controller::init()...\n";
 
@@ -93,9 +98,7 @@ void replay_controller::init(){
 	try {
 		fire_prestart(true);
 	} catch (replay::error&) {
-		if(gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
-			" Continue playing?"),gui::OK_CANCEL).show())
-		{
+		if(!continue_replay()) {
 			throw;
 		}
 	}
@@ -107,9 +110,7 @@ void replay_controller::init(){
 	try {
 		fire_start(!loading_game_);
 	} catch (replay::error&) {
-		if(gui::dialog(*gui_,"",_("The file you have tried to load is corrupt."
-			" Continue playing?"),gui::OK_CANCEL).show())
-		{
+		if(!continue_replay()) {
 			throw;
 		}
 	}
@@ -165,9 +166,14 @@ void replay_controller::reset_replay(){
 		events_manager_ = new game_events::manager(level_,*gui_,map_, *soundsources_manager_,
 								units_,teams_, gamestate_,status_,gameinfo_);
 	}
-	fire_prestart(true);
-	fire_start(!loading_game_);
-
+	try {
+		fire_prestart(true);
+		fire_start(!loading_game_);
+	} catch (replay::error&) {
+		if(!continue_replay()) {
+			throw;
+		}
+	}
 	gui_->new_turn();
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
@@ -296,7 +302,15 @@ void replay_controller::play_side(const unsigned int team_index, bool){
 		//if a side is dead, don't do their turn
 		if(!current_team().is_empty() && team_units(units_,player_number_) > 0) {
 
-			do_replay(true);
+			DBG_REPLAY << "doing replay " << player_number_ << "\n";
+			try {
+				::do_replay(*gui_,map_,gameinfo_,units_,teams_,
+									  player_number_,status_,gamestate_);
+			} catch(replay::error&) {
+				if(!continue_replay()) {
+					throw;
+				}
+			}
 
 			finish_side_turn();
 

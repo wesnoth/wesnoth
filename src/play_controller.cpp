@@ -390,24 +390,6 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	}
 }
 
-bool play_controller::do_replay(const bool replaying){
-	bool result = false;
-	if(replaying) {
-		LOG_NG << "doing replay " << player_number_ << "\n";
-		try {
-			result = ::do_replay(*gui_,map_,gameinfo_,units_,teams_,
-						          player_number_,status_,gamestate_);
-		} catch(replay::error&) {
-			if(gui::dialog(*gui_,"",_("The file you have tried to load is corrupt. Continue playing?"),gui::OK_CANCEL).show())
-				throw;
-
-			result = false;
-		}
-		LOG_NG << "result of replay: " << (result?"true":"false") << "\n";
-	}
-	return result;
-}
-
 void play_controller::finish_side_turn(){
 	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
 		if(uit->second.side() == player_number_)

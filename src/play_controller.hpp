@@ -93,7 +93,6 @@ protected:
 	virtual void init_gui();
 	virtual void init_side(const unsigned int team_index, bool is_replay = false);
 	void place_sides_in_preferred_locations(gamemap& map, const config::child_list& sides);
-	bool do_replay(const bool replaying);
 	virtual void finish_side_turn();
 	void finish_turn();
 	bool clear_shroud();
