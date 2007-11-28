@@ -37,11 +37,11 @@ std::vector<std::string> empty_string_vector;
 namespace mp {
 	gamebrowser::gamebrowser(CVideo& video, const config* map_hashes) :
 	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
-	gold_icon_locator_("misc/gold.png"),
-	xp_icon_locator_("misc/units.png"),
+	gold_icon_locator_("themes/gold.png"),
+	xp_icon_locator_("themes/units.png"),
 	vision_icon_locator_("misc/invisible.png"),
 	time_limit_icon_locator_("misc/sand-clock.png"),
-	observer_icon_locator_("misc/eye.png"),
+	observer_icon_locator_(game_config::observer_image),
 	no_observer_icon_locator_("misc/no_observer.png"), map_hashes_(map_hashes),
 	item_height_(100), margin_(5), minimap_size_(item_height_ - 2*margin_),  h_padding_(5),
 	header_height_(20), selected_(0), visible_range_(std::pair<size_t,size_t>(0,0)),
