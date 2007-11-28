@@ -8,7 +8,7 @@ also belong here.
 
 The main facility in this module is a cross-referencer class.  
 It also contains utility methods for working with the data tree.
-See the header comment of wmtools.p for details
+See the header comment of wmtools.py for details
 
 === wmlparser.py ===
 
@@ -46,7 +46,7 @@ for unit in  wmldata.get_all("unit"):
 
 == Standalone use ==
 
-=== wmparser ===
+=== wmlparser ===
 
 If called standalone, wmlparser.py will parse whatever you give it and
 dump back to stdout. For example:
