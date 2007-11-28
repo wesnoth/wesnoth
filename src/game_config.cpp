@@ -126,28 +126,28 @@ namespace game_config
 
 		const config& v = *cfg;
 
-		base_income = atoi(v["base_income"].c_str());
-		village_income = atoi(v["village_income"].c_str());
-		poison_amount = atoi(v["poison_amount"].c_str());
-		rest_heal_amount = atoi(v["rest_heal_amount"].c_str());
-		recall_cost = atoi(v["recall_cost"].c_str());
-		kill_experience = atoi(v["kill_experience"].c_str());
-		lobby_refresh = static_cast<unsigned>(atoi(v["lobby_refresh"].c_str()));
+		base_income = lexical_cast_default<int>(v["base_income"], 2);
+		village_income = lexical_cast_default<int>(v["village_income"], 1);
+		poison_amount = lexical_cast_default<int>(v["poison_amount"], 8);
+		rest_heal_amount = lexical_cast_default<int>(v["rest_heal_amount"], 2);
+		recall_cost = lexical_cast_default<int>(v["recall_cost"], 20);
+		kill_experience = lexical_cast_default<int>(v["kill_experience"], 8);
+		lobby_refresh = lexical_cast_default<unsigned>(v["lobby_refresh"], 2000);
 
 		game_icon = v["icon"];
 		game_title = v["title"];
 		game_logo = v["logo"];
 		title_music = v["title_music"];
 
-		title_logo_x = atoi(v["logo_x"].c_str());
-		title_logo_y = atoi(v["logo_y"].c_str());
-		title_buttons_x = atoi(v["buttons_x"].c_str());
-		title_buttons_y = atoi(v["buttons_y"].c_str());
-		title_buttons_padding = atoi(v["buttons_padding"].c_str());
+		title_logo_x = lexical_cast_default<int>(v["logo_x"]);
+		title_logo_y = lexical_cast_default<int>(v["logo_y"]);
+		title_buttons_x = lexical_cast_default<int>(v["buttons_x"]);
+		title_buttons_y = lexical_cast_default<int>(v["buttons_y"]);
+		title_buttons_padding = lexical_cast_default<int>(v["buttons_padding"]);
 
-		title_tip_x = atoi(v["tip_x"].c_str());
-		title_tip_width = atoi(v["tip_width"].c_str());
-		title_tip_padding = atoi(v["tip_padding"].c_str());
+		title_tip_x = lexical_cast_default<int>(v["tip_x"]);
+		title_tip_width = lexical_cast_default<int>(v["tip_width"]);
+		title_tip_padding = lexical_cast_default<int>(v["tip_padding"]);
 
 
 		energy_image = v["energy_image"];
@@ -327,4 +327,4 @@ bool operator!=(const struct game_version& a, const struct game_version& b)
 	return a.full != b.full;
 }
 
-}
+} // game_config

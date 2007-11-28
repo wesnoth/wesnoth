@@ -51,17 +51,18 @@ namespace game_config
 	struct server_info {
 		server_info() : name(""), address("") { }
 		std::string name;
-		std::string address; //may include ':' followed by port number
+		std::string address; //!< may include ':' followed by port number
 	};
 	extern std::vector<server_info> server_list;
 
 	extern std::string game_icon, game_title, game_logo, title_music,
-	  moved_ball_image, unmoved_ball_image, partmoved_ball_image,
-	  enemy_ball_image, ally_ball_image, energy_image,
-	  flag_image, flag_icon_image, cross_image,
-	  terrain_mask_image, grid_image, unreachable_image, linger_image,
-	  observer_image, tod_bright_image,
-	  checked_menu_image, unchecked_menu_image, wml_menu_image, level_image, ellipsis_image, tome_title;
+		moved_ball_image, unmoved_ball_image, partmoved_ball_image,
+		enemy_ball_image, ally_ball_image, energy_image,
+		flag_image, flag_icon_image, cross_image,
+		terrain_mask_image, grid_image, unreachable_image, linger_image,
+		observer_image, tod_bright_image,
+		checked_menu_image, unchecked_menu_image, wml_menu_image, level_image,
+		ellipsis_image, tome_title;
 
 	extern std::string flag_rgb;
 	extern std::vector<Uint32> defense_color_scale;
@@ -74,7 +75,7 @@ namespace game_config
 	extern std::map<std::string, t_string> team_rgb_name;
 	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 
-	// observer team name used for observer team chat
+	//! observer team name used for observer team chat
 	extern const std::string observer_team_name;
 
 	namespace sounds {
