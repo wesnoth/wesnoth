@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-23 21:37+0100\n"
+"POT-Creation-Date: 2007-11-28 21:32+0100\n"
 "PO-Revision-Date: 2007-24-07 12:00+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -2239,12 +2239,13 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:636
+#: data/core/help.cfg:637
 #, fuzzy
 msgid ""
 "\n"
-"Switch debug mode on (does not work in multiplayer). Debug mode is turned "
-"off by quitting the game or :nodebug.\n"
+"Switch debug mode on (does not work in multiplayer). See "
+"<ref>dst=debug_commands text='Debug mode commands'</ref>.\n"
+"Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
 "\n"
@@ -2252,27 +2253,27 @@ msgstr ""
 "изласком из игре.\n"
 "\n"
 
-#: data/core/help.cfg:637
+#: data/core/help.cfg:638
 msgid "Bring up theme selection menu."
 msgstr "дозива менија за избор тема."
 
-#: data/core/help.cfg:642
+#: data/core/help.cfg:643
 msgid "Multiplayer commands"
 msgstr "Вишеиграчке наредбе"
 
-#: data/core/help.cfg:646
+#: data/core/help.cfg:647
 #, fuzzy
 msgid ""
 "\n"
-"Ban a user in multiplayer by the IP address used by that username and kick "
-"him.\n"
+"Ban a user in a multiplayer game by the IP address used by that username and "
+"kick him.\n"
 "\n"
 msgstr ""
 "\n"
 "избацује и забрањује играча, и ИП адресу коју користи то корисничко име.\n"
 "\n"
 
-#: data/core/help.cfg:649
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2284,7 +2285,7 @@ msgstr ""
 "играча или посматрача).\n"
 "\n"
 
-#: data/core/help.cfg:652
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2298,7 +2299,7 @@ msgstr ""
 "потешкоће.\n"
 "\n"
 
-#: data/core/help.cfg:655
+#: data/core/help.cfg:656
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2310,7 +2311,7 @@ msgstr ""
 "сва која су утишана.\n"
 "\n"
 
-#: data/core/help.cfg:656
+#: data/core/help.cfg:657
 #, fuzzy
 msgid ""
 "\n"
@@ -2319,6 +2320,60 @@ msgstr ""
 "\n"
 "обрће укљученост посматрача у писање и разговор.\n"
 "\n"
+
+#: data/core/help.cfg:662
+#, fuzzy
+msgid "Debug mode commands"
+msgstr "Опште наредбе"
+
+#: data/core/help.cfg:666
+msgid ""
+"\n"
+"Create a unit of the specified type on the selected hex.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:669
+msgid ""
+"\n"
+"Toggle fog/shroud for the current side.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:672
+msgid ""
+"\n"
+"Adds the specified amount to the current side's gold.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:675
+msgid ""
+"\n"
+"Manually set a gamestate variable to value.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:678
+msgid ""
+"\n"
+"Show a gamestate variable.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:681
+msgid ""
+"\n"
+"Manually fire the specified event.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:682
+msgid ""
+"\n"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100"
+msgstr ""
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -2767,7 +2822,7 @@ msgstr "Maкс. бонус УП +"
 msgid "Full Heal"
 msgstr "Потпуно лечење"
 
-#: data/core/macros/items.cfg:265
+#: data/core/macros/items.cfg:41
 msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
@@ -2775,134 +2830,130 @@ msgstr ""
 "Набаса на бунар жеља.\n"
 "Која ти је жеља?"
 
-#: data/core/macros/items.cfg:269
+#: data/core/macros/items.cfg:45
 msgid "A swift victory"
 msgstr "Брза победа"
 
-#: data/core/macros/items.cfg:277
+#: data/core/macros/items.cfg:53
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
 "Овим златним новчићем, желим да се битка оконча брзом и сигурном победом."
 
-#: data/core/macros/items.cfg:284
+#: data/core/macros/items.cfg:60
 msgid "Lots of gold"
 msgstr "Брдо злата"
 
-#: data/core/macros/items.cfg:292
+#: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Желим да ми се овај један златни новчић врати десетоструко."
 
-#: data/core/macros/items.cfg:299
+#: data/core/macros/items.cfg:75
 msgid "Peace throughout Wesnoth."
 msgstr "Мир у целом Весноту."
 
-#: data/core/macros/items.cfg:307
+#: data/core/macros/items.cfg:83
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Једино вредно жеље јесте мир у читавој земљи."
 
-#: data/core/macros/items.cfg:314
+#: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
 msgstr "Не пожели ништа."
 
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:112
 msgid "Potion of Healing"
 msgstr "напитак излечења"
 
-#: data/core/macros/items.cfg:339
+#: data/core/macros/items.cfg:115
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Осећај добростања обли испијача."
 
-#: data/core/macros/items.cfg:340
+#: data/core/macros/items.cfg:116
 msgid "You are not worthy of healing."
 msgstr "Не завређујеш исцељење."
 
-#: data/core/macros/items.cfg:374
+#: data/core/macros/items.cfg:150
 msgid "Poison"
 msgstr "отров"
 
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:153
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Отров тече венама ове јединице баш у овом тренутку."
 
-#: data/core/macros/items.cfg:412
+#: data/core/macros/items.cfg:188
 msgid "Holy Water"
 msgstr "света водица"
 
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:191
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
 
-#: data/core/macros/items.cfg:416
+#: data/core/macros/items.cfg:192
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Нисам погодан да носим ово! Нека је други узме."
 
-#: data/core/macros/items.cfg:451
+#: data/core/macros/items.cfg:227
 msgid "Potion of Strength"
 msgstr "напитак снаге"
 
-#: data/core/macros/items.cfg:454
+#: data/core/macros/items.cfg:230
 msgid "Strength is given to the drinker."
 msgstr "Даје снагу испијачу."
 
-#: data/core/macros/items.cfg:495
+#: data/core/macros/items.cfg:271
 msgid "Potion of Decay"
 msgstr "напитак распада"
 
-#: data/core/macros/items.cfg:498
+#: data/core/macros/items.cfg:274
 msgid "This poor unit drank something really bad."
 msgstr "Ова јадна јединица испи нешто заиста лоше."
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:309
 msgid "Ring of Regeneration"
 msgstr "прстен обнављања"
 
-#: data/core/macros/items.cfg:536
+#: data/core/macros/items.cfg:312
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Овај прстен ће помало лечити носиоца у сваком потезу."
 
-#: data/core/macros/items.cfg:573
+#: data/core/macros/items.cfg:349
 msgid "Ring of Slowness"
 msgstr "прстен успорења"
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:352
 msgid "The bearer of this ring is slowed."
 msgstr "Носилац ово прстена бива успорен."
 
-#: data/core/macros/items.cfg:611
+#: data/core/macros/items.cfg:387
 msgid "Staff of Swiftness"
 msgstr "штап жустрине"
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:390
 msgid "This staff will grant the bearer swift movement."
 msgstr "Овај штап ће подарити носиоцу жустрину кретања."
 
-#: data/core/macros/items.cfg:615
+#: data/core/macros/items.cfg:391
 msgid "Only magical beings can wield such an object."
 msgstr "Само магична створења могу користити такав предмет."
 
-#: data/core/macros/items.cfg:649
+#: data/core/macros/items.cfg:425
 msgid "Storm Trident"
 msgstr "олујни трозубац"
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:428
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Овим трозупцем морејац може испаљивати електричне муње на непријатеље!"
 
-#: data/core/macros/items.cfg:653
+#: data/core/macros/items.cfg:429
 msgid "Only the mermen can use this item!"
 msgstr "Само морејци могу користити овај предмет!"
 
-#: data/core/macros/items.cfg:666
+#: data/core/macros/items.cfg:442
 msgid "storm trident"
 msgstr "олујни трозубац"
-
-#: data/core/macros/items.cfg:747
-msgid "Zap"
-msgstr "Зап"
 
 #: data/core/macros/names.cfg:3
 msgid ""
@@ -4536,9 +4587,10 @@ msgstr ""
 "привремено уступи свој замак."
 
 #: data/hardwired/tips.cfg:77
+#, fuzzy
 msgid ""
-"Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and arcane attacks."
+"Skeletons are resistant to piercing, bladed and cold based attacks but "
+"vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "Скелети су отпорни на пробојне нападе и сечива, али рањиви на удар, ватру, и "
 "волшебне нападе."
@@ -4940,96 +4992,96 @@ msgstr "Шта ће наша победничка јединица постат�
 msgid "No objectives available"
 msgstr "Нема циљева"
 
-#: src/dialogs.cpp:229
+#: src/dialogs.cpp:230
 msgid "Save Game"
 msgstr "Сачувај игру"
 
-#: src/dialogs.cpp:237
+#: src/dialogs.cpp:238
 msgid "Quit Game"
 msgstr "Напусти игру"
 
-#: src/dialogs.cpp:242
+#: src/dialogs.cpp:243
 msgid "Ignore All"
 msgstr "Игнориши све"
 
-#: src/dialogs.cpp:259
+#: src/dialogs.cpp:260
 msgid "Overwrite?"
 msgstr "Пребрисати?"
 
-#: src/dialogs.cpp:260
+#: src/dialogs.cpp:261
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Снимак већ постоји. Желите ли да га пребришете?"
 
-#: src/dialogs.cpp:294
+#: src/dialogs.cpp:295
 msgid "Do you really want to delete this game?"
 msgstr "Желите ли заиста да обришете ову игру?"
 
-#: src/dialogs.cpp:296
+#: src/dialogs.cpp:297
 msgid "Don't ask me again!"
 msgstr "Не питај ме поново!"
 
-#: src/dialogs.cpp:446
+#: src/dialogs.cpp:447
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H.%M %Y"
 
-#: src/dialogs.cpp:463
+#: src/dialogs.cpp:464
 msgid "#(Invalid)"
 msgstr "#(неисправно)"
 
-#: src/dialogs.cpp:470
+#: src/dialogs.cpp:471
 #, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "Довршавање и одржавање"
 
-#: src/dialogs.cpp:472 src/game.cpp:1408
+#: src/dialogs.cpp:473 src/game.cpp:1410
 msgid "Multiplayer"
 msgstr "Више играча"
 
-#: src/dialogs.cpp:474
+#: src/dialogs.cpp:475
 msgid "Tutorial"
 msgstr "Туторијал"
 
-#: src/dialogs.cpp:482
+#: src/dialogs.cpp:483
 msgid "replay"
 msgstr "снимак"
 
-#: src/dialogs.cpp:484 src/menu_events.cpp:689
+#: src/dialogs.cpp:485 src/menu_events.cpp:689
 msgid "Turn"
 msgstr "потез"
 
-#: src/dialogs.cpp:486
+#: src/dialogs.cpp:487
 msgid "Scenario Start"
 msgstr "почетак сценарија"
 
-#: src/dialogs.cpp:489
+#: src/dialogs.cpp:490
 msgid "Difficulty: "
 msgstr "Тежина: "
 
-#: src/dialogs.cpp:491
+#: src/dialogs.cpp:492
 msgid "Version: "
 msgstr "Верзија: "
 
-#: src/dialogs.cpp:515 src/dialogs.cpp:531
+#: src/dialogs.cpp:516 src/dialogs.cpp:532
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:521
+#: src/dialogs.cpp:522
 msgid "%H:%M"
 msgstr "%H.%M"
 
-#: src/dialogs.cpp:524
+#: src/dialogs.cpp:525
 msgid "%A, %H:%M"
 msgstr "%A, %H.%M"
 
-#: src/dialogs.cpp:527
+#: src/dialogs.cpp:528
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:551
+#: src/dialogs.cpp:552
 msgid "No Saved Games"
 msgstr "Нема сачуваних игара"
 
-#: src/dialogs.cpp:552
+#: src/dialogs.cpp:553
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -5039,57 +5091,57 @@ msgstr ""
 "\n"
 "(Игре се чувају аутоматски када завршите сценарио)"
 
-#: src/dialogs.cpp:564
+#: src/dialogs.cpp:565
 msgid "Delete Save"
 msgstr "Обриши сачувано"
 
-#: src/dialogs.cpp:570
+#: src/dialogs.cpp:571
 msgid "Date"
 msgstr "датум"
 
-#: src/dialogs.cpp:570 src/game.cpp:1092 src/menu_events.cpp:336
+#: src/dialogs.cpp:571 src/game.cpp:1094 src/menu_events.cpp:336
 #: src/menu_events.cpp:1096 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "име"
 
-#: src/dialogs.cpp:591 src/multiplayer_create.cpp:96
+#: src/dialogs.cpp:592 src/multiplayer_create.cpp:96
 msgid "Load Game"
 msgstr "Учитај игру"
 
-#: src/dialogs.cpp:592
+#: src/dialogs.cpp:593
 msgid "Choose the game to load"
 msgstr "Изаберите игру за учитавање"
 
-#: src/dialogs.cpp:598
+#: src/dialogs.cpp:599
 msgid "Show replay"
 msgstr "Прикажи снимак"
 
-#: src/dialogs.cpp:626 src/dialogs.cpp:638
+#: src/dialogs.cpp:628
 msgid "Profile"
 msgstr "Профил"
 
-#: src/dialogs.cpp:731 src/help.cpp:1254
+#: src/dialogs.cpp:720 src/help.cpp:1254
 msgid "level"
 msgstr "ниво"
 
-#: src/dialogs.cpp:748 src/help.cpp:1360
+#: src/dialogs.cpp:733 src/help.cpp:1360
 msgid "HP: "
 msgstr "УП: "
 
-#: src/dialogs.cpp:751
+#: src/dialogs.cpp:736
 msgid "XP: "
 msgstr "ИП: "
 
-#: src/dialogs.cpp:756 src/help.cpp:1361
+#: src/dialogs.cpp:740 src/help.cpp:1361
 msgid "Moves: "
 msgstr "кретање: "
 
-#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:871
+#: src/dialogs.cpp:1035 src/dialogs.cpp:1136 src/multiplayer_connect.cpp:871
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:192
 msgid "Cancel"
 msgstr "Одустани"
 
-#: src/dialogs.cpp:934 src/game.cpp:903
+#: src/dialogs.cpp:1059 src/game.cpp:905
 msgid "KB"
 msgstr "kB"
 
@@ -5097,21 +5149,21 @@ msgstr "kB"
 msgid "Screenshot"
 msgstr "Снимак екрана"
 
-#: src/game.cpp:438 src/game.cpp:1503
+#: src/game.cpp:439 src/game.cpp:1505
 msgid "The Battle for Wesnoth"
 msgstr "Бој за Веснот"
 
-#: src/game.cpp:688
+#: src/game.cpp:690
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Упозорење: Датотека коју сте покушали да учитате искварена је. Свеједно "
 "учитавам.\n"
 
-#: src/game.cpp:725 src/multiplayer_connect.cpp:1378
+#: src/game.cpp:727 src/multiplayer_connect.cpp:1378
 msgid "This save is from a version too old to be loaded."
 msgstr "Ова позиција је сачувана верзијом игре престаром да би се учитала."
 
-#: src/game.cpp:731 src/multiplayer_connect.cpp:1385
+#: src/game.cpp:733 src/multiplayer_connect.cpp:1385
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -5119,170 +5171,170 @@ msgstr ""
 "Ова позиција је сачувана различитом верзијом игре. Желите ли да покушате "
 "учитавање?"
 
-#: src/game.cpp:739 src/game.cpp:742 src/multiplayer_connect.cpp:1356
+#: src/game.cpp:741 src/game.cpp:744 src/multiplayer_connect.cpp:1356
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Датотека коју сте покушали да учитате искварена је: '"
 
-#: src/game.cpp:745
+#: src/game.cpp:747
 msgid "File I/O Error while reading the game"
 msgstr "У/И грешка у датотеци приликом читања игре"
 
-#: src/game.cpp:833
+#: src/game.cpp:835
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Поход"
 
-#: src/game.cpp:874
+#: src/game.cpp:876
 msgid "Difficulty"
 msgstr "Тежина"
 
-#: src/game.cpp:875
+#: src/game.cpp:877
 msgid "Select difficulty level:"
 msgstr "Изаберите ниво тежине:"
 
-#: src/game.cpp:900
+#: src/game.cpp:902
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:906
+#: src/game.cpp:908
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:936
+#: src/game.cpp:938
 msgid "Connect to Server"
 msgstr "Повежи се на сервер"
 
-#: src/game.cpp:937
+#: src/game.cpp:939
 msgid "You will now connect to a server to download add-ons."
 msgstr "Сад ћете се повезати са сервером за преузимање додатака."
 
-#: src/game.cpp:939
+#: src/game.cpp:941
 msgid "Server: "
 msgstr "Сервер: "
 
-#: src/game.cpp:940 src/game.cpp:988
+#: src/game.cpp:942 src/game.cpp:990
 msgid "Remove Add-ons"
 msgstr "Уклони додатке"
 
-#: src/game.cpp:975
+#: src/game.cpp:977
 msgid "You have no Add-ons installed."
 msgstr "Нема инсталираних додатака."
 
-#: src/game.cpp:988
+#: src/game.cpp:990
 msgid "Choose the add-on to remove."
 msgstr "Изаберите додатак за уклањање."
 
-#: src/game.cpp:999
+#: src/game.cpp:1001
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/game.cpp:1003
+#: src/game.cpp:1005
 msgid "Confirm"
 msgstr "Потврди"
 
-#: src/game.cpp:1026
+#: src/game.cpp:1028
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Додатак је обрисан"
 
-#: src/game.cpp:1031
+#: src/game.cpp:1033
 msgid "Add-on deleted"
 msgstr "Додатак је обрисан"
 
-#: src/game.cpp:1037
+#: src/game.cpp:1039
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "Додатк не може бити обрисан — нема датотеке."
 
-#: src/game.cpp:1037 src/menu_events.cpp:703 src/menu_events.cpp:716
+#: src/game.cpp:1039 src/menu_events.cpp:703 src/menu_events.cpp:716
 #: src/multiplayer_create.cpp:512
 msgid "Error"
 msgstr "Грешка"
 
-#: src/game.cpp:1058 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1060 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Повезујем се са сервером..."
 
-#: src/game.cpp:1061
+#: src/game.cpp:1063
 msgid "Could not connect to host."
 msgstr "Нисам могао да се повежем."
 
-#: src/game.cpp:1070
+#: src/game.cpp:1072
 msgid "Asking for list of add-ons"
 msgstr "Тражим списак додатака"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1085
 msgid "Error communicating with the server."
 msgstr "Грешка у комуникацији са сервером."
 
-#: src/game.cpp:1092 src/titlescreen.cpp:294
+#: src/game.cpp:1094 src/titlescreen.cpp:299
 msgid "Version"
 msgstr "верзија"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Author"
 msgstr "аутор"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Downloads"
 msgstr "преузето"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Size"
 msgstr "величина"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1147
 msgid "Publish add-on: "
 msgstr "Објави додатак: "
 
-#: src/game.cpp:1149
+#: src/game.cpp:1151
 msgid "Delete add-on: "
 msgstr "Обриши додатак: "
 
-#: src/game.cpp:1153
+#: src/game.cpp:1155
 msgid "There are no add-ons available for download from this server."
 msgstr "На овом серверу нема додатака спремних за преузимање."
 
-#: src/game.cpp:1160
+#: src/game.cpp:1162
 msgid "Get Add-ons"
 msgstr "Додаци"
 
-#: src/game.cpp:1161
+#: src/game.cpp:1163
 msgid "Choose the add-on to download."
 msgstr "Изаберите додатак за преузимање."
 
-#: src/game.cpp:1204
+#: src/game.cpp:1206
 msgid "Dependencies"
 msgstr "Зависности"
 
-#: src/game.cpp:1205
+#: src/game.cpp:1207
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Овај додатак се ослања на следеће:"
 
-#: src/game.cpp:1207
+#: src/game.cpp:1209
 msgid "Do you still want to download it?"
 msgstr "Желите ли још увек да га преузмете?"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1218
 msgid "Downloading add-on..."
 msgstr "Преузимам додатак..."
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "Add-on Installed"
 msgstr "Додатак је инсталиран"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "The add-on has been installed."
 msgstr "Додатак је инсталиран."
 
-#: src/game.cpp:1277
+#: src/game.cpp:1279
 msgid "Network communication error."
 msgstr "Грешка у мрежној комуникацији."
 
-#: src/game.cpp:1279
+#: src/game.cpp:1281
 msgid "Remote host disconnected."
 msgstr "Удаљени домаћин је прекинуо везу."
 
-#: src/game.cpp:1281
+#: src/game.cpp:1283
 #, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
@@ -5290,132 +5342,132 @@ msgstr ""
 "Дошло је до проблема при прављењу датотека неопходних за инсталирање овог "
 "похода."
 
-#: src/game.cpp:1293 src/game.cpp:1335 src/game.cpp:1362
+#: src/game.cpp:1295 src/game.cpp:1337 src/game.cpp:1364
 #: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:69 src/playcampaign.cpp:472
 msgid "Connection timed out"
 msgstr "Веза је истекла."
 
-#: src/game.cpp:1296
+#: src/game.cpp:1298
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Сервер је одговорио грешком: \""
 
-#: src/game.cpp:1303
+#: src/game.cpp:1305
 msgid "Terms"
 msgstr "Услови"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1335
 msgid "Sending add-on"
 msgstr "Шаљем додатак"
 
-#: src/game.cpp:1337 src/game.cpp:1364
+#: src/game.cpp:1339 src/game.cpp:1366
 msgid "The server responded with an error: \""
 msgstr "Сервер је одговорио грешком: \""
 
-#: src/game.cpp:1341 src/game.cpp:1368 src/multiplayer_wait.cpp:377
+#: src/game.cpp:1343 src/game.cpp:1370 src/multiplayer_wait.cpp:377
 msgid "Response"
 msgstr "Одзив"
 
-#: src/game.cpp:1392
+#: src/game.cpp:1394
 msgid "Join Official Server"
 msgstr "На званичан сервер"
 
-#: src/game.cpp:1393
+#: src/game.cpp:1395
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Пријавите се на званични Веснотов вишеиграчки сервер."
 
-#: src/game.cpp:1395
+#: src/game.cpp:1397
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Повежи се на сервер"
 
-#: src/game.cpp:1396
+#: src/game.cpp:1398
 msgid "Join a server or hosted game"
 msgstr "Придружите се серверу или домаћину"
 
-#: src/game.cpp:1398
+#: src/game.cpp:1400
 msgid "Host Networked Game"
 msgstr "Домаћин мрежној игри"
 
-#: src/game.cpp:1399
+#: src/game.cpp:1401
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1401
+#: src/game.cpp:1403
 msgid "Local Game"
 msgstr "Локална игра"
 
-#: src/game.cpp:1402
+#: src/game.cpp:1404
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Заиграјте игру против ВИ или више људи који деле исти рачунар"
 
-#: src/game.cpp:1410 src/multiplayer.cpp:232
+#: src/game.cpp:1412 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "пријава: "
 
-#: src/game.cpp:1447 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1449 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Игру није могуће учитати: "
 
-#: src/game.cpp:1449 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1451 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Грешка приликом играња игре: "
 
-#: src/game.cpp:1469 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1471 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Мапу игре није могуће учитати: "
 
-#: src/game.cpp:1493
+#: src/game.cpp:1495
 msgid "Language"
 msgstr "Језик"
 
-#: src/game.cpp:1494
+#: src/game.cpp:1496
 msgid "Choose your preferred language:"
 msgstr "Изаберите језик који желите:"
 
-#: src/game.cpp:1648
+#: src/game.cpp:1650
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Следећи додатни походи имају грешку и не могу се учитати:"
 
-#: src/game.cpp:1653
+#: src/game.cpp:1655
 msgid "ERROR DETAILS:"
 msgstr "ДЕТАЉИ ГРЕШКЕ:"
 
-#: src/game.cpp:1667
+#: src/game.cpp:1669
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Упозорење: Дошло је до грешака приликом учитавања конфигурационих датотека "
 "игре: '"
 
-#: src/game.cpp:1719
+#: src/game.cpp:1721
 msgid "Error loading game configuration files: '"
 msgstr "Грешка при учитавању конфигурационих датотека игре: '"
 
-#: src/game.cpp:1720
+#: src/game.cpp:1722
 msgid "' (The game will now exit)"
 msgstr "' (игра ће се сад угасити)"
 
-#: src/game.cpp:1888
+#: src/game.cpp:1890
 msgid "Battle for Wesnoth"
 msgstr "Бој за Веснот"
 
-#: src/game.cpp:2016
+#: src/game.cpp:2018
 msgid "Loading game configuration."
 msgstr "Учитавам подешавања игре."
 
-#: src/game.cpp:2022
+#: src/game.cpp:2024
 msgid "Re-initialize fonts for the current language."
 msgstr "Васпостављам фонтове за текући језик."
 
-#: src/game.cpp:2036
+#: src/game.cpp:2038
 msgid "Loading title screen."
 msgstr "Учитавам насловни екран."
 
-#: src/game_config.cpp:251
+#: src/game_config.cpp:252
 msgid "Invalid color range: "
 msgstr "Неисправан опсег боја: "
 
@@ -5660,15 +5712,15 @@ msgstr "Помоћ „Боја за Веснот“"
 msgid "Parse error when parsing help text: "
 msgstr "Грешка при рашчлањивању текста помоћи: "
 
-#: src/intro.cpp:98
+#: src/intro.cpp:106
 msgid "Next"
 msgstr "Даље"
 
-#: src/intro.cpp:99
+#: src/intro.cpp:107
 msgid "Skip"
 msgstr "Прескочи"
 
-#: src/intro.cpp:347
+#: src/intro.cpp:376
 msgid "The End"
 msgstr "Крај"
 
@@ -5948,7 +6000,7 @@ msgstr "Мапа сачувана."
 msgid "Could not save the map: $msg"
 msgstr "Не могу да снимим мапу: $msg"
 
-#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:770
+#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:752
 msgid "Auto-Save"
 msgstr "Самочување"
 
@@ -6046,31 +6098,31 @@ msgstr "Преименуј јединицу"
 msgid "Race"
 msgstr "раса"
 
-#: src/menu_events.cpp:1602
+#: src/menu_events.cpp:1601
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1642
+#: src/menu_events.cpp:1645
 msgid "Place Label"
 msgstr "Постави етикету"
 
-#: src/menu_events.cpp:1645 src/menu_events.cpp:1648
+#: src/menu_events.cpp:1648 src/menu_events.cpp:1651
 msgid "Label:"
 msgstr "Етикета:"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1654
 msgid "Team only"
 msgstr "Само тимски"
 
-#: src/menu_events.cpp:1753
+#: src/menu_events.cpp:1756
 msgid "Search"
 msgstr "Тражи"
 
-#: src/menu_events.cpp:1796
+#: src/menu_events.cpp:1799
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Наредбе: whisper list emote. Упишите /help [naredba] за помоћ."
 
-#: src/menu_events.cpp:1848
+#: src/menu_events.cpp:1851
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6078,15 +6130,15 @@ msgstr ""
 "Шаље приватну поруку. Можете слати поруке играчима на било којој страни у "
 "игри. Употреба: /whisper [nadimak] [poruka]"
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1855
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Додаје играча на списак пријатеља. Употреба: /list addfriend [razlog]"
 
-#: src/menu_events.cpp:1854
+#: src/menu_events.cpp:1857
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Додаје играча на списак игнорисаних. Употреба: /list ignore [razlog]"
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1859
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6094,19 +6146,19 @@ msgstr ""
 "Уклања играча са списка игнорисаних или пријатеља. Употреба: /list remove "
 "[razlog]"
 
-#: src/menu_events.cpp:1858
+#: src/menu_events.cpp:1861
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Чисти списак игнорисаних и пријатеља. Употреба: /list clear"
 
-#: src/menu_events.cpp:1860
+#: src/menu_events.cpp:1863
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Приказује списак игнорисаних и пријатеља. Употреба: /list display"
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1865
 msgid "Unknown subcommand"
 msgstr "Непозната поднаредба"
 
-#: src/menu_events.cpp:1865
+#: src/menu_events.cpp:1868
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6118,55 +6170,55 @@ msgstr ""
 "addfriend addignore remove display clear. Упишите /help list [podnaredba] за "
 "више детаља."
 
-#: src/menu_events.cpp:1868
+#: src/menu_events.cpp:1871
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Шаље емоцију или личну радњу у ћаскање. Употреба: /emote [poruka]"
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1873
 msgid "Unknown command"
 msgstr "Непозната наредба"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1885
 msgid "Added to ignore list: "
 msgstr "Додат на списак игнорисаних: "
 
-#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
+#: src/menu_events.cpp:1887 src/menu_events.cpp:1894 src/menu_events.cpp:1901
 msgid "Invalid username: "
 msgstr "Неисправно корисничко име: "
 
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1892
 msgid "Added to friends list: "
 msgstr "Додат на списак пријатеља: "
 
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1899
 msgid "Removed from list: "
 msgstr "Уклоњен са списка: "
 
-#: src/menu_events.cpp:1922
+#: src/menu_events.cpp:1925
 msgid "There are no players on your friends or ignore list."
 msgstr "Нема играча ни на вашем списку пријатеља ни игнорисаних."
 
-#: src/menu_events.cpp:1932
+#: src/menu_events.cpp:1935
 msgid "Removed from ignore list: "
 msgstr "Уклоњен са списка игнорисаних: "
 
-#: src/menu_events.cpp:1935
+#: src/menu_events.cpp:1938
 msgid "Removed from friends list: "
 msgstr "Уклоњен са списка пријатеља: "
 
-#: src/menu_events.cpp:1942
+#: src/menu_events.cpp:1945
 msgid "Unknown command: "
 msgstr "Непозната наредба: "
 
-#: src/menu_events.cpp:2055
+#: src/menu_events.cpp:2058
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Нисам могао да нађем етикету или јединицу која садржи „$search“."
 
-#: src/menu_events.cpp:2232
+#: src/menu_events.cpp:2235
 msgid "prompt^Command:"
 msgstr "наредба:"
 
-#: src/menu_events.cpp:2251
+#: src/menu_events.cpp:2254
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Наредбе"
@@ -6686,11 +6738,11 @@ msgstr "Нема страна за више играча"
 msgid "Choose your side:"
 msgstr "Изаберите своју страну:"
 
-#: src/network.cpp:101
+#: src/network.cpp:104
 msgid "invalid network handle"
 msgstr "неисправна мрежна ручка"
 
-#: src/network.cpp:134
+#: src/network.cpp:137
 msgid "Client disconnected"
 msgstr "Клијент прекиде везу"
 
@@ -6706,16 +6758,11 @@ msgstr "Не могу додати утичницу скупу утичница"
 msgid "Could not send initial handshake"
 msgstr "Не могу послати почетно руковање"
 
-#: src/play_controller.cpp:401
-#, fuzzy
-msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Датотека коју сте покушали да отворите искварена је"
-
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:756
 msgid "Back to start"
 msgstr "Назад на почетак"
 
-#: src/play_controller.cpp:776
+#: src/play_controller.cpp:758
 msgid "Back to turn "
 msgstr "Назад на потез"
 
@@ -6753,12 +6800,12 @@ msgstr "Желите ли да сачувате игру?"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Непознат сценарио: '"
 
-#: src/playmp_controller.cpp:246
+#: src/playmp_controller.cpp:250
 #, fuzzy
 msgid "End scenario"
 msgstr "Удаљени сценарио"
 
-#: src/playmp_controller.cpp:384
+#: src/playmp_controller.cpp:391
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6850,11 +6897,11 @@ msgstr "Победа"
 msgid "You have emerged victorious!"
 msgstr "Победили сте!"
 
-#: src/playsingle_controller.cpp:428 src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:426 src/playsingle_controller.cpp:477
 msgid "The file you have tried to load is corrupt"
 msgstr "Датотека коју сте покушали да отворите искварена је"
 
-#: src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:436
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6862,7 +6909,7 @@ msgstr ""
 "Мрежна веза је прекинута и игра се не може наставити. Желите ли да сачувате "
 "игру?"
 
-#: src/playsingle_controller.cpp:566
+#: src/playsingle_controller.cpp:564
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Ви сте на реду"
@@ -6888,6 +6935,11 @@ msgstr "Замени локалним играчем"
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "напусти игру. Шта желите да учините?"
+
+#: src/replay_controller.cpp:87
+#, fuzzy
+msgid "The file you have tried to load is corrupt. Continue playing?"
+msgstr "Датотека коју сте покушали да отворите искварена је"
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
@@ -6957,72 +7009,72 @@ msgstr "противничко село"
 msgid "Owned village"
 msgstr "запоседнуто село"
 
-#: src/titlescreen.cpp:313
+#: src/titlescreen.cpp:318
 msgid "TitleScreen button^Tutorial"
 msgstr "Туторијал"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:319
 msgid "TitleScreen button^Campaign"
 msgstr "Поход"
 
-#: src/titlescreen.cpp:315
+#: src/titlescreen.cpp:320
 msgid "TitleScreen button^Multiplayer"
 msgstr "Више играча"
 
-#: src/titlescreen.cpp:316
+#: src/titlescreen.cpp:321
 msgid "TitleScreen button^Load"
 msgstr "Учитај"
 
-#: src/titlescreen.cpp:317
+#: src/titlescreen.cpp:322
 msgid "TitleScreen button^Add-ons"
 msgstr "Додаци"
 
-#: src/titlescreen.cpp:318
+#: src/titlescreen.cpp:323
 msgid "TitleScreen button^Language"
 msgstr "Језик"
 
-#: src/titlescreen.cpp:319
+#: src/titlescreen.cpp:324
 msgid "TitleScreen button^Preferences"
 msgstr "Поставке"
 
-#: src/titlescreen.cpp:320
+#: src/titlescreen.cpp:325
 #, fuzzy
 msgid "TitleScreen button^Credits"
 msgstr "Напусти"
 
-#: src/titlescreen.cpp:321
+#: src/titlescreen.cpp:326
 msgid "TitleScreen button^Quit"
 msgstr "Напусти"
 
-#: src/titlescreen.cpp:324
+#: src/titlescreen.cpp:329
 #, fuzzy
 msgid "TitleScreen button^Previous"
 msgstr "Напусти"
 
-#: src/titlescreen.cpp:325
+#: src/titlescreen.cpp:330
 #, fuzzy
 msgid "TitleScreen button^Next"
 msgstr "Напусти"
 
-#: src/titlescreen.cpp:326
+#: src/titlescreen.cpp:331
 #, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "Учитај"
 
-#: src/titlescreen.cpp:328
+#: src/titlescreen.cpp:333
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Учитај"
 
-#: src/titlescreen.cpp:330
+#: src/titlescreen.cpp:335
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Покрените туторијал за упознавање игре"
 
-#: src/titlescreen.cpp:331
+#: src/titlescreen.cpp:336
 msgid "Start a new single player campaign"
 msgstr "Покрените нови поход за једног играча"
 
-#: src/titlescreen.cpp:332
+#: src/titlescreen.cpp:337
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -7030,46 +7082,46 @@ msgstr ""
 "Играјте са више играча (усијано, ЛАН или Интернет), или један сценарио "
 "против ВИ."
 
-#: src/titlescreen.cpp:333
+#: src/titlescreen.cpp:338
 #, fuzzy
 msgid "Load a saved game"
 msgstr "Учитајте сачувану игру за једног играча"
 
-#: src/titlescreen.cpp:334
+#: src/titlescreen.cpp:339
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Преузмите корисничке додатке: походе, епохе, или пакете мапа"
 
-#: src/titlescreen.cpp:335
+#: src/titlescreen.cpp:340
 msgid "Change the language"
 msgstr "Промените језик"
 
-#: src/titlescreen.cpp:336
+#: src/titlescreen.cpp:341
 msgid "Configure the game's settings"
 msgstr "Подесите поставке игре"
 
-#: src/titlescreen.cpp:337
+#: src/titlescreen.cpp:342
 msgid "View the credits"
 msgstr "Погледајте заслуге"
 
-#: src/titlescreen.cpp:338
+#: src/titlescreen.cpp:343
 msgid "Quit the game"
 msgstr "Напустите игру"
 
-#: src/titlescreen.cpp:339
+#: src/titlescreen.cpp:344
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:340
+#: src/titlescreen.cpp:345
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Помоћ „Боја за Веснот“"
 
-#: src/titlescreen.cpp:341
+#: src/titlescreen.cpp:346
 #, fuzzy
 msgid "Upload statistics"
 msgstr "Статистика"
 
-#: src/titlescreen.cpp:397
+#: src/titlescreen.cpp:402
 msgid "Help Wesnoth by sending us information"
 msgstr "Помозите Весноту шаљући нам информације"
 
@@ -7126,15 +7178,15 @@ msgstr[1] "удара"
 msgstr[2] "удара"
 msgstr[3] "удара"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "chaotic"
 msgstr "хаотичан"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "lawful"
 msgstr "законит"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "neutral"
 msgstr "неутралан"
 
@@ -7165,6 +7217,9 @@ msgstr "Помозите нам да побољшамо Веснот за вас
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Укључи слање сажетака"
+
+#~ msgid "Zap"
+#~ msgstr "Зап"
 
 #~ msgid "time left"
 #~ msgstr "ост. време"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-23 21:37+0100\n"
+"POT-Creation-Date: 2007-11-28 21:32+0100\n"
 "PO-Revision-Date: 2007-10-23 14:11+0300\n"
 "Last-Translator: Santtu Pajukanta <santtu@pajukanta.fi>\n"
 "Language-Team: Finnish\n"
@@ -2277,12 +2277,13 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:636
+#: data/core/help.cfg:637
 #, fuzzy
 msgid ""
 "\n"
-"Switch debug mode on (does not work in multiplayer). Debug mode is turned "
-"off by quitting the game or :nodebug.\n"
+"Switch debug mode on (does not work in multiplayer). See "
+"<ref>dst=debug_commands text='Debug mode commands'</ref>.\n"
+"Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
 "\n"
@@ -2290,27 +2291,27 @@ msgstr ""
 "poistumalla pelistä.\n"
 "\n"
 
-#: data/core/help.cfg:637
+#: data/core/help.cfg:638
 msgid "Bring up theme selection menu."
 msgstr "Näytä teeman valintavalikko."
 
-#: data/core/help.cfg:642
+#: data/core/help.cfg:643
 msgid "Multiplayer commands"
 msgstr "Moninpelikomennot"
 
-#: data/core/help.cfg:646
+#: data/core/help.cfg:647
 #, fuzzy
 msgid ""
 "\n"
-"Ban a user in multiplayer by the IP address used by that username and kick "
-"him.\n"
+"Ban a user in a multiplayer game by the IP address used by that username and "
+"kick him.\n"
 "\n"
 msgstr ""
 "\n"
 "Potki pelaaja moninpelistä, ja estä hänen IP-osoitteensa.\n"
 "\n"
 
-#: data/core/help.cfg:649
+#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2322,7 +2323,7 @@ msgstr ""
 "käyttäjänimeksi (kirjoita tähän pelaajan tai tarkkailijan käyttäjänimi).\n"
 "\n"
 
-#: data/core/help.cfg:652
+#: data/core/help.cfg:653
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2336,7 +2337,7 @@ msgstr ""
 "ongelmia.\n"
 "\n"
 
-#: data/core/help.cfg:655
+#: data/core/help.cfg:656
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2348,7 +2349,7 @@ msgstr ""
 "hiljennetyt pelaajatunnukset.\n"
 "\n"
 
-#: data/core/help.cfg:656
+#: data/core/help.cfg:657
 #, fuzzy
 msgid ""
 "\n"
@@ -2357,6 +2358,60 @@ msgstr ""
 "\n"
 "Hiljennä tai poista hiljennys kaikilta tarkkailijoilta.\n"
 "\n"
+
+#: data/core/help.cfg:662
+#, fuzzy
+msgid "Debug mode commands"
+msgstr "Yleiset komennot"
+
+#: data/core/help.cfg:666
+msgid ""
+"\n"
+"Create a unit of the specified type on the selected hex.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:669
+msgid ""
+"\n"
+"Toggle fog/shroud for the current side.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:672
+msgid ""
+"\n"
+"Adds the specified amount to the current side's gold.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:675
+msgid ""
+"\n"
+"Manually set a gamestate variable to value.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:678
+msgid ""
+"\n"
+"Show a gamestate variable.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:681
+msgid ""
+"\n"
+"Manually fire the specified event.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:682
+msgid ""
+"\n"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100"
+msgstr ""
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -2807,7 +2862,7 @@ msgstr "Enimmäis-EP-bonus +"
 msgid "Full Heal"
 msgstr "Täysparannus"
 
-#: data/core/macros/items.cfg:265
+#: data/core/macros/items.cfg:41
 msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
@@ -2815,11 +2870,11 @@ msgstr ""
 "Saavut toivomuskaivolle.\n"
 "Mitä toivot?"
 
-#: data/core/macros/items.cfg:269
+#: data/core/macros/items.cfg:45
 msgid "A swift victory"
 msgstr "Nopeaa voittoa"
 
-#: data/core/macros/items.cfg:277
+#: data/core/macros/items.cfg:53
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
@@ -2827,51 +2882,51 @@ msgstr ""
 "Tällä kultakolikolla toivon, että tämä taistelu loppuu nopeaan ja "
 "turvalliseen voittoon."
 
-#: data/core/macros/items.cfg:284
+#: data/core/macros/items.cfg:60
 msgid "Lots of gold"
 msgstr "Paljon kultaa"
 
-#: data/core/macros/items.cfg:292
+#: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Toivon, että tämä kultapala palautetaan minulle kymmenkertaisena."
 
-#: data/core/macros/items.cfg:299
+#: data/core/macros/items.cfg:75
 msgid "Peace throughout Wesnoth."
 msgstr "Rauhaa läpi Wesnothin."
 
-#: data/core/macros/items.cfg:307
+#: data/core/macros/items.cfg:83
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Ainoa toivomisen arvoinen asia on rauha maan päälle."
 
-#: data/core/macros/items.cfg:314
+#: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
 msgstr "Jätä toivomatta."
 
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:112
 msgid "Potion of Healing"
 msgstr "Parannusjuoma"
 
-#: data/core/macros/items.cfg:339
+#: data/core/macros/items.cfg:115
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Hyvänolontunne valtaa juojan."
 
-#: data/core/macros/items.cfg:340
+#: data/core/macros/items.cfg:116
 msgid "You are not worthy of healing."
 msgstr "Et ole parantamisen arvoinen."
 
-#: data/core/macros/items.cfg:374
+#: data/core/macros/items.cfg:150
 msgid "Poison"
 msgstr "Myrkky"
 
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:153
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Myrkky virtaa tälläkin hetkellä tämän yksikön suonissa."
 
-#: data/core/macros/items.cfg:412
+#: data/core/macros/items.cfg:188
 msgid "Holy Water"
 msgstr "Pyhä vesi"
 
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:191
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
@@ -2879,73 +2934,69 @@ msgstr ""
 "Tämä vesi antaa lähitaisteluaseille 'salatieteen' vahinkomuodon skenaarion "
 "loppuun asti."
 
-#: data/core/macros/items.cfg:416
+#: data/core/macros/items.cfg:192
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "En sovellu tämän esineen käyttöön! Ottakoon joku muu sen."
 
-#: data/core/macros/items.cfg:451
+#: data/core/macros/items.cfg:227
 msgid "Potion of Strength"
 msgstr "Voimajuoma"
 
-#: data/core/macros/items.cfg:454
+#: data/core/macros/items.cfg:230
 msgid "Strength is given to the drinker."
 msgstr "Juoja saa voimaa."
 
-#: data/core/macros/items.cfg:495
+#: data/core/macros/items.cfg:271
 msgid "Potion of Decay"
 msgstr "Mädätysjuoma"
 
-#: data/core/macros/items.cfg:498
+#: data/core/macros/items.cfg:274
 msgid "This poor unit drank something really bad."
 msgstr "Tämä yksikköraukka joi jotain todella pahaa."
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:309
 msgid "Ring of Regeneration"
 msgstr "Uusiutumisen sormus"
 
-#: data/core/macros/items.cfg:536
+#: data/core/macros/items.cfg:312
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Tämä sormus parantaa kantajaa vähän joka vuoro."
 
-#: data/core/macros/items.cfg:573
+#: data/core/macros/items.cfg:349
 msgid "Ring of Slowness"
 msgstr "Hitauden sormus"
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:352
 msgid "The bearer of this ring is slowed."
 msgstr "Sormuksen kantaja hidastuu."
 
-#: data/core/macros/items.cfg:611
+#: data/core/macros/items.cfg:387
 msgid "Staff of Swiftness"
 msgstr "Nopeuden sauva"
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:390
 msgid "This staff will grant the bearer swift movement."
 msgstr "Tämä sauva antaa kantajalleen nopean liikkumisen."
 
-#: data/core/macros/items.cfg:615
+#: data/core/macros/items.cfg:391
 msgid "Only magical beings can wield such an object."
 msgstr "Vain taikaolennot voivat käyttää tuollaista esinettä."
 
-#: data/core/macros/items.cfg:649
+#: data/core/macros/items.cfg:425
 msgid "Storm Trident"
 msgstr "myrskyjen kolmikärki"
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:428
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Tämä kolmikärki sallii merenmiehen ampua salamoita vihollisiinsa!"
 
-#: data/core/macros/items.cfg:653
+#: data/core/macros/items.cfg:429
 msgid "Only the mermen can use this item!"
 msgstr "Vain merenmiehet voivat käyttää tätä esinettä!"
 
-#: data/core/macros/items.cfg:666
+#: data/core/macros/items.cfg:442
 msgid "storm trident"
 msgstr "myrskyjen kolmikärki"
-
-#: data/core/macros/items.cfg:747
-msgid "Zap"
-msgstr "Zap"
 
 #: data/core/macros/names.cfg:3
 msgid ""
@@ -4595,9 +4646,10 @@ msgstr ""
 "heidän linnakkeissaan."
 
 #: data/hardwired/tips.cfg:77
+#, fuzzy
 msgid ""
-"Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and arcane attacks."
+"Skeletons are resistant to piercing, bladed and cold based attacks but "
+"vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "Luurangot ovat vastustuskykyisiä lävistäville ja teräaseilla tehdyille "
 "iskuille, mutta herkkiä murjoville iskuille, tulelle ja "
@@ -4996,96 +5048,96 @@ msgstr "Mikä voittoisasta yksiköstämme tulee?"
 msgid "No objectives available"
 msgstr "Ei tavoitteita saatavana"
 
-#: src/dialogs.cpp:229
+#: src/dialogs.cpp:230
 msgid "Save Game"
 msgstr "Tallenna peli"
 
-#: src/dialogs.cpp:237
+#: src/dialogs.cpp:238
 msgid "Quit Game"
 msgstr "Poistu pelistä"
 
-#: src/dialogs.cpp:242
+#: src/dialogs.cpp:243
 msgid "Ignore All"
 msgstr "Torju kaikki"
 
-#: src/dialogs.cpp:259
+#: src/dialogs.cpp:260
 msgid "Overwrite?"
 msgstr "Kirjoita päälle?"
 
-#: src/dialogs.cpp:260
+#: src/dialogs.cpp:261
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Tallenne on jo olemassa. Haluatko kirjoittaa sen päälle ?"
 
-#: src/dialogs.cpp:294
+#: src/dialogs.cpp:295
 msgid "Do you really want to delete this game?"
 msgstr "Haluatko todellakin tuhota tämän tallennuksen?"
 
-#: src/dialogs.cpp:296
+#: src/dialogs.cpp:297
 msgid "Don't ask me again!"
 msgstr "Älä kysy tätä uudelleen!"
 
-#: src/dialogs.cpp:446
+#: src/dialogs.cpp:447
 msgid "%a %b %d %H:%M %Y"
 msgstr "%d.%m.%Y %H:%M"
 
-#: src/dialogs.cpp:463
+#: src/dialogs.cpp:464
 msgid "#(Invalid)"
 msgstr "#(virheellinen)"
 
-#: src/dialogs.cpp:470
+#: src/dialogs.cpp:471
 #, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "Kampanjoiden ylläpito"
 
-#: src/dialogs.cpp:472 src/game.cpp:1408
+#: src/dialogs.cpp:473 src/game.cpp:1410
 msgid "Multiplayer"
 msgstr "Moninpeli"
 
-#: src/dialogs.cpp:474
+#: src/dialogs.cpp:475
 msgid "Tutorial"
 msgstr "Tutoriaali"
 
-#: src/dialogs.cpp:482
+#: src/dialogs.cpp:483
 msgid "replay"
 msgstr " - uusinta"
 
-#: src/dialogs.cpp:484 src/menu_events.cpp:689
+#: src/dialogs.cpp:485 src/menu_events.cpp:689
 msgid "Turn"
 msgstr "vuoro"
 
-#: src/dialogs.cpp:486
+#: src/dialogs.cpp:487
 msgid "Scenario Start"
 msgstr "Taistelun alku"
 
-#: src/dialogs.cpp:489
+#: src/dialogs.cpp:490
 msgid "Difficulty: "
 msgstr "Vaikeustaso: "
 
-#: src/dialogs.cpp:491
+#: src/dialogs.cpp:492
 msgid "Version: "
 msgstr "Versio: "
 
-#: src/dialogs.cpp:515 src/dialogs.cpp:531
+#: src/dialogs.cpp:516 src/dialogs.cpp:532
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:521
+#: src/dialogs.cpp:522
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:524
+#: src/dialogs.cpp:525
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:527
+#: src/dialogs.cpp:528
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:551
+#: src/dialogs.cpp:552
 msgid "No Saved Games"
 msgstr "Ei tallennettuja pelejä."
 
-#: src/dialogs.cpp:552
+#: src/dialogs.cpp:553
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -5095,57 +5147,57 @@ msgstr ""
 "\n"
 "(Peli tallennetaan automaattisesti kun voitat skenaarion)"
 
-#: src/dialogs.cpp:564
+#: src/dialogs.cpp:565
 msgid "Delete Save"
 msgstr "Tuhoa tallenne"
 
-#: src/dialogs.cpp:570
+#: src/dialogs.cpp:571
 msgid "Date"
 msgstr "Päivämäärä"
 
-#: src/dialogs.cpp:570 src/game.cpp:1092 src/menu_events.cpp:336
+#: src/dialogs.cpp:571 src/game.cpp:1094 src/menu_events.cpp:336
 #: src/menu_events.cpp:1096 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nimi"
 
-#: src/dialogs.cpp:591 src/multiplayer_create.cpp:96
+#: src/dialogs.cpp:592 src/multiplayer_create.cpp:96
 msgid "Load Game"
 msgstr "Lataa peli"
 
-#: src/dialogs.cpp:592
+#: src/dialogs.cpp:593
 msgid "Choose the game to load"
 msgstr "Valitse ladattava peli"
 
-#: src/dialogs.cpp:598
+#: src/dialogs.cpp:599
 msgid "Show replay"
 msgstr "Näytä uusinta"
 
-#: src/dialogs.cpp:626 src/dialogs.cpp:638
+#: src/dialogs.cpp:628
 msgid "Profile"
 msgstr "Profiili"
 
-#: src/dialogs.cpp:731 src/help.cpp:1254
+#: src/dialogs.cpp:720 src/help.cpp:1254
 msgid "level"
 msgstr "taso"
 
-#: src/dialogs.cpp:748 src/help.cpp:1360
+#: src/dialogs.cpp:733 src/help.cpp:1360
 msgid "HP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:751
+#: src/dialogs.cpp:736
 msgid "XP: "
 msgstr "KP: "
 
-#: src/dialogs.cpp:756 src/help.cpp:1361
+#: src/dialogs.cpp:740 src/help.cpp:1361
 msgid "Moves: "
 msgstr "Liikepisteitä: "
 
-#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:871
+#: src/dialogs.cpp:1035 src/dialogs.cpp:1136 src/multiplayer_connect.cpp:871
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:192
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/dialogs.cpp:934 src/game.cpp:903
+#: src/dialogs.cpp:1059 src/game.cpp:905
 msgid "KB"
 msgstr "Kt"
 
@@ -5153,314 +5205,314 @@ msgstr "Kt"
 msgid "Screenshot"
 msgstr "Kuvankaappaus"
 
-#: src/game.cpp:438 src/game.cpp:1503
+#: src/game.cpp:439 src/game.cpp:1505
 msgid "The Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
-#: src/game.cpp:688
+#: src/game.cpp:690
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Varoitus: Tiedosto, jonka yritit ladata, on korruptoitunut. Ladataan siitä "
 "huolimatta.\n"
 
-#: src/game.cpp:725 src/multiplayer_connect.cpp:1378
+#: src/game.cpp:727 src/multiplayer_connect.cpp:1378
 msgid "This save is from a version too old to be loaded."
 msgstr "Tämä tallenne on aivan liian antiikkinen."
 
-#: src/game.cpp:731 src/multiplayer_connect.cpp:1385
+#: src/game.cpp:733 src/multiplayer_connect.cpp:1385
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Tämä tallenne on pelin eri versiosta. Haluatko yrittää ladata sen?"
 
-#: src/game.cpp:739 src/game.cpp:742 src/multiplayer_connect.cpp:1356
+#: src/game.cpp:741 src/game.cpp:744 src/multiplayer_connect.cpp:1356
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto, jota yritit ladata, on korruptoitunut: '"
 
-#: src/game.cpp:745
+#: src/game.cpp:747
 msgid "File I/O Error while reading the game"
 msgstr "Peliä luettaessa tiedoston I/O -virhe"
 
-#: src/game.cpp:833
+#: src/game.cpp:835
 msgid "Play a campaign"
 msgstr "Pelaa kampanjaa"
 
-#: src/game.cpp:874
+#: src/game.cpp:876
 msgid "Difficulty"
 msgstr "Vaikeustaso"
 
-#: src/game.cpp:875
+#: src/game.cpp:877
 msgid "Select difficulty level:"
 msgstr "Valitse vaikeustaso:"
 
-#: src/game.cpp:900
+#: src/game.cpp:902
 msgid "B"
 msgstr "t"
 
-#: src/game.cpp:906
+#: src/game.cpp:908
 msgid "MB"
 msgstr "Mt"
 
-#: src/game.cpp:936
+#: src/game.cpp:938
 msgid "Connect to Server"
 msgstr "Yhdistä palvelimeen"
 
-#: src/game.cpp:937
+#: src/game.cpp:939
 msgid "You will now connect to a server to download add-ons."
 msgstr "Yhdistetään palvelimeen lisäosien lataamiseksi."
 
-#: src/game.cpp:939
+#: src/game.cpp:941
 msgid "Server: "
 msgstr "Palvelin: "
 
-#: src/game.cpp:940 src/game.cpp:988
+#: src/game.cpp:942 src/game.cpp:990
 msgid "Remove Add-ons"
 msgstr "Poista lisäosia"
 
-#: src/game.cpp:975
+#: src/game.cpp:977
 msgid "You have no Add-ons installed."
 msgstr "Sinulla ei ole yhtään lisäosaa asennettuna."
 
-#: src/game.cpp:988
+#: src/game.cpp:990
 msgid "Choose the add-on to remove."
 msgstr "Valitse poistettava lisäosa."
 
-#: src/game.cpp:999
+#: src/game.cpp:1001
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Haluatko varmasti poistaa lisäosan '$addon|'?"
 
-#: src/game.cpp:1003
+#: src/game.cpp:1005
 msgid "Confirm"
 msgstr "Varmista"
 
-#: src/game.cpp:1026
+#: src/game.cpp:1028
 msgid "Add-on '$addon|' deleted."
 msgstr "Lisäosa '$addon|' poistettu."
 
-#: src/game.cpp:1031
+#: src/game.cpp:1033
 msgid "Add-on deleted"
 msgstr "Lisäosa poistettu"
 
-#: src/game.cpp:1037
+#: src/game.cpp:1039
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "Lisäosaa ei voitu poistaa -- tiedostoa ei löytynyt."
 
-#: src/game.cpp:1037 src/menu_events.cpp:703 src/menu_events.cpp:716
+#: src/game.cpp:1039 src/menu_events.cpp:703 src/menu_events.cpp:716
 #: src/multiplayer_create.cpp:512
 msgid "Error"
 msgstr "Virhe"
 
-#: src/game.cpp:1058 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1060 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Yhdistetään palvelimeen..."
 
-#: src/game.cpp:1061
+#: src/game.cpp:1063
 msgid "Could not connect to host."
 msgstr "Yhteyttä isäntäkoneeseen ei saatu."
 
-#: src/game.cpp:1070
+#: src/game.cpp:1072
 msgid "Asking for list of add-ons"
 msgstr "Pyydetään lisäosia"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1085
 msgid "Error communicating with the server."
 msgstr "Virhe viestinnässä palvelimen kanssa."
 
-#: src/game.cpp:1092 src/titlescreen.cpp:294
+#: src/game.cpp:1094 src/titlescreen.cpp:299
 msgid "Version"
 msgstr "versio"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Author"
 msgstr "tekijä"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Downloads"
 msgstr "latauksia"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Size"
 msgstr "koko"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1147
 msgid "Publish add-on: "
 msgstr "Julkaise lisäosa:"
 
-#: src/game.cpp:1149
+#: src/game.cpp:1151
 msgid "Delete add-on: "
 msgstr "Poista lisäosa:"
 
-#: src/game.cpp:1153
+#: src/game.cpp:1155
 msgid "There are no add-ons available for download from this server."
 msgstr "Tällä palvelimellta ei ole yhtään lisäosaa."
 
-#: src/game.cpp:1160
+#: src/game.cpp:1162
 msgid "Get Add-ons"
 msgstr "Hanki lisäosia"
 
-#: src/game.cpp:1161
+#: src/game.cpp:1163
 msgid "Choose the add-on to download."
 msgstr "Valitse ladattava lisäosa:"
 
-#: src/game.cpp:1204
+#: src/game.cpp:1206
 msgid "Dependencies"
 msgstr "Riippuvuudet"
 
-#: src/game.cpp:1205
+#: src/game.cpp:1207
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Tämä lisäosa tarvitsee seuraavat vaihtoehtoiset riippuvuudet:"
 
-#: src/game.cpp:1207
+#: src/game.cpp:1209
 msgid "Do you still want to download it?"
 msgstr "Haluatko silti ladata sen?"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1218
 msgid "Downloading add-on..."
 msgstr "Haetaan lisäosaa..."
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "Add-on Installed"
 msgstr "Lisäosa asennettu"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "The add-on has been installed."
 msgstr "Lisäosa on asennettu."
 
-#: src/game.cpp:1277
+#: src/game.cpp:1279
 msgid "Network communication error."
 msgstr "Verkkoviestintävirhe."
 
-#: src/game.cpp:1279
+#: src/game.cpp:1281
 msgid "Remote host disconnected."
 msgstr "Isäntäkone katkaisi yhteyden."
 
-#: src/game.cpp:1281
+#: src/game.cpp:1283
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr "Lisäosan tarvitsemien tiedostojen luonnissa oli ongelmia."
 
-#: src/game.cpp:1293 src/game.cpp:1335 src/game.cpp:1362
+#: src/game.cpp:1295 src/game.cpp:1337 src/game.cpp:1364
 #: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:69 src/playcampaign.cpp:472
 msgid "Connection timed out"
 msgstr "Yhteys katkaistiin odotuksen jälkeen."
 
-#: src/game.cpp:1296
+#: src/game.cpp:1298
 msgid "The server responded with an error: \"$error|\""
 msgstr "Palvelin vastasi virheellä: \"$error|\""
 
-#: src/game.cpp:1303
+#: src/game.cpp:1305
 msgid "Terms"
 msgstr "Ehdot"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1335
 msgid "Sending add-on"
 msgstr "Lähetetään lisäosaa"
 
-#: src/game.cpp:1337 src/game.cpp:1364
+#: src/game.cpp:1339 src/game.cpp:1366
 msgid "The server responded with an error: \""
 msgstr "Palvelin vastasi virheellä: \""
 
-#: src/game.cpp:1341 src/game.cpp:1368 src/multiplayer_wait.cpp:377
+#: src/game.cpp:1343 src/game.cpp:1370 src/multiplayer_wait.cpp:377
 msgid "Response"
 msgstr "Vastaus"
 
-#: src/game.cpp:1392
+#: src/game.cpp:1394
 msgid "Join Official Server"
 msgstr "Ota yhteys viralliseen palvelimeen"
 
-#: src/game.cpp:1393
+#: src/game.cpp:1395
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Kirjaudu Wesnothin viralliselle moninpelipalvelimelle."
 
-#: src/game.cpp:1395
+#: src/game.cpp:1397
 msgid "Connect to Host/Server"
 msgstr "Yhdistä isäntään/palvelimeen"
 
-#: src/game.cpp:1396
+#: src/game.cpp:1398
 msgid "Join a server or hosted game"
 msgstr "Ota yhteys palvelimelle tai isännöityyn peliin."
 
-#: src/game.cpp:1398
+#: src/game.cpp:1400
 msgid "Host Networked Game"
 msgstr "Isännöi verkkopeliä"
 
-#: src/game.cpp:1399
+#: src/game.cpp:1401
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1401
+#: src/game.cpp:1403
 msgid "Local Game"
 msgstr "Paikallinen peli"
 
-#: src/game.cpp:1402
+#: src/game.cpp:1404
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Pelaa moninpeli tekoälyn tai muiden ihmisten kanssa käyttäen yhtä "
 "tietokonetta"
 
-#: src/game.cpp:1410 src/multiplayer.cpp:232
+#: src/game.cpp:1412 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Sisäänkirjautuminen: "
 
-#: src/game.cpp:1447 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1449 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Peliä ei voitu ladata: "
 
-#: src/game.cpp:1449 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1451 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Virhe pelatessa: "
 
-#: src/game.cpp:1469 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1471 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Karttaa ei voitu ladata: "
 
-#: src/game.cpp:1493
+#: src/game.cpp:1495
 msgid "Language"
 msgstr "Kieli"
 
-#: src/game.cpp:1494
+#: src/game.cpp:1496
 msgid "Choose your preferred language:"
 msgstr "Valitse haluamasi kieli:"
 
-#: src/game.cpp:1648
+#: src/game.cpp:1650
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Seuraavissa lisäosissa oli virheitä, eikä niitä voitu ladata:"
 
-#: src/game.cpp:1653
+#: src/game.cpp:1655
 msgid "ERROR DETAILS:"
 msgstr "VIRHEEN TARKEMPI KUVAUS:"
 
-#: src/game.cpp:1667
+#: src/game.cpp:1669
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Varoitus: Ladattaessa asetustiedostoja tapahtui virhe: '"
 
-#: src/game.cpp:1719
+#: src/game.cpp:1721
 msgid "Error loading game configuration files: '"
 msgstr "Virhe ladattaessa asetustiedostoja: '"
 
-#: src/game.cpp:1720
+#: src/game.cpp:1722
 msgid "' (The game will now exit)"
 msgstr "'(peli sulkeutuu nyt)"
 
-#: src/game.cpp:1888
+#: src/game.cpp:1890
 msgid "Battle for Wesnoth"
 msgstr "Taistelu Wesnothista"
 
-#: src/game.cpp:2016
+#: src/game.cpp:2018
 msgid "Loading game configuration."
 msgstr "Ladataan asetustiedostoja."
 
-#: src/game.cpp:2022
+#: src/game.cpp:2024
 msgid "Re-initialize fonts for the current language."
 msgstr "Uudelleenasenna merkistö tätä kieltä varten."
 
-#: src/game.cpp:2036
+#: src/game.cpp:2038
 msgid "Loading title screen."
 msgstr "Ladataan aloitusikkunaa."
 
-#: src/game_config.cpp:251
+#: src/game_config.cpp:252
 msgid "Invalid color range: "
 msgstr "Virheellinen värialue:"
 
@@ -5701,15 +5753,15 @@ msgstr "Ohje Taisteluun Wesnothista"
 msgid "Parse error when parsing help text: "
 msgstr "Tulkintavirhe aputekstissä: "
 
-#: src/intro.cpp:98
+#: src/intro.cpp:106
 msgid "Next"
 msgstr "Seuraava"
 
-#: src/intro.cpp:99
+#: src/intro.cpp:107
 msgid "Skip"
 msgstr "Ohita"
 
-#: src/intro.cpp:347
+#: src/intro.cpp:376
 msgid "The End"
 msgstr "Loppu"
 
@@ -5969,7 +6021,7 @@ msgstr "Kartta tallennettu."
 msgid "Could not save the map: $msg"
 msgstr "Ei voitu tallentaa karttaa: $msg"
 
-#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:770
+#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:752
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
 
@@ -6069,33 +6121,33 @@ msgstr "Vaihda yksikön nimeä"
 msgid "Race"
 msgstr "Laji"
 
-#: src/menu_events.cpp:1602
+#: src/menu_events.cpp:1601
 msgid "Create Unit (Debug!)"
 msgstr "Luo yksikkö (Debug!)"
 
-#: src/menu_events.cpp:1642
+#: src/menu_events.cpp:1645
 msgid "Place Label"
 msgstr "Lisää karttamerkintä"
 
-#: src/menu_events.cpp:1645 src/menu_events.cpp:1648
+#: src/menu_events.cpp:1648 src/menu_events.cpp:1651
 msgid "Label:"
 msgstr "Karttamerkintä:"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1654
 msgid "Team only"
 msgstr "Vain joukkue"
 
-#: src/menu_events.cpp:1753
+#: src/menu_events.cpp:1756
 msgid "Search"
 msgstr "Etsi"
 
-#: src/menu_events.cpp:1796
+#: src/menu_events.cpp:1799
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Komennot: whisper list emote. Kirjoita /help [komento] saadaksesi lisää "
 "apua. "
 
-#: src/menu_events.cpp:1848
+#: src/menu_events.cpp:1851
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6103,15 +6155,15 @@ msgstr ""
 "Lähettää yksityisviestin. Pelin osanottajat eivät voi vastaanottaa viestejä. "
 "Käyttö: /whisper [pelaajanimi] [viesti]"
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1855
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Lisää pelaaja ystävälistallesi. Käyttö: /list addfriend [nimi]"
 
-#: src/menu_events.cpp:1854
+#: src/menu_events.cpp:1857
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Lisää pelaaja torjuttujen listallesi. Käyttö: /list ignore [nimi]"
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1859
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6119,19 +6171,19 @@ msgstr ""
 "Poista pelaaja ystävien tai torjuttujen listaltasi. Käyttö: /ignore remove "
 "[pelaajanimi]"
 
-#: src/menu_events.cpp:1858
+#: src/menu_events.cpp:1861
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Puhdista torjuttujen ja ystävien listasi. Käyttö: /list clear"
 
-#: src/menu_events.cpp:1860
+#: src/menu_events.cpp:1863
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Näytä torjuttujen ja ystävien listasi. Käyttö: /list display"
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1865
 msgid "Unknown subcommand"
 msgstr "Tuntematon alikomento"
 
-#: src/menu_events.cpp:1865
+#: src/menu_events.cpp:1868
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6143,55 +6195,55 @@ msgstr ""
 "(vapaaehtoinen) Alikomennot: addfriend addignore remove display clear. "
 "Kirjoits /help list [alikomento] lisäinfoa saadaksesi."
 
-#: src/menu_events.cpp:1868
+#: src/menu_events.cpp:1871
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr "Lähetä tunneilmaisu keskustelutilassa. Käyttö: /emote [viesti]"
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1873
 msgid "Unknown command"
 msgstr "Tuntematon komento"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1885
 msgid "Added to ignore list: "
 msgstr "Et enää saa viestejä, jotka lähettää"
 
-#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
+#: src/menu_events.cpp:1887 src/menu_events.cpp:1894 src/menu_events.cpp:1901
 msgid "Invalid username: "
 msgstr "Virheellinen käyttäjänimi"
 
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1892
 msgid "Added to friends list: "
 msgstr "Lisätyt ystävälistalle:"
 
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1899
 msgid "Removed from list: "
 msgstr "Poistettu listalta:"
 
-#: src/menu_events.cpp:1922
+#: src/menu_events.cpp:1925
 msgid "There are no players on your friends or ignore list."
 msgstr "Sinulla ei ole pelaajia ystävien tai tai torjuttujen listalla."
 
-#: src/menu_events.cpp:1932
+#: src/menu_events.cpp:1935
 msgid "Removed from ignore list: "
 msgstr "Saat nyt jälleen viestit, jotka lähettää"
 
-#: src/menu_events.cpp:1935
+#: src/menu_events.cpp:1938
 msgid "Removed from friends list: "
 msgstr "Poistettu ystävälistalta:"
 
-#: src/menu_events.cpp:1942
+#: src/menu_events.cpp:1945
 msgid "Unknown command: "
 msgstr "Tuntematon komento:"
 
-#: src/menu_events.cpp:2055
+#: src/menu_events.cpp:2058
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Tekstiä '$search' sisältävää yksikköä tai karttamerkintää ei löytynyt."
 
-#: src/menu_events.cpp:2232
+#: src/menu_events.cpp:2235
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/menu_events.cpp:2251
+#: src/menu_events.cpp:2254
 msgid "User-Command#3"
 msgstr "Käyttäjäkomento#3"
 
@@ -6708,11 +6760,11 @@ msgstr "Moninpelin puolia ei löytynyt."
 msgid "Choose your side:"
 msgstr "Valitse puolesi:"
 
-#: src/network.cpp:101
+#: src/network.cpp:104
 msgid "invalid network handle"
 msgstr "Virheellinen verkkokahva."
 
-#: src/network.cpp:134
+#: src/network.cpp:137
 msgid "Client disconnected"
 msgstr "Vastapuoli katkaisi yhteyden."
 
@@ -6728,16 +6780,11 @@ msgstr "Ei voitu lisätä yhteyspalikkaa."
 msgid "Could not send initial handshake"
 msgstr "Ei voitu lähettää alkukättelyä."
 
-#: src/play_controller.cpp:401
-#, fuzzy
-msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Tiedosto, jonka yritit avata on korruptoitunut."
-
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:756
 msgid "Back to start"
 msgstr "Takaisin alkuun"
 
-#: src/play_controller.cpp:776
+#: src/play_controller.cpp:758
 msgid "Back to turn "
 msgstr "Takaisin vuoron alkuun"
 
@@ -6773,12 +6820,12 @@ msgstr "Haluatko tallentaa pelisi?"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Tuntematon skenaario: '$scenario|'"
 
-#: src/playmp_controller.cpp:246
+#: src/playmp_controller.cpp:250
 #, fuzzy
 msgid "End scenario"
 msgstr "Lopeta skenaario"
 
-#: src/playmp_controller.cpp:384
+#: src/playmp_controller.cpp:391
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6875,18 +6922,18 @@ msgstr "Voitto!"
 msgid "You have emerged victorious!"
 msgstr "Olet voittaja!"
 
-#: src/playsingle_controller.cpp:428 src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:426 src/playsingle_controller.cpp:477
 msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata on korruptoitunut."
 
-#: src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:436
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
 
-#: src/playsingle_controller.cpp:566
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|'s turn"
 msgstr "Nyt on $name|n vuoro"
 
@@ -6909,6 +6956,11 @@ msgstr "Korvaa pelaajalla $player"
 #: src/playturn.cpp:228
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player on poistunut pelistä. Mitä haluat tehdä?"
+
+#: src/replay_controller.cpp:87
+#, fuzzy
+msgid "The file you have tried to load is corrupt. Continue playing?"
+msgstr "Tiedosto, jonka yritit avata on korruptoitunut."
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
@@ -6979,69 +7031,69 @@ msgstr "viholliskylä"
 msgid "Owned village"
 msgstr "sinun kyläsi"
 
-#: src/titlescreen.cpp:313
+#: src/titlescreen.cpp:318
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutoriaali"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:319
 msgid "TitleScreen button^Campaign"
 msgstr "Kampanja"
 
-#: src/titlescreen.cpp:315
+#: src/titlescreen.cpp:320
 msgid "TitleScreen button^Multiplayer"
 msgstr "Moninpeli"
 
-#: src/titlescreen.cpp:316
+#: src/titlescreen.cpp:321
 msgid "TitleScreen button^Load"
 msgstr "Lataa"
 
-#: src/titlescreen.cpp:317
+#: src/titlescreen.cpp:322
 msgid "TitleScreen button^Add-ons"
 msgstr "Lisäosat"
 
-#: src/titlescreen.cpp:318
+#: src/titlescreen.cpp:323
 msgid "TitleScreen button^Language"
 msgstr "Kieli"
 
-#: src/titlescreen.cpp:319
+#: src/titlescreen.cpp:324
 msgid "TitleScreen button^Preferences"
 msgstr "Asetukset"
 
-#: src/titlescreen.cpp:320
+#: src/titlescreen.cpp:325
 msgid "TitleScreen button^Credits"
 msgstr "Tekijät"
 
-#: src/titlescreen.cpp:321
+#: src/titlescreen.cpp:326
 msgid "TitleScreen button^Quit"
 msgstr "Lopeta"
 
-#: src/titlescreen.cpp:324
+#: src/titlescreen.cpp:329
 #, fuzzy
 msgid "TitleScreen button^Previous"
 msgstr "Tekijät"
 
-#: src/titlescreen.cpp:325
+#: src/titlescreen.cpp:330
 #, fuzzy
 msgid "TitleScreen button^Next"
 msgstr "Lopeta"
 
-#: src/titlescreen.cpp:326
+#: src/titlescreen.cpp:331
 msgid "TitleScreen button^Help"
 msgstr "Ohje"
 
-#: src/titlescreen.cpp:328
+#: src/titlescreen.cpp:333
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Auta Wesnothia"
 
-#: src/titlescreen.cpp:330
+#: src/titlescreen.cpp:335
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Aloita tutoriaali tutustuaksesi peliin."
 
-#: src/titlescreen.cpp:331
+#: src/titlescreen.cpp:336
 msgid "Start a new single player campaign"
 msgstr "Aloita uusi yksinpelin kampanja."
 
-#: src/titlescreen.cpp:332
+#: src/titlescreen.cpp:337
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -7049,43 +7101,43 @@ msgstr ""
 "Pelaa moninpeli (hotseat, LAN, tai Internet) tai yksittäinen taistelu "
 "tietokonetta vastaan."
 
-#: src/titlescreen.cpp:333
+#: src/titlescreen.cpp:338
 msgid "Load a saved game"
 msgstr "Lataa tallennettu peli"
 
-#: src/titlescreen.cpp:334
+#: src/titlescreen.cpp:339
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Lataa käyttäjien tekemiä kampanjoita, aikakausia, tai karttapakkauksia"
 
-#: src/titlescreen.cpp:335
+#: src/titlescreen.cpp:340
 msgid "Change the language"
 msgstr "Vaihda käytettävää kieltä."
 
-#: src/titlescreen.cpp:336
+#: src/titlescreen.cpp:341
 msgid "Configure the game's settings"
 msgstr "Muokkaa pelin asetuksia."
 
-#: src/titlescreen.cpp:337
+#: src/titlescreen.cpp:342
 msgid "View the credits"
 msgstr "Näytä pelin tekijät."
 
-#: src/titlescreen.cpp:338
+#: src/titlescreen.cpp:343
 msgid "Quit the game"
 msgstr "Poistu pelistä"
 
-#: src/titlescreen.cpp:339
+#: src/titlescreen.cpp:344
 msgid "Show next tip of the day"
 msgstr "Näytä seuraava päivän vihje"
 
-#: src/titlescreen.cpp:340
+#: src/titlescreen.cpp:345
 msgid "Show Battle for Wesnoth help"
 msgstr "Näytä Wesnothin ohje"
 
-#: src/titlescreen.cpp:341
+#: src/titlescreen.cpp:346
 msgid "Upload statistics"
 msgstr "Lähetä tilastot"
 
-#: src/titlescreen.cpp:397
+#: src/titlescreen.cpp:402
 msgid "Help Wesnoth by sending us information"
 msgstr "Auta Wesnothia lähettämälla meille tietoa"
 
@@ -7137,15 +7189,15 @@ msgid_plural "strikes"
 msgstr[0] "iskua"
 msgstr[1] "iskua"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "chaotic"
 msgstr "kaoottinen"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "lawful"
 msgstr "lainkuuliainen"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "neutral"
 msgstr "neutraali"
 
@@ -7176,6 +7228,9 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lataaminen"
+
+#~ msgid "Zap"
+#~ msgstr "Zap"
 
 #~ msgid "time left"
 #~ msgstr "aikaa jäljellä"

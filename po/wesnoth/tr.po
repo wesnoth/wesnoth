@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-23 21:37+0100\n"
+"POT-Creation-Date: 2007-11-28 21:32+0100\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -2213,42 +2213,43 @@ msgid ""
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:636
+#: data/core/help.cfg:637
 #, fuzzy
 msgid ""
 "\n"
-"Switch debug mode on (does not work in multiplayer). Debug mode is turned "
-"off by quitting the game or :nodebug.\n"
+"Switch debug mode on (does not work in multiplayer). See "
+"<ref>dst=debug_commands text='Debug mode commands'</ref>.\n"
+"Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
 "\n"
 "Hata ayıklama modunu aç  (çok ouyuncuda çalışmaz). Oyundan çıkınca hata "
 "ayıklama modu kapanır."
 
-#: data/core/help.cfg:637
+#: data/core/help.cfg:638
 #, fuzzy
 msgid "Bring up theme selection menu."
 msgstr ""
 "\n"
 "Tema seçme menüsünü getirir."
 
-#: data/core/help.cfg:642
+#: data/core/help.cfg:643
 msgid "Multiplayer commands"
 msgstr "Çokoyuncu komutları"
 
-#: data/core/help.cfg:646
+#: data/core/help.cfg:647
 #, fuzzy
 msgid ""
 "\n"
-"Ban a user in multiplayer by the IP address used by that username and kick "
-"him.\n"
+"Ban a user in a multiplayer game by the IP address used by that username and "
+"kick him.\n"
 "\n"
 msgstr ""
 "\n"
 "Çok oyunculuda bir oyuncuyu şutla, ve bu isimle eklenen kullanıcıya ve ona "
 "ait IP'yi de yasakla."
 
-#: data/core/help.cfg:649
+#: data/core/help.cfg:650
 #, fuzzy
 msgid ""
 "\n"
@@ -2260,7 +2261,7 @@ msgstr ""
 "Bir tarafı kontrol edeni  (buraya tarafın numarasını yaz) bunla ( buraya da "
 "kontrol edecek olan oyuncu veya izleyiciyi yaz)."
 
-#: data/core/help.cfg:652
+#: data/core/help.cfg:653
 #, fuzzy
 msgid ""
 "\n"
@@ -2274,7 +2275,7 @@ msgstr ""
 "işlem bağlantı veya buna benzer problem yaşayan oyuncuları kaldırmak için "
 "nazik bir yoldur."
 
-#: data/core/help.cfg:655
+#: data/core/help.cfg:656
 #, fuzzy
 msgid ""
 "\n"
@@ -2286,7 +2287,7 @@ msgstr ""
 "Belli bir izleyiciyi sessizleştir. Eğer kullanıcı ismi verilmez ise "
 "sessizleştirilmiş kullanıcılar listelenir"
 
-#: data/core/help.cfg:656
+#: data/core/help.cfg:657
 #, fuzzy
 msgid ""
 "\n"
@@ -2294,6 +2295,60 @@ msgid ""
 msgstr ""
 "\n"
 "İzleyicileri sessizleştirme durumunu değiştir."
+
+#: data/core/help.cfg:662
+#, fuzzy
+msgid "Debug mode commands"
+msgstr "Genel Komutlar"
+
+#: data/core/help.cfg:666
+msgid ""
+"\n"
+"Create a unit of the specified type on the selected hex.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:669
+msgid ""
+"\n"
+"Toggle fog/shroud for the current side.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:672
+msgid ""
+"\n"
+"Adds the specified amount to the current side's gold.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:675
+msgid ""
+"\n"
+"Manually set a gamestate variable to value.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:678
+msgid ""
+"\n"
+"Show a gamestate variable.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:681
+msgid ""
+"\n"
+"Manually fire the specified event.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:682
+msgid ""
+"\n"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100"
+msgstr ""
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -2748,7 +2803,7 @@ msgstr "En fazla YP bonusu +"
 msgid "Full Heal"
 msgstr "Tam tedavi"
 
-#: data/core/macros/items.cfg:265
+#: data/core/macros/items.cfg:41
 msgid ""
 "You have come across a wishing well.\n"
 "What would you like to wish for?"
@@ -2756,11 +2811,11 @@ msgstr ""
 "Bir dilek kuyusuyla karşılaştın.\n"
 "Ne dilemek istersin?"
 
-#: data/core/macros/items.cfg:269
+#: data/core/macros/items.cfg:45
 msgid "A swift victory"
 msgstr "Çabuk bir zafer"
 
-#: data/core/macros/items.cfg:277
+#: data/core/macros/items.cfg:53
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
@@ -2768,124 +2823,120 @@ msgstr ""
 "Bu altın para ile, bu savaşın güvenli ve çabuk bir zaferle sonuçlanmasını "
 "diliyorum."
 
-#: data/core/macros/items.cfg:284
+#: data/core/macros/items.cfg:60
 msgid "Lots of gold"
 msgstr "Birsürü altın"
 
-#: data/core/macros/items.cfg:292
+#: data/core/macros/items.cfg:68
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Bu tek altın paranın bana on tane olarak geri gelmesini diliyorum."
 
-#: data/core/macros/items.cfg:299
+#: data/core/macros/items.cfg:75
 msgid "Peace throughout Wesnoth."
 msgstr "Wesnoth içinde barış"
 
-#: data/core/macros/items.cfg:307
+#: data/core/macros/items.cfg:83
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Dilemeye değer tek şey memlekette barış olmasıdır."
 
-#: data/core/macros/items.cfg:314
+#: data/core/macros/items.cfg:90
 msgid "Don't make a wish."
 msgstr "Dilek dileme."
 
-#: data/core/macros/items.cfg:336
+#: data/core/macros/items.cfg:112
 msgid "Potion of Healing"
 msgstr "Tedavi iksiri"
 
-#: data/core/macros/items.cfg:339
+#: data/core/macros/items.cfg:115
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "İçeni talı bir duygu kaplıyor."
 
-#: data/core/macros/items.cfg:340
+#: data/core/macros/items.cfg:116
 msgid "You are not worthy of healing."
 msgstr "Sen iyileşmeye değmezsin."
 
-#: data/core/macros/items.cfg:374
+#: data/core/macros/items.cfg:150
 msgid "Poison"
 msgstr "Zehir"
 
-#: data/core/macros/items.cfg:377
+#: data/core/macros/items.cfg:153
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Şu anda bu birimin damarlarına zehir sızıyor."
 
-#: data/core/macros/items.cfg:412
+#: data/core/macros/items.cfg:188
 msgid "Holy Water"
 msgstr "Okunmuş su"
 
-#: data/core/macros/items.cfg:415
+#: data/core/macros/items.cfg:191
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
 msgstr ""
 
-#: data/core/macros/items.cfg:416
+#: data/core/macros/items.cfg:192
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Ben bu parçayı kullanmaya ehil değilim! Bırakalım başkası alsın."
 
-#: data/core/macros/items.cfg:451
+#: data/core/macros/items.cfg:227
 msgid "Potion of Strength"
 msgstr "Güç iksiri"
 
-#: data/core/macros/items.cfg:454
+#: data/core/macros/items.cfg:230
 msgid "Strength is given to the drinker."
 msgstr "İçen kişiye güç verildi."
 
-#: data/core/macros/items.cfg:495
+#: data/core/macros/items.cfg:271
 msgid "Potion of Decay"
 msgstr "Çürüme iksiri"
 
-#: data/core/macros/items.cfg:498
+#: data/core/macros/items.cfg:274
 msgid "This poor unit drank something really bad."
 msgstr "Bu zavallı birim cidden kötü bir şey içmiş."
 
-#: data/core/macros/items.cfg:533
+#: data/core/macros/items.cfg:309
 msgid "Ring of Regeneration"
 msgstr "İyileşme yüzüğü"
 
-#: data/core/macros/items.cfg:536
+#: data/core/macros/items.cfg:312
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Bu yüzük taşıyanı her sırada biraz tedavi edecektir."
 
-#: data/core/macros/items.cfg:573
+#: data/core/macros/items.cfg:349
 msgid "Ring of Slowness"
 msgstr "Yavaşlık yüzüğü"
 
-#: data/core/macros/items.cfg:576
+#: data/core/macros/items.cfg:352
 msgid "The bearer of this ring is slowed."
 msgstr "Bu yüzüğü taşıyan kişi yavaşlar."
 
-#: data/core/macros/items.cfg:611
+#: data/core/macros/items.cfg:387
 msgid "Staff of Swiftness"
 msgstr "Çeviklik sopası"
 
-#: data/core/macros/items.cfg:614
+#: data/core/macros/items.cfg:390
 msgid "This staff will grant the bearer swift movement."
 msgstr "Bu sopa taşıyana çevikleşmiş hareket kabiliyeti sağlar."
 
-#: data/core/macros/items.cfg:615
+#: data/core/macros/items.cfg:391
 msgid "Only magical beings can wield such an object."
 msgstr "Sadece büyücü olanlar bu maddeyi kullanabilir."
 
-#: data/core/macros/items.cfg:649
+#: data/core/macros/items.cfg:425
 msgid "Storm Trident"
 msgstr "Üç dişli fırtına zıpkını"
 
-#: data/core/macros/items.cfg:652
+#: data/core/macros/items.cfg:428
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
 "Bu üç dişli zıpkın bir su adamına düşmalarına elektrik oku atma imkanı verir."
 
-#: data/core/macros/items.cfg:653
+#: data/core/macros/items.cfg:429
 msgid "Only the mermen can use this item!"
 msgstr "Sadece deniz adamları bu aleti kullanabilirler!"
 
-#: data/core/macros/items.cfg:666
+#: data/core/macros/items.cfg:442
 msgid "storm trident"
 msgstr "üç dişli rüzgar zıpkını"
-
-#: data/core/macros/items.cfg:747
-msgid "Zap"
-msgstr "Zap"
 
 #: data/core/macros/names.cfg:3
 msgid ""
@@ -4144,8 +4195,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:77
 #, fuzzy
 msgid ""
-"Skeletons are resistant to piercing and bladed attacks but vulnerable to "
-"impact, fire, and arcane attacks."
+"Skeletons are resistant to piercing, bladed and cold based attacks but "
+"vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "İskeletler delme ve kesme saldırılarına karşı dayanıklıdırlar, ama darbe, "
 "ateş ve kutsal saldırılara karşı zayıftırlar."
@@ -4550,97 +4601,97 @@ msgstr "Birimimiz neye dönüşsün?"
 msgid "No objectives available"
 msgstr "Hedef yok"
 
-#: src/dialogs.cpp:229
+#: src/dialogs.cpp:230
 msgid "Save Game"
 msgstr "Oyunu kaydet"
 
-#: src/dialogs.cpp:237
+#: src/dialogs.cpp:238
 #, fuzzy
 msgid "Quit Game"
 msgstr "Oyundan çık"
 
-#: src/dialogs.cpp:242
+#: src/dialogs.cpp:243
 msgid "Ignore All"
 msgstr ""
 
-#: src/dialogs.cpp:259
+#: src/dialogs.cpp:260
 msgid "Overwrite?"
 msgstr "Üzerine yaz?"
 
-#: src/dialogs.cpp:260
+#: src/dialogs.cpp:261
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Kayıt zaten mevcut. Üzerine yazmak istiyor musun?"
 
-#: src/dialogs.cpp:294
+#: src/dialogs.cpp:295
 msgid "Do you really want to delete this game?"
 msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 
-#: src/dialogs.cpp:296
+#: src/dialogs.cpp:297
 msgid "Don't ask me again!"
 msgstr "Bir daha sorma!"
 
-#: src/dialogs.cpp:446
+#: src/dialogs.cpp:447
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:463
+#: src/dialogs.cpp:464
 msgid "#(Invalid)"
 msgstr "#(Geçersiz)"
 
-#: src/dialogs.cpp:470
+#: src/dialogs.cpp:471
 #, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "Kampanya Tasarımcısı"
 
-#: src/dialogs.cpp:472 src/game.cpp:1408
+#: src/dialogs.cpp:473 src/game.cpp:1410
 msgid "Multiplayer"
 msgstr "Çokoyuncu"
 
-#: src/dialogs.cpp:474
+#: src/dialogs.cpp:475
 msgid "Tutorial"
 msgstr "Eğitim"
 
-#: src/dialogs.cpp:482
+#: src/dialogs.cpp:483
 msgid "replay"
 msgstr "tekrar"
 
-#: src/dialogs.cpp:484 src/menu_events.cpp:689
+#: src/dialogs.cpp:485 src/menu_events.cpp:689
 msgid "Turn"
 msgstr "El"
 
-#: src/dialogs.cpp:486
+#: src/dialogs.cpp:487
 msgid "Scenario Start"
 msgstr "Senaryo başlangıcı"
 
-#: src/dialogs.cpp:489
+#: src/dialogs.cpp:490
 msgid "Difficulty: "
 msgstr "Zorluk: "
 
-#: src/dialogs.cpp:491
+#: src/dialogs.cpp:492
 msgid "Version: "
 msgstr "Versiyon: "
 
-#: src/dialogs.cpp:515 src/dialogs.cpp:531
+#: src/dialogs.cpp:516 src/dialogs.cpp:532
 msgid "%b %d %y"
 msgstr "%d %b %y"
 
-#: src/dialogs.cpp:521
+#: src/dialogs.cpp:522
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:524
+#: src/dialogs.cpp:525
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:527
+#: src/dialogs.cpp:528
 msgid "%b %d"
 msgstr "%d %b"
 
-#: src/dialogs.cpp:551
+#: src/dialogs.cpp:552
 msgid "No Saved Games"
 msgstr "Kayıtlı oyun yok"
 
-#: src/dialogs.cpp:552
+#: src/dialogs.cpp:553
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -4650,57 +4701,57 @@ msgstr ""
 "Yüklemek için kayıtlı oyun yok. \n"
 "(Oyunlar bir senaryoyu bitirdiğiniz zaman otomatik olarak kayıt edilir)"
 
-#: src/dialogs.cpp:564
+#: src/dialogs.cpp:565
 msgid "Delete Save"
 msgstr "Kaydı sil"
 
-#: src/dialogs.cpp:570
+#: src/dialogs.cpp:571
 msgid "Date"
 msgstr "Tarih"
 
-#: src/dialogs.cpp:570 src/game.cpp:1092 src/menu_events.cpp:336
+#: src/dialogs.cpp:571 src/game.cpp:1094 src/menu_events.cpp:336
 #: src/menu_events.cpp:1096 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "İsim"
 
-#: src/dialogs.cpp:591 src/multiplayer_create.cpp:96
+#: src/dialogs.cpp:592 src/multiplayer_create.cpp:96
 msgid "Load Game"
 msgstr "Oyun yükle"
 
-#: src/dialogs.cpp:592
+#: src/dialogs.cpp:593
 msgid "Choose the game to load"
 msgstr "Yüklenecek oyunu seç"
 
-#: src/dialogs.cpp:598
+#: src/dialogs.cpp:599
 msgid "Show replay"
 msgstr "Tekrar göster"
 
-#: src/dialogs.cpp:626 src/dialogs.cpp:638
+#: src/dialogs.cpp:628
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:731 src/help.cpp:1254
+#: src/dialogs.cpp:720 src/help.cpp:1254
 msgid "level"
 msgstr "seviye"
 
-#: src/dialogs.cpp:748 src/help.cpp:1360
+#: src/dialogs.cpp:733 src/help.cpp:1360
 msgid "HP: "
 msgstr "YP: "
 
-#: src/dialogs.cpp:751
+#: src/dialogs.cpp:736
 msgid "XP: "
 msgstr "TP: "
 
-#: src/dialogs.cpp:756 src/help.cpp:1361
+#: src/dialogs.cpp:740 src/help.cpp:1361
 msgid "Moves: "
 msgstr "Hareket: "
 
-#: src/dialogs.cpp:910 src/dialogs.cpp:1011 src/multiplayer_connect.cpp:871
+#: src/dialogs.cpp:1035 src/dialogs.cpp:1136 src/multiplayer_connect.cpp:871
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:192
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/dialogs.cpp:934 src/game.cpp:903
+#: src/dialogs.cpp:1059 src/game.cpp:905
 msgid "KB"
 msgstr "KB"
 
@@ -4708,329 +4759,329 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: src/game.cpp:438 src/game.cpp:1503
+#: src/game.cpp:439 src/game.cpp:1505
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:688
+#: src/game.cpp:690
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Uyarı: Yüklemeye çalıştığın dosya bozuk. Yıne de yükleniyor.\n"
 
-#: src/game.cpp:725 src/multiplayer_connect.cpp:1378
+#: src/game.cpp:727 src/multiplayer_connect.cpp:1378
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Bu kayıt oyunun farklı bir versiyonundan. Yüklemeyi denemek istiyor musun?"
 
-#: src/game.cpp:731 src/multiplayer_connect.cpp:1385
+#: src/game.cpp:733 src/multiplayer_connect.cpp:1385
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Bu kayıt oyunun farklı bir versiyonundan. Yüklemeyi denemek istiyor musun?"
 
-#: src/game.cpp:739 src/game.cpp:742 src/multiplayer_connect.cpp:1356
+#: src/game.cpp:741 src/game.cpp:744 src/multiplayer_connect.cpp:1356
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Yüklemeye çalıştığın dosya bozuk: "
 
-#: src/game.cpp:745
+#: src/game.cpp:747
 msgid "File I/O Error while reading the game"
 msgstr "Oyunu okurken dosya I/O hatası"
 
-#: src/game.cpp:833
+#: src/game.cpp:835
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Kampanya"
 
-#: src/game.cpp:874
+#: src/game.cpp:876
 msgid "Difficulty"
 msgstr "Zorluk"
 
-#: src/game.cpp:875
+#: src/game.cpp:877
 msgid "Select difficulty level:"
 msgstr "Zorluk seviyesini seç:"
 
-#: src/game.cpp:900
+#: src/game.cpp:902
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:906
+#: src/game.cpp:908
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:936
+#: src/game.cpp:938
 msgid "Connect to Server"
 msgstr "Suncuya bağlan"
 
-#: src/game.cpp:937
+#: src/game.cpp:939
 msgid "You will now connect to a server to download add-ons."
 msgstr "Şimdi eklentileri indirmek üzere bir eklenti sunucusuna bağlanacaksın."
 
-#: src/game.cpp:939
+#: src/game.cpp:941
 msgid "Server: "
 msgstr "Sunucu: "
 
-#: src/game.cpp:940 src/game.cpp:988
+#: src/game.cpp:942 src/game.cpp:990
 #, fuzzy
 msgid "Remove Add-ons"
 msgstr "Eklentiler al"
 
-#: src/game.cpp:975
+#: src/game.cpp:977
 #, fuzzy
 msgid "You have no Add-ons installed."
 msgstr "Eklenti yüklendi."
 
-#: src/game.cpp:988
+#: src/game.cpp:990
 #, fuzzy
 msgid "Choose the add-on to remove."
 msgstr "İndirilecek eklentiyi seç"
 
-#: src/game.cpp:999
+#: src/game.cpp:1001
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/game.cpp:1003
+#: src/game.cpp:1005
 msgid "Confirm"
 msgstr ""
 
-#: src/game.cpp:1026
+#: src/game.cpp:1028
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Eklenti yüklendi"
 
-#: src/game.cpp:1031
+#: src/game.cpp:1033
 #, fuzzy
 msgid "Add-on deleted"
 msgstr "Eklenti yüklendi"
 
-#: src/game.cpp:1037
+#: src/game.cpp:1039
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1037 src/menu_events.cpp:703 src/menu_events.cpp:716
+#: src/game.cpp:1039 src/menu_events.cpp:703 src/menu_events.cpp:716
 #: src/multiplayer_create.cpp:512
 msgid "Error"
 msgstr "Hata"
 
-#: src/game.cpp:1058 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1060 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Sunucuya bağlanılıyor..."
 
-#: src/game.cpp:1061
+#: src/game.cpp:1063
 msgid "Could not connect to host."
 msgstr "Sunucuya bağlanılamadı"
 
-#: src/game.cpp:1070
+#: src/game.cpp:1072
 msgid "Asking for list of add-ons"
 msgstr "Eklentiler listesi soruluyor"
 
-#: src/game.cpp:1083
+#: src/game.cpp:1085
 msgid "Error communicating with the server."
 msgstr "Sunucu ile iletişim hatası."
 
-#: src/game.cpp:1092 src/titlescreen.cpp:294
+#: src/game.cpp:1094 src/titlescreen.cpp:299
 msgid "Version"
 msgstr "Versiyon"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Author"
 msgstr "Yazar"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Downloads"
 msgstr "İndirmeler"
 
-#: src/game.cpp:1093
+#: src/game.cpp:1095
 msgid "Size"
 msgstr "Boyut"
 
-#: src/game.cpp:1145
+#: src/game.cpp:1147
 msgid "Publish add-on: "
 msgstr "Eklenti yayınla: "
 
-#: src/game.cpp:1149
+#: src/game.cpp:1151
 msgid "Delete add-on: "
 msgstr "Eklenti sil: "
 
-#: src/game.cpp:1153
+#: src/game.cpp:1155
 msgid "There are no add-ons available for download from this server."
 msgstr "Bu serverdan indirilebilecek bir eklenti yok."
 
-#: src/game.cpp:1160
+#: src/game.cpp:1162
 msgid "Get Add-ons"
 msgstr "Eklentiler al"
 
-#: src/game.cpp:1161
+#: src/game.cpp:1163
 msgid "Choose the add-on to download."
 msgstr "İndirilecek eklentiyi seç"
 
-#: src/game.cpp:1204
+#: src/game.cpp:1206
 #, fuzzy
 msgid "Dependencies"
 msgstr "Tercihler"
 
-#: src/game.cpp:1205
+#: src/game.cpp:1207
 msgid "This add-on requires the following additional dependencies:"
 msgstr ""
 
-#: src/game.cpp:1207
+#: src/game.cpp:1209
 #, fuzzy
 msgid "Do you still want to download it?"
 msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1218
 msgid "Downloading add-on..."
 msgstr "Eklenti yükleniyor..."
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "Add-on Installed"
 msgstr "Eklenti yüklendi"
 
-#: src/game.cpp:1274
+#: src/game.cpp:1276
 msgid "The add-on has been installed."
 msgstr "Eklenti yüklendi."
 
-#: src/game.cpp:1277
+#: src/game.cpp:1279
 msgid "Network communication error."
 msgstr "Network iletişim hatası"
 
-#: src/game.cpp:1279
+#: src/game.cpp:1281
 msgid "Remote host disconnected."
 msgstr "Uzak sunucuyla bağlantı koptu"
 
-#: src/game.cpp:1281
+#: src/game.cpp:1283
 #, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
 "Bu kampanyayı yüklemek için gerekli dosyaları oluşturmada bir hata oldu."
 
-#: src/game.cpp:1293 src/game.cpp:1335 src/game.cpp:1362
+#: src/game.cpp:1295 src/game.cpp:1337 src/game.cpp:1364
 #: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:69 src/playcampaign.cpp:472
 msgid "Connection timed out"
 msgstr "Bağlantı süresi aşıldı"
 
-#: src/game.cpp:1296
+#: src/game.cpp:1298
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Server bir hata ile karşılık verdi: "
 
-#: src/game.cpp:1303
+#: src/game.cpp:1305
 msgid "Terms"
 msgstr "Şartlar"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1335
 msgid "Sending add-on"
 msgstr "Eklenti gönderiliyor "
 
-#: src/game.cpp:1337 src/game.cpp:1364
+#: src/game.cpp:1339 src/game.cpp:1366
 msgid "The server responded with an error: \""
 msgstr "Server bir hata ile karşılık verdi: "
 
-#: src/game.cpp:1341 src/game.cpp:1368 src/multiplayer_wait.cpp:377
+#: src/game.cpp:1343 src/game.cpp:1370 src/multiplayer_wait.cpp:377
 msgid "Response"
 msgstr "Karşılık"
 
-#: src/game.cpp:1392
+#: src/game.cpp:1394
 msgid "Join Official Server"
 msgstr "Resmi sunucuya gir"
 
-#: src/game.cpp:1393
+#: src/game.cpp:1395
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Resmi Wesnoth multiplayer sunucusuna gir"
 
-#: src/game.cpp:1395
+#: src/game.cpp:1397
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Suncuya bağlan"
 
-#: src/game.cpp:1396
+#: src/game.cpp:1398
 msgid "Join a server or hosted game"
 msgstr "Bir sunucuya veya sunulu oyuna gir"
 
-#: src/game.cpp:1398
+#: src/game.cpp:1400
 msgid "Host Networked Game"
 msgstr "Network üzeri oyun host et"
 
-#: src/game.cpp:1399
+#: src/game.cpp:1401
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1401
+#: src/game.cpp:1403
 #, fuzzy
 msgid "Local Game"
 msgstr "Oyun yükle"
 
-#: src/game.cpp:1402
+#: src/game.cpp:1404
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Aynı makina üzerinde bir çok oyunculu oyun oyna."
 
-#: src/game.cpp:1410 src/multiplayer.cpp:232
+#: src/game.cpp:1412 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Giriş: "
 
-#: src/game.cpp:1447 src/playcampaign.cpp:97 src/playcampaign.cpp:383
+#: src/game.cpp:1449 src/playcampaign.cpp:97 src/playcampaign.cpp:383
 msgid "The game could not be loaded: "
 msgstr "Oyun yüklenemedi: "
 
-#: src/game.cpp:1449 src/playcampaign.cpp:99 src/playcampaign.cpp:386
+#: src/game.cpp:1451 src/playcampaign.cpp:99 src/playcampaign.cpp:386
 msgid "Error while playing the game: "
 msgstr "Oyunu oynarken hata: "
 
-#: src/game.cpp:1469 src/playcampaign.cpp:101 src/playcampaign.cpp:389
+#: src/game.cpp:1471 src/playcampaign.cpp:101 src/playcampaign.cpp:389
 msgid "The game map could not be loaded: "
 msgstr "Oyun haritası yüklenemedi: "
 
-#: src/game.cpp:1493
+#: src/game.cpp:1495
 msgid "Language"
 msgstr "Dil"
 
-#: src/game.cpp:1494
+#: src/game.cpp:1496
 msgid "Choose your preferred language:"
 msgstr "Tercih ettiğin dili seç:"
 
-#: src/game.cpp:1648
+#: src/game.cpp:1650
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Şu ek kampanya(lar) hatalı ve yüklenemedi: "
 
-#: src/game.cpp:1653
+#: src/game.cpp:1655
 msgid "ERROR DETAILS:"
 msgstr "HATA DETAYLARI:"
 
-#: src/game.cpp:1667
+#: src/game.cpp:1669
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Uyarı : Oyun konfigürasyon dosyalarını yüklerken hata oluştu : '"
 
-#: src/game.cpp:1719
+#: src/game.cpp:1721
 msgid "Error loading game configuration files: '"
 msgstr "Oyun konfigürasyon dosyalarını yüklerken Hata: '"
 
-#: src/game.cpp:1720
+#: src/game.cpp:1722
 msgid "' (The game will now exit)"
 msgstr "' (Oyun şimdi bitiyor)"
 
-#: src/game.cpp:1888
+#: src/game.cpp:1890
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:2016
+#: src/game.cpp:2018
 #, fuzzy
 msgid "Loading game configuration."
 msgstr "Oyun konfigürasyon dosyalarını yüklerken Hata: '"
 
-#: src/game.cpp:2022
+#: src/game.cpp:2024
 msgid "Re-initialize fonts for the current language."
 msgstr ""
 
-#: src/game.cpp:2036
+#: src/game.cpp:2038
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
-#: src/game_config.cpp:251
+#: src/game_config.cpp:252
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Geçersiz renk"
@@ -5275,15 +5326,15 @@ msgstr "The Battle for Wesnoth Yardım"
 msgid "Parse error when parsing help text: "
 msgstr "Yardım yazısını ayırırken ayırma hatası: "
 
-#: src/intro.cpp:98
+#: src/intro.cpp:106
 msgid "Next"
 msgstr "Sonraki"
 
-#: src/intro.cpp:99
+#: src/intro.cpp:107
 msgid "Skip"
 msgstr "Atla"
 
-#: src/intro.cpp:347
+#: src/intro.cpp:376
 msgid "The End"
 msgstr "Son"
 
@@ -5567,7 +5618,7 @@ msgstr ""
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:770
+#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:752
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
 
@@ -5663,35 +5714,35 @@ msgstr "Birimin ismini değiştir"
 msgid "Race"
 msgstr "topuz"
 
-#: src/menu_events.cpp:1602
+#: src/menu_events.cpp:1601
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1642
+#: src/menu_events.cpp:1645
 msgid "Place Label"
 msgstr "Etiket koy"
 
-#: src/menu_events.cpp:1645 src/menu_events.cpp:1648
+#: src/menu_events.cpp:1648 src/menu_events.cpp:1651
 msgid "Label:"
 msgstr "Etiket:"
 
-#: src/menu_events.cpp:1651
+#: src/menu_events.cpp:1654
 #, fuzzy
 msgid "Team only"
 msgstr "Çamur rengi"
 
-#: src/menu_events.cpp:1753
+#: src/menu_events.cpp:1756
 msgid "Search"
 msgstr "Ara"
 
-#: src/menu_events.cpp:1796
+#: src/menu_events.cpp:1799
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Komutlar: whisper duyguları es geçer. Daha fazla yardım için /help [komut] "
 "yazınız."
 
-#: src/menu_events.cpp:1848
+#: src/menu_events.cpp:1851
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5699,17 +5750,17 @@ msgstr ""
 "Özel mesajlar gönderir. Oyunu oynayan kullanıcılara mesaj gönderemezsiniz. "
 "Kullanım: /whisper [kullanıcı ismi] [mesaj]"
 
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1855
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Göz ardı listenize oyuncu ekler. Kullanım : /ignore add [argüman]"
 
-#: src/menu_events.cpp:1854
+#: src/menu_events.cpp:1857
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Göz ardı listenize oyuncu ekler. Kullanım : /ignore add [argüman]"
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1859
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -5717,21 +5768,21 @@ msgid ""
 msgstr ""
 "Gözardı listenizden oyuncu kaldırır. Kullanım : /ignore remove [argüman]"
 
-#: src/menu_events.cpp:1858
+#: src/menu_events.cpp:1861
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Gözardı listenizi temizler. Kullanım : /ignore clear"
 
-#: src/menu_events.cpp:1860
+#: src/menu_events.cpp:1863
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Gözardı listenizi gösterir. Kullanım : /ignore list"
 
-#: src/menu_events.cpp:1862
+#: src/menu_events.cpp:1865
 msgid "Unknown subcommand"
 msgstr "Bilinmeyen alt komut"
 
-#: src/menu_events.cpp:1865
+#: src/menu_events.cpp:1868
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5739,58 +5790,58 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1868
+#: src/menu_events.cpp:1871
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1873
 msgid "Unknown command"
 msgstr "Bilinmeyen komut"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1885
 msgid "Added to ignore list: "
 msgstr "Gözardı listenize eklenen: "
 
-#: src/menu_events.cpp:1884 src/menu_events.cpp:1891 src/menu_events.cpp:1898
+#: src/menu_events.cpp:1887 src/menu_events.cpp:1894 src/menu_events.cpp:1901
 msgid "Invalid username: "
 msgstr "Geçersiz kullanıcı ismi"
 
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1892
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Gözardı listenize eklenen: "
 
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1899
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1922
+#: src/menu_events.cpp:1925
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1932
+#: src/menu_events.cpp:1935
 msgid "Removed from ignore list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1935
+#: src/menu_events.cpp:1938
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1942
+#: src/menu_events.cpp:1945
 msgid "Unknown command: "
 msgstr "Bilinmeyen Komut: "
 
-#: src/menu_events.cpp:2055
+#: src/menu_events.cpp:2058
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "'$search' yazısını içeren etiket veya birim bulunamadı."
 
-#: src/menu_events.cpp:2232
+#: src/menu_events.cpp:2235
 msgid "prompt^Command:"
 msgstr "Komut:"
 
-#: src/menu_events.cpp:2251
+#: src/menu_events.cpp:2254
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Komutlar"
@@ -6318,11 +6369,11 @@ msgstr "Çok oyunculu taraf yok"
 msgid "Choose your side:"
 msgstr "Tarafını seç:"
 
-#: src/network.cpp:101
+#: src/network.cpp:104
 msgid "invalid network handle"
 msgstr "Geçersiz ağ bağlantısı"
 
-#: src/network.cpp:134
+#: src/network.cpp:137
 msgid "Client disconnected"
 msgstr "İstemcinin bağlantısı koptu"
 
@@ -6338,16 +6389,11 @@ msgstr "Soket, soket setine eklenemedi"
 msgid "Could not send initial handshake"
 msgstr "İlk el tokuşma gönderilemedi"
 
-#: src/play_controller.cpp:401
-#, fuzzy
-msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Yüklemeye çalıştığın dosya bozuk"
-
-#: src/play_controller.cpp:774
+#: src/play_controller.cpp:756
 msgid "Back to start"
 msgstr "Başa geri dön"
 
-#: src/play_controller.cpp:776
+#: src/play_controller.cpp:758
 msgid "Back to turn "
 msgstr "sıraya geri dön"
 
@@ -6388,12 +6434,12 @@ msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Bilinmeyen Senaryo: '"
 
-#: src/playmp_controller.cpp:246
+#: src/playmp_controller.cpp:250
 #, fuzzy
 msgid "End scenario"
 msgstr "Uzak Senaryo:"
 
-#: src/playmp_controller.cpp:384
+#: src/playmp_controller.cpp:391
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6479,11 +6525,11 @@ msgstr "Galibiyet"
 msgid "You have emerged victorious!"
 msgstr "Galip olarak tamamladın!"
 
-#: src/playsingle_controller.cpp:428 src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:426 src/playsingle_controller.cpp:477
 msgid "The file you have tried to load is corrupt"
 msgstr "Yüklemeye çalıştığın dosya bozuk"
 
-#: src/playsingle_controller.cpp:438
+#: src/playsingle_controller.cpp:436
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6491,7 +6537,7 @@ msgstr ""
 "Bir ağ bağlantı kesilmesi oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musun?"
 
-#: src/playsingle_controller.cpp:566
+#: src/playsingle_controller.cpp:564
 #, fuzzy
 msgid "It is now $name|'s turn"
 msgstr "Şimdi senin sıran"
@@ -6517,6 +6563,11 @@ msgstr "Mahalli oyuncu ile değiştir"
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "oyunu terketti. Ne yapmak istersin?"
+
+#: src/replay_controller.cpp:87
+#, fuzzy
+msgid "The file you have tried to load is corrupt. Continue playing?"
+msgstr "Yüklemeye çalıştığın dosya bozuk"
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
@@ -6586,73 +6637,73 @@ msgstr "Düşman köyü"
 msgid "Owned village"
 msgstr "Sahipli köy"
 
-#: src/titlescreen.cpp:313
+#: src/titlescreen.cpp:318
 msgid "TitleScreen button^Tutorial"
 msgstr "Eğitim"
 
-#: src/titlescreen.cpp:314
+#: src/titlescreen.cpp:319
 msgid "TitleScreen button^Campaign"
 msgstr "Kampanya"
 
-#: src/titlescreen.cpp:315
+#: src/titlescreen.cpp:320
 msgid "TitleScreen button^Multiplayer"
 msgstr "Çok oyunculu"
 
-#: src/titlescreen.cpp:316
+#: src/titlescreen.cpp:321
 msgid "TitleScreen button^Load"
 msgstr "Yükle"
 
-#: src/titlescreen.cpp:317
+#: src/titlescreen.cpp:322
 #, fuzzy
 msgid "TitleScreen button^Add-ons"
 msgstr "Eklentiler"
 
-#: src/titlescreen.cpp:318
+#: src/titlescreen.cpp:323
 msgid "TitleScreen button^Language"
 msgstr "Dil"
 
-#: src/titlescreen.cpp:319
+#: src/titlescreen.cpp:324
 msgid "TitleScreen button^Preferences"
 msgstr "Seçenekler"
 
-#: src/titlescreen.cpp:320
+#: src/titlescreen.cpp:325
 #, fuzzy
 msgid "TitleScreen button^Credits"
 msgstr "Çıkış"
 
-#: src/titlescreen.cpp:321
+#: src/titlescreen.cpp:326
 msgid "TitleScreen button^Quit"
 msgstr "Çıkış"
 
-#: src/titlescreen.cpp:324
+#: src/titlescreen.cpp:329
 #, fuzzy
 msgid "TitleScreen button^Previous"
 msgstr "Çıkış"
 
-#: src/titlescreen.cpp:325
+#: src/titlescreen.cpp:330
 #, fuzzy
 msgid "TitleScreen button^Next"
 msgstr "Çıkış"
 
-#: src/titlescreen.cpp:326
+#: src/titlescreen.cpp:331
 #, fuzzy
 msgid "TitleScreen button^Help"
 msgstr "Yükle"
 
-#: src/titlescreen.cpp:328
+#: src/titlescreen.cpp:333
 #, fuzzy
 msgid "TitleScreen button^Help Wesnoth"
 msgstr "Yükle"
 
-#: src/titlescreen.cpp:330
+#: src/titlescreen.cpp:335
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Kendini oyuna alıştırmak için bir eğitim başlat"
 
-#: src/titlescreen.cpp:331
+#: src/titlescreen.cpp:336
 msgid "Start a new single player campaign"
 msgstr "Yeni bir tek kişilik kampanya başlat"
 
-#: src/titlescreen.cpp:332
+#: src/titlescreen.cpp:337
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -6660,46 +6711,46 @@ msgstr ""
 "Çok oyunculu oyun (ikili, LAN veya Internet) veya YZ'ye karşı tek kişilik "
 "senaryo oyna."
 
-#: src/titlescreen.cpp:333
+#: src/titlescreen.cpp:338
 #, fuzzy
 msgid "Load a saved game"
 msgstr "Kayıtlı bir tek oyuncu oyununu yükle"
 
-#: src/titlescreen.cpp:334
+#: src/titlescreen.cpp:339
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Kullanıcı kampanyaları, çağ, veya harita paketleri"
 
-#: src/titlescreen.cpp:335
+#: src/titlescreen.cpp:340
 msgid "Change the language"
 msgstr "Dili değiştir"
 
-#: src/titlescreen.cpp:336
+#: src/titlescreen.cpp:341
 msgid "Configure the game's settings"
 msgstr "Oyunun ayarlarını değiştir"
 
-#: src/titlescreen.cpp:337
+#: src/titlescreen.cpp:342
 msgid "View the credits"
 msgstr "Jenerike bak"
 
-#: src/titlescreen.cpp:338
+#: src/titlescreen.cpp:343
 msgid "Quit the game"
 msgstr "Oyundan çık"
 
-#: src/titlescreen.cpp:339
+#: src/titlescreen.cpp:344
 msgid "Show next tip of the day"
 msgstr ""
 
-#: src/titlescreen.cpp:340
+#: src/titlescreen.cpp:345
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "The Battle for Wesnoth Yardım"
 
-#: src/titlescreen.cpp:341
+#: src/titlescreen.cpp:346
 #, fuzzy
 msgid "Upload statistics"
 msgstr "İstatistikler"
 
-#: src/titlescreen.cpp:397
+#: src/titlescreen.cpp:402
 msgid "Help Wesnoth by sending us information"
 msgstr "Bize bilgi göndererek Wesnoth'a yardım et"
 
@@ -6750,15 +6801,15 @@ msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "vuruş"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "chaotic"
 msgstr "kaotik"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "lawful"
 msgstr "adaletli"
 
-#: src/unit_types.cpp:741
+#: src/unit_types.cpp:774
 msgid "neutral"
 msgstr "tarafsız"
 
@@ -6790,6 +6841,9 @@ msgstr "Wesnoth'u sizin için daha iyi hale getirmemize yardım et!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Özet yüklemeyi aç"
+
+#~ msgid "Zap"
+#~ msgstr "Zap"
 
 #, fuzzy
 #~ msgid "time left"
