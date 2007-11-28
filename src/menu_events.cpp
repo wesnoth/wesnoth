@@ -2224,7 +2224,7 @@ private:
 		} else if(game_config::debug && cmd == "gold") {
 			teams_[team_num - 1].spend_gold(-lexical_cast_default<int>(data,1000));
 			gui_->redraw_everything();
-		} else if(game_config::debug && cmd == "throw") {
+		} else if(game_config::debug && (cmd == "throw" || cmd == "fire")) {
 			game_events::fire(data);
 			gui_->redraw_everything();
 		}
