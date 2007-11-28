@@ -625,7 +625,7 @@ void play_controller::handle_event(const SDL_Event& event)
 
 				const unit_map::iterator u = mouse_handler_.selected_unit();
 
-				if(u != units_.end() && u->second.side() == player_number_) {
+				if(u != units_.end()) {
 					const bool teleport = u->second.get_ability_bool("teleport",u->first);
 					mouse_handler_.set_current_paths(paths(map_,status_,gameinfo_,units_,u->first,
 					                       teams_,false,teleport, teams_[gui_->viewing_team()],
