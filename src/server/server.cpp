@@ -141,7 +141,7 @@ private:
 	time_t last_stats_;
 	void dump_stats(const time_t& now);
 
-	void process_data(const network::connection sock, config& data);
+	void process_data(const network::connection sock, const config& data);
 	void process_login(const network::connection sock, const config& data);
 	//! Handle queries from clients.
 	void process_query(const network::connection sock, const config& query);
@@ -149,8 +149,8 @@ private:
 	std::string process_command(const std::string& cmd);
 	//! Handle private messages between players.
 	void process_whisper(const network::connection sock, const config& whisper) const;
-	void process_data_from_player_in_lobby(const network::connection sock, config& data);
-	void process_data_from_player_in_game(const network::connection sock, config& data);
+	void process_data_lobby(const network::connection sock, const config& data);
+	void process_data_game(const network::connection sock, const config& data);
 	void delete_game(std::vector<game>::iterator game_it);
 };
 
@@ -430,7 +430,7 @@ void server::run() {
 	}
 }
 
-void server::process_data(const network::connection sock, config& data) {
+void server::process_data(const network::connection sock, const config& data) {
 	if (proxy::is_proxy(sock)) {
 		proxy::received_data(sock, data);
 	}
@@ -447,10 +447,10 @@ void server::process_data(const network::connection sock, config& data) {
 		process_whisper(sock, *whisper);
 	} else if (lobby_.is_observer(sock)) {
 		DBG_SERVER << "RECEIVED from: " << sock << ": " << data.debug();
-		process_data_from_player_in_lobby(sock, data);
+		process_data_lobby(sock, data);
 	} else {
 		DBG_SERVER << "RECEIVED from: " << sock << ": " << data.debug();
-		process_data_from_player_in_game(sock, data);
+		process_data_game(sock, data);
 	}
 }
 
@@ -761,7 +761,9 @@ std::string server::process_command(const std::string& query) {
 	return out.str();
 }
 
-void server::process_whisper(const network::connection sock, const config& whisper) const {
+void server::process_whisper(const network::connection sock,
+	const config& whisper) const
+{
 	const player_map::const_iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		DBG_SERVER << "ERROR: Could not find player socket.\n";
@@ -814,8 +816,8 @@ void server::process_whisper(const network::connection sock, const config& whisp
 	}
 }
 
-void server::process_data_from_player_in_lobby(const network::connection sock, config& data) {
-	DBG_SERVER << "in process_data_from_player_in_lobby...\n";
+void server::process_data_lobby(const network::connection sock, const config& data) {
+	DBG_SERVER << "in process_data_lobby...\n";
 
 	const player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
@@ -893,8 +895,10 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 	// See if it's a message, in which case we add the name of the sender,
 	// and forward it to all players in the lobby
-	config* const message = data.child("message");
-	if (message != NULL) {
+	if (data.child("message")) {
+		// Make a modifiable copy.
+		config data = data;
+		config* const message = data.child("message");
 		if (pl->second.silenced()) {
 			return;
 		} else if (pl->second.is_message_flooding()) {
@@ -921,7 +925,7 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 	// Player requests update of lobby content,
 	// for example when cancelling the create game dialog
-	config* const refresh = data.child("refresh_lobby");
+	const config* const refresh = data.child("refresh_lobby");
 	if (refresh != NULL) {
 		network::send_data(games_and_users_list_, sock);
 	}
@@ -929,8 +933,8 @@ void server::process_data_from_player_in_lobby(const network::connection sock, c
 
 //! Process data sent by a player in a game. Note that 'data' by default gets
 //! broadcasted and saved in the replay.
-void server::process_data_from_player_in_game(const network::connection sock, config& data) {
-	DBG_SERVER << "in process_data_from_player_in_game...\n";
+void server::process_data_game(const network::connection sock, const config& data) {
+	DBG_SERVER << "in process_data_game...\n";
 	
 	//bool push_immediately = true;
 	const player_map::const_iterator pl = players_.find(sock);
@@ -951,8 +955,34 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		return;
 	}
 
+	//! @todo: The player has already joined and got a side or not. This is
+	//! pointless.
+	const string_map::const_iterator side = data.values.find("side");
+	if (side != data.values.end()) {
+		const bool res = g->take_side(sock, data);
+		config response;
+		if (res) {
+			DBG_SERVER << network::ip_address(sock) << "\t"
+				<< pl->second.name() << "\tjoined a side in game:\t"
+				<< g->name() << "\" (" << g->id() << ").\n";
+			response["side_secured"] = side->second;
+			// Update the number of available slots
+			if (g->describe_slots()) {
+				lobby_.send_data(games_and_users_list_diff());
+			}
+		} else if (g->is_observer(sock)) {
+			response = g->construct_server_message("Sorry "
+				+ pl->second.name() + ", someone else entered before you.");
+		} else {
+			response["failed"] = "yes";
+			DBG_SERVER << "Warning: " << network::ip_address(sock) << "\t"
+				<< pl->second.name() << "\tfailed to get a side in game:\t\""
+				<< g->name() << "\" (" << g->id() << ").\n";
+		}
+		network::send_data(response,sock);
+		return;
 	// If this is data describing the level for a game.
-	if (data.child("side") != NULL) {
+	} else if (data.child("side") != NULL) {
 		if (!g->is_owner(sock)) {
 			return;
 		}
@@ -1062,34 +1092,6 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		//scenario, we must not push this to other players.
 		//push_immediately = false;
 		return;
-	}
-
-	//! @todo: The player has already joined and got a side or not. This is
-	//! pointless.
-	const string_map::const_iterator side = data.values.find("side");
-	if (side != data.values.end()) {
-		const bool res = g->take_side(sock, data);
-		config response;
-		if (res) {
-			DBG_SERVER << network::ip_address(sock) << "\t"
-				<< pl->second.name() << "\tjoined a side in game:\t"
-				<< g->name() << "\" (" << g->id() << ").\n";
-			response["side_secured"] = side->second;
-			// Update the number of available slots
-			if (g->describe_slots()) {
-				lobby_.send_data(games_and_users_list_diff());
-			}
-		} else if (g->is_observer(sock)) {
-			response = g->construct_server_message("Sorry "
-				+ pl->second.name() + ", someone else entered before you.");
-		} else {
-			response["failed"] = "yes";
-			DBG_SERVER << "Warning: " << network::ip_address(sock) << "\t"
-				<< pl->second.name() << "\tfailed to get a side in game:\t\""
-				<< g->name() << "\" (" << g->id() << ").\n";
-		}
-		network::send_data(response,sock);
-		return;
 	} else if (data.child("side_secured")) return;
 	else if (data.child("failed")) return;
 	else if (data.child("error")) return;
@@ -1136,7 +1138,7 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 	// If this is data describing side changes (so far only by the host).
 	} else if (data.child("scenario_diff")) {
 		g->level().apply_diff(*data.child("scenario_diff"));
-		config* cfg_change = data.child("scenario_diff")->child("change_child");
+		const config* cfg_change = data.child("scenario_diff")->child("change_child");
 		if ((cfg_change != NULL) && (cfg_change->child("side") != NULL)) {
 			g->update_side_data();
 		}
@@ -1195,10 +1197,10 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 			g->set_termination_reason(info["condition"]);
 		}
 		return;
-	}
-
-	config* const turn = data.child("turn");
-	if (turn != NULL) {
+	} else if (data.child("turn")) {
+		// Make a modifiable copy.
+		config data = data;
+		config* const turn = data.child("turn");
 		g->filter_commands(sock, *turn);
 
 		// Notify the game of the commands, and if it changes
@@ -1258,6 +1260,12 @@ void server::process_data_from_player_in_game(const network::connection sock, co
 		// then let them go through. It's exceedingly unlikely that
 		// this will happen anyway, and if it does, the client should
 		// respect not displaying the message.
+		g->send_data(data, sock);
+
+		if (g->started()) {
+			g->record_data(data);
+		}
+		return;
 	}
 
 	// Forward data to all players who are in the game,
