@@ -48,73 +48,72 @@ std::string replay::last_replay_error;
 
 //functions to verify that the unit structure on both machines is identical
 
-static void verify(const unit_map& units, const config& cfg)
-	{
-		std::stringstream errbuf;
-		LOG_REPLAY << "verifying unit structure...\n";
+static void verify(const unit_map& units, const config& cfg) {
+	std::stringstream errbuf;
+	LOG_REPLAY << "verifying unit structure...\n";
 
-		const size_t nunits = atoi(cfg["num_units"].c_str());
-		if(nunits != units.size()) {
-			errbuf << "SYNC VERIFICATION FAILED: number of units from data source differ: "
-			       << nunits << " according to data source. " << units.size() << " locally\n";
+	const size_t nunits = atoi(cfg["num_units"].c_str());
+	if(nunits != units.size()) {
+		errbuf << "SYNC VERIFICATION FAILED: number of units from data source differ: "
+			   << nunits << " according to data source. " << units.size() << " locally\n";
 
-			std::set<gamemap::location> locs;
-			const config::child_list& items = cfg.get_children("unit");
-			for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-				const gamemap::location loc(**i, game_events::get_state_of_game());
-				locs.insert(loc);
+		std::set<gamemap::location> locs;
+		const config::child_list& items = cfg.get_children("unit");
+		for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+			const gamemap::location loc(**i, game_events::get_state_of_game());
+			locs.insert(loc);
 
-				if(units.count(loc) == 0) {
-					errbuf << "data source says there is a unit at "
-					       << loc << " but none found locally\n";
-				}
+			if(units.count(loc) == 0) {
+				errbuf << "data source says there is a unit at "
+					   << loc << " but none found locally\n";
 			}
+		}
 
-			for(unit_map::const_iterator j = units.begin(); j != units.end(); ++j) {
-				if(locs.count(j->first) == 0) {
-					errbuf << "local unit at " << j->first
-					       << " but none in data source\n";
-				}
+		for(unit_map::const_iterator j = units.begin(); j != units.end(); ++j) {
+			if(locs.count(j->first) == 0) {
+				errbuf << "local unit at " << j->first
+					   << " but none in data source\n";
 			}
+		}
+		replay::throw_error(errbuf.str());
+		errbuf.clear();
+	}
+
+	const config::child_list& items = cfg.get_children("unit");
+	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+		const gamemap::location loc(**i, game_events::get_state_of_game());
+		const unit_map::const_iterator u = units.find(loc);
+		if(u == units.end()) {
+			errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
+				   << (**i)["type"] << "' (side " << (**i)["side"] << ") at "
+				   << loc << " but there is no local record of it\n";
 			replay::throw_error(errbuf.str());
 			errbuf.clear();
 		}
 
-		const config::child_list& items = cfg.get_children("unit");
-		for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-			const gamemap::location loc(**i, game_events::get_state_of_game());
-			const unit_map::const_iterator u = units.find(loc);
-			if(u == units.end()) {
-				errbuf << "SYNC VERIFICATION FAILED: data source says there is a '"
-				       << (**i)["type"] << "' (side " << (**i)["side"] << ") at "
-				       << loc << " but there is no local record of it\n";
-				replay::throw_error(errbuf.str());
-				errbuf.clear();
-			}
+		config cfg;
+		u->second.write(cfg);
 
-			config cfg;
-			u->second.write(cfg);
-
-			bool is_ok = true;
-			static const std::string fields[] = {"type","hitpoints","experience","side",""};
-			for(const std::string* str = fields; str->empty() == false; ++str) {
-				if(cfg[*str] != (**i)[*str]) {
-					errbuf << "ERROR IN FIELD '" << *str << "' for unit at "
-					       << loc << " data source: '" << (**i)[*str]
-					       << "' local: '" << cfg[*str] << "'\n";
-					is_ok = false;
-				}
-			}
-
-			if(!is_ok) {
-				errbuf << "(SYNC VERIFICATION FAILED)\n";
-				replay::throw_error(errbuf.str());
-				errbuf.clear();
+		bool is_ok = true;
+		static const std::string fields[] = {"type","hitpoints","experience","side",""};
+		for(const std::string* str = fields; str->empty() == false; ++str) {
+			if(cfg[*str] != (**i)[*str]) {
+				errbuf << "ERROR IN FIELD '" << *str << "' for unit at "
+					   << loc << " data source: '" << (**i)[*str]
+					   << "' local: '" << cfg[*str] << "'\n";
+				is_ok = false;
 			}
 		}
 
-		LOG_REPLAY << "verification passed\n";
+		if(!is_ok) {
+			errbuf << "(SYNC VERIFICATION FAILED)\n";
+			replay::throw_error(errbuf.str());
+			errbuf.clear();
+		}
 	}
+
+	LOG_REPLAY << "verification passed\n";
+}
 
 namespace {
 	const unit_map* unit_map_ref = NULL;
