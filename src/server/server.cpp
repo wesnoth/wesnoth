@@ -897,8 +897,8 @@ void server::process_data_lobby(const network::connection sock, const config& da
 	// and forward it to all players in the lobby
 	if (data.child("message")) {
 		// Make a modifiable copy.
-		config data = data;
-		config* const message = data.child("message");
+		config mdata = mdata;
+		config* const message = mdata.child("message");
 		if (pl->second.silenced()) {
 			return;
 		} else if (pl->second.is_message_flooding()) {
@@ -920,7 +920,7 @@ void server::process_data_lobby(const network::connection sock, const config& da
 				<< pl->second.name() << "> " << msg << "\n";
 		}
 
-		lobby_.send_data(data,sock);
+		lobby_.send_data(mdata,sock);
 	}
 
 	// Player requests update of lobby content,
