@@ -897,7 +897,7 @@ void server::process_data_lobby(const network::connection sock, const config& da
 	// and forward it to all players in the lobby
 	if (data.child("message")) {
 		// Make a modifiable copy.
-		config mdata = mdata;
+		config mdata = data;
 		config* const message = mdata.child("message");
 		if (pl->second.silenced()) {
 			return;
