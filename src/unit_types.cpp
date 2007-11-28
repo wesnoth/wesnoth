@@ -232,6 +232,34 @@ bool attack_type::has_special_by_id(const std::string& special) const
 	return false;
 }
 
+unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) : moveCosts_(), defenseMods_(), parent_(parent)
+{
+	//the unit_type give its whole cfg, we don't need all that.
+	//so we filter to keep only keys related to movement_type
+	//FIXME: This helps but it's still not clean, both cfg use a "name" key
+
+	const t_string& name = cfg["name"];
+	if (!name.empty())
+		cfg_["name"]= cfg["name"];
+
+	const t_string& flies = cfg["flies"];
+	if (!flies.empty())
+		cfg_["flies"]= cfg["flies"];
+	
+	const config* movement_costs = cfg.child("movement_costs");
+	if (movement_costs!=NULL)
+		cfg_.add_child("movement_costs", *movement_costs);
+	
+	const config* defense = cfg.child("defense");
+	if (defense!=NULL)
+		cfg_.add_child("defense", *defense);
+	
+	const config* resistance = cfg.child("resistance");
+	if (resistance!=NULL)
+		cfg_.add_child("resistance", *resistance);
+};
+
+
 const t_string& unit_movement_type::name() const
 {
 	const t_string& res = cfg_["name"];
