@@ -43,7 +43,7 @@ do
 		ln -s logs/lobby.$DATE.$REV.log currentlobby.log
 		# wait a bit so the server is likely up and listening
 		sleep 1
-		if [ "$SERVER" != "trunk" ]
+		if [ "$SERVER" != "trunk" ]; then
 			cd $SOURCE/utils/
 			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
 		fi
