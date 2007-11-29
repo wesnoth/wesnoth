@@ -235,8 +235,9 @@ while (1) {
 						my $username = $user->{'attr'}->{'name'};
 						print STDERR &timestamp . "--> $username has logged on. ($userindex)\n" if $showjoins;
 						print LOG &logtimestamp . "--> $username has logged on. ($userindex)\n" if $logfile;
-						print STDERR "Warning: userlist out of sync: local index = @users vs remote index = $userindex\n" if $userindex != @users;
-						$users[@users] = $user;
+						my $index = @users;
+						print STDERR "Warning: userlist out of sync: local index = $index vs remote index = $userindex\n" if $userindex != $index;
+						$users[$index] = $user;
 						&serverstats() if $writestats;
 					} else {
 						print STDERR "[gamelist_diff]:" . Dumper($_) if $dumpunknown;
@@ -254,8 +255,7 @@ while (1) {
 				} elsif ($_->{'name'} eq 'change_child') {
 					if (my $user = &wml::has_child($_, 'user')) {
 						foreach (@ {$user->{'children'}}) {
-							#my $userindex = $_->{'attr'}->{'index'};   #the gamelistindex would be nice here.. probably hacky though so better put it in the 'location' key
-							if ($_->{'name'} eq 'insert') {
+							if ($_->{'name'} eq 'insert' and $userindex < @users) {
 								my $username = $users[$userindex]->{'attr'}->{'name'};
 								if ($_->{'attr'}->{'available'} eq "yes") {
 									my $game_id  = $users[$userindex]->{'attr'}->{'game_id'};
@@ -338,7 +338,7 @@ while (1) {
 							} elsif ($_->{'name'} eq 'change_child') {
 								if (my $game = &wml::has_child($_, 'game')) {
 									foreach (@ {$game->{'children'}}) {
-										if ($_->{'name'} eq 'insert') {
+										if ($_->{'name'} eq 'insert' and $gamelistindex < @games) {
 											if (my $turn = $_->{'attr'}->{'turn'}) {
 												my $gamename = $games[$gamelistindex]->{'attr'}->{'name'};
 												my $gameid   = $games[$gamelistindex]->{'attr'}->{'id'};
