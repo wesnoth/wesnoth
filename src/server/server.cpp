@@ -402,9 +402,10 @@ void server::run() {
 					// Did the last player leave?
 					if ( (g->nplayers() == 0) || (host && !g->started()) ) {
 						LOG_SERVER << ip << "\t" << pl_it->second.name()
-							<< "\tended game:\t\"" << g->name() << "\" ("
-							<< g->id() << ") and disconnected. (socket: "
-							<< e.socket << ")\n";
+							<< (g->started() ? "\tended game:\t\""
+								: "\taborted game:\t\"")
+							<< g->name() << "\" (" << g->id()
+							<< ") and disconnected. (socket: " << e.socket << ")\n";
 						delete_game(g);
 						break;
 					} else {
