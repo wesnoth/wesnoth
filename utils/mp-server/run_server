@@ -6,6 +6,12 @@ fi
 
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
+SOURCE=$HOME/source/trunk
+case $SERVER in
+	1.2 )	SOURCE=$HOME/source/1.2
+		;;
+	* )
+esac
 
 [ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
 [ -d "$SERVERBASE" ] || exit 1
@@ -37,13 +43,10 @@ do
 		ln -s logs/lobby.$DATE.$REV.log currentlobby.log
 		# wait a bit so the server is likely up and listening
 		sleep 1
-		case $SERVER in
-			1.2 )	(cd $HOME/source/trunk/utils/; ./mp-lobby-logger-1.2.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &)
-				;;
-			1.3 )	(cd $HOME/source/trunk/utils/; ./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &)
-				;;
-			* )
-		esac
+		if [ "$SERVER" != "trunk" ]
+			cd $SOURCE/utils/
+			./mp-lobby-logger.pl -j -p $PORT -l $SERVERBASE/currentlobby.log >> $SERVERBASE/logs/lobby-chat.log 2>&1 &
+		fi
 		# wait for the server to terminate
 		wait $PID
 		cd
