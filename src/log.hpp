@@ -50,7 +50,7 @@ std::string get_timestamp();
 
 extern logger err, warn, info, debug;
 extern log_domain general, ai, config, display, engine, network, mp_server,
-	filesystem, audio, paths, notifs, replay;
+	filesystem, audio, notifs, replay;
 
 class scope_logger
 {

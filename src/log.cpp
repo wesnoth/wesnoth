@@ -57,7 +57,7 @@ void timestamps(bool t) { timestamp = t; }
 logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
 log_domain general("general"), ai("ai"), config("config"), display("display"),
 	engine("engine"), network("network"), mp_server("server"),
-	filesystem("filesystem"), audio("audio"), paths("paths"), notifs("notifs"),
+	filesystem("filesystem"), audio("audio"), notifs("notifs"),
 	replay("replay");
 
 log_domain::log_domain(char const *name) : domain_(log_domains.size())

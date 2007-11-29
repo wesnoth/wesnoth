@@ -285,6 +285,7 @@ BPath be_path;
 #include "util.hpp"
 #include "loadscreen.hpp"
 
+#define DBG_FS LOG_STREAM(debug, filesystem)
 #define LOG_FS LOG_STREAM(info, filesystem)
 #define ERR_FS LOG_STREAM(err, filesystem)
 
@@ -1032,23 +1033,23 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 {
 	const std::vector<std::string>& paths = get_binary_paths(type);
 	if(!filename.empty()) {
-		LOG_STREAM(info, paths) << "Looking for " << filename << " in  '.'\n";
+		DBG_FS << "Looking for " << filename << " in  '.'\n";
 		if(file_exists(filename) || is_directory(filename)) {
-		  LOG_STREAM(info, paths) << "  Found at " << filename << "\n";
+		  DBG_FS << "  Found at " << filename << "\n";
 			return filename;
 		}
 	}
 
 	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
 		const std::string file = *i + filename;
-		LOG_STREAM(info, paths) << "  Checking " << *i << "\n";
+		DBG_FS << "  Checking " << *i << "\n";
 		if(file_exists(file) || is_directory(file)) {
-		  LOG_STREAM(info, paths) << "  Found at " << file << "\n";
+		  DBG_FS << "  Found at " << file << "\n";
 			return file;
 		}
 	}
 
-	LOG_STREAM(info, paths) << "  " << filename << " not found.\n";
+	DBG_FS << "  " << filename << " not found.\n";
 	return "";
 }
 
