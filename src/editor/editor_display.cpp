@@ -125,10 +125,15 @@ void editor_display::draw(bool update,bool force)
 		}
 		refresh_report(reports::TERRAIN, reports::report(str.str()));
 
-
 		std::stringstream str2;
 		str2 << mouseoverHex_;
 		refresh_report(reports::POSITION, reports::report(str2.str()));
+	}
+
+	{
+	  std::stringstream str3;
+	  str3 << map_.villages().size();
+	  refresh_report(reports::VILLAGES, reports::report(str3.str()));
 	}
 
 	display::draw_wrap(update, force, changed);
