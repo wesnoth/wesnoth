@@ -30,6 +30,7 @@
 #include <cstdlib>
 #include <sstream>
 
+#define DBG_DP LOG_STREAM(debug, display)
 #define LOG_DP LOG_STREAM(info, display)
 
 namespace {
@@ -598,7 +599,7 @@ void theme::add_object(const config& cfg){
 	const config::child_list& menu_list = cfg.get_children("menu");
 	for(config::child_list::const_iterator m = menu_list.begin(); m != menu_list.end(); ++m) {
 		menu new_menu(**m);
-		LOG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
+		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
 		if(new_menu.is_context())
 			context_ = new_menu;
 		else{
@@ -606,7 +607,7 @@ void theme::add_object(const config& cfg){
 			menus_.push_back(new_menu);
 		}
 
-		LOG_DP << "done adding menu...\n";
+		DBG_DP << "done adding menu...\n";
 	}
 
 	const config* const border_cfg = cfg.child("main_map_border");

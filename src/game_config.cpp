@@ -24,7 +24,8 @@
 
 #include <cstdlib>
 #include <sstream>
-#define LOG_NG LOG_STREAM(info, engine)
+
+#define DBG_NG LOG_STREAM(debug, engine)
 #define ERR_NG LOG_STREAM(err, engine)
 
 namespace game_config
@@ -209,7 +210,7 @@ namespace game_config
 				if(tp.size()){
 					team_rgb_colors.insert(std::make_pair(id,tp));
 					//if this is being used, output log of palette for artists use.
-					LOG_NG << "color palette creation:\n";
+					DBG_NG << "color palette creation:\n";
 					std::stringstream str;
 					str << id <<" = ";
 					for(std::vector<Uint32>::const_iterator r=tp.begin();r!=tp.end();r++){
@@ -221,7 +222,7 @@ namespace game_config
 						}
 						str << red << "," << green << "," << blue;
 					}
-					LOG_NG << str.str() <<"\n";
+					DBG_NG << str.str() <<"\n";
 				}
 			}
 		}

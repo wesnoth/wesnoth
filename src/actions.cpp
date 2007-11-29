@@ -38,8 +38,9 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
+#define DBG_NG LOG_STREAM(debug, engine)
 #define LOG_NG LOG_STREAM(info, engine)
-#define ERR_NW LOG_STREAM(err, network)
+#define ERR_NG LOG_STREAM(err, engine)
 
 struct castle_cost_calculator : cost_calculator
 {
@@ -186,7 +187,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	if(ran_results != NULL) {
 		const std::string rc = (*ran_results)["checksum"];
 		if(rc != checksum) {
-			ERR_NW << "SYNC: In recruit " << new_unit.id() <<
+			ERR_NG << "SYNC: In recruit " << new_unit.id() <<
 				": has checksum " << checksum <<
 				" while datasource has checksum " <<
 				rc << "\n";
@@ -210,15 +211,15 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	// If an OOS happens, this option allows to write
 	// the debug info about the recruited unit.
-	if(!lg::info.dont_log(lg::engine)) {
+	if(!lg::debug.dont_log(lg::engine)) {
 		config cfg_unit;
 		new_unit.write(cfg_unit);
 
-		LOG_NG << "recruit unit\nChecksum = "
+		DBG_NG << "recruit unit\nChecksum = "
 			<< checksum << "\n-----[start data]-----\n";
 
-		::write(lg::info(lg::engine), cfg_unit);
-		LOG_NG << "\n----[end data]-----\n";
+		::write(lg::debug(lg::engine), cfg_unit);
+		DBG_NG << "\n----[end data]-----\n";
 	}
 
 	return std::string();

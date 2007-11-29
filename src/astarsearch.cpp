@@ -25,6 +25,7 @@ See the COPYING file for more details.
 #include <iostream>
 
 #define LOG_PF LOG_STREAM(info, engine)
+#define DBG_PF LOG_STREAM(debug, engine)
 
 typedef std::vector<gamemap::location> vector_location;
 typedef std::vector<a_star_node*> vector_a_star_node;
@@ -158,7 +159,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	a_star_node *locDestNode = NULL;
 	a_star_node *locCurNode = NULL;
 
-	LOG_PF << "A* search: " << src << " -> " << dst << '\n';
+	DBG_PF << "A* search: " << src << " -> " << dst << '\n';
 
 	if (costCalculator->cost(src,dst, 0, true) >= stop_at) {
 		LOG_PF << "aborted A* search because Start or Dest is invalid\n";
@@ -192,7 +193,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	if(routeSolved) {
 		locDestNode = locCurNode;
 
-		LOG_PF << "found solution; calculating it...\n";
+		DBG_PF << "found solution; calculating it...\n";
 		while (locCurNode != NULL)
 		{
 			locRoute.steps.push_back(locCurNode->loc);
@@ -204,7 +205,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 		wassert(locRoute.steps.front() == src);
 		wassert(locRoute.steps.back() == dst);
 
-		LOG_PF << "exiting a* search (solved)\n";
+		DBG_PF << "exiting a* search (solved)\n";
 	} else {
 		//route not solved
 		LOG_PF << "aborted a* search\n";

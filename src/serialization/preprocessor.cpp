@@ -32,6 +32,7 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_CF LOG_STREAM(info, config)
+#define DBG_CF LOG_STREAM(debug, config)
 
 using std::streambuf;
 
@@ -378,7 +379,7 @@ std::string preprocessor_data::read_word()
 	for(;;) {
 		int c = in_->peek();
 		if (c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
-			// LOG_CF << "(" << res << ")\n";
+			// DBG_CF << "(" << res << ")\n";
 			return res;
 		}
 		in_->get();
@@ -564,7 +565,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool skip = target_.defines_->count(symbol) == 0;
-			LOG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
+			DBG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
 			if (skip)
 				++skipping_;
 			push_token(skip ? 'J' : 'i');
@@ -572,7 +573,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			std::string const &symbol = read_word();
 			bool skip = target_.defines_->count(symbol) != 0;
-			LOG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
+			DBG_CF << "testing for macro " << symbol << ": " << (skip ? "not defined" : "defined") << '\n';
 			if (skip)
 				++skipping_;
 			push_token(skip ? 'J' : 'i');
@@ -747,11 +748,11 @@ bool preprocessor_data::get_chunk()
 				pop_token();
 				std::string const &dir = directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
-					LOG_CF << "substituting macro " << symbol << '\n';
+					DBG_CF << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location, "",
 					                      val.linenum, dir, val.textdomain);
 				} else {
-					LOG_CF << "substituting (slow) macro " << symbol << '\n';
+					DBG_CF << "substituting (slow) macro " << symbol << '\n';
 					std::ostringstream res;
 					preprocessor_streambuf *buf =
 						new preprocessor_streambuf(target_);

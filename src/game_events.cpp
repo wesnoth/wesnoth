@@ -47,6 +47,7 @@
 #include <set>
 #include <string>
 
+#define DBG_NG LOG_STREAM(debug, engine)
 #define LOG_NG LOG_STREAM(info, engine)
 #define WRN_NG LOG_STREAM(warn, engine)
 #define ERR_NG LOG_STREAM(err, engine)
@@ -1479,7 +1480,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			std::vector<unit>& avail = player->available_units;
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
-				LOG_NG << "checking unit against filter...\n";
+				DBG_NG << "checking unit against filter...\n";
 				wassert(game_data_ptr != NULL);
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
@@ -2261,7 +2262,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					   label.colour());
 	}
 
-	LOG_NG << "done handling command...\n";
+	DBG_NG << "done handling command...\n";
 
 	return rval;
 }
