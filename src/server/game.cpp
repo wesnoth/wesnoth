@@ -757,17 +757,21 @@ void game::remove_player(const network::connection player, const bool notify_cre
 		return;
 	}
 
+	// The game ends if there are no more players or the host left on a not
+	// yet started game.
+	if (players_.empty() || (host && !started_)) return;
 	// If the player was host choose a new one.
-	if (host && !players_.empty() && started_) {
+	if (host) {
 		owner_ = players_.front();
 		std::string owner_name = "";
-		const player_map::iterator owner = player_info_->find(owner_);
+		const player_map::const_iterator owner = player_info_->find(owner_);
 		if (owner == player_info_->end()) {
 			ERR_GAME << "ERROR: Could not find new host in player_info_. (socket: "
 				<< owner_ << ")\n";
 		} else {
 			owner_name = owner->second.name();
 		}
+		notify_new_host();
 		send_data(construct_server_message(owner_name
 			+ " has been chosen as new host."));
 		//check for ai sides first and drop them, too, if the host left
@@ -805,8 +809,6 @@ void game::remove_player(const network::connection player, const bool notify_cre
 		sides_[side - sides_.begin()] = 0;
 	}
 	DBG_GAME << debug_player_info();
-	if (host)
-		notify_new_host();
 
 	send_user_list(player);
 }
@@ -893,7 +895,6 @@ void game::end_game(const config& games_and_users_list) {
 			ERR_GAME << "ERROR: Could not find player in player_info_. (socket: "
 				<< *user << ")\n";
 		}
-
 	}
 	send_data(config("leave_game"));
 	send_data(games_and_users_list);
