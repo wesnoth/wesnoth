@@ -2109,6 +2109,7 @@ static int play_game(int argc, char** argv)
 			about::show_about(game.disp());
 			continue;
 		} else if(res == gui::SHOW_HELP) {
+			game.reset_game_cfg();
 			help::help_manager help_manager(&game.game_config(), &game.units_data(), NULL);
 			help::show_help(game.disp());
 			continue;
