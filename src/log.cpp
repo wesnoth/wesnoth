@@ -105,18 +105,21 @@ bool logger::dont_log(log_domain const &domain) const
 	return severity_ > d.severity_;
 }
 
+std::string get_timestamp() {
+	time_t t = time(NULL);
+	char buf[100];
+	strftime(buf, 100, "%b %d %H:%M:%S ", localtime(&t));
+	return buf;
+}
+
 std::ostream &logger::operator()(log_domain const &domain, bool show_names) const
 {
 	logd const &d = log_domains[domain.domain_];
 	if (severity_ > d.severity_)
 		return null_ostream;
 	else {
-		if (timestamp) {
-			time_t t = time(NULL);
-			char buf[100];
-			strftime(buf, 100, "%b %d %H:%M:%S ", localtime(&t));
-			std::cerr << buf;
-		}
+		if (timestamp)
+			std::cerr << get_timestamp();
 		if (show_names)
 			std::cerr << name_ << ' ' << d.name_ << ": ";
 		return std::cerr;
@@ -124,7 +127,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names) cons
 }
 
 scope_logger::scope_logger(log_domain const &domain, const std::string& str)
-	: ticks_(SDL_GetTicks()), str_(str), output_(info(domain, false))
+	: ticks_(SDL_GetTicks()), str_(str), output_(debug(domain, false))
 {
 	do_indent();
 	output_ << "BEGIN: " << str_ << "\n";
@@ -136,6 +139,7 @@ scope_logger::~scope_logger()
 	const int ticks = SDL_GetTicks() - ticks_;
 	--indent;
 	do_indent();
+	if (timestamp) output_ << get_timestamp();
 	output_ << "END: " << str_ << " (took " << ticks << "ms)\n";
 }
 

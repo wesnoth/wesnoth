@@ -46,6 +46,7 @@ public:
 };
 
 void timestamps(bool);
+std::string get_timestamp();
 
 extern logger err, warn, info, debug;
 extern log_domain general, ai, config, display, engine, network, mp_server,
