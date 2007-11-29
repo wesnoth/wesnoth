@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-28 21:32+0100\n"
-"PO-Revision-Date: 2007-11-18 14:27+0100\n"
+"PO-Revision-Date: 2007-11-29 22:15+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -2266,7 +2266,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2275,8 +2274,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Zapni ladící režim (nefunguje ve hře více hráčů). Ladící režim je vypnut "
-"ukončením hry nebo příkazem :nodebug.\n"
+"Zapne ladící režim (nefunguje ve hře více hráčů) - viz "
+"<ref>dst=debug_commands text='příkazy ladícího módu'</ref>.\n"
+"Ladící režim je vypnut ukončením hry nebo příkazem :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:638
@@ -2288,7 +2288,6 @@ msgid "Multiplayer commands"
 msgstr "Příkazy pro Hru více hráčů"
 
 #: data/core/help.cfg:647
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2347,9 +2346,8 @@ msgstr ""
 "Zapíná/vypíná umlčení všech pozorovatelů."
 
 #: data/core/help.cfg:662
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Obecné příkazy"
+msgstr "Příkazy ladícího módu"
 
 #: data/core/help.cfg:666
 msgid ""
@@ -2357,16 +2355,18 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Vytvoří jednotku daného typu na vybraném políčku.\n"
+"\n"
 
 #: data/core/help.cfg:669
-#, fuzzy
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Přepíná zobrazování překreslovací rychlosti (FPS).\n"
+"Přepíná zobrazování mlhy/tmy pro aktivní stranu.\n"
 "\n"
 
 #: data/core/help.cfg:672
@@ -2375,6 +2375,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Přidá aktivní straně určené množství zlata.\n"
+"\n"
 
 #: data/core/help.cfg:675
 msgid ""
@@ -2382,6 +2385,9 @@ msgid ""
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Manuálně nastavuje hodnotu proměnné stavu hry.\n"
+"\n"
 
 #: data/core/help.cfg:678
 msgid ""
@@ -2389,6 +2395,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Zobrazí proměnnou stavu hry.\n"
+"\n"
 
 #: data/core/help.cfg:681
 msgid ""
@@ -2396,13 +2405,20 @@ msgid ""
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
+"\n"
+"Manuálně aktivuje danou událost (event).\n"
+"\n"
 
+# do uvozovek nebo ne?
 #: data/core/help.cfg:682
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
+"\n"
+"Upravuje určenou vlastnost vybrané jednotky. Příklad použití: :unit "
+"hitpoints=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -4647,13 +4663,12 @@ msgstr ""
 "abys odtamtud mohl verbovat."
 
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Kostlivci jsou odolní vůči útokům čepelí a bodání, ale zranitelní údery, "
-"ohněm a nezemskými útoky."
+"Kostlivci jsou odolní vůči útokům čepelí, chladem a bodání, ale zranitelní "
+"údery, ohněm a nezemskými útoky."
 
 #: data/hardwired/tips.cfg:78
 msgid "- Memoirs of Gweddry, 627YW"
@@ -6785,7 +6800,7 @@ msgstr "Klient odpojen"
 
 #: src/network.cpp:160
 msgid "No server ping since at least 30 seconds. Connection timed out."
-msgstr ""
+msgstr "Server neodpověděl na ping nejméně 30 vteřin. Spojení bylo přerušeno."
 
 #: src/network.cpp:508
 msgid "Could not add socket to socket set"
