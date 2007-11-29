@@ -40,7 +40,7 @@ namespace mp {
 	gold_icon_locator_("themes/gold.png"),
 	xp_icon_locator_("themes/units.png"),
 	vision_icon_locator_("misc/invisible.png"),
-	time_limit_icon_locator_("misc/sand-clock.png"),
+	time_limit_icon_locator_("themes/sand-clock.png"),
 	observer_icon_locator_(game_config::observer_image),
 	no_observer_icon_locator_("misc/no_observer.png"), map_hashes_(map_hashes),
 	item_height_(100), margin_(5), minimap_size_(item_height_ - 2*margin_),  h_padding_(5),
