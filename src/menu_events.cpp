@@ -43,6 +43,9 @@
 #include <algorithm>
 #include <sstream>
 
+#define ERR_NG LOG_STREAM(err, engine)
+#define LOG_NG LOG_STREAM(info, engine)
+
 namespace {
 
 static void remove_old_saves()
@@ -52,10 +55,10 @@ static void remove_old_saves()
 		return;
 
 	std::vector<save_info> games = get_saves_list();
-	std::cerr << "Removing old saves.\n";
+	LOG_NG << "Removing old saves.\n";
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
 		if (countdown-- < 0) {
-			std::cerr << "Deleting savegame '" << i->name << "'\n";
+			LOG_NG << "Deleting savegame '" << i->name << "'\n";
 			delete_game(i->name);
 		}
 	}
@@ -848,7 +851,7 @@ private:
 			//do not bother retrying, since the user can just save the game
 		}
 		end = SDL_GetTicks();
-		std::cerr << "Milliseconds to save " << savename << ": " << end - start << "\n";
+		LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";
 
 		remove_old_saves();
 	}
@@ -946,7 +949,7 @@ private:
 			const std::map<std::string,unit_type>::const_iterator
 					u_type = gameinfo_.unit_types.find(*it);
 			if(u_type == gameinfo_.unit_types.end()) {
-				LOG_STREAM(err, engine) << "could not find unit '" << *it << "'\n";
+				ERR_NG << "could not find unit '" << *it << "'\n";
 				return;
 			}
 
@@ -1070,7 +1073,7 @@ private:
 	{
 		player_info *player = gamestate_.get_player(teams_[team_num-1].save_id());
 		if(!player) {
-			LOG_STREAM(err, engine) << "cannot recall a unit for side " << team_num
+			ERR_NG << "cannot recall a unit for side " << team_num
 				<< ", which has no recall list!\n";
 			return;
 		}
@@ -1154,7 +1157,7 @@ private:
 						i18n_symbols);
 					gui::dialog(*gui_,"",msg.str()).show();
 				} else {
-					std::cerr << "recall index: " << res << "\n";
+					LOG_NG << "recall index: " << res << "\n";
 					unit& un = recall_list[res];
 					gamemap::location loc = last_hex;
 					recorder.add_recall(res,loc);
@@ -1197,7 +1200,7 @@ private:
 			player_info* const player = gamestate_.get_player(teams_[team_num - 1].save_id());
 
 			if(player == NULL) {
-				LOG_STREAM(err, engine) << "trying to undo a recall for side " << team_num
+				ERR_NG << "trying to undo a recall for side " << team_num
 					<< ", which has no recall list!\n";
 			} else {
 				// Undo a recall action
@@ -1249,7 +1252,7 @@ private:
 			const unit_map::iterator u_end = units_.find(route.back());
 			if(u == units_.end() || u_end != units_.end()) {
 				//this can actually happen if the scenario designer has abused the [allow_undo] command
-				LOG_STREAM(err, engine) << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
+				ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
 				return;
 			}
 
@@ -1310,7 +1313,7 @@ private:
 		if(action.is_recall()) {
 			player_info *player=gamestate_.get_player(teams_[team_num - 1].save_id());
 			if(!player) {
-				LOG_STREAM(err, engine) << "trying to redo a recall for side " << team_num
+				ERR_NG << "trying to redo a recall for side " << team_num
 					<< ", which has no recall list!\n";
 			} else {
 				// Redo recall
@@ -1344,7 +1347,7 @@ private:
 			const std::set<std::string>& recruits = current_team.recruits();
 			for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
 				if (r == recruits.end()) {
-					LOG_STREAM(err, engine) << "trying to redo a recruit for side " << team_num
+					ERR_NG << "trying to redo a recruit for side " << team_num
 						<< ", which does not recruit type \"" << name << "\"\n";
 					wassert(0);
 				}

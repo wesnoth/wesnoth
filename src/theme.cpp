@@ -32,6 +32,7 @@
 
 #define DBG_DP LOG_STREAM(debug, display)
 #define LOG_DP LOG_STREAM(info, display)
+#define ERR_DP LOG_STREAM(err, display)
 
 namespace {
 	const int XDim = 1024;
@@ -110,7 +111,7 @@ static std::string resolve_rect(const std::string& rect_str) {
 			resolved << "," << rect.y2;
 		}
 
-		// std::cerr << "Rect " << rect_str << "\t: " << resolved.str() << "\n";
+		// DBG_DP << "Rect " << rect_str << "\t: " << resolved.str() << "\n";
 
 		ref_rect = rect;
 		return resolved.str();
@@ -126,7 +127,7 @@ static config& find_ref(const std::string& id, config& cfg, bool remove = false)
 			for (config::child_list::const_iterator j = i->second.begin();
 			     j != i->second.end(); j++) {
 				if ((**j)["id"] == id) {
-					//std::cerr << "Found a " << *(*i).first << "\n";
+					//DBG_DP << "Found a " << *(*i).first << "\n";
 					if (remove) {
 						const config* const res = cfg.find_child((*i).first,"id",id);
 						const size_t index = std::find((*i).second.begin(), (*i).second.end(),
@@ -243,15 +244,15 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		// override default reference rect with "ref" parameter if any
 		if (!cfg["ref"].empty()) {
 			if (resol_cfg == NULL) {
-				std::cerr << "Use of ref= outside a [resolution] block\n";
+				ERR_DP << "Use of ref= outside a [resolution] block\n";
 			} else {
-				//std::cerr << ">> Looking for " << cfg["ref"] << "\n";
+				//DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
 				const config ref = find_ref (cfg["ref"], *resol_cfg);
 
 				if (ref["id"].empty()) {
-					std::cerr << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";
+					ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";
 				} else if (ref["rect"].empty()) {
-					std::cerr << "Reference to id \"" << cfg["ref"] <<
+					ERR_DP << "Reference to id \"" << cfg["ref"] <<
 						"\" which does not have a \"rect\"\n";
 				} else {
 					ref_rect = read_rect(ref);

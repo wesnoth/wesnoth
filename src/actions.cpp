@@ -849,7 +849,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	}
 	refresh_bc();
 
-	LOG_NG << "getting attack statistics\n";
+	DBG_NG << "getting attack statistics\n";
 	statistics::attack_context attack_stats(a_->second, d_->second, a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
 	orig_attacks_ = a_stats_->num_blows;
@@ -869,7 +869,7 @@ attack::attack(game_display& gui, const gamemap& map,
 	LOG_NG << "Fight: (" << attacker << ") vs (" << defender << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
 	while(n_attacks_ > 0 || n_defends_ > 0) {
-		LOG_NG << "start of attack loop...\n";
+		DBG_NG << "start of attack loop...\n";
 		abs_n_attack_++;
 
 		if(n_attacks_ > 0 && defender_strikes_first == false) {
@@ -992,7 +992,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				refresh_bc();
 			}
 
-			LOG_NG << "done attacking\n";
+			DBG_NG << "done attacking\n";
 			if(dies || hits) {
 				int amount_drained = a_stats_->drains ? attacker_damage_ / 2 : 0;
 
@@ -1102,7 +1102,7 @@ attack::attack(game_display& gui, const gamemap& map,
 		abs_n_defend_++;
 
 		if(n_defends_ > 0) {
-			LOG_NG << "doing defender attack...\n";
+			DBG_NG << "doing defender attack...\n";
 
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < defender_cth_;
@@ -1623,7 +1623,7 @@ void check_victory(unit_map& units, std::vector<team>& teams)
 	for(unit_map::const_iterator i = units.begin();
 	    i != units.end(); ++i) {
 		if(i->second.can_recruit()) {
-			LOG_NG << "seen leader for side " << i->second.side() << "\n";
+			DBG_NG << "seen leader for side " << i->second.side() << "\n";
 			seen_leaders.push_back(i->second.side());
 		}
 	}
@@ -1944,7 +1944,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 			//or a uncaptured village (except if it was our plan to end there)
 			if( units.count(*step) == 0 &&
 				(!map.is_village(*step) || team.owns_village(*step) || step+1==route.end()) ) {
-				LOG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
+				DBG_NG << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
 				// Temporarily reset the unit's moves to full
 				const unit_movement_resetter move_resetter(ui->second);
@@ -2115,12 +2115,12 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 			// and whether they are allies or enemies, so calculate that out here
 			int nfriends = 0, nenemies = 0;
 			for(std::set<gamemap::location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
-				LOG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
+				DBG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
 				const unit_map::const_iterator u = units.find(*i);
 
 				// Unit may have been removed by an event.
 				if(u == units.end()) {
-					LOG_NG << "was removed\n";
+					DBG_NG << "was removed\n";
 					continue;
 				}
 
@@ -2130,7 +2130,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 					++nfriends;
 				}
 
-				LOG_NG << "processed...\n";
+				DBG_NG << "processed...\n";
 				team.see(u->second.side()-1);
 			}
 
@@ -2234,7 +2234,7 @@ void apply_shroud_changes(undo_list& undos, game_display* disp, const gamestatus
 		6. fix up associated display stuff (done in a similar way to turn_info::undo())
 	*/
 	for(undo_list::iterator un = undos.begin(); un != undos.end(); ++un) {
-		std::cout << "Turning an undo...\n";
+		LOG_NG << "Turning an undo...\n";
 		if(un->is_recall() || un->is_recruit()) continue;
 		// We're not really going to mutate the unit, just temporarily
 		// set its moves to maximum, but then switch them back.

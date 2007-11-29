@@ -30,6 +30,8 @@
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 
+#define DBG_NG LOG_STREAM(debug, engine)
+
 namespace {
 	const size_t max_island = 10;
 	const size_t max_coastal = 5;
@@ -344,12 +346,12 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 		const size_t island_radius = 50 + ((max_island - island_size_)*50)/(max_island - max_coastal);
 		island_size = (island_radius*(width_/2))/100;
 	} else if(island_size_ > 0) {
-		std::cerr << "coastal...\n";
+		DBG_NG << "coastal...\n";
 		//the radius of the island should be up to twice the width of the map
 		const size_t island_radius = 40 + ((max_coastal - island_size_)*40)/max_coastal;
 		island_size = (island_radius*width_*2)/100;
 		island_off_center = minimum<size_t>(width_,height_);
-		std::cerr << "calculated coastal params...\n";
+		DBG_NG << "calculated coastal params...\n";
 	}
 
 	return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,castle_size_,nplayers_,link_castles_,labels,cfg_);
@@ -357,7 +359,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 
 config default_map_generator::create_scenario(const std::vector<std::string>& args)
 {
-	std::cerr << "creating scenario...\n";
+	DBG_NG << "creating scenario...\n";
 	config res;
 
 	const config* const scenario = cfg_.child("scenario");
@@ -365,12 +367,12 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 		res = *scenario;
 	}
 
-	std::cerr << "got scenario data...\n";
+	DBG_NG << "got scenario data...\n";
 
 	std::map<gamemap::location,std::string> labels;
-	std::cerr << "generating map...\n";
+	DBG_NG << "generating map...\n";
 	res["map_data"] = generate_map(args,&labels);
-	std::cerr << "done generating map..\n";
+	DBG_NG << "done generating map..\n";
 
 	for(std::map<gamemap::location,std::string>::const_iterator i =
 			labels.begin(); i != labels.end(); ++i) {
