@@ -52,7 +52,7 @@ void get_player_info(const config& cfg, game_state& gamestate,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, const game_data& gameinfo,
 					 gamemap& map, unit_map& units,
-					 gamestatus& game_status, bool snapshot)
+					 gamestatus& game_status, bool snapshot, bool replay)
 {
 	player_info *player = NULL;
 
@@ -75,7 +75,12 @@ void get_player_info(const config& cfg, game_state& gamestate,
 	LOG_NG << "found gold: '" << gold << "'\n";
 
 	int ngold = lexical_cast_default<int>(gold);
-	if ( (player != NULL)  && (!snapshot) ) {
+	
+	/* This is the gold carry-over mechanism for subsequent campaign
+       scenarios. Snapshots and replays are loaded from savegames and
+       got their own gold information, which must not be altered here
+    */
+	if ( (player != NULL)  && (!snapshot) && (!replay) ) {
 		if(player->gold_add) {
 			ngold +=  player->gold;
 		} else if(player->gold >= ngold) {

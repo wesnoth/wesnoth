@@ -33,7 +33,7 @@
 
 play_controller::play_controller(const config& level, const game_data& gameinfo,
 	game_state& state_of_game, int ticks, int num_turns, const config& game_config,
-	CVideo& video, bool skip_replay) :
+	CVideo& video, bool skip_replay, bool is_replay) :
 	verify_manager_(units_), team_manager_(teams_), labels_manager_(),
 	help_manager_(&game_config, &gameinfo, &map_), mouse_handler_(gui_, teams_,
 		units_, map_, status_, gameinfo, undo_stack_, redo_stack_, state_of_game),
@@ -53,7 +53,7 @@ play_controller::play_controller(const config& level, const game_data& gameinfo,
 	status_.teams = &teams_;
 	game_config::add_color_info(level);
 
-	init(video);
+	init(video, is_replay);
 }
 
 play_controller::~play_controller(){
@@ -65,7 +65,7 @@ play_controller::~play_controller(){
 	delete gui_;
 }
 
-void play_controller::init(CVideo& video){
+void play_controller::init(CVideo& video, bool is_replay){
 	// If the recorder has no event, adds an "game start" event 
 	// to the recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
@@ -94,7 +94,7 @@ void play_controller::init(CVideo& video){
 		if (first_human_team_ == -1){
 			first_human_team_ = get_first_human_team(ui, unit_cfg);
 		}
-		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_, status_, snapshot);
+		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_, status_, snapshot, is_replay );
 	}
 
 	preferences::encounter_recruitable_units(teams_);

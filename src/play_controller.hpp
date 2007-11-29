@@ -43,7 +43,7 @@ class play_controller : public hotkey::command_executor, public events::handler,
 {
 public:
 	play_controller(const config& level, const game_data& gameinfo, game_state& state_of_game,
-		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay);
+		int ticks, int num_turns, const config& game_config, CVideo& video, bool skip_replay, bool is_replay);
 	~play_controller();
 
 	virtual void play_slice();
@@ -86,7 +86,7 @@ protected:
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
-	virtual void init(CVideo& video);
+	virtual void init(CVideo& video, bool is_replay);
 	void init_managers();
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
@@ -98,7 +98,7 @@ protected:
 	bool clear_shroud();
 	bool enemies_visible() const;
 	void enter_textbox();
-
+	
 	team& current_team() { return teams_[player_number_-1]; }
 	const team& current_team() const { return teams_[player_number_-1]; }
 

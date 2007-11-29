@@ -434,37 +434,25 @@ game_state::game_state(const game_data& data, const config& cfg)
 
 	const config* snapshot = cfg.child("snapshot");
 
-	const config::child_list& players = cfg.get_children("player");
+    if (snapshot != NULL){
+		this->snapshot = *snapshot;
 
-	if(players.empty()) {
-		// Backwards compatibility code: assume that there is player data
-		// in the file itself, which corresponds to the leader of side 1.
-		const config::child_list& units = cfg.get_children("unit");
-		config::child_list::const_iterator i;
-		for(i = units.begin(); i != units.end(); ++i) {
-			if((**i)["side"] == "1" && (**i)["canrecruit"] == "1") {
-				break;
-			}
-		}
-
-		if(i != units.end()) {
-			std::cerr << "backwards compatibility: loading player '" << (**i)["description"] << "'\n";
-			player_info player = read_player(data,&cfg);
-			this->players.insert(std::pair<std::string,player_info>((**i)["description"],player));
-		}
-	} else {
-		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
-			std::string save_id = (**i)["save_id"];
-
-			if(save_id.empty()) {
-				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
-			} else {
-				player_info player = read_player(data, *i);
-				this->players.insert(std::pair<std::string, player_info>(save_id,player));
-			}
-		}
-	}
-
+    	const config::child_list& players = snapshot->get_children("player");
+    
+    	if(!players.empty()) {
+    		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
+    			std::string save_id = (**i)["save_id"];
+    
+    			if(save_id.empty()) {
+    				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
+    			} else {
+    				player_info player = read_player(data, *i);
+    				this->players.insert(std::pair<std::string, player_info>(save_id,player));
+    			}
+    		}
+    	}
+     }
+         
 	std::cerr << "scenario: '" << scenario << "'\n";
 
 	difficulty = cfg["difficulty"];
@@ -488,15 +476,6 @@ game_state::game_state(const game_data& data, const config& cfg)
 	const config* const replay = cfg.child("replay");
 	if(replay != NULL) {
 		replay_data = *replay;
-	}
-
-	// Older save files used to use 'start', so still support that for now.
-	if(snapshot == NULL) {
-		snapshot = cfg.child("start");
-	}
-
-	if(snapshot != NULL) {
-		this->snapshot = *snapshot;
 	}
 
 	const config* replay_start = cfg.child("replay_start");
