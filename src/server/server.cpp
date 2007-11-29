@@ -375,14 +375,6 @@ void server::run() {
 				DBG_SERVER << "done closing socket...\n";
 				continue;
 			}
-			const config::child_list& users = games_and_users_list_.get_children("user");
-			const size_t index = std::find(users.begin(), users.end(), pl_it->second.config_address()) - users.begin();
-			if (index < users.size()) {
-				games_and_users_list_.remove_child("user",index);
-			} else {
-				ERR_SERVER << ip << "ERROR: Could not find user: "
-					<< pl_it->second.name() << " in games_and_users_list_.\n";
-			}
 			sync_scheduled = true;
 			// Was the player in the lobby or a game?
 			if (lobby_.is_member(e.socket)) {
@@ -423,6 +415,14 @@ void server::run() {
 					}
 					break;
 				}
+			}
+			const config::child_list& users = games_and_users_list_.get_children("user");
+			const size_t index = std::find(users.begin(), users.end(), pl_it->second.config_address()) - users.begin();
+			if (index < users.size()) {
+				games_and_users_list_.remove_child("user",index);
+			} else {
+				ERR_SERVER << ip << "ERROR: Could not find user: "
+					<< pl_it->second.name() << " in games_and_users_list_.\n";
 			}
 			players_.erase(pl_it);
 			e.disconnect();
