@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-23 21:37+0100\n"
-"PO-Revision-Date: 2007-08-23 15:52+0200\n"
+"PO-Revision-Date: 2007-11-29 16:28+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr "kuilu"
 
 #: data/core/terrain.cfg:521
 msgid "Lava chasm"
-msgstr ""
+msgstr "Laavakuilu"
 
 #: data/core/terrain.cfg:531
 msgid "Lava"
@@ -173,9 +173,8 @@ msgid "Mushroom Grove"
 msgstr "sienilehtoa"
 
 #: data/core/terrain.cfg:644
-#, fuzzy
 msgid "Mushroom Grove Lit"
-msgstr "sienilehtoa"
+msgstr "Valaistu sienilehto"
 
 #: data/core/terrain.cfg:654
 msgid "Rockbound Cave"
@@ -222,7 +221,7 @@ msgstr "kiveä"
 
 #: data/core/terrain.cfg:935
 msgid "Void"
-msgstr ""
+msgstr "Tyhjiö"
 
 #: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:423
@@ -378,11 +377,11 @@ msgstr "Ohita tietokoneen liikkeet"
 
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Tallenna uusinta YP/MP-voitoista tai MP-häviöistä."
 
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Poista tallennukset YP/MP-voitoista tai MP-häviöistä."
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -449,7 +448,6 @@ msgid "Show Haloing Effects"
 msgstr "Näytä valokehä-efektit"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Change Resolution"
 msgstr "Valitse näyttötarkkuus"
 
@@ -479,11 +477,11 @@ msgstr "Chatin lähetysajat"
 
 #: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Monipuolisemmat asetukset"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Perusasetukset"
 
 #: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
@@ -499,7 +497,7 @@ msgstr "Hyväksy"
 
 #: src/game_preferences_display.cpp:197
 msgid "Show Unit Idle Animations"
-msgstr ""
+msgstr "Näytä yksikön vapaa-ajan animaatiot"
 
 #: src/game_preferences_display.cpp:199
 msgid "Music Volume:"
@@ -527,7 +525,7 @@ msgstr "Näytetaajuus (Hz):"
 
 #: src/game_preferences_display.cpp:205
 msgid "Frequency:"
-msgstr ""
+msgstr "Toistonopeus:"
 
 #: src/game_preferences_display.cpp:229
 msgid "Sound effects on/off"
@@ -602,17 +600,16 @@ msgid "Units move and fight speed"
 msgstr "Yksiköiden liikkumis ja taistelunopeus"
 
 #: src/game_preferences_display.cpp:324
-#, fuzzy
 msgid "Show unit idle animations"
-msgstr "Hyppää animaatioiden yli"
+msgstr "Näytä yksiköiden vapaa-ajan animaatiot"
 
 #: src/game_preferences_display.cpp:330
 msgid "Set the frequency of unit idle animations"
-msgstr ""
+msgstr "Aseta toistonopeus yksikköanimaatioille."
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "Aseta maksimimäärä säästettäville tallennuksille"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
@@ -620,12 +617,11 @@ msgstr "Älä animoi tietokoneen yksikköjen liikkeitä"
 
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
+msgstr "Tallenna uusinnat YP-voitosta tai YP/MP-häviöstä."
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Automaattisesti tuhoa automaattiset tallennukset skenaarion lopussa."
+msgstr "Automaattisesti tuhoa tallennukset YP-voitossa tai YP/MP-tappiossa"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -723,11 +719,11 @@ msgstr "Nopeus:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "Maksimitallennukset:"
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
-msgstr ""
+msgstr "ääretön"
 
 #: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
@@ -735,9 +731,8 @@ msgstr "Chat-rivejä: "
 
 #: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
 #: src/game_preferences_display.cpp:907
-#, fuzzy
 msgid "Invalid username"
-msgstr "Syötä nimi"
+msgstr "Epäkelpo nimimerkki"
 
 #: src/game_preferences_display.cpp:967
 msgid "yes"
@@ -749,7 +744,7 @@ msgstr "ei"
 
 #: src/game_preferences_display.cpp:1003
 msgid "(empty list)"
-msgstr ""
+msgstr "(tyhjä lista)"
 
 #: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
@@ -780,7 +775,6 @@ msgid "New theme will take effect on next new or loaded game."
 msgstr "Uusi teema otetaan käyttöön seuraavassa uudessa tai ladatussa pelissä."
 
 #: src/game_preferences_display.cpp:1170
-#, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Ei teemoja. Yritä vaihtamista käynnissä olevasta pelistä."
 
@@ -1005,9 +999,8 @@ msgid "Fill Selection"
 msgstr "Täytä valinta"
 
 #: src/hotkeys.cpp:112
-#, fuzzy
 msgid "Rotate Selection"
-msgstr "Täytä valinta"
+msgstr "Muunna valintaa"
 
 #: src/hotkeys.cpp:113
 msgid "Cut"

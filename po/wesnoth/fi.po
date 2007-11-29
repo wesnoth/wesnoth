@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-28 21:32+0100\n"
-"PO-Revision-Date: 2007-10-23 14:11+0300\n"
-"Last-Translator: Santtu Pajukanta <santtu@pajukanta.fi>\n"
+"PO-Revision-Date: 2007-11-29 16:03+0200\n"
+"Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2206,17 +2206,15 @@ msgid "General commands"
 msgstr "Yleiset komennot"
 
 #: data/core/help.cfg:615
-#, fuzzy
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
 "\n"
-"Tyhjennä keskusteluikkuna."
+"Tyhjennä keskusteluikkuna.\n"
 
 #: data/core/help.cfg:618
-#, fuzzy
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -2227,7 +2225,7 @@ msgstr ""
 "\n"
 "Vaihda armeijan komentajuutta ihmisen ja tietokonepelaajan välillä. Tämän "
 "komennon voi antaa vain pelaaja, joka kontrolloi armeijaa. Oletusarvona on "
-"1.\n"
+"tällä hetkellä aktiivinen puoli.\n"
 "\n"
 
 #: data/core/help.cfg:621
@@ -2276,9 +2274,11 @@ msgid ""
 "Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
+"\n"
+"Näyttää kehysten määrän sekunnissa (fps).\n"
+"\n"
 
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2287,8 +2287,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Siirry testaustilaan (ei toimi moninpelissä). Testaustilasta pääsee pois "
-"poistumalla pelistä.\n"
+"Vaihda testaustila päälle (ei toimi moninpelissä). Katso "
+"<ref>dst=debug_commands text='Debug mode commands'</ref>.\n"
+"Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:638
@@ -2300,7 +2301,6 @@ msgid "Multiplayer commands"
 msgstr "Moninpelikomennot"
 
 #: data/core/help.cfg:647
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2350,19 +2350,16 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:657
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"Hiljennä tai poista hiljennys kaikilta tarkkailijoilta.\n"
-"\n"
+"Hiljennä tai poista hiljennys kaikilta tarkkailijoilta."
 
 #: data/core/help.cfg:662
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Yleiset komennot"
+msgstr "Testaustilan komennot"
 
 #: data/core/help.cfg:666
 msgid ""
@@ -2370,6 +2367,9 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Luo määrätyn tyyppisen yksikön valittuun heksaan.\n"
+"\n"
 
 #: data/core/help.cfg:669
 msgid ""
@@ -2377,6 +2377,9 @@ msgid ""
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
+"\n"
+"Pistä sumu/huntu nykyiselle joukkueelle.\n"
+"\n"
 
 #: data/core/help.cfg:672
 msgid ""
@@ -2384,6 +2387,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Lisää määritellyn määrän kultaa nykyiselle joukkueelle.\n"
+"\n"
 
 #: data/core/help.cfg:675
 msgid ""
@@ -2391,6 +2397,9 @@ msgid ""
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Aseta käsin pelintila(gamestate)-muuttujalle arvo.\n"
+"\n"
 
 #: data/core/help.cfg:678
 msgid ""
@@ -2398,6 +2407,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Näytä pelintila(gamestate)-muuttuja.\n"
+"\n"
 
 #: data/core/help.cfg:681
 msgid ""
@@ -2405,6 +2417,9 @@ msgid ""
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
+"\n"
+"Laukaise käsin määritelty tapahtuma.\n"
+"\n"
 
 #: data/core/help.cfg:682
 msgid ""
@@ -2412,6 +2427,9 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
+"\n"
+"Muokkaa määriteltyä valitun yksikön ominaisuutta. Esimerkki: :unit "
+"hitpoints=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -3913,13 +3931,12 @@ msgstr ""
 "myrkytykset."
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr ""
-"Tämä yksikkö osaa parantaa toisia yksiköitä. Se pystyy hidastamaan myrkyn "
-"vaikutusta muttei osaa poistaa sitä kokonaan."
+"Tämä yksikkö pystyy neutralisoimaan myrkyn vaikutukset yksiköistä hänen "
+"ympäriltään."
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -4421,7 +4438,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:4
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Kuninkaallinen tiivistelmä taistelutermistöstä - Osa II, 212WV"
 
 #: data/hardwired/tips.cfg:7
 msgid ""
@@ -4442,7 +4459,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
 #: data/hardwired/tips.cfg:142
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "-Wesnothin taktinen opaskirja"
 
 #: data/hardwired/tips.cfg:10
 msgid ""
@@ -4507,7 +4524,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:26 data/hardwired/tips.cfg:74
 #: data/hardwired/tips.cfg:82
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
+msgstr "- Taktisen analysoinnin käsikirja, Volume I - Haldric II, 42WV"
 
 #: data/hardwired/tips.cfg:29
 msgid ""
@@ -4523,7 +4540,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:30
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- Taktisen analysoinnin käsikirja, Volume II - Haldric II, 43WV"
 
 #: data/hardwired/tips.cfg:33
 msgid ""
@@ -4549,7 +4566,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
 msgid "- Sir Kaylan, 498YW"
-msgstr ""
+msgstr "- Sir Kaylan, 498WV"
 
 #: data/hardwired/tips.cfg:45
 msgid ""
@@ -4563,7 +4580,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:46
 msgid "- Sir Kaylan, 502YW"
-msgstr ""
+msgstr "- Sir Kaylan, 502WV"
 
 #: data/hardwired/tips.cfg:49
 msgid ""
@@ -4584,7 +4601,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:54
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Suurylimys Kalenz, 470WV"
 
 #: data/hardwired/tips.cfg:57
 msgid ""
@@ -4597,7 +4614,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:58 data/hardwired/tips.cfg:150
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- Kuningas Konrad, 536WV"
 
 #: data/hardwired/tips.cfg:61
 msgid ""
@@ -4609,7 +4626,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:62
 msgid "- King Konrad, 552YW"
-msgstr ""
+msgstr "- Kuningas Konrad, 552WV"
 
 #: data/hardwired/tips.cfg:65
 msgid ""
@@ -4619,7 +4636,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:66
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- Meneldur, 123WV"
 
 #: data/hardwired/tips.cfg:69
 msgid ""
@@ -4646,18 +4663,17 @@ msgstr ""
 "heidän linnakkeissaan."
 
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Luurangot ovat vastustuskykyisiä lävistäville ja teräaseilla tehdyille "
-"iskuille, mutta herkkiä murjoville iskuille, tulelle ja "
+"Luurangot ovat vastustuskykyisiä kylmälle, lävistäville ja teräaseilla "
+"tehdyille iskuille, mutta herkkiä murjoville iskuille, tulelle ja "
 "salatiedehyökkäyksille."
 
 #: data/hardwired/tips.cfg:78
 msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
+msgstr "- Gweddryn muistelmat, 627WV"
 
 #: data/hardwired/tips.cfg:81
 msgid ""
@@ -4679,7 +4695,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:86
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- Suurmaagi Delfador, 516WV"
 
 #: data/hardwired/tips.cfg:89
 msgid ""
@@ -4697,7 +4713,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:94
 msgid "- Princess Li'sar, 515YW"
-msgstr ""
+msgstr "- Prinsessa Li'sar, 515WV"
 
 #: data/hardwired/tips.cfg:97
 msgid "Read the hotkeys list in the preferences menu."
@@ -4729,7 +4745,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:110
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- Chantalin käärö, 516WV"
 
 #: data/hardwired/tips.cfg:113
 msgid ""
@@ -4745,7 +4761,7 @@ msgstr "Salatiedehyökkäykset ovat erikoisen voimakkaita epäkuolleita vastaan.
 
 #: data/hardwired/tips.cfg:118
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "Suurvelho Dacyn, 626WV"
 
 #: data/hardwired/tips.cfg:121
 msgid ""
@@ -4817,7 +4833,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:146
 msgid "- Queen Li'sar, 528YW"
-msgstr ""
+msgstr "- Kuningaar Li-sar, 528WV"
 
 #: data/hardwired/tips.cfg:149
 msgid ""
@@ -5002,7 +5018,7 @@ msgstr "Väijytys!"
 
 #: src/actions.cpp:2108
 msgid "Failed teleport! Exit not empty"
-msgstr ""
+msgstr "Epäonnistunut teleportti! Kohdekylä ei ole tyhjä"
 
 #: src/actions.cpp:2146
 msgid "Friendly unit sighted"
@@ -5085,9 +5101,8 @@ msgid "#(Invalid)"
 msgstr "#(virheellinen)"
 
 #: src/dialogs.cpp:471
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Kampanjoiden ylläpito"
+msgstr "Kampanja: $campaign_name"
 
 #: src/dialogs.cpp:473 src/game.cpp:1410
 msgid "Multiplayer"
@@ -5441,6 +5456,8 @@ msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
+"Isännöi peliä käyttämällä sisäänrakennettua serveriä. Ei kovin hyvin "
+"ylläpidetty, järkevämpää olisi käyttää erillistä serveriä, ‘wesnothd’tä."
 
 #: src/game.cpp:1403
 msgid "Local Game"
@@ -5771,19 +5788,18 @@ msgstr "järjestelmän oletuskieli"
 
 #: src/leader_list.cpp:133 src/multiplayer_connect.cpp:179
 #: src/multiplayer_connect.cpp:232
-#, fuzzy
 msgid "gender^Random"
 msgstr "Satunnainen"
 
 #: src/leader_list.cpp:144 src/leader_list.cpp:146
 #: src/multiplayer_connect.cpp:175 src/multiplayer_connect.cpp:228
 msgid "Female ♀"
-msgstr ""
+msgstr "Naispuolinen ♀"
 
 #: src/leader_list.cpp:153 src/leader_list.cpp:155
 #: src/multiplayer_connect.cpp:177 src/multiplayer_connect.cpp:230
 msgid "Male ♂"
-msgstr ""
+msgstr "Miespuolinen ♂"
 
 #: src/leader_list.cpp:166 src/leader_list.cpp:203
 msgid "Random"
@@ -6403,9 +6419,8 @@ msgid "Faction"
 msgstr "Liittouma"
 
 #: src/multiplayer_connect.cpp:865
-#, fuzzy
 msgid "Team/Gender"
-msgstr "Puolustaja"
+msgstr "Joukkue/Sukupuoli"
 
 #: src/multiplayer_connect.cpp:866
 msgid "Color"
@@ -6579,9 +6594,8 @@ msgid "Share None"
 msgstr "Älä jaa"
 
 #: src/multiplayer_create.cpp:200
-#, fuzzy
 msgid "No eras found."
-msgstr "Ei löydetä aikakausia."
+msgstr "Ei löydettyjä aikakausia."
 
 #: src/multiplayer_create.cpp:201
 msgid "No eras found"
@@ -6728,9 +6742,8 @@ msgid "Leader: "
 msgstr "Johtaja: "
 
 #: src/multiplayer_wait.cpp:144
-#, fuzzy
 msgid "Gender: "
-msgstr "Johtaja: "
+msgstr "Sukupuoli:"
 
 #: src/multiplayer_wait.cpp:146
 msgid "Recruits: "
@@ -6770,7 +6783,7 @@ msgstr "Vastapuoli katkaisi yhteyden."
 
 #: src/network.cpp:160
 msgid "No server ping since at least 30 seconds. Connection timed out."
-msgstr ""
+msgstr "Ei yhteydenottoa serveriltä ainakaan 30. sekuntiin. Yhteys katkesi. "
 
 #: src/network.cpp:508
 msgid "Could not add socket to socket set"
@@ -6806,7 +6819,7 @@ msgstr "Uusintaa ei voitu tallentaa"
 
 #: src/playcampaign.cpp:442
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr ""
+msgstr "Skenaario on loppunut. Haluatko jatkaa kampanjaa?"
 
 #: src/playcampaign.cpp:463
 msgid "Downloading next scenario..."
@@ -6821,9 +6834,8 @@ msgid "Unknown scenario: '$scenario|'"
 msgstr "Tuntematon skenaario: '$scenario|'"
 
 #: src/playmp_controller.cpp:250
-#, fuzzy
 msgid "End scenario"
-msgstr "Lopeta skenaario"
+msgstr "Päätä skenaario"
 
 #: src/playmp_controller.cpp:391
 msgid ""
@@ -6834,6 +6846,13 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
+"Peli ei ole synkronoitu, ja sitä ei voida jatkaa. On monia syitä, miksi näin "
+"voisi tapahtua: tämä voi tapahtua, jos sinä tai joku muu pelaaja on "
+"muokannut heidän peliasetuksiaan. Tämä tarkoittanee yhden pelaajista "
+"yrittävän huijata. Se voisi myös olla pelissä oleva virhe, mutta tämä ei ole "
+"niin yleistä.\n"
+"\n"
+"Haluatko tallentaa virhelogin pelistäsi?"
 
 #: src/playsingle_controller.cpp:151
 msgid "Remaining gold: "
@@ -6861,19 +6880,17 @@ msgstr "Kultapalaa: "
 
 #: src/playsingle_controller.cpp:164
 msgid "Carry over percentage: "
-msgstr ""
+msgstr "Yliviennin prosentti:"
 
 #: src/playsingle_controller.cpp:166
-#, fuzzy
 msgid "Bonus Gold: "
-msgstr "Palkinto: "
+msgstr "Palkintokulta:"
 
 #: src/playsingle_controller.cpp:168
 msgid "Retained Gold: "
 msgstr "Kultapalaa jäljellä: "
 
 #: src/playsingle_controller.cpp:178
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6881,14 +6898,13 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Aloitat seuraavan skenaarion $gold|:lla kullalla tai sille määrätyllä "
+"Aloitat seuraavan skenaarion $gold|:lla kullalla ja lisäksi sille määrätyllä "
 "vähimmäisaloituskullalla."
 msgstr[1] ""
-"Aloitat seuraavan skenaarion $gold|:lla kullalla tai sille määrätyllä "
+"Aloitat seuraavan skenaarion $gold|:lla kullalla ja lisäksi sille määrätyllä "
 "vähimmäisaloituskullalla."
 
 #: src/playsingle_controller.cpp:186
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6897,10 +6913,10 @@ msgid_plural ""
 "gold, whichever is higher."
 msgstr[0] ""
 "Aloitat seuraavan skenaarion $gold|:lla kullalla tai sille määrätyllä "
-"vähimmäisaloituskullalla."
+"vähimmäisaloituskullalla, riippuen kumman olevan suurempi."
 msgstr[1] ""
 "Aloitat seuraavan skenaarion $gold|:lla kullalla tai sille määrätyllä "
-"vähimmäisaloituskullalla."
+"vähimmäisaloituskullalla, riippuen kumman olevan suurempi."
 
 #: src/playsingle_controller.cpp:297
 msgid "Game Over"
@@ -6958,9 +6974,8 @@ msgid "$player has left the game. What do you want to do?"
 msgstr "$player on poistunut pelistä. Mitä haluat tehdä?"
 
 #: src/replay_controller.cpp:87
-#, fuzzy
 msgid "The file you have tried to load is corrupt. Continue playing?"
-msgstr "Tiedosto, jonka yritit avata on korruptoitunut."
+msgstr "Tiedosto, jonka yritit avata on korruptoitunut. Jatka pelaamista?"
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
@@ -7068,14 +7083,12 @@ msgid "TitleScreen button^Quit"
 msgstr "Lopeta"
 
 #: src/titlescreen.cpp:329
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "Tekijät"
+msgstr "Edellinen"
 
 #: src/titlescreen.cpp:330
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "Lopeta"
+msgstr "Seuraava"
 
 #: src/titlescreen.cpp:331
 msgid "TitleScreen button^Help"
@@ -7154,18 +7167,16 @@ msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2491
-#, fuzzy
 msgid "moves"
-msgstr "Liike"
+msgstr "siirrot"
 
 #: src/unit.cpp:2509 src/unit.cpp:2646
 msgid "XP to advance"
 msgstr "KP:tä ylenemiseen:"
 
 #: src/unit.cpp:2638
-#, fuzzy
 msgid " move"
-msgstr "Liike"
+msgstr "siirto"
 
 #: src/unit.cpp:2654
 msgid "$effect_description per level"
@@ -7176,17 +7187,15 @@ msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:161 src/unit_types.cpp:203
-#, fuzzy
 msgid "damage"
 msgid_plural "damage"
-msgstr[0] "vahinkoa"
+msgstr[0] "vahinko"
 msgstr[1] "vahinkoa"
 
 #: src/unit_types.cpp:170 src/unit_types.cpp:210
-#, fuzzy
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "iskua"
+msgstr[0] "isku"
 msgstr[1] "iskua"
 
 #: src/unit_types.cpp:774
