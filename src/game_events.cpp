@@ -51,6 +51,7 @@
 #define LOG_NG LOG_STREAM(info, engine)
 #define WRN_NG LOG_STREAM(warn, engine)
 #define ERR_NG LOG_STREAM(err, engine)
+#define DBG_DP LOG_STREAM(debug, display)
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_CF LOG_STREAM(err, config)
 
@@ -1714,7 +1715,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		int option_chosen = -1;
 
-		LOG_DP << "showing dialog...\n";
+		DBG_DP << "showing dialog...\n";
 
 		// If we're not replaying, or if we are replaying
 		// and there is no choice to be made, show the dialog.

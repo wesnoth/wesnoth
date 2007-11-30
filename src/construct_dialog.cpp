@@ -47,6 +47,7 @@
 
 #define ERR_DP LOG_STREAM(err, display)
 #define LOG_DP LOG_STREAM(info, display)
+#define DBG_DP LOG_STREAM(debug, display)
 #define ERR_G  LOG_STREAM(err, general)
 
 namespace gui {
@@ -530,7 +531,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	dim.interior.x = maximum<int>(0,dim.x >= 0 ? dim.x : scr->w/2 - (dim.interior.w + left_preview_pane_width + right_preview_pane_width)/2);
 	dim.interior.y = maximum<int>(0,dim.y >= 0 ? dim.y : scr->h/2 - (dim.interior.h + above_preview_pane_height)/2);
 
-	LOG_DP << "above_preview_pane_height: " << above_preview_pane_height << "; "
+	DBG_DP << "above_preview_pane_height: " << above_preview_pane_height << "; "
 		<< "dim.interior.y: " << scr->h/2 << " - " << (dim.interior.h + above_preview_pane_height)/2 << " = "
 		<< dim.interior.y << "; " << "dim.interior.h: " << dim.interior.h << "\n";
 
