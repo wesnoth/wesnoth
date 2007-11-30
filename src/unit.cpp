@@ -49,6 +49,7 @@
 #include <iterator>
 
 #define LOG_UT LOG_STREAM(info, engine)
+#define ERR_UT LOG_STREAM(err, engine)
 
 namespace {
 	const std::string ModificationTypes[] = { "advance", "trait", "object" };
@@ -523,7 +524,7 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 	bool do_heal = false; // Track whether unit should get fully healed.
 
 	if(utils::string_bool(cfg_["random_gender"], false)) {
-		generate_gender(*t,true);
+		cfg_["gender"] = gender_string(generate_gender(*t,true));
 	}
 
 	if(id()!=t->id() || cfg_["gender"] != cfg_["gender_id"]) {
@@ -1106,7 +1107,22 @@ void unit::read(const config& cfg, bool use_traits)
 	max_experience_=0;
 	/* */
 
-	gender_ = string_gender(cfg["gender"]);
+	if(utils::string_bool(cfg_["random_gender"], false)) {
+		const game_data::unit_type_map::const_iterator ut = gamedata_->unit_types.find(cfg["type"]);
+		//! @todo FIXME shadowmaster: in my opinion, the following condition check
+		//! should be done earlier in this function as it is repated later for other
+		//! operations; i.e. it must be a sanity check to be performed as soon as possible
+		//! to avoid wasting time in futile operations with an unexistent unit, and instead
+		//! throw an error at the start of this function, right after getting id/type from
+		//! the config obj. Not sure if that would be wanted; can the engine handle units
+		//! that don't have an equivalent unit_type obj associated?
+		if (ut != gamedata_->unit_types.end())
+			gender_ = generate_gender(ut->second,true);
+		else
+			ERR_UT << "no valid unit_type found for unit WML id \"" << cfg["type"] << "\"!\n";
+	} else {
+		gender_ = string_gender(cfg["gender"]);
+	}
 
 	variation_ = cfg["variation"];
 
