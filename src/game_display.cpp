@@ -275,7 +275,7 @@ void game_display::draw(bool update,bool force)
 			int xpos = get_location_x(*it);
 			int ypos = get_location_y(*it);
 
-			tblit blit(xpos, ypos, 0);
+			tblit blit(xpos, ypos);
 			int drawing_order = gamemap::get_drawing_order(*it);
 
 			// Store invalidated units

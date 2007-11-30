@@ -416,7 +416,7 @@ protected:
 
 	//! Helper structure for rendering the terrains.
 	struct tblit{
-		tblit(const int x, const int y, const surface& surf) :
+		tblit(const int x, const int y) :
 			x(x),
 			y(y),
 			surf()
