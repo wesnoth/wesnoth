@@ -229,7 +229,6 @@ void game_display::scroll_to_leader(unit_map& units, int side)
 	}
 }
 
-
 void game_display::draw(bool update,bool force)
 {
 	if (screen_.update_locked()) {
@@ -275,6 +274,9 @@ void game_display::draw(bool update,bool force)
 		for(it = invalidated_.begin(); it != invalidated_.end(); ++it) {
 			int xpos = get_location_x(*it);
 			int ypos = get_location_y(*it);
+
+			tblit blit(xpos, ypos, 0);
+			int drawing_order = gamemap::get_drawing_order(*it);
 
 			// Store invalidated units
 			if ((temp_unit_ && temp_unit_loc_==*it) || units_.find(*it) != units_.end()) {
@@ -401,7 +403,9 @@ void game_display::draw(bool update,bool force)
 			} else if(fogged(*it)) {
 				tile_stack_append(image::get_image(fog_image, image::SCALED_TO_HEX));
 			} else if(game_mode_ != RUNNING) {
-				tile_stack_append(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
+				blit.surf.push_back(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_LINGER_OVERLAY, drawing_order, blit);
+				blit.surf.clear();
 			}
 
 			if(!is_shrouded) {
@@ -440,6 +444,9 @@ void game_display::draw(bool update,bool force)
 
 		invalidated_.clear();
 	}
+
+
+	drawing_buffer_commit();
 
 	halo::render();
 

@@ -77,7 +77,9 @@ display::display(CVideo& video, const gamemap& map, const config& theme_cfg, con
 	invalidateGameStatus_(true),
 	map_labels_(*this,map, 0),
 	_scroll_event("scrolled"),
-	nextDraw_(0), fps_handle_(0),
+	nextDraw_(0), 
+	drawing_buffer_(LAYER_LAST_LAYER),
+	fps_handle_(0),
 	idle_anim_(preferences::idle_anim()),
 	idle_anim_rate_(1.0)
 {
@@ -600,6 +602,59 @@ void display::tile_stack_render(int x, int y)
 	tile_stack_.clear();
 
 	update_rect(x, y, zoom_, zoom_);
+}
+
+void display::drawing_buffer_commit()
+{
+	SDL_Rect clip_rect = map_area();
+	surface const dst(screen_.getSurface());
+	clip_rect_setter set_clip_rect(dst, clip_rect);
+
+	// Simply go down all levels in the drawing_buffer_ and render them.
+	for(tdrawing_buffer::const_iterator 
+			layer_itor = drawing_buffer_.begin(), 
+			layer_itor_end = drawing_buffer_.end();
+			layer_itor != layer_itor_end; ++layer_itor) {
+
+		for(std::map<int, std::vector<tblit> >::const_iterator 
+				drawing_iterator = layer_itor->begin(),
+				drawing_iterator_end = layer_itor->end();
+				drawing_iterator != drawing_iterator_end; ++drawing_iterator) {
+
+			for(std::vector<tblit>::const_iterator 
+					blit_itor = drawing_iterator->second.begin(),
+					blit_itor_end = drawing_iterator->second.end();
+					blit_itor != blit_itor_end; ++blit_itor) {
+
+				for(std::vector<surface>::const_iterator 
+						surface_itor = blit_itor->surf.begin(),
+						surface_itor_end = blit_itor->surf.end();
+						surface_itor != surface_itor_end; ++surface_itor) {
+
+					// Note that dstrect can be changed by SDL_BlitSurface
+					// and so a new instance should be initialized
+					// to pass to each call to SDL_BlitSurface.
+					SDL_Rect dstrect = { blit_itor->x, blit_itor->y, 0, 0 };
+					SDL_BlitSurface(*surface_itor, NULL, dst, &dstrect);
+				}
+			}
+		}
+	}
+
+	drawing_buffer_clear();
+}
+
+void display::drawing_buffer_clear()
+{
+	// Note clear the items, the vector should remain the same size.
+	surface const dst(screen_.getSurface());
+	for(tdrawing_buffer::iterator layer_itor = 
+			drawing_buffer_.begin(), 
+			layer_itor_end = drawing_buffer_.end();
+			layer_itor != layer_itor_end; ++layer_itor) {
+
+		layer_itor->clear();
+	}
 }
 
 void display::sunset(const size_t delay)

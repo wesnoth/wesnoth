@@ -105,6 +105,14 @@ public:
 
 		static const location null_location;
 	};
+
+	//! Drawing order, copied from ordered_draw in display.hpp.
+	//!
+	//! This returns the order in which the units should be drawn so they overlap 
+	//! propererly.
+	static int get_drawing_order (const gamemap::location& loc )
+			{ return (loc.y * 2 + loc.x % 2) * 1024; }
+       
 	const t_translation::t_list& underlying_mvt_terrain(const location& loc) const
 		{ return underlying_mvt_terrain(get_terrain(loc)); }
 	const t_translation::t_list& underlying_def_terrain(const location& loc) const

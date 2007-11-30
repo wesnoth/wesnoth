@@ -414,6 +414,60 @@ protected:
 	void tile_stack_render(int x, int y);
 	void tile_stack_clear() {tile_stack_.clear();};
 
+	//! Helper structure for rendering the terrains.
+	struct tblit{
+		tblit(const int x, const int y, const surface& surf) :
+			x(x),
+			y(y),
+			surf()
+			{}
+
+		int x;                      //!< x screen coordinate to render at
+		int y;                      //!< y screen coordinate to render at
+		std::vector<surface> surf;  //!< surface(s) to render
+	};
+
+	//! The layers to render something on. This value should never be stored
+	//! it's the internal drawing order and adding removing and reordering
+	//! the layers should be save.
+	//! If needed in WML use the name and map that to the enum value.
+	enum tdrawing_layer{ 
+		//LAYER_TERRAIN_BG,        //! Sample for terrain drawn behind a unit.
+		//LAYER_UNIT,              //! Sample for the layer to draw a unit on.
+		//LAYER_TERRAIN_FG,        //! Sample for terrain to draw in front of a unit.
+		LAYER_LINGER_OVERLAY,      //! The overlay used for the linger mode.
+		
+		LAYER_LAST_LAYER           //! Don't draw to this layer it's a dummy
+		                           //! to size the vector.
+		};
+
+	//! * Surfaces are rendered per level in a vector.
+	//! * Per level the items are rendered per location these locations are
+	//!   stored in the drawing order required for units.
+	//! * every location has a vector with surfaces, each with its own screen
+	//!   coordinate to render at.
+	//! * every vector element has a vector with surfaces to render.
+	typedef std::vector<std::map<int /*drawing_order*/, std::vector<tblit> > > tdrawing_buffer;
+	tdrawing_buffer drawing_buffer_;
+
+public:
+
+	//! Add an item to the drawing buffer.
+	//!
+	//! @param layer              The layer to draw on.
+	//! @param drawing_order      The order in which to draw, needed for units.
+	//! @param blit               The structure to blit.
+	void drawing_buffer_add(const tdrawing_layer layer, const int drawing_order, const tblit& blit)
+		{ drawing_buffer_[layer][drawing_order].push_back(blit); }
+
+protected:
+
+	//! Draws the drawing_buffer_ and clears it.
+	void drawing_buffer_commit();
+
+	//! Clears the drawing buffer.
+	void drawing_buffer_clear();
+
 	//! redraw all panels associated with the map display
 	void draw_all_panels();
 
