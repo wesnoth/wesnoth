@@ -161,7 +161,12 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			if(leader_name == parent_->game_data_.unit_types.end()) {
 				leader_name_pseudolist.push_back("-");
 			} else {
-				leader_name_pseudolist.push_back(leader_name->second.language_name());
+				if (gender_ == "female")
+					leader_name_pseudolist.push_back(leader_name->second.get_gender_unit_type(unit_race::FEMALE).language_name());
+				else if (gender_ == "male")
+					leader_name_pseudolist.push_back(leader_name->second.get_gender_unit_type(unit_race::MALE).language_name());
+				else
+					leader_name_pseudolist.push_back(leader_name->second.language_name());
 			}
 		}
 		combo_leader_.set_items(leader_name_pseudolist);
