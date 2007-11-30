@@ -865,10 +865,18 @@ if test "x$lite" = "xno"; then
 
 
         CPPFLAGS=$OLD_CPPFLAGS
-	CFLAGS=$OLD_CFLAGS
+        CFLAGS=$OLD_CFLAGS
         LIBS=$OLD_LIBS
     fi
 fi
+
+#######################################################################
+# Check for boost iostreams                                           #
+#######################################################################
+
+# FIXME do a check
+
+LIBS="$LIBS -lboost_iostreams"
 
 #######################################################################
 # Tune gettext stuff for our needs                                    #

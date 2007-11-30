@@ -71,6 +71,10 @@
 #include <sstream>
 #include <string>
 
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filtering_streambuf.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+
 #define ERR_CONFIG LOG_STREAM(err, config)
 #define WRN_CONFIG LOG_STREAM(warn, config)
 #define LOG_CONFIG LOG_STREAM(info, config)
@@ -1847,6 +1851,11 @@ static int play_game(int argc, char** argv)
 			<< "  -f, --fullscreen             runs the game in full screen mode.\n"
 			<< "  --fps                        displays the number of frames per second the game\n"
 			<< "                               is currently running at, in a corner of the screen.\n"
+			<< " --gunzip INFILE               decompresses a savefile which should be a .gz file\n" 
+			<< "                               (INFILE) and stores it without the .gz suffix.\n"
+			<< "                               The (INFILE) will be removed.\n"
+			<< " --gzip INFILE                 compresses a savefile (INFILE) as gzip file and \n"
+			<< "                               stores it as (INFILE.gz) and removes (INFILE).\n"
 			<< "  -h, --help                   prints this message and exits.\n"
 			<< "  --load SAVEGAME              loads the file SAVEGAME from the standard save\n"
 			<< "                               game directory.\n"
@@ -1924,6 +1933,9 @@ static int play_game(int argc, char** argv)
 				}
 				p = q;
 			}
+		//! @todo the (de)compress will be removed, the feature is broken for quite
+		//! a while and is replaced with --g(un)zip. 1.5.1 would be a nice point for
+		//! removal.
 		} else if(val == "--compress" || val == "--decompress") {
 			if(argc != arg+3) {
 				std::cerr << "format of " << val << " command: " << val << " <input file> <output file>\n";
@@ -1961,6 +1973,67 @@ static int play_game(int argc, char** argv)
 			}
 
 			return 0;
+
+		} else if(val == "--gzip") {
+			if(argc != arg + 2) {
+				std::cerr << "format of " << val << " command: " << val << " <input file>\n";
+				return 2;
+			}
+
+			const std::string input_file(argv[arg + 1]);
+			const std::string output_file(input_file + ".gz");
+
+			try {
+			std::ofstream ofile(output_file.c_str(), std::ios_base::out 
+					| std::ios_base::binary | std::ios_base::binary);
+
+				std::ifstream ifile(input_file.c_str(), 
+					std::ios_base::in | std::ios_base::binary);
+				boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
+				in.push(boost::iostreams::gzip_compressor());
+				in.push(ifile);
+				boost::iostreams::copy(in, ofile);
+
+				ifile.close();
+				return remove(input_file.c_str());
+
+			}  catch(io_exception& e) {
+                std::cerr << "IO error: " << e.what() << "\n";
+			}
+
+		} else if(val == "--gunzip") {
+			if(argc != arg + 2) {
+				std::cerr << "format of " << val << " command: " << val << " <input file>\n";
+				return 2;
+			}
+
+			const std::string input_file(argv[arg + 1]);
+			if(input_file.substr(input_file.length() - 3) != ".gz") {
+
+				std::cerr << "file '" << input_file << "'isn't a .gz file\n";
+				return 2;
+			}
+			const std::string output_file(
+				input_file, 0, input_file.length() - 3);
+
+			try {
+				std::ofstream ofile(output_file.c_str(), std::ios_base::out 
+					| std::ios_base::binary | std::ios_base::binary);
+
+				std::ifstream ifile(input_file.c_str(), 
+					std::ios_base::in | std::ios_base::binary);
+				boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
+				in.push(boost::iostreams::gzip_decompressor());
+				in.push(ifile);
+				boost::iostreams::copy(in, ofile);
+
+				ifile.close();
+				return remove(input_file.c_str());
+
+			}  catch(io_exception& e) {
+                std::cerr << "IO error: " << e.what() << "\n";
+			}
+
 		} else if(val == "--logdomains") {
 			std::cout << lg::list_logdomains() << "\n";
 			return 0;
