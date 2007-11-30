@@ -148,6 +148,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		for(;side_units.first != side_units.second; ++side_units.first) {
 			if(utils::string_bool((**side_units.first)["canrecruit"], false)) {
 				leader_type = (**side_units.first)["type"];
+				gender_ = (**side_units.first)["gender"];
 				break;
 			}
 		}
@@ -166,7 +167,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_leader_.set_items(leader_name_pseudolist);
 		combo_leader_.set_selected(0);
 		std::vector<std::string> gender_name_pseudolist;
-		gender_ = cfg_["gender"];
+
 		if (!gender_.empty()) {
 			if(leader_type.empty() || parent_->game_data_.unit_types.find(leader_type) == parent_->game_data_.unit_types.end()) {
 					gender_name_pseudolist.push_back("-");
@@ -181,7 +182,6 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			}
 		} else {
 			gender_name_pseudolist.push_back("-");
-			std::cerr << "CKJSADHFCKSAJFKDJFLDSKJ";
 		}
 		combo_gender_.set_items(gender_name_pseudolist);
 		combo_gender_.set_selected(0);
