@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-28 21:32+0100\n"
+"POT-Creation-Date: 2007-11-30 17:11+0100\n"
 "PO-Revision-Date: 2006-09-04 16:15+0300\n"
 "Last-Translator: İhsan Haluk AKIN <ihsan_akin@yahoo.com>\n"
 "Language-Team:  <tr@li.org>\n"
@@ -4370,6 +4370,10 @@ msgid ""
 "ability to undo."
 msgstr ""
 
+#: data/scenario-test.cfg:679
+msgid "ruby of fire"
+msgstr ""
+
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
 msgid "Menu"
@@ -4390,14 +4394,14 @@ msgid "End Scenario"
 msgstr "Uzak Senaryo:"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:338 src/unit.cpp:2458
-#: src/unit.cpp:2631
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:341 src/unit.cpp:2460
+#: src/unit.cpp:2633
 msgid "HP"
 msgstr "YP"
 
 #: data/themes/default.cfg:213 data/themes/dfool.cfg:243
-#: data/themes/experimental.cfg:191 src/menu_events.cpp:339
-#: src/menu_events.cpp:1098
+#: data/themes/experimental.cfg:191 src/menu_events.cpp:342
+#: src/menu_events.cpp:1106
 msgid "XP"
 msgstr "TP"
 
@@ -4511,8 +4515,8 @@ msgstr "Çürüme iksiri"
 msgid "Skip animation"
 msgstr "Slovakça Tercüme"
 
-#: src/about.cpp:46 src/multiplayer_connect.cpp:421
-#: src/multiplayer_connect.cpp:518 src/multiplayer_wait.cpp:496
+#: src/about.cpp:46 src/multiplayer_connect.cpp:426
+#: src/multiplayer_connect.cpp:523 src/multiplayer_wait.cpp:496
 msgid "+"
 msgstr "+"
 
@@ -4520,71 +4524,71 @@ msgstr "+"
 msgid "+  "
 msgstr "+"
 
-#: src/about.cpp:186 src/help.cpp:2911 src/menu_events.cpp:160
-#: src/menu_events.cpp:456 src/menu_events.cpp:479
+#: src/about.cpp:186 src/help.cpp:2911 src/menu_events.cpp:163
+#: src/menu_events.cpp:459 src/menu_events.cpp:482
 msgid "Close"
 msgstr "Kapat"
 
-#: src/actions.cpp:138
+#: src/actions.cpp:139
 msgid "You don't have a leader to recruit with."
 msgstr "Askere alabilecek bir liderin yok."
 
-#: src/actions.cpp:145
+#: src/actions.cpp:146
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "Birim askere almak veya tekrar çağırmak için liderin iç kalede olmalı."
 
-#: src/actions.cpp:164
+#: src/actions.cpp:165
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "İçinde birim askere alabileceğin boş kale bölümü yok."
 
-#: src/actions.cpp:928 src/actions.cpp:1159
+#: src/actions.cpp:929 src/actions.cpp:1160
 msgid "poisoned"
 msgstr "zehirli"
 
-#: src/actions.cpp:932 src/actions.cpp:1163
+#: src/actions.cpp:933 src/actions.cpp:1164
 msgid "slowed"
 msgstr "yavaş"
 
-#: src/actions.cpp:938 src/actions.cpp:1169
+#: src/actions.cpp:939 src/actions.cpp:1170
 msgid "stone"
 msgstr "taş"
 
-#: src/actions.cpp:2102
+#: src/actions.cpp:2103
 msgid "Ambushed!"
 msgstr "Pusuya düştü!"
 
-#: src/actions.cpp:2108
+#: src/actions.cpp:2109
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2146
+#: src/actions.cpp:2147
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Arkadaş birim göründü"
 
-#: src/actions.cpp:2149
+#: src/actions.cpp:2150
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Düşman birimi göründü!"
 
-#: src/actions.cpp:2154
+#: src/actions.cpp:2155
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 
-#: src/actions.cpp:2155
+#: src/actions.cpp:2156
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 
-#: src/actions.cpp:2156
+#: src/actions.cpp:2157
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Birim göründü! ($friends dostça, $enemies düşmanca)"
 
-#: src/actions.cpp:2165
+#: src/actions.cpp:2166
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(devam etmek için $hotkey bas)"
@@ -4655,7 +4659,7 @@ msgstr "Eğitim"
 msgid "replay"
 msgstr "tekrar"
 
-#: src/dialogs.cpp:485 src/menu_events.cpp:689
+#: src/dialogs.cpp:485 src/menu_events.cpp:692
 msgid "Turn"
 msgstr "El"
 
@@ -4709,8 +4713,8 @@ msgstr "Kaydı sil"
 msgid "Date"
 msgstr "Tarih"
 
-#: src/dialogs.cpp:571 src/game.cpp:1094 src/menu_events.cpp:336
-#: src/menu_events.cpp:1096 src/multiplayer.cpp:110
+#: src/dialogs.cpp:571 src/game.cpp:1094 src/menu_events.cpp:339
+#: src/menu_events.cpp:1104 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "İsim"
 
@@ -4746,7 +4750,7 @@ msgstr "TP: "
 msgid "Moves: "
 msgstr "Hareket: "
 
-#: src/dialogs.cpp:1035 src/dialogs.cpp:1136 src/multiplayer_connect.cpp:871
+#: src/dialogs.cpp:1035 src/dialogs.cpp:1136 src/multiplayer_connect.cpp:876
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:192
 msgid "Cancel"
 msgstr "İptal"
@@ -4755,7 +4759,7 @@ msgstr "İptal"
 msgid "KB"
 msgstr "KB"
 
-#: src/display.cpp:374
+#: src/display.cpp:376
 msgid "Screenshot"
 msgstr "Screenshot"
 
@@ -4767,20 +4771,20 @@ msgstr "The Battle for Wesnoth"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Uyarı: Yüklemeye çalıştığın dosya bozuk. Yıne de yükleniyor.\n"
 
-#: src/game.cpp:727 src/multiplayer_connect.cpp:1378
+#: src/game.cpp:727 src/multiplayer_connect.cpp:1383
 #, fuzzy
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Bu kayıt oyunun farklı bir versiyonundan. Yüklemeyi denemek istiyor musun?"
 
-#: src/game.cpp:733 src/multiplayer_connect.cpp:1385
+#: src/game.cpp:733 src/multiplayer_connect.cpp:1390
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Bu kayıt oyunun farklı bir versiyonundan. Yüklemeyi denemek istiyor musun?"
 
-#: src/game.cpp:741 src/game.cpp:744 src/multiplayer_connect.cpp:1356
+#: src/game.cpp:741 src/game.cpp:744 src/multiplayer_connect.cpp:1361
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Yüklemeye çalıştığın dosya bozuk: "
 
@@ -4858,7 +4862,7 @@ msgstr "Eklenti yüklendi"
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 
-#: src/game.cpp:1039 src/menu_events.cpp:703 src/menu_events.cpp:716
+#: src/game.cpp:1039 src/menu_events.cpp:706 src/menu_events.cpp:719
 #: src/multiplayer_create.cpp:512
 msgid "Error"
 msgstr "Hata"
@@ -5081,24 +5085,24 @@ msgstr ""
 msgid "Loading title screen."
 msgstr "Ana ekran yükleniyor."
 
-#: src/game_config.cpp:252
+#: src/game_config.cpp:253
 #, fuzzy
 msgid "Invalid color range: "
 msgstr "Geçersiz renk"
 
-#: src/game_events.cpp:938
+#: src/game_events.cpp:940
 msgid "Victory:"
 msgstr "Galibiyet:"
 
-#: src/game_events.cpp:941
+#: src/game_events.cpp:943
 msgid "Defeat:"
 msgstr "Mağlubiyet:"
 
-#: src/gamestatus.cpp:697 src/gamestatus.cpp:699 src/playcampaign.cpp:412
+#: src/gamestatus.cpp:676 src/gamestatus.cpp:678 src/playcampaign.cpp:412
 msgid " replay"
 msgstr " tekrar"
 
-#: src/gamestatus.cpp:809
+#: src/gamestatus.cpp:788
 msgid "Could not write to file"
 msgstr "Dosyaya yazılamadı"
 
@@ -5257,8 +5261,8 @@ msgstr ""
 msgid "unit help^Name"
 msgstr "Oyundan çık"
 
-#: src/help.cpp:1386 src/menu_events.cpp:335 src/menu_events.cpp:1095
-#: src/menu_events.cpp:1577
+#: src/help.cpp:1386 src/menu_events.cpp:338 src/menu_events.cpp:1103
+#: src/menu_events.cpp:1585
 msgid "Type"
 msgstr "Tip"
 
@@ -5302,7 +5306,7 @@ msgstr "Savunma"
 msgid "Movement Cost"
 msgstr "Hareket bedeli"
 
-#: src/help.cpp:2450 src/menu_events.cpp:669
+#: src/help.cpp:2450 src/menu_events.cpp:672
 msgid " < Back"
 msgstr " < Geri"
 
@@ -5342,19 +5346,19 @@ msgstr "Son"
 msgid "System default language"
 msgstr "Sistem varsayılan dili"
 
-#: src/leader_list.cpp:133 src/multiplayer_connect.cpp:179
-#: src/multiplayer_connect.cpp:232
+#: src/leader_list.cpp:133 src/multiplayer_connect.cpp:185
+#: src/multiplayer_connect.cpp:237
 #, fuzzy
 msgid "gender^Random"
 msgstr "Rastgele"
 
 #: src/leader_list.cpp:144 src/leader_list.cpp:146
-#: src/multiplayer_connect.cpp:175 src/multiplayer_connect.cpp:228
+#: src/multiplayer_connect.cpp:181 src/multiplayer_connect.cpp:233
 msgid "Female ♀"
 msgstr ""
 
 #: src/leader_list.cpp:153 src/leader_list.cpp:155
-#: src/multiplayer_connect.cpp:177 src/multiplayer_connect.cpp:230
+#: src/multiplayer_connect.cpp:183 src/multiplayer_connect.cpp:235
 msgid "Male ♂"
 msgstr ""
 
@@ -5382,205 +5386,205 @@ msgstr "Birim dosyaları okunuyor."
 msgid "Reading files and creating cache."
 msgstr "Dosyalar okunuyor ve ön bellek oluşturuluyor."
 
-#: src/menu_events.cpp:122 src/menu_events.cpp:171
+#: src/menu_events.cpp:125 src/menu_events.cpp:174
 msgid "Recruits"
 msgstr "Askere alımlar"
 
-#: src/menu_events.cpp:126 src/menu_events.cpp:179
+#: src/menu_events.cpp:129 src/menu_events.cpp:182
 msgid "Recalls"
 msgstr "Çağırmalar"
 
-#: src/menu_events.cpp:130 src/menu_events.cpp:187
+#: src/menu_events.cpp:133 src/menu_events.cpp:190
 msgid "Advancements"
 msgstr "Terfiler"
 
-#: src/menu_events.cpp:134 src/menu_events.cpp:196
+#: src/menu_events.cpp:137 src/menu_events.cpp:199
 msgid "Losses"
 msgstr "Kayıplar"
 
-#: src/menu_events.cpp:139 src/menu_events.cpp:204
+#: src/menu_events.cpp:142 src/menu_events.cpp:207
 msgid "Kills"
 msgstr "Öldürülenler"
 
-#: src/menu_events.cpp:158
+#: src/menu_events.cpp:161
 #, fuzzy
 msgid "Details"
 msgstr "kuyruk"
 
-#: src/menu_events.cpp:210
+#: src/menu_events.cpp:213
 msgid "Damage Inflicted"
 msgstr "Verilen Hasar"
 
-#: src/menu_events.cpp:217
+#: src/menu_events.cpp:220
 msgid "Damage Taken"
 msgstr "Alınan Hasar"
 
-#: src/menu_events.cpp:223
+#: src/menu_events.cpp:226
 msgid "Damage Inflicted (EV)"
 msgstr "Verilen Hasar (EV)"
 
-#: src/menu_events.cpp:230
+#: src/menu_events.cpp:233
 msgid "Damage Taken (EV)"
 msgstr "Alınan Hasar (EV)"
 
-#: src/menu_events.cpp:266 src/menu_events.cpp:270
+#: src/menu_events.cpp:269 src/menu_events.cpp:273
 #, fuzzy
 msgid "Do you really want to dismiss him?"
 msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 
-#: src/menu_events.cpp:266
+#: src/menu_events.cpp:269
 #, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr ""
 "Efendim, bu birim üst seviyelere terfi etmiş tecrübeli bir birim! $noun "
 "isimli birimi gerçekten yok etmek istiyor musun?"
 
-#: src/menu_events.cpp:267 src/menu_events.cpp:271
+#: src/menu_events.cpp:270 src/menu_events.cpp:274
 #, fuzzy
 msgid "Do you really want to dismiss her?"
 msgstr "Bu oyunu gerçekten silmek istiyor musun?"
 
-#: src/menu_events.cpp:270
+#: src/menu_events.cpp:273
 #, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
 msgstr ""
 "Efendim, bu birimin terfi etmesine az kalmış! $noun isimli birimi gerçekten "
 "yok etmek istiyor musun?"
 
-#: src/menu_events.cpp:327
+#: src/menu_events.cpp:330
 msgid "Statistics"
 msgstr "İstatistikler"
 
-#: src/menu_events.cpp:337
+#: src/menu_events.cpp:340
 #, fuzzy
 msgid "Level^Lv."
 msgstr "Seviye"
 
-#: src/menu_events.cpp:340
+#: src/menu_events.cpp:343
 msgid "unit list^Traits"
 msgstr ""
 
-#: src/menu_events.cpp:341
+#: src/menu_events.cpp:344
 msgid "Moves"
 msgstr "Hareketler"
 
-#: src/menu_events.cpp:342
+#: src/menu_events.cpp:345
 #, fuzzy
 msgid "Location^Loc."
 msgstr "Yer"
 
-#: src/menu_events.cpp:343
+#: src/menu_events.cpp:346
 #, fuzzy
 msgid "Status"
 msgstr "İstatistikler"
 
-#: src/menu_events.cpp:451
+#: src/menu_events.cpp:454
 msgid "Unit List"
 msgstr "Birim listesi"
 
-#: src/menu_events.cpp:454 src/menu_events.cpp:475
+#: src/menu_events.cpp:457 src/menu_events.cpp:478
 msgid "Scroll To"
 msgstr ""
 
-#: src/menu_events.cpp:504
+#: src/menu_events.cpp:507
 msgid "Leader"
 msgstr "Lider"
 
-#: src/menu_events.cpp:505 src/multiplayer_connect.cpp:856
+#: src/menu_events.cpp:508 src/multiplayer_connect.cpp:861
 msgid "Team"
 msgstr "Takım"
 
-#: src/menu_events.cpp:506 src/multiplayer_connect.cpp:867
+#: src/menu_events.cpp:509 src/multiplayer_connect.cpp:872
 #: src/multiplayer_wait.cpp:490
 msgid "Gold"
 msgstr "Altın"
 
-#: src/menu_events.cpp:507
+#: src/menu_events.cpp:510
 msgid "Villages"
 msgstr "Köyler"
 
-#: src/menu_events.cpp:508
+#: src/menu_events.cpp:511
 msgid "status^Units"
 msgstr ""
 
-#: src/menu_events.cpp:509
+#: src/menu_events.cpp:512
 msgid "Upkeep"
 msgstr "İdare masrafı"
 
-#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:868
+#: src/menu_events.cpp:513 src/multiplayer_connect.cpp:873
 #: src/multiplayer_wait.cpp:494
 msgid "Income"
 msgstr "Gelir"
 
-#: src/menu_events.cpp:587
+#: src/menu_events.cpp:590
 #, fuzzy
 msgid "Current Status"
 msgstr "Şimdiki Sürdüren"
 
-#: src/menu_events.cpp:588
+#: src/menu_events.cpp:591
 #, fuzzy
 msgid "More >"
 msgstr "Devamı"
 
-#: src/menu_events.cpp:606
+#: src/menu_events.cpp:609
 #, fuzzy
 msgid "scenario settings^Leader"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:608
+#: src/menu_events.cpp:611
 #, fuzzy
 msgid "scenario settings^Side"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:609
+#: src/menu_events.cpp:612
 #, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:613
 #, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:611
+#: src/menu_events.cpp:614
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
 
-#: src/menu_events.cpp:612
+#: src/menu_events.cpp:615
 #, fuzzy
 msgid "scenario settings^Fog"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:613
+#: src/menu_events.cpp:616
 #, fuzzy
 msgid "scenario settings^Shroud"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:658 src/menu_events.cpp:659
+#: src/menu_events.cpp:661 src/menu_events.cpp:662
 #, fuzzy
 msgid "no"
 msgstr "Kar"
 
-#: src/menu_events.cpp:658 src/menu_events.cpp:659
+#: src/menu_events.cpp:661 src/menu_events.cpp:662
 msgid "yes"
 msgstr ""
 
-#: src/menu_events.cpp:666
+#: src/menu_events.cpp:669
 #, fuzzy
 msgid "Scenario Settings"
 msgstr "Senaryo başlangıcı"
 
-#: src/menu_events.cpp:698 src/playcampaign.cpp:571
+#: src/menu_events.cpp:701 src/playcampaign.cpp:571
 msgid "Name:"
 msgstr "İsim:"
 
-#: src/menu_events.cpp:703
+#: src/menu_events.cpp:706
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -5588,88 +5592,88 @@ msgstr ""
 "Kayıt isimleri virgül, bölme ve ters bölme işareti içeremez. Lütfen başka "
 "bir isim seç."
 
-#: src/menu_events.cpp:713
+#: src/menu_events.cpp:716
 msgid "Saved"
 msgstr "Kaydedildi"
 
-#: src/menu_events.cpp:713
+#: src/menu_events.cpp:716
 msgid "The game has been saved"
 msgstr "Oyun kaydedildi"
 
-#: src/menu_events.cpp:716 src/playcampaign.cpp:579
+#: src/menu_events.cpp:719 src/playcampaign.cpp:579
 msgid "The game could not be saved"
 msgstr "Oyun kaydedilemedi"
 
-#: src/menu_events.cpp:731
+#: src/menu_events.cpp:734
 #, fuzzy
 msgid "Save the Map As"
 msgstr "Haritaları paylaş"
 
-#: src/menu_events.cpp:736
+#: src/menu_events.cpp:739
 #, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Kayıt zaten mevcut. Üzerine yazmak istiyor musun?"
 
-#: src/menu_events.cpp:748
+#: src/menu_events.cpp:751
 msgid "Map saved."
 msgstr ""
 
-#: src/menu_events.cpp:752
+#: src/menu_events.cpp:755
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: src/menu_events.cpp:840 src/menu_events.cpp:842 src/play_controller.cpp:752
+#: src/menu_events.cpp:848 src/menu_events.cpp:850 src/play_controller.cpp:752
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
 
-#: src/menu_events.cpp:847
+#: src/menu_events.cpp:855
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Oyun otomatik kaydedilemedi. Lütfen elle kaydet."
 
-#: src/menu_events.cpp:875
+#: src/menu_events.cpp:883
 msgid "Chat Log"
 msgstr "Sohbet kaydı"
 
-#: src/menu_events.cpp:885
+#: src/menu_events.cpp:893
 msgid "Message:"
 msgstr "Mesaj:"
 
-#: src/menu_events.cpp:886
+#: src/menu_events.cpp:894
 msgid "Send to allies only"
 msgstr "Sadece müttefiklere gönder"
 
-#: src/menu_events.cpp:886
+#: src/menu_events.cpp:894
 #, fuzzy
 msgid "Send to observers only"
 msgstr "Sadece müttefiklere gönder"
 
-#: src/menu_events.cpp:966
+#: src/menu_events.cpp:974
 #, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Altın"
 
-#: src/menu_events.cpp:973
+#: src/menu_events.cpp:981
 msgid "You have no units available to recruit."
 msgstr "Askere alabilecek birimin yok"
 
-#: src/menu_events.cpp:985
+#: src/menu_events.cpp:993
 msgid "Recruit"
 msgstr "Askere al"
 
-#: src/menu_events.cpp:986 src/menu_events.cpp:1135
+#: src/menu_events.cpp:994 src/menu_events.cpp:1143
 msgid "Select unit:"
 msgstr "Birim seç:"
 
-#: src/menu_events.cpp:1031
+#: src/menu_events.cpp:1039
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Bu birimi askere almak için yeterli altının yok"
 
-#: src/menu_events.cpp:1088
+#: src/menu_events.cpp:1096
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Askerlerinden ayrı durumdasın ve onları çağırman mümkün değil."
 
-#: src/menu_events.cpp:1090
+#: src/menu_events.cpp:1098
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -5677,72 +5681,72 @@ msgstr ""
 "Çağırılabilecek asker yok\n"
 "(Önceki oyunlrdan kalma kıdemli gazilerin olması lazım.)"
 
-#: src/menu_events.cpp:1097
+#: src/menu_events.cpp:1105
 msgid "Level"
 msgstr "Seviye"
 
-#: src/menu_events.cpp:1129
+#: src/menu_events.cpp:1137
 msgid "Dismiss Unit"
 msgstr "Birimi yok et"
 
-#: src/menu_events.cpp:1134
+#: src/menu_events.cpp:1142
 msgid "Recall"
 msgstr "Çağır"
 
-#: src/menu_events.cpp:1151
+#: src/menu_events.cpp:1159
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Bir birimi tekrar çağırmak için en az $cost altının olmalı"
 
-#: src/menu_events.cpp:1485
+#: src/menu_events.cpp:1493
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Daha eline başlamadın. Gerçekten eli bitirmek istiyor musun?"
 
-#: src/menu_events.cpp:1493 src/menu_events.cpp:1498
+#: src/menu_events.cpp:1501 src/menu_events.cpp:1506
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Bazı birimlerin hareket hakları kaldı. Gerçekten eli bitirmek istiyor musun?"
 
-#: src/menu_events.cpp:1539
+#: src/menu_events.cpp:1547
 msgid "Rename Unit"
 msgstr "Birimin ismini değiştir"
 
-#: src/menu_events.cpp:1576
+#: src/menu_events.cpp:1584
 #, fuzzy
 msgid "Race"
 msgstr "topuz"
 
-#: src/menu_events.cpp:1601
+#: src/menu_events.cpp:1609
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1645
+#: src/menu_events.cpp:1653
 msgid "Place Label"
 msgstr "Etiket koy"
 
-#: src/menu_events.cpp:1648 src/menu_events.cpp:1651
+#: src/menu_events.cpp:1656 src/menu_events.cpp:1659
 msgid "Label:"
 msgstr "Etiket:"
 
-#: src/menu_events.cpp:1654
+#: src/menu_events.cpp:1662
 #, fuzzy
 msgid "Team only"
 msgstr "Çamur rengi"
 
-#: src/menu_events.cpp:1756
+#: src/menu_events.cpp:1764
 msgid "Search"
 msgstr "Ara"
 
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1807
 #, fuzzy
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Komutlar: whisper duyguları es geçer. Daha fazla yardım için /help [komut] "
 "yazınız."
 
-#: src/menu_events.cpp:1851
+#: src/menu_events.cpp:1859
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -5750,17 +5754,17 @@ msgstr ""
 "Özel mesajlar gönderir. Oyunu oynayan kullanıcılara mesaj gönderemezsiniz. "
 "Kullanım: /whisper [kullanıcı ismi] [mesaj]"
 
-#: src/menu_events.cpp:1855
+#: src/menu_events.cpp:1863
 #, fuzzy
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr "Göz ardı listenize oyuncu ekler. Kullanım : /ignore add [argüman]"
 
-#: src/menu_events.cpp:1857
+#: src/menu_events.cpp:1865
 #, fuzzy
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr "Göz ardı listenize oyuncu ekler. Kullanım : /ignore add [argüman]"
 
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1867
 #, fuzzy
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
@@ -5768,21 +5772,21 @@ msgid ""
 msgstr ""
 "Gözardı listenizden oyuncu kaldırır. Kullanım : /ignore remove [argüman]"
 
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1869
 #, fuzzy
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Gözardı listenizi temizler. Kullanım : /ignore clear"
 
-#: src/menu_events.cpp:1863
+#: src/menu_events.cpp:1871
 #, fuzzy
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Gözardı listenizi gösterir. Kullanım : /ignore list"
 
-#: src/menu_events.cpp:1865
+#: src/menu_events.cpp:1873
 msgid "Unknown subcommand"
 msgstr "Bilinmeyen alt komut"
 
-#: src/menu_events.cpp:1868
+#: src/menu_events.cpp:1876
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -5790,58 +5794,58 @@ msgid ""
 "more info."
 msgstr ""
 
-#: src/menu_events.cpp:1871
+#: src/menu_events.cpp:1879
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1881
 msgid "Unknown command"
 msgstr "Bilinmeyen komut"
 
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1893
 msgid "Added to ignore list: "
 msgstr "Gözardı listenize eklenen: "
 
-#: src/menu_events.cpp:1887 src/menu_events.cpp:1894 src/menu_events.cpp:1901
+#: src/menu_events.cpp:1895 src/menu_events.cpp:1902 src/menu_events.cpp:1909
 msgid "Invalid username: "
 msgstr "Geçersiz kullanıcı ismi"
 
-#: src/menu_events.cpp:1892
+#: src/menu_events.cpp:1900
 #, fuzzy
 msgid "Added to friends list: "
 msgstr "Gözardı listenize eklenen: "
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1907
 #, fuzzy
 msgid "Removed from list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1925
+#: src/menu_events.cpp:1933
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 
-#: src/menu_events.cpp:1935
+#: src/menu_events.cpp:1943
 msgid "Removed from ignore list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1938
+#: src/menu_events.cpp:1946
 #, fuzzy
 msgid "Removed from friends list: "
 msgstr "Göz ardı listenizden kaldırılan: "
 
-#: src/menu_events.cpp:1945
+#: src/menu_events.cpp:1953
 msgid "Unknown command: "
 msgstr "Bilinmeyen Komut: "
 
-#: src/menu_events.cpp:2058
+#: src/menu_events.cpp:2066
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "'$search' yazısını içeren etiket veya birim bulunamadı."
 
-#: src/menu_events.cpp:2235
+#: src/menu_events.cpp:2243
 msgid "prompt^Command:"
 msgstr "Komut:"
 
-#: src/menu_events.cpp:2254
+#: src/menu_events.cpp:2262
 #, fuzzy
 msgid "User-Command#3"
 msgstr "Komutlar"
@@ -5949,104 +5953,104 @@ msgstr "Server taraflı yönlendirme döngüsü"
 msgid "You must log in to this server"
 msgstr "Bu sunucuya giriş yapmanız lazım"
 
-#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:423
-#: src/multiplayer_connect.cpp:520
+#: src/multiplayer_connect.cpp:70 src/multiplayer_connect.cpp:428
+#: src/multiplayer_connect.cpp:525
 msgid "Normal"
 msgstr "Normal"
 
-#: src/multiplayer_connect.cpp:419 src/multiplayer_connect.cpp:516
+#: src/multiplayer_connect.cpp:424 src/multiplayer_connect.cpp:521
 #: src/multiplayer_wait.cpp:486 src/multiplayer_wait.cpp:494
 msgid "("
 msgstr "("
 
-#: src/multiplayer_connect.cpp:419 src/multiplayer_connect.cpp:516
+#: src/multiplayer_connect.cpp:424 src/multiplayer_connect.cpp:521
 #: src/multiplayer_wait.cpp:486 src/multiplayer_wait.cpp:497
 msgid ")"
 msgstr ")"
 
-#: src/multiplayer_connect.cpp:494
+#: src/multiplayer_connect.cpp:499
 msgid "Default AI"
 msgstr "Tümü Varsayılana"
 
-#: src/multiplayer_connect.cpp:546
+#: src/multiplayer_connect.cpp:551
 msgid "(Vacant slot)"
 msgstr "(Sahipsiz yer)"
 
-#: src/multiplayer_connect.cpp:552
+#: src/multiplayer_connect.cpp:557
 msgid "Anonymous local player"
 msgstr "İsimsiz mahalli oyuncu"
 
-#: src/multiplayer_connect.cpp:573
+#: src/multiplayer_connect.cpp:578
 msgid "Computer player"
 msgstr "Bilgisayar oyuncusu"
 
-#: src/multiplayer_connect.cpp:576
+#: src/multiplayer_connect.cpp:581
 msgid "(Empty slot)"
 msgstr "(Boş yer)"
 
-#: src/multiplayer_connect.cpp:789
+#: src/multiplayer_connect.cpp:794
 msgid "No non-random sides in the current era"
 msgstr "Mevcut devirde rastgele taraflar yok"
 
-#: src/multiplayer_connect.cpp:813
+#: src/multiplayer_connect.cpp:818
 msgid "Unable to find a leader type for faction $faction"
 msgstr "$faction ekibi için bir lider türü bulunamıyor"
 
-#: src/multiplayer_connect.cpp:850 src/multiplayer_lobby.cpp:601
+#: src/multiplayer_connect.cpp:855 src/multiplayer_lobby.cpp:601
 #: src/multiplayer_wait.cpp:190
 msgid "Game Lobby"
 msgstr "Oyun salonu"
 
-#: src/multiplayer_connect.cpp:863
+#: src/multiplayer_connect.cpp:868
 msgid "Player/Type"
 msgstr "Oyuncu/Tip"
 
-#: src/multiplayer_connect.cpp:864
+#: src/multiplayer_connect.cpp:869
 msgid "Faction"
 msgstr "Ekip"
 
-#: src/multiplayer_connect.cpp:865
+#: src/multiplayer_connect.cpp:870
 #, fuzzy
 msgid "Team/Gender"
 msgstr "Savunan"
 
-#: src/multiplayer_connect.cpp:866
+#: src/multiplayer_connect.cpp:871
 msgid "Color"
 msgstr "Renk"
 
-#: src/multiplayer_connect.cpp:870
+#: src/multiplayer_connect.cpp:875
 msgid "I'm Ready"
 msgstr "Ben hazırım"
 
-#: src/multiplayer_connect.cpp:879
+#: src/multiplayer_connect.cpp:884
 msgid "The scenario is invalid because it has no sides."
 msgstr "Bu senaryo geçersiz çünkü tarafları yok."
 
-#: src/multiplayer_connect.cpp:1247
+#: src/multiplayer_connect.cpp:1252
 msgid "Network Player"
 msgstr "Ağ oyuncusu"
 
-#: src/multiplayer_connect.cpp:1248
+#: src/multiplayer_connect.cpp:1253
 msgid "Local Player"
 msgstr "Mahalli oyuncu"
 
-#: src/multiplayer_connect.cpp:1249
+#: src/multiplayer_connect.cpp:1254
 msgid "Computer Player"
 msgstr "Bilgisayar oyuncusu"
 
-#: src/multiplayer_connect.cpp:1250
+#: src/multiplayer_connect.cpp:1255
 msgid "Empty"
 msgstr "Boş"
 
-#: src/multiplayer_connect.cpp:1364
+#: src/multiplayer_connect.cpp:1369
 msgid "This is not a multiplayer save"
 msgstr "Bu bir çok oyunculu oyun kaydı değil"
 
-#: src/multiplayer_connect.cpp:1455
+#: src/multiplayer_connect.cpp:1460
 msgid "Cannot find era $era"
 msgstr "$era devri bulunamıyor"
 
-#: src/multiplayer_connect.cpp:1474
+#: src/multiplayer_connect.cpp:1479
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6054,7 +6058,7 @@ msgstr ""
 "Galibiyet\n"
 "@Düşman lider(ler)ini yen"
 
-#: src/multiplayer_connect.cpp:1533
+#: src/multiplayer_connect.cpp:1538
 msgid "Waiting for players to join..."
 msgstr "Oyuncuların katılması bekleniyor..."
 
@@ -6754,38 +6758,38 @@ msgstr "İstatistikler"
 msgid "Help Wesnoth by sending us information"
 msgstr "Bize bilgi göndererek Wesnoth'a yardım et"
 
-#: src/unit.cpp:383 src/unit.cpp:1181 src/unit.cpp:2372
+#: src/unit.cpp:383 src/unit.cpp:1181 src/unit.cpp:2374
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2415 src/unit.cpp:2619 src/unit.cpp:2675
+#: src/unit.cpp:2417 src/unit.cpp:2621 src/unit.cpp:2677
 #, fuzzy
 msgid " and "
 msgstr "Kum"
 
-#: src/unit.cpp:2426
+#: src/unit.cpp:2428
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2491
+#: src/unit.cpp:2493
 #, fuzzy
 msgid "moves"
 msgstr "Hareketler"
 
-#: src/unit.cpp:2509 src/unit.cpp:2646
+#: src/unit.cpp:2511 src/unit.cpp:2648
 msgid "XP to advance"
 msgstr "terfi için gerekli TP"
 
-#: src/unit.cpp:2638
+#: src/unit.cpp:2640
 #, fuzzy
 msgid " move"
 msgstr "Hareketler"
 
-#: src/unit.cpp:2654
+#: src/unit.cpp:2656
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2684
+#: src/unit.cpp:2686
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
