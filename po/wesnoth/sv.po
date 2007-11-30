@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-28 21:32+0100\n"
-"PO-Revision-Date: 2007-11-27 21:05+0100\n"
+"PO-Revision-Date: 2007-11-30 11:07+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
 "Language-Team: Swedish\n"
@@ -2278,7 +2278,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2287,8 +2286,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Byt till debugläge (fungerar ej i gruppspel). Debugläge stängs av genom att "
-"avsluta spelet eller genom att ange :nodebug.\n"
+"Byt till debugläge (fungerar ej i gruppspel). Se <ref>dst=debug_commands "
+"text='Debugkommandon'</ref>.\n"
+"\n"
+"Debugläge stängs av genom att avsluta spelet eller genom att ange :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:638
@@ -2300,7 +2301,6 @@ msgid "Multiplayer commands"
 msgstr "Gruppspelskommandon"
 
 #: data/core/help.cfg:647
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2359,9 +2359,8 @@ msgstr ""
 "Växla till/från att ignorera åskådares inlägg."
 
 #: data/core/help.cfg:662
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Allmänna kommandon"
+msgstr "Debugkommandon"
 
 #: data/core/help.cfg:666
 msgid ""
@@ -2369,16 +2368,18 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Skapa en trupp av angiven typ på den valda rutan.\n"
+"\n"
 
 #: data/core/help.cfg:669
-#, fuzzy
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Sätt på/stäng av visning av antal ramar per sekund.\n"
+"Sätt på/stäng av stridsdimma/slöja för aktuell sida.\n"
 "\n"
 
 #: data/core/help.cfg:672
@@ -2387,6 +2388,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Lägger till aktuell sida angiven mängd guld.\n"
+"\n"
 
 #: data/core/help.cfg:675
 msgid ""
@@ -2394,6 +2398,9 @@ msgid ""
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Ange en spelvariabels värde manuellt.\n"
+"\n"
 
 #: data/core/help.cfg:678
 msgid ""
@@ -2401,6 +2408,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Visa en spelvariabels värde.\n"
+"\n"
 
 #: data/core/help.cfg:681
 msgid ""
@@ -2408,6 +2418,9 @@ msgid ""
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
+"\n"
+"Starta angiven händelse manuellt.\n"
+"\n"
 
 #: data/core/help.cfg:682
 msgid ""
@@ -2415,6 +2428,9 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
+"\n"
+"Modifiera angiven egenskap hos den valda truppen. Exempel: :unit "
+"hitpoints=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -4639,13 +4655,12 @@ msgstr ""
 "allierad ledare låta dig använda sin."
 
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Skelett är motståndskraftiga mot hugg- och stickvapen, men sårbara för "
-"trubbiga och ockulta vapen samt eldvapen."
+"Skelett är motståndskraftiga mot hugg-, stick- och frostvapen, men sårbara "
+"för krossvapen, eldvapen samt ockulta vapen."
 
 #: data/hardwired/tips.cfg:78
 msgid "- Memoirs of Gweddry, 627YW"
@@ -7227,6 +7242,3 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
-
-#~ msgid "Zap"
-#~ msgstr "Zap"
