@@ -947,9 +947,6 @@ attack::attack(game_display& gui, const gamemap& map,
 			}
 			bool dies = d_->second.take_hit(damage_defender_takes);
 			LOG_NG << "defender took " << damage_defender_takes << (dies ? " and died" : "") << "\n";
-			if(dies) {
-				unit_display::unit_die(defender_,d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
-			}
 			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
 			                           : statistics::attack_context::MISSES, attacker_damage_);
 
@@ -1019,6 +1016,24 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
+				game_events::fire("pre_die",death_loc,attacker_loc);
+
+				d_ = units_.find(death_loc);
+				a_ = units_.find(attacker_loc);
+				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)) {
+					// WML has invalidated the dying unit, abort
+					break;
+				}
+				if(a_ == units_.end() || !attacker_loc.matches_unit(a_->second)) {
+					if(d_->second.hitpoints() <= 0) {
+						units_.erase(d_);
+						d_ = units_.end();
+					}
+					// WML has invalidated the killing unit, abort
+					break;
+				}
+				refresh_bc();
+				unit_display::unit_die(d_->first,d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
 				game_events::fire("die",death_loc,attacker_loc);
 
 				d_ = units_.find(death_loc);
