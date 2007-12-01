@@ -8,20 +8,15 @@ pkgdatadir=$(datadir)/@DATADIR@
 
 bin_SCRIPTS =
 
-findfilterflags=-name .svn -prune -o -name ".\#*" -o -type d
+findfilterflags=! \( -name .svn -prune -o -name ".\#*" -o -name "*~" -o -name "*bak" -o -type d \)
 
 if LITE
-findmoredata=;find images $(findfilterflags) -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" -o -print
-findmoredatadirs=find images -type d \! \( -name .svn -prune -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" \) -print
-else
-findmoredata=;find images $(findfilterflags) -o -print
-findmoredatadirs=find images -type d \! \( -name .svn -prune \) -print
+exclude=| egrep -v '(/sounds|/music)' 
 endif
 
-finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
-	 $(findmoredata) )
-finddatadirs=(cd $(top_srcdir) && find data fonts sounds -type d \! \( -name .svn -prune \) -print; $(findmoredatadirs) )
-findnoinst=(cd $(top_srcdir) && find utils -name .svn -prune -o -name ".\#*" -o -type d -o -print )
+finddata=(cd $(top_srcdir) && find data fonts icons images sounds $(findfilterflags) -print ) $(exclude)
+finddatadirs=(cd $(top_srcdir) && find data fonts icons images sounds -type d \! \( -name .svn -prune \) -print ) $(exclude)
+findnoinst=(cd $(top_srcdir) && find utils $(findfilterflags) -print )
 
 finddocdist=(cd $(top_srcdir) && find doc/manual -name "*.html" -o -name "*.css" -o -name "*.jpg" -o -name "*.txt")
 finddoc=($(finddocdist) | sed -e 's:doc/manual:manual:g' )
