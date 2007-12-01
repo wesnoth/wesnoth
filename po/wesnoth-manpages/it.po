@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2007-11-04 17:59+0100\n"
-"PO-Revision-Date: 2007-09-23 14:19+0200\n"
+"PO-Revision-Date: 2007-12-01 11:41+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -211,33 +211,31 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:70
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--load>I<\\ E<lt>savegameE<gt>>"
-msgstr "B<--load>I<\\ savegame>"
+msgstr "B<--load>I<\\ E<lt>partitasalvataE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "loads the file savegame from the standard save game directory."
-msgstr "carica il file savegame dalla cartella standard di salvataggio."
+msgstr "carica il file partitasalvata dalla cartella standard di salvataggio."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:73 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
-msgstr ""
+msgstr "B<--log-E<lt>livelloE<gt>=\"dominio1,dominio2,...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:78
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug. By default "
 "the error level is used."
 msgstr ""
 "imposta il livello di severità dei domini di debug. Puoi usare \"all\" per "
-"qualsiasi dominio di debug. B<--log-info> mostra tutti i messaggi, B<--log-"
-"warning> solo gli avvertimenti e gli errori, e B<--log-error> solo gli "
-"errori."
+"qualsiasi dominio di debug. Livelli disponibili: error, warning, info, "
+"debug. Normalmente è usato il livello error."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:78 ../../doc/man/wesnoth_editor.6:72
@@ -494,13 +492,12 @@ msgstr "B<--scenario=valore>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:153
-#, fuzzy
 msgid ""
 "selects a multiplayer scenario. The default scenario is "
 "\"multiplayer_The_Freelands\"."
 msgstr ""
 "seleziona uno scenario multigiocatore. lo scenario predefinito è "
-"\"multiplayer_Charge\"."
+"\"multiplayer_The_Freelands\"."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:153
@@ -535,17 +532,16 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
-msgstr ""
+msgstr "Esempio per il test della tua IA contro l'IA predefinita senza avviare la GUI:"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:164
-#, fuzzy
 msgid ""
 "wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 msgstr ""
-"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
-"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+"wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:165 ../../doc/man/wesnoth_editor.6:76
@@ -818,14 +814,14 @@ msgstr "B<-c,\\ --config>I<\\ percorso>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
-#, fuzzy
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
 "indica a wesnothd dove trovare il file di configurazione da usare. Vedi la "
-"sezione B<SERVER CONFIG> più avanti per la sintassi."
+"sezione B<SERVER CONFIG> più avanti per la sintassi. Puoi ricaricare la "
+"configurazione inviando un segnale SIGHUP al processo del server."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -846,15 +842,12 @@ msgstr "B<-h,\\ --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug."
 msgstr ""
 "imposta il livello di severità dei domini di debug. Puoi usare \"all\" per "
-"qualsiasi dominio di debug. B<--log-info> mostra tutti i messaggi, B<--log-"
-"warning> solo gli avvertimenti e gli errori, e B<--log-error> solo gli "
-"errori."
+"qualsiasi dominio di debug. Livelli disponibili: error, warning, info, debug."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59

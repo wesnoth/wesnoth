@@ -74,13 +74,13 @@ gioco sta generando attualmente.
 mostra un riepilogo delle opzioni tramite riga di comando verso un output
 standard ed esce.
 .TP 
-\fB\-\-load\fP\fI\ <savegame>\fP
-carica il file savegame dalla cartella standard di salvataggio.
+\fB\-\-load\fP\fI\ <partitasalvata>\fP
+carica il file partitasalvata dalla cartella standard di salvataggio.
 .TP 
-\fB\-\-log\-<level>="domain1,domain2,..."\fP
-sets the severity level of the debug domains. "all" can be used to match any
-debug domain. Available levels: error, warning, info, debug. By default the
-error level is used.
+\fB\-\-log\-<livello>="dominio1,dominio2,..."\fP
+imposta il livello di severità dei domini di debug. Puoi usare "all" per
+qualsiasi dominio di debug. Livelli disponibili: error, warning, info,
+debug. Normalmente è usato il livello error.
 .TP 
 \fB\-\-logdomains\fP
 Stampa l'elenco di tutti i domini di log ed esce.
@@ -154,7 +154,7 @@ utile solo per chi sta programmando la propria IA. (non ancora documentata
 completamente)
 .TP 
 \fB\-\-scenario=valore\fP
-selects a multiplayer scenario. The default scenario is
+seleziona uno scenario multigiocatore. lo scenario predefinito è
 "multiplayer_The_Freelands".
 .TP 
 \fB\-\-side<numero>=valore\fP
@@ -165,7 +165,7 @@ scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg.
 imposta il numero di turni per lo scenario scelto. L'impostazione standard è
 "50"
 .TP 
-Example to test your own AI against the default AI without starting the GUI:
+Esempio per il test della tua IA contro l'IA predefinita senza avviare la GUI:
 wesnoth \-\-nogui \-\-multiplayer \-\-controller1=ai \-\-controller2=ai
 \-\-algorithm2=python_ai \-\-parm2=python_script:py/my_own_python_ai.py
 .
