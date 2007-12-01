@@ -70,6 +70,8 @@ report generate_report(TYPE type,
 		return report(u->second.description(),"",u->second.description());
 	case UNIT_TYPE:
 	        return report(u->second.language_name(),"",u->second.unit_description());
+	case UNIT_RACE:
+	        return report(u->second.race()->name(),"",u->second.race()->description());
 	case UNIT_LEVEL:
 		str << u->second.level();
 		break;
