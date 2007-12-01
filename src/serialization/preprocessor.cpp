@@ -270,7 +270,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t,
 	end_()
 {
 	if (is_directory(name))
-		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH, DO_REORDER);
+		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
 	else
 		new preprocessor_data(t, istream_file(name), "", name, 1, directory_name(name), t.textdomain_);
 	pos_ = files_.begin();

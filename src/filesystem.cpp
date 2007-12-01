@@ -312,6 +312,7 @@ void get_files_in_dir(const std::string& directory,
 					  std::vector<std::string>* files,
 					  std::vector<std::string>* dirs,
 					  FILE_NAME_MODE mode,
+					  FILE_FILTER filter,
 					  FILE_REORDER_OPTION reorder)
 {
 	// If we have a path to find directories in, 
@@ -321,7 +322,7 @@ void get_files_in_dir(const std::string& directory,
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 		const std::string& dir = game_config::path + "/" + directory;
 		if(is_directory(dir)) {
-			get_files_in_dir(dir,files,dirs,mode,reorder);
+			get_files_in_dir(dir,files,dirs,mode,filter,reorder);
 			return;
 		}
 	}
@@ -366,7 +367,7 @@ void get_files_in_dir(const std::string& directory,
 #ifdef __APPLE__
 		// HFS Mac OS X decomposes filenames using combining unicode characters. 
 		// Try to get the precomposed form.
-		char basename[MAXNAMLEN+1];
+		char macname[MAXNAMLEN+1];
 		CFStringRef cstr = CFStringCreateWithCString(NULL,
 							 entry->d_name,
 							 kCFStringEncodingUTF8);
@@ -374,13 +375,14 @@ void get_files_in_dir(const std::string& directory,
 							 0, cstr);
 		CFStringNormalize(mut_str, kCFStringNormalizationFormC);
 		CFStringGetCString(mut_str,
-				basename,sizeof(basename)-1,
+				macname,sizeof(macname)-1,
 				kCFStringEncodingUTF8);
 		CFRelease(cstr);
 		CFRelease(mut_str);
+		const std::string basename = macname;
 #else
 		// generic Unix 
-		char *basename = entry->d_name;
+		const std::string basename = entry->d_name;
 #endif /* !APPLE */
 
 		std::string fullname;
@@ -391,7 +393,7 @@ void get_files_in_dir(const std::string& directory,
 		)
 			fullname = directory + basename;
 		else
-			fullname = (directory + "/") + basename;
+			fullname = directory + "/" + basename;
 
 		if (::stat(fullname.c_str(), &st) != -1) {
 			if (S_ISREG(st.st_mode)) {
@@ -402,6 +404,10 @@ void get_files_in_dir(const std::string& directory,
 						files->push_back(basename);
 				}
 			} else if (S_ISDIR(st.st_mode)) {
+				if (filter == SKIP_MEDIA_DIR
+						&& (basename == "images"|| basename == "sounds"))
+					continue;
+			
 				if (reorder == DO_REORDER &&
 						::stat((fullname+"/"+MAINCFG).c_str(), &st)!=-1 &&
 						S_ISREG(st.st_mode)) {
@@ -411,8 +417,8 @@ void get_files_in_dir(const std::string& directory,
 							files->push_back(fullname + "/" + MAINCFG);
 							LOG_FS << fullname << "/" << MAINCFG << '\n';
 						} else {
-							files->push_back(std::string(basename) + "/" + MAINCFG);
-							LOG_FS << std::string(basename) << "/" << MAINCFG << '\n';
+							files->push_back(basename + "/" + MAINCFG);
+							LOG_FS << basename << "/" << MAINCFG << '\n';
 					}
 					} else {
 					// Show what I consider strange
@@ -867,7 +873,7 @@ bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
 static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
 {
 	std::vector<std::string> files, dirs;
-	get_files_in_dir(path,&files,&dirs,ENTIRE_FILE_PATH);
+	get_files_in_dir(path,&files,&dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR);
 	increment_filesystem_progress();
 	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
 		++res.nfiles;

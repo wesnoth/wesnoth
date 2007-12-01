@@ -36,6 +36,7 @@ private:
 };
 
 enum FILE_NAME_MODE { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
+enum FILE_FILTER { NO_FILTER, SKIP_MEDIA_DIR};
 enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
 
 //! Populates 'files' with all the files and 
@@ -47,6 +48,7 @@ void get_files_in_dir(const std::string& dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
                       FILE_NAME_MODE mode=FILE_NAME_ONLY,
+                      FILE_FILTER = NO_FILTER,
                       FILE_REORDER_OPTION reorder=DONT_REORDER);
 
 std::string get_dir(const std::string &dir);
