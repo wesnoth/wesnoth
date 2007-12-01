@@ -429,6 +429,7 @@ game_state::game_state(const game_data& data, const config& cfg)
 	label = cfg["label"];
 	version = cfg["version"];
 	scenario = cfg["scenario"];
+	next_scenario = cfg["next_scenario"];
 	completion = cfg["completion"];
 	campaign = cfg["campaign"];
 
@@ -454,6 +455,7 @@ game_state::game_state(const game_data& data, const config& cfg)
      }
          
 	std::cerr << "scenario: '" << scenario << "'\n";
+	std::cerr << "next_scenario: '" << next_scenario << "'\n";
 
 	difficulty = cfg["difficulty"];
 	if(difficulty.empty())
@@ -559,6 +561,7 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 	cfg["version"] = game_config::version;
 
 	cfg["scenario"] = gamestate.scenario;
+	cfg["next_scenario"] = gamestate.next_scenario;
 
 	cfg["completion"] = gamestate.completion;
 
@@ -616,6 +619,7 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_key_val("label", gamestate.label);
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("scenario", gamestate.scenario);
+	out.write_key_val("next_scenario", gamestate.next_scenario);
 	out.write_key_val("completion", gamestate.completion);
 	out.write_key_val("campaign", gamestate.campaign);
 	out.write_key_val("campaign_type", gamestate.campaign_type);

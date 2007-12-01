@@ -331,12 +331,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 			if (first_human_team_ != -1)
 				log.victory(status_.turn(), teams_[first_human_team_].gold());
 
-			if(gamestate_.scenario == (level_)["id"]) {
-				gamestate_.scenario = (level_)["next_scenario"];
-			}
-
-			const bool has_next_scenario = !gamestate_.scenario.empty() &&
-											gamestate_.scenario != "null";
+			const bool has_next_scenario = !gamestate_.next_scenario.empty() &&
+											gamestate_.next_scenario != "null";
 
 			// Save current_player name to reuse it when setting next_scenario side info
 			std::vector<team>::iterator i;

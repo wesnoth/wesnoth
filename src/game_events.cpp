@@ -2180,7 +2180,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		const std::string next_scenario = cfg["next_scenario"];
 		if(next_scenario.empty() == false) {
-			state_of_game->scenario = next_scenario;
+			state_of_game->next_scenario = next_scenario;
 		}
 
 		const std::string result = cfg["result"].base_str(); //do not translate

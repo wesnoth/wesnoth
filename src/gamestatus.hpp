@@ -110,6 +110,7 @@ public:
 	std::string campaign;   //!< the campaign being played
 	std::string abbrev;	//!< the campaign abbreviation
 	std::string scenario;   //!< the scenario being played
+	std::string next_scenario; //!< the scenario coming next (for campaigns)
 	std::string completion; //!< running. victory, or defeat
 
 	//! Information about campaign players who carry resources

@@ -314,8 +314,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		}
 
 		const config::child_list& story = scenario->get_children("story");
-		const std::string current_scenario = gamestate.scenario;
-		const std::string next_scenario = (*scenario)["next_scenario"];
+		gamestate.next_scenario = (*scenario)["next_scenario"];
 
 		bool save_game_after_scenario = true;
 
@@ -403,9 +402,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// if MP campaigns ever work again, we might
 		// need to change this test.
 		if(res == VICTORY || io_type != IO_NONE) {
-			const std::string orig_scenario = gamestate.scenario;
-			gamestate.scenario = current_scenario;
-
 			if (preferences::delete_saves())
 				clean_saves(gamestate.label);
 
@@ -419,8 +415,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					gui::show_error_message(disp, _("The replay could not be saved"));
 				}
 			}
-
-			gamestate.scenario = orig_scenario;
 		}
 
 		recorder.clear();
@@ -432,10 +426,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		{
 			// In case we are the host and there is a next scenario, notify
 			// the other players so they can leave linger mode.
-			if (!next_scenario.empty() && io_type == IO_SERVER)
+			if (!gamestate.next_scenario.empty() && io_type == IO_SERVER)
 				notify_next_scenario(IO_SERVER);
 
-			if (res != OBSERVER_END || next_scenario.empty())
+			if (res != OBSERVER_END || gamestate.next_scenario.empty())
 				return res;
 
 			const int dlg_res = gui::dialog(disp,"Game Over",
@@ -450,12 +444,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if(res == LEVEL_CONTINUE_NO_SAVE)
 			save_game_after_scenario = false;
 
-		// If the scenario hasn't been set in-level, set it now.
-		if(gamestate.scenario == current_scenario)
-			gamestate.scenario = next_scenario;
+		// Switch to the next scenario.
+		gamestate.scenario = gamestate.next_scenario;
 
 		if(io_type == IO_CLIENT) {
-			if (!next_scenario.empty()){
+			if (!gamestate.next_scenario.empty()){
 				//notifies the clients that this player advanced to the next scenario
 				notify_next_scenario(IO_CLIENT);
 
