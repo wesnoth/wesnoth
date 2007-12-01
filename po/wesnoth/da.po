@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-01 13:07+0100\n"
-"PO-Revision-Date: 2007-11-17 13:44+0200\n"
+"PO-Revision-Date: 2007-12-01 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -2266,7 +2266,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2275,8 +2274,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Slå fejlsøgning til (virker ikke i flerspiller). Fejlsøgning slukkes når "
-"spillet forlades eller ved :nodebug.\n"
+"Slå fejlsøgning til (virker ikke i flerspiller). Se <ref>dst=debug_commands "
+"text='Fejlsøgningskommandoer'</ref>.\n"
+"Fejlsøgning slukkes når spillet forlades eller ved :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:638
@@ -2288,7 +2288,6 @@ msgid "Multiplayer commands"
 msgstr "Flerspiller kommandoer"
 
 #: data/core/help.cfg:647
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2346,9 +2345,8 @@ msgstr ""
 "Slå stilhed til/fra for alle observatører."
 
 #: data/core/help.cfg:662
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Generelle kommandoer"
+msgstr "Fejlfindingskommandoer"
 
 #: data/core/help.cfg:666
 msgid ""
@@ -2356,16 +2354,18 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Indsæt en enhed af den angivne slags på det valgte felt.\n"
+"\n"
 
 #: data/core/help.cfg:669
-#, fuzzy
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Skifter det nuværende antal billeder per sekund.\n"
+"Skift mellem tåge/sløring for den nuværende side.\n"
 "\n"
 
 #: data/core/help.cfg:672
@@ -2374,13 +2374,20 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Tilfører det angivet beløb til den nuværende sides guldbeholdning.\n"
+"\n"
 
+# A GameState is used to encapsulate a certain state of a game
 #: data/core/help.cfg:675
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Manuelt indstille en spiltidspunktvariabel til værdi.\n"
+"\n"
 
 #: data/core/help.cfg:678
 msgid ""
@@ -2388,6 +2395,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Vis en spiltidspunktvaribel.\n"
+"\n"
 
 #: data/core/help.cfg:681
 msgid ""
@@ -2395,6 +2405,9 @@ msgid ""
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
+"\n"
+"Manuelt opildne den angivne begivenhed.\n"
+"\n"
 
 #: data/core/help.cfg:682
 msgid ""
@@ -2402,6 +2415,8 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
+"\n"
+"Ændrer det angivne karaktertræk på den valgte enhed. Eksempel: :enhedsliv=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -4434,7 +4449,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:4
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Royalt kompendium vedrørende krigsterminologi - volume 2, 212YW"
 
 #: data/hardwired/tips.cfg:7
 msgid ""
@@ -4455,7 +4470,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
 #: data/hardwired/tips.cfg:142
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "- Wesnoths taktiske vejledning"
 
 #: data/hardwired/tips.cfg:10
 msgid ""
@@ -4520,7 +4535,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:26 data/hardwired/tips.cfg:74
 #: data/hardwired/tips.cfg:82
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
+msgstr "- Håndbog i taktisk analyse volume 1 - Haldric 2., 42YW"
 
 #: data/hardwired/tips.cfg:29
 msgid ""
@@ -4536,7 +4551,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:30
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- Håndbog i taktisk analyse volume 2. - Haldric 2., 43YW"
 
 #: data/hardwired/tips.cfg:33
 msgid ""
@@ -4565,7 +4580,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
 msgid "- Sir Kaylan, 498YW"
-msgstr ""
+msgstr "- Ridder Kaylan, 498YW"
 
 #: data/hardwired/tips.cfg:45
 msgid ""
@@ -4579,7 +4594,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:46
 msgid "- Sir Kaylan, 502YW"
-msgstr ""
+msgstr "- Ridder Kaylan, 502YW"
 
 #: data/hardwired/tips.cfg:49
 msgid ""
@@ -4601,7 +4616,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:54
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Storlensherre Kalenz, 470YW"
 
 #: data/hardwired/tips.cfg:57
 msgid ""
@@ -4613,7 +4628,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:58 data/hardwired/tips.cfg:150
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- Kong Konrad, 536YW"
 
 #: data/hardwired/tips.cfg:61
 msgid ""
@@ -4626,7 +4641,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:62
 msgid "- King Konrad, 552YW"
-msgstr ""
+msgstr "- Kong Konrad, 552YW"
 
 #: data/hardwired/tips.cfg:65
 msgid ""
@@ -4637,7 +4652,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:66
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- Meneldur, 123YW"
 
 #: data/hardwired/tips.cfg:69
 msgid ""
@@ -4664,17 +4679,16 @@ msgstr ""
 "dig og lade dig bruge deres tårn til at rekruttere fra."
 
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Skeletter er modstandsdygtige overfor pile og æggede angreb men sårbare "
-"overfor slag, ild og magiske angreb."
+"Skeletter er modstandsdygtige overfor pile, æggede og kuldebaserede angreb "
+"men sårbare overfor slag, ild og magiske angreb."
 
 #: data/hardwired/tips.cfg:78
 msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
+msgstr "- Gweddrys erindringer, 627UW"
 
 #: data/hardwired/tips.cfg:81
 msgid ""
@@ -4696,7 +4710,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:86
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- Ypperstetroldmand Delfador, 516YW"
 
 #: data/hardwired/tips.cfg:89
 msgid ""
@@ -4714,7 +4728,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:94
 msgid "- Princess Li'sar, 515YW"
-msgstr ""
+msgstr "- Prinsesse Li'sar, 515YW"
 
 #: data/hardwired/tips.cfg:97
 msgid "Read the hotkeys list in the preferences menu."
@@ -4746,7 +4760,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:110
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- Chantals skriftrulle, 516YW"
 
 #: data/hardwired/tips.cfg:113
 msgid ""
@@ -4762,7 +4776,7 @@ msgstr "Magiske angreb er meget stærke overfor udøde."
 
 #: data/hardwired/tips.cfg:118
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "- Storvismand Dacyn, 626YW"
 
 #: data/hardwired/tips.cfg:121
 msgid ""
@@ -4835,7 +4849,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:146
 msgid "- Queen Li'sar, 528YW"
-msgstr ""
+msgstr "- Dronning Li'sar, 528YW"
 
 #: data/hardwired/tips.cfg:149
 msgid ""
@@ -4849,7 +4863,7 @@ msgstr ""
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
-msgstr ""
+msgstr "ildrubin"
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -5026,7 +5040,7 @@ msgstr "Baghold!"
 
 #: src/actions.cpp:2124
 msgid "Failed teleport! Exit not empty"
-msgstr ""
+msgstr "Mislykket teleportering! Udgang ikke tom"
 
 #: src/actions.cpp:2162
 msgid "Friendly unit sighted"
@@ -6602,9 +6616,8 @@ msgid "Share None"
 msgstr "Del ingen"
 
 #: src/multiplayer_create.cpp:200
-#, fuzzy
 msgid "No eras found."
-msgstr "Fandt ingen æraer"
+msgstr "Fandt ingen æraer."
 
 #: src/multiplayer_create.cpp:201
 msgid "No eras found"
@@ -6792,7 +6805,7 @@ msgstr "Klient afbrudt"
 
 #: src/network.cpp:160
 msgid "No server ping since at least 30 seconds. Connection timed out."
-msgstr ""
+msgstr "Ingen serverforbindelse i mindst 30 sekunder. Forbindelsen afbrudt."
 
 #: src/network.cpp:508
 msgid "Could not add socket to socket set"
@@ -6855,6 +6868,13 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
+"Dette spil er ude af takt, og kan ikke fortsættes. Der er en række årsager "
+"der kan udløse dette problem: Hvis du eller en anden spiller har ændret "
+"deres spilindstillinger. Det kan betyde af en af spillerne forsøger at "
+"snyde. Det kan også skyldes en fejl i spillet, men det er mindre "
+"sandsynligt.\n"
+"\n"
+"Ønsker du at gemme en fejllog vedrørende dit spil?"
 
 #: src/playsingle_controller.cpp:151
 msgid "Remaining gold: "
@@ -6882,19 +6902,17 @@ msgstr "Guld: "
 
 #: src/playsingle_controller.cpp:164
 msgid "Carry over percentage: "
-msgstr ""
+msgstr "Overførelsesprocent: "
 
 #: src/playsingle_controller.cpp:166
-#, fuzzy
 msgid "Bonus Gold: "
-msgstr "Bonus: "
+msgstr "Bonus guld: "
 
 #: src/playsingle_controller.cpp:168
 msgid "Retained Gold: "
 msgstr "Overført guld: "
 
 #: src/playsingle_controller.cpp:178
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6902,11 +6920,9 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Du vil starte det næste scenarie med $gold eller scenariets minimums guld, "
-"såfremt denne er højere."
+"Du vil starte det næste scenarie med $gold udover det definerede minimum. "
 msgstr[1] ""
-"Du vil starte det næste scenarie med $gold eller scenariets minimums guld, "
-"såfremt denne er højere."
+"Du vil starte det næste scenarie med $gold udover det definerede minimum. "
 
 #: src/playsingle_controller.cpp:186
 msgid ""
@@ -7087,14 +7103,12 @@ msgid "TitleScreen button^Quit"
 msgstr "Afslut"
 
 #: src/titlescreen.cpp:329
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "Rulletekster"
+msgstr "Tidligere"
 
 #: src/titlescreen.cpp:330
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "Afslut"
+msgstr "Næste"
 
 #: src/titlescreen.cpp:331
 msgid "TitleScreen button^Help"
