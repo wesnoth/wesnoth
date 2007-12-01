@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-30 17:11+0100\n"
-"PO-Revision-Date: 2007-11-01 14:30+0800\n"
-"Last-Translator: Dionysus <Dionysus.China@gmail.com>\n"
+"PO-Revision-Date: 2007-12-01 23:29+1000\n"
+"Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -174,9 +174,8 @@ msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
 #: data/core/terrain.cfg:644
-#, fuzzy
 msgid "Mushroom Grove Lit"
-msgstr "蘑菇林"
+msgstr "蘑菇林层"
 
 #: data/core/terrain.cfg:654
 msgid "Rockbound Cave"
@@ -223,7 +222,7 @@ msgstr "洞穴墙壁"
 
 #: data/core/terrain.cfg:935
 msgid "Void"
-msgstr ""
+msgstr "无效力的"
 
 #: src/construct_dialog.cpp:139 src/construct_dialog.cpp:146
 #: src/editor/editor_dialogs.cpp:423
@@ -319,11 +318,11 @@ msgstr "改变地图大小"
 
 #: src/editor/editor_dialogs.cpp:388
 msgid "X offset:"
-msgstr ""
+msgstr "X轴偏移(横向):"
 
 #: src/editor/editor_dialogs.cpp:389
 msgid "Y offset:"
-msgstr ""
+msgstr "Y轴偏移(纵向):"
 
 #: src/editor/editor_dialogs.cpp:468
 #, fuzzy
@@ -379,12 +378,14 @@ msgid "Skip AI Moves"
 msgstr "略过电脑的移动"
 
 #: src/game_preferences_display.cpp:163
+#, fuzzy
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "保存单人/联机胜利或联机失败的回放"
 
 #: src/game_preferences_display.cpp:164
+#, fuzzy
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "删除单人/联机胜利或联机失败的存档"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -451,7 +452,6 @@ msgid "Show Haloing Effects"
 msgstr "显示光晕效果"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Change Resolution"
 msgstr "改变分辨率"
 
@@ -481,11 +481,11 @@ msgstr "标记聊天时间"
 
 #: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "声音^高级选项"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "声音^标准选项"
 
 #: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
@@ -613,15 +613,16 @@ msgstr "设置空闲单位摆动的频率"
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "设定最大存档数目"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
 msgstr "不显示电脑的动作"
 
 #: src/game_preferences_display.cpp:342
+#, fuzzy
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
+msgstr "保存单人胜利回放或单人/联机失败."
 
 #: src/game_preferences_display.cpp:345
 #, fuzzy
@@ -633,8 +634,9 @@ msgid "Overlay a grid onto the map"
 msgstr "在地图上显示六角网格"
 
 #: src/game_preferences_display.cpp:350
+#, fuzzy
 msgid "Sort the player list in the lobby by player groups"
-msgstr ""
+msgstr "根据玩家分组, 整理大厅里的玩家列表"
 
 #: src/game_preferences_display.cpp:353
 msgid "Show icons in front of the player names in the lobby."
@@ -643,17 +645,17 @@ msgstr "在游戏大厅玩家列表的玩家的名字前显示图标"
 #: src/game_preferences_display.cpp:356
 #, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "不显示玩家进入多人游戏的信息"
+msgstr "不显示玩家进入多人游戏大厅的信息"
 
 #: src/game_preferences_display.cpp:358
 #, fuzzy
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "只显示好友进入多人游戏的信息"
+msgstr "只显示好友进入多人游戏大厅的信息"
 
 #: src/game_preferences_display.cpp:360
 #, fuzzy
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "显示所有玩家进入多人游戏的信息"
+msgstr "显示所有玩家进入多人游戏大厅的信息"
 
 #: src/game_preferences_display.cpp:362
 msgid "View and edit your friends and ignores list"
@@ -727,11 +729,11 @@ msgstr "速度:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "存档数目最大:"
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
-msgstr ""
+msgstr "无限"
 
 #: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
@@ -739,9 +741,8 @@ msgstr "聊天记录行数："
 
 #: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
 #: src/game_preferences_display.cpp:907
-#, fuzzy
 msgid "Invalid username"
-msgstr "插入一个用户名"
+msgstr "无效的用户名"
 
 #: src/game_preferences_display.cpp:967
 msgid "yes"
@@ -753,7 +754,7 @@ msgstr "否"
 
 #: src/game_preferences_display.cpp:1003
 msgid "(empty list)"
-msgstr ""
+msgstr "(列表: 空)"
 
 #: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
@@ -784,9 +785,8 @@ msgid "New theme will take effect on next new or loaded game."
 msgstr "新主题在下次新建或载入游戏时生效。"
 
 #: src/game_preferences_display.cpp:1170
-#, fuzzy
 msgid "No known themes. Try changing from within an existing game."
-msgstr "当前无可用主题。请尝试在游戏时切换主题。"
+msgstr "当前无已知主题。请尝试在游戏时切换主题。"
 
 #: src/hotkeys.cpp:51
 msgid "Next Unit"
@@ -957,17 +957,16 @@ msgid "Next Side"
 msgstr "下一阵营"
 
 #: src/hotkeys.cpp:96
-#, fuzzy
 msgid "Full map"
-msgstr "翻转地图"
+msgstr "全地图"
 
 #: src/hotkeys.cpp:98
 msgid "Each team"
-msgstr ""
+msgstr "每一组"
 
 #: src/hotkeys.cpp:100
 msgid "Team 1"
-msgstr ""
+msgstr "第一组"
 
 #: src/hotkeys.cpp:101
 msgid "Skip animation"
@@ -1012,7 +1011,7 @@ msgstr "填充选择区域"
 #: src/hotkeys.cpp:112
 #, fuzzy
 msgid "Rotate Selection"
-msgstr "填充选择区域"
+msgstr "替换选择区域"
 
 #: src/hotkeys.cpp:113
 msgid "Cut"
@@ -1101,11 +1100,11 @@ msgstr "清除所有信息"
 
 #: src/hotkeys.cpp:138
 msgid "User-Command#2"
-msgstr ""
+msgstr "玩家命令#2"
 
 #: src/hotkeys.cpp:139
 msgid "User-Command#3"
-msgstr ""
+msgstr "玩家命令#3"
 
 #: src/hotkeys.cpp:492 src/hotkeys.cpp:812
 msgid "Do you really want to quit?"
@@ -1214,7 +1213,7 @@ msgstr "错误"
 
 #: src/terrain_translation.cpp:762
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-msgstr ""
+msgstr "无效的领地(terrain)格式, 也许是1.2版的格式,  terrain = "
 
 #~ msgid "Save Replays"
 #~ msgstr "保存录像"
