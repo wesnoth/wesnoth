@@ -1591,7 +1591,7 @@ private:
 			std::string race;
 			const race_map::const_iterator race_it = gameinfo_.races.find(i->second.race());
 			if (race_it != gameinfo_.races.end()) {
-				race = race_it->second.name();
+				race = race_it->second.plural_name();
 			}
 			row << race << COLUMN_SEPARATOR;
 			row << i->second.language_name() << COLUMN_SEPARATOR;

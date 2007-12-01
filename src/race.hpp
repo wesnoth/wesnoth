@@ -34,6 +34,7 @@ public:
 
 	const std::string& id() const { return id_; };
 	const t_string& name() const { return name_; };
+	const t_string& plural_name() const { return plural_name_; };
 	const t_string& description() const { return description_; };
 
 	std::string generate_name(GENDER gender) const;
@@ -46,6 +47,7 @@ public:
 private:
 	std::string id_;
 	t_string name_;
+	t_string plural_name_;
 	t_string description_;
 	unsigned int ntraits_;
 	std::vector<std::string> names_[NUM_GENDERS];

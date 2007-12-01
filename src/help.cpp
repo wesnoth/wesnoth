@@ -1130,7 +1130,7 @@ std::vector<topic> generate_race_topics(const bool sort_generated)
 
 		const race_map::const_iterator race_it = game_info->races.find(r->first);
 		if (race_it != game_info->races.end()) {
-			name = race_it->second.name();
+			name = race_it->second.plural_name();
 			description = race_it->second.description();
 			// if (description.empty()) description =  _("No description Available");
 		} else {
@@ -1329,7 +1329,7 @@ public:
 		std::string race_name;
 		const race_map::const_iterator race_it = game_info->races.find(race_id);
 		if (race_it != game_info->races.end()) {
-			race_name = race_it->second.name();
+			race_name = race_it->second.plural_name();
 		} else {
 			race_name = _ ("race^Miscellaneous");
 		}
@@ -1575,7 +1575,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		std::string title;
 		const race_map::const_iterator race_it = game_info->races.find(*it);
 		if (race_it != game_info->races.end()) {
-			title = race_it->second.name();
+			title = race_it->second.plural_name();
 		} else {
 			title = _ ("race^Miscellaneous");
 		}
@@ -1626,7 +1626,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_description;
 	const race_map::const_iterator race_it = game_info->races.find(race);
 	if (race_it != game_info->races.end()) {
-		race_name = race_it->second.name();
+		race_name = race_it->second.plural_name();
 		race_description = race_it->second.description();
 		// if (description.empty()) description =  _("No description Available");
 	} else {
