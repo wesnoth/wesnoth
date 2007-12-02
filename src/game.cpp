@@ -1516,7 +1516,11 @@ bool game_controller::change_language()
 		preferences::set_language(languages[res].localename);
 
 		if(!no_gui_) {
-			SDL_WM_SetCaption(_("The Battle for Wesnoth"), NULL);
+			std::string wm_title_string = _("The Battle for Wesnoth");
+			wm_title_string += " - " + game_config::version
+				+ (game_config::svnrev.empty() ? "" :
+				" (" + game_config::svnrev + ")");
+			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
 
 		refresh_game_cfg(true);
