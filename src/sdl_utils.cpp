@@ -144,6 +144,7 @@ surface create_optimized_surface(surface const &surf)
 // NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(surface const &surf, int w, int h)
 {
+	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
 	if(surf == NULL)
