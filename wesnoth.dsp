@@ -71,7 +71,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /Gm /GX /ZI /Od /I "f:/wesnoth/src" /I "f:/SDL-1.2.7/include" /I "f:/SDL_image-1.2.3/include" /I "f:/SDL_mixer-1.2.5/include" /I "f:/SDL_net-1.2.5/include" /I "src/sdl_ttf" /I "f:/libintl-devel/include" /I "f:/intl/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "HAVE_FRIBIDI" /D "HAVE_PYTHON" /FR /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /GR /GX /Zi /Od /I "c:/projects/wesnoth/wesnothd/src" /I "c:/projects/wesnoth/include/SDL-1.2.9/include" /I "c:/projects/wesnoth/include" /I "c:/projects/wesnoth/wesnothd/src/sdl_ttf" /I "c:/program files/python 2.4/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include/freetype" /I "c:/projects/wesnoth/include/SDL_image-1.2.4" /I "c:/projects/wesnoth/include/SDL_mixer-1.2.6" /I "c:/projects/wesnoth/include/SDL_net-1.2.5" /I "src/sdl_ttf" /I "c:/projects/wesnoth/include/libintl-devel/include" /I "c:/usr/include" /D "WIN32" /D "_NODEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /D "NODEBUG_CONFIG" /FR"" /YX /FD /c
+# ADD CPP /nologo /MDd /W3 /GR /GX /Zi /Od /Ob1 /I "c:/projects/wesnoth/wesnothd/src" /I "c:/projects/wesnoth/include/SDL-1.2.9/include" /I "c:/projects/wesnoth/include" /I "c:/projects/wesnoth/wesnothd/src/sdl_ttf" /I "c:/program files/python 2.4/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include/freetype" /I "c:/projects/wesnoth/include/SDL_image-1.2.4" /I "c:/projects/wesnoth/include/SDL_mixer-1.2.6" /I "c:/projects/wesnoth/include/SDL_net-1.2.5" /I "src/sdl_ttf" /I "c:/projects/wesnoth/include/libintl-devel/include" /I "c:/usr/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /D "BOOST_IOSTREAMS_NO_LIB" /FR /YX /FD /Zm200 /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_NODEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -81,7 +81,8 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib /nologo /subsystem:windows /incremental:yes /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept /libpath:"c:\projects\wesnoth\yogilib"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib SDL.lib SDLmain.lib SDL_mixer.lib SDL_net.lib SDL_image.lib libintl.lib freetype.lib Ws2_32.lib fribidi.lib  zdll.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/wesnoth.pdb" /debug /machine:I386 /out:"wesnoth.exe" /pdbtype:sept /libpath:"c:\projects\wesnoth\yogilib"
+# SUBTRACT LINK32 /pdb:none
 
 !ENDIF 
 
@@ -474,6 +475,14 @@ SOURCE=.\src\sdl_utils.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\settings.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\sha1.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\show_dialog.cpp
 # End Source File
 # Begin Source File
@@ -591,6 +600,10 @@ SOURCE=.\src\wassert.cpp
 # Begin Source File
 
 SOURCE=.\src\widgets\widget.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=..\boost_1_34_1\libs\iostreams\src\zlib.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -979,6 +992,14 @@ SOURCE=.\src\widgets\scrollpane.hpp
 # Begin Source File
 
 SOURCE=.\src\sdl_utils.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\settings.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\sha1.hpp
 # End Source File
 # Begin Source File
 

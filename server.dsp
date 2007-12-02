@@ -190,19 +190,6 @@ SOURCE=.\src\serialization\tokenizer.cpp
 
 SOURCE=.\src\tstring.cpp
 # End Source File
-# Begin Source File
-
-SOURCE=.\src\server\variable.cpp
-
-!IF  "$(CFG)" == "server - Win32 Debug"
-
-!ELSEIF  "$(CFG)" == "server - Win32 Release"
-
-# PROP Ignore_Default_Tool 1
-
-!ENDIF 
-
-# End Source File
 # End Group
 # Begin Group "Header Files"
 
