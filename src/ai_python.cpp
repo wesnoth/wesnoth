@@ -1635,7 +1635,7 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	{
 	    int i;
 	    int len = strlen(s);
-	    char data[len / 2];
+	    char *data = new char[len / 2];
 	    for (i = 0; i < len; i += 2)
 	    {
 	        int v1 = s[i] - '0';
@@ -1645,7 +1645,9 @@ PyObject* python_ai::wrapper_get_variable(PyObject* /*self*/, PyObject* args)
 	        char c = v1 * 16 + v2;
 	        data[i / 2] = c;
 	    }
-        return PyMarshal_ReadObjectFromString(data, len / 2);
+        PyObject *ret = PyMarshal_ReadObjectFromString(data, len / 2);
+        delete[] data;
+        return ret;
     }
     Py_INCREF(Py_None);
 	return Py_None;
