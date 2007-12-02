@@ -152,6 +152,7 @@ wesnoth_SOURCES = \
 	widgets/slider.cpp \
 	widgets/textbox.cpp \
 	widgets/widget.cpp \
+	wml_exception.cpp \
 	sdl_ttf/SDL_ttf.c
 
 wesnoth_LDADD = $(THELIBS)
@@ -218,6 +219,7 @@ wesnoth_editor_SOURCES = \
 	widgets/scrollbar.cpp \
 	widgets/slider.cpp \
 	widgets/widget.cpp \
+	wml_exception.cpp \
 	sdl_ttf/SDL_ttf.c
 
 wesnoth_editor_LDADD = $(THELIBS)
@@ -431,7 +433,8 @@ noinst_HEADERS = \
 	wassert.hpp \
 	wml_separators.hpp \
 	sdl_ttf/SDL_ttf.h \
-	wesconfig.h
+	wesconfig.h \
+	wml_exception.hpp
 
 #############################################################################
 #    Headers

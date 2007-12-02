@@ -48,6 +48,7 @@
 #include "titlescreen.hpp"
 #include "util.hpp"
 #include "upload_log.hpp"
+#include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
@@ -654,6 +655,9 @@ bool game_controller::play_multiplayer_mode()
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
 		return true;
+	} catch(twml_exception& e) {
+		e.show(disp());
+		return false;
 	} catch(...) {
 		std::cerr << "caught unknown error playing level...\n";
 	}
@@ -748,6 +752,9 @@ bool game_controller::load_game()
 		return false;
 	} catch(io_exception&) {
 		gui::show_error_message(disp(), _("File I/O Error while reading the game"));
+		return false;
+	} catch(twml_exception& e) {
+		e.show(disp());
 		return false;
 	}
 	recorder = replay(state_.replay_data);
@@ -1284,6 +1291,8 @@ void game_controller::download_campaigns(std::string host)
 		gui::show_error_message(disp(), _("Remote host disconnected."));
 	} catch(io_exception&) {
 		gui::show_error_message(disp(), _("There was a problem creating the files necessary to install this add-on."));
+	} catch(twml_exception& e) {
+		e.show(disp());
 	}
 }
 
@@ -1476,6 +1485,8 @@ bool game_controller::play_multiplayer()
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+	} catch(twml_exception& e) {
+		e.show(disp());
 	}
 
 	return false;
@@ -1800,6 +1811,9 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+
+	} catch(twml_exception& e) {
+		e.show(disp());
 	}
 }
 
@@ -1817,6 +1831,9 @@ void game_controller::play_replay()
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
+
+	} catch(twml_exception& e) {
+		e.show(disp());
 	}
 }
 
@@ -2241,6 +2258,9 @@ int main(int argc, char** argv)
 		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
+	} catch(twml_exception& e) {
+		std::cerr << "WML exception:\nUser message: " 
+			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 	}
 
 	return 0;
