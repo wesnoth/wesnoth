@@ -48,7 +48,6 @@
 #include "titlescreen.hpp"
 #include "util.hpp"
 #include "upload_log.hpp"
-#include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"

@@ -20,7 +20,6 @@
 #include "util.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
-#include "wassert.hpp"
 #include "game_config.hpp"
 
 #include "SDL.h"

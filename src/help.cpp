@@ -35,7 +35,6 @@
 #include "unit.hpp"
 #include "util.hpp"
 #include "video.hpp"
-#include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"

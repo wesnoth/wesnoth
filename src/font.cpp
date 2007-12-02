@@ -25,7 +25,6 @@
 #include "tooltips.hpp"
 #include "util.hpp"
 #include "video.hpp"
-#include "wassert.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"

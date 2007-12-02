@@ -30,7 +30,6 @@
 #include "replay.hpp"
 //#include "sound.hpp" 
 #include "thread.hpp"
-#include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 

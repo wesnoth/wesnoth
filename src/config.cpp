@@ -24,7 +24,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 
@@ -256,7 +255,6 @@ void config::remove_child(const std::string& key, size_t index)
 
 	// Remove from the child map
 	child_list& v = children[key];
-	//wassert(index < v.size());
 	if(index >= v.size()) {
 		ERR_CF << "Error: attempting to delete non-existing child: "
 			<< key << "[" << index << "]\n";

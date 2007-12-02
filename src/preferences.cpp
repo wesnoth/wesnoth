@@ -28,7 +28,6 @@
 #include "sound.hpp"
 #include "util.hpp"
 #include "video.hpp" // non_interactive()
-#include "wassert.hpp"
 #include "wesconfig.h"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"

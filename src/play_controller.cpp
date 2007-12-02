@@ -27,7 +27,6 @@
 #include "sound.hpp"
 #include "terrain_filter.hpp"
 #include "variable.hpp"
-#include "wassert.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
