@@ -536,7 +536,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	}
 
 	std::map<std::string,std::string> title_stash;	
-	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+	std::vector<theme::menu>::iterator m;
+	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (!m->title().empty() && !m->get_id().empty())
 			title_stash[m->get_id()] = m->title();
 	}
@@ -549,7 +550,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	const config& cfg = **current;
 	add_object(cfg);
 
-	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (title_stash.find(m->get_id()) != title_stash.end())
 			m->set_title(title_stash[m->get_id()]); 
 	}
@@ -656,7 +657,8 @@ void theme::set_object_location(theme::object& element, std::string rect_str, st
 
 void theme::modify(const config* cfg){
 	std::map<std::string,std::string> title_stash;	
-	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+	std::vector<theme::menu>::iterator m;
+	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (!m->title().empty() && !m->get_id().empty())
 			title_stash[m->get_id()] = m->title();
 	}
@@ -687,7 +689,7 @@ void theme::modify(const config* cfg){
 			remove_object((**j)["id"]);
 		}
 	}
-	for (std::vector<theme::menu>::iterator m = menus_.begin(); m != menus_.end(); ++m) {
+	for (m = menus_.begin(); m != menus_.end(); ++m) {
 		if (title_stash.find(m->get_id()) != title_stash.end())
 			m->set_title(title_stash[m->get_id()]); 
 	}

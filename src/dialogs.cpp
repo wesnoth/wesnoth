@@ -903,8 +903,8 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	// FIXME: not sure if it's fully accurate (but not very important for unit_type)
 	// xp_color also need a simpler function for doing this
 	const config::child_list& advances = t->modification_advancements();
-	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
-		if (!utils::string_bool((**i)["strict_amla"]) || !t->can_advance()) {
+	for(config::child_list::const_iterator j = advances.begin(); j != advances.end(); ++j) {
+		if (!utils::string_bool((**j)["strict_amla"]) || !t->can_advance()) {
 			det.xp_color = "<100,0,150>"; // from unit::xp_color()
 			break;
 		}
