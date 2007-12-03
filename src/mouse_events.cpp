@@ -954,7 +954,7 @@ paths::route mouse_handler::get_route(unit_map::const_iterator un, gamemap::loca
 		// search all known empty friendly villages
 		for(std::set<gamemap::location>::const_iterator i = team.villages().begin();
 				i != team.villages().end(); ++i) {
-			if (viewing_team().is_enemy(un->second.side()) && viewing_team().fogged(i->x,i->y))
+			if (viewing_team().is_enemy(un->second.side()) && viewing_team().fogged(*i))
 				continue;
 
 			unit_map::const_iterator occupant = find_unit(*i);
@@ -1134,7 +1134,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 
 				if (teams_[team_num_-1].uses_shroud() || teams_[team_num_-1].uses_fog()){
 					 for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-				   if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
+				   if(teams_[team_num_-1].fogged(u->first) == false) {
 					 known_units.insert(u->first);
 					 teams_[team_num_-1].see(u->second.side()-1);
 							}
@@ -1158,7 +1158,7 @@ void mouse_handler::left_click(const SDL_MouseButtonEvent& event, const bool bro
 							gui_->draw();
 							//some new part of map discovered
 							for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-								if(teams_[team_num_-1].fogged(u->first.x,u->first.y) == false) {
+								if(teams_[team_num_-1].fogged(u->first) == false) {
 									//check if unit is not known
 									if (known_units.find(u->first)==known_units.end())
 									{
