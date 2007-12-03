@@ -38,4 +38,4 @@ $echo sed -i -e "/\[redirect\]/N;/version=/s/$PPREV_VERSION/$PREV_VERSION/" $PRE
 $echo sed -i -e "s,#{./$DEV_VERSION-prev-redirect.cfg},{./$DEV_VERSION-prev-redirect.cfg}," $DEV_SERVER_CONFIG
 # reload the config
 $echo killall -SIGHUP wesnothd-$DEV_VERSION wesnothd-trunk || exit 1
-$echo send_server_command $DEV_VERSION msg Version $NEW_VERSION released! New users with the previous version will be redirected to a temporary server that will run until binaries for all major OSs are out.
+$echo send_server_command $DEV_VERSION msg Version $NEW_VERSION has been released! New users with the previous version will now get redirected to a temporary server that will run until binaries for all major OSs are out.
