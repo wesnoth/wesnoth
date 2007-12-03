@@ -78,7 +78,7 @@ public:
   * It takes care of proper deletion of the resource,
   * using the provided release policy.
   */
-	~scoped_resource()
+	virtual ~scoped_resource()
 	{
 		release_type()(resource);
 	}
