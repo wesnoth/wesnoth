@@ -42,6 +42,16 @@ namespace reports {
 	const std::string& report_name(TYPE type);
 
 	struct element {
+	private:
+		//! Shouldn't be used so only declared.
+		element();
+	public:		
+		explicit element(const std::string& text) : 
+				image(),
+				text(text),
+				tooltip()
+				{}
+
 		// Invariant: either text or image should be empty
 		// It would be okay to create a class for this, but it's a pretty simple
 		// invariant so I left it like the original report class.
@@ -49,9 +59,6 @@ namespace reports {
 		std::string text;
 
 		std::string tooltip;
-
-		element() {}
-		explicit element(const std::string& text) : text(text) {}
 		element(const std::string& text, const std::string& image, const std::string& tooltip) :
 			image(image), text(text), tooltip(tooltip) {}
 
