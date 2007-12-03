@@ -1,3 +1,4 @@
+# search scenario 剧本 ？
 # Chinese translations for Battle for Wesnoth package.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -6,12 +7,16 @@
 # Huang huan <unicon221@gmail.com>, 2005.
 # Dionysus <huang.wei.bhu@gmail.com>, 2007.  (unicon)
 #
+# sylecn@yahoo.com.cn有疑问的翻译，但是尚未更改。
+# scenario    剧本      很别扭
+# era         时代      游戏里面明显不是这个意思
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-01 13:07+0100\n"
-"PO-Revision-Date: 2007-11-30 22:16+1000\n"
+"PO-Revision-Date: 2007-12-03 15:50+0800\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -943,15 +948,16 @@ msgid "Time of Day"
 msgstr "时刻"
 
 #: data/core/help.cfg:205
+#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"一天中的时刻对不同种类的单位的攻击输出有不同的影响，具体如下：\n"
-" 守序单位在白天有+25%的伤害加乘，晚上有-25%的伤害减少。\n"
-" 混乱单位在晚上有-25%的伤害加乘，晚上有+25%的伤害减少。\n"
+"时间对不同种类的单位的攻击有不同的影响，具体如下：\n"
+" 守序单位在白天 +25% 攻击，晚上 -25% 攻击。\n"
+" 混乱单位在晚上 +25% 攻击，白天 -25% 攻击。\n"
 " 中立单位不受时间的影响。"
 
 #: data/core/help.cfg:208
@@ -964,8 +970,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"当前时刻在状态条面板上小地图的下面。在普通的昼夜循环模式下，上午和下午是白"
-"天，前半夜和后半夜是晚上：\n"
+"当前时刻显示在屏幕右侧中间位置，位于小地图下方。在普通的昼夜循环模式下，上午"
+"和下午是白天，前半夜和后半夜是晚上：\n"
 
 #: data/core/help.cfg:208 data/core/macros/schedules.cfg:5
 msgid "Dawn"
@@ -995,7 +1001,7 @@ msgstr "后半夜"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr "记住，一些剧本是发生在地下的，那里一直是晚上。"
+msgstr "记住，有些场景是发生在地下的，那里一直是晚上。"
 
 #: data/core/help.cfg:220
 msgid "Experience and Advancement"
@@ -1150,7 +1156,7 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "韦诺中，仅仅征兵并战斗是不够的。您得注意您的金币，特别是在战役中，您能将多余"
-"的金币携带到下一个剧本中。关于金币有两个方面：收入和维护费用。"
+"的金币携带到下一剧本。影响金币的主要是两个方面：收入和维护费用。"
 
 #: data/core/help.cfg:249
 msgid ""
@@ -2007,7 +2013,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"对话信息.\n"
+"清除聊天信息.\n"
 "\n"
 
 # can someone explain this to me in other words? i have not seen this in real multiplayer yet
@@ -2071,11 +2077,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"切换当前的FPS-每秒显示帧数(frames per second).\n"
+"显示游戏的FPS-每秒显示帧数(frames per second).\n"
 "\n"
 
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2084,7 +2089,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"开启调试模式（在多人对战中无效）。退出游戏则关闭调试模式。\n"
+"开启调试模式（在多人对战中无效）。查看<ref>dst=debug_commands text='调试模式"
+"可用命令'</ref>。\n"
+"要关闭调试模式可以使用 :nodebug 或者退出游戏。\n"
 "\n"
 
 #: data/core/help.cfg:638
@@ -2096,7 +2103,6 @@ msgid "Multiplayer commands"
 msgstr "多人对战指令"
 
 #: data/core/help.cfg:647
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2104,7 +2110,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"从多人对战中踢出并封锁一个用户和那个用户所使用的IP地址。\n"
+"在多人游戏中，把某个玩家踢出游戏并且封禁他所使用的IP地址(所谓的Ban IP)\n"
 "\n"
 
 #: data/core/help.cfg:650
@@ -2133,6 +2139,7 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
+#, fuzzy
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2140,8 +2147,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"禁止某个特定的观察者发言。如果没有指定观察者的用户名，则会显示已被禁止发言的"
-"观察者的名单。\n"
+"屏蔽某个观察者。如果没有指定观察者的用户名，则输出被屏蔽的观察者的名单。\n"
 "\n"
 
 #: data/core/help.cfg:657
@@ -2151,47 +2157,44 @@ msgid ""
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"允许/禁止所有观察者发言。"
+"屏蔽/取消屏蔽 所有观察者(observers)。"
 
 #: data/core/help.cfg:662
 msgid "Debug mode commands"
 msgstr "除错模式指令"
 
 #: data/core/help.cfg:666
-#, fuzzy
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
 "\n"
-"选定十六进制，建立特殊种类的单位.\n"
+"在所选的位置创建指定类型的单位\n"
+"\n"
 "\n"
 
 #: data/core/help.cfg:669
-#, fuzzy
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"切换当前的FPS-每秒帧数(frames per second).\n"
+"为当前玩家设置战争迷雾.\n"
 "\n"
 
 #: data/core/help.cfg:672
-#, fuzzy
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
 "\n"
-"为当前这一方添加特定数量的金子.\n"
+"为当前玩家添加指定数量的金子.\n"
 "\n"
 
 #: data/core/help.cfg:675
-#, fuzzy
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2202,7 +2205,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2213,25 +2215,24 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:681
-#, fuzzy
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
 "\n"
-"手动开始这特殊事件.\n"
+"手动触发指定的事件.\n"
 "\n"
 
 #: data/core/help.cfg:682
-#, fuzzy
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
 "\n"
-"改动特殊选中单位的能力 例如: 单位攻击力=100"
+"改变选定单位的某个属性。例如:\n"
+" :unit hitpoint=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -3697,7 +3698,7 @@ msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr "本单位可以实施基本的治疗，但只能推迟毒药的发作，不能治愈中毒效果。"
+msgstr " 本单位能中和(消除？)他周围单位身上的中毒效果。"
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -3808,13 +3809,12 @@ msgid ""
 msgstr "本单位的'连击'攻击在自己受伤的情况下会被削弱。"
 
 #: data/core/macros/special-notes.cfg:69
-#, fuzzy
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
-"使用带有冲锋属性的攻击会带来双倍的攻击输出，也会遭到双倍的伤害。但这不会影响"
-"防守反击。"
+" 冲刺攻击使你的攻击加倍，但在进行这种攻击时你受到的伤害也会加倍； 此技能不影"
+"响反击时的攻防。"
 
 #: data/core/macros/special-notes.cfg:72
 msgid ""
@@ -3843,8 +3843,9 @@ msgid "loyal"
 msgstr "忠诚"
 
 #: data/core/macros/traits.cfg:10
+#, fuzzy
 msgid "female^loyal"
-msgstr "忠诚"
+msgstr "女性^忠诚"
 
 #: data/core/macros/traits.cfg:11
 msgid "Zero upkeep"
@@ -3855,8 +3856,9 @@ msgid "undead"
 msgstr "不死"
 
 #: data/core/macros/traits.cfg:24
+#, fuzzy
 msgid "female^undead"
-msgstr "不死"
+msgstr "女性^不死"
 
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
 msgid "Immune to drain, poison and plague"
@@ -3867,68 +3869,76 @@ msgid "mechanical"
 msgstr "机械"
 
 #: data/core/macros/traits.cfg:39
+#, fuzzy
 msgid "female^mechanical"
-msgstr "机械"
+msgstr "女性^机械"
 
 #: data/core/macros/traits.cfg:52
 msgid "strong"
 msgstr "强壮"
 
 #: data/core/macros/traits.cfg:53
+#, fuzzy
 msgid "female^strong"
-msgstr "强壮"
+msgstr "女性^强壮"
 
 #: data/core/macros/traits.cfg:70
 msgid "dextrous"
 msgstr "灵巧"
 
 #: data/core/macros/traits.cfg:71
+#, fuzzy
 msgid "female^dextrous"
-msgstr "灵巧"
+msgstr "女性^灵巧"
 
 #: data/core/macros/traits.cfg:84
 msgid "quick"
 msgstr "迅捷"
 
 #: data/core/macros/traits.cfg:85
+#, fuzzy
 msgid "female^quick"
-msgstr "迅捷"
+msgstr "女性^迅捷"
 
 #: data/core/macros/traits.cfg:101
 msgid "intelligent"
 msgstr "聪慧"
 
 #: data/core/macros/traits.cfg:102
+#, fuzzy
 msgid "female^intelligent"
-msgstr "聪慧"
+msgstr "女性^聪慧"
 
 #: data/core/macros/traits.cfg:114
 msgid "resilient"
 msgstr "坚韧"
 
 #: data/core/macros/traits.cfg:115
+#, fuzzy
 msgid "female^resilient"
-msgstr "坚韧"
+msgstr "女性^坚韧"
 
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr "活力"
 
 #: data/core/macros/traits.cfg:133
+#, fuzzy
 msgid "female^healthy"
-msgstr "活力"
+msgstr "女性^活力"
 
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
-msgstr "在移动中休息"
+msgstr "能在移动中休息"
 
 #: data/core/macros/traits.cfg:146 data/core/macros/traits.cfg:159
 msgid "fearless"
 msgstr "无畏"
 
 #: data/core/macros/traits.cfg:147 data/core/macros/traits.cfg:160
+#, fuzzy
 msgid "female^fearless"
-msgstr "无畏"
+msgstr "女性^无畏"
 
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:161
 msgid "Fights normally during unfavorable times of day/night"
@@ -4059,8 +4069,8 @@ msgid ""
 msgstr ""
 "守序单位善于在白天战斗，不善于在晚上战斗。\n"
 "\n"
-"白天：+25%伤害\n"
-"晚上：-25%伤害"
+"白天：+25% 伤害\n"
+"晚上：-25% 伤害"
 
 #: data/hardwired/english.cfg:11
 msgid ""
@@ -4077,8 +4087,8 @@ msgid ""
 msgstr ""
 "混乱单位善于在晚上战斗，不善于在白天战斗。\n"
 "\n"
-"白天：-25%伤害\n"
-"晚上：+25%伤害"
+"白天：-25% 伤害\n"
+"晚上：+25% 伤害"
 
 #: data/hardwired/english.cfg:18
 msgid "$name's Bridge,$name's Crossing"
@@ -4176,7 +4186,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:4
 #, fuzzy
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr "- 皇家战争概略 - 第二辑 Volume II, 212YW"
+msgstr "- 皇家战争概略 -  Volume II, 212YW"
 
 #: data/hardwired/tips.cfg:7
 msgid ""
@@ -4268,7 +4278,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:30
 #, fuzzy
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr "- 战术手册第二辑 Volume II - Haldric II, 43YW"
+msgstr "- 战术分析手册 Volume II - Haldric II, 43YW"
 
 #: data/hardwired/tips.cfg:33
 msgid ""
@@ -4355,7 +4365,7 @@ msgstr "别担心撤退或重组；这通常是胜利的关键。"
 #: data/hardwired/tips.cfg:66
 #, fuzzy
 msgid "- Meneldur, 123YW"
-msgstr "-   Meneldur, 123YW"
+msgstr "- Meneldur, 123YW"
 
 #: data/hardwired/tips.cfg:69
 msgid ""
@@ -4538,8 +4548,9 @@ msgstr ""
 "确保单位的移动随时可以撤销，可以将‘暂缓刷新迷雾’选项打勾。"
 
 #: data/scenario-test.cfg:679
+#, fuzzy
 msgid "ruby of fire"
-msgstr ""
+msgstr "火之红宝石(ruby of fire)"
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -4656,16 +4667,17 @@ msgid "play turn"
 msgstr "播放该回合"
 
 #: data/themes/macros.cfg:122
+#, fuzzy
 msgid "Next Side"
-msgstr "下一边"
+msgstr "下个玩家"
 
 #: data/themes/macros.cfg:123
 msgid "play side turn"
-msgstr "播放本边回合"
+msgstr "播放本玩家回合"
 
 #: data/themes/macros.cfg:135
 msgid "Point of view"
-msgstr " "
+msgstr "视角"
 
 #: data/themes/macros.cfg:147
 msgid "Skip animation"
@@ -4678,7 +4690,7 @@ msgstr "+"
 
 #: src/about.cpp:54
 msgid "+  "
-msgstr "+"
+msgstr "+  "
 
 #: src/about.cpp:186 src/help.cpp:2911 src/menu_events.cpp:163
 #: src/menu_events.cpp:459 src/menu_events.cpp:482
@@ -4750,7 +4762,7 @@ msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 
 #: src/actions.cpp:2181
 msgid "(press $hotkey to keep moving)"
-msgstr "（按$hotkey继续移动）"
+msgstr "（按$hotkey键继续移动）"
 
 #: src/dialogs.cpp:109
 msgid "Advance Unit"
@@ -4782,11 +4794,11 @@ msgstr "覆盖？"
 
 #: src/dialogs.cpp:261
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr "存档以存在，要覆盖吗？"
+msgstr "存档已存在，要覆盖吗？"
 
 #: src/dialogs.cpp:295
 msgid "Do you really want to delete this game?"
-msgstr "您真的想删除这个游戏？"
+msgstr "您真的想删除这个游戏吗？"
 
 #: src/dialogs.cpp:297
 msgid "Don't ask me again!"
@@ -4801,7 +4813,6 @@ msgid "#(Invalid)"
 msgstr "#（无效的）"
 
 #: src/dialogs.cpp:471
-#, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "战役: $campaign_name"
 
@@ -4930,7 +4941,7 @@ msgstr "警告：您试图载入的文件已损坏。继续尝试载入。\n"
 
 #: src/game.cpp:731 src/multiplayer_connect.cpp:1383
 msgid "This save is from a version too old to be loaded."
-msgstr "这个存档来自于太早之前的游戏，无法载入。"
+msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法载入。"
 
 #: src/game.cpp:737 src/multiplayer_connect.cpp:1390
 msgid ""
@@ -5004,11 +5015,11 @@ msgstr "插件'$addon|'已删除"
 
 #: src/game.cpp:1037
 msgid "Add-on deleted"
-msgstr "插插件已删除"
+msgstr "插件已删除"
 
 #: src/game.cpp:1043
 msgid "Add-on could not be deleted -- a file was not found."
-msgstr "无法删除插件——没有找到文件。"
+msgstr "无法删除插件——没有找到某个文件。"
 
 #: src/game.cpp:1043 src/menu_events.cpp:706 src/menu_events.cpp:719
 #: src/multiplayer_create.cpp:512
@@ -5041,7 +5052,7 @@ msgstr "作者"
 
 #: src/game.cpp:1099
 msgid "Downloads"
-msgstr "下载"
+msgstr "下载数"
 
 #: src/game.cpp:1099
 msgid "Size"
@@ -5081,7 +5092,7 @@ msgstr "您真的想下载这个游戏？"
 
 #: src/game.cpp:1222
 msgid "Downloading add-on..."
-msgstr "插件下载中……"
+msgstr "正在下载插件……"
 
 #: src/game.cpp:1280
 msgid "Add-on Installed"
@@ -5154,7 +5165,7 @@ msgstr "主建局域网游戏"
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
-msgstr "使用内置的服务端做主机. 支持的不是很好. 最好用专用的服务器'wesnothd'."
+msgstr "使用内置的服务器做主机. 支持的不是很好. 最好用专用的服务器'wesnothd'."
 
 #: src/game.cpp:1407
 msgid "Local Game"
@@ -5256,7 +5267,7 @@ msgstr "隐形： "
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking."
-msgstr "本单位被减速了，攻击输出因此减半。"
+msgstr "本单位被减速了，攻击因此减半。"
 
 #: src/generate_report.cpp:102
 msgid "slowed: "
@@ -5479,8 +5490,9 @@ msgstr "系统默认语言"
 
 #: src/leader_list.cpp:133 src/multiplayer_connect.cpp:185
 #: src/multiplayer_connect.cpp:237
+#, fuzzy
 msgid "gender^Random"
-msgstr "性别随机"
+msgstr "性别^随机"
 
 #: src/leader_list.cpp:144 src/leader_list.cpp:146
 #: src/multiplayer_connect.cpp:181 src/multiplayer_connect.cpp:233
@@ -5559,19 +5571,19 @@ msgstr "受到伤害 （期望值）"
 
 #: src/menu_events.cpp:269 src/menu_events.cpp:273
 msgid "Do you really want to dismiss him?"
-msgstr "您真的想开除他？"
+msgstr "你真的想解散他吗？"
 
 #: src/menu_events.cpp:269
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "主人，这是个富有经验的高等级单位！您真的想解散$noun吗?"
+msgstr "主人，这是个富有经验的高等级单位！您确信想解散$noun吗?"
 
 #: src/menu_events.cpp:270 src/menu_events.cpp:274
 msgid "Do you really want to dismiss her?"
-msgstr "您真的想开除她？"
+msgstr "您确信想开除她？"
 
 #: src/menu_events.cpp:273
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "主人，这个单位就快升级了！您真的想解散$noun吗？"
+msgstr "主人，这个单位就快升级了！您确信想解散$noun吗？"
 
 #: src/menu_events.cpp:330
 msgid "Statistics"
@@ -5723,7 +5735,7 @@ msgstr "把地图存为"
 
 #: src/menu_events.cpp:739
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "地图以存在，要覆盖吗？"
+msgstr "地图已存在，要覆盖吗？"
 
 #: src/menu_events.cpp:751
 msgid "Map saved."
@@ -5765,7 +5777,7 @@ msgstr[1] "金币"
 
 #: src/menu_events.cpp:981
 msgid "You have no units available to recruit."
-msgstr "您没有可供征募的单位。"
+msgstr "没有可供征募的单位。"
 
 #: src/menu_events.cpp:993
 msgid "Recruit"
@@ -5789,7 +5801,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "没有可供召回的单位\n"
-"（上个剧本里必须有存活下来的老兵）"
+"（只能召回上一剧本存活下来的单位）"
 
 #: src/menu_events.cpp:1105
 msgid "Level"
@@ -5960,12 +5972,14 @@ msgid "Expected Battle Result (HP)"
 msgstr "战斗结果期望（生命值）"
 
 #: src/mouse_events.cpp:311
+#, fuzzy
 msgid " resistance vs "
-msgstr " vs"
+msgstr " 有抗性（resistance vs） "
 
 #: src/mouse_events.cpp:312
+#, fuzzy
 msgid " vulnerability vs "
-msgstr " vs"
+msgstr " 有弱点（vulnerability vs） "
 
 #: src/mouse_events.cpp:322
 msgid "Slowed"
@@ -6111,7 +6125,7 @@ msgstr "颜色"
 
 #: src/multiplayer_connect.cpp:875
 msgid "I'm Ready"
-msgstr "准备好了"
+msgstr "准备就绪"
 
 #: src/multiplayer_connect.cpp:884
 msgid "The scenario is invalid because it has no sides."
@@ -6131,7 +6145,7 @@ msgstr "电脑玩家"
 
 #: src/multiplayer_connect.cpp:1255
 msgid "Empty"
-msgstr "空"
+msgstr "空位"
 
 #: src/multiplayer_connect.cpp:1369
 msgid "This is not a multiplayer save"
@@ -6208,7 +6222,7 @@ msgstr "设置..."
 
 #: src/multiplayer_create.cpp:97
 msgid "Load Game..."
-msgstr "载入游戏"
+msgstr "载入游戏..."
 
 #: src/multiplayer_create.cpp:130
 msgid "The maximum number of turns the game can last"
@@ -6277,9 +6291,10 @@ msgstr "无共享"
 #: src/multiplayer_create.cpp:200
 #, fuzzy
 msgid "No eras found."
-msgstr "没有找到时期"
+msgstr "没有找到时期。"
 
 #: src/multiplayer_create.cpp:201
+#, fuzzy
 msgid "No eras found"
 msgstr "没有找到时期"
 
@@ -6328,7 +6343,7 @@ msgstr "村庄金币： "
 #: src/multiplayer_create.cpp:380
 #, fuzzy
 msgid "Exp. Mod.: "
-msgstr "经验模式.: "
+msgstr "经验 模式.: "
 
 #: src/multiplayer_create.cpp:509
 msgid "Players: "
@@ -6412,11 +6427,12 @@ msgstr "无效颜色"
 
 #: src/multiplayer_ui.cpp:362
 msgid "Send a private message to "
-msgstr "传消息给"
+msgstr "发送一条私人消息给 "
 
 #: src/multiplayer_ui.cpp:363
+#, fuzzy
 msgid "Whisper"
-msgstr "耳语"
+msgstr "悄悄话"
 
 #: src/multiplayer_ui.cpp:364
 msgid "Message: "
@@ -6467,14 +6483,12 @@ msgid "Client disconnected"
 msgstr "客户端断开连接"
 
 #: src/network.cpp:160
-#, fuzzy
 msgid "No server ping since at least 30 seconds. Connection timed out."
-msgstr "服务端响应时间已经超过30秒。连接失败。"
+msgstr "至少30秒都没能与服务器取得连接。连接超时。"
 
 #: src/network.cpp:508
-#, fuzzy
 msgid "Could not add socket to socket set"
-msgstr "不能插入插口"
+msgstr "无法向套接字(socket)集合中添加游戏要用的套接字"
 
 #: src/network.cpp:519
 msgid "Could not send initial handshake"
@@ -6498,19 +6512,20 @@ msgstr "您被打败了！"
 
 #: src/playcampaign.cpp:392
 msgid "Error while reading the WML: "
-msgstr "游戏执行出错： "
+msgstr "读取 WML 文件时出错： "
 
 #: src/playcampaign.cpp:415
 msgid "The replay could not be saved"
-msgstr "无法保存游戏"
+msgstr "无法保存游戏录像"
 
 #: src/playcampaign.cpp:436
+#, fuzzy
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr "场景还没完结. 您想继续战役吗?"
+msgstr "这一剧本结束了. 您想继续这个战役吗?"
 
 #: src/playcampaign.cpp:456
 msgid "Downloading next scenario..."
-msgstr "下载下一个剧本中……"
+msgstr "正在下载下一剧本……"
 
 #: src/playcampaign.cpp:563
 msgid "Do you want to save your game?"
@@ -6522,7 +6537,7 @@ msgstr "未知剧本： '"
 
 #: src/playmp_controller.cpp:250
 msgid "End scenario"
-msgstr "结束场景"
+msgstr "结束本剧本"
 
 #: src/playmp_controller.cpp:391
 msgid ""
@@ -6563,41 +6578,36 @@ msgid "Gold: "
 msgstr "金币： "
 
 #: src/playsingle_controller.cpp:164
-#, fuzzy
 msgid "Carry over percentage: "
-msgstr "延续几率"
+msgstr "资金转移到下一剧本："
 
 #: src/playsingle_controller.cpp:166
 msgid "Bonus Gold: "
-msgstr "金钱奖励: "
+msgstr "奖励金钱: "
 
 #: src/playsingle_controller.cpp:168
 msgid "Retained Gold: "
 msgstr "所剩金币： "
 
 #: src/playsingle_controller.cpp:178
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
-msgstr[0] "您将开始下一个场景, 顶部的$gold 告诉您下一次开始的最低黄金数."
-msgstr[1] "您将开始下一个场景, 顶部的$gold 告诉您下一次开始的最低黄金数."
+msgstr[0] "你将以 $gold 金子开始下一场景。不会考虑游戏预定的最小起始资金。"
+msgstr[1] "你将以 $gold 金子开始下一场景。不会考虑游戏预定的最小起始资金。"
 
 #: src/playsingle_controller.cpp:186
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr[0] ""
-"您将开始下一个场景, 顶部的$gold 告诉您下一次开始的最低黄金数, 不论它有多么多."
-msgstr[1] ""
-"您将开始下一个场景, 顶部的$gold 告诉您下一次开始的最低黄金数, 不论它有多么多."
+msgstr[0] "你将以 $gold 金子和预定的最小起始资金中较高那个开始下一场景。"
+msgstr[1] "你将以 $gold 金子和预定的最小起始资金中较高那个开始下一场景。"
 
 #: src/playsingle_controller.cpp:297
 msgid "Game Over"
@@ -6668,16 +6678,16 @@ msgstr " 在$pos处缺少$tag标记的结束标识"
 #: src/serialization/parser.cpp:161
 #, fuzzy
 msgid "Unterminated [element] tag"
-msgstr "无终端的:[element] 标记符"
+msgstr "未终止的:[element] 标记符"
 
 #: src/serialization/parser.cpp:171 src/serialization/parser.cpp:207
 msgid "Invalid tag name"
-msgstr "无效标识命"
+msgstr "无效标识名"
 
 #: src/serialization/parser.cpp:174
 #, fuzzy
 msgid "Unterminated [+element] tag"
-msgstr "无终端的:[+element] 标记符"
+msgstr "未终止的:[+element] 标记符"
 
 #: src/serialization/parser.cpp:190
 msgid "Invalid closing tag name"
@@ -6807,11 +6817,12 @@ msgstr "切换语言"
 
 #: src/titlescreen.cpp:341
 msgid "Configure the game's settings"
-msgstr "配置游戏设置"
+msgstr "更改游戏设置"
 
 #: src/titlescreen.cpp:342
+#, fuzzy
 msgid "View the credits"
-msgstr "查看荣誉名单"
+msgstr "查看制作人名单"
 
 #: src/titlescreen.cpp:343
 msgid "Quit the game"
@@ -6839,7 +6850,7 @@ msgstr "未知单位种类 '$type|'"
 
 #: src/unit.cpp:2433 src/unit.cpp:2637 src/unit.cpp:2693
 msgid " and "
-msgstr " 以及"
+msgstr "以及"
 
 #: src/unit.cpp:2444
 msgid "$attack_list|: $effect_description"
