@@ -15,7 +15,9 @@
 #include "global.hpp"
 #include "key.hpp"
 
-CKey::CKey() : is_enabled(true)
+CKey::CKey() : 
+	key_list(0),
+	is_enabled(true)
 {
 	static int num_keys = 300;
 	key_list = SDL_GetKeyState( &num_keys );
