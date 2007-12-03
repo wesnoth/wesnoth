@@ -493,6 +493,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
 	: cfg_(cfg), alpha_(ftofxp(1.0)), movementType_(cfg)
 {
+	//log_scope2(mine,"unit_type : "+ id());
+
 	config::const_child_iterator i;
 	for(i=traits.begin(); i != traits.end(); ++i)
 	{
@@ -552,7 +554,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		genders_.push_back(unit_race::MALE);
 	}
 
-	const std::string& align = cfg_["alignment"];
+	const std::string& align = cfg["alignment"];
 	if(align == "lawful")
 		alignment_ = LAWFUL;
 	else if(align == "chaotic")
@@ -607,22 +609,22 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		}
 	}
 
-	if(cfg_["zoc"] == "") {
-		zoc_ = lexical_cast_default<int>(cfg_["level"]) > 0;
+	if(cfg["zoc"] == "") {
+		zoc_ = lexical_cast_default<int>(cfg["level"]) > 0;
 	} else {
 		zoc_ = false;
-		if(utils::string_bool(cfg_["zoc"])) {
+		if(utils::string_bool(cfg["zoc"])) {
 			zoc_ = true;
 		}
 	}
 
 
-	const std::string& alpha_blend = cfg_["alpha"];
+	const std::string& alpha_blend = cfg["alpha"];
 	if(alpha_blend.empty() == false) {
 		alpha_ = ftofxp(atof(alpha_blend.c_str()));
 	}
 
-	const std::string& move_type = cfg_["movement_type"];
+	const std::string& move_type = cfg["movement_type"];
 
 	const movement_type_map::const_iterator it = mv_types.find(move_type);
 
@@ -630,17 +632,17 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		movementType_.set_parent(&(it->second));
 	}
 
-	const std::string& advance_to_val = cfg_["advanceto"];
+	const std::string& advance_to_val = cfg["advanceto"];
 	if(advance_to_val != "null" && advance_to_val != "")
 		advances_to_ = utils::split(advance_to_val);
 
-	experience_needed_=lexical_cast_default<int>(cfg_["experience"],500);
+	experience_needed_=lexical_cast_default<int>(cfg["experience"],500);
 
 	flag_rgb_ = cfg["flag_rgb"];
 	game_config::add_color_info(cfg);
 	// Deprecation messages, only seen when unit is parsed for the first time.
 
-	hide_help_= cfg_["hide_help"] == "true" ? true : false;
+	hide_help_= cfg["hide_help"] == "true" ? true : false;
 }
 
 unit_type::~unit_type()
