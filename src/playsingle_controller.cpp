@@ -718,9 +718,8 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return !events::commands_disabled && game_config::debug && map_.on_board(mouse_handler_.get_last_hex());
 
 		case hotkey::HOTKEY_LABEL_TEAM_TERRAIN:
-			res = menu_handler_.has_team();
 		case hotkey::HOTKEY_LABEL_TERRAIN:
-			res = res && !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
+			res = !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
 				&& !gui_->shrouded(mouse_handler_.get_last_hex())
 				&& !is_observer();
 			break;

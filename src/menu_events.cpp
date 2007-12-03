@@ -1653,14 +1653,13 @@ private:
 		gui::dialog d(*gui_, _("Place Label"), "", gui::OK_CANCEL);
 		const terrain_label* old_label = gui_->labels().get_label(mousehandler.get_last_hex());
 		if (old_label) {
-			d.set_textbox(_("Label:"), old_label->text(), map_labels::get_max_chars());
+			d.set_textbox(_("Label: "), old_label->text(), map_labels::get_max_chars());
 			team_only = !old_label->team_name().empty();
 		} else {
-			d.set_textbox(_("Label:"), "", map_labels::get_max_chars());
+			d.set_textbox(_("Label: "), "", map_labels::get_max_chars());
 		}
-		if (has_team() || (old_label && team_only)) {
-			d.add_option(_("Team only"), team_only, gui::dialog::BUTTON_CHECKBOX_LEFT);
-		}
+		d.add_option(_("Team only"), team_only, gui::dialog::BUTTON_CHECKBOX_LEFT);
+
 		if(!d.show()) {
 			std::string team_name;
 			SDL_Color colour = font::LABEL_COLOUR;
@@ -1668,10 +1667,9 @@ private:
 			last_team_id << gamemap::MAX_PLAYERS;
 			std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(last_team_id.str());
 
-			if ((has_team() || (old_label && team_only)) && d.option_checked()) {
+			if (d.option_checked()) {
 				team_name = gui_->labels().team_name();
-			}
-			else {
+			} else {
 				colour = int_to_color(team::get_side_rgb(gui_->viewing_team()+1));
 			}
 			const terrain_label *res = gui_->labels().set_label(mousehandler.get_last_hex(), d.textbox_text(), team_name, colour);
