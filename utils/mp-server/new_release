@@ -30,7 +30,7 @@ $echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $PREV_SERVER_CONFIG
 # reload the config
 $echo killall -SIGHUP wesnothd-$DEV_VERSION-prev || exit 1
 # check if we currently allow the previous version to prevent announcing the same version twice
-if [ $(grep "versions_accepted=.*$PREV_VERSION" $DEV_SERVER_CONFIG) ]; then
+if ! [ $(grep "versions_accepted=.*$PREV_VERSION" $DEV_SERVER_CONFIG) ]; then
 	echo "Previous version $PREV_VERSION currently not allowed. Announcing the right version? Aborting..."
 	exit 1
 fi
