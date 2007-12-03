@@ -35,11 +35,11 @@
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 #include "wesconfig.h"
 
+#include <cassert>
 #include <cstdlib>
 #include <deque>
 #include <iostream>
@@ -196,7 +196,7 @@ bool internal_conditional_passed(const unit_map* units,
 	backwards_compat = backwards_compat && have_location.empty();
 	for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 		std::set<gamemap::location> res;
-		wassert(game_map != NULL && units != NULL && status_ptr != NULL);
+		assert(game_map != NULL && units != NULL && status_ptr != NULL);
 		get_locations(*game_map, res, *v, *status_ptr, *units);
 		if(res.empty()) {
 			return false;
@@ -211,7 +211,7 @@ bool internal_conditional_passed(const unit_map* units,
 		const vconfig& values = *var;
 
 		const std::string name = values["name"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const std::string& value = state_of_game->get_variable_const(name);
 
 		const double num_value = atof(value.c_str());
@@ -383,7 +383,7 @@ public:
 	bool disabled() const { return disabled_; }
 
 	bool is_menu_item() const {
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		std::map<std::string, wml_menu_item *>::iterator itor = state_of_game->wml_menu_items.begin();
 		while(itor != state_of_game->wml_menu_items.end()) {
 			if(&cfg_.get_config() == &itor->second->command) {
@@ -470,7 +470,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const bool remove = cmd == "remove_shroud";
 
 		std::string side = cfg["side"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
@@ -557,7 +557,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	// Allow a side to recruit a new type of unit
 	else if(cmd == "allow_recruit") {
 		std::string side = cfg["side"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
@@ -581,7 +581,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	// Remove the ability to recruit a unit from a certain side
 	else if(cmd == "disallow_recruit") {
 		std::string side = cfg["side"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
@@ -602,7 +602,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "set_recruit") {
 		std::string side = cfg["side"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t index = side_num-1;
 
@@ -629,7 +629,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "sound") {
 		std::string sound = cfg["name"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		sound::play_sound(sound);
 	}
 
@@ -637,7 +637,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string red = cfg["red"];
 		std::string green = cfg["green"];
 		std::string blue = cfg["blue"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int r = atoi(red.c_str());
 		const int g = atoi(green.c_str());
 		const int b = atoi(blue.c_str());
@@ -648,7 +648,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "delay") {
 		std::string delay_string = cfg["time"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int delay_time = atoi(delay_string.c_str());
 		screen->delay(delay_time);
 	}
@@ -656,7 +656,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "scroll") {
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int xoff = atoi(x.c_str());
 		const int yoff = atoi(y.c_str());
 		screen->scroll(xoff,yoff);
@@ -667,7 +667,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		std::string check_fogged = cfg["check_fogged"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const gamemap::location loc(atoi(x.c_str()), atoi(y.c_str()));
 		screen->scroll_to_tile(loc,game_display::SCROLL,utils::string_bool(check_fogged,false));
 	}
@@ -688,7 +688,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "gold") {
 		std::string side = cfg["side"];
 		std::string amount = cfg["amount"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const int amount_num = atoi(amount.c_str());
 		const size_t team_index = side_num-1;
@@ -712,7 +712,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string village_gold = cfg["village_gold"];
 		// TODO? std::string colour = cfg["colour"];
 		
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 
@@ -771,7 +771,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(var_name.empty()) {
 			var_name = cmd.substr(cmd.find_first_of('_') + 1);
 		}
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 		const size_t team_index = side_num-1;
 		if(team_index < teams->size()) {
@@ -800,8 +800,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "modify_turns") {
 		std::string value = cfg["value"];
 		std::string add = cfg["add"];
-		wassert(state_of_game != NULL);
-		wassert(status_ptr != NULL);
+		assert(state_of_game != NULL);
+		assert(status_ptr != NULL);
 		if(add != "") {
 			status_ptr->modify_turns(add);
 		} else {
@@ -814,8 +814,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(var_name.empty()) {
 			var_name = cmd.substr(cmd.find_first_of('_') + 1);
 		}
-		wassert(state_of_game != NULL);
-		wassert(status_ptr != NULL);
+		assert(state_of_game != NULL);
+		assert(status_ptr != NULL);
 		int turns = status_ptr->number_of_turns();
 		state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns,"");
 	}
@@ -828,7 +828,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 		std::string variation = cfg["variation"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 
 		size_t side_num = lexical_cast_default<int>(side,1)-1;
 		if (side_num >= teams->size()) side_num = 0;
@@ -836,10 +836,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
-			wassert(game_data_ptr != NULL);
-			wassert(units != NULL);
-			wassert(game_map != NULL);
-			wassert(status_ptr != NULL);
+			assert(game_data_ptr != NULL);
+			assert(units != NULL);
+			assert(game_map != NULL);
+			assert(status_ptr != NULL);
 			unit dummy_unit(game_data_ptr,units,game_map,status_ptr,teams,&itor->second,side_num+1,false,true,gender,variation);
 			const std::vector<std::string> xvals = utils::split(x);
 			const std::vector<std::string> yvals = utils::split(y);
@@ -878,7 +878,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 					route = a_star_search(src, dst, 10000, &calc,
 										  game_map->w(), game_map->h());
-					wassert(route.steps.size() > 0);
+					assert(route.steps.size() > 0);
 				}
 				unit_display::move_unit( *game_map, route.steps, dummy_unit, *teams);
 
@@ -923,7 +923,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
 
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const t_string summary = cfg["summary"];
 		const t_string note = cfg["note"];
 		std::string side = cfg["side"];
@@ -993,7 +993,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	// Setting a variable
 	else if(cmd == "set_variable") {
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 
 		const std::string name = cfg["name"];
 		t_string& var = state_of_game->get_variable(name);
@@ -1232,7 +1232,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					std::vector<unit>::iterator ui;
 					for(ui = player->available_units.begin();
 							ui != player->available_units.end(); ++ui) {
-						wassert(game_data_ptr != NULL);
+						assert(game_data_ptr != NULL);
 						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 						scoped_recall_unit auto_store("this_unit", player_id,
 							(ui - player->available_units.begin()));
@@ -1251,7 +1251,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					// Iterate over the units, and try to find one that matches
 					for(ui = pi->second.available_units.begin();
 							ui != pi->second.available_units.end(); ++ui) {
-						wassert(game_data_ptr != NULL);
+						assert(game_data_ptr != NULL);
 						ui->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 						scoped_recall_unit auto_store("this_unit", pi->first,
 							(ui - pi->second.available_units.begin()));
@@ -1281,7 +1281,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "unit_overlay") {
 		std::string img = cfg["image"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.add_overlay(img);
@@ -1292,7 +1292,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "remove_unit_overlay") {
 		std::string img = cfg["image"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		for(unit_map::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
 				itor->second.remove_overlay(img);
@@ -1328,7 +1328,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		gamemap::location loc = cfg_to_loc(cfg);
 		std::string img = cfg["image"];
 		std::string halo = cfg["halo"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		if(!img.empty() || !halo.empty()) {
 			screen->add_overlay(loc,img,halo);
 			screen->invalidate(loc);
@@ -1345,7 +1345,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string x = cfg["x"];
 		std::string y = cfg["y"];
 
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 
 		if(!sounds.empty() && !delay.empty() && !chance.empty()) {
 			const std::vector<std::string>& vx = utils::split(x);
@@ -1373,7 +1373,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const std::vector<gamemap::location> locs = multiple_locs(cfg);
 
 		std::string terrain_type = cfg["letter"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 
 		t_translation::t_letter terrain = t_translation::read_letter(terrain_type);
 
@@ -1416,10 +1416,10 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	// If we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
-		wassert(game_data_ptr != NULL);
-		wassert(units != NULL);
-		wassert(game_map != NULL);
-		wassert(status_ptr != NULL);
+		assert(game_data_ptr != NULL);
+		assert(units != NULL);
+		assert(game_map != NULL);
+		assert(status_ptr != NULL);
 		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config(),true);
 		preferences::encountered_units().insert(new_unit.id());
 		gamemap::location loc = cfg_to_loc(cfg);
@@ -1482,7 +1482,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				DBG_NG << "checking unit against filter...\n";
-				wassert(game_data_ptr != NULL);
+				assert(game_data_ptr != NULL);
 				u->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 				if(game_events::unit_matches_filter(*u, &unit_filter, gamemap::location())) {
@@ -1500,7 +1500,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		const vconfig filter = cfg.child("filter");
 
 		std::string id = cfg["id"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 
 		// If this item has already been used
 		if(id != "" && used_items.count(id))
@@ -1587,7 +1587,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		std::string green_str = cfg["green"];
 		std::string blue_str = cfg["blue"];
 
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int size = lexical_cast_default<int>(size_str,font::SIZE_SMALL);
 		const int lifetime = lexical_cast_default<int>(duration_str,50);
 		const int red = lexical_cast_default<int>(red_str,0);
@@ -1631,7 +1631,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		unit_map::iterator speaker = units->end();
 
 		std::string speaker_str = cfg["speaker"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		if(speaker_str == "unit") {
 			speaker = units->find(event_info.loc1);
 		} else if(speaker_str == "second_unit") {
@@ -1823,7 +1823,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
                       pi!=players.end(); ++pi) {
                         std::vector<unit>& avail_units = pi->second.available_units;
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				wassert(game_data_ptr != NULL);
+				assert(game_data_ptr != NULL);
 				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 				if(game_events::unit_matches_filter(*j, cfg,gamemap::location())) {
@@ -1930,7 +1930,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					pi!=players.end(); ++pi) {
 				std::vector<unit>& avail_units = pi->second.available_units;
 				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				wassert(game_data_ptr != NULL);
+				assert(game_data_ptr != NULL);
 				j->set_game_context(game_data_ptr,units,game_map,status_ptr,teams);
 				scoped_recall_unit auto_store("this_unit", pi->first, j - avail_units.begin());
 				if(game_events::unit_matches_filter(*j, filter,gamemap::location()) == false) {
@@ -1957,14 +1957,14 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	}
 
 	else if(cmd == "unstore_unit") {
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const config& var = state_of_game->get_variable_cfg(cfg["variable"]);
 
 		try {
-			wassert(game_data_ptr != NULL);
-			wassert(units != NULL);
-			wassert(game_map != NULL);
-			wassert(status_ptr != NULL);
+			assert(game_data_ptr != NULL);
+			assert(units != NULL);
+			assert(game_map != NULL);
+			assert(status_ptr != NULL);
 			const unit u(game_data_ptr,units,game_map,status_ptr,teams,var, false);
 
 			preferences::encountered_units().insert(u.id());
@@ -2071,11 +2071,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if (variable.empty()) {
 			variable="location";
 		}
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side,1);
 
 		const gamemap::location& loc = game_map->starting_position(side_num);
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		config &loc_store = state_of_game->get_variable_cfg(variable);
 		loc_store.clear();
 		loc.write(loc_store);
@@ -2142,7 +2142,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	// Command to take control of a village for a certain side
 	else if(cmd == "capture_village") {
 		std::string side = cfg["side"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		const int side_num = lexical_cast_default<int>(side);
 		// If 'side' is 0, then it will become an invalid index,
 		// and so the village will become neutral.
@@ -2205,7 +2205,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "redraw") {
 		std::string side = cfg["side"];
-		wassert(state_of_game != NULL);
+		assert(state_of_game != NULL);
 		if(side != "") {
 			const int side_num = lexical_cast_default<int>(side);
 			recalculate_fog(*game_map,*status_ptr,*game_data_ptr,*units,*teams,side_num-1);
@@ -2423,6 +2423,7 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 	// The event hasn't been filtered out, so execute the handler
 	const bool res = handler.handle_event(ev);
 	if(ev.name == "select") {
+		std::cerr << "aye aye bombs away\n";
 		state_of_game->last_selected = ev.loc1;
 	}
 
