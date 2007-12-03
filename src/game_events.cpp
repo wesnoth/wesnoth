@@ -2423,7 +2423,6 @@ static bool process_event(event_handler& handler, const queued_event& ev)
 	// The event hasn't been filtered out, so execute the handler
 	const bool res = handler.handle_event(ev);
 	if(ev.name == "select") {
-		std::cerr << "aye aye bombs away\n";
 		state_of_game->last_selected = ev.loc1;
 	}
 
