@@ -565,13 +565,13 @@ void play_controller::enter_textbox()
 
 team& play_controller::current_team() 
 { 
-	assert(player_number_ > 0 && player_number_ < teams_.size()); 
+	assert(player_number_ > 0 && player_number_ <= teams_.size()); 
 	return teams_[player_number_-1]; 
 }
 	
 const team& play_controller::current_team() const 
 { 
-	assert(player_number_ > 0 && player_number_ < teams_.size()); 
+	assert(player_number_ > 0 && player_number_ <= teams_.size()); 
 	return teams_[player_number_-1]; 
 }
 
