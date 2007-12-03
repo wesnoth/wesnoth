@@ -28,6 +28,8 @@
 #include "terrain_filter.hpp"
 #include "variable.hpp"
 
+#include <cassert>
+
 #define LOG_NG LOG_STREAM(info, engine)
 
 play_controller::play_controller(const config& level, const game_data& gameinfo,
@@ -559,6 +561,18 @@ void play_controller::enter_textbox()
 	}
 
 	menu_handler_.get_textbox().close(*gui_);
+}
+
+team& play_controller::current_team() 
+{ 
+	assert(player_number_ > 0 && player_number_ < teams_.size()); 
+	return teams_[player_number_-1]; 
+}
+	
+const team& play_controller::current_team() const 
+{ 
+	assert(player_number_ > 0 && player_number_ < teams_.size()); 
+	return teams_[player_number_-1]; 
 }
 
 //! Find a human team (ie one we own) starting backwards from 'team_num'.

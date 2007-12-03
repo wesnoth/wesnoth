@@ -99,8 +99,8 @@ protected:
 	bool enemies_visible() const;
 	void enter_textbox();
 	
-	team& current_team() { return teams_[player_number_-1]; }
-	const team& current_team() const { return teams_[player_number_-1]; }
+	team& current_team();
+	const team& current_team() const;
 
 	int find_human_team_before(const size_t team) const;
 
