@@ -121,16 +121,21 @@ AM_CONDITIONAL([OPTIPNG], [test "x$optipng" = "xyes"])
 
 if test "x$optipng" = "xyes"
 then
-	echo "****************************************"
-	echo "*** optipng support enabled          ***"
-	echo "*** please keep in mind that optipng ***"
-	echo "*** - may take a long time to run    ***"
-	echo "*** - makes graphics unusable for    ***"
-	echo "***   artists to work on.            ***"
-	echo "***                                  ***"
-	echo "*** It is intented to optimize the   ***"
-	echo "*** file size for packaging.         ***"
-	echo "****************************************"
+	AC_PATH_PROGS([OPTIPNG_BIN], [optipng], [none])
+	if test \( "x$OPTIPNG_BIN" = "xnone" \) -a \( "x$optipng" = xyes \); then
+		AC_MSG_ERROR([*** You must instsll the optipng utility before building with --optipng.])
+	else
+		echo "****************************************"
+		echo "*** optipng support enabled          ***"
+		echo "*** please keep in mind that optipng ***"
+		echo "*** - may take a long time to run    ***"
+		echo "*** - makes graphics unusable for    ***"
+		echo "***   artists to work on.            ***"
+		echo "***                                  ***"
+		echo "*** It is intented to optimize the   ***"
+		echo "*** file size for packaging.         ***"
+		echo "****************************************"
+	fi
 fi
 
 AC_ARG_ENABLE([lowmem],
@@ -353,10 +358,7 @@ AM_CONDITIONAL([X11], [test "$have_libx11" = 'yes'])
 AC_PATH_PROGS([PNGMETA], [pngmeta], [none])
 
 if test \( "x$PNGMETA" = "xnone" \) -a \( "x$TINYGUI" = xyes \); then
-
-	AC_MSG_ERROR([*** The pngmeta utility is required when building
-with the tinygui option.])
-
+	AC_MSG_ERROR([*** You must install the pngmeta utility before building with -- tinygui.])
 fi
 
 # SDL_CONFIG
