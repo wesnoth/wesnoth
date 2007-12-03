@@ -17,6 +17,17 @@
 
 #include "global.hpp"
 
+#include "gettext.hpp"
+#include "language.hpp"
+#include "log.hpp"
+#include "mapgen.hpp"
+#include "pathfind.hpp"
+#include "race.hpp"
+#include "scoped_resource.hpp"
+#include "serialization/string_utils.hpp"
+#include "util.hpp"
+#include "wml_exception.hpp"
+
 #include <algorithm>
 #include <cctype>
 #include <cmath>
@@ -27,16 +38,6 @@
 #include <string>
 #include <ctime>
 #include <vector>
-
-#include "language.hpp"
-#include "log.hpp"
-#include "mapgen.hpp"
-#include "pathfind.hpp"
-#include "race.hpp"
-#include "scoped_resource.hpp"
-#include "util.hpp"
-#include "wassert.hpp"
-#include "serialization/string_utils.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_NG LOG_STREAM(info, engine)
@@ -697,7 +698,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	log_scope("map generation");
 
 	// Odd widths are nasty
-	wassert(is_even(width));
+	WML_ASSERT(is_even(width), _("Random maps with an odd width aren't supported."));
 
 	int ticks = SDL_GetTicks();
 
