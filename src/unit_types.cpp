@@ -257,7 +257,7 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 	const config* resistance = cfg.child("resistance");
 	if (resistance!=NULL)
 		cfg_.add_child("resistance", *resistance);
-};
+}
 
 
 const t_string& unit_movement_type::name() const

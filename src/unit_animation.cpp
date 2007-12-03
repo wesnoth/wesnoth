@@ -543,8 +543,6 @@ unit_animation::crude_animation::crude_animation(const config& cfg,const std::st
 	}
 }
 
-
-
 bool unit_animation::need_update() const
 {
 	if(unit_anim_.need_update()) return true;
@@ -553,7 +551,8 @@ bool unit_animation::need_update() const
 		if(anim_itor->second.need_update()) return true;
 	}
 	return false;
-};
+}
+
 bool unit_animation::animation_finished() const
 {
 	if(!unit_anim_.animation_finished()) return false;
@@ -562,7 +561,8 @@ bool unit_animation::animation_finished() const
 		if(!anim_itor->second.animation_finished()) return false;
 	}
 	return true;
-};
+}
+
 bool unit_animation::animation_would_finish() const
 {
 	if(!unit_anim_.animation_would_finish()) return false;
@@ -571,7 +571,8 @@ bool unit_animation::animation_would_finish() const
 		if(!anim_itor->second.animation_would_finish()) return false;
 	}
 	return true;
-};
+}
+
 void unit_animation::update_last_draw_time() 
 {
 	unit_anim_.update_last_draw_time();
@@ -579,7 +580,8 @@ void unit_animation::update_last_draw_time()
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.update_last_draw_time();
 	}
-};
+}
+
 int unit_animation::get_end_time() const
 {
 	int result = unit_anim_.get_end_time();
@@ -588,7 +590,8 @@ int unit_animation::get_end_time() const
 		result= minimum<int>(result,anim_itor->second.get_end_time());
 	}
 	return result;
-};
+}
+
 int unit_animation::get_begin_time() const
 {
 	int result = unit_anim_.get_begin_time();
@@ -597,7 +600,8 @@ int unit_animation::get_begin_time() const
 		result= minimum<int>(result,anim_itor->second.get_begin_time());
 	}
 	return result;
-};
+}
+
 void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, double acceleration)
 {
 	unit_anim_.start_animation(start_time, src, dst, cycles, acceleration);
@@ -693,12 +697,16 @@ void unit_animation::crude_animation::redraw()
 		}
 	}
 }
+
 unit_animation::crude_animation::~crude_animation()
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
 }
-void unit_animation::crude_animation::start_animation(int start_time,const gamemap::location &src,const gamemap::location &dst, bool cycles, double acceleration)
+
+void unit_animation::crude_animation::start_animation(int start_time,
+	const gamemap::location &src, const gamemap::location &dst, 
+	bool cycles, double acceleration)
 {
 	halo::remove(halo_id_);
 	halo_id_ = halo::NO_HALO;
@@ -708,4 +716,4 @@ void unit_animation::crude_animation::start_animation(int start_time,const gamem
 		src_ = src;
 		dst_ = dst;
 	}
-};
+}

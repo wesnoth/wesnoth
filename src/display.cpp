@@ -576,7 +576,7 @@ void display::tile_stack_append(const surface surf)
 {
 	if (surf)
 		tile_stack_.push_back(surf);
-};
+}
 
 void display::tile_stack_append(const std::vector<surface>& surfaces)
 {
@@ -584,7 +584,7 @@ void display::tile_stack_append(const std::vector<surface>& surfaces)
 	for(itor = surfaces.begin(); itor != surfaces.end(); ++itor) {
 		tile_stack_append(*itor);
 	}
-};
+}
 
 //! Render a stack of tile surfaces at the specified location.
 void display::tile_stack_render(int x, int y)
