@@ -19,7 +19,12 @@
 #include "game_preferences.hpp"
 
 namespace gui{
-	floating_textbox::floating_textbox() : box_(NULL), check_(NULL), mode_(TEXTBOX_NONE), label_(0)
+	floating_textbox::floating_textbox() : 
+		box_(NULL), 
+		check_(NULL), 
+		mode_(TEXTBOX_NONE), 
+		label_string_(),
+		label_(0)
 	{}
 
 	void floating_textbox::close(game_display& gui)
