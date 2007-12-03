@@ -30,7 +30,7 @@ $echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $PREV_SERVER_CONFIG
 # reload the config
 $echo killall -SIGHUP wesnothd-$DEV_VERSION-prev || exit 1
 # check if we currently allow the previous version to prevent announcing the same version twice
-$echo [ grep "versions_accepted=.*$PREV_VERSION" ] || exit 1
+$echo [ grep "versions_accepted=.*$PREV_VERSION" $DEV_SERVER_CONFIG ] || exit 1
 $echo sed -i -e "/versions_accepted=/s/$PREV_VERSION/$NEXT_VERSION/" $DEV_SERVER_CONFIG
 $echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $DEV_SERVER_CONFIG
 # update previous version redirect
