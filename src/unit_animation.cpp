@@ -97,15 +97,40 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 	return expanded_animations;
 }
 
-unit_animation::unit_animation(int start_time,const unit_frame & frame , const std::string & event,const int variation):
-	frequency_(0),base_score_(variation), unit_anim_(start_time)
+unit_animation::unit_animation(int start_time,
+	const unit_frame & frame, const std::string& event, const int variation) :
+		terrain_types_(),
+		unit_filter_(),
+		secondary_unit_filter_(),
+		directions_(),
+		frequency_(0),
+		base_score_(variation), 
+		event_(1, event),
+		value_(),
+		primary_attack_filter_(),
+		secondary_attack_filter_(),
+		hits_(),
+		swing_num_(),
+		sub_anims_(),
+		unit_anim_(start_time)
 {
-	event_.push_back(event);
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
 
 unit_animation::unit_animation(const config& cfg,const std::string frame_string ) :
-	terrain_types_(t_translation::read_list(cfg["terrain"])),base_score_(0),
+	terrain_types_(t_translation::read_list(cfg["terrain"])),
+	unit_filter_(),
+	secondary_unit_filter_(),
+	directions_(),
+	frequency_(0),
+	base_score_(0),
+	event_(),
+	value_(),
+	primary_attack_filter_(),
+	secondary_attack_filter_(),
+	hits_(),
+	swing_num_(),
+	sub_anims_(),
 	unit_anim_(cfg,frame_string)
 {
 	config::child_map::const_iterator frame_itor =cfg.all_children().begin();
@@ -511,7 +536,20 @@ bool unit_animation::crude_animation::need_update() const
 	return false;
 }
 
-unit_animation::crude_animation::crude_animation(const config& cfg,const std::string frame_string ) 
+unit_animation::crude_animation::crude_animation(
+	const config& cfg, const std::string frame_string ) :
+		animated<unit_frame>(),
+		offset_(),
+		halo_(),
+		halo_x_(),
+		halo_y_(),
+		blend_with_(0),
+		blend_ratio_(),
+		highlight_ratio_(),
+		src_(),
+		dst_(),
+		halo_id_(0),
+		last_frame_begin_time_(0)
 {
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {

@@ -30,7 +30,9 @@ class game_display;
 class attack_type;
 
 class unit_animation
-{
+{		
+		//! Shouldn't be used so only declared.
+		unit_animation();
 	public:
 		typedef enum { MATCH_FAIL=-2 , DEFAULT_ANIM=-1};
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
@@ -69,12 +71,24 @@ class unit_animation
 	private:
 		static config prepare_animation(const config &cfg,const std::string animation_tag);
 		explicit unit_animation(const config& cfg,const std::string frame_string ="");
-		unit_animation(){};
 		explicit unit_animation(int start_time,const unit_frame &frame,const std::string& even="",const int variation=0);
 		class crude_animation:public animated<unit_frame>
 	{
 		public:
-			explicit crude_animation(int start_time=0):animated<unit_frame>(start_time){};
+			explicit crude_animation(int start_time=0) :
+				animated<unit_frame>(start_time),
+				offset_(),
+				halo_(),
+				halo_x_(),
+				halo_y_(),
+				blend_with_(0),
+				blend_ratio_(),
+				highlight_ratio_(),
+				src_(),
+				dst_(),
+				halo_id_(0),
+				last_frame_begin_time_(0)
+				{};
 			explicit crude_animation(const config& cfg,const std::string frame_string ="frame");
 			virtual ~crude_animation();
 			bool need_update() const;
@@ -99,7 +113,7 @@ class unit_animation
 			gamemap::location src_;
 			gamemap::location dst_;
 			int halo_id_;
-                        int last_frame_begin_time_;
+			int last_frame_begin_time_;
 
 	};
 		t_translation::t_list terrain_types_;
