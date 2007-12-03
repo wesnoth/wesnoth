@@ -25,10 +25,10 @@
 #include "sdl_utils.hpp"
 #include "util.hpp"
 #include "video.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <map>
 
 namespace halo
@@ -101,7 +101,7 @@ effect::effect(int xpos, int ypos, const animated<std::string>::anim_description
 		images_(img), orientation_(orientation), x_(xpos), y_(ypos),
 		surf_(NULL), buffer_(NULL), rect_(empty_rect), loc_(loc)
 {
-	wassert(disp != NULL);
+	assert(disp != NULL);
 
 	set_location(xpos,ypos);
 
@@ -317,7 +317,7 @@ void remove(int handle)
 
 void unrender(std::set<gamemap::location> invalidated_locations)
 {
-	wassert(invalidated_haloes.size() == 0);
+	assert(invalidated_haloes.size() == 0);
 	if(preferences::show_haloes() == false || haloes.size() == 0) {
 		return;
 	}
