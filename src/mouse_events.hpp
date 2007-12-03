@@ -44,8 +44,8 @@ public:
 	// update the mouse with a fake mouse motion
 	void mouse_update(const bool browse);
 	void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
-	void cycle_units(const bool browse);
-	void cycle_back_units(const bool browse);
+	void cycle_units(const bool browse, const bool reverse = false);
+	void cycle_back_units(const bool browse) { cycle_units(browse, true); }
 
 	int get_path_turns() const { return path_turns_; }
 	paths get_current_paths() { return current_paths_; }

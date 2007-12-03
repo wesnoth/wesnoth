@@ -1461,65 +1461,48 @@ void mouse_handler::show_attack_options(unit_map::const_iterator u)
 
 bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 {
-	if(it->second.side() == team_num_ && unit_can_move(it->first,units_,map_,teams_) && it->second.user_end_turn() == false && !gui_->fogged(it->first)) {
-		bool is_enemy = current_team().is_enemy(int(gui_->viewing_team()+1));
-		return is_enemy == false || it->second.invisible(it->first,units_,teams_) == false;
-	}
+	if (it == units_.end())
+		return false;
 
-	return false;
+	if(it->second.side() != team_num_ || it->second.user_end_turn()
+			|| gui_->fogged(it->first) || !unit_can_move(it->first,units_,map_,teams_))
+		return false;
+
+	if (current_team().is_enemy(int(gui_->viewing_team()+1)) &&
+			it->second.invisible(it->first,units_,teams_))
+		return false;
+
+	return true;
 
 }
 
-#define LOCAL_VARIABLES \
-unit_map::const_iterator it = units_.find(next_unit_);\
-const unit_map::const_iterator itx = it;\
-const unit_map::const_iterator begin = units_.begin();\
-const unit_map::const_iterator end = units_.end()
-
-void mouse_handler::cycle_units(const bool browse)
+void mouse_handler::cycle_units(const bool browse, const bool reverse)
 {
-	LOCAL_VARIABLES;
-
-	if (it == end) {
-		for (it = begin; it != end && !unit_in_cycle(it); ++it);
-	} else {
-		do {
-			++it;
-			if (it == end) it = begin;
-		} while (it != itx && !unit_in_cycle(it));
-	}
-	if (it!=itx) {
-		gui_->scroll_to_tile(it->first,game_display::WARP);
-		select_hex(it->first, browse);
-	} else {
-		next_unit_ = gamemap::location();
+	if (units_.begin() == units_.end()) {
+		return;
 	}
 
-	mouse_update(browse);
-}
+	unit_map::const_iterator it = find_unit(next_unit_);
+	const unit_map::const_iterator itx = it;
 
-void mouse_handler::cycle_back_units(const bool browse)
-{
-	LOCAL_VARIABLES;
-
-	if (it == end) {
-		while (it != begin && !unit_in_cycle(--it));
-		if (!unit_in_cycle(it)) it = itx;
-	} else {
-		do {
-			if (it == begin) it = end;
+	do {
+		if (reverse) {
+			if (it == units_.begin())
+				it = units_.end();
 			--it;
-		} while (it != itx && !unit_in_cycle(it));
-	}
+		} else {
+			if (it == units_.end())
+				it = units_.begin();
+			else	
+				++it;
+		}
+	} while (it != itx && !unit_in_cycle(it));
 
-	if (it!=itx) {
+	if (unit_in_cycle(it)) {
 		gui_->scroll_to_tile(it->first,game_display::WARP);
 		select_hex(it->first, browse);
-	} else {
-		next_unit_ = gamemap::location();
+		mouse_update(browse);
 	}
-
-	mouse_update(browse);
 }
 
 void mouse_handler::set_current_paths(paths new_paths) {
