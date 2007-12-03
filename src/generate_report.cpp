@@ -92,7 +92,7 @@ report generate_report(TYPE type,
 
 		// We call invisible with see_all=false to avoid cheat-detection of hidden enemies.
 		// Don't display the icon on shrouded location to prevent cheat-detection of terrain.
-		if(map.on_board(mouseover) && !current_team.shrouded(mouseover.x,mouseover.y)
+		if(map.on_board(mouseover) && !current_team.shrouded(mouseover)
 			&& u->second.invisible(mouseover,units,teams,false))
 		{
 			unit_status << "misc/invisible.png";
@@ -279,7 +279,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			std::map<int,std::vector<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
 				if(teams[team_index].is_enemy(u_it->second.side()) &&
-				   !current_team.fogged(u_it->first.x,u_it->first.y) &&
+				   !current_team.fogged(u_it->first) &&
 				   seen_units.count(u_it->second.id()) == 0 &&
 				   ( !current_team.is_enemy(u_it->second.side()) ||
 				     !u_it->second.invisible(u_it->first,units,teams)))
@@ -335,7 +335,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const std::string tod_image = tod.image + (preferences::flip_time() ? "~FL(horiz)" : "");
 
 		// Don't show illuminated time on fogged/shrouded tiles
-		if (current_team.fogged(mouseover.x,mouseover.y) || current_team.shrouded(mouseover.x,mouseover.y)) {
+		if (current_team.fogged(mouseover) || current_team.shrouded(mouseover)) {
 			tod = status.get_time_of_day(false,mouseover);
 		}
 		std::stringstream tooltip;
@@ -370,7 +370,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			int unshrouded_villages = 0;
 			std::vector<gamemap::location>::const_iterator i = map.villages().begin();
 			for (; i != map.villages().end(); i++) {
-				if (!current_team.shrouded(i->x,i->y))
+				if (!current_team.shrouded(*i))
 					 unshrouded_villages++;
 			}
 			str << unshrouded_villages;
@@ -399,7 +399,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		break;
 	}
 	case TERRAIN: {
-		if(!map.on_board(mouseover) || current_team.shrouded(mouseover.x,mouseover.y))
+		if(!map.on_board(mouseover) || current_team.shrouded(mouseover))
 			break;
 
 		const t_translation::t_letter terrain = map.get_terrain(mouseover);
@@ -410,7 +410,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		if(map.is_village(mouseover)) {
 			const unsigned int owner = village_owner(mouseover,teams)+1;
-			if(owner == 0 || current_team.fogged(mouseover.x,mouseover.y)) {
+			if(owner == 0 || current_team.fogged(mouseover)) {
 				str << map.get_terrain_info(terrain).income_description();
 			} else if(owner == current_side) {
 				str << map.get_terrain_info(terrain).income_description_own();
@@ -451,7 +451,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		str << mouseover;
 
-		if(u == units.end() || current_team.shrouded(mouseover.x,mouseover.y))
+		if(u == units.end() || current_team.shrouded(mouseover))
 			break;
 
 		const int move_cost = u->second.movement_cost(terrain);

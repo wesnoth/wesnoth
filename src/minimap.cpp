@@ -57,9 +57,9 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 
 			const gamemap::location loc(x,y);
 			if(map.on_board(loc)) {
-				const bool shrouded = vw != NULL && vw->shrouded(x,y);
+				const bool shrouded = vw != NULL && vw->shrouded(loc);
 				// shrouded hex are not considered fogged (no need to fog a black image)
-				const bool fogged = vw != NULL && !shrouded && vw->fogged(x,y);
+				const bool fogged = vw != NULL && !shrouded && vw->fogged(loc);
 				const t_translation::t_letter terrain = shrouded ? 
 					t_translation::VOID_TERRAIN : map[loc];
 

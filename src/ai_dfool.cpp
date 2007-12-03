@@ -207,7 +207,7 @@ namespace dfool {
 
     unit_map um=get_info().units;
     for(unit_map::iterator i = um.begin(); i != um.end(); ++i) {
-      bool hidden_by_fog = current_team().fogged(i->first.x,i->first.y);
+      bool hidden_by_fog = current_team().fogged(i->first);
       bool hidden = i->second.invisible(i->first, um, get_info().teams);
       if((no_fog || !hidden_by_fog) && !hidden) {
 	  visible_units.push_back(i->second.underlying_description());

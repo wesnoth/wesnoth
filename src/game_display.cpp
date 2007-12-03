@@ -478,8 +478,8 @@ void game_display::draw_report(reports::TYPE report_num)
 	if(report_num == reports::TIME_OF_DAY) {
 		time_of_day tod = timeofday_at(status_,units_,mouseoverHex_,map_);
 		// Don't show illuminated time on fogged/shrouded tiles
-		if (teams_[viewing_team()].fogged(mouseoverHex_.x, mouseoverHex_.y) ||
-				teams_[viewing_team()].shrouded(mouseoverHex_.x, mouseoverHex_.y)) {
+		if (teams_[viewing_team()].fogged(mouseoverHex_) ||
+				teams_[viewing_team()].shrouded(mouseoverHex_)) {
 
 			tod = status_.get_time_of_day(false,mouseoverHex_);
 		}

@@ -235,8 +235,8 @@ public:
 
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
-	bool shrouded(int x, int y) const;
-	bool fogged(int x, int y) const;
+	bool shrouded(const gamemap::location& loc) const;
+	bool fogged(const gamemap::location& loc) const;
 
 	bool uses_shroud() const { return shroud_.enabled(); }
 	bool uses_fog() const { return fog_.enabled(); }

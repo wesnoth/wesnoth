@@ -534,22 +534,22 @@ void team::set_ai_memory(const config& ai_mem){
   info_.ai_memory_=ai_mem;
 }
 
-bool team::shrouded(int x, int y) const
+bool team::shrouded(const gamemap::location& loc) const
 {
 	if(!teams || !share_view())
-		return shroud_.value(x+1,y+1);
+		return shroud_.value(loc.x+1,loc.y+1);
 
-	return shroud_.shared_value(ally_shroud(*teams),x+1,y+1);
+	return shroud_.shared_value(ally_shroud(*teams),loc.x+1,loc.y+1);
 }
 
-bool team::fogged(int x, int y) const
+bool team::fogged(const gamemap::location& loc) const
 {
-	if(shrouded(x,y)) return true;
+	if(shrouded(loc)) return true;
 
 	if(!teams || !share_view())
-		return fog_.value(x+1,y+1);
+		return fog_.value(loc.x+1,loc.y+1);
 
-	return fog_.shared_value(ally_fog(*teams),x+1,y+1);
+	return fog_.shared_value(ally_fog(*teams),loc.x+1,loc.y+1);
 }
 
 const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const

@@ -284,8 +284,8 @@ private:
 class viewpoint
 {
 public:
-	virtual bool shrouded(int x, int y) const = 0;
-	virtual bool fogged(int x, int y) const = 0;
+	virtual bool shrouded(const gamemap::location& loc) const = 0;
+	virtual bool fogged(const gamemap::location& loc) const = 0;
 	virtual ~viewpoint() {};
 };
 

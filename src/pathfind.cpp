@@ -136,7 +136,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 			// that we can teleport to
 			const std::set<gamemap::location>& villages = current_team.villages();
 			for(std::set<gamemap::location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
-				if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(t->x,t->y))
+				if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(*t))
 						&& find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end()) {
 					locs.push_back(*t);
 				}
@@ -270,7 +270,7 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 		// if it's an enemy unit and a fogged village, we assume a capture 
 		// (if he already owns it, we can't know that)
 		// if it's not an enemy, we can always know if he owns the village
-		if ( (viewing_team.is_enemy(u.side()) && viewing_team.fogged(new_turn_step.x, new_turn_step.y))
+		if ( (viewing_team.is_enemy(u.side()) && viewing_team.fogged(new_turn_step))
 				|| !unit_team.owns_village(new_turn_step) ) {
 			turn_number = 1;
 		}
@@ -303,7 +303,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	// #4 is a bad criteria!  It should be that moving into a ZOC
 	// uses up the rest of your moves
 
-	if (viewing_team_.shrouded(loc.x, loc.y))
+	if (viewing_team_.shrouded(loc))
 		return getNoPathValue();
 
 	int const base_cost = unit_.movement_cost(map_[loc]);

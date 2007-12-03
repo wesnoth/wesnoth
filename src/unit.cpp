@@ -2818,7 +2818,7 @@ bool unit::invisible(const gamemap::location& loc,
 				if(see_all) {
 					is_inv = false;
 					break;
-				} else if(!teams[side_-1].fogged(u->first.x,u->first.y)
+				} else if(!teams[side_-1].fogged(u->first)
 				&& !u->second.invisible(u->first, units,teams,true)) {
 					is_inv = false;
 					break;
@@ -2882,7 +2882,7 @@ unit_map::iterator find_visible_unit(unit_map& units,
 	unit_map::iterator u = units.find(loc);
 	if(map.on_board(loc) && !see_all){
 		if(u != units.end()){
-			if(current_team.fogged(loc.x, loc.y)){
+			if(current_team.fogged(loc)){
 				return units.end();
 			}
 			if(current_team.is_enemy(u->second.side()) &&
@@ -2903,7 +2903,7 @@ unit_map::const_iterator find_visible_unit(const unit_map& units,
 	unit_map::const_iterator u = units.find(loc);
 	if(map.on_board(loc) && !see_all){
 		if(u != units.end()){
-			if(current_team.fogged(loc.x, loc.y)){
+			if(current_team.fogged(loc)){
 				return units.end();
 			}
 			if(current_team.is_enemy(u->second.side()) &&

@@ -532,7 +532,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	game_events::fire("moveto",to);
 
 	if((info_.teams.front().uses_fog() || info_.teams.front().uses_shroud()) &&
-			!info_.teams.front().fogged(to.x,to.y)) {
+			!info_.teams.front().fogged(to)) {
 		game_events::fire("sighted",to);
 	}
 

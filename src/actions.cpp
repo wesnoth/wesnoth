@@ -1913,7 +1913,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 	std::set<gamemap::location> known_units;
 	if(check_shroud) {
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			if(team.fogged(u->first.x,u->first.y) == false) {
+			if(team.fogged(u->first) == false) {
 				known_units.insert(u->first);
 				team.see(u->second.side()-1);
 			}
