@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-01 13:07+0100\n"
-"PO-Revision-Date: 2007-12-03 15:50+0800\n"
+"PO-Revision-Date: 2007-12-04 20:36+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -324,7 +324,7 @@ msgstr "电脑"
 
 #: data/core/fonts.cfg:7 data/hardwired/fonts.cfg:7
 msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
-msgstr "gkai00mp.ttf,DejaVuSans.ttf,sazanami-gothic.ttf"
+msgstr "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 
 #: data/core/help.cfg:10
 msgid "Introduction"
@@ -478,9 +478,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"每个剧本都会有一些目标，并在剧本开始的时候显示。这些目标会以列表的形式显示您"
-"需要什么才能赢得游戏或您应该做什么以避免失败。通常这些目标是击败所有敌人，但"
-"有时您需要到达某地去拯救某人，解决迷题，或仅仅要求在一定回合内存活下来。"
+"每一幕都会有一些目标，并在开始的时候显示。这些目标会以列表的形式显示您需要什"
+"么才能赢得游戏或您应该做什么以避免失败。通常这些目标是击败所有敌人，但有时您"
+"需要到达某地去拯救某人，解决迷题，或仅仅要求在一定回合内存活下来。"
 
 #: data/core/help.cfg:106
 msgid ""
@@ -493,8 +493,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"战役讲述着一个故事，是由一系列环环相扣的剧本组成的，您常常得更小心谨慎，确保"
-"最精良的部队存活下来，能够在战役中的下个剧本里继续战斗。"
+"战役讲述着一个故事，是由一系列环环相扣的场景组成的，您常常得更小心谨慎，确保"
+"最精良的部队存活下来，能够在战役中的下一幕里继续战斗。"
 
 #: data/core/help.cfg:111
 msgid "Recruiting and Recalling"
@@ -554,8 +554,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"在以后的战役中，您可召回早些战役中的生还者。召回命令将为您列出一张所有上个战"
-"役中生还者的清单。召回一律花费20金币。"
+"在以后的战役中，您可召回早些战役中的生还者。召回命令将为您列出一张所有上个场"
+"景中生还者的清单。召回一律花费20金币。"
 
 #: data/core/help.cfg:120
 msgid ""
@@ -739,7 +739,7 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"某些战役的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
+"某些场景的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
 "会隐藏这个区域的地形和任何单位。但是，一旦被侦测，您时时刻刻都能看见这个区"
 "域。战争迷雾只会隐藏（不是您的或盟友的）单位和村庄的归属。在附近有您的单位时"
 "迷雾会消失，当他们离去后会再次笼罩。每个单位都能清除本回合移动所经过区域和区"
@@ -948,14 +948,13 @@ msgid "Time of Day"
 msgstr "时刻"
 
 #: data/core/help.cfg:205
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
 " Chaotic units get +25% damage at night, and -25% in daytime.\n"
 " Neutral units are unaffected by the time of day."
 msgstr ""
-"时间对不同种类的单位的攻击有不同的影响，具体如下：\n"
+"时间对不同种类的单位的攻击强度有不同的影响，具体如下：\n"
 " 守序单位在白天 +25% 攻击，晚上 -25% 攻击。\n"
 " 混乱单位在晚上 +25% 攻击，白天 -25% 攻击。\n"
 " 中立单位不受时间的影响。"
@@ -1142,7 +1141,7 @@ msgstr ""
 "\n"
 "\n"
 "休息能和其它治疗方式叠加，但是村庄，恢复，治疗和治愈效果则不能互相叠加。游戏"
-"会自动选择最优治疗方式。最后，单位能在剧本与剧本之间完全恢复生命值。"
+"会自动选择最优治疗方式。最后，单位能在过场时完全恢复生命值。"
 
 #: data/core/help.cfg:246
 msgid "Income and Upkeep"
@@ -1156,7 +1155,7 @@ msgid ""
 "Income and Upkeep."
 msgstr ""
 "韦诺中，仅仅征兵并战斗是不够的。您得注意您的金币，特别是在战役中，您能将多余"
-"的金币携带到下一剧本。影响金币的主要是两个方面：收入和维护费用。"
+"的金币携带到下一幕。影响金币的主要是两个方面：收入和维护费用。"
 
 #: data/core/help.cfg:249
 msgid ""
@@ -1216,8 +1215,8 @@ msgid ""
 msgstr ""
 "\n"
 "维护费用的支付规则中有一个重要的例外：即具有忠诚特质的单位不需支付维护费用。"
-"剧本开始时您拥有的单位（比如Konrad或Delfador），或在剧本中加入己方的单位（如"
-"在“继位者”第二幕中加入的骑兵）通常都具有忠诚特质。"
+"每一幕开始时您拥有的单位（比如Konrad或Delfador），或在场景中加入己方的单位"
+"（如在“继位者”第二幕中加入的骑兵）通常都具有忠诚特质。"
 
 #: data/core/help.cfg:259
 msgid "Wrap Up"
@@ -2037,7 +2036,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"退出剧本（无提示窗口）。\n"
+"离开场景（无提示窗口）。\n"
 "\n"
 
 #: data/core/help.cfg:624
@@ -2057,7 +2056,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"保存游戏并退出剧本（无提示窗口）。\n"
+"保存游戏并退出当前场景（无提示窗口）。\n"
 "\n"
 
 #: data/core/help.cfg:630
@@ -2139,7 +2138,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:656
-#, fuzzy
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2147,17 +2145,17 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"屏蔽某个观察者。如果没有指定观察者的用户名，则输出被屏蔽的观察者的名单。\n"
+"屏蔽一个指定的观察者。如果没有指定观察者的用户名，则输出被屏蔽的观察者的名"
+"单。\n"
 "\n"
 
 #: data/core/help.cfg:657
-#, fuzzy
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
-"屏蔽/取消屏蔽 所有观察者(observers)。"
+"屏蔽/取消屏蔽所有观察者。"
 
 #: data/core/help.cfg:662
 msgid "Debug mode commands"
@@ -2721,7 +2719,7 @@ msgstr "圣水"
 msgid ""
 "This water will make melee weapons have the 'arcane' damage type until the "
 "end of the current scenario."
-msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到本场景结束."
+msgstr "这瓶水将让单位的近战武器类型变为'奥术'直到下一幕开始."
 
 #: data/core/macros/items.cfg:192
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3694,11 +3692,10 @@ msgid ""
 msgstr "本单位可以治疗周围的单位，并治愈中毒效果。"
 
 #: data/core/macros/special-notes.cfg:15
-#, fuzzy
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr " 本单位能中和(消除？)他周围单位身上的中毒效果。"
+msgstr "本单位能中和周围单位身上的毒带来的伤害。"
 
 #: data/core/macros/special-notes.cfg:18
 msgid ""
@@ -3843,9 +3840,8 @@ msgid "loyal"
 msgstr "忠诚"
 
 #: data/core/macros/traits.cfg:10
-#, fuzzy
 msgid "female^loyal"
-msgstr "女性^忠诚"
+msgstr "忠诚"
 
 #: data/core/macros/traits.cfg:11
 msgid "Zero upkeep"
@@ -3856,9 +3852,8 @@ msgid "undead"
 msgstr "不死"
 
 #: data/core/macros/traits.cfg:24
-#, fuzzy
 msgid "female^undead"
-msgstr "女性^不死"
+msgstr "不死"
 
 #: data/core/macros/traits.cfg:25 data/core/macros/traits.cfg:40
 msgid "Immune to drain, poison and plague"
@@ -3869,63 +3864,56 @@ msgid "mechanical"
 msgstr "机械"
 
 #: data/core/macros/traits.cfg:39
-#, fuzzy
 msgid "female^mechanical"
-msgstr "女性^机械"
+msgstr "机械"
 
 #: data/core/macros/traits.cfg:52
 msgid "strong"
 msgstr "强壮"
 
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^strong"
-msgstr "女性^强壮"
+msgstr "强壮"
 
 #: data/core/macros/traits.cfg:70
 msgid "dextrous"
 msgstr "灵巧"
 
 #: data/core/macros/traits.cfg:71
-#, fuzzy
 msgid "female^dextrous"
-msgstr "女性^灵巧"
+msgstr "灵巧"
 
 #: data/core/macros/traits.cfg:84
 msgid "quick"
 msgstr "迅捷"
 
 #: data/core/macros/traits.cfg:85
-#, fuzzy
 msgid "female^quick"
-msgstr "女性^迅捷"
+msgstr "迅捷"
 
 #: data/core/macros/traits.cfg:101
 msgid "intelligent"
 msgstr "聪慧"
 
 #: data/core/macros/traits.cfg:102
-#, fuzzy
 msgid "female^intelligent"
-msgstr "女性^聪慧"
+msgstr "聪慧"
 
 #: data/core/macros/traits.cfg:114
 msgid "resilient"
 msgstr "坚韧"
 
 #: data/core/macros/traits.cfg:115
-#, fuzzy
 msgid "female^resilient"
-msgstr "女性^坚韧"
+msgstr "坚韧"
 
 #: data/core/macros/traits.cfg:132
 msgid "healthy"
 msgstr "活力"
 
 #: data/core/macros/traits.cfg:133
-#, fuzzy
 msgid "female^healthy"
-msgstr "女性^活力"
+msgstr "活力"
 
 #: data/core/macros/traits.cfg:134
 msgid "Can rest while moving"
@@ -3936,9 +3924,8 @@ msgid "fearless"
 msgstr "无畏"
 
 #: data/core/macros/traits.cfg:147 data/core/macros/traits.cfg:160
-#, fuzzy
 msgid "female^fearless"
-msgstr "女性^无畏"
+msgstr "无畏"
 
 #: data/core/macros/traits.cfg:148 data/core/macros/traits.cfg:161
 msgid "Fights normally during unfavorable times of day/night"
@@ -4184,15 +4171,14 @@ msgstr ""
 "守序单位在白天更善于战斗，混乱单位在晚上更善于战斗，中立单位不受时间的影响。"
 
 #: data/hardwired/tips.cfg:4
-#, fuzzy
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr "- 皇家战争概略 -  Volume II, 212YW"
+msgstr "- 皇家战争术语概略 -  Volume II, 212YW"
 
 #: data/hardwired/tips.cfg:7
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
-msgstr "在战役中，通过“召回”选项，您能使用上个剧本中战斗过有经验的单位。"
+msgstr "在战役中，通过“召回”选项，您能使用上一幕中战斗过有经验的单位。"
 
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:11
 #: data/hardwired/tips.cfg:14 data/hardwired/tips.cfg:18
@@ -4204,7 +4190,6 @@ msgstr "在战役中，通过“召回”选项，您能使用上个剧本中战
 #: data/hardwired/tips.cfg:122 data/hardwired/tips.cfg:130
 #: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
 #: data/hardwired/tips.cfg:142
-#, fuzzy
 msgid "- The Wesnoth Tactical Guide"
 msgstr "- 韦诺战术指南"
 
@@ -4246,7 +4231,7 @@ msgid ""
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
-"您可以通过游戏菜单中的“召回”选项来调用上个剧本中的单位。通过不停的召回单位，"
+"您可以通过游戏菜单中的“召回”选项来调用上个场景中的单位。通过不停的召回单位，"
 "您可以建立一支强力而经验值丰富的军队。"
 
 #: data/hardwired/tips.cfg:25
@@ -4276,9 +4261,8 @@ msgstr ""
 "70%的命中率，而精准射击在进攻时至少有60%的命中率。"
 
 #: data/hardwired/tips.cfg:30
-#, fuzzy
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr "- 战术分析手册 Volume II - Haldric II, 43YW"
+msgstr "- 战术分析手册- 第二辑Volume II - Haldric II, 43YW"
 
 #: data/hardwired/tips.cfg:33
 msgid ""
@@ -4301,7 +4285,6 @@ msgstr ""
 "中则不会有防御加乘。"
 
 #: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
-#, fuzzy
 msgid "- Sir Kaylan, 498YW"
 msgstr "-   Kaylan爵士, 498YW"
 
@@ -4313,7 +4296,6 @@ msgid ""
 msgstr "骑兵单位通常能抵御剑刃或冲击攻击，但却易受穿刺攻击的伤害，比如弓和矛。"
 
 #: data/hardwired/tips.cfg:46
-#, fuzzy
 msgid "- Sir Kaylan, 502YW"
 msgstr "-   Kaylan爵士, 502YW"
 
@@ -4331,7 +4313,6 @@ msgid ""
 msgstr "精灵善于在森林中移动和战斗。矮人善于在丘陵和山岭中移动和战斗。"
 
 #: data/hardwired/tips.cfg:54
-#, fuzzy
 msgid "- High Lord Kalenz, 470YW"
 msgstr "- 高阶君主Kalenz, 470YW"
 
@@ -4363,7 +4344,6 @@ msgid ""
 msgstr "别担心撤退或重组；这通常是胜利的关键。"
 
 #: data/hardwired/tips.cfg:66
-#, fuzzy
 msgid "- Meneldur, 123YW"
 msgstr "- Meneldur, 123YW"
 
@@ -4384,7 +4364,7 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"您的领袖可以从城堡的要塞中征募或召回单位——不仅仅是剧本开始时的要塞——您可以征"
+"您的领袖可以从城堡的要塞中征募或召回单位——不仅仅是场景开始时的要塞——您可以征"
 "服敌人的要塞，并从那里征募单位。有些盟友愿意在他们的要塞里腾出让您征募单位的"
 "空间。"
 
@@ -4396,7 +4376,6 @@ msgstr ""
 "骷髅对穿刺和剑刃和冷冻攻击具有较强抗性，但却容易受冲击、火焰和奥术伤害。"
 
 #: data/hardwired/tips.cfg:78
-#, fuzzy
 msgid "- Memoirs of Gweddry, 627YW"
 msgstr "-   Gweddry的回忆, 627YW"
 
@@ -4458,7 +4437,6 @@ msgid ""
 msgstr "用治疗者来支持您的进攻部队——他们不需要自己参加战斗，就能帮您获胜。"
 
 #: data/hardwired/tips.cfg:110
-#, fuzzy
 msgid "- The Scroll of Chantal, 516YW"
 msgstr "-   Chantal卷轴, 516YW"
 
@@ -4474,7 +4452,6 @@ msgid "Arcane attacks are very powerful against undead."
 msgstr "奥术攻击会对不死亡灵造成强力伤害。"
 
 #: data/hardwired/tips.cfg:118
-#, fuzzy
 msgid "- Great Sage Dacyn, 626YW"
 msgstr "- 明哲 Dacyn, 626YW"
 
@@ -4548,7 +4525,6 @@ msgstr ""
 "确保单位的移动随时可以撤销，可以将‘暂缓刷新迷雾’选项打勾。"
 
 #: data/scenario-test.cfg:679
-#, fuzzy
 msgid "ruby of fire"
 msgstr "火之红宝石(ruby of fire)"
 
@@ -4618,7 +4594,6 @@ msgstr "移动点数"
 
 # havn't seen this in action
 #: data/themes/default.cfg:567
-#, fuzzy
 msgid "Act."
 msgstr "行动"
 
@@ -4667,9 +4642,8 @@ msgid "play turn"
 msgstr "播放该回合"
 
 #: data/themes/macros.cfg:122
-#, fuzzy
 msgid "Next Side"
-msgstr "下个玩家"
+msgstr "下一个指挥者"
 
 #: data/themes/macros.cfg:123
 msgid "play side turn"
@@ -4726,7 +4700,6 @@ msgid "Ambushed!"
 msgstr "遭到伏击！"
 
 #: src/actions.cpp:2124
-#, fuzzy
 msgid "Failed teleport! Exit not empty"
 msgstr "传送失败!出口阻塞"
 
@@ -4834,7 +4807,7 @@ msgstr "回合"
 
 #: src/dialogs.cpp:487
 msgid "Scenario Start"
-msgstr "剧本开始"
+msgstr "场景开始"
 
 #: src/dialogs.cpp:490
 msgid "Difficulty: "
@@ -4871,7 +4844,7 @@ msgid ""
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "没有存档，无法载入。\n"
-"（当您完成一个剧本时会自动存档）"
+"（当您完成一个场景时会自动存档）"
 
 #: src/dialogs.cpp:565
 msgid "Delete Save"
@@ -5161,7 +5134,6 @@ msgid "Host Networked Game"
 msgstr "主建局域网游戏"
 
 #: src/game.cpp:1405
-#, fuzzy
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
@@ -5490,7 +5462,6 @@ msgstr "系统默认语言"
 
 #: src/leader_list.cpp:133 src/multiplayer_connect.cpp:185
 #: src/multiplayer_connect.cpp:237
-#, fuzzy
 msgid "gender^Random"
 msgstr "性别^随机"
 
@@ -5657,7 +5628,7 @@ msgstr "更多 >"
 
 #: src/menu_events.cpp:609
 msgid "scenario settings^Leader"
-msgstr "剧本 "
+msgstr "场景 "
 
 #: src/menu_events.cpp:611
 msgid "scenario settings^Side"
@@ -5705,7 +5676,7 @@ msgstr "是"
 
 #: src/menu_events.cpp:669
 msgid "Scenario Settings"
-msgstr "剧本设定"
+msgstr "场景设定"
 
 #: src/menu_events.cpp:701 src/playcampaign.cpp:564
 msgid "Name:"
@@ -5801,7 +5772,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "没有可供召回的单位\n"
-"（只能召回上一剧本存活下来的单位）"
+"（只能召回上一幕存活下来的单位）"
 
 #: src/menu_events.cpp:1105
 msgid "Level"
@@ -5972,14 +5943,12 @@ msgid "Expected Battle Result (HP)"
 msgstr "战斗结果期望（生命值）"
 
 #: src/mouse_events.cpp:311
-#, fuzzy
 msgid " resistance vs "
-msgstr " 有抗性（resistance vs） "
+msgstr "抗性（resistance vs） "
 
 #: src/mouse_events.cpp:312
-#, fuzzy
 msgid " vulnerability vs "
-msgstr " 有弱点（vulnerability vs） "
+msgstr "弱点（vulnerability vs） "
 
 #: src/mouse_events.cpp:322
 msgid "Slowed"
@@ -6129,7 +6098,7 @@ msgstr "准备就绪"
 
 #: src/multiplayer_connect.cpp:884
 msgid "The scenario is invalid because it has no sides."
-msgstr "由于没有阵营，本剧本无效。"
+msgstr "由于没有阵营，本场景无效。"
 
 #: src/multiplayer_connect.cpp:1252
 msgid "Network Player"
@@ -6258,7 +6227,7 @@ msgstr "一个单位升级所需的经验值"
 
 #: src/multiplayer_create.cpp:171
 msgid "Use scenario specific settings"
-msgstr "使用剧本设置"
+msgstr "使用场景设置"
 
 #: src/multiplayer_create.cpp:174
 msgid "Randomize time of day in begin"
@@ -6289,14 +6258,12 @@ msgid "Share None"
 msgstr "无共享"
 
 #: src/multiplayer_create.cpp:200
-#, fuzzy
 msgid "No eras found."
-msgstr "没有找到时期。"
+msgstr "没有找到这个时代。"
 
 #: src/multiplayer_create.cpp:201
-#, fuzzy
 msgid "No eras found"
-msgstr "没有找到时期"
+msgstr "没有找到这个时代"
 
 #: src/multiplayer_create.cpp:214
 msgid "$login's game"
@@ -6341,7 +6308,6 @@ msgid "Village Gold: "
 msgstr "村庄金币： "
 
 #: src/multiplayer_create.cpp:380
-#, fuzzy
 msgid "Exp. Mod.: "
 msgstr "经验 模式.: "
 
@@ -6367,7 +6333,7 @@ msgstr "未知时代"
 
 #: src/multiplayer_lobby.cpp:439
 msgid "Remote scenario"
-msgstr "远程剧本"
+msgstr "远程场景"
 
 #: src/multiplayer_lobby.cpp:446
 msgid "Unknown scenario: $scenario_id"
@@ -6375,7 +6341,7 @@ msgstr "未知场景: $scenario_id"
 
 #: src/multiplayer_lobby.cpp:450
 msgid "Unknown scenario"
-msgstr "未知剧本"
+msgstr "未知场景"
 
 #: src/multiplayer_lobby.cpp:466
 msgid "Turn "
@@ -6430,7 +6396,6 @@ msgid "Send a private message to "
 msgstr "发送一条私人消息给 "
 
 #: src/multiplayer_ui.cpp:363
-#, fuzzy
 msgid "Whisper"
 msgstr "悄悄话"
 
@@ -6519,13 +6484,12 @@ msgid "The replay could not be saved"
 msgstr "无法保存游戏录像"
 
 #: src/playcampaign.cpp:436
-#, fuzzy
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr "这一剧本结束了. 您想继续这个战役吗?"
+msgstr "这一场景结束了. 您想继续这个战役吗?"
 
 #: src/playcampaign.cpp:456
 msgid "Downloading next scenario..."
-msgstr "正在下载下一剧本……"
+msgstr "正在下载下一场景……"
 
 #: src/playcampaign.cpp:563
 msgid "Do you want to save your game?"
@@ -6533,11 +6497,11 @@ msgstr "您想保存游戏吗？"
 
 #: src/playcampaign.cpp:588
 msgid "Unknown scenario: '$scenario|'"
-msgstr "未知剧本： '"
+msgstr "未知场景： '"
 
 #: src/playmp_controller.cpp:250
 msgid "End scenario"
-msgstr "结束本剧本"
+msgstr "结束本场景"
 
 #: src/playmp_controller.cpp:391
 msgid ""
@@ -6579,7 +6543,7 @@ msgstr "金币： "
 
 #: src/playsingle_controller.cpp:164
 msgid "Carry over percentage: "
-msgstr "资金转移到下一剧本："
+msgstr "资金转移到下一场景："
 
 #: src/playsingle_controller.cpp:166
 msgid "Bonus Gold: "
@@ -6619,7 +6583,7 @@ msgstr "本游戏结束。"
 
 #: src/playsingle_controller.cpp:373
 msgid "Scenario Report"
-msgstr "剧本报告"
+msgstr "场景报告"
 
 #: src/playsingle_controller.cpp:375
 msgid "Victory"
@@ -6676,7 +6640,6 @@ msgid "Missing closing tag for tag $tag at $pos"
 msgstr " 在$pos处缺少$tag标记的结束标识"
 
 #: src/serialization/parser.cpp:161
-#, fuzzy
 msgid "Unterminated [element] tag"
 msgstr "未终止的:[element] 标记符"
 
@@ -6685,7 +6648,6 @@ msgid "Invalid tag name"
 msgstr "无效标识名"
 
 #: src/serialization/parser.cpp:174
-#, fuzzy
 msgid "Unterminated [+element] tag"
 msgstr "未终止的:[+element] 标记符"
 
@@ -6801,7 +6763,7 @@ msgstr "开始一个新的单人游戏战役"
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr "进行多人对战（热座，局域网或Internet）， 或与电脑进行单人剧本对站。"
+msgstr "进行多人对战（热座，局域网或Internet）， 或与电脑进行单人场景对站。"
 
 #: src/titlescreen.cpp:338
 msgid "Load a saved game"
@@ -6820,9 +6782,8 @@ msgid "Configure the game's settings"
 msgstr "更改游戏设置"
 
 #: src/titlescreen.cpp:342
-#, fuzzy
 msgid "View the credits"
-msgstr "查看制作人名单"
+msgstr "查看协作者名单"
 
 #: src/titlescreen.cpp:343
 msgid "Quit the game"
@@ -6927,7 +6888,6 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
 
-#, fuzzy
 #~ msgid "Zap"
 #~ msgstr "击溃"
 
