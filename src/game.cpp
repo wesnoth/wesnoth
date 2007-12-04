@@ -2028,7 +2028,7 @@ static int play_game(int argc, char** argv)
 			}
 
 			const std::string input_file(argv[arg + 1]);
-			if(input_file.substr(input_file.length() - 3) != ".gz") {
+			if(! is_gzip_file(input_file)) {
 
 				std::cerr << "file '" << input_file << "'isn't a .gz file\n";
 				return 2;

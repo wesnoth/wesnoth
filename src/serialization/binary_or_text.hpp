@@ -52,4 +52,8 @@ private:
 	unsigned int level_;
 	std::string textdomain_;
 };
+
+bool is_gzip_file(const std::string& filename);
+
+
 #endif

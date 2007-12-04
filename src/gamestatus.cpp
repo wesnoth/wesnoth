@@ -736,7 +736,11 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 
 	cfg.clear();
 	try{
-	detect_format_and_read(cfg, *file_stream, error_log);
+		if(is_gzip_file(name)) {
+			read_gz(cfg, *file_stream, error_log);
+		} else {
+			detect_format_and_read(cfg, *file_stream, error_log);
+		}
 	} catch (config::error &err)
 	{
 		std::cerr << err.message;

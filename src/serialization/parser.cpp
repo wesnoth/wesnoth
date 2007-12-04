@@ -36,6 +36,10 @@
 #include <sstream>
 #include <stack>
 
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+
 #define ERR_CF LOG_STREAM(err, config)
 #define WRN_CF LOG_STREAM(warn, config)
 #define LOG_CF LOG_STREAM(info, config)
@@ -345,6 +349,16 @@ void read(config &cfg, std::istream &in, std::string* error_log)
 void read(config &cfg, std::string &in, std::string* error_log)
 {
 	parser(cfg, in)(error_log);
+}
+
+void read_gz(config &cfg, std::istream &file, std::string* error_log)
+{
+
+	boost::iostreams::filtering_stream<boost::iostreams::input> filter;
+	filter.push(boost::iostreams::gzip_decompressor());
+	filter.push(file);
+
+	parser(cfg, filter)(error_log);
 }
 
 static char const *AttributeEquals = "=";
