@@ -478,9 +478,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			const std::vector<gamemap::location>& locs = multiple_locs(cfg);
 			for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 				if(remove) {
-					(*teams)[index].clear_shroud(j->x,j->y);
+					(*teams)[index].clear_shroud(*j);
 				} else {
-					(*teams)[index].place_shroud(j->x,j->y);
+					(*teams)[index].place_shroud(*j);
 				}
 			}
 		}

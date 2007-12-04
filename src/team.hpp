@@ -241,9 +241,9 @@ public:
 	bool uses_shroud() const { return shroud_.enabled(); }
 	bool uses_fog() const { return fog_.enabled(); }
 	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
-	bool clear_shroud(int x, int y) { return shroud_.clear(x+1,y+1); }
-	void place_shroud(int x, int y) { shroud_.place(x+1,y+1); }
-	bool clear_fog(int x, int y) { return fog_.clear(x+1,y+1); }
+	bool clear_shroud(const gamemap::location& loc) { return shroud_.clear(loc.x+1,loc.y+1); }
+	void place_shroud(const gamemap::location& loc) { shroud_.place(loc.x+1,loc.y+1); }
+	bool clear_fog(const gamemap::location& loc) { return fog_.clear(loc.x+1,loc.y+1); }
 	void refog() { fog_.reset(); }
 	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }
 	void set_fog(bool fog) { fog_.set_enabled(fog); }
