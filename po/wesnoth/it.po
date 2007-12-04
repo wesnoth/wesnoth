@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-01 13:07+0100\n"
-"PO-Revision-Date: 2007-11-24 01:21+0100\n"
+"PO-Revision-Date: 2007-12-02 12:14+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -2345,7 +2345,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2354,8 +2353,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Attiva la modalità di debug (non funziona in multiplayer). La modalità debug "
-"si disattiva abbandonando la partita o usando :nodebug.\n"
+"Attiva la modalità di debug (non funziona in multiplayer). Vedi "
+"<ref>dst=debug_commands text='Comandi di debug'</ref>.\n"
+"La modalità debug si disattiva abbandonando la partita o usando :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:638
@@ -2367,7 +2367,6 @@ msgid "Multiplayer commands"
 msgstr "Comandi per il multigiocatore"
 
 #: data/core/help.cfg:647
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2375,7 +2374,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Scaccia e bandisce dal multigiocatore un utente usando il suo indirizzo IP.\n"
+"Scaccia e bandisce dal multigiocatore un utente usando l'indirizzo IP "
+"associato al suo nome utente.\n"
 "\n"
 
 #: data/core/help.cfg:650
@@ -2425,9 +2425,8 @@ msgstr ""
 "Attiva/Disattiva la modalità silenziosa per tutti gli osservatori."
 
 #: data/core/help.cfg:662
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Comandi generali"
+msgstr "Comandi di debug"
 
 #: data/core/help.cfg:666
 msgid ""
@@ -2435,16 +2434,18 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Crea un'unità del tipo specificato sull'esagono selezionato.\n"
+"\n"
 
 #: data/core/help.cfg:669
-#, fuzzy
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Mostra o nasconde i quadri al secondo attuali.\n"
+"Mostra o nasconde la nebbia/oscurità per la fazione attuale.\n"
 "\n"
 
 #: data/core/help.cfg:672
@@ -2453,6 +2454,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Aggiunge l'ammontare specificato all'oro della fazione attuale.\n"
+"\n"
 
 #: data/core/help.cfg:675
 msgid ""
@@ -2460,6 +2464,9 @@ msgid ""
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Imposta manualmente una variabile di stato del gioco ad un valore.\n"
+"\n"
 
 #: data/core/help.cfg:678
 msgid ""
@@ -2467,6 +2474,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Mostra una variabile di stato del gioco.\n"
+"\n"
 
 #: data/core/help.cfg:681
 msgid ""
@@ -2474,6 +2484,9 @@ msgid ""
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
+"\n"
+"Attiva manualmente l'evento specificato.\n"
+"\n"
 
 #: data/core/help.cfg:682
 msgid ""
@@ -2481,6 +2494,9 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
+"\n"
+"Modifica la proprietà specificata dell'unità selezionata. Esempio: :unit "
+"hitpoints=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -4681,7 +4697,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:54
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Gran signore Kalenz, 470AW"
 
 #: data/hardwired/tips.cfg:57
 msgid ""
@@ -4745,13 +4761,12 @@ msgstr ""
 "unità."
 
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Gli scheletri sono resistenti contro gli attacchi da perforazione e da "
-"taglio, ma vulnerabili alle armi da impatto, fuoco o arcane."
+"Gli scheletri sono resistenti contro gli attacchi da perforazione, da taglio "
+"e freddi, ma vulnerabili alle armi da impatto, fuoco o arcane."
 
 #: data/hardwired/tips.cfg:78
 msgid "- Memoirs of Gweddry, 627YW"
@@ -4931,7 +4946,7 @@ msgstr ""
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
-msgstr ""
+msgstr "rubino di fuoco"
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -6953,6 +6968,13 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
+"Il gioco è fuori sincrono e non può continuare. C'è un numero di ragioni per "
+"cui questo può capitare: ad esempio, un altro giocatore ha modificato le "
+"impostazioni di gioco. Questo può voler dire che uno dei giocatori sta "
+"cercando di barare. Può essere anche a causa di un bug nel gioco, ma è meno "
+"probabile.\n"
+"\n"
+"Vuoi conservare un log della partita?"
 
 #: src/playsingle_controller.cpp:151
 msgid "Remaining gold: "
