@@ -809,7 +809,12 @@ void finish_save_game(config_writer &out, const game_state& gamestate, const std
 // Throws game::save_game_failed
 void save_game(const game_state& gamestate)
 {
-	scoped_ostream os(open_save_game(gamestate.label));
+	std::string filename = gamestate.label; 
+	if(preferences::compress_saves()) {
+		filename += ".gz";
+	}
+
+	scoped_ostream os(open_save_game(filename));
 	config_writer out(*os, preferences::compress_saves(), PACKAGE);
 	write_game(out, gamestate);
 	finish_save_game(out, gamestate, gamestate.label);

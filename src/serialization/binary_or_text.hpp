@@ -22,6 +22,8 @@
 #include <iosfwd>
 #include <string>
 
+#include <boost/iostreams/filtering_stream.hpp>
+
 class config;
 
 //! Reads a file, and detects it is compressed before reading it. 
@@ -47,13 +49,13 @@ public:
 	bool good() const;
 
 private:
+	boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
+
 	std::ostream &out_;
 	bool compress_;
 	unsigned int level_;
 	std::string textdomain_;
+
 };
-
-bool is_gzip_file(const std::string& filename);
-
 
 #endif

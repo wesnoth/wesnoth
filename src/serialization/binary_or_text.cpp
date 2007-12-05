@@ -26,6 +26,9 @@
 
 #include <sstream>
 
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+
 bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log)
 {
 	unsigned char c = in.peek();
@@ -46,9 +49,18 @@ void write_possibly_compressed(std::ostream &out, config &cfg, bool compress)
 		write(out, cfg);
 }
 
-config_writer::config_writer(std::ostream &out, bool compress, const std::string &textdomain)
-	: out_(out), compress_(compress), level_(0), textdomain_(textdomain)
+config_writer::config_writer(
+	std::ostream &out, bool compress, const std::string &textdomain) :
+		filter_(),
+		out_(compress ? filter_ : out), 
+		compress_(compress), 
+		level_(0), 
+		textdomain_(textdomain)
 {
+	if(compress_) {
+		filter_.push(boost::iostreams::gzip_compressor());
+		filter_.push(out);
+	}
 }
 
 void config_writer::write(const config &cfg)
@@ -81,11 +93,5 @@ void config_writer::close_child(const std::string &key)
 bool config_writer::good() const
 {
 	return out_.good();
-}
-
-bool is_gzip_file(const std::string& filename)
-{ 
-	return (filename.length() > 3 
-		&& filename.substr(filename.length() - 3) == ".gz"); 
 }
 

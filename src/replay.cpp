@@ -193,7 +193,12 @@ void replay::save_game(const std::string& label, const config& snapshot,
 
 	saveInfo_.label = label;
 
-	scoped_ostream os(open_save_game(label));
+	std::string filename = label; 
+	if(preferences::compress_saves()) {
+		filename += ".gz";
+	}
+
+	scoped_ostream os(open_save_game(filename));
 	config_writer out(*os, preferences::compress_saves(), PACKAGE);
 	::write_game(out, saveInfo_);
 	finish_save_game(out, saveInfo_, saveInfo_.label);

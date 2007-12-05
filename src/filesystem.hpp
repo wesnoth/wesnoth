@@ -79,10 +79,10 @@ void write_file(const std::string& fname, const std::string& data);
 
 std::string read_map(const std::string& name);
 
-//! Returns true iff the given file is a directory.
+//! Returns true if the given file is a directory.
 bool is_directory(const std::string& fname);
 
-//! Returns true iff file with name already exists.
+//! Returns true if file with name already exists.
 bool file_exists(const std::string& name);
 
 //! Get the creation time of a file.
@@ -90,6 +90,9 @@ time_t file_create_time(const std::string& fname);
 
 //! Return the next ordered full filename within this directory.
 std::string next_filename(const std::string &dirname, unsigned int max = 0);
+
+//! Returns true if the file ends with '.gz'.
+bool is_gzip_file(const std::string& filename);
 
 struct file_tree_checksum
 {

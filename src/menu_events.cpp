@@ -703,7 +703,17 @@ private:
 		if(res == 0) {
 
 			if(std::count_if(label.begin(),label.end(),is_illegal_file_char)) {
-				gui::message_dialog(*gui_,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name.")).show();
+				gui::message_dialog(*gui_, _("Error"), 
+					_("Save names may not contain colons, slashes, or backslashes. "
+					"Please choose a different name.")).show();
+				save_game(message,dialog_type);
+				return;
+			}
+
+			if(is_gzip_file(label)) {
+				gui::message_dialog(*gui_, _("Error"), 
+					_("Save names should not end on '.gz'. "
+					"Please choose a different name.")).show();
 				save_game(message,dialog_type);
 				return;
 			}

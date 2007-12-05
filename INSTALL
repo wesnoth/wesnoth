@@ -7,15 +7,19 @@ You'll need to have these libraries (with equivalent devel versions) to build We
  libsdl-mixer1.2 (with Vorbis support)
  libsdl-net
  libfreetype2
+ libz
+ boost_iostreams >= 1.33.0
  
 Recommended (can be deactivated via ./configure --disable-python):
  python2.4
 
 SDL* libraries can be found at http://www.libsdl.org . libfreetype can be found
-at http://www.freetype.org/ . python can be found at http://www.python.org
+at http://www.freetype.org/ . python can be found at http://www.python.org .
+The boost libraries can be found at http://www.boost.org .
 
 You will also need to have a working installation of gettext to build the
 translations.
+
 
 The .tar.bz2 file is distributed with a working set of configure files. They
 are not in the SVN repository. Consequently, if you are building from

@@ -808,8 +808,8 @@ time_t file_create_time(const std::string& fname)
 	return buf.st_mtime;
 }
 
+//! Return the next ordered full filename within this directory.
 std::string next_filename(const std::string &dirname, unsigned int max)
-// Return the next ordered full filename within this directory
 {
 	std::vector<std::string> files;
 	std::stringstream fname;
@@ -839,6 +839,15 @@ std::string next_filename(const std::string &dirname, unsigned int max)
 
 	fname << std::setw(8) << std::setfill('0') << num;
 	return dirname + "/" + fname.str();
+}
+
+//! Returns true if the file ends with '.gz'.
+//! 
+//! @param filename     The name to test.
+bool is_gzip_file(const std::string& filename)
+{ 
+	return (filename.length() > 3 
+		&& filename.substr(filename.length() - 3) == ".gz"); 
 }
 
 file_tree_checksum::file_tree_checksum()
