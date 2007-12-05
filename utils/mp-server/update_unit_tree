@@ -22,7 +22,7 @@ case $VERSION in
 	1.3.* ) cd $TRUNK || exit 1
 	;;
 	trunk ) cd $TRUNK || exit 1
-		rm -rf $SITE
+		rm -rf $SITE/$VERSION
 	;;
 	* ) 	echo "Unknown version."
 		exit 1
@@ -36,13 +36,14 @@ cd data/tools/unit_tree/ || exit 1
 echo 'svn update...'
 svn update
 svn status
-# make sure we update with the right version
-sed -i -e "s/\(my \$version = '\).*\(';\)/\1$VERSION\2/" units.pl
+if [ "$VERSION" != "trunk" ]; then
+	# insert a link for the new version
+	sed -i -e "s,\(<p><a href=\"trunk/index.html\">Trunk</a></p>\),<p><a href=\"$VERSION/index.html\">Development ($VERSION)</a></p>\n\1," $SITE/index.html
+	# make sure we update with the right version
+	sed -i -e "s/\(my \$version = '\).*\(';\)/\1$VERSION\2/" units.pl
+fi
 ./units.pl
 # move the generated files to their proper place
 mv files $SITE/$VERSION
-# insert a link for the new version
-if [ "$VERSION" != "trunk" ]; then
-	sed -e "s,\(<p><a href=\"trunk/index.html\">Trunk</a></p>\),<p><a href=\"$VERSION/index.html\">Development ($VERSION)</a></p>\n\1," $SITE/index.html
-fi
-
+# revert to prevent future conflicts if $version changed
+svn revert units.pl
