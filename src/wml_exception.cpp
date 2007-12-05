@@ -25,7 +25,7 @@
 
 //! Helper function, don't call this directly.
 //!
-//! @param cond         The textual presentation if the test that failed.
+//! @param cond         The textual presentation of the test that failed.
 //! @param file         The file in which the test failed.
 //! @param line         The line at which the test failed.
 //! @param function     The funtion in which the test failed.

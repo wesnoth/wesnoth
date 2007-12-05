@@ -144,7 +144,8 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 #endif
 }
 
-bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_stats=false, int timeout_ms=60000)
+bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
+		bool update_stats=false, int timeout_ms=60000)
 {
 	int nsleeps = 0;
 	while(nbytes > 0) {
@@ -161,6 +162,10 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 			if(true)
 #endif
 			{
+				//TODO: consider replacing this with a select call
+				if(++nsleeps == timeout_ms) {
+					return false;
+				}
 #ifdef USE_POLL
 				struct pollfd fd = { ((_TCPsocket*)s)->channel, POLLIN, 0 };
 				int poll_res;
@@ -185,12 +190,9 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes, bool update_sta
 
 				if(retval > 0)
 					continue;
+				else return false;
 #elif
-				//TODO: consider replacing this with a select call
-				if(++nsleeps == timeout_ms) {
-					return false;
-				}
-				SDL_Delay(1000);
+				SDL_Delay(1);
 #endif
 			} else {
 				return false;
@@ -460,7 +462,7 @@ static int process_queue(void*)
 	// unreachable
 }
 
-}
+} //anonymous namespace
 
 namespace network_worker_pool
 {
