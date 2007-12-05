@@ -24,10 +24,13 @@
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
+#include <cassert> // used when USE_GZIP is false
 #include <sstream>
 
+#ifdef USE_GZIP
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
+#endif
 
 bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log)
 {
@@ -51,15 +54,25 @@ void write_possibly_compressed(std::ostream &out, config &cfg, bool compress)
 
 config_writer::config_writer(
 	std::ostream &out, bool compress, const std::string &textdomain) :
+#ifdef USE_GZIP
 		filter_(),
 		out_(compress ? filter_ : out), 
+#else
+		out_(out), 
+#endif
 		compress_(compress), 
 		level_(0), 
 		textdomain_(textdomain)
 {
 	if(compress_) {
+#ifdef USE_GZIP
 		filter_.push(boost::iostreams::gzip_compressor());
 		filter_.push(out);
+#else
+		// it can't hurt to use the compress option here but
+		// it does nothing.
+		assert(false);
+#endif
 	}
 }
 

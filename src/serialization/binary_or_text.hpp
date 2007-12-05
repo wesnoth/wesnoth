@@ -22,7 +22,9 @@
 #include <iosfwd>
 #include <string>
 
+#ifdef USE_GZIP
 #include <boost/iostreams/filtering_stream.hpp>
+#endif
 
 class config;
 
@@ -49,7 +51,9 @@ public:
 	bool good() const;
 
 private:
+#ifdef USE_GZIP
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
+#endif
 
 	std::ostream &out_;
 	bool compress_;

@@ -878,7 +878,21 @@ fi
 
 # FIXME do a check
 
-LIBS="$LIBS -lboost_iostreams"
+# test for gzip
+gzip_found="yes"
+
+# When gzip and boost are found they are used everywhere. They are
+# mandatory for the game, so bail out if not found.
+if test "x$gzip_found" = "xyes" 
+then
+	CPPFLAGS="$CPPFLAGS -DUSE_GZIP"
+	LIBS="$LIBS -lboost_iostreams"
+else
+	if test "x$game" = "xyes"
+	then
+		AC_MSG_ERROR([*** Missing gzip or boost_iostreams support.])
+	fi
+fi
 
 #######################################################################
 # Tune gettext stuff for our needs                                    #
