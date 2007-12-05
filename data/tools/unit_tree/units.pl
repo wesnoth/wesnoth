@@ -36,7 +36,7 @@ my $images = 1;
 # This option will determine if the html report on made animations is generated
 my $animations = 1;
 # This is the version number that will appear on the unit trees
-my $version = '1.3.11+svn';
+my $version = '1.3.12+svn';
 # These option will try to process the user made Eras
 my $ime = 0; # Imperial Era
 my $exe = 0; # Extended Era
@@ -598,7 +598,7 @@ sub CopyImages {
 		$image =~ s/"//g;
 		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image");
 		$image =~ s/.png/+female.png/;
-		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image") unless (! -e $image);
+		system ("$colorizer $data_dir/images/$image $html_dir/$unit_folder$image") unless (! -e "$data_dir/images/$image");
 	}
 	close UNITS;
 	# zombie units
