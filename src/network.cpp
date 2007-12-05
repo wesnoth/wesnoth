@@ -154,10 +154,10 @@ static void check_timeout(const time_t& now)
 		<< " Current time: " << now << "\n";
 	// Reset last_ping if we didn't check for the last 10s.
 	if (last_ping != 0 && last_ping_check + 10 <= now) last_ping = now;
-	if (last_ping != 0 && last_ping + 30 <= now) {
+	if (last_ping != 0 && last_ping + 60 <= now) {
 		ERR_NW << "No server ping since " << (now - last_ping)
 			<< " seconds. Connection timed out.\n";
-		throw network::error(_("No server ping since at least 30 seconds. "
+		throw network::error(_("No server ping since at least 60 seconds. "
 			"Connection timed out."));
 	}
 	last_ping_check = now;
