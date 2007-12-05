@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-11-04 17:59+0100\n"
-"PO-Revision-Date: 2007-12-03 22:31+0800\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2007-12-05 20:23+1000\n"
+"Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -224,7 +224,7 @@ msgstr "B<--logdomains>"
 #: ../../doc/man/wesnoth.6:81 ../../doc/man/wesnoth_editor.6:75
 #, fuzzy
 msgid "Dumps a list of all log domains and exits."
-msgstr "导出所有日志并退出"
+msgstr "导出所有日志列表并退出"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:81
@@ -430,6 +430,8 @@ msgid ""
 "The era is chosen by an id. Eras are described in the data/multiplayer.cfg "
 "file."
 msgstr ""
+"使用此选项，则游戏使用选定的时代。此时代通过编号（id）选择。各个时代的描述可"
+"以在data/multiplayer.cfg中找到。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:141
@@ -472,6 +474,8 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
+"选取一个当代的阵营进行游戏。此阵营被编号选择（得到一个id）。阵营的描述可以在"
+"data/multiplayer.cfg中找到。"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:158
@@ -559,8 +563,9 @@ msgid ""
 msgstr ""
 "这是一个自由软件；使用由FSF发布的GPL v2　协议授权。This is Free Software; "
 "this software is licensed under the GPL version 2, as published by the Free "
-"Software Foundation.  There is NO warranty; not even for MERCHANTABILITY or "
-"FITNESS FOR A PARTICULAR PURPOSE."
+"Software Foundation.  本软件“没有任何”保证; 但是不适用于恰当的商业意图。"
+"There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
+"PARTICULAR PURPOSE."
 
 # type: SH
 #: ../../doc/man/wesnoth.6:182 ../../doc/man/wesnoth_editor.6:89
