@@ -52,9 +52,9 @@ echo 'autogen.sh and configure...'
 make clean > /dev/null
 
 echo 'make...'
-make > $BUILD/$DIR/make.log
+make > $BUILD/$DIR/make.log || exit 1
 echo 'make install...'
-make install > $BUILD/$DIR/install.log
+make install > $BUILD/$DIR/install.log || exit 1
 
 cd $SERVERBASE
 if [ -p $SOCKET ]; then
