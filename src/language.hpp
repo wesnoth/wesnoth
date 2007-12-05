@@ -29,10 +29,19 @@ class config;
 
 struct language_def
 {
-	language_def() {}
+	language_def() :
+		localename(),
+		alternates(),
+		language(),
+		rtl(false)
+		{}
+
 	language_def(const std::string& name, const t_string& lang, const std::string& dir,
 	    const std::string &salternates = "") :
-		localename(name), language(lang), rtl(dir == "rtl")
+		localename(name), 
+		alternates(),
+		language(lang), 
+		rtl(dir == "rtl")
 	{
             alternates = utils::split(salternates);
         }
