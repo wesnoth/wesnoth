@@ -34,6 +34,8 @@
 #include "unit_display.hpp"
 #include "playturn.hpp"
 #include "wassert.hpp"
+#include "wml_exception.hpp"
+#include "gettext.hpp"
 
 #define LOG_AI LOG_STREAM(info, ai)
 #define WRN_AI LOG_STREAM(warn, ai)
@@ -1676,10 +1678,12 @@ void ai::analyze_potential_recruit_combat()
 			}
 
 			unit const &un = j->second;
+			const game_data::unit_type_map::const_iterator enemy_info = gameinfo_.unit_types.find(un.id());
+			WML_ASSERT((enemy_info != gameinfo_.unit_types.end()), _("Unknown unit type : ") + un.id());
+
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
-			score += compare_unit_types(info->second,
-				gameinfo_.unit_types.find(un.id())->second) * weight;
+			score += compare_unit_types(info->second, enemy_info->second) * weight;
 		}
 
 		if(weighting != 0) {
