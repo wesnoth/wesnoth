@@ -65,6 +65,14 @@ runs the game in full screen mode.
 displays the number of frames per second the game is currently running
 at, in a corner of the screen.
 .TP
+.BI --gunzip \ <infile>
+decompresses a savefile which should be a .gz file (infile) and stores it 
+without the .gz suffix. The (infile) will be removed.
+.TP
+.BI --gzip \ <infile>
+compresses a savefile (infile) as gzip file and stores it as (infile.gz) 
+and removes (infile).
+.TP
 .BR -h ", " --help
 displays a summary of command line options to standard output, and exits.
 .TP
