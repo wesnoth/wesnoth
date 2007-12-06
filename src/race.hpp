@@ -50,7 +50,6 @@ private:
 	t_string plural_name_;
 	t_string description_;
 	unsigned int ntraits_;
-	std::vector<std::string> names_[NUM_GENDERS];
 	markov_prefix_map next_[NUM_GENDERS];
 	int chain_size_;
 

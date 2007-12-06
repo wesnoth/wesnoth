@@ -163,15 +163,13 @@ unit_race::unit_race(const config& cfg) :
 		// This code is only for compatibility with old race defs.
 		plural_name_ = (cfg["name"]);
 	}
-	
-	names_[MALE] = utils::split(cfg["male_names"]);
-	names_[FEMALE] = utils::split(cfg["female_names"]);
 
 	if(chain_size_ <= 0)
 		chain_size_ = 2;
 
-	next_[MALE] = markov_prefixes(names_[MALE],chain_size_);
-	next_[FEMALE] = markov_prefixes(names_[FEMALE],chain_size_);
+	//std::vector<std::string> names = ;
+	next_[MALE] = markov_prefixes(utils::split(cfg["male_names"]), chain_size_);
+	next_[FEMALE] = markov_prefixes(utils::split(cfg["female_names"]), chain_size_);
 }
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
