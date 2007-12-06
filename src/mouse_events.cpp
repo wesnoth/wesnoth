@@ -1222,7 +1222,7 @@ void mouse_handler::select_hex(const gamemap::location& hex, const bool browse) 
 			sound::play_UI_sound("select-unit.wav");
 			u->second.set_selecting(*gui_, u->first);
 
-			game_events::fire("select", selected_hex_);
+			game_events::fire("select", hex);
 		}
 
 	} else {
