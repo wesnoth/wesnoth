@@ -259,6 +259,8 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 		cfg_.add_child("resistance", *resistance);
 }
 
+unit_movement_type::unit_movement_type(): moveCosts_(), defenseMods_(), parent_(NULL), cfg_()
+{}
 
 const t_string& unit_movement_type::name() const
 {
@@ -470,6 +472,12 @@ bool unit_movement_type::is_flying() const
 	return utils::string_bool(flies);
 }
 
+unit_type::unit_type()
+{
+	gender_types_[0] = NULL;
+	gender_types_[1] = NULL;
+}
+
 unit_type::unit_type(const unit_type& o)
     : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
       alpha_(o.alpha_), abilities_(o.abilities_),ability_tooltips_(o.ability_tooltips_),
@@ -477,7 +485,6 @@ unit_type::unit_type(const unit_type& o)
       experience_needed_(o.experience_needed_), alignment_(o.alignment_),
       movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
       genders_(o.genders_), animations_(o.animations_),
-
       flag_rgb_(o.flag_rgb_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
@@ -491,9 +498,28 @@ unit_type::unit_type(const unit_type& o)
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
-	: cfg_(cfg), alpha_(ftofxp(1.0)), movementType_(cfg)
 {
-	//log_scope2(mine,"unit_type : "+ id());
+	build(cfg, mv_types, races, traits);
+}
+
+unit_type::~unit_type()
+{
+	if (gender_types_[0] != NULL)
+		delete gender_types_[unit_race::MALE];
+	if (gender_types_[1] != NULL)
+		delete gender_types_[unit_race::FEMALE];
+
+	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
+		delete i->second;
+	}
+}
+
+void unit_type::build(const config& cfg, const movement_type_map& mv_types,
+                     const race_map& races, const std::vector<config*>& traits)
+{
+	cfg_ = cfg;
+	movementType_ = unit_movement_type(cfg);
+	alpha_ = ftofxp(1.0);
 
 	config::const_child_iterator i;
 	for(i=traits.begin(); i != traits.end(); ++i)
@@ -643,16 +669,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	// Deprecation messages, only seen when unit is parsed for the first time.
 
 	hide_help_= cfg["hide_help"] == "true" ? true : false;
-}
-
-unit_type::~unit_type()
-{
-	delete gender_types_[unit_race::MALE];
-	delete gender_types_[unit_race::FEMALE];
-
-	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
-		delete i->second;
-	}
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
@@ -898,11 +914,22 @@ void game_data::set_config(const config& cfg)
 		else
 		{
 			// LOAD UNIT TYPES
-			const unit_type u_type(**i.first,movement_types,races,unit_traits);
-			unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
-			increment_set_config_progress();
+			std::string id = (**i.first)["id"];
+			if(id.empty()) {
+				// This code is only for compatibility with old unit defs and savefiles.
+				// Still needed ?
+				id = (**i.first)["name"];
+			}
+			// we insert an empty unit_type and build it after the copy (for perfomance)
+			std::pair<unit_type_map::iterator,bool> insertion =
+				unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
+			if (insertion.second) {
+				insertion.first->second.build(**i.first,movement_types,races,unit_traits);
+			}
+			// TODO: else { warning for multiple units with same id}
 		}
 	}
+
 	while(base_unit_count > 0)
 	{
 		unsigned new_count = base_unit_count;
@@ -920,6 +947,7 @@ void game_data::set_config(const config& cfg)
 					config merge_cfg = merged_units.add_child(based_from, from_unit->second.cfg_);
 					merge_cfg.merge_with(**i.first);
 					merge_cfg.clear_children("base_unit");
+					// TODO: use the same previous insertion trick 
 					const unit_type u_type(merge_cfg,movement_types,races,unit_traits);
 					unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 					increment_set_config_progress();

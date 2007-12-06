@@ -113,6 +113,7 @@ public:
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
 	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
+	unit_movement_type();
 
 	const t_string& name() const;
 	int movement_cost(const gamemap& map, t_translation::t_letter terrain, int recurse_count=0) const;
@@ -146,11 +147,17 @@ class unit_type
 public:
 	friend class unit;
 	friend class game_data;
+
+	unit_type();
 	unit_type(const config& cfg, const movement_type_map& movement_types,
 	          const race_map& races, const std::vector<config*>& traits);
 	unit_type(const unit_type& o);
 
 	~unit_type();
+
+	//! Load data into an empty unit_type
+	void build(const config& cfg, const movement_type_map& movement_types,
+	          const race_map& races, const std::vector<config*>& traits);
 
 	//! Adds an additional advancement path to a unit type.
 	//! This is used to implement the [advancefrom] tag.
