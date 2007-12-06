@@ -504,10 +504,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 unit_type::~unit_type()
 {
-	if (gender_types_[0] != NULL)
-		delete gender_types_[unit_race::MALE];
-	if (gender_types_[1] != NULL)
-		delete gender_types_[unit_race::FEMALE];
+	delete gender_types_[unit_race::MALE];
+	delete gender_types_[unit_race::FEMALE];
 
 	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
 		delete i->second;
@@ -947,9 +945,15 @@ void game_data::set_config(const config& cfg)
 					config merge_cfg = merged_units.add_child(based_from, from_unit->second.cfg_);
 					merge_cfg.merge_with(**i.first);
 					merge_cfg.clear_children("base_unit");
-					// TODO: use the same previous insertion trick 
-					const unit_type u_type(merge_cfg,movement_types,races,unit_traits);
-					unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
+					std::string id = merge_cfg["id"];
+					if(id.empty()) {
+						id = merge_cfg["name"];
+					}
+					std::pair<unit_type_map::iterator,bool> insertion =
+					unit_types.insert(std::pair<std::string,unit_type>(id,unit_type()));
+					if (insertion.second) {
+						insertion.first->second.build(merge_cfg,movement_types,races,unit_traits);
+					}
 					increment_set_config_progress();
 					--new_count;
 				}
