@@ -1859,6 +1859,7 @@ static int play_game(int argc, char** argv)
 		}
 
 		if(val == "--help" || val == "-h") {
+			// When adding items don't forget to update doc/man/wesnoth.6
 			std::cout << "usage: " << argv[0]
 			<< " [OPTIONS] [DATA-DIRECTORY]\n"
 			<< "  --bpp number                 sets BitsPerPixel value. Example: --bpp 32\n"
