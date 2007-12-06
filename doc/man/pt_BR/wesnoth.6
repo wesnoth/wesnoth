@@ -67,6 +67,14 @@ executa o jogo em modo tela cheia.
 \fB\-\-fps\fP
 exibe o número de frames por segundo atual do jogo em um canto da tela.
 .TP 
+\fB\-\-gunzip\fP\fI\ <infile>\fP
+decompresses a savefile which should be a .gz file (infile) and stores it
+without the .gz suffix. The (infile) will be removed.
+.TP 
+\fB\-\-gzip\fP\fI\ <infile>\fP
+compresses a savefile (infile) as gzip file and stores it as (infile.gz) 
+and removes (infile).
+.TP 
 \fB\-h\fP, \fB\-\-help\fP
 exibe um resumo das opções de linha de comando para a saída padrão, e
 termina.

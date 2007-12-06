@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2007-11-04 17:59+0100\n"
+"POT-Creation-Date: 2007-12-07 00:28+0100\n"
 "PO-Revision-Date: 2007-12-05 20:23+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
@@ -177,35 +177,62 @@ msgstr "在屏幕一角显示游戏fps(frames per second)"
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
+#, fuzzy, no-wrap
+msgid "B<--gunzip>I<\\ E<lt>infileE<gt>>"
+msgstr "B<--load>I<\\ E<lt>savegameE<gt>>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:71
+msgid ""
+"decompresses a savefile which should be a .gz file (infile) and stores it "
+"without the .gz suffix. The (infile) will be removed."
+msgstr ""
+
+# type: TP
+#: ../../doc/man/wesnoth.6:71
+#, fuzzy, no-wrap
+msgid "B<--gzip>I<\\ E<lt>infileE<gt>>"
+msgstr "B<--load>I<\\ E<lt>savegameE<gt>>"
+
+# type: Plain text
+#: ../../doc/man/wesnoth.6:75
+#, fuzzy
+msgid ""
+"compresses a savefile (infile) as gzip file and stores it as (infile.gz)  "
+"and removes (infile)."
+msgstr "将文本格式的WML存档文件(infile)压缩为二进制格式的WML存档文件(outfile)"
+
+# type: TP
+#: ../../doc/man/wesnoth.6:75
 #, no-wrap
 msgid "B<-h>, B<--help>"
 msgstr "B<-h>, B<--help>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:70
+#: ../../doc/man/wesnoth.6:78
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr "显示命令行可用选项，然后退出。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:70
+#: ../../doc/man/wesnoth.6:78
 #, no-wrap
 msgid "B<--load>I<\\ E<lt>savegameE<gt>>"
 msgstr "B<--load>I<\\ E<lt>savegameE<gt>>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:73
+#: ../../doc/man/wesnoth.6:81
 msgid "loads the file savegame from the standard save game directory."
 msgstr "从标准存档目录读取存档文件"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:73 ../../doc/man/wesnothd.6:55
+#: ../../doc/man/wesnoth.6:81 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
 msgstr "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:78
+#: ../../doc/man/wesnoth.6:86
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug. By default "
@@ -215,38 +242,38 @@ msgstr ""
 "info, debug. 默认的级别是error。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:78 ../../doc/man/wesnoth_editor.6:72
+#: ../../doc/man/wesnoth.6:86 ../../doc/man/wesnoth_editor.6:72
 #, no-wrap
 msgid "B<--logdomains>"
 msgstr "B<--logdomains>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:81 ../../doc/man/wesnoth_editor.6:75
+#: ../../doc/man/wesnoth.6:89 ../../doc/man/wesnoth_editor.6:75
 #, fuzzy
 msgid "Dumps a list of all log domains and exits."
 msgstr "导出所有日志列表并退出"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:81
+#: ../../doc/man/wesnoth.6:89
 #, no-wrap
 msgid "B<--max-fps>"
 msgstr "B<--max-fps>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:85
+#: ../../doc/man/wesnoth.6:93
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is 50."
 msgstr "游戏每秒能显示的帧数，可以设为1－1000的数，默认为50。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:85
+#: ../../doc/man/wesnoth.6:93
 #, no-wrap
 msgid "B<--multiplayer>"
 msgstr "B<--multiplayer>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:91
+#: ../../doc/man/wesnoth.6:99
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
@@ -254,103 +281,103 @@ msgstr ""
 "启动一个多人游戏。关于多人游戏下面有更多选项可以与B<--multiplayer>一起使用。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:91
+#: ../../doc/man/wesnoth.6:99
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:94
+#: ../../doc/man/wesnoth.6:102
 msgid "disables caching of game data."
 msgstr "禁止建立游戏数据的缓存"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:94
+#: ../../doc/man/wesnoth.6:102
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:97
+#: ../../doc/man/wesnoth.6:105
 msgid "runs the game without sounds and music."
 msgstr "以无音乐和音效的方式启动游戏"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:97 ../../doc/man/wesnoth_editor.6:43
+#: ../../doc/man/wesnoth.6:105 ../../doc/man/wesnoth_editor.6:43
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:100 ../../doc/man/wesnoth_editor.6:46
+#: ../../doc/man/wesnoth.6:108 ../../doc/man/wesnoth_editor.6:46
 msgid "prints the name of the game data directory and exits."
 msgstr "显示游戏数据目录(data directory)并退出"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:100
+#: ../../doc/man/wesnoth.6:108
 #, no-wrap
 msgid "B<-r>, B<--resolution>\\ I<XxY>"
 msgstr "B<-r>, B<--resolution>\\ I<XxY>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:103
+#: ../../doc/man/wesnoth.6:111
 msgid "sets the screen resolution. Example: -r 800x600"
 msgstr "设置屏幕分辨率。例如： -r 800x600"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:103
+#: ../../doc/man/wesnoth.6:111
 #, no-wrap
 msgid "B<-t>, B<--test>"
 msgstr "B<-t>, B<--test>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:106
+#: ../../doc/man/wesnoth.6:114
 msgid "runs the game in a small test scenario."
 msgstr "使用一个小的测试场景启动游戏"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:106
+#: ../../doc/man/wesnoth.6:114
 #, no-wrap
 msgid "B<-v>, B<--version>"
 msgstr "B<-v>, B<--version>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:109
+#: ../../doc/man/wesnoth.6:117
 msgid "shows the version number and exits."
 msgstr "显示版本号并退出"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:109
+#: ../../doc/man/wesnoth.6:117
 #, no-wrap
 msgid "B<-w>, B<--windowed>"
 msgstr "B<-w>, B<--windowed>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:112
+#: ../../doc/man/wesnoth.6:120
 msgid "runs the game in windowed mode."
 msgstr "使用窗口模式进入游戏"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:112
+#: ../../doc/man/wesnoth.6:120
 #, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:115
+#: ../../doc/man/wesnoth.6:123
 msgid ""
 "runs the game without any delays for graphic benchmarking.  This is "
 "automatically enabled by --nogui."
 msgstr "不进行图形基准测试就启动游戏。使用 --nogui 选项是会自动启用本选项。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:115
+#: ../../doc/man/wesnoth.6:123
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:120
+#: ../../doc/man/wesnoth.6:128
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -359,13 +386,13 @@ msgstr ""
 "效。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:120
+#: ../../doc/man/wesnoth.6:128
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:123
+#: ../../doc/man/wesnoth.6:131
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -375,13 +402,13 @@ msgstr ""
 "试。"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:124
+#: ../../doc/man/wesnoth.6:132
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "--multiplayer的额外选项"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:129
+#: ../../doc/man/wesnoth.6:137
 msgid ""
 "The side-specific multiplayer options are marked with E<lt>numberE<gt>. "
 "E<lt>numberE<gt> has to be replaced by a side number. It usually is 1 or 2 "
@@ -392,13 +419,13 @@ msgstr ""
 "具体的取决于你所玩的场景。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:129
+#: ../../doc/man/wesnoth.6:137
 #, no-wrap
 msgid "B<--algorithmE<lt>numberE<gt>=value>"
 msgstr "B<--algorithmE<lt>numberE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:133
+#: ../../doc/man/wesnoth.6:141
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: \"idle_ai\" and \"sample_ai\"."
@@ -406,25 +433,25 @@ msgstr ""
 "为这一阵营选择一个非标准的AI算法。可选值有：\"idle_ai\" 和 \"sample_ai\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:133
+#: ../../doc/man/wesnoth.6:141
 #, no-wrap
 msgid "B<--controllerE<lt>numberE<gt>=value>"
 msgstr "B<--controllerE<lt>numberE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:136
+#: ../../doc/man/wesnoth.6:144
 msgid ""
 "selects the controller for this side. Available values: \"human\" and \"ai\"."
 msgstr "选择这一阵营的控制者。可选值有：\"human\"和\"ai\"。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:136
+#: ../../doc/man/wesnoth.6:144
 #, no-wrap
 msgid "B<--era=value>"
 msgstr "B<--era=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:141
+#: ../../doc/man/wesnoth.6:149
 msgid ""
 "use this option to play in the selected era instead of the \"Default\" era. "
 "The era is chosen by an id. Eras are described in the data/multiplayer.cfg "
@@ -434,13 +461,13 @@ msgstr ""
 "以在data/multiplayer.cfg中找到。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:141
+#: ../../doc/man/wesnoth.6:149
 #, no-wrap
 msgid "B<--parmE<lt>numberE<gt>=name:value>"
 msgstr "B<--parmE<lt>numberE<gt>=name:value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:150
+#: ../../doc/man/wesnoth.6:158
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm.> It should only be "
@@ -450,26 +477,26 @@ msgstr ""
 "选项。这个选项只对设计AI的人比较有用。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:150
+#: ../../doc/man/wesnoth.6:158
 #, no-wrap
 msgid "B<--scenario=value>"
 msgstr "B<--scenario=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:153
+#: ../../doc/man/wesnoth.6:161
 msgid ""
 "selects a multiplayer scenario. The default scenario is "
 "\"multiplayer_The_Freelands\"."
 msgstr "选择多人游戏地图。默认地图是\"multiplayer_The_Freelands\"."
 
 # type: TP
-#: ../../doc/man/wesnoth.6:153
+#: ../../doc/man/wesnoth.6:161
 #, no-wrap
 msgid "B<--sideE<lt>numberE<gt>=value>"
 msgstr "B<--sideE<lt>numberE<gt>=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:166
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -478,25 +505,25 @@ msgstr ""
 "data/multiplayer.cfg中找到。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:166
 #, no-wrap
 msgid "B<--turns=value>"
 msgstr "B<--turns=value>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:169
 msgid ""
 "sets the number of turns for the chosen scenario. The default is \"50\"."
 msgstr "设置所选场景的回合数限制。默认值为\"50\"。"
 
 # type: TP
-#: ../../doc/man/wesnoth.6:161
+#: ../../doc/man/wesnoth.6:169
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
 msgstr "用来测试你自己写的AI和默认AI的例子，不开启图形界面(GUI)。"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:164
+#: ../../doc/man/wesnoth.6:172
 msgid ""
 "wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
@@ -505,19 +532,19 @@ msgstr ""
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:165 ../../doc/man/wesnoth_editor.6:76
+#: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:76
 #: ../../doc/man/wesnothd.6:143
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:168
+#: ../../doc/man/wesnoth.6:176
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "由David White E<lt>davidnwhite@verizon.netE<gt>编写"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:170
+#: ../../doc/man/wesnoth.6:178
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton@sonnenkinder.orgE<gt>."
@@ -526,34 +553,34 @@ msgstr ""
 "and Soliton E<lt>soliton@sonnenkinder.orgE<gt>改动"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:172
+#: ../../doc/man/wesnoth.6:180
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr "这个帮助页最早由 Cyril Bouthors 撰写E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:174 ../../doc/man/wesnoth_editor.6:82
+#: ../../doc/man/wesnoth.6:182 ../../doc/man/wesnoth_editor.6:82
 #: ../../doc/man/wesnothd.6:150
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "访问官方网站: http://www.wesnoth.org/"
 
 # type: SH
-#: ../../doc/man/wesnoth.6:175 ../../doc/man/wesnoth_editor.6:83
+#: ../../doc/man/wesnoth.6:183 ../../doc/man/wesnoth_editor.6:83
 #: ../../doc/man/wesnothd.6:151
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "COPYRIGHT"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:178 ../../doc/man/wesnoth_editor.6:85
+#: ../../doc/man/wesnoth.6:186 ../../doc/man/wesnoth_editor.6:85
 #: ../../doc/man/wesnothd.6:154
 msgid "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2006 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:181 ../../doc/man/wesnoth_editor.6:88
+#: ../../doc/man/wesnoth.6:189 ../../doc/man/wesnoth_editor.6:88
 #: ../../doc/man/wesnothd.6:157
 #, fuzzy
 msgid ""
@@ -568,14 +595,14 @@ msgstr ""
 "PARTICULAR PURPOSE."
 
 # type: SH
-#: ../../doc/man/wesnoth.6:182 ../../doc/man/wesnoth_editor.6:89
+#: ../../doc/man/wesnoth.6:190 ../../doc/man/wesnoth_editor.6:89
 #: ../../doc/man/wesnothd.6:158
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "参见"
 
 # type: Plain text
-#: ../../doc/man/wesnoth.6:185
+#: ../../doc/man/wesnoth.6:193
 msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
 msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
 
@@ -598,9 +625,15 @@ msgid "wesnoth_editor"
 msgstr "wesnoth_editor"
 
 # type: Plain text
-#: ../../doc/man/wesnoth_editor.6:16 ../../doc/man/wesnoth_editor.6:20
+#: ../../doc/man/wesnoth_editor.6:16
 #, no-wrap
 msgid "Battle for Wesnoth map editor"
+msgstr "韦诺之战地图编辑器"
+
+# type: Plain text
+#: ../../doc/man/wesnoth_editor.6:20
+#, fuzzy
+msgid "wesnoth_editor - Battle for Wesnoth map editor"
 msgstr "韦诺之战地图编辑器"
 
 # type: Plain text
