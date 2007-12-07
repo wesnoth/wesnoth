@@ -876,7 +876,11 @@ fi
 # Check for boost iostreams                                           #
 #######################################################################
 
-# FIXME do a check
+BOOST_REQUIRE([1.20])
+BOOST_IOSTREAMS
+CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
+LDFLAGS="$BOOST_IOSTREAMS_LDFLAGS $LDFLAGS"
+LIBS="$BOOST_IOSTREAMS_LIBS $LIBS"
 
 # test for gzip
 gzip_found="yes"
