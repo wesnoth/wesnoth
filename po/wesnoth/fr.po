@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-07 00:27+0100\n"
-"PO-Revision-Date: 2007-11-23 22:07+0100\n"
+"PO-Revision-Date: 2007-12-07 22:01+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: data/_main.cfg:36
 msgid "Compressed Saves"
-msgstr ""
+msgstr "Sauvegardes compressées"
 
 #: data/_main.cfg:43
 msgid "Show Combat"
@@ -1628,9 +1628,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Les unités mécaniques ont généralement « Mécanique » comme seul trait. Commes "
-"ces unités n'ont pas vraiement de vie propre, le drain de vie, la peste et "
-"au poison n'ont aucun effet sur elles."
+"Les unités mécaniques ont généralement « Mécanique » comme seul trait. "
+"Commes ces unités n'ont pas vraiement de vie propre, le drain de vie, la "
+"peste et au poison n'ont aucun effet sur elles."
 
 #: data/core/help.cfg:349
 msgid "Dextrous"
@@ -2328,7 +2328,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:637
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2337,8 +2336,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Passe en mode débug (cela ne fonctionne pas en mode multijoueur). Le mode "
-"débug est désactivé à la fin de la partie ou par la commande :nodebug.\n"
+"Passe en mode débug (cela ne fonctionne pas en mode multijoueur). Voir "
+"<ref>dst=debug_commands text='Commandes du mode débug'</ref>.\n"
+"Le mode débug est désactivé à la fin de la partie ou par la commande :"
+"nodebug.\n"
 
 #: data/core/help.cfg:638
 msgid "Bring up theme selection menu."
@@ -2349,7 +2350,6 @@ msgid "Multiplayer commands"
 msgstr "Commandes multijoueurs"
 
 #: data/core/help.cfg:647
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2406,9 +2406,8 @@ msgstr ""
 "Bascule entre ignorer/ne pas ignorer les messages de tous les observateurs."
 
 #: data/core/help.cfg:662
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Commandes générales"
+msgstr "Commandes du mode débug"
 
 #: data/core/help.cfg:666
 msgid ""
@@ -2416,16 +2415,18 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Crée une unité de ce type sur la case séléctionnée.\n"
+"\n"
 
 #: data/core/help.cfg:669
-#, fuzzy
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Active/Desactive l'affichage du nombre d'images par seconde.\n"
+"Active/Désactive voile et brouillard pour le joueur en train de jouer.\n"
 "\n"
 
 #: data/core/help.cfg:672
@@ -2434,6 +2435,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Donne cette quantité de pièces d'or au joueur en train de jouer.\n"
+"\n"
 
 #: data/core/help.cfg:675
 msgid ""
@@ -2441,6 +2445,9 @@ msgid ""
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Change manuellement une variable d'état par cette valeur.\n"
+"\n"
 
 #: data/core/help.cfg:678
 msgid ""
@@ -2448,6 +2455,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Affiche une variable d'état.\n"
+"\n"
 
 #: data/core/help.cfg:681
 msgid ""
@@ -2455,6 +2465,9 @@ msgid ""
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
+"\n"
+"Déclenche manuellement cet événement.\n"
+"\n"
 
 #: data/core/help.cfg:682
 msgid ""
@@ -2462,6 +2475,8 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
+"\n"
+"Modifie une propriété de unité séléctionée. Par exemple : :unit hitpoints=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -4279,54 +4294,48 @@ msgid "Teal"
 msgstr "Turquoise"
 
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bat"
-msgstr "Chauves-souris"
+msgstr "Chauve-souris"
 
 #: data/core/units.cfg:44
 msgid "race^Bats"
 msgstr "Chauves-souris"
 
 #: data/core/units.cfg:51
-#, fuzzy
 msgid "race^Drake"
-msgstr "Dracans"
+msgstr "Dracan"
 
 #: data/core/units.cfg:52
 msgid "race^Drakes"
 msgstr "Dracans"
 
 #: data/core/units.cfg:60
-#, fuzzy
 msgid "race^Dwarf"
-msgstr "Nains"
+msgstr "Nain"
 
 #: data/core/units.cfg:61
 msgid "race^Dwarves"
 msgstr "Nains"
 
 #: data/core/units.cfg:70
-#, fuzzy
 msgid "race^Elf"
-msgstr "Elfes"
+msgstr "Elfe"
 
 #: data/core/units.cfg:71
 msgid "race^Elves"
 msgstr "Elfes"
 
 #: data/core/units.cfg:81
-#, fuzzy
 msgid "race^Goblin"
-msgstr "Gobelins"
+msgstr "Gobelin"
 
 #: data/core/units.cfg:82
 msgid "race^Goblins"
 msgstr "Gobelins"
 
 #: data/core/units.cfg:90
-#, fuzzy
 msgid "race^Gryphon"
-msgstr "Gryphons"
+msgstr "Gryphon"
 
 #: data/core/units.cfg:91
 msgid "race^Gryphons"
@@ -4340,18 +4349,16 @@ msgid ""
 msgstr ""
 
 #: data/core/units.cfg:99
-#, fuzzy
 msgid "race^Human"
-msgstr "Humains"
+msgstr "Humain"
 
 #: data/core/units.cfg:100
 msgid "race^Humans"
 msgstr "Humains"
 
 #: data/core/units.cfg:108
-#, fuzzy
 msgid "race^Saurian"
-msgstr "Sauriens"
+msgstr "Saurien"
 
 #: data/core/units.cfg:109
 msgid "race^Saurians"
@@ -4359,44 +4366,39 @@ msgstr "Sauriens"
 
 #: data/core/units.cfg:118
 msgid "race^Mechanical"
-msgstr "Mécaniques"
+msgstr "Mécanique"
 
 #: data/core/units.cfg:119
-#, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "Mécaniques"
 
 #: data/core/units.cfg:129
-#, fuzzy
 msgid "race^Merman"
-msgstr "Ondins"
+msgstr "Ondin"
 
 #: data/core/units.cfg:130
 msgid "race^Mermen"
 msgstr "Ondins"
 
 #: data/core/units.cfg:138
-#, fuzzy
 msgid "race^Monster"
-msgstr "Monstres"
+msgstr "Monstre"
 
 #: data/core/units.cfg:139
 msgid "race^Monsters"
 msgstr "Monstres"
 
 #: data/core/units.cfg:146
-#, fuzzy
 msgid "race^Naga"
-msgstr "Nagas"
+msgstr "Naga"
 
 #: data/core/units.cfg:147
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #: data/core/units.cfg:155
-#, fuzzy
 msgid "race^Ogre"
-msgstr "Ogres"
+msgstr "Ogre"
 
 #: data/core/units.cfg:156
 msgid "race^Ogres"
@@ -4411,18 +4413,16 @@ msgid ""
 msgstr ""
 
 #: data/core/units.cfg:164
-#, fuzzy
 msgid "race^Orc"
-msgstr "Orcs"
+msgstr "Orc"
 
 #: data/core/units.cfg:165
 msgid "race^Orcs"
 msgstr "Orcs"
 
 #: data/core/units.cfg:173
-#, fuzzy
 msgid "race^Troll"
-msgstr "Trolls"
+msgstr "Troll"
 
 #: data/core/units.cfg:174
 msgid "race^Trolls"
@@ -4433,18 +4433,16 @@ msgid "race^Undead"
 msgstr "Mort-vivant"
 
 #: data/core/units.cfg:188
-#, fuzzy
 msgid "race+plural^Undead"
-msgstr "Mort-vivant"
+msgstr "Morts-vivants"
 
 #: data/core/units.cfg:189
 msgid "Undead units are the bodies of the dead, risen to fight again."
 msgstr ""
 
 #: data/core/units.cfg:197
-#, fuzzy
 msgid "race^Wose"
-msgstr "Woses"
+msgstr "Wose"
 
 #: data/core/units.cfg:198
 msgid "race^Woses"
@@ -4851,13 +4849,13 @@ msgstr ""
 "vous puissiez recruter de là."
 
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Les squelettes sont résistants aux attaques perçantes et tranchantes mais "
-"vulnérables aux attaques contondantes, au feu et aux attaques sacrées."
+"Les squelettes sont résistants aux attaques perçantes, tranchantes et au "
+"froid, mais vulnérables aux attaques contondantes, au feu et aux attaques "
+"sacrées."
 
 #: data/hardwired/tips.cfg:78
 msgid "- Memoirs of Gweddry, 627YW"
@@ -5039,7 +5037,7 @@ msgstr ""
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
-msgstr ""
+msgstr "rubis de feu"
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -5249,9 +5247,8 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(appuyez sur $hotkey pour poursuivre le mouvement)"
 
 #: src/ai.cpp:1682
-#, fuzzy
 msgid "Unknown unit type : "
-msgstr "Type d'unité inconnu : « $type| »"
+msgstr "Type d'unité inconnu : "
 
 #: src/dialogs.cpp:108
 msgid "Advance Unit"
@@ -6052,6 +6049,7 @@ msgstr "Lecture des fichiers et création du cache"
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
+"Les cartes aléatoires avec une dimension impaire ne sont pas supportées."
 
 #: src/menu_events.cpp:125 src/menu_events.cpp:174
 msgid "Recruits"
@@ -6238,11 +6236,10 @@ msgstr ""
 "obliques ni de barres obliques inverses. Veuillez choisir un autre nom."
 
 #: src/menu_events.cpp:715
-#, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
-"Les noms des sauvegardes de peuvent pas contenir de double-points, de barres "
-"obliques ni de barres obliques inverses. Veuillez choisir un autre nom."
+"Les noms des sauvegardes de doivent pas finir par « .gz ». Veuillez choisir "
+"un autre nom."
 
 #: src/menu_events.cpp:726
 msgid "Saved"
@@ -6381,7 +6378,6 @@ msgid "Place Label"
 msgstr "Placer une note"
 
 #: src/menu_events.cpp:1666 src/menu_events.cpp:1669
-#, fuzzy
 msgid "Label: "
 msgstr "Note : "
 
@@ -7026,9 +7022,8 @@ msgid "Client disconnected"
 msgstr "Client déconnecté."
 
 #: src/network.cpp:160
-#, fuzzy
 msgid "No server ping since at least 60 seconds. Connection timed out."
-msgstr "Pas de réponse du serveur depuis 30 secondes. Délai d'attente dépassé."
+msgstr "Pas de réponse du serveur depuis 60 secondes. Délai d'attente dépassé."
 
 #: src/network.cpp:508
 msgid "Could not add socket to socket set"
