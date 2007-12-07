@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-12-07 00:28+0100\n"
-"PO-Revision-Date: 2007-10-25 17:58+0200\n"
+"PO-Revision-Date: 2007-12-07 17:58+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -192,9 +192,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gunzip>I<\\ E<lt>infileE<gt>>"
-msgstr "B<--load>I<\\ gemtspil>"
+msgstr "B<--gunzip>I<\\ E<lt>infileE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
@@ -202,20 +202,23 @@ msgid ""
 "decompresses a savefile which should be a .gz file (infile) and stores it "
 "without the .gz suffix. The (infile) will be removed."
 msgstr ""
+"pakker et gemt spil som bør være en .gz fil (gemtspil) og gemmer den uden ."
+"gz endelsen. (Gemtspil) fjernes."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gzip>I<\\ E<lt>infileE<gt>>"
-msgstr "B<--load>I<\\ gemtspil>"
+msgstr "B<--gzip>I<\\ E<lt>infileE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:75
-#, fuzzy
 msgid ""
 "compresses a savefile (infile) as gzip file and stores it as (infile.gz)  "
 "and removes (infile)."
-msgstr "komprimerer en gemt fil fra formatet WML til binært WML."
+msgstr ""
+"komprimerer en gemt fil som en gzip fil og gemmer den som (gemtfil.gz)  og "
+"fjerne (gemtfil)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:75
@@ -233,9 +236,9 @@ msgstr ""
 
 # type: TP
 #: ../../doc/man/wesnoth.6:78
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--load>I<\\ E<lt>savegameE<gt>>"
-msgstr "B<--load>I<\\ gemtspil>"
+msgstr "B<--load>I<\\ E<lt>savegameE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:81
@@ -246,19 +249,18 @@ msgstr "henter det gemte spil fra standardkataloget for gemte spil."
 #: ../../doc/man/wesnoth.6:81 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
-msgstr ""
+msgstr "B<--log-E<lt>levelE<gt>=\"domain1,domain2,...\">"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:86
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug. By default "
 "the error level is used."
 msgstr ""
 "indstiller strenghedsniveauet på fejlsøgningsdomænerne. \"all\" kan bruges "
-"til alle fejlsøgningsdomæner. B<--log-info> viser alle beskeder, B<--log-"
-"warning> viser kun advarsler og fejl og B<--log-error> kun fejl."
+"til alle fejlsøgningsdomæner. Tilgængelige niveauer: fejl, advarsel, info, "
+"fejlsøgning. Som standard bruges fejl-niveauet."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:86 ../../doc/man/wesnoth_editor.6:72
@@ -554,17 +556,16 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:169
 #, no-wrap
 msgid "Example to test your own AI against the default AI without starting the GUI:"
-msgstr ""
+msgstr "Eksempel så du kan teste din egen kunstige intelligens mod standarden uden at starte GUI'en:"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:172
-#, fuzzy
 msgid ""
 "wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
 "algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 msgstr ""
-"wesnoth --multiplayer --controller2=python_ai --algorithm2=python_ai --"
-"parm2=python_script:py/my_own_python_ai.py --side2=Rebels"
+"wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --"
+"algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py"
 
 # type: SH
 #: ../../doc/man/wesnoth.6:173 ../../doc/man/wesnoth_editor.6:76
@@ -666,9 +667,8 @@ msgstr "Kampen om Wesnoths kortredigering"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:20
-#, fuzzy
 msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr "Kampen om Wesnoths kortredigering"
+msgstr "wesnoth_editor - Kampen om Wesnoths kortredigering"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:23
@@ -838,14 +838,14 @@ msgstr "B<-c,\\ --config>I<\\ sti>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:49
-#, fuzzy
 msgid ""
 "tells wesnothd where to find the config file to use. See the section "
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
 "fortæller wesnothd hvor den skal finde konfigurationsfilen. Se afsnittet "
-"B<SERVERINDSTILLING> nedenfor for syntaks."
+"B<SERVERINDSTILLING> nedenfor for syntaks. Du kan hente konfigurationen ved "
+"at sende SIGHUP til serverprocessen."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:49
@@ -866,14 +866,13 @@ msgstr "B<-h,\\ --help>"
 
 # type: Plain text
 #: ../../doc/man/wesnothd.6:59
-#, fuzzy
 msgid ""
 "sets the severity level of the debug domains. \"all\" can be used to match "
 "any debug domain. Available levels: error, warning, info, debug."
 msgstr ""
 "indstiller strenghedsniveauet på fejlsøgningsdomænerne. \"all\" kan bruges "
-"til alle fejlsøgningsdomæner. B<--log-info> viser alle beskeder, B<--log-"
-"warning> viser kun advarsler og fejl og B<--log-error> kun fejl."
+"til alle fejlsøgningsdomæner. Tilgængelige niveauer: Fejl, advarsel, info, "
+"fejlsøgning."
 
 # type: TP
 #: ../../doc/man/wesnothd.6:59

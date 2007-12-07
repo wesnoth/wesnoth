@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-11-30 17:11+0100\n"
-"PO-Revision-Date: 2007-09-30 20:06+0100\n"
+"PO-Revision-Date: 2007-12-07 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -175,9 +175,8 @@ msgid "Mushroom Grove"
 msgstr "Champignonskov"
 
 #: data/core/terrain.cfg:644
-#, fuzzy
 msgid "Mushroom Grove Lit"
-msgstr "Champignonskov"
+msgstr "Oplyst champignonskov"
 
 #: data/core/terrain.cfg:654
 msgid "Rockbound Cave"
@@ -224,7 +223,7 @@ msgstr "Hulemur"
 
 #: data/core/terrain.cfg:935
 msgid "Void"
-msgstr ""
+msgstr "Tomrum"
 
 #: src/construct_dialog.cpp:139 src/construct_dialog.cpp:146
 #: src/editor/editor_dialogs.cpp:423
@@ -382,11 +381,11 @@ msgstr "Vis ikke computerens ryk"
 
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Gem gengivelse ved ES/FS sejr eller FS nederlag"
 
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "Slet gemte spil ved ES/FS sejr eller FS nederlag"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -453,7 +452,6 @@ msgid "Show Haloing Effects"
 msgstr "Vis glorieeffekt"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Change Resolution"
 msgstr "Vælg opløsning"
 
@@ -483,11 +481,11 @@ msgstr "Snakke tidsstempling"
 
 #: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "Avancerede indstillinger"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "Standardindstillinger"
 
 #: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
@@ -616,20 +614,21 @@ msgstr "Enhedens frekvens for ledig-animationer"
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr ""
+msgstr "Maksimum for antal gemte spil"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
 msgstr "Animér ikke computerenhedernes bevægelse"
 
+# SP = singleplayer, MP = multiplayer
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr ""
+msgstr "Vælg gengivelse af ES sejr eller ES/FS nederlag."
 
+# SP = singleplayer, MP = multiplayer
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "Slet de automatisk gemte spil når scenariet slutter"
+msgstr "Slet de automatisk gemte spil ved ES sejr eller ES/FS nederlag"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
@@ -733,11 +732,11 @@ msgstr "Hastighed: "
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
-msgstr ""
+msgstr "Maks gemte spil: "
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
-msgstr ""
+msgstr "uendelig"
 
 #: src/game_preferences_display.cpp:864
 msgid "Chat Lines: "
@@ -745,9 +744,8 @@ msgstr "Snakkelinjer: "
 
 #: src/game_preferences_display.cpp:886 src/game_preferences_display.cpp:894
 #: src/game_preferences_display.cpp:907
-#, fuzzy
 msgid "Invalid username"
-msgstr "Sæt et brugernavn ind"
+msgstr "Ugyldig brugernavn"
 
 #: src/game_preferences_display.cpp:967
 msgid "yes"
@@ -759,7 +757,7 @@ msgstr "nej"
 
 #: src/game_preferences_display.cpp:1003
 msgid "(empty list)"
-msgstr ""
+msgstr "(tom liste)"
 
 #: src/game_preferences_display.cpp:1121
 msgid "Prefs section^General"
