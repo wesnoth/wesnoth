@@ -720,11 +720,6 @@ void send_data(const config& cfg, connection connection_num)
 	network_worker_pool::queue_data(info->second.sock,cfg);
 }
 
-void queue_data(const config& cfg, connection connection_num)
-{
-	send_data(cfg,connection_num);
-}
-
 void process_send_queue(connection, size_t)
 {
 	check_error();

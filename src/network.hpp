@@ -126,10 +126,6 @@ connection receive_data(config& cfg, connection connection_num, int timeout);
 //! Throws error.
 void send_data(const config& cfg, connection connection_num=0);
 
-//! Function to queue data to be sent. (deprecated)
-//! queue_data(cfg,sock) is equivalent to send_data(cfg,sock)
-void queue_data(const config& cfg, connection connection_num=0);
-
 //! Function to send any data that is in a connection's send_queue,
 //! up to a maximum of 'max_size' bytes --
 //! or the entire send queue if 'max_size' bytes is 0.

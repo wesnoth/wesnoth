@@ -322,7 +322,7 @@ namespace {
 							scoped_istream stream = istream_file((*campaign)["filename"]);
 							read_compressed(cfg, *stream);
 							add_license(cfg);
-							network::queue_data(cfg,sock);
+							network::send_data(cfg,sock);
 
 							const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
 							(*campaign)["downloads"] = lexical_cast<std::string>(downloads);

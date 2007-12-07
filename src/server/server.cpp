@@ -311,7 +311,7 @@ void server::run() {
 				for (player_map::const_iterator i = players_.begin();
 					i != players_.end(); ++i)
 				{
-					network::queue_data(ping, i->first);
+					network::send_data(ping, i->first);
 				}
 				last_ping_ = now;
 			}

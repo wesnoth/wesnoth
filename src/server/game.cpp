@@ -181,7 +181,7 @@ bool game::take_side(network::connection player, const config& cfg)
 					sides_taken_[side_num - 1] = true;
 					config new_cfg = cfg;
 					new_cfg["side"] = (**i)["side"];
-					network::queue_data(new_cfg, owner_);
+					network::send_data(new_cfg, owner_);
 					return true;
 				}
 			}
@@ -214,7 +214,7 @@ bool game::take_side(network::connection player, const config& cfg)
 	sides_[side_num - 1] = player;
 	sides_taken_[side_num - 1] = true;
 	// Send the taken side to the host.
-	network::queue_data(cfg, owner_);
+	network::send_data(cfg, owner_);
 	return true;
 }
 
@@ -401,7 +401,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	send_data(response, newplayer->first);
 	// Tell the new player that he controls this side now.
 	change["controller"] = "human";
-	network::queue_data(response, newplayer->first);
+	network::send_data(response, newplayer->first);
 
 	// Update the level so observer who join get the new name.
 	config::child_itors it = level_.child_range("side");
@@ -416,7 +416,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 			if (side_controllers_[i] == "ai") {
 				change["side"] = lexical_cast<std::string, unsigned int>(i + 1);
 				change["controller"] = "ai";
-				network::queue_data(response, owner_);
+				network::send_data(response, owner_);
 				sides_[side_num - 1] = owner_;
 			}
 		}
@@ -446,7 +446,7 @@ void game::notify_new_host(){
 		config& cfg_host_transfer = cfg.add_child("host_transfer");
 		cfg_host_transfer["name"] = it_host->second.name();
 		cfg_host_transfer["value"] = "1";
-		network::queue_data(cfg, owner_);
+		network::send_data(cfg, owner_);
 	}
 }
 
@@ -679,9 +679,9 @@ void game::add_player(const network::connection player, const bool observer) {
 	//if the game has already started, we add the player as an observer
 	if(started_) {
 		//tell this player that the game has started
-		network::queue_data(config("start_game"), player);
+		network::send_data(config("start_game"), player);
 		// Send the player the history of the game to-date.
-		network::queue_data(history_,player);
+		network::send_data(history_,player);
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway
 		// otherwise.
@@ -691,7 +691,7 @@ void game::add_player(const network::connection player, const bool observer) {
 				if(obs != player_info_->end()) {
 					config cfg;
 					cfg.add_child("observer").values["name"] = obs->second.name();
-					network::queue_data(cfg, player);
+					network::send_data(cfg, player);
 				}
 			}
 		}
@@ -784,7 +784,7 @@ void game::remove_player(const network::connection player, const bool notify_cre
 				config drop;
 				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
 				drop["controller"] = "ai";
-				network::queue_data(drop, owner_);
+				network::send_data(drop, owner_);
 				sides_taken_[side] = false;
 			}
 		}
@@ -802,7 +802,7 @@ void game::remove_player(const network::connection player, const bool notify_cre
 			config drop;
 			drop["side_drop"] = lexical_cast<std::string, size_t>(side - sides_.begin() + 1);
 			drop["controller"] = side_controllers_[side - sides_.begin()];
-			network::queue_data(drop, owner_);
+			network::send_data(drop, owner_);
 		}
 		side_controllers_[side - sides_.begin()] = "null";
 		sides_taken_[side - sides_.begin()] = false;
@@ -837,7 +837,7 @@ void game::send_data(const config& data, const network::connection exclude) cons
 	const user_vector users = all_game_users();
 	for(user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
 		if (*i != exclude) {
-			network::queue_data(data,*i);
+			network::send_data(data,*i);
 		}
 	}
 }
@@ -860,7 +860,7 @@ void game::send_data_team(const config& data, const std::string& team,
 {
 	for(user_vector::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if(*i != exclude && player_on_team(team,*i)) {
-			network::queue_data(data,*i);
+			network::send_data(data,*i);
 		}
 	}
 }
@@ -868,7 +868,7 @@ void game::send_data_team(const config& data, const std::string& team,
 void game::send_data_observers(const config& data, const network::connection exclude) const {
 	for(user_vector::const_iterator i = observers_.begin(); i != observers_.end(); ++i) {
 		if (*i != exclude) {
-			network::queue_data(data,*i);
+			network::send_data(data,*i);
 		}
 	}
 }
