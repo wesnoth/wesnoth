@@ -79,7 +79,40 @@ void team::target::write(config& cfg) const
 	cfg = criteria;
 }
 
-team::team_info::team_info(const config& cfg)
+team::team_info::team_info(const config& cfg) :
+		name(cfg["name"]),
+		gold(cfg["gold"]),
+		start_gold(),
+		income(cfg["income"]),
+		income_per_village(),
+		can_recruit(),
+		global_recruitment_pattern(),
+		recruitment_pattern( utils::split(cfg["recruitment_pattern"])),
+		enemies(),
+		team_name(cfg["team_name"]),
+		user_team_name(cfg["user_team_name"]),
+		save_id(cfg["save_id"]),
+		current_player(cfg["current_player"]),
+		countdown_time(cfg["countdown_time"]),
+		action_bonus_count(lexical_cast_default<int>(cfg["action_bonus_count"])),
+		flag(cfg["flag"]),
+		flag_icon(cfg["flag_icon"]),
+		description(cfg["description"]),
+		objectives(cfg["objectives"]),
+		objectives_changed(utils::string_bool(cfg["objectives_changed"])),
+		controller(),
+		persistent(),
+		ai_algorithm(cfg["ai_algorithm"]),
+		ai_params(),
+		ai_memory_(),
+		villages_per_scout(),
+		leader_value(0.0),
+		village_value(0.0),
+		targets(),
+		share_maps(false),
+		share_view(false),
+		music(cfg["music"]),
+		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"])
 {
 	config global_ai_params;
 	const config::child_list& ai_parameters = cfg.get_children("ai");
@@ -96,8 +129,6 @@ team::team_info::team_info(const config& cfg)
 	  ai_memory_.append(**aimem);
 	}
 
-	gold = cfg["gold"];
-
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
 	// this also handles the loading of older save files, though with wrong
@@ -109,32 +140,16 @@ team::team_info::team_info(const config& cfg)
 	else
 		start_gold = default_team_gold;
 
-	income = cfg["income"];
-	name = cfg["name"];
-	team_name = cfg["team_name"];
-	user_team_name = cfg["user_team_name"];
 	if(team_name.empty()) {
 		team_name = cfg["side"];
 	}
 
-	save_id = cfg["save_id"];
 	if(save_id.empty()) {
-		save_id = cfg["description"];
+		save_id = description;
 	}
-	current_player = cfg["current_player"];
 	if (current_player.empty()) {
 		current_player = save_id;
 	}
-
-	countdown_time = cfg["countdown_time"];
-
-	const std::string& bonus = cfg["action_bonus_count"];
-	if(bonus.empty())
-		action_bonus_count = 0;
-	else
-		action_bonus_count = atoi(bonus.c_str());
-
-	colour = cfg["colour"].size()?cfg["colour"]:cfg["side"];
 
 	int side = atoi(cfg["side"].c_str());
 
@@ -147,13 +162,6 @@ team::team_info::team_info(const config& cfg)
 	}else if(global_rgb != game_config::team_rgb_range.end()){
 		team_color_range_[side] = global_rgb->second;
 	}
-
-	flag = cfg["flag"];
-	flag_icon = cfg["flag_icon"];
-
-	description = cfg["description"];
-	objectives = cfg["objectives"];
-	objectives_changed = utils::string_bool(cfg["objectives_changed"]);
 
 	const std::string& village_income = cfg["village_gold"];
 	if(village_income.empty())
@@ -182,8 +190,6 @@ team::team_info::team_info(const config& cfg)
 	std::string persist = cfg["persistent"];
 	if (persist.empty()) persistent = controller == HUMAN;
 	else persistent = persist == "1";
-
-	ai_algorithm = cfg["ai_algorithm"];
 
 	if(ai_algorithm.empty()) {
 		ai_algorithm = global_ai_params["ai_algorithm"];
@@ -235,8 +241,6 @@ team::team_info::team_info(const config& cfg)
 		recruit_pattern = global_ai_params["recruitment_pattern"];
 	}
 
-	recruitment_pattern = utils::split(recruit_pattern);
-
 	// Default recruitment pattern is to buy 2 fighters for every 1 archer
 	if(recruitment_pattern.empty()) {
 		recruitment_pattern.push_back("fighter");
@@ -266,8 +270,6 @@ team::team_info::team_info(const config& cfg)
 
 	LOG_NG << "team_info::team_info(...): team_name: " << team_name
 	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
-
-	music = cfg["music"];
 }
 
 void team::team_info::write(config& cfg) const
@@ -351,7 +353,22 @@ void team::team_info::write(config& cfg) const
 	cfg["colour"] = lexical_cast_default<std::string>(colour);
 }
 
-team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true), info_(cfg), aggression_(0.0), caution_(0.0)
+team::team(const config& cfg, int gold) : 
+		gold_(gold),
+		villages_(),
+		shroud_(),
+		fog_(),
+		auto_shroud_updates_(true), 
+		info_(cfg), 
+		countdown_time_(0),
+		action_bonus_count_(0),
+		aiparams_(),
+		aggression_(0.0), 
+		caution_(0.0),
+		enemies_(),
+		seen_(),
+		ally_shroud_(),
+		ally_fog_()
 {
 	fog_.set_enabled(cfg["fog"] == "yes");
 	shroud_.set_enabled(cfg["shroud"] == "yes");
