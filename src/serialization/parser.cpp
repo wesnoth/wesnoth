@@ -37,7 +37,6 @@
 #include <stack>
 
 #ifdef USE_GZIP
-#include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #endif

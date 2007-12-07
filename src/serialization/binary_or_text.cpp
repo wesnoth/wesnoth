@@ -28,7 +28,6 @@
 #include <sstream>
 
 #ifdef USE_GZIP
-#include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #endif
 
