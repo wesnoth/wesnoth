@@ -22,7 +22,8 @@
 #include "attack_prediction.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
 
 #define LOG_AI LOG_STREAM(info, ai)
 
@@ -65,7 +66,7 @@ void ai::do_attack_analysis(
 	double rating_to_beat = cur_rating;
 
 	if(!cur_analysis.movements.empty()) {
-		wassert(cur_analysis.movements.size() < 6);
+		assert(cur_analysis.movements.size() < 6);
 		double& best_res = best_results[cur_analysis.movements.size()-1];
 		rating_to_beat = best_res = maximum(best_res,cur_rating);
 	}
@@ -74,7 +75,7 @@ void ai::do_attack_analysis(
 		const location current_unit = units[i];
 
 		unit_map::iterator unit_itor = units_.find(current_unit);
-		wassert(unit_itor != units_.end());
+		assert(unit_itor != units_.end());
 
 		// See if the unit has the backstab ability.
 		// Units with backstab will want to try to have a
@@ -269,7 +270,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
                                   const move_map& enemy_dstsrc, double aggression)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
-	wassert(defend_it != units.end());
+	assert(defend_it != units.end());
 
 	// See if the target is a threat to our leader or an ally's leader.
 	gamemap::location adj[6];
@@ -316,7 +317,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units,
 	double first_chance_kill = 0.0;
 
 	double prob_dead_already = 0.0;
-	wassert(!movements.empty());
+	assert(!movements.empty());
 	std::vector<std::pair<location,location> >::const_iterator m;
 
 	battle_context *prev_bc = NULL;
