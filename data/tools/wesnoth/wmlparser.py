@@ -434,6 +434,9 @@ class Parser:
                         values += [keep_macro]
             elif c == "\n":
                 break
+            elif c == "#":
+                self.read_until("\n")
+                break
             elif c == "+":
                 value = value.rstrip() # remove whitespace before +
                 self.skip_whitespace_inside_statement() # read over newline
