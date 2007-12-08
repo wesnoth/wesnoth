@@ -93,7 +93,29 @@ struct player_info
 class game_state : public variable_set
 {
 public:
-	game_state() : difficulty("NORMAL"), last_selected(gamemap::location::null_location) {}
+	game_state() : 
+		label(),
+		version(),
+		campaign_type(),
+		campaign_define(),
+		campaign_xtra_defines(),
+		campaign(),
+		abbrev(),
+		scenario(),
+		next_scenario(),
+		completion(),
+		players(),
+		scoped_variables(),
+		wml_menu_items(),
+		difficulty("NORMAL"), 
+		replay_data(),
+		starting_pos(),
+		snapshot(),
+		last_selected(gamemap::location::null_location), 
+		variables(),
+		temporaries()
+		{}
+
 	game_state(const game_state& state);
 	game_state(const game_data& data, const config& cfg);
 
@@ -104,14 +126,14 @@ public:
 	std::string version;                             //!< Version game was created with.
 	std::string campaign_type;                       //!< Type of the game - campaign, multiplayer etc.
 
-	std::string campaign_define;                     //! If there is a define the campaign uses to customize data
-	std::vector<std::string> campaign_xtra_defines;  // more customization of data
+	std::string campaign_define;                     //!< If there is a define the campaign uses to customize data
+	std::vector<std::string> campaign_xtra_defines;  //!< more customization of data
 
-	std::string campaign;   //!< the campaign being played
-	std::string abbrev;	//!< the campaign abbreviation
-	std::string scenario;   //!< the scenario being played
-	std::string next_scenario; //!< the scenario coming next (for campaigns)
-	std::string completion; //!< running. victory, or defeat
+	std::string campaign;                            //!< the campaign being played
+	std::string abbrev;	                             //!< the campaign abbreviation
+	std::string scenario;                            //!< the scenario being played
+	std::string next_scenario;                       //!< the scenario coming next (for campaigns)
+	std::string completion;                          //!< running. victory, or defeat
 
 	//! Information about campaign players who carry resources
 	//! from previous levels, indexed by a string identifier
@@ -205,6 +227,13 @@ private:
 	std::vector<time_of_day> times_;
 
 	struct area_time_of_day {
+		area_time_of_day() :
+			xsrc(),
+			ysrc(),
+			times(),
+			hexes()
+			{}
+
 		std::string xsrc, ysrc;
 		std::vector<time_of_day> times;
 		std::set<gamemap::location> hexes;

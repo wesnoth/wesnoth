@@ -180,10 +180,15 @@ static void parse_times(const config& cfg, std::vector<time_of_day>& normal_time
 //! It sets random starting ToD and current_tod to config.
 //!
 gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g) :
-  turn_(1),numTurns_(num_turns),currentTime_(0),state_of_game_(s_o_g)
+		teams(0),
+		times_(),
+		areas_(),
+		turn_(1),
+		numTurns_(num_turns),
+		currentTime_(0),
+		state_of_game_(s_o_g)
 {
-	teams = NULL;
-    std::string turn_at = time_cfg["turn_at"];
+	std::string turn_at = time_cfg["turn_at"];
 	std::string current_tod = time_cfg["current_tod"];
 	std::string random_start_time = time_cfg["random_start_time"];
 	if (s_o_g)
@@ -193,11 +198,9 @@ gamestatus::gamestatus(const config& time_cfg, int num_turns, game_state* s_o_g)
 
 	}
 
-	if(turn_at.empty() == false)
-	{
+	if(turn_at.empty() == false) {
 		turn_ = atoi(turn_at.c_str());
 	}
-
 
 	parse_times(time_cfg,times_);
 
@@ -422,16 +425,29 @@ static player_info read_player(const game_data& data, const config* cfg)
 	return res;
 }
 
-game_state::game_state(const game_data& data, const config& cfg)
-: difficulty("NORMAL"), last_selected(gamemap::location::null_location)
+game_state::game_state(const game_data& data, const config& cfg) :
+		label(cfg["label"]),
+		version(cfg["version"]),
+		campaign_type(cfg["campaign_type"]),
+		campaign_define(cfg["campaign_define"]),
+		campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
+		campaign(cfg["campaign"]),
+		abbrev(),
+		scenario(cfg["scenario"]),
+		next_scenario(cfg["next_scenario"]),
+		completion(cfg["completion"]),
+		players(),
+		scoped_variables(),
+		wml_menu_items(),
+		difficulty(cfg["difficulty"]),
+		replay_data(),
+		starting_pos(),
+		snapshot(),
+		last_selected(gamemap::location::null_location),
+		variables(),
+		temporaries()
 {
 	log_scope("read_game");
-	label = cfg["label"];
-	version = cfg["version"];
-	scenario = cfg["scenario"];
-	next_scenario = cfg["next_scenario"];
-	completion = cfg["completion"];
-	campaign = cfg["campaign"];
 
 	const config* snapshot = cfg.child("snapshot");
 
@@ -457,17 +473,13 @@ game_state::game_state(const game_data& data, const config& cfg)
 	std::cerr << "scenario: '" << scenario << "'\n";
 	std::cerr << "next_scenario: '" << next_scenario << "'\n";
 
-	difficulty = cfg["difficulty"];
-	if(difficulty.empty())
+	if(difficulty.empty()) {
 		difficulty = "NORMAL";
+	}
 
-	campaign_define = cfg["campaign_define"];
-
-	campaign_xtra_defines = utils::split(cfg["campaign_extra_defines"]);
-
-	campaign_type = cfg["campaign_type"];
-	if(campaign_type.empty())
+	if(campaign_type.empty()) {
 		campaign_type = "scenario";
+	}
 
 	const config* const vars = cfg.child("variables");
 	if(vars != NULL) {
@@ -1150,7 +1162,15 @@ void game_state::set_menu_items(const config::child_list& menu_items) {
 	}
 }
 
-wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) : needs_select(false)
+wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) : 
+		name(),
+		image(),
+		description(),
+		needs_select(false),
+		show_if(),
+		filter_location(),
+		command()
+
 {
 	std::stringstream temp;
 	temp << "menu item";
