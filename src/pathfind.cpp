@@ -102,124 +102,120 @@ bool enemy_zoc(gamemap const &map,
 	return false;
 }
 
-static void find_routes(const gamemap& map, const gamestatus& status,
-		const game_data& gamedata,
-		const unit_map& units,
-		const unit& u,
-		const gamemap::location& loc,
-		int move_left,
-		std::map<gamemap::location,paths::route>& routes,
+static void find_routes(const gamemap& map, const unit_map& units,
+		const unit& u, const gamemap::location& loc,
+		int move_left, std::map<gamemap::location,paths::route>& routes,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		  bool starting_pos, const team &viewing_team, bool see_all)
-	{
-		if(size_t(u.side()-1) >= teams.size()) {
-			return;
-		}
+{
+	if(size_t(u.side()-1) >= teams.size()) {
+		return;
+	}
 
-		team const &current_team = teams[u.side()-1];
+	team const &current_team = teams[u.side()-1];
 
-		// Find adjacent tiles
-		std::vector<gamemap::location> locs(6);
-		get_adjacent_tiles(loc,&locs[0]);
+	// Find adjacent tiles
+	std::vector<gamemap::location> locs(6);
+	get_adjacent_tiles(loc,&locs[0]);
 
-		// Check for teleporting units -- we must be on a vacant village
-		// (or occupied by this unit), that is controlled by our team
-		// to be able to teleport.
-		if (allow_teleport && map.is_village(loc) &&
-		    current_team.owns_village(loc) &&
-			(starting_pos || find_visible_unit(units, loc, map,
-										teams, viewing_team,see_all) == units.end())) {
-			
+	// Check for teleporting units -- we must be on a vacant village
+	// (or occupied by this unit), that is controlled by our team
+	// to be able to teleport.
+	if (allow_teleport && map.is_village(loc) &&
+		current_team.owns_village(loc) &&
+		(starting_pos || find_visible_unit(units, loc, map,
+									teams, viewing_team,see_all) == units.end())) {
 
-			// If we are on a village, search all known empty friendly villages
-			// that we can teleport to
-			const std::set<gamemap::location>& villages = current_team.villages();
-			for(std::set<gamemap::location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
-				if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(*t))
-						&& find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end()) {
-					locs.push_back(*t);
-				}
-			}
-		}
 
-		// Iterate over all adjacent tiles
-		for(size_t i = 0; i != locs.size(); ++i) {
-			const gamemap::location& currentloc = locs[i];
-
-			// Check if the adjacent location is off the board
-			if (currentloc.x < 0 || currentloc.y < 0 ||
-			    currentloc.x >= map.w() || currentloc.y >= map.h())
-				continue;
-
-			// See if the tile is on top of an enemy unit
-			const unit_map::const_iterator unit_it =
-			  find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
-
-			if (unit_it != units.end() &&
-			    current_team.is_enemy(unit_it->second.side()))
-				continue;
-
-			// Find the terrain of the adjacent location
-			const t_translation::t_letter terrain = map[currentloc];
-
-			// Find the movement cost of this type onto the terrain
-			const int move_cost = u.movement_cost(terrain);
-			if (move_cost <= move_left ||
-			    turns_left > 0 && move_cost <= u.total_movement()) {
-				int new_move_left = move_left - move_cost;
-				int new_turns_left = turns_left;
-				if (new_move_left < 0) {
-					--new_turns_left;
-					new_move_left = u.total_movement() - move_cost;
-				}
-
-				// We will check if a better route to that tile has already been found
-				const std::map<gamemap::location,paths::route>::const_iterator
-					old_rt = routes.find(currentloc);
-				int old_move_left = -1;
-				if (old_rt != routes.end())
-					old_move_left = old_rt->second.move_left;
-
-				// Only check ZoC if asked and if there is move to remove
-				if (!force_ignore_zocs && new_move_left > 0) {
-					// Test if, even with no ZoC, we already have a better route,
-					// so no need to try with ZoC (and thus no need to search ZoC)
-					const int total_move_no_zoc = new_turns_left * u.total_movement() + new_move_left;
-					if(old_move_left >= total_move_no_zoc)
-						continue;
-
-					bool zoc = enemy_zoc(map,units,teams, currentloc, viewing_team,u.side(),see_all);
-
-					// Check skirmisher only on ZoC (expensive and supposed to be rare)
-					if (zoc && !u.get_ability_bool("skirmisher",currentloc)) {
-						new_move_left = 0;
-					}
-				}
-
-				const int new_total_move = new_turns_left * u.total_movement() + new_move_left;
-
-				// Check if we already have a better route (now also use the possible ZoC)
-				if(old_move_left >= new_total_move)
-					continue;
-
-				paths::route& src_route = routes[loc];
-				paths::route& new_route = routes[currentloc];
-				new_route.steps = src_route.steps;
-				new_route.steps.push_back(loc);
-				new_route.move_left = new_total_move;
-
-				if (new_route.move_left > 0) {
-					find_routes(map, status, gamedata, units, u, currentloc,
-								new_move_left, routes, teams, force_ignore_zocs,
-					            allow_teleport, new_turns_left, false, viewing_team, see_all);
-				}
+		// If we are on a village, search all known empty friendly villages
+		// that we can teleport to
+		const std::set<gamemap::location>& villages = current_team.villages();
+		for(std::set<gamemap::location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
+			if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(*t))
+					&& find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end()) {
+				locs.push_back(*t);
 			}
 		}
 	}
 
-paths::paths(gamemap const &map, gamestatus const &status,
-             game_data const &gamedata,
+	// Iterate over all adjacent tiles
+	for(size_t i = 0; i != locs.size(); ++i) {
+		const gamemap::location& currentloc = locs[i];
+
+		// Check if the adjacent location is off the board
+		if (currentloc.x < 0 || currentloc.y < 0 ||
+			currentloc.x >= map.w() || currentloc.y >= map.h())
+			continue;
+
+		// See if the tile is on top of an enemy unit
+		const unit_map::const_iterator unit_it =
+		  find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
+
+		if (unit_it != units.end() &&
+			current_team.is_enemy(unit_it->second.side()))
+			continue;
+
+		// Find the terrain of the adjacent location
+		const t_translation::t_letter terrain = map[currentloc];
+
+		// Find the movement cost of this type onto the terrain
+		const int move_cost = u.movement_cost(terrain);
+		if (move_cost <= move_left ||
+			turns_left > 0 && move_cost <= u.total_movement()) {
+			int new_move_left = move_left - move_cost;
+			int new_turns_left = turns_left;
+			if (new_move_left < 0) {
+				--new_turns_left;
+				new_move_left = u.total_movement() - move_cost;
+			}
+
+			// We will check if a better route to that tile has already been found
+			const std::map<gamemap::location,paths::route>::const_iterator
+				old_rt = routes.find(currentloc);
+			int old_move_left = -1;
+			if (old_rt != routes.end())
+				old_move_left = old_rt->second.move_left;
+
+			// Only check ZoC if asked and if there is move to remove
+			if (!force_ignore_zocs && new_move_left > 0) {
+				// Test if, even with no ZoC, we already have a better route,
+				// so no need to try with ZoC (and thus no need to search ZoC)
+				const int total_move_no_zoc = new_turns_left * u.total_movement() + new_move_left;
+				if(old_move_left >= total_move_no_zoc)
+					continue;
+
+				bool zoc = enemy_zoc(map,units,teams, currentloc, viewing_team,u.side(),see_all);
+
+				// Check skirmisher only on ZoC (expensive and supposed to be rare)
+				if (zoc && !u.get_ability_bool("skirmisher",currentloc)) {
+					new_move_left = 0;
+				}
+			}
+
+			const int new_total_move = new_turns_left * u.total_movement() + new_move_left;
+
+			// Check if we already have a better route (now also use the possible ZoC)
+			if(old_move_left >= new_total_move)
+				continue;
+
+			paths::route& src_route = routes[loc];
+			paths::route& new_route = routes[currentloc];
+			new_route.steps = src_route.steps;
+			new_route.steps.push_back(loc);
+			new_route.move_left = new_total_move;
+
+			if (new_route.move_left > 0) {
+				find_routes(map, units, u, currentloc,
+							new_move_left, routes, teams, force_ignore_zocs,
+							allow_teleport, new_turns_left, false, viewing_team, see_all);
+			}
+		}
+	}
+}
+
+paths::paths(gamemap const &map, gamestatus const &/*status*/,
+             game_data const &/*gamedata*/,
              unit_map const &units,
              gamemap::location const &loc,
              std::vector<team> const &teams,
@@ -234,7 +230,7 @@ paths::paths(gamemap const &map, gamestatus const &status,
 	}
 
 	routes[loc].move_left = i->second.movement_left();
-	find_routes(map,status,gamedata,units,i->second,loc,
+	find_routes(map,units,i->second,loc,
 		i->second.movement_left(),routes,teams,force_ignore_zoc,
 		allow_teleport,additional_turns,true,viewing_team, see_all);
 }
