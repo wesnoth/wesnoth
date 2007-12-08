@@ -258,7 +258,9 @@ void wait::join_game(bool observe)
 		cfg["faction"] = "random";
 		cfg["leader"] = "random";
 		cfg["gender"] = "random";
-		network::send_data(cfg);
+		//! @todo To avoid chicken and egg first enable the server to receive 
+		//! gzipped data.
+		network::send_data(cfg, 0, false);
 
 		if(allow_changes) {
 			events::event_context context;
@@ -304,7 +306,9 @@ void wait::join_game(bool observe)
 			change["faction"] = lexical_cast<std::string>(faction_choice);
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
-			network::send_data(faction);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(faction, 0, false);
 		}
 
 	}

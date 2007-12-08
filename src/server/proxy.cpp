@@ -75,14 +75,15 @@ void disconnect(network::connection sock)
 	network::disconnect(peer);
 }
 
-void received_data(network::connection sock, const config& data)
+//! @todo remove gzip param after 1.3.12 is no longer allowed on the server.
+void received_data(network::connection sock, const config& data, const bool send_gzipped)
 {
 	const network::connection peer = find_peer(sock);
 	if(!peer) {
 		return;
 	}
 
-	network::send_data(data,peer);
+	network::send_data(data, peer, send_gzipped);
 }
 
 }

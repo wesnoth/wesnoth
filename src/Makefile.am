@@ -239,6 +239,7 @@ wesnothd_SOURCES = \
 	network.cpp \
 	network_worker.cpp \
 	loadscreen_empty.cpp \
+	serialization/binary_or_text.cpp \
 	serialization/parser.cpp
 
 wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
@@ -254,6 +255,7 @@ campaignd_SOURCES = \
 	network_worker.cpp \
 	publish_campaign.cpp \
 	loadscreen_empty.cpp \
+	serialization/binary_or_text.cpp \
 	serialization/parser.cpp
 
 campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)

@@ -191,7 +191,9 @@ void notify_next_scenario(const io_type_t io_type){
 		cfg_notify["is_host"] = "1";
 	else
 		cfg_notify["is_host"] = "0";
-	network::send_data(cfg);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(cfg, 0, false);
 }
 
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
@@ -455,7 +457,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				config cfg;
 				std::string msg = _("Downloading next scenario...");
 				config cfg_load = cfg.add_child("load_next_scenario");
-				network::send_data(cfg);
+				//! @todo To avoid chicken and egg first enable the server to receive 
+				//! gzipped data.
+				network::send_data(cfg, 0, false);
 
 				do {
 					cfg.clear();
@@ -518,7 +522,9 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// information, to the configuration object
 				wassert(cfg.child("store_next_scenario") != NULL);
 				write_game(gamestate, *cfg.child("store_next_scenario"), WRITE_SNAPSHOT_ONLY);
-				network::send_data(cfg);
+				//! @todo To avoid chicken and egg first enable the server to receive 
+				//! gzipped data.
+				network::send_data(cfg, 0, false);
 
 				//notifies the clients that the host advanced to the next scenario
 				notify_next_scenario(IO_SERVER);

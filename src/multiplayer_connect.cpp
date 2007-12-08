@@ -898,7 +898,9 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 		}
 	}
 	create_game["human_sides"] = lexical_cast<std::string>(human_sides);*/
-	network::send_data(response);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(response, 0, false);
 
 	// Adds the current user as default user.
 	users_.push_back(connected_user(preferences::login(), CNTR_LOCAL, 0));
@@ -926,7 +928,9 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 	gamelist_updated(true);
 
 	// If we are connected, send data to the connected host
-	network::send_data(level_);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(level_, 0, false);
 }
 
 void connect::process_event()
@@ -943,7 +947,7 @@ void connect::process_event()
 		if(network::nconnections() > 0) {
 			config cfg;
 			cfg.add_child("leave_game");
-			network::send_data(cfg);
+			network::send_data(cfg, 0, false);
 		}
 
 		set_result(QUIT);
@@ -979,13 +983,17 @@ void connect::start_game()
 	// Make other clients not show the results of resolve_random().
 	config lock;
 	lock.add_child("stop_updates");
-	network::send_data(lock);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(lock, 0, false);
 	update_and_send_diff(true);
 
 	// Build the gamestate object after updating the level
 	level_to_gamestate(level_, state_, params_.saved_game);
 
-	network::send_data(config("start_game"));
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(config("start_game"), 0, false);
 }
 
 void connect::hide_children(bool hide)
@@ -1041,7 +1049,9 @@ void connect::process_network_data(const config& data, const network::connection
 		if(name.empty()) {
 			config response;
 			response.values["failed"] = "yes";
-			network::send_data(response,sock);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(response, sock, false);
 			ERR_CF << "ERROR: No username provided with the side.\n";
 			return;
 		}
@@ -1052,13 +1062,17 @@ void connect::process_network_data(const config& data, const network::connection
 				config response;
 				response.values["failed"] = "yes";
 				response["message"] = "The nick '" + name + "' is already in use.";
-				network::send_data(response,sock);
+				//! @todo To avoid chicken and egg first enable the server to receive 
+				//! gzipped data.
+				network::send_data(response, sock, false);
 				return;
 			} else {
 				users_.erase(player);
 				config observer_quit;
 				observer_quit.add_child("observer_quit").values["name"] = name;
-				network::send_data(observer_quit);
+				//! @todo To avoid chicken and egg first enable the server to receive 
+				//! gzipped data.
+				network::send_data(observer_quit, 0, false);
 				update_user_combos();
 			}
 		}
@@ -1079,12 +1093,16 @@ void connect::process_network_data(const config& data, const network::connection
 				if(itor == sides_.end()) {
 					config response;
 					response.values["failed"] = "yes";
-					network::send_data(response, sock);
+					//! @todo To avoid chicken and egg first enable the server to receive 
+					//! gzipped data.
+					network::send_data(response, sock, false);
 					config kick;
 					kick["username"] = data["name"];
 					config res;
 					res.add_child("kick", kick);
-					network::send_data(res);
+					//! @todo To avoid chicken and egg first enable the server to receive 
+					//! gzipped data.
+					network::send_data(res, 0, false);
 					update_user_combos();
 					update_and_send_diff();
 					ERR_CF << "ERROR: Couldn't assign a side to '" << name << "'\n";
@@ -1109,7 +1127,9 @@ void connect::process_network_data(const config& data, const network::connection
 			ERR_CF << "tried to take illegal side: " << side_taken << '\n';
 			config response;
 			response.values["failed"] = "yes";
-			network::send_data(response, sock);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(response, sock, false);
 		}
 	}
 
@@ -1202,9 +1222,13 @@ void connect::process_network_connection(const network::connection sock)
 {
 	ui::process_network_connection(sock);
 
-	network::send_data(config("join_game"));
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(config("join_game"), 0, false);
 
-	network::send_data(level_, sock);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(level_, sock, false);
 }
 
 void connect::layout_children(const SDL_Rect& rect)
@@ -1521,7 +1545,9 @@ void connect::update_and_send_diff(bool update_time_of_day)
 
 	config diff;
 	diff.add_child("scenario_diff",level_.get_diff(old_level));
-	network::send_data(diff);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(diff, 0, false);
 }
 
 bool connect::sides_available()
@@ -1605,7 +1631,9 @@ void connect::kick_player(const std::string& name)
 		kick["username"] = name;
 		config res;
 		res.add_child("kick", kick);
-		network::send_data(res);
+		//! @todo To avoid chicken and egg first enable the server to receive 
+		//! gzipped data.
+		network::send_data(res, 0, false);
 	}
 
 	int side = find_player_side(name);

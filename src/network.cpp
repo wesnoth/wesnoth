@@ -686,7 +686,10 @@ connection receive_data(config& cfg, connection connection_num)
 	return result;
 }
 
-void send_data(const config& cfg, connection connection_num)
+//! @todo Note the gzipped parameter should be removed later, we want to send
+//! all data gzipped. This can be done once the campaign server is also updated
+//! to work with gzipped data.
+void send_data(const config& cfg, connection connection_num, const bool gzipped)
 {
 	DBG_NW << "in send_data()...\n";
 	
@@ -704,7 +707,7 @@ void send_data(const config& cfg, connection connection_num)
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
 			DBG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
-			send_data(cfg,*i);
+			send_data(cfg,*i, gzipped);
 		}
 		return;
 	}
@@ -717,7 +720,7 @@ void send_data(const config& cfg, connection connection_num)
 	}
 
 	LOG_NW << "SENDING to: " << connection_num << ": " << cfg.debug();
-	network_worker_pool::queue_data(info->second.sock,cfg);
+	network_worker_pool::queue_data(info->second.sock, cfg, gzipped);
 }
 
 void process_send_queue(connection, size_t)
@@ -725,14 +728,15 @@ void process_send_queue(connection, size_t)
 	check_error();
 }
 
-void send_data_all_except(const config& cfg, connection connection_num)
+//! @todo Note the gzipped parameter should be removed later.
+void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped)
 {
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(*i == connection_num) {
 			continue;
 		}
 
-		send_data(cfg,*i);
+		send_data(cfg,*i, gzipped);
 	}
 }
 

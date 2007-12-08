@@ -1852,7 +1852,9 @@ private:
 			cwhisper["receiver"] = arg1;
 			data.add_child("whisper", cwhisper);
 			add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], game_display::MESSAGE_PRIVATE);
-			network::send_data(data);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(data, 0, false);
 
 		} else if (cmd == help) {
 
@@ -2109,7 +2111,9 @@ private:
 			config& ban = cfg.add_child(cmd);
 			ban["username"] = data;
 
-			network::send_data(cfg);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(cfg, 0, false);
 		} else if (cmd == "mute" && network::nconnections() != 0) {
 			config cfg;
 			config& mute = cfg.add_child(cmd);
@@ -2117,9 +2121,13 @@ private:
 				mute["username"] = data;
 			}
 
-			network::send_data(cfg);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(cfg, 0, false);
 		} else if (cmd == "muteall" && network::nconnections() != 0) {
-			network::send_data(config(cmd));
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(config(cmd), 0, false);
 		} else if(cmd == "control" && network::nconnections() != 0) {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j == data.end())
@@ -2285,7 +2293,9 @@ private:
 			change["own_side"] = "yes";
 		}
 
-		network::send_data(cfg);
+		//! @todo To avoid chicken and egg first enable the server to receive 
+		//! gzipped data.
+		network::send_data(cfg, 0, false);
 	}
 } // end namespace events
 

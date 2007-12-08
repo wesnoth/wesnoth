@@ -46,7 +46,7 @@ void receive_data(TCPsocket sock);
 
 TCPsocket get_received_data(TCPsocket sock, config& cfg);
 
-void queue_data(TCPsocket sock, const config& buf);
+void queue_data(TCPsocket sock, const config& buf, const bool gzipped);
 bool socket_locked(TCPsocket sock);
 bool close_socket(TCPsocket sock);
 std::pair<unsigned int,size_t> thread_state();

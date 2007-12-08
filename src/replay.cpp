@@ -1144,7 +1144,9 @@ void replay_network_sender::sync_non_undoable()
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands(),replay::NON_UNDO_DATA));
 		if(data.empty() == false) {
-			network::send_data(cfg);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(cfg, 0, false);
 		}
 	}
 }
@@ -1155,7 +1157,9 @@ void replay_network_sender::commit_and_sync()
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
 		if(data.empty() == false) {
-			network::send_data(cfg);
+			//! @todo To avoid chicken and egg first enable the server to receive 
+			//! gzipped data.
+			network::send_data(cfg, 0, false);
 		}
 
 		upto_ = obj_.ncommands();

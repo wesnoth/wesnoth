@@ -292,7 +292,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const std::vector<config*>& st
 				info["type"] = "termination";
 				info["condition"] = "game over";
 				info["result"] = gamestate_.completion;
-				network::send_data(cfg);
+				//! @todo To avoid chicken and egg first enable the server to receive 
+				//! gzipped data.
+				network::send_data(cfg, 0, false);
 			} else {
 				gui::message_dialog(*gui_,_("Game Over"),
 									_("The game is over.")).show();

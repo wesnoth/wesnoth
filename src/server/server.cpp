@@ -141,6 +141,11 @@ private:
 	time_t last_stats_;
 	void dump_stats(const time_t& now);
 
+	//! This is a tempory variable to have a flag to switch between 
+	//! gzipped data and not.
+	//! @todo remove after 1.3.12 is no longer allowed on the server.
+	bool send_gzipped_;
+
 	void process_data(const network::connection sock, const config& data);
 	void process_login(const network::connection sock, const config& data);
 	//! Handle queries from clients.
@@ -155,12 +160,21 @@ private:
 };
 
 server::server(int port, input_stream& input, const std::string& config_file, size_t min_threads,size_t max_threads)
-	: net_manager_(min_threads,max_threads), server_(port), not_logged_in_(players_),
-	lobby_(players_), input_(input), config_file_(config_file),
-	cfg_(read_config()), version_query_response_("version"),
-	login_response_("mustlogin"), join_lobby_response_("join_lobby"),
-	games_and_users_list_("gamelist"), old_games_and_users_list_(games_and_users_list_),
-	last_ping_(time(NULL)), last_stats_(last_ping_)
+	: net_manager_(min_threads,max_threads), 
+	server_(port), 
+	not_logged_in_(players_),
+	lobby_(players_), 
+	input_(input), 
+	config_file_(config_file),
+	cfg_(read_config()), 
+	version_query_response_("version"),
+	login_response_("mustlogin"), 
+	join_lobby_response_("join_lobby"),
+	games_and_users_list_("gamelist"), 
+	old_games_and_users_list_(games_and_users_list_),
+	last_ping_(time(NULL)), 
+	last_stats_(last_ping_),
+	send_gzipped_(false)
 {
 	load_config();
 	signal(SIGHUP, reload_config);
@@ -190,6 +204,10 @@ config server::read_config() const {
 void server::load_config() {
 	admin_passwd_ = cfg_["passwd"];
 	motd_ = cfg_["motd"];
+	// Note this option will not be documented since it's only needed 
+	// for a short transition phase.
+	send_gzipped_ = utils::string_bool(cfg_["gzipped"], false); 
+	game::send_gzipped = send_gzipped_;
 
 	disallowed_names_.clear();
 	if (cfg_["disallow_names"] == "") {
@@ -311,7 +329,7 @@ void server::run() {
 				for (player_map::const_iterator i = players_.begin();
 					i != players_.end(); ++i)
 				{
-					network::send_data(ping, i->first);
+					network::send_data(ping, i->first, send_gzipped_);
 				}
 				last_ping_ = now;
 			}
@@ -323,16 +341,16 @@ void server::run() {
 				const std::string& ip = network::ip_address(sock);
 				if (is_ip_banned(ip)) {
 					LOG_SERVER << ip << "\trejected banned user.\n";
-					network::send_data(construct_error("You are banned."),sock);
+					network::send_data(construct_error("You are banned."), sock, send_gzipped_);
 					network::disconnect(sock);
 				} else if (ip_exceeds_connection_limit(ip)) {
 					LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
-					network::send_data(construct_error("Too many connections from your IP."),sock);
+					network::send_data(construct_error("Too many connections from your IP."), sock, send_gzipped_);
 					network::disconnect(sock);
 				} else {
 					DBG_SERVER << ip << "\tnew connection accepted. (socket: "
 						<< sock << ")\n";
-					network::send_data(version_query_response_,sock);
+					network::send_data(version_query_response_, sock, send_gzipped_);
 					not_logged_in_.add_player(sock, true);
 				}
 			}
@@ -433,7 +451,7 @@ void server::run() {
 
 void server::process_data(const network::connection sock, const config& data) {
 	if (proxy::is_proxy(sock)) {
-		proxy::received_data(sock, data);
+		proxy::received_data(sock, data, send_gzipped_);
 	}
 	// Ignore client side pings for now.
 	const string_map::const_iterator ping = data.values.find("ping");
@@ -470,7 +488,7 @@ void server::process_login(const network::connection sock, const config& data) {
 			LOG_SERVER << network::ip_address(sock)
 				<< "\tplayer joined using accepted version " << version_str
 				<< ":\ttelling them to log in.\n";
-			network::send_data(login_response_,sock);
+			network::send_data(login_response_, sock, send_gzipped_);
 			return;
 		}
 		std::map<std::string,config>::const_iterator config_it;
@@ -488,7 +506,7 @@ void server::process_login(const network::connection sock, const config& data) {
 				<< ":" << config_it->second["port"] << "\n";
 			config response;
 			response.add_child("redirect",config_it->second);
-			network::send_data(response,sock);
+			network::send_data(response, sock, send_gzipped_);
 			return;
 		}
 		// Check if it's a version we should start a proxy for.
@@ -520,13 +538,13 @@ void server::process_login(const network::connection sock, const config& data) {
 			ERR_SERVER << "ERROR: This server doesn't accept any versions at all.\n";
 			response["version"] = "null";
 		}
-		network::send_data(response,sock);
+		network::send_data(response, sock, send_gzipped_);
 		return;
 	}
 	const config* const login = data.child("login");
 	// Client must send a login first.
 	if (login == NULL) {
-		network::send_data(construct_error("You must login first"),sock);
+		network::send_data(construct_error("You must login first"), sock, send_gzipped_);
 		return;
 	}
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
@@ -534,11 +552,11 @@ void server::process_login(const network::connection sock, const config& data) {
 	if (!utils::isvalid_username(username)) {
 		network::send_data(construct_error("This username contains invalid "
 			"characters. Only alpha-numeric characters, underscores and hyphens"
-			"are allowed."), sock);
+			"are allowed."), sock, send_gzipped_);
 		return;
 	}
 	if (username.size() > 18) {
-		network::send_data(construct_error("This username is too long"),sock);
+		network::send_data(construct_error("This username is too long"), sock, send_gzipped_);
 		return;
 	}
 	// Check if the uername is allowed.
@@ -549,7 +567,7 @@ void server::process_login(const network::connection sock, const config& data) {
 			utils::lowercase(*d_it)))
 		{
 			network::send_data(construct_error("The nick '" + username
-				+ "' is reserved and can not be used by players"), sock);
+				+ "' is reserved and can not be used by players"), sock, send_gzipped_);
 			return;
 		}
 	}
@@ -557,11 +575,11 @@ void server::process_login(const network::connection sock, const config& data) {
 	player_map::const_iterator p;
 	for (p = players_.begin(); p != players_.end(); ++p) {
 		if (p->second.name() == username) {
-			network::send_data(construct_error("This username is already taken"), sock);
+			network::send_data(construct_error("This username is already taken"), sock, send_gzipped_);
 			return;
 		}
 	}
-	network::send_data(join_lobby_response_, sock);
+	network::send_data(join_lobby_response_, sock, send_gzipped_);
 
 	config* const player_cfg = &games_and_users_list_.add_child("user");
 	const player new_player(username, *player_cfg, default_max_messages_,
@@ -572,14 +590,14 @@ void server::process_login(const network::connection sock, const config& data) {
 	lobby_.add_player(sock, true);
 
 	// Send the new player the entire list of games and players
-	network::send_data(games_and_users_list_,sock);
+	network::send_data(games_and_users_list_, sock, send_gzipped_);
 
 	if (motd_ != "") {
-		network::send_data(lobby_.construct_server_message(motd_),sock);
+		network::send_data(lobby_.construct_server_message(motd_), sock, send_gzipped_);
 	}
 
 	// Send other players in the lobby the update that the player has joined
-	lobby_.send_data(games_and_users_list_diff(),sock);
+	lobby_.send_data(games_and_users_list_diff(), sock);
 
 	LOG_SERVER << network::ip_address(sock) << "\t" << username
 		<< "\thas logged on. (socket: " << sock << ")\n";
@@ -625,7 +643,7 @@ void server::process_query(const network::connection sock, const config& query) 
 	} else {
 		response << "Error: unrecognized query";
 	}
-	network::send_data(lobby_.construct_server_message(response.str()),sock);
+	network::send_data(lobby_.construct_server_message(response.str()), sock, send_gzipped_);
 }
 
 std::string server::process_command(const std::string& query) {
@@ -788,7 +806,7 @@ void server::process_whisper(const network::connection sock,
 				}
 				config cwhisper;
 				cwhisper.add_child("whisper",whisper);
-				network::send_data(cwhisper,i->first);
+				network::send_data(cwhisper,i->first, send_gzipped_);
 				sent = true;
 				break;
 			}
@@ -799,7 +817,7 @@ void server::process_whisper(const network::connection sock,
 		msg["message"] = "Invalid number of arguments";
 		msg["sender"] = "server";
 		data.add_child("message", msg);
-		network::send_data(data,sock);
+		network::send_data(data, sock, send_gzipped_);
 		sent = true;
 	}
 
@@ -813,7 +831,7 @@ void server::process_whisper(const network::connection sock,
 		}
 		msg["sender"] = "server";
 		data.add_child("message", msg);
-		network::send_data(data, sock);
+		network::send_data(data, sock, send_gzipped_);
 	}
 }
 
@@ -851,10 +869,10 @@ void server::process_data_lobby(const network::connection sock, const config& da
 		} catch(bad_lexical_cast&) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join invalid game:\t" << id << "\n";
-			network::send_data(config("leave_game"), sock);
+			network::send_data(config("leave_game"), sock, send_gzipped_);
 			network::send_data(lobby_.construct_server_message(
-				"Attempt to join invalid game."), sock);
-			network::send_data(games_and_users_list_, sock);
+				"Attempt to join invalid game."), sock, send_gzipped_);
+			network::send_data(games_and_users_list_, sock, send_gzipped_);
 			return;
 		}			
 		const std::vector<game>::iterator g =
@@ -862,28 +880,28 @@ void server::process_data_lobby(const network::connection sock, const config& da
 		if (g == games_.end()) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to join unknown game:\t" << id << "\n";
-			network::send_data(config("leave_game"), sock);
+			network::send_data(config("leave_game"), sock, send_gzipped_);
 			network::send_data(lobby_.construct_server_message(
-				"Attempt to join unknown game."), sock);
-			network::send_data(games_and_users_list_, sock);
+				"Attempt to join unknown game."), sock, send_gzipped_);
+			network::send_data(games_and_users_list_, sock, send_gzipped_);
 			return;
 		} else if (g->player_is_banned(sock)) {
 			DBG_SERVER << network::ip_address(sock) << "\tReject banned player: "
 				<< pl->second.name() << "\tfrom game:\t\"" << g->name()
 				<< "\" (" << id << ").\n";
-			network::send_data(config("leave_game"), sock);
+			network::send_data(config("leave_game"), sock, send_gzipped_);
 			network::send_data(lobby_.construct_server_message(
-				"You are banned from this game."), sock);
-			network::send_data(games_and_users_list_, sock);
+				"You are banned from this game."), sock, send_gzipped_);
+			network::send_data(games_and_users_list_, sock, send_gzipped_);
 			return;
 		} else if (observer && !g->allow_observers()){
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to observe game:\t\"" << g->name() << "\" ("
 				<< id << ") which doesn't allow observers.\n";
-			network::send_data(config("leave_game"), sock);
+			network::send_data(config("leave_game"), sock, send_gzipped_);
 			network::send_data(lobby_.construct_server_message(
-				"Attempt to observe a game that doesn't allow observers."), sock);
-			network::send_data(games_and_users_list_, sock);
+				"Attempt to observe a game that doesn't allow observers."), sock, send_gzipped_);
+			network::send_data(games_and_users_list_, sock, send_gzipped_);
 			return;
 		}
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
@@ -905,7 +923,7 @@ void server::process_data_lobby(const network::connection sock, const config& da
 		} else if (pl->second.is_message_flooding()) {
 			network::send_data(lobby_.construct_server_message(
 				"Warning: you are sending too many messages too fast. "
-				"Your message has not been relayed."),pl->first);
+				"Your message has not been relayed."), pl->first, send_gzipped_);
 			return;
 		}
 
@@ -921,14 +939,14 @@ void server::process_data_lobby(const network::connection sock, const config& da
 				<< pl->second.name() << "> " << msg << "\n";
 		}
 
-		lobby_.send_data(mdata,sock);
+		lobby_.send_data(mdata, sock);
 	}
 
 	// Player requests update of lobby content,
 	// for example when cancelling the create game dialog
 	const config* const refresh = data.child("refresh_lobby");
 	if (refresh != NULL) {
-		network::send_data(games_and_users_list_, sock);
+		network::send_data(games_and_users_list_, sock, send_gzipped_);
 	}
 }
 
@@ -980,7 +998,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 				<< pl->second.name() << "\tfailed to get a side in game:\t\""
 				<< g->name() << "\" (" << g->id() << ").\n";
 		}
-		network::send_data(response,sock);
+		network::send_data(response, sock, send_gzipped_);
 		return;
 	// If this is data describing the level for a game.
 	} else if (data.child("side") != NULL) {
@@ -1088,7 +1106,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 	} else if (data.child("load_next_scenario") != NULL) {
 		config cfg_scenario;
 		cfg_scenario.add_child("next_scenario", g->level());
-		network::send_data(cfg_scenario, sock);
+		network::send_data(cfg_scenario, sock, send_gzipped_);
 		//Since every client decides himself when to get the data of the next
 		//scenario, we must not push this to other players.
 		//push_immediately = false;
@@ -1100,7 +1118,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		// Send notification of the game starting immediately.
 		// g->start_game() will send data that assumes
 		// the [start_game] message has been sent
-		g->send_data(data,sock);
+		g->send_data(data, sock);
 
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tstarted game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
@@ -1131,10 +1149,10 @@ void server::process_data_game(const network::connection sock, const config& dat
 				<< (obs ? ") as an observer.\n" : ").\n");
 		}
 		// Send the player who has quit the game list
-		network::send_data(games_and_users_list_,sock);
+		network::send_data(games_and_users_list_, sock, send_gzipped_);
 
 		// Send all other players in the lobby the update to the lobby
-		lobby_.send_data(games_and_users_list_diff(),sock);
+		lobby_.send_data(games_and_users_list_diff(), sock);
 		return;
 	// If this is data describing side changes (so far only by the host).
 	} else if (data.child("scenario_diff")) {
@@ -1176,7 +1194,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		bool ban = (data.child("ban") != NULL);
 		if (!g->is_owner(sock)) {
 			network::send_data(g->construct_server_message("You cannot "
-				+ *(ban ? "ban" : "kick") + *": not the game host."), sock);
+				+ *(ban ? "ban" : "kick") + *": not the game host."), sock, send_gzipped_);
 			return;
 		}
 		const network::connection user = (ban ? g->ban_user(*data.child("ban"))
@@ -1185,7 +1203,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 			lobby_.add_player(user, true);
 			g->describe_slots();
 			// Send the removed user the lobby game list.
-			network::send_data(games_and_users_list_, user);
+			network::send_data(games_and_users_list_, user, send_gzipped_);
 			// Send all other players in the lobby the update to the lobby.
 			lobby_.send_data(games_and_users_list_diff(), sock);
 		}
@@ -1229,7 +1247,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 			{
 				network::send_data(g->construct_server_message(
 					"You have been muted, others can't see your message!"),
-					pl->first);
+					pl->first, send_gzipped_);
 				return;
 			}
 			truncate_message((*speak)["message"]);
@@ -1273,7 +1291,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 	// except for the original data sender
 	// FIXME: Relaying arbitrary data that possibly didn't get handled at all
 	// seems like a bad idea.
-	g->send_data(data,sock);
+	g->send_data(data, sock);
 
 	if (g->started()) {
 		g->record_data(data);

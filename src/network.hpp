@@ -124,7 +124,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout);
 //! Function to send data down a given connection,
 //! or broadcast to all peers if connection_num is 0.
 //! Throws error.
-void send_data(const config& cfg, connection connection_num=0);
+void send_data(const config& cfg, connection connection_num /*= 0*/, const bool gzipped);
 
 //! Function to send any data that is in a connection's send_queue,
 //! up to a maximum of 'max_size' bytes --
@@ -132,7 +132,7 @@ void send_data(const config& cfg, connection connection_num=0);
 void process_send_queue(connection connection_num=0, size_t max_size=0);
 
 //! Function to send data to all peers except 'connection_num'.
-void send_data_all_except(const config& cfg, connection connection_num);
+void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped);
 
 //! Function to get the remote ip address of a socket.
 std::string ip_address(connection connection_num);

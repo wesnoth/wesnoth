@@ -100,7 +100,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	const config::child_list& turns = cfg.get_children("turn");
 	if(turns.empty() == false && from != network::null_connection) {
 		//forward the data to other peers
-		network::send_data_all_except(cfg,from);
+		//! @todo To avoid chicken and egg first enable the server to receive 
+		//! gzipped data.
+		network::send_data_all_except(cfg, from, false);
 	}
 
 	for(config::child_list::const_iterator t = turns.begin(); t != turns.end(); ++t) {
@@ -120,7 +122,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				config& info = cfg.add_child("info");
 				info["type"] = "termination";
 				info["condition"] = "out of sync";
-				network::send_data(cfg);
+				//! @todo To avoid chicken and egg first enable the server to receive 
+				//! gzipped data.
+				network::send_data(cfg, 0, false);
 
 				replay::last_replay_error = e.message; //FIXME: some better way to pass this?
 				replay_error_.notify_observers();
@@ -311,7 +315,9 @@ void turn_info::change_side_controller(const std::string& side, const std::strin
 		change["own_side"] = "yes";
 	}
 
-	network::send_data(cfg);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(cfg, 0, false);
 }
 
 void turn_info::take_side(const std::string& side, const std::string& controller)
@@ -320,5 +326,7 @@ void turn_info::take_side(const std::string& side, const std::string& controller
 	cfg.values["side"] = side;
 	cfg.values["controller"] = controller;
 	cfg.values["name"] = controller+side;
-	network::send_data(cfg);
+	//! @todo To avoid chicken and egg first enable the server to receive 
+	//! gzipped data.
+	network::send_data(cfg, 0, false);
 }

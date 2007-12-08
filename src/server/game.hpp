@@ -119,6 +119,11 @@ public:
 		if (termination_.empty()) { termination_ = reason; }
 	}
 
+	//! This is a tempory variable to have a flag to switch between 
+	//! gzipped data and not.
+	//! @todo remove after 1.3.12 is no longer allowed on the server.
+	static bool send_gzipped;
+
 private:
 	//! Adds players and observers into one vector and returns that.
 	const user_vector all_game_users() const;

@@ -311,18 +311,21 @@ namespace {
 
 						config response;
 						response.add_child("campaigns",campaign_list);
-						network::send_data(response,sock);
+						//! @todo, maybe we should let the server send gzipped data.
+						network::send_data(response, sock, false);
 					} else if(const config* req = data.child("request_campaign")) {
 						LOG_CS << "sending campaign " << (*req)["name"] << " to " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*req)["name"]);
 						if(campaign == NULL) {
-							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("Add-on '" + (*req)["name"] + "'not found."), sock, false);
 						} else {
 							config cfg;
 							scoped_istream stream = istream_file((*campaign)["filename"]);
 							read_compressed(cfg, *stream);
 							add_license(cfg);
-							network::send_data(cfg,sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(cfg, sock, false);
 
 							const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
 							(*campaign)["downloads"] = lexical_cast<std::string>(downloads);
@@ -330,18 +333,22 @@ namespace {
 
 					} else if(data.child("request_terms") != NULL) {
 						LOG_CS << "sending terms " << network::ip_address(sock) << "\n";
-						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."),sock);
+						//! @todo, maybe we should let the server send gzipped data.
+						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."), sock, false);
 						LOG_CS << " Done\n";
 					} else if(config* upload = data.child("upload")) {
 						LOG_CS << "uploading campaign " << network::ip_address(sock) << "\n";
 						config* data = upload->child("data");
 						config* campaign = campaigns().find_child("campaign","name",(*upload)["name"]);
 						if(data == NULL) {
-							network::send_data(construct_error("No add-on data was supplied."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("No add-on data was supplied."), sock, false);
 						} else if(campaign_name_legal((*upload)["name"]) == false) {
-							network::send_data(construct_error("The name of the add-on is invalid"),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("The name of the add-on is invalid"), sock, false);
 						} else if(check_names_legal(*data) == false) {
-							network::send_data(construct_error("The add-on contains an illegal file or directory name."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("The add-on contains an illegal file or directory name."), sock, false);
 						} else if(campaign != NULL && (*campaign)["passphrase"] != (*upload)["passphrase"]) {
 							// the user password failed, now test for the master password, in master password
 							// mode the upload behaves different since it's only intended to update translations.
@@ -371,10 +378,12 @@ namespace {
 										file_size(filename));
 								scoped_ostream cfgfile = ostream_file(file_);
 								write(*cfgfile, cfg_);
-								network::send_data(construct_message(message),sock);
+								//! @todo, maybe we should let the server send gzipped data.
+								network::send_data(construct_message(message), sock, false);
 
 							} else {
-								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."),sock);
+								//! @todo, maybe we should let the server send gzipped data.
+								network::send_data(construct_error("The add-on already exists, and your passphrase was incorrect."), sock, false);
 							}
 						} else {
 							std::string message = "Add-on accepted.";
@@ -424,7 +433,8 @@ namespace {
 									file_size(filename));
 							scoped_ostream cfgfile = ostream_file(file_);
 							write(*cfgfile, cfg_);
-							network::send_data(construct_message(message),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_message(message), sock, false);
 
 							fire("hook_post_upload", (*upload)["name"]);
 						}
@@ -432,7 +442,8 @@ namespace {
 						LOG_CS << "deleting campaign " << network::ip_address(sock) << "\n";
 						config* const campaign = campaigns().find_child("campaign","name",(*erase)["name"]);
 						if(campaign == NULL) {
-							network::send_data(construct_error("The add-on does not exist."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("The add-on does not exist."), sock, false);
 							continue;
 						}
 
@@ -440,7 +451,8 @@ namespace {
 								&& (campaigns()["master_password"] == ""
 								|| campaigns()["master_password"] != (*erase)["passphrase"])) {
 
-							network::send_data(construct_error("The passphrase is incorrect."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("The passphrase is incorrect."), sock, false);
 							continue;
 						}
 
@@ -453,35 +465,43 @@ namespace {
 						campaigns().remove_child("campaign",index);
 						scoped_ostream cfgfile = ostream_file(file_);
 						write(*cfgfile, cfg_);
-						network::send_data(construct_message("Add-on deleted."),sock);
+						//! @todo, maybe we should let the server send gzipped data.
+						network::send_data(construct_message("Add-on deleted."), sock, false);
 
 						fire("hook_post_erase", (*erase)["name"]);
 
 					} else if(const config* cpass = data.child("change_passphrase")) {
 						config* campaign = campaigns().find_child("campaign","name",(*cpass)["name"]);
 						if(campaign == NULL) {
-							network::send_data(construct_error("No add-on with that name exists."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("No add-on with that name exists."), sock, false);
 						} else if((*campaign)["passphrase"] != (*cpass)["passphrase"]) {
-							network::send_data(construct_error("Your old passphrase was incorrect."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("Your old passphrase was incorrect."), sock, false);
 						} else if((const t_string)(*cpass)["new_passphrase"] == "") {
-							network::send_data(construct_error("No new passphrase was supplied."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_error("No new passphrase was supplied."), sock, false);
 						} else {
 							(*campaign)["passphrase"] = (*cpass)["new_passphrase"];
 							scoped_ostream cfgfile = ostream_file(file_);
 							write(*cfgfile, cfg_);
-							network::send_data(construct_message("Passphrase changed."),sock);
+							//! @todo, maybe we should let the server send gzipped data.
+							network::send_data(construct_message("Passphrase changed."), sock, false);
 						}
 					} else if(const config* cvalidate = data.child("validate_scripts")) {
 						config* campaign = campaigns().find_child("campaign","name",(*cvalidate)["name"]);
 						if(campaign == NULL) {
+							//! @todo, maybe we should let the server send gzipped data.
 							network::send_data(construct_error(
-										"No add-on with that name exists."),sock);
+										"No add-on with that name exists."), sock, false);
 						} else if(campaigns()["master_password"] == "") {
+							//! @todo, maybe we should let the server send gzipped data.
 							network::send_data(construct_error(
-										"Sever does not allow scripts."),sock);
+										"Sever does not allow scripts."), sock, false);
 						} else if (campaigns()["master_password"] != (*cvalidate)["master_password"]) {
+							//! @todo, maybe we should let the server send gzipped data.
 							network::send_data(construct_error(
-										"Password was incorrect."),sock);
+										"Password was incorrect."), sock, false);
 						} else {
 							// Read the campaign from disk.
 							config campaign_file;
@@ -493,10 +513,12 @@ namespace {
 								scoped_ostream ostream = ostream_file((*campaign)["filename"]);
 								write_compressed(*ostream, campaign_file);
 
+								//! @todo, maybe we should let the server send gzipped data.
 								network::send_data(construct_message("The following scripts have been validated: " +
-											scripts), sock);
+											scripts), sock, false);
 							} else {
-								network::send_data(construct_message("No unchecked scripts found!"), sock);
+								//! @todo, maybe we should let the server send gzipped data.
+								network::send_data(construct_message("No unchecked scripts found!"), sock, false);
 							}
 						}
 					}

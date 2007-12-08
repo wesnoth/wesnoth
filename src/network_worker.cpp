@@ -20,7 +20,9 @@
 #include "thread.hpp"
 #include "wassert.hpp"
 //#include "wesconfig.h"
+#include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
+#include "serialization/parser.hpp"
 
 #include <algorithm>
 #include <cerrno>
@@ -29,6 +31,8 @@
 #include <iostream>
 #include <map>
 #include <vector>
+
+#include <boost/iostreams/filter/gzip.hpp>
 
 #ifdef __AMIGAOS4__
 #include <unistd.h>
@@ -86,11 +90,20 @@ size_t min_threads = 0;
 size_t max_threads = 0;
 
 struct buffer {
-	explicit buffer(TCPsocket sock) : sock(sock),config_error("") {}
+	explicit buffer(TCPsocket sock) : 
+		sock(sock),
+		config_buf(),
+		config_error(""),
+		gzipped(false)
+		{}
 
 	TCPsocket sock;
 	mutable config config_buf;
 	std::string config_error;
+	//! Do we wish to send the data gzipped, if not use binary wml.
+	//! This needs to stay until the last user of binary_wml has
+	//! been removed.
+	bool gzipped;
 
 };
 
@@ -214,14 +227,21 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 	return true;
 }
 
-static SOCKET_STATE send_buf(TCPsocket sock, config& config_in) {
+static SOCKET_STATE send_buffer(TCPsocket sock, config& config_in, const bool gzipped) {
 #ifdef __BEOS__
 	int timeout = 15000;
 #endif
 	size_t upto = 0;
 	compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.outgoing;
 	std::ostringstream compressor;
-	write_compressed(compressor, config_in, compress);
+	if(gzipped) {
+//		std::cerr << "send gzipped\n.";
+		config_writer writer(compressor, true, "");
+		writer.write(config_in);
+	} else {
+//		std::cerr << "send binary wml\n.";
+		write_compressed(compressor, config_in, compress);
+	}
 	std::string const &value = compressor.str();
 	std::vector<char> buf(4 + value.size() + 1);
 	SDLNet_Write32(value.size()+1,&buf[0]);
@@ -427,7 +447,7 @@ static int process_queue(void*)
 		std::vector<char> buf;
 
 		if(sent_buf != NULL) {
-			result = send_buf(sent_buf->sock, sent_buf->config_buf);
+			result = send_buffer(sent_buf->sock, sent_buf->config_buf, sent_buf->gzipped);
 			delete sent_buf;
 			sent_buf = NULL;
 		} else {
@@ -449,12 +469,26 @@ static int process_queue(void*)
 				std::string buffer(buf.begin(), buf.end());
 				std::istringstream stream(buffer);
 				compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
-				try {
-					read_compressed(received_data_queue.back().config_buf, stream, compress);
-				} catch(config::error &e) {
-					//throw back the error in the parent thread
-					received_data_queue.back().config_error = e.message;
-
+				// Binary wml starts with a char < 4, the first char of a gzip header is 31
+				// so test that here and use the proper reader.
+//				std::cerr << "front of buffer " << stream.peek() << " ";
+				if(stream.peek() == 31) {
+					try {
+//						std::cerr << "recieve gzipped\n.";
+						read_gz(received_data_queue.back().config_buf, stream);
+					} catch(boost::iostreams::gzip_error& e) {
+						//throw back the error in the parent thread
+//						std::cerr << "error in gzipped data\n";
+						received_data_queue.back().config_error = e.error();
+					}
+				} else {
+					try {
+//						std::cerr << "recieve binary_wml\n.";
+						read_compressed(received_data_queue.back().config_buf, stream, compress);
+					} catch(config::error &e) {
+						//throw back the error in the parent thread
+						received_data_queue.back().config_error = e.message;
+					}
 				}
 			}
 		}
@@ -559,7 +593,7 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg)
 	}
 }
 
-void queue_data(TCPsocket sock,const  config& buf)
+void queue_data(TCPsocket sock,const  config& buf, const bool gzipped)
 {
 	DBG_NW << "queuing data...\n";
 
@@ -568,6 +602,7 @@ void queue_data(TCPsocket sock,const  config& buf)
 
 		buffer *queued_buf = new buffer(sock);
 		queued_buf->config_buf = buf;
+		queued_buf->gzipped = gzipped;
 		bufs.push_back(queued_buf);
 
 		sockets_locked.insert(std::pair<TCPsocket,SOCKET_STATE>(sock,SOCKET_READY));
