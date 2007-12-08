@@ -876,7 +876,7 @@ fi
 # Check for boost iostreams                                           #
 #######################################################################
 
-BOOST_REQUIRE([1.20])
+BOOST_REQUIRE([1.33])
 BOOST_IOSTREAMS
 CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
 LDFLAGS="$BOOST_IOSTREAMS_LDFLAGS $LDFLAGS"
