@@ -1,7 +1,7 @@
 [Project]
 FileName=editor.dev
 Name=editor
-UnitCount=265
+UnitCount=267
 Type=0
 Ver=1
 ObjFiles=
@@ -11,8 +11,8 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=
-CppCompiler=
-Linker=-lmingw32_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lws2_32 _@@_-lwinmm _@@_-lfreetype _@@_-lintl _@@_-mwindows _@@_-lpython24 _@@_-lpng_@@_-lgmon_@@_
+CppCompiler=-DUSE_GZIP_@@_
+Linker=-lmingw32_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lws2_32 _@@_-lwinmm _@@_-lfreetype _@@_-lintl _@@_-mwindows _@@_-lpython24 _@@_-lpng_@@_-lgmon_@@_-lboost_iostreams-mgw34-1_34_1_@@_-lboost_iostreams-mgw34-mt-1_34_1_@@_-lboost_iostreams-mgw34-mt-s-1_34_1_@@_-lboost_iostreams-mgw34-s-1_34_1_@@_-lzdll_@@_
 IsCpp=1
 Icon=
 ExeOutput=
@@ -2733,6 +2733,26 @@ BuildCmd=
 
 [Unit251]
 FileName=src\attack_prediction.hpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit266]
+FileName=src\wml_exception.cpp
+CompileCpp=1
+Folder=editor
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit267]
+FileName=src\wml_exception.hpp
 CompileCpp=1
 Folder=editor
 Compile=1

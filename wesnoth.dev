@@ -1,7 +1,7 @@
 [Project]
-FileName=wesnoth2.dev
+FileName=wesnoth.dev
 Name=wesnoth
-UnitCount=254
+UnitCount=256
 Type=0
 Ver=1
 ObjFiles=
@@ -11,8 +11,8 @@ PrivateResource=
 ResourceIncludes=
 MakeIncludes=
 Compiler=_@@_
-CppCompiler=-DHAVE_PYTHON -Wall_@@_
-Linker=-lmingw32_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lws2_32 _@@_-lwinmm _@@_-lfreetype _@@_-lintl _@@_-mwindows _@@_-lpython24 _@@_-lpng13_@@_
+CppCompiler=-DHAVE_PYTHON -Wall_@@_-DUSE_GZIP_@@_
+Linker=-lmingw32_@@_-lSDLmain _@@_-lSDL _@@_-lSDL_image _@@_-lSDL_net _@@_-lSDL_mixer _@@_-lws2_32 _@@_-lwinmm _@@_-lfreetype _@@_-lintl _@@_-mwindows _@@_-lpython24 _@@_-lpng13_@@_-lboost_iostreams-mgw34-1_34_1_@@_-lboost_iostreams-mgw34-mt-1_34_1_@@_-lboost_iostreams-mgw34-mt-s-1_34_1_@@_-lboost_iostreams-mgw34-s-1_34_1_@@_-lzdll_@@_
 IsCpp=1
 Icon=
 ExeOutput=
@@ -2599,6 +2599,26 @@ BuildCmd=
 
 [Unit254]
 FileName=src\settings.cpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit255]
+FileName=src\wml_exception.hpp
+CompileCpp=1
+Folder=wesnoth
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit256]
+FileName=src\wml_exception.cpp
 CompileCpp=1
 Folder=wesnoth
 Compile=1
