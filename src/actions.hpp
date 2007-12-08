@@ -275,10 +275,28 @@ int combat_modifier(const gamestatus& status,
 
 //! Records information to be able to undo a movement.
 struct undo_action {
-	undo_action(unit u,const std::vector<gamemap::location>& rt,int sm,int timebonus=0,int orig=-1)
-		: route(rt), starting_moves(sm), original_village_owner(orig), recall_pos(-1), affected_unit(u), countdown_time_bonus(timebonus) {}
-	undo_action(unit u,const gamemap::location& loc, int pos)
-		: recall_loc(loc), recall_pos(pos), affected_unit(u), countdown_time_bonus(1) {}
+	undo_action(unit u, 
+		const std::vector<gamemap::location>& rt, 
+		int sm, int timebonus = 0, int orig = -1) :
+			route(rt), 
+			starting_moves(sm), 
+			original_village_owner(orig),
+			recall_loc(),
+			recall_pos(-1), 
+			affected_unit(u), 
+			countdown_time_bonus(timebonus) 
+			{}
+
+	undo_action(const unit& u, const gamemap::location& loc, const int pos) :
+		route(),
+		starting_moves(),
+		original_village_owner(),
+		recall_loc(loc), 
+		recall_pos(pos), 
+		affected_unit(u), 
+		countdown_time_bonus(1) 
+		{}
+
 	std::vector<gamemap::location> route;
 	int starting_moves;
 	int original_village_owner;

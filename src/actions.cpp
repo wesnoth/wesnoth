@@ -297,12 +297,12 @@ battle_context::battle_context(const battle_context &other)
 	*this = other;
 }
 
-battle_context::battle_context(const unit_stats &att, const unit_stats &def)
+battle_context::battle_context(const unit_stats &att, const unit_stats &def) :
+	attacker_stats_(new unit_stats(att)),
+	defender_stats_(new unit_stats(def)),
+	attacker_combatant_(0),
+	defender_combatant_(0)
 {
-	attacker_stats_ = new unit_stats(att);
-	defender_stats_ = new unit_stats(def);
-	attacker_combatant_ = NULL;
-	defender_combatant_ = NULL;
 }
 
 battle_context::~battle_context()
@@ -562,18 +562,35 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 									   const std::vector<team>& teams,
 									   const gamestatus& status,
 									   const gamemap& map,
-									   const game_data& gamedata)
+									   const game_data& gamedata) : 
+		weapon(0),
+		attack_num(u_attack_num),
+		is_attacker(attacking),
+		is_poisoned(utils::string_bool(u.get_state("poisoned"))),
+		is_slowed(utils::string_bool(u.get_state("slowed"))),
+		slows(false),
+		drains(false),
+		stones(false),
+		plagues(false),
+		poisons(false),
+		backstab_pos(false),
+		swarm(false),
+		firststrike(false),
+		rounds(1),
+		hp(0),
+		max_hp(max_hp = u.max_hitpoints()),
+		chance_to_hit(0),
+		damage(0),
+		slow_damage(0),
+		num_blows(0),
+		swarm_min(0),
+		swarm_max(0),
+		plague_type()
 {
 	// Get the current state of the unit.
-	attack_num = u_attack_num;
 	if (attack_num >= 0) {
 		weapon = &u.attacks()[attack_num];
-	} else {
-		weapon = NULL;
 	}
-	is_attacker = attacking;
-	is_poisoned = utils::string_bool(u.get_state("poisoned"));
-	is_slowed = utils::string_bool(u.get_state("slowed"));
 	if(u.hitpoints() < 0) {
 //! @todo FIXME enable after 1.3.2 and find out why this happens -- Mordante
 //		LOG_STREAM(err, config) << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
@@ -581,7 +598,6 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 	} else {
 		hp = u.hitpoints();
 	}
-	max_hp = u.max_hitpoints();
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
@@ -655,23 +671,6 @@ battle_context::unit_stats::unit_stats(const unit &u, const gamemap::location& u
 			swarm_min = num_blows;
 			swarm_max = num_blows;
 		}
-	} else {
-		slows = false;
-		drains = false;
-		stones = false;
-		plagues = false;
-		poisons = false;
-		backstab_pos = false;
-		swarm = false;
-		rounds = 1;
-		firststrike = false;
-
-		chance_to_hit = 0;
-		damage = 0;
-		slow_damage = 0;
-		num_blows = 0;
-		swarm_min = 0;
-		swarm_max = 0;
 	}
 }
 
@@ -808,16 +807,38 @@ attack::attack(game_display& gui, const gamemap& map,
             unit_map& units,
             const gamestatus& state,
             const game_data& info,
-			bool update_display) : gui_(gui),map_(map),teams_(teams),
-					attacker_(attacker),defender_(defender),
-					attack_with_(attack_with),defend_with_(defend_with),
-					units_(units),state_(state),info_(info),
-					update_display_(update_display),OOS_error_(false),bc_(NULL)
+			bool update_display) : 
+	gui_(gui),
+	map_(map),
+	teams_(teams),
+	attacker_(attacker),
+	defender_(defender),
+	attack_with_(attack_with),
+	defend_with_(defend_with),
+	units_(units),
+	state_(state),
+	info_(info),
+	update_display_(update_display),
+	a_(units_.find(attacker)),
+	d_(units_.find(defender)),
+	errbuf_(),
+	OOS_error_(false),
+	bc_(0),
+	a_stats_(0),
+	d_stats_(0),
+	orig_attacks_(0),
+	orig_defends_(0),
+	n_attacks_(0),
+	n_defends_(0),
+	attacker_cth_(0),
+	defender_cth_(0),
+	attacker_damage_(0),
+	defender_damage_(0),
+	attackerxp_(0),
+	defenderxp_(0)
 {
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
-	a_ = units_.find(attacker);
-	d_ = units_.find(defender);
 
 	if(a_ == units_.end() || d_ == units_.end()) {
 		return;
