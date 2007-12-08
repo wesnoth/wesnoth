@@ -101,7 +101,7 @@ struct paths
 	      gamemap::location const &loc, std::vector<team> const &teams,
 	      bool force_ignore_zocs,bool allow_teleport,
 		 const team &viewing_team,int additional_turns = 0,
-		 bool see_all = false);
+		 bool see_all = false, bool ignore_units = false);
 
 	//! Structure which holds a single route between one location and another.
 	struct route

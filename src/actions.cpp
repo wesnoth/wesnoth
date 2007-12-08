@@ -1798,9 +1798,7 @@ bool clear_shroud_unit(const gamemap& map,
 		return false;
 	}
 
-	unit_map temp_units(u->first, u->second);
-
-	paths p(map,status,gamedata,temp_units,loc,teams,true,false,teams[team]);
+	paths p(map,status,gamedata,units,loc,teams,true,false,teams[team],0,false,true);
 	for(paths::routes_map::const_iterator i = p.routes.begin();
 	    i != p.routes.end(); ++i) {
 		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);

@@ -107,7 +107,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		int move_left, std::map<gamemap::location,paths::route>& routes,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
-		  bool starting_pos, const team &viewing_team, bool see_all)
+		bool starting_pos, const team &viewing_team,
+		bool see_all, bool ignore_units)
 {
 	if(size_t(u.side()-1) >= teams.size()) {
 		return;
@@ -122,10 +123,9 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	// Check for teleporting units -- we must be on a vacant village
 	// (or occupied by this unit), that is controlled by our team
 	// to be able to teleport.
-	if (allow_teleport && map.is_village(loc) &&
-		current_team.owns_village(loc) &&
-		(starting_pos || find_visible_unit(units, loc, map,
-									teams, viewing_team,see_all) == units.end())) {
+	if (allow_teleport && map.is_village(loc) && current_team.owns_village(loc) &&
+			(starting_pos || ignore_units ||
+			 find_visible_unit(units, loc, map, teams, viewing_team,see_all) == units.end())) {
 
 
 		// If we are on a village, search all known empty friendly villages
@@ -133,7 +133,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 		const std::set<gamemap::location>& villages = current_team.villages();
 		for(std::set<gamemap::location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
 			if ((see_all || !viewing_team.is_enemy(u.side()) || !viewing_team.fogged(*t))
-					&& find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end()) {
+					&& (ignore_units || find_visible_unit(units, *t, map, teams, viewing_team, see_all) == units.end())) {
 				locs.push_back(*t);
 			}
 		}
@@ -148,13 +148,13 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			currentloc.x >= map.w() || currentloc.y >= map.h())
 			continue;
 
-		// See if the tile is on top of an enemy unit
-		const unit_map::const_iterator unit_it =
-		  find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
-
-		if (unit_it != units.end() &&
-			current_team.is_enemy(unit_it->second.side()))
-			continue;
+		if (!ignore_units) {
+			// See if the tile is on top of an enemy unit
+			const unit_map::const_iterator unit_it =
+				find_visible_unit(units, locs[i], map, teams, viewing_team,see_all);
+			if (unit_it != units.end() && current_team.is_enemy(unit_it->second.side()))
+				continue;
+		}
 
 		// Find the terrain of the adjacent location
 		const t_translation::t_letter terrain = map[currentloc];
@@ -178,7 +178,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 				old_move_left = old_rt->second.move_left;
 
 			// Only check ZoC if asked and if there is move to remove
-			if (!force_ignore_zocs && new_move_left > 0) {
+			if (!ignore_units && !force_ignore_zocs && new_move_left > 0) {
 				// Test if, even with no ZoC, we already have a better route,
 				// so no need to try with ZoC (and thus no need to search ZoC)
 				const int total_move_no_zoc = new_turns_left * u.total_movement() + new_move_left;
@@ -208,7 +208,8 @@ static void find_routes(const gamemap& map, const unit_map& units,
 			if (new_route.move_left > 0) {
 				find_routes(map, units, u, currentloc,
 							new_move_left, routes, teams, force_ignore_zocs,
-							allow_teleport, new_turns_left, false, viewing_team, see_all);
+							allow_teleport, new_turns_left, false, viewing_team,
+							see_all, ignore_units);
 			}
 		}
 	}
@@ -221,7 +222,7 @@ paths::paths(gamemap const &map, gamestatus const &/*status*/,
              std::vector<team> const &teams,
 	     bool force_ignore_zoc,
              bool allow_teleport, const team &viewing_team,
-		   int additional_turns, bool see_all)
+		   int additional_turns, bool see_all, bool ignore_units)
 {
 	const unit_map::const_iterator i = units.find(loc);
 	if(i == units.end()) {
@@ -232,7 +233,8 @@ paths::paths(gamemap const &map, gamestatus const &/*status*/,
 	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,units,i->second,loc,
 		i->second.movement_left(),routes,teams,force_ignore_zoc,
-		allow_teleport,additional_turns,true,viewing_team, see_all);
+		allow_teleport,additional_turns,true,viewing_team,
+		see_all, ignore_units);
 }
 
 int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing_team,
