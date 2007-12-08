@@ -173,27 +173,45 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 					--new_turns_left;
 					new_move_left = u.total_movement() - move_cost;
 				}
-				const bool skirmisher = force_ignore_zocs || u.get_ability_bool("skirmisher",currentloc);
-				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side(),see_all);
 
-				const int zoc_move_left = zoc ? 0 : new_move_left;
-				const int total_movement = new_turns_left * u.total_movement() + zoc_move_left;
-
+				// We will check if a better route to that tile has already been found
 				const std::map<gamemap::location,paths::route>::const_iterator
-					rtit = routes.find(currentloc);
+					old_rt = routes.find(currentloc);
+				int old_move_left = -1;
+				if (old_rt != routes.end())
+					old_move_left = old_rt->second.move_left;
 
-				// If a better route to that tile has already been found
-				if(rtit != routes.end() && rtit->second.move_left >= total_movement)
+				// Only check ZoC if asked and if there is move to remove
+				if (!force_ignore_zocs && new_move_left > 0) {
+					// Test if, even with no ZoC, we already have a better route,
+					// so no need to try with ZoC (and thus no need to search ZoC)
+					const int total_move_no_zoc = new_turns_left * u.total_movement() + new_move_left;
+					if(old_move_left >= total_move_no_zoc)
+						continue;
+
+					bool zoc = enemy_zoc(map,units,teams, currentloc, viewing_team,u.side(),see_all);
+
+					// Check skirmisher only on ZoC (expensive and supposed to be rare)
+					if (zoc && !u.get_ability_bool("skirmisher",currentloc)) {
+						new_move_left = 0;
+					}
+				}
+
+				const int new_total_move = new_turns_left * u.total_movement() + new_move_left;
+
+				// Check if we already have a better route (now also use the possible ZoC)
+				if(old_move_left >= new_total_move)
 					continue;
-				paths::route new_route = routes[loc];
-				new_route.steps.push_back(loc);
 
-				new_route.move_left = u.total_movement() * new_turns_left + zoc_move_left;
-				routes[currentloc] = new_route;
+				paths::route& src_route = routes[loc];
+				paths::route& new_route = routes[currentloc];
+				new_route.steps = src_route.steps;
+				new_route.steps.push_back(loc);
+				new_route.move_left = new_total_move;
 
 				if (new_route.move_left > 0) {
 					find_routes(map, status, gamedata, units, u, currentloc,
-					            zoc_move_left, routes, teams, force_ignore_zocs,
+								new_move_left, routes, teams, force_ignore_zocs,
 					            allow_teleport, new_turns_left, false, viewing_team, see_all);
 				}
 			}
