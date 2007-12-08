@@ -54,9 +54,7 @@ public:
 			LOG_NW << "sending leave_game\n";
 			config cfg;
 			cfg.add_child("leave_game");
-			//! @todo To avoid chicken and egg first enable the server to receive 
-			//! gzipped data.
-			network::send_data(cfg, 0, false);
+			network::send_data(cfg, 0, true);
 			LOG_NW << "sent leave_game\n";
 		}
 	};
@@ -213,9 +211,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 			config res;
 			cfg["version"] = game_config::version;
 			res.add_child("version", cfg);
-			//! @todo To avoid chicken and egg first enable the server to receive 
-			//! gzipped data.
-			network::send_data(res, 0, false);
+			network::send_data(res, 0, true);
 		}
 
 		//if we got a direction to login
@@ -244,9 +240,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 
 				config response;
 				response.add_child("login")["username"] = login;
-				//! @todo To avoid chicken and egg first enable the server to receive 
-				//! gzipped data.
-				network::send_data(response, 0, false);
+				network::send_data(response, 0, true);
 
 				network::connection data_res = network::receive_data(data, 0, 3000);
 				if(!data_res) {
@@ -389,9 +383,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, gam
 	case mp::ui::QUIT:
 	default:
 		//update lobby content
-		//! @todo To avoid chicken and egg first enable the server to receive 
-		//! gzipped data.
-		network::send_data(config("refresh_lobby"), 0, false);
+		network::send_data(config("refresh_lobby"), 0, true);
 		break;
 	}
 }
@@ -416,9 +408,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 					gui::show_error_message(disp, error.message);
 				}
 				//update lobby content
-				//! @todo To avoid chicken and egg first enable the server to receive 
-				//! gzipped data.
-				network::send_data(config("refresh_lobby"), 0, false);
+				network::send_data(config("refresh_lobby"), 0, true);
 			}
 			break;
 		case mp::ui::OBSERVE:
@@ -428,9 +418,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 				if(!error.message.empty()) {
 					gui::show_error_message(disp, error.message);
 				//update lobby content
-				//! @todo To avoid chicken and egg first enable the server to receive 
-				//! gzipped data.
-				network::send_data(config("refresh_lobby"), 0, false);
+				network::send_data(config("refresh_lobby"), 0, true);
 				}
 			}
 			break;
@@ -441,9 +429,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 				if (!error.message.empty())
 					gui::show_error_message(disp, error.message);
 				//update lobby content
-				//! @todo To avoid chicken and egg first enable the server to receive 
-				//! gzipped data.
-				network::send_data(config("refresh_lobby"), 0, false);
+				network::send_data(config("refresh_lobby"), 0, true);
 			}
 			break;
 		case mp::ui::QUIT:
@@ -453,9 +439,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, game
 				const preferences::display_manager disp_manager(&disp);
 				preferences::show_preferences_dialog(disp,game_config);
 				//update lobby content
-				//! @todo To avoid chicken and egg first enable the server to receive 
-				//! gzipped data.
-				network::send_data(config("refresh_lobby"), 0, false);
+				network::send_data(config("refresh_lobby"), 0, true);
 			}
 			break;
 		default:

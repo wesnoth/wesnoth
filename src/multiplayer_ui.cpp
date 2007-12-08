@@ -372,9 +372,7 @@ void ui::handle_event(const SDL_Event& event)
 			//if the dialog has been open for a long time, refresh the lobby
 			config request;
 			request.add_child("refresh_lobby");
-			//! @todo To avoid chicken and egg first enable the server to receive 
-			//! gzipped data.
-			network::send_data(request, 0, false);
+			network::send_data(request, 0, true);
 		}
 	}
 }
@@ -383,9 +381,7 @@ void ui::send_chat_query(const std::string& args)
 {
 	config data;
 	data.add_child("query")["type"] = args;
-	//! @todo To avoid chicken and egg first enable the server to receive 
-	//! gzipped data.
-	network::send_data(data, 0, false);
+	network::send_data(data, 0, true);
 }
 
 void ui::add_chat_message(const std::string& speaker, int /*side*/, const std::string& message, game_display::MESSAGE_TYPE /*type*/)
@@ -402,9 +398,7 @@ void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
 	data.add_child("message", msg);
 
 	add_chat_message(preferences::login(),0, message);	//local echo
-	//! @todo To avoid chicken and egg first enable the server to receive 
-	//! gzipped data.
-	network::send_data(data, 0, false);
+	network::send_data(data, 0, true);
 }
 
 

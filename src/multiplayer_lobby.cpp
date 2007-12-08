@@ -721,9 +721,7 @@ void lobby::process_event()
 			else{
 				join["observe"] = "no";
 			}
-			//! @todo To avoid chicken and egg first enable the server to receive 
-			//! gzipped data.
-			network::send_data(response, 0, false);
+			network::send_data(response, 0, true);
 
 			if(observe) {
 				if (game.started){
