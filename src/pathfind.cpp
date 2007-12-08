@@ -173,7 +173,7 @@ static void find_routes(const gamemap& map, const gamestatus& status,
 					--new_turns_left;
 					new_move_left = u.total_movement() - move_cost;
 				}
-				const bool skirmisher = force_ignore_zocs | u.get_ability_bool("skirmisher",currentloc);
+				const bool skirmisher = force_ignore_zocs || u.get_ability_bool("skirmisher",currentloc);
 				const bool zoc = !skirmisher && enemy_zoc(map,units,teams,currentloc, viewing_team,u.side(),see_all);
 
 				const int zoc_move_left = zoc ? 0 : new_move_left;
