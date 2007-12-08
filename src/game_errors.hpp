@@ -19,7 +19,9 @@
 
 namespace game {
 struct error {
-	error() {}
+	error() : 
+		message() 
+		{}
 	error(const std::string& msg) : message(msg)
 	{}
 
