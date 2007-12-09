@@ -144,21 +144,27 @@ static void check_error()
 //! timed out. If the last check is too long ago reset the last_ping to 'now'.
 //! This happens when we "freeze" the client one way or another or we just
 //! didn't try to receive data.
-static void check_timeout(const time_t& now)
+static void check_timeout()
 {
 	if (network::nconnections() == 0) {
+		LOG_NW << "No network connections but last_ping is: " << last_ping;
 		last_ping = 0;
 		return;
 	}
-	DBG_NW << "Checking network lag. Last ping: " << last_ping
-		<< " Current time: " << now << "\n";
+	const time_t now = time(NULL);
+	DBG_NW << "Last ping: '" << last_ping << "' Current time: '" << now
+			<< "' Time since last ping: " << last_ping - now << "s\n";
 	// Reset last_ping if we didn't check for the last 10s.
-	if (last_ping != 0 && last_ping_check + 10 <= now) last_ping = now;
-	if (last_ping != 0 && last_ping + 60 <= now) {
-		ERR_NW << "No server ping since " << (now - last_ping)
-			<< " seconds. Connection timed out.\n";
-		throw network::error(_("No server ping since at least 60 seconds. "
-			"Connection timed out."));
+	if (last_ping_check + 10 <= now) last_ping = now;
+	if (last_ping + network::ping_timeout <= now) {
+		int timeout = now - last_ping;
+		ERR_NW << "No server ping since " << timeout
+				<< " seconds. Connection timed out.\n";
+		utils::string_map symbols;
+		symbols["timeout"] = lexical_cast<std::string>(timeout);
+		throw network::error(vngettext("No server ping since $timeout second. "
+				"Connection timed out.", "No server ping since $timeout seconds. "
+				"Connection timed out.", timeout, symbols));
 	}
 	last_ping_check = now;
 }
@@ -188,6 +194,11 @@ network_worker_pool::manager* worker_pool_man = NULL;
 } // end anon namespace
 
 namespace network {
+
+//! Amount of seconds after the last server ping when we assume to have timed out.
+//! When set to '0' ping timeout isn't checked.
+//! Gets set in preferences::manager according to the preferences file.
+unsigned int ping_timeout = 0;
 
 connection_stats::connection_stats(int sent, int received, int connected_at)
        : bytes_sent(sent), bytes_received(received), time_connected(SDL_GetTicks() - connected_at)
@@ -604,8 +615,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 connection receive_data(config& cfg, connection connection_num)
 {
-	if(!is_server()) {
-		check_timeout(time(NULL));
+	if(last_ping != 0 && ping_timeout != 0 && !is_server() ) {
+		check_timeout();
 	}
 	if(!socket_set) {
 		return 0;

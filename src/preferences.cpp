@@ -299,7 +299,6 @@ void set_UI_volume(int vol)
 	sound::set_UI_volume(UI_volume());
 }
 
-
 bool turn_bell()
 {
 	return utils::string_bool(get("turn_bell"), true);

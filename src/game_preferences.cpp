@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
+#include "network.hpp" // ping_timeout
 #include "sound.hpp"
 #include "settings.hpp"
 #include "util.hpp"
@@ -55,8 +56,8 @@ manager::manager()
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
-	set_show_haloes(preferences::get("show_haloes") != "no");
-	if(preferences::get("remember_timer_settings") != "yes") {
+	set_show_haloes(utils::string_bool(preferences::get("show_haloes"), true));
+	if(utils::string_bool(preferences::get("remember_timer_settings"), false)) {
 		preferences::erase("mp_countdown_init_time");
 		preferences::erase("mp_countdown_reservoir_time");
 		preferences::erase("mp_countdown_turn_bonus");
@@ -65,12 +66,14 @@ manager::manager()
 
 	const std::vector<std::string> v = utils::split(preferences::get("encountered_units"));
 	std::copy(v.begin(), v.end(),
-			  std::inserter(encountered_units_set, encountered_units_set.begin()));
+			std::inserter(encountered_units_set, encountered_units_set.begin()));
 
 	const t_translation::t_list terrain =
-		t_translation::read_list(preferences::get("encountered_terrain_list"));
+			t_translation::read_list(preferences::get("encountered_terrain_list"));
 	std::copy(terrain.begin(), terrain.end(),
-			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
+			std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
+
+	network::ping_timeout = get_ping_timeout();
 }
 
 manager::~manager()
@@ -85,6 +88,7 @@ manager::~manager()
 
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
+	set_ping_timeout(network::ping_timeout);
 }
 
 bool _set_relationship(std::string nick, std::string rela) {
@@ -155,7 +159,7 @@ const std::vector<game_config::server_info>& server_list()
 		pref_servers.insert(pref_servers.begin(), game_servers.begin(), game_servers.end());
 		const std::vector<config *> &user_servers = get_prefs()->get_children("server");
 		std::vector<config *>::const_iterator server;
-		for(server = user_servers.begin(); server != 	user_servers.end(); ++server) {
+		for(server = user_servers.begin(); server != user_servers.end(); ++server) {
 			game_config::server_info sinf;
 			sinf.name = (**server)["name"];
 			sinf.address = (**server)["address"];
@@ -178,6 +182,17 @@ const std::string network_host()
 void set_network_host(const std::string& host)
 {
 	preferences::set("host", host);
+}
+
+const unsigned int get_ping_timeout()
+{
+	return lexical_cast_default<unsigned>(preferences::get("ping_timeout"), 60);
+}
+
+void set_ping_timeout(unsigned int timeout)
+{
+	network::ping_timeout = timeout;
+	preferences::set("ping_timeout", lexical_cast<std::string>(timeout));
 }
 
 const std::string campaign_server()
@@ -243,7 +258,7 @@ void set_allow_observers(bool value)
 
 bool use_map_settings()
 {
-	return preferences::get("mp_use_map_settings") != "no";
+	return utils::string_bool(preferences::get("mp_use_map_settings"), true);
 }
 
 void set_use_map_settings(bool value)
@@ -649,4 +664,4 @@ void encounter_map_terrain(gamemap& map){
 	}
 }
 
-}
+} // preferences namespace
