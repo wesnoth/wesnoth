@@ -342,7 +342,9 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 			if (index == gamemap::location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(*i), *map_, *gamestatus_, *units_);
+			/* GCC-3.3 doesn't accept vconfig(*i) in adj_filter */
+			const vconfig& v = vconfig(*i);
+			terrain_filter adj_filter(v, *map_, *gamestatus_, *units_);
 			adj_filter.flatten(cache_illuminates(illuminates, ability));
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -739,7 +741,9 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				gamemap::location::parse_direction(*j);
 			if (index == gamemap::location::NDIRECTIONS)
 				continue;
-			terrain_filter adj_filter(vconfig(*i), *map_, *game_status_, *unitmap_);
+			/* GCC-3.3 doesn't accept vconfig(*i) in adj_filter */
+			const vconfig& v = vconfig(*i);
+			terrain_filter adj_filter(v, *map_, *game_status_, *unitmap_);
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
 			}

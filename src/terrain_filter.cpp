@@ -355,7 +355,8 @@ void terrain_filter::get_locations(std::set<gamemap::location>& locs)
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
 		for (unsigned i = 0; i < adj_cfgs.size(); ++i) {
 			std::set<gamemap::location> adj_set;
-			terrain_filter(adj_cfgs[i], *this).get_locations(adj_set);
+			/* GCC-3.3 doesn't like operator[] so use at which has the same result */
+			terrain_filter(adj_cfgs.at(i), *this).get_locations(adj_set);
 			cache_.adjacent_matches->push_back(adj_set);
 			if(i >= max_loop_ && i+1 < adj_cfgs.size()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
