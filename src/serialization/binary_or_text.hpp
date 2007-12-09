@@ -50,7 +50,7 @@ public:
 
 private:
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter_;
-
+	std::ostream *out_ptr_;
 	std::ostream &out_;
 	bool compress_;
 	unsigned int level_;

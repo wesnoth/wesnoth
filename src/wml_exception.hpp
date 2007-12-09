@@ -29,6 +29,11 @@ class display;
 //!
 //! @param cond         The condition to test, if false and exception is generated.
 //! @param message      The translatable message to show at the user.
+#ifdef _MSC_VER
+ #if _MSC_VER < 1300
+  #define __FUNCTION__ "(Unspecified)"
+ #endif
+#endif
 #define WML_ASSERT(cond, message) if(!(cond)) wml_exception(#cond, __FILE__, __LINE__, __FUNCTION__, message)
 
 //! Helper function, don't call this directly.

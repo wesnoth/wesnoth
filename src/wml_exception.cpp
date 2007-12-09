@@ -15,6 +15,7 @@
 //! @file wml_exeption.cpp
 //! Implementation for wml_exeption.hpp.
 
+#include "global.hpp"
 #include "wml_exception.hpp"
 
 #include "display.hpp"
