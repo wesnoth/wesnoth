@@ -48,7 +48,7 @@ public:
 static std::vector< logd > log_domains;
 static std::ostream null_ostream(new null_streambuf);
 static int indent = 0;
-static bool timestamp = false;
+static bool timestamp = true;
 
 namespace lg {
 
