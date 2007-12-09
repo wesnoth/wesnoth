@@ -19,10 +19,11 @@
 #include "global.hpp"
 
 #include "font.hpp"
+#include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "team.hpp"
 #include "video.hpp"
-#include "wassert.hpp"
+#include "wml_exception.hpp"
 
 namespace font {
 
@@ -336,7 +337,7 @@ inline bool break_after(wchar_t ch)
 //! wrap it on a char basis.
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height, int max_lines)
 {
-	wassert(max_width > 0);
+	WML_ASSERT(max_width > 0, _("The maximum text width is less than 1."));
 
 	utils::utf8_iterator ch(unwrapped_text);
 	std::string current_word;
