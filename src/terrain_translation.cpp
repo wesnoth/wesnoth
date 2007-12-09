@@ -20,7 +20,7 @@
 #include "log.hpp"
 #include "terrain_translation.hpp"
 #include "serialization/string_utils.hpp"
-#include "wassert.hpp"
+#include "wml_exception.hpp"
 
 #include <iostream>
 
@@ -676,8 +676,10 @@ static t_layer string_to_layer_(const std::string& str)
 
 	t_layer result = 0;
 
-	// Validate the string
-	wassert(str.size() <= 4);
+	// Validate the string (Note at the moment the error is caught at another
+	// location and sending a lg::wml_error() but that can be replaced later)
+	WML_ASSERT(str.size() <= 4, _("A terrain with a string with more "
+		"than 4 characters has been found, the affected terrain is :") + str);
 
 	// The conversion to int puts the first char
 	// in the highest part of the number.
@@ -759,6 +761,7 @@ static t_letter string_to_number_(std::string str, int& start_position, const t_
 terrain_error:
 	// When this string is removed, also test
 	// whether the gettext include is still required
+	//! @todo 1.5 remove this test and let the wml_exception to the test
 	lg::wml_error << _("Invalid terrain found probably an 1.2 terrain format, "
 		"terrain = ") << input << '\n';
 	return VOID_TERRAIN;
