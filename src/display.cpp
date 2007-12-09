@@ -1105,7 +1105,7 @@ void display::enable_menu(const std::string& item, bool enable)
 
 		if(hasitem != menu->items().end()) {
 			const size_t index = menu - theme_.menus().begin();
-			if(index < buttons_.size()) {
+			if(index >= buttons_.size()) {
 				assert(false);
 				return;
 			} 
