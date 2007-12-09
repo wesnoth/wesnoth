@@ -742,7 +742,9 @@ void attack::fire_event(const std::string& n)
 			std::pair<std::string,t_string> to_insert("weapon", d_weap);
 			tempcfg->values.insert(to_insert);
 		}
-		game_events::fire(n,attacker_,defender_,dat);
+		game_events::fire(n, 
+			game_events::entity_location(a_),
+			game_events::entity_location(d_), dat);
 		a_ = units_.find(attacker_);
 		d_ = units_.find(defender_);
 		return;
@@ -1037,24 +1039,31 @@ attack::attack(game_display& gui, const gamemap& map,
 				std::string undead_variation = d_->second.undead_variation();
 				const int defender_side = d_->second.side();
 				fire_event("attack_end");
-				game_events::fire("pre_die",death_loc,attacker_loc);
+				game_events::fire("last breath", death_loc, attacker_loc);
 
 				d_ = units_.find(death_loc);
 				a_ = units_.find(attacker_loc);
-				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)) {
+				if(d_ == units_.end() || !death_loc.matches_unit(d_->second)
+				|| d_->second.hitpoints() > 0) {
 					// WML has invalidated the dying unit, abort
 					break;
 				}
+				bool attacker_invalid = false;
 				if(a_ == units_.end() || !attacker_loc.matches_unit(a_->second)) {
 					if(d_->second.hitpoints() <= 0) {
 						units_.erase(d_);
 						d_ = units_.end();
 					}
-					// WML has invalidated the killing unit, abort
-					break;
+					// WML has invalidated the killing unit
+					attacker_invalid = true;
 				}
 				refresh_bc();
-				unit_display::unit_die(d_->first,d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
+				if(attacker_invalid) {
+					unit_display::unit_die(d_->first, d_->second, NULL, d_stats_->weapon, NULL);
+				} else {
+					unit_display::unit_die(d_->first, d_->second,a_stats_->weapon,d_stats_->weapon, &(a_->second));
+				}
+
 				game_events::fire("die",death_loc,attacker_loc);
 
 				d_ = units_.find(death_loc);
@@ -1067,7 +1076,8 @@ attack::attack(game_display& gui, const gamemap& map,
 					d_ = units_.end();
 				}
 
-				if(a_ == units_.end() || !attacker_loc.matches_unit(a_->second)) {
+				if(attacker_invalid || a_ == units_.end()
+				|| !attacker_loc.matches_unit(a_->second)) {
 					// WML has invalidated the killing unit, abort
 					break;
 				}
