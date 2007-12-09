@@ -21,11 +21,11 @@
 #include "preferences_display.hpp"
 #include "sound.hpp"
 #include "video.hpp"
-#include "wassert.hpp"
 
 #include "SDL.h"
 
 #include <algorithm>
+#include <cassert>
 #include <deque>
 #include <utility>
 #include <vector>
@@ -163,7 +163,7 @@ event_context::event_context()
 
 event_context::~event_context()
 {
-	wassert(event_contexts.empty() == false);
+	assert(event_contexts.empty() == false);
 	event_contexts.pop_back();
 }
 
@@ -208,7 +208,7 @@ void handler::leave()
 			(*i)->leave();
 		}
 	} else {
-		wassert(event_contexts.empty() == false);
+		assert(event_contexts.empty() == false);
 	}
 	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
 		if(i->remove_handler(this)) {
