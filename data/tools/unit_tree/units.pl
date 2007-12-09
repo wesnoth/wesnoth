@@ -59,9 +59,9 @@ unless (-e $html_dir) {mkdir $html_dir or die "$html_dir directory cannot be cre
 unless (-e $report_dir) {mkdir $report_dir or die "$report_dir directory cannot be created: $!\n";};
 unless (-e "$html_dir/attacks") {mkdir "$html_dir/attacks" or die "$html_dir/attacks directory cannot be created: $!\n";};
 unless (-e "$html_dir/units") {mkdir "$html_dir/units" or die "$html_dir/units directory cannot be created: $!\n";};
-$data_dir = "$wesnoth_dir/data/core";
-$data_dir = "$wesnoth_dir/data" if $version =~ /^1.2/;
-$base_dir = $wesnoth_dir; $base_report_dir = $report_dir;
+$data_dir = "$wesnoth_dir/data";
+$base_dir = $wesnoth_dir;
+$base_report_dir = $report_dir;
 $units_dir = $data_dir . "/units";
 
 # Variables used to generate the html
@@ -254,7 +254,7 @@ sub ProduceDataFiles {
 	# Factions, populates the factions file
 	my @factions;
 	if ($html_unit eq 'unit.html') { 
-		@factions = glob("$wesnoth_dir/data/multiplayer/factions/*");
+		@factions = glob("$wesnoth_dir/data/factions/*");
 	} else {
 		@factions = glob("$wesnoth_dir/factions/*");
 	}
