@@ -21,11 +21,11 @@
 #include "color_range.hpp"
 #include "map.hpp"
 #include "serialization/string_utils.hpp"
-#include "wassert.hpp"
 
+#include <cassert>
+#include <set>
 #include <string>
 #include <vector>
-#include <set>
 
 std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::vector<Uint32>& old_rgb){
 	std::map<Uint32, Uint32> map_rgb;
@@ -72,7 +72,7 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 			new_b=static_cast<Uint32>( old_rat * new_blue  + (1 - old_rat) * max_blue);
 		}else{
 			new_r=0; new_g=0; new_b=0; // Suppress warning
-			wassert(false);
+			assert(false);
 			// Should never get here.
 			// Would imply old_avg > reference_avg = 255
 	     }
