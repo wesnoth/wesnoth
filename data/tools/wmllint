@@ -480,6 +480,10 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if closer == "side" and "type" not in attributes and ("no_leader" not in attributes or attributes["no_leader"] != "yes") and "multiplayer" not in ancestors:
         print '"%s", line %d: [side] without type attribute' % (filename, lineno)
 
+def within(tag):
+    "Did the specified tag lead one of our enclosing contexts?"
+    return tag in map(lambda x: x[0], tagstack)
+
 # Syntax transformations
 
 leading_ws = re.compile(r"^\s*")
@@ -1114,7 +1118,8 @@ def translator(filename, mapxforms, textxform):
         if map_only or (("map_data=" in line or "mask=" in line)
                         and line.count('"') in (1, 2)
                         and line.count("{") == 0
-                        and  line.count("}") == 0):
+                        and  line.count("}") == 0
+                        and not within('time')):
             outmap = []
             add_border = True
             add_usage = True
