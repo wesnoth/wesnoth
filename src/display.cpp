@@ -35,11 +35,11 @@
 #include "theme.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 
 #include "SDL_image.h"
 
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -1084,12 +1084,15 @@ const theme::menu* display::menu_pressed()
 	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
 		if(i->pressed()) {
 			const size_t index = i - buttons_.begin();
-			wassert(index < theme_.menus().size());
+			if(index >= theme_.menus().size()) {
+				assert(false);
+				return 0;
+			}
 			return &theme_.menus()[index];
 		}
 	}
 
-	return NULL;
+	return 0;
 }
 
 void display::enable_menu(const std::string& item, bool enable)
@@ -1102,7 +1105,10 @@ void display::enable_menu(const std::string& item, bool enable)
 
 		if(hasitem != menu->items().end()) {
 			const size_t index = menu - theme_.menus().begin();
-			wassert(index < buttons_.size());
+			if(index < buttons_.size()) {
+				assert(false);
+				return;
+			} 
 			buttons_[index].enable(enable);
 		}
 	}
