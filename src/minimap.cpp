@@ -13,11 +13,13 @@
 */
 
 #include "global.hpp"
+
+#include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "minimap.hpp"
 #include "team.hpp"
-#include "wassert.hpp"
+#include "wml_exception.hpp"
 
 #define LOG_DP LOG_STREAM(info, display)
 #define ERR_DP LOG_STREAM(err, display)
@@ -79,17 +81,18 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 				if(i == cache->end()) {
 					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image() + ".png",image::HEXED));
 
-					if(tile == NULL) {
-						ERR_DP << "could not get image for terrain '"
-						          << terrain << "'\n";
-						continue;
+					if(tile == 0) {
+						utils::string_map symbols;
+						symbols["terrain"] = t_translation::write_letter(terrain);
+						const std::string msg = 
+							vgettext("Could not get image for terrain: $terrain.", symbols);
+						WML_ASSERT(false, msg);
 					}
 
 					surf = surface(scale_surface_blended(tile,scale,scale));
 
-					if(surf == NULL) {
-						continue;
-					}
+					WML_ASSERT(surf != NULL, _("Error creating or aquiring an image."));
+
 					i = normal_cache->insert(cache_map::value_type(terrain,surf)).first;
 				}
 
@@ -100,7 +103,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 					fog_cache->insert(cache_map::value_type(terrain,surf));
 				}
 
-				wassert(surf != NULL);
+				WML_ASSERT(surf != NULL, _("Error creating or aquiring an image."));
 
 				// we need a balanced shift up and down of the hexes.
 				// if not, only the bottom half-hexes are clipped
