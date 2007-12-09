@@ -22,11 +22,11 @@
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/parser.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cctype>
 #include <cstdlib>
 #include <iostream>
@@ -236,7 +236,7 @@ gamemap::location gamemap::location::get_direction(
 		case NORTH_EAST: return gamemap::location(x + n, y - (n+is_even(x))/2 );
 		case NORTH_WEST: return gamemap::location(x - n, y - (n+is_even(x))/2 );
 		default:
-			wassert(false);
+			assert(false);
 			return gamemap::location();
 	}
 }
@@ -253,7 +253,7 @@ gamemap::location::DIRECTION gamemap::location::get_relative_dir(gamemap::locati
 	if( diff.y >= 0 && abs(diff.x) < abs(diff.y)) return SOUTH;
 
 	// Impossible
-	wassert(false);
+	assert(false);
 	return NDIRECTIONS;
 
 
