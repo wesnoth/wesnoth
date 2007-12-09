@@ -14,13 +14,13 @@
 
 #include "global.hpp"
 
-#include <vector>
-
 #include "display.hpp"
 #include "font.hpp"
 #include "language.hpp"
 #include "map_label.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
+#include <vector>
 
 namespace {
 	const size_t max_label_size = 32;
@@ -210,8 +210,8 @@ const terrain_label* map_labels::set_label(const gamemap::location& loc,
 	return res;
 }
 
-				void map_labels::add_label(const gamemap::location& loc,
-const terrain_label* new_label)
+void map_labels::add_label(const gamemap::location& loc,
+	const terrain_label* new_label)
 {
 	team_label_map::const_iterator labs = labels_.find(new_label->team_name());
 	if(labs == labels_.end())
@@ -219,11 +219,10 @@ const terrain_label* new_label)
 		labels_.insert(std::pair<std::string,label_map>(new_label->team_name(), label_map()));
 		labs = labels_.find(new_label->team_name());
 
-		wassert(labs != labels_.end());
+		assert(labs != labels_.end());
 	}
 
 	const_cast<label_map&>(labs->second).insert(std::pair<gamemap::location,const terrain_label*>(loc,new_label));
-
 }
 
 void map_labels::clear(const std::string& team_name)
