@@ -812,7 +812,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				if ((show_if.empty()
 					|| game_events::conditional_passed(&units_, &show_if))
 				&& (filter_location.empty()
-					|| terrain_matches_filter(map_, hex, &filter_location, status_, units_))
+					|| terrain_filter(&filter_location, map_, status_, units_)(hex))
 				&& (!itor->second->needs_select
 					|| gamestate_.last_selected.valid()))
 				{

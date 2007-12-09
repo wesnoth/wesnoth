@@ -338,12 +338,15 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
 		for (std::vector<std::string>::const_iterator j = dirs.begin(),
 		     j_end = dirs.end(); j != j_end; ++j) {
-			gamemap::location::DIRECTION index =
-				gamemap::location::parse_direction(*j);
-			if (index == gamemap::location::NDIRECTIONS)
+			gamemap::location::DIRECTION index = gamemap::location::parse_direction(*j);
+			if (index == gamemap::location::NDIRECTIONS) {
 				continue;
-			if(!terrain_matches_filter(*map_, adjacent[index],vconfig(*i),*gamestatus_,*units_,cache_illuminates(illuminates, ability),0))
+			}
+			terrain_filter adj_filter(vconfig(*i), *map_, *gamestatus_, *units_);
+			adj_filter.flatten(cache_illuminates(illuminates, ability));
+			if(!adj_filter.match(adjacent[index])) {
 				return false;
+			}
 		}
 	}
 	return true;
@@ -736,9 +739,10 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				gamemap::location::parse_direction(*j);
 			if (index == gamemap::location::NDIRECTIONS)
 				continue;
-			if (!terrain_matches_filter(*map_, adjacent[index], vconfig(*i),
-				*game_status_, *unitmap_,false,0))
+			terrain_filter adj_filter(vconfig(*i), *map_, *game_status_, *unitmap_);
+			if(!adj_filter.match(adjacent[index])) {
 				return false;
+			}
 		}
 	}
 	return true;

@@ -16,6 +16,7 @@ Version 1.3.12+svn:
      the engine will generate a random gender for the spawned unit just like
      when it's recruited
    * updated {GENERIC_UNIT ...} macro to take advantage of random_gender
+   * fixed [filter_radius] to support [and][or][not] and radius=
  * units:
    * all max-level units now have two AMLA options: +3 max HP (+25% max xp) and
      full heal (+25% max xp)
