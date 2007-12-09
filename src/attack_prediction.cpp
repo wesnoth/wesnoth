@@ -22,10 +22,10 @@
 
 #include "attack_prediction.hpp"
 
+#include <cassert>
 #include <cstring> // For memset
 #include <vector>
 
-#include "wassert.hpp"
 
 // Compile with -O3 -DBENCHMARK for speed testing,
 // -DCHECK for testing correctness
@@ -132,7 +132,7 @@ prob_matrix::prob_matrix(unsigned int a_max_hp, unsigned int b_max_hp,
 		if (!a_summary[1].empty())
 			b_slows = true;
 		// Don't handle both being reused.
-		wassert(b_summary[0].empty());
+		assert(b_summary[0].empty());
 	}
 	if (!b_summary[0].empty()) {
 		// B has fought before.  Do we need a slow plane for it?
@@ -212,15 +212,15 @@ double *prob_matrix::new_arr(unsigned int size)
 
 double &prob_matrix::val(unsigned p, unsigned row, unsigned col)
 {
-	wassert(row < rows);
-	wassert(col < cols);
+	assert(row < rows);
+	assert(col < cols);
 	return plane[p][row * cols + col];
 }
 
 const double &prob_matrix::val(unsigned p, unsigned row, unsigned col) const
 {
-	wassert(row < rows);
-	wassert(col < cols);
+	assert(row < rows);
+	assert(col < cols);
 	return plane[p][row * cols + col];
 }
 
@@ -570,7 +570,7 @@ unsigned combatant::min_hp() const
 		return u_.hp;
 
 	// We don't handle this (yet).
-	wassert(summary[1].empty());
+	assert(summary[1].empty());
 
 	unsigned int i;
 	for (i = 0; summary[0][i] == 0; i++);
@@ -634,7 +634,7 @@ void combatant::one_strike_fight(combatant &opp)
 			opp.summary[0][opp.u_.hp] = 1.0 - hit_chances_[0];
 			opp.summary[0][maximum<int>(opp.u_.hp - u_.damage, 0)] = hit_chances_[0];
 		} else {
-			wassert(hit_chances_.size() == 0);
+			assert(hit_chances_.size() == 0);
 			opp.summary[0][opp.u_.hp] = 1.0;
 		}
 	} else {
@@ -655,7 +655,7 @@ void combatant::one_strike_fight(combatant &opp)
 			summary[0][u_.hp] = 1.0 - opp.hit_chances_[0] * opp_alive_prob;
 			summary[0][maximum<int>(u_.hp - opp.u_.damage, 0)] = opp.hit_chances_[0] * opp_alive_prob;
 		} else {
-			wassert(opp.hit_chances_.size() == 0);
+			assert(opp.hit_chances_.size() == 0);
 			summary[0][u_.hp] = 1.0;
 		}
 	} else {
@@ -769,8 +769,8 @@ void combatant::fight(combatant &opp)
 	}
 
 #if 0
-	wassert(summary[0].size() == res.size());
-	wassert(opp.summary[0].size() == opp_res.size());
+	assert(summary[0].size() == res.size());
+	assert(opp.summary[0].size() == opp_res.size());
 	for (unsigned int i = 0; i < summary[0].size(); i++) {
 		if (fabs(summary[0][i] - res[i]) > 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
