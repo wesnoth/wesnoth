@@ -703,8 +703,8 @@ std::string server::process_command(const std::string& query) {
 						pl != players_.end(); ++pl)
 					{
 						if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
-							network::queue_disconnect(pl->first);
 							out << "Kicked " << pl->second.name() << ".\n";
+							network::queue_disconnect(pl->first);
 						}
 					}
 				}
@@ -720,8 +720,8 @@ std::string server::process_command(const std::string& query) {
 							out << "Set ban on '" << ip << "'.\n";
 						}
 						if (command == "kban") {
-							network::queue_disconnect(pl->first);
 							out << "Kicked " << pl->second.name() << ".\n";
+							network::queue_disconnect(pl->first);
 						}
 					}
 				}
@@ -744,18 +744,30 @@ std::string server::process_command(const std::string& query) {
 		}
 	} else if (command == "kick") {
 		if (parameters == "") {
-			return "You must enter a nickmask to kick.";
+			return "You must enter a mask to kick.";
 		}
 		bool kicked = false;
-		for (player_map::const_iterator pl = players_.begin();
-			pl != players_.end(); ++pl)
-		{
-			if (utils::wildcard_string_match(pl->second.name(), parameters)) {
-				kicked = true;
-				const std::string name(pl->second.name());
-				const std::string ip(network::ip_address(pl->first));
-				network::queue_disconnect(pl->first);
-				out << "Kicked " << name << " (" << ip << ").\n";
+		// if we find 3 '.' consider it an ip mask
+		if (std::count(parameters.begin(), parameters.end(), '.') == 3) {
+			for (player_map::const_iterator pl = players_.begin();
+				pl != players_.end(); ++pl)
+			{
+				if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
+					kicked = true;
+					out << "Kicked " << pl->second.name() << ".\n";
+					network::queue_disconnect(pl->first);
+				}
+			}
+		} else {
+			for (player_map::const_iterator pl = players_.begin();
+				pl != players_.end(); ++pl)
+			{
+				if (utils::wildcard_string_match(pl->second.name(), parameters)) {
+					kicked = true;
+					out << "Kicked " << pl->second.name() << " ("
+						<< network::ip_address(pl->first) << ").\n";
+					network::queue_disconnect(pl->first);
+				}
 			}
 		}
 		if (!kicked) out << "No user matched '" << parameters << "'.\n";
@@ -774,7 +786,7 @@ std::string server::process_command(const std::string& query) {
 		out << "Command '" << command << "' is not recognized.\n";
 		out << "Available commands are: (lobby)msg <message>, motd [<message>]"
 			", status [<nickmask>], metrics, (k)ban(s) [<mask>], unban <ipmask>"
-			", kick <nickmask>";
+			", kick <mask>";
 	}
 
 	return out.str();
