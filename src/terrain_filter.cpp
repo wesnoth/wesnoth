@@ -143,8 +143,10 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 				if(map_.on_board(adj)) {
 					if(cache_.adjacent_matches == NULL) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {
+							const vconfig& adj_cfg = adj_cfgs[cache_.adjacent_match_cache.size()];
 							std::pair<terrain_filter, std::map<gamemap::location,bool> > amc_pair(
-								terrain_filter(*i, *this), std::map<gamemap::location,bool>());
+								terrain_filter(adj_cfg, *this),
+								std::map<gamemap::location,bool>());
 							cache_.adjacent_match_cache.push_back(amc_pair);
 						}
 						terrain_filter &amc_filter = cache_.adjacent_match_cache[index].first;
