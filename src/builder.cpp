@@ -24,8 +24,9 @@
 #include "pathutils.hpp"
 #include "terrain.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <cassert>
 #include <climits>
 
 #define ERR_NG LOG_STREAM(err, engine)
@@ -125,14 +126,14 @@ bool terrain_builder::tilemap::on_map(const gamemap::location &loc) const
 
 terrain_builder::tile& terrain_builder::tilemap::operator[](const gamemap::location &loc)
 {
-	wassert(on_map(loc));
+	assert(on_map(loc));
 
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
 
 const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap::location &loc) const
 {
-	wassert(on_map(loc));
+	assert(on_map(loc));
 
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
@@ -358,7 +359,7 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 		{ 1./2. ,  3./4., -1., 1./2. },
 	};
 
-	wassert(angle >= 0);
+	assert(angle >= 0);
 
 	angle %= 6;
 	terrain_constraint ret = constraint;
@@ -615,7 +616,8 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 				add_constraints(br.constraints, gamemap::location(x, y), t_translation::STAR, global_images);
 			} else {
 					ERR_NG << "Invalid terrain (" << t_translation::write_letter(terrain) << ") in builder map\n";
-					wassert(false);
+					assert(false); 
+					return;
 			}
 		x += 2;
 		}
