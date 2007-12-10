@@ -21,8 +21,9 @@
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -198,7 +199,7 @@ void cave_map_generator::generate_chambers()
 			if(itor == chamber_ids_.end())
 				continue;
 
-			wassert(itor->second < chambers_.size());
+			assert(itor->second < chambers_.size());
 
 			passages_.push_back(passage(new_chamber.center,chambers_[itor->second].center,**p));
 		}
@@ -302,7 +303,7 @@ private:
 
 double passage_path_calculator::cost(const gamemap::location& /*src*/,const gamemap::location& loc, const double, const bool) const
 {
-	wassert(loc.x >= 0 && loc.y >= 0 && size_t(loc.x) < map_.size() &&
+	assert(loc.x >= 0 && loc.y >= 0 && size_t(loc.x) < map_.size() &&
 	        !map_.empty() && size_t(loc.y) < map_.front().size());
 
 	double res = 1.0;
