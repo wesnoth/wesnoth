@@ -30,14 +30,16 @@ Version 1.3.12+svn:
    * changing the langugage now sets the version number in the title
      properly.
  * miscellaneous and bug fixes:
+   * various bug fixes and code cleanups
    * added gzip and gunzip command line parameters
    * replaced the 'Binary Saves' option with 'Compressed Saves' and now
      writes gzip files
-   * various bug fixes and code cleanups
-   * rewrote the network code to also receive gzipped data. 
+   * added a "ping_timeout" preference to allow adjusting the default timeout
+     value ('60') from the preferences file
+   * rewrote the network code to also receive gzipped data:
      * The clients send gzipped data to the MP server. 
      * The MP server can send gzipped data depending on a hidden parameter 
-        which is off by default.
+       which is off by default.
      * The campaign server sends and receives binary_wml.
 
 Version 1.3.12:
