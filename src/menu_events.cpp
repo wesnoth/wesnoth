@@ -2104,6 +2104,10 @@ private:
 			}
 		} else if (cmd == "theme") {
 		  preferences::show_theme_dialog(*gui_);
+		} else if (cmd == "ping" && network::nconnections() != 0) {
+			config ping;
+			ping["ping"] = lexical_cast<std::string>(time(NULL));
+			network::send_data(ping, 0, true);
 		} else if((cmd == "ban" || cmd == "kick") && network::nconnections() != 0) {
 			config cfg;
 			config& ban = cfg.add_child(cmd);
