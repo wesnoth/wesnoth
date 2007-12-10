@@ -66,18 +66,20 @@ int main(int argc, char** argv)
 		if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
 		    << " [options] [map]\n"
-			<< "  -f, --fullscreen  Runs the game in full-screen\n"
-			<< "  -h, --help        Prints this message and exits\n"
-			<< "  --path            Prints the name of the game data directory and exits\n"
-			<< "  -w, --windowed    Runs the game in windowed mode\n"
-			<< "  -v, --version     Prints the game's version number and exits\n"
-			<< "  --resolution      Set the resolution of the window\n"
-			<< "  --bpp             Set the bits per pixel\n"
-			<< "  --datadir         Select the data directory to use\n"
-			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
-			<< "                               sets the severity level of the debug domains.\n"
-			<< "                               \"all\" can be used to match any debug domain.\n"
-			<< "  --logdomains      List defined log domains and exit.\n";
+                        << "  --bpp             Set the bits per pixel\n"
+                        << "  --datadir         Select the data directory to use\n"
+                        << "  -f, --fullscreen  Runs the editor in full screen mode\n"
+                        << "  -h, --help        Prints this message and exits\n"
+                        << "  --log-<level>=<domain1>,<domain2>,...\n"
+                        << "                               sets the severity level of the log domains.\n"
+                        << "                               'all' can be used to match any log domain.\n"
+                        << "                               Available levels: error, warning, info, debug.\n"
+                        << "                               By default the 'error' level is used.\n"
+                        << "  --logdomains      List defined log domains and exit.\n";
+                        << "  --path            Prints the name of the game data directory and exits\n"
+                        << "  --resolution      Set the resolution of the window\n"
+                        << "  -v, --version     Prints the game's version number and exits\n"
+                        << "  -w, --windowed    Runs the editor in windowed mode\n"
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth "
