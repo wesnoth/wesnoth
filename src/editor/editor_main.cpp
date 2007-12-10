@@ -75,11 +75,11 @@ int main(int argc, char** argv)
                         << "                               'all' can be used to match any log domain.\n"
                         << "                               Available levels: error, warning, info, debug.\n"
                         << "                               By default the 'error' level is used.\n"
-                        << "  --logdomains      List defined log domains and exit.\n";
+                        << "  --logdomains      List defined log domains and exit.\n"
                         << "  --path            Prints the name of the game data directory and exits\n"
                         << "  --resolution      Set the resolution of the window\n"
                         << "  -v, --version     Prints the game's version number and exits\n"
-                        << "  -w, --windowed    Runs the editor in windowed mode\n"
+                        << "  -w, --windowed    Runs the editor in windowed mode\n";
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth "
