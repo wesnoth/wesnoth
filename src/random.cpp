@@ -18,12 +18,12 @@
 
 #include "global.hpp"
 
-#include <cstdio>
-
 #include "config.hpp"
 #include "random.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
+#include <cstdio>
 #include <sstream>
 
 rng::rng() : random_(NULL), random_child_(0)
@@ -47,7 +47,7 @@ int rng::get_random()
 
 const config* rng::get_random_results()
 {
-	wassert(random_ != NULL);
+	assert(random_ != NULL);
 
 	const config::child_list random(random_->get_children("random"));
 	if (random_child_ <= 0 ||random_child_ > random.size()) return NULL;
@@ -56,7 +56,7 @@ const config* rng::get_random_results()
 
 void rng::set_random_results(const config& cfg)
 {
-	wassert(random_ != NULL);
+	assert(random_ != NULL);
 
 	const config::child_list random(random_->get_children("random"));
 	if (random_child_ <= 0 || random_child_ > random.size()) return;
@@ -92,18 +92,18 @@ set_random_generator::~set_random_generator()
 
 int get_random()
 {
-	wassert(random_generator!=NULL);
+	assert(random_generator!=NULL);
 	return random_generator->get_random();
 }
 
 const config* get_random_results()
 {
-	wassert(random_generator!=NULL);
+	assert(random_generator!=NULL);
 	return random_generator->get_random_results();
 }
 
 void set_random_results(const config& cfg)
 {
-	wassert(random_generator!=NULL);
+	assert(random_generator!=NULL);
 	random_generator->set_random_results(cfg);
 }
