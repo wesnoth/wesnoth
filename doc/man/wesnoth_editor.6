@@ -32,6 +32,10 @@ map editor.
 .SH OPTIONS
 .
 .TP
+.BR --bpp \ number
+sets BitsPerPixel value. Example:
+.B --bpp 32
+.TP
 .B --datadir
 selects the data directory to use.
 .TP
@@ -40,23 +44,6 @@ runs the editor in full screen mode.
 .TP
 .BR -h , \ --help
 tells you what the command line options do.
-.TP
-.B --path
-prints the name of the game data directory and exits.
-.TP
-.BR -r , \ --resolution
-sets screen resolution. Example:
-.B -r 800x600
-.TP
-.BR --bpp
-sets BitsPerPixel value. Example:
-.B --bpp 32
-.TP
-.BR -v , \ --version
-prints version number and exits.
-.TP
-.BR -w , \ --windowed
-runs the editor in windowed mode.
 .TP
 .BR --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.
@@ -69,6 +56,20 @@ level is used.
 .TP
 .B --logdomains
 Dumps a list of all log domains and exits.
+.TP
+.B --path
+prints the name of the game data directory and exits.
+.TP
+.BI -r\  X x Y ,\ --resolution\  X x Y
+sets screen resolution. Example:
+.B -r 800x600
+.TP
+.BR -v , \ --version
+prints version number and exits.
+.TP
+.BR -w , \ --windowed
+runs the editor in windowed mode.
+
 .
 .SH AUTHOR
 .
