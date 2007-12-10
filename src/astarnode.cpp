@@ -15,7 +15,8 @@ See the COPYING file for more details.
 
 #include "global.hpp"
 #include "astarnode.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
 
 void a_star_node::initNode(gamemap::location const &pos, gamemap::location const &dst,
                            double cost, a_star_node *parent, std::set<gamemap::location> const *teleports)
@@ -72,7 +73,7 @@ a_star_world::poss_a_star_node::poss_a_star_node()
 	: capacity_(0), curIndex_(0)
 {
 	nbElemByPage_ = size_t((4096 - 24) / sizeof(a_star_node));
-	wassert(nbElemByPage_ > 0);
+	assert(nbElemByPage_ > 0);
 	addPage();
 }
 
@@ -87,8 +88,8 @@ a_star_world::poss_a_star_node::~poss_a_star_node()
 a_star_node *a_star_world::poss_a_star_node::getAStarNode()
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(capacity_ > 0);
-	wassert(curIndex_ <= capacity_);
+	assert(capacity_ > 0);
+	assert(curIndex_ <= capacity_);
 	//---------------------------------------------------
 	if (curIndex_ == capacity_)
 		addPage();
@@ -108,8 +109,8 @@ void a_star_world::poss_a_star_node::clear()
 	}
 	curIndex_ = 0;
 	//----------------- POST_CONDITIONS -----------------
-	wassert(capacity_ == nbElemByPage_);
-	wassert(vectPageAStarNode_.size() == 1);
+	assert(capacity_ == nbElemByPage_);
+	assert(vectPageAStarNode_.size() == 1);
 	//---------------------------------------------------
 }
 
@@ -126,7 +127,7 @@ a_star_world::~a_star_world()
 void a_star_world::resize_IFN(size_t parWidth, size_t parHeight)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(nbNode_ == 0);
+	assert(nbNode_ == 0);
 	//---------------------------------------------------
 	width_ = parWidth;
 	size_t sz = parWidth * parHeight;
@@ -147,8 +148,8 @@ void a_star_world::clear(void)
 a_star_node *a_star_world::getNodeFromLocation(gamemap::location const &loc, bool &isCreated)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(loc.valid());
-	wassert(loc.x + loc.y * width_ < vectAStarNode_.size());
+	assert(loc.valid());
+	assert(loc.x + loc.y * width_ < vectAStarNode_.size());
 	//---------------------------------------------------
 
 	a_star_node *&node = vectAStarNode_[loc.x + loc.y * width_];
