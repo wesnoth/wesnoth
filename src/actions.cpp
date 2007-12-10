@@ -33,10 +33,12 @@
 #include "statistics.hpp"
 #include "unit_abilities.hpp"
 #include "unit_display.hpp"
-#include "wassert.hpp"
+#include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
+
+#include <cassert>
 
 #define DBG_NG LOG_STREAM(debug, engine)
 #define LOG_NG LOG_STREAM(info, engine)
@@ -139,7 +141,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		return _("You don't have a leader to recruit with.");
 	}
 
-	wassert(u != units.end() || !need_castle);
+	assert(u != units.end() || !need_castle);
 
 	if(need_castle && map.is_keep(u->first) == false) {
 		LOG_NG << "Leader not on start: leader is on " << u->first << '\n';
@@ -254,13 +256,16 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// A Python AI can send an invalid weapon and crash Wesnoth.
 	// Haven't found a way for the Python API to prevent this problem.
 	// So instead of segfaulting it sends an assertion failure.
-	wassert(attacker_weapon < static_cast<int>(attacker.attacks().size()));
+	WML_ASSERT(attacker_weapon < static_cast<int>(attacker.attacks().size()),
+		_("An invalid weapon is selected, possibly by the Python AI."));
 
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
-		wassert(defender_weapon == -1);
+		WML_ASSERT(defender_weapon == -1,
+			_("An invalid weapon is send, possibly due to the Python AI."));
+
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
 												 status, gamedata, attacker_loc, defender_loc,
 												 harm_weight, &defender_weapon, prev_def);
@@ -274,14 +279,16 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		const attack_type *adef = NULL;
 		const attack_type *ddef = NULL;
 		if (attacker_weapon >= 0) {
-			wassert(attacker_weapon < static_cast<int>(attacker.attacks().size()));
+			WML_ASSERT(attacker_weapon < static_cast<int>(attacker.attacks().size()),
+				_("An invalid weapon is selected, possibly by the Python AI."));
 			adef = &attacker.attacks()[attacker_weapon];
 		}
 		if (defender_weapon >= 0) {
-			wassert(defender_weapon < static_cast<int>(defender.attacks().size()));
+			WML_ASSERT(defender_weapon < static_cast<int>(defender.attacks().size()),
+				_("An invalid weapon is selected, possibly by the Python AI."));
 			ddef = &defender.attacks()[defender_weapon];
 		}
-		wassert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
+		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 		attacker_stats_ = new unit_stats(attacker, attacker_loc, attacker_weapon,
 										 true, defender, defender_loc, ddef,
 										units, teams, status, map, gamedata);
@@ -534,7 +541,7 @@ const combatant &battle_context::get_attacker_combatant(const combatant *prev_de
 {
 	// We calculate this lazily, since AI doesn't always need it.
 	if (!attacker_combatant_) {
-		wassert(!defender_combatant_);
+		assert(!defender_combatant_);
 		attacker_combatant_ = new combatant(*attacker_stats_);
 		defender_combatant_ = new combatant(*defender_stats_, prev_def);
 		attacker_combatant_->fight(*defender_combatant_);
@@ -546,7 +553,7 @@ const combatant &battle_context::get_defender_combatant(const combatant *prev_de
 {
 	// We calculate this lazily, since AI doesn't always need it.
 	if (!defender_combatant_) {
-		wassert(!attacker_combatant_);
+		assert(!attacker_combatant_);
 		attacker_combatant_ = new combatant(*attacker_stats_);
 		defender_combatant_ = new combatant(*defender_stats_, prev_def);
 		attacker_combatant_->fight(*defender_combatant_);
@@ -1501,16 +1508,21 @@ void calculate_healing(game_display& disp, const gamemap& map,
 		const bool is_poisoned = utils::string_bool(i->second.get_state("poisoned"));
 		if(is_poisoned) {
 			// Remove the enemies' healers to determine if poison is slowed or cured
-			for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
+			for(std::vector<std::pair<config*,gamemap::location> >::iterator 
+					h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
+				
 				unit_map::iterator potential_healer = units.find(h_it->second);
-				wassert(potential_healer != units.end());
+
+				assert(potential_healer != units.end());
 				if(teams[potential_healer->second.side()-1].is_enemy(side)) {
 					h_it = heal.cfgs.erase(h_it);
 				} else {
 					++h_it;
 				}
 			}
-			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
+			for(std::vector<std::pair<config*,gamemap::location> >::const_iterator 
+					heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
+
 				if((*heal_it->first)["poison"] == "cured") {
 					curer = units.find(heal_it->second);
 					// Full curing only occurs on the healer turn (may be changed)
@@ -1528,9 +1540,11 @@ void calculate_healing(game_display& disp, const gamemap& map,
 
 		// For heal amounts, only consider healers on side which is starting now.
 		// Remove all healers not on this side.
-		for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = heal.cfgs.begin(); h_it != heal.cfgs.end();) {
+		for(std::vector<std::pair<config*,gamemap::location> >::iterator h_it = 
+				heal.cfgs.begin(); h_it != heal.cfgs.end();) {
+
 			unit_map::iterator potential_healer = units.find(h_it->second);
-			wassert(potential_healer != units.end());
+			assert(potential_healer != units.end());
 			if(potential_healer->second.side() != side) {
 				h_it = heal.cfgs.erase(h_it);
 			} else {
@@ -1687,7 +1701,7 @@ void check_victory(unit_map& units, std::vector<team>& teams)
 	for(size_t n = 0; n != seen_leaders.size(); ++n) {
 		const size_t side = seen_leaders[n]-1;
 
-		wassert(side < teams.size());
+		assert(side < teams.size());
 
 		for(size_t m = n+1; m != seen_leaders.size(); ++m) {
 			if(side < teams.size() && teams[side].is_enemy(seen_leaders[m])) {
@@ -1920,16 +1934,17 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
                  unit_map& units, std::vector<team>& teams,
                  std::vector<gamemap::location> route,
                  replay* move_recorder, undo_list* undo_stack,
-                 gamemap::location *next_unit, bool continue_move, bool should_clear_shroud)
+                 gamemap::location *next_unit, bool continue_move, 
+                 bool should_clear_shroud)
 {
-	wassert(route.empty() == false);
+	assert(route.empty() == false);
 
 	// Stop the user from issuing any commands while the unit is moving
 	const events::command_disabler disable_commands;
 
 	unit_map::iterator ui = units.find(route.front());
 
-	wassert(ui != units.end());
+	assert(ui != units.end());
 
 	ui->second.set_goto(gamemap::location());
 
@@ -2067,7 +2082,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		steps.pop_back();
 	}
 
-	wassert(steps.size() <= route.size());
+	assert(steps.size() <= route.size());
 
 	// If we can't get all the way there and have to set a go-to.
 	if(steps.size() != route.size() && discovered_unit == false) {
@@ -2218,7 +2233,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 		disp->recalculate_minimap();
 	}
 
-	wassert(steps.size() <= route.size());
+	assert(steps.size() <= route.size());
 
 	return steps.size();
 }
@@ -2227,7 +2242,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
                    const gamemap& map, const std::vector<team>& teams)
 {
 	const unit_map::const_iterator u_it = units.find(loc);
-	wassert(u_it != units.end());
+	assert(u_it != units.end());
 
 	const unit& u = u_it->second;
 	const team& current_team = teams[u.side()-1];
