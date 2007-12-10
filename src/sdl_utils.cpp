@@ -22,9 +22,9 @@
 #include "sdl_utils.hpp"
 #include "util.hpp"
 #include "video.hpp"
-#include "wassert.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <iostream>
 #include <map>
@@ -153,8 +153,8 @@ surface scale_surface(surface const &surf, int w, int h)
 	if(w == surf->w && h == surf->h) {
 		return surf;
 	}
-	wassert(w >= 0);
-	wassert(h >= 0);
+	assert(w >= 0);
+	assert(h >= 0);
 
 	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
 		
@@ -310,8 +310,8 @@ surface scale_surface_blended(surface const &surf, int w, int h)
 	if(w == surf->w && h == surf->h) {
 		return surf;
 	}
-	wassert(w >= 0);
-	wassert(h >= 0);
+	assert(w >= 0);
+	assert(h >= 0);
 
 	surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
 
@@ -988,7 +988,7 @@ surface cut_surface(surface const &surf, SDL_Rect const &r)
 		Uint8* line_dest = dest + y * rpitch;
 		size_t size = r.w + r.x <= surf->w ? r.w : surf->w - r.x;
 
-		wassert(rpitch >= r.w * rbpp);
+		assert(rpitch >= r.w * rbpp);
 		memcpy(line_dest, line_src, size * rbpp);
 	}
 
