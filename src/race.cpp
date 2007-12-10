@@ -131,7 +131,6 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 
 unit_race::unit_race() : 
 		id_(),
-		name_(),
 		plural_name_(),
 		description_(),
 		ntraits_(0), 
@@ -139,11 +138,12 @@ unit_race::unit_race() :
 		traits_(&empty_traits), 
 		global_traits_(true)
 {
+		name_[MALE] = "";
+		name_[FEMALE] = "";
 }
 
 unit_race::unit_race(const config& cfg) : 
 		id_(cfg["id"]),
-		name_(cfg["name"]), 
 		plural_name_(cfg["plural_name"]), 
 		description_(cfg["description"]),
 		ntraits_(atoi(cfg["num_traits"].c_str())),
@@ -162,6 +162,15 @@ unit_race::unit_race(const config& cfg) :
 	if(plural_name_.empty()) {
 		// This code is only for compatibility with old race defs.
 		plural_name_ = (cfg["name"]);
+	}
+	// use "name" if "male_name" or "female_name" aren't available
+	name_[MALE] = cfg["male_name"];
+	if(name_[MALE].empty()) {
+		name_[MALE] = (cfg["name"]);
+	}
+	name_[FEMALE] = cfg["female_name"];
+	if(name_[FEMALE].empty()) {
+		name_[FEMALE] = (cfg["name"]);
 	}
 
 	if(chain_size_ <= 0)
