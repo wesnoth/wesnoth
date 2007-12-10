@@ -162,7 +162,8 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 						} else if(lookup->second) {
 							++match_count;
 						}
-					} else if(index < std::distance(cache_.adjacent_matches->begin(), cache_.adjacent_matches->end())) {
+					} else {
+						assert(index < std::distance(cache_.adjacent_matches->begin(), cache_.adjacent_matches->end()));
 						std::set<gamemap::location> &amc = (*cache_.adjacent_matches)[index];
 						if(amc.find(adj) != amc.end()) {
 							++match_count;
