@@ -23,12 +23,12 @@
 #include "log.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "color_range.hpp"
 #include "game_display.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cstdlib>
 #include <iostream>
 
@@ -997,7 +997,7 @@ void game_data::set_config(const config& cfg)
 				lg::warn(lg::config) << "unknown unit " << from << " in advancefrom\n";
 				continue;
 			}
-			wassert(to_unit!=unit_types.end());
+			assert(to_unit!=unit_types.end());
 
 			from_unit->second.add_advancement(to_unit->second,xp);
 			increment_set_config_progress();
