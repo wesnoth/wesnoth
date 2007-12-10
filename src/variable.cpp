@@ -22,7 +22,8 @@
 #include "config.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
 #include <iostream>
 
 #define LOG_NG LOG_STREAM(info, engine)
@@ -145,7 +146,7 @@ scoped_wml_variable::~scoped_wml_variable()
 			repos->add_variable_cfg(var_name_,**j);
 		}
 	}
-	wassert(repos->scoped_variables.back() == this);
+	assert(repos->scoped_variables.back() == this);
 	repos->scoped_variables.pop_back();
 }
 
@@ -212,7 +213,7 @@ void activate_scope_variable(std::string var_name)
 variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type)
 	: vartype(validation_type), is_valid(false), explicit_index(false), index(0), vars(NULL)
 {
-	wassert(repos != NULL);
+	assert(repos != NULL);
 	activate_scope_variable(varname);
 
 	vars = &repos->variables;
@@ -346,12 +347,12 @@ variable_info::variable_info(const std::string& varname, bool force_valid, TYPE 
 }
 
 t_string& variable_info::as_scalar() {
-	wassert(is_valid);
+	assert(is_valid);
 	return vars->values[key];
 }
 
 config& variable_info::as_container() {
-	wassert(is_valid);
+	assert(is_valid);
 	if(explicit_index) {
 		// Empty data for explicit index was already created if it was needed
 		return *vars->get_children(key)[index];
@@ -366,6 +367,6 @@ config& variable_info::as_container() {
 }
 
 variable_info::array_range variable_info::as_array() {
-	wassert(is_valid);
+	assert(is_valid);
 	return vars->child_range(key);
 }
