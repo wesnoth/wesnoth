@@ -27,11 +27,11 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "unit_abilities.hpp"
-#include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "unit_display.hpp"
 #include "sdl_utils.hpp"
 
+#include <cassert>
 #include <cstdlib>
 
 namespace events{
@@ -1265,7 +1265,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 
 	redo_stack_.clear();
 
-	wassert(moves <= steps.size());
+	assert(moves <= steps.size());
 	const gamemap::location& dst = steps[moves-1];
 	const unit_map::const_iterator u = units_.find(dst);
 
