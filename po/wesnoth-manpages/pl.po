@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2007-12-07 00:28+0100\n"
-"PO-Revision-Date: 2007-11-09 19:43+0100\n"
+"PO-Revision-Date: 2007-12-09 19:01+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -193,9 +193,9 @@ msgstr "wyświetla bieżącą liczbę klatek na sekundę w rogu ekranu."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gunzip>I<\\ E<lt>infileE<gt>>"
-msgstr "B<--load>I<\\ E<lt>plikzapisuE<gt>>"
+msgstr "B<--gunzip>I<\\ E<lt>plik_wejściowyE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
@@ -203,22 +203,23 @@ msgid ""
 "decompresses a savefile which should be a .gz file (infile) and stores it "
 "without the .gz suffix. The (infile) will be removed."
 msgstr ""
+"dekompresuje plik zapisanej gry w formacie gzip (plik_wejściowy) i zapisuje "
+"go bez rozszerzenia .gz. Pierwotny plik (plik_wejściowy) jest usuwany."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gzip>I<\\ E<lt>infileE<gt>>"
-msgstr "B<--load>I<\\ E<lt>plikzapisuE<gt>>"
+msgstr "B<--gzip>I<\\ E<lt>plik_wejściowyE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:75
-#, fuzzy
 msgid ""
 "compresses a savefile (infile) as gzip file and stores it as (infile.gz)  "
 "and removes (infile)."
 msgstr ""
-"kompresuje plik zapisu w tekstowym formacie WML (plik wejściowy) do "
-"binarnego formatu WML (plik wyjściowy)."
+"kompresuje plik zapisanej gry (plik_wejściowy) do archiwum gzip "
+"(plik_wejściowy.gz) i usuwa pierwotny plik (plik_wejściowy)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:75
@@ -670,9 +671,8 @@ msgstr "Edytor map do Bitwy o Wesnoth"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:20
-#, fuzzy
 msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr "Edytor map do Bitwy o Wesnoth"
+msgstr "wesnoth_editor - Edytor map do Bitwy o Wesnoth"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:23
