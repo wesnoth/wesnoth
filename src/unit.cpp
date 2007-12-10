@@ -28,7 +28,6 @@
 #include "unit_types.hpp"
 #include "unit_abilities.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 #include "halo.hpp"
 #include "game_display.hpp"
@@ -40,6 +39,7 @@
 #include "terrain_filter.hpp"
 #include "variable.hpp"
 
+#include <cassert>
 #include <climits>
 #include <ctime>
 #include <algorithm>
@@ -376,7 +376,7 @@ void unit::add_trait(std::string /*trait*/)
 
 void unit::generate_traits(bool musthaveonly)
 {
-	wassert(gamedata_ != NULL);
+	assert(gamedata_ != NULL);
 	LOG_UT << "Generating a trait for unit type " << id() << " with musthaveonly " << musthaveonly << "\n";
 	const game_data::unit_type_map::const_iterator type = gamedata_->unit_types.find(id());
 	// Calculate the unit's traits
@@ -569,7 +569,7 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 
 const unit_type* unit::type() const
 {
-	wassert(gamedata_ != NULL);
+	assert(gamedata_ != NULL);
 	std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(id());
 	if(i != gamedata_->unit_types.end()) {
 		return &i->second;
@@ -799,7 +799,7 @@ bool unit::matches_filter(const vconfig& cfg, const gamemap::location& loc, bool
 	bool matches = true;
 
 	if(loc.valid()) {
-		wassert(units_ != NULL);
+		assert(units_ != NULL);
 		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, *units_);
 		matches = internal_matches_filter(cfg, loc, use_flat_tod);
 	} else {
@@ -876,9 +876,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	}
 
 	if(cfg.has_child("filter_location")) {
-		wassert(map_ != NULL);
-		wassert(gamestatus_ != NULL);
-		wassert(units_ != NULL);
+		assert(map_ != NULL);
+		assert(gamestatus_ != NULL);
+		assert(units_ != NULL);
 		const vconfig& t_cfg = cfg.child("filter_location");
 		terrain_filter t_filter(t_cfg, *map_, *gamestatus_, *units_, use_flat_tod);
 		if(!t_filter.match(loc)) {
@@ -1018,7 +1018,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 	}
 
 	if (cfg.has_child("filter_adjacent")) {
-		wassert(units_ && map_ && gamestatus_);
+		assert(units_ && map_ && gamestatus_);
 		gamemap::location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		vconfig::child_list::const_iterator i, i_end;
@@ -1059,7 +1059,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 
 	if(cfg.has_attribute("find_in")) {
 		// Allow filtering by searching a stored variable of units
-		wassert(gamestatus_ != NULL);
+		assert(gamestatus_ != NULL);
 		variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {
@@ -1127,7 +1127,7 @@ void unit::read(const config& cfg, bool use_traits)
 
 	variation_ = cfg["variation"];
 
-	wassert(gamedata_ != NULL);
+	assert(gamedata_ != NULL);
 	description_ = cfg["description"];
 	custom_unit_description_ = cfg["user_description"];
 	std::string custom_unit_desc = cfg["unit_description"];
@@ -1187,7 +1187,7 @@ void unit::read(const config& cfg, bool use_traits)
 
 	bool type_set = false;
 	id_ = "";
-	wassert(gamedata_ != NULL);
+	assert(gamedata_ != NULL);
 	if(!(cfg["type"].empty() || cfg["type"] == cfg["id"]) || cfg["gender"] != cfg["gender_id"]) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
@@ -1987,11 +1987,11 @@ int unit::movement_cost_internal(const t_translation::t_letter terrain, const in
 		return i->second;
 	}
 
-	wassert(map_ != NULL);
+	assert(map_ != NULL);
 	// If this is an alias, then select the best of all underlying terrains
 	const t_translation::t_list& underlying = map_->underlying_mvt_terrain(terrain);
 
-	wassert(!underlying.empty());
+	assert(!underlying.empty());
 	if(underlying.size() != 1 || underlying.front() != terrain) { // We fail here, but first test underlying_mvt_terrain
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
 		if(recurse_count >= 100) {
@@ -2060,10 +2060,10 @@ int unit::defense_modifier(t_translation::t_letter terrain, int recurse_count) c
 //		return i->second;
 //	}
 
-	wassert(map_ != NULL);
+	assert(map_ != NULL);
 	// If this is an alias, then select the best of all underlying terrains
 	const t_translation::t_list& underlying = map_->underlying_def_terrain(terrain);
-	wassert(underlying.size() > 0);
+	assert(underlying.size() > 0);
 	if(underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
 		if(recurse_count >= 90) {
@@ -2385,7 +2385,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				// for the first time.
 				if(apply_to == "variation" && no_add == false) {
 					variation_ = (**i.first)["name"];
-					wassert(gamedata_ != NULL);
+					assert(gamedata_ != NULL);
 					const game_data::unit_type_map::const_iterator var = gamedata_->unit_types.find(id());
 										if(var == gamedata_->unit_types.end()) {
 						std::string error_message = _("Unknown unit type '$type|'");
