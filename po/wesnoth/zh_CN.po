@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-07 00:27+0100\n"
+"POT-Creation-Date: 2007-12-10 15:48+0100\n"
 "PO-Revision-Date: 2007-12-09 13:52+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -44,15 +44,15 @@ msgstr "地图的动画效果"
 msgid "Mouse Scrolling"
 msgstr "鼠标滚屏"
 
-#: data/_main.cfg:64
+#: data/_main.cfg:72
 msgid "Official Wesnoth Server"
 msgstr "官方服务器"
 
-#: data/_main.cfg:68
+#: data/_main.cfg:76
 msgid "Alternate Wesnoth Server"
 msgstr "可选的服务器"
 
-#: data/_main.cfg:153
+#: data/_main.cfg:161
 msgid "-- The Tome of Wesnoth"
 msgstr "——韦诺宝典"
 
@@ -223,103 +223,103 @@ msgstr "菲律宾语"
 msgid "Finnish Translation"
 msgstr "芬兰语"
 
-#: data/core/about.cfg:1037
+#: data/core/about.cfg:1040
 msgid "French Translation"
 msgstr "法语"
 
-#: data/core/about.cfg:1136
+#: data/core/about.cfg:1142
 msgid "Galician Translation"
 msgstr "巴伦西亚语"
 
-#: data/core/about.cfg:1143
+#: data/core/about.cfg:1149
 msgid "German Translation"
 msgstr "德语"
 
-#: data/core/about.cfg:1188
+#: data/core/about.cfg:1194
 msgid "Greek Translation"
 msgstr "希腊语"
 
-#: data/core/about.cfg:1216
+#: data/core/about.cfg:1222
 msgid "Hebrew Translation"
 msgstr "希伯来语"
 
-#: data/core/about.cfg:1226
+#: data/core/about.cfg:1232
 msgid "Hungarian Translation"
 msgstr "匈牙利语"
 
-#: data/core/about.cfg:1263
+#: data/core/about.cfg:1269
 msgid "Indonesian Translation"
 msgstr "印度尼西亚语"
 
-#: data/core/about.cfg:1270
+#: data/core/about.cfg:1276
 msgid "Italian Translation"
 msgstr "意大利语"
 
-#: data/core/about.cfg:1301
+#: data/core/about.cfg:1307
 msgid "Japanese Translation"
 msgstr "日语"
 
-#: data/core/about.cfg:1324
+#: data/core/about.cfg:1330
 msgid "Korean Translation"
 msgstr "韩语"
 
-#: data/core/about.cfg:1331
+#: data/core/about.cfg:1337
 msgid "Latin Translation"
 msgstr "拉丁语"
 
-#: data/core/about.cfg:1338
+#: data/core/about.cfg:1344
 msgid "Lithuanian Translation"
 msgstr "立陶宛语"
 
-#: data/core/about.cfg:1345
+#: data/core/about.cfg:1351
 msgid "Norwegian Translation"
 msgstr "挪威语"
 
-#: data/core/about.cfg:1367
+#: data/core/about.cfg:1373
 msgid "Polish Translation"
 msgstr "波兰语"
 
-#: data/core/about.cfg:1410
+#: data/core/about.cfg:1416
 msgid "Portuguese Translation"
 msgstr "葡萄牙语"
 
-#: data/core/about.cfg:1417
+#: data/core/about.cfg:1423
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙语(巴西)"
 
-#: data/core/about.cfg:1452
+#: data/core/about.cfg:1458
 msgid "Russian Translation"
 msgstr "俄语"
 
-#: data/core/about.cfg:1484
+#: data/core/about.cfg:1490
 msgid "Serbian Translation"
 msgstr "塞尔维亚语"
 
-#: data/core/about.cfg:1499
+#: data/core/about.cfg:1505
 msgid "Slovak Translation"
 msgstr "斯洛伐克语"
 
-#: data/core/about.cfg:1513
+#: data/core/about.cfg:1519
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚语"
 
-#: data/core/about.cfg:1523
+#: data/core/about.cfg:1529
 msgid "Spanish Translation"
 msgstr "西班牙语"
 
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1571
 msgid "Swedish Translation"
 msgstr "瑞典语"
 
-#: data/core/about.cfg:1591
+#: data/core/about.cfg:1597
 msgid "Turkish Translation"
 msgstr "土耳其语"
 
-#: data/core/about.cfg:1610
+#: data/core/about.cfg:1616
 msgid "Valencian (southern Catalan) Translation"
 msgstr " (西班牙)南加泰罗尼亚语"
 
-#: data/core/about.cfg:1626
+#: data/core/about.cfg:1632
 msgid "Bots"
 msgstr "电脑"
 
@@ -2465,11 +2465,26 @@ msgstr ""
 "敌人不能看见或攻击这些在深水中的单位，除非这些单位上个回合进行过攻击，或是有"
 "敌方单位与此单位相邻。"
 
+#: data/core/macros/abilities.cfg:471
+msgid "feeding"
+msgstr ""
+
 #: data/core/macros/abilities.cfg:473
+msgid ""
+"Feeding:\n"
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:497
+msgid "+1 max HP"
+msgstr ""
+
+#: data/core/macros/abilities.cfg:526
 msgid "berserk"
 msgstr "狂暴"
 
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/abilities.cfg:528
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -2479,11 +2494,11 @@ msgstr ""
 "无论是用于攻击还是防御，这轮将攻击一直持续进行，直到一个战斗单位被杀死，或持"
 "续攻击达到30次。"
 
-#: data/core/macros/abilities.cfg:485
+#: data/core/macros/abilities.cfg:538
 msgid "backstab"
 msgstr "背刺"
 
-#: data/core/macros/abilities.cfg:487
+#: data/core/macros/abilities.cfg:540
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -2494,11 +2509,11 @@ msgstr ""
 "当被攻击者的对面有其敌对单位，且该敌对单位具有战斗力（例如，没有被石化）时，"
 "本攻击造成双倍伤害。"
 
-#: data/core/macros/abilities.cfg:499 data/core/macros/abilities.cfg:511
+#: data/core/macros/abilities.cfg:552 data/core/macros/abilities.cfg:564
 msgid "plague"
 msgstr "瘟疫"
 
-#: data/core/macros/abilities.cfg:501
+#: data/core/macros/abilities.cfg:554
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2509,7 +2524,7 @@ msgstr ""
 "当一个单位被瘟疫攻击击毙，这个单位会变成击毙他的单位，成为进行瘟疫攻击单位的"
 "战友。(这对不死或在村庄中的单位不起作用)。 "
 
-#: data/core/macros/abilities.cfg:513
+#: data/core/macros/abilities.cfg:566
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2520,11 +2535,11 @@ msgstr ""
 "当一个单位被瘟疫攻击击毙，这个单位会变成丧尸，成为进行瘟疫攻击单位的战友。(这"
 "对不死或在村庄中的单位不起作用)。"
 
-#: data/core/macros/abilities.cfg:523
+#: data/core/macros/abilities.cfg:576
 msgid "slows"
 msgstr "减速"
 
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:578
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2536,11 +2551,11 @@ msgstr ""
 "本攻击减缓目标的动作，直到本回合结束。减速攻击使目标的攻击减半，移动速度也减"
 "半（向上舍入）。"
 
-#: data/core/macros/abilities.cfg:534
+#: data/core/macros/abilities.cfg:587
 msgid "stones"
 msgstr "石化"
 
-#: data/core/macros/abilities.cfg:536
+#: data/core/macros/abilities.cfg:589
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2549,11 +2564,11 @@ msgstr ""
 "石化：\n"
 "本攻击会让单位变成石头。变成石头的单位不能移动或攻击。"
 
-#: data/core/macros/abilities.cfg:545
+#: data/core/macros/abilities.cfg:598
 msgid "marksman"
 msgstr "精准"
 
-#: data/core/macros/abilities.cfg:547
+#: data/core/macros/abilities.cfg:600
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -2561,11 +2576,11 @@ msgstr ""
 "精准：\n"
 "进攻时，本攻击至少有60%的命中率。"
 
-#: data/core/macros/abilities.cfg:559
+#: data/core/macros/abilities.cfg:612
 msgid "magical"
 msgstr "魔法"
 
-#: data/core/macros/abilities.cfg:561
+#: data/core/macros/abilities.cfg:614
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -2574,11 +2589,11 @@ msgstr ""
 "魔法：\n"
 "本攻击总是有70%的击中率。"
 
-#: data/core/macros/abilities.cfg:572
+#: data/core/macros/abilities.cfg:625
 msgid "swarm"
 msgstr "连击"
 
-#: data/core/macros/abilities.cfg:574
+#: data/core/macros/abilities.cfg:627
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -2590,11 +2605,11 @@ msgstr ""
 "这种攻击的攻击次数随本单位的伤势递减，其攻击次数与“当前生命值/最大生命值”的比"
 "值成正比。例如，一个剩下3/4生命值的单位，其攻击次数也只有峰值的3/4。"
 
-#: data/core/macros/abilities.cfg:583
+#: data/core/macros/abilities.cfg:636
 msgid "charge"
 msgstr "冲锋"
 
-#: data/core/macros/abilities.cfg:585
+#: data/core/macros/abilities.cfg:638
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -2603,11 +2618,11 @@ msgstr ""
 "冲锋：\n"
 "本攻击对目标造成双倍伤害，攻击目标的反击也会使本单位受到双倍的伤害。"
 
-#: data/core/macros/abilities.cfg:597
+#: data/core/macros/abilities.cfg:650
 msgid "drains"
 msgstr "吸血"
 
-#: data/core/macros/abilities.cfg:599
+#: data/core/macros/abilities.cfg:652
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -2616,11 +2631,11 @@ msgstr ""
 "吸血：\n"
 "通过吸食生物单位的生命来治疗自己，能治疗造成伤害一半的生命值(向下舍入)。"
 
-#: data/core/macros/abilities.cfg:608
+#: data/core/macros/abilities.cfg:661
 msgid "firststrike"
 msgstr "先机"
 
-#: data/core/macros/abilities.cfg:610
+#: data/core/macros/abilities.cfg:663
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -2628,11 +2643,11 @@ msgstr ""
 "先机：\n"
 "使用本攻击方式，本单位每次攻击都能率先出击，即使是处于受到攻击时也不例外。"
 
-#: data/core/macros/abilities.cfg:619
+#: data/core/macros/abilities.cfg:672
 msgid "poison"
 msgstr "毒素"
 
-#: data/core/macros/abilities.cfg:621
+#: data/core/macros/abilities.cfg:674
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -2651,8 +2666,9 @@ msgid "Max HP bonus +"
 msgstr "最大生命值奖励+"
 
 #: data/core/macros/amla.cfg:30
-msgid "Full Heal"
-msgstr "生命全满"
+#, fuzzy
+msgid "Heal to full, MAX XP +25%"
+msgstr "， 进阶所需经验值+25%"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -4257,47 +4273,151 @@ msgstr "奥术"
 
 #: data/hardwired/tips.cfg:3
 msgid ""
+"Don't neglect to earn your leader experience! You need to keep him safe, but "
+"if you coddle him too much he may be at too low a level to survive future "
+"battles."
+msgstr ""
+
+#: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:131
+msgid "- Great Mage Delfador, 516YW"
+msgstr "- 大法师 Delfador, 516YW"
+
+#: data/hardwired/tips.cfg:7
+msgid ""
+"In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
+"possible hexes your adversary can actually move to (assuming your units stay "
+"where they are). Use this to make sure the enemy can't reach your weak or "
+"injured units on his next turn."
+msgstr ""
+
+#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
+#: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
+#: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
+#: data/hardwired/tips.cfg:56 data/hardwired/tips.cfg:59
+#: data/hardwired/tips.cfg:63 data/hardwired/tips.cfg:67
+#: data/hardwired/tips.cfg:79 data/hardwired/tips.cfg:83
+#: data/hardwired/tips.cfg:95 data/hardwired/tips.cfg:115
+#: data/hardwired/tips.cfg:139 data/hardwired/tips.cfg:143
+#: data/hardwired/tips.cfg:147 data/hardwired/tips.cfg:155
+#: data/hardwired/tips.cfg:163 data/hardwired/tips.cfg:171
+#: data/hardwired/tips.cfg:175 data/hardwired/tips.cfg:179
+#: data/hardwired/tips.cfg:183 data/hardwired/tips.cfg:191
+msgid "- The Wesnoth Tactical Guide"
+msgstr "- 韦诺战术指南"
+
+#: data/hardwired/tips.cfg:11
+msgid ""
+"Units with the 'intelligent' trait need fewer experience points to level up. "
+"Early in a campaign, try to give killing blows to these units so you can get "
+"some high-level troops sooner."
+msgstr ""
+
+#: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:103
+msgid "- King Konrad, 536YW"
+msgstr "- Konrad王, 536YW"
+
+#: data/hardwired/tips.cfg:15
+msgid ""
+"The encircling tactic by two units is very powerful, particularly against "
+"long range units. By placing two units on opposite sides of an opposing "
+"unit, their zones of control limit it to one hex move in any direction."
+msgstr ""
+
+#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:123
+msgid "- Memoirs of Gweddry, 627YW"
+msgstr "-   Gweddry的回忆, 627YW"
+
+#: data/hardwired/tips.cfg:19
+msgid ""
+"You can access the 'recruit' and 'recall' commands by right-clicking on a "
+"castle tile. That will let you chose which hex you put a new unit in. "
+"Placing units wisely can sometimes let you get to a village a turn earlier."
+msgstr ""
+
+#: data/hardwired/tips.cfg:23
+msgid ""
+"There are some helpful summary screens in the main menu: the 'Status Table', "
+"for instance, will let you know how your enemies are doing, and how you are "
+"doing in comparison."
+msgstr ""
+
+#: data/hardwired/tips.cfg:27
+msgid ""
+"Units with the 'quick' trait move one extra hex per turn. This can be very "
+"important when moving through difficult terrain such as water or caves. It "
+"can make the difference between being able to move one hex or two."
+msgstr ""
+
+#: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:99
+msgid "- High Lord Kalenz, 470YW"
+msgstr "- 高阶君主Kalenz, 470YW"
+
+#: data/hardwired/tips.cfg:31
+msgid ""
+"After you have played a few scenarios, read the 'Gameplay' section in the "
+"help screen carefully. Details become important as scenarios get harder!"
+msgstr ""
+
+#: data/hardwired/tips.cfg:35
+msgid ""
+"It is usually better to start the next scenario in a campaign with lower-"
+"level units that are about to level up than with those same units at a "
+"higher level."
+msgstr ""
+
+#: data/hardwired/tips.cfg:39
+msgid ""
+"On www.wesnoth.org you can find strategy guides, technical support, the "
+"history of Wesnoth, and much more."
+msgstr ""
+
+#: data/hardwired/tips.cfg:40
+#, fuzzy
+msgid "- The Wesnoth Community"
+msgstr "- 韦诺战术指南"
+
+#: data/hardwired/tips.cfg:43
+msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
 "守序单位在白天更善于战斗，混乱单位在晚上更善于战斗，中立单位不受时间的影响。"
 
-#: data/hardwired/tips.cfg:4
+#: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr "- 皇家战争术语概略 -  Volume II, 212YW"
 
-#: data/hardwired/tips.cfg:7
+#: data/hardwired/tips.cfg:47
 msgid ""
-"In a campaign, you can use veteran units from previous scenarios by using "
-"the 'recall' option."
-msgstr "在战役中，通过“召回”选项，您能使用上一幕中战斗过有经验的单位。"
+"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgstr ""
 
-#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:11
-#: data/hardwired/tips.cfg:14 data/hardwired/tips.cfg:18
-#: data/hardwired/tips.cfg:22 data/hardwired/tips.cfg:34
-#: data/hardwired/tips.cfg:38 data/hardwired/tips.cfg:50
-#: data/hardwired/tips.cfg:70 data/hardwired/tips.cfg:90
-#: data/hardwired/tips.cfg:98 data/hardwired/tips.cfg:102
-#: data/hardwired/tips.cfg:106 data/hardwired/tips.cfg:114
-#: data/hardwired/tips.cfg:122 data/hardwired/tips.cfg:130
-#: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
-#: data/hardwired/tips.cfg:142
-msgid "- The Wesnoth Tactical Guide"
-msgstr "- 韦诺战术指南"
+#: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:71
+#: data/hardwired/tips.cfg:119 data/hardwired/tips.cfg:127
+msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
+msgstr "- 战术分析手册- 第一辑 Volume I - Haldric II, 42YW"
 
-#: data/hardwired/tips.cfg:10
+#: data/hardwired/tips.cfg:51
+msgid ""
+"If you are playing in the fog or with a shroud, you don't know what you're "
+"facing. In this case, long-range scouting units are worth their cost. Try to "
+"choose scouts that can easily move across the surrounding terrain, because "
+"units see as far as they can move in one turn."
+msgstr ""
+
+#: data/hardwired/tips.cfg:55
+#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
-"Right-click on a unit, and then select 'Unit Description', and then click "
-"'Resistance' to see how much resistance a unit has against different attack "
-"types."
+"Right-click on a unit and select 'Unit Description' to see which attacks it "
+"is resistant to, and which will affect it the most."
 msgstr ""
 "有六种攻击类型：穿刺，剑刃，冲击，火焰，寒冷和奥术。不同的单位对不同的攻击有"
 "不同的反应。右击单位，再选择“单位描述”，然后点选“抗性”来查看一个单位对不同攻"
 "击的抵抗能力。"
 
-#: data/hardwired/tips.cfg:13
+#: data/hardwired/tips.cfg:58
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -4307,42 +4427,42 @@ msgstr ""
 "您的单位所处的地形决定了敌对方击中他们的几率。所选定单位所在地形对防御的影响"
 "会在屏幕右上角显示。"
 
-#: data/hardwired/tips.cfg:17
+#: data/hardwired/tips.cfg:62
+#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
-"poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
-"be cured by moving them to a village, or placing them next to a unit with "
-"the 'cures' ability."
+"poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
+"to a healer will not lose hitpoints on their next turn. If they are in a "
+"village or next to a unit with the 'cures' ability, the poison will be "
+"completely cured on their next turn."
 msgstr ""
 "中毒的单位每回合损失8点生命值，但不会中毒而死。毒素最多让单位生命值降到1点。"
 "中毒的单位可以通过移动到村庄或有“治愈”能力的单位旁来治愈中毒影响。"
 
-#: data/hardwired/tips.cfg:21
+#: data/hardwired/tips.cfg:66
+#, fuzzy
 msgid ""
-"You can use units from a previous scenario by selecting 'Recall' in the game "
-"menu. By recalling the same units over and over, you can build up a powerful "
-"and experienced army."
+"You can use units from a previous scenario by selecting 'Recall' in the "
+"'Actions' menu. By recalling the same units over and over, you can build up "
+"a powerful and experienced army."
 msgstr ""
 "您可以通过游戏菜单中的“召回”选项来调用上个场景中的单位。通过不停的召回单位，"
 "您可以建立一支强力而经验值丰富的军队。"
 
-#: data/hardwired/tips.cfg:25
+#: data/hardwired/tips.cfg:70
+#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
-"turn. Level 0 units are too frail to control a zone; and skirmisher units "
-"are skilled enough to ignore these zones."
+"turn. This means that units can have two empty hexes between them and still "
+"create a barrier to the enemy. (Level 0 units are too frail to control a "
+"zone; and skirmisher units are skilled enough to ignore these zones.)"
 msgstr ""
 "每个单位旁的格子是他的控制区域。如果单位移动到敌人的控制区域，他在本回合将不"
 "能再移动。0级单位太弱小，没有可控制区域；拥有'游击'技能的战士则能忽略控制区域"
 "的影响。"
 
-#: data/hardwired/tips.cfg:26 data/hardwired/tips.cfg:74
-#: data/hardwired/tips.cfg:82
-msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr "- 战术分析手册- 第一辑 Volume I - Haldric II, 42YW"
-
-#: data/hardwired/tips.cfg:29
+#: data/hardwired/tips.cfg:74
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4352,22 +4472,24 @@ msgstr ""
 "击中单位的几率依赖于这个单位在所处位置的防御力。不过魔法攻击和防守反击时都有"
 "70%的命中率，而精准射击在进攻时至少有60%的命中率。"
 
-#: data/hardwired/tips.cfg:30
+#: data/hardwired/tips.cfg:75
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- 战术分析手册- 第二辑Volume II - Haldric II, 43YW"
 
-#: data/hardwired/tips.cfg:33
+#: data/hardwired/tips.cfg:78
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr "驻扎在村庄的单位每回合开始前可以恢复8点生命值。"
 
-#: data/hardwired/tips.cfg:37
+#: data/hardwired/tips.cfg:82
+#, fuzzy
 msgid ""
-"Units rest if they do not move or attack during their turn. They will "
-"recover 2 hitpoints at the beginning of their next turn."
+"Don't move an injured unit if you don't have to--let it rest. If a unit does "
+"not move or attack, it will recover 2 hit points at the beginning of its "
+"next turn."
 msgstr "单位在本回合休息，即不移动也不攻击，则能在下回合开始前恢复2点生命值。"
 
-#: data/hardwired/tips.cfg:41
+#: data/hardwired/tips.cfg:86
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -4376,39 +4498,35 @@ msgstr ""
 "大多数步兵单位在村庄和城堡中的防御要好于在其它地形，而大多数骑兵在城堡和村庄"
 "中则不会有防御加乘。"
 
-#: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
+#: data/hardwired/tips.cfg:87 data/hardwired/tips.cfg:167
 msgid "- Sir Kaylan, 498YW"
 msgstr "-   Kaylan爵士, 498YW"
 
-#: data/hardwired/tips.cfg:45
+#: data/hardwired/tips.cfg:90
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr "骑兵单位通常能抵御剑刃或冲击攻击，但却易受穿刺攻击的伤害，比如弓和矛。"
 
-#: data/hardwired/tips.cfg:46
+#: data/hardwired/tips.cfg:91
 msgid "- Sir Kaylan, 502YW"
 msgstr "-   Kaylan爵士, 502YW"
 
-#: data/hardwired/tips.cfg:49
+#: data/hardwired/tips.cfg:94
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr "杀敌是获得经验值最好的方式。杀死敌人会获得8x敌人等级的经验值。"
 
-#: data/hardwired/tips.cfg:53
+#: data/hardwired/tips.cfg:98
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr "精灵善于在森林中移动和战斗。矮人善于在丘陵和山岭中移动和战斗。"
 
-#: data/hardwired/tips.cfg:54
-msgid "- High Lord Kalenz, 470YW"
-msgstr "- 高阶君主Kalenz, 470YW"
-
-#: data/hardwired/tips.cfg:57
+#: data/hardwired/tips.cfg:102
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -4416,30 +4534,26 @@ msgstr ""
 "耐心是制胜的法宝。与其在劣势下进攻，或使用较少的部队进攻，还不如等待更好的时"
 "机。"
 
-#: data/hardwired/tips.cfg:58 data/hardwired/tips.cfg:150
-msgid "- King Konrad, 536YW"
-msgstr "- Konrad王, 536YW"
-
-#: data/hardwired/tips.cfg:61
+#: data/hardwired/tips.cfg:106
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr "如果您多面受敌，最好的策略是让可以损失的单位去拖延敌人。"
 
-#: data/hardwired/tips.cfg:62
+#: data/hardwired/tips.cfg:107
 msgid "- King Konrad, 552YW"
 msgstr "- Konrad王, 552YW"
 
-#: data/hardwired/tips.cfg:65
+#: data/hardwired/tips.cfg:110
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr "别担心撤退或重组；这通常是胜利的关键。"
 
-#: data/hardwired/tips.cfg:66
+#: data/hardwired/tips.cfg:111
 msgid "- Meneldur, 123YW"
 msgstr "- Meneldur, 123YW"
 
-#: data/hardwired/tips.cfg:69
+#: data/hardwired/tips.cfg:114
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4449,7 +4563,7 @@ msgstr ""
 "在多数战役中，提前完成目标会获得金币奖励。根据地图上占领村庄的数量和提早结束"
 "的回合数，您总会比占领多余的村庄并等待所有回合结束获得更多的金币。"
 
-#: data/hardwired/tips.cfg:73
+#: data/hardwired/tips.cfg:118
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -4460,24 +4574,22 @@ msgstr ""
 "服敌人的要塞，并从那里征募单位。有些盟友愿意在他们的要塞里腾出让您征募单位的"
 "空间。"
 
-#: data/hardwired/tips.cfg:77
+#: data/hardwired/tips.cfg:122
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "骷髅对穿刺和剑刃和冷冻攻击具有较强抗性，但却容易受冲击、火焰和奥术伤害。"
 
-#: data/hardwired/tips.cfg:78
-msgid "- Memoirs of Gweddry, 627YW"
-msgstr "-   Gweddry的回忆, 627YW"
-
-#: data/hardwired/tips.cfg:81
+#: data/hardwired/tips.cfg:126
+#, fuzzy
 msgid ""
-"Units with leadership ability make lower level adjacent units on the same "
-"side fight better."
+"Units with the 'leadership' ability make lower-level adjacent units on the "
+"same side fight better. Use these units to help your other units level up "
+"faster."
 msgstr "有'领导'能力的单位会提升同一方相邻低级单位的攻击力。"
 
-#: data/hardwired/tips.cfg:85
+#: data/hardwired/tips.cfg:130
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -4486,29 +4598,19 @@ msgstr ""
 "一般来说不要让您的单位停在一个无人驻守的村庄旁边，因为敌人单位会移到村庄里并"
 "攻击您的单位，同时享受村庄带给他的防御和治疗优势。"
 
-#: data/hardwired/tips.cfg:86
-msgid "- Great Mage Delfador, 516YW"
-msgstr "- 大法师 Delfador, 516YW"
-
-#: data/hardwired/tips.cfg:89
-msgid ""
-"Holding the mouse cursor on an ability or trait shows a description of that "
-"ability or trait."
-msgstr "当把鼠标放到能力或特质上时，您会看到有关的详细描述。"
-
-#: data/hardwired/tips.cfg:93
+#: data/hardwired/tips.cfg:134
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr "用单位组成战线，以掩护那些受伤害的单位，让他们得到恢复。"
 
-#: data/hardwired/tips.cfg:94
+#: data/hardwired/tips.cfg:135
 msgid "- Princess Li'sar, 515YW"
 msgstr "- 丽莎公主, 515YW"
 
-#: data/hardwired/tips.cfg:97
+#: data/hardwired/tips.cfg:138
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "在设置菜单您可以查看快捷键列表。"
 
-#: data/hardwired/tips.cfg:101
+#: data/hardwired/tips.cfg:142
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -4516,60 +4618,61 @@ msgstr ""
 "如您移动了某个单位，但没有攻击，也没有发现额外的信息，您就可以用“u”来撤销移"
 "动。"
 
-#: data/hardwired/tips.cfg:105
+#: data/hardwired/tips.cfg:146
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr "您能通过移动鼠标到敌人单位上面来查看敌人单位可以移动的最大距离。"
 
-#: data/hardwired/tips.cfg:109
+#: data/hardwired/tips.cfg:150
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr "用治疗者来支持您的进攻部队——他们不需要自己参加战斗，就能帮您获胜。"
 
-#: data/hardwired/tips.cfg:110
+#: data/hardwired/tips.cfg:151
 msgid "- The Scroll of Chantal, 516YW"
 msgstr "-   Chantal卷轴, 516YW"
 
-#: data/hardwired/tips.cfg:113
+#: data/hardwired/tips.cfg:154
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
 msgstr ""
 "“减速”攻击会让敌人单位移动减速， 并让他们的伤害输出减半，直到本回合结束。"
 
-#: data/hardwired/tips.cfg:117
+#: data/hardwired/tips.cfg:158
 msgid "Arcane attacks are very powerful against undead."
 msgstr "奥术攻击会对不死亡灵造成强力伤害。"
 
-#: data/hardwired/tips.cfg:118
+#: data/hardwired/tips.cfg:159
 msgid "- Great Sage Dacyn, 626YW"
 msgstr "- 明哲 Dacyn, 626YW"
 
-#: data/hardwired/tips.cfg:121
+#: data/hardwired/tips.cfg:162
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr "单位升级时生命值会恢复全满。精明利用升级将会扭转战局。"
 
-#: data/hardwired/tips.cfg:125
+#: data/hardwired/tips.cfg:166
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr "具有'冲锋'攻击的单位最好用来对付那些能一击必杀的敌人。"
 
-#: data/hardwired/tips.cfg:129
+#: data/hardwired/tips.cfg:170
+#, fuzzy
 msgid ""
-"Units can gain After Maximum Level Advancements (AMLAs), which usually "
-"increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
-"progressively harder for each AMLA the unit receives, however. Thus, it is "
-"often more useful to try to advance your lower level units."
+"Instead of leveling up, high-level units gain an 'After Maximum Level "
+"Advancement' (AMLA), which usually increases the unit's maximum hit points "
+"by 3. This is less than the normal difference gained by advancing a level. "
+"Thus, it is usually more useful to try to advance your lower level units."
 msgstr ""
 "单位可以获得满级奖励（AMLA），通常情况下是增加该单位3点的最大生命值。获得下一"
 "个AMLA会越来越难，所以，让您的低级单位升级往往更有益。"
 
-#: data/hardwired/tips.cfg:133
+#: data/hardwired/tips.cfg:174
 msgid ""
 "On maps where the shroud or fog of war has been enabled, a unit's sight is "
 "limited by its maximum movement. Remember this when deciding what unit is "
@@ -4578,7 +4681,7 @@ msgstr ""
 "开启战场黑幕或战争迷雾时，在地图上每个单位的视野由他的最大移动步数决定。在考"
 "虑使用什么兵种进行何种地形的侦查时，请牢记这点。"
 
-#: data/hardwired/tips.cfg:137
+#: data/hardwired/tips.cfg:178
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -4586,7 +4689,7 @@ msgstr ""
 "韦诺之战的游戏屏幕中几乎所有的图标和文字都有工具提示。把鼠标指向图标或文字就"
 "能够显示解释或描述信息。"
 
-#: data/hardwired/tips.cfg:141
+#: data/hardwired/tips.cfg:182
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
@@ -4596,18 +4699,18 @@ msgstr ""
 "您可以通过“帮助韦诺之战”的按钮发送匿名的进度信息给韦诺项目组。这些信息对我们"
 "调整战役难度有重大意义。"
 
-#: data/hardwired/tips.cfg:145
+#: data/hardwired/tips.cfg:186
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr "让低等级单位完成最后一击可以使它更快地升级"
 
-#: data/hardwired/tips.cfg:146
+#: data/hardwired/tips.cfg:187
 msgid "- Queen Li'sar, 528YW"
 msgstr "- 女王丽莎, 528YW"
 
-#: data/hardwired/tips.cfg:149
+#: data/hardwired/tips.cfg:190
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -4639,8 +4742,8 @@ msgid "End Scenario"
 msgstr "结束场景"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:341 src/unit.cpp:2476
-#: src/unit.cpp:2649
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:341 src/unit.cpp:2477
+#: src/unit.cpp:2650
 msgid "HP"
 msgstr "生命值"
 
@@ -4775,57 +4878,57 @@ msgstr "您的领袖必须在要塞里才能征募或召回单位。"
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征兵。"
 
-#: src/actions.cpp:929 src/actions.cpp:1175
+#: src/actions.cpp:952 src/actions.cpp:1206
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:933 src/actions.cpp:1179
+#: src/actions.cpp:956 src/actions.cpp:1210
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:939 src/actions.cpp:1185
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2118
+#: src/actions.cpp:2147
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
-#: src/actions.cpp:2124
+#: src/actions.cpp:2153
 msgid "Failed teleport! Exit not empty"
 msgstr "传送失败!出口阻塞"
 
 # what is the plural form all about?
-#: src/actions.cpp:2162
+#: src/actions.cpp:2191
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友好单位"
 msgstr[1] "发现$friends个友好单位"
 
-#: src/actions.cpp:2165
+#: src/actions.cpp:2194
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌方单位！"
 msgstr[1] "发现$enemies个敌方单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2170
+#: src/actions.cpp:2199
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1个友好单位"
 msgstr[1] "$friends个友好单位"
 
-#: src/actions.cpp:2171
+#: src/actions.cpp:2200
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌方单位"
 msgstr[1] "$enemies个敌方单位"
 
-#: src/actions.cpp:2172
+#: src/actions.cpp:2201
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2181
+#: src/actions.cpp:2210
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 
@@ -4885,7 +4988,7 @@ msgstr "#（无效的）"
 msgid "Campaign: $campaign_name"
 msgstr "战役: $campaign_name"
 
-#: src/dialogs.cpp:472 src/game.cpp:1422
+#: src/dialogs.cpp:472 src/game.cpp:1427
 msgid "Multiplayer"
 msgstr "多人对战"
 
@@ -4950,7 +5053,7 @@ msgstr "删除存档"
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:570 src/game.cpp:1104 src/menu_events.cpp:339
+#: src/dialogs.cpp:570 src/game.cpp:1105 src/menu_events.cpp:339
 #: src/menu_events.cpp:1114 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名称"
@@ -5000,7 +5103,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "屏幕截图"
 
-#: src/game.cpp:443 src/game.cpp:1519
+#: src/game.cpp:443 src/game.cpp:1524
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -5103,203 +5206,203 @@ msgstr "正在连接到服务器..."
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/game.cpp:1082
+#: src/game.cpp:1083
 msgid "Asking for list of add-ons"
 msgstr "请求插件列表"
 
-#: src/game.cpp:1095
+#: src/game.cpp:1096
 msgid "Error communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/game.cpp:1104 src/titlescreen.cpp:299
+#: src/game.cpp:1105 src/titlescreen.cpp:299
 msgid "Version"
 msgstr "版本"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1106
 msgid "Author"
 msgstr "作者"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1106
 msgid "Downloads"
 msgstr "下载数"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1106
 msgid "Size"
 msgstr "大小"
 
-#: src/game.cpp:1157
+#: src/game.cpp:1158
 msgid "Publish add-on: "
 msgstr "发布插件： "
 
-#: src/game.cpp:1161
+#: src/game.cpp:1162
 msgid "Delete add-on: "
 msgstr "删除插件： "
 
-#: src/game.cpp:1165
+#: src/game.cpp:1166
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
-#: src/game.cpp:1172
+#: src/game.cpp:1173
 msgid "Get Add-ons"
 msgstr "获取插件"
 
-#: src/game.cpp:1173
+#: src/game.cpp:1174
 msgid "Choose the add-on to download."
 msgstr "选择要下载的插件。"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1217
 msgid "Dependencies"
 msgstr "依赖"
 
-#: src/game.cpp:1217
+#: src/game.cpp:1218
 msgid "This add-on requires the following additional dependencies:"
 msgstr "这个插件要求以下额外的依赖:"
 
-#: src/game.cpp:1219
+#: src/game.cpp:1220
 msgid "Do you still want to download it?"
 msgstr "您真的想下载这个游戏？"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1230
 msgid "Downloading add-on..."
 msgstr "正在下载插件……"
 
-#: src/game.cpp:1286
+#: src/game.cpp:1288
 msgid "Add-on Installed"
 msgstr "插件已安装"
 
-#: src/game.cpp:1286
+#: src/game.cpp:1288
 msgid "The add-on has been installed."
 msgstr "这个插件已经安装。"
 
-#: src/game.cpp:1289
+#: src/game.cpp:1291
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/game.cpp:1291
+#: src/game.cpp:1293
 msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
-#: src/game.cpp:1293
+#: src/game.cpp:1295
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr "安装这个战役所需文件创建错误。"
 
-#: src/game.cpp:1307 src/game.cpp:1349 src/game.cpp:1376
+#: src/game.cpp:1310 src/game.cpp:1353 src/game.cpp:1381
 #: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:69 src/playcampaign.cpp:465
 msgid "Connection timed out"
 msgstr "连接超时"
 
-#: src/game.cpp:1310
+#: src/game.cpp:1313
 msgid "The server responded with an error: \"$error|\""
 msgstr "服务器返回一个错误： \""
 
-#: src/game.cpp:1317
+#: src/game.cpp:1320
 msgid "Terms"
 msgstr "条件"
 
-#: src/game.cpp:1347
+#: src/game.cpp:1351
 msgid "Sending add-on"
 msgstr "发送插件"
 
-#: src/game.cpp:1351 src/game.cpp:1378
+#: src/game.cpp:1355 src/game.cpp:1383
 msgid "The server responded with an error: \""
 msgstr "服务器响应错误： \""
 
-#: src/game.cpp:1355 src/game.cpp:1382 src/multiplayer_wait.cpp:377
+#: src/game.cpp:1359 src/game.cpp:1387 src/multiplayer_wait.cpp:377
 msgid "Response"
 msgstr "回应"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1411
 msgid "Join Official Server"
 msgstr "加入官方服务器"
 
-#: src/game.cpp:1407
+#: src/game.cpp:1412
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登录韦诺官方多人对战服务器"
 
-#: src/game.cpp:1409
+#: src/game.cpp:1414
 msgid "Connect to Host/Server"
 msgstr "连接到服务器"
 
-#: src/game.cpp:1410
+#: src/game.cpp:1415
 msgid "Join a server or hosted game"
 msgstr "加入服务器或已建游戏"
 
-#: src/game.cpp:1412
+#: src/game.cpp:1417
 msgid "Host Networked Game"
 msgstr "主建局域网游戏"
 
-#: src/game.cpp:1413
+#: src/game.cpp:1418
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr "使用内置的服务器做主机. 支持的不是很好. 最好用专用的服务器'wesnothd'."
 
-#: src/game.cpp:1415
+#: src/game.cpp:1420
 msgid "Local Game"
 msgstr "本地游戏"
 
-#: src/game.cpp:1416
+#: src/game.cpp:1421
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "在一台电脑上进行多人对战"
 
-#: src/game.cpp:1424 src/multiplayer.cpp:232
+#: src/game.cpp:1429 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "登录名： "
 
-#: src/game.cpp:1461 src/playcampaign.cpp:97 src/playcampaign.cpp:382
+#: src/game.cpp:1466 src/playcampaign.cpp:97 src/playcampaign.cpp:382
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1463 src/playcampaign.cpp:99 src/playcampaign.cpp:385
+#: src/game.cpp:1468 src/playcampaign.cpp:99 src/playcampaign.cpp:385
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1483 src/playcampaign.cpp:101 src/playcampaign.cpp:388
+#: src/game.cpp:1488 src/playcampaign.cpp:101 src/playcampaign.cpp:388
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1509
+#: src/game.cpp:1514
 msgid "Language"
 msgstr "语言"
 
-#: src/game.cpp:1510
+#: src/game.cpp:1515
 msgid "Choose your preferred language:"
 msgstr "选择您的语言偏好："
 
-#: src/game.cpp:1668
+#: src/game.cpp:1673
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "以下附加战役有错误，无法加载："
 
-#: src/game.cpp:1673
+#: src/game.cpp:1678
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1687
+#: src/game.cpp:1692
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告：载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1739
+#: src/game.cpp:1744
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1740
+#: src/game.cpp:1745
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1920
+#: src/game.cpp:1926
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:2112
+#: src/game.cpp:2118
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:2118
+#: src/game.cpp:2124
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2132
+#: src/game.cpp:2138
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -5315,11 +5418,11 @@ msgstr "胜利："
 msgid "Defeat:"
 msgstr "失败："
 
-#: src/gamestatus.cpp:680 src/gamestatus.cpp:682 src/playcampaign.cpp:408
+#: src/gamestatus.cpp:692 src/gamestatus.cpp:694 src/playcampaign.cpp:408
 msgid " replay"
 msgstr " 游戏录像"
 
-#: src/gamestatus.cpp:796
+#: src/gamestatus.cpp:808
 msgid "Could not write to file"
 msgstr "无法写入文件"
 
@@ -6552,15 +6655,18 @@ msgstr "无效网络句柄"
 msgid "Client disconnected"
 msgstr "客户端断开连接"
 
-#: src/network.cpp:160
-msgid "No server ping since at least 60 seconds. Connection timed out."
-msgstr "至少60秒都没能与服务器取得联系。连接超时。"
+#: src/network.cpp:165
+#, fuzzy
+msgid "No server ping since $timeout second. Connection timed out."
+msgid_plural "No server ping since $timeout seconds. Connection timed out."
+msgstr[0] "至少60秒都没能与服务器取得联系。连接超时。"
+msgstr[1] "至少60秒都没能与服务器取得联系。连接超时。"
 
-#: src/network.cpp:508
+#: src/network.cpp:519
 msgid "Could not add socket to socket set"
 msgstr "无法向套接字(socket)集合中添加游戏要用的套接字"
 
-#: src/network.cpp:519
+#: src/network.cpp:530
 msgid "Could not send initial handshake"
 msgstr "不能发送初始化连接信息"
 
@@ -6736,59 +6842,59 @@ msgstr "$player 已经离开游戏，您想做什么？"
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "您想载入的文件已损坏. 继续玩吗?"
 
-#: src/serialization/parser.cpp:125
+#: src/serialization/parser.cpp:122
 msgid "Unexpected characters at line start"
 msgstr "启始处出现非常规字符"
 
-#: src/serialization/parser.cpp:152
+#: src/serialization/parser.cpp:149
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr " 在$pos处缺少$tag标记的结束标识"
 
-#: src/serialization/parser.cpp:167
+#: src/serialization/parser.cpp:164
 msgid "Unterminated [element] tag"
 msgstr "未终止的:[element] 标记符"
 
-#: src/serialization/parser.cpp:177 src/serialization/parser.cpp:213
+#: src/serialization/parser.cpp:174 src/serialization/parser.cpp:210
 msgid "Invalid tag name"
 msgstr "无效标识名"
 
-#: src/serialization/parser.cpp:180
+#: src/serialization/parser.cpp:177
 msgid "Unterminated [+element] tag"
 msgstr "未终止的:[+element] 标记符"
 
-#: src/serialization/parser.cpp:196
+#: src/serialization/parser.cpp:193
 msgid "Invalid closing tag name"
 msgstr "无效结束标识名"
 
-#: src/serialization/parser.cpp:199
+#: src/serialization/parser.cpp:196
 msgid "Unterminated closing tag"
 msgstr "未终止的结束标识"
 
-#: src/serialization/parser.cpp:201
+#: src/serialization/parser.cpp:198
 msgid "Unexpected closing tag"
 msgstr "意外的结束标识"
 
-#: src/serialization/parser.cpp:207
+#: src/serialization/parser.cpp:204
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr "发现无效的$tag标志的结束标志$tag2（打开于 $pos 处）"
 
-#: src/serialization/parser.cpp:232 src/serialization/parser.cpp:244
+#: src/serialization/parser.cpp:229 src/serialization/parser.cpp:241
 msgid "Empty variable name"
 msgstr "空变量名"
 
-#: src/serialization/parser.cpp:238
+#: src/serialization/parser.cpp:235
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "可变的姓名后出现无法识别的字符(expected , or =)"
 
-#: src/serialization/parser.cpp:273 src/serialization/parser.cpp:297
+#: src/serialization/parser.cpp:270 src/serialization/parser.cpp:294
 msgid "Unterminated quoted string"
 msgstr "未终止的引用字符窜"
 
-#: src/serialization/parser.cpp:320
+#: src/serialization/parser.cpp:317
 msgid " included from "
 msgstr " 包含 "
 
-#: src/serialization/parser.cpp:341
+#: src/serialization/parser.cpp:338
 msgid "$error at $pos"
 msgstr "在$pos处发生$error"
 
@@ -6910,35 +7016,35 @@ msgstr "上传统计资料"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:384 src/unit.cpp:1197 src/unit.cpp:2390
+#: src/unit.cpp:384 src/unit.cpp:1198 src/unit.cpp:2391
 msgid "Unknown unit type '$type|'"
 msgstr "未知单位种类 '$type|'"
 
-#: src/unit.cpp:2433 src/unit.cpp:2637 src/unit.cpp:2693
+#: src/unit.cpp:2434 src/unit.cpp:2638 src/unit.cpp:2694
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2444
+#: src/unit.cpp:2445
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2509
+#: src/unit.cpp:2510
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2527 src/unit.cpp:2664
+#: src/unit.cpp:2528 src/unit.cpp:2665
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2656
+#: src/unit.cpp:2657
 msgid " move"
 msgstr "移动"
 
-#: src/unit.cpp:2672
+#: src/unit.cpp:2673
 msgid "$effect_description per level"
 msgstr "每级 $effect_description"
 
-#: src/unit.cpp:2702
+#: src/unit.cpp:2703
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -6992,6 +7098,19 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid "Full Heal"
+#~ msgstr "生命全满"
+
+#~ msgid ""
+#~ "In a campaign, you can use veteran units from previous scenarios by using "
+#~ "the 'recall' option."
+#~ msgstr "在战役中，通过“召回”选项，您能使用上一幕中战斗过有经验的单位。"
+
+#~ msgid ""
+#~ "Holding the mouse cursor on an ability or trait shows a description of "
+#~ "that ability or trait."
+#~ msgstr "当把鼠标放到能力或特质上时，您会看到有关的详细描述。"
 
 #~ msgid "Binary Saves"
 #~ msgstr "二进制存档"

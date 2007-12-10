@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-07 00:27+0100\n"
+"POT-Creation-Date: 2007-12-10 15:48+0100\n"
 "PO-Revision-Date: 2007-08-19 23:59+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -41,15 +41,15 @@ msgstr ""
 msgid "Mouse Scrolling"
 msgstr "Прокрутка мыши"
 
-#: data/_main.cfg:64
+#: data/_main.cfg:72
 msgid "Official Wesnoth Server"
 msgstr "Официальный сервер Wesnoth"
 
-#: data/_main.cfg:68
+#: data/_main.cfg:76
 msgid "Alternate Wesnoth Server"
 msgstr "Альтернативный сервер Wesnoth"
 
-#: data/_main.cfg:153
+#: data/_main.cfg:161
 msgid "-- The Tome of Wesnoth"
 msgstr "— Великая книга Веснота"
 
@@ -223,104 +223,104 @@ msgstr "Финский перевод"
 msgid "Finnish Translation"
 msgstr "Финский перевод"
 
-#: data/core/about.cfg:1037
+#: data/core/about.cfg:1040
 msgid "French Translation"
 msgstr "Французский перевод"
 
-#: data/core/about.cfg:1136
+#: data/core/about.cfg:1142
 msgid "Galician Translation"
 msgstr "Галисийский перевод"
 
-#: data/core/about.cfg:1143
+#: data/core/about.cfg:1149
 msgid "German Translation"
 msgstr "Немецкий перевод"
 
-#: data/core/about.cfg:1188
+#: data/core/about.cfg:1194
 msgid "Greek Translation"
 msgstr "Греческий перевод"
 
-#: data/core/about.cfg:1216
+#: data/core/about.cfg:1222
 msgid "Hebrew Translation"
 msgstr "Перевод на иврит"
 
-#: data/core/about.cfg:1226
+#: data/core/about.cfg:1232
 msgid "Hungarian Translation"
 msgstr "Венгерский перевод"
 
-#: data/core/about.cfg:1263
+#: data/core/about.cfg:1269
 msgid "Indonesian Translation"
 msgstr "Эстонский перевод"
 
-#: data/core/about.cfg:1270
+#: data/core/about.cfg:1276
 msgid "Italian Translation"
 msgstr "Итальянский перевод"
 
-#: data/core/about.cfg:1301
+#: data/core/about.cfg:1307
 msgid "Japanese Translation"
 msgstr "Японский перевод"
 
-#: data/core/about.cfg:1324
+#: data/core/about.cfg:1330
 msgid "Korean Translation"
 msgstr "Норвежский перевод"
 
-#: data/core/about.cfg:1331
+#: data/core/about.cfg:1337
 msgid "Latin Translation"
 msgstr "Латинский перевод"
 
-#: data/core/about.cfg:1338
+#: data/core/about.cfg:1344
 msgid "Lithuanian Translation"
 msgstr "Литовский перевод"
 
-#: data/core/about.cfg:1345
+#: data/core/about.cfg:1351
 msgid "Norwegian Translation"
 msgstr "Норвежский перевод"
 
-#: data/core/about.cfg:1367
+#: data/core/about.cfg:1373
 msgid "Polish Translation"
 msgstr "Польский перевод"
 
-#: data/core/about.cfg:1410
+#: data/core/about.cfg:1416
 msgid "Portuguese Translation"
 msgstr "Португальский перевод"
 
-#: data/core/about.cfg:1417
+#: data/core/about.cfg:1423
 msgid "Portuguese (Brazil) Translation"
 msgstr "Португальский бразильский перевод"
 
-#: data/core/about.cfg:1452
+#: data/core/about.cfg:1458
 msgid "Russian Translation"
 msgstr "Русский перевод"
 
-#: data/core/about.cfg:1484
+#: data/core/about.cfg:1490
 msgid "Serbian Translation"
 msgstr "Сербский перевод"
 
-#: data/core/about.cfg:1499
+#: data/core/about.cfg:1505
 msgid "Slovak Translation"
 msgstr "Словакский перевод"
 
-#: data/core/about.cfg:1513
+#: data/core/about.cfg:1519
 msgid "Slovenian Translation"
 msgstr "Словенский перевод"
 
-#: data/core/about.cfg:1523
+#: data/core/about.cfg:1529
 msgid "Spanish Translation"
 msgstr "Испанский перевод"
 
-#: data/core/about.cfg:1565
+#: data/core/about.cfg:1571
 msgid "Swedish Translation"
 msgstr "Шведский перевод"
 
-#: data/core/about.cfg:1591
+#: data/core/about.cfg:1597
 msgid "Turkish Translation"
 msgstr "Турецкий перевод"
 
-#: data/core/about.cfg:1610
+#: data/core/about.cfg:1616
 #, fuzzy
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Валенсийский перевод"
 
-#: data/core/about.cfg:1626
+#: data/core/about.cfg:1632
 msgid "Bots"
 msgstr "Боты"
 
@@ -2690,11 +2690,26 @@ msgstr ""
 "рядом с ним. Вражеское соединение, которое первым обнаружит подводника "
 "немедленно потеряет все свои оставшиеся очки движения."
 
+#: data/core/macros/abilities.cfg:471
+msgid "feeding"
+msgstr ""
+
 #: data/core/macros/abilities.cfg:473
+msgid ""
+"Feeding:\n"
+"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+
+#: data/core/macros/abilities.cfg:497
+msgid "+1 max HP"
+msgstr ""
+
+#: data/core/macros/abilities.cfg:526
 msgid "berserk"
 msgstr "берсерк"
 
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/abilities.cfg:528
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -2704,11 +2719,11 @@ msgstr ""
 "Используется в наступлении или обороне, эта атака продолжает битву, пока "
 "один из бойцов не погибнет или пока не пройдут 30 раундов атаки."
 
-#: data/core/macros/abilities.cfg:485
+#: data/core/macros/abilities.cfg:538
 msgid "backstab"
 msgstr "исподтишка"
 
-#: data/core/macros/abilities.cfg:487
+#: data/core/macros/abilities.cfg:540
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -2719,11 +2734,11 @@ msgstr ""
 "Эта атака наносит двойной урон, если враг находится напротив дружественного "
 "соединения или беспомощно (например превращено в камень)."
 
-#: data/core/macros/abilities.cfg:499 data/core/macros/abilities.cfg:511
+#: data/core/macros/abilities.cfg:552 data/core/macros/abilities.cfg:564
 msgid "plague"
 msgstr "чума"
 
-#: data/core/macros/abilities.cfg:501
+#: data/core/macros/abilities.cfg:554
 #, fuzzy
 msgid ""
 "Plague:\n"
@@ -2736,7 +2751,7 @@ msgstr ""
 "убившего, и переходит на его сторону. (Это не работает на мертвецов или на "
 "соединения, находящиеся в деревнях)"
 
-#: data/core/macros/abilities.cfg:513
+#: data/core/macros/abilities.cfg:566
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2748,11 +2763,11 @@ msgstr ""
 "стороне соединения убившего его. Это не работает на мертвецов или на "
 "соединения, находящиеся в деревнях."
 
-#: data/core/macros/abilities.cfg:523
+#: data/core/macros/abilities.cfg:576
 msgid "slows"
 msgstr "замедление"
 
-#: data/core/macros/abilities.cfg:525
+#: data/core/macros/abilities.cfg:578
 #, fuzzy
 msgid ""
 "Slow:\n"
@@ -2765,11 +2780,11 @@ msgstr ""
 "Эта атака замедляет жертву в конце хода. Подверженное этой атаке соединение "
 "будет наносить лишь половину атак и перемещаться в два раза медленнее."
 
-#: data/core/macros/abilities.cfg:534
+#: data/core/macros/abilities.cfg:587
 msgid "stones"
 msgstr "камень"
 
-#: data/core/macros/abilities.cfg:536
+#: data/core/macros/abilities.cfg:589
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2779,11 +2794,11 @@ msgstr ""
 "Данный вид атаки превращает цель в камень. Соединения, превращенные в "
 "камень, не могут перемещаться и атаковать."
 
-#: data/core/macros/abilities.cfg:545
+#: data/core/macros/abilities.cfg:598
 msgid "marksman"
 msgstr "снайпер"
 
-#: data/core/macros/abilities.cfg:547
+#: data/core/macros/abilities.cfg:600
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -2791,11 +2806,11 @@ msgstr ""
 "Снайпер:\n"
 "В наступлении данная атака всегда имеет шанс не менее 60% нанести ущерб."
 
-#: data/core/macros/abilities.cfg:559
+#: data/core/macros/abilities.cfg:612
 msgid "magical"
 msgstr "магия"
 
-#: data/core/macros/abilities.cfg:561
+#: data/core/macros/abilities.cfg:614
 #, fuzzy
 msgid ""
 "Magical:\n"
@@ -2805,11 +2820,11 @@ msgstr ""
 "Магия:\n"
 "Данный тип атаки всегда имеет 70% шанс нанести ущерб."
 
-#: data/core/macros/abilities.cfg:572
+#: data/core/macros/abilities.cfg:625
 msgid "swarm"
 msgstr "рой"
 
-#: data/core/macros/abilities.cfg:574
+#: data/core/macros/abilities.cfg:627
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -2823,11 +2838,11 @@ msgstr ""
 "максимального ЗД соединения. Например, соединение, имеющее 3/4 от "
 "максимального ЗД, сможет наносить только 3/4 от числа возможных ударов."
 
-#: data/core/macros/abilities.cfg:583
+#: data/core/macros/abilities.cfg:636
 msgid "charge"
 msgstr "бросок"
 
-#: data/core/macros/abilities.cfg:585
+#: data/core/macros/abilities.cfg:638
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -2837,11 +2852,11 @@ msgstr ""
 "Эта атака наносит двойной урон цели. Соединение также будет получать двойной "
 "урон при ответном ударе цели."
 
-#: data/core/macros/abilities.cfg:597
+#: data/core/macros/abilities.cfg:650
 msgid "drains"
 msgstr "осушающий"
 
-#: data/core/macros/abilities.cfg:599
+#: data/core/macros/abilities.cfg:652
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -2851,11 +2866,11 @@ msgstr ""
 "Это соединение высасывает здоровье из живых соединений, получая для себя "
 "половину нанесенного количества ущерба (округляется вниз)."
 
-#: data/core/macros/abilities.cfg:608
+#: data/core/macros/abilities.cfg:661
 msgid "firststrike"
 msgstr "первый удар"
 
-#: data/core/macros/abilities.cfg:610
+#: data/core/macros/abilities.cfg:663
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -2864,11 +2879,11 @@ msgstr ""
 "Данное соединение всегда атакует первым с данной атакой, даже если "
 "соединение защищается."
 
-#: data/core/macros/abilities.cfg:619
+#: data/core/macros/abilities.cfg:672
 msgid "poison"
 msgstr "яд"
 
-#: data/core/macros/abilities.cfg:621
+#: data/core/macros/abilities.cfg:674
 #, fuzzy
 msgid ""
 "Poison:\n"
@@ -2890,8 +2905,9 @@ msgid "Max HP bonus +"
 msgstr "Максимальный бонус ЗД +"
 
 #: data/core/macros/amla.cfg:30
-msgid "Full Heal"
-msgstr "Полное исцеление"
+#, fuzzy
+msgid "Heal to full, MAX XP +25%"
+msgstr ", МАКС ЗД +25%"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -4537,44 +4553,146 @@ msgstr "чары"
 
 #: data/hardwired/tips.cfg:3
 msgid ""
+"Don't neglect to earn your leader experience! You need to keep him safe, but "
+"if you coddle him too much he may be at too low a level to survive future "
+"battles."
+msgstr ""
+
+#: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:131
+msgid "- Great Mage Delfador, 516YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:7
+msgid ""
+"In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
+"possible hexes your adversary can actually move to (assuming your units stay "
+"where they are). Use this to make sure the enemy can't reach your weak or "
+"injured units on his next turn."
+msgstr ""
+
+#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
+#: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
+#: data/hardwired/tips.cfg:36 data/hardwired/tips.cfg:52
+#: data/hardwired/tips.cfg:56 data/hardwired/tips.cfg:59
+#: data/hardwired/tips.cfg:63 data/hardwired/tips.cfg:67
+#: data/hardwired/tips.cfg:79 data/hardwired/tips.cfg:83
+#: data/hardwired/tips.cfg:95 data/hardwired/tips.cfg:115
+#: data/hardwired/tips.cfg:139 data/hardwired/tips.cfg:143
+#: data/hardwired/tips.cfg:147 data/hardwired/tips.cfg:155
+#: data/hardwired/tips.cfg:163 data/hardwired/tips.cfg:171
+#: data/hardwired/tips.cfg:175 data/hardwired/tips.cfg:179
+#: data/hardwired/tips.cfg:183 data/hardwired/tips.cfg:191
+msgid "- The Wesnoth Tactical Guide"
+msgstr ""
+
+#: data/hardwired/tips.cfg:11
+msgid ""
+"Units with the 'intelligent' trait need fewer experience points to level up. "
+"Early in a campaign, try to give killing blows to these units so you can get "
+"some high-level troops sooner."
+msgstr ""
+
+#: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:103
+msgid "- King Konrad, 536YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:15
+msgid ""
+"The encircling tactic by two units is very powerful, particularly against "
+"long range units. By placing two units on opposite sides of an opposing "
+"unit, their zones of control limit it to one hex move in any direction."
+msgstr ""
+
+#: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:123
+msgid "- Memoirs of Gweddry, 627YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:19
+msgid ""
+"You can access the 'recruit' and 'recall' commands by right-clicking on a "
+"castle tile. That will let you chose which hex you put a new unit in. "
+"Placing units wisely can sometimes let you get to a village a turn earlier."
+msgstr ""
+
+#: data/hardwired/tips.cfg:23
+msgid ""
+"There are some helpful summary screens in the main menu: the 'Status Table', "
+"for instance, will let you know how your enemies are doing, and how you are "
+"doing in comparison."
+msgstr ""
+
+#: data/hardwired/tips.cfg:27
+msgid ""
+"Units with the 'quick' trait move one extra hex per turn. This can be very "
+"important when moving through difficult terrain such as water or caves. It "
+"can make the difference between being able to move one hex or two."
+msgstr ""
+
+#: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:99
+msgid "- High Lord Kalenz, 470YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:31
+msgid ""
+"After you have played a few scenarios, read the 'Gameplay' section in the "
+"help screen carefully. Details become important as scenarios get harder!"
+msgstr ""
+
+#: data/hardwired/tips.cfg:35
+msgid ""
+"It is usually better to start the next scenario in a campaign with lower-"
+"level units that are about to level up than with those same units at a "
+"higher level."
+msgstr ""
+
+#: data/hardwired/tips.cfg:39
+msgid ""
+"On www.wesnoth.org you can find strategy guides, technical support, the "
+"history of Wesnoth, and much more."
+msgstr ""
+
+#: data/hardwired/tips.cfg:40
+#, fuzzy
+msgid "- The Wesnoth Community"
+msgstr "Список соединений Веснота"
+
+#: data/hardwired/tips.cfg:43
+msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
 "Порядочные соединения лучше сражаются днем, а хаотичные соединения - ночью. "
 "Нейтральные соединения сражаются и днем и ночью с одинаковой силой."
 
-#: data/hardwired/tips.cfg:4
+#: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:7
+#: data/hardwired/tips.cfg:47
 msgid ""
-"In a campaign, you can use veteran units from previous scenarios by using "
-"the 'recall' option."
-msgstr ""
-"При прохождении кампании, вы можете использовать соединения-ветеранов из "
-"прошлого сценария, для этого необходимо использовать команду \"призвать\"."
-
-#: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:11
-#: data/hardwired/tips.cfg:14 data/hardwired/tips.cfg:18
-#: data/hardwired/tips.cfg:22 data/hardwired/tips.cfg:34
-#: data/hardwired/tips.cfg:38 data/hardwired/tips.cfg:50
-#: data/hardwired/tips.cfg:70 data/hardwired/tips.cfg:90
-#: data/hardwired/tips.cfg:98 data/hardwired/tips.cfg:102
-#: data/hardwired/tips.cfg:106 data/hardwired/tips.cfg:114
-#: data/hardwired/tips.cfg:122 data/hardwired/tips.cfg:130
-#: data/hardwired/tips.cfg:134 data/hardwired/tips.cfg:138
-#: data/hardwired/tips.cfg:142
-msgid "- The Wesnoth Tactical Guide"
+"An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
 
-#: data/hardwired/tips.cfg:10
+#: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:71
+#: data/hardwired/tips.cfg:119 data/hardwired/tips.cfg:127
+msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
+msgstr ""
+
+#: data/hardwired/tips.cfg:51
+msgid ""
+"If you are playing in the fog or with a shroud, you don't know what you're "
+"facing. In this case, long-range scouting units are worth their cost. Try to "
+"choose scouts that can easily move across the surrounding terrain, because "
+"units see as far as they can move in one turn."
+msgstr ""
+
+#: data/hardwired/tips.cfg:55
+#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
-"Right-click on a unit, and then select 'Unit Description', and then click "
-"'Resistance' to see how much resistance a unit has against different attack "
-"types."
+"Right-click on a unit and select 'Unit Description' to see which attacks it "
+"is resistant to, and which will affect it the most."
 msgstr ""
 "Существует шесть типов атаки, в зависимости от применяемого оружия: колющее, "
 "режущее, ударное, огонь, холод и чары. Разные соединения имеют разную "
@@ -4583,7 +4701,7 @@ msgstr ""
 "\" чтобы увидеть как данное соединения сопротивляется против различных типов "
 "атак."
 
-#: data/hardwired/tips.cfg:13
+#: data/hardwired/tips.cfg:58
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -4594,34 +4712,39 @@ msgstr ""
 "в бою. Рейтинг сопротивления выбранного соединения на конкретной выбранной "
 "местности можно видеть в правом верхнем углу экрана."
 
-#: data/hardwired/tips.cfg:17
+#: data/hardwired/tips.cfg:62
+#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
-"poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
-"be cured by moving them to a village, or placing them next to a unit with "
-"the 'cures' ability."
+"poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
+"to a healer will not lose hitpoints on their next turn. If they are in a "
+"village or next to a unit with the 'cures' ability, the poison will be "
+"completely cured on their next turn."
 msgstr ""
 "Отравленные соединения теряют 8 единиц здоровья за каждый ход, но они не "
 "могут умереть от яда; яд никогда не понизит здоровье ниже 1 единицы. "
 "Отравленные соединения могут исцеляться в деревне, либо с помощью другого "
 "соединения, у которого есть способности лечения."
 
-#: data/hardwired/tips.cfg:21
+#: data/hardwired/tips.cfg:66
+#, fuzzy
 msgid ""
-"You can use units from a previous scenario by selecting 'Recall' in the game "
-"menu. By recalling the same units over and over, you can build up a powerful "
-"and experienced army."
+"You can use units from a previous scenario by selecting 'Recall' in the "
+"'Actions' menu. By recalling the same units over and over, you can build up "
+"a powerful and experienced army."
 msgstr ""
 "Вы можете использовать отряды с прошлого сценария, для этого существует "
 "команда \"Призвать\" в меню Действия. Призывая одни и теже отряды много раз, "
 "вы создаете более мощную и опытную армию. "
 
-#: data/hardwired/tips.cfg:25
+#: data/hardwired/tips.cfg:70
+#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
-"turn. Level 0 units are too frail to control a zone; and skirmisher units "
-"are skilled enough to ignore these zones."
+"turn. This means that units can have two empty hexes between them and still "
+"create a barrier to the enemy. (Level 0 units are too frail to control a "
+"zone; and skirmisher units are skilled enough to ignore these zones.)"
 msgstr ""
 "Все соединения имеют свою зону контроля в каждой ячейке вокруг него. Если "
 "соединение передвигается в зону контроля противника, оно больше не может "
@@ -4629,12 +4752,7 @@ msgstr ""
 "контролировать зону; кроме того, соединения застрельщики достаточно хорошо "
 "обучены и такие соединения игнорируют эти зоны."
 
-#: data/hardwired/tips.cfg:26 data/hardwired/tips.cfg:74
-#: data/hardwired/tips.cfg:82
-msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
-
-#: data/hardwired/tips.cfg:29
+#: data/hardwired/tips.cfg:74
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -4646,27 +4764,28 @@ msgstr ""
 "менее, магические атаки имеют шанс 70% нанести ущерб, а атаки снайперов "
 "имеют шанс не меньше 60% нанести ущерб."
 
-#: data/hardwired/tips.cfg:30
+#: data/hardwired/tips.cfg:75
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:33
+#: data/hardwired/tips.cfg:78
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "Соединения, остающиеся в деревнях, восстанавливают 8 единиц здоровья в "
 "начале своего хода."
 
-#: data/hardwired/tips.cfg:37
+#: data/hardwired/tips.cfg:82
 #, fuzzy
 msgid ""
-"Units rest if they do not move or attack during their turn. They will "
-"recover 2 hitpoints at the beginning of their next turn."
+"Don't move an injured unit if you don't have to--let it rest. If a unit does "
+"not move or attack, it will recover 2 hit points at the beginning of its "
+"next turn."
 msgstr ""
 "Соединения, которые не двигаются и не атакуют в течение своего хода, "
 "восстанавливают 2 единицы здоровья в начале своего следующего хода."
 
-#: data/hardwired/tips.cfg:41
+#: data/hardwired/tips.cfg:86
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -4676,11 +4795,11 @@ msgstr ""
 "большинстве остальной территории, тогда как большинство конных соединений не "
 "получают преимущества в защите, находясь в деревнях и замках."
 
-#: data/hardwired/tips.cfg:42 data/hardwired/tips.cfg:126
+#: data/hardwired/tips.cfg:87 data/hardwired/tips.cfg:167
 msgid "- Sir Kaylan, 498YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:45
+#: data/hardwired/tips.cfg:90
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -4689,11 +4808,11 @@ msgstr ""
 "Конные соединения хорошо защищены от атак режущим и крушащим оружием, но "
 "уязвимы против атак колющего оружия, включая стрелы и копья."
 
-#: data/hardwired/tips.cfg:46
+#: data/hardwired/tips.cfg:91
 msgid "- Sir Kaylan, 502YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:49
+#: data/hardwired/tips.cfg:94
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
@@ -4703,7 +4822,7 @@ msgstr ""
 "приобретать опыт. Соединение, убившее противника, получает 8 единиц опыта за "
 "каждый уровень соединения, которое было убито им."
 
-#: data/hardwired/tips.cfg:53
+#: data/hardwired/tips.cfg:98
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
@@ -4711,11 +4830,7 @@ msgstr ""
 "Эльфы хорошо передвигаются и сражаются в лесу. Гномы хорошо передвигаются и "
 "сражаются на холмах и в горах."
 
-#: data/hardwired/tips.cfg:54
-msgid "- High Lord Kalenz, 470YW"
-msgstr ""
-
-#: data/hardwired/tips.cfg:57
+#: data/hardwired/tips.cfg:102
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -4724,11 +4839,7 @@ msgstr ""
 "количеством соединений, лучше подождите лучших условий и только тогда "
 "атакуйте."
 
-#: data/hardwired/tips.cfg:58 data/hardwired/tips.cfg:150
-msgid "- King Konrad, 536YW"
-msgstr ""
-
-#: data/hardwired/tips.cfg:61
+#: data/hardwired/tips.cfg:106
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -4737,20 +4848,20 @@ msgstr ""
 "более опытные соединения в одном и том же направлении, чтобы задержать "
 "противника."
 
-#: data/hardwired/tips.cfg:62
+#: data/hardwired/tips.cfg:107
 msgid "- King Konrad, 552YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:65
+#: data/hardwired/tips.cfg:110
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr "Не бойтесь отступать и перемещаться, обычно это и есть ключ к победе."
 
-#: data/hardwired/tips.cfg:66
+#: data/hardwired/tips.cfg:111
 msgid "- Meneldur, 123YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:69
+#: data/hardwired/tips.cfg:114
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -4762,7 +4873,7 @@ msgstr ""
 "за игру. Чем больше деревень вы захватите и чем меньше вы сделаете ходов в "
 "игре, тем больше Вы получите золота."
 
-#: data/hardwired/tips.cfg:73
+#: data/hardwired/tips.cfg:118
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -4775,7 +4886,7 @@ msgstr ""
 "могут добровольно создавать укрытие в своем замке для вас, чтобы вы могли "
 "вербовать соединения."
 
-#: data/hardwired/tips.cfg:77
+#: data/hardwired/tips.cfg:122
 #, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
@@ -4784,19 +4895,17 @@ msgstr ""
 "Скелеты невосприимчивы к колющему и режущему оружию, но уязвимы против "
 "крушащего, огненного и зачарованного оружия."
 
-#: data/hardwired/tips.cfg:78
-msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
-
-#: data/hardwired/tips.cfg:81
+#: data/hardwired/tips.cfg:126
+#, fuzzy
 msgid ""
-"Units with leadership ability make lower level adjacent units on the same "
-"side fight better."
+"Units with the 'leadership' ability make lower-level adjacent units on the "
+"same side fight better. Use these units to help your other units level up "
+"faster."
 msgstr ""
 "Соединения со способностью лидерства делают соседние соединения низшего "
 "уровня более сильными и они сражаются в бою лучше."
 
-#: data/hardwired/tips.cfg:85
+#: data/hardwired/tips.cfg:130
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -4807,33 +4916,21 @@ msgstr ""
 "находится в деревне, а соединения, находящиеся в деревне, исцеляются каждый "
 "ход."
 
-#: data/hardwired/tips.cfg:86
-msgid "- Great Mage Delfador, 516YW"
-msgstr ""
-
-#: data/hardwired/tips.cfg:89
-msgid ""
-"Holding the mouse cursor on an ability or trait shows a description of that "
-"ability or trait."
-msgstr ""
-"Удерживайте курсор мышки на способности или особенности чтобы увидеть их "
-"описание."
-
-#: data/hardwired/tips.cfg:93
+#: data/hardwired/tips.cfg:134
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Используйте линии соединений, поврежденные соединение отводите назад чтобы "
 "дать им возможность восстановиться."
 
-#: data/hardwired/tips.cfg:94
+#: data/hardwired/tips.cfg:135
 msgid "- Princess Li'sar, 515YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:97
+#: data/hardwired/tips.cfg:138
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Просмотрите список горячих клавиш в меню настроек."
 
-#: data/hardwired/tips.cfg:101
+#: data/hardwired/tips.cfg:142
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -4842,7 +4939,7 @@ msgstr ""
 "дополнительную информацию, вы можете отменить ваше передвижение, нажав "
 "кнопку \"u\"."
 
-#: data/hardwired/tips.cfg:105
+#: data/hardwired/tips.cfg:146
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -4850,7 +4947,7 @@ msgstr ""
 "Вы можете видеть, как далеко может двигаться соединение противника, для "
 "этого наведите курсор мыши на соединения противника."
 
-#: data/hardwired/tips.cfg:109
+#: data/hardwired/tips.cfg:150
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -4858,11 +4955,11 @@ msgstr ""
 "Используйте целителей для поддержки атакующих — они победят в битве без "
 "необходимости атаковать."
 
-#: data/hardwired/tips.cfg:110
+#: data/hardwired/tips.cfg:151
 msgid "- The Scroll of Chantal, 516YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:113
+#: data/hardwired/tips.cfg:154
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -4870,21 +4967,21 @@ msgstr ""
 "Атака с замедлением делает передвижения соединения противника медленней и "
 "уменьшает на половину число атак до следующего хода."
 
-#: data/hardwired/tips.cfg:117
+#: data/hardwired/tips.cfg:158
 msgid "Arcane attacks are very powerful against undead."
 msgstr "Чарующая атака особенно сильна против нежити."
 
-#: data/hardwired/tips.cfg:118
+#: data/hardwired/tips.cfg:159
 msgid "- Great Sage Dacyn, 626YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:121
+#: data/hardwired/tips.cfg:162
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr "Соединения полностью восстанавливаются, получая новый уровень."
 
-#: data/hardwired/tips.cfg:125
+#: data/hardwired/tips.cfg:166
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -4892,19 +4989,20 @@ msgstr ""
 "Соединения с броском великолепно справляются с противниками, которых могут "
 "убить с одного удара."
 
-#: data/hardwired/tips.cfg:129
+#: data/hardwired/tips.cfg:170
+#, fuzzy
 msgid ""
-"Units can gain After Maximum Level Advancements (AMLAs), which usually "
-"increase the unit's maximum hitpoints by 3. Gaining an AMLA becomes "
-"progressively harder for each AMLA the unit receives, however. Thus, it is "
-"often more useful to try to advance your lower level units."
+"Instead of leveling up, high-level units gain an 'After Maximum Level "
+"Advancement' (AMLA), which usually increases the unit's maximum hit points "
+"by 3. This is less than the normal difference gained by advancing a level. "
+"Thus, it is usually more useful to try to advance your lower level units."
 msgstr ""
 "Соединения могут достичь Улучшения Постмаксимального Уровня (УПМУ), которое "
 "обычно увеличивает его  максимальное здоровье на 3. Однако достижение УПМУ "
 "становится для соединения все труднее и труднее. Поэтому гораздо разумнее "
 "попытаться продвигать соединения более низкого уровня."
 
-#: data/hardwired/tips.cfg:133
+#: data/hardwired/tips.cfg:174
 msgid ""
 "On maps where the shroud or fog of war has been enabled, a unit's sight is "
 "limited by its maximum movement. Remember this when deciding what unit is "
@@ -4914,7 +5012,7 @@ msgstr ""
 "максимальным количеством ходов. Помните об этом, когда будете решать, какое "
 "соединение отправлять в разведку на определенном типе местности."
 
-#: data/hardwired/tips.cfg:137
+#: data/hardwired/tips.cfg:178
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -4922,7 +5020,7 @@ msgstr ""
 "Почти у каждой пиктограммы или слова в игровом меню Веснота есть всплывающая "
 "подсказка. Наведите указатель мыши на него, чтобы получить полное описание."
 
-#: data/hardwired/tips.cfg:141
+#: data/hardwired/tips.cfg:182
 #, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
@@ -4934,7 +5032,7 @@ msgstr ""
 "кнопку \"Помочь Весноту\" (иконка конверта в правом нижнем углу экрана). "
 "Благодаря этой информации мы сможем изменить сложность кампаний."
 
-#: data/hardwired/tips.cfg:145
+#: data/hardwired/tips.cfg:186
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -4944,11 +5042,11 @@ msgstr ""
 "ветеранами и наносите ветераном значительный урон противнику, чтобы младшее "
 "соединение могло его окончательно добить."
 
-#: data/hardwired/tips.cfg:146
+#: data/hardwired/tips.cfg:187
 msgid "- Queen Li'sar, 528YW"
 msgstr ""
 
-#: data/hardwired/tips.cfg:149
+#: data/hardwired/tips.cfg:190
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -4982,8 +5080,8 @@ msgid "End Scenario"
 msgstr "Удаленный сценарий"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:341 src/unit.cpp:2476
-#: src/unit.cpp:2649
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:341 src/unit.cpp:2477
+#: src/unit.cpp:2650
 msgid "HP"
 msgstr "ЗД"
 
@@ -5120,59 +5218,59 @@ msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr ""
 "Нет свободных ячеек в замке, куда можно было бы поставить новое соединение."
 
-#: src/actions.cpp:929 src/actions.cpp:1175
+#: src/actions.cpp:952 src/actions.cpp:1206
 msgid "poisoned"
 msgstr "отравление"
 
-#: src/actions.cpp:933 src/actions.cpp:1179
+#: src/actions.cpp:956 src/actions.cpp:1210
 msgid "slowed"
 msgstr "замедление"
 
-#: src/actions.cpp:939 src/actions.cpp:1185
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "stone"
 msgstr "камень"
 
-#: src/actions.cpp:2118
+#: src/actions.cpp:2147
 msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
-#: src/actions.cpp:2124
+#: src/actions.cpp:2153
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2162
+#: src/actions.cpp:2191
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Замечено $friends дружественное соединение"
 msgstr[1] "Замечено $friends дружественных соединения"
 msgstr[2] "Замечено $friends дружественных соединений"
 
-#: src/actions.cpp:2165
+#: src/actions.cpp:2194
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Замечено $enemies вражеское соединение!"
 msgstr[1] "Замечено $enemies вражеских соединения!"
 msgstr[2] "Замечено $enemies вражеских соединений!"
 
-#: src/actions.cpp:2170
+#: src/actions.cpp:2199
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends дружественное, "
 msgstr[1] "$friends дружественных, "
 msgstr[2] "$friends дружественных, "
 
-#: src/actions.cpp:2171
+#: src/actions.cpp:2200
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies вражеское"
 msgstr[1] "$enemies вражеских"
 msgstr[2] "$enemies вражеских"
 
-#: src/actions.cpp:2172
+#: src/actions.cpp:2201
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Замечены соединения! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2181
+#: src/actions.cpp:2210
 msgid "(press $hotkey to keep moving)"
 msgstr "(нажмите $hotkey, чтобы продолжить движение)"
 
@@ -5234,7 +5332,7 @@ msgstr "#(Неверно)"
 msgid "Campaign: $campaign_name"
 msgstr "Законченность и поддержка"
 
-#: src/dialogs.cpp:472 src/game.cpp:1422
+#: src/dialogs.cpp:472 src/game.cpp:1427
 msgid "Multiplayer"
 msgstr "Сетевая игра"
 
@@ -5299,7 +5397,7 @@ msgstr "Удалить сохранение"
 msgid "Date"
 msgstr "Дата"
 
-#: src/dialogs.cpp:570 src/game.cpp:1104 src/menu_events.cpp:339
+#: src/dialogs.cpp:570 src/game.cpp:1105 src/menu_events.cpp:339
 #: src/menu_events.cpp:1114 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Название"
@@ -5349,7 +5447,7 @@ msgstr "кб"
 msgid "Screenshot"
 msgstr "Скриншот"
 
-#: src/game.cpp:443 src/game.cpp:1519
+#: src/game.cpp:443 src/game.cpp:1524
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
@@ -5454,83 +5552,83 @@ msgstr "Подключение к серверу..."
 msgid "Could not connect to host."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1082
+#: src/game.cpp:1083
 msgid "Asking for list of add-ons"
 msgstr "Запрос списка аддонов"
 
-#: src/game.cpp:1095
+#: src/game.cpp:1096
 msgid "Error communicating with the server."
 msgstr "Ошибка при подключении к серверу."
 
-#: src/game.cpp:1104 src/titlescreen.cpp:299
+#: src/game.cpp:1105 src/titlescreen.cpp:299
 msgid "Version"
 msgstr "Версия"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1106
 msgid "Author"
 msgstr "Автор"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1106
 msgid "Downloads"
 msgstr "Загрузки"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1106
 msgid "Size"
 msgstr "Размер"
 
-#: src/game.cpp:1157
+#: src/game.cpp:1158
 msgid "Publish add-on: "
 msgstr "Опубликовать аддон: "
 
-#: src/game.cpp:1161
+#: src/game.cpp:1162
 msgid "Delete add-on: "
 msgstr "Удалить аддон: "
 
-#: src/game.cpp:1165
+#: src/game.cpp:1166
 msgid "There are no add-ons available for download from this server."
 msgstr "На этом сервере нет доступных для загрузки аддонов."
 
-#: src/game.cpp:1172
+#: src/game.cpp:1173
 msgid "Get Add-ons"
 msgstr "Аддоны"
 
-#: src/game.cpp:1173
+#: src/game.cpp:1174
 msgid "Choose the add-on to download."
 msgstr "Выберите аддон для загрузки."
 
-#: src/game.cpp:1216
+#: src/game.cpp:1217
 msgid "Dependencies"
 msgstr "Зависимости"
 
-#: src/game.cpp:1217
+#: src/game.cpp:1218
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Этому аддону необходимы следующие зависимости:"
 
-#: src/game.cpp:1219
+#: src/game.cpp:1220
 msgid "Do you still want to download it?"
 msgstr "Хотите ли скачать его?"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1230
 msgid "Downloading add-on..."
 msgstr "Загружаем аддон..."
 
-#: src/game.cpp:1286
+#: src/game.cpp:1288
 msgid "Add-on Installed"
 msgstr "Аддон установлен"
 
-#: src/game.cpp:1286
+#: src/game.cpp:1288
 msgid "The add-on has been installed."
 msgstr "Аддон был установлен."
 
-#: src/game.cpp:1289
+#: src/game.cpp:1291
 msgid "Network communication error."
 msgstr "Ошибка при соединении к серверу."
 
-#: src/game.cpp:1291
+#: src/game.cpp:1293
 msgid "Remote host disconnected."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1293
+#: src/game.cpp:1295
 #, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
@@ -5538,127 +5636,127 @@ msgstr ""
 "Возникла проблема с созданием файлов, необходимых для полной установки "
 "кампании."
 
-#: src/game.cpp:1307 src/game.cpp:1349 src/game.cpp:1376
+#: src/game.cpp:1310 src/game.cpp:1353 src/game.cpp:1381
 #: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:69 src/playcampaign.cpp:465
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
-#: src/game.cpp:1310
+#: src/game.cpp:1313
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/game.cpp:1317
+#: src/game.cpp:1320
 msgid "Terms"
 msgstr "Условия"
 
-#: src/game.cpp:1347
+#: src/game.cpp:1351
 msgid "Sending add-on"
 msgstr "Передача аддона"
 
-#: src/game.cpp:1351 src/game.cpp:1378
+#: src/game.cpp:1355 src/game.cpp:1383
 msgid "The server responded with an error: \""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/game.cpp:1355 src/game.cpp:1382 src/multiplayer_wait.cpp:377
+#: src/game.cpp:1359 src/game.cpp:1387 src/multiplayer_wait.cpp:377
 msgid "Response"
 msgstr "Ответ"
 
-#: src/game.cpp:1406
+#: src/game.cpp:1411
 msgid "Join Official Server"
 msgstr "Подключиться к официальному серверу"
 
-#: src/game.cpp:1407
+#: src/game.cpp:1412
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Войти на официальный игровой сервер Веснот"
 
-#: src/game.cpp:1409
+#: src/game.cpp:1414
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Подключиться к серверу"
 
-#: src/game.cpp:1410
+#: src/game.cpp:1415
 msgid "Join a server or hosted game"
 msgstr "Подключиться к серверу или игре"
 
-#: src/game.cpp:1412
+#: src/game.cpp:1417
 msgid "Host Networked Game"
 msgstr "Создать игру"
 
-#: src/game.cpp:1413
+#: src/game.cpp:1418
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1415
+#: src/game.cpp:1420
 msgid "Local Game"
 msgstr "Локальная игра"
 
-#: src/game.cpp:1416
+#: src/game.cpp:1421
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Играть в многопользовательскую игру с компьютером и людьми на этом компьютере"
 
-#: src/game.cpp:1424 src/multiplayer.cpp:232
+#: src/game.cpp:1429 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Имя пользователя: "
 
-#: src/game.cpp:1461 src/playcampaign.cpp:97 src/playcampaign.cpp:382
+#: src/game.cpp:1466 src/playcampaign.cpp:97 src/playcampaign.cpp:382
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1463 src/playcampaign.cpp:99 src/playcampaign.cpp:385
+#: src/game.cpp:1468 src/playcampaign.cpp:99 src/playcampaign.cpp:385
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1483 src/playcampaign.cpp:101 src/playcampaign.cpp:388
+#: src/game.cpp:1488 src/playcampaign.cpp:101 src/playcampaign.cpp:388
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
-#: src/game.cpp:1509
+#: src/game.cpp:1514
 msgid "Language"
 msgstr "Язык"
 
-#: src/game.cpp:1510
+#: src/game.cpp:1515
 msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
-#: src/game.cpp:1668
+#: src/game.cpp:1673
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Следующие кампании имеют ошибки и не могут быть загружены:"
 
-#: src/game.cpp:1673
+#: src/game.cpp:1678
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ОШИБКИ:"
 
-#: src/game.cpp:1687
+#: src/game.cpp:1692
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Внимание: ошибка при загрузке файлов с настройками игры: \""
 
-#: src/game.cpp:1739
+#: src/game.cpp:1744
 msgid "Error loading game configuration files: '"
 msgstr "Ошибка при загрузке файлов с настройками игры: \""
 
-#: src/game.cpp:1740
+#: src/game.cpp:1745
 msgid "' (The game will now exit)"
 msgstr "\" (сейчас игра будет завершена)"
 
-#: src/game.cpp:1920
+#: src/game.cpp:1926
 msgid "Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:2112
+#: src/game.cpp:2118
 msgid "Loading game configuration."
 msgstr "Загрузка настроек игры."
 
-#: src/game.cpp:2118
+#: src/game.cpp:2124
 msgid "Re-initialize fonts for the current language."
 msgstr "Реинициализация шрифтов для текущего языка."
 
-#: src/game.cpp:2132
+#: src/game.cpp:2138
 msgid "Loading title screen."
 msgstr "Загрузка заглавного изображения."
 
@@ -5674,11 +5772,11 @@ msgstr "Победа:"
 msgid "Defeat:"
 msgstr "Поражение:"
 
-#: src/gamestatus.cpp:680 src/gamestatus.cpp:682 src/playcampaign.cpp:408
+#: src/gamestatus.cpp:692 src/gamestatus.cpp:694 src/playcampaign.cpp:408
 msgid " replay"
 msgstr " повтор"
 
-#: src/gamestatus.cpp:796
+#: src/gamestatus.cpp:808
 msgid "Could not write to file"
 msgstr "Не могу записать в файл"
 
@@ -6968,15 +7066,18 @@ msgstr "неверный сетевой оператор"
 msgid "Client disconnected"
 msgstr "Клиент отключен"
 
-#: src/network.cpp:160
-msgid "No server ping since at least 60 seconds. Connection timed out."
-msgstr ""
+#: src/network.cpp:165
+msgid "No server ping since $timeout second. Connection timed out."
+msgid_plural "No server ping since $timeout seconds. Connection timed out."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: src/network.cpp:508
+#: src/network.cpp:519
 msgid "Could not add socket to socket set"
 msgstr "Не могу добавить сокет к набору сокетов"
 
-#: src/network.cpp:519
+#: src/network.cpp:530
 msgid "Could not send initial handshake"
 msgstr "Не могу отправить данные для инициализации"
 
@@ -7159,59 +7260,59 @@ msgstr "вышел из игры. Что Вы будете делать?"
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
-#: src/serialization/parser.cpp:125
+#: src/serialization/parser.cpp:122
 msgid "Unexpected characters at line start"
 msgstr "Неожиданные символы в стартовой строке"
 
-#: src/serialization/parser.cpp:152
+#: src/serialization/parser.cpp:149
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Отсутствует закрывающейся тэг для тэга $tag в $pos"
 
-#: src/serialization/parser.cpp:167
+#: src/serialization/parser.cpp:164
 msgid "Unterminated [element] tag"
 msgstr "Незавершенный [элемент] тэг"
 
-#: src/serialization/parser.cpp:177 src/serialization/parser.cpp:213
+#: src/serialization/parser.cpp:174 src/serialization/parser.cpp:210
 msgid "Invalid tag name"
 msgstr "Неправильное название тэга"
 
-#: src/serialization/parser.cpp:180
+#: src/serialization/parser.cpp:177
 msgid "Unterminated [+element] tag"
 msgstr "Незавершенный [+элемент] тэг"
 
-#: src/serialization/parser.cpp:196
+#: src/serialization/parser.cpp:193
 msgid "Invalid closing tag name"
 msgstr "Неверное название закрывающего тэга"
 
-#: src/serialization/parser.cpp:199
+#: src/serialization/parser.cpp:196
 msgid "Unterminated closing tag"
 msgstr "Незавершенный закрывающий тэг"
 
-#: src/serialization/parser.cpp:201
+#: src/serialization/parser.cpp:198
 msgid "Unexpected closing tag"
 msgstr "Неожиданный закрывающий тэг"
 
-#: src/serialization/parser.cpp:207
+#: src/serialization/parser.cpp:204
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr "Найден неверный закрывающий тэг $tag2 для тэга $tag (открытый в $pos)"
 
-#: src/serialization/parser.cpp:232 src/serialization/parser.cpp:244
+#: src/serialization/parser.cpp:229 src/serialization/parser.cpp:241
 msgid "Empty variable name"
 msgstr "Пустое название переменной"
 
-#: src/serialization/parser.cpp:238
+#: src/serialization/parser.cpp:235
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Неожиданные символы после переменной имени (или отсутствует =)"
 
-#: src/serialization/parser.cpp:273 src/serialization/parser.cpp:297
+#: src/serialization/parser.cpp:270 src/serialization/parser.cpp:294
 msgid "Unterminated quoted string"
 msgstr "Незавершенная кавычками строка"
 
-#: src/serialization/parser.cpp:320
+#: src/serialization/parser.cpp:317
 msgid " included from "
 msgstr "подключена из "
 
-#: src/serialization/parser.cpp:341
+#: src/serialization/parser.cpp:338
 msgid "$error at $pos"
 msgstr "$error в $pos"
 
@@ -7338,38 +7439,38 @@ msgstr "Загрузить статистику"
 msgid "Help Wesnoth by sending us information"
 msgstr "Помогите Весноту, отправив нам информацию"
 
-#: src/unit.cpp:384 src/unit.cpp:1197 src/unit.cpp:2390
+#: src/unit.cpp:384 src/unit.cpp:1198 src/unit.cpp:2391
 msgid "Unknown unit type '$type|'"
 msgstr ""
 
-#: src/unit.cpp:2433 src/unit.cpp:2637 src/unit.cpp:2693
+#: src/unit.cpp:2434 src/unit.cpp:2638 src/unit.cpp:2694
 #, fuzzy
 msgid " and "
 msgstr "Песок"
 
-#: src/unit.cpp:2444
+#: src/unit.cpp:2445
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/unit.cpp:2509
+#: src/unit.cpp:2510
 #, fuzzy
 msgid "moves"
 msgstr "Ходы"
 
-#: src/unit.cpp:2527 src/unit.cpp:2664
+#: src/unit.cpp:2528 src/unit.cpp:2665
 msgid "XP to advance"
 msgstr "ОП для улучшения"
 
-#: src/unit.cpp:2656
+#: src/unit.cpp:2657
 #, fuzzy
 msgid " move"
 msgstr "Ходы"
 
-#: src/unit.cpp:2672
+#: src/unit.cpp:2673
 msgid "$effect_description per level"
 msgstr ""
 
-#: src/unit.cpp:2702
+#: src/unit.cpp:2703
 msgid "$trait_name|: $trait_description "
 msgstr ""
 
@@ -7429,6 +7530,23 @@ msgstr "Помогите нам сделать Веснот лучше!"
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
 
+#~ msgid "Full Heal"
+#~ msgstr "Полное исцеление"
+
+#~ msgid ""
+#~ "In a campaign, you can use veteran units from previous scenarios by using "
+#~ "the 'recall' option."
+#~ msgstr ""
+#~ "При прохождении кампании, вы можете использовать соединения-ветеранов из "
+#~ "прошлого сценария, для этого необходимо использовать команду \"призвать\"."
+
+#~ msgid ""
+#~ "Holding the mouse cursor on an ability or trait shows a description of "
+#~ "that ability or trait."
+#~ msgstr ""
+#~ "Удерживайте курсор мышки на способности или особенности чтобы увидеть их "
+#~ "описание."
+
 #~ msgid "Binary Saves"
 #~ msgstr "Двоичные сохранения"
 
@@ -7468,9 +7586,6 @@ msgstr "Включить отправку итогов"
 
 #~ msgid "race^Lizards"
 #~ msgstr "Ящерицы"
-
-#~ msgid "Wesnoth unit list"
-#~ msgstr "Список соединений Веснота"
 
 #~ msgid "Based on version"
 #~ msgstr "Основан на версии"

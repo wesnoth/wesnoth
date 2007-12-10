@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-30 17:11+0100\n"
+"POT-Creation-Date: 2007-12-10 15:50+0100\n"
 "PO-Revision-Date: 2007-10-12 13:31+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -368,7 +368,7 @@ msgstr "Nome: "
 msgid "Creation of the directory failed."
 msgstr "Fallo ó crear o directorio."
 
-#: src/game_preferences.cpp:207
+#: src/game_preferences.cpp:222
 msgid "player"
 msgstr "xogador"
 
@@ -1167,6 +1167,18 @@ msgstr "Interior"
 msgid "Island"
 msgstr "Illa"
 
+#: src/marked-up_text.cpp:340
+msgid "The maximum text width is less than 1."
+msgstr ""
+
+#: src/minimap.cpp:88
+msgid "Could not get image for terrain: $terrain."
+msgstr ""
+
+#: src/minimap.cpp:94 src/minimap.cpp:106
+msgid "Error creating or aquiring an image."
+msgstr ""
+
 #: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 #, fuzzy
 msgid ""
@@ -1219,7 +1231,13 @@ msgstr "Escoller Resolución"
 msgid "Error"
 msgstr "Erro"
 
-#: src/terrain_translation.cpp:762
+#: src/terrain_translation.cpp:681
+msgid ""
+"A terrain with a string with more than 4 characters has been found, the "
+"affected terrain is :"
+msgstr ""
+
+#: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr ""
 

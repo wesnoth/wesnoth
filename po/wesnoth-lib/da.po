@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-11-30 17:11+0100\n"
+"POT-Creation-Date: 2007-12-10 15:50+0100\n"
 "PO-Revision-Date: 2007-12-07 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -366,7 +366,7 @@ msgstr "Navn: "
 msgid "Creation of the directory failed."
 msgstr "Oprettelse af katalog mislykkedes."
 
-#: src/game_preferences.cpp:207
+#: src/game_preferences.cpp:222
 msgid "player"
 msgstr "spiller"
 
@@ -1164,6 +1164,18 @@ msgstr "Indland"
 msgid "Island"
 msgstr "Ø"
 
+#: src/marked-up_text.cpp:340
+msgid "The maximum text width is less than 1."
+msgstr ""
+
+#: src/minimap.cpp:88
+msgid "Could not get image for terrain: $terrain."
+msgstr ""
+
+#: src/minimap.cpp:94 src/minimap.cpp:106
+msgid "Error creating or aquiring an image."
+msgstr ""
+
 #: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
@@ -1214,7 +1226,13 @@ msgstr "Vælg opløsning"
 msgid "Error"
 msgstr "Fejl"
 
-#: src/terrain_translation.cpp:762
+#: src/terrain_translation.cpp:681
+msgid ""
+"A terrain with a string with more than 4 characters has been found, the "
+"affected terrain is :"
+msgstr ""
+
+#: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Ugyldig terræn fundet. Det er sikkert et 1.2 terrænformat, terræn = "
 
