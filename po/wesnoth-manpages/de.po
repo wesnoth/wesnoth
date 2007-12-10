@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-12-07 00:28+0100\n"
-"PO-Revision-Date: 2007-11-07 19:10+0100\n"
+"PO-Revision-Date: 2007-12-10 14:05+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -183,9 +183,9 @@ msgstr "Aktiviert die Anzeige der Bilder pro Sekunde im Spiel."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:67
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gunzip>I<\\ E<lt>infileE<gt>>"
-msgstr "B<--load>I<\\ E<lt>SpielstandE<gt>>"
+msgstr "B<--gunzip>I<\\ E<lt>dateinameE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:71
@@ -193,22 +193,25 @@ msgid ""
 "decompresses a savefile which should be a .gz file (infile) and stores it "
 "without the .gz suffix. The (infile) will be removed."
 msgstr ""
+"Entpackt einen Spielstand (dateiname), der auf .gz enden und per gzip "
+"komprimiert sein sollte, und speichert ihn ohne die Dateiendung .gz. Dabei "
+"wird (dateiname) entfernt."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:71
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--gzip>I<\\ E<lt>infileE<gt>>"
-msgstr "B<--load>I<\\ E<lt>SpielstandE<gt>>"
+msgstr "B<--gzip>I<\\ E<lt>dateinameE<gt>>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:75
-#, fuzzy
 msgid ""
 "compresses a savefile (infile) as gzip file and stores it as (infile.gz)  "
 "and removes (infile)."
 msgstr ""
-"Wandelt eine normale WML-Textdatei (entpackte_datei) in einen als WML-"
-"Binärdatei komprimierten Spielstand (komprimierte_datei) um."
+"Komprimiert einen normalen textbasierten Spielstand (dateiname) in einen als "
+"gzip komprimierten Spielstand (dateiname.gz) um und entfernt die alte Datei "
+"(dateiname)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:75
@@ -674,9 +677,8 @@ msgstr "Battle for Wesnoth - Karteneditor"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:20
-#, fuzzy
 msgid "wesnoth_editor - Battle for Wesnoth map editor"
-msgstr "Battle for Wesnoth - Karteneditor"
+msgstr "wesnoth_editor - Battle for Wesnoth - Karteneditor"
 
 # type: Plain text
 #: ../../doc/man/wesnoth_editor.6:23
