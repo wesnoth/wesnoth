@@ -45,15 +45,14 @@
 #include "ai.hpp"
 #include "ai_python.hpp"
 #include "attack_prediction.hpp"
-#include "wassert.hpp"
 #include "gamestatus.hpp"
 #include "filesystem.hpp"
 #include "menu_events.hpp"
 #include "game_events.hpp"
 #include "game_config.hpp"
 
+#include <cassert>
 #include <fstream>
-
 #include <marshal.h>
 
 #define LOG_AI LOG_STREAM(info, ai)
@@ -167,8 +166,11 @@ PyObject* python_ai::unittype_advances_to( wesnoth_unittype* type, PyObject* arg
 	int r;
 	for (size_t advance = 0; advance < type->unit_type_->advances_to().size(); advance++)
 	{
-		std::map<std::string,unit_type>::const_iterator t = running_instance->get_info().gameinfo.unit_types.find(type->unit_type_->advances_to()[advance]);
-		wassert(t != running_instance->get_info().gameinfo.unit_types.end());
+		std::map<std::string,unit_type>::const_iterator t = 
+			running_instance->get_info().
+			gameinfo.unit_types.find(type->unit_type_->advances_to()[advance]);
+
+		assert(t != running_instance->get_info().gameinfo.unit_types.end());
 		r = PyList_SetItem(list,advance,wrap_unittype(t->second));
 	}
 	return list;
@@ -545,7 +547,7 @@ static PyObject* wrapper_unit_type( wesnoth_unit* unit, PyObject* args )
 	if (!PyArg_ParseTuple(args, NOVALUE))
 		return NULL;
 	u_check;
-	wassert(unit->unit_->type());
+	assert(unit->unit_->type());
 	return wrap_unittype(*unit->unit_->type());
 }
 
@@ -1015,7 +1017,7 @@ PyObject* python_ai::wrapper_team_recruits( wesnoth_team* team, PyObject* args )
 	for (std::set<std::string>::const_iterator recruit = team->team_->recruits().begin(); recruit != team->team_->recruits().end(); ++recruit)
 	{
 		std::map<std::string,unit_type>::const_iterator t = running_instance->get_info().gameinfo.unit_types.find(*recruit);
-		wassert(t != running_instance->get_info().gameinfo.unit_types.end());
+		assert(t != running_instance->get_info().gameinfo.unit_types.end());
 		r = PyList_SetItem(list,idx++,wrap_unittype(t->second));
 	}
 	return list;
