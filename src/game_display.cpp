@@ -39,11 +39,11 @@
 #include "tooltips.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 
 #include "SDL_image.h"
 
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -1012,7 +1012,7 @@ void game_display::invalidate_animations()
 
 void game_display::debug_highlight(const gamemap::location& loc, fixed_t amount)
 {
-	wassert(game_config::debug);
+	assert(game_config::debug);
 	debugHighlights_[loc] += amount;
 }
 
@@ -1094,7 +1094,7 @@ const std::string game_display::current_team_name() const
 
 void game_display::set_team(size_t teamindex, bool observe)
 {
-	wassert(teamindex < teams_.size());
+	assert(teamindex < teams_.size());
 	currentTeam_ = teamindex;
 	if (!observe)
 	{
@@ -1111,7 +1111,7 @@ void game_display::set_team(size_t teamindex, bool observe)
 
 void game_display::set_playing_team(size_t teamindex)
 {
-	wassert(teamindex < teams_.size());
+	assert(teamindex < teams_.size());
 	activeTeam_ = teamindex;
 	invalidate_game_status();
 }
