@@ -65,21 +65,22 @@ int main(int argc, char** argv)
 
 		if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-		    << " [options] [map]\n"
-                        << "  --bpp             Set the bits per pixel\n"
-                        << "  --datadir         Select the data directory to use\n"
-                        << "  -f, --fullscreen  Runs the editor in full screen mode\n"
-                        << "  -h, --help        Prints this message and exits\n"
-                        << "  --log-<level>=<domain1>,<domain2>,...\n"
-                        << "                               sets the severity level of the log domains.\n"
-                        << "                               'all' can be used to match any log domain.\n"
-                        << "                               Available levels: error, warning, info, debug.\n"
-                        << "                               By default the 'error' level is used.\n"
-                        << "  --logdomains      List defined log domains and exit.\n"
-                        << "  --path            Prints the name of the game data directory and exits\n"
-                        << "  --resolution      Set the resolution of the window\n"
-                        << "  -v, --version     Prints the game's version number and exits\n"
-                        << "  -w, --windowed    Runs the editor in windowed mode\n";
+			<< " [options] [map]\n"
+                	<< "  --bpp                     Set the bits per pixel.\n"
+                	<< "  --datadir                 Select the data directory to use.\n"
+                	<< "  -f, --fullscreen          Runs the editor in full screen mode.\n"
+                	<< "  -h, --help                Prints this message and exits.\n"
+                	<< "  --log-<level>=<domain1>,<domain2>,...\n"
+                	<< "                            Sets the severity level of the log domains.\n"
+                	<< "                            'all' can be used to match any log domain.\n"
+                	<< "                            Available levels: error, warning, info, debug.\n"
+                	<< "                            By default the 'error' level is used.\n"
+                	<< "  --logdomains              List defined log domains and exit.\n";
+                	<< "  --path                    Prints the name of the game data directory and exits.\n"
+			<< "  -r, --resolution XxY      Sets the screen resolution. Example: -r 800x600.\n"
+                	<< "  -v, --version             Prints the game's version number and exits.\n"
+                	<< "  -w, --windowed            Runs the editor in windowed mode.\n"
+			;
 			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth "
