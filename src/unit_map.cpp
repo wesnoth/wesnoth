@@ -17,7 +17,8 @@
 
 #include "unit.hpp"
 #include "unit_map.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
 
 //! A unit map with a copy of a single unit in it.
 unit_map::unit_map(const gamemap::location &loc, const unit &u)
@@ -57,7 +58,7 @@ std::pair<gamemap::location,unit> unit_map::const_iterator::operator*() const
 void unit_map::add(std::pair<gamemap::location,unit> *p)
 {
 	std::pair<pmap::iterator,bool> res = map_.insert(std::pair<gamemap::location,std::pair<gamemap::location,unit>*>(p->first, p));
-	wassert(res.second);
+	assert(res.second);
 }
 
 void unit_map::replace(std::pair<gamemap::location,unit> *p)
