@@ -25,10 +25,10 @@
 #include "util.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "wassert.hpp"
 #include "wesconfig.h"
 
 #include <algorithm>
+#include <cassert>
 #include <cctype>
 #include <cerrno>
 #include <cstdlib>
@@ -238,7 +238,7 @@ const language_def& get_locale()
 {
 	//TODO: Add in support for querying the locale on Windows
 
-	wassert(known_languages.size() != 0);
+	assert(known_languages.size() != 0);
 
 	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
