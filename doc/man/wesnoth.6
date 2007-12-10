@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 .\"
 .
-.TH WESNOTH 6 "2006" "wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "2007" "wesnoth" "Battle for Wesnoth"
 .
 .SH NAME
 wesnoth \- Battle for Wesnoth, a turn-based fantasy strategy game
@@ -44,52 +44,67 @@ campaigns, and share them with others.
 .
 .TP
 .BI --bpp \ number
-sets BitsPerPixel value. Example: --bpp 32
+sets BitsPerPixel value. Example:
+.B --bpp 32
 .TP
-.BI --compress \ <infile> \  <outfile>
-compresses a savefile (infile) that is in text WML format into binary WML format (outfile).
+.BI --compress \ infile\ outfile
+compresses a savefile
+.RI ( infile )
+that is in text WML format into binary WML format
+.RI ( outfile ).
 .TP
-.BR -d ", " --debug
+.B -d, --debug
 shows extra debugging information and enables additional command mode
-options in-game (see the Wiki at http://www.wesnoth.org/ for more
+options in-game (see the Wiki at http://wiki.wesnoth.org/ for more
 information about command mode).
 .TP
-.BI --decompress \ <infile> \  <outfile>
-decompresses a savefile (infile) that is in binary WML format into text
-WML format (outfile).
+.BI --decompress \ infile\ outfile
+decompresses a savefile
+.RI ( infile )
+that is in binary WML format into text WML format
+.RI ( outfile ).
 .TP
-.BR -f ", " --fullscreen
+.B -f, --fullscreen
 runs the game in full screen mode.
 .TP
 .B --fps
 displays the number of frames per second the game is currently running
 at, in a corner of the screen.
 .TP
-.BI --gunzip \ <infile>
-decompresses a savefile which should be a .gz file (infile) and stores it 
-without the .gz suffix. The (infile) will be removed.
+.BI --gunzip \ infile.gz
+decompresses a file which should be in gzip format and stores it 
+without the .gz suffix. The
+.I infile.gz
+will be removed.
 .TP
-.BI --gzip \ <infile>
-compresses a savefile (infile) as gzip file and stores it as (infile.gz) 
-and removes (infile).
+.BI --gzip \ infile
+compresses a file in gzip format, stores it as 
+.IR infile .gz
+and removes
+.IR infile .
 .TP
-.BR -h ", " --help
+.B -h, --help
 displays a summary of command line options to standard output, and exits.
 .TP
-.BI --load \ <savegame>
+.BI --load \ savegame
 loads the file savegame from the standard save game directory.
 .TP
-.BR --log-<level>="domain1,domain2,..."
-sets the severity level of the debug domains. "all" can be used to match
-any debug domain. Available levels: error, warning, info, debug. By default the
-error level is used.
+.BI --log- level = domain1 , domain2 , ...
+sets the severity level of the log domains.
+.B all
+can be used to match any log domain. Available levels:
+.BR error ,\  warning ,\  info ,\  debug .
+By default the
+.B error
+level is used.
 .TP
 .B --logdomains
 Dumps a list of all log domains and exits.
 .TP
-.BR --max-fps
+.B --max-fps
 the number of frames per second the game can show, the value should be between
-the 1 and 1000, the default is 50. 
+the 1 and 1000, the default is
+.BR 50 . 
 .TP
 .B --multiplayer
 runs a multiplayer game. There are additional options that can be used
@@ -106,75 +121,89 @@ runs the game without sounds and music.
 .B --path
 prints the name of the game data directory and exits.
 .TP
-.BR -r ", " --resolution \ \fIXxY\fR
-sets the screen resolution. Example: -r 800x600
+.BI -r\  X x Y ,\ --resolution\  X x Y
+sets the screen resolution. Example:
+.B -r 800x600
 .TP
-.BR -t ", " --test
+.B -t, --test
 runs the game in a small test scenario.
 .TP
-.BR -v ", " --version
+.B -v, --version
 shows the version number and exits.
 .TP
-.BR -w ", " --windowed
+.B -w, --windowed
 runs the game in windowed mode.
 .TP
-.BR --no-delay
-runs the game without any delays for graphic benchmarking.  This is automatically enabled by --nogui.
+.B --no-delay
+runs the game without any delays for graphic benchmarking.  This is automatically enabled by
+.BR --nogui .
 .TP
 .B --nogui
 runs the game without the GUI. Must appear before
 .B --multiplayer
 to have the desired effect.
 .TP
-.BR --exit-at-end
+.B --exit-at-end
 exits once the scenario is over, without displaying victory/defeat dialog which requires the user to click OK.  This is also used for scriptable benchmarking.
 .
 .SH Options for --multiplayer
 .
-The side-specific multiplayer options are marked with <number>. <number>
+The side-specific multiplayer options are marked with
+.IR number .
+.I number
 has to be replaced by a side number. It usually is 1 or 2 but depends on
 the number of players possible in the chosen scenario.
 .TP
-.B --algorithm<number>=value
+.BI --algorithm number = value
 selects a non-standard algorithm to be used by the AI controller for
-this side. Available values: "idle_ai" and "sample_ai".
+this side. Available values:
+.B idle_ai
+and
+.BR sample_ai .
 .TP 
-.B --controller<number>=value
-selects the controller for this side. Available values: "human" and "ai".
+.BI --controller number = value
+selects the controller for this side. Available values:
+.B human
+and
+.BR ai .
 .TP 
-.B --era=value
-use this option to play in the selected era instead of the "Default"
+.BI --era= value
+use this option to play in the selected era instead of the
+.B Default
 era. The era is chosen by an id. Eras are described in the
-data/multiplayer.cfg file.
+.B "data/multiplayer/eras.cfg"
+file.
 .TP
-.B --parm<number>=name:value
+.BI --parm number = name : value
 sets additional parameters for this side. This parameter depends on the
 options used with
 .B --controller
 and
-.B --algorithm.
+.BR --algorithm .
 It should only be useful for people designing their own AI. (not yet
 documented completely)
 .TP
-.B --scenario=value
-selects a multiplayer scenario. The default scenario is "multiplayer_The_Freelands".
+.BI --scenario= value
+selects a multiplayer scenario by id. The default scenario id is
+.BR multiplayer_The_Freelands .
 .TP
-.B --side<number>=value
+.BI --side number = value
 selects a faction of the current era for this side. The faction is
 chosen by an id. Factions are described in the data/multiplayer.cfg
 file.
 .TP
-.B --turns=value
-sets the number of turns for the chosen scenario. The default is "50".
+.BI --turns= value
+sets the number of turns for the chosen scenario. The default is
+.BR 50 .
 .TP
 Example to test your own AI against the default AI without starting the GUI:
-wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py
+.B wesnoth --nogui --multiplayer --controller1=ai --controller2=ai --algorithm2=python_ai --parm2=python_script:py/my_own_python_ai.py
 .
 .SH AUTHOR
 .
 Written by David White <davidnwhite@verizon.net>.
 .br
-Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton <soliton@sonnenkinder.org>.
+Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton <soliton.de@gmail.com>.
 .br
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
@@ -182,7 +211,7 @@ Visit the official homepage: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003-2006 David White <davidnwhite@verizon.net>
+Copyright \(co 2003-2007 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as published by the Free Software Foundation.
 There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
