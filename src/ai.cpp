@@ -236,7 +236,7 @@ bool ai::recruit_usage(const std::string& usage)
 	const int min_gold = 0;
 
 	log_scope2(ai, "recruiting troops");
-	LOG_AI << "recruiting " << usage << "\n";
+	LOG_AI << "recruiting '" << usage << "'\n";
 
 	std::vector<std::string> options;
 	bool found = false;
@@ -247,8 +247,8 @@ bool ai::recruit_usage(const std::string& usage)
 	    gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i)
 	{
 		const std::string& name = i->second.id();
-
-		if (i->second.usage() == usage) {
+		// If usage is empty consider any unit.
+		if (i->second.usage() == usage || usage == "") {
 			found = true;
 			if(recruits.count(name)
 				&& current_team().gold() - i->second.cost() > min_gold
@@ -1909,10 +1909,13 @@ void ai::do_recruitment()
 		++unit_types["scout"];
 	}
 
-	const std::vector<std::string>& options = current_team().recruitment_pattern();
+	std::vector<std::string> options = current_team().recruitment_pattern();
 
-	WML_ASSERT(options.size(), _("No recruitment option found."));
-
+	// If there is no recruitment_pattern use "" which makes us consider
+	// any unit available.
+	if (options.empty()) {
+		options.push_back("");
+	}
 	// Buy units as long as we have room and can afford it.
 	while(recruit_usage(options[rand()%options.size()])) {
 	}

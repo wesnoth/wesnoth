@@ -241,13 +241,13 @@ team::team_info::team_info(const config& cfg) :
 			utils::split(global_ai_params["recruitment_pattern"]);
 	}
 
-	// Default recruitment pattern is to buy 2 fighters for every 1 archer
+/*	// Default recruitment pattern is to buy 2 fighters for every 1 archer
 	if(recruitment_pattern.empty()) {
 		recruitment_pattern.push_back("fighter");
 		recruitment_pattern.push_back("fighter");
 		recruitment_pattern.push_back("archer");
 	}
-
+*/
 	// Keep a copy of the initial recruitment_pattern,
 	// since it can be changed on a per-time-of-day
 	// or per-turn basis inside [ai] sections.
