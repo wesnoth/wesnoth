@@ -35,12 +35,12 @@
 #include "team.hpp"
 #include "unit_display.hpp"
 #include "unit_types.hpp"
-#include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "wesconfig.h"
 #include "util.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <sstream>
 
 #define ERR_NG LOG_STREAM(err, engine)
@@ -1042,7 +1042,7 @@ private:
 
 		const std::map<std::string,unit_type>::const_iterator
 				u_type = gameinfo_.unit_types.find(name);
-		wassert(u_type != gameinfo_.unit_types.end());
+		assert(u_type != gameinfo_.unit_types.end());
 
 		if(u_type->second.cost() > current_team.gold()) {
 			gui::message_dialog(*gui_,"",
@@ -1063,7 +1063,7 @@ private:
 				current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 				redo_stack_.clear();
-				wassert(new_unit.type());
+				assert(new_unit.type());
 
 				const bool shroud_cleared = clear_shroud(team_num);
 				if(shroud_cleared || new_unit.type()->genders().size() > 1 || new_unit.type()->has_random_traits()) {
@@ -1244,7 +1244,7 @@ private:
 
 			const unit& un = units_.find(action.recall_loc)->second;
 			statistics::un_recruit_unit(un);
-			wassert(un.type());
+			assert(un.type());
 			current_team.spend_gold(-un.type()->cost());
 
 			//MP_COUNTDOWN take away recruit bonus
@@ -1364,7 +1364,8 @@ private:
 				if (r == recruits.end()) {
 					ERR_NG << "trying to redo a recruit for side " << team_num
 						<< ", which does not recruit type \"" << name << "\"\n";
-					wassert(0);
+					assert(false);
+					return;
 				}
 				if (name == *r) {
 					break;
@@ -1398,7 +1399,7 @@ private:
 			std::vector<gamemap::location> route = action.route;
 			const unit_map::iterator u = units_.find(route.front());
 			if(u == units_.end()) {
-				wassert(false);
+				assert(false);
 				return;
 			}
 
@@ -1710,14 +1711,14 @@ private:
 
 	void menu_handler::move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move, const unsigned int team_num, mouse_handler& mousehandler)
 	{
-		wassert(ui != units_.end());
+		assert(ui != units_.end());
 
 		paths::route route = mousehandler.get_route(ui, target, teams_[team_num - 1]);
 
 		if(route.steps.empty())
 			return;
 
-		wassert(route.steps.front() == ui->first);
+		assert(route.steps.front() == ui->first);
 
 		gui_->set_route(&route);
 		move_unit(gui_,gameinfo_,status_,map_,units_,teams_,route.steps,&recorder,&undo_stack_,NULL,continue_move);
