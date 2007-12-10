@@ -24,12 +24,12 @@
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "wesconfig.h"
 #include "serialization/string_utils.hpp"
 
 #include "SDL_image.h"
 
+#include <cassert>
 #include <iostream>
 #include <map>
 #include <string>
@@ -559,8 +559,8 @@ static surface get_scaled_to_hex(const locator i_locator)
 
 static surface get_scaled_to_zoom(const locator i_locator)
 {
-	wassert(zoom != tile_size);
-	wassert(tile_size != 0);
+	assert(zoom != tile_size);
+	assert(tile_size != 0);
 
 	surface res(get_image(i_locator, UNSCALED));
 	// For some reason haloes seems to have invalid images, protect against crashing
