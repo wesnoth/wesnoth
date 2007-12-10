@@ -20,7 +20,7 @@ ulimit -Ss 2048
 ulimit -c unlimited
 
 # send the standard server message to the appropriate server when killing it with ctrl+c
-trap "$HOME/bin/send_server_message $SERVER; sleep 2; kill %1; echo -n 'terminated: '; date; exit 0" SIGINT
+trap "$HOME/bin/send_server_message $SERVER; sleep 2; killall wesnothd-$SERVER; echo -n 'terminated: '; date; exit 0" SIGINT
 
 while [ true ] 
 do
