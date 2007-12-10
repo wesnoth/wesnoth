@@ -19,8 +19,8 @@ See the COPYING file for more details.
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 
+#include <cassert>
 #include <cmath>
 #include <iostream>
 
@@ -47,7 +47,7 @@ static void a_star_init(gamemap::location const &src, gamemap::location const &d
 
 	aStarGameWorld.resize_IFN(parWidth, parHeight);
 	a_star_node *locStartNode = aStarGameWorld.getNodeFromLocation(src, locIsCreated);
-	wassert(locIsCreated);
+	assert(locIsCreated);
 	locStartNode->initNode(src, dst, 0.0, NULL, teleports);
 
 	const size_t locValueH = size_t(locStartNode->h);
@@ -145,10 +145,10 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
                            const size_t parHeight, std::set<gamemap::location> const *teleports)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	wassert(src.valid(parWidth, parHeight));
-	wassert(dst.valid(parWidth, parHeight));
-	wassert(costCalculator != NULL);
-	wassert(stop_at <= costCalculator->getNoPathValue());
+	assert(src.valid(parWidth, parHeight));
+	assert(dst.valid(parWidth, parHeight));
+	assert(costCalculator != NULL);
+	assert(stop_at <= costCalculator->getNoPathValue());
 	//---------------------------------------------------
 	static a_star_world aStarGameWorld;
 
@@ -173,7 +173,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	while (!routeSolved && !openList.empty())
 	{
 		locCurNode = openList.front();
-		wassert(locCurNode != NULL);
+		assert(locCurNode != NULL);
 
 		//if we have found a solution
 		if (locCurNode->loc == dst)
@@ -183,7 +183,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 			std::pop_heap(openList.begin(), openList.end(), compare_lt_a_star_node);
 			openList.pop_back();
 
-			wassert(locCurNode->isInCloseList == false);
+			assert(locCurNode->isInCloseList == false);
 			locCurNode->isInCloseList = true;
 
 			a_star_explore_neighbours(dst, stop_at, costCalculator, parWidth, parHeight,
@@ -202,8 +202,8 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 		std::reverse(locRoute.steps.begin(), locRoute.steps.end());
 		locRoute.move_left = int(locDestNode->g);
 
-		wassert(locRoute.steps.front() == src);
-		wassert(locRoute.steps.back() == dst);
+		assert(locRoute.steps.front() == src);
+		assert(locRoute.steps.back() == dst);
 
 		DBG_PF << "exiting a* search (solved)\n";
 	} else {
