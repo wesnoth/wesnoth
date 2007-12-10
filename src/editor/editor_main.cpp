@@ -75,7 +75,7 @@ int main(int argc, char** argv)
                 	<< "                            'all' can be used to match any log domain.\n"
                 	<< "                            Available levels: error, warning, info, debug.\n"
                 	<< "                            By default the 'error' level is used.\n"
-                	<< "  --logdomains              List defined log domains and exit.\n";
+                	<< "  --logdomains              List defined log domains and exit.\n"
                 	<< "  --path                    Prints the name of the game data directory and exits.\n"
 			<< "  -r, --resolution XxY      Sets the screen resolution. Example: -r 800x600.\n"
                 	<< "  -v, --version             Prints the game's version number and exits.\n"
