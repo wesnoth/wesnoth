@@ -28,14 +28,15 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
+#include "gettext.hpp"
 #include "menu_events.hpp"
 #include "replay.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "playturn.hpp"
-#include "wassert.hpp"
 #include "wml_exception.hpp"
-#include "gettext.hpp"
+
+#include <cassert>
 
 #define LOG_AI LOG_STREAM(info, ai)
 #define WRN_AI LOG_STREAM(warn, ai)
@@ -397,8 +398,6 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	// Stop the user from issuing any commands while the unit is moving.
 	const events::command_disabler disable_commands;
 
-	//wassert(info_.units.find(to) == info_.units.end() || from == to);
-
 	info_.disp.select_hex(from);
 	info_.disp.update_display();
 
@@ -406,7 +405,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	unit_map::iterator u_it = info_.units.find(from);
 	if(u_it == info_.units.end()) {
 		LOG_STREAM(err, ai) << "Could not find unit at " << from << '\n';
-		wassert(false);
+		assert(false);
 		return location();
 	}
 
@@ -1502,7 +1501,7 @@ bool ai::move_to_targets(std::map<gamemap::location, paths>& possible_moves,
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
 				ittg != targets.end(); ++ittg) {
-			wassert(map_.on_board(ittg->loc));
+			assert(map_.on_board(ittg->loc));
 		}
 
 		if(move.first.valid() == false) {
@@ -1592,8 +1591,11 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		}
 	}
 
-	wassert(weighting_sum != 0);
-	defense /= weighting_sum;
+	if(weighting_sum != 0) {
+		defense /= weighting_sum;
+	} else {
+		ERR_AI << "The weighting sum is 0 and is ignored.\n";
+	}
 
 	LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
 
@@ -1909,10 +1911,7 @@ void ai::do_recruitment()
 
 	const std::vector<std::string>& options = current_team().recruitment_pattern();
 
-	if(options.empty()) {
-		wassert(false);
-		return;
-	}
+	WML_ASSERT(options.size(), _("No recruitment option found."));
 
 	// Buy units as long as we have room and can afford it.
 	while(recruit_usage(options[rand()%options.size()])) {
