@@ -87,7 +87,7 @@ team::team_info::team_info(const config& cfg) :
 		income_per_village(),
 		can_recruit(),
 		global_recruitment_pattern(),
-		recruitment_pattern( utils::split(cfg["recruitment_pattern"])),
+		recruitment_pattern(utils::split(cfg["recruitment_pattern"])),
 		enemies(),
 		team_name(cfg["team_name"]),
 		user_team_name(cfg["user_team_name"]),
@@ -235,10 +235,10 @@ team::team_info::team_info(const config& cfg) :
 	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		can_recruit.insert(*i);
 	}
-
-	std::string recruit_pattern = cfg["recruitment_pattern"];
-	if(recruit_pattern.empty()) {
-		recruit_pattern = global_ai_params["recruitment_pattern"];
+	
+	if(recruitment_pattern.empty()) {
+		recruitment_pattern = 
+			utils::split(global_ai_params["recruitment_pattern"]);
 	}
 
 	// Default recruitment pattern is to buy 2 fighters for every 1 archer
