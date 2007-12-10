@@ -27,9 +27,7 @@
 #include "util.hpp"
 #include "variable.hpp"
 #include "sound.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
-
 
 #include <algorithm>
 #include <climits>
