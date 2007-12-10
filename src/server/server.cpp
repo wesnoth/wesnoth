@@ -666,7 +666,9 @@ std::string server::process_command(const std::string& query) {
 	} else if (command == "status") {
 		out << "STATUS REPORT\n";
 		for (player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if (parameters == "" || utils::wildcard_string_match(pl->second.name(), parameters)) {
+			if (parameters == ""
+				|| utils::wildcard_string_match(pl->second.name(), parameters)
+				|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
 				const network::connection_stats& stats = network::get_connection_stats(pl->first);
 				const int time_connected = stats.time_connected/1000;
 				const int seconds = time_connected%60;
@@ -785,7 +787,7 @@ std::string server::process_command(const std::string& query) {
 	} else {
 		out << "Command '" << command << "' is not recognized.\n";
 		out << "Available commands are: (lobby)msg <message>, motd [<message>]"
-			", status [<nickmask>], metrics, (k)ban(s) [<mask>], unban <ipmask>"
+			", status [<mask>], metrics, (k)ban(s) [<mask>], unban <ipmask>"
 			", kick <mask>";
 	}
 
