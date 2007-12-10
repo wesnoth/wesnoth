@@ -25,9 +25,9 @@
 #include "language.hpp"
 #include "marked-up_text.hpp"
 #include "reports.hpp"
-#include "wassert.hpp"
 #include "game_preferences.hpp"
 
+#include <cassert>
 #include <ctime>
 #include <map>
 #include <set>
@@ -553,7 +553,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		}
 	}
 	default:
-		wassert(false);
+		assert(false);
 		break;
 	}
 	return report(str.str());
