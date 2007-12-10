@@ -20,9 +20,9 @@
 #include "log.hpp"
 #include "terrain_filter.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cctype>
 #include <cstdlib>
 #include <iostream>
@@ -236,7 +236,7 @@ bool terrain_filter::match_internal(const gamemap::location& loc, const bool ign
 	const std::string& owner_side = t_owner_side;
 	if(!owner_side.empty()) {
 		const int side_index = lexical_cast_default<int>(owner_side,0) - 1;
-		wassert(status_.teams != NULL);
+		assert(status_.teams != NULL);
 		if(village_owner(loc, *(status_.teams)) != side_index) {
 			return false;
 		}
