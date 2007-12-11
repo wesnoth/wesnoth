@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-10 15:50+0100\n"
-"PO-Revision-Date: 2007-11-18 20:09+0100\n"
+"PO-Revision-Date: 2007-12-11 16:35+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -1046,7 +1046,7 @@ msgstr "Alles auswählen"
 
 #: src/hotkeys.cpp:120
 msgid "Draw Terrain"
-msgstr "Terrain zeichnen"
+msgstr "Gelände zeichnen"
 
 #: src/hotkeys.cpp:121
 msgid "Refresh Image Cache"
@@ -1170,15 +1170,15 @@ msgstr "Insel"
 
 #: src/marked-up_text.cpp:340
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "Die maximale Textlänge ist kleiner als 1."
 
 #: src/minimap.cpp:88
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Für Gelände $terrain wurde keine Grafik gefunden."
 
 #: src/minimap.cpp:94 src/minimap.cpp:106
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Fehler beim Erstellen oder Laden einer Grafik."
 
 #: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 msgid ""
@@ -1236,6 +1236,8 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"Ein Gelände mit mehr als vier Zeichen wurde gefunden. Das betroffen Gelände "
+"ist:"
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
