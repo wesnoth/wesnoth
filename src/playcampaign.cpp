@@ -18,8 +18,6 @@
 
 #include "global.hpp"
 
-#include <map>
-
 #include "playcampaign.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
@@ -35,7 +33,9 @@
 #include "gettext.hpp"
 #include "game_errors.hpp"
 #include "sound.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
+#include <map>
 
 #define LOG_G LOG_STREAM(info, general)
 #define LOG_NG LOG_STREAM(info, engine)
@@ -516,7 +516,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				// Adds player information, and other state
 				// information, to the configuration object
-				wassert(cfg.child("store_next_scenario") != NULL);
+				assert(cfg.child("store_next_scenario") != NULL);
 				write_game(gamestate, *cfg.child("store_next_scenario"), WRITE_SNAPSHOT_ONLY);
 				network::send_data(cfg, 0, true);
 
