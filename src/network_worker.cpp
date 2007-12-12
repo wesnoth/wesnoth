@@ -18,13 +18,13 @@
 #include "network_worker.hpp"
 #include "network.hpp"
 #include "thread.hpp"
-#include "wassert.hpp"
 //#include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cerrno>
 #include <cstring>
 #include <deque>
@@ -391,7 +391,7 @@ static int process_queue(void*)
 				buffer_set::iterator itor = bufs.begin(), itor_end = bufs.end();
 				for(; itor != itor_end; ++itor) {
 					socket_state_map::iterator lock_it = sockets_locked.find((*itor)->sock);
-					wassert(lock_it != sockets_locked.end());
+					assert(lock_it != sockets_locked.end());
 					if(lock_it->second == SOCKET_READY) {
 						lock_it->second = SOCKET_LOCKED;
 						sent_buf = *itor;
@@ -405,7 +405,7 @@ static int process_queue(void*)
 					receive_list::iterator itor = pending_receives.begin(), itor_end = pending_receives.end();
 					for(; itor != itor_end; ++itor) {
 						socket_state_map::iterator lock_it = sockets_locked.find(*itor);
-						wassert(lock_it != sockets_locked.end());
+						assert(lock_it != sockets_locked.end());
 						if(lock_it->second == SOCKET_READY) {
 							lock_it->second = SOCKET_LOCKED;
 							sock = *itor;
@@ -439,7 +439,7 @@ static int process_queue(void*)
 			}
 		}
 
-		wassert(sock);
+		assert(sock);
 
 		DBG_NW << "thread found a buffer...\n";
 
@@ -457,7 +457,7 @@ static int process_queue(void*)
 		{
 			const threading::lock lock(*global_mutex);
 			socket_state_map::iterator lock_it = sockets_locked.find(sock);
-			wassert(lock_it != sockets_locked.end());
+			assert(lock_it != sockets_locked.end());
 			lock_it->second = result;
 			if(result == SOCKET_ERRORED) {
 				++socket_errors;
