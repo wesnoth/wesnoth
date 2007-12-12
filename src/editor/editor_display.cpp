@@ -28,9 +28,10 @@
 #include "theme.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 
 #include "SDL_image.h"
+
+#include <cassert>
 
 editor_display::editor_display(CVideo& video, const gamemap& map,
 		const config& theme_cfg, const config& cfg,
@@ -100,7 +101,7 @@ void editor_display::draw(bool update,bool force)
 
 		invalidated_.clear();
 	} else if (!map_.empty()) {
-		wassert(invalidated_.empty());
+		assert(invalidated_.empty());
 	}
 
 	// Fill in the terrain report
