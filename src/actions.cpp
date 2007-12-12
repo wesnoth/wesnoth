@@ -1806,13 +1806,13 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 	gamemap::location adj[7];
 	get_adjacent_tiles(loc,adj);
 	adj[6] = loc;
+	bool on_board_loc = map.on_board(loc);
 	for(int i = 0; i != 7; ++i) {
 
 		// We clear one past the edge of the board, so that the half-hexes
 		// at the edge can also be cleared of fog/shroud.
-		if(map.on_board(adj[i]) || map.on_board(loc)) {
-			const bool res = tm.clear_shroud(adj[i]) ||
-								tm.clear_fog(adj[i]);
+		if (on_board_loc || map.on_board(adj[i])) {
+			const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
 
 			if(res && cleared != NULL) {
 				cleared->push_back(adj[i]);
