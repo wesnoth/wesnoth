@@ -22,7 +22,6 @@
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"
 #include "replay.hpp"
-#include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
