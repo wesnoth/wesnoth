@@ -28,9 +28,10 @@
 #include "statistics.hpp"
 #include "util.hpp"
 #include "video.hpp"
-#include "wassert.hpp"
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <cassert>
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -296,7 +297,7 @@ void wait::join_game(bool observe)
 			leader_choice = leader_selector.get_selected_leader();
 			gender_choice = leader_selector.get_selected_gender();
 
-			wassert(faction_choice < possible_sides.size());
+			assert(faction_choice < possible_sides.size());
 
 			config faction;
 			config& change = faction.add_child("change_faction");
