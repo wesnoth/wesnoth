@@ -30,10 +30,10 @@
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_or_text.hpp"
 
+#include <cassert>
 #include <cstdio>
 #include <cstdlib>
 #include <deque>
@@ -212,11 +212,11 @@ void replay::add_unit_checksum(const gamemap::location& loc,config* const cfg)
 	if(! game_config::mp_debug) {
 		return;
 	}
-	wassert(unit_map_ref);
+	assert(unit_map_ref);
 	config& cc = cfg->add_child("checksum");
 	loc.write(cc);
 	unit_map::const_iterator u = unit_map_ref->find(loc);
-	wassert(u != unit_map_ref->end());
+	assert(u != unit_map_ref->end());
 	cc["value"] = get_checksum(u->second);
 }
 
@@ -340,7 +340,7 @@ void replay::set_random_value(const std::string& choice)
 
 void replay::add_label(const terrain_label* label)
 {
-	wassert(label);
+	assert(label);
 	config* const cmd = add_command(false);
 
 	(*cmd)["undo"] = "no";
