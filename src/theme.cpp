@@ -19,14 +19,16 @@
 
 #include "config.hpp"
 #include "font.hpp"
+#include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "theme.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
+#include "wml_exception.hpp"
 
+#include <cassert>
 #include <cstdlib>
 #include <sstream>
 
@@ -306,7 +308,7 @@ theme::tborder::tborder(const config& cfg) :
 	border_image_bottom_odd(cfg["border_image_bottom_odd"]),
 	border_image_bottom_even(cfg["border_image_bottom_even"])
 {
-	wassert(size >= 0.0 && size <= 0.5);
+	WML_ASSERT(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }
 
 SDL_Rect& theme::object::location(const SDL_Rect& screen) const
@@ -334,7 +336,7 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		relative_loc_.w = (loc_.w*screen.w)/XDim;
 		break;
 	default:
-		wassert(false);
+		assert(false);
 	}
 
 	switch(yanchor_) {
@@ -355,7 +357,7 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		relative_loc_.h = (loc_.h*screen.h)/YDim;
 		break;
 	default:
-		wassert(false);
+		assert(false);
 	}
 
 	relative_loc_.x = minimum<int>(relative_loc_.x,screen.w);
