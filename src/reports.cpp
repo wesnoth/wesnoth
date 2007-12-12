@@ -15,8 +15,8 @@
 #include "global.hpp"
 
 #include "reports.hpp"
-#include "wassert.hpp"
 
+#include <cassert>
 #include <map>
 
 namespace {
@@ -36,8 +36,8 @@ namespace reports {
 
 const std::string& report_name(TYPE type)
 {
-	wassert(sizeof(report_names)/sizeof(*report_names) == NUM_REPORTS);
-	wassert(type < NUM_REPORTS);
+	assert(sizeof(report_names)/sizeof(*report_names) == NUM_REPORTS);
+	assert(type < NUM_REPORTS);
 
 	return report_names[type];
 }
