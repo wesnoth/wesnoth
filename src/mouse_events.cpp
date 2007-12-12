@@ -1021,16 +1021,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 			minimap_scrolling_ = true;
 			last_hex_ = loc;
 			gui_->scroll_to_tile(loc,game_display::WARP,false);
-		} else {
-		const SDL_Rect& rect = gui_->map_area();
-		const int centerx = (rect.x + rect.w)/2;
-		const int centery = (rect.y + rect.h)/2;
-
-		const int xdisp = event.x - centerx;
-		const int ydisp = event.y - centery;
-
-		gui_->scroll(xdisp,ydisp);
-		}
+		} 
 	} else if (event.button == SDL_BUTTON_WHEELUP) {
 		scrolly = - preferences::scroll_speed();
 	} else if (event.button == SDL_BUTTON_WHEELDOWN) {

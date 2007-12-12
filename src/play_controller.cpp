@@ -699,7 +699,7 @@ void play_controller::play_slice()
 	}
 
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
+	bool middle_pressed = SDL_GetMouseState(&mousex,&mousey)& SDL_BUTTON(2);
 	tooltips::process(mousex, mousey);
 
 	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
@@ -724,6 +724,25 @@ void play_controller::play_slice()
 	if((key[SDLK_RIGHT] && !menu_handler_.get_textbox().active()) || mousex > gui_->w()-scroll_threshold) {
 		gui_->scroll(preferences::scroll_speed(),0);
 		scrolling_ = true;
+	}
+
+	if (middle_pressed) {
+		const SDL_Rect& rect = gui_->map_area();
+		if (point_in_rect(mousex, mousey,rect)) {
+			const double xdisp = ((1.0*mousex / rect.w) - 0.5);
+			const double ydisp = ((1.0*mousey / rect.h) - 0.5);
+
+			// the 2.0 give the normal speed when mouse is at border (xdisp=0.5)
+			// it also guarantee a possible 1-pixel scrolling
+			// when preferences::scroll_speed() is set to minimum (=1)
+			const double scroll_speed = 2.0 * preferences::scroll_speed();
+
+			const int xspeed = round_double(xdisp * scroll_speed);
+			const int yspeed = round_double(ydisp * scroll_speed);
+
+			gui_->scroll(xspeed,yspeed);
+			scrolling_ = true;
+		}
 	}
 
 	gui_->draw();
