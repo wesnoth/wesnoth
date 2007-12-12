@@ -22,14 +22,14 @@
 #include "../config.hpp"
 #include "../construct_dialog.hpp"
 #include "../util.hpp"
-#include "../wassert.hpp"
 #include "serialization/string_utils.hpp"
 
-#include <vector>
-#include <map>
 #include <algorithm>
+#include <cassert>
+#include <map>
 #include <set>
 #include <sstream>
+#include <vector>
 
 std::string editormap::resize(const size_t width, const size_t height,
 	const int x_offset, const int y_offset,
@@ -174,7 +174,7 @@ void editormap::add_tiles_right(
 				filler :
 				tiles_[x - 1][y];
 
-			wassert(one_row[y] != t_translation::NONE_TERRAIN);
+			assert(one_row[y] != t_translation::NONE_TERRAIN);
 		}
 		tiles_.push_back(one_row);
 	}
@@ -191,7 +191,7 @@ void editormap::add_tiles_left(
 				filler :
 				tiles_[0][y];
 
-			wassert(one_row[y] != t_translation::NONE_TERRAIN);
+			assert(one_row[y] != t_translation::NONE_TERRAIN);
 		}
 		tiles_.insert(tiles_.begin(), 1, one_row);
 		clear_border_cache();
@@ -236,7 +236,7 @@ void editormap::add_tiles_top(
 				filler :
 				tiles_[y][0];
 
-			wassert(terrain != t_translation::NONE_TERRAIN);
+			assert(terrain != t_translation::NONE_TERRAIN);
 			tiles_[y].insert(tiles_[y].begin(), 1, terrain);
 			clear_border_cache();
 		}
@@ -253,7 +253,7 @@ void editormap::add_tiles_bottom(
 				filler :
 				tiles_[x][i - 1];
 
-			wassert(terrain != t_translation::NONE_TERRAIN);
+			assert(terrain != t_translation::NONE_TERRAIN);
 			tiles_[x].push_back(terrain);
 		}
 	}
