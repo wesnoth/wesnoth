@@ -26,13 +26,13 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "wesconfig.h"
 #include "serialization/binary_wml.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/tokenizer.hpp"
 
+#include <cassert>
 #include <sstream>
 #include <stack>
 
@@ -140,7 +140,7 @@ void parser::operator()(std::string* error_log)
 	} while (tok_->current_token().type != token::END);
 
 	// The main element should be there. If it is not, this is a parser error.
-	wassert(!elements.empty());
+	assert(!elements.empty());
 
 	if(elements.size() != 1) {
 		utils::string_map i18n_symbols;
@@ -251,7 +251,7 @@ void parser::parse_variable()
 	bool ignore_next_newlines = false;
 	while(1) {
 		tok_->next_token();
-		wassert(curvar != variables.end());
+		assert(curvar != variables.end());
 
 		switch (tok_->current_token().type) {
 		case ',':
