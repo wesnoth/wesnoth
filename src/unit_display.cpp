@@ -30,8 +30,8 @@
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 
+#include <cassert>
 #include <climits>
 
 #define LOG_DP LOG_STREAM(info, display)
@@ -112,7 +112,7 @@ namespace unit_display
 bool unit_visible_on_path( const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams)
 {
 	game_display* disp = game_display::get_singleton();
-	wassert(disp);
+	assert(disp);
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		const bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 	             u.invisible(path[i],units,teams) &&
@@ -128,8 +128,8 @@ bool unit_visible_on_path( const std::vector<gamemap::location>& path, const uni
 void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
 {
 	game_display* disp = game_display::get_singleton();
-	wassert(!path.empty());
-	wassert(disp);
+	assert(!path.empty());
+	assert(disp);
 	// One hex path (strange), nothing to do
 	if (path.size()==1) return;
 
@@ -229,11 +229,11 @@ void unit_attack(
 	log_scope("unit_attack");
 
 	const unit_map::iterator att = units.find(a);
-	wassert(att != units.end());
+	assert(att != units.end());
 	unit& attacker = att->second;
 
 	const unit_map::iterator def = units.find(b);
-	wassert(def != units.end());
+	assert(def != units.end());
 
 	att->second.set_facing(a.get_relative_dir(b));
 	def->second.set_facing(b.get_relative_dir(a));
@@ -261,7 +261,7 @@ void unit_attack(
 	if(leader_loc.valid()){
 		LOG_DP << "found leader at " << leader_loc << '\n';
 		leader = units.find(leader_loc);
-		wassert(leader != units.end());
+		assert(leader != units.end());
 		leader->second.set_facing(leader_loc.get_relative_dir(a));
 		leader->second.set_leading(*disp,leader_loc);
 		start_time=minimum<int>(start_time,leader->second.get_animation()->get_begin_time());
