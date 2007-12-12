@@ -88,7 +88,7 @@ env.Append(CCFLAGS = ["-O2", "-mthreads", "-DHAVE_PYTHON"])
 env.Append(LINKFLAGS = ["-s", "-mwindows", "-lmingwthrd"])
 env.Append(CPPPATH = ["src", "src/widgets"])
 env.Append(LIBS = ["mingw32", "SDLmain", "SDL", "SDL_net", "SDL_mixer", "SDL_image",
-                   "intl", "wsock32", "freetype", "python24"])
+                   "intl", "wsock32", "freetype", "python24", "boost-iostreams", "z"])
 
 # Scons stuff
 env.BuildDir("../build", "src")
