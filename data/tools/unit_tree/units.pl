@@ -574,7 +574,7 @@ sub CopyImages {
 		chomp;
 		my (@stats) = split /\t/;
 		copy ("$data_dir/images/$stats[6]","$html_dir/$att_folder$stats[6]");
-		print "$data_dir/images/$stats[6]\t$html_dir/$att_folder$stats[6]\n";
+		#print "$data_dir/images/$stats[6]\t$html_dir/$att_folder$stats[6]\n";
 	}
 	close ATT;
 
