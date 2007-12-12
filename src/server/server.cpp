@@ -69,6 +69,9 @@ void reload_config(int signal) {
 
 namespace {
 
+//! Function to construct an error message.
+//! An error will make the client disconnect, so use it only for unrecoverable
+//! errors (use a server message otherwise).
 config construct_error(const std::string& msg) {
 	config cfg;
 	cfg.add_child("error")["message"] = msg;
