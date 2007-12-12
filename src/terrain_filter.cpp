@@ -48,8 +48,13 @@ terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& origina
 	flatten(original.flat_);
 }
 
-terrain_filter::terrain_filter(const terrain_filter& other) : cfg_(other.cfg_),
-	map_(other.map_), status_(other.status_), units_(other.units_)
+terrain_filter::terrain_filter(const terrain_filter& other) : 
+	xy_pred(), // We should construct this too, since it has no datamembers
+	           // use the default constructor.
+	cfg_(other.cfg_),
+	map_(other.map_), 
+	status_(other.status_), 
+	units_(other.units_)
 {
 	restrict(other.max_loop_);
 	flatten(other.flat_);
