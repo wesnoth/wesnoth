@@ -24,11 +24,11 @@
 #include "network.hpp"
 #include "network_worker.hpp"
 #include "thread.hpp"
-#include "wassert.hpp"
 
 #include "SDL_net.h"
 
 #include <algorithm>
+#include <cassert>
 #include <cerrno>
 #include <queue>
 #include <iostream>
@@ -543,7 +543,7 @@ bool disconnect(connection s)
 	if (!is_server()) last_ping = 0;
 	if(s == 0) {
 		while(sockets.empty() == false) {
-			wassert(sockets.back() != 0);
+			assert(sockets.back() != 0);
 			while(disconnect(sockets.back()) == false) {
 				SDL_Delay(10);
 			}
@@ -684,7 +684,7 @@ connection receive_data(config& cfg, connection connection_num)
 		}
 	}
 
-	wassert(result != 0);
+	assert(result != 0);
 	waiting_sockets.insert(result);
 	if(!is_server()) {
 		const time_t& now = time(NULL);
