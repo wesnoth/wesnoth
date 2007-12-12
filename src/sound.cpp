@@ -20,12 +20,12 @@
 #include "log.hpp"
 #include "random.hpp"
 #include "sound.hpp"
-#include "wassert.hpp"
 #include "wesconfig.h"
 
 #include "SDL.h"
 #include "SDL_mixer.h"
 
+#include <cassert>
 #include <iostream>
 #include <map>
 #include <list>
@@ -81,7 +81,7 @@ static void increment_chunk_usage(Mix_Chunk* mcp) {
 static void decrement_chunk_usage(Mix_Chunk* mcp) {
 	if(mcp == NULL) return;
 	std::map< Mix_Chunk*, int >::iterator this_usage = chunk_usage.find(mcp);
-	wassert(this_usage != chunk_usage.end());
+	assert(this_usage != chunk_usage.end());
 	if(--(this_usage->second) == 0) {
 		Mix_FreeChunk(mcp);
 		chunk_usage.erase(this_usage);
@@ -250,7 +250,7 @@ static bool track_ok(const std::string &name)
 
 static const music_track &choose_track()
 {
-	wassert(!current_track_list.empty());
+	assert(!current_track_list.empty());
 
 	std::string name;
 	unsigned int track = 0;
