@@ -13,14 +13,15 @@
 */
 
 #include "global.hpp"
-#include "tstring.hpp"
+
 #include "config.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "util.hpp"
 #include "terrain.hpp"
 #include "serialization/string_utils.hpp"
-#include "gettext.hpp"
-#include "wassert.hpp"
+#include "tstring.hpp"
+#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -77,7 +78,7 @@ terrain_type::terrain_type(const config& cfg) :
 		editor_image_ = minimap_image_;
 	}
 
-	wassert(number_ != t_translation::NONE_TERRAIN);
+	WML_ASSERT(number_ != t_translation::NONE_TERRAIN, _("'string' is a mandatory key in '[terrain]'."));
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
