@@ -24,10 +24,10 @@
 #include "network.hpp"
 #include "team.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cstdlib>
 #include <sstream>
 
@@ -311,7 +311,7 @@ void team::team_info::write(config& cfg) const
 	case HUMAN: cfg["controller"] = "human"; break;
 	case NETWORK: cfg["controller"] = "network"; break;
 	case EMPTY: cfg["controller"] = "null"; break;
-	default: wassert(false);
+	default: assert(false); return;
 	}
 
 	cfg["persistent"] = persistent ? "1" : "0";
