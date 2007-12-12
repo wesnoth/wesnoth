@@ -29,7 +29,8 @@
 #include "../tooltips.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
-#include "../wassert.hpp"
+
+#include <cassert>
 
 namespace map_editor {
 
@@ -69,7 +70,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		}
 	}
 	// The rest of the code assumes this is a valid pointer
-	wassert(checked_group_btn_ != 0);
+	assert(checked_group_btn_ != 0);
 
 	// Add the groups for all terrains to the map
 	t_translation::t_list::const_iterator t_itor = terrains_.begin();
