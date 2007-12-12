@@ -20,13 +20,13 @@ See the COPYING file for more details.
 
 #include "astarnode.hpp"
 #include "gamestatus.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
-#include "wassert.hpp"
+#include "wml_exception.hpp"
 
-class gamestatus;
-
+#include <cassert>
 #include <cmath>
 #include <iostream>
 
@@ -236,8 +236,9 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 	const team& unit_team = teams[u.side()-1];
 
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
-	    i != rt.steps.end(); ++i) {
-		wassert(map.on_board(*i));
+	    	i != rt.steps.end(); ++i) {
+
+		assert(map.on_board(*i));
 		const int move_cost = u.movement_cost(map[*i]);
 		movement -= move_cost;
 
@@ -297,7 +298,7 @@ shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
 
 double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gamemap::location& loc, const double so_far, const bool isDst) const
 {
-	wassert(map_.on_board(loc));
+	assert(map_.on_board(loc));
 
 	// The location is not valid
 	// 1. if the loc is shrouded, or
@@ -312,7 +313,8 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 		return getNoPathValue();
 
 	int const base_cost = unit_.movement_cost(map_[loc]);
-	wassert(base_cost >= 1); // Pathfinding heuristic: the cost must be at least 1
+	// Pathfinding heuristic: the cost must be at least 1
+	WML_ASSERT(base_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
 
@@ -360,7 +362,7 @@ emergency_path_calculator::emergency_path_calculator(const unit& u, const gamema
 
 double emergency_path_calculator::cost(const gamemap::location&,const gamemap::location& loc, const double, const bool) const
 {
-	wassert(map_.on_board(loc));
+	assert(map_.on_board(loc));
 
 	return unit_.movement_cost(map_[loc]);
 }
