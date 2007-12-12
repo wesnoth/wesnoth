@@ -30,7 +30,9 @@
 my $html_gen = 1;
 # This option will determine if the html files translations are generated, and it will create the folders
 #   based on the contents of the po folder of Wesnoth
-my $translate = 0;
+my $translate = 1;
+# If translating, this option will try to use the source code instead of the compiled files
+my $source = 1;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
 my $images = 1;
 # This option will determine if the html report on made animations is generated
@@ -103,7 +105,7 @@ close UNITS;
 # -- Translate file --
 &TranslateUnits if $translate;
 
-print "Removing English comments\n";
+# -- Remove English comments --
 &RemoveComments if $html_gen;
 
 # -- Copy images --
@@ -782,14 +784,16 @@ sub UpdateAdvanceFrom {
 
 # Remove comments in the english files
 sub RemoveComments {
+	print "Removing comments\n";
 	my @html_units = glob("$html_dir/*.html");
 	foreach (@html_units) {
-		print "$_\n";
+		#print "$_\n";
 		tie @html, 'Tie::File', $_ or die "Couldn't open $_: $!\n";
 		for (@html) {
 			s/<!-- -->//g;
 			s|\.\./unit|unit|;
 			s|race\^||;
+			s|unit help\^||;
 			s|src=("?)|src=$1../|g if $_[0];
 			s{src="../(?!units)}{src="../units/}g if ($html_dir =~ /EOM$/); # Change links for EOM
 		}
@@ -799,33 +803,65 @@ sub RemoveComments {
 
 # Translate the html using the gettext module
 sub TranslateUnits {
+	my (@countries);
 	#use Locale::Maketext::Gettext;
-	my @countries = glob("$wesnoth_dir/po/*");
+	if ($source) {
+		@countries = glob("$wesnoth_dir/po/wesnoth/*.po");
+	} else {
+		@countries = glob("$wesnoth_dir/po/*");
+	}
 	
 	foreach $country (@countries) {
+		my ($flag,$base,%dict);
 		$country =~ s(.*\/)(); # Take only the country
+		$country =~ s(.po$)(); # If it is the source, we need to stript also the extension
 		unless (-e "$html_dir/$country") {mkdir "$html_dir/$country" or die "$country directory cannot be created: $!\n";};
 		print "Processing $country\n";
-		my $MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth.mo";
-		%dict = read_mo($MOfile);
-		# Add female entries
-		foreach $key (keys %dict) {
-			if ($key =~ /^female/) {
-				(my $newkey = $key) =~ s/^female.//;
-				$dict{$newkey} = $dict{$key};
+		# If we are using the source, build the dictionary in a different way
+		if ($source) {
+			# Base data on po/wesnoth dir
+			open (POF,"$wesnoth_dir/po/wesnoth/$country.po") or die "Coudn't open wesnoth file for $country: $!\n";
+			while (<POF>) {
+				$base = $1 if (/msgid "([^"]+)"/);
+				$dict{$base} = $1 if (/msgstr "([^"]+)"/);
 			}
-		}
-		# Add units information
-		$MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth-units.mo";
-		%dict_extra = read_mo($MOfile);
-		foreach $key (keys %dict_extra) {
-			$dict{$key} = $dict_extra{$key};
-		}
-		# Add factions information
-		$MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth-multiplayer.mo";
-		%dict_extra = read_mo($MOfile);
-		foreach $key (keys %dict_extra) {
-			$dict{$key} = $dict_extra{$key};
+			close POF;
+			# Units data on po/wesnoth-units dir
+			open (POF,"$wesnoth_dir/po/wesnoth-units/$country.po") or die "Coudn't open wesnoth file for $country: $!\n";
+			while (<POF>) {
+				$base = $1 if (/msgid "([^"]+)"/);
+				$dict{$base} = $1 if (/msgstr "([^"]+)"/);
+			}
+			close POF;
+			# Faction data on po/wesnoth-units dir
+			open (POF,"$wesnoth_dir/po/wesnoth-multiplayer/$country.po") or die "Coudn't open wesnoth file for $country: $!\n";
+			while (<POF>) {
+				$base = $1 if (/msgid "([^"]+)"/);
+				$dict{$base} = $1 if (/msgstr "([^"]+)"/);
+			}
+			close POF;
+		} else {
+			my $MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth.mo";
+			%dict = read_mo($MOfile);
+			# Add female entries
+			foreach $key (keys %dict) {
+				if ($key =~ /^female/) {
+					(my $newkey = $key) =~ s/^female.//;
+					$dict{$newkey} = $dict{$key};
+				}
+			}
+			# Add units information
+			$MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth-units.mo";
+			%dict_extra = read_mo($MOfile);
+			foreach $key (keys %dict_extra) {
+				$dict{$key} = $dict_extra{$key};
+			}
+			# Add factions information
+			$MOfile = "$wesnoth_dir/po/$country/LC_MESSAGES/wesnoth-multiplayer.mo";
+			%dict_extra = read_mo($MOfile);
+			foreach $key (keys %dict_extra) {
+				$dict{$key} = $dict_extra{$key};
+			}
 		}
 				
 		# Process only the html files from the HTML folder
@@ -846,7 +882,7 @@ sub TranslateUnits {
 						$line =~ s/>([^<]+)</>$dict{$1}</;
 					}
 					# Descriptions
-					if (length($1) > 50) {
+					if (length($1) > 50000) {
 						my $patt = $1;
 						foreach $key (keys %dict) {
 							if ($key =~ /$patt/) { # English descriptions may not be complete (see info_html), a partial match should be unique enough
