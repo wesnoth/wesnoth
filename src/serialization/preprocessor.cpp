@@ -18,17 +18,17 @@
 
 #include "../global.hpp"
 
-#include <algorithm>
-#include <iostream>
-#include <sstream>
-#include <vector>
-
 #include "../filesystem.hpp"
 #include "../log.hpp"
-#include "../wassert.hpp"
 #include "../wesconfig.h"
 #include "preprocessor.hpp"
 #include "string_utils.hpp"
+
+#include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <sstream>
+#include <vector>
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_CF LOG_STREAM(info, config)
@@ -195,7 +195,7 @@ void count_extra_digits(int const& line_number, int& buffer_size) {
 
 preprocessor::~preprocessor()
 {
-	wassert(target_.current_ == this);
+	assert(target_.current_ == this);
 	target_.current_  = old_preprocessor_;
 	target_.location_ = old_location_;
 	target_.linenum_  = old_linenum_;
@@ -649,7 +649,7 @@ bool preprocessor_data::get_chunk()
 				return true;
 			}
 			if (token.type == '{') {
-				wassert(strings_.back().empty());
+				assert(strings_.back().empty());
 				strings_.pop_back();
 			}
 
