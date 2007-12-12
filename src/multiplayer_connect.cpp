@@ -17,19 +17,20 @@
 
 #include "global.hpp"
 
+#include "ai.hpp"
 #include "dialogs.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "multiplayer_connect.hpp"
-#include "game_preferences.hpp"
+#include "random.hpp"
 #include "statistics.hpp"
 #include "show_dialog.hpp"
-#include "wassert.hpp"
 #include "serialization/string_utils.hpp"
-#include "ai.hpp"
-#include "random.hpp"
+
+#include <cassert>
 
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -115,7 +116,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	std::vector<std::string>::const_iterator itor = std::find(parent_->team_names_.begin(), 
 													parent_->team_names_.end(), cfg_["team_name"]);
 	if(itor == parent_->team_names_.end()) {
-		wassert(!parent_->team_names_.empty());
+		assert(!parent_->team_names_.empty());
 		team_ = 0;
 	} else {
 		team_ = itor - parent_->team_names_.begin();
@@ -487,7 +488,7 @@ void connect::side::hide_ai_algorithm_combo(bool invis)
 
 void connect::side::init_ai_algorithm_combo()
 {
-	wassert(parent_->ai_algorithms_.empty() == false);
+	assert(parent_->ai_algorithms_.empty() == false);
 
 	int sel = 0;
 	std::vector<std::string> ais = parent_->ai_algorithms_;
@@ -582,7 +583,7 @@ config connect::side::get_config() const
 			res["no_leader"] = "yes";
 			break;
 		default:
-			wassert(false);
+			assert(false);
 			break;
 		}
 		res["user_description"] = t_string(description, "wesnoth");
@@ -1610,7 +1611,7 @@ void connect::kick_player(const std::string& name)
 
 	int side = find_player_side(name);
 	if (side != -1) {
-		wassert(size_t(side) < sides_.size());
+		assert(size_t(side) < sides_.size());
 		sides_[side].reset(sides_[side].get_controller());
 	}
 	users_.erase(player);
