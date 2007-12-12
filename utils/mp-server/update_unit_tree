@@ -45,5 +45,6 @@ fi
 ./units.pl
 # move the generated files to their proper place
 mv files $SITE/$VERSION
+cp -p templates/unit.css $SITE/$VERSION
 # revert to prevent future conflicts if $version changed
 svn revert units.pl
