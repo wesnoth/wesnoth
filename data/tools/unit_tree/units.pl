@@ -80,11 +80,7 @@ $att_html .= "<td>{name}</td>\n\t<td>{type}</td>\n\t<td>{damage}-{number}</td>\n
 # Information on the units.cfg file
 &ProcessTypes('units.cfg');
 # -- HTML files and raw data reports generation --
-if ($version =~ /^1.2/) {
-	&ProduceDataFiles("templates/unit_1.2.html");
-} else {
-	&ProduceDataFiles("templates/unit.html");
-}
+&ProduceDataFiles("templates/unit.html");
 
 # Multiplayer
 # Print multiplayer units
