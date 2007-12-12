@@ -22,7 +22,8 @@
 #include "pathutils.hpp"
 #include "terrain_filter.hpp"
 #include "variable.hpp"
-#include "wassert.hpp"
+
+#include <cassert>
 
 /*
  *
@@ -128,7 +129,7 @@ bool unit::get_ability_bool(const std::string& ability, const gamemap::location&
 	if(units_== NULL) std::cout<<"ability:"<<ability<<"\n";
 
 
-	wassert(units_ && teams_);
+	assert(units_ && teams_);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -167,7 +168,7 @@ unit_ability_list unit::get_abilities(const std::string& ability, const gamemap:
 		}
 	}
 
-	wassert(units_ != NULL);
+	assert(units_ != NULL);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -241,7 +242,7 @@ std::vector<std::string> unit::ability_tooltips(const gamemap::location& loc) co
 		}
 	}
 	/*
-	wassert(units_ != NULL);
+	assert(units_ != NULL);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -312,7 +313,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
 		if (!matches_filter(filter, loc, cache_illuminates(illuminates, ability)))
 			return false;
 	}
-	wassert(units_ && map_ && gamestatus_);
+	assert(units_ && map_ && gamestatus_);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	config::child_list::const_iterator i, i_end;
@@ -360,7 +361,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const gam
  */
 bool unit::ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const gamemap::location& loc) const
 {
-	wassert(dir >=0 && dir <= 5);
+	assert(dir >=0 && dir <= 5);
 	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
 	const config::child_list& affect_adj = cfg.get_children("affect_adjacent");
 	int illuminates = -1;
@@ -614,7 +615,7 @@ std::string attack_type::weapon_specials(bool force) const
 bool attack_type::special_active(const config& cfg,bool self,bool report) const
 {
 //	log_scope("special_active");
-	wassert(unitmap_ != NULL);
+	assert(unitmap_ != NULL);
 	unit_map::const_iterator att = unitmap_->find(aloc_);
 	unit_map::const_iterator def = unitmap_->find(dloc_);
 
@@ -731,7 +732,7 @@ bool attack_type::special_active(const config& cfg,bool self,bool report) const
 				return false;
 		}
 	}
-	wassert(map_ && game_status_);
+	assert(map_ && game_status_);
 	const config::child_list& adj_filt_loc = cfg.get_children("filter_adjacent_location");
 	for (i = adj_filt_loc.begin(), i_end = adj_filt_loc.end(); i != i_end; ++i) {
 		std::vector<std::string> dirs = utils::split((**i)["adjacent"]);
