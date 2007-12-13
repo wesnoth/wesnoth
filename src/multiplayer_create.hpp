@@ -32,7 +32,28 @@ class create : public mp::ui
 public:
 	struct parameters
 	{
-		parameters() { reset(); };
+		parameters() :
+			name(),
+			era(),
+			num_turns(0),
+			village_gold(0),
+			xp_modifier(0),
+			mp_countdown_init_time(0),
+			mp_countdown_reservoir_time(0),
+			mp_countdown_turn_bonus(0),
+			mp_countdown_action_bonus(0),
+			mp_countdown(false),
+			use_map_settings(false),
+			random_start_time(false),
+			fog_game(false),
+			shroud_game(false),
+			allow_observers(false),
+			share_view(false),
+			share_maps(false),
+			saved_game(false),
+			scenario_data()
+
+		{ reset(); };
 
 		void reset() {
 			name = "";
@@ -40,11 +61,11 @@ public:
 			num_turns = 0;
 			village_gold = 0;
 			xp_modifier = 0;
-			mp_countdown=false;
 			mp_countdown_init_time=0;
-			mp_countdown_turn_bonus=0;
 			mp_countdown_reservoir_time=0;
+			mp_countdown_turn_bonus=0;
 			mp_countdown_action_bonus=0;
+			mp_countdown=false;
 			use_map_settings = random_start_time = fog_game = shroud_game = allow_observers = share_view = share_maps = false;
 
 			scenario_data.clear();

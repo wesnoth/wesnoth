@@ -49,6 +49,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	map_selection_(-1),
 	mp_countdown_init_time_(270),
 	mp_countdown_reservoir_time_(330),
+	user_maps_(),
+	map_options_(),
 
 	maps_menu_(disp.video(), std::vector<std::string>()),
 	turns_slider_(disp.video()),
@@ -85,7 +87,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	name_entry_(disp.video(), 32),
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
-	generator_(NULL)
+	generator_(NULL),
+	parameters_()
 {
 	// Build the list of scenarios to play
 
