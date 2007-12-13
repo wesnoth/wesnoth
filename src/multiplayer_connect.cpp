@@ -50,11 +50,19 @@ namespace mp {
 
 connect::side::side(connect& parent, const config& cfg, int index) :
 	parent_(&parent),
-
 	cfg_(cfg),
-
 	index_(index),
-
+	id_(""), // Id is reset, and not imported from loading savegames
+	save_id_(cfg_["save_id"]),
+	controller_(),
+	faction_(lexical_cast_default<int>(cfg_["faction"], 0)),
+	team_(0),
+	colour_(index),
+	gold_(lexical_cast_default<int>(cfg_["gold"], 100)),
+	income_(lexical_cast_default<int>(cfg_["income"], 0)),
+	leader_(),
+	gender_(),
+	ai_algorithm_(),
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
@@ -110,9 +118,6 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	label_gold_.hide(!enabled_);
 	label_income_.hide(!enabled_);
 
-	id_ = ""; // Id is reset, and not imported from loading savegames
-	save_id_ = cfg_["save_id"];
-	faction_ = lexical_cast_default<int>(cfg_["faction"], 0);
 	std::vector<std::string>::const_iterator itor = std::find(parent_->team_names_.begin(), 
 													parent_->team_names_.end(), cfg_["team_name"]);
 	if(itor == parent_->team_names_.end()) {
@@ -121,12 +126,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	} else {
 		team_ = itor - parent_->team_names_.begin();
 	}
-	colour_ = index_;
 	if(!cfg_["colour"].empty()) {
 		colour_ = game_config::color_info(cfg_["colour"]).index() - 1;
 	}
-	gold_ = lexical_cast_default<int>(cfg_["gold"], 100);
-	income_ = lexical_cast_default<int>(cfg_["income"], 0);
 	config *ai = cfg_.child("ai");
 	if (ai)
         ai_algorithm_ = lexical_cast_default<std::string>((*ai)["ai_algorithm"], "default");
@@ -854,17 +856,24 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 		chat& c, config& gamelist, const create::parameters& params,
 		mp::controller default_controller) :
 	mp::ui(disp, _("Game Lobby"), game_config, c, gamelist),
-
 	game_data_(data),
 	level_(),
+	state_(),
 	params_(params),
-
+	era_sides_(),
+	player_types_(),
+	player_factions_(),
+	player_teams_(),
+	player_colours_(),
+	ai_algorithms_(),
+	team_names_(),
+	user_team_names_(),
 	team_prefix_(std::string(_("Team")) + " "),
-
+	sides_(),
+	users_(),
 	waiting_label_(video(), "", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	message_full_(false),
 	default_controller_(default_controller),
-
 	scroll_pane_(video()),
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL, font::LOBBY_COLOUR),
 	faction_title_label_(video(), _("Faction"), font::SIZE_SMALL, font::LOBBY_COLOUR),
