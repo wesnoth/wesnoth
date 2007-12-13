@@ -44,12 +44,15 @@ namespace {
 
 struct player_controller
 {
-	player_controller()
-	{}
+	player_controller() :
+		controller(),
+		description()
+		{}
 
 	player_controller(const std::string& controller, const std::string& description) :
-		controller(controller), description(description)
-	{}
+		controller(controller), 
+		description(description)
+		{}
 
 	std::string controller;
 	std::string description;
