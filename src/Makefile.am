@@ -432,7 +432,6 @@ noinst_HEADERS = \
 	util.hpp \
 	variable.hpp \
 	video.hpp \
-	wassert.hpp \
 	wml_separators.hpp \
 	sdl_ttf/SDL_ttf.h \
 	wesconfig.h \
@@ -462,7 +461,6 @@ libwesnoth_core_a_SOURCES = \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \
-	wassert.cpp \
 	serialization/binary_wml.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
