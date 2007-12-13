@@ -696,8 +696,10 @@ std::string server::process_command(const std::string& query) {
 		//out << "message '" << parameters << "' relayed to players\n";
 	} else if(command == "status") {
 		out << "STATUS REPORT\n";
-		for(player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if(parameters == "" || utils::wildcard_string_match(pl->second.name(), parameters)) {
+		for (player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+			if (parameters == ""
+				|| utils::wildcard_string_match(pl->second.name(), parameters)
+				|| utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
 				const network::connection_stats& stats = network::get_connection_stats(pl->first);
 				const int time_connected = stats.time_connected/1000;
 				const int seconds = time_connected%60;
@@ -728,8 +730,8 @@ std::string server::process_command(const std::string& query) {
 				if(command == "kban") {
 					for(player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
 						if(utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
-							network::queue_disconnect(pl->first);
 							out << "Kicked " << pl->second.name() << ".\n";
+							network::queue_disconnect(pl->first);
 						}
 					}
 				}
@@ -743,8 +745,8 @@ std::string server::process_command(const std::string& query) {
 							out << "Set ban on '" << ip << "'.\n";
 						}
 						if(command == "kban") {
-							network::queue_disconnect(pl->first);
 							out << "Kicked " << pl->second.name() << ".\n";
+							network::queue_disconnect(pl->first);
 						}
 					}
 				}
@@ -766,16 +768,30 @@ std::string server::process_command(const std::string& query) {
 		}
 	} else if(command == "kick") {
 		if(parameters == "") {
-			return "You must enter a nickmask to kick.";
+			return "You must enter a mask to kick.";
 		}
 		bool kicked = false;
-		for(player_map::const_iterator pl = players_.begin(); pl != players_.end(); ++pl) {
-			if(utils::wildcard_string_match(pl->second.name(), parameters)) {
-				kicked = true;
-				const std::string name(pl->second.name());
-				const std::string ip(network::ip_address(pl->first));
-				network::queue_disconnect(pl->first);
-				out << "Kicked " << name << " (" << ip << ").\n";
+		// if we find 3 '.' consider it an ip mask
+		if (std::count(parameters.begin(), parameters.end(), '.') == 3) {
+			for (player_map::const_iterator pl = players_.begin();
+				pl != players_.end(); ++pl)
+			{
+				if (utils::wildcard_string_match(network::ip_address(pl->first), parameters)) {
+					kicked = true;
+					out << "Kicked " << pl->second.name() << ".\n";
+					network::queue_disconnect(pl->first);
+				}
+			}
+		} else {
+			for (player_map::const_iterator pl = players_.begin();
+				pl != players_.end(); ++pl)
+			{
+				if (utils::wildcard_string_match(pl->second.name(), parameters)) {
+					kicked = true;
+					out << "Kicked " << pl->second.name() << " ("
+						<< network::ip_address(pl->first) << ").\n";
+					network::queue_disconnect(pl->first);
+				}
 			}
 		}
 		if(!kicked) out << "No user matched '" << parameters << "'.\n";
@@ -792,7 +808,9 @@ std::string server::process_command(const std::string& query) {
 		out << "message of the day set: " << motd_;
 	} else {
 		out << "Command '" << command << "' is not recognized.\n";
-		out << "Available commands are: (lobby)msg <message>, motd [<message>], status [<nickmask>], metrics, (k)ban(s) [<mask>], unban <ipmask>, kick <nickmask>";
+		out << "Available commands are: (lobby)msg <message>, motd [<message>]"
+			", status [<mask>], metrics, (k)ban(s) [<mask>], unban <ipmask>"
+			", kick <mask>";
 	}
 
 	return out.str();
