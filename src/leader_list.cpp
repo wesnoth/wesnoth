@@ -28,7 +28,13 @@ const std::string leader_list_manager::random_enemy_picture("random-enemy.png~RC
 
 leader_list_manager::leader_list_manager(const config::child_list& side_list,
 		const game_data* data, gui::combo* leader_combo , gui::combo* gender_combo):
-	side_list_(side_list), data_(data), leader_combo_(leader_combo), gender_combo_(gender_combo)
+	leaders_(),
+	genders_(),
+	gender_ids_(),
+	side_list_(side_list), 
+	data_(data),
+	leader_combo_(leader_combo), 
+	gender_combo_(gender_combo)
 {
 }
 
