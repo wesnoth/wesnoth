@@ -17,9 +17,9 @@
 #include "game.hpp"
 #include "../map.hpp"
 #include "../log.hpp"
-#include "../wassert.hpp"
 
 #include <iostream>
+#include <cassert>
 #include <sstream>
 
 #define ERR_GAME LOG_STREAM(err, mp_server)
@@ -207,7 +207,7 @@ bool game::take_side(network::connection player, const config& cfg)
 		//update level_ so observers who join get the new player name
 		config::child_itors it = level_.child_range("side");
 		it.first += side_num - 1;
-		wassert(it.first != it.second);
+		assert(it.first != it.second);
 		(**it.first)["current_player"] = cfg["name"];
 
 		side_controllers_[side_num - 1] = cfg["controller"];
@@ -408,7 +408,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	// Update the level so observer who join get the new name.
 	config::child_itors it = level_.child_range("side");
 	it.first += side_num - 1;
-	wassert(it.first != it.second);
+	assert(it.first != it.second);
 	(**it.first)["current_player"] = newplayer_name;
 
 	//if the host left and there are ai sides, transfer them to the new host
