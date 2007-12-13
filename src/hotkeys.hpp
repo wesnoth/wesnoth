@@ -71,7 +71,19 @@ enum HOTKEY_COMMAND {
 
 class hotkey_item {
 public:
-	hotkey_item() : id_(HOTKEY_NULL) {};
+	hotkey_item() : 
+		id_(HOTKEY_NULL),
+		command_(),
+		description_(),
+		type_(UNBOUND),
+		character_(0),
+		ctrl_(false),
+		alt_(false),
+		cmd_(false),
+		keycode_(0),
+		shift_(false),
+		hidden_(false)
+		{}
 
 	hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden=false);
 
