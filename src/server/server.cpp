@@ -22,7 +22,6 @@
 #include "../log.hpp"
 #include "../network.hpp"
 #include "../filesystem.hpp"
-#include "../wassert.hpp"
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
 #include "../serialization/string_utils.hpp"
@@ -34,6 +33,7 @@
 #include "proxy.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -63,7 +63,7 @@
 sig_atomic_t config_reload = 0;
 
 void reload_config(int signal) {
-	wassert(signal == SIGHUP);
+	assert(signal == SIGHUP);
 	config_reload = 1;
 }
 
@@ -1036,7 +1036,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 			// Update our config object which describes the open games,
 			// and save a pointer to the description in the new game.
 			config* const gamelist = games_and_users_list_.child("gamelist");
-			wassert(gamelist != NULL);
+			assert(gamelist != NULL);
 			config& desc = gamelist->add_child("game",g->level());
 			g->set_description(&desc);
 			desc["id"] = lexical_cast<std::string>(g->id());
@@ -1319,7 +1319,7 @@ void server::delete_game(std::vector<game>::iterator game_it) {
 	metrics_.game_terminated(game_it->termination_reason());
 	// Delete the game from the games_and_users_list_.
 	config* const gamelist = games_and_users_list_.child("gamelist");
-	wassert(gamelist != NULL);
+	assert(gamelist != NULL);
 	const config::child_itors games = gamelist->child_range("game");
 	const config::child_list::const_iterator g =
 		std::find(games.first, games.second, game_it->description());
