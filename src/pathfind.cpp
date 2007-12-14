@@ -251,17 +251,9 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 			}
 		}
 
-		if (!u.get_ability_bool("skirmisher",*i)) {
-			gamemap::location adj[6];
-			get_adjacent_tiles(*i, adj);
-
-			for (size_t j = 0; j != 6; ++j) {
-				unit_map::const_iterator enemy_unit = find_visible_unit(units, adj[j], map, teams, viewing_team);
-				if (enemy_unit != units.end() && unit_team.is_enemy(enemy_unit->second.side())
-					&& enemy_unit->second.emits_zoc()) {
-					 movement = 0;
-				}
-			}
+		if (enemy_zoc(map,units,teams, *i, viewing_team,u.side())
+					&& !u.get_ability_bool("skirmisher", *i)) {
+			 movement = 0;
 		}
 	}
 
@@ -337,19 +329,11 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 	// since we sacrifice this turn's movement. Take that into account here.
 	int additional_cost = base_cost > remaining_movement ? remaining_movement : 0;
 
-	if (!isDst && !unit_.get_ability_bool("skirmisher",loc)) {
-	  gamemap::location adj[6];
-	  get_adjacent_tiles(loc, adj);
-
-	  for (size_t i = 0; i != 6; ++i) {
-	    enemy_unit = find_visible_unit(units_, adj[i], map_, teams_, viewing_team_);
-	    if (enemy_unit != units_end && teams_[unit_.side()-1].is_enemy(enemy_unit->second.side()) &&
-		   enemy_unit->second.emits_zoc()){
-		 // Should cost us remaining movement.
-		 //		 return getNoPathValue();
-		 return total_movement_ + additional_cost;
-	    }
-	  }
+	if (!isDst && enemy_zoc(map_,units_,teams_, loc, viewing_team_, unit_.side())
+			&& !unit_.get_ability_bool("skirmisher", loc)) {
+		// Should cost us remaining movement.
+		//		 return getNoPathValue();
+		return total_movement_ + additional_cost;
 	}
 
 	return base_cost + additional_cost;
