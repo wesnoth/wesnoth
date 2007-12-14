@@ -1,0 +1,68 @@
+Historical note:  This campaign was begun 2007-10-11 on Wescamp.  ESR
+finished his first draft on 2007-12-04.  The campaigm moved from Wescamp
+to mainline on 2007-12-14.
+
+0.1:
+	* Initial release
+
+0.2, 0.3:
+	* Code identical to 0.1, these were tests for the upload code.
+
+0.4:
+	* Not putting villages omn the map edge banishes a hang bug that had
+	the following symptom: "error engine: Cannot create unit:
+	location is not on map, and player 5 has no recall list."
+
+0.5:
+	* Add changelog (good suggestion by turska)
+	* Fixed recall of Aiglondur to work right if he leveled up.
+	* Minor textual changes suggested by Turin Turambar.
+
+
+0.6:
+	* Fixes for all known WML bugs, notably the bandit-popup logic
+	in Invaders (scenario 5). Props to zookeeper for the fixes.
+	* Invaders (scenario 5) rebalanced.
+
+
+0.7:
+	* Scenario 7, "Mages and Drakes", added.
+	* Scenario 8, "Fear", added.
+	* Scenario 9, "Forbidden Forest", added but not balance-checked.
+
+0.8:
+	* New scenario #1 map/WML and tuneup of scenario #3 map by Taurus.
+
+0.9:
+	* Rebalance scenario 1.
+
+0.10:
+	* New scenario #1 map backed out as it doesn't fit the storyline.
+
+0.11:
+	* In "Fear" (#8), explicitly create the ulfserkers the AI won't
+	recruit anymore. Also give all enemies the "Masked Dwarf" user
+	description.
+
+0.12:
+	* "Forbidden Forest" (#9) seems reasonably well balanced now.
+	* Added Staff of Righteous Flame in #10; I've tested that a mage 
+	can pick it up an a non-mage can't, but have not yet triggered the
+	final strike.
+	* First cut at "The Siege of Kal Kartha" (#10).
+
+0.13:
+	* Staff of Righteous Flame final-strike effect is working.
+	* Balancing work on "The Siege of Kal Kartha" (#10).
+	* "The Court of Karrag" (#11) written.
+	* "Epilogue" (#13) written.
+	* Only "The Underlevels" (#12) is not yet playable
+
+	Note: For this version you will need svn trunk at r22132 or
+	later.
+
+0.14:
+	* This version is being checked into mainline
+	* New victory dialogue in "Strange Allies" (#3)
+
+
