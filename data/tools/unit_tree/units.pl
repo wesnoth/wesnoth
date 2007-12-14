@@ -33,6 +33,8 @@ my $html_gen = 1;
 my $translate = 1;
 # If translating, this option will try to use the source code instead of the compiled files
 my $source = 1;
+# If translating, and not from the source, remove the comment on the following line
+#use Locale::Maketext::Gettext;
 # This option will determine if the attack images are copied, and the images units are copied and colorized
 my $images = 1;
 # This option will determine if the html report on made animations is generated
@@ -61,12 +63,11 @@ unless (-e $report_dir) {mkdir $report_dir or die "$report_dir directory cannot 
 unless (-e "$html_dir/attacks") {mkdir "$html_dir/attacks" or die "$html_dir/attacks directory cannot be created: $!\n";};
 unless (-e "$html_dir/units") {mkdir "$html_dir/units" or die "$html_dir/units directory cannot be created: $!\n";};
 $data_dir = "$wesnoth_dir/data/core";
-$data_dir = "$wesnoth_dir/data" if $version =~ /^1.2/;
 $base_dir = $wesnoth_dir; $base_report_dir = $report_dir;
 $units_dir = $data_dir . "/units";
 
 # Variables used to generate the html
-my ($i, $html, %types, %unit_id, @adv);
+my ($i, $html, %types, %unit_id, @adv, %unit_desc, %desc_specials, %unit_id_to_file);
 $unit_id{AdvanceTo} = 'AdvanceTo';
 # Variables used on the tree generation
 my (%spaces, %adv_from, %units, %units_id, %adv, %factions, %attacks, %att_id);
@@ -79,6 +80,8 @@ $att_html .= "<td>{name}</td>\n\t<td>{type}</td>\n\t<td>{damage}-{number}</td>\n
 
 # Information on the units.cfg file
 &ProcessTypes('units.cfg');
+# If the source code is available, get the descriptions for the units there
+&GetDescriptions if $source;
 # -- HTML files and raw data reports generation --
 &ProduceDataFiles("templates/unit.html");
 
@@ -307,7 +310,10 @@ sub ProcessUnit {
 	$unit = shift;
 	$i++; # This will be the unit id
 	open (UNIT, "<$unit") or die "Can't open $unit: $!\n";
-    my (%unit,%attack,%res,%move,$att);
+    my (%unit,%attack,%res,%move,$att,$unit_file);
+    # Variables used for the units description
+    $unit_file = $1 if $unit =~ /units\/(\w+?\/\w+?).cfg/;
+    $unit_id_to_file{$i} = $unit_file;
     my $flag = 1; # This flag will identify the section inside the config file
     while (<UNIT>) {
 	    chomp; s/^\s*//; 
@@ -372,6 +378,10 @@ sub ProcessUnit {
 		($flag, $attack{special}) = (3, '') if /^\[attack\]/;
 		# Skip Death sequence
 		$flag = 4 if /^\[death\]/;
+		# Unit description specials
+		if (/SPECIAL_NOTES/) {
+			$unit_desc{$unit_file} .= $desc_specials{$1} while (/SPECIAL_NOTES_(\w+)/g);
+		}
     }
     # Print to match the headers, there may be empty elements
     $unit{abilities} =~ s/\s$//; # Fix the extra space in the abilities
@@ -396,6 +406,7 @@ sub ProcessUnit {
 	close UNIT;
 	
 	# Generate HTML
+	$unit{unit_description} = $unit_desc{$unit_file} if $source;
 	if ($html_gen) {
 		(my $filename = $unit{id}) =~ s/\s/_/g;
 		$unit{unit_description} =~ s/( _ )?"//g;
@@ -562,7 +573,6 @@ sub CopyImages {
     $att_folder = 'attacks/';
     $unit_folder = 'units/';
   }
-    $data_dir = $wesnoth_dir if $version =~ /^1.2/;
 	# Attacks images
 	print "Copying attack icons\n";
 	open (ATT, "$report_dir/attacks.txt") or die "Couldn't open attacks.txt: $!\n";
@@ -800,7 +810,6 @@ sub RemoveComments {
 # Translate the html using the gettext module
 sub TranslateUnits {
 	my (@countries);
-	#use Locale::Maketext::Gettext;
 	if ($source) {
 		@countries = glob("$wesnoth_dir/po/wesnoth/*.po");
 	} else {
@@ -808,7 +817,7 @@ sub TranslateUnits {
 	}
 	
 	foreach $country (@countries) {
-		my ($flag,$base,%dict);
+		my ($flag, $base, $unit_base, %dict);
 		$country =~ s(.*\/)(); # Take only the country
 		$country =~ s(.po$)(); # If it is the source, we need to stript also the extension
 		unless (-e "$html_dir/$country") {mkdir "$html_dir/$country" or die "$country directory cannot be created: $!\n";};
@@ -827,6 +836,19 @@ sub TranslateUnits {
 			while (<POF>) {
 				$base = $1 if (/msgid "([^"]+)"/);
 				$dict{$base} = $1 if (/msgstr "([^"]+)"/);
+				# Descriptions
+				chomp;
+				$unit_file = $1 if /^.: data\/core\/units\/(\w+?\/\w+?).cfg:\d+$/;
+				$desc .= $_ if $flag;
+				$flag = 1 if /^msgstr ""/;
+				if (/^$/) {
+					$flag = 0;
+					$desc =~ s/"//g;
+					$desc =~ s/(\\n)+/<br>/g;
+					$unit_desc{$unit_file} = $desc if length($desc)>50;
+					$desc='';
+				}
+
 			}
 			close POF;
 			# Faction data on po/wesnoth-units dir
@@ -863,6 +885,7 @@ sub TranslateUnits {
 		# Process only the html files from the HTML folder
 		my @html_units = glob("$html_dir/*.html");
 		foreach $unit (@html_units) {
+			my $id;
 			open (UNIT, "$unit") or die "Couldn't open $unit: $!\n";
 			$unit =~ s|/|/$country/|; # Create the same file in the country folder
 			open (TRANS, ">$unit") or die "Couldn't create $unit: $!\n";
@@ -873,22 +896,14 @@ sub TranslateUnits {
 				$line = "" if $line =~/^<p><a href='EOM/;
 				$line = "" if $line =~ m|<a href=\w+/index.html>|;
 				$line =~ s/<html lang="en">/<html lang="$country">/; # Change language tag
+				$id = $1 if $line =~ /<!--id=(\d+)-->/;
 				if ($line =~ m/>([^<]+)</g) { # Process the words between html tags
 					if ($dict{$1}) {
 						$line =~ s/>([^<]+)</>$dict{$1}</;
 					}
 					# Descriptions
-					if (length($1) > 50000) {
-						my $patt = $1;
-						foreach $key (keys %dict) {
-							if ($key =~ /$patt/) { # English descriptions may not be complete (see info_html), a partial match should be unique enough
-								$line =~ s/>([^<]+)</>$dict{$key}</; 
-								$line =~ s/\n/\n<br>/g; # Change line feeds to <br>
-								$line =~ s/<br>[A-Za-z :]+<\/p>/<\/p>/; # Remove the special notes line
-								last;
-							}
-						}
-					}
+					$line = '<p style="font-size: smaller">' . $unit_desc{$unit_id_to_file{$id}} . "</p>\n" if $line =~ (/smaller">[^<]/);
+					
 					$line =~ s/<!-- -->//g; # Remove comments
 					$line =~ s|race\^||; # Remove race^ in case it is not translated
 	
@@ -900,4 +915,37 @@ sub TranslateUnits {
 			close UNIT;
 		}
 	}
+}
+
+sub GetDescriptions {
+	my ($unit_file, $pos, $flag, $desc);
+	open (DESC,"$wesnoth_dir/po/wesnoth-units/wesnoth-units.pot") or die "Coudn't open units template: $!\n";
+	while (<DESC>) {
+		chomp;
+		($unit_file, $pos) = ($1,$2) if /^.: data\/core\/units\/(\w+?\/\w+?).cfg:(\d+)$/;
+		# Mark the start of the description
+		if (/^msgid/ && $pos > 10) {$flag = 1};
+		# Once we reach the msgstr string, process the description
+		if (/^msgstr/ && $pos > 10) {
+			# Format the description
+			$desc =~ s/msgid //;
+			$desc =~ s/"//g;
+			$desc =~ s/(\\n)+/<br>/g;
+			$desc =~ s/female\^//;
+			$unit_desc{$unit_file} = $desc if length($desc)>50;
+			# Reset counter
+			$flag=0; $pos=0; 
+			$desc='';
+		}
+		$desc .= $_ if $flag;
+	}
+	close DESC;
+	# Special notes	
+	open (DESC,"$data_dir/macros/special-notes.cfg") or die "Coudn't open units specials: $!\n";
+	while (<DESC>) {
+		chomp;
+		$desc = $1 if /SPECIAL_NOTES_(\w+)/;
+		$desc_specials{$desc} = $1 if /_"(.*)"/;
+	}
+	close DESC;	
 }
