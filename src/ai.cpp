@@ -222,11 +222,27 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	return new ai(info);
 }
 
-ai::ai(ai_interface::info& info)
-	   : ai_interface(info), threats_found_(false), disp_(info.disp),
-	     map_(info.map), gameinfo_(info.gameinfo), units_(info.units),
-	     teams_(info.teams), team_num_(info.team_num),
-	     state_(info.state), consider_combat_(true), attack_depth_(0)
+ai::ai(ai_interface::info& info) :
+	ai_interface(info), 
+	defensive_position_cache_(),
+	threats_found_(false), 
+	attacks_(),
+	disp_(info.disp),
+	map_(info.map), 
+	gameinfo_(info.gameinfo), 
+	units_(info.units),
+	teams_(info.teams), 
+	team_num_(info.team_num),
+	state_(info.state), 
+	consider_combat_(true),
+	additional_targets_(),
+	unit_movement_scores_(),
+	not_recommended_units_(),
+	unit_combat_scores_(),
+	keeps_(),
+	avoid_(),
+	unit_stats_cache_(),
+	attack_depth_(0)
 {}
 
 bool ai::recruit_usage(const std::string& usage)

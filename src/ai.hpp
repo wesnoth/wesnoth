@@ -43,6 +43,13 @@ public:
 	};
 
 	struct defensive_position {
+		defensive_position() :
+			loc(),
+			chance_to_hit(0),
+			vulnerability(0.0),
+			support(0.0)
+			{}
+
 		location loc;
 		int chance_to_hit;
 		double vulnerability, support;
