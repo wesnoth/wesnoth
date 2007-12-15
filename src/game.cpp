@@ -467,7 +467,12 @@ bool game_controller::play_test()
 	state_.campaign_type = "test";
 	state_.scenario = "test";
 
-	refresh_game_cfg();
+	try {
+		refresh_game_cfg();
+	} catch(config::error&) {
+		reset_game_cfg();
+		return false;
+	}
 
 	try {
 		upload_log nolog(false);
@@ -719,7 +724,12 @@ bool game_controller::load_game()
 			defines_map_[*i] = preproc_define();
 		}
 
-		refresh_game_cfg();
+		try {
+			refresh_game_cfg();
+		} catch(config::error&) {
+			reset_game_cfg();
+			return false;
+		}
 
 		state_ = game_state(units_data_,cfg);
 
@@ -1797,7 +1807,12 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 			defines_map_["MEDIUM"] = preproc_define();
 		}
 
-		refresh_game_cfg();
+		try {
+			refresh_game_cfg();
+		} catch(config::error&) {
+			reset_game_cfg();
+			return;
+		}
 	}
 
 	const binary_paths_manager bin_paths_manager(game_config_);
