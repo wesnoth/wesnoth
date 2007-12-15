@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2007-12-11 17:17+0100\n"
-"PO-Revision-Date: 2007-12-13 22:22+0100\n"
+"PO-Revision-Date: 2007-12-15 15:28+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -123,7 +123,7 @@ msgstr "Définit la valeur de bits par pixel (couleurs). Exemple : B<--bpp 32>"
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<--compress>I<\\ infile\\ outfile>"
-msgstr "B<--compress>I<\\ fichier d'entrée\\ fichier de sortie>"
+msgstr "B<--compress>I<\\ fichier_d'entrée\\ fichier_de_sortie>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:55
@@ -131,8 +131,8 @@ msgid ""
 "compresses a savefile (I<infile>)  that is in text WML format into binary "
 "WML format (I<outfile>)."
 msgstr ""
-"Compresse une sauvegarde au format texte WML (I<fichier d'entrée>) en format "
-"binaire WML (I<fichier de sortie>)."
+"Compresse une sauvegarde au format texte WML (I<fichier_d'entrée>) en format "
+"binaire WML (I<fichier_de_sortie>)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:55
@@ -156,7 +156,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:60
 #, no-wrap
 msgid "B<--decompress>I<\\ infile\\ outfile>"
-msgstr "B<--decompress>I<\\ fichier d'entrée\\ fichier de sortie>"
+msgstr "B<--decompress>I<\\ fichier_d'entrée\\ fichier_de_sortie>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:66
@@ -164,8 +164,8 @@ msgid ""
 "decompresses a savefile (I<infile>)  that is in binary WML format into text "
 "WML format (I<outfile>)."
 msgstr ""
-"Décompresse une sauvegarde au format binaire WML (I<fichier d'entrée>) en "
-"format texte WML (I<fichier de sortie>)."
+"Décompresse une sauvegarde au format binaire WML (I<fichier_d'entrée>) en "
+"format texte WML (I<fichier_de_sortie>)."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:66
@@ -197,7 +197,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:73
 #, no-wrap
 msgid "B<--gunzip>I<\\ infile.gz>"
-msgstr "B<--gunzip>I<\\ fichier d'entrée.gz>"
+msgstr "B<--gunzip>I<\\ fichier_d'entrée.gz>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:79
@@ -206,13 +206,13 @@ msgid ""
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
 "Décompresse une sauvegarde qui est un fichier au format gzip et la place "
-"dans un fichier sans l'extension .gz. (I<fichier d'entrée.gz>) sera effacé."
+"dans un fichier sans l'extension .gz. (I<fichier_d'entrée.gz>) sera effacé."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:79
 #, no-wrap
 msgid "B<--gzip>I<\\ infile>"
-msgstr "B<--gzip>I<\\ fichier d'entrée>"
+msgstr "B<--gzip>I<\\ fichier_d'entrée>"
 
 # type: Plain text
 #: ../../doc/man/wesnoth.6:85
@@ -221,7 +221,7 @@ msgid ""
 "I<infile>."
 msgstr ""
 "Compresse une sauvegarde au format gzip et la place dans "
-"I<fichier d'entrée.gz> et efface I<fichier d'entrée>."
+"I<fichier d'entrée.gz> et efface I<fichier_d'entrée>."
 
 # type: TP
 #: ../../doc/man/wesnoth.6:85 ../../doc/man/wesnothd.6:55
