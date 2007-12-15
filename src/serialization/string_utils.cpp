@@ -527,17 +527,20 @@ int byte_size_from_utf8_first(unsigned char ch)
 	return count;
 }
 
-utf8_iterator::utf8_iterator(const std::string& str)
+utf8_iterator::utf8_iterator(const std::string& str) : 
+	current_char(0),
+	string_end(str.end()),
+	current_substr(std::make_pair(str.begin(), str.begin()))
 {
-	current_substr.first = str.begin();
-	string_end = str.end();
 	update();
 }
 
-utf8_iterator::utf8_iterator(std::string::const_iterator const &beg, std::string::const_iterator const &end)
+utf8_iterator::utf8_iterator(std::string::const_iterator const &beg, 
+		std::string::const_iterator const &end) :
+	current_char(0),
+	string_end(end),
+	current_substr(std::make_pair(beg, beg))
 {
-	current_substr.first = beg;
-	string_end = end;
 	update();
 }
 
