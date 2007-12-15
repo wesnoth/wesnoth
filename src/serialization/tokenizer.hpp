@@ -25,6 +25,12 @@ class config;
 
 struct token
 {
+	token() :
+		type(END),
+		leading_spaces(),
+		value()
+		{}
+
 	enum token_type {
 		STRING,
 		QSTRING,
