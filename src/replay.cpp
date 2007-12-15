@@ -1026,6 +1026,8 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				replay::throw_error("no destination/source found in attack\n");
 			}
 
+			//we must get locations by value instead of by references, because the iterators
+			//may become invalidated later
 			const gamemap::location src(*source, game_events::get_state_of_game());
 			const gamemap::location dst(*destination, game_events::get_state_of_game());
 

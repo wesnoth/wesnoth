@@ -1071,7 +1071,19 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	}
 }
 
-void ai_interface::attack_enemy(const location& u, const location& target, int weapon, int def_weapon)
+//! This function should be called to attack an enemy.
+//!
+//! @param u            The location of the attacking unit. (Note this shouldn't
+//!                     be a reference since attack::attack() can invalidate the
+//!                     unit_map and references to the map are also invalid then.)
+//! @param target       The location of the target unit. This unit must be in 
+//!                     range of the attacking unit's weapon. (See note at param u.)
+//! @param weapon       The number of the weapon (0-based) which should be used 
+//!                     by the attacker. (It must be a valid weapon of the attacker.)
+//! @param def_weapon   The number of the weapon (0-based) which should be used 
+//!                     by the defender. (It must be a valid weapon of the defender.)
+void ai_interface::attack_enemy(const location u, 
+		const location target, int weapon, int def_weapon)
 {
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;

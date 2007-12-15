@@ -44,6 +44,9 @@ Version 1.3.12+svn:
      * The MP server can send gzipped data depending on a hidden parameter 
        which is off by default.
      * The campaign server sends and receives binary_wml.
+   * fixed a crash when the attacker dies while performing a desparate attack.
+     The crash seemed only to happen under Windows but valgrind also
+     complained (bug #10496)
 
 Version 1.3.12:
  * campaigns:
