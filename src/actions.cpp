@@ -256,14 +256,14 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 	// A Python AI can send an invalid weapon and crash Wesnoth.
 	// Haven't found a way for the Python API to prevent this problem.
 	// So instead of segfaulting it sends an assertion failure.
-	WML_ASSERT(attacker_weapon < static_cast<int>(attacker.attacks().size()),
+	VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
 		_("An invalid weapon is selected, possibly by the Python AI."));
 
 	if (attacker_weapon == -1 && attacker.attacks().size() == 1 && attacker.attacks()[0].attack_weight() > 0 )
 		attacker_weapon = 0;
 
 	if (attacker_weapon == -1) {
-		WML_ASSERT(defender_weapon == -1,
+		VALIDATE(defender_weapon == -1,
 			_("An invalid weapon is send, possibly due to the Python AI."));
 
 		attacker_weapon = choose_attacker_weapon(attacker, defender, map, teams, units,
@@ -279,12 +279,12 @@ battle_context::battle_context(const gamemap& map, const std::vector<team>& team
 		const attack_type *adef = NULL;
 		const attack_type *ddef = NULL;
 		if (attacker_weapon >= 0) {
-			WML_ASSERT(attacker_weapon < static_cast<int>(attacker.attacks().size()),
+			VALIDATE(attacker_weapon < static_cast<int>(attacker.attacks().size()),
 				_("An invalid weapon is selected, possibly by the Python AI."));
 			adef = &attacker.attacks()[attacker_weapon];
 		}
 		if (defender_weapon >= 0) {
-			WML_ASSERT(defender_weapon < static_cast<int>(defender.attacks().size()),
+			VALIDATE(defender_weapon < static_cast<int>(defender.attacks().size()),
 				_("An invalid weapon is selected, possibly by the Python AI."));
 			ddef = &defender.attacks()[defender_weapon];
 		}

@@ -698,7 +698,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	log_scope("map generation");
 
 	// Odd widths are nasty
-	WML_ASSERT(is_even(width), _("Random maps with an odd width aren't supported."));
+	VALIDATE(is_even(width), _("Random maps with an odd width aren't supported."));
 
 	int ticks = SDL_GetTicks();
 

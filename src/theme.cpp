@@ -308,7 +308,7 @@ theme::tborder::tborder(const config& cfg) :
 	border_image_bottom_odd(cfg["border_image_bottom_odd"]),
 	border_image_bottom_even(cfg["border_image_bottom_even"])
 {
-	WML_ASSERT(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
+	VALIDATE(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }
 
 SDL_Rect& theme::object::location(const SDL_Rect& screen) const

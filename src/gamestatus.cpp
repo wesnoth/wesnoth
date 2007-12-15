@@ -251,7 +251,7 @@ void gamestatus::write(config& cfg) const
 //! Correct time is calculated from current time.
 time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 {
-	WML_ASSERT(times_.size(), _("No time of day has been defined."));
+	VALIDATE(times_.size(), _("No time of day has been defined."));
 
 	int time = (currentTime_ + nturn  - turn())% times_.size();
 
@@ -266,7 +266,7 @@ time_of_day gamestatus::get_time_of_day_turn(int nturn) const
 //! ~eturns time of day object for current turn.
 time_of_day gamestatus::get_time_of_day() const
 {
-	WML_ASSERT(times_.size(), _("No time of day has been defined."));
+	VALIDATE(times_.size(), _("No time of day has been defined."));
 
 	return times_[currentTime_];
 }
@@ -286,7 +286,7 @@ time_of_day gamestatus::get_time_of_day(int illuminated, const gamemap::location
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
 		if(i->hexes.count(loc) == 1) {
 
-			WML_ASSERT(i->times.size(), _("No time of day has been defined."));
+			VALIDATE(i->times.size(), _("No time of day has been defined."));
 
 			res = i->times[(n_turn-1)%i->times.size()];
 			break;
@@ -371,7 +371,7 @@ void gamestatus::set_start_ToD(config &level, game_state* s_o_g)
 
 void gamestatus::next_time_of_day()
 {
-	WML_ASSERT(times_.size(), _("No time of day has been defined."));
+	VALIDATE(times_.size(), _("No time of day has been defined."));
 
 	currentTime_ = (currentTime_ + 1)%times_.size();
 }

@@ -306,7 +306,7 @@ double shortest_path_calculator::cost(const gamemap::location& /*src*/,const gam
 
 	int const base_cost = unit_.movement_cost(map_[loc]);
 	// Pathfinding heuristic: the cost must be at least 1
-	WML_ASSERT(base_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
+	VALIDATE(base_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
 	if (total_movement_ < base_cost)
 		return getNoPathValue();
 

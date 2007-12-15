@@ -78,7 +78,7 @@ terrain_type::terrain_type(const config& cfg) :
 		editor_image_ = minimap_image_;
 	}
 
-	WML_ASSERT(number_ != t_translation::NONE_TERRAIN, _("'string' is a mandatory key in '[terrain]'."));
+	VALIDATE(number_ != t_translation::NONE_TERRAIN, _("'string' is a mandatory key in '[terrain]'."));
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);

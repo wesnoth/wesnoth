@@ -154,7 +154,7 @@ unit_race::unit_race(const config& cfg) :
 {
 	//! @todo FIXME remove support after branching 1.4.
 	//! 2 versions with lg::wml_error
-	//! WML_ASSERT after that
+	//! VALIDATE after that
 	if(id_.empty()) {
 		// This code is only for compatibility with old race defs.
 		id_ = (cfg["name"]);

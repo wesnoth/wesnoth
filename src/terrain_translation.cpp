@@ -678,7 +678,7 @@ static t_layer string_to_layer_(const std::string& str)
 
 	// Validate the string (Note at the moment the error is caught at another
 	// location and sending a lg::wml_error() but that can be replaced later)
-	WML_ASSERT(str.size() <= 4, _("A terrain with a string with more "
+	VALIDATE(str.size() <= 4, _("A terrain with a string with more "
 		"than 4 characters has been found, the affected terrain is :") + str);
 
 	// The conversion to int puts the first char

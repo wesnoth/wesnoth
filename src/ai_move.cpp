@@ -73,7 +73,7 @@ struct move_cost_calculator : cost_calculator
 		if (units_.count(loc))
 			res *= 4.0;
 
-		WML_ASSERT(res > 0, 
+		VALIDATE(res > 0, 
 			_("Movement cost is 0, probably a terrain with movement cost of 0."));
 		return res;
 	}

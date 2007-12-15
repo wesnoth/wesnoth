@@ -86,12 +86,12 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 						symbols["terrain"] = t_translation::write_letter(terrain);
 						const std::string msg = 
 							vgettext("Could not get image for terrain: $terrain.", symbols);
-						WML_ASSERT(false, msg);
+						VALIDATE(false, msg);
 					}
 
 					surf = surface(scale_surface_blended(tile,scale,scale));
 
-					WML_ASSERT(surf != NULL, _("Error creating or aquiring an image."));
+					VALIDATE(surf != NULL, _("Error creating or aquiring an image."));
 
 					i = normal_cache->insert(cache_map::value_type(terrain,surf)).first;
 				}
@@ -103,7 +103,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 					fog_cache->insert(cache_map::value_type(terrain,surf));
 				}
 
-				WML_ASSERT(surf != NULL, _("Error creating or aquiring an image."));
+				VALIDATE(surf != NULL, _("Error creating or aquiring an image."));
 
 				// we need a balanced shift up and down of the hexes.
 				// if not, only the bottom half-hexes are clipped

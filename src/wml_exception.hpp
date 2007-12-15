@@ -34,7 +34,7 @@ class display;
   #define __FUNCTION__ "(Unspecified)"
  #endif
 #endif
-#define WML_ASSERT(cond, message) if(!(cond)) wml_exception(#cond, __FILE__, __LINE__, __FUNCTION__, message)
+#define VALIDATE(cond, message) if(!(cond)) wml_exception(#cond, __FILE__, __LINE__, __FUNCTION__, message)
 
 //! Helper function, don't call this directly.
 void wml_exception(const char* cond, const char* file, 
