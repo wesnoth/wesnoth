@@ -47,6 +47,9 @@ Version 1.3.12+svn:
    * fixed a crash when the attacker dies while performing a desparate attack.
      The crash seemed only to happen under Windows but valgrind also
      complained (bug #10496)
+   * loading a content with invalid wml does not terminate the game
+   * increased the precission off the mouse in the top row of the editor
+     (closes bug #10219)
 
 Version 1.3.12:
  * campaigns:

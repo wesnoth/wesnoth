@@ -183,6 +183,14 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 	// adjust for the border
 	x -= static_cast<int>(theme_.border().size * hex_width());
 	y -= static_cast<int>(theme_.border().size * hex_size());
+	// The editor can modify the border and this will result in a negative y
+	// value. Instead of adding extra cases we just shift the hex. Since the
+	// editor doesn't use the direction this is no problem.
+	const int offset = y < 0 ? 1 : 0;
+	if(offset) {
+		x += hex_width();
+		y += hex_size();
+	}
 	const int s = hex_size();
 	const int tesselation_x_size = hex_width() * 2;
 	const int tesselation_y_size = s;
@@ -197,11 +205,6 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 	if (y_mod < tesselation_y_size / 2) {
 		if ((x_mod * 2 + y_mod) < (s / 2)) {
 			x_modifier = -1;
-			y_modifier = -1;
-		// @todo this hack allows the editor to modify the odd border tiles
-		// but the selection still has glitches.
-		} else if (y_mod < 0 && (x_mod * 2 - y_mod) < (s * 3 / 2)) {			
-			x_modifier = 0;
 			y_modifier = -1;
 		} else if ((x_mod * 2 - y_mod) < (s * 3 / 2)) {
 			x_modifier = 0;
@@ -224,7 +227,7 @@ const gamemap::location display::pixel_position_to_hex(int x, int y,
 		}
 	}
 
-	const gamemap::location res(x_base + x_modifier, y_base + y_modifier);
+	const gamemap::location res(x_base + x_modifier - offset, y_base + y_modifier - offset);
 
 	if(nearest_hex != NULL) {
 		// Our x and y use the map_area as reference.
