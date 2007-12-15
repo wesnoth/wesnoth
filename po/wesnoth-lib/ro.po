@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-10 15:50+0100\n"
+"POT-Creation-Date: 2007-12-15 14:48+0100\n"
 "PO-Revision-Date: 2005-11-12 21:22+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -222,25 +222,25 @@ msgstr ""
 msgid "Void"
 msgstr ""
 
-#: src/construct_dialog.cpp:139 src/construct_dialog.cpp:146
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:423
 msgid "OK"
 msgstr ""
 
-#: src/construct_dialog.cpp:142
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr ""
 
-#: src/construct_dialog.cpp:143
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr ""
 
-#: src/construct_dialog.cpp:147 src/construct_dialog.cpp:150
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:422
 msgid "Cancel"
 msgstr ""
 
-#: src/construct_dialog.cpp:153
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr ""
 
@@ -360,6 +360,10 @@ msgstr ""
 
 #: src/filechooser.cpp:175
 msgid "Creation of the directory failed."
+msgstr ""
+
+#: src/game_preferences.cpp:158
+msgid "No server has been defined."
 msgstr ""
 
 #: src/game_preferences.cpp:222
@@ -1093,11 +1097,11 @@ msgstr ""
 msgid "User-Command#3"
 msgstr ""
 
-#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
+#: src/hotkeys.cpp:502 src/hotkeys.cpp:822
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
+#: src/hotkeys.cpp:502 src/hotkeys.cpp:822
 msgid "Quit"
 msgstr ""
 
@@ -1204,7 +1208,7 @@ msgstr ""
 msgid "Choose Resolution"
 msgstr ""
 
-#: src/show_dialog.cpp:370
+#: src/show_dialog.cpp:369
 msgid "Error"
 msgstr ""
 
@@ -1216,4 +1220,14 @@ msgstr ""
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
+msgstr ""
+
+#: src/wml_exception.cpp:59
+msgid ""
+"An error due to possible invalid WML occured\n"
+"The error message is :"
+msgstr ""
+
+#: src/wml_exception.cpp:61
+msgid "When reporting the bug please include the following error message :"
 msgstr ""

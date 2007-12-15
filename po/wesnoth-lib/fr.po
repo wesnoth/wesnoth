@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-10 15:50+0100\n"
+"POT-Creation-Date: 2007-12-15 14:48+0100\n"
 "PO-Revision-Date: 2007-12-13 20:51+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -224,25 +224,25 @@ msgstr "Mur de caverne"
 msgid "Void"
 msgstr "Vide"
 
-#: src/construct_dialog.cpp:139 src/construct_dialog.cpp:146
+#: src/construct_dialog.cpp:138 src/construct_dialog.cpp:145
 #: src/editor/editor_dialogs.cpp:423
 msgid "OK"
 msgstr "Ok"
 
-#: src/construct_dialog.cpp:142
+#: src/construct_dialog.cpp:141
 msgid "Yes"
 msgstr "Oui"
 
-#: src/construct_dialog.cpp:143
+#: src/construct_dialog.cpp:142
 msgid "No"
 msgstr "Non"
 
-#: src/construct_dialog.cpp:147 src/construct_dialog.cpp:150
+#: src/construct_dialog.cpp:146 src/construct_dialog.cpp:149
 #: src/editor/editor_dialogs.cpp:101 src/editor/editor_dialogs.cpp:422
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/construct_dialog.cpp:153
+#: src/construct_dialog.cpp:152
 msgid "Close"
 msgstr "Fermer"
 
@@ -364,6 +364,10 @@ msgstr "Nom : "
 #: src/filechooser.cpp:175
 msgid "Creation of the directory failed."
 msgstr "La création du répertoire a échoué."
+
+#: src/game_preferences.cpp:158
+msgid "No server has been defined."
+msgstr ""
 
 #: src/game_preferences.cpp:222
 msgid "player"
@@ -1108,11 +1112,11 @@ msgstr "Commande utilisateur N°2"
 msgid "User-Command#3"
 msgstr "Commande utilisateur N°3"
 
-#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
+#: src/hotkeys.cpp:502 src/hotkeys.cpp:822
 msgid "Do you really want to quit?"
 msgstr "Voulez-vous réellement quitter ?"
 
-#: src/hotkeys.cpp:492 src/hotkeys.cpp:812
+#: src/hotkeys.cpp:502 src/hotkeys.cpp:822
 msgid "Quit"
 msgstr "Quitter"
 
@@ -1230,7 +1234,7 @@ msgstr "Il n'y a pas d'autres modes vidéo disponibles"
 msgid "Choose Resolution"
 msgstr "Choisissez une résolution"
 
-#: src/show_dialog.cpp:370
+#: src/show_dialog.cpp:369
 msgid "Error"
 msgstr "Erreur"
 
@@ -1245,6 +1249,16 @@ msgstr ""
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Terrain non valide. Il s'agit probablement du format v1.2. Terrain : "
+
+#: src/wml_exception.cpp:59
+msgid ""
+"An error due to possible invalid WML occured\n"
+"The error message is :"
+msgstr ""
+
+#: src/wml_exception.cpp:61
+msgid "When reporting the bug please include the following error message :"
+msgstr ""
 
 #~ msgid "Save Replays"
 #~ msgstr "Sauvegarder les films"
