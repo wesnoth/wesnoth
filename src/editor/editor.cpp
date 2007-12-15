@@ -727,13 +727,17 @@ void map_editor::edit_resize() {
 	if(resize_dialog(gui_, width, height, x_offset, y_offset, do_expand)) {
 
 		try {
+			// we need the old map data for the undo so store it
+			// before the map gets modified.
+			const std::string old_data = map_.write();
+
 			const std::string resized_map =
 				resize_map(map_, width, height, x_offset, y_offset,
 				do_expand, palette_.selected_bg_terrain());
 
 			if (resized_map != "") {
 				map_undo_action action;
-				action.set_map_data(map_.write(), resized_map);
+				action.set_map_data(old_data, resized_map);
 				save_undo_action(action);
 				throw new_map_exception(resized_map, filename_, from_scenario_);
 			}
