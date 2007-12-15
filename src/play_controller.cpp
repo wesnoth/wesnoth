@@ -785,7 +785,11 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			for (unsigned int turn = status_.turn(); turn != 0; turn--) {
 				std::string name = gamestate_.label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (save_game_exists(name)) {
-					newsaves.push_back(name);
+					if(preferences::compress_saves()) {
+						newsaves.push_back(name + ".gz");
+					} else {
+						newsaves.push_back(name);
+					}
 					if (turn == 1) {
 						newitems.push_back(_("Back to start"));
 					} else {
