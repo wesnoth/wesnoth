@@ -726,6 +726,10 @@ bool save_game_exists(const std::string& name)
 	std::string fname = name;
 	replace_space2underbar(fname);
 
+	if(preferences::compress_saves()) {
+		fname += ".gz";
+	}
+
 	return file_exists(get_saves_dir() + "/" + fname);
 }
 
