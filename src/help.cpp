@@ -174,6 +174,7 @@ struct section {
 	std::string title, id;
 	topic_list topics;
 	section_list sections;
+	int level;
 };
 
 
@@ -265,6 +266,9 @@ private:
 	/// visible items are not updated.
 	void contract(const section &sec);
 
+	/// Return the string to use as the prefix for the icon part of the
+	/// menu-string at the specified level.
+	std::string indented_icon(const std::string &icon, const unsigned level);
 	/// Return the string to use as the menu-string for sections at the
 	/// specified level.
 	std::string get_string_to_show(const section &sec, const unsigned level);
@@ -474,8 +478,10 @@ private:
 // FIXME: Must generalize the "append" behavior used for sections
 static void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 static std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-static std::string generate_topic_text(const std::string &generator);
+static std::string generate_topic_text(const std::string &generator, const config *help_cfg, const std::vector<topic>& generated_topics);
 static std::string generate_about_text();
+static std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
+static std::string generate_contents_links(const std::vector<topic>& topics);
 static void generate_races_sections(const config *help_cfg, section &sec, int level);
 static std::vector<topic> generate_unit_topics(const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
@@ -571,6 +577,7 @@ namespace {
 	const std::string topic_img = "help/topic.png";
 	const std::string closed_section_img = "help/closed_section.png";
 	const std::string open_section_img = "help/open_section.png";
+	const std::string indentation_img = "help/indentation.png";
 	// The topic to open by default when opening the help dialog.
 	const std::string default_show_topic = "introduction_topic";
 	const std::string unknown_unit_topic = ".unknown_unit";
@@ -844,6 +851,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 	}
 	else if (section_cfg != NULL) {
 		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
+		sec.level = level;
 		const std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"];
 		if (level != 0) {
 			if (!is_valid_id(id)) {
@@ -896,6 +904,9 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		  throw parse_error(ss.str());
 		}
 
+		std::vector<topic> generated_topics =
+		generate_topics(sort_generated,(*section_cfg)["generator"]);
+
 		const std::vector<std::string> topics_id = utils::quoted_split((*section_cfg)["topics"]);
 		std::vector<topic> topics;
 
@@ -904,7 +915,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
 			if (topic_cfg != NULL) {
 				std::string text = (*topic_cfg)["text"];
-				text += generate_topic_text((*topic_cfg)["generator"]);
+				text += generate_topic_text((*topic_cfg)["generator"], help_cfg, generated_topics);
 				topic child_topic((*topic_cfg)["title"], (*topic_cfg)["id"], text);
 				if (!is_valid_id(child_topic.id)) {
 					std::stringstream ss;
@@ -920,9 +931,6 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 				throw parse_error(ss.str());
 			}
 		}
-
-		std::vector<topic> generated_topics =
-		generate_topics(sort_generated,(*section_cfg)["generator"]);
 
 		if (sort_topics) {
 			std::sort(topics.begin(),topics.end(), title_less());
@@ -982,13 +990,22 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 	}
 }
 
-std::string generate_topic_text(const std::string &generator)
+std::string generate_topic_text(const std::string &generator, const config *help_cfg, const std::vector<topic>& generated_topics)
 {
 	std::string empty_string = "";
 	if (generator == "") {
 		return empty_string;
 	} else if (generator == "about") {
 		return generate_about_text();
+	} else {
+		std::vector<std::string> parts = utils::split(generator, ':');
+		if (parts.size()>1 && parts[0] == "contents") {
+			if (parts[1] == "generated") {
+				return generate_contents_links(generated_topics);
+			} else {
+				return generate_contents_links(parts[1], help_cfg);
+			}
+		}
 	}
 	return empty_string;
 }
@@ -1333,7 +1350,7 @@ public:
 			race_name = _ ("race^Miscellaneous");
 		}
 		ss << _("Race: ");
-		ss << "<ref>dst='" << escape(".race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
+		ss << "<ref>dst='" << escape("..race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
 		ss << "\n";
 
 		// Print the abilities the units has, cross-reference them
@@ -1620,7 +1637,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	}
 
 	//generate the hidden race description topic
-	std::string race_id = ".race_"+race;
+	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
 	const race_map::const_iterator race_it = game_info->races.find(race);
@@ -1670,6 +1687,58 @@ std::string generate_about_text()
 	return text;
 }
 
+std::string generate_contents_links(const std::string& section_name, config const *help_cfg)
+{
+		std::stringstream res;
+
+		config const *section_cfg = help_cfg->find_child("section", "id", section_name);
+		if (section_cfg == NULL) {
+			return res.str();
+		}
+
+		std::vector<std::string> topics = utils::quoted_split((*section_cfg)["topics"]);
+
+		// we use an intermediate structure to allow a conditional sorting
+		typedef std::pair<std::string,std::string> link;
+		std::vector<link> topics_links;
+
+		std::vector<std::string>::iterator t;
+		// Find all topics in this section.
+		for (t = topics.begin(); t != topics.end(); t++) {
+			config const *topic_cfg = help_cfg->find_child("topic", "id", *t);
+			if (topic_cfg != NULL) {
+				std::string id = (*topic_cfg)["id"];
+				if (!id.empty() && id[0] != '.')
+					topics_links.push_back(link((*topic_cfg)["title"], id));
+			}
+		}
+
+		if ((*section_cfg)["sort_topics"] == "yes") {
+			std::sort(topics_links.begin(),topics_links.end());
+		}
+
+		std::vector<link>::iterator l;
+		for (l = topics_links.begin(); l != topics_links.end(); l++) {
+			std::string link =  "<ref>text='" + escape(l->first) + "' dst='" + escape(l->second) + "'</ref>";
+			res << link <<"\n";
+		}
+
+		return res.str();
+}
+
+std::string generate_contents_links(const std::vector<topic>& topics)
+{
+		std::stringstream res;
+
+		std::vector<topic>::const_iterator t;
+		for (t = topics.begin(); t != topics.end(); t++) {
+			std::string link =  "<ref>text='" + escape(t->title) + "' dst='" + escape(t->id) + "'</ref>";
+			res << link <<"\n";
+		}
+
+		return res.str();
+}
+
 bool topic::operator==(const topic &t) const
 {
 	return t.id == id;
@@ -1686,7 +1755,7 @@ section::~section()
 }
 
 section::section(const section &sec)
-	: title(sec.title), id(sec.id), topics(sec.topics)
+	: title(sec.title), id(sec.id), topics(sec.topics), level(sec.level)
 {
 	std::transform(sec.sections.begin(), sec.sections.end(),
 				   std::back_inserter(sections), create_section());
@@ -1696,6 +1765,7 @@ section& section::operator=(const section &sec)
 {
 	title = sec.title;
 	id = sec.id;
+	level = sec.level;
 	std::copy(sec.topics.begin(), sec.topics.end(), std::back_inserter(topics));
 	std::transform(sec.sections.begin(), sec.sections.end(),
 				   std::back_inserter(sections), create_section());
@@ -1763,7 +1833,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	}
 	section_list::const_iterator sec_it;
 	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); sec_it++) {
-		const std::string vis_string = get_string_to_show(*(*sec_it), level);
+		const std::string vis_string = get_string_to_show(*(*sec_it), level + 1);
 		visible_items_.push_back(visible_item(*sec_it, vis_string));
 		if (expanded(*(*sec_it))) {
 			update_visible_items(*(*sec_it), level + 1);
@@ -1772,37 +1842,35 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	topic_list::const_iterator topic_it;
 	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); topic_it++) {
 		if (topic_it->id.empty() || (topic_it->id)[0] != '.') {
-			const std::string vis_string = get_string_to_show(*topic_it, level);
+			const std::string vis_string = get_string_to_show(*topic_it, level + 1);
 			visible_items_.push_back(visible_item(&(*topic_it), vis_string));
 		}
 	}
 }
 
+std::string help_menu::indented_icon(const std::string& icon, const unsigned level) {
+	std::stringstream to_show;
+	for (unsigned i = 1; i < level; i++) 	{
+		to_show << IMAGE_PREFIX << indentation_img << IMG_TEXT_SEPARATOR;
+	}
+
+	to_show << IMAGE_PREFIX << icon;
+	return to_show.str();
+}
 
 std::string help_menu::get_string_to_show(const section &sec, const unsigned level)
 {
 	std::stringstream to_show;
-	std::string pad_string;
-	// Indentation is represented as three spaces per level.
-	pad_string.resize(level * 3, ' ');
-	to_show << pad_string << IMG_TEXT_SEPARATOR << IMAGE_PREFIX;
-	if (expanded(sec)) {
-		to_show << open_section_img;
-	}
-	else {
-		to_show << closed_section_img;
-	}
-	to_show << IMG_TEXT_SEPARATOR << sec.title;
+	to_show << indented_icon(expanded(sec) ? open_section_img : closed_section_img, level)
+		 << IMG_TEXT_SEPARATOR << sec.title;
 	return to_show.str();
 }
 
 std::string help_menu::get_string_to_show(const topic &topic, const unsigned level)
 {
-	std::string pad_string;
-	pad_string.resize(level * 3, ' ');
 	std::stringstream to_show;
-	to_show << pad_string << IMG_TEXT_SEPARATOR << IMAGE_PREFIX << topic_img
-	        << IMG_TEXT_SEPARATOR << topic.title;
+	to_show <<  indented_icon(topic_img, level)
+		<< IMG_TEXT_SEPARATOR << topic.title;
 	return to_show.str();
 }
 
@@ -1811,7 +1879,10 @@ bool help_menu::select_topic_internal(const topic &t, const section &sec)
 	topic_list::const_iterator tit =
 		std::find(sec.topics.begin(), sec.topics.end(), t);
 	if (tit != sec.topics.end()) {
-		expand(sec);
+		// topic starting with ".." are assumed as rooted in the parent section
+		// and so only expand the parent when selected
+		if (t.id.size()<2 || t.id[0] != '.' || t.id[1] != '.')
+			expand(sec);
 		return true;
 	}
 	section_list::const_iterator sit;
@@ -1846,15 +1917,34 @@ void help_menu::select_topic(const topic &t)
 int help_menu::process()
 {
 	int res = menu::process();
+	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+
 	if (!visible_items_.empty() &&
             static_cast<size_t>(res) < visible_items_.size()) {
 
 		selected_item_ = visible_items_[res];
-		if (selected_item_.sec != NULL) {
-			// Open or close a section if it is clicked.
-			expanded(*selected_item_.sec) ? contract(*selected_item_.sec) : expand(*selected_item_.sec);
-			update_visible_items(toplevel_);
-			display_visible_items();
+		const section* sec = selected_item_.sec;
+		if (sec != NULL) {
+			// Check how we click on the section
+			int x = mousex - menu::location().x;
+
+			const std::string icon_img = expanded(*sec) ? open_section_img : closed_section_img;
+			// we remove the right tickness (ne present bewteen icon and text)
+			int text_start = style_->item_size(indented_icon(icon_img, sec->level)).w - style_->get_thickness();
+
+			// NOTE: if you want to forbid click to the left of the icon
+			// also check x >= text_start-image_width(icon_img)
+			if (menu::double_clicked() || x < text_start) {
+				// Open or close a section if we double-click on it
+				// or do simple click on the icon.
+				expanded(*sec) ? contract(*sec) : expand(*sec);
+				update_visible_items(toplevel_);
+				display_visible_items();
+			} else if (x >= text_start){
+				// click on title open the topic associated to this section
+				chosen_topic_ = find_topic(toplevel, ".."+sec->id );
+			}
 		} else if (selected_item_.t != NULL) {
 			/// Choose a topic if it is clicked.
 			chosen_topic_ = selected_item_.t;
