@@ -330,7 +330,10 @@ sub ProcessUnit {
 			$unit{$prop} = $value if $unit{$prop} eq 'null'; # Unless we have a null value stored before
 		}
 		# Abilities, single regular expresion
-	    $unit{abilities} .= lc("$1 ") if (/{ABILITY_(.*?)(_.*)?}/ and $flag == 1);
+	    if (/{ABILITY_(.*?)(_.*)?}/ and $flag == 1) {
+			$unit{abilities} .= lc("$1 "); 
+			$unit{abilities} .= "+4 " if $unit{abilities} =~ /heals\s$/;
+		}
 	    # Soulless units, the stats are in the first {UNIT_BODY...}
 	    if (/^{UNIT_BODY_\w+\s(\w+)\s(\w+)\s(\w+)\s(\w+)/) {
 			$unit{image2} = "units/undead/$1.png>&nbsp;\n<img src=units/undead/$1-drake.png>&nbsp;\n<img src=units/undead/$1-mounted.png>";
@@ -411,7 +414,7 @@ sub ProcessUnit {
 		(my $filename = $unit{id}) =~ s/\s/_/g;
 		$unit{unit_description} =~ s/( _ )?"//g;
 		$unit{num} = $i;
-		$unit{abilities} =~ s/\s/<!-- -->\n<!-- -->/;
+		$unit{abilities} =~ s/\s(?!\+)/<!-- -->\n<!-- -->/;
 		foreach (keys %{ $types{$unit{movement_type}}{defense} }) {
 			$res{$_} = $types{$unit{movement_type}}{defense}{$_} . "%" unless $res{$_};
 		}
@@ -891,10 +894,10 @@ sub TranslateUnits {
 			open (TRANS, ">$unit") or die "Couldn't create $unit: $!\n";
 			
 			while ($line = <UNIT>) {
-				$line = "<p><a href=../index.html>English</a></p>\n" if $line =~/^<p><a href=fr/; # Change links
+				$line = "<p><a href=../index.html>English</a></p>\n" if $line =~/^<p><a href=af/; # Change links
 				if ($line =~/^<p><a href='EXE/) {$line = "" unless ($country =~ /(ca|fr|it)/);}
 				$line = "" if $line =~/^<p><a href='EOM/;
-				$line = "" if $line =~ m|<a href=\w+/index.html>|;
+				$line = "" if $line =~ m|<a href=[a-zA-Z_@]+/index.html>|;
 				$line =~ s/<html lang="en">/<html lang="$country">/; # Change language tag
 				$id = $1 if $line =~ /<!--id=(\d+)-->/;
 				if ($line =~ m/>([^<]+)</g) { # Process the words between html tags
@@ -903,12 +906,12 @@ sub TranslateUnits {
 					}
 					# Descriptions
 					$line = '<p style="font-size: smaller">' . $unit_desc{$unit_id_to_file{$id}} . "</p>\n" if $line =~ (/smaller">[^<]/);
-					
+				
 					$line =~ s/<!-- -->//g; # Remove comments
-					$line =~ s|race\^||; # Remove race^ in case it is not translated
-	
 				}
 				$line =~ s{src=("?)(?=\w)}{src=$1../}g; # Change the links
+				$line =~ s|race\^||; # Remove race^ in case it is not translated
+				s|unit help\^||; # Remove unit help^ in case it is not translated
 				print TRANS $line;
 			}
 			close TRANS;
