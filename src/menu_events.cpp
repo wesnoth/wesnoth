@@ -1065,13 +1065,8 @@ private:
 				redo_stack_.clear();
 				assert(new_unit.type());
 
-				const bool shroud_cleared = clear_shroud(team_num);
-				if(shroud_cleared || new_unit.type()->genders().size() > 1 || new_unit.type()->has_random_traits()) {
-					clear_undo_stack(team_num);
-				} else {
-					undo_stack_.push_back(undo_action(new_unit,loc,RECRUIT_POS));
-				}
-
+				clear_shroud(team_num);
+				clear_undo_stack(team_num);
 
 				gui_->recalculate_minimap();
 				gui_->invalidate_game_status();
