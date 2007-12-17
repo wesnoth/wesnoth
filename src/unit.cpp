@@ -1520,131 +1520,42 @@ const surface unit::still_image(bool scaled) const
 
 void unit::set_standing(const game_display &disp,const gamemap::location& loc, bool with_bars)
 {
-	state_ = STATE_STANDING;
-	start_animation(disp,loc,choose_animation(disp,loc,"standing"),with_bars,true);
-}
-void unit::set_defending(const game_display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num)
-{
-	state_ =  STATE_DEFENDING;
-
-	unit_animation::hit_type hit_type;
-	if(damage >= hitpoints()) {
-		hit_type = unit_animation::KILL;
-	} else if(damage > 0) {
-		hit_type = unit_animation::HIT;
-	}else {
-		hit_type = unit_animation::MISS;
-	}
-	start_animation(disp,loc,choose_animation(disp,loc,"defend",damage,hit_type,attack,secondary_attack,swing_num),true);
+	start_animation(disp,loc,choose_animation(disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
 }
 
-void unit::set_extra_anim(const game_display &disp,const gamemap::location& loc, std::string flag)
-{
-	state_ =  STATE_EXTRA;
-	start_animation(disp,loc,choose_animation(disp,loc,flag),false);
-
-}
-
-void unit::set_attacking(const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num)
-{
-	state_ =  STATE_ATTACKING;
-	unit_animation::hit_type hit_type;
-	if(damage >= hitpoints()) {
-		hit_type = unit_animation::KILL;
-	} else if(damage > 0) {
-		hit_type = unit_animation::HIT;
-	}else {
-		hit_type = unit_animation::MISS;
-	}
-	start_animation(disp,loc,choose_animation(disp,loc,"attack",damage,hit_type,&type,secondary_attack,swing_num),true);
-
-}
-void unit::set_leading(const game_display &disp,const gamemap::location& loc)
-{
-	state_ = STATE_LEADING;
-	start_animation(disp,loc,choose_animation(disp,loc,"leading"),true);
-}
-void unit::set_leveling_in(const game_display &disp,const gamemap::location& loc)
-{
-	state_ = STATE_LEVELIN;
-	start_animation(disp,loc,choose_animation(disp,loc,"levelin"),false);
-}
-void unit::set_leveling_out(const game_display &disp,const gamemap::location& loc)
-{
-	state_ = STATE_LEVELOUT;
-	start_animation(disp,loc,choose_animation(disp,loc,"levelout"),false);
-}
-void unit::set_recruited(const game_display &disp,const gamemap::location& loc)
-{
-	state_ = STATE_RECRUITED;
-	start_animation(disp,loc,choose_animation(disp,loc,"recruited"),false);
-}
-void unit::set_healed(const game_display &disp,const gamemap::location& loc, int healing)
-{
-	state_ = STATE_HEALED;
-	start_animation(disp,loc,choose_animation(disp,loc,"healed",healing),true);
-}
-void unit::set_poisoned(const game_display &disp,const gamemap::location& loc, int damage)
-{
-	state_ = STATE_POISONED;
-	start_animation(disp,loc,choose_animation(disp,loc,"poisoned",damage),true);
-}
-
-void unit::set_teleporting(const game_display &disp,const gamemap::location& loc)
-{
-	state_ = STATE_TELEPORT;
-	start_animation(disp,loc,choose_animation(disp,loc,"teleport"),false);
-}
-
-void unit::set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
-{
-	state_ = STATE_DYING;
-	start_animation(disp,loc,choose_animation(disp,loc,"death",0,unit_animation::KILL,attack,secondary_attack),false);
-}
-void unit::set_healing(const game_display &disp,const gamemap::location& loc,int healing)
-{
-	state_ = STATE_HEALING;
-	start_animation(disp,loc,choose_animation(disp,loc,"healing",healing),true);
-}
-void unit::set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack)
-{
-	state_ = STATE_VICTORIOUS;
-	start_animation(disp,loc,choose_animation(disp,loc,"victory",0,unit_animation::KILL,attack,secondary_attack),true);
-}
 
 void unit::set_walking(const game_display &disp,const gamemap::location& loc)
 {
-	if(state_ == STATE_WALKING && anim_ != NULL && anim_->matches(disp,loc,this,"movement") >unit_animation::MATCH_FAIL) {
+	if(state_ == STATE_ANIM && anim_ != NULL && anim_->matches(disp,loc,this,"movement") >unit_animation::MATCH_FAIL) {
 		return; // finish current animation, don't start a new one
+		// is this the right behaviour ? we might not want that anymore
 	}
-	state_ = STATE_WALKING;
 	start_animation(disp,loc,choose_animation(disp,loc,"movement"),false);
 }
 
 
 void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 {
-	state_ = STATE_IDLING;
-	start_animation(disp,loc,choose_animation(disp,loc,"idling"),true);
+	start_animation(disp,loc,choose_animation(disp,loc,"idling"),true,true,"",0,STATE_FORGET);
 }
 
 void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
 {
-	state_ = STATE_SELECTING;
-	start_animation(disp,loc,choose_animation(disp,loc,"selected"),true);
+	start_animation(disp,loc,choose_animation(disp,loc,"selected"),true,true,"",0,STATE_FORGET);
 }
 
-void unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles)
+void unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
 {
 	if(!animation) {
 		set_standing(disp,loc,with_bars);
 		return ;
 	}
+	state_ =state;
 	draw_bars_ =  with_bars;
 	offset_=0;
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
-	anim_->start_animation(anim_->get_begin_time(),loc, loc.get_direction(facing_), cycles, disp.turbo_speed());
+	anim_->start_animation(anim_->get_begin_time(),loc, loc.get_direction(facing_), cycles,text,text_color, disp.turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp.idle_anim()) {
 		next_idling_ = get_current_animation_tick()
@@ -1656,7 +1567,7 @@ void unit::start_animation(const game_display &disp, const gamemap::location &lo
 
 void unit::restart_animation(const game_display& disp,int start_time, bool cycles) {
 	if(!anim_) return;
-	anim_->start_animation(start_time,gamemap::location::null_location, gamemap::location::null_location, cycles, disp.turbo_speed());
+	anim_->start_animation(start_time,gamemap::location::null_location, gamemap::location::null_location, cycles, "",0,disp.turbo_speed());
 	frame_begin_time_ = start_time -1;
 }
 
@@ -1710,6 +1621,12 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 		frame_begin_time_ = anim_->get_current_frame_begin_time();
 		if(!anim_->sound().empty()) {
 			sound::play_sound(anim_->sound());
+		}
+		if(!anim_->text().first.empty()  ) {
+			game_display::get_singleton()->float_label(loc,anim_->text().first,
+			(anim_->text().second & 0x00FF0000) >> 16,
+			(anim_->text().second & 0x0000FF00) >> 8,
+			(anim_->text().second & 0x000000FF) >> 0);
 		}
 	}
 

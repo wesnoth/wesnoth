@@ -83,7 +83,11 @@ public:
 	static const T void_value_; //MSVC: the frame constructor below requires this to be public
 
 protected:
+friend class unit_animation;
 	int starting_frame_time_;
+        // backward compatibility for teleport anims
+        void remove_frames_until(int starting_time); 
+        void remove_frames_after(int ending_time); 
 
 private:
 	struct frame

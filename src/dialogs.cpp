@@ -159,13 +159,10 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	// to the new unit, then fades back to the normal colour
 
 	if(!gui.video().update_locked()) {
-		u->second.set_leveling_out(gui,u->first);
-		while(!u->second.get_animation()->animation_would_finish()) {
-			gui.invalidate(loc);
-			gui.draw();
-			events::pump();
-			gui.delay(10);
-		}
+		unit_animator animator;
+		animator.add_animation(&u->second,"levelout",u->first);
+		animator.start_animations();
+		animator.wait_for_end();
 	}
 
 	if(choice < options.size()) {
@@ -189,13 +186,10 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	gui.invalidate_unit();
 
 	if(u != units.end() && !gui.video().update_locked()) {
-		u->second.set_leveling_in(gui,u->first);
-		while(!u->second.get_animation()->animation_would_finish()) {
-			gui.invalidate(loc);
-			gui.draw();
-			events::pump();
-			gui.delay(10);
-		}
+		unit_animator animator;
+		animator.add_animation(&u->second,"levelin",u->first);
+		animator.start_animations();
+		animator.wait_for_end();
 		u->second.set_standing(gui,u->first);
 		gui.invalidate(loc);
 		gui.draw();

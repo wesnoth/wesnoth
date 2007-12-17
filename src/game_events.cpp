@@ -2238,16 +2238,11 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 		// We have found a unit that matches the filter
 		if(u != units->end() && ! screen->fogged(u->first)) {
-			screen->highlight_hex(u->first);
 			screen->scroll_to_tile(u->first);
-
-			u->second.set_extra_anim(*screen,u->first,cfg["flag"]);
-			while(!u->second.get_animation()->animation_would_finish()) {
-				screen->invalidate(u->first);
-				screen->draw();
-				events::pump();
-				screen->delay(10);
-			}
+			unit_animator animator;
+			animator.add_animation(&u->second,cfg["flag"],u->first);
+			animator.start_animations();
+			animator.wait_for_end();
 			u->second.set_standing(*screen,u->first);
 			screen->invalidate(u->first);
 			screen->draw();

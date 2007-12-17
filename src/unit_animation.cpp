@@ -369,21 +369,25 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		(**anim_itor)["apply_to"] ="healed";
 		(**anim_itor)["value"]=(**anim_itor)["healing"];
 		animations.push_back(unit_animation(**anim_itor));
+		animations.back().sub_anims_["_healed_sound"] = crude_animation();
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","heal.wav"),true);
 		//lg::wml_error<<"healed animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healed flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30"),"healed",unit_animation::DEFAULT_ANIM));
+	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(255,255,255),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30","","","","","heal.wav"),"healed",unit_animation::DEFAULT_ANIM));
 	// Always have a healed animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
 	const config::child_list& poison_anims = expanded_cfg.get_children("poison_anim");
 	for(anim_itor = poison_anims.begin(); anim_itor != poison_anims.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="poison";
+		(**anim_itor)["apply_to"] ="poisoned";
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
+		animations.back().sub_anims_["_poison_sound"] = crude_animation();
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","poison.ogg"),true);
 		//lg::wml_error<<"poison animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=poison flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30"),"poison",unit_animation::DEFAULT_ANIM));
+	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),240,"1.0","",display::rgb(0,255,0),"0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30","","","","","poison.ogg"),"poisoned",unit_animation::DEFAULT_ANIM));
 	// Always have a poison animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
 	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
@@ -479,12 +483,17 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
 	const config::child_list& teleports = expanded_cfg.get_children("teleport_anim");
 	for(anim_itor = teleports.begin(); anim_itor != teleports.end(); ++anim_itor) {
-		(**anim_itor)["apply_to"] ="teleport";
+		(**anim_itor)["apply_to"] ="pre_teleport";
 		animations.push_back(unit_animation(**anim_itor));
+		animations.back().unit_anim_.remove_frames_after(0);
+		(**anim_itor)["apply_to"] ="post_teleport";
+		animations.push_back(unit_animation(**anim_itor));
+		animations.back().unit_anim_.remove_frames_until(0);
 		//lg::wml_error<<"teleport animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=teleport flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(-20,unit_frame(image::locator(cfg["image"]),40),"teleport",unit_animation::DEFAULT_ANIM));
+	if(with_default) animations.push_back(unit_animation(-150,unit_frame(image::locator(cfg["image"]),150,"1~0"),"pre_teleport",unit_animation::DEFAULT_ANIM));
+	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150,"0~1"),"post_teleport",unit_animation::DEFAULT_ANIM));
 	// Always have a defensive animation
 
 }
@@ -517,6 +526,11 @@ fixed_t unit_animation::crude_animation::highlight_ratio(const float default_val
 double unit_animation::crude_animation::offset(double default_val) const
 {
 	return get_current_frame().offset(get_current_frame_time(),offset_.get_current_element(get_animation_time() - get_begin_time(),default_val))  ; 
+}
+
+std::pair<std::string,Uint32> unit_animation::crude_animation::text() const 
+{
+	return get_current_frame().text();
 }
 
 bool unit_animation::crude_animation::need_update() const
@@ -568,7 +582,6 @@ unit_animation::crude_animation::crude_animation(
 	blend_ratio_ = progressive_double(cfg[frame_string+"blend_ratio"],get_animation_duration());
 	highlight_ratio_ = progressive_double(cfg[frame_string+"alpha"],get_animation_duration());
 	offset_ = progressive_double(cfg[frame_string+"offset"],get_animation_duration());
-
 	if(!halo_.does_not_change() ||
 			!halo_x_.does_not_change() ||
 			!halo_y_.does_not_change() ||
@@ -638,9 +651,14 @@ int unit_animation::get_begin_time() const
 	return result;
 }
 
-void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, double acceleration)
+void unit_animation::start_animation(int start_time,const gamemap::location &src, const gamemap::location &dst, bool cycles, const std::string text, const Uint32 text_color, double acceleration)
 {
-	unit_anim_.start_animation(start_time, src, dst, cycles, acceleration);
+	unit_anim_.start_animation(start_time, src, dst, cycles,acceleration);
+	if(!text.empty()) {
+		crude_animation crude_build;
+		crude_build.add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","",text,text_color),true);
+		sub_anims_["_add_text"] = crude_build;
+	}
 	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.start_animation(start_time,src,dst,cycles,acceleration);
@@ -648,6 +666,7 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 }
 void unit_animation::redraw()
 {
+
 	std::map<std::string,crude_animation>::iterator anim_itor =sub_anims_.begin();
 	for( /*null*/; anim_itor != sub_anims_.end() ; anim_itor++) {
 		anim_itor->second.redraw();
@@ -666,8 +685,17 @@ void unit_animation::crude_animation::redraw()
 
 	update_last_draw_time();
 	const unit_frame& current_frame= get_current_frame();
-	if(!current_frame.sound().empty() &&  get_current_frame_begin_time() != last_frame_begin_time_ ) {
+	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
+		// stuff sthat should be done only once per frame
+		if(!current_frame.sound().empty()  ) {
 			sound::play_sound(current_frame.sound());
+		}
+		if(!current_frame.text().first.empty()  ) {
+			game_display::get_singleton()->float_label(src_,current_frame.text().first,
+			(current_frame.text().second & 0x00FF0000) >> 16,
+			(current_frame.text().second & 0x0000FF00) >> 8,
+			(current_frame.text().second & 0x000000FF) >> 0);
+		}
 	}
 	last_frame_begin_time_ = get_current_frame_begin_time();
 	image::locator image_loc;
@@ -752,4 +780,87 @@ void unit_animation::crude_animation::start_animation(int start_time,
 		src_ = src;
 		dst_ = dst;
 	}
+};
+
+void unit_animator::add_animation(unit* animated_unit,const std::string& event,
+		const gamemap::location &src , const int value,bool with_bars,bool cycles,
+		const std::string text,const Uint32 text_color,
+		const unit_animation::hit_type hit_type,
+		const attack_type* attack, const attack_type* second_attack, int swing_num)
+{
+	if(!animated_unit) return;
+	anim_elem tmp;
+	game_display*disp = game_display::get_singleton();
+	tmp.my_unit = animated_unit;
+	tmp.text = text;
+	tmp.text_color = text_color;
+	tmp.src = src;
+	tmp.with_bars= with_bars;
+	tmp.cycles = cycles;
+	tmp.animation = animated_unit->choose_animation(*disp,src,event,value,hit_type,attack,second_attack,swing_num);
+if(!tmp.animation) return;
+
+
+
+	start_time_ = maximum<int>(start_time_,tmp.animation->get_begin_time());
+	animated_units_.push_back(tmp);
 }
+void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::string& event,
+		const gamemap::location &src , const int value,bool with_bars,bool cycles,
+		const std::string text,const Uint32 text_color,
+		const unit_animation::hit_type hit_type,
+		const attack_type* attack, const attack_type* second_attack, int swing_num)
+{
+	if(!animated_unit) return;
+	game_display*disp = game_display::get_singleton();
+	if(animated_unit->get_animation() &&
+			!animated_unit->get_animation()->animation_would_finish() && 
+			animated_unit->get_animation()->matches(*disp,src,animated_unit,event,value,hit_type,attack,second_attack,swing_num) >unit_animation::MATCH_FAIL) {
+		anim_elem tmp;
+		tmp.my_unit = animated_unit;
+		tmp.text = text;
+		tmp.text_color = text_color;
+		tmp.src = src;
+		tmp.with_bars= with_bars;
+		tmp.cycles = cycles;
+		tmp.animation = NULL;
+		animated_units_.push_back(tmp);
+	}else {
+		add_animation(animated_unit,event,src,value,with_bars,cycles,text,text_color,hit_type,attack,second_attack,swing_num);
+	}
+}
+void unit_animator::start_animations()
+{
+	game_display*disp = game_display::get_singleton();
+	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+		if(anim->animation) {
+			anim->my_unit->start_animation(*disp,anim->src, anim->animation,anim->with_bars, anim->cycles,anim->text,anim->text_color);
+			anim->animation = NULL;
+		}
+
+	}
+}
+
+bool unit_animator::would_end() const
+{
+	bool finished = true;
+	for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+		finished &= anim->my_unit->get_animation()->animation_would_finish();
+	}
+	return finished;
+}
+void unit_animator::wait_for_end() const
+{
+	bool finished = false;
+	game_display*disp = game_display::get_singleton();
+	while(!finished) {
+		disp->draw();
+		events::pump();
+		disp->delay(10);
+		finished = true;
+		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+			finished &= anim->my_unit->get_animation()->animation_would_finish();
+		}
+	}
+}
+

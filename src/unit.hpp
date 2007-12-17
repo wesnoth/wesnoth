@@ -124,7 +124,7 @@ public:
 	void new_level();
 	//! Called on every draw
 	void refresh(const game_display& disp,const gamemap::location& loc) {
-		if ((state_ == STATE_IDLING || state_ == STATE_SELECTING) && anim_ && anim_->animation_would_finish()) {
+		if (state_ == STATE_FORGET  && anim_ && anim_->animation_would_finish()) {
 			set_standing(disp, loc);
 			return;
 		}
@@ -175,20 +175,7 @@ public:
 
 
 	void set_standing(const game_display& disp,const gamemap::location& loc, bool with_bars = true);
-	void set_defending(const game_display &disp,const gamemap::location& loc, int damage,const attack_type* attack,const attack_type* secondary_attack,int swing_num);
-	void set_leading(const game_display& disp,const gamemap::location& loc);
-	void set_healing(const game_display& disp,const gamemap::location& loc,int damage);
-	void set_leveling_in(const game_display& disp,const gamemap::location& loc);
-	void set_leveling_out(const game_display& disp,const gamemap::location& loc);
-	void set_teleporting (const game_display& disp,const gamemap::location& loc);
-	void set_extra_anim(const game_display& disp,const gamemap::location& loc, std::string flag);
-	void set_dying(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
 	void set_walking(const game_display& disp,const gamemap::location& loc);
-	void set_attacking( const game_display &disp,const gamemap::location& loc,int damage,const attack_type& type,const attack_type* secondary_attack,int swing_num);
-	void set_recruited(const game_display& disp,const gamemap::location& loc);
-	void set_healed(const game_display& disp,const gamemap::location& loc,int healing);
-	void set_victorious(const game_display &disp,const gamemap::location& loc,const attack_type* attack,const attack_type* secondary_attack);
-	void set_poisoned(const game_display& disp,const gamemap::location& loc,int damage);
 	void set_idling(const game_display& disp,const gamemap::location& loc);
 	void set_selecting(const game_display& disp,const gamemap::location& loc);
 	void restart_animation(const game_display& disp,int start_time, bool cycles = false);
@@ -244,13 +231,8 @@ public:
 	void set_interrupted_move(const gamemap::location& interrupted_move) { interrupted_move_ = interrupted_move; }
 
 	//! States for animation.
-	enum STATE { STATE_STANDING, STATE_ATTACKING, STATE_DEFENDING,
-				STATE_LEADING, STATE_HEALING, STATE_WALKING,
-				STATE_LEVELIN, STATE_LEVELOUT,
-				STATE_DYING, STATE_EXTRA, STATE_TELEPORT,
-				STATE_RECRUITED, STATE_HEALED, STATE_POISONED,
-				STATE_IDLING, STATE_SELECTING, STATE_VICTORIOUS};
-	void start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false);
+	enum STATE { STATE_STANDING, STATE_FORGET, STATE_ANIM};
+	void start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false,const std::string text = "", const Uint32 text_color =0,STATE state = STATE_ANIM);
 
 	//! The name of the file to game_display (used in menus).
 	const std::string& absolute_image() const { return cfg_["image"]; }

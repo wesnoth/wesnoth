@@ -284,4 +284,26 @@ int animated<T,T_void_value>::get_end_time() const
 		return starting_frame_time_;
 	return frames_.back().start_time_ + frames_.back().duration_;
 }
+template<typename T,  typename T_void_value>
+void animated<T,T_void_value>::remove_frames_until(int new_starting_time)
+{
+        while (starting_frame_time_  < new_starting_time && !frames_.empty() )  {
+                starting_frame_time_ += frames_[0].duration_;
+                frames_.erase(frames_.begin());
+        }
+
+}
+template<typename T,  typename T_void_value>
+void animated<T,T_void_value>::remove_frames_after(int new_ending_time)
+{
+int last_start_time = starting_frame_time_;
+typename std::vector<frame>::iterator current_frame = frames_.begin();
+        while (last_start_time  < new_ending_time && current_frame != frames_.end()) {
+                last_start_time += current_frame->duration_;
+                current_frame++;
+        }
+        frames_.erase(current_frame,frames_.end());
+
+}
+
 

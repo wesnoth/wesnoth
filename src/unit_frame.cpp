@@ -151,6 +151,7 @@ template class progressive_<double>;
 
 unit_frame::unit_frame() :
 	image_(), image_diagonal_(),halo_(), sound_(),
+	text_(""),text_color_(0),
 	halo_x_(), halo_y_(), duration_(0),
 	blend_with_(0),blend_ratio_(),
 	highlight_ratio_(""), offset_()
@@ -161,10 +162,12 @@ unit_frame::unit_frame(const image::locator& image, int duration,
 		const std::string& highlight, const std::string& offset,
 		Uint32 blend_color, const std::string& blend_rate,
 		const std::string& in_halo, const std::string& halox, const std::string& haloy,
-		const image::locator & diag,const std::string & sound) :
+		const image::locator & diag,const std::string & sound,
+		const std::string & text, const Uint32 text_color) :
 	image_(image),image_diagonal_(diag),
 	halo_(in_halo,duration),
 	sound_(sound),
+	text_(text), text_color_(text_color),
 	halo_x_(halox,duration),
 	halo_y_(haloy,duration),
 	duration_(duration),
@@ -183,6 +186,9 @@ unit_frame::unit_frame(const config& cfg)
 	image_ = image::locator(cfg["image"]);
 	image_diagonal_ = image::locator(cfg["image_diagonal"]);
 	sound_ = cfg["sound"];
+	text_ = cfg["text"];
+	std::vector<std::string> tmp_string_vect=utils::split(cfg["text_color"]);
+	if(tmp_string_vect.size() ==3) text_color_ = display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
 	if(!cfg["duration"].empty()) {
 		duration_ = atoi(cfg["duration"].c_str());
 	} else {
@@ -191,8 +197,8 @@ unit_frame::unit_frame(const config& cfg)
 	halo_ = progressive_string(cfg["halo"],duration_);
 	halo_x_ = progressive_int(cfg["halo_x"],duration_);
 	halo_y_ = progressive_int(cfg["halo_y"],duration_);
-	std::vector<std::string> tmp_blend=utils::split(cfg["blend_color"]);
-	if(tmp_blend.size() ==3) blend_with_= display::rgb(atoi(tmp_blend[0].c_str()),atoi(tmp_blend[1].c_str()),atoi(tmp_blend[2].c_str()));
+	 tmp_string_vect=utils::split(cfg["blend_color"]);
+	if(tmp_string_vect.size() ==3) blend_with_= display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str()));
 	blend_ratio_ = progressive_double(cfg["blend_ratio"],duration_);
 	highlight_ratio_ = progressive_double(cfg["alpha"],duration_);
 	offset_ = progressive_double(cfg["offset"],duration_);

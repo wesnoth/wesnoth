@@ -68,7 +68,7 @@ class unit_frame {
 				Uint32 blend_color = 0, const std::string& blend_rate = "",
 				const std::string & in_halo = "",
 				const std::string & halox = "",const std::string & haloy = "",
-				const image::locator & diag ="",const std::string & sound = "");
+				const image::locator & diag ="",const std::string & sound = "",const std::string & text = "", const Uint32 text_color=0);
 		explicit unit_frame(const config& cfg);
 		image::locator image() const { return image_ ;}
 		image::locator image_diagonal() const { return image_diagonal_ ; }
@@ -76,6 +76,7 @@ class unit_frame {
 			{ return halo_.get_current_element(current_time,default_val); }
 
 		std::string sound() const { return sound_ ; };
+		std::pair<std::string,Uint32> text() const { return std::pair<std::string,Uint32>(text_,text_color_) ; };
 		int halo_x(int current_time,const int default_val=0) const { return halo_x_.get_current_element(current_time,default_val); }
 		int halo_y(int current_time,const int default_val=0) const { return halo_y_.get_current_element(current_time,default_val); }
 		int duration() const { return duration_; }
@@ -97,6 +98,8 @@ class unit_frame {
 		progressive_string halo_;
 
 		std::string sound_;
+		std::string text_;
+		Uint32 text_color_;
 		progressive_int halo_x_;
 		progressive_int halo_y_;
 		int duration_;
