@@ -1582,6 +1582,8 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		}
 	}
 
+	std::stringstream text;
+
 	for(std::set<std::string>::iterator it = races.begin(); it != races.end(); it++) {
 		section race_section;
 		config section_cfg;
@@ -1601,7 +1603,14 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 		parse_config_internal(help_cfg, &section_cfg, race_section, level+1);
 		sec.add_section(race_section);
+
+		// we also generate the list of links for the contents page
+		std::string link =  "<ref>text='" + escape(title) + "' dst='" + "..race_"+ escape(*it) + "'</ref>";
+		text << link << "\n";
 	}
+
+	// create the contents page of the Units section
+	sec.topics.push_back(topic(_("Units"), "..units", text.str()) );
 }
 
 
