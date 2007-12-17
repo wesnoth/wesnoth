@@ -1067,7 +1067,7 @@ private:
 
 				// Dissallow undoing of recruits. Can be enabled again once the unit's
 				// description= key doesn't use random anymore.
-				const bool shroud_cleared = clear_shroud(team_num);
+				/*const bool shroud_cleared = */clear_shroud(team_num);
 				//if(shroud_cleared || new_unit.type()->genders().size() > 1
 				//		|| new_unit.type()->has_random_traits()) {
 					clear_undo_stack(team_num);
