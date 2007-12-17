@@ -34,6 +34,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <cerrno>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -369,6 +370,10 @@ void server::run() {
 		} catch(config::error& e) {
 			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
 		} catch(network::error& e) {
+			if (e.message == "shut down") {
+				std::cout << "Shutting server down.\n";
+				break;
+			}
 			if (!e.socket) {
 				ERR_SERVER << "network error: " << e.message << "\n";
 				e.disconnect();
@@ -655,6 +660,9 @@ std::string server::process_command(const std::string& query) {
 	const std::string command(query.begin(),i);
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
+	if (command == "shut_down") {
+		throw network::error("shut down");
+	}
 	if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";
@@ -1448,10 +1456,12 @@ int main(int argc, char** argv) {
 	} catch(network::error& e) {
 		ERR_SERVER << "Caught network error while server was running. Aborting.: "
 			<< e.message << "\n";
-		return -1;
+		//! @todo errno should be passed here with the error or it might not be
+		//! the true errno anymore. Seems to work good enough for now though.
+		return errno;
 	} catch(std::bad_alloc&) {
                 ERR_SERVER << "Ran out of memory. Aborting.\n";
-		return -1;
+		return ENOMEM;
 	} catch(...) {
 		ERR_SERVER << "Caught unknown error while server was running. Aborting.\n";
 		return -1;
