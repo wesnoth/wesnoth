@@ -301,17 +301,9 @@ void server::dump_stats(const time_t& now) {
 }
 
 void server::run() {
-	bool sync_scheduled = false;
 	for (int loop = 0;; ++loop) {
 		SDL_Delay(20);
 		try {
-			if (sync_scheduled) {
-				// Send all players the information
-				// that a player has logged out of the system
-				lobby_.send_data(games_and_users_list_diff());
-				sync_scheduled = false;
-			}
-			
 			if (config_reload == 1) {
 				cfg_ = read_config();
 				load_config();
@@ -401,12 +393,20 @@ void server::run() {
 				DBG_SERVER << "done closing socket...\n";
 				continue;
 			}
-			sync_scheduled = true;
+			const config::child_list& users = games_and_users_list_.get_children("user");
+			const size_t index = std::find(users.begin(), users.end(), pl_it->second.config_address()) - users.begin();
+			if (index < users.size()) {
+				games_and_users_list_.remove_child("user",index);
+			} else {
+				ERR_SERVER << ip << "ERROR: Could not find user: "
+					<< pl_it->second.name() << " in games_and_users_list_.\n";
+			}
 			// Was the player in the lobby or a game?
 			if (lobby_.is_member(e.socket)) {
 				lobby_.remove_player(e.socket);
 				LOG_SERVER << ip << "\t" << pl_it->second.name()
 					<< "\thas logged off. (socket: " << e.socket << ")\n";
+				lobby_.send_data(games_and_users_list_diff(), e.socket);
 			} else {
 				for (std::vector<game>::iterator g = games_.begin();
 					g != games_.end(); ++g)
@@ -418,7 +418,7 @@ void server::run() {
 					const bool obs = g->is_observer(e.socket);
 					g->remove_player(e.socket);
 					// Did the last player leave?
-					if ( (g->nplayers() == 0) || (host && !g->started()) ) {
+					if ((g->nplayers() == 0) || (host && !g->started())) {
 						LOG_SERVER << ip << "\t" << pl_it->second.name()
 							<< (g->started() ? "\tended game:\t\""
 								: "\taborted game:\t\"")
@@ -432,6 +432,7 @@ void server::run() {
 							<< g->id() << (obs ? ") as an observer" : ")")
 							<< " and disconnected. (socket: " << e.socket << ")\n";
 						g->describe_slots();
+						lobby_.send_data(games_and_users_list_diff(), e.socket);
 						if (!obs) {
 							const config& msg = g->construct_server_message(
 								pl_it->second.name() + " has disconnected.");
@@ -441,14 +442,6 @@ void server::run() {
 					}
 					break;
 				}
-			}
-			const config::child_list& users = games_and_users_list_.get_children("user");
-			const size_t index = std::find(users.begin(), users.end(), pl_it->second.config_address()) - users.begin();
-			if (index < users.size()) {
-				games_and_users_list_.remove_child("user",index);
-			} else {
-				ERR_SERVER << ip << "ERROR: Could not find user: "
-					<< pl_it->second.name() << " in games_and_users_list_.\n";
 			}
 			players_.erase(pl_it);
 			e.disconnect();
@@ -1153,31 +1146,29 @@ void server::process_data_game(const network::connection sock, const config& dat
 		return;
 	} else if (data.child("leave_game")) {
 		//! @todo This should be done in remove_player().
-		const bool host = g->is_owner(sock);
-		const bool obs = g->is_observer(sock);
-		g->remove_player(sock);
-		lobby_.add_player(sock, true);
-		if (!obs) {
-			const config& msg = g->construct_server_message(pl->second.name()
-				+ " has left the game.");
-			g->send_data(msg);
-			g->record_data(msg);
-		}
-		g->describe_slots();
-		if ( (g->nplayers() == 0) || (host && !g->started()) ) {
+		if ((g->is_player(sock) && g->nplayers() == 1)
+			|| (g->is_owner(sock) && !g->started())) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tended game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
 			delete_game(g);
 		} else {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\thas left game:\t\"" << g->name() << "\" (" << g->id()
-				<< (obs ? ") as an observer.\n" : ").\n");
+				<< (g->is_observer(sock) ? ") as an observer.\n" : ").\n");
+			if (g->is_player(sock)) {
+				const config& msg = g->construct_server_message(pl->second.name()
+					+ " has left the game.");
+				g->send_data(msg);
+				g->record_data(msg);
+			}
+			g->remove_player(sock);
+			lobby_.add_player(sock, true);
+			g->describe_slots();
+			// Send the player who has quit the gamelist.
+			network::send_data(games_and_users_list_, sock, send_gzipped_);
+			// Send all other players in the lobby the update to the gamelist.
+			lobby_.send_data(games_and_users_list_diff(), sock);
 		}
-		// Send the player who has quit the game list
-		network::send_data(games_and_users_list_, sock, send_gzipped_);
-
-		// Send all other players in the lobby the update to the lobby
-		lobby_.send_data(games_and_users_list_diff(), sock);
 		return;
 	// If this is data describing side changes (so far only by the host).
 	} else if (data.child("scenario_diff")) {
@@ -1339,6 +1330,8 @@ void server::delete_game(std::vector<game>::iterator game_it) {
 		DBG_SERVER << "Could not find game (" << game_it->id()
 			<< ") to delete in games_and_users_list_.\n";
 	}
+	// Send all other players in the lobby the update to the gamelist.
+	lobby_.send_data(games_and_users_list_diff());
 	// Put the players back in the lobby, and send
 	// them the games_and_users_list_ again.
 	lobby_.add_players(*game_it, true);

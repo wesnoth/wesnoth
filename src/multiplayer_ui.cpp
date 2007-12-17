@@ -29,7 +29,8 @@
 #include "replay.hpp"
 #include "wml_separators.hpp"
 
-#define LOG_NG lg::info(lg::engine)
+#define LOG_NG LOG_STREAM(info, engine)
+#define ERR_CF LOG_STREAM(err, config)
 #define DBG_NW LOG_STREAM(debug, network)
 #define LOG_NW LOG_STREAM(info, network)
 #define ERR_NW LOG_STREAM(err, network)
@@ -523,7 +524,13 @@ void ui::process_network_data(const config& data, const network::connection /*so
 		lobby_clock_ = SDL_GetTicks();
 	} else if(data.child("gamelist_diff")) {
 		if(gamelist_initialized_) {
-			gamelist_.apply_diff(*data.child("gamelist_diff"));
+			try {
+				gamelist_.apply_diff(*data.child("gamelist_diff"));
+			} catch(config::error& e) {
+				ERR_CF << "Error while applying the gamelist diff: '"
+					<< e.message << "' Getting a new gamelist.\n";
+				network::send_data(config("refresh_lobby"), 0, true);
+			}
 			gamelist_refresh_ = true;
 		}
 	}
