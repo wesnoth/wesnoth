@@ -883,14 +883,6 @@ void game_display::set_route(const paths::route* route)
 	invalidate_route();
 }
 
-void game_display::remove_footstep(const gamemap::location& loc)
-{
-	const std::vector<gamemap::location>::iterator it = std::find(route_.steps.begin(),route_.steps.end(),loc);
-	if(it != route_.steps.end()) {
-		route_.steps.erase(it);
-	}
-}
-
 void game_display::float_label(const gamemap::location& loc, const std::string& text,
 						  int red, int green, int blue)
 {

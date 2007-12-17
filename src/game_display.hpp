@@ -90,9 +90,6 @@ public:
 	//! If NULL, no route is displayed. route does not have to remain valid after being set.
 	void set_route(const paths::route* route);
 
-	//! Function to remove a footstep from a specific location
-	void remove_footstep(const gamemap::location& loc);
-
 	//! Function to float a label above a tile
 	void float_label(const gamemap::location& loc, const std::string& text,
 	                 int red, int green, int blue);
