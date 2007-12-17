@@ -658,11 +658,11 @@ void game_display::set_game_mode(const tgame_mode game_mode)
 
 void game_display::draw_movement_info(const gamemap::location& loc)
 {
-	// Search if there is a turn waypoint here
-	std::map<gamemap::location, int>::iterator turn_waypoint_iter = route_.turn_waypoints.find(loc);
+	// Search if there is a waypoint here
+	std::map<gamemap::location, paths::route::waypoint>::iterator w = route_.waypoints.find(loc);
 
 	// Don't use empty route or the first step (the unit will be there)
-	if(turn_waypoint_iter != route_.turn_waypoints.end()
+	if(w != route_.waypoints.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un = units_.find(route_.steps.front());
 		if(un != units_.end()) {
@@ -677,12 +677,17 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 
 			draw_text_in_hex(loc, def_text.str(), 18, color);
 
-			// Display the number of turn to reach only if > 0
-			int turns_to_reach = turn_waypoint_iter->second;
-			if(turns_to_reach > 0 && turns_to_reach < 10) {
+			//we display turn info only if different from a simple last "1"
+			if (w->second.zoc || w->second.capture || w->second.turns > 1
+					|| loc != route_.steps.back())
+			{
 				std::stringstream turns_text;
-				turns_text << "(" << turns_to_reach << ")";
-				const SDL_Color turns_color = font::NORMAL_COLOUR;
+				if (w->second.capture) {
+					turns_text << "[" << w->second.turns << "]";
+				} else {
+					turns_text << w->second.turns;
+				}
+				const SDL_Color turns_color =  w->second.zoc ? font::BAD_COLOUR : font::NORMAL_COLOUR;
 				draw_text_in_hex(loc, turns_text.str(), 16, turns_color, 0.5, 0.8);
 			}
 
@@ -872,7 +877,7 @@ void game_display::set_route(const paths::route* route)
 		route_ = *route;
 	} else {
 		route_.steps.clear();
-		route_.turn_waypoints.clear();
+		route_.waypoints.clear();
 	}
 
 	invalidate_route();

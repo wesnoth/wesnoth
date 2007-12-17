@@ -106,10 +106,18 @@ struct paths
 	//! Structure which holds a single route between one location and another.
 	struct route
 	{
-		route() : steps(), move_left(0), turn_waypoints() {}
+		route() : steps(), move_left(0), waypoints() {}
 		std::vector<gamemap::location> steps;
 		int move_left; // movement unit will have left at end of the route.
-		std::map<gamemap::location, int> turn_waypoints;
+		struct waypoint
+		{
+			waypoint(int t = 0, bool z = false, bool c = false)
+				: turns(t), zoc(z), capture(c) {}
+			int turns;
+			bool zoc;
+			bool capture;
+		};
+		std::map<gamemap::location, waypoint> waypoints;
 	};
 
 	typedef std::map<gamemap::location,route> routes_map;

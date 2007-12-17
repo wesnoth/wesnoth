@@ -232,49 +232,47 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 	if(rt.steps.empty())
 		return 0;
 
-	int turns = 0, movement = u.movement_left();
+	int turns = 0;
+	int movement = u.movement_left();
 	const team& unit_team = teams[u.side()-1];
+	bool zoc = false;
 
-	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
-	    	i != rt.steps.end(); ++i) {
+	for (std::vector<gamemap::location>::const_iterator i = rt.steps.begin();
+		i !=rt.steps.end(); i++) {
+		bool last_step = (i+1 == rt.steps.end());
+		
+		// move_cost of the next step is irrelevant for the last step
+		assert(last_step || map.on_board(*(i+1)));
+		const int move_cost = last_step ? 0 : u.movement_cost(map[*(i+1)]);
 
-		assert(map.on_board(*i));
-		const int move_cost = u.movement_cost(map[*i]);
-		movement -= move_cost;
+		if (last_step || zoc || move_cost > movement) {
+			// check if we stop an a village and so maybe capture it
+			// if it's an enemy unit and a fogged village, we assume a capture
+			// (if he already owns it, we can't know that)
+			// if it's not an enemy, we can always know if he owns the village
+			bool capture = map.is_village(*i) && ( !unit_team.owns_village(*i)
+				 || (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)) );
 
-		if (movement < 0) {
 			++turns;
-			rt.turn_waypoints.insert(std::make_pair(*(i-1), turns));
-			movement = u.total_movement() - move_cost;
-			if(movement < 0) {
-				return -1;
+			rt.waypoints[*i] = paths::route::waypoint(turns, zoc, capture);
+			
+			if (last_step) break; // finished and we used dummy move_cost
+
+			movement = u.total_movement();
+			if(move_cost > movement) {
+				return -1; //we can't reach destination
 			}
 		}
 
-		if (enemy_zoc(map,units,teams, *i, viewing_team,u.side())
-					&& !u.get_ability_bool("skirmisher", *i)) {
-			 movement = 0;
+		zoc = enemy_zoc(map,units,teams, *(i+1), viewing_team,u.side())
+					&& !u.get_ability_bool("skirmisher", *(i+1));
+
+		if (zoc) {
+			movement = 0;
+		} else {
+			movement -= move_cost;
 		}
 	}
-
-	// Add "end-of-path" to waypoints.
-	const gamemap::location& new_turn_step = *(rt.steps.end()-1);
-	int turn_number = 0;
-	if (turns > 0) {
-		turn_number = turns+1;
-	} else if (movement==0) {
-		turn_number = 1;
-	} else if (map.is_village(new_turn_step)) {
-		// if it's an enemy unit and a fogged village, we assume a capture 
-		// (if he already owns it, we can't know that)
-		// if it's not an enemy, we can always know if he owns the village
-		if ( (viewing_team.is_enemy(u.side()) && viewing_team.fogged(new_turn_step))
-				|| !unit_team.owns_village(new_turn_step) ) {
-			turn_number = 1;
-		}
-	}
-
-	rt.turn_waypoints.insert(std::make_pair(new_turn_step, turn_number));
 
 	return turns;
 }
