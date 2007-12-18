@@ -79,7 +79,6 @@ namespace game_config
 
 	std::string level_image;
 	std::string ellipsis_image;
-	std::string tome_title;
 
 	std::map<std::string, color_range > team_rgb_range;
 	std::map<std::string, t_string > team_rgb_name;
@@ -172,8 +171,6 @@ namespace game_config
 
 		level_image = v["level_image"];
 		ellipsis_image = v["ellipsis_image"];
-
-		tome_title = v["tome_title"];
 
 		add_color_info(v);
 
