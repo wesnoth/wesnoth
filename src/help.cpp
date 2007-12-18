@@ -478,10 +478,11 @@ private:
 // FIXME: Must generalize the "append" behavior used for sections
 static void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
 static std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-static std::string generate_topic_text(const std::string &generator, const config *help_cfg, const std::vector<topic>& generated_topics);
+static std::string generate_topic_text(const std::string &generator, const config *help_cfg,
+const section &sec, const std::vector<topic>& generated_topics);
 static std::string generate_about_text();
 static std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
-static std::string generate_contents_links(const std::vector<topic>& topics);
+static std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
 static void generate_races_sections(const config *help_cfg, section &sec, int level);
 static std::vector<topic> generate_unit_topics(const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
@@ -915,7 +916,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
 			if (topic_cfg != NULL) {
 				std::string text = (*topic_cfg)["text"];
-				text += generate_topic_text((*topic_cfg)["generator"], help_cfg, generated_topics);
+				text += generate_topic_text((*topic_cfg)["generator"], help_cfg, sec, generated_topics);
 				topic child_topic((*topic_cfg)["title"], (*topic_cfg)["id"], text);
 				if (!is_valid_id(child_topic.id)) {
 					std::stringstream ss;
@@ -990,7 +991,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 	}
 }
 
-std::string generate_topic_text(const std::string &generator, const config *help_cfg, const std::vector<topic>& generated_topics)
+std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec, const std::vector<topic>& generated_topics)
 {
 	std::string empty_string = "";
 	if (generator == "") {
@@ -1001,7 +1002,7 @@ std::string generate_topic_text(const std::string &generator, const config *help
 		std::vector<std::string> parts = utils::split(generator, ':');
 		if (parts.size()>1 && parts[0] == "contents") {
 			if (parts[1] == "generated") {
-				return generate_contents_links(generated_topics);
+				return generate_contents_links(sec, generated_topics);
 			} else {
 				return generate_contents_links(parts[1], help_cfg);
 			}
@@ -1603,14 +1604,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 		parse_config_internal(help_cfg, &section_cfg, race_section, level+1);
 		sec.add_section(race_section);
-
-		// we also generate the list of links for the contents page
-		std::string link =  "<ref>text='" + escape(title) + "' dst='" + "..race_"+ escape(*it) + "'</ref>";
-		text << link << "\n";
 	}
-
-	// create the contents page of the Units section
-	sec.topics.push_back(topic(_("Units"), "..units", text.str()) );
 }
 
 
@@ -1735,9 +1729,15 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		return res.str();
 }
 
-std::string generate_contents_links(const std::vector<topic>& topics)
+std::string generate_contents_links(const section &sec, const std::vector<topic>& topics)
 {
 		std::stringstream res;
+
+		section_list::const_iterator s;
+		for (s = sec.sections.begin(); s != sec.sections.end(); s++) {
+			std::string link =  "<ref>text='" + escape((*s)->title) + "' dst='.." + escape((*s)->id) + "'</ref>";
+			res << link <<"\n";
+		}
 
 		std::vector<topic>::const_iterator t;
 		for (t = topics.begin(); t != topics.end(); t++) {
