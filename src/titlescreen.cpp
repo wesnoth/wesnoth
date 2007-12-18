@@ -144,20 +144,6 @@ static const void read_tips_of_day(config& tips_of_day)
 	}
 }
 
-//! Return the text for one of the tips-of-the-day.
-static const config* get_tip_of_day(config& tips_of_day)
-{
-	if (tips_of_day.empty()) {
-		read_tips_of_day(tips_of_day);
-	}
-
-	const config::child_list& tips = tips_of_day.get_children("tip");
-	if (!tips.empty()) {
-		return tips.front();
-	}
-	return NULL;
-}
-
 //! Go to the next tips-of-the-day
 static const void next_tip_of_day(config& tips_of_day, bool reverse = false)
 {
@@ -168,6 +154,44 @@ static const void next_tip_of_day(config& tips_of_day, bool reverse = false)
 		config::child_iterator direction = reverse ? tips.first+1 : tips.second-1;
 		std::rotate(tips.first, direction, tips.second);
 	}
+}
+
+//! Return the text for one of the tips-of-the-day.
+static const config* get_tip_of_day(config& tips_of_day)
+{
+	if (tips_of_day.empty()) {
+		read_tips_of_day(tips_of_day);
+	}
+
+	const config::child_list& tips = tips_of_day.get_children("tip");
+	
+	// next_tip_of_day rotate tips, so better stay iterator-safe
+	for (size_t t=0; t < tips.size(); t++, next_tip_of_day(tips_of_day)) {
+		const config* tip = tips.front();
+		if (tip == NULL) continue;
+
+		const std::vector<std::string> needed_units = utils::split((*tip)["encountered_units"],',');
+		if (needed_units.empty()) {
+			return tip;
+		}
+		const std::set<std::string>& seen_units = preferences::encountered_units();
+
+		// test if one of the listed unit types is already encountered
+		// if if's a number, test if we have encountered more than this
+		for (std::vector<std::string>::const_iterator i = needed_units.begin();
+				i != needed_units.end(); i++) {
+			int needed_units_nb = lexical_cast_default<int>(*i,-1);
+			if (needed_units_nb !=-1) {
+				if (needed_units_nb <= static_cast<int>(seen_units.size())) {
+					return tip;
+				}
+			} else if (seen_units.find(*i) != seen_units.end()) {
+				return tip;
+			}
+		}
+	}
+	// not tip match, someone forget to put an always-match one
+	return NULL;
 }
 
 //! Show one tip-of-the-day in a frame on the titlescreen.
