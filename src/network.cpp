@@ -153,7 +153,7 @@ static void check_timeout()
 	}
 	const time_t& now = time(NULL);
 	DBG_NW << "Last ping: '" << last_ping << "' Current time: '" << now
-			<< "' Time since last ping: " << last_ping - now << "s\n";
+			<< "' Time since last ping: " << now - last_ping << "s\n";
 	// Reset last_ping if we didn't check for the last 10s.
 	if (last_ping_check + 10 <= now) last_ping = now;
 	if (last_ping + network::ping_timeout <= now) {
@@ -538,26 +538,23 @@ connection accept_connection()
 	return 0;
 }
 
-bool disconnect(connection s)
+bool disconnect(connection s, bool force)
 {
-	if (!is_server()) last_ping = 0;
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			assert(sockets.back() != 0);
-			while(disconnect(sockets.back()) == false) {
-				SDL_Delay(10);
-			}
+			disconnect(sockets.back(), true);
+//			while(disconnect(sockets.back()) == false) {
+//				SDL_Delay(10);
+//			}
 		}
-
 		return true;
 	}
+	if (!is_server()) last_ping = 0;
 
 	const connection_map::iterator info = connections.find(s);
 	if(info != connections.end()) {
-		const bool res = network_worker_pool::close_socket(info->second.sock);
-		if(res == false) {
-			return false;
-		}
+		return network_worker_pool::close_socket(info->second.sock, force);
 	}
 
 	bad_sockets.erase(s);
