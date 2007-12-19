@@ -91,7 +91,7 @@ connection accept_connection();
 //returns false on failure to disconnect, since the socket is
 //in the middle of sending/receiving data. The socket will be closed when
 //it has finished its send/receive
-bool disconnect(connection connection_num=0);
+bool disconnect(connection connection_num=0, bool force=false);
 
 //function to queue a disconnection. Next time receive_data is
 //called, it will generate an error on the given connection.

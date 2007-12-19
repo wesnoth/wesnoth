@@ -503,23 +503,22 @@ connection accept_connection()
 	return 0;
 }
 
-bool disconnect(connection s)
+bool disconnect(connection s, bool force)
 {
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			wassert(sockets.back() != 0);
-			while(disconnect(sockets.back()) == false) {
-				SDL_Delay(10);
-			}
+			disconnect(sockets.back(), true);
+//			while(disconnect(sockets.back()) == false) {
+//				SDL_Delay(10);
+//			}
 		}
-
 		return true;
 	}
 
 	const connection_map::iterator info = connections.find(s);
 	if(info != connections.end()) {
-		const bool res = network_worker_pool::close_socket(info->second.sock);
-		if(res == false) {
+		if (!network_worker_pool::close_socket(info->second.sock, force)) {
 			return false;
 		}
 	}

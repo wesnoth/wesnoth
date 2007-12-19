@@ -483,9 +483,9 @@ void remove_buffers(TCPsocket sock)
 	}
 }
 
-}
+} // anonymous namespace
 
-bool close_socket(TCPsocket sock)
+bool close_socket(TCPsocket sock, bool force)
 {
 	const threading::lock lock(*global_mutex);
 
@@ -497,7 +497,7 @@ bool close_socket(TCPsocket sock)
 		return true;
 	}
 
-	if(lock_it->second != SOCKET_LOCKED && lock_it->second != SOCKET_INTERRUPT) {
+	if (!(lock_it->second == SOCKET_LOCKED || lock_it->second == SOCKET_INTERRUPT) || force) {
 		sockets_locked.erase(lock_it);
 		remove_buffers(sock);
 		return true;
@@ -534,6 +534,6 @@ std::pair<network::statistics,network::statistics> get_current_transfer_stats(TC
 	return transfer_stats[sock];
 }
 
-}
+} // network_worker_pool namespace
 
 
