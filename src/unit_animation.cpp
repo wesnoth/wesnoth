@@ -392,12 +392,16 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
 	const config::child_list& movement_anims = expanded_cfg.get_children("movement_anim");
 	for(anim_itor = movement_anims.begin(); anim_itor != movement_anims.end(); ++anim_itor) {
+		if((**anim_itor)["offset"].empty() ) {
+			(**anim_itor)["offset"] ="0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150";
+
+		}
 		(**anim_itor)["apply_to"] ="movement";
 		animations.push_back(unit_animation(**anim_itor));
 		//lg::wml_error<<"movement animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=movement flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150),"movement",unit_animation::DEFAULT_ANIM));
+	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150,"","0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150"),"movement",unit_animation::DEFAULT_ANIM));
 	// Always have a movement animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
 	const config::child_list& defends = expanded_cfg.get_children("defend");
@@ -849,6 +853,17 @@ bool unit_animator::would_end() const
 	}
 	return finished;
 }
+void unit_animator::wait_until(int animation_time) const
+{
+	game_display*disp = game_display::get_singleton();
+        int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
+	 while (SDL_GetTicks() < (unsigned int)end_tick - 30) {
+		disp->draw();
+		events::pump();
+		disp->delay(maximum<int>(0,minimum<int>(10,animation_time - get_animation_time())));
+	}
+	 disp->delay(maximum<int>(0,end_tick - SDL_GetTicks()+1));
+}
 void unit_animator::wait_for_end() const
 {
 	bool finished = false;
@@ -863,4 +878,15 @@ void unit_animator::wait_for_end() const
 		}
 	}
 }
+int unit_animator::get_animation_time() const{
+	return animated_units_[0].my_unit->get_animation()->get_animation_time() ; 
+}
 
+int unit_animator::get_end_time() const
+{
+        int end_time = INT_MIN;
+        for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+                end_time = maximum<int>(end_time,anim->my_unit->get_animation()->get_end_time());
+        }
+        return end_time;
+}

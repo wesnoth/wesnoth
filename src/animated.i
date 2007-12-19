@@ -278,6 +278,12 @@ int animated<T,T_void_value>::get_begin_time() const
 }
 
 template<typename T,  typename T_void_value>
+int animated<T,T_void_value>::time_to_tick(int animation_time) const
+{
+        if(!started_) return 0;
+        return start_tick_ + static_cast<int>(animation_time/acceleration_);
+}
+template<typename T,  typename T_void_value>
 int animated<T,T_void_value>::get_end_time() const
 {
 	if(frames_.empty())

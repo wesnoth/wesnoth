@@ -74,35 +74,16 @@ static void move_unit_between( const gamemap& map, const gamemap::location& a, c
 		return;
 	}
 
-	const t_translation::t_letter dst_terrain = map.get_terrain(b);
-
-	const double acceleration = disp->turbo_speed();
-
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 
-	// When undo a move from an impassable terrain,
-	// the movement cost can be very high
-	const int move_speed = minimum<int>(temp_unit.movement_cost(dst_terrain), 10);
-	const int total_mvt_time = static_cast<int>(150/acceleration * move_speed);
-	const unsigned int start_time = SDL_GetTicks();
-	int mvt_time = 1;
-
-	while(mvt_time < total_mvt_time-1) { // One draw in each hex at least
-		unit_animator animator;
-		disp->delay(10);
-		mvt_time = SDL_GetTicks() -start_time;
-		if(mvt_time >=total_mvt_time) mvt_time = total_mvt_time -1;
-		double pos =double(mvt_time)/total_mvt_time;
-		const gamemap::location& ref_loc =pos<0.5?a:b;
-		if(pos >= 0.5) pos = pos -1;
-		animator.replace_anim_if_invalid(&temp_unit,"movement",ref_loc);
-		animator.start_animations();
-		temp_unit.set_offset(pos);
-		disp->place_temporary_unit(temp_unit,ref_loc);
-		disp->draw();
-		events::pump();
-
-	}
+	disp->place_temporary_unit(temp_unit,a);
+	unit_animator animator;
+	animator.replace_anim_if_invalid(&temp_unit,"movement",a);
+	animator.start_animations();
+	disp->draw(); // to refresh animation time
+	int target_time = animator.get_animation_time();
+	target_time -= target_time%150;
+	animator.wait_until(target_time+150);
 }
 
 namespace unit_display

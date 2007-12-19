@@ -50,6 +50,7 @@ class unit_animation
 		void update_last_draw_time();
 		int get_begin_time() const;
 		int get_end_time() const;
+                int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); };
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
 		void start_animation(int start_time,const gamemap::location &src = gamemap::location::null_location, const gamemap::location &dst = gamemap::location::null_location , bool cycles=false, const std::string text="", const Uint32 text_color=0, double acceleration=1);
 		const int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
@@ -67,6 +68,7 @@ class unit_animation
 		int halo_y(const int default_val = 0) const{ return unit_anim_.halo_y(default_val); };
 		double blend_ratio(const double default_val = 0) const{ return unit_anim_.blend_ratio(default_val); };
 		fixed_t highlight_ratio(const float default_val = 1.0) const{ return unit_anim_.highlight_ratio(default_val); };
+		public:
 		double offset(double default_val =0.0) const{ return unit_anim_.offset(default_val); };
 		std::pair<std::string,Uint32> text() const { return unit_anim_.text() ; };
 	private:
@@ -157,7 +159,10 @@ class unit_animator
 
 
 		bool would_end() const;
+		int get_animation_time() const;
+		int get_end_time() const;
 		void wait_for_end() const;
+		void wait_until( int animation_time) const;
 	private:
 		typedef struct {
 			unit *my_unit;

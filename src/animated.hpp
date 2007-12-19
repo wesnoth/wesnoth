@@ -58,6 +58,8 @@ public:
 	int get_begin_time() const;
 	int get_end_time() const;
 
+	int time_to_tick(int animation_time) const;
+
 	void update_last_draw_time();
 	bool need_update() const;
 
