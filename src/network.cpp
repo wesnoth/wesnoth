@@ -554,7 +554,9 @@ bool disconnect(connection s, bool force)
 
 	const connection_map::iterator info = connections.find(s);
 	if(info != connections.end()) {
-		return network_worker_pool::close_socket(info->second.sock, force);
+		if (!network_worker_pool::close_socket(info->second.sock, force)) {
+			return false;
+		}
 	}
 
 	bad_sockets.erase(s);
