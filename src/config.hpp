@@ -147,6 +147,8 @@ public:
 
 	void apply_diff(const config& diff); //throw error
 
+	//! Merge config 'c' into this config.
+	//! Overwrites this config's values.
 	void merge_with(const config& c);
 
 	bool matches(const config &filter) const;
