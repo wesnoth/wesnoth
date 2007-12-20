@@ -320,7 +320,7 @@ public:
 	{
 		static const t_string empty_string = "";
 
-		string_map::const_iterator itor = map_.find(key);
+		const string_map::const_iterator itor = map_.find(key);
 		if(itor == map_.end()) {
 			return empty_string;
 		} else {
