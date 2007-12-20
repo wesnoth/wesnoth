@@ -187,7 +187,6 @@ public:
 	std::set<gamemap::location> overlaps(const gamemap::location &loc) const;
 	const t_string& traits_description() const { return traits_description_; }
 
-	int value() const { return unit_value_; }
 	int cost () const { return unit_value_; }
 
 	const gamemap::location& get_goto() const { return goto_; }
