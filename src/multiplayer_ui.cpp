@@ -475,6 +475,22 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 void ui::process_message(const config& msg, const bool whisper) {
 	const std::string& sender = msg["sender"];
 	const std::string& message = msg["message"];
+	if (sender == "server"
+			&& message.find("has logged into the lobby") != std::string::npos)
+	{
+		const std::string::const_iterator i =
+				std::find(message.begin(),message.end(),' ');
+		const std::string joiner(message.begin(),i);
+		const config* const crela =
+				preferences::get_prefs()->child("relationship");
+		const bool is_lobby_join_of_friend = (crela == NULL ?
+				false : (*crela)[joiner] == "friend");
+		const bool show_message = preferences::lobby_joins() == preferences::SHOW_ALL
+				|| (is_lobby_join_of_friend
+				&& preferences::lobby_joins() == preferences::SHOW_FRIENDS);
+		if (!show_message) return;
+	}
+
 	bool ignored, is_friend = false;
 	if (preferences::get_prefs()->child("relationship")) {
 		const config& cignore = *preferences::get_prefs()->child("relationship");

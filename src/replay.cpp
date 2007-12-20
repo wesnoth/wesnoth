@@ -753,7 +753,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 					const std::string joiner(message.begin(),i);
 					const config* const crela =
 							preferences::get_prefs()->child("relationship");
-					bool is_lobby_join_of_friend = (crela == NULL ?
+					const bool is_lobby_join_of_friend = (crela == NULL ?
 							false : (*crela)[joiner] == "friend");
 					show_message = preferences::lobby_joins() == preferences::SHOW_ALL
 							|| (is_lobby_join_of_friend
