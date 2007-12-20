@@ -325,6 +325,7 @@ static void channel_finished_hook(int channel)
 }
 
 bool init_sound() {
+	LOG_AUDIO << "Initializing audio...\n";
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0)
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
 			return false;
