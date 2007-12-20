@@ -79,9 +79,11 @@ namespace game_config
 	extern const std::string observer_team_name;
 
 	namespace sounds {
-		extern const std::string turn_bell, timer_bell, receive_message, user_arrive, user_leave;
+		extern const std::string turn_bell, timer_bell, receive_message,
+				receive_message_highlight, receive_message_friend,
+				receive_message_server, user_arrive, user_leave;
 		extern const std::string button_press, checkbox_release, slider_adjust,
-			menu_expand, menu_contract, menu_select;
+				menu_expand, menu_contract, menu_select;
 	}
 
 	void load_config(const config* cfg);

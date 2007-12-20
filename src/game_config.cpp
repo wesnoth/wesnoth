@@ -94,7 +94,10 @@ namespace game_config
 	namespace sounds {
 		const std::string turn_bell = "bell.wav",
 		timer_bell = "timer.wav",
-		receive_message = "receive.wav",
+		receive_message = "chat-3.ogg",
+		receive_message_highlight = "chat-highlight.ogg",
+		receive_message_friend = "chat-4.ogg",
+		receive_message_server = "receive.wav",
 		user_arrive = "arrive.wav",
 		user_leave = "leave.wav";
 
