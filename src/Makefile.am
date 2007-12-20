@@ -21,6 +21,10 @@ if CAMPAIGNSERVER
 bin_PROGRAMS += campaignd
 endif
 
+if TESTS
+bin_PROGRAMS += test
+endif
+
 CLEANFILES = 
 
 if TOOLS
@@ -288,6 +292,17 @@ exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG
 exploder_DEPENDENCIES=libwesnoth-core.a
 cutter_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
 cutter_DEPENDENCIES=libwesnoth-core.a
+
+#############################################################################
+#    Castle building helpers                                                #
+#############################################################################
+
+test_SOURCES = \
+	tests/main.cpp \
+	tests/test_util.cpp
+
+test_LDADD = -L. -lwesnoth-core -lboost_unit_test_framework @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS) 
+test_DEPENDENCIES=libwesnoth-core.a
 
 #############################################################################
 #    Headers

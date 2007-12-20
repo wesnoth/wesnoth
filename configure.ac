@@ -79,6 +79,11 @@ else
 	CXXFLAGS="-O2 -W -Wall -ansi $CXXFLAGS"
 fi
 
+AC_ARG_ENABLE([tests],
+              AS_HELP_STRING([--enable-tests], [build unit tests]),
+	      [tests=$enableval],
+	      [tests=no])
+
 AC_ARG_ENABLE([static],
               AS_HELP_STRING([--enable-static], [enable static building of wesnoth]),
 	      [static=$enableval],
@@ -288,6 +293,7 @@ AM_CONDITIONAL([PYTHON_INSTALL], [test x$python_install = xyes])
 AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
+AM_CONDITIONAL([TESTS], [test x$tests = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
 AM_CONDITIONAL([USESVN], [test x$svnrev = xyes])
 AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
