@@ -980,23 +980,22 @@ void preferences_dialog::set_friends_menu()
 {
 	std::vector<std::string> friends_items;
 	std::vector<std::string> friends_names;
-    if (!preferences::get_prefs()->child("relationship")){
-		preferences::get_prefs()->add_child("relationship");
-	}
-	config* cignore;
-	cignore = preferences::get_prefs()->child("relationship");
-
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
-
-	for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
-							i != cignore->values.end(); ++i){
-		if (i->second == "friend"){
-			friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR + i->first + COLUMN_SEPARATOR + "friend");
-			friends_names.push_back(i->first);
-		}
-		if (i->second == "ignored"){
-			friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR + i->first + COLUMN_SEPARATOR + "ignored");
-			friends_names.push_back(i->first);
+    if (preferences::get_prefs()->child("relationship")){
+		const config& cignore = *preferences::get_prefs()->child("relationship");
+		for (string_map::const_iterator i = cignore.values.begin();
+				i != cignore.values.end(); ++i)
+		{
+			if (i->first == "friend"){
+				friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
+						+ i->first + COLUMN_SEPARATOR + "friend");
+				friends_names.push_back(i->first);
+			}
+			if (i->first == "ignored"){
+				friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
+						+ i->first + COLUMN_SEPARATOR + "ignored");
+				friends_names.push_back(i->first);
+			}
 		}
 	}
 	if (friends_items.empty()) {

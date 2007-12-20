@@ -472,52 +472,42 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 #endif
 }
 
+void ui::process_message(const config& msg, const bool whisper) {
+	const std::string& sender = msg["sender"];
+	const std::string& message = msg["message"];
+	bool ignored, is_friend = false;
+	if (preferences::get_prefs()->child("relationship")) {
+		const config& cignore = *preferences::get_prefs()->child("relationship");
+		ignored   = (cignore[sender] == "ignored");
+		is_friend = (cignore[sender] == "friend");
+	}
+	if (ignored) return;
+
+	const bool is_highlight = (message.find(preferences::login()) != std::string::npos);
+	if (is_highlight || whisper) {
+		sound::play_UI_sound(game_config::sounds::receive_message_highlight);
+	} else if (is_friend) {
+		sound::play_UI_sound(game_config::sounds::receive_message_friend);
+	} else if (sender == "server") {
+		sound::play_UI_sound(game_config::sounds::receive_message_server);
+	} else {
+		sound::play_UI_sound(game_config::sounds::receive_message);
+	}
+	chat_.add_message(whisper ? "whisper: " : "" + msg["sender"], msg["message"]);
+	chat_.update_textbox(chat_textbox_);
+}
+
 void ui::process_network_data(const config& data, const network::connection /*sock*/)
 {
 	if(data.child("error")) {
 		throw network::error((*data.child("error"))["message"]);
-	} else if(data.child("message")) {
-		const config& msg = *data.child("message");
-		config* cignore;
-		bool ignored = false;
-		if ((cignore = preferences::get_prefs()->child("relationship"))){
-			for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
-			i != cignore->values.end(); ++i){
-				if(msg["sender"] == i->first){
-					if (i->second == "ignored"){
-						ignored = true;
-					}
-				}
-			}
-		}
-		if (!ignored){
-			sound::play_UI_sound(game_config::sounds::receive_message);
-			chat_.add_message(msg["sender"], msg["message"]);
-			chat_.update_textbox(chat_textbox_);
-		}
+	} else if (data.child("message")) {
+		process_message(*data.child("message"));
 	} else if(data.child("whisper")){
-		const config& cwhisper = *data.child("whisper");
-		config* cignore;
-		bool ignored = false;
-		if ((cignore = preferences::get_prefs()->child("relationship"))){
-			for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
-			i != cignore->values.end(); ++i){
-				if(cwhisper["sender"] == i->first){
-					if (i->second == "ignored"){
-						ignored = true;
-					}
-				}
-			}
-		}
-		if (!ignored){
-			sound::play_UI_sound(game_config::sounds::receive_message);
-			chat_.add_message("whisper: "+cwhisper["sender"], cwhisper["message"]);
-			chat_.update_textbox(chat_textbox_);
-		}
+		process_message(*data.child("whisper"), true);
 	} else if(data.child("gamelist")) {
 		const cursor::setter cursor_setter(cursor::WAIT);
-		if(!gamelist_initialized_)
-			gamelist_initialized_ = true;
+		gamelist_initialized_ = true;
 		gamelist_ = data;
 		gamelist_updated(false);
 		gamelist_refresh_ = false;

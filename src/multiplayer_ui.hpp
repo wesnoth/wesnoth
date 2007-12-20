@@ -119,6 +119,8 @@ protected:
 	void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 
+	//! Process chat messages.
+	void process_message(const config& msg, const bool whisper=false);
 
 	// Processes any pending network data. Called by the public
 	// process_network() method. Overridden by subclasses who add more

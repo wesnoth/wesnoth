@@ -92,18 +92,12 @@ manager::~manager()
 }
 
 bool _set_relationship(std::string nick, std::string rela) {
+	if (!utils::isvalid_username(nick)) return false;
 	if (!get_prefs()->child("relationship")){
 		get_prefs()->add_child("relationship");
 	}
-	config* cignore;
-	cignore = get_prefs()->child("relationship");
-	if(utils::isvalid_username(nick))
-	{
-		(*cignore)[nick] = rela;
-		return true;
-	} else {
-		return false;
-	}
+	(*get_prefs()->child("relationship"))[nick] = rela;
+	return true;
 }
 
 int lobby_joins()

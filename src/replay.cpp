@@ -738,29 +738,34 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 
 		} else if((child = cfg->child("speak")) != NULL) {
 			const std::string& team_name = (*child)["team_name"];
-			const std::string& speaker_name = (*child)["description"];
-			if (team_name == "" || !is_observer() && teams[disp.viewing_team()].team_name() == team_name
-				|| is_observer() && team_name == "observer") {
-				bool is_lobby_join = (speaker_name == "server"
-							&& (*child)["message"].value().find("has logged into the lobby") != std::string::npos);
-									std::string str = (*child)["message"];
-			std::string buf;
-			std::stringstream ss(str);
-			ss >> buf;
-			if (!preferences::get_prefs()->child("relationship")){
-					preferences::get_prefs()->add_child("relationship");
+			if (team_name == "" || (!is_observer()
+					&& teams[disp.viewing_team()].team_name() == team_name)
+					|| (is_observer() && team_name == "observer"))
+			{
+				const std::string& speaker_name = (*child)["description"];
+				const std::string& message = (*child)["message"];
+				bool show_message = true;
+				if (speaker_name == "server"
+						&& message.find("has logged into the lobby") != std::string::npos)
+				{
+					const std::string::const_iterator i =
+							std::find(message.begin(),message.end(),' ');
+					const std::string joiner(message.begin(),i);
+					const config* const crela =
+							preferences::get_prefs()->child("relationship");
+					bool is_lobby_join_of_friend = (crela == NULL ?
+							false : (*crela)[joiner] == "friend");
+					show_message = preferences::lobby_joins() == preferences::SHOW_ALL
+							|| (is_lobby_join_of_friend
+							&& preferences::lobby_joins() == preferences::SHOW_FRIENDS);
 				}
-				config* cignore;
-				cignore = preferences::get_prefs()->child("relationship");
-				bool is_lobby_join_of_friend = ((*cignore)[buf] == "friend");
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
-				if((!replayer.is_skipping() || is_whisper) &&
-                (!is_lobby_join ||
-						((is_lobby_join && preferences::lobby_joins() == preferences::SHOW_ALL) ||
-						(is_lobby_join_of_friend && preferences::lobby_joins() == preferences::SHOW_FRIENDS)))) {
+				if ((!replayer.is_skipping() || is_whisper) && show_message) {
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
-					disp.add_chat_message(speaker_name,side,(*child)["message"],
-						  team_name == "" ? game_display::MESSAGE_PUBLIC : game_display::MESSAGE_PRIVATE, preferences::message_bell());
+					disp.add_chat_message(speaker_name,side,message,
+							(team_name == "" ? game_display::MESSAGE_PUBLIC
+							: game_display::MESSAGE_PRIVATE),
+							preferences::message_bell());
 				}
 			}
 		} else if((child = cfg->child("label")) != NULL) {

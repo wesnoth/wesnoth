@@ -1157,98 +1157,103 @@ namespace {
 	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
 
-void game_display::add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type, bool bell)
+void game_display::add_chat_message(const std::string& speaker, int side,
+		const std::string& message, game_display::MESSAGE_TYPE type, bool bell)
 {
-	config* cignore;
-	bool ignored = false;
-	if ((cignore = preferences::get_prefs()->child("relationship"))){
-		for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
-		i != cignore->values.end(); ++i){
-			 if(speaker == i->first || speaker == "whisper: " + i->first){
-				if (i->second == "ignored"){
-					ignored = true;
-				}
-			}
-		}
+	bool ignored, is_friend = false;
+	std::string sender = speaker;
+	if (speaker.find("whisper: ") == 0) {
+		sender.assign(speaker, 9, speaker.size());
 	}
+	if (preferences::get_prefs()->child("relationship")) {
+		const config& cignore = *preferences::get_prefs()->child("relationship");
+		ignored   = (cignore[sender] == "ignored");
+		is_friend = (cignore[sender] == "friend");
+	}
+	if (ignored) return;
 
-	if (!ignored){
-		bool action;
-		std::string msg;
-
-		if (bell) {
+	const bool is_highlight = (message.find(preferences::login()) != std::string::npos);
+	if (bell) {
+		if (is_highlight || type == MESSAGE_PRIVATE) {
+			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
+		} else if (is_friend) {
+			sound::play_UI_sound(game_config::sounds::receive_message_friend);
+		} else if (sender == "server") {
+			sound::play_UI_sound(game_config::sounds::receive_message_server);
+		} else {
 			sound::play_UI_sound(game_config::sounds::receive_message);
 		}
-
-		if(message.find("/me ") == 0) {
-			msg.assign(message,4,message.size());
-			action = true;
-		} else {
-			msg = message;
-			action = false;
-		}
-
-		try {
-			// We've had a joker who send an invalid utf-8 message to crash clients
-			// so now catch the exception and ignore the message.
-			msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_outside_area().w*3/4);
-		} catch (utils::invalid_utf8_exception&) {
-			LOG_STREAM(err, engine) << "Invalid utf-8 found, chat message is ignored.\n";
-			return;
-		}
-
-		int ypos = chat_message_x;
-		for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-			ypos += font::get_floating_label_rect(m->handle).h;
-		}
-		SDL_Color speaker_colour = {255,255,255,255};
-		if(side >= 1) {
-			speaker_colour = int_to_color(team::get_side_color_range(side).mid());
-		}
-
-		SDL_Color message_colour = chat_message_colour;
-		std::stringstream str;
-		std::stringstream message_str;
-		if(type == MESSAGE_PUBLIC) {
-			if(action) {
-				str << "<" << speaker << " " << msg << ">";
-				message_colour = speaker_colour;
-				message_str << " ";
-			} else {
-				str << "<" << speaker << ">";
-				message_str << msg;
-			}
-		} else {
-			if(action) {
-				str << "*" << speaker << " " << msg << "*";
-				message_colour = speaker_colour;
-				message_str << " ";
-			} else {
-				str << "*" << speaker << "*";
-				message_str << msg;
-			}
-		}
-
-		// prepend message with timestamp
-		std::stringstream message_complete;
-		if (preferences::chat_timestamp()) {
-			message_complete << timestring() << " ";
-		}
-		message_complete << str.str();
-
-		const SDL_Rect rect = map_outside_area();
-		const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
-			rect.x+chat_message_x,rect.y+ypos,
-			0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
-
-		const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,message_colour,
-			rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
-			0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
-
-		chat_messages_.push_back(chat_message(speaker_handle,message_handle));
-
-		prune_chat_messages();
 	}
+
+	bool action = false;
+	std::string msg;
+	if (message.find("/me ") == 0) {
+		msg.assign(message, 4, message.size());
+		action = true;
+	} else {
+		msg = message;
+	} 
+
+	try {
+		// We've had a joker who send an invalid utf-8 message to crash clients
+		// so now catch the exception and ignore the message.
+		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_outside_area().w*3/4);
+	} catch (utils::invalid_utf8_exception&) {
+		LOG_STREAM(err, engine) << "Invalid utf-8 found, chat message is ignored.\n";
+		return;
+	}
+
+	int ypos = chat_message_x;
+	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
+		ypos += font::get_floating_label_rect(m->handle).h;
+	}
+	SDL_Color speaker_colour = {255,255,255,255};
+	if(side >= 1) {
+		speaker_colour = int_to_color(team::get_side_color_range(side).mid());
+	}
+
+	SDL_Color message_colour = chat_message_colour;
+	std::stringstream str;
+	std::stringstream message_str;
+	if(type == MESSAGE_PUBLIC) {
+		if(action) {
+			str << "<" << speaker << " " << msg << ">";
+			message_colour = speaker_colour;
+			message_str << " ";
+		} else {
+			str << "<" << speaker << ">";
+			message_str << msg;
+		}
+	} else {
+		if(action) {
+			str << "*" << speaker << " " << msg << "*";
+			message_colour = speaker_colour;
+			message_str << " ";
+		} else {
+			str << "*" << speaker << "*";
+			message_str << msg;
+		}
+	}
+
+	// prepend message with timestamp
+	std::stringstream message_complete;
+	if (preferences::chat_timestamp()) {
+		message_complete << timestring() << " ";
+	}
+	message_complete << str.str();
+
+	const SDL_Rect rect = map_outside_area();
+	const int speaker_handle = font::add_floating_label(message_complete.str(),font::SIZE_SMALL,speaker_colour,
+		rect.x+chat_message_x,rect.y+ypos,
+		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+
+	const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,message_colour,
+		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
+		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+
+	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
+
+	prune_chat_messages();
 }
 
 void game_display::prune_chat_messages(bool remove_all)
