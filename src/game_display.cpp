@@ -674,23 +674,27 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 			// With 11 colors, the last one will be used only for def=100
 			int val = (game_config::defense_color_scale.size()-1) * def/100;
 			SDL_Color color = int_to_color(game_config::defense_color_scale[val]);
-
 			draw_text_in_hex(loc, def_text.str(), 18, color);
 
-			//we display turn info only if different from a simple last "1"
-			if (w->second.zoc || w->second.capture || w->second.turns > 1
-					|| loc != route_.steps.back())
-			{
-				std::stringstream turns_text;
-				if (w->second.capture) {
-					turns_text << "[" << w->second.turns << "]";
-				} else {
-					turns_text << w->second.turns;
-				}
-				const SDL_Color turns_color =  w->second.zoc ? font::BAD_COLOUR : font::NORMAL_COLOUR;
-				draw_text_in_hex(loc, turns_text.str(), 16, turns_color, 0.5, 0.8);
+			int xpos = get_location_x(loc);
+			int ypos = get_location_y(loc);
+
+			if (w->second.zoc) {
+				surface zoc_surf = image::get_image("misc/zoc.png", image::UNMASKED);
+				video().blit_surface(xpos, ypos, zoc_surf);
 			}
 
+			if (w->second.capture) {
+				surface capture_surf = image::get_image("misc/capture.png", image::UNMASKED);
+				video().blit_surface(xpos, ypos, capture_surf);
+			}
+
+			//we display turn info only if different from a simple last "1"
+			if (w->second.turns > 1 || loc != route_.steps.back()) {
+				std::stringstream turns_text;
+				turns_text << w->second.turns;
+				draw_text_in_hex(loc, turns_text.str(), 17, font::NORMAL_COLOUR, 0.5,0.8);
+			}
 			// The hex is full now, so skip the "show enemy moves"
 			return;
 		}
