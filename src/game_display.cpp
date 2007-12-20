@@ -502,7 +502,6 @@ void game_display::draw_report(reports::TYPE report_num)
 
 void game_display::draw_game_status()
 {
-
 	if(teams_.empty()) {
 		return;
 	}
@@ -510,9 +509,6 @@ void game_display::draw_game_status()
 	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
 		draw_report(reports::TYPE(r));
 	}
-
-	// The mouse-over needs to update the visibility icon
-	draw_report(reports::UNIT_STATUS);
 }
 
 void game_display::draw_sidebar()

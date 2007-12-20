@@ -90,10 +90,7 @@ report generate_report(TYPE type,
 		std::stringstream tooltip;
 		report res;
 
-		// We call invisible with see_all=false to avoid cheat-detection of hidden enemies.
-		// Don't display the icon on shrouded location to prevent cheat-detection of terrain.
-		if(map.on_board(mouseover) && !current_team.shrouded(mouseover)
-			&& u->second.invisible(mouseover,units,teams,false))
+		if(map.on_board(u->first) && u->second.invisible(u->first,units,teams))
 		{
 			unit_status << "misc/invisible.png";
 			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
