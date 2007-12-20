@@ -415,17 +415,17 @@ void create::process_event()
 				parameters_.scenario_data = *levels[index];
 				std::string map_data = parameters_.scenario_data["map_data"];
 
-				if(map_data.empty() && parameters_.scenario_data["map"] != "") {
+				if(map_data.empty() && parameters_.scenario_data.get_attribute("map") != "") {
 					map_data = read_map(parameters_.scenario_data["map"]);
 				}
 
-				// If the map should be randomly generated
-				if(parameters_.scenario_data["map_generation"] != "") {
+				// If the map should be randomly generated.
+				if(parameters_.scenario_data.get_attribute("map_generation") != "") {
 					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));
 				}
 
 #ifndef USE_TINY_GUI
-				if(!parameters_.scenario_data["description"].empty()) {
+				if(!parameters_.scenario_data.get_attribute("description").empty()) {
 					tooltips::add_tooltip(minimap_rect_,parameters_.scenario_data["description"]);
 				}
 #endif
