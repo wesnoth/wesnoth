@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-17 21:09+0100\n"
-"PO-Revision-Date: 2007-11-29 22:15+0100\n"
+"PO-Revision-Date: 2007-12-18 20:06+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: data/_main.cfg:36
 msgid "Compressed Saves"
-msgstr ""
+msgstr "Ukládat hry v komprimovaném formátu"
 
 #: data/_main.cfg:43
 msgid "Show Combat"
@@ -134,11 +134,11 @@ msgstr "Autor"
 
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:33
 msgid "Special Guest Designer"
-msgstr ""
+msgstr "Hostující návrhář"
 
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:39
 msgid "Brainstorming, playtesting, and spousal support"
-msgstr ""
+msgstr "Nápady, testování a manželská podpora"
 
 #: data/campaigns/Two_Brothers/_main.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:90
@@ -367,7 +367,6 @@ msgid "Commands"
 msgstr "Příkazy"
 
 #: data/core/help.cfg:75
-#, fuzzy
 msgid "Abilites"
 msgstr "Schopnosti"
 
@@ -386,6 +385,8 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
 
 #: data/core/help.cfg:90
 msgid "Unknown Unit"
@@ -2695,7 +2696,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:471
 msgid "feeding"
-msgstr ""
+msgstr "krmení"
 
 #: data/core/macros/abilities.cfg:473
 msgid ""
@@ -2703,6 +2704,8 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Krmení:\n"
+"Tato jednotka zvyšuje maximum svých životů o 1 vždy když zabije nepřítele."
 
 #: data/core/macros/abilities.cfg:497
 msgid "+1 max HP"
@@ -2906,9 +2909,8 @@ msgid "Max HP bonus +"
 msgstr "Maximální bonus HP +"
 
 #: data/core/macros/amla.cfg:30
-#, fuzzy
 msgid "Heal to full, MAX XP +25%"
-msgstr ", MAX XP +25%"
+msgstr "Plné uzdravení, MAX XP +25%"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -4262,84 +4264,72 @@ msgid "Teal"
 msgstr "Azurová"
 
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bat"
-msgstr "Netopýři"
+msgstr "Netopýr"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
-msgstr "Netopýři"
+msgstr "Netopýřice"
 
 #: data/core/units.cfg:45
 msgid "race^Bats"
 msgstr "Netopýři"
 
 #: data/core/units.cfg:52
-#, fuzzy
 msgid "race^Drake"
-msgstr "Drakonidé"
+msgstr "Drakonid"
 
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race+female^Drake"
-msgstr "Drakonidé"
+msgstr "Drakonidka"
 
 #: data/core/units.cfg:54
 msgid "race^Drakes"
 msgstr "Drakonidé"
 
 #: data/core/units.cfg:62
-#, fuzzy
 msgid "race^Dwarf"
-msgstr "Trpaslíci"
+msgstr "Trpaslík"
 
 #: data/core/units.cfg:63
-#, fuzzy
 msgid "race+female^Dwarf"
-msgstr "Trpaslíci"
+msgstr "Trpaslice"
 
 #: data/core/units.cfg:64
 msgid "race^Dwarves"
 msgstr "Trpaslíci"
 
 #: data/core/units.cfg:73
-#, fuzzy
 msgid "race^Elf"
-msgstr "Elfové"
+msgstr "Elf"
 
 #: data/core/units.cfg:74
-#, fuzzy
 msgid "race+female^Elf"
-msgstr "Elfové"
+msgstr "Elfka"
 
 #: data/core/units.cfg:75
 msgid "race^Elves"
 msgstr "Elfové"
 
 #: data/core/units.cfg:85
-#, fuzzy
 msgid "race^Goblin"
-msgstr "Skřeti"
+msgstr "Skřet"
 
 #: data/core/units.cfg:86
-#, fuzzy
 msgid "race+female^Goblin"
-msgstr "Skřeti"
+msgstr "Skřetice"
 
 #: data/core/units.cfg:87
 msgid "race^Goblins"
 msgstr "Skřeti"
 
 #: data/core/units.cfg:95
-#, fuzzy
 msgid "race^Gryphon"
-msgstr "Gryfoni"
+msgstr "Gryfon"
 
 #: data/core/units.cfg:96
-#, fuzzy
 msgid "race+female^Gryphon"
-msgstr "Gryfoni"
+msgstr "Gryfonice"
 
 #: data/core/units.cfg:97
 msgid "race^Gryphons"
@@ -4351,16 +4341,17 @@ msgid ""
 "both dangerous and wary of other intelligent creatures, and thus should not "
 "be disturbed without a good reason."
 msgstr ""
+"Tato ohromující stvoření - napůl lvi, napůl ptáci - kralují obloze světa. "
+"Gryfoni josu nebezpeční a mají se na pozoru před ostatními rasami; neměli by "
+"být vyrušováni bez dobrého důvodu."
 
 #: data/core/units.cfg:105
-#, fuzzy
 msgid "race^Human"
-msgstr "Lidé"
+msgstr "Člověk"
 
 #: data/core/units.cfg:106
-#, fuzzy
 msgid "race+female^Human"
-msgstr "Lidé"
+msgstr "Žena"
 
 #: data/core/units.cfg:107
 msgid "race^Humans"
@@ -4368,15 +4359,13 @@ msgstr "Lidé"
 
 # Nágy? Hadí lid?
 #: data/core/units.cfg:115
-#, fuzzy
 msgid "race^Saurian"
-msgstr "Ještěráci"
+msgstr "Ještěrák"
 
 # Nágy? Hadí lid?
 #: data/core/units.cfg:116
-#, fuzzy
 msgid "race+female^Saurian"
-msgstr "Ještěráci"
+msgstr "Ještěráčice"
 
 # Nágy? Hadí lid?
 #: data/core/units.cfg:117
@@ -4385,31 +4374,27 @@ msgstr "Ještěráci"
 
 #: data/core/units.cfg:126
 msgid "race^Mechanical"
-msgstr "Stroje"
+msgstr "Stroj"
 
 #: data/core/units.cfg:127
-#, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "Stroje"
 
 #: data/core/units.cfg:137
-#, fuzzy
 msgid "race^Merman"
-msgstr "Mořský lid"
+msgstr "Mořský člověk"
 
 #: data/core/units.cfg:138
-#, fuzzy
 msgid "race^Mermaid"
-msgstr "Mořský lid"
+msgstr "Mořská panna"
 
 #: data/core/units.cfg:139
 msgid "race^Mermen"
 msgstr "Mořský lid"
 
 #: data/core/units.cfg:147
-#, fuzzy
 msgid "race^Monster"
-msgstr "Monstra"
+msgstr "Monstrum"
 
 #: data/core/units.cfg:148
 msgid "race^Monsters"
@@ -4417,15 +4402,13 @@ msgstr "Monstra"
 
 # Nágy? Hadí lid?
 #: data/core/units.cfg:155
-#, fuzzy
 msgid "race^Naga"
-msgstr "Nagy"
+msgstr "Naga"
 
 # Nágy? Hadí lid?
 #: data/core/units.cfg:156
-#, fuzzy
 msgid "race^Nagani"
-msgstr "Nagy"
+msgstr "Nagini"
 
 # Nágy? Hadí lid?
 #: data/core/units.cfg:157
@@ -4433,14 +4416,12 @@ msgid "race^Nagas"
 msgstr "Nagy"
 
 #: data/core/units.cfg:165
-#, fuzzy
 msgid "race^Ogre"
-msgstr "Obři"
+msgstr "Obr"
 
 #: data/core/units.cfg:166
-#, fuzzy
 msgid "race+female^Ogre"
-msgstr "Obři"
+msgstr "Obryně"
 
 #: data/core/units.cfg:167
 msgid "race^Ogres"
@@ -4453,30 +4434,29 @@ msgid ""
 "can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
+"Obři jsou veliké bytosti žijící v divočině, většinou samotářsky. Výrazně se "
+"podobají lidem, i když nabývají úctyhodných rozměrů a jsou deformovaní. I "
+"přes jejich nemotornost a hloupost není radno jejich sílu podceňovat."
 
 #: data/core/units.cfg:175
-#, fuzzy
 msgid "race^Orc"
-msgstr "Skřeti"
+msgstr "Skřet"
 
 #: data/core/units.cfg:176
-#, fuzzy
 msgid "race+female^Orc"
-msgstr "Skřeti"
+msgstr "Skřetice"
 
 #: data/core/units.cfg:177
 msgid "race^Orcs"
 msgstr "Skřeti"
 
 #: data/core/units.cfg:185
-#, fuzzy
 msgid "race^Troll"
-msgstr "Trollové"
+msgstr "Troll"
 
 #: data/core/units.cfg:186
-#, fuzzy
 msgid "race+female^Troll"
-msgstr "Trollové"
+msgstr "Trollice"
 
 #: data/core/units.cfg:187
 msgid "race^Trolls"
@@ -4484,26 +4464,23 @@ msgstr "Trollové"
 
 #: data/core/units.cfg:200
 msgid "race^Undead"
-msgstr "Nemrtví"
+msgstr "Nemrtvý"
 
 #: data/core/units.cfg:201
-#, fuzzy
 msgid "race+female^Undead"
-msgstr "Nemrtví"
+msgstr "Nemrtvá"
 
 #: data/core/units.cfg:202
-#, fuzzy
 msgid "race+plural^Undead"
 msgstr "Nemrtví"
 
 #: data/core/units.cfg:203
 msgid "Undead units are the bodies of the dead, risen to fight again."
-msgstr ""
+msgstr "Nemrtvé jednotky jsou těla mrtvých, která povstala, aby opět bojovala."
 
 #: data/core/units.cfg:211
-#, fuzzy
 msgid "race^Wose"
-msgstr "Stromový lid"
+msgstr "Stromový muž"
 
 #: data/core/units.cfg:212
 msgid "race^Woses"
@@ -4652,6 +4629,10 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Nezanedbávej svého vůdce, také potřebuje zkušenosti z boje! Je sice nejlehčí "
+"udržet jej naživu tak, že se boje vůbec nezúčastní, ale zůstane tak na "
+"základní úrovni. To se může vymstít později ve hře, kdy možná bude muset v "
+"některých scénářích čelit nepřátelům bez početné armády a sám bojovat."
 
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
@@ -4664,6 +4645,11 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"V menu „Akce“ lze vybrat „Ukaž tahy nepřítele“ - zvýrazní se všechna "
+"políčka, na něž se může dostat jakákoliv jednotka nepřítele (za předpokladu, "
+"že se již rozestavení tvých jednotek nezmění). Takto můžeš snadno "
+"kontrolovat, zda jsou určité jednotky (např. slabé nebo zraněné) mimo dosah "
+"nepřítele."
 
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
@@ -4686,6 +4672,9 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Jednotky s vlastností „inteligentní“ potřebují k povýšení méně zkušeností. "
+"Na začátku tažení se pokus přenechat jim dobíjení nepřátel, abys získal(a) "
+"co nejdříve jednotky vyšších úrovní."
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
@@ -4697,6 +4686,10 @@ msgid ""
 "long range units. By placing two units on opposite sides of an opposing "
 "unit, their zones of control limit it to one hex move in any direction."
 msgstr ""
+"Taktiku obklíčení dvěma jednotkami není radno podceňovat, zvláště v případě "
+"jednotek pro boj na dálku. Umístěním dvou jednotek na opačné strany "
+"nepřátelské jednotky ji sevřete jejich oblastmi kontroly a omezíte tak pohyb "
+"na jedno políčko kterýmkoliv směrem."
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
@@ -4708,6 +4701,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you get to a village a turn earlier."
 msgstr ""
+"Příkazy pro verbování a přivolávání je možno aktivovat i z menu po kliknutí "
+"pravým tlačítkem na políčko hradu. To vám umožní přesně určit, kam umístit "
+"novou jednotku, což někdy může pomoci - například získat vesnnici o tah "
+"dříve."
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -4715,6 +4712,9 @@ msgid ""
 "for instance, will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Z hlavního menu lze otevřít několik užitečných souhrnů: například "
+"„Přehledová tabulka“ přehledně ukazuje, jak si vedete ve srovnání s "
+"nepřítelem ohledně financí a velikosti armády."
 
 #: data/hardwired/tips.cfg:27
 msgid ""
@@ -4722,6 +4722,9 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Jednotky s vlastností „rychlý“ mohou dojít o jedno políčko za tah dále. Při "
+"pohybu členitým terénem jako jeskyně nebo voda to může představovat "
+"podstatnou výhodu."
 
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
@@ -4732,6 +4735,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Až dohrajete vašich prvních pár scénářů, přečtěte si sekci „Pravidla hry“ v "
+"nápovědě. Jak se scénáře stávají těžšími, záleží na detailech čím dál více!"
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4739,17 +4744,20 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Je vhodnější začínat scénáře tažení s jednotkami, které budou brzy povýšeny, "
+"než s těmi již na vyšší úrovni."
 
 #: data/hardwired/tips.cfg:39
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Na www.wesnoth.org lze najít strategické příručky, historii Wesnothu, získat "
+"technickou pomoc a mnoho dalšího."
 
 #: data/hardwired/tips.cfg:40
-#, fuzzy
 msgid "- The Wesnoth Community"
-msgstr "- Průvodce taktikou Wesnothu"
+msgstr "- Komunita Wesnothu"
 
 #: data/hardwired/tips.cfg:43
 msgid ""
@@ -4766,7 +4774,7 @@ msgstr "- Královské kompendium válečné terminologie, svazek II, 212 YW"
 #: data/hardwired/tips.cfg:47
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr ""
+msgstr "I jinak skvělý plán selže, pokud zaútočíš v nevhodnou denní dobu."
 
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
@@ -4780,9 +4788,13 @@ msgid ""
 "choose scouts that can easily move across the surrounding terrain, because "
 "units see as far as they can move in one turn."
 msgstr ""
+"Pokud hrajete se zapnutou mlhou či zahalením tmou, není jasné, proti čemu "
+"stojíte. V takovém případě se velmi hodí průzkumné jednotky s velkou "
+"rychlostí pohybu. Oblast, kterou jednotka vidí, odpovídá tomu kam dojde v "
+"příštím tahu, takže je vhodné uvážit i rychlost pohybu na různých terénech "
+"pro co největší rozhled."
 
 #: data/hardwired/tips.cfg:55
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -4791,9 +4803,8 @@ msgid ""
 msgstr ""
 "Existuje šest druhů útoku: čepelí, bodnutím, úderem, ohněm, chladem a "
 "nezemský útok. Různé jednotky jsou snadno zranitelné různými typy útoku. "
-"Klikni na jednotku pravým tlačítkem myši a vyber 'Popis jednotky', tam "
-"klikni na 'Odolnost', a uvidíš, jak je jednotka odolná vůči jednotlivým "
-"typům útoku."
+"Klikni na jednotku pravým tlačítkem myši a vyber „Popis jednotky“ pro "
+"zobrazení informací, jak je jednotka odolná vůči jednotlivým typům útoku."
 
 #: data/hardwired/tips.cfg:59
 msgid ""
@@ -4807,7 +4818,6 @@ msgstr ""
 "zobrazuje v pravém horním rohu obrazovky."
 
 #: data/hardwired/tips.cfg:63
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
@@ -4816,23 +4826,21 @@ msgid ""
 "completely cured on their next turn."
 msgstr ""
 "Otrávené jednotky ztrácejí 8 životů za kolo, ale na otravu nezemřou: otrava "
-"nikdy nezmenší počet životů pod jeden. Otrávené jednotky mohou být uzdraveny "
-"přesunem do vesnice nebo umístěním vedle jednotky, která má schopnost "
-"uzdravovat."
+"nikdy nezmenší počet životů pod jeden. Otráveným jednotkám stojícím na "
+"začátku kola vedle léčitele životy nepoklesnou. Uzdraveny mohou být přesunem "
+"do vesnice nebo umístěním vedle jednotky, která má schopnost „uzdravování“."
 
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"Můžeš využívat jednotky z minulých scénářů vybráním 'Přivolej' z menu hry. "
-"Přivoláváním stále stejných jednotek znovu a znovu můžeš vybudovat silnou a "
-"zkušenou armádu."
+"Můžeš využívat jednotky z minulých scénářů vybráním „Přivolej“ z menu "
+"„Akce“. Přivoláváním stále stejných jednotek znovu a znovu můžeš vybudovat "
+"silnou a zkušenou armádu."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -4842,9 +4850,10 @@ msgid ""
 msgstr ""
 "Všechny jednotky mají oblast kontroly skládající se ze sousedních políček. "
 "Pokud se jednotka posune do oblasti kontroly nepřítele, nemůže se už v tomto "
-"kole pohnout dále. Jednotky stupně 0 jsou pro vytvoření oblasti kontroly "
-"příliš slabé; průbojné jednotky jsou natolik obratné, že tyto oblasti "
-"ignorují."
+"kole pohnout dále. Znamená to také, že pro vytvoření neprůchodné linie stačí "
+"umístit jednotky dvě políčka od sebe. (Jednotky stupně 0 jsou pro vytvoření "
+"oblasti kontroly příliš slabé; průbojné jednotky jsou natolik obratné, že "
+"tyto oblasti ignorují.)"
 
 #: data/hardwired/tips.cfg:75
 msgid ""
@@ -4868,12 +4877,12 @@ msgstr ""
 "Jednotky umístěné ve vesnicích se uzdravují o 8 životů na začátku svého kola."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to--let it rest. If a unit does "
 "not move or attack, it will recover 2 hit points at the beginning of its "
 "next turn."
 msgstr ""
+"Pokud to není zapotřebí, nepřesunuj raněné jednotky, ale nech je na místě. "
 "Jednotky, které se nepohnou ani neútočí během svého kola, odpočívají a "
 "uzdraví se na začátku příštího kola o dva životy."
 
@@ -4984,13 +4993,12 @@ msgstr ""
 "údery, ohněm a nezemskými útoky."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability make lower-level adjacent units on the "
 "same side fight better. Use these units to help your other units level up "
 "faster."
 msgstr ""
-"Jednotky se schopností velet zlepšují bojové schopnosti jednotek nižší "
+"Jednotky se schopností „velení“ zlepšují bojové schopnosti jednotek nižší "
 "úrovně na sousedních polích."
 
 #: data/hardwired/tips.cfg:131
@@ -5077,17 +5085,17 @@ msgstr ""
 "zabít jedinou ranou."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hit points "
 "by 3. This is less than the normal difference gained by advancing a level. "
 "Thus, it is usually more useful to try to advance your lower level units."
 msgstr ""
-"Jednotky mají schopnost rozvoje po dosažení maximální úrovně (After Maximum "
-"Level Advancement - AMLA), která obvykle zvýší maximální počet životů o 3. "
-"Každá dosažená AMLA ztíží podmínky pro dosažení další; proto je většinou "
-"vhodnější pokusit se povýšit jednotky nižší úrovně."
+"Namísto povyšování mají jednotky na nejvyšší úrovni schopnost „rozvoje po "
+"dosažení maximální úrovně“ (After Maximum Level Advancement - AMLA), která "
+"obvykle zvýší maximální počet životů o 3. Každá dosažená AMLA ztíží podmínky "
+"pro dosažení další; proto je většinou vhodnější pokusit se povýšit jednotky "
+"nižší úrovně."
 
 #: data/hardwired/tips.cfg:175
 msgid ""
@@ -5145,7 +5153,7 @@ msgstr ""
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
-msgstr ""
+msgstr "Ohnivý rubín"
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -5306,11 +5314,11 @@ msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 
 #: src/actions.cpp:260 src/actions.cpp:283 src/actions.cpp:288
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
+msgstr "Vybrána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
 
 #: src/actions.cpp:267
 msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr ""
+msgstr "Poslána neplatná zbraň, pravděpodobně kvůli Pythonové AI."
 
 #: src/actions.cpp:959 src/actions.cpp:1213
 msgid "poisoned"
@@ -5369,13 +5377,12 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(stiskni $hotkey k pokračování)"
 
 #: src/ai.cpp:1712
-#, fuzzy
 msgid "Unknown unit type : "
-msgstr "Neznámá jednotka „$type|“"
+msgstr "Neznámý druh jednotky : "
 
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
-msgstr ""
+msgstr "Cena pohybu je 0, nejspíše terén s cenou 0."
 
 #: src/dialogs.cpp:108
 msgid "Advance Unit"
@@ -5863,9 +5870,8 @@ msgstr "Prohra:"
 
 #: src/gamestatus.cpp:254 src/gamestatus.cpp:269 src/gamestatus.cpp:289
 #: src/gamestatus.cpp:374
-#, fuzzy
 msgid "No time of day has been defined."
-msgstr "Nastaví na začátku hry náhodnou denní dobu"
+msgstr "Nebyla definována žádná denní doba."
 
 #: src/gamestatus.cpp:694 src/gamestatus.cpp:696 src/playcampaign.cpp:411
 msgid " replay"
@@ -6157,9 +6163,10 @@ msgstr "Načítám soubory s jednotkami."
 msgid "Reading files and creating cache."
 msgstr "Načítám soubory a vytvářím dočasná úložiště."
 
+# alt.: "nelze použít?"
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
-msgstr ""
+msgstr "Náhodné mapy s lichou šířkou nejsou podporovány."
 
 #: src/menu_events.cpp:125 src/menu_events.cpp:174
 msgid "Recruits"
@@ -6353,11 +6360,8 @@ msgstr ""
 "lomítka. Zvol prosím jiné jméno."
 
 #: src/menu_events.cpp:715
-#, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr ""
-"Jména uložených her nemohou obsahovat dvojtečky, lomítka nebo zpětná "
-"lomítka. Zvol prosím jiné jméno."
+msgstr "Jména uložených her by neměla končit „.gz“. Zvol prosím jiné jméno."
 
 #: src/menu_events.cpp:726
 msgid "Saved"
@@ -6493,9 +6497,8 @@ msgid "Place Label"
 msgstr "Umísti popisek"
 
 #: src/menu_events.cpp:1669 src/menu_events.cpp:1672
-#, fuzzy
 msgid "Label: "
-msgstr "Popisek:"
+msgstr "Popisek: "
 
 #: src/menu_events.cpp:1674
 msgid "Team only"
@@ -7135,15 +7138,14 @@ msgid "Client disconnected"
 msgstr "Klient odpojen"
 
 #: src/network.cpp:165
-#, fuzzy
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
-"Server neodpověděl na ping nejméně 30 vteřin. Spojení bylo přerušeno."
+"Server neodpověděl na ping po jednu vteřinu. Spojení bylo přerušeno."
 msgstr[1] ""
-"Server neodpověděl na ping nejméně 30 vteřin. Spojení bylo přerušeno."
+"Server neodpověděl na ping po $timeout vteřiny. Spojení bylo přerušeno."
 msgstr[2] ""
-"Server neodpověděl na ping nejméně 30 vteřin. Spojení bylo přerušeno."
+"Server neodpověděl na ping po $timeout vteřin. Spojení bylo přerušeno."
 
 #: src/network.cpp:519
 msgid "Could not add socket to socket set"
@@ -7155,7 +7157,7 @@ msgstr "Nemohu poslat žádost o spojení"
 
 #: src/pathfind.cpp:307
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Nalezen terén s cenou pohybu menší než 1."
 
 #: src/play_controller.cpp:794
 msgid "Back to start"
@@ -7403,7 +7405,7 @@ msgstr "$error na $pos"
 
 #: src/terrain.cpp:81
 msgid "'string' is a mandatory key in '[terrain]'."
-msgstr ""
+msgstr "„string“ je povinná položka tagu „[terrain]“."
 
 #: src/terrain.cpp:128
 msgid "Allied village"
@@ -7419,7 +7421,7 @@ msgstr "Vlastní vesnice"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "Hodnota „border_size“ by měla ležet mezi 0,0 a 0,5."
 
 #: src/titlescreen.cpp:318
 msgid "TitleScreen button^Tutorial"
@@ -7615,10 +7617,6 @@ msgstr "Pomozte nám vylepšit Wesnoth!"
 #: src/upload_log.cpp:297
 msgid "Enable summary uploads"
 msgstr "Povolit posílání souhrnů"
-
-#, fuzzy
-#~ msgid "Masked Dwarf"
-#~ msgstr "Trpaslíci"
 
 #~ msgid "Full Heal"
 #~ msgstr "Celkové vyléčení"

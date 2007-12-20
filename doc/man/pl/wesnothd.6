@@ -1,0 +1,171 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2007 wesnothd "demon sieciowy gier wieloosobowych Bitwy o Wesnoth"
+.
+.SH NAZWA
+.
+wesnothd \- demon sieciowy gier wieloosobowych Bitwy o \fBWesnoth\fP
+.
+.SH SK?ADNIA
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fI?cie?ka\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIliczba\fP\|] [\|\fB\-T\fP \fIliczba\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH OPIS
+.
+Zarz?dza grami wieloosobowymi Bitwy o Wesnoth. Wi?cej informacji o
+poleceniach akceptowanych przez serwer za po?rednictwem klienta wesnoth lub
+gniazda mo?na znale?? pod adresem
+http://www.wesnoth.org/wiki/ServerAdministration.
+.
+.SH OPCJE
+.
+.TP 
+\fB\-c\ \fP\fI?cie?ka\fP\fB,\ \-\-config\fP\fI\ ?cie?ka\fP
+informuje demona wesnothd o lokalizacji pliku konfiguracyjnego. Zobacz
+rozdzia? \fBKONFIGURACJA SERWERA\fP poni?ej, aby uzyska? informacje o
+sk?adni. Konfiguracj? mo?na prze?adowa? wysy?aj?c procesowi serwera proces
+SIGHUP.
+.TP 
+\fB\-d, \-\-daemon\fP
+uruchamia wesnothd w trybie demona.
+.TP 
+\fB\-h, \-\-help\fP
+wy?wietla informacje o opcjach wiersza polece?.
+.TP 
+\fB\-\-log\-\fP\fIpoziom\fP\fB=\fP\fIdomena1\fP\fB,\fP\fIdomena2\fP\fB,\fP\fI...\fP
+okre?la poziom istotno?ci domen debugowania. \fBall\fP oznacza dopasowanie
+wszystkich domen debugowania. Dost?pne poziomy: \fBerror\fP (b??dy),\ \fBwarning\fP (ostrze?enia),\ \fBinfo\fP (informacje),\ \fBdebug\fP
+(debugowanie). Poziom domy?lny to \fBerror\fP lub \fBinfo\fP (w przypadku domeny
+\fBserver\fP).
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+przypisuje serwer do okre?lonego portu. Je?li nie podano ?adnego portu,
+u?ywany b?dzie port \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIliczba\fP\fB,\ \-\-threads\fP\fI\ liczba\fP
+ustawia maksymaln? liczb? oczekuj?cych w?tków roboczych dla wej?cia/wyj?cia
+sieci na warto?? n (domy?lnie: \fB5\fP,\ maksymalnie:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIliczba\fP\fB,\ \-\-max\-threads\fP\fI\ liczba\fP
+ustawia maksymaln? ilo?? w?tków roboczych, które zostan? utworzone. Warto??
+\fB0\fP (domy?lna) oznacza brak limitu.
+.TP 
+\fB\-V, \-\-version\fP
+wy?wietla numer wersji i ko?czy dzia?anie programu.
+.TP 
+\fB\-v, \-\-verbose\fP
+w??cza zapis dzienników debugowania.
+.
+.SH "KONFIGURACJA SERWERA"
+.
+.SS "Ogólna sk?adnia jest nast?puj?ca:"
+.
+.P
+[\fItag\fP]
+.IP
+key="\fIwarto??\fP"
+.IP
+key="\fIwarto??\fP,\fIwarto??\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Klawisze globalne:"
+.
+.TP 
+\fBconnections_allowed\fP
+Dozwolona liczba po??cze? z tego samego adresu IP (domy?lnie: \fB5\fP).
+.TP 
+\fBdisallow_names\fP
+Nazwy/ksywki, które nie s? akceptowane przez serwer. '*' oraz '?' z wzorców
+wieloznacznych s? obs?ugiwane. Zobacz stron? \fBglob\fP(7), aby uzyska?
+szczegó?owe informacje. Warto?ci domy?lne (u?ywane, gdy ?adne inne warto?ci
+nie zostan? podane):
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBmax_messages\fP
+Liczba wiadomo?ci dopuszczanych w przedziale czasowym
+\fBmessages_time_period\fP (domy?lnie: \fB4\fP).
+.TP 
+\fBmessages_time_period\fP
+Przedzia? czasowy (w sekundach), na przestrzeni którego wykrywane jest
+zalewanie komunikatami (domy?lnie: \fB10\fP sekund).
+.TP 
+\fBmotd\fP
+Wiadomo?? dnia.
+.TP 
+\fBpasswd\fP
+Has?o s?u??ce do uzyskania uprawnie? administratora. Zazwyczaj zaczyna si?
+od "admin ".
+.TP 
+\fBversions_accepted\fP
+Oddzielana przecinkami lista wersji akceptowanych przez serwer. `*' i `?' z
+wzorców wieloznacznych s? akceptowane. (Domy?lnie: dla odpowiedniej wersji
+wesnoth).
+.br
+Przyk?ad: \fBversions_accepted="*"\fP odpowiada akceptowaniu dowolnego numeru
+wersji.
+.
+.SS "Globalne etykiety:"
+.
+.P
+\fB[redirect]\fP Etykieta okre?laj?ca serwer, na który przekierowywane s?
+okreslone wersje klientów.
+.RS
+.TP 
+\fBhost\fP
+Adres serwera, na który ma nast?pi? przekierownie.
+.TP 
+\fBport\fP
+Numer portu, z którym ma nast?pi? po??czenie.
+.TP 
+\fBversion\fP
+Oddzielana przecinkami lista wersji, które maj? zosta? przekierowane. Dzia?a
+tak, jak \fBversions_accepted\fP w przypadku wzorców wieloznacznych.
+.RE
+.P
+\fB[proxy]\fP Etykieta instruuj?ca serwer, by dzia?a? jak serwer proxy i
+przekierowywa? ??danie klienta do okre?lonego serwera. Akceptuje takie same
+klucze, jak [redirect].
+.
+.SH AUTOR
+.
+Autor: David White <davidnwhite@verizon.net>. Redakcja: Nils Kneuper
+<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> i Soliton
+<soliton.de@gmail.com>. Autorem pierwotnej wersji tej strony manuala
+jest Cyril Bouthors <cyril@bouthors.org>.
+.br
+Odwied? oficjaln? stron? WWW: http://www.wesnoth.org/
+.
+.SH "PRAWA AUTORSKIE"
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Oprogramowanie typu Free Software. Oprogramowanie oparte na licencji GPL
+wersja 2 opublikowanej przez Free Software Foundation. Nie udziela si?
+?ADNEJ gwarancji, ??cznie z R?KOJMI? oraz GWARANCJ? PRZYDATNO?CI DO
+OKRE?LONEGO CELU.
+.
+.SH "ZOBACZ TAK?E"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-15 14:48+0100\n"
-"PO-Revision-Date: 2007-11-16 17:29+0100\n"
+"PO-Revision-Date: 2007-12-15 15:45+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
 "MIME-Version: 1.0\n"
@@ -374,7 +374,7 @@ msgstr "Složku se nezdařilo vytvořit."
 
 #: src/game_preferences.cpp:158
 msgid "No server has been defined."
-msgstr ""
+msgstr "Nebyl definován žádný server."
 
 #: src/game_preferences.cpp:222
 msgid "player"
@@ -1176,15 +1176,15 @@ msgstr "Ostrov"
 
 #: src/marked-up_text.cpp:340
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "Maximální šířka textu je menší než 1."
 
 #: src/minimap.cpp:88
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Nelze načíst obrázek pro terén $terrain."
 
 #: src/minimap.cpp:94 src/minimap.cpp:106
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Chyba při vytváření nebo získávání obrázku."
 
 #: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 msgid ""
@@ -1241,7 +1241,7 @@ msgstr "Chyba"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr ""
+msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený terén :"
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1252,10 +1252,12 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Nastala chyba, pravděpodobně kvůli neplatnému WML.\n"
+"Chybová zpráva :"
 
 #: src/wml_exception.cpp:61
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "Při oznamování chyby prosím uveďte následující chybovou zprávu :"
 
 #~ msgid "Save Replays"
 #~ msgstr "Ukládej záznamy"

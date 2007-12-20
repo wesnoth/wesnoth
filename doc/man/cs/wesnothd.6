@@ -1,0 +1,165 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2007 wesnothd "Bitva o Wesnoth \- sí»ový server pro hru více hráèù"
+.
+.SH NÁZEV
+.
+Bitva o \fBWesnoth\fP \- sí»ový server pro hru více hráèù
+.
+.SH POU®ITÍ
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIpoèet_vláken\fP\|] [\|\fB\-T\fP \fIpoèet_vláken\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH POPIS
+.
+Souèást Bitvy o Wesnoth spravující hry více hráèù. Na
+http://www.wesnoth.org/wiki/ServerAdministration lze nalézt pøíkazy, které
+server akceptuje, a to jak pøes soket, tak pøímo od klienta wesnoth.
+.
+.SH VOLBY
+.
+.TP 
+\fB\-c\ \fP\fIcesta\fP\fB,\ \-\-config\fP\fI\ cesta\fP
+specifikuje cestu, kde má wesnothd hledat konfiguraèní soubor. Syntaxe
+souboru je popsána v sekci \fBKONFIGURACE SERVERU\fP ní¾e. Konfiguraci je mo¾no
+znovu naèíst posláním SIGHUP procesu serveru.
+.TP 
+\fB\-d, \-\-daemon\fP
+spou¹tí wesnothd jako démona.
+.TP 
+\fB\-h, \-\-help\fP
+zobrazuje nápovìdu k parametrùm pøíkazové øádky.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIkategorie1\fP\fB,\fP\fIkategorie2\fP\fB,\fP\fI...\fP
+nastavuje úroveò záva¾nosti pro jednotlivé kategorie. \fBall\fP znamená, ¾e
+budou vypisovány v¹echny kategorie. Dostupné kategorie: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.\ Implicitnì je aktivována kategorie
+\fBerror\fP a pro kategorii \fBserver\fP také \fBinfo\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+urèuje, který port má server pou¾ívat. Implicitní hodnota je \fB15000\fP.
+.TP 
+\fB\-t,\ \fP\fIpoèet\fP\fB,\ \-\-threads\fP\fI\ poèet\fP
+nastavuje limit pro poèet neèinných vláken èekajících na sí»ová spojení
+(implicitnì: \fB5\fP,\ max:\ \fB30\fP).
+.TP 
+\fB\-T,\ \fP\fIpoèet\fP\fB,\ \-\-max\-threads\fP\fI\ poèet\fP
+nastavuje nejvy¹¹í poèet vláken, které wesnothd vytvoøí; \fB0\fP znamená bez
+omezení (implicitnì: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+zobrazí verzi wesnothd a skonèí.
+.TP 
+\fB\-v, \-\-verbose\fP
+zapíná výpis roz¹íøených logovacích informací.
+.
+.SH "KONFIGURACE SERVERU"
+.
+.SS "Obecná syntaxe je:"
+.
+.P
+[\fIznaèka\fP]
+.IP
+klíè="\fIhodnota\fP"
+.IP
+klíè="\fIhodnota\fP,\fIhodnota\fP"
+.P
+[/\fIznaèka\fP]
+.
+.SS "Globální klíèe:"
+.
+.TP 
+\fBconnections_allowed\fP
+Poèet povolených spojení z jedné IP adresy. (implicitnì \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Jména/pøezdívky, které nejsou serverem akceptována. Je mo¾no pou¾ít
+metaznaky `*' a `?'. Více viz. \fBglob\fP(7). Implicitní hodnota je:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBmax_messages\fP
+Maximální poèet zpráv, které jsou pøijaty bìhem
+\fBmessages_time_period\fP. (implicitnì \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Èasová perioda (ve vteøinách), po které se nuluje poèítadlo pøjatých
+zpráv. (implicitnì \fB10\fP sekund)
+.TP 
+\fBmotd\fP
+Zpráva dne.
+.TP 
+\fBpasswd\fP
+Heslo pro získání administrátorských práv. Obvykle zaèíná na ?admin?.
+.TP 
+\fBversions_accepted\fP
+Seznam èárkou oddìlených øetìzcù verzí Wesnothu, které jsou serverem
+akceptovány. Je mo¾no pou¾ít zástupné znaky `*' a `?'. Implicitní hodnota
+odpovídá pøíslu¹né verzi wesnothu.
+.br
+Pøíklad: \fBversions_accepted="*"\fP akceptuje v¹echny verze.
+.
+.SS "Globální znaèky:"
+.
+.P
+\fB[redirect]\fP Znaèka udávající server, na který bude pøesmìrován po¾adavek
+pro konkrétní verzi klienta.
+.RS
+.TP 
+\fBhost\fP
+Adresa serveru pro pøesmìrování.
+.TP 
+\fBport\fP
+Port, na kterém poslouchá vzdálený wesnothd.
+.TP 
+\fBversion\fP
+Seznam èárkou oddìlených øetìzcù verzí Wesnothu, pro které jsou po¾adavky
+pøesmìrovány na tento vzdálený server. Obdobný zápis jako u
+\fBversions_accepted\fP.
+.RE
+.P
+\fB[proxy]\fP Znaèka øíkající, který server se chová jako proxy a pøesmìrovává
+na urèený server své po¾adavky. Akceptuje stejné klíèe jako \fB[redirect]\fP.
+.
+.SH AUTOØI
+.
+Vytvoøil David White <davidnwhite@verizon.net>. Upravili Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a
+Soliton <soliton@sonnenkinder.org>. Tuto manovou stránku pùvodnì
+vytvoøil Cyril Bouthors <cyril@bouthors.org>. Pøeklad Oto 'tapik'
+Buchta <tapik@buchtovi.cz> a Vladimír Slávik
+<slavik.vladimir@seznam.cz<gt>
+.br
+Nav¹tivte oficiální stránky: http://www.wesnoth.org/ a oficiální èeské
+stránky http://www.wesnoth.wz.cz/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+publikována nadací Free Software Foundation. Tento program je bez záruky, a
+to i co se týká obchodovatelnosti a pou¾itelnosti.
+.
+.SH "VIZ TAKÉ"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)

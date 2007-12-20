@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-15 14:48+0100\n"
-"PO-Revision-Date: 2007-12-10 13:43+0100\n"
+"PO-Revision-Date: 2007-12-20 13:43+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -368,7 +368,7 @@ msgstr "Tworzenie katalogu nie powiodło się."
 
 #: src/game_preferences.cpp:158
 msgid "No server has been defined."
-msgstr ""
+msgstr "Nie zdefiniowano serwera."
 
 #: src/game_preferences.cpp:222
 msgid "player"
@@ -1172,15 +1172,15 @@ msgstr "Wyspa"
 
 #: src/marked-up_text.cpp:340
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "Maksymalna szerokość tekstu jest mniejsza niż 1."
 
 #: src/minimap.cpp:88
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Nie można pobrać grafiki terenu: $terrain."
 
 #: src/minimap.cpp:94 src/minimap.cpp:106
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Błąd podczas tworzenia lub pobierania grafiki."
 
 #: src/preferences_display.cpp:82 src/preferences_display.cpp:115
 msgid ""
@@ -1238,6 +1238,8 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"Znaleziono teren o łańcuchu dłuższym niż 4 znaki. Dotyczy to następującego "
+"terenu: "
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1249,10 +1251,12 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Wystąpił błąd z powodu potencjalnie błędnego kodu WML.\n"
+"Komunikat o błędzie: "
 
 #: src/wml_exception.cpp:61
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "Zgłaszając ten błąd załącz następujący komunikat o błędzie: "
 
 #~ msgid "Save Replays"
 #~ msgstr "Zapisuj powtórki"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-17 21:09+0100\n"
-"PO-Revision-Date: 2007-12-09 21:18+0100\n"
+"PO-Revision-Date: 2007-12-20 15:33+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "MIME-Version: 1.0\n"
@@ -133,11 +133,11 @@ msgstr "Autor"
 
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:33
 msgid "Special Guest Designer"
-msgstr ""
+msgstr "Projektant gościnny"
 
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:39
 msgid "Brainstorming, playtesting, and spousal support"
-msgstr ""
+msgstr "Pomysły, testowanie i wsparcie małżeńskie"
 
 #: data/campaigns/Two_Brothers/_main.cfg:55
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:90
@@ -365,7 +365,6 @@ msgid "Commands"
 msgstr "Komendy"
 
 #: data/core/help.cfg:75
-#, fuzzy
 msgid "Abilites"
 msgstr "Zdolności"
 
@@ -385,6 +384,8 @@ msgid ""
 "\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
 
 #: data/core/help.cfg:90
 msgid "Unknown Unit"
@@ -2731,7 +2732,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:471
 msgid "feeding"
-msgstr ""
+msgstr "żerowanie"
 
 #: data/core/macros/abilities.cfg:473
 msgid ""
@@ -2739,6 +2740,9 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Żerowanie:\n"
+"Maksymalna liczba PŻ tej jednostki zwiększa się o 1 za każdym razem, gdy "
+"zabije ona jednostkę żyjącą."
 
 #: data/core/macros/abilities.cfg:497
 msgid "+1 max HP"
@@ -2944,9 +2948,8 @@ msgid "Max HP bonus +"
 msgstr "Maks. premia PŻ +"
 
 #: data/core/macros/amla.cfg:30
-#, fuzzy
 msgid "Heal to full, MAX XP +25%"
-msgstr ", MAKS. PŻ +25%"
+msgstr "Pełne uzdrowienie, MAKS. PŻ +25%"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -4307,7 +4310,6 @@ msgid "race^Bat"
 msgstr "Nietoperz"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
 msgstr "Nietoperz"
 
@@ -4320,7 +4322,6 @@ msgid "race^Drake"
 msgstr "Smok"
 
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race+female^Drake"
 msgstr "Smok"
 
@@ -4333,7 +4334,6 @@ msgid "race^Dwarf"
 msgstr "Krasnolud"
 
 #: data/core/units.cfg:63
-#, fuzzy
 msgid "race+female^Dwarf"
 msgstr "Krasnolud"
 
@@ -4346,7 +4346,6 @@ msgid "race^Elf"
 msgstr "Elf"
 
 #: data/core/units.cfg:74
-#, fuzzy
 msgid "race+female^Elf"
 msgstr "Elf"
 
@@ -4359,7 +4358,6 @@ msgid "race^Goblin"
 msgstr "Goblin"
 
 #: data/core/units.cfg:86
-#, fuzzy
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
@@ -4372,7 +4370,6 @@ msgid "race^Gryphon"
 msgstr "Gryf"
 
 #: data/core/units.cfg:96
-#, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Gryf"
 
@@ -4395,7 +4392,6 @@ msgid "race^Human"
 msgstr "Człowiek"
 
 #: data/core/units.cfg:106
-#, fuzzy
 msgid "race+female^Human"
 msgstr "Człowiek"
 
@@ -4408,7 +4404,6 @@ msgid "race^Saurian"
 msgstr "Jaszczur"
 
 #: data/core/units.cfg:116
-#, fuzzy
 msgid "race+female^Saurian"
 msgstr "Jaszczur"
 
@@ -4429,9 +4424,8 @@ msgid "race^Merman"
 msgstr "Mermen"
 
 #: data/core/units.cfg:138
-#, fuzzy
 msgid "race^Mermaid"
-msgstr "Mermen"
+msgstr "Mermenka"
 
 #: data/core/units.cfg:139
 msgid "race^Mermen"
@@ -4450,9 +4444,8 @@ msgid "race^Naga"
 msgstr "Naga"
 
 #: data/core/units.cfg:156
-#, fuzzy
 msgid "race^Nagani"
-msgstr "Naga"
+msgstr "Nagini"
 
 #: data/core/units.cfg:157
 msgid "race^Nagas"
@@ -4463,7 +4456,6 @@ msgid "race^Ogre"
 msgstr "Ogr"
 
 #: data/core/units.cfg:166
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Ogr"
 
@@ -4488,7 +4480,6 @@ msgid "race^Orc"
 msgstr "Ork"
 
 #: data/core/units.cfg:176
-#, fuzzy
 msgid "race+female^Orc"
 msgstr "Ork"
 
@@ -4501,7 +4492,6 @@ msgid "race^Troll"
 msgstr "Troll"
 
 #: data/core/units.cfg:186
-#, fuzzy
 msgid "race+female^Troll"
 msgstr "Troll"
 
@@ -4514,9 +4504,8 @@ msgid "race^Undead"
 msgstr "Nieumarli"
 
 #: data/core/units.cfg:201
-#, fuzzy
 msgid "race+female^Undead"
-msgstr "Nieumarli"
+msgstr "Nieumarła"
 
 #: data/core/units.cfg:202
 msgid "race+plural^Undead"
@@ -4675,6 +4664,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Nie zaniedbuj doświadczenia swojego przywódcy! Oczywiście musisz mu zapewnić "
+"bezpieczeństwo, ale jeśli będziesz go za bardzo rozpieszczać, może się "
+"okazać, że pozostanie na zbyt niskim poziomie, by przetrwać przyszłe bitwy."
 
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
@@ -4687,6 +4679,11 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"Wybierz opcję \"Pokaż ruchy przeciwnika\" z menu \"Działania\", by zobaczyć "
+"wszystkie pola, do których przeciwnik może dotrzeć (zakładając, że Twoje "
+"jednostki pozostaną tam, gdzie są). Opcja ta pozwala się upewnić, że "
+"przeciwnik w swojej następnej turze nie będzie mógł zaatakować Twoich "
+"słabych lub rannych jednostek."
 
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
@@ -4709,6 +4706,10 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Jednostki z cechą \"inteligentna\" potrzebują mniej punktów doświadczenia, "
+"by awansować. We wczesnych etapach kampanii staraj się wysyłać właśnie takie "
+"jednostki do dobijania przeciwników - w ten sposób szybciej będziesz mieć "
+"kilka jednostek wyższego poziomu."
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
@@ -4720,6 +4721,11 @@ msgid ""
 "long range units. By placing two units on opposite sides of an opposing "
 "unit, their zones of control limit it to one hex move in any direction."
 msgstr ""
+"Taktyka okrążania dwoma jednostkami jest bardzo skuteczna, zwłaszcza przy "
+"atakowaniu bardzo szybkich jednostek. Jeśli ustawisz dwie jednostki po "
+"przeciwnych stronach jednostki wroga, połączenie ich stref kontroli "
+"ograniczy możliwości ruchu przeciwnika do maksymalnie jednego pola w "
+"dowolnym kierunku."
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
@@ -4731,6 +4737,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you get to a village a turn earlier."
 msgstr ""
+"Dostęp do komend rekrutacji i przywoływania można uzyskać klikając pole "
+"zamku prawym przyciskiem myszy. W ten sposób możesz wybrać, na którym polu "
+"jednostka się pojawi. Przemyślanie rozmieszczenie jednostek pozwala niekiedy "
+"zająć pobliską wioskę o turę wcześniej."
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -4738,6 +4748,9 @@ msgid ""
 "for instance, will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Z menu głównego dostępnych jest kilka przydatnych ekranów informacyjnych. Na "
+"przykład \"Tabela stanu\" pozwala szybko sprawdzić postępy przeciwników i "
+"ocenić własne postępy na ich tle."
 
 #: data/hardwired/tips.cfg:27
 msgid ""
@@ -4745,6 +4758,10 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Jednostki z cechą \"szybka\" mogą się w każdej turze ruszyć o jedno pole "
+"dalej. Bywa to szczególnie istotne podczas pokonywania trudnego terenu, na "
+"przykład wody lub jaskiń - dodatkowy punkt ruchu może zadecydować o tym, czy "
+"jednostka będzie się mogła poruszyć o jedno pole, czy o dwa."
 
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
@@ -4755,6 +4772,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Po rozegraniu kilku pierwszych scenariuszy, zapoznaj się dokładnie z sekcją "
+"\"Rozgrywka\" w pomocy gry. Szczegóły taktyki stają się coraz ważniejsze w "
+"obliczu rosnącej trudności kolejnych scenariuszy!"
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4762,17 +4782,21 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Na ogół lepiej jest zaczynać następny scenariusz kampanii z jednostkami "
+"niższego poziomu, które mają wkrótce awansować, niż z tymi samymi "
+"jednostkami już awansowanymi na wyższy poziom."
 
 #: data/hardwired/tips.cfg:39
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Na stronie www.wesnoth.org znajdziesz podręczniki strategii, pomoc "
+"techniczną, informacje o historii krainy Wesnoth i wiele innych zasobów."
 
 #: data/hardwired/tips.cfg:40
-#, fuzzy
 msgid "- The Wesnoth Community"
-msgstr "- Podręcznik taktyki Wesnoth"
+msgstr "- Społeczność Wesnoth"
 
 #: data/hardwired/tips.cfg:43
 msgid ""
@@ -4790,6 +4814,8 @@ msgstr "- Królewskie kompendium terminologii wojskowej - tom II, 212 r. e.W."
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Najlepszy nawet plan ataku może się zakończyć klęską, jeśli zaatakujesz o "
+"nieodpowiedniej porze dnia."
 
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
@@ -4803,9 +4829,13 @@ msgid ""
 "choose scouts that can easily move across the surrounding terrain, because "
 "units see as far as they can move in one turn."
 msgstr ""
+"Jeśli grasz na mapie spowitej mgłą lub całunem, nie widzisz, z czym "
+"przyjdzie Ci się zmierzyć. W takich sytuacjach warto inwestować w jednostki "
+"zwiadowcze o dalekim zasięgu. Staraj się wybierać na zwiadowców jednostki, "
+"które nie mają kłopotów z przemierzaniem okolicznego terenu, ponieważ zasięg "
+"widzenia jednostki odpowiada zasięgowi jej ruchu w ciągu jednej tury."
 
 #: data/hardwired/tips.cfg:55
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -4814,8 +4844,8 @@ msgid ""
 msgstr ""
 "Istnieje sześć rodzajów ataków: kłute, sieczne, obuchowe, astralne, ogień i "
 "chłód. Różne jednostki są czułe na różne typy ataków. Kliknij jednostkę "
-"prawym przyciskiem myszy i wybierz \"Opis jednostki\", a potem \"Odporność"
-"\", by zobaczyć jak reaguje ona na różne rodzaje ataków."
+"prawym przyciskiem myszy i wybierz \"Opis jednostki\", by zobaczyć, na które "
+"ataki jest ona odporna, a na które podatna."
 
 #: data/hardwired/tips.cfg:59
 msgid ""
@@ -4829,7 +4859,6 @@ msgstr ""
 "zajmowanym terenie wyświetlony jest w prawym górnym rogu ekranu."
 
 #: data/hardwired/tips.cfg:63
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
@@ -4838,23 +4867,22 @@ msgid ""
 "completely cured on their next turn."
 msgstr ""
 "Zatrute jednostki tracą 8 punktów życia na turę, ale nie umrą z powodu "
-"zatrucia - w najgorszym razie pozostanie im 1 punkt życia. Zatrutą jednostkę "
-"można uleczyć wprowadzając ją do wioski albo stawiając obok jednostki ze "
-"zdolnością \"uzdrawia\"."
+"zatrucia - w najgorszym razie pozostanie im 1 punkt życia. Zatruta jednostka "
+"stojąca obok jednostki leczącej nie straci w kolejnej turze punktów z powodu "
+"trucizny. Zatruta jednostka zostanie uzdrowiona, jeśli rozpocznie turę w "
+"wiosce lub obok jednostki ze zdolnością \"uzdrawia\"."
 
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"Możesz użyć jednostek z poprzednich scenariuszy, wybierając polecenie "
-"\"Przywołaj\" z menu gry. Przywołując co misję te same jednostki, masz "
-"szanse stworzyć potężną i doświadczoną armię."
+"Możesz używać jednostek z poprzednich scenariuszy, wybierając polecenie "
+"\"Przywołaj\" z menu \"Działania\". Przywołując wielokrotnie te same "
+"jednostki można stworzyć potężną i doświadczoną armię."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -4862,10 +4890,12 @@ msgid ""
 "create a barrier to the enemy. (Level 0 units are too frail to control a "
 "zone; and skirmisher units are skilled enough to ignore these zones.)"
 msgstr ""
-"Wszystkie jednostki otoczone są strefą kontroli. Jeśli jednostka wejdzie w "
-"strefę kontroli jednostki przeciwnika, to traci możliwość dalszego ruchu w "
-"tej turze. Jednostki o poziomie 0 są zbyt słabe, by kontrolować swoją "
-"strefę, zaś te ze zdolnością \"harcownik\" potrafią ją ignorować."
+"Jednostki roztaczają strefę kontroli na bezpośrednio sąsiadujące pola. Jeśli "
+"jednostka wejdzie w strefę kontroli jednostki przeciwnika, traci ona "
+"możliwość dalszego ruchu w tej turze. Oznacza to, że dwie jednostki stanowią "
+"barierę dla przeciwnika nawet wtedy, gdy dzielą je dwa puste pola. "
+"(Jednostki o poziomie 0 są zbyt słabe, by kontrolować swoją strefę, zaś te "
+"ze zdolnością \"harcownik\" potrafią ignorować strefy kontroli przeciwnika)."
 
 #: data/hardwired/tips.cfg:75
 msgid ""
@@ -4890,14 +4920,14 @@ msgstr ""
 "swojej tury."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to--let it rest. If a unit does "
 "not move or attack, it will recover 2 hit points at the beginning of its "
 "next turn."
 msgstr ""
-"Jednostki odpoczywają, jeśli podczas swojej tury nie poruszą się ani nie "
-"zaatakują. Na początku następnej tury odzyskają 2 punkty życia."
+"Jeśli nie musisz ruszać rannej jednostki, pozwól jej odpocząć. Jeśli "
+"jednostka nie poruszy się ani nie zaatakuje, na początku następnej tury "
+"odzyska 2 punkty życia."
 
 #: data/hardwired/tips.cfg:87
 msgid ""
@@ -5009,14 +5039,14 @@ msgstr ""
 "obuchową, ataki astralne oraz ogień."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability make lower-level adjacent units on the "
 "same side fight better. Use these units to help your other units level up "
 "faster."
 msgstr ""
-"Jednostki ze zdolnością dowodzenia sprawiają, że sąsiednie przyjazne "
-"jednostki niższego poziomu walczą lepiej."
+"Jednostki ze zdolnością \"dowodzenie\" sprawiają, że sąsiednie przyjazne "
+"jednostki niższego poziomu walczą lepiej. Odpowiednie wykorzystanie dowódców "
+"pomaga innym jednostkom szybciej awansować."
 
 #: data/hardwired/tips.cfg:131
 msgid ""
@@ -5103,17 +5133,17 @@ msgstr ""
 "uderzeniem."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hit points "
 "by 3. This is less than the normal difference gained by advancing a level. "
 "Thus, it is usually more useful to try to advance your lower level units."
 msgstr ""
-"Jednostki mogą osiągnąć Awans Po Ostatnim Poziomie (APOP), który zazwyczaj "
-"zwiększa maksymalną liczbę punktów życia jednostki o 3. Zdobycie APOP jest "
-"za każdym razem coraz trudniejsze, dlatego zazwyczaj dużo bardziej korzystne "
-"jest awansowanie jednostek na niższych poziomach."
+"Jednostki znajdujące się już na swoim maksymalnym poziomie otrzymują zamiast "
+"zwykłego awansu Awans Po Ostatnim Poziomie (APOP), który zazwyczaj zwiększa "
+"maksymalną liczbę punktów życia jednostki o 3. Ponieważ jest to mniej "
+"korzystne od zwykłego awansu jednostki, zazwyczaj warto się raczej starać "
+"awansować jednostki niższych poziomów."
 
 #: data/hardwired/tips.cfg:175
 msgid ""
@@ -5332,11 +5362,11 @@ msgstr "Nie ma pustych pól zamku, na których można by rekrutować."
 
 #: src/actions.cpp:260 src/actions.cpp:283 src/actions.cpp:288
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
+msgstr "Wybrano nieprawidłową broń, być może z powodu pythonowego AI."
 
 #: src/actions.cpp:267
 msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr ""
+msgstr "Wysłano nieprawidłową broń, być może z powodu pythonowego AI."
 
 #: src/actions.cpp:959 src/actions.cpp:1213
 msgid "poisoned"
@@ -5401,6 +5431,7 @@ msgstr "Nieznany typ jednostki: "
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
+"Koszt ruchu wynosi 0, prawdopodobnie z powodu terenu o koszcie ruchu 0."
 
 #: src/dialogs.cpp:108
 msgid "Advance Unit"
@@ -5893,9 +5924,8 @@ msgstr "Porażka:"
 
 #: src/gamestatus.cpp:254 src/gamestatus.cpp:269 src/gamestatus.cpp:289
 #: src/gamestatus.cpp:374
-#, fuzzy
 msgid "No time of day has been defined."
-msgstr "Losowy wybór początkowej pory dnia"
+msgstr "Nie zdefiniowano pory dnia."
 
 #: src/gamestatus.cpp:694 src/gamestatus.cpp:696 src/playcampaign.cpp:411
 msgid " replay"
@@ -7155,18 +7185,14 @@ msgid "Client disconnected"
 msgstr "Klient rozłączył się"
 
 #: src/network.cpp:165
-#, fuzzy
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
-"Brak kontaktu z serwerem od co najmniej 60 sekund. Przekroczono czas "
-"połączenia."
+"Brak kontaktu z serwerem od $timeout sekundy. Przekroczono czas połączenia."
 msgstr[1] ""
-"Brak kontaktu z serwerem od co najmniej 60 sekund. Przekroczono czas "
-"połączenia."
+"Brak kontaktu z serwerem od $timeout sekund. Przekroczono czas połączenia."
 msgstr[2] ""
-"Brak kontaktu z serwerem od co najmniej 60 sekund. Przekroczono czas "
-"połączenia."
+"Brak kontaktu z serwerem od $timeout sekund. Przekroczono czas połączenia."
 
 #: src/network.cpp:519
 msgid "Could not add socket to socket set"
@@ -7178,7 +7204,7 @@ msgstr "Nie udało się rozpocząć negocjacji połączenia"
 
 #: src/pathfind.cpp:307
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Napotkano teren o koszcie ruchu mniejszym niż 1."
 
 #: src/play_controller.cpp:794
 msgid "Back to start"
@@ -7433,7 +7459,7 @@ msgstr "$error w $pos"
 
 #: src/terrain.cpp:81
 msgid "'string' is a mandatory key in '[terrain]'."
-msgstr ""
+msgstr "'string' jest obowiązkowym kluczem w '[terrain]'."
 
 #: src/terrain.cpp:128
 msgid "Allied village"
@@ -7449,7 +7475,7 @@ msgstr "Twoja wioska"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size musi mieć wartość od 0.0 do 0.5."
 
 #: src/titlescreen.cpp:318
 msgid "TitleScreen button^Tutorial"
@@ -7489,11 +7515,11 @@ msgstr "Wyjście"
 
 #: src/titlescreen.cpp:329
 msgid "TitleScreen button^Previous"
-msgstr "Wstecz"
+msgstr "Poprzednia"
 
 #: src/titlescreen.cpp:330
 msgid "TitleScreen button^Next"
-msgstr "Dalej"
+msgstr "Następna"
 
 #: src/titlescreen.cpp:331
 msgid "TitleScreen button^Help"
