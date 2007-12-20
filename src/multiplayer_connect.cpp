@@ -667,6 +667,16 @@ config connect::side::get_config() const
 		trimmed["gold"] = "";
 		trimmed["income"] = "";
 		trimmed["allow_changes"] = "";
+/*
+		trimmed["allow_player"] = "";
+		trimmed["colour_lock"] = "";
+		trimmed["faction"] = "";
+		trimmed["gender"] = "";
+		trimmed["gold_lock"] = "";
+		trimmed["income_lock"] = "";
+		trimmed["recruit"] = "";
+		trimmed["team_lock"] = "";
+*/
 		if(controller_ != CNTR_COMPUTER) {
 			// Only override names for computer controlled players
 			trimmed["user_description"] = "";
@@ -1058,6 +1068,8 @@ void connect::process_network_data(const config& data, const network::connection
 
 		connected_user_list::iterator player = find_player(name);
 		if(player != users_.end()) {
+			//! @todo Seems like a needless limitation to only allow one side
+			//! per player.
 			if(find_player_side(name) != -1) {
 				config response;
 				response.values["failed"] = "yes";
@@ -1528,10 +1540,12 @@ void connect::update_and_send_diff(bool update_time_of_day)
 		gamestatus game_status(level_,atoi(level_["turns"].c_str()),&state_);
 
 	}
-
-	config diff;
-	diff.add_child("scenario_diff",level_.get_diff(old_level));
-	network::send_data(diff, 0, true);
+	config diff = level_.get_diff(old_level);
+	if (!diff.empty()) {
+		config scenario_diff;
+		scenario_diff.add_child("scenario_diff", diff);
+		network::send_data(scenario_diff, 0, true);
+	}
 }
 
 bool connect::sides_available()
