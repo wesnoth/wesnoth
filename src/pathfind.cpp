@@ -254,7 +254,10 @@ int route_turns_to_complete(const unit& u, paths::route& rt, const team &viewing
 				 || (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)) );
 
 			++turns;
-			rt.waypoints[*i] = paths::route::waypoint(turns, zoc, capture);
+
+			bool invisible = u.invisible(*i,units,teams,false);
+
+			rt.waypoints[*i] = paths::route::waypoint(turns, zoc, capture, invisible);
 			
 			if (last_step) break; // finished and we used dummy move_cost
 

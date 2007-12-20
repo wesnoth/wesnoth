@@ -675,6 +675,11 @@ void game_display::draw_movement_info(const gamemap::location& loc)
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
 
+            if (w->second.invisible) {
+				surface hidden_surf = image::get_image("misc/hidden.png", image::UNMASKED);
+				video().blit_surface(xpos, ypos, hidden_surf);
+			}
+
 			if (w->second.zoc) {
 				surface zoc_surf = image::get_image("misc/zoc.png", image::UNMASKED);
 				video().blit_surface(xpos, ypos, zoc_surf);

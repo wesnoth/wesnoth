@@ -111,11 +111,14 @@ struct paths
 		int move_left; // movement unit will have left at end of the route.
 		struct waypoint
 		{
-			waypoint(int t = 0, bool z = false, bool c = false)
-				: turns(t), zoc(z), capture(c) {}
+			waypoint(int turns_number = 0, bool in_zoc = false,
+					bool do_capture = false, bool is_invisible = false)
+				: turns(turns_number), zoc(in_zoc),
+					capture(do_capture), invisible(is_invisible) {}
 			int turns;
 			bool zoc;
 			bool capture;
+			bool invisible;
 		};
 		std::map<gamemap::location, waypoint> waypoints;
 	};
