@@ -16,6 +16,7 @@
 //! Show screen with scrolling credits.
 
 #include "about.hpp"
+#include "config.hpp"
 #include "construct_dialog.hpp"
 #include "display.hpp"
 #include "font.hpp"

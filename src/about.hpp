@@ -16,8 +16,9 @@
 #define ABOUT_H_INCLUDED
 
 #include "global.hpp"
-#include "config.hpp"
+
 class display;
+class config;
 
 #include <vector>
 #include <string>
