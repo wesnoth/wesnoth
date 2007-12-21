@@ -25,6 +25,19 @@
 //#include <set>
 #include <vector>
 
+namespace chat_message {
+
+static void truncate_message(t_string& str) {
+	const size_t max_message_length = 256;
+	// The string send can contain utf-8 so truncate as wide_string otherwise
+	// an corrupted utf-8 string can be returned.
+	std::string tmp = str.str();
+	utils::truncate_as_wstring(tmp, max_message_length);
+	str = tmp;
+}
+
+} // end chat_message namespace
+
 typedef std::map<network::connection,player> player_map;
 typedef std::vector<network::connection> user_vector;
 typedef std::vector<network::connection> side_vector;
@@ -52,14 +65,14 @@ public:
 
 	bool mute_all_observers() { return all_observers_muted_ = !all_observers_muted_; }
 	//! Mute an observer by name.
-	void mute_observer(const config& mute);
+	void mute_observer(const config& mute, const player_map::const_iterator muter);
 	//! Kick a member by name.
-	network::connection kick_member(const config& kick);
+	network::connection kick_member(const config& kick, const player_map::const_iterator kicker);
 	//! Ban and kick a user by name. He doesn't need to be in this game.
-	network::connection ban_user(const config& ban);
+	network::connection ban_user(const config& ban, const player_map::const_iterator banner);
 
 	void add_player(const network::connection player, const bool observer = false);
-	void remove_player(const network::connection player, const bool notify_creator=true);
+	void remove_player(const network::connection player, const bool disconnect=false);
 
 	//! Adds players from one game to another. This is used to add players and
 	//! observers from a game to the lobby (which is also implemented as a game),
@@ -78,8 +91,8 @@ public:
 	//! Make everyone leave the game and clean up.
 	void end_game(const config& games_and_users_list);
 
+	//! Resets the side configuration according to the scenario data.
 	void update_side_data();
-	bool take_side(const network::connection player, const config& cfg = config());
 	//! Let's a player owning a side give it to another player or observer.
 	void transfer_side_control(const network::connection sock, const config& cfg);
 
@@ -90,9 +103,6 @@ public:
 	config construct_server_message(const std::string& message) const;
 	//! Send data to all players in this game except 'exclude'.
 	void send_data(const config& data, const network::connection exclude=0) const;
-	void send_data_team(const config& data, const std::string& team,
-		const network::connection exclude=0) const;
-	void send_data_observers(const config& data, const network::connection exclude=0) const;
 
 	void record_data(const config& data);
 	void reset_history();
@@ -106,9 +116,8 @@ public:
 	void set_description(config* desc) { description_ = desc; }
 	config* description() const { return description_; }
 
-	//function which will process game commands and update the state of the
-	//game accordingly. Will return true iff the game's description changes.
-	bool process_commands(const config& cfg);
+	//! Process [turn].
+	bool process_turn(config data, const player_map::const_iterator user);
 
 	const std::string& termination_reason() const {
 		static const std::string aborted = "aborted";
@@ -125,6 +134,14 @@ public:
 	static bool send_gzipped;
 
 private:
+	//! Figures out which side to take and tells that side to the game owner.
+	bool take_side(const player_map::const_iterator user);
+	//! Function which will process game commands and update the state of the
+	//! game accordingly. Will return true iff the game's description changes.
+	bool process_commands(const config& cfg);
+	void send_data_team(const config& data, const std::string& team,
+			const network::connection exclude=0) const;
+	void send_data_observers(const config& data, const network::connection exclude=0) const;
 	//! Adds players and observers into one vector and returns that.
 	const user_vector all_game_users() const;
 	//! In case of a host transfer, notify the new host about its status.

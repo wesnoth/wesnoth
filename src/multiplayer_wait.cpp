@@ -252,21 +252,13 @@ void wait::join_game(bool observe)
 		std::string leader_choice, gender_choice;
 		size_t faction_choice = 0;
 
-		//we take the side now so noone will take it while we choose a faction
-		config cfg;
-		cfg["side"] = lexical_cast<std::string>(side_choice + 1);
-		cfg["name"] = preferences::login();
-		cfg["faction"] = "random";
-		cfg["leader"] = "random";
-		cfg["gender"] = "random";
-		network::send_data(cfg, 0, true);
-
 		if(allow_changes) {
 			events::event_context context;
 
 			const config* era = level_.child("era");
+			//! @todo Check whether we have the era. If we don't inform the user.
 			if(era == NULL)
-				throw config::error(_("Era not available"));
+				throw config::error(_("No era information found."));
 			const config::child_list& possible_sides =
 				era->get_children("multiplayer_side");
 			if(possible_sides.empty()) {
