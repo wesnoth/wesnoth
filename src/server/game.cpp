@@ -791,12 +791,12 @@ void game::remove_player(const network::connection player, const bool disconnect
 			observers_.erase(itor);
 		} else {
 			ERR_GAME << "ERROR: Observer is not in this game. (socket: "
-			<< player << ")\n";
+				<< player << ")\n";
 		}
 		return;
 	}
-	DBG_GAME << "removing player...\n";
 	DBG_GAME << debug_player_info();
+	DBG_GAME << "removing player...\n";
 
 	bool host = (player == owner_);
 	bool observer = true;
@@ -866,8 +866,7 @@ void game::remove_player(const network::connection player, const bool disconnect
 			}
 		}
 		if (ai_transfer) {
-			std::string msg = "AI transferred to new host";
-			send_data(construct_server_message(msg));
+			send_data(construct_server_message("AI transferred to new host"));
 		}
 	}
 
@@ -893,19 +892,18 @@ void game::remove_player(const network::connection player, const bool disconnect
 void game::send_user_list(const network::connection exclude) const {
 	//if the game hasn't started yet, then send all players a list
 	//of the users in the game
-	if (started_ == false && description_ != NULL) {
-		//! @todo Should be renamed to userlist.
-		config cfg("gamelist");
-		user_vector users = all_game_users();
-		for(user_vector::const_iterator p = users.begin(); p != users.end(); ++p) {
-			const player_map::const_iterator pl = player_info_->find(*p);
-			if (pl != player_info_->end()) {
-				config& user = cfg.add_child("user");
-				user["name"] = pl->second.name();
-			}
+	if (started_ || description_ == NULL) return;
+	//! @todo Should be renamed to userlist.
+	config cfg("gamelist");
+	user_vector users = all_game_users();
+	for(user_vector::const_iterator p = users.begin(); p != users.end(); ++p) {
+		const player_map::const_iterator pl = player_info_->find(*p);
+		if (pl != player_info_->end()) {
+			config& user = cfg.add_child("user");
+			user["name"] = pl->second.name();
 		}
-		send_data(cfg, exclude);
 	}
+	send_data(cfg, exclude);
 }
 
 

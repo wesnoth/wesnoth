@@ -59,6 +59,8 @@ public:
 	bool all_observers_muted() const { return all_observers_muted_; }
 	bool is_player(const network::connection player) const;
 	bool player_is_banned(const network::connection player) const;
+	bool level_init() const { return level_.child("side") != NULL; }
+	bool started() const { return started_; }
 
 	size_t nplayers() const { return players_.size(); }
 	size_t nobservers() const { return observers_.size(); }
@@ -80,13 +82,6 @@ public:
 	//! added to the players_ or observers_ vector (default observers_).
 	void add_players(const game& other_game, const bool observer = true);
 
-	bool started() const { return started_; }
-
-	//function which filters commands sent by a player to remove commands
-	//that they don't have permission to execute.
-	//Returns true iff there are still some commands left
-	bool filter_commands(const network::connection player, config& cfg) const;
-
 	void start_game();
 	//! Make everyone leave the game and clean up.
 	void end_game(const config& games_and_users_list);
@@ -96,8 +91,14 @@ public:
 	//! Let's a player owning a side give it to another player or observer.
 	void transfer_side_control(const network::connection sock, const config& cfg);
 
+	//! Function which filters commands sent by a player to remove commands
+	//! that they don't have permission to execute.
+	//! Returns true iff there are still some commands left.
+	bool filter_commands(const network::connection player, config& cfg) const;
+	//! Process [turn].
+	bool process_turn(config data, const player_map::const_iterator user);
 	//! Set the description to the number of slots.
-	//! Returns true if the number of slots has changed.
+	//! Returns true iff the number of slots has changed.
 	bool describe_slots();
 
 	config construct_server_message(const std::string& message) const;
@@ -107,17 +108,13 @@ public:
 	void record_data(const config& data);
 	void reset_history();
 
-	//the full scenario data
-	bool level_init() const { return level_.child("side") != NULL; }
+	//! The full scenario data.
 	config& level() { return level_; }
 
-	//functions to set/get the address of the game's summary description as
-	//sent to players in the lobby
+	//! Functions to set/get the address of the game's summary description as
+	//! sent to players in the lobby.
 	void set_description(config* desc) { description_ = desc; }
 	config* description() const { return description_; }
-
-	//! Process [turn].
-	bool process_turn(config data, const player_map::const_iterator user);
 
 	const std::string& termination_reason() const {
 		static const std::string aborted = "aborted";
@@ -154,14 +151,14 @@ private:
 	//! Function which returns true iff 'player' is on 'team'.
 	bool player_on_team(const std::string& team, const network::connection player) const;
 
-	//function which should be called every time a player ends their turn
-	//(i.e. [end_turn] received). This will update the 'turn' attribute for
-	//the game's description when appropriate. Will return true if there has
-	//been a change.
+	//! Function which should be called every time a player ends their turn
+	//! (i.e. [end_turn] received). This will update the 'turn' attribute for
+	//! the game's description when appropriate. Will return true iff there has
+	//! been a change.
 	bool end_turn();
 
-	//function to send a list of users to all clients. Only sends data before
-	//the game has started.
+	//! Function to send a list of users to all clients.
+	//! Only sends data if the game is initialized but not yet started.
 	void send_user_list(const network::connection exclude=0) const;
 
 	//! Helps debugging player and observer lists.
@@ -171,6 +168,7 @@ private:
 
 	static int id_num;
 	int id_;
+	//! The name of the game.
 	std::string name_;
 	network::connection owner_;
 	user_vector players_;
@@ -181,10 +179,11 @@ private:
 	std::vector<std::string> side_controllers_;
 	bool started_;
 
+	//! The current scenario data.
 	config level_;
-
+	//! Replay data.
 	config history_;
-
+	//! Pointer to the game's description in the games_and_users_list_.
 	config* description_;
 
 	int end_turn_;
