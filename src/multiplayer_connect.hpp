@@ -104,6 +104,8 @@ public:
 		//! Used in the constructor, must be first.
 		connect* parent_;
 
+		//! A non-const config. Be careful not to insert keys when only reading.
+		//! (Use cfg_.get_attribute().)
 		config cfg_;
 
 		// Configurable variables

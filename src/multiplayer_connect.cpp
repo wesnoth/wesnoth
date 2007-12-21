@@ -53,20 +53,20 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	cfg_(cfg),
 	index_(index),
 	id_(""), // Id is reset, and not imported from loading savegames
-	save_id_(cfg_["save_id"]),
+	save_id_(cfg_.get_attribute("save_id")),
 	controller_(),
-	faction_(lexical_cast_default<int>(cfg_["faction"], 0)),
+	faction_(lexical_cast_default<int>(cfg_.get_attribute("faction"), 0)),
 	team_(0),
 	colour_(index),
-	gold_(lexical_cast_default<int>(cfg_["gold"], 100)),
-	income_(lexical_cast_default<int>(cfg_["income"], 0)),
+	gold_(lexical_cast_default<int>(cfg_.get_attribute("gold"), 100)),
+	income_(lexical_cast_default<int>(cfg_.get_attribute("income"), 0)),
 	leader_(),
 	gender_(),
 	ai_algorithm_(),
 	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 	               font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
-	orig_controller_(parent.video(), cfg["description"], font::SIZE_SMALL),
+	orig_controller_(parent.video(), cfg.get_attribute("description"), font::SIZE_SMALL),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), parent.player_factions_),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
@@ -77,7 +77,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_income_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOUR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL, font::LOBBY_COLOUR),
-	allow_player_(utils::string_bool(cfg_["allow_player"], true)),
+	allow_player_(utils::string_bool(cfg_.get_attribute("allow_player"), true)),
 	enabled_(!parent_->params_.saved_game), changed_(false),
 	llm_(parent.era_sides_, &parent.game_data_, enabled_ ? &combo_leader_ : NULL, enabled_ ? &combo_gender_ : NULL)
 {
@@ -99,13 +99,13 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	slider_gold_.set_min(20);
 	slider_gold_.set_max(800);
 	slider_gold_.set_increment(25);
-	slider_gold_.set_value(lexical_cast_default<int>(cfg_["gold"], 100));
+	slider_gold_.set_value(lexical_cast_default<int>(cfg_.get_attribute("gold"), 100));
 	slider_gold_.set_measurements(80, 16);
 
 	slider_income_.set_min(-2);
 	slider_income_.set_max(18);
 	slider_income_.set_increment(1);
-	slider_income_.set_value(lexical_cast_default<int>(cfg_["income"], 0));
+	slider_income_.set_value(lexical_cast_default<int>(cfg_.get_attribute("income"), 0));
 	slider_income_.set_measurements(50, 16);
 
 	combo_faction_.enable(enabled_);
@@ -118,15 +118,16 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	label_gold_.hide(!enabled_);
 	label_income_.hide(!enabled_);
 
-	std::vector<std::string>::const_iterator itor = std::find(parent_->team_names_.begin(), 
-													parent_->team_names_.end(), cfg_["team_name"]);
+	std::vector<std::string>::const_iterator itor = 
+			std::find(parent_->team_names_.begin(), parent_->team_names_.end(),
+			cfg_.get_attribute("team_name"));
 	if(itor == parent_->team_names_.end()) {
 		assert(!parent_->team_names_.empty());
 		team_ = 0;
 	} else {
 		team_ = itor - parent_->team_names_.begin();
 	}
-	if(!cfg_["colour"].empty()) {
+	if(!cfg_.get_attribute("colour").empty()) {
 		colour_ = game_config::color_info(cfg_["colour"]).index() - 1;
 	}
 	config *ai = cfg_.child("ai");
@@ -177,8 +178,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		std::vector<std::string> gender_name_pseudolist;
 
 		if (!gender_.empty()) {
-			if(leader_type.empty() || parent_->game_data_.unit_types.find(leader_type) == parent_->game_data_.unit_types.end()) {
-					gender_name_pseudolist.push_back("-");
+			if (leader_type.empty()
+					|| parent_->game_data_.unit_types.find(leader_type)
+					== parent_->game_data_.unit_types.end())
+			{
+				gender_name_pseudolist.push_back("-");
 			} else {
 				if (gender_ == "female")
 					gender_name_pseudolist.push_back( _("Female ♀") );
@@ -195,24 +199,24 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_gender_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
 		// gold, income, team, and colour are only suggestions unless explicitly locked
-		if(utils::string_bool(cfg_["gold_lock"], false)) {
+		if(utils::string_bool(cfg_.get_attribute("gold_lock"), false)) {
 			slider_gold_.enable(false);
 			label_gold_.enable(false);
 		}
-		if(utils::string_bool(cfg_["income_lock"], false)) {
+		if(utils::string_bool(cfg_.get_attribute("income_lock"), false)) {
 			slider_income_.enable(false);
 			label_income_.enable(false);
 		}
-		if(utils::string_bool(cfg_["team_lock"], false)) {
+		if(utils::string_bool(cfg_.get_attribute("team_lock"), false)) {
 			combo_team_.enable(false);
 		}
-		if(utils::string_bool(cfg_["colour_lock"], false)) {
+		if(utils::string_bool(cfg_.get_attribute("colour_lock"), false)) {
 			combo_colour_.enable(false);
 		}
 
 		// Set the leader and gender
-		leader_ = cfg_["type"];
-		gender_ = cfg_["gender"];
+		leader_ = cfg_.get_attribute("type");
+		gender_ = cfg_.get_attribute("gender");
 		if(!leader_.empty()) {
 			combo_leader_.enable(false);
 			combo_gender_.enable(false);
@@ -250,11 +254,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		if(faction_ == 0) {
 			std::vector<std::string> find;
 			std::string search_field;
-			if(!cfg_["faction"].empty()) {
+			if(!cfg_.get_attribute("faction").empty()) {
 				// Choose based on faction
 				find.push_back(cfg_["faction"]);
 				search_field = "id";
-			} else if(!cfg_["recruit"].empty()) {
+			} else if(!cfg_.get_attribute("recruit").empty()) {
 				// Choose based on recruit
 				find = utils::split(cfg_["recruit"]);
 				search_field = "recruit";
@@ -540,7 +544,9 @@ config connect::side::get_config() const
 		// Merge the faction data to res
 		res.append(*(parent_->era_sides_[faction_]));
 	}
-	if(cfg_["side"].empty() || cfg_["side"] != lexical_cast<std::string>(index_ + 1)) {
+	if (cfg_.get_attribute("side").empty()
+			|| cfg_["side"] != lexical_cast<std::string>(index_ + 1))
+	{
 		res["side"] = lexical_cast<std::string>(index_ + 1);
 	}
 	res["controller"] = controller_names[controller_];
@@ -554,13 +560,13 @@ config connect::side::get_config() const
 			description = N_("(Vacant slot)");
 			break;
 		case CNTR_LOCAL:
-			if(enabled_ && cfg_["save_id"].empty()) {
+			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 				res["save_id"] = "local" + res["side"].str();
 			}
 			description = N_("Anonymous local player");
 			break;
 		case CNTR_COMPUTER:
-			if(enabled_ && cfg_["save_id"].empty()) {
+			if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 				res["save_id"] = "ai" + res["side"].str();
 			}
 			{
@@ -590,7 +596,7 @@ config connect::side::get_config() const
 		}
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
-		if(enabled_ && cfg_["save_id"].empty()) {
+		if(enabled_ && cfg_.get_attribute("save_id").empty()) {
 			res["save_id"] = id_;
 		}
 
@@ -792,8 +798,10 @@ void connect::side::resolve_random()
 	if(!enabled_ || parent_->era_sides_.empty())
 		return;
 
-	if(utils::string_bool((*parent_->era_sides_[faction_])["random_faction"], false)) {
-
+	if(utils::string_bool(
+			(*parent_->era_sides_[faction_]).get_attribute("random_faction"),
+			false))
+	{
 		// Builds the list of sides which aren't random
 		std::vector<int> nonrandom_sides;
 		for(config::child_iterator itor = parent_->era_sides_.begin();
@@ -804,7 +812,7 @@ void connect::side::resolve_random()
 		}
 
 		if (nonrandom_sides.size() == 0) {
-			throw config::error(_("No non-random sides in the current era"));
+			throw config::error(_("Only random sides in the current era."));
 		}
 
 		faction_ = nonrandom_sides[rand() % nonrandom_sides.size()];
