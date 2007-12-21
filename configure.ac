@@ -888,6 +888,14 @@ CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
 LDFLAGS="$BOOST_IOSTREAMS_LDFLAGS $LDFLAGS"
 LIBS="$BOOST_IOSTREAMS_LIBS $LIBS"
 
+if test "x$tests" = "xyes"; then
+
+	BOOST_TEST
+	LDFLAGS="$BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS $LDFLAGS"
+	LIBS="$BOOST_UNIT_TEST_FRAMEWORK_LIBS $LIBS"
+
+fi
+
 #######################################################################
 # Tune gettext stuff for our needs                                    #
 #######################################################################
