@@ -14,13 +14,12 @@
 
 #ifndef UPLOAD_LOG_H_INCLUDED
 #define UPLOAD_LOG_H_INCLUDED
-#include "config.hpp"
-#include "display.hpp"
-#include "gamestatus.hpp"
-#include "team.hpp"
 #include "thread.hpp"
-#include "tstring.hpp"
 
+class config;
+class display;
+class t_string;
+class team;
 class unit_map;
 
 struct upload_log
