@@ -14,14 +14,12 @@
 
 #include "global.hpp"
 
-#include "color_range.hpp"
 #include "config.hpp"
 #include "log.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
-#include "tstring.hpp"
 #include "wesconfig.h"
 
 #include <cstdlib>

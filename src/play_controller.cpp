@@ -699,7 +699,7 @@ void play_controller::play_slice()
 	}
 
 	int mousex, mousey;
-	bool middle_pressed = SDL_GetMouseState(&mousex,&mousey)& SDL_BUTTON(2);
+	bool middle_pressed = (SDL_GetMouseState(&mousex,&mousey)& SDL_BUTTON(2)) != 0;
 	tooltips::process(mousex, mousey);
 
 	const int scroll_threshold = (preferences::mouse_scroll_enabled()) ? 5 : 0;
