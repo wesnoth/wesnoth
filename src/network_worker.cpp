@@ -457,6 +457,7 @@ static int process_queue(void*)
 		{
 			const threading::lock lock(*global_mutex);
 			socket_state_map::iterator lock_it = sockets_locked.find(sock);
+			// may be false on server shut down
 			assert(lock_it != sockets_locked.end());
 			lock_it->second = result;
 			if(result == SOCKET_ERRORED) {
