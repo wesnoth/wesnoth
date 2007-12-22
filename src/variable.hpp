@@ -16,13 +16,12 @@
 #ifndef VARIABLE_H_INCLUDED
 #define VARIABLE_H_INCLUDED
 
-#include "config.hpp"
-#include "tstring.hpp"
-
 #include <vector>
 #include <string>
 
+class config;
 class game_state;
+class t_string;
 class unit_map;
 
 /**

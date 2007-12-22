@@ -14,15 +14,7 @@
 #ifndef GAME_EVENTS_H_INCLUDED
 #define GAME_EVENTS_H_INCLUDED
 
-class config;
-class game_data;
-class game_display;
-class game_state;
-class gamestatus;
-class team;
-class t_string;
-class unit;
-
+#include "config.hpp"
 #include "map.hpp"
 #include "soundsource.hpp"
 #include "variable.hpp"
@@ -30,6 +22,14 @@ class unit;
 
 #include <vector>
 #include <map>
+
+class game_data;
+class game_display;
+class game_state;
+class gamestatus;
+class team;
+class t_string;
+class unit;
 
 
 //! @file game_events.hpp
