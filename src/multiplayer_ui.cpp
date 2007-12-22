@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 
+#include "config.hpp"
 #include "construct_dialog.hpp"
 #include "game_display.hpp"
 #include "font.hpp"
