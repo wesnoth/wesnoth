@@ -14,10 +14,11 @@
 #ifndef GAME_CONFIG_H_INCLUDED
 #define GAME_CONFIG_H_INCLUDED
 
+class color_range;
 class config;
+class t_string;
 
-#include "color_range.hpp"
-#include "tstring.hpp"
+#include "SDL_types.h"
 
 #include <string>
 #include <vector>
