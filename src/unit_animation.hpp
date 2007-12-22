@@ -15,16 +15,12 @@
 #define UNIT_ANIMATION_H_INCLUDED
 
 #include "animated.hpp"
-#include "map.hpp"
 #include "config.hpp"
-#include "util.hpp"
-#include "serialization/string_utils.hpp"
+#include "map.hpp"
+#include "unit_frame.hpp"
 
 #include <string>
 #include <vector>
-
-#include "unit_frame.hpp"
-
 
 class game_display;
 class attack_type;
