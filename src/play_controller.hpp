@@ -18,26 +18,24 @@
 
 #include "global.hpp"
 
-#include "display.hpp"
-#include "game_config.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "generic_event.hpp"
 #include "halo.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
-#include "key.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
-#include "team.hpp"
 #include "tooltips.hpp"
-#include "unit_types.hpp"
 
 #include <vector>
+
+class game_display;
+class team;
 
 class play_controller : public hotkey::command_executor, public events::handler, public events::observer
 {
