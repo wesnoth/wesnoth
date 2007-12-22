@@ -31,7 +31,7 @@
 #include "replay.hpp"
 #include "SDL_timer.h"
 #include "sound.hpp"
-#include "soundsource.hpp"
+#include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"

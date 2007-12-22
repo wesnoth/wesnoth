@@ -15,18 +15,19 @@
 #define GAME_EVENTS_H_INCLUDED
 
 class config;
-class t_string;
-class game_display;
-class gamestatus;
-class unit;
 class game_data;
+class game_display;
 class game_state;
+class gamestatus;
+class team;
+class t_string;
+class unit;
 
 #include "map.hpp"
 #include "soundsource.hpp"
-#include "team.hpp"
 #include "variable.hpp"
 #include "unit_map.hpp"
+
 #include <vector>
 #include <map>
 
