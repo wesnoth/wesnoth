@@ -25,7 +25,9 @@
 #include "intro.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "playturn.hpp"
 #include "sound.hpp"
+#include "upload_log.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 

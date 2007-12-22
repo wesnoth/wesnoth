@@ -23,6 +23,8 @@
 
 #include <vector>
 
+class turn_info;
+
 class playmp_controller : public playsingle_controller, public events::pump_monitor
 {
 public:

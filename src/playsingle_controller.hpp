@@ -19,12 +19,10 @@
 #include "global.hpp"
 
 #include "cursor.hpp"
-#include "hotkeys.hpp"
 #include "menu_events.hpp"
 #include "play_controller.hpp"
-#include "playturn.hpp"
-#include "random.hpp"
-#include "upload_log.hpp"
+
+struct upload_log;
 
 #include <vector>
 

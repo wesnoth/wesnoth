@@ -18,7 +18,9 @@
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "playturn.hpp"
 #include "sound.hpp"
+#include "upload_log.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 
