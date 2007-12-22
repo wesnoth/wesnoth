@@ -23,6 +23,7 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
+#include "map_label.hpp"
 #include "pathfind.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
