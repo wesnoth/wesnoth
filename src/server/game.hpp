@@ -18,12 +18,10 @@
 #include "../config.hpp"
 #include "../network.hpp"
 
-#include "player.hpp"
-
-//#include <algorithm>
 #include <map>
-//#include <set>
 #include <vector>
+
+class player;
 
 namespace chat_message {
 

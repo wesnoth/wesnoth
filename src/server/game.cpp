@@ -19,6 +19,7 @@
 #include "../map.hpp"
 
 #include "game.hpp"
+#include "player.hpp"
 
 #include <iostream>
 #include <cassert>
