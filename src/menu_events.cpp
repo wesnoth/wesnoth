@@ -27,6 +27,7 @@
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
+#include "log.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "preferences_display.hpp"

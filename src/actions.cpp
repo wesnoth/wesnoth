@@ -25,6 +25,7 @@
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "hotkeys.hpp"
+#include "log.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "pathfind.hpp"

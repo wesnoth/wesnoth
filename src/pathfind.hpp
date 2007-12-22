@@ -24,7 +24,6 @@ class unit;
 class unit_map;
 
 #include "array.hpp"
-#include "log.hpp"
 #include "map.hpp"
 #include "pathutils.hpp"
 #include "team.hpp"

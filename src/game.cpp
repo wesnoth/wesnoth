@@ -34,6 +34,7 @@
 #include "intro.hpp"
 #include "language.hpp"
 #include "loadscreen.hpp"
+#include "log.hpp"
 #include "widgets/menu.hpp"
 #include "marked-up_text.hpp"
 #include "multiplayer.hpp"

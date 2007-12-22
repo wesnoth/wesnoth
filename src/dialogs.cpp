@@ -24,6 +24,7 @@
 #include "gettext.hpp"
 #include "help.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "marked-up_text.hpp"
 #include "menu_events.hpp"
 #include "minimap.hpp"

@@ -21,6 +21,7 @@
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "menu_events.hpp"
 #include "replay.hpp"
 #include "sound.hpp"

@@ -24,6 +24,7 @@
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
+#include "log.hpp"
 #include "menu_events.hpp"
 #include "preferences_display.hpp"
 #include "show_dialog.hpp"

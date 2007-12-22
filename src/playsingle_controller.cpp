@@ -23,6 +23,7 @@
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
+#include "log.hpp"
 #include "marked-up_text.hpp"
 #include "sound.hpp"
 

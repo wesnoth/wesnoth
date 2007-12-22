@@ -47,6 +47,7 @@
 #include "attack_prediction.hpp"
 #include "gamestatus.hpp"
 #include "filesystem.hpp"
+#include "log.hpp"
 #include "menu_events.hpp"
 #include "game_events.hpp"
 #include "game_config.hpp"
