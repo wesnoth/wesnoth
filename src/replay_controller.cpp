@@ -32,6 +32,7 @@
 #include "replay_controller.hpp"
 #include "sound.hpp"
 #include "tooltips.hpp"
+#include "video.hpp"
 
 #include <iostream>
 #include <iterator>

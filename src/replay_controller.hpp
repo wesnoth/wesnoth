@@ -16,19 +16,9 @@
 #ifndef REPLAY_CONTROLLER_H_INCLUDED
 #define REPLAY_CONTROLLER_H_INCLUDED
 
-#include "display.hpp"
-#include "font.hpp"
-#include "game_events.hpp"
-#include "gamestatus.hpp"
-#include "halo.hpp"
-#include "help.hpp"
-#include "hotkeys.hpp"
-#include "menu_events.hpp"
-#include "mouse_events.hpp"
+class video;
+
 #include "play_controller.hpp"
-#include "preferences_display.hpp"
-#include "tooltips.hpp"
-#include "wml_separators.hpp"
 
 #include <vector>
 
