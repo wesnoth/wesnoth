@@ -32,6 +32,7 @@
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "game_preferences.hpp"
+#include "gamestatus.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"
 #include "team.hpp"

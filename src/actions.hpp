@@ -20,6 +20,7 @@
 
 class display;
 class gamestatus;
+class game_display;
 class replay;
 struct combatant;
 class unit;
@@ -29,8 +30,8 @@ class team;
 class game_data;
 
 #include "global.hpp"
-#include "gamestatus.hpp"
 #include "map.hpp"
+#include "unit.hpp"
 #include "unit_map.hpp"
 
 #include <deque>
