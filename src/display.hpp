@@ -30,7 +30,6 @@ class unit_map;
 #include "key.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
-#include "pathfind.hpp"
 #include "reports.hpp"
 #include "theme.hpp"
 #include "video.hpp"

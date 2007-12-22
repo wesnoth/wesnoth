@@ -26,6 +26,7 @@ class unit_map;
 
 #include "display.hpp"
 #include "image.hpp"
+#include "pathfind.hpp"
 
 #include "SDL.h"
 

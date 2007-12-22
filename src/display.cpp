@@ -30,6 +30,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
+#include "pathfind.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "theme.hpp"

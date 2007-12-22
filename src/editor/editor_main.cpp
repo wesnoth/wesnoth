@@ -22,6 +22,7 @@
 #include "../gettext.hpp"
 #include "../image.hpp"
 #include "../language.hpp"
+#include "../log.hpp"
 #include "../map.hpp"
 #include "../minimap.hpp"
 #include "../preferences.hpp"

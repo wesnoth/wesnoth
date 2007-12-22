@@ -24,6 +24,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
+#include "log.hpp"
 #include "marked-up_text.hpp"
 #include "preferences_display.hpp"
 #include "construct_dialog.hpp"
