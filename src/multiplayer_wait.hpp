@@ -21,9 +21,7 @@
 #include "widgets/combo.hpp"
 
 #include "gamestatus.hpp"
-#include "show_dialog.hpp"
 #include "multiplayer_ui.hpp"
-#include "leader_list.hpp"
 
 namespace mp {
 

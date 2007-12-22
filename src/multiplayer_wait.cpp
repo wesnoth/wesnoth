@@ -20,6 +20,7 @@
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "leader_list.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "multiplayer.hpp"
