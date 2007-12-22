@@ -16,7 +16,9 @@
 #include "floating_textbox.hpp"
 
 #include "font.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
+#include "team.hpp"
 
 namespace gui{
 	floating_textbox::floating_textbox() : 

@@ -18,14 +18,15 @@
 
 #include "global.hpp"
 
-#include "game_display.hpp"
 #include "scoped_resource.hpp"
-#include "team.hpp"
 #include "widgets/textbox.hpp"
 
+class game_display;
+class team;
 class unit_map;
 
 namespace gui{
+
 	enum TEXTBOX_MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE,
 		        TEXTBOX_COMMAND };
 
