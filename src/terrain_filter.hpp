@@ -15,17 +15,14 @@
 #ifndef TERRAIN_FILTER_H_INCLUDED
 #define TERRAIN_FILTER_H_INCLUDED
 
+#include "map.hpp"
+#include "pathfind.hpp"
+
 class config;
 class gamestatus;
 class unit;
 class vconfig;
 class unit_map;
-
-#include "map.hpp"
-#include "pathfind.hpp"
-#include "terrain.hpp"
-#include "variable.hpp"
-
 
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {
