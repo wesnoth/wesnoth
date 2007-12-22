@@ -17,7 +17,10 @@
  */
 
 #include "global.hpp"
+
+#include "config.hpp"
 #include "filesystem.hpp"
+#include "game_display.hpp"
 #include "marked-up_text.hpp"
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"

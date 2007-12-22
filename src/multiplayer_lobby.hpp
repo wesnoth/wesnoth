@@ -18,13 +18,13 @@
 #ifndef MULTIPLAYER_LOBBY_HPP_INCLUDED
 #define MULTIPLAYER_LOBBY_HPP_INCLUDED
 
-#include <map>
-
-#include "config.hpp"
-#include "display.hpp"
 #include "multiplayer_ui.hpp"
 
-#include "widgets/scrollarea.hpp"
+#include <map>
+
+class config;
+class video;
+class game_display;
 
 //! This module controls the multiplayer lobby. 
 //! A section on the server which allows players to chat, 
