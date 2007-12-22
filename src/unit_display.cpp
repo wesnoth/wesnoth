@@ -64,7 +64,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 	events::pump();
 }
 
-static void move_unit_between( const gamemap& map, const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
+static void move_unit_between(const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
 //NOTES TO SELF (boucman)
 // get rid of speed dependant gliding
@@ -105,7 +105,7 @@ bool unit_visible_on_path( const std::vector<gamemap::location>& path, const uni
 	return false;
 }
 
-void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
+void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams)
 {
 	game_display* disp = game_display::get_singleton();
 	assert(!path.empty());
@@ -139,7 +139,7 @@ void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, 
 			if( !tiles_adjacent(path[i], path[i+1])) {
 				teleport_unit_between(path[i],path[i+1],temp_unit);
 			} else {
-				move_unit_between(map,path[i],path[i+1],temp_unit);
+				move_unit_between(path[i],path[i+1],temp_unit);
 			}
 		}
 	}

@@ -522,7 +522,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 				info_.disp.scroll_to_tiles(from,to);
 
 				unit_map::iterator up = info_.units.find(u_it->first);
-				unit_display::move_unit(info_.map,steps,up->second,info_.teams);
+				unit_display::move_unit(steps,up->second,info_.teams);
 			}
 		}
 	}

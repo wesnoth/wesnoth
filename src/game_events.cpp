@@ -880,7 +880,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 										  game_map->w(), game_map->h());
 					assert(route.steps.size() > 0);
 				}
-				unit_display::move_unit( *game_map, route.steps, dummy_unit, *teams);
+				unit_display::move_unit(route.steps, dummy_unit, *teams);
 
 				src = dst;
 			}

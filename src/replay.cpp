@@ -973,7 +973,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			}
 
 			if(!replayer.is_skipping()) {
-				unit_display::move_unit(map,rt->second.steps,u->second,teams);
+				unit_display::move_unit(rt->second.steps,u->second,teams);
 			}
 			else{
 				//unit location needs to be updated

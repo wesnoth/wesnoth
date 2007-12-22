@@ -32,7 +32,7 @@ namespace unit_display
 bool unit_visible_on_path( const std::vector<gamemap::location>& path, const unit& u, const unit_map& units, const std::vector<team>& teams);
 
 //! Display a unit moving along a given path.
-void move_unit( const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams);
+void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::vector<team>& teams);
 
 //! Show a unit fading out.
 //! Note: this only shows the effect, it doesn't actually kill the unit.

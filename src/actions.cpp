@@ -2103,7 +2103,7 @@ size_t move_unit(game_display* disp, const game_data& gamedata,
 	// but don't actually remove it until the move is done,
 	// so that while the unit is moving status etc.
 	// will still display the correct number of units.
-	unit_display::move_unit(map,steps,ui->second,teams);
+	unit_display::move_unit(steps,ui->second,teams);
 
 	ui->second.set_movement(moves_left);
 

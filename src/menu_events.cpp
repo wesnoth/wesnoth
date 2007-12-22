@@ -1284,7 +1284,7 @@ private:
 
 			action.starting_moves = u->second.movement_left();
 
-			unit_display::move_unit(map_,route,u->second,teams_);
+			unit_display::move_unit(route,u->second,teams_);
 			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
 			up->second.set_goto(gamemap::location());
 			up->second.set_movement(starting_moves);
@@ -1407,7 +1407,7 @@ private:
 
 			action.starting_moves = u->second.movement_left();
 
-			unit_display::move_unit(map_,route,u->second,teams_);
+			unit_display::move_unit(route,u->second,teams_);
 			std::pair<gamemap::location,unit> *up = units_.extract(u->first);
 			up->second.set_goto(gamemap::location());
 			up->second.set_movement(starting_moves);
