@@ -14,13 +14,17 @@
 #ifndef DIALOGS_H_INCLUDED
 #define DIALOGS_H_INCLUDED
 
+class attack_type;
 class config;
 class display;
 class game_display;
+class game_data;
+class unit;
+class unit_map;
+class unit_type;
 
 #include "map.hpp"
 #include "construct_dialog.hpp"
-#include "unit.hpp"
 #include "events.hpp"
 
 #include "widgets/button.hpp"

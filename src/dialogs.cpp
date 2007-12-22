@@ -29,8 +29,8 @@
 #include "menu_events.hpp"
 #include "minimap.hpp"
 #include "replay.hpp"
-//#include "sound.hpp" 
 #include "thread.hpp"
+#include "unit.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 
