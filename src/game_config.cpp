@@ -70,6 +70,8 @@ namespace game_config
 	std::string cross_image = "misc/cross.png";
 
 	std::vector<std::string> foot_speed_prefix;
+	std::string foot_teleport_enter = "footsteps/teleport-in.png";
+	std::string foot_teleport_exit = "footsteps/teleport-out.png";
 
 	std::string observer_image = "misc/eye.png";
 	std::string tod_bright_image = "misc/tod-bright.png";
@@ -164,6 +166,8 @@ namespace game_config
 		cross_image = v["cross_image"];
 
 		foot_speed_prefix = utils::split(v["footprint_prefix"]);
+		foot_teleport_enter = v["footprint_teleport_enter"];
+		foot_teleport_exit = v["footprint_teleport_exit"];
 
 		terrain_mask_image = v["terrain_mask_image"];
 		grid_image = v["grid_image"];

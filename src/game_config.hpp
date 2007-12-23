@@ -68,6 +68,7 @@ namespace game_config
 	extern std::vector<Uint32> defense_color_scale;
 
 	extern std::vector<std::string> foot_speed_prefix;
+	extern std::string foot_teleport_enter, foot_teleport_exit;
 
 	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding, title_tip_x, title_tip_width, title_tip_padding;
 

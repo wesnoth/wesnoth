@@ -750,7 +750,8 @@ std::vector<surface> game_display::footsteps_images(const gamemap::location& loc
 		const std::string sense( h==0 ? "-in" : "-out" );
 	
 		if (!tiles_adjacent(*(i-1+h), *(i+h))) {
-			std::string teleport_image = "footsteps/teleport" + sense + ".png";
+			std::string teleport_image = 
+			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
 			teleport = image::get_image(teleport_image, image::UNMASKED);
 			continue;
 		}
