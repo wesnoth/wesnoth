@@ -856,12 +856,17 @@ void server::process_data_lobby(const network::connection sock, const config& da
 
 	if (data.child("create_game")) {
 		const std::string game_name = (*data.child("create_game"))["name"];
+		const std::string game_password = (*data.child("create_game"))["password"];
 		DBG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tcreates a new game: " << game_name << ".\n";
 		// Create the new game, remove the player from the lobby
 		// and set the player as the host/owner.
 		games_.push_back(game(players_, sock, game_name));
 		game& g = games_.back();
+		if(game_password.empty() == false) {
+			g.set_password(game_password);
+		}
+		
 		g.level() = (*data.child("create_game"));
 		lobby_.remove_player(sock);
 		lobby_.send_data(games_and_users_list_diff());
@@ -872,6 +877,7 @@ void server::process_data_lobby(const network::connection sock, const config& da
 	if (data.child("join")) {
 		const std::string& id = (*data.child("join"))["id"];
 		const bool observer = ((*data.child("join"))["observe"] == "yes");
+		const std::string& password = (*data.child("join"))["password"];
 		int game_id;
 		try {
 			game_id = lexical_cast<int>(id);
@@ -901,6 +907,15 @@ void server::process_data_lobby(const network::connection sock, const config& da
 			network::send_data(config("leave_game"), sock, send_gzipped_);
 			network::send_data(lobby_.construct_server_message(
 					"You are banned from this game."), sock, send_gzipped_);
+			network::send_data(games_and_users_list_, sock, send_gzipped_);
+			return;
+		} else if(!observer && !g->password_matches(password)) {
+			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+				<< "\tattempted to join game:\t\"" << g->name() << "\" ("
+				<< id << ") with bad password\n";
+			network::send_data(config("leave_game"), sock, send_gzipped_);
+			network::send_data(lobby_.construct_server_message(
+					"Incorrect password"), sock, send_gzipped_);
 			network::send_data(games_and_users_list_, sock, send_gzipped_);
 			return;
 		} else if (observer && !g->allow_observers()) {

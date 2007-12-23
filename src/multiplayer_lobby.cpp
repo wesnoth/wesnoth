@@ -371,6 +371,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 	for(game = games.begin(); game != games.end(); ++game) {
 		bool verified = true;
 		games_.push_back(game_item());
+		games_.back().password_required = (**game)["password"] == "yes";
 		if((**game)["mp_era"] != "") {
 			const config* const era_cfg = game_config.find_child("era", "id", (**game)["mp_era"]);
 			utils::string_map symbols;
@@ -471,6 +472,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			if(slots != "")
 				games_.back().status = std::string(ngettext(_("Vacant Slot:"), _("Vacant Slots:"),
 				                                            games_.back().vacant_slots)) + " " + slots;
+				if(games_.back().vacant_slots > 0 && games_.back().password_required) {
+					games_.back().status += std::string(" (") + std::string(_("Password Required")) + ")";
+				}
 		}
 
 		games_.back().use_map_settings = ((**game)["mp_use_map_settings"] == "yes");
@@ -714,6 +718,16 @@ void lobby::process_event()
 		if(!games_menu_.empty() && selected >= 0) {
 			gamebrowser::game_item game = games_menu_.selected_game();
 
+			std::string password;
+			if(join && game.password_required) {
+				const int res = gui::show_dialog(disp_, NULL, _("Password Required"),
+				          _("Joining this game requires a password."),
+						  gui::OK_CANCEL, NULL, NULL, _("Password: "), &password);
+				if(res != 0) {
+					return;
+				}
+			}
+
 			config response;
 			config& join = response.add_child("join");
 			join["id"] = game.id;
@@ -722,6 +736,10 @@ void lobby::process_event()
 			}
 			else{
 				join["observe"] = "no";
+			}
+
+			if(!password.empty()) {
+				join["password"] = password;
 			}
 			network::send_data(response, 0, true);
 

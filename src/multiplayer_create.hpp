@@ -58,6 +58,7 @@ public:
 		void reset() {
 			name = "";
 			era = "";
+			password = "";
 			num_turns = 0;
 			village_gold = 0;
 			xp_modifier = 0;
@@ -75,6 +76,7 @@ public:
 
 		std::string name;
 		std::string era;
+		std::string password;
 
 		int num_turns;
 		int village_gold;
@@ -153,6 +155,7 @@ private:
 	gui::button launch_game_;
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
+	gui::button password_button_;
 
 	gui::combo era_combo_;
 	gui::combo vision_combo_;

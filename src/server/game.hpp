@@ -111,8 +111,13 @@ public:
 
 	//! Functions to set/get the address of the game's summary description as
 	//! sent to players in the lobby.
-	void set_description(config* desc) { description_ = desc; }
+	void set_description(config* desc);
 	config* description() const { return description_; }
+
+	void set_password(const std::string& passwd) { password_ = passwd; }
+	bool password_matches(const std::string& passwd) const {
+		return password_.empty() || passwd == password_;
+	}
 
 	const std::string& termination_reason() const {
 		static const std::string aborted = "aborted";
@@ -168,6 +173,7 @@ private:
 	int id_;
 	//! The name of the game.
 	std::string name_;
+	std::string password_;
 	network::connection owner_;
 	user_vector players_;
 	user_vector observers_;

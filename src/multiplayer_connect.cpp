@@ -915,6 +915,9 @@ connect::connect(game_display& disp, const config& game_config, const game_data&
 	config response;
 	config& create_game = response.add_child("create_game");
 	create_game["name"] = params.name;
+	if(params.password.empty() == false) {
+		create_game["password"] = params.password;
+	}
 /*
 	// The number of human-controlled sides is important to know 
 	// to let the server decide how many players can join this game

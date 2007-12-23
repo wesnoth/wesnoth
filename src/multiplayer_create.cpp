@@ -82,6 +82,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	launch_game_(disp.video(), _("OK")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
+	password_button_(disp.video(), _("Set Password...")),
 	era_combo_(disp, std::vector<std::string>()),
 	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
@@ -314,6 +315,11 @@ void create::process_event()
 		} else {
 			gui::message_dialog(disp_, "", _("You must enter a name.")).show();
 		}
+	}
+
+	if(password_button_.pressed()) {
+		gui::show_dialog(disp_, NULL, _("Set Password"),
+		_("Set the password that people wanting to join your game as players must enter."), gui::OK_ONLY, NULL, NULL, _("Password: "), &parameters_.password);
 	}
 
 	// Turns per game
@@ -684,6 +690,8 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += era_label_.height() + border_size;
 	era_combo_.set_location(xpos, ypos);
 	ypos += era_combo_.height() + border_size;
+	password_button_.set_location(xpos, ypos);
+	ypos += password_button_.height() + border_size;
 
 #ifdef MP_VISION_OPTIONAL
 	vision_combo_.set_location(xpos, ypos);

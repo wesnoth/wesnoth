@@ -958,6 +958,13 @@ void game::reset_history() {
 	end_turn_ = 0;
 }
 
+void game::set_description(config* desc) {
+	description_ = desc;
+	if(!password_.empty()) {
+		(*description_)["password"] = "yes";
+	}
+}
+
 void game::end_game(const config& games_and_users_list) {
 	const user_vector& users = all_game_users();
 	// Set the availability status for all quitting players.
