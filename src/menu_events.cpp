@@ -1463,9 +1463,8 @@ private:
 			if(teams_[team_num - 1].is_enemy(u->second.side()) && !gui_->fogged(u->first) && !u->second.incapacitated() && !invisible) {
 				const unit_movement_resetter move_reset(u->second);
 				const bool teleports = u->second.get_ability_bool("teleport",u->first);
-				unit_map units(u->first, u->second);
-				const paths& path = paths(map_,status_,gameinfo_,ignore_units?units:units_,
-										  u->first,teams_,false,teleports,teams_[gui_->viewing_team()]);
+				const paths& path = paths(map_,status_,gameinfo_,units_,
+										  u->first,teams_,false,teleports,teams_[gui_->viewing_team()], 0,false, ignore_units);
 
 				gui_->highlight_another_reach(path);
 			}
