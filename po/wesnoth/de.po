@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-20 22:25+0100\n"
-"PO-Revision-Date: 2007-12-11 16:31+0100\n"
+"PO-Revision-Date: 2007-12-21 19:02+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
@@ -359,12 +359,10 @@ msgid "Commands"
 msgstr "Kommandos"
 
 #: data/core/help.cfg:81
-#, fuzzy
 msgid "Abilites"
 msgstr "Fertigkeiten"
 
 #: data/core/help.cfg:84
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -374,7 +372,8 @@ msgstr ""
 "Bestimmte Einheiten verfügen über Fertigkeiten, die entweder andere "
 "Einheiten direkt beeinflussen oder die Art der Interaktion mit ihnen "
 "verändern. Diese Fertigkeiten werden nach und nach unter dieser Kategorie "
-"erscheinen, sobald Ihr auf sie gestoßen seid."
+"erscheinen, sobald Ihr auf sie gestoßen seid.\n"
+"\n"
 
 #: data/core/help.cfg:96
 msgid "Unknown Unit"
@@ -2368,7 +2367,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -4044,12 +4042,14 @@ msgid "Deep Underground"
 msgstr "Tiefer Untergrund"
 
 #: data/core/macros/special-notes.cfg:5
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Spezialität"
+msgstr ""
+"\n"
+"\n"
+"Anmerkungen:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -4403,7 +4403,6 @@ msgid "race^Bat"
 msgstr "Fledermäuse"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
 msgstr "Fledermäuse"
 
@@ -4416,7 +4415,6 @@ msgid "race^Drake"
 msgstr "Draken"
 
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race+female^Drake"
 msgstr "Draken"
 
@@ -4429,7 +4427,6 @@ msgid "race^Dwarf"
 msgstr "Zwerge"
 
 #: data/core/units.cfg:63
-#, fuzzy
 msgid "race+female^Dwarf"
 msgstr "Zwerge"
 
@@ -4442,7 +4439,6 @@ msgid "race^Elf"
 msgstr "Elfen"
 
 #: data/core/units.cfg:74
-#, fuzzy
 msgid "race+female^Elf"
 msgstr "Elfen"
 
@@ -4455,7 +4451,6 @@ msgid "race^Goblin"
 msgstr "Kobolde"
 
 #: data/core/units.cfg:86
-#, fuzzy
 msgid "race+female^Goblin"
 msgstr "Kobolde"
 
@@ -4468,7 +4463,6 @@ msgid "race^Gryphon"
 msgstr "Greifen"
 
 #: data/core/units.cfg:96
-#, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Greifen"
 
@@ -4488,7 +4482,6 @@ msgid "race^Human"
 msgstr "Menschen"
 
 #: data/core/units.cfg:106
-#, fuzzy
 msgid "race+female^Human"
 msgstr "Menschen"
 
@@ -4501,7 +4494,6 @@ msgid "race^Saurian"
 msgstr "Saurianer"
 
 #: data/core/units.cfg:116
-#, fuzzy
 msgid "race+female^Saurian"
 msgstr "Saurianer"
 
@@ -4522,7 +4514,6 @@ msgid "race^Merman"
 msgstr "Meervolk"
 
 #: data/core/units.cfg:138
-#, fuzzy
 msgid "race^Mermaid"
 msgstr "Meervolk"
 
@@ -4543,7 +4534,6 @@ msgid "race^Naga"
 msgstr "Nagas"
 
 #: data/core/units.cfg:156
-#, fuzzy
 msgid "race^Nagani"
 msgstr "Nagas"
 
@@ -4556,7 +4546,6 @@ msgid "race^Ogre"
 msgstr "Oger"
 
 #: data/core/units.cfg:166
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Oger"
 
@@ -4577,7 +4566,6 @@ msgid "race^Orc"
 msgstr "Orks"
 
 #: data/core/units.cfg:176
-#, fuzzy
 msgid "race+female^Orc"
 msgstr "Orks"
 
@@ -4590,7 +4578,6 @@ msgid "race^Troll"
 msgstr "Trolle"
 
 #: data/core/units.cfg:186
-#, fuzzy
 msgid "race+female^Troll"
 msgstr "Trolle"
 
@@ -4603,7 +4590,6 @@ msgid "race^Undead"
 msgstr "Untote"
 
 #: data/core/units.cfg:201
-#, fuzzy
 msgid "race+female^Undead"
 msgstr "Untote"
 
@@ -5480,10 +5466,12 @@ msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
 #: src/actions.cpp:260 src/actions.cpp:283 src/actions.cpp:288
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
+"Es wurde eine ungültige Waffe ausgewählt, möglicherweise von der Python KI."
 
 #: src/actions.cpp:267
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
+"Eine ungültige Waffe wurde gesendet, möglicherweise durch die Python KI."
 
 #: src/actions.cpp:959 src/actions.cpp:1213
 msgid "poisoned"
@@ -5544,6 +5532,7 @@ msgstr "Unbekannter Einheitentyp: "
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
+"Bewegungskosten sind 0, vielleicht von einem Gelände mit 0 Bewegungskosten."
 
 #: src/dialogs.cpp:108
 msgid "Advance Unit"
@@ -6036,9 +6025,8 @@ msgstr "Niederlage:"
 
 #: src/gamestatus.cpp:254 src/gamestatus.cpp:269 src/gamestatus.cpp:289
 #: src/gamestatus.cpp:374
-#, fuzzy
 msgid "No time of day has been defined."
-msgstr "Legt die Tageszeit zu Spielbeginn zufällig fest"
+msgstr "Es wurde keine Tageszeit festgelegt."
 
 #: src/gamestatus.cpp:694 src/gamestatus.cpp:696 src/playcampaign.cpp:411
 msgid " replay"
@@ -7338,7 +7326,7 @@ msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
 #: src/pathfind.cpp:310
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Gelände mit kleiner 1 Bewegungskosten gefunden."
 
 #: src/play_controller.cpp:794
 msgid "Back to start"
@@ -7603,7 +7591,7 @@ msgstr "Eigenes Dorf"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "Der Wert für »border_size« muss zwischen 0,0 und 0,5 liegen."
 
 #: src/titlescreen.cpp:342
 msgid "TitleScreen button^Tutorial"
