@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-20 22:37+0100\n"
+"POT-Creation-Date: 2007-12-24 11:54+0100\n"
 "PO-Revision-Date: 2007-12-15 14:30+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -55,6 +55,18 @@ msgid ""
 "not run correctly under Wesnoth 1.2.x.\n"
 "\n"
 "(Intermediate level, 13 scenarios.)"
+msgstr ""
+
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:26
+msgid "Author"
+msgstr ""
+
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:32
+msgid "Special Guest Designer"
+msgstr ""
+
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:38
+msgid "Brainstorming, playtesting, and spousal support"
 msgstr ""
 
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_The_East_Gate.cfg:3
@@ -197,7 +209,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:892
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:102
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:129
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:405
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:420
 msgid "Angarthing"
 msgstr ""
 
@@ -527,7 +539,7 @@ msgid "Tan-Uthkar"
 msgstr ""
 
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:244
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:267
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:282
 msgid "The villagers are attacking us!"
 msgstr ""
 
@@ -789,9 +801,9 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:143
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:32
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:151
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:335
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:349
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:363
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:350
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:364
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:378
 msgid "Masked Dwarf"
 msgstr ""
 
@@ -1513,37 +1525,43 @@ msgstr ""
 msgid "You retrieve {AMOUNT} pieces of gold."
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:57
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:43
+msgid ""
+"Without magic users from Master Perrin's academy in your party, you can no "
+"longer recruit new ones."
+msgstr ""
+
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:70
 msgid "Staff of Righteous Flame"
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:60
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:73
 msgid ""
 "This staff gives a dying mage a final strike that will destroy all nearby "
 "enemies."
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:74
 msgid "Only mages can wield the Staff."
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:283
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:298
 msgid "No defenders in this village."
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:386
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:401
 msgid ""
 "Finally! I see someone managed to see through the web of deception thrown up "
 "by that vile Karrag!"
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:391
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:406
 msgid ""
-"I thought Karrag's fight was the so called 'dirtgrubbers'. Why would he keep "
-"you, a dwarf captive?"
+"I thought Karrag's fight was against the so called 'dirtgrubbers'. Why would "
+"he keep you, a dwarf captive?"
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:396
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:411
 msgid ""
 "I guess Karrag thought I knew too much. When his masked henchmen started "
 "raiding, plundering and taking all sorts of prisoners - which were sent to "
@@ -1552,7 +1570,7 @@ msgid ""
 "arrested and thrown down here."
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:401
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:416
 msgid ""
 "I gather that he is involved in some sick ritual which requires the blood of "
 "living creatures. These cells seem to be the holding place where he keeps "
@@ -1560,7 +1578,7 @@ msgid ""
 "since been taken away. Now it is just us few dwarves that remain..."
 msgstr ""
 
-#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:406
+#: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:421
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag then we thought, for now "
 "he is unable to continue in his dirty sorcery."
