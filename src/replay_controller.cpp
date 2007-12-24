@@ -284,7 +284,14 @@ void replay_controller::play_turn(){
 			(!recorder.at_end())){
 
 		play_side(player_number_ - 1, false);
-		play_slice();
+		// NOTE play_side increased player_number_ so play_slice can start with 
+		// a player number which is an invalid team. The other question is why
+		// do we send the player number to play_side if it has access to it.
+		// If player_number_ > teams_.size() we will later trigger the assert in
+		// play_controller::current_team().
+		if(static_cast<size_t>(player_number_) <= teams_.size()) {
+			play_slice();
+		}
 	}
 
 	player_number_ = 1;
