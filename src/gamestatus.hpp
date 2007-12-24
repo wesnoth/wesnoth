@@ -113,7 +113,10 @@ public:
 		snapshot(),
 		last_selected(gamemap::location::null_location), 
 		variables(),
-		temporaries()
+		temporaries(),
+		random_seed_(rand()),
+		random_pool_(random_seed_),
+		random_calls_(0)
 		{}
 
 	game_state(const game_state& state);
@@ -182,10 +185,39 @@ public:
 
 	//! the last location where a select event fired.
 	gamemap::location last_selected;
+
+	//! Get a new random number.
+	int get_random();
+
+	//! Seeds the random pool.
+	void seed_random(const int seed, const unsigned call_count = 0);
+
+	//! Resets the random to the 0 calls and the seed to the random
+	//! this way we stay in the same sequence but don't have a lot
+	//! calls. Used when moving to the next scenario.
+	void rotate_random() 
+		{ random_seed_ = random_pool_; random_calls_ = 0; }
+	
+
+	int get_random_seed() const { return random_seed_; }
+	int get_random_calls() const { return random_calls_; }
+
 private:
 	config variables;
 	mutable config temporaries; // lengths of arrays, etc.
 	friend struct variable_info;
+
+	//! Initial seed for the pool.
+	int random_seed_;
+
+	//! State for the random pool.
+	int random_pool_;
+
+	//! Number of time a random number is generated.
+	unsigned random_calls_;
+
+	//! Sets the next random number in the pool.
+	void random_next();
 };
 
 

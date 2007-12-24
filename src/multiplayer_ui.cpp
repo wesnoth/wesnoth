@@ -31,6 +31,7 @@
 #include "wml_separators.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
+#define ERR_NG LOG_STREAM(err, engine)
 #define ERR_CF LOG_STREAM(err, config)
 #define DBG_NW LOG_STREAM(debug, network)
 #define LOG_NW LOG_STREAM(info, network)
@@ -92,6 +93,16 @@ void level_to_gamestate(config& level, game_state& state, bool saved_game)
 			recorder.set_skip(false);
 			recorder.set_to_end();
 		}
+	}
+
+	//set random
+	const std::string seed = level["random_seed"];
+	if(! seed.empty()) {
+		const unsigned calls = lexical_cast_default<unsigned>(level["random_calls"]);
+		state.seed_random(lexical_cast<int>(seed), calls);
+	} else {
+		ERR_NG << "No random seed found, random "
+			"events will probably be out of sync.\n";
 	}
 
 	//adds the starting pos to the level

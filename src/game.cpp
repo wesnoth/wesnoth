@@ -755,6 +755,16 @@ bool game_controller::load_game()
 			}
 		}
 
+		// Get the status of the random in the snapshot.
+		// For a replay we need to restore the start only, the replaying gets at
+		// proper location.
+		// For normal loading also restore the call count.
+		const int seed = lexical_cast_default<int>
+			(cfg["random_seed"], 42);
+		const unsigned calls = show_replay ? 0 :
+			lexical_cast_default<unsigned> (state_.snapshot["random_calls"]);
+		state_.seed_random(seed, calls);
+
 	} catch(game::error& e) {
 		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		return false;
@@ -819,6 +829,7 @@ void game_controller::set_tutorial()
 	state_.campaign_define = "TUTORIAL";
 	reset_defines_map();
 	defines_map_["TUTORIAL"] = preproc_define();
+
 }
 
 bool game_controller::new_campaign()
@@ -2041,7 +2052,7 @@ static int play_game(int argc, char** argv)
 				return remove(input_file.c_str());
 
 			}  catch(io_exception& e) {
-                std::cerr << "IO error: " << e.what() << "\n";
+				std::cerr << "IO error: " << e.what() << "\n";
 			}
 
 		} else if(val == "--gunzip") {

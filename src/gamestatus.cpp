@@ -447,30 +447,36 @@ game_state::game_state(const game_data& data, const config& cfg) :
 		snapshot(),
 		last_selected(gamemap::location::null_location),
 		variables(),
-		temporaries()
+		temporaries(),
+		random_seed_(lexical_cast<int>(cfg["random_seed"])),
+		random_pool_(random_seed_),
+		random_calls_(0)
 {
 	log_scope("read_game");
 
 	const config* snapshot = cfg.child("snapshot");
 
-    if (snapshot != NULL){
+	if (snapshot != NULL){
+
 		this->snapshot = *snapshot;
 
-    	const config::child_list& players = snapshot->get_children("player");
+		seed_random(random_seed_, lexical_cast_default<unsigned>((*snapshot)["random_calls"]));
+
+		const config::child_list& players = snapshot->get_children("player");
     
-    	if(!players.empty()) {
-    		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
-    			std::string save_id = (**i)["save_id"];
+		if(!players.empty()) {
+			for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
+				std::string save_id = (**i)["save_id"];
     
-    			if(save_id.empty()) {
-    				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
-    			} else {
-    				player_info player = read_player(data, *i);
-    				this->players.insert(std::pair<std::string, player_info>(save_id,player));
-    			}
-    		}
-    	}
-     }
+				if(save_id.empty()) {
+					std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
+				} else {
+					player_info player = read_player(data, *i);
+					this->players.insert(std::pair<std::string, player_info>(save_id,player));
+				}
+			}
+		}
+	}
          
 	std::cerr << "scenario: '" << scenario << "'\n";
 	std::cerr << "next_scenario: '" << next_scenario << "'\n";
@@ -588,6 +594,9 @@ void write_game(const game_state& gamestate, config& cfg, WRITE_GAME_MODE mode)
 	cfg["campaign_define"] = gamestate.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(gamestate.campaign_xtra_defines);
 
+	cfg["random_seed"] = lexical_cast<std::string>(gamestate.get_random_seed());
+	cfg["random_calls"] = lexical_cast<std::string>(gamestate.get_random_calls());
+
 	cfg.add_child("variables",gamestate.get_variables());
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
@@ -640,7 +649,10 @@ void write_game(config_writer &out, const game_state& gamestate, WRITE_GAME_MODE
 	out.write_key_val("difficulty", gamestate.difficulty);
 	out.write_key_val("campaign_define", gamestate.campaign_define);
 	out.write_key_val("campaign_extra_defines", utils::join(gamestate.campaign_xtra_defines));
+	out.write_key_val("random_seed", lexical_cast<std::string>(gamestate.get_random_seed()));
+	out.write_key_val("random_calls", lexical_cast<std::string>(gamestate.get_random_calls()));
 	out.write_child("variables", gamestate.get_variables());
+
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=gamestate.wml_menu_items.begin();
 	    j!=gamestate.wml_menu_items.end(); ++j) {
 		out.open_child("menu_item");
@@ -1095,6 +1107,44 @@ void game_state::clear_variable(const std::string& varname)
 	}
 }
 
+//! Get a new random number.
+int game_state::get_random()
+{
+	random_next();
+	++random_calls_;
+	DBG_NG << "pulled user random " << random_pool_ 
+		<< " for call " << random_calls_ << '\n';
+
+	return (static_cast<unsigned>(random_pool_ / 65536) % 32768);
+}
+
+//! Seeds the random pool.
+//!
+//! @param seed         The initial value for the random engine.
+//! @param call_count   Upon loading we need to restore the state at saving
+//!                     so set the number of times a random number is generated
+//!                     for replays the orginal value is required.
+void game_state::seed_random(const int seed, const unsigned call_count)
+{
+	random_pool_ = seed;
+	random_seed_ = seed;
+	for(random_calls_ = 0; random_calls_ < call_count; ++random_calls_) {
+		random_next();
+	}
+	DBG_NG << "Seeded random with " << random_seed_ << " with " 
+		<< random_calls_ << " calls, pool is now at " 
+		<< random_pool_ << '\n';
+}
+
+//! Sets the next random number in the pool.
+void game_state::random_next()
+{
+	// Use the simple random generator as shown in man rand(3).
+	// The division is done separately since we also want to 
+	// quickly go the the wanted index in the random list.
+	random_pool_ = random_pool_ * 1103515245 + 12345;
+}
+
 static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
 	std::map<std::string, wml_menu_item*>::iterator itor = gs_wmi.begin();
 	for(itor = gs_wmi.begin(); itor != gs_wmi.end(); ++itor) {
@@ -1123,6 +1173,9 @@ game_state& game_state::operator=(const game_state& state)
 	campaign = state.campaign;
 	scenario = state.scenario;
 	completion = state.completion;
+	random_seed_ = state.random_seed_;
+	random_pool_ = state.random_pool_;
+	random_calls_ = state.random_calls_;
 	players = state.players;
 	scoped_variables = state.scoped_variables;
 

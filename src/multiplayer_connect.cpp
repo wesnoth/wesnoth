@@ -1447,6 +1447,8 @@ void connect::load_game()
 		level_["experience_modifier"] = state_.snapshot["experience_modifier"];
 		level_["observer"] = state_.snapshot["observer"];
 		level_.add_child("snapshot") = state_.snapshot;
+		level_["random_seed"] = state_.snapshot["random_seed"];
+		level_["random_calls"] = state_.snapshot["random_calls"];
 
 		// Adds the replay data, and the replay start, to the level, 
 		// so clients can receive it.
@@ -1481,6 +1483,7 @@ void connect::load_game()
 
 		level_["scenario"] = params_.name;
 		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
+		level_["random_seed"] = lexical_cast<std::string>(state_.get_random_seed());
 	}
 
 	const std::string& era = params_.era;
