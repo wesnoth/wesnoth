@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-24 11:51+0100\n"
-"PO-Revision-Date: 2007-11-14 02:02+0900\n"
+"PO-Revision-Date: 2007-12-06 00:40+0900\n"
 "Last-Translator: Claus Aranha <caranha@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "MIME-Version: 1.0\n"
@@ -2243,7 +2243,6 @@ msgstr ""
 "\n"
 
 #: data/core/help.cfg:678
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2252,8 +2251,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Liga o modo de debug (não funciona em modo multijogador). O modo de debug é "
-"desligado ao sair do jogo ou ao usar :nodebug.\n"
+"Liga o modo de debug (não funciona em modo multijogador). Veja mais em "
+"<ref>dst=debug_commands text='Comandos de modo de debug'</ref>. O modo de "
+"debug é desligado ao sair do jogo ou ao usar :nodebug.\n"
 "\n"
 
 #: data/core/help.cfg:679
@@ -2265,7 +2265,6 @@ msgid "Multiplayer commands"
 msgstr "Comandos para Multijogador"
 
 #: data/core/help.cfg:688
-#, fuzzy
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2323,9 +2322,8 @@ msgstr ""
 "Liga/Desliga o modo de silenciar todos os observadores."
 
 #: data/core/help.cfg:703
-#, fuzzy
 msgid "Debug mode commands"
-msgstr "Comandos Gerais"
+msgstr "Comandos do modo de Debug"
 
 #: data/core/help.cfg:707
 msgid ""
@@ -2333,16 +2331,18 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Cria uma unidade do tipo especificado no hexágono selecionado.\n"
+"\n"
 
 #: data/core/help.cfg:710
-#, fuzzy
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Liga/Desliga o mostrador do número de frames por segundo.\n"
+"Liga/Desliga a névoa/escuridão para o time atual..\n"
 "\n"
 
 #: data/core/help.cfg:713
@@ -2351,6 +2351,9 @@ msgid ""
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
+"\n"
+"Dá a quantidade especificada de ouro para o time atual.\n"
+"\n"
 
 #: data/core/help.cfg:716
 msgid ""
@@ -2358,6 +2361,9 @@ msgid ""
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
+"\n"
+"Configura uma variável do jogo para um valor dado manualmente.\n"
+"\n"
 
 #: data/core/help.cfg:719
 msgid ""
@@ -2365,6 +2371,9 @@ msgid ""
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
+"\n"
+"Mostra uma variável do jogo.\n"
+"\n"
 
 #: data/core/help.cfg:722
 msgid ""
@@ -2372,6 +2381,9 @@ msgid ""
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
+"\n"
+"Inicia o evento especificado manualmente.\n"
+"\n"
 
 #: data/core/help.cfg:723
 msgid ""
@@ -2379,6 +2391,9 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
+"\n"
+"Modifica a propriedade especial da unidade selecionada. Exemplo: :unit "
+"hitpoints=100"
 
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
@@ -4273,9 +4288,8 @@ msgid "race^Elf"
 msgstr "Elfos"
 
 #: data/core/units.cfg:74
-#, fuzzy
 msgid "race+female^Elf"
-msgstr "Elfos"
+msgstr ""
 
 #: data/core/units.cfg:75
 msgid "race^Elves"
@@ -4432,7 +4446,7 @@ msgstr "Mortos-Vivos"
 #: data/core/units.cfg:203
 #, fuzzy
 msgid "race+female^Undead"
-msgstr "Mortos-Vivos"
+msgstr "morta-viva"
 
 #: data/core/units.cfg:204
 #, fuzzy
@@ -4588,7 +4602,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- Grande Mago Delfador, 516AW"
 
 #: data/hardwired/tips.cfg:7
 msgid ""
@@ -4611,7 +4625,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
 #: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
 msgid "- The Wesnoth Tactical Guide"
-msgstr ""
+msgstr "- O Guia Tático de Wesnoth"
 
 #: data/hardwired/tips.cfg:11
 msgid ""
@@ -4622,7 +4636,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- Rei Konrad, 536AW"
 
 #: data/hardwired/tips.cfg:15
 msgid ""
@@ -4633,7 +4647,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
-msgstr ""
+msgstr "- Memórias de Gweddry, 627AW"
 
 #: data/hardwired/tips.cfg:19
 msgid ""
@@ -4658,7 +4672,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
-msgstr ""
+msgstr "- Lorde Kalenz, 470AW"
 
 #: data/hardwired/tips.cfg:31
 msgid ""
@@ -4680,8 +4694,9 @@ msgid ""
 msgstr ""
 
 #: data/hardwired/tips.cfg:40
+#, fuzzy
 msgid "- The Wesnoth Community"
-msgstr ""
+msgstr "- O Guia Tático de Wesnoth"
 
 #: data/hardwired/tips.cfg:43
 msgid ""
@@ -4693,7 +4708,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:44
 msgid "- Royal Compendium of Battle Terminology - Volume II, 212YW"
-msgstr ""
+msgstr "- Compêndio Real de Terminologia de Batalha - Volume II, 212AW"
 
 #: data/hardwired/tips.cfg:47
 msgid ""
@@ -4703,7 +4718,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
 msgid "- Handbook of Tactical Analysis Volume I - Haldric II, 42YW"
-msgstr ""
+msgstr "- Manual de Análise Tática, Volume I - Haldric II, 42AW"
 
 #: data/hardwired/tips.cfg:51
 msgid ""
@@ -4792,7 +4807,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:76
 msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-msgstr ""
+msgstr "- Manual de Análise Tática, Volume II - Haldric II, 43AW"
 
 #: data/hardwired/tips.cfg:79
 msgid ""
@@ -4822,7 +4837,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
-msgstr ""
+msgstr "- Sir Kaylan, 498AW"
 
 #: data/hardwired/tips.cfg:91
 msgid ""
@@ -4836,7 +4851,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
-msgstr ""
+msgstr "- Sir Kaylan, 502AW"
 
 #: data/hardwired/tips.cfg:95
 msgid ""
@@ -4875,7 +4890,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:108
 msgid "- King Konrad, 552YW"
-msgstr ""
+msgstr "- Rei Konrad, 552AW"
 
 #: data/hardwired/tips.cfg:111
 msgid ""
@@ -4886,7 +4901,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:112
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- Meneldur, 123AW"
 
 #: data/hardwired/tips.cfg:115
 msgid ""
@@ -4913,12 +4928,11 @@ msgstr ""
 "podem dar-lhe espaço para que você recrute a partir do forte deles."
 
 #: data/hardwired/tips.cfg:123
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold based attacks but "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Esqueletos são resistentes a ataques perfurantes e cortantes, mas "
+"Esqueletos são resistentes a ataques perfurantes, cortantes e de frio, mas "
 "vulneráveis a ataques de impacto, fogo e arcanos."
 
 #: data/hardwired/tips.cfg:127
@@ -4949,7 +4963,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:136
 msgid "- Princess Li'sar, 515YW"
-msgstr ""
+msgstr "- Princesa Li'sar, 515AW"
 
 #: data/hardwired/tips.cfg:139
 msgid "Read the hotkeys list in the preferences menu."
@@ -4981,7 +4995,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:152
 msgid "- The Scroll of Chantal, 516YW"
-msgstr ""
+msgstr "- O Pergaminho de Chantal, 516AW"
 
 #: data/hardwired/tips.cfg:155
 msgid ""
@@ -4998,7 +5012,7 @@ msgstr "Ataques arcanos são poderosos contra mortos-vivos."
 
 #: data/hardwired/tips.cfg:160
 msgid "- Great Sage Dacyn, 626YW"
-msgstr ""
+msgstr "- Grande Sábio Dacyn, 626AW"
 
 #: data/hardwired/tips.cfg:163
 msgid ""
@@ -5075,7 +5089,7 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:188
 msgid "- Queen Li'sar, 528YW"
-msgstr ""
+msgstr "- Rainha Li'sar, 528AW"
 
 #: data/hardwired/tips.cfg:191
 msgid ""
@@ -5089,7 +5103,7 @@ msgstr ""
 
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
-msgstr ""
+msgstr "rubi de fogo"
 
 #: data/themes/default.cfg:112 data/themes/dfool.cfg:135
 #: data/themes/experimental.cfg:96
@@ -5272,7 +5286,7 @@ msgstr "Emboscada!"
 
 #: src/actions.cpp:2166
 msgid "Failed teleport! Exit not empty"
-msgstr ""
+msgstr "Teleporte falhou! A saída não está vazia"
 
 #: src/actions.cpp:2204
 msgid "Friendly unit sighted"
@@ -6892,9 +6906,8 @@ msgid "Share None"
 msgstr "Não dividir nada"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "No eras found."
-msgstr "Nenhuma Era encontrada"
+msgstr "Nenhuma Era encontrada."
 
 #: src/multiplayer_create.cpp:205
 msgid "No eras found"
@@ -7084,7 +7097,7 @@ msgstr "Não tem times disponíveis neste jogo."
 #: src/multiplayer_wait.cpp:262
 #, fuzzy
 msgid "No era information found."
-msgstr "Nenhuma Era encontrada"
+msgstr "Nenhuma Era encontrada."
 
 #: src/multiplayer_wait.cpp:267
 msgid "No multiplayer sides found"
@@ -7103,10 +7116,13 @@ msgid "Client disconnected"
 msgstr "O cliente se desconectou"
 
 #: src/network.cpp:165
+#, fuzzy
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
+"Não recebeu Ping do servidor por pelo menos 30 segundos. Time Out da conexão."
 msgstr[1] ""
+"Não recebeu Ping do servidor por pelo menos 30 segundos. Time Out da conexão."
 
 #: src/network.cpp:519
 msgid "Could not add socket to socket set"
@@ -7173,6 +7189,13 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
+"O jogo está fora de sincronia, e não pode continuar. Há varios motivos que "
+"podem ter causado isto: por exemplo, se você ou outro jogador mudarem suas "
+"configurações de jogo. Isto pode significar que um dos jogadores está "
+"tentando trapacear. Pode também ser devido a um bug no jogo, mas é menos "
+"provável.\n"
+"\n"
+"Você quer salvar um registro de erros em seu jogo?"
 
 #: src/playsingle_controller.cpp:154
 msgid "Remaining gold: "
@@ -7200,10 +7223,9 @@ msgstr "Ouro: "
 
 #: src/playsingle_controller.cpp:167
 msgid "Carry over percentage: "
-msgstr ""
+msgstr "Porcentagem do ouro final: "
 
 #: src/playsingle_controller.cpp:169
-#, fuzzy
 msgid "Bonus Gold: "
 msgstr "Bônus: "
 
@@ -7212,7 +7234,6 @@ msgid "Retained Gold: "
 msgstr "Ouro mantido: "
 
 #: src/playsingle_controller.cpp:181
-#, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -7220,11 +7241,11 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Você começará o próximo cenário com $gold ou a quantidade mínima de ouro "
-"inicial, o que for maior."
+"Você começará o próximo cenário com $gold além da quantidade mínima de ouro "
+"inicial."
 msgstr[1] ""
-"Você começará o próximo cenário com $gold ou a quantidade mínima de ouro "
-"inicial, o que for maior."
+"Você começará o próximo cenário com $gold além da quantidade mínima de ouro "
+"inicial."
 
 #: src/playsingle_controller.cpp:189
 msgid ""
@@ -7415,14 +7436,12 @@ msgid "TitleScreen button^Quit"
 msgstr "Sair"
 
 #: src/titlescreen.cpp:353
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "Créditos"
+msgstr "Anterior"
 
 #: src/titlescreen.cpp:354
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "Sair"
+msgstr "Próximo"
 
 #: src/titlescreen.cpp:355
 msgid "TitleScreen button^Help"
@@ -7521,18 +7540,16 @@ msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:161 src/unit_types.cpp:203
-#, fuzzy
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "dano"
-msgstr[1] "dano"
+msgstr[1] "danos"
 
 #: src/unit_types.cpp:170 src/unit_types.cpp:210
-#, fuzzy
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "golpeia"
-msgstr[1] "golpeia"
+msgstr[0] "golpe"
+msgstr[1] "golpes"
 
 #: src/unit_types.cpp:790
 msgid "chaotic"
@@ -7574,6 +7591,12 @@ msgstr "Ajude-nos a fazer um Wesnoth melhor para você!"
 msgid "Enable summary uploads"
 msgstr "Permitir o envio de resumos"
 
+#~ msgid "Binary Saves"
+#~ msgstr "Jogos salvos em binário"
+
+#~ msgid "-- The Tome of Wesnoth"
+#~ msgstr "-- O Livro de Wesnoth"
+
 #~ msgid "Campaign Maintenance"
 #~ msgstr "Manutenção da Campanha"
 
@@ -7608,16 +7631,6 @@ msgstr "Permitir o envio de resumos"
 #~ msgstr ""
 #~ "E agradecimentos especiais para todos aqueles que esqueci de mencionar."
 
-#~ msgid "Era not available"
-#~ msgstr "Era não disponível"
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- O Livro de Wesnoth"
-
-#, fuzzy
-#~ msgid "Masked Dwarf"
-#~ msgstr "Anões"
-
 #~ msgid "Full Heal"
 #~ msgstr "Cura Total"
 
@@ -7635,31 +7648,5 @@ msgstr "Permitir o envio de resumos"
 #~ "Deixando o cursor do mouse em uma habilidade ou característica mostra uma "
 #~ "descrição da habilidade ou característica."
 
-#~ msgid "Binary Saves"
-#~ msgstr "Jogos salvos em binário"
-
-#~ msgid "Zap"
-#~ msgstr "Zap"
-
-#~ msgid "time left"
-#~ msgstr "tempo restante"
-
-#~ msgid "No multiplayer sides."
-#~ msgstr "Sem lados multijogadores."
-
-#~ msgid ""
-#~ "The games are out of sync and will have to exit. Do you want to save an "
-#~ "error log of your game?"
-#~ msgstr ""
-#~ "Os jogos estão fora de sincronia, e precisarão ser terminados. Você quer "
-#~ "salvar uma lista dos erros no seu jogo?"
-
-#~ msgid "TitleScreen button^More"
-#~ msgstr "Mais"
-
-#~ msgid ""
-#~ "The login name you chose is too long, please use a login with less than "
-#~ "18 characters"
-#~ msgstr ""
-#~ "O nome de login que você escolheu é longo demais. Por favor escolha um "
-#~ "nome de login com menos de 18 caracteres"
+#~ msgid "Era not available"
+#~ msgstr "Era não disponível"
