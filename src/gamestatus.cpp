@@ -464,7 +464,10 @@ game_state::game_state(const game_data& data, const config& cfg) :
 
 		seed_random(random_seed_, lexical_cast_default<unsigned>((*snapshot)["random_calls"]));
 
-		const config::child_list& players = snapshot->get_children("player");
+		// With a start of scenario save there's an empty scenario and the recall list is stored
+		// in the player.
+		const config::child_list& players = snapshot->empty() ? 
+			cfg.get_children("player") : snapshot->get_children("player");
     
 		if(!players.empty()) {
 			for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
