@@ -37,7 +37,7 @@ if EDITOR
 bin_PROGRAMS += wesnoth_editor
 endif
 
-noinst_LIBRARIES = libwesnoth-core.a
+noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
 
 pkgdatadir=$(datadir)/@DATADIR@
 
@@ -57,22 +57,10 @@ wesnoth_SOURCES = \
 	ai_move.cpp \
 	ai_python.cpp \
 	animated_game.cpp \
-	astarnode.cpp \
-	astarsearch.cpp \
 	attack_prediction.cpp \
-	builder.cpp \
-	cavegen.cpp \
-	clipboard.cpp \
-	color_range.cpp \
 	config_adapter.cpp \
-	construct_dialog.cpp \
-	cursor.cpp \
 	dialogs.cpp \
-	display.cpp \
-	events.cpp \
-	filechooser.cpp \
 	floating_textbox.cpp \
-	font.cpp \
 	game.cpp \
 	game_display.cpp \
 	game_events.cpp \
@@ -83,20 +71,9 @@ wesnoth_SOURCES = \
 	generic_event.cpp \
 	halo.cpp \
 	help.cpp \
-	hotkeys.cpp \
-	image.cpp \
 	intro.cpp \
-	key.cpp \
-	language.cpp \
 	leader_list.cpp \
-	loadscreen.cpp \
-	map_create.cpp \
-	map_label.cpp \
-	mapgen.cpp \
-	mapgen_dialog.cpp \
-	marked-up_text.cpp \
 	menu_events.cpp \
-	minimap.cpp \
 	mouse_events.cpp \
 	multiplayer.cpp \
 	multiplayer_ui.cpp \
@@ -112,25 +89,16 @@ wesnoth_SOURCES = \
 	playmp_controller.cpp \
 	playsingle_controller.cpp \
 	playturn.cpp \
-	preferences.cpp \
-	preferences_display.cpp \
 	publish_campaign.cpp \
 	replay.cpp \
 	replay_controller.cpp \
-	reports.cpp \
-	sdl_utils.cpp \
 	sha1.cpp \
 	settings.cpp \
-	show_dialog.cpp \
-	sound.cpp \
-	soundsource.cpp \
 	statistics.cpp \
 	team.cpp \
 	terrain_filter.cpp \
-	theme.cpp \
 	titlescreen.cpp \
 	tooltips.cpp \
-	unit.cpp \
 	unit_abilities.cpp \
 	unit_animation.cpp \
 	unit_display.cpp \
@@ -139,28 +107,12 @@ wesnoth_SOURCES = \
 	unit_types.cpp \
 	upload_log.cpp \
 	variable.cpp \
-	video.cpp \
-	serialization/binary_or_text.cpp \
 	serialization/parser.cpp \
-	serialization/string_utils.cpp \
-	widgets/button.cpp \
-	widgets/file_menu.cpp \
 	widgets/combo.cpp \
-	widgets/label.cpp \
-	widgets/menu.cpp \
-	widgets/menu_style.cpp \
-	widgets/progressbar.cpp \
-	widgets/scrollarea.cpp \
-	widgets/scrollbar.cpp \
-	widgets/scrollpane.cpp \
-	widgets/slider.cpp \
-	widgets/textbox.cpp \
-	widgets/widget.cpp \
-	wml_exception.cpp \
-	sdl_ttf/SDL_ttf.c
+	widgets/scrollpane.cpp 
 
-wesnoth_LDADD = $(THELIBS)
-wesnoth_DEPENDENCIES=libwesnoth-core.a
+wesnoth_LDADD = $(THELIBS) libwesnoth.a
+wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
 #    Editor                                                                 #
@@ -176,58 +128,12 @@ wesnoth_editor_SOURCES = \
 	editor/editor_dialogs.cpp \
 	editor/editor_undo.cpp \
 	animated_editor.cpp \
-	astarnode.cpp \
-	astarsearch.cpp \
-	builder.cpp \
-	cavegen.cpp \
-	clipboard.cpp \
-	color_range.cpp \
-	construct_dialog.cpp \
-	cursor.cpp \
-	display.cpp \
-	events.cpp \
-	filechooser.cpp \
-	font.cpp \
 	generic_event.cpp \
-	hotkeys.cpp \
-	image.cpp \
-	key.cpp \
-	language.cpp \
-	loadscreen.cpp \
-	map_create.cpp \
-	map_label.cpp \
-	mapgen.cpp \
-	mapgen_dialog.cpp \
-	marked-up_text.cpp \
-	minimap.cpp \
-	preferences.cpp \
-	preferences_display.cpp \
-	reports.cpp \
-	sdl_utils.cpp \
-	show_dialog.cpp \
-	sound.cpp \
-	soundsource.cpp \
-	theme.cpp \
 	tooltips.cpp \
-	video.cpp \
-	serialization/binary_or_text.cpp \
-	serialization/parser.cpp \
-	widgets/button.cpp \
-	widgets/file_menu.cpp \
-	widgets/label.cpp \
-	widgets/menu.cpp \
-	widgets/menu_style.cpp \
-	widgets/progressbar.cpp \
-	widgets/textbox.cpp \
-	widgets/scrollarea.cpp \
-	widgets/scrollbar.cpp \
-	widgets/slider.cpp \
-	widgets/widget.cpp \
-	wml_exception.cpp \
-	sdl_ttf/SDL_ttf.c
+	serialization/parser.cpp 
 
-wesnoth_editor_LDADD = $(THELIBS)
-wesnoth_editor_DEPENDENCIES=libwesnoth-core.a
+wesnoth_editor_LDADD = $(THELIBS) libwesnoth.a
+wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
 
 #############################################################################
 #    Wesnothd Server                                                        #
@@ -461,18 +367,13 @@ noinst_HEADERS = \
 #removed.  Requires moving path and version at least to other files.
 
 libwesnoth_core_a_SOURCES = \
+	color_range.cpp \
 	config.cpp \
 	filesystem.cpp \
-	color_range.cpp \
 	game_config.cpp \
 	gettext.cpp \
 	log.cpp \
 	map.cpp \
-	pathutils.cpp \
-	race.cpp \
-	random.cpp \
-	terrain.cpp \
-	terrain_translation.cpp \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \
@@ -480,6 +381,59 @@ libwesnoth_core_a_SOURCES = \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp
+
+libwesnoth_a_SOURCES = \
+	astarnode.cpp \
+	astarsearch.cpp \
+	builder.cpp \
+	cavegen.cpp \
+	clipboard.cpp \
+	construct_dialog.cpp \
+	cursor.cpp \
+	display.cpp \
+	events.cpp \
+	filechooser.cpp \
+	font.cpp \
+	hotkeys.cpp \
+	image.cpp \
+	key.cpp \
+	language.cpp \
+	loadscreen.cpp \
+	map_create.cpp \
+	map_label.cpp \
+	mapgen.cpp \
+	mapgen_dialog.cpp \
+	marked-up_text.cpp \
+	minimap.cpp \
+	pathutils.cpp \
+	preferences.cpp \
+	preferences_display.cpp \
+	unit.cpp \
+	race.cpp \
+	random.cpp \
+	reports.cpp \
+	sdl_utils.cpp \
+	show_dialog.cpp \
+	sound.cpp \
+	soundsource.cpp \
+	terrain.cpp \
+	terrain_translation.cpp \
+	video.cpp \
+	serialization/binary_or_text.cpp \
+	theme.cpp \
+	widgets/button.cpp \
+	widgets/file_menu.cpp \
+	widgets/label.cpp \
+	widgets/menu.cpp \
+	widgets/menu_style.cpp \
+	widgets/progressbar.cpp \
+	widgets/scrollarea.cpp \
+	widgets/scrollbar.cpp \
+	widgets/slider.cpp \
+	widgets/textbox.cpp \
+	widgets/widget.cpp \
+	sdl_ttf/SDL_ttf.c \
+	wml_exception.cpp 
 
 if USESVN
 # Until game_config.cpp is removed, this will be needed to ensure that the
@@ -556,7 +510,7 @@ endif
 CLEANFILES += TAGS
 
 TAGS:
-	etags -l c++ $(wesnoth_SOURCES) $(wesnoth_editor_SOURCES) $(wesnothd_SOURCES) $(campaignd_SOURCES) $(exploder_SOURCES) $(cutter_SOURCES) $(libwesnoth_core_a_SOURCES)
+	etags -l c++ $(wesnoth_SOURCES) $(wesnoth_editor_SOURCES) $(wesnothd_SOURCES) $(campaignd_SOURCES) $(exploder_SOURCES) $(cutter_SOURCES) $(libwesnoth_core_a_SOURCES) $(libwesnoth__a_SOURCES) 
 
 #############################################################################
 #    Scripts
