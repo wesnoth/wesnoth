@@ -107,7 +107,6 @@ wesnoth_SOURCES = \
 	unit_types.cpp \
 	upload_log.cpp \
 	variable.cpp \
-	serialization/parser.cpp \
 	widgets/combo.cpp \
 	widgets/scrollpane.cpp 
 
@@ -129,8 +128,7 @@ wesnoth_editor_SOURCES = \
 	editor/editor_undo.cpp \
 	animated_editor.cpp \
 	generic_event.cpp \
-	tooltips.cpp \
-	serialization/parser.cpp 
+	tooltips.cpp 
 
 wesnoth_editor_LDADD = $(THELIBS) libwesnoth.a
 wesnoth_editor_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
@@ -148,9 +146,7 @@ wesnothd_SOURCES = \
 	server/server.cpp \
 	network.cpp \
 	network_worker.cpp \
-	loadscreen_empty.cpp \
-	serialization/binary_or_text.cpp \
-	serialization/parser.cpp
+	loadscreen_empty.cpp 
 
 wesnothd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
@@ -164,9 +160,7 @@ campaignd_SOURCES = \
 	network.cpp \
 	network_worker.cpp \
 	publish_campaign.cpp \
-	loadscreen_empty.cpp \
-	serialization/binary_or_text.cpp \
-	serialization/parser.cpp
+	loadscreen_empty.cpp 
 
 campaignd_LDADD = -L. -lwesnoth-core @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 campaignd_DEPENDENCIES=libwesnoth-core.a
@@ -182,8 +176,7 @@ exploder_SOURCES = \
 	tools/exploder_composer.cpp \
 	tools/dummy_video.cpp \
 	sdl_utils.cpp \
-	loadscreen_empty.cpp \
-	serialization/parser.cpp
+	loadscreen_empty.cpp 
 
 cutter_SOURCES = \
 	tools/cutter.cpp \
@@ -191,8 +184,7 @@ cutter_SOURCES = \
 	tools/exploder_cutter.cpp \
 	tools/dummy_video.cpp \
 	sdl_utils.cpp \
-	loadscreen_empty.cpp \
-	serialization/parser.cpp
+	loadscreen_empty.cpp 
 
 exploder_LDADD = -L. -lwesnoth-core @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBINTL) $(PNG_LIBS)
 exploder_DEPENDENCIES=libwesnoth-core.a
@@ -377,7 +369,9 @@ libwesnoth_core_a_SOURCES = \
 	thread.cpp \
 	tstring.cpp \
 	util.cpp \
+	serialization/binary_or_text.cpp \
 	serialization/binary_wml.cpp \
+	serialization/parser.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp
@@ -419,7 +413,6 @@ libwesnoth_a_SOURCES = \
 	terrain.cpp \
 	terrain_translation.cpp \
 	video.cpp \
-	serialization/binary_or_text.cpp \
 	theme.cpp \
 	widgets/button.cpp \
 	widgets/file_menu.cpp \
