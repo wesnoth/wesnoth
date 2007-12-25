@@ -25,7 +25,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "multiplayer_connect.hpp"
-#include "random.hpp"
 #include "statistics.hpp"
 #include "show_dialog.hpp"
 #include "serialization/string_utils.hpp"
@@ -848,7 +847,7 @@ void connect::side::resolve_random()
 		if (ut != parent_->game_data_.unit_types.end()) {
 			const std::vector<unit_race::GENDER> glist = ut->second.genders();
 			if (!glist.empty()) {
-				const int gchoice = get_random() % glist.size();
+				const int gchoice = rand() % glist.size();
 				// Pick up a gender, using the random 'gchoice' index
 				unit_race::GENDER sgender = glist[gchoice];
 				switch (sgender)
