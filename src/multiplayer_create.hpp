@@ -122,6 +122,9 @@ private:
 
 	std::vector<std::string> user_maps_;
 	std::vector<std::string> map_options_;
+	//! Due to maps not available the index of the selected map and 
+	//! mp scenarios is not 1:1 so we use a lookup table.
+	std::vector<size_t> map_index_;
 
 	gui::menu maps_menu_;
 	gui::slider turns_slider_;

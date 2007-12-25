@@ -18,8 +18,6 @@
 
 #include "global.hpp"
 
-#include <memory>
-
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -36,6 +34,9 @@
 #include "serialization/string_utils.hpp"
 #include "wml_separators.hpp"
 
+#include <cassert>
+#include <memory>
+
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};
 }
@@ -51,6 +52,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	mp_countdown_reservoir_time_(330),
 	user_maps_(),
 	map_options_(),
+	map_index_(),
 
 	maps_menu_(disp.video(), std::vector<std::string>()),
 	turns_slider_(disp.video()),
@@ -111,13 +113,15 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 
 	// Standard maps
 	const config::child_list& levels = cfg.get_children("multiplayer");
-	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j)
+	size_t i = 0;
+	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j, ++i)
 	{
 		if ( ((*j)->values.find("allow_new_game") == (*j)->values.end())
 			|| utils::string_bool((**j)["allow_new_game"],true))
 		{
 			menu_help_str = help_sep + ((**j)["name"]);
 			map_options_.push_back(((**j)["name"]) + menu_help_str);
+			map_index_.push_back(i);
 		}
 	}
 
@@ -413,7 +417,9 @@ void create::process_event()
 
 		} else if(select > user_maps_.size() && select <= maps_menu_.nitems()-1) {
 			parameters_.saved_game = false;
-			const size_t index = select - user_maps_.size() - 1;
+			size_t index = select - user_maps_.size() - 1;
+			assert(index < map_index_.size());
+			index = map_index_[index];
 			const config::child_list& levels = game_config().get_children("multiplayer");
 
 			if(index < levels.size()) {

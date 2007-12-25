@@ -29,6 +29,8 @@ Version 1.3.12+svn:
    * changing the langugage now sets the version number in the title
      properly.
    * show 'back to round xxx' also in 800 x 600 resolution
+   * a multiplayer map with allow_new_game causes the selection of a map to
+     show the wrong minimap (bug #9425)
  * WML engine:
    * new event "last breath" will be triggered when a unit dies, but
      before the animation is played
