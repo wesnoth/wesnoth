@@ -448,7 +448,9 @@ game_state::game_state(const game_data& data, const config& cfg) :
 		last_selected(gamemap::location::null_location),
 		variables(),
 		temporaries(),
-		random_seed_(lexical_cast<int>(cfg["random_seed"])),
+		//! @todo  older savegames don't have random_seed stored, evaluate later
+		//! whether default can be removed again. Look after branching 1.5.
+		random_seed_(lexical_cast_default<int>(cfg["random_seed"], 42)),
 		random_pool_(random_seed_),
 		random_calls_(0)
 {
