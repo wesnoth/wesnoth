@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-24 11:51+0100\n"
-"PO-Revision-Date: 2007-12-08 19:34+0100\n"
+"PO-Revision-Date: 2007-12-16 14:55+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -468,14 +468,14 @@ msgstr ""
 "Ogni schieramento inizia con un comandante nella propria fortezza. "
 "All'inizio della battaglia, e a volte anche durante, avrai bisogno di "
 "reclutare le <ref>dst=units text=unità</ref> della tua armata. Per reclutare "
-"devi portare il tuo comandante (per esempio, Konrad nella campagna \"L'erede "
-"al trono\") nella fortezza di un <ref>dst=terrain_castle text=castello</"
-"ref>. Solo allora potrai reclutare, scegliendo \"Recluta\" dal menù o "
-"facendo clic con il tasto destro del mouse e selezionando "
-"<italic>text=Recluta</italic>. In questo modo apparirà il menù recluta, che "
-"elenca le unità disponibili, con il loro costo in oro. Seleziona un'unità "
-"per vedere le sue caratteristiche sulla sinistra e quindi premi il tasto "
-"recluta per reclutarla."
+"devi portare il tuo comandante (per esempio, Konrad nella campagna «L'erede "
+"al trono») nella fortezza di un <ref>dst=terrain_castle text=castello</ref>. "
+"Solo allora potrai reclutare, scegliendo «Recluta» dal menù o facendo clic "
+"con il tasto destro del mouse e selezionando <italic>text=Recluta</italic>. "
+"In questo modo apparirà il menù recluta, che elenca le unità disponibili, "
+"con il loro costo in oro. Seleziona un'unità per vedere le sue "
+"caratteristiche sulla sinistra e quindi premi il tasto recluta per "
+"reclutarla."
 
 #: data/core/help.cfg:142
 msgid ""
@@ -668,8 +668,8 @@ msgstr ""
 "maggior parte delle unità di uomini o di orchi utilizzano 2, mentre i "
 "cavalieri ne utilizzano 3. Puoi sapere quanti punti movimento sono necessari "
 "a un'unità per entrare in un determinato tipo di terreno facendo clic con il "
-"destro su di essa, selezionando \"Descrizione dell'unità\" e quindi "
-"guardando alla voce <italic>text='Modificatori del terreno'</italic>."
+"destro su di essa, selezionando «Descrizione dell'unità» e quindi guardando "
+"alla voce <italic>text='Modificatori del terreno'</italic>."
 
 #: data/core/help.cfg:180
 msgid ""
@@ -770,7 +770,7 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"I combattimenti in \"Battle for Wesnoth\" avvengono sempre tra delle unità "
+"I combattimenti in «Battle for Wesnoth» avvengono sempre tra delle unità "
 "poste su esagoni adiacenti. Fai clic sulla tua unità e successivamente sul "
 "nemico che vuoi attaccare: la tua unità si muoverà verso l'unità nemica e "
 "quando si troveranno l'una di fianco all'altra inizieranno il combattimento. "
@@ -840,7 +840,7 @@ msgstr ""
 "Ogni unità ha una una probabilità di essere colpita in base al terreno su "
 "cui si trova. Questa probabilità viene visualizzata sul pannello di stato e "
 "può essere visualizzata anche facendo clic con il destro sull'unità, "
-"selezionando \"Descrizione dell'unità\" e infine guardando i "
+"selezionando «Descrizione dell'unità» e infine guardando i "
 "<italic>text='modificatori del terreno'</italic>. Per esempio gli elfi hanno "
 "una percentuale di difesa del 70% nella foresta, ciò vuol dire che un'unità "
 "che li attacca ha solo il 30% di probabilità di colpirli. Allo stesso modo, "
@@ -1303,7 +1303,7 @@ msgstr ""
 "strategie di base o di familiarizzare con le <ref>dst=traits "
 "text=Caratteristiche</ref> e <ref>dst=abilities text=Abilità</ref>, ma a "
 "questo punto conosci già tutto ciò di cui hai bisogno per giocare la "
-"campagna \"L'erede al trono\". Buon divertimento e buona fortuna!"
+"campagna «L'erede al trono». Buon divertimento e buona fortuna!"
 
 #: data/core/help.cfg:299
 msgid "License"
@@ -2686,7 +2686,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:471
 msgid "feeding"
-msgstr ""
+msgstr "nutrimento"
 
 #: data/core/macros/abilities.cfg:473
 msgid ""
@@ -2694,6 +2694,9 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Nutrimento:\n"
+"Quest'unità riceve 1 punto ferita al suo massimo quando uccide un'unità "
+"vivente."
 
 #: data/core/macros/abilities.cfg:497
 msgid "+1 max HP"
@@ -2901,9 +2904,8 @@ msgid "Max HP bonus +"
 msgstr "Bonus PF Massimo +"
 
 #: data/core/macros/amla.cfg:30
-#, fuzzy
 msgid "Heal to full, MAX XP +25%"
-msgstr ", MAX XP +25%"
+msgstr "Guarimento completo, MAX XP +25%"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -4614,6 +4616,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Non trascurare l'esperienza del tuo condottiero! Devi tenerlo al sicuro, ma "
+"se esageri nel proteggerlo potrebbe trovarsi ad un livello di esperienza "
+"troppo basso per sopravvivere alle future battaglie."
 
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
@@ -4648,6 +4653,10 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Le unità con la qualità \"intelligenza\" richiedono meno punti esperienza "
+"per salire di livello. All'inizio di una campagna, prova a far dare il colpo "
+"di grazia a queste unità, in modo da avere presto qualche unità di alto "
+"livello."
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
@@ -4694,6 +4703,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Dopo aver giocato a qualche scenario, leggi attentamente la sezione "
+"«Gameplay» della schermata di aiuto. I dettagli diventano sempre più "
+"importanti quando gli scenari diventano più difficili!"
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4707,11 +4719,12 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Su www.wesnoth.org puoi trovare guide per la strategia, supporto tecnico, la "
+"strategia di Wesnoth e molto altro."
 
 #: data/hardwired/tips.cfg:40
-#, fuzzy
 msgid "- The Wesnoth Community"
-msgstr "- La guida tattica di Wesnoth"
+msgstr "- La comunità di Wesnoth"
 
 #: data/hardwired/tips.cfg:43
 msgid ""
@@ -4730,6 +4743,8 @@ msgstr "- Compendio reale di terminologia di battaglia - Volume II 212AW"
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Un piano solido per altri versi può fallire se si attacca nel periodo del "
+"giorno sbagliato."
 
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
@@ -4745,7 +4760,6 @@ msgid ""
 msgstr ""
 
 #: data/hardwired/tips.cfg:55
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
@@ -4754,9 +4768,9 @@ msgid ""
 msgstr ""
 "Ci sono sei tipi di attacco: perforazione, taglio, impatto, fuoco, freddo e "
 "arcano. Le diverse unità hanno punti deboli per tipi di attacco diversi. Fai "
-"un clic col tasto destro su un'unità e seleziona \"Descrizione dell'unità\", "
-"poi \"Resistenza\" per vedere quanto è resistente contro i differenti tipi "
-"di attacco."
+"un clic col tasto destro su un'unità e seleziona «Descrizione dell'unità» per "
+"vedere quanto è resistente contro i differenti tipi di attacco, e a quali è "
+"più vulnerabile."
 
 #: data/hardwired/tips.cfg:59
 msgid ""
@@ -4771,7 +4785,6 @@ msgstr ""
 "a destra dello schermo."
 
 #: data/hardwired/tips.cfg:63
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
@@ -4781,22 +4794,22 @@ msgid ""
 msgstr ""
 "Le unità avvelenate perdono 8 punti ferita ogni turno, ma non possono morire "
 "di solo veleno: il veleno non ridurrà mai i punti ferita sotto il valore di "
-"1. Le unità avvelenate possono essere curate muovendole in un villaggio o "
-"disponendole vicino a un'unità che possiede l'abilità \"cura\"."
+"1. Se si trovano vicino a un guaritore non perdono punti fderita all'inizio "
+"del turno. Se si trovano in un villaggio o vicino a un'unità che possiede "
+"l'abilità \"cura\", il veleno verrà completamente neutralizzato all'inizio "
+"del turno."
 
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"Puoi utilizzare le unità di uno scenario precedente selezionando \"richiama"
-"\" dal menù del gioco. Richiamando le stesse unità potrai ottenere un'armata "
+"Puoi utilizzare le unità di uno scenario precedente selezionando «richiama» "
+"dal menù «Azioni». Richiamando le stesse unità potrai ottenere un'armata "
 "esperta e potente nel combattimento."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -4805,10 +4818,10 @@ msgid ""
 "zone; and skirmisher units are skilled enough to ignore these zones.)"
 msgstr ""
 "Tutte le unità hanno una \"zona di controllo\" in ciascuno degli esagoni "
-"adiacenti. Se un'unità si muove all'interno di una zona di controllo di un "
-"nemico non potrà più muoversi per quel turno. Le unità di livello 0 sono "
+"adiacenti. Se un'unità si muove all'interno della zona di controllo di un "
+"nemico non potrà più muoversi per quel turno (Le unità di livello 0 sono "
 "troppo deboli per controllare una zona; gli incursori sono abbastanza "
-"esperti da ignorare queste zone."
+"esperti da potersi muovere liberamente in queste zone)."
 
 #: data/hardwired/tips.cfg:75
 msgid ""
@@ -4835,14 +4848,14 @@ msgstr ""
 "all'inizio del loro turno."
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to--let it rest. If a unit does "
 "not move or attack, it will recover 2 hit points at the beginning of its "
 "next turn."
 msgstr ""
-"Le unità si riposano se non si spostano e non attaccano durante il loro "
-"turno. Recupereranno 2 punti ferita all'inizio del turno successivo."
+"Non muovere le unità ferite se non è necessario ­ lasciale riposare. Le "
+"unità si riposano se non si spostano e non attaccano durante il loro turno. "
+"Recupereranno 2 punti ferita all'inizio del turno successivo."
 
 #: data/hardwired/tips.cfg:87
 msgid ""
@@ -4958,14 +4971,14 @@ msgstr ""
 "e freddi, ma vulnerabili alle armi da impatto, fuoco o arcane."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability make lower-level adjacent units on the "
 "same side fight better. Use these units to help your other units level up "
 "faster."
 msgstr ""
-"Le unità con l'abilità comando rendono più efficaci gli attacchi delle unità "
-"amiche adiacenti di livello inferiore."
+"Le unità con l'abilità \"comando\" rendono più efficaci gli attacchi delle "
+"unità amiche adiacenti di livello inferiore. Usale per aiutare le altre "
+"unità a guadagnare esperienza più rapidamente."
 
 #: data/hardwired/tips.cfg:131
 msgid ""
@@ -4995,7 +5008,7 @@ msgid ""
 "you can undo your move by pressing 'u'."
 msgstr ""
 "Se muovi un'unità, ma non attacchi o non scopri nessun'altra informazione "
-"aggiuntiva, puoi annullare la tua mossa premendo il tasto \"u\"."
+"aggiuntiva, puoi annullare la tua mossa premendo il tasto «u»."
 
 #: data/hardwired/tips.cfg:147
 msgid ""
@@ -5050,18 +5063,17 @@ msgstr ""
 "possono uccidere con un solo colpo."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hit points "
 "by 3. This is less than the normal difference gained by advancing a level. "
 "Thus, it is usually more useful to try to advance your lower level units."
 msgstr ""
-"Le unità possono ricevere Avanzamenti Oltre il Massimo Livello (AOML), gli "
-"AOML di solito incrementano i punti ferita massimi dell'unità di 3. "
-"Guadagnare un nuovo AOML diventa progressivamente sempre più difficile e "
-"comunque è spesso molto più utile cercare di far avanzare le tue unità di "
-"livello più basso."
+"Le unità avanzate, invece di aumentare di livello, ricevono un Avanzamento "
+"Oltre il Massimo Livello (AOML), gli AOML di solito incrementano i punti "
+"ferita massimi dell'unità di 3. Ciò è meno del normale avanzamento di "
+"livello. Quindi di solito è molto più utile cercare di far avanzare le tue "
+"unità di livello più basso."
 
 #: data/hardwired/tips.cfg:175
 msgid ""
@@ -7140,13 +7152,12 @@ msgid "Client disconnected"
 msgstr "Client disconnesso"
 
 #: src/network.cpp:165
-#, fuzzy
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
 msgstr[0] ""
-"Nessun ping del server negli ultimi 60 secondi. Connessione scaduta."
+"Nessun ping del server negli ultimi $timeout secondi. Connessione scaduta."
 msgstr[1] ""
-"Nessun ping del server negli ultimi 60 secondi. Connessione scaduta."
+"Nessun ping del server negli ultimi $timeout secondi. Connessione scaduta."
 
 #: src/network.cpp:519
 msgid "Could not add socket to socket set"
@@ -7618,6 +7629,9 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
 
+#~ msgid "-- The Tome of Wesnoth"
+#~ msgstr "-- Il Tomo di Wesnoth"
+
 #~ msgid "Campaign Maintenance"
 #~ msgstr "Manutenzione delle campagne"
 
@@ -7680,13 +7694,6 @@ msgstr "Abilita l'invio del sommario"
 
 #~ msgid "Era not available"
 #~ msgstr "Era non disponibile"
-
-#~ msgid "-- The Tome of Wesnoth"
-#~ msgstr "-- Il Tomo di Wesnoth"
-
-#, fuzzy
-#~ msgid "Masked Dwarf"
-#~ msgstr "Nano"
 
 #~ msgid "Full Heal"
 #~ msgstr "Energia massima"
