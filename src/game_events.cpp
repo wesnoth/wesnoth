@@ -1498,7 +1498,8 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		assert(units != NULL);
 		assert(game_map != NULL);
 		assert(status_ptr != NULL);
-		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config(),true);
+		assert(state_of_game != NULL);
+		unit new_unit(game_data_ptr,units,game_map,status_ptr,teams,cfg.get_parsed_config(),true, state_of_game);
 		preferences::encountered_units().insert(new_unit.id());
 		gamemap::location loc = cfg_to_loc(cfg);
 

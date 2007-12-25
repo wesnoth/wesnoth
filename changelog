@@ -41,6 +41,8 @@ Version 1.3.12+svn:
    * undoing recruits is no longer allowed
    * added rand= for [set_variable] which can be used in MP, the user has to
      make sure it stays in sync
+   * units spawned with unit in events can now have random traits and also the
+     names are the same (bug #10501)
  * miscellaneous and bug fixes:
    * various bug fixes and code cleanups
    * added gzip and gunzip command line parameters

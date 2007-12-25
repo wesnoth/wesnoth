@@ -17,6 +17,7 @@
 
 #include "global.hpp"
 
+#include "gamestatus.hpp"
 #include "race.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
@@ -50,7 +51,8 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	return res;
 }
 
-static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain_size, size_t max_len)
+static wide_string markov_generate_name(const markov_prefix_map& prefixes, 
+	size_t chain_size, size_t max_len, game_state* state)
 {
 	if(chain_size == 0)
 		return wide_string();
@@ -70,7 +72,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes, size_
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) {
-		random[j] = get_random();
+		random[j] = state ? state->get_random() : get_random();
 	}
 
 	j = 0;
@@ -181,9 +183,11 @@ unit_race::unit_race(const config& cfg) :
 	next_[FEMALE] = markov_prefixes(utils::split(cfg["female_names"]), chain_size_);
 }
 
-std::string unit_race::generate_name(unit_race::GENDER gender) const
+std::string unit_race::generate_name(
+		unit_race::GENDER gender, game_state* state) const
 {
-	return utils::wstring_to_string(markov_generate_name(next_[gender],chain_size_,12));
+	return utils::wstring_to_string(
+		markov_generate_name(next_[gender], chain_size_, 12, state));
 }
 
 bool unit_race::uses_global_traits() const

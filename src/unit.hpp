@@ -27,6 +27,7 @@
 
 class game_display;
 class gamestatus;
+class game_state;
 class config_writer;
 
 #include <set>
@@ -59,7 +60,9 @@ public:
 	unit(const unit& u);
 	// Initilizes a unit from a config
 	unit(const game_data& gamedata, const config& cfg, bool use_traits=false);
-	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const config& cfg, bool use_traits=false);
+	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, 
+		const gamestatus* game_status, const std::vector<team>* teams, 
+		const config& cfg, bool use_traits=false, game_state* state = 0);
 	// Initilizes a unit from a unit type
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
 	unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams, const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE, std::string variation="");
@@ -69,7 +72,7 @@ public:
 	void set_game_context(const game_data* gamedata, unit_map* unitmap, const gamemap* map, const gamestatus* game_status, const std::vector<team>* teams);
 
 	//! Advances this unit to another type
-	void advance_to(const unit_type* t, bool use_traits=false);
+	void advance_to(const unit_type* t, bool use_traits=false, game_state* state = 0);
 	const std::vector<std::string> advances_to() const { return advances_to_; }
 
 	//! The current type id
@@ -155,7 +158,7 @@ public:
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
 	//! Initialize this unit from a cfg object.
-	void read(const config& cfg, bool use_traits=true);
+	void read(const config& cfg, bool use_traits=true, game_state* state = 0);
 	void write(config& cfg) const;
 	void write(config_writer& out) const;
 
@@ -257,15 +260,16 @@ public:
 	void apply_modifications();
 	void remove_temporary_modifications();
 	void add_trait(std::string /*trait*/);
-	void generate_traits(bool musthaveonly=false);
+	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_traits_description();
-	std::string generate_description() const { return race_->generate_name(string_gender(cfg_["gender"])); }
+	std::string generate_description( game_state* state = 0) const 
+		{ return race_->generate_name(string_gender(cfg_["gender"]), state); }
 
 	// Only see_all=true use caching
 	bool invisible(const gamemap::location& loc,
 		const unit_map& units,const std::vector<team>& teams, bool see_all=true) const;
 
-	unit_race::GENDER generate_gender(const unit_type& type, bool gen);
+	unit_race::GENDER generate_gender(const unit_type& type, bool gen, game_state* state = 0);
 	std::string image_mods() const;
 
 private:

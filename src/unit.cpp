@@ -176,14 +176,27 @@ unit::unit(const unit& o):
 
 //! Initilizes a unit from a config.
 unit::unit(const game_data* gamedata, unit_map* unitmap, const gamemap* map,
-           const gamestatus* game_status, const std::vector<team>* teams,const config& cfg,
-		   bool use_traits) : movement_(0), hold_position_(false), resting_(false),
-		   state_(STATE_STANDING), facing_(gamemap::location::NORTH_EAST), flying_(false),
-           anim_(NULL), next_idling_(0), frame_begin_time_(0), unit_halo_(halo::NO_HALO),
-           unit_anim_halo_(halo::NO_HALO), draw_bars_(false),gamedata_(gamedata),
-           units_(unitmap), map_(map), gamestatus_(game_status),teams_(teams)
+	const gamestatus* game_status, const std::vector<team>* teams,const config& cfg,
+	bool use_traits, game_state* state) : 
+		movement_(0), 
+		hold_position_(false), 
+		resting_(false),
+		state_(STATE_STANDING),
+		facing_(gamemap::location::NORTH_EAST),
+		flying_(false),
+		anim_(NULL),
+		next_idling_(0),
+		frame_begin_time_(0),
+		unit_halo_(halo::NO_HALO),
+		unit_anim_halo_(halo::NO_HALO),
+		draw_bars_(false),
+		gamedata_(gamedata),
+		units_(unitmap),
+		map_(map),
+		gamestatus_(game_status),
+		teams_(teams)
 {
-	read(cfg, use_traits);
+	read(cfg, use_traits, state);
 	getsHit_=0;
 	end_turn_ = false;
 	refreshing_  = false;
@@ -217,14 +230,18 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
+unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen, game_state* state)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 	// Once random gender is used, don't do it again.
 	// Such as when restoring a saved character.
 	cfg_["random_gender"] = "no";
 	if(genders.empty() == false) {
-		return gen ? genders[get_random()%genders.size()] : genders.front();
+		if(state) {
+			return gen ? genders[state->get_random() % genders.size()] : genders.front();
+		} else {
+			return gen ? genders[get_random() % genders.size()] : genders.front();
+		}
 	} else {
 		return unit_race::MALE;
 	}
@@ -374,7 +391,7 @@ void unit::add_trait(std::string /*trait*/)
 // musthavepnly is true when you don't want to generate random traits or
 // you don't want to give any optional traits to a unit.
 
-void unit::generate_traits(bool musthaveonly)
+void unit::generate_traits(bool musthaveonly, game_state* state)
 {
 	assert(gamedata_ != NULL);
 	LOG_UT << "Generating a trait for unit type " << id() << " with musthaveonly " << musthaveonly << "\n";
@@ -445,7 +462,8 @@ void unit::generate_traits(bool musthaveonly)
 		// there aren't any more traits.
 		num_traits = type->second.num_traits();
 		for(size_t n = t; n < num_traits && candidate_traits.empty() == false; ++n) {
-			const size_t num = get_random()%candidate_traits.size();
+			const size_t num = 
+				(state ?  state->get_random() : get_random()) % candidate_traits.size();
 			traits.push_back(candidate_traits[num]);
 			candidate_traits.erase(candidate_traits.begin()+num);
 		}
@@ -461,7 +479,7 @@ void unit::generate_traits(bool musthaveonly)
 }
 
 //! Advance this unit to another type
-void unit::advance_to(const unit_type* t, bool use_traits)
+void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 	reset_modifications();
@@ -535,7 +553,7 @@ void unit::advance_to(const unit_type* t, bool use_traits)
 	}
 
 	if(utils::string_bool(cfg_["random_traits"], true)) {
-		generate_traits(!use_traits);
+		generate_traits(!use_traits, state);
 	} else {
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
 		// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,
@@ -1087,7 +1105,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 //!
 //! @param cfg			Configuration object from which to read the unit
 //- @param use_traits	??
-void unit::read(const config& cfg, bool use_traits)
+void unit::read(const config& cfg, bool use_traits, game_state* state)
 {
 	if(cfg["id"].empty() && cfg["type"].empty()) {
 		throw game::load_game_failed("Attempt to de-serialize an empty unit");
@@ -1118,7 +1136,7 @@ void unit::read(const config& cfg, bool use_traits)
 		//! the config obj. Not sure if that would be wanted; can the engine handle units
 		//! that don't have an equivalent unit_type obj associated?
 		if (ut != gamedata_->unit_types.end())
-			gender_ = generate_gender(ut->second,true);
+			gender_ = generate_gender(ut->second, true, state);
 		else
 			ERR_UT << "no valid unit_type found for unit WML id \"" << cfg["type"] << "\"!\n";
 	} else {
@@ -1135,7 +1153,8 @@ void unit::read(const config& cfg, bool use_traits)
 	underlying_description_ = cfg["description"];
 	if(underlying_description_.empty()){
 		char buf[80];
-		snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), get_random());
+		snprintf(buf, sizeof(buf), "%s-%d",cfg["type"].c_str(), state ?
+			state->get_random() : get_random());
 		underlying_description_ = buf;
 	}
 	if(description_.empty()) {
@@ -1191,8 +1210,7 @@ void unit::read(const config& cfg, bool use_traits)
 	if(!(cfg["type"].empty() || cfg["type"] == cfg["id"]) || cfg["gender"] != cfg["gender_id"]) {
 		std::map<std::string,unit_type>::const_iterator i = gamedata_->unit_types.find(cfg["type"]);
 		if(i != gamedata_->unit_types.end()) {
-			
-			advance_to(&i->second.get_gender_unit_type(gender_), use_traits);
+			advance_to(&i->second.get_gender_unit_type(gender_), use_traits, state);
 			type_set = true;
 		} else {
 			std::string error_message = _("Unknown unit type '$type|'");
@@ -1332,7 +1350,7 @@ void unit::read(const config& cfg, bool use_traits)
 	if(!type_set) {
 		backup_state();
 		if(utils::string_bool(cfg_["random_traits"], true)) {
-			generate_traits(!use_traits);
+			generate_traits(!use_traits, state);
 		}
 		apply_modifications();
 	}
@@ -1365,7 +1383,7 @@ void unit::read(const config& cfg, bool use_traits)
 		alignment_ = unit_type::NEUTRAL;
 	}
 	if(utils::string_bool(cfg["generate_description"])) {
-		custom_unit_description_ = generate_description();
+		custom_unit_description_ = generate_description(state);
 		cfg_["generate_description"] = "";
 	}
 

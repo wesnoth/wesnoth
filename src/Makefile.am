@@ -127,6 +127,7 @@ wesnoth_editor_SOURCES = \
 	editor/editor_dialogs.cpp \
 	editor/editor_undo.cpp \
 	animated_editor.cpp \
+	gamestatus_editor.cpp \
 	generic_event.cpp \
 	tooltips.cpp 
 

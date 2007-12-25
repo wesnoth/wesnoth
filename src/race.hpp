@@ -22,6 +22,8 @@
 #include "serialization/string_utils.hpp"
 #include "config.hpp"
 
+class game_state;
+
 typedef std::map<wide_string, std::vector<wchar_t> > markov_prefix_map;
 
 class unit_race
@@ -37,7 +39,7 @@ public:
 	const t_string& plural_name() const { return plural_name_; };
 	const t_string& description() const { return description_; };
 
-	std::string generate_name(GENDER gender) const;
+	std::string generate_name(GENDER gender, game_state* state = 0) const;
 
 	bool uses_global_traits() const;
 
