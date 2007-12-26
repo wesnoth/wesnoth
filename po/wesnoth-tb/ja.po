@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-24 11:54+0100\n"
+"POT-Creation-Date: 2007-12-26 20:35+0100\n"
 "PO-Revision-Date: 2006-08-30 19:04+0900\n"
 "Last-Translator: Nobuhito OKADA <okyada@gmail.com>\n"
 "Language-Team: none\n"
@@ -90,11 +90,11 @@ msgstr "黒魔術師を殺害する"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:45
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:194
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:557
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:683
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:608
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:734
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:68
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:311
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:465
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:478
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:55
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:202
 msgid "Death of Arne"
@@ -102,11 +102,11 @@ msgstr "Arneの死"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:49
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:198
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:561
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:687
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:612
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:738
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:72
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:315
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:469
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:482
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:63
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:210
 msgid "Turns run out"
@@ -120,7 +120,7 @@ msgid "Arne"
 msgstr "Arne"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:74
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:619
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:670
 msgid "Bjarn"
 msgstr "Bjarn"
 
@@ -287,7 +287,7 @@ msgid "That wasn't so hard!"
 msgstr "それほど難しくはなかったな！"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:355
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:482
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:495
 #, fuzzy
 msgid "All is lost now that I am dead..."
 msgstr "私が死んだ今、全ては失われた..."
@@ -380,23 +380,60 @@ msgstr ""
 "そんな！ またも騙されたか。 彼がどこにいるか教えれば、お前のみじめな命は助け"
 "てやろう。"
 
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:343
+#, fuzzy
+msgid "Sithrak"
+msgstr "Sithrak!"
+
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:344
+#, fuzzy
+msgid "Eleben"
+msgstr "Eleben"
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:345
+msgid "Jarlom"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:346
+msgid "Hamik"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:349
+msgid "Akranbral"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:350
+msgid "Drakanal"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:351
+#, fuzzy
+msgid "Xaskanat"
+msgstr "小作人"
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:352
+msgid "Katklagad"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:357
+#, fuzzy
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
-"guards are Sithrak and Eleben."
+"guards are $first_password_$first_password_number and $second_password_"
+"$second_password_number|."
 msgstr ""
 "馬で３日間の北東にある、さびれた城の中にいる。 見張りの合い言葉はSithrakと"
 "Elebenだ。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:348
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:361
 msgid "Thank you. Leave him, men, we ride East."
 msgstr "ありがとう。 お前達、彼は放っておくのだ。北東に進むぞ。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:360
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:373
 msgid "Brena"
 msgstr "Brena"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:372
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:385
 #, fuzzy
 msgid ""
 "Greetings, I am Brena. I saw you fighting the foul undead. I like nothing "
@@ -408,28 +445,28 @@ msgstr ""
 "はこの汚らわしい骸骨どもやその同類を倒すより好きなことはないのでだ。 この戦い"
 "を助けるのには遅すぎたが、これからの努力を手伝わせていただきたい。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:376
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:389
 #, fuzzy
 msgid "He would only slow us down!"
 msgstr "彼らがいても我々の動きが遅くなるだけでしょう！"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:380
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:393
 msgid "I am the one to decide."
 msgstr "俺は一つ決めなくてはいけない。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:383
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:396
 msgid "Oh, all right then. Come along with us."
 msgstr "そうか、それではわかった。 俺たちに同行してくれ。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:387
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:400
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr "ありがとう。俺の仲間と俺はお前の高貴な探求の手助けをしよう。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:396
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:409
 msgid "I am sorry. We have not the time to spare."
 msgstr "すまない。 俺たちには時間がないのだ。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:400
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:413
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
@@ -437,19 +474,19 @@ msgstr ""
 "ならば、これを受け取ってくれ、お前は探求の途中のようだからな。 お前が呼べばい"
 "つでも、俺の仲間達はお前を助けるだろう。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:417
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:430
 msgid "You receive 70 pieces of gold!"
 msgstr "あなたは 70ゴールドを受け取る！"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:437
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:450
 msgid "My reinforcements are here!"
 msgstr "俺の増援隊はここだ！"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:441
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:454
 msgid "He escaped us..."
 msgstr "奴は俺たちから逃亡した..."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:452
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:465
 #, fuzzy
 msgid ""
 "You foolish human, you killed me but you won't be able to reach the undead. "
@@ -459,7 +496,7 @@ msgstr ""
 "愚かな人間よ、よくも私を殺したな。だが、お前はアンデッドの元に到り着くことは"
 "できないだろう。俺は契約を守った。すぐにあの軍隊の君主として生き返るのだ。"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:456
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:469
 #, fuzzy
 msgid ""
 "Hurry, we have to track them down. Maybe we can still get them. They have to "
@@ -468,7 +505,7 @@ msgstr ""
 "急げ、我々は奴らを追跡しなければならぬ。おそらくまだ捕らえることはできるだろ"
 "う。奴らは北にいるにちがいない！"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:461
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:474
 msgid "Hurry to the north and stop the kidnappers"
 msgstr "北へ急ぎ、誘拐者達を止める"
 
@@ -488,14 +525,14 @@ msgstr "Rotharik"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:108
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:117
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:125
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:345
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:353
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:361
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:362
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:370
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:444
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:452
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:460
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:469
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:378
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:387
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:478
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:486
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:494
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:503
 msgid "Guard"
 msgstr "見張り"
 
@@ -528,30 +565,30 @@ msgid "The password is"
 msgstr "合い言葉は"
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:276
-msgid "Alrek!"
-msgstr "Alrek!"
+msgid "$first_password_1|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:280
-msgid "Wrong! Die!"
-msgstr "間違いだ！死ね！"
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:282
+msgid "$first_password_2|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:286
-msgid "Argol!"
-msgstr "Argol!"
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:288
+msgid "$first_password_3|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:290
-msgid "Oh dear, that's wrong. Any last words?"
-msgstr "おやおや、それは間違いだ。 最期の言葉はあるか？"
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:294
+msgid "$first_password_4|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:296
-msgid "Sithrak!"
-msgstr "Sithrak!"
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:300
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:310
 msgid "Pass, friend."
 msgstr "仲間よ、通りたまえ。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:325
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:328
+msgid "Wrong! Die!"
+msgstr "間違いだ！死ね！"
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:342
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
@@ -559,7 +596,7 @@ msgstr ""
 "ハッハッ！ 俺たちは長い間人間を殺していない。武器が血を欲しがっている。今こそ"
 "俺たちは人間を殺す！！"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:329
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:346
 msgid ""
 "I knew that we had to fight to free my brother! Come on men, lets kill some "
 "orcs."
@@ -567,76 +604,74 @@ msgstr ""
 "弟を解放するために戦わねばならぬことはわかっていた！ お前達、オークを殺すの"
 "だ。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:378
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:477
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:395
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:511
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr ""
 "お前達は到着することになっている交代か？ これは俺たちが今ここを去ってもよいと"
 "いうことか？"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:382
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:481
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:399
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:515
 msgid "Um, yes. Fine. You can go."
 msgstr "うむ、そうだ。よいだろう。行ってよいぞ。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:386
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:485
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:403
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:519
 msgid "Um, you're supposed to give the password."
 msgstr "うむ、お前達は合い言葉を伝える事になっているな。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:390
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:489
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:407
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:523
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "あぁ、もちろんだとも。 もう少しで忘れるところだった。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:392
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:491
-msgid "Eleben."
-msgstr "Eleben"
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:409
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:525
+msgid "$second_password_1|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:396
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:495
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:415
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:531
+msgid "$second_password_2|!"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:421
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:537
+msgid "$second_password_3|!"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:427
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:543
+msgid "$second_password_4|!"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:442
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:558
 msgid "Thanks! Irritating little formality, isn't it?"
 msgstr "ありがとう！ 少々形式的でいらいらさせたかな？"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:407
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:506
-msgid "Elbrethil."
-msgstr "Elbrethil"
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:411
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:510
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:455
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:571
 msgid "That's the wrong password! These aren't our relief! Get them!"
 msgstr "合い言葉が間違いだ！ こいつらは交代ではない！ 奴らを捕らえろ！"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:416
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:515
-msgid "Toras."
-msgstr "Toras"
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:420
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:519
-msgid "Wrong! So you thought to trick us into deserting our posts? Die!"
-msgstr ""
-"間違いだ！ つまり、お前らは持ち場を離れるよう俺たちを騙そうと考えたわけか？ "
-"死ね！"
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:427
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:526
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:461
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:577
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
 msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:539
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:590
 msgid "Nooo! This is the end..."
 msgstr "だめだ！ これで終わりか..."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:543
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:594
 msgid "There's a key in his robes."
 msgstr "彼のローブの中に鍵がある。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:547
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:598
 msgid ""
 "It must be the key to the cell they're holding Bjarn in! I will take the "
 "key. I can't wait to see my brother. Come on, let's free him."
@@ -644,35 +679,35 @@ msgstr ""
 "それはBjarnを収容している独房の鍵にちがいない！ 俺が鍵を持とう。 弟に会うのが"
 "待ちきない。 さぁ、彼を解放しよう。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:553
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:604
 msgid "Move Arne to the cell with his brother to free him"
 msgstr "弟を解放するために独房へArneを移動させる"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:583
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:634
 #, fuzzy
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "俺がこの中で見つけたものを見てみろ！ 100ゴールドはあるぞ。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:596
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:647
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "俺がこの中で見つけたものを見てみろ！ 50ゴールドはあるぞ。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:646
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:697
 msgid "I found Bjarn. He is in this cell."
 msgstr "Bjarnを見つけた。彼はこの独房の中だ。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:656
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:707
 #, fuzzy
 msgid "Good to see you, Arne. Please help me get out of this dungeon."
 msgstr "Arne、会えてよかった。この土牢から抜け出せるよう助けてください。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:662
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:713
 #, fuzzy
 msgid "You must be one of Arne's men. Please help me get out of this dungeon."
 msgstr ""
 "あなたはArneの仲間の一人ですね。この土牢から抜け出せるよう助けて下さい。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:668
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:719
 #, fuzzy
 msgid ""
 "The damn Dark Sorcerer Rotharik has imprisoned me behind this magical "
@@ -683,17 +718,17 @@ msgstr ""
 "ために奴から鍵を取ってこなければなりません。 これは鍵で開ける事だけができま"
 "す。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:679
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:730
 msgid "Kill the dark sorcerer to get the cellkey"
 msgstr "独房の鍵を手に入れるために黒魔術師を殺す"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:716
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:767
 msgid "Thank you for saving me. I had almost given up hope you would free me."
 msgstr ""
 "助けてくれてありがとう。 あなた達に逃がしてもらえるのではという望みをほとんど"
 "あきらめかけていました。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:720
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:771
 msgid ""
 "Oh it was nothing, a few elves, one or two dark sorcerers, a bunch of orcs "
 "and some undead. Really just a day's work for us mercenaries."
@@ -701,20 +736,20 @@ msgstr ""
 "おお、何でもなかったぞ。数人のエルフ、1人か2人の黒魔術師、オークの一団と何匹"
 "かのアンデッド。実際、我々傭兵にはほんの1日の仕事だ。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:724
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:775
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "助けに来てくれてありがとう。村へ帰還しましょう。"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:749
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:800
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:253
 msgid "Everything is lost now that I am dead..."
 msgstr "私が死んだ今、全ては失われた..."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:760
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:811
 msgid "You are too late! Your brother is already dead! Muhahahaha..."
 msgstr "お前は遅すぎた！ お前の弟は既に死んだ！ムッハッハッハッハッ..."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:764
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:815
 msgid "Argh!!!"
 msgstr "アー！！！"
 
@@ -843,8 +878,25 @@ msgid "I was too weak to protect these people. Oh why did this happen to me?!?"
 msgstr ""
 "私はこの人々を守るには弱すぎた。 ああ、なぜこんなことになったのだ？！？"
 
-#~ msgid "Peasant"
-#~ msgstr "小作人"
+#~ msgid "Alrek!"
+#~ msgstr "Alrek!"
+
+#~ msgid "Argol!"
+#~ msgstr "Argol!"
+
+#~ msgid "Oh dear, that's wrong. Any last words?"
+#~ msgstr "おやおや、それは間違いだ。 最期の言葉はあるか？"
+
+#~ msgid "Elbrethil."
+#~ msgstr "Elbrethil"
+
+#~ msgid "Toras."
+#~ msgstr "Toras"
+
+#~ msgid "Wrong! So you thought to trick us into deserting our posts? Die!"
+#~ msgstr ""
+#~ "間違いだ！ つまり、お前らは持ち場を離れるよう俺たちを騙そうと考えたわけ"
+#~ "か？ 死ね！"
 
 #~ msgid "Villager"
 #~ msgstr "村人"

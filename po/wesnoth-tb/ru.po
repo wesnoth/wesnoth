@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tb.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-24 11:54+0100\n"
+"POT-Creation-Date: 2007-12-26 20:35+0100\n"
 "PO-Revision-Date: 2007-02-10 00:48+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -89,11 +89,11 @@ msgstr "Смерть Чёрного мага"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:45
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:194
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:557
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:683
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:608
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:734
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:68
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:311
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:465
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:478
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:55
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:202
 msgid "Death of Arne"
@@ -101,11 +101,11 @@ msgstr "Смерть Арна"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:49
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:198
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:561
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:687
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:612
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:738
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:72
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:315
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:469
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:482
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:63
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:210
 msgid "Turns run out"
@@ -119,7 +119,7 @@ msgid "Arne"
 msgstr "Арн"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:74
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:619
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:670
 msgid "Bjarn"
 msgstr "Бьярн"
 
@@ -284,7 +284,7 @@ msgid "That wasn't so hard!"
 msgstr "Это было не так уж и сложно!"
 
 #: data/campaigns/Two_Brothers/scenarios/1_Rooting_Out_A_Mage.cfg:355
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:482
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:495
 #, fuzzy
 msgid "All is lost now that I am dead..."
 msgstr "Я умираю, теперь все потеряно..."
@@ -375,23 +375,60 @@ msgid ""
 msgstr ""
 "Нееет! Меня опять обманули. Скажи, где он, и мы пощадим твою никчёмную жизнь."
 
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:343
+#, fuzzy
+msgid "Sithrak"
+msgstr "Ситрак!"
+
 #: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:344
+#, fuzzy
+msgid "Eleben"
+msgstr "Элебен."
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:345
+msgid "Jarlom"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:346
+msgid "Hamik"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:349
+msgid "Akranbral"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:350
+msgid "Drakanal"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:351
+#, fuzzy
+msgid "Xaskanat"
+msgstr "Крестьянин"
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:352
+msgid "Katklagad"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:357
+#, fuzzy
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
-"guards are Sithrak and Eleben."
+"guards are $first_password_$first_password_number and $second_password_"
+"$second_password_number|."
 msgstr ""
 "Три дня пути на северо-восток, в заброшенном замке. Пароль для охранников — "
 "Ситрак и Элебен."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:348
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:361
 msgid "Thank you. Leave him, men, we ride East."
 msgstr "Спасибо. Оставьте его, ребята, мы пойдем на восток."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:360
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:373
 msgid "Brena"
 msgstr "Брена"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:372
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:385
 msgid ""
 "Greetings, I am Brena. I saw you fighting the foul undead. I like nothing "
 "better than smashing those foul skeletons and their ilk. Though I came too "
@@ -402,28 +439,28 @@ msgstr ""
 "лучше, чем разбивать черепа скелетам и им подобным. Хотя я пришёл слишком "
 "поздно, я хочу помочь вам в ваших будущих битвах."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:376
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:389
 msgid "He would only slow us down!"
 msgstr "Он только замедлит нас!"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:380
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:393
 msgid "I am the one to decide."
 msgstr "Дай мне подумать."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:383
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:396
 msgid "Oh, all right then. Come along with us."
 msgstr "Ох, хорошо. Идём вместе с нами."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:387
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:400
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr ""
 "Благодарю тебя. Я и мои товарищи поможем тебе в твоём благородном задании."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:396
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:409
 msgid "I am sorry. We have not the time to spare."
 msgstr "Приношу извинения, но мы не можем терять времени."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:400
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:413
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
@@ -431,19 +468,19 @@ msgstr ""
 "Тогда возьми вот это. Я вижу, что ты в поисках. Мои товарищи помогут тебе, "
 "только позови их."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:417
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:430
 msgid "You receive 70 pieces of gold!"
 msgstr "Вы получили 70 монет!"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:437
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:450
 msgid "My reinforcements are here!"
 msgstr "Моё подкрепление прибыло!"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:441
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:454
 msgid "He escaped us..."
 msgstr "Он убежал от нас..."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:452
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:465
 msgid ""
 "You foolish human, you killed me but you won't be able to reach the undead. "
 "I fulfilled the pact and will be reanimated soon to be a Lord of their "
@@ -452,14 +489,14 @@ msgstr ""
 "Вы, глупцы, убили меня, но вы не сможете сравниться с мертвецами. Я выполнил "
 "договор и скоро подымусь вновь, чтобы стать Лордом их армий."
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:456
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:469
 msgid ""
 "Hurry, we have to track them down. Maybe we can still get them. They have to "
 "be in the north!"
 msgstr ""
 "Быстрее, мы их выследили. Может быть, мы сможем их догнать. Они на севере!"
 
-#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:461
+#: data/campaigns/Two_Brothers/scenarios/2_The_Chase.cfg:474
 msgid "Hurry to the north and stop the kidnappers"
 msgstr "Поспешите на север и остановите похитителей"
 
@@ -479,14 +516,14 @@ msgstr "Ротарик"
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:108
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:117
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:125
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:345
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:353
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:361
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:362
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:370
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:444
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:452
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:460
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:469
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:378
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:387
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:478
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:486
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:494
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:503
 msgid "Guard"
 msgstr "Охранник"
 
@@ -519,37 +556,37 @@ msgid "The password is"
 msgstr "Пароль — "
 
 #: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:276
-msgid "Alrek!"
-msgstr "Алрек!"
+msgid "$first_password_1|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:280
-msgid "Wrong! Die!"
-msgstr "Неправильно! Умри!"
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:282
+msgid "$first_password_2|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:286
-msgid "Argol!"
-msgstr "Аргол!"
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:288
+msgid "$first_password_3|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:290
-msgid "Oh dear, that's wrong. Any last words?"
-msgstr "О, приятель, неправильно. Есть последнее слово?"
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:294
+msgid "$first_password_4|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:296
-msgid "Sithrak!"
-msgstr "Ситрак!"
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:300
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:310
 msgid "Pass, friend."
 msgstr "Проходи, приятель."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:325
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:328
+msgid "Wrong! Die!"
+msgstr "Неправильно! Умри!"
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:342
 msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
 msgstr ""
 "Хаха! Давненько мы не убивали людей. Оружие жаждет крови. Время убивать!"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:329
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:346
 msgid ""
 "I knew that we had to fight to free my brother! Come on men, lets kill some "
 "orcs."
@@ -557,74 +594,72 @@ msgstr ""
 "Я знал, что придётся драться за свободу моего брата! Вперёд, убьём этих "
 "орков."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:378
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:477
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:395
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:511
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
 msgstr "Вы наши сменщики? То есть, теперь мы сможем уйти отсюда?"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:382
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:481
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:399
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:515
 msgid "Um, yes. Fine. You can go."
 msgstr "Ууу, да. Хорошо. Вы можете идти."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:386
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:485
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:403
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:519
 msgid "Um, you're supposed to give the password."
 msgstr "Эээ, вы должны назвать пароль."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:390
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:489
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:407
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:523
 msgid "Oh, of course. I had nearly forgotten."
 msgstr "О, ну конечно же. Чуть не забыл."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:392
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:491
-msgid "Eleben."
-msgstr "Элебен."
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:409
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:525
+msgid "$second_password_1|!"
+msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:396
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:495
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:415
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:531
+msgid "$second_password_2|!"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:421
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:537
+msgid "$second_password_3|!"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:427
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:543
+msgid "$second_password_4|!"
+msgstr ""
+
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:442
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:558
 msgid "Thanks! Irritating little formality, isn't it?"
 msgstr "Благодарю! Эти формальности немного раздражают, неправда ли?"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:407
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:506
-msgid "Elbrethil."
-msgstr "Элбрефил."
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:411
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:510
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:455
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:571
 msgid "That's the wrong password! These aren't our relief! Get them!"
 msgstr "Это неправильный пароль! Они не из наших! Взять их!"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:416
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:515
-msgid "Toras."
-msgstr "Торас."
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:420
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:519
-msgid "Wrong! So you thought to trick us into deserting our posts? Die!"
-msgstr ""
-"Неправильно! Так ты пытался обмануть нас, пробравшись через наши посты? Умри "
-"же!"
-
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:427
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:526
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:461
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:577
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
 msgstr ""
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:539
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:590
 msgid "Nooo! This is the end..."
 msgstr "Нееет! Это конец..."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:543
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:594
 msgid "There's a key in his robes."
 msgstr "В его робах остались ключи."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:547
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:598
 msgid ""
 "It must be the key to the cell they're holding Bjarn in! I will take the "
 "key. I can't wait to see my brother. Come on, let's free him."
@@ -632,32 +667,32 @@ msgstr ""
 "Должно быть, это ключ от темницы, где сидит Бьярн! Возьму-ка я его себе. Не "
 "могу дождаться момента, когда снова увижу брата. Идём, пора освободить его."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:553
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:604
 msgid "Move Arne to the cell with his brother to free him"
 msgstr "Приведите Арна к клетке с его братом, чтобы освободить его"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:583
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:634
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
 msgstr "Смотрите, что я нашёл! Здесь сто золотых монет."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:596
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:647
 msgid "Look what I have found in here! I can count fifty pieces of gold."
 msgstr "Смотрите, что я нашёл! Здесь пятьдесят золотых монет."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:646
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:697
 msgid "I found Bjarn. He is in this cell."
 msgstr "Я нашёл Бьярна. Он в этой клетке."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:656
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:707
 msgid "Good to see you, Arne. Please help me get out of this dungeon."
 msgstr "Рад видеть тебя, Арн. Помоги мне выбраться из этого подземелья."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:662
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:713
 msgid "You must be one of Arne's men. Please help me get out of this dungeon."
 msgstr ""
 "Ты, должно быть, один из людей Арна. Помоги мне выйти из этого подземелья."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:668
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:719
 #, fuzzy
 msgid ""
 "The damn Dark Sorcerer Rotharik has imprisoned me behind this magical "
@@ -668,15 +703,15 @@ msgstr ""
 "забрать у него ключ, чтобы освободить меня. Только с помощью ключа ты "
 "сможешь освободить меня."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:679
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:730
 msgid "Kill the dark sorcerer to get the cellkey"
 msgstr "Убейте тёмного колдуна, чтобы завладеть ключом от темницы"
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:716
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:767
 msgid "Thank you for saving me. I had almost given up hope you would free me."
 msgstr "Спасибо, что спас меня. Я всегда надеялся, что ты освободишь меня."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:720
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:771
 msgid ""
 "Oh it was nothing, a few elves, one or two dark sorcerers, a bunch of orcs "
 "and some undead. Really just a day's work for us mercenaries."
@@ -684,20 +719,20 @@ msgstr ""
 "Ох, это было просто, всего-то несколько эльфов, парочка тёмных колдунов, "
 "кучка орков и немного мертвецов. Всего лишь один рабочий день наёмника."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:724
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:775
 msgid "Thank you for coming to my aid. Let us return to the village."
 msgstr "Спасибо, что прибыл помочь мне. Теперь пора вернуться в деревню."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:749
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:800
 #: data/campaigns/Two_Brothers/scenarios/4_Return_to_the_Village.cfg:253
 msgid "Everything is lost now that I am dead..."
 msgstr "Я умираю, теперь все потеряно..."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:760
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:811
 msgid "You are too late! Your brother is already dead! Muhahahaha..."
 msgstr "Ты опоздал! Твой брат мёртв! Мухахахаха..."
 
-#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:764
+#: data/campaigns/Two_Brothers/scenarios/3_Guarded_Castle.cfg:815
 msgid "Argh!!!"
 msgstr "Ах!!!"
 
@@ -820,8 +855,25 @@ msgstr ""
 "Я слишком слаб, чтобы защитить этих людей. Почему это произошло именно со "
 "мной?!?"
 
-#~ msgid "Peasant"
-#~ msgstr "Крестьянин"
+#~ msgid "Alrek!"
+#~ msgstr "Алрек!"
+
+#~ msgid "Argol!"
+#~ msgstr "Аргол!"
+
+#~ msgid "Oh dear, that's wrong. Any last words?"
+#~ msgstr "О, приятель, неправильно. Есть последнее слово?"
+
+#~ msgid "Elbrethil."
+#~ msgstr "Элбрефил."
+
+#~ msgid "Toras."
+#~ msgstr "Торас."
+
+#~ msgid "Wrong! So you thought to trick us into deserting our posts? Die!"
+#~ msgstr ""
+#~ "Неправильно! Так ты пытался обмануть нас, пробравшись через наши посты? "
+#~ "Умри же!"
 
 #~ msgid "Villager"
 #~ msgstr "Селянин"
