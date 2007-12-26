@@ -469,7 +469,8 @@ void replay::undo()
 	std::vector<config::child_iterator> async_cmds;
 	// Remember cmds not yet synced and skip over them
 	while(cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no"
-		|| (**(cmd.second-1))["async"] == "yes")
+		|| (**(cmd.second-1))["async"] == "yes"
+		|| (**(cmd.second-1))["sent"] == "yes")
 	{
 		if ((**(cmd.second-1))["async"] == "yes")
 			async_cmds.push_back(cmd.second-1);
