@@ -27,6 +27,24 @@
 #define MIN_PERCENTAGE   0
 #define MAX_PERCENTAGE 100
 
+loadscreen::global_loadscreen_manager::global_loadscreen_manager(CVideo& screen)
+  : owns(global_loadscreen == NULL)
+{
+	if(owns) {
+		global_loadscreen = new loadscreen(screen);
+		global_loadscreen->clear_screen();
+	}
+}
+
+loadscreen::global_loadscreen_manager::~global_loadscreen_manager()
+{
+	if(owns && global_loadscreen) {
+		global_loadscreen->clear_screen();
+		delete global_loadscreen;
+		global_loadscreen = NULL;
+	}
+}
+
 loadscreen::loadscreen(CVideo &screen, const int &percent):
 	filesystem_counter(0),
 	binarywml_counter(0),

@@ -32,7 +32,7 @@
 class loadscreen {
 	public:
 		// Preferred constructor
-		loadscreen(CVideo &screen, const int &percent = 0);
+		explicit loadscreen(CVideo &screen, const int &percent = 0);
 		// Keep default copy constructor
 		// Keep default copy assignment
 		// Destructor, dumps the counter values to stderr
@@ -63,6 +63,13 @@ class loadscreen {
 		//! A global loadscreen instance that can be used to avoid
 		//! passing it on to functions that are many levels deep.
 		static loadscreen *global_loadscreen;
+
+		struct global_loadscreen_manager {
+			explicit global_loadscreen_manager(CVideo& screen);
+			~global_loadscreen_manager();
+
+			bool owns;
+		};
 	private:
 		// Prohibit default constructor
 		loadscreen();

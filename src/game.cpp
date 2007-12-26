@@ -1579,6 +1579,8 @@ void game_controller::read_game_cfg(const preproc_map& defines, config& cfg, boo
 {
 	log_scope("read_game_cfg");
 
+	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
+
 	bool is_valid = true;
 	std::stringstream str;
 	for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
@@ -1805,6 +1807,8 @@ void game_controller::reset_defines_map()
 
 void game_controller::play_game(RELOAD_GAME_DATA reload)
 {
+	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
+	loadscreen::global_loadscreen->set_progress(0, _("Loading data files"));
 	if(reload == RELOAD_DATA) {
 		if(state_.campaign_define.empty() == false) {
 			defines_map_[state_.campaign_define] = preproc_define();
@@ -1826,6 +1830,8 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 			return;
 		}
 	}
+
+	loadscreen::global_loadscreen->set_progress(60);
 
 	const binary_paths_manager bin_paths_manager(game_config_);
 

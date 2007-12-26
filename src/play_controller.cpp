@@ -22,6 +22,7 @@
 #include "game_display.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
+#include "loadscreen.hpp"
 #include "log.hpp"
 #include "sound.hpp"
 #include "team.hpp"
@@ -67,6 +68,8 @@ play_controller::~play_controller(){
 }
 
 void play_controller::init(CVideo& video, bool is_replay){
+	loadscreen::global_loadscreen_manager loadscreen_manager(video);
+
 	// If the recorder has no event, adds an "game start" event 
 	// to the recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
@@ -84,6 +87,8 @@ void play_controller::init(CVideo& video, bool is_replay){
 		place_sides_in_preferred_locations(map_,unit_cfg);
 	}
 
+	loadscreen::global_loadscreen->set_progress(70, _("Initializing teams"));
+
 	LOG_NG << "initializing teams..." << unit_cfg.size() << "\n";;
 	LOG_NG << (SDL_GetTicks() - ticks_) << "\n";
 
@@ -98,6 +103,8 @@ void play_controller::init(CVideo& video, bool is_replay){
 		get_player_info(**ui, gamestate_, save_id, teams_, level_, gameinfo_, map_, units_, status_, snapshot, is_replay );
 	}
 
+	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
+
 	preferences::encounter_recruitable_units(teams_);
 	preferences::encounter_start_units(units_);
 	preferences::encounter_recallable_units(gamestate_);
@@ -111,6 +118,7 @@ void play_controller::init(CVideo& video, bool is_replay){
 		gui_ = new game_display(units_,video,map_,status_,teams_,*theme_cfg, game_config_, level_);
 	else
 		gui_ = new game_display(units_,video,map_,status_,teams_,config(), game_config_, level_);
+	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
 	mouse_handler_.set_gui(gui_);
 	menu_handler_.set_gui(gui_);
 	theme::set_known_themes(&game_config_);
@@ -122,6 +130,8 @@ void play_controller::init(CVideo& video, bool is_replay){
 	}
 
 	init_managers();
+	loadscreen::global_loadscreen->set_progress(100, _("Starting game"));
+	loadscreen::global_loadscreen = NULL;
 }
 
 void play_controller::init_managers(){
