@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-24 11:51+0100\n"
-"PO-Revision-Date: 2007-12-16 14:55+0100\n"
+"PO-Revision-Date: 2007-12-25 23:44+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -283,12 +283,10 @@ msgid "Commands"
 msgstr "Comandi"
 
 #: data/core/help.cfg:81
-#, fuzzy
 msgid "Abilites"
 msgstr "Abilità"
 
 #: data/core/help.cfg:84
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -297,7 +295,8 @@ msgid ""
 msgstr ""
 "Alcune unità hanno delle abilità che influiscono direttamente sulle altre "
 "unità o su come esse interagiscono con le altre. Queste abilità saranno "
-"elencate sotto questo soggetto quando le incontrate."
+"elencate sotto questo argomento quando vengono incontrate.\n"
+"\n"
 
 #: data/core/help.cfg:96
 msgid "Unknown Unit"
@@ -3927,15 +3926,17 @@ msgstr ""
 
 #: data/core/macros/schedules.cfg:100 data/core/macros/schedules.cfg:111
 msgid "Deep Underground"
-msgstr "Sottosuolo"
+msgstr "Sottosuolo profondo"
 
 #: data/core/macros/special-notes.cfg:5
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "Speciale"
+msgstr ""
+"\n"
+"\n"
+"Note speciali:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -4275,7 +4276,6 @@ msgid "race^Bat"
 msgstr "Pipistrello"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
 msgstr "Pipistrello"
 
@@ -4288,7 +4288,6 @@ msgid "race^Drake"
 msgstr "Drago"
 
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race+female^Drake"
 msgstr "Drago"
 
@@ -4301,9 +4300,8 @@ msgid "race^Dwarf"
 msgstr "Nano"
 
 #: data/core/units.cfg:63
-#, fuzzy
 msgid "race+female^Dwarf"
-msgstr "Nano"
+msgstr "Nana"
 
 #: data/core/units.cfg:64
 msgid "race^Dwarves"
@@ -4314,9 +4312,8 @@ msgid "race^Elf"
 msgstr "Elfo"
 
 #: data/core/units.cfg:74
-#, fuzzy
 msgid "race+female^Elf"
-msgstr "Elfo"
+msgstr "Elfa"
 
 #: data/core/units.cfg:75
 msgid "race^Elves"
@@ -4327,7 +4324,6 @@ msgid "race^Goblin"
 msgstr "Goblin"
 
 #: data/core/units.cfg:86
-#, fuzzy
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
@@ -4340,7 +4336,6 @@ msgid "race^Gryphon"
 msgstr "Grifone"
 
 #: data/core/units.cfg:98
-#, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Grifone"
 
@@ -4350,12 +4345,11 @@ msgstr "Grifoni"
 
 #: data/core/units.cfg:107
 msgid "race^Human"
-msgstr "Uomo"
+msgstr "Umano"
 
 #: data/core/units.cfg:108
-#, fuzzy
 msgid "race+female^Human"
-msgstr "Uomo"
+msgstr "Umana"
 
 #: data/core/units.cfg:109
 msgid "race^Humans"
@@ -4366,9 +4360,8 @@ msgid "race^Saurian"
 msgstr "Sauro"
 
 #: data/core/units.cfg:118
-#, fuzzy
 msgid "race+female^Saurian"
-msgstr "Sauro"
+msgstr "Saura"
 
 #: data/core/units.cfg:119
 msgid "race^Saurians"
@@ -4387,7 +4380,6 @@ msgid "race^Merman"
 msgstr "Nereide"
 
 #: data/core/units.cfg:140
-#, fuzzy
 msgid "race^Mermaid"
 msgstr "Nereide"
 
@@ -4408,7 +4400,6 @@ msgid "race^Naga"
 msgstr "Naga"
 
 #: data/core/units.cfg:158
-#, fuzzy
 msgid "race^Nagani"
 msgstr "Naga"
 
@@ -4421,7 +4412,6 @@ msgid "race^Ogre"
 msgstr "Ogre"
 
 #: data/core/units.cfg:168
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Ogre"
 
@@ -4434,9 +4424,8 @@ msgid "race^Orc"
 msgstr "Orco"
 
 #: data/core/units.cfg:178
-#, fuzzy
 msgid "race+female^Orc"
-msgstr "Orco"
+msgstr "Orchessa"
 
 #: data/core/units.cfg:179
 msgid "race^Orcs"
@@ -4447,7 +4436,6 @@ msgid "race^Troll"
 msgstr "Troll"
 
 #: data/core/units.cfg:188
-#, fuzzy
 msgid "race+female^Troll"
 msgstr "Troll"
 
@@ -4460,9 +4448,8 @@ msgid "race^Undead"
 msgstr "Non-morto"
 
 #: data/core/units.cfg:203
-#, fuzzy
 msgid "race+female^Undead"
-msgstr "Non-morti"
+msgstr "Non-morta"
 
 #: data/core/units.cfg:204
 msgid "race+plural^Undead"
@@ -4679,6 +4666,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you get to a village a turn earlier."
 msgstr ""
+"Puoi accedere ai comandi «recluta» e «richiama» facendo clic col tasto destro "
+"su una casella di tipo castello. Ciò ti permette di decidere su quale "
+"esagono mettere la nuova unità. Posizionando le unità in modo oculato a "
+"volte puoi guadagnare un villaggio un turno prima."
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -4693,6 +4684,10 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Le unità con la caratteristica «veloce» si muovono di un esagono extra per "
+"turno. Ciò può essere molto importante quando ci si muove in terreni "
+"difficili come nell'acqua o nelle caverne. Può fare la differenza tra "
+"potersi muovere di un esagono o di due."
 
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
@@ -4713,6 +4708,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Di solito è meglio partire nello scenario successivo di una campagna con "
+"unità di livello più basso che stanno per essere promose che con le stesse "
+"unità al livello superiore."
 
 #: data/hardwired/tips.cfg:39
 msgid ""
@@ -5294,11 +5292,11 @@ msgstr "Non ci sono spazi vuoti nel castello per reclutare un'unità."
 
 #: src/actions.cpp:262 src/actions.cpp:285 src/actions.cpp:290
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
+msgstr "È stata selezionata un'arma non valida, forse dall'IA in Python."
 
 #: src/actions.cpp:269
 msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr ""
+msgstr "È stata inviata un'arma non valida, forse dall'IA in Python."
 
 #: src/actions.cpp:961 src/actions.cpp:1215
 msgid "poisoned"
@@ -5359,6 +5357,8 @@ msgstr "Tipo di unità sconosciuto: "
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
+"Il costo del movimento è 0, probabilmente un terreno col costo di movimento "
+"0."
 
 #: src/dialogs.cpp:109
 msgid "Advance Unit"
@@ -5859,9 +5859,8 @@ msgstr "Sconfitta:"
 
 #: src/gamestatus.cpp:254 src/gamestatus.cpp:269 src/gamestatus.cpp:289
 #: src/gamestatus.cpp:374
-#, fuzzy
 msgid "No time of day has been defined."
-msgstr "Scegli a caso l'ora d'inizio"
+msgstr "Non è stata definita l'ora del giorno."
 
 #: src/gamestatus.cpp:694 src/gamestatus.cpp:696 src/playcampaign.cpp:411
 msgid " replay"
@@ -6739,9 +6738,8 @@ msgid "(Empty slot)"
 msgstr "(Casella Vuota)"
 
 #: src/multiplayer_connect.cpp:815
-#, fuzzy
 msgid "Only random sides in the current era."
-msgstr "Nessuno schieramento non-casuale nell'era corrente"
+msgstr "Solo schieramenti casuali nell'era corrente."
 
 #: src/multiplayer_connect.cpp:839
 msgid "Unable to find a leader type for faction $faction"
@@ -6867,7 +6865,7 @@ msgstr "Impostazioni..."
 
 #: src/multiplayer_create.cpp:85
 msgid "Set Password..."
-msgstr ""
+msgstr "Imposta parola d'ordine..."
 
 #: src/multiplayer_create.cpp:101
 msgid "Load Game..."
@@ -6962,17 +6960,18 @@ msgstr "Devi inserire un nome."
 
 #: src/multiplayer_create.cpp:321
 msgid "Set Password"
-msgstr ""
+msgstr "Imposta parola d'ordine"
 
 #: src/multiplayer_create.cpp:322 src/multiplayer_lobby.cpp:725
-#, fuzzy
 msgid "Password: "
-msgstr "spada"
+msgstr "Parola d'ordine: "
 
 #: src/multiplayer_create.cpp:322
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
+"Imposta la parola d'ordine che ci vuole connettersi alla tua partita deve "
+"inserire."
 
 #: src/multiplayer_create.cpp:330
 msgid "Turns: "
@@ -7052,7 +7051,7 @@ msgstr "Slot vuoti:"
 
 #: src/multiplayer_lobby.cpp:476 src/multiplayer_lobby.cpp:723
 msgid "Password Required"
-msgstr ""
+msgstr "Parola d'ordine richiesta"
 
 #: src/multiplayer_lobby.cpp:483
 msgid "Fog"
@@ -7088,7 +7087,7 @@ msgstr "Salta velocemente al turno attivo quando si osserva"
 
 #: src/multiplayer_lobby.cpp:724
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Collegarsi al gioco richiede la parola d'ordine."
 
 #: src/multiplayer_ui.cpp:159
 msgid "Invalid Color"
@@ -7131,9 +7130,8 @@ msgid "No multiplayer sides available in this game"
 msgstr "Non ci sono posti liberi per giocatori remoti in questa partita."
 
 #: src/multiplayer_wait.cpp:262
-#, fuzzy
 msgid "No era information found."
-msgstr "Nessuna era trovata."
+msgstr "Nessuna informazione trovata sull'era."
 
 #: src/multiplayer_wait.cpp:267
 msgid "No multiplayer sides found"
@@ -7169,7 +7167,7 @@ msgstr "Impossibile inviare l'handshake iniziale"
 
 #: src/pathfind.cpp:310
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Un terreno con un costo di movimento minore di 1 è stato incontrato."
 
 #: src/play_controller.cpp:794
 msgid "Back to start"
@@ -7417,7 +7415,7 @@ msgstr "$error su $pos"
 
 #: src/terrain.cpp:81
 msgid "'string' is a mandatory key in '[terrain]'."
-msgstr ""
+msgstr "'string' è una chiave obbligatoria in'[terrain]'."
 
 #: src/terrain.cpp:128
 msgid "Allied village"
@@ -7433,7 +7431,7 @@ msgstr "Villaggio proprio"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size dev'essere tra 0.0 e 0.5."
 
 # Il carattere ^ separa la descrizione per i traduttore (commento) dal testo da
 # tradurre.  Bisogna tradurre SOLO quello che segue il carattere "^".
