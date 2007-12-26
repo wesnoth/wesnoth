@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-26 20:34+0100\n"
-"PO-Revision-Date: 2007-01-08 22:45+0100\n"
+"PO-Revision-Date: 2007-10-01 20:03+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgstr ""
 #: data/core/units/boats/Boat.cfg:4
 #, fuzzy
 msgid "Boat"
-msgstr "Krvavý netopier"
+msgstr "Roboti"
 
 #: data/core/units/boats/Boat.cfg:18
 msgid ""
@@ -976,6 +976,7 @@ msgid "female^Elvish Enchantress"
 msgstr "Elfka zaklínačka"
 
 #: data/core/units/elves/Enchantress.cfg:18
+#, fuzzy
 msgid ""
 "The magic of the elves is wholly unlike that of humanity, so much so that "
 "humans are almost universally incapable of understanding it, let alone using "
@@ -983,6 +984,12 @@ msgid ""
 "can be said that they are revered by their people, very little can be said "
 "about their actual function or purpose within that society."
 msgstr ""
+"Mágia elfov je celkom odlišná od ľudskej, takže jej ľudia viacmenej nedokážu "
+"porozumieť a už vôbec nie ju používať. Podobne záhadní sú aj jej majstri; dá "
+"sa o nich povedať, že sú medzi svojím ľudom uctievaní, ale o ich konkrétnom "
+"postavení a funkcii v spoločnosti už nevieme nič dodať.\n"
+"\n"
+"Poznámka:"
 
 #: data/core/units/elves/Enchantress.cfg:35
 #: data/core/units/elves/Shaman.cfg:38 data/core/units/elves/Sorceress.cfg:37
@@ -1027,9 +1034,8 @@ msgstr ""
 "Uznávaní hrdinovia bojujú s mečom i lukom, a ich schopnosti nikdy nevyblednú."
 
 #: data/core/units/elves/High_Lord.cfg:4
-#, fuzzy
 msgid "Elvish High Lord"
-msgstr "Elf vojak"
+msgstr "Elf veľmož"
 
 #: data/core/units/elves/High_Lord.cfg:18
 msgid ""
@@ -1038,11 +1044,13 @@ msgid ""
 "times of peace, a High Lord in the full of his wrath is an awesome sight "
 "indeed."
 msgstr ""
+"Velitelia elfov s pribúdajúcim vekom neslabnú. Naopak, dorastajú do svojho "
+"pravého potenciálu. Veľmož je v časoch mieru tichí a rozjímavý, ale keď sa "
+"rozhnevá, je naňho úžasný pohľad."
 
 #: data/core/units/elves/Lady.cfg:5
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "Elfka druidka"
+msgstr "Elfka šľachtičná"
 
 #: data/core/units/elves/Lady.cfg:20
 msgid ""
@@ -1051,11 +1059,13 @@ msgid ""
 "unflagging fealty of their people, which is the greatest gift any ruler "
 "could ask for."
 msgstr ""
+"Elfovia si svojich veliteľov vyberajú podľa moci a múdrosti; táto "
+"predvídavosť ich chráni v zlých časoch. Ich spravodlivá vláda je odmenená "
+"vernosťou a oddanosťou ľudu, čo je najväčším požehnaním pre každého vládcu."
 
 #: data/core/units/elves/Lord.cfg:4
-#, fuzzy
 msgid "Elvish Lord"
-msgstr "Trpaslík šľachtic"
+msgstr "Elf šľachtic"
 
 #: data/core/units/elves/Lord.cfg:17
 msgid ""
@@ -1063,6 +1073,9 @@ msgid ""
 "society. Elvish Lords are the wisest and strongest of their people, and are "
 "fearsome in their command of magic."
 msgstr ""
+"Elfia šľachta si plne zaslúži svoje spoločenské postavenie. Elfí šľachtici "
+"sú najmúdrejší a najsilnejší zo svojho ľudu, a ich magické schopnosti ich "
+"robia obávanými."
 
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
@@ -2231,9 +2244,8 @@ msgstr ""
 "úspechoch. Archmágovia sú zvyčajne na pozíciách učiteľov alebo poradcov "
 "tých, ktorí sú dosť rozumní, aby ocenili plody ich múdrosti. Mnohí majú "
 "bohatých patrónov, čo je výhodné pre obe strany, pretože okrem občasnej rady "
-"či pomoci sa mág môže nerušene sústrediť na svoj výskum. Niektorí zavrhujú "
-"civilizáciu a trávia svoje dni ako pustovníci; často pritom študujú niečo, "
-"čo spoločnosť zavrhuje.\n"
+"či pomoci sa mág môže nerušene sústrediť na svoj výskum. Z toho pochádza "
+"veľká časť ľudského poznania; veda, filozofia, krásne umenia.\n"
 "\n"
 "Archmág nie je trénovaný v boji, ale keď treba, dokáže prejaviť plnú silu "
 "svojho umenia, čo nie je žiadna sranda.\n"
@@ -2365,7 +2377,8 @@ msgstr ""
 "Strieborní mágovia sú telesne zdatnejší ako väčšina mágov a ich schopnosti "
 "sú v boji neoceniteľné, ak ich prejavia.\n"
 "\n"
-"Poznámka: Strieborní mágovia sú vysoko odolní voči mnohým magickým útokom."
+"Poznámka: Strieborní mágovia sú vysoko odolní voči mnohým nefyzickým "
+"zraneniam."
 
 #: data/core/units/humans/Mage_Silver.cfg:151
 msgid "female^Silver Mage"
@@ -2593,7 +2606,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:112
 #, fuzzy
 msgid "female^Fugitive"
-msgstr "Mágyňa"
+msgstr "Vojačka"
 
 #: data/core/units/humans/Outlaw_Fugitive.cfg:115
 msgid ""
@@ -2733,7 +2746,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 #, fuzzy
 msgid "Huntsman"
-msgstr "Jazdec"
+msgstr "Ľudia"
 
 #: data/core/units/humans/Woodsman_Huntsman.cfg:22
 msgid ""
@@ -2771,7 +2784,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 #, fuzzy
 msgid "Ranger"
-msgstr "dýka"
+msgstr "Z diaľky"
 
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
 msgid ""
@@ -3475,7 +3488,6 @@ msgid "Orcish Leader"
 msgstr "Ork veliteľ"
 
 #: data/core/units/orcs/Leader.cfg:25
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -3483,12 +3495,6 @@ msgid ""
 "rapport with their kin, especially goblins, and can inspire them to fight "
 "with uncharacteristic boldness."
 msgstr ""
-"Orčí velitelia sú vodcami svojho kmeňa. Robia dôležité rozhodnutia a vedú "
-"svoj národ do bitiek. Z nevyhnutnosti nosia aj luk, ale sú omnoho zručnejší "
-"s mečom; sú to skutočne mocní bojovníci. Ich prirodzené vodcovské schopnosti "
-"ich robia v boji nenahraditeľnými: ak padne veliteľ, bitka je stratená.\n"
-"\n"
-"Poznámka:"
 
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
@@ -4132,7 +4138,6 @@ msgid "Chocobone"
 msgstr "Čokobon"
 
 #: data/core/units/undead/Skele_Chocobone.cfg:20
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -4471,99 +4476,3 @@ msgstr ""
 "rýchli.\n"
 "\n"
 "Poznámka:"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Poznámky:"
-
-#, fuzzy
-#~ msgid ""
-#~ "Knights of the highest virtue, Paladins have sworn themselves to semi-"
-#~ "monastic vows, pledging their might to the cause of righteousness. Though "
-#~ "not as imposing on the battlefield as a Grand Knight, a Paladin is a "
-#~ "powerful force in combat, and their piety grants them other gifts. A "
-#~ "Paladin is a bane to the unworldly, and has trained in ministering to the "
-#~ "wounds of his comrades.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Najcnostnejší rytieri, palatíni, sa zasvätili mníšskym rádom, a svoju moc "
-#~ "dali do služieb spravodlivosti. Hoci nie sú na bojisku takí impozantní "
-#~ "ako starší rytieri, palatíni majú v boji iné dary. Palatín je kladivom na "
-#~ "všetko nesväté, a dokáže ošetriť zranenia svojim spolubojovníkom.\n"
-#~ "\n"
-#~ "Poznámka:"
-
-#, fuzzy
-#~ msgid "Outlaw Ranger"
-#~ msgstr "Zbojník"
-
-#~ msgid "dummy"
-#~ msgstr "---"
-
-#~ msgid "cold"
-#~ msgstr "mráz"
-
-#, fuzzy
-#~ msgid "arcane"
-#~ msgstr "na diaľku"
-
-#~ msgid "impact"
-#~ msgstr "tupý"
-
-#~ msgid "fire"
-#~ msgstr "oheň"
-
-#~ msgid "blade"
-#~ msgstr "sečný"
-
-#~ msgid "pierce"
-#~ msgstr "strelný"
-
-#, fuzzy
-#~ msgid ""
-#~ "The dread inspired by black magic comes chiefly from how little is known "
-#~ "about it by the common man. Dark sorcerers have begun to unlock the "
-#~ "secrets of life and death, quickly becoming masters of inflicting pain "
-#~ "and anguish.\n"
-#~ "\n"
-#~ "The ultimate prize of the dark arts is complete domination of death and "
-#~ "life. Dark Sorcerers may eventually learn how to manipulate life and "
-#~ "death by reanimating corpses, skeletons, and spirits. The most corrupt "
-#~ "and power-hungry will attempt to completely conquer death through "
-#~ "transformation to lichdom and attainment of a dreadful immortality.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Hrôza vyvolávaná čiernou mágiou je daná hlavne tým, ako málo o nej vie "
-#~ "bežný človek. Temní čarodejníci začali odkrývať tajomstvá života a smrti, "
-#~ "rýchlo sa stali majstrami v spôsobovaní bolesti a strachu.\n"
-#~ "\n"
-#~ "Konečným cieľom temných umení je úplná moc nad smrťou a životom. Temní "
-#~ "čarodejníci sa môžu naučiť manipulovať životom a smrťou pomocou "
-#~ "oživovania mŕtvol, kostier a duchov. Tí najskazenejší a najviac hladní po "
-#~ "moci, sa napokon pokúsia premôcť smrť pomocou premeny na kosteja a "
-#~ "získania hroznej nesmrteľnosti.\n"
-#~ "\n"
-#~ "Poznámka:"
-
-#~ msgid ""
-#~ "Driven ravenous by an unholy hunger for dead flesh, Necrophages attack "
-#~ "their hoped-for food with beast-like ferocity. When they are sated with "
-#~ "the flesh of their victims, they simply shrug off all damage sustained as "
-#~ "if they had been freshly summoned, to begin their search for flesh "
-#~ "again.\n"
-#~ "\n"
-#~ "Special Notes:"
-#~ msgstr ""
-#~ "Mrchožrúti sú divoko poháňaní svojím pekelným hladom po mŕtvom mäse; "
-#~ "útočia ako divé zvery. Keď sa konečne nasýtia mäsom svojich obetí, "
-#~ "zacelia sa všetky ich rany, akoby boli práve vytvorení, a ich hľadanie "
-#~ "mäsa začína odznova.\n"
-#~ "\n"
-#~ "Poznámka:"

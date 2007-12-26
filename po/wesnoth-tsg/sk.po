@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-24 11:54+0100\n"
-"PO-Revision-Date: 2007-01-08 23:08+0100\n"
+"PO-Revision-Date: 2007-01-31 13:23+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-Country: SLOVAKIA\n"
 
@@ -655,7 +655,6 @@ msgid "At last the citadel is secured."
 msgstr "Konečne je citadela v bezpečí."
 
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:243
-#, fuzzy
 msgid "Now Deoran, take your post of command at the Citadel of Westin."
 msgstr "Deoran, teraz prevezmi veliteľský post v citadele Westin."
 
@@ -1047,9 +1046,8 @@ msgid "Sidaurios"
 msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:280
-#, fuzzy
 msgid "Eltenmir"
-msgstr "Eera"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:281
 msgid "Vardanos"
@@ -2451,7 +2449,7 @@ msgstr "Čo im máme ponúknuť za ich pomoc?"
 msgid ""
 "We will give you $troll_help_cost gold pieces if you help us defeat the "
 "undead."
-msgstr "Keď budú nemŕtvi porazení, zaplatíme vám 75 zlatých."
+msgstr "Keď budú nemŕtvi porazení, zaplatíme vám 50 zlatých."
 
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:521
 msgid ""
@@ -2471,9 +2469,8 @@ msgid "We will offer you freedom and a place in our lands."
 msgstr "Ponúkneme ti slobodu a miesto v našej zemi."
 
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:563
-#, fuzzy
 msgid "Ha! Who wants stupid human lands!"
-msgstr "Pche! Kto chce mier a slobodu? My chceme krv!"
+msgstr ""
 
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:567
 #, fuzzy
@@ -3409,15 +3406,11 @@ msgid ""
 msgstr ""
 
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:36
-#, fuzzy
 msgid ""
 "King Haldric knighted young Deoran, and when he rose tasked him to ride to "
 "Westin, to demand an accounting from Sir Loris, the commander of the South "
 "Guard..."
 msgstr ""
-"Deoran dostal rozkaz, aby cválal smerom na Westin, do hlavného mesta "
-"provincie Kerlat a tam vystriedal pána Lorisa v pozícii veliteľa Južnej "
-"posádky..."
 
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:57
 #, fuzzy
@@ -3676,214 +3669,3 @@ msgstr ""
 "každý skúsený veliteľ je potrebný na zažehnanie blížiaceho sa útoku...\n"
 "\n"
 "(Verzia 1.2.0, September 2006 -- preklad Martin \"Arðarïeŀ\" Džbor)"
-
-#, fuzzy
-#~ msgid "I struck him and he disappeared! Can I really have killed the Lich?"
-#~ msgstr "Udrel som ho a on zmizol! Naozaj je možné zabiť kosteja?"
-
-#~ msgid "Ethiliel's Guard"
-#~ msgstr "Etiliel a stráž"
-
-#~ msgid "Grée"
-#~ msgstr "Grée"
-
-#~ msgid ""
-#~ "Petty mortals, bow down and cower in fear before me, and I may make your "
-#~ "passing swift. For I was once one such as you, full of doubt and "
-#~ "weakness, but now I have passed over and become more than you could "
-#~ "possibly imagine."
-#~ msgstr ""
-#~ "Úbohí smrteľníci, skloňte sa a traste sa predo mnou. Možno sa rozhodnem a "
-#~ "zaručím vám rýchly koniec. Kedysi som bol ako vy, plný pochýb a slabostí, "
-#~ "ale s tým je teraz koniec. Stal som sa čímsi, čo si ani neviete "
-#~ "predstaviť."
-
-#, fuzzy
-#~ msgid ""
-#~ "Foolish boy! You do not understand. Come closer and I will show you my "
-#~ "power. I will end your brief, miserable life. Thereafter, it may amuse me "
-#~ "to cause your bones to serve me."
-#~ msgstr ""
-#~ "Hlupák! Vôbec to nechápeš. Poď bližšie a ja ti ukážem, akú mám moc. "
-#~ "Ukončím tvoju krátku, úbohú životnú púť. Možno potom bude trochu zábavy a "
-#~ "skúsim tvoje kosti znovu vzkriesiť, aby si mi slúžil v novej podobe."
-
-#~ msgid "intelligent"
-#~ msgstr "inteligentný"
-
-#~ msgid "loyal,"
-#~ msgstr "verný,"
-
-#~ msgid ""
-#~ "Maybe the elves will have food we can buy - we should head north to meet "
-#~ "them!"
-#~ msgstr ""
-#~ "Možno by nám elfi vedeli predať nejaké potraviny - mali by sme ísť na "
-#~ "sever a dostať sa k nim!"
-
-#, fuzzy
-#~ msgid ""
-#~ "If there are elves to the north we must head north! We can't follow this "
-#~ "bandit to who knows where... The elves have been our friends!"
-#~ msgstr ""
-#~ "Ak na severe nejakí elfi sú, tak potom musíme ísť tým smerom! Nemôžeme "
-#~ "nasledovať toho banditu, ktovie kam nás... Elfi boli stále našimi "
-#~ "priateľmi!"
-
-#~ msgid "Add a swing to your attack."
-#~ msgstr "Pridaj rozmach do úderu."
-
-#~ msgid "We will give you 100 gold pieces once the undead are defeated."
-#~ msgstr "Keď budú nemŕtvi porazení, zaplatíme vám 100 zlatých."
-
-#, fuzzy
-#~ msgid "We will give you 150 gold pieces once the undead are defeated."
-#~ msgstr "Keď budú nemŕtvi porazení, zaplatíme vám 50 zlatých."
-
-#, fuzzy
-#~ msgid "We will give you 200 gold pieces once the undead are defeated."
-#~ msgstr "Keď budú nemŕtvi porazení, zaplatíme vám 100 zlatých."
-
-#, fuzzy
-#~ msgid "Gah! The undead are dead again! Now you'd better pay up!"
-#~ msgstr "Cha! Nemŕtvi sú znova mŕtvymi! A teraz nám radšej zaplať!"
-
-#, fuzzy
-#~ msgid "Here is your reward. Now we will leave your caves in peace."
-#~ msgstr "Tu je vaša odmena. Teraz už necháme vaše jaskyne na pokoji."
-
-#~ msgid "I suppose we will not kill you, but do not try your luck again!"
-#~ msgstr "Myslím, že vás nezabijeme, ale už znova nepokúšajte štastie!"
-
-#, fuzzy
-#~ msgid ""
-#~ "You don't have the gold to pay us! Now we will grind your bones into dust!"
-#~ msgstr "Nemáš zlato aby si nás vyplatil! Zadupeme vaše kosti do prachu!"
-
-#~ msgid "Death of Ithelden"
-#~ msgstr "Zomrie Itelden"
-
-#, fuzzy
-#~ msgid ""
-#~ "It seems that the old dwarven road has fallen into disrepair! The stream "
-#~ "cuts the path."
-#~ msgstr ""
-#~ "Vyzerá to, že táto prastará trpasličia cesta sa nejak rozpadla! Dokonca "
-#~ "cez ňu preteká potok."
-
-#~ msgid "Perhaps we can cross on the ice?"
-#~ msgstr "Možno môžeme ísť po ľade."
-
-#~ msgid "It looks thin - tread carefully."
-#~ msgstr "Vyzerá byť tenký - opatrne."
-
-#, fuzzy
-#~ msgid "The ice is collapsing! I'll be trapped!"
-#~ msgstr "Ľad sa preboril! Som v pasci!"
-
-#~ msgid ""
-#~ "We have nothing suitable to make a bridge - you will have to explore that "
-#~ "side of the stream and see where the road leads."
-#~ msgstr ""
-#~ "Nemáme nič z čoho by sme postavili most - budeš musieť preskúmať druhú "
-#~ "stranu potoka a zistiť kam vedie cesta."
-
-#, fuzzy
-#~ msgid "The ice to the south seems thicker. We should head that way!"
-#~ msgstr "Smerom na juh sa ľad zdá byť hrubší. Mali by sme ísť tade!"
-
-#, fuzzy
-#~ msgid ""
-#~ "Look! Rocks have fallen and collapsed the old dwarven road. I'm stuck!"
-#~ msgstr ""
-#~ "Pozrite sa! Skaly sa zosypali a zasypali starú trpasličiu cestu. Zostal "
-#~ "som tu odrezaný!"
-
-#~ msgid "We'll find a way to rescue you, don't worry."
-#~ msgstr "Neboj sa, nájdeme spôsob ako ťa zachrániť."
-
-#~ msgid "Bah! Grind their bones!"
-#~ msgstr "Cha! Rozmeľte ich kosti na prach!"
-
-#~ msgid "quick"
-#~ msgstr "rýchly"
-
-#~ msgid "strong"
-#~ msgstr "silný"
-
-#, fuzzy
-#~ msgid "Ardolan"
-#~ msgstr "Aleron"
-
-#~ msgid "Invisible"
-#~ msgstr "Neviditeľný"
-
-#~ msgid "Place barbs on your weapon. (slow)"
-#~ msgstr "Pridaj ostne na svoju zbraň. (spomalenie)"
-
-#~ msgid "Wield a mace. (impact)"
-#~ msgstr "Vezmi si palcát (tupý úder)"
-
-#~ msgid "Wild Ogre"
-#~ msgstr "Divoký ohyzd"
-
-#~ msgid "Naga"
-#~ msgstr "Hadí človek"
-
-#~ msgid "Naga Queen"
-#~ msgstr "Hadia kráľovna"
-
-#, fuzzy
-#~ msgid ""
-#~ "For eight years the South Guard had defended the farms and homes "
-#~ "surrounding the city of Westin.  The fiercest foe they had faced was the "
-#~ "occasional bandit.  The orcs were far to the north.  Nothing lived in the "
-#~ "forest beyond the river."
-#~ msgstr ""
-#~ "Osem rokov tam Južná posádka bránila a chránila farmy i dediny okolo "
-#~ "mesta Westin. Najväčšou hrozbou boli v tých časoch banditi. Orkovia boli "
-#~ "zatlačení ďaleko na sever a v lesoch za riekou nebolo živej duše."
-
-#~ msgid ""
-#~ "A young commander, Deoran, son of one of the horsemen who rode with "
-#~ "Konrad I, was summoned by Haldric.  The king had a mission for him."
-#~ msgstr ""
-#~ "Mladý veliteľ, Deoran, syn jedného z jazdcov, ktorí slúžili pod Konrádom "
-#~ "I. bol povolaný pred Haldrika. Kráľ mal pre mladého bojovníka jeho prvé "
-#~ "samostatné poslanie..."
-
-#~ msgid "resilient"
-#~ msgstr "odolný"
-
-#~ msgid "valiant,"
-#~ msgstr "statočný,"
-
-#~ msgid "strong,"
-#~ msgstr "silný,"
-
-#, fuzzy
-#~ msgid "female^strong"
-#~ msgstr "silný"
-
-#, fuzzy
-#~ msgid "female^resilient"
-#~ msgstr "odolný"
-
-#, fuzzy
-#~ msgid "female^intelligent"
-#~ msgstr "inteligentný"
-
-#~ msgid "loyal"
-#~ msgstr "verný"
-
-#~ msgid "dummy"
-#~ msgstr "prázdny"
-
-#~ msgid "pierce"
-#~ msgstr "bodný"
-
-#~ msgid "blade"
-#~ msgstr "sečný"
-
-#~ msgid "impact"
-#~ msgstr "tupý"

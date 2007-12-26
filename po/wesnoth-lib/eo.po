@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-26 14:46+0100\n"
-"PO-Revision-Date: 2006-10-26 18:33+0200\n"
-"Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
+"PO-Revision-Date: 2007-02-15 22:50+0100\n"
+"Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr "Ne"
 
 #: data/core/terrain.cfg:20
 msgid "Shroud"
-msgstr "Malkovro de mapo"
+msgstr "Vualo"
 
 #: data/core/terrain.cfg:27
 msgid "Fog"
@@ -31,70 +31,75 @@ msgstr "Nebulo"
 
 #: data/core/terrain.cfg:38
 msgid "Ice"
-msgstr "Glacio"
+msgstr ""
 
 #: data/core/terrain.cfg:48
+#, fuzzy
 msgid "Snow"
-msgstr "Neĝo"
+msgstr "ne"
 
 #: data/core/terrain.cfg:61 data/core/terrain.cfg:70 data/core/terrain.cfg:79
 #: data/core/terrain.cfg:89 data/core/terrain.cfg:98 data/core/terrain.cfg:107
 #: data/core/terrain.cfg:117 data/core/terrain.cfg:126
 #: data/core/terrain.cfg:135
+#, fuzzy
 msgid "Bridge"
-msgstr "Ponto"
+msgstr "Ligado"
 
 #: data/core/terrain.cfg:148
 msgid "Encampment"
-msgstr "Tendumejo"
+msgstr ""
 
 #: data/core/terrain.cfg:159 data/core/terrain.cfg:169
 #: data/core/terrain.cfg:180
+#, fuzzy
 msgid "Castle"
-msgstr "Kastelo"
+msgstr "Bordregiono"
 
 #: data/core/terrain.cfg:191
 msgid "Ruin"
-msgstr "Ruino"
+msgstr ""
 
 #: data/core/terrain.cfg:202
 msgid "Sunken Ruin"
-msgstr "Sinkigita ruino"
+msgstr ""
 
 #: data/core/terrain.cfg:214
 msgid "Swamp Ruin"
-msgstr "Marĉa ruino"
+msgstr ""
 
 #: data/core/terrain.cfg:239 data/core/terrain.cfg:251
 #: data/core/terrain.cfg:263 data/core/terrain.cfg:275
 #: data/core/terrain.cfg:287 data/core/terrain.cfg:299
 #: data/core/terrain.cfg:311
 msgid "Keep"
-msgstr "Fortikaĵo"
+msgstr ""
 
 #: data/core/terrain.cfg:337
 msgid "Crater"
 msgstr ""
 
 #: data/core/terrain.cfg:347
+#, fuzzy
 msgid "Desert"
-msgstr "Dezerto"
+msgstr "Reŝargi"
 
 #: data/core/terrain.cfg:357
 msgid "Rubble"
 msgstr ""
 
 #: data/core/terrain.cfg:367
+#, fuzzy
 msgid "Sand"
-msgstr "Sablo"
+msgstr "Interno"
 
 #: data/core/terrain.cfg:375
 msgid "Oasis"
-msgstr "Oazo"
+msgstr ""
 
 #: data/core/terrain.cfg:390
 msgid "Snow Forest"
-msgstr "Neĝkovrita arbaro"
+msgstr ""
 
 #: data/core/terrain.cfg:400
 msgid "Great Tree"
@@ -102,23 +107,24 @@ msgstr ""
 
 #: data/core/terrain.cfg:409
 msgid "Forest"
-msgstr "Arbaro"
+msgstr ""
 
 #: data/core/terrain.cfg:417
 msgid "Tropical Forest"
-msgstr "Tropika arbaro"
+msgstr ""
 
 #: data/core/terrain.cfg:430 data/core/terrain.cfg:438
+#, fuzzy
 msgid "Grassland"
-msgstr "Herbejo"
+msgstr "Insulo"
 
 #: data/core/terrain.cfg:447
 msgid "Savanna"
-msgstr "Savano"
+msgstr ""
 
 #: data/core/terrain.cfg:460
 msgid "Snow Hills"
-msgstr "Neĝkovritaj montoj"
+msgstr ""
 
 #: data/core/terrain.cfg:470
 msgid "Dunes"
@@ -126,11 +132,11 @@ msgstr ""
 
 #: data/core/terrain.cfg:480
 msgid "Hills"
-msgstr "Montetoj"
+msgstr ""
 
 #: data/core/terrain.cfg:492 data/core/terrain.cfg:501
 msgid "Mountains"
-msgstr "Montoj"
+msgstr ""
 
 #: data/core/terrain.cfg:513
 msgid "Chasm"
@@ -142,16 +148,16 @@ msgstr ""
 
 #: data/core/terrain.cfg:531
 msgid "Lava"
-msgstr "Lafo"
+msgstr ""
 
 #: data/core/terrain.cfg:545 data/core/terrain.cfg:563
 #: data/core/terrain.cfg:572
 msgid "Road"
-msgstr "Vojo"
+msgstr ""
 
 #: data/core/terrain.cfg:554
 msgid "Dirt"
-msgstr "Polvo"
+msgstr ""
 
 #: data/core/terrain.cfg:582
 msgid "Farmland"
@@ -159,11 +165,12 @@ msgstr ""
 
 #: data/core/terrain.cfg:595
 msgid "Swamp"
-msgstr "Marĉo"
+msgstr ""
 
 #: data/core/terrain.cfg:609
+#, fuzzy
 msgid "Cave"
-msgstr "Groto"
+msgstr "Nuligu"
 
 #: data/core/terrain.cfg:617
 msgid "Cave Lit"
@@ -194,20 +201,21 @@ msgstr ""
 #: data/core/terrain.cfg:818 data/core/terrain.cfg:829
 #: data/core/terrain.cfg:841 data/core/terrain.cfg:856
 #: data/core/terrain.cfg:867
+#, fuzzy
 msgid "Village"
-msgstr "Vilaĝo"
+msgstr "Vilaĝoj"
 
 #: data/core/terrain.cfg:882
 msgid "Deep Water"
-msgstr "Profunda akvo"
+msgstr ""
 
 #: data/core/terrain.cfg:892
 msgid "Shallow Water"
-msgstr "Malprofunda akvo"
+msgstr ""
 
 #: data/core/terrain.cfg:902
 msgid "River Ford"
-msgstr "Rivera vadejo"
+msgstr ""
 
 #: data/core/terrain.cfg:917
 msgid "Impassable Mountains"
@@ -219,7 +227,7 @@ msgstr ""
 
 #: data/core/terrain.cfg:936
 msgid "Cave Wall"
-msgstr "Muro de groto"
+msgstr ""
 
 #: data/core/terrain.cfg:945
 msgid "Void"
@@ -249,7 +257,7 @@ msgstr "Fermi"
 
 #: src/editor/editor_dialogs.cpp:49
 msgid "Your modifications to the map will be lost. Continue?"
-msgstr "Viaj ŝanĝoj de la mapo malaperos. Daurigi?"
+msgstr "Viaj ŝanĝoj de la mapo malaperos. Daŭrigi?"
 
 #: src/editor/editor_dialogs.cpp:79 src/editor/editor_dialogs.cpp:193
 msgid "Create New Map"
@@ -391,20 +399,24 @@ msgid "Delete Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 
 #: src/game_preferences_display.cpp:165
+#, fuzzy
 msgid "Do Not Show Lobby Joins"
-msgstr ""
+msgstr "Montri aliĝojn de ludantoj"
 
 #: src/game_preferences_display.cpp:166
+#, fuzzy
 msgid "Show Lobby Joins Of Friends Only"
-msgstr ""
+msgstr "Montri aliĝojn de ludantoj"
 
 #: src/game_preferences_display.cpp:167
+#, fuzzy
 msgid "Show All Lobby Joins"
-msgstr ""
+msgstr "Montri aliĝojn de ludantoj"
 
 #: src/game_preferences_display.cpp:168
+#, fuzzy
 msgid "Sort Lobby List"
-msgstr ""
+msgstr "Montri aliĝojn de ludantoj"
 
 #: src/game_preferences_display.cpp:169
 msgid "Iconize Lobby List"
@@ -497,13 +509,12 @@ msgid "User Interface Sounds"
 msgstr ""
 
 #: src/game_preferences_display.cpp:195
-#, fuzzy
 msgid "Custom"
-msgstr "Eltondi"
+msgstr "Individua"
 
 #: src/game_preferences_display.cpp:196
 msgid "Apply"
-msgstr ""
+msgstr "Apliki"
 
 #: src/game_preferences_display.cpp:197
 msgid "Show Unit Idle Animations"
@@ -533,7 +544,7 @@ msgstr "Gamo:"
 
 #: src/game_preferences_display.cpp:204
 msgid "Sample Rate (Hz):"
-msgstr ""
+msgstr "Nivelo de Specimeno (Hz):"
 
 #: src/game_preferences_display.cpp:205
 msgid "Frequency:"
@@ -569,23 +580,20 @@ msgid "Change the sound volume for button clicks, etc."
 msgstr ""
 
 #: src/game_preferences_display.cpp:255
-#, fuzzy
 msgid "Change the sample rate"
-msgstr "Ŝanghi lingvon"
+msgstr "Ŝanĝi la nivelon de specimeno"
 
 #: src/game_preferences_display.cpp:264
-#, fuzzy
 msgid "User defined sample rate"
-msgstr "Ŝanghi lingvon"
+msgstr "Difinita de uzulo nivelo de specimeno"
 
 #: src/game_preferences_display.cpp:273 src/game_preferences_display.cpp:277
-#, fuzzy
 msgid "Change the buffer size"
-msgstr "Agordi laŭtecon de muziko"
+msgstr "Ŝanĝi grandecon de la bufro"
 
 #: src/game_preferences_display.cpp:275 src/game_preferences_display.cpp:822
 msgid "Buffer Size: "
-msgstr ""
+msgstr "Grandeco de Bufro:"
 
 #: src/game_preferences_display.cpp:282
 msgid "Change the speed of scrolling around the map"
@@ -650,9 +658,8 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr ""
 
 #: src/game_preferences_display.cpp:353
-#, fuzzy
 msgid "Show icons in front of the player names in the lobby."
-msgstr "Montri mesaĝon pri ludantoj aliĝintaj al la grupluda kompanio"
+msgstr ""
 
 #: src/game_preferences_display.cpp:356
 #, fuzzy
@@ -1265,14 +1272,3 @@ msgstr ""
 #: src/wml_exception.cpp:61
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Save Replays"
-#~ msgstr "Konservi klavokomandon"
-
-#, fuzzy
-#~ msgid "Advanced Mode"
-#~ msgstr "Superaj agordoj"
-
-#~ msgid "Dwarven Castle"
-#~ msgstr "Kastelo de nanoj"
