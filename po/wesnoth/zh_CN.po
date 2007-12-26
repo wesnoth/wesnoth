@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-24 11:51+0100\n"
+"POT-Creation-Date: 2007-12-26 14:46+0100\n"
 "PO-Revision-Date: 2007-12-17 02:05+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -51,7 +51,7 @@ msgstr "官方服务器"
 msgid "Alternate Wesnoth Server"
 msgstr "可选的服务器"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:551
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
 msgid "Underground"
 msgstr "地下"
@@ -88,7 +88,7 @@ msgstr "多人地图和平衡性"
 msgid "Packagers"
 msgstr "游戏打包人员"
 
-#: data/core/about.cfg:589 data/core/help.cfg:293
+#: data/core/about.cfg:589 data/core/help.cfg:299
 msgid "Contributors"
 msgstr "贡献者"
 
@@ -260,7 +260,7 @@ msgstr "游戏介绍"
 msgid "Gameplay"
 msgstr "游戏玩法"
 
-#: data/core/help.cfg:22 data/core/help.cfg:305
+#: data/core/help.cfg:22 data/core/help.cfg:311
 msgid "Traits"
 msgstr "特质"
 
@@ -276,11 +276,11 @@ msgstr "能力"
 msgid "Weapon Specials"
 msgstr "武器特性"
 
-#: data/core/help.cfg:56 data/core/help.cfg:394
+#: data/core/help.cfg:56 data/core/help.cfg:400
 msgid "Terrains"
 msgstr "地形"
 
-#: data/core/help.cfg:63 data/core/help.cfg:646
+#: data/core/help.cfg:63 data/core/help.cfg:652
 msgid "Commands"
 msgstr "指令"
 
@@ -403,22 +403,6 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"Each scenario has some objectives, shown as the scenario starts. These "
-"objectives list what you need to do to win, and what you should do to avoid "
-"losing. Often the objective is to defeat all enemies, but other times you "
-"need to reach a destination, to rescue someone, to solve a puzzle, or just "
-"to survive a certain number of turns."
-msgstr ""
-"\n"
-"\n"
-"每一幕都会有一些目标，并在开始的时候显示。这些目标会以列表的形式显示您需要什"
-"么才能赢得游戏或您应该做什么以避免失败。通常这些目标是击败所有敌人，但有时您"
-"需要到达某地去拯救某人，解决迷题，或仅仅要求在一定回合内存活下来。"
-
-#: data/core/help.cfg:134
-msgid ""
-"\n"
-"\n"
 "Campaigns consist of multiple scenarios that follow on from each other, "
 "telling a story. In a campaign, you often need to play more carefully, "
 "preserving your best troops so that they can be used again in later "
@@ -429,11 +413,35 @@ msgstr ""
 "战役讲述着一个故事，是由一系列环环相扣的场景组成的，您常常得更小心谨慎，确保"
 "最精良的部队存活下来，能够在战役中的下一幕里继续战斗。"
 
-#: data/core/help.cfg:139
+#: data/core/help.cfg:137
+msgid "Victory and Defeat"
+msgstr ""
+
+#: data/core/help.cfg:138
+msgid ""
+"Pay careful attention to the Objectives pop-up box at the beginning of each "
+"scenario. Usually you will achieve victory by killing all enemy leaders, and "
+"only be defeated by having your leader killed. But scenarios may have other "
+"victory objectives - getting your leader to a designated point, say, or "
+"escuing someone, or solving a puzzle, or holding out against a siege until a "
+"certain number of terms have elapsed."
+msgstr ""
+
+#: data/core/help.cfg:140
+msgid ""
+"\n"
+"\n"
+"When you win a scenario, the map will gray over and the 'End Turn' button "
+"will change to 'End Scenario'.  You can now do things like changing yourc "
+"save options or (if you are in a multiplayer game) chatting with other "
+"players before pressing that button to advance."
+msgstr ""
+
+#: data/core/help.cfg:145
 msgid "Recruiting and Recalling"
 msgstr "征募与召回"
 
-#: data/core/help.cfg:140
+#: data/core/help.cfg:146
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst=units text=units</"
@@ -451,7 +459,7 @@ msgstr ""
 "键点击一个六边形空格选择<italic>text=征兵</italic>。这样会有一个可供征兵的列"
 "表，旁边有所需金币的数额。点击一个单位查看他的状态，然后点征兵按钮就可征募。"
 
-#: data/core/help.cfg:142
+#: data/core/help.cfg:148
 msgid ""
 "\n"
 "\n"
@@ -466,7 +474,7 @@ msgstr ""
 "兵将出现在任何要塞边的空格里。您只能征募与空格相同量数的单位，并且总花费却不"
 "能超出您所拥有的金币数量。"
 
-#: data/core/help.cfg:144
+#: data/core/help.cfg:150
 msgid ""
 "\n"
 "\n"
@@ -477,7 +485,7 @@ msgstr ""
 "\n"
 "新兵有两个随机的<ref>dst=traits text=特质</ref>，对其数据稍有影响。"
 
-#: data/core/help.cfg:146
+#: data/core/help.cfg:152
 msgid ""
 "\n"
 "\n"
@@ -490,7 +498,7 @@ msgstr ""
 "在以后的战役中，您可召回早些战役中的生还者。召回命令将为您列出一张所有上个场"
 "景中生还者的清单。召回一律花费20金币。"
 
-#: data/core/help.cfg:148
+#: data/core/help.cfg:154
 msgid ""
 "\n"
 "\n"
@@ -503,41 +511,41 @@ msgstr ""
 "单位不仅仅需要花费金币去征募或召回，还需要维护费用。参见"
 "<ref>dst=income_and_upkeep text='收入与维护费'</ref>"
 
-#: data/core/help.cfg:153
+#: data/core/help.cfg:159
 msgid "Orbs"
 msgstr "行动指示灯"
 
-#: data/core/help.cfg:154
+#: data/core/help.cfg:160
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr "您的单位的生命条上端有一个行动指示灯。您所控制的单位的环状图标是："
 
-#: data/core/help.cfg:155
+#: data/core/help.cfg:161
 msgid "green if it hasn't moved this turn,"
 msgstr "绿色，表明该单位本回合没有移动过，"
 
-#: data/core/help.cfg:156
+#: data/core/help.cfg:162
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "黄色，表明本单位移动过了，但还可以继续移动或攻击，"
 
-#: data/core/help.cfg:157
+#: data/core/help.cfg:163
 msgid "red if it has used all its movement this turn."
 msgstr "红色，表明该单位已经用完了自己本回合的移动点数。"
 
-#: data/core/help.cfg:158
+#: data/core/help.cfg:164
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "蓝色的环状图标表示该单位是盟友的，您不能控制它。"
 
-#: data/core/help.cfg:159
+#: data/core/help.cfg:165
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "敌人单位的生命条上方无环状图标。"
 
-#: data/core/help.cfg:164
+#: data/core/help.cfg:170
 msgid "Hitpoints and Experience"
 msgstr "生命值和经验值"
 
-#: data/core/help.cfg:165
+#: data/core/help.cfg:171
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -547,7 +555,7 @@ msgstr ""
 "每个单位都有一定数量的生命值（HP）。生命值低于1点则单位会死掉。每个单位也拥有"
 "一定的经验值（XP）。新征募的单位没有经验值，与敌人战斗之后才会获得经验值。"
 
-#: data/core/help.cfg:169
+#: data/core/help.cfg:175
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -556,7 +564,7 @@ msgstr ""
 "生命值和经验值都会在状态面板上以两个数值比值的形式反映出来（单位当前值/最大"
 "值）。"
 
-#: data/core/help.cfg:170
+#: data/core/help.cfg:176
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -567,11 +575,11 @@ msgstr ""
 "值的单位拥有一条蓝色经验条，当要<ref>dst=experience_and_advancement text=升级"
 "</ref>时显示为白色。"
 
-#: data/core/help.cfg:175
+#: data/core/help.cfg:181
 msgid "Movement"
 msgstr "移动"
 
-#: data/core/help.cfg:176
+#: data/core/help.cfg:182
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -595,7 +603,7 @@ msgstr ""
 "是非常有效的。攻击敌人单位会用完移动点数。当您的单位进入一个您还没有占领的村"
 "庄时也会花完所有移动点数，但仍然能够攻击。"
 
-#: data/core/help.cfg:178
+#: data/core/help.cfg:184
 msgid ""
 "\n"
 "\n"
@@ -617,7 +625,7 @@ msgstr ""
 "获悉某个单位进入某个地形所需的移动点数，只需右击该单位，再选“单位描述”，然后"
 "阅读<italic>text='地形影响'</italic>部分。"
 
-#: data/core/help.cfg:180
+#: data/core/help.cfg:186
 msgid ""
 "\n"
 "\n"
@@ -634,7 +642,7 @@ msgstr ""
 "进入那些格子，将立即耗尽移动点数。学习如何利用控制区域，是玩韦诺的一个重点。"
 "只有<ref>dst=ability_skirmisher text='游击'</ref>能力可以忽视控制区域的影响。"
 
-#: data/core/help.cfg:182
+#: data/core/help.cfg:188
 msgid ""
 "\n"
 "\n"
@@ -647,11 +655,11 @@ msgstr ""
 "按Ctrl-v或Cmd-v查看敌人下回合能移动到的区域。Ctrl-b或Cmd-b可以显示在您的部队"
 "不影响对手移动的情况下，对让可以移动到的区域。"
 
-#: data/core/help.cfg:187
+#: data/core/help.cfg:193
 msgid "Shroud and Fog of War"
 msgstr "战场黑幕和战争迷雾"
 
-#: data/core/help.cfg:190
+#: data/core/help.cfg:196
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The Shroud hides both "
@@ -678,11 +686,11 @@ msgstr ""
 "迷雾会消失，当他们离去后会再次笼罩。每个单位都能清除本回合移动所经过区域和区"
 "域附近的战场黑幕和迷雾（忽略敌人部队和敌人控制区域）。"
 
-#: data/core/help.cfg:195
+#: data/core/help.cfg:201
 msgid "Combat"
 msgstr "战斗"
 
-#: data/core/help.cfg:196
+#: data/core/help.cfg:202
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -700,7 +708,7 @@ msgstr ""
 "会选择相应的武器种类进行防御。攻击种类有两种： 近战，使用的武器通常是剑，斧，"
 "或尖利的牙齿；远程，武器通常是弓，矛和火球。"
 
-#: data/core/help.cfg:198
+#: data/core/help.cfg:204
 msgid ""
 "\n"
 "\n"
@@ -710,7 +718,7 @@ msgstr ""
 "\n"
 "<header>text='攻击顺序与次数'</header>"
 
-#: data/core/help.cfg:200
+#: data/core/help.cfg:206
 msgid ""
 "\n"
 "\n"
@@ -729,7 +737,7 @@ msgstr ""
 "不同的功绩次数。举个例子，攻击为5-4的精灵战士可以攻击4次，每次击中敌人造成5点"
 "伤害，兽人步兵9-2的进攻表明他只能进攻2次（但每次击中敌人会造成9点伤害）。"
 
-#: data/core/help.cfg:202
+#: data/core/help.cfg:208
 msgid ""
 "\n"
 "\n"
@@ -739,7 +747,7 @@ msgstr ""
 "\n"
 "<header>text='命中几率'</header>"
 
-#: data/core/help.cfg:204
+#: data/core/help.cfg:210
 msgid ""
 "\n"
 "\n"
@@ -758,7 +766,7 @@ msgstr ""
 "多精灵在森林里都有70%的闪避几率，这表示攻击者只有30%的机会命中目标。同样的，"
 "该精灵在反击中击中攻击者的几率取决于攻击者所处的地形。"
 
-#: data/core/help.cfg:206
+#: data/core/help.cfg:212
 msgid ""
 "\n"
 "\n"
@@ -774,7 +782,7 @@ msgstr ""
 "<ref>dst=weaponspecial_marksman text=精准射击</ref>。“魔法攻击”可以无视地形，"
 "总是有70%的命中几率，而精准射击在进攻中也无视地形，且最少有60%的命中几率。"
 
-#: data/core/help.cfg:208
+#: data/core/help.cfg:214
 msgid ""
 "\n"
 "\n"
@@ -785,7 +793,7 @@ msgstr ""
 "<header>text=伤害</header>"
 
 # sometimes there are quotations in "text='Time of Day'", for example, but sometimes there aren't, as in "text=resistance". what's the difference? and shall i use quotations in a likewise manner in translation?
-#: data/core/help.cfg:210
+#: data/core/help.cfg:216
 msgid ""
 "\n"
 "\n"
@@ -805,7 +813,7 @@ msgstr ""
 "text='时刻'</ref>。欲查看详细的基本伤害修正，请在攻击选择菜单中选择"
 "<italic>text='伤害计算'</italic>。"
 
-#: data/core/help.cfg:212
+#: data/core/help.cfg:218
 msgid ""
 "\n"
 "\n"
@@ -820,11 +828,11 @@ msgstr ""
 "出。通常拥有<ref>dst=weaponspecial_charge text=冲锋</ref>能力的单位会使战斗中"
 "的进攻方和防守方都输出双倍的伤害。"
 
-#: data/core/help.cfg:217
+#: data/core/help.cfg:223
 msgid "Damage Types and Resistance"
 msgstr "伤害种类和抗性"
 
-#: data/core/help.cfg:218
+#: data/core/help.cfg:224
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -835,7 +843,7 @@ msgstr ""
 "在韦诺里，物理伤害通常有三种：剑刃，穿刺和冲击伤害。此外，还有三种魔法攻击："
 "火焰，寒冷和奥术攻击。不同的单位对不同的伤害有不同的抗性。"
 
-#: data/core/help.cfg:220
+#: data/core/help.cfg:226
 msgid ""
 "\n"
 "\n"
@@ -851,7 +859,7 @@ msgstr ""
 "害。一个单位也有可能更易受某种伤害。如果一个单位对某种伤害有-100%的抗性，则被"
 "击中时增加100%的伤害。"
 
-#: data/core/help.cfg:222
+#: data/core/help.cfg:228
 msgid ""
 "\n"
 "\n"
@@ -864,7 +872,7 @@ msgstr ""
 "例如，骷髅对剑刃和穿刺有较高的抗性。但容易受到冲击和火焰伤害，并且非常怕奥术"
 "伤害。"
 
-#: data/core/help.cfg:224
+#: data/core/help.cfg:230
 msgid ""
 "\n"
 "\n"
@@ -876,11 +884,11 @@ msgstr ""
 "\n"
 "每次成功的攻击都至少会造成1点的伤害，即使防御者对这种攻击有100%的抗性。"
 
-#: data/core/help.cfg:229
+#: data/core/help.cfg:235
 msgid "Time of Day"
 msgstr "时刻"
 
-#: data/core/help.cfg:233
+#: data/core/help.cfg:239
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -892,7 +900,7 @@ msgstr ""
 " 混乱单位在晚上 +25% 攻击，白天 -25% 攻击。\n"
 " 中立单位不受时间的影响。"
 
-#: data/core/help.cfg:236
+#: data/core/help.cfg:242
 msgid ""
 "\n"
 "\n"
@@ -905,41 +913,41 @@ msgstr ""
 "当前时刻显示在屏幕右侧中间位置，位于小地图下方。在普通的昼夜循环模式下，上午"
 "和下午是白天，前半夜和后半夜是晚上：\n"
 
-#: data/core/help.cfg:236 data/core/macros/schedules.cfg:5
+#: data/core/help.cfg:242 data/core/macros/schedules.cfg:5
 msgid "Dawn"
 msgstr "黎明"
 
-#: data/core/help.cfg:237 data/core/macros/schedules.cfg:19
+#: data/core/help.cfg:243 data/core/macros/schedules.cfg:19
 msgid "Morning"
 msgstr "上午"
 
-#: data/core/help.cfg:238 data/core/macros/schedules.cfg:30
+#: data/core/help.cfg:244 data/core/macros/schedules.cfg:30
 msgid "Afternoon"
 msgstr "下午"
 
-#: data/core/help.cfg:239 data/core/macros/schedules.cfg:41
+#: data/core/help.cfg:245 data/core/macros/schedules.cfg:41
 msgid "Dusk"
 msgstr "黄昏"
 
-#: data/core/help.cfg:240 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:246 data/core/macros/schedules.cfg:55
 msgid "First Watch"
 msgstr "前半夜"
 
-#: data/core/help.cfg:241 data/core/macros/schedules.cfg:69
+#: data/core/help.cfg:247 data/core/macros/schedules.cfg:69
 msgid "Second Watch"
 msgstr "后半夜"
 
-#: data/core/help.cfg:243
+#: data/core/help.cfg:249
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr "记住，有些场景是发生在地下的，那里一直是晚上。"
 
-#: data/core/help.cfg:248
+#: data/core/help.cfg:254
 msgid "Experience and Advancement"
 msgstr "经验值和升级"
 
-#: data/core/help.cfg:249
+#: data/core/help.cfg:255
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -950,7 +958,7 @@ msgstr ""
 "个单位在战斗中杀死了另一个，则能得到更多的经验值——0等级单位提供4点，1等级单位"
 "8点，2等级单位16点，3等级单位24点等等。"
 
-#: data/core/help.cfg:251
+#: data/core/help.cfg:257
 msgid ""
 "\n"
 "\n"
@@ -964,7 +972,7 @@ msgstr ""
 "所有单位都需要获得一定的经验值才能升级（有聪慧特质降低20%的要求）。 一旦获得"
 "足够的经验值就可立即升级，生命全满。有些情况下，您还会遇到升级选项。"
 
-#: data/core/help.cfg:255
+#: data/core/help.cfg:261
 msgid ""
 "\n"
 "\n"
@@ -995,11 +1003,11 @@ msgstr ""
 "注意，有少数单位，例如死灵食尸鬼在AMLA时会恢复生命生命值。大多数单位仅仅得到"
 "最大生命值奖励。"
 
-#: data/core/help.cfg:260
+#: data/core/help.cfg:266
 msgid "Healing"
 msgstr "治疗"
 
-#: data/core/help.cfg:261
+#: data/core/help.cfg:267
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1012,7 +1020,7 @@ msgstr ""
 "这会在您和敌人单位战斗结束后发生，不论当前是否是您的回合。韦诺还为单位提供了"
 "多种其他的治疗方式，全部都在您开始一回合的行动之前发生。"
 
-#: data/core/help.cfg:263
+#: data/core/help.cfg:269
 msgid ""
 "\n"
 "\n"
@@ -1023,7 +1031,7 @@ msgstr ""
 "\n"
 "休息： 单位在本回合不移动、攻击或被攻击，则会在下回合恢复2点生命值。"
 
-#: data/core/help.cfg:264
+#: data/core/help.cfg:270
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1031,7 +1039,7 @@ msgstr ""
 "\n"
 "村庄：每回和开始时在村庄中的单位可以恢复8点生命值。"
 
-#: data/core/help.cfg:265
+#: data/core/help.cfg:271
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1041,7 +1049,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=恢复</ref>：某些单位（如巨魔）每回合自动恢"
 "复8点生命值。"
 
-#: data/core/help.cfg:266
+#: data/core/help.cfg:272
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1052,7 +1060,7 @@ msgstr ""
 "治疗单位：有<ref>dst=ability_heals text=治疗</ref>能力的单位每回合能恢复相邻"
 "盟军单位4点或8点的生命值，或阻止毒药发作。"
 
-#: data/core/help.cfg:267
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1063,7 +1071,7 @@ msgstr ""
 "治愈单位：有<ref>dst=ability_cures text=治愈</ref>能力的单位可以治愈盟军相邻"
 "单位的中毒效果（如过本单位还有治疗能力，则治愈优先于治疗）。"
 
-#: data/core/help.cfg:269
+#: data/core/help.cfg:275
 msgid ""
 "\n"
 "\n"
@@ -1076,11 +1084,11 @@ msgstr ""
 "休息能和其它治疗方式叠加，但是村庄，恢复，治疗和治愈效果则不能互相叠加。游戏"
 "会自动选择最优治疗方式。最后，单位能在过场时完全恢复生命值。"
 
-#: data/core/help.cfg:274
+#: data/core/help.cfg:280
 msgid "Income and Upkeep"
 msgstr "收入和维护费用"
 
-#: data/core/help.cfg:275
+#: data/core/help.cfg:281
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1090,7 +1098,7 @@ msgstr ""
 "韦诺中，仅仅征兵并战斗是不够的。您得注意您的金币，特别是在战役中，您能将多余"
 "的金币携带到下一幕。影响金币的主要是两个方面：收入和维护费用。"
 
-#: data/core/help.cfg:277
+#: data/core/help.cfg:283
 msgid ""
 "\n"
 "\n"
@@ -1105,7 +1113,7 @@ msgstr ""
 "也会给您1个金币的额外收入。因此如果您占领了十个村庄，每回合就会有12个金币的收"
 "入。维护费用由您的收入来支付。以下是详细信息。"
 
-#: data/core/help.cfg:279
+#: data/core/help.cfg:285
 msgid ""
 "\n"
 "\n"
@@ -1123,7 +1131,7 @@ msgstr ""
 "和每超过您所拥有的村庄数1级，您就得每回合支付1金币的维护费。例如，如果您有十"
 "二个一级的单位和十个村庄，您就得支付每回合2个金币的维护费用。"
 
-#: data/core/help.cfg:281
+#: data/core/help.cfg:287
 msgid ""
 "\n"
 "\n"
@@ -1136,7 +1144,7 @@ msgstr ""
 "维护费用由您的收入来支付，所以在有等级总合为12的单位和十个村庄的情况下，最后"
 "您的收入将会是每回合10个金币。"
 
-#: data/core/help.cfg:282
+#: data/core/help.cfg:288
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1151,11 +1159,11 @@ msgstr ""
 "每一幕开始时您拥有的单位（比如Konrad或Delfador），或在场景中加入己方的单位"
 "（如在“继位者”第二幕中加入的骑兵）通常都具有忠诚特质。"
 
-#: data/core/help.cfg:287
+#: data/core/help.cfg:293
 msgid "Wrap Up"
 msgstr "总结"
 
-#: data/core/help.cfg:288
+#: data/core/help.cfg:294
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1167,11 +1175,11 @@ msgstr ""
 "<ref>dst=traits text=特质</ref>和<ref>dst=abilities text=能力</ref>。现在您已"
 "经有足够的经验去玩《继位者之战》这个战役了。祝您好运，玩得开心！"
 
-#: data/core/help.cfg:299
+#: data/core/help.cfg:305
 msgid "License"
 msgstr "授权"
 
-#: data/core/help.cfg:307
+#: data/core/help.cfg:313
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1181,7 +1189,7 @@ msgstr ""
 "大多数单位有两种特质。然而，不死族只有一种特质，即“不死”。’和树人则没有任何特"
 "质。特质会细微的修正单位的属性。通常征募的单位会获得随机的特质。"
 
-#: data/core/help.cfg:309
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -1196,7 +1204,7 @@ msgstr ""
 "<ref>dst=traits_quick text=迅捷</ref>，<ref>dst=traits_resilient text=坚韧</"
 "ref>和<ref>dst=traits_strong text=强壮</ref>。"
 
-#: data/core/help.cfg:311
+#: data/core/help.cfg:317
 msgid ""
 "\n"
 "\n"
@@ -1210,15 +1218,15 @@ msgstr ""
 "<ref>dst=traits_loyal text=忠诚</ref>，和<ref>dst=traits_undead text=不死</"
 "ref> 。"
 
-#: data/core/help.cfg:316
+#: data/core/help.cfg:322
 msgid "Intelligent"
 msgstr "聪慧"
 
-#: data/core/help.cfg:317
+#: data/core/help.cfg:323
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "拥有聪慧特质的单位每次升级所需的经验值比通常情况少20%。"
 
-#: data/core/help.cfg:319
+#: data/core/help.cfg:325
 msgid ""
 "\n"
 "\n"
@@ -1235,15 +1243,15 @@ msgstr ""
 "相比效果并不显著。如果您有很多达到“满级”的单位，您也许希望召回那些有有用特质"
 "的单位。"
 
-#: data/core/help.cfg:324
+#: data/core/help.cfg:330
 msgid "Quick"
 msgstr "迅捷"
 
-#: data/core/help.cfg:325
+#: data/core/help.cfg:331
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr "拥有迅捷特质的单位有1点移动点数奖励，但是会减少5%的生命值。"
 
-#: data/core/help.cfg:327
+#: data/core/help.cfg:333
 msgid ""
 "\n"
 "\n"
@@ -1260,15 +1268,15 @@ msgstr ""
 "单位在恶劣的地形上有更好的机动性，在部署您的部队时这是一个要点。但拥有迅捷特"
 "质的单位不如没有该特质的单位强壮，在守卫重要地形时没有那些单位好。"
 
-#: data/core/help.cfg:332
+#: data/core/help.cfg:338
 msgid "Resilient"
 msgstr "坚韧"
 
-#: data/core/help.cfg:333
+#: data/core/help.cfg:339
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "坚韧特质的单位每升1级多加1点HP,并有天生的额外4点生命值。"
 
-#: data/core/help.cfg:335
+#: data/core/help.cfg:341
 msgid ""
 "\n"
 "\n"
@@ -1284,11 +1292,11 @@ msgstr ""
 "特质。坚韧特质对拥有较低的生命值、较高的防御能力或较高抗性的单位特别有用。拥"
 "有坚韧特质的单位通常用来占据战略有利地形。"
 
-#: data/core/help.cfg:340
+#: data/core/help.cfg:346
 msgid "Strong"
 msgstr "强壮"
 
-#: data/core/help.cfg:341
+#: data/core/help.cfg:347
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1296,7 +1304,7 @@ msgstr ""
 "拥有强壮特质的单位拥有1点额外的生命值，在近战中每回合成功攻击后造成1点的额外"
 "伤害。"
 
-#: data/core/help.cfg:343
+#: data/core/help.cfg:349
 msgid ""
 "\n"
 "\n"
@@ -1311,19 +1319,19 @@ msgstr ""
 "最有效。有时候仅仅是多几点伤害输出，成功的攻击就变成了致命一击，这就是拥有强"
 "壮特质的单位的作用。"
 
-#: data/core/help.cfg:348
+#: data/core/help.cfg:354
 msgid "Fearless"
 msgstr "无畏"
 
-#: data/core/help.cfg:349
+#: data/core/help.cfg:355
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "拥有无畏特质的单位的攻击力不会因为白天或黑夜时段的不适而下降。"
 
-#: data/core/help.cfg:354
+#: data/core/help.cfg:360
 msgid "Loyal"
 msgstr "忠诚"
 
-#: data/core/help.cfg:355
+#: data/core/help.cfg:361
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1332,7 +1340,7 @@ msgstr ""
 "拥有忠诚特质的单位不需要维护费用。大多数单位每回合结束后根据其等级而需要相应"
 "的维护费用。忠诚特质的单位不需要。"
 
-#: data/core/help.cfg:357
+#: data/core/help.cfg:363
 msgid ""
 "\n"
 "\n"
@@ -1350,17 +1358,17 @@ msgstr ""
 "得。新招募的单位永远都不会有这种特质，所以应避免解雇忠诚单位，或让他们去送"
 "死。"
 
-#: data/core/help.cfg:362
+#: data/core/help.cfg:368
 msgid "trait^Undead"
 msgstr "不死"
 
-#: data/core/help.cfg:363
+#: data/core/help.cfg:369
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "拥有不死特质的单位免疫毒素,吸血和瘟疫。"
 
-#: data/core/help.cfg:365
+#: data/core/help.cfg:371
 msgid ""
 "\n"
 "\n"
@@ -1375,17 +1383,17 @@ msgstr ""
 "出来战斗，毒素对他们没影响。因而他们与那些善于用毒的对手作战时的价值无法估"
 "量。"
 
-#: data/core/help.cfg:370
+#: data/core/help.cfg:376
 msgid "trait^Mechanical"
 msgstr "机械"
 
-#: data/core/help.cfg:371
+#: data/core/help.cfg:377
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr "拥有机械特质的单位免疫毒素、吸血和瘟疫也不起作用。"
 
-#: data/core/help.cfg:373
+#: data/core/help.cfg:379
 msgid ""
 "\n"
 "\n"
@@ -1398,16 +1406,16 @@ msgstr ""
 "一般来说机械单位只有‘机械’这一项特质。由于机械单位并不真的拥有生命，所以吸"
 "血、毒素和瘟疫对他们不起作用"
 
-#: data/core/help.cfg:378
+#: data/core/help.cfg:384
 msgid "Dextrous"
 msgstr "灵巧"
 
-#: data/core/help.cfg:379
+#: data/core/help.cfg:385
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr "拥有灵敏特质的单位每次成功远程攻击后造成1点的额外伤害。"
 
-#: data/core/help.cfg:381
+#: data/core/help.cfg:387
 msgid ""
 "\n"
 "\n"
@@ -1421,17 +1429,17 @@ msgstr ""
 "灵敏是精灵特有的特质。精灵以其优雅的风度和善用弓箭而闻名。然而，有些天赋秉异"
 "的精灵超过了他们的兄弟。这些精灵每次用箭攻击都会造成1点的额外伤害。"
 
-#: data/core/help.cfg:386
+#: data/core/help.cfg:392
 msgid "Healthy"
 msgstr "活力"
 
-#: data/core/help.cfg:387
+#: data/core/help.cfg:393
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr "矮人们以活力著称，有些强壮的矮人甚至可以在移动同时休息"
 
-#: data/core/help.cfg:389
+#: data/core/help.cfg:395
 msgid ""
 "\n"
 "\n"
@@ -1443,11 +1451,11 @@ msgstr ""
 "活力特质让单位拥有2点附加生命值,并且在每回合未战斗的回合之后恢复额外2点生命"
 "值."
 
-#: data/core/help.cfg:400
+#: data/core/help.cfg:406
 msgid "Grassland"
 msgstr "草原"
 
-#: data/core/help.cfg:405
+#: data/core/help.cfg:411
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1463,11 +1471,11 @@ msgstr ""
 "\n"
 "大多数单位在草原上有30%到40%的闪避几率。"
 
-#: data/core/help.cfg:410
+#: data/core/help.cfg:416
 msgid "Road"
 msgstr "道路"
 
-#: data/core/help.cfg:413
+#: data/core/help.cfg:419
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1476,11 +1484,11 @@ msgstr ""
 "道路是有许许多多旅行者在松软的泥土上行走时踩出来的。就有戏而言，道路和"
 "<ref>dst=terrain_grassland text=草原</ref>没有两样。"
 
-#: data/core/help.cfg:418
+#: data/core/help.cfg:424
 msgid "Forest"
 msgstr "森林"
 
-#: data/core/help.cfg:425
+#: data/core/help.cfg:431
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1507,11 +1515,11 @@ msgstr ""
 "70%的闪避率。矮人在森林中的闪避率通常只有30%。\n"
 "\n"
 
-#: data/core/help.cfg:430
+#: data/core/help.cfg:436
 msgid "Hills"
 msgstr "丘陵"
 
-#: data/core/help.cfg:435
+#: data/core/help.cfg:441
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1529,11 +1537,11 @@ msgstr ""
 "\n"
 "在丘陵地带大多数单位有50%的闪避几率，不过骑兵则被限制在40%，而矮人却享有60%。"
 
-#: data/core/help.cfg:440
+#: data/core/help.cfg:446
 msgid "Mountains"
 msgstr "山岭"
 
-#: data/core/help.cfg:445
+#: data/core/help.cfg:451
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1551,11 +1559,11 @@ msgstr ""
 "\n"
 "在山岭中大多数单位有60%的闪避几率，而矮人则有70%。"
 
-#: data/core/help.cfg:450
+#: data/core/help.cfg:456
 msgid "Swamp"
 msgstr "沼泽"
 
-#: data/core/help.cfg:455
+#: data/core/help.cfg:461
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1572,11 +1580,11 @@ msgstr ""
 "\n"
 "在沼泽中大多数单位有30%的闪避几率，人鱼，娜迦和蜥蜴人通常则有60%。"
 
-#: data/core/help.cfg:460
+#: data/core/help.cfg:466
 msgid "Shallow Water"
 msgstr "浅水"
 
-#: data/core/help.cfg:465
+#: data/core/help.cfg:471
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1594,11 +1602,11 @@ msgstr ""
 "\n"
 "在浅水中大多数单位有20%到30%的闪避几率，但娜迦和人鱼则有60%。"
 
-#: data/core/help.cfg:470
+#: data/core/help.cfg:476
 msgid "Deep Water"
 msgstr "深水"
 
-#: data/core/help.cfg:475
+#: data/core/help.cfg:481
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1611,11 +1619,11 @@ msgstr ""
 "\n"
 "在深水中人鱼和娜迦都有50%的闪避几率，并且能自由移动。"
 
-#: data/core/help.cfg:480
+#: data/core/help.cfg:486
 msgid "Snow"
 msgstr "雪地"
 
-#: data/core/help.cfg:485
+#: data/core/help.cfg:491
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1628,11 +1636,11 @@ msgstr ""
 "\n"
 "在雪地大多数单位有20%到40%的闪避几率。"
 
-#: data/core/help.cfg:490
+#: data/core/help.cfg:496
 msgid "Ice"
 msgstr "冰面"
 
-#: data/core/help.cfg:493
+#: data/core/help.cfg:499
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1641,11 +1649,11 @@ msgstr ""
 "冰面指的是上冻的水域。在游戏中，它等同于<ref>dst=terrain_tundra text=雪地</"
 "ref>。注意，那些能游泳的单位，即使能在水下呼吸，也不能在冰面下呼吸。"
 
-#: data/core/help.cfg:498
+#: data/core/help.cfg:504
 msgid "Castle"
 msgstr "城堡"
 
-#: data/core/help.cfg:505
+#: data/core/help.cfg:511
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1664,11 +1672,11 @@ msgstr ""
 "在城堡中大多数单位有大约60%的闪避几率。\n"
 "\n"
 
-#: data/core/help.cfg:510
+#: data/core/help.cfg:516
 msgid "Sand"
 msgstr "沙地"
 
-#: data/core/help.cfg:515
+#: data/core/help.cfg:521
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1681,11 +1689,11 @@ msgstr ""
 "\n"
 "在沙地中大多数单位获得20%到40%的闪避几率。"
 
-#: data/core/help.cfg:520
+#: data/core/help.cfg:526
 msgid "Desert"
 msgstr "沙漠"
 
-#: data/core/help.cfg:523
+#: data/core/help.cfg:529
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1694,11 +1702,11 @@ msgstr ""
 "沙漠不同于小型沙地或沙滩，然而在游戏中，它们是一样的。参见"
 "<ref>dst=terrain_sand text=沙地</ref>。"
 
-#: data/core/help.cfg:528
+#: data/core/help.cfg:534
 msgid "Cave"
 msgstr "洞穴"
 
-#: data/core/help.cfg:533
+#: data/core/help.cfg:539
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1716,11 +1724,11 @@ msgstr ""
 "\n"
 "大部分兵种在洞穴中有20%到40%的闪避几率，而矮人则有50%。"
 
-#: data/core/help.cfg:538
+#: data/core/help.cfg:544
 msgid "Rockbound Cave"
 msgstr "岩石洞穴"
 
-#: data/core/help.cfg:543
+#: data/core/help.cfg:549
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -1740,12 +1748,12 @@ msgstr ""
 "\n"
 "大部分兵种在岩石洞穴中有50%的闪避几率；骑兵只有40%，而矮人则有60%。"
 
-#: data/core/help.cfg:548
+#: data/core/help.cfg:554
 msgid "Illuminated Cave"
 msgstr "明亮的洞穴"
 
 # not very pleased with "lawful"
-#: data/core/help.cfg:551
+#: data/core/help.cfg:557
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -1758,11 +1766,11 @@ msgstr ""
 "\n"
 "大部分兵种在洞穴中的闪避几率在20%至40%之间，矮人则有50%。"
 
-#: data/core/help.cfg:556
+#: data/core/help.cfg:562
 msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
-#: data/core/help.cfg:561
+#: data/core/help.cfg:567
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -1781,11 +1789,11 @@ msgstr ""
 "\n"
 "大部分兵种在蘑菇林中的闪避率在50%至60%之间，骑兵则只有20%。"
 
-#: data/core/help.cfg:566
+#: data/core/help.cfg:572
 msgid "Savanna"
 msgstr "热带草原"
 
-#: data/core/help.cfg:569
+#: data/core/help.cfg:575
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1794,11 +1802,11 @@ msgstr ""
 "热带草原上的草丛高大，分布在世界上比较热的地带。在游戏中，它等同于"
 "<ref>dst=terrain_grassland text=草原</ref>"
 
-#: data/core/help.cfg:574 src/terrain.cpp:123
+#: data/core/help.cfg:580 src/terrain.cpp:123
 msgid "Village"
 msgstr "村庄"
 
-#: data/core/help.cfg:581
+#: data/core/help.cfg:587
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -1818,11 +1826,11 @@ msgstr ""
 "在村庄中大多数单位有50%到60%的闪避率，但骑兵则只有40%。\n"
 "\n"
 
-#: data/core/help.cfg:586
+#: data/core/help.cfg:592
 msgid "Submerged Village"
 msgstr "水中的村庄"
 
-#: data/core/help.cfg:591
+#: data/core/help.cfg:597
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -1840,11 +1848,11 @@ msgstr ""
 "\n"
 "那迦和人鱼在水中村庄有60%的闪避率, 然而陆地为家的单位只得到较低程度的保护."
 
-#: data/core/help.cfg:596
+#: data/core/help.cfg:602
 msgid "Chasm"
 msgstr "深渊"
 
-#: data/core/help.cfg:599
+#: data/core/help.cfg:605
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -1854,11 +1862,11 @@ msgstr ""
 "深渊是平地上的凹陷，深不可测。深渊有着陡峭的山壁以至于要花费许多天才能通过。"
 "在游戏中，只有那些能飞过峡谷的单位可以通过这种地形。"
 
-#: data/core/help.cfg:604
+#: data/core/help.cfg:610
 msgid "Lava"
 msgstr "熔岩"
 
-#: data/core/help.cfg:607
+#: data/core/help.cfg:613
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -1870,11 +1878,11 @@ msgstr ""
 "岩发射出光辉，照亮了它的上空。这位守序单位提供了攻击加乘，同时消除了混乱单位"
 "的攻击加乘。"
 
-#: data/core/help.cfg:612
+#: data/core/help.cfg:618
 msgid "River Ford"
 msgstr "河滩"
 
-#: data/core/help.cfg:615
+#: data/core/help.cfg:621
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -1887,11 +1895,11 @@ msgstr ""
 "也能自由移动。就游戏而言，河滩相当于草原或浅水，游戏会自动选择对单位防守和移"
 "动最有利的一种。"
 
-#: data/core/help.cfg:620
+#: data/core/help.cfg:626
 msgid "Bridge"
 msgstr "桥梁"
 
-#: data/core/help.cfg:625
+#: data/core/help.cfg:631
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -1912,21 +1920,21 @@ msgstr ""
 "水，游戏会自动选择对单位防守和移动最有利的一种。注意，游泳单位和陆地单位不能"
 "同时占领同一座桥。"
 
-#: data/core/help.cfg:630
+#: data/core/help.cfg:636
 msgid "Cave Wall"
 msgstr "洞穴墙壁"
 
-#: data/core/help.cfg:633
+#: data/core/help.cfg:639
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
 msgstr "洞穴墙壁是有坚固的石头构成的。最坚定的旅行者对此也毫无办法。"
 
-#: data/core/help.cfg:638
+#: data/core/help.cfg:644
 msgid "Impassable Mountain"
 msgstr "高不可攀的大山"
 
-#: data/core/help.cfg:641
+#: data/core/help.cfg:647
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
@@ -1934,11 +1942,11 @@ msgid ""
 msgstr ""
 "不可攀越的大山因为其坡度和高度令一切生物止步. 即使飞行的单位也只能迂回."
 
-#: data/core/help.cfg:652
+#: data/core/help.cfg:658
 msgid "General commands"
 msgstr "常规指令"
 
-#: data/core/help.cfg:656
+#: data/core/help.cfg:662
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -1949,7 +1957,7 @@ msgstr ""
 "\n"
 
 # can someone explain this to me in other words? i have not seen this in real multiplayer yet
-#: data/core/help.cfg:659
+#: data/core/help.cfg:665
 msgid ""
 "\n"
 "Toggle player on side between human and AI player. The player/client who "
@@ -1962,7 +1970,7 @@ msgstr ""
 "果您在命令中没有指定阵营，则默认为当前行动的阵营。\n"
 "\n"
 
-#: data/core/help.cfg:662
+#: data/core/help.cfg:668
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -1972,7 +1980,7 @@ msgstr ""
 "离开场景（无提示窗口）。\n"
 "\n"
 
-#: data/core/help.cfg:665
+#: data/core/help.cfg:671
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -1982,7 +1990,7 @@ msgstr ""
 "保存游戏（无提示窗口）。\n"
 "\n"
 
-#: data/core/help.cfg:668
+#: data/core/help.cfg:674
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting).\n"
@@ -1992,7 +2000,7 @@ msgstr ""
 "保存游戏并退出当前场景（无提示窗口）。\n"
 "\n"
 
-#: data/core/help.cfg:671
+#: data/core/help.cfg:677
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2002,7 +2010,7 @@ msgstr ""
 "重绘屏幕画面。\n"
 "\n"
 
-#: data/core/help.cfg:674
+#: data/core/help.cfg:680
 msgid ""
 "\n"
 "Toggles the display of the current frames per second.\n"
@@ -2012,7 +2020,7 @@ msgstr ""
 "显示游戏的FPS-每秒显示帧数(frames per second).\n"
 "\n"
 
-#: data/core/help.cfg:678
+#: data/core/help.cfg:684
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2026,15 +2034,15 @@ msgstr ""
 "要关闭调试模式可以使用 :nodebug 或者退出游戏。\n"
 "\n"
 
-#: data/core/help.cfg:679
+#: data/core/help.cfg:685
 msgid "Bring up theme selection menu."
 msgstr "弹出主题选择菜单。"
 
-#: data/core/help.cfg:684
+#: data/core/help.cfg:690
 msgid "Multiplayer commands"
 msgstr "多人对战指令"
 
-#: data/core/help.cfg:688
+#: data/core/help.cfg:694
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2045,7 +2053,7 @@ msgstr ""
 "在多人游戏中，把某个玩家踢出游戏并且封禁他所使用的IP地址(所谓的Ban IP)\n"
 "\n"
 
-#: data/core/help.cfg:691
+#: data/core/help.cfg:697
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -2057,7 +2065,7 @@ msgstr ""
 "的名字）。\n"
 "\n"
 
-#: data/core/help.cfg:694
+#: data/core/help.cfg:700
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2070,7 +2078,7 @@ msgstr ""
 "移除遇到网络连接问题或其它问题的玩家，是一种友好的行为。\n"
 "\n"
 
-#: data/core/help.cfg:697
+#: data/core/help.cfg:703
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2082,7 +2090,7 @@ msgstr ""
 "单。\n"
 "\n"
 
-#: data/core/help.cfg:698
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -2090,11 +2098,11 @@ msgstr ""
 "\n"
 "屏蔽/取消屏蔽所有观察者。"
 
-#: data/core/help.cfg:703
+#: data/core/help.cfg:709
 msgid "Debug mode commands"
 msgstr "除错模式指令"
 
-#: data/core/help.cfg:707
+#: data/core/help.cfg:713
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2105,7 +2113,7 @@ msgstr ""
 "\n"
 "\n"
 
-#: data/core/help.cfg:710
+#: data/core/help.cfg:716
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2115,7 +2123,7 @@ msgstr ""
 "为当前玩家设置战争迷雾.\n"
 "\n"
 
-#: data/core/help.cfg:713
+#: data/core/help.cfg:719
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2125,7 +2133,7 @@ msgstr ""
 "为当前玩家添加指定数量的金子.\n"
 "\n"
 
-#: data/core/help.cfg:716
+#: data/core/help.cfg:722
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2135,7 +2143,7 @@ msgstr ""
 "手动设置游戏变量的值.\n"
 "\n"
 
-#: data/core/help.cfg:719
+#: data/core/help.cfg:725
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2145,7 +2153,7 @@ msgstr ""
 "显示游戏变量.\n"
 "\n"
 
-#: data/core/help.cfg:722
+#: data/core/help.cfg:728
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2155,7 +2163,7 @@ msgstr ""
 "手动触发指定的事件.\n"
 "\n"
 
-#: data/core/help.cfg:723
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -4712,8 +4720,8 @@ msgid "End Scenario"
 msgstr "结束场景"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2394
-#: src/unit.cpp:2567
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2412
+#: src/unit.cpp:2585
 msgid "HP"
 msgstr "生命值"
 
@@ -4822,8 +4830,8 @@ msgstr "视角"
 msgid "Skip animation"
 msgstr "省略动画"
 
-#: src/about.cpp:47 src/multiplayer_connect.cpp:433
-#: src/multiplayer_connect.cpp:530 src/multiplayer_wait.cpp:490
+#: src/about.cpp:47 src/multiplayer_connect.cpp:432
+#: src/multiplayer_connect.cpp:529 src/multiplayer_wait.cpp:490
 msgid "+"
 msgstr "+"
 
@@ -4970,7 +4978,7 @@ msgstr "#（无效的）"
 msgid "Campaign: $campaign_name"
 msgstr "战役: $campaign_name"
 
-#: src/dialogs.cpp:467 src/game.cpp:1438
+#: src/dialogs.cpp:467 src/game.cpp:1449
 msgid "Multiplayer"
 msgstr "多人对战"
 
@@ -5035,12 +5043,12 @@ msgstr "删除存档"
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:565 src/game.cpp:1116 src/menu_events.cpp:340
+#: src/dialogs.cpp:565 src/game.cpp:1127 src/menu_events.cpp:340
 #: src/menu_events.cpp:1117 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名称"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:100
+#: src/dialogs.cpp:586 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "载入游戏"
 
@@ -5072,12 +5080,12 @@ msgstr "经验值："
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/dialogs.cpp:1029 src/dialogs.cpp:1130 src/multiplayer_connect.cpp:904
-#: src/multiplayer_create.cpp:81 src/multiplayer_wait.cpp:194
+#: src/dialogs.cpp:1029 src/dialogs.cpp:1130 src/multiplayer_connect.cpp:903
+#: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:194
 msgid "Cancel"
 msgstr "取消"
 
-#: src/dialogs.cpp:1053 src/game.cpp:926
+#: src/dialogs.cpp:1053 src/game.cpp:937
 msgid "KB"
 msgstr "KB"
 
@@ -5085,7 +5093,7 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "屏幕截图"
 
-#: src/game.cpp:444 src/game.cpp:1535
+#: src/game.cpp:444 src/game.cpp:1546
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
@@ -5093,298 +5101,303 @@ msgstr "韦诺之战"
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您试图载入的文件已损坏。继续尝试载入。\n"
 
-#: src/game.cpp:745 src/multiplayer_connect.cpp:1416
+#: src/game.cpp:745 src/multiplayer_connect.cpp:1415
 msgid "This save is from a version too old to be loaded."
 msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法载入。"
 
-#: src/game.cpp:751 src/multiplayer_connect.cpp:1423
+#: src/game.cpp:751 src/multiplayer_connect.cpp:1422
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
 
-#: src/game.cpp:759 src/game.cpp:762 src/multiplayer_connect.cpp:1394
+#: src/game.cpp:769 src/game.cpp:772 src/multiplayer_connect.cpp:1393
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您试图载入的文件已损坏： '"
 
-#: src/game.cpp:765
+#: src/game.cpp:775
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
-#: src/game.cpp:856
+#: src/game.cpp:867
 msgid "Play a campaign"
 msgstr "战役"
 
-#: src/game.cpp:897
+#: src/game.cpp:908
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/game.cpp:898
+#: src/game.cpp:909
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
-#: src/game.cpp:923
+#: src/game.cpp:934
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:929
+#: src/game.cpp:940
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:959
+#: src/game.cpp:970
 msgid "Connect to Server"
 msgstr "连接到服务器"
 
-#: src/game.cpp:960
+#: src/game.cpp:971
 msgid "You will now connect to a server to download add-ons."
 msgstr "您将连接至服务器以下载插件。"
 
-#: src/game.cpp:962
+#: src/game.cpp:973
 msgid "Server: "
 msgstr "服务器： "
 
-#: src/game.cpp:963 src/game.cpp:1011
+#: src/game.cpp:974 src/game.cpp:1022
 msgid "Remove Add-ons"
 msgstr "删除插件"
 
-#: src/game.cpp:998
+#: src/game.cpp:1009
 msgid "You have no Add-ons installed."
 msgstr "没有安装插件"
 
-#: src/game.cpp:1011
+#: src/game.cpp:1022
 msgid "Choose the add-on to remove."
 msgstr "选择要删除的插件。"
 
-#: src/game.cpp:1022
+#: src/game.cpp:1033
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "你确定你要删除插件 '$addon|'?"
 
-#: src/game.cpp:1026
+#: src/game.cpp:1037
 msgid "Confirm"
 msgstr "确认"
 
-#: src/game.cpp:1049
+#: src/game.cpp:1060
 msgid "Add-on '$addon|' deleted."
 msgstr "插件'$addon|'已删除"
 
-#: src/game.cpp:1054
+#: src/game.cpp:1065
 msgid "Add-on deleted"
 msgstr "插件已删除"
 
-#: src/game.cpp:1060
+#: src/game.cpp:1071
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "无法删除插件——没有找到某个文件。"
 
-#: src/game.cpp:1060 src/menu_events.cpp:707 src/menu_events.cpp:715
-#: src/menu_events.cpp:730 src/multiplayer_create.cpp:521
+#: src/game.cpp:1071 src/menu_events.cpp:707 src/menu_events.cpp:715
+#: src/menu_events.cpp:730 src/multiplayer_create.cpp:527
 msgid "Error"
 msgstr "错误"
 
-#: src/game.cpp:1081 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1092 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "正在连接到服务器..."
 
-#: src/game.cpp:1084
+#: src/game.cpp:1095
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/game.cpp:1094
+#: src/game.cpp:1105
 msgid "Asking for list of add-ons"
 msgstr "请求插件列表"
 
-#: src/game.cpp:1107
+#: src/game.cpp:1118
 msgid "Error communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/game.cpp:1116 src/titlescreen.cpp:323
+#: src/game.cpp:1127 src/titlescreen.cpp:323
 msgid "Version"
 msgstr "版本"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1128
 msgid "Author"
 msgstr "作者"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1128
 msgid "Downloads"
 msgstr "下载数"
 
-#: src/game.cpp:1117
+#: src/game.cpp:1128
 msgid "Size"
 msgstr "大小"
 
-#: src/game.cpp:1169
+#: src/game.cpp:1180
 msgid "Publish add-on: "
 msgstr "发布插件： "
 
-#: src/game.cpp:1173
+#: src/game.cpp:1184
 msgid "Delete add-on: "
 msgstr "删除插件： "
 
-#: src/game.cpp:1177
+#: src/game.cpp:1188
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
-#: src/game.cpp:1184
+#: src/game.cpp:1195
 msgid "Get Add-ons"
 msgstr "获取插件"
 
-#: src/game.cpp:1185
+#: src/game.cpp:1196
 msgid "Choose the add-on to download."
 msgstr "选择要下载的插件。"
 
-#: src/game.cpp:1228
+#: src/game.cpp:1239
 msgid "Dependencies"
 msgstr "依赖"
 
-#: src/game.cpp:1229
+#: src/game.cpp:1240
 msgid "This add-on requires the following additional dependencies:"
 msgstr "这个插件要求以下额外的依赖:"
 
-#: src/game.cpp:1231
+#: src/game.cpp:1242
 msgid "Do you still want to download it?"
 msgstr "您真的想下载这个游戏？"
 
-#: src/game.cpp:1241
+#: src/game.cpp:1252
 msgid "Downloading add-on..."
 msgstr "正在下载插件……"
 
-#: src/game.cpp:1299
+#: src/game.cpp:1310
 msgid "Add-on Installed"
 msgstr "插件已安装"
 
-#: src/game.cpp:1299
+#: src/game.cpp:1310
 msgid "The add-on has been installed."
 msgstr "这个插件已经安装。"
 
-#: src/game.cpp:1302
+#: src/game.cpp:1313
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/game.cpp:1304
+#: src/game.cpp:1315
 msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
-#: src/game.cpp:1306
+#: src/game.cpp:1317
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr "安装这个战役所需文件创建错误。"
 
-#: src/game.cpp:1321 src/game.cpp:1364 src/game.cpp:1392
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:71 src/playcampaign.cpp:468
+#: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:469
 msgid "Connection timed out"
 msgstr "连接超时"
 
-#: src/game.cpp:1324
+#: src/game.cpp:1335
 msgid "The server responded with an error: \"$error|\""
 msgstr "服务器返回一个错误： \""
 
-#: src/game.cpp:1331
+#: src/game.cpp:1342
 msgid "Terms"
 msgstr "条件"
 
-#: src/game.cpp:1362
+#: src/game.cpp:1373
 msgid "Sending add-on"
 msgstr "发送插件"
 
-#: src/game.cpp:1366 src/game.cpp:1394
+#: src/game.cpp:1377 src/game.cpp:1405
 msgid "The server responded with an error: \""
 msgstr "服务器响应错误： \""
 
-#: src/game.cpp:1370 src/game.cpp:1398 src/multiplayer_wait.cpp:371
+#: src/game.cpp:1381 src/game.cpp:1409 src/multiplayer_wait.cpp:371
 msgid "Response"
 msgstr "回应"
 
-#: src/game.cpp:1422
+#: src/game.cpp:1433
 msgid "Join Official Server"
 msgstr "加入官方服务器"
 
-#: src/game.cpp:1423
+#: src/game.cpp:1434
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登录韦诺官方多人对战服务器"
 
-#: src/game.cpp:1425
+#: src/game.cpp:1436
 msgid "Connect to Host/Server"
 msgstr "连接到服务器"
 
-#: src/game.cpp:1426
+#: src/game.cpp:1437
 msgid "Join a server or hosted game"
 msgstr "加入服务器或已建游戏"
 
-#: src/game.cpp:1428
+#: src/game.cpp:1439
 msgid "Host Networked Game"
 msgstr "主建局域网游戏"
 
-#: src/game.cpp:1429
+#: src/game.cpp:1440
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr "使用内置的服务器做主机. 支持的不是很好. 最好用专用的服务器'wesnothd'."
 
-#: src/game.cpp:1431
+#: src/game.cpp:1442
 msgid "Local Game"
 msgstr "本地游戏"
 
-#: src/game.cpp:1432
+#: src/game.cpp:1443
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "在一台电脑上进行多人对战"
 
-#: src/game.cpp:1440 src/multiplayer.cpp:232
+#: src/game.cpp:1451 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "登录名： "
 
-#: src/game.cpp:1477 src/playcampaign.cpp:100 src/playcampaign.cpp:385
+#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:385
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1479 src/playcampaign.cpp:102 src/playcampaign.cpp:388
+#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:388
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1499 src/playcampaign.cpp:104 src/playcampaign.cpp:391
+#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:391
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1525
+#: src/game.cpp:1536
 msgid "Language"
 msgstr "语言"
 
-#: src/game.cpp:1526
+#: src/game.cpp:1537
 msgid "Choose your preferred language:"
 msgstr "选择您的语言偏好："
 
-#: src/game.cpp:1684
+#: src/game.cpp:1697
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "以下附加战役有错误，无法加载："
 
-#: src/game.cpp:1689
+#: src/game.cpp:1702
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1703
+#: src/game.cpp:1716
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告：载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1755
+#: src/game.cpp:1768
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1756
+#: src/game.cpp:1769
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1942
+#: src/game.cpp:1811
+#, fuzzy
+msgid "Loading data files"
+msgstr "读取兵种文件。"
+
+#: src/game.cpp:1959
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:2134
+#: src/game.cpp:2151
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:2140
+#: src/game.cpp:2157
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2154
+#: src/game.cpp:2171
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -5406,11 +5419,11 @@ msgstr "失败："
 msgid "No time of day has been defined."
 msgstr "没有制定时间:"
 
-#: src/gamestatus.cpp:694 src/gamestatus.cpp:696 src/playcampaign.cpp:411
+#: src/gamestatus.cpp:711 src/gamestatus.cpp:713 src/playcampaign.cpp:411
 msgid " replay"
 msgstr " 游戏录像"
 
-#: src/gamestatus.cpp:814
+#: src/gamestatus.cpp:831
 msgid "Could not write to file"
 msgstr "无法写入文件"
 
@@ -5462,7 +5475,7 @@ msgstr "石化： "
 msgid "Resistances: "
 msgstr "抗性"
 
-#: src/generate_report.cpp:183 src/multiplayer_create.cpp:391
+#: src/generate_report.cpp:183 src/multiplayer_create.cpp:395
 msgid "Experience Modifier: "
 msgstr "经验值修正： "
 
@@ -5647,18 +5660,18 @@ msgstr "结束"
 msgid "System default language"
 msgstr "系统默认语言"
 
-#: src/leader_list.cpp:139 src/multiplayer_connect.cpp:192
-#: src/multiplayer_connect.cpp:244
+#: src/leader_list.cpp:139 src/multiplayer_connect.cpp:191
+#: src/multiplayer_connect.cpp:243
 msgid "gender^Random"
 msgstr "性别^随机"
 
 #: src/leader_list.cpp:150 src/leader_list.cpp:152
-#: src/multiplayer_connect.cpp:188 src/multiplayer_connect.cpp:240
+#: src/multiplayer_connect.cpp:187 src/multiplayer_connect.cpp:239
 msgid "Female ♀"
 msgstr "女性 ♀"
 
 #: src/leader_list.cpp:159 src/leader_list.cpp:161
-#: src/multiplayer_connect.cpp:190 src/multiplayer_connect.cpp:242
+#: src/multiplayer_connect.cpp:189 src/multiplayer_connect.cpp:241
 msgid "Male ♂"
 msgstr "男性 ♂"
 
@@ -5670,19 +5683,19 @@ msgstr "随机"
 msgid "?"
 msgstr "？"
 
-#: src/loadscreen.cpp:166
+#: src/loadscreen.cpp:184
 msgid "Verifying cache."
 msgstr "验证缓存。"
 
-#: src/loadscreen.cpp:185
+#: src/loadscreen.cpp:203
 msgid "Reading cache."
 msgstr "读取缓存。"
 
-#: src/loadscreen.cpp:204
+#: src/loadscreen.cpp:222
 msgid "Reading unit files."
 msgstr "读取兵种文件。"
 
-#: src/loadscreen.cpp:223
+#: src/loadscreen.cpp:241
 msgid "Reading files and creating cache."
 msgstr "读取文件并创建缓存。"
 
@@ -5783,11 +5796,11 @@ msgstr "滚动到"
 msgid "Leader"
 msgstr "领袖"
 
-#: src/menu_events.cpp:509 src/multiplayer_connect.cpp:889
+#: src/menu_events.cpp:509 src/multiplayer_connect.cpp:888
 msgid "Team"
 msgstr "团队"
 
-#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:900
+#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:899
 #: src/multiplayer_wait.cpp:484
 msgid "Gold"
 msgstr "金币"
@@ -5804,7 +5817,7 @@ msgstr "单位"
 msgid "Upkeep"
 msgstr "维护费用"
 
-#: src/menu_events.cpp:514 src/multiplayer_connect.cpp:901
+#: src/menu_events.cpp:514 src/multiplayer_connect.cpp:900
 #: src/multiplayer_wait.cpp:488
 msgid "Income"
 msgstr "收入"
@@ -5869,7 +5882,7 @@ msgstr "是"
 msgid "Scenario Settings"
 msgstr "场景设定"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:567
+#: src/menu_events.cpp:702 src/playcampaign.cpp:568
 msgid "Name:"
 msgstr "名称："
 
@@ -5891,7 +5904,7 @@ msgstr "已存储"
 msgid "The game has been saved"
 msgstr "游戏已存储"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:575
+#: src/menu_events.cpp:730 src/playcampaign.cpp:576
 msgid "The game could not be saved"
 msgstr "无法保存游戏"
 
@@ -5911,7 +5924,7 @@ msgstr "地图已保存."
 msgid "Could not save the map: $msg"
 msgstr "不能保存地图: $msg"
 
-#: src/menu_events.cpp:859 src/menu_events.cpp:861 src/play_controller.cpp:786
+#: src/menu_events.cpp:859 src/menu_events.cpp:861 src/play_controller.cpp:796
 msgid "Auto-Save"
 msgstr "自动存档"
 
@@ -6223,104 +6236,104 @@ msgstr "服务器重定向循环"
 msgid "You must log in to this server"
 msgstr "您必须登录这个服务器"
 
-#: src/multiplayer_connect.cpp:79 src/multiplayer_connect.cpp:435
-#: src/multiplayer_connect.cpp:532
+#: src/multiplayer_connect.cpp:78 src/multiplayer_connect.cpp:434
+#: src/multiplayer_connect.cpp:531
 msgid "Normal"
 msgstr "普通"
 
-#: src/multiplayer_connect.cpp:431 src/multiplayer_connect.cpp:528
+#: src/multiplayer_connect.cpp:430 src/multiplayer_connect.cpp:527
 #: src/multiplayer_wait.cpp:480 src/multiplayer_wait.cpp:488
 msgid "("
 msgstr "（"
 
-#: src/multiplayer_connect.cpp:431 src/multiplayer_connect.cpp:528
+#: src/multiplayer_connect.cpp:430 src/multiplayer_connect.cpp:527
 #: src/multiplayer_wait.cpp:480 src/multiplayer_wait.cpp:491
 msgid ")"
 msgstr "）"
 
-#: src/multiplayer_connect.cpp:506
+#: src/multiplayer_connect.cpp:505
 msgid "Default AI"
 msgstr "默认AI"
 
-#: src/multiplayer_connect.cpp:560
+#: src/multiplayer_connect.cpp:559
 msgid "(Vacant slot)"
 msgstr "（空位）"
 
-#: src/multiplayer_connect.cpp:566
+#: src/multiplayer_connect.cpp:565
 msgid "Anonymous local player"
 msgstr "本地匿名玩家"
 
-#: src/multiplayer_connect.cpp:587
+#: src/multiplayer_connect.cpp:586
 msgid "Computer player"
 msgstr "电脑玩家"
 
-#: src/multiplayer_connect.cpp:590
+#: src/multiplayer_connect.cpp:589
 msgid "(Empty slot)"
 msgstr "（空槽）"
 
-#: src/multiplayer_connect.cpp:815
+#: src/multiplayer_connect.cpp:814
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "当前时期不允许非随机阵营"
 
-#: src/multiplayer_connect.cpp:839
+#: src/multiplayer_connect.cpp:838
 msgid "Unable to find a leader type for faction $faction"
 msgstr "找不到$faction集团的领袖类型"
 
-#: src/multiplayer_connect.cpp:876 src/multiplayer_lobby.cpp:607
+#: src/multiplayer_connect.cpp:875 src/multiplayer_lobby.cpp:607
 #: src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
 msgstr "游戏大厅"
 
-#: src/multiplayer_connect.cpp:896
+#: src/multiplayer_connect.cpp:895
 msgid "Player/Type"
 msgstr "玩家/类型"
 
-#: src/multiplayer_connect.cpp:897
+#: src/multiplayer_connect.cpp:896
 msgid "Faction"
 msgstr "集团"
 
-#: src/multiplayer_connect.cpp:898
+#: src/multiplayer_connect.cpp:897
 msgid "Team/Gender"
 msgstr "队伍/性别"
 
-#: src/multiplayer_connect.cpp:899
+#: src/multiplayer_connect.cpp:898
 msgid "Color"
 msgstr "颜色"
 
-#: src/multiplayer_connect.cpp:903
+#: src/multiplayer_connect.cpp:902
 msgid "I'm Ready"
 msgstr "准备就绪"
 
-#: src/multiplayer_connect.cpp:912
+#: src/multiplayer_connect.cpp:911
 msgid "The scenario is invalid because it has no sides."
 msgstr "由于没有阵营，本场景无效。"
 
-#: src/multiplayer_connect.cpp:1285
+#: src/multiplayer_connect.cpp:1284
 msgid "Network Player"
 msgstr "网络玩家"
 
-#: src/multiplayer_connect.cpp:1286
+#: src/multiplayer_connect.cpp:1285
 msgid "Local Player"
 msgstr "本地玩家"
 
-#: src/multiplayer_connect.cpp:1287
+#: src/multiplayer_connect.cpp:1286
 msgid "Computer Player"
 msgstr "电脑玩家"
 
-#: src/multiplayer_connect.cpp:1288
+#: src/multiplayer_connect.cpp:1287
 msgid "Empty"
 msgstr "空位"
 
-#: src/multiplayer_connect.cpp:1402
+#: src/multiplayer_connect.cpp:1401
 msgid "This is not a multiplayer save"
 msgstr "这不是多人对战存档"
 
-#: src/multiplayer_connect.cpp:1493
+#: src/multiplayer_connect.cpp:1495
 msgid "Cannot find era $era"
 msgstr "找不到$era时期"
 
-#: src/multiplayer_connect.cpp:1512
+#: src/multiplayer_connect.cpp:1514
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6328,207 +6341,207 @@ msgstr ""
 "胜利条件：\n"
 "@打败敌人的领袖(们)"
 
-#: src/multiplayer_connect.cpp:1573
+#: src/multiplayer_connect.cpp:1575
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
-#: src/multiplayer_create.cpp:46 src/multiplayer_lobby.cpp:611
+#: src/multiplayer_create.cpp:47 src/multiplayer_lobby.cpp:611
 msgid "Create Game"
 msgstr "创建游戏"
 
-#: src/multiplayer_create.cpp:58
+#: src/multiplayer_create.cpp:60
 msgid "Time limit"
 msgstr "时限"
 
-#: src/multiplayer_create.cpp:71
+#: src/multiplayer_create.cpp:73
 msgid "Name of game:"
 msgstr "游戏名："
 
-#: src/multiplayer_create.cpp:74
+#: src/multiplayer_create.cpp:76
 msgid "Era:"
 msgstr "时期："
 
-#: src/multiplayer_create.cpp:75
+#: src/multiplayer_create.cpp:77
 msgid "Map to play:"
 msgstr "选择游戏地图："
 
-#: src/multiplayer_create.cpp:76 src/multiplayer_lobby.cpp:238
+#: src/multiplayer_create.cpp:78 src/multiplayer_lobby.cpp:238
 msgid "Use map settings"
 msgstr "使用地图设定"
 
-#: src/multiplayer_create.cpp:77
+#: src/multiplayer_create.cpp:79
 msgid "Random start time"
 msgstr "随机开始时间"
 
-#: src/multiplayer_create.cpp:78
+#: src/multiplayer_create.cpp:80
 msgid "Fog Of War"
 msgstr "战争迷雾"
 
-#: src/multiplayer_create.cpp:79 src/multiplayer_lobby.cpp:487
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:487
 #: src/multiplayer_lobby.cpp:493
 msgid "Shroud"
 msgstr "战场黑幕"
 
-#: src/multiplayer_create.cpp:80
+#: src/multiplayer_create.cpp:82
 msgid "Observers"
 msgstr "观察者"
 
-#: src/multiplayer_create.cpp:82
+#: src/multiplayer_create.cpp:84
 msgid "OK"
 msgstr "确定"
 
-#: src/multiplayer_create.cpp:83
+#: src/multiplayer_create.cpp:85
 msgid "Regenerate"
 msgstr "重新生成"
 
-#: src/multiplayer_create.cpp:84
+#: src/multiplayer_create.cpp:86
 msgid "Settings..."
 msgstr "设置..."
 
-#: src/multiplayer_create.cpp:85
+#: src/multiplayer_create.cpp:87
 msgid "Set Password..."
 msgstr ""
 
-#: src/multiplayer_create.cpp:101
+#: src/multiplayer_create.cpp:103
 msgid "Load Game..."
 msgstr "载入游戏..."
 
-#: src/multiplayer_create.cpp:134
+#: src/multiplayer_create.cpp:138
 msgid "The maximum number of turns the game can last"
 msgstr "游戏允许的最大回合数"
 
-#: src/multiplayer_create.cpp:137
+#: src/multiplayer_create.cpp:141
 msgid "Enables user time limit"
 msgstr "开启玩家时限"
 
-#: src/multiplayer_create.cpp:143
+#: src/multiplayer_create.cpp:147
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "首回合最长时限（秒）"
 
-#: src/multiplayer_create.cpp:149
+#: src/multiplayer_create.cpp:153
 msgid "Longest time possible for any turn (seconds)"
 msgstr "任意回合最长时限（秒）"
 
-#: src/multiplayer_create.cpp:155
+#: src/multiplayer_create.cpp:159
 msgid "Time for general tasks each turn (seconds)"
 msgstr "每回合普通任务时限（秒）"
 
-#: src/multiplayer_create.cpp:161
+#: src/multiplayer_create.cpp:165
 msgid "Time for each attack, recruit, and capture"
 msgstr "每次攻击、征募和占领时限"
 
-#: src/multiplayer_create.cpp:166
+#: src/multiplayer_create.cpp:170
 msgid "The amount of income each village yields per turn"
 msgstr "每村庄每回合创造的收入"
 
-#: src/multiplayer_create.cpp:172
+#: src/multiplayer_create.cpp:176
 msgid "The amount of experience a unit needs to advance"
 msgstr "一个单位升级所需的经验值"
 
-#: src/multiplayer_create.cpp:175
+#: src/multiplayer_create.cpp:179
 msgid "Use scenario specific settings"
 msgstr "使用场景设置"
 
-#: src/multiplayer_create.cpp:178
+#: src/multiplayer_create.cpp:182
 msgid "Randomize time of day in begin"
 msgstr "制定开始时间:"
 
-#: src/multiplayer_create.cpp:181
+#: src/multiplayer_create.cpp:185
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "敌人单位在进入您的单位的移动范围之前不可见"
 
-#: src/multiplayer_create.cpp:184
+#: src/multiplayer_create.cpp:188
 msgid "The map is unknown until your units explore it"
 msgstr "在您探索地图之前，地图不可见"
 
-#: src/multiplayer_create.cpp:187
+#: src/multiplayer_create.cpp:191
 msgid "Allow users who are not playing to watch the game"
 msgstr "允许非玩家用户观看游戏"
 
-#: src/multiplayer_create.cpp:191
+#: src/multiplayer_create.cpp:195
 msgid "Share View"
 msgstr "共享视图"
 
-#: src/multiplayer_create.cpp:192
+#: src/multiplayer_create.cpp:196
 msgid "Share Maps"
 msgstr "共享地图"
 
-#: src/multiplayer_create.cpp:193
+#: src/multiplayer_create.cpp:197
 msgid "Share None"
 msgstr "无共享"
 
-#: src/multiplayer_create.cpp:204
+#: src/multiplayer_create.cpp:208
 msgid "No eras found."
 msgstr "没有找到这个时代。"
 
-#: src/multiplayer_create.cpp:205
+#: src/multiplayer_create.cpp:209
 msgid "No eras found"
 msgstr "没有找到这个时代"
 
-#: src/multiplayer_create.cpp:218
+#: src/multiplayer_create.cpp:222
 msgid "$login's game"
 msgstr "$login的游戏"
 
-#: src/multiplayer_create.cpp:277
+#: src/multiplayer_create.cpp:281
 msgid "Invalid era selected"
 msgstr "所选时期无效"
 
-#: src/multiplayer_create.cpp:316
+#: src/multiplayer_create.cpp:320
 msgid "You must enter a name."
 msgstr "您必须输入名字。"
 
-#: src/multiplayer_create.cpp:321
+#: src/multiplayer_create.cpp:325
 msgid "Set Password"
 msgstr ""
 
-#: src/multiplayer_create.cpp:322 src/multiplayer_lobby.cpp:725
+#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:725
 msgid "Password: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:322
+#: src/multiplayer_create.cpp:326
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
 
-#: src/multiplayer_create.cpp:330
+#: src/multiplayer_create.cpp:334
 msgid "Turns: "
 msgstr "回合数： "
 
-#: src/multiplayer_create.cpp:332
+#: src/multiplayer_create.cpp:336
 msgid "Unlimited Turns"
 msgstr "无限回合"
 
 # i don't actually know what this is
-#: src/multiplayer_create.cpp:360
+#: src/multiplayer_create.cpp:364
 msgid "Init. Limit: "
 msgstr "起始时间限制："
 
 # anyone explain this to me too
-#: src/multiplayer_create.cpp:365
+#: src/multiplayer_create.cpp:369
 msgid "Turn Bonus: "
 msgstr "回合奖励： "
 
-#: src/multiplayer_create.cpp:369
+#: src/multiplayer_create.cpp:373
 msgid "Reservoir: "
 msgstr "蓄水池:"
 
-#: src/multiplayer_create.cpp:374
+#: src/multiplayer_create.cpp:378
 msgid "Action Bonus: "
 msgstr "行动奖励："
 
-#: src/multiplayer_create.cpp:381
+#: src/multiplayer_create.cpp:385
 msgid "Village Gold: "
 msgstr "村庄金币： "
 
-#: src/multiplayer_create.cpp:389
+#: src/multiplayer_create.cpp:393
 msgid "Exp. Mod.: "
 msgstr "经验 模式.: "
 
-#: src/multiplayer_create.cpp:518
+#: src/multiplayer_create.cpp:524
 msgid "Players: "
 msgstr "玩家： "
 
-#: src/multiplayer_create.cpp:519
+#: src/multiplayer_create.cpp:525
 msgid "Size: "
 msgstr "大小"
 
@@ -6608,19 +6621,19 @@ msgstr "观察游戏时快速跳至当前进行中的回合"
 msgid "Joining this game requires a password."
 msgstr ""
 
-#: src/multiplayer_ui.cpp:159
+#: src/multiplayer_ui.cpp:170
 msgid "Invalid Color"
 msgstr "无效颜色"
 
-#: src/multiplayer_ui.cpp:364
+#: src/multiplayer_ui.cpp:375
 msgid "Send a private message to "
 msgstr "发送一条私人消息给 "
 
-#: src/multiplayer_ui.cpp:365
+#: src/multiplayer_ui.cpp:376
 msgid "Whisper"
 msgstr "悄悄话"
 
-#: src/multiplayer_ui.cpp:366
+#: src/multiplayer_ui.cpp:377
 msgid "Message: "
 msgstr "信息："
 
@@ -6687,11 +6700,24 @@ msgstr "不能发送初始化连接信息"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:794
+#: src/play_controller.cpp:90
+msgid "Initializing teams"
+msgstr ""
+
+#: src/play_controller.cpp:106 src/play_controller.cpp:121
+msgid "Initializing display"
+msgstr ""
+
+#: src/play_controller.cpp:133
+#, fuzzy
+msgid "Starting game"
+msgstr "终止游戏"
+
+#: src/play_controller.cpp:804
 msgid "Back to start"
 msgstr "回到开始"
 
-#: src/play_controller.cpp:796
+#: src/play_controller.cpp:806
 msgid "Back to turn "
 msgstr "回到回合"
 
@@ -6715,15 +6741,15 @@ msgstr "无法保存游戏录像"
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "这一场景结束了. 您想继续这个战役吗?"
 
-#: src/playcampaign.cpp:459
+#: src/playcampaign.cpp:460
 msgid "Downloading next scenario..."
 msgstr "正在下载下一场景……"
 
-#: src/playcampaign.cpp:566
+#: src/playcampaign.cpp:567
 msgid "Do you want to save your game?"
 msgstr "您想保存游戏吗？"
 
-#: src/playcampaign.cpp:591
+#: src/playcampaign.cpp:592
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知场景： '"
 
@@ -7041,35 +7067,35 @@ msgstr "上传统计资料"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:384 src/unit.cpp:1198 src/unit.cpp:2308
+#: src/unit.cpp:401 src/unit.cpp:1216 src/unit.cpp:2326
 msgid "Unknown unit type '$type|'"
 msgstr "未知单位种类 '$type|'"
 
-#: src/unit.cpp:2351 src/unit.cpp:2555 src/unit.cpp:2611
+#: src/unit.cpp:2369 src/unit.cpp:2573 src/unit.cpp:2629
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2362
+#: src/unit.cpp:2380
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2427
+#: src/unit.cpp:2445
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2445 src/unit.cpp:2582
+#: src/unit.cpp:2463 src/unit.cpp:2600
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2574
+#: src/unit.cpp:2592
 msgid " move"
 msgstr "移动"
 
-#: src/unit.cpp:2590
+#: src/unit.cpp:2608
 msgid "$effect_description per level"
 msgstr "每级 $effect_description"
 
-#: src/unit.cpp:2620
+#: src/unit.cpp:2638
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -7123,6 +7149,21 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Each scenario has some objectives, shown as the scenario starts. These "
+#~ "objectives list what you need to do to win, and what you should do to "
+#~ "avoid losing. Often the objective is to defeat all enemies, but other "
+#~ "times you need to reach a destination, to rescue someone, to solve a "
+#~ "puzzle, or just to survive a certain number of turns."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "每一幕都会有一些目标，并在开始的时候显示。这些目标会以列表的形式显示您需要"
+#~ "什么才能赢得游戏或您应该做什么以避免失败。通常这些目标是击败所有敌人，但有"
+#~ "时您需要到达某地去拯救某人，解决迷题，或仅仅要求在一定回合内存活下来。"
 
 #~ msgid "Campaign Maintenance"
 #~ msgstr "战役维护"

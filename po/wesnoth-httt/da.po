@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-24 11:52+0100\n"
+"POT-Creation-Date: 2007-12-26 14:47+0100\n"
 "PO-Revision-Date: 2007-12-07 22:09+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -4438,8 +4438,9 @@ msgid "As you say, my lord."
 msgstr "Som du vil min herre."
 
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:377
+#, fuzzy
 msgid ""
-"If you want to choose the river path later , move a merman to the right end "
+"If you want to choose the river path later, move a merman to the right end "
 "of the river again."
 msgstr ""
 "Hvis du senere ønsker at bruge flodvejen, så flyt en havmand til den højre "
@@ -6855,12 +6856,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:36
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:115
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:71
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:114
 msgid "sabre"
 msgstr "ryttersabel"
 
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:124
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:80
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:123
 #: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:246
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:184
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:59
@@ -6993,7 +6994,7 @@ msgid "female^Princess"
 msgstr "Prinsesse"
 
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:29
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:67
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:110
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -7007,7 +7008,7 @@ msgstr ""
 "kæmper bedre på grund af hendes tilstedeværelse. Prinsessen er også adræt og "
 "fingerfærdig på samme måde som en tyv."
 
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:43
+#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:86
 msgid "Princess"
 msgstr "Prinsesse"
 
@@ -7062,7 +7063,7 @@ msgid "Do you want this unit to pick up the sword?"
 msgstr "Ønsker du at denne enhed samler sværdet op?"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:35
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:132
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:140
 msgid "Yes"
 msgstr "Ja"
 
@@ -7095,24 +7096,24 @@ msgstr ""
 "til live! Du mærker ingen varme da du samler sværdet op, men græsset ved "
 "dine fødder bryder i flammer da du tester dette mægtige våben."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:62
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:63
 msgid "flaming sword"
 msgstr "flammesværd"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:102
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:223
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:110
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:231
 msgid "No"
 msgstr "Nej"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:130
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:138
 msgid "Do you want this unit to pick up the armor?"
 msgstr "Ønsker du at denne enhed samler rustningen op?"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:136
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:144
 msgid "Void Armor"
 msgstr "Ubenyttet rustning"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:138
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:146
 msgid ""
 "A beautiful chest plate crafted from shimmering black steel, the Void Armor "
 "is virtually impenetrable to physical weapons!"
@@ -7120,11 +7121,11 @@ msgstr ""
 "En smuk brystrustning skabt fra skinnende sort stål, den ubenyttede rustning "
 "er så godt som umulig at gennemtrænge af fysiske våben!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:139
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:147
 msgid "Only a powerful warrior may don this armor!"
 msgstr "Kun en magtfuld kriger kan bære denne rustning!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:153
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:161
 msgid ""
 "You struggle to lift and don the heavy plate. Once worn, however, it is "
 "amazingly comfortable. You have increased resistance to all physical damage!"
@@ -7133,13 +7134,13 @@ msgstr ""
 "er den forbavsende komfortabel. Du har forøget modstandskraft mod al fysisk "
 "skade!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:171
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:173
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:179
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:181
 msgid "void armor"
 msgstr "ubenyttet rustning"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:180
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:186
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:188
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:194
 msgid ""
 "The Void Armor grants the following resistances:\n"
 "blade:  50%\n"
@@ -7153,12 +7154,12 @@ msgstr ""
 "slag:   60 %\n"
 "ild:   +10 %"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:249
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:416
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:257
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:424
 msgid "Scepter of Fire"
 msgstr "Ildscepter"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:252
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:260
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
@@ -7168,8 +7169,8 @@ msgstr ""
 "Wesnoth, scepteret har magi til, at kunne skyde ildkugler mod fjender af den "
 "der har scepteret!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:253
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:420
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:261
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:428
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
@@ -7177,7 +7178,7 @@ msgstr ""
 "Dette er Ildscepteret. Der er kun muligt for den sande tronfølger at turde "
 "tage det!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:419
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:427
 msgid ""
 "This ancient Scepter was forged by the great Dwarves of the Deep Mountains. "
 "A symbol of the kingship of Wesnoth, the Scepter has the power to shoot "
@@ -7187,31 +7188,31 @@ msgstr ""
 "Et symbol på kongemagten i Wesnoth, scepteret har magi til at kunne skyde "
 "ildkugler mod fjender af den der har scepteret!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:445
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:453
 msgid "Here it is at last, I have the Scepter!"
 msgstr "Endelig, her er det! Jeg har scepteret!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:449
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:457
 msgid "So it is in our hands! Now let us leave this stinking pit."
 msgstr "So er det i vores besiddelse. Lad os forlade dette stinkende hul."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:453
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:461
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr "Jeg tror at hvis vi rejse en smule mod nord kan vi måske komme ud."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:474
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:482
 msgid "At last! I have the Scepter!"
 msgstr "Endelig! Jeg har scepteret!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:478
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:486
 msgid ""
 "Indeed. You managed to reach it, Li'sar. I hope you shall use it wisely."
 msgstr ""
 "Bestemt. Det er lykkedes dig at nå frem til det, Li'sar. Jeg håber du vil "
 "bruge det med kløgt."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:482
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:490
 msgid ""
 "My first use for it is going to be to help us get out of this hole! I hope "
 "you consider that wise."
@@ -7219,7 +7220,7 @@ msgstr ""
 "Mit første brug af scepteret er at få os ud af dette hul! Jeg håber du anser "
 "det for at være klogt."
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:486
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:494
 msgid ""
 "The Scepter makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
@@ -7227,7 +7228,7 @@ msgstr ""
 "Scepteret gør dets bruger magtfuld, men ikke udødelig, barn. Brug det med "
 "omtanke. Lad os gå der skulle være en udgang mod nord!"
 
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:490
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:498
 msgid "I think I know what I'm doing. Come, let us go!"
 msgstr "Jeg ved hvad jeg gør. Kom, lad os gå!"
 
