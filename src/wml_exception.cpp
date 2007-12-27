@@ -22,6 +22,7 @@
 #include "gettext.hpp"
 #include "show_dialog.hpp"
 
+#include <cassert>
 #include <sstream>
 
 //! Helper function, don't call this directly.
@@ -62,4 +63,34 @@ void twml_exception::show(display &disp)
 		<< "\n" << dev_message;
 
 	gui::show_error_message(disp, sstr.str());
+}
+
+//! Returns a standard message for a missing wml key.
+//!
+//! @param section      The section is which the key should appear.
+//! @param key          The ommitted key.
+//! @param primary_key  The primary key of the section.
+//! @param primary_value
+//!                     The value of the primary key (mandatory if primary key
+//!                     isn't empty).
+//!
+//! @return             The error message.
+t_string missing_mandatory_wml_key(const std::string& section, const std::string& key,
+		const std::string& primary_key, const std::string& primary_value)
+{
+	utils::string_map symbols;
+	symbols["section"] = section;
+	symbols["key"] = key;
+	if(!primary_key.empty()) {
+		assert(!primary_value.empty());
+
+		symbols["primary_key"] = primary_key;
+		symbols["primary_value"] = primary_value;
+
+		return t_string(vgettext("In section '[$section|]' where '$primary_key| = "
+			"$primary_value' the mandatory key '$key|' isn't set.", symbols));
+	} else {
+		return t_string(vgettext("In section '[$section|]' the "
+			"mandatory key '$key|' isn't set.", symbols));
+	}
 }

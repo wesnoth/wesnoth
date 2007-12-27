@@ -73,12 +73,18 @@ terrain_type::terrain_type(const config& cfg) :
 		income_description_own_(),
 		editor_group_(cfg["editor_group"])
 {
+	VALIDATE(number_ != t_translation::NONE_TERRAIN, 
+		missing_mandatory_wml_key("terrain", "string"));
+	VALIDATE(!minimap_image_.empty(), 
+		missing_mandatory_wml_key("terrain", "symbol_image", "string", 
+		t_translation::write_letter(number_)));
+	VALIDATE(!name_.empty(), 
+		missing_mandatory_wml_key("terrain", "name", "string", 
+		t_translation::write_letter(number_)));
 
 	if(editor_image_.empty()) {
 		editor_image_ = minimap_image_;
 	}
-
-	VALIDATE(number_ != t_translation::NONE_TERRAIN, _("'string' is a mandatory key in '[terrain]'."));
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);

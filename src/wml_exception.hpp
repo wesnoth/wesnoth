@@ -58,5 +58,9 @@ struct twml_exception
 	void show(display &disp);
 };
 
+//! Returns a standard message for a missing wml key.
+t_string missing_mandatory_wml_key(const std::string& section, const std::string& key,
+		const std::string& primary_key = "", const std::string& primary_value = "");
+
 #endif
 
