@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 14:46+0100\n"
+"POT-Creation-Date: 2007-12-28 14:21+0100\n"
 "PO-Revision-Date: 2007-12-23 20:07+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -1248,7 +1248,7 @@ msgstr ""
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Ungültiges Gelände gefunden. Eventuell 1.2 Geländeformat. Gelände ="
 
-#: src/wml_exception.cpp:59
+#: src/wml_exception.cpp:60
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1256,9 +1256,19 @@ msgstr ""
 "Ein Fehler ist durch möglicherweise ungültiges WML aufgetreten\n"
 "Die Fehlermeldung ist:"
 
-#: src/wml_exception.cpp:61
+#: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr "Wenn Ihr diesen Fehler meldet, gebt bitte diese Fehlermeldung an:"
+
+#: src/wml_exception.cpp:90
+msgid ""
+"In section '[$section|]' where '$primary_key| = $primary_value' the "
+"mandatory key '$key|' isn't set."
+msgstr ""
+
+#: src/wml_exception.cpp:93
+msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
+msgstr ""
 
 #~ msgid "Save Replays"
 #~ msgstr "Aufzeichnungen speichern"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 20:33+0100\n"
+"POT-Creation-Date: 2007-12-28 14:21+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -476,8 +476,8 @@ msgid ""
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
 "only be defeated by having your leader killed. But scenarios may have other "
 "victory objectives - getting your leader to a designated point, say, or "
-"escuing someone, or solving a puzzle, or holding out against a siege until a "
-"certain number of terms have elapsed."
+"rescuing someone, or solving a puzzle, or holding out against a siege until "
+"a certain number of turns have elapsed."
 msgstr ""
 
 #: data/core/help.cfg:140
@@ -485,9 +485,9 @@ msgid ""
 "\n"
 "\n"
 "When you win a scenario, the map will gray over and the 'End Turn' button "
-"will change to 'End Scenario'.  You can now do things like changing yourc "
-"save options or (if you are in a multiplayer game) chatting with other "
-"players before pressing that button to advance."
+"will change to 'End Scenario'. You can now do things like changing your save "
+"options or (if you are in a multiplayer game) chatting with other players "
+"before pressing that button to advance."
 msgstr ""
 
 #: data/core/help.cfg:145
@@ -1996,7 +1996,7 @@ msgstr ""
 "gevind word. Vir speldoeleindes is hulle identies aan "
 "<ref>dst=terrain_grassland text=Grasveld</ref>."
 
-#: data/core/help.cfg:580 src/terrain.cpp:123
+#: data/core/help.cfg:580 src/terrain.cpp:129
 msgid "Village"
 msgstr "Dorpie"
 
@@ -2785,16 +2785,17 @@ msgstr ""
 "elke beurt totdat hulle genees word of na 1 LP verminder het."
 
 #: data/core/macros/amla.cfg:10
-msgid ", MAX XP +25%"
-msgstr ""
-
-#: data/core/macros/amla.cfg:10
-msgid "Max HP bonus +"
+#, fuzzy
+msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Maksimum LP bonus +"
 
 #: data/core/macros/amla.cfg:30
-msgid "Heal to full, MAX XP +25%"
+msgid ", MAX XP +25%"
 msgstr ""
+
+#: data/core/macros/amla.cfg:30
+msgid "Max HP bonus +"
+msgstr "Maksimum LP bonus +"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -4757,66 +4758,66 @@ msgstr "Jou leier moet op 'n vesting wees om eenhede te kan werf of herroep."
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Daar is geen leë kasteelblokke waarin jy 'n eenheid kan werf nie."
 
-#: src/actions.cpp:262 src/actions.cpp:285 src/actions.cpp:290
+#: src/actions.cpp:259 src/actions.cpp:282 src/actions.cpp:287
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:269
+#: src/actions.cpp:266
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:961 src/actions.cpp:1215
+#: src/actions.cpp:958 src/actions.cpp:1212
 msgid "poisoned"
 msgstr "vergiftig"
 
-#: src/actions.cpp:965 src/actions.cpp:1219
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "slowed"
 msgstr "vertraag"
 
-#: src/actions.cpp:971 src/actions.cpp:1225
+#: src/actions.cpp:968 src/actions.cpp:1222
 msgid "stone"
 msgstr "versteen"
 
-#: src/actions.cpp:2160
+#: src/actions.cpp:2157
 msgid "Ambushed!"
 msgstr "Lokval!"
 
-#: src/actions.cpp:2166
+#: src/actions.cpp:2163
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2204
+#: src/actions.cpp:2201
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Goedgesinde eenheid opgemerk"
 msgstr[1] "Goedgesinde eenheid opgemerk"
 
-#: src/actions.cpp:2207
+#: src/actions.cpp:2204
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Vyandige eenheid opgemerk!"
 msgstr[1] "Vyandige eenheid opgemerk!"
 
-#: src/actions.cpp:2212
+#: src/actions.cpp:2209
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2213
+#: src/actions.cpp:2210
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/actions.cpp:2214
+#: src/actions.cpp:2211
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Eenhede opgemerk! ($friends vriende, $enemies vyande)"
 
-#: src/actions.cpp:2223
+#: src/actions.cpp:2220
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(druk $hotkey om voort te gaan)"
@@ -6977,19 +6978,15 @@ msgstr " ingesluit van "
 msgid "$error at $pos"
 msgstr "$error by $pos"
 
-#: src/terrain.cpp:81
-msgid "'string' is a mandatory key in '[terrain]'."
-msgstr ""
-
-#: src/terrain.cpp:128
+#: src/terrain.cpp:134
 msgid "Allied village"
 msgstr "Geallieerde dorpie"
 
-#: src/terrain.cpp:133
+#: src/terrain.cpp:139
 msgid "Enemy village"
 msgstr "Vyandelike dorpie"
 
-#: src/terrain.cpp:138
+#: src/terrain.cpp:144
 msgid "Owned village"
 msgstr "Jou dorpie"
 

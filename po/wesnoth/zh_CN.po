@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 20:33+0100\n"
+"POT-Creation-Date: 2007-12-28 14:21+0100\n"
 "PO-Revision-Date: 2007-12-17 02:05+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -423,8 +423,8 @@ msgid ""
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
 "only be defeated by having your leader killed. But scenarios may have other "
 "victory objectives - getting your leader to a designated point, say, or "
-"escuing someone, or solving a puzzle, or holding out against a siege until a "
-"certain number of terms have elapsed."
+"rescuing someone, or solving a puzzle, or holding out against a siege until "
+"a certain number of turns have elapsed."
 msgstr ""
 
 #: data/core/help.cfg:140
@@ -432,9 +432,9 @@ msgid ""
 "\n"
 "\n"
 "When you win a scenario, the map will gray over and the 'End Turn' button "
-"will change to 'End Scenario'.  You can now do things like changing yourc "
-"save options or (if you are in a multiplayer game) chatting with other "
-"players before pressing that button to advance."
+"will change to 'End Scenario'. You can now do things like changing your save "
+"options or (if you are in a multiplayer game) chatting with other players "
+"before pressing that button to advance."
 msgstr ""
 
 #: data/core/help.cfg:145
@@ -1802,7 +1802,7 @@ msgstr ""
 "热带草原上的草丛高大，分布在世界上比较热的地带。在游戏中，它等同于"
 "<ref>dst=terrain_grassland text=草原</ref>"
 
-#: data/core/help.cfg:580 src/terrain.cpp:123
+#: data/core/help.cfg:580 src/terrain.cpp:129
 msgid "Village"
 msgstr "村庄"
 
@@ -2598,16 +2598,17 @@ msgstr ""
 "本攻击使目标中毒，中毒单位每回合失去8点生命值，直到他们被治愈或生命值降到1。"
 
 #: data/core/macros/amla.cfg:10
-msgid ", MAX XP +25%"
-msgstr "， 进阶所需经验值+25%"
-
-#: data/core/macros/amla.cfg:10
-msgid "Max HP bonus +"
+#, fuzzy
+msgid "Max HP bonus +3, Max XP +20%"
 msgstr "最大生命值奖励+"
 
 #: data/core/macros/amla.cfg:30
-msgid "Heal to full, MAX XP +25%"
-msgstr "完全康复，进阶所需经验值+25%"
+msgid ", MAX XP +25%"
+msgstr "， 进阶所需经验值+25%"
+
+#: data/core/macros/amla.cfg:30
+msgid "Max HP bonus +"
+msgstr "最大生命值奖励+"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -4856,65 +4857,65 @@ msgstr "您的领袖必须在要塞里才能征募或召回单位。"
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征兵。"
 
-#: src/actions.cpp:262 src/actions.cpp:285 src/actions.cpp:290
+#: src/actions.cpp:259 src/actions.cpp:282 src/actions.cpp:287
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:269
+#: src/actions.cpp:266
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:961 src/actions.cpp:1215
+#: src/actions.cpp:958 src/actions.cpp:1212
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:965 src/actions.cpp:1219
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:971 src/actions.cpp:1225
+#: src/actions.cpp:968 src/actions.cpp:1222
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2160
+#: src/actions.cpp:2157
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
-#: src/actions.cpp:2166
+#: src/actions.cpp:2163
 msgid "Failed teleport! Exit not empty"
 msgstr "传送失败!出口阻塞"
 
 # what is the plural form all about?
-#: src/actions.cpp:2204
+#: src/actions.cpp:2201
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友好单位"
 msgstr[1] "发现$friends个友好单位"
 
-#: src/actions.cpp:2207
+#: src/actions.cpp:2204
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌方单位！"
 msgstr[1] "发现$enemies个敌方单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2212
+#: src/actions.cpp:2209
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1个友好单位"
 msgstr[1] "$friends个友好单位"
 
-#: src/actions.cpp:2213
+#: src/actions.cpp:2210
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌方单位"
 msgstr[1] "$enemies个敌方单位"
 
-#: src/actions.cpp:2214
+#: src/actions.cpp:2211
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2223
+#: src/actions.cpp:2220
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 
@@ -6941,19 +6942,15 @@ msgstr " 包含 "
 msgid "$error at $pos"
 msgstr "在$pos处发生$error"
 
-#: src/terrain.cpp:81
-msgid "'string' is a mandatory key in '[terrain]'."
-msgstr ""
-
-#: src/terrain.cpp:128
+#: src/terrain.cpp:134
 msgid "Allied village"
 msgstr "盟友的村庄"
 
-#: src/terrain.cpp:133
+#: src/terrain.cpp:139
 msgid "Enemy village"
 msgstr "敌人的村庄"
 
-#: src/terrain.cpp:138
+#: src/terrain.cpp:144
 msgid "Owned village"
 msgstr "拥有的村庄"
 
@@ -7149,6 +7146,9 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
+
+#~ msgid "Heal to full, MAX XP +25%"
+#~ msgstr "完全康复，进阶所需经验值+25%"
 
 #~ msgid ""
 #~ "\n"

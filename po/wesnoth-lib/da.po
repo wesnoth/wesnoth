@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 14:46+0100\n"
+"POT-Creation-Date: 2007-12-28 14:21+0100\n"
 "PO-Revision-Date: 2007-12-07 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -1243,7 +1243,7 @@ msgstr ""
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Ugyldig terræn fundet. Det er sikkert et 1.2 terrænformat, terræn = "
 
-#: src/wml_exception.cpp:59
+#: src/wml_exception.cpp:60
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1251,9 +1251,19 @@ msgstr ""
 "En fejl på grund af mulig ugyldig WML opstod\n"
 "Fejlbeskeden er :"
 
-#: src/wml_exception.cpp:61
+#: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr "Når du fejlmelder så inkluder venligst den følgende fejlbesked :"
+
+#: src/wml_exception.cpp:90
+msgid ""
+"In section '[$section|]' where '$primary_key| = $primary_value' the "
+"mandatory key '$key|' isn't set."
+msgstr ""
+
+#: src/wml_exception.cpp:93
+msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
+msgstr ""
 
 #~ msgid "Save Replays"
 #~ msgstr "Gem spilresumeer"

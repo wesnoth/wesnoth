@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 14:46+0100\n"
+"POT-Creation-Date: 2007-12-28 14:21+0100\n"
 "PO-Revision-Date: 2007-12-15 15:45+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@buchtovi.cz>\n"
@@ -1248,7 +1248,7 @@ msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený ter
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
 msgstr "Nalezen nepoužitelný terén, pravděpodobně verze 1.2; vstup: "
 
-#: src/wml_exception.cpp:59
+#: src/wml_exception.cpp:60
 msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
@@ -1256,9 +1256,19 @@ msgstr ""
 "Nastala chyba, pravděpodobně kvůli neplatnému WML.\n"
 "Chybová zpráva :"
 
-#: src/wml_exception.cpp:61
+#: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr "Při oznamování chyby prosím uveďte následující chybovou zprávu :"
+
+#: src/wml_exception.cpp:90
+msgid ""
+"In section '[$section|]' where '$primary_key| = $primary_value' the "
+"mandatory key '$key|' isn't set."
+msgstr ""
+
+#: src/wml_exception.cpp:93
+msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
+msgstr ""
 
 #~ msgid "Save Replays"
 #~ msgstr "Ukládej záznamy"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 20:33+0100\n"
+"POT-Creation-Date: 2007-12-28 14:21+0100\n"
 "PO-Revision-Date: 2007-12-12 00:21+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -427,8 +427,8 @@ msgid ""
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
 "only be defeated by having your leader killed. But scenarios may have other "
 "victory objectives - getting your leader to a designated point, say, or "
-"escuing someone, or solving a puzzle, or holding out against a siege until a "
-"certain number of terms have elapsed."
+"rescuing someone, or solving a puzzle, or holding out against a siege until "
+"a certain number of turns have elapsed."
 msgstr ""
 
 #: data/core/help.cfg:140
@@ -436,9 +436,9 @@ msgid ""
 "\n"
 "\n"
 "When you win a scenario, the map will gray over and the 'End Turn' button "
-"will change to 'End Scenario'.  You can now do things like changing yourc "
-"save options or (if you are in a multiplayer game) chatting with other "
-"players before pressing that button to advance."
+"will change to 'End Scenario'. You can now do things like changing your save "
+"options or (if you are in a multiplayer game) chatting with other players "
+"before pressing that button to advance."
 msgstr ""
 
 #: data/core/help.cfg:145
@@ -1981,7 +1981,7 @@ msgstr ""
 "har denna terräng samma egenskaper som <ref>dst=terrain_grassland "
 "text=slätt</ref>."
 
-#: data/core/help.cfg:580 src/terrain.cpp:123
+#: data/core/help.cfg:580 src/terrain.cpp:129
 msgid "Village"
 msgstr "By"
 
@@ -2827,16 +2827,17 @@ msgstr ""
 "döda en trupp."
 
 #: data/core/macros/amla.cfg:10
-msgid ", MAX XP +25%"
-msgstr ", max EP +25%"
-
-#: data/core/macros/amla.cfg:10
-msgid "Max HP bonus +"
+#, fuzzy
+msgid "Max HP bonus +3, Max XP +20%"
 msgstr "Max HP-bonus +"
 
 #: data/core/macros/amla.cfg:30
-msgid "Heal to full, MAX XP +25%"
-msgstr "Läker fullständigt, max EP +25%"
+msgid ", MAX XP +25%"
+msgstr ", max EP +25%"
+
+#: data/core/macros/amla.cfg:30
+msgid "Max HP bonus +"
+msgstr "Max HP-bonus +"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -5180,63 +5181,63 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Det finns inga lediga borgrutor för nya trupper."
 
-#: src/actions.cpp:262 src/actions.cpp:285 src/actions.cpp:290
+#: src/actions.cpp:259 src/actions.cpp:282 src/actions.cpp:287
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:269
+#: src/actions.cpp:266
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:961 src/actions.cpp:1215
+#: src/actions.cpp:958 src/actions.cpp:1212
 msgid "poisoned"
 msgstr "förgiftad"
 
-#: src/actions.cpp:965 src/actions.cpp:1219
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "slowed"
 msgstr "långsam"
 
-#: src/actions.cpp:971 src/actions.cpp:1225
+#: src/actions.cpp:968 src/actions.cpp:1222
 msgid "stone"
 msgstr "förstena"
 
-#: src/actions.cpp:2160
+#: src/actions.cpp:2157
 msgid "Ambushed!"
 msgstr "Bakhåll!"
 
-#: src/actions.cpp:2166
+#: src/actions.cpp:2163
 msgid "Failed teleport! Exit not empty"
 msgstr "Misslyckad teleportering! Destinationen upptagen"
 
-#: src/actions.cpp:2204
+#: src/actions.cpp:2201
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Allierad trupp inom synhåll"
 msgstr[1] "$friends allierade trupper inom synhåll"
 
-#: src/actions.cpp:2207
+#: src/actions.cpp:2204
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Fiendetrupp inom synhåll!"
 msgstr[1] "$enemies fiendetrupper inom synhåll!"
 
-#: src/actions.cpp:2212
+#: src/actions.cpp:2209
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 allierad trupp"
 msgstr[1] "$friends allierade trupper"
 
-#: src/actions.cpp:2213
+#: src/actions.cpp:2210
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 fiende"
 msgstr[1] "$enemies fiender"
 
-#: src/actions.cpp:2214
+#: src/actions.cpp:2211
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Trupper inom synhåll! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2223
+#: src/actions.cpp:2220
 msgid "(press $hotkey to keep moving)"
 msgstr "(tryck $hotkey för att fortsätta)"
 
@@ -7309,19 +7310,15 @@ msgstr " från "
 msgid "$error at $pos"
 msgstr "$error på $pos"
 
-#: src/terrain.cpp:81
-msgid "'string' is a mandatory key in '[terrain]'."
-msgstr ""
-
-#: src/terrain.cpp:128
+#: src/terrain.cpp:134
 msgid "Allied village"
 msgstr "Allierad by"
 
-#: src/terrain.cpp:133
+#: src/terrain.cpp:139
 msgid "Enemy village"
 msgstr "Fientlig by"
 
-#: src/terrain.cpp:138
+#: src/terrain.cpp:144
 msgid "Owned village"
 msgstr "Kontrollerad by"
 
@@ -7522,6 +7519,9 @@ msgstr "Hjälp oss att förbättra Wesnoth!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Aktivera uppladdning av spelsammanställningar"
+
+#~ msgid "Heal to full, MAX XP +25%"
+#~ msgstr "Läker fullständigt, max EP +25%"
 
 #~ msgid ""
 #~ "\n"

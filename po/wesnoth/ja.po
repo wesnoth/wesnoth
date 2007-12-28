@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 20:33+0100\n"
+"POT-Creation-Date: 2007-12-28 14:21+0100\n"
 "PO-Revision-Date: 2007-09-16 00:51+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -431,8 +431,8 @@ msgid ""
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
 "only be defeated by having your leader killed. But scenarios may have other "
 "victory objectives - getting your leader to a designated point, say, or "
-"escuing someone, or solving a puzzle, or holding out against a siege until a "
-"certain number of terms have elapsed."
+"rescuing someone, or solving a puzzle, or holding out against a siege until "
+"a certain number of turns have elapsed."
 msgstr ""
 
 #: data/core/help.cfg:140
@@ -440,9 +440,9 @@ msgid ""
 "\n"
 "\n"
 "When you win a scenario, the map will gray over and the 'End Turn' button "
-"will change to 'End Scenario'.  You can now do things like changing yourc "
-"save options or (if you are in a multiplayer game) chatting with other "
-"players before pressing that button to advance."
+"will change to 'End Scenario'. You can now do things like changing your save "
+"options or (if you are in a multiplayer game) chatting with other players "
+"before pressing that button to advance."
 msgstr ""
 
 #: data/core/help.cfg:145
@@ -1919,7 +1919,7 @@ msgstr ""
 "サバンナは背の高い草で覆われた平地で、暖かい気候の世界で見られます。ゲームプ"
 "レイの目的では、<ref>dst=terrain_grassland text=草原</ref>と同じ扱いです。"
 
-#: data/core/help.cfg:580 src/terrain.cpp:123
+#: data/core/help.cfg:580 src/terrain.cpp:129
 msgid "Village"
 msgstr "村"
 
@@ -2738,17 +2738,17 @@ msgstr ""
 "るかHPが１になるまで、 毎ターンHPが８減っていきます。"
 
 #: data/core/macros/amla.cfg:10
-msgid ", MAX XP +25%"
-msgstr "、最大 XP +25%"
-
-#: data/core/macros/amla.cfg:10
-msgid "Max HP bonus +"
+#, fuzzy
+msgid "Max HP bonus +3, Max XP +20%"
 msgstr "最大HPボーナス +"
 
 #: data/core/macros/amla.cfg:30
-#, fuzzy
-msgid "Heal to full, MAX XP +25%"
+msgid ", MAX XP +25%"
 msgstr "、最大 XP +25%"
+
+#: data/core/macros/amla.cfg:30
+msgid "Max HP bonus +"
+msgstr "最大HPボーナス +"
 
 #: data/core/macros/items.cfg:41
 msgid ""
@@ -5106,59 +5106,59 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "ユニットを雇用するための 城タイルの空きがありません。"
 
-#: src/actions.cpp:262 src/actions.cpp:285 src/actions.cpp:290
+#: src/actions.cpp:259 src/actions.cpp:282 src/actions.cpp:287
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:269
+#: src/actions.cpp:266
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:961 src/actions.cpp:1215
+#: src/actions.cpp:958 src/actions.cpp:1212
 msgid "poisoned"
 msgstr "毒を受けた"
 
-#: src/actions.cpp:965 src/actions.cpp:1219
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "slowed"
 msgstr "遅くなった"
 
-#: src/actions.cpp:971 src/actions.cpp:1225
+#: src/actions.cpp:968 src/actions.cpp:1222
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2160
+#: src/actions.cpp:2157
 msgid "Ambushed!"
 msgstr "待ち伏せにあった！"
 
-#: src/actions.cpp:2166
+#: src/actions.cpp:2163
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2204
+#: src/actions.cpp:2201
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "味方ユニット発見"
 
-#: src/actions.cpp:2207
+#: src/actions.cpp:2204
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "敵ユニット発見！"
 
-#: src/actions.cpp:2212
+#: src/actions.cpp:2209
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "味方 $friends"
 
-#: src/actions.cpp:2213
+#: src/actions.cpp:2210
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "敵 $enemies"
 
-#: src/actions.cpp:2214
+#: src/actions.cpp:2211
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "ユニットを発見！ ($friendphrase、$enemyphrase )"
 
-#: src/actions.cpp:2223
+#: src/actions.cpp:2220
 msgid "(press $hotkey to keep moving)"
 msgstr "(移動し続けるには $hotkey を押して下さい)"
 
@@ -7216,19 +7216,15 @@ msgstr " は以下に含まれる:"
 msgid "$error at $pos"
 msgstr "$pos の $error"
 
-#: src/terrain.cpp:81
-msgid "'string' is a mandatory key in '[terrain]'."
-msgstr ""
-
-#: src/terrain.cpp:128
+#: src/terrain.cpp:134
 msgid "Allied village"
 msgstr "同盟所有の村"
 
-#: src/terrain.cpp:133
+#: src/terrain.cpp:139
 msgid "Enemy village"
 msgstr "敵所有の村"
 
-#: src/terrain.cpp:138
+#: src/terrain.cpp:144
 msgid "Owned village"
 msgstr "自軍所有の村"
 
@@ -7434,6 +7430,10 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
+
+#, fuzzy
+#~ msgid "Heal to full, MAX XP +25%"
+#~ msgstr "、最大 XP +25%"
 
 #~ msgid ""
 #~ "\n"
