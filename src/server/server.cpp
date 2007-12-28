@@ -938,7 +938,7 @@ void server::process_data_lobby(const network::connection sock, const config& da
 					sock, send_gzipped_);
 			network::send_data(games_and_users_list_, sock, send_gzipped_);
 			return;
-		}			
+		}
 		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 			<< "\tjoined game:\t\"" << g->name()
 			<< "\" (" << id << (observer ? ") as an observer.\n" : ").\n");
@@ -1034,14 +1034,9 @@ void server::process_data_game(const network::connection sock, const config& dat
 			desc["id"] = lexical_cast<std::string>(g->id());
 		} else {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tadvanced game:\t\"" << g->name() << "\" ("
-				<< g->id() << ") to the next scenario.\n";
-			if (g->description() == NULL) {
-				ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
-					<< g->name() << "\" (" << g->id()
-					<< ") is initialized but has no description_.\n";
-				return;
-			}
+				<< "\tsent scenario data in game:\t\"" << g->name() << "\" ("
+				<< g->id() << ") although it's already initialized.\n";
+			return;
 		}
 		config& desc = *g->description();
 		// Update the game's description.
@@ -1075,17 +1070,11 @@ void server::process_data_game(const network::connection sock, const config& dat
 
 		// Record the full scenario in g->level()
 		g->level() = data;
-		if (!is_init) {
-			// The host already put himself in the scenario so we just need
-			// to update_side_data().
-			//g->take_side(sock);
-			g->update_side_data();
-			g->describe_slots();
-		} else {
-			g->reset_history();
-			// Re-assign sides.
-			g->update_side_data();
-		}
+		// The host already put himself in the scenario so we just need
+		// to update_side_data().
+		//g->take_side(sock);
+		g->update_side_data();
+		g->describe_slots();
 		// Send the update of the game description to the lobby.
 		lobby_.send_data(games_and_users_list_diff());
 
@@ -1094,16 +1083,63 @@ void server::process_data_game(const network::connection sock, const config& dat
 // Everything below should only be processed if the game is already intialized.
 	} else if (!g->level_init()) {
 		return;
-	// If the host is announcing to send the next scenario data.
-	} else if(data.child("store_next_scenario")) {
-		if(g->is_owner(sock) && !g->level_init()) {
+	// If the host is sending the next scenario data.
+	} else if (data.child("store_next_scenario")) {
+		if (!g->is_owner(sock)) return;
+		if (!g->level_init()) {
 			WRN_SERVER << network::ip_address(sock) << "\tWarning: "
 				<< pl->second.name() << "\tsent [store_next_scenario] in game:\t\""
 				<< g->name() << "\" (" << g->id()
 				<< ") while the scenario is not yet initialized.";
-		} else {
-			g->level() = (*data.child("store_next_scenario"));
+			return;
 		}
+		LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
+			<< "\tadvanced game:\t\"" << g->name() << "\" ("
+			<< g->id() << ") to the next scenario.\n";
+		if (g->description() == NULL) {
+			ERR_SERVER << network::ip_address(sock) << "\tERROR: \""
+				<< g->name() << "\" (" << g->id()
+				<< ") is initialized but has no description_.\n";
+			return;
+		}
+		const config& s = *data.child("store_next_scenario");
+		config& desc = *g->description();
+		// Update the game's description.
+		// If there is no shroud, then tell players in the lobby
+		// what the map looks like.
+		if (s["mp_shroud"] != "yes") {
+			desc["map_data"] = s["map_data"];
+		}
+		desc["mp_era"] = s.child("era") != NULL
+			? s.child("era")->get_attribute("id") : "";
+		// map id
+		desc["mp_scenario"] = s["id"];
+		desc["observer"] = s["observer"];
+		desc["mp_village_gold"] = s["mp_village_gold"];
+		desc["experience_modifier"] = s["experience_modifier"];
+		desc["mp_fog"] = s["mp_fog"];
+		desc["mp_shroud"] = s["mp_shroud"];
+		desc["mp_use_map_settings"] = s["mp_use_map_settings"];
+		desc["mp_countdown"] = s["mp_countdown"];
+		desc["mp_countdown_init_time"] = s["mp_countdown_init_time"];
+		desc["mp_countdown_turn_bonus"] = s["mp_countdown_turn_bonus"];
+		desc["mp_countdown_reservoir_time"] = s["mp_countdown_reservoir_time"];
+		desc["mp_countdown_action_bonus"] = s["mp_countdown_action_bonus"];
+		desc["hash"] = s["hash"];
+		//desc["map_name"] = s["name"];
+		//desc["map_description"] = s["description"];
+		//desc[""] = s["objectives"];
+		//desc[""] = s["random_start_time"];
+		//desc[""] = s["turns"];
+		//desc["client_version"] = s["version"];
+
+		// Record the full scenario in g->level()
+		g->level() = s;
+		g->reset_history();
+		// Re-assign sides.
+		g->update_side_data();
+		// Send the update of the game description to the lobby.
+		lobby_.send_data(games_and_users_list_diff());
 		return;
 	// If a player advances to the next scenario of a mp campaign.
 	} else if(data.child("notify_next_scenario")) {
