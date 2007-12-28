@@ -218,6 +218,9 @@ private:
 
 	//! Sets the next random number in the pool.
 	void random_next();
+
+	//! Loads the recall list.
+	void load_recall_list(const game_data& data, const config::child_list& players);
 };
 
 

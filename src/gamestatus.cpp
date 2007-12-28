@@ -458,29 +458,19 @@ game_state::game_state(const game_data& data, const config& cfg) :
 
 	const config* snapshot = cfg.child("snapshot");
 
-	if (snapshot != NULL){
+	if (snapshot != NULL && !snapshot->empty()) {
 
 		this->snapshot = *snapshot;
 
 		seed_random(random_seed_, lexical_cast_default<unsigned>((*snapshot)["random_calls"]));
 
-		// With a start of scenario save there's an empty scenario and the recall list is stored
-		// in the player.
-		const config::child_list& players = snapshot->empty() ? 
-			cfg.get_children("player") : snapshot->get_children("player");
-    
-		if(!players.empty()) {
-			for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
-				std::string save_id = (**i)["save_id"];
-    
-				if(save_id.empty()) {
-					std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
-				} else {
-					player_info player = read_player(data, *i);
-					this->players.insert(std::pair<std::string, player_info>(save_id,player));
-				}
-			}
-		}
+		// Midgame saves have the recall list stored in the snapshot.
+		load_recall_list(data, snapshot->get_children("player"));
+
+	} else {
+		// Start of scenario save and MP campaign network next scenario 
+		// have the recall list stored in root of the config.
+		load_recall_list(data, cfg.get_children("player"));
 	}
          
 	std::cerr << "scenario: '" << scenario << "'\n";
@@ -1148,6 +1138,26 @@ void game_state::random_next()
 	// The division is done separately since we also want to 
 	// quickly go the the wanted index in the random list.
 	random_pool_ = random_pool_ * 1103515245 + 12345;
+}
+
+//! Loads the recall list.
+//!
+//! @param game_data    data parameter of game_state::game_state.
+//! @param players      Reference to the players section to load.
+void game_state::load_recall_list(const game_data& data, const config::child_list& players)
+{
+	if(!players.empty()) {
+		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
+			std::string save_id = (**i)["save_id"];
+
+			if(save_id.empty()) {
+				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
+			} else {
+				player_info player = read_player(data, *i);
+				this->players.insert(std::pair<std::string, player_info>(save_id,player));
+			}
+		}
+	}
 }
 
 static void clear_wmi(std::map<std::string, wml_menu_item*>& gs_wmi) {
