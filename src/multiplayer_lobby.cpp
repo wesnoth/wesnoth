@@ -161,7 +161,9 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	    font::make_text_ellipsis(game.map_info, font::SIZE_NORMAL,
 	        (item_rect.x + item_rect.w) - xpos - margin_),
 	    font::SIZE_NORMAL, font::NORMAL_COLOUR));
-	video().blit_surface(xpos, ypos - map_info_surf->h/2, map_info_surf);
+	if(map_info_surf) {
+		video().blit_surface(xpos, ypos - map_info_surf->h/2, map_info_surf);
+	}
 
 	// Third line
 	ypos = item_rect.y + item_rect.h  - margin_;
@@ -169,38 +171,48 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	// Draw observer icon
 	const surface observer_icon(image::get_image(game.observers
 	    ? observer_icon_locator_ : no_observer_icon_locator_));
-	video().blit_surface(xpos, ypos - observer_icon->h, observer_icon);
+	if(observer_icon) {
+		video().blit_surface(xpos, ypos - observer_icon->h, observer_icon);
 
-	// Set ypos to the middle of the line, so that 
-	// all text and icons can be aligned symmetrical to it
-	ypos -= observer_icon->h/2;
-	xpos += observer_icon->w + 2 * h_padding_;
+		// Set ypos to the middle of the line, so that 
+		// all text and icons can be aligned symmetrical to it
+		ypos -= observer_icon->h/2;
+		xpos += observer_icon->w + 2 * h_padding_;
+	}
 
 	// Draw gold icon
 	const surface gold_icon(image::get_image(gold_icon_locator_));
-	video().blit_surface(xpos, ypos - gold_icon->h/2, gold_icon);
+	if(gold_icon) {
+		video().blit_surface(xpos, ypos - gold_icon->h/2, gold_icon);
 
-	xpos += gold_icon->w + h_padding_;
+		xpos += gold_icon->w + h_padding_;
+	}
 
 	// Draw gold text
 	const surface gold_text(font::get_rendered_text(game.gold, font::SIZE_NORMAL,
 	    game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
-	video().blit_surface(xpos, ypos - gold_text->h/2, gold_text);
+	if(gold_text) {
+		video().blit_surface(xpos, ypos - gold_text->h/2, gold_text);
 
-	xpos += gold_text->w + 2 * h_padding_;
+		xpos += gold_text->w + 2 * h_padding_;
+	}
 
 	// Draw xp icon
 	const surface xp_icon(image::get_image(xp_icon_locator_));
-	video().blit_surface(xpos, ypos - xp_icon->h/2, xp_icon);
+	if(xp_icon) {
+		video().blit_surface(xpos, ypos - xp_icon->h/2, xp_icon);
 
-	xpos += xp_icon->w + h_padding_;
+		xpos += xp_icon->w + h_padding_;
+	}
 
 	// Draw xp text
 	const surface xp_text(font::get_rendered_text(game.xp, font::SIZE_NORMAL,
 	    font::NORMAL_COLOUR));
-	video().blit_surface(xpos, ypos - xp_text->h/2, xp_text);
+	if(xp_text) {
+		video().blit_surface(xpos, ypos - xp_text->h/2, xp_text);
 
-	xpos += xp_text->w + 2 * h_padding_;
+		xpos += xp_text->w + 2 * h_padding_;
+	}
 
 	if(!game.time_limit.empty()) {
 		// Draw time icon
@@ -219,9 +231,11 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	// Draw vision icon
 	const surface vision_icon(image::get_image(vision_icon_locator_));
-	video().blit_surface(xpos, ypos - vision_icon->h/2, vision_icon);
+	if(vision_icon) {
+		video().blit_surface(xpos, ypos - vision_icon->h/2, vision_icon);
 
-	xpos += vision_icon->w + h_padding_;
+		xpos += vision_icon->w + h_padding_;
+	}
 
 	// Draw vision text
 	const surface vision_text(font::get_rendered_text(
@@ -229,7 +243,9 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	        (item_rect.x + item_rect.w) - xpos - margin_),
 	    font::SIZE_NORMAL,
 	    game.use_map_settings ? font::GRAY_COLOUR : font::NORMAL_COLOUR));
-	video().blit_surface(xpos, ypos - vision_text->h/2, vision_text);
+	if(vision_text) {
+		video().blit_surface(xpos, ypos - vision_text->h/2, vision_text);
+	}
 
 	// Draw map settings text
 	if (game.use_map_settings) {
