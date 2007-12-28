@@ -364,6 +364,12 @@ void server::run()
 
 		} catch(network::error& e) {
 			if (e.message == "shut down") {
+				WRN_SERVER << "Kicking everyone...\n";
+				for (player_map::const_iterator pl = players_.begin();
+					pl != players_.end(); ++pl)
+				{
+					network::queue_disconnect(pl->first);
+				}
 				std::cout << "Shutting server down.\n";
 				break;
 			}

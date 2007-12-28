@@ -508,10 +508,10 @@ bool disconnect(connection s, bool force)
 	if(s == 0) {
 		while(sockets.empty() == false) {
 			wassert(sockets.back() != 0);
-			disconnect(sockets.back(), true);
-//			while(disconnect(sockets.back()) == false) {
-//				SDL_Delay(10);
-//			}
+//			disconnect(sockets.back(), true);
+			while(disconnect(sockets.back()) == false) {
+				SDL_Delay(1);
+			}
 		}
 		return true;
 	}
