@@ -457,39 +457,34 @@ static int process_queue(void*)
 		{
 			const threading::lock lock(*global_mutex);
 			socket_state_map::iterator lock_it = sockets_locked.find(sock);
-			// may be false on server shut down
 			assert(lock_it != sockets_locked.end());
 			lock_it->second = result;
 			if(result == SOCKET_ERRORED) {
 				++socket_errors;
 			}
 
+			if(result != SOCKET_READY || buf.empty()) continue;
+
 			//if we received data, add it to the queue
-			if(result == SOCKET_READY && buf.empty() == false) {
-				received_data_queue.push_back(buffer(sock));
-				std::string buffer(buf.begin(), buf.end());
-				std::istringstream stream(buffer);
-				compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
-				// Binary wml starts with a char < 4, the first char of a gzip header is 31
-				// so test that here and use the proper reader.
-//				std::cerr << "front of buffer " << stream.peek() << " ";
-				if(stream.peek() == 31) {
-					try {
-//						std::cerr << "recieve gzipped\n.";
-						read_gz(received_data_queue.back().config_buf, stream);
-					} catch(boost::iostreams::gzip_error& e) {
-						//throw back the error in the parent thread
-//						std::cerr << "error in gzipped data\n";
-						received_data_queue.back().config_error = e.error();
-					}
-				} else {
-					try {
-//						std::cerr << "recieve binary_wml\n.";
-						read_compressed(received_data_queue.back().config_buf, stream, compress);
-					} catch(config::error &e) {
-						//throw back the error in the parent thread
-						received_data_queue.back().config_error = e.message;
-					}
+			received_data_queue.push_back(buffer(sock));
+			std::string buffer(buf.begin(), buf.end());
+			std::istringstream stream(buffer);
+			compression_schema &compress = schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
+			// Binary wml starts with a char < 4, the first char of a gzip header is 31
+			// so test that here and use the proper reader.
+			if(stream.peek() == 31) {
+				try {
+					read_gz(received_data_queue.back().config_buf, stream);
+				} catch(boost::iostreams::gzip_error& e) {
+					//throw back the error in the parent thread
+					received_data_queue.back().config_error = e.error();
+				}
+			} else {
+				try {
+					read_compressed(received_data_queue.back().config_buf, stream, compress);
+				} catch(config::error &e) {
+					//throw back the error in the parent thread
+					received_data_queue.back().config_error = e.message;
 				}
 			}
 		}
