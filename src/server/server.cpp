@@ -1101,6 +1101,8 @@ void server::process_data_game(const network::connection sock, const config& dat
 				<< pl->second.name() << "\tsent [store_next_scenario] in game:\t\""
 				<< g->name() << "\" (" << g->id()
 				<< ") while the scenario is not yet initialized.";
+		} else {
+			g->level() = (*data.child("store_next_scenario"));
 		}
 		return;
 	// If a player advances to the next scenario of a mp campaign.
