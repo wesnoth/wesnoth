@@ -1709,20 +1709,35 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "message") {
 		// Check if this message is for this side
 		std::string side_for_raw = cfg["side_for"];
+		bool side_for_show = true;
 		if (!side_for_raw.empty())
 		{
+                                  
 			assert(state_of_game != 0);
+			side_for_show = false;
 			side_for_raw = utils::interpolate_variables_into_string(side_for_raw,*state_of_game);
-		
+
 			std::vector<std::string> side_for =
 				utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-				
-			if (side_for.end() == 
-				std::find(side_for.begin(), side_for.end(), state_of_game->get_variable("side_number") ) )
+			std::vector<std::string>::iterator itSide;
+			int side;
+			// Check if any of side numbers are human controlled
+			for (itSide = side_for.begin(); itSide != side_for.end(); ++itSide)
 			{
-				// We don't want to show this messange if players side isn't in list
-				//break;
-				return rval;
+				side = lexical_cast_default<int>(*itSide);
+				// Make sanity check that side number is good
+				// then check if this side is human controled
+				if (side > 0
+					&& side <= teams->size()
+					&& (*teams)[side-1].is_human())
+				{
+					side_for_show = true;
+					break;
+				}
+			}
+			if (!side_for_show)
+			{
+				DBG_NG << "player isn't controlling side which should get message\n";
 			}
 		}
 		unit_map::iterator speaker = units->end();
@@ -1817,39 +1832,43 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		// If we're not replaying, or if we are replaying
 		// and there is no choice to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
-			const t_string msg = cfg["message"];
-			const std::string duration_str = cfg["duration"];
-			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
-			const SDL_Rect& map_area = screen->map_outside_area();
-
-			try {
-				wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
-					msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
-				if(!surface.null()) {
-					to_show.set_image(surface, caption);
-				}
-				if(!options.empty()) {
-					to_show.set_menu(options);
-				}
-				gui::dialog::dimension_measurements dim = to_show.layout();
-				to_show.get_menu().set_width( dim.menu_width );
-				to_show.get_menu().set_max_width( dim.menu_width );
-				to_show.get_menu().wrap_words();
-				static const int dialog_top_offset = 26;
-				to_show.layout(-1, map_area.y + dialog_top_offset);
-				option_chosen = to_show.show(lifetime);
-				LOG_DP << "showed dialog...\n";
-
-				if (option_chosen == gui::ESCAPE_DIALOG){
-					rval = false;
-				}
-
-				if(options.empty() == false) {
-					recorder.choose_option(option_chosen);
-				}
-			} catch(utils::invalid_utf8_exception&) {
-				// we already had a warning so do nothing.
-			}
+  
+			if (side_for_show)
+			{
+                const t_string msg = cfg["message"];
+    			const std::string duration_str = cfg["duration"];
+    			const unsigned int lifetime = average_frame_time * lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
+    			const SDL_Rect& map_area = screen->map_outside_area();
+    
+    			try {
+    				wml_event_dialog to_show(*screen, ((surface.null())? caption : ""),
+    					msg, ((options.empty())? gui::MESSAGE : gui::OK_ONLY));
+    				if(!surface.null()) {
+    					to_show.set_image(surface, caption);
+    				}
+    				if(!options.empty()) {
+    					to_show.set_menu(options);
+    				}
+    				gui::dialog::dimension_measurements dim = to_show.layout();
+    				to_show.get_menu().set_width( dim.menu_width );
+    				to_show.get_menu().set_max_width( dim.menu_width );
+    				to_show.get_menu().wrap_words();
+    				static const int dialog_top_offset = 26;
+    				to_show.layout(-1, map_area.y + dialog_top_offset);
+    				option_chosen = to_show.show(lifetime);
+    				LOG_DP << "showed dialog...\n";
+    
+    				if (option_chosen == gui::ESCAPE_DIALOG){
+    					rval = false;
+    				}
+    
+    				if(options.empty() == false) {
+    					recorder.choose_option(option_chosen);
+    				}
+    			} catch(utils::invalid_utf8_exception&) {
+    				// we already had a warning so do nothing.
+    			}
+            }
 
 		// Otherwise if a choice has to be made, get it from the replay data
 		} else {
