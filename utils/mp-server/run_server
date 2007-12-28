@@ -41,7 +41,7 @@ do
 		mv currentlobby.log oldlobby.log > /dev/null 2>&1
 		ln -s logs/wesnothd.$DATE.$REV.log current.log
 		ln -s logs/lobby.$DATE.$REV.log currentlobby.log
-		mv gmon.out gmon.$DATE.out
+		mv gmon.out gmon.$DATE.out > /dev/null 2>&1
 		# wait a bit so the server is likely up and listening
 		sleep 1
 		if [ "$SERVER" != "trunk" ]; then
