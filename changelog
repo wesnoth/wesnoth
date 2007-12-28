@@ -36,6 +36,20 @@ Version 1.3.12+svn:
    * show 'back to round xxx' also in 800 x 600 resolution
    * a multiplayer map with allow_new_game causes the selection of a map to
      show the wrong minimap (bug #9425)
+   * the "1 turn to reach" of the movement hint is now used only for multi-turns
+     move, instead icons show ZoC and village capture ending the move.
+   * turn to reach numbers also works when bigger than 9 and without parentheses
+   * display an icon into the movement hint where the unit can be invisible and
+     the sidebar icon is now about the current status of the unit
+   * fix glitches with the sidebar status icons (slowed, poisoned..) when the
+     mouseover leave the unit
+   * middle mouse button now do a progressive scrolling when kept pressed, speed
+     and direction depend of the the position of the mouse relatively to the
+     center of the view
+   * in help, sections are now opened by clicking on the book icon or
+     double-clicking on its title
+   * each section has now an associated page with general info and links to its
+     topics
  * WML engine:
    * new event "last breath" will be triggered when a unit dies, but
      before the animation is played
@@ -73,6 +87,13 @@ Version 1.3.12+svn:
      (closes bug #10219)
    * Fixed code to filter sent items when undoing (bug #10588, needs testing)
    * Avoid an assertion failure triggered in the replays
+   * speed-up the cache validation by skipping directories named "images" and
+     "sounds", WML authors must avoid to put cfg files there (or manually
+     refresh their cache if they really want to place and edit cfg files there)
+   * using "next-unit" on the last unit now triggers the selection effect each
+     time (instead of half the times)
+   * fix some latency for clearing fogged corners on shrouded maps
+   * optimization of the pathfinding and unit loading
 
 Version 1.3.12:
  * campaigns:
