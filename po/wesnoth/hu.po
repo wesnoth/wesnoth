@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu_wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 14:21+0100\n"
+"POT-Creation-Date: 2007-12-28 22:24+0100\n"
 "PO-Revision-Date: 2006-07-04 17:06+0200\n"
 "Last-Translator:  <>\n"
 "Language-Team: \n"
@@ -36,13 +36,13 @@ msgid "Mouse Scrolling"
 msgstr "Egérgörgetés"
 
 #: data/_main.cfg:72
+msgid "Alternate Wesnoth Server"
+msgstr ""
+
+#: data/_main.cfg:76
 #, fuzzy
 msgid "Official Wesnoth Server"
 msgstr "Csatlakozás a hivatalos kiszolgálóhoz"
-
-#: data/_main.cfg:76
-msgid "Alternate Wesnoth Server"
-msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -5276,7 +5276,7 @@ msgid ""
 msgstr "Gond volt a hadjárathoz szükséges fájlok létrehozásával."
 
 #: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:469
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
 msgid "Connection timed out"
 msgstr "A kapcsolat túllépte az időt"
 
@@ -5342,15 +5342,15 @@ msgstr "Többjátékos játék játszása ugyanazon számítógép megosztásáv
 msgid "Login: "
 msgstr "Bejelentkezés: "
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:385
+#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "A játékot nem sikerült betölteni: "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:388
+#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Hiba a játék közben: "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:391
+#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "A pályát nem sikerült betölteni: "
 
@@ -5425,11 +5425,11 @@ msgstr "Veszítesz, ha:"
 msgid "No time of day has been defined."
 msgstr ""
 
-#: src/gamestatus.cpp:711 src/gamestatus.cpp:713 src/playcampaign.cpp:411
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
 msgid " replay"
 msgstr " visszajátszás"
 
-#: src/gamestatus.cpp:831
+#: src/gamestatus.cpp:821
 msgid "Could not write to file"
 msgstr "Nem sikerült a fájlba írni"
 
@@ -5914,7 +5914,7 @@ msgstr ""
 msgid "Scenario Settings"
 msgstr "Pálya Indítás"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:568
+#: src/menu_events.cpp:702 src/playcampaign.cpp:543
 msgid "Name:"
 msgstr "Név:"
 
@@ -5941,7 +5941,7 @@ msgstr "Elmentve"
 msgid "The game has been saved"
 msgstr "Az állás el lett mentve"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:576
+#: src/menu_events.cpp:730 src/playcampaign.cpp:551
 msgid "The game could not be saved"
 msgstr "A játék nem menthető el"
 
@@ -6809,31 +6809,31 @@ msgstr "Vereség"
 msgid "You have been defeated!"
 msgstr "Kikaptál!"
 
-#: src/playcampaign.cpp:395
+#: src/playcampaign.cpp:384
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "Hiba a játék közben: "
 
-#: src/playcampaign.cpp:418
+#: src/playcampaign.cpp:407
 #, fuzzy
 msgid "The replay could not be saved"
 msgstr "A játék nem menthető el"
 
-#: src/playcampaign.cpp:439
+#: src/playcampaign.cpp:423
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:460
+#: src/playcampaign.cpp:444
 #, fuzzy
 msgid "Downloading next scenario..."
 msgstr "Következő szint letöltése..."
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:542
 #, fuzzy
 msgid "Do you want to save your game?"
 msgstr "Szeretnéd kihagyni a visszajátszást?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:567
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Ismeretlen pálya: '"

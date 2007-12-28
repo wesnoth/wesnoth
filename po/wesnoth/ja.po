@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 14:21+0100\n"
+"POT-Creation-Date: 2007-12-28 22:24+0100\n"
 "PO-Revision-Date: 2007-09-16 00:51+0900\n"
 "Last-Translator: naoki iimura <amatubu@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -38,12 +38,12 @@ msgid "Mouse Scrolling"
 msgstr "マウススクロール"
 
 #: data/_main.cfg:72
-msgid "Official Wesnoth Server"
-msgstr "公式サーバー"
-
-#: data/_main.cfg:76
 msgid "Alternate Wesnoth Server"
 msgstr "代わりの Wesnoth サーバー"
+
+#: data/_main.cfg:76
+msgid "Official Wesnoth Server"
+msgstr "公式サーバー"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -5527,7 +5527,7 @@ msgstr ""
 "このアドオンを導入するのに 必要なファイルを作成する際に、 問題がありました。"
 
 #: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:469
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
 msgid "Connection timed out"
 msgstr "接続時間切れ"
 
@@ -5589,15 +5589,15 @@ msgstr "同一マシンを共用して AI もしくは人間とマルチプレ�
 msgid "Login: "
 msgstr "ログイン: "
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:385
+#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:388
+#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:391
+#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
 
@@ -5668,11 +5668,11 @@ msgstr "敗北条件:"
 msgid "No time of day has been defined."
 msgstr "開始時の時刻をランダムにする"
 
-#: src/gamestatus.cpp:711 src/gamestatus.cpp:713 src/playcampaign.cpp:411
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
 msgid " replay"
 msgstr "リプレイ"
 
-#: src/gamestatus.cpp:831
+#: src/gamestatus.cpp:821
 msgid "Could not write to file"
 msgstr "ファイルに書き込みできませんでした。"
 
@@ -6133,7 +6133,7 @@ msgstr "はい"
 msgid "Scenario Settings"
 msgstr "シナリオ設定"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:568
+#: src/menu_events.cpp:702 src/playcampaign.cpp:543
 msgid "Name:"
 msgstr "名前:"
 
@@ -6160,7 +6160,7 @@ msgstr "保存された"
 msgid "The game has been saved"
 msgstr "ゲームを保存しました。"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:576
+#: src/menu_events.cpp:730 src/playcampaign.cpp:551
 msgid "The game could not be saved"
 msgstr "ゲームは保存できませんでした"
 
@@ -6997,27 +6997,27 @@ msgstr "敗北"
 msgid "You have been defeated!"
 msgstr "あなたは敗れました！"
 
-#: src/playcampaign.cpp:395
+#: src/playcampaign.cpp:384
 msgid "Error while reading the WML: "
 msgstr "WML 読み込み中のエラー: "
 
-#: src/playcampaign.cpp:418
+#: src/playcampaign.cpp:407
 msgid "The replay could not be saved"
 msgstr "リプレイは保存できませんでした"
 
-#: src/playcampaign.cpp:439
+#: src/playcampaign.cpp:423
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:460
+#: src/playcampaign.cpp:444
 msgid "Downloading next scenario..."
 msgstr "次のシナリオをダウンロード中..."
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:542
 msgid "Do you want to save your game?"
 msgstr "このゲームを本当に保存しますか？"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:567
 msgid "Unknown scenario: '$scenario|'"
 msgstr "不明のシナリオ: '$scenario|'"
 

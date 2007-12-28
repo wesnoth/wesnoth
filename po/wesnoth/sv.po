@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 14:21+0100\n"
+"POT-Creation-Date: 2007-12-28 22:24+0100\n"
 "PO-Revision-Date: 2007-12-12 00:21+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -32,12 +32,12 @@ msgid "Mouse Scrolling"
 msgstr "Musrullning"
 
 #: data/_main.cfg:72
-msgid "Official Wesnoth Server"
-msgstr "Officiell Wesnoth-server"
-
-#: data/_main.cfg:76
 msgid "Alternate Wesnoth Server"
 msgstr "Alternativ Wesnoth-server"
+
+#: data/_main.cfg:76
+msgid "Official Wesnoth Server"
+msgstr "Officiell Wesnoth-server"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -5608,7 +5608,7 @@ msgstr ""
 "extramaterial."
 
 #: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:469
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
 msgid "Connection timed out"
 msgstr "Anslutningstiden tog slut"
 
@@ -5672,15 +5672,15 @@ msgstr "Spela ett gruppspel med en och samma dator"
 msgid "Login: "
 msgstr "Logga in: "
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:385
+#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Spelet kunde inte öppnas: "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:388
+#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Fel under spel: "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:391
+#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Kartan kunde inte öppnas: "
 
@@ -5751,11 +5751,11 @@ msgstr "Nederlag:"
 msgid "No time of day has been defined."
 msgstr "Slumpmässig tid på dygnet vid start"
 
-#: src/gamestatus.cpp:711 src/gamestatus.cpp:713 src/playcampaign.cpp:411
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
 msgid " replay"
 msgstr " repris"
 
-#: src/gamestatus.cpp:831
+#: src/gamestatus.cpp:821
 msgid "Could not write to file"
 msgstr "Kunde inte skriva till fil"
 
@@ -6220,7 +6220,7 @@ msgstr "ja"
 msgid "Scenario Settings"
 msgstr "Scenarioinställningar"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:568
+#: src/menu_events.cpp:702 src/playcampaign.cpp:543
 msgid "Name:"
 msgstr "Namn:"
 
@@ -6246,7 +6246,7 @@ msgstr "Sparat"
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:576
+#: src/menu_events.cpp:730 src/playcampaign.cpp:551
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
@@ -7085,27 +7085,27 @@ msgstr "Nederlag"
 msgid "You have been defeated!"
 msgstr "Du har förlorat!"
 
-#: src/playcampaign.cpp:395
+#: src/playcampaign.cpp:384
 msgid "Error while reading the WML: "
 msgstr "Fel vid läsning av WML: "
 
-#: src/playcampaign.cpp:418
+#: src/playcampaign.cpp:407
 msgid "The replay could not be saved"
 msgstr "Reprisen kunde inte sparas"
 
-#: src/playcampaign.cpp:439
+#: src/playcampaign.cpp:423
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Scenariot är slut. Vill du fortsätta spela kampanjen?"
 
-#: src/playcampaign.cpp:460
+#: src/playcampaign.cpp:444
 msgid "Downloading next scenario..."
 msgstr "Hämtar nästa scenario..."
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:542
 msgid "Do you want to save your game?"
 msgstr "Vill du spara ditt spel?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:567
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Okänt scenario: '$scenario|'"
 

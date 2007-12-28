@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 14:21+0100\n"
+"POT-Creation-Date: 2007-12-28 22:24+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -42,12 +42,12 @@ msgid "Mouse Scrolling"
 msgstr "Преместване с мишката"
 
 #: data/_main.cfg:72
-msgid "Official Wesnoth Server"
-msgstr "Официален сървър на Уеснот"
-
-#: data/_main.cfg:76
 msgid "Alternate Wesnoth Server"
 msgstr "Неофициален сървър на Уеснот"
+
+#: data/_main.cfg:76
+msgid "Official Wesnoth Server"
+msgstr "Официален сървър на Уеснот"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -5697,7 +5697,7 @@ msgstr ""
 "на кампанията."
 
 #: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:469
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
 msgid "Connection timed out"
 msgstr "Времето за връзката е просрочено"
 
@@ -5762,15 +5762,15 @@ msgstr "Игра за няколко играча (хора или компют�
 msgid "Login: "
 msgstr "Вход: "
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:385
+#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Играта не може да се зареди: "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:388
+#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Грешка по време на игра : "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:391
+#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Картата не може да се зареди: "
 
@@ -5843,11 +5843,11 @@ msgstr "Загуба:"
 msgid "No time of day has been defined."
 msgstr "Произволно време на денонощието в началото"
 
-#: src/gamestatus.cpp:711 src/gamestatus.cpp:713 src/playcampaign.cpp:411
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
 msgid " replay"
 msgstr " повторение"
 
-#: src/gamestatus.cpp:831
+#: src/gamestatus.cpp:821
 msgid "Could not write to file"
 msgstr "Записът невъзможен "
 
@@ -6325,7 +6325,7 @@ msgstr ""
 msgid "Scenario Settings"
 msgstr "Начало на мисията"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:568
+#: src/menu_events.cpp:702 src/playcampaign.cpp:543
 msgid "Name:"
 msgstr "Име:"
 
@@ -6352,7 +6352,7 @@ msgstr "Запазена"
 msgid "The game has been saved"
 msgstr "Играта бе запазена"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:576
+#: src/menu_events.cpp:730 src/playcampaign.cpp:551
 msgid "The game could not be saved"
 msgstr "Играта не бе запазена"
 
@@ -7196,27 +7196,27 @@ msgstr "Загуба"
 msgid "You have been defeated!"
 msgstr "Изгубихте!"
 
-#: src/playcampaign.cpp:395
+#: src/playcampaign.cpp:384
 msgid "Error while reading the WML: "
 msgstr "Грешка при четене на WML:"
 
-#: src/playcampaign.cpp:418
+#: src/playcampaign.cpp:407
 msgid "The replay could not be saved"
 msgstr "Повторението не бе запазено"
 
-#: src/playcampaign.cpp:439
+#: src/playcampaign.cpp:423
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:460
+#: src/playcampaign.cpp:444
 msgid "Downloading next scenario..."
 msgstr "Сваляне на следващата мисия..."
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:542
 msgid "Do you want to save your game?"
 msgstr "Искате ли да запазите играта?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:567
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Непозната мисия: '"

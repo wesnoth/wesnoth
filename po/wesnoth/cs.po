@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 14:21+0100\n"
+"POT-Creation-Date: 2007-12-28 22:24+0100\n"
 "PO-Revision-Date: 2007-12-21 09:38+0100\n"
 "Last-Translator: Vladimír Slávik <slavik.vladimir@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -39,12 +39,12 @@ msgid "Mouse Scrolling"
 msgstr "Posouvání pomocí myši"
 
 #: data/_main.cfg:72
-msgid "Official Wesnoth Server"
-msgstr "Oficiální server Wesnothu"
-
-#: data/_main.cfg:76
 msgid "Alternate Wesnoth Server"
 msgstr "Alternativní server Wesnothu"
+
+#: data/_main.cfg:76
+msgid "Official Wesnoth Server"
+msgstr "Oficiální server Wesnothu"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -5642,7 +5642,7 @@ msgid ""
 msgstr "Vytvoření souborů potřebných k instalaci tažení neproběhlo v pořádku."
 
 #: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:469
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
 msgid "Connection timed out"
 msgstr "Časový limit pro připojení vypršel"
 
@@ -5706,15 +5706,15 @@ msgstr "Hrej hru více hráčů s lidmi nebo počítačovými protivníky na jed
 msgid "Login: "
 msgstr "Přihlášení: "
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:385
+#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Hru se nepodařilo nahrát: "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:388
+#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Během hraní hry se vyskytla chyba: "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:391
+#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Nepodařilo se nahrát herní mapu: "
 
@@ -5784,11 +5784,11 @@ msgstr "Prohra:"
 msgid "No time of day has been defined."
 msgstr "Nebyla definována žádná denní doba."
 
-#: src/gamestatus.cpp:711 src/gamestatus.cpp:713 src/playcampaign.cpp:411
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
 msgid " replay"
 msgstr " záznam"
 
-#: src/gamestatus.cpp:831
+#: src/gamestatus.cpp:821
 msgid "Could not write to file"
 msgstr "Nemohu zapsat do souboru"
 
@@ -6258,7 +6258,7 @@ msgstr "ano"
 msgid "Scenario Settings"
 msgstr "Nastavení scénáře"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:568
+#: src/menu_events.cpp:702 src/playcampaign.cpp:543
 msgid "Name:"
 msgstr "Jméno:"
 
@@ -6282,7 +6282,7 @@ msgstr "Uloženo"
 msgid "The game has been saved"
 msgstr "Hra byla uložena"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:576
+#: src/menu_events.cpp:730 src/playcampaign.cpp:551
 msgid "The game could not be saved"
 msgstr "Hru se nepodařilo uložit"
 
@@ -7127,27 +7127,27 @@ msgstr "Porážka"
 msgid "You have been defeated!"
 msgstr "Byl jsi poražen!"
 
-#: src/playcampaign.cpp:395
+#: src/playcampaign.cpp:384
 msgid "Error while reading the WML: "
 msgstr "Chyba při načítání WML: "
 
-#: src/playcampaign.cpp:418
+#: src/playcampaign.cpp:407
 msgid "The replay could not be saved"
 msgstr "Záznam se nepodařilo uložit"
 
-#: src/playcampaign.cpp:439
+#: src/playcampaign.cpp:423
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Tento scénář skončil. Přejete si pokračovat v tažení?"
 
-#: src/playcampaign.cpp:460
+#: src/playcampaign.cpp:444
 msgid "Downloading next scenario..."
 msgstr "Stahuji další scénář..."
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:542
 msgid "Do you want to save your game?"
 msgstr "Přeješ si uložit hru?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:567
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Neznámý scénář: „$scenario|“"
 

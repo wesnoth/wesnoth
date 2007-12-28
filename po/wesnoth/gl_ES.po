@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 14:21+0100\n"
+"POT-Creation-Date: 2007-12-28 22:24+0100\n"
 "PO-Revision-Date: 2007-11-05 14:53+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -36,12 +36,12 @@ msgid "Mouse Scrolling"
 msgstr "Desprazamento do Rato"
 
 #: data/_main.cfg:72
-msgid "Official Wesnoth Server"
-msgstr "Servidor Oficial de Wesnoth"
-
-#: data/_main.cfg:76
 msgid "Alternate Wesnoth Server"
 msgstr "Servidor Alternativo de Wesnoth"
+
+#: data/_main.cfg:76
+msgid "Official Wesnoth Server"
+msgstr "Servidor Oficial de Wesnoth"
 
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:559
 #: data/core/macros/schedules.cfg:83 data/core/macros/schedules.cfg:91
@@ -5573,7 +5573,7 @@ msgstr ""
 "extensión."
 
 #: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:469
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
 msgid "Connection timed out"
 msgstr "A conexión expirou"
 
@@ -5635,15 +5635,15 @@ msgstr ""
 msgid "Login: "
 msgstr ""
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:385
+#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
 msgid "The game could not be loaded: "
 msgstr "Non se puido cargar a partida: "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:388
+#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
 msgid "Error while playing the game: "
 msgstr "Erro mentres se xogaba a partida: "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:391
+#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
 msgid "The game map could not be loaded: "
 msgstr "Non se puido cargar o mapa da partida: "
 
@@ -5716,11 +5716,11 @@ msgstr "Derrota:"
 msgid "No time of day has been defined."
 msgstr "Hora do día aleatoria ó comezar"
 
-#: src/gamestatus.cpp:711 src/gamestatus.cpp:713 src/playcampaign.cpp:411
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
 msgid " replay"
 msgstr " reproducción"
 
-#: src/gamestatus.cpp:831
+#: src/gamestatus.cpp:821
 msgid "Could not write to file"
 msgstr "Non se puido escribir no ficheiro"
 
@@ -6180,7 +6180,7 @@ msgstr "si"
 msgid "Scenario Settings"
 msgstr "Opcións de Escenario"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:568
+#: src/menu_events.cpp:702 src/playcampaign.cpp:543
 msgid "Name:"
 msgstr "Nome:"
 
@@ -6207,7 +6207,7 @@ msgstr "Gardado"
 msgid "The game has been saved"
 msgstr "Gardouse a partida"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:576
+#: src/menu_events.cpp:730 src/playcampaign.cpp:551
 msgid "The game could not be saved"
 msgstr "Non se puido gardar a partida"
 
@@ -7045,27 +7045,27 @@ msgstr "Derrota"
 msgid "You have been defeated!"
 msgstr "Derrotáronte!"
 
-#: src/playcampaign.cpp:395
+#: src/playcampaign.cpp:384
 msgid "Error while reading the WML: "
 msgstr "Erro ó ler o WML: "
 
-#: src/playcampaign.cpp:418
+#: src/playcampaign.cpp:407
 msgid "The replay could not be saved"
 msgstr "Non se puido gardar a reprodución"
 
-#: src/playcampaign.cpp:439
+#: src/playcampaign.cpp:423
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/playcampaign.cpp:460
+#: src/playcampaign.cpp:444
 msgid "Downloading next scenario..."
 msgstr "Descargando o seguinte escenario..."
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:542
 msgid "Do you want to save your game?"
 msgstr "Desexas gardar a partida?"
 
-#: src/playcampaign.cpp:592
+#: src/playcampaign.cpp:567
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario descoñecido: '$scenario|'"
 
