@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-28 14:21+0100\n"
-"PO-Revision-Date: 2007-12-25 13:44+0200\n"
+"PO-Revision-Date: 2007-12-27 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -419,9 +419,10 @@ msgstr ""
 
 #: data/core/help.cfg:137
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Sejr og nederlag"
 
 #: data/core/help.cfg:138
+#, fuzzy
 msgid ""
 "Pay careful attention to the Objectives pop-up box at the beginning of each "
 "scenario. Usually you will achieve victory by killing all enemy leaders, and "
@@ -430,8 +431,14 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"Hold specielt øje med målene som vises i begyndelsen af hver scenarie. "
+"Normalt opnår du sejr ved at dræbe alle fjendtlige ledere, og kan kun "
+"besejres ved at din leder dræbes. Men scenarier kan have andre sejrsmål - få "
+"din leder til et bestemt sted eller du skal eskortere nogen, eller løse en "
+"gåde, eller holde stand mod en belejring indtil bestemte betingelser er nået."
 
 #: data/core/help.cfg:140
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -440,6 +447,12 @@ msgid ""
 "options or (if you are in a multiplayer game) chatting with other players "
 "before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Når du vinder et scenarie, bliver kortet gråt og »afslut runde«-knappen "
+"ændrer sig til »afslut scenarie«.  Du kan nu ændre dine gem-indstillinger "
+"eller (hvis du er i flerspiller) skrive med andre spillere før du taster på "
+"knappen for det næste scenarie."
 
 #: data/core/help.cfg:145
 msgid "Recruiting and Recalling"
@@ -5764,9 +5777,8 @@ msgid "' (The game will now exit)"
 msgstr "' (Spillet afsluttes)"
 
 #: src/game.cpp:1811
-#, fuzzy
 msgid "Loading data files"
-msgstr "Læser enhedsfiler."
+msgstr "Indlæser datafiler"
 
 #: src/game.cpp:1959
 msgid "Battle for Wesnoth"
@@ -7094,16 +7106,15 @@ msgstr "Terræn som har mindre en 1 i bevægelsesomkostning."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
-msgstr ""
+msgstr "Opretter hold"
 
 #: src/play_controller.cpp:106 src/play_controller.cpp:121
 msgid "Initializing display"
-msgstr ""
+msgstr "Opretter billedet"
 
 #: src/play_controller.cpp:133
-#, fuzzy
 msgid "Starting game"
-msgstr "Afbryd spil"
+msgstr "Begynder spil"
 
 #: src/play_controller.cpp:804
 msgid "Back to start"
