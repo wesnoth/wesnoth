@@ -449,7 +449,9 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 
 	const config::child_list& cmd = commands();
 	while(cmd_start < cmd_end) {
-		if((data_type == ALL_DATA || (*cmd[cmd_start])["undo"] == "no") && (*cmd[cmd_start])["sent"] != "yes") {
+		if ((data_type == ALL_DATA || (*cmd[cmd_start])["undo"] == "no")
+			&& (*cmd[cmd_start])["sent"] != "yes")
+		{
 			res.add_child("command",*cmd[cmd_start]);
 
 			if(data_type == NON_UNDO_DATA) {
@@ -467,7 +469,11 @@ void replay::undo()
 {
 	config::child_itors cmd = cfg_.child_range("command");
 	std::vector<config::child_iterator> async_cmds;
-	// Remember cmds not yet synced and skip over them
+	// Remember commands not yet synced and skip over them.
+	// We assume that all already sent (sent=yes) data isn't undoable
+	// even if not marked explicitely with undo=no.
+	//! @todo Change undo= to default to "no" and explicitely mark all
+	//! undoable commands with yes.
 	while(cmd.first != cmd.second && (**(cmd.second-1))["undo"] == "no"
 		|| (**(cmd.second-1))["async"] == "yes"
 		|| (**(cmd.second-1))["sent"] == "yes")
