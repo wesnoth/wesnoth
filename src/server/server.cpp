@@ -354,6 +354,12 @@ void server::run() {
 			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
 		} catch(network::error& e) {
 			if (e.message == "shut down") {
+				LOG_SERVER << "Kicking everyone...\n";
+				for (player_map::const_iterator pl = players_.begin();
+					pl != players_.end(); ++pl)
+				{
+					network::queue_disconnect(pl->first);
+				}
 				std::cout << "Shutting server down.\n";
 				break;
 			}
@@ -1132,22 +1138,27 @@ void server::process_data_game(const network::connection sock, const config& dat
 		//desc[""] = s["random_start_time"];
 		//desc[""] = s["turns"];
 		//desc["client_version"] = s["version"];
+		// Send the update of the game description to the lobby.
+		lobby_.send_data(games_and_users_list_diff());
 
 		// Record the full scenario in g->level()
 		g->level() = s;
 		g->reset_history();
 		// Re-assign sides.
 		g->update_side_data();
-		// Send the update of the game description to the lobby.
-		lobby_.send_data(games_and_users_list_diff());
+		// When the host advances tell everyone that the next scenario data is
+		// available.
+		g->send_data(config("notify_next_scenario"), sock);
 		return;
-	// If a player advances to the next scenario of a mp campaign.
+	// If a player advances to the next scenario of a mp campaign. (deprecated)
 	} else if(data.child("notify_next_scenario")) {
-		g->send_data(g->construct_server_message(pl->second.name()
-			+ " advanced to the next scenario."), sock);
+		//g->send_data(g->construct_server_message(pl->second.name()
+		//		+ " advanced to the next scenario."), sock);
 		return;
 	// A mp client sends a request for the next scenario of a mp campaign.
 	} else if (data.child("load_next_scenario")) {
+		g->send_data(g->construct_server_message(pl->second.name()
+				+ " advances to the next scenario."), sock);
 		config cfg_scenario;
 		cfg_scenario.add_child("next_scenario", g->level());
 		network::send_data(cfg_scenario, sock, send_gzipped_);

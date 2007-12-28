@@ -288,10 +288,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	//The host has ended linger mode in a campaign -> enable the "End scenario" button
 	if (const config* cfg_notify = cfg.child("notify_next_scenario")){
-		if ( (*cfg_notify)["is_host"] == "1"){
-			gui::button* btn_end = gui_.find_button("button-endturn");
-			btn_end->enable(true);
-		}
+		gui::button* btn_end = gui_.find_button("button-endturn");
+		btn_end->enable(true);
 	}
 
 	//If this client becomes the new host, notify the play_controller object about it

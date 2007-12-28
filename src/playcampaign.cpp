@@ -186,17 +186,6 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 	return res;
 }
 
-void notify_next_scenario(const io_type_t io_type){
-	//Tell the other clients that this player advanced to the next scenario
-	config cfg;
-	config& cfg_notify = cfg.add_child("notify_next_scenario");
-	if (io_type == IO_SERVER)
-		cfg_notify["is_host"] = "1";
-	else
-		cfg_notify["is_host"] = "0";
-	network::send_data(cfg, 0, true);
-}
-
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
 		const game_data& units_data, upload_log &log,
 		io_type_t io_type, bool skip_replay)
@@ -427,11 +416,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		if (res != VICTORY && res != LEVEL_CONTINUE_NO_SAVE 
 			&& res != LEVEL_CONTINUE)
 		{
-			// In case we are the host and there is a next scenario, notify
-			// the other players so they can leave linger mode.
-			if (!gamestate.next_scenario.empty() && io_type == IO_SERVER)
-				notify_next_scenario(IO_SERVER);
-
 			if (res != OBSERVER_END || gamestate.next_scenario.empty())
 				return res;
 
@@ -452,35 +436,30 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		gamestate.rotate_random();
 
 		if(io_type == IO_CLIENT) {
-			if (!gamestate.next_scenario.empty()){
-				//notifies the clients that this player advanced to the next scenario
-				notify_next_scenario(IO_CLIENT);
+			if (gamestate.next_scenario.empty()) return res;
 
-				config cfg;
-				std::string msg = _("Downloading next scenario...");
-				config cfg_load = cfg.add_child("load_next_scenario");
-				network::send_data(cfg, 0, true);
+			// Ask for the next scenario data.
+			network::send_data(config("load_next_scenario"), 0, true);
+			config cfg;
+			std::string msg = _("Downloading next scenario...");
+			do {
+				cfg.clear();
+				network::connection data_res = dialogs::network_receive_dialog(disp,
+						msg, cfg);
+				if(!data_res)
+					// FIXME: Why say timeout if the dialog was aborted?
+					//! @todo Check when this error is caught. Maybe rather
+					//! use 'return QUIT'?
+					throw network::error(_("Connection timed out"));
+			} while(cfg.child("next_scenario") == NULL);
 
-				do {
-					cfg.clear();
-					network::connection data_res = dialogs::network_receive_dialog(disp,
-							msg, cfg);
-					if(!data_res)
-						throw network::error(_("Connection timed out"));
-				} while(cfg.child("next_scenario") == NULL);
-
-				if(cfg.child("next_scenario")) {
-					starting_pos = (*cfg.child("next_scenario"));
-					scenario = &starting_pos;
-					gamestate = game_state(units_data, starting_pos);
-				} else {
-					return QUIT;
-				}
+			if(cfg.child("next_scenario")) {
+				starting_pos = (*cfg.child("next_scenario"));
+				scenario = &starting_pos;
+				gamestate = game_state(units_data, starting_pos);
+			} else {
+				return QUIT;
 			}
-			else{
-				return res;
-			}
-
 		} else {
 			scenario = game_config.find_child(type,"id",gamestate.scenario);
 
@@ -523,10 +502,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				assert(cfg.child("store_next_scenario") != NULL);
 				write_game(gamestate, *cfg.child("store_next_scenario"), WRITE_SNAPSHOT_ONLY);
 				network::send_data(cfg, 0, true);
-
-				//notifies the clients that the host advanced to the next scenario
-				notify_next_scenario(IO_SERVER);
-
 			}
 		}
 
