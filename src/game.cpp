@@ -417,8 +417,22 @@ bool game_controller::init_config()
 	//everything.
 	old_defines_map_.clear();
 
+	// Since the call to reset_game_cfg() is gone APPLE is no longer defined added
+	// this work around, but it needs a review -- Mordante
 	//reset_game_cfg();
+	defines_map_.clear();
 
+#if defined(__APPLE__)
+	defines_map_["APPLE"] = preproc_define();
+#endif
+	
+#ifdef USE_TINY_GUI
+	defines_map_["TINY"] = preproc_define();
+#endif
+
+#ifdef HAVE_PYTHON
+	defines_map_["PYTHON"] = preproc_define();
+#endif
 	game_config_.clear();
 	read_game_cfg(defines_map_, game_config_, use_caching_);
 	game_config::load_config(game_config_.child("game_config"));
