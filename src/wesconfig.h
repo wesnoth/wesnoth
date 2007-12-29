@@ -25,6 +25,6 @@
  * It is only to be updated upon changes that break *all* saves/replays
  * (break as in crash wesnoth, not compatibility issues like stat changes)
  */
-#define MIN_SAVEGAME_VERSION "1.3.2"
+#define MIN_SAVEGAME_VERSION "1.3.10"
 
 #endif

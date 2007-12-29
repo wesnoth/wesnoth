@@ -477,7 +477,7 @@ void create::process_event()
 
 		std::auto_ptr<gamemap> map(NULL);
 		try {
-			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data, gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP));
+			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
 		} catch(gamemap::incorrect_format_exception& e) {
 			LOG_STREAM(err,general) << "map could not be loaded: " << e.msg_ << "\n";
 
@@ -632,7 +632,7 @@ void create::hide_children(bool hide)
 		const std::string& map_data = parameters_.scenario_data["map_data"];
 
 		try {
-			gamemap map(game_config(), map_data, gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
+			gamemap map(game_config(), map_data);
 
 #ifndef USE_TINY_GUI
 			const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));

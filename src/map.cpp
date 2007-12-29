@@ -18,12 +18,14 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/parser.hpp"
+#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -282,12 +284,7 @@ gamemap::location::DIRECTION gamemap::location::get_opposite_dir(gamemap::locati
 //! 
 //! @param cfg          the game config
 //! @param data			the mapdata to load
-//! @param border_tiles the type of border the map has
-//!                     @todo parameter will be removed in 1.3.14 
-//! @param usage        the type of map it being read
-//!                     @todo parameter will be removed in 1.3.14 
-gamemap::gamemap(const config& cfg, const std::string& data,
-	 const tborder border_tiles, const tusage usage) : 
+gamemap::gamemap(const config& cfg, const std::string& data):
 		tiles_(1), 
 		terrainList_(),
 		letterToTerrain_(),
@@ -298,24 +295,20 @@ gamemap::gamemap(const config& cfg, const std::string& data,
 		h_(-1),
 		total_width_(0),
 		total_height_(0),
-		border_size_(border_tiles),
-		usage_(usage) 
+		border_size_(NO_BORDER),
+		usage_(IS_MAP) 
 {
 	LOG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainList_,letterToTerrain_);
 
-	read(data, border_tiles, usage);
+	read(data);
 }
 
 //! Reads a map 
 //!
 //! @param data			the mapdata to load
-//! @param border_tiles the type of border the map has
-//!                     @todo parameter will be removed in 1.3.14 
-//! @param usage        the type of map it being read
-//!                     @todo parameter will be removed in 1.3.14 
-void gamemap::read(const std::string& data, const tborder border_tiles, const tusage usage)
+void gamemap::read(const std::string& data)
 {
 	// Initial stuff
 	tiles_.clear();
@@ -340,79 +333,47 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 		header_offset = data.find("\r\n\r\n");
 	}
 	const size_t comma_offset = data.find(",");
-	bool add_tiles = false;
-	std::string map;
 	// The header shouldn't contain commas, so if the comma is found 
 	// before the header, we hit a \n\n inside or after a map. 
 	// This is no header, so don't parse it as it would be.
-	if(header_offset == std::string::npos || comma_offset < header_offset) {
-		// The cutoff for backwards compatibility is longer as normal,
-		// because after the compatibility is removed, 
-		// the minimum savegame version should be set to 1.3.10
-		lg::wml_error<<"A map without a header section is deprecated, support will be removed in 1.3.14\n";
+	VALIDATE(
+		!(header_offset == std::string::npos || comma_offset < header_offset), 
+		_("A map without a header is not supported"));
 
-		border_size_ = border_tiles;
-		usage_ = usage;
-		add_tiles = (border_size_ != 0);
-		map = data;
+	std::string header_str(std::string(data, 0, header_offset + 1));
+	config header;
+	::read(header, header_str);
+
+	border_size_ = lexical_cast_default<int>(header["border_size"], 0);
+	const std::string usage = header["usage"];
+
+	utils::string_map symbols;
+	symbols["border_size_key"] = "border_size";
+	symbols["usage_key"] = "usage";
+	symbols["usage_val"] = usage;
+	const std::string msg = "'$border_size_key|' should be "
+		"'$border_size_val|' when '$usage_key| = $usage_val|'";
+	
+	if(usage == "map") {
+		usage_ = IS_MAP;
+		symbols["border_size_val"] = "1";
+		VALIDATE(border_size_ == 1, vgettext(msg.c_str(), symbols));
+	} else if(usage == "mask") {
+		usage_ = IS_MASK;
+		symbols["border_size_val"] = "0";
+		VALIDATE(border_size_ == 0, vgettext(msg.c_str(), symbols));
+	} else if(usage == "") {
+		throw incorrect_format_exception("Map has a header but no usage");
 	} else {
-
-		std::string header_str(std::string(data, 0, header_offset + 1));
-		config header;
-		::read(header, header_str);
-
-		border_size_ = lexical_cast_default<int>(header["border_size"], 0);
-		const std::string usage = header["usage"];
-
-		if(usage == "map") {
-			usage_ = IS_MAP;
-		} else if(usage == "mask") {
-			usage_ = IS_MASK;
-		} else if(usage == "") {
-			throw incorrect_format_exception("Map has a header but no usage");
-		} else {
-			std::string msg = "Map has a header but an unknown usage:" + usage;
-			throw incorrect_format_exception(msg.c_str());
-		}
-
-		/* The third parameter is required for MSVC++ 6.0 */
-		map = std::string(data, header_offset + 2, std::string::npos);
+		std::string msg = "Map has a header but an unknown usage:" + usage;
+		throw incorrect_format_exception(msg.c_str());
 	}
+
+	/* The third parameter is required for MSVC++ 6.0 */
+	const std::string& map = std::string(data, header_offset + 2, std::string::npos);
 
 	try {
 		tiles_ = t_translation::read_game_map(map, starting_positions);
-
-		if(border_tiles && add_tiles) {
-			// Deprecated code remove at 1.3.14, there already has been a warning.
-				
-			// Add the tiles at the top and bottom
-			for(std::vector<std::vector<t_translation::t_letter> >::iterator itor = 
-					tiles_.begin(); itor != tiles_.end(); ++itor) {
-
-				itor->insert(itor->begin(), t_translation::OFF_MAP_USER);
-				itor->push_back(t_translation::OFF_MAP_USER);
-			}
-
-			// Add the tiles at the left and right side
-			if(tiles_.size() != 0) {
-				std::vector<t_translation::t_letter> 
-					column(tiles_[0].size(), t_translation::OFF_MAP_USER);
-
-				tiles_.insert(tiles_.begin(), column);
-				tiles_.push_back(column);
-			}
-		} else {
-			// Fix the starting positions, this code will still be needed after
-			// 1.3.14, but can be merged with the conversion of the starting
-			// positions array.
-			for(std::map<int, t_translation::coordinate>::iterator itor1 =
-					starting_positions.begin(); 
-					itor1 != starting_positions.end(); ++itor1) {
-				
-				--(itor1->second.x);
-				--(itor1->second.y);
-			}
-		}
 
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error. 
@@ -436,7 +397,7 @@ void gamemap::read(const std::string& data, const tborder border_tiles, const tu
 		}
 
 		// Add to the starting position array
-		startingPositions_[itor->first] = location(itor->second.x, itor->second.y);
+		startingPositions_[itor->first] = location(itor->second.x - 1, itor->second.y - 1);
 	}
 
 	// Post processing on the map

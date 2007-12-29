@@ -419,7 +419,7 @@ void save_preview_pane::draw_contents()
 #else
 				const int minimap_size = 100;
 #endif
-				map_->read(map_data, gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
+				map_->read(map_data);
 
 				map_surf = image::getMinimap(minimap_size, minimap_size, *map_);
 				if(map_surf != NULL) {
@@ -578,7 +578,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_id_sort(1);
 
-	gamemap map_obj(game_config, "", gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
+	gamemap map_obj(game_config, "");
 
 	save_preview_pane save_preview(disp.video(),game_config,&map_obj,data,games,summaries);
 

@@ -389,7 +389,7 @@ bool valid_mapdata(const std::string &data, const config &cfg) {
 	// Create a map and see if we get an exception. Not very efficient,
 	// but simple as things are implemented now.
 	try {
-		const gamemap m(cfg, data, gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
+		const gamemap m(cfg, data);
 		// Having a zero size map may cause floating point exceptions
 		// at some places later on.
 		res = m.w() != 0 && m.h() != 0;

@@ -494,7 +494,7 @@ void map_editor::change_language() {
 	hotkey::load_descriptions();
 
 	// To reload the terrain names, we need to reload the configuration file
-	editormap new_map(game_config_, map_.write(), gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
+	editormap new_map(game_config_, map_.write());
 	map_ = new_map;
 
 	// Update the selected terrain strings

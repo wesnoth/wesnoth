@@ -339,7 +339,7 @@ int main(int argc, char** argv)
 		try {
 			std::cerr << "creating map...\n";
 			//! @todo allow the editor to also create mask maps
-			editormap map(cfg, mapdata, gamemap::SINGLE_TILE_BORDER, gamemap::IS_MAP);
+			editormap map(cfg, mapdata);
 
 			const config dummy_cfg;
 			editor_display gui(video, map, *theme_cfg, cfg, dummy_cfg);
