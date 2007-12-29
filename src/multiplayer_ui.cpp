@@ -503,7 +503,8 @@ void ui::process_message(const config& msg, const bool whisper) {
 		if (!show_message) return;
 	}
 
-	bool ignored, is_friend = false;
+	bool ignored = false;
+	bool is_friend = false;
 	if (preferences::get_prefs()->child("relationship")) {
 		const config& cignore = *preferences::get_prefs()->child("relationship");
 		ignored   = (cignore[sender] == "ignored");
