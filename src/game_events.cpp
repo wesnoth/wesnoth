@@ -1715,7 +1715,6 @@ bool event_handler::handle_event_command(const queued_event& event_info,
                                   
 			assert(state_of_game != 0);
 			side_for_show = false;
-			side_for_raw = utils::interpolate_variables_into_string(side_for_raw,*state_of_game);
 
 			std::vector<std::string> side_for =
 				utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
