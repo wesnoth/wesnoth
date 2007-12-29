@@ -1162,7 +1162,8 @@ namespace {
 void game_display::add_chat_message(const std::string& speaker, int side,
 		const std::string& message, game_display::MESSAGE_TYPE type, bool bell)
 {
-	bool ignored, is_friend = false;
+	bool ignored = false;
+	bool is_friend = false;
 	std::string sender = speaker;
 	if (speaker.find("whisper: ") == 0) {
 		sender.assign(speaker, 9, speaker.size());
