@@ -38,10 +38,10 @@ enum FLIP_AXIS {NO_FLIP, FLIP_X, FLIP_Y};
 class editormap : public gamemap
 {
 public:
-	editormap(const config& terrain_cfg, const std::string& data,
-		const tborder border_tiles, const tusage usage) :
-			gamemap(terrain_cfg, data, border_tiles, usage){};
-	~editormap(){};
+	editormap(const config& terrain_cfg, const std::string& data) :
+			gamemap(terrain_cfg, data)
+			{}
+	~editormap(){}
 
 	/**
 	 * Resizes the map.
