@@ -74,6 +74,10 @@ void playmp_controller::play_side(const unsigned int team_index, bool save){
 		// we need to catch exception here
 		if(current_team().is_human()) {
 			LOG_NG << "is human...\n";
+
+			// reset default state
+			beep_warning_time_ = 0;
+
 			try{
 				before_human_turn(save);
 				play_human_turn();
@@ -119,9 +123,9 @@ bool playmp_controller::counting_down() {
 }
 
 namespace {
-	const int WARNTIME = 10000; //start beeping when 10 seconds are left (10,000ms)
+	const int WARNTIME = 20000; //start beeping when 20 seconds are left (20,000ms)
 	unsigned timer_refresh = 0;
-	const unsigned timer_refresh_rate = 50; //prevents calling SDL_GetTicks() too frequently
+	const unsigned timer_refresh_rate = 50; // prevents calling SDL_GetTicks() too frequently
 }
 
 //make sure we think about countdown even while dialogs are open
@@ -139,8 +143,9 @@ void playmp_controller::think_about_countdown(int ticks) {
 		const bool bell_on = preferences::turn_bell();
 		if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
 			preferences::set_turn_bell(true);
-			sound::play_bell(game_config::sounds::timer_bell,
-				WARNTIME - (ticks - beep_warning_time_));
+			const int loop_ticks = WARNTIME - (ticks - beep_warning_time_);
+			const int fadein_ticks = (loop_ticks > WARNTIME / 2) ? loop_ticks - WARNTIME / 2 : 0;
+			sound::play_timer(game_config::sounds::timer_bell, loop_ticks, fadein_ticks);
 			beep_warning_time_ = -1;
 			preferences::set_turn_bell(bell_on);
 		}
@@ -209,6 +214,7 @@ void playmp_controller::play_human_turn(){
 				recorder.add_countdown_update(current_team().countdown_time(),player_number_);
 				recorder.end_turn();
 				turn_data_->send_data();
+
 				throw end_turn_exception();
 			}
 
@@ -239,7 +245,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	}
 	//current_team().set_countdown_time(0);
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
+	if(beep_warning_time_ = 0) {
 		sound::stop_bell();
 	}
 	beep_warning_time_=-1;
@@ -321,7 +327,7 @@ void playmp_controller::finish_side_turn(){
 	turn_data_ = NULL;
 
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
+	if(beep_warning_time_ = 0) {
 		sound::stop_bell();
 	}
 }

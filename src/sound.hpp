@@ -24,6 +24,7 @@ enum channel_group {
 	NULL_CHANNEL = -1,
 	SOUND_SOURCES = 0,
 	SOUND_BELL,
+	SOUND_TIMER,
 	SOUND_UI,
 	SOUND_FX
 };
@@ -69,7 +70,10 @@ void play_sound(const std::string& files, channel_group group = SOUND_FX);
 void play_sound_positioned(const std::string &files, int id, unsigned int distance);
 
 // Play sound, or random one of comma-separated sounds in bell channel
-void play_bell(const std::string& files, int loop_ticks=0);
+void play_bell(const std::string& files);
+
+// Play sound, or random one of comma-separated sounds in timer channel
+void play_timer(const std::string& files, int loop_ticks, int fadein_ticks);
 
 // Play user-interface sound, or random one of comma-separated sounds.
 void play_UI_sound(const std::string& files);

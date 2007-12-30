@@ -42,7 +42,7 @@ std::vector<Mix_Chunk*> channel_chunks;
 std::vector<int> channel_ids;
 
 static bool play_sound_internal(const std::string& files, channel_group group, bool sound_on,
-						 unsigned int distance=0, int id=-1, int loop_ticks=0);
+						 unsigned int distance=0, int id=-1, int loop_ticks=0, int fadein_ticks=0);
 }
 
 namespace {
@@ -55,12 +55,19 @@ bool want_new_music = false;
 int fadingout_time=5000;
 bool no_fading = false;
 
-const size_t n_of_channels = 16;	// number of allocated channels
-const size_t bell_channel = 0;
-const size_t source_channel_start = 1;
-const size_t source_channels = n_of_channels - 6;	// number of channels reserved for sound sources
-const size_t UI_sound_channel = source_channels + 1;
-const size_t n_reserved_channels = source_channels + 2; // sources, bell, and UI
+// number of allocated channels, 
+const size_t n_of_channels = 16;
+
+// we need 2 channels, because we it for timer as well
+const size_t bell_channel = 0; 
+const size_t timer_channel = 1;
+
+// number of channels reserved for sound sources
+const size_t source_channels = n_of_channels - 8;
+const size_t source_channel_start = timer_channel + 1;
+const size_t source_channel_last = source_channel_start + source_channels - 1;
+const size_t UI_sound_channel = source_channel_last + 1;
+const size_t n_reserved_channels = UI_sound_channel + 1; // sources, bell, timer and UI
 
 // Max number of sound chunks that we want to cache
 // Keep this above number of available channels to avoid busy-looping
@@ -345,11 +352,11 @@ bool init_sound() {
 		channel_chunks.resize(n_of_channels, NULL);
 		channel_ids.resize(n_of_channels, -1);
 
-		const size_t source_channel_last = source_channels - source_channel_start + 1;
-		Mix_GroupChannels(source_channel_start, source_channel_last, SOUND_SOURCES);
 		Mix_GroupChannel(bell_channel, SOUND_BELL);
+		Mix_GroupChannel(timer_channel, SOUND_TIMER);
+		Mix_GroupChannels(source_channel_start, source_channel_last, SOUND_SOURCES);
 		Mix_GroupChannel(UI_sound_channel, SOUND_UI);
-		Mix_GroupChannels(n_reserved_channels, n_of_channels-1, SOUND_FX);
+		Mix_GroupChannels(n_reserved_channels, n_of_channels - 1, SOUND_FX);
 
 		set_sound_volume(preferences::sound_volume());
 		set_UI_volume(preferences::UI_volume());
@@ -442,13 +449,17 @@ void stop_sound() {
 	}
 }
 
+/*
+ * For the purpose of channel manipulation, we treat turn timer the same as bell
+ */
 void stop_bell() {
 	if(mix_ok) {
 		Mix_HaltGroup(SOUND_BELL);
+		Mix_HaltGroup(SOUND_TIMER);
 		sound_cache_iterator itor = sound_cache.begin();
 		while(itor != sound_cache.end())
 		{
-			if(itor->group == SOUND_BELL) {
+			if(itor->group == SOUND_BELL || itor->group == SOUND_TIMER) {
 				itor = sound_cache.erase(itor);
 			} else {
 				++itor;
@@ -674,7 +685,7 @@ void play_sound_positioned(const std::string &files, int id, unsigned int distan
 	play_sound_internal(files, SOUND_SOURCES, preferences::sound_on(), distance, id);
 }
 
-bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int distance, int id, int loop_ticks)
+bool play_sound_internal(const std::string& files, channel_group group, bool sound_on, unsigned int distance, int id, int loop_ticks, int fadein_ticks)
 {
 	if(files.empty() || distance >= DISTANCE_SILENT || !sound_on || !mix_ok) {
 		return false;
@@ -738,12 +749,21 @@ bool play_sound_internal(const std::string& files, channel_group group, bool sou
 
 	int res;
 	if(loop_ticks > 0) {
-		res = Mix_PlayChannel(channel, it->get_data(), -1);
+		if(fadein_ticks > 0) {
+			res = Mix_FadeInChannelTimed(channel, it->get_data(), -1, fadein_ticks, loop_ticks);
+		} else {
+			res = Mix_PlayChannel(channel, it->get_data(), -1);
+		}
+
 		if(res >= 0) {
 			Mix_ExpireChannel(channel, loop_ticks);
 		}
 	} else {
-		res = Mix_PlayChannel(channel, it->get_data(), 0);
+		if(fadein_ticks > 0) {
+			res = Mix_FadeInChannel(channel, it->get_data(), -1, fadein_ticks);
+		} else {
+			res = Mix_PlayChannel(channel, it->get_data(), 0);
+		}
 	}
 	if(res < 0) {
 		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
@@ -761,10 +781,16 @@ void play_sound(const std::string& files, channel_group group)
 	play_sound_internal(files, group, preferences::sound_on());
 }
 
-// Play bell on separate volume than sound
-void play_bell(const std::string& files, int loop_ticks)
+// Play bell with separate volume setting
+void play_bell(const std::string& files)
 {
-	play_sound_internal(files, SOUND_BELL, preferences::turn_bell(),0,-1,loop_ticks);
+	play_sound_internal(files, SOUND_BELL, preferences::turn_bell());
+}
+
+// Play timer with separate volume setting
+void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
+{
+	play_sound_internal(files, SOUND_TIMER, preferences::turn_bell(), 0, -1, loop_ticks, fadein_ticks);
 }
 
 // Play UI sounds on separate volume than soundfx
@@ -789,15 +815,18 @@ void set_sound_volume(int vol)
 		if(vol > MIX_MAX_VOLUME)
 			vol = MIX_MAX_VOLUME;
 
-		// Bell has separate channel which we can't set up from this
+		// Bell, timer and UI have separate channels which we can't set up from this
 		for (unsigned i = 0; i < n_of_channels; i++){
-			if(i != UI_sound_channel && i != bell_channel) {
+			if(i != UI_sound_channel && i != bell_channel && i != timer_channel) {
 				Mix_Volume(i, vol);
 			}
 		}
 	}
 }
 
+/*
+ * For the purpose of volume setting, we treat turn timer the same as bell
+ */
 void set_bell_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
@@ -805,6 +834,7 @@ void set_bell_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 
 		Mix_Volume(bell_channel, vol);
+		Mix_Volume(timer_channel, vol);
 	}
 }
 
