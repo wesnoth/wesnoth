@@ -1,24 +1,24 @@
 # Microsoft Developer Studio Project File - Name="server" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
-# ** DO NOT EDIT **
+# ** NICHT BEARBEITEN **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
 CFG=server - Win32 Release
-!MESSAGE This is not a valid makefile. To build this project using NMAKE,
-!MESSAGE use the Export Makefile command and run
+!MESSAGE Dies ist kein gültiges Makefile. Zum Erstellen dieses Projekts mit NMAKE
+!MESSAGE verwenden Sie den Befehl "Makefile exportieren" und führen Sie den Befehl
 !MESSAGE 
 !MESSAGE NMAKE /f "server.mak".
 !MESSAGE 
-!MESSAGE You can specify a configuration when running NMAKE
-!MESSAGE by defining the macro CFG on the command line. For example:
+!MESSAGE Sie können beim Ausführen von NMAKE eine Konfiguration angeben
+!MESSAGE durch Definieren des Makros CFG in der Befehlszeile. Zum Beispiel:
 !MESSAGE 
 !MESSAGE NMAKE /f "server.mak" CFG="server - Win32 Release"
 !MESSAGE 
-!MESSAGE Possible choices for configuration are:
+!MESSAGE Für die Konfiguration stehen zur Auswahl:
 !MESSAGE 
-!MESSAGE "server - Win32 Debug" (based on "Win32 (x86) Application")
-!MESSAGE "server - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "server - Win32 Debug" (basierend auf  "Win32 (x86) Application")
+!MESSAGE "server - Win32 Release" (basierend auf  "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /MD /W3 /Gm /GR /GX /ZI /Od /I "c:/projects/wesnoth/wesnothd/src" /I "c:/projects/wesnoth/include/SDL-1.2.9/include" /I "c:/projects/wesnoth/include" /I "c:/projects/wesnoth/wesnothd/src/sdl_ttf" /I "c:/program files/python 2.4/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include" /I "c:/projects/wesnoth/include/freetype-2.1.9/include/freetype" /I "c:/projects/wesnoth/include/SDL_image-1.2.4" /I "c:/projects/wesnoth/include/SDL_mixer-1.2.6" /I "c:/projects/wesnoth/include/SDL_net-1.2.5" /I "src/sdl_ttf" /I "c:/projects/wesnoth/include/libintl-devel/include" /I "c:/usr/include" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /FAs /Fa"" /FR"" /Fp"Release/server.pch" /YX /Fo"Release/" /Fd"Release/" /FD /GZ /c
+# ADD CPP /nologo /MD /W3 /Gm /GR /GX /ZI /Od /I "c:\Entwicklung\Wesnoth\Wesnoth_SVN_Work\src" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "NOT_HAVE_FRIBIDI" /FAs /Fa"" /FR"" /Fp"Release/server.pch" /YX /Fo"Release/" /Fd"Release/" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
