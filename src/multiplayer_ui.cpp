@@ -522,7 +522,7 @@ void ui::process_message(const config& msg, const bool whisper) {
 	} else {
 		sound::play_UI_sound(game_config::sounds::receive_message);
 	}
-	chat_.add_message(whisper ? "whisper: " : "" + msg["sender"], msg["message"]);
+	chat_.add_message((whisper ? "whisper: " : "") + msg["sender"], msg["message"]);
 	chat_.update_textbox(chat_textbox_);
 }
 
