@@ -99,6 +99,7 @@ wesnoth_SOURCES = \
 	terrain_filter.cpp \
 	titlescreen.cpp \
 	tooltips.cpp \
+	unit.cpp \
 	unit_abilities.cpp \
 	unit_animation.cpp \
 	unit_display.cpp \
@@ -403,7 +404,6 @@ libwesnoth_a_SOURCES = \
 	pathutils.cpp \
 	preferences.cpp \
 	preferences_display.cpp \
-	unit.cpp \
 	race.cpp \
 	random.cpp \
 	reports.cpp \
