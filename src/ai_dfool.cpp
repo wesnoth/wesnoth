@@ -207,8 +207,8 @@ namespace dfool {
     unit_list visible_units;
     bool no_fog=current_team().uses_shroud() == false && current_team().uses_fog() == false;
 
-    unit_map um=get_info().units;
-    for(unit_map::iterator i = um.begin(); i != um.end(); ++i) {
+    const unit_map& um=get_info().units;
+    for(unit_map::const_iterator i = um.begin(); i != um.end(); ++i) {
       bool hidden_by_fog = current_team().fogged(i->first);
       bool hidden = i->second.invisible(i->first, um, get_info().teams);
       if((no_fog || !hidden_by_fog) && !hidden) {
@@ -222,7 +222,7 @@ namespace dfool {
 
   unit_list dfool_ai::all_units(){
     unit_list all;
-    unit_map um=get_info().units;
+    const unit_map& um=get_info().units;
     for(unit_map::const_iterator i = um.begin(); i != um.end(); ++i) {
       //      LOG_STREAM(info, ai)<<"all:"<<i->second.underlying_description()<<std::endl;
       all.push_back(i->second.underlying_description());
