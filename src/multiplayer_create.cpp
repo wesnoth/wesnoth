@@ -105,7 +105,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	// User maps
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
 
-	for(unsigned int i = 0; i < user_maps_.size(); i++)
+	size_t i = 0;
+	for(i = 0; i < user_maps_.size(); i++)
 	{
 		menu_help_str = help_sep + user_maps_[i];
 		map_options_.push_back(user_maps_[i] + menu_help_str);
@@ -113,7 +114,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 
 	// Standard maps
 	const config::child_list& levels = cfg.get_children("multiplayer");
-	size_t i = 0;
+	i = 0;
 	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j, ++i)
 	{
 		if ( ((*j)->values.find("allow_new_game") == (*j)->values.end())
