@@ -790,7 +790,7 @@ void play_bell(const std::string& files)
 // Play timer with separate volume setting
 void play_timer(const std::string& files, int loop_ticks, int fadein_ticks)
 {
-	play_sound_internal(files, SOUND_TIMER, preferences::turn_bell(), 0, -1, loop_ticks, fadein_ticks);
+	play_sound_internal(files, SOUND_TIMER, true, 0, -1, loop_ticks, fadein_ticks);
 }
 
 // Play UI sounds on separate volume than soundfx

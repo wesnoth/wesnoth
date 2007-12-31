@@ -142,12 +142,10 @@ void playmp_controller::think_about_countdown(int ticks) {
 	if(ticks >= beep_warning_time_) {
 		const bool bell_on = preferences::turn_bell();
 		if(bell_on || preferences::sound_on() || preferences::UI_sound_on()) {
-			preferences::set_turn_bell(true);
 			const int loop_ticks = WARNTIME - (ticks - beep_warning_time_);
 			const int fadein_ticks = (loop_ticks > WARNTIME / 2) ? loop_ticks - WARNTIME / 2 : 0;
 			sound::play_timer(game_config::sounds::timer_bell, loop_ticks, fadein_ticks);
 			beep_warning_time_ = -1;
-			preferences::set_turn_bell(bell_on);
 		}
 	}
 }
