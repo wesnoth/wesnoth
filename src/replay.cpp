@@ -43,6 +43,7 @@
 #include <sstream>
 
 #define LOG_REPLAY LOG_STREAM(info, replay)
+#define WRN_REPLAY LOG_STREAM(warn, replay)
 #define ERR_REPLAY LOG_STREAM(err, replay)
 
 std::string replay::last_replay_error;
@@ -803,10 +804,12 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				}
 				u->second.rename(name);
 			} else {
-				std::stringstream errbuf;
-				errbuf << "attempt to rename unit at location: "
-				   << loc << ", where none exists.\n";
-				replay::throw_error(errbuf.str());
+				// Users can rename units while it's being killed at another machine.
+				// This since the player can rename units when it's not his/her turn.
+				// There's not a simple way to prevent that so in that case ignore the 
+				// rename instead of throwing an OOS.
+				WRN_REPLAY << "attempt to rename unit at location: "
+				   << loc << ", where none exists (anymore).\n";
 			}
 		}
 
