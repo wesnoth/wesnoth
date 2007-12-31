@@ -57,7 +57,7 @@ manager::manager()
 	set_sound_volume(sound_volume());
 
 	set_show_haloes(utils::string_bool(preferences::get("show_haloes"), true));
-	if(utils::string_bool(preferences::get("remember_timer_settings"), false)) {
+	if(!utils::string_bool(preferences::get("remember_timer_settings"), false)) {
 		preferences::erase("mp_countdown_init_time");
 		preferences::erase("mp_countdown_reservoir_time");
 		preferences::erase("mp_countdown_turn_bonus");
