@@ -370,6 +370,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		(**anim_itor)["value"]=(**anim_itor)["healing"];
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().sub_anims_["_healed_sound"] = crude_animation();
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","heal.wav"),true);
 		//lg::wml_error<<"healed animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=healed flag\n";
@@ -383,6 +384,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		(**anim_itor)["value"]=(**anim_itor)["damage"];
 		animations.push_back(unit_animation(**anim_itor));
 		animations.back().sub_anims_["_poison_sound"] = crude_animation();
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","poison.ogg"),true);
 		//lg::wml_error<<"poison animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=poison flag\n";
@@ -455,6 +457,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		animations.back().add_frame(600,unit_frame(image_loc,600,"1~0:600"));
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = crude_animation();
+			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame());
 			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
 		}
 		//lg::wml_error<<"death animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
@@ -463,6 +466,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),600,"1~0:600"),"death",unit_animation::DEFAULT_ANIM));
 	if(!cfg["die_sound"].empty()) {
 		animations.back().sub_anims_["_death_sound"] = crude_animation();
+		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame());
 		animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","",cfg["die_sound"]),true);
 	}
 	// Always have a defensive animation
@@ -660,6 +664,7 @@ void unit_animation::start_animation(int start_time,const gamemap::location &src
 	unit_anim_.start_animation(start_time, src, dst, cycles,acceleration);
 	if(!text.empty()) {
 		crude_animation crude_build;
+		crude_build.add_frame(1,unit_frame());
 		crude_build.add_frame(1,unit_frame(image::locator(),1,"","",0,"","","","","","",text,text_color),true);
 		sub_anims_["_add_text"] = crude_build;
 	}
@@ -700,8 +705,8 @@ void unit_animation::crude_animation::redraw()
 			(current_frame.text().second & 0x0000FF00) >> 8,
 			(current_frame.text().second & 0x000000FF) >> 0);
 		}
+		last_frame_begin_time_ = get_current_frame_begin_time();
 	}
-	last_frame_begin_time_ = get_current_frame_begin_time();
 	image::locator image_loc;
 	if(direction != gamemap::location::NORTH && direction != gamemap::location::SOUTH) {
 		image_loc = current_frame.image_diagonal();
@@ -835,10 +840,9 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::strin
 }
 void unit_animator::start_animations()
 {
-	game_display*disp = game_display::get_singleton();
 	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
 		if(anim->animation) {
-			anim->my_unit->start_animation(*disp,anim->src, anim->animation,anim->with_bars, anim->cycles,anim->text,anim->text_color);
+			anim->my_unit->start_animation(get_begin_time(),anim->src, anim->animation,anim->with_bars, anim->cycles,anim->text,anim->text_color);
 			anim->animation = NULL;
 		}
 
@@ -886,7 +890,19 @@ int unit_animator::get_end_time() const
 {
         int end_time = INT_MIN;
         for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	       if(anim->my_unit->get_animation()) {
                 end_time = maximum<int>(end_time,anim->my_unit->get_animation()->get_end_time());
+	       }
         }
         return end_time;
+}
+int unit_animator::get_begin_time() const
+{
+        int begin_time = INT_MAX;
+        for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	       if(anim->my_unit->get_animation()) {
+                begin_time = minimum<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
+		}
+        }
+        return begin_time;
 }

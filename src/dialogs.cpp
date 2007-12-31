@@ -191,7 +191,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 		animator.add_animation(&u->second,"levelin",u->first);
 		animator.start_animations();
 		animator.wait_for_end();
-		u->second.set_standing(gui,u->first);
+		u->second.set_standing(u->first);
 		gui.invalidate(loc);
 		gui.draw();
 		events::pump();

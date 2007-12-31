@@ -2358,7 +2358,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			animator.add_animation(&u->second,cfg["flag"],u->first);
 			animator.start_animations();
 			animator.wait_for_end();
-			u->second.set_standing(*screen,u->first);
+			u->second.set_standing(u->first);
 			screen->invalidate(u->first);
 			screen->draw();
 			events::pump();

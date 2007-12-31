@@ -59,7 +59,7 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 		animator.start_animations();
 		animator.wait_for_end();
 	}
-	temp_unit.set_standing(*disp,b);
+	temp_unit.set_standing(b);
 	disp->update_display();
 	events::pump();
 }
@@ -145,7 +145,7 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 	}
 	disp->remove_temporary_unit();
 	u.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
-	u.set_standing(*disp,path[path.size()-1]);
+	u.set_standing(path[path.size()-1]);
 
 	// Clean the footsteps path, its hexes will be invalidated if needed
 	disp->set_route(NULL);
@@ -239,9 +239,9 @@ void unit_attack(
 	animator.start_animations();
 	animator.wait_for_end();
 
-	if(leader_loc.valid()) leader->second.set_standing(*disp,leader_loc);
-	att->second.set_standing(*disp,a);
-	def->second.set_standing(*disp,b);
+	if(leader_loc.valid()) leader->second.set_standing(leader_loc);
+	att->second.set_standing(a);
+	def->second.set_standing(b);
 }
 
 
@@ -260,7 +260,7 @@ void unit_recruited(gamemap::location& loc)
 	animator.add_animation(&u->second,"recruited",loc);
 	animator.start_animations();
 	animator.wait_for_end();
-	u->second.set_standing(*disp,loc);
+	u->second.set_standing(loc);
 	if (loc==disp->mouseover_hex()) disp->invalidate_unit();
 }
 
@@ -286,9 +286,9 @@ void unit_healing(unit& healed,gamemap::location& healed_loc, std::vector<unit_m
 	animator.start_animations();
 	animator.wait_for_end();
 
-	healed.set_standing(*disp,healed_loc);
+	healed.set_standing(healed_loc);
 	for(std::vector<unit_map::iterator>::iterator heal_sanim_it = healers.begin(); heal_sanim_it != healers.end(); ++heal_sanim_it) {
-		(*heal_sanim_it)->second.set_standing(*disp,(*heal_sanim_it)->first);
+		(*heal_sanim_it)->second.set_standing((*heal_sanim_it)->first);
 	}
 
 }

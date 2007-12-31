@@ -1291,7 +1291,7 @@ private:
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
-			up->second.set_standing(*gui_,up->first);
+			up->second.set_standing(up->first);
 			gui_->invalidate(route.back());
 			gui_->draw();
 		}
@@ -1414,7 +1414,7 @@ private:
 			up->second.set_movement(starting_moves);
 			up->first = route.back();
 			units_.add(up);
-			up->second.set_standing(*gui_,up->first);
+			up->second.set_standing(up->first);
 
 			if(map_.is_village(route.back())) {
 				get_village(route.back(),*gui_,teams_,up->second.side()-1,units_);

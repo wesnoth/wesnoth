@@ -1531,36 +1531,30 @@ const surface unit::still_image(bool scaled) const
 	return unit_image;
 }
 
-void unit::set_standing(const game_display &disp,const gamemap::location& loc, bool with_bars)
+void unit::set_standing(const gamemap::location& loc, bool with_bars)
 {
-	start_animation(disp,loc,choose_animation(disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
+	const game_display * disp =  game_display::get_singleton();
+	start_animation(INT_MAX,loc,choose_animation(*disp,loc,"standing"),with_bars,true,"",0,STATE_STANDING);
 }
 
 
-void unit::set_walking(const game_display &disp,const gamemap::location& loc)
-{
-	if(state_ == STATE_ANIM && anim_ != NULL && anim_->matches(disp,loc,this,"movement") >unit_animation::MATCH_FAIL) {
-		return; // finish current animation, don't start a new one
-		// is this the right behaviour ? we might not want that anymore
-	}
-	start_animation(disp,loc,choose_animation(disp,loc,"movement"),false);
-}
 
 
 void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 {
-	start_animation(disp,loc,choose_animation(disp,loc,"idling"),true,true,"",0,STATE_FORGET);
+	start_animation(INT_MAX,loc,choose_animation(disp,loc,"idling"),true,true,"",0,STATE_FORGET);
 }
 
 void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
 {
-	start_animation(disp,loc,choose_animation(disp,loc,"selected"),true,true,"",0,STATE_FORGET);
+	start_animation(INT_MAX,loc,choose_animation(disp,loc,"selected"),true,true,"",0,STATE_FORGET);
 }
 
-void unit::start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
+void unit::start_animation(const int start_time, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
 {
+	const game_display * disp =  game_display::get_singleton();
 	if(!animation) {
-		set_standing(disp,loc,with_bars);
+		set_standing(loc,with_bars);
 		return ;
 	}
 	state_ =state;
@@ -1568,21 +1562,17 @@ void unit::start_animation(const game_display &disp, const gamemap::location &lo
 	offset_=0;
 	if(anim_) delete anim_;
 	anim_ = new unit_animation(*animation);
-	anim_->start_animation(anim_->get_begin_time(),loc, loc.get_direction(facing_), cycles,text,text_color, disp.turbo_speed());
+	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
+	anim_->start_animation(real_start_time,loc, loc.get_direction(facing_), cycles,text,text_color, disp->turbo_speed());
 	frame_begin_time_ = anim_->get_begin_time() -1;
-	if (disp.idle_anim()) {
+	if (disp->idle_anim()) {
 		next_idling_ = get_current_animation_tick()
-			+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
+			+ static_cast<int>((20000 + rand() % 20000) * disp->idle_anim_rate());
 	} else {
 		next_idling_ = INT_MAX;
 	}
 }
 
-void unit::restart_animation(const game_display& disp,int start_time, bool cycles) {
-	if(!anim_) return;
-	anim_->start_animation(start_time,gamemap::location::null_location, gamemap::location::null_location, cycles, "",0,disp.turbo_speed());
-	frame_begin_time_ = start_time -1;
-}
 
 void unit::set_facing(gamemap::location::DIRECTION dir) {
 	if(dir != gamemap::location::NDIRECTIONS) {
@@ -1626,7 +1616,7 @@ void unit::redraw_unit(game_display& disp, const gamemap::location& loc)
 	const int ysrc_adjusted = ysrc - height_adjust;
 
 	if(!anim_) {
-		set_standing(disp,loc);
+		set_standing(loc);
 	}
 	anim_->update_last_draw_time();
 

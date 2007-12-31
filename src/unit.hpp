@@ -128,12 +128,12 @@ public:
 	//! Called on every draw
 	void refresh(const game_display& disp,const gamemap::location& loc) {
 		if (state_ == STATE_FORGET  && anim_ && anim_->animation_would_finish()) {
-			set_standing(disp, loc);
+			set_standing( loc);
 			return;
 		}
 		if (state_ != STATE_STANDING || incapacitated() || (get_current_animation_tick() < next_idling_)) return;
 		if (get_current_animation_tick() > next_idling_ + 1000) { // prevent all units animating at the same
-			set_standing(disp,loc);
+			set_standing(loc);
 		} else {
 			set_idling(disp, loc);
 		}
@@ -177,11 +177,9 @@ public:
 	void clear_haloes();
 
 
-	void set_standing(const game_display& disp,const gamemap::location& loc, bool with_bars = true);
-	void set_walking(const game_display& disp,const gamemap::location& loc);
+	void set_standing(const gamemap::location& loc, bool with_bars = true);
 	void set_idling(const game_display& disp,const gamemap::location& loc);
 	void set_selecting(const game_display& disp,const gamemap::location& loc);
-	void restart_animation(const game_display& disp,int start_time, bool cycles = false);
 	const unit_animation* get_animation() const {  return anim_;};
 	void set_offset(double offset){offset_ = offset;}
 	void set_facing(gamemap::location::DIRECTION dir);
@@ -234,7 +232,7 @@ public:
 
 	//! States for animation.
 	enum STATE { STATE_STANDING, STATE_FORGET, STATE_ANIM};
-	void start_animation(const game_display &disp, const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false,const std::string text = "", const Uint32 text_color =0,STATE state = STATE_ANIM);
+	void start_animation(const int start_time , const gamemap::location &loc,const unit_animation* animation, bool with_bars,bool cycles=false,const std::string text = "", const Uint32 text_color =0,STATE state = STATE_ANIM);
 
 	//! The name of the file to game_display (used in menus).
 	const std::string& absolute_image() const { return cfg_["image"]; }

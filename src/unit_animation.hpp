@@ -157,6 +157,7 @@ class unit_animator
 		bool would_end() const;
 		int get_animation_time() const;
 		int get_end_time() const;
+		int get_begin_time() const;
 		void wait_for_end() const;
 		void wait_until( int animation_time) const;
 	private:

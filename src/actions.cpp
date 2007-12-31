@@ -1383,13 +1383,13 @@ attack::attack(game_display& gui, const gamemap& map,
 	}
 
 	if(a_ != units.end()) {
-		a_->second.set_standing(gui_,a_->first);
+		a_->second.set_standing(a_->first);
 		if(attackerxp_)
 			a_->second.get_experience(attackerxp_);
 	}
 
 	if(d_ != units.end()) {
-		d_->second.set_standing(gui_,d_->first);
+		d_->second.set_standing(d_->first);
 		if(defenderxp_)
 			d_->second.get_experience(defenderxp_);
 	}

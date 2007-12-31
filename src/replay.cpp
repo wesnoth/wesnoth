@@ -997,7 +997,7 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 				//if unit has arrived to destination, goto variable is cleaned
 				up->second.set_goto(gamemap::location());
 			}
-			up->second.set_standing(disp,up->first);
+			up->second.set_standing(up->first);
 			u = units.find(dst);
 			check_checksums(disp,units,*cfg);
 			// Get side now, in case game events change the unit.
