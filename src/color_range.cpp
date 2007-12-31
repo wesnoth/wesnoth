@@ -41,7 +41,7 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 	Uint16 min_blue = (new_range.min() & 0x000000FF)    ;
 
 	// Map first color in vector to exact new color
-	Uint32 temp_rgb=old_rgb[0];
+	Uint32 temp_rgb= old_rgb.empty() ? 0 : old_rgb[0];
 	Uint16 old_r=(temp_rgb & 0X00FF0000)>>16;
 	Uint16 old_g=(temp_rgb & 0X0000FF00)>>8;
 	Uint16 old_b=(temp_rgb & 0X000000FF);
