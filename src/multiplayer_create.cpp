@@ -141,7 +141,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	countdown_game_.set_check(preferences::countdown());
 	countdown_game_.set_help_string(_("Enables user time limit"));
 
-	countdown_init_time_slider_.set_min(0);
+	countdown_init_time_slider_.set_min(30);
 	countdown_init_time_slider_.set_max(1500);
 	countdown_init_time_slider_.set_increment(30);
 	countdown_init_time_slider_.set_value(preferences::countdown_init_time());
