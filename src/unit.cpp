@@ -1120,10 +1120,14 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	bool id_set = cfg["id"] != "";
 
 	// Prevent un-initialized variables
-	max_hit_points_=1;
 	hit_points_=1;
-	max_movement_=0;
-	max_experience_=0;
+
+	// These are restored here since the base values are stored so and traits
+	// might get applied later (due to advance_to()). If we restore these
+	// afterwards the traits modifications get lost.
+	max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"], 1);
+	max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
+	max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	/* */
 
 	if(utils::string_bool(cfg_["random_gender"], false)) {
@@ -1249,15 +1253,6 @@ void unit::read(const config& cfg, bool use_traits, game_state* state)
 	}
 	if(!type_set || cfg["zoc"] != "") {
 		emit_zoc_ = lexical_cast_default<int>(cfg["zoc"]);
-	}
-	if(cfg["max_hitpoints"] != "") {
-		max_hit_points_ = lexical_cast_default<int>(cfg["max_hitpoints"]);
-	}
-	if(cfg["max_moves"] != "") {
-		max_movement_ = lexical_cast_default<int>(cfg["max_moves"]);
-	}
-	if(cfg["max_experience"] != "") {
-		max_experience_ = lexical_cast_default<int>(cfg["max_experience"]);
 	}
 	if(cfg["flying"] != "") {
 		flying_ = utils::string_bool(cfg["flying"]);
