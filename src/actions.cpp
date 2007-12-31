@@ -120,9 +120,10 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 	return true;
 }
 
-std::string recruit_unit(const gamemap& map, int side,
-       unit_map& units, unit new_unit,
-       gamemap::location& recruit_location, bool show, bool need_castle, bool full_movement)
+std::string recruit_unit(const gamemap& map, const int side, unit_map& units, 
+		unit new_unit, gamemap::location& recruit_location, 
+		const bool show, const bool need_castle, const bool full_movement, 
+		const bool wml_recall)
 {
 	const events::command_disabler disable_commands;
 
@@ -189,6 +190,9 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	const config* ran_results = get_random_results();
 	if(ran_results != NULL) {
+		// When recalling from WML there should be no random results, if we use
+		// random we might get the replay out of sync.
+		assert(!wml_recall);
 		const std::string rc = (*ran_results)["checksum"];
 		if(rc != checksum) {
 			ERR_NG << "SYNC: In recruit " << new_unit.id() <<
@@ -204,7 +208,7 @@ std::string recruit_unit(const gamemap& map, int side,
 			}
 		}
 
-	} else {
+	} else if(wml_recall == false) {
 		config cfg;
 		cfg["checksum"] = checksum;
 		set_random_results(cfg);

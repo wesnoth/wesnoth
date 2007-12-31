@@ -53,9 +53,10 @@ bool can_recruit_on(const gamemap& map, const gamemap::location& leader, const g
 // If the unit cannot be recruited, then a human-readable message
 // describing the reason will be returned.
 // On success, the return string is empty.
-std::string recruit_unit(const gamemap& map, int team, unit_map& units,
-		unit u, gamemap::location& recruit_location,bool show=false,
-		 bool need_castle=true, bool full_movement=false);
+std::string recruit_unit(const gamemap& map, const int side, unit_map& units,
+		unit u, gamemap::location& recruit_location,const bool show=false,
+		const bool need_castle=true, const bool full_movement=false,
+		const bool wml_recall=false);
 
 //! Computes the statistics of a battle between an attacker and a defender unit.
 class battle_context

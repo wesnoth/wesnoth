@@ -1569,7 +1569,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 					unit to_recruit(*u);
 					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 					unit_mutations++;
-					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true),false,true);
+					recruit_unit(*game_map,index+1,*units,to_recruit,loc,utils::string_bool(cfg["show"],true),false,true,true);
 					unit_recalled = true;
 					break;
 				}
