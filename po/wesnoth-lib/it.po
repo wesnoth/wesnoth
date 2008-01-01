@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-28 14:21+0100\n"
-"PO-Revision-Date: 2007-11-24 01:22+0100\n"
+"PO-Revision-Date: 2007-12-28 00:13+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -369,7 +369,7 @@ msgstr "Creazione cartella non riuscita."
 
 #: src/game_preferences.cpp:152
 msgid "No server has been defined."
-msgstr ""
+msgstr "Non è stato definito nessun server."
 
 #: src/game_preferences.cpp:216
 msgid "player"
@@ -1180,15 +1180,15 @@ msgstr "Isola"
 
 #: src/marked-up_text.cpp:340
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "L'ampiezza massima del testo è meno di 1."
 
 #: src/minimap.cpp:88
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Non è possibile ottenere un'immagine per il terreno: $terrain."
 
 #: src/minimap.cpp:94 src/minimap.cpp:106
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Errore nella creazione o acquisizione di un'immagine."
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1246,6 +1246,8 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"Un terreno con una stringa di piu di 4 caratteri è stato trovato, il terreno "
+"è:"
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1256,10 +1258,13 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Un errore dovuto a WML probabilmente non valido è capitato\n"
+"Il messaggio di errore è: "
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
 msgstr ""
+"Quando segnali il bug per piacere includi il seguente messaggio di errore: "
 
 #: src/wml_exception.cpp:90
 msgid ""
