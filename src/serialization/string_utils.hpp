@@ -44,8 +44,8 @@ typedef std::string utf8_string;
 
 namespace utils {
 
-bool isnewline(char c);
-bool portable_isspace(char c);
+bool isnewline(const char c);
+bool portable_isspace(const char c);
 bool notspace(char c);
 
 enum { REMOVE_EMPTY = 0x01,	//!< REMOVE_EMPTY : remove empty elements
@@ -77,8 +77,8 @@ typedef std::map< std::string, t_string > string_map;
 //! Function which will interpolate variables, starting with '$' in the string 'str'
 //! with the equivalent symbols in the given symbol table.
 //! If 'symbols' is NULL, then game event variables will be used instead.
-std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols);
-std::string interpolate_variables_into_string(std::string const &str, const variable_set& variables);
+std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols);
+std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables);
 
 //! Functions for converting Unicode wide-char strings
 //! to UTF-8 encoded strings, back and forth

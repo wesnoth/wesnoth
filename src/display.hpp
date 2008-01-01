@@ -408,7 +408,7 @@ protected:
 	CKey keys_;
 
 	//! Composes and draws the terrains on a tile
-	void tile_stack_append(surface surf);
+	void tile_stack_append(const surface surf);
 	void tile_stack_append(const std::vector<surface>& surfaces);
 	void tile_stack_render(int x, int y);
 	void tile_stack_clear() {tile_stack_.clear();};

@@ -159,7 +159,7 @@ public:
 	std::string write() const;
 
 	//! Overlays another map onto this one at the given position.
-	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
+	void overlay(const gamemap& m, const config& rules, const int x=0, const int y=0);
 
 	//! Effective dimensions of the map.
 	int w() const { return w_; }

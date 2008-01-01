@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 
+#include <iostream>
 #include <iosfwd>
 #include <vector>
 

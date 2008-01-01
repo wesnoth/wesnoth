@@ -47,7 +47,7 @@ namespace preferences {
 	};
 
 	// Low-level, should be seen only by preferences_display ?
-	void set(std::string key, std::string value);
+	void set(const std::string key, std::string value);
 	const std::string get(const std::string key);
 	void erase(const std::string key);
 
@@ -118,7 +118,7 @@ namespace preferences {
 	void _set_colour_cursors(bool value);
 
 	int scroll_speed();
-	void set_scroll_speed(int scroll);
+	void set_scroll_speed(const int scroll);
 
 	int draw_delay();
 	void set_draw_delay(int value);

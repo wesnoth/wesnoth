@@ -182,9 +182,9 @@ struct scoped_array : public scoped_resource<T*,delete_array>
  */
 struct close_FILE
 {
-	void operator()(FILE* f) const { if(f != NULL) { fclose(f); } }
+	void operator()(std::FILE* f) const { if(f != NULL) { std::fclose(f); } }
 };
-typedef scoped_resource<FILE*,close_FILE> scoped_FILE;
+typedef scoped_resource<std::FILE*,close_FILE> scoped_FILE;
 
 }
 
