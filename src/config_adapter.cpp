@@ -23,8 +23,10 @@
 #include "game_errors.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "team.hpp"
+#include "wml_exception.hpp"
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define ERR_NG LOG_STREAM(err, engine)
@@ -147,6 +149,11 @@ void get_player_info(const config& cfg, game_state& gamestate,
 				") for the leader of side " +
 				lexical_cast<std::string>(side) + ".");
 		}
+
+		utils::string_map symbols;
+		symbols["side"] = lexical_cast<std::string>(side);
+		VALIDATE(units.count(start_pos) == 0, 
+			 t_string(vgettext("Duplicate side definition for side '$side|' found.", symbols)));
 
 		new_unit.new_turn();
 		units.add(new std::pair<gamemap::location,unit>(map.starting_position(new_unit.side()), new_unit));
