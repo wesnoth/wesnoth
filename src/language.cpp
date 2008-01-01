@@ -31,6 +31,7 @@
 #include <cassert>
 #include <cctype>
 #include <cerrno>
+#include <clocale>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -171,10 +172,15 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	while (true) {
 		res = setlocale(category, try_loc);
 		if (res) break;
-		std::string utf8 = std::string(try_loc) + std::string(".utf8");
-		try_loc = utf8.c_str();
-		res = setlocale(category, try_loc);
+
+		std::string utf8 = std::string(try_loc) + std::string(".utf-8");
+		res = setlocale(category, utf8.c_str());
 		if (res) break;
+
+		utf8 = std::string(try_loc) + std::string(".UTF-8");
+		res = setlocale(category, utf8.c_str());
+		if (res) break;
+
 		if (!alternates) break;
 		if (i == alternates->end()) break;
 		try_loc = i->c_str();
