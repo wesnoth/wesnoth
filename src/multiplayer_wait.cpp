@@ -327,8 +327,8 @@ void wait::start_game()
 
 	//! @todo Instead of using level_to_gamestate reinit the state_, 
 	//! this needs more testing -- Mordante
-//	level_to_gamestate(level_, state_, level_["savegame"] == "yes");
-	state_ = game_state(game_data_, level_);
+	level_to_gamestate(level_, state_, level_["savegame"] == "yes");
+//	state_ = game_state(game_data_, level_);
 
 	LOG_NW << "starting game\n";
 }
