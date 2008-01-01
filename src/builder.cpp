@@ -118,24 +118,26 @@ void terrain_builder::tilemap::reset()
 
 bool terrain_builder::tilemap::on_map(const gamemap::location &loc) const
 {
-	if(loc.x < -1 || loc.y < -1 || loc.x > x_ || loc.y > y_)
+	if(loc.x < -2 || loc.y < -2 || loc.x > (x_ + 1) || loc.y > (y_ + 1)) {
 		return false;
+	}
 
 	return true;
+	
 }
 
 terrain_builder::tile& terrain_builder::tilemap::operator[](const gamemap::location &loc)
 {
 	assert(on_map(loc));
 
-	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
+	return map_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
 }
 
 const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap::location &loc) const
 {
 	assert(on_map(loc));
 
-	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
+	return map_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
 }
 
 terrain_builder::terrain_builder(const config& cfg, const config& level,
@@ -751,7 +753,11 @@ void terrain_builder::parse_config(const config &cfg)
 
 	building_ruleset::const_iterator rule;
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
-		std::cerr << ">> New rule: image_background = " /* << rule->second.image_background << " , image_foreground = "<< rule->second.image_foreground */ << "\n";
+		std::cerr << ">> New rule: image_background = " 
+			<< "\n>> Location " << rule->second.location_constraints
+			<< "\n>> Probability " << rule->second.probability 
+			<< "\n>> Precedence " << rule->second.precedence << '\n';
+
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
@@ -868,8 +874,9 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 		rule_imagelist::const_iterator img;
 		const gamemap::location tloc = loc + constraint->second.loc;
-		if(!tile_map_.on_map(tloc))
+		if(!tile_map_.on_map(tloc)) {
 			return;
+		}
 
 		tile& btile = tile_map_[tloc];
 
@@ -895,8 +902,8 @@ void terrain_builder::build_terrains()
 	log_scope("terrain_builder::build_terrains");
 
 	// Builds the terrain_by_type_ cache
-	for(int x = -1; x <= map_.w(); ++x) {
-		for(int y = -1; y <= map_.h(); ++y) {
+	for(int x = -2; x <= map_.w(); ++x) {
+		for(int y = -2; y <= map_.h(); ++y) {
 			const gamemap::location loc(x,y);
 			const t_translation::t_letter t = map_.get_terrain(loc);
 

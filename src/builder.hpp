@@ -341,7 +341,11 @@ private:
 		/**
 		 * Constructs a tilemap of dimensions x * y
 		 */
-		tilemap(int x, int y) : map_((x+2)*(y+2)), x_(x), y_(y) {}
+		tilemap(int x, int y) : 
+				map_((x + 4) * (y + 4)),
+				x_(x),
+				y_(y)
+			{}
 
 		/**
 		 * Returns a reference to the tile which is at the position
