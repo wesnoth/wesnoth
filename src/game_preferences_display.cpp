@@ -986,12 +986,12 @@ void preferences_dialog::set_friends_menu()
 		for (string_map::const_iterator i = cignore.values.begin();
 				i != cignore.values.end(); ++i)
 		{
-			if (i->first == "friend"){
+			if (i->second == "friend"){
 				friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
 						+ i->first + COLUMN_SEPARATOR + "friend");
 				friends_names.push_back(i->first);
 			}
-			if (i->first == "ignored"){
+			if (i->second == "ignored"){
 				friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
 						+ i->first + COLUMN_SEPARATOR + "ignored");
 				friends_names.push_back(i->first);
