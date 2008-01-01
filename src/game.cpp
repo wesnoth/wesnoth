@@ -63,6 +63,7 @@
 
 #include "wesconfig.h"
 
+#include <clocale>
 #include <cmath>
 #include <cstdlib>
 #include <ctime>

@@ -18,13 +18,8 @@
 #include <map>
 #include <vector>
 #include "config.hpp"
-
+#include "network.hpp"
 #include "SDL_net.h"
-
-namespace network
-{
-	struct statistics;
-}
 
 namespace network_worker_pool
 {

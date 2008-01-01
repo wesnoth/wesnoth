@@ -34,7 +34,13 @@ class display;
   #define __FUNCTION__ "(Unspecified)"
  #endif
 #endif
+
+// Sun Studio compilers call __func__ not __FUNCTION__
+#ifdef __SUNPRO_CC
+#define VALIDATE(cond, message) if(!(cond)) wml_exception(#cond, __FILE__, __LINE__, __func__, message)
+#else
 #define VALIDATE(cond, message) if(!(cond)) wml_exception(#cond, __FILE__, __LINE__, __FUNCTION__, message)
+#endif
 
 //! Helper function, don't call this directly.
 void wml_exception(const char* cond, const char* file, 

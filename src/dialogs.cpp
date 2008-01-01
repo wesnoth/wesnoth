@@ -34,6 +34,8 @@
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 
+#include <clocale>
+
 
 #define LOG_NG LOG_STREAM(info, engine)
 #define LOG_DP LOG_STREAM(info, display)

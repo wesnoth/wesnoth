@@ -35,6 +35,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <cctype>
+#include <clocale>
 #include <cstdlib>
 #include <iostream>
 #include <map>
