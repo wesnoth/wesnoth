@@ -1553,12 +1553,14 @@ bool game_controller::change_language()
 		}
 
 		refresh_game_cfg(true);
+	} else {
+		return false;
 	}
 
 	font::load_font_config();
 	hotkey::load_descriptions();
 
-	return false;
+	return true;
 }
 
 void game_controller::show_preferences()
