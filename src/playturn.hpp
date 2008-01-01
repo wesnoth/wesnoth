@@ -44,7 +44,13 @@ public:
 
 	void send_data();
 
-	enum PROCESS_DATA_RESULT { PROCESS_CONTINUE, PROCESS_RESTART_TURN, PROCESS_END_TURN };
+	enum PROCESS_DATA_RESULT { 
+		PROCESS_CONTINUE, 
+		PROCESS_RESTART_TURN, 
+		PROCESS_END_TURN, 
+		//! When the host uploaded the next scenario this is returned.
+		PROCESS_END_LINGER        
+		};
 
 	//function which will process incoming network data, and act on it. If there is
 	//more data than a single turn's worth, excess data will be placed into 'backlog'.

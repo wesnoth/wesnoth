@@ -15,12 +15,15 @@
 
 #include "playmp_controller.hpp"
 
+#include "dialogs.hpp"
 #include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "playturn.hpp"
 #include "sound.hpp"
 #include "upload_log.hpp"
+
+#include <cassert>
 
 #define LOG_NG LOG_STREAM(info, engine)
 
@@ -291,6 +294,53 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	gui_->set_game_mode(game_display::RUNNING);
 
 	LOG_NG << "ending end-of-scenario linger\n";
+}
+
+//! Wait for the host to upload the next scenario.
+void playmp_controller::wait_for_upload()
+{
+	// If the host is here we'll never leave since we wait for the host to
+	// upload the next scenario.
+	assert(!is_host_);
+
+	const bool set_turn_data = (turn_data_ == 0);
+	if(set_turn_data) {
+		turn_data_ = new turn_info(gameinfo_,gamestate_,status_,
+						*gui_,map_,teams_,player_number_,units_,replay_sender_, undo_stack_);
+		turn_data_->replay_error().attach_handler(this);
+		turn_data_->host_transfer().attach_handler(this);
+	}
+
+	while(true) {
+		try {
+			config cfg;
+			const network::connection res = dialogs::network_receive_dialog(
+				*gui_, _("Waiting for next scenario..."), cfg);
+
+			std::deque<config> backlog;
+			if(res != network::null_connection) {
+				try{
+					if(turn_data_->process_network_data(cfg,res,backlog,skip_replay_) 
+							== turn_info::PROCESS_END_LINGER) {
+						break;
+					}
+				}
+				catch (replay::error& e){
+					process_oos(e.message);
+					throw e;
+				}
+			}
+
+		} catch(end_level_exception& e) {
+			turn_data_->send_data();
+			throw e;
+		}
+	}
+
+	if(set_turn_data) {
+		delete turn_data_;
+		turn_data_ = 0;
+	}
 }
 
 void playmp_controller::after_human_turn(){

@@ -174,14 +174,24 @@ LEVEL_RESULT playmp_scenario(const game_data& gameinfo, const config& game_confi
 				    ).show();
 	}
 
-	if (!disp.video().faked() && res != QUIT && res != LEVEL_CONTINUE && res != LEVEL_CONTINUE_NO_SAVE)
-		try {
-			playcontroller.linger(log, res);
-		} catch(end_level_exception& e) {
-			if (e.result == QUIT) {
-				return QUIT;
+	if (!disp.video().faked() && res != QUIT) {
+		if(res == LEVEL_CONTINUE || res == LEVEL_CONTINUE_NO_SAVE) {
+			if(!playcontroller.is_host()) {
+				// If we continue without lingering we need to 
+				// make sure the host uploads the next scenario 
+				// before we attempt to download it.
+				playcontroller.wait_for_upload();
+			}
+		} else {
+			try {
+				playcontroller.linger(log, res);
+			} catch(end_level_exception& e) {
+				if (e.result == QUIT) {
+					return QUIT;
+				}
 			}
 		}
+	}
 
 	return res;
 }
