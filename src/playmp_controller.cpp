@@ -243,7 +243,7 @@ void playmp_controller::linger(upload_log& log, LEVEL_RESULT result)
 	}
 	//current_team().set_countdown_time(0);
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ = 0) {
+	if(beep_warning_time_ < 0) {
 		sound::stop_bell();
 	}
 	beep_warning_time_=-1;
@@ -325,7 +325,7 @@ void playmp_controller::finish_side_turn(){
 	turn_data_ = NULL;
 
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ = 0) {
+	if(beep_warning_time_ < 0) {
 		sound::stop_bell();
 	}
 }
