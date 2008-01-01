@@ -416,23 +416,8 @@ bool game_controller::init_config()
 	//Resets old_defines_map_, to force refresh_game_cfg to reload
 	//everything.
 	old_defines_map_.clear();
+	reset_game_cfg();
 
-	// Since the call to reset_game_cfg() is gone APPLE is no longer defined added
-	// this work around, but it needs a review -- Mordante
-	//reset_game_cfg();
-	defines_map_.clear();
-
-#if defined(__APPLE__)
-	defines_map_["APPLE"] = preproc_define();
-#endif
-	
-#ifdef USE_TINY_GUI
-	defines_map_["TINY"] = preproc_define();
-#endif
-
-#ifdef HAVE_PYTHON
-	defines_map_["PYTHON"] = preproc_define();
-#endif
 	game_config_.clear();
 	read_game_cfg(defines_map_, game_config_, use_caching_);
 	game_config::load_config(game_config_.child("game_config"));
@@ -486,6 +471,7 @@ bool game_controller::play_test()
 		refresh_game_cfg();
 	} catch(config::error&) {
 		reset_game_cfg();
+		refresh_game_cfg();
 		return false;
 	}
 
@@ -743,6 +729,7 @@ bool game_controller::load_game()
 			refresh_game_cfg();
 		} catch(config::error&) {
 			reset_game_cfg();
+			refresh_game_cfg();
 			return false;
 		}
 
@@ -1801,7 +1788,7 @@ void game_controller::reset_game_cfg()
 		defines_map_["MEDIUM"] = preproc_define();
 	}
 
-	refresh_game_cfg();
+	//refresh_game_cfg();
 }
 
 void game_controller::reset_defines_map()
@@ -1841,6 +1828,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 			refresh_game_cfg();
 		} catch(config::error&) {
 			reset_game_cfg();
+			refresh_game_cfg();
 			return;
 		}
 	}
@@ -2194,10 +2182,8 @@ static int play_game(int argc, char** argv)
 	//take back the comments.
 	for(int first_time = true;;first_time = false){
 		if (!first_time){
-			//YogiHH: Is there any sense in resetting a game config that isn't used at all
-			//        for the title screen (at least i can't see where)
 			//make sure the game config is always set to how it should be at the title screen
-			//game.reset_game_cfg();
+			game.reset_game_cfg();
 		}
 
 		// reset the TC, since a game can modify it, and it may be used
@@ -2256,7 +2242,7 @@ static int play_game(int argc, char** argv)
 			about::show_about(game.disp());
 			continue;
 		} else if(res == gui::SHOW_HELP) {
-			game.reset_game_cfg();
+			//game.reset_game_cfg();
 			help::help_manager help_manager(&game.game_config(), &game.units_data(), NULL);
 			help::show_help(game.disp());
 			continue;
