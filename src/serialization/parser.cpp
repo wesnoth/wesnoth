@@ -70,8 +70,13 @@ private:
 	tokenizer *tok_;
 
 	struct element {
-		element(config *cfg, std::string const &name, std::string const &start_line)
-			: cfg(cfg), name(name), start_line(start_line) {}
+		element(config *cfg, std::string 
+			const &name, std::string const &start_line) :
+				cfg(cfg), 
+				name(name),
+				last_element_map(),
+				start_line(start_line) 
+			{}
 
 		config* cfg;
 		std::string name;
@@ -83,13 +88,17 @@ private:
 	std::stack<element> elements;
 };
 
-parser::parser(config &cfg, std::istream &in)
-	: cfg_(cfg), tok_(new tokenizer_stream(in))
+parser::parser(config &cfg, std::istream &in) :
+		cfg_(cfg), 
+		tok_(new tokenizer_stream(in)),
+		elements()
 {
 }
 
-parser::parser(config &cfg, std::string &in)
-	: cfg_(cfg), tok_(new tokenizer_string(in))
+parser::parser(config &cfg, std::string &in) :
+		cfg_(cfg),
+		tok_(new tokenizer_string(in)),
+		elements()
 {
 }
 
