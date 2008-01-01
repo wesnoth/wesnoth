@@ -41,6 +41,10 @@
 
 #include <algorithm>
 #include <cassert>
+#ifdef __SUNPRO_CC
+// GCC doesn't have hypot in cmath so include it for Sun Studio
+#include <math.h>
+#endif
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -865,8 +869,8 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	const unsigned int width = background->w;
 	const unsigned int height = background->h;
 
-	const unsigned int w_count = static_cast<int>(ceil(static_cast<double>(area.w) / static_cast<double>(width)));
-	const unsigned int h_count = static_cast<int>(ceil(static_cast<double>(area.h) / static_cast<double>(height)));
+	const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(area.w) / static_cast<double>(width)));
+	const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(area.h) / static_cast<double>(height)));
 
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
@@ -1633,7 +1637,7 @@ double display::turbo_speed() const
 
 void display::set_idle_anim_rate(int rate)
 {
-	idle_anim_rate_ = pow(2.0, -rate/10.0);
+	idle_anim_rate_ = std::pow(2.0, -rate/10.0);
 }
 
 void display::redraw_everything()

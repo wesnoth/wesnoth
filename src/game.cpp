@@ -2115,8 +2115,8 @@ static int play_game(int argc, char** argv)
 	// initialized to have get_intl_dir() to work.  Note: this
 	// setlocale() but this does not take GUI language setting
 	// into account.
-	setlocale(LC_ALL, "C");
-	setlocale(LC_MESSAGES, "");
+	std::setlocale(LC_ALL, "C");
+	std::setlocale(LC_MESSAGES, "");
 	const std::string& intl_dir = get_intl_dir();
 	bindtextdomain (PACKAGE, intl_dir.c_str());
 	bind_textdomain_codeset (PACKAGE, "UTF-8");

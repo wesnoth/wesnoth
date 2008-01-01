@@ -30,7 +30,7 @@ static int calculate_volume(int x, int y, const display &disp)
 
 	// An obscure formula to calculate SDL_Mixer's "distance" based on the source's
 	// distance from screen's center
-	return maximum<int>(0, 128 * static_cast<int>(std::sqrt((double) (dx + dy)) / (sqrt((double) (area.w*area.w + area.h * area.h)))));
+	return maximum<int>(0, 128 * static_cast<int>(std::sqrt((double) (dx + dy)) / (std::sqrt((double) (area.w*area.w + area.h * area.h)))));
 }
 
 namespace soundsource {

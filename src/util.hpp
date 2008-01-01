@@ -61,9 +61,9 @@ inline int round_damage(int base_damage, int bonus, int divisor) {
 // not guaranteed to have exactly the same result on different platforms
 inline int round_double(double d) {
 #ifdef HAVE_ROUND
-	return static_cast<int>(round(d)); //surprisingly, not implemented everywhere
+	return static_cast<int>(std::round(d)); //surprisingly, not implemented everywhere
 #else
-	return static_cast<int>((d >= 0.0)? floor(d + 0.5) : ceil(d - 0.5));
+	return static_cast<int>((d >= 0.0)? std::floor(d + 0.5) : std::ceil(d - 0.5));
 #endif
 }
 

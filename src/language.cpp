@@ -170,15 +170,15 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	std::vector<std::string>::const_iterator i;
 	if (alternates) i = alternates->begin();
 	while (true) {
-		res = setlocale(category, try_loc);
+		res = std::setlocale(category, try_loc);
 		if (res) break;
 
 		std::string utf8 = std::string(try_loc) + std::string(".utf-8");
-		res = setlocale(category, utf8.c_str());
+		res = std::setlocale(category, utf8.c_str());
 		if (res) break;
 
 		utf8 = std::string(try_loc) + std::string(".UTF-8");
-		res = setlocale(category, utf8.c_str());
+		res = std::setlocale(category, utf8.c_str());
 		if (res) break;
 
 		if (!alternates) break;

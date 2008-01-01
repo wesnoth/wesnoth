@@ -438,7 +438,7 @@ void save_preview_pane::draw_contents()
 		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
 	}
 
-	char* old_locale= setlocale(LC_TIME, get_locale().localename.c_str());
+	char* old_locale= std::setlocale(LC_TIME, get_locale().localename.c_str());
 	char time_buf[256];
 	const size_t res = strftime(time_buf,sizeof(time_buf),_("%a %b %d %H:%M %Y"),localtime(&((*info_)[index_].time_modified)));
 	if(res == 0) {
@@ -446,7 +446,7 @@ void save_preview_pane::draw_contents()
 	}
 
 	if(old_locale) {
-		setlocale(LC_TIME, old_locale);
+		std::setlocale(LC_TIME, old_locale);
 	}
 
 	std::stringstream str;

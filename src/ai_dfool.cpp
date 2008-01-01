@@ -519,7 +519,7 @@ namespace dfool {
 		    temp= atof((*a).c_str()) / atof((*b).c_str());
 		  }
 		  if((*token)[0]=='%'){
-		    temp= fmod(atof((*a).c_str()), atof((*b).c_str()));
+		    temp= std::fmod(atof((*a).c_str()), atof((*b).c_str()));
 		  }
 		  if((*token)[0]=='+'){
 		    temp= atof((*a).c_str()) + atof((*b).c_str());
@@ -528,7 +528,7 @@ namespace dfool {
 		    temp= atof((*a).c_str()) - atof((*b).c_str());
 		  }
 		  if((*token)[0]=='^'){
-		    temp= pow(atof((*a).c_str()),atof((*b).c_str()));
+		    temp= std::pow(atof((*a).c_str()),atof((*b).c_str()));
 		  }
 		  std::cout<<"got here token2:"<<temp<<"\n";
 		  std::stringstream r;
