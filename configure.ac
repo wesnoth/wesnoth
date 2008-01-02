@@ -4,7 +4,7 @@
 # Initial configuration                                               #
 #######################################################################
 
-AC_PREREQ([2.57])
+AC_PREREQ([2.61])
 
 define([WESNOTH_VERSION],[1.3.13+svn])
 
