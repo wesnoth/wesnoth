@@ -584,7 +584,20 @@ void play_music_config(const config &music)
 		current_track_list = std::vector<music_track>();
 	}
 
-	current_track_list.push_back(track);
+	// Avoid 2 tracks with the same name, since that can cause an infinite loop
+	// in choose_track(), 2 tracks with the same name will always return the 
+	// current track and track_ok() doesn't allow that.
+	std::vector<music_track>::const_iterator itor = current_track_list.begin();
+	while(itor != current_track_list.end()) {
+		if(itor->name == track.name) break;
+		++itor;
+	}
+	
+	if(itor == current_track_list.end()) {
+		current_track_list.push_back(track);
+	} else {
+		ERR_AUDIO << "Tried to add duplicate track '" << track.name << "'\n";
+	}
 
 	// They can tell us to start playing this list immediately.
 	if (utils::string_bool(music["immediate"])) {
