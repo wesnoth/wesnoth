@@ -1542,12 +1542,12 @@ void unit::set_standing(const gamemap::location& loc, bool with_bars)
 
 void unit::set_idling(const game_display &disp,const gamemap::location& loc)
 {
-	start_animation(INT_MAX,loc,choose_animation(disp,loc,"idling"),true,true,"",0,STATE_FORGET);
+	start_animation(INT_MAX,loc,choose_animation(disp,loc,"idling"),true,false,"",0,STATE_FORGET);
 }
 
 void unit::set_selecting(const game_display &disp,const gamemap::location& loc)
 {
-	start_animation(INT_MAX,loc,choose_animation(disp,loc,"selected"),true,true,"",0,STATE_FORGET);
+	start_animation(INT_MAX,loc,choose_animation(disp,loc,"selected"),true,false,"",0,STATE_FORGET);
 }
 
 void unit::start_animation(const int start_time, const gamemap::location &loc,const unit_animation * animation,bool with_bars,bool cycles,const std::string text, const Uint32 text_color,STATE state)
