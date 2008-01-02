@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-28 14:21+0100\n"
-"PO-Revision-Date: 2007-11-29 16:28+0200\n"
+"PO-Revision-Date: 2008-01-02 11:53+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: data/core/terrain.cfg:13
 msgid "None"
-msgstr "Ei mitään"
+msgstr "Tyhjää"
 
 #: data/core/terrain.cfg:20
 msgid "Shroud"
@@ -366,7 +366,7 @@ msgstr "Kansion luominen epäonnistui."
 
 #: src/game_preferences.cpp:152
 msgid "No server has been defined."
-msgstr ""
+msgstr "Serveriä ei ole määritetty."
 
 #: src/game_preferences.cpp:216
 msgid "player"
@@ -1157,15 +1157,15 @@ msgstr "saari"
 
 #: src/marked-up_text.cpp:340
 msgid "The maximum text width is less than 1."
-msgstr ""
+msgstr "Täysi tekstinleveys on vähemmän kuin yksi."
 
 #: src/minimap.cpp:88
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "Ei kuvaa maastolle: $terrain."
 
 #: src/minimap.cpp:94 src/minimap.cpp:106
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "Virhe luodessa tai hankkiessa kuvaa."
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
@@ -1223,6 +1223,8 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
+"Maasto rivillä, jossa on enemmän kuin neljä merkkiä, löydetty, "
+"vaikutuksenalainen maasto on: "
 
 #: src/terrain_translation.cpp:765
 msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
@@ -1233,20 +1235,24 @@ msgid ""
 "An error due to possible invalid WML occured\n"
 "The error message is :"
 msgstr ""
+"Virhe mahdollisen virheellisen WML:n takia kohdattu\n"
+"Virheviesti on: "
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
-msgstr ""
+msgstr "Kun ilmoitat ohjelmavirheestä, lisääthän seuraavan virheviestin :"
 
 #: src/wml_exception.cpp:90
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
+"Osassa '[$section|]', missä '$primary_key| = $primary_value' pakollinen "
+"avain '$key|' ei ole asetettu."
 
 #: src/wml_exception.cpp:93
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr ""
+msgstr "Osassa '[$section|]' pakollinen avain '$key|' ei ole asetettu"
 
 #~ msgid "Save Replays"
 #~ msgstr "Tallenna uusinnat"

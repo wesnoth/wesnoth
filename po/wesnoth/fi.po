@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-28 22:24+0100\n"
-"PO-Revision-Date: 2007-12-01 21:58+0200\n"
+"PO-Revision-Date: 2008-01-02 11:43+0200\n"
 "Last-Translator: Samu Voutilainen <ec5983@kolumbus.fi>\n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/_main.cfg:36
 msgid "Compressed Saves"
-msgstr ""
+msgstr "Tiivistetyt tallennukset"
 
 #: data/_main.cfg:43
 msgid "Show Combat"
@@ -275,12 +275,10 @@ msgid "Commands"
 msgstr "Komennot"
 
 #: data/core/help.cfg:81
-#, fuzzy
 msgid "Abilites"
 msgstr "Erikoistaidot"
 
 #: data/core/help.cfg:84
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -289,7 +287,8 @@ msgid ""
 msgstr ""
 "Tietyillä yksiköillä on taitoja, jotka vaikuttavat joko suoraan toisiin "
 "yksiköihin, tai siihen, kuinka yksikkö toimii kohdatessaan muita yksiköitä. "
-"Nämä taidot listataan tämän otsikon alle sitä mukaa, kun kohtaat niitä."
+"Nämä taidot listataan tämän otsikon alle sitä mukaa, kun kohtaat niitä.\n"
+"\n"
 
 #: data/core/help.cfg:96
 msgid "Unknown Unit"
@@ -2619,7 +2618,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:471
 msgid "feeding"
-msgstr ""
+msgstr "ruokinta"
 
 #: data/core/macros/abilities.cfg:473
 msgid ""
@@ -2627,10 +2626,13 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"Ruokinta:\n"
+"Tämä yksikkö saa yhden elämäpisteen maksimimääräänsä aina sen tappaessa "
+"elävän yksikön."
 
 #: data/core/macros/abilities.cfg:497
 msgid "+1 max HP"
-msgstr ""
+msgstr "+1 EP"
 
 #: data/core/macros/abilities.cfg:526
 msgid "berserk"
@@ -3855,12 +3857,14 @@ msgid "Deep Underground"
 msgstr "syvällä maan alla"
 
 #: data/core/macros/special-notes.cfg:5
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "erikoisuus"
+msgstr ""
+"\n"
+"\n"
+"Erikoistiedot:"
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -4195,12 +4199,10 @@ msgid "Teal"
 msgstr "Sinivihreä"
 
 #: data/core/units.cfg:43
-#, fuzzy
 msgid "race^Bat"
 msgstr "Lepakot"
 
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race+female^Bat"
 msgstr "Lepakot"
 
@@ -4209,26 +4211,22 @@ msgid "race^Bats"
 msgstr "Lepakot"
 
 #: data/core/units.cfg:52
-#, fuzzy
 msgid "race^Drake"
-msgstr "Lohikäärmeet"
+msgstr "Draakit"
 
 #: data/core/units.cfg:53
-#, fuzzy
 msgid "race+female^Drake"
-msgstr "Lohikäärmeet"
+msgstr "Draakit"
 
 #: data/core/units.cfg:54
 msgid "race^Drakes"
 msgstr "Lohikäärmeet"
 
 #: data/core/units.cfg:62
-#, fuzzy
 msgid "race^Dwarf"
 msgstr "Kääpiöt"
 
 #: data/core/units.cfg:63
-#, fuzzy
 msgid "race+female^Dwarf"
 msgstr "Kääpiöt"
 
@@ -4237,12 +4235,10 @@ msgid "race^Dwarves"
 msgstr "Kääpiöt"
 
 #: data/core/units.cfg:73
-#, fuzzy
 msgid "race^Elf"
 msgstr "Haltiat"
 
 #: data/core/units.cfg:74
-#, fuzzy
 msgid "race+female^Elf"
 msgstr "Haltiat"
 
@@ -4251,12 +4247,10 @@ msgid "race^Elves"
 msgstr "Haltiat"
 
 #: data/core/units.cfg:85
-#, fuzzy
 msgid "race^Goblin"
 msgstr "Goblinit"
 
 #: data/core/units.cfg:86
-#, fuzzy
 msgid "race+female^Goblin"
 msgstr "Goblinit"
 
@@ -4265,12 +4259,10 @@ msgid "race^Goblins"
 msgstr "Goblinit"
 
 #: data/core/units.cfg:97
-#, fuzzy
 msgid "race^Gryphon"
 msgstr "Aarnikotkat"
 
 #: data/core/units.cfg:98
-#, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Aarnikotkat"
 
@@ -4279,12 +4271,10 @@ msgid "race^Gryphons"
 msgstr "Aarnikotkat"
 
 #: data/core/units.cfg:107
-#, fuzzy
 msgid "race^Human"
 msgstr "Ihmiset"
 
 #: data/core/units.cfg:108
-#, fuzzy
 msgid "race+female^Human"
 msgstr "Ihmiset"
 
@@ -4293,12 +4283,10 @@ msgid "race^Humans"
 msgstr "Ihmiset"
 
 #: data/core/units.cfg:117
-#, fuzzy
 msgid "race^Saurian"
 msgstr "Liskot"
 
 #: data/core/units.cfg:118
-#, fuzzy
 msgid "race+female^Saurian"
 msgstr "Liskot"
 
@@ -4311,26 +4299,22 @@ msgid "race^Mechanical"
 msgstr "Mekaaniset"
 
 #: data/core/units.cfg:129
-#, fuzzy
 msgid "race+plural^Mechanical"
 msgstr "Mekaaniset"
 
 #: data/core/units.cfg:139
-#, fuzzy
 msgid "race^Merman"
 msgstr "Merenmiehet"
 
 #: data/core/units.cfg:140
-#, fuzzy
 msgid "race^Mermaid"
-msgstr "Merenmiehet"
+msgstr "Merennaiset"
 
 #: data/core/units.cfg:141
 msgid "race^Mermen"
 msgstr "Merenmiehet"
 
 #: data/core/units.cfg:149
-#, fuzzy
 msgid "race^Monster"
 msgstr "Hirviöt"
 
@@ -4339,12 +4323,10 @@ msgid "race^Monsters"
 msgstr "Hirviöt"
 
 #: data/core/units.cfg:157
-#, fuzzy
 msgid "race^Naga"
 msgstr "Nagat"
 
 #: data/core/units.cfg:158
-#, fuzzy
 msgid "race^Nagani"
 msgstr "Nagat"
 
@@ -4353,12 +4335,10 @@ msgid "race^Nagas"
 msgstr "Nagat"
 
 #: data/core/units.cfg:167
-#, fuzzy
 msgid "race^Ogre"
 msgstr "Jätit"
 
 #: data/core/units.cfg:168
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Jätit"
 
@@ -4367,12 +4347,10 @@ msgid "race^Ogres"
 msgstr "Jätit"
 
 #: data/core/units.cfg:177
-#, fuzzy
 msgid "race^Orc"
 msgstr "Örkit"
 
 #: data/core/units.cfg:178
-#, fuzzy
 msgid "race+female^Orc"
 msgstr "Örkit"
 
@@ -4381,12 +4359,10 @@ msgid "race^Orcs"
 msgstr "Örkit"
 
 #: data/core/units.cfg:187
-#, fuzzy
 msgid "race^Troll"
 msgstr "Peikot"
 
 #: data/core/units.cfg:188
-#, fuzzy
 msgid "race+female^Troll"
 msgstr "Peikot"
 
@@ -4399,17 +4375,14 @@ msgid "race^Undead"
 msgstr "Epäkuolleet"
 
 #: data/core/units.cfg:203
-#, fuzzy
 msgid "race+female^Undead"
 msgstr "Epäkuolleet"
 
 #: data/core/units.cfg:204
-#, fuzzy
 msgid "race+plural^Undead"
 msgstr "Epäkuolleet"
 
 #: data/core/units.cfg:213
-#, fuzzy
 msgid "race^Wose"
 msgstr "Puupaimenet"
 
@@ -4552,6 +4525,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Älä laiminlyö johtajasi kokemusta! Joudut pitämään hänet turvassa, mutta jos "
+"hemmottelet häntä liikaa, hän saattaa olla liian matalatasoinen "
+"selvityäkseen tulevaisuudessa."
 
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
@@ -4564,6 +4540,11 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"‘Toiminnot’-valikosta voit valita ‘Näytä vihollisten liikkeet’ korostaaksesi "
+"kaikki mahdolliset heksat, joihin vastustajasi voi siirtyä (edellyttäen "
+"omien yksiköittesi pysyvän paikoillaan). Käytä tätä varmistaaksesi, ettei "
+"vihollinen voi saavuttaa sinun heikkoja tai vahingoittuneita yksiköitäsi "
+"hänen vuorollaan."
 
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
@@ -4586,6 +4567,9 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Yksiköt ‘älykäs’-ominaisuudella vaativat vähemmän kokemusta kehittyäkseen. "
+"Kampanjan aikaisessa vaiheissa yritä antaa viimeistelyiskut näitten "
+"yksiköitten toimesta, jotta saat korkeatasoisia yksiköitä nopeammin. "
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
@@ -4597,6 +4581,10 @@ msgid ""
 "long range units. By placing two units on opposite sides of an opposing "
 "unit, their zones of control limit it to one hex move in any direction."
 msgstr ""
+"Ympäröivä taktiikka kahdella yksiköllä on erittäin voimakas, varsinkin "
+"nopeita yksiköitä vastaan. Sijoittamalla kaksi yksikköä vastakkain "
+"vastustajan ympärille, heidän aluekontrollinsa estää vastustajan yksikköä "
+"liikkumasta yhtä heksaa kauemmaksi. "
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
 msgid "- Memoirs of Gweddry, 627YW"
@@ -4608,6 +4596,10 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you get to a village a turn earlier."
 msgstr ""
+"Voit käyttää ‘värvää’ ja ‘kutsu’-komentoja klikkaamalla oikealla "
+"hiirenkorvalla linnan heksaa. Tämä antaa sinun päättää, mihin heksaan haluat "
+"uuden yksikön. Sijoittamalla uuden yksiköt viisaasti voit päästä joihinkin "
+"kyliin aikaisemmin. "
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -4615,6 +4607,8 @@ msgid ""
 "for instance, will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Päävalikossa on joitain hyödyllisiä ruutuja: ‘Statistiikka’, esimerkiksi, "
+"antaa sinun tietää vihollistesi tilanteen, ja miten pärjäät heihin nähden."
 
 #: data/hardwired/tips.cfg:27
 msgid ""
@@ -4622,6 +4616,10 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Yksiköt ominaisuudella ‘nopea’ voivat liikkua yhden ylimääräisen heksan "
+"vuorossa. Tämä voi olla erittäin tärkeää, milloin liikutaan vaikean maaston "
+"läpi, kuten vedessä tai luolissa. Se voi päästää sinut kohdan läpi vain "
+"yhdellä siirrolla, muiden jäädessä jälkeen."
 
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
 msgid "- High Lord Kalenz, 470YW"
@@ -4632,6 +4630,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Muutaman skenaarion pelattuasi, lue ‘Peli’-osa ohjeesta huolellisesti. "
+"Yksityiskohdat tulevat tärkeämmiksi skenaarioiden muuttuessa haastavimmiksi!"
 
 #: data/hardwired/tips.cfg:35
 msgid ""
@@ -4639,17 +4639,21 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"On yleensä parempi aloittaa kampanjan seuraava skenaario alemman tason "
+"yksiköillä, jotka ovat juuri kehittymässä kuin samoilla korkeamman tason "
+"yksiköillä."
 
 #: data/hardwired/tips.cfg:39
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Osoitteesta www.wesnoth.org voit löytää strategiaoppaita, teknistä tukea, "
+"Wesnothin historian ja paljon muuta."
 
 #: data/hardwired/tips.cfg:40
-#, fuzzy
 msgid "- The Wesnoth Community"
-msgstr "-Wesnothin taktinen opaskirja"
+msgstr "- Wesnoth-yhteisö"
 
 #: data/hardwired/tips.cfg:43
 msgid ""
@@ -4667,6 +4671,8 @@ msgstr "- Kuninkaallinen tiivistelmä taistelutermistöstä - Osa II, 212WV"
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Muutoin hyvä suunnitelma voi epäonnistua, jos hyökkäät väärään aikaan "
+"päivästä."
 
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
@@ -4680,20 +4686,23 @@ msgid ""
 "choose scouts that can easily move across the surrounding terrain, because "
 "units see as far as they can move in one turn."
 msgstr ""
+"Jos olet pelaamassa sumulla tai hunnulla, et nää, mitä olet kohtaamassa. "
+"Tälläisessä tapauksessa, pitkänmatkan tiedustelijayksiköt ovat arvonsa "
+"väärtejä. Yritä valita tiedustelijat, jotka voivat helposti liikkua "
+"ympäröivässä maastossa, koska yksiköt näkevät juuri niin pitkälle kuin "
+"voivat yhdessä kierroksessa nähdä."
 
 #: data/hardwired/tips.cfg:55
-#, fuzzy
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and "
 "arcane. Different units have weaknesses against different types of attacks. "
 "Right-click on a unit and select 'Unit Description' to see which attacks it "
 "is resistant to, and which will affect it the most."
 msgstr ""
-"Hyökkäyksiä on kuutta tyyppiä: lävistys, teräase, murjova isku, tuli, kylmä "
-"ja salatiede. Eri yksiköillä on heikkouksia erilaisia hyökkäyksiä vastaan. "
-"Paina yksikköä hiiren oikealla napilla, valitse 'Yksikön kuvaus' ja paina "
-"'Vastustukset' nähdäksesi, kuinka hyvin yksikkö vastustaa erilaisia "
-"hyökkäystyyppejä."
+"Hyökkäyksiä on kuutta tyyppiä: lävistys, teräase, murjova, tuli, kylmä ja "
+"salatiede. Eri yksiköillä on heikkouksia erilaisia hyökkäyksiä vastaan. "
+"Paina yksikköä hiiren oikealla napilla, valitse 'Yksikön kuvaus' nähdäksesi, "
+"kuinka hyvin yksikkö vastustaa erilaisia hyökkäystyyppejä."
 
 #: data/hardwired/tips.cfg:59
 msgid ""
@@ -4708,7 +4717,6 @@ msgstr ""
 "yläkulmassa."
 
 #: data/hardwired/tips.cfg:63
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
@@ -4717,12 +4725,12 @@ msgid ""
 "completely cured on their next turn."
 msgstr ""
 "Myrkytetyt yksiköt menettävät 8 elämäpistettä joka vuoro, mutta he eivät voi "
-"kuolla myrkytykseen. Myrkky ei milloinkaan poista viimeistä elämäpistettä. "
-"Myrkytetyn yksikön voi parantaa liikuttamalla sen kylään tai parantavan "
-"yksikön viereen."
+"kuolla myrkytykseen: myrkky ei milloinkaan poista viimeistä elämäpistettä. "
+"Myrkytetty yksilö ei menetä elämäpisteitään, jos yksilö on hoivaamaan "
+"kykenevän yksikön vieressä. Yksikön voi parantaa liikuttamalla sen kylään "
+"tai parantavan yksikön viereen."
 
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
@@ -4733,7 +4741,6 @@ msgstr ""
 "voit luoda tehokkaan ja kokeneen armeijan."
 
 #: data/hardwired/tips.cfg:71
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -4743,8 +4750,10 @@ msgid ""
 msgstr ""
 "Yksiköt hallitsevat kaikkia vieressään olevia heksoja. Jos yksikkö liikkuu "
 "vihollisen hallitsemaan heksaan se ei voi liikkua enempää tällä vuorolla. "
-"Tason 0 yksiköt ovat liian heikkoja hallitsemaan aluetta ja kahakoitsijat "
-"osaavat taitavasti välttää näiden alueiden vaikutukset."
+"Tämä tarkoittaa, että yksiköillä voi olla kaksi tyhjää heksaa välissään, ja "
+"silti muodostaa esteen viholliselle. (Tason 0 yksiköt ovat liian heikkoja "
+"hallitsemaan aluetta ja kahakoitsijat osaavat taitavasti välttää näiden "
+"alueiden vaikutukset.)"
 
 #: data/hardwired/tips.cfg:75
 msgid ""
@@ -4768,14 +4777,14 @@ msgid ""
 msgstr "Kylässä oleva yksikkö parantuu 8 elämäpisteellä vuoronsa alussa. "
 
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don't move an injured unit if you don't have to--let it rest. If a unit does "
 "not move or attack, it will recover 2 hit points at the beginning of its "
 "next turn."
 msgstr ""
-"Yksiköt lepäävät milloin ne eivät hyökkää tai liiku vuorollaan. Lepäävät "
-"yksiköt parantuvat kahdella elämäpisteellä seuraavan vuoron alussa."
+"Älä siirrä loukkaantuneita yksiköitä, ellei sinun täyty -- jätä heidät "
+"lepäämään. Lepäävät yksiköt parantuvat kahdella elämäpisteellä seuraavan "
+"vuoron alussa."
 
 #: data/hardwired/tips.cfg:87
 msgid ""
@@ -4886,14 +4895,14 @@ msgstr ""
 "salatiedehyökkäyksille."
 
 #: data/hardwired/tips.cfg:127
-#, fuzzy
 msgid ""
 "Units with the 'leadership' ability make lower-level adjacent units on the "
 "same side fight better. Use these units to help your other units level up "
 "faster."
 msgstr ""
 "Yksiköt, joilla on johtamiskyky, auttavat viereisiä alemman kokemustason "
-"yksiköitä taistelemaan paremmin."
+"yksiköitä taistelemaan paremmin. Käytä näitä yksiköitä auttaaksesi muita "
+"yksiköitäsi kehittymään nopeammin."
 
 #: data/hardwired/tips.cfg:131
 msgid ""
@@ -4980,7 +4989,6 @@ msgstr ""
 "yhdellä iskulla."
 
 #: data/hardwired/tips.cfg:171
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
 "Advancement' (AMLA), which usually increases the unit's maximum hit points "
@@ -5207,11 +5215,11 @@ msgstr "Linnassa ei ole tyhjää tilaa, johon värvätä."
 
 #: src/actions.cpp:259 src/actions.cpp:282 src/actions.cpp:287
 msgid "An invalid weapon is selected, possibly by the Python AI."
-msgstr ""
+msgstr "Epäkelpo ase valittuna, mahdollisesti Python AI:n syytä."
 
 #: src/actions.cpp:266
 msgid "An invalid weapon is send, possibly due to the Python AI."
-msgstr ""
+msgstr "Epäkelpo ase lähetetty, mahdollisesti Python AI:n syytä."
 
 #: src/actions.cpp:958 src/actions.cpp:1212
 msgid "poisoned"
@@ -5266,13 +5274,14 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(paina $hotkey jatkaaksesi)"
 
 #: src/ai.cpp:1713
-#, fuzzy
 msgid "Unknown unit type : "
-msgstr "Tuntematon yksikkötyyppi '$type|'"
+msgstr "Tuntematon yksikkötyyppi:"
 
 #: src/ai_move.cpp:77
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
+"Liikkumiskustannus on 0, mahdollisesti maastoa tyhjällä "
+"liikkumiskustannuksella."
 
 #: src/dialogs.cpp:109
 msgid "Advance Unit"
@@ -5770,9 +5779,8 @@ msgstr "Tappio:"
 
 #: src/gamestatus.cpp:254 src/gamestatus.cpp:269 src/gamestatus.cpp:289
 #: src/gamestatus.cpp:374
-#, fuzzy
 msgid "No time of day has been defined."
-msgstr "Satunnainen vuorokauden aika aloittaessa"
+msgstr "Vuorokaudenaikaa ei ole määritelty."
 
 #: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
 msgid " replay"
@@ -6060,7 +6068,7 @@ msgstr "Luetaan tiedostoja ja luodaan väliaikaistiedostoa."
 
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
-msgstr ""
+msgstr "Satunnaiskartat oudoilla leveyksillä eivät ole tuettuja."
 
 #: src/menu_events.cpp:126 src/menu_events.cpp:175
 msgid "Recruits"
@@ -6247,11 +6255,8 @@ msgstr ""
 "Valitse toinen nimi."
 
 #: src/menu_events.cpp:716
-#, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr ""
-"Tallenteen nimessä ei saa olla puolipistettä, kautta- tai kenoviivaa. "
-"Valitse toinen nimi."
+msgstr "Tallenteen nimi ei saa loppua '.gz':hen. Valitse toinen nimi."
 
 #: src/menu_events.cpp:727
 msgid "Saved"
@@ -6390,7 +6395,6 @@ msgid "Place Label"
 msgstr "Lisää karttamerkintä"
 
 #: src/menu_events.cpp:1669 src/menu_events.cpp:1672
-#, fuzzy
 msgid "Label: "
 msgstr "Karttamerkintä:"
 
@@ -7054,13 +7058,10 @@ msgid "Client disconnected"
 msgstr "Vastapuoli katkaisi yhteyden."
 
 #: src/network.cpp:165
-#, fuzzy
 msgid "No server ping since $timeout second. Connection timed out."
 msgid_plural "No server ping since $timeout seconds. Connection timed out."
-msgstr[0] ""
-"Ei yhteydenottoa serveriltä ainakaan 30. sekuntiin. Yhteys katkesi. "
-msgstr[1] ""
-"Ei yhteydenottoa serveriltä ainakaan 30. sekuntiin. Yhteys katkesi. "
+msgstr[0] "Ei yhteydenottoa serveriltä $timeout sekuntiin. Yhteys katkesi."
+msgstr[1] "Ei yhteydenottoa serveriltä $timeout sekuntiin. Yhteys katkesi."
 
 #: src/network.cpp:519
 msgid "Could not add socket to socket set"
@@ -7072,7 +7073,7 @@ msgstr "Ei voitu lähettää alkukättelyä."
 
 #: src/pathfind.cpp:310
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Maastoa yhtä vähemmällä liikkumiskustannuksella kohdattu."
 
 #: src/play_controller.cpp:90
 msgid "Initializing teams"
@@ -7342,7 +7343,7 @@ msgstr "sinun kyläsi"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size pitäisi olla 0.0:n ja 0.5:n väliltä."
 
 #: src/titlescreen.cpp:342
 msgid "TitleScreen button^Tutorial"
@@ -7536,27 +7537,6 @@ msgstr "Auta meitä kehittämään Wesnothista parempi sinulle!"
 msgid "Enable summary uploads"
 msgstr "Salli yhteenvetojen lataaminen"
 
-#, fuzzy
-#~ msgid "Heal to full, MAX XP +25%"
-#~ msgstr ", enimmäis-KP +25%"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Each scenario has some objectives, shown as the scenario starts. These "
-#~ "objectives list what you need to do to win, and what you should do to "
-#~ "avoid losing. Often the objective is to defeat all enemies, but other "
-#~ "times you need to reach a destination, to rescue someone, to solve a "
-#~ "puzzle, or just to survive a certain number of turns."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Jokaisessa taistelussa on tietyt tavoitteet, jotka näytetään sen alussa. "
-#~ "Nämä tavoitteet listaavat, mitä sinun on tehtävä voittaaksesi, ja mitä ei "
-#~ "saa tapahtua, jotta et häviäisi. Usein tavoitteena on kukistaa kaikki "
-#~ "viholliset, mutta toisinaan sinun täytyy saavuttaa jokin tietty kohde, "
-#~ "pelastaa joku, ratkaista arvoitus tai vain selvitä hengissä tietty aika."
-
 #~ msgid "Campaign Maintenance"
 #~ msgstr "Kampanjoiden ylläpito"
 
@@ -7587,11 +7567,65 @@ msgstr "Salli yhteenvetojen lataaminen"
 #~ msgid "Completion and Maintenance"
 #~ msgstr "Täydennys ja ylläpito"
 
+#~ msgid "Special Guest Designer"
+#~ msgstr "Erikoisvierassuunnittelija"
+
+#~ msgid "Brainstorming, playtesting, and spousal support"
+#~ msgstr "Aivomyrsky, testaus ja aviollinen tuki"
+
 #~ msgid "And special thanks to everyone else who I forgot to mention."
 #~ msgstr "Ja erityiskiitokset jokaiselle, jonka unohdin mainita."
 
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Each scenario has some objectives, shown as the scenario starts. These "
+#~ "objectives list what you need to do to win, and what you should do to "
+#~ "avoid losing. Often the objective is to defeat all enemies, but other "
+#~ "times you need to reach a destination, to rescue someone, to solve a "
+#~ "puzzle, or just to survive a certain number of turns."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Jokaisessa taistelussa on tietyt tavoitteet, jotka näytetään sen alussa. "
+#~ "Nämä tavoitteet listaavat, mitä sinun on tehtävä voittaaksesi, ja mitä ei "
+#~ "saa tapahtua, jotta et häviäisi. Usein tavoitteena on kukistaa kaikki "
+#~ "viholliset, mutta toisinaan sinun täytyy saavuttaa jokin tietty kohde, "
+#~ "pelastaa joku, ratkaista arvoitus tai vain selvitä hengissä tietty aika."
+
+#~ msgid "Heal to full, MAX XP +25%"
+#~ msgstr "Täysparannus, KP +25%"
+
+#~ msgid ""
+#~ "These majestic and powerful creatures are masters of the sky. Gryphons "
+#~ "are both dangerous and wary of other intelligent creatures, and thus "
+#~ "should not be disturbed without a good reason."
+#~ msgstr ""
+#~ "Nämä majesteettiset ja voimakkaat olennot ovat taivaiden herroja. "
+#~ "Aarnikotkat ovat sekä vaarallisia, epäluuloisia muita älykkäitä olentoja "
+#~ "kohti, ja siksi niitä ei pitäisi häiritä ilman hyvää syytä."
+
+#~ msgid ""
+#~ "Ogres are giant creatures that usually live alone in the wilderness, "
+#~ "remarkably similar to humans in form, though large and misshapen. While "
+#~ "they can be easily outrun or outsmarted, their strength is not to be "
+#~ "underestimated."
+#~ msgstr ""
+#~ "Jätit ovat massiivisia olentoja, jotka yleensä asuvat yksin erämaassa, "
+#~ "huomattavan samanlaisia ihmisten muotoon verrattuna, vaikkakin suuria ja "
+#~ "epämuotoisia. Vaikka heidät voidaan helposti kaataa massalla tai järkeä "
+#~ "käyttämällä, heidän voimansa ei ole aliarvioitavissa."
+
+#~ msgid "Undead units are the bodies of the dead, risen to fight again."
+#~ msgstr ""
+#~ "Epäkuolleet yksiköt ovat kuolleitten ruumiita, nostettuna takaisin "
+#~ "taistoon."
+
 #~ msgid "Era not available"
 #~ msgstr "Aikakausi ei saatavilla"
+
+#~ msgid "'string' is a mandatory key in '[terrain]'."
+#~ msgstr "'string' on pakollinen avain '[terrain]':ssa."
 
 #~ msgid "-- The Tome of Wesnoth"
 #~ msgstr "-- Wesnothin kirja"
