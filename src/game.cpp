@@ -418,6 +418,7 @@ bool game_controller::init_config()
 	//everything.
 	old_defines_map_.clear();
 	reset_game_cfg();
+	refresh_game_cfg();
 
 	game_config_.clear();
 	read_game_cfg(defines_map_, game_config_, use_caching_);
