@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 22:24+0100\n"
+"POT-Creation-Date: 2008-01-02 17:30+0100\n"
 "PO-Revision-Date: 2007-12-23 21:05+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -80,9 +80,9 @@ msgstr "Mehrspielerkarten und Feinabstimmung"
 msgid "Packagers"
 msgstr "Binärpakete"
 
-#: data/core/about.cfg:589 data/core/help.cfg:299
-msgid "Contributors"
-msgstr "Mitwirkende"
+#: data/core/about.cfg:589
+msgid "Miscellaneous contributors"
+msgstr ""
 
 #: data/core/about.cfg:709
 msgid "Internationalization Managers"
@@ -148,95 +148,95 @@ msgstr "Französische Übersetzung"
 msgid "Galician Translation"
 msgstr "Galicische Übersetzung"
 
-#: data/core/about.cfg:1153
+#: data/core/about.cfg:1158
 msgid "German Translation"
 msgstr "Deutsche Übersetzung"
 
-#: data/core/about.cfg:1201
+#: data/core/about.cfg:1206
 msgid "Greek Translation"
 msgstr "Griechische Übersetzung"
 
-#: data/core/about.cfg:1229
+#: data/core/about.cfg:1234
 msgid "Hebrew Translation"
 msgstr "Hebräische Übersetzung"
 
-#: data/core/about.cfg:1239
+#: data/core/about.cfg:1244
 msgid "Hungarian Translation"
 msgstr "Ungarische Übersetzung"
 
-#: data/core/about.cfg:1276
+#: data/core/about.cfg:1281
 msgid "Indonesian Translation"
 msgstr "Indonesische Übersetzung"
 
-#: data/core/about.cfg:1283
+#: data/core/about.cfg:1288
 msgid "Italian Translation"
 msgstr "Italienische Übersetzung"
 
-#: data/core/about.cfg:1314
+#: data/core/about.cfg:1319
 msgid "Japanese Translation"
 msgstr "Japanische Übersetzung"
 
-#: data/core/about.cfg:1337
+#: data/core/about.cfg:1342
 msgid "Korean Translation"
 msgstr "Koreanische Übersetzung"
 
-#: data/core/about.cfg:1344
+#: data/core/about.cfg:1349
 msgid "Latin Translation"
 msgstr "Lateinische Übersetzung"
 
-#: data/core/about.cfg:1351
+#: data/core/about.cfg:1356
 msgid "Lithuanian Translation"
 msgstr "Litauische Übersetzung"
 
-#: data/core/about.cfg:1358
+#: data/core/about.cfg:1363
 msgid "Norwegian Translation"
 msgstr "Norwegische Übersetzung"
 
-#: data/core/about.cfg:1380
+#: data/core/about.cfg:1385
 msgid "Polish Translation"
 msgstr "Polnische Übersetzung"
 
-#: data/core/about.cfg:1423
+#: data/core/about.cfg:1428
 msgid "Portuguese Translation"
 msgstr "Portugiesische Übersetzung"
 
-#: data/core/about.cfg:1430
+#: data/core/about.cfg:1435
 msgid "Portuguese (Brazil) Translation"
 msgstr "(Brasilianisch-)Portugiesische Übersetzung"
 
-#: data/core/about.cfg:1465
+#: data/core/about.cfg:1470
 msgid "Russian Translation"
 msgstr "Russische Übersetzung"
 
-#: data/core/about.cfg:1497
+#: data/core/about.cfg:1502
 msgid "Serbian Translation"
 msgstr "Serbische Übersetzung"
 
-#: data/core/about.cfg:1512
+#: data/core/about.cfg:1517
 msgid "Slovak Translation"
 msgstr "Slovakische Übersetzung"
 
-#: data/core/about.cfg:1526
+#: data/core/about.cfg:1531
 msgid "Slovenian Translation"
 msgstr "Slowenische Übersetzung"
 
-#: data/core/about.cfg:1536
+#: data/core/about.cfg:1541
 msgid "Spanish Translation"
 msgstr "Spanische Übersetzung"
 
-#: data/core/about.cfg:1578
+#: data/core/about.cfg:1583
 msgid "Swedish Translation"
 msgstr "Schwedische Übersetzung"
 
-#: data/core/about.cfg:1604
+#: data/core/about.cfg:1609
 msgid "Turkish Translation"
 msgstr "Türkische Übersetzung"
 
-#: data/core/about.cfg:1623
+#: data/core/about.cfg:1628
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencianische (südliches Katalonien) Übersetzung"
 
-#: data/core/about.cfg:1639
+#: data/core/about.cfg:1644
 msgid "Bots"
 msgstr "Bots"
 
@@ -1313,6 +1313,10 @@ msgstr ""
 "text=Fertigkeiten</ref> vertraut machen. Aber eigentlich wisst Ihr schon "
 "alles, was Ihr zum Spielen der Kampagne »Der Thronerbe« benötigt. Viel Spaß "
 "dabei!"
+
+#: data/core/help.cfg:299
+msgid "ingame_help_item^Contributors"
+msgstr ""
 
 #: data/core/help.cfg:305
 msgid "License"
@@ -4084,12 +4088,29 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:47
 msgid ""
+" This unit can hide in villages (with the exception of water villages), and "
+"remain undetected by its enemies, except by those standing next to it."
+msgstr ""
+
+#: data/core/macros/special-notes.cfg:50
+msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " Diese Einheit kann sich ungesehen in tiefem Wasser bewegen, da sie für "
 "lange Zeit nicht auftauchen muss."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:53
+#, fuzzy
+msgid ""
+" This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+"Kannibalismus:\n"
+"Nachdem sie eine lebende Einheit getötet hat, labt sie sich an deren "
+"Überresten und erhält durch die restliche Lebenskraft in dem toten Körper "
+"einen zusätzlichen Lebenspunkt zu ihrem Maximalwert."
+
+#: data/core/macros/special-notes.cfg:56
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -4098,7 +4119,7 @@ msgstr ""
 "bis entweder sie selbst oder ihr Gegner Tod am Boden liegt."
 
 # Hat jemand eine Idee, wie man "ein Feind des Feindes" nicht so holprig hinbekommt?
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 " If there is an enemy of the target on the opposite side of the target. This "
 "unit may backstab, inflicting double damage, by creeping around behind that "
@@ -4108,14 +4129,14 @@ msgstr ""
 "Einheit in dessen Rücken schleichen und einen hinterhältigen Angriff "
 "ausführen, der doppelten Schaden verursacht."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr ""
 " Jeder, der von dieser Einheit mittels der Waffe mit der Waffenfähigkeit "
 "»Plage« niedergestreckt wird, erhebt sich sogleich wieder als wandelnde "
 "Leiche, um an der Seite dieser Einheit zu kämpfen."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -4124,14 +4145,14 @@ msgstr ""
 "Schaden des Gegners im Kampf sowie seine Bewegungspunkte um die Hälfte "
 "reduziert werden."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " Die Fähigkeit, ihre Gegner in Stein zu verwandeln, macht diese Einheit zu "
 "einem extrem gefährlichen Gegner."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
@@ -4139,7 +4160,7 @@ msgstr ""
 " Ihre hervorragende Schießkunst erlaubt es dieser Einheit jeden Feind mit "
 "hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in der Offensive."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
@@ -4147,7 +4168,7 @@ msgstr ""
 " Der Fernkampfangriff dieser Einheit ist magischer Natur und hat daher eine "
 "erhöhte Trefferwahrscheinlichkeit."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:77
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -4155,7 +4176,7 @@ msgstr ""
 " Mit steigender Verwundung ihrer Tentakel, wird der Angriff dieser Einheit "
 "immer weniger gefährlich."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:80
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -4165,7 +4186,7 @@ msgstr ""
 "jedoch verursacht auch ihr Gegner doppelten Schaden. Im Verteidigungsfall "
 "wird diese Fähigkeit nicht aktiviert."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:83
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
@@ -4173,7 +4194,7 @@ msgstr ""
 " Wird ein Gegner von dieser Einheit gebissen oder berührt, wird ein Teil von "
 "dessen Lebenskraft abgesaugt und auf die Einheit übertragen."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:86
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
@@ -4181,7 +4202,7 @@ msgstr ""
 " Durch die Länge ihrer Waffe führt diese Einheit den ersten Schlag, selbst "
 "wenn sie sich nur verteidigt."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5229,8 +5250,8 @@ msgid "End Scenario"
 msgstr "Szenario beenden"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2412
-#: src/unit.cpp:2585
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2397
+#: src/unit.cpp:2570
 msgid "HP"
 msgstr "LP"
 
@@ -5339,7 +5360,7 @@ msgid "Skip animation"
 msgstr "Keine Animationen"
 
 #: src/about.cpp:47 src/multiplayer_connect.cpp:432
-#: src/multiplayer_connect.cpp:529 src/multiplayer_wait.cpp:490
+#: src/multiplayer_connect.cpp:529 src/multiplayer_wait.cpp:501
 msgid "+"
 msgstr "+"
 
@@ -5352,79 +5373,79 @@ msgstr "+  "
 msgid "Close"
 msgstr "Schließen"
 
-#: src/actions.cpp:143
+#: src/actions.cpp:144
 msgid "You don't have a leader to recruit with."
 msgstr ""
 "Euer Heerführer ist gefallen. Ihr könnt keine weiteren Einheiten ausbilden."
 
-#: src/actions.cpp:150
+#: src/actions.cpp:151
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Euer Heerführer muss sich im Burgfried befinden, um Einheiten auszubilden."
 
-#: src/actions.cpp:169
+#: src/actions.cpp:170
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
 
-#: src/actions.cpp:259 src/actions.cpp:282 src/actions.cpp:287
+#: src/actions.cpp:263 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 "Es wurde eine ungültige Waffe ausgewählt, möglicherweise von der Python KI."
 
-#: src/actions.cpp:266
+#: src/actions.cpp:270
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 "Eine ungültige Waffe wurde gesendet, möglicherweise durch die Python KI."
 
-#: src/actions.cpp:958 src/actions.cpp:1212
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "poisoned"
 msgstr "vergiftet"
 
-#: src/actions.cpp:962 src/actions.cpp:1216
+#: src/actions.cpp:966 src/actions.cpp:1220
 msgid "slowed"
 msgstr "verlangsamt"
 
-#: src/actions.cpp:968 src/actions.cpp:1222
+#: src/actions.cpp:972 src/actions.cpp:1226
 msgid "stone"
 msgstr "versteinern"
 
-#: src/actions.cpp:2157
+#: src/actions.cpp:2161
 msgid "Ambushed!"
 msgstr "Hinterhalt!"
 
-#: src/actions.cpp:2163
+#: src/actions.cpp:2167
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleportation fehlgeschlagen! Ziel ist besetzt."
 
-#: src/actions.cpp:2201
+#: src/actions.cpp:2205
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Verbündete Einheit gesichtet"
 msgstr[1] "$friends verbündete Einheiten gesichtet"
 
-#: src/actions.cpp:2204
+#: src/actions.cpp:2208
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Gegnerische Einheit gesichtet!"
 msgstr[1] "$enemies gegnerische Einheiten gesichtet!"
 
-#: src/actions.cpp:2209
+#: src/actions.cpp:2213
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 verbündete"
 msgstr[1] "$friends verbündete"
 
-#: src/actions.cpp:2210
+#: src/actions.cpp:2214
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 feindliche"
 msgstr[1] "$enemies feindliche"
 
-#: src/actions.cpp:2211
+#: src/actions.cpp:2215
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Einheiten gesichtet! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2220
+#: src/actions.cpp:2224
 msgid "(press $hotkey to keep moving)"
 msgstr "(Drückt $hotkey um fortzufahren)"
 
@@ -5437,107 +5458,111 @@ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
 "Bewegungskosten sind 0, vielleicht von einem Gelände mit 0 Bewegungskosten."
 
-#: src/dialogs.cpp:109
+#: src/config_adapter.cpp:156
+msgid "Duplicate side definition for side '$side|' found."
+msgstr ""
+
+#: src/dialogs.cpp:111
 msgid "Advance Unit"
 msgstr "Einheit befördern"
 
-#: src/dialogs.cpp:110
+#: src/dialogs.cpp:112
 msgid "What should our victorious unit become?"
 msgstr "Welchen Pfad soll diese Einheit beschreiten?"
 
-#: src/dialogs.cpp:208
+#: src/dialogs.cpp:210
 msgid "No objectives available"
 msgstr "Keine Missionsziele vorhanden"
 
-#: src/dialogs.cpp:224
+#: src/dialogs.cpp:226
 msgid "Save Game"
 msgstr "Spiel speichern"
 
-#: src/dialogs.cpp:232
+#: src/dialogs.cpp:234
 msgid "Quit Game"
 msgstr "Spiel beenden"
 
-#: src/dialogs.cpp:237
+#: src/dialogs.cpp:239
 msgid "Ignore All"
 msgstr "Alle ignorieren"
 
-#: src/dialogs.cpp:254
+#: src/dialogs.cpp:256
 msgid "Overwrite?"
 msgstr "Überschreiben?"
 
-#: src/dialogs.cpp:255
+#: src/dialogs.cpp:257
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
-#: src/dialogs.cpp:289
+#: src/dialogs.cpp:291
 msgid "Do you really want to delete this game?"
 msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
 
-#: src/dialogs.cpp:291
+#: src/dialogs.cpp:293
 msgid "Don't ask me again!"
 msgstr "Nicht nochmal fragen!"
 
-#: src/dialogs.cpp:441
+#: src/dialogs.cpp:443
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %d %b %H:%M %Y"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:460
 msgid "#(Invalid)"
 msgstr "#(Ungültig)"
 
-#: src/dialogs.cpp:465
+#: src/dialogs.cpp:467
 msgid "Campaign: $campaign_name"
 msgstr "Kampagne: $campaign_name"
 
-#: src/dialogs.cpp:467 src/game.cpp:1449
+#: src/dialogs.cpp:469 src/game.cpp:1452
 msgid "Multiplayer"
 msgstr "Mehrspieler"
 
-#: src/dialogs.cpp:469
+#: src/dialogs.cpp:471
 msgid "Tutorial"
 msgstr "Einführung"
 
-#: src/dialogs.cpp:477
+#: src/dialogs.cpp:479
 msgid "replay"
 msgstr "Wiederholung anzeigen"
 
-#: src/dialogs.cpp:479 src/menu_events.cpp:693
+#: src/dialogs.cpp:481 src/menu_events.cpp:693
 msgid "Turn"
 msgstr "Runde"
 
-#: src/dialogs.cpp:481
+#: src/dialogs.cpp:483
 msgid "Scenario Start"
 msgstr "Szenariobeginn"
 
-#: src/dialogs.cpp:484
+#: src/dialogs.cpp:486
 msgid "Difficulty: "
 msgstr "Schwierigkeitsgrad: "
 
-#: src/dialogs.cpp:486
+#: src/dialogs.cpp:488
 msgid "Version: "
 msgstr "Version: "
 
-#: src/dialogs.cpp:510 src/dialogs.cpp:526
+#: src/dialogs.cpp:512 src/dialogs.cpp:528
 msgid "%b %d %y"
 msgstr "%d %b %y"
 
-#: src/dialogs.cpp:516
+#: src/dialogs.cpp:518
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:519
+#: src/dialogs.cpp:521
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:522
+#: src/dialogs.cpp:524
 msgid "%b %d"
 msgstr "%d %b"
 
-#: src/dialogs.cpp:546
+#: src/dialogs.cpp:548
 msgid "No Saved Games"
 msgstr "Keine Spielstände vorhanden"
 
-#: src/dialogs.cpp:547
+#: src/dialogs.cpp:549
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -5546,79 +5571,79 @@ msgstr ""
 "Es wurden keine Spielstände gefunden.\n"
 "(Spielstände werden automatisch gespeichert, wenn Ihr ein Szenario beendet)"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:561
 msgid "Delete Save"
 msgstr "Spielstand löschen"
 
-#: src/dialogs.cpp:565
+#: src/dialogs.cpp:567
 msgid "Date"
 msgstr "Datum"
 
-#: src/dialogs.cpp:565 src/game.cpp:1127 src/menu_events.cpp:340
+#: src/dialogs.cpp:567 src/game.cpp:1130 src/menu_events.cpp:340
 #: src/menu_events.cpp:1117 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Name"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:588 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "Spielstand laden"
 
-#: src/dialogs.cpp:587
+#: src/dialogs.cpp:589
 msgid "Choose the game to load"
 msgstr "Wählt den zu ladenden Spielstand"
 
-#: src/dialogs.cpp:593
+#: src/dialogs.cpp:595
 msgid "Show replay"
 msgstr "Spielverlauf anzeigen"
 
-#: src/dialogs.cpp:622
+#: src/dialogs.cpp:624
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:714 src/help.cpp:1271
+#: src/dialogs.cpp:716 src/help.cpp:1271
 msgid "level"
 msgstr "Stufe"
 
-#: src/dialogs.cpp:727 src/help.cpp:1377
+#: src/dialogs.cpp:729 src/help.cpp:1377
 msgid "HP: "
 msgstr "LP: "
 
-#: src/dialogs.cpp:730
+#: src/dialogs.cpp:732
 msgid "XP: "
 msgstr "EP: "
 
-#: src/dialogs.cpp:734 src/help.cpp:1378
+#: src/dialogs.cpp:736 src/help.cpp:1378
 msgid "Moves: "
 msgstr "BP: "
 
-#: src/dialogs.cpp:1029 src/dialogs.cpp:1130 src/multiplayer_connect.cpp:903
+#: src/dialogs.cpp:1031 src/dialogs.cpp:1132 src/multiplayer_connect.cpp:903
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:194
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/dialogs.cpp:1053 src/game.cpp:937
+#: src/dialogs.cpp:1055 src/game.cpp:940
 msgid "KB"
 msgstr "KB"
 
-#: src/display.cpp:402
+#: src/display.cpp:406
 msgid "Screenshot"
 msgstr "Screenshot"
 
-#: src/game.cpp:444 src/game.cpp:1546
+#: src/game.cpp:445 src/game.cpp:1549
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:703
+#: src/game.cpp:705
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Warnung: Die Datei ist beschädigt. Sie wird trotzdem geladen.\n"
 
-#: src/game.cpp:745 src/multiplayer_connect.cpp:1415
+#: src/game.cpp:748 src/multiplayer_connect.cpp:1415
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Dieser Spielstand stammt aus einer zu alten Version und kann nicht geladen "
 "werden."
 
-#: src/game.cpp:751 src/multiplayer_connect.cpp:1422
+#: src/game.cpp:754 src/multiplayer_connect.cpp:1422
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -5626,221 +5651,221 @@ msgstr ""
 "Dieser Spielstand stammt aus einer früheren Version. Möchtet Ihr den "
 "Spielstand laden?"
 
-#: src/game.cpp:769 src/game.cpp:772 src/multiplayer_connect.cpp:1393
+#: src/game.cpp:772 src/game.cpp:775 src/multiplayer_connect.cpp:1393
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt: '"
 
-#: src/game.cpp:775
+#: src/game.cpp:778
 msgid "File I/O Error while reading the game"
 msgstr "Dateifehler beim Einlesen des Spieles."
 
-#: src/game.cpp:867
+#: src/game.cpp:870
 msgid "Play a campaign"
 msgstr "Eine Kampagne spielen"
 
-#: src/game.cpp:908
+#: src/game.cpp:911
 msgid "Difficulty"
 msgstr "Schwierigkeitsgrad"
 
-#: src/game.cpp:909
+#: src/game.cpp:912
 msgid "Select difficulty level:"
 msgstr "Schwierigkeitsgrad auswählen:"
 
-#: src/game.cpp:934
+#: src/game.cpp:937
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:940
+#: src/game.cpp:943
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:970
+#: src/game.cpp:973
 msgid "Connect to Server"
 msgstr "Mit Kampagnenserver verbinden"
 
-#: src/game.cpp:971
+#: src/game.cpp:974
 msgid "You will now connect to a server to download add-ons."
 msgstr "Gebt einen Server an, von dem Ihr Erweiterungen holen wollt."
 
-#: src/game.cpp:973
+#: src/game.cpp:976
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:974 src/game.cpp:1022
+#: src/game.cpp:977 src/game.cpp:1025
 msgid "Remove Add-ons"
 msgstr "Erweiterungen entfernen"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1012
 msgid "You have no Add-ons installed."
 msgstr "Ihr habt keine Erweiterungen installiert."
 
-#: src/game.cpp:1022
+#: src/game.cpp:1025
 msgid "Choose the add-on to remove."
 msgstr "Wählt eine Erweiterung zum Entfernen aus."
 
-#: src/game.cpp:1033
+#: src/game.cpp:1036
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Seid Ihr sicher, dass Ihr die Erweiterung '$addon|' entfernen wollt?"
 
-#: src/game.cpp:1037
+#: src/game.cpp:1040
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: src/game.cpp:1060
+#: src/game.cpp:1063
 msgid "Add-on '$addon|' deleted."
 msgstr "Erweiterung '$addon|' entfernt."
 
-#: src/game.cpp:1065
+#: src/game.cpp:1068
 msgid "Add-on deleted"
 msgstr "Erweiterung entfernt"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1074
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 "Erweiterung konnte nicht entfernt werden – eine Datei wurde nicht gefunden."
 
-#: src/game.cpp:1071 src/menu_events.cpp:707 src/menu_events.cpp:715
-#: src/menu_events.cpp:730 src/multiplayer_create.cpp:527
+#: src/game.cpp:1074 src/menu_events.cpp:707 src/menu_events.cpp:715
+#: src/menu_events.cpp:730 src/multiplayer_create.cpp:528
 msgid "Error"
 msgstr "Fehler"
 
-#: src/game.cpp:1092 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1095 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Verbinde mit Server..."
 
-#: src/game.cpp:1095
+#: src/game.cpp:1098
 msgid "Could not connect to host."
 msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
 
-#: src/game.cpp:1105
+#: src/game.cpp:1108
 msgid "Asking for list of add-ons"
 msgstr "Empfange Erweiterungsliste"
 
-#: src/game.cpp:1118
+#: src/game.cpp:1121
 msgid "Error communicating with the server."
 msgstr "Kommunikationsfehler mit dem Server."
 
-#: src/game.cpp:1127 src/titlescreen.cpp:323
+#: src/game.cpp:1130 src/titlescreen.cpp:323
 msgid "Version"
 msgstr "Version"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1131
 msgid "Author"
 msgstr "Autor"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1131
 msgid "Downloads"
 msgstr "Geladen"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1131
 msgid "Size"
 msgstr "Größe"
 
-#: src/game.cpp:1180
+#: src/game.cpp:1183
 msgid "Publish add-on: "
 msgstr "Erweiterung veröffentlichen: "
 
-#: src/game.cpp:1184
+#: src/game.cpp:1187
 msgid "Delete add-on: "
 msgstr "Erweiterung löschen: "
 
-#: src/game.cpp:1188
+#: src/game.cpp:1191
 msgid "There are no add-ons available for download from this server."
 msgstr "Auf diesem Server sind keine Erweiterungen verfügbar."
 
-#: src/game.cpp:1195
+#: src/game.cpp:1198
 msgid "Get Add-ons"
 msgstr "Erweiterungen holen"
 
-#: src/game.cpp:1196
+#: src/game.cpp:1199
 msgid "Choose the add-on to download."
 msgstr "Wählt eine Erweiterung zum Speichern aus."
 
-#: src/game.cpp:1239
+#: src/game.cpp:1242
 msgid "Dependencies"
 msgstr "Abhängigkeiten"
 
-#: src/game.cpp:1240
+#: src/game.cpp:1243
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Diese Erweiterung benötigt die folgenden Abhängigkeiten:"
 
-#: src/game.cpp:1242
+#: src/game.cpp:1245
 msgid "Do you still want to download it?"
 msgstr "Möchtet Ihr sie trotzdem herunterladen?"
 
-#: src/game.cpp:1252
+#: src/game.cpp:1255
 msgid "Downloading add-on..."
 msgstr "Erweiterung wird geladen ..."
 
-#: src/game.cpp:1310
+#: src/game.cpp:1313
 msgid "Add-on Installed"
 msgstr "Erweiterung installiert"
 
-#: src/game.cpp:1310
+#: src/game.cpp:1313
 msgid "The add-on has been installed."
 msgstr "Die Erweiterung wurde erfolgreich installiert."
 
-#: src/game.cpp:1313
+#: src/game.cpp:1316
 msgid "Network communication error."
 msgstr "Netzwerkverbindungsfehler"
 
-#: src/game.cpp:1315
+#: src/game.cpp:1318
 msgid "Remote host disconnected."
 msgstr "Der Server hat die Verbindung unterbrochen."
 
-#: src/game.cpp:1317
+#: src/game.cpp:1320
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
 "Es gab ein Problem beim Erstellen der für die Installation der Erweiterung "
 "benötigten Dateien."
 
-#: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
+#: src/game.cpp:1335 src/game.cpp:1378 src/game.cpp:1406
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:463
 msgid "Connection timed out"
 msgstr "Zeitlimit der Verbindung überschritten"
 
-#: src/game.cpp:1335
+#: src/game.cpp:1338
 msgid "The server responded with an error: \"$error|\""
 msgstr "Der Server gab folgenden Fehler zurück »$error|«"
 
-#: src/game.cpp:1342
+#: src/game.cpp:1345
 msgid "Terms"
 msgstr "Bedingungen"
 
-#: src/game.cpp:1373
+#: src/game.cpp:1376
 msgid "Sending add-on"
 msgstr "Sende Erweiterung"
 
-#: src/game.cpp:1377 src/game.cpp:1405
+#: src/game.cpp:1380 src/game.cpp:1408
 msgid "The server responded with an error: \""
 msgstr "Der Server gab folgenden Fehler zurück: »"
 
-#: src/game.cpp:1381 src/game.cpp:1409 src/multiplayer_wait.cpp:371
+#: src/game.cpp:1384 src/game.cpp:1412 src/multiplayer_wait.cpp:382
 msgid "Response"
 msgstr "Antwort"
 
-#: src/game.cpp:1433
+#: src/game.cpp:1436
 msgid "Join Official Server"
 msgstr "Offiziellem Server beitreten"
 
-#: src/game.cpp:1434
+#: src/game.cpp:1437
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Beim offiziellen Wesnoth-Server anmelden"
 
-#: src/game.cpp:1436
+#: src/game.cpp:1439
 msgid "Connect to Host/Server"
 msgstr "Mit Gastgeber/Server verbinden"
 
-#: src/game.cpp:1437
+#: src/game.cpp:1440
 msgid "Join a server or hosted game"
 msgstr "Einem Server oder einer Mehrspielerpartie beitreten"
 
-#: src/game.cpp:1439
+#: src/game.cpp:1442
 msgid "Host Networked Game"
 msgstr "Netzwerkpartie eröffnen"
 
-#: src/game.cpp:1440
+#: src/game.cpp:1443
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
@@ -5848,78 +5873,78 @@ msgstr ""
 "Eine Netzwerkpartie mit dem integrierten Server starten. Nutzt besser der "
 "dedizierten Server 'wesnothd'."
 
-#: src/game.cpp:1442
+#: src/game.cpp:1445
 msgid "Local Game"
 msgstr "Lokales Spiel"
 
-#: src/game.cpp:1443
+#: src/game.cpp:1446
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "Eine Mehrspielerpartie am selben Rechner gegen KI/Menschen spielen"
 
-#: src/game.cpp:1451 src/multiplayer.cpp:232
+#: src/game.cpp:1454 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Euer Name: "
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
+#: src/game.cpp:1491 src/playcampaign.cpp:100 src/playcampaign.cpp:384
 msgid "The game could not be loaded: "
 msgstr "Der Spielstand konnte nicht geladen werden: "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
+#: src/game.cpp:1493 src/playcampaign.cpp:102 src/playcampaign.cpp:387
 msgid "Error while playing the game: "
 msgstr "Fehler beim Spielen: "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
+#: src/game.cpp:1513 src/playcampaign.cpp:104 src/playcampaign.cpp:390
 msgid "The game map could not be loaded: "
 msgstr "Die Karte konnte nicht geladen werden: "
 
-#: src/game.cpp:1536
+#: src/game.cpp:1539
 msgid "Language"
 msgstr "Sprache"
 
-#: src/game.cpp:1537
+#: src/game.cpp:1540
 msgid "Choose your preferred language:"
 msgstr "Wählt die gewünschte Sprache:"
 
-#: src/game.cpp:1697
+#: src/game.cpp:1702
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr ""
 "Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
 "werden:"
 
-#: src/game.cpp:1702
+#: src/game.cpp:1707
 msgid "ERROR DETAILS:"
 msgstr "Fehlerdetails:"
 
-#: src/game.cpp:1716
+#: src/game.cpp:1721
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Warnung: Fehler beim Laden der Konfigurationsdateien: '"
 
-#: src/game.cpp:1768
+#: src/game.cpp:1773
 msgid "Error loading game configuration files: '"
 msgstr "Fehler beim Laden der Konfigurationsdateien: '"
 
-#: src/game.cpp:1769
+#: src/game.cpp:1774
 msgid "' (The game will now exit)"
 msgstr "' (Das Spiel wird nun beendet)"
 
-#: src/game.cpp:1811
+#: src/game.cpp:1816
 #, fuzzy
 msgid "Loading data files"
 msgstr "Lesen der Einheitendaten."
 
-#: src/game.cpp:1959
+#: src/game.cpp:1965
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:2151
+#: src/game.cpp:2157
 msgid "Loading game configuration."
 msgstr "Laden der Konfigurationsdateien."
 
-#: src/game.cpp:2157
+#: src/game.cpp:2163
 msgid "Re-initialize fonts for the current language."
 msgstr "Setze Zeichensatz der verwendeten Sprache zurück."
 
-#: src/game.cpp:2171
+#: src/game.cpp:2177
 msgid "Loading title screen."
 msgstr "Laden des Startbildschirms."
 
@@ -5940,7 +5965,7 @@ msgstr "Niederlage:"
 msgid "No time of day has been defined."
 msgstr "Es wurde keine Tageszeit festgelegt."
 
-#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:410
 msgid " replay"
 msgstr " Spielverlauf"
 
@@ -6004,7 +6029,7 @@ msgstr "versteinert:"
 msgid "Resistances: "
 msgstr "Resistenzen: "
 
-#: src/generate_report.cpp:183 src/multiplayer_create.cpp:395
+#: src/generate_report.cpp:183 src/multiplayer_create.cpp:396
 msgid "Experience Modifier: "
 msgstr "Erfahrungsmodifikator:"
 
@@ -6185,7 +6210,7 @@ msgstr "Überspringen"
 msgid "The End"
 msgstr "Ende"
 
-#: src/language.cpp:95
+#: src/language.cpp:96
 msgid "System default language"
 msgstr "Systemvorgabe"
 
@@ -6227,6 +6252,12 @@ msgstr "Lesen der Einheitendaten."
 #: src/loadscreen.cpp:241
 msgid "Reading files and creating cache."
 msgstr "Lesen der Daten und erstellen des Caches."
+
+#: src/map.cpp:341
+#, fuzzy
+msgid "A map without a header is not supported"
+msgstr ""
+"Zufallskarten mit einer ungeraden Zahl als Breite werden nicht unterstützt."
 
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
@@ -6332,7 +6363,7 @@ msgid "Team"
 msgstr "Team"
 
 #: src/menu_events.cpp:510 src/multiplayer_connect.cpp:899
-#: src/multiplayer_wait.cpp:484
+#: src/multiplayer_wait.cpp:495
 msgid "Gold"
 msgstr "Gold"
 
@@ -6349,7 +6380,7 @@ msgid "Upkeep"
 msgstr "Ausgaben"
 
 #: src/menu_events.cpp:514 src/multiplayer_connect.cpp:900
-#: src/multiplayer_wait.cpp:488
+#: src/multiplayer_wait.cpp:499
 msgid "Income"
 msgstr "Einkommen"
 
@@ -6409,7 +6440,7 @@ msgstr "Ja"
 msgid "Scenario Settings"
 msgstr "Szenarioneinstellungen"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:543
+#: src/menu_events.cpp:702 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "Name:"
 
@@ -6435,7 +6466,7 @@ msgstr "Gespeichert"
 msgid "The game has been saved"
 msgstr "Der Spielstand wurde gespeichert"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:551
+#: src/menu_events.cpp:730 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "Der Spielstand konnte nicht gespeichert werden"
 
@@ -6803,12 +6834,12 @@ msgid "Normal"
 msgstr "Normal"
 
 #: src/multiplayer_connect.cpp:430 src/multiplayer_connect.cpp:527
-#: src/multiplayer_wait.cpp:480 src/multiplayer_wait.cpp:488
+#: src/multiplayer_wait.cpp:491 src/multiplayer_wait.cpp:499
 msgid "("
 msgstr "("
 
 #: src/multiplayer_connect.cpp:430 src/multiplayer_connect.cpp:527
-#: src/multiplayer_wait.cpp:480 src/multiplayer_wait.cpp:491
+#: src/multiplayer_wait.cpp:491 src/multiplayer_wait.cpp:502
 msgid ")"
 msgstr ")"
 
@@ -6841,7 +6872,7 @@ msgstr "Keine nicht zufälligen Anführer in der gewählten Ära"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Kann den Anführertyp für die Fraktion $faction nicht finden"
 
-#: src/multiplayer_connect.cpp:875 src/multiplayer_lobby.cpp:607
+#: src/multiplayer_connect.cpp:875 src/multiplayer_lobby.cpp:622
 #: src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
 msgstr "Empfangshalle"
@@ -6906,7 +6937,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "Warte auf weitere Mitspieler..."
 
-#: src/multiplayer_create.cpp:47 src/multiplayer_lobby.cpp:611
+#: src/multiplayer_create.cpp:47 src/multiplayer_lobby.cpp:626
 msgid "Create Game"
 msgstr "Partie eröffnen"
 
@@ -6926,7 +6957,7 @@ msgstr "Epoche:"
 msgid "Map to play:"
 msgstr "Verfügbare Karten:"
 
-#: src/multiplayer_create.cpp:78 src/multiplayer_lobby.cpp:238
+#: src/multiplayer_create.cpp:78 src/multiplayer_lobby.cpp:254
 msgid "Use map settings"
 msgstr "Vorgaben nutzen"
 
@@ -6938,8 +6969,8 @@ msgstr "Zufällige Startzeit"
 msgid "Fog Of War"
 msgstr "Nebel des Krieges"
 
-#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:487
-#: src/multiplayer_lobby.cpp:493
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:502
+#: src/multiplayer_lobby.cpp:508
 msgid "Shroud"
 msgstr "Schleier der Finsternis"
 
@@ -6967,145 +6998,145 @@ msgstr ""
 msgid "Load Game..."
 msgstr "Spielstand laden..."
 
-#: src/multiplayer_create.cpp:138
+#: src/multiplayer_create.cpp:139
 msgid "The maximum number of turns the game can last"
 msgstr "Legt die maximale Rundenzahl einer Partie fest"
 
-#: src/multiplayer_create.cpp:141
+#: src/multiplayer_create.cpp:142
 msgid "Enables user time limit"
 msgstr "Aktiviert eine Zeitbegrenzung"
 
-#: src/multiplayer_create.cpp:147
+#: src/multiplayer_create.cpp:148
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Größtmögliche Zeit für die erste Runde (in Sekunden)"
 
-#: src/multiplayer_create.cpp:153
+#: src/multiplayer_create.cpp:154
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Größtmögliche Zeit für irgendeine Runde (in Sekunden)"
 
-#: src/multiplayer_create.cpp:159
+#: src/multiplayer_create.cpp:160
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Zeit für generelle Aufgaben pro Runde (in Sekunden)"
 
-#: src/multiplayer_create.cpp:165
+#: src/multiplayer_create.cpp:166
 msgid "Time for each attack, recruit, and capture"
 msgstr "Zeit für Angriff, Rekrutierung und Eroberung (in Sekunden)"
 
-#: src/multiplayer_create.cpp:170
+#: src/multiplayer_create.cpp:171
 msgid "The amount of income each village yields per turn"
 msgstr "Die Steuereinnahmen, die jedes eroberte Dorf pro Runde hervorbringt"
 
-#: src/multiplayer_create.cpp:176
+#: src/multiplayer_create.cpp:177
 msgid "The amount of experience a unit needs to advance"
 msgstr "Die Menge an Erfahrung, die eine Einheit zum Stufenaufstieg benötigt"
 
-#: src/multiplayer_create.cpp:179
+#: src/multiplayer_create.cpp:180
 msgid "Use scenario specific settings"
 msgstr ""
 "Überschreibt globale Einstellungen mit den im Szenario definierten "
 "Einstellungen"
 
-#: src/multiplayer_create.cpp:182
+#: src/multiplayer_create.cpp:183
 msgid "Randomize time of day in begin"
 msgstr "Legt die Tageszeit zu Spielbeginn zufällig fest"
 
-#: src/multiplayer_create.cpp:185
+#: src/multiplayer_create.cpp:186
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Feindliche Einheiten werden erst sichtbar, wenn sie in Reichweite der "
 "eigenen sind"
 
-#: src/multiplayer_create.cpp:188
+#: src/multiplayer_create.cpp:189
 msgid "The map is unknown until your units explore it"
 msgstr "Die Karte ist verdeckt, bis sie von eigenen Einheiten erkundet wurde"
 
-#: src/multiplayer_create.cpp:191
+#: src/multiplayer_create.cpp:192
 msgid "Allow users who are not playing to watch the game"
 msgstr "Erlaubt es, das Spiel als Unbeteiligter zu betrachten"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "Share View"
 msgstr "Ansicht teilen"
 
-#: src/multiplayer_create.cpp:196
+#: src/multiplayer_create.cpp:197
 msgid "Share Maps"
 msgstr "Karten teilen"
 
-#: src/multiplayer_create.cpp:197
+#: src/multiplayer_create.cpp:198
 msgid "Share None"
 msgstr "Nichts teilen"
 
-#: src/multiplayer_create.cpp:208
+#: src/multiplayer_create.cpp:209
 msgid "No eras found."
 msgstr "Keine Ära gefunden."
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:210
 msgid "No eras found"
 msgstr "Keine Ära gefunden"
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:223
 msgid "$login's game"
 msgstr "$login|s Partie"
 
-#: src/multiplayer_create.cpp:281
+#: src/multiplayer_create.cpp:282
 msgid "Invalid era selected"
 msgstr "Ungültige Ära ausgewählt"
 
-#: src/multiplayer_create.cpp:320
+#: src/multiplayer_create.cpp:321
 msgid "You must enter a name."
 msgstr "Ihr müsst einen Namen eingeben."
 
-#: src/multiplayer_create.cpp:325
+#: src/multiplayer_create.cpp:326
 msgid "Set Password"
 msgstr ""
 
-#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:725
+#: src/multiplayer_create.cpp:327 src/multiplayer_lobby.cpp:740
 #, fuzzy
 msgid "Password: "
 msgstr "Schwert"
 
-#: src/multiplayer_create.cpp:326
+#: src/multiplayer_create.cpp:327
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
 
-#: src/multiplayer_create.cpp:334
+#: src/multiplayer_create.cpp:335
 msgid "Turns: "
 msgstr "Runden:"
 
-#: src/multiplayer_create.cpp:336
+#: src/multiplayer_create.cpp:337
 msgid "Unlimited Turns"
 msgstr "Unbegrenzt"
 
-#: src/multiplayer_create.cpp:364
+#: src/multiplayer_create.cpp:365
 msgid "Init. Limit: "
 msgstr "Startzeit:"
 
-#: src/multiplayer_create.cpp:369
+#: src/multiplayer_create.cpp:370
 msgid "Turn Bonus: "
 msgstr "Rundenbonus:"
 
-#: src/multiplayer_create.cpp:373
+#: src/multiplayer_create.cpp:374
 msgid "Reservoir: "
 msgstr "Reservoir: "
 
-#: src/multiplayer_create.cpp:378
+#: src/multiplayer_create.cpp:379
 msgid "Action Bonus: "
 msgstr "Aktionsbonus:"
 
-#: src/multiplayer_create.cpp:385
+#: src/multiplayer_create.cpp:386
 msgid "Village Gold: "
 msgstr "Steuereinnahmen pro Dorf:"
 
-#: src/multiplayer_create.cpp:393
+#: src/multiplayer_create.cpp:394
 msgid "Exp. Mod.: "
 msgstr "Erf. Mod.:"
 
-#: src/multiplayer_create.cpp:524
+#: src/multiplayer_create.cpp:525
 msgid "Players: "
 msgstr "Spieler:"
 
-#: src/multiplayer_create.cpp:525
+#: src/multiplayer_create.cpp:526
 msgid "Size: "
 msgstr "Größe: "
 
@@ -7113,75 +7144,75 @@ msgstr "Größe: "
 msgid "--no games open--"
 msgstr "– keine offenen Partien –"
 
-#: src/multiplayer_lobby.cpp:382
+#: src/multiplayer_lobby.cpp:398
 msgid "Unknown era: $era_id"
 msgstr "Unbekannte Ära: $era_id"
 
-#: src/multiplayer_lobby.cpp:386
+#: src/multiplayer_lobby.cpp:402
 msgid "Unknown era"
 msgstr "Unbekannte Ära"
 
-#: src/multiplayer_lobby.cpp:442
+#: src/multiplayer_lobby.cpp:457
 msgid "Remote scenario"
 msgstr "Entferntes Szenario"
 
-#: src/multiplayer_lobby.cpp:449
+#: src/multiplayer_lobby.cpp:464
 msgid "Unknown scenario: $scenario_id"
 msgstr "Unbekanntes Szenario: $scenario_id"
 
-#: src/multiplayer_lobby.cpp:453
+#: src/multiplayer_lobby.cpp:468
 msgid "Unknown scenario"
 msgstr "Unbekanntes Szenario"
 
-#: src/multiplayer_lobby.cpp:469
+#: src/multiplayer_lobby.cpp:484
 msgid "Turn "
 msgstr "Runde "
 
-#: src/multiplayer_lobby.cpp:473
+#: src/multiplayer_lobby.cpp:488
 msgid "Vacant Slot:"
 msgstr "Verfügbarer Platz:"
 
-#: src/multiplayer_lobby.cpp:473
+#: src/multiplayer_lobby.cpp:488
 msgid "Vacant Slots:"
 msgstr "Verfügbare Plätze:"
 
-#: src/multiplayer_lobby.cpp:476 src/multiplayer_lobby.cpp:723
+#: src/multiplayer_lobby.cpp:491 src/multiplayer_lobby.cpp:738
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:483
+#: src/multiplayer_lobby.cpp:498
 msgid "Fog"
 msgstr "Nebel"
 
-#: src/multiplayer_lobby.cpp:497
+#: src/multiplayer_lobby.cpp:512
 msgid "none"
 msgstr "Keine"
 
-#: src/multiplayer_lobby.cpp:609
+#: src/multiplayer_lobby.cpp:624
 msgid "Observe Game"
 msgstr "Spiel beobachten"
 
-#: src/multiplayer_lobby.cpp:610
+#: src/multiplayer_lobby.cpp:625
 msgid "Join Game"
 msgstr "Spiel beitreten"
 
-#: src/multiplayer_lobby.cpp:612
+#: src/multiplayer_lobby.cpp:627
 msgid "Quick Replays"
 msgstr "Schnelle Spielverläufe"
 
-#: src/multiplayer_lobby.cpp:614
+#: src/multiplayer_lobby.cpp:629
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/multiplayer_lobby.cpp:616
+#: src/multiplayer_lobby.cpp:631
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/multiplayer_lobby.cpp:621
+#: src/multiplayer_lobby.cpp:636
 msgid "Skip quickly to the active turn when observing"
 msgstr "Springt im Beobachtermodus schnellstmöglich zur aktiven Runde"
 
-#: src/multiplayer_lobby.cpp:724
+#: src/multiplayer_lobby.cpp:739
 msgid "Joining this game requires a password."
 msgstr ""
 
@@ -7297,35 +7328,40 @@ msgstr "Niederlage"
 msgid "You have been defeated!"
 msgstr "Ihr wurdet vernichtend geschlagen!"
 
-#: src/playcampaign.cpp:384
+#: src/playcampaign.cpp:394
 msgid "Error while reading the WML: "
 msgstr "Fehler beim Einlesen des WMLs: "
 
-#: src/playcampaign.cpp:407
+#: src/playcampaign.cpp:417
 msgid "The replay could not be saved"
 msgstr "Die Wiederholung konnte nicht gespeichert werden"
 
-#: src/playcampaign.cpp:423
+#: src/playcampaign.cpp:433
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Dieses Szenario ist beendet. Möchtet ihr mit der Kampagne fortfahren?"
 
-#: src/playcampaign.cpp:444
+#: src/playcampaign.cpp:454
 msgid "Downloading next scenario..."
 msgstr "Nächstes Szenario wird geladen..."
 
-#: src/playcampaign.cpp:542
+#: src/playcampaign.cpp:552
 msgid "Do you want to save your game?"
 msgstr "Möchtet Ihr diesen Spielstand speichern?"
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:577
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Unbekanntes Szenario: '$scenario|'"
 
-#: src/playmp_controller.cpp:252
+#: src/playmp_controller.cpp:259
 msgid "End scenario"
 msgstr "Szenario beenden"
 
-#: src/playmp_controller.cpp:393
+#: src/playmp_controller.cpp:318
+#, fuzzy
+msgid "Waiting for next scenario..."
+msgstr "Warte auf Spielstart..."
+
+#: src/playmp_controller.cpp:447
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7467,62 +7503,62 @@ msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr ""
 "Die Datei, die Ihr laden wolltet, ist beschädigt. Wollt ihr weiterspielen?"
 
-#: src/serialization/parser.cpp:122
+#: src/serialization/parser.cpp:131
 msgid "Unexpected characters at line start"
 msgstr "Unerwartete Zeichen am Zeilenanfang"
 
-#: src/serialization/parser.cpp:149
+#: src/serialization/parser.cpp:158
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Fehlendes Abschlusselement für Element $tag an der Position $pos"
 
-#: src/serialization/parser.cpp:164
+#: src/serialization/parser.cpp:173
 msgid "Unterminated [element] tag"
 msgstr "Nicht abgeschlossenes [element] Element"
 
-#: src/serialization/parser.cpp:174 src/serialization/parser.cpp:210
+#: src/serialization/parser.cpp:183 src/serialization/parser.cpp:219
 msgid "Invalid tag name"
 msgstr "Ungültiger Elementname"
 
-#: src/serialization/parser.cpp:177
+#: src/serialization/parser.cpp:186
 msgid "Unterminated [+element] tag"
 msgstr "Nicht abgeschlossenes [+element] Element"
 
-#: src/serialization/parser.cpp:193
+#: src/serialization/parser.cpp:202
 msgid "Invalid closing tag name"
 msgstr "Ungültiger Name für Abschlusselement"
 
-#: src/serialization/parser.cpp:196
+#: src/serialization/parser.cpp:205
 msgid "Unterminated closing tag"
 msgstr "Nicht abgeschlossenes Abschlusselement"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:207
 msgid "Unexpected closing tag"
 msgstr "Unerwartetes Abschlusselement"
 
-#: src/serialization/parser.cpp:204
+#: src/serialization/parser.cpp:213
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr ""
 "Ungültiges Abschlusselement $tag2 für Element $tag gefunden (geöffnet in "
 "$pos)"
 
-#: src/serialization/parser.cpp:229 src/serialization/parser.cpp:241
+#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:250
 msgid "Empty variable name"
 msgstr "Leerer Variablenname"
 
-#: src/serialization/parser.cpp:235
+#: src/serialization/parser.cpp:244
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr ""
 "Unerwartete Zeichen nach einem Variablennamen (erwartet werden , oder =)"
 
-#: src/serialization/parser.cpp:270 src/serialization/parser.cpp:294
+#: src/serialization/parser.cpp:279 src/serialization/parser.cpp:303
 msgid "Unterminated quoted string"
 msgstr "Nicht durch Anführungszeichen abgeschlossene Zeichenkette"
 
-#: src/serialization/parser.cpp:317
+#: src/serialization/parser.cpp:326
 msgid " included from "
 msgstr " übernommen aus "
 
-#: src/serialization/parser.cpp:338
+#: src/serialization/parser.cpp:347
 msgid "$error at $pos"
 msgstr "$error an $pos"
 
@@ -7650,35 +7686,35 @@ msgstr "Statistiken hochladen"
 msgid "Help Wesnoth by sending us information"
 msgstr "Helft Wesnoth, indem Ihr uns Informationen zukommen lasst"
 
-#: src/unit.cpp:401 src/unit.cpp:1216 src/unit.cpp:2326
+#: src/unit.cpp:401 src/unit.cpp:1220 src/unit.cpp:2311
 msgid "Unknown unit type '$type|'"
 msgstr "Unbekannter Einheitentyp '$type|'"
 
-#: src/unit.cpp:2369 src/unit.cpp:2573 src/unit.cpp:2629
+#: src/unit.cpp:2354 src/unit.cpp:2558 src/unit.cpp:2614
 msgid " and "
 msgstr " und "
 
-#: src/unit.cpp:2380
+#: src/unit.cpp:2365
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2445
+#: src/unit.cpp:2430
 msgid "moves"
 msgstr "BP"
 
-#: src/unit.cpp:2463 src/unit.cpp:2600
+#: src/unit.cpp:2448 src/unit.cpp:2585
 msgid "XP to advance"
 msgstr "EP pro Stufenanstieg"
 
-#: src/unit.cpp:2592
+#: src/unit.cpp:2577
 msgid " move"
 msgstr "BP"
 
-#: src/unit.cpp:2608
+#: src/unit.cpp:2593
 msgid "$effect_description per level"
 msgstr "$effect_description pro Stufe"
 
-#: src/unit.cpp:2638
+#: src/unit.cpp:2623
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -7733,6 +7769,9 @@ msgstr "Helft uns, Wesnoth zu verbessern!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Die Übertragung von Zusammenfassungen erlauben"
+
+#~ msgid "Contributors"
+#~ msgstr "Mitwirkende"
 
 #~ msgid "Heal to full, MAX XP +25%"
 #~ msgstr "Vollkommene Heilung, Max EP +25%"

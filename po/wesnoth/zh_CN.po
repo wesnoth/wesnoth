@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-28 22:24+0100\n"
+"POT-Creation-Date: 2008-01-02 17:30+0100\n"
 "PO-Revision-Date: 2007-12-17 02:05+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -88,9 +88,10 @@ msgstr "多人地图和平衡性"
 msgid "Packagers"
 msgstr "游戏打包人员"
 
-#: data/core/about.cfg:589 data/core/help.cfg:299
-msgid "Contributors"
-msgstr "贡献者"
+#: data/core/about.cfg:589
+#, fuzzy
+msgid "Miscellaneous contributors"
+msgstr "其它"
 
 #: data/core/about.cfg:709
 msgid "Internationalization Managers"
@@ -156,95 +157,95 @@ msgstr "法语"
 msgid "Galician Translation"
 msgstr "巴伦西亚语"
 
-#: data/core/about.cfg:1153
+#: data/core/about.cfg:1158
 msgid "German Translation"
 msgstr "德语"
 
-#: data/core/about.cfg:1201
+#: data/core/about.cfg:1206
 msgid "Greek Translation"
 msgstr "希腊语"
 
-#: data/core/about.cfg:1229
+#: data/core/about.cfg:1234
 msgid "Hebrew Translation"
 msgstr "希伯来语"
 
-#: data/core/about.cfg:1239
+#: data/core/about.cfg:1244
 msgid "Hungarian Translation"
 msgstr "匈牙利语"
 
-#: data/core/about.cfg:1276
+#: data/core/about.cfg:1281
 msgid "Indonesian Translation"
 msgstr "印度尼西亚语"
 
-#: data/core/about.cfg:1283
+#: data/core/about.cfg:1288
 msgid "Italian Translation"
 msgstr "意大利语"
 
-#: data/core/about.cfg:1314
+#: data/core/about.cfg:1319
 msgid "Japanese Translation"
 msgstr "日语"
 
-#: data/core/about.cfg:1337
+#: data/core/about.cfg:1342
 msgid "Korean Translation"
 msgstr "韩语"
 
-#: data/core/about.cfg:1344
+#: data/core/about.cfg:1349
 msgid "Latin Translation"
 msgstr "拉丁语"
 
-#: data/core/about.cfg:1351
+#: data/core/about.cfg:1356
 msgid "Lithuanian Translation"
 msgstr "立陶宛语"
 
-#: data/core/about.cfg:1358
+#: data/core/about.cfg:1363
 msgid "Norwegian Translation"
 msgstr "挪威语"
 
-#: data/core/about.cfg:1380
+#: data/core/about.cfg:1385
 msgid "Polish Translation"
 msgstr "波兰语"
 
-#: data/core/about.cfg:1423
+#: data/core/about.cfg:1428
 msgid "Portuguese Translation"
 msgstr "葡萄牙语"
 
-#: data/core/about.cfg:1430
+#: data/core/about.cfg:1435
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙语(巴西)"
 
-#: data/core/about.cfg:1465
+#: data/core/about.cfg:1470
 msgid "Russian Translation"
 msgstr "俄语"
 
-#: data/core/about.cfg:1497
+#: data/core/about.cfg:1502
 msgid "Serbian Translation"
 msgstr "塞尔维亚语"
 
-#: data/core/about.cfg:1512
+#: data/core/about.cfg:1517
 msgid "Slovak Translation"
 msgstr "斯洛伐克语"
 
-#: data/core/about.cfg:1526
+#: data/core/about.cfg:1531
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚语"
 
-#: data/core/about.cfg:1536
+#: data/core/about.cfg:1541
 msgid "Spanish Translation"
 msgstr "西班牙语"
 
-#: data/core/about.cfg:1578
+#: data/core/about.cfg:1583
 msgid "Swedish Translation"
 msgstr "瑞典语"
 
-#: data/core/about.cfg:1604
+#: data/core/about.cfg:1609
 msgid "Turkish Translation"
 msgstr "土耳其语"
 
-#: data/core/about.cfg:1623
+#: data/core/about.cfg:1628
 msgid "Valencian (southern Catalan) Translation"
 msgstr " (西班牙)南加泰罗尼亚语"
 
-#: data/core/about.cfg:1639
+#: data/core/about.cfg:1644
 msgid "Bots"
 msgstr "电脑"
 
@@ -1174,6 +1175,10 @@ msgstr ""
 "韦诺之战的基本规则就此结束。您可能需要阅读基本的游戏策略，或再熟悉一下"
 "<ref>dst=traits text=特质</ref>和<ref>dst=abilities text=能力</ref>。现在您已"
 "经有足够的经验去玩《继位者之战》这个战役了。祝您好运，玩得开心！"
+
+#: data/core/help.cfg:299
+msgid "ingame_help_item^Contributors"
+msgstr ""
 
 #: data/core/help.cfg:305
 msgid "License"
@@ -3715,10 +3720,22 @@ msgstr "本单位能够在夜晚隐身，不留蛛丝马迹。"
 
 #: data/core/macros/special-notes.cfg:47
 msgid ""
+" This unit can hide in villages (with the exception of water villages), and "
+"remain undetected by its enemies, except by those standing next to it."
+msgstr ""
+
+#: data/core/macros/special-notes.cfg:50
+msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr "本单位可以在深水中潜行不需要到水面换气，因此在深水中不会被敌人发现。"
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:53
+msgid ""
+" This unit gains 1 hitpoint added to its maximum whenever it kills a living "
+"unit."
+msgstr ""
+
+#: data/core/macros/special-notes.cfg:56
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -3726,7 +3743,7 @@ msgstr ""
 "无论何时，只要使用带有狂暴属性的攻击，本单位就会一直攻击敌人，直到自己或敌人"
 "倒下为止。"
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:59
 msgid ""
 " If there is an enemy of the target on the opposite side of the target. This "
 "unit may backstab, inflicting double damage, by creeping around behind that "
@@ -3735,11 +3752,11 @@ msgstr ""
 "如果同盟的某个单位分散了敌人的注意力，本单位就可以从敌人背后进行背刺攻击，造"
 "成双倍伤害。"
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:62
 msgid " Foes who lose their life to the plague will rise again in unlife."
 msgstr "被瘟疫攻击击毙的敌方单位会重生为攻击者一方的不死族的单位。"
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:65
 msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -3747,30 +3764,30 @@ msgstr ""
 "本单位的'减速'攻击能够减缓敌人的行动，使其移动速度和攻击输出减半，直到本回合"
 "结束。"
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:68
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr "把敌人化为石头的能力使本单位变得非常可怕。"
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:71
 msgid ""
 " This unit's marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr "本单位的'精准'攻击保证其具有很高的命中率，但这只是在进攻时有效。"
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:74
 msgid ""
 " The ranged attacks of this unit are magical, and always have a high chance "
 "of hitting an opponent."
 msgstr "本单位的远程攻击属于魔法攻击，总是有较高的命中率。"
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:77
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr "本单位的'连击'攻击在自己受伤的情况下会被削弱。"
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:80
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -3778,13 +3795,13 @@ msgstr ""
 " 冲刺攻击使你的攻击加倍，但在进行这种攻击时你受到的伤害也会加倍； 此技能不影"
 "响反击时的攻防。"
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:83
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr "本单位在作战时可以从对手身上吸血以补充自己的生命值。"
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:86
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
@@ -3792,7 +3809,7 @@ msgstr ""
 "本单位'毒素'攻击的受害者将受到持续伤害，直到他们移入村庄或被拥有治愈能力的单"
 "位治好为止。"
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:89
 msgid ""
 " The victims of this unit's poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -4721,8 +4738,8 @@ msgid "End Scenario"
 msgstr "结束场景"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2412
-#: src/unit.cpp:2585
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2397
+#: src/unit.cpp:2570
 msgid "HP"
 msgstr "生命值"
 
@@ -4832,7 +4849,7 @@ msgid "Skip animation"
 msgstr "省略动画"
 
 #: src/about.cpp:47 src/multiplayer_connect.cpp:432
-#: src/multiplayer_connect.cpp:529 src/multiplayer_wait.cpp:490
+#: src/multiplayer_connect.cpp:529 src/multiplayer_wait.cpp:501
 msgid "+"
 msgstr "+"
 
@@ -4845,77 +4862,77 @@ msgstr "+  "
 msgid "Close"
 msgstr "关闭"
 
-#: src/actions.cpp:143
+#: src/actions.cpp:144
 msgid "You don't have a leader to recruit with."
 msgstr "您没有领袖，无法征兵。"
 
-#: src/actions.cpp:150
+#: src/actions.cpp:151
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr "您的领袖必须在要塞里才能征募或召回单位。"
 
-#: src/actions.cpp:169
+#: src/actions.cpp:170
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "城堡内没有空格，无法征兵。"
 
-#: src/actions.cpp:259 src/actions.cpp:282 src/actions.cpp:287
+#: src/actions.cpp:263 src/actions.cpp:286 src/actions.cpp:291
 msgid "An invalid weapon is selected, possibly by the Python AI."
 msgstr ""
 
-#: src/actions.cpp:266
+#: src/actions.cpp:270
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:958 src/actions.cpp:1212
+#: src/actions.cpp:962 src/actions.cpp:1216
 msgid "poisoned"
 msgstr "中毒"
 
-#: src/actions.cpp:962 src/actions.cpp:1216
+#: src/actions.cpp:966 src/actions.cpp:1220
 msgid "slowed"
 msgstr "减速"
 
-#: src/actions.cpp:968 src/actions.cpp:1222
+#: src/actions.cpp:972 src/actions.cpp:1226
 msgid "stone"
 msgstr "石化"
 
-#: src/actions.cpp:2157
+#: src/actions.cpp:2161
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
-#: src/actions.cpp:2163
+#: src/actions.cpp:2167
 msgid "Failed teleport! Exit not empty"
 msgstr "传送失败!出口阻塞"
 
 # what is the plural form all about?
-#: src/actions.cpp:2201
+#: src/actions.cpp:2205
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友好单位"
 msgstr[1] "发现$friends个友好单位"
 
-#: src/actions.cpp:2204
+#: src/actions.cpp:2208
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌方单位！"
 msgstr[1] "发现$enemies个敌方单位！"
 
 # Can someone show me an example of this line in real gameplay? Else I really can't understand it...
-#: src/actions.cpp:2209
+#: src/actions.cpp:2213
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$1个友好单位"
 msgstr[1] "$friends个友好单位"
 
-#: src/actions.cpp:2210
+#: src/actions.cpp:2214
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌方单位"
 msgstr[1] "$enemies个敌方单位"
 
-#: src/actions.cpp:2211
+#: src/actions.cpp:2215
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现非我方控制单位！（$friendphrase, $enemyphrase）"
 
-#: src/actions.cpp:2220
+#: src/actions.cpp:2224
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 
@@ -4927,107 +4944,111 @@ msgstr "未知单位种类 '$type|'"
 msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 msgstr ""
 
-#: src/dialogs.cpp:109
+#: src/config_adapter.cpp:156
+msgid "Duplicate side definition for side '$side|' found."
+msgstr ""
+
+#: src/dialogs.cpp:111
 msgid "Advance Unit"
 msgstr "单位升级"
 
-#: src/dialogs.cpp:110
+#: src/dialogs.cpp:112
 msgid "What should our victorious unit become?"
 msgstr "该单位将升级为"
 
-#: src/dialogs.cpp:208
+#: src/dialogs.cpp:210
 msgid "No objectives available"
 msgstr "无有效目标"
 
-#: src/dialogs.cpp:224
+#: src/dialogs.cpp:226
 msgid "Save Game"
 msgstr "保存游戏"
 
-#: src/dialogs.cpp:232
+#: src/dialogs.cpp:234
 msgid "Quit Game"
 msgstr "退出游戏"
 
-#: src/dialogs.cpp:237
+#: src/dialogs.cpp:239
 msgid "Ignore All"
 msgstr "全部忽略"
 
-#: src/dialogs.cpp:254
+#: src/dialogs.cpp:256
 msgid "Overwrite?"
 msgstr "覆盖？"
 
-#: src/dialogs.cpp:255
+#: src/dialogs.cpp:257
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "存档已存在，要覆盖吗？"
 
-#: src/dialogs.cpp:289
+#: src/dialogs.cpp:291
 msgid "Do you really want to delete this game?"
 msgstr "您真的想删除这个游戏吗？"
 
-#: src/dialogs.cpp:291
+#: src/dialogs.cpp:293
 msgid "Don't ask me again!"
 msgstr "不要再问我！"
 
-#: src/dialogs.cpp:441
+#: src/dialogs.cpp:443
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:458
+#: src/dialogs.cpp:460
 msgid "#(Invalid)"
 msgstr "#（无效的）"
 
-#: src/dialogs.cpp:465
+#: src/dialogs.cpp:467
 msgid "Campaign: $campaign_name"
 msgstr "战役: $campaign_name"
 
-#: src/dialogs.cpp:467 src/game.cpp:1449
+#: src/dialogs.cpp:469 src/game.cpp:1452
 msgid "Multiplayer"
 msgstr "多人对战"
 
-#: src/dialogs.cpp:469
+#: src/dialogs.cpp:471
 msgid "Tutorial"
 msgstr "教程"
 
-#: src/dialogs.cpp:477
+#: src/dialogs.cpp:479
 msgid "replay"
 msgstr "游戏录像"
 
-#: src/dialogs.cpp:479 src/menu_events.cpp:693
+#: src/dialogs.cpp:481 src/menu_events.cpp:693
 msgid "Turn"
 msgstr "回合"
 
-#: src/dialogs.cpp:481
+#: src/dialogs.cpp:483
 msgid "Scenario Start"
 msgstr "场景开始"
 
-#: src/dialogs.cpp:484
+#: src/dialogs.cpp:486
 msgid "Difficulty: "
 msgstr "难度： "
 
-#: src/dialogs.cpp:486
+#: src/dialogs.cpp:488
 msgid "Version: "
 msgstr "版本： "
 
-#: src/dialogs.cpp:510 src/dialogs.cpp:526
+#: src/dialogs.cpp:512 src/dialogs.cpp:528
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:516
+#: src/dialogs.cpp:518
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:519
+#: src/dialogs.cpp:521
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:522
+#: src/dialogs.cpp:524
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:546
+#: src/dialogs.cpp:548
 msgid "No Saved Games"
 msgstr "没有存档"
 
-#: src/dialogs.cpp:547
+#: src/dialogs.cpp:549
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -5036,369 +5057,369 @@ msgstr ""
 "没有存档，无法载入。\n"
 "（当您完成一个场景时会自动存档）"
 
-#: src/dialogs.cpp:559
+#: src/dialogs.cpp:561
 msgid "Delete Save"
 msgstr "删除存档"
 
-#: src/dialogs.cpp:565
+#: src/dialogs.cpp:567
 msgid "Date"
 msgstr "日期"
 
-#: src/dialogs.cpp:565 src/game.cpp:1127 src/menu_events.cpp:340
+#: src/dialogs.cpp:567 src/game.cpp:1130 src/menu_events.cpp:340
 #: src/menu_events.cpp:1117 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "名称"
 
-#: src/dialogs.cpp:586 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:588 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "载入游戏"
 
-#: src/dialogs.cpp:587
+#: src/dialogs.cpp:589
 msgid "Choose the game to load"
 msgstr "选择要载入的游戏"
 
-#: src/dialogs.cpp:593
+#: src/dialogs.cpp:595
 msgid "Show replay"
 msgstr "显示游戏录像"
 
-#: src/dialogs.cpp:622
+#: src/dialogs.cpp:624
 msgid "Profile"
 msgstr "资料"
 
-#: src/dialogs.cpp:714 src/help.cpp:1271
+#: src/dialogs.cpp:716 src/help.cpp:1271
 msgid "level"
 msgstr "等级"
 
-#: src/dialogs.cpp:727 src/help.cpp:1377
+#: src/dialogs.cpp:729 src/help.cpp:1377
 msgid "HP: "
 msgstr "生命值："
 
-#: src/dialogs.cpp:730
+#: src/dialogs.cpp:732
 msgid "XP: "
 msgstr "经验值："
 
-#: src/dialogs.cpp:734 src/help.cpp:1378
+#: src/dialogs.cpp:736 src/help.cpp:1378
 msgid "Moves: "
 msgstr "移动： "
 
-#: src/dialogs.cpp:1029 src/dialogs.cpp:1130 src/multiplayer_connect.cpp:903
+#: src/dialogs.cpp:1031 src/dialogs.cpp:1132 src/multiplayer_connect.cpp:903
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:194
 msgid "Cancel"
 msgstr "取消"
 
-#: src/dialogs.cpp:1053 src/game.cpp:937
+#: src/dialogs.cpp:1055 src/game.cpp:940
 msgid "KB"
 msgstr "KB"
 
-#: src/display.cpp:402
+#: src/display.cpp:406
 msgid "Screenshot"
 msgstr "屏幕截图"
 
-#: src/game.cpp:444 src/game.cpp:1546
+#: src/game.cpp:445 src/game.cpp:1549
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:703
+#: src/game.cpp:705
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "警告：您试图载入的文件已损坏。继续尝试载入。\n"
 
-#: src/game.cpp:745 src/multiplayer_connect.cpp:1415
+#: src/game.cpp:748 src/multiplayer_connect.cpp:1415
 msgid "This save is from a version too old to be loaded."
 msgstr "这个存档是由一个太早期的游戏版本保存的，现在的版本无法载入。"
 
-#: src/game.cpp:751 src/multiplayer_connect.cpp:1422
+#: src/game.cpp:754 src/multiplayer_connect.cpp:1422
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "这个存档来自于不同版本的游戏。您仍然想载入吗？"
 
-#: src/game.cpp:769 src/game.cpp:772 src/multiplayer_connect.cpp:1393
+#: src/game.cpp:772 src/game.cpp:775 src/multiplayer_connect.cpp:1393
 msgid "The file you have tried to load is corrupt: '"
 msgstr "您试图载入的文件已损坏： '"
 
-#: src/game.cpp:775
+#: src/game.cpp:778
 msgid "File I/O Error while reading the game"
 msgstr "当读取游戏时发生文件I/O错误。"
 
-#: src/game.cpp:867
+#: src/game.cpp:870
 msgid "Play a campaign"
 msgstr "战役"
 
-#: src/game.cpp:908
+#: src/game.cpp:911
 msgid "Difficulty"
 msgstr "难度"
 
-#: src/game.cpp:909
+#: src/game.cpp:912
 msgid "Select difficulty level:"
 msgstr "选择难度："
 
-#: src/game.cpp:934
+#: src/game.cpp:937
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:940
+#: src/game.cpp:943
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:970
+#: src/game.cpp:973
 msgid "Connect to Server"
 msgstr "连接到服务器"
 
-#: src/game.cpp:971
+#: src/game.cpp:974
 msgid "You will now connect to a server to download add-ons."
 msgstr "您将连接至服务器以下载插件。"
 
-#: src/game.cpp:973
+#: src/game.cpp:976
 msgid "Server: "
 msgstr "服务器： "
 
-#: src/game.cpp:974 src/game.cpp:1022
+#: src/game.cpp:977 src/game.cpp:1025
 msgid "Remove Add-ons"
 msgstr "删除插件"
 
-#: src/game.cpp:1009
+#: src/game.cpp:1012
 msgid "You have no Add-ons installed."
 msgstr "没有安装插件"
 
-#: src/game.cpp:1022
+#: src/game.cpp:1025
 msgid "Choose the add-on to remove."
 msgstr "选择要删除的插件。"
 
-#: src/game.cpp:1033
+#: src/game.cpp:1036
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "你确定你要删除插件 '$addon|'?"
 
-#: src/game.cpp:1037
+#: src/game.cpp:1040
 msgid "Confirm"
 msgstr "确认"
 
-#: src/game.cpp:1060
+#: src/game.cpp:1063
 msgid "Add-on '$addon|' deleted."
 msgstr "插件'$addon|'已删除"
 
-#: src/game.cpp:1065
+#: src/game.cpp:1068
 msgid "Add-on deleted"
 msgstr "插件已删除"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1074
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "无法删除插件——没有找到某个文件。"
 
-#: src/game.cpp:1071 src/menu_events.cpp:707 src/menu_events.cpp:715
-#: src/menu_events.cpp:730 src/multiplayer_create.cpp:527
+#: src/game.cpp:1074 src/menu_events.cpp:707 src/menu_events.cpp:715
+#: src/menu_events.cpp:730 src/multiplayer_create.cpp:528
 msgid "Error"
 msgstr "错误"
 
-#: src/game.cpp:1092 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1095 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "正在连接到服务器..."
 
-#: src/game.cpp:1095
+#: src/game.cpp:1098
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1108
 msgid "Asking for list of add-ons"
 msgstr "请求插件列表"
 
-#: src/game.cpp:1118
+#: src/game.cpp:1121
 msgid "Error communicating with the server."
 msgstr "与服务器通讯错误。"
 
-#: src/game.cpp:1127 src/titlescreen.cpp:323
+#: src/game.cpp:1130 src/titlescreen.cpp:323
 msgid "Version"
 msgstr "版本"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1131
 msgid "Author"
 msgstr "作者"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1131
 msgid "Downloads"
 msgstr "下载数"
 
-#: src/game.cpp:1128
+#: src/game.cpp:1131
 msgid "Size"
 msgstr "大小"
 
-#: src/game.cpp:1180
+#: src/game.cpp:1183
 msgid "Publish add-on: "
 msgstr "发布插件： "
 
-#: src/game.cpp:1184
+#: src/game.cpp:1187
 msgid "Delete add-on: "
 msgstr "删除插件： "
 
-#: src/game.cpp:1188
+#: src/game.cpp:1191
 msgid "There are no add-ons available for download from this server."
 msgstr "这个服务器上无可供下载的插件。"
 
-#: src/game.cpp:1195
+#: src/game.cpp:1198
 msgid "Get Add-ons"
 msgstr "获取插件"
 
-#: src/game.cpp:1196
+#: src/game.cpp:1199
 msgid "Choose the add-on to download."
 msgstr "选择要下载的插件。"
 
-#: src/game.cpp:1239
+#: src/game.cpp:1242
 msgid "Dependencies"
 msgstr "依赖"
 
-#: src/game.cpp:1240
+#: src/game.cpp:1243
 msgid "This add-on requires the following additional dependencies:"
 msgstr "这个插件要求以下额外的依赖:"
 
-#: src/game.cpp:1242
+#: src/game.cpp:1245
 msgid "Do you still want to download it?"
 msgstr "您真的想下载这个游戏？"
 
-#: src/game.cpp:1252
+#: src/game.cpp:1255
 msgid "Downloading add-on..."
 msgstr "正在下载插件……"
 
-#: src/game.cpp:1310
+#: src/game.cpp:1313
 msgid "Add-on Installed"
 msgstr "插件已安装"
 
-#: src/game.cpp:1310
+#: src/game.cpp:1313
 msgid "The add-on has been installed."
 msgstr "这个插件已经安装。"
 
-#: src/game.cpp:1313
+#: src/game.cpp:1316
 msgid "Network communication error."
 msgstr "网络通讯错误。"
 
-#: src/game.cpp:1315
+#: src/game.cpp:1318
 msgid "Remote host disconnected."
 msgstr "远程主机关闭。"
 
-#: src/game.cpp:1317
+#: src/game.cpp:1320
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr "安装这个战役所需文件创建错误。"
 
-#: src/game.cpp:1332 src/game.cpp:1375 src/game.cpp:1403
-#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:453
+#: src/game.cpp:1335 src/game.cpp:1378 src/game.cpp:1406
+#: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:463
 msgid "Connection timed out"
 msgstr "连接超时"
 
-#: src/game.cpp:1335
+#: src/game.cpp:1338
 msgid "The server responded with an error: \"$error|\""
 msgstr "服务器返回一个错误： \""
 
-#: src/game.cpp:1342
+#: src/game.cpp:1345
 msgid "Terms"
 msgstr "条件"
 
-#: src/game.cpp:1373
+#: src/game.cpp:1376
 msgid "Sending add-on"
 msgstr "发送插件"
 
-#: src/game.cpp:1377 src/game.cpp:1405
+#: src/game.cpp:1380 src/game.cpp:1408
 msgid "The server responded with an error: \""
 msgstr "服务器响应错误： \""
 
-#: src/game.cpp:1381 src/game.cpp:1409 src/multiplayer_wait.cpp:371
+#: src/game.cpp:1384 src/game.cpp:1412 src/multiplayer_wait.cpp:382
 msgid "Response"
 msgstr "回应"
 
-#: src/game.cpp:1433
+#: src/game.cpp:1436
 msgid "Join Official Server"
 msgstr "加入官方服务器"
 
-#: src/game.cpp:1434
+#: src/game.cpp:1437
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "登录韦诺官方多人对战服务器"
 
-#: src/game.cpp:1436
+#: src/game.cpp:1439
 msgid "Connect to Host/Server"
 msgstr "连接到服务器"
 
-#: src/game.cpp:1437
+#: src/game.cpp:1440
 msgid "Join a server or hosted game"
 msgstr "加入服务器或已建游戏"
 
-#: src/game.cpp:1439
+#: src/game.cpp:1442
 msgid "Host Networked Game"
 msgstr "主建局域网游戏"
 
-#: src/game.cpp:1440
+#: src/game.cpp:1443
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr "使用内置的服务器做主机. 支持的不是很好. 最好用专用的服务器'wesnothd'."
 
-#: src/game.cpp:1442
+#: src/game.cpp:1445
 msgid "Local Game"
 msgstr "本地游戏"
 
-#: src/game.cpp:1443
+#: src/game.cpp:1446
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr "在一台电脑上进行多人对战"
 
-#: src/game.cpp:1451 src/multiplayer.cpp:232
+#: src/game.cpp:1454 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "登录名： "
 
-#: src/game.cpp:1488 src/playcampaign.cpp:100 src/playcampaign.cpp:374
+#: src/game.cpp:1491 src/playcampaign.cpp:100 src/playcampaign.cpp:384
 msgid "The game could not be loaded: "
 msgstr "无法加载游戏： "
 
-#: src/game.cpp:1490 src/playcampaign.cpp:102 src/playcampaign.cpp:377
+#: src/game.cpp:1493 src/playcampaign.cpp:102 src/playcampaign.cpp:387
 msgid "Error while playing the game: "
 msgstr "游戏执行出错： "
 
-#: src/game.cpp:1510 src/playcampaign.cpp:104 src/playcampaign.cpp:380
+#: src/game.cpp:1513 src/playcampaign.cpp:104 src/playcampaign.cpp:390
 msgid "The game map could not be loaded: "
 msgstr "无法加载游戏地图： "
 
-#: src/game.cpp:1536
+#: src/game.cpp:1539
 msgid "Language"
 msgstr "语言"
 
-#: src/game.cpp:1537
+#: src/game.cpp:1540
 msgid "Choose your preferred language:"
 msgstr "选择您的语言偏好："
 
-#: src/game.cpp:1697
+#: src/game.cpp:1702
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "以下附加战役有错误，无法加载："
 
-#: src/game.cpp:1702
+#: src/game.cpp:1707
 msgid "ERROR DETAILS:"
 msgstr "错误细节："
 
-#: src/game.cpp:1716
+#: src/game.cpp:1721
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "警告：载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1768
+#: src/game.cpp:1773
 msgid "Error loading game configuration files: '"
 msgstr "载入游戏配置文件时出错： '"
 
-#: src/game.cpp:1769
+#: src/game.cpp:1774
 msgid "' (The game will now exit)"
 msgstr "' （现在将退出游戏）"
 
-#: src/game.cpp:1811
+#: src/game.cpp:1816
 #, fuzzy
 msgid "Loading data files"
 msgstr "读取兵种文件。"
 
-#: src/game.cpp:1959
+#: src/game.cpp:1965
 msgid "Battle for Wesnoth"
 msgstr "韦诺之战"
 
-#: src/game.cpp:2151
+#: src/game.cpp:2157
 msgid "Loading game configuration."
 msgstr "载入游戏配置。"
 
-#: src/game.cpp:2157
+#: src/game.cpp:2163
 msgid "Re-initialize fonts for the current language."
 msgstr "为当前语言重绘字体。"
 
-#: src/game.cpp:2171
+#: src/game.cpp:2177
 msgid "Loading title screen."
 msgstr "载入主屏幕。"
 
@@ -5420,7 +5441,7 @@ msgstr "失败："
 msgid "No time of day has been defined."
 msgstr "没有制定时间:"
 
-#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:400
+#: src/gamestatus.cpp:701 src/gamestatus.cpp:703 src/playcampaign.cpp:410
 msgid " replay"
 msgstr " 游戏录像"
 
@@ -5476,7 +5497,7 @@ msgstr "石化： "
 msgid "Resistances: "
 msgstr "抗性"
 
-#: src/generate_report.cpp:183 src/multiplayer_create.cpp:395
+#: src/generate_report.cpp:183 src/multiplayer_create.cpp:396
 msgid "Experience Modifier: "
 msgstr "经验值修正： "
 
@@ -5657,7 +5678,7 @@ msgstr "跳过"
 msgid "The End"
 msgstr "结束"
 
-#: src/language.cpp:95
+#: src/language.cpp:96
 msgid "System default language"
 msgstr "系统默认语言"
 
@@ -5699,6 +5720,11 @@ msgstr "读取兵种文件。"
 #: src/loadscreen.cpp:241
 msgid "Reading files and creating cache."
 msgstr "读取文件并创建缓存。"
+
+#: src/map.cpp:341
+#, fuzzy
+msgid "A map without a header is not supported"
+msgstr "随机地图（不支持加大宽度）"
 
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
@@ -5802,7 +5828,7 @@ msgid "Team"
 msgstr "团队"
 
 #: src/menu_events.cpp:510 src/multiplayer_connect.cpp:899
-#: src/multiplayer_wait.cpp:484
+#: src/multiplayer_wait.cpp:495
 msgid "Gold"
 msgstr "金币"
 
@@ -5819,7 +5845,7 @@ msgid "Upkeep"
 msgstr "维护费用"
 
 #: src/menu_events.cpp:514 src/multiplayer_connect.cpp:900
-#: src/multiplayer_wait.cpp:488
+#: src/multiplayer_wait.cpp:499
 msgid "Income"
 msgstr "收入"
 
@@ -5883,7 +5909,7 @@ msgstr "是"
 msgid "Scenario Settings"
 msgstr "场景设定"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:543
+#: src/menu_events.cpp:702 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "名称："
 
@@ -5905,7 +5931,7 @@ msgstr "已存储"
 msgid "The game has been saved"
 msgstr "游戏已存储"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:551
+#: src/menu_events.cpp:730 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "无法保存游戏"
 
@@ -6243,12 +6269,12 @@ msgid "Normal"
 msgstr "普通"
 
 #: src/multiplayer_connect.cpp:430 src/multiplayer_connect.cpp:527
-#: src/multiplayer_wait.cpp:480 src/multiplayer_wait.cpp:488
+#: src/multiplayer_wait.cpp:491 src/multiplayer_wait.cpp:499
 msgid "("
 msgstr "（"
 
 #: src/multiplayer_connect.cpp:430 src/multiplayer_connect.cpp:527
-#: src/multiplayer_wait.cpp:480 src/multiplayer_wait.cpp:491
+#: src/multiplayer_wait.cpp:491 src/multiplayer_wait.cpp:502
 msgid ")"
 msgstr "）"
 
@@ -6281,7 +6307,7 @@ msgstr "当前时期不允许非随机阵营"
 msgid "Unable to find a leader type for faction $faction"
 msgstr "找不到$faction集团的领袖类型"
 
-#: src/multiplayer_connect.cpp:875 src/multiplayer_lobby.cpp:607
+#: src/multiplayer_connect.cpp:875 src/multiplayer_lobby.cpp:622
 #: src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
 msgstr "游戏大厅"
@@ -6346,7 +6372,7 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
-#: src/multiplayer_create.cpp:47 src/multiplayer_lobby.cpp:611
+#: src/multiplayer_create.cpp:47 src/multiplayer_lobby.cpp:626
 msgid "Create Game"
 msgstr "创建游戏"
 
@@ -6366,7 +6392,7 @@ msgstr "时期："
 msgid "Map to play:"
 msgstr "选择游戏地图："
 
-#: src/multiplayer_create.cpp:78 src/multiplayer_lobby.cpp:238
+#: src/multiplayer_create.cpp:78 src/multiplayer_lobby.cpp:254
 msgid "Use map settings"
 msgstr "使用地图设定"
 
@@ -6378,8 +6404,8 @@ msgstr "随机开始时间"
 msgid "Fog Of War"
 msgstr "战争迷雾"
 
-#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:487
-#: src/multiplayer_lobby.cpp:493
+#: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:502
+#: src/multiplayer_lobby.cpp:508
 msgid "Shroud"
 msgstr "战场黑幕"
 
@@ -6407,142 +6433,142 @@ msgstr ""
 msgid "Load Game..."
 msgstr "载入游戏..."
 
-#: src/multiplayer_create.cpp:138
+#: src/multiplayer_create.cpp:139
 msgid "The maximum number of turns the game can last"
 msgstr "游戏允许的最大回合数"
 
-#: src/multiplayer_create.cpp:141
+#: src/multiplayer_create.cpp:142
 msgid "Enables user time limit"
 msgstr "开启玩家时限"
 
-#: src/multiplayer_create.cpp:147
+#: src/multiplayer_create.cpp:148
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "首回合最长时限（秒）"
 
-#: src/multiplayer_create.cpp:153
+#: src/multiplayer_create.cpp:154
 msgid "Longest time possible for any turn (seconds)"
 msgstr "任意回合最长时限（秒）"
 
-#: src/multiplayer_create.cpp:159
+#: src/multiplayer_create.cpp:160
 msgid "Time for general tasks each turn (seconds)"
 msgstr "每回合普通任务时限（秒）"
 
-#: src/multiplayer_create.cpp:165
+#: src/multiplayer_create.cpp:166
 msgid "Time for each attack, recruit, and capture"
 msgstr "每次攻击、征募和占领时限"
 
-#: src/multiplayer_create.cpp:170
+#: src/multiplayer_create.cpp:171
 msgid "The amount of income each village yields per turn"
 msgstr "每村庄每回合创造的收入"
 
-#: src/multiplayer_create.cpp:176
+#: src/multiplayer_create.cpp:177
 msgid "The amount of experience a unit needs to advance"
 msgstr "一个单位升级所需的经验值"
 
-#: src/multiplayer_create.cpp:179
+#: src/multiplayer_create.cpp:180
 msgid "Use scenario specific settings"
 msgstr "使用场景设置"
 
-#: src/multiplayer_create.cpp:182
+#: src/multiplayer_create.cpp:183
 msgid "Randomize time of day in begin"
 msgstr "制定开始时间:"
 
-#: src/multiplayer_create.cpp:185
+#: src/multiplayer_create.cpp:186
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "敌人单位在进入您的单位的移动范围之前不可见"
 
-#: src/multiplayer_create.cpp:188
+#: src/multiplayer_create.cpp:189
 msgid "The map is unknown until your units explore it"
 msgstr "在您探索地图之前，地图不可见"
 
-#: src/multiplayer_create.cpp:191
+#: src/multiplayer_create.cpp:192
 msgid "Allow users who are not playing to watch the game"
 msgstr "允许非玩家用户观看游戏"
 
-#: src/multiplayer_create.cpp:195
+#: src/multiplayer_create.cpp:196
 msgid "Share View"
 msgstr "共享视图"
 
-#: src/multiplayer_create.cpp:196
+#: src/multiplayer_create.cpp:197
 msgid "Share Maps"
 msgstr "共享地图"
 
-#: src/multiplayer_create.cpp:197
+#: src/multiplayer_create.cpp:198
 msgid "Share None"
 msgstr "无共享"
 
-#: src/multiplayer_create.cpp:208
+#: src/multiplayer_create.cpp:209
 msgid "No eras found."
 msgstr "没有找到这个时代。"
 
-#: src/multiplayer_create.cpp:209
+#: src/multiplayer_create.cpp:210
 msgid "No eras found"
 msgstr "没有找到这个时代"
 
-#: src/multiplayer_create.cpp:222
+#: src/multiplayer_create.cpp:223
 msgid "$login's game"
 msgstr "$login的游戏"
 
-#: src/multiplayer_create.cpp:281
+#: src/multiplayer_create.cpp:282
 msgid "Invalid era selected"
 msgstr "所选时期无效"
 
-#: src/multiplayer_create.cpp:320
+#: src/multiplayer_create.cpp:321
 msgid "You must enter a name."
 msgstr "您必须输入名字。"
 
-#: src/multiplayer_create.cpp:325
+#: src/multiplayer_create.cpp:326
 msgid "Set Password"
 msgstr ""
 
-#: src/multiplayer_create.cpp:326 src/multiplayer_lobby.cpp:725
+#: src/multiplayer_create.cpp:327 src/multiplayer_lobby.cpp:740
 msgid "Password: "
 msgstr ""
 
-#: src/multiplayer_create.cpp:326
+#: src/multiplayer_create.cpp:327
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
 
-#: src/multiplayer_create.cpp:334
+#: src/multiplayer_create.cpp:335
 msgid "Turns: "
 msgstr "回合数： "
 
-#: src/multiplayer_create.cpp:336
+#: src/multiplayer_create.cpp:337
 msgid "Unlimited Turns"
 msgstr "无限回合"
 
 # i don't actually know what this is
-#: src/multiplayer_create.cpp:364
+#: src/multiplayer_create.cpp:365
 msgid "Init. Limit: "
 msgstr "起始时间限制："
 
 # anyone explain this to me too
-#: src/multiplayer_create.cpp:369
+#: src/multiplayer_create.cpp:370
 msgid "Turn Bonus: "
 msgstr "回合奖励： "
 
-#: src/multiplayer_create.cpp:373
+#: src/multiplayer_create.cpp:374
 msgid "Reservoir: "
 msgstr "蓄水池:"
 
-#: src/multiplayer_create.cpp:378
+#: src/multiplayer_create.cpp:379
 msgid "Action Bonus: "
 msgstr "行动奖励："
 
-#: src/multiplayer_create.cpp:385
+#: src/multiplayer_create.cpp:386
 msgid "Village Gold: "
 msgstr "村庄金币： "
 
-#: src/multiplayer_create.cpp:393
+#: src/multiplayer_create.cpp:394
 msgid "Exp. Mod.: "
 msgstr "经验 模式.: "
 
-#: src/multiplayer_create.cpp:524
+#: src/multiplayer_create.cpp:525
 msgid "Players: "
 msgstr "玩家： "
 
-#: src/multiplayer_create.cpp:525
+#: src/multiplayer_create.cpp:526
 msgid "Size: "
 msgstr "大小"
 
@@ -6550,75 +6576,75 @@ msgstr "大小"
 msgid "--no games open--"
 msgstr "—当前没有已建立的游戏—"
 
-#: src/multiplayer_lobby.cpp:382
+#: src/multiplayer_lobby.cpp:398
 msgid "Unknown era: $era_id"
 msgstr "未知时代: $era_id"
 
-#: src/multiplayer_lobby.cpp:386
+#: src/multiplayer_lobby.cpp:402
 msgid "Unknown era"
 msgstr "未知时代"
 
-#: src/multiplayer_lobby.cpp:442
+#: src/multiplayer_lobby.cpp:457
 msgid "Remote scenario"
 msgstr "远程场景"
 
-#: src/multiplayer_lobby.cpp:449
+#: src/multiplayer_lobby.cpp:464
 msgid "Unknown scenario: $scenario_id"
 msgstr "未知场景: $scenario_id"
 
-#: src/multiplayer_lobby.cpp:453
+#: src/multiplayer_lobby.cpp:468
 msgid "Unknown scenario"
 msgstr "未知场景"
 
-#: src/multiplayer_lobby.cpp:469
+#: src/multiplayer_lobby.cpp:484
 msgid "Turn "
 msgstr "回合"
 
-#: src/multiplayer_lobby.cpp:473
+#: src/multiplayer_lobby.cpp:488
 msgid "Vacant Slot:"
 msgstr "空位："
 
-#: src/multiplayer_lobby.cpp:473
+#: src/multiplayer_lobby.cpp:488
 msgid "Vacant Slots:"
 msgstr "空位："
 
-#: src/multiplayer_lobby.cpp:476 src/multiplayer_lobby.cpp:723
+#: src/multiplayer_lobby.cpp:491 src/multiplayer_lobby.cpp:738
 msgid "Password Required"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:483
+#: src/multiplayer_lobby.cpp:498
 msgid "Fog"
 msgstr "迷雾"
 
-#: src/multiplayer_lobby.cpp:497
+#: src/multiplayer_lobby.cpp:512
 msgid "none"
 msgstr "无"
 
-#: src/multiplayer_lobby.cpp:609
+#: src/multiplayer_lobby.cpp:624
 msgid "Observe Game"
 msgstr "观察游戏"
 
-#: src/multiplayer_lobby.cpp:610
+#: src/multiplayer_lobby.cpp:625
 msgid "Join Game"
 msgstr "加入游戏"
 
-#: src/multiplayer_lobby.cpp:612
+#: src/multiplayer_lobby.cpp:627
 msgid "Quick Replays"
 msgstr "快速回放"
 
-#: src/multiplayer_lobby.cpp:614
+#: src/multiplayer_lobby.cpp:629
 msgid "Preferences"
 msgstr "设置"
 
-#: src/multiplayer_lobby.cpp:616
+#: src/multiplayer_lobby.cpp:631
 msgid "Quit"
 msgstr "退出"
 
-#: src/multiplayer_lobby.cpp:621
+#: src/multiplayer_lobby.cpp:636
 msgid "Skip quickly to the active turn when observing"
 msgstr "观察游戏时快速跳至当前进行中的回合"
 
-#: src/multiplayer_lobby.cpp:724
+#: src/multiplayer_lobby.cpp:739
 msgid "Joining this game requires a password."
 msgstr ""
 
@@ -6730,35 +6756,40 @@ msgstr "失败"
 msgid "You have been defeated!"
 msgstr "您被打败了！"
 
-#: src/playcampaign.cpp:384
+#: src/playcampaign.cpp:394
 msgid "Error while reading the WML: "
 msgstr "读取 WML 文件时出错： "
 
-#: src/playcampaign.cpp:407
+#: src/playcampaign.cpp:417
 msgid "The replay could not be saved"
 msgstr "无法保存游戏录像"
 
-#: src/playcampaign.cpp:423
+#: src/playcampaign.cpp:433
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "这一场景结束了. 您想继续这个战役吗?"
 
-#: src/playcampaign.cpp:444
+#: src/playcampaign.cpp:454
 msgid "Downloading next scenario..."
 msgstr "正在下载下一场景……"
 
-#: src/playcampaign.cpp:542
+#: src/playcampaign.cpp:552
 msgid "Do you want to save your game?"
 msgstr "您想保存游戏吗？"
 
-#: src/playcampaign.cpp:567
+#: src/playcampaign.cpp:577
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知场景： '"
 
-#: src/playmp_controller.cpp:252
+#: src/playmp_controller.cpp:259
 msgid "End scenario"
 msgstr "结束本场景"
 
-#: src/playmp_controller.cpp:393
+#: src/playmp_controller.cpp:318
+#, fuzzy
+msgid "Waiting for next scenario..."
+msgstr "等待游戏开始..."
+
+#: src/playmp_controller.cpp:447
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -6886,59 +6917,59 @@ msgstr "$player 已经离开游戏，您想做什么？"
 msgid "The file you have tried to load is corrupt. Continue playing?"
 msgstr "您想载入的文件已损坏. 继续玩吗?"
 
-#: src/serialization/parser.cpp:122
+#: src/serialization/parser.cpp:131
 msgid "Unexpected characters at line start"
 msgstr "启始处出现非常规字符"
 
-#: src/serialization/parser.cpp:149
+#: src/serialization/parser.cpp:158
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr " 在$pos处缺少$tag标记的结束标识"
 
-#: src/serialization/parser.cpp:164
+#: src/serialization/parser.cpp:173
 msgid "Unterminated [element] tag"
 msgstr "未终止的:[element] 标记符"
 
-#: src/serialization/parser.cpp:174 src/serialization/parser.cpp:210
+#: src/serialization/parser.cpp:183 src/serialization/parser.cpp:219
 msgid "Invalid tag name"
 msgstr "无效标识名"
 
-#: src/serialization/parser.cpp:177
+#: src/serialization/parser.cpp:186
 msgid "Unterminated [+element] tag"
 msgstr "未终止的:[+element] 标记符"
 
-#: src/serialization/parser.cpp:193
+#: src/serialization/parser.cpp:202
 msgid "Invalid closing tag name"
 msgstr "无效结束标识名"
 
-#: src/serialization/parser.cpp:196
+#: src/serialization/parser.cpp:205
 msgid "Unterminated closing tag"
 msgstr "未终止的结束标识"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:207
 msgid "Unexpected closing tag"
 msgstr "意外的结束标识"
 
-#: src/serialization/parser.cpp:204
+#: src/serialization/parser.cpp:213
 msgid "Found invalid closing tag $tag2 for tag $tag (opened at $pos)"
 msgstr "发现无效的$tag标志的结束标志$tag2（打开于 $pos 处）"
 
-#: src/serialization/parser.cpp:229 src/serialization/parser.cpp:241
+#: src/serialization/parser.cpp:238 src/serialization/parser.cpp:250
 msgid "Empty variable name"
 msgstr "空变量名"
 
-#: src/serialization/parser.cpp:235
+#: src/serialization/parser.cpp:244
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "可变的姓名后出现无法识别的字符(expected , or =)"
 
-#: src/serialization/parser.cpp:270 src/serialization/parser.cpp:294
+#: src/serialization/parser.cpp:279 src/serialization/parser.cpp:303
 msgid "Unterminated quoted string"
 msgstr "未终止的引用字符窜"
 
-#: src/serialization/parser.cpp:317
+#: src/serialization/parser.cpp:326
 msgid " included from "
 msgstr " 包含 "
 
-#: src/serialization/parser.cpp:338
+#: src/serialization/parser.cpp:347
 msgid "$error at $pos"
 msgstr "在$pos处发生$error"
 
@@ -7064,35 +7095,35 @@ msgstr "上传统计资料"
 msgid "Help Wesnoth by sending us information"
 msgstr "发送信息，帮助韦诺"
 
-#: src/unit.cpp:401 src/unit.cpp:1216 src/unit.cpp:2326
+#: src/unit.cpp:401 src/unit.cpp:1220 src/unit.cpp:2311
 msgid "Unknown unit type '$type|'"
 msgstr "未知单位种类 '$type|'"
 
-#: src/unit.cpp:2369 src/unit.cpp:2573 src/unit.cpp:2629
+#: src/unit.cpp:2354 src/unit.cpp:2558 src/unit.cpp:2614
 msgid " and "
 msgstr "以及"
 
-#: src/unit.cpp:2380
+#: src/unit.cpp:2365
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2445
+#: src/unit.cpp:2430
 msgid "moves"
 msgstr "移动点数"
 
-#: src/unit.cpp:2463 src/unit.cpp:2600
+#: src/unit.cpp:2448 src/unit.cpp:2585
 msgid "XP to advance"
 msgstr "的升级所需经验值"
 
-#: src/unit.cpp:2592
+#: src/unit.cpp:2577
 msgid " move"
 msgstr "移动"
 
-#: src/unit.cpp:2608
+#: src/unit.cpp:2593
 msgid "$effect_description per level"
 msgstr "每级 $effect_description"
 
-#: src/unit.cpp:2638
+#: src/unit.cpp:2623
 msgid "$trait_name|: $trait_description "
 msgstr "$trait_name|: $trait_description "
 
@@ -7147,6 +7178,9 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
 
+#~ msgid "Contributors"
+#~ msgstr "贡献者"
+
 #~ msgid "Heal to full, MAX XP +25%"
 #~ msgstr "完全康复，进阶所需经验值+25%"
 
@@ -7173,9 +7207,6 @@ msgstr "开启摘要上传模式"
 
 #~ msgid "Artwork and Graphics Design"
 #~ msgstr "艺术与图像设计"
-
-#~ msgid "Miscellaneous"
-#~ msgstr "其它"
 
 #~ msgid "Prose, Grammatical and WML Assistance"
 #~ msgstr "文章,语法及WML辅助"
