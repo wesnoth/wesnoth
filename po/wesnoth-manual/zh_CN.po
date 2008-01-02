@@ -1879,7 +1879,7 @@ msgstr "无畏"
 msgid ""
 "Does not suffer from a negative attack bonus during its unfavourable time of "
 "day (Trolls, Walking Corpses)."
-msgstr "不受自己不适应时间带来的额外伤害(对方的攻击加成)（巨魔，僵尸）"
+msgstr "在不适应时间段，自己攻击能力亦不受影响（巨魔，僵尸）"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:1409
@@ -1907,7 +1907,7 @@ msgid ""
 "supply.  This trait is never given to recruited units, so it may be unwise "
 "to dismiss such units or to send them to a foolish death."
 msgstr ""
-"忠诚单位不产生维护费用。大部分单位产生与他们等级相等的维护费，但是忠诚单位则"
+"忠诚单位不需求维护费用。大部分单位产生与他们等级相等的维护费，但是忠诚单位则"
 "不会。在战役中，有些单位可能志愿加入玩家队伍。这些单位被赋予忠诚特质。尽管召"
 "回忠诚单位仍耗费金钱，但是他们绝对不会产生维护费用。这点使他们在资金短缺的长"
 "战役里面祢足珍贵。这个特质永远不会赋予新招募的单位，所以解散这样的单位或者让"
@@ -1967,9 +1967,7 @@ msgid ""
 "This attack deals double damage if there is an enemy of the target on the "
 "opposite side of the target, and that unit is not incapacitated (e.g.  "
 "turned to stone)."
-msgstr ""
-"这种攻击在there is an enemy of the target on the opposite side of the target"
-"时能产生双倍攻击。"
+msgstr "当敌人被后还有其它对他/她有敌意的单位时，背刺攻击能产生双倍攻击。"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1479
@@ -1982,13 +1980,13 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
-"不管是主动攻击还是被动防守，这种攻击维持双方战斗状态直到其中一方死掉，或者过"
-"去30回合。"
+"不管是主动攻击还是被动防守，这种攻击维持双方战斗状态直到其中一方死掉，或者经"
+"过30回合。"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1491
 msgid "Charge"
-msgstr "猛击"
+msgstr "冲锋"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1495
@@ -2216,7 +2214,7 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: ../../doc/manual/manual.en.xml:1682
 msgid "Illuminates"
-msgstr "圣光"
+msgstr "照明"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1686
@@ -2231,7 +2229,7 @@ msgstr ""
 
 #: ../../doc/manual/manual.en.xml:1695
 msgid "Leadership"
-msgstr "领袖气质"
+msgstr "领导"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:1699
@@ -2438,8 +2436,8 @@ msgstr ""
 "数可以移动到的位置。这时把光标移到某一格上会出现移动的路径和额外信息。可能是"
 "那个地点的防御力或者如果需要大于1回合才能到达，需要的回合数。如果你不想移动单"
 "位，可以通过选择其他单位（通过单击新单位，或者使用<literal>n</literal>/"
-"<literal>N</literal>快捷键），或者单击鼠标右键取消移动。单位左上角的能量指示可"
-"以帮你区分哪些单位已经移动过了，哪些还有剩余移动力。"
+"<literal>N</literal>快捷键），或者单击鼠标右键取消移动。单位左上角的能量指示"
+"可以帮你区分哪些单位已经移动过了，哪些还有剩余移动力。"
 
 # type: Content of: <book><chapter><section><simpara>
 #: ../../doc/manual/manual.en.xml:1920
@@ -2690,7 +2688,7 @@ msgid ""
 "drake claws."
 msgstr ""
 "<emphasis role=\"strong\">剑刃</emphasis>：有利刃的武器，用它来剁碎敌人。例"
-"子：匕首，短弯刀（scimitar），？？（saber），公鸭爪子(drake claws)。"
+"子：匕首，弯刀（scimitar），军刀（saber），龙爪(drake claws)。"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2058
@@ -2728,7 +2726,7 @@ msgid ""
 "foe like a chicken. Example: A drake's fire breath."
 msgstr ""
 "<emphasis role=\"strong\">火焰</emphasis>：用火像烤鸡一样对付你的敌人。例子："
-"公鸭的火焰呼吸。"
+"龙族的火焰呼吸。"
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: ../../doc/manual/manual.en.xml:2084
@@ -2767,9 +2765,9 @@ msgid ""
 "are very resistant to blade and piercing weapon but very vulnerable to "
 "impact attacks and arcane attacks."
 msgstr ""
-"例如：公鸭鳞片？（Drake scales）对大多数攻击方式都有保护，但是对穿刺武器和寒"
-"冰武器就无能无力。人族骑兵总的来说保护很好，但穿刺攻击是他们防御的弱项。不死"
-"族对剑刃和穿刺武器抗性很高，但却很容易受到冲击攻击和奥术攻击。"
+"例如：龙族鳞片（Drake scales）对大多数攻击方式都有保护，但是对穿刺武器和寒冰"
+"武器就无能无力。人族骑兵总的来说保护很好，但穿刺攻击是他们防御的弱项。不死族"
+"对剑刃和穿刺武器抗性很高，但却很容易受到冲击攻击和奥术攻击。"
 
 # type: Content of: <book><chapter><section><section><simpara>
 #: ../../doc/manual/manual.en.xml:2105
