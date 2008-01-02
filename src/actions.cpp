@@ -810,6 +810,8 @@ attack::~attack()
 	delete bc_;
 }
 
+//! Battle logic
+
 attack::attack(game_display& gui, const gamemap& map,
             std::vector<team>& teams,
             gamemap::location attacker,
@@ -819,7 +821,7 @@ attack::attack(game_display& gui, const gamemap& map,
             unit_map& units,
             const gamestatus& state,
             const game_data& info,
-			bool update_display) : 
+	    bool update_display) :
 	gui_(gui),
 	map_(map),
 	teams_(teams),
@@ -1040,8 +1042,7 @@ attack::attack(game_display& gui, const gamemap& map,
 				attackerxp_ = game_config::kill_experience*d_->second.level();
 				if(d_->second.level() == 0)
 					attackerxp_ = game_config::kill_experience/2;
-				a_->second.get_experience(attackerxp_);
-				attackerxp_ = defenderxp_ = 0;
+				defenderxp_ = 0;
 				gui_.invalidate(a_->first);
 
 				game_events::entity_location death_loc(d_);
@@ -1291,9 +1292,9 @@ attack::attack(game_display& gui, const gamemap& map,
 				defenderxp_ = game_config::kill_experience*a_->second.level();
 				if(a_->second.level() == 0)
 					defenderxp_ = game_config::kill_experience/2;
-				d_->second.get_experience(defenderxp_);
-				attackerxp_ = defenderxp_ = 0;
+				attackerxp_ = 0;
 				gui_.invalidate(d_->first);
+				
 				std::string undead_variation = a_->second.undead_variation();
 
 				game_events::entity_location death_loc(a_);

@@ -33,6 +33,7 @@ Version 1.3.13+svn:
      fixed in a later state. This could lead to some units not leveling 
      properly (bug #10304)
    * validate vector access for colours (bug #10622)
+   * Fixed oos on unit advancement if wml had battle/die events (bug #10590)
    * added serveral fixes to compile with Sun Studio compiler (patch #911)
    * bumped autoconf version requirement to 2.61 since it's needed for the
      boost tests (bug #10636)
