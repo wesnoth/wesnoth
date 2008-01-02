@@ -327,8 +327,16 @@ void wait::start_game()
 
 	//! @todo Instead of using level_to_gamestate reinit the state_, 
 	//! this needs more testing -- Mordante
-	level_to_gamestate(level_, state_, level_["savegame"] == "yes");
-//	state_ = game_state(game_data_, level_);
+	//! It seems level_to_gamestate is needed for the start of game
+	//! download, but downloads of later scenarios miss certain info
+	//! and add a players section. Use players to decide between old
+	//! and new way. (Of course it would be nice to unify the data
+	//! stored.)
+	if(level_.child("player") == 0) {
+		level_to_gamestate(level_, state_, level_["savegame"] == "yes");
+	} else {
+		state_ = game_state(game_data_, level_);
+	}
 
 	LOG_NW << "starting game\n";
 }
