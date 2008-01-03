@@ -39,7 +39,9 @@
 #include <map>
 
 #define ERR_G LOG_STREAM(err, general)
-#define INFO_C LOG_STREAM(info, config)
+#define LOG_G LOG_STREAM(info, general)
+#define DBG_G LOG_STREAM(debug, general)
+#define ERR_CONFIG LOG_STREAM(err, config)
 
 namespace {
 
@@ -193,8 +195,7 @@ void hotkey_item::load_from_config(const config& cfg)
 			keycode_ = sdl_keysym_from_name(key);
 			if (keycode_ == SDLK_UNKNOWN) {
 				if (tolower(key[0]) != 'f') {
-					LOG_STREAM(err, config)
-						<< "hotkey key '" << key << "' invalid\n";
+					ERR_CONFIG << "hotkey key '" << key << "' invalid\n";
 				} else {
 					int num = lexical_cast_default<int>
 						(std::string(key.begin()+1,	key.end()), 1);
@@ -255,7 +256,7 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 {
 	const std::string keyname = SDL_GetKeyName(SDLKey(keycode));
 
-	INFO_C << "setting hotkey: char=" << lexical_cast<std::string>(character)
+	LOG_G << "setting hotkey: char=" << lexical_cast<std::string>(character)
 		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
 		   << (shift ? "shift," : "")
 		   << (ctrl ? "ctrl," : "")
@@ -269,7 +270,7 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 			character += 64;
 		else
 			character += 96;
-		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
+		LOG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
 
 	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
@@ -283,7 +284,7 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 		ctrl_ = ctrl;
 		alt_ = alt;
 		cmd_ = cmd;
-		INFO_C << "type = BY_CHARACTER\n";
+		LOG_G << "type = BY_CHARACTER\n";
 	} else {
 		type_ = BY_KEYCODE;
 		keycode_ = keycode;
@@ -291,7 +292,7 @@ void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, boo
 		ctrl_ = ctrl;
 		alt_ = alt;
 		cmd_ = cmd;
-		INFO_C << "type = BY_KEYCODE\n";
+		LOG_G << "type = BY_KEYCODE\n";
 	}
 }
 
@@ -388,7 +389,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 {
 	std::vector<hotkey_item>::iterator itor;
 
-	INFO_C << "getting hotkey: char=" << lexical_cast<std::string>(character)
+	DBG_G << "getting hotkey: char=" << lexical_cast<std::string>(character)
 		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
 		   << (shift ? "shift," : "")
 		   << (ctrl ? "ctrl," : "")
@@ -402,7 +403,7 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 			character += 64;
 		else
 			character += 96;
-		INFO_C << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
+		DBG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
 	}
 
 	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
@@ -415,10 +416,10 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 				if (ctrl == itor->get_ctrl()
 					&& alt == itor->get_alt()
 					&& cmd == itor->get_cmd()) {
-					INFO_C << "Could match by character..." << "yes\n";
+					DBG_G << "Could match by character..." << "yes\n";
 					break;
 				}
-				INFO_C << "Could match by character..." << "but modifiers different\n";
+				DBG_G << "Could match by character..." << "but modifiers different\n";
 			}
 		} else if (itor->get_type() == hotkey_item::BY_KEYCODE) {
 			if (keycode == itor->get_keycode()) {
@@ -426,10 +427,10 @@ hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl, bool 
 					&& ctrl == itor->get_ctrl()
 					&& alt == itor->get_alt()
 					&& cmd == itor->get_cmd()) {
-					INFO_C << "Could match by keycode..." << "yes\n";
+					DBG_G << "Could match by keycode..." << "yes\n";
 					break;
 				}
-				INFO_C << "Could match by keycode..." << "but modifiers different\n";
+				DBG_G << "Could match by keycode..." << "but modifiers different\n";
 			}
 		}
 	}
@@ -811,7 +812,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				}
 				else
 				{
-					//then set setings before mute
+					//then set settings before mute
 					preferences::set_sound(before_muted.playing_sound);
 					preferences::set_music(before_muted.playing_music);
 				}
@@ -829,7 +830,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		}
 		default:
-			ERR_G << "command_executor: unknown command number " << command << ", ignoring.\n";
+			DBG_G << "command_executor: unknown command number " << command << ", ignoring.\n";
 			break;
 	}
 }

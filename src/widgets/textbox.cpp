@@ -30,6 +30,9 @@
 #include <cctype>
 #include <cstring>
 
+#define WRN_DISPLAY LOG_STREAM(warn, display)
+#define DBG_G LOG_STREAM(debug, general)
+
 namespace gui {
 
 #ifdef USE_TINY_GUI
@@ -407,7 +410,7 @@ void textbox::handle_event(const SDL_Event& event)
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
 	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
-		LOG_STREAM(warn, display) << "out-of-boundary selection\n";
+		WRN_DISPLAY << "out-of-boundary selection\n";
 		selstart_ = selend_ = -1;
 	}
 
@@ -537,7 +540,7 @@ void textbox::handle_event(const SDL_Event& event)
 	   c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME ||
 	   c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
 		if(character != 0)
-			LOG_STREAM(info, display) << "Char: " << character << ", c = " << c << "\n";
+			DBG_G << "Char: " << character << ", c = " << c << "\n";
 
 		if(event.key.keysym.mod & copypaste_modifier) {
 			switch(c) {
