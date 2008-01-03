@@ -1309,11 +1309,13 @@ def translator(filename, mapxforms, textxform):
     else:
         return None
 
+ignore = (".tgz", ".png", ".jpg", "-bak")
+
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    if fn.endswith("~") or fn[-4:] in (".tgz", ".png", ".jpg", "-bak"):
-        return False
-    return fn.endswith(".cfg") or is_map(fn)
+    return fn.endswith(".cfg") or fn.endswith(".map") \
+        or ("maps" in fn and fn[-4:] not in ignore) \
+        or is_map(fn)
 
 def allcfgfiles(dir):
     "Get the names of all interesting files under dir."
