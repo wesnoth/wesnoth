@@ -106,20 +106,22 @@ int lobby_joins()
 		return SHOW_FRIENDS;
 	} else if(preferences::get("lobby_joins") == "all") {
 		return SHOW_ALL;
+	} else if(preferences::get("lobby_joins") == "none") {
+		return SHOW_NONE;
 	} else {
-		return SHOW_NON;
+		return SHOW_FRIENDS;
 	}
 }
 
 
 void _set_lobby_joins(int show)
 {
-    if (show == SHOW_FRIENDS) {
+	if (show == SHOW_FRIENDS) {
 		preferences::set("lobby_joins", "friends");
 	} else if (show == SHOW_ALL) {
 		preferences::set("lobby_joins", "all");
-	} else {
-		preferences::set("lobby_joins", "non");
+	} else if (show == SHOW_NONE) {
+		preferences::set("lobby_joins", "none");
 	}
 }
 

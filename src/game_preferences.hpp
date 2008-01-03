@@ -45,7 +45,7 @@ namespace preferences {
 
 	int lobby_joins();
 	void _set_lobby_joins(int show);
-	enum { SHOW_NON, SHOW_FRIENDS, SHOW_ALL };
+	enum { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
 	bool _set_relationship(std::string nick, std::string rela);
 
 	bool sort_list();

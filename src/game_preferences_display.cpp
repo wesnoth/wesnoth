@@ -352,7 +352,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	iconize_list_button_.set_check(iconize_list());
 	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby."));
 
-	show_lobby_joins_button1_.set_check(lobby_joins() == SHOW_NON);
+	show_lobby_joins_button1_.set_check(lobby_joins() == SHOW_NONE);
 	show_lobby_joins_button1_.set_help_string(_("Do not show messages about players joining the multiplayer lobby"));
 	show_lobby_joins_button2_.set_check(lobby_joins() == SHOW_FRIENDS);
 	show_lobby_joins_button2_.set_help_string(_("Show messages about your friends joining the multiplayer lobby"));
@@ -831,23 +831,21 @@ void preferences_dialog::process_event()
 
 	if (tab_ == MULTIPLAYER_TAB) {
 		if (show_lobby_joins_button1_.pressed()) {
-			set_lobby_joins(SHOW_NON);
+			set_lobby_joins(SHOW_NONE);
 			show_lobby_joins_button1_.set_check(true);
 			show_lobby_joins_button2_.set_check(false);
 			show_lobby_joins_button3_.set_check(false);
-        }
-		if (show_lobby_joins_button2_.pressed()) {
+		} else if (show_lobby_joins_button2_.pressed()) {
 			set_lobby_joins(SHOW_FRIENDS);
 			show_lobby_joins_button1_.set_check(false);
 			show_lobby_joins_button2_.set_check(true);
 			show_lobby_joins_button3_.set_check(false);
-        }
-		if (show_lobby_joins_button3_.pressed()) {
+		} else if (show_lobby_joins_button3_.pressed()) {
 			set_lobby_joins(SHOW_ALL);
 			show_lobby_joins_button1_.set_check(false);
 			show_lobby_joins_button2_.set_check(false);
 			show_lobby_joins_button3_.set_check(true);
-        }
+		}
 		if (sort_list_by_group_button_.pressed())
 			set_sort_list(sort_list_by_group_button_.checked());
 		if (iconize_list_button_.pressed())
