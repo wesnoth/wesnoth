@@ -2203,13 +2203,27 @@ private:
 				if(j != data.end()) {
 					const std::string name(data.begin(),j);
 					const std::string value(j+1,data.end());
-					config cfg;
-					i->second.write(cfg);
-					cfg[name] = value;
-					i->second = unit(&gameinfo_,&units_,&map_,&status_,&teams_,cfg);
+					bool valid = true;
+					// FIXME: Avoids a core dump on display
+					// because alignment strings get reduced
+					// to an enum, then used to index an
+					// array of strings.
+					// But someday the code ought to be
+					// changed to allow general string 
+					// alignments for UMC.
+					if (name == "alignment" &&
+					    (value!="lawful"&&value!="neutral"&&value!="chaotic")) {
+					  valid = false;
+					}
+					if (valid) {
+						config cfg;
+						i->second.write(cfg);
+						cfg[name] = value;
+						i->second = unit(&gameinfo_,&units_,&map_,&status_,&teams_,cfg);
 
-					gui_->invalidate(i->first);
-					gui_->invalidate_unit();
+						gui_->invalidate(i->first);
+						gui_->invalidate_unit();
+					}
 				}
 			}
 		} else if(game_config::debug && cmd == "buff") {
