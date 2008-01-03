@@ -33,9 +33,16 @@
 #
 # Note: You can shut wmllint up about custom terrains by having a comment
 # on the same line that includes the string "wmllint: ignore".
+#
 # You can also prevent description insertions with "wmllint: no-icon".
-# Finally, you can disable stack-based malformation checks with a comment
+#
+# You can disable stack-based malformation checks with a comment
 # containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
+#
+# You can skip checks on unbalanced WML (e.g. in a macro definition) by
+# bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
+# Note that this will also disable stack-based validation on the span
+# of lines they enclose.
 
 import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools import *
@@ -1092,6 +1099,7 @@ def translator(filename, mapxforms, textxform):
     lineno = baseline = 0
     cont = False
     validate = True
+    unbalanced = False
     newdata = []
     refname = None
     while mfile:
@@ -1258,39 +1266,44 @@ def translator(filename, mapxforms, textxform):
             newdata.append(newline + terminator)
             if newline != line:
                 modified = True
-            # Now do warnings based on the state of the tag stack
-            fields = newline.split("#")
-            trimmed = fields[0]
-            destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
-            comment = ""
-            if len(fields) > 1:
-                comment = fields[1]
-            for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
-                tag = instance.group(1)
-                attributes = []
-                closer = instance.group(0)[1] == '/'
-                if not closer:
-                    tagstack.append((tag, {}))
-                else:
-                    if len(tagstack) == 0:
-                        print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
-                    elif tagstack[-1][0] != tag:
-                        print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1][0], tag)
+            # Now do warnings based on the state of the tag stack.
+            if not unbalanced:
+                fields = newline.split("#")
+                trimmed = fields[0]
+                destringed = re.sub('"[^"]*"', '', trimmed)	# Ignore string literals
+                comment = ""
+                if len(fields) > 1:
+                    comment = fields[1]
+                for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
+                    tag = instance.group(1)
+                    attributes = []
+                    closer = instance.group(0)[1] == '/'
+                    if not closer:
+                        tagstack.append((tag, {}))
                     else:
-                        if validate:
-                            validate_on_pop(tagstack, tag, filename, lineno)
-                        tagstack.pop()
-            if tagstack:
-                for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(\w+|"[^"]*")', trimmed):
-                    attribute = instance.group(1)
-                    value = instance.group(2)
-                    tagstack[-1][1][attribute] = value
-                if validate:
-                    validate_stack(tagstack, filename, lineno)
+                        if len(tagstack) == 0:
+                            print '"%s", line %d: closer [/%s] with tag stack empty.' % (filename, lineno+1, tag) 
+                        elif tagstack[-1][0] != tag:
+                            print '"%s", line %d: unbalanced [%s] closed with [/%s].' % (filename, lineno+1, tagstack[-1][0], tag)
+                        else:
+                            if validate:
+                                validate_on_pop(tagstack, tag, filename, lineno)
+                            tagstack.pop()
+                if tagstack:
+                    for instance in re.finditer(r'([a-z][a-z_]*[a-z])\s*=(\w+|"[^"]*")', trimmed):
+                        attribute = instance.group(1)
+                        value = instance.group(2)
+                        tagstack[-1][1][attribute] = value
+                    if validate:
+                        validate_stack(tagstack, filename, lineno)
             if "wmllint: validate-on" in comment:
                 validate = True
             if "wmllint: validate-off" in comment:
                 validate = False
+            if "wmllint: unbalanced-on" in comment:
+                unbalanced = True
+            if "wmllint: unbalanced-off" in comment:
+                unbalanced = False
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print >>sys.stderr, '"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack)
