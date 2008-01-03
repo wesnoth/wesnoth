@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2007-12-28 14:21+0100\n"
-"PO-Revision-Date: 2007-12-28 14:43+0100\n"
+"PO-Revision-Date: 2008-01-03 22:55+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -382,17 +382,17 @@ msgstr "Turbo"
 msgid "Skip AI Moves"
 msgstr "Sauter les déplacements de l'IA"
 
+# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
 #: src/game_preferences_display.cpp:163
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
-"Sauver le film en cas de victoire monojoueur ou multijoueur ou de défaite "
-"multijoueur"
+"Sauver le film en cas de défaite multijoueur ou de victoire"
 
+# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
 #: src/game_preferences_display.cpp:164
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
 msgstr ""
-"Supprimer les sauvegardes en cas de victoire monojoueur ou multijoueur ou de "
-"défaite multijoueur"
+"Supprimer les sauvegardes en cas de défaite multijoueur ou de victoire"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -626,17 +626,18 @@ msgstr "Configurer le nombre maximal de sauvegardes à conserver"
 msgid "Do not animate AI units moving"
 msgstr "Ne pas animer les déplacements des unités de l'ordinateur"
 
+# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
 #: src/game_preferences_display.cpp:342
 msgid "Save replays on SP victory or SP/MP defeat."
 msgstr ""
-"Sauver le film en cas de victoire monojoueur ou de défaite monojoueur ou "
-"multijoueur"
+"Sauver le film en cas de victoire monojoueur ou de défaite"
 
+# Benoit : obligé de faire ainsi, sinon la chaîne est bien trop longue...
 #: src/game_preferences_display.cpp:345
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
 msgstr ""
 "Supprimer les sauvegardes automatiques en cas de victoire monojoueur ou de "
-"défaite monojoueur ou multijoueur"
+"défaite"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"

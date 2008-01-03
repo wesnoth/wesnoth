@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-02 17:30+0100\n"
-"PO-Revision-Date: 2007-12-28 14:51+0100\n"
+"PO-Revision-Date: 2008-01-03 22:32+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -86,9 +86,8 @@ msgid "Packagers"
 msgstr "Empaqueteurs"
 
 #: data/core/about.cfg:589
-#, fuzzy
 msgid "Miscellaneous contributors"
-msgstr "Divers"
+msgstr "Autres contributeurs"
 
 #: data/core/about.cfg:709
 msgid "Internationalization Managers"
@@ -1310,7 +1309,7 @@ msgstr ""
 
 #: data/core/help.cfg:299
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Contributeurs"
 
 #: data/core/help.cfg:305
 msgid "License"
@@ -4037,6 +4036,8 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" Cette unité peut se cacher dans les villages (à l'exception des villages "
+"marins), restant invisible de ses ennemis, sauf s'ils sont juste à coté."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -4046,13 +4047,11 @@ msgstr ""
 "avoir besoin d'air de la surface."
 
 #: data/core/macros/special-notes.cfg:53
-#, fuzzy
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Nécrophagie :\n"
-"Cette unité gagne un point de vie rajouté à chaque fois qu'elle tue une "
+" Cette unité gagne un point de vie rajouté à chaque fois qu'elle tue une "
 "unité vivante. Ce point de vie est aussi ajouté au maximum."
 
 #: data/core/macros/special-notes.cfg:56
@@ -5372,7 +5371,7 @@ msgstr ""
 
 #: src/config_adapter.cpp:156
 msgid "Duplicate side definition for side '$side|' found."
-msgstr ""
+msgstr "Redéfinition du camp « $side » trouvée."
 
 #: src/dialogs.cpp:111
 msgid "Advance Unit"
@@ -6180,10 +6179,9 @@ msgid "Reading files and creating cache."
 msgstr "Lecture des fichiers et création du cache"
 
 #: src/map.cpp:341
-#, fuzzy
 msgid "A map without a header is not supported"
 msgstr ""
-"Les cartes aléatoires avec une dimension impaire ne sont pas supportées."
+"Les cartes sans en-tête ne sont pas supportées."
 
 #: src/mapgen.cpp:701
 msgid "Random maps with an odd width aren't supported."
@@ -7264,9 +7262,8 @@ msgid "End scenario"
 msgstr "Fin du scénario"
 
 #: src/playmp_controller.cpp:318
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "En attente de démarrage du jeu..."
+msgstr "En attente du scénario suivant..."
 
 #: src/playmp_controller.cpp:447
 msgid ""
