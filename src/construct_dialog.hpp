@@ -204,6 +204,7 @@ public:
 	void set_image(surface surf, const std::string &caption="");
 	void set_menu(menu *const m) { if(menu_ != empty_menu) delete menu_; menu_ = m; }
 	void set_menu(const std::vector<std::string> & menu_items, menu::sorter* sorter=NULL);
+	void set_menu_items(const std::vector<std::string> &menu_items);
 
 	//add_pane - preview panes are not currently memory managed
 	//(for backwards compatibility)
