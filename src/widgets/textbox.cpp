@@ -74,6 +74,7 @@ void textbox::set_text(const std::string& text)
 	selend_ = -1;
 	set_dirty(true);
 	update_text_cache(true);
+	handle_text_changed(text_);
 }
 
 void textbox::append_text(const std::string& text, bool auto_scroll)
@@ -108,6 +109,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll)
 	set_dirty(true);
 	update_text_cache(false);
 	if(auto_scroll && is_at_bottom) scroll_to_bottom();
+	handle_text_changed(text_);
 }
 
 void textbox::clear()
@@ -120,6 +122,7 @@ void textbox::clear()
 	selend_ = -1;
 	set_dirty(true);
 	update_text_cache(true);
+	handle_text_changed(text_);
 }
 
 void textbox::draw_cursor(int pos, CVideo &video) const
@@ -598,6 +601,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 	if(changed || old_cursor != cursor_ || old_selstart != selstart_ || old_selend != selend_) {
 		text_image_ = NULL;
+		handle_text_changed(text_);
 	}
 
 	set_dirty(true);

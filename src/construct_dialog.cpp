@@ -254,6 +254,19 @@ void dialog::set_menu(const std::vector<std::string> &menu_items, menu::sorter* 
 		-1, dialog::max_menu_width, sorter, &menu::default_style, false));
 }
 
+void dialog::set_menu_items(const std::vector<std::string> &menu_items)
+{
+	if(menu_ == empty_menu) {
+		set_menu(menu_items);
+	} else {
+		menu_->set_items(menu_items);
+
+		for(pp_iterator i = preview_panes_.begin(); i != preview_panes_.end(); ++i) {
+			(**i).set_selection(menu_->selection());
+		}
+	}
+}
+
 menu& dialog::get_menu()
 {
 	if(menu_ == NULL)

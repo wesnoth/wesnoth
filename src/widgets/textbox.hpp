@@ -54,6 +54,8 @@ protected:
 	virtual void scroll(unsigned int pos);
 
 private:
+	virtual void handle_text_changed(const wide_string&) {}
+
 	size_t max_size_;
 
 	wide_string text_;
