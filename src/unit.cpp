@@ -2067,7 +2067,7 @@ bool unit::resistance_filter_matches(const config& cfg,bool attacker,const std::
 
 int unit::resistance_against(const std::string& damage_name,bool attacker,const gamemap::location& loc) const
 {
-	int res = 100;
+	int res = 0;
 
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {

@@ -32,6 +32,8 @@ Version 1.3.13+svn:
    * avoid triggering an assertion when a duplicated side definition exists
      (bug #7252)
  * miscellaneous and bug fixes:
+   * set the default resistance to 100 (no resistance) instead of 0 (immune)
+     (bug #10661)
    * when loading a unit some traits didn't get applied correctly but got
      fixed in a later state. This could lead to some units not leveling 
      properly (bug #10304)

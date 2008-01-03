@@ -429,7 +429,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 int unit_movement_type::resistance_against(const attack_type& attack) const
 {
 	bool result_found = false;
-	int res = 0;
+	int res = 100;
 
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
