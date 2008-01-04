@@ -411,31 +411,13 @@ void server::run() {
 					if (!g->is_member(e.socket)) {
 						continue;
 					}
-					const bool host = g->is_owner(e.socket);
-					const bool obs = g->is_observer(e.socket);
-					g->remove_player(e.socket, true);
 					// Did the last player leave?
-					if ((g->nplayers() == 0) || (host && !g->started())) {
-						LOG_SERVER << ip << "\t" << pl_it->second.name()
-							<< (g->started() ? "\tended game:\t\""
-								: "\taborted game:\t\"")
-							<< g->name() << "\" (" << g->id()
-							<< ") and disconnected. (socket: " << e.socket << ")\n";
+					if (g->remove_player(e.socket, true)) {
 						delete_game(g);
 						break;
 					} else {
-						LOG_SERVER << ip << "\t" << pl_it->second.name()
-							<< "\thas left game:\t\"" << g->name() << "\" ("
-							<< g->id() << (obs ? ") as an observer" : ")")
-							<< " and disconnected. (socket: " << e.socket << ")\n";
 						g->describe_slots();
 						lobby_.send_data(games_and_users_list_diff(), e.socket);
-						if (!obs) {
-							const config& msg = g->construct_server_message(
-								pl_it->second.name() + " has disconnected.");
-							g->send_data(msg);
-							g->record_data(msg);
-						}
 					}
 					break;
 				}
@@ -1182,30 +1164,23 @@ void server::process_data_game(const network::connection sock, const config& dat
 		lobby_.send_data(games_and_users_list_diff());
 		return;
 	} else if (data.child("leave_game")) {
-		//! @todo This should be done in remove_player().
 		if ((g->is_player(sock) && g->nplayers() == 1)
 			|| (g->is_owner(sock) && !g->started())) {
 			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\tended game:\t\"" << g->name() << "\" (" << g->id() << ").\n";
+				<< (g->started() ? "\tended game:\t\"" : "\taborted game:\t\"")
+				<< g->name() << "\" (" << g->id() << ").\n";
+			// Remove the player in delete_game() with all other remaining
+			// ones so he gets the updated gamelist.
 			delete_game(g);
 		} else {
-			LOG_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
-				<< "\thas left game:\t\"" << g->name() << "\" (" << g->id()
-				<< (g->is_observer(sock) ? ") as an observer.\n" : ").\n");
 			g->remove_player(sock);
 			lobby_.add_player(sock, true);
-			if (g->is_player(sock)) {
-				const config& msg = g->construct_server_message(pl->second.name()
-					+ " has left the game.");
-				g->send_data(msg, sock);
-				g->record_data(msg);
-			}
-			// Send the player who has quit the gamelist.
-			network::send_data(games_and_users_list_, sock, send_gzipped_);
 			if (g->describe_slots()) {
 				// Send all other players in the lobby the update to the gamelist.
 				lobby_.send_data(games_and_users_list_diff(), sock);
 			}
+			// Send the player who has quit the gamelist.
+			network::send_data(games_and_users_list_, sock, send_gzipped_);
 		}
 		return;
 	// If this is data describing side changes by the host.

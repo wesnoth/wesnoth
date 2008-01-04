@@ -72,7 +72,7 @@ public:
 	network::connection ban_user(const config& ban, const player_map::const_iterator banner);
 
 	void add_player(const network::connection player, const bool observer = false);
-	void remove_player(const network::connection player, const bool disconnect=false);
+	bool remove_player(const network::connection player, const bool disconnect=false);
 
 	//! Adds players from one game to another. This is used to add players and
 	//! observers from a game to the lobby (which is also implemented as a game),

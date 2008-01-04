@@ -356,6 +356,11 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	sides_taken_[side_num - 1] = true;
 	sides_[side_num - 1] = newplayer->first;
 
+	const config& msg = construct_server_message(newplayer_name
+			+ " takes control of side " + side + ".");
+	record_data(msg);
+	send_data(msg);
+
 	//send "change_controller" msg that make all client update
 	//the current player name
 	config response;
@@ -370,7 +375,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	change["controller"] = "human";
 	network::send_data(response, newplayer->first, send_gzipped);
 
-	// Update the level so observer who join get the new name.
+	// Update the level so observers who join get the new name.
 	config::child_itors it = level_.child_range("side");
 	it.first += side_num - 1;
 	assert(it.first != it.second);
@@ -402,8 +407,6 @@ void game::transfer_side_control(const network::connection sock, const config& c
 		observer_quit.add_child("observer_quit").values["name"] = newplayer_name;
 		send_data(observer_quit);
 	}
-	send_data(construct_server_message(newplayer_name
-		+ " takes control of side " + side + "."));
 }
 
 void game::notify_new_host(){
@@ -778,11 +781,14 @@ void game::add_player(const network::connection player, const bool observer) {
 	}
 }
 
-void game::remove_player(const network::connection player, const bool disconnect) {
+//! Removes a user from the game.
+//! @return true iff the game ends that is if there are no more players
+//! or the host left on a not yet started game.
+bool game::remove_player(const network::connection player, const bool disconnect) {
 	if (!is_member(player)) {
 		ERR_GAME << "ERROR: User is not in this game. (socket: "
 			<< player << ")\n";
-		return;
+		return false;
 	}
 	// Hack to handle the pseudo games lobby_ and not_logged_in_.
 	if (owner_ == 0) {
@@ -794,36 +800,29 @@ void game::remove_player(const network::connection player, const bool disconnect
 			ERR_GAME << "ERROR: Observer is not in this game. (socket: "
 				<< player << ")\n";
 		}
-		return;
+		return false;
 	}
 	DBG_GAME << debug_player_info();
 	DBG_GAME << "removing player...\n";
 
-	bool host = (player == owner_);
-	bool observer = true;
-	{
-		const user_vector::iterator itor = std::find(players_.begin(), players_.end(), player);
-		if (itor != players_.end()) {
-			players_.erase(itor);
-			observer = false;
-		}
-	}
-	{
-		const user_vector::iterator itor = std::find(observers_.begin(), observers_.end(), player);
-		if (itor != observers_.end()) {
-			observers_.erase(itor);
-			if (!observer) 
-				ERR_GAME << "ERROR: Player is also an observer. (socket: "
-				<< player << ")\n";
-			observer = true;
-		}
-	}
+	const bool host = (player == owner_);
+	const bool observer = is_observer(player);
+	players_.erase(std::remove(players_.begin(), players_.end(), player), players_.end());
+	observers_.erase(std::remove(observers_.begin(), observers_.end(), player), observers_.end());
+	const bool game_ended = (players_.empty() || (host && !started_));
 	const player_map::iterator user = player_info_->find(player);
 	if (user == player_info_->end()) {
 		ERR_GAME << "ERROR: Could not find user in player_info_. (socket: "
 			<< player << ")\n";
-		return;
+		return false;
 	}
+	LOG_GAME << network::ip_address(user->first) << "\t" << user->second.name()
+		<< (game_ended ? (started_ ? "\tended" : "\taborted") : "\thas left")
+		<< " game:\t\"" << name_ << "\" (" << id_ << ")"
+		<< (observer ? " as an observer" : "")
+		<< (disconnect ? " and disconnected" : "")
+		<< ". (socket: " << user->first << ")\n";
+	if (game_ended) return true;
 	// Don't mark_available() since the player got already removed from the
 	// games_and_users_list_.
 	if (!disconnect) user->second.mark_available();
@@ -832,12 +831,13 @@ void game::remove_player(const network::connection player, const bool disconnect
 		config observer_quit;
 		observer_quit.add_child("observer_quit").values["name"] = user->second.name();
 		send_data(observer_quit);
-		return;
+		return false;
+	} else {
+		const config& msg = construct_server_message(user->second.name()
+				+ (disconnect ? " has disconnected." : " has left the game."));
+		send_data(msg, player);
+		record_data(msg);
 	}
-
-	// The game ends if there are no more players or the host left on a not
-	// yet started game.
-	if (players_.empty() || (host && !started_)) return;
 	// If the player was host choose a new one.
 	if (host) {
 		owner_ = players_.front();
@@ -857,7 +857,7 @@ void game::remove_player(const network::connection player, const bool disconnect
 		//can't do this with an iterator, because it doesn't know the side_num - 1
 		for (size_t side = 0; side < side_controllers_.size(); ++side){
 			//send the host a notification of removal of this side
-			if(players_.empty() == false && side_controllers_[side] == "ai") {
+			if (side_controllers_[side] == "ai") {
 				ai_transfer = true;
 				config drop;
 				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
@@ -888,6 +888,7 @@ void game::remove_player(const network::connection player, const bool disconnect
 	DBG_GAME << debug_player_info();
 
 	send_user_list(player);
+	return false;
 }
 
 void game::send_user_list(const network::connection exclude) const {
