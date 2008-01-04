@@ -37,12 +37,14 @@
 config unit_animation::prepare_animation(const config &cfg,const std::string animation_tag)
 {
 	config expanded_animations;
-	config::const_child_itors all_anims = cfg.child_range(animation_tag);
-	config::const_child_iterator current_anim;
 	std::vector<config> unexpanded_anims;
-	// store all the anims we have to analyze
-	for(current_anim = all_anims.first; current_anim != all_anims.second ; current_anim++) {
-		unexpanded_anims.push_back(**current_anim);
+	{
+		// store all the anims we have to analyze
+		config::const_child_itors all_anims = cfg.child_range(animation_tag);
+		config::const_child_iterator current_anim;
+		for(current_anim = all_anims.first; current_anim != all_anims.second ; current_anim++) {
+			unexpanded_anims.push_back(**current_anim);
+		}
 	}
 	while(!unexpanded_anims.empty()) {
 		// take one anim out of the unexpanded list
@@ -82,15 +84,14 @@ config unit_animation::prepare_animation(const config &cfg,const std::string ani
 					child++;
 				}
 				unexpanded_anims.insert(unexpanded_anims.end(),to_add.begin(),to_add.end());
-				// stop this one which had an if we have resolved, parse the next one
-				continue;
 			} else {
 				// add the current node
 				expanded_anim.add_child(*(*child).first,*(*child).second);
 				child++;
+				if(child == analyzed_anim.ordered_end())
+					expanded_animations.add_child(animation_tag,expanded_anim);
 			}
 		}
-		expanded_animations.add_child(animation_tag,expanded_anim);
 	}
 	return expanded_animations;
 }
@@ -131,6 +132,7 @@ unit_animation::unit_animation(const config& cfg,const std::string frame_string 
 	sub_anims_(),
 	unit_anim_(cfg,frame_string)
 {
+//	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 	config::child_map::const_iterator frame_itor =cfg.all_children().begin();
 	for( /*null*/; frame_itor != cfg.all_children().end() ; frame_itor++) {
 		if(frame_itor->first == frame_string) continue;
