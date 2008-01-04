@@ -1173,10 +1173,9 @@ void server::process_data_game(const network::connection sock, const config& dat
 		} else {
 			g->remove_player(sock);
 			lobby_.add_player(sock, true);
-			if (g->describe_slots()) {
-				// Send all other players in the lobby the update to the gamelist.
-				lobby_.send_data(games_and_users_list_diff(), sock);
-			}
+			g->describe_slots()
+			// Send all other players in the lobby the update to the gamelist.
+			lobby_.send_data(games_and_users_list_diff(), sock);
 			// Send the player who has quit the gamelist.
 			network::send_data(games_and_users_list_, sock, send_gzipped_);
 		}
