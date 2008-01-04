@@ -111,6 +111,7 @@ team::team_info::team_info(const config& cfg) :
 		targets(),
 		share_maps(false),
 		share_view(false),
+		disallow_observers(utils::string_bool(cfg["disallow_observers"])),
 		music(cfg["music"]),
 		colour(cfg["colour"].size() ? cfg["colour"] : cfg["side"])
 {

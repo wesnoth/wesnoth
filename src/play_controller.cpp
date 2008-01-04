@@ -128,6 +128,20 @@ void play_controller::init(CVideo& video, bool is_replay){
 	if(first_human_team_ != -1) {
 		gui_->set_team(first_human_team_);
 	}
+	else if (team_manager_.is_observer())
+	{
+		// Find first team that is allowed to be observered.
+		// If not set here observer would be without fog untill
+		// the first turn of observerable side
+		size_t i;
+		for (i=0;i < teams_.size();++i)
+		{
+			if (!teams_[i].get_disallow_observers())
+			{
+				gui_->set_team(i);
+			}
+		}
+	}
 
 	init_managers();
 	loadscreen::global_loadscreen->set_progress(100, _("Starting game"));
@@ -322,8 +336,10 @@ void play_controller::init_side(const unsigned int team_index, bool /*is_replay*
 	team& current_team = teams_[team_index];
 
 	mouse_handler_.set_team(team_index+1);
-
-	if(team_manager_.is_observer()) {
+	
+	// If we are observers we move to watch next team if it is allowed
+	if (team_manager_.is_observer()
+		&& !current_team.get_disallow_observers()) {
 		gui_->set_team(size_t(team_index));
 	}
 		gui_->set_playing_team(size_t(team_index));

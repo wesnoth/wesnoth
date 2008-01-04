@@ -109,6 +109,7 @@ public:
 		std::vector<target> targets;
 
 		bool share_maps, share_view;
+		bool disallow_observers;
 
 		std::string music;
 
@@ -253,7 +254,7 @@ public:
 
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
-
+	bool get_disallow_observers() {return info_.disallow_observers; };
 	std::string map_colour_to() const { return info_.colour; };
 
 	static int nteams();
