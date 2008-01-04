@@ -1285,12 +1285,26 @@ void server::delete_game(std::vector<game>::iterator game_it) {
 		DBG_SERVER << "Could not find game (" << game_it->id()
 			<< ") to delete in games_and_users_list_.\n";
 	}
-	// Send all other players in the lobby the update to the gamelist.
+	const user_vector& users = game_it->all_game_users();
+	// Set the availability status for all quitting users.
+	for (user_vector::const_iterator user = users.begin();
+		user != users.end(); user++)
+	{
+		const player_map::iterator pl = players_.find(*user);
+		if (pl != players_.end()) {
+			pl->second.mark_available();
+		} else {
+			ERR_SERVER << "ERROR: Could not find user in players_. (socket: "
+				<< *user << ")\n";
+		}
+	}
+	// Send all other users in the lobby the update to the games_and_users_list_.
 	lobby_.send_data(games_and_users_list_diff());
-	// Put the players back in the lobby, and send
-	// them the games_and_users_list_ again.
+	game_it->send_data(config("leave_game"));
+	// Send the quitting users the games_and_users_list_.
+	game_it->send_data(games_and_users_list_);
+	// Put the remaining users back in the lobby.
 	lobby_.add_players(*game_it, true);
-	game_it->end_game(games_and_users_list_);
 	games_.erase(game_it);
 }
 

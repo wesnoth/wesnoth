@@ -966,26 +966,6 @@ void game::set_description(config* desc) {
 	}
 }
 
-void game::end_game(const config& games_and_users_list) {
-	const user_vector& users = all_game_users();
-	// Set the availability status for all quitting players.
-	for (user_vector::const_iterator user = users.begin();
-		user != users.end(); user++)
-	{
-		const player_map::iterator pl = player_info_->find(*user);
-		if (pl != player_info_->end()) {
-			pl->second.mark_available();
-		} else {
-			ERR_GAME << "ERROR: Could not find player in player_info_. (socket: "
-				<< *user << ")\n";
-		}
-	}
-	send_data(config("leave_game"));
-	send_data(games_and_users_list);
-	players_.clear();
-	observers_.clear();
-}
-
 void game::add_players(const game& other_game, const bool observer) {
 	user_vector users = other_game.all_game_users();
 	if (observer){

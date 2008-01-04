@@ -74,6 +74,8 @@ public:
 	void add_player(const network::connection player, const bool observer = false);
 	bool remove_player(const network::connection player, const bool disconnect=false);
 
+	//! Adds players and observers into one vector and returns that.
+	const user_vector all_game_users() const;
 	//! Adds players from one game to another. This is used to add players and
 	//! observers from a game to the lobby (which is also implemented as a game),
 	//! if that game ends. The second parameter controls, wether the players are
@@ -81,8 +83,6 @@ public:
 	void add_players(const game& other_game, const bool observer = true);
 
 	void start_game();
-	//! Make everyone leave the game and clean up.
-	void end_game(const config& games_and_users_list);
 
 	//! Resets the side configuration according to the scenario data.
 	void update_side_data();
@@ -142,8 +142,6 @@ private:
 	void send_data_team(const config& data, const std::string& team,
 			const network::connection exclude=0) const;
 	void send_data_observers(const config& data, const network::connection exclude=0) const;
-	//! Adds players and observers into one vector and returns that.
-	const user_vector all_game_users() const;
 	//! In case of a host transfer, notify the new host about its status.
 	void notify_new_host();
 	//! Convenience function for finding a user by name.
