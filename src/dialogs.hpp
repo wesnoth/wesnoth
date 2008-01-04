@@ -91,16 +91,15 @@ protected:
 	game_display& disp_;
 	const gamemap* map_;
 	int index_;
+	gui::button details_button_;
 
 private:
 	virtual size_t size() const = 0;
 	virtual const details get_details() const = 0;
-	virtual const std::string get_profile() const = 0;
+	virtual void process_event() = 0;
 
 	void draw_contents();
-	void process_event();
 
-	gui::button details_button_;
 	bool left_;
 	bool weapons_;
 };
@@ -114,7 +113,7 @@ public:
 private:
 	size_t size() const;
 	const details get_details() const;
-	const std::string get_profile() const;
+	void process_event();
 
 	std::vector<unit>* units_;
 	std::vector<unit> unit_store_;
@@ -129,13 +128,14 @@ public:
 private:
 	size_t size() const;
 	const details get_details() const;
-	const std::string get_profile() const;
+	void process_event();
 
 	std::vector<const unit_type*>* unit_types_;
 	int side_;
 };
 
 
+void show_unit_description(game_display &disp, const unit_type& t);
 void show_unit_description(game_display &disp, const unit& u);
 
 

@@ -491,7 +491,6 @@ enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESC
 /// about units that should not be shown, for example due to not being
 /// encountered.
 static UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
-static std::vector<topic> generate_race_topics(const bool);
 static std::vector<topic> generate_ability_topics(const bool);
 static std::vector<topic> generate_weapon_special_topics(const bool);
 
@@ -582,6 +581,7 @@ namespace {
 	// The topic to open by default when opening the help dialog.
 	const std::string default_show_topic = "introduction_topic";
 	const std::string unknown_unit_topic = ".unknown_unit";
+	const std::string unit_prefix = "unit_";
 }
 
 	/// Return true if the id is valid for user defined topics and
@@ -591,7 +591,7 @@ static bool is_valid_id(const std::string &id) {
 		if (id == "toplevel") {
 			return false;
 		}
-		if (id.find("unit_") == 0) {
+		if (id.find(unit_prefix) == 0 || id.find("." + unit_prefix) == 0) {
 			return false;
 		}
 		if (id.find("ability_") == 0) {
@@ -968,9 +968,7 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		return res;
 	}
 
-	if (generator == "races") {
-		res = generate_race_topics(sort_generated);
-	} else if (generator == "abilities") {
+	if (generator == "abilities") {
 		res = generate_ability_topics(sort_generated);
 	} else if (generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
@@ -1083,13 +1081,15 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 							special_description[special] = description;
 						}
 
-						//add a link in the list of units having this special
-						std::string lang_name = type.language_name();
-						std::string ref_id = std::string("unit_") +  type.id();
-						//we put the translated name at the beginning of the hyperlink,
-						//so the automatic alphabetic sorting of std::set can use it
-						std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
-						special_units[special].insert(link);
+						if (!type.hide_help()) {
+							//add a link in the list of units having this special
+							std::string lang_name = type.language_name();
+							std::string ref_id = unit_prefix + type.id();
+							//we put the translated name at the beginning of the hyperlink,
+							//so the automatic alphabetic sorting of std::set can use it
+							std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+							special_units[special].insert(link);
+						}
 					}
 				}
 			}
@@ -1103,62 +1103,6 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		text << s->second;  //description
 		text << "\n\n" << _("Units having this special attack:") << "\n";
 		std::set<std::string>& units = special_units[s->first];
-		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
-			text << (*u) << "\n";
-		}
-
-		topics.push_back( topic(name, id, text.str()) );
-	}
-
-	if (sort_generated)
-		std::sort(topics.begin(), topics.end(), title_less());
-	return topics;
-}
-
-std::vector<topic> generate_race_topics(const bool sort_generated)
-{
-	std::vector<topic> topics;
-	if (game_info == NULL) {
-		return topics;
-	}
-	std::map<std::string, std::set<std::string> > race_units;
-	// Look through all the unit types, check if a unit of this type
-	// should have a full description, if so, add this race for display.
-	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
-	    i != game_info->unit_types.end(); ++i) {
-		const unit_type &type = (*i).second;
-		if (description_type(type) == FULL_DESCRIPTION) {
-			const std::string& race = type.race();
-
-			//add a link in the list of units of this race
-			std::string lang_name = type.language_name();
-			std::string ref_id = std::string("unit_") +  type.id();
-			//we put the translated name at the beginning of the hyperlink,
-			//so the automatic alphabetic sorting of std::set can use it
-			std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
-			race_units[race].insert(link);
-		}
-	}
-
-	for (std::map<std::string, std::set<std::string> >::iterator r = race_units.begin(); r != race_units.end(); r++) {
-		std::string id = "race_" + r->first;
-		std::string name;
-		std::string description;
-
-		const race_map::const_iterator race_it = game_info->races.find(r->first);
-		if (race_it != game_info->races.end()) {
-			name = race_it->second.plural_name();
-			description = race_it->second.description();
-			// if (description.empty()) description =  _("No description Available");
-		} else {
-			name = _ ("race^Miscellaneous");
-			// description =  _("Here put the description of the Miscellaneous race");
-		}
-
-		std::stringstream text;
-		text << description;
-		text << "\n\n" << _("Units of this race:") << "\n";
-		std::set<std::string>& units = race_units[r->first];
 		for (std::set<std::string>::iterator u = units.begin(); u != units.end();u++) {
 			text << (*u) << "\n";
 		}
@@ -1207,13 +1151,15 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 					ability_description[*it] = description;
 				}
 
-				//add a link in the list of units having this ability
-				std::string lang_name = type.language_name();
-				std::string ref_id = std::string("unit_") +  type.id();
-				//we put the translated name at the beginning of the hyperlink,
-				//so the automatic alphabetic sorting of std::set can use it
-				std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
-				ability_units[*it].insert(link);
+				if (!type.hide_help()) {
+					//add a link in the list of units having this ability
+					std::string lang_name = type.language_name();
+					std::string ref_id = unit_prefix +  type.id();
+					//we put the translated name at the beginning of the hyperlink,
+					//so the automatic alphabetic sorting of std::set can use it
+					std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+					ability_units[*it].insert(link);
+				}
 			}
 		}
 	}
@@ -1299,8 +1245,8 @@ public:
 				{
 					std::string lang_unit = type->second.language_name();
 					std::string ref_id;
-					if (description_type(type->second) == FULL_DESCRIPTION) {
-						ref_id = std::string("unit_") + type->second.id();
+					if (description_type(type->second) == FULL_DESCRIPTION && !type->second.hide_help()) {
+						ref_id = unit_prefix + type->second.id();
 					} else {
 						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
@@ -1326,8 +1272,8 @@ public:
 				if(type != game_info->unit_types.end()) {
 					std::string lang_unit = type->second.language_name();
 					std::string ref_id;
-					if (description_type(type->second) == FULL_DESCRIPTION) {
-						ref_id = std::string("unit_") + type->second.id();
+					if (description_type(type->second) == FULL_DESCRIPTION && !type->second.hide_help()) {
+						ref_id = unit_prefix + type->second.id();
 					} else {
 						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
@@ -1578,7 +1524,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-		if (desc_type == FULL_DESCRIPTION && !type.hide_help()) {
+		if (desc_type == FULL_DESCRIPTION) {
 			races.insert(type.race());
 		}
 	}
@@ -1624,19 +1570,21 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		if (type.race() != race)
 			continue;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-		if (desc_type != FULL_DESCRIPTION || type.hide_help())
+		if (desc_type != FULL_DESCRIPTION)
 			continue;
 
 		const std::string lang_name = type.language_name();
-		const std::string ref_id = std::string("unit_") +  type.id();
+		const std::string ref_id = (type.hide_help() ? "." : "") + unit_prefix +  type.id();
 		topic unit_topic(lang_name, ref_id, "");
 		unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);
 
-		// we also record an hyperlink of this unit
-		// in the list used for the race topic
-		std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
-		race_units.insert(link);
+		if (!type.hide_help()) {
+			// we also record an hyperlink of this unit
+			// in the list used for the race topic
+			std::string link =  "<ref>text='" + escape(lang_name) + "' dst='" + escape(ref_id) + "'</ref>";
+			race_units.insert(link);
+		}
 	}
 
 	//generate the hidden race description topic
@@ -1668,12 +1616,12 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 {
-	const std::string id = type.id();
-	const std::set<std::string> &encountered_units = preferences::encountered_units();
 	if (game_config::debug) {
 		return FULL_DESCRIPTION;
 	}
-	if (encountered_units.find(id) != encountered_units.end()) {
+
+	const std::set<std::string> &encountered_units = preferences::encountered_units();
+	if (encountered_units.find(type.id()) != encountered_units.end()) {
 		return FULL_DESCRIPTION;
 	}
 	return NO_DESCRIPTION;
@@ -2728,8 +2676,9 @@ void help_browser::show_topic(const std::string &topic_id)
 	const topic *t = find_topic(toplevel_, topic_id);
 	if (t != NULL) {
 		show_topic(*t);
-	}
-	else {
+	} else if (topic_id.find(unit_prefix)==0 || topic_id.find("."+unit_prefix)==0) {
+		show_topic(unknown_unit_topic);
+	} else {
 		std::cerr << "Help browser tried to show topic with id '" << topic_id
 				  << "' but that topic could not be found." << std::endl;
 	}
@@ -2975,6 +2924,14 @@ std::string get_first_word(const std::string &s)
 void show_help(display &disp, std::string show_topic, int xloc, int yloc)
 {
 	show_help(disp, toplevel, show_topic, xloc, yloc);
+}
+
+//! Open the help browser, show unit with id unit_id.
+//!
+//! If show_topic is the empty string, the default topic will be shown.
+void show_unit_help(display &disp, std::string show_topic, bool hidden, int xloc, int yloc)
+{
+	show_help(disp, toplevel, (hidden ? ".":"") + unit_prefix + show_topic, xloc, yloc);
 }
 
 //! Open a help dialog using a toplevel other than the default.

@@ -44,6 +44,10 @@ void show_help(display &disp, const section &toplevel, const std::string show_to
 /// will be shown if show_topic is the empty string.
 void show_help(display &disp, const std::string show_topic="", int xloc=-1, int yloc=-1);
 
+/// wrapper to add unit prefix and hidding symbol
+void show_unit_help(display &disp, const std::string unit_id, bool hidden = false,
+				int xloc=-1, int yloc=-1);
+
 class help_button : public gui::dialog_button, public hotkey::command_executor {
 public:
 	help_button(display& disp, const std::string &help_topic);

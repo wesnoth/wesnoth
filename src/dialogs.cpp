@@ -830,13 +830,6 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-void unit_preview_pane::process_event()
-{
-	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		help::show_help(disp_, get_profile());
-	}
-}
-
 units_list_preview_pane::units_list_preview_pane(game_display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
 					: unit_preview_pane(disp, map, type, on_left_side),
 					  units_(&unit_store_)
@@ -890,10 +883,11 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	return det;
 }
 
-const std::string units_list_preview_pane::get_profile() const
+void units_list_preview_pane::process_event()
 {
-	unit& u = (*units_)[index_];
-	return "unit_" + u.id();
+	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
+		show_unit_description(disp_, (*units_)[index_]);
+	}
 }
 
 unit_types_preview_pane::unit_types_preview_pane(game_display& disp, const gamemap* map, std::vector<const unit_type*>& unit_types, int side, TYPE type, bool on_left_side)
@@ -968,16 +962,29 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	return det;
 }
 
-const std::string unit_types_preview_pane::get_profile() const
+void unit_types_preview_pane::process_event()
 {
-	const unit_type* t = (*unit_types_)[index_];
-	return "unit_" + t->id();
+	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(size())) { 
+		const unit_type* type = (*unit_types_)[index_];
+		if (type != NULL)
+			show_unit_description(disp_, *type);
+	}
 }
 
 
 void show_unit_description(game_display &disp, const unit& u)
 {
-	help::show_help(disp, "unit_" + u.id());
+	const unit_type* t = u.type();
+	if (t != NULL)
+		show_unit_description(disp, *t);
+	else
+		// can't find type, try open the id page to have feedback and unit error page
+		help::show_unit_help(disp, u.id());
+}
+
+void show_unit_description(game_display &disp, const unit_type& t)
+{
+	help::show_unit_help(disp, t.id(), t.hide_help());
 }
 
 
