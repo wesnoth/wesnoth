@@ -976,7 +976,6 @@ void server::process_data_lobby(const network::connection sock, const config& da
 void server::process_data_game(const network::connection sock, const config& data) {
 	DBG_SERVER << "in process_data_game...\n";
 	
-	//bool push_immediately = true;
 	const player_map::const_iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
 		ERR_SERVER << "ERROR: Could not find player in players_. (socket: "
@@ -1173,7 +1172,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		} else {
 			g->remove_player(sock);
 			lobby_.add_player(sock, true);
-			g->describe_slots()
+			g->describe_slots();
 			// Send all other players in the lobby the update to the gamelist.
 			lobby_.send_data(games_and_users_list_diff(), sock);
 			// Send the player who has quit the gamelist.
