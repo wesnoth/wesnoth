@@ -403,7 +403,7 @@ void unit_animation::initialize_anims( std::vector<unit_animation> & animations,
 		//lg::wml_error<<"movement animations  are deprecate, support will be removed in 1.3.11 (in unit "<<cfg["name"]<<")\n";
 		//lg::wml_error<<"please put it with an [animation] tag and apply_to=movement flag\n";
 	}
-	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150,"","0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150,0~1:150"),"movement",unit_animation::DEFAULT_ANIM));
+	if(with_default) animations.push_back(unit_animation(0,unit_frame(image::locator(cfg["image"]),150,"","0~1:150"),"movement",unit_animation::DEFAULT_ANIM));
 	// Always have a movement animation
 	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
 	const config::child_list& defends = expanded_cfg.get_children("defend");
@@ -860,13 +860,13 @@ bool unit_animator::would_end() const
 void unit_animator::wait_until(int animation_time) const
 {
 	game_display*disp = game_display::get_singleton();
-        int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
-	 while (SDL_GetTicks() < (unsigned int)end_tick - 30) {
+	int end_tick = animated_units_[0].my_unit->get_animation()->time_to_tick(animation_time);
+	while (SDL_GetTicks() < (unsigned int)end_tick - 20*disp->turbo_speed()) {
 		disp->draw();
 		events::pump();
-		disp->delay(maximum<int>(0,minimum<int>(10,animation_time - get_animation_time())));
+		disp->delay(maximum<int>(0,minimum<int>(10,(animation_time - get_animation_time())*disp->turbo_speed()) ));
 	}
-	 disp->delay(maximum<int>(0,end_tick - SDL_GetTicks()+1));
+	disp->delay(maximum<int>(0,end_tick - SDL_GetTicks()+1));
 }
 void unit_animator::wait_for_end() const
 {

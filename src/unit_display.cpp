@@ -76,14 +76,17 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 
+	disp->draw(); // to refresh animation time
 	disp->place_temporary_unit(temp_unit,a);
+	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,"movement",a);
 	animator.start_animations();
-	disp->draw(); // to refresh animation time
 	int target_time = animator.get_animation_time();
+	target_time += 150;
 	target_time -= target_time%150;
-	animator.wait_until(target_time+150);
+//	if(target_time < 10) target_time +=150;
+	animator.wait_until(target_time);
 }
 
 namespace unit_display
@@ -129,7 +132,6 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 	temp_unit.set_hidden(false);
 
 	for(size_t i = 0; i+1 < path.size(); ++i) {
-		temp_unit.set_facing(path[i].get_relative_dir(path[i+1]));
 
 		bool invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
 				temp_unit.invisible(path[i],units,teams) &&
