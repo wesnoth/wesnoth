@@ -31,7 +31,7 @@
 
 int game::id_num = 1;
 //! @todo remove after 1.3.12 is no longer allowed on the server.
-bool game::send_gzipped = false;
+bool game::send_gzipped = true;
 
 game::game(player_map& players, const network::connection host, const std::string name)
 	: player_info_(&players), id_(id_num++), name_(name), owner_(host),

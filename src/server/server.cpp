@@ -169,7 +169,7 @@ server::server(int port, input_stream& input, const std::string& config_file, si
 	old_games_and_users_list_(games_and_users_list_),
 	last_ping_(time(NULL)), 
 	last_stats_(last_ping_),
-	send_gzipped_(false)
+	send_gzipped_(true)
 {
 	load_config();
 	signal(SIGHUP, reload_config);
