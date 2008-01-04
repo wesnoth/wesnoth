@@ -1697,9 +1697,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "debug_message") {
 		const std::string log_level = cfg["logger"];
 		const std::string log_message = cfg["message"];
-		if (log_level == "err")
+		if (log_level == "err" || log_level == "error")
 			ERR_NO << log_message << "\n";
-		else if (log_level == "warn" || log_level == "wrn")
+		else if (log_level == "warn" || log_level == "wrn" || log_level == "warning")
 			WRN_NO << log_message << "\n";
 		else
 			LOG_NO << log_message << "\n";
