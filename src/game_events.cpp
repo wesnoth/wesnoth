@@ -1506,7 +1506,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			const bool show = screen != NULL && !screen->fogged(loc);
-			const bool animate = show && cfg["animate"] != "";
+			const bool animate = show && utils::string_bool(cfg["animate"], false);
 
 			units->erase(loc);
 			units->add(new std::pair<gamemap::location,unit>(loc,new_unit));
