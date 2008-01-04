@@ -666,7 +666,7 @@ void unit_type::build(const config& cfg, const movement_type_map& mv_types,
 	game_config::add_color_info(cfg);
 	// Deprecation messages, only seen when unit is parsed for the first time.
 
-	hide_help_= cfg["hide_help"] == "true" ? true : false;
+	hide_help_= utils::string_bool(cfg["hide_help"],false);
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
