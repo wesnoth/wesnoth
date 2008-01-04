@@ -929,7 +929,8 @@ void server::process_data_lobby(const network::connection sock, const config& da
 			<< "\" (" << id << (observer ? ") as an observer.\n" : ").\n");
 		lobby_.remove_player(sock);
 		g->add_player(sock, observer);
-		if (g->describe_slots()) lobby_.send_data(games_and_users_list_diff());
+		g->describe_slots();
+		lobby_.send_data(games_and_users_list_diff());
 	}
 
 	// See if it's a message, in which case we add the name of the sender,
