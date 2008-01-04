@@ -439,15 +439,12 @@ void server::process_data(const network::connection sock, const config& data) {
 	else if (not_logged_in_.is_observer(sock)) {
 		process_login(sock, data);
 	} else if (const config* query = data.child("query")) {
-		DBG_SERVER << "RECEIVED from: " << sock << ": " << data.debug();
 		process_query(sock, *query);
 	} else if (const config* whisper = data.child("whisper")) {
 		process_whisper(sock, *whisper);
 	} else if (lobby_.is_observer(sock)) {
-		DBG_SERVER << "RECEIVED from: " << sock << ": " << data.debug();
 		process_data_lobby(sock, data);
 	} else {
-		DBG_SERVER << "RECEIVED from: " << sock << ": " << data.debug();
 		process_data_game(sock, data);
 	}
 }
@@ -1265,8 +1262,9 @@ void server::process_data_game(const network::connection sock, const config& dat
 	// except for the original data sender
 	// FIXME: Relaying arbitrary data that possibly didn't get handled at all
 	// seems like a bad idea.
+	DBG_SERVER << "Relaying data RECEIVED from: " << sock
+		<< " to all other players: " << data.debug();
 	g->send_data(data, sock);
-	DBG_SERVER << "Relaying data RECEIVED from: " << sock << ": " << data.debug();
 	if (g->started()) {
 		g->record_data(data);
 	}

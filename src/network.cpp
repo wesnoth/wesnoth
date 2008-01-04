@@ -666,9 +666,6 @@ connection receive_data(config& cfg, connection connection_num)
 
 	TCPsocket sock = connection_num == 0 ? 0 : get_socket(connection_num);
 	sock = network_worker_pool::get_received_data(sock,cfg);
-	if(!cfg.empty()) {
-		LOG_NW << "RECEIVED from: " << connection_num << ": " << cfg.debug();
-	}
 	if(sock == NULL) {
 		if(last_ping != 0 && ping_timeout != 0 && !is_server() ) {
 			check_timeout();
@@ -684,6 +681,9 @@ connection receive_data(config& cfg, connection connection_num)
 			result = j->first;
 			break;
 		}
+	}
+	if(!cfg.empty()) {
+		DBG_NW << "RECEIVED from: " << result << ": " << cfg.debug();
 	}
 
 	assert(result != 0);
