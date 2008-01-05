@@ -63,7 +63,7 @@ bool is_sound_playing(int id);
 void stop_sound(int id);
 
 // Play sound, or random one of comma-separated sounds.
-void play_sound(const std::string& files, channel_group group = SOUND_FX);
+void play_sound(const std::string& files, channel_group group = SOUND_FX, unsigned int repeats = 0);
 
 // Play sound, or random one of comma-separated sounds. Use specified
 // distance and associate it with specified id (of a sound source).

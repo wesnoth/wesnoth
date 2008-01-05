@@ -629,8 +629,9 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 
 	else if(cmd == "sound") {
 		std::string sound = cfg["name"];
+		const int repeats = lexical_cast_default<int>(cfg["repeat"], 0);
 		assert(state_of_game != NULL);
-		sound::play_sound(sound);
+		sound::play_sound(sound, sound::SOUND_FX, repeats);
 	}
 
 	else if(cmd == "colour_adjust") {
