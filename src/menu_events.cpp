@@ -2118,8 +2118,30 @@ private:
 			} else if (teams_[side - 1].is_ai()) {
 				teams_[side - 1].make_human();
 			}
+		} else if (cmd == "log") {
+			// :log <level> <domain>  Change the log level of a log domain.
+			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
+			if(j == data.end()) return;
+			const std::string level(data.begin(),j);
+			const std::string domain(j+1,data.end());
+			int severity;
+			if (level == "error") severity = 0;
+			else if (level == "warning") severity = 1;
+			else if (level == "info") severity = 2;
+			else if (level == "debug") severity = 3;
+			else {
+				ERR_NG << "Unknown debug level: '" << level << "'.\n";
+				return;
+			}
+			if (!lg::set_log_domain_severity(domain, severity)) {
+				ERR_NG << "Unknown debug domain: '" << domain << "'.\n";
+				return;
+			} else {
+				LOG_NG << "Switched domain: '" << domain << "' to level: '"
+					<< level << "'.\n";
+			}
 		} else if (cmd == "theme") {
-		  preferences::show_theme_dialog(*gui_);
+			preferences::show_theme_dialog(*gui_);
 		} else if (cmd == "ping" && network::nconnections() != 0) {
 			config ping;
 			ping["ping"] = lexical_cast<std::string>(time(NULL));
@@ -2211,38 +2233,34 @@ private:
 			to_show.show();
 		} else if(game_config::debug && cmd == "unit") {
 			const unit_map::iterator i = current_unit(mousehandler);
-			if(i != units_.end()) {
-				const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
-				if(j != data.end()) {
-					const std::string name(data.begin(),j);
-					const std::string value(j+1,data.end());
-					bool valid = true;
-					// FIXME: Avoids a core dump on display
-					// because alignment strings get reduced
-					// to an enum, then used to index an
-					// array of strings.
-					// But someday the code ought to be
-					// changed to allow general string 
-					// alignments for UMC.
-					if (name == "alignment" &&
-					    (value!="lawful"&&value!="neutral"&&value!="chaotic")) {
-					  valid = false;
-					}
-					if (valid) {
-						config cfg;
-						i->second.write(cfg);
-						cfg[name] = value;
-						i->second = unit(&gameinfo_,&units_,&map_,&status_,&teams_,cfg);
+			if (i == units_.end()) return;
+			const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
+			if (j == data.end()) return;
 
-						gui_->invalidate(i->first);
-						gui_->invalidate_unit();
-					}
-				}
+			const std::string name(data.begin(),j);
+			const std::string value(j+1,data.end());
+			// FIXME: Avoids a core dump on display
+			// because alignment strings get reduced
+			// to an enum, then used to index an
+			// array of strings.
+			// But someday the code ought to be
+			// changed to allow general string 
+			// alignments for UMC.
+			if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic")) {
+				ERR_NG << "Invalid alignment: '" << value
+					<< "', needs to be one of lawful, neutral or chaotic.\n";
+				return;
 			}
+			config cfg;
+			i->second.write(cfg);
+			cfg[name] = value;
+			i->second = unit(&gameinfo_,&units_,&map_,&status_,&teams_,cfg);
+			gui_->invalidate(i->first);
+			gui_->invalidate_unit();
 		} else if(game_config::debug && cmd == "buff") {
 			const unit_map::iterator i = current_unit(mousehandler);
 			if(i != units_.end()) {
-			  	i->second.add_trait(data);
+				i->second.add_trait(data);
 				gui_->invalidate(i->first);
 				gui_->invalidate_unit();
 			}
