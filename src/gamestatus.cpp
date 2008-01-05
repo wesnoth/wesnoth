@@ -710,7 +710,8 @@ struct save_info_less_time {
 
 std::vector<save_info> get_saves_list(const std::string *dir, const std::string* filter)
 {
-	const std::string& saves_dir = (dir) ? *dir : get_saves_dir();
+	// Don't use a reference, it seems to break on arklinux with GCC-4.3.
+	const std::string saves_dir = (dir) ? *dir : get_saves_dir();
 
 	std::vector<std::string> saves;
 	get_files_in_dir(saves_dir,&saves);

@@ -44,7 +44,7 @@ enum FILE_REORDER_OPTION { DONT_REORDER, DO_REORDER };
 //! If files or dirs are NULL they will not be used.
 //!
 //! Mode determines whether the entire path or just the filename is retrieved.
-void get_files_in_dir(const std::string& dir,
+void get_files_in_dir(const std::string dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
                       FILE_NAME_MODE mode=FILE_NAME_ONLY,

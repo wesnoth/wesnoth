@@ -308,7 +308,9 @@ bool ends_with(const std::string& str, const std::string& suffix)
 #define MAINCFG "_main.cfg"
 #define FINALCFG	"_final.cfg"
 
-void get_files_in_dir(const std::string& directory,
+// Don't pass directory as reference, it seems to break on 
+// arklinux with GCC-4.3.
+void get_files_in_dir(const std::string directory,
 					  std::vector<std::string>* files,
 					  std::vector<std::string>* dirs,
 					  FILE_NAME_MODE mode,
