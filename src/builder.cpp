@@ -52,8 +52,8 @@ terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_ima
 	layer(layer),
 	basex(x),
 	basey(y),
-	global_image(global_image),
-	variants()
+	variants(),
+	global_image(global_image)
 {}
 
 terrain_builder::tile::tile() :

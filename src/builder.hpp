@@ -178,14 +178,14 @@ public:
 		 */
 		int basex, basey;
 
+		/** A list of Time-Of-Day-related variants for this image
+		 */
+		rule_image_variantlist variants;
+
 		/** Set to true if the image was defined as a child of the
 		 * [terrain_graphics] tag, set to false if it was defined as a
 		 * child of a [tile] tag */
 		bool global_image;
-
-		/** A list of Time-Of-Day-related variants for this image
-		 */
-		rule_image_variantlist variants;
 	};
 
 	/**
