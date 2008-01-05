@@ -842,22 +842,23 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit,const std::strin
 }
 void unit_animator::start_animations()
 {
-        int begin_time = INT_MAX;
-        for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+	int begin_time = INT_MAX;
+	std::vector<anim_elem>::iterator anim;
+	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
 	       if(anim->my_unit->get_animation()) {
-		       if(anim->animation) {
-			       begin_time = minimum<int>(begin_time,anim->animation->get_begin_time());
-		       } else  {
-			       begin_time = minimum<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
-		       }
-		}
-        }
-	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
+			   if(anim->animation) {
+				   begin_time = minimum<int>(begin_time,anim->animation->get_begin_time());
+			   } else  {
+				   begin_time = minimum<int>(begin_time,anim->my_unit->get_animation()->get_begin_time());
+			   }
+		   }
+    }
+	for(anim = animated_units_.begin(); anim != animated_units_.end();anim++) {
 		if(anim->animation) {
 			anim->my_unit->start_animation(begin_time,anim->src, anim->animation,anim->with_bars, anim->cycles,anim->text,anim->text_color);
 			anim->animation = NULL;
 		}
-
+		
 	}
 }
 

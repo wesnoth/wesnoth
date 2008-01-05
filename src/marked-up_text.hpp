@@ -58,6 +58,9 @@ SDL_Rect text_area(const std::string& text, int size, int style=0);
 // Copy string, but without tags at the beginning 
 std::string del_tags(const std::string& text);
 
+// Copy string, but with NULL MARKUP tag at the beginning of each line
+std::string nullify_markup(const std::string& text);
+
 //- Determine if char is one of the special chars used as markup.
 bool is_format_char(char c);
 

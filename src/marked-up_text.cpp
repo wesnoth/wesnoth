@@ -132,9 +132,26 @@ static std::string::const_iterator parse_markup(std::string::const_iterator i1,
 std::string del_tags(const std::string& text){
 	int ignore_int;
 	SDL_Color ignore_color;
-	std::string::const_iterator i1 = text.begin(), i2 = text.end();
-	return std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
+	std::vector<std::string> lines = utils::split(text, '\n', 0);
+	std::vector<std::string>::iterator line;
+	for(line = lines.begin(); line != lines.end(); ++line) {
+		std::string::const_iterator i1 = line->begin(),
+			i2 = line->end();
+		*line = std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2); 
+	}
+	return utils::join(lines, '\n');
 }
+
+//! Copy string, but with NULL MARKUP tag at the beginning of each line
+std::string nullify_markup(const std::string& text) {
+	std::vector<std::string> lines = utils::split(text, '\n', 0);
+	std::vector<std::string>::iterator line;
+	for(line = lines.begin(); line != lines.end(); ++line) {
+		*line = std::string() + NULL_MARKUP + *line; 
+	}
+	return utils::join(lines, '\n');
+}
+
 
 //! Create string of color-markup, such as "<255,255,0>" for yellow.
 std::string color2markup(const SDL_Color color) {

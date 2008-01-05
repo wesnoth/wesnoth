@@ -54,6 +54,28 @@ static warning4786WorkAround VariableThatHacksWarning4786IntoBeingMutedForSomeUn
 namespace std {
   using ::floor;
   using ::sqrt;
+  using ::ceil;
+  using ::fmod;
+  using ::pow;
+}
+
+//put the FILE where it belongs: in the std namespace
+#include <cstdio>
+namespace std {
+  using ::FILE;
+  using ::fclose;
+}
+
+//put the Locale functions where they belong: in the std namespace
+#include <clocale>
+namespace std {
+ using ::setlocale;
+}
+
+//put the string functions where they belong: in the std namespace
+#include <cstring>
+namespace std {
+  using ::strrchr;
 }
 
 #endif

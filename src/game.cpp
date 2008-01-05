@@ -1771,7 +1771,7 @@ void game_controller::refresh_game_cfg(bool reset_translations)
 	} catch(config::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui::show_error_message(disp(), _("Error loading game configuration files: '") +
-		                        e.message + _("' (The game will now exit)"));
+			font::nullify_markup(e.message) + _("' (The game will now exit)"));
 		throw e;
 	}
 }
