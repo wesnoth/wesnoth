@@ -81,6 +81,11 @@ std::vector<std::string> empty_string_vector;
 
 namespace gui {
 
+dialog_textbox::~dialog_textbox()
+{
+	delete label_;
+}
+
 dialog::dimension_measurements::dimension_measurements() :
 	x(-1), 
 	y(-1), 

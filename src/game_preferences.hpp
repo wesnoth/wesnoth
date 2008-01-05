@@ -138,6 +138,9 @@ namespace preferences {
 	void set_savemax(int value);
 	int savemax();
 
+	void set_autosavemax(int value);
+	int autosavemax();
+
 	const int INFINITE_SAVES = 61;
 
 	bool show_floating_labels();

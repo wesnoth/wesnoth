@@ -292,7 +292,7 @@ struct save_info {
 };
 
 //! Get a list of available saves.
-std::vector<save_info> get_saves_list(const std::string *dir = NULL);
+std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::string* filter = NULL);
 
 enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 

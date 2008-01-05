@@ -466,6 +466,16 @@ void set_savemax(int value)
 	preferences::set("save_max", lexical_cast<std::string>(value));
 }
 
+int autosavemax()
+{
+	return lexical_cast_default<int>(preferences::get("auto_save_max"), 5);
+}
+
+void set_autosavemax(int value)
+{
+	preferences::set("auto_save_max", lexical_cast<std::string>(value));
+}
+
 std::string client_type()
 {
 	return preferences::get("client_type") == "ai" ? "ai" : "human";

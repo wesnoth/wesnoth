@@ -49,7 +49,7 @@
 
 namespace {
 
-static void remove_old_saves()
+void remove_old_saves()
 {
 	int countdown = preferences::savemax();
 	if (countdown == preferences::INFINITE_SAVES)
@@ -57,6 +57,19 @@ static void remove_old_saves()
 
 	std::vector<save_info> games = get_saves_list();
 	LOG_NG << "Removing old saves.\n";
+	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
+		if (countdown-- < 0) {
+			LOG_NG << "Deleting savegame '" << i->name << "'\n";
+			delete_game(i->name);
+		}
+	}
+}
+
+void remove_old_auto_saves()
+{
+	const std::string auto_save = "Auto-Save";
+	int countdown = preferences::autosavemax();
+	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
 		if (countdown-- < 0) {
 			LOG_NG << "Deleting savegame '" << i->name << "'\n";
@@ -869,7 +882,7 @@ private:
 		end = SDL_GetTicks();
 		LOG_NG << "Milliseconds to save " << savename << ": " << end - start << "\n";
 
-		remove_old_saves();
+		remove_old_auto_saves();
 	}
 
 	void menu_handler::load_game(){

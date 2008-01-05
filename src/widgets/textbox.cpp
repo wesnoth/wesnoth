@@ -56,6 +56,10 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 	update_text_cache(true);
 }
 
+textbox::~textbox()
+{
+}
+
 void textbox::set_inner_location(SDL_Rect const &rect)
 {
 	bg_register(rect);

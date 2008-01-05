@@ -100,7 +100,7 @@ public:
 		: textbox(video, width, text, editable, max_size, alpha, alpha_focus, false),
 		label_(label_widget)
 	{}
-	~dialog_textbox() { delete label_; }
+	virtual ~dialog_textbox();
 
 	label *get_label() const { return label_; }
 
@@ -110,6 +110,9 @@ public:
 		return h;
 	}
 private:
+	//forbidden operations
+	dialog_textbox(const dialog_textbox&);
+	void operator=(const dialog_textbox&);
 
 	label *label_;
 };

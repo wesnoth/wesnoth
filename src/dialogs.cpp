@@ -269,56 +269,6 @@ int get_save_name(display & disp,const std::string& message, const std::string& 
 //! Class to handle deleting a saved game.
 namespace {
 
-class delete_save : public gui::dialog_button_action
-{
-public:
-	delete_save(display& disp, std::vector<save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries) {}
-private:
-	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
-
-	display& disp_;
-	std::vector<save_info>& saves_;
-	std::vector<config*>& summaries_;
-};
-
-gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection)
-{
-	const size_t index = size_t(menu_selection);
-	if(index < saves_.size()) {
-
-		// See if we should ask the user for deletion confirmation
-		if(preferences::ask_delete_saves()) {
-			gui::dialog dmenu(disp_,"",
-					       _("Do you really want to delete this game?"),
-					       gui::YES_NO);
-			dmenu.add_option(_("Don't ask me again!"), true);
-			const int res = dmenu.show();
-			// See if the user doesn't want to be asked this again
-			if(dmenu.option_checked()) {
-				preferences::set_ask_delete_saves(false);
-			}
-
-			if(res != 0) {
-				return gui::CONTINUE_DIALOG;
-			}
-		}
-
-		// Delete the file
-		delete_game(saves_[index].name);
-
-		// Remove it from the list of saves
-		saves_.erase(saves_.begin() + index);
-
-		if(index < summaries_.size()) {
-			summaries_.erase(summaries_.begin() + index);
-		}
-
-		return gui::DELETE_ITEM;
-	} else {
-		return gui::CONTINUE_DIALOG;
-	}
-}
-
 class load_game_filter_textbox : public gui::dialog_textbox {
 public:
 	load_game_filter_textbox(CVideo& video, const std::vector<std::string>& items, gui::dialog& dialog)
@@ -367,6 +317,57 @@ private:
 		}
 	}
 };
+
+class delete_save : public gui::dialog_button_action
+{
+public:
+	delete_save(display& disp, load_game_filter_textbox& filter, std::vector<save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries), filter_(filter) {}
+private:
+	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
+
+	display& disp_;
+	std::vector<save_info>& saves_;
+	std::vector<config*>& summaries_;
+	load_game_filter_textbox& filter_;
+};
+
+gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection)
+{
+	const size_t index = size_t(filter_.get_save_index(menu_selection));
+	if(index < saves_.size()) {
+
+		// See if we should ask the user for deletion confirmation
+		if(preferences::ask_delete_saves()) {
+			gui::dialog dmenu(disp_,"",
+					       _("Do you really want to delete this game?"),
+					       gui::YES_NO);
+			dmenu.add_option(_("Don't ask me again!"), true);
+			const int res = dmenu.show();
+			// See if the user doesn't want to be asked this again
+			if(dmenu.option_checked()) {
+				preferences::set_ask_delete_saves(false);
+			}
+
+			if(res != 0) {
+				return gui::CONTINUE_DIALOG;
+			}
+		}
+
+		// Delete the file
+		delete_game(saves_[index].name);
+
+		// Remove it from the list of saves
+		saves_.erase(saves_.begin() + index);
+
+		if(index < summaries_.size()) {
+			summaries_.erase(summaries_.begin() + index);
+		}
+
+		return gui::DELETE_ITEM;
+	} else {
+		return gui::CONTINUE_DIALOG;
+	}
+}
 
 static const int save_preview_border = 10;
 
@@ -608,9 +609,6 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 		summaries.push_back(&cfg);
 	}
 
-	delete_save save_deleter(disp,games,summaries);
-	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
-
 	const events::event_context context;
 
 	std::vector<std::string> items;
@@ -645,6 +643,9 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL)
 		lmenu.add_option(_("Show replay"), false);
+
+	delete_save save_deleter(disp,*filter,games,summaries);
+	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
 	lmenu.add_button(delete_button);
 	int res = lmenu.show();
 

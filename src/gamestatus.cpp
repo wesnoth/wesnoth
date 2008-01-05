@@ -708,7 +708,7 @@ struct save_info_less_time {
 	}
 };
 
-std::vector<save_info> get_saves_list(const std::string *dir)
+std::vector<save_info> get_saves_list(const std::string *dir, const std::string* filter)
 {
 	const std::string& saves_dir = (dir) ? *dir : get_saves_dir();
 
@@ -717,6 +717,10 @@ std::vector<save_info> get_saves_list(const std::string *dir)
 
 	std::vector<save_info> res;
 	for(std::vector<std::string>::iterator i = saves.begin(); i != saves.end(); ++i) {
+		if(filter && std::search(i->begin(), i->end(), filter->begin(), filter->end()) == i->end()) {
+			continue;
+		}
+
 		const time_t modified = file_create_time(saves_dir + "/" + *i);
 
 		replace_underbar2space(*i);
