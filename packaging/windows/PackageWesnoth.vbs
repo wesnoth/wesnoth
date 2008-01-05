@@ -1,6 +1,6 @@
 Option Explicit
 
-Dim SourceDirectory, DLLDirectory, GetTextDirectory
+Dim SourceDirectory, DLLDirectory, PythonDirectory, GetTextDirectory
 Dim DestinationDirectory
 Dim PoFile, MoFile, ExecuteString, domains, languages, domain, language
 Dim fso, shell
@@ -10,6 +10,7 @@ Dim fso, shell
 'Initialization
 SourceDirectory = "C:\Entwicklung\Wesnoth\wesnoth-1.3.13\"
 DLLDirectory = "C:\Entwicklung\Wesnoth\DLL\mingw\"
+PythonDirectory = "C:\Entwicklung\Wesnoth\DLL\python\"
 DestinationDirectory = "C:\Entwicklung\Wesnoth\Release 1.3.13\"
 GetTextDirectory = "D:\Programme\GnuWin32\bin\"
 Set fso = CreateObject("Scripting.FileSystemObject")
@@ -50,6 +51,8 @@ Call fso.CopyFile(SourceDirectory + "wesnoth.exe", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "wesnoth.ico", DestinationDirectory)
 Call fso.CopyFile(SourceDirectory + "wesnothd.exe", DestinationDirectory)
 Call fso.CopyFile(DLLDirectory + "zlib1.dll", DestinationDirectory)
+Call fso.CopyFolder(PythonDirectory + "lib", DestinationDirectory)
+
 Call fso.CopyFolder(SourceDirectory + "data", DestinationDirectory)
 Call fso.CopyFolder(SourceDirectory + "fonts", DestinationDirectory)
 Call fso.CopyFolder(SourceDirectory + "images", DestinationDirectory)
