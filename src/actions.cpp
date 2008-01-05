@@ -832,11 +832,9 @@ attack::attack(game_display& gui, const gamemap& map,
 	units_(units),
 	state_(state),
 	info_(info),
-	update_display_(update_display),
 	a_(units_.find(attacker)),
 	d_(units_.find(defender)),
 	errbuf_(),
-	OOS_error_(false),
 	bc_(0),
 	a_stats_(0),
 	d_stats_(0),
@@ -849,7 +847,9 @@ attack::attack(game_display& gui, const gamemap& map,
 	attacker_damage_(0),
 	defender_damage_(0),
 	attackerxp_(0),
-	defenderxp_(0)
+	defenderxp_(0),
+	update_display_(update_display),
+	OOS_error_(false)
 {
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;

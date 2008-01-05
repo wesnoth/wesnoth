@@ -186,10 +186,8 @@ class attack {
 		unit_map& units_;
 		const gamestatus& state_;
 		const game_data& info_;
-		bool update_display_;
 		unit_map::iterator a_,d_; // attacker and defender
 		std::stringstream errbuf_;
-		bool OOS_error_;
 		battle_context* bc_;
 		const battle_context::unit_stats* a_stats_;
 		const battle_context::unit_stats* d_stats_;
@@ -199,6 +197,9 @@ class attack {
 		int attacker_cth_,defender_cth_;
 		int attacker_damage_,defender_damage_;
 		int attackerxp_,defenderxp_;
+
+		bool update_display_;
+		bool OOS_error_;
 };
 
 //! Given the location of a village, will return the 0-based index
