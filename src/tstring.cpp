@@ -140,34 +140,34 @@ void t_string::walker::update()
 }
 
 t_string::t_string() :
-	translatable_(false),
-	last_untranslatable_(false),
 	value_(),
-	translated_value_()
+	translated_value_(),
+	translatable_(false),
+	last_untranslatable_(false)
 {
 }
 
 t_string::t_string(const t_string& string) :
-	translatable_(string.translatable_),
-	last_untranslatable_(string.last_untranslatable_),
 	value_(string.value_),
-	translated_value_(string.translated_value_)
+	translated_value_(string.translated_value_),
+	translatable_(string.translatable_),
+	last_untranslatable_(string.last_untranslatable_)
 {
 }
 
 t_string::t_string(const std::string& string) :
-	translatable_(false),
-	last_untranslatable_(false),
 	value_(string),
-	translated_value_()
+	translated_value_(),
+	translatable_(false),
+	last_untranslatable_(false)
 {
 }
 
 t_string::t_string(const std::string& string, const std::string& textdomain) :
-	translatable_(true),
-	last_untranslatable_(false),
 	value_(1, ID_TRANSLATABLE_PART),
-	translated_value_()
+	translated_value_(),
+	translatable_(true),
+	last_untranslatable_(false)
 {
 	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
 	unsigned int id;
@@ -186,10 +186,10 @@ t_string::t_string(const std::string& string, const std::string& textdomain) :
 }
 
 t_string::t_string(const char* string) :
-	translatable_(false),
-	last_untranslatable_(false),
 	value_(string),
-	translated_value_()
+	translated_value_(),
+	translatable_(false),
+	last_untranslatable_(false)
 {
 }
 

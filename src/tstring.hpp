@@ -91,9 +91,9 @@ public:
 
 	static void add_textdomain(const std::string& name, const std::string& path);
 private:
-	bool translatable_, last_untranslatable_;
 	std::string value_;
 	mutable std::string translated_value_;
+	bool translatable_, last_untranslatable_;
 };
 
 std::ostream& operator<<(std::ostream&, const t_string&);
