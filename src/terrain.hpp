@@ -88,14 +88,14 @@ private:
 
 	int light_modification_, heals_;
 
-	bool village_, castle_, keep_;
-
 	t_string income_description_;
 	t_string income_description_ally_;
 	t_string income_description_enemy_;
 	t_string income_description_own_;
 
 	std::string editor_group_;
+
+	bool village_, castle_, keep_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

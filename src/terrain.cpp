@@ -41,14 +41,14 @@ terrain_type::terrain_type() :
 		submerge_(0.0), 
 		light_modification_(0),
         heals_(0), 
-		village_(false), 
-		castle_(false), 
-		keep_(false),
 		income_description_(),
 		income_description_ally_(),
 		income_description_enemy_(),
 		income_description_own_(),
-		editor_group_()
+		editor_group_(),
+		village_(false), 
+		castle_(false), 
+		keep_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg) :
@@ -64,14 +64,14 @@ terrain_type::terrain_type(const config& cfg) :
 		submerge_(atof(cfg["submerge"].c_str())),
 		light_modification_(atoi(cfg["light"].c_str())),
 		heals_(lexical_cast_default<int>(cfg["heals"], 0)),
-		village_(utils::string_bool(cfg["gives_income"])),
-		castle_(utils::string_bool(cfg["recruit_onto"])),
-		keep_(utils::string_bool(cfg["recruit_from"])),
 		income_description_(),
 		income_description_ally_(),
 		income_description_enemy_(),
 		income_description_own_(),
-		editor_group_(cfg["editor_group"])
+		editor_group_(cfg["editor_group"]),
+		village_(utils::string_bool(cfg["gives_income"])),
+		castle_(utils::string_bool(cfg["recruit_onto"])),
+		keep_(utils::string_bool(cfg["recruit_from"]))
 {
 	VALIDATE(number_ != t_translation::NONE_TERRAIN, 
 		missing_mandatory_wml_key("terrain", "string"));
