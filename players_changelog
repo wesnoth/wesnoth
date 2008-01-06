@@ -20,6 +20,12 @@ Version 1.3.13+svn:
     * Fixed OOS on unit advancement if WML had battle/die events.
     * Fixed timer bell not always playing.
 
+  * Miscellaneous and bug fixes
+    * The "max-saves" slider is now used as a slider to determin the maximum
+      number of auto-saves to keep. The default value is 10, so the 11th oldest
+      and all older auto-saves will be deleted.
+
+
 Version 1.3.13:
   * Campaigns
     * A Tale of Two Brothers:
