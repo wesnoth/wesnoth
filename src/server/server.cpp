@@ -364,11 +364,11 @@ void server::run()
 
 		} catch(network::error& e) {
 			if (e.message == "shut down") {
-				WRN_SERVER << "Kicking everyone...\n";
+				WRN_SERVER << "Try to disconnect all users...\n";
 				for (player_map::const_iterator pl = players_.begin();
 					pl != players_.end(); ++pl)
 				{
-					network::queue_disconnect(pl->first);
+					network::disconnect(pl->first);
 				}
 				std::cout << "Shutting server down.\n";
 				break;
@@ -657,33 +657,35 @@ void server::process_query(const network::connection sock, const config& query)
 		LOG_SERVER << "ERROR: Could not find player socket.\n";
 		return;
 	}
-	std::string command(query["type"]);
+	const std::string& command(query["type"]);
 	std::ostringstream response;
-	if(command == "status" && admins_.count(sock) == 0) {
-		command += " " + pl->second.name();
-	}
-	// commands a player may issue
-	if(command == "metrics" || command == "motd"
-		|| command == "status " + pl->second.name()) {
-		response << process_command(command);
-	} else if(admin_passwd_.empty() == false && command == admin_passwd_) {
-		admins_.insert(sock);
-		response << "You are now recognized as an administrator";
-		WRN_SERVER << "New Admin recognized:" << "\tIP: "
-			<< network::ip_address(sock) << "\tnick: "
-			<< pl->second.name() << std::endl;
-	} else if(admins_.count(sock) != 0) {
-		response << process_command(command);
+	const std::string& help_msg = "Available commands are: help, metrics,"
+			" motd, status.";
+	if (admins_.count(sock) != 0) {
 		WRN_SERVER << "Admin Command:" << "\ttype: " << command
 			<< "\tIP: "<< network::ip_address(sock) 
 			<< "\tnick: "<< pl->second.name() << std::endl;
+		response << process_command(command);
+	// Commands a player may issue.
+	} else if (command == "help") {
+		response << help_msg;
+	} else if (command == "status") {
+		response << process_command(command + " " + pl->second.name());
+	} else if (command == "metrics" || command == "motd") {
+		response << process_command(command);
+	} else if (command == admin_passwd_) {
+		WRN_SERVER << "New Admin recognized:" << "\tIP: "
+			<< network::ip_address(sock) << "\tnick: "
+			<< pl->second.name() << std::endl;
+		admins_.insert(sock);
+		response << "You are now recognized as an administrator.";
 	} else if(admin_passwd_.empty() == false) {
 		WRN_SERVER << "FAILED Admin attempt:" << "\tIP: "
 			<< network::ip_address(sock) << "\tnick: "
 			<< pl->second.name() << std::endl;
-		response << "Error: unrecognized query";
+		response << "Error: unrecognized query.\n" << help_msg;
 	} else {
-		response << "Error: unrecognized query";
+		response << "Error: unrecognized query.\n" << help_msg;
 	}
 	network::send_data(construct_server_message(response.str(),lobby_players_),sock);
 }
@@ -694,11 +696,19 @@ std::string server::process_command(const std::string& query) {
 	const std::string command(query.begin(),i);
 	std::string parameters = (i == query.end() ? "" : std::string(i+1,query.end()));
 	utils::strip(parameters);
+	const std::string& help_msg = "Available commands are: (k)ban(s) [<mask>],"
+			"kick <mask>, help, metrics, (lobby)msg <message>, motd [<message>],"
+			"status [<mask>], unban <ipmask>";
 	if (command == "shut_down") {
 		throw network::error("shut down");
-	}
-	if(command == "msg" || command == "lobbymsg") {
-		if(parameters == "") {
+	} else if (command == "help") {
+		out << help_msg;
+	} else if (command == "metrics") {
+		out << metrics_ << "Current number of games = " << games_.size() << "\n"
+		"Total number of users = " << players_.size() << "\n"
+		"Number of users in the lobby = " << lobby_.nobservers() << "\n";
+	} else if (command == "msg" || command == "lobbymsg") {
+		if (parameters == "") {
 			return "You must type a message.";
 		}
 		lobby_players_.send_data(construct_server_message(parameters,lobby_players_));
@@ -725,11 +735,9 @@ std::string server::process_command(const std::string& query) {
 					<< stats.bytes_received << " bytes\n";
 			}
 		}
-	} else if(command == "metrics") {
-		out << metrics_;
-	} else if(command == "ban" || command == "bans" || command == "kban") {
-		if(parameters == "") {
-			if(bans_.empty()) return "No bans set.";
+	} else if (command == "ban" || command == "bans" || command == "kban") {
+		if (parameters == "") {
+			if (bans_.empty()) return "No bans set.";
 			out << "BAN LIST\n";
 			for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
 				out << *i << "\n";
@@ -821,10 +829,7 @@ std::string server::process_command(const std::string& query) {
 		motd_ = parameters;
 		out << "message of the day set: " << motd_;
 	} else {
-		out << "Command '" << command << "' is not recognized.\n";
-		out << "Available commands are: (lobby)msg <message>, motd [<message>]"
-			", status [<mask>], metrics, (k)ban(s) [<mask>], unban <ipmask>"
-			", kick <mask>";
+		out << "Command '" << command << "' is not recognized.\n" << help_msg;
 	}
 
 	return out.str();
