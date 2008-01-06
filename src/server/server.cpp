@@ -706,7 +706,7 @@ std::string server::process_command(const std::string& query) {
 	} else if (command == "metrics") {
 		out << metrics_ << "Current number of games = " << games_.size() << "\n"
 		"Total number of users = " << players_.size() << "\n"
-		"Number of users in the lobby = " << lobby_.nobservers() << "\n";
+		"Number of users in the lobby = " << lobby_players_.nobservers() << "\n";
 	} else if (command == "msg" || command == "lobbymsg") {
 		if (parameters == "") {
 			return "You must type a message.";
