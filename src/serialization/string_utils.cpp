@@ -396,7 +396,7 @@ std::string &unescape(std::string &str)
 bool string_bool(const std::string& str, bool def) {
 	if (str.empty()) return def;
 	if (str == "yes" || str == "on" || str == "true"
-	|| lexical_cast_default<int>(str), 0) {
+	|| lexical_cast_default<int>(str, 0)) {
 		return true;
 	}
 	if (str == "no" || str == "off" || str == "false"
