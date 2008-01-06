@@ -1039,7 +1039,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		const vconfig::child_list& vis_filt = cfg.get_children("filter_vision");
 		vconfig::child_list::const_iterator i, i_end = vis_filt.end();
 		for (i = vis_filt.begin(); i != i_end; ++i) {
-			bool visible = utils::string_bool(cfg["visible"], true);
+			bool visible = utils::string_bool((*i)["visible"], true);
 			std::set<int> viewers;
 			if (i->has_attribute("viewing_side")) {
 				std::vector<std::pair<int,int> > ranges = utils::parse_ranges((*i)["viewing_side"]);
@@ -1065,9 +1065,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 			}
 			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
 			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
-				bool check_visible = !(*teams_)[*viewer - 1].fogged(loc)
-					&& !this->invisible(loc, *units_, *teams_ /*, false(?) */);
-				if (visible != check_visible) {
+				bool not_fogged = !(*teams_)[*viewer - 1].fogged(loc);
+				bool not_hiding = !this->invisible(loc, *units_, *teams_ /*, false(?) */);
+				if (visible != not_fogged && not_hiding) {
 					return false;
 				}
 			}
