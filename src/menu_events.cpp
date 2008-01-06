@@ -67,7 +67,7 @@ void remove_old_saves()
 
 void remove_old_auto_saves()
 {
-	const std::string auto_save = "Auto-Save";
+	const std::string auto_save = _("Auto-Save");
 	int countdown = preferences::autosavemax();
 	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
