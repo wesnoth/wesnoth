@@ -29,12 +29,9 @@ Version 1.3.13+svn:
    * the apple key works as shortcut modifier again (bug #10586)
    * made "Show lobby joins of friends only" the default preference
  * WML engine:
-   * Fixed a problem where two [recall]s in a SP game could get an out of sync
-     recruitment
-   * avoid triggering an assertion when a duplicated side definition exists
-     (bug #7252)
+   * new tag [filter_vision] for Standard Unit Filter
    * it is now possible to play [sound] repeatedly using a "repeat" attribute
-   * Added boolean variable disallow_observers to side defination
+   * Added boolean variable disallow_observers= to side defination
    * Random factions can be defined on a subset of the non-random faction
     (FR #10600)
  * miscellaneous and bug fixes:
@@ -48,6 +45,11 @@ Version 1.3.13+svn:
    * added serveral fixes to compile with Sun Studio compiler (patch #911)
    * bumped autoconf version requirement to 2.60 since it's needed for the
      boost tests (bug #10636)
+   * fixed a problem where two [recall]s in a SP game could get an out of sync
+     recruitment
+   * avoid triggering an assertion when a duplicated side definition exists
+     (bug #7252)
+
 
 Version 1.3.13:
  * campaigns:

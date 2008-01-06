@@ -1035,6 +1035,45 @@ bool unit::internal_matches_filter(const vconfig& cfg, const gamemap::location& 
 		}
 	}
 
+	if (cfg.has_child("filter_vision")) {
+		const vconfig::child_list& vis_filt = cfg.get_children("filter_vision");
+		vconfig::child_list::const_iterator i, i_end = vis_filt.end();
+		for (i = vis_filt.begin(); i != i_end; ++i) {
+			bool visible = utils::string_bool(cfg["visible"], true);
+			std::set<int> viewers;
+			if (i->has_attribute("viewing_side")) {
+				std::vector<std::pair<int,int> > ranges = utils::parse_ranges((*i)["viewing_side"]);
+				std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
+				for (range = ranges.begin(); range != range_end; ++range) {
+					for (int i=range->first; i<=range->second; ++i) {
+						if (i > 0 && i <= teams_->size()) {
+							viewers.insert(i);
+						}
+					}
+				}
+			} else {
+				//if viewing_side is not defined, default to all enemies
+				const team& my_team = (*teams_)[this->side()-1];
+				for (int i = 1; i <= teams_->size(); ++i) {
+					if (my_team.is_enemy(i)) {
+						viewers.insert(i);
+					}
+				}
+			}
+			if (viewers.empty()) {
+				return false;
+			}
+			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
+			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
+				bool check_visible = !(*teams_)[*viewer - 1].fogged(loc)
+					&& !this->invisible(loc, *units_, *teams_ /*, false(?) */);
+				if (visible != check_visible) {
+					return false;
+				}
+			}
+		}
+	}
+
 	if (cfg.has_child("filter_adjacent")) {
 		assert(units_ && map_ && gamestatus_);
 		gamemap::location adjacent[6];
