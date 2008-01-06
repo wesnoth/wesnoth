@@ -801,11 +801,32 @@ void connect::side::resolve_random()
 			(*parent_->era_sides_[faction_]).get_attribute("random_faction"),
 			false))
 	{
-		// Builds the list of sides which aren't random
+		std::vector<std::string> faction_choices, faction_excepts;
+		faction_choices = utils::split((*parent_->era_sides_[faction_]).get_attribute("choices"));
+		if(faction_choices.size() == 1 && faction_choices.front() == "") {
+			faction_choices.clear();
+		}
+		faction_excepts = utils::split((*parent_->era_sides_[faction_]).get_attribute("except"));
+		if(faction_excepts.size() == 1 && faction_excepts.front() == "") {
+			faction_excepts.clear();
+		}
+		
+		// Builds the list of sides eligible for choice (nonrandom factions)
 		std::vector<int> nonrandom_sides;
 		for(config::child_iterator itor = parent_->era_sides_.begin();
 				itor != parent_->era_sides_.end(); ++itor) {
 			if((**itor)["random_faction"] != "yes") {
+				const std::string& faction_id = (**itor)["id"];
+				if (
+					!faction_choices.empty() &&
+					std::find(faction_choices.begin(),faction_choices.end(),faction_id) == faction_choices.end()
+				) 
+					continue;
+				if (
+					!faction_excepts.empty() &&
+					std::find(faction_excepts.begin(),faction_excepts.end(),faction_id) != faction_excepts.end()
+				) 
+					continue;
 				nonrandom_sides.push_back(itor - parent_->era_sides_.begin());
 			}
 		}

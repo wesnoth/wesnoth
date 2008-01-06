@@ -610,12 +610,32 @@ bool game_controller::play_multiplayer_mode()
 		}
 
 		if ((*side)["random_faction"] == "yes") {
-			const config::child_list& eras = era_cfg->get_children("multiplayer_side");
-			for(unsigned int i = 0, j = 0; i < eras.size(); ++i) {
-				if ((*eras[i])["random_faction"] != "yes") {
+			const config::child_list& factions = era_cfg->get_children("multiplayer_side");
+			std::vector<std::string> faction_choices, faction_excepts;
+			faction_choices = utils::split((*side)["choices"]);
+			if(faction_choices.size() == 1 && faction_choices.front() == "") {
+				faction_choices.clear();
+			}
+			faction_excepts = utils::split((*side)["except"]);;
+			if(faction_excepts.size() == 1 && faction_excepts.front() == "") {
+				faction_excepts.clear();
+			}
+			for(unsigned int i = 0, j = 0; i < factions.size(); ++i) {
+				if ((*factions[i])["random_faction"] != "yes") {
+					const std::string& faction_id = (*factions[i])["id"];
+					if (
+						!faction_choices.empty() &&
+						std::find(faction_choices.begin(),faction_choices.end(),faction_id) == faction_choices.end()
+					) 
+						continue;
+					if (
+						!faction_excepts.empty() &&
+						std::find(faction_excepts.begin(),faction_excepts.end(),faction_id) != faction_excepts.end()
+					) 
+						continue;
 					j++;
 					if (rand()%j == 0) {
-						side = eras[i];
+						side = factions[i];
 					}
 				}
 			}
