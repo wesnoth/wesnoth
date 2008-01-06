@@ -753,23 +753,9 @@ bool do_replay(game_display& disp, const gamemap& map, const game_data& gameinfo
 			{
 				const std::string& speaker_name = (*child)["description"];
 				const std::string& message = (*child)["message"];
-				bool show_message = true;
-				if (speaker_name == "server"
-						&& message.find("has logged into the lobby") != std::string::npos)
-				{
-					const std::string::const_iterator i =
-							std::find(message.begin(),message.end(),' ');
-					const std::string joiner(message.begin(),i);
-					const config* const crela =
-							preferences::get_prefs()->child("relationship");
-					const bool is_lobby_join_of_friend = (crela == NULL ?
-							false : (*crela)[joiner] == "friend");
-					show_message = preferences::lobby_joins() == preferences::SHOW_ALL
-							|| (is_lobby_join_of_friend
-							&& preferences::lobby_joins() == preferences::SHOW_FRIENDS);
-				}
+				//if (!preferences::show_lobby_join(speaker_name, message)) return;
 				bool is_whisper = (speaker_name.find("whisper: ") == 0);
-				if ((!replayer.is_skipping() || is_whisper) && show_message) {
+				if (!replayer.is_skipping() || is_whisper) {
 					const int side = lexical_cast_default<int>((*child)["side"].c_str(),0);
 					disp.add_chat_message(speaker_name,side,message,
 							(team_name == "" ? game_display::MESSAGE_PUBLIC
