@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 20:34+0100\n"
+"POT-Creation-Date: 2008-01-06 17:50+0100\n"
 "PO-Revision-Date: 2007-08-16 00:08+0300\n"
 "Last-Translator: Anthony Kolesov <anthony.kolesov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -1013,7 +1013,7 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:50
 #: data/core/units/humans/Mage_White.cfg:117
 #: data/core/units/humans/Mage_Great.cfg:29
-#: data/core/units/humans/Mage_Silver.cfg:37
+#: data/core/units/humans/Mage_Silver.cfg:35
 #: data/core/units/humans/Mage_Arch.cfg:28
 #: data/core/units/humans/Mage_Red.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
@@ -2307,7 +2307,7 @@ msgstr ""
 "Примечание:"
 
 #: data/core/units/humans/Mage.cfg:59
-#: data/core/units/humans/Mage_Silver.cfg:46
+#: data/core/units/humans/Mage_Silver.cfg:44
 msgid "missile"
 msgstr "снаряд"
 
@@ -2438,7 +2438,14 @@ msgstr "Красная волшебница"
 msgid "Silver Mage"
 msgstr "Серебряный маг"
 
-#: data/core/units/humans/Mage_Silver.cfg:25
+#: data/core/units/humans/Mage_Silver.cfg:23
+msgid ""
+"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"highly resistant to non-physical damage."
+msgstr ""
+
+#: data/core/units/humans/Mage_Silver.cfg:23
+#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2456,10 +2463,7 @@ msgid ""
 "\n"
 "Silver magi are often more physically adept than other magi, and their "
 "skills are of undeniable use on the battlefield, if one can manage to induce "
-"the mage to apply them.\n"
-"\n"
-"Special Notes: Silver Magi are well-attuned to their magical natures and are "
-"highly resistant to non-physical damage."
+"the mage to apply them."
 msgstr ""
 "В ходе обучения маги могут выбирать из многих путей получения знаний, и "
 "каждый ведёт к своему результату. Серебряных магов часто воспринимают как "
@@ -2482,7 +2486,7 @@ msgstr ""
 "Примечание: серебряные маги хорошо знакомы с магической природой и прекрасно "
 "защищены от всех форм магического повреждения."
 
-#: data/core/units/humans/Mage_Silver.cfg:151
+#: data/core/units/humans/Mage_Silver.cfg:149
 msgid "female^Silver Mage"
 msgstr "Серебряная волшебница"
 
@@ -2579,7 +2583,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
-#: data/core/units/trolls/Rocklobber.cfg:38
+#: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "праща"
 
@@ -3356,7 +3360,7 @@ msgstr ""
 
 #: data/core/units/monsters/Yeti.cfg:35
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
-#: data/core/units/trolls/Rocklobber.cfg:29
+#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
@@ -3999,16 +4003,14 @@ msgid "Troll Rocklobber"
 msgstr "Тролль камнеметатель"
 
 # rev
-#: data/core/units/trolls/Rocklobber.cfg:22
+#: data/core/units/trolls/Rocklobber.cfg:20
+#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
 "stones are not always easy to find, Rocklobbers have taken to carrying them "
 "in sacks slung over their shoulders. The same leather out of which the sack "
-"is formed is easily adapted to a crude sling.\n"
-"\n"
-"Special Notes: though unwieldy, a stone thrown by one of these monsters is "
-"much more deadly than any arrow, if it manages to hit."
+"is formed is easily adapted to a crude sling."
 msgstr ""
 "Метание камней в схватке обычно свойственно многим троллям, и некоторые "
 "выбирают его в качестве оружия. Так как подходящие камни не всегда легко "
@@ -4139,7 +4141,7 @@ msgstr ""
 msgid "Soulless"
 msgstr "Бездушный"
 
-#: data/core/units/undead/Corpse_Soulless.cfg:20
+#: data/core/units/undead/Corpse_Soulless.cfg:21
 #, fuzzy
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
@@ -4155,11 +4157,11 @@ msgstr ""
 "\n"
 "Примечание:"
 
-#: data/core/units/undead/Corpse_Walking.cfg:47
+#: data/core/units/undead/Corpse_Walking.cfg:71
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:24
 #: data/core/units/undead/Necro_Lich.cfg:34
-#: data/core/units/undead/Corpse_Soulless.cfg:45
+#: data/core/units/undead/Corpse_Soulless.cfg:72
 msgid "touch"
 msgstr "прикосновение"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 20:34+0100\n"
+"POT-Creation-Date: 2008-01-06 17:50+0100\n"
 "PO-Revision-Date: 2008-01-04 01:40+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -881,7 +881,7 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:50
 #: data/core/units/humans/Mage_White.cfg:117
 #: data/core/units/humans/Mage_Great.cfg:29
-#: data/core/units/humans/Mage_Silver.cfg:37
+#: data/core/units/humans/Mage_Silver.cfg:35
 #: data/core/units/humans/Mage_Arch.cfg:28
 #: data/core/units/humans/Mage_Red.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
@@ -1994,7 +1994,7 @@ msgstr ""
 "法师身体虚弱，不善战斗，但他们的能力在战争中仍然十分有用。"
 
 #: data/core/units/humans/Mage.cfg:59
-#: data/core/units/humans/Mage_Silver.cfg:46
+#: data/core/units/humans/Mage_Silver.cfg:44
 msgid "missile"
 msgstr "魔法飞弹"
 
@@ -2102,7 +2102,14 @@ msgstr "红袍法师"
 msgid "Silver Mage"
 msgstr "银袍法师"
 
-#: data/core/units/humans/Mage_Silver.cfg:25
+#: data/core/units/humans/Mage_Silver.cfg:23
+msgid ""
+"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"highly resistant to non-physical damage."
+msgstr ""
+
+#: data/core/units/humans/Mage_Silver.cfg:23
+#, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, silver magi act under an "
@@ -2120,10 +2127,7 @@ msgid ""
 "\n"
 "Silver magi are often more physically adept than other magi, and their "
 "skills are of undeniable use on the battlefield, if one can manage to induce "
-"the mage to apply them.\n"
-"\n"
-"Special Notes: Silver Magi are well-attuned to their magical natures and are "
-"highly resistant to non-physical damage."
+"the mage to apply them."
 msgstr ""
 "法师钻研的不同方向带给他们截然不同的结果。银袍法师致力于学习将现实世界整合到"
 "一起的种种力量，在某种程度上成功的揭开了超出世人想象的世界的谜团。银袍法师常"
@@ -2140,7 +2144,7 @@ msgstr ""
 "\n"
 "特别提示：银袍法师习惯了自己的魔法本性，对非物理攻击有很高的抗性。"
 
-#: data/core/units/humans/Mage_Silver.cfg:151
+#: data/core/units/humans/Mage_Silver.cfg:149
 msgid "female^Silver Mage"
 msgstr "银袍法师"
 
@@ -2223,7 +2227,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
-#: data/core/units/trolls/Rocklobber.cfg:38
+#: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "投石器"
 
@@ -2901,7 +2905,7 @@ msgstr ""
 
 #: data/core/units/monsters/Yeti.cfg:35
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
-#: data/core/units/trolls/Rocklobber.cfg:29
+#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
@@ -3438,16 +3442,14 @@ msgstr ""
 msgid "Troll Rocklobber"
 msgstr "巨魔拋石者"
 
-#: data/core/units/trolls/Rocklobber.cfg:22
+#: data/core/units/trolls/Rocklobber.cfg:20
+#, fuzzy
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
 "stones are not always easy to find, Rocklobbers have taken to carrying them "
 "in sacks slung over their shoulders. The same leather out of which the sack "
-"is formed is easily adapted to a crude sling.\n"
-"\n"
-"Special Notes: though unwieldy, a stone thrown by one of these monsters is "
-"much more deadly than any arrow, if it manages to hit."
+"is formed is easily adapted to a crude sling."
 msgstr ""
 "许多巨魔肯定都想过要在战斗中投掷巨石来进攻，有些干脆就把巨石作为自己的武器。"
 "因为这些石头不是很好找，巨魔投石手把它们装到大袋里扛在身上。用来装石头的皮袋"
@@ -3556,7 +3558,7 @@ msgstr ""
 msgid "Soulless"
 msgstr "无魂怪"
 
-#: data/core/units/undead/Corpse_Soulless.cfg:20
+#: data/core/units/undead/Corpse_Soulless.cfg:21
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -3567,11 +3569,11 @@ msgstr ""
 "意志的尸体中获得仆人和士兵. 这些蹒跚而行的家伙们经常数量庞大, 但是脆弱易碎; "
 "战斗的到来会唤醒他们, 尽管他们远远称不上可怕。"
 
-#: data/core/units/undead/Corpse_Walking.cfg:47
+#: data/core/units/undead/Corpse_Walking.cfg:71
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:24
 #: data/core/units/undead/Necro_Lich.cfg:34
-#: data/core/units/undead/Corpse_Soulless.cfg:45
+#: data/core/units/undead/Corpse_Soulless.cfg:72
 msgid "touch"
 msgstr "触碰"
 

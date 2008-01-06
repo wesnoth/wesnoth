@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-02 17:30+0100\n"
+"POT-Creation-Date: 2008-01-06 18:23+0100\n"
 "PO-Revision-Date: 2007-08-19 23:59+0500\n"
 "Last-Translator: Azamat H. Hackimov <azamat.hackimov@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
@@ -260,7 +260,7 @@ msgstr "Введение"
 msgid "Gameplay"
 msgstr "Игра"
 
-#: data/core/help.cfg:22 data/core/help.cfg:311
+#: data/core/help.cfg:22 data/core/help.cfg:309
 msgid "Traits"
 msgstr "Особенности"
 
@@ -276,11 +276,11 @@ msgstr "Способности"
 msgid "Weapon Specials"
 msgstr "Специальное оружие"
 
-#: data/core/help.cfg:56 data/core/help.cfg:400
+#: data/core/help.cfg:56 data/core/help.cfg:398
 msgid "Terrains"
 msgstr "Местность"
 
-#: data/core/help.cfg:63 data/core/help.cfg:652
+#: data/core/help.cfg:63 data/core/help.cfg:650
 msgid "Commands"
 msgstr "Команды"
 
@@ -1056,7 +1056,7 @@ msgstr ""
 "достигло очередного уровня, его здоровье полностью восстанавливается. "
 "Возможно, вы сможете выбрать тип будущего соединения."
 
-#: data/core/help.cfg:261
+#: data/core/help.cfg:259
 #, fuzzy
 msgid ""
 "\n"
@@ -1066,15 +1066,11 @@ msgid ""
 "its maximum level, it may have an After Maximum Level Advancement (AMLA) "
 "available to it. The AMLA will modify the unit each time the unit reaches "
 "the experience goal, but the unit will remain the same level. The typical "
-"AMLA effect is for the unit to raise the maximum HP by 3. The first AMLA "
-"will normally be reached with 100 XP gained (80 XP for intelligent units). "
-"However, gaining an AMLA becomes progressively harder for each AMLA the unit "
-"receives, and so it is often more useful to try to advance your lower level "
-"units.\n"
-"\n"
-"Note that only a small number of units, for example the Necrophage, will "
-"actually heal with AMLA effects. Most units just gain the bonus to the "
-"Maximum HP."
+"AMLA effect is for the unit to raise the maximum HP by 3 and full-heal it. "
+"The first AMLA will normally be reached with 100 XP gained (80 XP for "
+"intelligent units). However, gaining an AMLA becomes progressively harder "
+"for each AMLA the unit receives, and so it is usually more useful to try to "
+"advance your lower level units."
 msgstr ""
 "\n"
 "\n"
@@ -1094,11 +1090,11 @@ msgstr ""
 "лечиться при воздействии УПМУ эффекта. Большинство соединений просто получат "
 "бонус к максимальному количеству очков ЗД."
 
-#: data/core/help.cfg:266
+#: data/core/help.cfg:264
 msgid "Healing"
 msgstr "Исцеление"
 
-#: data/core/help.cfg:267
+#: data/core/help.cfg:265
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1113,7 +1109,7 @@ msgstr ""
 "способов восстановления соединения, и все они осуществляются в начале вашего "
 "хода и перед тем, как вы приступите к действию."
 
-#: data/core/help.cfg:269
+#: data/core/help.cfg:267
 msgid ""
 "\n"
 "\n"
@@ -1125,7 +1121,7 @@ msgstr ""
 "Отдых: не двигавшееся и не атаковавшее соединение восстанавливает 2 ЗД на "
 "следующем ходу."
 
-#: data/core/help.cfg:270
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1133,7 +1129,7 @@ msgstr ""
 "\n"
 "Деревни: соединение, начавшее свой ход в деревне, восстанавливает 8 ЗД."
 
-#: data/core/help.cfg:271
+#: data/core/help.cfg:269
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1143,7 +1139,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=Регенерация</ref>: некоторые соединения "
 "(как тролли) могут автоматически восстанавливать 8 ЗД за ход."
 
-#: data/core/help.cfg:272
+#: data/core/help.cfg:270
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1155,7 +1151,7 @@ msgstr ""
 "могут за ход излечивать от 4 до 8 ЗД у рядом находящихся союзников или "
 "сдерживать урон от отравления."
 
-#: data/core/help.cfg:273
+#: data/core/help.cfg:271
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1167,7 +1163,7 @@ msgstr ""
 "излечивать яд у всех близлежащих соединений (вдобавок к восстановлению, если "
 "есть это умение)."
 
-#: data/core/help.cfg:275
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1182,11 +1178,11 @@ msgstr ""
 "будет выбран наиболее лучший вариант. И наконец, соединения полностью "
 "восстанавливаются между сценариями."
 
-#: data/core/help.cfg:280
+#: data/core/help.cfg:278
 msgid "Income and Upkeep"
 msgstr "Доход и Содержание"
 
-#: data/core/help.cfg:281
+#: data/core/help.cfg:279
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1198,7 +1194,7 @@ msgstr ""
 "получить дополнительно золота из предыдущего сценария. Здесь важны два "
 "аспекта: Доход и Содержание."
 
-#: data/core/help.cfg:283
+#: data/core/help.cfg:281
 msgid ""
 "\n"
 "\n"
@@ -1214,7 +1210,7 @@ msgstr ""
 "за ход. Если у вас десять деревень, то вы будете получать 12 золотых монет "
 "за ход. Содержание будет вычитаться из дохода, как показано ниже."
 
-#: data/core/help.cfg:285
+#: data/core/help.cfg:283
 msgid ""
 "\n"
 "\n"
@@ -1235,7 +1231,7 @@ msgstr ""
 "соединений первого уровня и десять деревень, значит, Вы будете платить две "
 "золотые монеты за ход в качестве содержания."
 
-#: data/core/help.cfg:287
+#: data/core/help.cfg:285
 msgid ""
 "\n"
 "\n"
@@ -1249,7 +1245,7 @@ msgstr ""
 "уровней и десяти деревень, ваш доход будет составлять 10 золотых монет за "
 "ход."
 
-#: data/core/help.cfg:288
+#: data/core/help.cfg:286
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1268,11 +1264,11 @@ msgstr ""
 "преданные соединения. Соединение, которым вы играете (например, Конрад), "
 "обычно является лидером."
 
-#: data/core/help.cfg:293
+#: data/core/help.cfg:291
 msgid "Wrap Up"
 msgstr "Итоги"
 
-#: data/core/help.cfg:294
+#: data/core/help.cfg:292
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1285,15 +1281,15 @@ msgstr ""
 "<ref>dst=abilities text=Способностями</ref>, но теперь вы достаточно, чтобы "
 "начать кампанию \"Наследник Престола\". Наслаждайтесь и удачи!"
 
-#: data/core/help.cfg:299
+#: data/core/help.cfg:297
 msgid "ingame_help_item^Contributors"
 msgstr ""
 
-#: data/core/help.cfg:305
+#: data/core/help.cfg:303
 msgid "License"
 msgstr "Лицензия"
 
-#: data/core/help.cfg:313
+#: data/core/help.cfg:311
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1305,7 +1301,7 @@ msgstr ""
 "Особенности — это модификации, которые немного меняют свойства соединений. "
 "Обычно они назначаются соединениям в случайном порядке при вербовке."
 
-#: data/core/help.cfg:315
+#: data/core/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -1321,7 +1317,7 @@ msgstr ""
 "text=Быстрый</ref>, <ref>dst=traits_resilient text=Неунывающий</ref> и "
 "<ref>dst=traits_strong text=Сильный</ref>."
 
-#: data/core/help.cfg:317
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -1335,17 +1331,17 @@ msgstr ""
 "text=Преданный</ref>, <ref>dst=traits_undead text=Мертвец</ref> и "
 "<ref>dst=traits_dextrous text=Ловкий</ref>."
 
-#: data/core/help.cfg:322
+#: data/core/help.cfg:320
 msgid "Intelligent"
 msgstr "Умный"
 
-#: data/core/help.cfg:323
+#: data/core/help.cfg:321
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Умные соединения требуют на 20% меньше опыта, чем обычно необходимо для "
 "достижения нового уровня."
 
-#: data/core/help.cfg:325
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "\n"
@@ -1363,17 +1359,17 @@ msgstr ""
 "высших уровней, Вы можете призвать соединения с наиболее подходящими "
 "особенностями."
 
-#: data/core/help.cfg:330
+#: data/core/help.cfg:328
 msgid "Quick"
 msgstr "Быстрый"
 
-#: data/core/help.cfg:331
+#: data/core/help.cfg:329
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Быстрые соединения имеют 1 очко движения дополнительно, но на 5% меньше "
 "здоровья чем обычно."
 
-#: data/core/help.cfg:333
+#: data/core/help.cfg:331
 msgid ""
 "\n"
 "\n"
@@ -1392,16 +1388,16 @@ msgstr ""
 "помните, что Быстрые соединения в остальном бесполезны и не могут быть "
 "использованы в оборонительных позициях."
 
-#: data/core/help.cfg:338
+#: data/core/help.cfg:336
 msgid "Resilient"
 msgstr "Неунывающий"
 
-#: data/core/help.cfg:339
+#: data/core/help.cfg:337
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Неунывающие соединения имеют на 4 + 1 на каждый уровень больше ЗД чем обычно."
 
-#: data/core/help.cfg:341
+#: data/core/help.cfg:339
 msgid ""
 "\n"
 "\n"
@@ -1418,11 +1414,11 @@ msgstr ""
 "Неунывающие соединения особенно полезны при удерживании позиций против "
 "соперников."
 
-#: data/core/help.cfg:346
+#: data/core/help.cfg:344
 msgid "Strong"
 msgstr "Сильный"
 
-#: data/core/help.cfg:347
+#: data/core/help.cfg:345
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1430,7 +1426,7 @@ msgstr ""
 "Сильные соединения наносят повреждений на 1 единицу больше за каждый "
 "успешный удар в ближнем бою, также у них на 1 ЗД больше."
 
-#: data/core/help.cfg:349
+#: data/core/help.cfg:347
 msgid ""
 "\n"
 "\n"
@@ -1446,19 +1442,19 @@ msgstr ""
 "Эльфа Бойца. Сильные соединения весьма полезны, когда нужно нанести больше "
 "повреждений для убийства противника."
 
-#: data/core/help.cfg:354
+#: data/core/help.cfg:352
 msgid "Fearless"
 msgstr "Бесстрашный"
 
-#: data/core/help.cfg:355
+#: data/core/help.cfg:353
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr "Над этими смелыми индивидами не властна смена дня и ночи."
 
-#: data/core/help.cfg:360
+#: data/core/help.cfg:358
 msgid "Loyal"
 msgstr "Преданный"
 
-#: data/core/help.cfg:361
+#: data/core/help.cfg:359
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1468,7 +1464,7 @@ msgstr ""
 "определенной суммы на содержание в каждом ходу, в зависимости от их уровня. "
 "Преданные соединения не расходуют деньги на содержание."
 
-#: data/core/help.cfg:363
+#: data/core/help.cfg:361
 msgid ""
 "\n"
 "\n"
@@ -1490,18 +1486,18 @@ msgstr ""
 "присваивается нанятым соединениям, так что неразумно распускать такие "
 "соединения, либо посылать их на глупую смерть."
 
-#: data/core/help.cfg:368
+#: data/core/help.cfg:366
 msgid "trait^Undead"
 msgstr "Мертвец"
 
-#: data/core/help.cfg:369
+#: data/core/help.cfg:367
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
 "Мертвецы невосприимчивы к яду, осушение и чума также не действует на них."
 
-#: data/core/help.cfg:371
+#: data/core/help.cfg:369
 msgid ""
 "\n"
 "\n"
@@ -1517,18 +1513,18 @@ msgstr ""
 "яд на них не действует. Это может сделать их неоценимыми против тех "
 "соединений, которые используют яд при своих атаках."
 
-#: data/core/help.cfg:376
+#: data/core/help.cfg:374
 msgid "trait^Mechanical"
 msgstr "Механизм"
 
-#: data/core/help.cfg:377
+#: data/core/help.cfg:375
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
 "Механизмы невосприимчивы к яду, осушение и чума также не действует на них."
 
-#: data/core/help.cfg:379
+#: data/core/help.cfg:377
 msgid ""
 "\n"
 "\n"
@@ -1542,18 +1538,18 @@ msgstr ""
 "Поскольку обычно такие соединения неживые, иссушение, яд и чума не имеют на "
 "них эффекта."
 
-#: data/core/help.cfg:384
+#: data/core/help.cfg:382
 msgid "Dextrous"
 msgstr "Ловкий"
 
-#: data/core/help.cfg:385
+#: data/core/help.cfg:383
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Ловкие соединения наносят урона на 1 единицу больше при каждом успешном "
 "попадании из дальнего оружия."
 
-#: data/core/help.cfg:387
+#: data/core/help.cfg:385
 msgid ""
 "\n"
 "\n"
@@ -1569,11 +1565,11 @@ msgstr ""
 "не менее, они одарены естественным талантом, который превосходит всех их "
 "собратьев. Такие эльфы наносят дополнительные повреждения с каждой стрелой."
 
-#: data/core/help.cfg:392
+#: data/core/help.cfg:390
 msgid "Healthy"
 msgstr "Здоровяк"
 
-#: data/core/help.cfg:393
+#: data/core/help.cfg:391
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -1581,7 +1577,7 @@ msgstr ""
 "Оправдывая свою живучесть, некоторые гномы крепче других и восстанавливаются "
 "даже во время путешествий."
 
-#: data/core/help.cfg:395
+#: data/core/help.cfg:393
 msgid ""
 "\n"
 "\n"
@@ -1594,11 +1590,11 @@ msgstr ""
 "в процессе отдыха они лечат на 2 очка ЗД больше каждый ход, в течение "
 "которого они не дрались."
 
-#: data/core/help.cfg:406
+#: data/core/help.cfg:404
 msgid "Grassland"
 msgstr "Луг"
 
-#: data/core/help.cfg:411
+#: data/core/help.cfg:409
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1616,11 +1612,11 @@ msgstr ""
 "\n"
 "Большинство соединения имеют защиту от 30% до 40% на лугах."
 
-#: data/core/help.cfg:416
+#: data/core/help.cfg:414
 msgid "Road"
 msgstr "Дорога"
 
-#: data/core/help.cfg:419
+#: data/core/help.cfg:417
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1630,11 +1626,11 @@ msgstr ""
 "прошедшими по ним. В игровом контексте дороги считаются идентичными "
 "<ref>dst=terrain_grassland text=Лугу</ref>. "
 
-#: data/core/help.cfg:424
+#: data/core/help.cfg:422
 msgid "Forest"
 msgstr "Лес"
 
-#: data/core/help.cfg:431
+#: data/core/help.cfg:429
 #, fuzzy
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
@@ -1668,11 +1664,11 @@ msgstr ""
 "обычно получают только 30% защиты в лесах.\n"
 "\n"
 
-#: data/core/help.cfg:436
+#: data/core/help.cfg:434
 msgid "Hills"
 msgstr "Холмы"
 
-#: data/core/help.cfg:441
+#: data/core/help.cfg:439
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1694,11 +1690,11 @@ msgstr ""
 "Большинство соединений имеют около 50% защиты в холмах, а кавалерия "
 "ограничена 40%. Гномы получают 60% защиты в холмах."
 
-#: data/core/help.cfg:446
+#: data/core/help.cfg:444
 msgid "Mountains"
 msgstr "Горы"
 
-#: data/core/help.cfg:451
+#: data/core/help.cfg:449
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1721,11 +1717,11 @@ msgstr ""
 "Большинство соединений получают до 60% защиты в горах, в то время как гномы "
 "получают 70%."
 
-#: data/core/help.cfg:456
+#: data/core/help.cfg:454
 msgid "Swamp"
 msgstr "Болото"
 
-#: data/core/help.cfg:461
+#: data/core/help.cfg:459
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1745,11 +1741,11 @@ msgstr ""
 "Большинство соединений получает 30% защиты в болоте. Водяные, наги и ящеры "
 "обычно получают 60%."
 
-#: data/core/help.cfg:466
+#: data/core/help.cfg:464
 msgid "Shallow Water"
 msgstr "Отмель"
 
-#: data/core/help.cfg:471
+#: data/core/help.cfg:469
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1771,11 +1767,11 @@ msgstr ""
 "Большинство соединений имеют от 20 до 30% защиты на мелководье, в то время "
 "как и наги и водяные получают 60%."
 
-#: data/core/help.cfg:476
+#: data/core/help.cfg:474
 msgid "Deep Water"
 msgstr "Глубокая вода"
 
-#: data/core/help.cfg:481
+#: data/core/help.cfg:479
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1790,11 +1786,11 @@ msgstr ""
 "\n"
 "Водяные и наги получают 50% защиты в глубокой воде, и полный запас движения."
 
-#: data/core/help.cfg:486
+#: data/core/help.cfg:484
 msgid "Snow"
 msgstr "Снег"
 
-#: data/core/help.cfg:491
+#: data/core/help.cfg:489
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1808,11 +1804,11 @@ msgstr ""
 "\n"
 "Большинство соединений имеет от 20 до 40% защиты на снегу."
 
-#: data/core/help.cfg:496
+#: data/core/help.cfg:494
 msgid "Ice"
 msgstr "Лед"
 
-#: data/core/help.cfg:499
+#: data/core/help.cfg:497
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1823,11 +1819,11 @@ msgstr ""
 "что плавающие соединения, несмотря на умение дышать под водой, не могут "
 "плавать подо льдом."
 
-#: data/core/help.cfg:504
+#: data/core/help.cfg:502
 msgid "Castle"
 msgstr "Замок"
 
-#: data/core/help.cfg:511
+#: data/core/help.cfg:509
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1849,11 +1845,11 @@ msgstr ""
 "Большинство соединений имеет около 60% защиты в замке.\n"
 "\n"
 
-#: data/core/help.cfg:516
+#: data/core/help.cfg:514
 msgid "Sand"
 msgstr "Песок"
 
-#: data/core/help.cfg:521
+#: data/core/help.cfg:519
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1868,11 +1864,11 @@ msgstr ""
 "\n"
 "Большинство соединений получают от 20 до 40% защиты на песке."
 
-#: data/core/help.cfg:526
+#: data/core/help.cfg:524
 msgid "Desert"
 msgstr "Пустыня"
 
-#: data/core/help.cfg:529
+#: data/core/help.cfg:527
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1882,11 +1878,11 @@ msgstr ""
 "пляжи, тем не менее по игровым правилам, они идентичны. Смотрите "
 "<ref>dst=terrain_sand text=Песок</ref>."
 
-#: data/core/help.cfg:534
+#: data/core/help.cfg:532
 msgid "Cave"
 msgstr "Пещера"
 
-#: data/core/help.cfg:539
+#: data/core/help.cfg:537
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1909,11 +1905,11 @@ msgstr ""
 "Большинство соединений получают от 20 до 40% защиты в пещерах, в то время "
 "как гномы имеют 50%."
 
-#: data/core/help.cfg:544
+#: data/core/help.cfg:542
 msgid "Rockbound Cave"
 msgstr "Каменистая пещера"
 
-#: data/core/help.cfg:549
+#: data/core/help.cfg:547
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -1937,11 +1933,11 @@ msgstr ""
 "Большинство соединений имеют около 50% защищенности в каменистых пещерах, "
 "когда как кавалерия ограничена 40%. Гномы в каменистых пещерах получают 60%."
 
-#: data/core/help.cfg:554
+#: data/core/help.cfg:552
 msgid "Illuminated Cave"
 msgstr "Освещенная пещера"
 
-#: data/core/help.cfg:557
+#: data/core/help.cfg:555
 #, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
@@ -1954,11 +1950,11 @@ msgstr ""
 "хаотические — штраф. Во всем остальном эта местность похожа на обычную "
 "пещеру."
 
-#: data/core/help.cfg:562
+#: data/core/help.cfg:560
 msgid "Mushroom Grove"
 msgstr "Грибная роща"
 
-#: data/core/help.cfg:567
+#: data/core/help.cfg:565
 #, fuzzy
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
@@ -1981,11 +1977,11 @@ msgstr ""
 "В грибных рощах большинство соединений получают от 50% до 60% к защите, а "
 "кавалерия — только 20%."
 
-#: data/core/help.cfg:572
+#: data/core/help.cfg:570
 msgid "Savanna"
 msgstr "Саванна"
 
-#: data/core/help.cfg:575
+#: data/core/help.cfg:573
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -1995,11 +1991,11 @@ msgstr ""
 "местах с теплым климатом. По игровым правилам, они идентичны с "
 "<ref>dst=terrain_grassland text=Лугом</ref>."
 
-#: data/core/help.cfg:580 src/terrain.cpp:129
+#: data/core/help.cfg:578 src/terrain.cpp:129
 msgid "Village"
 msgstr "Деревня"
 
-#: data/core/help.cfg:587
+#: data/core/help.cfg:585
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2024,11 +2020,11 @@ msgstr ""
 "кавалерия получает только 40%.\n"
 "\n"
 
-#: data/core/help.cfg:592
+#: data/core/help.cfg:590
 msgid "Submerged Village"
 msgstr "Подводная деревня"
 
-#: data/core/help.cfg:597
+#: data/core/help.cfg:595
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2050,11 +2046,11 @@ msgstr ""
 "Водяные и Наги имеют 60% обороны в подводных деревнях, тогда как сухопутные "
 "соединения обычно имеют довольно низкую защиту."
 
-#: data/core/help.cfg:602
+#: data/core/help.cfg:600
 msgid "Chasm"
 msgstr "Пропасть"
 
-#: data/core/help.cfg:605
+#: data/core/help.cfg:603
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2066,11 +2062,11 @@ msgstr ""
 "правилам считается, что только соединения, способные перелететь через "
 "пропасть, могут пересечь этот тип местности."
 
-#: data/core/help.cfg:610
+#: data/core/help.cfg:608
 msgid "Lava"
 msgstr "Лава"
 
-#: data/core/help.cfg:613
+#: data/core/help.cfg:611
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2084,11 +2080,11 @@ msgstr ""
 "местность вокруг нее. Благодаря этому порядочные соединения получают бонус к "
 "атаке, а хаотичные — штраф к атаке."
 
-#: data/core/help.cfg:618
+#: data/core/help.cfg:616
 msgid "River Ford"
 msgstr "Брод"
 
-#: data/core/help.cfg:621
+#: data/core/help.cfg:619
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2104,11 +2100,11 @@ msgstr ""
 "из этих типов местности, предоставляет соединению, стоящему на нем, лучшие "
 "бонусы защиты и перемещения."
 
-#: data/core/help.cfg:626
+#: data/core/help.cfg:624
 msgid "Bridge"
 msgstr "Мост"
 
-#: data/core/help.cfg:631
+#: data/core/help.cfg:629
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2134,11 +2130,11 @@ msgstr ""
 "соединения, занимающего ячейку моста. Помните, что плавающее и сухопутное "
 "соединения не могут одновременно занимать одну ячейку моста."
 
-#: data/core/help.cfg:636
+#: data/core/help.cfg:634
 msgid "Cave Wall"
 msgstr "Стена пещеры"
 
-#: data/core/help.cfg:639
+#: data/core/help.cfg:637
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2147,11 +2143,11 @@ msgstr ""
 "служить непреодолимым препятствием даже для самого решительного "
 "путешественника."
 
-#: data/core/help.cfg:644
+#: data/core/help.cfg:642
 msgid "Impassable Mountain"
 msgstr "Непроходимая гора"
 
-#: data/core/help.cfg:647
+#: data/core/help.cfg:645
 #, fuzzy
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
@@ -2162,11 +2158,11 @@ msgstr ""
 "облаками. Пересечь такие горы практически невозможно. Даже летающие существа "
 "не могут перемещаться по изрезанным вершинам в столь разряженном воздухе."
 
-#: data/core/help.cfg:658
+#: data/core/help.cfg:656
 msgid "General commands"
 msgstr "Основные команды"
 
-#: data/core/help.cfg:662
+#: data/core/help.cfg:660
 #, fuzzy
 msgid ""
 "\n"
@@ -2176,7 +2172,21 @@ msgstr ""
 "\n"
 "Очистить чат."
 
-#: data/core/help.cfg:665
+#: data/core/help.cfg:664
+#, fuzzy
+msgid ""
+"\n"
+"Switch debug mode on (does not work in multiplayer). See "
+"<ref>dst=debug_commands text='Debug mode commands'</ref>.\n"
+"Debug mode is turned off by quitting the game or :nodebug.\n"
+"\n"
+msgstr ""
+"\n"
+"Переключиться в режим отладки (не работает в многопользовательской игре). "
+"Этот режим отключается при выходе из игры.\n"
+"\n"
+
+#: data/core/help.cfg:667
 #, fuzzy
 msgid ""
 "\n"
@@ -2191,37 +2201,21 @@ msgstr ""
 "сторону, то будет использована \"1\".\n"
 "\n"
 
-#: data/core/help.cfg:668
+#: data/core/help.cfg:670
 msgid ""
 "\n"
-"Quit the scenario (without prompting).\n"
+"Toggles the display of the current frames per second.\n"
 "\n"
 msgstr ""
-"\n"
-"Выйти из сценария (без подтверждения).\n"
-"\n"
 
-#: data/core/help.cfg:671
+#: data/core/help.cfg:673
 msgid ""
 "\n"
-"Save the game (without prompting).\n"
+"Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
-"\n"
-"Сохранить игру (без подтверждения).\n"
-"\n"
 
-#: data/core/help.cfg:674
-msgid ""
-"\n"
-"Save the game and quit the scenario (without prompting).\n"
-"\n"
-msgstr ""
-"\n"
-"Сохранить игру и выйти из сценария (без подтверждения).\n"
-"\n"
-
-#: data/core/help.cfg:677
+#: data/core/help.cfg:676
 msgid ""
 "\n"
 "Redraw the screen.\n"
@@ -2231,36 +2225,49 @@ msgstr ""
 "Перерисовать изображение.\n"
 "\n"
 
-#: data/core/help.cfg:680
-msgid ""
-"\n"
-"Toggles the display of the current frames per second.\n"
-"\n"
-msgstr ""
-
-#: data/core/help.cfg:684
+#: data/core/help.cfg:679
 #, fuzzy
 msgid ""
 "\n"
-"Switch debug mode on (does not work in multiplayer). See "
-"<ref>dst=debug_commands text='Debug mode commands'</ref>.\n"
-"Debug mode is turned off by quitting the game or :nodebug.\n"
+"Bring up theme selection menu.\n"
+"\n"
+msgstr "Вывести меню выбора темы."
+
+#: data/core/help.cfg:682
+msgid ""
+"\n"
+"Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Переключиться в режим отладки (не работает в многопользовательской игре). "
-"Этот режим отключается при выходе из игры.\n"
+"Выйти из сценария (без подтверждения).\n"
 "\n"
 
 #: data/core/help.cfg:685
-msgid "Bring up theme selection menu."
-msgstr "Вывести меню выбора темы."
+msgid ""
+"\n"
+"Save the game (without prompting).\n"
+"\n"
+msgstr ""
+"\n"
+"Сохранить игру (без подтверждения).\n"
+"\n"
 
-#: data/core/help.cfg:690
+#: data/core/help.cfg:686
+#, fuzzy
+msgid ""
+"\n"
+"Save the game and quit the scenario (without prompting)."
+msgstr ""
+"\n"
+"Сохранить игру и выйти из сценария (без подтверждения).\n"
+"\n"
+
+#: data/core/help.cfg:691
 msgid "Multiplayer commands"
 msgstr "Команды многопользовательской игры"
 
-#: data/core/help.cfg:694
+#: data/core/help.cfg:695
 #, fuzzy
 msgid ""
 "\n"
@@ -2273,19 +2280,20 @@ msgstr ""
 "адрес, используемый этим именем.\n"
 "\n"
 
-#: data/core/help.cfg:697
+#: data/core/help.cfg:696
+#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
-"username (write here the nick of the player or observer).\n"
-"\n"
+"username (write here the nick of the player or observer). You can check what "
+"side belongs to which player in the "
 msgstr ""
 "\n"
 "Сменить управляющего стороной (впишите здесь номер стороны) на ник (впишите "
 "здесь ник игрока или наблюдателя).\n"
 "\n"
 
-#: data/core/help.cfg:700
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2299,7 +2307,7 @@ msgstr ""
 "соединением.\n"
 "\n"
 
-#: data/core/help.cfg:703
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2311,7 +2319,7 @@ msgstr ""
 "отключаемые имена будут выведены.\n"
 "\n"
 
-#: data/core/help.cfg:704
+#: data/core/help.cfg:705
 #, fuzzy
 msgid ""
 "\n"
@@ -2321,54 +2329,54 @@ msgstr ""
 "Включить/выключить сообщения всех наблюдателей.\n"
 "\n"
 
-#: data/core/help.cfg:709
+#: data/core/help.cfg:710
 #, fuzzy
 msgid "Debug mode commands"
 msgstr "Основные команды"
 
-#: data/core/help.cfg:713
+#: data/core/help.cfg:714
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:716
+#: data/core/help.cfg:717
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:719
+#: data/core/help.cfg:720
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:722
+#: data/core/help.cfg:723
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:725
+#: data/core/help.cfg:726
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:728
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
 
-#: data/core/help.cfg:729
+#: data/core/help.cfg:730
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -2630,26 +2638,26 @@ msgstr ""
 "рядом с ним. Вражеское соединение, которое первым обнаружит подводника "
 "немедленно потеряет все свои оставшиеся очки движения."
 
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:474
 msgid "feeding"
 msgstr ""
 
-#: data/core/macros/abilities.cfg:473
+#: data/core/macros/abilities.cfg:476
 msgid ""
 "Feeding:\n"
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
 
-#: data/core/macros/abilities.cfg:497
+#: data/core/macros/abilities.cfg:500
 msgid "+1 max HP"
 msgstr ""
 
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:530
 msgid "berserk"
 msgstr "берсерк"
 
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:532
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -2659,11 +2667,11 @@ msgstr ""
 "Используется в наступлении или обороне, эта атака продолжает битву, пока "
 "один из бойцов не погибнет или пока не пройдут 30 раундов атаки."
 
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:542
 msgid "backstab"
 msgstr "исподтишка"
 
-#: data/core/macros/abilities.cfg:540
+#: data/core/macros/abilities.cfg:544
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -2674,11 +2682,11 @@ msgstr ""
 "Эта атака наносит двойной урон, если враг находится напротив дружественного "
 "соединения или беспомощно (например превращено в камень)."
 
-#: data/core/macros/abilities.cfg:552 data/core/macros/abilities.cfg:564
+#: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
 msgstr "чума"
 
-#: data/core/macros/abilities.cfg:554
+#: data/core/macros/abilities.cfg:558
 #, fuzzy
 msgid ""
 "Plague:\n"
@@ -2691,7 +2699,7 @@ msgstr ""
 "убившего, и переходит на его сторону. (Это не работает на мертвецов или на "
 "соединения, находящиеся в деревнях)"
 
-#: data/core/macros/abilities.cfg:566
+#: data/core/macros/abilities.cfg:570
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2703,11 +2711,11 @@ msgstr ""
 "стороне соединения убившего его. Это не работает на мертвецов или на "
 "соединения, находящиеся в деревнях."
 
-#: data/core/macros/abilities.cfg:576
+#: data/core/macros/abilities.cfg:580
 msgid "slows"
 msgstr "замедление"
 
-#: data/core/macros/abilities.cfg:578
+#: data/core/macros/abilities.cfg:582
 #, fuzzy
 msgid ""
 "Slow:\n"
@@ -2720,11 +2728,11 @@ msgstr ""
 "Эта атака замедляет жертву в конце хода. Подверженное этой атаке соединение "
 "будет наносить лишь половину атак и перемещаться в два раза медленнее."
 
-#: data/core/macros/abilities.cfg:587
+#: data/core/macros/abilities.cfg:591
 msgid "stones"
 msgstr "камень"
 
-#: data/core/macros/abilities.cfg:589
+#: data/core/macros/abilities.cfg:593
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2734,11 +2742,11 @@ msgstr ""
 "Данный вид атаки превращает цель в камень. Соединения, превращенные в "
 "камень, не могут перемещаться и атаковать."
 
-#: data/core/macros/abilities.cfg:598
+#: data/core/macros/abilities.cfg:602
 msgid "marksman"
 msgstr "снайпер"
 
-#: data/core/macros/abilities.cfg:600
+#: data/core/macros/abilities.cfg:604
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -2746,11 +2754,11 @@ msgstr ""
 "Снайпер:\n"
 "В наступлении данная атака всегда имеет шанс не менее 60% нанести ущерб."
 
-#: data/core/macros/abilities.cfg:612
+#: data/core/macros/abilities.cfg:616
 msgid "magical"
 msgstr "магия"
 
-#: data/core/macros/abilities.cfg:614
+#: data/core/macros/abilities.cfg:618
 #, fuzzy
 msgid ""
 "Magical:\n"
@@ -2760,11 +2768,11 @@ msgstr ""
 "Магия:\n"
 "Данный тип атаки всегда имеет 70% шанс нанести ущерб."
 
-#: data/core/macros/abilities.cfg:625
+#: data/core/macros/abilities.cfg:629
 msgid "swarm"
 msgstr "рой"
 
-#: data/core/macros/abilities.cfg:627
+#: data/core/macros/abilities.cfg:631
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -2778,11 +2786,11 @@ msgstr ""
 "максимального ЗД соединения. Например, соединение, имеющее 3/4 от "
 "максимального ЗД, сможет наносить только 3/4 от числа возможных ударов."
 
-#: data/core/macros/abilities.cfg:636
+#: data/core/macros/abilities.cfg:640
 msgid "charge"
 msgstr "бросок"
 
-#: data/core/macros/abilities.cfg:638
+#: data/core/macros/abilities.cfg:642
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -2792,11 +2800,11 @@ msgstr ""
 "Эта атака наносит двойной урон цели. Соединение также будет получать двойной "
 "урон при ответном ударе цели."
 
-#: data/core/macros/abilities.cfg:650
+#: data/core/macros/abilities.cfg:654
 msgid "drains"
 msgstr "осушающий"
 
-#: data/core/macros/abilities.cfg:652
+#: data/core/macros/abilities.cfg:656
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -2806,11 +2814,11 @@ msgstr ""
 "Это соединение высасывает здоровье из живых соединений, получая для себя "
 "половину нанесенного количества ущерба (округляется вниз)."
 
-#: data/core/macros/abilities.cfg:661
+#: data/core/macros/abilities.cfg:665
 msgid "firststrike"
 msgstr "первый удар"
 
-#: data/core/macros/abilities.cfg:663
+#: data/core/macros/abilities.cfg:667
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -2819,11 +2827,11 @@ msgstr ""
 "Данное соединение всегда атакует первым с данной атакой, даже если "
 "соединение защищается."
 
-#: data/core/macros/abilities.cfg:672
+#: data/core/macros/abilities.cfg:676
 msgid "poison"
 msgstr "яд"
 
-#: data/core/macros/abilities.cfg:674
+#: data/core/macros/abilities.cfg:678
 #, fuzzy
 msgid ""
 "Poison:\n"
@@ -4593,6 +4601,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:164 data/hardwired/tips.cfg:172
 #: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
 #: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
+#: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
 msgid "- The Wesnoth Tactical Guide"
 msgstr ""
 
@@ -4609,9 +4618,9 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:15
 msgid ""
-"The encircling tactic by two units is very powerful, particularly against "
-"long range units. By placing two units on opposite sides of an opposing "
-"unit, their zones of control limit it to one hex move in any direction."
+"The encircling tactic is very powerful, particularly against fast opponents. "
+"By placing two units on opposite sides of an enemy, their zones of control "
+"will restrict it to one hex of movement in any direction."
 msgstr ""
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
@@ -4620,15 +4629,15 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:19
 msgid ""
-"You can access the 'recruit' and 'recall' commands by right-clicking on a "
+"You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
 "castle tile. That will let you chose which hex you put a new unit in. "
-"Placing units wisely can sometimes let you get to a village a turn earlier."
+"Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
 
 #: data/hardwired/tips.cfg:23
 msgid ""
-"There are some helpful summary screens in the main menu: the 'Status Table', "
-"for instance, will let you know how your enemies are doing, and how you are "
+"There are some helpful summary screens in the main menu: for instance, the "
+"'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
 
@@ -4668,9 +4677,10 @@ msgid "- The Wesnoth Community"
 msgstr "Список соединений Веснота"
 
 #: data/hardwired/tips.cfg:43
+#, fuzzy
 msgid ""
-"Lawful units fight better at day, and chaotic units fight better at night. "
-"Neutral units are unaffected by day and night."
+"Lawful units fight better by day, and chaotic units fight better at night. "
+"Neutral units are unaffected by the time of day."
 msgstr ""
 "Порядочные соединения лучше сражаются днем, а хаотичные соединения - ночью. "
 "Нейтральные соединения сражаются и днем и ночью с одинаковой силой."
@@ -4691,10 +4701,10 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:51
 msgid ""
-"If you are playing in the fog or with a shroud, you don't know what you're "
-"facing. In this case, long-range scouting units are worth their cost. Try to "
-"choose scouts that can easily move across the surrounding terrain, because "
-"units see as far as they can move in one turn."
+"If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
+"what you're facing. In this case, long-range scouting units are worth their "
+"cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units see as far as they can move in one turn."
 msgstr ""
 
 #: data/hardwired/tips.cfg:55
@@ -4724,18 +4734,13 @@ msgstr ""
 "местности можно видеть в правом верхнем углу экрана."
 
 #: data/hardwired/tips.cfg:63
-#, fuzzy
 msgid ""
-"Poisoned units lose 8 hitpoints every turn, but they will not die from "
-"poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
-"to a healer will not lose hitpoints on their next turn. If they are in a "
-"village or next to a unit with the 'cures' ability, the poison will be "
-"completely cured on their next turn."
+"Poisoned units will lose eight hitpoints every turn until they are one point "
+"from death. They will remain at death's door until the poison is removed. "
+"Healers can prevent a poisoned unit from deteriorating, but the poison will "
+"not be removed unless the unit regenerates, or spends a turn in a village or "
+"next to a unit with the 'Cures' ability."
 msgstr ""
-"Отравленные соединения теряют 8 единиц здоровья за каждый ход, но они не "
-"могут умереть от яда; яд никогда не понизит здоровье ниже 1 единицы. "
-"Отравленные соединения могут исцеляться в деревне, либо с помощью другого "
-"соединения, у которого есть способности лечения."
 
 #: data/hardwired/tips.cfg:67
 #, fuzzy
@@ -4751,11 +4756,11 @@ msgstr ""
 #: data/hardwired/tips.cfg:71
 #, fuzzy
 msgid ""
-"Units have a Zone of Control in each of the hexes next to them. If a unit "
-"moves into an enemy's Zone of Control, it may not move any further that "
-"turn. This means that units can have two empty hexes between them and still "
-"create a barrier to the enemy. (Level 0 units are too frail to control a "
-"zone; and skirmisher units are skilled enough to ignore these zones.)"
+"Units of level one and higher have a 'Zone of Control' in each of the hexes "
+"next to them. If a unit moves into an enemy's zone of control, it may not "
+"move any further that turn. This means that units can have two empty hexes "
+"between them and still create a barrier to the enemy. However, skirmishers "
+"are skilled enough to ignore these zones."
 msgstr ""
 "Все соединения имеют свою зону контроля в каждой ячейке вокруг него. Если "
 "соединение передвигается в зону контроля противника, оно больше не может "
@@ -4764,11 +4769,12 @@ msgstr ""
 "обучены и такие соединения игнорируют эти зоны."
 
 #: data/hardwired/tips.cfg:75
+#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain it is standing in, however magical attacks have a 70% "
-"chance to hit both when attacking and defending. Marksman attacks have at "
-"least 60% chance to hit when attacking."
+"itself in the terrain in which it is standing. However, magical attacks "
+"always have a 70% chance to hit, and units with the 'marksman' ability will "
+"always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
 "Шанс нанести ущерб противнику обычно зависит от того, насколько соединение "
 "защищено на местности, на которой оно находится в данный момент. Тем не "
@@ -4780,8 +4786,10 @@ msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr ""
 
 #: data/hardwired/tips.cfg:79
+#, fuzzy
 msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+"Units stationed in villages will either heal eight hitpoints at the "
+"beginning of their turn, or will recover from poisoning."
 msgstr ""
 "Соединения, остающиеся в деревнях, восстанавливают 8 единиц здоровья в "
 "начале своего хода."
@@ -4789,18 +4797,19 @@ msgstr ""
 #: data/hardwired/tips.cfg:83
 #, fuzzy
 msgid ""
-"Don't move an injured unit if you don't have to--let it rest. If a unit does "
-"not move or attack, it will recover 2 hit points at the beginning of its "
-"next turn."
+"Don't move an injured unit if you don't have to - let it rest. If a unit "
+"does not move or attack, it will recover two hitpoints at the beginning of "
+"its next turn."
 msgstr ""
 "Соединения, которые не двигаются и не атакуют в течение своего хода, "
 "восстанавливают 2 единицы здоровья в начале своего следующего хода."
 
 #: data/hardwired/tips.cfg:87
+#, fuzzy
 msgid ""
-"Most foot units defend better in villages and castles than in most other "
-"terrain, while most mounted units don't get any defensive advantage in "
-"villages and castles."
+"Foot units tend to defend better in villages and castles than in other "
+"terrain types, while most mounted units do not gain any defensive advantages "
+"from villages or castles."
 msgstr ""
 "Большинство пеших соединений лучше защищаются в деревнях и замках, чем на "
 "большинстве остальной территории, тогда как большинство конных соединений не "
@@ -4811,8 +4820,9 @@ msgid "- Sir Kaylan, 498YW"
 msgstr ""
 
 #: data/hardwired/tips.cfg:91
+#, fuzzy
 msgid ""
-"Horse based units are generally resistant to attacks with bladed or impact "
+"Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
@@ -4824,26 +4834,30 @@ msgid "- Sir Kaylan, 502YW"
 msgstr ""
 
 #: data/hardwired/tips.cfg:95
+#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain 8 experience for every level of "
-"the unit they kill."
+"experience. Units killing an enemy will gain eight experience points for "
+"every level of the unit they kill, or four experience points for a zero-"
+"level opponent."
 msgstr ""
 "Наносить смертельные удары соединению противника — это лучший способ "
 "приобретать опыт. Соединение, убившее противника, получает 8 единиц опыта за "
 "каждый уровень соединения, которое было убито им."
 
 #: data/hardwired/tips.cfg:99
+#, fuzzy
 msgid ""
-"Elvish units move and fight very well in forest. Dwarvish units move and "
-"fight very well in hills and mountains."
+"Elvish units move and fight well in forest. Dwarvish units move and fight "
+"well in hills, mountains and caves."
 msgstr ""
 "Эльфы хорошо передвигаются и сражаются в лесу. Гномы хорошо передвигаются и "
 "сражаются на холмах и в горах."
 
 #: data/hardwired/tips.cfg:103
+#, fuzzy
 msgid ""
-"Patience is often key. Rather than attacking in bad conditions, or with few "
+"Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
 "Главное — терпение. Не атакуйте в плохих условиях или с небольшим "
@@ -4900,7 +4914,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:123
 #, fuzzy
 msgid ""
-"Skeletons are resistant to piercing, bladed and cold based attacks but "
+"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "Скелеты невосприимчивы к колющему и режущему оружию, но уязвимы против "
@@ -4909,18 +4923,18 @@ msgstr ""
 #: data/hardwired/tips.cfg:127
 #, fuzzy
 msgid ""
-"Units with the 'leadership' ability make lower-level adjacent units on the "
-"same side fight better. Use these units to help your other units level up "
-"faster."
+"Units with the 'leadership' ability help lower-level adjacent units on the "
+"same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
 "Соединения со способностью лидерства делают соседние соединения низшего "
 "уровня более сильными и они сражаются в бою лучше."
 
 #: data/hardwired/tips.cfg:131
+#, fuzzy
 msgid ""
-"Generally avoid moving next to an unoccupied village. An enemy unit may move "
-"onto the village and attack you, while enjoying the defense and healing of "
-"the village."
+"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
+"the village and attack you, while enjoying the defense and healing of the "
+"village."
 msgstr ""
 "Не находитесь вблизи незахваченных деревень. Соединение противника может "
 "захватить деревню и атаковать вас и у него будет преимущество, так как он "
@@ -5004,9 +5018,10 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
-"Advancement' (AMLA), which usually increases the unit's maximum hit points "
-"by 3. This is less than the normal difference gained by advancing a level. "
-"Thus, it is usually more useful to try to advance your lower level units."
+"Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
+"three and full-heals them. This is much less than the normal benefits gained "
+"from advancing a level, so it is generally more useful to try to advance "
+"your lower-level units instead."
 msgstr ""
 "Соединения могут достичь Улучшения Постмаксимального Уровня (УПМУ), которое "
 "обычно увеличивает его  максимальное здоровье на 3. Однако достижение УПМУ "
@@ -5014,10 +5029,11 @@ msgstr ""
 "попытаться продвигать соединения более низкого уровня."
 
 #: data/hardwired/tips.cfg:175
+#, fuzzy
 msgid ""
-"On maps where the shroud or fog of war has been enabled, a unit's sight is "
-"limited by its maximum movement. Remember this when deciding what unit is "
-"best to scout specific types of terrain."
+"On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
+"are limited by its maximum movement. Remember this when deciding what unit "
+"is best to scout specific types of terrain."
 msgstr ""
 "На картах с пеленой или туманом войны обзор соединения ограничено его "
 "максимальным количеством ходов. Помните об этом, когда будете решать, какое "
@@ -5035,9 +5051,9 @@ msgstr ""
 #, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
-"the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
-"hand corner of the game main screen). This information is vital so we can "
-"adjust campaign difficulty."
+"the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
+"right-hand corner of the game main screen). This information is vital so we "
+"can adjust campaign difficulty."
 msgstr ""
 "Вы можете отправлять проекту Веснот анонимные результаты ваших игр, нажав на "
 "кнопку \"Помочь Весноту\" (иконка конверта в правом нижнем углу экрана). "
@@ -5067,6 +5083,19 @@ msgstr ""
 "\"Задержать обновление пелены\", когда нужно совершить ход, имея возможность "
 "отменить его."
 
+#: data/hardwired/tips.cfg:195
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+
+#: data/hardwired/tips.cfg:199
+msgid ""
+"Few units have good defences in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
 msgstr ""
@@ -5091,14 +5120,14 @@ msgid "End Scenario"
 msgstr "Удаленный сценарий"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2397
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:355 src/unit.cpp:2397
 #: src/unit.cpp:2570
 msgid "HP"
 msgstr "ЗД"
 
 #: data/themes/default.cfg:213 data/themes/dfool.cfg:243
-#: data/themes/experimental.cfg:191 src/menu_events.cpp:343
-#: src/menu_events.cpp:1119
+#: data/themes/experimental.cfg:191 src/menu_events.cpp:356
+#: src/menu_events.cpp:1132
 msgid "XP"
 msgstr "ОП"
 
@@ -5209,8 +5238,8 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:187 src/help.cpp:3009 src/menu_events.cpp:164
-#: src/menu_events.cpp:460 src/menu_events.cpp:483
+#: src/about.cpp:187 src/help.cpp:2966 src/menu_events.cpp:177
+#: src/menu_events.cpp:473 src/menu_events.cpp:496
 msgid "Close"
 msgstr "Закрыть"
 
@@ -5237,59 +5266,59 @@ msgstr ""
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr ""
 
-#: src/actions.cpp:962 src/actions.cpp:1216
+#: src/actions.cpp:964 src/actions.cpp:1217
 msgid "poisoned"
 msgstr "отравление"
 
-#: src/actions.cpp:966 src/actions.cpp:1220
+#: src/actions.cpp:968 src/actions.cpp:1221
 msgid "slowed"
 msgstr "замедление"
 
-#: src/actions.cpp:972 src/actions.cpp:1226
+#: src/actions.cpp:974 src/actions.cpp:1227
 msgid "stone"
 msgstr "камень"
 
-#: src/actions.cpp:2161
+#: src/actions.cpp:2162
 msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
-#: src/actions.cpp:2167
+#: src/actions.cpp:2168
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2205
+#: src/actions.cpp:2206
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Замечено $friends дружественное соединение"
 msgstr[1] "Замечено $friends дружественных соединения"
 msgstr[2] "Замечено $friends дружественных соединений"
 
-#: src/actions.cpp:2208
+#: src/actions.cpp:2209
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Замечено $enemies вражеское соединение!"
 msgstr[1] "Замечено $enemies вражеских соединения!"
 msgstr[2] "Замечено $enemies вражеских соединений!"
 
-#: src/actions.cpp:2213
+#: src/actions.cpp:2214
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends дружественное, "
 msgstr[1] "$friends дружественных, "
 msgstr[2] "$friends дружественных, "
 
-#: src/actions.cpp:2214
+#: src/actions.cpp:2215
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies вражеское"
 msgstr[1] "$enemies вражеских"
 msgstr[2] "$enemies вражеских"
 
-#: src/actions.cpp:2215
+#: src/actions.cpp:2216
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Замечены соединения! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2224
+#: src/actions.cpp:2225
 msgid "(press $hotkey to keep moving)"
 msgstr "(нажмите $hotkey, чтобы продолжить движение)"
 
@@ -5306,108 +5335,113 @@ msgstr ""
 msgid "Duplicate side definition for side '$side|' found."
 msgstr ""
 
-#: src/dialogs.cpp:111
+#: src/dialogs.cpp:112
 msgid "Advance Unit"
 msgstr "Улучшение соединения"
 
-#: src/dialogs.cpp:112
+#: src/dialogs.cpp:113
 msgid "What should our victorious unit become?"
 msgstr "Кем должно стать ваше соединение?"
 
-#: src/dialogs.cpp:210
+#: src/dialogs.cpp:211
 msgid "No objectives available"
 msgstr "Нет целей"
 
-#: src/dialogs.cpp:226
+#: src/dialogs.cpp:227
 msgid "Save Game"
 msgstr "Сохранить игру"
 
-#: src/dialogs.cpp:234
+#: src/dialogs.cpp:235
 msgid "Quit Game"
 msgstr "Выйти из игры"
 
-#: src/dialogs.cpp:239
+#: src/dialogs.cpp:240
 msgid "Ignore All"
 msgstr "Игнорировать всё"
 
-#: src/dialogs.cpp:256
+#: src/dialogs.cpp:257
 msgid "Overwrite?"
 msgstr "Перезаписать?"
 
-#: src/dialogs.cpp:257
+#: src/dialogs.cpp:258
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Сохранение уже существует. Перезаписать?"
 
-#: src/dialogs.cpp:291
+#: src/dialogs.cpp:275
+#, fuzzy
+msgid "Filter: "
+msgstr "Способности: "
+
+#: src/dialogs.cpp:342
 msgid "Do you really want to delete this game?"
 msgstr "Вы действительно хотите удалить эту игру?"
 
-#: src/dialogs.cpp:293
+#: src/dialogs.cpp:344
 msgid "Don't ask me again!"
 msgstr "Больше не спрашивайте меня!"
 
-#: src/dialogs.cpp:443
+#: src/dialogs.cpp:495
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:460
+#: src/dialogs.cpp:512
 msgid "#(Invalid)"
 msgstr "#(Неверно)"
 
-#: src/dialogs.cpp:467
+#: src/dialogs.cpp:519
 #, fuzzy
 msgid "Campaign: $campaign_name"
 msgstr "Законченность и поддержка"
 
-#: src/dialogs.cpp:469 src/game.cpp:1452
+#: src/dialogs.cpp:521 src/game.cpp:1472
 msgid "Multiplayer"
 msgstr "Сетевая игра"
 
-#: src/dialogs.cpp:471
+#: src/dialogs.cpp:523
 msgid "Tutorial"
 msgstr "Обучение"
 
-#: src/dialogs.cpp:479
+#: src/dialogs.cpp:531
 msgid "replay"
 msgstr "повтор"
 
-#: src/dialogs.cpp:481 src/menu_events.cpp:693
+#: src/dialogs.cpp:533 src/menu_events.cpp:706
 msgid "Turn"
 msgstr "Шаг"
 
-#: src/dialogs.cpp:483
+#: src/dialogs.cpp:535
 msgid "Scenario Start"
 msgstr "Начало сценария"
 
-#: src/dialogs.cpp:486
+#: src/dialogs.cpp:538
 msgid "Difficulty: "
 msgstr "Сложность: "
 
-#: src/dialogs.cpp:488
+#: src/dialogs.cpp:540
 msgid "Version: "
 msgstr "Версия: "
 
-#: src/dialogs.cpp:512 src/dialogs.cpp:528
+#: src/dialogs.cpp:564 src/dialogs.cpp:580
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:518
+#: src/dialogs.cpp:570
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:521
+#: src/dialogs.cpp:573
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:524
+#: src/dialogs.cpp:576
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:548
+#: src/dialogs.cpp:600
 msgid "No Saved Games"
 msgstr "Нет сохраненных игр"
 
-#: src/dialogs.cpp:549
+#: src/dialogs.cpp:601
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -5416,57 +5450,57 @@ msgstr ""
 "Нет сохраненных игр, которые можно загрузить.\n"
 "(Игра автоматически сохраняется после успешного прохождения сценария)"
 
-#: src/dialogs.cpp:561
-msgid "Delete Save"
-msgstr "Удалить сохранение"
-
-#: src/dialogs.cpp:567
+#: src/dialogs.cpp:616
 msgid "Date"
 msgstr "Дата"
 
-#: src/dialogs.cpp:567 src/game.cpp:1130 src/menu_events.cpp:340
-#: src/menu_events.cpp:1117 src/multiplayer.cpp:110
+#: src/dialogs.cpp:616 src/game.cpp:1150 src/menu_events.cpp:353
+#: src/menu_events.cpp:1130 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Название"
 
-#: src/dialogs.cpp:588 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:636 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "Загрузить игру"
 
-#: src/dialogs.cpp:589
+#: src/dialogs.cpp:637
 msgid "Choose the game to load"
 msgstr "Выберите игру для загрузки"
 
-#: src/dialogs.cpp:595
+#: src/dialogs.cpp:645
 msgid "Show replay"
 msgstr "Показать повтор"
 
-#: src/dialogs.cpp:624
+#: src/dialogs.cpp:648
+msgid "Delete Save"
+msgstr "Удалить сохранение"
+
+#: src/dialogs.cpp:679
 msgid "Profile"
 msgstr "Справка"
 
-#: src/dialogs.cpp:716 src/help.cpp:1271
+#: src/dialogs.cpp:771 src/help.cpp:1217
 msgid "level"
 msgstr "уровень"
 
-#: src/dialogs.cpp:729 src/help.cpp:1377
+#: src/dialogs.cpp:784 src/help.cpp:1323
 msgid "HP: "
 msgstr "ЗД: "
 
-#: src/dialogs.cpp:732
+#: src/dialogs.cpp:787
 msgid "XP: "
 msgstr "ОП: "
 
-#: src/dialogs.cpp:736 src/help.cpp:1378
+#: src/dialogs.cpp:791 src/help.cpp:1324
 msgid "Moves: "
 msgstr "Ходов: "
 
-#: src/dialogs.cpp:1031 src/dialogs.cpp:1132 src/multiplayer_connect.cpp:903
+#: src/dialogs.cpp:1093 src/dialogs.cpp:1194 src/multiplayer_connect.cpp:924
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:194
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/dialogs.cpp:1055 src/game.cpp:940
+#: src/dialogs.cpp:1117 src/game.cpp:960
 msgid "KB"
 msgstr "кб"
 
@@ -5474,188 +5508,188 @@ msgstr "кб"
 msgid "Screenshot"
 msgstr "Скриншот"
 
-#: src/game.cpp:445 src/game.cpp:1549
+#: src/game.cpp:445 src/game.cpp:1569
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:705
+#: src/game.cpp:725
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Внимание: загружаемый файл поврежден. Пробуем загрузить.\n"
 
-#: src/game.cpp:748 src/multiplayer_connect.cpp:1415
+#: src/game.cpp:768 src/multiplayer_connect.cpp:1436
 msgid "This save is from a version too old to be loaded."
 msgstr "Данное сохранение от слишком старой версии."
 
-#: src/game.cpp:754 src/multiplayer_connect.cpp:1422
+#: src/game.cpp:774 src/multiplayer_connect.cpp:1443
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Данное сохранение из другой версии игры. Попробовать его загрузить?"
 
-#: src/game.cpp:772 src/game.cpp:775 src/multiplayer_connect.cpp:1393
+#: src/game.cpp:792 src/game.cpp:795 src/multiplayer_connect.cpp:1414
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Загружаемый файл поврежден: \""
 
-#: src/game.cpp:778
+#: src/game.cpp:798
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
-#: src/game.cpp:870
+#: src/game.cpp:890
 #, fuzzy
 msgid "Play a campaign"
 msgstr "Кампания"
 
-#: src/game.cpp:911
+#: src/game.cpp:931
 msgid "Difficulty"
 msgstr "Сложность"
 
-#: src/game.cpp:912
+#: src/game.cpp:932
 msgid "Select difficulty level:"
 msgstr "Выберите уровень сложности:"
 
-#: src/game.cpp:937
+#: src/game.cpp:957
 msgid "B"
 msgstr "б"
 
-#: src/game.cpp:943
+#: src/game.cpp:963
 msgid "MB"
 msgstr "Мб"
 
-#: src/game.cpp:973
+#: src/game.cpp:993
 msgid "Connect to Server"
 msgstr "Подключиться к серверу"
 
-#: src/game.cpp:974
+#: src/game.cpp:994
 msgid "You will now connect to a server to download add-ons."
 msgstr "Вы должны подключиться к серверу, чтобы скачать аддоны."
 
-#: src/game.cpp:976
+#: src/game.cpp:996
 msgid "Server: "
 msgstr "Сервер: "
 
-#: src/game.cpp:977 src/game.cpp:1025
+#: src/game.cpp:997 src/game.cpp:1045
 msgid "Remove Add-ons"
 msgstr "Удалить аддоны"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1032
 msgid "You have no Add-ons installed."
 msgstr "У вас нет установленных аддонов."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1045
 msgid "Choose the add-on to remove."
 msgstr "Выберите аддон для удаления."
 
-#: src/game.cpp:1036
+#: src/game.cpp:1056
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr ""
 
-#: src/game.cpp:1040
+#: src/game.cpp:1060
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: src/game.cpp:1063
+#: src/game.cpp:1083
 #, fuzzy
 msgid "Add-on '$addon|' deleted."
 msgstr "Аддон удалён"
 
-#: src/game.cpp:1068
+#: src/game.cpp:1088
 msgid "Add-on deleted"
 msgstr "Аддон удалён"
 
-#: src/game.cpp:1074
+#: src/game.cpp:1094
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr "Аддон не может быть удалён — файл не найден."
 
-#: src/game.cpp:1074 src/menu_events.cpp:707 src/menu_events.cpp:715
-#: src/menu_events.cpp:730 src/multiplayer_create.cpp:528
+#: src/game.cpp:1094 src/menu_events.cpp:720 src/menu_events.cpp:728
+#: src/menu_events.cpp:743 src/multiplayer_create.cpp:528
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/game.cpp:1095 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1115 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Подключение к серверу..."
 
-#: src/game.cpp:1098
+#: src/game.cpp:1118
 msgid "Could not connect to host."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1108
+#: src/game.cpp:1128
 msgid "Asking for list of add-ons"
 msgstr "Запрос списка аддонов"
 
-#: src/game.cpp:1121
+#: src/game.cpp:1141
 msgid "Error communicating with the server."
 msgstr "Ошибка при подключении к серверу."
 
-#: src/game.cpp:1130 src/titlescreen.cpp:323
+#: src/game.cpp:1150 src/titlescreen.cpp:323
 msgid "Version"
 msgstr "Версия"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1151
 msgid "Author"
 msgstr "Автор"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1151
 msgid "Downloads"
 msgstr "Загрузки"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1151
 msgid "Size"
 msgstr "Размер"
 
-#: src/game.cpp:1183
+#: src/game.cpp:1203
 msgid "Publish add-on: "
 msgstr "Опубликовать аддон: "
 
-#: src/game.cpp:1187
+#: src/game.cpp:1207
 msgid "Delete add-on: "
 msgstr "Удалить аддон: "
 
-#: src/game.cpp:1191
+#: src/game.cpp:1211
 msgid "There are no add-ons available for download from this server."
 msgstr "На этом сервере нет доступных для загрузки аддонов."
 
-#: src/game.cpp:1198
+#: src/game.cpp:1218
 msgid "Get Add-ons"
 msgstr "Аддоны"
 
-#: src/game.cpp:1199
+#: src/game.cpp:1219
 msgid "Choose the add-on to download."
 msgstr "Выберите аддон для загрузки."
 
-#: src/game.cpp:1242
+#: src/game.cpp:1262
 msgid "Dependencies"
 msgstr "Зависимости"
 
-#: src/game.cpp:1243
+#: src/game.cpp:1263
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Этому аддону необходимы следующие зависимости:"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1265
 msgid "Do you still want to download it?"
 msgstr "Хотите ли скачать его?"
 
-#: src/game.cpp:1255
+#: src/game.cpp:1275
 msgid "Downloading add-on..."
 msgstr "Загружаем аддон..."
 
-#: src/game.cpp:1313
+#: src/game.cpp:1333
 msgid "Add-on Installed"
 msgstr "Аддон установлен"
 
-#: src/game.cpp:1313
+#: src/game.cpp:1333
 msgid "The add-on has been installed."
 msgstr "Аддон был установлен."
 
-#: src/game.cpp:1316
+#: src/game.cpp:1336
 msgid "Network communication error."
 msgstr "Ошибка при соединении к серверу."
 
-#: src/game.cpp:1318
+#: src/game.cpp:1338
 msgid "Remote host disconnected."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1320
+#: src/game.cpp:1340
 #, fuzzy
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
@@ -5663,132 +5697,132 @@ msgstr ""
 "Возникла проблема с созданием файлов, необходимых для полной установки "
 "кампании."
 
-#: src/game.cpp:1335 src/game.cpp:1378 src/game.cpp:1406
+#: src/game.cpp:1355 src/game.cpp:1398 src/game.cpp:1426
 #: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:463
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
-#: src/game.cpp:1338
+#: src/game.cpp:1358
 #, fuzzy
 msgid "The server responded with an error: \"$error|\""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/game.cpp:1345
+#: src/game.cpp:1365
 msgid "Terms"
 msgstr "Условия"
 
-#: src/game.cpp:1376
+#: src/game.cpp:1396
 msgid "Sending add-on"
 msgstr "Передача аддона"
 
-#: src/game.cpp:1380 src/game.cpp:1408
+#: src/game.cpp:1400 src/game.cpp:1428
 msgid "The server responded with an error: \""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/game.cpp:1384 src/game.cpp:1412 src/multiplayer_wait.cpp:382
+#: src/game.cpp:1404 src/game.cpp:1432 src/multiplayer_wait.cpp:382
 msgid "Response"
 msgstr "Ответ"
 
-#: src/game.cpp:1436
+#: src/game.cpp:1456
 msgid "Join Official Server"
 msgstr "Подключиться к официальному серверу"
 
-#: src/game.cpp:1437
+#: src/game.cpp:1457
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Войти на официальный игровой сервер Веснот"
 
-#: src/game.cpp:1439
+#: src/game.cpp:1459
 #, fuzzy
 msgid "Connect to Host/Server"
 msgstr "Подключиться к серверу"
 
-#: src/game.cpp:1440
+#: src/game.cpp:1460
 msgid "Join a server or hosted game"
 msgstr "Подключиться к серверу или игре"
 
-#: src/game.cpp:1442
+#: src/game.cpp:1462
 msgid "Host Networked Game"
 msgstr "Создать игру"
 
-#: src/game.cpp:1443
+#: src/game.cpp:1463
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
 msgstr ""
 
-#: src/game.cpp:1445
+#: src/game.cpp:1465
 msgid "Local Game"
 msgstr "Локальная игра"
 
-#: src/game.cpp:1446
+#: src/game.cpp:1466
 #, fuzzy
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Играть в многопользовательскую игру с компьютером и людьми на этом компьютере"
 
-#: src/game.cpp:1454 src/multiplayer.cpp:232
+#: src/game.cpp:1474 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Имя пользователя: "
 
-#: src/game.cpp:1491 src/playcampaign.cpp:100 src/playcampaign.cpp:384
+#: src/game.cpp:1511 src/playcampaign.cpp:100 src/playcampaign.cpp:384
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game.cpp:1493 src/playcampaign.cpp:102 src/playcampaign.cpp:387
+#: src/game.cpp:1513 src/playcampaign.cpp:102 src/playcampaign.cpp:387
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game.cpp:1513 src/playcampaign.cpp:104 src/playcampaign.cpp:390
+#: src/game.cpp:1533 src/playcampaign.cpp:104 src/playcampaign.cpp:390
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
-#: src/game.cpp:1539
+#: src/game.cpp:1559
 msgid "Language"
 msgstr "Язык"
 
-#: src/game.cpp:1540
+#: src/game.cpp:1560
 msgid "Choose your preferred language:"
 msgstr "Выберите предпочтительный язык:"
 
-#: src/game.cpp:1702
+#: src/game.cpp:1722
 #, fuzzy
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr "Следующие кампании имеют ошибки и не могут быть загружены:"
 
-#: src/game.cpp:1707
+#: src/game.cpp:1727
 msgid "ERROR DETAILS:"
 msgstr "ПОДРОБНОСТИ ОШИБКИ:"
 
-#: src/game.cpp:1721
+#: src/game.cpp:1741
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr "Внимание: ошибка при загрузке файлов с настройками игры: \""
 
-#: src/game.cpp:1773
+#: src/game.cpp:1793
 msgid "Error loading game configuration files: '"
 msgstr "Ошибка при загрузке файлов с настройками игры: \""
 
-#: src/game.cpp:1774
+#: src/game.cpp:1794
 msgid "' (The game will now exit)"
 msgstr "\" (сейчас игра будет завершена)"
 
-#: src/game.cpp:1816
+#: src/game.cpp:1836
 #, fuzzy
 msgid "Loading data files"
 msgstr "Чтение файлов соединений."
 
-#: src/game.cpp:1965
+#: src/game.cpp:1985
 msgid "Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:2157
+#: src/game.cpp:2177
 msgid "Loading game configuration."
 msgstr "Загрузка настроек игры."
 
-#: src/game.cpp:2163
+#: src/game.cpp:2183
 msgid "Re-initialize fonts for the current language."
 msgstr "Реинициализация шрифтов для текущего языка."
 
-#: src/game.cpp:2177
+#: src/game.cpp:2197
 msgid "Loading title screen."
 msgstr "Загрузка заглавного изображения."
 
@@ -5796,11 +5830,11 @@ msgstr "Загрузка заглавного изображения."
 msgid "Invalid color range: "
 msgstr "Неверный цвет:"
 
-#: src/game_events.cpp:940
+#: src/game_events.cpp:941
 msgid "Victory:"
 msgstr "Победа:"
 
-#: src/game_events.cpp:943
+#: src/game_events.cpp:944
 msgid "Defeat:"
 msgstr "Поражение:"
 
@@ -5814,7 +5848,7 @@ msgstr "Назначить время суток случайным образо
 msgid " replay"
 msgstr " повтор"
 
-#: src/gamestatus.cpp:821
+#: src/gamestatus.cpp:826
 msgid "Could not write to file"
 msgstr "Не могу записать в файл"
 
@@ -5928,122 +5962,122 @@ msgstr "Помощь"
 msgid "Units having this special attack:"
 msgstr ""
 
-#: src/help.cpp:1154 src/help.cpp:1351 src/help.cpp:1599 src/help.cpp:1652
+#: src/help.cpp:1172
+msgid "Units having this ability:"
+msgstr ""
+
+#: src/help.cpp:1237
+msgid "Advances from: "
+msgstr "Улучшение с: "
+
+#: src/help.cpp:1266
+msgid "Advances to: "
+msgstr "Улучшение: "
+
+#: src/help.cpp:1297 src/help.cpp:1545 src/help.cpp:1600
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "Разное"
 
-#: src/help.cpp:1160 src/help.cpp:1658
-msgid "Units of this race:"
-msgstr ""
-
-#: src/help.cpp:1226
-msgid "Units having this ability:"
-msgstr ""
-
-#: src/help.cpp:1291
-msgid "Advances from: "
-msgstr "Улучшение с: "
-
-#: src/help.cpp:1320
-msgid "Advances to: "
-msgstr "Улучшение: "
-
-#: src/help.cpp:1353
+#: src/help.cpp:1299
 #, fuzzy
 msgid "Race: "
 msgstr "Раса"
 
-#: src/help.cpp:1360
+#: src/help.cpp:1306
 msgid "Abilities: "
 msgstr "Способности: "
 
-#: src/help.cpp:1379
+#: src/help.cpp:1325
 msgid "Cost: "
 msgstr "Цена: "
 
-#: src/help.cpp:1380
+#: src/help.cpp:1326
 msgid "Alignment: "
 msgstr "Тип: "
 
-#: src/help.cpp:1386
+#: src/help.cpp:1332
 msgid "Required XP: "
 msgstr "Необходимый ОП: "
 
-#: src/help.cpp:1395
+#: src/help.cpp:1341
 msgid "unit help^Attacks"
 msgstr "Атаки"
 
-#: src/help.cpp:1402
+#: src/help.cpp:1348
 msgid "unit help^Name"
 msgstr "Имя"
 
-#: src/help.cpp:1403 src/menu_events.cpp:339 src/menu_events.cpp:1116
-#: src/menu_events.cpp:1598
+#: src/help.cpp:1349 src/menu_events.cpp:352 src/menu_events.cpp:1129
+#: src/menu_events.cpp:1611
 msgid "Type"
 msgstr "Тип"
 
-#: src/help.cpp:1404
+#: src/help.cpp:1350
 msgid "Strikes"
 msgstr "Удары"
 
-#: src/help.cpp:1405
+#: src/help.cpp:1351
 msgid "Range"
 msgstr "Диапазон"
 
-#: src/help.cpp:1406
+#: src/help.cpp:1352
 msgid "Special"
 msgstr "Специальное"
 
-#: src/help.cpp:1456
+#: src/help.cpp:1402
 msgid "Resistances"
 msgstr "Сопротивление"
 
-#: src/help.cpp:1460
+#: src/help.cpp:1406
 msgid "Attack Type"
 msgstr "Тип атаки"
 
-#: src/help.cpp:1461
+#: src/help.cpp:1407
 msgid "Resistance"
 msgstr "Сопротивление"
 
-#: src/help.cpp:1498
+#: src/help.cpp:1444
 msgid "Terrain Modifiers"
 msgstr "Тип местности"
 
-#: src/help.cpp:1502
+#: src/help.cpp:1448
 msgid "Terrain"
 msgstr "Местность"
 
-#: src/help.cpp:1503
+#: src/help.cpp:1449
 msgid "Defense"
 msgstr "Защита"
 
-#: src/help.cpp:1504
+#: src/help.cpp:1450
 msgid "Movement Cost"
 msgstr "Цена хода"
 
-#: src/help.cpp:2548 src/menu_events.cpp:673
+#: src/help.cpp:1606
+msgid "Units of this race:"
+msgstr ""
+
+#: src/help.cpp:2496 src/menu_events.cpp:686
 msgid " < Back"
 msgstr " < Назад"
 
-#: src/help.cpp:2549
+#: src/help.cpp:2497
 msgid "Forward >"
 msgstr "Вперед >"
 
-#: src/help.cpp:2661
+#: src/help.cpp:2609
 msgid "Reference to unknown topic: "
 msgstr "Ссылка на неизвестную тему: "
 
-#: src/help.cpp:2920
+#: src/help.cpp:2869
 msgid "corrupted original file"
 msgstr "оригинальный файл поврежден"
 
-#: src/help.cpp:3012
+#: src/help.cpp:2969
 msgid "The Battle for Wesnoth Help"
 msgstr "Помощь по игре Битва за Веснот"
 
-#: src/help.cpp:3064
+#: src/help.cpp:3021
 msgid "Parse error when parsing help text: "
 msgstr "Возникла ошибка во время загрузки помощи: "
 
@@ -6111,203 +6145,203 @@ msgstr ""
 msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
-#: src/menu_events.cpp:126 src/menu_events.cpp:175
+#: src/menu_events.cpp:139 src/menu_events.cpp:188
 msgid "Recruits"
 msgstr "Завербованные"
 
-#: src/menu_events.cpp:130 src/menu_events.cpp:183
+#: src/menu_events.cpp:143 src/menu_events.cpp:196
 msgid "Recalls"
 msgstr "Призванные"
 
-#: src/menu_events.cpp:134 src/menu_events.cpp:191
+#: src/menu_events.cpp:147 src/menu_events.cpp:204
 msgid "Advancements"
 msgstr "Улучшенные"
 
-#: src/menu_events.cpp:138 src/menu_events.cpp:200
+#: src/menu_events.cpp:151 src/menu_events.cpp:213
 msgid "Losses"
 msgstr "Потери"
 
-#: src/menu_events.cpp:143 src/menu_events.cpp:208
+#: src/menu_events.cpp:156 src/menu_events.cpp:221
 msgid "Kills"
 msgstr "Убийства"
 
-#: src/menu_events.cpp:162
+#: src/menu_events.cpp:175
 msgid "Details"
 msgstr "Детали"
 
-#: src/menu_events.cpp:214
+#: src/menu_events.cpp:227
 msgid "Damage Inflicted"
 msgstr "Нанесли ущерба"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:234
 msgid "Damage Taken"
 msgstr "Получили ущерба"
 
-#: src/menu_events.cpp:227
+#: src/menu_events.cpp:240
 msgid "Damage Inflicted (EV)"
 msgstr "Нанесено урона (в среднем)"
 
-#: src/menu_events.cpp:234
+#: src/menu_events.cpp:247
 msgid "Damage Taken (EV)"
 msgstr "Получено ущерба (в среднем)"
 
-#: src/menu_events.cpp:270 src/menu_events.cpp:274
+#: src/menu_events.cpp:283 src/menu_events.cpp:287
 #, fuzzy
 msgid "Do you really want to dismiss him?"
 msgstr "Вы действительно хотите удалить эту игру?"
 
-#: src/menu_events.cpp:270
+#: src/menu_events.cpp:283
 #, fuzzy
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr ""
 "Милорд, это соединение более опытно и может получить новый уровень! Вы "
 "действительно хотите расформировать $noun?"
 
-#: src/menu_events.cpp:271 src/menu_events.cpp:275
+#: src/menu_events.cpp:284 src/menu_events.cpp:288
 #, fuzzy
 msgid "Do you really want to dismiss her?"
 msgstr "Вы действительно хотите удалить эту игру?"
 
-#: src/menu_events.cpp:274
+#: src/menu_events.cpp:287
 #, fuzzy
 msgid "My lord, this unit is close to advancing a level! "
 msgstr ""
 "Милорд, это соединение скоро может получить новый уровень! Вы действительно "
 "хотите расформировать $noun?"
 
-#: src/menu_events.cpp:331
+#: src/menu_events.cpp:344
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/menu_events.cpp:341
+#: src/menu_events.cpp:354
 #, fuzzy
 msgid "Level^Lv."
 msgstr "Уровень"
 
-#: src/menu_events.cpp:344
+#: src/menu_events.cpp:357
 msgid "unit list^Traits"
 msgstr "Особенности"
 
-#: src/menu_events.cpp:345
+#: src/menu_events.cpp:358
 msgid "Moves"
 msgstr "Ходы"
 
-#: src/menu_events.cpp:346
+#: src/menu_events.cpp:359
 #, fuzzy
 msgid "Location^Loc."
 msgstr "Позиция"
 
-#: src/menu_events.cpp:347
+#: src/menu_events.cpp:360
 msgid "Status"
 msgstr "Статус"
 
-#: src/menu_events.cpp:455
+#: src/menu_events.cpp:468
 msgid "Unit List"
 msgstr "Список соединений"
 
-#: src/menu_events.cpp:458 src/menu_events.cpp:479
+#: src/menu_events.cpp:471 src/menu_events.cpp:492
 msgid "Scroll To"
 msgstr ""
 
-#: src/menu_events.cpp:508
+#: src/menu_events.cpp:521
 msgid "Leader"
 msgstr "Лидер"
 
-#: src/menu_events.cpp:509 src/multiplayer_connect.cpp:888
+#: src/menu_events.cpp:522 src/multiplayer_connect.cpp:909
 msgid "Team"
 msgstr "Команда"
 
-#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:899
+#: src/menu_events.cpp:523 src/multiplayer_connect.cpp:920
 #: src/multiplayer_wait.cpp:495
 msgid "Gold"
 msgstr "Золото"
 
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:524
 msgid "Villages"
 msgstr "Деревни"
 
-#: src/menu_events.cpp:512
+#: src/menu_events.cpp:525
 msgid "status^Units"
 msgstr "Соединения"
 
-#: src/menu_events.cpp:513
+#: src/menu_events.cpp:526
 msgid "Upkeep"
 msgstr "Содержание"
 
-#: src/menu_events.cpp:514 src/multiplayer_connect.cpp:900
+#: src/menu_events.cpp:527 src/multiplayer_connect.cpp:921
 #: src/multiplayer_wait.cpp:499
 msgid "Income"
 msgstr "Доход"
 
-#: src/menu_events.cpp:591
+#: src/menu_events.cpp:604
 #, fuzzy
 msgid "Current Status"
 msgstr "Текущий разработчик"
 
-#: src/menu_events.cpp:592
+#: src/menu_events.cpp:605
 #, fuzzy
 msgid "More >"
 msgstr "Ходы"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:623
 #, fuzzy
 msgid "scenario settings^Leader"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:612
+#: src/menu_events.cpp:625
 #, fuzzy
 msgid "scenario settings^Side"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:613
+#: src/menu_events.cpp:626
 #, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:614
+#: src/menu_events.cpp:627
 #, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:615
+#: src/menu_events.cpp:628
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
 
-#: src/menu_events.cpp:616
+#: src/menu_events.cpp:629
 #, fuzzy
 msgid "scenario settings^Fog"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:617
+#: src/menu_events.cpp:630
 #, fuzzy
 msgid "scenario settings^Shroud"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:662 src/menu_events.cpp:663
+#: src/menu_events.cpp:675 src/menu_events.cpp:676
 #, fuzzy
 msgid "no"
 msgstr "Снег"
 
-#: src/menu_events.cpp:662 src/menu_events.cpp:663
+#: src/menu_events.cpp:675 src/menu_events.cpp:676
 msgid "yes"
 msgstr ""
 
-#: src/menu_events.cpp:670
+#: src/menu_events.cpp:683
 #, fuzzy
 msgid "Scenario Settings"
 msgstr "Начало сценария"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:553
+#: src/menu_events.cpp:715 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "Название:"
 
-#: src/menu_events.cpp:708
+#: src/menu_events.cpp:721
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -6315,93 +6349,93 @@ msgstr ""
 "Сохранение не должно содержать двоеточий, слэшей и обратных слэшей. Выберите "
 "другое имя."
 
-#: src/menu_events.cpp:716
+#: src/menu_events.cpp:729
 #, fuzzy
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "Сохранение не должно содержать двоеточий, слэшей и обратных слэшей. Выберите "
 "другое имя."
 
-#: src/menu_events.cpp:727
+#: src/menu_events.cpp:740
 msgid "Saved"
 msgstr "Сохранено"
 
-#: src/menu_events.cpp:727
+#: src/menu_events.cpp:740
 msgid "The game has been saved"
 msgstr "Игра успешно сохранена"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:561
+#: src/menu_events.cpp:743 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
-#: src/menu_events.cpp:745
+#: src/menu_events.cpp:758
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/menu_events.cpp:750
+#: src/menu_events.cpp:763
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Карта уже существует. Перезаписать ее?"
 
-#: src/menu_events.cpp:762
+#: src/menu_events.cpp:775
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:779
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/menu_events.cpp:859 src/menu_events.cpp:861 src/play_controller.cpp:796
+#: src/menu_events.cpp:872 src/menu_events.cpp:874 src/play_controller.cpp:812
 msgid "Auto-Save"
 msgstr "автосохр"
 
-#: src/menu_events.cpp:866
+#: src/menu_events.cpp:879
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Автосохранение игры невозможно. Сохраните игру вручную."
 
-#: src/menu_events.cpp:894
+#: src/menu_events.cpp:907
 msgid "Chat Log"
 msgstr "Лог чата"
 
-#: src/menu_events.cpp:904
+#: src/menu_events.cpp:917
 msgid "Message:"
 msgstr "Сообщение:"
 
-#: src/menu_events.cpp:905
+#: src/menu_events.cpp:918
 msgid "Send to allies only"
 msgstr "Отправить только союзникам"
 
-#: src/menu_events.cpp:905
+#: src/menu_events.cpp:918
 msgid "Send to observers only"
 msgstr "Отправить только наблюдателям"
 
-#: src/menu_events.cpp:985
+#: src/menu_events.cpp:998
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "золотой"
 msgstr[1] "золотых"
 msgstr[2] "золотых"
 
-#: src/menu_events.cpp:992
+#: src/menu_events.cpp:1005
 msgid "You have no units available to recruit."
 msgstr "Нет соединений для вербовки."
 
-#: src/menu_events.cpp:1004
+#: src/menu_events.cpp:1017
 msgid "Recruit"
 msgstr "Завербовать"
 
-#: src/menu_events.cpp:1005 src/menu_events.cpp:1156
+#: src/menu_events.cpp:1018 src/menu_events.cpp:1169
 msgid "Select unit:"
 msgstr "Выберите соединение:"
 
-#: src/menu_events.cpp:1050
+#: src/menu_events.cpp:1063
 msgid "You don't have enough gold to recruit that unit"
 msgstr "У вас недостаточно золота для покупки данного соединения"
 
-#: src/menu_events.cpp:1109
+#: src/menu_events.cpp:1122
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Вы изолированы от ваших солдат и не можете призвать их"
 
-#: src/menu_events.cpp:1111
+#: src/menu_events.cpp:1124
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6409,19 +6443,19 @@ msgstr ""
 "Нет соединений для призыва\n"
 "(У вас должны быть уцелевшие с прошлого сценария соединения)"
 
-#: src/menu_events.cpp:1118
+#: src/menu_events.cpp:1131
 msgid "Level"
 msgstr "Уровень"
 
-#: src/menu_events.cpp:1150
+#: src/menu_events.cpp:1163
 msgid "Dismiss Unit"
 msgstr "Распустить соединение"
 
-#: src/menu_events.cpp:1155
+#: src/menu_events.cpp:1168
 msgid "Recall"
 msgstr "Призвать"
 
-#: src/menu_events.cpp:1172
+#: src/menu_events.cpp:1185
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
@@ -6433,52 +6467,52 @@ msgstr[1] ""
 msgstr[2] ""
 "У вас должно быть по крайней мере $cost золотых монет для вербовки соединения"
 
-#: src/menu_events.cpp:1506
+#: src/menu_events.cpp:1519
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Вы еще не начинали свой ход. Вы действительно хотите завершить свой ход?"
 
-#: src/menu_events.cpp:1514 src/menu_events.cpp:1519
+#: src/menu_events.cpp:1527 src/menu_events.cpp:1532
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Некоторые соединения еще не сделали ход. Вы действительно хотите завершить "
 "свой ход?"
 
-#: src/menu_events.cpp:1560
+#: src/menu_events.cpp:1573
 msgid "Rename Unit"
 msgstr "Переименовать соединение"
 
-#: src/menu_events.cpp:1597
+#: src/menu_events.cpp:1610
 msgid "Race"
 msgstr "Раса"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1635
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/menu_events.cpp:1666
+#: src/menu_events.cpp:1679
 msgid "Place Label"
 msgstr "Поставить метку"
 
-#: src/menu_events.cpp:1669 src/menu_events.cpp:1672
+#: src/menu_events.cpp:1682 src/menu_events.cpp:1685
 #, fuzzy
 msgid "Label: "
 msgstr "Метка:"
 
-#: src/menu_events.cpp:1674
+#: src/menu_events.cpp:1687
 msgid "Team only"
 msgstr "Только для команд"
 
-#: src/menu_events.cpp:1775
+#: src/menu_events.cpp:1788
 msgid "Search"
 msgstr "Поиск"
 
-#: src/menu_events.cpp:1818
+#: src/menu_events.cpp:1831
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr "Команды: whisper list emote. Наберите /help [команда] для подсказки."
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1883
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6486,18 +6520,18 @@ msgstr ""
 "Отправить приватное сообщение. Вы не можете отправлять сообщения игроку, "
 "участвующему в игре. Использование:  /whisper [ник] [сообщение]"
 
-#: src/menu_events.cpp:1874
+#: src/menu_events.cpp:1887
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Добавить игрока в список друзей. Использование: /list addfriend [аргумент]"
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1889
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Добавить игрока в список игнорирования. Использование: /list ignore "
 "[аргумент]"
 
-#: src/menu_events.cpp:1878
+#: src/menu_events.cpp:1891
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6505,19 +6539,19 @@ msgstr ""
 "Удалить игрока из списка игнорирования. Использование: /list remove "
 "[аргумент]"
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1893
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr "Очистить список игнорирования. Использование: /list clear"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1895
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Показать список игнорирования. Использование: /list display"
 
-#: src/menu_events.cpp:1884
+#: src/menu_events.cpp:1897
 msgid "Unknown subcommand"
 msgstr "Неизвестная подкоманда"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1900
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6529,56 +6563,56 @@ msgstr ""
 "(необязательно) Подкоманды: addfriend addignore remove display clear. "
 "Наберите /help list [подкоманда] для подсказки."
 
-#: src/menu_events.cpp:1890
+#: src/menu_events.cpp:1903
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Отправить эмоцию или действие в чате. Использование: /emote [сообщение]"
 
-#: src/menu_events.cpp:1892
+#: src/menu_events.cpp:1905
 msgid "Unknown command"
 msgstr "Неизвестная команда"
 
-#: src/menu_events.cpp:1904
+#: src/menu_events.cpp:1917
 msgid "Added to ignore list: "
 msgstr "Добавлен в игнор-лист: "
 
-#: src/menu_events.cpp:1906 src/menu_events.cpp:1913 src/menu_events.cpp:1920
+#: src/menu_events.cpp:1919 src/menu_events.cpp:1926 src/menu_events.cpp:1933
 msgid "Invalid username: "
 msgstr "Неправильный ник: "
 
-#: src/menu_events.cpp:1911
+#: src/menu_events.cpp:1924
 msgid "Added to friends list: "
 msgstr "Добавлен в список друзей: "
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1931
 msgid "Removed from list: "
 msgstr "Удален из списка: "
 
-#: src/menu_events.cpp:1944
+#: src/menu_events.cpp:1957
 msgid "There are no players on your friends or ignore list."
 msgstr "В ваших списках друзей или игнорирования нет игроков."
 
-#: src/menu_events.cpp:1954
+#: src/menu_events.cpp:1967
 msgid "Removed from ignore list: "
 msgstr "Удален из игнор-листа: "
 
-#: src/menu_events.cpp:1957
+#: src/menu_events.cpp:1970
 msgid "Removed from friends list: "
 msgstr "Удален из списка друзей: "
 
-#: src/menu_events.cpp:1964
+#: src/menu_events.cpp:1977
 msgid "Unknown command: "
 msgstr "Неизвестная команда: "
 
-#: src/menu_events.cpp:2077
+#: src/menu_events.cpp:2090
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Не могу найти метку или соединение, содержащую текст \"$search\"."
 
-#: src/menu_events.cpp:2258
+#: src/menu_events.cpp:2303
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/menu_events.cpp:2277
+#: src/menu_events.cpp:2322
 msgid "User-Command#3"
 msgstr "Пользовательская команда № 3"
 
@@ -6717,70 +6751,70 @@ msgstr "Компьютерный игрок"
 msgid "(Empty slot)"
 msgstr "(Пустой слот)"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:835
 #, fuzzy
 msgid "Only random sides in the current era."
 msgstr "Только случайные стороны могут быть в текущей эре"
 
-#: src/multiplayer_connect.cpp:838
+#: src/multiplayer_connect.cpp:859
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Не могу найти тип лидера для фракции $faction"
 
-#: src/multiplayer_connect.cpp:875 src/multiplayer_lobby.cpp:622
+#: src/multiplayer_connect.cpp:896 src/multiplayer_lobby.cpp:622
 #: src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
 msgstr "Холл игры"
 
-#: src/multiplayer_connect.cpp:895
+#: src/multiplayer_connect.cpp:916
 msgid "Player/Type"
 msgstr "Игрок/Тип"
 
-#: src/multiplayer_connect.cpp:896
+#: src/multiplayer_connect.cpp:917
 msgid "Faction"
 msgstr "Фракция"
 
-#: src/multiplayer_connect.cpp:897
+#: src/multiplayer_connect.cpp:918
 #, fuzzy
 msgid "Team/Gender"
 msgstr "Защитник"
 
-#: src/multiplayer_connect.cpp:898
+#: src/multiplayer_connect.cpp:919
 msgid "Color"
 msgstr "Цвет"
 
-#: src/multiplayer_connect.cpp:902
+#: src/multiplayer_connect.cpp:923
 msgid "I'm Ready"
 msgstr "Я готов"
 
-#: src/multiplayer_connect.cpp:911
+#: src/multiplayer_connect.cpp:932
 msgid "The scenario is invalid because it has no sides."
 msgstr "Этот сценарий неправильный, потому что в нем нет сторон."
 
-#: src/multiplayer_connect.cpp:1284
+#: src/multiplayer_connect.cpp:1305
 msgid "Network Player"
 msgstr "Сетевой игрок"
 
-#: src/multiplayer_connect.cpp:1285
+#: src/multiplayer_connect.cpp:1306
 msgid "Local Player"
 msgstr "Локальный игрок"
 
-#: src/multiplayer_connect.cpp:1286
+#: src/multiplayer_connect.cpp:1307
 msgid "Computer Player"
 msgstr "Компьютер"
 
-#: src/multiplayer_connect.cpp:1287
+#: src/multiplayer_connect.cpp:1308
 msgid "Empty"
 msgstr "Пусто"
 
-#: src/multiplayer_connect.cpp:1401
+#: src/multiplayer_connect.cpp:1422
 msgid "This is not a multiplayer save"
 msgstr "Это не сетевое сохранение"
 
-#: src/multiplayer_connect.cpp:1495
+#: src/multiplayer_connect.cpp:1516
 msgid "Cannot find era $era"
 msgstr "Не могу найти эру $era"
 
-#: src/multiplayer_connect.cpp:1514
+#: src/multiplayer_connect.cpp:1535
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6788,7 +6822,7 @@ msgstr ""
 "Победа\n"
 "@Убейте лидера(ов) противника"
 
-#: src/multiplayer_connect.cpp:1575
+#: src/multiplayer_connect.cpp:1596
 msgid "Waiting for players to join..."
 msgstr "Ждем подключения игроков..."
 
@@ -7163,16 +7197,16 @@ msgstr ""
 msgid "Initializing display"
 msgstr ""
 
-#: src/play_controller.cpp:133
+#: src/play_controller.cpp:147
 #, fuzzy
 msgid "Starting game"
 msgstr "Завершить игру"
 
-#: src/play_controller.cpp:804
+#: src/play_controller.cpp:820
 msgid "Back to start"
 msgstr "Назад к старту"
 
-#: src/play_controller.cpp:806
+#: src/play_controller.cpp:822
 msgid "Back to turn "
 msgstr "Назад к ходу "
 
@@ -7625,6 +7659,19 @@ msgstr "Помогите нам сделать Веснот лучше!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Включить отправку итогов"
+
+#, fuzzy
+#~ msgid ""
+#~ "Poisoned units lose 8 hitpoints every turn, but they will not die from "
+#~ "poison: poison will never reduce them below 1 hitpoint. Poisoned units "
+#~ "next to a healer will not lose hitpoints on their next turn. If they are "
+#~ "in a village or next to a unit with the 'cures' ability, the poison will "
+#~ "be completely cured on their next turn."
+#~ msgstr ""
+#~ "Отравленные соединения теряют 8 единиц здоровья за каждый ход, но они не "
+#~ "могут умереть от яда; яд никогда не понизит здоровье ниже 1 единицы. "
+#~ "Отравленные соединения могут исцеляться в деревне, либо с помощью другого "
+#~ "соединения, у которого есть способности лечения."
 
 #~ msgid "Contributors"
 #~ msgstr "Участники проекта"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-02 17:30+0100\n"
+"POT-Creation-Date: 2008-01-06 18:23+0100\n"
 "PO-Revision-Date: 2008-01-01 14:11+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -259,7 +259,7 @@ msgstr "Introduzione"
 msgid "Gameplay"
 msgstr "Gameplay"
 
-#: data/core/help.cfg:22 data/core/help.cfg:311
+#: data/core/help.cfg:22 data/core/help.cfg:309
 msgid "Traits"
 msgstr "Caratteristiche"
 
@@ -275,11 +275,11 @@ msgstr "Abilità"
 msgid "Weapon Specials"
 msgstr "Armi speciali"
 
-#: data/core/help.cfg:56 data/core/help.cfg:400
+#: data/core/help.cfg:56 data/core/help.cfg:398
 msgid "Terrains"
 msgstr "Terreni"
 
-#: data/core/help.cfg:63 data/core/help.cfg:652
+#: data/core/help.cfg:63 data/core/help.cfg:650
 msgid "Commands"
 msgstr "Comandi"
 
@@ -1082,7 +1082,8 @@ msgstr ""
 "successivo, riguadagnando tutta la loro energia. In alcuni casi viene data "
 "la possibilità di scegliere il tipo di avanzamento."
 
-#: data/core/help.cfg:261
+#: data/core/help.cfg:259
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1091,15 +1092,11 @@ msgid ""
 "its maximum level, it may have an After Maximum Level Advancement (AMLA) "
 "available to it. The AMLA will modify the unit each time the unit reaches "
 "the experience goal, but the unit will remain the same level. The typical "
-"AMLA effect is for the unit to raise the maximum HP by 3. The first AMLA "
-"will normally be reached with 100 XP gained (80 XP for intelligent units). "
-"However, gaining an AMLA becomes progressively harder for each AMLA the unit "
-"receives, and so it is often more useful to try to advance your lower level "
-"units.\n"
-"\n"
-"Note that only a small number of units, for example the Necrophage, will "
-"actually heal with AMLA effects. Most units just gain the bonus to the "
-"Maximum HP."
+"AMLA effect is for the unit to raise the maximum HP by 3 and full-heal it. "
+"The first AMLA will normally be reached with 100 XP gained (80 XP for "
+"intelligent units). However, gaining an AMLA becomes progressively harder "
+"for each AMLA the unit receives, and so it is usually more useful to try to "
+"advance your lower level units."
 msgstr ""
 "\n"
 "\n"
@@ -1119,11 +1116,11 @@ msgstr ""
 "effetto dell'AOML. La maggior parte delle unità guadagna semplicemente il "
 "bonus ai PF massimi quando giunge al livello di PE richiesto."
 
-#: data/core/help.cfg:266
+#: data/core/help.cfg:264
 msgid "Healing"
 msgstr "Guarigione"
 
-#: data/core/help.cfg:267
+#: data/core/help.cfg:265
 msgid ""
 "In combat, your units will inevitably take damage. When a unit "
 "<ref>dst=experience_and_advancement text=advances</ref>, it will heal fully. "
@@ -1137,7 +1134,7 @@ msgstr ""
 "un nemico. Wesnoth offre vari modi per recuperare l'energia delle unità, "
 "tale recupero avviene all'inizio del tuo turno, prima che inizi l'azione."
 
-#: data/core/help.cfg:269
+#: data/core/help.cfg:267
 msgid ""
 "\n"
 "\n"
@@ -1149,7 +1146,7 @@ msgstr ""
 "Riposo: un'unità che non si muove, che non attacca e che non viene attaccata "
 "recupera 2 PF nel turno successivo."
 
-#: data/core/help.cfg:270
+#: data/core/help.cfg:268
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
@@ -1157,7 +1154,7 @@ msgstr ""
 "\n"
 "Villaggi: un'unità che inizia il turno dentro un villaggio recupera 8 PF."
 
-#: data/core/help.cfg:271
+#: data/core/help.cfg:269
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -1167,7 +1164,7 @@ msgstr ""
 "<ref>dst=ability_regenerates text=Rigenerazione</ref>: Alcune unità (come i "
 "troll) recuperano automaticamente 8PF a ogni turno."
 
-#: data/core/help.cfg:272
+#: data/core/help.cfg:270
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -1179,7 +1176,7 @@ msgstr ""
 "text=Guarigione</ref> guariranno una unità alleata adiacente fino da 4 a 8 "
 "PF per turno e impediranno i danni provenienti dal veleno su questa unità."
 
-#: data/core/help.cfg:273
+#: data/core/help.cfg:271
 msgid ""
 "\n"
 "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> ability "
@@ -1192,7 +1189,7 @@ msgstr ""
 "(preferenzialmente rispetto alla guarigione, se l'unità ha anche questa "
 "abilità)."
 
-#: data/core/help.cfg:275
+#: data/core/help.cfg:273
 msgid ""
 "\n"
 "\n"
@@ -1207,11 +1204,11 @@ msgstr ""
 "l'opzione migliore avrà effetto. Infine, le unità vengono curate "
 "completamente tra uno scenario e l'altro."
 
-#: data/core/help.cfg:280
+#: data/core/help.cfg:278
 msgid "Income and Upkeep"
 msgstr "Entrate e mantenimento"
 
-#: data/core/help.cfg:281
+#: data/core/help.cfg:279
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1223,7 +1220,7 @@ msgstr ""
 "puoi trasportare dell'oro supplementare da uno scenario al seguente. "
 "Esistono due indicatori appositi: entrate e mantenimento."
 
-#: data/core/help.cfg:283
+#: data/core/help.cfg:281
 msgid ""
 "\n"
 "\n"
@@ -1240,7 +1237,7 @@ msgstr ""
 "d'oro per turno. I costi di mantenimento saranno sottratti da questi "
 "guadagni, come verrà spiegato in seguito."
 
-#: data/core/help.cfg:285
+#: data/core/help.cfg:283
 msgid ""
 "\n"
 "\n"
@@ -1260,7 +1257,7 @@ msgstr ""
 "turno. Per esempio, se hai dodici unità di livello uno e dieci villaggi, il "
 "mantenimento ti costerà due pezzi d'oro a turno."
 
-#: data/core/help.cfg:287
+#: data/core/help.cfg:285
 msgid ""
 "\n"
 "\n"
@@ -1274,7 +1271,7 @@ msgstr ""
 "di unità e dieci villaggi, le entrate complessive saranno di 10 pezzi d'oro "
 "per turno."
 
-#: data/core/help.cfg:288
+#: data/core/help.cfg:286
 msgid ""
 "\n"
 "There are two important exceptions to Upkeep: units with the Loyal trait and "
@@ -1292,11 +1289,11 @@ msgstr ""
 "trono») avranno generalmente la qualità leale. L'unità con cui giochi (come "
 "Konrad) saranno quasi sempre condottieri."
 
-#: data/core/help.cfg:293
+#: data/core/help.cfg:291
 msgid "Wrap Up"
 msgstr "Conclusione"
 
-#: data/core/help.cfg:294
+#: data/core/help.cfg:292
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -1310,15 +1307,15 @@ msgstr ""
 "questo punto conosci già tutto ciò di cui hai bisogno per giocare la "
 "campagna «L'erede al trono». Buon divertimento e buona fortuna!"
 
-#: data/core/help.cfg:299
+#: data/core/help.cfg:297
 msgid "ingame_help_item^Contributors"
 msgstr ""
 
-#: data/core/help.cfg:305
+#: data/core/help.cfg:303
 msgid "License"
 msgstr "Licenza"
 
-#: data/core/help.cfg:313
+#: data/core/help.cfg:311
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1331,7 +1328,7 @@ msgstr ""
 "gli attributi a un'unità. Generalmente vengono assegnate all'unità in "
 "maniera casuale quando viene reclutata."
 
-#: data/core/help.cfg:315
+#: data/core/help.cfg:313
 msgid ""
 "\n"
 "\n"
@@ -1347,7 +1344,7 @@ msgstr ""
 "text=veloce</ref>, <ref>dst=traits_resilient text=resistente</ref>, e "
 "<ref>dst=traits_strong text=forte</ref>."
 
-#: data/core/help.cfg:317
+#: data/core/help.cfg:315
 msgid ""
 "\n"
 "\n"
@@ -1361,17 +1358,17 @@ msgstr ""
 "<ref>dst=traits_dextrous text=agile</ref>, <ref>dst=traits_loyal text=leale</"
 "ref> e <ref>dst=traits_undead text=non-morto</ref>."
 
-#: data/core/help.cfg:322
+#: data/core/help.cfg:320
 msgid "Intelligent"
 msgstr "Intelligente"
 
-#: data/core/help.cfg:323
+#: data/core/help.cfg:321
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Le unità intelligenti necessitano il 20% in meno di esperienza delle altre "
 "per salire di livello."
 
-#: data/core/help.cfg:325
+#: data/core/help.cfg:323
 msgid ""
 "\n"
 "\n"
@@ -1391,17 +1388,17 @@ msgstr ""
 "al \"massimo livello\" è più conveniente richiamare unità con qualità più "
 "utili a lungo termine."
 
-#: data/core/help.cfg:330
+#: data/core/help.cfg:328
 msgid "Quick"
 msgstr "Veloce"
 
-#: data/core/help.cfg:331
+#: data/core/help.cfg:329
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
 "Le unità veloci hanno 1 punto di movimento extra, ma il 5% di PF in meno del "
 "normale."
 
-#: data/core/help.cfg:333
+#: data/core/help.cfg:331
 msgid ""
 "\n"
 "\n"
@@ -1421,15 +1418,15 @@ msgstr ""
 "unità veloci sono meno forti del normale e non sono valide per mantenere una "
 "posizione importante."
 
-#: data/core/help.cfg:338
+#: data/core/help.cfg:336
 msgid "Resilient"
 msgstr "Resistente"
 
-#: data/core/help.cfg:339
+#: data/core/help.cfg:337
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr "Le unità resistenti hanno 4 PF più 1 PF per livelo più del solito."
 
-#: data/core/help.cfg:341
+#: data/core/help.cfg:339
 msgid ""
 "\n"
 "\n"
@@ -1446,11 +1443,11 @@ msgstr ""
 "in alcune unità che in altre. Le unità resistenti sono importanti per "
 "mantenere delle posizioni strategiche contro il nemico."
 
-#: data/core/help.cfg:346
+#: data/core/help.cfg:344
 msgid "Strong"
 msgstr "Forte"
 
-#: data/core/help.cfg:347
+#: data/core/help.cfg:345
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1458,7 +1455,7 @@ msgstr ""
 "Le unità forti causano 1 punto di danno in più per ogni colpo andato a segno "
 "nel combattimento ravvicinato e hanno 1 PF in più."
 
-#: data/core/help.cfg:349
+#: data/core/help.cfg:347
 msgid ""
 "\n"
 "\n"
@@ -1475,21 +1472,21 @@ msgstr ""
 "bisogno di un po' di danno extra per trasformare un colpo offensivo in uno "
 "mortale."
 
-#: data/core/help.cfg:354
+#: data/core/help.cfg:352
 msgid "Fearless"
 msgstr "Impavido"
 
-#: data/core/help.cfg:355
+#: data/core/help.cfg:353
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
 "L'avversione alla luce o all'oscurità non ha presa su questi coraggiosi "
 "individui."
 
-#: data/core/help.cfg:360
+#: data/core/help.cfg:358
 msgid "Loyal"
 msgstr "Leale"
 
-#: data/core/help.cfg:361
+#: data/core/help.cfg:359
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1499,7 +1496,7 @@ msgstr ""
 "un costo di mantenimento alla fine di ogni turno, questo costo è pari al "
 "loro livello. Le unità leali non hanno bisogno di questo costo."
 
-#: data/core/help.cfg:363
+#: data/core/help.cfg:361
 msgid ""
 "\n"
 "\n"
@@ -1519,11 +1516,11 @@ msgstr ""
 "campagne, quando è necessario risparmiare per giungere alla fine della "
 "missione. Questa caratteristica non viene mai data alle unità reclutate."
 
-#: data/core/help.cfg:368
+#: data/core/help.cfg:366
 msgid "trait^Undead"
 msgstr "Non-morto"
 
-#: data/core/help.cfg:369
+#: data/core/help.cfg:367
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1531,7 +1528,7 @@ msgstr ""
 "I non-morti sono immuni al veleno, ed inoltre gli attacchi di assorbimento e "
 "contagio non funzionano su di loro."
 
-#: data/core/help.cfg:371
+#: data/core/help.cfg:369
 msgid ""
 "\n"
 "\n"
@@ -1547,11 +1544,11 @@ msgstr ""
 "non ha alcun effetto su di loro. Questo li rende preziosissimi nel "
 "combattere con i nemici che usano il veleno per indebolire l'avversario."
 
-#: data/core/help.cfg:376
+#: data/core/help.cfg:374
 msgid "trait^Mechanical"
 msgstr "Meccanica"
 
-#: data/core/help.cfg:377
+#: data/core/help.cfg:375
 msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
@@ -1559,7 +1556,7 @@ msgstr ""
 "Le unità meccaniche sono immuni al veleno; inoltre gli attacchi di "
 "assorbimento e contagio non funzionano su di loro."
 
-#: data/core/help.cfg:379
+#: data/core/help.cfg:377
 msgid ""
 "\n"
 "\n"
@@ -1573,18 +1570,18 @@ msgstr ""
 "Poiché le unità meccaniche non sono vive, sono immuni agli attacchi di "
 "assorbimento, di contagio ed al veleno."
 
-#: data/core/help.cfg:384
+#: data/core/help.cfg:382
 msgid "Dextrous"
 msgstr "Agile"
 
-#: data/core/help.cfg:385
+#: data/core/help.cfg:383
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Le unità agili causano un punto di danno in più per ogni colpo andato a "
 "segno nel combattimento a distanza."
 
-#: data/core/help.cfg:387
+#: data/core/help.cfg:385
 msgid ""
 "\n"
 "\n"
@@ -1601,11 +1598,11 @@ msgstr ""
 "superiore ai propri simili. Questi elfi infliggono un punto danno "
 "addizionale per ogni colpo andato a segno con l'arco."
 
-#: data/core/help.cfg:392
+#: data/core/help.cfg:390
 msgid "Healthy"
 msgstr "Sano"
 
-#: data/core/help.cfg:393
+#: data/core/help.cfg:391
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
@@ -1613,7 +1610,7 @@ msgstr ""
 "Rinomati per la loro vitalità, alcuni nani sono più robusti di altri e "
 "recuperano energia anche mentre si spostano."
 
-#: data/core/help.cfg:395
+#: data/core/help.cfg:393
 msgid ""
 "\n"
 "\n"
@@ -1625,11 +1622,11 @@ msgstr ""
 "Le unità sane hanno 2 PF più del solito ed il riposo cura 2 PF in più dopo "
 "ogni turno in cui non hanno combattuto."
 
-#: data/core/help.cfg:406
+#: data/core/help.cfg:404
 msgid "Grassland"
 msgstr "Prateria"
 
-#: data/core/help.cfg:411
+#: data/core/help.cfg:409
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -1649,11 +1646,11 @@ msgstr ""
 "La maggior parte delle unità hanno una percentuale di difesa che va dal 30% "
 "al 40% sulla prateria."
 
-#: data/core/help.cfg:416
+#: data/core/help.cfg:414
 msgid "Road"
 msgstr "Strada"
 
-#: data/core/help.cfg:419
+#: data/core/help.cfg:417
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads are identical to "
@@ -1663,11 +1660,11 @@ msgstr ""
 "passaggio di molti viaggiatori su di essi. Nel gioco esse hanno le stesse "
 "caratteristiche della <ref>dst=terrain_grassland text=prateria</ref>."
 
-#: data/core/help.cfg:424
+#: data/core/help.cfg:422
 msgid "Forest"
 msgstr "Foresta"
 
-#: data/core/help.cfg:431
+#: data/core/help.cfg:429
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -1701,11 +1698,11 @@ msgstr ""
 "foreste.\n"
 "\n"
 
-#: data/core/help.cfg:436
+#: data/core/help.cfg:434
 msgid "Hills"
 msgstr "Colline"
 
-#: data/core/help.cfg:441
+#: data/core/help.cfg:439
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -1728,11 +1725,11 @@ msgstr ""
 "Gran parte delle unità hanno il 50% di difesa sulle colline, mentre la "
 "cavalleria solo il 40%. I nani godono di una difesa pari al 60% su di esse."
 
-#: data/core/help.cfg:446
+#: data/core/help.cfg:444
 msgid "Mountains"
 msgstr "Montagne"
 
-#: data/core/help.cfg:451
+#: data/core/help.cfg:449
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -1756,11 +1753,11 @@ msgstr ""
 "Quasi tutte le unità ricevono circa il 60% di difesa nelle montagne mentre i "
 "nani giungono sino al 70%."
 
-#: data/core/help.cfg:456
+#: data/core/help.cfg:454
 msgid "Swamp"
 msgstr "Palude"
 
-#: data/core/help.cfg:461
+#: data/core/help.cfg:459
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -1781,11 +1778,11 @@ msgstr ""
 "Gran parte delle unità hanno il 30% di difesa nelle paludi. Nereidi, naga e "
 "sauri godono generalmente del 60%."
 
-#: data/core/help.cfg:466
+#: data/core/help.cfg:464
 msgid "Shallow Water"
 msgstr "Acque basse"
 
-#: data/core/help.cfg:471
+#: data/core/help.cfg:469
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -1808,11 +1805,11 @@ msgstr ""
 "La maggior parte delle unità ricevono dal 20 al 30% di difesa nell'acqua "
 "bassa, mentre sia naga che nereidi ricevono il 60%."
 
-#: data/core/help.cfg:476
+#: data/core/help.cfg:474
 msgid "Deep Water"
 msgstr "Acque profonde"
 
-#: data/core/help.cfg:481
+#: data/core/help.cfg:479
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -1828,11 +1825,11 @@ msgstr ""
 "I nereidi ed i naga ricevono ambedue il 50% di difesa nelle acque profonde e "
 "hanno massima libertà di movimento."
 
-#: data/core/help.cfg:486
+#: data/core/help.cfg:484
 msgid "Snow"
 msgstr "Neve"
 
-#: data/core/help.cfg:491
+#: data/core/help.cfg:489
 msgid ""
 "Snow represents any flat area that is frozen, either permanently (like "
 "tundra), or temporarily (like snow-covered grassland). Most units are slowed "
@@ -1848,11 +1845,11 @@ msgstr ""
 "\n"
 "La maggior parte delle unità hanno dal 20% al 40% di difesa nella neve."
 
-#: data/core/help.cfg:496
+#: data/core/help.cfg:494
 msgid "Ice"
 msgstr "Ghiaccio"
 
-#: data/core/help.cfg:499
+#: data/core/help.cfg:497
 msgid ""
 "Ice represents any body of frozen water. For gameplay purposes, it is "
 "identical to <ref>dst=terrain_tundra text=Snow</ref>. Note that swimming "
@@ -1863,11 +1860,11 @@ msgstr ""
 "che le unità che nuotano, anche quelle che respirano sott'acqua, non possono "
 "nuotare al di sotto del ghiaccio."
 
-#: data/core/help.cfg:504
+#: data/core/help.cfg:502
 msgid "Castle"
 msgstr "Castello"
 
-#: data/core/help.cfg:511
+#: data/core/help.cfg:509
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -1890,11 +1887,11 @@ msgstr ""
 "La maggior parte delle unità ha circa il 60% di difesa nel castello.\n"
 "\n"
 
-#: data/core/help.cfg:516
+#: data/core/help.cfg:514
 msgid "Sand"
 msgstr "Sabbia"
 
-#: data/core/help.cfg:521
+#: data/core/help.cfg:519
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -1909,11 +1906,11 @@ msgstr ""
 "\n"
 "La maggior parte delle unità hanno dal 20% al 40% di difesa sulla sabbia."
 
-#: data/core/help.cfg:526
+#: data/core/help.cfg:524
 msgid "Desert"
 msgstr "Deserto"
 
-#: data/core/help.cfg:529
+#: data/core/help.cfg:527
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -1923,11 +1920,11 @@ msgstr ""
 "cumuli si sabbia o alle spiagge, comunque influiscono in maniera identica "
 "sul gioco. Leggi <ref>dst=terrain_sand text=sabbia</ref> per saperne di più."
 
-#: data/core/help.cfg:534
+#: data/core/help.cfg:532
 msgid "Cave"
 msgstr "Caverna"
 
-#: data/core/help.cfg:539
+#: data/core/help.cfg:537
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -1951,11 +1948,11 @@ msgstr ""
 "La maggior parte delle unità riceve dal 20 al 40% di difesa nelle caverne, "
 "mentre i nani hanno il 50%."
 
-#: data/core/help.cfg:544
+#: data/core/help.cfg:542
 msgid "Rockbound Cave"
 msgstr "Breccia di cava"
 
-#: data/core/help.cfg:549
+#: data/core/help.cfg:547
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -1982,11 +1979,11 @@ msgstr ""
 "rocciose, mentre la cavalleria è limitata al 40%. I nani ottengono il 60% in "
 "queste cave."
 
-#: data/core/help.cfg:554
+#: data/core/help.cfg:552
 msgid "Illuminated Cave"
 msgstr "Grotta illuminata"
 
-#: data/core/help.cfg:557
+#: data/core/help.cfg:555
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -1998,11 +1995,11 @@ msgstr ""
 "legali e azzera quello delle unità caotiche. Per il resto questo terreno "
 "identico al terreno normale della caverna."
 
-#: data/core/help.cfg:562
+#: data/core/help.cfg:560
 msgid "Mushroom Grove"
 msgstr "Campo di funghi"
 
-#: data/core/help.cfg:567
+#: data/core/help.cfg:565
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2026,11 +2023,11 @@ msgstr ""
 "La maggior parte delle unità riceve dal 50% al 60% di difesa nei campi di "
 "funghi, mentre la cavalleria ne riceve solo il 20%."
 
-#: data/core/help.cfg:572
+#: data/core/help.cfg:570
 msgid "Savanna"
 msgstr "Savana"
 
-#: data/core/help.cfg:575
+#: data/core/help.cfg:573
 msgid ""
 "Savannas are plains of tall grass, found in the warmer climates of the "
 "world. For gameplay purposes, they are identical to "
@@ -2040,11 +2037,11 @@ msgstr ""
 "mondo. Ai fini del gioco, la savana è identica alla "
 "<ref>dst=terrain_grassland text=prateria</ref>."
 
-#: data/core/help.cfg:580 src/terrain.cpp:129
+#: data/core/help.cfg:578 src/terrain.cpp:129
 msgid "Village"
 msgstr "Villaggio"
 
-#: data/core/help.cfg:587
+#: data/core/help.cfg:585
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2068,11 +2065,11 @@ msgstr ""
 "mentre la cavalleria riceve solo il 40%.\n"
 "\n"
 
-#: data/core/help.cfg:592
+#: data/core/help.cfg:590
 msgid "Submerged Village"
 msgstr "Villaggio sommerso"
 
-#: data/core/help.cfg:597
+#: data/core/help.cfg:595
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2094,11 +2091,11 @@ msgstr ""
 "I nereidi e le naga hanno il 60% di difesa nei villaggi sommersi, mentre le "
 "unità terricole hanno normalmente una bassa difesa."
 
-#: data/core/help.cfg:602
+#: data/core/help.cfg:600
 msgid "Chasm"
 msgstr "Abisso"
 
-#: data/core/help.cfg:605
+#: data/core/help.cfg:603
 msgid ""
 "A chasm is a gorge in the ground, leading to depths unknown. Chasms are "
 "noted for sheer walls which would take days to traverse. As far as gameplay "
@@ -2110,11 +2107,11 @@ msgstr ""
 "impossibile l'attraversamento. Per quanto riguarda il gioco, solo le unità "
 "capaci di volare possono attraversare questo terreno."
 
-#: data/core/help.cfg:610
+#: data/core/help.cfg:608
 msgid "Lava"
 msgstr "Lava"
 
-#: data/core/help.cfg:613
+#: data/core/help.cfg:611
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. This "
 "terrain can only be crossed by those units capable of flying a considerable "
@@ -2129,11 +2126,11 @@ msgstr ""
 "vantaggio per l'attacco delle unità legali e rimuove il vantaggio per le "
 "unità caotiche."
 
-#: data/core/help.cfg:618
+#: data/core/help.cfg:616
 msgid "River Ford"
 msgstr "Guado sul fiume"
 
-#: data/core/help.cfg:621
+#: data/core/help.cfg:619
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2149,11 +2146,11 @@ msgstr ""
 "quello che offre la migliore difesa e la maggiore mobilità per le unità su "
 "di esso."
 
-#: data/core/help.cfg:626
+#: data/core/help.cfg:624
 msgid "Bridge"
 msgstr "Ponte"
 
-#: data/core/help.cfg:631
+#: data/core/help.cfg:629
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2180,11 +2177,11 @@ msgstr ""
 "trovano sopra. Ricorda che le unità nuotatrici e le unità terrestri non "
 "possono occupare un esagono allo stesso tempo."
 
-#: data/core/help.cfg:636
+#: data/core/help.cfg:634
 msgid "Cave Wall"
 msgstr "Parete di caverna"
 
-#: data/core/help.cfg:639
+#: data/core/help.cfg:637
 msgid ""
 "Cave walls are made of solid stone, renowned for its ability to impede even "
 "the most determined traveler."
@@ -2192,11 +2189,11 @@ msgstr ""
 "Le pareti delle caverne sono fatte di solida pietra, nota per la sua "
 "capacità di bloccare anche il viaggiatore più determinato."
 
-#: data/core/help.cfg:644
+#: data/core/help.cfg:642
 msgid "Impassable Mountain"
 msgstr "Montagna invalicabili"
 
-#: data/core/help.cfg:647
+#: data/core/help.cfg:645
 msgid ""
 "Impassable mountains are so tall and steep that they are constantly wreathed "
 "in cloud. To cross such mountains is practically impossible. Even flying "
@@ -2207,11 +2204,11 @@ msgstr ""
 "impossibile. Anche le creature volanti non riescono ad affrontare i picchi "
 "frastagliati e l'aria rarefatta di tali altitudini."
 
-#: data/core/help.cfg:658
+#: data/core/help.cfg:656
 msgid "General commands"
 msgstr "Comandi generali"
 
-#: data/core/help.cfg:662
+#: data/core/help.cfg:660
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2221,70 +2218,7 @@ msgstr ""
 "Cancella i messaggi di chat.\n"
 "\n"
 
-#: data/core/help.cfg:665
-msgid ""
-"\n"
-"Toggle player on side between human and AI player. The player/client who "
-"controls that side needs to issue this command. Defaults to the currently "
-"active side.\n"
-"\n"
-msgstr ""
-"\n"
-"Scambia la fazione tra giocatori e computer. Questo comando deve essere dato "
-"dal giocatore che controlla questa fazione. Se non indichi la fazione, si "
-"assume sia quella attualmentye attiva.\n"
-
-#: data/core/help.cfg:668
-msgid ""
-"\n"
-"Quit the scenario (without prompting).\n"
-"\n"
-msgstr ""
-"\n"
-"Abbandona lo scenario (senza preavviso).\n"
-"\n"
-
-#: data/core/help.cfg:671
-msgid ""
-"\n"
-"Save the game (without prompting).\n"
-"\n"
-msgstr ""
-"\n"
-"Salva la partita (senza preavviso).\n"
-"\n"
-
-#: data/core/help.cfg:674
-msgid ""
-"\n"
-"Save the game and quit the scenario (without prompting).\n"
-"\n"
-msgstr ""
-"\n"
-"Salva la partita e abbandona lo scenario (senza preavviso).\n"
-"\n"
-
-#: data/core/help.cfg:677
-msgid ""
-"\n"
-"Redraw the screen.\n"
-"\n"
-msgstr ""
-"\n"
-"Ridisegna la schermata.\n"
-"\n"
-
-#: data/core/help.cfg:680
-msgid ""
-"\n"
-"Toggles the display of the current frames per second.\n"
-"\n"
-msgstr ""
-"\n"
-"Mostra o nasconde i quadri al secondo attuali.\n"
-"\n"
-
-#: data/core/help.cfg:684
+#: data/core/help.cfg:664
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2298,15 +2232,89 @@ msgstr ""
 "La modalità debug si disattiva abbandonando la partita o usando :nodebug.\n"
 "\n"
 
-#: data/core/help.cfg:685
-msgid "Bring up theme selection menu."
+#: data/core/help.cfg:667
+msgid ""
+"\n"
+"Toggle player on side between human and AI player. The player/client who "
+"controls that side needs to issue this command. Defaults to the currently "
+"active side.\n"
+"\n"
+msgstr ""
+"\n"
+"Scambia la fazione tra giocatori e computer. Questo comando deve essere dato "
+"dal giocatore che controlla questa fazione. Se non indichi la fazione, si "
+"assume sia quella attualmentye attiva.\n"
+
+#: data/core/help.cfg:670
+msgid ""
+"\n"
+"Toggles the display of the current frames per second.\n"
+"\n"
+msgstr ""
+"\n"
+"Mostra o nasconde i quadri al secondo attuali.\n"
+"\n"
+
+#: data/core/help.cfg:673
+msgid ""
+"\n"
+"Switch a log domain to a different log level.\n"
+"\n"
+msgstr ""
+
+#: data/core/help.cfg:676
+msgid ""
+"\n"
+"Redraw the screen.\n"
+"\n"
+msgstr ""
+"\n"
+"Ridisegna la schermata.\n"
+"\n"
+
+#: data/core/help.cfg:679
+#, fuzzy
+msgid ""
+"\n"
+"Bring up theme selection menu.\n"
+"\n"
 msgstr "Richiama il menù per la selezione dei temi."
 
-#: data/core/help.cfg:690
+#: data/core/help.cfg:682
+msgid ""
+"\n"
+"Quit the scenario (without prompting).\n"
+"\n"
+msgstr ""
+"\n"
+"Abbandona lo scenario (senza preavviso).\n"
+"\n"
+
+#: data/core/help.cfg:685
+msgid ""
+"\n"
+"Save the game (without prompting).\n"
+"\n"
+msgstr ""
+"\n"
+"Salva la partita (senza preavviso).\n"
+"\n"
+
+#: data/core/help.cfg:686
+#, fuzzy
+msgid ""
+"\n"
+"Save the game and quit the scenario (without prompting)."
+msgstr ""
+"\n"
+"Salva la partita e abbandona lo scenario (senza preavviso).\n"
+"\n"
+
+#: data/core/help.cfg:691
 msgid "Multiplayer commands"
 msgstr "Comandi per il multigiocatore"
 
-#: data/core/help.cfg:694
+#: data/core/help.cfg:695
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -2318,19 +2326,20 @@ msgstr ""
 "associato al suo nome utente.\n"
 "\n"
 
-#: data/core/help.cfg:697
+#: data/core/help.cfg:696
+#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
-"username (write here the nick of the player or observer).\n"
-"\n"
+"username (write here the nick of the player or observer). You can check what "
+"side belongs to which player in the "
 msgstr ""
 "\n"
 "Cambia il controllo del lato (scrivere qui il numero del lato) all'utente "
 "(scrivere qui il nome del giocatore o dell'osservatore).\n"
 "\n"
 
-#: data/core/help.cfg:700
+#: data/core/help.cfg:701
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. Generally "
@@ -2344,7 +2353,7 @@ msgstr ""
 "collegamento o altro.\n"
 "\n"
 
-#: data/core/help.cfg:703
+#: data/core/help.cfg:704
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -2356,7 +2365,7 @@ msgstr ""
 "verrà mostrato l'elenco degli utenti che non possono parlare.\n"
 "\n"
 
-#: data/core/help.cfg:704
+#: data/core/help.cfg:705
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off."
@@ -2364,11 +2373,11 @@ msgstr ""
 "\n"
 "Attiva/Disattiva la modalità silenziosa per tutti gli osservatori."
 
-#: data/core/help.cfg:709
+#: data/core/help.cfg:710
 msgid "Debug mode commands"
 msgstr "Comandi di debug"
 
-#: data/core/help.cfg:713
+#: data/core/help.cfg:714
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -2378,7 +2387,7 @@ msgstr ""
 "Crea un'unità del tipo specificato sull'esagono selezionato.\n"
 "\n"
 
-#: data/core/help.cfg:716
+#: data/core/help.cfg:717
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -2388,7 +2397,7 @@ msgstr ""
 "Mostra o nasconde la nebbia/oscurità per la fazione attuale.\n"
 "\n"
 
-#: data/core/help.cfg:719
+#: data/core/help.cfg:720
 msgid ""
 "\n"
 "Adds the specified amount to the current side's gold.\n"
@@ -2398,7 +2407,7 @@ msgstr ""
 "Aggiunge l'ammontare specificato all'oro della fazione attuale.\n"
 "\n"
 
-#: data/core/help.cfg:722
+#: data/core/help.cfg:723
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -2408,7 +2417,7 @@ msgstr ""
 "Imposta manualmente una variabile di stato del gioco ad un valore.\n"
 "\n"
 
-#: data/core/help.cfg:725
+#: data/core/help.cfg:726
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -2418,7 +2427,7 @@ msgstr ""
 "Mostra una variabile di stato del gioco.\n"
 "\n"
 
-#: data/core/help.cfg:728
+#: data/core/help.cfg:729
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -2428,7 +2437,7 @@ msgstr ""
 "Attiva manualmente l'evento specificato.\n"
 "\n"
 
-#: data/core/help.cfg:729
+#: data/core/help.cfg:730
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -2693,11 +2702,11 @@ msgstr ""
 "L'unità nemica che scopre per prima questa unità perde immediatamente tutti "
 "i punti movimento rimanenti."
 
-#: data/core/macros/abilities.cfg:471
+#: data/core/macros/abilities.cfg:474
 msgid "feeding"
 msgstr "nutrimento"
 
-#: data/core/macros/abilities.cfg:473
+#: data/core/macros/abilities.cfg:476
 msgid ""
 "Feeding:\n"
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
@@ -2707,15 +2716,15 @@ msgstr ""
 "Quest'unità riceve 1 punto ferita al suo massimo quando uccide un'unità "
 "vivente."
 
-#: data/core/macros/abilities.cfg:497
+#: data/core/macros/abilities.cfg:500
 msgid "+1 max HP"
 msgstr "+1 PF max."
 
-#: data/core/macros/abilities.cfg:526
+#: data/core/macros/abilities.cfg:530
 msgid "berserk"
 msgstr "furia"
 
-#: data/core/macros/abilities.cfg:528
+#: data/core/macros/abilities.cfg:532
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -2726,11 +2735,11 @@ msgstr ""
 "sino alla morte di uno dei due combattenti o, qualora le due unità "
 "sopravvivano, sino al termine del trentesimo attacco."
 
-#: data/core/macros/abilities.cfg:538
+#: data/core/macros/abilities.cfg:542
 msgid "backstab"
 msgstr "attacco alle spalle"
 
-#: data/core/macros/abilities.cfg:540
+#: data/core/macros/abilities.cfg:544
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if there is an enemy of the target on the "
@@ -2742,11 +2751,11 @@ msgstr ""
 "bersaglio e non è sotto l'effetto di abilità limitanti (esempio: trasformata "
 "in pietra)."
 
-#: data/core/macros/abilities.cfg:552 data/core/macros/abilities.cfg:564
+#: data/core/macros/abilities.cfg:556 data/core/macros/abilities.cfg:568
 msgid "plague"
 msgstr "contagio"
 
-#: data/core/macros/abilities.cfg:554
+#: data/core/macros/abilities.cfg:558
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2758,7 +2767,7 @@ msgstr ""
 "un'unità identica e della stessa squadra dell'unità con l'attacco Contagio. "
 "Non funziona sui non morti e sulle unità nei villaggi."
 
-#: data/core/macros/abilities.cfg:566
+#: data/core/macros/abilities.cfg:570
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -2770,11 +2779,11 @@ msgstr ""
 "morto che cammina della squadra dell'unità che l'ha uccisa. Questo non vale "
 "per i non morti e per le unità nei villaggi."
 
-#: data/core/macros/abilities.cfg:576
+#: data/core/macros/abilities.cfg:580
 msgid "slows"
 msgstr "rallenta"
 
-#: data/core/macros/abilities.cfg:578
+#: data/core/macros/abilities.cfg:582
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -2788,11 +2797,11 @@ msgstr ""
 "movimento delle unità rallentate è raddoppiato. Un'unità rallentata avrà "
 "l'icona di una lumaca nella barra laterale quando è selezionata."
 
-#: data/core/macros/abilities.cfg:587
+#: data/core/macros/abilities.cfg:591
 msgid "stones"
 msgstr "pietrifica"
 
-#: data/core/macros/abilities.cfg:589
+#: data/core/macros/abilities.cfg:593
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2802,11 +2811,11 @@ msgstr ""
 "Questo attacco trasforma il bersaglio in pietra. Le unità trasformate in "
 "pietra non possono muoversi o attaccare."
 
-#: data/core/macros/abilities.cfg:598
+#: data/core/macros/abilities.cfg:602
 msgid "marksman"
 msgstr "tiro di precisione"
 
-#: data/core/macros/abilities.cfg:600
+#: data/core/macros/abilities.cfg:604
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -2815,11 +2824,11 @@ msgstr ""
 "Usato in attacco questo attacco ha almeno il 60% di probabilità di andare a "
 "segno."
 
-#: data/core/macros/abilities.cfg:612
+#: data/core/macros/abilities.cfg:616
 msgid "magical"
 msgstr "magico"
 
-#: data/core/macros/abilities.cfg:614
+#: data/core/macros/abilities.cfg:618
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -2829,11 +2838,11 @@ msgstr ""
 "Questo attacco ha sempre una probabilità del 70% di andare a segno, "
 "indipendentemente dalle capacità difensive dell'unità attaccata."
 
-#: data/core/macros/abilities.cfg:625
+#: data/core/macros/abilities.cfg:629
 msgid "swarm"
 msgstr "sciame"
 
-#: data/core/macros/abilities.cfg:627
+#: data/core/macros/abilities.cfg:631
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -2847,11 +2856,11 @@ msgstr ""
 "Per esempio un'unità con 3/4 dei suoi massimi punti ferita otterrebbe 3/4 "
 "del numero di colpi."
 
-#: data/core/macros/abilities.cfg:636
+#: data/core/macros/abilities.cfg:640
 msgid "charge"
 msgstr "carica"
 
-#: data/core/macros/abilities.cfg:638
+#: data/core/macros/abilities.cfg:642
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -2861,11 +2870,11 @@ msgstr ""
 "Questo attacco procura il doppio del danno al bersaglio, ma rende possibile "
 "subire il doppio dei danni al contrattacco del nemico."
 
-#: data/core/macros/abilities.cfg:650
+#: data/core/macros/abilities.cfg:654
 msgid "drains"
 msgstr "assorbi"
 
-#: data/core/macros/abilities.cfg:652
+#: data/core/macros/abilities.cfg:656
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -2875,11 +2884,11 @@ msgstr ""
 "Questa unità assorbe energia vitale dalla unità vicine curando se stessa per "
 "la metà del danno procurato in attacco (arrotondato per difetto)."
 
-#: data/core/macros/abilities.cfg:661
+#: data/core/macros/abilities.cfg:665
 msgid "firststrike"
 msgstr "attacco improvviso"
 
-#: data/core/macros/abilities.cfg:663
+#: data/core/macros/abilities.cfg:667
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -2888,11 +2897,11 @@ msgstr ""
 "Questa unità colpisce sempre per prima con questo attacco, anche se si sta "
 "difendendo."
 
-#: data/core/macros/abilities.cfg:672
+#: data/core/macros/abilities.cfg:676
 msgid "poison"
 msgstr "veleno"
 
-#: data/core/macros/abilities.cfg:674
+#: data/core/macros/abilities.cfg:678
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -4657,6 +4666,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:164 data/hardwired/tips.cfg:172
 #: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
 #: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
+#: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
 msgid "- The Wesnoth Tactical Guide"
 msgstr "- La guida tattica di Wesnoth"
 
@@ -4677,9 +4687,9 @@ msgstr "- Re Konrad, 536AW"
 
 #: data/hardwired/tips.cfg:15
 msgid ""
-"The encircling tactic by two units is very powerful, particularly against "
-"long range units. By placing two units on opposite sides of an opposing "
-"unit, their zones of control limit it to one hex move in any direction."
+"The encircling tactic is very powerful, particularly against fast opponents. "
+"By placing two units on opposite sides of an enemy, their zones of control "
+"will restrict it to one hex of movement in any direction."
 msgstr ""
 
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
@@ -4687,10 +4697,11 @@ msgid "- Memoirs of Gweddry, 627YW"
 msgstr "- Memorie di Gweddry, 627AW"
 
 #: data/hardwired/tips.cfg:19
+#, fuzzy
 msgid ""
-"You can access the 'recruit' and 'recall' commands by right-clicking on a "
+"You can access the 'Recruit' and 'Recall' commands by right-clicking on a "
 "castle tile. That will let you chose which hex you put a new unit in. "
-"Placing units wisely can sometimes let you get to a village a turn earlier."
+"Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
 "Puoi accedere ai comandi «recluta» e «richiama» facendo clic col tasto destro "
 "su una casella di tipo castello. Ciò ti permette di decidere su quale "
@@ -4699,8 +4710,8 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:23
 msgid ""
-"There are some helpful summary screens in the main menu: the 'Status Table', "
-"for instance, will let you know how your enemies are doing, and how you are "
+"There are some helpful summary screens in the main menu: for instance, the "
+"'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
 
@@ -4751,9 +4762,10 @@ msgid "- The Wesnoth Community"
 msgstr "- La comunità di Wesnoth"
 
 #: data/hardwired/tips.cfg:43
+#, fuzzy
 msgid ""
-"Lawful units fight better at day, and chaotic units fight better at night. "
-"Neutral units are unaffected by day and night."
+"Lawful units fight better by day, and chaotic units fight better at night. "
+"Neutral units are unaffected by the time of day."
 msgstr ""
 "Le unità legali combattono meglio di giorno e le unità caotiche combattono "
 "meglio di notte. Le unità neutrali non sono affette dai cambiamenti del "
@@ -4777,10 +4789,10 @@ msgstr "- Manuale di analisi tattica volume I - Haldric II, 42AW"
 
 #: data/hardwired/tips.cfg:51
 msgid ""
-"If you are playing in the fog or with a shroud, you don't know what you're "
-"facing. In this case, long-range scouting units are worth their cost. Try to "
-"choose scouts that can easily move across the surrounding terrain, because "
-"units see as far as they can move in one turn."
+"If you are playing with 'Shroud' or 'Fog of War' turned on, you won't know "
+"what you're facing. In this case, long-range scouting units are worth their "
+"cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units see as far as they can move in one turn."
 msgstr ""
 
 #: data/hardwired/tips.cfg:55
@@ -4810,18 +4822,12 @@ msgstr ""
 
 #: data/hardwired/tips.cfg:63
 msgid ""
-"Poisoned units lose 8 hitpoints every turn, but they will not die from "
-"poison: poison will never reduce them below 1 hitpoint. Poisoned units next "
-"to a healer will not lose hitpoints on their next turn. If they are in a "
-"village or next to a unit with the 'cures' ability, the poison will be "
-"completely cured on their next turn."
+"Poisoned units will lose eight hitpoints every turn until they are one point "
+"from death. They will remain at death's door until the poison is removed. "
+"Healers can prevent a poisoned unit from deteriorating, but the poison will "
+"not be removed unless the unit regenerates, or spends a turn in a village or "
+"next to a unit with the 'Cures' ability."
 msgstr ""
-"Le unità avvelenate perdono 8 punti ferita ogni turno, ma non possono morire "
-"di solo veleno: il veleno non ridurrà mai i punti ferita sotto il valore di "
-"1. Se si trovano vicino a un guaritore non perdono punti fderita all'inizio "
-"del turno. Se si trovano in un villaggio o vicino a un'unità che possiede "
-"l'abilità \"cura\", il veleno verrà completamente neutralizzato all'inizio "
-"del turno."
 
 #: data/hardwired/tips.cfg:67
 msgid ""
@@ -4834,12 +4840,13 @@ msgstr ""
 "esperta e potente nel combattimento."
 
 #: data/hardwired/tips.cfg:71
+#, fuzzy
 msgid ""
-"Units have a Zone of Control in each of the hexes next to them. If a unit "
-"moves into an enemy's Zone of Control, it may not move any further that "
-"turn. This means that units can have two empty hexes between them and still "
-"create a barrier to the enemy. (Level 0 units are too frail to control a "
-"zone; and skirmisher units are skilled enough to ignore these zones.)"
+"Units of level one and higher have a 'Zone of Control' in each of the hexes "
+"next to them. If a unit moves into an enemy's zone of control, it may not "
+"move any further that turn. This means that units can have two empty hexes "
+"between them and still create a barrier to the enemy. However, skirmishers "
+"are skilled enough to ignore these zones."
 msgstr ""
 "Tutte le unità hanno una \"zona di controllo\" in ciascuno degli esagoni "
 "adiacenti. Se un'unità si muove all'interno della zona di controllo di un "
@@ -4848,11 +4855,12 @@ msgstr ""
 "esperti da potersi muovere liberamente in queste zone)."
 
 #: data/hardwired/tips.cfg:75
+#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain it is standing in, however magical attacks have a 70% "
-"chance to hit both when attacking and defending. Marksman attacks have at "
-"least 60% chance to hit when attacking."
+"itself in the terrain in which it is standing. However, magical attacks "
+"always have a 70% chance to hit, and units with the 'marksman' ability will "
+"always have at least 60% chance to hit when attacking on their turn."
 msgstr ""
 "La probabilità di colpire un'unità di solito dipende da come quell'unità si "
 "può difendere sul terreno su cui si trova, tuttavia gli attacchi magici "
@@ -4865,27 +4873,31 @@ msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 msgstr "- Manuale di analisi tattica volume II - Haldric II, 43AW"
 
 #: data/hardwired/tips.cfg:79
+#, fuzzy
 msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+"Units stationed in villages will either heal eight hitpoints at the "
+"beginning of their turn, or will recover from poisoning."
 msgstr ""
 "Le unità che si trovano in un villaggio vengono curate di 8 punti ferita "
 "all'inizio del loro turno."
 
 #: data/hardwired/tips.cfg:83
+#, fuzzy
 msgid ""
-"Don't move an injured unit if you don't have to--let it rest. If a unit does "
-"not move or attack, it will recover 2 hit points at the beginning of its "
-"next turn."
+"Don't move an injured unit if you don't have to - let it rest. If a unit "
+"does not move or attack, it will recover two hitpoints at the beginning of "
+"its next turn."
 msgstr ""
 "Non muovere le unità ferite se non è necessario ­ lasciale riposare. Le "
 "unità si riposano se non si spostano e non attaccano durante il loro turno. "
 "Recupereranno 2 punti ferita all'inizio del turno successivo."
 
 #: data/hardwired/tips.cfg:87
+#, fuzzy
 msgid ""
-"Most foot units defend better in villages and castles than in most other "
-"terrain, while most mounted units don't get any defensive advantage in "
-"villages and castles."
+"Foot units tend to defend better in villages and castles than in other "
+"terrain types, while most mounted units do not gain any defensive advantages "
+"from villages or castles."
 msgstr ""
 "Molte unità a piedi si difendono meglio nei villaggi e nei castelli "
 "piuttosto che in altri terreni, mentre la maggior parte delle unità a "
@@ -4897,8 +4909,9 @@ msgid "- Sir Kaylan, 498YW"
 msgstr "- Sir Kaylan, 498AW"
 
 #: data/hardwired/tips.cfg:91
+#, fuzzy
 msgid ""
-"Horse based units are generally resistant to attacks with bladed or impact "
+"Horse-based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
@@ -4911,27 +4924,31 @@ msgid "- Sir Kaylan, 502YW"
 msgstr "- Sir Kaylan, 502AW"
 
 #: data/hardwired/tips.cfg:95
+#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain 8 experience for every level of "
-"the unit they kill."
+"experience. Units killing an enemy will gain eight experience points for "
+"every level of the unit they kill, or four experience points for a zero-"
+"level opponent."
 msgstr ""
 "Infliggere il colpo mortale a un nemico è il migliore modo per guadagnare "
 "dei punti esperienza. Le unità che uccidono un nemico guadagnano 8 punti "
 "esperienza per ogni livello dell'unità uccisa."
 
 #: data/hardwired/tips.cfg:99
+#, fuzzy
 msgid ""
-"Elvish units move and fight very well in forest. Dwarvish units move and "
-"fight very well in hills and mountains."
+"Elvish units move and fight well in forest. Dwarvish units move and fight "
+"well in hills, mountains and caves."
 msgstr ""
 "Le truppe degli elfi si muovono e combattono molto bene nelle foreste. Le "
 "truppe dei nani si muovo e combattono molto bene nelle colline e sulle "
 "montagne."
 
 #: data/hardwired/tips.cfg:103
+#, fuzzy
 msgid ""
-"Patience is often key. Rather than attacking in bad conditions, or with few "
+"Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
 "La pazienza è spesso la chiave. Piuttosto che attaccare in posizione "
@@ -4987,28 +5004,30 @@ msgstr ""
 "unità."
 
 #: data/hardwired/tips.cfg:123
+#, fuzzy
 msgid ""
-"Skeletons are resistant to piercing, bladed and cold based attacks but "
+"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "Gli scheletri sono resistenti contro gli attacchi da perforazione, da taglio "
 "e freddi, ma vulnerabili alle armi da impatto, fuoco o arcane."
 
 #: data/hardwired/tips.cfg:127
+#, fuzzy
 msgid ""
-"Units with the 'leadership' ability make lower-level adjacent units on the "
-"same side fight better. Use these units to help your other units level up "
-"faster."
+"Units with the 'leadership' ability help lower-level adjacent units on the "
+"same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
 "Le unità con l'abilità \"comando\" rendono più efficaci gli attacchi delle "
 "unità amiche adiacenti di livello inferiore. Usale per aiutare le altre "
 "unità a guadagnare esperienza più rapidamente."
 
 #: data/hardwired/tips.cfg:131
+#, fuzzy
 msgid ""
-"Generally avoid moving next to an unoccupied village. An enemy unit may move "
-"onto the village and attack you, while enjoying the defense and healing of "
-"the village."
+"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
+"the village and attack you, while enjoying the defense and healing of the "
+"village."
 msgstr ""
 "Generalmente evita di muoverti vicino a un villaggio libero. Un'unità nemica "
 "potrebbe entrare nel villaggio e attaccarti sfruttando il vantaggio "
@@ -5087,11 +5106,13 @@ msgstr ""
 "possono uccidere con un solo colpo."
 
 #: data/hardwired/tips.cfg:171
+#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an 'After Maximum Level "
-"Advancement' (AMLA), which usually increases the unit's maximum hit points "
-"by 3. This is less than the normal difference gained by advancing a level. "
-"Thus, it is usually more useful to try to advance your lower level units."
+"Advancement' (AMLA), which usually increases the unit's maximum hitpoints by "
+"three and full-heals them. This is much less than the normal benefits gained "
+"from advancing a level, so it is generally more useful to try to advance "
+"your lower-level units instead."
 msgstr ""
 "Le unità avanzate, invece di aumentare di livello, ricevono un Avanzamento "
 "Oltre il Massimo Livello (AOML), gli AOML di solito incrementano i punti "
@@ -5100,10 +5121,11 @@ msgstr ""
 "unità di livello più basso."
 
 #: data/hardwired/tips.cfg:175
+#, fuzzy
 msgid ""
-"On maps where the shroud or fog of war has been enabled, a unit's sight is "
-"limited by its maximum movement. Remember this when deciding what unit is "
-"best to scout specific types of terrain."
+"On maps where 'Shroud' or 'Fog of War' has been enabled, a unit's sightlines "
+"are limited by its maximum movement. Remember this when deciding what unit "
+"is best to scout specific types of terrain."
 msgstr ""
 "Nelle mappe dove l'oscurità o la nebbia di guerra sono state abilitate, il "
 "campo di vista di un'unità è limitato al valore massimo del movimento "
@@ -5119,11 +5141,12 @@ msgstr ""
 "menù a comparsa. Poni il mouse sopra qualcosa per ottenerne una descrizione."
 
 #: data/hardwired/tips.cfg:183
+#, fuzzy
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
-"the Help Wesnoth button (indicated by the envelope icon near the lower-right-"
-"hand corner of the game main screen). This information is vital so we can "
-"adjust campaign difficulty."
+"the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
+"right-hand corner of the game main screen). This information is vital so we "
+"can adjust campaign difficulty."
 msgstr ""
 "Puoi mandare al progetto Wesnoth un rapporto anonimo dei tuoi progressi "
 "utilizzando il pulsante «Aiuta Wesnoth» (indicato dall'icona di una busta "
@@ -5156,6 +5179,19 @@ msgstr ""
 "vuoi avere la possibilità di spostare le unità avendo sempre la possibilità "
 "di annullare la mossa."
 
+#: data/hardwired/tips.cfg:195
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+
+#: data/hardwired/tips.cfg:199
+msgid ""
+"Few units have good defences in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+
 #: data/scenario-test.cfg:679
 msgid "ruby of fire"
 msgstr "rubino di fuoco"
@@ -5179,14 +5215,14 @@ msgid "End Scenario"
 msgstr "Fine scenario"
 
 #: data/themes/default.cfg:204 data/themes/dfool.cfg:233
-#: data/themes/experimental.cfg:182 src/menu_events.cpp:342 src/unit.cpp:2397
+#: data/themes/experimental.cfg:182 src/menu_events.cpp:355 src/unit.cpp:2397
 #: src/unit.cpp:2570
 msgid "HP"
 msgstr "PF"
 
 #: data/themes/default.cfg:213 data/themes/dfool.cfg:243
-#: data/themes/experimental.cfg:191 src/menu_events.cpp:343
-#: src/menu_events.cpp:1119
+#: data/themes/experimental.cfg:191 src/menu_events.cpp:356
+#: src/menu_events.cpp:1132
 msgid "XP"
 msgstr "PE"
 
@@ -5297,8 +5333,8 @@ msgstr "+"
 msgid "+  "
 msgstr "+  "
 
-#: src/about.cpp:187 src/help.cpp:3009 src/menu_events.cpp:164
-#: src/menu_events.cpp:460 src/menu_events.cpp:483
+#: src/about.cpp:187 src/help.cpp:2966 src/menu_events.cpp:177
+#: src/menu_events.cpp:473 src/menu_events.cpp:496
 msgid "Close"
 msgstr "Chiudi"
 
@@ -5324,55 +5360,55 @@ msgstr "È stata selezionata un'arma non valida, forse dall'IA in Python."
 msgid "An invalid weapon is send, possibly due to the Python AI."
 msgstr "È stata inviata un'arma non valida, forse dall'IA in Python."
 
-#: src/actions.cpp:962 src/actions.cpp:1216
+#: src/actions.cpp:964 src/actions.cpp:1217
 msgid "poisoned"
 msgstr "avvelenato"
 
-#: src/actions.cpp:966 src/actions.cpp:1220
+#: src/actions.cpp:968 src/actions.cpp:1221
 msgid "slowed"
 msgstr "rallentato"
 
-#: src/actions.cpp:972 src/actions.cpp:1226
+#: src/actions.cpp:974 src/actions.cpp:1227
 msgid "stone"
 msgstr "pietrifica"
 
-#: src/actions.cpp:2161
+#: src/actions.cpp:2162
 msgid "Ambushed!"
 msgstr "Imboscata!"
 
-#: src/actions.cpp:2167
+#: src/actions.cpp:2168
 msgid "Failed teleport! Exit not empty"
 msgstr "Teletrasporto non riuscito! L'uscita non è sgombra"
 
-#: src/actions.cpp:2205
+#: src/actions.cpp:2206
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Avvistata un'unità alleata."
 msgstr[1] "Avvistate $friend unità alleate."
 
-#: src/actions.cpp:2208
+#: src/actions.cpp:2209
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Avvistata un'unità nemica!"
 msgstr[1] "Avvistate $enemies unità nemiche!"
 
-#: src/actions.cpp:2213
+#: src/actions.cpp:2214
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "(una amica"
 msgstr[1] "($friends amiche"
 
-#: src/actions.cpp:2214
+#: src/actions.cpp:2215
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] " una nemica"
 msgstr[1] " $enemies nemiche"
 
-#: src/actions.cpp:2215
+#: src/actions.cpp:2216
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unità avvistate! $friendphrase,$enemyphrase)"
 
-#: src/actions.cpp:2224
+#: src/actions.cpp:2225
 msgid "(press $hotkey to keep moving)"
 msgstr "(premi $hotkey per continuare la mossa)"
 
@@ -5390,107 +5426,112 @@ msgstr ""
 msgid "Duplicate side definition for side '$side|' found."
 msgstr ""
 
-#: src/dialogs.cpp:111
+#: src/dialogs.cpp:112
 msgid "Advance Unit"
 msgstr "Avanzamento unità"
 
-#: src/dialogs.cpp:112
+#: src/dialogs.cpp:113
 msgid "What should our victorious unit become?"
 msgstr "Come vuoi far avanzare l'unità vittoriosa?"
 
-#: src/dialogs.cpp:210
+#: src/dialogs.cpp:211
 msgid "No objectives available"
 msgstr "Nessun obiettivo disponibile"
 
-#: src/dialogs.cpp:226
+#: src/dialogs.cpp:227
 msgid "Save Game"
 msgstr "Salva partita"
 
-#: src/dialogs.cpp:234
+#: src/dialogs.cpp:235
 msgid "Quit Game"
 msgstr "Termina la partita"
 
-#: src/dialogs.cpp:239
+#: src/dialogs.cpp:240
 msgid "Ignore All"
 msgstr "Ignora tutti"
 
-#: src/dialogs.cpp:256
+#: src/dialogs.cpp:257
 msgid "Overwrite?"
 msgstr "Sovrascrivo?"
 
-#: src/dialogs.cpp:257
+#: src/dialogs.cpp:258
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Esiste già un salvataggio con questo nome. Vuoi sovrascriverlo?"
 
-#: src/dialogs.cpp:291
+#: src/dialogs.cpp:275
+#, fuzzy
+msgid "Filter: "
+msgstr "Abilità: "
+
+#: src/dialogs.cpp:342
 msgid "Do you really want to delete this game?"
 msgstr "Vuoi davvero cancellare questa partita?"
 
-#: src/dialogs.cpp:293
+#: src/dialogs.cpp:344
 msgid "Don't ask me again!"
 msgstr "Non chiedermelo più!"
 
-#: src/dialogs.cpp:443
+#: src/dialogs.cpp:495
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:460
+#: src/dialogs.cpp:512
 msgid "#(Invalid)"
 msgstr "#(non valido)"
 
-#: src/dialogs.cpp:467
+#: src/dialogs.cpp:519
 msgid "Campaign: $campaign_name"
 msgstr "Campagna: $campaign_name"
 
-#: src/dialogs.cpp:469 src/game.cpp:1452
+#: src/dialogs.cpp:521 src/game.cpp:1472
 msgid "Multiplayer"
 msgstr "Multigiocatore"
 
-#: src/dialogs.cpp:471
+#: src/dialogs.cpp:523
 msgid "Tutorial"
 msgstr "Introduzione"
 
-#: src/dialogs.cpp:479
+#: src/dialogs.cpp:531
 msgid "replay"
 msgstr "replay"
 
-#: src/dialogs.cpp:481 src/menu_events.cpp:693
+#: src/dialogs.cpp:533 src/menu_events.cpp:706
 msgid "Turn"
 msgstr "Turno"
 
-#: src/dialogs.cpp:483
+#: src/dialogs.cpp:535
 msgid "Scenario Start"
 msgstr "Inizia scenario"
 
-#: src/dialogs.cpp:486
+#: src/dialogs.cpp:538
 msgid "Difficulty: "
 msgstr "Difficoltà: "
 
-#: src/dialogs.cpp:488
+#: src/dialogs.cpp:540
 msgid "Version: "
 msgstr "Versione: "
 
-#: src/dialogs.cpp:512 src/dialogs.cpp:528
+#: src/dialogs.cpp:564 src/dialogs.cpp:580
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:518
+#: src/dialogs.cpp:570
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:521
+#: src/dialogs.cpp:573
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:524
+#: src/dialogs.cpp:576
 msgid "%b %d"
 msgstr "%b %d"
 
-#: src/dialogs.cpp:548
+#: src/dialogs.cpp:600
 msgid "No Saved Games"
 msgstr "Nessuna partita salvata"
 
-#: src/dialogs.cpp:549
+#: src/dialogs.cpp:601
 msgid ""
 "There are no saved games to load.\n"
 "\n"
@@ -5500,57 +5541,57 @@ msgstr ""
 "\n"
 "(La partita viene salvata automaticamente alla fine di ogni scenario)"
 
-#: src/dialogs.cpp:561
-msgid "Delete Save"
-msgstr "Elimina salvataggio"
-
-#: src/dialogs.cpp:567
+#: src/dialogs.cpp:616
 msgid "Date"
 msgstr "Data"
 
-#: src/dialogs.cpp:567 src/game.cpp:1130 src/menu_events.cpp:340
-#: src/menu_events.cpp:1117 src/multiplayer.cpp:110
+#: src/dialogs.cpp:616 src/game.cpp:1150 src/menu_events.cpp:353
+#: src/menu_events.cpp:1130 src/multiplayer.cpp:110
 msgid "Name"
 msgstr "Nome"
 
-#: src/dialogs.cpp:588 src/multiplayer_create.cpp:102
+#: src/dialogs.cpp:636 src/multiplayer_create.cpp:102
 msgid "Load Game"
 msgstr "Carica partita"
 
-#: src/dialogs.cpp:589
+#: src/dialogs.cpp:637
 msgid "Choose the game to load"
 msgstr "Scegli la partita da caricare"
 
-#: src/dialogs.cpp:595
+#: src/dialogs.cpp:645
 msgid "Show replay"
 msgstr "Mostra replay"
 
-#: src/dialogs.cpp:624
+#: src/dialogs.cpp:648
+msgid "Delete Save"
+msgstr "Elimina salvataggio"
+
+#: src/dialogs.cpp:679
 msgid "Profile"
 msgstr "Profilo"
 
-#: src/dialogs.cpp:716 src/help.cpp:1271
+#: src/dialogs.cpp:771 src/help.cpp:1217
 msgid "level"
 msgstr "Livello"
 
-#: src/dialogs.cpp:729 src/help.cpp:1377
+#: src/dialogs.cpp:784 src/help.cpp:1323
 msgid "HP: "
 msgstr "PF: "
 
-#: src/dialogs.cpp:732
+#: src/dialogs.cpp:787
 msgid "XP: "
 msgstr "PE: "
 
-#: src/dialogs.cpp:736 src/help.cpp:1378
+#: src/dialogs.cpp:791 src/help.cpp:1324
 msgid "Moves: "
 msgstr "Mosse: "
 
-#: src/dialogs.cpp:1031 src/dialogs.cpp:1132 src/multiplayer_connect.cpp:903
+#: src/dialogs.cpp:1093 src/dialogs.cpp:1194 src/multiplayer_connect.cpp:924
 #: src/multiplayer_create.cpp:83 src/multiplayer_wait.cpp:194
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/dialogs.cpp:1055 src/game.cpp:940
+#: src/dialogs.cpp:1117 src/game.cpp:960
 msgid "KB"
 msgstr "KB"
 
@@ -5558,22 +5599,22 @@ msgstr "KB"
 msgid "Screenshot"
 msgstr "Anteprima"
 
-#: src/game.cpp:445 src/game.cpp:1549
+#: src/game.cpp:445 src/game.cpp:1569
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game.cpp:705
+#: src/game.cpp:725
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Attenzione: Il file che hai provato a caricare è danneggiato. Cerco di "
 "caricarlo comunque.\n"
 
-#: src/game.cpp:748 src/multiplayer_connect.cpp:1415
+#: src/game.cpp:768 src/multiplayer_connect.cpp:1436
 msgid "This save is from a version too old to be loaded."
 msgstr ""
 "Questo salvataggio è di una versione troppo vecchia per riuscire a caricarlo."
 
-#: src/game.cpp:754 src/multiplayer_connect.cpp:1422
+#: src/game.cpp:774 src/multiplayer_connect.cpp:1443
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -5581,221 +5622,221 @@ msgstr ""
 "Questo salvataggio è di una versione differente del gioco. Vuoi provare a "
 "caricarlo?"
 
-#: src/game.cpp:772 src/game.cpp:775 src/multiplayer_connect.cpp:1393
+#: src/game.cpp:792 src/game.cpp:795 src/multiplayer_connect.cpp:1414
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Il file che hai provato a caricare è danneggiato: '"
 
-#: src/game.cpp:778
+#: src/game.cpp:798
 msgid "File I/O Error while reading the game"
 msgstr "Errore di I/O di un file durante la lettura del gioco"
 
-#: src/game.cpp:870
+#: src/game.cpp:890
 msgid "Play a campaign"
 msgstr "Gioca una campagna"
 
-#: src/game.cpp:911
+#: src/game.cpp:931
 msgid "Difficulty"
 msgstr "Difficoltà"
 
-#: src/game.cpp:912
+#: src/game.cpp:932
 msgid "Select difficulty level:"
 msgstr "Seleziona il livello di difficoltà"
 
-#: src/game.cpp:937
+#: src/game.cpp:957
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:943
+#: src/game.cpp:963
 msgid "MB"
 msgstr "MB"
 
-#: src/game.cpp:973
+#: src/game.cpp:993
 msgid "Connect to Server"
 msgstr "Connetti al server"
 
-#: src/game.cpp:974
+#: src/game.cpp:994
 msgid "You will now connect to a server to download add-ons."
 msgstr "Ti stai per connettere al server per scaricare le estensioni."
 
-#: src/game.cpp:976
+#: src/game.cpp:996
 msgid "Server: "
 msgstr "Server: "
 
-#: src/game.cpp:977 src/game.cpp:1025
+#: src/game.cpp:997 src/game.cpp:1045
 msgid "Remove Add-ons"
 msgstr "Elimina estensioni"
 
-#: src/game.cpp:1012
+#: src/game.cpp:1032
 msgid "You have no Add-ons installed."
 msgstr "Non ci sono estensioni installate."
 
-#: src/game.cpp:1025
+#: src/game.cpp:1045
 msgid "Choose the add-on to remove."
 msgstr "Scegli l'estensione da eliminare."
 
-#: src/game.cpp:1036
+#: src/game.cpp:1056
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "Sei sicuro di voler eliminare l'estensione «$addon»?"
 
-#: src/game.cpp:1040
+#: src/game.cpp:1060
 msgid "Confirm"
 msgstr "Confermo"
 
-#: src/game.cpp:1063
+#: src/game.cpp:1083
 msgid "Add-on '$addon|' deleted."
 msgstr "L'estensione «$addon» è stata eliminata."
 
-#: src/game.cpp:1068
+#: src/game.cpp:1088
 msgid "Add-on deleted"
 msgstr "Estensione eliminata"
 
-#: src/game.cpp:1074
+#: src/game.cpp:1094
 msgid "Add-on could not be deleted -- a file was not found."
 msgstr ""
 "Non è stato possibile eliminare l'estensione — non è stato trovato un file."
 
-#: src/game.cpp:1074 src/menu_events.cpp:707 src/menu_events.cpp:715
-#: src/menu_events.cpp:730 src/multiplayer_create.cpp:528
+#: src/game.cpp:1094 src/menu_events.cpp:720 src/menu_events.cpp:728
+#: src/menu_events.cpp:743 src/multiplayer_create.cpp:528
 msgid "Error"
 msgstr "Errore"
 
-#: src/game.cpp:1095 src/multiplayer.cpp:168 src/multiplayer.cpp:205
+#: src/game.cpp:1115 src/multiplayer.cpp:168 src/multiplayer.cpp:205
 msgid "Connecting to Server..."
 msgstr "Connessione al server..."
 
-#: src/game.cpp:1098
+#: src/game.cpp:1118
 msgid "Could not connect to host."
 msgstr "Impossibile connettersi all'host remoto."
 
-#: src/game.cpp:1108
+#: src/game.cpp:1128
 msgid "Asking for list of add-ons"
 msgstr "Sto richiedendo la lista delle estensioni."
 
-#: src/game.cpp:1121
+#: src/game.cpp:1141
 msgid "Error communicating with the server."
 msgstr "Errore di comunicazione con il server."
 
-#: src/game.cpp:1130 src/titlescreen.cpp:323
+#: src/game.cpp:1150 src/titlescreen.cpp:323
 msgid "Version"
 msgstr "Versione"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1151
 msgid "Author"
 msgstr "Autore"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1151
 msgid "Downloads"
 msgstr "Scaricamenti"
 
-#: src/game.cpp:1131
+#: src/game.cpp:1151
 msgid "Size"
 msgstr "Dimensione"
 
-#: src/game.cpp:1183
+#: src/game.cpp:1203
 msgid "Publish add-on: "
 msgstr "Pubblica estensione: "
 
-#: src/game.cpp:1187
+#: src/game.cpp:1207
 msgid "Delete add-on: "
 msgstr "Cancella estensione: "
 
-#: src/game.cpp:1191
+#: src/game.cpp:1211
 msgid "There are no add-ons available for download from this server."
 msgstr "Nessuna estensione disponibile per il download da questo server."
 
-#: src/game.cpp:1198
+#: src/game.cpp:1218
 msgid "Get Add-ons"
 msgstr "Estensioni"
 
-#: src/game.cpp:1199
+#: src/game.cpp:1219
 msgid "Choose the add-on to download."
 msgstr "Scegli l'estensione da scaricare."
 
-#: src/game.cpp:1242
+#: src/game.cpp:1262
 msgid "Dependencies"
 msgstr "Dipendenze"
 
-#: src/game.cpp:1243
+#: src/game.cpp:1263
 msgid "This add-on requires the following additional dependencies:"
 msgstr "Questa estensione richiede le seguenti dipendenze aggiuntive:"
 
-#: src/game.cpp:1245
+#: src/game.cpp:1265
 msgid "Do you still want to download it?"
 msgstr "Vuoi scaricarla lo stesso?"
 
-#: src/game.cpp:1255
+#: src/game.cpp:1275
 msgid "Downloading add-on..."
 msgstr "Scaricamento estensione in corso..."
 
-#: src/game.cpp:1313
+#: src/game.cpp:1333
 msgid "Add-on Installed"
 msgstr "Estensione installata"
 
-#: src/game.cpp:1313
+#: src/game.cpp:1333
 msgid "The add-on has been installed."
 msgstr "L'estensione è stata installata."
 
-#: src/game.cpp:1316
+#: src/game.cpp:1336
 msgid "Network communication error."
 msgstr "Errore di comunicazione con la rete."
 
-#: src/game.cpp:1318
+#: src/game.cpp:1338
 msgid "Remote host disconnected."
 msgstr "Disconnesso dall'host remoto."
 
-#: src/game.cpp:1320
+#: src/game.cpp:1340
 msgid ""
 "There was a problem creating the files necessary to install this add-on."
 msgstr ""
 "C'è stato un problema durante la creazione dei file necessari a installare "
 "questa estensione."
 
-#: src/game.cpp:1335 src/game.cpp:1378 src/game.cpp:1406
+#: src/game.cpp:1355 src/game.cpp:1398 src/game.cpp:1426
 #: src/multiplayer.cpp:247 src/multiplayer_ui.cpp:72 src/playcampaign.cpp:463
 msgid "Connection timed out"
 msgstr "Connessione scaduta"
 
-#: src/game.cpp:1338
+#: src/game.cpp:1358
 msgid "The server responded with an error: \"$error|\""
 msgstr "Il server ha risposto con un errore: «$error|»"
 
-#: src/game.cpp:1345
+#: src/game.cpp:1365
 msgid "Terms"
 msgstr "Termini"
 
-#: src/game.cpp:1376
+#: src/game.cpp:1396
 msgid "Sending add-on"
 msgstr "Invio estensione"
 
-#: src/game.cpp:1380 src/game.cpp:1408
+#: src/game.cpp:1400 src/game.cpp:1428
 msgid "The server responded with an error: \""
 msgstr "Il server ha risposto con un errore: \""
 
-#: src/game.cpp:1384 src/game.cpp:1412 src/multiplayer_wait.cpp:382
+#: src/game.cpp:1404 src/game.cpp:1432 src/multiplayer_wait.cpp:382
 msgid "Response"
 msgstr "Risposta"
 
-#: src/game.cpp:1436
+#: src/game.cpp:1456
 msgid "Join Official Server"
 msgstr "Collegati al server ufficiale"
 
-#: src/game.cpp:1437
+#: src/game.cpp:1457
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Accedi al server ufficiale di Wesnoth in multiplayer"
 
-#: src/game.cpp:1439
+#: src/game.cpp:1459
 msgid "Connect to Host/Server"
 msgstr "Connetti all'host/server"
 
-#: src/game.cpp:1440
+#: src/game.cpp:1460
 msgid "Join a server or hosted game"
 msgstr "Collegati al server o alla partita ospitata"
 
-#: src/game.cpp:1442
+#: src/game.cpp:1462
 msgid "Host Networked Game"
 msgstr "Ospita partita in rete"
 
-#: src/game.cpp:1443
+#: src/game.cpp:1463
 msgid ""
 "Host a game using the built-in server. Not well maintained, better use the "
 "dedicated server 'wesnothd'."
@@ -5803,79 +5844,79 @@ msgstr ""
 "Ospita una partita usando il server integrato. Non è mantenuto in "
 "funzionamento molto bene, è meglio usare «wesnothd» dedicato."
 
-#: src/game.cpp:1445
+#: src/game.cpp:1465
 msgid "Local Game"
 msgstr "Partita locale"
 
-#: src/game.cpp:1446
+#: src/game.cpp:1466
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
 msgstr ""
 "Gioca una partita in multigiocatore con IA o persone condividendo la stessa "
 "macchina"
 
-#: src/game.cpp:1454 src/multiplayer.cpp:232
+#: src/game.cpp:1474 src/multiplayer.cpp:232
 msgid "Login: "
 msgstr "Login: "
 
-#: src/game.cpp:1491 src/playcampaign.cpp:100 src/playcampaign.cpp:384
+#: src/game.cpp:1511 src/playcampaign.cpp:100 src/playcampaign.cpp:384
 msgid "The game could not be loaded: "
 msgstr "La partita non può essere caricata: "
 
-#: src/game.cpp:1493 src/playcampaign.cpp:102 src/playcampaign.cpp:387
+#: src/game.cpp:1513 src/playcampaign.cpp:102 src/playcampaign.cpp:387
 msgid "Error while playing the game: "
 msgstr "Errore mentre si gioca la partita: "
 
-#: src/game.cpp:1513 src/playcampaign.cpp:104 src/playcampaign.cpp:390
+#: src/game.cpp:1533 src/playcampaign.cpp:104 src/playcampaign.cpp:390
 msgid "The game map could not be loaded: "
 msgstr "La mappa non può essere caricata: "
 
-#: src/game.cpp:1539
+#: src/game.cpp:1559
 msgid "Language"
 msgstr "Lingua"
 
-#: src/game.cpp:1540
+#: src/game.cpp:1560
 msgid "Choose your preferred language:"
 msgstr "Scegli la lingua che preferisci:"
 
-#: src/game.cpp:1702
+#: src/game.cpp:1722
 msgid "The following add-on(s) had errors and could not be loaded:"
 msgstr ""
 "Le seguenti estensioni hanno degli errori e non possono essere caricate:"
 
-#: src/game.cpp:1707
+#: src/game.cpp:1727
 msgid "ERROR DETAILS:"
 msgstr "DETTAGLI SULL'ERRORE:"
 
-#: src/game.cpp:1721
+#: src/game.cpp:1741
 msgid "Warning: Errors occurred while loading game configuration files: '"
 msgstr ""
 "Attenzione: errore durante il caricamento dei file di configurazione: '"
 
-#: src/game.cpp:1773
+#: src/game.cpp:1793
 msgid "Error loading game configuration files: '"
 msgstr "Errore durante il caricamento dei file di configurazione: «"
 
-#: src/game.cpp:1774
+#: src/game.cpp:1794
 msgid "' (The game will now exit)"
 msgstr "» (Partita in fase di chiusura.)"
 
-#: src/game.cpp:1816
+#: src/game.cpp:1836
 msgid "Loading data files"
 msgstr "Caricamento file di dati"
 
-#: src/game.cpp:1965
+#: src/game.cpp:1985
 msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
-#: src/game.cpp:2157
+#: src/game.cpp:2177
 msgid "Loading game configuration."
 msgstr "Caricamento della configurazione di gioco."
 
-#: src/game.cpp:2163
+#: src/game.cpp:2183
 msgid "Re-initialize fonts for the current language."
 msgstr "Reimpostazione dei font per la lingua corrente."
 
-#: src/game.cpp:2177
+#: src/game.cpp:2197
 msgid "Loading title screen."
 msgstr "Caricamento schermata dei titoli"
 
@@ -5883,11 +5924,11 @@ msgstr "Caricamento schermata dei titoli"
 msgid "Invalid color range: "
 msgstr "Gamma di colori non valida: "
 
-#: src/game_events.cpp:940
+#: src/game_events.cpp:941
 msgid "Victory:"
 msgstr "Vittoria:"
 
-#: src/game_events.cpp:943
+#: src/game_events.cpp:944
 msgid "Defeat:"
 msgstr "Sconfitta:"
 
@@ -5900,7 +5941,7 @@ msgstr "Non è stata definita l'ora del giorno."
 msgid " replay"
 msgstr " replay"
 
-#: src/gamestatus.cpp:821
+#: src/gamestatus.cpp:826
 msgid "Could not write to file"
 msgstr "Impossibile scrivere su file"
 
@@ -6008,120 +6049,120 @@ msgstr "Aiuto"
 msgid "Units having this special attack:"
 msgstr "Unità con questo attacco speciale:"
 
-#: src/help.cpp:1154 src/help.cpp:1351 src/help.cpp:1599 src/help.cpp:1652
-msgid "race^Miscellaneous"
-msgstr "Varie"
-
-#: src/help.cpp:1160 src/help.cpp:1658
-msgid "Units of this race:"
-msgstr "Unità di questa razza:"
-
-#: src/help.cpp:1226
+#: src/help.cpp:1172
 msgid "Units having this ability:"
 msgstr "Unità con questa abilità:"
 
-#: src/help.cpp:1291
+#: src/help.cpp:1237
 msgid "Advances from: "
 msgstr "Avanza da: "
 
-#: src/help.cpp:1320
+#: src/help.cpp:1266
 msgid "Advances to: "
 msgstr "Avanza come: "
 
-#: src/help.cpp:1353
+#: src/help.cpp:1297 src/help.cpp:1545 src/help.cpp:1600
+msgid "race^Miscellaneous"
+msgstr "Varie"
+
+#: src/help.cpp:1299
 msgid "Race: "
 msgstr "Razza: "
 
-#: src/help.cpp:1360
+#: src/help.cpp:1306
 msgid "Abilities: "
 msgstr "Abilità: "
 
-#: src/help.cpp:1379
+#: src/help.cpp:1325
 msgid "Cost: "
 msgstr "Costo:"
 
-#: src/help.cpp:1380
+#: src/help.cpp:1326
 msgid "Alignment: "
 msgstr "Allineamento: "
 
-#: src/help.cpp:1386
+#: src/help.cpp:1332
 msgid "Required XP: "
 msgstr "PE Richiesti: "
 
-#: src/help.cpp:1395
+#: src/help.cpp:1341
 msgid "unit help^Attacks"
 msgstr "Attacchi"
 
-#: src/help.cpp:1402
+#: src/help.cpp:1348
 msgid "unit help^Name"
 msgstr "Nome"
 
-#: src/help.cpp:1403 src/menu_events.cpp:339 src/menu_events.cpp:1116
-#: src/menu_events.cpp:1598
+#: src/help.cpp:1349 src/menu_events.cpp:352 src/menu_events.cpp:1129
+#: src/menu_events.cpp:1611
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1404
+#: src/help.cpp:1350
 msgid "Strikes"
 msgstr "Colpi"
 
-#: src/help.cpp:1405
+#: src/help.cpp:1351
 msgid "Range"
 msgstr "Raggio"
 
-#: src/help.cpp:1406
+#: src/help.cpp:1352
 msgid "Special"
 msgstr "Speciale"
 
-#: src/help.cpp:1456
+#: src/help.cpp:1402
 msgid "Resistances"
 msgstr "Resistenze"
 
-#: src/help.cpp:1460
+#: src/help.cpp:1406
 msgid "Attack Type"
 msgstr "Tipo di attacco"
 
-#: src/help.cpp:1461
+#: src/help.cpp:1407
 msgid "Resistance"
 msgstr "Resistenza"
 
-#: src/help.cpp:1498
+#: src/help.cpp:1444
 msgid "Terrain Modifiers"
 msgstr "Modificatori del terreno"
 
-#: src/help.cpp:1502
+#: src/help.cpp:1448
 msgid "Terrain"
 msgstr "Terreno"
 
-#: src/help.cpp:1503
+#: src/help.cpp:1449
 msgid "Defense"
 msgstr "Difesa"
 
-#: src/help.cpp:1504
+#: src/help.cpp:1450
 msgid "Movement Cost"
 msgstr "Costo di movimento"
 
-#: src/help.cpp:2548 src/menu_events.cpp:673
+#: src/help.cpp:1606
+msgid "Units of this race:"
+msgstr "Unità di questa razza:"
+
+#: src/help.cpp:2496 src/menu_events.cpp:686
 msgid " < Back"
 msgstr "< Indietro"
 
-#: src/help.cpp:2549
+#: src/help.cpp:2497
 msgid "Forward >"
 msgstr "Avanti >"
 
-#: src/help.cpp:2661
+#: src/help.cpp:2609
 msgid "Reference to unknown topic: "
 msgstr "Riferimento a un argomento sconosciuto: "
 
-#: src/help.cpp:2920
+#: src/help.cpp:2869
 msgid "corrupted original file"
 msgstr "file originale danneggiato"
 
-#: src/help.cpp:3012
+#: src/help.cpp:2969
 msgid "The Battle for Wesnoth Help"
 msgstr "Aiuto per The Battle for Wesnoth"
 
-#: src/help.cpp:3064
+#: src/help.cpp:3021
 msgid "Parse error when parsing help text: "
 msgstr "Errore durante il controllo del testo della guida: "
 
@@ -6189,141 +6230,141 @@ msgstr "Le mappe casuali con un'ampiezza dispari non sono supportate."
 msgid "Random maps with an odd width aren't supported."
 msgstr "Le mappe casuali con un'ampiezza dispari non sono supportate."
 
-#: src/menu_events.cpp:126 src/menu_events.cpp:175
+#: src/menu_events.cpp:139 src/menu_events.cpp:188
 msgid "Recruits"
 msgstr "Reclutamenti"
 
-#: src/menu_events.cpp:130 src/menu_events.cpp:183
+#: src/menu_events.cpp:143 src/menu_events.cpp:196
 msgid "Recalls"
 msgstr "Richiami"
 
-#: src/menu_events.cpp:134 src/menu_events.cpp:191
+#: src/menu_events.cpp:147 src/menu_events.cpp:204
 msgid "Advancements"
 msgstr "Avanzamenti"
 
-#: src/menu_events.cpp:138 src/menu_events.cpp:200
+#: src/menu_events.cpp:151 src/menu_events.cpp:213
 msgid "Losses"
 msgstr "Perdite"
 
-#: src/menu_events.cpp:143 src/menu_events.cpp:208
+#: src/menu_events.cpp:156 src/menu_events.cpp:221
 msgid "Kills"
 msgstr "Uccisioni"
 
-#: src/menu_events.cpp:162
+#: src/menu_events.cpp:175
 msgid "Details"
 msgstr "Dettagli"
 
-#: src/menu_events.cpp:214
+#: src/menu_events.cpp:227
 msgid "Damage Inflicted"
 msgstr "Danni inflitti"
 
-#: src/menu_events.cpp:221
+#: src/menu_events.cpp:234
 msgid "Damage Taken"
 msgstr "Danni subiti"
 
-#: src/menu_events.cpp:227
+#: src/menu_events.cpp:240
 msgid "Damage Inflicted (EV)"
 msgstr "Danni inflitti (EV)"
 
-#: src/menu_events.cpp:234
+#: src/menu_events.cpp:247
 msgid "Damage Taken (EV)"
 msgstr "Danni subiti (EV)"
 
-#: src/menu_events.cpp:270 src/menu_events.cpp:274
+#: src/menu_events.cpp:283 src/menu_events.cpp:287
 msgid "Do you really want to dismiss him?"
 msgstr "Vuoi davvero congedarlo?"
 
-#: src/menu_events.cpp:270
+#: src/menu_events.cpp:283
 msgid "My lord, this unit is an experienced one, having advanced levels! "
 msgstr "Mio signore, questa è un'unità esperta che è già avanzata di livello!"
 
-#: src/menu_events.cpp:271 src/menu_events.cpp:275
+#: src/menu_events.cpp:284 src/menu_events.cpp:288
 msgid "Do you really want to dismiss her?"
 msgstr "Vuoi davvero congedarla?"
 
-#: src/menu_events.cpp:274
+#: src/menu_events.cpp:287
 msgid "My lord, this unit is close to advancing a level! "
 msgstr "Mio signore, questa unità sta per avanzare di livello!"
 
-#: src/menu_events.cpp:331
+#: src/menu_events.cpp:344
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: src/menu_events.cpp:341
+#: src/menu_events.cpp:354
 msgid "Level^Lv."
 msgstr "Liv."
 
-#: src/menu_events.cpp:344
+#: src/menu_events.cpp:357
 msgid "unit list^Traits"
 msgstr "Caratteristiche"
 
-#: src/menu_events.cpp:345
+#: src/menu_events.cpp:358
 msgid "Moves"
 msgstr "Mosse"
 
-#: src/menu_events.cpp:346
+#: src/menu_events.cpp:359
 msgid "Location^Loc."
 msgstr "Luogo"
 
-#: src/menu_events.cpp:347
+#: src/menu_events.cpp:360
 msgid "Status"
 msgstr "Stato"
 
-#: src/menu_events.cpp:455
+#: src/menu_events.cpp:468
 msgid "Unit List"
 msgstr "Lista delle unità"
 
-#: src/menu_events.cpp:458 src/menu_events.cpp:479
+#: src/menu_events.cpp:471 src/menu_events.cpp:492
 msgid "Scroll To"
 msgstr "Spostati verso"
 
-#: src/menu_events.cpp:508
+#: src/menu_events.cpp:521
 msgid "Leader"
 msgstr "Condottiero"
 
-#: src/menu_events.cpp:509 src/multiplayer_connect.cpp:888
+#: src/menu_events.cpp:522 src/multiplayer_connect.cpp:909
 msgid "Team"
 msgstr "Squadra"
 
-#: src/menu_events.cpp:510 src/multiplayer_connect.cpp:899
+#: src/menu_events.cpp:523 src/multiplayer_connect.cpp:920
 #: src/multiplayer_wait.cpp:495
 msgid "Gold"
 msgstr "Oro"
 
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:524
 msgid "Villages"
 msgstr "Villaggi"
 
-#: src/menu_events.cpp:512
+#: src/menu_events.cpp:525
 msgid "status^Units"
 msgstr "Unità"
 
-#: src/menu_events.cpp:513
+#: src/menu_events.cpp:526
 msgid "Upkeep"
 msgstr "Mantenimento"
 
-#: src/menu_events.cpp:514 src/multiplayer_connect.cpp:900
+#: src/menu_events.cpp:527 src/multiplayer_connect.cpp:921
 #: src/multiplayer_wait.cpp:499
 msgid "Income"
 msgstr "Entrate"
 
-#: src/menu_events.cpp:591
+#: src/menu_events.cpp:604
 msgid "Current Status"
 msgstr "Stato attuale"
 
-#: src/menu_events.cpp:592
+#: src/menu_events.cpp:605
 msgid "More >"
 msgstr "Altro >"
 
-#: src/menu_events.cpp:610
+#: src/menu_events.cpp:623
 msgid "scenario settings^Leader"
 msgstr "Condottiero"
 
-#: src/menu_events.cpp:612
+#: src/menu_events.cpp:625
 msgid "scenario settings^Side"
 msgstr "Fazione"
 
-#: src/menu_events.cpp:613
+#: src/menu_events.cpp:626
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -6331,7 +6372,7 @@ msgstr ""
 "Oro\n"
 "iniziale"
 
-#: src/menu_events.cpp:614
+#: src/menu_events.cpp:627
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -6339,7 +6380,7 @@ msgstr ""
 "Reddito\n"
 "base"
 
-#: src/menu_events.cpp:615
+#: src/menu_events.cpp:628
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -6347,31 +6388,31 @@ msgstr ""
 "Oro per\n"
 "villaggio"
 
-#: src/menu_events.cpp:616
+#: src/menu_events.cpp:629
 msgid "scenario settings^Fog"
 msgstr "Nebbia"
 
-#: src/menu_events.cpp:617
+#: src/menu_events.cpp:630
 msgid "scenario settings^Shroud"
 msgstr "Oscurità"
 
-#: src/menu_events.cpp:662 src/menu_events.cpp:663
+#: src/menu_events.cpp:675 src/menu_events.cpp:676
 msgid "no"
 msgstr "no"
 
-#: src/menu_events.cpp:662 src/menu_events.cpp:663
+#: src/menu_events.cpp:675 src/menu_events.cpp:676
 msgid "yes"
 msgstr "sì"
 
-#: src/menu_events.cpp:670
+#: src/menu_events.cpp:683
 msgid "Scenario Settings"
 msgstr "Impostazioni dello scenario"
 
-#: src/menu_events.cpp:702 src/playcampaign.cpp:553
+#: src/menu_events.cpp:715 src/playcampaign.cpp:553
 msgid "Name:"
 msgstr "Nome:"
 
-#: src/menu_events.cpp:708
+#: src/menu_events.cpp:721
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -6379,93 +6420,93 @@ msgstr ""
 "I nomi dei salvataggi non possono contenere due punti, barre o barre "
 "inverse. Per favore, scegli un nome differente."
 
-#: src/menu_events.cpp:716
+#: src/menu_events.cpp:729
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 "I nomi dei salvataggi non devono terminare per «.gz». Per favore, scegli un "
 "nome differente."
 
-#: src/menu_events.cpp:727
+#: src/menu_events.cpp:740
 msgid "Saved"
 msgstr "Salvato"
 
-#: src/menu_events.cpp:727
+#: src/menu_events.cpp:740
 msgid "The game has been saved"
 msgstr "La partita è stata salvata"
 
-#: src/menu_events.cpp:730 src/playcampaign.cpp:561
+#: src/menu_events.cpp:743 src/playcampaign.cpp:561
 msgid "The game could not be saved"
 msgstr "La partita non può essere salvata"
 
-#: src/menu_events.cpp:745
+#: src/menu_events.cpp:758
 msgid "Save the Map As"
 msgstr "Salva la mappa come"
 
-#: src/menu_events.cpp:750
+#: src/menu_events.cpp:763
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Esiste già una mappa con questo nome. Vuoi sovrascriverla?"
 
-#: src/menu_events.cpp:762
+#: src/menu_events.cpp:775
 msgid "Map saved."
 msgstr "Mappa salvata."
 
-#: src/menu_events.cpp:766
+#: src/menu_events.cpp:779
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/menu_events.cpp:859 src/menu_events.cpp:861 src/play_controller.cpp:796
+#: src/menu_events.cpp:872 src/menu_events.cpp:874 src/play_controller.cpp:812
 msgid "Auto-Save"
 msgstr "Salvataggio automatico"
 
-#: src/menu_events.cpp:866
+#: src/menu_events.cpp:879
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Impossibile effettuare il salvataggio automatico. Si prega si salvare il "
 "gioco manualmente."
 
-#: src/menu_events.cpp:894
+#: src/menu_events.cpp:907
 msgid "Chat Log"
 msgstr "Cronologia chat"
 
-#: src/menu_events.cpp:904
+#: src/menu_events.cpp:917
 msgid "Message:"
 msgstr "Messaggio:"
 
-#: src/menu_events.cpp:905
+#: src/menu_events.cpp:918
 msgid "Send to allies only"
 msgstr "Invia solo agli alleati"
 
-#: src/menu_events.cpp:905
+#: src/menu_events.cpp:918
 msgid "Send to observers only"
 msgstr "Invia solo agli osservatori"
 
-#: src/menu_events.cpp:985
+#: src/menu_events.cpp:998
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Oro"
 msgstr[1] "Oro"
 
-#: src/menu_events.cpp:992
+#: src/menu_events.cpp:1005
 msgid "You have no units available to recruit."
 msgstr "Non hai nessuna unità disponibile per il reclutamento."
 
-#: src/menu_events.cpp:1004
+#: src/menu_events.cpp:1017
 msgid "Recruit"
 msgstr "Recluta"
 
-#: src/menu_events.cpp:1005 src/menu_events.cpp:1156
+#: src/menu_events.cpp:1018 src/menu_events.cpp:1169
 msgid "Select unit:"
 msgstr "Seleziona unità:"
 
-#: src/menu_events.cpp:1050
+#: src/menu_events.cpp:1063
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Non hai abbastanza monete d'oro per reclutare questa unità"
 
-#: src/menu_events.cpp:1109
+#: src/menu_events.cpp:1122
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Sei separato dai tuoi soldati e non puoi richiamarli"
 
-#: src/menu_events.cpp:1111
+#: src/menu_events.cpp:1124
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6473,69 +6514,69 @@ msgstr ""
 "Non ci sono truppe da richiamare.\n"
 "(Devi avere veterani sopravvissuti dai precedenti scenari)"
 
-#: src/menu_events.cpp:1118
+#: src/menu_events.cpp:1131
 msgid "Level"
 msgstr "Livello"
 
-#: src/menu_events.cpp:1150
+#: src/menu_events.cpp:1163
 msgid "Dismiss Unit"
 msgstr "Congeda l'unità"
 
-#: src/menu_events.cpp:1155
+#: src/menu_events.cpp:1168
 msgid "Recall"
 msgstr "Richiama"
 
-#: src/menu_events.cpp:1172
+#: src/menu_events.cpp:1185
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Devi avere almeno una moneta d'oro per richiamare un'unità"
 msgstr[1] "Devi avere almeno $cost monete d'oro per richiamare un'unità"
 
-#: src/menu_events.cpp:1506
+#: src/menu_events.cpp:1519
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Non hai ancora iniziato il tuo turno. Sei sicuro di volerlo terminare?"
 
-#: src/menu_events.cpp:1514 src/menu_events.cpp:1519
+#: src/menu_events.cpp:1527 src/menu_events.cpp:1532
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Alcune unità hanno dei movimenti a disposizione. Vuoi davvero terminare il "
 "tuo turno?"
 
-#: src/menu_events.cpp:1560
+#: src/menu_events.cpp:1573
 msgid "Rename Unit"
 msgstr "Rinomina unità"
 
-#: src/menu_events.cpp:1597
+#: src/menu_events.cpp:1610
 msgid "Race"
 msgstr "Razza"
 
-#: src/menu_events.cpp:1622
+#: src/menu_events.cpp:1635
 msgid "Create Unit (Debug!)"
 msgstr "Crea unità (Debug!)"
 
-#: src/menu_events.cpp:1666
+#: src/menu_events.cpp:1679
 msgid "Place Label"
 msgstr "Imposta etichetta"
 
-#: src/menu_events.cpp:1669 src/menu_events.cpp:1672
+#: src/menu_events.cpp:1682 src/menu_events.cpp:1685
 msgid "Label: "
 msgstr "Etichetta: "
 
-#: src/menu_events.cpp:1674
+#: src/menu_events.cpp:1687
 msgid "Team only"
 msgstr "Solo squadra"
 
-#: src/menu_events.cpp:1775
+#: src/menu_events.cpp:1788
 msgid "Search"
 msgstr "Cerca"
 
-#: src/menu_events.cpp:1818
+#: src/menu_events.cpp:1831
 msgid "Commands: whisper list emote. Type /help [command] for more help."
 msgstr ""
 "Comandi: whisper list emote. Scrivi /help [comando] per ulteriore aiuto."
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1883
 msgid ""
 "Sends private message. You can't send messages to players that control any "
 "side in game. Usage: /whisper [nick] [message]"
@@ -6543,18 +6584,18 @@ msgstr ""
 "Invia un messaggio privato. Non si possono mandare messaggi ai giocatori che "
 "controllano una qualunque fazione in partita. Uso: /whisper [nick] [message]"
 
-#: src/menu_events.cpp:1874
+#: src/menu_events.cpp:1887
 msgid "Add player to your friends list. Usage: /list addfriend [argument]"
 msgstr ""
 "Aggiungi il giocatore all'elenco degli amici. Uso: /list addfriend [argument]"
 
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1889
 msgid "Add player to your ignore list. Usage: /list ignore [argument]"
 msgstr ""
 "Aggiungi il giocatore all'elenco degli utenti da ignorare. Uso: /list ignore "
 "[argument]"
 
-#: src/menu_events.cpp:1878
+#: src/menu_events.cpp:1891
 msgid ""
 "Remove player from your ignore or friends list. Usage: /list remove "
 "[argument]"
@@ -6562,20 +6603,20 @@ msgstr ""
 "Rimuovi il giocatore dal tuo elenco di amici o utenti da ignorare. Uso: /"
 "list remove [argument]"
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1893
 msgid "Clear your ignore and friends list. Usage: /list clear"
 msgstr ""
 "Svuota l'elenco degli amici e degli utenti da ignorare: Uso: /list clear"
 
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1895
 msgid "Show your ignore and friends list. Usage: /list display"
 msgstr "Mostra il tuo elenco di amici e utenti da ignorare. Uso: /list display"
 
-#: src/menu_events.cpp:1884
+#: src/menu_events.cpp:1897
 msgid "Unknown subcommand"
 msgstr "Comando sconosciuto"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1900
 msgid ""
 "Ignore messages from players on the ignore list and highlight players on the "
 "friends list. Usage: /list [subcommand] [argument](optional) Subcommands: "
@@ -6587,57 +6628,57 @@ msgstr ""
 "comandi: addfriend addignore remove display clear. Scrivi /help list "
 "[subcommand] per ulteriori informazioni."
 
-#: src/menu_events.cpp:1890
+#: src/menu_events.cpp:1903
 msgid "Send an emotion or personal action in chat. Usage: /emote [message]"
 msgstr ""
 "Invia un'emozione o una azione personale in chat. Uso: /emote [message]"
 
-#: src/menu_events.cpp:1892
+#: src/menu_events.cpp:1905
 msgid "Unknown command"
 msgstr "Comando sconosciuto"
 
-#: src/menu_events.cpp:1904
+#: src/menu_events.cpp:1917
 msgid "Added to ignore list: "
 msgstr "Aggiunto all'elenco degli utenti da ignorare:"
 
-#: src/menu_events.cpp:1906 src/menu_events.cpp:1913 src/menu_events.cpp:1920
+#: src/menu_events.cpp:1919 src/menu_events.cpp:1926 src/menu_events.cpp:1933
 msgid "Invalid username: "
 msgstr "Nome utente non valido:"
 
-#: src/menu_events.cpp:1911
+#: src/menu_events.cpp:1924
 msgid "Added to friends list: "
 msgstr "Aggiunto all'elenco degli amici:"
 
-#: src/menu_events.cpp:1918
+#: src/menu_events.cpp:1931
 msgid "Removed from list: "
 msgstr "Rimosso dall'elenco: "
 
-#: src/menu_events.cpp:1944
+#: src/menu_events.cpp:1957
 msgid "There are no players on your friends or ignore list."
 msgstr ""
 "Non ci sono giocatori negli elenchi degli amici o degli utenti da ignorare."
 
-#: src/menu_events.cpp:1954
+#: src/menu_events.cpp:1967
 msgid "Removed from ignore list: "
 msgstr "Rimosso dall'elenco degli utenti da ignorare:"
 
-#: src/menu_events.cpp:1957
+#: src/menu_events.cpp:1970
 msgid "Removed from friends list: "
 msgstr "Rimosso dall'elenco degli amici:"
 
-#: src/menu_events.cpp:1964
+#: src/menu_events.cpp:1977
 msgid "Unknown command: "
 msgstr "Comando sconosciuto: "
 
-#: src/menu_events.cpp:2077
+#: src/menu_events.cpp:2090
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Non ho trovato nessuna etichetta contente '$search'."
 
-#: src/menu_events.cpp:2258
+#: src/menu_events.cpp:2303
 msgid "prompt^Command:"
 msgstr "Comando:"
 
-#: src/menu_events.cpp:2277
+#: src/menu_events.cpp:2322
 msgid "User-Command#3"
 msgstr "Comando-utente#3"
 
@@ -6776,68 +6817,68 @@ msgstr "Computer"
 msgid "(Empty slot)"
 msgstr "(Casella Vuota)"
 
-#: src/multiplayer_connect.cpp:814
+#: src/multiplayer_connect.cpp:835
 msgid "Only random sides in the current era."
 msgstr "Solo schieramenti casuali nell'era corrente."
 
-#: src/multiplayer_connect.cpp:838
+#: src/multiplayer_connect.cpp:859
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Impossibile trovare un tipo di condottiero per la fazione $faction"
 
-#: src/multiplayer_connect.cpp:875 src/multiplayer_lobby.cpp:622
+#: src/multiplayer_connect.cpp:896 src/multiplayer_lobby.cpp:622
 #: src/multiplayer_wait.cpp:192
 msgid "Game Lobby"
 msgstr "Game Lobby"
 
-#: src/multiplayer_connect.cpp:895
+#: src/multiplayer_connect.cpp:916
 msgid "Player/Type"
 msgstr "Giocatore/Tipo"
 
-#: src/multiplayer_connect.cpp:896
+#: src/multiplayer_connect.cpp:917
 msgid "Faction"
 msgstr "Fazione"
 
-#: src/multiplayer_connect.cpp:897
+#: src/multiplayer_connect.cpp:918
 msgid "Team/Gender"
 msgstr "Squadra/genere"
 
-#: src/multiplayer_connect.cpp:898
+#: src/multiplayer_connect.cpp:919
 msgid "Color"
 msgstr "Colore"
 
-#: src/multiplayer_connect.cpp:902
+#: src/multiplayer_connect.cpp:923
 msgid "I'm Ready"
 msgstr "Sono pronto"
 
-#: src/multiplayer_connect.cpp:911
+#: src/multiplayer_connect.cpp:932
 msgid "The scenario is invalid because it has no sides."
 msgstr "Lo scenario non è valido perché non ha alcuno schieramento."
 
-#: src/multiplayer_connect.cpp:1284
+#: src/multiplayer_connect.cpp:1305
 msgid "Network Player"
 msgstr "Giocatore remoto"
 
-#: src/multiplayer_connect.cpp:1285
+#: src/multiplayer_connect.cpp:1306
 msgid "Local Player"
 msgstr "Giocatore locale"
 
-#: src/multiplayer_connect.cpp:1286
+#: src/multiplayer_connect.cpp:1307
 msgid "Computer Player"
 msgstr "Computer"
 
-#: src/multiplayer_connect.cpp:1287
+#: src/multiplayer_connect.cpp:1308
 msgid "Empty"
 msgstr "Vuoto"
 
-#: src/multiplayer_connect.cpp:1401
+#: src/multiplayer_connect.cpp:1422
 msgid "This is not a multiplayer save"
 msgstr "Questo non è un salvataggio per multigiocatori"
 
-#: src/multiplayer_connect.cpp:1495
+#: src/multiplayer_connect.cpp:1516
 msgid "Cannot find era $era"
 msgstr "Non è stato possibile trovare l'era $era"
 
-#: src/multiplayer_connect.cpp:1514
+#: src/multiplayer_connect.cpp:1535
 msgid ""
 "Victory:\n"
 "@Defeat enemy leader(s)"
@@ -6845,7 +6886,7 @@ msgstr ""
 "Vittoria:\n"
 "@Sconfiggi il o i condottieri nemici"
 
-#: src/multiplayer_connect.cpp:1575
+#: src/multiplayer_connect.cpp:1596
 msgid "Waiting for players to join..."
 msgstr "In attesa degli altri giocatori..."
 
@@ -7216,15 +7257,15 @@ msgstr "Preparazione squadre"
 msgid "Initializing display"
 msgstr "Preparazione display"
 
-#: src/play_controller.cpp:133
+#: src/play_controller.cpp:147
 msgid "Starting game"
 msgstr "Sta iniziando la partita"
 
-#: src/play_controller.cpp:804
+#: src/play_controller.cpp:820
 msgid "Back to start"
 msgstr "Torna all'inizio"
 
-#: src/play_controller.cpp:806
+#: src/play_controller.cpp:822
 msgid "Back to turn "
 msgstr "Torno al turno"
 
@@ -7678,6 +7719,20 @@ msgstr "Aiutaci a migliorare Wesnoth!"
 #: src/upload_log.cpp:302
 msgid "Enable summary uploads"
 msgstr "Abilita l'invio del sommario"
+
+#~ msgid ""
+#~ "Poisoned units lose 8 hitpoints every turn, but they will not die from "
+#~ "poison: poison will never reduce them below 1 hitpoint. Poisoned units "
+#~ "next to a healer will not lose hitpoints on their next turn. If they are "
+#~ "in a village or next to a unit with the 'cures' ability, the poison will "
+#~ "be completely cured on their next turn."
+#~ msgstr ""
+#~ "Le unità avvelenate perdono 8 punti ferita ogni turno, ma non possono "
+#~ "morire di solo veleno: il veleno non ridurrà mai i punti ferita sotto il "
+#~ "valore di 1. Se si trovano vicino a un guaritore non perdono punti "
+#~ "fderita all'inizio del turno. Se si trovano in un villaggio o vicino a "
+#~ "un'unità che possiede l'abilità \"cura\", il veleno verrà completamente "
+#~ "neutralizzato all'inizio del turno."
 
 #~ msgid "Contributors"
 #~ msgstr "Contributi"

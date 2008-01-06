@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2007-12-26 20:34+0100\n"
+"POT-Creation-Date: 2008-01-06 17:50+0100\n"
 "PO-Revision-Date: 2006-08-14 19:33+0200\n"
 "Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
 "Language-Team: Slovenian\n"
@@ -781,7 +781,7 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:65 data/core/units/humans/Mage.cfg:50
 #: data/core/units/humans/Mage_White.cfg:117
 #: data/core/units/humans/Mage_Great.cfg:29
-#: data/core/units/humans/Mage_Silver.cfg:37
+#: data/core/units/humans/Mage_Silver.cfg:35
 #: data/core/units/humans/Mage_Arch.cfg:28
 #: data/core/units/humans/Mage_Red.cfg:50
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:25
@@ -1684,7 +1684,7 @@ msgid ""
 msgstr ""
 
 #: data/core/units/humans/Mage.cfg:59
-#: data/core/units/humans/Mage_Silver.cfg:46
+#: data/core/units/humans/Mage_Silver.cfg:44
 msgid "missile"
 msgstr "izstrelek"
 
@@ -1801,7 +1801,13 @@ msgstr "Rdeča čarovnica"
 msgid "Silver Mage"
 msgstr "Srebrni čarovnik"
 
-#: data/core/units/humans/Mage_Silver.cfg:25
+#: data/core/units/humans/Mage_Silver.cfg:23
+msgid ""
+"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"highly resistant to non-physical damage."
+msgstr ""
+
+#: data/core/units/humans/Mage_Silver.cfg:23
 #, fuzzy
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
@@ -1820,10 +1826,7 @@ msgid ""
 "\n"
 "Silver magi are often more physically adept than other magi, and their "
 "skills are of undeniable use on the battlefield, if one can manage to induce "
-"the mage to apply them.\n"
-"\n"
-"Special Notes: Silver Magi are well-attuned to their magical natures and are "
-"highly resistant to non-physical damage."
+"the mage to apply them."
 msgstr ""
 "Mnogo poti, po katerih se lahko čarodej uči, vodijo v čisto različne konce. "
 "Srebrni čarovniki so se predali raziskavi sil, ki držijo realnost skupaj, in "
@@ -1834,7 +1837,7 @@ msgstr ""
 "ostajajo nekoliko vzvišeni.\n"
 "\n"
 
-#: data/core/units/humans/Mage_Silver.cfg:151
+#: data/core/units/humans/Mage_Silver.cfg:149
 msgid "female^Silver Mage"
 msgstr "Srebrna čarovnica"
 
@@ -1902,7 +1905,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:33
 #: data/core/units/humans/Outlaw.cfg:31
 #: data/core/units/humans/Outlaw_Fugitive.cfg:37
-#: data/core/units/trolls/Rocklobber.cfg:38
+#: data/core/units/trolls/Rocklobber.cfg:36
 msgid "sling"
 msgstr "prača"
 
@@ -2463,7 +2466,7 @@ msgstr ""
 
 #: data/core/units/monsters/Yeti.cfg:35
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:47
-#: data/core/units/trolls/Rocklobber.cfg:29
+#: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Whelp.cfg:26
 #: data/core/units/undead/Skeleton_Archer.cfg:31
 msgid "fist"
@@ -2925,16 +2928,13 @@ msgstr ""
 msgid "Troll Rocklobber"
 msgstr "Trol skalometalec"
 
-#: data/core/units/trolls/Rocklobber.cfg:22
+#: data/core/units/trolls/Rocklobber.cfg:20
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because such "
 "stones are not always easy to find, Rocklobbers have taken to carrying them "
 "in sacks slung over their shoulders. The same leather out of which the sack "
-"is formed is easily adapted to a crude sling.\n"
-"\n"
-"Special Notes: though unwieldy, a stone thrown by one of these monsters is "
-"much more deadly than any arrow, if it manages to hit."
+"is formed is easily adapted to a crude sling."
 msgstr ""
 
 #: data/core/units/trolls/Troll.cfg:4
@@ -3015,7 +3015,7 @@ msgstr ""
 msgid "Soulless"
 msgstr "Brezdušnik"
 
-#: data/core/units/undead/Corpse_Soulless.cfg:20
+#: data/core/units/undead/Corpse_Soulless.cfg:21
 msgid ""
 "The technique of animating a dead body is unfortunately well-known to the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -3023,11 +3023,11 @@ msgid ""
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
 
-#: data/core/units/undead/Corpse_Walking.cfg:47
+#: data/core/units/undead/Corpse_Walking.cfg:71
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:24
 #: data/core/units/undead/Necro_Lich.cfg:34
-#: data/core/units/undead/Corpse_Soulless.cfg:45
+#: data/core/units/undead/Corpse_Soulless.cfg:72
 msgid "touch"
 msgstr "dotik"
 
