@@ -103,7 +103,7 @@ private:
 	// change
 	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_,
 	            scroll_slider_, gamma_slider_, chat_lines_slider_,
-	  buffer_size_slider_, idle_anim_slider_, savemax_slider_;
+	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_;
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 			show_grid_button_, save_replays_button_, delete_saves_button_,
@@ -127,7 +127,7 @@ private:
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
 	           scroll_label_, gamma_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
-	  idle_anim_slider_label_, savemax_slider_label_;
+	  idle_anim_slider_label_, autosavemax_slider_label_;
 	gui::textbox sample_rate_input_, friends_input_;
 
 	unsigned slider_label_width_;
@@ -152,7 +152,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  UI_sound_slider_(disp.video()), bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
 	  chat_lines_slider_(disp.video()), buffer_size_slider_(disp.video()),
-	  idle_anim_slider_(disp.video()), savemax_slider_(disp.video()), 
+	  idle_anim_slider_(disp.video()), autosavemax_slider_(disp.video()), 
 	  turbo_slider_(disp.video()),
 
 
@@ -203,7 +203,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
 	  sample_rate_label_(disp.video(), _("Sample Rate (Hz):")), buffer_size_label_(disp.video(), ""),
 	  idle_anim_slider_label_(disp.video(), _("Frequency:")),
-	  savemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
+	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
 
 	  sample_rate_input_(disp.video(), 70),
 	  friends_input_(disp.video(), 170),
@@ -329,10 +329,10 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	idle_anim_slider_.set_value(idle_anim_rate());
 	idle_anim_slider_.set_help_string(_("Set the frequency of unit idle animations"));
 
-	savemax_slider_.set_min(0);
-	savemax_slider_.set_max(preferences::INFINITE_SAVES);
-	savemax_slider_.set_value(savemax());
-	savemax_slider_.set_help_string(_("Set maximum saves to be retained"));
+	autosavemax_slider_.set_min(1); //at least one autosave is stored
+	autosavemax_slider_.set_max(preferences::INFINITE_AUTO_SAVES);
+	autosavemax_slider_.set_value(autosavemax());
+	autosavemax_slider_.set_help_string(_("Set maximum number of automatic saves to be retained"));
 
 
 	show_ai_moves_button_.set_check(!show_ai_moves());
@@ -410,7 +410,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&chat_lines_slider_);
 	h.push_back(&turbo_slider_);
 	h.push_back(&idle_anim_slider_);
-	h.push_back(&savemax_slider_);
+	h.push_back(&autosavemax_slider_);
 	h.push_back(&buffer_size_slider_);
 	h.push_back(&fullscreen_button_);
 	h.push_back(&turbo_button_);
@@ -460,7 +460,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&gamma_label_);
 	h.push_back(&turbo_slider_label_);
 	h.push_back(&idle_anim_slider_label_);
-	h.push_back(&savemax_slider_label_);
+	h.push_back(&autosavemax_slider_label_);
 	h.push_back(&chat_lines_label_);
 	h.push_back(&sample_rate_label_);
 	h.push_back(&buffer_size_label_);
@@ -508,10 +508,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += short_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
 	ypos += short_interline; delete_saves_button_.set_location(rect.x, ypos);
-	ypos += short_interline; savemax_slider_label_.set_location(rect.x, ypos);
-	SDL_Rect savemax_rect = { rect.x, ypos+short_interline,
+	ypos += short_interline; autosavemax_slider_label_.set_location(rect.x, ypos);
+	SDL_Rect autosavemax_rect = { rect.x, ypos+short_interline,
 				  rect.w - right_border, 0};
-	savemax_slider_.set_location(savemax_rect);
+	autosavemax_slider_.set_location(autosavemax_rect);
 	hotkeys_button_.set_location(rect.x, bottom_row_y - hotkeys_button_.height());
 
 	// Display tab
@@ -678,7 +678,7 @@ void preferences_dialog::process_event()
 		}
 
 		set_scroll_speed(scroll_slider_.value());
-		set_savemax(savemax_slider_.value());
+		set_autosavemax(autosavemax_slider_.value());
 		set_turbo_speed(turbo_slider_.item_selected());
 
 		std::stringstream buf;
@@ -686,11 +686,11 @@ void preferences_dialog::process_event()
 		turbo_slider_label_.set_text(buf.str());
 
 		std::stringstream buf2;
-		if (savemax_slider_.value() == preferences::INFINITE_SAVES)
-			buf2 << _("Maximum Saves: ") << _("infinite");
+		if (autosavemax_slider_.value() == preferences::INFINITE_AUTO_SAVES)
+			buf2 << _("Maximum Auto-Saves: ") << _("infinite");
 		else
-			buf2 << _("Maximum Saves: ") << savemax_slider_.value();
-		savemax_slider_label_.set_text(buf2.str());
+			buf2 << _("Maximum Auto-Saves: ") << autosavemax_slider_.value();
+		autosavemax_slider_label_.set_text(buf2.str());
 
 		return;
 	}
@@ -1025,10 +1025,10 @@ void preferences_dialog::set_selection(int index)
 	show_grid_button_.hide(hide_general);
 	save_replays_button_.hide(hide_general);
 	delete_saves_button_.hide(hide_general);
-	savemax_slider_label_.hide(hide_general);
-	savemax_slider_label_.enable(!hide_general);
-	savemax_slider_.hide(hide_general);
-	savemax_slider_.enable(!hide_general);
+	autosavemax_slider_label_.hide(hide_general);
+	autosavemax_slider_label_.enable(!hide_general);
+	autosavemax_slider_.hide(hide_general);
+	autosavemax_slider_.enable(!hide_general);
 
 	const bool hide_display = tab_ != DISPLAY_TAB;
 	gamma_label_.hide(hide_display);

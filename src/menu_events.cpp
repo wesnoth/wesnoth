@@ -49,26 +49,13 @@
 
 namespace {
 
-void remove_old_saves()
-{
-	int countdown = preferences::savemax();
-	if (countdown == preferences::INFINITE_SAVES)
-		return;
-
-	std::vector<save_info> games = get_saves_list();
-	LOG_NG << "Removing old saves.\n";
-	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
-		if (countdown-- < 0) {
-			LOG_NG << "Deleting savegame '" << i->name << "'\n";
-			delete_game(i->name);
-		}
-	}
-}
-
 void remove_old_auto_saves()
 {
 	const std::string auto_save = _("Auto-Save");
 	int countdown = preferences::autosavemax();
+	if (countdown == preferences::INFINITE_AUTO_SAVES)
+		return;
+
 	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
 		if (countdown-- < 0) {
