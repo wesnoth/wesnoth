@@ -67,9 +67,13 @@ std::string &unescape(std::string &str);
 std::string &strip(std::string &str);
 //! Removes character 'c' from the first and last position of the string 'str'.
 std::string& strip_char(std::string &str, const char c);
-bool has_value(std::string const &values, std::string const &val);
 bool string_bool(const std::string& str,bool def=false);
 
+//! Check if a message contains a word.
+bool word_match(const std::string& message, const std::string& word);
+//! Match using '*' as any number of characters (including none), 
+//! and '?' as any one character.
+bool wildcard_string_match(const std::string& str, const std::string& match);
 //! Check if the username contains only valid characters.
 bool isvalid_username(const std::string &login);
 
@@ -127,8 +131,6 @@ utf8_string lowercase(const utf8_string&);
 
 //! Truncates a string.
 void truncate_as_wstring(std::string& str, const size_t size);
-
-bool wildcard_string_match(const std::string& str, const std::string& match);
 
 }
 

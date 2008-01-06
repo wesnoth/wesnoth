@@ -393,37 +393,88 @@ std::string &unescape(std::string &str)
 	return str;
 }
 
-bool string_bool(const std::string& str,bool def)
-{
-	if(str != "") {
-		if(str == "yes" || str == "on" || str == "true"
-		|| lexical_cast_default<int>(str, 0)) {
-			return true;
-		}
-		if(str == "no" || str == "off" || str == "false"
-		|| !lexical_cast_default<int>(str, 1)) {
-			return false;
-		}
+bool string_bool(const std::string& str, bool def) {
+	if (str == "yes" || str == "on" || str == "true"
+	|| lexical_cast_default<int>(str), 0) {
+		return true;
+	}
+	if (str == "no" || str == "off" || str == "false"
+	|| !lexical_cast_default<int>(str, 1)) {
+		return false;
 	}
 	return def;
 }
 
-//! Test for additional valid username characters.
-bool isvalid_char(char c)
-{
+bool is_username_char(char c) {
 	return ((c == '_') || (c == '-'));
 }
 
-//! Check if the username is valid
-//! (all alpha-numeric plus underscore and hyphen)
-bool isvalid_username(const std::string& username)
-{
-	const size_t alnum = std::count_if(username.begin(),username.end(),isalnum);
-	const size_t valid_char = std::count_if(username.begin(),username.end(),isvalid_char);
-	if((alnum + valid_char != username.size()) || valid_char == username.size() || username.empty() ) {
+//! Check if the username is valid.
+//! (all alpha-numeric characters plus underscore and hyphen)
+bool isvalid_username(const std::string& username) {
+	const size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
+	const size_t valid_char =
+			std::count_if(username.begin(), username.end(), is_username_char);
+	if ((alnum + valid_char != username.size()) 
+			|| valid_char == username.size() || username.empty() )
+	{
 		return false;
 	}
 	return true;
+}
+
+bool is_word_boundary(char c) {
+	return (c == ' ' || c == ',' || c == ':' || c == '\'' || c == '"' || c == '-');
+}
+
+//! Check if a string contains a word.
+bool word_match(const std::string& message, const std::string& word) {
+	size_t first = message.find(word);
+	if (first == std::string::npos) return false;
+	if (first == 0 || is_word_boundary(message[first - 1])) {
+		size_t next = first + word.size();
+		if (next == message.size() || is_word_boundary(message[next])) {
+			return true;
+		}
+	}
+	return false;
+}
+
+//! Match using '*' as any number of characters (including none), 
+//! and '?' as any one character.
+bool wildcard_string_match(const std::string& str, const std::string& match) {
+	const bool wild_matching = (!match.empty() && match[0] == '*');
+	const std::string::size_type solid_begin = match.find_first_not_of('*');
+	const bool have_solids = (solid_begin != std::string::npos);
+	// Check the simple case first
+	if(str.empty() || !have_solids) {
+		return wild_matching || str == match;
+	}
+	const std::string::size_type solid_end = match.find_first_of('*', solid_begin);
+	const std::string::size_type solid_len = (solid_end == std::string::npos)
+		? match.length() - solid_begin : solid_end - solid_begin;
+	std::string::size_type current = 0;
+	bool matches;
+	do {
+		matches = true;
+		// Now try to place the str into the solid space
+		const std::string::size_type test_len = str.length() - current;
+		for(std::string::size_type i=0; i < solid_len && matches; ++i) {
+			char solid_c = match[solid_begin + i];
+			if(i > test_len || !(solid_c == '?' || solid_c == str[current+i])) {
+				matches = false;
+			}
+		}
+		if(matches) {
+			// The solid space matched, now consume it and attempt to find more
+			const std::string consumed_match = (solid_begin+solid_len < match.length())
+				? match.substr(solid_end) : "";
+			const std::string consumed_str = (solid_len < test_len)
+				? str.substr(current+solid_len) : "";
+			matches = wildcard_string_match(consumed_str, consumed_match);
+		}
+	} while(wild_matching && !matches && ++current < str.length());
+	return matches;
 }
 
 std::string join(std::vector< std::string > const &v, char c)
@@ -782,45 +833,6 @@ void truncate_as_wstring(std::string& str, const size_t size)
 		str = utils::wstring_to_string(utf8_str);
 	}
 }
-
-//! Match using '*' as any number of characters (including none), 
-//! and '?' as any one character.
-bool wildcard_string_match(const std::string& str, const std::string& match)
-{
-	const bool wild_matching = (!match.empty() && match[0] == '*');
-	const std::string::size_type solid_begin = match.find_first_not_of('*');
-	const bool have_solids = (solid_begin != std::string::npos);
-	// Check the simple case first
-	if(str.empty() || !have_solids) {
-		return wild_matching || str == match;
-	}
-	const std::string::size_type solid_end = match.find_first_of('*', solid_begin);
-	const std::string::size_type solid_len = (solid_end == std::string::npos)
-		? match.length() - solid_begin : solid_end - solid_begin;
-	std::string::size_type current = 0;
-	bool matches;
-	do {
-		matches = true;
-		// Now try to place the str into the solid space
-		const std::string::size_type test_len = str.length() - current;
-		for(std::string::size_type i=0; i < solid_len && matches; ++i) {
-			char solid_c = match[solid_begin + i];
-			if(i > test_len || !(solid_c == '?' || solid_c == str[current+i])) {
-				matches = false;
-			}
-		}
-		if(matches) {
-			// The solid space matched, now consume it and attempt to find more
-			const std::string consumed_match = (solid_begin+solid_len < match.length())
-				? match.substr(solid_end) : "";
-			const std::string consumed_str = (solid_len < test_len)
-				? str.substr(current+solid_len) : "";
-			matches = wildcard_string_match(consumed_str, consumed_match);
-		}
-	} while(wild_matching && !matches && ++current < str.length());
-	return matches;
-}
-
 
 } // end namespace utils
 
