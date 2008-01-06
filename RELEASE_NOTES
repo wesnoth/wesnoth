@@ -11,30 +11,4 @@ is making sure that spelling/grammer/whatever is usable and that you are using
 The release team should empty this file after each release.
 
 
-The old save option 'Binary Saves' has been replaced with 'Compressed Saves'.
-This uses the standard gzip compression. Shadow_Master tested with his savegame 
-archive and the following results where found for 687 files:
-before 1018.1 MB
-after    79.3 MB
-
-There has been more change in the animation engine. The only expected impact is
-that mvt anims don't "slow down" on hard to cross terrain anymore. If you had 
-specially crafted WML taking that into account, beware.
-
-If the mvt animations seem to "jump around" on slow or fast computers, please report
-to Boucman
-
-Recruitment OOS is fatal now.
-
-There have been quite some last minutes MP campaign bug fixes and they might work
-properly again, but it didn't have much testing, please report bugs if they're
-still left.
-
-MP random improvements:
-There is a new rand key for [set_variable] this is MP save, only the WML author
-has to make sure it stays in sync see:
-http://www.wesnoth.org/wiki/BuildingMultiplayerExamples#Random
-
-Units spawned in events can now have random_traits and also the names stay in sync.
-
 
