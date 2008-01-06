@@ -1,0 +1,164 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2007 wesnothd "Démon na sie»ovú hru Bitky o Wesnoth"
+.
+.SH NÁZOV
+.
+wesnothd \- Démon na sie»ovú hru Bitky o \fBWesnoth\fP
+.
+.SH ZHRNUTIE
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIcesta\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fIèíslo\fP\|] [\|\fB\-T\fP \fIèíslo\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH POPIS
+.
+Riadi sie»ové hry Bitky o Wesnoth. Na stránke
+http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, ktoré
+server príjíma cez klienta alebo socket.
+.
+.SH MO®NOSTI
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ cesta\fP
+povie wesnothd, kde má hµada» konfiguraèný súbor. Syntax, viï sekciu 
+\fBKONFIGURÁCIA SERVERA\fP ni¾¹ie. Konfiguráciu mô¾ete znovunaèíta» poslaním
+SIGHUP serverovému procesu.
+.TP 
+\fB\-d, \-\-daemon\fP
+spustí wesnothd ako démona.
+.TP 
+\fB\-h, \-\-help\fP
+povie, èo robia jednotlivé mo¾nosti príkazového riadku.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
+nastaví úroveò záva¾nosti zapisovacích domén. \fBall\fP znamená v¹etky
+zapisovacie domény. Mo¾né úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. ©tandardne sa pou¾íva úroveò \fBerror\fP a \fBinfo\fP pre doménu
+\fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+zavesí server na daný port. Ak nie je daný port, pou¾ije sa port \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fIèíslo\fP\fB,\ \-\-threads\fP\fI\ èíslo\fP
+nastaví maximálny poèet èakajúcich pracovných vlákien pre sie»ové I/O
+(¹tandardne: \fB5\fP,\ maximum:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fIèíslo\fP\fB,\ \-\-max\-threads\fP\fI\ èíslo\fP
+nastaví maximálny poèet vytvorených pracovných vlákien. Hodnota \fB0\fP znamená
+bez obmedzenia (¹tandardne: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+vypí¹e èíslo verzie a skonèí.
+.TP 
+\fB\-v, \-\-verbose\fP
+zapne zaznamenávanie ladiacich informácií.
+.
+.SH "KONFIGURÁCIA SERVERA"
+.
+.SS "V¹eobecná syntax je:"
+.
+.P
+[\fIznaèka\fP]
+.IP
+kµúè="\fIhodnota\fP"
+.IP
+kµúè="\fIhodnota\fP,\fIhodnota\fP,..."
+.P
+[/\fIznaèka\fP]
+.
+.SS "Globálne kµúèe:"
+.
+.TP 
+\fBconnections_allowed\fP
+Poèet povolených spojení z rovnakej IP adresy. (¹tandardne: \fB5\fP)
+.TP 
+\fBdisallow_names\fP
+Mená/prezývky, ktoré server neprijíma. Podporujú sa ¾olíkové znaky`*' and
+`?'. Ïal¹ie podrobnosti viï \fBglob\fP(7). ©tandardné hodnoty (ak sa niè
+nezadá) sú:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBmax_messages\fP
+Poèet povolených správ poèas \fBmessages_time_period\fP. (¹tandardne: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Èasové obdobie (v sekundách), v ktorom sa meria zasypávanie
+správami. (¹tandardne: \fB10\fP sekúnd)
+.TP 
+\fBmotd\fP
+Správa dòa.
+.TP 
+\fBpasswd\fP
+Heslo pou¾ívané na získanie administrátorských práv. Zvyèajne zaèína na
+`admin '.
+.TP 
+\fBversions_accepted\fP
+Èiarkami oddelený zoznam verzií, ktoré má server prijíma». Podporujú sa
+¾olíkové znaky `*' and `?'. (¹tandardne je to zodpovedajúca verzia wesnoth)
+.br
+Napríklad: \fBversions_accepted="*"\fP prijme hocijakú verziu.
+.
+.SS "Globálne znaèky:"
+.
+.P
+\fB[redirect]\fP Znaèka urèujúca server, na ktorý sa presmerujú niektoré vezie
+klientov.
+.RS
+.TP 
+\fBhost\fP
+Adresa servera, kam sa presmerujú.
+.TP 
+\fBport\fP
+Port, na ktorý sa majú pripoji».
+.TP 
+\fBversion\fP
+Èiarkami oddelený zoznam verzií, ktoré sa majú presmerova». Podporuje
+¾olíkové znaky rovnako ako  \fBversions_accepted\fP.
+.RE
+.P
+\fB[proxy]\fP Znaèka, ktorá povie serveru, aby sa správal ako proxy a
+preposielal po¾iadavky pripojených klientov na daný server. Podporuje
+rovnaké kµúèe ako \fB[redirect]\fP.
+.
+.SH AUTOR
+.
+Napísal David White <davidnwhite@verizon.net>. Editovali Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> a
+Soliton <soliton@gmail.com>. Prelo¾il Viliam Búr
+<viliam@bur.sk>.  Túto manuálovú stránku pôvodne napísal Cyril
+Bouthors <cyril@bouthors.org>.
+.br
+Nav¹tívte oficiálnu stránku: http://www.wesnoth.org/
+.
+.SH COPYRIGHT
+.
+Copyright \(co 2003\-2007 David White <davidnwhite@verizon.net>
+.br
+Toto je slobodný softvér; tento softvér je zverejnená pod V¹eobecnou
+verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného
+softvéru (Free Software Foundation). Nie je naò ®IADNA záruka; dokonca ani
+PREDATE¥NOSTI èi VHODNOSTI NA DANÝ ÚÈEL.
+.
+.SH "VIÏ AJ"
+.
+\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
