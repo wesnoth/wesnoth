@@ -66,9 +66,6 @@ static void teleport_unit_between( const gamemap::location& a, const gamemap::lo
 
 static void move_unit_between(const gamemap::location& a, const gamemap::location& b, unit& temp_unit)
 {
-//NOTES TO SELF (boucman)
-// get rid of speed dependant gliding
-// add some sort of auto slide anyway
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->fogged(a) && disp->fogged(b)) {
 		return;
@@ -76,7 +73,6 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN);
 
-	disp->draw(); // to refresh animation time
 	disp->place_temporary_unit(temp_unit,a);
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
@@ -85,7 +81,7 @@ static void move_unit_between(const gamemap::location& a, const gamemap::locatio
 	int target_time = animator.get_animation_time();
 	target_time += 150;
 	target_time -= target_time%150;
-//	if(target_time < 10) target_time +=150;
+	if(  target_time - animator.get_animation_time() < 100 ) target_time +=150;
 	animator.wait_until(target_time);
 }
 

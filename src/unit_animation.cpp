@@ -879,7 +879,8 @@ void unit_animator::wait_until(int animation_time) const
 		events::pump();
 		disp->delay(maximum<int>(0,minimum<int>(10,(animation_time - get_animation_time())*disp->turbo_speed()) ));
 	}
-	disp->delay(maximum<int>(0,end_tick - SDL_GetTicks()+1));
+	disp->delay(maximum<int>(0,end_tick - SDL_GetTicks() +5));
+	new_animation_frame();
 }
 void unit_animator::wait_for_end() const
 {
