@@ -2102,11 +2102,15 @@ private:
 			image::flush_cache();
 			gui_->redraw_everything();
 		} else if (cmd == "droid") {
+			// :droid [<side> [on/off]]
+			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
+			const std::string side_s(data.begin(),j);
+			const std::string action(j,data.end());
 			// default to the current side
-			const unsigned int side = lexical_cast_default<unsigned int>(data, team_num);
+			const unsigned int side = lexical_cast_default<unsigned int>(side_s, team_num);
 			if (side < 1 || side > teams_.size() || teams_[side - 1].is_network()) {
 				return;
-			} else if (teams_[side - 1].is_human()) {
+			} else if (teams_[side - 1].is_human() && action != " off") {
 				//this is our side, so give it to AI
 				teams_[side - 1].make_ai();
 				textbox_info_.close(*gui_);
@@ -2115,7 +2119,7 @@ private:
 					//play_controller, that we are no longer in control
 					throw end_turn_exception(side);
 				}
-			} else if (teams_[side - 1].is_ai()) {
+			} else if (teams_[side - 1].is_ai() && action != " on") {
 				teams_[side - 1].make_human();
 			}
 		} else if (cmd == "log") {
