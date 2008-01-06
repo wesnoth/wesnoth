@@ -58,7 +58,7 @@ void remove_old_auto_saves()
 
 	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); i++) {
-		if (countdown-- < 0) {
+		if (countdown-- <= 0) {
 			LOG_NG << "Deleting savegame '" << i->name << "'\n";
 			delete_game(i->name);
 		}
