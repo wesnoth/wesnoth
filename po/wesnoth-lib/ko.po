@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-06 17:50+0100\n"
+"POT-Creation-Date: 2008-01-07 22:31+0100\n"
 "PO-Revision-Date: 2006-03-21 12:58-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -366,11 +366,11 @@ msgstr ""
 msgid "Creation of the directory failed."
 msgstr ""
 
-#: src/game_preferences.cpp:154
+#: src/game_preferences.cpp:217
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:218
+#: src/game_preferences.cpp:281
 msgid "player"
 msgstr ""
 
@@ -631,7 +631,7 @@ msgid "Set the frequency of unit idle animations"
 msgstr ""
 
 #: src/game_preferences_display.cpp:335
-msgid "Set maximum saves to be retained"
+msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
 #: src/game_preferences_display.cpp:339
@@ -744,7 +744,7 @@ msgid "Speed: "
 msgstr "스크롤 속도:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
-msgid "Maximum Saves: "
+msgid "Maximum Auto-Saves: "
 msgstr ""
 
 #: src/game_preferences_display.cpp:690
@@ -756,51 +756,50 @@ msgid "Chat Lines: "
 msgstr "줄 수:"
 
 #: src/game_preferences_display.cpp:884 src/game_preferences_display.cpp:892
-#: src/game_preferences_display.cpp:905
 msgid "Invalid username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:965
+#: src/game_preferences_display.cpp:964
 msgid "yes"
 msgstr "예"
 
-#: src/game_preferences_display.cpp:967
+#: src/game_preferences_display.cpp:966
 msgid "no"
 msgstr "아니오"
 
-#: src/game_preferences_display.cpp:1000
+#: src/game_preferences_display.cpp:998
 msgid "(empty list)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1118
+#: src/game_preferences_display.cpp:1116
 msgid "Prefs section^General"
 msgstr "일반"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1117
 msgid "Prefs section^Display"
 msgstr "디스플레이"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1118
 msgid "Prefs section^Sound"
 msgstr "소리"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1119
 msgid "Prefs section^Multiplayer"
 msgstr "멀티플레이"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1120
 msgid "Advanced section^Advanced"
 msgstr "고급"
 
-#: src/game_preferences_display.cpp:1157
+#: src/game_preferences_display.cpp:1155
 msgid "Saved Theme Preference: "
 msgstr "저장 된 테마:"
 
-#: src/game_preferences_display.cpp:1163
+#: src/game_preferences_display.cpp:1161
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
 
-#: src/game_preferences_display.cpp:1167
+#: src/game_preferences_display.cpp:1165
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 
@@ -1184,11 +1183,11 @@ msgstr ""
 msgid "The maximum text width is less than 1."
 msgstr ""
 
-#: src/minimap.cpp:88
+#: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
 msgstr ""
 
-#: src/minimap.cpp:94 src/minimap.cpp:106
+#: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
 msgstr ""
 

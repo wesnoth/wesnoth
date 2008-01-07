@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-06 17:50+0100\n"
+"POT-Creation-Date: 2008-01-07 22:31+0100\n"
 "PO-Revision-Date: 2006-02-14 22:10+0200\n"
 "Last-Translator: Ely Levy <nakeee@gmail.com>\n"
 "Language-Team: Hebrew\n"
@@ -372,11 +372,11 @@ msgstr ""
 msgid "Creation of the directory failed."
 msgstr "מחיקת קובץ נכשלה"
 
-#: src/game_preferences.cpp:154
+#: src/game_preferences.cpp:217
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:218
+#: src/game_preferences.cpp:281
 msgid "player"
 msgstr "שחקן"
 
@@ -637,7 +637,7 @@ msgid "Set the frequency of unit idle animations"
 msgstr ""
 
 #: src/game_preferences_display.cpp:335
-msgid "Set maximum saves to be retained"
+msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
 
 #: src/game_preferences_display.cpp:339
@@ -752,7 +752,7 @@ msgid "Speed: "
 msgstr "מהירות גלילה:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
-msgid "Maximum Saves: "
+msgid "Maximum Auto-Saves: "
 msgstr ""
 
 #: src/game_preferences_display.cpp:690
@@ -764,51 +764,50 @@ msgid "Chat Lines: "
 msgstr "שורות שיחה: "
 
 #: src/game_preferences_display.cpp:884 src/game_preferences_display.cpp:892
-#: src/game_preferences_display.cpp:905
 msgid "Invalid username"
 msgstr ""
 
-#: src/game_preferences_display.cpp:965
+#: src/game_preferences_display.cpp:964
 msgid "yes"
 msgstr "כן"
 
-#: src/game_preferences_display.cpp:967
+#: src/game_preferences_display.cpp:966
 msgid "no"
 msgstr "לא"
 
-#: src/game_preferences_display.cpp:1000
+#: src/game_preferences_display.cpp:998
 msgid "(empty list)"
 msgstr ""
 
-#: src/game_preferences_display.cpp:1118
+#: src/game_preferences_display.cpp:1116
 msgid "Prefs section^General"
 msgstr "כללי"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1117
 msgid "Prefs section^Display"
 msgstr "תצוגה"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1118
 msgid "Prefs section^Sound"
 msgstr "צליל"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1119
 msgid "Prefs section^Multiplayer"
 msgstr "משחק רב-משתתפים"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1120
 msgid "Advanced section^Advanced"
 msgstr "מתקדם"
 
-#: src/game_preferences_display.cpp:1157
+#: src/game_preferences_display.cpp:1155
 msgid "Saved Theme Preference: "
 msgstr "העדפות השמורות של ערכת הנושא : "
 
-#: src/game_preferences_display.cpp:1163
+#: src/game_preferences_display.cpp:1161
 msgid "New theme will take effect on next new or loaded game."
 msgstr "השינוי לערכת הנושא החדשה יתרחש במשחק חדש הבא או אחרי טעינת המשחק הבאה."
 
-#: src/game_preferences_display.cpp:1167
+#: src/game_preferences_display.cpp:1165
 #, fuzzy
 msgid "No known themes. Try changing from within an existing game."
 msgstr "אין ערכות נושא ידועות. נסה לשנות מתוך משחק קיים."
@@ -1196,11 +1195,11 @@ msgstr "אי"
 msgid "The maximum text width is less than 1."
 msgstr ""
 
-#: src/minimap.cpp:88
+#: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
 msgstr ""
 
-#: src/minimap.cpp:94 src/minimap.cpp:106
+#: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
 msgstr ""
 

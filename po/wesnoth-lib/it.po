@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2008-01-06 17:50+0100\n"
+"POT-Creation-Date: 2008-01-07 22:31+0100\n"
 "PO-Revision-Date: 2007-12-28 00:13+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -367,11 +367,11 @@ msgstr "Nome: "
 msgid "Creation of the directory failed."
 msgstr "Creazione cartella non riuscita."
 
-#: src/game_preferences.cpp:154
+#: src/game_preferences.cpp:217
 msgid "No server has been defined."
 msgstr "Non è stato definito nessun server."
 
-#: src/game_preferences.cpp:218
+#: src/game_preferences.cpp:281
 msgid "player"
 msgstr "giocatore"
 
@@ -622,7 +622,8 @@ msgid "Set the frequency of unit idle animations"
 msgstr "Imposta la frequenza delle animazioni delle unità inattive"
 
 #: src/game_preferences_display.cpp:335
-msgid "Set maximum saves to be retained"
+#, fuzzy
+msgid "Set maximum number of automatic saves to be retained"
 msgstr "Imposta i salvataggi massimi da conservare"
 
 #: src/game_preferences_display.cpp:339
@@ -745,7 +746,8 @@ msgid "Speed: "
 msgstr "Velocità: "
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
-msgid "Maximum Saves: "
+#, fuzzy
+msgid "Maximum Auto-Saves: "
 msgstr "Salvataggi massimi: "
 
 #: src/game_preferences_display.cpp:690
@@ -757,51 +759,50 @@ msgid "Chat Lines: "
 msgstr "Righe di chat: "
 
 #: src/game_preferences_display.cpp:884 src/game_preferences_display.cpp:892
-#: src/game_preferences_display.cpp:905
 msgid "Invalid username"
 msgstr "Nome utente non valido"
 
-#: src/game_preferences_display.cpp:965
+#: src/game_preferences_display.cpp:964
 msgid "yes"
 msgstr "Sì"
 
-#: src/game_preferences_display.cpp:967
+#: src/game_preferences_display.cpp:966
 msgid "no"
 msgstr "No"
 
-#: src/game_preferences_display.cpp:1000
+#: src/game_preferences_display.cpp:998
 msgid "(empty list)"
 msgstr "(elenco vuoto)"
 
-#: src/game_preferences_display.cpp:1118
+#: src/game_preferences_display.cpp:1116
 msgid "Prefs section^General"
 msgstr "Generale"
 
-#: src/game_preferences_display.cpp:1119
+#: src/game_preferences_display.cpp:1117
 msgid "Prefs section^Display"
 msgstr "Video"
 
-#: src/game_preferences_display.cpp:1120
+#: src/game_preferences_display.cpp:1118
 msgid "Prefs section^Sound"
 msgstr "Sonoro"
 
-#: src/game_preferences_display.cpp:1121
+#: src/game_preferences_display.cpp:1119
 msgid "Prefs section^Multiplayer"
 msgstr "Multiplayer"
 
-#: src/game_preferences_display.cpp:1122
+#: src/game_preferences_display.cpp:1120
 msgid "Advanced section^Advanced"
 msgstr "Avanzate"
 
-#: src/game_preferences_display.cpp:1157
+#: src/game_preferences_display.cpp:1155
 msgid "Saved Theme Preference: "
 msgstr "Preferenze sul tema salvate:"
 
-#: src/game_preferences_display.cpp:1163
+#: src/game_preferences_display.cpp:1161
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Il nuovo tema avrà effetto sul gioco che inizierai o che caricherai."
 
-#: src/game_preferences_display.cpp:1167
+#: src/game_preferences_display.cpp:1165
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Nessun tema conosciuto. Prova a cambiarlo dall'interno di un gioco esistente."
@@ -1182,11 +1183,11 @@ msgstr "Isola"
 msgid "The maximum text width is less than 1."
 msgstr "L'ampiezza massima del testo è meno di 1."
 
-#: src/minimap.cpp:88
+#: src/minimap.cpp:87
 msgid "Could not get image for terrain: $terrain."
 msgstr "Non è possibile ottenere un'immagine per il terreno: $terrain."
 
-#: src/minimap.cpp:94 src/minimap.cpp:106
+#: src/minimap.cpp:93 src/minimap.cpp:105
 msgid "Error creating or aquiring an image."
 msgstr "Errore nella creazione o acquisizione di un'immagine."
 
