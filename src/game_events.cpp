@@ -1726,7 +1726,7 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 			{
 				side = lexical_cast_default<int>(*itSide);
 				// Make sanity check that side number is good
-				// then check if this side is human controled
+				// then check if this side is human controlled.
 				if (side > 0
 					&& side <= teams->size()
 					&& (*teams)[side-1].is_human())
