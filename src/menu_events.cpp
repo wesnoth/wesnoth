@@ -1795,6 +1795,20 @@ private:
 	{
 	}
 
+	void chat_handler::send_command(const std::string& cmd, const std::string& args) {
+		config data;
+		if (cmd == "muteall") {
+			data.add_child(cmd);
+		} else if (cmd == "query") {
+			data.add_child(cmd)["type"] = args;
+		} else if (cmd == "ban" || cmd == "kick" || cmd == "mute") {
+			data.add_child(cmd)["username"] = args;
+		} else if (cmd == "ping") {
+			data[cmd] = lexical_cast<std::string>(time(NULL));
+		}
+		network::send_data(data, 0, true);
+	}
+
 	void chat_handler::do_speak(const std::string& message, bool allies_only)
 	{
 		if(message == "") {
@@ -1834,8 +1848,10 @@ private:
 		if ((cmd == "/me" || cmd == "/emote") && argc > 0) {
 			//emote message
 			send_chat_message("/me" + message.substr(cmd.size()), allies_only);
-		} else if (cmd == "/query") {
-			send_chat_query(message.substr(cmd.size()));
+		} else if (cmd == "/query" || cmd == "/ban" || cmd == "/kick"
+				|| cmd == "/mute" || cmd == "/muteall" || cmd == "/ping")
+		{
+			send_command(cmd.substr(1), (argc > 1) ? arg1 + " " + arg2 : arg1);
 		} else if ((cmd == "/msg" || cmd == "/whisper") && argc > 1) {
 			config cwhisper,data;
 			cwhisper["message"] = arg2;
@@ -2099,26 +2115,14 @@ private:
 			}
 		} else if (cmd == "theme") {
 			preferences::show_theme_dialog(*gui_);
-		} else if (cmd == "ping" && network::nconnections() != 0) {
-			config ping;
-			ping["ping"] = lexical_cast<std::string>(time(NULL));
-			network::send_data(ping, 0, true);
-		} else if((cmd == "ban" || cmd == "kick") && network::nconnections() != 0) {
-			config cfg;
-			config& ban = cfg.add_child(cmd);
-			ban["username"] = data;
-
-			network::send_data(cfg, 0, true);
-		} else if (cmd == "mute" && network::nconnections() != 0) {
-			config cfg;
-			config& mute = cfg.add_child(cmd);
-			if (!data.empty()) {
-				mute["username"] = data;
-			}
-
-			network::send_data(cfg, 0, true);
-		} else if (cmd == "muteall" && network::nconnections() != 0) {
-			network::send_data(config(cmd), 0, true);
+		} else if (cmd == "muteall" || cmd == "ping"
+				&& network::nconnections() != 0)
+		{
+			send_command(cmd);
+		} else if ((cmd == "ban" || cmd == "kick" || cmd == "mute"
+				|| cmd == "query") && network::nconnections() != 0)
+		{
+			send_command(cmd, data);
 		} else if(cmd == "control" && network::nconnections() != 0) {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j == data.end())

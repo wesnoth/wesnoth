@@ -114,7 +114,6 @@ protected:
 	virtual void handle_key_event(const SDL_KeyboardEvent& event);
 
 	// Override chat_handler
-	void send_chat_query(const std::string& args);
 	void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 

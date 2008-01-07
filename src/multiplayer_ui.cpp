@@ -391,13 +391,6 @@ void ui::handle_event(const SDL_Event& event)
 	}
 }
 
-void ui::send_chat_query(const std::string& args)
-{
-	config data;
-	data.add_child("query")["type"] = args;
-	network::send_data(data, 0, true);
-}
-
 void ui::add_chat_message(const std::string& speaker, int /*side*/, const std::string& message, game_display::MESSAGE_TYPE /*type*/)
 {
 	chat_.add_message(speaker,message);
