@@ -614,12 +614,12 @@ void server::process_query(const network::connection sock, const config& query) 
 		admins_.insert(sock);
 		response << "You are now recognized as an administrator.";
 	} else if (admin_passwd_.empty() == false) {
-		WRN_SERVER << "FAILED Admin attempt:" << "\tIP: "
+		WRN_SERVER << "FAILED Admin attempt: '" << command << "'\tIP: "
 			<< network::ip_address(sock) << "\tnick: "
 			<< pl->second.name() << std::endl;
-		response << "Error: unrecognized query.\n" << help_msg;
+		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	} else {
-		response << "Error: unrecognized query.\n" << help_msg;
+		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
 	network::send_data(lobby_.construct_server_message(response.str()), sock, send_gzipped_);
 }
