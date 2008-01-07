@@ -36,6 +36,7 @@
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
+#define DBG_G LOG_STREAM(debug, general)
 
 std::ostream &operator<<(std::ostream &s, gamemap::location const &l) {
 	s << (l.x + 1) << ',' << (l.y + 1);
@@ -298,7 +299,7 @@ gamemap::gamemap(const config& cfg, const std::string& data):
 		border_size_(NO_BORDER),
 		usage_(IS_MAP) 
 {
-	LOG_G << "loading map: '" << data << "'\n";
+	DBG_G << "loading map: '" << data << "'\n";
 	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainList_,letterToTerrain_);
 

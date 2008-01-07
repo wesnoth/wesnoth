@@ -21,8 +21,7 @@
 #include "team.hpp"
 #include "wml_exception.hpp"
 
-#define LOG_DP LOG_STREAM(info, display)
-#define ERR_DP LOG_STREAM(err, display)
+#define DBG_DP LOG_STREAM(debug, display)
 
 namespace image {
 
@@ -30,7 +29,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 {
 	const int scale = 8;
 
-	LOG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << int(map.h()*scale) << "\n";
+	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << int(map.h()*scale) << "\n";
 
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
@@ -126,7 +125,7 @@ surface getMinimap(int w, int h, const gamemap& map, const viewpoint* vw)
 	minimap = scale_surface(minimap,
 		static_cast<int>(minimap->w * ratio), static_cast<int>(minimap->h * ratio));
 
-	LOG_DP << "done generating minimap\n";
+	DBG_DP << "done generating minimap\n";
 
 	return minimap;
 }
