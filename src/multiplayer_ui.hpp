@@ -45,15 +45,17 @@ class chat
 public:
 	chat();
 
-	void add_message(const std::string& user, const std::string& message);
+	void add_message(const time_t& time, const std::string& user,
+			const std::string& message);
 
 	void init_textbox(gui::textbox& textbox);
 	void update_textbox(gui::textbox& textbox);
 
 private:
 	struct msg {
-		msg(const std::string& user, const std::string& message) :
-			user(user), message(message) {};
+		msg(const time_t& time, const std::string& user, const std::string& message)
+			: time(time), user(user), message(message) {};
+		time_t time;
 		std::string user;
 		std::string message;
 	};
@@ -114,7 +116,9 @@ protected:
 	virtual void handle_key_event(const SDL_KeyboardEvent& event);
 
 	// Override chat_handler
-	void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
+	void add_chat_message(const time_t& time, const std::string& speaker,
+			int side, const std::string& message,
+			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 
 	//! Process chat messages.

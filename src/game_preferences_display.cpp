@@ -288,7 +288,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	// Have the tooltip appear over the static "Chat lines" label, too.
 	chat_lines_label_.set_help_string(_("Set the amount of chat lines shown"));
 
-	chat_timestamp_button_.set_check(chat_timestamp());
+	chat_timestamp_button_.set_check(chat_timestamping());
 	chat_timestamp_button_.set_help_string(_("Add a timestamp to chat messages"));
 
 	gamma_button_.set_check(adjust_gamma());
@@ -851,7 +851,7 @@ void preferences_dialog::process_event()
 		if (iconize_list_button_.pressed())
 			set_iconize_list(iconize_list_button_.checked());
 		if (chat_timestamp_button_.pressed())
-			set_chat_timestamp(chat_timestamp_button_.checked());
+			set_chat_timestamping(chat_timestamp_button_.checked());
 		if (friends_list_button_.pressed())
 			set_selection(FRIENDS_TAB);
 

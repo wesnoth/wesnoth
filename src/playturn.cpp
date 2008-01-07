@@ -75,13 +75,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 {
 	if (cfg.child("message")) {
 		const config& cmessage = *cfg.child("message");
-		gui_.add_chat_message(cmessage["sender"], 0,
+		gui_.add_chat_message(time(NULL), cmessage["sender"], 0,
 				cmessage["message"], game_display::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	if (cfg.child("whisper") != NULL /*&& is_observer()*/) {
 		const config& cwhisper = *cfg.child("whisper");
-		gui_.add_chat_message("whisper: " + cwhisper["sender"], 0,
+		gui_.add_chat_message(time(NULL), "whisper: " + cwhisper["sender"], 0,
 				cwhisper["message"], game_display::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}

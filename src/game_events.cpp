@@ -150,7 +150,8 @@ static void show_wml_errors()
 			msg << " (" << itor->second << ")";
 		}
 
-		screen->add_chat_message(caption, 0, msg.str(), game_display::MESSAGE_PUBLIC, false);
+		screen->add_chat_message(time(NULL), caption, 0, msg.str(),
+				game_display::MESSAGE_PUBLIC, false);
 		std::cerr << caption << ": " << msg.str() << '\n';
 	}
 }

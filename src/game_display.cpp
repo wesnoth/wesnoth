@@ -1131,19 +1131,6 @@ void game_display::set_playing_team(size_t teamindex)
 	invalidate_game_status();
 }
 
-
-//! timestring() returns the current date as a string.
-//! Uses preferences::clock_format() for formatting.
-static std::string timestring ()
-{
-    time_t now = time (NULL);
-    struct tm *lt = localtime(&now);
-    char buf[10];
-    strftime(buf,sizeof(buf),preferences::clock_format().c_str(),lt);
-
-    return buf;
-}
-
 void game_display::begin_game()
 {
 	in_game_ = true;
@@ -1159,8 +1146,9 @@ namespace {
 	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
 
-void game_display::add_chat_message(const std::string& speaker, int side,
-		const std::string& message, game_display::MESSAGE_TYPE type, bool bell)
+void game_display::add_chat_message(const time_t& time, const std::string& speaker,
+		int side, const std::string& message, game_display::MESSAGE_TYPE type,
+		bool bell)
 {
 	std::string sender = speaker;
 	if (speaker.find("whisper: ") == 0) {
@@ -1233,9 +1221,7 @@ void game_display::add_chat_message(const std::string& speaker, int side,
 
 	// prepend message with timestamp
 	std::stringstream message_complete;
-	if (preferences::chat_timestamp()) {
-		message_complete << timestring() << " ";
-	}
+	message_complete << preferences::get_chat_timestamp(time);
 	message_complete << str.str();
 
 	const SDL_Rect rect = map_outside_area();

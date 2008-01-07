@@ -176,9 +176,10 @@ chat::chat()
 {
 }
 
-void chat::add_message(const std::string& user, const std::string& message)
+void chat::add_message(const time_t& time, const std::string& user,
+		const std::string& message)
 {
-	message_history_.push_back(msg(user, message));
+	message_history_.push_back(msg(time, user, message));
 
 	while (message_history_.size() > 1024) {
 		message_history_.pop_front();
@@ -219,9 +220,11 @@ void chat::update_textbox(gui::textbox& textbox)
 std::string chat::format_message(const msg& message)
 {
 	if(message.message.substr(0,3) == "/me") {
-		return "<" + message.user + message.message.substr(3) + ">\n";
+		return preferences::get_chat_timestamp(message.time) + "<" + message.user
+				+ message.message.substr(3) + ">\n";
 	} else {
-		return "<" + message.user + ">" + message.message + "\n";
+		return preferences::get_chat_timestamp(message.time) + "<" + message.user
+				+ ">" + message.message + "\n";
 	}
 }
 
@@ -391,9 +394,9 @@ void ui::handle_event(const SDL_Event& event)
 	}
 }
 
-void ui::add_chat_message(const std::string& speaker, int /*side*/, const std::string& message, game_display::MESSAGE_TYPE /*type*/)
+void ui::add_chat_message(const time_t& time, const std::string& speaker, int /*side*/, const std::string& message, game_display::MESSAGE_TYPE /*type*/)
 {
-	chat_.add_message(speaker,message);
+	chat_.add_message(time, speaker, message);
 	chat_.update_textbox(chat_textbox_);
 }
 
@@ -404,7 +407,7 @@ void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
 	msg["sender"] = preferences::login();
 	data.add_child("message", msg);
 
-	add_chat_message(preferences::login(),0, message);	//local echo
+	add_chat_message(time(NULL), preferences::login(),0, message);	//local echo
 	network::send_data(data, 0, true);
 }
 
@@ -468,7 +471,7 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 					completion_list += " ";
 					completion_list += *it;
 				}
-				chat_.add_message("",completion_list);
+				chat_.add_message(time(NULL), "", completion_list);
 				chat_.update_textbox(chat_textbox_);
 			}
 			entry_textbox_.set_text(text);
@@ -493,7 +496,8 @@ void ui::process_message(const config& msg, const bool whisper) {
 	} else {
 		sound::play_UI_sound(game_config::sounds::receive_message);
 	}
-	chat_.add_message((whisper ? "whisper: " : "") + msg["sender"], msg["message"]);
+	chat_.add_message(time(NULL), (whisper ? "whisper: " : "") + msg["sender"],
+			msg["message"]);
 	chat_.update_textbox(chat_textbox_);
 }
 

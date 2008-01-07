@@ -1786,9 +1786,11 @@ private:
 		chat_handler::do_speak(textbox_info_.box()->text(),textbox_info_.check() != NULL ? textbox_info_.check()->checked() : false);
 	}
 
-	void menu_handler::add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type)
+	void menu_handler::add_chat_message(const time_t& time,
+			const std::string& speaker, int side, const std::string& message,
+			game_display::MESSAGE_TYPE type)
 	{
-		gui_->add_chat_message(speaker,side,message,type,false);
+		gui_->add_chat_message(time, speaker, side, message, type, false);
 	}
 
 	chat_handler::~chat_handler()
@@ -1858,7 +1860,7 @@ private:
 			cwhisper["sender"] = preferences::login();
 			cwhisper["receiver"] = arg1;
 			data.add_child("whisper", cwhisper);
-			add_chat_message("whisper to " + cwhisper["receiver"], 0,
+			add_chat_message(time(NULL), "whisper to " + cwhisper["receiver"], 0,
 					cwhisper["message"], game_display::MESSAGE_PRIVATE);
 			network::send_data(data, 0, true);
 		} else if (cmd == "/help") {
@@ -1868,15 +1870,15 @@ private:
 			const std::string& subcommand = arg2;
 
 			if (!have_command) {
-				add_chat_message("help", 0, help_chat_help);
+				add_chat_message(time(NULL), "help", 0, help_chat_help);
 			} else if (command == "whisper" || command == "msg") {
 				//! @todo /msg should be replaced by the used command.
-				add_chat_message("help", 0, _("Sends a private message. "
+				add_chat_message(time(NULL), "help", 0, _("Sends a private message. "
 						"You can't send messages to players that control "
 						"any side in a game. Usage: /msg <nick> <message>"));
 			} else if (command == "list") {
 				if (!have_subcommand) {
-					add_chat_message("help", 0,
+					add_chat_message(time(NULL), "help", 0,
 							_("Ignore messages from players on the ignore list"
 							" and highlight players on the friends list."
 							" Usage: /list <subcommand> [<argument>]"
@@ -1884,35 +1886,35 @@ private:
 							" display, clear."
 							" Type /help list <subcommand> for more info."));
 				} else if (subcommand == "addfriend"){
-					add_chat_message("help", 0,
+					add_chat_message(time(NULL), "help", 0,
 							_("Add a nick to your friends list."
 							" Usage: /list addfriend <nick>"));
 				} else if (subcommand == "addignore"){
-					add_chat_message("help", 0 ,
+					add_chat_message(time(NULL), "help", 0 ,
 							_("Add a nick to your ignores list."
 							" Usage: /list ignore <nick>"));
 				} else if (subcommand == "remove") {
-					add_chat_message("help", 0,
+					add_chat_message(time(NULL), "help", 0,
 							_("Remove a nick from your ignores or friends list."
 							" Usage: /list remove <nick>"));
 				} else if (subcommand == "clear") {
-					add_chat_message("help", 0,
+					add_chat_message(time(NULL), "help", 0,
 							_("Clear your complete ignores and friends list."
 							" Usage: /list clear"));
 				} else if (subcommand == "display") {
-					add_chat_message("help", 0,
+					add_chat_message(time(NULL), "help", 0,
 							_("Show your ignores and friends list."
 							" Usage: /list display"));
 				} else {
-					add_chat_message("help", 0, _("Unknown subcommand."));
+					add_chat_message(time(NULL), "help", 0, _("Unknown subcommand."));
 				}
 			} else if (command == "emote" || command == "me") {
 				//! @todo /me should be replaced by the used command.
-				add_chat_message("help", 0,
+				add_chat_message(time(NULL), "help", 0,
 						_("Send an emotion or personal action in chat. "
 						"Usage: /me <message>"));
 			} else {
-				add_chat_message("help", 0, _("Unknown command."));
+				add_chat_message(time(NULL), "help", 0, _("Unknown command."));
 			}
 		} else if (cmd == "/list" && argc > 0) {
 			if (arg1 == "addignore") {
@@ -1920,40 +1922,40 @@ private:
 						(preferences::add_ignore(arg2)
 						? _("Added to ignore list: ") : _("Invalid username: "))
 						+ arg2;
-				add_chat_message("ignores list", 0,	msg);
+				add_chat_message(time(NULL), "ignores list", 0,	msg);
 			} else if (arg1 == "addfriend") {
 				const std::string msg =
 						(preferences::add_friend(arg2)
 						? _("Added to friends list: ") : _("Invalid username: "))
 						+ arg2;
-				add_chat_message("friends list", 0, msg);
+				add_chat_message(time(NULL), "friends list", 0, msg);
 			} else if (arg1 == "remove") {
 				preferences::remove_friend(arg2);
 				preferences::remove_ignore(arg2);
-				add_chat_message("list", 0, _("Removed from list: ") + arg2,
-						game_display::MESSAGE_PRIVATE);
+				add_chat_message(time(NULL), "list", 0, _("Removed from list: ")
+						+ arg2, game_display::MESSAGE_PRIVATE);
 			} else if (arg1 == "display") {
 				const std::string& text_friend = preferences::get_friends();
 				const std::string& text_ignore = preferences::get_ignores();
 				if (!text_friend.empty()) {
-					add_chat_message("friends list", 0, text_friend);
+					add_chat_message(time(NULL), "friends list", 0, text_friend);
 				}
 				if (!text_ignore.empty()) {
-					add_chat_message("ignores list", 0, text_ignore);
+					add_chat_message(time(NULL), "ignores list", 0, text_ignore);
 				} else if (text_friend.empty()) {
-					add_chat_message("list", 0,
+					add_chat_message(time(NULL), "list", 0,
 							_("There are no players on your friends or ignore list."));
 				}
 			} else if (arg1 == "clear") {
 				preferences::clear_friends();
 				preferences::clear_ignores();
 			} else {
-				add_chat_message("list", 0, _("Unknown command: ") + arg1);
+				add_chat_message(time(NULL), "list", 0, _("Unknown command: ") + arg1);
 			}
 		} else {
 			//! @todo Rather show specific error messages for missing arguments.
 			// Command not accepted, show help.
-			add_chat_message("help", 0, help_chat_help);
+			add_chat_message(time(NULL), "help", 0, help_chat_help);
 		}
 	}
 
@@ -1979,8 +1981,8 @@ private:
 		}
 
 		recorder.speak(cfg);
-		add_chat_message(cfg["description"],side,message,
-							  private_message ? game_display::MESSAGE_PRIVATE : game_display::MESSAGE_PUBLIC);
+		add_chat_message(time(NULL), cfg["description"], side, message,
+				private_message ? game_display::MESSAGE_PRIVATE : game_display::MESSAGE_PUBLIC);
 
 	}
 

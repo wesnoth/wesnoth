@@ -171,8 +171,9 @@ namespace preferences {
 	const std::string upload_id();
 
 	// Multiplayer functions
-	bool chat_timestamp();
-	void set_chat_timestamp(bool value);
+	std::string get_chat_timestamp(const time_t& t);
+	bool chat_timestamping();
+	void set_chat_timestamping(bool value);
 
 	int chat_lines();
 	void set_chat_lines(int lines);

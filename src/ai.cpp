@@ -385,7 +385,8 @@ void ai_interface::diagnostic(const std::string& msg)
 void ai_interface::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		info_.disp.add_chat_message("ai",info_.team_num,msg,game_display::MESSAGE_PUBLIC,false);
+		info_.disp.add_chat_message(time(NULL), "ai", info_. team_num, msg,
+				game_display::MESSAGE_PUBLIC, false);
 	}
 }
 

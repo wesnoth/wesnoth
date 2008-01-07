@@ -61,7 +61,9 @@ protected:
 	void do_speak(const std::string& message, bool allies_only=false);
 
 	//called from do_speak
-	virtual void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE)=0;
+	virtual void add_chat_message(const time_t& time,
+			const std::string& speaker, int side, const std::string& message,
+			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE)=0;
 	virtual void send_chat_message(const std::string& message, bool allies_only=false)=0;
 	void send_command(const std::string& cmd, const std::string& args="");
 };
@@ -130,7 +132,9 @@ public:
 	void autosave(const std::string &label, unsigned turn, const config &starting_pos) const;
 	bool has_team() const;
 protected:
-	void add_chat_message(const std::string& speaker, int side, const std::string& message, game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
+	void add_chat_message(const time_t& time, const std::string& speaker,
+			int side, const std::string& message,
+			game_display::MESSAGE_TYPE type=game_display::MESSAGE_PRIVATE);
 	void send_chat_message(const std::string& message, bool allies_only=false);
 private:
 	//void do_speak(const std::string& message, bool allies_only);

@@ -639,13 +639,18 @@ bool compress_saves()
 	return utils::string_bool(preferences::get("compress_saves"), true);
 }
 
-bool chat_timestamp()
-{
+std::string get_chat_timestamp(const time_t& t) {
+	if (chat_timestamping()) {
+		return lg::get_timestamp(t, clock_format()) + " ";
+	}
+	return "";
+}
+
+bool chat_timestamping() {
 	return utils::string_bool(preferences::get("chat_timestamp"), false);
 }
 
-void set_chat_timestamp(bool value)
-{
+void set_chat_timestamping(bool value) {
 	preferences::set("chat_timestamp", value ? "yes" : "no");
 }
 

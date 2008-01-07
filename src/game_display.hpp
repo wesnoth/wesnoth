@@ -174,8 +174,8 @@ public:
 	const std::set<std::string>& observers() const { return observers_; }
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
-	void add_chat_message(const std::string& speaker, int side,
-			const std::string& msg, MESSAGE_TYPE type, bool bell);
+	void add_chat_message(const time_t& time, const std::string& speaker,
+			int side, const std::string& msg, MESSAGE_TYPE type, bool bell);
 	void clear_chat_messages() { prune_chat_messages(true); }
 
 	void begin_game();
