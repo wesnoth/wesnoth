@@ -768,16 +768,7 @@ void game::add_player(const network::connection player, const bool observer) {
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway
 		// otherwise.
-		for(user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
-			if(*ob != player) {
-				const player_map::const_iterator obs = player_info_->find(*ob);
-				if(obs != player_info_->end()) {
-					config cfg;
-					cfg.add_child("observer").values["name"] = obs->second.name();
-					network::send_data(cfg, player, send_gzipped);
-				}
-			}
-		}
+		send_observerjoin(player);
 	}
 }
 
@@ -908,6 +899,18 @@ void game::send_user_list(const network::connection exclude) const {
 	send_data(cfg, exclude);
 }
 
+//! A user (player only?) asks for the next scenario to advance to.
+void game::load_next_scenario(const player_map::const_iterator user) const {
+	send_data(construct_server_message(user->second.name()
+			+ " advances to the next scenario."), user->first);
+	config cfg_scenario;
+	cfg_scenario.add_child("next_scenario", level_);
+	network::send_data(cfg_scenario, user->first, send_gzipped);
+	// Send the player the history of the game to-date.
+	network::send_data(history_, user->first, send_gzipped);
+	// Send observer join of all the observers in the game to the user.
+	send_observerjoin(user->first);
+}
 
 void game::send_data(const config& data, const network::connection exclude) const
 {
@@ -946,6 +949,20 @@ void game::send_data_observers(const config& data, const network::connection exc
 	for(user_vector::const_iterator i = observers_.begin(); i != observers_.end(); ++i) {
 		if (*i != exclude) {
 			network::send_data(data, *i, send_gzipped);
+		}
+	}
+}
+
+//!	Send observer join of all the observers in the game to the user.
+void game::send_observerjoin(const network::connection sock) const {
+	for (user_vector::const_iterator ob = observers_.begin(); ob != observers_.end(); ++ob) {
+		if (*ob != sock) {
+			const player_map::const_iterator obs = player_info_->find(*ob);
+			if (obs != player_info_->end()) {
+				config cfg;
+				cfg.add_child("observer").values["name"] = obs->second.name();
+				network::send_data(cfg, sock, send_gzipped);
+			}
 		}
 	}
 }

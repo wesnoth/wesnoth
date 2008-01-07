@@ -83,6 +83,8 @@ public:
 	void add_players(const game& other_game, const bool observer = true);
 
 	void start_game();
+	//! A user (player only?) asks for the next scenario to advance to.
+	void load_next_scenario(const player_map::const_iterator user) const;
 
 	//! Resets the side configuration according to the scenario data.
 	void update_side_data();
@@ -142,6 +144,8 @@ private:
 	void send_data_team(const config& data, const std::string& team,
 			const network::connection exclude=0) const;
 	void send_data_observers(const config& data, const network::connection exclude=0) const;
+	//!	Send observer join of all the observers in the game to the user.
+	void send_observerjoin(const network::connection sock) const;
 	//! In case of a host transfer, notify the new host about its status.
 	void notify_new_host();
 	//! Convenience function for finding a user by name.

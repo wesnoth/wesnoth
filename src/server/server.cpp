@@ -1138,11 +1138,7 @@ void server::process_data_game(const network::connection sock, const config& dat
 		return;
 	// A mp client sends a request for the next scenario of a mp campaign.
 	} else if (data.child("load_next_scenario")) {
-		g->send_data(g->construct_server_message(pl->second.name()
-				+ " advances to the next scenario."), sock);
-		config cfg_scenario;
-		cfg_scenario.add_child("next_scenario", g->level());
-		network::send_data(cfg_scenario, sock, send_gzipped_);
+		g->load_next_scenario(pl);
 		return;
 	} else if (data.values.find("side") != data.values.end()) return;
 	else if (data.child("side_secured")) return;
