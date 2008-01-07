@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-06 18:23+0100\n"
-"PO-Revision-Date: 2008-01-05 20:56+1000\n"
+"PO-Revision-Date: 2008-01-07 22:53+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -289,7 +289,6 @@ msgid "Abilites"
 msgstr "能力"
 
 #: data/core/help.cfg:84
-#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -297,7 +296,8 @@ msgid ""
 "\n"
 msgstr ""
 "某些单位有一些能力，可以直接影响其他单位，或影响那单位与其他单位的互动。这篇"
-"文章将讨论这些能力。"
+"文章将列举这些能力──当您遇到它们。\n"
+"\n"
 
 #: data/core/help.cfg:96
 msgid "Unknown Unit"
@@ -425,9 +425,11 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"注意每个场景开始前弹出的目标窗口。通常你通过杀死敌人首领取得胜利，自己首领阵"
+"亡时游戏失败。但是有些场景可能有其他目标－让你的首领到达指定地点，或者救人，"
+"或者解决一个迷题，或者与敌人对抗并坚持一定回合数。"
 
 #: data/core/help.cfg:140
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -438,9 +440,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"场景胜利后,'回合结束' 按钮会变成 '场景结束'. You can now do things like "
-"changing your save options or (if you are in a multiplayer game) chatting "
-"with other players before pressing that button to advance."
+"场景胜利后,'回合结束' 按钮会变成 '场景结束'. 可以改动储存设置 (若是多人游"
+"戏)，或者在下一幕开始前和其它玩家聊天。"
 
 #: data/core/help.cfg:145
 msgid "Recruiting and Recalling"
@@ -1179,7 +1180,7 @@ msgstr ""
 
 #: data/core/help.cfg:297
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "制作人"
 
 #: data/core/help.cfg:303
 msgid "License"
@@ -2425,7 +2426,7 @@ msgstr ""
 
 #: data/core/macros/abilities.cfg:474
 msgid "feeding"
-msgstr ""
+msgstr "食尸"
 
 #: data/core/macros/abilities.cfg:476
 msgid ""
@@ -2433,6 +2434,8 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
+"食尸:\n"
+"这种单位每杀死一个单位能为自己添加一点生命值。"
 
 #: data/core/macros/abilities.cfg:500
 msgid "+1 max HP"
@@ -3737,6 +3740,7 @@ msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" 这种单位能在村庄中隐形（水上村庄除外），除非有敌人紧靠着他才会被发现。 "
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
@@ -3747,7 +3751,7 @@ msgstr "本单位可以在深水中潜行不需要到水面换气，因此在深
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr ""
+msgstr " 这种单位每杀死一个单位为自己添加一点生命值。"
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
@@ -4289,6 +4293,8 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"不要忽略你的指挥官的经验值！你必须确保他的安全，但是如果你太照顾他导致他等级"
+"太低可能反而无法让他在后面的战役中生存下来。"
 
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
 msgid "- Great Mage Delfador, 516YW"
@@ -4301,6 +4307,8 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"在“动作”菜单中选择“显示敌方移动范围”可以高亮所有对方能到达的位置。使用这个功"
+"能来确保敌人下回合无法靠近你受伤的单位。"
 
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
 #: data/hardwired/tips.cfg:24 data/hardwired/tips.cfg:32
@@ -4324,6 +4332,8 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"拥有“聪慧”特质的单位升级需要的经验比一般单位少。在战役早期，把最后一击留给这"
+"种单位，可以更快地拥有高等级单位。"
 
 #: data/hardwired/tips.cfg:12 data/hardwired/tips.cfg:104
 msgid "- King Konrad, 536YW"
@@ -4347,7 +4357,8 @@ msgid ""
 "castle tile. That will let you chose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
-"您可以通过鼠标右键使用 \"征募\" 和 \"召回\"命令, 只要在城堡单元格里点一下. "
+"您可以通过鼠标右键使用 \"征募\" 和 \"召回\" 命令, 只要在城堡单元格里点一下. "
+"就可以选择在哪个空位召唤，灵活使用会让您尽早或更多地占领村落。"
 
 #: data/hardwired/tips.cfg:23
 msgid ""
@@ -4387,6 +4398,8 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"在 www.wesnoth.org 您可以找到 策略指导, 技术支持, Wesnoth 韦诺历史, 还有其它"
+"很多东西。"
 
 #: data/hardwired/tips.cfg:40
 msgid "- The Wesnoth Community"
@@ -4453,7 +4466,6 @@ msgid ""
 msgstr ""
 
 #: data/hardwired/tips.cfg:67
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' in the "
 "'Actions' menu. By recalling the same units over and over, you can build up "
@@ -4472,7 +4484,7 @@ msgid ""
 "are skilled enough to ignore these zones."
 msgstr ""
 "每个单位旁的格子是他的控制区域。如果单位移动到敌人的控制区域，他在本回合将不"
-"能再移动。0级单位太弱小，没有可控制区域；拥有'游击'技能的战士则能忽略控制区域"
+"能再移动。0级单位太弱小，没有可控制区域；拥有'游击'技能的单位则能忽略控制区域"
 "的影响。"
 
 #: data/hardwired/tips.cfg:75
@@ -4611,7 +4623,9 @@ msgstr ""
 msgid ""
 "Units with the 'leadership' ability help lower-level adjacent units on the "
 "same side fight better. Use leaders to help your other units level up faster."
-msgstr "有'领导'能力的单位会提升同一方相邻低级单位的攻击力。"
+msgstr ""
+"有'领导'能力的单位会提升同一方相邻低级单位的攻击力。你可以使用领导者来帮助你"
+"的其他单位更快升级。"
 
 #: data/hardwired/tips.cfg:131
 #, fuzzy
@@ -4695,8 +4709,9 @@ msgid ""
 "from advancing a level, so it is generally more useful to try to advance "
 "your lower-level units instead."
 msgstr ""
-"单位可以获得满级奖励（AMLA），通常情况下是增加该单位3点的最大生命值。获得下一"
-"个AMLA会越来越难，所以，让您的低级单位升级往往更有益。"
+"高等级单位不能升级，而是获得满级奖励（AMLA）。AMLA 通常情况下是增加该单位3点"
+"的最大生命值，并补满血。获得下一个AMLA会越来越难，所以，让你的低级单位升级往"
+"往更有益。"
 
 #: data/hardwired/tips.cfg:175
 #, fuzzy
@@ -6575,7 +6590,7 @@ msgstr "密码:"
 #: src/multiplayer_create.cpp:327
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
-msgstr ""
+msgstr "设定您的密码，以便让您所等待的玩家进入，并不受他人干扰。"
 
 #: src/multiplayer_create.cpp:335
 msgid "Turns: "
@@ -7031,7 +7046,7 @@ msgstr "拥有的村庄"
 
 #: src/theme.cpp:311
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size 应设为0.0到0.5之间的数值"
 
 #: src/titlescreen.cpp:342
 msgid "TitleScreen button^Tutorial"
@@ -7222,7 +7237,6 @@ msgstr "帮助我们改进韦诺，提升您的游戏体验！"
 msgid "Enable summary uploads"
 msgstr "开启摘要上传模式"
 
-#, fuzzy
 #~ msgid ""
 #~ "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 #~ "poison: poison will never reduce them below 1 hitpoint. Poisoned units "
@@ -7230,8 +7244,9 @@ msgstr "开启摘要上传模式"
 #~ "in a village or next to a unit with the 'cures' ability, the poison will "
 #~ "be completely cured on their next turn."
 #~ msgstr ""
-#~ "中毒的单位每回合损失8点生命值，但不会中毒而死。毒素最多让单位生命值降到1"
-#~ "点。中毒的单位可以通过移动到村庄或有“治愈”能力的单位旁来治愈中毒影响。"
+#~ "中毒的单位每回合损失8点生命值，但不会中毒而死：毒素最多让单位生命值降到1"
+#~ "点。中毒的单位可以通过移动到村庄或有“治愈”能力的单位旁来治愈中毒影响，另"
+#~ "外，只要身边有提供治疗者毒就不会发作。"
 
 #~ msgid "Contributors"
 #~ msgstr "贡献者"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-06 17:50+0100\n"
-"PO-Revision-Date: 2007-12-01 23:29+1000\n"
+"PO-Revision-Date: 2008-01-07 20:53+1000\n"
 "Last-Translator: luojie-dune <luojie-dune@operamail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -293,12 +293,12 @@ msgstr "选项"
 
 #: src/editor/editor_dialogs.cpp:254 src/game_preferences_display.cpp:201
 msgid "Scroll Speed:"
-msgstr "卷屏速度"
+msgstr "滚屏速度"
 
 #: src/editor/editor_dialogs.cpp:281 src/game_preferences_display.cpp:159
 #: src/hotkeys.cpp:64
 msgid "Toggle Full Screen"
-msgstr "开/关全屏"
+msgstr "全屏显示"
 
 #: src/editor/editor_dialogs.cpp:288 src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -310,7 +310,7 @@ msgstr "视频模式"
 
 #: src/editor/editor_dialogs.cpp:298 src/game_preferences_display.cpp:183
 msgid "Hotkeys"
-msgstr "快捷键"
+msgstr "设置快捷键"
 
 #: src/editor/editor_dialogs.cpp:384 src/editor/editor_dialogs.cpp:496
 #: src/hotkeys.cpp:120
@@ -367,8 +367,9 @@ msgid "Creation of the directory failed."
 msgstr "建立目录失败。"
 
 #: src/game_preferences.cpp:154
+#, fuzzy
 msgid "No server has been defined."
-msgstr ""
+msgstr "没有自行定义的服务器"
 
 #: src/game_preferences.cpp:218
 msgid "player"
@@ -383,14 +384,12 @@ msgid "Skip AI Moves"
 msgstr "略过电脑的移动"
 
 #: src/game_preferences_display.cpp:163
-#, fuzzy
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr "保存单人/联机胜利或联机失败的回放"
+msgstr "游戏胜利或者多人游戏失败时，保存录像"
 
 #: src/game_preferences_display.cpp:164
-#, fuzzy
 msgid "Delete Saves on SP/MP Victory or MP Defeat"
-msgstr "删除单人/联机胜利或联机失败的存档"
+msgstr "游戏胜利或者多人游戏失败时，删除存档"
 
 #: src/game_preferences_display.cpp:165
 msgid "Do Not Show Lobby Joins"
@@ -434,15 +433,15 @@ msgstr "移除"
 
 #: src/game_preferences_display.cpp:175
 msgid "Show Floating Labels"
-msgstr "显示浮动标记"
+msgstr "标签浮动显示"
 
 #: src/game_preferences_display.cpp:176
 msgid "Turn Dialog"
-msgstr "回合对话框"
+msgstr "显示回合对话框"
 
 #: src/game_preferences_display.cpp:177
 msgid "Turn Bell"
-msgstr "回合钟声"
+msgstr "回合提示音"
 
 #: src/game_preferences_display.cpp:178
 msgid "Show Team Colors"
@@ -454,7 +453,7 @@ msgstr "显示彩色光标"
 
 #: src/game_preferences_display.cpp:180
 msgid "Show Haloing Effects"
-msgstr "显示光晕效果"
+msgstr "开启光晕效果"
 
 #: src/game_preferences_display.cpp:181
 msgid "Change Resolution"
@@ -470,7 +469,7 @@ msgstr "调整亮度"
 
 #: src/game_preferences_display.cpp:185
 msgid "Reverse Time Graphics"
-msgstr "翻转时刻图像"
+msgstr "反转时间图像移动方向"
 
 #: src/game_preferences_display.cpp:187
 msgid "Sound effects"
@@ -486,11 +485,11 @@ msgstr "标记聊天时间"
 
 #: src/game_preferences_display.cpp:190
 msgid "sound^Advanced Options"
-msgstr "声音^高级选项"
+msgstr "高级选项"
 
 #: src/game_preferences_display.cpp:191
 msgid "sound^Standard Options"
-msgstr "声音^标准选项"
+msgstr "标准选项"
 
 #: src/game_preferences_display.cpp:192
 msgid "User Interface Sounds"
@@ -522,7 +521,7 @@ msgstr "UI音量："
 
 #: src/game_preferences_display.cpp:201
 msgid "Bell Volume:"
-msgstr "钟声音量："
+msgstr "提示音音量："
 
 #: src/game_preferences_display.cpp:202
 msgid "Gamma:"
@@ -614,32 +613,29 @@ msgstr "显示单位空闲动画"
 
 #: src/game_preferences_display.cpp:330
 msgid "Set the frequency of unit idle animations"
-msgstr "设置空闲单位摆动的频率"
+msgstr "设置空闲单位动画显示频率"
 
 #: src/game_preferences_display.cpp:335
 msgid "Set maximum saves to be retained"
-msgstr "设定最大存档数目"
+msgstr "设置最大存档数"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
-msgstr "不显示电脑的动作"
+msgstr "不显示AI单位的移动动画"
 
 #: src/game_preferences_display.cpp:342
-#, fuzzy
 msgid "Save replays on SP victory or SP/MP defeat."
-msgstr "保存单人胜利回放或单人/联机失败."
+msgstr "游戏失败或单人游戏胜利时保存游戏录像"
 
 #: src/game_preferences_display.cpp:345
-#, fuzzy
 msgid "Automatically delete saves on SP victory or SP/MP defeat"
-msgstr "场景结束时自动删除自动存档"
+msgstr "游戏失败或单人游戏胜利时自动删除游戏存档"
 
 #: src/game_preferences_display.cpp:347
 msgid "Overlay a grid onto the map"
 msgstr "在地图上显示六角网格"
 
 #: src/game_preferences_display.cpp:350
-#, fuzzy
 msgid "Sort the player list in the lobby by player groups"
 msgstr "根据玩家分组, 整理大厅里的玩家列表"
 
@@ -734,7 +730,7 @@ msgstr "速度:"
 
 #: src/game_preferences_display.cpp:690 src/game_preferences_display.cpp:692
 msgid "Maximum Saves: "
-msgstr "存档数目最大:"
+msgstr "最大存档数:"
 
 #: src/game_preferences_display.cpp:690
 msgid "infinite"
@@ -1172,12 +1168,14 @@ msgid "The maximum text width is less than 1."
 msgstr ""
 
 #: src/minimap.cpp:88
+#, fuzzy
 msgid "Could not get image for terrain: $terrain."
-msgstr ""
+msgstr "无法获取这里的图片: $terrain."
 
 #: src/minimap.cpp:94 src/minimap.cpp:106
+#, fuzzy
 msgid "Error creating or aquiring an image."
-msgstr ""
+msgstr "创建或获取图像文件错误"
 
 #: src/preferences_display.cpp:83 src/preferences_display.cpp:116
 msgid ""
