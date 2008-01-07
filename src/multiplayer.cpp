@@ -360,6 +360,7 @@ static void enter_connect_mode(game_display& disp, const config& game_config, ga
 		break;
 	case mp::ui::QUIT:
 	default:
+		network::send_data(config("refresh_lobby"), 0, true);
 		break;
 	}
 }
