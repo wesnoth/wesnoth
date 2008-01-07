@@ -877,7 +877,7 @@ void preferences_dialog::process_event()
 			set_selection(MULTIPLAYER_TAB);
 
 		if (friends_add_friend_button_.pressed()) {
-			if (preferences::_set_relationship(friends_input_.text(), "friend")) {
+			if (preferences::add_friend(friends_input_.text())) {
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
@@ -885,7 +885,7 @@ void preferences_dialog::process_event()
             }
         }
 		if (friends_add_ignore_button_.pressed()) {
-			if (preferences::_set_relationship(friends_input_.text(), "ignored")) {
+			if (preferences::add_ignore(friends_input_.text())) {
 				friends_input_.clear();
 				set_friends_menu();
 			} else {
@@ -898,12 +898,11 @@ void preferences_dialog::process_event()
 				to_remove = friends_names_[friends_.selection()];
 			}
 			if(!to_remove.empty()) {
-				if (preferences::_set_relationship(to_remove, "no")) {
-					friends_input_.clear();
-					set_friends_menu();
-				} else {
-					gui::dialog(disp_, "", _("Invalid username")).show();
-				}
+				//! @todo Better to remove from a specific relation.
+				preferences::remove_friend(to_remove);
+				preferences::remove_ignore(to_remove);
+				friends_input_.clear();
+				set_friends_menu();
             }
         }
 		return;
@@ -976,25 +975,24 @@ void preferences_dialog::set_advanced_menu()
 
 void preferences_dialog::set_friends_menu()
 {
+	const std::vector<std::string>& friends = utils::split(preferences::get_friends());
+	const std::vector<std::string>& ignores = utils::split(preferences::get_ignores());
 	std::vector<std::string> friends_items;
 	std::vector<std::string> friends_names;
 	std::string const imgpre = IMAGE_PREFIX + std::string("misc/status-");
-    if (preferences::get_prefs()->child("relationship")){
-		const config& cignore = *preferences::get_prefs()->child("relationship");
-		for (string_map::const_iterator i = cignore.values.begin();
-				i != cignore.values.end(); ++i)
-		{
-			if (i->second == "friend"){
-				friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
-						+ i->first + COLUMN_SEPARATOR + "friend");
-				friends_names.push_back(i->first);
-			}
-			if (i->second == "ignored"){
-				friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
-						+ i->first + COLUMN_SEPARATOR + "ignored");
-				friends_names.push_back(i->first);
-			}
-		}
+	for (std::vector<std::string>::const_iterator i = friends.begin();
+			i != friends.end(); ++i)
+	{
+		friends_items.push_back(imgpre + "friend.png" + COLUMN_SEPARATOR
+				+ *i + COLUMN_SEPARATOR + "friend");
+		friends_names.push_back(*i);
+	}
+	for (std::vector<std::string>::const_iterator i = ignores.begin();
+			i != ignores.end(); ++i)
+	{
+		friends_items.push_back(imgpre + "ignore.png" + COLUMN_SEPARATOR
+				+ *i + COLUMN_SEPARATOR + "ignored");
+		friends_names.push_back(*i);
 	}
 	if (friends_items.empty()) {
 		friends_items.push_back(_("(empty list)"));

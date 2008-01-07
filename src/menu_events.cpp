@@ -1800,28 +1800,10 @@ private:
 		if(message == "") {
 			return;
 		}
-
-		static const std::string query = "/query";
-		static const std::string whisper = "/whisper";
-		static const std::string whisper2 = "/msg";
-		static const std::string list = "/list";
-		static const std::string help = "/help";
-		static const std::string emote = "/emote";
-		static const std::string emote2 = "/me";
-
-		static const std::string addignore = "addignore";
-		static const std::string addfriend = "addfriend";
-		static const std::string remove = "remove";
-		static const std::string display = "display";
-		static const std::string clear = "clear";
-
-		static const std::string help_chat_help = _("Commands: whisper list emote. Type /help [command] for more help.");
-
 		bool is_command = (message.at(0) == '/');
 		unsigned int argc = 0;
 		std::string cmd, arg1, arg2;
 
-		// Use utils::split()?
 		if(is_command){
 			std::string::size_type sp1 = message.find_first_of(' ');
 			cmd = message.substr(0,sp1);
@@ -1842,136 +1824,120 @@ private:
 					}
 				}
 			}
+		} else {
+			send_chat_message(message, allies_only);
+			return;
 		}
-
-
-		if(cmd == query && argc > 0) {
-			const std::string args = (argc < 2) ? arg1 : arg1 + " " + arg2;
-			send_chat_query(args);
-		} else if ((cmd == whisper || cmd == whisper2) && argc > 1 /*&& is_observer()*/) {
+		const std::string& help_chat_help = _("Commands: msg/whisper <nick>"
+				" <message>, list <subcommand> [<argument>], me/emote <message>."
+				" Type /help [<command>] for detailed instructions.");
+		if ((cmd == "/me" || cmd == "/emote") && argc > 0) {
+			//emote message
+			send_chat_message("/me" + message.substr(cmd.size()), allies_only);
+		} else if (cmd == "/query") {
+			send_chat_query(message.substr(cmd.size()));
+		} else if ((cmd == "/msg" || cmd == "/whisper") && argc > 1) {
 			config cwhisper,data;
 			cwhisper["message"] = arg2;
 			cwhisper["sender"] = preferences::login();
 			cwhisper["receiver"] = arg1;
 			data.add_child("whisper", cwhisper);
-			add_chat_message("whisper to "+cwhisper["receiver"],0,cwhisper["message"], game_display::MESSAGE_PRIVATE);
+			add_chat_message("whisper to " + cwhisper["receiver"], 0,
+					cwhisper["message"], game_display::MESSAGE_PRIVATE);
 			network::send_data(data, 0, true);
-
-		} else if (cmd == help) {
-
+		} else if (cmd == "/help") {
 			bool have_command = (argc > 0);
 			bool have_subcommand = (argc > 1);
+			const std::string& command = arg1;
+			const std::string& subcommand = arg2;
 
-			const std::string command = arg1;
-			const std::string subcommand = arg2;
-
-			if (have_command) {
-				if (command == "whisper" || command == "msg") {
-					add_chat_message("help",0,_("Sends private message. You can't send messages to players that control any side in game. Usage: /whisper [nick] [message]"));
-				} else if (command == "list") {
-					if (have_subcommand) {
-						if (subcommand == "addfriend"){
-							add_chat_message("help",0,_("Add player to your friends list. Usage: /list addfriend [argument]"));
-						} else if (subcommand == "addignore"){
-							add_chat_message("help",0,_("Add player to your ignore list. Usage: /list ignore [argument]"));
-						} else if (subcommand == "remove") {
-							add_chat_message("help",0,_("Remove player from your ignore or friends list. Usage: /list remove [argument]"));
-						} else if (subcommand == "clear") {
-							add_chat_message("help",0,_("Clear your ignore and friends list. Usage: /list clear"));
-						} else if (subcommand == "display") {
-							add_chat_message("help",0,_("Show your ignore and friends list. Usage: /list display"));
-						} else {
-							add_chat_message("help",0,_("Unknown subcommand"));
-						}
-					} else {
-						add_chat_message("help",0,_("Ignore messages from players on the ignore list and highlight players on the friends list. Usage: /list [subcommand] [argument](optional) Subcommands: addfriend addignore remove display clear. Type /help list [subcommand] for more info."));
-					}
-				} else if (command == "emote" || command == "me") {
-					add_chat_message("help",0,_("Send an emotion or personal action in chat. Usage: /emote [message]"));
+			if (!have_command) {
+				add_chat_message("help", 0, help_chat_help);
+			} else if (command == "whisper" || command == "msg") {
+				//! @todo /msg should be replaced by the used command.
+				add_chat_message("help", 0, _("Sends a private message. "
+						"You can't send messages to players that control "
+						"any side in a game. Usage: /msg <nick> <message>"));
+			} else if (command == "list") {
+				if (!have_subcommand) {
+					add_chat_message("help", 0,
+							_("Ignore messages from players on the ignore list"
+							" and highlight players on the friends list."
+							" Usage: /list <subcommand> [<argument>]"
+							" Subcommands: addfriend, addignore, remove,"
+							" display, clear."
+							" Type /help list <subcommand> for more info."));
+				} else if (subcommand == "addfriend"){
+					add_chat_message("help", 0,
+							_("Add a nick to your friends list."
+							" Usage: /list addfriend <nick>"));
+				} else if (subcommand == "addignore"){
+					add_chat_message("help", 0 ,
+							_("Add a nick to your ignores list."
+							" Usage: /list ignore <nick>"));
+				} else if (subcommand == "remove") {
+					add_chat_message("help", 0,
+							_("Remove a nick from your ignores or friends list."
+							" Usage: /list remove <nick>"));
+				} else if (subcommand == "clear") {
+					add_chat_message("help", 0,
+							_("Clear your complete ignores and friends list."
+							" Usage: /list clear"));
+				} else if (subcommand == "display") {
+					add_chat_message("help", 0,
+							_("Show your ignores and friends list."
+							" Usage: /list display"));
 				} else {
-					add_chat_message("help",0,_("Unknown command"));
+					add_chat_message("help", 0, _("Unknown subcommand."));
 				}
+			} else if (command == "emote" || command == "me") {
+				//! @todo /me should be replaced by the used command.
+				add_chat_message("help", 0,
+						_("Send an emotion or personal action in chat. "
+						"Usage: /me <message>"));
 			} else {
-				add_chat_message("help",0,help_chat_help);
+				add_chat_message("help", 0, _("Unknown command."));
 			}
-		} else if (message.size() > list.size() && std::equal(list.begin(),list.end(), message.begin())) {
-
-			config* cignore;
-
-			if (arg1 == addignore){
-				if(preferences::_set_relationship(arg2, "ignored"))
-				{
-					add_chat_message("ignores list",0, _("Added to ignore list: ")+arg2,game_display::MESSAGE_PRIVATE);
-				} else {
-					add_chat_message("ignores list",0, _("Invalid username: ")+arg2,game_display::MESSAGE_PRIVATE);
+		} else if (cmd == "/list" && argc > 0) {
+			if (arg1 == "addignore") {
+				const std::string msg =
+						(preferences::add_ignore(arg2)
+						? _("Added to ignore list: ") : _("Invalid username: "))
+						+ arg2;
+				add_chat_message("ignores list", 0,	msg);
+			} else if (arg1 == "addfriend") {
+				const std::string msg =
+						(preferences::add_friend(arg2)
+						? _("Added to friends list: ") : _("Invalid username: "))
+						+ arg2;
+				add_chat_message("friends list", 0, msg);
+			} else if (arg1 == "remove") {
+				preferences::remove_friend(arg2);
+				preferences::remove_ignore(arg2);
+				add_chat_message("list", 0, _("Removed from list: ") + arg2,
+						game_display::MESSAGE_PRIVATE);
+			} else if (arg1 == "display") {
+				const std::string& text_friend = preferences::get_friends();
+				const std::string& text_ignore = preferences::get_ignores();
+				if (!text_friend.empty()) {
+					add_chat_message("friends list", 0, text_friend);
 				}
-			} else if (arg1 == addfriend){
-				if(preferences::_set_relationship(arg2, "friend"))
-				{
-					add_chat_message("friends list",0, _("Added to friends list: ")+arg2,game_display::MESSAGE_PRIVATE);
-				} else {
-					add_chat_message("friends list",0, _("Invalid username: ")+arg2,game_display::MESSAGE_PRIVATE);
-                }
-			} else if (arg1 == remove){
-				if(preferences::_set_relationship(arg2, "no"))
-				{
-					add_chat_message("list",0, _("Removed from list: ")+arg2,game_display::MESSAGE_PRIVATE);
-				} else {
-					add_chat_message("list",0, _("Invalid username: ")+arg2,game_display::MESSAGE_PRIVATE);
+				if (!text_ignore.empty()) {
+					add_chat_message("ignores list", 0, text_ignore);
+				} else if (text_friend.empty()) {
+					add_chat_message("list", 0,
+							_("There are no players on your friends or ignore list."));
 				}
-			} else if (arg1 == display){
-				std::string text_ignore;
-				std::string text_friend;
-				if ((cignore = preferences::get_prefs()->child("relationship"))){
-					for(std::map<std::string,t_string>::const_iterator i = cignore->values.begin();
-							i != cignore->values.end(); ++i){
-						if (i->second == "ignored"){
-							text_ignore+=i->first+",";
-						}
-						if (i->second == "friend"){
-							text_friend+=i->first+",";
-						}
-					}
-					if(!text_ignore.empty()){
-						text_ignore.erase(text_ignore.length()-1,1);
-						add_chat_message("ignores list",0, text_ignore,game_display::MESSAGE_PRIVATE);
-					}
-					if(!text_friend.empty()){
-						text_friend.erase(text_friend.length()-1,1);
-						add_chat_message("friends list",0, text_friend,game_display::MESSAGE_PRIVATE);
-					}
-					if (text_friend.empty() && text_ignore.empty()) {
-						add_chat_message("list",0, _("There are no players on your friends or ignore list."));
-					}
-				}
-			} else if (arg1 == clear){
-
-				if ((cignore = preferences::get_prefs()->child("relationship"))){
-					string_map::iterator nick;
-					for(nick= cignore->values.begin() ; nick!= cignore->values.end(); nick++) {
-						if((*cignore)[nick->first] != "no") {
-                            if((*cignore)[nick->first] == "ignored") {
-							    add_chat_message("ignore list",0, _("Removed from ignore list: ")+nick->first,game_display::MESSAGE_PRIVATE);
-						    }
-                            if((*cignore)[nick->first] == "friend") {
-							    add_chat_message("friend list",0, _("Removed from friends list: ")+nick->first,game_display::MESSAGE_PRIVATE);
-						    }
-							(*cignore)[nick->first] = "no";
-						}
-					}
-				}
+			} else if (arg1 == "clear") {
+				preferences::clear_friends();
+				preferences::clear_ignores();
 			} else {
-				add_chat_message("list",0,_("Unknown command: ")+arg1,game_display::MESSAGE_PRIVATE);
+				add_chat_message("list", 0, _("Unknown command: ") + arg1);
 			}
-		} else if ((cmd == emote || cmd == emote2) && argc > 0) {
-			//emote message
-			send_chat_message("/me" + message.substr(cmd.size()), allies_only);
-		} else if (is_command) {
-			//command not accepted, show help chat help
-			add_chat_message("help",0,help_chat_help);
 		} else {
-			//not a command, send as normal
-			send_chat_message(message, allies_only);
+			//! @todo Rather show specific error messages for missing arguments.
+			// Command not accepted, show help.
+			add_chat_message("help", 0, help_chat_help);
 		}
 	}
 

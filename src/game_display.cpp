@@ -1162,24 +1162,17 @@ namespace {
 void game_display::add_chat_message(const std::string& speaker, int side,
 		const std::string& message, game_display::MESSAGE_TYPE type, bool bell)
 {
-	bool ignored = false;
-	bool is_friend = false;
 	std::string sender = speaker;
 	if (speaker.find("whisper: ") == 0) {
 		sender.assign(speaker, 9, speaker.size());
 	}
-	if (preferences::get_prefs()->child("relationship")) {
-		const config& cignore = *preferences::get_prefs()->child("relationship");
-		ignored   = (cignore[sender] == "ignored");
-		is_friend = (cignore[sender] == "friend");
-	}
-	if (ignored) return;
+	if (!preferences::show_lobby_join(sender, message)) return;
+	if (preferences::is_ignored(sender)) return;
 
-	const bool is_highlight = (message.find(preferences::login()) != std::string::npos);
 	if (bell) {
-		if (is_highlight || type == MESSAGE_PRIVATE) {
+		if (type == MESSAGE_PRIVATE || utils::word_match(message, preferences::login())) {
 			sound::play_UI_sound(game_config::sounds::receive_message_highlight);
-		} else if (is_friend) {
+		} else if (preferences::is_friend(sender)) {
 			sound::play_UI_sound(game_config::sounds::receive_message_friend);
 		} else if (sender == "server") {
 			sound::play_UI_sound(game_config::sounds::receive_message_server);

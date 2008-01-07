@@ -43,11 +43,22 @@ namespace preferences {
 	int gamma();
 	void _set_gamma(int gamma);
 
+	bool show_lobby_join(const std::string& sender, const std::string& message);
 	int lobby_joins();
 	void _set_lobby_joins(int show);
 	enum { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
-	bool _set_relationship(std::string nick, std::string rela);
 
+	std::string get_friends();
+	std::string get_ignores();
+	bool add_friend(const std::string nick);
+	bool add_ignore(const std::string nick);
+	void remove_friend(const std::string nick);
+	void remove_ignore(const std::string nick);
+	void clear_friends();
+	void clear_ignores();
+	bool is_friend(const std::string nick);
+	bool is_ignored(const std::string nick);
+	
 	bool sort_list();
 	void _set_sort_list(bool show);
 

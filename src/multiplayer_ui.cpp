@@ -62,7 +62,8 @@ namespace {
 	}
 
 	user_menu_style umenu_style;
-}
+	
+} // anon namespace
 
 namespace mp {
 
@@ -487,35 +488,12 @@ void ui::handle_key_event(const SDL_KeyboardEvent& event)
 void ui::process_message(const config& msg, const bool whisper) {
 	const std::string& sender = msg["sender"];
 	const std::string& message = msg["message"];
-	if (sender == "server"
-			&& message.find("has logged into the lobby") != std::string::npos)
-	{
-		const std::string::const_iterator i =
-				std::find(message.begin(),message.end(),' ');
-		const std::string joiner(message.begin(),i);
-		const config* const crela =
-				preferences::get_prefs()->child("relationship");
-		const bool is_lobby_join_of_friend = (crela == NULL ?
-				false : (*crela)[joiner] == "friend");
-		const bool show_message = preferences::lobby_joins() == preferences::SHOW_ALL
-				|| (is_lobby_join_of_friend
-				&& preferences::lobby_joins() == preferences::SHOW_FRIENDS);
-		if (!show_message) return;
-	}
+	if (!preferences::show_lobby_join(sender, message)) return;
+	if (preferences::is_ignored(sender)) return;
 
-	bool ignored = false;
-	bool is_friend = false;
-	if (preferences::get_prefs()->child("relationship")) {
-		const config& cignore = *preferences::get_prefs()->child("relationship");
-		ignored   = (cignore[sender] == "ignored");
-		is_friend = (cignore[sender] == "friend");
-	}
-	if (ignored) return;
-
-	const bool is_highlight = (message.find(preferences::login()) != std::string::npos);
-	if (is_highlight || whisper) {
+	if (whisper || utils::word_match(message, preferences::login())) {
 		sound::play_UI_sound(game_config::sounds::receive_message_highlight);
-	} else if (is_friend) {
+	} else if (preferences::is_friend(sender)) {
 		sound::play_UI_sound(game_config::sounds::receive_message_friend);
 	} else if (sender == "server") {
 		sound::play_UI_sound(game_config::sounds::receive_message_server);
@@ -654,14 +632,6 @@ void ui::gamelist_updated(bool silent)
 	config::child_iterator user;
 	std::list<user_info> u_list;
 
-	// if we have not already got the relationship child it will
-	// cause the game to crash if we don't create it.
-	if (!preferences::get_prefs()->child("relationship")){
-		preferences::get_prefs()->add_child("relationship");
-	}
-	config* cignore;
-	cignore = preferences::get_prefs()->child("relationship");
-
 	for (user = users.begin(); user != users.end(); ++user) {
 		user_info u_elem;
 		u_elem.name = (**user)["name"];
@@ -677,11 +647,13 @@ void ui::gamelist_updated(bool silent)
 		if(!(**user)["location"].empty()) {
 			u_elem.location = (**user)["location"];
 		}
+		std::vector<std::string> friends = utils::split(preferences::get("friends"));
+		std::vector<std::string> ignores = utils::split(preferences::get("ignores"));
 		if (u_elem.name == preferences::login()) {
 			u_elem.relation = ME;
-		} else if ((*cignore)[u_elem.name] == "ignored") {
+		} else if (std::find(ignores.begin(), ignores.end(), u_elem.name) != ignores.end()) {
 			u_elem.relation = IGNORED;
-		} else if ((*cignore)[u_elem.name] == "friend") {
+		} else if (std::find(friends.begin(), friends.end(), u_elem.name) != friends.end()) {
 			u_elem.relation = FRIEND;
 		} else {
 			u_elem.relation = NEUTRAL;

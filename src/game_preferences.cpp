@@ -47,7 +47,21 @@ bool haloes = true;
 std::set<std::string> encountered_units_set;
 std::set<t_translation::t_letter> encountered_terrains_set;
 
+//! Add a nick to the specified relation setting.
+void add_relation(const std::string nick, const std::string relation) {
+	std::vector<std::string> r = utils::split(preferences::get(relation));
+	r.push_back(nick);
+	preferences::set(relation, utils::join(r));
 }
+
+//! Remove a nick from the specified relation setting.
+void remove_relation(const std::string nick, const std::string relation) {
+	std::vector<std::string> r = utils::split(preferences::get(relation));
+	r.erase(std::remove(r.begin(), r.end(), nick), r.end());
+	preferences::set(relation, utils::join(r));
+}
+
+} // anon namespace
 
 namespace preferences {
 
@@ -91,13 +105,62 @@ manager::~manager()
 	set_ping_timeout(network::ping_timeout);
 }
 
-bool _set_relationship(std::string nick, std::string rela) {
+std::string get_friends() {
+	return preferences::get("friends");
+}
+
+std::string get_ignores() {
+	return preferences::get("ignores");
+}
+
+bool add_friend(const std::string nick) {
 	if (!utils::isvalid_username(nick)) return false;
-	if (!get_prefs()->child("relationship")){
-		get_prefs()->add_child("relationship");
-	}
-	(*get_prefs()->child("relationship"))[nick] = rela;
+	add_relation(nick, "friends");
 	return true;
+}
+
+bool add_ignore(const std::string nick) {
+	if (!utils::isvalid_username(nick)) return false;
+	add_relation(nick, "ignores");
+	return true;
+}
+
+void remove_friend(const std::string nick) {
+	remove_relation(nick, "friends");
+}
+
+void remove_ignore(const std::string nick) {
+	remove_relation(nick, "ignores");
+}
+
+void clear_friends() {
+	preferences::set("friends", "");	
+}
+
+void clear_ignores() {
+	preferences::set("ignores", "");	
+}
+
+bool is_friend(const std::string nick) {
+	const std::vector<std::string>& friends = utils::split(get_friends());
+	return (std::find(friends.begin(), friends.end(), nick) != friends.end());
+}
+
+bool is_ignored(const std::string nick) {
+	const std::vector<std::string>& ignores = utils::split(get_ignores());
+	return (std::find(ignores.begin(), ignores.end(), nick) != ignores.end());
+}
+
+bool show_lobby_join(const std::string& sender, const std::string& message) {
+	// If it's actually not a lobby join message return true (show it).
+	if (sender != "server" || message.find("has logged into the lobby") == std::string::npos) return true;
+	if (lobby_joins() == SHOW_NONE) return false;
+	if (lobby_joins() == SHOW_ALL) return true;
+	const std::string::const_iterator i =
+			std::find(message.begin(), message.end(), ' ');
+	const std::string joiner(message.begin(), i);
+	if (lobby_joins() == SHOW_FRIENDS && is_friend(joiner)) return true;
+	return false;
 }
 
 int lobby_joins()
