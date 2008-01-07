@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2008-01-06 18:23+0100\n"
-"PO-Revision-Date: 2007-12-23 21:05+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2008-01-07 22:04+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr "Binärpakete"
 
 #: data/core/about.cfg:589
 msgid "Miscellaneous contributors"
-msgstr ""
+msgstr "Weitere Mitwirkende und Unterstützer"
 
 #: data/core/about.cfg:709
 msgid "Internationalization Managers"
@@ -426,7 +426,7 @@ msgstr ""
 
 #: data/core/help.cfg:137
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Sieg und Niederlage"
 
 #: data/core/help.cfg:138
 msgid ""
@@ -1313,7 +1313,7 @@ msgstr ""
 
 #: data/core/help.cfg:297
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Mitwirkende"
 
 #: data/core/help.cfg:303
 msgid "License"
@@ -4109,12 +4109,10 @@ msgstr ""
 "lange Zeit nicht auftauchen muss."
 
 #: data/core/macros/special-notes.cfg:53
-#, fuzzy
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Kannibalismus:\n"
 "Nachdem sie eine lebende Einheit getötet hat, labt sie sich an deren "
 "Überresten und erhält durch die restliche Lebenskraft in dem toten Körper "
 "einen zusätzlichen Lebenspunkt zu ihrem Maximalwert."
@@ -5536,9 +5534,8 @@ msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Der Spielstand existiert bereits. Möchtet Ihr ihn überschreiben?"
 
 #: src/dialogs.cpp:275
-#, fuzzy
 msgid "Filter: "
-msgstr "Fertigkeiten: "
+msgstr "Filter: "
 
 #: src/dialogs.cpp:342
 msgid "Do you really want to delete this game?"
@@ -7038,7 +7035,7 @@ msgstr "Einstellungen..."
 
 #: src/multiplayer_create.cpp:87
 msgid "Set Password..."
-msgstr ""
+msgstr "Passwort festlegen..."
 
 #: src/multiplayer_create.cpp:103
 msgid "Load Game..."
@@ -7134,17 +7131,18 @@ msgstr "Ihr müsst einen Namen eingeben."
 
 #: src/multiplayer_create.cpp:326
 msgid "Set Password"
-msgstr ""
+msgstr "Passwort festlegen"
 
 #: src/multiplayer_create.cpp:327 src/multiplayer_lobby.cpp:740
-#, fuzzy
 msgid "Password: "
-msgstr "Schwert"
+msgstr "Passwort: "
 
 #: src/multiplayer_create.cpp:327
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
+"Festlegen des Passwortes, welches Spieler, die dem Spiel beitreten wollen, "
+"eingeben müssen."
 
 #: src/multiplayer_create.cpp:335
 msgid "Turns: "
@@ -7224,7 +7222,7 @@ msgstr "Verfügbare Plätze:"
 
 #: src/multiplayer_lobby.cpp:491 src/multiplayer_lobby.cpp:738
 msgid "Password Required"
-msgstr ""
+msgstr "Passwort erforderlich"
 
 #: src/multiplayer_lobby.cpp:498
 msgid "Fog"
@@ -7260,7 +7258,7 @@ msgstr "Springt im Beobachtermodus schnellstmöglich zur aktiven Runde"
 
 #: src/multiplayer_lobby.cpp:739
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Diesem Spiel beizutreten erfordert ein Passwort."
 
 #: src/multiplayer_ui.cpp:170
 msgid "Invalid Color"
@@ -7354,9 +7352,8 @@ msgid "Initializing display"
 msgstr ""
 
 #: src/play_controller.cpp:147
-#, fuzzy
 msgid "Starting game"
-msgstr "Spiel abbrechen"
+msgstr "Spielstart"
 
 #: src/play_controller.cpp:820
 msgid "Back to start"
@@ -7403,9 +7400,8 @@ msgid "End scenario"
 msgstr "Szenario beenden"
 
 #: src/playmp_controller.cpp:318
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "Warte auf Spielstart..."
+msgstr "Warte auf das nächste Szenario..."
 
 #: src/playmp_controller.cpp:447
 msgid ""
