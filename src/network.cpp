@@ -665,9 +665,12 @@ connection receive_data(config& cfg, connection connection_num)
 	}
 
 	TCPsocket sock = connection_num == 0 ? 0 : get_socket(connection_num);
+	TCPsocket s = sock;
 	sock = network_worker_pool::get_received_data(sock,cfg);
 	if(sock == NULL) {
-		if(last_ping != 0 && ping_timeout != 0 && !is_server() ) {
+		if (last_ping != 0 && ping_timeout != 0 && !is_server()
+				&& !network_worker_pool::is_locked(s))
+		{
 			check_timeout();
 		}
 		return 0;

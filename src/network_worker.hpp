@@ -42,7 +42,7 @@ void receive_data(TCPsocket sock);
 TCPsocket get_received_data(TCPsocket sock, config& cfg);
 
 void queue_data(TCPsocket sock, const config& buf, const bool gzipped);
-bool socket_locked(TCPsocket sock);
+bool is_locked(const TCPsocket sock);
 bool close_socket(TCPsocket sock, bool force=false);
 std::pair<unsigned int,size_t> thread_state();
 TCPsocket detect_error();

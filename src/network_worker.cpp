@@ -633,6 +633,13 @@ static void remove_buffers(TCPsocket sock)
 
 } // anonymous namespace
 
+bool is_locked(const TCPsocket sock) {
+	const threading::lock lock(*global_mutex);
+	const socket_state_map::iterator lock_it = sockets_locked.find(sock);
+	if (lock_it == sockets_locked.end()) return false;
+	return (lock_it->second == SOCKET_LOCKED);
+}
+
 bool close_socket(TCPsocket sock, bool force)
 {
 	const threading::lock lock(*global_mutex);
