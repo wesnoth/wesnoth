@@ -128,7 +128,7 @@ void move_unit(const std::vector<gamemap::location>& path, unit& u, const std::v
 		end++;
 	}
 	if (begin != path.size()) { //found a visible tile
-		if(end = path.size()) end--;
+		if(end == path.size()) end--;
 		disp->scroll_to_tiles(path[begin],path[end],game_display::ONSCREEN);
 	}
 
