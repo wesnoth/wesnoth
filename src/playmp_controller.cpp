@@ -381,10 +381,6 @@ void playmp_controller::finish_side_turn(){
 }
 
 void playmp_controller::play_network_turn(){
-	if(teams_[player_number_ - 1].is_empty() && team_units(units_,player_number_) == 0) {
-		return;
-	}
-
 	LOG_NG << "is networked...\n";
 
 	browse_ = true;
