@@ -200,14 +200,9 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		  movement_left = u->second.total_movement();
 	  }
 
-	  int x = 180;
-	  if(utils::string_bool(u->second.get_state("stoned"))){
-	    x = 128;
-	  }else{
-	    x = static_cast<int>(128 + (255-128) *
-            (static_cast<float>(movement_left)/u->second.total_movement()));
-	  }
-	  str << "<" << x << "," << x << "," << x <<">";
+	  int grey = 128 + static_cast<int>((255-128) *
+	     (movement_left / maximum<float>(1.0, u->second.total_movement())));
+	  str << "<" << grey << "," << grey << "," << grey <<">";
 	  str << movement_left << "/" << u->second.total_movement();
 		break;
 	}
