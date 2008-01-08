@@ -566,7 +566,7 @@ config* replay::get_next_action()
 	if(pos_ >= commands().size())
 		return NULL;
 
-	LOG_REPLAY << "up to replay action " << pos_ << "/" << commands().size() << "\n";
+	LOG_REPLAY << "up to replay action " << pos_ + 1 << "/" << commands().size() << "\n";
 
 	current_ = commands()[pos_];
 	set_random(current_);
