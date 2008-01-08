@@ -130,11 +130,6 @@ public:
 		if (termination_.empty()) { termination_ = reason; }
 	}
 
-	//! This is a tempory variable to have a flag to switch between 
-	//! gzipped data and not.
-	//! @todo remove after 1.3.12 is no longer allowed on the server.
-	static bool send_gzipped;
-
 private:
 	//! Figures out which side to take and tells that side to the game owner.
 	bool take_side(const player_map::const_iterator user);

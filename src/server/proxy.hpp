@@ -27,8 +27,7 @@ void create_proxy(network::connection sock, const std::string& host, int port);
 bool is_proxy(network::connection sock);
 void disconnect(network::connection sock);
 
-//! @todo remove gzip param after 1.3.12 is no longer allowed on the server.
-void received_data(network::connection sock, const config& data, const bool send_gzipped);
+void received_data(network::connection sock, const config& data);
 
 }
 

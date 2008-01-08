@@ -30,8 +30,6 @@
 #define DBG_GAME LOG_STREAM(debug, mp_server)
 
 int game::id_num = 1;
-//! @todo remove after 1.3.12 is no longer allowed on the server.
-bool game::send_gzipped = true;
 
 game::game(player_map& players, const network::connection host, const std::string name)
 	: player_info_(&players), id_(id_num++), name_(name), owner_(host),
@@ -159,7 +157,7 @@ bool game::take_side(const player_map::const_iterator user)
 			sides_taken_[side_num - 1] = true;
 			cfg["side"] = (**side)["side"];
 			// Tell the host which side the new player should take.
-			network::send_data(cfg, owner_, send_gzipped);
+			network::send_data(cfg, owner_, true);
 			DBG_GAME << debug_player_info();
 			return true;
 		}
@@ -177,7 +175,7 @@ bool game::take_side(const player_map::const_iterator user)
 			sides_taken_[side_num - 1] = true;
 			cfg["side"] = (**side)["side"];
 			// Tell the host which side the new player should take.
-			network::send_data(cfg, owner_, send_gzipped);
+			network::send_data(cfg, owner_, true);
 			DBG_GAME << debug_player_info();
 			return true;
 		}
@@ -262,7 +260,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	DBG_GAME << "transfer_side_control...\n";
 	if (!is_player(sock)) {
 		network::send_data(construct_server_message(
-				"You cannot change controllers: not a player."), sock, send_gzipped);
+				"You cannot change controllers: not a player."), sock, true);
 		return;
 	}
 
@@ -282,7 +280,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	}
 	// Is he in this game?
 	if (newplayer == player_info_->end() || !is_member(newplayer->first)) {
-		network::send_data(construct_server_message("Player/Observer not in this game."), sock, send_gzipped);
+		network::send_data(construct_server_message("Player/Observer not in this game."), sock, true);
 		return;
 	}
 	// Check the side number.
@@ -294,16 +292,16 @@ void game::transfer_side_control(const network::connection sock, const config& c
 			std::ostringstream msg;
 			msg << "The side number has to be between 1 and " 
 			    << gamemap::MAX_PLAYERS << ".";
-			network::send_data(construct_server_message(msg.str()), sock, send_gzipped);
+			network::send_data(construct_server_message(msg.str()), sock, true);
 			return;
 		}
 	}
 	catch(bad_lexical_cast&) {
-		network::send_data(construct_server_message("Not a side number."), sock, send_gzipped);
+		network::send_data(construct_server_message("Not a side number."), sock, true);
 		return;
 	}
 	if (side_num > level_.get_children("side").size()) {
-		network::send_data(construct_server_message("Invalid side number."), sock, send_gzipped);
+		network::send_data(construct_server_message("Invalid side number."), sock, true);
 		return;
 	}
 
@@ -311,18 +309,18 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	   && cfg["own_side"] != "yes")
 	{
 		network::send_data(construct_server_message(
-			"This side is already controlled by a player."), sock, send_gzipped);
+			"This side is already controlled by a player."), sock, true);
 		return;
 	}
 	// Check if the sender actually owns the side he gives away or is the host.
 	if (!(sides_[side_num - 1] == sock || (sock == owner_))) {
 		DBG_GAME << "Side belongs to: " << sides_[side_num - 1] << "\n";
-		network::send_data(construct_server_message("Not your side."), sock, send_gzipped);
+		network::send_data(construct_server_message("Not your side."), sock, true);
 		return;
 	}
 	if (newplayer->first == sock) {
 		network::send_data(construct_server_message(
-			"That's already your side, silly."), sock, send_gzipped);
+			"That's already your side, silly."), sock, true);
 		return;
 	}
 	sides_[side_num - 1] = 0;
@@ -373,7 +371,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 	send_data(response, newplayer->first);
 	// Tell the new player that he controls this side now.
 	change["controller"] = "human";
-	network::send_data(response, newplayer->first, send_gzipped);
+	network::send_data(response, newplayer->first, true);
 
 	// Update the level so observers who join get the new name.
 	config::child_itors it = level_.child_range("side");
@@ -388,7 +386,7 @@ void game::transfer_side_control(const network::connection sock, const config& c
 			if (side_controllers_[i] == "ai") {
 				change["side"] = lexical_cast<std::string, unsigned int>(i + 1);
 				change["controller"] = "ai";
-				network::send_data(response, owner_, send_gzipped);
+				network::send_data(response, owner_, true);
 				sides_[side_num - 1] = owner_;
 			}
 		}
@@ -416,7 +414,7 @@ void game::notify_new_host(){
 		config& cfg_host_transfer = cfg.add_child("host_transfer");
 		cfg_host_transfer["name"] = it_host->second.name();
 		cfg_host_transfer["value"] = "1";
-		network::send_data(cfg, owner_, send_gzipped);
+		network::send_data(cfg, owner_, true);
 	}
 }
 
@@ -458,14 +456,14 @@ bool game::player_is_banned(const network::connection sock) const {
 void game::mute_observer(const config& mute, const player_map::const_iterator muter) {
 	if (muter->first != owner_) {
 		network::send_data(construct_server_message(
-				"You cannot mute: not the game host."), muter->first, send_gzipped);
+				"You cannot mute: not the game host."), muter->first, true);
 		return;
 	}
 	const std::string name = mute["username"];
 	if (name.empty()) {
 		if (all_observers_muted_) {
 			network::send_data(construct_server_message(
-					"All observers are muted."), muter->first, send_gzipped);
+					"All observers are muted."), muter->first, true);
 			return;
 		}
 		std::string muted_nicks = "";
@@ -478,7 +476,7 @@ void game::mute_observer(const config& mute, const player_map::const_iterator mu
 			muted_nicks += player_info_->find(*muted_obs)->second.name();
 		}
 		network::send_data(construct_server_message("Muted observers: "
-				+ muted_nicks), muter->first, send_gzipped);
+				+ muted_nicks), muter->first, true);
 		return;
 	}
 	const player_map::const_iterator user = find_user(name);
@@ -486,18 +484,18 @@ void game::mute_observer(const config& mute, const player_map::const_iterator mu
 	//! and also allow muting of usernames not in the game.
 	if (user == player_info_->end() || !is_observer(user->first)) {
 		network::send_data(construct_server_message(
-				"Observer not found."), muter->first, send_gzipped);
+				"Observer not found."), muter->first, true);
 		return;
 	}
 	//! Prevent muting ourselves.
 	if (user->first != muter->first) {
 		network::send_data(construct_server_message(
-				"Don't mute yourself, silly."), muter->first, send_gzipped);
+				"Don't mute yourself, silly."), muter->first, true);
 		return;
 	}
 	if (is_muted_observer(user->first)) {
 		network::send_data(construct_server_message(user->second.name()
-				+ " is already muted."), muter->first, send_gzipped);
+				+ " is already muted."), muter->first, true);
 		return;
 	}
 	muted_observers_.push_back(user->first);
@@ -505,7 +503,7 @@ void game::mute_observer(const config& mute, const player_map::const_iterator mu
 		<< muter->second.name() << "muted: " << user->second.name()
 		<< "\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
 	network::send_data(construct_server_message(
-			"You have been muted."), user->first, send_gzipped);
+			"You have been muted."), user->first, true);
 	send_data(construct_server_message(user->second.name()
 			+ " has been muted."), user->first);
 }
@@ -517,31 +515,31 @@ network::connection game::kick_member(const config& kick,
 {
 	if (kicker->first != owner_) {
 		network::send_data(construct_server_message(
-				"You cannot kick: not the game host."), kicker->first, send_gzipped);
+				"You cannot kick: not the game host."), kicker->first, true);
 		return 0;
 	}
 	const std::string name = kick["username"];
 	const player_map::const_iterator user = find_user(name);
 	if (user == player_info_->end() || !is_member(user->first)) {
 		network::send_data(construct_server_message(
-				"Not a member of this game."), kicker->first, send_gzipped);
+				"Not a member of this game."), kicker->first, true);
 		return 0;
 	}
 	if (user->first == kicker->first) {
 		network::send_data(construct_server_message(
-				"Don't kick yourself, silly."), kicker->first, send_gzipped);
+				"Don't kick yourself, silly."), kicker->first, true);
 		return 0;
 	}
 	LOG_GAME << network::ip_address(kicker->first) << "\t"
 		<< kicker->second.name() << "\tkicked: " << user->second.name()
 		<< "\tfrom game:\t\"" << name_ << "\" (" << id_ << ")\n";
 	network::send_data(construct_server_message("You have been kicked."),
-			user->first, send_gzipped);
+			user->first, true);
 	const config& msg = construct_server_message(name + " has been kicked.");
 	send_data(msg, user->first);
 	record_data(msg);
 	// Tell the user to leave the game.
-	network::send_data(config("leave_game"), user->first, send_gzipped);
+	network::send_data(config("leave_game"), user->first, true);
 	remove_player(user->first);
 	return user->first;
 }
@@ -555,24 +553,24 @@ network::connection game::ban_user(const config& ban,
 {
 	if (banner->first != owner_) {
 		network::send_data(construct_server_message(
-				"You cannot ban: not the game host."), banner->first, send_gzipped);
+				"You cannot ban: not the game host."), banner->first, true);
 		return 0;
 	}
 	const std::string name = ban["username"];
 	const player_map::const_iterator user = find_user(name);
 	if (user == player_info_->end()) {
 		network::send_data(construct_server_message(
-				"User not found."), banner->first, send_gzipped);
+				"User not found."), banner->first, true);
 		return 0;
 	}
 	if (user->first == banner->first) {
 		network::send_data(construct_server_message(
-				"Don't ban yourself, silly."), banner->first, send_gzipped);
+				"Don't ban yourself, silly."), banner->first, true);
 		return 0;
 	}
 	if (player_is_banned(user->first)) {
 		network::send_data(construct_server_message(name
-				+ " is already banned."), banner->first, send_gzipped);
+				+ " is already banned."), banner->first, true);
 		return 0;
 	}
 	LOG_GAME << network::ip_address(banner->first) << "\t"
@@ -584,9 +582,9 @@ network::connection game::ban_user(const config& ban,
 	record_data(msg);
 	if (is_member(user->first)) {
 		network::send_data(construct_server_message("You have been banned."),
-				user->first, send_gzipped);
+				user->first, true);
 		// Tell the user to leave the game.
-		network::send_data(config("leave_game"), user->first, send_gzipped);
+		network::send_data(config("leave_game"), user->first, true);
 		remove_player(user->first);
 		return user->first;
 	}
@@ -620,7 +618,7 @@ bool game::process_turn(config data, const player_map::const_iterator user) {
 		{
 			network::send_data(construct_server_message(
 					"You have been muted, others can't see your message!"),
-					user->first, send_gzipped);
+					user->first, true);
 			return res;
 		}
 		chat_message::truncate_message((*speak)["message"]);
@@ -758,13 +756,13 @@ void game::add_player(const network::connection player, const bool observer) {
 	DBG_GAME << debug_player_info();
 	send_user_list();
 	// Send the user the game data.
-	network::send_data(level_, player, send_gzipped);
+	network::send_data(level_, player, true);
 	//if the game has already started, we add the player as an observer
 	if(started_) {
 		//tell this player that the game has started
-		network::send_data(config("start_game"), player, send_gzipped);
+		network::send_data(config("start_game"), player, true);
 		// Send the player the history of the game to-date.
-		network::send_data(history_, player, send_gzipped);
+		network::send_data(history_, player, true);
 		// Send observer join of all the observers in the game to the new player
 		// only once the game started. The client forgets about it anyway
 		// otherwise.
@@ -853,7 +851,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 				config drop;
 				drop["side_drop"] = lexical_cast<std::string, size_t>(side + 1);
 				drop["controller"] = "ai";
-				network::send_data(drop, owner_, send_gzipped);
+				network::send_data(drop, owner_, true);
 				sides_taken_[side] = false;
 			}
 		}
@@ -870,7 +868,7 @@ bool game::remove_player(const network::connection player, const bool disconnect
 			config drop;
 			drop["side_drop"] = lexical_cast<std::string, size_t>(side - sides_.begin() + 1);
 			drop["controller"] = side_controllers_[side - sides_.begin()];
-			network::send_data(drop, owner_, send_gzipped);
+			network::send_data(drop, owner_, true);
 		}
 		side_controllers_[side - sides_.begin()] = "null";
 		sides_taken_[side - sides_.begin()] = false;
@@ -905,9 +903,9 @@ void game::load_next_scenario(const player_map::const_iterator user) const {
 			+ " advances to the next scenario."), user->first);
 	config cfg_scenario;
 	cfg_scenario.add_child("next_scenario", level_);
-	network::send_data(cfg_scenario, user->first, send_gzipped);
+	network::send_data(cfg_scenario, user->first, true);
 	// Send the player the history of the game to-date.
-	network::send_data(history_, user->first, send_gzipped);
+	network::send_data(history_, user->first, true);
 	// Send observer join of all the observers in the game to the user.
 	send_observerjoin(user->first);
 }
@@ -917,7 +915,7 @@ void game::send_data(const config& data, const network::connection exclude) cons
 	const user_vector users = all_game_users();
 	for(user_vector::const_iterator i = users.begin(); i != users.end(); ++i) {
 		if (*i != exclude) {
-			network::send_data(data, *i, send_gzipped);
+			network::send_data(data, *i, true);
 		}
 	}
 }
@@ -940,7 +938,7 @@ void game::send_data_team(const config& data, const std::string& team,
 {
 	for(user_vector::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if(*i != exclude && player_on_team(team,*i)) {
-			network::send_data(data, *i, send_gzipped);
+			network::send_data(data, *i, true);
 		}
 	}
 }
@@ -948,7 +946,7 @@ void game::send_data_team(const config& data, const std::string& team,
 void game::send_data_observers(const config& data, const network::connection exclude) const {
 	for(user_vector::const_iterator i = observers_.begin(); i != observers_.end(); ++i) {
 		if (*i != exclude) {
-			network::send_data(data, *i, send_gzipped);
+			network::send_data(data, *i, true);
 		}
 	}
 }
@@ -961,7 +959,7 @@ void game::send_observerjoin(const network::connection sock) const {
 			if (obs != player_info_->end()) {
 				config cfg;
 				cfg.add_child("observer").values["name"] = obs->second.name();
-				network::send_data(cfg, sock, send_gzipped);
+				network::send_data(cfg, sock, true);
 			}
 		}
 	}
