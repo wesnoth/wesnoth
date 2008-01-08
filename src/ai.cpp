@@ -561,8 +561,9 @@ gamemap::location ai_interface::move_unit_partial(location from, location to,
 	return to;
 }
 
-bool ai::multistep_move_possible(location from, location to, location via,
-		std::map<location,paths>& possible_moves)
+bool ai::multistep_move_possible(const location& from, 
+	const location& to, const location& via,
+	const std::map<location,paths>& possible_moves) const
 {
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end()) {
@@ -946,13 +947,10 @@ void ai::do_move()
 	unit_map::iterator leader = find_leader(units_,team_num_);
 
 	LOG_AI << "villages...\n";
-	const bool got_village = get_villages(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
-	if(got_village) {
+	if(get_villages(possible_moves, dstsrc, enemy_dstsrc, leader)) {
 		do_move();
 		return;
 	}
-
-	LOG_AI << "healing phase\n";
 
 	LOG_AI << "healing...\n";
 	const bool healed_unit = get_healing(possible_moves,srcdst,enemy_dstsrc);
@@ -1134,202 +1132,6 @@ void ai_interface::attack_enemy(const location u,
 		check_victory(info_.units,info_.teams);
 		raise_enemy_attacked();
 	}
-}
-
-
-std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_combinations(
-		std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst,
-		const move_map& dstsrc, const move_map& enemy_srcdst,
-		const move_map& enemy_dstsrc, unit_map::const_iterator leader,
-		std::set<gamemap::location>& taken_villages,
-		std::set<gamemap::location>& moved_units,
-		const std::vector<std::pair<gamemap::location,gamemap::location> >& village_moves,
-		std::vector<std::pair<gamemap::location,
-		gamemap::location> >::const_iterator start_at)
-{
-	int leader_distance_from_keep = -1;
-
-	std::vector<std::pair<location,location> > result;
-
-	for(std::vector<std::pair<location,location> >::const_iterator i = start_at;
-			i != village_moves.end(); ++i) {
-
-		if(taken_villages.count(i->first) || moved_units.count(i->second)) {
-			continue;
-		}
-
-		int distance = -1;
-
-		if(leader != units_.end() && leader->first == i->second) {
-			const location& start_pos = nearest_keep(leader->first);;
-			distance = distance_between(start_pos,i->first);
-		}
-
-		taken_villages.insert(i->first);
-		moved_units.insert(i->second);
-
-		std::vector<std::pair<location,location> > res = get_village_combinations(
-				possible_moves, srcdst, dstsrc, enemy_srcdst, enemy_dstsrc, leader,
-				taken_villages, moved_units, village_moves, i+1);
-
-		// The result is better if it results in getting more villages,
-		// or if it results in the same number of villages,
-		// but the leader ends closer to their keep.
-		const bool result_better = res.size() >= result.size() ||
-			res.size()+1 == result.size() &&
-			distance != -1 &&
-			distance < leader_distance_from_keep;
-
-		if(result_better) {
-			result.swap(res);
-			result.push_back(*i);
-
-			if(distance != -1) {
-				leader_distance_from_keep = distance;
-			}
-		}
-
-		taken_villages.erase(i->first);
-		moved_units.erase(i->second);
-	}
-
-	return result;
-}
-
-
-bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves,
-		const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst,
-		const move_map& enemy_dstsrc, unit_map::iterator &leader)
-{
-	LOG_AI << "deciding which villages we want...\n";
-
-	location start_pos;
-
-	if(leader != units_.end()) {
-		start_pos = nearest_keep(leader->first);
-	}
-
-	std::map<location,double> vulnerability;
-
-	// We want to build up a list of possible moves we can make
-	// that will capture villages.
-	// Limit the moves to 'max_village_moves' to make sure
-	// things don't get out of hand.
-	const size_t max_village_moves = 50;
-	std::vector<std::pair<location,location> > village_moves;
-	for(move_map::const_iterator j = dstsrc.begin();
-			j != dstsrc.end() && village_moves.size() < max_village_moves; ++j) {
-
-		if(map_.is_village(j->first) == false) {
-			continue;
-		}
-
-		bool want_village = true, owned = false;
-		for(size_t n = 0; n != teams_.size(); ++n) {
-			owned = teams_[n].owns_village(j->first);
-			if(owned && !current_team().is_enemy(n+1)) {
-				want_village = false;
-			}
-
-			if(owned) {
-				break;
-			}
-		}
-
-		if(want_village == false) {
-			continue;
-		}
-
-		// If it is a neutral village, and we have no leader,
-		// then the village is of no use to us, and we don't want it.
-		if(!owned && leader == units_.end()) {
-			continue;
-		}
-
-		// If we have a decent amount of gold, and the leader can't access
-		// the keep this turn if they get this village,
-		// then don't get this village with them.
-		if(want_village &&
-				leader != units_.end() &&
-				current_team().gold() > 20 &&
-				leader->first == j->second &&
-				leader->first != start_pos &&
-				multistep_move_possible(j->second,j->first,start_pos,possible_moves) == false) {
-			continue;
-		}
-
-		double threat = 0.0;
-		const std::map<location,double>::const_iterator vuln = vulnerability.find(j->first);
-		if(vuln != vulnerability.end()) {
-			threat = vuln->second;
-		} else {
-			threat = power_projection(j->first,enemy_dstsrc);
-			vulnerability.insert(std::pair<location,double>(j->first,threat));
-		}
-
-		const unit_map::const_iterator u = units_.find(j->second);
-		if(u == units_.end() || utils::string_bool(u->second.get_state("guardian"))) {
-			continue;
-		}
-
-		const unit& un = u->second;
-		if(un.hitpoints() < (threat*2*un.defense_modifier(map_.get_terrain(j->first)))/100) {
-			continue;
-		}
-
-		village_moves.push_back(*j);
-	}
-
-	std::set<location> taken_villages, moved_units;
-	const int ticks = SDL_GetTicks();
-	LOG_AI << "get_villages()..." << village_moves.size() << "\n";
-	const std::vector<std::pair<location,location> >& moves = get_village_combinations(
-			possible_moves, srcdst, dstsrc, enemy_srcdst, enemy_dstsrc, leader,
-			taken_villages, moved_units, village_moves, village_moves.begin());
-
-	LOG_AI << "get_villages() done: " << (SDL_GetTicks() - ticks) << "\n";
-
-	// Move all the units to get villages, however move the leader last,
-	// so that the castle will be cleared if it wants to stop to recruit along the way.
-	std::pair<location,location> leader_move;
-
-	int moves_made = 0;
-	for(std::vector<std::pair<location,location> >::const_iterator i = moves.begin();
-			i != moves.end(); ++i) {
-
-		if(leader != units_.end() && leader->first == i->second) {
-			leader_move = *i;
-		} else {
-			if(units_.count(i->first) == 0) {
-				const location loc = move_unit(i->second,i->first,possible_moves);
-				++moves_made;
-				leader = find_leader(units_, team_num_);
-
-				// If we didn't make it to the destination, it means we were ambushed.
-				if(loc != i->first) {
-					return true;
-				}
-
-				const unit_map::const_iterator new_unit = units_.find(loc);
-
-				if(new_unit != units_.end() &&
-						power_projection(i->first,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
-					add_target(target(new_unit->first,1.0,target::SUPPORT));
-				}
-			}
-		}
-	}
-
-	if(leader_move.second.valid()) {
-		if(units_.count(leader_move.first) == 0) {
-			gamemap::location loc = move_unit(leader_move.second,leader_move.first,possible_moves);
-			++moves_made;
-			// Update leader iterator, since we moved it.
-			leader = units_.find(loc);
-		}
-	}
-
-	return moves_made > 0 && village_moves.size() == max_village_moves;
 }
 
 bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves,

@@ -56,6 +56,7 @@ wesnoth_SOURCES = \
 	ai_attack.cpp \
 	ai_move.cpp \
 	ai_python.cpp \
+	ai_village.cpp \
 	animated_game.cpp \
 	attack_prediction.cpp \
 	config_adapter.cpp \

@@ -55,6 +55,8 @@ Version 1.3.13+svn:
      maximum number of auto-saves to keep, default value is 10, so the 11th
      oldest and all older auto-saves will be deleted
    * the MP server now always sends gzipped data
+   * Rewrote the AI village assigning algorithm, instead of using brute force
+     it now tries to optimize before resorting to brute force (bug #7215).
 
 Version 1.3.13:
  * campaigns:

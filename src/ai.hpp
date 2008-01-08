@@ -75,8 +75,7 @@ protected:
 			const move_map& srcdst, const move_map& dstsrc,
 			const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 	virtual bool get_villages(std::map<gamemap::location,paths>& possible_moves,
-			const move_map& srcdst, const move_map& dstsrc,
-			const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
+			const move_map& dstsrc, const move_map& enemy_dstsrc,
 			unit_map::iterator &leader);
 	virtual bool get_healing(std::map<gamemap::location,paths>& possible_moves,
 			const move_map& srcdst, const move_map& enemy_dstsrc);
@@ -111,16 +110,6 @@ protected:
 
 	bool threats_found_;
 
-	//! Calculate which movements should be made to get an optimal number of villages.
-	std::vector<std::pair<gamemap::location,gamemap::location> > get_village_combinations(
-			std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst,
-			const move_map& dstsrc, const move_map& enemy_srcdst,
-			const move_map& enemy_dstsrc, unit_map::const_iterator leader,
-			std::set<location>& taken_villages, std::set<location>& moved_units,
-			const std::vector<std::pair<gamemap::location,gamemap::location> >& village_moves,
-			std::vector<std::pair<gamemap::location,gamemap::location> >::const_iterator start_at);
-
-
 	//! Our own version of 'move_unit'. It is like the version in ai_interface,
 	//! however if it is the leader moving, it will first attempt recruitment.
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
@@ -132,8 +121,9 @@ protected:
 	std::set<location> attacks_;
 
 	//! Sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in one turn.
-	bool multistep_move_possible(location from, location to, location via,
-			std::map<location,paths>& possible_moves);
+	bool multistep_move_possible(const location& from, 
+		const location& to, const location& via,
+		const std::map<location,paths>& possible_moves) const;
 
 	struct attack_analysis
 	{
@@ -319,6 +309,15 @@ protected:
 	int attack_depth();
 	int attack_depth_;
 	friend struct attack_analysis;
+
+private:
+	void find_villages(/*std::vector<unit_map::const_iterator>& our_units, 
+		std::vector<std::vector<gamemap::location> >& reachable_villages, */
+		std::map<gamemap::location /*unit location*/, std::vector<gamemap::location /* villages we can reach*/> >& reachmap,
+		std::vector<std::pair<gamemap::location,gamemap::location> >& moves,
+		const std::multimap<gamemap::location,gamemap::location>& dstsrc,
+		const std::map<gamemap::location,paths>& possible_moves,
+		const std::multimap<gamemap::location,gamemap::location>& enemy_dstsrc) const;
 };
 
 #endif
