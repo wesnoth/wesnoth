@@ -2057,13 +2057,14 @@ private:
 			//Not found, inform the player
 			utils::string_map symbols;
 			symbols["search"] = last_search_;
-			const std::string msg = utils::interpolate_variables_into_string(
-				_("Couldn't find label or unit containing the string '$search'."),&symbols);
+			const std::string msg = vgettext("Couldn't find label or unit "
+					"containing the string '$search'.", symbols);
 			gui::dialog(*gui_,"",msg).show();
 		}
 	}
 
-	void menu_handler::do_command(const std::string& str, const unsigned int team_num, mouse_handler& mousehandler)
+	void menu_handler::do_command(const std::string& str,
+			const unsigned int team_num, mouse_handler& mousehandler)
 	{
 		const std::string::const_iterator i = std::find(str.begin(),str.end(),' ');
 		const std::string cmd(str.begin(),i);
@@ -2079,7 +2080,17 @@ private:
 			const std::string action(j,data.end());
 			// default to the current side
 			const unsigned int side = lexical_cast_default<unsigned int>(side_s, team_num);
-			if (side < 1 || side > teams_.size() || teams_[side - 1].is_network()) {
+			if (side < 1 || side > teams_.size()) {
+				utils::string_map symbols;
+				symbols["side"] = lexical_cast<std::string>(side);
+				add_chat_message(time(NULL), _("error"), 0, vgettext(
+						"Can't droid invalid side: '$side'.", symbols));
+				return;
+			} else if (teams_[side - 1].is_network()) {
+				utils::string_map symbols;
+				symbols["side"] = lexical_cast<std::string>(side);
+				add_chat_message(time(NULL), _("error"), 0, vgettext(
+						"Can't droid networked side: '$side'.", symbols));
 				return;
 			} else if (teams_[side - 1].is_human() && action != " off") {
 				//this is our side, so give it to AI
@@ -2105,15 +2116,30 @@ private:
 			else if (level == "info") severity = 2;
 			else if (level == "debug") severity = 3;
 			else {
-				ERR_NG << "Unknown debug level: '" << level << "'.\n";
+				utils::string_map symbols;
+				symbols["level"] = level;
+				const std::string msg = vgettext(
+						"Unknown debug level: '$level'.", symbols);
+				ERR_NG << msg << "\n";
+				add_chat_message(time(NULL), _("error"), 0, msg);
 				return;
 			}
 			if (!lg::set_log_domain_severity(domain, severity)) {
-				ERR_NG << "Unknown debug domain: '" << domain << "'.\n";
+				utils::string_map symbols;
+				symbols["domain"] = domain;
+				const std::string msg = vgettext(
+						"Unknown debug domain: '$domain'.", symbols);
+				ERR_NG << msg << "\n";
+				add_chat_message(time(NULL), _("error"), 0, msg);
 				return;
 			} else {
-				LOG_NG << "Switched domain: '" << domain << "' to level: '"
-					<< level << "'.\n";
+				utils::string_map symbols;
+				symbols["level"] = level;
+				symbols["domain"] = domain;
+				const std::string msg = vgettext(
+						"Switched domain: '$domain' to level: '$level'.", symbols);
+				LOG_NG << msg << "\n";
+				add_chat_message(time(NULL), cmd, 0, msg);
 			}
 		} else if (cmd == "theme") {
 			preferences::show_theme_dialog(*gui_);
@@ -2126,8 +2152,11 @@ private:
 		{
 			send_command(cmd, data);
 		} else if(cmd == "control" && network::nconnections() != 0) {
+			// :control <side> <nick>
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),' ');
 			if(j == data.end())
+				add_chat_message(time(NULL), _("error"), 0,
+						_("Usage: control <side> <nick>"));
 				return;
 			const std::string side(data.begin(),j);
 			const std::string player(j+1,data.end());
@@ -2135,9 +2164,18 @@ private:
 			try {
 				side_num = lexical_cast<unsigned int, std::string>(side);
 			} catch(bad_lexical_cast&) {
+				utils::string_map symbols;
+				symbols["side"] = side;
+				add_chat_message(time(NULL), _("error"), 0, vgettext(
+						"Can't change control of invalid side: '$side'.", symbols));
 				return;
 			}
 			if (side_num < 1 || side_num > teams_.size()) {
+				utils::string_map symbols;
+				symbols["side"] = side;
+				add_chat_message(time(NULL), _("error"), 0, vgettext(
+						"Can't change control of out-of-bounds side: '$side'.",
+						symbols));
 				return;
 			}
 			//if this is our side we are always allowed to change the controller
@@ -2181,8 +2219,10 @@ private:
 		} else if(cmd == "n" && game_config::debug) {
 			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 		} else if(cmd == "debug" && network::nconnections() == 0) {
+			add_chat_message(time(NULL), cmd, 0, _("Debug mode activated!"));
 			game_config::debug = true;
 		} else if(cmd == "nodebug") {
+			add_chat_message(time(NULL), cmd, 0, _("Debug mode deactivated!"));
 			game_config::debug = false;
 		} else if(game_config::debug && cmd == "set_var") {
 				const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
