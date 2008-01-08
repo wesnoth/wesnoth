@@ -430,8 +430,6 @@ struct team_data
 
 team_data calculate_team_data(const class team& tm, int side, const unit_map& units);
 
-const std::set<gamemap::location> vacant_villages(const std::set<gamemap::location>& villages, const unit_map& units);
-
 // This object is used to temporary place a unit in the unit map,
 // swapping out any unit that is already there.
 // On destruction, it restores the unit map to its original .

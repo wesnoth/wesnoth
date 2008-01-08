@@ -638,19 +638,6 @@ int team::nteams()
 	}
 }
 
-const std::set<gamemap::location> vacant_villages(const std::set<gamemap::location>& villages, const unit_map& units)
-{
-	std::set<gamemap::location> res;
-
-	for(std::set<gamemap::location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
-		if(units.count(*i) == 0) {
-			res.insert(*i);
-		}
-	}
-
-	return res;
-}
-
 bool is_observer()
 {
 	if(teams == NULL) {

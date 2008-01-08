@@ -2798,6 +2798,7 @@ bool unit::invisible(const gamemap::location& loc,
 	return is_inv;
 }
 
+//! Returns the number of units of the given side (team).
 int team_units(const unit_map& units, unsigned int side)
 {
 	int res = 0;
